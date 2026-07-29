@@ -131,9 +131,9 @@ export interface FetchSettings {
   /** Optional. The day of the month when the data source file should be fetched (1-31). This field can only be set for monthly frequency. */
   dayOfMonth?: number;
   /** Optional. The day of the week when the data source file should be fetched. This field can only be set for weekly frequency. */
-  dayOfWeek?: FetchSettingsDayOfWeekEnum;
+  dayOfWeek?: FetchSettingsDayOfWeekEnum | (string & {});
   /** Required. The frequency describing fetch schedule. */
-  frequency?: FetchSettingsFrequencyEnum;
+  frequency?: FetchSettingsFrequencyEnum | (string & {});
   /** Optional. Enables or pauses the fetch schedule. */
   enabled?: boolean;
   /** Optional. The hour of the day when the data source file should be fetched. Minutes and seconds are not supported and will be ignored. */
@@ -169,7 +169,7 @@ export interface FileInput {
   /** Optional. Fetch details to deliver the data source. It contains settings for `FETCH` and `GOOGLE_SHEETS` file input types. The required fields vary based on the frequency of fetching. */
   fetchSettings?: FetchSettings;
   /** Output only. The type of file input. */
-  fileInputType?: FileInputFileInputTypeEnum;
+  fileInputType?: FileInputFileInputTypeEnum | (string & {});
   /** Optional. The file name of the data source. Required for `UPLOAD` file input type. */
   fileName?: string;
 }
@@ -247,7 +247,7 @@ export const DataSourceReference = /*@__PURE__*/ S.suspend(() =>
   identifier: "DataSourceReference",
 }) as any as S.Schema<DataSourceReference>;
 
-export type DataSourceReferenceList = ReadonlyArray<DataSourceReference>;
+export type DataSourceReferenceList = Array<DataSourceReference>;
 export const DataSourceReferenceList = /*@__PURE__*/ S.Array(
   DataSourceReference,
 ) as any as S.Schema<DataSourceReferenceList>;
@@ -285,9 +285,9 @@ export const DestinationStateEnum = /*@__PURE__*/ S.String;
 /** Destinations also known as [Marketing methods](https://support.google.com/merchants/answer/15130232) selections. */
 export interface Destination {
   /** [Marketing methods](https://support.google.com/merchants/answer/15130232) (also known as destination) selections. */
-  destination?: DestinationDestinationEnum;
+  destination?: DestinationDestinationEnum | (string & {});
   /** The state of the destination. */
-  state?: DestinationStateEnum;
+  state?: DestinationStateEnum | (string & {});
 }
 export const Destination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -296,12 +296,12 @@ export const Destination = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Destination" }) as any as S.Schema<Destination>;
 
-export type DestinationList = ReadonlyArray<Destination>;
+export type DestinationList = Array<Destination>;
 export const DestinationList = /*@__PURE__*/ S.Array(
   Destination,
 ) as any as S.Schema<DestinationList>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -364,7 +364,7 @@ export interface DataSource {
   /** Optional. The field is used only when data is managed through a file. */
   fileInput?: FileInput;
   /** Output only. Determines the type of input to the data source. Based on the input some settings might not work. Only generic data sources can be created through the API. */
-  input?: DataSourceInputEnum;
+  input?: DataSourceInputEnum | (string & {});
   /** The [local inventory](https://support.google.com/merchants/answer/7023001) data source. */
   localInventoryDataSource?: LocalInventoryDataSource;
   /** Required. The displayed data source name in the Merchant Center UI. */
@@ -544,7 +544,7 @@ export const Issue = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Issue" }) as any as S.Schema<Issue>;
 
-export type IssueList = ReadonlyArray<Issue>;
+export type IssueList = Array<Issue>;
 export const IssueList = /*@__PURE__*/ S.Array(
   Issue,
 ) as any as S.Schema<IssueList>;
@@ -605,7 +605,7 @@ export const ListAccountsDataSourcesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAccountsDataSourcesRequest",
 }) as any as S.Schema<ListAccountsDataSourcesRequest>;
 
-export type DataSourceList = ReadonlyArray<DataSource>;
+export type DataSourceList = Array<DataSource>;
 export const DataSourceList = /*@__PURE__*/ S.Array(
   DataSource,
 ) as any as S.Schema<DataSourceList>;

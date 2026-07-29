@@ -119,7 +119,7 @@ export const InstanceConfigInstanceSizeEnum = /*@__PURE__*/ S.String;
 /** Message storing the instance configuration. */
 export interface InstanceConfig {
   /** The instance size of this the instance configuration. */
-  instanceSize?: InstanceConfigInstanceSizeEnum;
+  instanceSize?: InstanceConfigInstanceSizeEnum | (string & {});
 }
 export const InstanceConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -153,7 +153,7 @@ export const URIs = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "URIs" }) as any as S.Schema<URIs>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -172,7 +172,7 @@ export const Component = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Component" }) as any as S.Schema<Component>;
 
-export type ComponentList = ReadonlyArray<Component>;
+export type ComponentList = Array<Component>;
 export const ComponentList = /*@__PURE__*/ S.Array(
   Component,
 ) as any as S.Schema<ComponentList>;
@@ -243,8 +243,9 @@ export type WeeklyScheduleDaysItemEnum =
   | "SUNDAY";
 export const WeeklyScheduleDaysItemEnum = /*@__PURE__*/ S.String;
 
-export type WeeklyScheduleDaysItemEnumList =
-  ReadonlyArray<WeeklyScheduleDaysItemEnum>;
+export type WeeklyScheduleDaysItemEnumList = Array<
+  WeeklyScheduleDaysItemEnum | (string & {})
+>;
 export const WeeklyScheduleDaysItemEnumList = /*@__PURE__*/ S.Array(
   WeeklyScheduleDaysItemEnum,
 ) as any as S.Schema<WeeklyScheduleDaysItemEnumList>;
@@ -289,7 +290,7 @@ export const WeeklySchedule = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "WeeklySchedule" }) as any as S.Schema<WeeklySchedule>;
 
-export type WeeklyScheduleList = ReadonlyArray<WeeklySchedule>;
+export type WeeklyScheduleList = Array<WeeklySchedule>;
 export const WeeklyScheduleList = /*@__PURE__*/ S.Array(
   WeeklySchedule,
 ) as any as S.Schema<WeeklyScheduleList>;
@@ -360,8 +361,9 @@ export type SAMLParamsAuthenticationContextsItemEnum =
   | "TIME_SYNC_TOKEN";
 export const SAMLParamsAuthenticationContextsItemEnum = /*@__PURE__*/ S.String;
 
-export type SAMLParamsAuthenticationContextsItemEnumList =
-  ReadonlyArray<SAMLParamsAuthenticationContextsItemEnum>;
+export type SAMLParamsAuthenticationContextsItemEnumList = Array<
+  SAMLParamsAuthenticationContextsItemEnum | (string & {})
+>;
 export const SAMLParamsAuthenticationContextsItemEnumList =
   /*@__PURE__*/ S.Array(
     SAMLParamsAuthenticationContextsItemEnum,
@@ -432,7 +434,7 @@ export interface ContactCenter {
   /** Optional. Early release channel. */
   early?: Early;
   /** Output only. The state of this contact center. */
-  state?: ContactCenterStateEnum;
+  state?: ContactCenterStateEnum | (string & {});
   /** Labels as key value pairs */
   labels?: StringMap;
   /** Optional. Email address of the first admin user. */
@@ -512,7 +514,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -639,7 +641,7 @@ export const Contactcenteraiplatform_Date = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<Contactcenteraiplatform_Date>;
 
 export type Contactcenteraiplatform_DateList =
-  ReadonlyArray<Contactcenteraiplatform_Date>;
+  Array<Contactcenteraiplatform_Date>;
 export const Contactcenteraiplatform_DateList = /*@__PURE__*/ S.Array(
   Contactcenteraiplatform_Date,
 ) as any as S.Schema<Contactcenteraiplatform_DateList>;
@@ -678,7 +680,7 @@ export const EventTemplate = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "EventTemplate" }) as any as S.Schema<EventTemplate>;
 
-export type EventTemplateList = ReadonlyArray<EventTemplate>;
+export type EventTemplateList = Array<EventTemplate>;
 export const EventTemplateList = /*@__PURE__*/ S.Array(
   EventTemplate,
 ) as any as S.Schema<EventTemplateList>;
@@ -727,7 +729,7 @@ export const ShiftTemplate = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ShiftTemplate" }) as any as S.Schema<ShiftTemplate>;
 
-export type ShiftTemplateList = ReadonlyArray<ShiftTemplate>;
+export type ShiftTemplateList = Array<ShiftTemplate>;
 export const ShiftTemplateList = /*@__PURE__*/ S.Array(
   ShiftTemplate,
 ) as any as S.Schema<ShiftTemplateList>;
@@ -800,7 +802,7 @@ export const WorkforceDemand = /*@__PURE__*/ S.suspend(() =>
   identifier: "WorkforceDemand",
 }) as any as S.Schema<WorkforceDemand>;
 
-export type WorkforceDemandList_ = ReadonlyArray<WorkforceDemand>;
+export type WorkforceDemandList_ = Array<WorkforceDemand>;
 export const WorkforceDemandList_ = /*@__PURE__*/ S.Array(
   WorkforceDemand,
 ) as any as S.Schema<WorkforceDemandList_>;
@@ -834,7 +836,7 @@ export const UnwantedEventInterval = /*@__PURE__*/ S.suspend(() =>
   identifier: "UnwantedEventInterval",
 }) as any as S.Schema<UnwantedEventInterval>;
 
-export type UnwantedEventIntervalList = ReadonlyArray<UnwantedEventInterval>;
+export type UnwantedEventIntervalList = Array<UnwantedEventInterval>;
 export const UnwantedEventIntervalList = /*@__PURE__*/ S.Array(
   UnwantedEventInterval,
 ) as any as S.Schema<UnwantedEventIntervalList>;
@@ -853,7 +855,7 @@ export const EmployeeInfo = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "EmployeeInfo" }) as any as S.Schema<EmployeeInfo>;
 
-export type EmployeeInfoList = ReadonlyArray<EmployeeInfo>;
+export type EmployeeInfoList = Array<EmployeeInfo>;
 export const EmployeeInfoList = /*@__PURE__*/ S.Array(
   EmployeeInfo,
 ) as any as S.Schema<EmployeeInfoList>;
@@ -1030,7 +1032,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = ReadonlyArray<Location>;
+export type LocationList = Array<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -1082,7 +1084,7 @@ export const ListProjectsLocationsContactCentersRequest =
     identifier: "ListProjectsLocationsContactCentersRequest",
   }) as any as S.Schema<ListProjectsLocationsContactCentersRequest>;
 
-export type ContactCenterList = ReadonlyArray<ContactCenter>;
+export type ContactCenterList = Array<ContactCenter>;
 export const ContactCenterList = /*@__PURE__*/ S.Array(
   ContactCenter,
 ) as any as S.Schema<ContactCenterList>;
@@ -1137,7 +1139,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type OperationList = ReadonlyArray<Operation>;
+export type OperationList = Array<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -1245,7 +1247,7 @@ export const Quota = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Quota" }) as any as S.Schema<Quota>;
 
-export type QuotaList = ReadonlyArray<Quota>;
+export type QuotaList = Array<Quota>;
 export const QuotaList = /*@__PURE__*/ S.Array(
   Quota,
 ) as any as S.Schema<QuotaList>;

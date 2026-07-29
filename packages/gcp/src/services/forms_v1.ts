@@ -111,7 +111,7 @@ export interface MediaProperties {
   /** The width of the media in pixels. When the media is displayed, it is scaled to the smaller of this value or the width of the displayed form. The original aspect ratio of the media is preserved. If a width is not specified when the media is added to the form, it is set to the width of the media source. Width must be between 0 and 740, inclusive. Setting width to 0 or unspecified is only permitted when updating the media source. */
   width?: number;
   /** Position of the media. */
-  alignment?: MediaPropertiesAlignmentEnum;
+  alignment?: MediaPropertiesAlignmentEnum | (string & {});
 }
 export const MediaProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -170,7 +170,7 @@ export const OptionGoToActionEnum = /*@__PURE__*/ S.String;
 /** An option for a Choice question. */
 export interface Option {
   /** Section navigation type. */
-  goToAction?: OptionGoToActionEnum;
+  goToAction?: OptionGoToActionEnum | (string & {});
   /** Required. The choice as presented to the user. */
   value?: string;
   /** Item ID of section header to go to. */
@@ -190,7 +190,7 @@ export const Option = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Option" }) as any as S.Schema<Option>;
 
-export type OptionList = ReadonlyArray<Option>;
+export type OptionList = Array<Option>;
 export const OptionList = /*@__PURE__*/ S.Array(
   Option,
 ) as any as S.Schema<OptionList>;
@@ -198,7 +198,7 @@ export const OptionList = /*@__PURE__*/ S.Array(
 /** A radio/checkbox/dropdown question. */
 export interface ChoiceQuestion {
   /** Required. The type of choice question. */
-  type?: ChoiceQuestionTypeEnum;
+  type?: ChoiceQuestionTypeEnum | (string & {});
   /** Required. List of options that a respondent must choose from. */
   options?: OptionList;
   /** Whether the options should be displayed in random order for different instances of the quiz. This is often used to prevent cheating by respondents who might be looking at another respondent's screen, or to address bias in a survey that might be introduced by always putting the same options first or last. */
@@ -258,8 +258,9 @@ export type FileUploadQuestionTypesItemEnum =
   | "AUDIO";
 export const FileUploadQuestionTypesItemEnum = /*@__PURE__*/ S.String;
 
-export type FileUploadQuestionTypesItemEnumList =
-  ReadonlyArray<FileUploadQuestionTypesItemEnum>;
+export type FileUploadQuestionTypesItemEnumList = Array<
+  FileUploadQuestionTypesItemEnum | (string & {})
+>;
 export const FileUploadQuestionTypesItemEnumList = /*@__PURE__*/ S.Array(
   FileUploadQuestionTypesItemEnum,
 ) as any as S.Schema<FileUploadQuestionTypesItemEnumList>;
@@ -328,7 +329,7 @@ export const ExtraMaterial = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ExtraMaterial" }) as any as S.Schema<ExtraMaterial>;
 
-export type ExtraMaterialList = ReadonlyArray<ExtraMaterial>;
+export type ExtraMaterialList = Array<ExtraMaterial>;
 export const ExtraMaterialList = /*@__PURE__*/ S.Array(
   ExtraMaterial,
 ) as any as S.Schema<ExtraMaterialList>;
@@ -358,7 +359,7 @@ export const CorrectAnswer = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CorrectAnswer" }) as any as S.Schema<CorrectAnswer>;
 
-export type CorrectAnswerList = ReadonlyArray<CorrectAnswer>;
+export type CorrectAnswerList = Array<CorrectAnswer>;
 export const CorrectAnswerList = /*@__PURE__*/ S.Array(
   CorrectAnswer,
 ) as any as S.Schema<CorrectAnswerList>;
@@ -407,7 +408,7 @@ export const RatingQuestionIconTypeEnum = /*@__PURE__*/ S.String;
 /** A rating question. The user has a range of icons to choose from. */
 export interface RatingQuestion {
   /** Required. The icon type to use for the rating. */
-  iconType?: RatingQuestionIconTypeEnum;
+  iconType?: RatingQuestionIconTypeEnum | (string & {});
   /** Required. The rating scale level of the rating question. */
   ratingScaleLevel?: number;
 }
@@ -513,7 +514,7 @@ export const PageBreakItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({ identifier: "PageBreakItem" }) as any as S.Schema<PageBreakItem>;
 
-export type QuestionList = ReadonlyArray<Question>;
+export type QuestionList = Array<Question>;
 export const QuestionList = /*@__PURE__*/ S.Array(
   Question,
 ) as any as S.Schema<QuestionList>;
@@ -693,7 +694,7 @@ export interface FormSettings {
   /** Settings related to quiz forms and grading. */
   quizSettings?: QuizSettings;
   /** Optional. The setting that determines whether the form collects email addresses from respondents. */
-  emailCollectionType?: FormSettingsEmailCollectionTypeEnum;
+  emailCollectionType?: FormSettingsEmailCollectionTypeEnum | (string & {});
 }
 export const FormSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -763,7 +764,7 @@ export const Request = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Request" }) as any as S.Schema<Request>;
 
-export type RequestList = ReadonlyArray<Request>;
+export type RequestList = Array<Request>;
 export const RequestList = /*@__PURE__*/ S.Array(
   Request,
 ) as any as S.Schema<RequestList>;
@@ -822,7 +823,7 @@ export const BatchUpdateFormsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "BatchUpdateFormsRequest",
 }) as any as S.Schema<BatchUpdateFormsRequest>;
 
-export type ItemList = ReadonlyArray<Item>;
+export type ItemList = Array<Item>;
 export const ItemList = /*@__PURE__*/ S.Array(
   Item,
 ) as any as S.Schema<ItemList>;
@@ -886,7 +887,7 @@ export const Form = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Form" }) as any as S.Schema<Form>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -918,7 +919,7 @@ export const Response = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Response" }) as any as S.Schema<Response>;
 
-export type ResponseList = ReadonlyArray<Response>;
+export type ResponseList = Array<Response>;
 export const ResponseList = /*@__PURE__*/ S.Array(
   Response,
 ) as any as S.Schema<ResponseList>;
@@ -1010,15 +1011,15 @@ export interface Watch {
   /** Required. Where to send the notification. */
   target?: WatchTarget;
   /** Required. Which event type to watch for. */
-  eventType?: WatchEventTypeEnum;
+  eventType?: WatchEventTypeEnum | (string & {});
   /** Output only. The most recent error type for an attempted delivery. To begin watching the form again a call can be made to watches.renew which also clears this error information. */
-  errorType?: WatchErrorTypeEnum;
+  errorType?: WatchErrorTypeEnum | (string & {});
   /** Output only. Timestamp of when this was created. */
   createTime?: string;
   /** Output only. Timestamp for when this will expire. Each watches.renew call resets this to seven days in the future. */
   expireTime?: string;
   /** Output only. The current state of the watch. Additional details about suspended watches can be found by checking the `error_type`. */
-  state?: WatchStateEnum;
+  state?: WatchStateEnum | (string & {});
 }
 export const Watch = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1163,7 +1164,7 @@ export const TextAnswer = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TextAnswer" }) as any as S.Schema<TextAnswer>;
 
-export type TextAnswerList = ReadonlyArray<TextAnswer>;
+export type TextAnswerList = Array<TextAnswer>;
 export const TextAnswerList = /*@__PURE__*/ S.Array(
   TextAnswer,
 ) as any as S.Schema<TextAnswerList>;
@@ -1198,7 +1199,7 @@ export const FileUploadAnswer = /*@__PURE__*/ S.suspend(() =>
   identifier: "FileUploadAnswer",
 }) as any as S.Schema<FileUploadAnswer>;
 
-export type FileUploadAnswerList = ReadonlyArray<FileUploadAnswer>;
+export type FileUploadAnswerList = Array<FileUploadAnswer>;
 export const FileUploadAnswerList = /*@__PURE__*/ S.Array(
   FileUploadAnswer,
 ) as any as S.Schema<FileUploadAnswerList>;
@@ -1298,7 +1299,7 @@ export const ListFormsResponsesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListFormsResponsesRequest",
 }) as any as S.Schema<ListFormsResponsesRequest>;
 
-export type FormResponseList = ReadonlyArray<FormResponse>;
+export type FormResponseList = Array<FormResponse>;
 export const FormResponseList = /*@__PURE__*/ S.Array(
   FormResponse,
 ) as any as S.Schema<FormResponseList>;
@@ -1337,7 +1338,7 @@ export const ListFormsWatchesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListFormsWatchesRequest",
 }) as any as S.Schema<ListFormsWatchesRequest>;
 
-export type WatchList = ReadonlyArray<Watch>;
+export type WatchList = Array<Watch>;
 export const WatchList = /*@__PURE__*/ S.Array(
   Watch,
 ) as any as S.Schema<WatchList>;

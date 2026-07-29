@@ -72,7 +72,7 @@ export const JitAccessResponseUserRolesItemAllowedNetworksAllowedCidrsItem =
   }) as any as S.Schema<JitAccessResponseUserRolesItemAllowedNetworksAllowedCidrsItem>;
 
 export type JitAccessResponseUserRolesItemAllowedNetworksAllowedCidrsList =
-  ReadonlyArray<JitAccessResponseUserRolesItemAllowedNetworksAllowedCidrsItem>;
+  Array<JitAccessResponseUserRolesItemAllowedNetworksAllowedCidrsItem>;
 export const JitAccessResponseUserRolesItemAllowedNetworksAllowedCidrsList =
   /*@__PURE__*/ S.Array(
     JitAccessResponseUserRolesItemAllowedNetworksAllowedCidrsItem,
@@ -92,7 +92,7 @@ export const JitAccessResponseUserRolesItemAllowedNetworksAllowedCidrsV6Item =
   }) as any as S.Schema<JitAccessResponseUserRolesItemAllowedNetworksAllowedCidrsV6Item>;
 
 export type JitAccessResponseUserRolesItemAllowedNetworksAllowedCidrsV6List =
-  ReadonlyArray<JitAccessResponseUserRolesItemAllowedNetworksAllowedCidrsV6Item>;
+  Array<JitAccessResponseUserRolesItemAllowedNetworksAllowedCidrsV6Item>;
 export const JitAccessResponseUserRolesItemAllowedNetworksAllowedCidrsV6List =
   /*@__PURE__*/ S.Array(
     JitAccessResponseUserRolesItemAllowedNetworksAllowedCidrsV6Item,
@@ -134,7 +134,7 @@ export const JitAccessResponseUserRolesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<JitAccessResponseUserRolesItem>;
 
 export type JitAccessResponseUserRolesList =
-  ReadonlyArray<JitAccessResponseUserRolesItem>;
+  Array<JitAccessResponseUserRolesItem>;
 export const JitAccessResponseUserRolesList = /*@__PURE__*/ S.Array(
   JitAccessResponseUserRolesItem,
 ) as any as S.Schema<JitAccessResponseUserRolesList>;
@@ -178,13 +178,12 @@ export type UpdateCustomHostnameResponseStatus =
   | "5_services_reconfigured";
 export const UpdateCustomHostnameResponseStatus = /*@__PURE__*/ S.String;
 
-export type UpdateCustomHostnameResponseDataErrorsList = ReadonlyArray<unknown>;
+export type UpdateCustomHostnameResponseDataErrorsList = Array<unknown>;
 export const UpdateCustomHostnameResponseDataErrorsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<UpdateCustomHostnameResponseDataErrorsList>;
 
-export type UpdateCustomHostnameResponseDataMessagesList =
-  ReadonlyArray<unknown>;
+export type UpdateCustomHostnameResponseDataMessagesList = Array<unknown>;
 export const UpdateCustomHostnameResponseDataMessagesList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -206,7 +205,7 @@ export const UpdateCustomHostnameResponseDataResultSslValidationRecordsItem =
   }) as any as S.Schema<UpdateCustomHostnameResponseDataResultSslValidationRecordsItem>;
 
 export type UpdateCustomHostnameResponseDataResultSslValidationRecordsList =
-  ReadonlyArray<UpdateCustomHostnameResponseDataResultSslValidationRecordsItem>;
+  Array<UpdateCustomHostnameResponseDataResultSslValidationRecordsItem>;
 export const UpdateCustomHostnameResponseDataResultSslValidationRecordsList =
   /*@__PURE__*/ S.Array(
     UpdateCustomHostnameResponseDataResultSslValidationRecordsItem,
@@ -225,7 +224,7 @@ export const UpdateCustomHostnameResponseDataResultSslValidationErrorsItem =
   }) as any as S.Schema<UpdateCustomHostnameResponseDataResultSslValidationErrorsItem>;
 
 export type UpdateCustomHostnameResponseDataResultSslValidationErrorsList =
-  ReadonlyArray<UpdateCustomHostnameResponseDataResultSslValidationErrorsItem>;
+  Array<UpdateCustomHostnameResponseDataResultSslValidationErrorsItem>;
 export const UpdateCustomHostnameResponseDataResultSslValidationErrorsList =
   /*@__PURE__*/ S.Array(
     UpdateCustomHostnameResponseDataResultSslValidationErrorsItem,
@@ -267,7 +266,7 @@ export const UpdateCustomHostnameResponseDataResultOwnershipVerification =
   }) as any as S.Schema<UpdateCustomHostnameResponseDataResultOwnershipVerification>;
 
 export type UpdateCustomHostnameResponseDataResultVerificationErrorsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const UpdateCustomHostnameResponseDataResultVerificationErrorsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -516,7 +515,7 @@ export const JitAuthorizeAccessResponseUserRoleAllowedNetworksAllowedCidrsItem =
   }) as any as S.Schema<JitAuthorizeAccessResponseUserRoleAllowedNetworksAllowedCidrsItem>;
 
 export type JitAuthorizeAccessResponseUserRoleAllowedNetworksAllowedCidrsList =
-  ReadonlyArray<JitAuthorizeAccessResponseUserRoleAllowedNetworksAllowedCidrsItem>;
+  Array<JitAuthorizeAccessResponseUserRoleAllowedNetworksAllowedCidrsItem>;
 export const JitAuthorizeAccessResponseUserRoleAllowedNetworksAllowedCidrsList =
   /*@__PURE__*/ S.Array(
     JitAuthorizeAccessResponseUserRoleAllowedNetworksAllowedCidrsItem,
@@ -536,7 +535,7 @@ export const JitAuthorizeAccessResponseUserRoleAllowedNetworksAllowedCidrsV6Item
   }) as any as S.Schema<JitAuthorizeAccessResponseUserRoleAllowedNetworksAllowedCidrsV6Item>;
 
 export type JitAuthorizeAccessResponseUserRoleAllowedNetworksAllowedCidrsV6List =
-  ReadonlyArray<JitAuthorizeAccessResponseUserRoleAllowedNetworksAllowedCidrsV6Item>;
+  Array<JitAuthorizeAccessResponseUserRoleAllowedNetworksAllowedCidrsV6Item>;
 export const JitAuthorizeAccessResponseUserRoleAllowedNetworksAllowedCidrsV6List =
   /*@__PURE__*/ S.Array(
     JitAuthorizeAccessResponseUserRoleAllowedNetworksAllowedCidrsV6Item,
@@ -662,7 +661,7 @@ export const CreateSecretBodyItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateSecretBodyItem",
 }) as any as S.Schema<CreateSecretBodyItem>;
 
-export type CreateSecretBody = ReadonlyArray<CreateSecretBodyItem>;
+export type CreateSecretBody = Array<CreateSecretBodyItem>;
 export const CreateSecretBody = /*@__PURE__*/ S.Array(
   CreateSecretBodyItem,
 ) as any as S.Schema<CreateSecretBody>;
@@ -690,7 +689,7 @@ export const V1BulkCreateSecretsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "V1BulkCreateSecretsResponse",
 }) as any as S.Schema<V1BulkCreateSecretsResponse>;
 
-export type DeleteSecretsBody = ReadonlyArray<string>;
+export type DeleteSecretsBody = Array<string>;
 export const DeleteSecretsBody = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DeleteSecretsBody>;
@@ -755,7 +754,7 @@ export const BulkUpdateFunctionBodyItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "BulkUpdateFunctionBodyItem",
 }) as any as S.Schema<BulkUpdateFunctionBodyItem>;
 
-export type BulkUpdateFunctionBody = ReadonlyArray<BulkUpdateFunctionBodyItem>;
+export type BulkUpdateFunctionBody = Array<BulkUpdateFunctionBodyItem>;
 export const BulkUpdateFunctionBody = /*@__PURE__*/ S.Array(
   BulkUpdateFunctionBodyItem,
 ) as any as S.Schema<BulkUpdateFunctionBody>;
@@ -818,7 +817,7 @@ export const BulkUpdateFunctionResponseFunctionsItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<BulkUpdateFunctionResponseFunctionsItem>;
 
 export type BulkUpdateFunctionResponseFunctionsList =
-  ReadonlyArray<BulkUpdateFunctionResponseFunctionsItem>;
+  Array<BulkUpdateFunctionResponseFunctionsItem>;
 export const BulkUpdateFunctionResponseFunctionsList = /*@__PURE__*/ S.Array(
   BulkUpdateFunctionResponseFunctionsItem,
 ) as any as S.Schema<BulkUpdateFunctionResponseFunctionsList>;
@@ -1355,13 +1354,13 @@ export const V1ProjectResponse = /*@__PURE__*/ S.suspend(() =>
 export type V1CreateASsoProviderRequestType = "saml";
 export const V1CreateASsoProviderRequestType = /*@__PURE__*/ S.String;
 
-export type V1CreateASsoProviderRequestDomainsList = ReadonlyArray<string>;
+export type V1CreateASsoProviderRequestDomainsList = Array<string>;
 export const V1CreateASsoProviderRequestDomainsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<V1CreateASsoProviderRequestDomainsList>;
 
 export type V1CreateASsoProviderRequestAttributeMappingKeysValueNamesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const V1CreateASsoProviderRequestAttributeMappingKeysValueNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1459,7 +1458,7 @@ export const V1CreateASsoProviderRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<V1CreateASsoProviderRequest>;
 
 export type CreateProviderResponseSamlAttributeMappingKeysValueNamesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CreateProviderResponseSamlAttributeMappingKeysValueNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1560,7 +1559,7 @@ export const CreateProviderResponseDomainsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateProviderResponseDomainsItem>;
 
 export type CreateProviderResponseDomainsList =
-  ReadonlyArray<CreateProviderResponseDomainsItem>;
+  Array<CreateProviderResponseDomainsItem>;
 export const CreateProviderResponseDomainsList = /*@__PURE__*/ S.Array(
   CreateProviderResponseDomainsItem,
 ) as any as S.Schema<CreateProviderResponseDomainsList>;
@@ -1804,10 +1803,9 @@ export type V1CreateProjectSigningKeyRequestPrivateJwkCase0KeyOpsItem =
 export const V1CreateProjectSigningKeyRequestPrivateJwkCase0KeyOpsItem =
   /*@__PURE__*/ S.String;
 
-export type V1CreateProjectSigningKeyRequestPrivateJwkCase0KeyOpsList =
-  ReadonlyArray<
-    V1CreateProjectSigningKeyRequestPrivateJwkCase0KeyOpsItem | (string & {})
-  >;
+export type V1CreateProjectSigningKeyRequestPrivateJwkCase0KeyOpsList = Array<
+  V1CreateProjectSigningKeyRequestPrivateJwkCase0KeyOpsItem | (string & {})
+>;
 export const V1CreateProjectSigningKeyRequestPrivateJwkCase0KeyOpsList =
   /*@__PURE__*/ S.Array(
     V1CreateProjectSigningKeyRequestPrivateJwkCase0KeyOpsItem,
@@ -1875,10 +1873,9 @@ export type V1CreateProjectSigningKeyRequestPrivateJwkCase1KeyOpsItem =
 export const V1CreateProjectSigningKeyRequestPrivateJwkCase1KeyOpsItem =
   /*@__PURE__*/ S.String;
 
-export type V1CreateProjectSigningKeyRequestPrivateJwkCase1KeyOpsList =
-  ReadonlyArray<
-    V1CreateProjectSigningKeyRequestPrivateJwkCase1KeyOpsItem | (string & {})
-  >;
+export type V1CreateProjectSigningKeyRequestPrivateJwkCase1KeyOpsList = Array<
+  V1CreateProjectSigningKeyRequestPrivateJwkCase1KeyOpsItem | (string & {})
+>;
 export const V1CreateProjectSigningKeyRequestPrivateJwkCase1KeyOpsList =
   /*@__PURE__*/ S.Array(
     V1CreateProjectSigningKeyRequestPrivateJwkCase1KeyOpsItem,
@@ -1938,10 +1935,9 @@ export type V1CreateProjectSigningKeyRequestPrivateJwkCase2KeyOpsItem =
 export const V1CreateProjectSigningKeyRequestPrivateJwkCase2KeyOpsItem =
   /*@__PURE__*/ S.String;
 
-export type V1CreateProjectSigningKeyRequestPrivateJwkCase2KeyOpsList =
-  ReadonlyArray<
-    V1CreateProjectSigningKeyRequestPrivateJwkCase2KeyOpsItem | (string & {})
-  >;
+export type V1CreateProjectSigningKeyRequestPrivateJwkCase2KeyOpsList = Array<
+  V1CreateProjectSigningKeyRequestPrivateJwkCase2KeyOpsItem | (string & {})
+>;
 export const V1CreateProjectSigningKeyRequestPrivateJwkCase2KeyOpsList =
   /*@__PURE__*/ S.Array(
     V1CreateProjectSigningKeyRequestPrivateJwkCase2KeyOpsItem,
@@ -1999,10 +1995,9 @@ export type V1CreateProjectSigningKeyRequestPrivateJwkCase3KeyOpsItem =
 export const V1CreateProjectSigningKeyRequestPrivateJwkCase3KeyOpsItem =
   /*@__PURE__*/ S.String;
 
-export type V1CreateProjectSigningKeyRequestPrivateJwkCase3KeyOpsList =
-  ReadonlyArray<
-    V1CreateProjectSigningKeyRequestPrivateJwkCase3KeyOpsItem | (string & {})
-  >;
+export type V1CreateProjectSigningKeyRequestPrivateJwkCase3KeyOpsList = Array<
+  V1CreateProjectSigningKeyRequestPrivateJwkCase3KeyOpsItem | (string & {})
+>;
 export const V1CreateProjectSigningKeyRequestPrivateJwkCase3KeyOpsList =
   /*@__PURE__*/ S.Array(
     V1CreateProjectSigningKeyRequestPrivateJwkCase3KeyOpsItem,
@@ -2403,7 +2398,7 @@ export const V1DeleteASsoProviderRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<V1DeleteASsoProviderRequest>;
 
 export type DeleteProviderResponseSamlAttributeMappingKeysValueNamesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const DeleteProviderResponseSamlAttributeMappingKeysValueNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2504,7 +2499,7 @@ export const DeleteProviderResponseDomainsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteProviderResponseDomainsItem>;
 
 export type DeleteProviderResponseDomainsList =
-  ReadonlyArray<DeleteProviderResponseDomainsItem>;
+  Array<DeleteProviderResponseDomainsItem>;
 export const DeleteProviderResponseDomainsList = /*@__PURE__*/ S.Array(
   DeleteProviderResponseDomainsItem,
 ) as any as S.Schema<DeleteProviderResponseDomainsList>;
@@ -2644,7 +2639,7 @@ export const DeleteRolesResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteRolesResponse>;
 
 /** List of IP addresses to unban. */
-export type V1DeleteNetworkBansRequestIpv4AddressesList = ReadonlyArray<string>;
+export type V1DeleteNetworkBansRequestIpv4AddressesList = Array<string>;
 export const V1DeleteNetworkBansRequestIpv4AddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2757,13 +2752,12 @@ export const V1DeleteProjectTpaIntegrationRequest = /*@__PURE__*/ S.suspend(
   identifier: "V1DeleteProjectTpaIntegrationRequest",
 }) as any as S.Schema<V1DeleteProjectTpaIntegrationRequest>;
 
-export type V1DeployAFunctionRequestFileList = ReadonlyArray<string>;
+export type V1DeployAFunctionRequestFileList = Array<string>;
 export const V1DeployAFunctionRequestFileList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<V1DeployAFunctionRequestFileList>;
 
-export type V1DeployAFunctionRequestMetadataStaticPatternsList =
-  ReadonlyArray<string>;
+export type V1DeployAFunctionRequestMetadataStaticPatternsList = Array<string>;
 export const V1DeployAFunctionRequestMetadataStaticPatternsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3196,7 +3190,7 @@ export const ActionRunResponseRunStepsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ActionRunResponseRunStepsItem>;
 
 export type ActionRunResponseRunStepsList =
-  ReadonlyArray<ActionRunResponseRunStepsItem>;
+  Array<ActionRunResponseRunStepsItem>;
 export const ActionRunResponseRunStepsList = /*@__PURE__*/ S.Array(
   ActionRunResponseRunStepsItem,
 ) as any as S.Schema<ActionRunResponseRunStepsList>;
@@ -3489,7 +3483,7 @@ export const OrganizationProjectsResponseProjectsItemDatabasesItem =
   }) as any as S.Schema<OrganizationProjectsResponseProjectsItemDatabasesItem>;
 
 export type OrganizationProjectsResponseProjectsItemDatabasesList =
-  ReadonlyArray<OrganizationProjectsResponseProjectsItemDatabasesItem>;
+  Array<OrganizationProjectsResponseProjectsItemDatabasesItem>;
 export const OrganizationProjectsResponseProjectsItemDatabasesList =
   /*@__PURE__*/ S.Array(
     OrganizationProjectsResponseProjectsItemDatabasesItem,
@@ -3522,7 +3516,7 @@ export const OrganizationProjectsResponseProjectsItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<OrganizationProjectsResponseProjectsItem>;
 
 export type OrganizationProjectsResponseProjectsList =
-  ReadonlyArray<OrganizationProjectsResponseProjectsItem>;
+  Array<OrganizationProjectsResponseProjectsItem>;
 export const OrganizationProjectsResponseProjectsList = /*@__PURE__*/ S.Array(
   OrganizationProjectsResponseProjectsItem,
 ) as any as S.Schema<OrganizationProjectsResponseProjectsList>;
@@ -3579,12 +3573,12 @@ export const V1GetAMigrationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "V1GetAMigrationRequest",
 }) as any as S.Schema<V1GetAMigrationRequest>;
 
-export type V1GetMigrationResponseStatementsList = ReadonlyArray<string>;
+export type V1GetMigrationResponseStatementsList = Array<string>;
 export const V1GetMigrationResponseStatementsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<V1GetMigrationResponseStatementsList>;
 
-export type V1GetMigrationResponseRollbackList = ReadonlyArray<string>;
+export type V1GetMigrationResponseRollbackList = Array<string>;
 export const V1GetMigrationResponseRollbackList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<V1GetMigrationResponseRollbackList>;
@@ -3639,7 +3633,7 @@ export type V1OrganizationSlugResponseOptInTagsItem =
 export const V1OrganizationSlugResponseOptInTagsItem = /*@__PURE__*/ S.String;
 
 export type V1OrganizationSlugResponseOptInTagsList =
-  ReadonlyArray<V1OrganizationSlugResponseOptInTagsItem>;
+  Array<V1OrganizationSlugResponseOptInTagsItem>;
 export const V1OrganizationSlugResponseOptInTagsList = /*@__PURE__*/ S.Array(
   V1OrganizationSlugResponseOptInTagsItem,
 ) as any as S.Schema<V1OrganizationSlugResponseOptInTagsList>;
@@ -3655,7 +3649,7 @@ export const V1OrganizationSlugResponseAllowedReleaseChannelsItem =
   /*@__PURE__*/ S.String;
 
 export type V1OrganizationSlugResponseAllowedReleaseChannelsList =
-  ReadonlyArray<V1OrganizationSlugResponseAllowedReleaseChannelsItem>;
+  Array<V1OrganizationSlugResponseAllowedReleaseChannelsItem>;
 export const V1OrganizationSlugResponseAllowedReleaseChannelsList =
   /*@__PURE__*/ S.Array(
     V1OrganizationSlugResponseAllowedReleaseChannelsItem,
@@ -3807,7 +3801,7 @@ export const V1GetASsoProviderRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<V1GetASsoProviderRequest>;
 
 export type GetProviderResponseSamlAttributeMappingKeysValueNamesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GetProviderResponseSamlAttributeMappingKeysValueNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3906,7 +3900,7 @@ export const GetProviderResponseDomainsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetProviderResponseDomainsItem>;
 
 export type GetProviderResponseDomainsList =
-  ReadonlyArray<GetProviderResponseDomainsItem>;
+  Array<GetProviderResponseDomainsItem>;
 export const GetProviderResponseDomainsList = /*@__PURE__*/ S.Array(
   GetProviderResponseDomainsItem,
 ) as any as S.Schema<GetProviderResponseDomainsList>;
@@ -4612,7 +4606,7 @@ export const RegionsInfoRecommendationsSpecificItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<RegionsInfoRecommendationsSpecificItem>;
 
 export type RegionsInfoRecommendationsSpecificList =
-  ReadonlyArray<RegionsInfoRecommendationsSpecificItem>;
+  Array<RegionsInfoRecommendationsSpecificItem>;
 export const RegionsInfoRecommendationsSpecificList = /*@__PURE__*/ S.Array(
   RegionsInfoRecommendationsSpecificItem,
 ) as any as S.Schema<RegionsInfoRecommendationsSpecificList>;
@@ -4651,8 +4645,7 @@ export const RegionsInfoAllSmartGroupItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "RegionsInfoAllSmartGroupItem",
 }) as any as S.Schema<RegionsInfoAllSmartGroupItem>;
 
-export type RegionsInfoAllSmartGroupList =
-  ReadonlyArray<RegionsInfoAllSmartGroupItem>;
+export type RegionsInfoAllSmartGroupList = Array<RegionsInfoAllSmartGroupItem>;
 export const RegionsInfoAllSmartGroupList = /*@__PURE__*/ S.Array(
   RegionsInfoAllSmartGroupItem,
 ) as any as S.Schema<RegionsInfoAllSmartGroupList>;
@@ -4710,8 +4703,7 @@ export const RegionsInfoAllSpecificItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "RegionsInfoAllSpecificItem",
 }) as any as S.Schema<RegionsInfoAllSpecificItem>;
 
-export type RegionsInfoAllSpecificList =
-  ReadonlyArray<RegionsInfoAllSpecificItem>;
+export type RegionsInfoAllSpecificList = Array<RegionsInfoAllSpecificItem>;
 export const RegionsInfoAllSpecificList = /*@__PURE__*/ S.Array(
   RegionsInfoAllSpecificItem,
 ) as any as S.Schema<RegionsInfoAllSpecificList>;
@@ -5077,15 +5069,14 @@ export const V1GetNetworkRestrictionsRequest = /*@__PURE__*/ S.suspend(() =>
 export type NetworkRestrictionsResponseEntitlement = "disallowed" | "allowed";
 export const NetworkRestrictionsResponseEntitlement = /*@__PURE__*/ S.String;
 
-export type NetworkRestrictionsResponseConfigDbAllowedCidrsList =
-  ReadonlyArray<string>;
+export type NetworkRestrictionsResponseConfigDbAllowedCidrsList = Array<string>;
 export const NetworkRestrictionsResponseConfigDbAllowedCidrsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<NetworkRestrictionsResponseConfigDbAllowedCidrsList>;
 
 export type NetworkRestrictionsResponseConfigDbAllowedCidrsV6List =
-  ReadonlyArray<string>;
+  Array<string>;
 export const NetworkRestrictionsResponseConfigDbAllowedCidrsV6List =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5110,14 +5101,14 @@ export const NetworkRestrictionsResponseConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NetworkRestrictionsResponseConfig>;
 
 export type NetworkRestrictionsResponseOldConfigDbAllowedCidrsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const NetworkRestrictionsResponseOldConfigDbAllowedCidrsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<NetworkRestrictionsResponseOldConfigDbAllowedCidrsList>;
 
 export type NetworkRestrictionsResponseOldConfigDbAllowedCidrsV6List =
-  ReadonlyArray<string>;
+  Array<string>;
 export const NetworkRestrictionsResponseOldConfigDbAllowedCidrsV6List =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5313,7 +5304,7 @@ export const V1ListEntitlementsResponseEntitlementsItemConfigCase1 =
   }) as any as S.Schema<V1ListEntitlementsResponseEntitlementsItemConfigCase1>;
 
 export type V1ListEntitlementsResponseEntitlementsItemConfigCase2SetList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const V1ListEntitlementsResponseEntitlementsItemConfigCase2SetList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5374,7 +5365,7 @@ export const V1ListEntitlementsResponseEntitlementsItem =
   }) as any as S.Schema<V1ListEntitlementsResponseEntitlementsItem>;
 
 export type V1ListEntitlementsResponseEntitlementsList =
-  ReadonlyArray<V1ListEntitlementsResponseEntitlementsItem>;
+  Array<V1ListEntitlementsResponseEntitlementsItem>;
 export const V1ListEntitlementsResponseEntitlementsList = /*@__PURE__*/ S.Array(
   V1ListEntitlementsResponseEntitlementsItem,
 ) as any as S.Schema<V1ListEntitlementsResponseEntitlementsList>;
@@ -5440,7 +5431,7 @@ export const OrganizationProjectClaimResponsePreviewWarningsItem =
   }) as any as S.Schema<OrganizationProjectClaimResponsePreviewWarningsItem>;
 
 export type OrganizationProjectClaimResponsePreviewWarningsList =
-  ReadonlyArray<OrganizationProjectClaimResponsePreviewWarningsItem>;
+  Array<OrganizationProjectClaimResponsePreviewWarningsItem>;
 export const OrganizationProjectClaimResponsePreviewWarningsList =
   /*@__PURE__*/ S.Array(
     OrganizationProjectClaimResponsePreviewWarningsItem,
@@ -5461,7 +5452,7 @@ export const OrganizationProjectClaimResponsePreviewErrorsItem =
   }) as any as S.Schema<OrganizationProjectClaimResponsePreviewErrorsItem>;
 
 export type OrganizationProjectClaimResponsePreviewErrorsList =
-  ReadonlyArray<OrganizationProjectClaimResponsePreviewErrorsItem>;
+  Array<OrganizationProjectClaimResponsePreviewErrorsItem>;
 export const OrganizationProjectClaimResponsePreviewErrorsList =
   /*@__PURE__*/ S.Array(
     OrganizationProjectClaimResponsePreviewErrorsItem,
@@ -5482,7 +5473,7 @@ export const OrganizationProjectClaimResponsePreviewInfoItem =
   }) as any as S.Schema<OrganizationProjectClaimResponsePreviewInfoItem>;
 
 export type OrganizationProjectClaimResponsePreviewInfoList =
-  ReadonlyArray<OrganizationProjectClaimResponsePreviewInfoItem>;
+  Array<OrganizationProjectClaimResponsePreviewInfoItem>;
 export const OrganizationProjectClaimResponsePreviewInfoList =
   /*@__PURE__*/ S.Array(
     OrganizationProjectClaimResponsePreviewInfoItem,
@@ -5504,7 +5495,7 @@ export const OrganizationProjectClaimResponsePreviewMembersExceedingFreeProjectL
   }) as any as S.Schema<OrganizationProjectClaimResponsePreviewMembersExceedingFreeProjectLimitItem>;
 
 export type OrganizationProjectClaimResponsePreviewMembersExceedingFreeProjectLimitList =
-  ReadonlyArray<OrganizationProjectClaimResponsePreviewMembersExceedingFreeProjectLimitItem>;
+  Array<OrganizationProjectClaimResponsePreviewMembersExceedingFreeProjectLimitItem>;
 export const OrganizationProjectClaimResponsePreviewMembersExceedingFreeProjectLimitList =
   /*@__PURE__*/ S.Array(
     OrganizationProjectClaimResponsePreviewMembersExceedingFreeProjectLimitItem,
@@ -5659,8 +5650,7 @@ export const SupavisorConfigResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "SupavisorConfigResponse",
 }) as any as S.Schema<SupavisorConfigResponse>;
 
-export type V1GetPoolerConfigResponseBodyList =
-  ReadonlyArray<SupavisorConfigResponse>;
+export type V1GetPoolerConfigResponseBodyList = Array<SupavisorConfigResponse>;
 export const V1GetPoolerConfigResponseBodyList = /*@__PURE__*/ S.Array(
   SupavisorConfigResponse,
 ) as any as S.Schema<V1GetPoolerConfigResponseBodyList>;
@@ -5887,14 +5877,14 @@ export const ProjectUpgradeEligibilityResponseTargetUpgradeVersionsItem =
   }) as any as S.Schema<ProjectUpgradeEligibilityResponseTargetUpgradeVersionsItem>;
 
 export type ProjectUpgradeEligibilityResponseTargetUpgradeVersionsList =
-  ReadonlyArray<ProjectUpgradeEligibilityResponseTargetUpgradeVersionsItem>;
+  Array<ProjectUpgradeEligibilityResponseTargetUpgradeVersionsItem>;
 export const ProjectUpgradeEligibilityResponseTargetUpgradeVersionsList =
   /*@__PURE__*/ S.Array(
     ProjectUpgradeEligibilityResponseTargetUpgradeVersionsItem,
   ) as any as S.Schema<ProjectUpgradeEligibilityResponseTargetUpgradeVersionsList>;
 
 export type ProjectUpgradeEligibilityResponseLegacyAuthCustomRolesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ProjectUpgradeEligibilityResponseLegacyAuthCustomRolesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5902,7 +5892,7 @@ export const ProjectUpgradeEligibilityResponseLegacyAuthCustomRolesList =
 
 /** Use validation_errors instead. */
 export type ProjectUpgradeEligibilityResponseObjectsToBeDroppedList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ProjectUpgradeEligibilityResponseObjectsToBeDroppedList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5910,7 +5900,7 @@ export const ProjectUpgradeEligibilityResponseObjectsToBeDroppedList =
 
 /** Use validation_errors instead. */
 export type ProjectUpgradeEligibilityResponseUnsupportedExtensionsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ProjectUpgradeEligibilityResponseUnsupportedExtensionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5918,7 +5908,7 @@ export const ProjectUpgradeEligibilityResponseUnsupportedExtensionsList =
 
 /** Use validation_errors instead. */
 export type ProjectUpgradeEligibilityResponseUserDefinedObjectsInInternalSchemasList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ProjectUpgradeEligibilityResponseUserDefinedObjectsInInternalSchemasList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5930,7 +5920,7 @@ export const ProjectUpgradeEligibilityResponseValidationErrorsItemCase0Type =
   /*@__PURE__*/ S.String;
 
 export type ProjectUpgradeEligibilityResponseValidationErrorsItemCase0DependentsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ProjectUpgradeEligibilityResponseValidationErrorsItemCase0DependentsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6207,7 +6197,7 @@ export const ProjectUpgradeEligibilityResponseValidationErrorsItem =
   }) as any as S.Schema<ProjectUpgradeEligibilityResponseValidationErrorsItem>;
 
 export type ProjectUpgradeEligibilityResponseValidationErrorsList =
-  ReadonlyArray<ProjectUpgradeEligibilityResponseValidationErrorsItem>;
+  Array<ProjectUpgradeEligibilityResponseValidationErrorsItem>;
 export const ProjectUpgradeEligibilityResponseValidationErrorsList =
   /*@__PURE__*/ S.Array(
     ProjectUpgradeEligibilityResponseValidationErrorsItem,
@@ -6284,7 +6274,7 @@ export const ProjectUpgradeEligibilityResponseWarningsItem =
   }) as any as S.Schema<ProjectUpgradeEligibilityResponseWarningsItem>;
 
 export type ProjectUpgradeEligibilityResponseWarningsList =
-  ReadonlyArray<ProjectUpgradeEligibilityResponseWarningsItem>;
+  Array<ProjectUpgradeEligibilityResponseWarningsItem>;
 export const ProjectUpgradeEligibilityResponseWarningsList =
   /*@__PURE__*/ S.Array(
     ProjectUpgradeEligibilityResponseWarningsItem,
@@ -6567,7 +6557,7 @@ export const V1GetProjectApiKeysRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "V1GetProjectApiKeysRequest",
 }) as any as S.Schema<V1GetProjectApiKeysRequest>;
 
-export type V1GetProjectApiKeysResponseBodyList = ReadonlyArray<ApiKeyResponse>;
+export type V1GetProjectApiKeysResponseBodyList = Array<ApiKeyResponse>;
 export const V1GetProjectApiKeysResponseBodyList = /*@__PURE__*/ S.Array(
   ApiKeyResponse,
 ) as any as S.Schema<V1GetProjectApiKeysResponseBodyList>;
@@ -6680,7 +6670,7 @@ export const V1GetProjectFunctionCombinedStatsRequest = /*@__PURE__*/ S.suspend(
   identifier: "V1GetProjectFunctionCombinedStatsRequest",
 }) as any as S.Schema<V1GetProjectFunctionCombinedStatsRequest>;
 
-export type AnalyticsResponseResultList = ReadonlyArray<unknown>;
+export type AnalyticsResponseResultList = Array<unknown>;
 export const AnalyticsResponseResultList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<AnalyticsResponseResultList>;
@@ -6706,7 +6696,7 @@ export const AnalyticsResponseErrorCase1ErrorsItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<AnalyticsResponseErrorCase1ErrorsItem>;
 
 export type AnalyticsResponseErrorCase1ErrorsList =
-  ReadonlyArray<AnalyticsResponseErrorCase1ErrorsItem>;
+  Array<AnalyticsResponseErrorCase1ErrorsItem>;
 export const AnalyticsResponseErrorCase1ErrorsList = /*@__PURE__*/ S.Array(
   AnalyticsResponseErrorCase1ErrorsItem,
 ) as any as S.Schema<AnalyticsResponseErrorCase1ErrorsList>;
@@ -6924,8 +6914,7 @@ export const SigningKeysResponseKeysItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "SigningKeysResponseKeysItem",
 }) as any as S.Schema<SigningKeysResponseKeysItem>;
 
-export type SigningKeysResponseKeysList =
-  ReadonlyArray<SigningKeysResponseKeysItem>;
+export type SigningKeysResponseKeysList = Array<SigningKeysResponseKeysItem>;
 export const SigningKeysResponseKeysList = /*@__PURE__*/ S.Array(
   SigningKeysResponseKeysItem,
 ) as any as S.Schema<SigningKeysResponseKeysList>;
@@ -7014,7 +7003,7 @@ export const V1GetUsageApiCountResponseResultItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<V1GetUsageApiCountResponseResultItem>;
 
 export type V1GetUsageApiCountResponseResultList =
-  ReadonlyArray<V1GetUsageApiCountResponseResultItem>;
+  Array<V1GetUsageApiCountResponseResultItem>;
 export const V1GetUsageApiCountResponseResultList = /*@__PURE__*/ S.Array(
   V1GetUsageApiCountResponseResultItem,
 ) as any as S.Schema<V1GetUsageApiCountResponseResultList>;
@@ -7040,7 +7029,7 @@ export const V1GetUsageApiCountResponseErrorCase1ErrorsItem =
   }) as any as S.Schema<V1GetUsageApiCountResponseErrorCase1ErrorsItem>;
 
 export type V1GetUsageApiCountResponseErrorCase1ErrorsList =
-  ReadonlyArray<V1GetUsageApiCountResponseErrorCase1ErrorsItem>;
+  Array<V1GetUsageApiCountResponseErrorCase1ErrorsItem>;
 export const V1GetUsageApiCountResponseErrorCase1ErrorsList =
   /*@__PURE__*/ S.Array(
     V1GetUsageApiCountResponseErrorCase1ErrorsItem,
@@ -7116,7 +7105,7 @@ export const V1GetUsageApiRequestsCountResponseResultItem =
   }) as any as S.Schema<V1GetUsageApiRequestsCountResponseResultItem>;
 
 export type V1GetUsageApiRequestsCountResponseResultList =
-  ReadonlyArray<V1GetUsageApiRequestsCountResponseResultItem>;
+  Array<V1GetUsageApiRequestsCountResponseResultItem>;
 export const V1GetUsageApiRequestsCountResponseResultList =
   /*@__PURE__*/ S.Array(
     V1GetUsageApiRequestsCountResponseResultItem,
@@ -7143,7 +7132,7 @@ export const V1GetUsageApiRequestsCountResponseErrorCase1ErrorsItem =
   }) as any as S.Schema<V1GetUsageApiRequestsCountResponseErrorCase1ErrorsItem>;
 
 export type V1GetUsageApiRequestsCountResponseErrorCase1ErrorsList =
-  ReadonlyArray<V1GetUsageApiRequestsCountResponseErrorCase1ErrorsItem>;
+  Array<V1GetUsageApiRequestsCountResponseErrorCase1ErrorsItem>;
 export const V1GetUsageApiRequestsCountResponseErrorCase1ErrorsList =
   /*@__PURE__*/ S.Array(
     V1GetUsageApiRequestsCountResponseErrorCase1ErrorsItem,
@@ -7308,7 +7297,7 @@ export type V1GetServicesHealthRequestServicesItem =
   | "pg_bouncer";
 export const V1GetServicesHealthRequestServicesItem = /*@__PURE__*/ S.String;
 
-export type V1GetServicesHealthRequestServicesList = ReadonlyArray<
+export type V1GetServicesHealthRequestServicesList = Array<
   V1GetServicesHealthRequestServicesItem | (string & {})
 >;
 export const V1GetServicesHealthRequestServicesList = /*@__PURE__*/ S.Array(
@@ -7444,7 +7433,7 @@ export const V1ServiceHealthResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<V1ServiceHealthResponse>;
 
 export type V1GetServicesHealthResponseBodyList =
-  ReadonlyArray<V1ServiceHealthResponse>;
+  Array<V1ServiceHealthResponse>;
 export const V1GetServicesHealthResponseBodyList = /*@__PURE__*/ S.Array(
   V1ServiceHealthResponse,
 ) as any as S.Schema<V1GetServicesHealthResponseBodyList>;
@@ -7705,7 +7694,7 @@ export const V1InviteExternalJitAccessRequestRolesItemAllowedNetworksAllowedCidr
   }) as any as S.Schema<V1InviteExternalJitAccessRequestRolesItemAllowedNetworksAllowedCidrsItem>;
 
 export type V1InviteExternalJitAccessRequestRolesItemAllowedNetworksAllowedCidrsList =
-  ReadonlyArray<V1InviteExternalJitAccessRequestRolesItemAllowedNetworksAllowedCidrsItem>;
+  Array<V1InviteExternalJitAccessRequestRolesItemAllowedNetworksAllowedCidrsItem>;
 export const V1InviteExternalJitAccessRequestRolesItemAllowedNetworksAllowedCidrsList =
   /*@__PURE__*/ S.Array(
     V1InviteExternalJitAccessRequestRolesItemAllowedNetworksAllowedCidrsItem,
@@ -7725,7 +7714,7 @@ export const V1InviteExternalJitAccessRequestRolesItemAllowedNetworksAllowedCidr
   }) as any as S.Schema<V1InviteExternalJitAccessRequestRolesItemAllowedNetworksAllowedCidrsV6Item>;
 
 export type V1InviteExternalJitAccessRequestRolesItemAllowedNetworksAllowedCidrsV6List =
-  ReadonlyArray<V1InviteExternalJitAccessRequestRolesItemAllowedNetworksAllowedCidrsV6Item>;
+  Array<V1InviteExternalJitAccessRequestRolesItemAllowedNetworksAllowedCidrsV6Item>;
 export const V1InviteExternalJitAccessRequestRolesItemAllowedNetworksAllowedCidrsV6List =
   /*@__PURE__*/ S.Array(
     V1InviteExternalJitAccessRequestRolesItemAllowedNetworksAllowedCidrsV6Item,
@@ -7770,7 +7759,7 @@ export const V1InviteExternalJitAccessRequestRolesItem =
   }) as any as S.Schema<V1InviteExternalJitAccessRequestRolesItem>;
 
 export type V1InviteExternalJitAccessRequestRolesList =
-  ReadonlyArray<V1InviteExternalJitAccessRequestRolesItem>;
+  Array<V1InviteExternalJitAccessRequestRolesItem>;
 export const V1InviteExternalJitAccessRequestRolesList = /*@__PURE__*/ S.Array(
   V1InviteExternalJitAccessRequestRolesItem,
 ) as any as S.Schema<V1InviteExternalJitAccessRequestRolesList>;
@@ -7811,7 +7800,7 @@ export const InviteExternalUserJitResponseUserRolesItemAllowedNetworksAllowedCid
   }) as any as S.Schema<InviteExternalUserJitResponseUserRolesItemAllowedNetworksAllowedCidrsItem>;
 
 export type InviteExternalUserJitResponseUserRolesItemAllowedNetworksAllowedCidrsList =
-  ReadonlyArray<InviteExternalUserJitResponseUserRolesItemAllowedNetworksAllowedCidrsItem>;
+  Array<InviteExternalUserJitResponseUserRolesItemAllowedNetworksAllowedCidrsItem>;
 export const InviteExternalUserJitResponseUserRolesItemAllowedNetworksAllowedCidrsList =
   /*@__PURE__*/ S.Array(
     InviteExternalUserJitResponseUserRolesItemAllowedNetworksAllowedCidrsItem,
@@ -7831,7 +7820,7 @@ export const InviteExternalUserJitResponseUserRolesItemAllowedNetworksAllowedCid
   }) as any as S.Schema<InviteExternalUserJitResponseUserRolesItemAllowedNetworksAllowedCidrsV6Item>;
 
 export type InviteExternalUserJitResponseUserRolesItemAllowedNetworksAllowedCidrsV6List =
-  ReadonlyArray<InviteExternalUserJitResponseUserRolesItemAllowedNetworksAllowedCidrsV6Item>;
+  Array<InviteExternalUserJitResponseUserRolesItemAllowedNetworksAllowedCidrsV6Item>;
 export const InviteExternalUserJitResponseUserRolesItemAllowedNetworksAllowedCidrsV6List =
   /*@__PURE__*/ S.Array(
     InviteExternalUserJitResponseUserRolesItemAllowedNetworksAllowedCidrsV6Item,
@@ -7876,7 +7865,7 @@ export const InviteExternalUserJitResponseUserRolesItem =
   }) as any as S.Schema<InviteExternalUserJitResponseUserRolesItem>;
 
 export type InviteExternalUserJitResponseUserRolesList =
-  ReadonlyArray<InviteExternalUserJitResponseUserRolesItem>;
+  Array<InviteExternalUserJitResponseUserRolesItem>;
 export const InviteExternalUserJitResponseUserRolesList = /*@__PURE__*/ S.Array(
   InviteExternalUserJitResponseUserRolesItem,
 ) as any as S.Schema<InviteExternalUserJitResponseUserRolesList>;
@@ -7954,7 +7943,7 @@ export const ListActionRunResponseItemRunStepsItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListActionRunResponseItemRunStepsItem>;
 
 export type ListActionRunResponseItemRunStepsList =
-  ReadonlyArray<ListActionRunResponseItemRunStepsItem>;
+  Array<ListActionRunResponseItemRunStepsItem>;
 export const ListActionRunResponseItemRunStepsList = /*@__PURE__*/ S.Array(
   ListActionRunResponseItemRunStepsItem,
 ) as any as S.Schema<ListActionRunResponseItemRunStepsList>;
@@ -7984,7 +7973,7 @@ export const ListActionRunResponseItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListActionRunResponseItem",
 }) as any as S.Schema<ListActionRunResponseItem>;
 
-export type ListActionRunResponse = ReadonlyArray<ListActionRunResponseItem>;
+export type ListActionRunResponse = Array<ListActionRunResponseItem>;
 export const ListActionRunResponse = /*@__PURE__*/ S.Array(
   ListActionRunResponseItem,
 ) as any as S.Schema<ListActionRunResponse>;
@@ -8040,8 +8029,7 @@ export const V1BackupsResponseBackupsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "V1BackupsResponseBackupsItem",
 }) as any as S.Schema<V1BackupsResponseBackupsItem>;
 
-export type V1BackupsResponseBackupsList =
-  ReadonlyArray<V1BackupsResponseBackupsItem>;
+export type V1BackupsResponseBackupsList = Array<V1BackupsResponseBackupsItem>;
 export const V1BackupsResponseBackupsList = /*@__PURE__*/ S.Array(
   V1BackupsResponseBackupsItem,
 ) as any as S.Schema<V1BackupsResponseBackupsList>;
@@ -8092,7 +8080,7 @@ export const V1ListAllBranchesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "V1ListAllBranchesRequest",
 }) as any as S.Schema<V1ListAllBranchesRequest>;
 
-export type V1ListAllBranchesResponseBodyList = ReadonlyArray<BranchResponse>;
+export type V1ListAllBranchesResponseBodyList = Array<BranchResponse>;
 export const V1ListAllBranchesResponseBodyList = /*@__PURE__*/ S.Array(
   BranchResponse,
 ) as any as S.Schema<V1ListAllBranchesResponseBodyList>;
@@ -8143,8 +8131,7 @@ export const V1StorageBucketResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "V1StorageBucketResponse",
 }) as any as S.Schema<V1StorageBucketResponse>;
 
-export type V1ListAllBucketsResponseBodyList =
-  ReadonlyArray<V1StorageBucketResponse>;
+export type V1ListAllBucketsResponseBodyList = Array<V1StorageBucketResponse>;
 export const V1ListAllBucketsResponseBodyList = /*@__PURE__*/ S.Array(
   V1StorageBucketResponse,
 ) as any as S.Schema<V1ListAllBucketsResponseBodyList>;
@@ -8206,8 +8193,7 @@ export const FunctionResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "FunctionResponse",
 }) as any as S.Schema<FunctionResponse>;
 
-export type V1ListAllFunctionsResponseBodyList =
-  ReadonlyArray<FunctionResponse>;
+export type V1ListAllFunctionsResponseBodyList = Array<FunctionResponse>;
 export const V1ListAllFunctionsResponseBodyList = /*@__PURE__*/ S.Array(
   FunctionResponse,
 ) as any as S.Schema<V1ListAllFunctionsResponseBodyList>;
@@ -8237,7 +8223,7 @@ export const V1ListAllNetworkBansRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "V1ListAllNetworkBansRequest",
 }) as any as S.Schema<V1ListAllNetworkBansRequest>;
 
-export type NetworkBanResponseBannedIpv4AddressesList = ReadonlyArray<string>;
+export type NetworkBanResponseBannedIpv4AddressesList = Array<string>;
 export const NetworkBanResponseBannedIpv4AddressesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<NetworkBanResponseBannedIpv4AddressesList>;
@@ -8288,7 +8274,7 @@ export const NetworkBanResponseEnrichedBannedIpv4AddressesItem =
   }) as any as S.Schema<NetworkBanResponseEnrichedBannedIpv4AddressesItem>;
 
 export type NetworkBanResponseEnrichedBannedIpv4AddressesList =
-  ReadonlyArray<NetworkBanResponseEnrichedBannedIpv4AddressesItem>;
+  Array<NetworkBanResponseEnrichedBannedIpv4AddressesItem>;
 export const NetworkBanResponseEnrichedBannedIpv4AddressesList =
   /*@__PURE__*/ S.Array(
     NetworkBanResponseEnrichedBannedIpv4AddressesItem,
@@ -8315,7 +8301,7 @@ export const V1ListAllOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<V1ListAllOrganizationsRequest>;
 
 export type V1ListAllOrganizationsResponseBodyList =
-  ReadonlyArray<OrganizationResponseV1>;
+  Array<OrganizationResponseV1>;
 export const V1ListAllOrganizationsResponseBodyList = /*@__PURE__*/ S.Array(
   OrganizationResponseV1,
 ) as any as S.Schema<V1ListAllOrganizationsResponseBodyList>;
@@ -8336,7 +8322,7 @@ export const V1ListAllProjectsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<V1ListAllProjectsRequest>;
 
 export type V1ListAllProjectsResponseBodyList =
-  ReadonlyArray<V1ProjectWithDatabaseResponse>;
+  Array<V1ProjectWithDatabaseResponse>;
 export const V1ListAllProjectsResponseBodyList = /*@__PURE__*/ S.Array(
   V1ProjectWithDatabaseResponse,
 ) as any as S.Schema<V1ListAllProjectsResponseBodyList>;
@@ -8375,7 +8361,7 @@ export const SecretResponse = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SecretResponse" }) as any as S.Schema<SecretResponse>;
 
-export type V1ListAllSecretsResponseBodyList = ReadonlyArray<SecretResponse>;
+export type V1ListAllSecretsResponseBodyList = Array<SecretResponse>;
 export const V1ListAllSecretsResponseBodyList = /*@__PURE__*/ S.Array(
   SecretResponse,
 ) as any as S.Schema<V1ListAllSecretsResponseBodyList>;
@@ -8493,7 +8479,7 @@ export const SnippetListDataItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "SnippetListDataItem",
 }) as any as S.Schema<SnippetListDataItem>;
 
-export type SnippetListDataList = ReadonlyArray<SnippetListDataItem>;
+export type SnippetListDataList = Array<SnippetListDataItem>;
 export const SnippetListDataList = /*@__PURE__*/ S.Array(
   SnippetListDataItem,
 ) as any as S.Schema<SnippetListDataList>;
@@ -8528,7 +8514,7 @@ export const V1ListAllSsoProviderRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<V1ListAllSsoProviderRequest>;
 
 export type ListProvidersResponseItemsItemSamlAttributeMappingKeysValueNamesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ListProvidersResponseItemsItemSamlAttributeMappingKeysValueNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -8630,7 +8616,7 @@ export const ListProvidersResponseItemsItemDomainsItem =
   }) as any as S.Schema<ListProvidersResponseItemsItemDomainsItem>;
 
 export type ListProvidersResponseItemsItemDomainsList =
-  ReadonlyArray<ListProvidersResponseItemsItemDomainsItem>;
+  Array<ListProvidersResponseItemsItemDomainsItem>;
 export const ListProvidersResponseItemsItemDomainsList = /*@__PURE__*/ S.Array(
   ListProvidersResponseItemsItemDomainsItem,
 ) as any as S.Schema<ListProvidersResponseItemsItemDomainsList>;
@@ -8655,7 +8641,7 @@ export const ListProvidersResponseItemsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProvidersResponseItemsItem>;
 
 export type ListProvidersResponseItemsList =
-  ReadonlyArray<ListProvidersResponseItemsItem>;
+  Array<ListProvidersResponseItemsItem>;
 export const ListProvidersResponseItemsList = /*@__PURE__*/ S.Array(
   ListProvidersResponseItemsItem,
 ) as any as S.Schema<ListProvidersResponseItemsList>;
@@ -8716,7 +8702,7 @@ export const GetProjectAvailableRestoreVersionsResponseAvailableVersionsItem =
   }) as any as S.Schema<GetProjectAvailableRestoreVersionsResponseAvailableVersionsItem>;
 
 export type GetProjectAvailableRestoreVersionsResponseAvailableVersionsList =
-  ReadonlyArray<GetProjectAvailableRestoreVersionsResponseAvailableVersionsItem>;
+  Array<GetProjectAvailableRestoreVersionsResponseAvailableVersionsItem>;
 export const GetProjectAvailableRestoreVersionsResponseAvailableVersionsList =
   /*@__PURE__*/ S.Array(
     GetProjectAvailableRestoreVersionsResponseAvailableVersionsItem,
@@ -8767,7 +8753,7 @@ export const JitListAccessResponseItemsItemCase0UserRolesItemAllowedNetworksAllo
   }) as any as S.Schema<JitListAccessResponseItemsItemCase0UserRolesItemAllowedNetworksAllowedCidrsItem>;
 
 export type JitListAccessResponseItemsItemCase0UserRolesItemAllowedNetworksAllowedCidrsList =
-  ReadonlyArray<JitListAccessResponseItemsItemCase0UserRolesItemAllowedNetworksAllowedCidrsItem>;
+  Array<JitListAccessResponseItemsItemCase0UserRolesItemAllowedNetworksAllowedCidrsItem>;
 export const JitListAccessResponseItemsItemCase0UserRolesItemAllowedNetworksAllowedCidrsList =
   /*@__PURE__*/ S.Array(
     JitListAccessResponseItemsItemCase0UserRolesItemAllowedNetworksAllowedCidrsItem,
@@ -8787,7 +8773,7 @@ export const JitListAccessResponseItemsItemCase0UserRolesItemAllowedNetworksAllo
   }) as any as S.Schema<JitListAccessResponseItemsItemCase0UserRolesItemAllowedNetworksAllowedCidrsV6Item>;
 
 export type JitListAccessResponseItemsItemCase0UserRolesItemAllowedNetworksAllowedCidrsV6List =
-  ReadonlyArray<JitListAccessResponseItemsItemCase0UserRolesItemAllowedNetworksAllowedCidrsV6Item>;
+  Array<JitListAccessResponseItemsItemCase0UserRolesItemAllowedNetworksAllowedCidrsV6Item>;
 export const JitListAccessResponseItemsItemCase0UserRolesItemAllowedNetworksAllowedCidrsV6List =
   /*@__PURE__*/ S.Array(
     JitListAccessResponseItemsItemCase0UserRolesItemAllowedNetworksAllowedCidrsV6Item,
@@ -8833,7 +8819,7 @@ export const JitListAccessResponseItemsItemCase0UserRolesItem =
   }) as any as S.Schema<JitListAccessResponseItemsItemCase0UserRolesItem>;
 
 export type JitListAccessResponseItemsItemCase0UserRolesList =
-  ReadonlyArray<JitListAccessResponseItemsItemCase0UserRolesItem>;
+  Array<JitListAccessResponseItemsItemCase0UserRolesItem>;
 export const JitListAccessResponseItemsItemCase0UserRolesList =
   /*@__PURE__*/ S.Array(
     JitListAccessResponseItemsItemCase0UserRolesItem,
@@ -8872,7 +8858,7 @@ export const JitListAccessResponseItemsItemCase1UserRolesItemAllowedNetworksAllo
   }) as any as S.Schema<JitListAccessResponseItemsItemCase1UserRolesItemAllowedNetworksAllowedCidrsItem>;
 
 export type JitListAccessResponseItemsItemCase1UserRolesItemAllowedNetworksAllowedCidrsList =
-  ReadonlyArray<JitListAccessResponseItemsItemCase1UserRolesItemAllowedNetworksAllowedCidrsItem>;
+  Array<JitListAccessResponseItemsItemCase1UserRolesItemAllowedNetworksAllowedCidrsItem>;
 export const JitListAccessResponseItemsItemCase1UserRolesItemAllowedNetworksAllowedCidrsList =
   /*@__PURE__*/ S.Array(
     JitListAccessResponseItemsItemCase1UserRolesItemAllowedNetworksAllowedCidrsItem,
@@ -8892,7 +8878,7 @@ export const JitListAccessResponseItemsItemCase1UserRolesItemAllowedNetworksAllo
   }) as any as S.Schema<JitListAccessResponseItemsItemCase1UserRolesItemAllowedNetworksAllowedCidrsV6Item>;
 
 export type JitListAccessResponseItemsItemCase1UserRolesItemAllowedNetworksAllowedCidrsV6List =
-  ReadonlyArray<JitListAccessResponseItemsItemCase1UserRolesItemAllowedNetworksAllowedCidrsV6Item>;
+  Array<JitListAccessResponseItemsItemCase1UserRolesItemAllowedNetworksAllowedCidrsV6Item>;
 export const JitListAccessResponseItemsItemCase1UserRolesItemAllowedNetworksAllowedCidrsV6List =
   /*@__PURE__*/ S.Array(
     JitListAccessResponseItemsItemCase1UserRolesItemAllowedNetworksAllowedCidrsV6Item,
@@ -8938,7 +8924,7 @@ export const JitListAccessResponseItemsItemCase1UserRolesItem =
   }) as any as S.Schema<JitListAccessResponseItemsItemCase1UserRolesItem>;
 
 export type JitListAccessResponseItemsItemCase1UserRolesList =
-  ReadonlyArray<JitListAccessResponseItemsItemCase1UserRolesItem>;
+  Array<JitListAccessResponseItemsItemCase1UserRolesItem>;
 export const JitListAccessResponseItemsItemCase1UserRolesList =
   /*@__PURE__*/ S.Array(
     JitListAccessResponseItemsItemCase1UserRolesItem,
@@ -8988,7 +8974,7 @@ export const JitListAccessResponseItemsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<JitListAccessResponseItemsItem>;
 
 export type JitListAccessResponseItemsList =
-  ReadonlyArray<JitListAccessResponseItemsItem>;
+  Array<JitListAccessResponseItemsItem>;
 export const JitListAccessResponseItemsList = /*@__PURE__*/ S.Array(
   JitListAccessResponseItemsItem,
 ) as any as S.Schema<JitListAccessResponseItemsList>;
@@ -9035,8 +9021,7 @@ export const V1ListMigrationsResponseItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "V1ListMigrationsResponseItem",
 }) as any as S.Schema<V1ListMigrationsResponseItem>;
 
-export type V1ListMigrationsResponse =
-  ReadonlyArray<V1ListMigrationsResponseItem>;
+export type V1ListMigrationsResponse = Array<V1ListMigrationsResponseItem>;
 export const V1ListMigrationsResponse = /*@__PURE__*/ S.Array(
   V1ListMigrationsResponseItem,
 ) as any as S.Schema<V1ListMigrationsResponse>;
@@ -9088,7 +9073,7 @@ export const V1OrganizationMemberResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<V1OrganizationMemberResponse>;
 
 export type V1ListOrganizationMembersResponseBodyList =
-  ReadonlyArray<V1OrganizationMemberResponse>;
+  Array<V1OrganizationMemberResponse>;
 export const V1ListOrganizationMembersResponseBodyList = /*@__PURE__*/ S.Array(
   V1OrganizationMemberResponse,
 ) as any as S.Schema<V1ListOrganizationMembersResponseBodyList>;
@@ -9266,7 +9251,7 @@ export const ListProjectAddonsResponseSelectedAddonsItem =
   }) as any as S.Schema<ListProjectAddonsResponseSelectedAddonsItem>;
 
 export type ListProjectAddonsResponseSelectedAddonsList =
-  ReadonlyArray<ListProjectAddonsResponseSelectedAddonsItem>;
+  Array<ListProjectAddonsResponseSelectedAddonsItem>;
 export const ListProjectAddonsResponseSelectedAddonsList =
   /*@__PURE__*/ S.Array(
     ListProjectAddonsResponseSelectedAddonsItem,
@@ -9405,7 +9390,7 @@ export const ListProjectAddonsResponseAvailableAddonsItemVariantsItem =
   }) as any as S.Schema<ListProjectAddonsResponseAvailableAddonsItemVariantsItem>;
 
 export type ListProjectAddonsResponseAvailableAddonsItemVariantsList =
-  ReadonlyArray<ListProjectAddonsResponseAvailableAddonsItemVariantsItem>;
+  Array<ListProjectAddonsResponseAvailableAddonsItemVariantsItem>;
 export const ListProjectAddonsResponseAvailableAddonsItemVariantsList =
   /*@__PURE__*/ S.Array(
     ListProjectAddonsResponseAvailableAddonsItemVariantsItem,
@@ -9428,7 +9413,7 @@ export const ListProjectAddonsResponseAvailableAddonsItem =
   }) as any as S.Schema<ListProjectAddonsResponseAvailableAddonsItem>;
 
 export type ListProjectAddonsResponseAvailableAddonsList =
-  ReadonlyArray<ListProjectAddonsResponseAvailableAddonsItem>;
+  Array<ListProjectAddonsResponseAvailableAddonsItem>;
 export const ListProjectAddonsResponseAvailableAddonsList =
   /*@__PURE__*/ S.Array(
     ListProjectAddonsResponseAvailableAddonsItem,
@@ -9466,7 +9451,7 @@ export const V1ListProjectTpaIntegrationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<V1ListProjectTpaIntegrationsRequest>;
 
 export type V1ListProjectTpaIntegrationsResponseBodyList =
-  ReadonlyArray<ThirdPartyAuth>;
+  Array<ThirdPartyAuth>;
 export const V1ListProjectTpaIntegrationsResponseBodyList =
   /*@__PURE__*/ S.Array(
     ThirdPartyAuth,
@@ -9703,14 +9688,14 @@ export const V1PatchAMigrationResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<V1PatchAMigrationResponse>;
 
 export type V1PatchNetworkRestrictionsRequestAddDbAllowedCidrsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const V1PatchNetworkRestrictionsRequestAddDbAllowedCidrsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<V1PatchNetworkRestrictionsRequestAddDbAllowedCidrsList>;
 
 export type V1PatchNetworkRestrictionsRequestAddDbAllowedCidrsV6List =
-  ReadonlyArray<string>;
+  Array<string>;
 export const V1PatchNetworkRestrictionsRequestAddDbAllowedCidrsV6List =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -9735,14 +9720,14 @@ export const V1PatchNetworkRestrictionsRequestAdd = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<V1PatchNetworkRestrictionsRequestAdd>;
 
 export type V1PatchNetworkRestrictionsRequestRemoveDbAllowedCidrsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const V1PatchNetworkRestrictionsRequestRemoveDbAllowedCidrsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<V1PatchNetworkRestrictionsRequestRemoveDbAllowedCidrsList>;
 
 export type V1PatchNetworkRestrictionsRequestRemoveDbAllowedCidrsV6List =
-  ReadonlyArray<string>;
+  Array<string>;
 export const V1PatchNetworkRestrictionsRequestRemoveDbAllowedCidrsV6List =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -9812,7 +9797,7 @@ export const NetworkRestrictionsV2ResponseConfigDbAllowedCidrsItem =
   }) as any as S.Schema<NetworkRestrictionsV2ResponseConfigDbAllowedCidrsItem>;
 
 export type NetworkRestrictionsV2ResponseConfigDbAllowedCidrsList =
-  ReadonlyArray<NetworkRestrictionsV2ResponseConfigDbAllowedCidrsItem>;
+  Array<NetworkRestrictionsV2ResponseConfigDbAllowedCidrsItem>;
 export const NetworkRestrictionsV2ResponseConfigDbAllowedCidrsList =
   /*@__PURE__*/ S.Array(
     NetworkRestrictionsV2ResponseConfigDbAllowedCidrsItem,
@@ -9853,7 +9838,7 @@ export const NetworkRestrictionsV2ResponseOldConfigDbAllowedCidrsItem =
   }) as any as S.Schema<NetworkRestrictionsV2ResponseOldConfigDbAllowedCidrsItem>;
 
 export type NetworkRestrictionsV2ResponseOldConfigDbAllowedCidrsList =
-  ReadonlyArray<NetworkRestrictionsV2ResponseOldConfigDbAllowedCidrsItem>;
+  Array<NetworkRestrictionsV2ResponseOldConfigDbAllowedCidrsItem>;
 export const NetworkRestrictionsV2ResponseOldConfigDbAllowedCidrsList =
   /*@__PURE__*/ S.Array(
     NetworkRestrictionsV2ResponseOldConfigDbAllowedCidrsItem,
@@ -9941,7 +9926,7 @@ export const V1PushABranchRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "V1PushABranchRequest",
 }) as any as S.Schema<V1PushABranchRequest>;
 
-export type V1ReadOnlyQueryRequestParametersList = ReadonlyArray<unknown>;
+export type V1ReadOnlyQueryRequestParametersList = Array<unknown>;
 export const V1ReadOnlyQueryRequestParametersList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<V1ReadOnlyQueryRequestParametersList>;
@@ -10247,7 +10232,7 @@ export const V1RollbackMigrationsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "V1RollbackMigrationsResponse",
 }) as any as S.Schema<V1RollbackMigrationsResponse>;
 
-export type V1RunAQueryRequestParametersList = ReadonlyArray<unknown>;
+export type V1RunAQueryRequestParametersList = Array<unknown>;
 export const V1RunAQueryRequestParametersList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<V1RunAQueryRequestParametersList>;
@@ -10624,13 +10609,13 @@ export const V1UpdateAProjectRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "V1UpdateAProjectRequest",
 }) as any as S.Schema<V1UpdateAProjectRequest>;
 
-export type V1UpdateASsoProviderRequestDomainsList = ReadonlyArray<string>;
+export type V1UpdateASsoProviderRequestDomainsList = Array<string>;
 export const V1UpdateASsoProviderRequestDomainsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<V1UpdateASsoProviderRequestDomainsList>;
 
 export type V1UpdateASsoProviderRequestAttributeMappingKeysValueNamesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const V1UpdateASsoProviderRequestAttributeMappingKeysValueNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -10727,7 +10712,7 @@ export const V1UpdateASsoProviderRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<V1UpdateASsoProviderRequest>;
 
 export type UpdateProviderResponseSamlAttributeMappingKeysValueNamesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const UpdateProviderResponseSamlAttributeMappingKeysValueNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -10828,7 +10813,7 @@ export const UpdateProviderResponseDomainsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateProviderResponseDomainsItem>;
 
 export type UpdateProviderResponseDomainsList =
-  ReadonlyArray<UpdateProviderResponseDomainsItem>;
+  Array<UpdateProviderResponseDomainsItem>;
 export const UpdateProviderResponseDomainsList = /*@__PURE__*/ S.Array(
   UpdateProviderResponseDomainsItem,
 ) as any as S.Schema<UpdateProviderResponseDomainsList>;
@@ -11561,7 +11546,7 @@ export const V1UpdateJitAccessRequestRolesItemAllowedNetworksAllowedCidrsItem =
   }) as any as S.Schema<V1UpdateJitAccessRequestRolesItemAllowedNetworksAllowedCidrsItem>;
 
 export type V1UpdateJitAccessRequestRolesItemAllowedNetworksAllowedCidrsList =
-  ReadonlyArray<V1UpdateJitAccessRequestRolesItemAllowedNetworksAllowedCidrsItem>;
+  Array<V1UpdateJitAccessRequestRolesItemAllowedNetworksAllowedCidrsItem>;
 export const V1UpdateJitAccessRequestRolesItemAllowedNetworksAllowedCidrsList =
   /*@__PURE__*/ S.Array(
     V1UpdateJitAccessRequestRolesItemAllowedNetworksAllowedCidrsItem,
@@ -11581,7 +11566,7 @@ export const V1UpdateJitAccessRequestRolesItemAllowedNetworksAllowedCidrsV6Item 
   }) as any as S.Schema<V1UpdateJitAccessRequestRolesItemAllowedNetworksAllowedCidrsV6Item>;
 
 export type V1UpdateJitAccessRequestRolesItemAllowedNetworksAllowedCidrsV6List =
-  ReadonlyArray<V1UpdateJitAccessRequestRolesItemAllowedNetworksAllowedCidrsV6Item>;
+  Array<V1UpdateJitAccessRequestRolesItemAllowedNetworksAllowedCidrsV6Item>;
 export const V1UpdateJitAccessRequestRolesItemAllowedNetworksAllowedCidrsV6List =
   /*@__PURE__*/ S.Array(
     V1UpdateJitAccessRequestRolesItemAllowedNetworksAllowedCidrsV6Item,
@@ -11625,7 +11610,7 @@ export const V1UpdateJitAccessRequestRolesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<V1UpdateJitAccessRequestRolesItem>;
 
 export type V1UpdateJitAccessRequestRolesList =
-  ReadonlyArray<V1UpdateJitAccessRequestRolesItem>;
+  Array<V1UpdateJitAccessRequestRolesItem>;
 export const V1UpdateJitAccessRequestRolesList = /*@__PURE__*/ S.Array(
   V1UpdateJitAccessRequestRolesItem,
 ) as any as S.Schema<V1UpdateJitAccessRequestRolesList>;
@@ -11679,14 +11664,14 @@ export const V1UpdateJitAccessConfigResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<V1UpdateJitAccessConfigResponse>;
 
 export type V1UpdateNetworkRestrictionsRequestDbAllowedCidrsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const V1UpdateNetworkRestrictionsRequestDbAllowedCidrsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<V1UpdateNetworkRestrictionsRequestDbAllowedCidrsList>;
 
 export type V1UpdateNetworkRestrictionsRequestDbAllowedCidrsV6List =
-  ReadonlyArray<string>;
+  Array<string>;
 export const V1UpdateNetworkRestrictionsRequestDbAllowedCidrsV6List =
   /*@__PURE__*/ S.Array(
     S.String,

@@ -456,7 +456,7 @@ export const ConversationMinimal = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConversationMinimal>;
 
 export type PaginatedConversationMinimalListResultsList =
-  ReadonlyArray<ConversationMinimal>;
+  Array<ConversationMinimal>;
 export const PaginatedConversationMinimalListResultsList =
   /*@__PURE__*/ S.Array(
     ConversationMinimal,
@@ -515,7 +515,7 @@ export const SandboxAttachedContextItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Typed PostHog entities (and free text) attached to this message. */
 export type ConversationsOpenCreateRequestAttachedContextList =
-  ReadonlyArray<SandboxAttachedContextItem>;
+  Array<SandboxAttachedContextItem>;
 export const ConversationsOpenCreateRequestAttachedContextList =
   /*@__PURE__*/ S.Array(
     SandboxAttachedContextItem,
@@ -623,8 +623,7 @@ export const ConversationMessagesItemMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<ConversationMessagesItemMap>;
 
-export type ConversationMessagesList =
-  ReadonlyArray<ConversationMessagesItemMap>;
+export type ConversationMessagesList = Array<ConversationMessagesItemMap>;
 export const ConversationMessagesList = /*@__PURE__*/ S.Array(
   ConversationMessagesItemMap,
 ) as any as S.Schema<ConversationMessagesList>;
@@ -643,7 +642,7 @@ export const ConversationPendingApprovalsItemMap = /*@__PURE__*/ S.Record(
 
 /** Return pending approval cards as structured data. Combines metadata from conversation.approval_decisions with payload from checkpoint interrupts (single source of truth for payload data). */
 export type ConversationPendingApprovalsList =
-  ReadonlyArray<ConversationPendingApprovalsItemMap>;
+  Array<ConversationPendingApprovalsItemMap>;
 export const ConversationPendingApprovalsList = /*@__PURE__*/ S.Array(
   ConversationPendingApprovalsItemMap,
 ) as any as S.Schema<ConversationPendingApprovalsList>;

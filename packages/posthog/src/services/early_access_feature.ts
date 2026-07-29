@@ -116,7 +116,7 @@ export type MinimalFeatureFlagBucketingIdentifier =
 export const MinimalFeatureFlagBucketingIdentifier =
   /*@__PURE__*/ S.Unknown as any as S.Schema<MinimalFeatureFlagBucketingIdentifier>;
 
-export type MinimalFeatureFlagEvaluationContextsList = ReadonlyArray<string>;
+export type MinimalFeatureFlagEvaluationContextsList = Array<string>;
 export const MinimalFeatureFlagEvaluationContextsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<MinimalFeatureFlagEvaluationContextsList>;
@@ -291,7 +291,7 @@ export const EarlyAccessFeature2 = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EarlyAccessFeature2>;
 
 export type PaginatedEarlyAccessFeatureListResultsList =
-  ReadonlyArray<EarlyAccessFeature2>;
+  Array<EarlyAccessFeature2>;
 export const PaginatedEarlyAccessFeatureListResultsList = /*@__PURE__*/ S.Array(
   EarlyAccessFeature2,
 ) as any as S.Schema<PaginatedEarlyAccessFeatureListResultsList>;

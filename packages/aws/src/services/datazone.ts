@@ -203,7 +203,7 @@ export const AcceptedAssetScopes = /*@__PURE__*/ S.Array(AcceptedAssetScope);
 export type S3Permission = "READ" | "WRITE";
 export const S3Permission = /*@__PURE__*/ S.String;
 
-export type S3Permissions = S3Permission[];
+export type S3Permissions = (S3Permission | (string & {}))[];
 export const S3Permissions = /*@__PURE__*/ S.Array(S3Permission);
 export type Permissions = { s3: S3Permission[] };
 export const Permissions = /*@__PURE__*/ S.Union([
@@ -671,7 +671,7 @@ export const ProjectGrantFilter = /*@__PURE__*/ S.Union([
   S.Struct({ domainUnitFilter: DomainUnitFilterForProject }),
 ]);
 export interface ProjectPolicyGrantPrincipal {
-  projectDesignation: ProjectDesignation;
+  projectDesignation: ProjectDesignation | (string & {});
   projectIdentifier?: string;
   projectGrantFilter?: ProjectGrantFilter;
 }
@@ -700,7 +700,7 @@ export const DomainUnitGrantFilter = /*@__PURE__*/ S.Union([
   S.Struct({ allDomainUnitsGrantFilter: AllDomainUnitsGrantFilter }),
 ]);
 export interface DomainUnitPolicyGrantPrincipal {
-  domainUnitDesignation: DomainUnitDesignation;
+  domainUnitDesignation: DomainUnitDesignation | (string & {});
   domainUnitIdentifier?: string;
   domainUnitGrantFilter?: DomainUnitGrantFilter;
 }
@@ -2399,7 +2399,7 @@ export const GlueConnectionType = /*@__PURE__*/ S.String;
 export type ComputeEnvironments = "SPARK" | "ATHENA" | "PYTHON";
 export const ComputeEnvironments = /*@__PURE__*/ S.String;
 
-export type ComputeEnvironmentsList = ComputeEnvironments[];
+export type ComputeEnvironmentsList = (ComputeEnvironments | (string & {}))[];
 export const ComputeEnvironmentsList =
   /*@__PURE__*/ S.Array(ComputeEnvironments);
 export type AuthenticationType = "BASIC" | "OAUTH2" | "CUSTOM";
@@ -2457,7 +2457,7 @@ export const GlueOAuth2Credentials = /*@__PURE__*/ S.suspend(() =>
   identifier: "GlueOAuth2Credentials",
 }) as any as S.Schema<GlueOAuth2Credentials>;
 export interface OAuth2Properties {
-  oAuth2GrantType?: OAuth2GrantType;
+  oAuth2GrantType?: OAuth2GrantType | (string & {});
   oAuth2ClientApplication?: OAuth2ClientApplication;
   tokenUrl?: string;
   tokenUrlParametersMap?: { [key: string]: string | undefined };
@@ -3721,7 +3721,7 @@ export const DataProductItemType = /*@__PURE__*/ S.String;
 export type ItemGlossaryTerms = string[];
 export const ItemGlossaryTerms = /*@__PURE__*/ S.Array(S.String);
 export interface DataProductItem {
-  itemType: DataProductItemType;
+  itemType: DataProductItemType | (string & {});
   identifier: string;
   revision?: string;
   glossaryTerms?: string[];
@@ -3896,7 +3896,7 @@ export type FilterExpressionType = "INCLUDE" | "EXCLUDE";
 export const FilterExpressionType = /*@__PURE__*/ S.String;
 
 export interface FilterExpression {
-  type: FilterExpressionType;
+  type: FilterExpressionType | (string & {});
   expression: string;
 }
 export const FilterExpression = /*@__PURE__*/ S.suspend(() =>
@@ -4113,7 +4113,7 @@ export const Timezone = /*@__PURE__*/ S.String;
 
 export type CronString = string;
 export interface ScheduleConfiguration {
-  timezone?: Timezone;
+  timezone?: Timezone | (string & {});
   schedule?: string;
 }
 export const ScheduleConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -4351,8 +4351,8 @@ export type UserAssignment = "AUTOMATIC" | "MANUAL";
 export const UserAssignment = /*@__PURE__*/ S.String;
 
 export interface SingleSignOn {
-  type?: AuthType;
-  userAssignment?: UserAssignment;
+  type?: AuthType | (string & {});
+  userAssignment?: UserAssignment | (string & {});
   idcInstanceArn?: string;
 }
 export const SingleSignOn = /*@__PURE__*/ S.suspend(() =>
@@ -5081,7 +5081,10 @@ export const GlossaryStatus = /*@__PURE__*/ S.String;
 export type GlossaryUsageRestriction = "ASSET_GOVERNED_TERMS";
 export const GlossaryUsageRestriction = /*@__PURE__*/ S.String;
 
-export type GlossaryUsageRestrictions = GlossaryUsageRestriction[];
+export type GlossaryUsageRestrictions = (
+  | GlossaryUsageRestriction
+  | (string & {})
+)[];
 export const GlossaryUsageRestrictions = /*@__PURE__*/ S.Array(
   GlossaryUsageRestriction,
 );
@@ -5389,7 +5392,7 @@ export type PackageManager = "UV";
 export const PackageManager = /*@__PURE__*/ S.String;
 
 export interface PackageConfig {
-  packageManager: PackageManager;
+  packageManager: PackageManager | (string & {});
   packageSpecification?: string;
 }
 export const PackageConfig = /*@__PURE__*/ S.suspend(() =>
@@ -5621,7 +5624,7 @@ export const EnvironmentFailureReasons = /*@__PURE__*/ S.Record(
   EnvironmentFailureReasonsList.pipe(S.optional),
 );
 export interface EnvironmentDeploymentDetails {
-  overallDeploymentStatus?: OverallDeploymentStatus;
+  overallDeploymentStatus?: OverallDeploymentStatus | (string & {});
   environmentFailureReasons?: { [key: string]: EnvironmentError[] | undefined };
 }
 export const EnvironmentDeploymentDetails = /*@__PURE__*/ S.suspend(() =>
@@ -5789,7 +5792,7 @@ export interface EnvironmentConfiguration {
   id?: string | redacted.Redacted<string>;
   environmentBlueprintId: string;
   description?: string | redacted.Redacted<string>;
-  deploymentMode?: DeploymentMode;
+  deploymentMode?: DeploymentMode | (string & {});
   configurationParameters?: EnvironmentConfigurationParametersDetails;
   awsAccount?: AwsAccount;
   accountPools?: string[];
@@ -5922,7 +5925,7 @@ export const RuleScopeSelectionMode = /*@__PURE__*/ S.String;
 export type RuleAssetTypeList = string[];
 export const RuleAssetTypeList = /*@__PURE__*/ S.Array(S.String);
 export interface AssetTypesForRule {
-  selectionMode: RuleScopeSelectionMode;
+  selectionMode: RuleScopeSelectionMode | (string & {});
   specificAssetTypes?: string[];
 }
 export const AssetTypesForRule = /*@__PURE__*/ S.suspend(() =>
@@ -5936,7 +5939,7 @@ export const AssetTypesForRule = /*@__PURE__*/ S.suspend(() =>
 export type RuleProjectIdentifierList = string[];
 export const RuleProjectIdentifierList = /*@__PURE__*/ S.Array(S.String);
 export interface ProjectsForRule {
-  selectionMode: RuleScopeSelectionMode;
+  selectionMode: RuleScopeSelectionMode | (string & {});
   specificProjects?: string[];
 }
 export const ProjectsForRule = /*@__PURE__*/ S.suspend(() =>
@@ -9498,7 +9501,7 @@ export type MetadataGenerationTargetType = "ASSET";
 export const MetadataGenerationTargetType = /*@__PURE__*/ S.String;
 
 export interface MetadataGenerationRunTarget {
-  type: MetadataGenerationTargetType;
+  type: MetadataGenerationTargetType | (string & {});
   identifier: string;
   revision?: string;
 }
@@ -9520,7 +9523,10 @@ export type MetadataGenerationRunStatus =
   | "PARTIALLY_SUCCEEDED";
 export const MetadataGenerationRunStatus = /*@__PURE__*/ S.String;
 
-export type MetadataGenerationRunTypes = MetadataGenerationRunType[];
+export type MetadataGenerationRunTypes = (
+  | MetadataGenerationRunType
+  | (string & {})
+)[];
 export const MetadataGenerationRunTypes = /*@__PURE__*/ S.Array(
   MetadataGenerationRunType,
 );
@@ -9776,7 +9782,7 @@ export const SubnetIds = /*@__PURE__*/ S.Array(S.String);
 export type SecurityGroupIds = string[];
 export const SecurityGroupIds = /*@__PURE__*/ S.Array(S.String);
 export interface NetworkConfig {
-  networkAccessType: NetworkAccessType;
+  networkAccessType: NetworkAccessType | (string & {});
   vpcId?: string;
   subnetIds?: string[];
   securityGroupIds?: string[];
@@ -9810,7 +9816,7 @@ export type TriggerSourceType = "MANUAL" | "SCHEDULED" | "WORKFLOW";
 export const TriggerSourceType = /*@__PURE__*/ S.String;
 
 export interface TriggerSource {
-  type?: TriggerSourceType;
+  type?: TriggerSourceType | (string & {});
   name?: string;
 }
 export const TriggerSource = /*@__PURE__*/ S.suspend(() =>

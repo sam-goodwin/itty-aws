@@ -154,12 +154,12 @@ export const ObjectAccessControl = /*@__PURE__*/ S.suspend(() =>
   identifier: "ObjectAccessControl",
 }) as any as S.Schema<ObjectAccessControl>;
 
-export type ObjectAccessControlList = ReadonlyArray<ObjectAccessControl>;
+export type ObjectAccessControlList = Array<ObjectAccessControl>;
 export const ObjectAccessControlList = /*@__PURE__*/ S.Array(
   ObjectAccessControl,
 ) as any as S.Schema<ObjectAccessControlList>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -269,7 +269,7 @@ export interface RewriteObject {
   /** Optional. Resource name of the Cloud KMS key that is used to encrypt the object. The Cloud KMS key must be located in same location as the object. For details, see https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys#add-object-key Format: `projects/{project_id}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}` For example: `projects/123456/locations/us-central1/keyRings/my-keyring/cryptoKeys/my-key`. The object will be rewritten and set with the specified KMS key. */
   kmsKey?: string;
   /** Optional. Rewrites the object to the specified storage class. Setting this field will perform a full byte copy of the object if the storage class is different from the object's current storage class. If Autoclass is enabled on the bucket, storage class changes are ignored by Cloud Storage. */
-  storageClass?: RewriteObjectStorageClassEnum;
+  storageClass?: RewriteObjectStorageClassEnum | (string & {});
 }
 export const RewriteObject = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -283,8 +283,9 @@ export type LoggingConfigLogActionsItemEnum =
   | "TRANSFORM";
 export const LoggingConfigLogActionsItemEnum = /*@__PURE__*/ S.String;
 
-export type LoggingConfigLogActionsItemEnumList =
-  ReadonlyArray<LoggingConfigLogActionsItemEnum>;
+export type LoggingConfigLogActionsItemEnumList = Array<
+  LoggingConfigLogActionsItemEnum | (string & {})
+>;
 export const LoggingConfigLogActionsItemEnumList = /*@__PURE__*/ S.Array(
   LoggingConfigLogActionsItemEnum,
 ) as any as S.Schema<LoggingConfigLogActionsItemEnumList>;
@@ -295,8 +296,9 @@ export type LoggingConfigLogActionStatesItemEnum =
   | "FAILED";
 export const LoggingConfigLogActionStatesItemEnum = /*@__PURE__*/ S.String;
 
-export type LoggingConfigLogActionStatesItemEnumList =
-  ReadonlyArray<LoggingConfigLogActionStatesItemEnum>;
+export type LoggingConfigLogActionStatesItemEnumList = Array<
+  LoggingConfigLogActionStatesItemEnum | (string & {})
+>;
 export const LoggingConfigLogActionStatesItemEnumList = /*@__PURE__*/ S.Array(
   LoggingConfigLogActionStatesItemEnum,
 ) as any as S.Schema<LoggingConfigLogActionStatesItemEnumList>;
@@ -362,9 +364,9 @@ export const PutObjectHoldTemporaryHoldEnum = /*@__PURE__*/ S.String;
 /** Describes options to update object hold. */
 export interface PutObjectHold {
   /** Required. Updates object event based holds state. When object event based hold is set, object can't be deleted or replaced. Resets object's time in the bucket for the purposes of the retention period. */
-  eventBasedHold?: PutObjectHoldEventBasedHoldEnum;
+  eventBasedHold?: PutObjectHoldEventBasedHoldEnum | (string & {});
   /** Required. Updates object temporary holds state. When object temporary hold is set, object can't be deleted or replaced. */
-  temporaryHold?: PutObjectHoldTemporaryHoldEnum;
+  temporaryHold?: PutObjectHoldTemporaryHoldEnum | (string & {});
 }
 export const PutObjectHold = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -399,7 +401,7 @@ export const ObjectRetentionRetentionModeEnum = /*@__PURE__*/ S.String;
 /** Describes options for object retention update. */
 export interface ObjectRetention {
   /** Required. The retention mode. */
-  retentionMode?: ObjectRetentionRetentionModeEnum;
+  retentionMode?: ObjectRetentionRetentionModeEnum | (string & {});
   /** Required. The object's retention expiration time, during which, the object is protected from being deleted or overwritten. The time must be specified in RFC 3339 format, for example `YYYY-MM-DD'T'HH:MM:SS'Z'` or `YYYY-MM-DD'T'HH:MM:SS.SS'Z'`. To clear an object's retention, both `retentionMode` and `retainUntilTime` must be left unset (omitted). Setting `retentionMode` to `RETENTION_MODE_UNSPECIFIED` is treated as a no-op. Unlike an unset field, it doesn't modify or clear the retention settings. */
   retainUntilTime?: string;
 }
@@ -545,7 +547,7 @@ export const Bucket = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Bucket" }) as any as S.Schema<Bucket>;
 
-export type BucketList_ = ReadonlyArray<Bucket>;
+export type BucketList_ = Array<Bucket>;
 export const BucketList_ = /*@__PURE__*/ S.Array(
   Bucket,
 ) as any as S.Schema<BucketList_>;
@@ -595,7 +597,7 @@ export const ErrorLogEntry = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ErrorLogEntry" }) as any as S.Schema<ErrorLogEntry>;
 
-export type ErrorLogEntryList = ReadonlyArray<ErrorLogEntry>;
+export type ErrorLogEntryList = Array<ErrorLogEntry>;
 export const ErrorLogEntryList = /*@__PURE__*/ S.Array(
   ErrorLogEntry,
 ) as any as S.Schema<ErrorLogEntryList>;
@@ -605,7 +607,7 @@ export interface ErrorSummary {
   /** Required. Number of errors encountered per `error_code`. */
   errorCount?: string;
   /** Required. The canonical error code. */
-  errorCode?: ErrorSummaryErrorCodeEnum;
+  errorCode?: ErrorSummaryErrorCodeEnum | (string & {});
   /** Required. Sample error logs. */
   errorLogEntries?: ErrorLogEntryList;
 }
@@ -617,7 +619,7 @@ export const ErrorSummary = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ErrorSummary" }) as any as S.Schema<ErrorSummary>;
 
-export type ErrorSummaryList = ReadonlyArray<ErrorSummary>;
+export type ErrorSummaryList = Array<ErrorSummary>;
 export const ErrorSummaryList = /*@__PURE__*/ S.Array(
   ErrorSummary,
 ) as any as S.Schema<ErrorSummaryList>;
@@ -653,7 +655,7 @@ export interface Job {
   /** Update object custom context. */
   updateObjectCustomContext?: UpdateObjectCustomContext;
   /** Output only. State of the job. */
-  state?: JobStateEnum;
+  state?: JobStateEnum | (string & {});
   /** Output only. If true, this job operates on multiple buckets. Multi-bucket jobs are subject to different quota limits than single-bucket jobs. */
   isMultiBucketJob?: boolean;
   /** Optional. A user-provided description for the job. Maximum length: 1024 bytes when unicode-encoded. */
@@ -720,7 +722,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -1005,7 +1007,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = ReadonlyArray<Location>;
+export type LocationList = Array<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -1056,7 +1058,7 @@ export const ListProjectsLocationsJobsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsJobsRequest",
 }) as any as S.Schema<ListProjectsLocationsJobsRequest>;
 
-export type JobList = ReadonlyArray<Job>;
+export type JobList = Array<Job>;
 export const JobList = /*@__PURE__*/ S.Array(Job) as any as S.Schema<JobList>;
 
 /** Message for response to listing Jobs */
@@ -1109,7 +1111,7 @@ export const ListProjectsLocationsJobsBucketOperationsRequest =
     identifier: "ListProjectsLocationsJobsBucketOperationsRequest",
   }) as any as S.Schema<ListProjectsLocationsJobsBucketOperationsRequest>;
 
-export type BucketOperationList = ReadonlyArray<BucketOperation>;
+export type BucketOperationList = Array<BucketOperation>;
 export const BucketOperationList = /*@__PURE__*/ S.Array(
   BucketOperation,
 ) as any as S.Schema<BucketOperationList>;
@@ -1164,7 +1166,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type OperationList = ReadonlyArray<Operation>;
+export type OperationList = Array<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;

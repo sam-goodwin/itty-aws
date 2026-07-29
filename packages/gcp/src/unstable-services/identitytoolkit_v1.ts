@@ -83,7 +83,7 @@ export const GoogleCloudIdentitytoolkitV1MfaFactor = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudIdentitytoolkitV1MfaFactor>;
 
 export type GoogleCloudIdentitytoolkitV1MfaFactorList =
-  ReadonlyArray<GoogleCloudIdentitytoolkitV1MfaFactor>;
+  Array<GoogleCloudIdentitytoolkitV1MfaFactor>;
 export const GoogleCloudIdentitytoolkitV1MfaFactorList = /*@__PURE__*/ S.Array(
   GoogleCloudIdentitytoolkitV1MfaFactor,
 ) as any as S.Schema<GoogleCloudIdentitytoolkitV1MfaFactorList>;
@@ -280,7 +280,7 @@ export const GoogleCloudIdentitytoolkitV1ProviderUserInfo =
   }) as any as S.Schema<GoogleCloudIdentitytoolkitV1ProviderUserInfo>;
 
 export type GoogleCloudIdentitytoolkitV1ProviderUserInfoList =
-  ReadonlyArray<GoogleCloudIdentitytoolkitV1ProviderUserInfo>;
+  Array<GoogleCloudIdentitytoolkitV1ProviderUserInfo>;
 export const GoogleCloudIdentitytoolkitV1ProviderUserInfoList =
   /*@__PURE__*/ S.Array(
     GoogleCloudIdentitytoolkitV1ProviderUserInfo,
@@ -341,7 +341,7 @@ export const GoogleCloudIdentitytoolkitV1MfaEnrollment =
   }) as any as S.Schema<GoogleCloudIdentitytoolkitV1MfaEnrollment>;
 
 export type GoogleCloudIdentitytoolkitV1MfaEnrollmentList =
-  ReadonlyArray<GoogleCloudIdentitytoolkitV1MfaEnrollment>;
+  Array<GoogleCloudIdentitytoolkitV1MfaEnrollment>;
 export const GoogleCloudIdentitytoolkitV1MfaEnrollmentList =
   /*@__PURE__*/ S.Array(
     GoogleCloudIdentitytoolkitV1MfaEnrollment,
@@ -442,7 +442,7 @@ export const GoogleCloudIdentitytoolkitV1UserInfo = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudIdentitytoolkitV1UserInfo>;
 
 export type GoogleCloudIdentitytoolkitV1UserInfoList =
-  ReadonlyArray<GoogleCloudIdentitytoolkitV1UserInfo>;
+  Array<GoogleCloudIdentitytoolkitV1UserInfo>;
 export const GoogleCloudIdentitytoolkitV1UserInfoList = /*@__PURE__*/ S.Array(
   GoogleCloudIdentitytoolkitV1UserInfo,
 ) as any as S.Schema<GoogleCloudIdentitytoolkitV1UserInfoList>;
@@ -611,7 +611,7 @@ export const GoogleCloudIdentitytoolkitV1ErrorInfo = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudIdentitytoolkitV1ErrorInfo>;
 
 export type GoogleCloudIdentitytoolkitV1ErrorInfoList =
-  ReadonlyArray<GoogleCloudIdentitytoolkitV1ErrorInfo>;
+  Array<GoogleCloudIdentitytoolkitV1ErrorInfo>;
 export const GoogleCloudIdentitytoolkitV1ErrorInfoList = /*@__PURE__*/ S.Array(
   GoogleCloudIdentitytoolkitV1ErrorInfo,
 ) as any as S.Schema<GoogleCloudIdentitytoolkitV1ErrorInfoList>;
@@ -659,7 +659,7 @@ export const BatchCreateProjectsTenantsAccountsRequest =
     identifier: "BatchCreateProjectsTenantsAccountsRequest",
   }) as any as S.Schema<BatchCreateProjectsTenantsAccountsRequest>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -728,7 +728,7 @@ export const GoogleCloudIdentitytoolkitV1BatchDeleteErrorInfo =
   }) as any as S.Schema<GoogleCloudIdentitytoolkitV1BatchDeleteErrorInfo>;
 
 export type GoogleCloudIdentitytoolkitV1BatchDeleteErrorInfoList =
-  ReadonlyArray<GoogleCloudIdentitytoolkitV1BatchDeleteErrorInfo>;
+  Array<GoogleCloudIdentitytoolkitV1BatchDeleteErrorInfo>;
 export const GoogleCloudIdentitytoolkitV1BatchDeleteErrorInfoList =
   /*@__PURE__*/ S.Array(
     GoogleCloudIdentitytoolkitV1BatchDeleteErrorInfo,
@@ -1292,7 +1292,7 @@ export const GoogleCloudIdentitytoolkitV1IdpConfig = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudIdentitytoolkitV1IdpConfig>;
 
 export type GoogleCloudIdentitytoolkitV1IdpConfigList =
-  ReadonlyArray<GoogleCloudIdentitytoolkitV1IdpConfig>;
+  Array<GoogleCloudIdentitytoolkitV1IdpConfig>;
 export const GoogleCloudIdentitytoolkitV1IdpConfigList = /*@__PURE__*/ S.Array(
   GoogleCloudIdentitytoolkitV1IdpConfig,
 ) as any as S.Schema<GoogleCloudIdentitytoolkitV1IdpConfigList>;
@@ -1454,7 +1454,7 @@ export const GoogleCloudIdentitytoolkitV1OpenIdConnectKey =
   }) as any as S.Schema<GoogleCloudIdentitytoolkitV1OpenIdConnectKey>;
 
 export type GoogleCloudIdentitytoolkitV1OpenIdConnectKeyList =
-  ReadonlyArray<GoogleCloudIdentitytoolkitV1OpenIdConnectKey>;
+  Array<GoogleCloudIdentitytoolkitV1OpenIdConnectKey>;
 export const GoogleCloudIdentitytoolkitV1OpenIdConnectKeyList =
   /*@__PURE__*/ S.Array(
     GoogleCloudIdentitytoolkitV1OpenIdConnectKey,
@@ -1565,7 +1565,7 @@ export const GoogleCloudIdentitytoolkitV1FederatedUserIdentifier =
   }) as any as S.Schema<GoogleCloudIdentitytoolkitV1FederatedUserIdentifier>;
 
 export type GoogleCloudIdentitytoolkitV1FederatedUserIdentifierList =
-  ReadonlyArray<GoogleCloudIdentitytoolkitV1FederatedUserIdentifier>;
+  Array<GoogleCloudIdentitytoolkitV1FederatedUserIdentifier>;
 export const GoogleCloudIdentitytoolkitV1FederatedUserIdentifierList =
   /*@__PURE__*/ S.Array(
     GoogleCloudIdentitytoolkitV1FederatedUserIdentifier,
@@ -1726,7 +1726,7 @@ export const GoogleCloudIdentitytoolkitV1SqlExpression =
   }) as any as S.Schema<GoogleCloudIdentitytoolkitV1SqlExpression>;
 
 export type GoogleCloudIdentitytoolkitV1SqlExpressionList =
-  ReadonlyArray<GoogleCloudIdentitytoolkitV1SqlExpression>;
+  Array<GoogleCloudIdentitytoolkitV1SqlExpression>;
 export const GoogleCloudIdentitytoolkitV1SqlExpressionList =
   /*@__PURE__*/ S.Array(
     GoogleCloudIdentitytoolkitV1SqlExpression,
@@ -2825,7 +2825,7 @@ export const GoogleCloudIdentitytoolkitV1UserNotification =
   }) as any as S.Schema<GoogleCloudIdentitytoolkitV1UserNotification>;
 
 export type GoogleCloudIdentitytoolkitV1UserNotificationList =
-  ReadonlyArray<GoogleCloudIdentitytoolkitV1UserNotification>;
+  Array<GoogleCloudIdentitytoolkitV1UserNotification>;
 export const GoogleCloudIdentitytoolkitV1UserNotificationList =
   /*@__PURE__*/ S.Array(
     GoogleCloudIdentitytoolkitV1UserNotification,
@@ -3026,7 +3026,7 @@ export const GoogleCloudIdentitytoolkitV1SetAccountInfoRequestDeleteAttributeIte
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudIdentitytoolkitV1SetAccountInfoRequestDeleteAttributeItemEnumList =
-  ReadonlyArray<
+  Array<
     | GoogleCloudIdentitytoolkitV1SetAccountInfoRequestDeleteAttributeItemEnum
     | (string & {})
   >;

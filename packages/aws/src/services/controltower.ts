@@ -137,7 +137,7 @@ export type LandingZoneVersion = string;
 export type RemediationType = "INHERITANCE_DRIFT";
 export const RemediationType = /*@__PURE__*/ S.String;
 
-export type RemediationTypes = RemediationType[];
+export type RemediationTypes = (RemediationType | (string & {}))[];
 export const RemediationTypes = /*@__PURE__*/ S.Array(RemediationType);
 export type TagKey = string;
 export type TagValue = string;

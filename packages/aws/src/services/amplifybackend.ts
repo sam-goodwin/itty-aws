@@ -276,7 +276,7 @@ export const BackendAPIAppSyncAuthSettings = /*@__PURE__*/ S.suspend(() =>
   identifier: "BackendAPIAppSyncAuthSettings",
 }) as any as S.Schema<BackendAPIAppSyncAuthSettings>;
 export interface BackendAPIAuthType {
-  Mode?: Mode;
+  Mode?: Mode | (string & {});
   Settings?: BackendAPIAppSyncAuthSettings;
 }
 export const BackendAPIAuthType = /*@__PURE__*/ S.suspend(() =>
@@ -298,7 +298,7 @@ export type ResolutionStrategy =
 export const ResolutionStrategy = /*@__PURE__*/ S.String;
 
 export interface BackendAPIConflictResolution {
-  ResolutionStrategy?: ResolutionStrategy;
+  ResolutionStrategy?: ResolutionStrategy | (string & {});
 }
 export const BackendAPIConflictResolution = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ResolutionStrategy: S.optional(ResolutionStrategy) }).pipe(
@@ -448,7 +448,7 @@ export const SmsSettings = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "SmsSettings" }) as any as S.Schema<SmsSettings>;
 export interface CreateBackendAuthForgotPasswordConfig {
-  DeliveryMethod?: DeliveryMethod;
+  DeliveryMethod?: DeliveryMethod | (string & {});
   EmailSettings?: EmailSettings;
   SmsSettings?: SmsSettings;
 }
@@ -474,7 +474,7 @@ export const MFAMode = /*@__PURE__*/ S.String;
 export type MfaTypesElement = "SMS" | "TOTP";
 export const MfaTypesElement = /*@__PURE__*/ S.String;
 
-export type ListOfMfaTypesElement = MfaTypesElement[];
+export type ListOfMfaTypesElement = (MfaTypesElement | (string & {}))[];
 export const ListOfMfaTypesElement = /*@__PURE__*/ S.Array(MfaTypesElement);
 export interface Settings {
   MfaTypes?: MfaTypesElement[];
@@ -487,7 +487,7 @@ export const Settings = /*@__PURE__*/ S.suspend(() =>
   }).pipe(S.encodeKeys({ MfaTypes: "mfaTypes", SmsMessage: "smsMessage" })),
 ).annotate({ identifier: "Settings" }) as any as S.Schema<Settings>;
 export interface CreateBackendAuthMFAConfig {
-  MFAMode?: MFAMode;
+  MFAMode?: MFAMode | (string & {});
   Settings?: Settings;
 }
 export const CreateBackendAuthMFAConfig = /*@__PURE__*/ S.suspend(() =>
@@ -509,7 +509,7 @@ export type OAuthScopesElement =
   | "AWS_COGNITO_SIGNIN_USER_ADMIN";
 export const OAuthScopesElement = /*@__PURE__*/ S.String;
 
-export type ListOfOAuthScopesElement = OAuthScopesElement[];
+export type ListOfOAuthScopesElement = (OAuthScopesElement | (string & {}))[];
 export const ListOfOAuthScopesElement =
   /*@__PURE__*/ S.Array(OAuthScopesElement);
 export type ListOf__string = string[];
@@ -569,7 +569,7 @@ export const SocialProviderSettings = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SocialProviderSettings>;
 export interface CreateBackendAuthOAuthConfig {
   DomainPrefix?: string;
-  OAuthGrantType?: OAuthGrantType;
+  OAuthGrantType?: OAuthGrantType | (string & {});
   OAuthScopes?: OAuthScopesElement[];
   RedirectSignInURIs?: string[];
   RedirectSignOutURIs?: string[];
@@ -603,7 +603,10 @@ export type AdditionalConstraintsElement =
   | "REQUIRE_UPPERCASE";
 export const AdditionalConstraintsElement = /*@__PURE__*/ S.String;
 
-export type ListOfAdditionalConstraintsElement = AdditionalConstraintsElement[];
+export type ListOfAdditionalConstraintsElement = (
+  | AdditionalConstraintsElement
+  | (string & {})
+)[];
 export const ListOfAdditionalConstraintsElement = /*@__PURE__*/ S.Array(
   AdditionalConstraintsElement,
 );
@@ -645,8 +648,10 @@ export type RequiredSignUpAttributesElement =
   | "ZONE_INFO";
 export const RequiredSignUpAttributesElement = /*@__PURE__*/ S.String;
 
-export type ListOfRequiredSignUpAttributesElement =
-  RequiredSignUpAttributesElement[];
+export type ListOfRequiredSignUpAttributesElement = (
+  | RequiredSignUpAttributesElement
+  | (string & {})
+)[];
 export const ListOfRequiredSignUpAttributesElement = /*@__PURE__*/ S.Array(
   RequiredSignUpAttributesElement,
 );
@@ -658,7 +663,7 @@ export type SignInMethod =
 export const SignInMethod = /*@__PURE__*/ S.String;
 
 export interface CreateBackendAuthVerificationMessageConfig {
-  DeliveryMethod?: DeliveryMethod;
+  DeliveryMethod?: DeliveryMethod | (string & {});
   EmailSettings?: EmailSettings;
   SmsSettings?: SmsSettings;
 }
@@ -684,7 +689,7 @@ export interface CreateBackendAuthUserPoolConfig {
   OAuth?: CreateBackendAuthOAuthConfig;
   PasswordPolicy?: CreateBackendAuthPasswordPolicyConfig;
   RequiredSignUpAttributes?: RequiredSignUpAttributesElement[];
-  SignInMethod?: SignInMethod;
+  SignInMethod?: SignInMethod | (string & {});
   UserPoolName?: string;
   VerificationMessage?: CreateBackendAuthVerificationMessageConfig;
 }
@@ -714,9 +719,9 @@ export const CreateBackendAuthUserPoolConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateBackendAuthUserPoolConfig",
 }) as any as S.Schema<CreateBackendAuthUserPoolConfig>;
 export interface CreateBackendAuthResourceConfig {
-  AuthResources?: AuthResources;
+  AuthResources?: AuthResources | (string & {});
   IdentityPoolConfigs?: CreateBackendAuthIdentityPoolConfig;
-  Service?: Service;
+  Service?: Service | (string & {});
   UserPoolConfigs?: CreateBackendAuthUserPoolConfig;
 }
 export const CreateBackendAuthResourceConfig = /*@__PURE__*/ S.suspend(() =>
@@ -847,13 +852,19 @@ export const CreateBackendConfigResponse = /*@__PURE__*/ S.suspend(() =>
 export type AuthenticatedElement = "READ" | "CREATE_AND_UPDATE" | "DELETE";
 export const AuthenticatedElement = /*@__PURE__*/ S.String;
 
-export type ListOfAuthenticatedElement = AuthenticatedElement[];
+export type ListOfAuthenticatedElement = (
+  | AuthenticatedElement
+  | (string & {})
+)[];
 export const ListOfAuthenticatedElement =
   /*@__PURE__*/ S.Array(AuthenticatedElement);
 export type UnAuthenticatedElement = "READ" | "CREATE_AND_UPDATE" | "DELETE";
 export const UnAuthenticatedElement = /*@__PURE__*/ S.String;
 
-export type ListOfUnAuthenticatedElement = UnAuthenticatedElement[];
+export type ListOfUnAuthenticatedElement = (
+  | UnAuthenticatedElement
+  | (string & {})
+)[];
 export const ListOfUnAuthenticatedElement = /*@__PURE__*/ S.Array(
   UnAuthenticatedElement,
 );

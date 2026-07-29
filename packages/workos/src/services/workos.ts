@@ -253,7 +253,7 @@ export const ClaimViewResponseOrganizationsItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Organizations the user belongs to, offered as placement choices. */
 export type ClaimViewResponseOrganizationsList =
-  ReadonlyArray<ClaimViewResponseOrganizationsItem>;
+  Array<ClaimViewResponseOrganizationsItem>;
 export const ClaimViewResponseOrganizationsList = /*@__PURE__*/ S.Array(
   ClaimViewResponseOrganizationsItem,
 ) as any as S.Schema<ClaimViewResponseOrganizationsList>;
@@ -457,7 +457,7 @@ export const ApiKeyOwner = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ApiKeyOwner" }) as any as S.Schema<ApiKeyOwner>;
 
 /** The permission slugs assigned to the API Key. */
-export type ApiKeyPermissionsList = ReadonlyArray<string>;
+export type ApiKeyPermissionsList = Array<string>;
 export const ApiKeyPermissionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ApiKeyPermissionsList>;
@@ -650,7 +650,7 @@ export const ApplicationCredentialsControllerListResponseBodyItem =
   }) as any as S.Schema<ApplicationCredentialsControllerListResponseBodyItem>;
 
 export type ApplicationCredentialsControllerListResponseBodyList =
-  ReadonlyArray<ApplicationCredentialsControllerListResponseBodyItem>;
+  Array<ApplicationCredentialsControllerListResponseBodyItem>;
 export const ApplicationCredentialsControllerListResponseBodyList =
   /*@__PURE__*/ S.Array(
     ApplicationCredentialsControllerListResponseBodyItem,
@@ -668,7 +668,7 @@ export const ApplicationCredentialsControllerListResponse =
   }) as any as S.Schema<ApplicationCredentialsControllerListResponse>;
 
 /** The OAuth scopes granted to the application. */
-export type CreateOAuthApplicationDtoScopesList = ReadonlyArray<string>;
+export type CreateOAuthApplicationDtoScopesList = Array<string>;
 export const CreateOAuthApplicationDtoScopesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateOAuthApplicationDtoScopesList>;
@@ -687,8 +687,7 @@ export const RedirectUriDto = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RedirectUriDto" }) as any as S.Schema<RedirectUriDto>;
 
 /** Redirect URIs for the application. */
-export type CreateOAuthApplicationDtoRedirectUrisList =
-  ReadonlyArray<RedirectUriDto>;
+export type CreateOAuthApplicationDtoRedirectUrisList = Array<RedirectUriDto>;
 export const CreateOAuthApplicationDtoRedirectUrisList = /*@__PURE__*/ S.Array(
   RedirectUriDto,
 ) as any as S.Schema<CreateOAuthApplicationDtoRedirectUrisList>;
@@ -729,7 +728,7 @@ export const CreateOAuthApplicationDto = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateOAuthApplicationDto>;
 
 /** The OAuth scopes granted to the application. */
-export type CreateM2MApplicationDtoScopesList = ReadonlyArray<string>;
+export type CreateM2MApplicationDtoScopesList = Array<string>;
 export const CreateM2MApplicationDtoScopesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateM2MApplicationDtoScopesList>;
@@ -816,8 +815,7 @@ export const ApplicationsControllerCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ApplicationsControllerCreateRequest>;
 
 /** The scopes available for this application. */
-export type ApplicationsControllerCreateResponseScopesList =
-  ReadonlyArray<string>;
+export type ApplicationsControllerCreateResponseScopesList = Array<string>;
 export const ApplicationsControllerCreateResponseScopesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -841,7 +839,7 @@ export const ApplicationsControllerCreateResponseRedirectUrisItem =
 
 /** The redirect URIs configured for this application. */
 export type ApplicationsControllerCreateResponseRedirectUrisList =
-  ReadonlyArray<ApplicationsControllerCreateResponseRedirectUrisItem>;
+  Array<ApplicationsControllerCreateResponseRedirectUrisItem>;
 export const ApplicationsControllerCreateResponseRedirectUrisList =
   /*@__PURE__*/ S.Array(
     ApplicationsControllerCreateResponseRedirectUrisItem,
@@ -937,8 +935,7 @@ export const ApplicationsControllerFindRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ApplicationsControllerFindRequest>;
 
 /** The scopes available for this application. */
-export type ApplicationsControllerFindResponseScopesList =
-  ReadonlyArray<string>;
+export type ApplicationsControllerFindResponseScopesList = Array<string>;
 export const ApplicationsControllerFindResponseScopesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -962,7 +959,7 @@ export const ApplicationsControllerFindResponseRedirectUrisItem =
 
 /** The redirect URIs configured for this application. */
 export type ApplicationsControllerFindResponseRedirectUrisList =
-  ReadonlyArray<ApplicationsControllerFindResponseRedirectUrisItem>;
+  Array<ApplicationsControllerFindResponseRedirectUrisItem>;
 export const ApplicationsControllerFindResponseRedirectUrisList =
   /*@__PURE__*/ S.Array(
     ApplicationsControllerFindResponseRedirectUrisItem,
@@ -1030,10 +1027,9 @@ export type ApplicationsControllerListRequestRegistrationTypesItem =
 export const ApplicationsControllerListRequestRegistrationTypesItem =
   /*@__PURE__*/ S.String;
 
-export type ApplicationsControllerListRequestRegistrationTypesList =
-  ReadonlyArray<
-    ApplicationsControllerListRequestRegistrationTypesItem | (string & {})
-  >;
+export type ApplicationsControllerListRequestRegistrationTypesList = Array<
+  ApplicationsControllerListRequestRegistrationTypesItem | (string & {})
+>;
 export const ApplicationsControllerListRequestRegistrationTypesList =
   /*@__PURE__*/ S.Array(
     ApplicationsControllerListRequestRegistrationTypesItem,
@@ -1069,7 +1065,7 @@ export const ApplicationsControllerListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ApplicationsControllerListRequest>;
 
 /** The scopes available for this application. */
-export type ConnectApplicationScopesList = ReadonlyArray<string>;
+export type ConnectApplicationScopesList = Array<string>;
 export const ConnectApplicationScopesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ConnectApplicationScopesList>;
@@ -1091,7 +1087,7 @@ export const ConnectApplicationRedirectUrisItem = /*@__PURE__*/ S.suspend(() =>
 
 /** The redirect URIs configured for this application. */
 export type ConnectApplicationRedirectUrisList =
-  ReadonlyArray<ConnectApplicationRedirectUrisItem>;
+  Array<ConnectApplicationRedirectUrisItem>;
 export const ConnectApplicationRedirectUrisList = /*@__PURE__*/ S.Array(
   ConnectApplicationRedirectUrisItem,
 ) as any as S.Schema<ConnectApplicationRedirectUrisList>;
@@ -1148,7 +1144,7 @@ export const ConnectApplication = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConnectApplication>;
 
 /** The list of records for the current page. */
-export type ConnectApplicationListDataList = ReadonlyArray<ConnectApplication>;
+export type ConnectApplicationListDataList = Array<ConnectApplication>;
 export const ConnectApplicationListDataList = /*@__PURE__*/ S.Array(
   ConnectApplication,
 ) as any as S.Schema<ConnectApplicationListDataList>;
@@ -1188,8 +1184,7 @@ export const ConnectApplicationList = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConnectApplicationList>;
 
 /** The OAuth scopes granted to the application. */
-export type ApplicationsControllerUpdateRequestScopesList =
-  ReadonlyArray<string>;
+export type ApplicationsControllerUpdateRequestScopesList = Array<string>;
 export const ApplicationsControllerUpdateRequestScopesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1197,7 +1192,7 @@ export const ApplicationsControllerUpdateRequestScopesList =
 
 /** Updated redirect URIs for the application. OAuth applications only. */
 export type ApplicationsControllerUpdateRequestRedirectUrisList =
-  ReadonlyArray<RedirectUriDto>;
+  Array<RedirectUriDto>;
 export const ApplicationsControllerUpdateRequestRedirectUrisList =
   /*@__PURE__*/ S.Array(
     RedirectUriDto,
@@ -1232,8 +1227,7 @@ export const ApplicationsControllerUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ApplicationsControllerUpdateRequest>;
 
 /** The scopes available for this application. */
-export type ApplicationsControllerUpdateResponseScopesList =
-  ReadonlyArray<string>;
+export type ApplicationsControllerUpdateResponseScopesList = Array<string>;
 export const ApplicationsControllerUpdateResponseScopesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1257,7 +1251,7 @@ export const ApplicationsControllerUpdateResponseRedirectUrisItem =
 
 /** The redirect URIs configured for this application. */
 export type ApplicationsControllerUpdateResponseRedirectUrisList =
-  ReadonlyArray<ApplicationsControllerUpdateResponseRedirectUrisItem>;
+  Array<ApplicationsControllerUpdateResponseRedirectUrisItem>;
 export const ApplicationsControllerUpdateResponseRedirectUrisList =
   /*@__PURE__*/ S.Array(
     ApplicationsControllerUpdateResponseRedirectUrisItem,
@@ -1360,7 +1354,7 @@ export const AuditLogEventTargetDto = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AuditLogEventTargetDto>;
 
 /** The resources affected by the action. */
-export type AuditLogEventDtoTargetsList = ReadonlyArray<AuditLogEventTargetDto>;
+export type AuditLogEventDtoTargetsList = Array<AuditLogEventTargetDto>;
 export const AuditLogEventDtoTargetsList = /*@__PURE__*/ S.Array(
   AuditLogEventTargetDto,
 ) as any as S.Schema<AuditLogEventDtoTargetsList>;
@@ -1489,16 +1483,14 @@ export const AuditLogExportJson = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AuditLogExportJson>;
 
 /** List of actions to filter against. */
-export type AuditLogExportsControllerExportsRequestActionsList =
-  ReadonlyArray<string>;
+export type AuditLogExportsControllerExportsRequestActionsList = Array<string>;
 export const AuditLogExportsControllerExportsRequestActionsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AuditLogExportsControllerExportsRequestActionsList>;
 
 /** Deprecated. Use `actor_names` instead. */
-export type AuditLogExportsControllerExportsRequestActorsList =
-  ReadonlyArray<string>;
+export type AuditLogExportsControllerExportsRequestActorsList = Array<string>;
 export const AuditLogExportsControllerExportsRequestActorsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1506,23 +1498,21 @@ export const AuditLogExportsControllerExportsRequestActorsList =
 
 /** List of actor names to filter against. */
 export type AuditLogExportsControllerExportsRequestActorNamesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const AuditLogExportsControllerExportsRequestActorNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AuditLogExportsControllerExportsRequestActorNamesList>;
 
 /** List of actor IDs to filter against. */
-export type AuditLogExportsControllerExportsRequestActorIdsList =
-  ReadonlyArray<string>;
+export type AuditLogExportsControllerExportsRequestActorIdsList = Array<string>;
 export const AuditLogExportsControllerExportsRequestActorIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AuditLogExportsControllerExportsRequestActorIdsList>;
 
 /** List of target types to filter against. */
-export type AuditLogExportsControllerExportsRequestTargetsList =
-  ReadonlyArray<string>;
+export type AuditLogExportsControllerExportsRequestTargetsList = Array<string>;
 export const AuditLogExportsControllerExportsRequestTargetsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1706,7 +1696,7 @@ export const AuditLogSchemaJsonTargetsItem = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of targets for the schema. */
 export type AuditLogSchemaJsonTargetsList =
-  ReadonlyArray<AuditLogSchemaJsonTargetsItem>;
+  Array<AuditLogSchemaJsonTargetsItem>;
 export const AuditLogSchemaJsonTargetsList = /*@__PURE__*/ S.Array(
   AuditLogSchemaJsonTargetsItem,
 ) as any as S.Schema<AuditLogSchemaJsonTargetsList>;
@@ -1773,7 +1763,7 @@ export const AuditLogActionJson = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of records for the current page. */
 export type AuditLogValidatorsControllerListResponseDataList =
-  ReadonlyArray<AuditLogActionJson>;
+  Array<AuditLogActionJson>;
 export const AuditLogValidatorsControllerListResponseDataList =
   /*@__PURE__*/ S.Array(
     AuditLogActionJson,
@@ -1829,7 +1819,7 @@ export const AuditLogSchemaTargetDto = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of targets for the schema. */
 export type AuditLogValidatorVersionsControllerCreateRequestTargetsList =
-  ReadonlyArray<AuditLogSchemaTargetDto>;
+  Array<AuditLogSchemaTargetDto>;
 export const AuditLogValidatorVersionsControllerCreateRequestTargetsList =
   /*@__PURE__*/ S.Array(
     AuditLogSchemaTargetDto,
@@ -1916,7 +1906,7 @@ export const AuditLogValidatorVersionsControllerSchemasResponseListMetadata =
 
 /** The list of records for the current page. */
 export type AuditLogValidatorVersionsControllerSchemasResponseDataList =
-  ReadonlyArray<AuditLogSchemaJson>;
+  Array<AuditLogSchemaJson>;
 export const AuditLogValidatorVersionsControllerSchemasResponseDataList =
   /*@__PURE__*/ S.Array(
     AuditLogSchemaJson,
@@ -2363,7 +2353,7 @@ export const AuthorizationPermission = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of records for the current page. */
 export type AuthorizationPermissionListDataList =
-  ReadonlyArray<AuthorizationPermission>;
+  Array<AuthorizationPermission>;
 export const AuthorizationPermissionListDataList = /*@__PURE__*/ S.Array(
   AuthorizationPermission,
 ) as any as S.Schema<AuthorizationPermissionListDataList>;
@@ -2524,8 +2514,7 @@ export const AuthorizationResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AuthorizationResource>;
 
 /** The list of records for the current page. */
-export type AuthorizationResourceListDataList =
-  ReadonlyArray<AuthorizationResource>;
+export type AuthorizationResourceListDataList = Array<AuthorizationResource>;
 export const AuthorizationResourceListDataList = /*@__PURE__*/ S.Array(
   AuthorizationResource,
 ) as any as S.Schema<AuthorizationResourceListDataList>;
@@ -2710,8 +2699,7 @@ export const AuthorizationGroupRoleAssignmentsControllerListRequest =
   }) as any as S.Schema<AuthorizationGroupRoleAssignmentsControllerListRequest>;
 
 /** The list of records for the current page. */
-export type GroupRoleAssignmentListDataList =
-  ReadonlyArray<GroupRoleAssignment>;
+export type GroupRoleAssignmentListDataList = Array<GroupRoleAssignment>;
 export const GroupRoleAssignmentListDataList = /*@__PURE__*/ S.Array(
   GroupRoleAssignment,
 ) as any as S.Schema<GroupRoleAssignmentListDataList>;
@@ -2842,7 +2830,7 @@ export const ReplaceGroupRoleAssignmentEntryDto = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of role assignments that should exist for the group. All existing assignments will be replaced. */
 export type AuthorizationGroupRoleAssignmentsControllerReplaceGroupRoleAssignmentsRequestRoleAssignmentsList =
-  ReadonlyArray<ReplaceGroupRoleAssignmentEntryDto>;
+  Array<ReplaceGroupRoleAssignmentEntryDto>;
 export const AuthorizationGroupRoleAssignmentsControllerReplaceGroupRoleAssignmentsRequestRoleAssignmentsList =
   /*@__PURE__*/ S.Array(
     ReplaceGroupRoleAssignmentEntryDto,
@@ -2903,7 +2891,7 @@ export const AuthorizationOrganizationRolePermissionsControllerAddPermissionResp
 
 /** The permission slugs assigned to the role. */
 export type AuthorizationOrganizationRolePermissionsControllerAddPermissionResponsePermissionsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const AuthorizationOrganizationRolePermissionsControllerAddPermissionResponsePermissionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2982,7 +2970,7 @@ export type RoleType = "EnvironmentRole" | "OrganizationRole";
 export const RoleType = /*@__PURE__*/ S.String;
 
 /** The permission slugs assigned to the role. */
-export type RolePermissionsList = ReadonlyArray<string>;
+export type RolePermissionsList = Array<string>;
 export const RolePermissionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RolePermissionsList>;
@@ -3026,7 +3014,7 @@ export const Role = /*@__PURE__*/ S.suspend(() =>
 
 /** The permission slugs to assign to the role. */
 export type AuthorizationOrganizationRolePermissionsControllerSetPermissionsRequestPermissionsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const AuthorizationOrganizationRolePermissionsControllerSetPermissionsRequestPermissionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3068,7 +3056,7 @@ export const AuthorizationOrganizationRolePermissionsControllerSetPermissionsRes
 
 /** The permission slugs assigned to the role. */
 export type AuthorizationOrganizationRolePermissionsControllerSetPermissionsResponsePermissionsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const AuthorizationOrganizationRolePermissionsControllerSetPermissionsResponsePermissionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3156,7 +3144,7 @@ export const AuthorizationOrganizationRolesControllerCreateResponseType =
 
 /** The permission slugs assigned to the role. */
 export type AuthorizationOrganizationRolesControllerCreateResponsePermissionsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const AuthorizationOrganizationRolesControllerCreateResponsePermissionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3262,7 +3250,7 @@ export const AuthorizationOrganizationRolesControllerGetResponseType =
 
 /** The permission slugs assigned to the role. */
 export type AuthorizationOrganizationRolesControllerGetResponsePermissionsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const AuthorizationOrganizationRolesControllerGetResponsePermissionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3329,7 +3317,7 @@ export const AuthorizationOrganizationRolesControllerListRequest =
   }) as any as S.Schema<AuthorizationOrganizationRolesControllerListRequest>;
 
 /** The list of records for the current page. */
-export type RoleListDataList = ReadonlyArray<Role>;
+export type RoleListDataList = Array<Role>;
 export const RoleListDataList = /*@__PURE__*/ S.Array(
   Role,
 ) as any as S.Schema<RoleListDataList>;
@@ -3383,7 +3371,7 @@ export const AuthorizationOrganizationRolesControllerUpdateResponseType =
 
 /** The permission slugs assigned to the role. */
 export type AuthorizationOrganizationRolesControllerUpdateResponsePermissionsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const AuthorizationOrganizationRolesControllerUpdateResponsePermissionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3822,7 +3810,7 @@ export const UserlandUserOrganizationMembershipBaseWithUser =
 
 /** The list of records for the current page. */
 export type UserlandUserOrganizationMembershipBaseWithUserListDataList =
-  ReadonlyArray<UserlandUserOrganizationMembershipBaseWithUser>;
+  Array<UserlandUserOrganizationMembershipBaseWithUser>;
 export const UserlandUserOrganizationMembershipBaseWithUserListDataList =
   /*@__PURE__*/ S.Array(
     UserlandUserOrganizationMembershipBaseWithUser,
@@ -4381,7 +4369,7 @@ export const AuthorizationRoleAssignmentsControllerListRoleAssignmentsRequest =
   }) as any as S.Schema<AuthorizationRoleAssignmentsControllerListRoleAssignmentsRequest>;
 
 /** The list of records for the current page. */
-export type UserRoleAssignmentListDataList = ReadonlyArray<UserRoleAssignment>;
+export type UserRoleAssignmentListDataList = Array<UserRoleAssignment>;
 export const UserRoleAssignmentListDataList = /*@__PURE__*/ S.Array(
   UserRoleAssignment,
 ) as any as S.Schema<UserRoleAssignmentListDataList>;
@@ -4591,7 +4579,7 @@ export const AuthorizationRolePermissionsControllerAddPermissionResponseType =
 
 /** The permission slugs assigned to the role. */
 export type AuthorizationRolePermissionsControllerAddPermissionResponsePermissionsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const AuthorizationRolePermissionsControllerAddPermissionResponsePermissionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4640,7 +4628,7 @@ export const AuthorizationRolePermissionsControllerAddPermissionResponse =
 
 /** The permission slugs to assign to the role. */
 export type AuthorizationRolePermissionsControllerSetPermissionsRequestPermissionsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const AuthorizationRolePermissionsControllerSetPermissionsRequestPermissionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4679,7 +4667,7 @@ export const AuthorizationRolePermissionsControllerSetPermissionsResponseType =
 
 /** The permission slugs assigned to the role. */
 export type AuthorizationRolePermissionsControllerSetPermissionsResponsePermissionsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const AuthorizationRolePermissionsControllerSetPermissionsResponsePermissionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4757,7 +4745,7 @@ export const AuthorizationRolesControllerCreateResponseType =
 
 /** The permission slugs assigned to the role. */
 export type AuthorizationRolesControllerCreateResponsePermissionsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const AuthorizationRolesControllerCreateResponsePermissionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4862,7 +4850,7 @@ export const AuthorizationRolesControllerUpdateResponseType =
 
 /** The permission slugs assigned to the role. */
 export type AuthorizationRolesControllerUpdateResponsePermissionsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const AuthorizationRolesControllerUpdateResponsePermissionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4969,7 +4957,7 @@ export const AuthorizedApplicationsControllerListRequest =
 
 /** The scopes granted by the user to the application. */
 export type AuthorizedConnectApplicationListDataItemGrantedScopesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const AuthorizedConnectApplicationListDataItemGrantedScopesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5001,7 +4989,7 @@ export const AuthorizedConnectApplicationListDataItem = /*@__PURE__*/ S.suspend(
 
 /** The list of records for the current page. */
 export type AuthorizedConnectApplicationListDataList =
-  ReadonlyArray<AuthorizedConnectApplicationListDataItem>;
+  Array<AuthorizedConnectApplicationListDataItem>;
 export const AuthorizedConnectApplicationListDataList = /*@__PURE__*/ S.Array(
   AuthorizedConnectApplicationListDataItem,
 ) as any as S.Schema<AuthorizedConnectApplicationListDataList>;
@@ -5188,7 +5176,7 @@ export const ConnectionDomainsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConnectionDomainsItem>;
 
 /** List of Organization Domains. */
-export type ConnectionDomainsList = ReadonlyArray<ConnectionDomainsItem>;
+export type ConnectionDomainsList = Array<ConnectionDomainsItem>;
 export const ConnectionDomainsList = /*@__PURE__*/ S.Array(
   ConnectionDomainsItem,
 ) as any as S.Schema<ConnectionDomainsList>;
@@ -5323,7 +5311,7 @@ export const ConnectionsControllerListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConnectionsControllerListRequest>;
 
 /** The list of records for the current page. */
-export type ConnectionListDataList = ReadonlyArray<Connection>;
+export type ConnectionListDataList = Array<Connection>;
 export const ConnectionListDataList = /*@__PURE__*/ S.Array(
   Connection,
 ) as any as S.Schema<ConnectionListDataList>;
@@ -5445,7 +5433,7 @@ export const CorsOriginsControllerListResponseListMetadata =
 
 /** The list of records for the current page. */
 export type CorsOriginsControllerListResponseDataList =
-  ReadonlyArray<CorsOriginResponse>;
+  Array<CorsOriginResponse>;
 export const CorsOriginsControllerListResponseDataList = /*@__PURE__*/ S.Array(
   CorsOriginResponse,
 ) as any as S.Schema<CorsOriginsControllerListResponseDataList>;
@@ -5536,7 +5524,7 @@ export const DataIntegrationsControllerGetUserlandUserTokenRequest =
 
 /** The scopes granted to the access token. */
 export type DataIntegrationAccessTokenResponseCase0AccessTokenScopesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const DataIntegrationAccessTokenResponseCase0AccessTokenScopesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5544,7 +5532,7 @@ export const DataIntegrationAccessTokenResponseCase0AccessTokenScopesList =
 
 /** If the integration has requested scopes that aren't present on the access token, they're listed here. */
 export type DataIntegrationAccessTokenResponseCase0AccessTokenMissingScopesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const DataIntegrationAccessTokenResponseCase0AccessTokenMissingScopesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5674,7 +5662,7 @@ export const DataIntegrationsControllerUpsertApiKeyRequest =
   }) as any as S.Schema<DataIntegrationsControllerUpsertApiKeyRequest>;
 
 /** The OAuth scopes granted for this connection. */
-export type ConnectedAccountScopesList = ReadonlyArray<string>;
+export type ConnectedAccountScopesList = Array<string>;
 export const ConnectedAccountScopesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ConnectedAccountScopesList>;
@@ -5756,7 +5744,7 @@ export const DataIntegrationsControllerVendCredentialsRequest =
 
 /** The scopes granted to the access token. */
 export type DataIntegrationCredentialsResponseCase0CredentialScopesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const DataIntegrationCredentialsResponseCase0CredentialScopesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5764,7 +5752,7 @@ export const DataIntegrationCredentialsResponseCase0CredentialScopesList =
 
 /** If the integration has requested scopes that aren't present on the access token, they're listed here. */
 export type DataIntegrationCredentialsResponseCase0CredentialMissingScopesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const DataIntegrationCredentialsResponseCase0CredentialMissingScopesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5911,7 +5899,7 @@ export const DataIntegrationsControllerVendCredentialsResponse =
 
 /** The OAuth scopes to request for the Data Integration. Defaults to the provider's configured scopes when omitted. */
 export type DataIntegrationsManagementControllerCreateDataIntegrationRequestScopesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const DataIntegrationsManagementControllerCreateDataIntegrationRequestScopesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5924,7 +5912,7 @@ export const DataIntegrationsManagementControllerCreateDataIntegrationRequestAut
 
 /** How accounts authenticate with the provider. Defaults to `["oauth"]`. Use `["api_key"]` to declare an API key integration; `credentials` is then not required and keys are supplied per-tenant (optionally via `api_key` on this request). */
 export type DataIntegrationsManagementControllerCreateDataIntegrationRequestAuthMethodsList =
-  ReadonlyArray<
+  Array<
     | DataIntegrationsManagementControllerCreateDataIntegrationRequestAuthMethodsItem
     | (string & {})
   >;
@@ -6093,7 +6081,7 @@ export const DataIntegrationsManagementControllerCreateDataIntegrationRequest =
 export type DataIntegrationState = "valid" | "invalid" | "requested";
 export const DataIntegrationState = /*@__PURE__*/ S.String;
 
-export type DataIntegrationScopesList = ReadonlyArray<string>;
+export type DataIntegrationScopesList = Array<string>;
 export const DataIntegrationScopesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DataIntegrationScopesList>;
@@ -6103,7 +6091,7 @@ export const DataIntegrationAuthMethodsItem = /*@__PURE__*/ S.String;
 
 /** How accounts authenticate with the provider for this Data Integration. */
 export type DataIntegrationAuthMethodsList =
-  ReadonlyArray<DataIntegrationAuthMethodsItem>;
+  Array<DataIntegrationAuthMethodsItem>;
 export const DataIntegrationAuthMethodsList = /*@__PURE__*/ S.Array(
   DataIntegrationAuthMethodsItem,
 ) as any as S.Schema<DataIntegrationAuthMethodsList>;
@@ -6337,7 +6325,7 @@ export const DataIntegrationsManagementControllerListDataIntegrationsRequest =
   }) as any as S.Schema<DataIntegrationsManagementControllerListDataIntegrationsRequest>;
 
 /** The list of records for the current page. */
-export type DataIntegrationListDataList = ReadonlyArray<DataIntegration>;
+export type DataIntegrationListDataList = Array<DataIntegration>;
 export const DataIntegrationListDataList = /*@__PURE__*/ S.Array(
   DataIntegration,
 ) as any as S.Schema<DataIntegrationListDataList>;
@@ -6378,7 +6366,7 @@ export const DataIntegrationList = /*@__PURE__*/ S.suspend(() =>
 
 /** The OAuth scopes to request for the Data Integration. Pass `null` to reset to the provider's configured scopes. */
 export type DataIntegrationsManagementControllerUpdateDataIntegrationRequestScopesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const DataIntegrationsManagementControllerUpdateDataIntegrationRequestScopesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6488,7 +6476,7 @@ export const DataIntegrationsManagementControllerUpdateDataIntegrationRequest =
 
 /** The OAuth scopes granted for this connection. */
 export type DataIntegrationsUserManagementControllerCreateUserDataInstallationRequestScopesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const DataIntegrationsUserManagementControllerCreateUserDataInstallationRequestScopesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6629,8 +6617,7 @@ export const DataIntegrationsUserManagementControllerGetUserDataIntegrationsRequ
       "DataIntegrationsUserManagementControllerGetUserDataIntegrationsRequest",
   }) as any as S.Schema<DataIntegrationsUserManagementControllerGetUserDataIntegrationsRequest>;
 
-export type DataIntegrationsListResponseDataItemScopesList =
-  ReadonlyArray<string>;
+export type DataIntegrationsListResponseDataItemScopesList = Array<string>;
 export const DataIntegrationsListResponseDataItemScopesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6644,7 +6631,7 @@ export const DataIntegrationsListResponseDataItemAuthMethodsItem =
 
 /** The authentication methods supported by this provider (`oauth`, `api_key`, or both). Defaults to `["oauth"]` if absent. */
 export type DataIntegrationsListResponseDataItemAuthMethodsList =
-  ReadonlyArray<DataIntegrationsListResponseDataItemAuthMethodsItem>;
+  Array<DataIntegrationsListResponseDataItemAuthMethodsItem>;
 export const DataIntegrationsListResponseDataItemAuthMethodsList =
   /*@__PURE__*/ S.Array(
     DataIntegrationsListResponseDataItemAuthMethodsItem,
@@ -6659,7 +6646,7 @@ export const DataIntegrationsListResponseDataItemOwnership =
 
 /** The OAuth scopes granted for this connection. */
 export type DataIntegrationsListResponseDataItemConnectedAccountScopesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const DataIntegrationsListResponseDataItemConnectedAccountScopesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6801,7 +6788,7 @@ export const DataIntegrationsListResponseDataItem = /*@__PURE__*/ S.suspend(
 
 /** A list of [providers](/reference/pipes/provider), each including a [`connected_account`](/reference/pipes/connected-account) field with the user's connection status. */
 export type DataIntegrationsListResponseDataList =
-  ReadonlyArray<DataIntegrationsListResponseDataItem>;
+  Array<DataIntegrationsListResponseDataItem>;
 export const DataIntegrationsListResponseDataList = /*@__PURE__*/ S.Array(
   DataIntegrationsListResponseDataItem,
 ) as any as S.Schema<DataIntegrationsListResponseDataList>;
@@ -6823,7 +6810,7 @@ export const DataIntegrationsListResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The OAuth scopes granted for this connection. */
 export type DataIntegrationsUserManagementControllerUpdateUserDataInstallationRequestScopesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const DataIntegrationsUserManagementControllerUpdateUserDataInstallationRequestScopesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -7050,7 +7037,7 @@ export const DirectoriesControllerListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DirectoriesControllerListRequest>;
 
 /** The list of records for the current page. */
-export type DirectoryListDataList = ReadonlyArray<Directory>;
+export type DirectoryListDataList = Array<Directory>;
 export const DirectoryListDataList = /*@__PURE__*/ S.Array(
   Directory,
 ) as any as S.Schema<DirectoryListDataList>;
@@ -7174,7 +7161,7 @@ export const DirectoryGroupsControllerListRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DirectoryGroupsControllerListRequest>;
 
 /** The list of records for the current page. */
-export type DirectoryGroupListDataList = ReadonlyArray<DirectoryGroup>;
+export type DirectoryGroupListDataList = Array<DirectoryGroup>;
 export const DirectoryGroupListDataList = /*@__PURE__*/ S.Array(
   DirectoryGroup,
 ) as any as S.Schema<DirectoryGroupListDataList>;
@@ -7245,7 +7232,7 @@ export const DirectoryUserWithGroupsEmailsItem = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of email addresses for the user. */
 export type DirectoryUserWithGroupsEmailsList =
-  ReadonlyArray<DirectoryUserWithGroupsEmailsItem>;
+  Array<DirectoryUserWithGroupsEmailsItem>;
 export const DirectoryUserWithGroupsEmailsList = /*@__PURE__*/ S.Array(
   DirectoryUserWithGroupsEmailsItem,
 ) as any as S.Schema<DirectoryUserWithGroupsEmailsList>;
@@ -7274,13 +7261,13 @@ export const DirectoryUserWithGroupsCustomAttributesMap =
   ) as any as S.Schema<DirectoryUserWithGroupsCustomAttributesMap>;
 
 /** All roles assigned to the user. */
-export type DirectoryUserWithGroupsRolesList = ReadonlyArray<SlimRole>;
+export type DirectoryUserWithGroupsRolesList = Array<SlimRole>;
 export const DirectoryUserWithGroupsRolesList = /*@__PURE__*/ S.Array(
   SlimRole,
 ) as any as S.Schema<DirectoryUserWithGroupsRolesList>;
 
 /** The directory groups the user belongs to. Deprecated: starting May 1, 2026, this field returns an empty array by default for newly created teams. Existing teams currently depending on this field should migrate to the new access pattern for better throughput performance — the field is unbounded by user, so users with many group memberships produce large, slow response payloads. Use the List Directory Groups endpoint with a `user` filter to fetch a user's group memberships. */
-export type DirectoryUserWithGroupsGroupsList = ReadonlyArray<DirectoryGroup>;
+export type DirectoryUserWithGroupsGroupsList = Array<DirectoryGroup>;
 export const DirectoryUserWithGroupsGroupsList = /*@__PURE__*/ S.Array(
   DirectoryGroup,
 ) as any as S.Schema<DirectoryUserWithGroupsGroupsList>;
@@ -7387,7 +7374,7 @@ export const DirectoryUsersControllerListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DirectoryUsersControllerListRequest>;
 
 /** The list of records for the current page. */
-export type DirectoryUserListDataList = ReadonlyArray<DirectoryUserWithGroups>;
+export type DirectoryUserListDataList = Array<DirectoryUserWithGroups>;
 export const DirectoryUserListDataList = /*@__PURE__*/ S.Array(
   DirectoryUserWithGroups,
 ) as any as S.Schema<DirectoryUserListDataList>;
@@ -7426,7 +7413,7 @@ export const DirectoryUserList = /*@__PURE__*/ S.suspend(() =>
   identifier: "DirectoryUserList",
 }) as any as S.Schema<DirectoryUserList>;
 
-export type EventsControllerListRequestEventsList = ReadonlyArray<string>;
+export type EventsControllerListRequestEventsList = Array<string>;
 export const EventsControllerListRequestEventsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EventsControllerListRequestEventsList>;
@@ -7505,7 +7492,7 @@ export const EventSchema = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EventSchema" }) as any as S.Schema<EventSchema>;
 
 /** The list of records for the current page. */
-export type EventListDataList = ReadonlyArray<EventSchema>;
+export type EventListDataList = Array<EventSchema>;
 export const EventListDataList = /*@__PURE__*/ S.Array(
   EventSchema,
 ) as any as S.Schema<EventListDataList>;
@@ -7587,8 +7574,7 @@ export const UserConsentOptionChoicesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UserConsentOptionChoicesItem>;
 
 /** The available choices for this consent option. */
-export type UserConsentOptionChoicesList =
-  ReadonlyArray<UserConsentOptionChoicesItem>;
+export type UserConsentOptionChoicesList = Array<UserConsentOptionChoicesItem>;
 export const UserConsentOptionChoicesList = /*@__PURE__*/ S.Array(
   UserConsentOptionChoicesItem,
 ) as any as S.Schema<UserConsentOptionChoicesList>;
@@ -7616,7 +7602,7 @@ export const UserConsentOption = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of [User Consent Options](/reference/workos-connect/standalone/user-consent-options) to store with the session. */
 export type ExternalAuthControllerCompleteLoginRequestUserConsentOptionsList =
-  ReadonlyArray<UserConsentOption>;
+  Array<UserConsentOption>;
 export const ExternalAuthControllerCompleteLoginRequestUserConsentOptionsList =
   /*@__PURE__*/ S.Array(
     UserConsentOption,
@@ -7696,8 +7682,7 @@ export const FeatureFlagsControllerDisableFlagResponseOwner =
   }) as any as S.Schema<FeatureFlagsControllerDisableFlagResponseOwner>;
 
 /** Labels assigned to the Feature Flag for categorizing and filtering. */
-export type FeatureFlagsControllerDisableFlagResponseTagsList =
-  ReadonlyArray<string>;
+export type FeatureFlagsControllerDisableFlagResponseTagsList = Array<string>;
 export const FeatureFlagsControllerDisableFlagResponseTagsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -7781,8 +7766,7 @@ export const FeatureFlagsControllerEnableFlagResponseOwner =
   }) as any as S.Schema<FeatureFlagsControllerEnableFlagResponseOwner>;
 
 /** Labels assigned to the Feature Flag for categorizing and filtering. */
-export type FeatureFlagsControllerEnableFlagResponseTagsList =
-  ReadonlyArray<string>;
+export type FeatureFlagsControllerEnableFlagResponseTagsList = Array<string>;
 export const FeatureFlagsControllerEnableFlagResponseTagsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -7861,7 +7845,7 @@ export const FlagOwner = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FlagOwner" }) as any as S.Schema<FlagOwner>;
 
 /** Labels assigned to the Feature Flag for categorizing and filtering. */
-export type FlagTagsList = ReadonlyArray<string>;
+export type FlagTagsList = Array<string>;
 export const FlagTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<FlagTagsList>;
@@ -7928,7 +7912,7 @@ export const FeatureFlagsControllerListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FeatureFlagsControllerListRequest>;
 
 /** The list of records for the current page. */
-export type FlagListDataList = ReadonlyArray<Flag>;
+export type FlagListDataList = Array<Flag>;
 export const FlagListDataList = /*@__PURE__*/ S.Array(
   Flag,
 ) as any as S.Schema<FlagListDataList>;
@@ -8169,7 +8153,7 @@ export const UserlandUserOrganizationMembershipBaseListDataItem =
 
 /** The list of records for the current page. */
 export type UserlandUserOrganizationMembershipBaseListDataList =
-  ReadonlyArray<UserlandUserOrganizationMembershipBaseListDataItem>;
+  Array<UserlandUserOrganizationMembershipBaseListDataItem>;
 export const UserlandUserOrganizationMembershipBaseListDataList =
   /*@__PURE__*/ S.Array(
     UserlandUserOrganizationMembershipBaseListDataItem,
@@ -8348,7 +8332,7 @@ export const GroupsControllerListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GroupsControllerListRequest>;
 
 /** The list of records for the current page. */
-export type GroupListDataList = ReadonlyArray<Group>;
+export type GroupListDataList = Array<Group>;
 export const GroupListDataList = /*@__PURE__*/ S.Array(
   Group,
 ) as any as S.Schema<GroupListDataList>;
@@ -8606,7 +8590,7 @@ export const ObjectSummary = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ObjectSummary" }) as any as S.Schema<ObjectSummary>;
 
 /** List of object summaries. */
-export type ObjectListResponseDataList = ReadonlyArray<ObjectSummary>;
+export type ObjectListResponseDataList = Array<ObjectSummary>;
 export const ObjectListResponseDataList = /*@__PURE__*/ S.Array(
   ObjectSummary,
 ) as any as S.Schema<ObjectListResponseDataList>;
@@ -8744,7 +8728,7 @@ export const ObjectVersion = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ObjectVersion" }) as any as S.Schema<ObjectVersion>;
 
 /** List of object versions. */
-export type VersionListResponseDataList = ReadonlyArray<ObjectVersion>;
+export type VersionListResponseDataList = Array<ObjectVersion>;
 export const VersionListResponseDataList = /*@__PURE__*/ S.Array(
   ObjectVersion,
 ) as any as S.Schema<VersionListResponseDataList>;
@@ -8928,7 +8912,7 @@ export const JwtTemplatesControllerUpdateJwtTemplateRequest =
 
 /** The permission slugs to assign to the API key. */
 export type OrganizationApiKeysControllerCreateRequestPermissionsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const OrganizationApiKeysControllerCreateRequestPermissionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -8981,7 +8965,7 @@ export const OrganizationApiKeyWithValueOwner = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OrganizationApiKeyWithValueOwner>;
 
 /** The permission slugs assigned to the API Key. */
-export type OrganizationApiKeyWithValuePermissionsList = ReadonlyArray<string>;
+export type OrganizationApiKeyWithValuePermissionsList = Array<string>;
 export const OrganizationApiKeyWithValuePermissionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<OrganizationApiKeyWithValuePermissionsList>;
@@ -9076,7 +9060,7 @@ export const OrganizationApiKeyOwner = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OrganizationApiKeyOwner>;
 
 /** The permission slugs assigned to the API Key. */
-export type OrganizationApiKeyPermissionsList = ReadonlyArray<string>;
+export type OrganizationApiKeyPermissionsList = Array<string>;
 export const OrganizationApiKeyPermissionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<OrganizationApiKeyPermissionsList>;
@@ -9121,7 +9105,7 @@ export const OrganizationApiKey = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OrganizationApiKey>;
 
 /** The list of records for the current page. */
-export type OrganizationApiKeyListDataList = ReadonlyArray<OrganizationApiKey>;
+export type OrganizationApiKeyListDataList = Array<OrganizationApiKey>;
 export const OrganizationApiKeyListDataList = /*@__PURE__*/ S.Array(
   OrganizationApiKey,
 ) as any as S.Schema<OrganizationApiKeyListDataList>;
@@ -9193,7 +9177,7 @@ export const OrganizationAuthorizedApplicationsControllerListRequest =
 
 /** The scopes granted by the user to the application. */
 export type OrganizationAuthorizedConnectApplicationListDataItemGrantedScopesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const OrganizationAuthorizedConnectApplicationListDataItemGrantedScopesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -9229,7 +9213,7 @@ export const OrganizationAuthorizedConnectApplicationListDataItem =
 
 /** The list of records for the current page. */
 export type OrganizationAuthorizedConnectApplicationListDataList =
-  ReadonlyArray<OrganizationAuthorizedConnectApplicationListDataItem>;
+  Array<OrganizationAuthorizedConnectApplicationListDataItem>;
 export const OrganizationAuthorizedConnectApplicationListDataList =
   /*@__PURE__*/ S.Array(
     OrganizationAuthorizedConnectApplicationListDataItem,
@@ -9525,8 +9509,7 @@ export const OrganizationMembershipGroupsControllerListGroupsRequest =
   }) as any as S.Schema<OrganizationMembershipGroupsControllerListGroupsRequest>;
 
 /** The domains associated with the organization. Deprecated in favor of `domain_data`. */
-export type OrganizationsControllerCreateRequestDomainsList =
-  ReadonlyArray<string>;
+export type OrganizationsControllerCreateRequestDomainsList = Array<string>;
 export const OrganizationsControllerCreateRequestDomainsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -9553,7 +9536,7 @@ export const OrganizationDomainDataDto = /*@__PURE__*/ S.suspend(() =>
 
 /** The domains associated with the organization, including verification state. */
 export type OrganizationsControllerCreateRequestDomainDataList =
-  ReadonlyArray<OrganizationDomainDataDto>;
+  Array<OrganizationDomainDataDto>;
 export const OrganizationsControllerCreateRequestDomainDataList =
   /*@__PURE__*/ S.Array(
     OrganizationDomainDataDto,
@@ -9657,7 +9640,7 @@ export const OrganizationDomainsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OrganizationDomainsItem>;
 
 /** List of Organization Domains. */
-export type OrganizationDomainsList = ReadonlyArray<OrganizationDomainsItem>;
+export type OrganizationDomainsList = Array<OrganizationDomainsItem>;
 export const OrganizationDomainsList = /*@__PURE__*/ S.Array(
   OrganizationDomainsItem,
 ) as any as S.Schema<OrganizationDomainsList>;
@@ -9846,8 +9829,7 @@ export const OrganizationsControllerGetByExternalIdRequest =
     identifier: "OrganizationsControllerGetByExternalIdRequest",
   }) as any as S.Schema<OrganizationsControllerGetByExternalIdRequest>;
 
-export type OrganizationsControllerListRequestDomainsList =
-  ReadonlyArray<string>;
+export type OrganizationsControllerListRequestDomainsList = Array<string>;
 export const OrganizationsControllerListRequestDomainsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -9883,7 +9865,7 @@ export const OrganizationsControllerListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OrganizationsControllerListRequest>;
 
 /** The list of records for the current page. */
-export type OrganizationListDataList = ReadonlyArray<Organization>;
+export type OrganizationListDataList = Array<Organization>;
 export const OrganizationListDataList = /*@__PURE__*/ S.Array(
   Organization,
 ) as any as S.Schema<OrganizationListDataList>;
@@ -9924,7 +9906,7 @@ export const OrganizationList = /*@__PURE__*/ S.suspend(() =>
 
 /** The domains associated with the organization. Deprecated in favor of `domain_data`. */
 export type OrganizationsControllerUpdateOrganizationRequestDomainsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const OrganizationsControllerUpdateOrganizationRequestDomainsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -9932,7 +9914,7 @@ export const OrganizationsControllerUpdateOrganizationRequestDomainsList =
 
 /** The domains associated with the organization, including verification state. */
 export type OrganizationsControllerUpdateOrganizationRequestDomainDataList =
-  ReadonlyArray<OrganizationDomainDataDto>;
+  Array<OrganizationDomainDataDto>;
 export const OrganizationsControllerUpdateOrganizationRequestDomainDataList =
   /*@__PURE__*/ S.Array(
     OrganizationDomainDataDto,
@@ -10002,7 +9984,7 @@ export const PortalSessionsControllerCreateRequestIntent =
 
 /** The email addresses of the IT contacts to grant access to the Admin Portal for the given organization. Accepts up to 20 emails. */
 export type PortalSessionsControllerCreateRequestItContactEmailsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PortalSessionsControllerCreateRequestItContactEmailsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -10049,8 +10031,7 @@ export const PortalLinkResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PortalLinkResponse",
 }) as any as S.Schema<PortalLinkResponse>;
 
-export type ProviderControllerConfigureRequestScopesList =
-  ReadonlyArray<string>;
+export type ProviderControllerConfigureRequestScopesList = Array<string>;
 export const ProviderControllerConfigureRequestScopesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -10089,8 +10070,7 @@ export const ProviderControllerConfigureRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProviderControllerConfigureRequest",
 }) as any as S.Schema<ProviderControllerConfigureRequest>;
 
-export type DataIntegrationConfigurationResponseScopesList =
-  ReadonlyArray<string>;
+export type DataIntegrationConfigurationResponseScopesList = Array<string>;
 export const DataIntegrationConfigurationResponseScopesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -10188,7 +10168,7 @@ export const ProviderControllerListForOrganizationRequest =
 
 /** A list of data integration configurations for the organization. */
 export type DataIntegrationConfigurationListResponseDataList =
-  ReadonlyArray<DataIntegrationConfigurationResponse>;
+  Array<DataIntegrationConfigurationResponse>;
 export const DataIntegrationConfigurationListResponseDataList =
   /*@__PURE__*/ S.Array(
     DataIntegrationConfigurationResponse,
@@ -10654,8 +10634,7 @@ export const RedirectUrisControllerListResponseListMetadata =
   }) as any as S.Schema<RedirectUrisControllerListResponseListMetadata>;
 
 /** The list of records for the current page. */
-export type RedirectUrisControllerListResponseDataList =
-  ReadonlyArray<RedirectUri>;
+export type RedirectUrisControllerListResponseDataList = Array<RedirectUri>;
 export const RedirectUrisControllerListResponseDataList = /*@__PURE__*/ S.Array(
   RedirectUri,
 ) as any as S.Schema<RedirectUrisControllerListResponseDataList>;
@@ -10678,8 +10657,7 @@ export const RedirectUrisControllerListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "RedirectUrisControllerListResponse",
 }) as any as S.Schema<RedirectUrisControllerListResponse>;
 
-export type SsoControllerAuthorizeRequestProviderScopesList =
-  ReadonlyArray<string>;
+export type SsoControllerAuthorizeRequestProviderScopesList = Array<string>;
 export const SsoControllerAuthorizeRequestProviderScopesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -10839,13 +10817,13 @@ export type ProfileConnectionType =
   | "XeroOAuth";
 export const ProfileConnectionType = /*@__PURE__*/ S.String;
 
-export type ProfileRolesList = ReadonlyArray<SlimRole>;
+export type ProfileRolesList = Array<SlimRole>;
 export const ProfileRolesList = /*@__PURE__*/ S.Array(
   SlimRole,
 ) as any as S.Schema<ProfileRolesList>;
 
 /** The groups the user belongs to, as returned by the identity provider. */
-export type ProfileGroupsList = ReadonlyArray<string>;
+export type ProfileGroupsList = Array<string>;
 export const ProfileGroupsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ProfileGroupsList>;
@@ -10929,7 +10907,7 @@ export const SsoControllerJsonWebKeySetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SsoControllerJsonWebKeySetRequest>;
 
 /** X.509 certificate chain. */
-export type JwksResponseKeysItemX5cList = ReadonlyArray<string>;
+export type JwksResponseKeysItemX5cList = Array<string>;
 export const JwksResponseKeysItemX5cList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<JwksResponseKeysItemX5cList>;
@@ -10968,7 +10946,7 @@ export const JwksResponseKeysItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<JwksResponseKeysItem>;
 
 /** The public keys used for verifying access tokens. */
-export type JwksResponseKeysList = ReadonlyArray<JwksResponseKeysItem>;
+export type JwksResponseKeysList = Array<JwksResponseKeysItem>;
 export const JwksResponseKeysList = /*@__PURE__*/ S.Array(
   JwksResponseKeysItem,
 ) as any as S.Schema<JwksResponseKeysList>;
@@ -11051,7 +11029,7 @@ export const SsoControllerTokenRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SsoControllerTokenRequest>;
 
 /** A list of OAuth scopes for which the access token is authorized. */
-export type SsoTokenResponseOauthTokensScopesList = ReadonlyArray<string>;
+export type SsoTokenResponseOauthTokensScopesList = Array<string>;
 export const SsoTokenResponseOauthTokensScopesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SsoTokenResponseOauthTokensScopesList>;
@@ -11106,8 +11084,7 @@ export const SsoTokenResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SsoTokenResponse>;
 
 /** The permission slugs to assign to the API key. Each permission must be enabled for user API keys. */
-export type UserApiKeysControllerCreateRequestPermissionsList =
-  ReadonlyArray<string>;
+export type UserApiKeysControllerCreateRequestPermissionsList = Array<string>;
 export const UserApiKeysControllerCreateRequestPermissionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -11163,7 +11140,7 @@ export const UserApiKeyWithValueOwner = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UserApiKeyWithValueOwner>;
 
 /** The permission slugs assigned to the API Key. */
-export type UserApiKeyWithValuePermissionsList = ReadonlyArray<string>;
+export type UserApiKeyWithValuePermissionsList = Array<string>;
 export const UserApiKeyWithValuePermissionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<UserApiKeyWithValuePermissionsList>;
@@ -11263,7 +11240,7 @@ export const UserApiKeyOwner = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UserApiKeyOwner>;
 
 /** The permission slugs assigned to the API Key. */
-export type UserApiKeyPermissionsList = ReadonlyArray<string>;
+export type UserApiKeyPermissionsList = Array<string>;
 export const UserApiKeyPermissionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<UserApiKeyPermissionsList>;
@@ -11306,7 +11283,7 @@ export const UserApiKey = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UserApiKey" }) as any as S.Schema<UserApiKey>;
 
 /** The list of records for the current page. */
-export type UserApiKeyListDataList = ReadonlyArray<UserApiKey>;
+export type UserApiKeyListDataList = Array<UserApiKey>;
 export const UserApiKeyListDataList = /*@__PURE__*/ S.Array(
   UserApiKey,
 ) as any as S.Schema<UserApiKeyListDataList>;
@@ -11954,8 +11931,7 @@ export const UserlandAuthenticateResponseImpersonator = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<UserlandAuthenticateResponseImpersonator>;
 
 /** A list of OAuth scopes for which the access token is authorized. */
-export type UserlandAuthenticateResponseOauthTokensScopesList =
-  ReadonlyArray<string>;
+export type UserlandAuthenticateResponseOauthTokensScopesList = Array<string>;
 export const UserlandAuthenticateResponseOauthTokensScopesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -12086,7 +12062,7 @@ export const UserlandSsoControllerAuthorizeRequestProviderQueryParamsMap =
   ) as any as S.Schema<UserlandSsoControllerAuthorizeRequestProviderQueryParamsMap>;
 
 export type UserlandSsoControllerAuthorizeRequestProviderScopesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const UserlandSsoControllerAuthorizeRequestProviderScopesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -12322,7 +12298,7 @@ export const UserlandUserAuthenticationFactorsControllerList0Request =
 
 /** The list of records for the current page. */
 export type UserlandUserAuthenticationFactorListDataList =
-  ReadonlyArray<AuthenticationFactor>;
+  Array<AuthenticationFactor>;
 export const UserlandUserAuthenticationFactorListDataList =
   /*@__PURE__*/ S.Array(
     AuthenticationFactor,
@@ -12455,7 +12431,7 @@ export const UserlandUserIdentitiesControllerGetResponseBodyItem =
   }) as any as S.Schema<UserlandUserIdentitiesControllerGetResponseBodyItem>;
 
 export type UserlandUserIdentitiesControllerGetResponseBodyList =
-  ReadonlyArray<UserlandUserIdentitiesControllerGetResponseBodyItem>;
+  Array<UserlandUserIdentitiesControllerGetResponseBodyItem>;
 export const UserlandUserIdentitiesControllerGetResponseBodyList =
   /*@__PURE__*/ S.Array(
     UserlandUserIdentitiesControllerGetResponseBodyItem,
@@ -12815,7 +12791,7 @@ export const UserlandUserInvitesControllerListRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<UserlandUserInvitesControllerListRequest>;
 
 /** The list of records for the current page. */
-export type UserlandUserInviteListDataList = ReadonlyArray<UserlandUserInvite>;
+export type UserlandUserInviteListDataList = Array<UserlandUserInvite>;
 export const UserlandUserInviteListDataList = /*@__PURE__*/ S.Array(
   UserlandUserInvite,
 ) as any as S.Schema<UserlandUserInviteListDataList>;
@@ -13056,7 +13032,7 @@ export const UserlandUserInvitesControllerRevokeResponse =
 
 /** An array of role identifiers. Limited to one role when Multiple Roles is disabled. Mutually exclusive with `role_slug`. */
 export type UserlandUserOrganizationMembershipsControllerCreateRequestRoleSlugsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const UserlandUserOrganizationMembershipsControllerCreateRequestRoleSlugsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -13111,7 +13087,7 @@ export const UserlandUserOrganizationMembershipsControllerCreateResponseCustomAt
 
 /** The list of roles assigned to the user within the organization. */
 export type UserlandUserOrganizationMembershipsControllerCreateResponseRolesList =
-  ReadonlyArray<SlimRole>;
+  Array<SlimRole>;
 export const UserlandUserOrganizationMembershipsControllerCreateResponseRolesList =
   /*@__PURE__*/ S.Array(
     SlimRole,
@@ -13206,7 +13182,7 @@ export const UserlandUserOrganizationMembershipsControllerDeactivateResponseCust
 
 /** The list of roles assigned to the user within the organization. */
 export type UserlandUserOrganizationMembershipsControllerDeactivateResponseRolesList =
-  ReadonlyArray<SlimRole>;
+  Array<SlimRole>;
 export const UserlandUserOrganizationMembershipsControllerDeactivateResponseRolesList =
   /*@__PURE__*/ S.Array(
     SlimRole,
@@ -13328,8 +13304,7 @@ export const UserlandUserOrganizationMembershipCustomAttributesMap =
   ) as any as S.Schema<UserlandUserOrganizationMembershipCustomAttributesMap>;
 
 /** The list of roles assigned to the user within the organization. */
-export type UserlandUserOrganizationMembershipRolesList =
-  ReadonlyArray<SlimRole>;
+export type UserlandUserOrganizationMembershipRolesList = Array<SlimRole>;
 export const UserlandUserOrganizationMembershipRolesList =
   /*@__PURE__*/ S.Array(
     SlimRole,
@@ -13391,7 +13366,7 @@ export const UserlandUserOrganizationMembershipsControllerListRequestStatusesIte
   /*@__PURE__*/ S.String;
 
 export type UserlandUserOrganizationMembershipsControllerListRequestStatusesList =
-  ReadonlyArray<
+  Array<
     | UserlandUserOrganizationMembershipsControllerListRequestStatusesItem
     | (string & {})
   >;
@@ -13443,7 +13418,7 @@ export const UserlandUserOrganizationMembershipsControllerListRequest =
 
 /** The list of records for the current page. */
 export type UserlandUserOrganizationMembershipListDataList =
-  ReadonlyArray<UserlandUserOrganizationMembership>;
+  Array<UserlandUserOrganizationMembership>;
 export const UserlandUserOrganizationMembershipListDataList =
   /*@__PURE__*/ S.Array(
     UserlandUserOrganizationMembership,
@@ -13520,7 +13495,7 @@ export const UpdateUserlandUserOrganizationMembershipDtoCase1 =
 
 /** An array of role identifiers. Limited to one role when Multiple Roles is disabled. Mutually exclusive with `role_slug`. */
 export type UpdateUserlandUserOrganizationMembershipDtoCase2RoleSlugsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const UpdateUserlandUserOrganizationMembershipDtoCase2RoleSlugsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -14059,7 +14034,7 @@ export const UserlandUsersControllerList0Request = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UserlandUsersControllerList0Request>;
 
 /** The list of records for the current page. */
-export type UserlandUserListDataList = ReadonlyArray<UserlandUser>;
+export type UserlandUserListDataList = Array<UserlandUser>;
 export const UserlandUserListDataList = /*@__PURE__*/ S.Array(
   UserlandUser,
 ) as any as S.Schema<UserlandUserListDataList>;
@@ -14424,7 +14399,7 @@ export const UserlandUserSessionsControllerListResponseDataItem =
 
 /** The list of records for the current page. */
 export type UserlandUserSessionsControllerListResponseDataList =
-  ReadonlyArray<UserlandUserSessionsControllerListResponseDataItem>;
+  Array<UserlandUserSessionsControllerListResponseDataItem>;
 export const UserlandUserSessionsControllerListResponseDataList =
   /*@__PURE__*/ S.Array(
     UserlandUserSessionsControllerListResponseDataItem,
@@ -14548,7 +14523,7 @@ export const WebhookEndpointsControllerCreateRequestEventsItem =
   /*@__PURE__*/ S.String;
 
 /** The events that the Webhook Endpoint is subscribed to. */
-export type WebhookEndpointsControllerCreateRequestEventsList = ReadonlyArray<
+export type WebhookEndpointsControllerCreateRequestEventsList = Array<
   WebhookEndpointsControllerCreateRequestEventsItem | (string & {})
 >;
 export const WebhookEndpointsControllerCreateRequestEventsList =
@@ -14577,7 +14552,7 @@ export type WebhookEndpointJsonStatus = "enabled" | "disabled";
 export const WebhookEndpointJsonStatus = /*@__PURE__*/ S.String;
 
 /** The events that the Webhook Endpoint is subscribed to. */
-export type WebhookEndpointJsonEventsList = ReadonlyArray<string>;
+export type WebhookEndpointJsonEventsList = Array<string>;
 export const WebhookEndpointJsonEventsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<WebhookEndpointJsonEventsList>;
@@ -14660,7 +14635,7 @@ export const WebhookEndpointsControllerListRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<WebhookEndpointsControllerListRequest>;
 
 /** The list of records for the current page. */
-export type WebhookEndpointListDataList = ReadonlyArray<WebhookEndpointJson>;
+export type WebhookEndpointListDataList = Array<WebhookEndpointJson>;
 export const WebhookEndpointListDataList = /*@__PURE__*/ S.Array(
   WebhookEndpointJson,
 ) as any as S.Schema<WebhookEndpointListDataList>;
@@ -14803,7 +14778,7 @@ export const WebhookEndpointsControllerUpdateRequestEventsItem =
   /*@__PURE__*/ S.String;
 
 /** The events that the Webhook Endpoint is subscribed to. */
-export type WebhookEndpointsControllerUpdateRequestEventsList = ReadonlyArray<
+export type WebhookEndpointsControllerUpdateRequestEventsList = Array<
   WebhookEndpointsControllerUpdateRequestEventsItem | (string & {})
 >;
 export const WebhookEndpointsControllerUpdateRequestEventsList =
@@ -14848,7 +14823,7 @@ export const WidgetsPublicControllerIssueWidgetSessionTokenRequestScopesItem =
 
 /** The scopes to grant the widget session. */
 export type WidgetsPublicControllerIssueWidgetSessionTokenRequestScopesList =
-  ReadonlyArray<
+  Array<
     | WidgetsPublicControllerIssueWidgetSessionTokenRequestScopesItem
     | (string & {})
   >;

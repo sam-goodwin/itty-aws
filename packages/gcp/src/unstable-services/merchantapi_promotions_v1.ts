@@ -78,7 +78,7 @@ export const GetAccountsPromotionsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetAccountsPromotionsRequest",
 }) as any as S.Schema<GetAccountsPromotionsRequest>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -151,8 +151,9 @@ export type AttributesPromotionDestinationsItemEnum =
   | "LOCAL_CLOUD_RETAIL";
 export const AttributesPromotionDestinationsItemEnum = /*@__PURE__*/ S.String;
 
-export type AttributesPromotionDestinationsItemEnumList =
-  ReadonlyArray<AttributesPromotionDestinationsItemEnum>;
+export type AttributesPromotionDestinationsItemEnumList = Array<
+  AttributesPromotionDestinationsItemEnum | (string & {})
+>;
 export const AttributesPromotionDestinationsItemEnumList =
   /*@__PURE__*/ S.Array(
     AttributesPromotionDestinationsItemEnum,
@@ -200,7 +201,7 @@ export interface Attributes {
   /** Optional. The [percentage discount](https://support.google.com/merchants/answer/13837404?sjid=17642868584668136159-NC) offered in the promotion. */
   percentOff?: string;
   /** Optional. Applicability of the promotion to either all products or [only specific products](https://support.google.com/merchants/answer/6396257). Exactly one of `product_applicability` or `event_applicability` must be set. */
-  productApplicability?: AttributesProductApplicabilityEnum;
+  productApplicability?: AttributesProductApplicabilityEnum | (string & {});
   /** Optional. The custom redemption restriction for the promotion. If the `redemption_restriction` field is set to `CUSTOM`, this field must be set. */
   customRedemptionRestriction?: string;
   /** Optional. Product filter by product type for the promotion. The product filter attributes only applies when the products eligible for promotion product applicability `product_applicability` attribute is set to [specific_products](https://support.google.com/merchants/answer/13837299?ref_topic=13773355). */
@@ -216,7 +217,7 @@ export interface Attributes {
   /** Optional. Maximum money off amount for a promotion with `MONEY_OFF_RANGE` coupon value type. At least one of `min_money_off_amount` or `max_money_off_amount` must be present when the coupon value type is `MONEY_OFF_RANGE`. If neither is provided an `INVALID_PROMOTION_MISSING_BENEFIT_OR_RESTRICTION` error is returned. */
   maxMoneyOffAmount?: Price;
   /** Required. The [coupon value type] (https://support.google.com/merchants/answer/13861986?ref_topic=13773355) attribute to signal the type of promotion that you are running. Depending on type of the selected coupon value [some attributes are required](https://support.google.com/merchants/answer/6393006?ref_topic=7322920). */
-  couponValueType?: AttributesCouponValueTypeEnum;
+  couponValueType?: AttributesCouponValueTypeEnum | (string & {});
   /** Optional. [Free gift description](https://support.google.com/merchants/answer/13847245?ref_topic=13773355) for the promotion. */
   freeGiftDescription?: string;
   /** Optional. A list of [regions](https://support.google.com/merchants/answer/15406457?#howregionswork) where the promotion is applicable. Must be set if `audience` is set to `LOCATION`. */
@@ -247,25 +248,25 @@ export interface Attributes {
   /** Optional. The maximum monetary discount a customer can receive for the promotion. This field is only supported with the `Percent off` coupon value type. */
   maxDiscountAmount?: Price;
   /** Optional. A restriction customers must meet before they can redeem the promotion. */
-  redemptionRestriction?: AttributesRedemptionRestrictionEnum;
+  redemptionRestriction?: AttributesRedemptionRestrictionEnum | (string & {});
   /** Optional. Whether the promotion applies to [all stores, or only specified stores](https://support.google.com/merchants/answer/13857563?sjid=17642868584668136159-NC). Local Inventory ads promotions throw an error if no store applicability is included. An `INVALID_ARGUMENT` error is thrown if `store_applicability` is set to `ALL_STORES` and `store_codes_inclusion` or `score_code_exclusion` is set to a value. */
-  storeApplicability?: AttributesStoreApplicabilityEnum;
+  storeApplicability?: AttributesStoreApplicabilityEnum | (string & {});
   /** Optional. The [money off amount](https://support.google.com/merchants/answer/13838101?ref_topic=13773355) offered in the promotion. */
   moneyOffAmount?: Price;
   /** Optional. [Free gift value](https://support.google.com/merchants/answer/13844477?ref_topic=13773355) for the promotion. */
   freeGiftValue?: Price;
   /** Required. [Type](https://support.google.com/merchants/answer/13837405?ref_topic=13773355) of the promotion. Use this attribute to indicate whether or not customers need a coupon code to redeem your promotion. */
-  offerType?: AttributesOfferTypeEnum;
+  offerType?: AttributesOfferTypeEnum | (string & {});
   /** Optional. Product filter by [item ID](https://support.google.com/merchants/answer/13861565?ref_topic=13773355) for the promotion. The product filter attributes only applies when the products eligible for promotion product applicability `product_applicability` attribute is set to [specific_products](https://support.google.com/merchants/answer/13837299?ref_topic=13773355). */
   itemIdInclusion?: StringList;
   /** Optional. Minimum money off amount for a promotion with `MONEY_OFF_RANGE` coupon value type. At least one of `min_money_off_amount` or `max_money_off_amount` must be present when the coupon value type is `MONEY_OFF_RANGE`. If neither is provided an `INVALID_PROMOTION_MISSING_BENEFIT_OR_RESTRICTION` error is returned. */
   minMoneyOffAmount?: Price;
   /** Optional. Event applicability for this promotion. When present, this field indicates you are creating a [sales event](https://support.google.com/merchants/answer/15523289) and not a product promotion. Exactly one of `product_applicability` or `event_applicability` must be set. */
-  eventApplicability?: AttributesEventApplicabilityEnum;
+  eventApplicability?: AttributesEventApplicabilityEnum | (string & {});
   /** Optional. Product filter by brand for the promotion. The product filter attributes only applies when the products eligible for promotion product applicability `product_applicability` attribute is set to [specific_products](https://support.google.com/merchants/answer/13837299?ref_topic=13773355). */
   brandInclusion?: StringList;
   /** Optional. This field defines the audience a promotion will be visible to. */
-  audience?: AttributesAudienceEnum;
+  audience?: AttributesAudienceEnum | (string & {});
   /** Optional. Product filter by [brand exclusion](https://support.google.com/merchants/answer/13861679?ref_topic=13773355) for the promotion. The product filter attributes only applies when the products eligible for promotion product applicability `product_applicability` attribute is set to [specific_products](https://support.google.com/merchants/answer/13837299?ref_topic=13773355). */
   brandExclusion?: StringList;
   /** Optional. Minimum percent off for a promotion with `PERCENT_OFF_RANGE` coupon value type. At least one of `min_percent_off` or `max_percent_off` must be present when the coupon value type is `PERCENT_OFF_RANGE`. If neither is provided an `INVALID_PROMOTION_MISSING_BENEFIT_OR_RESTRICTION` error is returned. */
@@ -329,8 +330,9 @@ export type PromotionRedemptionChannelItemEnum =
   | "ONLINE";
 export const PromotionRedemptionChannelItemEnum = /*@__PURE__*/ S.String;
 
-export type PromotionRedemptionChannelItemEnumList =
-  ReadonlyArray<PromotionRedemptionChannelItemEnum>;
+export type PromotionRedemptionChannelItemEnumList = Array<
+  PromotionRedemptionChannelItemEnum | (string & {})
+>;
 export const PromotionRedemptionChannelItemEnumList = /*@__PURE__*/ S.Array(
   PromotionRedemptionChannelItemEnum,
 ) as any as S.Schema<PromotionRedemptionChannelItemEnumList>;
@@ -354,7 +356,7 @@ export const CustomAttribute = /*@__PURE__*/ S.suspend(() =>
   identifier: "CustomAttribute",
 }) as any as S.Schema<CustomAttribute>;
 
-export type CustomAttributeList = ReadonlyArray<CustomAttribute>;
+export type CustomAttributeList = Array<CustomAttribute>;
 export const CustomAttributeList = /*@__PURE__*/ S.Array(
   CustomAttribute,
 ) as any as S.Schema<CustomAttributeList>;
@@ -395,9 +397,9 @@ export const DestinationStatusStatusEnum = /*@__PURE__*/ S.String;
 /** The status for the specified destination. */
 export interface DestinationStatus {
   /** Output only. The name of the promotion destination. */
-  reportingContext?: DestinationStatusReportingContextEnum;
+  reportingContext?: DestinationStatusReportingContextEnum | (string & {});
   /** Output only. The status for the specified destination. */
-  status?: DestinationStatusStatusEnum;
+  status?: DestinationStatusStatusEnum | (string & {});
 }
 export const DestinationStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -408,7 +410,7 @@ export const DestinationStatus = /*@__PURE__*/ S.suspend(() =>
   identifier: "DestinationStatus",
 }) as any as S.Schema<DestinationStatus>;
 
-export type DestinationStatusList = ReadonlyArray<DestinationStatus>;
+export type DestinationStatusList = Array<DestinationStatus>;
 export const DestinationStatusList = /*@__PURE__*/ S.Array(
   DestinationStatus,
 ) as any as S.Schema<DestinationStatusList>;
@@ -456,13 +458,13 @@ export interface ItemLevelIssue {
   /** Output only. The error code of the issue. */
   code?: string;
   /** Output only. How this issue affects serving of the promotion. */
-  severity?: ItemLevelIssueSeverityEnum;
+  severity?: ItemLevelIssueSeverityEnum | (string & {});
   /** Output only. The URL of a web page to help with resolving this issue. */
   documentation?: string;
   /** Output only. List of country codes (ISO 3166-1 alpha-2) where issue applies to the offer. */
   applicableCountries?: StringList;
   /** Output only. The destination the issue applies to. */
-  reportingContext?: ItemLevelIssueReportingContextEnum;
+  reportingContext?: ItemLevelIssueReportingContextEnum | (string & {});
 }
 export const ItemLevelIssue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -478,7 +480,7 @@ export const ItemLevelIssue = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ItemLevelIssue" }) as any as S.Schema<ItemLevelIssue>;
 
-export type ItemLevelIssueList = ReadonlyArray<ItemLevelIssue>;
+export type ItemLevelIssueList = Array<ItemLevelIssue>;
 export const ItemLevelIssueList = /*@__PURE__*/ S.Array(
   ItemLevelIssue,
 ) as any as S.Schema<ItemLevelIssueList>;
@@ -604,7 +606,7 @@ export const ListAccountsPromotionsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAccountsPromotionsRequest",
 }) as any as S.Schema<ListAccountsPromotionsRequest>;
 
-export type PromotionList = ReadonlyArray<Promotion>;
+export type PromotionList = Array<Promotion>;
 export const PromotionList = /*@__PURE__*/ S.Array(
   Promotion,
 ) as any as S.Schema<PromotionList>;

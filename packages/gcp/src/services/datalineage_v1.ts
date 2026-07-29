@@ -60,7 +60,7 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -133,7 +133,7 @@ export const GoogleCloudDatacatalogLineageV1ProcessLinkInfo =
   }) as any as S.Schema<GoogleCloudDatacatalogLineageV1ProcessLinkInfo>;
 
 export type GoogleCloudDatacatalogLineageV1ProcessLinkInfoList =
-  ReadonlyArray<GoogleCloudDatacatalogLineageV1ProcessLinkInfo>;
+  Array<GoogleCloudDatacatalogLineageV1ProcessLinkInfo>;
 export const GoogleCloudDatacatalogLineageV1ProcessLinkInfoList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDatacatalogLineageV1ProcessLinkInfo,
@@ -157,7 +157,7 @@ export const GoogleCloudDatacatalogLineageV1ProcessLinks =
   }) as any as S.Schema<GoogleCloudDatacatalogLineageV1ProcessLinks>;
 
 export type GoogleCloudDatacatalogLineageV1ProcessLinksList =
-  ReadonlyArray<GoogleCloudDatacatalogLineageV1ProcessLinks>;
+  Array<GoogleCloudDatacatalogLineageV1ProcessLinks>;
 export const GoogleCloudDatacatalogLineageV1ProcessLinksList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDatacatalogLineageV1ProcessLinks,
@@ -238,7 +238,9 @@ export const GoogleCloudDatacatalogLineageV1OriginSourceTypeEnum =
 /** Origin of a process. */
 export interface GoogleCloudDatacatalogLineageV1Origin {
   /** Type of the source. Use of a source_type other than `CUSTOM` for process creation or updating is highly discouraged. It might be restricted in the future without notice. There will be increase in cost if you use any of the source types other than `CUSTOM`. */
-  sourceType?: GoogleCloudDatacatalogLineageV1OriginSourceTypeEnum;
+  sourceType?:
+    | GoogleCloudDatacatalogLineageV1OriginSourceTypeEnum
+    | (string & {});
   /** If the source_type isn't CUSTOM, the value of this field should be a Google Cloud resource name of the system, which reports lineage. The project and location parts of the resource name must match the project and location of the lineage resource being created. Examples: - `{source_type: COMPOSER, name: "projects/foo/locations/us/environments/bar"}` - `{source_type: BIGQUERY, name: "projects/foo/locations/eu"}` - `{source_type: CUSTOM, name: "myCustomIntegration"}` */
   name?: string;
 }
@@ -332,7 +334,7 @@ export interface GoogleCloudDatacatalogLineageV1Run {
   /** Required. The timestamp of the start of the run. */
   startTime?: string;
   /** Required. The state of the run. */
-  state?: GoogleCloudDatacatalogLineageV1RunStateEnum;
+  state?: GoogleCloudDatacatalogLineageV1RunStateEnum | (string & {});
 }
 export const GoogleCloudDatacatalogLineageV1Run = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -399,7 +401,9 @@ export const GoogleCloudDatacatalogLineageV1DependencyInfoDependencyTypeEnum =
 /** Dependency info describes how one entity depends on another. */
 export interface GoogleCloudDatacatalogLineageV1DependencyInfo {
   /** Required. Type of dependency. */
-  dependencyType?: GoogleCloudDatacatalogLineageV1DependencyInfoDependencyTypeEnum;
+  dependencyType?:
+    | GoogleCloudDatacatalogLineageV1DependencyInfoDependencyTypeEnum
+    | (string & {});
 }
 export const GoogleCloudDatacatalogLineageV1DependencyInfo =
   /*@__PURE__*/ S.suspend(() =>
@@ -433,7 +437,7 @@ export const GoogleCloudDatacatalogLineageV1EventLink = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudDatacatalogLineageV1EventLink>;
 
 export type GoogleCloudDatacatalogLineageV1EventLinkList =
-  ReadonlyArray<GoogleCloudDatacatalogLineageV1EventLink>;
+  Array<GoogleCloudDatacatalogLineageV1EventLink>;
 export const GoogleCloudDatacatalogLineageV1EventLinkList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDatacatalogLineageV1EventLink,
@@ -530,7 +534,7 @@ export const DeleteProjectsLocationsProcessesRequest = /*@__PURE__*/ S.suspend(
   identifier: "DeleteProjectsLocationsProcessesRequest",
 }) as any as S.Schema<DeleteProjectsLocationsProcessesRequest>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -653,7 +657,9 @@ export const GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionInges
 /** Integration selector of the rule. The rule is only applied to the Integration selected by the selector. */
 export interface GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleIntegrationSelector {
   /** Required. Integration to which the rule applies. This field can be used to specify the integration against which the ingestion rule should be applied. */
-  integration?: GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleIntegrationSelectorIntegrationEnum;
+  integration?:
+    | GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleIntegrationSelectorIntegrationEnum
+    | (string & {});
 }
 export const GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleIntegrationSelector =
   /*@__PURE__*/ S.suspend(() =>
@@ -705,7 +711,7 @@ export const GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionInges
   }) as any as S.Schema<GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRule>;
 
 export type GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleList =
-  ReadonlyArray<GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRule>;
+  Array<GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRule>;
 export const GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRule,
@@ -894,8 +900,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type GoogleLongrunningOperationList =
-  ReadonlyArray<GoogleLongrunningOperation>;
+export type GoogleLongrunningOperationList = Array<GoogleLongrunningOperation>;
 export const GoogleLongrunningOperationList = /*@__PURE__*/ S.Array(
   GoogleLongrunningOperation,
 ) as any as S.Schema<GoogleLongrunningOperationList>;
@@ -946,7 +951,7 @@ export const ListProjectsLocationsProcessesRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListProjectsLocationsProcessesRequest>;
 
 export type GoogleCloudDatacatalogLineageV1ProcessList =
-  ReadonlyArray<GoogleCloudDatacatalogLineageV1Process>;
+  Array<GoogleCloudDatacatalogLineageV1Process>;
 export const GoogleCloudDatacatalogLineageV1ProcessList = /*@__PURE__*/ S.Array(
   GoogleCloudDatacatalogLineageV1Process,
 ) as any as S.Schema<GoogleCloudDatacatalogLineageV1ProcessList>;
@@ -994,7 +999,7 @@ export const ListProjectsLocationsProcessesRunsRequest =
   }) as any as S.Schema<ListProjectsLocationsProcessesRunsRequest>;
 
 export type GoogleCloudDatacatalogLineageV1RunList =
-  ReadonlyArray<GoogleCloudDatacatalogLineageV1Run>;
+  Array<GoogleCloudDatacatalogLineageV1Run>;
 export const GoogleCloudDatacatalogLineageV1RunList = /*@__PURE__*/ S.Array(
   GoogleCloudDatacatalogLineageV1Run,
 ) as any as S.Schema<GoogleCloudDatacatalogLineageV1RunList>;
@@ -1042,7 +1047,7 @@ export const ListProjectsLocationsProcessesRunsLineageEventsRequest =
   }) as any as S.Schema<ListProjectsLocationsProcessesRunsLineageEventsRequest>;
 
 export type GoogleCloudDatacatalogLineageV1LineageEventList =
-  ReadonlyArray<GoogleCloudDatacatalogLineageV1LineageEvent>;
+  Array<GoogleCloudDatacatalogLineageV1LineageEvent>;
 export const GoogleCloudDatacatalogLineageV1LineageEventList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDatacatalogLineageV1LineageEvent,
@@ -1270,7 +1275,7 @@ export const GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestSearchF
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestSearchFiltersDependencyTypesItemEnumList =
-  ReadonlyArray<
+  Array<
     | GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestSearchFiltersDependencyTypesItemEnum
     | (string & {})
   >;
@@ -1328,7 +1333,7 @@ export const GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestSearchL
   }) as any as S.Schema<GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestSearchLimits>;
 
 export type GoogleCloudDatacatalogLineageV1EntityReferenceList =
-  ReadonlyArray<GoogleCloudDatacatalogLineageV1EntityReference>;
+  Array<GoogleCloudDatacatalogLineageV1EntityReference>;
 export const GoogleCloudDatacatalogLineageV1EntityReferenceList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDatacatalogLineageV1EntityReference,
@@ -1454,7 +1459,7 @@ export const GoogleCloudDatacatalogLineageV1LineageLinkDependencyInfo =
   }) as any as S.Schema<GoogleCloudDatacatalogLineageV1LineageLinkDependencyInfo>;
 
 export type GoogleCloudDatacatalogLineageV1LineageLinkDependencyInfoList =
-  ReadonlyArray<GoogleCloudDatacatalogLineageV1LineageLinkDependencyInfo>;
+  Array<GoogleCloudDatacatalogLineageV1LineageLinkDependencyInfo>;
 export const GoogleCloudDatacatalogLineageV1LineageLinkDependencyInfoList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDatacatalogLineageV1LineageLinkDependencyInfo,
@@ -1475,7 +1480,7 @@ export const GoogleCloudDatacatalogLineageV1LineageLinkLineageProcess =
   }) as any as S.Schema<GoogleCloudDatacatalogLineageV1LineageLinkLineageProcess>;
 
 export type GoogleCloudDatacatalogLineageV1LineageLinkLineageProcessList =
-  ReadonlyArray<GoogleCloudDatacatalogLineageV1LineageLinkLineageProcess>;
+  Array<GoogleCloudDatacatalogLineageV1LineageLinkLineageProcess>;
 export const GoogleCloudDatacatalogLineageV1LineageLinkLineageProcessList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDatacatalogLineageV1LineageLinkLineageProcess,
@@ -1515,7 +1520,7 @@ export const GoogleCloudDatacatalogLineageV1LineageLink =
   }) as any as S.Schema<GoogleCloudDatacatalogLineageV1LineageLink>;
 
 export type GoogleCloudDatacatalogLineageV1LineageLinkList =
-  ReadonlyArray<GoogleCloudDatacatalogLineageV1LineageLink>;
+  Array<GoogleCloudDatacatalogLineageV1LineageLink>;
 export const GoogleCloudDatacatalogLineageV1LineageLinkList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDatacatalogLineageV1LineageLink,
@@ -1616,7 +1621,7 @@ export const GoogleCloudDatacatalogLineageV1LinkDependencyInfo =
   }) as any as S.Schema<GoogleCloudDatacatalogLineageV1LinkDependencyInfo>;
 
 export type GoogleCloudDatacatalogLineageV1LinkDependencyInfoList =
-  ReadonlyArray<GoogleCloudDatacatalogLineageV1LinkDependencyInfo>;
+  Array<GoogleCloudDatacatalogLineageV1LinkDependencyInfo>;
 export const GoogleCloudDatacatalogLineageV1LinkDependencyInfoList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDatacatalogLineageV1LinkDependencyInfo,
@@ -1653,7 +1658,7 @@ export const GoogleCloudDatacatalogLineageV1Link = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudDatacatalogLineageV1Link>;
 
 export type GoogleCloudDatacatalogLineageV1LinkList =
-  ReadonlyArray<GoogleCloudDatacatalogLineageV1Link>;
+  Array<GoogleCloudDatacatalogLineageV1Link>;
 export const GoogleCloudDatacatalogLineageV1LinkList = /*@__PURE__*/ S.Array(
   GoogleCloudDatacatalogLineageV1Link,
 ) as any as S.Schema<GoogleCloudDatacatalogLineageV1LinkList>;

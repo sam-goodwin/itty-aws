@@ -60,7 +60,7 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -105,7 +105,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -158,7 +158,7 @@ export const CreateServicesConsumerQuotaMetricsLimitsAdminOverridesForceOnlyEnum
   /*@__PURE__*/ S.String;
 
 export type CreateServicesConsumerQuotaMetricsLimitsAdminOverridesForceOnlyEnumList =
-  ReadonlyArray<
+  Array<
     | CreateServicesConsumerQuotaMetricsLimitsAdminOverridesForceOnlyEnum
     | (string & {})
   >;
@@ -239,7 +239,7 @@ export const CreateServicesConsumerQuotaMetricsLimitsConsumerOverridesForceOnlyE
   /*@__PURE__*/ S.String;
 
 export type CreateServicesConsumerQuotaMetricsLimitsConsumerOverridesForceOnlyEnumList =
-  ReadonlyArray<
+  Array<
     | CreateServicesConsumerQuotaMetricsLimitsConsumerOverridesForceOnlyEnum
     | (string & {})
   >;
@@ -289,7 +289,7 @@ export const DeleteServicesConsumerQuotaMetricsLimitsAdminOverridesForceOnlyEnum
   /*@__PURE__*/ S.String;
 
 export type DeleteServicesConsumerQuotaMetricsLimitsAdminOverridesForceOnlyEnumList =
-  ReadonlyArray<
+  Array<
     | DeleteServicesConsumerQuotaMetricsLimitsAdminOverridesForceOnlyEnum
     | (string & {})
   >;
@@ -335,7 +335,7 @@ export const DeleteServicesConsumerQuotaMetricsLimitsConsumerOverridesForceOnlyE
   /*@__PURE__*/ S.String;
 
 export type DeleteServicesConsumerQuotaMetricsLimitsConsumerOverridesForceOnlyEnumList =
-  ReadonlyArray<
+  Array<
     | DeleteServicesConsumerQuotaMetricsLimitsConsumerOverridesForceOnlyEnum
     | (string & {})
   >;
@@ -506,7 +506,7 @@ export const MonitoringDestination = /*@__PURE__*/ S.suspend(() =>
   identifier: "MonitoringDestination",
 }) as any as S.Schema<MonitoringDestination>;
 
-export type MonitoringDestinationList = ReadonlyArray<MonitoringDestination>;
+export type MonitoringDestinationList = Array<MonitoringDestination>;
 export const MonitoringDestinationList = /*@__PURE__*/ S.Array(
   MonitoringDestination,
 ) as any as S.Schema<MonitoringDestinationList>;
@@ -542,7 +542,7 @@ export const UsageRule = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "UsageRule" }) as any as S.Schema<UsageRule>;
 
-export type UsageRuleList = ReadonlyArray<UsageRule>;
+export type UsageRuleList = Array<UsageRule>;
 export const UsageRuleList = /*@__PURE__*/ S.Array(
   UsageRule,
 ) as any as S.Schema<UsageRuleList>;
@@ -578,7 +578,7 @@ export const MetricRule = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MetricRule" }) as any as S.Schema<MetricRule>;
 
-export type MetricRuleList = ReadonlyArray<MetricRule>;
+export type MetricRuleList = Array<MetricRule>;
 export const MetricRuleList = /*@__PURE__*/ S.Array(
   MetricRule,
 ) as any as S.Schema<MetricRuleList>;
@@ -621,7 +621,7 @@ export const QuotaLimit = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "QuotaLimit" }) as any as S.Schema<QuotaLimit>;
 
-export type QuotaLimitList = ReadonlyArray<QuotaLimit>;
+export type QuotaLimitList = Array<QuotaLimit>;
 export const QuotaLimitList = /*@__PURE__*/ S.Array(
   QuotaLimit,
 ) as any as S.Schema<QuotaLimitList>;
@@ -657,7 +657,7 @@ export const Page = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Page" }) as any as S.Schema<Page>;
 
-export type PageList = ReadonlyArray<Page>;
+export type PageList = Array<Page>;
 export const PageList = /*@__PURE__*/ S.Array(
   Page,
 ) as any as S.Schema<PageList>;
@@ -684,7 +684,7 @@ export const DocumentationRule = /*@__PURE__*/ S.suspend(() =>
   identifier: "DocumentationRule",
 }) as any as S.Schema<DocumentationRule>;
 
-export type DocumentationRuleList = ReadonlyArray<DocumentationRule>;
+export type DocumentationRuleList = Array<DocumentationRule>;
 export const DocumentationRuleList = /*@__PURE__*/ S.Array(
   DocumentationRule,
 ) as any as S.Schema<DocumentationRuleList>;
@@ -755,7 +755,7 @@ export const LabelDescriptor = /*@__PURE__*/ S.suspend(() =>
   identifier: "LabelDescriptor",
 }) as any as S.Schema<LabelDescriptor>;
 
-export type LabelDescriptorList = ReadonlyArray<LabelDescriptor>;
+export type LabelDescriptorList = Array<LabelDescriptor>;
 export const LabelDescriptorList = /*@__PURE__*/ S.Array(
   LabelDescriptor,
 ) as any as S.Schema<LabelDescriptorList>;
@@ -789,7 +789,7 @@ export const MonitoredResourceDescriptor = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MonitoredResourceDescriptor>;
 
 export type MonitoredResourceDescriptorList =
-  ReadonlyArray<MonitoredResourceDescriptor>;
+  Array<MonitoredResourceDescriptor>;
 export const MonitoredResourceDescriptorList = /*@__PURE__*/ S.Array(
   MonitoredResourceDescriptor,
 ) as any as S.Schema<MonitoredResourceDescriptorList>;
@@ -814,7 +814,7 @@ export const Endpoint = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Endpoint" }) as any as S.Schema<Endpoint>;
 
-export type EndpointList = ReadonlyArray<Endpoint>;
+export type EndpointList = Array<Endpoint>;
 export const EndpointList = /*@__PURE__*/ S.Array(
   Endpoint,
 ) as any as S.Schema<EndpointList>;
@@ -845,7 +845,7 @@ export const Option = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Option" }) as any as S.Schema<Option>;
 
-export type OptionList = ReadonlyArray<Option>;
+export type OptionList = Array<Option>;
 export const OptionList = /*@__PURE__*/ S.Array(
   Option,
 ) as any as S.Schema<OptionList>;
@@ -882,7 +882,7 @@ export const Method = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Method" }) as any as S.Schema<Method>;
 
-export type MethodList = ReadonlyArray<Method>;
+export type MethodList = Array<Method>;
 export const MethodList = /*@__PURE__*/ S.Array(
   Method,
 ) as any as S.Schema<MethodList>;
@@ -912,7 +912,7 @@ export const Mixin = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Mixin" }) as any as S.Schema<Mixin>;
 
-export type MixinList = ReadonlyArray<Mixin>;
+export type MixinList = Array<Mixin>;
 export const MixinList = /*@__PURE__*/ S.Array(
   Mixin,
 ) as any as S.Schema<MixinList>;
@@ -949,7 +949,7 @@ export const Api = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Api" }) as any as S.Schema<Api>;
 
-export type ApiList = ReadonlyArray<Api>;
+export type ApiList = Array<Api>;
 export const ApiList = /*@__PURE__*/ S.Array(Api) as any as S.Schema<ApiList>;
 
 /** User-defined authentication requirements, including support for [JSON Web Token (JWT)](https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32). */
@@ -968,7 +968,7 @@ export const AuthRequirement = /*@__PURE__*/ S.suspend(() =>
   identifier: "AuthRequirement",
 }) as any as S.Schema<AuthRequirement>;
 
-export type AuthRequirementList = ReadonlyArray<AuthRequirement>;
+export type AuthRequirementList = Array<AuthRequirement>;
 export const AuthRequirementList = /*@__PURE__*/ S.Array(
   AuthRequirement,
 ) as any as S.Schema<AuthRequirementList>;
@@ -1008,7 +1008,7 @@ export const AuthenticationRule = /*@__PURE__*/ S.suspend(() =>
   identifier: "AuthenticationRule",
 }) as any as S.Schema<AuthenticationRule>;
 
-export type AuthenticationRuleList = ReadonlyArray<AuthenticationRule>;
+export type AuthenticationRuleList = Array<AuthenticationRule>;
 export const AuthenticationRuleList = /*@__PURE__*/ S.Array(
   AuthenticationRule,
 ) as any as S.Schema<AuthenticationRuleList>;
@@ -1033,7 +1033,7 @@ export const JwtLocation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "JwtLocation" }) as any as S.Schema<JwtLocation>;
 
-export type JwtLocationList = ReadonlyArray<JwtLocation>;
+export type JwtLocationList = Array<JwtLocation>;
 export const JwtLocationList = /*@__PURE__*/ S.Array(
   JwtLocation,
 ) as any as S.Schema<JwtLocationList>;
@@ -1064,7 +1064,7 @@ export const AuthProvider = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuthProvider" }) as any as S.Schema<AuthProvider>;
 
-export type AuthProviderList = ReadonlyArray<AuthProvider>;
+export type AuthProviderList = Array<AuthProvider>;
 export const AuthProviderList = /*@__PURE__*/ S.Array(
   AuthProvider,
 ) as any as S.Schema<AuthProviderList>;
@@ -1240,7 +1240,7 @@ export const QuotaBucket = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "QuotaBucket" }) as any as S.Schema<QuotaBucket>;
 
-export type QuotaBucketList = ReadonlyArray<QuotaBucket>;
+export type QuotaBucketList = Array<QuotaBucket>;
 export const QuotaBucketList = /*@__PURE__*/ S.Array(
   QuotaBucket,
 ) as any as S.Schema<QuotaBucketList>;
@@ -1276,7 +1276,7 @@ export const ConsumerQuotaLimit = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConsumerQuotaLimit",
 }) as any as S.Schema<ConsumerQuotaLimit>;
 
-export type ConsumerQuotaLimitList = ReadonlyArray<ConsumerQuotaLimit>;
+export type ConsumerQuotaLimitList = Array<ConsumerQuotaLimit>;
 export const ConsumerQuotaLimitList = /*@__PURE__*/ S.Array(
   ConsumerQuotaLimit,
 ) as any as S.Schema<ConsumerQuotaLimitList>;
@@ -1347,7 +1347,7 @@ export type ImportAdminOverridesRequestForceOnlyItemEnum =
 export const ImportAdminOverridesRequestForceOnlyItemEnum =
   /*@__PURE__*/ S.String;
 
-export type ImportAdminOverridesRequestForceOnlyItemEnumList = ReadonlyArray<
+export type ImportAdminOverridesRequestForceOnlyItemEnumList = Array<
   ImportAdminOverridesRequestForceOnlyItemEnum | (string & {})
 >;
 export const ImportAdminOverridesRequestForceOnlyItemEnumList =
@@ -1355,7 +1355,7 @@ export const ImportAdminOverridesRequestForceOnlyItemEnumList =
     ImportAdminOverridesRequestForceOnlyItemEnum,
   ) as any as S.Schema<ImportAdminOverridesRequestForceOnlyItemEnumList>;
 
-export type QuotaOverrideList = ReadonlyArray<QuotaOverride>;
+export type QuotaOverrideList = Array<QuotaOverride>;
 export const QuotaOverrideList = /*@__PURE__*/ S.Array(
   QuotaOverride,
 ) as any as S.Schema<QuotaOverrideList>;
@@ -1421,7 +1421,7 @@ export type ImportConsumerOverridesRequestForceOnlyItemEnum =
 export const ImportConsumerOverridesRequestForceOnlyItemEnum =
   /*@__PURE__*/ S.String;
 
-export type ImportConsumerOverridesRequestForceOnlyItemEnumList = ReadonlyArray<
+export type ImportConsumerOverridesRequestForceOnlyItemEnumList = Array<
   ImportConsumerOverridesRequestForceOnlyItemEnum | (string & {})
 >;
 export const ImportConsumerOverridesRequestForceOnlyItemEnumList =
@@ -1500,7 +1500,7 @@ export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListOperationsRequest",
 }) as any as S.Schema<ListOperationsRequest>;
 
-export type OperationList = ReadonlyArray<Operation>;
+export type OperationList = Array<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -1551,7 +1551,7 @@ export const ListServicesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListServicesRequest",
 }) as any as S.Schema<ListServicesRequest>;
 
-export type ServiceList = ReadonlyArray<Service>;
+export type ServiceList = Array<Service>;
 export const ServiceList = /*@__PURE__*/ S.Array(
   Service,
 ) as any as S.Schema<ServiceList>;
@@ -1608,7 +1608,7 @@ export const ListServicesConsumerQuotaMetricsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListServicesConsumerQuotaMetricsRequest",
 }) as any as S.Schema<ListServicesConsumerQuotaMetricsRequest>;
 
-export type ConsumerQuotaMetricList = ReadonlyArray<ConsumerQuotaMetric>;
+export type ConsumerQuotaMetricList = Array<ConsumerQuotaMetric>;
 export const ConsumerQuotaMetricList = /*@__PURE__*/ S.Array(
   ConsumerQuotaMetric,
 ) as any as S.Schema<ConsumerQuotaMetricList>;
@@ -1720,7 +1720,7 @@ export const PatchServicesConsumerQuotaMetricsLimitsAdminOverridesForceOnlyEnum 
   /*@__PURE__*/ S.String;
 
 export type PatchServicesConsumerQuotaMetricsLimitsAdminOverridesForceOnlyEnumList =
-  ReadonlyArray<
+  Array<
     | PatchServicesConsumerQuotaMetricsLimitsAdminOverridesForceOnlyEnum
     | (string & {})
   >;
@@ -1772,7 +1772,7 @@ export const PatchServicesConsumerQuotaMetricsLimitsConsumerOverridesForceOnlyEn
   /*@__PURE__*/ S.String;
 
 export type PatchServicesConsumerQuotaMetricsLimitsConsumerOverridesForceOnlyEnumList =
-  ReadonlyArray<
+  Array<
     | PatchServicesConsumerQuotaMetricsLimitsConsumerOverridesForceOnlyEnum
     | (string & {})
   >;

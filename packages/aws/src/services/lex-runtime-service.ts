@@ -256,9 +256,9 @@ export interface IntentSummary {
   intentName?: string;
   checkpointLabel?: string;
   slots?: { [key: string]: string | undefined };
-  confirmationStatus?: ConfirmationStatus;
-  dialogActionType: DialogActionType;
-  fulfillmentState?: FulfillmentState;
+  confirmationStatus?: ConfirmationStatus | (string & {});
+  dialogActionType: DialogActionType | (string & {});
+  fulfillmentState?: FulfillmentState | (string & {});
   slotToElicit?: string;
 }
 export const IntentSummary = /*@__PURE__*/ S.suspend(() =>
@@ -283,13 +283,13 @@ export type MessageFormatType =
 export const MessageFormatType = /*@__PURE__*/ S.String;
 
 export interface DialogAction {
-  type: DialogActionType;
+  type: DialogActionType | (string & {});
   intentName?: string;
   slots?: { [key: string]: string | undefined };
   slotToElicit?: string;
-  fulfillmentState?: FulfillmentState;
+  fulfillmentState?: FulfillmentState | (string & {});
   message?: string | redacted.Redacted<string>;
-  messageFormat?: MessageFormatType;
+  messageFormat?: MessageFormatType | (string & {});
 }
 export const DialogAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

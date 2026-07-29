@@ -282,7 +282,7 @@ export const AdministratorMicrosoftEntra = /*@__PURE__*/ S.suspend(() =>
 
 /** The AdministratorMicrosoftEntra items on this page */
 export type AdministratorMicrosoftEntraListValueList =
-  ReadonlyArray<AdministratorMicrosoftEntra>;
+  Array<AdministratorMicrosoftEntra>;
 export const AdministratorMicrosoftEntraListValueList = /*@__PURE__*/ S.Array(
   AdministratorMicrosoftEntra,
 ) as any as S.Schema<AdministratorMicrosoftEntraListValueList>;
@@ -442,7 +442,7 @@ export const AdvancedThreatProtectionSettingsModel = /*@__PURE__*/ S.suspend(
 
 /** The AdvancedThreatProtectionSettingsModel items on this page */
 export type AdvancedThreatProtectionSettingsListValueList =
-  ReadonlyArray<AdvancedThreatProtectionSettingsModel>;
+  Array<AdvancedThreatProtectionSettingsModel>;
 export const AdvancedThreatProtectionSettingsListValueList =
   /*@__PURE__*/ S.Array(
     AdvancedThreatProtectionSettingsModel,
@@ -666,7 +666,7 @@ export const BackupAutomaticAndOnDemand = /*@__PURE__*/ S.suspend(() =>
 
 /** The BackupAutomaticAndOnDemand items on this page */
 export type BackupAutomaticAndOnDemandListValueList =
-  ReadonlyArray<BackupAutomaticAndOnDemand>;
+  Array<BackupAutomaticAndOnDemand>;
 export const BackupAutomaticAndOnDemandListValueList = /*@__PURE__*/ S.Array(
   BackupAutomaticAndOnDemand,
 ) as any as S.Schema<BackupAutomaticAndOnDemandListValueList>;
@@ -904,7 +904,7 @@ export const BackupsLongTermRetentionOperation = /*@__PURE__*/ S.suspend(() =>
 
 /** The BackupsLongTermRetentionOperation items on this page */
 export type LtrServerBackupOperationListValueList =
-  ReadonlyArray<BackupsLongTermRetentionOperation>;
+  Array<BackupsLongTermRetentionOperation>;
 export const LtrServerBackupOperationListValueList = /*@__PURE__*/ S.Array(
   BackupsLongTermRetentionOperation,
 ) as any as S.Schema<LtrServerBackupOperationListValueList>;
@@ -926,7 +926,7 @@ export const LtrServerBackupOperationList = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LtrServerBackupOperationList>;
 
 /** List of SAS uri of storage containers where backup data is to be streamed/copied. */
-export type BackupStoreDetailsSasUriListList = ReadonlyArray<string>;
+export type BackupStoreDetailsSasUriListList = Array<string>;
 export const BackupStoreDetailsSasUriListList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BackupStoreDetailsSasUriListList>;
@@ -1039,7 +1039,7 @@ export const StorageTierCapability = /*@__PURE__*/ S.suspend(() =>
 
 /** List of all supported storage tiers for this tier and storage size. */
 export type StorageMbCapabilitySupportedIopsTiersList =
-  ReadonlyArray<StorageTierCapability>;
+  Array<StorageTierCapability>;
 export const StorageMbCapabilitySupportedIopsTiersList = /*@__PURE__*/ S.Array(
   StorageTierCapability,
 ) as any as S.Schema<StorageMbCapabilitySupportedIopsTiersList>;
@@ -1086,7 +1086,7 @@ export const StorageMbCapability = /*@__PURE__*/ S.suspend(() =>
 
 /** Configurations of storage supported for this storage tier. */
 export type StorageEditionCapabilitySupportedStorageMbList =
-  ReadonlyArray<StorageMbCapability>;
+  Array<StorageMbCapability>;
 export const StorageEditionCapabilitySupportedStorageMbList =
   /*@__PURE__*/ S.Array(
     StorageMbCapability,
@@ -1121,14 +1121,14 @@ export const StorageEditionCapability = /*@__PURE__*/ S.suspend(() =>
 
 /** List of storage editions supported by this compute tier and compute name. */
 export type ServerEditionCapabilitySupportedStorageEditionsList =
-  ReadonlyArray<StorageEditionCapability>;
+  Array<StorageEditionCapability>;
 export const ServerEditionCapabilitySupportedStorageEditionsList =
   /*@__PURE__*/ S.Array(
     StorageEditionCapability,
   ) as any as S.Schema<ServerEditionCapabilitySupportedStorageEditionsList>;
 
 /** List of supported availability zones. E.g. '1', '2', '3' */
-export type ServerSkuCapabilitySupportedZonesList = ReadonlyArray<string>;
+export type ServerSkuCapabilitySupportedZonesList = Array<string>;
 export const ServerSkuCapabilitySupportedZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ServerSkuCapabilitySupportedZonesList>;
@@ -1139,7 +1139,7 @@ export const HighAvailabilityMode2 = /*@__PURE__*/ S.String;
 
 /** Modes of high availability supported for this compute. */
 export type ServerSkuCapabilitySupportedHaModeList =
-  ReadonlyArray<HighAvailabilityMode2>;
+  Array<HighAvailabilityMode2>;
 export const ServerSkuCapabilitySupportedHaModeList = /*@__PURE__*/ S.Array(
   HighAvailabilityMode2,
 ) as any as S.Schema<ServerSkuCapabilitySupportedHaModeList>;
@@ -1165,8 +1165,7 @@ export const SupportedFeature = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SupportedFeature>;
 
 /** Features supported. */
-export type ServerSkuCapabilitySupportedFeaturesList =
-  ReadonlyArray<SupportedFeature>;
+export type ServerSkuCapabilitySupportedFeaturesList = Array<SupportedFeature>;
 export const ServerSkuCapabilitySupportedFeaturesList = /*@__PURE__*/ S.Array(
   SupportedFeature,
 ) as any as S.Schema<ServerSkuCapabilitySupportedFeaturesList>;
@@ -1213,7 +1212,7 @@ export const ServerSkuCapability = /*@__PURE__*/ S.suspend(() =>
 
 /** List of supported compute names (SKUs). */
 export type ServerEditionCapabilitySupportedServerSkusList =
-  ReadonlyArray<ServerSkuCapability>;
+  Array<ServerSkuCapability>;
 export const ServerEditionCapabilitySupportedServerSkusList =
   /*@__PURE__*/ S.Array(
     ServerSkuCapability,
@@ -1253,14 +1252,14 @@ export const ServerEditionCapability = /*@__PURE__*/ S.suspend(() =>
 
 /** List of supported compute tiers. */
 export type CapabilitySupportedServerEditionsList =
-  ReadonlyArray<ServerEditionCapability>;
+  Array<ServerEditionCapability>;
 export const CapabilitySupportedServerEditionsList = /*@__PURE__*/ S.Array(
   ServerEditionCapability,
 ) as any as S.Schema<CapabilitySupportedServerEditionsList>;
 
 /** Major versions of PostgreSQL database engine to which this version can be automatically upgraded. */
 export type ServerVersionCapabilitySupportedVersionsToUpgradeList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ServerVersionCapabilitySupportedVersionsToUpgradeList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1268,7 +1267,7 @@ export const ServerVersionCapabilitySupportedVersionsToUpgradeList =
 
 /** Features supported. */
 export type ServerVersionCapabilitySupportedFeaturesList =
-  ReadonlyArray<SupportedFeature>;
+  Array<SupportedFeature>;
 export const ServerVersionCapabilitySupportedFeaturesList =
   /*@__PURE__*/ S.Array(
     SupportedFeature,
@@ -1303,13 +1302,13 @@ export const ServerVersionCapability = /*@__PURE__*/ S.suspend(() =>
 
 /** List of supported major versions of PostgreSQL database engine. */
 export type CapabilitySupportedServerVersionsList =
-  ReadonlyArray<ServerVersionCapability>;
+  Array<ServerVersionCapability>;
 export const CapabilitySupportedServerVersionsList = /*@__PURE__*/ S.Array(
   ServerVersionCapability,
 ) as any as S.Schema<CapabilitySupportedServerVersionsList>;
 
 /** Features supported. */
-export type CapabilitySupportedFeaturesList = ReadonlyArray<SupportedFeature>;
+export type CapabilitySupportedFeaturesList = Array<SupportedFeature>;
 export const CapabilitySupportedFeaturesList = /*@__PURE__*/ S.Array(
   SupportedFeature,
 ) as any as S.Schema<CapabilitySupportedFeaturesList>;
@@ -1351,7 +1350,7 @@ export const FastProvisioningEditionCapability = /*@__PURE__*/ S.suspend(() =>
 
 /** List of compute tiers supporting fast provisioning. */
 export type CapabilitySupportedFastProvisioningEditionsList =
-  ReadonlyArray<FastProvisioningEditionCapability>;
+  Array<FastProvisioningEditionCapability>;
 export const CapabilitySupportedFastProvisioningEditionsList =
   /*@__PURE__*/ S.Array(
     FastProvisioningEditionCapability,
@@ -1438,7 +1437,7 @@ export const Capability = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Capability" }) as any as S.Schema<Capability>;
 
 /** The Capability items on this page */
-export type CapabilityListValueList = ReadonlyArray<Capability>;
+export type CapabilityListValueList = Array<Capability>;
 export const CapabilityListValueList = /*@__PURE__*/ S.Array(
   Capability,
 ) as any as S.Schema<CapabilityListValueList>;
@@ -1556,7 +1555,7 @@ export const CapturedLog = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CapturedLog" }) as any as S.Schema<CapturedLog>;
 
 /** The CapturedLog items on this page */
-export type CapturedLogListValueList = ReadonlyArray<CapturedLog>;
+export type CapturedLogListValueList = Array<CapturedLog>;
 export const CapturedLogListValueList = /*@__PURE__*/ S.Array(
   CapturedLog,
 ) as any as S.Schema<CapturedLogListValueList>;
@@ -1731,7 +1730,7 @@ export const Configuration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Configuration" }) as any as S.Schema<Configuration>;
 
 /** The Configuration items on this page */
-export type ConfigurationListValueList = ReadonlyArray<Configuration>;
+export type ConfigurationListValueList = Array<Configuration>;
 export const ConfigurationListValueList = /*@__PURE__*/ S.Array(
   Configuration,
 ) as any as S.Schema<ConfigurationListValueList>;
@@ -2034,7 +2033,7 @@ export const Database = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Database" }) as any as S.Schema<Database>;
 
 /** The Database items on this page */
-export type DatabaseListValueList = ReadonlyArray<Database>;
+export type DatabaseListValueList = Array<Database>;
 export const DatabaseListValueList = /*@__PURE__*/ S.Array(
   Database,
 ) as any as S.Schema<DatabaseListValueList>;
@@ -2243,7 +2242,7 @@ export const FirewallRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FirewallRule" }) as any as S.Schema<FirewallRule>;
 
 /** The FirewallRule items on this page */
-export type FirewallRuleListValueList = ReadonlyArray<FirewallRule>;
+export type FirewallRuleListValueList = Array<FirewallRule>;
 export const FirewallRuleListValueList = /*@__PURE__*/ S.Array(
   FirewallRule,
 ) as any as S.Schema<FirewallRuleListValueList>;
@@ -2425,8 +2424,7 @@ export const ValidationMessage = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ValidationMessage>;
 
 /** Validation messages. */
-export type ValidationSummaryItemMessagesList =
-  ReadonlyArray<ValidationMessage>;
+export type ValidationSummaryItemMessagesList = Array<ValidationMessage>;
 export const ValidationSummaryItemMessagesList = /*@__PURE__*/ S.Array(
   ValidationMessage,
 ) as any as S.Schema<ValidationSummaryItemMessagesList>;
@@ -2452,15 +2450,14 @@ export const ValidationSummaryItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Details of server level validations. */
 export type ValidationDetailsServerLevelValidationDetailsList =
-  ReadonlyArray<ValidationSummaryItem>;
+  Array<ValidationSummaryItem>;
 export const ValidationDetailsServerLevelValidationDetailsList =
   /*@__PURE__*/ S.Array(
     ValidationSummaryItem,
   ) as any as S.Schema<ValidationDetailsServerLevelValidationDetailsList>;
 
 /** Summary of database level validations. */
-export type DbLevelValidationStatusSummaryList =
-  ReadonlyArray<ValidationSummaryItem>;
+export type DbLevelValidationStatusSummaryList = Array<ValidationSummaryItem>;
 export const DbLevelValidationStatusSummaryList = /*@__PURE__*/ S.Array(
   ValidationSummaryItem,
 ) as any as S.Schema<DbLevelValidationStatusSummaryList>;
@@ -2489,7 +2486,7 @@ export const DbLevelValidationStatus = /*@__PURE__*/ S.suspend(() =>
 
 /** Details of server level validations. */
 export type ValidationDetailsDbLevelValidationDetailsList =
-  ReadonlyArray<DbLevelValidationStatus>;
+  Array<DbLevelValidationStatus>;
 export const ValidationDetailsDbLevelValidationDetailsList =
   /*@__PURE__*/ S.Array(
     DbLevelValidationStatus,
@@ -2676,7 +2673,7 @@ export const MigrationSecretParameters = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MigrationSecretParameters>;
 
 /** Names of databases to migrate. */
-export type MigrationPropertiesDbsToMigrateList = ReadonlyArray<string>;
+export type MigrationPropertiesDbsToMigrateList = Array<string>;
 export const MigrationPropertiesDbsToMigrateList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<MigrationPropertiesDbsToMigrateList>;
@@ -2702,8 +2699,7 @@ export type TriggerCutover = "True" | "False";
 export const TriggerCutover = /*@__PURE__*/ S.String;
 
 /** When you want to trigger cutover for specific databases set 'triggerCutover' to 'True' and the names of the specific databases in this array. */
-export type MigrationPropertiesDbsToTriggerCutoverOnList =
-  ReadonlyArray<string>;
+export type MigrationPropertiesDbsToTriggerCutoverOnList = Array<string>;
 export const MigrationPropertiesDbsToTriggerCutoverOnList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2714,8 +2710,7 @@ export type Cancel = "True" | "False";
 export const Cancel = /*@__PURE__*/ S.String;
 
 /** When you want to trigger cancel for specific databases set 'triggerCutover' to 'True' and the names of the specific databases in this array. */
-export type MigrationPropertiesDbsToCancelMigrationOnList =
-  ReadonlyArray<string>;
+export type MigrationPropertiesDbsToCancelMigrationOnList = Array<string>;
 export const MigrationPropertiesDbsToCancelMigrationOnList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2913,22 +2908,20 @@ export const MigrationsCreateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<MigrationsCreateRequestTagsMap>;
 
 /** Names of databases to migrate. */
-export type MigrationPropertiesInputDbsToMigrateList = ReadonlyArray<string>;
+export type MigrationPropertiesInputDbsToMigrateList = Array<string>;
 export const MigrationPropertiesInputDbsToMigrateList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<MigrationPropertiesInputDbsToMigrateList>;
 
 /** When you want to trigger cutover for specific databases set 'triggerCutover' to 'True' and the names of the specific databases in this array. */
-export type MigrationPropertiesInputDbsToTriggerCutoverOnList =
-  ReadonlyArray<string>;
+export type MigrationPropertiesInputDbsToTriggerCutoverOnList = Array<string>;
 export const MigrationPropertiesInputDbsToTriggerCutoverOnList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<MigrationPropertiesInputDbsToTriggerCutoverOnList>;
 
 /** When you want to trigger cancel for specific databases set 'triggerCutover' to 'True' and the names of the specific databases in this array. */
-export type MigrationPropertiesInputDbsToCancelMigrationOnList =
-  ReadonlyArray<string>;
+export type MigrationPropertiesInputDbsToCancelMigrationOnList = Array<string>;
 export const MigrationPropertiesInputDbsToCancelMigrationOnList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3230,7 +3223,7 @@ export const Migration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Migration" }) as any as S.Schema<Migration>;
 
 /** The Migration items on this page */
-export type MigrationListValueList = ReadonlyArray<Migration>;
+export type MigrationListValueList = Array<Migration>;
 export const MigrationListValueList = /*@__PURE__*/ S.Array(
   Migration,
 ) as any as S.Schema<MigrationListValueList>;
@@ -3285,7 +3278,7 @@ export const MigrationSecretParametersForPatch = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MigrationSecretParametersForPatch>;
 
 /** Names of databases to migrate. */
-export type MigrationPropertiesForPatchDbsToMigrateList = ReadonlyArray<string>;
+export type MigrationPropertiesForPatchDbsToMigrateList = Array<string>;
 export const MigrationPropertiesForPatchDbsToMigrateList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3293,7 +3286,7 @@ export const MigrationPropertiesForPatchDbsToMigrateList =
 
 /** When you want to trigger cutover for specific databases set 'triggerCutover' to 'True' and the names of the specific databases in this array. */
 export type MigrationPropertiesForPatchDbsToTriggerCutoverOnList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const MigrationPropertiesForPatchDbsToTriggerCutoverOnList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3301,7 +3294,7 @@ export const MigrationPropertiesForPatchDbsToTriggerCutoverOnList =
 
 /** When you want to trigger cancel for specific databases set 'triggerCutover' to 'True' and the names of the specific databases in this array. */
 export type MigrationPropertiesForPatchDbsToCancelMigrationOnList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const MigrationPropertiesForPatchDbsToCancelMigrationOnList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3612,16 +3605,14 @@ export type OperationOrigin = "NotSpecified" | "user" | "system";
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Supported aggregation types for the metric. */
-export type MetricSpecificationSupportedAggregationTypesList =
-  ReadonlyArray<string>;
+export type MetricSpecificationSupportedAggregationTypesList = Array<string>;
 export const MetricSpecificationSupportedAggregationTypesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<MetricSpecificationSupportedAggregationTypesList>;
 
 /** Supported time grain types for the metric. */
-export type MetricSpecificationSupportedTimeGrainTypesList =
-  ReadonlyArray<string>;
+export type MetricSpecificationSupportedTimeGrainTypesList = Array<string>;
 export const MetricSpecificationSupportedTimeGrainTypesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3667,7 +3658,7 @@ export const MetricSpecification = /*@__PURE__*/ S.suspend(() =>
 
 /** Metric specifications for the operation. */
 export type ServiceSpecificationMetricSpecificationsList =
-  ReadonlyArray<MetricSpecification>;
+  Array<MetricSpecification>;
 export const ServiceSpecificationMetricSpecificationsList =
   /*@__PURE__*/ S.Array(
     MetricSpecification,
@@ -3693,8 +3684,7 @@ export const LogSpecification = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LogSpecification>;
 
 /** Log specifications for the operation. */
-export type ServiceSpecificationLogSpecificationsList =
-  ReadonlyArray<LogSpecification>;
+export type ServiceSpecificationLogSpecificationsList = Array<LogSpecification>;
 export const ServiceSpecificationLogSpecificationsList = /*@__PURE__*/ S.Array(
   LogSpecification,
 ) as any as S.Schema<ServiceSpecificationLogSpecificationsList>;
@@ -3754,7 +3744,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** The Operation items on this page */
-export type OperationListValueList = ReadonlyArray<Operation>;
+export type OperationListValueList = Array<Operation>;
 export const OperationListValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationListValueList>;
@@ -3860,8 +3850,7 @@ export const PrivateEndpointConnectionsGetRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PrivateEndpointConnectionsGetRequest>;
 
 /** The group ids for the private endpoint resource. */
-export type PrivateEndpointConnectionPropertiesGroupIdsList =
-  ReadonlyArray<string>;
+export type PrivateEndpointConnectionPropertiesGroupIdsList = Array<string>;
 export const PrivateEndpointConnectionPropertiesGroupIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3890,7 +3879,7 @@ export const PrivateEndpointServiceConnectionStatus = /*@__PURE__*/ S.String;
 /** A collection of information about the state of the connection between service consumer and provider. */
 export interface PrivateLinkServiceConnectionState {
   /** Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service. */
-  status?: PrivateEndpointServiceConnectionStatus;
+  status?: PrivateEndpointServiceConnectionStatus | (string & {});
   /** The reason for approval/rejection of the connection. */
   description?: string;
   /** A message indicating if changes on the service provider require any updates on the consumer. */
@@ -4016,7 +4005,7 @@ export const PrivateEndpointConnectionListValueItem = /*@__PURE__*/ S.suspend(
 
 /** The PrivateEndpointConnection items on this page */
 export type PrivateEndpointConnectionListValueList =
-  ReadonlyArray<PrivateEndpointConnectionListValueItem>;
+  Array<PrivateEndpointConnectionListValueItem>;
 export const PrivateEndpointConnectionListValueList = /*@__PURE__*/ S.Array(
   PrivateEndpointConnectionListValueItem,
 ) as any as S.Schema<PrivateEndpointConnectionListValueList>;
@@ -4131,7 +4120,7 @@ export const PrivateLinkResourcesGetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The private link resource required member names. */
 export type PrivateLinkResourcesGetResponsePropertiesRequiredMembersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PrivateLinkResourcesGetResponsePropertiesRequiredMembersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4139,7 +4128,7 @@ export const PrivateLinkResourcesGetResponsePropertiesRequiredMembersList =
 
 /** The private link resource private link DNS zone name. */
 export type PrivateLinkResourcesGetResponsePropertiesRequiredZoneNamesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PrivateLinkResourcesGetResponsePropertiesRequiredZoneNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4220,16 +4209,14 @@ export const PrivateLinkResourcesListByServerRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PrivateLinkResourcesListByServerRequest>;
 
 /** The private link resource required member names. */
-export type PrivateLinkResourcePropertiesRequiredMembersList =
-  ReadonlyArray<string>;
+export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
 export const PrivateLinkResourcePropertiesRequiredMembersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
 
 /** The private link resource private link DNS zone name. */
-export type PrivateLinkResourcePropertiesRequiredZoneNamesList =
-  ReadonlyArray<string>;
+export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
 export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4284,8 +4271,7 @@ export const PrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateLinkResource>;
 
 /** The PrivateLinkResource items on this page */
-export type PrivateLinkResourceListValueList =
-  ReadonlyArray<PrivateLinkResource>;
+export type PrivateLinkResourceListValueList = Array<PrivateLinkResource>;
 export const PrivateLinkResourceListValueList = /*@__PURE__*/ S.Array(
   PrivateLinkResource,
 ) as any as S.Schema<PrivateLinkResourceListValueList>;
@@ -4366,7 +4352,7 @@ export const QuotaUsage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "QuotaUsage" }) as any as S.Schema<QuotaUsage>;
 
 /** The QuotaUsage items on this page */
-export type QuotaUsageListValueList = ReadonlyArray<QuotaUsage>;
+export type QuotaUsageListValueList = Array<QuotaUsage>;
 export const QuotaUsageListValueList = /*@__PURE__*/ S.Array(
   QuotaUsage,
 ) as any as S.Schema<QuotaUsageListValueList>;
@@ -4474,15 +4460,15 @@ export interface Storage {
   /** Size of storage assigned to a server. */
   storageSizeGB?: number;
   /** Flag to enable or disable the automatic growth of storage size of a server when available space is nearing zero and conditions allow for automatically growing storage size. */
-  autoGrow?: StorageAutoGrow;
+  autoGrow?: StorageAutoGrow | (string & {});
   /** Storage tier of a server. */
-  tier?: AzureManagedDiskPerformanceTier;
+  tier?: AzureManagedDiskPerformanceTier | (string & {});
   /** Maximum IOPS supported for storage. Required when type of storage is PremiumV2_LRS or UltraSSD_LRS. */
   iops?: number;
   /** Maximum throughput supported for storage. Required when type of storage is PremiumV2_LRS or UltraSSD_LRS. */
   throughput?: number;
   /** Type of storage assigned to a server. Allowed values are Premium_LRS, PremiumV2_LRS, or UltraSSD_LRS. If not specified, it defaults to Premium_LRS. */
-  type?: StorageType;
+  type?: StorageType | (string & {});
 }
 export const Storage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4506,9 +4492,9 @@ export const AuthConfigPasswordAuth = /*@__PURE__*/ S.String;
 /** Authentication configuration properties of a server. */
 export interface AuthConfig {
   /** Indicates if the server supports Microsoft Entra authentication. */
-  activeDirectoryAuth?: MicrosoftEntraAuth;
+  activeDirectoryAuth?: MicrosoftEntraAuth | (string & {});
   /** Indicates if the server supports password based authentication. */
-  passwordAuth?: AuthConfigPasswordAuth;
+  passwordAuth?: AuthConfigPasswordAuth | (string & {});
   /** Identifier of the tenant of the delegated resource. */
   tenantId?: string;
 }
@@ -4539,11 +4525,11 @@ export interface DataEncryption {
   /** Identifier of the user assigned managed identity used to access the key in Azure Key Vault for data encryption of the geographically redundant storage associated to a server that is configured to support geographically redundant backups. */
   geoBackupUserAssignedIdentityId?: string;
   /** Data encryption type used by a server. */
-  type?: DataEncryptionType;
+  type?: DataEncryptionType | (string & {});
   /** Status of key used by a server configured with data encryption based on customer managed key, to encrypt the primary storage associated to the server. */
-  primaryEncryptionKeyStatus?: EncryptionKeyStatus;
+  primaryEncryptionKeyStatus?: EncryptionKeyStatus | (string & {});
   /** Status of key used by a server configured with data encryption based on customer managed key, to encrypt the geographically redundant storage associated to the server when it is configured to support geographically redundant backups. */
-  geoBackupEncryptionKeyStatus?: EncryptionKeyStatus;
+  geoBackupEncryptionKeyStatus?: EncryptionKeyStatus | (string & {});
 }
 export const DataEncryption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4585,7 +4571,7 @@ export const ServerPublicNetworkAccessState = /*@__PURE__*/ S.String;
 /** Network properties of a server. */
 export interface Network {
   /** Indicates if public network access is enabled or not. This is only supported for servers that are not integrated into a virtual network which is owned and provided by customer when server is deployed. */
-  publicNetworkAccess?: ServerPublicNetworkAccessState;
+  publicNetworkAccess?: ServerPublicNetworkAccessState | (string & {});
   /** Resource identifier of the delegated subnet. Required during creation of a new server, in case you want the server to be integrated into your own virtual network. For an update operation, you only have to provide this property if you want to change the value assigned for the private DNS zone. */
   delegatedSubnetResourceId?: string;
   /** Identifier of the private DNS zone. Required during creation of a new server, in case you want the server to be integrated into your own virtual network. For an update operation, you only have to provide this property if you want to change the value assigned for the private DNS zone. */
@@ -4618,9 +4604,9 @@ export const HighAvailabilityState = /*@__PURE__*/ S.String;
 /** High availability properties of a server. */
 export interface HighAvailability {
   /** High availability mode for a server. */
-  mode?: HighAvailabilityMode;
+  mode?: HighAvailabilityMode | (string & {});
   /** Possible states of the standby server created when high availability is set to SameZone or ZoneRedundant. */
-  state?: HighAvailabilityState;
+  state?: HighAvailabilityState | (string & {});
   /** Availability zone associated to the standby server created when high availability is set to SameZone or ZoneRedundant. */
   standbyAvailabilityZone?: string;
 }
@@ -4744,7 +4730,7 @@ export const ServerPropertiesPrivateEndpointConnectionsItem =
 
 /** List of private endpoint connections associated with the specified server. */
 export type ServerPropertiesPrivateEndpointConnectionsList =
-  ReadonlyArray<ServerPropertiesPrivateEndpointConnectionsItem>;
+  Array<ServerPropertiesPrivateEndpointConnectionsItem>;
 export const ServerPropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     ServerPropertiesPrivateEndpointConnectionsItem,
@@ -4847,7 +4833,7 @@ export interface Sku {
   /** Name by which is known a given compute size assigned to a server. */
   name: string;
   /** Tier of the compute assigned to a server. */
-  tier: SkuTier;
+  tier: SkuTier | (string & {});
 }
 export const Sku = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4948,7 +4934,7 @@ export const Server = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Server" }) as any as S.Schema<Server>;
 
 /** The Server items on this page */
-export type ServerListValueList = ReadonlyArray<Server>;
+export type ServerListValueList = Array<Server>;
 export const ServerListValueList = /*@__PURE__*/ S.Array(
   Server,
 ) as any as S.Schema<ServerListValueList>;
@@ -5783,7 +5769,7 @@ export const TuningOptions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TuningOptions" }) as any as S.Schema<TuningOptions>;
 
 /** The TuningOptions items on this page */
-export type TuningOptionsListValueList = ReadonlyArray<TuningOptions>;
+export type TuningOptionsListValueList = Array<TuningOptions>;
 export const TuningOptionsListValueList = /*@__PURE__*/ S.Array(
   TuningOptions,
 ) as any as S.Schema<TuningOptionsListValueList>;
@@ -5861,8 +5847,7 @@ export const TuningOptionsListRecommendationsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<TuningOptionsListRecommendationsRequest>;
 
 /** List of identifiers for all queries identified as targets for improvement if the recommendation is applied. The list is only populated for CREATE INDEX recommendations. */
-export type ObjectRecommendationPropertiesImprovedQueryIdsList =
-  ReadonlyArray<number>;
+export type ObjectRecommendationPropertiesImprovedQueryIdsList = Array<number>;
 export const ObjectRecommendationPropertiesImprovedQueryIdsList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -5935,22 +5920,21 @@ export const ImpactRecord = /*@__PURE__*/ S.suspend(() =>
 
 /** Estimated impact of this recommended action. */
 export type ObjectRecommendationPropertiesEstimatedImpactList =
-  ReadonlyArray<ImpactRecord>;
+  Array<ImpactRecord>;
 export const ObjectRecommendationPropertiesEstimatedImpactList =
   /*@__PURE__*/ S.Array(
     ImpactRecord,
   ) as any as S.Schema<ObjectRecommendationPropertiesEstimatedImpactList>;
 
 /** Index columns. */
-export type ObjectRecommendationDetailsIndexColumnsList = ReadonlyArray<string>;
+export type ObjectRecommendationDetailsIndexColumnsList = Array<string>;
 export const ObjectRecommendationDetailsIndexColumnsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ObjectRecommendationDetailsIndexColumnsList>;
 
 /** Index included columns. */
-export type ObjectRecommendationDetailsIncludedColumnsList =
-  ReadonlyArray<string>;
+export type ObjectRecommendationDetailsIncludedColumnsList = Array<string>;
 export const ObjectRecommendationDetailsIncludedColumnsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6067,8 +6051,7 @@ export const ObjectRecommendation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ObjectRecommendation>;
 
 /** The ObjectRecommendation items on this page */
-export type ObjectRecommendationListValueList =
-  ReadonlyArray<ObjectRecommendation>;
+export type ObjectRecommendationListValueList = Array<ObjectRecommendation>;
 export const ObjectRecommendationListValueList = /*@__PURE__*/ S.Array(
   ObjectRecommendation,
 ) as any as S.Schema<ObjectRecommendationListValueList>;
@@ -6094,8 +6077,7 @@ export type VirtualEndpointType = "ReadWrite";
 export const VirtualEndpointType = /*@__PURE__*/ S.String;
 
 /** List of servers that one of the virtual endpoints can refer to. */
-export type VirtualEndpointResourcePropertiesInputMembersList =
-  ReadonlyArray<string>;
+export type VirtualEndpointResourcePropertiesInputMembersList = Array<string>;
 export const VirtualEndpointResourcePropertiesInputMembersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6220,8 +6202,7 @@ export const VirtualEndpointsGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VirtualEndpointsGetRequest>;
 
 /** List of servers that one of the virtual endpoints can refer to. */
-export type VirtualEndpointResourcePropertiesMembersList =
-  ReadonlyArray<string>;
+export type VirtualEndpointResourcePropertiesMembersList = Array<string>;
 export const VirtualEndpointResourcePropertiesMembersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6229,7 +6210,7 @@ export const VirtualEndpointResourcePropertiesMembersList =
 
 /** List of virtual endpoints for a server. */
 export type VirtualEndpointResourcePropertiesVirtualEndpointsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const VirtualEndpointResourcePropertiesVirtualEndpointsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6331,7 +6312,7 @@ export const VirtualEndpoint = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VirtualEndpoint>;
 
 /** The VirtualEndpoint items on this page */
-export type VirtualEndpointsListValueList = ReadonlyArray<VirtualEndpoint>;
+export type VirtualEndpointsListValueList = Array<VirtualEndpoint>;
 export const VirtualEndpointsListValueList = /*@__PURE__*/ S.Array(
   VirtualEndpoint,
 ) as any as S.Schema<VirtualEndpointsListValueList>;
@@ -6433,7 +6414,7 @@ export const DelegatedSubnetUsage = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DelegatedSubnetUsage>;
 
 export type VirtualNetworkSubnetUsageModelDelegatedSubnetsUsageList =
-  ReadonlyArray<DelegatedSubnetUsage>;
+  Array<DelegatedSubnetUsage>;
 export const VirtualNetworkSubnetUsageModelDelegatedSubnetsUsageList =
   /*@__PURE__*/ S.Array(
     DelegatedSubnetUsage,

@@ -509,7 +509,7 @@ export const GeoCatalog = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GeoCatalog" }) as any as S.Schema<GeoCatalog>;
 
 /** The GeoCatalog items on this page */
-export type GeoCatalogListResultValueList = ReadonlyArray<GeoCatalog>;
+export type GeoCatalogListResultValueList = Array<GeoCatalog>;
 export const GeoCatalogListResultValueList = /*@__PURE__*/ S.Array(
   GeoCatalog,
 ) as any as S.Schema<GeoCatalogListResultValueList>;

@@ -1154,7 +1154,7 @@ export const TagList = /*@__PURE__*/ S.Array(
   Tag.pipe(T.XmlName("item")).annotate({ identifier: "Tag" }),
 );
 export interface TagSpecification {
-  ResourceType?: ResourceType;
+  ResourceType?: ResourceType | (string & {});
   Tags?: Tag[];
 }
 export const TagSpecification = /*@__PURE__*/ S.suspend(() =>
@@ -10932,7 +10932,7 @@ export interface Placement {
   GroupName?: string;
   PartitionNumber?: number;
   HostId?: string;
-  Tenancy?: Tenancy;
+  Tenancy?: Tenancy | (string & {});
   SpreadDomain?: string;
   HostResourceGroupArn?: string;
   GroupId?: string;
@@ -11051,7 +11051,7 @@ export const MemoryMiBRequest = /*@__PURE__*/ S.suspend(() =>
 export type CpuManufacturer = "intel" | "amd" | "amazon-web-services" | "apple";
 export const CpuManufacturer = /*@__PURE__*/ S.String;
 
-export type CpuManufacturerSet = CpuManufacturer[];
+export type CpuManufacturerSet = (CpuManufacturer | (string & {}))[];
 export const CpuManufacturerSet = /*@__PURE__*/ S.Array(
   CpuManufacturer.pipe(T.XmlName("item")),
 );
@@ -11072,7 +11072,7 @@ export const ExcludedInstanceTypeSet = /*@__PURE__*/ S.Array(
 export type InstanceGeneration = "current" | "previous";
 export const InstanceGeneration = /*@__PURE__*/ S.String;
 
-export type InstanceGenerationSet = InstanceGeneration[];
+export type InstanceGenerationSet = (InstanceGeneration | (string & {}))[];
 export const InstanceGenerationSet = /*@__PURE__*/ S.Array(
   InstanceGeneration.pipe(T.XmlName("item")),
 );
@@ -11097,7 +11097,7 @@ export const LocalStorage = /*@__PURE__*/ S.String;
 export type LocalStorageType = "hdd" | "ssd";
 export const LocalStorageType = /*@__PURE__*/ S.String;
 
-export type LocalStorageTypeSet = LocalStorageType[];
+export type LocalStorageTypeSet = (LocalStorageType | (string & {}))[];
 export const LocalStorageTypeSet = /*@__PURE__*/ S.Array(
   LocalStorageType.pipe(T.XmlName("item")),
 );
@@ -11122,7 +11122,7 @@ export const BaselineEbsBandwidthMbpsRequest = /*@__PURE__*/ S.suspend(() =>
 export type AcceleratorType = "gpu" | "fpga" | "inference" | "media";
 export const AcceleratorType = /*@__PURE__*/ S.String;
 
-export type AcceleratorTypeSet = AcceleratorType[];
+export type AcceleratorTypeSet = (AcceleratorType | (string & {}))[];
 export const AcceleratorTypeSet = /*@__PURE__*/ S.Array(
   AcceleratorType.pipe(T.XmlName("item")),
 );
@@ -11143,7 +11143,10 @@ export type AcceleratorManufacturer =
   | "habana";
 export const AcceleratorManufacturer = /*@__PURE__*/ S.String;
 
-export type AcceleratorManufacturerSet = AcceleratorManufacturer[];
+export type AcceleratorManufacturerSet = (
+  | AcceleratorManufacturer
+  | (string & {})
+)[];
 export const AcceleratorManufacturerSet = /*@__PURE__*/ S.Array(
   AcceleratorManufacturer.pipe(T.XmlName("item")),
 );
@@ -11169,7 +11172,7 @@ export type AcceleratorName =
   | "u30";
 export const AcceleratorName = /*@__PURE__*/ S.String;
 
-export type AcceleratorNameSet = AcceleratorName[];
+export type AcceleratorNameSet = (AcceleratorName | (string & {}))[];
 export const AcceleratorNameSet = /*@__PURE__*/ S.Array(
   AcceleratorName.pipe(T.XmlName("item")),
 );
@@ -11650,11 +11653,11 @@ export interface InstanceRequirements {
   InstanceGenerations?: InstanceGeneration[];
   SpotMaxPricePercentageOverLowestPrice?: number;
   OnDemandMaxPricePercentageOverLowestPrice?: number;
-  BareMetal?: BareMetal;
-  BurstablePerformance?: BurstablePerformance;
+  BareMetal?: BareMetal | (string & {});
+  BurstablePerformance?: BurstablePerformance | (string & {});
   RequireHibernateSupport?: boolean;
   NetworkInterfaceCount?: NetworkInterfaceCount;
-  LocalStorage?: LocalStorage;
+  LocalStorage?: LocalStorage | (string & {});
   LocalStorageTypes?: LocalStorageType[];
   TotalLocalStorageGB?: TotalLocalStorageGB;
   BaselineEbsBandwidthMbps?: BaselineEbsBandwidthMbps;
@@ -12274,7 +12277,7 @@ export interface EbsBlockDevice {
   Iops?: number;
   SnapshotId?: string;
   VolumeSize?: number;
-  VolumeType?: VolumeType;
+  VolumeType?: VolumeType | (string & {});
   KmsKeyId?: string;
   Throughput?: number;
   OutpostArn?: string;
@@ -18094,7 +18097,7 @@ export const CreateNetworkAclEntryResponse = /*@__PURE__*/ S.suspend(() =>
 export type Protocol = "tcp" | "udp";
 export const Protocol = /*@__PURE__*/ S.String;
 
-export type ProtocolList = Protocol[];
+export type ProtocolList = (Protocol | (string & {}))[];
 export const ProtocolList = /*@__PURE__*/ S.Array(
   Protocol.pipe(T.XmlName("item")),
 );
@@ -21704,7 +21707,10 @@ export const TrafficMirrorFilterRuleList = /*@__PURE__*/ S.Array(
 export type TrafficMirrorNetworkService = "amazon-dns";
 export const TrafficMirrorNetworkService = /*@__PURE__*/ S.String;
 
-export type TrafficMirrorNetworkServiceList = TrafficMirrorNetworkService[];
+export type TrafficMirrorNetworkServiceList = (
+  | TrafficMirrorNetworkService
+  | (string & {})
+)[];
 export const TrafficMirrorNetworkServiceList = /*@__PURE__*/ S.Array(
   TrafficMirrorNetworkService.pipe(T.XmlName("item")),
 );
@@ -37262,7 +37268,7 @@ export interface LaunchPermission {
   OrganizationArn?: string;
   OrganizationalUnitArn?: string;
   UserId?: string;
-  Group?: PermissionGroup;
+  Group?: PermissionGroup | (string & {});
 }
 export const LaunchPermission = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -46527,9 +46533,9 @@ export const DescribeReservedInstancesModificationsRequest =
 export interface ReservedInstancesConfiguration {
   AvailabilityZone?: string;
   InstanceCount?: number;
-  InstanceType?: InstanceType;
+  InstanceType?: InstanceType | (string & {});
   Platform?: string;
-  Scope?: Scope;
+  Scope?: Scope | (string & {});
   AvailabilityZoneId?: string;
 }
 export const ReservedInstancesConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -48311,7 +48317,7 @@ export const DescribeSnapshotAttributeRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeSnapshotAttributeRequest>;
 export interface CreateVolumePermission {
   UserId?: string;
-  Group?: PermissionGroup;
+  Group?: PermissionGroup | (string & {});
 }
 export const CreateVolumePermission = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -48829,7 +48835,7 @@ export type ReplacementStrategy = "launch" | "launch-before-terminate";
 export const ReplacementStrategy = /*@__PURE__*/ S.String;
 
 export interface SpotCapacityRebalance {
-  ReplacementStrategy?: ReplacementStrategy;
+  ReplacementStrategy?: ReplacementStrategy | (string & {});
   TerminationDelay?: number;
 }
 export const SpotCapacityRebalance = /*@__PURE__*/ S.suspend(() =>
@@ -48976,7 +48982,7 @@ export const InstanceNetworkInterfaceSpecificationList = /*@__PURE__*/ S.Array(
 export interface SpotPlacement {
   AvailabilityZone?: string;
   GroupName?: string;
-  Tenancy?: Tenancy;
+  Tenancy?: Tenancy | (string & {});
   AvailabilityZoneId?: string;
 }
 export const SpotPlacement = /*@__PURE__*/ S.suspend(() =>
@@ -49000,7 +49006,7 @@ export const SpotPlacement = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SpotPlacement" }) as any as S.Schema<SpotPlacement>;
 export interface SpotFleetTagSpecification {
-  ResourceType?: ResourceType;
+  ResourceType?: ResourceType | (string & {});
   Tags?: Tag[];
 }
 export const SpotFleetTagSpecification = /*@__PURE__*/ S.suspend(() =>
@@ -49026,7 +49032,7 @@ export interface SpotFleetLaunchSpecification {
   EbsOptimized?: boolean;
   IamInstanceProfile?: IamInstanceProfileSpecification;
   ImageId?: string;
-  InstanceType?: InstanceType;
+  InstanceType?: InstanceType | (string & {});
   KernelId?: string;
   KeyName?: string;
   Monitoring?: SpotFleetMonitoring;
@@ -49134,7 +49140,7 @@ export const LaunchSpecsList = /*@__PURE__*/ S.Array(
   }),
 );
 export interface LaunchTemplateOverrides {
-  InstanceType?: InstanceType;
+  InstanceType?: InstanceType | (string & {});
   SpotPrice?: string;
   SubnetId?: string;
   AvailabilityZone?: string;
@@ -49292,11 +49298,13 @@ export const LoadBalancersConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "LoadBalancersConfig",
 }) as any as S.Schema<LoadBalancersConfig>;
 export interface SpotFleetRequestConfigData {
-  AllocationStrategy?: AllocationStrategy;
-  OnDemandAllocationStrategy?: OnDemandAllocationStrategy;
+  AllocationStrategy?: AllocationStrategy | (string & {});
+  OnDemandAllocationStrategy?: OnDemandAllocationStrategy | (string & {});
   SpotMaintenanceStrategies?: SpotMaintenanceStrategies;
   ClientToken?: string;
-  ExcessCapacityTerminationPolicy?: ExcessCapacityTerminationPolicy;
+  ExcessCapacityTerminationPolicy?:
+    | ExcessCapacityTerminationPolicy
+    | (string & {});
   FulfilledCapacity?: number;
   OnDemandFulfilledCapacity?: number;
   IamFleetRole?: string;
@@ -49308,15 +49316,15 @@ export interface SpotFleetRequestConfigData {
   OnDemandMaxTotalPrice?: string;
   SpotMaxTotalPrice?: string;
   TerminateInstancesWithExpiration?: boolean;
-  Type?: FleetType;
+  Type?: FleetType | (string & {});
   ValidFrom?: Date;
   ValidUntil?: Date;
   ReplaceUnhealthyInstances?: boolean;
-  InstanceInterruptionBehavior?: InstanceInterruptionBehavior;
+  InstanceInterruptionBehavior?: InstanceInterruptionBehavior | (string & {});
   LoadBalancersConfig?: LoadBalancersConfig;
   InstancePoolsToUseCount?: number;
   Context?: string;
-  TargetCapacityUnitType?: TargetCapacityUnitType;
+  TargetCapacityUnitType?: TargetCapacityUnitType | (string & {});
   TagSpecifications?: TagSpecification[];
 }
 export const SpotFleetRequestConfigData = /*@__PURE__*/ S.suspend(() =>

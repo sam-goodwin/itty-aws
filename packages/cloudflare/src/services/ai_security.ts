@@ -101,7 +101,7 @@ export const CustomTopicsGetResponseTopicsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CustomTopicsGetResponseTopicsItem>;
 
 export type CustomTopicsGetResponseTopicsList =
-  ReadonlyArray<CustomTopicsGetResponseTopicsItem>;
+  Array<CustomTopicsGetResponseTopicsItem>;
 export const CustomTopicsGetResponseTopicsList = /*@__PURE__*/ S.Array(
   CustomTopicsGetResponseTopicsItem,
 ) as any as S.Schema<CustomTopicsGetResponseTopicsList>;
@@ -169,7 +169,7 @@ export const CustomTopicsUpdateRequestTopicsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CustomTopicsUpdateRequestTopicsItem>;
 
 export type CustomTopicsUpdateRequestTopicsList =
-  ReadonlyArray<CustomTopicsUpdateRequestTopicsItem>;
+  Array<CustomTopicsUpdateRequestTopicsItem>;
 export const CustomTopicsUpdateRequestTopicsList = /*@__PURE__*/ S.Array(
   CustomTopicsUpdateRequestTopicsItem,
 ) as any as S.Schema<CustomTopicsUpdateRequestTopicsList>;
@@ -212,7 +212,7 @@ export const CustomTopicsUpdateResponseTopicsItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CustomTopicsUpdateResponseTopicsItem>;
 
 export type CustomTopicsUpdateResponseTopicsList =
-  ReadonlyArray<CustomTopicsUpdateResponseTopicsItem>;
+  Array<CustomTopicsUpdateResponseTopicsItem>;
 export const CustomTopicsUpdateResponseTopicsList = /*@__PURE__*/ S.Array(
   CustomTopicsUpdateResponseTopicsItem,
 ) as any as S.Schema<CustomTopicsUpdateResponseTopicsList>;

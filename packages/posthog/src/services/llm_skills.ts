@@ -12,7 +12,7 @@ import * as Retry from "../retry.ts";
 export type { PosthogOpError, PosthogOpContext };
 
 /** List of pre-approved tools the skill may use. Tool names cannot contain whitespace. */
-export type LlmSkillsCreateRequestAllowedToolsList = ReadonlyArray<string>;
+export type LlmSkillsCreateRequestAllowedToolsList = Array<string>;
 export const LlmSkillsCreateRequestAllowedToolsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LlmSkillsCreateRequestAllowedToolsList>;
@@ -45,7 +45,7 @@ export const LLMSkillFileInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LLMSkillFileInput>;
 
 /** Bundled files to include with the initial version (scripts, references, assets). */
-export type LlmSkillsCreateRequestFilesList = ReadonlyArray<LLMSkillFileInput>;
+export type LlmSkillsCreateRequestFilesList = Array<LLMSkillFileInput>;
 export const LlmSkillsCreateRequestFilesList = /*@__PURE__*/ S.Array(
   LLMSkillFileInput,
 ) as any as S.Schema<LlmSkillsCreateRequestFilesList>;
@@ -93,7 +93,7 @@ export const LlmSkillsCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LlmSkillsCreateRequest>;
 
 /** List of pre-approved tools the skill may use. Tool names cannot contain whitespace. */
-export type LLMSkillCreateOutputAllowedToolsList = ReadonlyArray<string>;
+export type LLMSkillCreateOutputAllowedToolsList = Array<string>;
 export const LLMSkillCreateOutputAllowedToolsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LLMSkillCreateOutputAllowedToolsList>;
@@ -123,8 +123,7 @@ export const LLMSkillOutlineEntry = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LLMSkillOutlineEntry>;
 
 /** Flat list of markdown headings parsed from the skill body. Useful as a lightweight table of contents. */
-export type LLMSkillCreateOutputOutlineList =
-  ReadonlyArray<LLMSkillOutlineEntry>;
+export type LLMSkillCreateOutputOutlineList = Array<LLMSkillOutlineEntry>;
 export const LLMSkillCreateOutputOutlineList = /*@__PURE__*/ S.Array(
   LLMSkillOutlineEntry,
 ) as any as S.Schema<LLMSkillCreateOutputOutlineList>;
@@ -265,7 +264,7 @@ export const LlmSkillsImportCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LlmSkillsImportCreateRequest>;
 
 /** List of pre-approved tools the skill may use. Tool names cannot contain whitespace. */
-export type LLMSkillAllowedToolsList = ReadonlyArray<string>;
+export type LLMSkillAllowedToolsList = Array<string>;
 export const LLMSkillAllowedToolsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LLMSkillAllowedToolsList>;
@@ -297,13 +296,13 @@ export const LLMSkillFileManifest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LLMSkillFileManifest>;
 
 /** Bundled files manifest. Each entry carries path, content_type, and line/char counts — no content; fetch content via /llm_skills/name/{name}/files/{path}/. */
-export type LLMSkillFilesList = ReadonlyArray<LLMSkillFileManifest>;
+export type LLMSkillFilesList = Array<LLMSkillFileManifest>;
 export const LLMSkillFilesList = /*@__PURE__*/ S.Array(
   LLMSkillFileManifest,
 ) as any as S.Schema<LLMSkillFilesList>;
 
 /** Flat list of markdown headings parsed from the skill body. Useful as a lightweight table of contents. */
-export type LLMSkillOutlineList = ReadonlyArray<LLMSkillOutlineEntry>;
+export type LLMSkillOutlineList = Array<LLMSkillOutlineEntry>;
 export const LLMSkillOutlineList = /*@__PURE__*/ S.Array(
   LLMSkillOutlineEntry,
 ) as any as S.Schema<LLMSkillOutlineList>;
@@ -405,7 +404,7 @@ export const LlmSkillsListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LlmSkillsListRequest>;
 
 /** List of pre-approved tools the skill may use. Tool names cannot contain whitespace. */
-export type LLMSkillListAllowedToolsList = ReadonlyArray<string>;
+export type LLMSkillListAllowedToolsList = Array<string>;
 export const LLMSkillListAllowedToolsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LLMSkillListAllowedToolsList>;
@@ -418,7 +417,7 @@ export const LLMSkillListMetadataMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<LLMSkillListMetadataMap>;
 
 /** Flat list of markdown headings parsed from the skill body. Useful as a lightweight table of contents. */
-export type LLMSkillListOutlineList = ReadonlyArray<LLMSkillOutlineEntry>;
+export type LLMSkillListOutlineList = Array<LLMSkillOutlineEntry>;
 export const LLMSkillListOutlineList = /*@__PURE__*/ S.Array(
   LLMSkillOutlineEntry,
 ) as any as S.Schema<LLMSkillListOutlineList>;
@@ -475,7 +474,7 @@ export const LLMSkillList = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "LLMSkillList" }) as any as S.Schema<LLMSkillList>;
 
-export type PaginatedLLMSkillListListResultsList = ReadonlyArray<LLMSkillList>;
+export type PaginatedLLMSkillListListResultsList = Array<LLMSkillList>;
 export const PaginatedLLMSkillListListResultsList = /*@__PURE__*/ S.Array(
   LLMSkillList,
 ) as any as S.Schema<PaginatedLLMSkillListListResultsList>;
@@ -819,14 +818,13 @@ export const LLMSkillEditOperation = /*@__PURE__*/ S.suspend(() =>
 
 /** List of find/replace operations to apply to the current skill body. Each edit's 'old' text must match exactly once. Edits are applied sequentially. Mutually exclusive with body. */
 export type LlmSkillsNamePartialUpdateRequestEditsList =
-  ReadonlyArray<LLMSkillEditOperation>;
+  Array<LLMSkillEditOperation>;
 export const LlmSkillsNamePartialUpdateRequestEditsList = /*@__PURE__*/ S.Array(
   LLMSkillEditOperation,
 ) as any as S.Schema<LlmSkillsNamePartialUpdateRequestEditsList>;
 
 /** List of pre-approved tools the skill may use. Tool names cannot contain whitespace. */
-export type LlmSkillsNamePartialUpdateRequestAllowedToolsList =
-  ReadonlyArray<string>;
+export type LlmSkillsNamePartialUpdateRequestAllowedToolsList = Array<string>;
 export const LlmSkillsNamePartialUpdateRequestAllowedToolsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -844,13 +842,13 @@ export const LlmSkillsNamePartialUpdateRequestMetadataMap =
 
 /** Bundled files to include with this version. Replaces all files from the previous version. Mutually exclusive with file_edits. */
 export type LlmSkillsNamePartialUpdateRequestFilesList =
-  ReadonlyArray<LLMSkillFileInput>;
+  Array<LLMSkillFileInput>;
 export const LlmSkillsNamePartialUpdateRequestFilesList = /*@__PURE__*/ S.Array(
   LLMSkillFileInput,
 ) as any as S.Schema<LlmSkillsNamePartialUpdateRequestFilesList>;
 
 /** Sequential find/replace operations to apply to this file's content. */
-export type LLMSkillFileEditEditsList = ReadonlyArray<LLMSkillEditOperation>;
+export type LLMSkillFileEditEditsList = Array<LLMSkillEditOperation>;
 export const LLMSkillFileEditEditsList = /*@__PURE__*/ S.Array(
   LLMSkillEditOperation,
 ) as any as S.Schema<LLMSkillFileEditEditsList>;
@@ -872,7 +870,7 @@ export const LLMSkillFileEdit = /*@__PURE__*/ S.suspend(() =>
 
 /** Per-file find/replace updates. Each entry targets one existing file by path and applies sequential edits to its content. Non-targeted files carry forward unchanged. Cannot add, remove, or rename files — use 'files' for that. Mutually exclusive with files. */
 export type LlmSkillsNamePartialUpdateRequestFileEditsList =
-  ReadonlyArray<LLMSkillFileEdit>;
+  Array<LLMSkillFileEdit>;
 export const LlmSkillsNamePartialUpdateRequestFileEditsList =
   /*@__PURE__*/ S.Array(
     LLMSkillFileEdit,
@@ -1013,8 +1011,7 @@ export const LLMSkillVersionSummary = /*@__PURE__*/ S.suspend(() =>
   identifier: "LLMSkillVersionSummary",
 }) as any as S.Schema<LLMSkillVersionSummary>;
 
-export type LLMSkillResolveResponseVersionsList =
-  ReadonlyArray<LLMSkillVersionSummary>;
+export type LLMSkillResolveResponseVersionsList = Array<LLMSkillVersionSummary>;
 export const LLMSkillResolveResponseVersionsList = /*@__PURE__*/ S.Array(
   LLMSkillVersionSummary,
 ) as any as S.Schema<LLMSkillResolveResponseVersionsList>;
@@ -1086,8 +1083,7 @@ export const LLMSkillSearchMatch = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LLMSkillSearchMatch>;
 
 /** Up to two locations that matched the search query, ordered by field relevance. */
-export type LLMSkillSearchResultMatchesList =
-  ReadonlyArray<LLMSkillSearchMatch>;
+export type LLMSkillSearchResultMatchesList = Array<LLMSkillSearchMatch>;
 export const LLMSkillSearchResultMatchesList = /*@__PURE__*/ S.Array(
   LLMSkillSearchMatch,
 ) as any as S.Schema<LLMSkillSearchResultMatchesList>;
@@ -1111,8 +1107,7 @@ export const LLMSkillSearchResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LLMSkillSearchResult>;
 
 /** Matching ordinary skills in relevance order. */
-export type LLMSkillSearchResponseResultsList =
-  ReadonlyArray<LLMSkillSearchResult>;
+export type LLMSkillSearchResponseResultsList = Array<LLMSkillSearchResult>;
 export const LLMSkillSearchResponseResultsList = /*@__PURE__*/ S.Array(
   LLMSkillSearchResult,
 ) as any as S.Schema<LLMSkillSearchResponseResultsList>;

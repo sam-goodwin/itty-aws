@@ -60,7 +60,7 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -85,9 +85,13 @@ export interface RRSetRoutingPolicyLoadBalancerTarget {
   /** The configured port of the load balancer. */
   port?: string;
   /** The type of load balancer specified by this target. This value must match the configuration of the load balancer located at the LoadBalancerTarget's IP address, port, and region. Use the following: - *regionalL4ilb*: for a regional internal passthrough Network Load Balancer. - *regionalL7ilb*: for a regional internal Application Load Balancer. - *globalL7ilb*: for a global internal Application Load Balancer. */
-  loadBalancerType?: RRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypeEnum;
+  loadBalancerType?:
+    | RRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypeEnum
+    | (string & {});
   /** The protocol of the load balancer to health check. */
-  ipProtocol?: RRSetRoutingPolicyLoadBalancerTargetIpProtocolEnum;
+  ipProtocol?:
+    | RRSetRoutingPolicyLoadBalancerTargetIpProtocolEnum
+    | (string & {});
   /** The fully qualified URL of the network that the load balancer is attached to. This should be formatted like `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`. */
   networkUrl?: string;
   /** The project ID in which the load balancer is located. */
@@ -119,7 +123,7 @@ export const RRSetRoutingPolicyLoadBalancerTarget = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<RRSetRoutingPolicyLoadBalancerTarget>;
 
 export type RRSetRoutingPolicyLoadBalancerTargetList =
-  ReadonlyArray<RRSetRoutingPolicyLoadBalancerTarget>;
+  Array<RRSetRoutingPolicyLoadBalancerTarget>;
 export const RRSetRoutingPolicyLoadBalancerTargetList = /*@__PURE__*/ S.Array(
   RRSetRoutingPolicyLoadBalancerTarget,
 ) as any as S.Schema<RRSetRoutingPolicyLoadBalancerTargetList>;
@@ -168,7 +172,7 @@ export const RRSetRoutingPolicyWrrPolicyWrrPolicyItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<RRSetRoutingPolicyWrrPolicyWrrPolicyItem>;
 
 export type RRSetRoutingPolicyWrrPolicyWrrPolicyItemList =
-  ReadonlyArray<RRSetRoutingPolicyWrrPolicyWrrPolicyItem>;
+  Array<RRSetRoutingPolicyWrrPolicyWrrPolicyItem>;
 export const RRSetRoutingPolicyWrrPolicyWrrPolicyItemList =
   /*@__PURE__*/ S.Array(
     RRSetRoutingPolicyWrrPolicyWrrPolicyItem,
@@ -213,7 +217,7 @@ export const RRSetRoutingPolicyGeoPolicyGeoPolicyItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<RRSetRoutingPolicyGeoPolicyGeoPolicyItem>;
 
 export type RRSetRoutingPolicyGeoPolicyGeoPolicyItemList =
-  ReadonlyArray<RRSetRoutingPolicyGeoPolicyGeoPolicyItem>;
+  Array<RRSetRoutingPolicyGeoPolicyGeoPolicyItem>;
 export const RRSetRoutingPolicyGeoPolicyGeoPolicyItemList =
   /*@__PURE__*/ S.Array(
     RRSetRoutingPolicyGeoPolicyGeoPolicyItem,
@@ -310,7 +314,7 @@ export const ResourceRecordSet = /*@__PURE__*/ S.suspend(() =>
   identifier: "ResourceRecordSet",
 }) as any as S.Schema<ResourceRecordSet>;
 
-export type ResourceRecordSetList = ReadonlyArray<ResourceRecordSet>;
+export type ResourceRecordSetList = Array<ResourceRecordSet>;
 export const ResourceRecordSetList = /*@__PURE__*/ S.Array(
   ResourceRecordSet,
 ) as any as S.Schema<ResourceRecordSetList>;
@@ -332,7 +336,7 @@ export interface Change {
   /** Which ResourceRecordSets to remove? Must match existing data exactly. */
   deletions?: ResourceRecordSetList;
   /** Status of the operation (output only). A status of "done" means that the request to update the authoritative servers has been sent, but the servers might not be updated yet. */
-  status?: ChangeStatusEnum;
+  status?: ChangeStatusEnum | (string & {});
 }
 export const Change = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -416,7 +420,9 @@ export const ManagedZoneForwardingConfigNameServerTargetForwardingPathEnum =
 
 export interface ManagedZoneForwardingConfigNameServerTarget {
   /** Forwarding path for this NameServerTarget. If unset or set to DEFAULT, Cloud DNS makes forwarding decisions based on IP address ranges; that is, RFC1918 addresses go to the VPC network, non-RFC1918 addresses go to the internet. When set to PRIVATE, Cloud DNS always sends queries through the VPC network for this target. */
-  forwardingPath?: ManagedZoneForwardingConfigNameServerTargetForwardingPathEnum;
+  forwardingPath?:
+    | ManagedZoneForwardingConfigNameServerTargetForwardingPathEnum
+    | (string & {});
   /** Fully qualified domain name for the forwarding target. */
   domainName?: string;
   kind?: string;
@@ -441,7 +447,7 @@ export const ManagedZoneForwardingConfigNameServerTarget =
   }) as any as S.Schema<ManagedZoneForwardingConfigNameServerTarget>;
 
 export type ManagedZoneForwardingConfigNameServerTargetList =
-  ReadonlyArray<ManagedZoneForwardingConfigNameServerTarget>;
+  Array<ManagedZoneForwardingConfigNameServerTarget>;
 export const ManagedZoneForwardingConfigNameServerTargetList =
   /*@__PURE__*/ S.Array(
     ManagedZoneForwardingConfigNameServerTarget,
@@ -479,7 +485,7 @@ export const ManagedZonePrivateVisibilityConfigGKECluster =
   }) as any as S.Schema<ManagedZonePrivateVisibilityConfigGKECluster>;
 
 export type ManagedZonePrivateVisibilityConfigGKEClusterList =
-  ReadonlyArray<ManagedZonePrivateVisibilityConfigGKECluster>;
+  Array<ManagedZonePrivateVisibilityConfigGKECluster>;
 export const ManagedZonePrivateVisibilityConfigGKEClusterList =
   /*@__PURE__*/ S.Array(
     ManagedZonePrivateVisibilityConfigGKECluster,
@@ -501,7 +507,7 @@ export const ManagedZonePrivateVisibilityConfigNetwork =
   }) as any as S.Schema<ManagedZonePrivateVisibilityConfigNetwork>;
 
 export type ManagedZonePrivateVisibilityConfigNetworkList =
-  ReadonlyArray<ManagedZonePrivateVisibilityConfigNetwork>;
+  Array<ManagedZonePrivateVisibilityConfigNetwork>;
 export const ManagedZonePrivateVisibilityConfigNetworkList =
   /*@__PURE__*/ S.Array(
     ManagedZonePrivateVisibilityConfigNetwork,
@@ -544,12 +550,12 @@ export const DnsKeySpecAlgorithmEnum = /*@__PURE__*/ S.String;
 /** Parameters for DnsKey key generation. Used for generating initial keys for a new ManagedZone and as default when adding a new DnsKey. */
 export interface DnsKeySpec {
   /** Specifies whether this is a key signing key (KSK) or a zone signing key (ZSK). Key signing keys have the Secure Entry Point flag set and, when active, are only used to sign resource record sets of type DNSKEY. Zone signing keys do not have the Secure Entry Point flag set and are used to sign all other types of resource record sets. */
-  keyType?: DnsKeySpecKeyTypeEnum;
+  keyType?: DnsKeySpecKeyTypeEnum | (string & {});
   kind?: string;
   /** Length of the keys in bits. */
   keyLength?: number;
   /** String mnemonic specifying the DNSSEC algorithm of this key. */
-  algorithm?: DnsKeySpecAlgorithmEnum;
+  algorithm?: DnsKeySpecAlgorithmEnum | (string & {});
 }
 export const DnsKeySpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -560,16 +566,16 @@ export const DnsKeySpec = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DnsKeySpec" }) as any as S.Schema<DnsKeySpec>;
 
-export type DnsKeySpecList = ReadonlyArray<DnsKeySpec>;
+export type DnsKeySpecList = Array<DnsKeySpec>;
 export const DnsKeySpecList = /*@__PURE__*/ S.Array(
   DnsKeySpec,
 ) as any as S.Schema<DnsKeySpecList>;
 
 export interface ManagedZoneDnsSecConfig {
   /** Specifies the mechanism for authenticated denial-of-existence responses. Can only be changed while the state is OFF. */
-  nonExistence?: ManagedZoneDnsSecConfigNonExistenceEnum;
+  nonExistence?: ManagedZoneDnsSecConfigNonExistenceEnum | (string & {});
   /** Specifies whether DNSSEC is enabled, and what mode it is in. */
-  state?: ManagedZoneDnsSecConfigStateEnum;
+  state?: ManagedZoneDnsSecConfigStateEnum | (string & {});
   /** Specifies parameters for generating initial DnsKeys for this ManagedZone. Can only be changed while the state is OFF. */
   defaultKeySpecs?: DnsKeySpecList;
   kind?: string;
@@ -653,7 +659,7 @@ export const ManagedZoneCloudLoggingConfig = /*@__PURE__*/ S.suspend(() =>
 /** A zone is a subtree of the DNS namespace under one administrative responsibility. A ManagedZone is a resource that represents a DNS zone hosted by the Cloud DNS service. */
 export interface ManagedZone {
   /** The zone's visibility: public zones are exposed to the Internet, while private zones are visible only to Virtual Private Cloud resources. */
-  visibility?: ManagedZoneVisibilityEnum;
+  visibility?: ManagedZoneVisibilityEnum | (string & {});
   /** The presence of this field indicates that DNS Peering is enabled for this zone. The value of this field contains the network to peer with. */
   peeringConfig?: ManagedZonePeeringConfig;
   /** The presence for this field indicates that outbound forwarding is enabled for this zone. The value of this field contains the set of destinations to forward to. */
@@ -769,7 +775,9 @@ export interface PolicyAlternativeNameServerConfigTargetNameServer {
   /** IPv4 address to forward queries to. */
   ipv4Address?: string;
   /** Forwarding path for this TargetNameServer. If unset or set to DEFAULT, Cloud DNS makes forwarding decisions based on address ranges; that is, RFC1918 addresses go to the VPC network, non-RFC1918 addresses go to the internet. When set to PRIVATE, Cloud DNS always sends queries through the VPC network for this target. */
-  forwardingPath?: PolicyAlternativeNameServerConfigTargetNameServerForwardingPathEnum;
+  forwardingPath?:
+    | PolicyAlternativeNameServerConfigTargetNameServerForwardingPathEnum
+    | (string & {});
   /** IPv6 address to forward to. Does not accept both fields (ipv4 & ipv6) being populated. Public preview as of November 2022. */
   ipv6Address?: string;
   kind?: string;
@@ -789,7 +797,7 @@ export const PolicyAlternativeNameServerConfigTargetNameServer =
   }) as any as S.Schema<PolicyAlternativeNameServerConfigTargetNameServer>;
 
 export type PolicyAlternativeNameServerConfigTargetNameServerList =
-  ReadonlyArray<PolicyAlternativeNameServerConfigTargetNameServer>;
+  Array<PolicyAlternativeNameServerConfigTargetNameServer>;
 export const PolicyAlternativeNameServerConfigTargetNameServerList =
   /*@__PURE__*/ S.Array(
     PolicyAlternativeNameServerConfigTargetNameServer,
@@ -823,7 +831,7 @@ export const PolicyNetwork = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PolicyNetwork" }) as any as S.Schema<PolicyNetwork>;
 
-export type PolicyNetworkList = ReadonlyArray<PolicyNetwork>;
+export type PolicyNetworkList = Array<PolicyNetwork>;
 export const PolicyNetworkList = /*@__PURE__*/ S.Array(
   PolicyNetwork,
 ) as any as S.Schema<PolicyNetworkList>;
@@ -927,7 +935,7 @@ export const ResponsePolicyNetwork = /*@__PURE__*/ S.suspend(() =>
   identifier: "ResponsePolicyNetwork",
 }) as any as S.Schema<ResponsePolicyNetwork>;
 
-export type ResponsePolicyNetworkList = ReadonlyArray<ResponsePolicyNetwork>;
+export type ResponsePolicyNetworkList = Array<ResponsePolicyNetwork>;
 export const ResponsePolicyNetworkList = /*@__PURE__*/ S.Array(
   ResponsePolicyNetwork,
 ) as any as S.Schema<ResponsePolicyNetworkList>;
@@ -946,8 +954,7 @@ export const ResponsePolicyGKECluster = /*@__PURE__*/ S.suspend(() =>
   identifier: "ResponsePolicyGKECluster",
 }) as any as S.Schema<ResponsePolicyGKECluster>;
 
-export type ResponsePolicyGKEClusterList =
-  ReadonlyArray<ResponsePolicyGKECluster>;
+export type ResponsePolicyGKEClusterList = Array<ResponsePolicyGKECluster>;
 export const ResponsePolicyGKEClusterList = /*@__PURE__*/ S.Array(
   ResponsePolicyGKECluster,
 ) as any as S.Schema<ResponsePolicyGKEClusterList>;
@@ -1028,7 +1035,7 @@ export interface ResponsePolicyRule {
   /** An identifier for this rule. Must be unique with the ResponsePolicy. */
   ruleName?: string;
   /** Answer this query with a behavior rather than DNS data. */
-  behavior?: ResponsePolicyRuleBehaviorEnum;
+  behavior?: ResponsePolicyRuleBehaviorEnum | (string & {});
   /** The DNS name (wildcard or exact) to apply this rule to. Must be unique within the Response Policy Rule. */
   dnsName?: string;
   kind?: string;
@@ -1309,7 +1316,7 @@ export const DnsKeyDigest = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DnsKeyDigest" }) as any as S.Schema<DnsKeyDigest>;
 
-export type DnsKeyDigestList = ReadonlyArray<DnsKeyDigest>;
+export type DnsKeyDigestList = Array<DnsKeyDigest>;
 export const DnsKeyDigestList = /*@__PURE__*/ S.Array(
   DnsKeyDigest,
 ) as any as S.Schema<DnsKeyDigestList>;
@@ -1422,7 +1429,7 @@ export const GoogleIamV1AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
 export interface GoogleIamV1AuditLogConfig {
   /** The log type that this config enables. */
-  logType?: GoogleIamV1AuditLogConfigLogTypeEnum;
+  logType?: GoogleIamV1AuditLogConfigLogTypeEnum | (string & {});
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
   exemptedMembers?: StringList;
 }
@@ -1435,8 +1442,7 @@ export const GoogleIamV1AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleIamV1AuditLogConfig",
 }) as any as S.Schema<GoogleIamV1AuditLogConfig>;
 
-export type GoogleIamV1AuditLogConfigList =
-  ReadonlyArray<GoogleIamV1AuditLogConfig>;
+export type GoogleIamV1AuditLogConfigList = Array<GoogleIamV1AuditLogConfig>;
 export const GoogleIamV1AuditLogConfigList = /*@__PURE__*/ S.Array(
   GoogleIamV1AuditLogConfig,
 ) as any as S.Schema<GoogleIamV1AuditLogConfigList>;
@@ -1457,7 +1463,7 @@ export const GoogleIamV1AuditConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleIamV1AuditConfig",
 }) as any as S.Schema<GoogleIamV1AuditConfig>;
 
-export type GoogleIamV1AuditConfigList = ReadonlyArray<GoogleIamV1AuditConfig>;
+export type GoogleIamV1AuditConfigList = Array<GoogleIamV1AuditConfig>;
 export const GoogleIamV1AuditConfigList = /*@__PURE__*/ S.Array(
   GoogleIamV1AuditConfig,
 ) as any as S.Schema<GoogleIamV1AuditConfigList>;
@@ -1501,7 +1507,7 @@ export const GoogleIamV1Binding = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleIamV1Binding",
 }) as any as S.Schema<GoogleIamV1Binding>;
 
-export type GoogleIamV1BindingList = ReadonlyArray<GoogleIamV1Binding>;
+export type GoogleIamV1BindingList = Array<GoogleIamV1Binding>;
 export const GoogleIamV1BindingList = /*@__PURE__*/ S.Array(
   GoogleIamV1Binding,
 ) as any as S.Schema<GoogleIamV1BindingList>;
@@ -1908,7 +1914,7 @@ export const ListChangesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListChangesRequest",
 }) as any as S.Schema<ListChangesRequest>;
 
-export type ChangeList = ReadonlyArray<Change>;
+export type ChangeList = Array<Change>;
 export const ChangeList = /*@__PURE__*/ S.Array(
   Change,
 ) as any as S.Schema<ChangeList>;
@@ -1962,7 +1968,7 @@ export const ListDnsKeysRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListDnsKeysRequest",
 }) as any as S.Schema<ListDnsKeysRequest>;
 
-export type DnsKeyList = ReadonlyArray<DnsKey>;
+export type DnsKeyList = Array<DnsKey>;
 export const DnsKeyList = /*@__PURE__*/ S.Array(
   DnsKey,
 ) as any as S.Schema<DnsKeyList>;
@@ -2019,7 +2025,7 @@ export const ListManagedZoneOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListManagedZoneOperationsRequest",
 }) as any as S.Schema<ListManagedZoneOperationsRequest>;
 
-export type OperationList = ReadonlyArray<Operation>;
+export type OperationList = Array<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -2069,7 +2075,7 @@ export const ListManagedZonesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListManagedZonesRequest",
 }) as any as S.Schema<ListManagedZonesRequest>;
 
-export type ManagedZoneList = ReadonlyArray<ManagedZone>;
+export type ManagedZoneList = Array<ManagedZone>;
 export const ManagedZoneList = /*@__PURE__*/ S.Array(
   ManagedZone,
 ) as any as S.Schema<ManagedZoneList>;
@@ -2116,7 +2122,7 @@ export const ListPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListPoliciesRequest",
 }) as any as S.Schema<ListPoliciesRequest>;
 
-export type PolicyList = ReadonlyArray<Policy>;
+export type PolicyList = Array<Policy>;
 export const PolicyList = /*@__PURE__*/ S.Array(
   Policy,
 ) as any as S.Schema<PolicyList>;
@@ -2217,7 +2223,7 @@ export const ListResponsePoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListResponsePoliciesRequest",
 }) as any as S.Schema<ListResponsePoliciesRequest>;
 
-export type ResponsePolicyList = ReadonlyArray<ResponsePolicy>;
+export type ResponsePolicyList = Array<ResponsePolicy>;
 export const ResponsePolicyList = /*@__PURE__*/ S.Array(
   ResponsePolicy,
 ) as any as S.Schema<ResponsePolicyList>;
@@ -2264,7 +2270,7 @@ export const ListResponsePolicyRulesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListResponsePolicyRulesRequest",
 }) as any as S.Schema<ListResponsePolicyRulesRequest>;
 
-export type ResponsePolicyRuleList = ReadonlyArray<ResponsePolicyRule>;
+export type ResponsePolicyRuleList = Array<ResponsePolicyRule>;
 export const ResponsePolicyRuleList = /*@__PURE__*/ S.Array(
   ResponsePolicyRule,
 ) as any as S.Schema<ResponsePolicyRuleList>;

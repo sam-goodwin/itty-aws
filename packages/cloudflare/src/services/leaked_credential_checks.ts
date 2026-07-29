@@ -261,7 +261,7 @@ export const DetectionsListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "DetectionsListResultItem",
 }) as any as S.Schema<DetectionsListResultItem>;
 
-export type DetectionsListResultList = ReadonlyArray<DetectionsListResultItem>;
+export type DetectionsListResultList = Array<DetectionsListResultItem>;
 export const DetectionsListResultList = /*@__PURE__*/ S.Array(
   DetectionsListResultItem,
 ) as any as S.Schema<DetectionsListResultList>;

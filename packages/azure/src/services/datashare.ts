@@ -243,7 +243,7 @@ export const AccountsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccountsDeleteRequest>;
 
 /** Nested details of the error model */
-export type DataShareErrorInfoDetailsList = ReadonlyArray<DataShareErrorInfo>;
+export type DataShareErrorInfoDetailsList = Array<DataShareErrorInfo>;
 export const DataShareErrorInfoDetailsList = /*@__PURE__*/ S.Array(
   S.suspend(() => DataShareErrorInfo),
 ) as any as S.Schema<DataShareErrorInfoDetailsList>;
@@ -432,7 +432,7 @@ export const Account = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Account" }) as any as S.Schema<Account>;
 
 /** Collection of items of type DataTransferObjects. */
-export type AccountListValueList = ReadonlyArray<Account>;
+export type AccountListValueList = Array<Account>;
 export const AccountListValueList = /*@__PURE__*/ S.Array(
   Account,
 ) as any as S.Schema<AccountListValueList>;
@@ -708,7 +708,7 @@ export const ConsumerInvitation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConsumerInvitation>;
 
 /** Collection of items of type DataTransferObjects. */
-export type ConsumerInvitationListValueList = ReadonlyArray<ConsumerInvitation>;
+export type ConsumerInvitationListValueList = Array<ConsumerInvitation>;
 export const ConsumerInvitationListValueList = /*@__PURE__*/ S.Array(
   ConsumerInvitation,
 ) as any as S.Schema<ConsumerInvitationListValueList>;
@@ -892,8 +892,7 @@ export const ConsumerSourceDataSet = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConsumerSourceDataSet>;
 
 /** Collection of items of type DataTransferObjects. */
-export type ConsumerSourceDataSetListValueList =
-  ReadonlyArray<ConsumerSourceDataSet>;
+export type ConsumerSourceDataSetListValueList = Array<ConsumerSourceDataSet>;
 export const ConsumerSourceDataSetListValueList = /*@__PURE__*/ S.Array(
   ConsumerSourceDataSet,
 ) as any as S.Schema<ConsumerSourceDataSetListValueList>;
@@ -1191,7 +1190,7 @@ export const DataSetMapping = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DataSetMapping" }) as any as S.Schema<DataSetMapping>;
 
 /** Collection of items of type DataTransferObjects. */
-export type DataSetMappingListValueList = ReadonlyArray<DataSetMapping>;
+export type DataSetMappingListValueList = Array<DataSetMapping>;
 export const DataSetMappingListValueList = /*@__PURE__*/ S.Array(
   DataSetMapping,
 ) as any as S.Schema<DataSetMappingListValueList>;
@@ -1496,7 +1495,7 @@ export const DataSet = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DataSet" }) as any as S.Schema<DataSet>;
 
 /** Collection of items of type DataTransferObjects. */
-export type DataSetListValueList = ReadonlyArray<DataSet>;
+export type DataSetListValueList = Array<DataSet>;
 export const DataSetListValueList = /*@__PURE__*/ S.Array(
   DataSet,
 ) as any as S.Schema<DataSetListValueList>;
@@ -1872,7 +1871,7 @@ export const Invitation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Invitation" }) as any as S.Schema<Invitation>;
 
 /** Collection of items of type DataTransferObjects. */
-export type InvitationListValueList = ReadonlyArray<Invitation>;
+export type InvitationListValueList = Array<Invitation>;
 export const InvitationListValueList = /*@__PURE__*/ S.Array(
   Invitation,
 ) as any as S.Schema<InvitationListValueList>;
@@ -1948,7 +1947,7 @@ export const OperationMetaLogSpecification = /*@__PURE__*/ S.suspend(() =>
 
 /** log specifications for the operation */
 export type OperationMetaServiceSpecificationLogSpecificationsList =
-  ReadonlyArray<OperationMetaLogSpecification>;
+  Array<OperationMetaLogSpecification>;
 export const OperationMetaServiceSpecificationLogSpecificationsList =
   /*@__PURE__*/ S.Array(
     OperationMetaLogSpecification,
@@ -1972,7 +1971,7 @@ export const DimensionProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** properties for dimension */
 export type OperationMetaMetricSpecificationDimensionsList =
-  ReadonlyArray<DimensionProperties>;
+  Array<DimensionProperties>;
 export const OperationMetaMetricSpecificationDimensionsList =
   /*@__PURE__*/ S.Array(
     DimensionProperties,
@@ -1980,7 +1979,7 @@ export const OperationMetaMetricSpecificationDimensionsList =
 
 /** supported aggregation types */
 export type OperationMetaMetricSpecificationSupportedAggregationTypesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const OperationMetaMetricSpecificationSupportedAggregationTypesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1988,7 +1987,7 @@ export const OperationMetaMetricSpecificationSupportedAggregationTypesList =
 
 /** supported time grain types */
 export type OperationMetaMetricSpecificationSupportedTimeGrainTypesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const OperationMetaMetricSpecificationSupportedTimeGrainTypesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2046,7 +2045,7 @@ export const OperationMetaMetricSpecification = /*@__PURE__*/ S.suspend(() =>
 
 /** metric specifications for the operation */
 export type OperationMetaServiceSpecificationMetricSpecificationsList =
-  ReadonlyArray<OperationMetaMetricSpecification>;
+  Array<OperationMetaMetricSpecification>;
 export const OperationMetaServiceSpecificationMetricSpecificationsList =
   /*@__PURE__*/ S.Array(
     OperationMetaMetricSpecification,
@@ -2106,7 +2105,7 @@ export const OperationModel = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "OperationModel" }) as any as S.Schema<OperationModel>;
 
 /** Collection of items of type DataTransferObjects. */
-export type OperationListValueList = ReadonlyArray<OperationModel>;
+export type OperationListValueList = Array<OperationModel>;
 export const OperationListValueList = /*@__PURE__*/ S.Array(
   OperationModel,
 ) as any as S.Schema<OperationListValueList>;
@@ -2366,7 +2365,7 @@ export const ProviderShareSubscription = /*@__PURE__*/ S.suspend(() =>
 
 /** Collection of items of type DataTransferObjects. */
 export type ProviderShareSubscriptionListValueList =
-  ReadonlyArray<ProviderShareSubscription>;
+  Array<ProviderShareSubscription>;
 export const ProviderShareSubscriptionListValueList = /*@__PURE__*/ S.Array(
   ProviderShareSubscription,
 ) as any as S.Schema<ProviderShareSubscriptionListValueList>;
@@ -2764,7 +2763,7 @@ export const Share = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Share" }) as any as S.Schema<Share>;
 
 /** Collection of items of type DataTransferObjects. */
-export type ShareListValueList = ReadonlyArray<Share>;
+export type ShareListValueList = Array<Share>;
 export const ShareListValueList = /*@__PURE__*/ S.Array(
   Share,
 ) as any as S.Schema<ShareListValueList>;
@@ -2922,8 +2921,7 @@ export const SynchronizationDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SynchronizationDetails>;
 
 /** Collection of items of type DataTransferObjects. */
-export type SynchronizationDetailsListValueList =
-  ReadonlyArray<SynchronizationDetails>;
+export type SynchronizationDetailsListValueList = Array<SynchronizationDetails>;
 export const SynchronizationDetailsListValueList = /*@__PURE__*/ S.Array(
   SynchronizationDetails,
 ) as any as S.Schema<SynchronizationDetailsListValueList>;
@@ -3028,8 +3026,7 @@ export const ShareSynchronization = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ShareSynchronization>;
 
 /** Collection of items of type DataTransferObjects. */
-export type ShareSynchronizationListValueList =
-  ReadonlyArray<ShareSynchronization>;
+export type ShareSynchronizationListValueList = Array<ShareSynchronization>;
 export const ShareSynchronizationListValueList = /*@__PURE__*/ S.Array(
   ShareSynchronization,
 ) as any as S.Schema<ShareSynchronizationListValueList>;
@@ -3417,7 +3414,7 @@ export const ShareSubscription = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ShareSubscription>;
 
 /** Collection of items of type DataTransferObjects. */
-export type ShareSubscriptionListValueList = ReadonlyArray<ShareSubscription>;
+export type ShareSubscriptionListValueList = Array<ShareSubscription>;
 export const ShareSubscriptionListValueList = /*@__PURE__*/ S.Array(
   ShareSubscription,
 ) as any as S.Schema<ShareSubscriptionListValueList>;
@@ -3490,7 +3487,7 @@ export const SourceShareSynchronizationSetting = /*@__PURE__*/ S.suspend(() =>
 
 /** Collection of items of type DataTransferObjects. */
 export type SourceShareSynchronizationSettingListValueList =
-  ReadonlyArray<SourceShareSynchronizationSetting>;
+  Array<SourceShareSynchronizationSetting>;
 export const SourceShareSynchronizationSettingListValueList =
   /*@__PURE__*/ S.Array(
     SourceShareSynchronizationSetting,
@@ -3594,7 +3591,7 @@ export const ShareSubscriptionsListSynchronizationsRequest =
 
 /** Collection of items of type DataTransferObjects. */
 export type ShareSubscriptionSynchronizationListValueList =
-  ReadonlyArray<ShareSubscriptionSynchronization>;
+  Array<ShareSubscriptionSynchronization>;
 export const ShareSubscriptionSynchronizationListValueList =
   /*@__PURE__*/ S.Array(
     ShareSubscriptionSynchronization,
@@ -3881,8 +3878,7 @@ export const SynchronizationSetting = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SynchronizationSetting>;
 
 /** Collection of items of type DataTransferObjects. */
-export type SynchronizationSettingListValueList =
-  ReadonlyArray<SynchronizationSetting>;
+export type SynchronizationSettingListValueList = Array<SynchronizationSetting>;
 export const SynchronizationSettingListValueList = /*@__PURE__*/ S.Array(
   SynchronizationSetting,
 ) as any as S.Schema<SynchronizationSettingListValueList>;
@@ -4119,7 +4115,7 @@ export const Trigger = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Trigger" }) as any as S.Schema<Trigger>;
 
 /** Collection of items of type DataTransferObjects. */
-export type TriggerListValueList = ReadonlyArray<Trigger>;
+export type TriggerListValueList = Array<Trigger>;
 export const TriggerListValueList = /*@__PURE__*/ S.Array(
   Trigger,
 ) as any as S.Schema<TriggerListValueList>;

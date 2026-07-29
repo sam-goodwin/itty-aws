@@ -66,7 +66,7 @@ export const StateErrorTypeEnum = /*@__PURE__*/ S.String;
 /** Describes an error related to the current state of the workflow. */
 export interface StateError {
   /** The type of this state error. */
-  type?: StateErrorTypeEnum;
+  type?: StateErrorTypeEnum | (string & {});
   /** Provides specifics about the error. */
   details?: string;
 }
@@ -89,7 +89,7 @@ export type WorkflowExecutionHistoryLevelEnum =
   | "EXECUTION_HISTORY_DETAILED";
 export const WorkflowExecutionHistoryLevelEnum = /*@__PURE__*/ S.String;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -113,7 +113,7 @@ export interface Workflow {
   /** Output only. The timestamp for when the workflow was created. This is a workflow-wide field and is not tied to a specific revision. */
   createTime?: string;
   /** Optional. Describes the execution history level to apply to this workflow. */
-  executionHistoryLevel?: WorkflowExecutionHistoryLevelEnum;
+  executionHistoryLevel?: WorkflowExecutionHistoryLevelEnum | (string & {});
   /** Optional. The resource name of a KMS crypto key used to encrypt or decrypt the data associated with the workflow. Format: projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey} Using `-` as a wildcard for the `{project}` or not providing one at all will infer the project from the account. If not provided, data associated with the workflow will not be CMEK-encrypted. */
   cryptoKeyName?: string;
   /** Output only. The revision of the workflow. A new revision of a workflow is created as a result of updating the following properties of a workflow: - Service account - Workflow code to be executed The format is "000001-a4d", where the first six characters define the zero-padded revision ordinal number. They are followed by a hyphen and three hexadecimal random characters. */
@@ -129,13 +129,13 @@ export interface Workflow {
   /** Optional. User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 4KiB. Keys cannot be empty strings and cannot start with "GOOGLE" or "WORKFLOWS". */
   userEnvVars?: StringMap;
   /** Optional. Describes the level of platform logging to apply to calls and call responses during executions of this workflow. If both the workflow and the execution specify a logging level, the execution level takes precedence. */
-  callLogLevel?: WorkflowCallLogLevelEnum;
+  callLogLevel?: WorkflowCallLogLevelEnum | (string & {});
   /** Output only. The timestamp for when the workflow was last updated. This is a workflow-wide field and is not tied to a specific revision. */
   updateTime?: string;
   /** Output only. The timestamp for the latest revision of the workflow's creation. */
   revisionCreateTime?: string;
   /** Output only. State of the workflow deployment. */
-  state?: WorkflowStateEnum;
+  state?: WorkflowStateEnum | (string & {});
   /** Output only. The resource name of a KMS crypto key version used to encrypt or decrypt the data associated with the workflow. Format: projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey}/cryptoKeyVersions/{cryptoKeyVersion} */
   cryptoKeyVersion?: string;
   /** The resource name of the workflow. Format: projects/{project}/locations/{location}/workflows/{workflow}. This is a workflow-wide field and is not tied to a specific revision. */
@@ -200,7 +200,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -401,7 +401,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = ReadonlyArray<Location>;
+export type LocationList = Array<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -453,7 +453,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type OperationList = ReadonlyArray<Operation>;
+export type OperationList = Array<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -508,7 +508,7 @@ export const ListProjectsLocationsWorkflowsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsWorkflowsRequest",
 }) as any as S.Schema<ListProjectsLocationsWorkflowsRequest>;
 
-export type WorkflowList = ReadonlyArray<Workflow>;
+export type WorkflowList = Array<Workflow>;
 export const WorkflowList = /*@__PURE__*/ S.Array(
   Workflow,
 ) as any as S.Schema<WorkflowList>;

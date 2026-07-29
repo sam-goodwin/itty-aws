@@ -359,7 +359,7 @@ export const HttpsPolicy = /*@__PURE__*/ S.String;
 
 export interface TrackingOptions {
   CustomRedirectDomain: string;
-  HttpsPolicy?: HttpsPolicy;
+  HttpsPolicy?: HttpsPolicy | (string & {});
 }
 export const TrackingOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -375,7 +375,7 @@ export const TlsPolicy = /*@__PURE__*/ S.String;
 export type PoolName = string;
 export type MaxDeliverySeconds = number;
 export interface DeliveryOptions {
-  TlsPolicy?: TlsPolicy;
+  TlsPolicy?: TlsPolicy | (string & {});
   SendingPoolName?: string;
   MaxDeliverySeconds?: number;
 }
@@ -422,7 +422,7 @@ export const TagList = /*@__PURE__*/ S.Array(Tag);
 export type SuppressionListReason = "BOUNCE" | "COMPLAINT";
 export const SuppressionListReason = /*@__PURE__*/ S.String;
 
-export type SuppressionListReasons = SuppressionListReason[];
+export type SuppressionListReasons = (SuppressionListReason | (string & {}))[];
 export const SuppressionListReasons = /*@__PURE__*/ S.Array(
   SuppressionListReason,
 );
@@ -439,7 +439,9 @@ export type SuppressionConfidenceVerdictThreshold =
 export const SuppressionConfidenceVerdictThreshold = /*@__PURE__*/ S.String;
 
 export interface SuppressionConfidenceThreshold {
-  ConfidenceVerdictThreshold: SuppressionConfidenceVerdictThreshold;
+  ConfidenceVerdictThreshold:
+    | SuppressionConfidenceVerdictThreshold
+    | (string & {});
 }
 export const SuppressionConfidenceThreshold = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -449,7 +451,7 @@ export const SuppressionConfidenceThreshold = /*@__PURE__*/ S.suspend(() =>
   identifier: "SuppressionConfidenceThreshold",
 }) as any as S.Schema<SuppressionConfidenceThreshold>;
 export interface SuppressionConditionThreshold {
-  ConditionThresholdEnabled: FeatureStatus;
+  ConditionThresholdEnabled: FeatureStatus | (string & {});
   OverallConfidenceThreshold?: SuppressionConfidenceThreshold;
 }
 export const SuppressionConditionThreshold = /*@__PURE__*/ S.suspend(() =>
@@ -470,7 +472,7 @@ export const SuppressionValidationOptions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SuppressionValidationOptions>;
 export interface SuppressionOptions {
   SuppressedReasons?: SuppressionListReason[];
-  SuppressionScope?: SuppressionListScope;
+  SuppressionScope?: SuppressionListScope | (string & {});
   ValidationOptions?: SuppressionValidationOptions;
 }
 export const SuppressionOptions = /*@__PURE__*/ S.suspend(() =>
@@ -483,7 +485,7 @@ export const SuppressionOptions = /*@__PURE__*/ S.suspend(() =>
   identifier: "SuppressionOptions",
 }) as any as S.Schema<SuppressionOptions>;
 export interface DashboardOptions {
-  EngagementMetrics?: FeatureStatus;
+  EngagementMetrics?: FeatureStatus | (string & {});
 }
 export const DashboardOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ EngagementMetrics: S.optional(FeatureStatus) }),
@@ -491,7 +493,7 @@ export const DashboardOptions = /*@__PURE__*/ S.suspend(() =>
   identifier: "DashboardOptions",
 }) as any as S.Schema<DashboardOptions>;
 export interface GuardianOptions {
-  OptimizedSharedDelivery?: FeatureStatus;
+  OptimizedSharedDelivery?: FeatureStatus | (string & {});
 }
 export const GuardianOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ OptimizedSharedDelivery: S.optional(FeatureStatus) }),
@@ -572,7 +574,7 @@ export type EventType =
   | "SUBSCRIPTION";
 export const EventType = /*@__PURE__*/ S.String;
 
-export type EventTypes = EventType[];
+export type EventTypes = (EventType | (string & {}))[];
 export const EventTypes = /*@__PURE__*/ S.Array(EventType);
 export type AmazonResourceName = string;
 export interface KinesisFirehoseDestination {
@@ -591,7 +593,7 @@ export const DimensionValueSource = /*@__PURE__*/ S.String;
 export type DefaultDimensionValue = string;
 export interface CloudWatchDimensionConfiguration {
   DimensionName: string;
-  DimensionValueSource: DimensionValueSource;
+  DimensionValueSource: DimensionValueSource | (string & {});
   DefaultDimensionValue: string;
 }
 export const CloudWatchDimensionConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -700,7 +702,7 @@ export const SubscriptionStatus = /*@__PURE__*/ S.String;
 
 export interface TopicPreference {
   TopicName: string;
-  SubscriptionStatus: SubscriptionStatus;
+  SubscriptionStatus: SubscriptionStatus | (string & {});
 }
 export const TopicPreference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ TopicName: S.String, SubscriptionStatus: SubscriptionStatus }),
@@ -753,7 +755,7 @@ export interface Topic {
   TopicName: string;
   DisplayName: string;
   Description?: string;
-  DefaultSubscriptionStatus: SubscriptionStatus;
+  DefaultSubscriptionStatus: SubscriptionStatus | (string & {});
 }
 export const Topic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1248,7 +1250,9 @@ export const CreateEmailTemplateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateEmailTemplateResponse>;
 export type ExportDimensionValue = string[];
 export const ExportDimensionValue = /*@__PURE__*/ S.Array(S.String);
-export type ExportDimensions = { [key in MetricDimensionName]?: string[] };
+export type ExportDimensions = {
+  [key in MetricDimensionName | (string & {})]?: string[];
+};
 export const ExportDimensions = /*@__PURE__*/ S.Record(
   MetricDimensionName,
   ExportDimensionValue.pipe(S.optional),
@@ -1257,8 +1261,8 @@ export type MetricAggregation = "RATE" | "VOLUME";
 export const MetricAggregation = /*@__PURE__*/ S.String;
 
 export interface ExportMetric {
-  Name?: Metric;
-  Aggregation?: MetricAggregation;
+  Name?: Metric | (string & {});
+  Aggregation?: MetricAggregation | (string & {});
 }
 export const ExportMetric = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1270,7 +1274,7 @@ export type ExportMetrics = ExportMetric[];
 export const ExportMetrics = /*@__PURE__*/ S.Array(ExportMetric);
 export interface MetricsDataSource {
   Dimensions: { [key: string]: string[] | undefined };
-  Namespace: MetricNamespace;
+  Namespace: MetricNamespace | (string & {});
   Metrics: ExportMetric[];
   StartDate: Date;
   EndDate: Date;
@@ -1304,12 +1308,12 @@ export type DeliveryEventType =
   | "COMPLAINT";
 export const DeliveryEventType = /*@__PURE__*/ S.String;
 
-export type LastDeliveryEventList = DeliveryEventType[];
+export type LastDeliveryEventList = (DeliveryEventType | (string & {}))[];
 export const LastDeliveryEventList = /*@__PURE__*/ S.Array(DeliveryEventType);
 export type EngagementEventType = "OPEN" | "CLICK";
 export const EngagementEventType = /*@__PURE__*/ S.String;
 
-export type LastEngagementEventList = EngagementEventType[];
+export type LastEngagementEventList = (EngagementEventType | (string & {}))[];
 export const LastEngagementEventList =
   /*@__PURE__*/ S.Array(EngagementEventType);
 export interface MessageInsightsFilters {
@@ -1368,7 +1372,7 @@ export const DataFormat = /*@__PURE__*/ S.String;
 
 export type S3Url = string;
 export interface ExportDestination {
-  DataFormat: DataFormat;
+  DataFormat: DataFormat | (string & {});
   S3Url?: string;
 }
 export const ExportDestination = /*@__PURE__*/ S.suspend(() =>
@@ -1409,7 +1413,7 @@ export type SuppressionListImportAction = "DELETE" | "PUT";
 export const SuppressionListImportAction = /*@__PURE__*/ S.String;
 
 export interface SuppressionListDestination {
-  SuppressionListImportAction: SuppressionListImportAction;
+  SuppressionListImportAction: SuppressionListImportAction | (string & {});
 }
 export const SuppressionListDestination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ SuppressionListImportAction: SuppressionListImportAction }),
@@ -1421,7 +1425,7 @@ export const ContactListImportAction = /*@__PURE__*/ S.String;
 
 export interface ContactListDestination {
   ContactListName: string;
-  ContactListImportAction: ContactListImportAction;
+  ContactListImportAction: ContactListImportAction | (string & {});
 }
 export const ContactListDestination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1445,7 +1449,7 @@ export const ImportDestination = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ImportDestination>;
 export interface ImportDataSource {
   S3Url: string;
-  DataFormat: DataFormat;
+  DataFormat: DataFormat | (string & {});
 }
 export const ImportDataSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ S3Url: S.String, DataFormat: DataFormat }),
@@ -1536,7 +1540,7 @@ export const CreateMultiRegionEndpointResponse = /*@__PURE__*/ S.suspend(() =>
 export type TenantName = string;
 export interface TenantSuppressionAttributes {
   SuppressedReasons?: SuppressionListReason[];
-  SuppressionScope?: SuppressionListScope;
+  SuppressionScope?: SuppressionListScope | (string & {});
 }
 export const TenantSuppressionAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2070,7 +2074,7 @@ export const AccountDetails = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AccountDetails" }) as any as S.Schema<AccountDetails>;
 export interface DashboardAttributes {
-  EngagementMetrics?: FeatureStatus;
+  EngagementMetrics?: FeatureStatus | (string & {});
 }
 export const DashboardAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ EngagementMetrics: S.optional(FeatureStatus) }),
@@ -2078,7 +2082,7 @@ export const DashboardAttributes = /*@__PURE__*/ S.suspend(() =>
   identifier: "DashboardAttributes",
 }) as any as S.Schema<DashboardAttributes>;
 export interface GuardianAttributes {
-  OptimizedSharedDelivery?: FeatureStatus;
+  OptimizedSharedDelivery?: FeatureStatus | (string & {});
 }
 export const GuardianAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ OptimizedSharedDelivery: S.optional(FeatureStatus) }),
@@ -2086,7 +2090,7 @@ export const GuardianAttributes = /*@__PURE__*/ S.suspend(() =>
   identifier: "GuardianAttributes",
 }) as any as S.Schema<GuardianAttributes>;
 export interface VdmAttributes {
-  VdmEnabled: FeatureStatus;
+  VdmEnabled: FeatureStatus | (string & {});
   DashboardAttributes?: DashboardAttributes;
   GuardianAttributes?: GuardianAttributes;
 }

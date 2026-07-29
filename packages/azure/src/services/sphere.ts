@@ -361,7 +361,7 @@ export const Catalog = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Catalog" }) as any as S.Schema<Catalog>;
 
 /** The Catalog items on this page */
-export type CatalogListResultValueList = ReadonlyArray<Catalog>;
+export type CatalogListResultValueList = Array<Catalog>;
 export const CatalogListResultValueList = /*@__PURE__*/ S.Array(
   Catalog,
 ) as any as S.Schema<CatalogListResultValueList>;
@@ -531,7 +531,7 @@ export const Image = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Image" }) as any as S.Schema<Image>;
 
 /** Images deployed */
-export type DeploymentPropertiesDeployedImagesList = ReadonlyArray<Image>;
+export type DeploymentPropertiesDeployedImagesList = Array<Image>;
 export const DeploymentPropertiesDeployedImagesList = /*@__PURE__*/ S.Array(
   Image,
 ) as any as S.Schema<DeploymentPropertiesDeployedImagesList>;
@@ -582,7 +582,7 @@ export const Deployment = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Deployment" }) as any as S.Schema<Deployment>;
 
 /** The Deployment items on this page */
-export type DeploymentListResultValueList = ReadonlyArray<Deployment>;
+export type DeploymentListResultValueList = Array<Deployment>;
 export const DeploymentListResultValueList = /*@__PURE__*/ S.Array(
   Deployment,
 ) as any as S.Schema<DeploymentListResultValueList>;
@@ -710,7 +710,7 @@ export const DeviceGroup = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeviceGroup" }) as any as S.Schema<DeviceGroup>;
 
 /** The DeviceGroup items on this page */
-export type DeviceGroupListResultValueList = ReadonlyArray<DeviceGroup>;
+export type DeviceGroupListResultValueList = Array<DeviceGroup>;
 export const DeviceGroupListResultValueList = /*@__PURE__*/ S.Array(
   DeviceGroup,
 ) as any as S.Schema<DeviceGroupListResultValueList>;
@@ -801,7 +801,7 @@ export const DeviceInsight = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeviceInsight" }) as any as S.Schema<DeviceInsight>;
 
 /** The DeviceInsight items on this page */
-export type PagedDeviceInsightValueList = ReadonlyArray<DeviceInsight>;
+export type PagedDeviceInsightValueList = Array<DeviceInsight>;
 export const PagedDeviceInsightValueList = /*@__PURE__*/ S.Array(
   DeviceInsight,
 ) as any as S.Schema<PagedDeviceInsightValueList>;
@@ -914,7 +914,7 @@ export const Device = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Device" }) as any as S.Schema<Device>;
 
 /** The Device items on this page */
-export type DeviceListResultValueList = ReadonlyArray<Device>;
+export type DeviceListResultValueList = Array<Device>;
 export const DeviceListResultValueList = /*@__PURE__*/ S.Array(
   Device,
 ) as any as S.Schema<DeviceListResultValueList>;
@@ -1213,7 +1213,7 @@ export const Certificate = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Certificate" }) as any as S.Schema<Certificate>;
 
 /** The Certificate items on this page */
-export type CertificateListResultValueList = ReadonlyArray<Certificate>;
+export type CertificateListResultValueList = Array<Certificate>;
 export const CertificateListResultValueList = /*@__PURE__*/ S.Array(
   Certificate,
 ) as any as S.Schema<CertificateListResultValueList>;
@@ -1351,8 +1351,7 @@ export const ImageInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ImageInput" }) as any as S.Schema<ImageInput>;
 
 /** Images deployed */
-export type DeploymentPropertiesInputDeployedImagesList =
-  ReadonlyArray<ImageInput>;
+export type DeploymentPropertiesInputDeployedImagesList = Array<ImageInput>;
 export const DeploymentPropertiesInputDeployedImagesList =
   /*@__PURE__*/ S.Array(
     ImageInput,
@@ -1579,7 +1578,7 @@ export const DeploymentsListByDeviceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Device identifiers of the devices to be claimed. */
 export type DeviceGroupsClaimDevicesRequestDeviceIdentifiersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const DeviceGroupsClaimDevicesRequestDeviceIdentifiersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2088,8 +2087,9 @@ export type CapabilityType = "ApplicationDevelopment" | "FieldServicing";
 export const CapabilityType = /*@__PURE__*/ S.String;
 
 /** List of capabilities to create */
-export type DevicesGenerateCapabilityImageRequestCapabilitiesList =
-  ReadonlyArray<CapabilityType | (string & {})>;
+export type DevicesGenerateCapabilityImageRequestCapabilitiesList = Array<
+  CapabilityType | (string & {})
+>;
 export const DevicesGenerateCapabilityImageRequestCapabilitiesList =
   /*@__PURE__*/ S.Array(
     CapabilityType,
@@ -2489,7 +2489,7 @@ export const ImagesListByCatalogRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ImagesListByCatalogRequest>;
 
 /** The Image items on this page */
-export type ImageListResultValueList = ReadonlyArray<Image>;
+export type ImageListResultValueList = Array<Image>;
 export const ImageListResultValueList = /*@__PURE__*/ S.Array(
   Image,
 ) as any as S.Schema<ImageListResultValueList>;
@@ -2578,7 +2578,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = ReadonlyArray<Operation>;
+export type OperationsListResponseValueList = Array<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;
@@ -2643,7 +2643,7 @@ export interface ProductProperties {
   /** Description of the product */
   description?: string;
   /** The status of the last operation. */
-  provisioningState?: ProvisioningState;
+  provisioningState?: ProvisioningState | (string & {});
 }
 export const ProductProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2874,7 +2874,7 @@ export const Product = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Product" }) as any as S.Schema<Product>;
 
 /** The Product items on this page */
-export type ProductListResultValueList = ReadonlyArray<Product>;
+export type ProductListResultValueList = Array<Product>;
 export const ProductListResultValueList = /*@__PURE__*/ S.Array(
   Product,
 ) as any as S.Schema<ProductListResultValueList>;

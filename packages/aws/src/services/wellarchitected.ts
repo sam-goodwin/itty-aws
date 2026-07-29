@@ -536,10 +536,12 @@ export const TrustedAdvisorIntegrationStatus = /*@__PURE__*/ S.String;
 export type DefinitionType = "WORKLOAD_METADATA" | "APP_REGISTRY";
 export const DefinitionType = /*@__PURE__*/ S.String;
 
-export type WorkloadResourceDefinition = DefinitionType[];
+export type WorkloadResourceDefinition = (DefinitionType | (string & {}))[];
 export const WorkloadResourceDefinition = /*@__PURE__*/ S.Array(DefinitionType);
 export interface WorkloadDiscoveryConfig {
-  TrustedAdvisorIntegrationStatus?: TrustedAdvisorIntegrationStatus;
+  TrustedAdvisorIntegrationStatus?:
+    | TrustedAdvisorIntegrationStatus
+    | (string & {});
   WorkloadResourceDefinition?: DefinitionType[];
 }
 export const WorkloadDiscoveryConfig = /*@__PURE__*/ S.suspend(() =>

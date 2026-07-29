@@ -57,7 +57,7 @@ export const EventDefinitionsByNameRetrieveRequest = /*@__PURE__*/ S.suspend(
   identifier: "EventDefinitionsByNameRetrieveRequest",
 }) as any as S.Schema<EventDefinitionsByNameRetrieveRequest>;
 
-export type EventDefinitionRecordTagsList = ReadonlyArray<unknown>;
+export type EventDefinitionRecordTagsList = Array<unknown>;
 export const EventDefinitionRecordTagsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<EventDefinitionRecordTagsList>;
@@ -155,13 +155,12 @@ export const EventDefinitionRecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "EventDefinitionRecord",
 }) as any as S.Schema<EventDefinitionRecord>;
 
-export type EventDefinitionsCreateRequestTagsList = ReadonlyArray<unknown>;
+export type EventDefinitionsCreateRequestTagsList = Array<unknown>;
 export const EventDefinitionsCreateRequestTagsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<EventDefinitionsCreateRequestTagsList>;
 
-export type EventDefinitionsCreateRequestDefaultColumnsList =
-  ReadonlyArray<string>;
+export type EventDefinitionsCreateRequestDefaultColumnsList = Array<string>;
 export const EventDefinitionsCreateRequestDefaultColumnsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -208,19 +207,18 @@ export const EventDefinitionsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "EventDefinitionsCreateRequest",
 }) as any as S.Schema<EventDefinitionsCreateRequest>;
 
-export type EnterpriseEventDefinitionTagsList = ReadonlyArray<unknown>;
+export type EnterpriseEventDefinitionTagsList = Array<unknown>;
 export const EnterpriseEventDefinitionTagsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<EnterpriseEventDefinitionTagsList>;
 
-export type EnterpriseEventDefinitionDefaultColumnsList = ReadonlyArray<string>;
+export type EnterpriseEventDefinitionDefaultColumnsList = Array<string>;
 export const EnterpriseEventDefinitionDefaultColumnsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<EnterpriseEventDefinitionDefaultColumnsList>;
 
-export type EnterpriseEventDefinitionMediaPreviewUrlsList =
-  ReadonlyArray<string>;
+export type EnterpriseEventDefinitionMediaPreviewUrlsList = Array<string>;
 export const EnterpriseEventDefinitionMediaPreviewUrlsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -372,7 +370,7 @@ export const EventDefinitionsListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EventDefinitionsListRequest>;
 
 export type PaginatedEnterpriseEventDefinitionListResultsList =
-  ReadonlyArray<EnterpriseEventDefinition>;
+  Array<EnterpriseEventDefinition>;
 export const PaginatedEnterpriseEventDefinitionListResultsList =
   /*@__PURE__*/ S.Array(
     EnterpriseEventDefinition,
@@ -396,15 +394,14 @@ export const PaginatedEnterpriseEventDefinitionList = /*@__PURE__*/ S.suspend(
   identifier: "PaginatedEnterpriseEventDefinitionList",
 }) as any as S.Schema<PaginatedEnterpriseEventDefinitionList>;
 
-export type EventDefinitionsPartialUpdateRequestTagsList =
-  ReadonlyArray<unknown>;
+export type EventDefinitionsPartialUpdateRequestTagsList = Array<unknown>;
 export const EventDefinitionsPartialUpdateRequestTagsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<EventDefinitionsPartialUpdateRequestTagsList>;
 
 export type EventDefinitionsPartialUpdateRequestDefaultColumnsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const EventDefinitionsPartialUpdateRequestDefaultColumnsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -456,7 +453,7 @@ export const EventDefinitionsPartialUpdateRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<EventDefinitionsPartialUpdateRequest>;
 
 export type EventDefinitionsPrimaryPropertiesRetrieveRequestNamesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const EventDefinitionsPrimaryPropertiesRetrieveRequestNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -582,13 +579,12 @@ export const EventDefinitionsTypescriptRetrieveResponse =
     identifier: "EventDefinitionsTypescriptRetrieveResponse",
   }) as any as S.Schema<EventDefinitionsTypescriptRetrieveResponse>;
 
-export type EventDefinitionsUpdateRequestTagsList = ReadonlyArray<unknown>;
+export type EventDefinitionsUpdateRequestTagsList = Array<unknown>;
 export const EventDefinitionsUpdateRequestTagsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<EventDefinitionsUpdateRequestTagsList>;
 
-export type EventDefinitionsUpdateRequestDefaultColumnsList =
-  ReadonlyArray<string>;
+export type EventDefinitionsUpdateRequestDefaultColumnsList = Array<string>;
 export const EventDefinitionsUpdateRequestDefaultColumnsList =
   /*@__PURE__*/ S.Array(
     S.String,

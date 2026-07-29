@@ -252,8 +252,7 @@ export const AzureMonitorWorkspaceDefaultIngestionSettings =
   }) as any as S.Schema<AzureMonitorWorkspaceDefaultIngestionSettings>;
 
 /** The group ids for the private endpoint resource. */
-export type PrivateEndpointConnectionPropertiesGroupIdsList =
-  ReadonlyArray<string>;
+export type PrivateEndpointConnectionPropertiesGroupIdsList = Array<string>;
 export const PrivateEndpointConnectionPropertiesGroupIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -357,7 +356,7 @@ export const AzureMonitorWorkspacePrivateEndpointConnectionsItem =
 
 /** List of private endpoint connections */
 export type AzureMonitorWorkspacePrivateEndpointConnectionsList =
-  ReadonlyArray<AzureMonitorWorkspacePrivateEndpointConnectionsItem>;
+  Array<AzureMonitorWorkspacePrivateEndpointConnectionsItem>;
 export const AzureMonitorWorkspacePrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     AzureMonitorWorkspacePrivateEndpointConnectionsItem,
@@ -725,7 +724,7 @@ export const AzureMonitorWorkspaceResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The AzureMonitorWorkspaceResource items on this page */
 export type AzureMonitorWorkspaceResourceListResultValueList =
-  ReadonlyArray<AzureMonitorWorkspaceResource>;
+  Array<AzureMonitorWorkspaceResource>;
 export const AzureMonitorWorkspaceResourceListResultValueList =
   /*@__PURE__*/ S.Array(
     AzureMonitorWorkspaceResource,
@@ -928,7 +927,7 @@ export interface Origin {
   /** The ID of the origin - for example, in case of 'Manual', the user ID/app ID, and in case of 'Automatic', the name of the automatic system */
   addedBy: string;
   /** The source of the origin - Manual or Automatic */
-  addedByType: AddedByType;
+  addedByType: AddedByType | (string & {});
 }
 export const Origin = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1026,8 +1025,7 @@ export const RelatedAlertInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RelatedAlertInput>;
 
 /** A list of related alerts */
-export type IssueAddOrUpdateAlertsRequestValueList =
-  ReadonlyArray<RelatedAlertInput>;
+export type IssueAddOrUpdateAlertsRequestValueList = Array<RelatedAlertInput>;
 export const IssueAddOrUpdateAlertsRequestValueList = /*@__PURE__*/ S.Array(
   RelatedAlertInput,
 ) as any as S.Schema<IssueAddOrUpdateAlertsRequestValueList>;
@@ -1087,7 +1085,7 @@ export const RelatedAlert = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RelatedAlert" }) as any as S.Schema<RelatedAlert>;
 
 /** A list of related alerts */
-export type RelatedAlertsValueList = ReadonlyArray<RelatedAlert>;
+export type RelatedAlertsValueList = Array<RelatedAlert>;
 export const RelatedAlertsValueList = /*@__PURE__*/ S.Array(
   RelatedAlert,
 ) as any as S.Schema<RelatedAlertsValueList>;
@@ -1121,7 +1119,7 @@ export const RelatedResourceInput = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of related resources */
 export type IssueAddOrUpdateResourcesRequestValueList =
-  ReadonlyArray<RelatedResourceInput>;
+  Array<RelatedResourceInput>;
 export const IssueAddOrUpdateResourcesRequestValueList = /*@__PURE__*/ S.Array(
   RelatedResourceInput,
 ) as any as S.Schema<IssueAddOrUpdateResourcesRequestValueList>;
@@ -1183,7 +1181,7 @@ export const RelatedResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RelatedResource>;
 
 /** A list of related resources */
-export type RelatedResourcesValueList = ReadonlyArray<RelatedResource>;
+export type RelatedResourcesValueList = Array<RelatedResource>;
 export const RelatedResourcesValueList = /*@__PURE__*/ S.Array(
   RelatedResource,
 ) as any as S.Schema<RelatedResourcesValueList>;
@@ -1222,7 +1220,7 @@ export const BackgroundDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BackgroundDetails>;
 
 /** The background details */
-export type BackgroundDetailsList = ReadonlyArray<BackgroundDetails>;
+export type BackgroundDetailsList = Array<BackgroundDetails>;
 export const BackgroundDetailsList = /*@__PURE__*/ S.Array(
   BackgroundDetails,
 ) as any as S.Schema<BackgroundDetailsList>;
@@ -1251,7 +1249,7 @@ export const UpdateType = /*@__PURE__*/ S.String;
 /** Base properties for an issue notification type */
 export interface IssueNotificationType {
   /** The type of update that triggers the notification */
-  updateType: UpdateType;
+  updateType: UpdateType | (string & {});
 }
 export const IssueNotificationType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1262,13 +1260,13 @@ export const IssueNotificationType = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IssueNotificationType>;
 
 /** The types of updates that trigger notifications */
-export type NotificationsUpdateTypesList = ReadonlyArray<IssueNotificationType>;
+export type NotificationsUpdateTypesList = Array<IssueNotificationType>;
 export const NotificationsUpdateTypesList = /*@__PURE__*/ S.Array(
   IssueNotificationType,
 ) as any as S.Schema<NotificationsUpdateTypesList>;
 
 /** The action group IDs to notify */
-export type NotificationsActionGroupIdsList = ReadonlyArray<string>;
+export type NotificationsActionGroupIdsList = Array<string>;
 export const NotificationsActionGroupIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<NotificationsActionGroupIdsList>;
@@ -1369,8 +1367,7 @@ export const InvestigationMetadata = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InvestigationMetadata>;
 
 /** The list of investigations in the issue */
-export type IssuePropertiesInvestigationsList =
-  ReadonlyArray<InvestigationMetadata>;
+export type IssuePropertiesInvestigationsList = Array<InvestigationMetadata>;
 export const IssuePropertiesInvestigationsList = /*@__PURE__*/ S.Array(
   InvestigationMetadata,
 ) as any as S.Schema<IssuePropertiesInvestigationsList>;
@@ -1651,7 +1648,7 @@ export const IssueResource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IssueResource" }) as any as S.Schema<IssueResource>;
 
 /** The IssueResource items on this page */
-export type IssueResourceListResultValueList = ReadonlyArray<IssueResource>;
+export type IssueResourceListResultValueList = Array<IssueResource>;
 export const IssueResourceListResultValueList = /*@__PURE__*/ S.Array(
   IssueResource,
 ) as any as S.Schema<IssueResourceListResultValueList>;
@@ -1704,7 +1701,7 @@ export const IssueListAlertsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IssueListAlertsRequest>;
 
 /** The RelatedAlert items on this page */
-export type PagedRelatedAlertValueList = ReadonlyArray<RelatedAlert>;
+export type PagedRelatedAlertValueList = Array<RelatedAlert>;
 export const PagedRelatedAlertValueList = /*@__PURE__*/ S.Array(
   RelatedAlert,
 ) as any as S.Schema<PagedRelatedAlertValueList>;
@@ -1757,7 +1754,7 @@ export const IssueListResourcesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IssueListResourcesRequest>;
 
 /** The RelatedResource items on this page */
-export type PagedRelatedResourceValueList = ReadonlyArray<RelatedResource>;
+export type PagedRelatedResourceValueList = Array<RelatedResource>;
 export const PagedRelatedResourceValueList = /*@__PURE__*/ S.Array(
   RelatedResource,
 ) as any as S.Schema<PagedRelatedResourceValueList>;
@@ -2093,7 +2090,7 @@ export const MetricsContainerResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The MetricsContainerResource items on this page */
 export type MetricsContainerResourceListResultValueList =
-  ReadonlyArray<MetricsContainerResource>;
+  Array<MetricsContainerResource>;
 export const MetricsContainerResourceListResultValueList =
   /*@__PURE__*/ S.Array(
     MetricsContainerResource,
@@ -2183,7 +2180,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = ReadonlyArray<Operation>;
+export type OperationsListResponseValueList = Array<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;
@@ -2228,7 +2225,9 @@ export type AllowedFormats =
 export const AllowedFormats = /*@__PURE__*/ S.String;
 
 /** List of allowed message formats for syslog/CEF ingestion. Default 'all'. */
-export type SyslogReceiverAllowedFormatsList = ReadonlyArray<AllowedFormats>;
+export type SyslogReceiverAllowedFormatsList = Array<
+  AllowedFormats | (string & {})
+>;
 export const SyslogReceiverAllowedFormatsList = /*@__PURE__*/ S.Array(
   AllowedFormats,
 ) as any as S.Schema<SyslogReceiverAllowedFormatsList>;
@@ -2244,7 +2243,7 @@ export interface SyslogReceiver {
   /** List of allowed message formats for syslog/CEF ingestion. Default 'all'. */
   allowedFormats?: SyslogReceiverAllowedFormatsList;
   /** Transport protocol. Default tcp. */
-  transportProtocol?: SyslogReceiverTransportProtocol;
+  transportProtocol?: SyslogReceiverTransportProtocol | (string & {});
   /** Configure the receiver to allow parsing of messages without the PRI header. Default false. */
   allowSkipPriHeader?: boolean;
 }
@@ -2271,7 +2270,7 @@ export const OtlpReceiver = /*@__PURE__*/ S.suspend(() =>
 /** Receiver Info. */
 export interface Receiver {
   /** The type of receiver. */
-  type: ReceiverType;
+  type: ReceiverType | (string & {});
   /** The name of receiver. */
   name: string;
   /** Reference to a named TLS configuration. If not specified, default TLS configuration is used. */
@@ -2292,7 +2291,7 @@ export const Receiver = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Receiver" }) as any as S.Schema<Receiver>;
 
 /** The receivers specified for a pipeline group instance. */
-export type PipelineGroupPropertiesInputReceiversList = ReadonlyArray<Receiver>;
+export type PipelineGroupPropertiesInputReceiversList = Array<Receiver>;
 export const PipelineGroupPropertiesInputReceiversList = /*@__PURE__*/ S.Array(
   Receiver,
 ) as any as S.Schema<PipelineGroupPropertiesInputReceiversList>;
@@ -2335,7 +2334,7 @@ export const TransformLanguageProcessor = /*@__PURE__*/ S.suspend(() =>
 /** Processor Info. */
 export interface Processor {
   /** The type of processor. */
-  type: ProcessorType;
+  type: ProcessorType | (string & {});
   /** The name of processor. */
   name: string;
   /** Batch processor configurations. */
@@ -2353,8 +2352,7 @@ export const Processor = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Processor" }) as any as S.Schema<Processor>;
 
 /** The processors specified for a pipeline group instance. */
-export type PipelineGroupPropertiesInputProcessorsList =
-  ReadonlyArray<Processor>;
+export type PipelineGroupPropertiesInputProcessorsList = Array<Processor>;
 export const PipelineGroupPropertiesInputProcessorsList = /*@__PURE__*/ S.Array(
   Processor,
 ) as any as S.Schema<PipelineGroupPropertiesInputProcessorsList>;
@@ -2378,7 +2376,7 @@ export const RecordMap = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RecordMap" }) as any as S.Schema<RecordMap>;
 
 /** Record Map. */
-export type SchemaMapRecordMapList = ReadonlyArray<RecordMap>;
+export type SchemaMapRecordMapList = Array<RecordMap>;
 export const SchemaMapRecordMapList = /*@__PURE__*/ S.Array(
   RecordMap,
 ) as any as S.Schema<SchemaMapRecordMapList>;
@@ -2398,7 +2396,7 @@ export const ResourceMap = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResourceMap" }) as any as S.Schema<ResourceMap>;
 
 /** Resource Map captures information about the entity for which telemetry is recorded. For example, metrics exposed by a Kubernetes container can be linked to a resource that specifies the cluster, namespace, pod, and container name.Resource may capture an entire hierarchy of entity identification. It may describe the host in the cloud and specific container or an application running in the process. */
-export type SchemaMapResourceMapList = ReadonlyArray<ResourceMap>;
+export type SchemaMapResourceMapList = Array<ResourceMap>;
 export const SchemaMapResourceMapList = /*@__PURE__*/ S.Array(
   ResourceMap,
 ) as any as S.Schema<SchemaMapResourceMapList>;
@@ -2418,7 +2416,7 @@ export const ScopeMap = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ScopeMap" }) as any as S.Schema<ScopeMap>;
 
 /** A scope map is a logical unit of the application code with which the emitted telemetry can be associated. */
-export type SchemaMapScopeMapList = ReadonlyArray<ScopeMap>;
+export type SchemaMapScopeMapList = Array<ScopeMap>;
 export const SchemaMapScopeMapList = /*@__PURE__*/ S.Array(
   ScopeMap,
 ) as any as S.Schema<SchemaMapScopeMapList>;
@@ -2497,7 +2495,7 @@ export const AzureMonitorWorkspaceLogsExporter = /*@__PURE__*/ S.suspend(() =>
 /** Exporter Info. */
 export interface Exporter {
   /** The type of exporter. */
-  type: ExporterType;
+  type: ExporterType | (string & {});
   /** The name of exporter. */
   name: string;
   /** Azure Monitor Workspace Logs specific configurations. */
@@ -2512,7 +2510,7 @@ export const Exporter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Exporter" }) as any as S.Schema<Exporter>;
 
 /** The exporters specified for a pipeline group instance. */
-export type PipelineGroupPropertiesInputExportersList = ReadonlyArray<Exporter>;
+export type PipelineGroupPropertiesInputExportersList = Array<Exporter>;
 export const PipelineGroupPropertiesInputExportersList = /*@__PURE__*/ S.Array(
   Exporter,
 ) as any as S.Schema<PipelineGroupPropertiesInputExportersList>;
@@ -2522,19 +2520,19 @@ export type PipelineType = "Logs";
 export const PipelineType = /*@__PURE__*/ S.String;
 
 /** Reference to receivers configured for the pipeline. */
-export type PipelineReceiversList = ReadonlyArray<string>;
+export type PipelineReceiversList = Array<string>;
 export const PipelineReceiversList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PipelineReceiversList>;
 
 /** Reference to processors configured for the pipeline. */
-export type PipelineProcessorsList = ReadonlyArray<string>;
+export type PipelineProcessorsList = Array<string>;
 export const PipelineProcessorsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PipelineProcessorsList>;
 
 /** Reference to exporters configured for the pipeline. */
-export type PipelineExportersList = ReadonlyArray<string>;
+export type PipelineExportersList = Array<string>;
 export const PipelineExportersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PipelineExportersList>;
@@ -2544,7 +2542,7 @@ export interface Pipeline {
   /** Name of the pipeline. */
   name: string;
   /** The type of pipeline */
-  type: PipelineType;
+  type: PipelineType | (string & {});
   /** Reference to receivers configured for the pipeline. */
   receivers: PipelineReceiversList;
   /** Reference to processors configured for the pipeline. */
@@ -2563,7 +2561,7 @@ export const Pipeline = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Pipeline" }) as any as S.Schema<Pipeline>;
 
 /** Pipelines belonging to a given pipeline group. */
-export type ServicePipelinesList = ReadonlyArray<Pipeline>;
+export type ServicePipelinesList = Array<Pipeline>;
 export const ServicePipelinesList = /*@__PURE__*/ S.Array(
   Pipeline,
 ) as any as S.Schema<ServicePipelinesList>;
@@ -2600,7 +2598,7 @@ export type CapabilityOperator = "In" | "NotIn" | "Exists" | "DoesNotExist";
 export const CapabilityOperator = /*@__PURE__*/ S.String;
 
 /** The values to match against. Not required for Exists/DoesNotExist. */
-export type PlacementConstraintValuesList = ReadonlyArray<string>;
+export type PlacementConstraintValuesList = Array<string>;
 export const PlacementConstraintValuesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PlacementConstraintValuesList>;
@@ -2610,7 +2608,7 @@ export interface PlacementConstraint {
   /** The capability or attribute key used to match compute unit properties. */
   capability: string;
   /** The match operator, e.g., In, NotIn, Exists, DoesNotExist. */
-  operator: CapabilityOperator;
+  operator: CapabilityOperator | (string & {});
   /** The values to match against. Not required for Exists/DoesNotExist. */
   values?: PlacementConstraintValuesList;
 }
@@ -2625,8 +2623,7 @@ export const PlacementConstraint = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PlacementConstraint>;
 
 /** A list of placement constraints to guide where pipelineGroup instances should run. */
-export type ExecutionPlacementConstraintsList =
-  ReadonlyArray<PlacementConstraint>;
+export type ExecutionPlacementConstraintsList = Array<PlacementConstraint>;
 export const ExecutionPlacementConstraintsList = /*@__PURE__*/ S.Array(
   PlacementConstraint,
 ) as any as S.Schema<ExecutionPlacementConstraintsList>;
@@ -2671,7 +2668,7 @@ export const CertificateSourceType = /*@__PURE__*/ S.String;
 /** Configuration for certificate source location. */
 export interface CertificateSource {
   /** The type of certificate source. */
-  type: CertificateSourceType;
+  type: CertificateSourceType | (string & {});
   /** Location of the certificate source. */
   location: string;
   /** Sub-location within the certificate source. */
@@ -2694,7 +2691,7 @@ export const PrivateKeySourceType = /*@__PURE__*/ S.String;
 /** Configuration for private key source location. */
 export interface PrivateKeySource {
   /** The type of private key source. Only kubernetesSecret is supported for security reasons. */
-  type: PrivateKeySourceType;
+  type: PrivateKeySourceType | (string & {});
   /** Location of the private key source. */
   location: string;
   /** Sub-location within the private key source. */
@@ -2731,7 +2728,7 @@ export interface TlsConfiguration {
   /** The name of the TLS configuration. */
   name: string;
   /** The TLS security mode for receivers using this configuration. Default is 'mutualTls'. */
-  mode?: TlsConfigurationMode;
+  mode?: TlsConfigurationMode | (string & {});
   /** TLS certificate and its private key. If not specified, default TLS certificate is used. */
   tlsCertificate?: CertificateWithKey;
   /** Certificate source configuration for the client CA certificate for validating client certificates. If not specified, default CA certificates are used. */
@@ -2750,7 +2747,7 @@ export const TlsConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** TLS configurations for the pipeline group instance. */
 export type PipelineGroupPropertiesInputTlsConfigurationsList =
-  ReadonlyArray<TlsConfiguration>;
+  Array<TlsConfiguration>;
 export const PipelineGroupPropertiesInputTlsConfigurationsList =
   /*@__PURE__*/ S.Array(
     TlsConfiguration,
@@ -2801,7 +2798,7 @@ export interface AzureResourceManagerCommonTypesExtendedLocation {
   /** The name of the extended location. */
   name: string;
   /** The type of the extended location. */
-  type: AzureResourceManagerCommonTypesExtendedLocationType;
+  type: AzureResourceManagerCommonTypesExtendedLocationType | (string & {});
 }
 export const AzureResourceManagerCommonTypesExtendedLocation =
   /*@__PURE__*/ S.suspend(() =>
@@ -2862,26 +2859,26 @@ export const PipelineGroupsCreateOrUpdateResponseTagsMap =
   ) as any as S.Schema<PipelineGroupsCreateOrUpdateResponseTagsMap>;
 
 /** The receivers specified for a pipeline group instance. */
-export type PipelineGroupPropertiesReceiversList = ReadonlyArray<Receiver>;
+export type PipelineGroupPropertiesReceiversList = Array<Receiver>;
 export const PipelineGroupPropertiesReceiversList = /*@__PURE__*/ S.Array(
   Receiver,
 ) as any as S.Schema<PipelineGroupPropertiesReceiversList>;
 
 /** The processors specified for a pipeline group instance. */
-export type PipelineGroupPropertiesProcessorsList = ReadonlyArray<Processor>;
+export type PipelineGroupPropertiesProcessorsList = Array<Processor>;
 export const PipelineGroupPropertiesProcessorsList = /*@__PURE__*/ S.Array(
   Processor,
 ) as any as S.Schema<PipelineGroupPropertiesProcessorsList>;
 
 /** The exporters specified for a pipeline group instance. */
-export type PipelineGroupPropertiesExportersList = ReadonlyArray<Exporter>;
+export type PipelineGroupPropertiesExportersList = Array<Exporter>;
 export const PipelineGroupPropertiesExportersList = /*@__PURE__*/ S.Array(
   Exporter,
 ) as any as S.Schema<PipelineGroupPropertiesExportersList>;
 
 /** TLS configurations for the pipeline group instance. */
 export type PipelineGroupPropertiesTlsConfigurationsList =
-  ReadonlyArray<TlsConfiguration>;
+  Array<TlsConfiguration>;
 export const PipelineGroupPropertiesTlsConfigurationsList =
   /*@__PURE__*/ S.Array(
     TlsConfiguration,
@@ -3129,7 +3126,7 @@ export const PipelineGroup = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PipelineGroup" }) as any as S.Schema<PipelineGroup>;
 
 /** The PipelineGroup items on this page */
-export type PipelineGroupListResultValueList = ReadonlyArray<PipelineGroup>;
+export type PipelineGroupListResultValueList = Array<PipelineGroup>;
 export const PipelineGroupListResultValueList = /*@__PURE__*/ S.Array(
   PipelineGroup,
 ) as any as S.Schema<PipelineGroupListResultValueList>;
@@ -3180,29 +3177,26 @@ export const PipelineGroupsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<PipelineGroupsUpdateRequestTagsMap>;
 
 /** The receivers specified for a pipeline group instance. */
-export type PipelineGroupPropertiesUpdateReceiversList =
-  ReadonlyArray<Receiver>;
+export type PipelineGroupPropertiesUpdateReceiversList = Array<Receiver>;
 export const PipelineGroupPropertiesUpdateReceiversList = /*@__PURE__*/ S.Array(
   Receiver,
 ) as any as S.Schema<PipelineGroupPropertiesUpdateReceiversList>;
 
 /** The processors specified for a pipeline group instance. */
-export type PipelineGroupPropertiesUpdateProcessorsList =
-  ReadonlyArray<Processor>;
+export type PipelineGroupPropertiesUpdateProcessorsList = Array<Processor>;
 export const PipelineGroupPropertiesUpdateProcessorsList =
   /*@__PURE__*/ S.Array(
     Processor,
   ) as any as S.Schema<PipelineGroupPropertiesUpdateProcessorsList>;
 
 /** The exporters specified for a pipeline group instance. */
-export type PipelineGroupPropertiesUpdateExportersList =
-  ReadonlyArray<Exporter>;
+export type PipelineGroupPropertiesUpdateExportersList = Array<Exporter>;
 export const PipelineGroupPropertiesUpdateExportersList = /*@__PURE__*/ S.Array(
   Exporter,
 ) as any as S.Schema<PipelineGroupPropertiesUpdateExportersList>;
 
 /** Pipelines belonging to a given pipeline group. */
-export type ServiceUpdatePipelinesList = ReadonlyArray<Pipeline>;
+export type ServiceUpdatePipelinesList = Array<Pipeline>;
 export const ServiceUpdatePipelinesList = /*@__PURE__*/ S.Array(
   Pipeline,
 ) as any as S.Schema<ServiceUpdatePipelinesList>;
@@ -3236,7 +3230,7 @@ export const ServiceUpdate = /*@__PURE__*/ S.suspend(() =>
 
 /** TLS configurations for the pipeline group instance. */
 export type PipelineGroupPropertiesUpdateTlsConfigurationsList =
-  ReadonlyArray<TlsConfiguration>;
+  Array<TlsConfiguration>;
 export const PipelineGroupPropertiesUpdateTlsConfigurationsList =
   /*@__PURE__*/ S.Array(
     TlsConfiguration,

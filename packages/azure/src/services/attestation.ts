@@ -29,7 +29,7 @@ export const AttestationServiceCreationSpecificParamsPublicNetworkAccess =
   /*@__PURE__*/ S.String;
 
 /** The "x5c" (X.509 certificate chain) parameter contains a chain of one or more PKIX certificates [RFC5280]. The certificate chain is represented as a JSON array of certificate value strings. Each string in the array is a base64-encoded (Section 4 of [RFC4648] -- not base64url-encoded) DER [ITU.X690.1994] PKIX certificate value. The PKIX certificate containing the key value MUST be the first certificate. */
-export type JsonWebKeyX5cList = ReadonlyArray<string>;
+export type JsonWebKeyX5cList = Array<string>;
 export const JsonWebKeyX5cList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<JsonWebKeyX5cList>;
@@ -93,7 +93,7 @@ export const JsonWebKey = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "JsonWebKey" }) as any as S.Schema<JsonWebKey>;
 
 /** The value of the "keys" parameter is an array of JWK values. By default, the order of the JWK values within the array does not imply an order of preference among them, although applications of JWK Sets can choose to assign a meaning to the order for their purposes, if desired. */
-export type JsonWebKeySetKeysList = ReadonlyArray<JsonWebKey>;
+export type JsonWebKeySetKeysList = Array<JsonWebKey>;
 export const JsonWebKeySetKeysList = /*@__PURE__*/ S.Array(
   JsonWebKey,
 ) as any as S.Schema<JsonWebKeySetKeysList>;
@@ -258,7 +258,7 @@ export const PrivateEndpointServiceConnectionStatus = /*@__PURE__*/ S.String;
 /** A collection of information about the state of the connection between service consumer and provider. */
 export interface PrivateLinkServiceConnectionState {
   /** Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service. */
-  status?: PrivateEndpointServiceConnectionStatus;
+  status?: PrivateEndpointServiceConnectionStatus | (string & {});
   /** The reason for approval/rejection of the connection. */
   description?: string;
   /** A message indicating if changes on the service provider require any updates on the consumer. */
@@ -330,7 +330,7 @@ export const StatusResultPrivateEndpointConnectionsItem =
 
 /** List of private endpoint connections associated with the attestation provider. */
 export type StatusResultPrivateEndpointConnectionsList =
-  ReadonlyArray<StatusResultPrivateEndpointConnectionsItem>;
+  Array<StatusResultPrivateEndpointConnectionsItem>;
 export const StatusResultPrivateEndpointConnectionsList = /*@__PURE__*/ S.Array(
   StatusResultPrivateEndpointConnectionsItem,
 ) as any as S.Schema<StatusResultPrivateEndpointConnectionsList>;
@@ -668,8 +668,7 @@ export const AttestationProvider = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AttestationProvider>;
 
 /** Attestation Provider array. */
-export type AttestationProviderListResultValueList =
-  ReadonlyArray<AttestationProvider>;
+export type AttestationProviderListResultValueList = Array<AttestationProvider>;
 export const AttestationProviderListResultValueList = /*@__PURE__*/ S.Array(
   AttestationProvider,
 ) as any as S.Schema<AttestationProviderListResultValueList>;
@@ -948,8 +947,7 @@ export const LogSpecification = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LogSpecification>;
 
 /** Specifications of the Log for Microsoft Azure Attestation */
-export type ServiceSpecificationLogSpecificationsList =
-  ReadonlyArray<LogSpecification>;
+export type ServiceSpecificationLogSpecificationsList = Array<LogSpecification>;
 export const ServiceSpecificationLogSpecificationsList = /*@__PURE__*/ S.Array(
   LogSpecification,
 ) as any as S.Schema<ServiceSpecificationLogSpecificationsList>;
@@ -1000,7 +998,7 @@ export const OperationsDefinition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationsDefinition>;
 
 /** List of supported operations. */
-export type OperationListValueList = ReadonlyArray<OperationsDefinition>;
+export type OperationListValueList = Array<OperationsDefinition>;
 export const OperationListValueList = /*@__PURE__*/ S.Array(
   OperationsDefinition,
 ) as any as S.Schema<OperationListValueList>;
@@ -1245,7 +1243,7 @@ export const PrivateEndpointConnectionListResultValueItem =
 
 /** The PrivateEndpointConnection items on this page */
 export type PrivateEndpointConnectionListResultValueList =
-  ReadonlyArray<PrivateEndpointConnectionListResultValueItem>;
+  Array<PrivateEndpointConnectionListResultValueItem>;
 export const PrivateEndpointConnectionListResultValueList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnectionListResultValueItem,
@@ -1294,16 +1292,14 @@ export const PrivateLinkResourcesListByProviderRequest =
   }) as any as S.Schema<PrivateLinkResourcesListByProviderRequest>;
 
 /** The private link resource required member names. */
-export type PrivateLinkResourcePropertiesRequiredMembersList =
-  ReadonlyArray<string>;
+export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
 export const PrivateLinkResourcePropertiesRequiredMembersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
 
 /** The private link resource Private link DNS zone name. */
-export type PrivateLinkResourcePropertiesRequiredZoneNamesList =
-  ReadonlyArray<string>;
+export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
 export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1360,7 +1356,7 @@ export const PrivateLinkResourceListResultValueItem = /*@__PURE__*/ S.suspend(
 
 /** The PrivateLinkResource items on this page */
 export type PrivateLinkResourceListResultValueList =
-  ReadonlyArray<PrivateLinkResourceListResultValueItem>;
+  Array<PrivateLinkResourceListResultValueItem>;
 export const PrivateLinkResourceListResultValueList = /*@__PURE__*/ S.Array(
   PrivateLinkResourceListResultValueItem,
 ) as any as S.Schema<PrivateLinkResourceListResultValueList>;

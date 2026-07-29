@@ -110,7 +110,7 @@ export const EvaluationConditionPropertiesItemMap = /*@__PURE__*/ S.Record(
 
 /** Property filters (event or person) that scope which generations match this condition set. */
 export type EvaluationConditionPropertiesList =
-  ReadonlyArray<EvaluationConditionPropertiesItemMap>;
+  Array<EvaluationConditionPropertiesItemMap>;
 export const EvaluationConditionPropertiesList = /*@__PURE__*/ S.Array(
   EvaluationConditionPropertiesItemMap,
 ) as any as S.Schema<EvaluationConditionPropertiesList>;
@@ -135,8 +135,7 @@ export const EvaluationCondition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EvaluationCondition>;
 
 /** Trigger conditions that filter which events are evaluated. OR between condition sets, AND within each. Each set is {id, rollout_percentage, properties[]} — `rollout_percentage` (0-100, defaults to 100) is the sampling field the dispatcher reads. */
-export type EvaluationsCreateRequestConditionsList =
-  ReadonlyArray<EvaluationCondition>;
+export type EvaluationsCreateRequestConditionsList = Array<EvaluationCondition>;
 export const EvaluationsCreateRequestConditionsList = /*@__PURE__*/ S.Array(
   EvaluationCondition,
 ) as any as S.Schema<EvaluationsCreateRequestConditionsList>;
@@ -332,7 +331,7 @@ export const EvaluationOutputConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EvaluationOutputConfig>;
 
 /** Trigger conditions that filter which events are evaluated. OR between condition sets, AND within each. Each set is {id, rollout_percentage, properties[]} — `rollout_percentage` (0-100, defaults to 100) is the sampling field the dispatcher reads. */
-export type EvaluationConditionsList = ReadonlyArray<EvaluationCondition>;
+export type EvaluationConditionsList = Array<EvaluationCondition>;
 export const EvaluationConditionsList = /*@__PURE__*/ S.Array(
   EvaluationCondition,
 ) as any as S.Schema<EvaluationConditionsList>;
@@ -511,7 +510,7 @@ export type EvaluationsListRequestEvaluationType =
   | "sentiment";
 export const EvaluationsListRequestEvaluationType = /*@__PURE__*/ S.String;
 
-export type EvaluationsListRequestIdInList = ReadonlyArray<string>;
+export type EvaluationsListRequestIdInList = Array<string>;
 export const EvaluationsListRequestIdInList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EvaluationsListRequestIdInList>;
@@ -525,7 +524,7 @@ export type EvaluationsListRequestOrderByItem =
   | "updated_at";
 export const EvaluationsListRequestOrderByItem = /*@__PURE__*/ S.String;
 
-export type EvaluationsListRequestOrderByList = ReadonlyArray<
+export type EvaluationsListRequestOrderByList = Array<
   EvaluationsListRequestOrderByItem | (string & {})
 >;
 export const EvaluationsListRequestOrderByList = /*@__PURE__*/ S.Array(
@@ -573,7 +572,7 @@ export const EvaluationsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "EvaluationsListRequest",
 }) as any as S.Schema<EvaluationsListRequest>;
 
-export type PaginatedEvaluationListResultsList = ReadonlyArray<Evaluation>;
+export type PaginatedEvaluationListResultsList = Array<Evaluation>;
 export const PaginatedEvaluationListResultsList = /*@__PURE__*/ S.Array(
   Evaluation,
 ) as any as S.Schema<PaginatedEvaluationListResultsList>;
@@ -685,7 +684,7 @@ export const EvaluationsPartialUpdateRequestOutputConfig =
 
 /** Trigger conditions that filter which events are evaluated. OR between condition sets, AND within each. Each set is {id, rollout_percentage, properties[]} — `rollout_percentage` (0-100, defaults to 100) is the sampling field the dispatcher reads. */
 export type EvaluationsPartialUpdateRequestConditionsList =
-  ReadonlyArray<EvaluationCondition>;
+  Array<EvaluationCondition>;
 export const EvaluationsPartialUpdateRequestConditionsList =
   /*@__PURE__*/ S.Array(
     EvaluationCondition,
@@ -796,7 +795,7 @@ export const EvaluationsTestHogCreateRequestConditionsItemMap =
 
 /** Optional trigger conditions to filter which events are sampled. */
 export type EvaluationsTestHogCreateRequestConditionsList =
-  ReadonlyArray<EvaluationsTestHogCreateRequestConditionsItemMap>;
+  Array<EvaluationsTestHogCreateRequestConditionsItemMap>;
 export const EvaluationsTestHogCreateRequestConditionsList =
   /*@__PURE__*/ S.Array(
     EvaluationsTestHogCreateRequestConditionsItemMap,
@@ -862,7 +861,7 @@ export const TestHogResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "TestHogResultItem",
 }) as any as S.Schema<TestHogResultItem>;
 
-export type TestHogResponseResultsList = ReadonlyArray<TestHogResultItem>;
+export type TestHogResponseResultsList = Array<TestHogResultItem>;
 export const TestHogResponseResultsList = /*@__PURE__*/ S.Array(
   TestHogResultItem,
 ) as any as S.Schema<TestHogResponseResultsList>;
@@ -963,8 +962,7 @@ export const EvaluationsUpdateRequestOutputConfig = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<EvaluationsUpdateRequestOutputConfig>;
 
 /** Trigger conditions that filter which events are evaluated. OR between condition sets, AND within each. Each set is {id, rollout_percentage, properties[]} — `rollout_percentage` (0-100, defaults to 100) is the sampling field the dispatcher reads. */
-export type EvaluationsUpdateRequestConditionsList =
-  ReadonlyArray<EvaluationCondition>;
+export type EvaluationsUpdateRequestConditionsList = Array<EvaluationCondition>;
 export const EvaluationsUpdateRequestConditionsList = /*@__PURE__*/ S.Array(
   EvaluationCondition,
 ) as any as S.Schema<EvaluationsUpdateRequestConditionsList>;

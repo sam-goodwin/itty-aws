@@ -32,8 +32,7 @@ export type Role = "ServiceOwner" | "LimitedOwner";
 export const Role = /*@__PURE__*/ S.String;
 
 /** The resource types from the defined resource types in the provider namespace that the application can access. If no resource types are specified and the role is service owner, the default is * which is all resource types */
-export type ApplicationDataAuthorizationResourceTypesList =
-  ReadonlyArray<string>;
+export type ApplicationDataAuthorizationResourceTypesList = Array<string>;
 export const ApplicationDataAuthorizationResourceTypesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -41,7 +40,7 @@ export const ApplicationDataAuthorizationResourceTypesList =
 
 export interface ApplicationDataAuthorization {
   /** The ownership role the application has on the resource types. The service owner role gives the application owner permissions. The limited owner role gives elevated permissions but does not allow all the permissions of a service owner, such as read/write on internal metadata. */
-  role: Role;
+  role: Role | (string & {});
   /** The resource types from the defined resource types in the provider namespace that the application can access. If no resource types are specified and the role is service owner, the default is * which is all resource types */
   resourceTypes?: ApplicationDataAuthorizationResourceTypesList;
 }
@@ -56,7 +55,7 @@ export const ApplicationDataAuthorization = /*@__PURE__*/ S.suspend(() =>
 
 /** The authorizations that determine the level of data access permissions on the specified resource types. */
 export type AuthorizedApplicationPropertiesDataAuthorizationsList =
-  ReadonlyArray<ApplicationDataAuthorization>;
+  Array<ApplicationDataAuthorization>;
 export const AuthorizedApplicationPropertiesDataAuthorizationsList =
   /*@__PURE__*/ S.Array(
     ApplicationDataAuthorization,
@@ -83,7 +82,7 @@ export interface AuthorizedApplicationProperties {
   /** The authorizations that determine the level of data access permissions on the specified resource types. */
   dataAuthorizations?: AuthorizedApplicationPropertiesDataAuthorizationsList;
   /** The provisioning state. */
-  provisioningState?: ProvisioningState;
+  provisioningState?: ProvisioningState | (string & {});
 }
 export const AuthorizedApplicationProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -319,7 +318,7 @@ export const AuthorizedApplication = /*@__PURE__*/ S.suspend(() =>
 
 /** The AuthorizedApplication items on this page */
 export type AuthorizedApplicationArrayResponseWithContinuationValueList =
-  ReadonlyArray<AuthorizedApplication>;
+  Array<AuthorizedApplication>;
 export const AuthorizedApplicationArrayResponseWithContinuationValueList =
   /*@__PURE__*/ S.Array(
     AuthorizedApplication,
@@ -406,7 +405,7 @@ export const CustomRolloutSpecificationAutoProvisionConfig =
     identifier: "CustomRolloutSpecificationAutoProvisionConfig",
   }) as any as S.Schema<CustomRolloutSpecificationAutoProvisionConfig>;
 
-export type TrafficRegionsRegionsList = ReadonlyArray<string>;
+export type TrafficRegionsRegionsList = Array<string>;
 export const TrafficRegionsRegionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<TrafficRegionsRegionsList>;
@@ -421,16 +420,14 @@ export const TrafficRegions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TrafficRegions" }) as any as S.Schema<TrafficRegions>;
 
 /** The list of ARM regions scoped for the release. */
-export type CustomRolloutSpecificationInputReleaseScopesList =
-  ReadonlyArray<string>;
+export type CustomRolloutSpecificationInputReleaseScopesList = Array<string>;
 export const CustomRolloutSpecificationInputReleaseScopesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<CustomRolloutSpecificationInputReleaseScopesList>;
 
 /** The allowed audiences. */
-export type ResourceProviderAuthenticationAllowedAudiencesList =
-  ReadonlyArray<string>;
+export type ResourceProviderAuthenticationAllowedAudiencesList = Array<string>;
 export const ResourceProviderAuthenticationAllowedAudiencesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -462,7 +459,7 @@ export const AdditionalAuthorization = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AdditionalAuthorization>;
 
 export type ResourceProviderAuthorizationManagedByAuthorizationAdditionalAuthorizationsList =
-  ReadonlyArray<AdditionalAuthorization>;
+  Array<AdditionalAuthorization>;
 export const ResourceProviderAuthorizationManagedByAuthorizationAdditionalAuthorizationsList =
   /*@__PURE__*/ S.Array(
     AdditionalAuthorization,
@@ -503,7 +500,7 @@ export const ThirdPartyExtension = /*@__PURE__*/ S.suspend(() =>
 
 /** The allowed third party extensions. */
 export type ResourceProviderAuthorizationAllowedThirdPartyExtensionsList =
-  ReadonlyArray<ThirdPartyExtension>;
+  Array<ThirdPartyExtension>;
 export const ResourceProviderAuthorizationAllowedThirdPartyExtensionsList =
   /*@__PURE__*/ S.Array(
     ThirdPartyExtension,
@@ -542,7 +539,7 @@ export const ResourceProviderAuthorization = /*@__PURE__*/ S.suspend(() =>
 
 /** The provider authorizations. */
 export type ProviderRegistrationPropertiesProviderAuthorizationsList =
-  ReadonlyArray<ResourceProviderAuthorization>;
+  Array<ResourceProviderAuthorization>;
 export const ProviderRegistrationPropertiesProviderAuthorizationsList =
   /*@__PURE__*/ S.Array(
     ResourceProviderAuthorization,
@@ -557,7 +554,7 @@ export interface ResourceProviderService {
   /** The service name. */
   serviceName?: string;
   /** The status. */
-  status?: ServiceStatus;
+  status?: ServiceStatus | (string & {});
 }
 export const ResourceProviderService = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -570,7 +567,7 @@ export const ResourceProviderService = /*@__PURE__*/ S.suspend(() =>
 
 /** The services. */
 export type ProviderRegistrationPropertiesServicesList =
-  ReadonlyArray<ResourceProviderService>;
+  Array<ResourceProviderService>;
 export const ProviderRegistrationPropertiesServicesList = /*@__PURE__*/ S.Array(
   ResourceProviderService,
 ) as any as S.Schema<ProviderRegistrationPropertiesServicesList>;
@@ -588,8 +585,7 @@ export type ResourceProviderType =
 export const ResourceProviderType = /*@__PURE__*/ S.String;
 
 /** The required features. */
-export type ProviderRegistrationPropertiesRequiredFeaturesList =
-  ReadonlyArray<string>;
+export type ProviderRegistrationPropertiesRequiredFeaturesList = Array<string>;
 export const ProviderRegistrationPropertiesRequiredFeaturesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -601,7 +597,7 @@ export const FeaturesPolicy = /*@__PURE__*/ S.String;
 
 export interface FeaturesRule {
   /** The required feature policy. */
-  requiredFeaturesPolicy: FeaturesPolicy;
+  requiredFeaturesPolicy: FeaturesPolicy | (string & {});
 }
 export const FeaturesRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -633,9 +629,9 @@ export const OptOutHeaderType = /*@__PURE__*/ S.String;
 
 export interface RequestHeaderOptions {
   /** The opt in headers. */
-  optInHeaders?: OptInHeaderType;
+  optInHeaders?: OptInHeaderType | (string & {});
   /** The opt out headers. */
-  optOutHeaders?: OptOutHeaderType;
+  optOutHeaders?: OptOutHeaderType | (string & {});
 }
 export const RequestHeaderOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -647,22 +643,20 @@ export const RequestHeaderOptions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RequestHeaderOptions>;
 
 /** The schema owners. */
-export type ResourceProviderManagementSchemaOwnersList = ReadonlyArray<string>;
+export type ResourceProviderManagementSchemaOwnersList = Array<string>;
 export const ResourceProviderManagementSchemaOwnersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ResourceProviderManagementSchemaOwnersList>;
 
 /** The manifest owners. */
-export type ResourceProviderManagementManifestOwnersList =
-  ReadonlyArray<string>;
+export type ResourceProviderManagementManifestOwnersList = Array<string>;
 export const ResourceProviderManagementManifestOwnersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ResourceProviderManagementManifestOwnersList>;
 
 /** The authorization owners. */
-export type ResourceProviderManagementAuthorizationOwnersList =
-  ReadonlyArray<string>;
+export type ResourceProviderManagementAuthorizationOwnersList = Array<string>;
 export const ResourceProviderManagementAuthorizationOwnersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -687,7 +681,7 @@ export interface ServiceTreeInfo {
   /** The component id. */
   componentId?: string;
   /** The readiness. */
-  readiness?: Readiness;
+  readiness?: Readiness | (string & {});
 }
 export const ServiceTreeInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -701,7 +695,7 @@ export const ServiceTreeInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** The service tree infos. */
 export type ResourceProviderManagementServiceTreeInfosList =
-  ReadonlyArray<ServiceTreeInfo>;
+  Array<ServiceTreeInfo>;
 export const ResourceProviderManagementServiceTreeInfosList =
   /*@__PURE__*/ S.Array(
     ServiceTreeInfo,
@@ -715,13 +709,13 @@ export type ResourceAccessPolicy =
 export const ResourceAccessPolicy = /*@__PURE__*/ S.String;
 
 /** The allowed group claims. */
-export type ResourceAccessRoleAllowedGroupClaimsList = ReadonlyArray<string>;
+export type ResourceAccessRoleAllowedGroupClaimsList = Array<string>;
 export const ResourceAccessRoleAllowedGroupClaimsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ResourceAccessRoleAllowedGroupClaimsList>;
 
 /** The actions. */
-export type ResourceAccessRoleActionsList = ReadonlyArray<string>;
+export type ResourceAccessRoleActionsList = Array<string>;
 export const ResourceAccessRoleActionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ResourceAccessRoleActionsList>;
@@ -743,7 +737,7 @@ export const ResourceAccessRole = /*@__PURE__*/ S.suspend(() =>
 
 /** The resource access roles. */
 export type ResourceProviderManagementResourceAccessRolesList =
-  ReadonlyArray<ResourceAccessRole>;
+  Array<ResourceAccessRole>;
 export const ResourceProviderManagementResourceAccessRolesList =
   /*@__PURE__*/ S.Array(
     ResourceAccessRole,
@@ -751,7 +745,7 @@ export const ResourceProviderManagementResourceAccessRolesList =
 
 /** List of expedited rollout submitters. */
 export type ResourceProviderManagementExpeditedRolloutSubmittersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ResourceProviderManagementExpeditedRolloutSubmittersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -766,7 +760,9 @@ export const ServerFailureResponseMessageType = /*@__PURE__*/ S.String;
 /** Options for error response messages. */
 export interface ResourceProviderManagementErrorResponseMessageOptions {
   /** Type of server failure response message. */
-  serverFailureResponseMessageType?: ServerFailureResponseMessageType;
+  serverFailureResponseMessageType?:
+    | ServerFailureResponseMessageType
+    | (string & {});
 }
 export const ResourceProviderManagementErrorResponseMessageOptions =
   /*@__PURE__*/ S.suspend(() =>
@@ -788,7 +784,7 @@ export interface ResourceProviderManagementExpeditedRolloutMetadata {
   /** Expedited rollout enabled? */
   enabled?: boolean;
   /** Expedited rollout intent. */
-  expeditedRolloutIntent?: ExpeditedRolloutIntent;
+  expeditedRolloutIntent?: ExpeditedRolloutIntent | (string & {});
 }
 export const ResourceProviderManagementExpeditedRolloutMetadata =
   /*@__PURE__*/ S.suspend(() =>
@@ -801,8 +797,7 @@ export const ResourceProviderManagementExpeditedRolloutMetadata =
   }) as any as S.Schema<ResourceProviderManagementExpeditedRolloutMetadata>;
 
 /** List of manifest owners for canary. */
-export type ResourceProviderManagementCanaryManifestOwnersList =
-  ReadonlyArray<string>;
+export type ResourceProviderManagementCanaryManifestOwnersList = Array<string>;
 export const ResourceProviderManagementCanaryManifestOwnersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -824,7 +819,7 @@ export interface ResourceProviderManagement {
   /** The service tree infos. */
   serviceTreeInfos?: ResourceProviderManagementServiceTreeInfosList;
   /** The resource access policy. */
-  resourceAccessPolicy?: ResourceAccessPolicy;
+  resourceAccessPolicy?: ResourceAccessPolicy | (string & {});
   /** The resource access roles. */
   resourceAccessRoles?: ResourceProviderManagementResourceAccessRolesList;
   /** List of expedited rollout submitters. */
@@ -884,8 +879,7 @@ export type ResourceProviderCapabilitiesEffect =
 export const ResourceProviderCapabilitiesEffect = /*@__PURE__*/ S.String;
 
 /** The required features. */
-export type ResourceProviderCapabilitiesRequiredFeaturesList =
-  ReadonlyArray<string>;
+export type ResourceProviderCapabilitiesRequiredFeaturesList = Array<string>;
 export const ResourceProviderCapabilitiesRequiredFeaturesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -895,7 +889,7 @@ export interface ResourceProviderCapabilities {
   /** The quota id. */
   quotaId: string;
   /** The effect. */
-  effect: ResourceProviderCapabilitiesEffect;
+  effect: ResourceProviderCapabilitiesEffect | (string & {});
   /** The required features. */
   requiredFeatures?: ResourceProviderCapabilitiesRequiredFeaturesList;
 }
@@ -913,7 +907,7 @@ export const ResourceProviderCapabilities = /*@__PURE__*/ S.suspend(() =>
 
 /** The capabilities. */
 export type ProviderRegistrationPropertiesCapabilitiesList =
-  ReadonlyArray<ResourceProviderCapabilities>;
+  Array<ResourceProviderCapabilities>;
 export const ProviderRegistrationPropertiesCapabilitiesList =
   /*@__PURE__*/ S.Array(
     ResourceProviderCapabilities,
@@ -932,8 +926,9 @@ export type PreflightOption =
 export const PreflightOption = /*@__PURE__*/ S.String;
 
 /** The preflight options. */
-export type TemplateDeploymentOptionsPreflightOptionsList =
-  ReadonlyArray<PreflightOption>;
+export type TemplateDeploymentOptionsPreflightOptionsList = Array<
+  PreflightOption | (string & {})
+>;
 export const TemplateDeploymentOptionsPreflightOptionsList =
   /*@__PURE__*/ S.Array(
     PreflightOption,
@@ -955,20 +950,19 @@ export const TemplateDeploymentOptions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TemplateDeploymentOptions>;
 
 /** The api versions. */
-export type ResourceProviderEndpointApiVersionsList = ReadonlyArray<string>;
+export type ResourceProviderEndpointApiVersionsList = Array<string>;
 export const ResourceProviderEndpointApiVersionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ResourceProviderEndpointApiVersionsList>;
 
 /** The locations. */
-export type ResourceProviderEndpointLocationsList = ReadonlyArray<string>;
+export type ResourceProviderEndpointLocationsList = Array<string>;
 export const ResourceProviderEndpointLocationsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ResourceProviderEndpointLocationsList>;
 
 /** The required features. */
-export type ResourceProviderEndpointRequiredFeaturesList =
-  ReadonlyArray<string>;
+export type ResourceProviderEndpointRequiredFeaturesList = Array<string>;
 export const ResourceProviderEndpointRequiredFeaturesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -998,7 +992,7 @@ export interface ResourceProviderEndpoint {
   /** The timeout. */
   timeout?: string;
   /** The endpoint type. */
-  endpointType?: EndpointType;
+  endpointType?: EndpointType | (string & {});
   /** The sku link. */
   skuLink?: string;
 }
@@ -1020,7 +1014,7 @@ export const ResourceProviderEndpoint = /*@__PURE__*/ S.suspend(() =>
 
 /** The global notification endpoints. */
 export type ProviderRegistrationPropertiesGlobalNotificationEndpointsList =
-  ReadonlyArray<ResourceProviderEndpoint>;
+  Array<ResourceProviderEndpoint>;
 export const ProviderRegistrationPropertiesGlobalNotificationEndpointsList =
   /*@__PURE__*/ S.Array(
     ResourceProviderEndpoint,
@@ -1036,9 +1030,9 @@ export const SkipNotifications = /*@__PURE__*/ S.String;
 
 export interface Notification {
   /** The notification type. */
-  notificationType?: NotificationType;
+  notificationType?: NotificationType | (string & {});
   /** Whether notifications should be skipped. */
-  skipNotifications?: SkipNotifications;
+  skipNotifications?: SkipNotifications | (string & {});
 }
 export const Notification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1049,7 +1043,7 @@ export const Notification = /*@__PURE__*/ S.suspend(() =>
 
 /** The notifications. */
 export type ProviderRegistrationPropertiesNotificationsList =
-  ReadonlyArray<Notification>;
+  Array<Notification>;
 export const ProviderRegistrationPropertiesNotificationsList =
   /*@__PURE__*/ S.Array(
     Notification,
@@ -1065,9 +1059,9 @@ export const SignedRequestScope = /*@__PURE__*/ S.String;
 
 export interface TokenAuthConfiguration {
   /** The authentication scheme. */
-  authenticationScheme?: AuthenticationScheme;
+  authenticationScheme?: AuthenticationScheme | (string & {});
   /** The signed request scope. */
-  signedRequestScope?: SignedRequestScope;
+  signedRequestScope?: SignedRequestScope | (string & {});
   /** Whether certification authentication fallback is disabled. */
   disableCertificateAuthenticationFallback?: boolean;
 }
@@ -1082,14 +1076,14 @@ export const TokenAuthConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TokenAuthConfiguration>;
 
 /** The actions. */
-export type FanoutLinkedNotificationRuleActionsList = ReadonlyArray<string>;
+export type FanoutLinkedNotificationRuleActionsList = Array<string>;
 export const FanoutLinkedNotificationRuleActionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<FanoutLinkedNotificationRuleActionsList>;
 
 /** The endpoints. */
 export type FanoutLinkedNotificationRuleEndpointsList =
-  ReadonlyArray<ResourceProviderEndpoint>;
+  Array<ResourceProviderEndpoint>;
 export const FanoutLinkedNotificationRuleEndpointsList = /*@__PURE__*/ S.Array(
   ResourceProviderEndpoint,
 ) as any as S.Schema<FanoutLinkedNotificationRuleEndpointsList>;
@@ -1132,15 +1126,14 @@ export const FanoutLinkedNotificationRule = /*@__PURE__*/ S.suspend(() =>
 
 /** The linked notification rules. */
 export type ProviderRegistrationPropertiesLinkedNotificationRulesList =
-  ReadonlyArray<FanoutLinkedNotificationRule>;
+  Array<FanoutLinkedNotificationRule>;
 export const ProviderRegistrationPropertiesLinkedNotificationRulesList =
   /*@__PURE__*/ S.Array(
     FanoutLinkedNotificationRule,
   ) as any as S.Schema<ProviderRegistrationPropertiesLinkedNotificationRulesList>;
 
 /** The authorization actions. */
-export type AsyncOperationPollingRulesAuthorizationActionsList =
-  ReadonlyArray<string>;
+export type AsyncOperationPollingRulesAuthorizationActionsList = Array<string>;
 export const AsyncOperationPollingRulesAuthorizationActionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1156,7 +1149,7 @@ export interface AsyncOperationPollingRules {
   /** The authorization actions. */
   authorizationActions?: AsyncOperationPollingRulesAuthorizationActionsList;
   /** The additional options. */
-  additionalOptions?: AdditionalOptionsAsyncOperation;
+  additionalOptions?: AdditionalOptionsAsyncOperation | (string & {});
 }
 export const AsyncOperationPollingRules = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1208,7 +1201,7 @@ export const ResourceHydrationAccount = /*@__PURE__*/ S.suspend(() =>
 
 /** resource hydration accounts */
 export type ProviderRegistrationPropertiesResourceHydrationAccountsList =
-  ReadonlyArray<ResourceHydrationAccount>;
+  Array<ResourceHydrationAccount>;
 export const ProviderRegistrationPropertiesResourceHydrationAccountsList =
   /*@__PURE__*/ S.Array(
     ResourceHydrationAccount,
@@ -1222,7 +1215,7 @@ export interface EndpointInformation {
   /** The endpoint. */
   endpoint?: string;
   /** The endpoint type. */
-  endpointType?: NotificationEndpointType;
+  endpointType?: NotificationEndpointType | (string & {});
   /** The schema version. */
   schemaVersion?: string;
 }
@@ -1237,8 +1230,7 @@ export const EndpointInformation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EndpointInformation>;
 
 /** The endpoint information. */
-export type FilterRuleEndpointInformationList =
-  ReadonlyArray<EndpointInformation>;
+export type FilterRuleEndpointInformationList = Array<EndpointInformation>;
 export const FilterRuleEndpointInformationList = /*@__PURE__*/ S.Array(
   EndpointInformation,
 ) as any as S.Schema<FilterRuleEndpointInformationList>;
@@ -1257,7 +1249,7 @@ export const FilterRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FilterRule" }) as any as S.Schema<FilterRule>;
 
 /** The filter rules. */
-export type SubscriberSettingFilterRulesList = ReadonlyArray<FilterRule>;
+export type SubscriberSettingFilterRulesList = Array<FilterRule>;
 export const SubscriberSettingFilterRulesList = /*@__PURE__*/ S.Array(
   FilterRule,
 ) as any as S.Schema<SubscriberSettingFilterRulesList>;
@@ -1275,7 +1267,7 @@ export const SubscriberSetting = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SubscriberSetting>;
 
 export type ResourceProviderManifestPropertiesNotificationSettingsSubscriberSettingsList =
-  ReadonlyArray<SubscriberSetting>;
+  Array<SubscriberSetting>;
 export const ResourceProviderManifestPropertiesNotificationSettingsSubscriberSettingsList =
   /*@__PURE__*/ S.Array(
     SubscriberSetting,
@@ -1298,15 +1290,14 @@ export const ResourceProviderManifestPropertiesNotificationSettings =
 
 /** Management groups global notification endpoints. */
 export type ProviderRegistrationPropertiesManagementGroupGlobalNotificationEndpointsList =
-  ReadonlyArray<ResourceProviderEndpoint>;
+  Array<ResourceProviderEndpoint>;
 export const ProviderRegistrationPropertiesManagementGroupGlobalNotificationEndpointsList =
   /*@__PURE__*/ S.Array(
     ResourceProviderEndpoint,
   ) as any as S.Schema<ProviderRegistrationPropertiesManagementGroupGlobalNotificationEndpointsList>;
 
 /** Optional features. */
-export type ProviderRegistrationPropertiesOptionalFeaturesList =
-  ReadonlyArray<string>;
+export type ProviderRegistrationPropertiesOptionalFeaturesList = Array<string>;
 export const ProviderRegistrationPropertiesOptionalFeaturesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1325,7 +1316,7 @@ export const BlockActionVerb = /*@__PURE__*/ S.String;
 /** Resource group lock option during move. */
 export interface ResourceProviderManifestPropertiesResourceGroupLockOptionDuringMove {
   /** The action verb that will be blocked when the resource group is locked during move. */
-  blockActionVerb?: BlockActionVerb;
+  blockActionVerb?: BlockActionVerb | (string & {});
 }
 export const ResourceProviderManifestPropertiesResourceGroupLockOptionDuringMove =
   /*@__PURE__*/ S.suspend(() =>
@@ -1344,7 +1335,7 @@ export const ServiceClientOptionsType = /*@__PURE__*/ S.String;
 
 /** Response options. */
 export interface ResourceProviderManifestPropertiesResponseOptions {
-  serviceClientOptionsType?: ServiceClientOptionsType;
+  serviceClientOptionsType?: ServiceClientOptionsType | (string & {});
 }
 export const ResourceProviderManifestPropertiesResponseOptions =
   /*@__PURE__*/ S.suspend(() =>
@@ -1357,7 +1348,7 @@ export const ResourceProviderManifestPropertiesResponseOptions =
 
 /** Legacy registrations. */
 export type ProviderRegistrationPropertiesLegacyRegistrationsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ProviderRegistrationPropertiesLegacyRegistrationsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1365,7 +1356,7 @@ export const ProviderRegistrationPropertiesLegacyRegistrationsList =
 
 /** The provider authorizations. */
 export type ProviderHubMetadataProviderAuthorizationsList =
-  ReadonlyArray<ResourceProviderAuthorization>;
+  Array<ResourceProviderAuthorization>;
 export const ProviderHubMetadataProviderAuthorizationsList =
   /*@__PURE__*/ S.Array(
     ResourceProviderAuthorization,
@@ -1388,7 +1379,7 @@ export const LightHouseAuthorization = /*@__PURE__*/ S.suspend(() =>
 
 /** The authorizations. */
 export type ThirdPartyProviderAuthorizationAuthorizationsList =
-  ReadonlyArray<LightHouseAuthorization>;
+  Array<LightHouseAuthorization>;
 export const ThirdPartyProviderAuthorizationAuthorizationsList =
   /*@__PURE__*/ S.Array(
     LightHouseAuthorization,
@@ -1471,9 +1462,9 @@ export const SubscriptionNotificationOperation = /*@__PURE__*/ S.String;
 
 export interface SubscriptionStateOverrideAction {
   /** The state. */
-  state: SubscriptionTransitioningState;
+  state: SubscriptionTransitioningState | (string & {});
   /** The action. */
-  action: SubscriptionNotificationOperation;
+  action: SubscriptionNotificationOperation | (string & {});
 }
 export const SubscriptionStateOverrideAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1486,7 +1477,7 @@ export const SubscriptionStateOverrideAction = /*@__PURE__*/ S.suspend(() =>
 
 /** The subscription state override actions. */
 export type SubscriptionLifecycleNotificationSpecificationsSubscriptionStateOverrideActionsList =
-  ReadonlyArray<SubscriptionStateOverrideAction>;
+  Array<SubscriptionStateOverrideAction>;
 export const SubscriptionLifecycleNotificationSpecificationsSubscriptionStateOverrideActionsList =
   /*@__PURE__*/ S.Array(
     SubscriptionStateOverrideAction,
@@ -1512,7 +1503,7 @@ export const SubscriptionLifecycleNotificationSpecifications =
 
 /** The allowed subscriptions. */
 export type PrivateResourceProviderConfigurationAllowedSubscriptionsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PrivateResourceProviderConfigurationAllowedSubscriptionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1547,7 +1538,7 @@ export interface ProviderRegistrationProperties {
   /** The provider version. */
   providerVersion?: string;
   /** The provider type. */
-  providerType?: ResourceProviderType;
+  providerType?: ResourceProviderType | (string & {});
   /** The required features. */
   requiredFeatures?: ProviderRegistrationPropertiesRequiredFeaturesList;
   /** The features rule. */
@@ -1559,7 +1550,7 @@ export interface ProviderRegistrationProperties {
   /** The capabilities. */
   capabilities?: ProviderRegistrationPropertiesCapabilitiesList;
   /** The cross tenant token validation. */
-  crossTenantTokenValidation?: CrossTenantTokenValidation;
+  crossTenantTokenValidation?: CrossTenantTokenValidation | (string & {});
   /** The metadata. */
   metadata?: unknown;
   /** The template deployment options. */
@@ -1577,7 +1568,7 @@ export interface ProviderRegistrationProperties {
   /** The dsts configuration. */
   dstsConfiguration?: DstsConfiguration;
   /** Notification options. */
-  notificationOptions?: NotificationOptions;
+  notificationOptions?: NotificationOptions | (string & {});
   /** resource hydration accounts */
   resourceHydrationAccounts?: ProviderRegistrationPropertiesResourceHydrationAccountsList;
   /** Notification settings. */
@@ -1599,7 +1590,7 @@ export interface ProviderRegistrationProperties {
   /** The provider hub metadata. */
   providerHubMetadata?: ProviderHubMetadata;
   /** The provisioning state. */
-  provisioningState?: ProvisioningState;
+  provisioningState?: ProvisioningState | (string & {});
   /** The subscription lifecycle notification specifications. */
   subscriptionLifecycleNotificationSpecifications?: SubscriptionLifecycleNotificationSpecifications;
   /** The private resource provider configuration. */
@@ -1730,19 +1721,19 @@ export type ResourceTypeEndpointKind = "Managed" | "Direct";
 export const ResourceTypeEndpointKind = /*@__PURE__*/ S.String;
 
 /** The api versions. */
-export type ResourceTypeEndpointApiVersionsList = ReadonlyArray<string>;
+export type ResourceTypeEndpointApiVersionsList = Array<string>;
 export const ResourceTypeEndpointApiVersionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ResourceTypeEndpointApiVersionsList>;
 
 /** The locations. */
-export type ResourceTypeEndpointLocationsList = ReadonlyArray<string>;
+export type ResourceTypeEndpointLocationsList = Array<string>;
 export const ResourceTypeEndpointLocationsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ResourceTypeEndpointLocationsList>;
 
 /** The required features. */
-export type ResourceTypeEndpointRequiredFeaturesList = ReadonlyArray<string>;
+export type ResourceTypeEndpointRequiredFeaturesList = Array<string>;
 export const ResourceTypeEndpointRequiredFeaturesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ResourceTypeEndpointRequiredFeaturesList>;
@@ -1769,8 +1760,9 @@ export type ExtensionCategory =
 export const ExtensionCategory = /*@__PURE__*/ S.String;
 
 /** The extension categories. */
-export type ResourceTypeExtensionExtensionCategoriesList =
-  ReadonlyArray<ExtensionCategory>;
+export type ResourceTypeExtensionExtensionCategoriesList = Array<
+  ExtensionCategory | (string & {})
+>;
 export const ResourceTypeExtensionExtensionCategoriesList =
   /*@__PURE__*/ S.Array(
     ExtensionCategory,
@@ -1797,8 +1789,7 @@ export const ResourceTypeExtension = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourceTypeExtension>;
 
 /** The extensions. */
-export type ResourceTypeEndpointExtensionsList =
-  ReadonlyArray<ResourceTypeExtension>;
+export type ResourceTypeEndpointExtensionsList = Array<ResourceTypeExtension>;
 export const ResourceTypeEndpointExtensionsList = /*@__PURE__*/ S.Array(
   ResourceTypeExtension,
 ) as any as S.Schema<ResourceTypeEndpointExtensionsList>;
@@ -1812,7 +1803,7 @@ export type EndpointTypeResourceType =
 export const EndpointTypeResourceType = /*@__PURE__*/ S.String;
 
 /** List of zones. */
-export type ResourceTypeEndpointZonesList = ReadonlyArray<string>;
+export type ResourceTypeEndpointZonesList = Array<string>;
 export const ResourceTypeEndpointZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ResourceTypeEndpointZonesList>;
@@ -1823,7 +1814,7 @@ export const DataBoundary = /*@__PURE__*/ S.String;
 
 export interface ResourceTypeEndpoint {
   /** Resource type endpoint kind. This Metadata is also used by portal/tooling/etc to render different UX experiences for resources of the same type. */
-  kind?: ResourceTypeEndpointKind;
+  kind?: ResourceTypeEndpointKind | (string & {});
   /** Whether the endpoint is enabled. */
   enabled?: boolean;
   /** The api versions. */
@@ -1839,7 +1830,7 @@ export interface ResourceTypeEndpoint {
   /** The timeout. */
   timeout?: string;
   /** The endpoint type. */
-  endpointType?: EndpointTypeResourceType;
+  endpointType?: EndpointTypeResourceType | (string & {});
   /** The token auth configuration. */
   tokenAuthConfiguration?: TokenAuthConfiguration;
   /** The sku link. */
@@ -1853,7 +1844,7 @@ export interface ResourceTypeEndpoint {
   /** The dsts configuration. */
   dstsConfiguration?: DstsConfiguration;
   /** The data boundary. */
-  dataBoundary?: DataBoundary;
+  dataBoundary?: DataBoundary | (string & {});
 }
 export const ResourceTypeEndpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1880,7 +1871,7 @@ export const ResourceTypeEndpoint = /*@__PURE__*/ S.suspend(() =>
 
 /** The extensions. */
 export type ResourceTypeRegistrationPropertiesEndpointsList =
-  ReadonlyArray<ResourceTypeEndpoint>;
+  Array<ResourceTypeEndpoint>;
 export const ResourceTypeRegistrationPropertiesEndpointsList =
   /*@__PURE__*/ S.Array(
     ResourceTypeEndpoint,
@@ -1893,13 +1884,17 @@ export type ExtensionOptionType =
 export const ExtensionOptionType = /*@__PURE__*/ S.String;
 
 /** The request. */
-export type ExtensionOptionsRequestList = ReadonlyArray<ExtensionOptionType>;
+export type ExtensionOptionsRequestList = Array<
+  ExtensionOptionType | (string & {})
+>;
 export const ExtensionOptionsRequestList = /*@__PURE__*/ S.Array(
   ExtensionOptionType,
 ) as any as S.Schema<ExtensionOptionsRequestList>;
 
 /** The response. */
-export type ExtensionOptionsResponseList = ReadonlyArray<ExtensionOptionType>;
+export type ExtensionOptionsResponseList = Array<
+  ExtensionOptionType | (string & {})
+>;
 export const ExtensionOptionsResponseList = /*@__PURE__*/ S.Array(
   ExtensionOptionType,
 ) as any as S.Schema<ExtensionOptionsResponseList>;
@@ -1936,7 +1931,7 @@ export type MarketplaceType = "NotSpecified" | "AddOn" | "Bypass" | "Store";
 export const MarketplaceType = /*@__PURE__*/ S.String;
 
 /** The api versions. */
-export type SwaggerSpecificationApiVersionsList = ReadonlyArray<string>;
+export type SwaggerSpecificationApiVersionsList = Array<string>;
 export const SwaggerSpecificationApiVersionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SwaggerSpecificationApiVersionsList>;
@@ -1958,7 +1953,7 @@ export const SwaggerSpecification = /*@__PURE__*/ S.suspend(() =>
 
 /** The swagger specifications. */
 export type ResourceTypeRegistrationPropertiesSwaggerSpecificationsList =
-  ReadonlyArray<SwaggerSpecification>;
+  Array<SwaggerSpecification>;
 export const ResourceTypeRegistrationPropertiesSwaggerSpecificationsList =
   /*@__PURE__*/ S.Array(
     SwaggerSpecification,
@@ -1966,7 +1961,7 @@ export const ResourceTypeRegistrationPropertiesSwaggerSpecificationsList =
 
 /** The allowed unauthorized actions. */
 export type ResourceTypeRegistrationPropertiesAllowedUnauthorizedActionsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ResourceTypeRegistrationPropertiesAllowedUnauthorizedActionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1984,7 +1979,7 @@ export interface AllowedUnauthorizedActionsExtension {
   /** The action. */
   action?: string;
   /** The intent. */
-  intent?: Intent;
+  intent?: Intent | (string & {});
 }
 export const AllowedUnauthorizedActionsExtension = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1997,7 +1992,7 @@ export const AllowedUnauthorizedActionsExtension = /*@__PURE__*/ S.suspend(() =>
 
 /** The allowed unauthorized actions extensions. */
 export type ResourceTypeRegistrationPropertiesAllowedUnauthorizedActionsExtensionsList =
-  ReadonlyArray<AllowedUnauthorizedActionsExtension>;
+  Array<AllowedUnauthorizedActionsExtension>;
 export const ResourceTypeRegistrationPropertiesAllowedUnauthorizedActionsExtensionsList =
   /*@__PURE__*/ S.Array(
     AllowedUnauthorizedActionsExtension,
@@ -2020,7 +2015,7 @@ export const AuthorizationActionMapping = /*@__PURE__*/ S.suspend(() =>
 
 /** The authorization action mappings */
 export type ResourceTypeRegistrationPropertiesAuthorizationActionMappingsList =
-  ReadonlyArray<AuthorizationActionMapping>;
+  Array<AuthorizationActionMapping>;
 export const ResourceTypeRegistrationPropertiesAuthorizationActionMappingsList =
   /*@__PURE__*/ S.Array(
     AuthorizationActionMapping,
@@ -2052,7 +2047,7 @@ export const LinkedAccessCheck = /*@__PURE__*/ S.suspend(() =>
 
 /** The linked access checks. */
 export type ResourceTypeRegistrationPropertiesLinkedAccessChecksList =
-  ReadonlyArray<LinkedAccessCheck>;
+  Array<LinkedAccessCheck>;
 export const ResourceTypeRegistrationPropertiesLinkedAccessChecksList =
   /*@__PURE__*/ S.Array(
     LinkedAccessCheck,
@@ -2067,16 +2062,14 @@ export type LoggingDetails = "None" | "Body";
 export const LoggingDetails = /*@__PURE__*/ S.String;
 
 /** The hidden paths on request. */
-export type LoggingHiddenPropertyPathHiddenPathsOnRequestList =
-  ReadonlyArray<string>;
+export type LoggingHiddenPropertyPathHiddenPathsOnRequestList = Array<string>;
 export const LoggingHiddenPropertyPathHiddenPathsOnRequestList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<LoggingHiddenPropertyPathHiddenPathsOnRequestList>;
 
 /** The hidden paths on response. */
-export type LoggingHiddenPropertyPathHiddenPathsOnResponseList =
-  ReadonlyArray<string>;
+export type LoggingHiddenPropertyPathHiddenPathsOnResponseList = Array<string>;
 export const LoggingHiddenPropertyPathHiddenPathsOnResponseList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2105,9 +2098,9 @@ export interface LoggingRule {
   /** The action. */
   action: string;
   /** The direction. */
-  direction: LoggingDirections;
+  direction: LoggingDirections | (string & {});
   /** The detail level. */
-  detailLevel: LoggingDetails;
+  detailLevel: LoggingDetails | (string & {});
   /** The hidden property paths. */
   hiddenPropertyPaths?: LoggingHiddenPropertyPath;
 }
@@ -2122,7 +2115,7 @@ export const LoggingRule = /*@__PURE__*/ S.suspend(() =>
 
 /** The logging rules. */
 export type ResourceTypeRegistrationPropertiesLoggingRulesList =
-  ReadonlyArray<LoggingRule>;
+  Array<LoggingRule>;
 export const ResourceTypeRegistrationPropertiesLoggingRulesList =
   /*@__PURE__*/ S.Array(
     LoggingRule,
@@ -2137,7 +2130,7 @@ export const ThrottlingMetricType = /*@__PURE__*/ S.String;
 
 export interface ThrottlingMetric {
   /** The throttling metric type */
-  type: ThrottlingMetricType;
+  type: ThrottlingMetricType | (string & {});
   /** The limit. */
   limit: number;
   /** The interval. */
@@ -2154,19 +2147,19 @@ export const ThrottlingMetric = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ThrottlingMetric>;
 
 /** The metrics. */
-export type ThrottlingRuleMetricsList = ReadonlyArray<ThrottlingMetric>;
+export type ThrottlingRuleMetricsList = Array<ThrottlingMetric>;
 export const ThrottlingRuleMetricsList = /*@__PURE__*/ S.Array(
   ThrottlingMetric,
 ) as any as S.Schema<ThrottlingRuleMetricsList>;
 
 /** The required features. */
-export type ThrottlingRuleRequiredFeaturesList = ReadonlyArray<string>;
+export type ThrottlingRuleRequiredFeaturesList = Array<string>;
 export const ThrottlingRuleRequiredFeaturesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ThrottlingRuleRequiredFeaturesList>;
 
 /** The application id. */
-export type ThrottlingRuleApplicationIdList = ReadonlyArray<string>;
+export type ThrottlingRuleApplicationIdList = Array<string>;
 export const ThrottlingRuleApplicationIdList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ThrottlingRuleApplicationIdList>;
@@ -2192,7 +2185,7 @@ export const ThrottlingRule = /*@__PURE__*/ S.suspend(() =>
 
 /** The throttling rules. */
 export type ResourceTypeRegistrationPropertiesThrottlingRulesList =
-  ReadonlyArray<ThrottlingRule>;
+  Array<ThrottlingRule>;
 export const ResourceTypeRegistrationPropertiesThrottlingRulesList =
   /*@__PURE__*/ S.Array(
     ThrottlingRule,
@@ -2200,7 +2193,7 @@ export const ResourceTypeRegistrationPropertiesThrottlingRulesList =
 
 /** The required features. */
 export type ResourceTypeRegistrationPropertiesRequiredFeaturesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ResourceTypeRegistrationPropertiesRequiredFeaturesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2216,16 +2209,14 @@ export type IdentityManagementTypes =
 export const IdentityManagementTypes = /*@__PURE__*/ S.String;
 
 /** The application ids. */
-export type IdentityManagementPropertiesApplicationIdsList =
-  ReadonlyArray<string>;
+export type IdentityManagementPropertiesApplicationIdsList = Array<string>;
 export const IdentityManagementPropertiesApplicationIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<IdentityManagementPropertiesApplicationIdsList>;
 
 /** The delegation app ids. */
-export type IdentityManagementPropertiesDelegationAppIdsList =
-  ReadonlyArray<string>;
+export type IdentityManagementPropertiesDelegationAppIdsList = Array<string>;
 export const IdentityManagementPropertiesDelegationAppIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2233,7 +2224,7 @@ export const IdentityManagementPropertiesDelegationAppIdsList =
 
 export interface IdentityManagementProperties {
   /** The type. */
-  type?: IdentityManagementTypes;
+  type?: IdentityManagementTypes | (string & {});
   /** The application id. */
   applicationId?: string;
   /** The application ids. */
@@ -2256,7 +2247,7 @@ export const IdentityManagementProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** The resource types with custom validation. */
 export type CheckNameAvailabilitySpecificationsResourceTypesWithCustomValidationList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CheckNameAvailabilitySpecificationsResourceTypesWithCustomValidationList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2281,7 +2272,7 @@ export const CheckNameAvailabilitySpecifications = /*@__PURE__*/ S.suspend(() =>
 
 /** The disallowed action verbs. */
 export type ResourceTypeRegistrationPropertiesDisallowedActionVerbsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ResourceTypeRegistrationPropertiesDisallowedActionVerbsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2289,7 +2280,7 @@ export const ResourceTypeRegistrationPropertiesDisallowedActionVerbsList =
 
 /** The service tree infos. */
 export type ResourceTypeRegistrationPropertiesServiceTreeInfosList =
-  ReadonlyArray<ServiceTreeInfo>;
+  Array<ServiceTreeInfo>;
 export const ResourceTypeRegistrationPropertiesServiceTreeInfosList =
   /*@__PURE__*/ S.Array(
     ServiceTreeInfo,
@@ -2306,14 +2297,14 @@ export type SubscriptionState =
 export const SubscriptionState = /*@__PURE__*/ S.String;
 
 /** The allowed actions. */
-export type SubscriptionStateRuleAllowedActionsList = ReadonlyArray<string>;
+export type SubscriptionStateRuleAllowedActionsList = Array<string>;
 export const SubscriptionStateRuleAllowedActionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SubscriptionStateRuleAllowedActionsList>;
 
 export interface SubscriptionStateRule {
   /** The subscription state. */
-  state?: SubscriptionState;
+  state?: SubscriptionState | (string & {});
   /** The allowed actions. */
   allowedActions?: SubscriptionStateRuleAllowedActionsList;
 }
@@ -2328,7 +2319,7 @@ export const SubscriptionStateRule = /*@__PURE__*/ S.suspend(() =>
 
 /** The subscription state rules. */
 export type ResourceTypeRegistrationPropertiesSubscriptionStateRulesList =
-  ReadonlyArray<SubscriptionStateRule>;
+  Array<SubscriptionStateRule>;
 export const ResourceTypeRegistrationPropertiesSubscriptionStateRulesList =
   /*@__PURE__*/ S.Array(
     SubscriptionStateRule,
@@ -2347,8 +2338,8 @@ export const ResourceTypeExtendedLocationPolicy = /*@__PURE__*/ S.String;
 
 export interface ExtendedLocationOptions {
   /** The type. */
-  type?: ExtendedLocationType;
-  supportedPolicy?: ResourceTypeExtendedLocationPolicy;
+  type?: ExtendedLocationType | (string & {});
+  supportedPolicy?: ResourceTypeExtendedLocationPolicy | (string & {});
 }
 export const ExtendedLocationOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2361,7 +2352,7 @@ export const ExtendedLocationOptions = /*@__PURE__*/ S.suspend(() =>
 
 /** The extended locations. */
 export type ResourceTypeRegistrationPropertiesExtendedLocationsList =
-  ReadonlyArray<ExtendedLocationOptions>;
+  Array<ExtendedLocationOptions>;
 export const ResourceTypeRegistrationPropertiesExtendedLocationsList =
   /*@__PURE__*/ S.Array(
     ExtendedLocationOptions,
@@ -2398,7 +2389,7 @@ export const Policy = /*@__PURE__*/ S.String;
 
 export interface ResourceConcurrencyControlOption {
   /** The policy. */
-  policy?: Policy;
+  policy?: Policy | (string & {});
 }
 export const ResourceConcurrencyControlOption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2488,7 +2479,7 @@ export const ResourceValidation = /*@__PURE__*/ S.String;
 
 /** The disallowed end user operations. */
 export type ResourceTypeRegistrationPropertiesDisallowedEndUserOperationsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ResourceTypeRegistrationPropertiesDisallowedEndUserOperationsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2509,7 +2500,7 @@ export const QuotaPolicy = /*@__PURE__*/ S.String;
 
 export interface LocationQuotaRule {
   /** The policy. */
-  policy?: QuotaPolicy;
+  policy?: QuotaPolicy | (string & {});
   /** The quota id. */
   quotaId?: string;
   /** The location. */
@@ -2526,20 +2517,20 @@ export const LocationQuotaRule = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LocationQuotaRule>;
 
 /** The location rules. */
-export type QuotaRuleLocationRulesList = ReadonlyArray<LocationQuotaRule>;
+export type QuotaRuleLocationRulesList = Array<LocationQuotaRule>;
 export const QuotaRuleLocationRulesList = /*@__PURE__*/ S.Array(
   LocationQuotaRule,
 ) as any as S.Schema<QuotaRuleLocationRulesList>;
 
 /** The required features. */
-export type QuotaRuleRequiredFeaturesList = ReadonlyArray<string>;
+export type QuotaRuleRequiredFeaturesList = Array<string>;
 export const QuotaRuleRequiredFeaturesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<QuotaRuleRequiredFeaturesList>;
 
 export interface QuotaRule {
   /** The quota policy. */
-  quotaPolicy?: QuotaPolicy;
+  quotaPolicy?: QuotaPolicy | (string & {});
   /** The location rules. */
   locationRules?: QuotaRuleLocationRulesList;
   /** The required features. */
@@ -2555,35 +2546,34 @@ export const QuotaRule = /*@__PURE__*/ S.suspend(() =>
 
 /** The notifications. */
 export type ResourceTypeRegistrationPropertiesNotificationsList =
-  ReadonlyArray<Notification>;
+  Array<Notification>;
 export const ResourceTypeRegistrationPropertiesNotificationsList =
   /*@__PURE__*/ S.Array(
     Notification,
   ) as any as S.Schema<ResourceTypeRegistrationPropertiesNotificationsList>;
 
 /** The actions. */
-export type LinkedNotificationRuleActionsList = ReadonlyArray<string>;
+export type LinkedNotificationRuleActionsList = Array<string>;
 export const LinkedNotificationRuleActionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LinkedNotificationRuleActionsList>;
 
 /** The actions on failed operation. */
-export type LinkedNotificationRuleActionsOnFailedOperationList =
-  ReadonlyArray<string>;
+export type LinkedNotificationRuleActionsOnFailedOperationList = Array<string>;
 export const LinkedNotificationRuleActionsOnFailedOperationList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<LinkedNotificationRuleActionsOnFailedOperationList>;
 
 /** The fast path actions. */
-export type LinkedNotificationRuleFastPathActionsList = ReadonlyArray<string>;
+export type LinkedNotificationRuleFastPathActionsList = Array<string>;
 export const LinkedNotificationRuleFastPathActionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LinkedNotificationRuleFastPathActionsList>;
 
 /** The fast path action on failed operation. */
 export type LinkedNotificationRuleFastPathActionsOnFailedOperationList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const LinkedNotificationRuleFastPathActionsOnFailedOperationList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2619,7 +2609,7 @@ export const LinkedNotificationRule = /*@__PURE__*/ S.suspend(() =>
 
 /** The linked notification rules. */
 export type ResourceTypeRegistrationPropertiesLinkedNotificationRulesList =
-  ReadonlyArray<LinkedNotificationRule>;
+  Array<LinkedNotificationRule>;
 export const ResourceTypeRegistrationPropertiesLinkedNotificationRulesList =
   /*@__PURE__*/ S.Array(
     LinkedNotificationRule,
@@ -2646,11 +2636,13 @@ export const TemplateDeploymentPreflightNotifications = /*@__PURE__*/ S.String;
 
 export interface TemplateDeploymentPolicy {
   /** The capabilities. */
-  capabilities: TemplateDeploymentCapabilities;
+  capabilities: TemplateDeploymentCapabilities | (string & {});
   /** The preflight options. */
-  preflightOptions: TemplateDeploymentPreflightOptions;
+  preflightOptions: TemplateDeploymentPreflightOptions | (string & {});
   /** The preflight notifications. */
-  preflightNotifications?: TemplateDeploymentPreflightNotifications;
+  preflightNotifications?:
+    | TemplateDeploymentPreflightNotifications
+    | (string & {});
 }
 export const TemplateDeploymentPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2680,7 +2672,7 @@ export const AvailabilityZonePolicy = /*@__PURE__*/ S.String;
 
 /** The availability zone rule. */
 export interface ResourceTypeRegistrationPropertiesAvailabilityZoneRule {
-  availabilityZonePolicy?: AvailabilityZonePolicy;
+  availabilityZonePolicy?: AvailabilityZonePolicy | (string & {});
 }
 export const ResourceTypeRegistrationPropertiesAvailabilityZoneRule =
   /*@__PURE__*/ S.suspend(() =>
@@ -2707,7 +2699,7 @@ export const AsyncTimeoutRule = /*@__PURE__*/ S.suspend(() =>
 
 /** Async timeout rules */
 export type ResourceTypeRegistrationPropertiesAsyncTimeoutRulesList =
-  ReadonlyArray<AsyncTimeoutRule>;
+  Array<AsyncTimeoutRule>;
 export const ResourceTypeRegistrationPropertiesAsyncTimeoutRulesList =
   /*@__PURE__*/ S.Array(
     AsyncTimeoutRule,
@@ -2715,7 +2707,7 @@ export const ResourceTypeRegistrationPropertiesAsyncTimeoutRulesList =
 
 /** Common API versions for the resource type. */
 export type ResourceTypeRegistrationPropertiesCommonApiVersionsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ResourceTypeRegistrationPropertiesCommonApiVersionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2736,7 +2728,7 @@ export const ApiProfile = /*@__PURE__*/ S.suspend(() =>
 
 /** The api profiles. */
 export type ResourceTypeRegistrationPropertiesApiProfilesList =
-  ReadonlyArray<ApiProfile>;
+  Array<ApiProfile>;
 export const ResourceTypeRegistrationPropertiesApiProfilesList =
   /*@__PURE__*/ S.Array(
     ApiProfile,
@@ -2754,16 +2746,16 @@ export type LinkedAction = "NotSpecified" | "Blocked" | "Validate" | "Enabled";
 export const LinkedAction = /*@__PURE__*/ S.String;
 
 /** Depends on types. */
-export type LinkedOperationRuleDependsOnTypesList = ReadonlyArray<string>;
+export type LinkedOperationRuleDependsOnTypesList = Array<string>;
 export const LinkedOperationRuleDependsOnTypesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LinkedOperationRuleDependsOnTypesList>;
 
 export interface LinkedOperationRule {
   /** The linked operation. */
-  linkedOperation: LinkedOperation;
+  linkedOperation: LinkedOperation | (string & {});
   /** The linked action. */
-  linkedAction: LinkedAction;
+  linkedAction: LinkedAction | (string & {});
   /** Depends on types. */
   dependsOnTypes?: LinkedOperationRuleDependsOnTypesList;
 }
@@ -2779,15 +2771,14 @@ export const LinkedOperationRule = /*@__PURE__*/ S.suspend(() =>
 
 /** The linked operation rules. */
 export type ResourceTypeRegistrationPropertiesLinkedOperationRulesList =
-  ReadonlyArray<LinkedOperationRule>;
+  Array<LinkedOperationRule>;
 export const ResourceTypeRegistrationPropertiesLinkedOperationRulesList =
   /*@__PURE__*/ S.Array(
     LinkedOperationRule,
   ) as any as S.Schema<ResourceTypeRegistrationPropertiesLinkedOperationRulesList>;
 
 /** The legacy names. */
-export type ResourceTypeRegistrationPropertiesLegacyNamesList =
-  ReadonlyArray<string>;
+export type ResourceTypeRegistrationPropertiesLegacyNamesList = Array<string>;
 export const ResourceTypeRegistrationPropertiesLegacyNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2795,7 +2786,7 @@ export const ResourceTypeRegistrationPropertiesLegacyNamesList =
 
 /** Allowed template deployment reference actions. */
 export type ResourceTypeRegistrationPropertiesAllowedTemplateDeploymentReferenceActionsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ResourceTypeRegistrationPropertiesAllowedTemplateDeploymentReferenceActionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2815,15 +2806,16 @@ export type LegacyOperation =
 export const LegacyOperation = /*@__PURE__*/ S.String;
 
 export type ResourceTypeRegistrationPropertiesLegacyPolicyDisallowedLegacyOperationsList =
-  ReadonlyArray<LegacyOperation>;
+  Array<LegacyOperation | (string & {})>;
 export const ResourceTypeRegistrationPropertiesLegacyPolicyDisallowedLegacyOperationsList =
   /*@__PURE__*/ S.Array(
     LegacyOperation,
   ) as any as S.Schema<ResourceTypeRegistrationPropertiesLegacyPolicyDisallowedLegacyOperationsList>;
 
 /** The disallowed legacy operations. */
-export type LegacyDisallowedConditionDisallowedLegacyOperationsList =
-  ReadonlyArray<LegacyOperation>;
+export type LegacyDisallowedConditionDisallowedLegacyOperationsList = Array<
+  LegacyOperation | (string & {})
+>;
 export const LegacyDisallowedConditionDisallowedLegacyOperationsList =
   /*@__PURE__*/ S.Array(
     LegacyOperation,
@@ -2847,7 +2839,7 @@ export const LegacyDisallowedCondition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LegacyDisallowedCondition>;
 
 export type ResourceTypeRegistrationPropertiesLegacyPolicyDisallowedConditionsList =
-  ReadonlyArray<LegacyDisallowedCondition>;
+  Array<LegacyDisallowedCondition>;
 export const ResourceTypeRegistrationPropertiesLegacyPolicyDisallowedConditionsList =
   /*@__PURE__*/ S.Array(
     LegacyDisallowedCondition,
@@ -2879,7 +2871,7 @@ export const CapacityPolicy = /*@__PURE__*/ S.String;
 /** Capacity rule. */
 export interface ResourceTypeRegistrationPropertiesCapacityRule {
   /** Capacity policy. */
-  capacityPolicy?: CapacityPolicy;
+  capacityPolicy?: CapacityPolicy | (string & {});
   /** Sku alias */
   skuAlias?: string;
 }
@@ -2924,7 +2916,7 @@ export const AllowedResourceName = /*@__PURE__*/ S.suspend(() =>
 
 /** The allowed resource names. */
 export type ResourceTypeRegistrationPropertiesAllowedResourceNamesList =
-  ReadonlyArray<AllowedResourceName>;
+  Array<AllowedResourceName>;
 export const ResourceTypeRegistrationPropertiesAllowedResourceNamesList =
   /*@__PURE__*/ S.Array(
     AllowedResourceName,
@@ -2954,7 +2946,7 @@ export const FilterOption = /*@__PURE__*/ S.String;
 /** Resource query management options. */
 export interface ResourceTypeRegistrationPropertiesResourceQueryManagement {
   /** Filter option. */
-  filterOption?: FilterOption;
+  filterOption?: FilterOption | (string & {});
 }
 export const ResourceTypeRegistrationPropertiesResourceQueryManagement =
   /*@__PURE__*/ S.suspend(() =>
@@ -2972,7 +2964,7 @@ export const SupportedOperations = /*@__PURE__*/ S.String;
 /** Batch provisioning support. */
 export interface ResourceTypeRegistrationPropertiesResourceManagementOptionsBatchProvisioningSupport {
   /** Supported operations. */
-  supportedOperations?: SupportedOperations;
+  supportedOperations?: SupportedOperations | (string & {});
 }
 export const ResourceTypeRegistrationPropertiesResourceManagementOptionsBatchProvisioningSupport =
   /*@__PURE__*/ S.suspend(() =>
@@ -2985,7 +2977,7 @@ export const ResourceTypeRegistrationPropertiesResourceManagementOptionsBatchPro
   }) as any as S.Schema<ResourceTypeRegistrationPropertiesResourceManagementOptionsBatchProvisioningSupport>;
 
 /** Required features. */
-export type DeleteDependencyRequiredFeaturesList = ReadonlyArray<string>;
+export type DeleteDependencyRequiredFeaturesList = Array<string>;
 export const DeleteDependencyRequiredFeaturesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DeleteDependencyRequiredFeaturesList>;
@@ -3010,7 +3002,7 @@ export const DeleteDependency = /*@__PURE__*/ S.suspend(() =>
 
 /** Delete dependencies. */
 export type ResourceTypeRegistrationPropertiesResourceManagementOptionsDeleteDependenciesList =
-  ReadonlyArray<DeleteDependency>;
+  Array<DeleteDependency>;
 export const ResourceTypeRegistrationPropertiesResourceManagementOptionsDeleteDependenciesList =
   /*@__PURE__*/ S.Array(
     DeleteDependency,
@@ -3064,7 +3056,7 @@ export const CommonApiVersionsMergeMode = /*@__PURE__*/ S.String;
 /** Resource type common attribute management. */
 export interface ResourceTypeRegistrationPropertiesResourceTypeCommonAttributeManagement {
   /** Common api versions merge mode. */
-  commonApiVersionsMergeMode?: CommonApiVersionsMergeMode;
+  commonApiVersionsMergeMode?: CommonApiVersionsMergeMode | (string & {});
 }
 export const ResourceTypeRegistrationPropertiesResourceTypeCommonAttributeManagement =
   /*@__PURE__*/ S.suspend(() =>
@@ -3100,19 +3092,19 @@ export const ResourceSubType = /*@__PURE__*/ S.String;
 
 export interface ResourceTypeRegistrationProperties {
   /** The resource routing type. */
-  routingType?: RoutingType;
+  routingType?: RoutingType | (string & {});
   /** The additional options. */
-  additionalOptions?: AdditionalOptionsResourceTypeRegistration;
+  additionalOptions?: AdditionalOptionsResourceTypeRegistration | (string & {});
   /** The cross tenant token validation. */
-  crossTenantTokenValidation?: CrossTenantTokenValidation;
+  crossTenantTokenValidation?: CrossTenantTokenValidation | (string & {});
   /** The regionality. */
-  regionality?: Regionality;
+  regionality?: Regionality | (string & {});
   /** The extensions. */
   endpoints?: ResourceTypeRegistrationPropertiesEndpointsList;
   /** The extension options. */
   extensionOptions?: ResourceTypeExtensionOptions;
   /** The marketplace type. */
-  marketplaceType?: MarketplaceType;
+  marketplaceType?: MarketplaceType | (string & {});
   /** The swagger specifications. */
   swaggerSpecifications?: ResourceTypeRegistrationPropertiesSwaggerSpecificationsList;
   /** The allowed unauthorized actions. */
@@ -3136,7 +3128,7 @@ export interface ResourceTypeRegistrationProperties {
   /** Whether async operation is enabled. */
   enableAsyncOperation?: boolean;
   /** The provisioning state. */
-  provisioningState?: ProvisioningState;
+  provisioningState?: ProvisioningState | (string & {});
   /** Whether third party S2S is enabled. */
   enableThirdPartyS2S?: boolean;
   /** The subscription lifecycle notification specifications. */
@@ -3162,7 +3154,7 @@ export interface ResourceTypeRegistrationProperties {
   /** The resource move policy. */
   resourceMovePolicy?: ResourceMovePolicy;
   /** The resource deletion policy. */
-  resourceDeletionPolicy?: ResourceDeletionPolicy;
+  resourceDeletionPolicy?: ResourceDeletionPolicy | (string & {});
   /** The resource concurrency control options. */
   resourceConcurrencyControlOptions?: ResourceTypeRegistrationPropertiesResourceConcurrencyControlOptionsMap;
   /** The resource graph configuration. */
@@ -3174,9 +3166,9 @@ export interface ResourceTypeRegistrationProperties {
   /** The on behalf of tokens. */
   onBehalfOfTokens?: ResourceTypeOnBehalfOfToken;
   /** The category. */
-  category?: ResourceTypeCategory;
+  category?: ResourceTypeCategory | (string & {});
   /** The resource validation. */
-  resourceValidation?: ResourceValidation;
+  resourceValidation?: ResourceValidation | (string & {});
   /** The disallowed end user operations. */
   disallowedEndUserOperations?: ResourceTypeRegistrationPropertiesDisallowedEndUserOperationsList;
   /** The metadata. */
@@ -3198,7 +3190,7 @@ export interface ResourceTypeRegistrationProperties {
   /** The allow empty role assignments. */
   allowEmptyRoleAssignments?: boolean;
   /** The policy execution type. */
-  policyExecutionType?: PolicyExecutionType;
+  policyExecutionType?: PolicyExecutionType | (string & {});
   /** The availability zone rule. */
   availabilityZoneRule?: ResourceTypeRegistrationPropertiesAvailabilityZoneRule;
   /** The dsts configuration. */
@@ -3244,9 +3236,9 @@ export interface ResourceTypeRegistrationProperties {
   /** Routing rule. */
   routingRule?: ResourceTypeRegistrationPropertiesRoutingRule;
   /** The frontdoor request mode. */
-  frontdoorRequestMode?: FrontdoorRequestMode;
+  frontdoorRequestMode?: FrontdoorRequestMode | (string & {});
   /** The resource sub type. */
-  resourceSubType?: ResourceSubType;
+  resourceSubType?: ResourceSubType | (string & {});
   /** The async operation resource type name. */
   asyncOperationResourceTypeName?: string;
 }
@@ -3411,7 +3403,7 @@ export const ResourceTypeRegistrationInput = /*@__PURE__*/ S.suspend(() =>
 
 /** The resource type registrations. */
 export type CustomRolloutSpecificationInputResourceTypeRegistrationsList =
-  ReadonlyArray<ResourceTypeRegistrationInput>;
+  Array<ResourceTypeRegistrationInput>;
 export const CustomRolloutSpecificationInputResourceTypeRegistrationsList =
   /*@__PURE__*/ S.Array(
     ResourceTypeRegistrationInput,
@@ -3452,16 +3444,14 @@ export const CustomRolloutSpecificationInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CustomRolloutSpecificationInput>;
 
 /** The completed regions. */
-export type CustomRolloutStatusInputCompletedRegionsList =
-  ReadonlyArray<string>;
+export type CustomRolloutStatusInputCompletedRegionsList = Array<string>;
 export const CustomRolloutStatusInputCompletedRegionsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<CustomRolloutStatusInputCompletedRegionsList>;
 
 /** The error details. */
-export type ExtendedErrorInfoInputDetailsList =
-  ReadonlyArray<ExtendedErrorInfoInput>;
+export type ExtendedErrorInfoInputDetailsList = Array<ExtendedErrorInfoInput>;
 export const ExtendedErrorInfoInputDetailsList = /*@__PURE__*/ S.Array(
   S.suspend(() => ExtendedErrorInfoInput),
 ) as any as S.Schema<ExtendedErrorInfoInputDetailsList>;
@@ -3481,7 +3471,7 @@ export const TypedErrorInfoInput = /*@__PURE__*/ S.suspend(() =>
 
 /** The additional error information. */
 export type ExtendedErrorInfoInputAdditionalInfoList =
-  ReadonlyArray<TypedErrorInfoInput>;
+  Array<TypedErrorInfoInput>;
 export const ExtendedErrorInfoInputAdditionalInfoList = /*@__PURE__*/ S.Array(
   TypedErrorInfoInput,
 ) as any as S.Schema<ExtendedErrorInfoInputAdditionalInfoList>;
@@ -3585,7 +3575,7 @@ export const CustomRolloutsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CustomRolloutsCreateOrUpdateRequest>;
 
 /** The list of ARM regions scoped for the release. */
-export type CustomRolloutSpecificationReleaseScopesList = ReadonlyArray<string>;
+export type CustomRolloutSpecificationReleaseScopesList = Array<string>;
 export const CustomRolloutSpecificationReleaseScopesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3655,7 +3645,7 @@ export const ResourceTypeRegistration = /*@__PURE__*/ S.suspend(() =>
 
 /** The resource type registrations. */
 export type CustomRolloutSpecificationResourceTypeRegistrationsList =
-  ReadonlyArray<ResourceTypeRegistration>;
+  Array<ResourceTypeRegistration>;
 export const CustomRolloutSpecificationResourceTypeRegistrationsList =
   /*@__PURE__*/ S.Array(
     ResourceTypeRegistration,
@@ -3696,13 +3686,13 @@ export const CustomRolloutSpecification = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CustomRolloutSpecification>;
 
 /** The completed regions. */
-export type CustomRolloutStatusCompletedRegionsList = ReadonlyArray<string>;
+export type CustomRolloutStatusCompletedRegionsList = Array<string>;
 export const CustomRolloutStatusCompletedRegionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CustomRolloutStatusCompletedRegionsList>;
 
 /** The error details. */
-export type ExtendedErrorInfoDetailsList = ReadonlyArray<ExtendedErrorInfo>;
+export type ExtendedErrorInfoDetailsList = Array<ExtendedErrorInfo>;
 export const ExtendedErrorInfoDetailsList = /*@__PURE__*/ S.Array(
   S.suspend(() => ExtendedErrorInfo),
 ) as any as S.Schema<ExtendedErrorInfoDetailsList>;
@@ -3722,7 +3712,7 @@ export const TypedErrorInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TypedErrorInfo" }) as any as S.Schema<TypedErrorInfo>;
 
 /** The additional error information. */
-export type ExtendedErrorInfoAdditionalInfoList = ReadonlyArray<TypedErrorInfo>;
+export type ExtendedErrorInfoAdditionalInfoList = Array<TypedErrorInfo>;
 export const ExtendedErrorInfoAdditionalInfoList = /*@__PURE__*/ S.Array(
   TypedErrorInfo,
 ) as any as S.Schema<ExtendedErrorInfoAdditionalInfoList>;
@@ -3954,7 +3944,7 @@ export const CustomRollout = /*@__PURE__*/ S.suspend(() =>
 
 /** The CustomRollout items on this page */
 export type CustomRolloutArrayResponseWithContinuationValueList =
-  ReadonlyArray<CustomRollout>;
+  Array<CustomRollout>;
 export const CustomRolloutArrayResponseWithContinuationValueList =
   /*@__PURE__*/ S.Array(
     CustomRollout,
@@ -4023,15 +4013,14 @@ export const ExpeditedRolloutDefinition = /*@__PURE__*/ S.suspend(() =>
 
 /** The skip regions. */
 export type CanaryTrafficRegionRolloutConfigurationSkipRegionsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CanaryTrafficRegionRolloutConfigurationSkipRegionsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<CanaryTrafficRegionRolloutConfigurationSkipRegionsList>;
 
 /** The regions. */
-export type CanaryTrafficRegionRolloutConfigurationRegionsList =
-  ReadonlyArray<string>;
+export type CanaryTrafficRegionRolloutConfigurationRegionsList = Array<string>;
 export const CanaryTrafficRegionRolloutConfigurationRegionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4055,8 +4044,7 @@ export const CanaryTrafficRegionRolloutConfiguration = /*@__PURE__*/ S.suspend(
   identifier: "CanaryTrafficRegionRolloutConfiguration",
 }) as any as S.Schema<CanaryTrafficRegionRolloutConfiguration>;
 
-export type TrafficRegionRolloutConfigurationRegionsList =
-  ReadonlyArray<string>;
+export type TrafficRegionRolloutConfigurationRegionsList = Array<string>;
 export const TrafficRegionRolloutConfigurationRegionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4078,7 +4066,7 @@ export const TrafficRegionRolloutConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** The resource type registrations. */
 export type DefaultRolloutSpecificationInputResourceTypeRegistrationsList =
-  ReadonlyArray<ResourceTypeRegistrationInput>;
+  Array<ResourceTypeRegistrationInput>;
 export const DefaultRolloutSpecificationInputResourceTypeRegistrationsList =
   /*@__PURE__*/ S.Array(
     ResourceTypeRegistrationInput,
@@ -4145,8 +4133,7 @@ export const DefaultRolloutSpecificationInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DefaultRolloutSpecificationInput>;
 
 /** The completed regions. */
-export type DefaultRolloutStatusInputCompletedRegionsList =
-  ReadonlyArray<string>;
+export type DefaultRolloutStatusInputCompletedRegionsList = Array<string>;
 export const DefaultRolloutStatusInputCompletedRegionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4261,7 +4248,7 @@ export const DefaultRolloutsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
 
 /** The resource type registrations. */
 export type DefaultRolloutSpecificationResourceTypeRegistrationsList =
-  ReadonlyArray<ResourceTypeRegistration>;
+  Array<ResourceTypeRegistration>;
 export const DefaultRolloutSpecificationResourceTypeRegistrationsList =
   /*@__PURE__*/ S.Array(
     ResourceTypeRegistration,
@@ -4311,7 +4298,7 @@ export const DefaultRolloutSpecification = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DefaultRolloutSpecification>;
 
 /** The completed regions. */
-export type DefaultRolloutStatusCompletedRegionsList = ReadonlyArray<string>;
+export type DefaultRolloutStatusCompletedRegionsList = Array<string>;
 export const DefaultRolloutStatusCompletedRegionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DefaultRolloutStatusCompletedRegionsList>;
@@ -4529,7 +4516,7 @@ export const DefaultRollout = /*@__PURE__*/ S.suspend(() =>
 
 /** The DefaultRollout items on this page */
 export type DefaultRolloutArrayResponseWithContinuationValueList =
-  ReadonlyArray<DefaultRollout>;
+  Array<DefaultRollout>;
 export const DefaultRolloutArrayResponseWithContinuationValueList =
   /*@__PURE__*/ S.Array(
     DefaultRollout,
@@ -4608,7 +4595,7 @@ export const GenerateManifestRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The provider authorizations. */
 export type ResourceProviderManifestProviderAuthorizationsList =
-  ReadonlyArray<ResourceProviderAuthorization>;
+  Array<ResourceProviderAuthorization>;
 export const ResourceProviderManifestProviderAuthorizationsList =
   /*@__PURE__*/ S.Array(
     ResourceProviderAuthorization,
@@ -4616,14 +4603,13 @@ export const ResourceProviderManifestProviderAuthorizationsList =
 
 /** The services. */
 export type ResourceProviderManifestServicesList =
-  ReadonlyArray<ResourceProviderService>;
+  Array<ResourceProviderService>;
 export const ResourceProviderManifestServicesList = /*@__PURE__*/ S.Array(
   ResourceProviderService,
 ) as any as S.Schema<ResourceProviderManifestServicesList>;
 
 /** The required features. */
-export type ResourceProviderManifestRequiredFeaturesList =
-  ReadonlyArray<string>;
+export type ResourceProviderManifestRequiredFeaturesList = Array<string>;
 export const ResourceProviderManifestRequiredFeaturesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4636,14 +4622,14 @@ export type AdditionalOptions =
 export const AdditionalOptions = /*@__PURE__*/ S.String;
 
 /** The allowed unauthorized actions. */
-export type ResourceTypeAllowedUnauthorizedActionsList = ReadonlyArray<string>;
+export type ResourceTypeAllowedUnauthorizedActionsList = Array<string>;
 export const ResourceTypeAllowedUnauthorizedActionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ResourceTypeAllowedUnauthorizedActionsList>;
 
 /** The allowed unauthorized actions extensions. */
 export type ResourceTypeAllowedUnauthorizedActionsExtensionsList =
-  ReadonlyArray<AllowedUnauthorizedActionsExtension>;
+  Array<AllowedUnauthorizedActionsExtension>;
 export const ResourceTypeAllowedUnauthorizedActionsExtensionsList =
   /*@__PURE__*/ S.Array(
     AllowedUnauthorizedActionsExtension,
@@ -4651,33 +4637,32 @@ export const ResourceTypeAllowedUnauthorizedActionsExtensionsList =
 
 /** The authorization action mappings. */
 export type ResourceTypeAuthorizationActionMappingsList =
-  ReadonlyArray<AuthorizationActionMapping>;
+  Array<AuthorizationActionMapping>;
 export const ResourceTypeAuthorizationActionMappingsList =
   /*@__PURE__*/ S.Array(
     AuthorizationActionMapping,
   ) as any as S.Schema<ResourceTypeAuthorizationActionMappingsList>;
 
 /** The linked access checks. */
-export type ResourceTypeLinkedAccessChecksList =
-  ReadonlyArray<LinkedAccessCheck>;
+export type ResourceTypeLinkedAccessChecksList = Array<LinkedAccessCheck>;
 export const ResourceTypeLinkedAccessChecksList = /*@__PURE__*/ S.Array(
   LinkedAccessCheck,
 ) as any as S.Schema<ResourceTypeLinkedAccessChecksList>;
 
 /** The logging rules. */
-export type ResourceTypeLoggingRulesList = ReadonlyArray<LoggingRule>;
+export type ResourceTypeLoggingRulesList = Array<LoggingRule>;
 export const ResourceTypeLoggingRulesList = /*@__PURE__*/ S.Array(
   LoggingRule,
 ) as any as S.Schema<ResourceTypeLoggingRulesList>;
 
 /** The throttling rules. */
-export type ResourceTypeThrottlingRulesList = ReadonlyArray<ThrottlingRule>;
+export type ResourceTypeThrottlingRulesList = Array<ThrottlingRule>;
 export const ResourceTypeThrottlingRulesList = /*@__PURE__*/ S.Array(
   ThrottlingRule,
 ) as any as S.Schema<ResourceTypeThrottlingRulesList>;
 
 /** The endpoints. */
-export type ResourceTypeEndpointsList = ReadonlyArray<ResourceProviderEndpoint>;
+export type ResourceTypeEndpointsList = Array<ResourceProviderEndpoint>;
 export const ResourceTypeEndpointsList = /*@__PURE__*/ S.Array(
   ResourceProviderEndpoint,
 ) as any as S.Schema<ResourceTypeEndpointsList>;
@@ -4695,40 +4680,38 @@ export const IdentityManagement = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IdentityManagement>;
 
 /** The required features. */
-export type ResourceTypeRequiredFeaturesList = ReadonlyArray<string>;
+export type ResourceTypeRequiredFeaturesList = Array<string>;
 export const ResourceTypeRequiredFeaturesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ResourceTypeRequiredFeaturesList>;
 
 /** The subscription state rules. */
 export type ResourceTypeSubscriptionStateRulesList =
-  ReadonlyArray<SubscriptionStateRule>;
+  Array<SubscriptionStateRule>;
 export const ResourceTypeSubscriptionStateRulesList = /*@__PURE__*/ S.Array(
   SubscriptionStateRule,
 ) as any as S.Schema<ResourceTypeSubscriptionStateRulesList>;
 
 /** The service tree infos. */
-export type ResourceTypeServiceTreeInfosList = ReadonlyArray<ServiceTreeInfo>;
+export type ResourceTypeServiceTreeInfosList = Array<ServiceTreeInfo>;
 export const ResourceTypeServiceTreeInfosList = /*@__PURE__*/ S.Array(
   ServiceTreeInfo,
 ) as any as S.Schema<ResourceTypeServiceTreeInfosList>;
 
 /** The disallowed action verbs. */
-export type ResourceTypeDisallowedActionVerbsList = ReadonlyArray<string>;
+export type ResourceTypeDisallowedActionVerbsList = Array<string>;
 export const ResourceTypeDisallowedActionVerbsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ResourceTypeDisallowedActionVerbsList>;
 
 /** The extended locations. */
-export type ResourceTypeExtendedLocationsList =
-  ReadonlyArray<ExtendedLocationOptions>;
+export type ResourceTypeExtendedLocationsList = Array<ExtendedLocationOptions>;
 export const ResourceTypeExtendedLocationsList = /*@__PURE__*/ S.Array(
   ExtendedLocationOptions,
 ) as any as S.Schema<ResourceTypeExtendedLocationsList>;
 
 /** The linked operation rules. */
-export type ResourceTypeLinkedOperationRulesList =
-  ReadonlyArray<LinkedOperationRule>;
+export type ResourceTypeLinkedOperationRulesList = Array<LinkedOperationRule>;
 export const ResourceTypeLinkedOperationRulesList = /*@__PURE__*/ S.Array(
   LinkedOperationRule,
 ) as any as S.Schema<ResourceTypeLinkedOperationRulesList>;
@@ -4741,14 +4724,14 @@ export type ManifestResourceDeletionPolicy =
 export const ManifestResourceDeletionPolicy = /*@__PURE__*/ S.String;
 
 /** The notifications. */
-export type ResourceTypeNotificationsList = ReadonlyArray<Notification>;
+export type ResourceTypeNotificationsList = Array<Notification>;
 export const ResourceTypeNotificationsList = /*@__PURE__*/ S.Array(
   Notification,
 ) as any as S.Schema<ResourceTypeNotificationsList>;
 
 /** The linked notification rules. */
 export type ResourceTypeLinkedNotificationRulesList =
-  ReadonlyArray<LinkedNotificationRule>;
+  Array<LinkedNotificationRule>;
 export const ResourceTypeLinkedNotificationRulesList = /*@__PURE__*/ S.Array(
   LinkedNotificationRule,
 ) as any as S.Schema<ResourceTypeLinkedNotificationRulesList>;
@@ -4864,22 +4847,21 @@ export const ResourceType = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResourceType" }) as any as S.Schema<ResourceType>;
 
 /** The resource types. */
-export type ResourceProviderManifestResourceTypesList =
-  ReadonlyArray<ResourceType>;
+export type ResourceProviderManifestResourceTypesList = Array<ResourceType>;
 export const ResourceProviderManifestResourceTypesList = /*@__PURE__*/ S.Array(
   ResourceType,
 ) as any as S.Schema<ResourceProviderManifestResourceTypesList>;
 
 /** The capabilities. */
 export type ResourceProviderManifestCapabilitiesList =
-  ReadonlyArray<ResourceProviderCapabilities>;
+  Array<ResourceProviderCapabilities>;
 export const ResourceProviderManifestCapabilitiesList = /*@__PURE__*/ S.Array(
   ResourceProviderCapabilities,
 ) as any as S.Schema<ResourceProviderManifestCapabilitiesList>;
 
 /** The global notification endpoints. */
 export type ResourceProviderManifestGlobalNotificationEndpointsList =
-  ReadonlyArray<ResourceProviderEndpoint>;
+  Array<ResourceProviderEndpoint>;
 export const ResourceProviderManifestGlobalNotificationEndpointsList =
   /*@__PURE__*/ S.Array(
     ResourceProviderEndpoint,
@@ -4901,15 +4883,14 @@ export const ReRegisterSubscriptionMetadata = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReRegisterSubscriptionMetadata>;
 
 /** The notifications. */
-export type ResourceProviderManifestNotificationsList =
-  ReadonlyArray<Notification>;
+export type ResourceProviderManifestNotificationsList = Array<Notification>;
 export const ResourceProviderManifestNotificationsList = /*@__PURE__*/ S.Array(
   Notification,
 ) as any as S.Schema<ResourceProviderManifestNotificationsList>;
 
 /** The linked notification rules. */
 export type ResourceProviderManifestLinkedNotificationRulesList =
-  ReadonlyArray<FanoutLinkedNotificationRule>;
+  Array<FanoutLinkedNotificationRule>;
 export const ResourceProviderManifestLinkedNotificationRulesList =
   /*@__PURE__*/ S.Array(
     FanoutLinkedNotificationRule,
@@ -5010,16 +4991,14 @@ export type ServiceFeatureFlagAction = "DoNotCreate" | "Create";
 export const ServiceFeatureFlagAction = /*@__PURE__*/ S.String;
 
 /** The resource types to include. */
-export type FrontloadPayloadPropertiesIncludeResourceTypesList =
-  ReadonlyArray<string>;
+export type FrontloadPayloadPropertiesIncludeResourceTypesList = Array<string>;
 export const FrontloadPayloadPropertiesIncludeResourceTypesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<FrontloadPayloadPropertiesIncludeResourceTypesList>;
 
 /** The resource types to exclude. */
-export type FrontloadPayloadPropertiesExcludeResourceTypesList =
-  ReadonlyArray<string>;
+export type FrontloadPayloadPropertiesExcludeResourceTypesList = Array<string>;
 export const FrontloadPayloadPropertiesExcludeResourceTypesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5027,7 +5006,7 @@ export const FrontloadPayloadPropertiesExcludeResourceTypesList =
 
 /** The resource hydration accounts. */
 export type ManifestLevelPropertyBagResourceHydrationAccountsList =
-  ReadonlyArray<ResourceHydrationAccount>;
+  Array<ResourceHydrationAccount>;
 export const ManifestLevelPropertyBagResourceHydrationAccountsList =
   /*@__PURE__*/ S.Array(
     ResourceHydrationAccount,
@@ -5048,27 +5027,26 @@ export const ManifestLevelPropertyBag = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ManifestLevelPropertyBag>;
 
 /** The api versions. */
-export type ResourceTypeEndpointBaseApiVersionsList = ReadonlyArray<string>;
+export type ResourceTypeEndpointBaseApiVersionsList = Array<string>;
 export const ResourceTypeEndpointBaseApiVersionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ResourceTypeEndpointBaseApiVersionsList>;
 
 /** The locations. */
-export type ResourceTypeEndpointBaseLocationsList = ReadonlyArray<string>;
+export type ResourceTypeEndpointBaseLocationsList = Array<string>;
 export const ResourceTypeEndpointBaseLocationsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ResourceTypeEndpointBaseLocationsList>;
 
 /** The required features. */
-export type ResourceTypeEndpointBaseRequiredFeaturesList =
-  ReadonlyArray<string>;
+export type ResourceTypeEndpointBaseRequiredFeaturesList = Array<string>;
 export const ResourceTypeEndpointBaseRequiredFeaturesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ResourceTypeEndpointBaseRequiredFeaturesList>;
 
 /** The zones. */
-export type ResourceTypeEndpointBaseZonesList = ReadonlyArray<string>;
+export type ResourceTypeEndpointBaseZonesList = Array<string>;
 export const ResourceTypeEndpointBaseZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ResourceTypeEndpointBaseZonesList>;
@@ -5119,7 +5097,7 @@ export const ResourceTypeEndpointBase = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourceTypeEndpointBase>;
 
 /** The fields to ignore. */
-export type FrontloadPayloadPropertiesIgnoreFieldsList = ReadonlyArray<string>;
+export type FrontloadPayloadPropertiesIgnoreFieldsList = Array<string>;
 export const FrontloadPayloadPropertiesIgnoreFieldsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<FrontloadPayloadPropertiesIgnoreFieldsList>;
@@ -5339,14 +5317,14 @@ export const MessageScope = /*@__PURE__*/ S.String;
 
 /** The included events. */
 export type NotificationRegistrationPropertiesIncludedEventsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const NotificationRegistrationPropertiesIncludedEventsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<NotificationRegistrationPropertiesIncludedEventsList>;
 
 /** The locations. */
-export type NotificationEndpointLocationsList = ReadonlyArray<string>;
+export type NotificationEndpointLocationsList = Array<string>;
 export const NotificationEndpointLocationsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<NotificationEndpointLocationsList>;
@@ -5368,7 +5346,7 @@ export const NotificationEndpoint = /*@__PURE__*/ S.suspend(() =>
 
 /** The notification endpoints. */
 export type NotificationRegistrationPropertiesNotificationEndpointsList =
-  ReadonlyArray<NotificationEndpoint>;
+  Array<NotificationEndpoint>;
 export const NotificationRegistrationPropertiesNotificationEndpointsList =
   /*@__PURE__*/ S.Array(
     NotificationEndpoint,
@@ -5376,15 +5354,15 @@ export const NotificationRegistrationPropertiesNotificationEndpointsList =
 
 export interface NotificationRegistrationProperties {
   /** The notification mode. */
-  notificationMode?: NotificationMode;
+  notificationMode?: NotificationMode | (string & {});
   /** The message scope. */
-  messageScope?: MessageScope;
+  messageScope?: MessageScope | (string & {});
   /** The included events. */
   includedEvents?: NotificationRegistrationPropertiesIncludedEventsList;
   /** The notification endpoints. */
   notificationEndpoints?: NotificationRegistrationPropertiesNotificationEndpointsList;
   /** The provisioned state of the resource. */
-  provisioningState?: ProvisioningState;
+  provisioningState?: ProvisioningState | (string & {});
 }
 export const NotificationRegistrationProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5585,7 +5563,7 @@ export const NotificationRegistration = /*@__PURE__*/ S.suspend(() =>
 
 /** The NotificationRegistration items on this page */
 export type NotificationRegistrationArrayResponseWithContinuationValueList =
-  ReadonlyArray<NotificationRegistration>;
+  Array<NotificationRegistration>;
 export const NotificationRegistrationArrayResponseWithContinuationValueList =
   /*@__PURE__*/ S.Array(
     NotificationRegistration,
@@ -5706,11 +5684,11 @@ export interface LocalizedOperationDefinition {
   /** Indicates whether the operation applies to data-plane. */
   isDataAction?: boolean;
   /** The origin. */
-  origin?: OperationOrigins;
+  origin?: OperationOrigins | (string & {});
   /** Display information of the operation. */
   display: LocalizedOperationDisplayDefinition;
   /** The action type. */
-  actionType?: OperationActionType;
+  actionType?: OperationActionType | (string & {});
 }
 export const LocalizedOperationDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5726,7 +5704,7 @@ export const LocalizedOperationDefinition = /*@__PURE__*/ S.suspend(() =>
 
 /** Operations content. */
 export type OperationsContentPropertiesContentsList =
-  ReadonlyArray<LocalizedOperationDefinition>;
+  Array<LocalizedOperationDefinition>;
 export const OperationsContentPropertiesContentsList = /*@__PURE__*/ S.Array(
   LocalizedOperationDefinition,
 ) as any as S.Schema<OperationsContentPropertiesContentsList>;
@@ -5863,7 +5841,7 @@ export const OperationsDefinition = /*@__PURE__*/ S.suspend(() =>
 
 /** The value. */
 export type OperationsDefinitionArrayResponseWithContinuationValueList =
-  ReadonlyArray<OperationsDefinition>;
+  Array<OperationsDefinition>;
 export const OperationsDefinitionArrayResponseWithContinuationValueList =
   /*@__PURE__*/ S.Array(
     OperationsDefinition,
@@ -5911,7 +5889,7 @@ export const OperationsListByProviderRegistrationRequest =
   }) as any as S.Schema<OperationsListByProviderRegistrationRequest>;
 
 export type OperationsListByProviderRegistrationResponseBodyList =
-  ReadonlyArray<OperationsDefinition>;
+  Array<OperationsDefinition>;
 export const OperationsListByProviderRegistrationResponseBodyList =
   /*@__PURE__*/ S.Array(
     OperationsDefinition,
@@ -5940,7 +5918,7 @@ export const ProviderMonitorSettingsCreateRequestTagsMap =
 
 export interface ProviderMonitorSettingProperties {
   /** The provisioning state. */
-  provisioningState?: ProvisioningState;
+  provisioningState?: ProvisioningState | (string & {});
 }
 export const ProviderMonitorSettingProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6184,7 +6162,7 @@ export const ProviderMonitorSetting = /*@__PURE__*/ S.suspend(() =>
 
 /** The ProviderMonitorSetting items on this page */
 export type ProviderMonitorSettingArrayResponseWithContinuationValueList =
-  ReadonlyArray<ProviderMonitorSetting>;
+  Array<ProviderMonitorSetting>;
 export const ProviderMonitorSettingArrayResponseWithContinuationValueList =
   /*@__PURE__*/ S.Array(
     ProviderMonitorSetting,
@@ -6417,7 +6395,7 @@ export const ProviderRegistrationsGenerateOperationsRequest =
   }) as any as S.Schema<ProviderRegistrationsGenerateOperationsRequest>;
 
 export type ProviderRegistrationsGenerateOperationsResponseBodyList =
-  ReadonlyArray<OperationsDefinition>;
+  Array<OperationsDefinition>;
 export const ProviderRegistrationsGenerateOperationsResponseBodyList =
   /*@__PURE__*/ S.Array(
     OperationsDefinition,
@@ -6510,7 +6488,7 @@ export const ProviderRegistrationsListRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The ProviderRegistration items on this page */
 export type ProviderRegistrationArrayResponseWithContinuationValueList =
-  ReadonlyArray<ProviderRegistration>;
+  Array<ProviderRegistration>;
 export const ProviderRegistrationArrayResponseWithContinuationValueList =
   /*@__PURE__*/ S.Array(
     ProviderRegistration,
@@ -6553,7 +6531,7 @@ export const ResourceManagementEntityInput = /*@__PURE__*/ S.suspend(() =>
 
 /** resource management action content. */
 export type ResourceActionsDeleteResourcesRequestResourcesList =
-  ReadonlyArray<ResourceManagementEntityInput>;
+  Array<ResourceManagementEntityInput>;
 export const ResourceActionsDeleteResourcesRequestResourcesList =
   /*@__PURE__*/ S.Array(
     ResourceManagementEntityInput,
@@ -6786,7 +6764,7 @@ export const ResourceTypeRegistrationsListByProviderRegistrationRequest =
 
 /** The ResourceTypeRegistration items on this page */
 export type ResourceTypeRegistrationArrayResponseWithContinuationValueList =
-  ReadonlyArray<ResourceTypeRegistration>;
+  Array<ResourceTypeRegistration>;
 export const ResourceTypeRegistrationArrayResponseWithContinuationValueList =
   /*@__PURE__*/ S.Array(
     ResourceTypeRegistration,
@@ -6810,19 +6788,19 @@ export const ResourceTypeRegistrationArrayResponseWithContinuation =
   }) as any as S.Schema<ResourceTypeRegistrationArrayResponseWithContinuation>;
 
 /** The locations. */
-export type SkuSettingLocationsList = ReadonlyArray<string>;
+export type SkuSettingLocationsList = Array<string>;
 export const SkuSettingLocationsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SkuSettingLocationsList>;
 
 /** The zones. */
-export type SkuLocationInfoZonesList = ReadonlyArray<string>;
+export type SkuLocationInfoZonesList = Array<string>;
 export const SkuLocationInfoZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SkuLocationInfoZonesList>;
 
 /** The name. */
-export type SkuZoneDetailNameList = ReadonlyArray<string>;
+export type SkuZoneDetailNameList = Array<string>;
 export const SkuZoneDetailNameList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SkuZoneDetailNameList>;
@@ -6841,7 +6819,7 @@ export const SkuCapability = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SkuCapability" }) as any as S.Schema<SkuCapability>;
 
 /** The capabilities. */
-export type SkuZoneDetailCapabilitiesList = ReadonlyArray<SkuCapability>;
+export type SkuZoneDetailCapabilitiesList = Array<SkuCapability>;
 export const SkuZoneDetailCapabilitiesList = /*@__PURE__*/ S.Array(
   SkuCapability,
 ) as any as S.Schema<SkuZoneDetailCapabilitiesList>;
@@ -6860,13 +6838,13 @@ export const SkuZoneDetail = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SkuZoneDetail" }) as any as S.Schema<SkuZoneDetail>;
 
 /** The zone details. */
-export type SkuLocationInfoZoneDetailsList = ReadonlyArray<SkuZoneDetail>;
+export type SkuLocationInfoZoneDetailsList = Array<SkuZoneDetail>;
 export const SkuLocationInfoZoneDetailsList = /*@__PURE__*/ S.Array(
   SkuZoneDetail,
 ) as any as S.Schema<SkuLocationInfoZoneDetailsList>;
 
 /** The extended locations. */
-export type SkuLocationInfoExtendedLocationsList = ReadonlyArray<string>;
+export type SkuLocationInfoExtendedLocationsList = Array<string>;
 export const SkuLocationInfoExtendedLocationsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SkuLocationInfoExtendedLocationsList>;
@@ -6881,7 +6859,7 @@ export interface SkuLocationInfo {
   /** The extended locations. */
   extendedLocations?: SkuLocationInfoExtendedLocationsList;
   /** The type. */
-  type?: ExtendedLocationType;
+  type?: ExtendedLocationType | (string & {});
 }
 export const SkuLocationInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6896,19 +6874,19 @@ export const SkuLocationInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SkuLocationInfo>;
 
 /** The location info. */
-export type SkuSettingLocationInfoList = ReadonlyArray<SkuLocationInfo>;
+export type SkuSettingLocationInfoList = Array<SkuLocationInfo>;
 export const SkuSettingLocationInfoList = /*@__PURE__*/ S.Array(
   SkuLocationInfo,
 ) as any as S.Schema<SkuSettingLocationInfoList>;
 
 /** The required quota ids. */
-export type SkuSettingRequiredQuotaIdsList = ReadonlyArray<string>;
+export type SkuSettingRequiredQuotaIdsList = Array<string>;
 export const SkuSettingRequiredQuotaIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SkuSettingRequiredQuotaIdsList>;
 
 /** The required features. */
-export type SkuSettingRequiredFeaturesList = ReadonlyArray<string>;
+export type SkuSettingRequiredFeaturesList = Array<string>;
 export const SkuSettingRequiredFeaturesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SkuSettingRequiredFeaturesList>;
@@ -6925,7 +6903,7 @@ export interface SkuCapacity {
   /** The default. */
   default?: number;
   /** The scale type. */
-  scaleType?: SkuScaleType;
+  scaleType?: SkuScaleType | (string & {});
 }
 export const SkuCapacity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6953,13 +6931,13 @@ export const SkuCost = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SkuCost" }) as any as S.Schema<SkuCost>;
 
 /** The costs. */
-export type SkuSettingCostsList = ReadonlyArray<SkuCost>;
+export type SkuSettingCostsList = Array<SkuCost>;
 export const SkuSettingCostsList = /*@__PURE__*/ S.Array(
   SkuCost,
 ) as any as S.Schema<SkuSettingCostsList>;
 
 /** The capabilities. */
-export type SkuSettingCapabilitiesList = ReadonlyArray<SkuCapability>;
+export type SkuSettingCapabilitiesList = Array<SkuCapability>;
 export const SkuSettingCapabilitiesList = /*@__PURE__*/ S.Array(
   SkuCapability,
 ) as any as S.Schema<SkuSettingCapabilitiesList>;
@@ -7008,7 +6986,7 @@ export const SkuSetting = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SkuSetting" }) as any as S.Schema<SkuSetting>;
 
 /** The sku settings. */
-export type ResourceTypeSkuSkuSettingsList = ReadonlyArray<SkuSetting>;
+export type ResourceTypeSkuSkuSettingsList = Array<SkuSetting>;
 export const ResourceTypeSkuSkuSettingsList = /*@__PURE__*/ S.Array(
   SkuSetting,
 ) as any as S.Schema<ResourceTypeSkuSkuSettingsList>;
@@ -7017,7 +6995,7 @@ export interface ResourceTypeSku {
   /** The sku settings. */
   skuSettings: ResourceTypeSkuSkuSettingsList;
   /** The provisioning state. */
-  provisioningState?: ProvisioningState;
+  provisioningState?: ProvisioningState | (string & {});
 }
 export const ResourceTypeSku = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -7698,7 +7676,7 @@ export const SkuResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The SkuResource items on this page */
 export type SkuResourceArrayResponseWithContinuationValueList =
-  ReadonlyArray<SkuResource>;
+  Array<SkuResource>;
 export const SkuResourceArrayResponseWithContinuationValueList =
   /*@__PURE__*/ S.Array(
     SkuResource,

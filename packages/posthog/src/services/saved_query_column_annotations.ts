@@ -138,7 +138,7 @@ export const SavedQueryColumnAnnotationsListRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<SavedQueryColumnAnnotationsListRequest>;
 
 export type PaginatedDataWarehouseSavedQueryColumnAnnotationListResultsList =
-  ReadonlyArray<DataWarehouseSavedQueryColumnAnnotation>;
+  Array<DataWarehouseSavedQueryColumnAnnotation>;
 export const PaginatedDataWarehouseSavedQueryColumnAnnotationListResultsList =
   /*@__PURE__*/ S.Array(
     DataWarehouseSavedQueryColumnAnnotation,

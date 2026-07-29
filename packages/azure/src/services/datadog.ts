@@ -173,7 +173,7 @@ export const CreationSupportedListRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The CreateResourceSupportedResponse items on this page */
 export type CreateResourceSupportedResponseListValueList =
-  ReadonlyArray<CreateResourceSupportedResponse>;
+  Array<CreateResourceSupportedResponse>;
 export const CreateResourceSupportedResponseListValueList =
   /*@__PURE__*/ S.Array(
     CreateResourceSupportedResponse,
@@ -345,7 +345,7 @@ export const MarketplaceAgreementsListRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The DatadogAgreementResource items on this page */
 export type DatadogAgreementResourceListResponseValueList =
-  ReadonlyArray<DatadogAgreementResource>;
+  Array<DatadogAgreementResource>;
 export const DatadogAgreementResourceListResponseValueList =
   /*@__PURE__*/ S.Array(
     DatadogAgreementResource,
@@ -392,7 +392,7 @@ export interface FilteringTag {
   /** The value of the tag. */
   value?: string;
   /** Valid actions for a filtering tag. Exclusion takes priority over inclusion. */
-  action?: TagAction;
+  action?: TagAction | (string & {});
 }
 export const FilteringTag = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -403,7 +403,7 @@ export const FilteringTag = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FilteringTag" }) as any as S.Schema<FilteringTag>;
 
 /** List of filtering tags to be used for capturing logs. This only takes effect if SendResourceLogs flag is enabled. If empty, all resources will be captured. If only Exclude action is specified, the rules will apply to the list of all available resources. If Include actions are specified, the rules will only include resources with the associated tags. */
-export type LogRulesFilteringTagsList = ReadonlyArray<FilteringTag>;
+export type LogRulesFilteringTagsList = Array<FilteringTag>;
 export const LogRulesFilteringTagsList = /*@__PURE__*/ S.Array(
   FilteringTag,
 ) as any as S.Schema<LogRulesFilteringTagsList>;
@@ -429,7 +429,7 @@ export const LogRules = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LogRules" }) as any as S.Schema<LogRules>;
 
 /** List of filtering tags to be used for capturing metrics. If empty, all resources will be captured. If only Exclude action is specified, the rules will apply to the list of all available resources. If Include actions are specified, the rules will only include resources with the associated tags. */
-export type MetricRulesFilteringTagsList = ReadonlyArray<FilteringTag>;
+export type MetricRulesFilteringTagsList = Array<FilteringTag>;
 export const MetricRulesFilteringTagsList = /*@__PURE__*/ S.Array(
   FilteringTag,
 ) as any as S.Schema<MetricRulesFilteringTagsList>;
@@ -446,7 +446,7 @@ export const MetricRules = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MetricRules" }) as any as S.Schema<MetricRules>;
 
 /** List of filtering tags to be used for capturing metrics. If empty, all resources will be captured. If only Exclude action is specified, the rules will apply to the list of all available resources. If Include actions are specified, the rules will only include resources with the associated tags. */
-export type AgentRulesFilteringTagsList = ReadonlyArray<FilteringTag>;
+export type AgentRulesFilteringTagsList = Array<FilteringTag>;
 export const AgentRulesFilteringTagsList = /*@__PURE__*/ S.Array(
   FilteringTag,
 ) as any as S.Schema<AgentRulesFilteringTagsList>;
@@ -514,7 +514,7 @@ export const MonitoredSubscriptionInput = /*@__PURE__*/ S.suspend(() =>
 
 /** List of subscriptions and the state of the monitoring. */
 export type SubscriptionListInputMonitoredSubscriptionListList =
-  ReadonlyArray<MonitoredSubscriptionInput>;
+  Array<MonitoredSubscriptionInput>;
 export const SubscriptionListInputMonitoredSubscriptionListList =
   /*@__PURE__*/ S.Array(
     MonitoredSubscriptionInput,
@@ -675,7 +675,7 @@ export const MonitoredSubscription = /*@__PURE__*/ S.suspend(() =>
 
 /** List of subscriptions and the state of the monitoring. */
 export type SubscriptionListMonitoredSubscriptionListList =
-  ReadonlyArray<MonitoredSubscription>;
+  Array<MonitoredSubscription>;
 export const SubscriptionListMonitoredSubscriptionListList =
   /*@__PURE__*/ S.Array(
     MonitoredSubscription,
@@ -863,7 +863,7 @@ export const MonitoredSubscriptionProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** The MonitoredSubscriptionProperties items on this page */
 export type MonitoredSubscriptionPropertiesListValueList =
-  ReadonlyArray<MonitoredSubscriptionProperties>;
+  Array<MonitoredSubscriptionProperties>;
 export const MonitoredSubscriptionPropertiesListValueList =
   /*@__PURE__*/ S.Array(
     MonitoredSubscriptionProperties,
@@ -1406,7 +1406,7 @@ export const DatadogMonitorResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The DatadogMonitorResource items on this page */
 export type DatadogMonitorResourceListResponseValueList =
-  ReadonlyArray<DatadogMonitorResource>;
+  Array<DatadogMonitorResource>;
 export const DatadogMonitorResourceListResponseValueList =
   /*@__PURE__*/ S.Array(
     DatadogMonitorResource,
@@ -1454,7 +1454,7 @@ export const MonitorsListApiKeysRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MonitorsListApiKeysRequest>;
 
 /** The DatadogApiKey items on this page */
-export type DatadogApiKeyListResponseValueList = ReadonlyArray<DatadogApiKey>;
+export type DatadogApiKeyListResponseValueList = Array<DatadogApiKey>;
 export const DatadogApiKeyListResponseValueList = /*@__PURE__*/ S.Array(
   DatadogApiKey,
 ) as any as S.Schema<DatadogApiKeyListResponseValueList>;
@@ -1523,13 +1523,13 @@ export const MonitorsListHostsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MonitorsListHostsRequest>;
 
 /** The aliases for the host installed via the Datadog agent. */
-export type DatadogHostAliasesList = ReadonlyArray<string>;
+export type DatadogHostAliasesList = Array<string>;
 export const DatadogHostAliasesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DatadogHostAliasesList>;
 
 /** The Datadog integrations reporting metrics for the host. */
-export type DatadogHostAppsList = ReadonlyArray<string>;
+export type DatadogHostAppsList = Array<string>;
 export const DatadogHostAppsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DatadogHostAppsList>;
@@ -1599,7 +1599,7 @@ export const DatadogHost = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DatadogHost" }) as any as S.Schema<DatadogHost>;
 
 /** The DatadogHost items on this page */
-export type DatadogHostListResponseValueList = ReadonlyArray<DatadogHost>;
+export type DatadogHostListResponseValueList = Array<DatadogHost>;
 export const DatadogHostListResponseValueList = /*@__PURE__*/ S.Array(
   DatadogHost,
 ) as any as S.Schema<DatadogHostListResponseValueList>;
@@ -1660,7 +1660,7 @@ export const LinkedResource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LinkedResource" }) as any as S.Schema<LinkedResource>;
 
 /** The LinkedResource items on this page */
-export type LinkedResourceListResponseValueList = ReadonlyArray<LinkedResource>;
+export type LinkedResourceListResponseValueList = Array<LinkedResource>;
 export const LinkedResourceListResponseValueList = /*@__PURE__*/ S.Array(
   LinkedResource,
 ) as any as S.Schema<LinkedResourceListResponseValueList>;
@@ -1733,8 +1733,7 @@ export const MonitoredResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MonitoredResource>;
 
 /** The MonitoredResource items on this page */
-export type MonitoredResourceListResponseValueList =
-  ReadonlyArray<MonitoredResource>;
+export type MonitoredResourceListResponseValueList = Array<MonitoredResource>;
 export const MonitoredResourceListResponseValueList = /*@__PURE__*/ S.Array(
   MonitoredResource,
 ) as any as S.Schema<MonitoredResourceListResponseValueList>;
@@ -2000,7 +1999,7 @@ export const OperationResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationResult>;
 
 /** The list of operations. */
-export type OperationListResultValueList = ReadonlyArray<OperationResult>;
+export type OperationListResultValueList = Array<OperationResult>;
 export const OperationListResultValueList = /*@__PURE__*/ S.Array(
   OperationResult,
 ) as any as S.Schema<OperationListResultValueList>;
@@ -2296,7 +2295,7 @@ export const DatadogSingleSignOnResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The DatadogSingleSignOnResource items on this page */
 export type DatadogSingleSignOnResourceListResponseValueList =
-  ReadonlyArray<DatadogSingleSignOnResource>;
+  Array<DatadogSingleSignOnResource>;
 export const DatadogSingleSignOnResourceListResponseValueList =
   /*@__PURE__*/ S.Array(
     DatadogSingleSignOnResource,
@@ -2477,8 +2476,7 @@ export const MonitoringTagRules = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MonitoringTagRules>;
 
 /** The MonitoringTagRules items on this page */
-export type MonitoringTagRulesListResponseValueList =
-  ReadonlyArray<MonitoringTagRules>;
+export type MonitoringTagRulesListResponseValueList = Array<MonitoringTagRules>;
 export const MonitoringTagRulesListResponseValueList = /*@__PURE__*/ S.Array(
   MonitoringTagRules,
 ) as any as S.Schema<MonitoringTagRulesListResponseValueList>;

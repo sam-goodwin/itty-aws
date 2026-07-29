@@ -81,9 +81,9 @@ export interface CustomerOnboardingStep {
   /** The completion time of the onboarding step */
   completionTime?: string;
   /** Output only. Current state of the step */
-  completionState?: CustomerOnboardingStepCompletionStateEnum;
+  completionState?: CustomerOnboardingStepCompletionStateEnum | (string & {});
   /** The onboarding step */
-  step?: CustomerOnboardingStepStepEnum;
+  step?: CustomerOnboardingStepStepEnum | (string & {});
 }
 export const CustomerOnboardingStep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -96,7 +96,7 @@ export const CustomerOnboardingStep = /*@__PURE__*/ S.suspend(() =>
   identifier: "CustomerOnboardingStep",
 }) as any as S.Schema<CustomerOnboardingStep>;
 
-export type CustomerOnboardingStepList = ReadonlyArray<CustomerOnboardingStep>;
+export type CustomerOnboardingStepList = Array<CustomerOnboardingStep>;
 export const CustomerOnboardingStepList = /*@__PURE__*/ S.Array(
   CustomerOnboardingStep,
 ) as any as S.Schema<CustomerOnboardingStepList>;
@@ -248,7 +248,7 @@ export const EkmConnection = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "EkmConnection" }) as any as S.Schema<EkmConnection>;
 
-export type EkmConnectionList = ReadonlyArray<EkmConnection>;
+export type EkmConnectionList = Array<EkmConnection>;
 export const EkmConnectionList = /*@__PURE__*/ S.Array(
   EkmConnection,
 ) as any as S.Schema<EkmConnectionList>;
@@ -341,7 +341,7 @@ export const WorkloadOnboardingStep = /*@__PURE__*/ S.suspend(() =>
   identifier: "WorkloadOnboardingStep",
 }) as any as S.Schema<WorkloadOnboardingStep>;
 
-export type WorkloadOnboardingStepList = ReadonlyArray<WorkloadOnboardingStep>;
+export type WorkloadOnboardingStepList = Array<WorkloadOnboardingStep>;
 export const WorkloadOnboardingStepList = /*@__PURE__*/ S.Array(
   WorkloadOnboardingStep,
 ) as any as S.Schema<WorkloadOnboardingStepList>;
@@ -424,7 +424,7 @@ export const GetOrganizationsLocationsCustomersWorkloadsViolationsRequest =
     identifier: "GetOrganizationsLocationsCustomersWorkloadsViolationsRequest",
   }) as any as S.Schema<GetOrganizationsLocationsCustomersWorkloadsViolationsRequest>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -581,7 +581,7 @@ export const Sku = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Sku" }) as any as S.Schema<Sku>;
 
-export type SkuList = ReadonlyArray<Sku>;
+export type SkuList = Array<Sku>;
 export const SkuList = /*@__PURE__*/ S.Array(Sku) as any as S.Schema<SkuList>;
 
 export type EkmMetadataEkmSolutionEnum =
@@ -606,7 +606,7 @@ export const EkmMetadata = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "EkmMetadata" }) as any as S.Schema<EkmMetadata>;
 
-export type EkmMetadataList = ReadonlyArray<EkmMetadata>;
+export type EkmMetadataList = Array<EkmMetadata>;
 export const EkmMetadataList = /*@__PURE__*/ S.Array(
   EkmMetadata,
 ) as any as S.Schema<EkmMetadataList>;
@@ -671,7 +671,7 @@ export const PartnerPermissionsPartnerPermissionsItemEnum =
   /*@__PURE__*/ S.String;
 
 export type PartnerPermissionsPartnerPermissionsItemEnumList =
-  ReadonlyArray<PartnerPermissionsPartnerPermissionsItemEnum>;
+  Array<PartnerPermissionsPartnerPermissionsItemEnum>;
 export const PartnerPermissionsPartnerPermissionsItemEnumList =
   /*@__PURE__*/ S.Array(
     PartnerPermissionsPartnerPermissionsItemEnum,
@@ -726,7 +726,7 @@ export const ListOrganizationsLocationsCustomersRequest =
     identifier: "ListOrganizationsLocationsCustomersRequest",
   }) as any as S.Schema<ListOrganizationsLocationsCustomersRequest>;
 
-export type CustomerList = ReadonlyArray<Customer>;
+export type CustomerList = Array<Customer>;
 export const CustomerList = /*@__PURE__*/ S.Array(
   Customer,
 ) as any as S.Schema<CustomerList>;
@@ -781,7 +781,7 @@ export const ListOrganizationsLocationsCustomersWorkloadsRequest =
     identifier: "ListOrganizationsLocationsCustomersWorkloadsRequest",
   }) as any as S.Schema<ListOrganizationsLocationsCustomersWorkloadsRequest>;
 
-export type WorkloadList = ReadonlyArray<Workload>;
+export type WorkloadList = Array<Workload>;
 export const WorkloadList = /*@__PURE__*/ S.Array(
   Workload,
 ) as any as S.Schema<WorkloadList>;
@@ -883,7 +883,7 @@ export const AccessApprovalRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "AccessApprovalRequest",
 }) as any as S.Schema<AccessApprovalRequest>;
 
-export type AccessApprovalRequestList = ReadonlyArray<AccessApprovalRequest>;
+export type AccessApprovalRequestList = Array<AccessApprovalRequest>;
 export const AccessApprovalRequestList = /*@__PURE__*/ S.Array(
   AccessApprovalRequest,
 ) as any as S.Schema<AccessApprovalRequestList>;
@@ -944,7 +944,7 @@ export const ListOrganizationsLocationsCustomersWorkloadsViolationsRequest =
     identifier: "ListOrganizationsLocationsCustomersWorkloadsViolationsRequest",
   }) as any as S.Schema<ListOrganizationsLocationsCustomersWorkloadsViolationsRequest>;
 
-export type ViolationList = ReadonlyArray<Violation>;
+export type ViolationList = Array<Violation>;
 export const ViolationList = /*@__PURE__*/ S.Array(
   Violation,
 ) as any as S.Schema<ViolationList>;

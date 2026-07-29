@@ -193,7 +193,7 @@ export const CreateNamedRangeRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateNamedRangeRequest",
 }) as any as S.Schema<CreateNamedRangeRequest>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -236,7 +236,7 @@ export interface Dimension {
   /** The magnitude. */
   magnitude?: number;
   /** The units for magnitude. */
-  unit?: DimensionUnitEnum;
+  unit?: DimensionUnitEnum | (string & {});
 }
 export const Dimension = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -268,7 +268,7 @@ export const DocumentFormatDocumentModeEnum = /*@__PURE__*/ S.String;
 /** Represents document-level format settings. */
 export interface DocumentFormat {
   /** Whether the document has pages or is pageless. */
-  documentMode?: DocumentFormatDocumentModeEnum;
+  documentMode?: DocumentFormatDocumentModeEnum | (string & {});
 }
 export const DocumentFormat = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -601,7 +601,7 @@ export interface TextStyle {
   /** The font family and rendered weight of the text. If an update request specifies values for both `weighted_font_family` and `bold`, the `weighted_font_family` is applied first, then `bold`. If `weighted_font_family#weight` is not set, it defaults to `400`. If `weighted_font_family` is set, then `weighted_font_family#font_family` must also be set with a non-empty value. Otherwise, a 400 bad request error is returned. */
   weightedFontFamily?: WeightedFontFamily;
   /** The text's vertical offset from its normal position. Text with `SUPERSCRIPT` or `SUBSCRIPT` baseline offsets is automatically rendered in a smaller font size, computed based on the `font_size` field. Changes in this field don't affect the `font_size`. */
-  baselineOffset?: TextStyleBaselineOffsetEnum;
+  baselineOffset?: TextStyleBaselineOffsetEnum | (string & {});
   /** Whether or not the text is italicized. */
   italic?: boolean;
   /** The background color of the text. If set, the color is either an RGB color or transparent, depending on the `color` field. */
@@ -718,11 +718,11 @@ export interface DateElementProperties {
   /** The point in time to represent, in seconds and nanoseconds since Unix epoch: January 1, 1970 at midnight UTC. Timestamp is expected to be in UTC. If time_zone_id is set, the timestamp is adjusted according to the time zone. For example, a timestamp of `18000` with a date format of `DATE_FORMAT_ISO8601` and time format of `TIME_FORMAT_HOUR_MINUTE` would be displayed as `1970-01-01 5:00 AM`. A timestamp of `18000` with date format of `DATE_FORMAT_ISO8601`, time format of `TIME_FORMAT_HOUR_MINUTE`, and time zone set to `America/New_York` will instead be `1970-01-01 12:00 AM`. */
   timestamp?: string;
   /** Determines how the time part of the DateElement will be displayed in the document. If unset, the default value is TIME_FORMAT_DISABLED, indicating no time should be shown. */
-  timeFormat?: DateElementPropertiesTimeFormatEnum;
+  timeFormat?: DateElementPropertiesTimeFormatEnum | (string & {});
   /** The time zone of the DateElement, as defined by the Unicode Common Locale Data Repository (CLDR) project. For example, `America/New_York`. If unset, the default time zone is `etc/UTC`. */
   timeZoneId?: string;
   /** Determines how the date part of the DateElement will be displayed in the document. If unset, the default value is DATE_FORMAT_MONTH_DAY_YEAR_ABBREVIATED, indicating the DateElement will be formatted as `MMM d, y` in `en`, or locale specific equivalent. */
-  dateFormat?: DateElementPropertiesDateFormatEnum;
+  dateFormat?: DateElementPropertiesDateFormatEnum | (string & {});
   /** The language code of the DateElement. For example, `en`. If unset, the default locale is `en`. Limited to the following locales: `af`, `am`, `ar`, `as`, `az`, `be`, `bg`, `bn`, `ca`, `cs`, `da`, `de`, `el`, `en`, `en-CA`, `en-GB`, `es`, `es-419`, `et`, `eu`, `fa`, `fi`, `fil`, `fr`, `fr-CA`, `gl`, `gu`, `hi`, `hr`, `hu`, `hy`, `id`, `is`, `it`, `iw`, `ja`, `ka`, `kk`, `km`, `kn`, `ko`, `lo`, `lt`, `lv`, `mk`, `ml`, `mn`, `mr`, `ms`, `ne`, `nl`, `no`, `or`, `pa`, `pl`, `pt-BR`, `pt-PT`, `ro`, `ru`, `si`, `sk`, `sl`, `sq`, `sr`, `sv`, `sw`, `ta`, `te`, `th`, `tr`, `uk`, `ur`, `uz`, `vi`, `zh-CN`, `zh-HK`, `zh-TW`, `zu`, `cy`, `my`. */
   locale?: string;
 }
@@ -813,7 +813,7 @@ export interface TableCellBorder {
   /** The color of the border. This color cannot be transparent. */
   color?: OptionalColor;
   /** The dash style of the border. */
-  dashStyle?: TableCellBorderDashStyleEnum;
+  dashStyle?: TableCellBorderDashStyleEnum | (string & {});
 }
 export const TableCellBorder = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -854,7 +854,7 @@ export interface TableCellStyle {
   /** The bottom border of the cell. */
   borderBottom?: TableCellBorder;
   /** The alignment of the content in the table cell. The default alignment matches the alignment for newly created table cells in the Docs editor. */
-  contentAlignment?: TableCellStyleContentAlignmentEnum;
+  contentAlignment?: TableCellStyleContentAlignmentEnum | (string & {});
   /** The left padding of the cell. */
   paddingLeft?: Dimension;
   /** The left border of the cell. */
@@ -933,8 +933,7 @@ export const SectionColumnProperties = /*@__PURE__*/ S.suspend(() =>
   identifier: "SectionColumnProperties",
 }) as any as S.Schema<SectionColumnProperties>;
 
-export type SectionColumnPropertiesList =
-  ReadonlyArray<SectionColumnProperties>;
+export type SectionColumnPropertiesList = Array<SectionColumnProperties>;
 export const SectionColumnPropertiesList = /*@__PURE__*/ S.Array(
   SectionColumnProperties,
 ) as any as S.Schema<SectionColumnPropertiesList>;
@@ -944,13 +943,13 @@ export interface SectionStyle {
   /** The left page margin of the section. If unset, the value defaults to margin_left from DocumentStyle. Updating the left margin causes columns in this section to resize. Since the margin affects column width, it's applied before column properties. If DocumentMode is PAGELESS, this property will not be rendered. When updating this property, setting a concrete value is required. Unsetting this property results in a 400 bad request error. */
   marginLeft?: Dimension;
   /** The style of column separators. This style can be set even when there's one column in the section. When updating this property, setting a concrete value is required. Unsetting this property results in a 400 bad request error. */
-  columnSeparatorStyle?: SectionStyleColumnSeparatorStyleEnum;
+  columnSeparatorStyle?: SectionStyleColumnSeparatorStyleEnum | (string & {});
   /** The right page margin of the section. If unset, the value defaults to margin_right from DocumentStyle. Updating the right margin causes columns in this section to resize. Since the margin affects column width, it's applied before column properties. If DocumentMode is PAGELESS, this property will not be rendered. When updating this property, setting a concrete value is required. Unsetting this property results in a 400 bad request error. */
   marginRight?: Dimension;
   /** The content direction of this section. If unset, the value defaults to LEFT_TO_RIGHT. When updating this property, setting a concrete value is required. Unsetting this property results in a 400 bad request error. */
-  contentDirection?: SectionStyleContentDirectionEnum;
+  contentDirection?: SectionStyleContentDirectionEnum | (string & {});
   /** Output only. The type of section. */
-  sectionType?: SectionStyleSectionTypeEnum;
+  sectionType?: SectionStyleSectionTypeEnum | (string & {});
   /** The ID of the header used only for the first page of the section. If use_first_page_header_footer is true, this value is used for the header on the first page of the section. If it's false, the header on the first page of the section uses the default_header_id. If unset, the value inherits from the previous SectionBreak's SectionStyle. If the value is unset in the first SectionBreak, it inherits from DocumentStyle's first_page_header_id. If DocumentMode is PAGELESS, this property will not be rendered. This property is read-only. */
   firstPageHeaderId?: string;
   /** Indicates whether to use the first page header / footer IDs for the first page of the section. If unset, it inherits from DocumentStyle's use_first_page_header_footer for the first section. If the value is unset for subsequent sectors, it should be interpreted as false. If DocumentMode is PAGELESS, this property will not be rendered. When updating this property, setting a concrete value is required. Unsetting this property results in a 400 bad request error. */
@@ -1160,7 +1159,7 @@ export const AddDocumentTabRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "AddDocumentTabRequest",
 }) as any as S.Schema<AddDocumentTabRequest>;
 
-export type IntegerList = ReadonlyArray<number>;
+export type IntegerList = Array<number>;
 export const IntegerList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<IntegerList>;
@@ -1174,7 +1173,7 @@ export const TableColumnPropertiesWidthTypeEnum = /*@__PURE__*/ S.String;
 /** The properties of a column in a table. */
 export interface TableColumnProperties {
   /** The width type of the column. */
-  widthType?: TableColumnPropertiesWidthTypeEnum;
+  widthType?: TableColumnPropertiesWidthTypeEnum | (string & {});
   /** The width of the column. Set when the column's `width_type` is FIXED_WIDTH. */
   width?: Dimension;
 }
@@ -1221,7 +1220,7 @@ export interface ParagraphBorder {
   /** The color of the border. */
   color?: OptionalColor;
   /** The dash style of the border. */
-  dashStyle?: ParagraphBorderDashStyleEnum;
+  dashStyle?: ParagraphBorderDashStyleEnum | (string & {});
   /** The width of the border. */
   width?: Dimension;
   /** The padding of the border. */
@@ -1294,7 +1293,7 @@ export interface TabStop {
   /** The offset between this tab stop and the start margin. */
   offset?: Dimension;
   /** The alignment of this tab stop. If unset, the value defaults to START. */
-  alignment?: TabStopAlignmentEnum;
+  alignment?: TabStopAlignmentEnum | (string & {});
 }
 export const TabStop = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1303,7 +1302,7 @@ export const TabStop = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TabStop" }) as any as S.Schema<TabStop>;
 
-export type TabStopList = ReadonlyArray<TabStop>;
+export type TabStopList = Array<TabStop>;
 export const TabStopList = /*@__PURE__*/ S.Array(
   TabStop,
 ) as any as S.Schema<TabStopList>;
@@ -1315,11 +1314,11 @@ export interface ParagraphStyle {
   /** The border to the left of this paragraph. If unset, the value is inherited from the parent. Paragraph borders cannot be partially updated. When changing a paragraph border, the new border must be specified in its entirety. */
   borderLeft?: ParagraphBorder;
   /** The spacing mode for the paragraph. */
-  spacingMode?: ParagraphStyleSpacingModeEnum;
+  spacingMode?: ParagraphStyleSpacingModeEnum | (string & {});
   /** The amount of extra space below the paragraph. If unset, the value is inherited from the parent. */
   spaceBelow?: Dimension;
   /** The text direction of this paragraph. If unset, the value defaults to LEFT_TO_RIGHT since paragraph direction is not inherited. */
-  direction?: ParagraphStyleDirectionEnum;
+  direction?: ParagraphStyleDirectionEnum | (string & {});
   /** The border at the bottom of this paragraph. If unset, the value is inherited from the parent. The bottom border is rendered when the paragraph below has different border and indent properties. Paragraph borders cannot be partially updated. When changing a paragraph border, the new border must be specified in its entirety. */
   borderBottom?: ParagraphBorder;
   /** The border to the right of this paragraph. If unset, the value is inherited from the parent. Paragraph borders cannot be partially updated. When changing a paragraph border, the new border must be specified in its entirety. */
@@ -1331,7 +1330,7 @@ export interface ParagraphStyle {
   /** The shading of the paragraph. If unset, the value is inherited from the parent. */
   shading?: Shading;
   /** The named style type of the paragraph. Since updating the named style type affects other properties within ParagraphStyle, the named style type is applied before the other properties are updated. */
-  namedStyleType?: ParagraphStyleNamedStyleTypeEnum;
+  namedStyleType?: ParagraphStyleNamedStyleTypeEnum | (string & {});
   /** The border at the top of this paragraph. If unset, the value is inherited from the parent. The top border is rendered when the paragraph above has different border and indent properties. Paragraph borders cannot be partially updated. When changing a paragraph border, the new border must be specified in its entirety. */
   borderTop?: ParagraphBorder;
   /** The heading ID of the paragraph. If empty, then this paragraph is not a heading. This property is read-only. */
@@ -1341,7 +1340,7 @@ export interface ParagraphStyle {
   /** Whether at least a part of this paragraph should be laid out on the same page or column as the next paragraph if possible. If unset, the value is inherited from the parent. */
   keepWithNext?: boolean;
   /** The text alignment for this paragraph. */
-  alignment?: ParagraphStyleAlignmentEnum;
+  alignment?: ParagraphStyleAlignmentEnum | (string & {});
   /** A list of the tab stops for this paragraph. The list of tab stops is not inherited. This property is read-only. */
   tabStops?: TabStopList;
   /** The amount of space between lines, as a percentage of normal, where normal is represented as 100.0. If unset, the value is inherited from the parent. */
@@ -1417,7 +1416,7 @@ export const NamedStyleNamedStyleTypeEnum = /*@__PURE__*/ S.String;
 /** A named style. Paragraphs in the document can inherit their TextStyle and ParagraphStyle from this named style when they have the same named style type. */
 export interface NamedStyle {
   /** The type of this named style. */
-  namedStyleType?: NamedStyleNamedStyleTypeEnum;
+  namedStyleType?: NamedStyleNamedStyleTypeEnum | (string & {});
   /** The paragraph style of this named style. */
   paragraphStyle?: ParagraphStyle;
   /** The text style of this named style. */
@@ -1868,7 +1867,7 @@ export const Request = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Request" }) as any as S.Schema<Request>;
 
-export type RequestList = ReadonlyArray<Request>;
+export type RequestList = Array<Request>;
 export const RequestList = /*@__PURE__*/ S.Array(
   Request,
 ) as any as S.Schema<RequestList>;
@@ -2060,7 +2059,7 @@ export const Response = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Response" }) as any as S.Schema<Response>;
 
-export type ResponseList = ReadonlyArray<Response>;
+export type ResponseList = Array<Response>;
 export const ResponseList = /*@__PURE__*/ S.Array(
   Response,
 ) as any as S.Schema<ResponseList>;
@@ -2105,13 +2104,13 @@ export const NestingLevelBulletAlignmentEnum = /*@__PURE__*/ S.String;
 /** Contains properties describing the look and feel of a list bullet at a given level of nesting. */
 export interface NestingLevel {
   /** The type of glyph used by bullets when paragraphs at this level of nesting is ordered. The glyph type determines the type of glyph used to replace placeholders within the glyph_format when paragraphs at this level of nesting are ordered. For example, if the nesting level is 0, the glyph_format is `%0.` and the glyph type is DECIMAL, then the rendered glyph would replace the placeholder `%0` in the glyph format with a number corresponding to the list item's order within the list. */
-  glyphType?: NestingLevelGlyphTypeEnum;
+  glyphType?: NestingLevelGlyphTypeEnum | (string & {});
   /** The format string used by bullets at this level of nesting. The glyph format contains one or more placeholders, and these placeholders are replaced with the appropriate values depending on the glyph_type or glyph_symbol. The placeholders follow the pattern `%[nesting_level]`. Furthermore, placeholders can have prefixes and suffixes. Thus, the glyph format follows the pattern `%[nesting_level]`. Note that the prefix and suffix are optional and can be arbitrary strings. For example, the glyph format `%0.` indicates that the rendered glyph will replace the placeholder with the corresponding glyph for nesting level 0 followed by a period as the suffix. So a list with a glyph type of UPPER_ALPHA and glyph format `%0.` at nesting level 0 will result in a list with rendered glyphs `A.` `B.` `C.` The glyph format can contain placeholders for the current nesting level as well as placeholders for parent nesting levels. For example, a list can have a glyph format of `%0.` at nesting level 0 and a glyph format of `%0.%1.` at nesting level 1. Assuming both nesting levels have DECIMAL glyph types, this would result in a list with rendered glyphs `1.` `2.` ` 2.1.` ` 2.2.` `3.` For nesting levels that are ordered, the string that replaces a placeholder in the glyph format for a particular paragraph depends on the paragraph's order within the list. */
   glyphFormat?: string;
   /** The amount of indentation for paragraphs at this level of nesting. Applied to the side that corresponds to the start of the text, based on the paragraph's content direction. */
   indentStart?: Dimension;
   /** The alignment of the bullet within the space allotted for rendering the bullet. */
-  bulletAlignment?: NestingLevelBulletAlignmentEnum;
+  bulletAlignment?: NestingLevelBulletAlignmentEnum | (string & {});
   /** The text style of bullets at this level of nesting. */
   textStyle?: TextStyle;
   /** A custom glyph symbol used by bullets when paragraphs at this level of nesting is unordered. The glyph symbol replaces placeholders within the glyph_format. For example, if the glyph_symbol is the solid circle corresponding to Unicode U+25cf code point and the glyph_format is `%0`, the rendered glyph would be the solid circle. */
@@ -2134,7 +2133,7 @@ export const NestingLevel = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "NestingLevel" }) as any as S.Schema<NestingLevel>;
 
-export type NestingLevelList = ReadonlyArray<NestingLevel>;
+export type NestingLevelList = Array<NestingLevel>;
 export const NestingLevelList = /*@__PURE__*/ S.Array(
   NestingLevel,
 ) as any as S.Schema<NestingLevelList>;
@@ -2228,7 +2227,7 @@ export const NestingLevelSuggestionState = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NestingLevelSuggestionState>;
 
 export type NestingLevelSuggestionStateList =
-  ReadonlyArray<NestingLevelSuggestionState>;
+  Array<NestingLevelSuggestionState>;
 export const NestingLevelSuggestionStateList = /*@__PURE__*/ S.Array(
   NestingLevelSuggestionState,
 ) as any as S.Schema<NestingLevelSuggestionStateList>;
@@ -2296,7 +2295,7 @@ export const ListMap = /*@__PURE__*/ S.Record(
   List,
 ) as any as S.Schema<ListMap>;
 
-export type NamedStyleList = ReadonlyArray<NamedStyle>;
+export type NamedStyleList = Array<NamedStyle>;
 export const NamedStyleList = /*@__PURE__*/ S.Array(
   NamedStyle,
 ) as any as S.Schema<NamedStyleList>;
@@ -2429,7 +2428,7 @@ export interface AutoText {
   /** The text style of this AutoText. */
   textStyle?: TextStyle;
   /** The type of this auto text. */
-  type?: AutoTextTypeEnum;
+  type?: AutoTextTypeEnum | (string & {});
 }
 export const AutoText = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2718,7 +2717,7 @@ export const ParagraphElement = /*@__PURE__*/ S.suspend(() =>
   identifier: "ParagraphElement",
 }) as any as S.Schema<ParagraphElement>;
 
-export type ParagraphElementList = ReadonlyArray<ParagraphElement>;
+export type ParagraphElementList = Array<ParagraphElement>;
 export const ParagraphElementList = /*@__PURE__*/ S.Array(
   ParagraphElement,
 ) as any as S.Schema<ParagraphElementList>;
@@ -2941,7 +2940,7 @@ export const Paragraph = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Paragraph" }) as any as S.Schema<Paragraph>;
 
-export type TableColumnPropertiesList = ReadonlyArray<TableColumnProperties>;
+export type TableColumnPropertiesList = Array<TableColumnProperties>;
 export const TableColumnPropertiesList = /*@__PURE__*/ S.Array(
   TableColumnProperties,
 ) as any as S.Schema<TableColumnPropertiesList>;
@@ -3093,7 +3092,7 @@ export const TableCell = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TableCell" }) as any as S.Schema<TableCell>;
 
-export type TableCellList = ReadonlyArray<TableCell>;
+export type TableCellList = Array<TableCell>;
 export const TableCellList = /*@__PURE__*/ S.Array(
   TableCell,
 ) as any as S.Schema<TableCellList>;
@@ -3127,7 +3126,7 @@ export const TableRow = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TableRow" }) as any as S.Schema<TableRow>;
 
-export type TableRowList = ReadonlyArray<TableRow>;
+export type TableRowList = Array<TableRow>;
 export const TableRowList = /*@__PURE__*/ S.Array(
   TableRow,
 ) as any as S.Schema<TableRowList>;
@@ -3203,7 +3202,7 @@ export const StructuralElement = /*@__PURE__*/ S.suspend(() =>
   identifier: "StructuralElement",
 }) as any as S.Schema<StructuralElement>;
 
-export type StructuralElementList = ReadonlyArray<StructuralElement>;
+export type StructuralElementList = Array<StructuralElement>;
 export const StructuralElementList = /*@__PURE__*/ S.Array(
   StructuralElement,
 ) as any as S.Schema<StructuralElementList>;
@@ -3228,7 +3227,7 @@ export const HeaderMap = /*@__PURE__*/ S.Record(
   Header,
 ) as any as S.Schema<HeaderMap>;
 
-export type RangeList = ReadonlyArray<Range>;
+export type RangeList = Array<Range>;
 export const RangeList = /*@__PURE__*/ S.Array(
   Range,
 ) as any as S.Schema<RangeList>;
@@ -3250,7 +3249,7 @@ export const NamedRange = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "NamedRange" }) as any as S.Schema<NamedRange>;
 
-export type NamedRangeList = ReadonlyArray<NamedRange>;
+export type NamedRangeList = Array<NamedRange>;
 export const NamedRangeList = /*@__PURE__*/ S.Array(
   NamedRange,
 ) as any as S.Schema<NamedRangeList>;
@@ -3457,13 +3456,13 @@ export const EmbeddedObjectBorderDashStyleEnum = /*@__PURE__*/ S.String;
 /** A border around an EmbeddedObject. */
 export interface EmbeddedObjectBorder {
   /** The property state of the border property. */
-  propertyState?: EmbeddedObjectBorderPropertyStateEnum;
+  propertyState?: EmbeddedObjectBorderPropertyStateEnum | (string & {});
   /** The width of the border. */
   width?: Dimension;
   /** The color of the border. */
   color?: OptionalColor;
   /** The dash style of the border. */
-  dashStyle?: EmbeddedObjectBorderDashStyleEnum;
+  dashStyle?: EmbeddedObjectBorderDashStyleEnum | (string & {});
 }
 export const EmbeddedObjectBorder = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3895,7 +3894,7 @@ export interface PositionedObjectPositioning {
   /** The offset of the top edge of the positioned object relative to the beginning of the Paragraph it's tethered to. The exact positioning of the object can depend on other content in the document and the document's styling. */
   topOffset?: Dimension;
   /** The layout of this positioned object. */
-  layout?: PositionedObjectPositioningLayoutEnum;
+  layout?: PositionedObjectPositioningLayoutEnum | (string & {});
   /** The offset of the left edge of the positioned object relative to the beginning of the Paragraph it's tethered to. The exact positioning of the object can depend on other content in the document and the document's styling. */
   leftOffset?: Dimension;
 }
@@ -4003,7 +4002,7 @@ export const NamedStyleSuggestionStateNamedStyleTypeEnum =
 /** A suggestion state of a NamedStyle message. */
 export interface NamedStyleSuggestionState {
   /** The named style type that this suggestion state corresponds to. This field is provided as a convenience for matching the NamedStyleSuggestionState with its corresponding NamedStyle. */
-  namedStyleType?: NamedStyleSuggestionStateNamedStyleTypeEnum;
+  namedStyleType?: NamedStyleSuggestionStateNamedStyleTypeEnum | (string & {});
   /** A mask that indicates which of the fields in text style have been changed in this suggestion. */
   textStyleSuggestionState?: TextStyleSuggestionState;
   /** A mask that indicates which of the fields in paragraph style have been changed in this suggestion. */
@@ -4019,8 +4018,7 @@ export const NamedStyleSuggestionState = /*@__PURE__*/ S.suspend(() =>
   identifier: "NamedStyleSuggestionState",
 }) as any as S.Schema<NamedStyleSuggestionState>;
 
-export type NamedStyleSuggestionStateList =
-  ReadonlyArray<NamedStyleSuggestionState>;
+export type NamedStyleSuggestionStateList = Array<NamedStyleSuggestionState>;
 export const NamedStyleSuggestionStateList = /*@__PURE__*/ S.Array(
   NamedStyleSuggestionState,
 ) as any as S.Schema<NamedStyleSuggestionStateList>;
@@ -4143,7 +4141,7 @@ export const Tab = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Tab" }) as any as S.Schema<Tab>;
 
-export type TabList = ReadonlyArray<Tab>;
+export type TabList = Array<Tab>;
 export const TabList = /*@__PURE__*/ S.Array(Tab) as any as S.Schema<TabList>;
 
 export type DocumentSuggestionsViewModeEnum =
@@ -4182,7 +4180,7 @@ export interface Document {
   /** Output only. The suggested changes to the named styles of the document, keyed by suggestion ID. Legacy field: Instead, use Document.tabs.documentTab.suggestedNamedStylesChanges, which exposes the actual document content from all tabs when the includeTabsContent parameter is set to `true`. If `false` or unset, this field contains information about the first tab in the document. */
   suggestedNamedStylesChanges?: SuggestedNamedStylesMap;
   /** Output only. The suggestions view mode applied to the document. Note: When editing a document, changes must be based on a document with SUGGESTIONS_INLINE. */
-  suggestionsViewMode?: DocumentSuggestionsViewModeEnum;
+  suggestionsViewMode?: DocumentSuggestionsViewModeEnum | (string & {});
   /** The title of the document. */
   title?: string;
   /** Output only. The named ranges in the document, keyed by name. Legacy field: Instead, use Document.tabs.documentTab.namedRanges, which exposes the actual document content from all tabs when the includeTabsContent parameter is set to `true`. If `false` or unset, this field contains information about the first tab in the document. */

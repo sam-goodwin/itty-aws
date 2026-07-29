@@ -235,7 +235,7 @@ export const ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap =
   ) as any as S.Schema<ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap>;
 
 export type ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -776,7 +776,7 @@ export const ProjectsCreateRequestDeploymentConfigsProductionBrowsersMap =
   ) as any as S.Schema<ProjectsCreateRequestDeploymentConfigsProductionBrowsersMap>;
 
 export type ProjectsCreateRequestDeploymentConfigsProductionCompatibilityFlagsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ProjectsCreateRequestDeploymentConfigsProductionCompatibilityFlagsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1280,29 +1280,27 @@ export const ProjectsCreateRequestDeploymentConfigs = /*@__PURE__*/ S.suspend(
   identifier: "ProjectsCreateRequestDeploymentConfigs",
 }) as any as S.Schema<ProjectsCreateRequestDeploymentConfigs>;
 
-export type ProjectsCreateRequestSourceConfigPathExcludesList =
-  ReadonlyArray<string>;
+export type ProjectsCreateRequestSourceConfigPathExcludesList = Array<string>;
 export const ProjectsCreateRequestSourceConfigPathExcludesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ProjectsCreateRequestSourceConfigPathExcludesList>;
 
-export type ProjectsCreateRequestSourceConfigPathIncludesList =
-  ReadonlyArray<string>;
+export type ProjectsCreateRequestSourceConfigPathIncludesList = Array<string>;
 export const ProjectsCreateRequestSourceConfigPathIncludesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ProjectsCreateRequestSourceConfigPathIncludesList>;
 
 export type ProjectsCreateRequestSourceConfigPreviewBranchExcludesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ProjectsCreateRequestSourceConfigPreviewBranchExcludesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ProjectsCreateRequestSourceConfigPreviewBranchExcludesList>;
 
 export type ProjectsCreateRequestSourceConfigPreviewBranchIncludesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ProjectsCreateRequestSourceConfigPreviewBranchIncludesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1448,7 +1446,7 @@ export const CreateProjectRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateProjectRequest>;
 
 export type ProjectsCreateResponseCanonicalDeploymentAliasesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ProjectsCreateResponseCanonicalDeploymentAliasesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1636,28 +1634,28 @@ export const ProjectsCreateResponseCanonicalDeploymentLatestStage =
   }) as any as S.Schema<ProjectsCreateResponseCanonicalDeploymentLatestStage>;
 
 export type ProjectsCreateResponseCanonicalDeploymentSourceConfigPathExcludesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ProjectsCreateResponseCanonicalDeploymentSourceConfigPathExcludesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ProjectsCreateResponseCanonicalDeploymentSourceConfigPathExcludesList>;
 
 export type ProjectsCreateResponseCanonicalDeploymentSourceConfigPathIncludesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ProjectsCreateResponseCanonicalDeploymentSourceConfigPathIncludesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ProjectsCreateResponseCanonicalDeploymentSourceConfigPathIncludesList>;
 
 export type ProjectsCreateResponseCanonicalDeploymentSourceConfigPreviewBranchExcludesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ProjectsCreateResponseCanonicalDeploymentSourceConfigPreviewBranchExcludesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ProjectsCreateResponseCanonicalDeploymentSourceConfigPreviewBranchExcludesList>;
 
 export type ProjectsCreateResponseCanonicalDeploymentSourceConfigPreviewBranchIncludesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ProjectsCreateResponseCanonicalDeploymentSourceConfigPreviewBranchIncludesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1778,7 +1776,7 @@ export const ProjectsCreateResponseCanonicalDeploymentStagesItem =
   }) as any as S.Schema<ProjectsCreateResponseCanonicalDeploymentStagesItem>;
 
 export type ProjectsCreateResponseCanonicalDeploymentStagesList =
-  ReadonlyArray<ProjectsCreateResponseCanonicalDeploymentStagesItem>;
+  Array<ProjectsCreateResponseCanonicalDeploymentStagesItem>;
 export const ProjectsCreateResponseCanonicalDeploymentStagesList =
   /*@__PURE__*/ S.Array(
     ProjectsCreateResponseCanonicalDeploymentStagesItem,
@@ -1855,7 +1853,7 @@ export const ProjectsCreateResponseCanonicalDeployment =
   }) as any as S.Schema<ProjectsCreateResponseCanonicalDeployment>;
 
 export type ProjectsCreateResponseDeploymentConfigsPreviewCompatibilityFlagsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ProjectsCreateResponseDeploymentConfigsPreviewCompatibilityFlagsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2383,7 +2381,7 @@ export const ProjectsCreateResponseDeploymentConfigsPreview =
   }) as any as S.Schema<ProjectsCreateResponseDeploymentConfigsPreview>;
 
 export type ProjectsCreateResponseDeploymentConfigsProductionCompatibilityFlagsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ProjectsCreateResponseDeploymentConfigsProductionCompatibilityFlagsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2960,34 +2958,32 @@ export const ProjectsCreateResponseBuildConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProjectsCreateResponseBuildConfig",
 }) as any as S.Schema<ProjectsCreateResponseBuildConfig>;
 
-export type ProjectsCreateResponseDomainsList = ReadonlyArray<string>;
+export type ProjectsCreateResponseDomainsList = Array<string>;
 export const ProjectsCreateResponseDomainsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ProjectsCreateResponseDomainsList>;
 
-export type ProjectsCreateResponseSourceConfigPathExcludesList =
-  ReadonlyArray<string>;
+export type ProjectsCreateResponseSourceConfigPathExcludesList = Array<string>;
 export const ProjectsCreateResponseSourceConfigPathExcludesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ProjectsCreateResponseSourceConfigPathExcludesList>;
 
-export type ProjectsCreateResponseSourceConfigPathIncludesList =
-  ReadonlyArray<string>;
+export type ProjectsCreateResponseSourceConfigPathIncludesList = Array<string>;
 export const ProjectsCreateResponseSourceConfigPathIncludesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ProjectsCreateResponseSourceConfigPathIncludesList>;
 
 export type ProjectsCreateResponseSourceConfigPreviewBranchExcludesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ProjectsCreateResponseSourceConfigPreviewBranchExcludesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ProjectsCreateResponseSourceConfigPreviewBranchExcludesList>;
 
 export type ProjectsCreateResponseSourceConfigPreviewBranchIncludesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ProjectsCreateResponseSourceConfigPreviewBranchIncludesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3204,8 +3200,7 @@ export const CreateProjectDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateProjectDeploymentRequest",
 }) as any as S.Schema<CreateProjectDeploymentRequest>;
 
-export type ProjectsDeploymentsCreateResponseAliasesList =
-  ReadonlyArray<string>;
+export type ProjectsDeploymentsCreateResponseAliasesList = Array<string>;
 export const ProjectsDeploymentsCreateResponseAliasesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3391,28 +3386,28 @@ export const ProjectsDeploymentsCreateResponseLatestStage =
   }) as any as S.Schema<ProjectsDeploymentsCreateResponseLatestStage>;
 
 export type ProjectsDeploymentsCreateResponseSourceConfigPathExcludesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ProjectsDeploymentsCreateResponseSourceConfigPathExcludesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ProjectsDeploymentsCreateResponseSourceConfigPathExcludesList>;
 
 export type ProjectsDeploymentsCreateResponseSourceConfigPathIncludesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ProjectsDeploymentsCreateResponseSourceConfigPathIncludesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ProjectsDeploymentsCreateResponseSourceConfigPathIncludesList>;
 
 export type ProjectsDeploymentsCreateResponseSourceConfigPreviewBranchExcludesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ProjectsDeploymentsCreateResponseSourceConfigPreviewBranchExcludesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ProjectsDeploymentsCreateResponseSourceConfigPreviewBranchExcludesList>;
 
 export type ProjectsDeploymentsCreateResponseSourceConfigPreviewBranchIncludesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ProjectsDeploymentsCreateResponseSourceConfigPreviewBranchIncludesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3531,7 +3526,7 @@ export const ProjectsDeploymentsCreateResponseStagesItem =
   }) as any as S.Schema<ProjectsDeploymentsCreateResponseStagesItem>;
 
 export type ProjectsDeploymentsCreateResponseStagesList =
-  ReadonlyArray<ProjectsDeploymentsCreateResponseStagesItem>;
+  Array<ProjectsDeploymentsCreateResponseStagesItem>;
 export const ProjectsDeploymentsCreateResponseStagesList =
   /*@__PURE__*/ S.Array(
     ProjectsDeploymentsCreateResponseStagesItem,
@@ -3859,8 +3854,7 @@ export const GetProjectRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetProjectRequest",
 }) as any as S.Schema<GetProjectRequest>;
 
-export type ProjectsGetResponseCanonicalDeploymentAliasesList =
-  ReadonlyArray<string>;
+export type ProjectsGetResponseCanonicalDeploymentAliasesList = Array<string>;
 export const ProjectsGetResponseCanonicalDeploymentAliasesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4047,28 +4041,28 @@ export const ProjectsGetResponseCanonicalDeploymentLatestStage =
   }) as any as S.Schema<ProjectsGetResponseCanonicalDeploymentLatestStage>;
 
 export type ProjectsGetResponseCanonicalDeploymentSourceConfigPathExcludesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ProjectsGetResponseCanonicalDeploymentSourceConfigPathExcludesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ProjectsGetResponseCanonicalDeploymentSourceConfigPathExcludesList>;
 
 export type ProjectsGetResponseCanonicalDeploymentSourceConfigPathIncludesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ProjectsGetResponseCanonicalDeploymentSourceConfigPathIncludesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ProjectsGetResponseCanonicalDeploymentSourceConfigPathIncludesList>;
 
 export type ProjectsGetResponseCanonicalDeploymentSourceConfigPreviewBranchExcludesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ProjectsGetResponseCanonicalDeploymentSourceConfigPreviewBranchExcludesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ProjectsGetResponseCanonicalDeploymentSourceConfigPreviewBranchExcludesList>;
 
 export type ProjectsGetResponseCanonicalDeploymentSourceConfigPreviewBranchIncludesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ProjectsGetResponseCanonicalDeploymentSourceConfigPreviewBranchIncludesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4189,7 +4183,7 @@ export const ProjectsGetResponseCanonicalDeploymentStagesItem =
   }) as any as S.Schema<ProjectsGetResponseCanonicalDeploymentStagesItem>;
 
 export type ProjectsGetResponseCanonicalDeploymentStagesList =
-  ReadonlyArray<ProjectsGetResponseCanonicalDeploymentStagesItem>;
+  Array<ProjectsGetResponseCanonicalDeploymentStagesItem>;
 export const ProjectsGetResponseCanonicalDeploymentStagesList =
   /*@__PURE__*/ S.Array(
     ProjectsGetResponseCanonicalDeploymentStagesItem,
@@ -4266,7 +4260,7 @@ export const ProjectsGetResponseCanonicalDeployment = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ProjectsGetResponseCanonicalDeployment>;
 
 export type ProjectsGetResponseDeploymentConfigsPreviewCompatibilityFlagsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ProjectsGetResponseDeploymentConfigsPreviewCompatibilityFlagsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4787,7 +4781,7 @@ export const ProjectsGetResponseDeploymentConfigsPreview =
   }) as any as S.Schema<ProjectsGetResponseDeploymentConfigsPreview>;
 
 export type ProjectsGetResponseDeploymentConfigsProductionCompatibilityFlagsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ProjectsGetResponseDeploymentConfigsProductionCompatibilityFlagsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5357,34 +5351,32 @@ export const ProjectsGetResponseBuildConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProjectsGetResponseBuildConfig",
 }) as any as S.Schema<ProjectsGetResponseBuildConfig>;
 
-export type ProjectsGetResponseDomainsList = ReadonlyArray<string>;
+export type ProjectsGetResponseDomainsList = Array<string>;
 export const ProjectsGetResponseDomainsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ProjectsGetResponseDomainsList>;
 
-export type ProjectsGetResponseSourceConfigPathExcludesList =
-  ReadonlyArray<string>;
+export type ProjectsGetResponseSourceConfigPathExcludesList = Array<string>;
 export const ProjectsGetResponseSourceConfigPathExcludesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ProjectsGetResponseSourceConfigPathExcludesList>;
 
-export type ProjectsGetResponseSourceConfigPathIncludesList =
-  ReadonlyArray<string>;
+export type ProjectsGetResponseSourceConfigPathIncludesList = Array<string>;
 export const ProjectsGetResponseSourceConfigPathIncludesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ProjectsGetResponseSourceConfigPathIncludesList>;
 
 export type ProjectsGetResponseSourceConfigPreviewBranchExcludesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ProjectsGetResponseSourceConfigPreviewBranchExcludesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ProjectsGetResponseSourceConfigPreviewBranchExcludesList>;
 
 export type ProjectsGetResponseSourceConfigPreviewBranchIncludesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ProjectsGetResponseSourceConfigPreviewBranchIncludesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5569,7 +5561,7 @@ export const GetProjectDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetProjectDeploymentRequest",
 }) as any as S.Schema<GetProjectDeploymentRequest>;
 
-export type ProjectsDeploymentsGetResponseAliasesList = ReadonlyArray<string>;
+export type ProjectsDeploymentsGetResponseAliasesList = Array<string>;
 export const ProjectsDeploymentsGetResponseAliasesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ProjectsDeploymentsGetResponseAliasesList>;
@@ -5751,28 +5743,28 @@ export const ProjectsDeploymentsGetResponseLatestStage =
   }) as any as S.Schema<ProjectsDeploymentsGetResponseLatestStage>;
 
 export type ProjectsDeploymentsGetResponseSourceConfigPathExcludesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ProjectsDeploymentsGetResponseSourceConfigPathExcludesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ProjectsDeploymentsGetResponseSourceConfigPathExcludesList>;
 
 export type ProjectsDeploymentsGetResponseSourceConfigPathIncludesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ProjectsDeploymentsGetResponseSourceConfigPathIncludesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ProjectsDeploymentsGetResponseSourceConfigPathIncludesList>;
 
 export type ProjectsDeploymentsGetResponseSourceConfigPreviewBranchExcludesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ProjectsDeploymentsGetResponseSourceConfigPreviewBranchExcludesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ProjectsDeploymentsGetResponseSourceConfigPreviewBranchExcludesList>;
 
 export type ProjectsDeploymentsGetResponseSourceConfigPreviewBranchIncludesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ProjectsDeploymentsGetResponseSourceConfigPreviewBranchIncludesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5890,7 +5882,7 @@ export const ProjectsDeploymentsGetResponseStagesItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ProjectsDeploymentsGetResponseStagesItem>;
 
 export type ProjectsDeploymentsGetResponseStagesList =
-  ReadonlyArray<ProjectsDeploymentsGetResponseStagesItem>;
+  Array<ProjectsDeploymentsGetResponseStagesItem>;
 export const ProjectsDeploymentsGetResponseStagesList = /*@__PURE__*/ S.Array(
   ProjectsDeploymentsGetResponseStagesItem,
 ) as any as S.Schema<ProjectsDeploymentsGetResponseStagesList>;
@@ -6004,7 +5996,7 @@ export const ProjectsDeploymentsHistoryLogsGetResponseDataItem =
   }) as any as S.Schema<ProjectsDeploymentsHistoryLogsGetResponseDataItem>;
 
 export type ProjectsDeploymentsHistoryLogsGetResponseDataList =
-  ReadonlyArray<ProjectsDeploymentsHistoryLogsGetResponseDataItem>;
+  Array<ProjectsDeploymentsHistoryLogsGetResponseDataItem>;
 export const ProjectsDeploymentsHistoryLogsGetResponseDataList =
   /*@__PURE__*/ S.Array(
     ProjectsDeploymentsHistoryLogsGetResponseDataItem,
@@ -6194,8 +6186,7 @@ export const ListProjectDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectDeploymentsRequest",
 }) as any as S.Schema<ListProjectDeploymentsRequest>;
 
-export type ProjectsDeploymentsListResultItemAliasesList =
-  ReadonlyArray<string>;
+export type ProjectsDeploymentsListResultItemAliasesList = Array<string>;
 export const ProjectsDeploymentsListResultItemAliasesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6381,28 +6372,28 @@ export const ProjectsDeploymentsListResultItemLatestStage =
   }) as any as S.Schema<ProjectsDeploymentsListResultItemLatestStage>;
 
 export type ProjectsDeploymentsListResultItemSourceConfigPathExcludesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ProjectsDeploymentsListResultItemSourceConfigPathExcludesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ProjectsDeploymentsListResultItemSourceConfigPathExcludesList>;
 
 export type ProjectsDeploymentsListResultItemSourceConfigPathIncludesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ProjectsDeploymentsListResultItemSourceConfigPathIncludesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ProjectsDeploymentsListResultItemSourceConfigPathIncludesList>;
 
 export type ProjectsDeploymentsListResultItemSourceConfigPreviewBranchExcludesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ProjectsDeploymentsListResultItemSourceConfigPreviewBranchExcludesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ProjectsDeploymentsListResultItemSourceConfigPreviewBranchExcludesList>;
 
 export type ProjectsDeploymentsListResultItemSourceConfigPreviewBranchIncludesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ProjectsDeploymentsListResultItemSourceConfigPreviewBranchIncludesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6521,7 +6512,7 @@ export const ProjectsDeploymentsListResultItemStagesItem =
   }) as any as S.Schema<ProjectsDeploymentsListResultItemStagesItem>;
 
 export type ProjectsDeploymentsListResultItemStagesList =
-  ReadonlyArray<ProjectsDeploymentsListResultItemStagesItem>;
+  Array<ProjectsDeploymentsListResultItemStagesItem>;
 export const ProjectsDeploymentsListResultItemStagesList =
   /*@__PURE__*/ S.Array(
     ProjectsDeploymentsListResultItemStagesItem,
@@ -6594,7 +6585,7 @@ export const ProjectsDeploymentsListResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProjectsDeploymentsListResultItem>;
 
 export type ProjectsDeploymentsListResultList =
-  ReadonlyArray<ProjectsDeploymentsListResultItem>;
+  Array<ProjectsDeploymentsListResultItem>;
 export const ProjectsDeploymentsListResultList = /*@__PURE__*/ S.Array(
   ProjectsDeploymentsListResultItem,
 ) as any as S.Schema<ProjectsDeploymentsListResultList>;
@@ -6744,7 +6735,7 @@ export const ProjectsDomainsListResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProjectsDomainsListResultItem>;
 
 export type ProjectsDomainsListResultList =
-  ReadonlyArray<ProjectsDomainsListResultItem>;
+  Array<ProjectsDomainsListResultItem>;
 export const ProjectsDomainsListResultList = /*@__PURE__*/ S.Array(
   ProjectsDomainsListResultItem,
 ) as any as S.Schema<ProjectsDomainsListResultList>;
@@ -6791,7 +6782,7 @@ export const ListProjectsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsRequest>;
 
 export type ProjectsListResultItemCanonicalDeploymentAliasesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ProjectsListResultItemCanonicalDeploymentAliasesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6979,28 +6970,28 @@ export const ProjectsListResultItemCanonicalDeploymentLatestStage =
   }) as any as S.Schema<ProjectsListResultItemCanonicalDeploymentLatestStage>;
 
 export type ProjectsListResultItemCanonicalDeploymentSourceConfigPathExcludesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ProjectsListResultItemCanonicalDeploymentSourceConfigPathExcludesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ProjectsListResultItemCanonicalDeploymentSourceConfigPathExcludesList>;
 
 export type ProjectsListResultItemCanonicalDeploymentSourceConfigPathIncludesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ProjectsListResultItemCanonicalDeploymentSourceConfigPathIncludesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ProjectsListResultItemCanonicalDeploymentSourceConfigPathIncludesList>;
 
 export type ProjectsListResultItemCanonicalDeploymentSourceConfigPreviewBranchExcludesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ProjectsListResultItemCanonicalDeploymentSourceConfigPreviewBranchExcludesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ProjectsListResultItemCanonicalDeploymentSourceConfigPreviewBranchExcludesList>;
 
 export type ProjectsListResultItemCanonicalDeploymentSourceConfigPreviewBranchIncludesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ProjectsListResultItemCanonicalDeploymentSourceConfigPreviewBranchIncludesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -7121,7 +7112,7 @@ export const ProjectsListResultItemCanonicalDeploymentStagesItem =
   }) as any as S.Schema<ProjectsListResultItemCanonicalDeploymentStagesItem>;
 
 export type ProjectsListResultItemCanonicalDeploymentStagesList =
-  ReadonlyArray<ProjectsListResultItemCanonicalDeploymentStagesItem>;
+  Array<ProjectsListResultItemCanonicalDeploymentStagesItem>;
 export const ProjectsListResultItemCanonicalDeploymentStagesList =
   /*@__PURE__*/ S.Array(
     ProjectsListResultItemCanonicalDeploymentStagesItem,
@@ -7198,7 +7189,7 @@ export const ProjectsListResultItemCanonicalDeployment =
   }) as any as S.Schema<ProjectsListResultItemCanonicalDeployment>;
 
 export type ProjectsListResultItemDeploymentConfigsPreviewCompatibilityFlagsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ProjectsListResultItemDeploymentConfigsPreviewCompatibilityFlagsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -7726,7 +7717,7 @@ export const ProjectsListResultItemDeploymentConfigsPreview =
   }) as any as S.Schema<ProjectsListResultItemDeploymentConfigsPreview>;
 
 export type ProjectsListResultItemDeploymentConfigsProductionCompatibilityFlagsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ProjectsListResultItemDeploymentConfigsProductionCompatibilityFlagsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -8303,34 +8294,32 @@ export const ProjectsListResultItemBuildConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProjectsListResultItemBuildConfig",
 }) as any as S.Schema<ProjectsListResultItemBuildConfig>;
 
-export type ProjectsListResultItemDomainsList = ReadonlyArray<string>;
+export type ProjectsListResultItemDomainsList = Array<string>;
 export const ProjectsListResultItemDomainsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ProjectsListResultItemDomainsList>;
 
-export type ProjectsListResultItemSourceConfigPathExcludesList =
-  ReadonlyArray<string>;
+export type ProjectsListResultItemSourceConfigPathExcludesList = Array<string>;
 export const ProjectsListResultItemSourceConfigPathExcludesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ProjectsListResultItemSourceConfigPathExcludesList>;
 
-export type ProjectsListResultItemSourceConfigPathIncludesList =
-  ReadonlyArray<string>;
+export type ProjectsListResultItemSourceConfigPathIncludesList = Array<string>;
 export const ProjectsListResultItemSourceConfigPathIncludesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ProjectsListResultItemSourceConfigPathIncludesList>;
 
 export type ProjectsListResultItemSourceConfigPreviewBranchExcludesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ProjectsListResultItemSourceConfigPreviewBranchExcludesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ProjectsListResultItemSourceConfigPreviewBranchExcludesList>;
 
 export type ProjectsListResultItemSourceConfigPreviewBranchIncludesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ProjectsListResultItemSourceConfigPreviewBranchIncludesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -8488,7 +8477,7 @@ export const ProjectsListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProjectsListResultItem",
 }) as any as S.Schema<ProjectsListResultItem>;
 
-export type ProjectsListResultList = ReadonlyArray<ProjectsListResultItem>;
+export type ProjectsListResultList = Array<ProjectsListResultItem>;
 export const ProjectsListResultList = /*@__PURE__*/ S.Array(
   ProjectsListResultItem,
 ) as any as S.Schema<ProjectsListResultList>;
@@ -8594,7 +8583,7 @@ export const ProjectsEditRequestDeploymentConfigsPreviewBrowsersMap =
   ) as any as S.Schema<ProjectsEditRequestDeploymentConfigsPreviewBrowsersMap>;
 
 export type ProjectsEditRequestDeploymentConfigsPreviewCompatibilityFlagsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ProjectsEditRequestDeploymentConfigsPreviewCompatibilityFlagsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -9130,7 +9119,7 @@ export const ProjectsEditRequestDeploymentConfigsProductionBrowsersMap =
   ) as any as S.Schema<ProjectsEditRequestDeploymentConfigsProductionBrowsersMap>;
 
 export type ProjectsEditRequestDeploymentConfigsProductionCompatibilityFlagsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ProjectsEditRequestDeploymentConfigsProductionCompatibilityFlagsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -9630,29 +9619,27 @@ export const ProjectsEditRequestDeploymentConfigs = /*@__PURE__*/ S.suspend(
   identifier: "ProjectsEditRequestDeploymentConfigs",
 }) as any as S.Schema<ProjectsEditRequestDeploymentConfigs>;
 
-export type ProjectsEditRequestSourceConfigPathExcludesList =
-  ReadonlyArray<string>;
+export type ProjectsEditRequestSourceConfigPathExcludesList = Array<string>;
 export const ProjectsEditRequestSourceConfigPathExcludesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ProjectsEditRequestSourceConfigPathExcludesList>;
 
-export type ProjectsEditRequestSourceConfigPathIncludesList =
-  ReadonlyArray<string>;
+export type ProjectsEditRequestSourceConfigPathIncludesList = Array<string>;
 export const ProjectsEditRequestSourceConfigPathIncludesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ProjectsEditRequestSourceConfigPathIncludesList>;
 
 export type ProjectsEditRequestSourceConfigPreviewBranchExcludesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ProjectsEditRequestSourceConfigPreviewBranchExcludesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ProjectsEditRequestSourceConfigPreviewBranchExcludesList>;
 
 export type ProjectsEditRequestSourceConfigPreviewBranchIncludesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ProjectsEditRequestSourceConfigPreviewBranchIncludesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -9800,8 +9787,7 @@ export const PatchProjectRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchProjectRequest",
 }) as any as S.Schema<PatchProjectRequest>;
 
-export type ProjectsEditResponseCanonicalDeploymentAliasesList =
-  ReadonlyArray<string>;
+export type ProjectsEditResponseCanonicalDeploymentAliasesList = Array<string>;
 export const ProjectsEditResponseCanonicalDeploymentAliasesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -9989,28 +9975,28 @@ export const ProjectsEditResponseCanonicalDeploymentLatestStage =
   }) as any as S.Schema<ProjectsEditResponseCanonicalDeploymentLatestStage>;
 
 export type ProjectsEditResponseCanonicalDeploymentSourceConfigPathExcludesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ProjectsEditResponseCanonicalDeploymentSourceConfigPathExcludesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ProjectsEditResponseCanonicalDeploymentSourceConfigPathExcludesList>;
 
 export type ProjectsEditResponseCanonicalDeploymentSourceConfigPathIncludesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ProjectsEditResponseCanonicalDeploymentSourceConfigPathIncludesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ProjectsEditResponseCanonicalDeploymentSourceConfigPathIncludesList>;
 
 export type ProjectsEditResponseCanonicalDeploymentSourceConfigPreviewBranchExcludesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ProjectsEditResponseCanonicalDeploymentSourceConfigPreviewBranchExcludesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ProjectsEditResponseCanonicalDeploymentSourceConfigPreviewBranchExcludesList>;
 
 export type ProjectsEditResponseCanonicalDeploymentSourceConfigPreviewBranchIncludesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ProjectsEditResponseCanonicalDeploymentSourceConfigPreviewBranchIncludesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -10131,7 +10117,7 @@ export const ProjectsEditResponseCanonicalDeploymentStagesItem =
   }) as any as S.Schema<ProjectsEditResponseCanonicalDeploymentStagesItem>;
 
 export type ProjectsEditResponseCanonicalDeploymentStagesList =
-  ReadonlyArray<ProjectsEditResponseCanonicalDeploymentStagesItem>;
+  Array<ProjectsEditResponseCanonicalDeploymentStagesItem>;
 export const ProjectsEditResponseCanonicalDeploymentStagesList =
   /*@__PURE__*/ S.Array(
     ProjectsEditResponseCanonicalDeploymentStagesItem,
@@ -10208,7 +10194,7 @@ export const ProjectsEditResponseCanonicalDeployment = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ProjectsEditResponseCanonicalDeployment>;
 
 export type ProjectsEditResponseDeploymentConfigsPreviewCompatibilityFlagsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ProjectsEditResponseDeploymentConfigsPreviewCompatibilityFlagsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -10730,7 +10716,7 @@ export const ProjectsEditResponseDeploymentConfigsPreview =
   }) as any as S.Schema<ProjectsEditResponseDeploymentConfigsPreview>;
 
 export type ProjectsEditResponseDeploymentConfigsProductionCompatibilityFlagsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ProjectsEditResponseDeploymentConfigsProductionCompatibilityFlagsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -11302,34 +11288,32 @@ export const ProjectsEditResponseBuildConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProjectsEditResponseBuildConfig",
 }) as any as S.Schema<ProjectsEditResponseBuildConfig>;
 
-export type ProjectsEditResponseDomainsList = ReadonlyArray<string>;
+export type ProjectsEditResponseDomainsList = Array<string>;
 export const ProjectsEditResponseDomainsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ProjectsEditResponseDomainsList>;
 
-export type ProjectsEditResponseSourceConfigPathExcludesList =
-  ReadonlyArray<string>;
+export type ProjectsEditResponseSourceConfigPathExcludesList = Array<string>;
 export const ProjectsEditResponseSourceConfigPathExcludesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ProjectsEditResponseSourceConfigPathExcludesList>;
 
-export type ProjectsEditResponseSourceConfigPathIncludesList =
-  ReadonlyArray<string>;
+export type ProjectsEditResponseSourceConfigPathIncludesList = Array<string>;
 export const ProjectsEditResponseSourceConfigPathIncludesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ProjectsEditResponseSourceConfigPathIncludesList>;
 
 export type ProjectsEditResponseSourceConfigPreviewBranchExcludesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ProjectsEditResponseSourceConfigPreviewBranchExcludesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ProjectsEditResponseSourceConfigPreviewBranchExcludesList>;
 
 export type ProjectsEditResponseSourceConfigPreviewBranchIncludesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ProjectsEditResponseSourceConfigPreviewBranchIncludesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -11676,7 +11660,7 @@ export const RetryProjectDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "RetryProjectDeploymentRequest",
 }) as any as S.Schema<RetryProjectDeploymentRequest>;
 
-export type ProjectsDeploymentsRetryResponseAliasesList = ReadonlyArray<string>;
+export type ProjectsDeploymentsRetryResponseAliasesList = Array<string>;
 export const ProjectsDeploymentsRetryResponseAliasesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -11861,28 +11845,28 @@ export const ProjectsDeploymentsRetryResponseLatestStage =
   }) as any as S.Schema<ProjectsDeploymentsRetryResponseLatestStage>;
 
 export type ProjectsDeploymentsRetryResponseSourceConfigPathExcludesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ProjectsDeploymentsRetryResponseSourceConfigPathExcludesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ProjectsDeploymentsRetryResponseSourceConfigPathExcludesList>;
 
 export type ProjectsDeploymentsRetryResponseSourceConfigPathIncludesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ProjectsDeploymentsRetryResponseSourceConfigPathIncludesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ProjectsDeploymentsRetryResponseSourceConfigPathIncludesList>;
 
 export type ProjectsDeploymentsRetryResponseSourceConfigPreviewBranchExcludesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ProjectsDeploymentsRetryResponseSourceConfigPreviewBranchExcludesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ProjectsDeploymentsRetryResponseSourceConfigPreviewBranchExcludesList>;
 
 export type ProjectsDeploymentsRetryResponseSourceConfigPreviewBranchIncludesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ProjectsDeploymentsRetryResponseSourceConfigPreviewBranchIncludesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -12001,7 +11985,7 @@ export const ProjectsDeploymentsRetryResponseStagesItem =
   }) as any as S.Schema<ProjectsDeploymentsRetryResponseStagesItem>;
 
 export type ProjectsDeploymentsRetryResponseStagesList =
-  ReadonlyArray<ProjectsDeploymentsRetryResponseStagesItem>;
+  Array<ProjectsDeploymentsRetryResponseStagesItem>;
 export const ProjectsDeploymentsRetryResponseStagesList = /*@__PURE__*/ S.Array(
   ProjectsDeploymentsRetryResponseStagesItem,
 ) as any as S.Schema<ProjectsDeploymentsRetryResponseStagesList>;
@@ -12099,8 +12083,7 @@ export const RollbackProjectDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "RollbackProjectDeploymentRequest",
 }) as any as S.Schema<RollbackProjectDeploymentRequest>;
 
-export type ProjectsDeploymentsRollbackResponseAliasesList =
-  ReadonlyArray<string>;
+export type ProjectsDeploymentsRollbackResponseAliasesList = Array<string>;
 export const ProjectsDeploymentsRollbackResponseAliasesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -12286,28 +12269,28 @@ export const ProjectsDeploymentsRollbackResponseLatestStage =
   }) as any as S.Schema<ProjectsDeploymentsRollbackResponseLatestStage>;
 
 export type ProjectsDeploymentsRollbackResponseSourceConfigPathExcludesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ProjectsDeploymentsRollbackResponseSourceConfigPathExcludesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ProjectsDeploymentsRollbackResponseSourceConfigPathExcludesList>;
 
 export type ProjectsDeploymentsRollbackResponseSourceConfigPathIncludesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ProjectsDeploymentsRollbackResponseSourceConfigPathIncludesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ProjectsDeploymentsRollbackResponseSourceConfigPathIncludesList>;
 
 export type ProjectsDeploymentsRollbackResponseSourceConfigPreviewBranchExcludesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ProjectsDeploymentsRollbackResponseSourceConfigPreviewBranchExcludesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ProjectsDeploymentsRollbackResponseSourceConfigPreviewBranchExcludesList>;
 
 export type ProjectsDeploymentsRollbackResponseSourceConfigPreviewBranchIncludesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ProjectsDeploymentsRollbackResponseSourceConfigPreviewBranchIncludesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -12426,7 +12409,7 @@ export const ProjectsDeploymentsRollbackResponseStagesItem =
   }) as any as S.Schema<ProjectsDeploymentsRollbackResponseStagesItem>;
 
 export type ProjectsDeploymentsRollbackResponseStagesList =
-  ReadonlyArray<ProjectsDeploymentsRollbackResponseStagesItem>;
+  Array<ProjectsDeploymentsRollbackResponseStagesItem>;
 export const ProjectsDeploymentsRollbackResponseStagesList =
   /*@__PURE__*/ S.Array(
     ProjectsDeploymentsRollbackResponseStagesItem,

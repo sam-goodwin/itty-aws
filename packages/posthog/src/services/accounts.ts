@@ -87,7 +87,7 @@ export const AccountsCreateRequestProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccountsCreateRequestProperties>;
 
 /** Tag names attached to the account. Pass a list to replace existing tags. */
-export type AccountsCreateRequestTagsList = ReadonlyArray<string>;
+export type AccountsCreateRequestTagsList = Array<string>;
 export const AccountsCreateRequestTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AccountsCreateRequestTagsList>;
@@ -192,13 +192,13 @@ export const AccountProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccountProperties>;
 
 /** Tag names attached to the account. Pass a list to replace existing tags. */
-export type AccountTagsList = ReadonlyArray<string>;
+export type AccountTagsList = Array<string>;
 export const AccountTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AccountTagsList>;
 
 /** Short IDs of the internal notebooks linked to this account, used to persist investigations, call notes, and other free-form context. Empty list if no notebooks have been created for the account. */
-export type AccountNotebooksList = ReadonlyArray<string>;
+export type AccountNotebooksList = Array<string>;
 export const AccountNotebooksList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AccountNotebooksList>;
@@ -316,7 +316,7 @@ export const AccountsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "AccountsListRequest",
 }) as any as S.Schema<AccountsListRequest>;
 
-export type PaginatedAccountListResultsList = ReadonlyArray<Account>;
+export type PaginatedAccountListResultsList = Array<Account>;
 export const PaginatedAccountListResultsList = /*@__PURE__*/ S.Array(
   Account,
 ) as any as S.Schema<PaginatedAccountListResultsList>;
@@ -416,7 +416,7 @@ export const AccountsPartialUpdateRequestProperties = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<AccountsPartialUpdateRequestProperties>;
 
 /** Tag names attached to the account. Pass a list to replace existing tags. */
-export type AccountsPartialUpdateRequestTagsList = ReadonlyArray<string>;
+export type AccountsPartialUpdateRequestTagsList = Array<string>;
 export const AccountsPartialUpdateRequestTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AccountsPartialUpdateRequestTagsList>;
@@ -551,7 +551,7 @@ export const AccountsUpdateRequestProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccountsUpdateRequestProperties>;
 
 /** Tag names attached to the account. Pass a list to replace existing tags. */
-export type AccountsUpdateRequestTagsList = ReadonlyArray<string>;
+export type AccountsUpdateRequestTagsList = Array<string>;
 export const AccountsUpdateRequestTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AccountsUpdateRequestTagsList>;

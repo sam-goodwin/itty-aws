@@ -669,7 +669,7 @@ export type TunnelProtocol = "GRE" | "NO_ENCAP";
 export const TunnelProtocol = /*@__PURE__*/ S.String;
 
 export interface ConnectAttachmentOptions {
-  Protocol?: TunnelProtocol;
+  Protocol?: TunnelProtocol | (string & {});
 }
 export const ConnectAttachmentOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Protocol: S.optional(TunnelProtocol) }),

@@ -238,8 +238,7 @@ export const AssociationsGetResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "AssociationsGetResultItem",
 }) as any as S.Schema<AssociationsGetResultItem>;
 
-export type AssociationsGetResultList =
-  ReadonlyArray<AssociationsGetResultItem>;
+export type AssociationsGetResultList = Array<AssociationsGetResultItem>;
 export const AssociationsGetResultList = /*@__PURE__*/ S.Array(
   AssociationsGetResultItem,
 ) as any as S.Schema<AssociationsGetResultList>;
@@ -328,9 +327,7 @@ export const GetMtlsCertificateResponse = /*@__PURE__*/ S.suspend(() =>
 export type ListRequestType = "custom" | "gateway_managed" | "access_managed";
 export const ListRequestType = /*@__PURE__*/ S.String;
 
-export type ListRequestTypeList = ReadonlyArray<
-  ListRequestType | (string & {})
->;
+export type ListRequestTypeList = Array<ListRequestType | (string & {})>;
 export const ListRequestTypeList = /*@__PURE__*/ S.Array(
   ListRequestType,
 ) as any as S.Schema<ListRequestTypeList>;
@@ -401,7 +398,7 @@ export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ListResultItem" }) as any as S.Schema<ListResultItem>;
 
-export type ListResultList = ReadonlyArray<ListResultItem>;
+export type ListResultList = Array<ListResultItem>;
 export const ListResultList = /*@__PURE__*/ S.Array(
   ListResultItem,
 ) as any as S.Schema<ListResultList>;

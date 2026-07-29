@@ -132,7 +132,7 @@ export const AddressDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of suggested addresses. */
 export type AddressValidationResponseSuggestedAddressesList =
-  ReadonlyArray<AddressDetails>;
+  Array<AddressDetails>;
 export const AddressValidationResponseSuggestedAddressesList =
   /*@__PURE__*/ S.Array(
     AddressDetails,
@@ -261,7 +261,7 @@ export const BillingProfileInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of billing profiles associated with agreement and present only for specific agreements. */
 export type AgreementPropertiesBillingProfileInfoList =
-  ReadonlyArray<BillingProfileInfo>;
+  Array<BillingProfileInfo>;
 export const AgreementPropertiesBillingProfileInfoList = /*@__PURE__*/ S.Array(
   BillingProfileInfo,
 ) as any as S.Schema<AgreementPropertiesBillingProfileInfoList>;
@@ -294,7 +294,7 @@ export const Participant = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Participant" }) as any as S.Schema<Participant>;
 
 /** The list of participants that participates in acceptance of an agreement. */
-export type AgreementPropertiesParticipantsList = ReadonlyArray<Participant>;
+export type AgreementPropertiesParticipantsList = Array<Participant>;
 export const AgreementPropertiesParticipantsList = /*@__PURE__*/ S.Array(
   Participant,
 ) as any as S.Schema<AgreementPropertiesParticipantsList>;
@@ -432,7 +432,7 @@ export const Agreement = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Agreement" }) as any as S.Schema<Agreement>;
 
 /** The Agreement items on this page */
-export type AgreementListResultValueList = ReadonlyArray<Agreement>;
+export type AgreementListResultValueList = Array<Agreement>;
 export const AgreementListResultValueList = /*@__PURE__*/ S.Array(
   Agreement,
 ) as any as S.Schema<AgreementListResultValueList>;
@@ -778,8 +778,7 @@ export const AssociatedTenant = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AssociatedTenant>;
 
 /** The AssociatedTenant items on this page */
-export type AssociatedTenantListResultValueList =
-  ReadonlyArray<AssociatedTenant>;
+export type AssociatedTenantListResultValueList = Array<AssociatedTenant>;
 export const AssociatedTenantListResultValueList = /*@__PURE__*/ S.Array(
   AssociatedTenant,
 ) as any as S.Schema<AssociatedTenantListResultValueList>;
@@ -879,7 +878,7 @@ export const PaymentOnAccount = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of payments on accounts. */
 export type AvailableBalancePropertiesPaymentsOnAccountList =
-  ReadonlyArray<PaymentOnAccount>;
+  Array<PaymentOnAccount>;
 export const AvailableBalancePropertiesPaymentsOnAccountList =
   /*@__PURE__*/ S.Array(
     PaymentOnAccount,
@@ -1025,7 +1024,7 @@ export const PaymentTermInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PaymentTermInput>;
 
 export type BillingAccountsAddPaymentTermsRequestBodyList =
-  ReadonlyArray<PaymentTermInput>;
+  Array<PaymentTermInput>;
 export const BillingAccountsAddPaymentTermsRequestBodyList =
   /*@__PURE__*/ S.Array(
     PaymentTermInput,
@@ -1201,7 +1200,7 @@ export const EnrollmentDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EnrollmentDetails>;
 
 /** The types of registration number allowed based on the country of the billing account. */
-export type RegistrationNumberTypeList = ReadonlyArray<string>;
+export type RegistrationNumberTypeList = Array<string>;
 export const RegistrationNumberTypeList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RegistrationNumberTypeList>;
@@ -1237,14 +1236,14 @@ export const BillingRelationshipType = /*@__PURE__*/ S.String;
 
 /** Identifies the billing relationships represented by a billing account. The billing relationship may be between Microsoft, the customer, and/or a third-party. */
 export type BillingAccountPropertiesBillingRelationshipTypesList =
-  ReadonlyArray<BillingRelationshipType>;
+  Array<BillingRelationshipType>;
 export const BillingAccountPropertiesBillingRelationshipTypesList =
   /*@__PURE__*/ S.Array(
     BillingRelationshipType,
   ) as any as S.Schema<BillingAccountPropertiesBillingRelationshipTypesList>;
 
 /** Qualifications for pricing on a billing account. Values may be Commercial, Education, Charity or Government. */
-export type BillingAccountPropertiesQualificationsList = ReadonlyArray<string>;
+export type BillingAccountPropertiesQualificationsList = Array<string>;
 export const BillingAccountPropertiesQualificationsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BillingAccountPropertiesQualificationsList>;
@@ -1282,13 +1281,13 @@ export interface TaxIdentifier {
   /** The id of the tax identifier. */
   id?: string;
   /** The type of the tax identifier. */
-  type?: TaxIdentifierType;
+  type?: TaxIdentifierType | (string & {});
   /** The scope of the tax identifier. */
   scope?: string;
   /** The country of the tax identifier. */
   country?: string;
   /** The status of the tax identifier. */
-  status?: TaxIdentifierStatus;
+  status?: TaxIdentifierStatus | (string & {});
 }
 export const TaxIdentifier = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1301,7 +1300,7 @@ export const TaxIdentifier = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TaxIdentifier" }) as any as S.Schema<TaxIdentifier>;
 
 /** A list of tax identifiers for the billing account. */
-export type BillingAccountPropertiesTaxIdsList = ReadonlyArray<TaxIdentifier>;
+export type BillingAccountPropertiesTaxIdsList = Array<TaxIdentifier>;
 export const BillingAccountPropertiesTaxIdsList = /*@__PURE__*/ S.Array(
   TaxIdentifier,
 ) as any as S.Schema<BillingAccountPropertiesTaxIdsList>;
@@ -1644,7 +1643,7 @@ export const BillingAccount = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BillingAccount" }) as any as S.Schema<BillingAccount>;
 
 /** The BillingAccount items on this page */
-export type BillingAccountListResultValueList = ReadonlyArray<BillingAccount>;
+export type BillingAccountListResultValueList = Array<BillingAccount>;
 export const BillingAccountListResultValueList = /*@__PURE__*/ S.Array(
   BillingAccount,
 ) as any as S.Schema<BillingAccountListResultValueList>;
@@ -1731,7 +1730,7 @@ export const AzurePlan = /*@__PURE__*/ S.suspend(() =>
 
 /** Enabled azure plans for the associated billing profile. */
 export type InvoiceSectionWithCreateSubPermissionEnabledAzurePlansList =
-  ReadonlyArray<AzurePlan>;
+  Array<AzurePlan>;
 export const InvoiceSectionWithCreateSubPermissionEnabledAzurePlansList =
   /*@__PURE__*/ S.Array(
     AzurePlan,
@@ -1784,7 +1783,7 @@ export const InvoiceSectionWithCreateSubPermission = /*@__PURE__*/ S.suspend(
 
 /** The InvoiceSectionWithCreateSubPermission items on this page */
 export type InvoiceSectionWithCreateSubPermissionListResultValueList =
-  ReadonlyArray<InvoiceSectionWithCreateSubPermission>;
+  Array<InvoiceSectionWithCreateSubPermission>;
 export const InvoiceSectionWithCreateSubPermissionListResultValueList =
   /*@__PURE__*/ S.Array(
     InvoiceSectionWithCreateSubPermission,
@@ -1852,8 +1851,7 @@ export const RegistrationNumberInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RegistrationNumberInput>;
 
 /** A list of tax identifiers for the billing account. */
-export type BillingAccountPropertiesInputTaxIdsList =
-  ReadonlyArray<TaxIdentifier>;
+export type BillingAccountPropertiesInputTaxIdsList = Array<TaxIdentifier>;
 export const BillingAccountPropertiesInputTaxIdsList = /*@__PURE__*/ S.Array(
   TaxIdentifier,
 ) as any as S.Schema<BillingAccountPropertiesInputTaxIdsList>;
@@ -1957,7 +1955,7 @@ export const BillingAccountsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BillingAccountsUpdateResponse>;
 
 export type BillingAccountsValidatePaymentTermsRequestBodyList =
-  ReadonlyArray<PaymentTermInput>;
+  Array<PaymentTermInput>;
 export const BillingAccountsValidatePaymentTermsRequestBodyList =
   /*@__PURE__*/ S.Array(
     PaymentTermInput,
@@ -2023,7 +2021,7 @@ export const PaymentTermsEligibilityDetail = /*@__PURE__*/ S.suspend(() =>
 
 /** Details of the payment terms eligibility. */
 export type PaymentTermsEligibilityResultEligibilityDetailsList =
-  ReadonlyArray<PaymentTermsEligibilityDetail>;
+  Array<PaymentTermsEligibilityDetail>;
 export const PaymentTermsEligibilityResultEligibilityDetailsList =
   /*@__PURE__*/ S.Array(
     PaymentTermsEligibilityDetail,
@@ -2049,7 +2047,7 @@ export const PaymentTermsEligibilityResult = /*@__PURE__*/ S.suspend(() =>
 
 /** List of actions passed in the request body against which the permissions will be checked. */
 export type BillingPermissionsCheckAccessByBillingAccountRequestActionsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const BillingPermissionsCheckAccessByBillingAccountRequestActionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2101,7 +2099,7 @@ export const CheckAccessResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CheckAccessResponse>;
 
 export type BillingPermissionsCheckAccessByBillingAccountResponseBodyList =
-  ReadonlyArray<CheckAccessResponse>;
+  Array<CheckAccessResponse>;
 export const BillingPermissionsCheckAccessByBillingAccountResponseBodyList =
   /*@__PURE__*/ S.Array(
     CheckAccessResponse,
@@ -2120,7 +2118,7 @@ export const BillingPermissionsCheckAccessByBillingAccountResponse =
 
 /** List of actions passed in the request body against which the permissions will be checked. */
 export type BillingPermissionsCheckAccessByBillingProfileRequestActionsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const BillingPermissionsCheckAccessByBillingProfileRequestActionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2155,7 +2153,7 @@ export const BillingPermissionsCheckAccessByBillingProfileRequest =
   }) as any as S.Schema<BillingPermissionsCheckAccessByBillingProfileRequest>;
 
 export type BillingPermissionsCheckAccessByBillingProfileResponseBodyList =
-  ReadonlyArray<CheckAccessResponse>;
+  Array<CheckAccessResponse>;
 export const BillingPermissionsCheckAccessByBillingProfileResponseBodyList =
   /*@__PURE__*/ S.Array(
     CheckAccessResponse,
@@ -2174,7 +2172,7 @@ export const BillingPermissionsCheckAccessByBillingProfileResponse =
 
 /** List of actions passed in the request body against which the permissions will be checked. */
 export type BillingPermissionsCheckAccessByCustomerRequestActionsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const BillingPermissionsCheckAccessByCustomerRequestActionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2212,7 +2210,7 @@ export const BillingPermissionsCheckAccessByCustomerRequest =
   }) as any as S.Schema<BillingPermissionsCheckAccessByCustomerRequest>;
 
 export type BillingPermissionsCheckAccessByCustomerResponseBodyList =
-  ReadonlyArray<CheckAccessResponse>;
+  Array<CheckAccessResponse>;
 export const BillingPermissionsCheckAccessByCustomerResponseBodyList =
   /*@__PURE__*/ S.Array(
     CheckAccessResponse,
@@ -2231,7 +2229,7 @@ export const BillingPermissionsCheckAccessByCustomerResponse =
 
 /** List of actions passed in the request body against which the permissions will be checked. */
 export type BillingPermissionsCheckAccessByDepartmentRequestActionsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const BillingPermissionsCheckAccessByDepartmentRequestActionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2266,7 +2264,7 @@ export const BillingPermissionsCheckAccessByDepartmentRequest =
   }) as any as S.Schema<BillingPermissionsCheckAccessByDepartmentRequest>;
 
 export type BillingPermissionsCheckAccessByDepartmentResponseBodyList =
-  ReadonlyArray<CheckAccessResponse>;
+  Array<CheckAccessResponse>;
 export const BillingPermissionsCheckAccessByDepartmentResponseBodyList =
   /*@__PURE__*/ S.Array(
     CheckAccessResponse,
@@ -2285,7 +2283,7 @@ export const BillingPermissionsCheckAccessByDepartmentResponse =
 
 /** List of actions passed in the request body against which the permissions will be checked. */
 export type BillingPermissionsCheckAccessByEnrollmentAccountRequestActionsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const BillingPermissionsCheckAccessByEnrollmentAccountRequestActionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2320,7 +2318,7 @@ export const BillingPermissionsCheckAccessByEnrollmentAccountRequest =
   }) as any as S.Schema<BillingPermissionsCheckAccessByEnrollmentAccountRequest>;
 
 export type BillingPermissionsCheckAccessByEnrollmentAccountResponseBodyList =
-  ReadonlyArray<CheckAccessResponse>;
+  Array<CheckAccessResponse>;
 export const BillingPermissionsCheckAccessByEnrollmentAccountResponseBodyList =
   /*@__PURE__*/ S.Array(
     CheckAccessResponse,
@@ -2339,7 +2337,7 @@ export const BillingPermissionsCheckAccessByEnrollmentAccountResponse =
 
 /** List of actions passed in the request body against which the permissions will be checked. */
 export type BillingPermissionsCheckAccessByInvoiceSectionRequestActionsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const BillingPermissionsCheckAccessByInvoiceSectionRequestActionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2377,7 +2375,7 @@ export const BillingPermissionsCheckAccessByInvoiceSectionRequest =
   }) as any as S.Schema<BillingPermissionsCheckAccessByInvoiceSectionRequest>;
 
 export type BillingPermissionsCheckAccessByInvoiceSectionResponseBodyList =
-  ReadonlyArray<CheckAccessResponse>;
+  Array<CheckAccessResponse>;
 export const BillingPermissionsCheckAccessByInvoiceSectionResponseBodyList =
   /*@__PURE__*/ S.Array(
     CheckAccessResponse,
@@ -2415,13 +2413,13 @@ export const BillingPermissionsListByBillingAccountRequest =
   }) as any as S.Schema<BillingPermissionsListByBillingAccountRequest>;
 
 /** The set of actions that the caller is allowed to perform. */
-export type BillingPermissionActionsList = ReadonlyArray<string>;
+export type BillingPermissionActionsList = Array<string>;
 export const BillingPermissionActionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BillingPermissionActionsList>;
 
 /** The set of actions that the caller is not allowed to perform. */
-export type BillingPermissionNotActionsList = ReadonlyArray<string>;
+export type BillingPermissionNotActionsList = Array<string>;
 export const BillingPermissionNotActionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BillingPermissionNotActionsList>;
@@ -2443,8 +2441,7 @@ export const BillingPermission = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BillingPermission>;
 
 /** The BillingPermission items on this page */
-export type BillingPermissionListResultValueList =
-  ReadonlyArray<BillingPermission>;
+export type BillingPermissionListResultValueList = Array<BillingPermission>;
 export const BillingPermissionListResultValueList = /*@__PURE__*/ S.Array(
   BillingPermission,
 ) as any as S.Schema<BillingPermissionListResultValueList>;
@@ -2611,15 +2608,14 @@ export const BillingPermissionsListByInvoiceSectionRequest =
 
 /** Information about the enabled azure plans. */
 export type BillingProfilePropertiesInputEnabledAzurePlansList =
-  ReadonlyArray<AzurePlan>;
+  Array<AzurePlan>;
 export const BillingProfilePropertiesInputEnabledAzurePlansList =
   /*@__PURE__*/ S.Array(
     AzurePlan,
   ) as any as S.Schema<BillingProfilePropertiesInputEnabledAzurePlansList>;
 
 /** The list of email addresses to receive invoices by email for the billing profile. */
-export type BillingProfilePropertiesInputInvoiceRecipientsList =
-  ReadonlyArray<string>;
+export type BillingProfilePropertiesInputInvoiceRecipientsList = Array<string>;
 export const BillingProfilePropertiesInputInvoiceRecipientsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2721,16 +2717,14 @@ export const BillingProfilesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<BillingProfilesCreateOrUpdateRequest>;
 
 /** Information about the enabled azure plans. */
-export type BillingProfilePropertiesEnabledAzurePlansList =
-  ReadonlyArray<AzurePlan>;
+export type BillingProfilePropertiesEnabledAzurePlansList = Array<AzurePlan>;
 export const BillingProfilePropertiesEnabledAzurePlansList =
   /*@__PURE__*/ S.Array(
     AzurePlan,
   ) as any as S.Schema<BillingProfilePropertiesEnabledAzurePlansList>;
 
 /** The list of email addresses to receive invoices by email for the billing profile. */
-export type BillingProfilePropertiesInvoiceRecipientsList =
-  ReadonlyArray<string>;
+export type BillingProfilePropertiesInvoiceRecipientsList = Array<string>;
 export const BillingProfilePropertiesInvoiceRecipientsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2795,7 +2789,7 @@ export const SpendingLimitDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** The details of billing profile spending limit. */
 export type BillingProfilePropertiesSpendingLimitDetailsList =
-  ReadonlyArray<SpendingLimitDetails>;
+  Array<SpendingLimitDetails>;
 export const BillingProfilePropertiesSpendingLimitDetailsList =
   /*@__PURE__*/ S.Array(
     SpendingLimitDetails,
@@ -2811,7 +2805,7 @@ export const BillingProfilePropertiesTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<BillingProfilePropertiesTagsMap>;
 
 /** Identifies the cloud environments that are associated with a billing profile. This is a system managed optional field and gets updated as the billing profile gets associated with accounts in various clouds. */
-export type BillingProfilePropertiesTargetCloudsList = ReadonlyArray<string>;
+export type BillingProfilePropertiesTargetCloudsList = Array<string>;
 export const BillingProfilePropertiesTargetCloudsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BillingProfilePropertiesTargetCloudsList>;
@@ -2837,8 +2831,7 @@ export const PaymentTerm = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PaymentTerm" }) as any as S.Schema<PaymentTerm>;
 
 /** The other payment terms of the billing profile. */
-export type BillingProfilePropertiesOtherPaymentTermsList =
-  ReadonlyArray<PaymentTerm>;
+export type BillingProfilePropertiesOtherPaymentTermsList = Array<PaymentTerm>;
 export const BillingProfilePropertiesOtherPaymentTermsList =
   /*@__PURE__*/ S.Array(
     PaymentTerm,
@@ -3131,7 +3124,7 @@ export const BillingProfile = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BillingProfile" }) as any as S.Schema<BillingProfile>;
 
 /** The BillingProfile items on this page */
-export type BillingProfileListResultValueList = ReadonlyArray<BillingProfile>;
+export type BillingProfileListResultValueList = Array<BillingProfile>;
 export const BillingProfileListResultValueList = /*@__PURE__*/ S.Array(
   BillingProfile,
 ) as any as S.Schema<BillingProfileListResultValueList>;
@@ -3211,7 +3204,7 @@ export const DeleteBillingProfileEligibilityDetail = /*@__PURE__*/ S.suspend(
 
 /** Validation details of delete billing profile eligibility. */
 export type DeleteBillingProfileEligibilityResultEligibilityDetailsList =
-  ReadonlyArray<DeleteBillingProfileEligibilityDetail>;
+  Array<DeleteBillingProfileEligibilityDetail>;
 export const DeleteBillingProfileEligibilityResultEligibilityDetailsList =
   /*@__PURE__*/ S.Array(
     DeleteBillingProfileEligibilityDetail,
@@ -3263,7 +3256,7 @@ export const BillingPropertyGetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The details of billing profile spending limit. */
 export type BillingPropertyPropertiesBillingProfileSpendingLimitDetailsList =
-  ReadonlyArray<SpendingLimitDetails>;
+  Array<SpendingLimitDetails>;
 export const BillingPropertyPropertiesBillingProfileSpendingLimitDetailsList =
   /*@__PURE__*/ S.Array(
     SpendingLimitDetails,
@@ -3347,7 +3340,7 @@ export const BillingSubscriptionStatusDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** The reason codes for the subscription status. */
 export type BillingPropertyPropertiesSubscriptionBillingStatusDetailsList =
-  ReadonlyArray<BillingSubscriptionStatusDetails>;
+  Array<BillingSubscriptionStatusDetails>;
 export const BillingPropertyPropertiesSubscriptionBillingStatusDetailsList =
   /*@__PURE__*/ S.Array(
     BillingSubscriptionStatusDetails,
@@ -3679,8 +3672,7 @@ export const Principal = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Principal" }) as any as S.Schema<Principal>;
 
 /** The recipients of the billing request. */
-export type BillingRequestPropertiesInputRecipientsList =
-  ReadonlyArray<Principal>;
+export type BillingRequestPropertiesInputRecipientsList = Array<Principal>;
 export const BillingRequestPropertiesInputRecipientsList =
   /*@__PURE__*/ S.Array(
     Principal,
@@ -3795,7 +3787,7 @@ export const BillingRequestPropertiesAdditionalInformationMap =
   ) as any as S.Schema<BillingRequestPropertiesAdditionalInformationMap>;
 
 /** The recipients of the billing request. */
-export type BillingRequestPropertiesRecipientsList = ReadonlyArray<Principal>;
+export type BillingRequestPropertiesRecipientsList = Array<Principal>;
 export const BillingRequestPropertiesRecipientsList = /*@__PURE__*/ S.Array(
   Principal,
 ) as any as S.Schema<BillingRequestPropertiesRecipientsList>;
@@ -4073,7 +4065,7 @@ export const BillingRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BillingRequest" }) as any as S.Schema<BillingRequest>;
 
 /** The BillingRequest items on this page */
-export type BillingRequestListResultValueList = ReadonlyArray<BillingRequest>;
+export type BillingRequestListResultValueList = Array<BillingRequest>;
 export const BillingRequestListResultValueList = /*@__PURE__*/ S.Array(
   BillingRequest,
 ) as any as S.Schema<BillingRequestListResultValueList>;
@@ -5642,7 +5634,7 @@ export const BillingRoleAssignment = /*@__PURE__*/ S.suspend(() =>
 
 /** The BillingRoleAssignment items on this page */
 export type BillingRoleAssignmentListResultValueList =
-  ReadonlyArray<BillingRoleAssignment>;
+  Array<BillingRoleAssignment>;
 export const BillingRoleAssignmentListResultValueList = /*@__PURE__*/ S.Array(
   BillingRoleAssignment,
 ) as any as S.Schema<BillingRoleAssignmentListResultValueList>;
@@ -5955,7 +5947,7 @@ export const BillingRoleDefinitionGetByBillingAccountRequest =
 
 /** The billingPermissions the role has. */
 export type BillingRoleDefinitionPropertiesPermissionsList =
-  ReadonlyArray<BillingPermission>;
+  Array<BillingPermission>;
 export const BillingRoleDefinitionPropertiesPermissionsList =
   /*@__PURE__*/ S.Array(
     BillingPermission,
@@ -6405,7 +6397,7 @@ export const BillingRoleDefinition = /*@__PURE__*/ S.suspend(() =>
 
 /** The BillingRoleDefinition items on this page */
 export type BillingRoleDefinitionListResultValueList =
-  ReadonlyArray<BillingRoleDefinition>;
+  Array<BillingRoleDefinition>;
 export const BillingRoleDefinitionListResultValueList = /*@__PURE__*/ S.Array(
   BillingRoleDefinition,
 ) as any as S.Schema<BillingRoleDefinitionListResultValueList>;
@@ -6795,7 +6787,7 @@ export const BillingSubscriptionOperationStatus = /*@__PURE__*/ S.String;
 
 /** The suspension reason for a subscription. This field is not available for Enterprise Agreement billing accounts. */
 export type BillingSubscriptionAliasPropertiesSuspensionReasonsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const BillingSubscriptionAliasPropertiesSuspensionReasonsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6803,7 +6795,7 @@ export const BillingSubscriptionAliasPropertiesSuspensionReasonsList =
 
 /** The suspension details for a subscription. This field is not available for Enterprise Agreement billing accounts. */
 export type BillingSubscriptionAliasPropertiesSuspensionReasonDetailsList =
-  ReadonlyArray<BillingSubscriptionStatusDetails>;
+  Array<BillingSubscriptionStatusDetails>;
 export const BillingSubscriptionAliasPropertiesSuspensionReasonDetailsList =
   /*@__PURE__*/ S.Array(
     BillingSubscriptionStatusDetails,
@@ -7143,7 +7135,7 @@ export const BillingSubscriptionAlias = /*@__PURE__*/ S.suspend(() =>
 
 /** The BillingSubscriptionAlias items on this page */
 export type BillingSubscriptionAliasListResultValueList =
-  ReadonlyArray<BillingSubscriptionAlias>;
+  Array<BillingSubscriptionAlias>;
 export const BillingSubscriptionAliasListResultValueList =
   /*@__PURE__*/ S.Array(
     BillingSubscriptionAlias,
@@ -7269,8 +7261,7 @@ export const BillingSubscriptionPropertiesBillingPoliciesMap =
   ) as any as S.Schema<BillingSubscriptionPropertiesBillingPoliciesMap>;
 
 /** The suspension reason for a subscription. This field is not available for Enterprise Agreement billing accounts. */
-export type BillingSubscriptionPropertiesSuspensionReasonsList =
-  ReadonlyArray<string>;
+export type BillingSubscriptionPropertiesSuspensionReasonsList = Array<string>;
 export const BillingSubscriptionPropertiesSuspensionReasonsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -7278,7 +7269,7 @@ export const BillingSubscriptionPropertiesSuspensionReasonsList =
 
 /** The suspension details for a subscription. This field is not available for Enterprise Agreement billing accounts. */
 export type BillingSubscriptionPropertiesSuspensionReasonDetailsList =
-  ReadonlyArray<BillingSubscriptionStatusDetails>;
+  Array<BillingSubscriptionStatusDetails>;
 export const BillingSubscriptionPropertiesSuspensionReasonDetailsList =
   /*@__PURE__*/ S.Array(
     BillingSubscriptionStatusDetails,
@@ -7623,8 +7614,7 @@ export const BillingSubscription = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BillingSubscription>;
 
 /** The list of resources. */
-export type BillingSubscriptionListResultValueList =
-  ReadonlyArray<BillingSubscription>;
+export type BillingSubscriptionListResultValueList = Array<BillingSubscription>;
 export const BillingSubscriptionListResultValueList = /*@__PURE__*/ S.Array(
   BillingSubscription,
 ) as any as S.Schema<BillingSubscriptionListResultValueList>;
@@ -8335,13 +8325,13 @@ export const CustomersGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CustomersGetRequest>;
 
 /** Azure plans enabled for the customer. */
-export type CustomerPropertiesEnabledAzurePlansList = ReadonlyArray<AzurePlan>;
+export type CustomerPropertiesEnabledAzurePlansList = Array<AzurePlan>;
 export const CustomerPropertiesEnabledAzurePlansList = /*@__PURE__*/ S.Array(
   AzurePlan,
 ) as any as S.Schema<CustomerPropertiesEnabledAzurePlansList>;
 
 /** The list of resellers for which an Azure plan is enabled for the customer. */
-export type CustomerPropertiesResellersList = ReadonlyArray<Reseller>;
+export type CustomerPropertiesResellersList = Array<Reseller>;
 export const CustomerPropertiesResellersList = /*@__PURE__*/ S.Array(
   Reseller,
 ) as any as S.Schema<CustomerPropertiesResellersList>;
@@ -8556,7 +8546,7 @@ export const Customer = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Customer" }) as any as S.Schema<Customer>;
 
 /** The Customer items on this page */
-export type CustomerListResultValueList = ReadonlyArray<Customer>;
+export type CustomerListResultValueList = Array<Customer>;
 export const CustomerListResultValueList = /*@__PURE__*/ S.Array(
   Customer,
 ) as any as S.Schema<CustomerListResultValueList>;
@@ -8770,7 +8760,7 @@ export const Department = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Department" }) as any as S.Schema<Department>;
 
 /** The Department items on this page */
-export type DepartmentListResultValueList = ReadonlyArray<Department>;
+export type DepartmentListResultValueList = Array<Department>;
 export const DepartmentListResultValueList = /*@__PURE__*/ S.Array(
   Department,
 ) as any as S.Schema<DepartmentListResultValueList>;
@@ -9027,8 +9017,7 @@ export const EnrollmentAccount = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EnrollmentAccount>;
 
 /** The EnrollmentAccount items on this page */
-export type EnrollmentAccountListResultValueList =
-  ReadonlyArray<EnrollmentAccount>;
+export type EnrollmentAccountListResultValueList = Array<EnrollmentAccount>;
 export const EnrollmentAccountListResultValueList = /*@__PURE__*/ S.Array(
   EnrollmentAccount,
 ) as any as S.Schema<EnrollmentAccountListResultValueList>;
@@ -9204,7 +9193,7 @@ export const DocumentDownloadRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DocumentDownloadRequest>;
 
 export type InvoicesDownloadDocumentsByBillingAccountRequestBodyList =
-  ReadonlyArray<DocumentDownloadRequest>;
+  Array<DocumentDownloadRequest>;
 export const InvoicesDownloadDocumentsByBillingAccountRequestBodyList =
   /*@__PURE__*/ S.Array(
     DocumentDownloadRequest,
@@ -9235,7 +9224,7 @@ export const InvoicesDownloadDocumentsByBillingAccountRequest =
   }) as any as S.Schema<InvoicesDownloadDocumentsByBillingAccountRequest>;
 
 export type InvoicesDownloadDocumentsByBillingSubscriptionRequestBodyList =
-  ReadonlyArray<DocumentDownloadRequest>;
+  Array<DocumentDownloadRequest>;
 export const InvoicesDownloadDocumentsByBillingSubscriptionRequestBodyList =
   /*@__PURE__*/ S.Array(
     DocumentDownloadRequest,
@@ -9613,7 +9602,7 @@ export const InvoiceSection = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "InvoiceSection" }) as any as S.Schema<InvoiceSection>;
 
 /** The InvoiceSection items on this page */
-export type InvoiceSectionListResultValueList = ReadonlyArray<InvoiceSection>;
+export type InvoiceSectionListResultValueList = Array<InvoiceSection>;
 export const InvoiceSectionListResultValueList = /*@__PURE__*/ S.Array(
   InvoiceSection,
 ) as any as S.Schema<InvoiceSectionListResultValueList>;
@@ -9692,7 +9681,7 @@ export const DeleteInvoiceSectionEligibilityDetail = /*@__PURE__*/ S.suspend(
 
 /** A list of delete invoice section eligibility result details. */
 export type DeleteInvoiceSectionEligibilityResultEligibilityDetailsList =
-  ReadonlyArray<DeleteInvoiceSectionEligibilityDetail>;
+  Array<DeleteInvoiceSectionEligibilityDetail>;
 export const DeleteInvoiceSectionEligibilityResultEligibilityDetailsList =
   /*@__PURE__*/ S.Array(
     DeleteInvoiceSectionEligibilityDetail,
@@ -9737,7 +9726,7 @@ export const InvoicesGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InvoicesGetRequest>;
 
 /** The document numbers for the invoice document. */
-export type InvoiceDocumentDocumentNumbersList = ReadonlyArray<string>;
+export type InvoiceDocumentDocumentNumbersList = Array<string>;
 export const InvoiceDocumentDocumentNumbersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<InvoiceDocumentDocumentNumbersList>;
@@ -9786,7 +9775,7 @@ export const InvoiceDocument = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InvoiceDocument>;
 
 /** List of documents available to download and view such as invoice, credit note, or tax receipt. */
-export type InvoicePropertiesDocumentsList = ReadonlyArray<InvoiceDocument>;
+export type InvoicePropertiesDocumentsList = Array<InvoiceDocument>;
 export const InvoicePropertiesDocumentsList = /*@__PURE__*/ S.Array(
   InvoiceDocument,
 ) as any as S.Schema<InvoicePropertiesDocumentsList>;
@@ -9814,7 +9803,7 @@ export const FailedPayment = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FailedPayment" }) as any as S.Schema<FailedPayment>;
 
 /** List of failed payments. */
-export type InvoicePropertiesFailedPaymentsList = ReadonlyArray<FailedPayment>;
+export type InvoicePropertiesFailedPaymentsList = Array<FailedPayment>;
 export const InvoicePropertiesFailedPaymentsList = /*@__PURE__*/ S.Array(
   FailedPayment,
 ) as any as S.Schema<InvoicePropertiesFailedPaymentsList>;
@@ -9854,7 +9843,7 @@ export const Payment = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Payment" }) as any as S.Schema<Payment>;
 
 /** List of payments. */
-export type InvoicePropertiesPaymentsList = ReadonlyArray<Payment>;
+export type InvoicePropertiesPaymentsList = Array<Payment>;
 export const InvoicePropertiesPaymentsList = /*@__PURE__*/ S.Array(
   Payment,
 ) as any as S.Schema<InvoicePropertiesPaymentsList>;
@@ -10279,7 +10268,7 @@ export const Invoice = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Invoice" }) as any as S.Schema<Invoice>;
 
 /** The Invoice items on this page */
-export type InvoiceListResultValueList = ReadonlyArray<Invoice>;
+export type InvoiceListResultValueList = Array<Invoice>;
 export const InvoiceListResultValueList = /*@__PURE__*/ S.Array(
   Invoice,
 ) as any as S.Schema<InvoiceListResultValueList>;
@@ -10444,7 +10433,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of billing operations supported by the Microsoft.Billing resource provider. */
-export type OperationListResultValueList = ReadonlyArray<Operation>;
+export type OperationListResultValueList = Array<Operation>;
 export const OperationListResultValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationListResultValueList>;
@@ -10570,7 +10559,7 @@ export const DetailedTransferStatus = /*@__PURE__*/ S.suspend(() =>
 
 /** Detailed transfer status. */
 export type PartnerTransferPropertiesDetailedTransferStatusList =
-  ReadonlyArray<DetailedTransferStatus>;
+  Array<DetailedTransferStatus>;
 export const PartnerTransferPropertiesDetailedTransferStatusList =
   /*@__PURE__*/ S.Array(
     DetailedTransferStatus,
@@ -10862,7 +10851,7 @@ export const PartnerTransferDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** The PartnerTransferDetails items on this page */
 export type PartnerTransferDetailsListResultValueList =
-  ReadonlyArray<PartnerTransferDetails>;
+  Array<PartnerTransferDetails>;
 export const PartnerTransferDetailsListResultValueList = /*@__PURE__*/ S.Array(
   PartnerTransferDetails,
 ) as any as S.Schema<PartnerTransferDetailsListResultValueList>;
@@ -10949,7 +10938,7 @@ export const PaymentMethodLogo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PaymentMethodLogo>;
 
 /** The list of logos for the payment method. */
-export type PaymentMethodPropertiesLogosList = ReadonlyArray<PaymentMethodLogo>;
+export type PaymentMethodPropertiesLogosList = Array<PaymentMethodLogo>;
 export const PaymentMethodPropertiesLogosList = /*@__PURE__*/ S.Array(
   PaymentMethodLogo,
 ) as any as S.Schema<PaymentMethodPropertiesLogosList>;
@@ -11060,8 +11049,7 @@ export const PaymentMethodsGetByBillingProfileRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PaymentMethodsGetByBillingProfileRequest>;
 
 /** The list of logos for the payment method. */
-export type PaymentMethodLinkPropertiesLogosList =
-  ReadonlyArray<PaymentMethodLogo>;
+export type PaymentMethodLinkPropertiesLogosList = Array<PaymentMethodLogo>;
 export const PaymentMethodLinkPropertiesLogosList = /*@__PURE__*/ S.Array(
   PaymentMethodLogo,
 ) as any as S.Schema<PaymentMethodLinkPropertiesLogosList>;
@@ -11253,7 +11241,7 @@ export const PaymentMethod = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PaymentMethod" }) as any as S.Schema<PaymentMethod>;
 
 /** The PaymentMethod items on this page */
-export type PaymentMethodsListResultValueList = ReadonlyArray<PaymentMethod>;
+export type PaymentMethodsListResultValueList = Array<PaymentMethod>;
 export const PaymentMethodsListResultValueList = /*@__PURE__*/ S.Array(
   PaymentMethod,
 ) as any as S.Schema<PaymentMethodsListResultValueList>;
@@ -11333,8 +11321,7 @@ export const PaymentMethodLink = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PaymentMethodLink>;
 
 /** The PaymentMethodLink items on this page */
-export type PaymentMethodLinksListResultValueList =
-  ReadonlyArray<PaymentMethodLink>;
+export type PaymentMethodLinksListResultValueList = Array<PaymentMethodLink>;
 export const PaymentMethodLinksListResultValueList = /*@__PURE__*/ S.Array(
   PaymentMethodLink,
 ) as any as S.Schema<PaymentMethodLinksListResultValueList>;
@@ -11397,11 +11384,13 @@ export const EnrollmentDepartmentAdminViewCharges = /*@__PURE__*/ S.String;
 /** The policies for Enterprise Agreement enrollments. */
 export interface EnterpriseAgreementPolicies {
   /** The state showing the enrollment auth level. */
-  authenticationType?: EnrollmentAuthLevelState;
+  authenticationType?: EnrollmentAuthLevelState | (string & {});
   /** The policy that controls whether account owner can view charges. */
-  accountOwnerViewCharges?: EnrollmentAccountOwnerViewCharges;
+  accountOwnerViewCharges?: EnrollmentAccountOwnerViewCharges | (string & {});
   /** The policy that controls whether department admin can view charges. */
-  departmentAdminViewCharges?: EnrollmentDepartmentAdminViewCharges;
+  departmentAdminViewCharges?:
+    | EnrollmentDepartmentAdminViewCharges
+    | (string & {});
 }
 export const EnterpriseAgreementPolicies = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -11451,7 +11440,7 @@ export interface PolicySummary {
   /** The value of the policy. */
   value?: string;
   /** The type of the policy. */
-  policyType?: PolicyType;
+  policyType?: PolicyType | (string & {});
   /** The scope at which the policy is defined. */
   scope?: string;
 }
@@ -11465,8 +11454,7 @@ export const PolicySummary = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PolicySummary" }) as any as S.Schema<PolicySummary>;
 
 /** List of all policies defined at the billing scope. */
-export type BillingAccountPolicyPropertiesPoliciesList =
-  ReadonlyArray<PolicySummary>;
+export type BillingAccountPolicyPropertiesPoliciesList = Array<PolicySummary>;
 export const BillingAccountPolicyPropertiesPoliciesList = /*@__PURE__*/ S.Array(
   PolicySummary,
 ) as any as S.Schema<BillingAccountPolicyPropertiesPoliciesList>;
@@ -11474,15 +11462,15 @@ export const BillingAccountPolicyPropertiesPoliciesList = /*@__PURE__*/ S.Array(
 /** A policy at billing account scope. */
 export interface BillingAccountPolicyProperties {
   /** The provisioning state of the resource during a long-running operation. */
-  provisioningState?: ProvisioningState;
+  provisioningState?: ProvisioningState | (string & {});
   /** The policies for Enterprise Agreement enrollments. */
   enterpriseAgreementPolicies?: EnterpriseAgreementPolicies;
   /** The policy that controls whether Azure marketplace purchases are allowed. */
-  marketplacePurchases?: MarketplacePurchasesPolicy;
+  marketplacePurchases?: MarketplacePurchasesPolicy | (string & {});
   /** The policy that controls whether Azure reservation purchases are allowed. */
-  reservationPurchases?: ReservationPurchasesPolicy;
+  reservationPurchases?: ReservationPurchasesPolicy | (string & {});
   /** The policy that controls whether users with Azure savings plan purchase are allowed. */
-  savingsPlanPurchases?: SavingsPlanPurchasesPolicy;
+  savingsPlanPurchases?: SavingsPlanPurchasesPolicy | (string & {});
   /** List of all policies defined at the billing scope. */
   policies?: BillingAccountPolicyPropertiesPoliciesList;
 }
@@ -11585,8 +11573,7 @@ export type ViewChargesPolicy = "Other" | "Allowed" | "NotAllowed";
 export const ViewChargesPolicy = /*@__PURE__*/ S.String;
 
 /** List of all policies defined at the billing scope. */
-export type BillingProfilePolicyPropertiesPoliciesList =
-  ReadonlyArray<PolicySummary>;
+export type BillingProfilePolicyPropertiesPoliciesList = Array<PolicySummary>;
 export const BillingProfilePolicyPropertiesPoliciesList = /*@__PURE__*/ S.Array(
   PolicySummary,
 ) as any as S.Schema<BillingProfilePolicyPropertiesPoliciesList>;
@@ -11594,19 +11581,21 @@ export const BillingProfilePolicyPropertiesPoliciesList = /*@__PURE__*/ S.Array(
 /** A policy at billing profile scope. */
 export interface BillingProfilePolicyProperties {
   /** The provisioning state of the resource during a long-running operation. */
-  provisioningState?: ProvisioningState;
+  provisioningState?: ProvisioningState | (string & {});
   /** The policies for Enterprise Agreement enrollments. */
   enterpriseAgreementPolicies?: EnterpriseAgreementPolicies;
   /** The policy that controls invoice section label management at invoice section scope. This is allowed by default. */
-  invoiceSectionLabelManagement?: InvoiceSectionLabelManagementPolicy;
+  invoiceSectionLabelManagement?:
+    | InvoiceSectionLabelManagementPolicy
+    | (string & {});
   /** The policy that controls whether Azure marketplace purchases are allowed. */
-  marketplacePurchases?: MarketplacePurchasesPolicy;
+  marketplacePurchases?: MarketplacePurchasesPolicy | (string & {});
   /** The policy that controls whether Azure reservation purchases are allowed. */
-  reservationPurchases?: ReservationPurchasesPolicy;
+  reservationPurchases?: ReservationPurchasesPolicy | (string & {});
   /** The policy that controls whether users with Azure savings plan purchase are allowed. */
-  savingsPlanPurchases?: SavingsPlanPurchasesPolicy;
+  savingsPlanPurchases?: SavingsPlanPurchasesPolicy | (string & {});
   /** The policy that controls whether the users in customer's organization can view charges at pay-as-you-go prices. */
-  viewCharges?: ViewChargesPolicy;
+  viewCharges?: ViewChargesPolicy | (string & {});
   /** List of all policies defined at the billing scope. */
   policies?: BillingProfilePolicyPropertiesPoliciesList;
 }
@@ -11705,7 +11694,7 @@ export const PoliciesCreateOrUpdateByBillingProfileResponse =
   }) as any as S.Schema<PoliciesCreateOrUpdateByBillingProfileResponse>;
 
 /** List of all policies defined at the billing scope. */
-export type CustomerPolicyPropertiesPoliciesList = ReadonlyArray<PolicySummary>;
+export type CustomerPolicyPropertiesPoliciesList = Array<PolicySummary>;
 export const CustomerPolicyPropertiesPoliciesList = /*@__PURE__*/ S.Array(
   PolicySummary,
 ) as any as S.Schema<CustomerPolicyPropertiesPoliciesList>;
@@ -11713,9 +11702,9 @@ export const CustomerPolicyPropertiesPoliciesList = /*@__PURE__*/ S.Array(
 /** A policy at customer scope. */
 export interface CustomerPolicyProperties {
   /** The provisioning state of the resource during a long-running operation. */
-  provisioningState?: ProvisioningState;
+  provisioningState?: ProvisioningState | (string & {});
   /** The policy that controls whether the users in customer's organization can view charges at pay-as-you-go prices. */
-  viewCharges: ViewChargesPolicy;
+  viewCharges: ViewChargesPolicy | (string & {});
   /** List of all policies defined at the billing scope. */
   policies?: CustomerPolicyPropertiesPoliciesList;
 }
@@ -12153,8 +12142,7 @@ export const PoliciesGetBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PoliciesGetBySubscriptionRequest>;
 
 /** List of all policies defined at the billing scope. */
-export type SubscriptionPolicyPropertiesPoliciesList =
-  ReadonlyArray<PolicySummary>;
+export type SubscriptionPolicyPropertiesPoliciesList = Array<PolicySummary>;
 export const SubscriptionPolicyPropertiesPoliciesList = /*@__PURE__*/ S.Array(
   PolicySummary,
 ) as any as S.Schema<SubscriptionPolicyPropertiesPoliciesList>;
@@ -12428,7 +12416,7 @@ export const Product = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Product" }) as any as S.Schema<Product>;
 
 /** The Product items on this page */
-export type ProductListResultValueList = ReadonlyArray<Product>;
+export type ProductListResultValueList = Array<Product>;
 export const ProductListResultValueList = /*@__PURE__*/ S.Array(
   Product,
 ) as any as S.Schema<ProductListResultValueList>;
@@ -12832,8 +12820,7 @@ export const ProductDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ProductDetails" }) as any as S.Schema<ProductDetails>;
 
 /** Request parameters to accept transfer. */
-export type AcceptTransferPropertiesProductDetailsList =
-  ReadonlyArray<ProductDetails>;
+export type AcceptTransferPropertiesProductDetailsList = Array<ProductDetails>;
 export const AcceptTransferPropertiesProductDetailsList = /*@__PURE__*/ S.Array(
   ProductDetails,
 ) as any as S.Schema<AcceptTransferPropertiesProductDetailsList>;
@@ -12882,7 +12869,7 @@ export const EligibleProductType = /*@__PURE__*/ S.String;
 
 /** Type of subscriptions that can be transferred. */
 export type RecipientTransferPropertiesAllowedProductTypeList =
-  ReadonlyArray<EligibleProductType>;
+  Array<EligibleProductType>;
 export const RecipientTransferPropertiesAllowedProductTypeList =
   /*@__PURE__*/ S.Array(
     EligibleProductType,
@@ -12890,7 +12877,7 @@ export const RecipientTransferPropertiesAllowedProductTypeList =
 
 /** Detailed transfer status. */
 export type RecipientTransferPropertiesDetailedTransferStatusList =
-  ReadonlyArray<DetailedTransferStatus>;
+  Array<DetailedTransferStatus>;
 export const RecipientTransferPropertiesDetailedTransferStatusList =
   /*@__PURE__*/ S.Array(
     DetailedTransferStatus,
@@ -12906,7 +12893,7 @@ export const SupportedAccountType = /*@__PURE__*/ S.String;
 
 /** List of supported account types. */
 export type RecipientTransferPropertiesSupportedAccountsList =
-  ReadonlyArray<SupportedAccountType>;
+  Array<SupportedAccountType>;
 export const RecipientTransferPropertiesSupportedAccountsList =
   /*@__PURE__*/ S.Array(
     SupportedAccountType,
@@ -13163,7 +13150,7 @@ export const RecipientTransferDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** The RecipientTransferDetails items on this page */
 export type RecipientTransferDetailsListResultValueList =
-  ReadonlyArray<RecipientTransferDetails>;
+  Array<RecipientTransferDetails>;
 export const RecipientTransferDetailsListResultValueList =
   /*@__PURE__*/ S.Array(
     RecipientTransferDetails,
@@ -13228,7 +13215,7 @@ export const ValidationResultProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** The array of validation results. */
 export type ValidateTransferResponsePropertiesResultsList =
-  ReadonlyArray<ValidationResultProperties>;
+  Array<ValidationResultProperties>;
 export const ValidateTransferResponsePropertiesResultsList =
   /*@__PURE__*/ S.Array(
     ValidationResultProperties,
@@ -13268,7 +13255,7 @@ export const ValidateTransferResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of transfer validation results. */
 export type ValidateTransferListResponseValueList =
-  ReadonlyArray<ValidateTransferResponse>;
+  Array<ValidateTransferResponse>;
 export const ValidateTransferListResponseValueList = /*@__PURE__*/ S.Array(
   ValidateTransferResponse,
 ) as any as S.Schema<ValidateTransferListResponseValueList>;
@@ -13427,7 +13414,7 @@ export const ReservationPaymentDetail = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReservationPaymentDetail>;
 
 export type ReservationOrderBillingPlanInformationTransactionsList =
-  ReadonlyArray<ReservationPaymentDetail>;
+  Array<ReservationPaymentDetail>;
 export const ReservationOrderBillingPlanInformationTransactionsList =
   /*@__PURE__*/ S.Array(
     ReservationPaymentDetail,
@@ -13462,14 +13449,13 @@ export type InstanceFlexibility = "On" | "Off";
 export const InstanceFlexibility = /*@__PURE__*/ S.String;
 
 /** The array of applied scopes of a reservation. Will be null if the reservation is in Shared scope */
-export type ReservationPropertyAppliedScopesList = ReadonlyArray<string>;
+export type ReservationPropertyAppliedScopesList = Array<string>;
 export const ReservationPropertyAppliedScopesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ReservationPropertyAppliedScopesList>;
 
 /** List of destination resource id that are created due to split. Format of the resource id is /providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/reservations/{reservationId} */
-export type ReservationSplitPropertiesSplitDestinationsList =
-  ReadonlyArray<string>;
+export type ReservationSplitPropertiesSplitDestinationsList = Array<string>;
 export const ReservationSplitPropertiesSplitDestinationsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -13494,7 +13480,7 @@ export const ReservationSplitProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReservationSplitProperties>;
 
 /** Resource ids of the source reservation's merged to form this reservation. Format of the resource id is /providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/reservations/{reservationId} */
-export type ReservationMergePropertiesMergeSourcesList = ReadonlyArray<string>;
+export type ReservationMergePropertiesMergeSourcesList = Array<string>;
 export const ReservationMergePropertiesMergeSourcesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ReservationMergePropertiesMergeSourcesList>;
@@ -13572,7 +13558,7 @@ export const AppliedScopeType = /*@__PURE__*/ S.String;
 
 /** List of the subscriptions that the benefit will be applied. Do not specify if AppliedScopeType is Shared. */
 export type ReservationPurchaseRequestPropertiesAppliedScopesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ReservationPurchaseRequestPropertiesAppliedScopesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -13581,7 +13567,7 @@ export const ReservationPurchaseRequestPropertiesAppliedScopesList =
 /** Properties specific to each reserved resource type. Not required if not applicable. */
 export interface ReservationPurchaseRequestPropertiesReservedResourceProperties {
   /** Turning this on will apply the reservation discount to other VMs in the same VM size group. Only specify for VirtualMachines reserved resource type. */
-  instanceFlexibility?: InstanceFlexibility;
+  instanceFlexibility?: InstanceFlexibility | (string & {});
 }
 export const ReservationPurchaseRequestPropertiesReservedResourceProperties =
   /*@__PURE__*/ S.suspend(() =>
@@ -13709,7 +13695,7 @@ export const ReservationUtilizationAggregates = /*@__PURE__*/ S.suspend(() =>
 
 /** The array of aggregates of a reservation's utilization */
 export type ReservationPropertyUtilizationAggregatesList =
-  ReadonlyArray<ReservationUtilizationAggregates>;
+  Array<ReservationUtilizationAggregates>;
 export const ReservationPropertyUtilizationAggregatesList =
   /*@__PURE__*/ S.Array(
     ReservationUtilizationAggregates,
@@ -13903,8 +13889,7 @@ export const Reservation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Reservation" }) as any as S.Schema<Reservation>;
 
-export type ReservationOrderPropertyReservationsList =
-  ReadonlyArray<Reservation>;
+export type ReservationOrderPropertyReservationsList = Array<Reservation>;
 export const ReservationOrderPropertyReservationsList = /*@__PURE__*/ S.Array(
   Reservation,
 ) as any as S.Schema<ReservationOrderPropertyReservationsList>;
@@ -14082,7 +14067,7 @@ export const ReservationOrder = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReservationOrder>;
 
 /** The ReservationOrder items on this page */
-export type ReservationOrderListValueList = ReadonlyArray<ReservationOrder>;
+export type ReservationOrderListValueList = Array<ReservationOrder>;
 export const ReservationOrderListValueList = /*@__PURE__*/ S.Array(
   ReservationOrder,
 ) as any as S.Schema<ReservationOrderListValueList>;
@@ -14254,7 +14239,7 @@ export const ReservationSummary = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReservationSummary>;
 
 /** The list of reservations. */
-export type ReservationsListResultValueList = ReadonlyArray<Reservation>;
+export type ReservationsListResultValueList = Array<Reservation>;
 export const ReservationsListResultValueList = /*@__PURE__*/ S.Array(
   Reservation,
 ) as any as S.Schema<ReservationsListResultValueList>;
@@ -14343,7 +14328,7 @@ export const ReservationsListByReservationOrderRequest =
   }) as any as S.Schema<ReservationsListByReservationOrderRequest>;
 
 /** The Reservation items on this page */
-export type ReservationListValueList = ReadonlyArray<Reservation>;
+export type ReservationListValueList = Array<Reservation>;
 export const ReservationListValueList = /*@__PURE__*/ S.Array(
   Reservation,
 ) as any as S.Schema<ReservationListValueList>;
@@ -14366,7 +14351,7 @@ export const ReservationList = /*@__PURE__*/ S.suspend(() =>
 
 /** List of the subscriptions that the benefit will be applied. Do not specify if AppliedScopeType is Shared. */
 export type ReservationPurchaseRequestPropertiesInputAppliedScopesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ReservationPurchaseRequestPropertiesInputAppliedScopesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -14669,8 +14654,7 @@ export const PaymentDetail = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PaymentDetail" }) as any as S.Schema<PaymentDetail>;
 
-export type BillingPlanInformationTransactionsList =
-  ReadonlyArray<PaymentDetail>;
+export type BillingPlanInformationTransactionsList = Array<PaymentDetail>;
 export const BillingPlanInformationTransactionsList = /*@__PURE__*/ S.Array(
   PaymentDetail,
 ) as any as S.Schema<BillingPlanInformationTransactionsList>;
@@ -14696,8 +14680,7 @@ export const BillingPlanInformation = /*@__PURE__*/ S.suspend(() =>
   identifier: "BillingPlanInformation",
 }) as any as S.Schema<BillingPlanInformation>;
 
-export type SavingsPlanOrderModelPropertiesSavingsPlansList =
-  ReadonlyArray<string>;
+export type SavingsPlanOrderModelPropertiesSavingsPlansList = Array<string>;
 export const SavingsPlanOrderModelPropertiesSavingsPlansList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -14876,8 +14859,7 @@ export const SavingsPlanOrderModel = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SavingsPlanOrderModel>;
 
 /** The SavingsPlanOrderModel items on this page */
-export type SavingsPlanOrderModelListValueList =
-  ReadonlyArray<SavingsPlanOrderModel>;
+export type SavingsPlanOrderModelListValueList = Array<SavingsPlanOrderModel>;
 export const SavingsPlanOrderModelListValueList = /*@__PURE__*/ S.Array(
   SavingsPlanOrderModel,
 ) as any as S.Schema<SavingsPlanOrderModelListValueList>;
@@ -14937,7 +14919,7 @@ export interface Commitment {
   currencyCode?: string;
   amount?: number;
   /** Commitment grain. */
-  grain?: CommitmentGrain;
+  grain?: CommitmentGrain | (string & {});
 }
 export const Commitment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -14979,11 +14961,11 @@ export interface PurchaseRequestProperties {
   /** Subscription that will be charged for purchasing SavingsPlan */
   billingScopeId?: string;
   /** Represents the Savings plan term in ISO 8601 format. */
-  term?: SavingsPlanTerm;
+  term?: SavingsPlanTerm | (string & {});
   /** Represents the billing plan in ISO 8601 format. Required only for monthly purchases. */
-  billingPlan?: BillingPlan;
+  billingPlan?: BillingPlan | (string & {});
   /** Type of the Applied Scope. */
-  appliedScopeType?: AppliedScopeType;
+  appliedScopeType?: AppliedScopeType | (string & {});
   /** Commitment towards the benefit. */
   commitment?: Commitment;
   /** Setting this to true will automatically purchase a new benefit on the expiration date time. */
@@ -15058,7 +15040,7 @@ export const UtilizationAggregates = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UtilizationAggregates>;
 
 /** The array of aggregates of a savings plan's utilization */
-export type UtilizationAggregatesList = ReadonlyArray<UtilizationAggregates>;
+export type UtilizationAggregatesList = Array<UtilizationAggregates>;
 export const UtilizationAggregatesList = /*@__PURE__*/ S.Array(
   UtilizationAggregates,
 ) as any as S.Schema<UtilizationAggregatesList>;
@@ -15278,7 +15260,7 @@ export const SavingsPlanModel = /*@__PURE__*/ S.suspend(() =>
 
 /** The SavingsPlanModel items on this page */
 export type SavingsPlansListByBillingAccountResponseValueList =
-  ReadonlyArray<SavingsPlanModel>;
+  Array<SavingsPlanModel>;
 export const SavingsPlansListByBillingAccountResponseValueList =
   /*@__PURE__*/ S.Array(
     SavingsPlanModel,
@@ -15364,7 +15346,7 @@ export const SavingsPlansListBySavingsPlanOrderRequest =
   }) as any as S.Schema<SavingsPlansListBySavingsPlanOrderRequest>;
 
 /** The SavingsPlanModel items on this page */
-export type SavingsPlanModelListValueList = ReadonlyArray<SavingsPlanModel>;
+export type SavingsPlanModelListValueList = Array<SavingsPlanModel>;
 export const SavingsPlanModelListValueList = /*@__PURE__*/ S.Array(
   SavingsPlanModel,
 ) as any as S.Schema<SavingsPlanModelListValueList>;
@@ -15498,7 +15480,7 @@ export const SavingsPlansUpdateByBillingAccountResponse =
 
 /** The benefits of a savings plan. */
 export type SavingsPlansValidateUpdateByBillingAccountRequestBenefitsList =
-  ReadonlyArray<SavingsPlanUpdateRequestProperties>;
+  Array<SavingsPlanUpdateRequestProperties>;
 export const SavingsPlansValidateUpdateByBillingAccountRequestBenefitsList =
   /*@__PURE__*/ S.Array(
     SavingsPlanUpdateRequestProperties,
@@ -15555,7 +15537,7 @@ export const SavingsPlanValidResponseProperty = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SavingsPlanValidResponseProperty>;
 
 export type SavingsPlanValidateResponseBenefitsList =
-  ReadonlyArray<SavingsPlanValidResponseProperty>;
+  Array<SavingsPlanValidResponseProperty>;
 export const SavingsPlanValidateResponseBenefitsList = /*@__PURE__*/ S.Array(
   SavingsPlanValidResponseProperty,
 ) as any as S.Schema<SavingsPlanValidateResponseBenefitsList>;
@@ -15882,7 +15864,7 @@ export const Transaction = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Transaction" }) as any as S.Schema<Transaction>;
 
 /** The Transaction items on this page */
-export type TransactionListResultValueList = ReadonlyArray<Transaction>;
+export type TransactionListResultValueList = Array<Transaction>;
 export const TransactionListResultValueList = /*@__PURE__*/ S.Array(
   Transaction,
 ) as any as S.Schema<TransactionListResultValueList>;
@@ -16114,7 +16096,7 @@ export const TransfersCancelRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Detailed transfer status. */
 export type TransferPropertiesDetailedTransferStatusList =
-  ReadonlyArray<DetailedTransferStatus>;
+  Array<DetailedTransferStatus>;
 export const TransferPropertiesDetailedTransferStatusList =
   /*@__PURE__*/ S.Array(
     DetailedTransferStatus,
@@ -16389,7 +16371,7 @@ export const TransferDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TransferDetails>;
 
 /** The TransferDetails items on this page */
-export type TransferDetailsListResultValueList = ReadonlyArray<TransferDetails>;
+export type TransferDetailsListResultValueList = Array<TransferDetails>;
 export const TransferDetailsListResultValueList = /*@__PURE__*/ S.Array(
   TransferDetails,
 ) as any as S.Schema<TransferDetailsListResultValueList>;

@@ -112,7 +112,7 @@ export const GooglePrivacyDlpV2SensitivityScoreScoreEnum =
 /** Score is calculated from of all elements in the data profile. A higher level means the data is more sensitive. */
 export interface GooglePrivacyDlpV2SensitivityScore {
   /** The sensitivity score applied to the resource. */
-  score?: GooglePrivacyDlpV2SensitivityScoreScoreEnum;
+  score?: GooglePrivacyDlpV2SensitivityScoreScoreEnum | (string & {});
 }
 export const GooglePrivacyDlpV2SensitivityScore = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -141,8 +141,7 @@ export const GooglePrivacyDlpV2InfoType = /*@__PURE__*/ S.suspend(() =>
   identifier: "GooglePrivacyDlpV2InfoType",
 }) as any as S.Schema<GooglePrivacyDlpV2InfoType>;
 
-export type GooglePrivacyDlpV2InfoTypeList =
-  ReadonlyArray<GooglePrivacyDlpV2InfoType>;
+export type GooglePrivacyDlpV2InfoTypeList = Array<GooglePrivacyDlpV2InfoType>;
 export const GooglePrivacyDlpV2InfoTypeList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2InfoType,
 ) as any as S.Schema<GooglePrivacyDlpV2InfoTypeList>;
@@ -162,7 +161,9 @@ export interface GooglePrivacyDlpV2InfoTypeLikelihood {
   /** Type of information the likelihood threshold applies to. Only one likelihood per info_type should be provided. If InfoTypeLikelihood does not have an info_type, the configuration fails. */
   infoType?: GooglePrivacyDlpV2InfoType;
   /** Only returns findings equal to or above this threshold. This field is required or else the configuration fails. */
-  minLikelihood?: GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodEnum;
+  minLikelihood?:
+    | GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodEnum
+    | (string & {});
 }
 export const GooglePrivacyDlpV2InfoTypeLikelihood = /*@__PURE__*/ S.suspend(
   () =>
@@ -177,7 +178,7 @@ export const GooglePrivacyDlpV2InfoTypeLikelihood = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GooglePrivacyDlpV2InfoTypeLikelihood>;
 
 export type GooglePrivacyDlpV2InfoTypeLikelihoodList =
-  ReadonlyArray<GooglePrivacyDlpV2InfoTypeLikelihood>;
+  Array<GooglePrivacyDlpV2InfoTypeLikelihood>;
 export const GooglePrivacyDlpV2InfoTypeLikelihoodList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2InfoTypeLikelihood,
 ) as any as S.Schema<GooglePrivacyDlpV2InfoTypeLikelihoodList>;
@@ -199,7 +200,7 @@ export const GooglePrivacyDlpV2InfoTypeLimit = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GooglePrivacyDlpV2InfoTypeLimit>;
 
 export type GooglePrivacyDlpV2InfoTypeLimitList =
-  ReadonlyArray<GooglePrivacyDlpV2InfoTypeLimit>;
+  Array<GooglePrivacyDlpV2InfoTypeLimit>;
 export const GooglePrivacyDlpV2InfoTypeLimitList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2InfoTypeLimit,
 ) as any as S.Schema<GooglePrivacyDlpV2InfoTypeLimitList>;
@@ -230,8 +231,9 @@ export type GooglePrivacyDlpV2InspectConfigContentOptionsItemEnum =
 export const GooglePrivacyDlpV2InspectConfigContentOptionsItemEnum =
   /*@__PURE__*/ S.String;
 
-export type GooglePrivacyDlpV2InspectConfigContentOptionsItemEnumList =
-  ReadonlyArray<GooglePrivacyDlpV2InspectConfigContentOptionsItemEnum>;
+export type GooglePrivacyDlpV2InspectConfigContentOptionsItemEnumList = Array<
+  GooglePrivacyDlpV2InspectConfigContentOptionsItemEnum | (string & {})
+>;
 export const GooglePrivacyDlpV2InspectConfigContentOptionsItemEnumList =
   /*@__PURE__*/ S.Array(
     GooglePrivacyDlpV2InspectConfigContentOptionsItemEnum,
@@ -253,7 +255,7 @@ export const GooglePrivacyDlpV2Proximity = /*@__PURE__*/ S.suspend(() =>
   identifier: "GooglePrivacyDlpV2Proximity",
 }) as any as S.Schema<GooglePrivacyDlpV2Proximity>;
 
-export type IntegerList = ReadonlyArray<number>;
+export type IntegerList = Array<number>;
 export const IntegerList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<IntegerList>;
@@ -287,7 +289,9 @@ export const GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihoodEnum =
 /** Message for specifying an adjustment to the likelihood of a finding as part of a detection rule. */
 export interface GooglePrivacyDlpV2LikelihoodAdjustment {
   /** Set the likelihood of a finding to a fixed value. */
-  fixedLikelihood?: GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihoodEnum;
+  fixedLikelihood?:
+    | GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihoodEnum
+    | (string & {});
   /** Increase or decrease the likelihood by the specified number of levels. For example, if a finding would be `POSSIBLE` without the detection rule and `relative_likelihood` is 1, then it is upgraded to `LIKELY`, while a value of -1 would downgrade it to `UNLIKELY`. Likelihood may never drop below `VERY_UNLIKELY` or exceed `VERY_LIKELY`, so applying an adjustment of 1 followed by an adjustment of -1 when base likelihood is `VERY_LIKELY` will result in a final likelihood of `LIKELY`. */
   relativeLikelihood?: number;
 }
@@ -408,7 +412,7 @@ export type GooglePrivacyDlpV2ExclusionRuleMatchingTypeEnum =
 export const GooglePrivacyDlpV2ExclusionRuleMatchingTypeEnum =
   /*@__PURE__*/ S.String;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -475,7 +479,9 @@ export interface GooglePrivacyDlpV2ExclusionRule {
   /** Exclude findings based on image containment rules. For example, exclude an image finding if it overlaps with another image finding. */
   excludeByImageFindings?: GooglePrivacyDlpV2ExcludeByImageFindings;
   /** How the rule is applied, see MatchingType documentation for details. */
-  matchingType?: GooglePrivacyDlpV2ExclusionRuleMatchingTypeEnum;
+  matchingType?:
+    | GooglePrivacyDlpV2ExclusionRuleMatchingTypeEnum
+    | (string & {});
   /** Regular expression which defines the rule. */
   regex?: GooglePrivacyDlpV2Regex;
   /** Dictionary which defines the rule. */
@@ -513,7 +519,9 @@ export interface GooglePrivacyDlpV2AdjustByImageFindings {
   /** A list of image-supported infoTypes—excluding [document infoTypes](https://cloud.google.com/sensitive-data-protection/docs/infotypes-reference#documents)—to be used as context for the adjustment rule. Sensitive Data Protection adjusts the likelihood of an image finding if its bounding box has the specified spatial relationship (defined by `image_containment_type`) with a finding of an infoType in this list. For example, you can create a rule to adjust the likelihood of a `US_PASSPORT` finding if it is enclosed by a finding of `OBJECT_TYPE/PERSON/PASSPORT`. To configure this, set `US_PASSPORT` in `InspectionRuleSet.info_types`. Add an `adjustment_rule` with an `adjust_by_image_findings.info_types` that contains `OBJECT_TYPE/PERSON/PASSPORT` and `image_containment_type` set to `encloses`. In this case, the likelihood of the `US_PASSPORT` finding is adjusted, but the likelihood of the `OBJECT_TYPE/PERSON/PASSPORT` finding is not. */
   infoTypes?: GooglePrivacyDlpV2InfoTypeList;
   /** Required. Minimum likelihood of the `adjust_by_image_findings.info_types` finding. If the likelihood is lower than this value, Sensitive Data Protection doesn't adjust the likelihood of the `InspectionRuleSet.info_types` finding. */
-  minLikelihood?: GooglePrivacyDlpV2AdjustByImageFindingsMinLikelihoodEnum;
+  minLikelihood?:
+    | GooglePrivacyDlpV2AdjustByImageFindingsMinLikelihoodEnum
+    | (string & {});
   /** Specifies the required spatial relationship between the bounding boxes of the target finding and the context infoType findings. */
   imageContainmentType?: GooglePrivacyDlpV2ImageContainmentType;
 }
@@ -554,9 +562,13 @@ export interface GooglePrivacyDlpV2AdjustByMatchingInfoTypes {
   /** Sensitive Data Protection adjusts the likelihood of a finding if that finding also matches one of these infoTypes. For example, you can create a rule to adjust the likelihood of a `PHONE_NUMBER` finding if the string is found within a document that is classified as `DOCUMENT_TYPE/HR/RESUME`. To configure this, set `PHONE_NUMBER` in `InspectionRuleSet.info_types`. Add an `adjustment_rule` with an `adjust_by_matching_info_types.info_types` that contains `DOCUMENT_TYPE/HR/RESUME`. In this case, the likelihood of the `PHONE_NUMBER` finding is adjusted, but the likelihood of the `DOCUMENT_TYPE/HR/RESUME` finding is not. */
   infoTypes?: GooglePrivacyDlpV2InfoTypeList;
   /** Required. Minimum likelihood of the `adjust_by_matching_info_types.info_types` finding. If the likelihood is lower than this value, Sensitive Data Protection doesn't adjust the likelihood of the `InspectionRuleSet.info_types` finding. */
-  minLikelihood?: GooglePrivacyDlpV2AdjustByMatchingInfoTypesMinLikelihoodEnum;
+  minLikelihood?:
+    | GooglePrivacyDlpV2AdjustByMatchingInfoTypesMinLikelihoodEnum
+    | (string & {});
   /** How the adjustment rule is applied. Only `MATCHING_TYPE_PARTIAL_MATCH` is supported: - Partial match: adjusts the findings of infoTypes specified in the inspection rule when they have a nonempty intersection with a finding of an infoType specified in this adjustment rule. */
-  matchingType?: GooglePrivacyDlpV2AdjustByMatchingInfoTypesMatchingTypeEnum;
+  matchingType?:
+    | GooglePrivacyDlpV2AdjustByMatchingInfoTypesMatchingTypeEnum
+    | (string & {});
 }
 export const GooglePrivacyDlpV2AdjustByMatchingInfoTypes =
   /*@__PURE__*/ S.suspend(() =>
@@ -614,7 +626,7 @@ export const GooglePrivacyDlpV2InspectionRule = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GooglePrivacyDlpV2InspectionRule>;
 
 export type GooglePrivacyDlpV2InspectionRuleList =
-  ReadonlyArray<GooglePrivacyDlpV2InspectionRule>;
+  Array<GooglePrivacyDlpV2InspectionRule>;
 export const GooglePrivacyDlpV2InspectionRuleList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2InspectionRule,
 ) as any as S.Schema<GooglePrivacyDlpV2InspectionRuleList>;
@@ -636,7 +648,7 @@ export const GooglePrivacyDlpV2InspectionRuleSet = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GooglePrivacyDlpV2InspectionRuleSet>;
 
 export type GooglePrivacyDlpV2InspectionRuleSetList =
-  ReadonlyArray<GooglePrivacyDlpV2InspectionRuleSet>;
+  Array<GooglePrivacyDlpV2InspectionRuleSet>;
 export const GooglePrivacyDlpV2InspectionRuleSetList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2InspectionRuleSet,
 ) as any as S.Schema<GooglePrivacyDlpV2InspectionRuleSetList>;
@@ -686,7 +698,7 @@ export const GooglePrivacyDlpV2DetectionRule = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GooglePrivacyDlpV2DetectionRule>;
 
 export type GooglePrivacyDlpV2DetectionRuleList =
-  ReadonlyArray<GooglePrivacyDlpV2DetectionRule>;
+  Array<GooglePrivacyDlpV2DetectionRule>;
 export const GooglePrivacyDlpV2DetectionRuleList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2DetectionRule,
 ) as any as S.Schema<GooglePrivacyDlpV2DetectionRuleList>;
@@ -708,7 +720,7 @@ export const GooglePrivacyDlpV2LabelField = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GooglePrivacyDlpV2LabelField>;
 
 export type GooglePrivacyDlpV2LabelFieldList =
-  ReadonlyArray<GooglePrivacyDlpV2LabelField>;
+  Array<GooglePrivacyDlpV2LabelField>;
 export const GooglePrivacyDlpV2LabelFieldList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2LabelField,
 ) as any as S.Schema<GooglePrivacyDlpV2LabelFieldList>;
@@ -791,7 +803,9 @@ export interface GooglePrivacyDlpV2CustomInfoType {
   /** Key-value pair to detect in the metadata. */
   metadataKeyValueExpression?: GooglePrivacyDlpV2MetadataKeyValueExpression;
   /** If set to EXCLUSION_TYPE_EXCLUDE this infoType will not cause a finding to be returned. It still can be used for rules matching. Only supported for the `dictionary`, `regex`, and `stored_type` CustomInfoTypes. */
-  exclusionType?: GooglePrivacyDlpV2CustomInfoTypeExclusionTypeEnum;
+  exclusionType?:
+    | GooglePrivacyDlpV2CustomInfoTypeExclusionTypeEnum
+    | (string & {});
   /** Sensitivity for this CustomInfoType. If this CustomInfoType extends an existing InfoType, the sensitivity here will take precedence over that of the original InfoType. If unset for a CustomInfoType, it will default to HIGH. This only applies to data profiling. */
   sensitivityScore?: GooglePrivacyDlpV2SensitivityScore;
   /** A list of phrases to detect as a CustomInfoType. */
@@ -807,7 +821,7 @@ export interface GooglePrivacyDlpV2CustomInfoType {
   /** Regular expression based CustomInfoType. */
   regex?: GooglePrivacyDlpV2Regex;
   /** Likelihood to return for this CustomInfoType. This base value can be altered by a detection rule if the finding meets the criteria specified by the rule. Defaults to `VERY_LIKELY` if not specified. */
-  likelihood?: GooglePrivacyDlpV2CustomInfoTypeLikelihoodEnum;
+  likelihood?: GooglePrivacyDlpV2CustomInfoTypeLikelihoodEnum | (string & {});
 }
 export const GooglePrivacyDlpV2CustomInfoType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -832,7 +846,7 @@ export const GooglePrivacyDlpV2CustomInfoType = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GooglePrivacyDlpV2CustomInfoType>;
 
 export type GooglePrivacyDlpV2CustomInfoTypeList =
-  ReadonlyArray<GooglePrivacyDlpV2CustomInfoType>;
+  Array<GooglePrivacyDlpV2CustomInfoType>;
 export const GooglePrivacyDlpV2CustomInfoTypeList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2CustomInfoType,
 ) as any as S.Schema<GooglePrivacyDlpV2CustomInfoTypeList>;
@@ -840,7 +854,9 @@ export const GooglePrivacyDlpV2CustomInfoTypeList = /*@__PURE__*/ S.Array(
 /** Configuration description of the scanning process. When used with redactContent only info_types and min_likelihood are currently used. */
 export interface GooglePrivacyDlpV2InspectConfig {
   /** Only returns findings equal to or above this threshold. The default is POSSIBLE. In general, the highest likelihood setting yields the fewest findings in results and the lowest chance of a false positive. For more information, see [Match likelihood](https://cloud.google.com/sensitive-data-protection/docs/likelihood). */
-  minLikelihood?: GooglePrivacyDlpV2InspectConfigMinLikelihoodEnum;
+  minLikelihood?:
+    | GooglePrivacyDlpV2InspectConfigMinLikelihoodEnum
+    | (string & {});
   /** Restricts what info_types to look for. The values must correspond to InfoType values returned by ListInfoTypes or listed at https://cloud.google.com/sensitive-data-protection/docs/infotypes-reference. When no InfoTypes or CustomInfoTypes are specified in a request, the system may automatically choose a default list of detectors to run, which may change over time. If you need precise control and predictability as to what detectors are run you should specify specific InfoTypes listed in the reference, otherwise a default list will be used, which may change over time. */
   infoTypes?: GooglePrivacyDlpV2InfoTypeList;
   /** Minimum likelihood per infotype. For each infotype, a user can specify a minimum likelihood. The system only returns a finding if its likelihood is above this threshold. If this field is not set, the system uses the InspectConfig min_likelihood. */
@@ -967,8 +983,9 @@ export type GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemEnum =
 export const GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemEnum =
   /*@__PURE__*/ S.String;
 
-export type GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemEnumList =
-  ReadonlyArray<GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemEnum>;
+export type GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemEnumList = Array<
+  GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemEnum | (string & {})
+>;
 export const GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemEnum,
@@ -977,7 +994,9 @@ export const GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemEnumList =
 /** Options defining a file or a set of files within a Cloud Storage bucket. */
 export interface GooglePrivacyDlpV2CloudStorageOptions {
   /** How to sample the data. */
-  sampleMethod?: GooglePrivacyDlpV2CloudStorageOptionsSampleMethodEnum;
+  sampleMethod?:
+    | GooglePrivacyDlpV2CloudStorageOptionsSampleMethodEnum
+    | (string & {});
   /** Limits the number of files to scan to this percentage of the input FileSet. Number of files scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. */
   filesLimitPercent?: number;
   /** The set of one or more files to scan. */
@@ -1026,8 +1045,7 @@ export const GooglePrivacyDlpV2FieldId = /*@__PURE__*/ S.suspend(() =>
   identifier: "GooglePrivacyDlpV2FieldId",
 }) as any as S.Schema<GooglePrivacyDlpV2FieldId>;
 
-export type GooglePrivacyDlpV2FieldIdList =
-  ReadonlyArray<GooglePrivacyDlpV2FieldId>;
+export type GooglePrivacyDlpV2FieldIdList = Array<GooglePrivacyDlpV2FieldId>;
 export const GooglePrivacyDlpV2FieldIdList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2FieldId,
 ) as any as S.Schema<GooglePrivacyDlpV2FieldIdList>;
@@ -1130,7 +1148,9 @@ export interface GooglePrivacyDlpV2BigQueryOptions {
   /** Max percentage of rows to scan. The rest are omitted. The number of rows scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of rows_limit and rows_limit_percent can be specified. Cannot be used in conjunction with TimespanConfig. Caution: A [known issue](https://cloud.google.com/sensitive-data-protection/docs/known-issues#bq-sampling) is causing the `rowsLimitPercent` field to behave unexpectedly. We recommend using `rowsLimit` instead. */
   rowsLimitPercent?: number;
   /** How to sample the data. */
-  sampleMethod?: GooglePrivacyDlpV2BigQueryOptionsSampleMethodEnum;
+  sampleMethod?:
+    | GooglePrivacyDlpV2BigQueryOptionsSampleMethodEnum
+    | (string & {});
 }
 export const GooglePrivacyDlpV2BigQueryOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1253,7 +1273,9 @@ export interface GooglePrivacyDlpV2OutputStorageConfig {
   /** Store findings in an existing Cloud Storage bucket. Files will be generated with the job ID and file part number as the filename and will contain findings in textproto format as SaveToGcsFindingsOutput. The filename will follow the naming convention `-`. Example: `my-job-id-2`. Supported for Inspect jobs. The bucket must not be the same as the bucket being inspected. If storing findings to Cloud Storage, the output schema field should not be set. If set, it will be ignored. */
   storagePath?: GooglePrivacyDlpV2CloudStoragePath;
   /** Schema used for writing the findings for Inspect jobs. This field is only used for Inspect and must be unspecified for Risk jobs. Columns are derived from the `Finding` object. If appending to an existing table, any columns from the predefined schema that are missing will be added. No columns in the existing table will be deleted. If unspecified, then all available columns will be used for a new table or an (existing) table with no schema, and no changes will be made to an existing table that has a schema. Only for use with external storage. */
-  outputSchema?: GooglePrivacyDlpV2OutputStorageConfigOutputSchemaEnum;
+  outputSchema?:
+    | GooglePrivacyDlpV2OutputStorageConfigOutputSchemaEnum
+    | (string & {});
 }
 export const GooglePrivacyDlpV2OutputStorageConfig = /*@__PURE__*/ S.suspend(
   () =>
@@ -1342,7 +1364,9 @@ export const GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemEnumList =
-  ReadonlyArray<GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemEnum>;
+  Array<
+    GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemEnum | (string & {})
+  >;
 export const GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemEnumList =
   /*@__PURE__*/ S.Array(
     GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemEnum,
@@ -1432,8 +1456,7 @@ export const GooglePrivacyDlpV2Action = /*@__PURE__*/ S.suspend(() =>
   identifier: "GooglePrivacyDlpV2Action",
 }) as any as S.Schema<GooglePrivacyDlpV2Action>;
 
-export type GooglePrivacyDlpV2ActionList =
-  ReadonlyArray<GooglePrivacyDlpV2Action>;
+export type GooglePrivacyDlpV2ActionList = Array<GooglePrivacyDlpV2Action>;
 export const GooglePrivacyDlpV2ActionList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2Action,
 ) as any as S.Schema<GooglePrivacyDlpV2ActionList>;
@@ -1513,7 +1536,7 @@ export const GooglePrivacyDlpV2InfoTypeStats = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GooglePrivacyDlpV2InfoTypeStats>;
 
 export type GooglePrivacyDlpV2InfoTypeStatsList =
-  ReadonlyArray<GooglePrivacyDlpV2InfoTypeStats>;
+  Array<GooglePrivacyDlpV2InfoTypeStats>;
 export const GooglePrivacyDlpV2InfoTypeStatsList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2InfoTypeStats,
 ) as any as S.Schema<GooglePrivacyDlpV2InfoTypeStatsList>;
@@ -1620,8 +1643,7 @@ export const GooglePrivacyDlpV2QuasiId = /*@__PURE__*/ S.suspend(() =>
   identifier: "GooglePrivacyDlpV2QuasiId",
 }) as any as S.Schema<GooglePrivacyDlpV2QuasiId>;
 
-export type GooglePrivacyDlpV2QuasiIdList =
-  ReadonlyArray<GooglePrivacyDlpV2QuasiId>;
+export type GooglePrivacyDlpV2QuasiIdList = Array<GooglePrivacyDlpV2QuasiId>;
 export const GooglePrivacyDlpV2QuasiIdList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2QuasiId,
 ) as any as S.Schema<GooglePrivacyDlpV2QuasiIdList>;
@@ -1644,7 +1666,7 @@ export const GooglePrivacyDlpV2QuasiIdentifierField = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GooglePrivacyDlpV2QuasiIdentifierField>;
 
 export type GooglePrivacyDlpV2QuasiIdentifierFieldList =
-  ReadonlyArray<GooglePrivacyDlpV2QuasiIdentifierField>;
+  Array<GooglePrivacyDlpV2QuasiIdentifierField>;
 export const GooglePrivacyDlpV2QuasiIdentifierFieldList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2QuasiIdentifierField,
 ) as any as S.Schema<GooglePrivacyDlpV2QuasiIdentifierFieldList>;
@@ -1669,7 +1691,7 @@ export const GooglePrivacyDlpV2StatisticalTable = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GooglePrivacyDlpV2StatisticalTable>;
 
 export type GooglePrivacyDlpV2StatisticalTableList =
-  ReadonlyArray<GooglePrivacyDlpV2StatisticalTable>;
+  Array<GooglePrivacyDlpV2StatisticalTable>;
 export const GooglePrivacyDlpV2StatisticalTableList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2StatisticalTable,
 ) as any as S.Schema<GooglePrivacyDlpV2StatisticalTableList>;
@@ -1760,7 +1782,7 @@ export const GooglePrivacyDlpV2TaggedField = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GooglePrivacyDlpV2TaggedField>;
 
 export type GooglePrivacyDlpV2TaggedFieldList =
-  ReadonlyArray<GooglePrivacyDlpV2TaggedField>;
+  Array<GooglePrivacyDlpV2TaggedField>;
 export const GooglePrivacyDlpV2TaggedFieldList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2TaggedField,
 ) as any as S.Schema<GooglePrivacyDlpV2TaggedFieldList>;
@@ -1782,7 +1804,7 @@ export const GooglePrivacyDlpV2QuasiIdField = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GooglePrivacyDlpV2QuasiIdField>;
 
 export type GooglePrivacyDlpV2QuasiIdFieldList =
-  ReadonlyArray<GooglePrivacyDlpV2QuasiIdField>;
+  Array<GooglePrivacyDlpV2QuasiIdField>;
 export const GooglePrivacyDlpV2QuasiIdFieldList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2QuasiIdField,
 ) as any as S.Schema<GooglePrivacyDlpV2QuasiIdFieldList>;
@@ -1807,7 +1829,7 @@ export const GooglePrivacyDlpV2AuxiliaryTable = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GooglePrivacyDlpV2AuxiliaryTable>;
 
 export type GooglePrivacyDlpV2AuxiliaryTableList =
-  ReadonlyArray<GooglePrivacyDlpV2AuxiliaryTable>;
+  Array<GooglePrivacyDlpV2AuxiliaryTable>;
 export const GooglePrivacyDlpV2AuxiliaryTableList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2AuxiliaryTable,
 ) as any as S.Schema<GooglePrivacyDlpV2AuxiliaryTableList>;
@@ -1961,7 +1983,7 @@ export interface GooglePrivacyDlpV2Value {
   /** boolean */
   booleanValue?: boolean;
   /** day of week */
-  dayOfWeekValue?: GooglePrivacyDlpV2ValueDayOfWeekValueEnum;
+  dayOfWeekValue?: GooglePrivacyDlpV2ValueDayOfWeekValueEnum | (string & {});
   /** float */
   floatValue?: number;
   /** string */
@@ -1982,8 +2004,7 @@ export const GooglePrivacyDlpV2Value = /*@__PURE__*/ S.suspend(() =>
   identifier: "GooglePrivacyDlpV2Value",
 }) as any as S.Schema<GooglePrivacyDlpV2Value>;
 
-export type GooglePrivacyDlpV2ValueList =
-  ReadonlyArray<GooglePrivacyDlpV2Value>;
+export type GooglePrivacyDlpV2ValueList = Array<GooglePrivacyDlpV2Value>;
 export const GooglePrivacyDlpV2ValueList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2Value,
 ) as any as S.Schema<GooglePrivacyDlpV2ValueList>;
@@ -2006,7 +2027,7 @@ export const GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValues =
   }) as any as S.Schema<GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValues>;
 
 export type GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValuesList =
-  ReadonlyArray<GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValues>;
+  Array<GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValues>;
 export const GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValuesList =
   /*@__PURE__*/ S.Array(
     GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValues,
@@ -2041,7 +2062,7 @@ export const GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucket =
   }) as any as S.Schema<GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucket>;
 
 export type GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucketList =
-  ReadonlyArray<GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucket>;
+  Array<GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucket>;
 export const GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucketList =
   /*@__PURE__*/ S.Array(
     GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucket,
@@ -2080,7 +2101,7 @@ export const GooglePrivacyDlpV2ValueFrequency = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GooglePrivacyDlpV2ValueFrequency>;
 
 export type GooglePrivacyDlpV2ValueFrequencyList =
-  ReadonlyArray<GooglePrivacyDlpV2ValueFrequency>;
+  Array<GooglePrivacyDlpV2ValueFrequency>;
 export const GooglePrivacyDlpV2ValueFrequencyList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2ValueFrequency,
 ) as any as S.Schema<GooglePrivacyDlpV2ValueFrequencyList>;
@@ -2112,7 +2133,7 @@ export const GooglePrivacyDlpV2CategoricalStatsHistogramBucket =
   }) as any as S.Schema<GooglePrivacyDlpV2CategoricalStatsHistogramBucket>;
 
 export type GooglePrivacyDlpV2CategoricalStatsHistogramBucketList =
-  ReadonlyArray<GooglePrivacyDlpV2CategoricalStatsHistogramBucket>;
+  Array<GooglePrivacyDlpV2CategoricalStatsHistogramBucket>;
 export const GooglePrivacyDlpV2CategoricalStatsHistogramBucketList =
   /*@__PURE__*/ S.Array(
     GooglePrivacyDlpV2CategoricalStatsHistogramBucket,
@@ -2172,7 +2193,7 @@ export const GooglePrivacyDlpV2KAnonymityEquivalenceClass =
   }) as any as S.Schema<GooglePrivacyDlpV2KAnonymityEquivalenceClass>;
 
 export type GooglePrivacyDlpV2KAnonymityEquivalenceClassList =
-  ReadonlyArray<GooglePrivacyDlpV2KAnonymityEquivalenceClass>;
+  Array<GooglePrivacyDlpV2KAnonymityEquivalenceClass>;
 export const GooglePrivacyDlpV2KAnonymityEquivalenceClassList =
   /*@__PURE__*/ S.Array(
     GooglePrivacyDlpV2KAnonymityEquivalenceClass,
@@ -2207,7 +2228,7 @@ export const GooglePrivacyDlpV2KAnonymityHistogramBucket =
   }) as any as S.Schema<GooglePrivacyDlpV2KAnonymityHistogramBucket>;
 
 export type GooglePrivacyDlpV2KAnonymityHistogramBucketList =
-  ReadonlyArray<GooglePrivacyDlpV2KAnonymityHistogramBucket>;
+  Array<GooglePrivacyDlpV2KAnonymityHistogramBucket>;
 export const GooglePrivacyDlpV2KAnonymityHistogramBucketList =
   /*@__PURE__*/ S.Array(
     GooglePrivacyDlpV2KAnonymityHistogramBucket,
@@ -2246,7 +2267,7 @@ export const GooglePrivacyDlpV2KMapEstimationQuasiIdValues =
   }) as any as S.Schema<GooglePrivacyDlpV2KMapEstimationQuasiIdValues>;
 
 export type GooglePrivacyDlpV2KMapEstimationQuasiIdValuesList =
-  ReadonlyArray<GooglePrivacyDlpV2KMapEstimationQuasiIdValues>;
+  Array<GooglePrivacyDlpV2KMapEstimationQuasiIdValues>;
 export const GooglePrivacyDlpV2KMapEstimationQuasiIdValuesList =
   /*@__PURE__*/ S.Array(
     GooglePrivacyDlpV2KMapEstimationQuasiIdValues,
@@ -2281,7 +2302,7 @@ export const GooglePrivacyDlpV2KMapEstimationHistogramBucket =
   }) as any as S.Schema<GooglePrivacyDlpV2KMapEstimationHistogramBucket>;
 
 export type GooglePrivacyDlpV2KMapEstimationHistogramBucketList =
-  ReadonlyArray<GooglePrivacyDlpV2KMapEstimationHistogramBucket>;
+  Array<GooglePrivacyDlpV2KMapEstimationHistogramBucket>;
 export const GooglePrivacyDlpV2KMapEstimationHistogramBucketList =
   /*@__PURE__*/ S.Array(
     GooglePrivacyDlpV2KMapEstimationHistogramBucket,
@@ -2327,7 +2348,7 @@ export const GooglePrivacyDlpV2LDiversityEquivalenceClass =
   }) as any as S.Schema<GooglePrivacyDlpV2LDiversityEquivalenceClass>;
 
 export type GooglePrivacyDlpV2LDiversityEquivalenceClassList =
-  ReadonlyArray<GooglePrivacyDlpV2LDiversityEquivalenceClass>;
+  Array<GooglePrivacyDlpV2LDiversityEquivalenceClass>;
 export const GooglePrivacyDlpV2LDiversityEquivalenceClassList =
   /*@__PURE__*/ S.Array(
     GooglePrivacyDlpV2LDiversityEquivalenceClass,
@@ -2362,7 +2383,7 @@ export const GooglePrivacyDlpV2LDiversityHistogramBucket =
   }) as any as S.Schema<GooglePrivacyDlpV2LDiversityHistogramBucket>;
 
 export type GooglePrivacyDlpV2LDiversityHistogramBucketList =
-  ReadonlyArray<GooglePrivacyDlpV2LDiversityHistogramBucket>;
+  Array<GooglePrivacyDlpV2LDiversityHistogramBucket>;
 export const GooglePrivacyDlpV2LDiversityHistogramBucketList =
   /*@__PURE__*/ S.Array(
     GooglePrivacyDlpV2LDiversityHistogramBucket,
@@ -2547,7 +2568,9 @@ export interface GooglePrivacyDlpV2CharsToIgnore {
   /** Characters to not transform when masking. */
   charactersToSkip?: string;
   /** Common characters to not transform when masking. Useful to avoid removing punctuation. */
-  commonCharactersToIgnore?: GooglePrivacyDlpV2CharsToIgnoreCommonCharactersToIgnoreEnum;
+  commonCharactersToIgnore?:
+    | GooglePrivacyDlpV2CharsToIgnoreCommonCharactersToIgnoreEnum
+    | (string & {});
 }
 export const GooglePrivacyDlpV2CharsToIgnore = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2561,7 +2584,7 @@ export const GooglePrivacyDlpV2CharsToIgnore = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GooglePrivacyDlpV2CharsToIgnore>;
 
 export type GooglePrivacyDlpV2CharsToIgnoreList =
-  ReadonlyArray<GooglePrivacyDlpV2CharsToIgnore>;
+  Array<GooglePrivacyDlpV2CharsToIgnore>;
 export const GooglePrivacyDlpV2CharsToIgnoreList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2CharsToIgnore,
 ) as any as S.Schema<GooglePrivacyDlpV2CharsToIgnoreList>;
@@ -2642,8 +2665,7 @@ export const GooglePrivacyDlpV2Bucket = /*@__PURE__*/ S.suspend(() =>
   identifier: "GooglePrivacyDlpV2Bucket",
 }) as any as S.Schema<GooglePrivacyDlpV2Bucket>;
 
-export type GooglePrivacyDlpV2BucketList =
-  ReadonlyArray<GooglePrivacyDlpV2Bucket>;
+export type GooglePrivacyDlpV2BucketList = Array<GooglePrivacyDlpV2Bucket>;
 export const GooglePrivacyDlpV2BucketList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2Bucket,
 ) as any as S.Schema<GooglePrivacyDlpV2BucketList>;
@@ -2704,7 +2726,9 @@ export interface GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig {
   /** Required. The key used by the encryption algorithm. */
   cryptoKey?: GooglePrivacyDlpV2CryptoKey;
   /** Common alphabets. */
-  commonAlphabet?: GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigCommonAlphabetEnum;
+  commonAlphabet?:
+    | GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigCommonAlphabetEnum
+    | (string & {});
   /** The custom infoType to annotate the surrogate with. This annotation will be applied to the surrogate by prefixing it with the name of the custom infoType followed by the number of characters comprising the surrogate. The following scheme defines the format: info_type_name(surrogate_character_count):surrogate For example, if the name of custom infoType is 'MY_TOKEN_INFO_TYPE' and the surrogate is 'abc', the full replacement value will be: 'MY_TOKEN_INFO_TYPE(3):abc' This annotation identifies the surrogate when inspecting content using the custom infoType [`SurrogateType`](https://cloud.google.com/sensitive-data-protection/docs/reference/rest/v2/InspectConfig#surrogatetype). This facilitates reversal of the surrogate when it occurs in free text. In order for inspection to work properly, the name of this infoType must not occur naturally anywhere in your data; otherwise, inspection may find a surrogate that does not correspond to an actual identifier. Therefore, choose your custom infoType name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY_TOKEN_TYPE */
   surrogateInfoType?: GooglePrivacyDlpV2InfoType;
   /** The 'tweak', a context may be used for higher security since the same identifier in two different contexts won't be given the same surrogate. If the context is not set, a default tweak will be used. If the context is set but: 1. there is no record present when transforming a given value or 1. the field is not present when transforming a given value, a default tweak will be used. Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and unstructured `ContentItem`s. Currently, the referenced field may be of value type integer or string. The tweak is constructed as a sequence of bytes in big endian byte order such that: - a 64 bit integer is encoded followed by a single byte of value 1 - a string is encoded in UTF-8 format followed by a single byte of value 2 */
@@ -2744,7 +2768,9 @@ export const GooglePrivacyDlpV2TimePartConfigPartToExtractEnum =
 /** For use with `Date`, `Timestamp`, and `TimeOfDay`, extract or preserve a portion of the value. */
 export interface GooglePrivacyDlpV2TimePartConfig {
   /** The part of the time to keep. */
-  partToExtract?: GooglePrivacyDlpV2TimePartConfigPartToExtractEnum;
+  partToExtract?:
+    | GooglePrivacyDlpV2TimePartConfigPartToExtractEnum
+    | (string & {});
 }
 export const GooglePrivacyDlpV2TimePartConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2853,7 +2879,7 @@ export const GooglePrivacyDlpV2InfoTypeTransformation = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GooglePrivacyDlpV2InfoTypeTransformation>;
 
 export type GooglePrivacyDlpV2InfoTypeTransformationList =
-  ReadonlyArray<GooglePrivacyDlpV2InfoTypeTransformation>;
+  Array<GooglePrivacyDlpV2InfoTypeTransformation>;
 export const GooglePrivacyDlpV2InfoTypeTransformationList =
   /*@__PURE__*/ S.Array(
     GooglePrivacyDlpV2InfoTypeTransformation,
@@ -2889,7 +2915,7 @@ export interface GooglePrivacyDlpV2Condition {
   /** Value to compare against. [Mandatory, except for `EXISTS` tests.] */
   value?: GooglePrivacyDlpV2Value;
   /** Required. Operator used to compare the field or infoType to the value. */
-  operator?: GooglePrivacyDlpV2ConditionOperatorEnum;
+  operator?: GooglePrivacyDlpV2ConditionOperatorEnum | (string & {});
   /** Required. Field within the record this condition is evaluated against. */
   field?: GooglePrivacyDlpV2FieldId;
 }
@@ -2904,7 +2930,7 @@ export const GooglePrivacyDlpV2Condition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GooglePrivacyDlpV2Condition>;
 
 export type GooglePrivacyDlpV2ConditionList =
-  ReadonlyArray<GooglePrivacyDlpV2Condition>;
+  Array<GooglePrivacyDlpV2Condition>;
 export const GooglePrivacyDlpV2ConditionList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2Condition,
 ) as any as S.Schema<GooglePrivacyDlpV2ConditionList>;
@@ -2933,7 +2959,9 @@ export interface GooglePrivacyDlpV2Expressions {
   /** Conditions to apply to the expression. */
   conditions?: GooglePrivacyDlpV2Conditions;
   /** The operator to apply to the result of conditions. Default and currently only supported value is `AND`. */
-  logicalOperator?: GooglePrivacyDlpV2ExpressionsLogicalOperatorEnum;
+  logicalOperator?:
+    | GooglePrivacyDlpV2ExpressionsLogicalOperatorEnum
+    | (string & {});
 }
 export const GooglePrivacyDlpV2Expressions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2987,7 +3015,7 @@ export const GooglePrivacyDlpV2FieldTransformation = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GooglePrivacyDlpV2FieldTransformation>;
 
 export type GooglePrivacyDlpV2FieldTransformationList =
-  ReadonlyArray<GooglePrivacyDlpV2FieldTransformation>;
+  Array<GooglePrivacyDlpV2FieldTransformation>;
 export const GooglePrivacyDlpV2FieldTransformationList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2FieldTransformation,
 ) as any as S.Schema<GooglePrivacyDlpV2FieldTransformationList>;
@@ -3006,7 +3034,7 @@ export const GooglePrivacyDlpV2RecordSuppression = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GooglePrivacyDlpV2RecordSuppression>;
 
 export type GooglePrivacyDlpV2RecordSuppressionList =
-  ReadonlyArray<GooglePrivacyDlpV2RecordSuppression>;
+  Array<GooglePrivacyDlpV2RecordSuppression>;
 export const GooglePrivacyDlpV2RecordSuppressionList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2RecordSuppression,
 ) as any as S.Schema<GooglePrivacyDlpV2RecordSuppressionList>;
@@ -3102,7 +3130,7 @@ export const GooglePrivacyDlpV2ImageTransformation = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GooglePrivacyDlpV2ImageTransformation>;
 
 export type GooglePrivacyDlpV2ImageTransformationList =
-  ReadonlyArray<GooglePrivacyDlpV2ImageTransformation>;
+  Array<GooglePrivacyDlpV2ImageTransformation>;
 export const GooglePrivacyDlpV2ImageTransformationList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2ImageTransformation,
 ) as any as S.Schema<GooglePrivacyDlpV2ImageTransformationList>;
@@ -3290,7 +3318,7 @@ export const GooglePrivacyDlpV2ActionDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GooglePrivacyDlpV2ActionDetails>;
 
 export type GooglePrivacyDlpV2ActionDetailsList =
-  ReadonlyArray<GooglePrivacyDlpV2ActionDetails>;
+  Array<GooglePrivacyDlpV2ActionDetails>;
 export const GooglePrivacyDlpV2ActionDetailsList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2ActionDetails,
 ) as any as S.Schema<GooglePrivacyDlpV2ActionDetailsList>;
@@ -3301,7 +3329,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -3338,7 +3366,7 @@ export interface GooglePrivacyDlpV2Error {
   /** The times the error occurred. List includes the oldest timestamp and the last 9 timestamps. */
   timestamps?: StringList;
   /** Additional information about the error. */
-  extraInfo?: GooglePrivacyDlpV2ErrorExtraInfoEnum;
+  extraInfo?: GooglePrivacyDlpV2ErrorExtraInfoEnum | (string & {});
 }
 export const GooglePrivacyDlpV2Error = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3350,8 +3378,7 @@ export const GooglePrivacyDlpV2Error = /*@__PURE__*/ S.suspend(() =>
   identifier: "GooglePrivacyDlpV2Error",
 }) as any as S.Schema<GooglePrivacyDlpV2Error>;
 
-export type GooglePrivacyDlpV2ErrorList =
-  ReadonlyArray<GooglePrivacyDlpV2Error>;
+export type GooglePrivacyDlpV2ErrorList = Array<GooglePrivacyDlpV2Error>;
 export const GooglePrivacyDlpV2ErrorList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2Error,
 ) as any as S.Schema<GooglePrivacyDlpV2ErrorList>;
@@ -3619,7 +3646,9 @@ export const GooglePrivacyDlpV2SecretManagerCredential =
 /** Cloud SQL connection properties. */
 export interface GooglePrivacyDlpV2CloudSqlProperties {
   /** Required. The database engine used by the Cloud SQL instance that this connection configures. */
-  databaseEngine?: GooglePrivacyDlpV2CloudSqlPropertiesDatabaseEngineEnum;
+  databaseEngine?:
+    | GooglePrivacyDlpV2CloudSqlPropertiesDatabaseEngineEnum
+    | (string & {});
   /** Built-in IAM authentication (must be configured in Cloud SQL). */
   cloudSqlIam?: GooglePrivacyDlpV2CloudSqlIamCredential;
   /** Optional. Immutable. The Cloud SQL instance for which the connection is defined. Only one connection per instance is allowed. This can only be set at creation time, and cannot be updated. It is an error to use a connection_name from different project or region than the one that holds the connection. For example, a Connection resource for Cloud SQL connection_name `project-id:us-central1:sql-instance` must be created under the parent `projects/project-id/locations/us-central1` */
@@ -3647,7 +3676,7 @@ export const GooglePrivacyDlpV2CloudSqlProperties = /*@__PURE__*/ S.suspend(
 /** A data connection to allow the DLP API to profile data in locations that require additional configuration. */
 export interface GooglePrivacyDlpV2Connection {
   /** Required. The connection's state in its lifecycle. */
-  state?: GooglePrivacyDlpV2ConnectionStateEnum;
+  state?: GooglePrivacyDlpV2ConnectionStateEnum | (string & {});
   /** Output only. Name of the connection: `projects/{project}/locations/{location}/connections/{name}`. */
   name?: string;
   /** Output only. Set if status == ERROR, to provide additional details. Will store the last 10 errors sorted with the most recent first. */
@@ -3735,8 +3764,9 @@ export type GooglePrivacyDlpV2SchemaModifiedCadenceTypesItemEnum =
 export const GooglePrivacyDlpV2SchemaModifiedCadenceTypesItemEnum =
   /*@__PURE__*/ S.String;
 
-export type GooglePrivacyDlpV2SchemaModifiedCadenceTypesItemEnumList =
-  ReadonlyArray<GooglePrivacyDlpV2SchemaModifiedCadenceTypesItemEnum>;
+export type GooglePrivacyDlpV2SchemaModifiedCadenceTypesItemEnumList = Array<
+  GooglePrivacyDlpV2SchemaModifiedCadenceTypesItemEnum | (string & {})
+>;
 export const GooglePrivacyDlpV2SchemaModifiedCadenceTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     GooglePrivacyDlpV2SchemaModifiedCadenceTypesItemEnum,
@@ -3755,7 +3785,9 @@ export interface GooglePrivacyDlpV2SchemaModifiedCadence {
   /** The types of schema modifications to consider. Defaults to NEW_COLUMNS. */
   types?: GooglePrivacyDlpV2SchemaModifiedCadenceTypesItemEnumList;
   /** Frequency to regenerate data profiles when the schema is modified. Defaults to monthly. */
-  frequency?: GooglePrivacyDlpV2SchemaModifiedCadenceFrequencyEnum;
+  frequency?:
+    | GooglePrivacyDlpV2SchemaModifiedCadenceFrequencyEnum
+    | (string & {});
 }
 export const GooglePrivacyDlpV2SchemaModifiedCadence = /*@__PURE__*/ S.suspend(
   () =>
@@ -3790,7 +3822,9 @@ export const GooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadenceFrequencyE
 /** The cadence at which to update data profiles when the inspection rules defined by the `InspectTemplate` change. */
 export interface GooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence {
   /** How frequently data profiles can be updated when the template is modified. Defaults to never. */
-  frequency?: GooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadenceFrequencyEnum;
+  frequency?:
+    | GooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadenceFrequencyEnum
+    | (string & {});
 }
 export const GooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence =
   /*@__PURE__*/ S.suspend(() =>
@@ -3808,7 +3842,9 @@ export interface GooglePrivacyDlpV2DiscoveryCloudSqlGenerationCadence {
   /** When to reprofile if the schema has changed. */
   schemaModifiedCadence?: GooglePrivacyDlpV2SchemaModifiedCadence;
   /** Data changes (non-schema changes) in Cloud SQL tables can't trigger reprofiling. If you set this field, profiles are refreshed at this frequency regardless of whether the underlying tables have changed. Defaults to never. */
-  refreshFrequency?: GooglePrivacyDlpV2DiscoveryCloudSqlGenerationCadenceRefreshFrequencyEnum;
+  refreshFrequency?:
+    | GooglePrivacyDlpV2DiscoveryCloudSqlGenerationCadenceRefreshFrequencyEnum
+    | (string & {});
   /** Governs when to update data profiles when the inspection rules defined by the `InspectTemplate` change. If not set, changing the template will not cause a data profile to update. */
   inspectTemplateModifiedCadence?: GooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence;
 }
@@ -3861,7 +3897,7 @@ export const GooglePrivacyDlpV2DatabaseResourceRegex = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GooglePrivacyDlpV2DatabaseResourceRegex>;
 
 export type GooglePrivacyDlpV2DatabaseResourceRegexList =
-  ReadonlyArray<GooglePrivacyDlpV2DatabaseResourceRegex>;
+  Array<GooglePrivacyDlpV2DatabaseResourceRegex>;
 export const GooglePrivacyDlpV2DatabaseResourceRegexList =
   /*@__PURE__*/ S.Array(
     GooglePrivacyDlpV2DatabaseResourceRegex,
@@ -3956,7 +3992,10 @@ export const GooglePrivacyDlpV2DiscoveryCloudSqlConditionsDatabaseEnginesItemEnu
   /*@__PURE__*/ S.String;
 
 export type GooglePrivacyDlpV2DiscoveryCloudSqlConditionsDatabaseEnginesItemEnumList =
-  ReadonlyArray<GooglePrivacyDlpV2DiscoveryCloudSqlConditionsDatabaseEnginesItemEnum>;
+  Array<
+    | GooglePrivacyDlpV2DiscoveryCloudSqlConditionsDatabaseEnginesItemEnum
+    | (string & {})
+  >;
 export const GooglePrivacyDlpV2DiscoveryCloudSqlConditionsDatabaseEnginesItemEnumList =
   /*@__PURE__*/ S.Array(
     GooglePrivacyDlpV2DiscoveryCloudSqlConditionsDatabaseEnginesItemEnum,
@@ -3970,7 +4009,9 @@ export const GooglePrivacyDlpV2DiscoveryCloudSqlConditionsTypesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GooglePrivacyDlpV2DiscoveryCloudSqlConditionsTypesItemEnumList =
-  ReadonlyArray<GooglePrivacyDlpV2DiscoveryCloudSqlConditionsTypesItemEnum>;
+  Array<
+    GooglePrivacyDlpV2DiscoveryCloudSqlConditionsTypesItemEnum | (string & {})
+  >;
 export const GooglePrivacyDlpV2DiscoveryCloudSqlConditionsTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     GooglePrivacyDlpV2DiscoveryCloudSqlConditionsTypesItemEnum,
@@ -4048,7 +4089,9 @@ export interface GooglePrivacyDlpV2DiscoveryOtherCloudGenerationCadence {
   /** Optional. Governs when to update data profiles when the inspection rules defined by the `InspectTemplate` change. If not set, changing the template will not cause a data profile to update. */
   inspectTemplateModifiedCadence?: GooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence;
   /** Optional. Frequency to update profiles regardless of whether the underlying resource has changes. Defaults to never. */
-  refreshFrequency?: GooglePrivacyDlpV2DiscoveryOtherCloudGenerationCadenceRefreshFrequencyEnum;
+  refreshFrequency?:
+    | GooglePrivacyDlpV2DiscoveryOtherCloudGenerationCadenceRefreshFrequencyEnum
+    | (string & {});
 }
 export const GooglePrivacyDlpV2DiscoveryOtherCloudGenerationCadence =
   /*@__PURE__*/ S.suspend(() =>
@@ -4152,7 +4195,7 @@ export const GooglePrivacyDlpV2OtherCloudResourceRegex =
   }) as any as S.Schema<GooglePrivacyDlpV2OtherCloudResourceRegex>;
 
 export type GooglePrivacyDlpV2OtherCloudResourceRegexList =
-  ReadonlyArray<GooglePrivacyDlpV2OtherCloudResourceRegex>;
+  Array<GooglePrivacyDlpV2OtherCloudResourceRegex>;
 export const GooglePrivacyDlpV2OtherCloudResourceRegexList =
   /*@__PURE__*/ S.Array(
     GooglePrivacyDlpV2OtherCloudResourceRegex,
@@ -4224,7 +4267,10 @@ export const GooglePrivacyDlpV2AmazonS3BucketConditionsBucketTypesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GooglePrivacyDlpV2AmazonS3BucketConditionsBucketTypesItemEnumList =
-  ReadonlyArray<GooglePrivacyDlpV2AmazonS3BucketConditionsBucketTypesItemEnum>;
+  Array<
+    | GooglePrivacyDlpV2AmazonS3BucketConditionsBucketTypesItemEnum
+    | (string & {})
+  >;
 export const GooglePrivacyDlpV2AmazonS3BucketConditionsBucketTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     GooglePrivacyDlpV2AmazonS3BucketConditionsBucketTypesItemEnum,
@@ -4241,7 +4287,10 @@ export const GooglePrivacyDlpV2AmazonS3BucketConditionsObjectStorageClassesItemE
   /*@__PURE__*/ S.String;
 
 export type GooglePrivacyDlpV2AmazonS3BucketConditionsObjectStorageClassesItemEnumList =
-  ReadonlyArray<GooglePrivacyDlpV2AmazonS3BucketConditionsObjectStorageClassesItemEnum>;
+  Array<
+    | GooglePrivacyDlpV2AmazonS3BucketConditionsObjectStorageClassesItemEnum
+    | (string & {})
+  >;
 export const GooglePrivacyDlpV2AmazonS3BucketConditionsObjectStorageClassesItemEnumList =
   /*@__PURE__*/ S.Array(
     GooglePrivacyDlpV2AmazonS3BucketConditionsObjectStorageClassesItemEnum,
@@ -4330,7 +4379,7 @@ export const GooglePrivacyDlpV2VertexDatasetRegex = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GooglePrivacyDlpV2VertexDatasetRegex>;
 
 export type GooglePrivacyDlpV2VertexDatasetRegexList =
-  ReadonlyArray<GooglePrivacyDlpV2VertexDatasetRegex>;
+  Array<GooglePrivacyDlpV2VertexDatasetRegex>;
 export const GooglePrivacyDlpV2VertexDatasetRegexList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2VertexDatasetRegex,
 ) as any as S.Schema<GooglePrivacyDlpV2VertexDatasetRegexList>;
@@ -4427,7 +4476,9 @@ export const GooglePrivacyDlpV2DiscoveryVertexDatasetGenerationCadenceRefreshFre
 /** How often existing datasets should have their profiles refreshed. New datasets are scanned as quickly as possible depending on system capacity. */
 export interface GooglePrivacyDlpV2DiscoveryVertexDatasetGenerationCadence {
   /** If you set this field, profiles are refreshed at this frequency regardless of whether the underlying datasets have changed. Defaults to never. */
-  refreshFrequency?: GooglePrivacyDlpV2DiscoveryVertexDatasetGenerationCadenceRefreshFrequencyEnum;
+  refreshFrequency?:
+    | GooglePrivacyDlpV2DiscoveryVertexDatasetGenerationCadenceRefreshFrequencyEnum
+    | (string & {});
   /** Governs when to update data profiles when the inspection rules defined by the `InspectTemplate` change. If not set, changing the template will not cause a data profile to be updated. */
   inspectTemplateModifiedCadence?: GooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence;
 }
@@ -4492,7 +4543,7 @@ export const GooglePrivacyDlpV2BigQueryRegex = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GooglePrivacyDlpV2BigQueryRegex>;
 
 export type GooglePrivacyDlpV2BigQueryRegexList =
-  ReadonlyArray<GooglePrivacyDlpV2BigQueryRegex>;
+  Array<GooglePrivacyDlpV2BigQueryRegex>;
 export const GooglePrivacyDlpV2BigQueryRegexList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2BigQueryRegex,
 ) as any as S.Schema<GooglePrivacyDlpV2BigQueryRegexList>;
@@ -4579,8 +4630,9 @@ export type GooglePrivacyDlpV2BigQueryTableTypesTypesItemEnum =
 export const GooglePrivacyDlpV2BigQueryTableTypesTypesItemEnum =
   /*@__PURE__*/ S.String;
 
-export type GooglePrivacyDlpV2BigQueryTableTypesTypesItemEnumList =
-  ReadonlyArray<GooglePrivacyDlpV2BigQueryTableTypesTypesItemEnum>;
+export type GooglePrivacyDlpV2BigQueryTableTypesTypesItemEnumList = Array<
+  GooglePrivacyDlpV2BigQueryTableTypesTypesItemEnum | (string & {})
+>;
 export const GooglePrivacyDlpV2BigQueryTableTypesTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     GooglePrivacyDlpV2BigQueryTableTypesTypesItemEnum,
@@ -4630,7 +4682,9 @@ export interface GooglePrivacyDlpV2DiscoveryBigQueryConditions {
   /** Restrict discovery to specific table types. */
   types?: GooglePrivacyDlpV2BigQueryTableTypes;
   /** Restrict discovery to categories of table types. */
-  typeCollection?: GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionEnum;
+  typeCollection?:
+    | GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionEnum
+    | (string & {});
   /** At least one of the conditions must be true for a table to be scanned. */
   orConditions?: GooglePrivacyDlpV2OrConditions;
 }
@@ -4655,7 +4709,9 @@ export const GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemEnumList =
-  ReadonlyArray<GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemEnum>;
+  Array<
+    GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemEnum | (string & {})
+  >;
 export const GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemEnum,
@@ -4674,7 +4730,9 @@ export interface GooglePrivacyDlpV2DiscoveryTableModifiedCadence {
   /** The type of events to consider when deciding if the table has been modified and should have the profile updated. Defaults to MODIFIED_TIMESTAMP. */
   types?: GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemEnumList;
   /** How frequently data profiles can be updated when tables are modified. Defaults to never. */
-  frequency?: GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyEnum;
+  frequency?:
+    | GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyEnum
+    | (string & {});
 }
 export const GooglePrivacyDlpV2DiscoveryTableModifiedCadence =
   /*@__PURE__*/ S.suspend(() =>
@@ -4698,7 +4756,10 @@ export const GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemEnumList =
-  ReadonlyArray<GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemEnum>;
+  Array<
+    | GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemEnum
+    | (string & {})
+  >;
 export const GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemEnum,
@@ -4717,7 +4778,9 @@ export interface GooglePrivacyDlpV2DiscoverySchemaModifiedCadence {
   /** The type of events to consider when deciding if the table's schema has been modified and should have the profile updated. Defaults to NEW_COLUMNS. */
   types?: GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemEnumList;
   /** How frequently profiles may be updated when schemas are modified. Defaults to monthly. */
-  frequency?: GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyEnum;
+  frequency?:
+    | GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyEnum
+    | (string & {});
 }
 export const GooglePrivacyDlpV2DiscoverySchemaModifiedCadence =
   /*@__PURE__*/ S.suspend(() =>
@@ -4748,7 +4811,9 @@ export interface GooglePrivacyDlpV2DiscoveryGenerationCadence {
   /** Governs when to update data profiles when a schema is modified. */
   schemaModifiedCadence?: GooglePrivacyDlpV2DiscoverySchemaModifiedCadence;
   /** Frequency at which profiles should be updated, regardless of whether the underlying resource has changed. Defaults to never. */
-  refreshFrequency?: GooglePrivacyDlpV2DiscoveryGenerationCadenceRefreshFrequencyEnum;
+  refreshFrequency?:
+    | GooglePrivacyDlpV2DiscoveryGenerationCadenceRefreshFrequencyEnum
+    | (string & {});
   /** Governs when to update data profiles when the inspection rules defined by the `InspectTemplate` change. If not set, changing the template will not cause a data profile to update. */
   inspectTemplateModifiedCadence?: GooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence;
 }
@@ -4833,7 +4898,7 @@ export const GooglePrivacyDlpV2FileStoreRegex = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GooglePrivacyDlpV2FileStoreRegex>;
 
 export type GooglePrivacyDlpV2FileStoreRegexList =
-  ReadonlyArray<GooglePrivacyDlpV2FileStoreRegex>;
+  Array<GooglePrivacyDlpV2FileStoreRegex>;
 export const GooglePrivacyDlpV2FileStoreRegexList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2FileStoreRegex,
 ) as any as S.Schema<GooglePrivacyDlpV2FileStoreRegexList>;
@@ -4868,7 +4933,7 @@ export const GooglePrivacyDlpV2TagFilter = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GooglePrivacyDlpV2TagFilter>;
 
 export type GooglePrivacyDlpV2TagFilterList =
-  ReadonlyArray<GooglePrivacyDlpV2TagFilter>;
+  Array<GooglePrivacyDlpV2TagFilter>;
 export const GooglePrivacyDlpV2TagFilterList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2TagFilter,
 ) as any as S.Schema<GooglePrivacyDlpV2TagFilterList>;
@@ -4956,7 +5021,10 @@ export const GooglePrivacyDlpV2DiscoveryCloudStorageConditionsIncludedObjectAttr
   /*@__PURE__*/ S.String;
 
 export type GooglePrivacyDlpV2DiscoveryCloudStorageConditionsIncludedObjectAttributesItemEnumList =
-  ReadonlyArray<GooglePrivacyDlpV2DiscoveryCloudStorageConditionsIncludedObjectAttributesItemEnum>;
+  Array<
+    | GooglePrivacyDlpV2DiscoveryCloudStorageConditionsIncludedObjectAttributesItemEnum
+    | (string & {})
+  >;
 export const GooglePrivacyDlpV2DiscoveryCloudStorageConditionsIncludedObjectAttributesItemEnumList =
   /*@__PURE__*/ S.Array(
     GooglePrivacyDlpV2DiscoveryCloudStorageConditionsIncludedObjectAttributesItemEnum,
@@ -4971,7 +5039,10 @@ export const GooglePrivacyDlpV2DiscoveryCloudStorageConditionsIncludedBucketAttr
   /*@__PURE__*/ S.String;
 
 export type GooglePrivacyDlpV2DiscoveryCloudStorageConditionsIncludedBucketAttributesItemEnumList =
-  ReadonlyArray<GooglePrivacyDlpV2DiscoveryCloudStorageConditionsIncludedBucketAttributesItemEnum>;
+  Array<
+    | GooglePrivacyDlpV2DiscoveryCloudStorageConditionsIncludedBucketAttributesItemEnum
+    | (string & {})
+  >;
 export const GooglePrivacyDlpV2DiscoveryCloudStorageConditionsIncludedBucketAttributesItemEnumList =
   /*@__PURE__*/ S.Array(
     GooglePrivacyDlpV2DiscoveryCloudStorageConditionsIncludedBucketAttributesItemEnum,
@@ -5033,7 +5104,9 @@ export interface GooglePrivacyDlpV2DiscoveryCloudStorageGenerationCadence {
   /** Optional. Governs when to update data profiles when the inspection rules defined by the `InspectTemplate` change. If not set, changing the template will not cause a data profile to update. */
   inspectTemplateModifiedCadence?: GooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence;
   /** Optional. Data changes in Cloud Storage can't trigger reprofiling. If you set this field, profiles are refreshed at this frequency regardless of whether the underlying buckets have changed. Defaults to never. */
-  refreshFrequency?: GooglePrivacyDlpV2DiscoveryCloudStorageGenerationCadenceRefreshFrequencyEnum;
+  refreshFrequency?:
+    | GooglePrivacyDlpV2DiscoveryCloudStorageGenerationCadenceRefreshFrequencyEnum
+    | (string & {});
 }
 export const GooglePrivacyDlpV2DiscoveryCloudStorageGenerationCadence =
   /*@__PURE__*/ S.suspend(() =>
@@ -5107,7 +5180,7 @@ export const GooglePrivacyDlpV2DiscoveryTarget = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GooglePrivacyDlpV2DiscoveryTarget>;
 
 export type GooglePrivacyDlpV2DiscoveryTargetList =
-  ReadonlyArray<GooglePrivacyDlpV2DiscoveryTarget>;
+  Array<GooglePrivacyDlpV2DiscoveryTarget>;
 export const GooglePrivacyDlpV2DiscoveryTargetList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2DiscoveryTarget,
 ) as any as S.Schema<GooglePrivacyDlpV2DiscoveryTargetList>;
@@ -5282,9 +5355,13 @@ export const GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScoreEnum =
 /** A condition consisting of a value. */
 export interface GooglePrivacyDlpV2PubSubCondition {
   /** The minimum data risk score that triggers the condition. */
-  minimumRiskScore?: GooglePrivacyDlpV2PubSubConditionMinimumRiskScoreEnum;
+  minimumRiskScore?:
+    | GooglePrivacyDlpV2PubSubConditionMinimumRiskScoreEnum
+    | (string & {});
   /** The minimum sensitivity level that triggers the condition. */
-  minimumSensitivityScore?: GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScoreEnum;
+  minimumSensitivityScore?:
+    | GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScoreEnum
+    | (string & {});
 }
 export const GooglePrivacyDlpV2PubSubCondition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5300,7 +5377,7 @@ export const GooglePrivacyDlpV2PubSubCondition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GooglePrivacyDlpV2PubSubCondition>;
 
 export type GooglePrivacyDlpV2PubSubConditionList =
-  ReadonlyArray<GooglePrivacyDlpV2PubSubCondition>;
+  Array<GooglePrivacyDlpV2PubSubCondition>;
 export const GooglePrivacyDlpV2PubSubConditionList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2PubSubCondition,
 ) as any as S.Schema<GooglePrivacyDlpV2PubSubConditionList>;
@@ -5308,7 +5385,9 @@ export const GooglePrivacyDlpV2PubSubConditionList = /*@__PURE__*/ S.Array(
 /** An expression, consisting of an operator and conditions. */
 export interface GooglePrivacyDlpV2PubSubExpressions {
   /** The operator to apply to the collection of conditions. */
-  logicalOperator?: GooglePrivacyDlpV2PubSubExpressionsLogicalOperatorEnum;
+  logicalOperator?:
+    | GooglePrivacyDlpV2PubSubExpressionsLogicalOperatorEnum
+    | (string & {});
   /** Conditions to apply to the expression. */
   conditions?: GooglePrivacyDlpV2PubSubConditionList;
 }
@@ -5359,11 +5438,13 @@ export interface GooglePrivacyDlpV2PubSubNotification {
   /** Conditions (e.g., data risk or sensitivity level) for triggering a Pub/Sub. */
   pubsubCondition?: GooglePrivacyDlpV2DataProfilePubSubCondition;
   /** How much data to include in the Pub/Sub message. If the user wishes to limit the size of the message, they can use resource_name and fetch the profile fields they wish to. Per table profile (not per column). */
-  detailOfMessage?: GooglePrivacyDlpV2PubSubNotificationDetailOfMessageEnum;
+  detailOfMessage?:
+    | GooglePrivacyDlpV2PubSubNotificationDetailOfMessageEnum
+    | (string & {});
   /** Cloud Pub/Sub topic to send notifications to. Format is projects/{project}/topics/{topic}. */
   topic?: string;
   /** The type of event that triggers a Pub/Sub. At most one `PubSubNotification` per EventType is permitted. */
-  event?: GooglePrivacyDlpV2PubSubNotificationEventEnum;
+  event?: GooglePrivacyDlpV2PubSubNotificationEventEnum | (string & {});
 }
 export const GooglePrivacyDlpV2PubSubNotification = /*@__PURE__*/ S.suspend(
   () =>
@@ -5417,7 +5498,7 @@ export const GooglePrivacyDlpV2TagCondition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GooglePrivacyDlpV2TagCondition>;
 
 export type GooglePrivacyDlpV2TagConditionList =
-  ReadonlyArray<GooglePrivacyDlpV2TagCondition>;
+  Array<GooglePrivacyDlpV2TagCondition>;
 export const GooglePrivacyDlpV2TagConditionList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2TagCondition,
 ) as any as S.Schema<GooglePrivacyDlpV2TagConditionList>;
@@ -5430,7 +5511,10 @@ export const GooglePrivacyDlpV2TagResourcesProfileGenerationsToTagItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GooglePrivacyDlpV2TagResourcesProfileGenerationsToTagItemEnumList =
-  ReadonlyArray<GooglePrivacyDlpV2TagResourcesProfileGenerationsToTagItemEnum>;
+  Array<
+    | GooglePrivacyDlpV2TagResourcesProfileGenerationsToTagItemEnum
+    | (string & {})
+  >;
 export const GooglePrivacyDlpV2TagResourcesProfileGenerationsToTagItemEnumList =
   /*@__PURE__*/ S.Array(
     GooglePrivacyDlpV2TagResourcesProfileGenerationsToTagItemEnum,
@@ -5525,7 +5609,7 @@ export const GooglePrivacyDlpV2DataProfileAction = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GooglePrivacyDlpV2DataProfileAction>;
 
 export type GooglePrivacyDlpV2DataProfileActionList =
-  ReadonlyArray<GooglePrivacyDlpV2DataProfileAction>;
+  Array<GooglePrivacyDlpV2DataProfileAction>;
 export const GooglePrivacyDlpV2DataProfileActionList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2DataProfileAction,
 ) as any as S.Schema<GooglePrivacyDlpV2DataProfileActionList>;
@@ -5541,7 +5625,7 @@ export interface GooglePrivacyDlpV2DiscoveryConfig {
   /** Target to match against for determining what to scan and how frequently. */
   targets?: GooglePrivacyDlpV2DiscoveryTargetList;
   /** Required. A status for this configuration. */
-  status?: GooglePrivacyDlpV2DiscoveryConfigStatusEnum;
+  status?: GooglePrivacyDlpV2DiscoveryConfigStatusEnum | (string & {});
   /** Only set when the parent is an org. */
   orgConfig?: GooglePrivacyDlpV2OrgConfig;
   /** Detection logic for profile generation. Not all template features are used by Discovery. FindingLimits, include_quote and exclude_info_types have no impact on Discovery. Multiple templates may be provided if there is data in multiple regions. At most one template must be specified per-region (including "global"). Each region is scanned using the applicable template. If no region-specific template is specified, but a "global" template is specified, it will be copied to that region and used instead. If no global or region-specific template is provided for a region with data, that region's data will not be scanned. For more information, see https://cloud.google.com/sensitive-data-protection/docs/data-profiles#data-residency. */
@@ -5690,8 +5774,7 @@ export const GooglePrivacyDlpV2Trigger = /*@__PURE__*/ S.suspend(() =>
   identifier: "GooglePrivacyDlpV2Trigger",
 }) as any as S.Schema<GooglePrivacyDlpV2Trigger>;
 
-export type GooglePrivacyDlpV2TriggerList =
-  ReadonlyArray<GooglePrivacyDlpV2Trigger>;
+export type GooglePrivacyDlpV2TriggerList = Array<GooglePrivacyDlpV2Trigger>;
 export const GooglePrivacyDlpV2TriggerList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2Trigger,
 ) as any as S.Schema<GooglePrivacyDlpV2TriggerList>;
@@ -5705,7 +5788,7 @@ export interface GooglePrivacyDlpV2JobTrigger {
   /** Output only. The creation timestamp of a triggeredJob. */
   createTime?: string;
   /** Required. A status for this trigger. */
-  status?: GooglePrivacyDlpV2JobTriggerStatusEnum;
+  status?: GooglePrivacyDlpV2JobTriggerStatusEnum | (string & {});
   /** A list of triggers which will be OR'ed together. Only one in the list needs to trigger for a job to be started. The list may contain only a single Schedule trigger and must have at least one object. */
   triggers?: GooglePrivacyDlpV2TriggerList;
   /** Output only. A stream of errors encountered when the trigger was activated. Repeated errors may result in the JobTrigger automatically being paused. Will return the last 100 errors. Whenever the JobTrigger is modified this list will be cleared. */
@@ -5968,7 +6051,7 @@ export const GooglePrivacyDlpV2StoredInfoTypeVersion = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GooglePrivacyDlpV2StoredInfoTypeVersion>;
 
 export type GooglePrivacyDlpV2StoredInfoTypeVersionList =
-  ReadonlyArray<GooglePrivacyDlpV2StoredInfoTypeVersion>;
+  Array<GooglePrivacyDlpV2StoredInfoTypeVersion>;
 export const GooglePrivacyDlpV2StoredInfoTypeVersionList =
   /*@__PURE__*/ S.Array(
     GooglePrivacyDlpV2StoredInfoTypeVersion,
@@ -6166,7 +6249,9 @@ export const GooglePrivacyDlpV2PolicyActionReturnVerdictEnum =
 /** A possible action to take when applying a content policy. */
 export interface GooglePrivacyDlpV2PolicyAction {
   /** Optional. If set, the verdict will be returned to the user. */
-  returnVerdict?: GooglePrivacyDlpV2PolicyActionReturnVerdictEnum;
+  returnVerdict?:
+    | GooglePrivacyDlpV2PolicyActionReturnVerdictEnum
+    | (string & {});
 }
 export const GooglePrivacyDlpV2PolicyAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6209,7 +6294,7 @@ export const GooglePrivacyDlpV2LoggingConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GooglePrivacyDlpV2LoggingConfig>;
 
 export type GooglePrivacyDlpV2LoggingConfigList =
-  ReadonlyArray<GooglePrivacyDlpV2LoggingConfig>;
+  Array<GooglePrivacyDlpV2LoggingConfig>;
 export const GooglePrivacyDlpV2LoggingConfigList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2LoggingConfig,
 ) as any as S.Schema<GooglePrivacyDlpV2LoggingConfigList>;
@@ -6260,7 +6345,7 @@ export const GooglePrivacyDlpV2PolicyCondition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GooglePrivacyDlpV2PolicyCondition>;
 
 export type GooglePrivacyDlpV2PolicyConditionList =
-  ReadonlyArray<GooglePrivacyDlpV2PolicyCondition>;
+  Array<GooglePrivacyDlpV2PolicyCondition>;
 export const GooglePrivacyDlpV2PolicyConditionList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2PolicyCondition,
 ) as any as S.Schema<GooglePrivacyDlpV2PolicyConditionList>;
@@ -6277,7 +6362,7 @@ export interface GooglePrivacyDlpV2PolicyRule {
   /** Optional. Conditions that must match for this rule to apply. All conditions must match (`AND`). For `OR` conditions, use multiple rules. */
   conditions?: GooglePrivacyDlpV2PolicyConditionList;
   /** If set, the verdict will be returned to the user. Deprecated: Use `action` instead. */
-  returnVerdict?: GooglePrivacyDlpV2PolicyRuleReturnVerdictEnum;
+  returnVerdict?: GooglePrivacyDlpV2PolicyRuleReturnVerdictEnum | (string & {});
   /** Required. Action to take if this rule applies. */
   action?: GooglePrivacyDlpV2PolicyAction;
 }
@@ -6292,7 +6377,7 @@ export const GooglePrivacyDlpV2PolicyRule = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GooglePrivacyDlpV2PolicyRule>;
 
 export type GooglePrivacyDlpV2PolicyRuleList =
-  ReadonlyArray<GooglePrivacyDlpV2PolicyRule>;
+  Array<GooglePrivacyDlpV2PolicyRule>;
 export const GooglePrivacyDlpV2PolicyRuleList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2PolicyRule,
 ) as any as S.Schema<GooglePrivacyDlpV2PolicyRuleList>;
@@ -6573,7 +6658,7 @@ export const GooglePrivacyDlpV2KeyValueMetadataProperty =
   }) as any as S.Schema<GooglePrivacyDlpV2KeyValueMetadataProperty>;
 
 export type GooglePrivacyDlpV2KeyValueMetadataPropertyList =
-  ReadonlyArray<GooglePrivacyDlpV2KeyValueMetadataProperty>;
+  Array<GooglePrivacyDlpV2KeyValueMetadataProperty>;
 export const GooglePrivacyDlpV2KeyValueMetadataPropertyList =
   /*@__PURE__*/ S.Array(
     GooglePrivacyDlpV2KeyValueMetadataProperty,
@@ -6611,7 +6696,7 @@ export const GooglePrivacyDlpV2LabelFieldMetadata = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GooglePrivacyDlpV2LabelFieldMetadata>;
 
 export type GooglePrivacyDlpV2LabelFieldMetadataList =
-  ReadonlyArray<GooglePrivacyDlpV2LabelFieldMetadata>;
+  Array<GooglePrivacyDlpV2LabelFieldMetadata>;
 export const GooglePrivacyDlpV2LabelFieldMetadataList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2LabelFieldMetadata,
 ) as any as S.Schema<GooglePrivacyDlpV2LabelFieldMetadataList>;
@@ -6650,7 +6735,7 @@ export const GooglePrivacyDlpV2FileLabel = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GooglePrivacyDlpV2FileLabel>;
 
 export type GooglePrivacyDlpV2FileLabelList =
-  ReadonlyArray<GooglePrivacyDlpV2FileLabel>;
+  Array<GooglePrivacyDlpV2FileLabel>;
 export const GooglePrivacyDlpV2FileLabelList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2FileLabel,
 ) as any as S.Schema<GooglePrivacyDlpV2FileLabelList>;
@@ -6681,7 +6766,9 @@ export const GooglePrivacyDlpV2ConversationMessageMessageTypeEnum =
 /** Single message in a conversation. */
 export interface GooglePrivacyDlpV2ConversationMessage {
   /** The type of message. */
-  messageType?: GooglePrivacyDlpV2ConversationMessageMessageTypeEnum;
+  messageType?:
+    | GooglePrivacyDlpV2ConversationMessageMessageTypeEnum
+    | (string & {});
   /** Optional. The identifier of the participant, for example 'test-user' or 'gemini'. The participant ID can contain lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`. The maximum length is 63 characters. */
   participantId?: string;
   /** The contents of this message. */
@@ -6701,7 +6788,7 @@ export const GooglePrivacyDlpV2ConversationMessage = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GooglePrivacyDlpV2ConversationMessage>;
 
 export type GooglePrivacyDlpV2ConversationMessageList =
-  ReadonlyArray<GooglePrivacyDlpV2ConversationMessage>;
+  Array<GooglePrivacyDlpV2ConversationMessage>;
 export const GooglePrivacyDlpV2ConversationMessageList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2ConversationMessage,
 ) as any as S.Schema<GooglePrivacyDlpV2ConversationMessageList>;
@@ -6732,7 +6819,7 @@ export const GooglePrivacyDlpV2Row = /*@__PURE__*/ S.suspend(() =>
   identifier: "GooglePrivacyDlpV2Row",
 }) as any as S.Schema<GooglePrivacyDlpV2Row>;
 
-export type GooglePrivacyDlpV2RowList = ReadonlyArray<GooglePrivacyDlpV2Row>;
+export type GooglePrivacyDlpV2RowList = Array<GooglePrivacyDlpV2Row>;
 export const GooglePrivacyDlpV2RowList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2Row,
 ) as any as S.Schema<GooglePrivacyDlpV2RowList>;
@@ -6803,7 +6890,7 @@ export const GooglePrivacyDlpV2ByteContentItemTypeEnum = /*@__PURE__*/ S.String;
 /** Container for bytes to inspect or redact. */
 export interface GooglePrivacyDlpV2ByteContentItem {
   /** The type of data stored in the bytes string. Default will be TEXT_UTF8. */
-  type?: GooglePrivacyDlpV2ByteContentItemTypeEnum;
+  type?: GooglePrivacyDlpV2ByteContentItemTypeEnum | (string & {});
   /** Content data to inspect or redact. */
   data?: string;
 }
@@ -6922,7 +7009,7 @@ export const GooglePrivacyDlpV2SummaryResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GooglePrivacyDlpV2SummaryResult>;
 
 export type GooglePrivacyDlpV2SummaryResultList =
-  ReadonlyArray<GooglePrivacyDlpV2SummaryResult>;
+  Array<GooglePrivacyDlpV2SummaryResult>;
 export const GooglePrivacyDlpV2SummaryResultList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2SummaryResult,
 ) as any as S.Schema<GooglePrivacyDlpV2SummaryResultList>;
@@ -6962,7 +7049,7 @@ export const GooglePrivacyDlpV2TransformationSummary = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GooglePrivacyDlpV2TransformationSummary>;
 
 export type GooglePrivacyDlpV2TransformationSummaryList =
-  ReadonlyArray<GooglePrivacyDlpV2TransformationSummary>;
+  Array<GooglePrivacyDlpV2TransformationSummary>;
 export const GooglePrivacyDlpV2TransformationSummaryList =
   /*@__PURE__*/ S.Array(
     GooglePrivacyDlpV2TransformationSummary,
@@ -7630,7 +7717,7 @@ export const GooglePrivacyDlpV2OtherInfoTypeSummary = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GooglePrivacyDlpV2OtherInfoTypeSummary>;
 
 export type GooglePrivacyDlpV2OtherInfoTypeSummaryList =
-  ReadonlyArray<GooglePrivacyDlpV2OtherInfoTypeSummary>;
+  Array<GooglePrivacyDlpV2OtherInfoTypeSummary>;
 export const GooglePrivacyDlpV2OtherInfoTypeSummaryList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2OtherInfoTypeSummary,
 ) as any as S.Schema<GooglePrivacyDlpV2OtherInfoTypeSummaryList>;
@@ -7933,7 +8020,7 @@ export const GooglePrivacyDlpV2FileExtensionInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GooglePrivacyDlpV2FileExtensionInfo>;
 
 export type GooglePrivacyDlpV2FileExtensionInfoList =
-  ReadonlyArray<GooglePrivacyDlpV2FileExtensionInfo>;
+  Array<GooglePrivacyDlpV2FileExtensionInfo>;
 export const GooglePrivacyDlpV2FileExtensionInfoList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2FileExtensionInfo,
 ) as any as S.Schema<GooglePrivacyDlpV2FileExtensionInfoList>;
@@ -7953,7 +8040,7 @@ export const GooglePrivacyDlpV2FileStoreInfoTypeSummary =
   }) as any as S.Schema<GooglePrivacyDlpV2FileStoreInfoTypeSummary>;
 
 export type GooglePrivacyDlpV2FileStoreInfoTypeSummaryList =
-  ReadonlyArray<GooglePrivacyDlpV2FileStoreInfoTypeSummary>;
+  Array<GooglePrivacyDlpV2FileStoreInfoTypeSummary>;
 export const GooglePrivacyDlpV2FileStoreInfoTypeSummaryList =
   /*@__PURE__*/ S.Array(
     GooglePrivacyDlpV2FileStoreInfoTypeSummary,
@@ -7999,7 +8086,7 @@ export const GooglePrivacyDlpV2FileClusterSummary = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GooglePrivacyDlpV2FileClusterSummary>;
 
 export type GooglePrivacyDlpV2FileClusterSummaryList =
-  ReadonlyArray<GooglePrivacyDlpV2FileClusterSummary>;
+  Array<GooglePrivacyDlpV2FileClusterSummary>;
 export const GooglePrivacyDlpV2FileClusterSummaryList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2FileClusterSummary,
 ) as any as S.Schema<GooglePrivacyDlpV2FileClusterSummaryList>;
@@ -8105,7 +8192,7 @@ export const GooglePrivacyDlpV2RelatedResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GooglePrivacyDlpV2RelatedResource>;
 
 export type GooglePrivacyDlpV2RelatedResourceList =
-  ReadonlyArray<GooglePrivacyDlpV2RelatedResource>;
+  Array<GooglePrivacyDlpV2RelatedResource>;
 export const GooglePrivacyDlpV2RelatedResourceList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2RelatedResource,
 ) as any as S.Schema<GooglePrivacyDlpV2RelatedResourceList>;
@@ -8129,7 +8216,7 @@ export const GooglePrivacyDlpV2Tag = /*@__PURE__*/ S.suspend(() =>
   identifier: "GooglePrivacyDlpV2Tag",
 }) as any as S.Schema<GooglePrivacyDlpV2Tag>;
 
-export type GooglePrivacyDlpV2TagList = ReadonlyArray<GooglePrivacyDlpV2Tag>;
+export type GooglePrivacyDlpV2TagList = Array<GooglePrivacyDlpV2Tag>;
 export const GooglePrivacyDlpV2TagList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2Tag,
 ) as any as S.Schema<GooglePrivacyDlpV2TagList>;
@@ -8159,7 +8246,7 @@ export type GooglePrivacyDlpV2DomainSignalsItemEnum =
 export const GooglePrivacyDlpV2DomainSignalsItemEnum = /*@__PURE__*/ S.String;
 
 export type GooglePrivacyDlpV2DomainSignalsItemEnumList =
-  ReadonlyArray<GooglePrivacyDlpV2DomainSignalsItemEnum>;
+  Array<GooglePrivacyDlpV2DomainSignalsItemEnum>;
 export const GooglePrivacyDlpV2DomainSignalsItemEnumList =
   /*@__PURE__*/ S.Array(
     GooglePrivacyDlpV2DomainSignalsItemEnum,
@@ -8181,8 +8268,7 @@ export const GooglePrivacyDlpV2Domain = /*@__PURE__*/ S.suspend(() =>
   identifier: "GooglePrivacyDlpV2Domain",
 }) as any as S.Schema<GooglePrivacyDlpV2Domain>;
 
-export type GooglePrivacyDlpV2DomainList =
-  ReadonlyArray<GooglePrivacyDlpV2Domain>;
+export type GooglePrivacyDlpV2DomainList = Array<GooglePrivacyDlpV2Domain>;
 export const GooglePrivacyDlpV2DomainList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2Domain,
 ) as any as S.Schema<GooglePrivacyDlpV2DomainList>;
@@ -8416,7 +8502,7 @@ export const GetOrganizationsLocationsTableDataProfilesRequest =
   }) as any as S.Schema<GetOrganizationsLocationsTableDataProfilesRequest>;
 
 export type GooglePrivacyDlpV2InfoTypeSummaryList =
-  ReadonlyArray<GooglePrivacyDlpV2InfoTypeSummary>;
+  Array<GooglePrivacyDlpV2InfoTypeSummary>;
 export const GooglePrivacyDlpV2InfoTypeSummaryList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2InfoTypeSummary,
 ) as any as S.Schema<GooglePrivacyDlpV2InfoTypeSummaryList>;
@@ -9196,7 +9282,7 @@ export const GooglePrivacyDlpV2PathElement = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GooglePrivacyDlpV2PathElement>;
 
 export type GooglePrivacyDlpV2PathElementList =
-  ReadonlyArray<GooglePrivacyDlpV2PathElement>;
+  Array<GooglePrivacyDlpV2PathElement>;
 export const GooglePrivacyDlpV2PathElementList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2PathElement,
 ) as any as S.Schema<GooglePrivacyDlpV2PathElementList>;
@@ -9320,7 +9406,7 @@ export const GooglePrivacyDlpV2BoundingBox = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GooglePrivacyDlpV2BoundingBox>;
 
 export type GooglePrivacyDlpV2BoundingBoxList =
-  ReadonlyArray<GooglePrivacyDlpV2BoundingBox>;
+  Array<GooglePrivacyDlpV2BoundingBox>;
 export const GooglePrivacyDlpV2BoundingBoxList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2BoundingBox,
 ) as any as S.Schema<GooglePrivacyDlpV2BoundingBoxList>;
@@ -9403,7 +9489,7 @@ export const GooglePrivacyDlpV2ContentLocation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GooglePrivacyDlpV2ContentLocation>;
 
 export type GooglePrivacyDlpV2ContentLocationList =
-  ReadonlyArray<GooglePrivacyDlpV2ContentLocation>;
+  Array<GooglePrivacyDlpV2ContentLocation>;
 export const GooglePrivacyDlpV2ContentLocationList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2ContentLocation,
 ) as any as S.Schema<GooglePrivacyDlpV2ContentLocationList>;
@@ -9554,8 +9640,7 @@ export const GooglePrivacyDlpV2Finding = /*@__PURE__*/ S.suspend(() =>
   identifier: "GooglePrivacyDlpV2Finding",
 }) as any as S.Schema<GooglePrivacyDlpV2Finding>;
 
-export type GooglePrivacyDlpV2FindingList =
-  ReadonlyArray<GooglePrivacyDlpV2Finding>;
+export type GooglePrivacyDlpV2FindingList = Array<GooglePrivacyDlpV2Finding>;
 export const GooglePrivacyDlpV2FindingList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2Finding,
 ) as any as S.Schema<GooglePrivacyDlpV2FindingList>;
@@ -9745,7 +9830,7 @@ export const GooglePrivacyDlpV2InfoTypeCategory = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GooglePrivacyDlpV2InfoTypeCategory>;
 
 export type GooglePrivacyDlpV2InfoTypeCategoryList =
-  ReadonlyArray<GooglePrivacyDlpV2InfoTypeCategory>;
+  Array<GooglePrivacyDlpV2InfoTypeCategory>;
 export const GooglePrivacyDlpV2InfoTypeCategoryList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2InfoTypeCategory,
 ) as any as S.Schema<GooglePrivacyDlpV2InfoTypeCategoryList>;
@@ -9791,7 +9876,7 @@ export const GooglePrivacyDlpV2InfoTypeDescriptionSupportedByItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GooglePrivacyDlpV2InfoTypeDescriptionSupportedByItemEnumList =
-  ReadonlyArray<GooglePrivacyDlpV2InfoTypeDescriptionSupportedByItemEnum>;
+  Array<GooglePrivacyDlpV2InfoTypeDescriptionSupportedByItemEnum>;
 export const GooglePrivacyDlpV2InfoTypeDescriptionSupportedByItemEnumList =
   /*@__PURE__*/ S.Array(
     GooglePrivacyDlpV2InfoTypeDescriptionSupportedByItemEnum,
@@ -9815,7 +9900,7 @@ export const GooglePrivacyDlpV2VersionDescription = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GooglePrivacyDlpV2VersionDescription>;
 
 export type GooglePrivacyDlpV2VersionDescriptionList =
-  ReadonlyArray<GooglePrivacyDlpV2VersionDescription>;
+  Array<GooglePrivacyDlpV2VersionDescription>;
 export const GooglePrivacyDlpV2VersionDescriptionList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2VersionDescription,
 ) as any as S.Schema<GooglePrivacyDlpV2VersionDescriptionList>;
@@ -9869,7 +9954,7 @@ export const GooglePrivacyDlpV2InfoTypeDescription = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GooglePrivacyDlpV2InfoTypeDescription>;
 
 export type GooglePrivacyDlpV2InfoTypeDescriptionList =
-  ReadonlyArray<GooglePrivacyDlpV2InfoTypeDescription>;
+  Array<GooglePrivacyDlpV2InfoTypeDescription>;
 export const GooglePrivacyDlpV2InfoTypeDescriptionList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2InfoTypeDescription,
 ) as any as S.Schema<GooglePrivacyDlpV2InfoTypeDescriptionList>;
@@ -9947,7 +10032,7 @@ export const ListOrganizationsDeidentifyTemplatesRequest =
   }) as any as S.Schema<ListOrganizationsDeidentifyTemplatesRequest>;
 
 export type GooglePrivacyDlpV2DeidentifyTemplateList =
-  ReadonlyArray<GooglePrivacyDlpV2DeidentifyTemplate>;
+  Array<GooglePrivacyDlpV2DeidentifyTemplate>;
 export const GooglePrivacyDlpV2DeidentifyTemplateList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2DeidentifyTemplate,
 ) as any as S.Schema<GooglePrivacyDlpV2DeidentifyTemplateList>;
@@ -10001,7 +10086,7 @@ export const ListOrganizationsInspectTemplatesRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListOrganizationsInspectTemplatesRequest>;
 
 export type GooglePrivacyDlpV2InspectTemplateList =
-  ReadonlyArray<GooglePrivacyDlpV2InspectTemplate>;
+  Array<GooglePrivacyDlpV2InspectTemplate>;
 export const GooglePrivacyDlpV2InspectTemplateList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2InspectTemplate,
 ) as any as S.Schema<GooglePrivacyDlpV2InspectTemplateList>;
@@ -10055,7 +10140,7 @@ export const ListOrganizationsLocationsColumnDataProfilesRequest =
   }) as any as S.Schema<ListOrganizationsLocationsColumnDataProfilesRequest>;
 
 export type GooglePrivacyDlpV2ColumnDataProfileList =
-  ReadonlyArray<GooglePrivacyDlpV2ColumnDataProfile>;
+  Array<GooglePrivacyDlpV2ColumnDataProfile>;
 export const GooglePrivacyDlpV2ColumnDataProfileList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2ColumnDataProfile,
 ) as any as S.Schema<GooglePrivacyDlpV2ColumnDataProfileList>;
@@ -10106,7 +10191,7 @@ export const ListOrganizationsLocationsConnectionsRequest =
   }) as any as S.Schema<ListOrganizationsLocationsConnectionsRequest>;
 
 export type GooglePrivacyDlpV2ConnectionList =
-  ReadonlyArray<GooglePrivacyDlpV2Connection>;
+  Array<GooglePrivacyDlpV2Connection>;
 export const GooglePrivacyDlpV2ConnectionList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2Connection,
 ) as any as S.Schema<GooglePrivacyDlpV2ConnectionList>;
@@ -10188,7 +10273,7 @@ export const ListOrganizationsLocationsDiscoveryConfigsRequest =
   }) as any as S.Schema<ListOrganizationsLocationsDiscoveryConfigsRequest>;
 
 export type GooglePrivacyDlpV2DiscoveryConfigList =
-  ReadonlyArray<GooglePrivacyDlpV2DiscoveryConfig>;
+  Array<GooglePrivacyDlpV2DiscoveryConfig>;
 export const GooglePrivacyDlpV2DiscoveryConfigList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2DiscoveryConfig,
 ) as any as S.Schema<GooglePrivacyDlpV2DiscoveryConfigList>;
@@ -10255,8 +10340,7 @@ export const ListOrganizationsLocationsDlpJobsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListOrganizationsLocationsDlpJobsRequest",
 }) as any as S.Schema<ListOrganizationsLocationsDlpJobsRequest>;
 
-export type GooglePrivacyDlpV2DlpJobList =
-  ReadonlyArray<GooglePrivacyDlpV2DlpJob>;
+export type GooglePrivacyDlpV2DlpJobList = Array<GooglePrivacyDlpV2DlpJob>;
 export const GooglePrivacyDlpV2DlpJobList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2DlpJob,
 ) as any as S.Schema<GooglePrivacyDlpV2DlpJobList>;
@@ -10310,7 +10394,7 @@ export const ListOrganizationsLocationsFileStoreDataProfilesRequest =
   }) as any as S.Schema<ListOrganizationsLocationsFileStoreDataProfilesRequest>;
 
 export type GooglePrivacyDlpV2FileStoreDataProfileList =
-  ReadonlyArray<GooglePrivacyDlpV2FileStoreDataProfile>;
+  Array<GooglePrivacyDlpV2FileStoreDataProfile>;
 export const GooglePrivacyDlpV2FileStoreDataProfileList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2FileStoreDataProfile,
 ) as any as S.Schema<GooglePrivacyDlpV2FileStoreDataProfileList>;
@@ -10440,7 +10524,7 @@ export const ListOrganizationsLocationsJobTriggersRequest =
   }) as any as S.Schema<ListOrganizationsLocationsJobTriggersRequest>;
 
 export type GooglePrivacyDlpV2JobTriggerList =
-  ReadonlyArray<GooglePrivacyDlpV2JobTrigger>;
+  Array<GooglePrivacyDlpV2JobTrigger>;
 export const GooglePrivacyDlpV2JobTriggerList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2JobTrigger,
 ) as any as S.Schema<GooglePrivacyDlpV2JobTriggerList>;
@@ -10494,7 +10578,7 @@ export const ListOrganizationsLocationsProjectDataProfilesRequest =
   }) as any as S.Schema<ListOrganizationsLocationsProjectDataProfilesRequest>;
 
 export type GooglePrivacyDlpV2ProjectDataProfileList =
-  ReadonlyArray<GooglePrivacyDlpV2ProjectDataProfile>;
+  Array<GooglePrivacyDlpV2ProjectDataProfile>;
 export const GooglePrivacyDlpV2ProjectDataProfileList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2ProjectDataProfile,
 ) as any as S.Schema<GooglePrivacyDlpV2ProjectDataProfileList>;
@@ -10548,7 +10632,7 @@ export const ListOrganizationsLocationsStoredInfoTypesRequest =
   }) as any as S.Schema<ListOrganizationsLocationsStoredInfoTypesRequest>;
 
 export type GooglePrivacyDlpV2StoredInfoTypeList =
-  ReadonlyArray<GooglePrivacyDlpV2StoredInfoType>;
+  Array<GooglePrivacyDlpV2StoredInfoType>;
 export const GooglePrivacyDlpV2StoredInfoTypeList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2StoredInfoType,
 ) as any as S.Schema<GooglePrivacyDlpV2StoredInfoTypeList>;
@@ -10602,7 +10686,7 @@ export const ListOrganizationsLocationsTableDataProfilesRequest =
   }) as any as S.Schema<ListOrganizationsLocationsTableDataProfilesRequest>;
 
 export type GooglePrivacyDlpV2TableDataProfileList =
-  ReadonlyArray<GooglePrivacyDlpV2TableDataProfile>;
+  Array<GooglePrivacyDlpV2TableDataProfile>;
 export const GooglePrivacyDlpV2TableDataProfileList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2TableDataProfile,
 ) as any as S.Schema<GooglePrivacyDlpV2TableDataProfileList>;
@@ -10885,7 +10969,7 @@ export const ListProjectsLocationsContentPoliciesRequest =
   }) as any as S.Schema<ListProjectsLocationsContentPoliciesRequest>;
 
 export type GooglePrivacyDlpV2ContentPolicyList =
-  ReadonlyArray<GooglePrivacyDlpV2ContentPolicy>;
+  Array<GooglePrivacyDlpV2ContentPolicy>;
 export const GooglePrivacyDlpV2ContentPolicyList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2ContentPolicy,
 ) as any as S.Schema<GooglePrivacyDlpV2ContentPolicyList>;
@@ -11884,7 +11968,7 @@ export const GooglePrivacyDlpV2ImageRedactionConfig = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GooglePrivacyDlpV2ImageRedactionConfig>;
 
 export type GooglePrivacyDlpV2ImageRedactionConfigList =
-  ReadonlyArray<GooglePrivacyDlpV2ImageRedactionConfig>;
+  Array<GooglePrivacyDlpV2ImageRedactionConfig>;
 export const GooglePrivacyDlpV2ImageRedactionConfigList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2ImageRedactionConfig,
 ) as any as S.Schema<GooglePrivacyDlpV2ImageRedactionConfigList>;

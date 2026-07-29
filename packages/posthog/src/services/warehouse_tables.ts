@@ -168,7 +168,7 @@ export const TableOutputColumnsItemMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<TableOutputColumnsItemMap>;
 
-export type TableOutputColumnsList = ReadonlyArray<TableOutputColumnsItemMap>;
+export type TableOutputColumnsList = Array<TableOutputColumnsItemMap>;
 export const TableOutputColumnsList = /*@__PURE__*/ S.Array(
   TableOutputColumnsItemMap,
 ) as any as S.Schema<TableOutputColumnsList>;
@@ -1631,7 +1631,7 @@ export const WarehouseTablesListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "WarehouseTablesListRequest",
 }) as any as S.Schema<WarehouseTablesListRequest>;
 
-export type PaginatedTableListOutputResultsList = ReadonlyArray<TableOutput>;
+export type PaginatedTableListOutputResultsList = Array<TableOutput>;
 export const PaginatedTableListOutputResultsList = /*@__PURE__*/ S.Array(
   TableOutput,
 ) as any as S.Schema<PaginatedTableListOutputResultsList>;

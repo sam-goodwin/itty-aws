@@ -65,8 +65,7 @@ export const MetricDimensions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MetricDimensions>;
 
 /** The dimensions of metric. */
-export type MetricSpecificationsDimensionsList =
-  ReadonlyArray<MetricDimensions>;
+export type MetricSpecificationsDimensionsList = Array<MetricDimensions>;
 export const MetricSpecificationsDimensionsList = /*@__PURE__*/ S.Array(
   MetricDimensions,
 ) as any as S.Schema<MetricSpecificationsDimensionsList>;
@@ -101,7 +100,7 @@ export const MetricSpecifications = /*@__PURE__*/ S.suspend(() =>
 
 /** The metric specifications. */
 export type OperationPropertiesServiceSpecificationMetricSpecificationsList =
-  ReadonlyArray<MetricSpecifications>;
+  Array<MetricSpecifications>;
 export const OperationPropertiesServiceSpecificationMetricSpecificationsList =
   /*@__PURE__*/ S.Array(
     MetricSpecifications,
@@ -128,7 +127,7 @@ export const LogSpecifications = /*@__PURE__*/ S.suspend(() =>
 
 /** The log specifications. */
 export type OperationPropertiesServiceSpecificationLogSpecificationsList =
-  ReadonlyArray<LogSpecifications>;
+  Array<LogSpecifications>;
 export const OperationPropertiesServiceSpecificationLogSpecificationsList =
   /*@__PURE__*/ S.Array(
     LogSpecifications,
@@ -189,7 +188,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of analysis services operations supported by the Microsoft.AnalysisServices resource provider. */
-export type OperationListResultValueList = ReadonlyArray<Operation>;
+export type OperationListResultValueList = Array<Operation>;
 export const OperationListResultValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationListResultValueList>;
@@ -266,7 +265,7 @@ export interface ResourceSku {
   /** Name of the SKU level. */
   name: string;
   /** The name of the Azure pricing tier to which the SKU applies. */
-  tier?: ResourceSkuTier;
+  tier?: ResourceSkuTier | (string & {});
   /** The number of instances in the read only query pool. */
   capacity?: number;
 }
@@ -286,7 +285,7 @@ export const ServersCreateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ServersCreateRequestTagsMap>;
 
 /** An array of administrator user identities. */
-export type ServerAdministratorsMembersList = ReadonlyArray<string>;
+export type ServerAdministratorsMembersList = Array<string>;
 export const ServerAdministratorsMembersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ServerAdministratorsMembersList>;
@@ -337,8 +336,7 @@ export const IPv4FirewallRule = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IPv4FirewallRule>;
 
 /** An array of firewall rules. */
-export type IPv4FirewallSettingsFirewallRulesList =
-  ReadonlyArray<IPv4FirewallRule>;
+export type IPv4FirewallSettingsFirewallRulesList = Array<IPv4FirewallRule>;
 export const IPv4FirewallSettingsFirewallRulesList = /*@__PURE__*/ S.Array(
   IPv4FirewallRule,
 ) as any as S.Schema<IPv4FirewallSettingsFirewallRulesList>;
@@ -801,8 +799,7 @@ export const AnalysisServicesServer = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AnalysisServicesServer>;
 
 /** An array of Analysis Services resources. */
-export type AnalysisServicesServersValueList =
-  ReadonlyArray<AnalysisServicesServer>;
+export type AnalysisServicesServersValueList = Array<AnalysisServicesServer>;
 export const AnalysisServicesServersValueList = /*@__PURE__*/ S.Array(
   AnalysisServicesServer,
 ) as any as S.Schema<AnalysisServicesServersValueList>;
@@ -942,7 +939,7 @@ export const ServersListOperationStatusesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServersListOperationStatusesRequest>;
 
 /** The error details. */
-export type ErrorDetailDetailsList = ReadonlyArray<ErrorDetail>;
+export type ErrorDetailDetailsList = Array<ErrorDetail>;
 export const ErrorDetailDetailsList = /*@__PURE__*/ S.Array(
   S.suspend(() => ErrorDetail),
 ) as any as S.Schema<ErrorDetailDetailsList>;
@@ -964,7 +961,7 @@ export const ErrorAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ErrorAdditionalInfo>;
 
 /** The error additional info. */
-export type ErrorDetailAdditionalInfoList = ReadonlyArray<ErrorAdditionalInfo>;
+export type ErrorDetailAdditionalInfoList = Array<ErrorAdditionalInfo>;
 export const ErrorDetailAdditionalInfoList = /*@__PURE__*/ S.Array(
   ErrorAdditionalInfo,
 ) as any as S.Schema<ErrorDetailAdditionalInfoList>;
@@ -1072,7 +1069,7 @@ export const SkuDetailsForExistingResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The collection of available SKUs for existing resources. */
 export type SkuEnumerationForExistingResourceResultValueList =
-  ReadonlyArray<SkuDetailsForExistingResource>;
+  Array<SkuDetailsForExistingResource>;
 export const SkuEnumerationForExistingResourceResultValueList =
   /*@__PURE__*/ S.Array(
     SkuDetailsForExistingResource,
@@ -1112,8 +1109,7 @@ export const ServersListSkusForNewRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServersListSkusForNewRequest>;
 
 /** The collection of available SKUs for new resources. */
-export type SkuEnumerationForNewResourceResultValueList =
-  ReadonlyArray<ResourceSku>;
+export type SkuEnumerationForNewResourceResultValueList = Array<ResourceSku>;
 export const SkuEnumerationForNewResourceResultValueList =
   /*@__PURE__*/ S.Array(
     ResourceSku,

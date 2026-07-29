@@ -442,7 +442,7 @@ export const StringFilterComparison = /*@__PURE__*/ S.String;
 
 export interface StringFilter {
   Value?: string;
-  Comparison?: StringFilterComparison;
+  Comparison?: StringFilterComparison | (string & {});
 }
 export const StringFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -460,8 +460,8 @@ export const DateRangeComparison = /*@__PURE__*/ S.String;
 
 export interface DateRange {
   Value?: number;
-  Unit?: DateRangeUnit;
-  Comparison?: DateRangeComparison;
+  Unit?: DateRangeUnit | (string & {});
+  Comparison?: DateRangeComparison | (string & {});
 }
 export const DateRange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -512,7 +512,7 @@ export const MapFilterComparison = /*@__PURE__*/ S.String;
 export interface MapFilter {
   Key?: string;
   Value?: string;
-  Comparison?: MapFilterComparison;
+  Comparison?: MapFilterComparison | (string & {});
 }
 export const MapFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -629,7 +629,7 @@ export const SeverityLabel = /*@__PURE__*/ S.String;
 export interface SeverityUpdate {
   Normalized?: number;
   Product?: number;
-  Label?: SeverityLabel;
+  Label?: SeverityLabel | (string & {});
 }
 export const SeverityUpdate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -656,7 +656,7 @@ export type WorkflowStatus = "NEW" | "NOTIFIED" | "RESOLVED" | "SUPPRESSED";
 export const WorkflowStatus = /*@__PURE__*/ S.String;
 
 export interface WorkflowUpdate {
-  Status?: WorkflowStatus;
+  Status?: WorkflowStatus | (string & {});
 }
 export const WorkflowUpdate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Status: S.optional(WorkflowStatus) }),
@@ -673,7 +673,7 @@ export const RelatedFindingList = /*@__PURE__*/ S.Array(RelatedFinding);
 export interface AutomationRulesFindingFieldsUpdate {
   Note?: NoteUpdate;
   Severity?: SeverityUpdate;
-  VerificationState?: VerificationState;
+  VerificationState?: VerificationState | (string & {});
   Confidence?: number;
   Criticality?: number;
   Types?: string[];
@@ -697,7 +697,7 @@ export const AutomationRulesFindingFieldsUpdate = /*@__PURE__*/ S.suspend(() =>
   identifier: "AutomationRulesFindingFieldsUpdate",
 }) as any as S.Schema<AutomationRulesFindingFieldsUpdate>;
 export interface AutomationRulesAction {
-  Type?: AutomationRulesActionType;
+  Type?: AutomationRulesActionType | (string & {});
   FindingFieldsUpdate?: AutomationRulesFindingFieldsUpdate;
 }
 export const AutomationRulesAction = /*@__PURE__*/ S.suspend(() =>
@@ -1022,7 +1022,7 @@ export const ParameterValue = /*@__PURE__*/ S.Union([
   S.Struct({ EnumList: StringList }),
 ]);
 export interface ParameterConfiguration {
-  ValueType?: ParameterValueType;
+  ValueType?: ParameterValueType | (string & {});
   Value?: ParameterValue;
 }
 export const ParameterConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -1253,7 +1253,7 @@ export const BatchGetStandardsControlAssociationsResponse =
   }) as any as S.Schema<BatchGetStandardsControlAssociationsResponse>;
 export interface Severity {
   Product?: number;
-  Label?: SeverityLabel;
+  Label?: SeverityLabel | (string & {});
   Normalized?: number;
   Original?: string;
 }
@@ -1301,9 +1301,9 @@ export const MalwareState = /*@__PURE__*/ S.String;
 
 export interface Malware {
   Name?: string;
-  Type?: MalwareType;
+  Type?: MalwareType | (string & {});
   Path?: string;
-  State?: MalwareState;
+  State?: MalwareState | (string & {});
 }
 export const Malware = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1326,7 +1326,7 @@ export const PortRange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Begin: S.optional(S.Number), End: S.optional(S.Number) }),
 ).annotate({ identifier: "PortRange" }) as any as S.Schema<PortRange>;
 export interface Network {
-  Direction?: NetworkDirection;
+  Direction?: NetworkDirection | (string & {});
   Protocol?: string;
   OpenPortRange?: PortRange;
   SourceIpV4?: string;
@@ -1473,9 +1473,9 @@ export type ThreatIntelIndicatorCategory =
 export const ThreatIntelIndicatorCategory = /*@__PURE__*/ S.String;
 
 export interface ThreatIntelIndicator {
-  Type?: ThreatIntelIndicatorType;
+  Type?: ThreatIntelIndicatorType | (string & {});
   Value?: string;
-  Category?: ThreatIntelIndicatorCategory;
+  Category?: ThreatIntelIndicatorCategory | (string & {});
   LastObservedAt?: string;
   Source?: string;
   SourceUrl?: string;
@@ -3486,7 +3486,9 @@ export const AwsS3BucketNotificationConfigurationS3KeyFilterRuleName =
   /*@__PURE__*/ S.String;
 
 export interface AwsS3BucketNotificationConfigurationS3KeyFilterRule {
-  Name?: AwsS3BucketNotificationConfigurationS3KeyFilterRuleName;
+  Name?:
+    | AwsS3BucketNotificationConfigurationS3KeyFilterRuleName
+    | (string & {});
   Value?: string;
 }
 export const AwsS3BucketNotificationConfigurationS3KeyFilterRule =
@@ -3758,7 +3760,7 @@ export const AwsIamAccessKeySessionContext = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AwsIamAccessKeySessionContext>;
 export interface AwsIamAccessKeyDetails {
   UserName?: string;
-  Status?: AwsIamAccessKeyStatus;
+  Status?: AwsIamAccessKeyStatus | (string & {});
   CreatedAt?: string;
   PrincipalId?: string;
   PrincipalType?: string;
@@ -12099,7 +12101,7 @@ export const ResourceDetails = /*@__PURE__*/ S.suspend(() =>
 export interface Resource {
   Type?: string;
   Id?: string;
-  Partition?: Partition;
+  Partition?: Partition | (string & {});
   Region?: string;
   ResourceRole?: string;
   Tags?: { [key: string]: string | undefined };
@@ -12168,7 +12170,7 @@ export const SecurityControlParametersList = /*@__PURE__*/ S.Array(
   SecurityControlParameter,
 );
 export interface Compliance {
-  Status?: ComplianceStatus;
+  Status?: ComplianceStatus | (string & {});
   RelatedRequirements?: string[];
   StatusReasons?: StatusReason[];
   SecurityControlId?: string;
@@ -12194,7 +12196,7 @@ export type WorkflowState =
 export const WorkflowState = /*@__PURE__*/ S.String;
 
 export interface Workflow {
-  Status?: WorkflowStatus;
+  Status?: WorkflowStatus | (string & {});
 }
 export const Workflow = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Status: S.optional(WorkflowStatus) }),
@@ -12339,9 +12341,9 @@ export interface Vulnerability {
   RelatedVulnerabilities?: string[];
   Vendor?: VulnerabilityVendor;
   ReferenceUrls?: string[];
-  FixAvailable?: VulnerabilityFixAvailable;
+  FixAvailable?: VulnerabilityFixAvailable | (string & {});
   EpssScore?: number;
-  ExploitAvailable?: VulnerabilityExploitAvailable;
+  ExploitAvailable?: VulnerabilityExploitAvailable | (string & {});
   LastKnownExploitAt?: string;
   CodeVulnerabilities?: VulnerabilityCodeVulnerabilities[];
 }
@@ -12584,7 +12586,7 @@ export const Action = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Action" }) as any as S.Schema<Action>;
 export interface FindingProviderSeverity {
-  Label?: SeverityLabel;
+  Label?: SeverityLabel | (string & {});
   Original?: string;
 }
 export const FindingProviderSeverity = /*@__PURE__*/ S.suspend(() =>
@@ -12655,7 +12657,7 @@ export const ActorSessionMfaStatus = /*@__PURE__*/ S.String;
 
 export interface ActorSession {
   Uid?: string;
-  MfaStatus?: ActorSessionMfaStatus;
+  MfaStatus?: ActorSessionMfaStatus | (string & {});
   CreatedTime?: number;
   Issuer?: string;
 }
@@ -12710,7 +12712,7 @@ export type ConnectionDirection = "INBOUND" | "OUTBOUND";
 export const ConnectionDirection = /*@__PURE__*/ S.String;
 
 export interface NetworkConnection {
-  Direction?: ConnectionDirection;
+  Direction?: ConnectionDirection | (string & {});
 }
 export const NetworkConnection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Direction: S.optional(ConnectionDirection) }),
@@ -12848,10 +12850,10 @@ export interface AwsSecurityFinding {
   ThreatIntelIndicators?: ThreatIntelIndicator[];
   Resources?: Resource[];
   Compliance?: Compliance;
-  VerificationState?: VerificationState;
-  WorkflowState?: WorkflowState;
+  VerificationState?: VerificationState | (string & {});
+  WorkflowState?: WorkflowState | (string & {});
   Workflow?: Workflow;
-  RecordState?: RecordState;
+  RecordState?: RecordState | (string & {});
   RelatedFindings?: RelatedFinding[];
   Note?: Note;
   Vulnerabilities?: Vulnerability[];
@@ -13249,7 +13251,7 @@ export const BatchUpdateFindingsV2Response = /*@__PURE__*/ S.suspend(() =>
 export interface StandardsControlAssociationUpdate {
   StandardsArn?: string;
   SecurityControlId?: string;
-  AssociationStatus?: AssociationStatus;
+  AssociationStatus?: AssociationStatus | (string & {});
   UpdatedReason?: string;
 }
 export const StandardsControlAssociationUpdate = /*@__PURE__*/ S.suspend(() =>
@@ -13530,7 +13532,7 @@ export type OcsfStringField =
 export const OcsfStringField = /*@__PURE__*/ S.String;
 
 export interface OcsfStringFilter {
-  FieldName?: OcsfStringField;
+  FieldName?: OcsfStringField | (string & {});
   Filter?: StringFilter;
 }
 export const OcsfStringFilter = /*@__PURE__*/ S.suspend(() =>
@@ -13554,7 +13556,7 @@ export type OcsfDateField =
 export const OcsfDateField = /*@__PURE__*/ S.String;
 
 export interface OcsfDateFilter {
-  FieldName?: OcsfDateField;
+  FieldName?: OcsfDateField | (string & {});
   Filter?: DateFilter;
 }
 export const OcsfDateFilter = /*@__PURE__*/ S.suspend(() =>
@@ -13578,7 +13580,7 @@ export const BooleanFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Value: S.optional(S.Boolean) }),
 ).annotate({ identifier: "BooleanFilter" }) as any as S.Schema<BooleanFilter>;
 export interface OcsfBooleanFilter {
-  FieldName?: OcsfBooleanField;
+  FieldName?: OcsfBooleanField | (string & {});
   Filter?: BooleanFilter;
 }
 export const OcsfBooleanFilter = /*@__PURE__*/ S.suspend(() =>
@@ -13609,7 +13611,7 @@ export type OcsfNumberField =
 export const OcsfNumberField = /*@__PURE__*/ S.String;
 
 export interface OcsfNumberFilter {
-  FieldName?: OcsfNumberField;
+  FieldName?: OcsfNumberField | (string & {});
   Filter?: NumberFilter;
 }
 export const OcsfNumberFilter = /*@__PURE__*/ S.suspend(() =>
@@ -13630,7 +13632,7 @@ export type OcsfMapField =
 export const OcsfMapField = /*@__PURE__*/ S.String;
 
 export interface OcsfMapFilter {
-  FieldName?: OcsfMapField;
+  FieldName?: OcsfMapField | (string & {});
   Filter?: MapFilter;
 }
 export const OcsfMapFilter = /*@__PURE__*/ S.suspend(() =>
@@ -13653,7 +13655,7 @@ export const IpFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Cidr: S.optional(S.String) }),
 ).annotate({ identifier: "IpFilter" }) as any as S.Schema<IpFilter>;
 export interface OcsfIpFilter {
-  FieldName?: OcsfIpField;
+  FieldName?: OcsfIpField | (string & {});
   Filter?: IpFilter;
 }
 export const OcsfIpFilter = /*@__PURE__*/ S.suspend(() =>
@@ -13675,7 +13677,7 @@ export interface CompositeFilter {
   MapFilters?: OcsfMapFilter[];
   IpFilters?: OcsfIpFilter[];
   NestedCompositeFilters?: CompositeFilter[];
-  Operator?: AllowedOperators;
+  Operator?: AllowedOperators | (string & {});
 }
 export const CompositeFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -13703,7 +13705,7 @@ export const CompositeFilterList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<CompositeFilterList>;
 export interface OcsfFindingFilters {
   CompositeFilters?: CompositeFilter[];
-  CompositeOperator?: AllowedOperators;
+  CompositeOperator?: AllowedOperators | (string & {});
 }
 export const OcsfFindingFilters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -13746,7 +13748,7 @@ export const ExternalIntegrationConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "ExternalIntegrationConfiguration",
 }) as any as S.Schema<ExternalIntegrationConfiguration>;
 export interface AutomationRulesActionV2 {
-  Type?: AutomationRulesActionTypeV2;
+  Type?: AutomationRulesActionTypeV2 | (string & {});
   FindingFieldsUpdate?: AutomationRulesFindingFieldsUpdateV2;
   ExternalIntegrationConfiguration?: ExternalIntegrationConfiguration;
 }
@@ -14760,8 +14762,10 @@ export type OrganizationConfigurationStatus = "PENDING" | "ENABLED" | "FAILED";
 export const OrganizationConfigurationStatus = /*@__PURE__*/ S.String;
 
 export interface OrganizationConfiguration {
-  ConfigurationType?: OrganizationConfigurationConfigurationType;
-  Status?: OrganizationConfigurationStatus;
+  ConfigurationType?:
+    | OrganizationConfigurationConfigurationType
+    | (string & {});
+  Status?: OrganizationConfigurationStatus | (string & {});
   StatusMessage?: string;
 }
 export const OrganizationConfiguration = /*@__PURE__*/ S.suspend(() =>

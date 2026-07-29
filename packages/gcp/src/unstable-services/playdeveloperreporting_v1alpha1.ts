@@ -79,7 +79,7 @@ export const FetchReleaseFilterOptionsAppsRequest = /*@__PURE__*/ S.suspend(
   identifier: "FetchReleaseFilterOptionsAppsRequest",
 }) as any as S.Schema<FetchReleaseFilterOptionsAppsRequest>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -102,7 +102,7 @@ export const GooglePlayDeveloperReportingV1alpha1Release =
   }) as any as S.Schema<GooglePlayDeveloperReportingV1alpha1Release>;
 
 export type GooglePlayDeveloperReportingV1alpha1ReleaseList =
-  ReadonlyArray<GooglePlayDeveloperReportingV1alpha1Release>;
+  Array<GooglePlayDeveloperReportingV1alpha1Release>;
 export const GooglePlayDeveloperReportingV1alpha1ReleaseList =
   /*@__PURE__*/ S.Array(
     GooglePlayDeveloperReportingV1alpha1Release,
@@ -131,7 +131,7 @@ export const GooglePlayDeveloperReportingV1alpha1Track =
   }) as any as S.Schema<GooglePlayDeveloperReportingV1alpha1Track>;
 
 export type GooglePlayDeveloperReportingV1alpha1TrackList =
-  ReadonlyArray<GooglePlayDeveloperReportingV1alpha1Track>;
+  Array<GooglePlayDeveloperReportingV1alpha1Track>;
 export const GooglePlayDeveloperReportingV1alpha1TrackList =
   /*@__PURE__*/ S.Array(
     GooglePlayDeveloperReportingV1alpha1Track,
@@ -247,7 +247,7 @@ export const GooglePlayDeveloperReportingV1alpha1FreshnessInfoFreshness =
   }) as any as S.Schema<GooglePlayDeveloperReportingV1alpha1FreshnessInfoFreshness>;
 
 export type GooglePlayDeveloperReportingV1alpha1FreshnessInfoFreshnessList =
-  ReadonlyArray<GooglePlayDeveloperReportingV1alpha1FreshnessInfoFreshness>;
+  Array<GooglePlayDeveloperReportingV1alpha1FreshnessInfoFreshness>;
 export const GooglePlayDeveloperReportingV1alpha1FreshnessInfoFreshnessList =
   /*@__PURE__*/ S.Array(
     GooglePlayDeveloperReportingV1alpha1FreshnessInfoFreshness,
@@ -640,7 +640,9 @@ export interface GooglePlayDeveloperReportingV1alpha1TimelineSpec {
   /** Optional. Starting datapoint of the timeline (inclusive). Must be aligned to the aggregation period as follows: * HOURLY: the 'minutes', 'seconds' and 'nanos' fields must be unset. The time_zone can be left unset (defaults to UTC) or set explicitly to "UTC". Setting any other utc_offset or timezone id will result in a validation error. * DAILY: the 'hours', 'minutes', 'seconds' and 'nanos' fields must be unset. Different metric sets support different timezones. It can be left unset to use the default timezone specified by the metric set. The timezone of the end point must match the timezone of the start point. */
   startTime?: GoogleTypeDateTime;
   /** Optional. Type of the aggregation period of the datapoints in the timeline. Intervals are identified by the date and time at the start of the interval. */
-  aggregationPeriod?: GooglePlayDeveloperReportingV1alpha1TimelineSpecAggregationPeriodEnum;
+  aggregationPeriod?:
+    | GooglePlayDeveloperReportingV1alpha1TimelineSpecAggregationPeriodEnum
+    | (string & {});
   /** Optional. Ending datapoint of the timeline (exclusive). See start_time for restrictions. The timezone of the end point must match the timezone of the start point. */
   endTime?: GoogleTypeDateTime;
 }
@@ -681,7 +683,7 @@ export const GooglePlayDeveloperReportingV1alpha1DimensionValue =
   }) as any as S.Schema<GooglePlayDeveloperReportingV1alpha1DimensionValue>;
 
 export type GooglePlayDeveloperReportingV1alpha1DimensionValueList =
-  ReadonlyArray<GooglePlayDeveloperReportingV1alpha1DimensionValue>;
+  Array<GooglePlayDeveloperReportingV1alpha1DimensionValue>;
 export const GooglePlayDeveloperReportingV1alpha1DimensionValueList =
   /*@__PURE__*/ S.Array(
     GooglePlayDeveloperReportingV1alpha1DimensionValue,
@@ -718,7 +720,7 @@ export const GooglePlayDeveloperReportingV1alpha1Anomaly =
   }) as any as S.Schema<GooglePlayDeveloperReportingV1alpha1Anomaly>;
 
 export type GooglePlayDeveloperReportingV1alpha1AnomalyList =
-  ReadonlyArray<GooglePlayDeveloperReportingV1alpha1Anomaly>;
+  Array<GooglePlayDeveloperReportingV1alpha1Anomaly>;
 export const GooglePlayDeveloperReportingV1alpha1AnomalyList =
   /*@__PURE__*/ S.Array(
     GooglePlayDeveloperReportingV1alpha1Anomaly,
@@ -811,7 +813,7 @@ export const QueryVitalsAnrrateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<QueryVitalsAnrrateRequest>;
 
 export type GooglePlayDeveloperReportingV1alpha1MetricValueList =
-  ReadonlyArray<GooglePlayDeveloperReportingV1alpha1MetricValue>;
+  Array<GooglePlayDeveloperReportingV1alpha1MetricValue>;
 export const GooglePlayDeveloperReportingV1alpha1MetricValueList =
   /*@__PURE__*/ S.Array(
     GooglePlayDeveloperReportingV1alpha1MetricValue,
@@ -850,7 +852,7 @@ export const GooglePlayDeveloperReportingV1alpha1MetricsRow =
   }) as any as S.Schema<GooglePlayDeveloperReportingV1alpha1MetricsRow>;
 
 export type GooglePlayDeveloperReportingV1alpha1MetricsRowList =
-  ReadonlyArray<GooglePlayDeveloperReportingV1alpha1MetricsRow>;
+  Array<GooglePlayDeveloperReportingV1alpha1MetricsRow>;
 export const GooglePlayDeveloperReportingV1alpha1MetricsRowList =
   /*@__PURE__*/ S.Array(
     GooglePlayDeveloperReportingV1alpha1MetricsRow,
@@ -1515,7 +1517,7 @@ export const GooglePlayDeveloperReportingV1alpha1App = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GooglePlayDeveloperReportingV1alpha1App>;
 
 export type GooglePlayDeveloperReportingV1alpha1AppList =
-  ReadonlyArray<GooglePlayDeveloperReportingV1alpha1App>;
+  Array<GooglePlayDeveloperReportingV1alpha1App>;
 export const GooglePlayDeveloperReportingV1alpha1AppList =
   /*@__PURE__*/ S.Array(
     GooglePlayDeveloperReportingV1alpha1App,
@@ -1689,7 +1691,7 @@ export const GooglePlayDeveloperReportingV1alpha1IssueAnnotation =
   }) as any as S.Schema<GooglePlayDeveloperReportingV1alpha1IssueAnnotation>;
 
 export type GooglePlayDeveloperReportingV1alpha1IssueAnnotationList =
-  ReadonlyArray<GooglePlayDeveloperReportingV1alpha1IssueAnnotation>;
+  Array<GooglePlayDeveloperReportingV1alpha1IssueAnnotation>;
 export const GooglePlayDeveloperReportingV1alpha1IssueAnnotationList =
   /*@__PURE__*/ S.Array(
     GooglePlayDeveloperReportingV1alpha1IssueAnnotation,
@@ -1758,7 +1760,7 @@ export const GooglePlayDeveloperReportingV1alpha1ErrorIssue =
   }) as any as S.Schema<GooglePlayDeveloperReportingV1alpha1ErrorIssue>;
 
 export type GooglePlayDeveloperReportingV1alpha1ErrorIssueList =
-  ReadonlyArray<GooglePlayDeveloperReportingV1alpha1ErrorIssue>;
+  Array<GooglePlayDeveloperReportingV1alpha1ErrorIssue>;
 export const GooglePlayDeveloperReportingV1alpha1ErrorIssueList =
   /*@__PURE__*/ S.Array(
     GooglePlayDeveloperReportingV1alpha1ErrorIssue,
@@ -1956,7 +1958,7 @@ export const GooglePlayDeveloperReportingV1alpha1ErrorReport =
   }) as any as S.Schema<GooglePlayDeveloperReportingV1alpha1ErrorReport>;
 
 export type GooglePlayDeveloperReportingV1alpha1ErrorReportList =
-  ReadonlyArray<GooglePlayDeveloperReportingV1alpha1ErrorReport>;
+  Array<GooglePlayDeveloperReportingV1alpha1ErrorReport>;
 export const GooglePlayDeveloperReportingV1alpha1ErrorReportList =
   /*@__PURE__*/ S.Array(
     GooglePlayDeveloperReportingV1alpha1ErrorReport,

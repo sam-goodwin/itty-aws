@@ -203,7 +203,7 @@ export const AdvancedThreatProtection = /*@__PURE__*/ S.suspend(() =>
 
 /** The AdvancedThreatProtection items on this page */
 export type AdvancedThreatProtectionListResultValueList =
-  ReadonlyArray<AdvancedThreatProtection>;
+  Array<AdvancedThreatProtection>;
 export const AdvancedThreatProtectionListResultValueList =
   /*@__PURE__*/ S.Array(
     AdvancedThreatProtection,
@@ -399,7 +399,7 @@ export const AdministratorType = /*@__PURE__*/ S.String;
 /** The properties of an administrator. */
 export interface AdministratorProperties {
   /** Type of the sever administrator. */
-  administratorType?: AdministratorType;
+  administratorType?: AdministratorType | (string & {});
   /** Login name of the server administrator. */
   login?: string;
   /** SID (object ID) of the server administrator. */
@@ -640,8 +640,7 @@ export const AzureADAdministrator = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AzureADAdministrator>;
 
 /** The list of azure ad administrator of a server. */
-export type AdministratorListResultValueList =
-  ReadonlyArray<AzureADAdministrator>;
+export type AdministratorListResultValueList = Array<AzureADAdministrator>;
 export const AdministratorListResultValueList = /*@__PURE__*/ S.Array(
   AzureADAdministrator,
 ) as any as S.Schema<AdministratorListResultValueList>;
@@ -744,7 +743,7 @@ export const BackupAndExportResponseProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BackupAndExportResponseProperties>;
 
 /** The error details. */
-export type ErrorDetailDetailsList = ReadonlyArray<ErrorDetail>;
+export type ErrorDetailDetailsList = Array<ErrorDetail>;
 export const ErrorDetailDetailsList = /*@__PURE__*/ S.Array(
   S.suspend(() => ErrorDetail),
 ) as any as S.Schema<ErrorDetailDetailsList>;
@@ -766,7 +765,7 @@ export const ErrorAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ErrorAdditionalInfo>;
 
 /** The error additional info. */
-export type ErrorDetailAdditionalInfoList = ReadonlyArray<ErrorAdditionalInfo>;
+export type ErrorDetailAdditionalInfoList = Array<ErrorAdditionalInfo>;
 export const ErrorDetailAdditionalInfoList = /*@__PURE__*/ S.Array(
   ErrorAdditionalInfo,
 ) as any as S.Schema<ErrorDetailAdditionalInfoList>;
@@ -795,8 +794,7 @@ export const ErrorDetail = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ErrorDetail" }) as any as S.Schema<ErrorDetail>;
 
 /** The error details. */
-export type BackupAndExportCreateResponseErrorDetailsList =
-  ReadonlyArray<ErrorDetail>;
+export type BackupAndExportCreateResponseErrorDetailsList = Array<ErrorDetail>;
 export const BackupAndExportCreateResponseErrorDetailsList =
   /*@__PURE__*/ S.Array(
     ErrorDetail,
@@ -804,7 +802,7 @@ export const BackupAndExportCreateResponseErrorDetailsList =
 
 /** The error additional info. */
 export type BackupAndExportCreateResponseErrorAdditionalInfoList =
-  ReadonlyArray<ErrorAdditionalInfo>;
+  Array<ErrorAdditionalInfo>;
 export const BackupAndExportCreateResponseErrorAdditionalInfoList =
   /*@__PURE__*/ S.Array(
     ErrorAdditionalInfo,
@@ -1058,7 +1056,7 @@ export const ServerBackup = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ServerBackup" }) as any as S.Schema<ServerBackup>;
 
 /** The ServerBackup items on this page */
-export type ServerBackupListResultValueList = ReadonlyArray<ServerBackup>;
+export type ServerBackupListResultValueList = Array<ServerBackup>;
 export const ServerBackupListResultValueList = /*@__PURE__*/ S.Array(
   ServerBackup,
 ) as any as S.Schema<ServerBackupListResultValueList>;
@@ -1248,7 +1246,7 @@ export const DelegatedSubnetUsage = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of delegated subnet usage */
 export type VirtualNetworkSubnetUsageResultDelegatedSubnetsUsageList =
-  ReadonlyArray<DelegatedSubnetUsage>;
+  Array<DelegatedSubnetUsage>;
 export const VirtualNetworkSubnetUsageResultDelegatedSubnetsUsageList =
   /*@__PURE__*/ S.Array(
     DelegatedSubnetUsage,
@@ -1310,7 +1308,7 @@ export const ConfigurationForBatchUpdate = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of server configurations. */
 export type ConfigurationsBatchUpdateRequestValueList =
-  ReadonlyArray<ConfigurationForBatchUpdate>;
+  Array<ConfigurationForBatchUpdate>;
 export const ConfigurationsBatchUpdateRequestValueList = /*@__PURE__*/ S.Array(
   ConfigurationForBatchUpdate,
 ) as any as S.Schema<ConfigurationsBatchUpdateRequestValueList>;
@@ -1433,7 +1431,7 @@ export const Configuration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Configuration" }) as any as S.Schema<Configuration>;
 
 /** The Configuration items on this page */
-export type ConfigurationListResultValueList = ReadonlyArray<Configuration>;
+export type ConfigurationListResultValueList = Array<Configuration>;
 export const ConfigurationListResultValueList = /*@__PURE__*/ S.Array(
   Configuration,
 ) as any as S.Schema<ConfigurationListResultValueList>;
@@ -1880,7 +1878,7 @@ export const Database = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Database" }) as any as S.Schema<Database>;
 
 /** The Database items on this page */
-export type DatabaseListResultValueList = ReadonlyArray<Database>;
+export type DatabaseListResultValueList = Array<Database>;
 export const DatabaseListResultValueList = /*@__PURE__*/ S.Array(
   Database,
 ) as any as S.Schema<DatabaseListResultValueList>;
@@ -2108,7 +2106,7 @@ export const FirewallRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FirewallRule" }) as any as S.Schema<FirewallRule>;
 
 /** The FirewallRule items on this page */
-export type FirewallRuleListResultValueList = ReadonlyArray<FirewallRule>;
+export type FirewallRuleListResultValueList = Array<FirewallRule>;
 export const FirewallRuleListResultValueList = /*@__PURE__*/ S.Array(
   FirewallRule,
 ) as any as S.Schema<FirewallRuleListResultValueList>;
@@ -2181,14 +2179,13 @@ export const LocationBasedCapabilitiesListRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<LocationBasedCapabilitiesListRequest>;
 
 /** Supported high availability mode */
-export type CapabilityPropertiesSupportedHAModeList = ReadonlyArray<string>;
+export type CapabilityPropertiesSupportedHAModeList = Array<string>;
 export const CapabilityPropertiesSupportedHAModeList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CapabilityPropertiesSupportedHAModeList>;
 
 /** supported geo backup regions */
-export type CapabilityPropertiesSupportedGeoBackupRegionsList =
-  ReadonlyArray<string>;
+export type CapabilityPropertiesSupportedGeoBackupRegionsList = Array<string>;
 export const CapabilityPropertiesSupportedGeoBackupRegionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2227,7 +2224,7 @@ export const StorageEditionCapability = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of supported storage editions */
 export type ServerEditionCapabilitySupportedStorageEditionsList =
-  ReadonlyArray<StorageEditionCapability>;
+  Array<StorageEditionCapability>;
 export const ServerEditionCapabilitySupportedStorageEditionsList =
   /*@__PURE__*/ S.Array(
     StorageEditionCapability,
@@ -2254,8 +2251,7 @@ export const SkuCapability = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SkuCapability" }) as any as S.Schema<SkuCapability>;
 
 /** A list of supported Skus */
-export type ServerVersionCapabilitySupportedSkusList =
-  ReadonlyArray<SkuCapability>;
+export type ServerVersionCapabilitySupportedSkusList = Array<SkuCapability>;
 export const ServerVersionCapabilitySupportedSkusList = /*@__PURE__*/ S.Array(
   SkuCapability,
 ) as any as S.Schema<ServerVersionCapabilitySupportedSkusList>;
@@ -2278,7 +2274,7 @@ export const ServerVersionCapability = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of supported server versions. */
 export type ServerEditionCapabilitySupportedServerVersionsList =
-  ReadonlyArray<ServerVersionCapability>;
+  Array<ServerVersionCapability>;
 export const ServerEditionCapabilitySupportedServerVersionsList =
   /*@__PURE__*/ S.Array(
     ServerVersionCapability,
@@ -2309,7 +2305,7 @@ export const ServerEditionCapability = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of supported flexible server editions. */
 export type CapabilityPropertiesSupportedFlexibleServerEditionsList =
-  ReadonlyArray<ServerEditionCapability>;
+  Array<ServerEditionCapability>;
 export const CapabilityPropertiesSupportedFlexibleServerEditionsList =
   /*@__PURE__*/ S.Array(
     ServerEditionCapability,
@@ -2342,8 +2338,7 @@ export const CapabilityProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CapabilityProperties>;
 
 /** The CapabilityProperties items on this page */
-export type CapabilitiesListResultValueList =
-  ReadonlyArray<CapabilityProperties>;
+export type CapabilitiesListResultValueList = Array<CapabilityProperties>;
 export const CapabilitiesListResultValueList = /*@__PURE__*/ S.Array(
   CapabilityProperties,
 ) as any as S.Schema<CapabilitiesListResultValueList>;
@@ -2391,8 +2386,7 @@ export const LocationBasedCapabilitySetGetRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<LocationBasedCapabilitySetGetRequest>;
 
 /** supported geo backup regions */
-export type CapabilityPropertiesV2SupportedGeoBackupRegionsList =
-  ReadonlyArray<string>;
+export type CapabilityPropertiesV2SupportedGeoBackupRegionsList = Array<string>;
 export const CapabilityPropertiesV2SupportedGeoBackupRegionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2400,20 +2394,20 @@ export const CapabilityPropertiesV2SupportedGeoBackupRegionsList =
 
 /** A list of supported storage editions */
 export type ServerEditionCapabilityV2SupportedStorageEditionsList =
-  ReadonlyArray<StorageEditionCapability>;
+  Array<StorageEditionCapability>;
 export const ServerEditionCapabilityV2SupportedStorageEditionsList =
   /*@__PURE__*/ S.Array(
     StorageEditionCapability,
   ) as any as S.Schema<ServerEditionCapabilityV2SupportedStorageEditionsList>;
 
 /** Supported zones */
-export type SkuCapabilityV2SupportedZonesList = ReadonlyArray<string>;
+export type SkuCapabilityV2SupportedZonesList = Array<string>;
 export const SkuCapabilityV2SupportedZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SkuCapabilityV2SupportedZonesList>;
 
 /** Supported high availability mode */
-export type SkuCapabilityV2SupportedHAModeList = ReadonlyArray<string>;
+export type SkuCapabilityV2SupportedHAModeList = Array<string>;
 export const SkuCapabilityV2SupportedHAModeList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SkuCapabilityV2SupportedHAModeList>;
@@ -2447,8 +2441,7 @@ export const SkuCapabilityV2 = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SkuCapabilityV2>;
 
 /** A list of supported Skus */
-export type ServerEditionCapabilityV2SupportedSkusList =
-  ReadonlyArray<SkuCapabilityV2>;
+export type ServerEditionCapabilityV2SupportedSkusList = Array<SkuCapabilityV2>;
 export const ServerEditionCapabilityV2SupportedSkusList = /*@__PURE__*/ S.Array(
   SkuCapabilityV2,
 ) as any as S.Schema<ServerEditionCapabilityV2SupportedSkusList>;
@@ -2482,7 +2475,7 @@ export const ServerEditionCapabilityV2 = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of supported flexible server editions. */
 export type CapabilityPropertiesV2SupportedFlexibleServerEditionsList =
-  ReadonlyArray<ServerEditionCapabilityV2>;
+  Array<ServerEditionCapabilityV2>;
 export const CapabilityPropertiesV2SupportedFlexibleServerEditionsList =
   /*@__PURE__*/ S.Array(
     ServerEditionCapabilityV2,
@@ -2503,7 +2496,7 @@ export const ServerVersionCapabilityV2 = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of supported server versions. */
 export type CapabilityPropertiesV2SupportedServerVersionsList =
-  ReadonlyArray<ServerVersionCapabilityV2>;
+  Array<ServerVersionCapabilityV2>;
 export const CapabilityPropertiesV2SupportedServerVersionsList =
   /*@__PURE__*/ S.Array(
     ServerVersionCapabilityV2,
@@ -2527,7 +2520,7 @@ export const FeatureProperty = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of supported features. */
 export type CapabilityPropertiesV2SupportedFeaturesList =
-  ReadonlyArray<FeatureProperty>;
+  Array<FeatureProperty>;
 export const CapabilityPropertiesV2SupportedFeaturesList =
   /*@__PURE__*/ S.Array(
     FeatureProperty,
@@ -2633,7 +2626,7 @@ export const Capability = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Capability" }) as any as S.Schema<Capability>;
 
 /** The CapabilitySetsList items on this page */
-export type CapabilitySetsListValueList = ReadonlyArray<Capability>;
+export type CapabilitySetsListValueList = Array<Capability>;
 export const CapabilitySetsListValueList = /*@__PURE__*/ S.Array(
   Capability,
 ) as any as S.Schema<CapabilitySetsListValueList>;
@@ -2728,7 +2721,7 @@ export const LogFile = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LogFile" }) as any as S.Schema<LogFile>;
 
 /** The LogFile items on this page */
-export type LogFileListResultValueList = ReadonlyArray<LogFile>;
+export type LogFileListResultValueList = Array<LogFile>;
 export const LogFileListResultValueList = /*@__PURE__*/ S.Array(
   LogFile,
 ) as any as S.Schema<LogFileListResultValueList>;
@@ -2765,13 +2758,13 @@ export const ProvisioningState = /*@__PURE__*/ S.String;
 export interface ServerBackupPropertiesV2 {
   /** Backup name */
   backupNameV2?: string;
-  backupType?: BackupType;
+  backupType?: BackupType | (string & {});
   /** Backup completed time (ISO8601 format). */
   completedTime?: string;
   /** Backup source */
   source?: string;
   /** The provisioning state of backup resource. */
-  provisioningState?: ProvisioningState;
+  provisioningState?: ProvisioningState | (string & {});
 }
 export const ServerBackupPropertiesV2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2941,7 +2934,7 @@ export const ServerBackupV2 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ServerBackupV2" }) as any as S.Schema<ServerBackupV2>;
 
 /** The ServerBackupV2 items on this page */
-export type ServerBackupV2ListResultValueList = ReadonlyArray<ServerBackupV2>;
+export type ServerBackupV2ListResultValueList = Array<ServerBackupV2>;
 export const ServerBackupV2ListResultValueList = /*@__PURE__*/ S.Array(
   ServerBackupV2,
 ) as any as S.Schema<ServerBackupV2ListResultValueList>;
@@ -3080,7 +3073,7 @@ export const Maintenance = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Maintenance" }) as any as S.Schema<Maintenance>;
 
 /** The Maintenance items on this page */
-export type MaintenanceListResultValueList = ReadonlyArray<Maintenance>;
+export type MaintenanceListResultValueList = Array<Maintenance>;
 export const MaintenanceListResultValueList = /*@__PURE__*/ S.Array(
   Maintenance,
 ) as any as S.Schema<MaintenanceListResultValueList>;
@@ -3247,8 +3240,7 @@ export const OperationProgressGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationProgressGetRequest>;
 
 /** The operations list. */
-export type OperationStatusResultOperationsList =
-  ReadonlyArray<OperationStatusResult>;
+export type OperationStatusResultOperationsList = Array<OperationStatusResult>;
 export const OperationStatusResultOperationsList = /*@__PURE__*/ S.Array(
   S.suspend(() => OperationStatusResult),
 ) as any as S.Schema<OperationStatusResultOperationsList>;
@@ -3292,7 +3284,7 @@ export const OperationStatusResult = /*@__PURE__*/ S.suspend(() =>
 
 /** The operations list. */
 export type OperationProgressGetResponseOperationsList =
-  ReadonlyArray<OperationStatusResult>;
+  Array<OperationStatusResult>;
 export const OperationProgressGetResponseOperationsList = /*@__PURE__*/ S.Array(
   OperationStatusResult,
 ) as any as S.Schema<OperationProgressGetResponseOperationsList>;
@@ -3382,7 +3374,7 @@ export const OperationResultsGetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The operations list. */
 export type OperationResultsGetResponseOperationsList =
-  ReadonlyArray<OperationStatusResult>;
+  Array<OperationStatusResult>;
 export const OperationResultsGetResponseOperationsList = /*@__PURE__*/ S.Array(
   OperationStatusResult,
 ) as any as S.Schema<OperationResultsGetResponseOperationsList>;
@@ -3503,7 +3495,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** The Operation items on this page */
-export type OperationListResultValueList = ReadonlyArray<Operation>;
+export type OperationListResultValueList = Array<Operation>;
 export const OperationListResultValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationListResultValueList>;
@@ -3542,7 +3534,7 @@ export const PrivateEndpointServiceConnectionStatus = /*@__PURE__*/ S.String;
 /** A collection of information about the state of the connection between service consumer and provider. */
 export interface PrivateLinkServiceConnectionState {
   /** Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service. */
-  status?: PrivateEndpointServiceConnectionStatus;
+  status?: PrivateEndpointServiceConnectionStatus | (string & {});
   /** The reason for approval/rejection of the connection. */
   description?: string;
   /** A message indicating if changes on the service provider require any updates on the consumer. */
@@ -3608,8 +3600,7 @@ export const PrivateEndpointConnectionsCreateOrUpdateRequest =
   }) as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateRequest>;
 
 /** The group ids for the private endpoint resource. */
-export type PrivateEndpointConnectionPropertiesGroupIdsList =
-  ReadonlyArray<string>;
+export type PrivateEndpointConnectionPropertiesGroupIdsList = Array<string>;
 export const PrivateEndpointConnectionPropertiesGroupIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3828,7 +3819,7 @@ export const PrivateEndpointConnectionListResultValueItem =
 
 /** The PrivateEndpointConnection items on this page */
 export type PrivateEndpointConnectionListResultValueList =
-  ReadonlyArray<PrivateEndpointConnectionListResultValueItem>;
+  Array<PrivateEndpointConnectionListResultValueItem>;
 export const PrivateEndpointConnectionListResultValueList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnectionListResultValueItem,
@@ -3879,16 +3870,14 @@ export const PrivateLinkResourcesGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateLinkResourcesGetRequest>;
 
 /** The private link resource required member names. */
-export type PrivateLinkResourcePropertiesRequiredMembersList =
-  ReadonlyArray<string>;
+export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
 export const PrivateLinkResourcePropertiesRequiredMembersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
 
 /** The private link resource private link DNS zone name. */
-export type PrivateLinkResourcePropertiesRequiredZoneNamesList =
-  ReadonlyArray<string>;
+export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
 export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3994,7 +3983,7 @@ export const PrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of private link resources */
 export type PrivateLinkResourcesListByServerResponseValueList =
-  ReadonlyArray<PrivateLinkResource>;
+  Array<PrivateLinkResource>;
 export const PrivateLinkResourcesListByServerResponseValueList =
   /*@__PURE__*/ S.Array(
     PrivateLinkResource,
@@ -4076,7 +4065,7 @@ export interface DataEncryption {
   /** Geo backup key uri as key vault can't cross region, need cmk in same region as geo backup */
   geoBackupKeyURI?: string;
   /** The key type, AzureKeyVault for enable cmk, SystemManaged for disable cmk. */
-  type?: DataEncryptionType;
+  type?: DataEncryptionType | (string & {});
 }
 export const DataEncryption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4184,9 +4173,9 @@ export const HighAvailabilityState = /*@__PURE__*/ S.String;
 /** High availability properties of a server */
 export interface HighAvailability {
   /** High availability mode for a server. */
-  mode?: HighAvailabilityMode;
+  mode?: HighAvailabilityMode | (string & {});
   /** The state of server high availability. */
-  state?: HighAvailabilityState;
+  state?: HighAvailabilityState | (string & {});
   /** Availability zone of the standby server. */
   standbyAvailabilityZone?: string;
 }
@@ -4207,7 +4196,7 @@ export const EnableStatusEnum = /*@__PURE__*/ S.String;
 /** Network related properties of a server */
 export interface Network {
   /** Whether or not public network access is allowed for this server. Value is 'Disabled' when server has VNet integration. */
-  publicNetworkAccess?: EnableStatusEnum;
+  publicNetworkAccess?: EnableStatusEnum | (string & {});
   /** Delegated subnet resource id used to setup vnet for a server. */
   delegatedSubnetResourceId?: string;
   /** Private DNS zone resource id. */
@@ -4249,7 +4238,7 @@ export const ServerPropertiesPrivateEndpointConnectionsItem =
 
 /** PrivateEndpointConnections related properties of a server. */
 export type ServerPropertiesPrivateEndpointConnectionsList =
-  ReadonlyArray<ServerPropertiesPrivateEndpointConnectionsItem>;
+  Array<ServerPropertiesPrivateEndpointConnectionsItem>;
 export const ServerPropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     ServerPropertiesPrivateEndpointConnectionsItem,
@@ -4262,7 +4251,7 @@ export const PatchStrategy = /*@__PURE__*/ S.String;
 /** Maintenance policy of a server. */
 export interface MaintenancePolicy {
   /** The patch strategy of this server */
-  patchStrategy?: PatchStrategy;
+  patchStrategy?: PatchStrategy | (string & {});
 }
 export const MaintenancePolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4287,7 +4276,7 @@ export interface MaintenanceWindow {
   /** day of week for maintenance window */
   dayOfWeek?: number;
   /** The batch of maintenance when enabled the custom managed maintenance window of a server. */
-  batchOfMaintenance?: BatchOfMaintenance;
+  batchOfMaintenance?: BatchOfMaintenance | (string & {});
 }
 export const MaintenanceWindow = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4308,7 +4297,7 @@ export const ImportSourceStorageType = /*@__PURE__*/ S.String;
 /** Import source related properties. */
 export interface ImportSourceProperties {
   /** Storage type of import source. */
-  storageType?: ImportSourceStorageType;
+  storageType?: ImportSourceStorageType | (string & {});
   /** Uri of the import source storage. */
   storageUrl?: string;
   /** Sas token for accessing source storage. Read and list permissions are required for sas token. */
@@ -4468,7 +4457,7 @@ export interface MySQLServerSku {
   /** The name of the sku, e.g. Standard_D32s_v3. */
   name: string;
   /** The tier of the particular SKU, e.g. GeneralPurpose. */
-  tier: ServerSkuTier;
+  tier: ServerSkuTier | (string & {});
 }
 export const MySQLServerSku = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4513,7 +4502,7 @@ export const Server = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Server" }) as any as S.Schema<Server>;
 
 /** The Server items on this page */
-export type ServerListResultValueList = ReadonlyArray<Server>;
+export type ServerListResultValueList = Array<Server>;
 export const ServerListResultValueList = /*@__PURE__*/ S.Array(
   Server,
 ) as any as S.Schema<ServerListResultValueList>;
@@ -4768,7 +4757,7 @@ export const ServerKey = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ServerKey" }) as any as S.Schema<ServerKey>;
 
 /** A list of MySQL Server keys. */
-export type ServerKeyListResultValueList = ReadonlyArray<ServerKey>;
+export type ServerKeyListResultValueList = Array<ServerKey>;
 export const ServerKeyListResultValueList = /*@__PURE__*/ S.Array(
   ServerKey,
 ) as any as S.Schema<ServerKeyListResultValueList>;

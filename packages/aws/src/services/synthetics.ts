@@ -178,7 +178,7 @@ export type DependencyType = "LambdaLayer";
 export const DependencyType = /*@__PURE__*/ S.String;
 
 export interface Dependency {
-  Type?: DependencyType;
+  Type?: DependencyType | (string & {});
   Reference: string;
 }
 export const Dependency = /*@__PURE__*/ S.suspend(() =>
@@ -292,7 +292,7 @@ export type BrowserType = "CHROME" | "FIREFOX";
 export const BrowserType = /*@__PURE__*/ S.String;
 
 export interface BrowserConfig {
-  BrowserType?: BrowserType;
+  BrowserType?: BrowserType | (string & {});
 }
 export const BrowserConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ BrowserType: S.optional(BrowserType) }),
@@ -325,7 +325,7 @@ export const EncryptionMode = /*@__PURE__*/ S.String;
 
 export type KmsKeyArn = string;
 export interface S3EncryptionConfig {
-  EncryptionMode?: EncryptionMode;
+  EncryptionMode?: EncryptionMode | (string & {});
   KmsKeyArn?: string;
 }
 export const S3EncryptionConfig = /*@__PURE__*/ S.suspend(() =>

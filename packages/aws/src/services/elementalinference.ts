@@ -158,10 +158,10 @@ export type ProfanityFilterMode = "DISABLED" | "CENSOR" | "DROP";
 export const ProfanityFilterMode = /*@__PURE__*/ S.String;
 
 export interface SubtitlingConfig {
-  language: TranscriptionLanguage;
+  language: TranscriptionLanguage | (string & {});
   aspectRatio?: AspectRatio;
   dictionary?: string;
-  profanityFilter?: ProfanityFilterMode;
+  profanityFilter?: ProfanityFilterMode | (string & {});
 }
 export const SubtitlingConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

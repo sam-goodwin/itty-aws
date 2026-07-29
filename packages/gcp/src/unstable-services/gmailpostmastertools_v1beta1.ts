@@ -110,12 +110,12 @@ export const FeedbackLoop = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "FeedbackLoop" }) as any as S.Schema<FeedbackLoop>;
 
-export type FeedbackLoopList = ReadonlyArray<FeedbackLoop>;
+export type FeedbackLoopList = Array<FeedbackLoop>;
 export const FeedbackLoopList = /*@__PURE__*/ S.Array(
   FeedbackLoop,
 ) as any as S.Schema<FeedbackLoopList>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -148,7 +148,7 @@ export const IpReputation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "IpReputation" }) as any as S.Schema<IpReputation>;
 
-export type IpReputationList = ReadonlyArray<IpReputation>;
+export type IpReputationList = Array<IpReputation>;
 export const IpReputationList = /*@__PURE__*/ S.Array(
   IpReputation,
 ) as any as S.Schema<IpReputationList>;
@@ -190,7 +190,7 @@ export const DeliveryError = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DeliveryError" }) as any as S.Schema<DeliveryError>;
 
-export type DeliveryErrorList = ReadonlyArray<DeliveryError>;
+export type DeliveryErrorList = Array<DeliveryError>;
 export const DeliveryErrorList = /*@__PURE__*/ S.Array(
   DeliveryError,
 ) as any as S.Schema<DeliveryErrorList>;
@@ -271,7 +271,7 @@ export const ListDomainsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListDomainsRequest",
 }) as any as S.Schema<ListDomainsRequest>;
 
-export type DomainList = ReadonlyArray<Domain>;
+export type DomainList = Array<Domain>;
 export const DomainList = /*@__PURE__*/ S.Array(
   Domain,
 ) as any as S.Schema<DomainList>;
@@ -334,7 +334,7 @@ export const ListDomainsTrafficStatsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListDomainsTrafficStatsRequest",
 }) as any as S.Schema<ListDomainsTrafficStatsRequest>;
 
-export type TrafficStatsList = ReadonlyArray<TrafficStats>;
+export type TrafficStatsList = Array<TrafficStats>;
 export const TrafficStatsList = /*@__PURE__*/ S.Array(
   TrafficStats,
 ) as any as S.Schema<TrafficStatsList>;

@@ -71,7 +71,7 @@ export interface FirewallRule {
   /** An optional string description of this rule. This field has a maximum length of 400 characters. */
   description?: string;
   /** The action to take on matched requests. */
-  action?: FirewallRuleActionEnum;
+  action?: FirewallRuleActionEnum | (string & {});
 }
 export const FirewallRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -82,7 +82,7 @@ export const FirewallRule = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "FirewallRule" }) as any as S.Schema<FirewallRule>;
 
-export type FirewallRuleList = ReadonlyArray<FirewallRule>;
+export type FirewallRuleList = Array<FirewallRule>;
 export const FirewallRuleList = /*@__PURE__*/ S.Array(
   FirewallRule,
 ) as any as S.Schema<FirewallRuleList>;
@@ -190,7 +190,7 @@ export const UrlDispatchRule = /*@__PURE__*/ S.suspend(() =>
   identifier: "UrlDispatchRule",
 }) as any as S.Schema<UrlDispatchRule>;
 
-export type UrlDispatchRuleList = ReadonlyArray<UrlDispatchRule>;
+export type UrlDispatchRuleList = Array<UrlDispatchRule>;
 export const UrlDispatchRuleList = /*@__PURE__*/ S.Array(
   UrlDispatchRule,
 ) as any as S.Schema<UrlDispatchRuleList>;
@@ -230,7 +230,7 @@ export interface Application {
   /** Output only. Google Cloud Storage bucket that can be used for storing files associated with this application. This bucket is associated with the application and can be used by the gcloud deployment commands.@OutputOnly */
   codeBucket?: string;
   /** Serving status of this application. */
-  servingStatus?: ApplicationServingStatusEnum;
+  servingStatus?: ApplicationServingStatusEnum | (string & {});
   /** The feature specific settings to be used in the application. */
   featureSettings?: FeatureSettings;
   /** Additional Google Generated Customer Metadata, this field won't be provided by default and can be requested by setting the IncludeExtraData field in GetApplicationRequest */
@@ -247,7 +247,7 @@ export interface Application {
   /** Location from which this application runs. Application instances run out of the data centers in the specified location, which is also where all of the application's end user content is stored.Defaults to us-central.View the list of supported locations (https://cloud.google.com/appengine/docs/locations). */
   locationId?: string;
   /** The type of the Cloud Firestore or Cloud Datastore database associated with this application. */
-  databaseType?: ApplicationDatabaseTypeEnum;
+  databaseType?: ApplicationDatabaseTypeEnum | (string & {});
   /** Google Apps authentication domain that controls which users can access this application.Defaults to open access for any Google Account. */
   authDomain?: string;
   /** HTTP path dispatch rules for requests to the application that do not explicitly target a service or version. Rules are order-dependent. Up to 20 dispatch rules can be supported. */
@@ -255,7 +255,7 @@ export interface Application {
   /** Cookie expiration policy for this application. */
   defaultCookieExpiration?: string;
   /** The SSL policy that will be applied to the application. If set to Modern it will restrict traffic with TLS < 1.2 and allow only Modern Ciphers suite */
-  sslPolicy?: ApplicationSslPolicyEnum;
+  sslPolicy?: ApplicationSslPolicyEnum | (string & {});
   iap?: IdentityAwareProxy;
 }
 export const Application = /*@__PURE__*/ S.suspend(() =>
@@ -298,7 +298,7 @@ export const CreateAppsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateAppsRequest",
 }) as any as S.Schema<CreateAppsRequest>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -358,7 +358,7 @@ export interface ManagedCertificate {
   /** Time at which the certificate was last renewed. The renewal process is fully managed. Certificate renewal will automatically occur before the certificate expires. Renewal errors can be tracked via ManagementStatus.@OutputOnly */
   lastRenewalTime?: string;
   /** Status of certificate management. Refers to the most recent certificate acquisition or renewal attempt.@OutputOnly */
-  status?: ManagedCertificateStatusEnum;
+  status?: ManagedCertificateStatusEnum | (string & {});
 }
 export const ManagedCertificate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -369,7 +369,7 @@ export const ManagedCertificate = /*@__PURE__*/ S.suspend(() =>
   identifier: "ManagedCertificate",
 }) as any as S.Schema<ManagedCertificate>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -466,7 +466,7 @@ export interface ResourceRecord {
   /** Data for this record. Values vary by record type, as defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1). */
   rrdata?: string;
   /** Resource record type. Example: AAAA. */
-  type?: ResourceRecordTypeEnum;
+  type?: ResourceRecordTypeEnum | (string & {});
 }
 export const ResourceRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -476,7 +476,7 @@ export const ResourceRecord = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ResourceRecord" }) as any as S.Schema<ResourceRecord>;
 
-export type ResourceRecordList = ReadonlyArray<ResourceRecord>;
+export type ResourceRecordList = Array<ResourceRecord>;
 export const ResourceRecordList = /*@__PURE__*/ S.Array(
   ResourceRecord,
 ) as any as S.Schema<ResourceRecordList>;
@@ -491,7 +491,7 @@ export interface SslSettings {
   /** ID of the AuthorizedCertificate resource configuring SSL for the application. Clearing this field will remove SSL support.By default, a managed certificate is automatically created for every domain mapping. To omit SSL support or to configure SSL manually, specify SslManagementType.MANUAL on a CREATE or UPDATE request. You must be authorized to administer the AuthorizedCertificate resource to manually map it to a DomainMapping resource. Example: 12345. */
   certificateId?: string;
   /** SSL management type for this domain. If AUTOMATIC, a managed certificate is automatically provisioned. If MANUAL, certificate_id must be manually specified in order to configure SSL for this domain. */
-  sslManagementType?: SslSettingsSslManagementTypeEnum;
+  sslManagementType?: SslSettingsSslManagementTypeEnum | (string & {});
 }
 export const SslSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -675,7 +675,7 @@ export const UrlMapRedirectHttpResponseCodeEnum = /*@__PURE__*/ S.String;
 /** URL pattern and description of how the URL should be handled. App Engine can handle URLs by executing application code or by serving static files uploaded with the version, such as images, CSS, or JavaScript. */
 export interface UrlMap {
   /** Action to take when users access resources that require authentication. Defaults to redirect. */
-  authFailAction?: UrlMapAuthFailActionEnum;
+  authFailAction?: UrlMapAuthFailActionEnum | (string & {});
   /** Executes a script to handle the requests that match this URL pattern. Only the auto value is supported for Node.js in the App Engine standard environment, for example "script": "auto". */
   script?: ScriptHandler;
   /** URL prefix. Uses regular expression syntax, which means regexp special characters must be escaped, but should not contain groupings. All URLs that begin with this prefix are handled by this handler, using the portion of the URL after the prefix as part of the file path. */
@@ -683,13 +683,13 @@ export interface UrlMap {
   /** Returns the contents of a file, such as an image, as the response. */
   staticFiles?: StaticFilesHandler;
   /** Security (HTTPS) enforcement for this URL. */
-  securityLevel?: UrlMapSecurityLevelEnum;
+  securityLevel?: UrlMapSecurityLevelEnum | (string & {});
   /** Uses API Endpoints to handle requests. */
   apiEndpoint?: ApiEndpointHandler;
   /** Level of login required to access this resource. Not supported for Node.js in the App Engine standard environment. */
-  login?: UrlMapLoginEnum;
+  login?: UrlMapLoginEnum | (string & {});
   /** 30x code to use when performing redirects for the secure field. Defaults to 302. */
-  redirectHttpResponseCode?: UrlMapRedirectHttpResponseCodeEnum;
+  redirectHttpResponseCode?: UrlMapRedirectHttpResponseCodeEnum | (string & {});
 }
 export const UrlMap = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -704,7 +704,7 @@ export const UrlMap = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "UrlMap" }) as any as S.Schema<UrlMap>;
 
-export type UrlMapList = ReadonlyArray<UrlMap>;
+export type UrlMapList = Array<UrlMap>;
 export const UrlMapList = /*@__PURE__*/ S.Array(
   UrlMap,
 ) as any as S.Schema<UrlMapList>;
@@ -739,7 +739,7 @@ export const Library = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Library" }) as any as S.Schema<Library>;
 
-export type LibraryList = ReadonlyArray<Library>;
+export type LibraryList = Array<Library>;
 export const LibraryList = /*@__PURE__*/ S.Array(
   Library,
 ) as any as S.Schema<LibraryList>;
@@ -803,7 +803,7 @@ export const CustomMetric = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CustomMetric" }) as any as S.Schema<CustomMetric>;
 
-export type CustomMetricList = ReadonlyArray<CustomMetric>;
+export type CustomMetricList = Array<CustomMetric>;
 export const CustomMetricList = /*@__PURE__*/ S.Array(
   CustomMetric,
 ) as any as S.Schema<CustomMetricList>;
@@ -932,8 +932,9 @@ export type VersionInboundServicesItemEnum =
   | "INBOUND_SERVICE_WARMUP";
 export const VersionInboundServicesItemEnum = /*@__PURE__*/ S.String;
 
-export type VersionInboundServicesItemEnumList =
-  ReadonlyArray<VersionInboundServicesItemEnum>;
+export type VersionInboundServicesItemEnumList = Array<
+  VersionInboundServicesItemEnum | (string & {})
+>;
 export const VersionInboundServicesItemEnumList = /*@__PURE__*/ S.Array(
   VersionInboundServicesItemEnum,
 ) as any as S.Schema<VersionInboundServicesItemEnumList>;
@@ -957,7 +958,7 @@ export const VpcNetworkInterface = /*@__PURE__*/ S.suspend(() =>
   identifier: "VpcNetworkInterface",
 }) as any as S.Schema<VpcNetworkInterface>;
 
-export type VpcNetworkInterfaceList = ReadonlyArray<VpcNetworkInterface>;
+export type VpcNetworkInterfaceList = Array<VpcNetworkInterface>;
 export const VpcNetworkInterfaceList = /*@__PURE__*/ S.Array(
   VpcNetworkInterface,
 ) as any as S.Schema<VpcNetworkInterfaceList>;
@@ -973,7 +974,7 @@ export interface VpcAccess {
   /** The Direct VPC configuration. Currently only single network interface is supported. */
   networkInterfaces?: VpcNetworkInterfaceList;
   /** The traffic egress setting for the VPC network interface, controlling what traffic is diverted through it. */
-  vpcEgress?: VpcAccessVpcEgressEnum;
+  vpcEgress?: VpcAccessVpcEgressEnum | (string & {});
 }
 export const VpcAccess = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -995,7 +996,7 @@ export interface ErrorHandler {
   /** MIME type of file. Defaults to text/html. */
   mimeType?: string;
   /** Error condition this handler applies to. */
-  errorCode?: ErrorHandlerErrorCodeEnum;
+  errorCode?: ErrorHandlerErrorCodeEnum | (string & {});
   /** Static file content to be served for this error. */
   staticFile?: string;
 }
@@ -1007,7 +1008,7 @@ export const ErrorHandler = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ErrorHandler" }) as any as S.Schema<ErrorHandler>;
 
-export type ErrorHandlerList = ReadonlyArray<ErrorHandler>;
+export type ErrorHandlerList = Array<ErrorHandler>;
 export const ErrorHandlerList = /*@__PURE__*/ S.Array(
   ErrorHandler,
 ) as any as S.Schema<ErrorHandlerList>;
@@ -1029,7 +1030,7 @@ export interface Network {
   /** Google Cloud Platform sub-network where the virtual machines are created. Specify the short name, not the resource path.If a subnetwork name is specified, a network name will also be required unless it is for the default network. If the network that the instance is being created in is a Legacy network, then the IP address is allocated from the IPv4Range. If the network that the instance is being created in is an auto Subnet Mode Network, then only network name should be specified (not the subnetwork_name) and the IP address is created from the IPCidrRange of the subnetwork that exists in that zone for that network. If the network that the instance is being created in is a custom Subnet Mode Network, then the subnetwork_name must be specified and the IP address is created from the IPCidrRange of the subnetwork.If specified, the subnetwork must exist in the same region as the App Engine flexible environment application. */
   subnetworkName?: string;
   /** The IP mode for instances. Only applicable in the App Engine flexible environment. */
-  instanceIpMode?: NetworkInstanceIpModeEnum;
+  instanceIpMode?: NetworkInstanceIpModeEnum | (string & {});
   /** Google Compute Engine network where the virtual machines are created. Specify the short name, not the resource path.Defaults to default. */
   name?: string;
 }
@@ -1067,7 +1068,7 @@ export const EndpointsApiServiceRolloutStrategyEnum = /*@__PURE__*/ S.String;
 /** Google Cloud Endpoints (https://cloud.google.com/endpoints) configuration. The Endpoints API Service provides tooling for serving Open API and gRPC endpoints via an NGINX proxy. Only valid for App Engine Flexible environment deployments.The fields here refer to the name and configuration ID of a "service" resource in the Service Management API (https://cloud.google.com/service-management/overview). */
 export interface EndpointsApiService {
   /** Endpoints rollout strategy. If FIXED, config_id must be specified. If MANAGED, config_id must be omitted. */
-  rolloutStrategy?: EndpointsApiServiceRolloutStrategyEnum;
+  rolloutStrategy?: EndpointsApiServiceRolloutStrategyEnum | (string & {});
   /** Endpoints service name which is the name of the "service" resource in the Service Management API. For example "myapi.endpoints.myproject.cloud.goog" */
   name?: string;
   /** Enable or disable trace sampling. By default, this is set to false for enabled. */
@@ -1150,13 +1151,13 @@ export const ApiConfigHandlerAuthFailActionEnum = /*@__PURE__*/ S.String;
 /** Google Cloud Endpoints (https://cloud.google.com/endpoints) configuration for API handlers. */
 export interface ApiConfigHandler {
   /** Level of login required to access this resource. Defaults to optional. */
-  login?: ApiConfigHandlerLoginEnum;
+  login?: ApiConfigHandlerLoginEnum | (string & {});
   /** Security (HTTPS) enforcement for this URL. */
-  securityLevel?: ApiConfigHandlerSecurityLevelEnum;
+  securityLevel?: ApiConfigHandlerSecurityLevelEnum | (string & {});
   /** Path to the script from the application root directory. */
   script?: string;
   /** Action to take when users access resources that require authentication. Defaults to redirect. */
-  authFailAction?: ApiConfigHandlerAuthFailActionEnum;
+  authFailAction?: ApiConfigHandlerAuthFailActionEnum | (string & {});
   /** URL to serve the endpoint at. */
   url?: string;
 }
@@ -1220,8 +1221,9 @@ export type VersionAppEngineBundledServicesItemEnum =
   | "BUNDLED_SERVICE_TYPE_USERS";
 export const VersionAppEngineBundledServicesItemEnum = /*@__PURE__*/ S.String;
 
-export type VersionAppEngineBundledServicesItemEnumList =
-  ReadonlyArray<VersionAppEngineBundledServicesItemEnum>;
+export type VersionAppEngineBundledServicesItemEnumList = Array<
+  VersionAppEngineBundledServicesItemEnum | (string & {})
+>;
 export const VersionAppEngineBundledServicesItemEnumList =
   /*@__PURE__*/ S.Array(
     VersionAppEngineBundledServicesItemEnum,
@@ -1265,7 +1267,7 @@ export const VpcAccessConnectorEgressSettingEnum = /*@__PURE__*/ S.String;
 /** VPC access connector specification. */
 export interface VpcAccessConnector {
   /** The egress setting for the connector, controlling what traffic is diverted through it. */
-  egressSetting?: VpcAccessConnectorEgressSettingEnum;
+  egressSetting?: VpcAccessConnectorEgressSettingEnum | (string & {});
   /** Full Serverless VPC Access Connector name e.g. projects/my-project/locations/us-central1/connectors/c1. */
   name?: string;
 }
@@ -1295,7 +1297,7 @@ export const Volume = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Volume" }) as any as S.Schema<Volume>;
 
-export type VolumeList = ReadonlyArray<Volume>;
+export type VolumeList = Array<Volume>;
 export const VolumeList = /*@__PURE__*/ S.Array(
   Volume,
 ) as any as S.Schema<VolumeList>;
@@ -1508,7 +1510,7 @@ export interface Version {
   /** Output only. Email address of the user who created this version.@OutputOnly */
   createdBy?: string;
   /** Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.SERVING_STATUS_UNSPECIFIED is an invalid value. Defaults to SERVING. */
-  servingStatus?: VersionServingStatusEnum;
+  servingStatus?: VersionServingStatusEnum | (string & {});
   /** Time that this version was created.@OutputOnly */
   createTime?: string;
   /** Code and application artifacts that make up this version.Only returned in GET requests if view=FULL is set. */
@@ -2327,7 +2329,7 @@ export const DoubleMap = /*@__PURE__*/ S.Record(
 /** Traffic routing configuration for versions within a single service. Traffic splits define how traffic directed to the service is assigned to versions. */
 export interface TrafficSplit {
   /** Mechanism used to determine which version a request is sent to. The traffic selection algorithm will be stable for either type until allocations are changed. */
-  shardBy?: TrafficSplitShardByEnum;
+  shardBy?: TrafficSplitShardByEnum | (string & {});
   /** Mapping from version IDs within the service to fractional (0.000, 1] allocations of traffic for that version. Each version can be specified only once, but some versions in the service may not have any traffic allocation. Services that have traffic allocated cannot be deleted until either the service is deleted or their traffic allocation is removed. Allocations must sum to 1. Up to two decimal place precision is supported for IP-based splits and up to three decimal places is supported for cookie-based splits. */
   allocations?: DoubleMap;
 }
@@ -2348,7 +2350,9 @@ export const NetworkSettingsIngressTrafficAllowedEnum = /*@__PURE__*/ S.String;
 /** A NetworkSettings resource is a container for ingress settings for a version or service. */
 export interface NetworkSettings {
   /** The ingress settings for version or service. */
-  ingressTrafficAllowed?: NetworkSettingsIngressTrafficAllowedEnum;
+  ingressTrafficAllowed?:
+    | NetworkSettingsIngressTrafficAllowedEnum
+    | (string & {});
 }
 export const NetworkSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2677,7 +2681,7 @@ export const ListAppsAuthorizedCertificatesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListAppsAuthorizedCertificatesRequest",
 }) as any as S.Schema<ListAppsAuthorizedCertificatesRequest>;
 
-export type AuthorizedCertificateList = ReadonlyArray<AuthorizedCertificate>;
+export type AuthorizedCertificateList = Array<AuthorizedCertificate>;
 export const AuthorizedCertificateList = /*@__PURE__*/ S.Array(
   AuthorizedCertificate,
 ) as any as S.Schema<AuthorizedCertificateList>;
@@ -2738,7 +2742,7 @@ export const AuthorizedDomain = /*@__PURE__*/ S.suspend(() =>
   identifier: "AuthorizedDomain",
 }) as any as S.Schema<AuthorizedDomain>;
 
-export type AuthorizedDomainList = ReadonlyArray<AuthorizedDomain>;
+export type AuthorizedDomainList = Array<AuthorizedDomain>;
 export const AuthorizedDomainList = /*@__PURE__*/ S.Array(
   AuthorizedDomain,
 ) as any as S.Schema<AuthorizedDomainList>;
@@ -2783,7 +2787,7 @@ export const ListAppsDomainMappingsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAppsDomainMappingsRequest",
 }) as any as S.Schema<ListAppsDomainMappingsRequest>;
 
-export type DomainMappingList = ReadonlyArray<DomainMapping>;
+export type DomainMappingList = Array<DomainMapping>;
 export const DomainMappingList = /*@__PURE__*/ S.Array(
   DomainMapping,
 ) as any as S.Schema<DomainMappingList>;
@@ -2877,7 +2881,7 @@ export const ListAppsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAppsLocationsRequest",
 }) as any as S.Schema<ListAppsLocationsRequest>;
 
-export type LocationList = ReadonlyArray<Location>;
+export type LocationList = Array<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -2928,7 +2932,7 @@ export const ListAppsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAppsOperationsRequest",
 }) as any as S.Schema<ListAppsOperationsRequest>;
 
-export type OperationList = ReadonlyArray<Operation>;
+export type OperationList = Array<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -2976,7 +2980,7 @@ export const ListAppsServicesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAppsServicesRequest",
 }) as any as S.Schema<ListAppsServicesRequest>;
 
-export type ServiceList = ReadonlyArray<Service>;
+export type ServiceList = Array<Service>;
 export const ServiceList = /*@__PURE__*/ S.Array(
   Service,
 ) as any as S.Schema<ServiceList>;
@@ -3030,7 +3034,7 @@ export const ListAppsServicesVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAppsServicesVersionsRequest",
 }) as any as S.Schema<ListAppsServicesVersionsRequest>;
 
-export type VersionList = ReadonlyArray<Version>;
+export type VersionList = Array<Version>;
 export const VersionList = /*@__PURE__*/ S.Array(
   Version,
 ) as any as S.Schema<VersionList>;
@@ -3082,7 +3086,7 @@ export const ListAppsServicesVersionsInstancesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListAppsServicesVersionsInstancesRequest",
 }) as any as S.Schema<ListAppsServicesVersionsInstancesRequest>;
 
-export type InstanceList = ReadonlyArray<Instance>;
+export type InstanceList = Array<Instance>;
 export const InstanceList = /*@__PURE__*/ S.Array(
   Instance,
 ) as any as S.Schema<InstanceList>;
@@ -3372,7 +3376,7 @@ export const Runtime = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Runtime" }) as any as S.Schema<Runtime>;
 
-export type RuntimeList = ReadonlyArray<Runtime>;
+export type RuntimeList = Array<Runtime>;
 export const RuntimeList = /*@__PURE__*/ S.Array(
   Runtime,
 ) as any as S.Schema<RuntimeList>;

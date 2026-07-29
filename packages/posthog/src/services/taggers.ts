@@ -29,7 +29,7 @@ export const TagDefinition = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TagDefinition" }) as any as S.Schema<TagDefinition>;
 
 /** Available tags the LLM can assign */
-export type LLMTaggerConfigTagsList = ReadonlyArray<TagDefinition>;
+export type LLMTaggerConfigTagsList = Array<TagDefinition>;
 export const LLMTaggerConfigTagsList = /*@__PURE__*/ S.Array(
   TagDefinition,
 ) as any as S.Schema<LLMTaggerConfigTagsList>;
@@ -56,7 +56,7 @@ export const LLMTaggerConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LLMTaggerConfig>;
 
 /** Optional tag whitelist. Leave empty to allow any tag returned by the Hog code. */
-export type HogTaggerConfigTagsList = ReadonlyArray<TagDefinition>;
+export type HogTaggerConfigTagsList = Array<TagDefinition>;
 export const HogTaggerConfigTagsList = /*@__PURE__*/ S.Array(
   TagDefinition,
 ) as any as S.Schema<HogTaggerConfigTagsList>;
@@ -108,7 +108,7 @@ export const TaggerConditionPropertiesItemMap = /*@__PURE__*/ S.Record(
 
 /** Property filters that scope when this condition fires */
 export type TaggerConditionPropertiesList =
-  ReadonlyArray<TaggerConditionPropertiesItemMap>;
+  Array<TaggerConditionPropertiesItemMap>;
 export const TaggerConditionPropertiesList = /*@__PURE__*/ S.Array(
   TaggerConditionPropertiesItemMap,
 ) as any as S.Schema<TaggerConditionPropertiesList>;
@@ -132,7 +132,7 @@ export const TaggerCondition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TaggerCondition>;
 
 /** Conditions that scope when the tagger runs */
-export type TaggersCreateRequestConditionsList = ReadonlyArray<TaggerCondition>;
+export type TaggersCreateRequestConditionsList = Array<TaggerCondition>;
 export const TaggersCreateRequestConditionsList = /*@__PURE__*/ S.Array(
   TaggerCondition,
 ) as any as S.Schema<TaggersCreateRequestConditionsList>;
@@ -203,7 +203,7 @@ export const TaggersCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TaggersCreateRequest>;
 
 /** Conditions that scope when the tagger runs */
-export type TaggerConditionsList = ReadonlyArray<TaggerCondition>;
+export type TaggerConditionsList = Array<TaggerCondition>;
 export const TaggerConditionsList = /*@__PURE__*/ S.Array(
   TaggerCondition,
 ) as any as S.Schema<TaggerConditionsList>;
@@ -340,7 +340,7 @@ export const TaggersDestroyResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "TaggersDestroyResponse",
 }) as any as S.Schema<TaggersDestroyResponse>;
 
-export type TaggersListRequestIdInList = ReadonlyArray<string>;
+export type TaggersListRequestIdInList = Array<string>;
 export const TaggersListRequestIdInList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<TaggersListRequestIdInList>;
@@ -354,7 +354,7 @@ export type TaggersListRequestOrderByItem =
   | "updated_at";
 export const TaggersListRequestOrderByItem = /*@__PURE__*/ S.String;
 
-export type TaggersListRequestOrderByList = ReadonlyArray<
+export type TaggersListRequestOrderByList = Array<
   TaggersListRequestOrderByItem | (string & {})
 >;
 export const TaggersListRequestOrderByList = /*@__PURE__*/ S.Array(
@@ -397,7 +397,7 @@ export const TaggersListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "TaggersListRequest",
 }) as any as S.Schema<TaggersListRequest>;
 
-export type PaginatedTaggerListResultsList = ReadonlyArray<Tagger>;
+export type PaginatedTaggerListResultsList = Array<Tagger>;
 export const PaginatedTaggerListResultsList = /*@__PURE__*/ S.Array(
   Tagger,
 ) as any as S.Schema<PaginatedTaggerListResultsList>;
@@ -420,8 +420,7 @@ export const PaginatedTaggerList = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PaginatedTaggerList>;
 
 /** Conditions that scope when the tagger runs */
-export type TaggersPartialUpdateRequestConditionsList =
-  ReadonlyArray<TaggerCondition>;
+export type TaggersPartialUpdateRequestConditionsList = Array<TaggerCondition>;
 export const TaggersPartialUpdateRequestConditionsList = /*@__PURE__*/ S.Array(
   TaggerCondition,
 ) as any as S.Schema<TaggersPartialUpdateRequestConditionsList>;
@@ -502,8 +501,7 @@ export const TestHogTaggerTag = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TestHogTaggerTag>;
 
 /** Optional tag whitelist. Returned tags outside this list are filtered out. */
-export type TaggersTestHogCreateRequestTagsList =
-  ReadonlyArray<TestHogTaggerTag>;
+export type TaggersTestHogCreateRequestTagsList = Array<TestHogTaggerTag>;
 export const TaggersTestHogCreateRequestTagsList = /*@__PURE__*/ S.Array(
   TestHogTaggerTag,
 ) as any as S.Schema<TaggersTestHogCreateRequestTagsList>;
@@ -536,7 +534,7 @@ export const TaggersTestHogCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TaggersTestHogCreateRequest>;
 
 /** Tag names returned by the Hog code. */
-export type TestHogTaggerResultItemTagsList = ReadonlyArray<string>;
+export type TestHogTaggerResultItemTagsList = Array<string>;
 export const TestHogTaggerResultItemTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<TestHogTaggerResultItemTagsList>;
@@ -572,8 +570,7 @@ export const TestHogTaggerResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TestHogTaggerResultItem>;
 
 /** Per-event Hog tagger test results. */
-export type TestHogTaggerResponseResultsList =
-  ReadonlyArray<TestHogTaggerResultItem>;
+export type TestHogTaggerResponseResultsList = Array<TestHogTaggerResultItem>;
 export const TestHogTaggerResponseResultsList = /*@__PURE__*/ S.Array(
   TestHogTaggerResultItem,
 ) as any as S.Schema<TestHogTaggerResponseResultsList>;
@@ -594,7 +591,7 @@ export const TestHogTaggerResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TestHogTaggerResponse>;
 
 /** Conditions that scope when the tagger runs */
-export type TaggersUpdateRequestConditionsList = ReadonlyArray<TaggerCondition>;
+export type TaggersUpdateRequestConditionsList = Array<TaggerCondition>;
 export const TaggersUpdateRequestConditionsList = /*@__PURE__*/ S.Array(
   TaggerCondition,
 ) as any as S.Schema<TaggersUpdateRequestConditionsList>;

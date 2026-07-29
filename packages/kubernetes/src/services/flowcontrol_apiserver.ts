@@ -48,7 +48,7 @@ export const IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap =
 
 /** Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. Finalizers may be processed and removed in any order. Order is NOT enforced because it introduces significant risk of stuck finalizers. finalizers is a shared field, any actor with permission can reorder it. If the finalizer list is processed in order, then this can lead to a situation in which the component responsible for the first finalizer in the list is waiting for a signal (field value, external system, or other) produced by a component responsible for a finalizer later in the list, resulting in a deadlock. Without enforced ordering finalizers are free to order amongst themselves and are not vulnerable to ordering changes in the list. */
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -98,7 +98,7 @@ export const IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry =
 
 /** ManagedFields maps workflow-id and version to the set of fields that are managed by that workflow. This is mostly for internal housekeeping, and users typically shouldn't need to set or understand this field. A workflow can be the user's name, a controller's name, or the name of a specific apply path like "ci-cd". The set of fields is always in the version that the workflow used when modifying the object. */
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaManagedFieldsList =
-  ReadonlyArray<IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry>;
+  Array<IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry>;
 export const IoK8sApimachineryPkgApisMetaV1ObjectMetaManagedFieldsList =
   /*@__PURE__*/ S.Array(
     IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry,
@@ -135,7 +135,7 @@ export const IoK8sApimachineryPkgApisMetaV1OwnerReference =
 
 /** List of objects depended by this object. If ALL objects in the list have been deleted, this object will be garbage collected. If this object is managed by a controller, then an entry in this list will point to this controller, with the controller field set to true. There cannot be more than one managing controller. */
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaOwnerReferencesList =
-  ReadonlyArray<IoK8sApimachineryPkgApisMetaV1OwnerReference>;
+  Array<IoK8sApimachineryPkgApisMetaV1OwnerReference>;
 export const IoK8sApimachineryPkgApisMetaV1ObjectMetaOwnerReferencesList =
   /*@__PURE__*/ S.Array(
     IoK8sApimachineryPkgApisMetaV1OwnerReference,
@@ -235,15 +235,14 @@ export const IoK8sApiFlowcontrolV1PriorityLevelConfigurationReference =
 
 /** `nonResourceURLs` is a set of url prefixes that a user should have access to and may not be empty. For example: - "/healthz" is legal - "/hea*" is illegal - "/hea" is legal but matches nothing - "/hea/*" also matches nothing - "/healthz/*" matches all per-component health checks. "*" matches all non-resource urls. if it is present, it must be the only entry. Required. */
 export type IoK8sApiFlowcontrolV1NonResourcePolicyRuleNonResourceURLsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const IoK8sApiFlowcontrolV1NonResourcePolicyRuleNonResourceURLsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<IoK8sApiFlowcontrolV1NonResourcePolicyRuleNonResourceURLsList>;
 
 /** `verbs` is a list of matching verbs and may not be empty. "*" matches all verbs. If it is present, it must be the only entry. Required. */
-export type IoK8sApiFlowcontrolV1NonResourcePolicyRuleVerbsList =
-  ReadonlyArray<string>;
+export type IoK8sApiFlowcontrolV1NonResourcePolicyRuleVerbsList = Array<string>;
 export const IoK8sApiFlowcontrolV1NonResourcePolicyRuleVerbsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -269,7 +268,7 @@ export const IoK8sApiFlowcontrolV1NonResourcePolicyRule =
 
 /** `nonResourceRules` is a list of NonResourcePolicyRules that identify matching requests according to their verb and the target non-resource URL. */
 export type IoK8sApiFlowcontrolV1PolicyRulesWithSubjectsNonResourceRulesList =
-  ReadonlyArray<IoK8sApiFlowcontrolV1NonResourcePolicyRule>;
+  Array<IoK8sApiFlowcontrolV1NonResourcePolicyRule>;
 export const IoK8sApiFlowcontrolV1PolicyRulesWithSubjectsNonResourceRulesList =
   /*@__PURE__*/ S.Array(
     IoK8sApiFlowcontrolV1NonResourcePolicyRule,
@@ -277,7 +276,7 @@ export const IoK8sApiFlowcontrolV1PolicyRulesWithSubjectsNonResourceRulesList =
 
 /** `apiGroups` is a list of matching API groups and may not be empty. "*" matches all API groups and, if present, must be the only entry. Required. */
 export type IoK8sApiFlowcontrolV1ResourcePolicyRuleApiGroupsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const IoK8sApiFlowcontrolV1ResourcePolicyRuleApiGroupsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -285,7 +284,7 @@ export const IoK8sApiFlowcontrolV1ResourcePolicyRuleApiGroupsList =
 
 /** `namespaces` is a list of target namespaces that restricts matches. A request that specifies a target namespace matches only if either (a) this list contains that target namespace or (b) this list contains "*". Note that "*" matches any specified namespace but does not match a request that _does not specify_ a namespace (see the `clusterScope` field for that). This list may be empty, but only if `clusterScope` is true. */
 export type IoK8sApiFlowcontrolV1ResourcePolicyRuleNamespacesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const IoK8sApiFlowcontrolV1ResourcePolicyRuleNamespacesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -293,15 +292,14 @@ export const IoK8sApiFlowcontrolV1ResourcePolicyRuleNamespacesList =
 
 /** `resources` is a list of matching resources (i.e., lowercase and plural) with, if desired, subresource. For example, [ "services", "nodes/status" ]. This list may not be empty. "*" matches all resources and, if present, must be the only entry. Required. */
 export type IoK8sApiFlowcontrolV1ResourcePolicyRuleResourcesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const IoK8sApiFlowcontrolV1ResourcePolicyRuleResourcesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<IoK8sApiFlowcontrolV1ResourcePolicyRuleResourcesList>;
 
 /** `verbs` is a list of matching verbs and may not be empty. "*" matches all verbs and, if present, must be the only entry. Required. */
-export type IoK8sApiFlowcontrolV1ResourcePolicyRuleVerbsList =
-  ReadonlyArray<string>;
+export type IoK8sApiFlowcontrolV1ResourcePolicyRuleVerbsList = Array<string>;
 export const IoK8sApiFlowcontrolV1ResourcePolicyRuleVerbsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -337,7 +335,7 @@ export const IoK8sApiFlowcontrolV1ResourcePolicyRule = /*@__PURE__*/ S.suspend(
 
 /** `resourceRules` is a slice of ResourcePolicyRules that identify matching requests according to their verb and the target resource. At least one of `resourceRules` and `nonResourceRules` has to be non-empty. */
 export type IoK8sApiFlowcontrolV1PolicyRulesWithSubjectsResourceRulesList =
-  ReadonlyArray<IoK8sApiFlowcontrolV1ResourcePolicyRule>;
+  Array<IoK8sApiFlowcontrolV1ResourcePolicyRule>;
 export const IoK8sApiFlowcontrolV1PolicyRulesWithSubjectsResourceRulesList =
   /*@__PURE__*/ S.Array(
     IoK8sApiFlowcontrolV1ResourcePolicyRule,
@@ -410,7 +408,7 @@ export const IoK8sApiFlowcontrolV1Subject = /*@__PURE__*/ S.suspend(() =>
 
 /** subjects is the list of normal user, serviceaccount, or group that this rule cares about. There must be at least one member in this slice. A slice that includes both the system:authenticated and system:unauthenticated user groups matches every request. Required. */
 export type IoK8sApiFlowcontrolV1PolicyRulesWithSubjectsSubjectsList =
-  ReadonlyArray<IoK8sApiFlowcontrolV1Subject>;
+  Array<IoK8sApiFlowcontrolV1Subject>;
 export const IoK8sApiFlowcontrolV1PolicyRulesWithSubjectsSubjectsList =
   /*@__PURE__*/ S.Array(
     IoK8sApiFlowcontrolV1Subject,
@@ -442,7 +440,7 @@ export const IoK8sApiFlowcontrolV1PolicyRulesWithSubjects =
 
 /** `rules` describes which requests will match this flow schema. This FlowSchema matches a request if and only if at least one member of rules matches the request. if it is an empty slice, there will be no requests matching the FlowSchema. */
 export type IoK8sApiFlowcontrolV1FlowSchemaSpecRulesList =
-  ReadonlyArray<IoK8sApiFlowcontrolV1PolicyRulesWithSubjects>;
+  Array<IoK8sApiFlowcontrolV1PolicyRulesWithSubjects>;
 export const IoK8sApiFlowcontrolV1FlowSchemaSpecRulesList =
   /*@__PURE__*/ S.Array(
     IoK8sApiFlowcontrolV1PolicyRulesWithSubjects,
@@ -501,7 +499,7 @@ export const IoK8sApiFlowcontrolV1FlowSchemaCondition = /*@__PURE__*/ S.suspend(
 
 /** `conditions` is a list of the current states of FlowSchema. */
 export type IoK8sApiFlowcontrolV1FlowSchemaStatusConditionsList =
-  ReadonlyArray<IoK8sApiFlowcontrolV1FlowSchemaCondition>;
+  Array<IoK8sApiFlowcontrolV1FlowSchemaCondition>;
 export const IoK8sApiFlowcontrolV1FlowSchemaStatusConditionsList =
   /*@__PURE__*/ S.Array(
     IoK8sApiFlowcontrolV1FlowSchemaCondition,
@@ -717,7 +715,7 @@ export const IoK8sApiFlowcontrolV1PriorityLevelConfigurationCondition =
 
 /** `conditions` is the current state of "request-priority". */
 export type IoK8sApiFlowcontrolV1PriorityLevelConfigurationStatusConditionsList =
-  ReadonlyArray<IoK8sApiFlowcontrolV1PriorityLevelConfigurationCondition>;
+  Array<IoK8sApiFlowcontrolV1PriorityLevelConfigurationCondition>;
 export const IoK8sApiFlowcontrolV1PriorityLevelConfigurationStatusConditionsList =
   /*@__PURE__*/ S.Array(
     IoK8sApiFlowcontrolV1PriorityLevelConfigurationCondition,
@@ -919,7 +917,7 @@ export const IoK8sApimachineryPkgApisMetaV1StatusCause =
 
 /** The Causes array includes more details associated with the StatusReason failure. Not all StatusReasons may provide detailed causes. */
 export type IoK8sApimachineryPkgApisMetaV1StatusDetailsCausesList =
-  ReadonlyArray<IoK8sApimachineryPkgApisMetaV1StatusCause>;
+  Array<IoK8sApimachineryPkgApisMetaV1StatusCause>;
 export const IoK8sApimachineryPkgApisMetaV1StatusDetailsCausesList =
   /*@__PURE__*/ S.Array(
     IoK8sApimachineryPkgApisMetaV1StatusCause,
@@ -1248,7 +1246,7 @@ export const IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR =
 
 /** a map of client CIDR to server address that is serving this group. This is to help clients reach servers in the most network-efficient way possible. Clients can use the appropriate server address as per the CIDR that they match. In case of multiple matches, clients should use the longest matching CIDR. The server returns only those CIDRs that it thinks that the client can match. For example: the master will return an internal IP CIDR only, if the client reaches the server using an internal IP. Server looks at X-Forwarded-For header or X-Real-Ip header or request.RemoteAddr (in that order) to get the client IP. */
 export type IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList =
-  ReadonlyArray<IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR>;
+  Array<IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR>;
 export const IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList =
   /*@__PURE__*/ S.Array(
     IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR,
@@ -1256,7 +1254,7 @@ export const IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsLis
 
 /** versions are the versions supported in this group. */
 export type IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList =
-  ReadonlyArray<IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery>;
+  Array<IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery>;
 export const IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList =
   /*@__PURE__*/ S.Array(
     IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery,
@@ -1311,7 +1309,7 @@ export const GetFlowcontrolApiserverV1APIResourcesRequest =
 
 /** categories is a list of the grouped resources this resource belongs to (e.g. 'all') */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1319,15 +1317,14 @@ export const IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList =
 
 /** shortNames is a list of suggested short names of the resource. */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList>;
 
 /** verbs is a list of supported kube verbs (this includes get, list, watch, create, update, patch, delete, deletecollection, and proxy) */
-export type IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList =
-  ReadonlyArray<string>;
+export type IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList = Array<string>;
 export const IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1380,7 +1377,7 @@ export const IoK8sApimachineryPkgApisMetaV1APIResource =
 
 /** resources contains the name of the resources and if they are namespaced. */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList =
-  ReadonlyArray<IoK8sApimachineryPkgApisMetaV1APIResource>;
+  Array<IoK8sApimachineryPkgApisMetaV1APIResource>;
 export const IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList =
   /*@__PURE__*/ S.Array(
     IoK8sApimachineryPkgApisMetaV1APIResource,
@@ -1463,7 +1460,7 @@ export const ListFlowcontrolApiserverV1FlowSchemaRequest =
 
 /** `items` is a list of FlowSchemas. */
 export type IoK8sApiFlowcontrolV1FlowSchemaListItemsList =
-  ReadonlyArray<IoK8sApiFlowcontrolV1FlowSchema>;
+  Array<IoK8sApiFlowcontrolV1FlowSchema>;
 export const IoK8sApiFlowcontrolV1FlowSchemaListItemsList =
   /*@__PURE__*/ S.Array(
     IoK8sApiFlowcontrolV1FlowSchema,
@@ -1545,7 +1542,7 @@ export const ListFlowcontrolApiserverV1PriorityLevelConfigurationRequest =
 
 /** `items` is a list of request-priorities. */
 export type IoK8sApiFlowcontrolV1PriorityLevelConfigurationListItemsList =
-  ReadonlyArray<IoK8sApiFlowcontrolV1PriorityLevelConfiguration>;
+  Array<IoK8sApiFlowcontrolV1PriorityLevelConfiguration>;
 export const IoK8sApiFlowcontrolV1PriorityLevelConfigurationListItemsList =
   /*@__PURE__*/ S.Array(
     IoK8sApiFlowcontrolV1PriorityLevelConfiguration,

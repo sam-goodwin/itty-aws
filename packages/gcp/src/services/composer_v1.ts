@@ -101,7 +101,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -214,7 +214,7 @@ export const TaskLogsRetentionConfigStorageModeEnum = /*@__PURE__*/ S.String;
 /** The configuration setting for Task Logs. */
 export interface TaskLogsRetentionConfig {
   /** Optional. The mode of storage for Airflow workers task logs. */
-  storageMode?: TaskLogsRetentionConfigStorageModeEnum;
+  storageMode?: TaskLogsRetentionConfigStorageModeEnum | (string & {});
 }
 export const TaskLogsRetentionConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -234,7 +234,9 @@ export const AirflowMetadataRetentionPolicyConfigRetentionModeEnum =
 /** The policy for airflow metadata database retention. */
 export interface AirflowMetadataRetentionPolicyConfig {
   /** Optional. Retention can be either enabled or disabled. */
-  retentionMode?: AirflowMetadataRetentionPolicyConfigRetentionModeEnum;
+  retentionMode?:
+    | AirflowMetadataRetentionPolicyConfigRetentionModeEnum
+    | (string & {});
   /** Optional. How many days data should be retained for. */
   retentionDays?: number;
 }
@@ -297,7 +299,7 @@ export const NetworkingConfigConnectionTypeEnum = /*@__PURE__*/ S.String;
 /** Configuration options for networking connections in the Composer 2 environment. */
 export interface NetworkingConfig {
   /** Optional. Indicates the user requested specific connection type between Tenant and Customer projects. You cannot set networking connection type in public IP environment. */
-  connectionType?: NetworkingConfigConnectionTypeEnum;
+  connectionType?: NetworkingConfigConnectionTypeEnum | (string & {});
 }
 export const NetworkingConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -335,7 +337,7 @@ export interface PrivateEnvironmentConfig {
   /** Optional. If `true`, a Private IP Cloud Composer environment is created. If this field is set to true, `IPAllocationPolicy.use_ip_aliases` must be set to true for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. This field is going to be deprecated. Use `networking_type` instead. */
   enablePrivateEnvironment?: boolean;
   /** Optional. Networking type for the environment, either private or public. */
-  networkingType?: PrivateEnvironmentConfigNetworkingTypeEnum;
+  networkingType?: PrivateEnvironmentConfigNetworkingTypeEnum | (string & {});
   /** Output only. The IP range reserved for the tenant project's App Engine VMs. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. */
   webServerIpv4ReservedRange?: string;
   /** Optional. Configuration for the network connections configuration in the environment. */
@@ -553,7 +555,7 @@ export const WorkloadsConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "WorkloadsConfig",
 }) as any as S.Schema<WorkloadsConfig>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -641,7 +643,7 @@ export const AllowedIpRange = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AllowedIpRange" }) as any as S.Schema<AllowedIpRange>;
 
-export type AllowedIpRangeList = ReadonlyArray<AllowedIpRange>;
+export type AllowedIpRangeList = Array<AllowedIpRange>;
 export const AllowedIpRangeList = /*@__PURE__*/ S.Array(
   AllowedIpRange,
 ) as any as S.Schema<AllowedIpRangeList>;
@@ -688,9 +690,11 @@ export const CloudDataLineageIntegration = /*@__PURE__*/ S.suspend(() =>
 /** Specifies the selection and configuration of software inside the environment. */
 export interface SoftwareConfig {
   /** Optional. Whether or not the web server uses custom plugins. If unspecified, the field defaults to `PLUGINS_ENABLED`. This field is supported for Cloud Composer environments in versions composer-3-airflow-*.*.*-build.* and newer. */
-  webServerPluginsMode?: SoftwareConfigWebServerPluginsModeEnum;
+  webServerPluginsMode?: SoftwareConfigWebServerPluginsModeEnum | (string & {});
   /** Optional. The selected mode of audit logs replication. This field is supported for Cloud Composer environments in versions composer-3-airflow-*.*.*-build.* and newer. */
-  auditLogsReplicationMode?: SoftwareConfigAuditLogsReplicationModeEnum;
+  auditLogsReplicationMode?:
+    | SoftwareConfigAuditLogsReplicationModeEnum
+    | (string & {});
   /** Optional. Custom Python Package Index (PyPI) packages to be installed in the environment. Keys refer to the lowercase package name such as "numpy" and values are the lowercase extras and version specifier such as "==1.12.0", "[devel,gcp_api]", or "[devel]>=1.8.2, <1.9.2". To specify a package without pinning it to a version specifier, use the empty string as the value. */
   pypiPackages?: StringMap;
   /** Optional. The number of schedulers for Airflow. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-2.*.*. */
@@ -736,7 +740,7 @@ export const CidrBlock = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CidrBlock" }) as any as S.Schema<CidrBlock>;
 
-export type CidrBlockList = ReadonlyArray<CidrBlock>;
+export type CidrBlockList = Array<CidrBlock>;
 export const CidrBlockList = /*@__PURE__*/ S.Array(
   CidrBlock,
 ) as any as S.Schema<CidrBlockList>;
@@ -780,7 +784,7 @@ export interface EnvironmentConfig {
   /** Optional. The maintenance window is the period when Cloud Composer components may undergo maintenance. It is defined so that maintenance is not executed during peak hours or critical time periods. The system will not be under maintenance for every occurrence of this window, but when maintenance is planned, it will be scheduled during the window. The maintenance window period must encompass at least 12 hours per week. This may be split into multiple chunks, each with a size of at least 4 hours. If this value is omitted, the default value for maintenance window is applied. By default, maintenance windows are from 00:00:00 to 04:00:00 (GMT) on Friday, Saturday, and Sunday every week. */
   maintenanceWindow?: MaintenanceWindow;
   /** Optional. Resilience mode of the Cloud Composer Environment. This field is supported for Cloud Composer environments in versions composer-2.2.0-airflow-*.*.* and newer. */
-  resilienceMode?: EnvironmentConfigResilienceModeEnum;
+  resilienceMode?: EnvironmentConfigResilienceModeEnum | (string & {});
   /** Output only. The 'bring your own identity' variant of the URI of the Apache Airflow Web UI hosted within this environment, to be accessed with external identities using workforce identity federation (see [Access environments with workforce identity federation](/composer/docs/composer-2/access-environments-with-workforce-identity-federation)). */
   airflowByoidUri?: string;
   /** Optional. The configuration settings for the Airflow web server App Engine instance. */
@@ -804,7 +808,7 @@ export interface EnvironmentConfig {
   /** Optional. The configuration options for GKE cluster master authorized networks. By default master authorized networks feature is: - in case of private environment: enabled with no external networks allowlisted. - in case of public environment: disabled. */
   masterAuthorizedNetworksConfig?: MasterAuthorizedNetworksConfig;
   /** Optional. The size of the Cloud Composer environment. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer. */
-  environmentSize?: EnvironmentConfigEnvironmentSizeEnum;
+  environmentSize?: EnvironmentConfigEnvironmentSizeEnum | (string & {});
 }
 export const EnvironmentConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -841,7 +845,7 @@ export interface Environment {
   /** Output only. The UUID (Universally Unique IDentifier) associated with this environment. This value is generated when the environment is created. */
   uuid?: string;
   /** The current state of the environment. */
-  state?: EnvironmentStateEnum;
+  state?: EnvironmentStateEnum | (string & {});
   /** Optional. Storage configuration for this environment. */
   storageConfig?: StorageConfig;
   /** Optional. Configuration parameters for this environment. */
@@ -1287,7 +1291,7 @@ export const ListProjectsLocationsEnvironmentsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsEnvironmentsRequest",
 }) as any as S.Schema<ListProjectsLocationsEnvironmentsRequest>;
 
-export type EnvironmentList = ReadonlyArray<Environment>;
+export type EnvironmentList = Array<Environment>;
 export const EnvironmentList = /*@__PURE__*/ S.Array(
   Environment,
 ) as any as S.Schema<EnvironmentList>;
@@ -1334,7 +1338,7 @@ export const ListProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest =
       "ListProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest",
   }) as any as S.Schema<ListProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest>;
 
-export type UserWorkloadsConfigMapList = ReadonlyArray<UserWorkloadsConfigMap>;
+export type UserWorkloadsConfigMapList = Array<UserWorkloadsConfigMap>;
 export const UserWorkloadsConfigMapList = /*@__PURE__*/ S.Array(
   UserWorkloadsConfigMap,
 ) as any as S.Schema<UserWorkloadsConfigMapList>;
@@ -1380,7 +1384,7 @@ export const ListProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest =
     identifier: "ListProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest",
   }) as any as S.Schema<ListProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest>;
 
-export type UserWorkloadsSecretList = ReadonlyArray<UserWorkloadsSecret>;
+export type UserWorkloadsSecretList = Array<UserWorkloadsSecret>;
 export const UserWorkloadsSecretList = /*@__PURE__*/ S.Array(
   UserWorkloadsSecret,
 ) as any as S.Schema<UserWorkloadsSecretList>;
@@ -1489,7 +1493,7 @@ export const ComposerWorkload = /*@__PURE__*/ S.suspend(() =>
   identifier: "ComposerWorkload",
 }) as any as S.Schema<ComposerWorkload>;
 
-export type ComposerWorkloadList = ReadonlyArray<ComposerWorkload>;
+export type ComposerWorkloadList = Array<ComposerWorkload>;
 export const ComposerWorkloadList = /*@__PURE__*/ S.Array(
   ComposerWorkload,
 ) as any as S.Schema<ComposerWorkloadList>;
@@ -1581,7 +1585,7 @@ export const ImageVersion = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ImageVersion" }) as any as S.Schema<ImageVersion>;
 
-export type ImageVersionList = ReadonlyArray<ImageVersion>;
+export type ImageVersionList = Array<ImageVersion>;
 export const ImageVersionList = /*@__PURE__*/ S.Array(
   ImageVersion,
 ) as any as S.Schema<ImageVersionList>;
@@ -1633,7 +1637,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type OperationList = ReadonlyArray<Operation>;
+export type OperationList = Array<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -1801,7 +1805,7 @@ export const Line = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Line" }) as any as S.Schema<Line>;
 
-export type LineList = ReadonlyArray<Line>;
+export type LineList = Array<Line>;
 export const LineList = /*@__PURE__*/ S.Array(
   Line,
 ) as any as S.Schema<LineList>;

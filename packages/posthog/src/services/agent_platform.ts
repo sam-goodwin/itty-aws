@@ -236,7 +236,7 @@ export const AgentApprovalRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Approval requests for this application, newest first. */
 export type AgentApplicationApprovalsListResponseResultsList =
-  ReadonlyArray<AgentApprovalRequest>;
+  Array<AgentApprovalRequest>;
 export const AgentApplicationApprovalsListResponseResultsList =
   /*@__PURE__*/ S.Array(
     AgentApprovalRequest,
@@ -480,8 +480,7 @@ export const AgentApplicationsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "AgentApplicationsListRequest",
 }) as any as S.Schema<AgentApplicationsListRequest>;
 
-export type PaginatedAgentApplicationListResultsList =
-  ReadonlyArray<AgentApplication>;
+export type PaginatedAgentApplicationListResultsList = Array<AgentApplication>;
 export const PaginatedAgentApplicationListResultsList = /*@__PURE__*/ S.Array(
   AgentApplication,
 ) as any as S.Schema<PaginatedAgentApplicationListResultsList>;
@@ -842,7 +841,7 @@ export const SkillRef = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SkillRef" }) as any as S.Schema<SkillRef>;
 
 /** Store-skill references for this draft, set via the `skill_refs` action and resolved into the bundle at freeze. Preserved as the authoring record on the frozen revision (and carried forward when forking a new draft); resolved provenance is stamped onto `spec.skills[].source_version_id`. */
-export type AgentRevisionSkillRefsList = ReadonlyArray<SkillRef>;
+export type AgentRevisionSkillRefsList = Array<SkillRef>;
 export const AgentRevisionSkillRefsList = /*@__PURE__*/ S.Array(
   SkillRef,
 ) as any as S.Schema<AgentRevisionSkillRefsList>;
@@ -972,7 +971,7 @@ export const ImportBundleSkill = /*@__PURE__*/ S.suspend(() =>
 
 /** Per-skill payloads merged into the skill store by id and pinned onto the draft's skill references. When omitted, no skills are touched. */
 export type AgentApplicationsRevisionsBundleImportCreateRequestSkillsList =
-  ReadonlyArray<ImportBundleSkill>;
+  Array<ImportBundleSkill>;
 export const AgentApplicationsRevisionsBundleImportCreateRequestSkillsList =
   /*@__PURE__*/ S.Array(
     ImportBundleSkill,
@@ -1059,7 +1058,7 @@ export const WriteToolRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WriteToolRequest>;
 
 export type AgentApplicationsRevisionsBundleUpdateRequestToolsList =
-  ReadonlyArray<WriteToolRequest>;
+  Array<WriteToolRequest>;
 export const AgentApplicationsRevisionsBundleUpdateRequestToolsList =
   /*@__PURE__*/ S.Array(
     WriteToolRequest,
@@ -1292,8 +1291,7 @@ export const AgentApplicationsRevisionsListRequest = /*@__PURE__*/ S.suspend(
   identifier: "AgentApplicationsRevisionsListRequest",
 }) as any as S.Schema<AgentApplicationsRevisionsListRequest>;
 
-export type PaginatedAgentRevisionListResultsList =
-  ReadonlyArray<AgentRevision>;
+export type PaginatedAgentRevisionListResultsList = Array<AgentRevision>;
 export const PaginatedAgentRevisionListResultsList = /*@__PURE__*/ S.Array(
   AgentRevision,
 ) as any as S.Schema<PaginatedAgentRevisionListResultsList>;
@@ -1478,7 +1476,7 @@ export const AgentApplicationsRevisionsSetEnvCreateRequest =
 
 /** The complete set of store-skill references for this draft; replaces any existing references. */
 export type AgentApplicationsRevisionsSkillRefsUpdateRequestSkillRefsList =
-  ReadonlyArray<SkillRef>;
+  Array<SkillRef>;
 export const AgentApplicationsRevisionsSkillRefsUpdateRequestSkillRefsList =
   /*@__PURE__*/ S.Array(
     SkillRef,
@@ -1536,7 +1534,7 @@ export const AgentApplicationsRevisionsSlackManifestRequest =
   }) as any as S.Schema<AgentApplicationsRevisionsSlackManifestRequest>;
 
 /** Reminders the manifest can't enforce (e.g. invite the bot to its channels). */
-export type AgentRevisionSlackManifestResponseNotesList = ReadonlyArray<string>;
+export type AgentRevisionSlackManifestResponseNotesList = Array<string>;
 export const AgentRevisionSlackManifestResponseNotesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1868,13 +1866,12 @@ export const AgentRevisionValidationError = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AgentRevisionValidationError>;
 
 export type AgentRevisionValidateResponseErrorsList =
-  ReadonlyArray<AgentRevisionValidationError>;
+  Array<AgentRevisionValidationError>;
 export const AgentRevisionValidateResponseErrorsList = /*@__PURE__*/ S.Array(
   AgentRevisionValidationError,
 ) as any as S.Schema<AgentRevisionValidateResponseErrorsList>;
 
-export type AgentRevisionValidateResponseResolvedNativesList =
-  ReadonlyArray<string>;
+export type AgentRevisionValidateResponseResolvedNativesList = Array<string>;
 export const AgentRevisionValidateResponseResolvedNativesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1997,8 +1994,7 @@ export const LogEntry = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "LogEntry" }) as any as S.Schema<LogEntry>;
 
-export type AgentApplicationSessionLogsResponseResultsList =
-  ReadonlyArray<LogEntry>;
+export type AgentApplicationSessionLogsResponseResultsList = Array<LogEntry>;
 export const AgentApplicationSessionLogsResponseResultsList =
   /*@__PURE__*/ S.Array(
     LogEntry,
@@ -2157,7 +2153,7 @@ export const AgentSessionSummary = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AgentSessionSummary>;
 
 export type AgentApplicationSessionsListResponseResultsList =
-  ReadonlyArray<AgentSessionSummary>;
+  Array<AgentSessionSummary>;
 export const AgentApplicationSessionsListResponseResultsList =
   /*@__PURE__*/ S.Array(
     AgentSessionSummary,
@@ -2242,8 +2238,7 @@ export type AgentConversationAssistantMessageRoleEnum = "assistant";
 export const AgentConversationAssistantMessageRoleEnum = /*@__PURE__*/ S.String;
 
 /** Array of text/thinking/toolCall parts. */
-export type AgentConversationAssistantMessageContentList =
-  ReadonlyArray<unknown>;
+export type AgentConversationAssistantMessageContentList = Array<unknown>;
 export const AgentConversationAssistantMessageContentList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -2301,8 +2296,7 @@ export const AgentConversationToolResultMessageRoleEnum =
   /*@__PURE__*/ S.String;
 
 /** Array of {type:'text'|'image', ...} parts. */
-export type AgentConversationToolResultMessageContentList =
-  ReadonlyArray<unknown>;
+export type AgentConversationToolResultMessageContentList = Array<unknown>;
 export const AgentConversationToolResultMessageContentList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -2382,7 +2376,7 @@ export const AgentConversationMessage = /*@__PURE__*/ S.suspend(() =>
 
 /** Full transcript, or the trailing `last_n` messages if `?last_n=` was supplied. */
 export type AgentApplicationSessionsRetrieveResponseConversationList =
-  ReadonlyArray<AgentConversationMessage>;
+  Array<AgentConversationMessage>;
 export const AgentApplicationSessionsRetrieveResponseConversationList =
   /*@__PURE__*/ S.Array(
     AgentConversationMessage,
@@ -2390,7 +2384,7 @@ export const AgentApplicationSessionsRetrieveResponseConversationList =
 
 /** Messages that arrived while a turn was in flight; drained into `conversation` at the start of the next turn. */
 export type AgentApplicationSessionsRetrieveResponsePendingInputsList =
-  ReadonlyArray<AgentConversationMessage>;
+  Array<AgentConversationMessage>;
 export const AgentApplicationSessionsRetrieveResponsePendingInputsList =
   /*@__PURE__*/ S.Array(
     AgentConversationMessage,
@@ -2602,7 +2596,7 @@ export const AgentApplicationsUsersListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "AgentApplicationsUsersListRequest",
 }) as any as S.Schema<AgentApplicationsUsersListRequest>;
 
-export type AgentUserConnectionScopesList = ReadonlyArray<string>;
+export type AgentUserConnectionScopesList = Array<string>;
 export const AgentUserConnectionScopesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AgentUserConnectionScopesList>;
@@ -2636,7 +2630,7 @@ export const AgentUserConnection = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AgentUserConnection>;
 
 export type AgentUserWithConnectionsConnectionsList =
-  ReadonlyArray<AgentUserConnection>;
+  Array<AgentUserConnection>;
 export const AgentUserWithConnectionsConnectionsList = /*@__PURE__*/ S.Array(
   AgentUserConnection,
 ) as any as S.Schema<AgentUserWithConnectionsConnectionsList>;
@@ -2663,7 +2657,7 @@ export const AgentUserWithConnections = /*@__PURE__*/ S.suspend(() =>
   identifier: "AgentUserWithConnections",
 }) as any as S.Schema<AgentUserWithConnections>;
 
-export type AgentUsersListResultsList = ReadonlyArray<AgentUserWithConnections>;
+export type AgentUsersListResultsList = Array<AgentUserWithConnections>;
 export const AgentUsersListResultsList = /*@__PURE__*/ S.Array(
   AgentUserWithConnections,
 ) as any as S.Schema<AgentUsersListResultsList>;
@@ -2786,7 +2780,7 @@ export const AgentFleetLiveSessionSummary = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AgentFleetLiveSessionSummary>;
 
 export type AgentFleetLiveSessionsResponseResultsList =
-  ReadonlyArray<AgentFleetLiveSessionSummary>;
+  Array<AgentFleetLiveSessionSummary>;
 export const AgentFleetLiveSessionsResponseResultsList = /*@__PURE__*/ S.Array(
   AgentFleetLiveSessionSummary,
 ) as any as S.Schema<AgentFleetLiveSessionsResponseResultsList>;
@@ -2824,7 +2818,7 @@ export const AgentFleetStatsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AgentFleetStatsRequest>;
 
 /** Optional flat tags for search ranking. Lowercase a-z 0-9 _ - only. */
-export type AgentMemoryCreateFileRequestTagsList = ReadonlyArray<string>;
+export type AgentMemoryCreateFileRequestTagsList = Array<string>;
 export const AgentMemoryCreateFileRequestTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AgentMemoryCreateFileRequestTagsList>;
@@ -2950,7 +2944,7 @@ export const AgentMemoryListFilesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AgentMemoryListFilesRequest>;
 
 /** Frontmatter tags (lowercase a-z 0-9 _ - only). */
-export type AgentMemoryHeaderTagsList = ReadonlyArray<string>;
+export type AgentMemoryHeaderTagsList = Array<string>;
 export const AgentMemoryHeaderTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AgentMemoryHeaderTagsList>;
@@ -2980,8 +2974,7 @@ export const AgentMemoryHeader = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AgentMemoryHeader>;
 
 /** Headers (frontmatter only) — no file bodies. Use the read endpoint for the body. */
-export type AgentMemoryListResponseEntriesList =
-  ReadonlyArray<AgentMemoryHeader>;
+export type AgentMemoryListResponseEntriesList = Array<AgentMemoryHeader>;
 export const AgentMemoryListResponseEntriesList = /*@__PURE__*/ S.Array(
   AgentMemoryHeader,
 ) as any as S.Schema<AgentMemoryListResponseEntriesList>;
@@ -3037,7 +3030,7 @@ export const AgentTableHeader = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AgentTableHeader>;
 
 /** Tabular-reference tables for this agent (the @posthog/table-* JSONL tables). */
-export type AgentTablesListResponseTablesList = ReadonlyArray<AgentTableHeader>;
+export type AgentTablesListResponseTablesList = Array<AgentTableHeader>;
 export const AgentTablesListResponseTablesList = /*@__PURE__*/ S.Array(
   AgentTableHeader,
 ) as any as S.Schema<AgentTablesListResponseTablesList>;
@@ -3092,7 +3085,7 @@ export const AgentTableRowsResponseRowsItemMap = /*@__PURE__*/ S.Record(
 
 /** The rows (arbitrary JSON objects). */
 export type AgentTableRowsResponseRowsList =
-  ReadonlyArray<AgentTableRowsResponseRowsItemMap>;
+  Array<AgentTableRowsResponseRowsItemMap>;
 export const AgentTableRowsResponseRowsList = /*@__PURE__*/ S.Array(
   AgentTableRowsResponseRowsItemMap,
 ) as any as S.Schema<AgentTableRowsResponseRowsList>;
@@ -3148,7 +3141,7 @@ export const AgentMemorySearchRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "AgentMemorySearchRequest",
 }) as any as S.Schema<AgentMemorySearchRequest>;
 
-export type AgentMemorySearchResultTagsList = ReadonlyArray<string>;
+export type AgentMemorySearchResultTagsList = Array<string>;
 export const AgentMemorySearchResultTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AgentMemorySearchResultTagsList>;
@@ -3175,7 +3168,7 @@ export const AgentMemorySearchResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AgentMemorySearchResult>;
 
 export type AgentMemorySearchResponseResultsList =
-  ReadonlyArray<AgentMemorySearchResult>;
+  Array<AgentMemorySearchResult>;
 export const AgentMemorySearchResponseResultsList = /*@__PURE__*/ S.Array(
   AgentMemorySearchResult,
 ) as any as S.Schema<AgentMemorySearchResponseResultsList>;
@@ -3237,7 +3230,7 @@ export const AgentMemoryTreeResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "AgentMemoryTreeResponse",
 }) as any as S.Schema<AgentMemoryTreeResponse>;
 
-export type AgentMemoryUpdateFileRequestTagsList = ReadonlyArray<string>;
+export type AgentMemoryUpdateFileRequestTagsList = Array<string>;
 export const AgentMemoryUpdateFileRequestTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AgentMemoryUpdateFileRequestTagsList>;
@@ -3310,8 +3303,7 @@ export const AgentNativeToolEntry = /*@__PURE__*/ S.suspend(() =>
   identifier: "AgentNativeToolEntry",
 }) as any as S.Schema<AgentNativeToolEntry>;
 
-export type AgentNativeToolsListResponseToolsList =
-  ReadonlyArray<AgentNativeToolEntry>;
+export type AgentNativeToolsListResponseToolsList = Array<AgentNativeToolEntry>;
 export const AgentNativeToolsListResponseToolsList = /*@__PURE__*/ S.Array(
   AgentNativeToolEntry,
 ) as any as S.Schema<AgentNativeToolsListResponseToolsList>;
@@ -3328,7 +3320,7 @@ export const AgentNativeToolsListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AgentNativeToolsListResponse>;
 
 export type AgentNativeToolsListResponseBodyList =
-  ReadonlyArray<AgentNativeToolsListResponse>;
+  Array<AgentNativeToolsListResponse>;
 export const AgentNativeToolsListResponseBodyList = /*@__PURE__*/ S.Array(
   AgentNativeToolsListResponse,
 ) as any as S.Schema<AgentNativeToolsListResponseBodyList>;
@@ -3438,7 +3430,7 @@ export const AgentRevisionsEnvKeysListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AgentRevisionsEnvKeysListRequest>;
 
 /** Names of env variables currently set on the revision. Values are never returned. */
-export type AgentRevisionEnvKeysResponseKeysList = ReadonlyArray<string>;
+export type AgentRevisionEnvKeysResponseKeysList = Array<string>;
 export const AgentRevisionEnvKeysResponseKeysList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AgentRevisionEnvKeysResponseKeysList>;

@@ -765,7 +765,7 @@ export type MalwareProtectionPlanTaggingActionStatus = "ENABLED" | "DISABLED";
 export const MalwareProtectionPlanTaggingActionStatus = /*@__PURE__*/ S.String;
 
 export interface MalwareProtectionPlanTaggingAction {
-  Status?: MalwareProtectionPlanTaggingActionStatus;
+  Status?: MalwareProtectionPlanTaggingActionStatus | (string & {});
 }
 export const MalwareProtectionPlanTaggingAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6632,7 +6632,9 @@ export const ScanCondition = /*@__PURE__*/ S.suspend(() =>
     S.encodeKeys({ MapEquals: "mapEquals" }),
   ),
 ).annotate({ identifier: "ScanCondition" }) as any as S.Schema<ScanCondition>;
-export type ScanCriterion = { [key in ScanCriterionKey]?: ScanCondition };
+export type ScanCriterion = {
+  [key in ScanCriterionKey | (string & {})]?: ScanCondition;
+};
 export const ScanCriterion = /*@__PURE__*/ S.Record(
   ScanCriterionKey,
   ScanCondition.pipe(S.optional),

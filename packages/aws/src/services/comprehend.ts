@@ -717,13 +717,16 @@ export const DocumentReadMode = /*@__PURE__*/ S.String;
 export type DocumentReadFeatureTypes = "TABLES" | "FORMS";
 export const DocumentReadFeatureTypes = /*@__PURE__*/ S.String;
 
-export type ListOfDocumentReadFeatureTypes = DocumentReadFeatureTypes[];
+export type ListOfDocumentReadFeatureTypes = (
+  | DocumentReadFeatureTypes
+  | (string & {})
+)[];
 export const ListOfDocumentReadFeatureTypes = /*@__PURE__*/ S.Array(
   DocumentReadFeatureTypes,
 );
 export interface DocumentReaderConfig {
-  DocumentReadAction: DocumentReadAction;
-  DocumentReadMode?: DocumentReadMode;
+  DocumentReadAction: DocumentReadAction | (string & {});
+  DocumentReadMode?: DocumentReadMode | (string & {});
   FeatureTypes?: DocumentReadFeatureTypes[];
 }
 export const DocumentReaderConfig = /*@__PURE__*/ S.suspend(() =>
@@ -1128,11 +1131,11 @@ export const Split = /*@__PURE__*/ S.String;
 
 export interface AugmentedManifestsListItem {
   S3Uri: string;
-  Split?: Split;
+  Split?: Split | (string & {});
   AttributeNames: string[];
   AnnotationDataS3Uri?: string;
   SourceDocumentsS3Uri?: string;
-  DocumentType?: AugmentedManifestsDocumentTypeFormat;
+  DocumentType?: AugmentedManifestsDocumentTypeFormat | (string & {});
 }
 export const AugmentedManifestsListItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1166,12 +1169,12 @@ export const DocumentClassifierDocuments = /*@__PURE__*/ S.suspend(() =>
   identifier: "DocumentClassifierDocuments",
 }) as any as S.Schema<DocumentClassifierDocuments>;
 export interface DocumentClassifierInputDataConfig {
-  DataFormat?: DocumentClassifierDataFormat;
+  DataFormat?: DocumentClassifierDataFormat | (string & {});
   S3Uri?: string;
   TestS3Uri?: string;
   LabelDelimiter?: string;
   AugmentedManifests?: AugmentedManifestsListItem[];
-  DocumentType?: DocumentClassifierDocumentTypeFormat;
+  DocumentType?: DocumentClassifierDocumentTypeFormat | (string & {});
   Documents?: DocumentClassifierDocuments;
   DocumentReaderConfig?: DocumentReaderConfig;
 }
@@ -1325,7 +1328,7 @@ export const EntityTypesList = /*@__PURE__*/ S.Array(EntityTypesListItem);
 export interface EntityRecognizerDocuments {
   S3Uri: string;
   TestS3Uri?: string;
-  InputFormat?: InputFormat;
+  InputFormat?: InputFormat | (string & {});
 }
 export const EntityRecognizerDocuments = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1359,7 +1362,7 @@ export const EntityRecognizerAugmentedManifestsList = /*@__PURE__*/ S.Array(
   AugmentedManifestsListItem,
 );
 export interface EntityRecognizerInputDataConfig {
-  DataFormat?: EntityRecognizerDataFormat;
+  DataFormat?: EntityRecognizerDataFormat | (string & {});
   EntityTypes: EntityTypesListItem[];
   Documents?: EntityRecognizerDocuments;
   Annotations?: EntityRecognizerAnnotations;
@@ -1423,7 +1426,7 @@ export type LabelListItem = string;
 export type LabelsList = string[];
 export const LabelsList = /*@__PURE__*/ S.Array(S.String);
 export interface DocumentClassificationConfig {
-  Mode: DocumentClassifierMode;
+  Mode: DocumentClassifierMode | (string & {});
   Labels?: string[];
 }
 export const DocumentClassificationConfig = /*@__PURE__*/ S.suspend(() =>
@@ -1440,7 +1443,7 @@ export const EntityRecognitionConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "EntityRecognitionConfig",
 }) as any as S.Schema<EntityRecognitionConfig>;
 export interface TaskConfig {
-  LanguageCode: LanguageCode;
+  LanguageCode: LanguageCode | (string & {});
   DocumentClassificationConfig?: DocumentClassificationConfig;
   EntityRecognitionConfig?: EntityRecognitionConfig;
 }
@@ -1672,7 +1675,7 @@ export const JobStatus = /*@__PURE__*/ S.String;
 
 export interface InputDataConfig {
   S3Uri: string;
-  InputFormat?: InputFormat;
+  InputFormat?: InputFormat | (string & {});
   DocumentReaderConfig?: DocumentReaderConfig;
 }
 export const InputDataConfig = /*@__PURE__*/ S.suspend(() =>
@@ -2451,7 +2454,7 @@ export const PiiOutputDataConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PiiOutputDataConfig",
 }) as any as S.Schema<PiiOutputDataConfig>;
-export type ListOfPiiEntityTypes = PiiEntityType[];
+export type ListOfPiiEntityTypes = (PiiEntityType | (string & {}))[];
 export const ListOfPiiEntityTypes = /*@__PURE__*/ S.Array(PiiEntityType);
 export type PiiEntitiesDetectionMaskMode =
   | "MASK"
@@ -2461,7 +2464,7 @@ export const PiiEntitiesDetectionMaskMode = /*@__PURE__*/ S.String;
 export type MaskCharacter = string;
 export interface RedactionConfig {
   PiiEntityTypes?: PiiEntityType[];
-  MaskMode?: PiiEntitiesDetectionMaskMode;
+  MaskMode?: PiiEntitiesDetectionMaskMode | (string & {});
   MaskCharacter?: string;
 }
 export const RedactionConfig = /*@__PURE__*/ S.suspend(() =>

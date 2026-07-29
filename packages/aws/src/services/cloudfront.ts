@@ -1171,7 +1171,7 @@ export const OriginProtocolPolicy = /*@__PURE__*/ S.String;
 export type SslProtocol = "SSLv3" | "TLSv1" | "TLSv1.1" | "TLSv1.2";
 export const SslProtocol = /*@__PURE__*/ S.String;
 
-export type SslProtocolsList = SslProtocol[];
+export type SslProtocolsList = (SslProtocol | (string & {}))[];
 export const SslProtocolsList = /*@__PURE__*/ S.Array(
   SslProtocol.pipe(T.XmlName("SslProtocol")),
 );
@@ -1198,11 +1198,11 @@ export const OriginMtlsConfig = /*@__PURE__*/ S.suspend(() =>
 export interface CustomOriginConfig {
   HTTPPort: number;
   HTTPSPort: number;
-  OriginProtocolPolicy: OriginProtocolPolicy;
+  OriginProtocolPolicy: OriginProtocolPolicy | (string & {});
   OriginSslProtocols?: OriginSslProtocols;
   OriginReadTimeout?: number;
   OriginKeepaliveTimeout?: number;
-  IpAddressType?: IpAddressType;
+  IpAddressType?: IpAddressType | (string & {});
   OriginMtlsConfig?: OriginMtlsConfig;
 }
 export const CustomOriginConfig = /*@__PURE__*/ S.suspend(() =>
@@ -1333,7 +1333,7 @@ export interface OriginGroup {
   Id: string;
   FailoverCriteria: OriginGroupFailoverCriteria;
   Members: OriginGroupMembers;
-  SelectionCriteria?: OriginGroupSelectionCriteria;
+  SelectionCriteria?: OriginGroupSelectionCriteria | (string & {});
 }
 export const OriginGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1406,7 +1406,7 @@ export type Method =
   | "DELETE";
 export const Method = /*@__PURE__*/ S.String;
 
-export type MethodsList = Method[];
+export type MethodsList = (Method | (string & {}))[];
 export const MethodsList = /*@__PURE__*/ S.Array(
   Method.pipe(T.XmlName("Method")),
 );
@@ -1439,7 +1439,7 @@ export const EventType = /*@__PURE__*/ S.String;
 
 export interface LambdaFunctionAssociation {
   LambdaFunctionARN: string;
-  EventType: EventType;
+  EventType: EventType | (string & {});
   IncludeBody?: boolean;
 }
 export const LambdaFunctionAssociation = /*@__PURE__*/ S.suspend(() =>
@@ -1472,7 +1472,7 @@ export const LambdaFunctionAssociations = /*@__PURE__*/ S.suspend(() =>
 export type FunctionARN = string;
 export interface FunctionAssociation {
   FunctionARN: string;
-  EventType: EventType;
+  EventType: EventType | (string & {});
 }
 export const FunctionAssociation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ FunctionARN: S.String, EventType: EventType }),
@@ -1515,7 +1515,7 @@ export const CookieNames = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Quantity: S.Number, Items: S.optional(CookieNameList) }),
 ).annotate({ identifier: "CookieNames" }) as any as S.Schema<CookieNames>;
 export interface CookiePreference {
-  Forward: ItemSelection;
+  Forward: ItemSelection | (string & {});
   WhitelistedNames?: CookieNames;
 }
 export const CookiePreference = /*@__PURE__*/ S.suspend(() =>
@@ -1570,7 +1570,7 @@ export interface DefaultCacheBehavior {
   TargetOriginId: string;
   TrustedSigners?: TrustedSigners;
   TrustedKeyGroups?: TrustedKeyGroups;
-  ViewerProtocolPolicy: ViewerProtocolPolicy;
+  ViewerProtocolPolicy: ViewerProtocolPolicy | (string & {});
   AllowedMethods?: AllowedMethods;
   SmoothStreaming?: boolean;
   Compress?: boolean;
@@ -1617,7 +1617,7 @@ export interface CacheBehavior {
   TargetOriginId: string;
   TrustedSigners?: TrustedSigners;
   TrustedKeyGroups?: TrustedKeyGroups;
-  ViewerProtocolPolicy: ViewerProtocolPolicy;
+  ViewerProtocolPolicy: ViewerProtocolPolicy | (string & {});
   AllowedMethods?: AllowedMethods;
   SmoothStreaming?: boolean;
   Compress?: boolean;
@@ -1747,10 +1747,10 @@ export interface ViewerCertificate {
   CloudFrontDefaultCertificate?: boolean;
   IAMCertificateId?: string;
   ACMCertificateArn?: string;
-  SSLSupportMethod?: SSLSupportMethod;
-  MinimumProtocolVersion?: MinimumProtocolVersion;
+  SSLSupportMethod?: SSLSupportMethod | (string & {});
+  MinimumProtocolVersion?: MinimumProtocolVersion | (string & {});
   Certificate?: string;
-  CertificateSource?: CertificateSource;
+  CertificateSource?: CertificateSource | (string & {});
 }
 export const ViewerCertificate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1773,7 +1773,7 @@ export const LocationList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("Location")),
 );
 export interface GeoRestriction {
-  RestrictionType: GeoRestrictionType;
+  RestrictionType: GeoRestrictionType | (string & {});
   Quantity: number;
   Items?: string[];
 }
@@ -1863,7 +1863,7 @@ export const TrustStoreConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "TrustStoreConfig",
 }) as any as S.Schema<TrustStoreConfig>;
 export interface ViewerMtlsConfig {
-  Mode?: ViewerMtlsMode;
+  Mode?: ViewerMtlsMode | (string & {});
   TrustStoreConfig?: TrustStoreConfig;
 }
 export const ViewerMtlsConfig = /*@__PURE__*/ S.suspend(() =>
@@ -1900,18 +1900,18 @@ export interface DistributionConfig {
   CustomErrorResponses?: CustomErrorResponses;
   Comment: string | redacted.Redacted<string>;
   Logging?: LoggingConfig;
-  PriceClass?: PriceClass;
+  PriceClass?: PriceClass | (string & {});
   Enabled: boolean;
   ViewerCertificate?: ViewerCertificate;
   Restrictions?: Restrictions;
   WebACLId?: string;
-  HttpVersion?: HttpVersion;
+  HttpVersion?: HttpVersion | (string & {});
   IsIPV6Enabled?: boolean;
   ContinuousDeploymentPolicyId?: string;
   Staging?: boolean;
   AnycastIpListId?: string;
   TenantConfig?: TenantConfig;
-  ConnectionMode?: ConnectionMode;
+  ConnectionMode?: ConnectionMode | (string & {});
   ViewerMtlsConfig?: ViewerMtlsConfig;
   ConnectionFunctionAssociation?: ConnectionFunctionAssociation;
   CacheTagConfig?: CacheTagConfig;
@@ -2049,7 +2049,7 @@ export interface IpamCidrConfig {
   Cidr: string;
   IpamPoolArn: string;
   AnycastIp?: string;
-  Status?: IpamCidrStatus;
+  Status?: IpamCidrStatus | (string & {});
 }
 export const IpamCidrConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2146,7 +2146,7 @@ export type CachePolicyHeaderBehavior = "none" | "whitelist";
 export const CachePolicyHeaderBehavior = /*@__PURE__*/ S.String;
 
 export interface CachePolicyHeadersConfig {
-  HeaderBehavior: CachePolicyHeaderBehavior;
+  HeaderBehavior: CachePolicyHeaderBehavior | (string & {});
   Headers?: Headers;
 }
 export const CachePolicyHeadersConfig = /*@__PURE__*/ S.suspend(() =>
@@ -2165,7 +2165,7 @@ export type CachePolicyCookieBehavior =
 export const CachePolicyCookieBehavior = /*@__PURE__*/ S.String;
 
 export interface CachePolicyCookiesConfig {
-  CookieBehavior: CachePolicyCookieBehavior;
+  CookieBehavior: CachePolicyCookieBehavior | (string & {});
   Cookies?: CookieNames;
 }
 export const CachePolicyCookiesConfig = /*@__PURE__*/ S.suspend(() =>
@@ -2197,7 +2197,7 @@ export const QueryStringNames = /*@__PURE__*/ S.suspend(() =>
   identifier: "QueryStringNames",
 }) as any as S.Schema<QueryStringNames>;
 export interface CachePolicyQueryStringsConfig {
-  QueryStringBehavior: CachePolicyQueryStringBehavior;
+  QueryStringBehavior: CachePolicyQueryStringBehavior | (string & {});
   QueryStrings?: QueryStringNames;
 }
 export const CachePolicyQueryStringsConfig = /*@__PURE__*/ S.suspend(() =>
@@ -2403,7 +2403,7 @@ export const KeyValueStoreAssociations = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<KeyValueStoreAssociations>;
 export interface FunctionConfig {
   Comment?: string;
-  Runtime: FunctionRuntime;
+  Runtime: FunctionRuntime | (string & {});
   KeyValueStoreAssociations?: KeyValueStoreAssociations;
 }
 export const FunctionConfig = /*@__PURE__*/ S.suspend(() =>
@@ -2610,7 +2610,7 @@ export const ContinuousDeploymentPolicyType = /*@__PURE__*/ S.String;
 export interface TrafficConfig {
   SingleWeightConfig?: ContinuousDeploymentSingleWeightConfig;
   SingleHeaderConfig?: ContinuousDeploymentSingleHeaderConfig;
-  Type: ContinuousDeploymentPolicyType;
+  Type: ContinuousDeploymentPolicyType | (string & {});
 }
 export const TrafficConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2742,7 +2742,7 @@ export type CustomizationActionType = "override" | "disable";
 export const CustomizationActionType = /*@__PURE__*/ S.String;
 
 export interface WebAclCustomization {
-  Action: CustomizationActionType;
+  Action: CustomizationActionType | (string & {});
   Arn?: string;
 }
 export const WebAclCustomization = /*@__PURE__*/ S.suspend(() =>
@@ -2757,7 +2757,7 @@ export const Certificate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Arn: S.String }),
 ).annotate({ identifier: "Certificate" }) as any as S.Schema<Certificate>;
 export interface GeoRestrictionCustomization {
-  RestrictionType: GeoRestrictionType;
+  RestrictionType: GeoRestrictionType | (string & {});
   Locations?: string[];
 }
 export const GeoRestrictionCustomization = /*@__PURE__*/ S.suspend(() =>
@@ -2997,7 +2997,7 @@ export type Format = "URLEncoded";
 export const Format = /*@__PURE__*/ S.String;
 
 export interface ContentTypeProfile {
-  Format: Format;
+  Format: Format | (string & {});
   ProfileId?: string;
   ContentType: string;
 }
@@ -3557,7 +3557,9 @@ export type RealtimeMetricsSubscriptionStatus = "Enabled" | "Disabled";
 export const RealtimeMetricsSubscriptionStatus = /*@__PURE__*/ S.String;
 
 export interface RealtimeMetricsSubscriptionConfig {
-  RealtimeMetricsSubscriptionStatus: RealtimeMetricsSubscriptionStatus;
+  RealtimeMetricsSubscriptionStatus:
+    | RealtimeMetricsSubscriptionStatus
+    | (string & {});
 }
 export const RealtimeMetricsSubscriptionConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3637,9 +3639,9 @@ export const OriginAccessControlOriginTypes = /*@__PURE__*/ S.String;
 export interface OriginAccessControlConfig {
   Name: string;
   Description?: string;
-  SigningProtocol: OriginAccessControlSigningProtocols;
-  SigningBehavior: OriginAccessControlSigningBehaviors;
-  OriginAccessControlOriginType: OriginAccessControlOriginTypes;
+  SigningProtocol: OriginAccessControlSigningProtocols | (string & {});
+  SigningBehavior: OriginAccessControlSigningBehaviors | (string & {});
+  OriginAccessControlOriginType: OriginAccessControlOriginTypes | (string & {});
 }
 export const OriginAccessControlConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3712,7 +3714,7 @@ export type OriginRequestPolicyHeaderBehavior =
 export const OriginRequestPolicyHeaderBehavior = /*@__PURE__*/ S.String;
 
 export interface OriginRequestPolicyHeadersConfig {
-  HeaderBehavior: OriginRequestPolicyHeaderBehavior;
+  HeaderBehavior: OriginRequestPolicyHeaderBehavior | (string & {});
   Headers?: Headers;
 }
 export const OriginRequestPolicyHeadersConfig = /*@__PURE__*/ S.suspend(() =>
@@ -3731,7 +3733,7 @@ export type OriginRequestPolicyCookieBehavior =
 export const OriginRequestPolicyCookieBehavior = /*@__PURE__*/ S.String;
 
 export interface OriginRequestPolicyCookiesConfig {
-  CookieBehavior: OriginRequestPolicyCookieBehavior;
+  CookieBehavior: OriginRequestPolicyCookieBehavior | (string & {});
   Cookies?: CookieNames;
 }
 export const OriginRequestPolicyCookiesConfig = /*@__PURE__*/ S.suspend(() =>
@@ -3750,7 +3752,7 @@ export type OriginRequestPolicyQueryStringBehavior =
 export const OriginRequestPolicyQueryStringBehavior = /*@__PURE__*/ S.String;
 
 export interface OriginRequestPolicyQueryStringsConfig {
-  QueryStringBehavior: OriginRequestPolicyQueryStringBehavior;
+  QueryStringBehavior: OriginRequestPolicyQueryStringBehavior | (string & {});
   QueryStrings?: QueryStringNames;
 }
 export const OriginRequestPolicyQueryStringsConfig = /*@__PURE__*/ S.suspend(
@@ -4017,8 +4019,10 @@ export type ResponseHeadersPolicyAccessControlAllowMethodsValues =
 export const ResponseHeadersPolicyAccessControlAllowMethodsValues =
   /*@__PURE__*/ S.String;
 
-export type AccessControlAllowMethodsList =
-  ResponseHeadersPolicyAccessControlAllowMethodsValues[];
+export type AccessControlAllowMethodsList = (
+  | ResponseHeadersPolicyAccessControlAllowMethodsValues
+  | (string & {})
+)[];
 export const AccessControlAllowMethodsList = /*@__PURE__*/ S.Array(
   ResponseHeadersPolicyAccessControlAllowMethodsValues.pipe(
     T.XmlName("Method"),
@@ -4096,7 +4100,7 @@ export const FrameOptionsList = /*@__PURE__*/ S.String;
 
 export interface ResponseHeadersPolicyFrameOptions {
   Override: boolean;
-  FrameOption: FrameOptionsList;
+  FrameOption: FrameOptionsList | (string & {});
 }
 export const ResponseHeadersPolicyFrameOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Override: S.Boolean, FrameOption: FrameOptionsList }),
@@ -4116,7 +4120,7 @@ export const ReferrerPolicyList = /*@__PURE__*/ S.String;
 
 export interface ResponseHeadersPolicyReferrerPolicy {
   Override: boolean;
-  ReferrerPolicy: ReferrerPolicyList;
+  ReferrerPolicy: ReferrerPolicyList | (string & {});
 }
 export const ResponseHeadersPolicyReferrerPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Override: S.Boolean, ReferrerPolicy: ReferrerPolicyList }),
@@ -4355,7 +4359,7 @@ export interface StreamingDistributionConfig {
   Comment: string;
   Logging?: StreamingLoggingConfig;
   TrustedSigners: TrustedSigners;
-  PriceClass?: PriceClass;
+  PriceClass?: PriceClass | (string & {});
   Enabled: boolean;
 }
 export const StreamingDistributionConfig = /*@__PURE__*/ S.suspend(() =>
@@ -4582,7 +4586,7 @@ export interface VpcOriginEndpointConfig {
   Arn: string;
   HTTPPort: number;
   HTTPSPort: number;
-  OriginProtocolPolicy: OriginProtocolPolicy;
+  OriginProtocolPolicy: OriginProtocolPolicy | (string & {});
   OriginSslProtocols?: OriginSslProtocols;
 }
 export const VpcOriginEndpointConfig = /*@__PURE__*/ S.suspend(() =>

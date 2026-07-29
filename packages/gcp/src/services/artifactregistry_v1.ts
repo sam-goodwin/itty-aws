@@ -60,7 +60,7 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -110,7 +110,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -299,9 +299,13 @@ export interface VulnerabilityScanningConfig {
   /** Output only. Reason for the repository state. */
   enablementStateReason?: string;
   /** Output only. State of feature enablement, combining repository enablement config and API enablement state. */
-  enablementState?: VulnerabilityScanningConfigEnablementStateEnum;
+  enablementState?:
+    | VulnerabilityScanningConfigEnablementStateEnum
+    | (string & {});
   /** Optional. Config for whether this repository has vulnerability scanning disabled. */
-  enablementConfig?: VulnerabilityScanningConfigEnablementConfigEnum;
+  enablementConfig?:
+    | VulnerabilityScanningConfigEnablementConfigEnum
+    | (string & {});
 }
 export const VulnerabilityScanningConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -348,7 +352,7 @@ export const GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepository
 /** Configuration for a Npm remote repository. */
 export interface NpmRepository {
   /** One of the publicly available Npm repositories supported by Artifact Registry. */
-  publicRepository?: NpmRepositoryPublicRepositoryEnum;
+  publicRepository?: NpmRepositoryPublicRepositoryEnum | (string & {});
   /** Customer-specified remote repository. */
   customRepository?: GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepository;
 }
@@ -392,7 +396,7 @@ export const GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerReposit
 /** Configuration for a Docker remote repository. */
 export interface DockerRepository {
   /** One of the publicly available Docker repositories supported by Artifact Registry. */
-  publicRepository?: DockerRepositoryPublicRepositoryEnum;
+  publicRepository?: DockerRepositoryPublicRepositoryEnum | (string & {});
   /** Customer-specified remote repository. */
   customRepository?: GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepository;
 }
@@ -415,7 +419,9 @@ export const GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepository
 /** Publicly available Apt repositories constructed from a common repository base and a custom repository path. */
 export interface GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository {
   /** A common public repository base for Apt. */
-  repositoryBase?: GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryRepositoryBaseEnum;
+  repositoryBase?:
+    | GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryRepositoryBaseEnum
+    | (string & {});
   /** A custom field to define a path to a specific repository from the base. */
   repositoryPath?: string;
 }
@@ -488,7 +494,7 @@ export const GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonReposit
 /** Configuration for a Python remote repository. */
 export interface PythonRepository {
   /** One of the publicly available Python repositories supported by Artifact Registry. */
-  publicRepository?: PythonRepositoryPublicRepositoryEnum;
+  publicRepository?: PythonRepositoryPublicRepositoryEnum | (string & {});
   /** Customer-specified remote repository. */
   customRepository?: GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepository;
 }
@@ -517,7 +523,9 @@ export const GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepository
 /** Publicly available Yum repositories constructed from a common repository base and a custom repository path. */
 export interface GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository {
   /** A common public repository base for Yum. */
-  repositoryBase?: GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryRepositoryBaseEnum;
+  repositoryBase?:
+    | GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryRepositoryBaseEnum
+    | (string & {});
   /** A custom field to define a path to a specific repository from the base. */
   repositoryPath?: string;
 }
@@ -603,7 +611,7 @@ export const GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenReposito
 /** Configuration for a Maven remote repository. */
 export interface MavenRepository {
   /** One of the publicly available Maven repositories supported by Artifact Registry. */
-  publicRepository?: MavenRepositoryPublicRepositoryEnum;
+  publicRepository?: MavenRepositoryPublicRepositoryEnum | (string & {});
   /** Customer-specified remote repository. */
   customRepository?: GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepository;
 }
@@ -701,7 +709,7 @@ export interface MavenRepositoryConfig {
   /** The repository with this flag will allow publishing the same snapshot versions. */
   allowSnapshotOverwrites?: boolean;
   /** Version policy defines the versions that the registry will accept. */
-  versionPolicy?: MavenRepositoryConfigVersionPolicyEnum;
+  versionPolicy?: MavenRepositoryConfigVersionPolicyEnum | (string & {});
 }
 export const MavenRepositoryConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -739,9 +747,9 @@ export const PlatformLogsConfigSeverityLevelEnum = /*@__PURE__*/ S.String;
 /** The platform logs config for a project or a repository. */
 export interface PlatformLogsConfig {
   /** Optional. The state of the platform logs: enabled or disabled. */
-  loggingState?: PlatformLogsConfigLoggingStateEnum;
+  loggingState?: PlatformLogsConfigLoggingStateEnum | (string & {});
   /** Optional. The severity level for the logs. Logs will be generated if their severity level is >= than the value of the severity level mentioned here. */
-  severityLevel?: PlatformLogsConfigSeverityLevelEnum;
+  severityLevel?: PlatformLogsConfigSeverityLevelEnum | (string & {});
 }
 export const PlatformLogsConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -784,7 +792,7 @@ export const UpstreamPolicy = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "UpstreamPolicy" }) as any as S.Schema<UpstreamPolicy>;
 
-export type UpstreamPolicyList = ReadonlyArray<UpstreamPolicy>;
+export type UpstreamPolicyList = Array<UpstreamPolicy>;
 export const UpstreamPolicyList = /*@__PURE__*/ S.Array(
   UpstreamPolicy,
 ) as any as S.Schema<UpstreamPolicyList>;
@@ -818,7 +826,7 @@ export interface CleanupPolicyCondition {
   /** Match versions by package prefix. Applied on any prefix match. */
   packageNamePrefixes?: StringList;
   /** Match versions by tag status. */
-  tagState?: CleanupPolicyConditionTagStateEnum;
+  tagState?: CleanupPolicyConditionTagStateEnum | (string & {});
   /** Match versions by version name prefix. Applied on any prefix match. */
   versionNamePrefixes?: StringList;
   /** Match versions newer than a duration. */
@@ -865,7 +873,7 @@ export interface CleanupPolicy {
   /** Policy condition for retaining a minimum number of versions. May only be specified with a Keep action. */
   mostRecentVersions?: CleanupPolicyMostRecentVersions;
   /** Policy action. */
-  action?: CleanupPolicyActionEnum;
+  action?: CleanupPolicyActionEnum | (string & {});
 }
 export const CleanupPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -899,7 +907,7 @@ export interface Repository {
   /** Output only. The time when the repository was last updated. */
   updateTime?: string;
   /** Optional. The mode of the repository. */
-  mode?: RepositoryModeEnum;
+  mode?: RepositoryModeEnum | (string & {});
   /** Configuration specific for a Remote Repository. */
   remoteRepositoryConfig?: RemoteRepositoryConfig;
   /** Output only. Whether or not this repository satisfies PZI. */
@@ -917,7 +925,7 @@ export interface Repository {
   /** Optional. Configuration for platform logs. */
   platformLogsConfig?: PlatformLogsConfig;
   /** Optional. The format of packages that are stored in the repository. */
-  format?: RepositoryFormatEnum;
+  format?: RepositoryFormatEnum | (string & {});
   /** The user-provided description of the repository. */
   description?: string;
   /** Configuration specific for a Virtual Repository. */
@@ -1113,14 +1121,14 @@ export const GoogleDevtoolsArtifactregistryV1RuleOperationEnum =
 /** A rule defines the deny or allow action of the operation it applies to and the conditions required for the rule to apply. You can set one rule for an entire repository and one rule for each package within. */
 export interface GoogleDevtoolsArtifactregistryV1Rule {
   /** The action this rule takes. */
-  action?: GoogleDevtoolsArtifactregistryV1RuleActionEnum;
+  action?: GoogleDevtoolsArtifactregistryV1RuleActionEnum | (string & {});
   /** The package ID the rule applies to. If empty, this rule applies to all packages inside the repository. */
   packageId?: string;
   /** The name of the rule, for example: `projects/p1/locations/us-central1/repositories/repo1/rules/rule1`. */
   name?: string;
   /** Optional. A CEL expression for conditions that must be met in order for the rule to apply. If not provided, the rule matches all objects. */
   condition?: Expr;
-  operation?: GoogleDevtoolsArtifactregistryV1RuleOperationEnum;
+  operation?: GoogleDevtoolsArtifactregistryV1RuleOperationEnum | (string & {});
 }
 export const GoogleDevtoolsArtifactregistryV1Rule = /*@__PURE__*/ S.suspend(
   () =>
@@ -1403,7 +1411,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
-export type BindingList = ReadonlyArray<Binding>;
+export type BindingList = Array<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -1490,7 +1498,9 @@ export interface ProjectSettings {
   /** The name of the project's settings. Always of the form: projects/{project-id}/projectSettings In update request: never set In response: always set */
   name?: string;
   /** The redirection state of the legacy repositories in this project. */
-  legacyRedirectionState?: ProjectSettingsLegacyRedirectionStateEnum;
+  legacyRedirectionState?:
+    | ProjectSettingsLegacyRedirectionStateEnum
+    | (string & {});
   /** The percentage of pull traffic to redirect from GCR to AR when using partial redirection. */
   pullPercent?: number;
 }
@@ -1652,7 +1662,7 @@ export const ImageManifest = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ImageManifest" }) as any as S.Schema<ImageManifest>;
 
-export type ImageManifestList = ReadonlyArray<ImageManifest>;
+export type ImageManifestList = Array<ImageManifest>;
 export const ImageManifestList = /*@__PURE__*/ S.Array(
   ImageManifest,
 ) as any as S.Schema<ImageManifestList>;
@@ -1724,7 +1734,7 @@ export const HashTypeEnum = /*@__PURE__*/ S.String;
 /** A hash of file content. */
 export interface Hash {
   /** The algorithm used to compute the hash value. */
-  type?: HashTypeEnum;
+  type?: HashTypeEnum | (string & {});
   /** The hash value. */
   value?: string;
 }
@@ -1735,7 +1745,7 @@ export const Hash = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Hash" }) as any as S.Schema<Hash>;
 
-export type HashList = ReadonlyArray<Hash>;
+export type HashList = Array<Hash>;
 export const HashList = /*@__PURE__*/ S.Array(
   Hash,
 ) as any as S.Schema<HashList>;
@@ -1964,7 +1974,7 @@ export const GetProjectsLocationsRepositoriesPackagesVersionsRequest =
     identifier: "GetProjectsLocationsRepositoriesPackagesVersionsRequest",
   }) as any as S.Schema<GetProjectsLocationsRepositoriesPackagesVersionsRequest>;
 
-export type TagList = ReadonlyArray<Tag>;
+export type TagList = Array<Tag>;
 export const TagList = /*@__PURE__*/ S.Array(Tag) as any as S.Schema<TagList>;
 
 /** The body of a version resource. A version resource represents a collection of components, such as files and other data. This may correspond to a version in many package management schemes. */
@@ -2091,7 +2101,7 @@ export const VPCSCConfigVpcscPolicyEnum = /*@__PURE__*/ S.String;
 /** The Artifact Registry VPC SC config that apply to a Project. */
 export interface VPCSCConfig {
   /** The project per location VPC SC policy that defines the VPC SC behavior for the Remote Repository (Allow/Deny). */
-  vpcscPolicy?: VPCSCConfigVpcscPolicyEnum;
+  vpcscPolicy?: VPCSCConfigVpcscPolicyEnum | (string & {});
   /** The name of the project's VPC SC Config. Always of the form: projects/{projectID}/locations/{location}/vpcscConfig In update request: never set In response: always set */
   name?: string;
 }
@@ -2285,7 +2295,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = ReadonlyArray<Location>;
+export type LocationList = Array<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -2337,7 +2347,7 @@ export const ListProjectsLocationsRepositoriesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsRepositoriesRequest",
 }) as any as S.Schema<ListProjectsLocationsRepositoriesRequest>;
 
-export type RepositoryList = ReadonlyArray<Repository>;
+export type RepositoryList = Array<Repository>;
 export const RepositoryList = /*@__PURE__*/ S.Array(
   Repository,
 ) as any as S.Schema<RepositoryList>;
@@ -2386,7 +2396,7 @@ export const ListProjectsLocationsRepositoriesAttachmentsRequest =
     identifier: "ListProjectsLocationsRepositoriesAttachmentsRequest",
   }) as any as S.Schema<ListProjectsLocationsRepositoriesAttachmentsRequest>;
 
-export type AttachmentList = ReadonlyArray<Attachment>;
+export type AttachmentList = Array<Attachment>;
 export const AttachmentList = /*@__PURE__*/ S.Array(
   Attachment,
 ) as any as S.Schema<AttachmentList>;
@@ -2435,7 +2445,7 @@ export const ListProjectsLocationsRepositoriesDockerImagesRequest =
     identifier: "ListProjectsLocationsRepositoriesDockerImagesRequest",
   }) as any as S.Schema<ListProjectsLocationsRepositoriesDockerImagesRequest>;
 
-export type DockerImageList = ReadonlyArray<DockerImage>;
+export type DockerImageList = Array<DockerImage>;
 export const DockerImageList = /*@__PURE__*/ S.Array(
   DockerImage,
 ) as any as S.Schema<DockerImageList>;
@@ -2488,7 +2498,7 @@ export const ListProjectsLocationsRepositoriesFilesRequest =
   }) as any as S.Schema<ListProjectsLocationsRepositoriesFilesRequest>;
 
 export type GoogleDevtoolsArtifactregistryV1FileList =
-  ReadonlyArray<GoogleDevtoolsArtifactregistryV1File>;
+  Array<GoogleDevtoolsArtifactregistryV1File>;
 export const GoogleDevtoolsArtifactregistryV1FileList = /*@__PURE__*/ S.Array(
   GoogleDevtoolsArtifactregistryV1File,
 ) as any as S.Schema<GoogleDevtoolsArtifactregistryV1FileList>;
@@ -2534,7 +2544,7 @@ export const ListProjectsLocationsRepositoriesMavenArtifactsRequest =
     identifier: "ListProjectsLocationsRepositoriesMavenArtifactsRequest",
   }) as any as S.Schema<ListProjectsLocationsRepositoriesMavenArtifactsRequest>;
 
-export type MavenArtifactList = ReadonlyArray<MavenArtifact>;
+export type MavenArtifactList = Array<MavenArtifact>;
 export const MavenArtifactList = /*@__PURE__*/ S.Array(
   MavenArtifact,
 ) as any as S.Schema<MavenArtifactList>;
@@ -2580,7 +2590,7 @@ export const ListProjectsLocationsRepositoriesNpmPackagesRequest =
     identifier: "ListProjectsLocationsRepositoriesNpmPackagesRequest",
   }) as any as S.Schema<ListProjectsLocationsRepositoriesNpmPackagesRequest>;
 
-export type NpmPackageList = ReadonlyArray<NpmPackage>;
+export type NpmPackageList = Array<NpmPackage>;
 export const NpmPackageList = /*@__PURE__*/ S.Array(
   NpmPackage,
 ) as any as S.Schema<NpmPackageList>;
@@ -2632,7 +2642,7 @@ export const ListProjectsLocationsRepositoriesPackagesRequest =
     identifier: "ListProjectsLocationsRepositoriesPackagesRequest",
   }) as any as S.Schema<ListProjectsLocationsRepositoriesPackagesRequest>;
 
-export type PackageList = ReadonlyArray<Package>;
+export type PackageList = Array<Package>;
 export const PackageList = /*@__PURE__*/ S.Array(
   Package,
 ) as any as S.Schema<PackageList>;
@@ -2744,7 +2754,7 @@ export const ListProjectsLocationsRepositoriesPackagesVersionsRequest =
     identifier: "ListProjectsLocationsRepositoriesPackagesVersionsRequest",
   }) as any as S.Schema<ListProjectsLocationsRepositoriesPackagesVersionsRequest>;
 
-export type VersionList = ReadonlyArray<Version>;
+export type VersionList = Array<Version>;
 export const VersionList = /*@__PURE__*/ S.Array(
   Version,
 ) as any as S.Schema<VersionList>;
@@ -2793,7 +2803,7 @@ export const ListProjectsLocationsRepositoriesPrewarmedArtifactsRequest =
     identifier: "ListProjectsLocationsRepositoriesPrewarmedArtifactsRequest",
   }) as any as S.Schema<ListProjectsLocationsRepositoriesPrewarmedArtifactsRequest>;
 
-export type PrewarmedArtifactList = ReadonlyArray<PrewarmedArtifact>;
+export type PrewarmedArtifactList = Array<PrewarmedArtifact>;
 export const PrewarmedArtifactList = /*@__PURE__*/ S.Array(
   PrewarmedArtifact,
 ) as any as S.Schema<PrewarmedArtifactList>;
@@ -2839,7 +2849,7 @@ export const ListProjectsLocationsRepositoriesPythonPackagesRequest =
     identifier: "ListProjectsLocationsRepositoriesPythonPackagesRequest",
   }) as any as S.Schema<ListProjectsLocationsRepositoriesPythonPackagesRequest>;
 
-export type PythonPackageList = ReadonlyArray<PythonPackage>;
+export type PythonPackageList = Array<PythonPackage>;
 export const PythonPackageList = /*@__PURE__*/ S.Array(
   PythonPackage,
 ) as any as S.Schema<PythonPackageList>;
@@ -2886,7 +2896,7 @@ export const ListProjectsLocationsRepositoriesRulesRequest =
   }) as any as S.Schema<ListProjectsLocationsRepositoriesRulesRequest>;
 
 export type GoogleDevtoolsArtifactregistryV1RuleList =
-  ReadonlyArray<GoogleDevtoolsArtifactregistryV1Rule>;
+  Array<GoogleDevtoolsArtifactregistryV1Rule>;
 export const GoogleDevtoolsArtifactregistryV1RuleList = /*@__PURE__*/ S.Array(
   GoogleDevtoolsArtifactregistryV1Rule,
 ) as any as S.Schema<GoogleDevtoolsArtifactregistryV1RuleList>;

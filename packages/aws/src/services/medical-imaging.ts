@@ -1107,8 +1107,8 @@ export type SortField = "updatedAt" | "createdAt" | "DICOMStudyDateAndTime";
 export const SortField = /*@__PURE__*/ S.String;
 
 export interface Sort {
-  sortOrder: SortOrder;
-  sortField: SortField;
+  sortOrder: SortOrder | (string & {});
+  sortField: SortField | (string & {});
 }
 export const Sort = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ sortOrder: SortOrder, sortField: SortField }),

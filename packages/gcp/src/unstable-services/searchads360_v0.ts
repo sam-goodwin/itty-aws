@@ -78,7 +78,7 @@ export const GetCustomersCustomColumnsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetCustomersCustomColumnsRequest",
 }) as any as S.Schema<GetCustomersCustomColumnsRequest>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -301,7 +301,7 @@ export const ListCustomersCustomColumnsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListCustomersCustomColumnsRequest>;
 
 export type GoogleAdsSearchads360V0Resources__CustomColumnList =
-  ReadonlyArray<GoogleAdsSearchads360V0Resources__CustomColumn>;
+  Array<GoogleAdsSearchads360V0Resources__CustomColumn>;
 export const GoogleAdsSearchads360V0Resources__CustomColumnList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V0Resources__CustomColumn,
@@ -710,7 +710,7 @@ export const GoogleAdsSearchads360V0Common__AdScheduleInfo =
   }) as any as S.Schema<GoogleAdsSearchads360V0Common__AdScheduleInfo>;
 
 export type GoogleAdsSearchads360V0Common__AdScheduleInfoList =
-  ReadonlyArray<GoogleAdsSearchads360V0Common__AdScheduleInfo>;
+  Array<GoogleAdsSearchads360V0Common__AdScheduleInfo>;
 export const GoogleAdsSearchads360V0Common__AdScheduleInfoList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V0Common__AdScheduleInfo,
@@ -909,7 +909,7 @@ export const GoogleAdsSearchads360V0Common__BusinessProfileLocation =
   }) as any as S.Schema<GoogleAdsSearchads360V0Common__BusinessProfileLocation>;
 
 export type GoogleAdsSearchads360V0Common__BusinessProfileLocationList =
-  ReadonlyArray<GoogleAdsSearchads360V0Common__BusinessProfileLocation>;
+  Array<GoogleAdsSearchads360V0Common__BusinessProfileLocation>;
 export const GoogleAdsSearchads360V0Common__BusinessProfileLocationList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V0Common__BusinessProfileLocation,
@@ -1055,7 +1055,7 @@ export const GoogleAdsSearchads360V0Common__CustomParameter =
   }) as any as S.Schema<GoogleAdsSearchads360V0Common__CustomParameter>;
 
 export type GoogleAdsSearchads360V0Common__CustomParameterList =
-  ReadonlyArray<GoogleAdsSearchads360V0Common__CustomParameter>;
+  Array<GoogleAdsSearchads360V0Common__CustomParameter>;
 export const GoogleAdsSearchads360V0Common__CustomParameterList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V0Common__CustomParameter,
@@ -2395,7 +2395,7 @@ export const GoogleAdsSearchads360V0Common__FinalAppUrl =
   }) as any as S.Schema<GoogleAdsSearchads360V0Common__FinalAppUrl>;
 
 export type GoogleAdsSearchads360V0Common__FinalAppUrlList =
-  ReadonlyArray<GoogleAdsSearchads360V0Common__FinalAppUrl>;
+  Array<GoogleAdsSearchads360V0Common__FinalAppUrl>;
 export const GoogleAdsSearchads360V0Common__FinalAppUrlList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V0Common__FinalAppUrl,
@@ -2416,7 +2416,7 @@ export const GoogleAdsSearchads360V0Common__AdTextAsset =
   }) as any as S.Schema<GoogleAdsSearchads360V0Common__AdTextAsset>;
 
 export type GoogleAdsSearchads360V0Common__AdTextAssetList =
-  ReadonlyArray<GoogleAdsSearchads360V0Common__AdTextAsset>;
+  Array<GoogleAdsSearchads360V0Common__AdTextAsset>;
 export const GoogleAdsSearchads360V0Common__AdTextAssetList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V0Common__AdTextAsset,
@@ -2774,7 +2774,7 @@ export const GoogleAdsSearchads360V0Common__AssetUsage =
   }) as any as S.Schema<GoogleAdsSearchads360V0Common__AssetUsage>;
 
 export type GoogleAdsSearchads360V0Common__AssetUsageList =
-  ReadonlyArray<GoogleAdsSearchads360V0Common__AssetUsage>;
+  Array<GoogleAdsSearchads360V0Common__AssetUsage>;
 export const GoogleAdsSearchads360V0Common__AssetUsageList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V0Common__AssetUsage,
@@ -2798,7 +2798,7 @@ export const GoogleAdsSearchads360V0Resources__AssetGroupAssetCombinationData =
   }) as any as S.Schema<GoogleAdsSearchads360V0Resources__AssetGroupAssetCombinationData>;
 
 export type GoogleAdsSearchads360V0Resources__AssetGroupAssetCombinationDataList =
-  ReadonlyArray<GoogleAdsSearchads360V0Resources__AssetGroupAssetCombinationData>;
+  Array<GoogleAdsSearchads360V0Resources__AssetGroupAssetCombinationData>;
 export const GoogleAdsSearchads360V0Resources__AssetGroupAssetCombinationDataList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V0Resources__AssetGroupAssetCombinationData,
@@ -2908,7 +2908,7 @@ export const GoogleAdsSearchads360V0Common__TargetRestriction =
   }) as any as S.Schema<GoogleAdsSearchads360V0Common__TargetRestriction>;
 
 export type GoogleAdsSearchads360V0Common__TargetRestrictionList =
-  ReadonlyArray<GoogleAdsSearchads360V0Common__TargetRestriction>;
+  Array<GoogleAdsSearchads360V0Common__TargetRestriction>;
 export const GoogleAdsSearchads360V0Common__TargetRestrictionList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V0Common__TargetRestriction,
@@ -3286,7 +3286,7 @@ export const GoogleAdsSearchads360V0Common__WebpageConditionInfo =
   }) as any as S.Schema<GoogleAdsSearchads360V0Common__WebpageConditionInfo>;
 
 export type GoogleAdsSearchads360V0Common__WebpageConditionInfoList =
-  ReadonlyArray<GoogleAdsSearchads360V0Common__WebpageConditionInfo>;
+  Array<GoogleAdsSearchads360V0Common__WebpageConditionInfo>;
 export const GoogleAdsSearchads360V0Common__WebpageConditionInfoList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V0Common__WebpageConditionInfo,
@@ -3764,7 +3764,7 @@ export const GoogleAdsSearchads360V0Resources__ListingGroupFilterDimension =
   }) as any as S.Schema<GoogleAdsSearchads360V0Resources__ListingGroupFilterDimension>;
 
 export type GoogleAdsSearchads360V0Resources__ListingGroupFilterDimensionList =
-  ReadonlyArray<GoogleAdsSearchads360V0Resources__ListingGroupFilterDimension>;
+  Array<GoogleAdsSearchads360V0Resources__ListingGroupFilterDimension>;
 export const GoogleAdsSearchads360V0Resources__ListingGroupFilterDimensionList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V0Resources__ListingGroupFilterDimension,
@@ -3993,7 +3993,7 @@ export const GoogleAdsSearchads360V0Common__Value = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleAdsSearchads360V0Common__Value>;
 
 export type GoogleAdsSearchads360V0Common__ValueList =
-  ReadonlyArray<GoogleAdsSearchads360V0Common__Value>;
+  Array<GoogleAdsSearchads360V0Common__Value>;
 export const GoogleAdsSearchads360V0Common__ValueList = /*@__PURE__*/ S.Array(
   GoogleAdsSearchads360V0Common__Value,
 ) as any as S.Schema<GoogleAdsSearchads360V0Common__ValueList>;
@@ -4942,7 +4942,7 @@ export const GoogleAdsSearchads360V0Resources_Campaign_OptimizationGoalSettingOp
   /*@__PURE__*/ S.String;
 
 export type GoogleAdsSearchads360V0Resources_Campaign_OptimizationGoalSettingOptimizationGoalTypesItemEnumList =
-  ReadonlyArray<GoogleAdsSearchads360V0Resources_Campaign_OptimizationGoalSettingOptimizationGoalTypesItemEnum>;
+  Array<GoogleAdsSearchads360V0Resources_Campaign_OptimizationGoalSettingOptimizationGoalTypesItemEnum>;
 export const GoogleAdsSearchads360V0Resources_Campaign_OptimizationGoalSettingOptimizationGoalTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V0Resources_Campaign_OptimizationGoalSettingOptimizationGoalTypesItemEnum,
@@ -5046,7 +5046,7 @@ export const GoogleAdsSearchads360V0Resources__CampaignFeedTypesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleAdsSearchads360V0Resources__CampaignFeedTypesItemEnumList =
-  ReadonlyArray<GoogleAdsSearchads360V0Resources__CampaignFeedTypesItemEnum>;
+  Array<GoogleAdsSearchads360V0Resources__CampaignFeedTypesItemEnum>;
 export const GoogleAdsSearchads360V0Resources__CampaignFeedTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V0Resources__CampaignFeedTypesItemEnum,
@@ -5286,7 +5286,7 @@ export const GoogleAdsSearchads360V0Common__FrequencyCapEntry =
   }) as any as S.Schema<GoogleAdsSearchads360V0Common__FrequencyCapEntry>;
 
 export type GoogleAdsSearchads360V0Common__FrequencyCapEntryList =
-  ReadonlyArray<GoogleAdsSearchads360V0Common__FrequencyCapEntry>;
+  Array<GoogleAdsSearchads360V0Common__FrequencyCapEntry>;
 export const GoogleAdsSearchads360V0Common__FrequencyCapEntryList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V0Common__FrequencyCapEntry,
@@ -5382,7 +5382,7 @@ export const GoogleAdsSearchads360V0Resources__CampaignExcludedParentAssetFieldT
   /*@__PURE__*/ S.String;
 
 export type GoogleAdsSearchads360V0Resources__CampaignExcludedParentAssetFieldTypesItemEnumList =
-  ReadonlyArray<GoogleAdsSearchads360V0Resources__CampaignExcludedParentAssetFieldTypesItemEnum>;
+  Array<GoogleAdsSearchads360V0Resources__CampaignExcludedParentAssetFieldTypesItemEnum>;
 export const GoogleAdsSearchads360V0Resources__CampaignExcludedParentAssetFieldTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V0Resources__CampaignExcludedParentAssetFieldTypesItemEnum,
@@ -5598,7 +5598,7 @@ export const GoogleAdsSearchads360V0Common__MetricsInteractionEventTypesItemEnum
   /*@__PURE__*/ S.String;
 
 export type GoogleAdsSearchads360V0Common__MetricsInteractionEventTypesItemEnumList =
-  ReadonlyArray<GoogleAdsSearchads360V0Common__MetricsInteractionEventTypesItemEnum>;
+  Array<GoogleAdsSearchads360V0Common__MetricsInteractionEventTypesItemEnum>;
 export const GoogleAdsSearchads360V0Common__MetricsInteractionEventTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V0Common__MetricsInteractionEventTypesItemEnum,
@@ -6667,7 +6667,7 @@ export const GoogleAdsSearchads360V0Services__SearchAds360Row =
   }) as any as S.Schema<GoogleAdsSearchads360V0Services__SearchAds360Row>;
 
 export type GoogleAdsSearchads360V0Services__SearchAds360RowList =
-  ReadonlyArray<GoogleAdsSearchads360V0Services__SearchAds360Row>;
+  Array<GoogleAdsSearchads360V0Services__SearchAds360Row>;
 export const GoogleAdsSearchads360V0Services__SearchAds360RowList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V0Services__SearchAds360Row,
@@ -6694,7 +6694,7 @@ export const GoogleAdsSearchads360V0Services__CustomColumnHeader =
   }) as any as S.Schema<GoogleAdsSearchads360V0Services__CustomColumnHeader>;
 
 export type GoogleAdsSearchads360V0Services__CustomColumnHeaderList =
-  ReadonlyArray<GoogleAdsSearchads360V0Services__CustomColumnHeader>;
+  Array<GoogleAdsSearchads360V0Services__CustomColumnHeader>;
 export const GoogleAdsSearchads360V0Services__CustomColumnHeaderList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V0Services__CustomColumnHeader,
@@ -6718,7 +6718,7 @@ export const GoogleAdsSearchads360V0Services__ConversionCustomMetricHeader =
   }) as any as S.Schema<GoogleAdsSearchads360V0Services__ConversionCustomMetricHeader>;
 
 export type GoogleAdsSearchads360V0Services__ConversionCustomMetricHeaderList =
-  ReadonlyArray<GoogleAdsSearchads360V0Services__ConversionCustomMetricHeader>;
+  Array<GoogleAdsSearchads360V0Services__ConversionCustomMetricHeader>;
 export const GoogleAdsSearchads360V0Services__ConversionCustomMetricHeaderList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V0Services__ConversionCustomMetricHeader,
@@ -6743,7 +6743,7 @@ export const GoogleAdsSearchads360V0Services__RawEventConversionDimensionHeader 
   }) as any as S.Schema<GoogleAdsSearchads360V0Services__RawEventConversionDimensionHeader>;
 
 export type GoogleAdsSearchads360V0Services__RawEventConversionDimensionHeaderList =
-  ReadonlyArray<GoogleAdsSearchads360V0Services__RawEventConversionDimensionHeader>;
+  Array<GoogleAdsSearchads360V0Services__RawEventConversionDimensionHeader>;
 export const GoogleAdsSearchads360V0Services__RawEventConversionDimensionHeaderList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V0Services__RawEventConversionDimensionHeader,
@@ -6768,7 +6768,7 @@ export const GoogleAdsSearchads360V0Services__RawEventConversionMetricHeader =
   }) as any as S.Schema<GoogleAdsSearchads360V0Services__RawEventConversionMetricHeader>;
 
 export type GoogleAdsSearchads360V0Services__RawEventConversionMetricHeaderList =
-  ReadonlyArray<GoogleAdsSearchads360V0Services__RawEventConversionMetricHeader>;
+  Array<GoogleAdsSearchads360V0Services__RawEventConversionMetricHeader>;
 export const GoogleAdsSearchads360V0Services__RawEventConversionMetricHeaderList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V0Services__RawEventConversionMetricHeader,
@@ -6793,7 +6793,7 @@ export const GoogleAdsSearchads360V0Services__ConversionCustomDimensionHeader =
   }) as any as S.Schema<GoogleAdsSearchads360V0Services__ConversionCustomDimensionHeader>;
 
 export type GoogleAdsSearchads360V0Services__ConversionCustomDimensionHeaderList =
-  ReadonlyArray<GoogleAdsSearchads360V0Services__ConversionCustomDimensionHeader>;
+  Array<GoogleAdsSearchads360V0Services__ConversionCustomDimensionHeader>;
 export const GoogleAdsSearchads360V0Services__ConversionCustomDimensionHeaderList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V0Services__ConversionCustomDimensionHeader,
@@ -6894,7 +6894,7 @@ export const SearchSearchAds360FieldsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SearchSearchAds360FieldsRequest>;
 
 export type GoogleAdsSearchads360V0Resources__SearchAds360FieldList =
-  ReadonlyArray<GoogleAdsSearchads360V0Resources__SearchAds360Field>;
+  Array<GoogleAdsSearchads360V0Resources__SearchAds360Field>;
 export const GoogleAdsSearchads360V0Resources__SearchAds360FieldList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V0Resources__SearchAds360Field,

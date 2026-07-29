@@ -101,7 +101,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -365,7 +365,7 @@ export const CheckTransitiveMembershipResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CheckTransitiveMembershipResponse",
 }) as any as S.Schema<CheckTransitiveMembershipResponse>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -409,13 +409,19 @@ export interface GoogleAppsCloudidentityDevicesV1BrowserInfo {
   /** Deprecated: This field is not used for Chrome version 118 and later. Current state of [Chrome Cleanup](https://chromeenterprise.google/policies/#ChromeCleanupEnabled). */
   isChromeCleanupEnabled?: boolean;
   /** Output only. Browser's management state. */
-  browserManagementState?: GoogleAppsCloudidentityDevicesV1BrowserInfoBrowserManagementStateEnum;
+  browserManagementState?:
+    | GoogleAppsCloudidentityDevicesV1BrowserInfoBrowserManagementStateEnum
+    | (string & {});
   /** Current state of [built-in DNS client](https://chromeenterprise.google/policies/#BuiltInDnsClientEnabled). */
   isBuiltInDnsClientEnabled?: boolean;
   /** Current state of [Safe Browsing protection level](https://chromeenterprise.google/policies/#SafeBrowsingProtectionLevel). */
-  safeBrowsingProtectionLevel?: GoogleAppsCloudidentityDevicesV1BrowserInfoSafeBrowsingProtectionLevelEnum;
+  safeBrowsingProtectionLevel?:
+    | GoogleAppsCloudidentityDevicesV1BrowserInfoSafeBrowsingProtectionLevelEnum
+    | (string & {});
   /** Current state of [password protection trigger](https://chromeenterprise.google/policies/#PasswordProtectionWarningTrigger). */
-  passwordProtectionWarningTrigger?: GoogleAppsCloudidentityDevicesV1BrowserInfoPasswordProtectionWarningTriggerEnum;
+  passwordProtectionWarningTrigger?:
+    | GoogleAppsCloudidentityDevicesV1BrowserInfoPasswordProtectionWarningTriggerEnum
+    | (string & {});
   /** Current state of [bulk data analysis](https://chromeenterprise.google/policies/#OnBulkDataEntryEnterpriseConnector). Set to true if provider list from Chrome is non-empty. */
   isBulkDataEntryAnalysisEnabled?: boolean;
   /** Current state of [security event analysis](https://chromeenterprise.google/policies/#OnSecurityEventEnterpriseConnector). Set to true if provider list from Chrome is non-empty. */
@@ -474,7 +480,7 @@ export const GoogleAppsCloudidentityDevicesV1BrowserAttributes =
   }) as any as S.Schema<GoogleAppsCloudidentityDevicesV1BrowserAttributes>;
 
 export type GoogleAppsCloudidentityDevicesV1BrowserAttributesList =
-  ReadonlyArray<GoogleAppsCloudidentityDevicesV1BrowserAttributes>;
+  Array<GoogleAppsCloudidentityDevicesV1BrowserAttributes>;
 export const GoogleAppsCloudidentityDevicesV1BrowserAttributesList =
   /*@__PURE__*/ S.Array(
     GoogleAppsCloudidentityDevicesV1BrowserAttributes,
@@ -520,7 +526,9 @@ export interface GoogleAppsCloudidentityDevicesV1CertificateAttributes {
   /** The encoded certificate fingerprint. */
   fingerprint?: string;
   /** Output only. Validation state of this certificate. */
-  validationState?: GoogleAppsCloudidentityDevicesV1CertificateAttributesValidationStateEnum;
+  validationState?:
+    | GoogleAppsCloudidentityDevicesV1CertificateAttributesValidationStateEnum
+    | (string & {});
   /** Serial number of the certificate, Example: "123456789". */
   serialNumber?: string;
   /** Certificate not valid at or after this timestamp. */
@@ -550,7 +558,7 @@ export const GoogleAppsCloudidentityDevicesV1CertificateAttributes =
   }) as any as S.Schema<GoogleAppsCloudidentityDevicesV1CertificateAttributes>;
 
 export type GoogleAppsCloudidentityDevicesV1CertificateAttributesList =
-  ReadonlyArray<GoogleAppsCloudidentityDevicesV1CertificateAttributes>;
+  Array<GoogleAppsCloudidentityDevicesV1CertificateAttributes>;
 export const GoogleAppsCloudidentityDevicesV1CertificateAttributesList =
   /*@__PURE__*/ S.Array(
     GoogleAppsCloudidentityDevicesV1CertificateAttributes,
@@ -626,7 +634,9 @@ export interface GoogleAppsCloudidentityDevicesV1AndroidAttributes {
   /** Whether Android verified boot status is GREEN. */
   verifiedBoot?: boolean;
   /** Ownership privileges on device. */
-  ownershipPrivilege?: GoogleAppsCloudidentityDevicesV1AndroidAttributesOwnershipPrivilegeEnum;
+  ownershipPrivilege?:
+    | GoogleAppsCloudidentityDevicesV1AndroidAttributesOwnershipPrivilegeEnum
+    | (string & {});
   /** Whether Google Play Protect Verify Apps is enabled. */
   verifyAppsEnabled?: boolean;
   /** Whether any potentially harmful apps were detected on the device. */
@@ -680,7 +690,9 @@ export interface GoogleAppsCloudidentityDevicesV1Device {
   /** Output only. Attributes specific to [Endpoint Verification](https://cloud.google.com/endpoint-verification/docs/overview) devices. */
   endpointVerificationSpecificAttributes?: GoogleAppsCloudidentityDevicesV1EndpointVerificationSpecificAttributes;
   /** Output only. Management state of the device */
-  managementState?: GoogleAppsCloudidentityDevicesV1DeviceManagementStateEnum;
+  managementState?:
+    | GoogleAppsCloudidentityDevicesV1DeviceManagementStateEnum
+    | (string & {});
   /** Output only. Mobile or network operator of device, if available. */
   networkOperator?: string;
   /** Serial Number of device. Example: HT82V1A01076. */
@@ -696,7 +708,9 @@ export interface GoogleAppsCloudidentityDevicesV1Device {
   /** Output only. Whether USB debugging is enabled on device. */
   enabledUsbDebugging?: boolean;
   /** Output only. Type of device. */
-  deviceType?: GoogleAppsCloudidentityDevicesV1DeviceDeviceTypeEnum;
+  deviceType?:
+    | GoogleAppsCloudidentityDevicesV1DeviceDeviceTypeEnum
+    | (string & {});
   /** Output only. OS version of the device. Example: Android 8.1.0. */
   osVersion?: string;
   /** Output only. Device manufacturer. Example: Motorola. */
@@ -704,7 +718,9 @@ export interface GoogleAppsCloudidentityDevicesV1Device {
   /** Host name of the device. */
   hostname?: string;
   /** Output only. Whether the device is owned by the company or an individual */
-  ownerType?: GoogleAppsCloudidentityDevicesV1DeviceOwnerTypeEnum;
+  ownerType?:
+    | GoogleAppsCloudidentityDevicesV1DeviceOwnerTypeEnum
+    | (string & {});
   /** Output only. OS security patch update time on device. */
   securityPatchTime?: string;
   /** Output only. Build number of the device. */
@@ -730,9 +746,13 @@ export interface GoogleAppsCloudidentityDevicesV1Device {
   /** Output only. OS release version. Example: 6.0. */
   releaseVersion?: string;
   /** Output only. Device encryption state. */
-  encryptionState?: GoogleAppsCloudidentityDevicesV1DeviceEncryptionStateEnum;
+  encryptionState?:
+    | GoogleAppsCloudidentityDevicesV1DeviceEncryptionStateEnum
+    | (string & {});
   /** Output only. Represents whether the Device is compromised. */
-  compromisedState?: GoogleAppsCloudidentityDevicesV1DeviceCompromisedStateEnum;
+  compromisedState?:
+    | GoogleAppsCloudidentityDevicesV1DeviceCompromisedStateEnum
+    | (string & {});
   /** Output only. When the Company-Owned device was imported. This field is empty for BYOD devices. */
   createTime?: string;
   /** Asset tag of the device. */
@@ -841,7 +861,7 @@ export const DynamicGroupQueryResourceTypeEnum = /*@__PURE__*/ S.String;
 /** Defines a query on a resource. */
 export interface DynamicGroupQuery {
   /** Resource type for the Dynamic Group Query */
-  resourceType?: DynamicGroupQueryResourceTypeEnum;
+  resourceType?: DynamicGroupQueryResourceTypeEnum | (string & {});
   /** Query that determines the memberships of the dynamic group. Examples: All users with at least one `organizations.department` of engineering. `user.organizations.exists(org, org.department=='engineering')` All users with at least one location that has `area` of `foo` and `building_id` of `bar`. `user.locations.exists(loc, loc.area=='foo' && loc.building_id=='bar')` All users with any variation of the name John Doe (case-insensitive queries add `equalsIgnoreCase()` to the value being queried). `user.name.value.equalsIgnoreCase('jOhn DoE')` */
   query?: string;
 }
@@ -854,7 +874,7 @@ export const DynamicGroupQuery = /*@__PURE__*/ S.suspend(() =>
   identifier: "DynamicGroupQuery",
 }) as any as S.Schema<DynamicGroupQuery>;
 
-export type DynamicGroupQueryList = ReadonlyArray<DynamicGroupQuery>;
+export type DynamicGroupQueryList = Array<DynamicGroupQuery>;
 export const DynamicGroupQueryList = /*@__PURE__*/ S.Array(
   DynamicGroupQuery,
 ) as any as S.Schema<DynamicGroupQueryList>;
@@ -869,7 +889,7 @@ export const DynamicGroupStatusStatusEnum = /*@__PURE__*/ S.String;
 /** The current status of a dynamic group along with timestamp. */
 export interface DynamicGroupStatus {
   /** Status of the dynamic group. */
-  status?: DynamicGroupStatusStatusEnum;
+  status?: DynamicGroupStatusStatusEnum | (string & {});
   /** The latest time at which the dynamic group is guaranteed to be in the given status. If status is `UP_TO_DATE`, the latest time at which the dynamic group was confirmed to be up-to-date. If status is `UPDATING_MEMBERSHIPS`, the time at which dynamic group was created. */
   statusTime?: string;
 }
@@ -904,7 +924,7 @@ export const StringMap = /*@__PURE__*/ S.Record(
   S.String,
 ) as any as S.Schema<StringMap>;
 
-export type EntityKeyList = ReadonlyArray<EntityKey>;
+export type EntityKeyList = Array<EntityKey>;
 export const EntityKeyList = /*@__PURE__*/ S.Array(
   EntityKey,
 ) as any as S.Schema<EntityKeyList>;
@@ -1004,7 +1024,7 @@ export const MembershipRoleRestrictionEvaluationStateEnum =
 /** The evaluated state of this restriction. */
 export interface MembershipRoleRestrictionEvaluation {
   /** Output only. The current state of the restriction */
-  state?: MembershipRoleRestrictionEvaluationStateEnum;
+  state?: MembershipRoleRestrictionEvaluationStateEnum | (string & {});
 }
 export const MembershipRoleRestrictionEvaluation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1046,7 +1066,7 @@ export const MembershipRole = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MembershipRole" }) as any as S.Schema<MembershipRole>;
 
-export type MembershipRoleList = ReadonlyArray<MembershipRole>;
+export type MembershipRoleList = Array<MembershipRole>;
 export const MembershipRoleList = /*@__PURE__*/ S.Array(
   MembershipRole,
 ) as any as S.Schema<MembershipRoleList>;
@@ -1071,11 +1091,11 @@ export interface Membership {
   /** Required. Immutable. The `EntityKey` of the member. */
   preferredMemberKey?: EntityKey;
   /** Output only. The type of the membership. */
-  type?: MembershipTypeEnum;
+  type?: MembershipTypeEnum | (string & {});
   /** The `MembershipRole`s that apply to the `Membership`. If unspecified, defaults to a single `MembershipRole` with `name` `MEMBER`. Must not contain duplicate `MembershipRole`s with the same `name`. */
   roles?: MembershipRoleList;
   /** Output only. Delivery setting associated with the membership. */
-  deliverySetting?: MembershipDeliverySettingEnum;
+  deliverySetting?: MembershipDeliverySettingEnum | (string & {});
 }
 export const Membership = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1291,7 +1311,7 @@ export const SignInBehaviorRedirectConditionEnum = /*@__PURE__*/ S.String;
 /** Controls sign-in behavior. */
 export interface SignInBehavior {
   /** When to redirect sign-ins to the IdP. */
-  redirectCondition?: SignInBehaviorRedirectConditionEnum;
+  redirectCondition?: SignInBehaviorRedirectConditionEnum | (string & {});
 }
 export const SignInBehavior = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1322,7 +1342,7 @@ export interface InboundSsoAssignment {
   /** Immutable. Must be of the form `groups/{group}`. */
   targetGroup?: string;
   /** Inbound SSO behavior. */
-  ssoMode?: InboundSsoAssignmentSsoModeEnum;
+  ssoMode?: InboundSsoAssignmentSsoModeEnum | (string & {});
   /** Must be zero (which is the default value so it can be omitted) for assignments with `target_org_unit` set and must be greater-than-or-equal-to one for assignments with `target_group` set. */
   rank?: number;
   /** Immutable. The customer. For example: `customers/C0123abc`. */
@@ -1408,7 +1428,7 @@ export interface Policy {
   /** Required. The Setting configured by this Policy. */
   setting?: Setting;
   /** Output only. The type of the policy. */
-  type?: PolicyTypeEnum;
+  type?: PolicyTypeEnum | (string & {});
   /** Required. The PolicyQuery the Setting applies to. */
   policyQuery?: PolicyQuery;
 }
@@ -1858,21 +1878,29 @@ export interface GoogleAppsCloudidentityDevicesV1ClientState {
   /** This field may be used to store a unique identifier for the API resource within which these CustomAttributes are a field. */
   customId?: string;
   /** The compliance state of the resource as specified by the API client. */
-  complianceState?: GoogleAppsCloudidentityDevicesV1ClientStateComplianceStateEnum;
+  complianceState?:
+    | GoogleAppsCloudidentityDevicesV1ClientStateComplianceStateEnum
+    | (string & {});
   /** The map of key-value attributes stored by callers specific to a device. The total serialized length of this map may not exceed 10KB. No limit is placed on the number of attributes in a map. */
   keyValuePairs?: GoogleAppsCloudidentityDevicesV1CustomAttributeValueMap;
   /** Output only. The time the client state data was last updated. */
   lastUpdateTime?: string;
   /** Output only. The owner of the ClientState */
-  ownerType?: GoogleAppsCloudidentityDevicesV1ClientStateOwnerTypeEnum;
+  ownerType?:
+    | GoogleAppsCloudidentityDevicesV1ClientStateOwnerTypeEnum
+    | (string & {});
   /** Output only. [Resource name](https://cloud.google.com/apis/design/resource_names) of the ClientState in format: `devices/{device}/deviceUsers/{device_user}/clientState/{partner}`, where partner corresponds to the partner storing the data. For partners belonging to the "BeyondCorp Alliance", this is the partner ID specified to you by Google. For all other callers, this is a string of the form: `{customer}-suffix`, where `customer` is your customer ID. The *suffix* is any string the caller specifies. This string will be displayed verbatim in the administration console. This suffix is used in setting up Custom Access Levels in Context-Aware Access. Your organization's customer ID can be obtained from the URL: `GET https://www.googleapis.com/admin/directory/v1/customers/my_customer` The `id` field in the response contains the customer ID starting with the letter 'C'. The customer ID to be used in this API is the string after the letter 'C' (not including 'C') */
   name?: string;
   /** A descriptive cause of the health score. */
   scoreReason?: string;
   /** The Health score of the resource. The Health score is the callers specification of the condition of the device from a usability point of view. For example, a third-party device management provider may specify a health score based on its compliance with organizational policies. */
-  healthScore?: GoogleAppsCloudidentityDevicesV1ClientStateHealthScoreEnum;
+  healthScore?:
+    | GoogleAppsCloudidentityDevicesV1ClientStateHealthScoreEnum
+    | (string & {});
   /** The management state of the resource as specified by the API client. */
-  managed?: GoogleAppsCloudidentityDevicesV1ClientStateManagedEnum;
+  managed?:
+    | GoogleAppsCloudidentityDevicesV1ClientStateManagedEnum
+    | (string & {});
   /** Output only. The time the client state data was created. */
   createTime?: string;
   /** The caller can specify asset tags for this resource */
@@ -2137,7 +2165,7 @@ export const RestrictionEvaluationStateEnum = /*@__PURE__*/ S.String;
 /** The evaluated state of this restriction. */
 export interface RestrictionEvaluation {
   /** Output only. The current state of the restriction */
-  state?: RestrictionEvaluationStateEnum;
+  state?: RestrictionEvaluationStateEnum | (string & {});
 }
 export const RestrictionEvaluation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2241,7 +2269,7 @@ export const ListCustomersUserinvitationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListCustomersUserinvitationsRequest",
 }) as any as S.Schema<ListCustomersUserinvitationsRequest>;
 
-export type UserInvitationList = ReadonlyArray<UserInvitation>;
+export type UserInvitationList = Array<UserInvitation>;
 export const UserInvitationList = /*@__PURE__*/ S.Array(
   UserInvitation,
 ) as any as S.Schema<UserInvitationList>;
@@ -2302,7 +2330,7 @@ export const ListDevicesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListDevicesRequest>;
 
 export type GoogleAppsCloudidentityDevicesV1DeviceList =
-  ReadonlyArray<GoogleAppsCloudidentityDevicesV1Device>;
+  Array<GoogleAppsCloudidentityDevicesV1Device>;
 export const GoogleAppsCloudidentityDevicesV1DeviceList = /*@__PURE__*/ S.Array(
   GoogleAppsCloudidentityDevicesV1Device,
 ) as any as S.Schema<GoogleAppsCloudidentityDevicesV1DeviceList>;
@@ -2358,7 +2386,7 @@ export const ListDevicesDeviceUsersRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListDevicesDeviceUsersRequest>;
 
 export type GoogleAppsCloudidentityDevicesV1DeviceUserList =
-  ReadonlyArray<GoogleAppsCloudidentityDevicesV1DeviceUser>;
+  Array<GoogleAppsCloudidentityDevicesV1DeviceUser>;
 export const GoogleAppsCloudidentityDevicesV1DeviceUserList =
   /*@__PURE__*/ S.Array(
     GoogleAppsCloudidentityDevicesV1DeviceUser,
@@ -2413,7 +2441,7 @@ export const ListDevicesDeviceUsersClientStatesRequest =
   }) as any as S.Schema<ListDevicesDeviceUsersClientStatesRequest>;
 
 export type GoogleAppsCloudidentityDevicesV1ClientStateList =
-  ReadonlyArray<GoogleAppsCloudidentityDevicesV1ClientState>;
+  Array<GoogleAppsCloudidentityDevicesV1ClientState>;
 export const GoogleAppsCloudidentityDevicesV1ClientStateList =
   /*@__PURE__*/ S.Array(
     GoogleAppsCloudidentityDevicesV1ClientState,
@@ -2466,7 +2494,7 @@ export const ListGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListGroupsRequest",
 }) as any as S.Schema<ListGroupsRequest>;
 
-export type GroupList = ReadonlyArray<Group>;
+export type GroupList = Array<Group>;
 export const GroupList = /*@__PURE__*/ S.Array(
   Group,
 ) as any as S.Schema<GroupList>;
@@ -2520,7 +2548,7 @@ export const ListGroupsMembershipsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListGroupsMembershipsRequest",
 }) as any as S.Schema<ListGroupsMembershipsRequest>;
 
-export type MembershipList = ReadonlyArray<Membership>;
+export type MembershipList = Array<Membership>;
 export const MembershipList = /*@__PURE__*/ S.Array(
   Membership,
 ) as any as S.Schema<MembershipList>;
@@ -2565,7 +2593,7 @@ export const ListInboundOidcSsoProfilesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListInboundOidcSsoProfilesRequest",
 }) as any as S.Schema<ListInboundOidcSsoProfilesRequest>;
 
-export type InboundOidcSsoProfileList = ReadonlyArray<InboundOidcSsoProfile>;
+export type InboundOidcSsoProfileList = Array<InboundOidcSsoProfile>;
 export const InboundOidcSsoProfileList = /*@__PURE__*/ S.Array(
   InboundOidcSsoProfile,
 ) as any as S.Schema<InboundOidcSsoProfileList>;
@@ -2610,7 +2638,7 @@ export const ListInboundSamlSsoProfilesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListInboundSamlSsoProfilesRequest",
 }) as any as S.Schema<ListInboundSamlSsoProfilesRequest>;
 
-export type InboundSamlSsoProfileList = ReadonlyArray<InboundSamlSsoProfile>;
+export type InboundSamlSsoProfileList = Array<InboundSamlSsoProfile>;
 export const InboundSamlSsoProfileList = /*@__PURE__*/ S.Array(
   InboundSamlSsoProfile,
 ) as any as S.Schema<InboundSamlSsoProfileList>;
@@ -2656,7 +2684,7 @@ export const ListInboundSamlSsoProfilesIdpCredentialsRequest =
     identifier: "ListInboundSamlSsoProfilesIdpCredentialsRequest",
   }) as any as S.Schema<ListInboundSamlSsoProfilesIdpCredentialsRequest>;
 
-export type IdpCredentialList = ReadonlyArray<IdpCredential>;
+export type IdpCredentialList = Array<IdpCredential>;
 export const IdpCredentialList = /*@__PURE__*/ S.Array(
   IdpCredential,
 ) as any as S.Schema<IdpCredentialList>;
@@ -2701,7 +2729,7 @@ export const ListInboundSsoAssignmentsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListInboundSsoAssignmentsRequest",
 }) as any as S.Schema<ListInboundSsoAssignmentsRequest>;
 
-export type InboundSsoAssignmentList = ReadonlyArray<InboundSsoAssignment>;
+export type InboundSsoAssignmentList = Array<InboundSsoAssignment>;
 export const InboundSsoAssignmentList = /*@__PURE__*/ S.Array(
   InboundSsoAssignment,
 ) as any as S.Schema<InboundSsoAssignmentList>;
@@ -2746,7 +2774,7 @@ export const ListPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListPoliciesRequest",
 }) as any as S.Schema<ListPoliciesRequest>;
 
-export type PolicyList = ReadonlyArray<Policy>;
+export type PolicyList = Array<Policy>;
 export const PolicyList = /*@__PURE__*/ S.Array(
   Policy,
 ) as any as S.Schema<PolicyList>;
@@ -2914,7 +2942,7 @@ export const UpdateMembershipRolesParams = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateMembershipRolesParams>;
 
 export type UpdateMembershipRolesParamsList =
-  ReadonlyArray<UpdateMembershipRolesParams>;
+  Array<UpdateMembershipRolesParams>;
 export const UpdateMembershipRolesParamsList = /*@__PURE__*/ S.Array(
   UpdateMembershipRolesParams,
 ) as any as S.Schema<UpdateMembershipRolesParamsList>;
@@ -3182,7 +3210,7 @@ export const MembershipRelation = /*@__PURE__*/ S.suspend(() =>
   identifier: "MembershipRelation",
 }) as any as S.Schema<MembershipRelation>;
 
-export type MembershipRelationList = ReadonlyArray<MembershipRelation>;
+export type MembershipRelationList = Array<MembershipRelation>;
 export const MembershipRelationList = /*@__PURE__*/ S.Array(
   MembershipRelation,
 ) as any as S.Schema<MembershipRelationList>;
@@ -3290,8 +3318,7 @@ export const TransitiveMembershipRole = /*@__PURE__*/ S.suspend(() =>
   identifier: "TransitiveMembershipRole",
 }) as any as S.Schema<TransitiveMembershipRole>;
 
-export type TransitiveMembershipRoleList =
-  ReadonlyArray<TransitiveMembershipRole>;
+export type TransitiveMembershipRoleList = Array<TransitiveMembershipRole>;
 export const TransitiveMembershipRoleList = /*@__PURE__*/ S.Array(
   TransitiveMembershipRole,
 ) as any as S.Schema<TransitiveMembershipRoleList>;
@@ -3329,7 +3356,7 @@ export const GroupRelation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "GroupRelation" }) as any as S.Schema<GroupRelation>;
 
-export type GroupRelationList = ReadonlyArray<GroupRelation>;
+export type GroupRelationList = Array<GroupRelation>;
 export const GroupRelationList = /*@__PURE__*/ S.Array(
   GroupRelation,
 ) as any as S.Schema<GroupRelationList>;
@@ -3402,7 +3429,7 @@ export const MemberRelation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MemberRelation" }) as any as S.Schema<MemberRelation>;
 
-export type MemberRelationList = ReadonlyArray<MemberRelation>;
+export type MemberRelationList = Array<MemberRelation>;
 export const MemberRelationList = /*@__PURE__*/ S.Array(
   MemberRelation,
 ) as any as S.Schema<MemberRelationList>;

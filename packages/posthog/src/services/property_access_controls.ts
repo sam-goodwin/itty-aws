@@ -131,15 +131,14 @@ export const PropertyAccessControlsRetrieveRequest = /*@__PURE__*/ S.suspend(
 
 /** List of all access control rules for this property definition. */
 export type PropertyAccessControlStateAccessControlsList =
-  ReadonlyArray<PropertyAccessControlRule>;
+  Array<PropertyAccessControlRule>;
 export const PropertyAccessControlStateAccessControlsList =
   /*@__PURE__*/ S.Array(
     PropertyAccessControlRule,
   ) as any as S.Schema<PropertyAccessControlStateAccessControlsList>;
 
 /** Available access levels that can be assigned. */
-export type PropertyAccessControlStateAvailableAccessLevelsList =
-  ReadonlyArray<string>;
+export type PropertyAccessControlStateAvailableAccessLevelsList = Array<string>;
 export const PropertyAccessControlStateAvailableAccessLevelsList =
   /*@__PURE__*/ S.Array(
     S.String,

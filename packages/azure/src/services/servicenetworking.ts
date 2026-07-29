@@ -371,7 +371,7 @@ export const Association = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Association" }) as any as S.Schema<Association>;
 
 /** The Association items on this page */
-export type AssociationListResultValueList = ReadonlyArray<Association>;
+export type AssociationListResultValueList = Array<Association>;
 export const AssociationListResultValueList = /*@__PURE__*/ S.Array(
   Association,
 ) as any as S.Schema<AssociationListResultValueList>;
@@ -782,7 +782,7 @@ export const Frontend = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Frontend" }) as any as S.Schema<Frontend>;
 
 /** The Frontend items on this page */
-export type FrontendListResultValueList = ReadonlyArray<Frontend>;
+export type FrontendListResultValueList = Array<Frontend>;
 export const FrontendListResultValueList = /*@__PURE__*/ S.Array(
   Frontend,
 ) as any as S.Schema<FrontendListResultValueList>;
@@ -950,7 +950,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = ReadonlyArray<Operation>;
+export type OperationsListResponseValueList = Array<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;
@@ -1274,7 +1274,7 @@ export const SecurityPolicy = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SecurityPolicy" }) as any as S.Schema<SecurityPolicy>;
 
 /** The SecurityPolicy items on this page */
-export type SecurityPolicyListResultValueList = ReadonlyArray<SecurityPolicy>;
+export type SecurityPolicyListResultValueList = Array<SecurityPolicy>;
 export const SecurityPolicyListResultValueList = /*@__PURE__*/ S.Array(
   SecurityPolicy,
 ) as any as S.Schema<SecurityPolicyListResultValueList>;
@@ -1503,7 +1503,7 @@ export const TrafficControllerInterfaceCreateOrUpdateResponseTagsMap =
 
 /** Configuration Endpoints. */
 export type TrafficControllerPropertiesConfigurationEndpointsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const TrafficControllerPropertiesConfigurationEndpointsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1521,23 +1521,20 @@ export const ResourceId = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResourceId" }) as any as S.Schema<ResourceId>;
 
 /** Frontends References List */
-export type TrafficControllerPropertiesFrontendsList =
-  ReadonlyArray<ResourceId>;
+export type TrafficControllerPropertiesFrontendsList = Array<ResourceId>;
 export const TrafficControllerPropertiesFrontendsList = /*@__PURE__*/ S.Array(
   ResourceId,
 ) as any as S.Schema<TrafficControllerPropertiesFrontendsList>;
 
 /** Associations References List */
-export type TrafficControllerPropertiesAssociationsList =
-  ReadonlyArray<ResourceId>;
+export type TrafficControllerPropertiesAssociationsList = Array<ResourceId>;
 export const TrafficControllerPropertiesAssociationsList =
   /*@__PURE__*/ S.Array(
     ResourceId,
   ) as any as S.Schema<TrafficControllerPropertiesAssociationsList>;
 
 /** Security Policies References List */
-export type TrafficControllerPropertiesSecurityPoliciesList =
-  ReadonlyArray<ResourceId>;
+export type TrafficControllerPropertiesSecurityPoliciesList = Array<ResourceId>;
 export const TrafficControllerPropertiesSecurityPoliciesList =
   /*@__PURE__*/ S.Array(
     ResourceId,
@@ -1768,8 +1765,7 @@ export const TrafficController = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TrafficController>;
 
 /** The TrafficController items on this page */
-export type TrafficControllerListResultValueList =
-  ReadonlyArray<TrafficController>;
+export type TrafficControllerListResultValueList = Array<TrafficController>;
 export const TrafficControllerListResultValueList = /*@__PURE__*/ S.Array(
   TrafficController,
 ) as any as S.Schema<TrafficControllerListResultValueList>;

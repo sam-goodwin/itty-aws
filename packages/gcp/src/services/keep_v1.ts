@@ -100,7 +100,7 @@ export interface Permission {
   /** Output only. The user to whom this role applies. */
   user?: User;
   /** The role granted by this permission. The role determines the entity’s ability to read, write, and share notes. */
-  role?: PermissionRoleEnum;
+  role?: PermissionRoleEnum | (string & {});
   /** The email associated with the member. If set on create, the `email` field in the `User` or `Group` message must either be empty or match this field. On read, may be unset if the member does not have an associated email. */
   email?: string;
   /** Output only. The resource name. */
@@ -136,8 +136,7 @@ export const CreatePermissionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreatePermissionRequest",
 }) as any as S.Schema<CreatePermissionRequest>;
 
-export type CreatePermissionRequestList =
-  ReadonlyArray<CreatePermissionRequest>;
+export type CreatePermissionRequestList = Array<CreatePermissionRequest>;
 export const CreatePermissionRequestList = /*@__PURE__*/ S.Array(
   CreatePermissionRequest,
 ) as any as S.Schema<CreatePermissionRequestList>;
@@ -176,7 +175,7 @@ export const BatchCreateNotesPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "BatchCreateNotesPermissionsRequest",
 }) as any as S.Schema<BatchCreateNotesPermissionsRequest>;
 
-export type PermissionList = ReadonlyArray<Permission>;
+export type PermissionList = Array<Permission>;
 export const PermissionList = /*@__PURE__*/ S.Array(
   Permission,
 ) as any as S.Schema<PermissionList>;
@@ -194,7 +193,7 @@ export const BatchCreatePermissionsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "BatchCreatePermissionsResponse",
 }) as any as S.Schema<BatchCreatePermissionsResponse>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -267,7 +266,7 @@ export const ListItem = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ListItem" }) as any as S.Schema<ListItem>;
 
-export type ListItemList = ReadonlyArray<ListItem>;
+export type ListItemList = Array<ListItem>;
 export const ListItemList = /*@__PURE__*/ S.Array(
   ListItem,
 ) as any as S.Schema<ListItemList>;
@@ -311,7 +310,7 @@ export const Attachment = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Attachment" }) as any as S.Schema<Attachment>;
 
-export type AttachmentList = ReadonlyArray<Attachment>;
+export type AttachmentList = Array<Attachment>;
 export const AttachmentList = /*@__PURE__*/ S.Array(
   Attachment,
 ) as any as S.Schema<AttachmentList>;
@@ -450,7 +449,7 @@ export const ListNotesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListNotesRequest",
 }) as any as S.Schema<ListNotesRequest>;
 
-export type NoteList = ReadonlyArray<Note>;
+export type NoteList = Array<Note>;
 export const NoteList = /*@__PURE__*/ S.Array(
   Note,
 ) as any as S.Schema<NoteList>;

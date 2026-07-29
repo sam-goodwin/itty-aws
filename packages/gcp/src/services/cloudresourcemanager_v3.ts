@@ -72,7 +72,7 @@ export const StringMap = /*@__PURE__*/ S.Record(
   S.String,
 ) as any as S.Schema<StringMap>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -82,7 +82,7 @@ export interface Folder {
   /** Required. The folder's parent's resource name. Updates to the folder's parent must be performed using MoveFolder. */
   parent?: string;
   /** Output only. The lifecycle state of the folder. Updates to the state must be performed using DeleteFolder and UndeleteFolder. */
-  state?: FolderStateEnum;
+  state?: FolderStateEnum | (string & {});
   /** Output only. Timestamp when the folder was last modified. */
   updateTime?: string;
   /** Identifier. The resource name of the folder. Its format is `folders/{folder_id}`, for example: "folders/1234". */
@@ -142,7 +142,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -240,7 +240,7 @@ export const ProjectStateEnum = /*@__PURE__*/ S.String;
 /** A project is a high-level Google Cloud entity. It is a container for ACLs, APIs, App Engine Apps, VMs, and other Google Cloud Platform resources. */
 export interface Project {
   /** Output only. The project lifecycle state. */
-  state?: ProjectStateEnum;
+  state?: ProjectStateEnum | (string & {});
   /** Optional. A reference to a parent Resource. eg., `organizations/123` or `folders/876`. */
   parent?: string;
   /** Immutable. The unique, user-assigned id of the project. It must be 6 to 30 lowercase ASCII letters, digits, or hyphens. It must start with a letter. Trailing hyphens are prohibited. Example: `tokyo-rain-123` */
@@ -361,7 +361,7 @@ export interface TagKey {
   /** Immutable. The resource name of the TagKey's parent. A TagKey can be parented by an Organization or a Project. For a TagKey parented by an Organization, its parent must be in the form `organizations/{org_id}`. For a TagKey parented by a Project, its parent can be in the form `projects/{project_id}` or `projects/{project_number}`. */
   parent?: string;
   /** Optional. A purpose denotes that this Tag is intended for use in policies of a specific policy engine, and will involve that policy engine in management operations involving this Tag. A purpose does not grant a policy engine exclusive rights to the Tag, and it may be referenced by other policy engines. A purpose cannot be changed once set. */
-  purpose?: TagKeyPurposeEnum;
+  purpose?: TagKeyPurposeEnum | (string & {});
   /** Optional. Purpose data corresponds to the policy system that the tag is intended for. See documentation for `Purpose` for formatting of this field. Purpose data cannot be changed once set. */
   purposeData?: StringMap;
   /** Immutable. The resource name for a TagKey. Must be in the format `tagKeys/{tag_key_id}`, where `tag_key_id` is the generated numeric id for the TagKey. */
@@ -823,7 +823,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
-export type BindingList = ReadonlyArray<Binding>;
+export type BindingList = Array<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -838,7 +838,7 @@ export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
 export interface AuditLogConfig {
   /** The log type that this config enables. */
-  logType?: AuditLogConfigLogTypeEnum;
+  logType?: AuditLogConfigLogTypeEnum | (string & {});
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
   exemptedMembers?: StringList;
 }
@@ -849,7 +849,7 @@ export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
-export type AuditLogConfigList = ReadonlyArray<AuditLogConfig>;
+export type AuditLogConfigList = Array<AuditLogConfig>;
 export const AuditLogConfigList = /*@__PURE__*/ S.Array(
   AuditLogConfig,
 ) as any as S.Schema<AuditLogConfigList>;
@@ -868,7 +868,7 @@ export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
-export type AuditConfigList = ReadonlyArray<AuditConfig>;
+export type AuditConfigList = Array<AuditConfig>;
 export const AuditConfigList = /*@__PURE__*/ S.Array(
   AuditConfig,
 ) as any as S.Schema<AuditConfigList>;
@@ -1288,7 +1288,7 @@ export const EffectiveTag = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "EffectiveTag" }) as any as S.Schema<EffectiveTag>;
 
-export type EffectiveTagList = ReadonlyArray<EffectiveTag>;
+export type EffectiveTagList = Array<EffectiveTag>;
 export const EffectiveTagList = /*@__PURE__*/ S.Array(
   EffectiveTag,
 ) as any as S.Schema<EffectiveTagList>;
@@ -1336,7 +1336,7 @@ export const ListFoldersRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListFoldersRequest",
 }) as any as S.Schema<ListFoldersRequest>;
 
-export type FolderList = ReadonlyArray<Folder>;
+export type FolderList = Array<Folder>;
 export const FolderList = /*@__PURE__*/ S.Array(
   Folder,
 ) as any as S.Schema<FolderList>;
@@ -1381,7 +1381,7 @@ export const ListLiensRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListLiensRequest",
 }) as any as S.Schema<ListLiensRequest>;
 
-export type LienList = ReadonlyArray<Lien>;
+export type LienList = Array<Lien>;
 export const LienList = /*@__PURE__*/ S.Array(
   Lien,
 ) as any as S.Schema<LienList>;
@@ -1429,7 +1429,7 @@ export const ListProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsRequest",
 }) as any as S.Schema<ListProjectsRequest>;
 
-export type ProjectList = ReadonlyArray<Project>;
+export type ProjectList = Array<Project>;
 export const ProjectList = /*@__PURE__*/ S.Array(
   Project,
 ) as any as S.Schema<ProjectList>;
@@ -1474,7 +1474,7 @@ export const ListTagBindingsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListTagBindingsRequest",
 }) as any as S.Schema<ListTagBindingsRequest>;
 
-export type TagBindingList = ReadonlyArray<TagBinding>;
+export type TagBindingList = Array<TagBinding>;
 export const TagBindingList = /*@__PURE__*/ S.Array(
   TagBinding,
 ) as any as S.Schema<TagBindingList>;
@@ -1519,7 +1519,7 @@ export const ListTagKeysRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListTagKeysRequest",
 }) as any as S.Schema<ListTagKeysRequest>;
 
-export type TagKeyList = ReadonlyArray<TagKey>;
+export type TagKeyList = Array<TagKey>;
 export const TagKeyList = /*@__PURE__*/ S.Array(
   TagKey,
 ) as any as S.Schema<TagKeyList>;
@@ -1564,7 +1564,7 @@ export const ListTagValuesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListTagValuesRequest",
 }) as any as S.Schema<ListTagValuesRequest>;
 
-export type TagValueList = ReadonlyArray<TagValue>;
+export type TagValueList = Array<TagValue>;
 export const TagValueList = /*@__PURE__*/ S.Array(
   TagValue,
 ) as any as S.Schema<TagValueList>;
@@ -1612,7 +1612,7 @@ export const ListTagValuesTagHoldsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListTagValuesTagHoldsRequest",
 }) as any as S.Schema<ListTagValuesTagHoldsRequest>;
 
-export type TagHoldList = ReadonlyArray<TagHold>;
+export type TagHoldList = Array<TagHold>;
 export const TagHoldList = /*@__PURE__*/ S.Array(
   TagHold,
 ) as any as S.Schema<TagHoldList>;
@@ -1916,7 +1916,7 @@ export const SearchOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "SearchOrganizationsRequest",
 }) as any as S.Schema<SearchOrganizationsRequest>;
 
-export type OrganizationList = ReadonlyArray<Organization>;
+export type OrganizationList = Array<Organization>;
 export const OrganizationList = /*@__PURE__*/ S.Array(
   Organization,
 ) as any as S.Schema<OrganizationList>;

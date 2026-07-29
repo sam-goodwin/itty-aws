@@ -80,7 +80,7 @@ export const EventPropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<EventPropertyFilterValueCase0Item>;
 
 export type EventPropertyFilterValueCase0List =
-  ReadonlyArray<EventPropertyFilterValueCase0Item>;
+  Array<EventPropertyFilterValueCase0Item>;
 export const EventPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
   EventPropertyFilterValueCase0Item,
 ) as any as S.Schema<EventPropertyFilterValueCase0List>;
@@ -118,7 +118,7 @@ export const PersonPropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<PersonPropertyFilterValueCase0Item>;
 
 export type PersonPropertyFilterValueCase0List =
-  ReadonlyArray<PersonPropertyFilterValueCase0Item>;
+  Array<PersonPropertyFilterValueCase0Item>;
 export const PersonPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
   PersonPropertyFilterValueCase0Item,
 ) as any as S.Schema<PersonPropertyFilterValueCase0List>;
@@ -159,7 +159,7 @@ export const PersonMetadataPropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<PersonMetadataPropertyFilterValueCase0Item>;
 
 export type PersonMetadataPropertyFilterValueCase0List =
-  ReadonlyArray<PersonMetadataPropertyFilterValueCase0Item>;
+  Array<PersonMetadataPropertyFilterValueCase0Item>;
 export const PersonMetadataPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
   PersonMetadataPropertyFilterValueCase0Item,
 ) as any as S.Schema<PersonMetadataPropertyFilterValueCase0List>;
@@ -200,7 +200,7 @@ export const ElementPropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<ElementPropertyFilterValueCase0Item>;
 
 export type ElementPropertyFilterValueCase0List =
-  ReadonlyArray<ElementPropertyFilterValueCase0Item>;
+  Array<ElementPropertyFilterValueCase0Item>;
 export const ElementPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
   ElementPropertyFilterValueCase0Item,
 ) as any as S.Schema<ElementPropertyFilterValueCase0List>;
@@ -240,7 +240,7 @@ export const EventMetadataPropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<EventMetadataPropertyFilterValueCase0Item>;
 
 export type EventMetadataPropertyFilterValueCase0List =
-  ReadonlyArray<EventMetadataPropertyFilterValueCase0Item>;
+  Array<EventMetadataPropertyFilterValueCase0Item>;
 export const EventMetadataPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
   EventMetadataPropertyFilterValueCase0Item,
 ) as any as S.Schema<EventMetadataPropertyFilterValueCase0List>;
@@ -277,7 +277,7 @@ export const SessionPropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<SessionPropertyFilterValueCase0Item>;
 
 export type SessionPropertyFilterValueCase0List =
-  ReadonlyArray<SessionPropertyFilterValueCase0Item>;
+  Array<SessionPropertyFilterValueCase0Item>;
 export const SessionPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
   SessionPropertyFilterValueCase0Item,
 ) as any as S.Schema<SessionPropertyFilterValueCase0List>;
@@ -342,7 +342,7 @@ export const RecordingPropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<RecordingPropertyFilterValueCase0Item>;
 
 export type RecordingPropertyFilterValueCase0List =
-  ReadonlyArray<RecordingPropertyFilterValueCase0Item>;
+  Array<RecordingPropertyFilterValueCase0Item>;
 export const RecordingPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
   RecordingPropertyFilterValueCase0Item,
 ) as any as S.Schema<RecordingPropertyFilterValueCase0List>;
@@ -379,7 +379,7 @@ export const LogEntryPropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<LogEntryPropertyFilterValueCase0Item>;
 
 export type LogEntryPropertyFilterValueCase0List =
-  ReadonlyArray<LogEntryPropertyFilterValueCase0Item>;
+  Array<LogEntryPropertyFilterValueCase0Item>;
 export const LogEntryPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
   LogEntryPropertyFilterValueCase0Item,
 ) as any as S.Schema<LogEntryPropertyFilterValueCase0List>;
@@ -424,7 +424,7 @@ export const GroupPropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<GroupPropertyFilterValueCase0Item>;
 
 export type GroupPropertyFilterValueCase0List =
-  ReadonlyArray<GroupPropertyFilterValueCase0Item>;
+  Array<GroupPropertyFilterValueCase0Item>;
 export const GroupPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
   GroupPropertyFilterValueCase0Item,
 ) as any as S.Schema<GroupPropertyFilterValueCase0List>;
@@ -465,7 +465,7 @@ export const FeaturePropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<FeaturePropertyFilterValueCase0Item>;
 
 export type FeaturePropertyFilterValueCase0List =
-  ReadonlyArray<FeaturePropertyFilterValueCase0Item>;
+  Array<FeaturePropertyFilterValueCase0Item>;
 export const FeaturePropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
   FeaturePropertyFilterValueCase0Item,
 ) as any as S.Schema<FeaturePropertyFilterValueCase0List>;
@@ -531,7 +531,7 @@ export const HogQLPropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<HogQLPropertyFilterValueCase0Item>;
 
 export type HogQLPropertyFilterValueCase0List =
-  ReadonlyArray<HogQLPropertyFilterValueCase0Item>;
+  Array<HogQLPropertyFilterValueCase0Item>;
 export const HogQLPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
   HogQLPropertyFilterValueCase0Item,
 ) as any as S.Schema<HogQLPropertyFilterValueCase0List>;
@@ -580,7 +580,7 @@ export const DataWarehousePropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<DataWarehousePropertyFilterValueCase0Item>;
 
 export type DataWarehousePropertyFilterValueCase0List =
-  ReadonlyArray<DataWarehousePropertyFilterValueCase0Item>;
+  Array<DataWarehousePropertyFilterValueCase0Item>;
 export const DataWarehousePropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
   DataWarehousePropertyFilterValueCase0Item,
 ) as any as S.Schema<DataWarehousePropertyFilterValueCase0List>;
@@ -620,7 +620,7 @@ export const DataWarehousePersonPropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<DataWarehousePersonPropertyFilterValueCase0Item>;
 
 export type DataWarehousePersonPropertyFilterValueCase0List =
-  ReadonlyArray<DataWarehousePersonPropertyFilterValueCase0Item>;
+  Array<DataWarehousePersonPropertyFilterValueCase0Item>;
 export const DataWarehousePersonPropertyFilterValueCase0List =
   /*@__PURE__*/ S.Array(
     DataWarehousePersonPropertyFilterValueCase0Item,
@@ -658,7 +658,7 @@ export const ErrorTrackingIssueFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<ErrorTrackingIssueFilterValueCase0Item>;
 
 export type ErrorTrackingIssueFilterValueCase0List =
-  ReadonlyArray<ErrorTrackingIssueFilterValueCase0Item>;
+  Array<ErrorTrackingIssueFilterValueCase0Item>;
 export const ErrorTrackingIssueFilterValueCase0List = /*@__PURE__*/ S.Array(
   ErrorTrackingIssueFilterValueCase0Item,
 ) as any as S.Schema<ErrorTrackingIssueFilterValueCase0List>;
@@ -701,7 +701,7 @@ export const LogPropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<LogPropertyFilterValueCase0Item>;
 
 export type LogPropertyFilterValueCase0List =
-  ReadonlyArray<LogPropertyFilterValueCase0Item>;
+  Array<LogPropertyFilterValueCase0Item>;
 export const LogPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
   LogPropertyFilterValueCase0Item,
 ) as any as S.Schema<LogPropertyFilterValueCase0List>;
@@ -738,7 +738,7 @@ export const MetricPropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<MetricPropertyFilterValueCase0Item>;
 
 export type MetricPropertyFilterValueCase0List =
-  ReadonlyArray<MetricPropertyFilterValueCase0Item>;
+  Array<MetricPropertyFilterValueCase0Item>;
 export const MetricPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
   MetricPropertyFilterValueCase0Item,
 ) as any as S.Schema<MetricPropertyFilterValueCase0List>;
@@ -781,7 +781,7 @@ export const SpanPropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<SpanPropertyFilterValueCase0Item>;
 
 export type SpanPropertyFilterValueCase0List =
-  ReadonlyArray<SpanPropertyFilterValueCase0Item>;
+  Array<SpanPropertyFilterValueCase0Item>;
 export const SpanPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
   SpanPropertyFilterValueCase0Item,
 ) as any as S.Schema<SpanPropertyFilterValueCase0List>;
@@ -821,7 +821,7 @@ export const RevenueAnalyticsPropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<RevenueAnalyticsPropertyFilterValueCase0Item>;
 
 export type RevenueAnalyticsPropertyFilterValueCase0List =
-  ReadonlyArray<RevenueAnalyticsPropertyFilterValueCase0Item>;
+  Array<RevenueAnalyticsPropertyFilterValueCase0Item>;
 export const RevenueAnalyticsPropertyFilterValueCase0List =
   /*@__PURE__*/ S.Array(
     RevenueAnalyticsPropertyFilterValueCase0Item,
@@ -862,7 +862,7 @@ export const AccountCustomPropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<AccountCustomPropertyFilterValueCase0Item>;
 
 export type AccountCustomPropertyFilterValueCase0List =
-  ReadonlyArray<AccountCustomPropertyFilterValueCase0Item>;
+  Array<AccountCustomPropertyFilterValueCase0Item>;
 export const AccountCustomPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
   AccountCustomPropertyFilterValueCase0Item,
 ) as any as S.Schema<AccountCustomPropertyFilterValueCase0List>;
@@ -903,7 +903,7 @@ export const WorkflowVariablePropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<WorkflowVariablePropertyFilterValueCase0Item>;
 
 export type WorkflowVariablePropertyFilterValueCase0List =
-  ReadonlyArray<WorkflowVariablePropertyFilterValueCase0Item>;
+  Array<WorkflowVariablePropertyFilterValueCase0Item>;
 export const WorkflowVariablePropertyFilterValueCase0List =
   /*@__PURE__*/ S.Array(
     WorkflowVariablePropertyFilterValueCase0Item,
@@ -1032,7 +1032,7 @@ export const PropertyGroupFilterValueValuesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PropertyGroupFilterValueValuesItem>;
 
 export type PropertyGroupFilterValueValuesList =
-  ReadonlyArray<PropertyGroupFilterValueValuesItem>;
+  Array<PropertyGroupFilterValueValuesItem>;
 export const PropertyGroupFilterValueValuesList = /*@__PURE__*/ S.Array(
   PropertyGroupFilterValueValuesItem,
 ) as any as S.Schema<PropertyGroupFilterValueValuesList>;
@@ -1199,7 +1199,7 @@ export const ErrorTrackingAssignmentRulesListRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ErrorTrackingAssignmentRulesListRequest>;
 
 export type PaginatedErrorTrackingAssignmentRuleListResultsList =
-  ReadonlyArray<ErrorTrackingAssignmentRule>;
+  Array<ErrorTrackingAssignmentRule>;
 export const PaginatedErrorTrackingAssignmentRuleListResultsList =
   /*@__PURE__*/ S.Array(
     ErrorTrackingAssignmentRule,
@@ -1447,7 +1447,7 @@ export const ErrorTrackingBypassRulesListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ErrorTrackingBypassRulesListRequest>;
 
 export type PaginatedErrorTrackingBypassRuleListResultsList =
-  ReadonlyArray<ErrorTrackingBypassRule>;
+  Array<ErrorTrackingBypassRule>;
 export const PaginatedErrorTrackingBypassRuleListResultsList =
   /*@__PURE__*/ S.Array(
     ErrorTrackingBypassRule,
@@ -1716,7 +1716,7 @@ export const ErrorTrackingExternalReferencesListRequest =
   }) as any as S.Schema<ErrorTrackingExternalReferencesListRequest>;
 
 export type PaginatedErrorTrackingExternalReferenceResultListOutputResultsList =
-  ReadonlyArray<ErrorTrackingExternalReferenceResultOutput>;
+  Array<ErrorTrackingExternalReferenceResultOutput>;
 export const PaginatedErrorTrackingExternalReferenceResultListOutputResultsList =
   /*@__PURE__*/ S.Array(
     ErrorTrackingExternalReferenceResultOutput,
@@ -1837,7 +1837,7 @@ export const ErrorTrackingFingerprint = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ErrorTrackingFingerprint>;
 
 export type PaginatedErrorTrackingFingerprintListResultsList =
-  ReadonlyArray<ErrorTrackingFingerprint>;
+  Array<ErrorTrackingFingerprint>;
 export const PaginatedErrorTrackingFingerprintListResultsList =
   /*@__PURE__*/ S.Array(
     ErrorTrackingFingerprint,
@@ -2138,7 +2138,7 @@ export const ErrorTrackingGroupingRulesListRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ErrorTrackingGroupingRulesListRequest>;
 
 export type ErrorTrackingGroupingRuleListResponseResultsList =
-  ReadonlyArray<ErrorTrackingGroupingRule>;
+  Array<ErrorTrackingGroupingRule>;
 export const ErrorTrackingGroupingRuleListResponseResultsList =
   /*@__PURE__*/ S.Array(
     ErrorTrackingGroupingRule,
@@ -2364,7 +2364,7 @@ export const ErrorTrackingExternalReferenceResultInput =
   }) as any as S.Schema<ErrorTrackingExternalReferenceResultInput>;
 
 export type ErrorTrackingIssuesAssignPartialUpdateRequestExternalIssuesList =
-  ReadonlyArray<ErrorTrackingExternalReferenceResultInput>;
+  Array<ErrorTrackingExternalReferenceResultInput>;
 export const ErrorTrackingIssuesAssignPartialUpdateRequestExternalIssuesList =
   /*@__PURE__*/ S.Array(
     ErrorTrackingExternalReferenceResultInput,
@@ -2427,7 +2427,7 @@ export const ErrorTrackingIssuesAssignPartialUpdateResponse =
   }) as any as S.Schema<ErrorTrackingIssuesAssignPartialUpdateResponse>;
 
 export type ErrorTrackingIssuesBulkCreateRequestExternalIssuesList =
-  ReadonlyArray<ErrorTrackingExternalReferenceResultInput>;
+  Array<ErrorTrackingExternalReferenceResultInput>;
 export const ErrorTrackingIssuesBulkCreateRequestExternalIssuesList =
   /*@__PURE__*/ S.Array(
     ErrorTrackingExternalReferenceResultInput,
@@ -2476,7 +2476,7 @@ export const ErrorTrackingIssuesBulkCreateResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ErrorTrackingIssuesBulkCreateResponse>;
 
 export type ErrorTrackingIssuesCohortUpdateRequestExternalIssuesList =
-  ReadonlyArray<ErrorTrackingExternalReferenceResultInput>;
+  Array<ErrorTrackingExternalReferenceResultInput>;
 export const ErrorTrackingIssuesCohortUpdateRequestExternalIssuesList =
   /*@__PURE__*/ S.Array(
     ErrorTrackingExternalReferenceResultInput,
@@ -2618,7 +2618,7 @@ export const ErrorTrackingIssueAssigneeRead = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ErrorTrackingIssueAssigneeRead>;
 
 export type ErrorTrackingIssueReadOutputExternalIssuesList =
-  ReadonlyArray<ErrorTrackingExternalReferenceResultOutput>;
+  Array<ErrorTrackingExternalReferenceResultOutput>;
 export const ErrorTrackingIssueReadOutputExternalIssuesList =
   /*@__PURE__*/ S.Array(
     ErrorTrackingExternalReferenceResultOutput,
@@ -2651,7 +2651,7 @@ export const ErrorTrackingIssueReadOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ErrorTrackingIssueReadOutput>;
 
 export type PaginatedErrorTrackingIssueReadListOutputResultsList =
-  ReadonlyArray<ErrorTrackingIssueReadOutput>;
+  Array<ErrorTrackingIssueReadOutput>;
 export const PaginatedErrorTrackingIssueReadListOutputResultsList =
   /*@__PURE__*/ S.Array(
     ErrorTrackingIssueReadOutput,
@@ -2676,8 +2676,7 @@ export const PaginatedErrorTrackingIssueReadListOutput =
   }) as any as S.Schema<PaginatedErrorTrackingIssueReadListOutput>;
 
 /** IDs of the issues to merge into the current issue. */
-export type ErrorTrackingIssuesMergeCreateRequestIdsList =
-  ReadonlyArray<string>;
+export type ErrorTrackingIssuesMergeCreateRequestIdsList = Array<string>;
 export const ErrorTrackingIssuesMergeCreateRequestIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2796,7 +2795,7 @@ export const ErrorTrackingIssueSplitFingerprint = /*@__PURE__*/ S.suspend(() =>
 
 /** Fingerprints to split into new issues. Each fingerprint becomes its own new issue. */
 export type ErrorTrackingIssuesSplitCreateRequestFingerprintsList =
-  ReadonlyArray<ErrorTrackingIssueSplitFingerprint>;
+  Array<ErrorTrackingIssueSplitFingerprint>;
 export const ErrorTrackingIssuesSplitCreateRequestFingerprintsList =
   /*@__PURE__*/ S.Array(
     ErrorTrackingIssueSplitFingerprint,
@@ -2829,8 +2828,7 @@ export const ErrorTrackingIssuesSplitCreateRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ErrorTrackingIssuesSplitCreateRequest>;
 
 /** IDs of the new issues created by the split. */
-export type ErrorTrackingIssueSplitResponseNewIssueIdsList =
-  ReadonlyArray<string>;
+export type ErrorTrackingIssueSplitResponseNewIssueIdsList = Array<string>;
 export const ErrorTrackingIssueSplitResponseNewIssueIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2975,7 +2973,7 @@ export const ErrorTrackingAssigneeResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ErrorTrackingAssigneeResponse>;
 
 /** Occurrence counts per volume bucket. */
-export type ErrorTrackingAggregationsVolumeRangeList = ReadonlyArray<number>;
+export type ErrorTrackingAggregationsVolumeRangeList = Array<number>;
 export const ErrorTrackingAggregationsVolumeRangeList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<ErrorTrackingAggregationsVolumeRangeList>;
@@ -2997,7 +2995,7 @@ export const ErrorTrackingVolumeBucket = /*@__PURE__*/ S.suspend(() =>
 
 /** Labeled volume buckets. */
 export type ErrorTrackingAggregationsVolumeBucketsList =
-  ReadonlyArray<ErrorTrackingVolumeBucket>;
+  Array<ErrorTrackingVolumeBucket>;
 export const ErrorTrackingAggregationsVolumeBucketsList = /*@__PURE__*/ S.Array(
   ErrorTrackingVolumeBucket,
 ) as any as S.Schema<ErrorTrackingAggregationsVolumeBucketsList>;
@@ -3096,7 +3094,7 @@ export const ErrorTrackingImpact = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ErrorTrackingImpact>;
 
 /** Optional compact occurrence sparkline. */
-export type ErrorTrackingIssueDetailSparklineList = ReadonlyArray<number>;
+export type ErrorTrackingIssueDetailSparklineList = Array<number>;
 export const ErrorTrackingIssueDetailSparklineList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<ErrorTrackingIssueDetailSparklineList>;
@@ -3159,8 +3157,7 @@ export type PropertyItemValueCase3Item = string | number;
 export const PropertyItemValueCase3Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<PropertyItemValueCase3Item>;
 
-export type PropertyItemValueCase3List =
-  ReadonlyArray<PropertyItemValueCase3Item>;
+export type PropertyItemValueCase3List = Array<PropertyItemValueCase3Item>;
 export const PropertyItemValueCase3List = /*@__PURE__*/ S.Array(
   PropertyItemValueCase3Item,
 ) as any as S.Schema<PropertyItemValueCase3List>;
@@ -3259,7 +3256,7 @@ export const PropertyItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Advanced flat AND property filters applied to sampled events. HogQL filters are rejected. */
 export type ErrorTrackingQueryIssueEventsCreateRequestFilterGroupList =
-  ReadonlyArray<PropertyItem>;
+  Array<PropertyItem>;
 export const ErrorTrackingQueryIssueEventsCreateRequestFilterGroupList =
   /*@__PURE__*/ S.Array(
     PropertyItem,
@@ -3282,8 +3279,9 @@ export type IncludeEnum =
 export const IncludeEnum = /*@__PURE__*/ S.String;
 
 /** Context groups to return. Defaults to exception, environment, navigation, and correlation. Request stacktrace for frames, code_variables for captured and SDK-masked frame variables, release for release metadata, or diagnostics for ingestion errors. code_variables implies stacktrace. */
-export type ErrorTrackingQueryIssueEventsCreateRequestIncludeList =
-  ReadonlyArray<IncludeEnum | (string & {})>;
+export type ErrorTrackingQueryIssueEventsCreateRequestIncludeList = Array<
+  IncludeEnum | (string & {})
+>;
 export const ErrorTrackingQueryIssueEventsCreateRequestIncludeList =
   /*@__PURE__*/ S.Array(
     IncludeEnum,
@@ -3374,7 +3372,7 @@ export const ErrorTrackingEvent = /*@__PURE__*/ S.suspend(() =>
 
 /** Sampled exception events. */
 export type ErrorTrackingIssueEventsResponseResultsList =
-  ReadonlyArray<ErrorTrackingEvent>;
+  Array<ErrorTrackingEvent>;
 export const ErrorTrackingIssueEventsResponseResultsList =
   /*@__PURE__*/ S.Array(
     ErrorTrackingEvent,
@@ -3436,7 +3434,7 @@ export const ErrorTrackingAssignee = /*@__PURE__*/ S.suspend(() =>
 
 /** Advanced flat AND property filters. Prefer typed shortcut fields when they fit. HogQL filters are rejected. */
 export type ErrorTrackingQueryIssuesListCreateRequestFilterGroupList =
-  ReadonlyArray<PropertyItem>;
+  Array<PropertyItem>;
 export const ErrorTrackingQueryIssuesListCreateRequestFilterGroupList =
   /*@__PURE__*/ S.Array(
     PropertyItem,
@@ -3452,7 +3450,7 @@ export type ErrorTrackingIssueOrderByEnum =
 export const ErrorTrackingIssueOrderByEnum = /*@__PURE__*/ S.String;
 
 export type ErrorTrackingQueryIssuesListCreateRequestLibraryCase1List =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ErrorTrackingQueryIssuesListCreateRequestLibraryCase1List =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3466,7 +3464,7 @@ export const ErrorTrackingQueryIssuesListCreateRequestLibrary =
   /*@__PURE__*/ S.Unknown as any as S.Schema<ErrorTrackingQueryIssuesListCreateRequestLibrary>;
 
 export type ErrorTrackingQueryIssuesListCreateRequestFingerprintCase1List =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ErrorTrackingQueryIssuesListCreateRequestFingerprintCase1List =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3597,7 +3595,7 @@ export const ErrorTrackingIssueListItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Issue rows. */
 export type ErrorTrackingIssuesListResponseResultsList =
-  ReadonlyArray<ErrorTrackingIssueListItem>;
+  Array<ErrorTrackingIssueListItem>;
 export const ErrorTrackingIssuesListResponseResultsList = /*@__PURE__*/ S.Array(
   ErrorTrackingIssueListItem,
 ) as any as S.Schema<ErrorTrackingIssuesListResponseResultsList>;
@@ -3709,7 +3707,7 @@ export const ErrorTrackingRecommendationsListRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ErrorTrackingRecommendationsListRequest>;
 
 export type PaginatedErrorTrackingRecommendationListResultsList =
-  ReadonlyArray<ErrorTrackingRecommendation>;
+  Array<ErrorTrackingRecommendation>;
 export const PaginatedErrorTrackingRecommendationListResultsList =
   /*@__PURE__*/ S.Array(
     ErrorTrackingRecommendation,
@@ -3927,7 +3925,7 @@ export const ErrorTrackingReleasesListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ErrorTrackingReleasesListRequest>;
 
 export type PaginatedErrorTrackingReleaseListResultsList =
-  ReadonlyArray<ErrorTrackingRelease>;
+  Array<ErrorTrackingRelease>;
 export const PaginatedErrorTrackingReleaseListResultsList =
   /*@__PURE__*/ S.Array(
     ErrorTrackingRelease,
@@ -4182,7 +4180,7 @@ export const ErrorTrackingSpikeDetectionConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ErrorTrackingSpikeDetectionConfig>;
 
 export type ErrorTrackingSpikeDetectionConfigListResponseBodyList =
-  ReadonlyArray<ErrorTrackingSpikeDetectionConfig>;
+  Array<ErrorTrackingSpikeDetectionConfig>;
 export const ErrorTrackingSpikeDetectionConfigListResponseBodyList =
   /*@__PURE__*/ S.Array(
     ErrorTrackingSpikeDetectionConfig,
@@ -4287,7 +4285,7 @@ export const ErrorTrackingSpikeEvent = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ErrorTrackingSpikeEvent>;
 
 export type PaginatedErrorTrackingSpikeEventListResultsList =
-  ReadonlyArray<ErrorTrackingSpikeEvent>;
+  Array<ErrorTrackingSpikeEvent>;
 export const PaginatedErrorTrackingSpikeEventListResultsList =
   /*@__PURE__*/ S.Array(
     ErrorTrackingSpikeEvent,
@@ -4313,7 +4311,7 @@ export const PaginatedErrorTrackingSpikeEventList = /*@__PURE__*/ S.suspend(
 
 /** Raw frame IDs in 'hash/part' format to resolve in a single request. */
 export type ErrorTrackingStackFramesBatchGetCreateRequestRawIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ErrorTrackingStackFramesBatchGetCreateRequestRawIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4387,7 +4385,7 @@ export const ErrorTrackingStackFrame = /*@__PURE__*/ S.suspend(() =>
 
 /** Resolved stack frames for the requested raw IDs. */
 export type ErrorTrackingStackFrameBatchGetResponseResultsList =
-  ReadonlyArray<ErrorTrackingStackFrame>;
+  Array<ErrorTrackingStackFrame>;
 export const ErrorTrackingStackFrameBatchGetResponseResultsList =
   /*@__PURE__*/ S.Array(
     ErrorTrackingStackFrame,
@@ -4459,7 +4457,7 @@ export const ErrorTrackingStackFramesListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ErrorTrackingStackFramesListRequest>;
 
 export type PaginatedErrorTrackingStackFrameListResultsList =
-  ReadonlyArray<ErrorTrackingStackFrame>;
+  Array<ErrorTrackingStackFrame>;
 export const PaginatedErrorTrackingStackFrameListResultsList =
   /*@__PURE__*/ S.Array(
     ErrorTrackingStackFrame,
@@ -4605,7 +4603,7 @@ export const ErrorTrackingSuppressionRulesListRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ErrorTrackingSuppressionRulesListRequest>;
 
 export type PaginatedErrorTrackingSuppressionRuleListResultsList =
-  ReadonlyArray<ErrorTrackingSuppressionRule>;
+  Array<ErrorTrackingSuppressionRule>;
 export const PaginatedErrorTrackingSuppressionRuleListResultsList =
   /*@__PURE__*/ S.Array(
     ErrorTrackingSuppressionRule,
@@ -4751,7 +4749,7 @@ export const ErrorTrackingSuppressionRulesUpdateResponse =
 
 /** Symbol set IDs to delete. */
 export type ErrorTrackingSymbolSetsBulkDeleteCreateRequestIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ErrorTrackingSymbolSetsBulkDeleteCreateRequestIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4825,7 +4823,7 @@ export const ErrorTrackingSymbolSetsBulkFinishUploadCreateResponse =
 
 /** Legacy list of symbol set references to upload, all associated with `release_id`. */
 export type ErrorTrackingSymbolSetsBulkStartUploadCreateRequestChunkIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ErrorTrackingSymbolSetsBulkStartUploadCreateRequestChunkIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4851,7 +4849,7 @@ export const ErrorTrackingSymbolSetUpload = /*@__PURE__*/ S.suspend(() =>
 
 /** Symbol sets to upload with per-symbol release IDs and content hashes. */
 export type ErrorTrackingSymbolSetsBulkStartUploadCreateRequestSymbolSetsList =
-  ReadonlyArray<ErrorTrackingSymbolSetUpload>;
+  Array<ErrorTrackingSymbolSetUpload>;
 export const ErrorTrackingSymbolSetsBulkStartUploadCreateRequestSymbolSetsList =
   /*@__PURE__*/ S.Array(
     ErrorTrackingSymbolSetUpload,
@@ -5073,7 +5071,7 @@ export const ErrorTrackingSymbolSet = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ErrorTrackingSymbolSet>;
 
 export type PaginatedErrorTrackingSymbolSetListResultsList =
-  ReadonlyArray<ErrorTrackingSymbolSet>;
+  Array<ErrorTrackingSymbolSet>;
 export const PaginatedErrorTrackingSymbolSetListResultsList =
   /*@__PURE__*/ S.Array(
     ErrorTrackingSymbolSet,

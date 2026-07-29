@@ -41,7 +41,7 @@ export const FilterEnum = /*@__PURE__*/ S.String;
 
 /** Optional: specific generation IDs to include in summary (max 250) */
 export type LlmAnalyticsEvaluationSummaryCreateRequestGenerationIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const LlmAnalyticsEvaluationSummaryCreateRequestGenerationIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -80,7 +80,7 @@ export const LlmAnalyticsEvaluationSummaryCreateRequest =
     identifier: "LlmAnalyticsEvaluationSummaryCreateRequest",
   }) as any as S.Schema<LlmAnalyticsEvaluationSummaryCreateRequest>;
 
-export type EvaluationPatternExampleGenerationIdsList = ReadonlyArray<string>;
+export type EvaluationPatternExampleGenerationIdsList = Array<string>;
 export const EvaluationPatternExampleGenerationIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EvaluationPatternExampleGenerationIdsList>;
@@ -105,25 +105,23 @@ export const EvaluationPattern = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EvaluationPattern>;
 
 export type EvaluationSummaryResponsePassPatternsList =
-  ReadonlyArray<EvaluationPattern>;
+  Array<EvaluationPattern>;
 export const EvaluationSummaryResponsePassPatternsList = /*@__PURE__*/ S.Array(
   EvaluationPattern,
 ) as any as S.Schema<EvaluationSummaryResponsePassPatternsList>;
 
 export type EvaluationSummaryResponseFailPatternsList =
-  ReadonlyArray<EvaluationPattern>;
+  Array<EvaluationPattern>;
 export const EvaluationSummaryResponseFailPatternsList = /*@__PURE__*/ S.Array(
   EvaluationPattern,
 ) as any as S.Schema<EvaluationSummaryResponseFailPatternsList>;
 
-export type EvaluationSummaryResponseNaPatternsList =
-  ReadonlyArray<EvaluationPattern>;
+export type EvaluationSummaryResponseNaPatternsList = Array<EvaluationPattern>;
 export const EvaluationSummaryResponseNaPatternsList = /*@__PURE__*/ S.Array(
   EvaluationPattern,
 ) as any as S.Schema<EvaluationSummaryResponseNaPatternsList>;
 
-export type EvaluationSummaryResponseRecommendationsList =
-  ReadonlyArray<string>;
+export type EvaluationSummaryResponseRecommendationsList = Array<string>;
 export const EvaluationSummaryResponseRecommendationsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -195,8 +193,7 @@ export const LlmAnalyticsOfflineEvaluationsExperimentItemsCreateRequest =
     identifier: "LlmAnalyticsOfflineEvaluationsExperimentItemsCreateRequest",
   }) as any as S.Schema<LlmAnalyticsOfflineEvaluationsExperimentItemsCreateRequest>;
 
-export type OfflineExperimentItemsResponseResultsItemList =
-  ReadonlyArray<unknown>;
+export type OfflineExperimentItemsResponseResultsItemList = Array<unknown>;
 export const OfflineExperimentItemsResponseResultsItemList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -204,7 +201,7 @@ export const OfflineExperimentItemsResponseResultsItemList =
 
 /** Tuple-positional rows; positions match `RawOfflineExperimentMetricRow` in the frontend. */
 export type OfflineExperimentItemsResponseResultsList =
-  ReadonlyArray<OfflineExperimentItemsResponseResultsItemList>;
+  Array<OfflineExperimentItemsResponseResultsItemList>;
 export const OfflineExperimentItemsResponseResultsList = /*@__PURE__*/ S.Array(
   OfflineExperimentItemsResponseResultsItemList,
 ) as any as S.Schema<OfflineExperimentItemsResponseResultsList>;
@@ -314,7 +311,7 @@ export const ProductBreakdownRow = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProductBreakdownRow>;
 
 /** Rows of spend by product, ordered by cost descending. */
-export type ProductBreakdownItemsList = ReadonlyArray<ProductBreakdownRow>;
+export type ProductBreakdownItemsList = Array<ProductBreakdownRow>;
 export const ProductBreakdownItemsList = /*@__PURE__*/ S.Array(
   ProductBreakdownRow,
 ) as any as S.Schema<ProductBreakdownItemsList>;
@@ -359,7 +356,7 @@ export const ToolBreakdownRow = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ToolBreakdownRow>;
 
 /** Rows of spend by tool, ordered by cost descending. */
-export type ToolBreakdownItemsList = ReadonlyArray<ToolBreakdownRow>;
+export type ToolBreakdownItemsList = Array<ToolBreakdownRow>;
 export const ToolBreakdownItemsList = /*@__PURE__*/ S.Array(
   ToolBreakdownRow,
 ) as any as S.Schema<ToolBreakdownItemsList>;
@@ -402,7 +399,7 @@ export const ModelBreakdownRow = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ModelBreakdownRow>;
 
 /** Rows of spend by model, ordered by cost descending. */
-export type ModelBreakdownItemsList = ReadonlyArray<ModelBreakdownRow>;
+export type ModelBreakdownItemsList = Array<ModelBreakdownRow>;
 export const ModelBreakdownItemsList = /*@__PURE__*/ S.Array(
   ModelBreakdownRow,
 ) as any as S.Schema<ModelBreakdownItemsList>;
@@ -439,7 +436,7 @@ export const DayBreakdownRow = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DayBreakdownRow>;
 
 /** One row per UTC day that has events, ordered by day ascending. Days with no events are omitted — zero-fill client-side when rendering a continuous series. */
-export type DayBreakdownItemsList = ReadonlyArray<DayBreakdownRow>;
+export type DayBreakdownItemsList = Array<DayBreakdownRow>;
 export const DayBreakdownItemsList = /*@__PURE__*/ S.Array(
   DayBreakdownRow,
 ) as any as S.Schema<DayBreakdownItemsList>;
@@ -500,7 +497,7 @@ export const BucketBreakdownRow = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BucketBreakdownRow>;
 
 /** One row per UTC time bucket that has events, ordered by bucket start ascending. Buckets with no events are omitted; zero-fill client-side when rendering a continuous series. */
-export type BucketBreakdownItemsList = ReadonlyArray<BucketBreakdownRow>;
+export type BucketBreakdownItemsList = Array<BucketBreakdownRow>;
 export const BucketBreakdownItemsList = /*@__PURE__*/ S.Array(
   BucketBreakdownRow,
 ) as any as S.Schema<BucketBreakdownItemsList>;
@@ -543,7 +540,7 @@ export const TopTraceRow = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TopTraceRow" }) as any as S.Schema<TopTraceRow>;
 
 /** Rows of top traces by cost, ordered by cost descending. */
-export type TopTracesItemsList = ReadonlyArray<TopTraceRow>;
+export type TopTracesItemsList = Array<TopTraceRow>;
 export const TopTracesItemsList = /*@__PURE__*/ S.Array(
   TopTraceRow,
 ) as any as S.Schema<TopTracesItemsList>;
@@ -593,7 +590,7 @@ export const PersonalSpendAnalysisResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PersonalSpendAnalysisResponse>;
 
 export type LlmAnalyticsPersonalSpendListResponseBodyList =
-  ReadonlyArray<PersonalSpendAnalysisResponse>;
+  Array<PersonalSpendAnalysisResponse>;
 export const LlmAnalyticsPersonalSpendListResponseBodyList =
   /*@__PURE__*/ S.Array(
     PersonalSpendAnalysisResponse,
@@ -609,7 +606,7 @@ export const LlmAnalyticsPersonalSpendListResponse = /*@__PURE__*/ S.suspend(
 
 /** List of trace IDs to check for cached summaries */
 export type LlmAnalyticsSummarizationBatchCheckCreateRequestTraceIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const LlmAnalyticsSummarizationBatchCheckCreateRequestTraceIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -662,7 +659,7 @@ export const CachedSummary = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CachedSummary" }) as any as S.Schema<CachedSummary>;
 
-export type BatchCheckResponseSummariesList = ReadonlyArray<CachedSummary>;
+export type BatchCheckResponseSummariesList = Array<CachedSummary>;
 export const BatchCheckResponseSummariesList = /*@__PURE__*/ S.Array(
   CachedSummary,
 ) as any as S.Schema<BatchCheckResponseSummariesList>;
@@ -740,7 +737,7 @@ export const SummaryBullet = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SummaryBullet" }) as any as S.Schema<SummaryBullet>;
 
 /** Main summary bullets */
-export type StructuredSummarySummaryBulletsList = ReadonlyArray<SummaryBullet>;
+export type StructuredSummarySummaryBulletsList = Array<SummaryBullet>;
 export const StructuredSummarySummaryBulletsList = /*@__PURE__*/ S.Array(
   SummaryBullet,
 ) as any as S.Schema<StructuredSummarySummaryBulletsList>;
@@ -759,8 +756,7 @@ export const InterestingNote = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InterestingNote>;
 
 /** Interesting notes (0-2 for minimal, more for detailed) */
-export type StructuredSummaryInterestingNotesList =
-  ReadonlyArray<InterestingNote>;
+export type StructuredSummaryInterestingNotesList = Array<InterestingNote>;
 export const StructuredSummaryInterestingNotesList = /*@__PURE__*/ S.Array(
   InterestingNote,
 ) as any as S.Schema<StructuredSummaryInterestingNotesList>;

@@ -128,7 +128,7 @@ export interface CustomDomain {
   /** Domain name. */
   domain?: string;
   /** Domain state. */
-  state?: CustomDomainStateEnum;
+  state?: CustomDomainStateEnum | (string & {});
 }
 export const CustomDomain = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -239,7 +239,7 @@ export const IngressIpAllowlistRule = /*@__PURE__*/ S.suspend(() =>
   identifier: "IngressIpAllowlistRule",
 }) as any as S.Schema<IngressIpAllowlistRule>;
 
-export type IngressIpAllowlistRuleList = ReadonlyArray<IngressIpAllowlistRule>;
+export type IngressIpAllowlistRuleList = Array<IngressIpAllowlistRule>;
 export const IngressIpAllowlistRuleList = /*@__PURE__*/ S.Array(
   IngressIpAllowlistRule,
 ) as any as S.Schema<IngressIpAllowlistRuleList>;
@@ -274,7 +274,7 @@ export interface EncryptionConfig {
   /** Name of the CMEK key in KMS (input parameter). */
   kmsKeyName?: string;
   /** Output only. Status of the CMEK key. */
-  kmsKeyState?: EncryptionConfigKmsKeyStateEnum;
+  kmsKeyState?: EncryptionConfigKmsKeyStateEnum | (string & {});
   /** Output only. Full name and version of the CMEK key currently in use to encrypt Looker data. Format: `projects/{project}/locations/{location}/keyRings/{ring}/cryptoKeys/{key}/cryptoKeyVersions/{version}`. Empty if CMEK is not configured in this instance. */
   kmsKeyNameVersion?: string;
 }
@@ -318,7 +318,7 @@ export const MaintenanceSchedule = /*@__PURE__*/ S.suspend(() =>
   identifier: "MaintenanceSchedule",
 }) as any as S.Schema<MaintenanceSchedule>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -341,7 +341,7 @@ export interface ServiceAttachment {
   /** Required. URI of the service attachment to connect to. Format: projects/{project}/regions/{region}/serviceAttachments/{service_attachment} */
   targetServiceAttachmentUri?: string;
   /** Output only. Connection status. */
-  connectionStatus?: ServiceAttachmentConnectionStatusEnum;
+  connectionStatus?: ServiceAttachmentConnectionStatusEnum | (string & {});
   /** Output only. Reason the service attachment creation failed. This value will only be populated if the service attachment encounters an issue during provisioning. */
   failureReason?: string;
 }
@@ -357,7 +357,7 @@ export const ServiceAttachment = /*@__PURE__*/ S.suspend(() =>
   identifier: "ServiceAttachment",
 }) as any as S.Schema<ServiceAttachment>;
 
-export type ServiceAttachmentList = ReadonlyArray<ServiceAttachment>;
+export type ServiceAttachmentList = Array<ServiceAttachment>;
 export const ServiceAttachmentList = /*@__PURE__*/ S.Array(
   ServiceAttachment,
 ) as any as S.Schema<ServiceAttachmentList>;
@@ -404,7 +404,7 @@ export const MaintenanceWindowDayOfWeekEnum = /*@__PURE__*/ S.String;
 /** Specifies the recurring maintenance window. */
 export interface MaintenanceWindow {
   /** Required. Day of the week for this MaintenanceWindow (in UTC). */
-  dayOfWeek?: MaintenanceWindowDayOfWeekEnum;
+  dayOfWeek?: MaintenanceWindowDayOfWeekEnum | (string & {});
   /** Required. Time in UTC when the period starts. Maintenance will be scheduled within 60 minutes. */
   startTime?: TimeOfDay;
 }
@@ -481,7 +481,7 @@ export interface Instance {
   /** Custom domain configuration for the instance. */
   customDomain?: CustomDomain;
   /** Platform edition. */
-  platformEdition?: InstancePlatformEditionEnum;
+  platformEdition?: InstancePlatformEditionEnum | (string & {});
   /** Optional. Whether Gemini feature is enabled on the Looker instance or not. */
   geminiEnabled?: boolean;
   /** Output only. Format: `projects/{project}/locations/{location}/instances/{instance}`. */
@@ -497,9 +497,9 @@ export interface Instance {
   /** Output only. Reserved for future use. */
   satisfiesPzi?: boolean;
   /** Output only. The state of the instance. */
-  state?: InstanceStateEnum;
+  state?: InstanceStateEnum | (string & {});
   /** Optional. Storage class of the instance. */
-  classType?: InstanceClassTypeEnum;
+  classType?: InstanceClassTypeEnum | (string & {});
   /** Optional. Indicates whether catalog integration is disabled for the Looker instance. */
   catalogIntegrationOptOut?: boolean;
   /** Optional. Ingress IP allowlist configuration for the Looker instance. */
@@ -511,7 +511,7 @@ export interface Instance {
   /** Optional. Whether controlled egress is enabled on the Looker instance. */
   controlledEgressEnabled?: boolean;
   /** Output only. The reason for the instance being in a soft-deleted state. */
-  softDeleteReason?: InstanceSoftDeleteReasonEnum;
+  softDeleteReason?: InstanceSoftDeleteReasonEnum | (string & {});
   /** Output only. The time when the Looker instance provisioning was first requested. */
   createTime?: string;
   /** Optional. Whether to use Private Service Connect (PSC) for private IP connectivity. If true, neither `public_ip_enabled` nor `private_ip_enabled` can be true. */
@@ -519,7 +519,7 @@ export interface Instance {
   /** Optional. Whether FIPS is enabled on the Looker instance. */
   fipsEnabled?: boolean;
   /** Optional. The selected release channel for the instance. */
-  releaseChannel?: InstanceReleaseChannelEnum;
+  releaseChannel?: InstanceReleaseChannelEnum | (string & {});
   /** Output only. Reserved for future use. */
   satisfiesPzs?: boolean;
   /** Maintenance schedule for this instance. */
@@ -631,7 +631,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -695,7 +695,7 @@ export interface InstanceBackup {
   /** Immutable. The relative resource name of the backup, in the following form: `projects/{project_number}/locations/{location_id}/instances/{instance_id}/backups/{backup}` */
   name?: string;
   /** Output only. The current state of the backup. */
-  state?: InstanceBackupStateEnum;
+  state?: InstanceBackupStateEnum | (string & {});
 }
 export const InstanceBackup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1009,7 +1009,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = ReadonlyArray<Location>;
+export type LocationList = Array<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -1058,7 +1058,7 @@ export const ListProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsInstancesRequest",
 }) as any as S.Schema<ListProjectsLocationsInstancesRequest>;
 
-export type InstanceList = ReadonlyArray<Instance>;
+export type InstanceList = Array<Instance>;
 export const InstanceList = /*@__PURE__*/ S.Array(
   Instance,
 ) as any as S.Schema<InstanceList>;
@@ -1110,7 +1110,7 @@ export const ListProjectsLocationsInstancesBackupsRequest =
     identifier: "ListProjectsLocationsInstancesBackupsRequest",
   }) as any as S.Schema<ListProjectsLocationsInstancesBackupsRequest>;
 
-export type InstanceBackupList = ReadonlyArray<InstanceBackup>;
+export type InstanceBackupList = Array<InstanceBackup>;
 export const InstanceBackupList = /*@__PURE__*/ S.Array(
   InstanceBackup,
 ) as any as S.Schema<InstanceBackupList>;
@@ -1165,7 +1165,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type OperationList = ReadonlyArray<Operation>;
+export type OperationList = Array<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;

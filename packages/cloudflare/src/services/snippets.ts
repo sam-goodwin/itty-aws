@@ -255,7 +255,7 @@ export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ListResultItem" }) as any as S.Schema<ListResultItem>;
 
-export type ListResultList = ReadonlyArray<ListResultItem>;
+export type ListResultList = Array<ListResultItem>;
 export const ListResultList = /*@__PURE__*/ S.Array(
   ListResultItem,
 ) as any as S.Schema<ListResultList>;
@@ -302,8 +302,7 @@ export const RulesUpdateRequestRulesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "RulesUpdateRequestRulesItem",
 }) as any as S.Schema<RulesUpdateRequestRulesItem>;
 
-export type RulesUpdateRequestRulesList =
-  ReadonlyArray<RulesUpdateRequestRulesItem>;
+export type RulesUpdateRequestRulesList = Array<RulesUpdateRequestRulesItem>;
 export const RulesUpdateRequestRulesList = /*@__PURE__*/ S.Array(
   RulesUpdateRequestRulesItem,
 ) as any as S.Schema<RulesUpdateRequestRulesList>;

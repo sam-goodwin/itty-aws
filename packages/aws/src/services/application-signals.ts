@@ -316,7 +316,7 @@ export interface MetricStat {
   Metric: Metric;
   Period: number;
   Stat: string;
-  Unit?: StandardUnit;
+  Unit?: StandardUnit | (string & {});
 }
 export const MetricStat = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -381,7 +381,7 @@ export const SelectionType = /*@__PURE__*/ S.String;
 
 export type SelectionPattern = string;
 export interface SelectionConfig {
-  Type: SelectionType;
+  Type: SelectionType | (string & {});
   Pattern?: string;
 }
 export const SelectionConfig = /*@__PURE__*/ S.suspend(() =>
@@ -504,7 +504,7 @@ export const DurationUnit = /*@__PURE__*/ S.String;
 
 export type RollingIntervalDuration = number;
 export interface RollingInterval {
-  DurationUnit: DurationUnit;
+  DurationUnit: DurationUnit | (string & {});
   Duration: number;
 }
 export const RollingInterval = /*@__PURE__*/ S.suspend(() =>
@@ -515,7 +515,7 @@ export const RollingInterval = /*@__PURE__*/ S.suspend(() =>
 export type CalendarIntervalDuration = number;
 export interface CalendarInterval {
   StartTime: Date;
-  DurationUnit: DurationUnit;
+  DurationUnit: DurationUnit | (string & {});
   Duration: number;
 }
 export const CalendarInterval = /*@__PURE__*/ S.suspend(() =>
@@ -626,7 +626,7 @@ export const BatchGetServiceLevelObjectiveBudgetReportOutput =
   }) as any as S.Schema<BatchGetServiceLevelObjectiveBudgetReportOutput>;
 export type ExclusionDuration = number;
 export interface Window {
-  DurationUnit: DurationUnit;
+  DurationUnit: DurationUnit | (string & {});
   Duration: number;
 }
 export const Window = /*@__PURE__*/ S.suspend(() =>
@@ -718,7 +718,7 @@ export type ProgrammingLanguage = "Java" | "Python" | "Javascript";
 export const ProgrammingLanguage = /*@__PURE__*/ S.String;
 
 export interface CodeLocation {
-  Language: ProgrammingLanguage;
+  Language: ProgrammingLanguage | (string & {});
   CodeUnit?: string;
   ClassName?: string;
   MethodName?: string;

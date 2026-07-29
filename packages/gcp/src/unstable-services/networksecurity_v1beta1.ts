@@ -60,7 +60,7 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -109,7 +109,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -300,8 +300,9 @@ export type AddressGroupPurposeItemEnum =
   | "CLOUD_ARMOR";
 export const AddressGroupPurposeItemEnum = /*@__PURE__*/ S.String;
 
-export type AddressGroupPurposeItemEnumList =
-  ReadonlyArray<AddressGroupPurposeItemEnum>;
+export type AddressGroupPurposeItemEnumList = Array<
+  AddressGroupPurposeItemEnum | (string & {})
+>;
 export const AddressGroupPurposeItemEnumList = /*@__PURE__*/ S.Array(
   AddressGroupPurposeItemEnum,
 ) as any as S.Schema<AddressGroupPurposeItemEnumList>;
@@ -332,7 +333,7 @@ export interface AddressGroup {
   /** Optional. Free-text description of the resource. */
   description?: string;
   /** Required. The type of the Address Group. Possible values are "IPv4" or "IPV6". */
-  type?: AddressGroupTypeEnum;
+  type?: AddressGroupTypeEnum | (string & {});
   /** Required. Name of the AddressGroup resource. It matches pattern `projects/*\/locations/{location}/addressGroups/`. */
   name?: string;
   /** Optional. Set of label tags associated with the AddressGroup resource. */
@@ -406,7 +407,9 @@ export const FirewallEndpointEndpointSettingsContentCloudRegionEnum =
 /** Settings for the endpoint. */
 export interface FirewallEndpointEndpointSettings {
   /** Optional. The content cloud region of the endpoint. */
-  contentCloudRegion?: FirewallEndpointEndpointSettingsContentCloudRegionEnum;
+  contentCloudRegion?:
+    | FirewallEndpointEndpointSettingsContentCloudRegionEnum
+    | (string & {});
   /** Optional. Immutable. Indicates whether Jumbo Frames are enabled. Default value is false. */
   jumboFramesEnabled?: boolean;
   /** Optional. Whether to block HTTP partial responses for the endpoint. When this is true, resumption of blocked malicious HTTP file downloads will be blocked by the firewall. False provides maximum availability, true provides maximum security. */
@@ -443,7 +446,9 @@ export interface FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSett
   /** Optional. Timeout in milliseconds on a file being held while WildFire inline cloud analysis is performed. Value between 1 to 240000 is valid. Default value is 30000. */
   maxAnalysisDuration?: string;
   /** Optional. Action to take when WildFire inline cloud analysis times out. Default value is ALLOW. */
-  timeoutAction?: FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsTimeoutActionEnum;
+  timeoutAction?:
+    | FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsTimeoutActionEnum
+    | (string & {});
   /** Optional. Whether to disable WildFire submission log generation for files that timeout during WildFire inline cloud analysis. */
   submissionTimeoutLoggingDisabled?: boolean;
 }
@@ -489,13 +494,17 @@ export interface FirewallEndpointWildfireSettings {
   /** Optional. Duration in milliseconds on a file being held while the WildFire real time signature cloud performs a signature lookup. Value between 1 to 5000 is valid. Default value is 1000. */
   wildfireRealtimeLookupDuration?: string;
   /** Optional. Action to take on WildFire real time signature lookup timeout. Default value is ALLOW. */
-  wildfireRealtimeLookupTimeoutAction?: FirewallEndpointWildfireSettingsWildfireRealtimeLookupTimeoutActionEnum;
+  wildfireRealtimeLookupTimeoutAction?:
+    | FirewallEndpointWildfireSettingsWildfireRealtimeLookupTimeoutActionEnum
+    | (string & {});
   /** Optional. Settings for WildFire inline cloud analysis. */
   wildfireInlineCloudAnalysisSettings?: FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettings;
   /** Optional. Indicates whether WildFire analysis is enabled. Default value is false. */
   enabled?: boolean;
   /** Optional. The region where WildFire analysis will be performed. PAN supports regions: https://docs.paloaltonetworks.com/advanced-wildfire/administration/advanced-wildfire-overview/advanced-wildfire-deployments/advanced-wildfire-global-cloud */
-  wildfireRegion?: FirewallEndpointWildfireSettingsWildfireRegionEnum;
+  wildfireRegion?:
+    | FirewallEndpointWildfireSettingsWildfireRegionEnum
+    | (string & {});
 }
 export const FirewallEndpointWildfireSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -541,7 +550,7 @@ export const FirewallEndpointAssociationReference = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<FirewallEndpointAssociationReference>;
 
 export type FirewallEndpointAssociationReferenceList =
-  ReadonlyArray<FirewallEndpointAssociationReference>;
+  Array<FirewallEndpointAssociationReference>;
 export const FirewallEndpointAssociationReferenceList = /*@__PURE__*/ S.Array(
   FirewallEndpointAssociationReference,
 ) as any as S.Schema<FirewallEndpointAssociationReferenceList>;
@@ -561,7 +570,7 @@ export interface FirewallEndpoint {
   /** Optional. Description of the firewall endpoint. Max length 2048 characters. */
   description?: string;
   /** Output only. Current state of the endpoint. */
-  state?: FirewallEndpointStateEnum;
+  state?: FirewallEndpointStateEnum | (string & {});
   /** Immutable. Identifier. Name of resource. */
   name?: string;
   /** Output only. [Output Only] Reserved for future use. */
@@ -665,7 +674,7 @@ export interface WildfireVerdictChangeRequest {
   /** Required. The SHA256 hash of the Malware Sample to change the verdict of. */
   sha256?: string;
   /** Output only. The review state of the WildfireVerdictChangeRequest. */
-  state?: WildfireVerdictChangeRequestStateEnum;
+  state?: WildfireVerdictChangeRequestStateEnum | (string & {});
   /** Output only. The region of the file associated with the Malware Sample. */
   sourceRegion?: string;
   /** Output only. The file type of the Malware Sample. */
@@ -673,9 +682,9 @@ export interface WildfireVerdictChangeRequest {
   /** Output only. Identifier. The relative name of the WildfireVerdictChangeRequest. Output only. This is a unique identifier generated by the third party API. Format: organizations|projects/{project_or_organization}/locations/{location}/firewallEndpoints/{firewall_endpoint}/wildfireVerdictChangeRequests/{wildfire_verdict_change_request_id} Where {wildfire_verdict_change_request_id} is the ID in the format: ^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$ */
   name?: string;
   /** Output only. The final verdict of the Malware Sample. */
-  finalVerdict?: WildfireVerdictChangeRequestFinalVerdictEnum;
+  finalVerdict?: WildfireVerdictChangeRequestFinalVerdictEnum | (string & {});
   /** Required. The suggested verdict to apply to the Malware Sample. */
-  newVerdict?: WildfireVerdictChangeRequestNewVerdictEnum;
+  newVerdict?: WildfireVerdictChangeRequestNewVerdictEnum | (string & {});
   /** Output only. The timestamp when the WildfireVerdictChangeRequest was created. */
   createTime?: string;
   /** Output only. The file name of the Malware Sample. */
@@ -689,7 +698,7 @@ export interface WildfireVerdictChangeRequest {
   /** Required. The justification for the verdict change request. Max length 2048 characters. */
   comment?: string;
   /** Output only. The original verdict of the Malware Sample. */
-  oldVerdict?: WildfireVerdictChangeRequestOldVerdictEnum;
+  oldVerdict?: WildfireVerdictChangeRequestOldVerdictEnum | (string & {});
 }
 export const WildfireVerdictChangeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -826,9 +835,9 @@ export const SeverityOverrideActionEnum = /*@__PURE__*/ S.String;
 /** Defines what action to take for a specific severity match. */
 export interface SeverityOverride {
   /** Required. Severity level to match. */
-  severity?: SeverityOverrideSeverityEnum;
+  severity?: SeverityOverrideSeverityEnum | (string & {});
   /** Required. Threat action override. */
-  action?: SeverityOverrideActionEnum;
+  action?: SeverityOverrideActionEnum | (string & {});
 }
 export const SeverityOverride = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -839,7 +848,7 @@ export const SeverityOverride = /*@__PURE__*/ S.suspend(() =>
   identifier: "SeverityOverride",
 }) as any as S.Schema<SeverityOverride>;
 
-export type SeverityOverrideList = ReadonlyArray<SeverityOverride>;
+export type SeverityOverrideList = Array<SeverityOverride>;
 export const SeverityOverrideList = /*@__PURE__*/ S.Array(
   SeverityOverride,
 ) as any as S.Schema<SeverityOverrideList>;
@@ -864,11 +873,11 @@ export const ThreatOverrideTypeEnum = /*@__PURE__*/ S.String;
 /** Defines what action to take for a specific threat_id match. */
 export interface ThreatOverride {
   /** Required. Threat action override. For some threat types, only a subset of actions applies. */
-  action?: ThreatOverrideActionEnum;
+  action?: ThreatOverrideActionEnum | (string & {});
   /** Required. Vendor-specific ID of a threat to override. */
   threatId?: string;
   /** Output only. Type of the threat (read only). */
-  type?: ThreatOverrideTypeEnum;
+  type?: ThreatOverrideTypeEnum | (string & {});
 }
 export const ThreatOverride = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -878,7 +887,7 @@ export const ThreatOverride = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ThreatOverride" }) as any as S.Schema<ThreatOverride>;
 
-export type ThreatOverrideList = ReadonlyArray<ThreatOverride>;
+export type ThreatOverrideList = Array<ThreatOverride>;
 export const ThreatOverrideList = /*@__PURE__*/ S.Array(
   ThreatOverride,
 ) as any as S.Schema<ThreatOverrideList>;
@@ -905,9 +914,9 @@ export const AntivirusOverrideActionEnum = /*@__PURE__*/ S.String;
 /** Defines what action to take for antivirus threats per protocol. */
 export interface AntivirusOverride {
   /** Required. Protocol to match. */
-  protocol?: AntivirusOverrideProtocolEnum;
+  protocol?: AntivirusOverrideProtocolEnum | (string & {});
   /** Required. Threat action override. For some threat types, only a subset of actions applies. */
-  action?: AntivirusOverrideActionEnum;
+  action?: AntivirusOverrideActionEnum | (string & {});
 }
 export const AntivirusOverride = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -918,7 +927,7 @@ export const AntivirusOverride = /*@__PURE__*/ S.suspend(() =>
   identifier: "AntivirusOverride",
 }) as any as S.Schema<AntivirusOverride>;
 
-export type AntivirusOverrideList = ReadonlyArray<AntivirusOverride>;
+export type AntivirusOverrideList = Array<AntivirusOverride>;
 export const AntivirusOverrideList = /*@__PURE__*/ S.Array(
   AntivirusOverride,
 ) as any as S.Schema<AntivirusOverrideList>;
@@ -953,7 +962,7 @@ export interface UrlFilter {
   /** Required. The priority of this filter within the URL Filtering Profile. Lower integers indicate higher priorities. The priority of a filter must be unique within a URL Filtering Profile. */
   priority?: number;
   /** Required. The action taken when this filter is applied. */
-  filteringAction?: UrlFilterFilteringActionEnum;
+  filteringAction?: UrlFilterFilteringActionEnum | (string & {});
   /** Required. The list of strings that a URL must match with for this filter to be applied. */
   urls?: StringList;
 }
@@ -965,7 +974,7 @@ export const UrlFilter = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "UrlFilter" }) as any as S.Schema<UrlFilter>;
 
-export type UrlFilterList = ReadonlyArray<UrlFilter>;
+export type UrlFilterList = Array<UrlFilter>;
 export const UrlFilterList = /*@__PURE__*/ S.Array(
   UrlFilter,
 ) as any as S.Schema<UrlFilterList>;
@@ -1027,9 +1036,9 @@ export const WildfireInlineMlOverrideProtocolEnum = /*@__PURE__*/ S.String;
 /** Defines what action to take for WildFire Inline ML threats per protocol. */
 export interface WildfireInlineMlOverride {
   /** Required. The action to take for WildFire Inline ML override. */
-  action?: WildfireInlineMlOverrideActionEnum;
+  action?: WildfireInlineMlOverrideActionEnum | (string & {});
   /** Required. Protocol to match for WildFire Inline ML override. */
-  protocol?: WildfireInlineMlOverrideProtocolEnum;
+  protocol?: WildfireInlineMlOverrideProtocolEnum | (string & {});
 }
 export const WildfireInlineMlOverride = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1040,8 +1049,7 @@ export const WildfireInlineMlOverride = /*@__PURE__*/ S.suspend(() =>
   identifier: "WildfireInlineMlOverride",
 }) as any as S.Schema<WildfireInlineMlOverride>;
 
-export type WildfireInlineMlOverrideList =
-  ReadonlyArray<WildfireInlineMlOverride>;
+export type WildfireInlineMlOverrideList = Array<WildfireInlineMlOverride>;
 export const WildfireInlineMlOverrideList = /*@__PURE__*/ S.Array(
   WildfireInlineMlOverride,
 ) as any as S.Schema<WildfireInlineMlOverrideList>;
@@ -1070,9 +1078,9 @@ export const WildfireInlineMlSettingsInlineMlConfigActionEnum =
 /** Configuration for WildFire Inline ML analysis per file type. */
 export interface WildfireInlineMlSettingsInlineMlConfig {
   /** Required. File type to configure Inline ML for. */
-  fileType?: WildfireInlineMlSettingsInlineMlConfigFileTypeEnum;
+  fileType?: WildfireInlineMlSettingsInlineMlConfigFileTypeEnum | (string & {});
   /** Required. Action to take when a threat is detected using Inline ML. */
-  action?: WildfireInlineMlSettingsInlineMlConfigActionEnum;
+  action?: WildfireInlineMlSettingsInlineMlConfigActionEnum | (string & {});
 }
 export const WildfireInlineMlSettingsInlineMlConfig = /*@__PURE__*/ S.suspend(
   () =>
@@ -1085,7 +1093,7 @@ export const WildfireInlineMlSettingsInlineMlConfig = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<WildfireInlineMlSettingsInlineMlConfig>;
 
 export type WildfireInlineMlSettingsInlineMlConfigList =
-  ReadonlyArray<WildfireInlineMlSettingsInlineMlConfig>;
+  Array<WildfireInlineMlSettingsInlineMlConfig>;
 export const WildfireInlineMlSettingsInlineMlConfigList = /*@__PURE__*/ S.Array(
   WildfireInlineMlSettingsInlineMlConfig,
 ) as any as S.Schema<WildfireInlineMlSettingsInlineMlConfigList>;
@@ -1107,7 +1115,7 @@ export const WildfireInlineMlFileException = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WildfireInlineMlFileException>;
 
 export type WildfireInlineMlFileExceptionList =
-  ReadonlyArray<WildfireInlineMlFileException>;
+  Array<WildfireInlineMlFileException>;
 export const WildfireInlineMlFileExceptionList = /*@__PURE__*/ S.Array(
   WildfireInlineMlFileException,
 ) as any as S.Schema<WildfireInlineMlFileExceptionList>;
@@ -1128,8 +1136,7 @@ export const WildfireInlineMlSettings = /*@__PURE__*/ S.suspend(() =>
   identifier: "WildfireInlineMlSettings",
 }) as any as S.Schema<WildfireInlineMlSettings>;
 
-export type WildfireInlineMlSettingsList =
-  ReadonlyArray<WildfireInlineMlSettings>;
+export type WildfireInlineMlSettingsList = Array<WildfireInlineMlSettings>;
 export const WildfireInlineMlSettingsList = /*@__PURE__*/ S.Array(
   WildfireInlineMlSettings,
 ) as any as S.Schema<WildfireInlineMlSettingsList>;
@@ -1145,7 +1152,7 @@ export const WildfireThreatOverrideActionEnum = /*@__PURE__*/ S.String;
 /** Defines what action to take for a specific WildFire threat_id match. */
 export interface WildfireThreatOverride {
   /** Required. Threat action override. */
-  action?: WildfireThreatOverrideActionEnum;
+  action?: WildfireThreatOverrideActionEnum | (string & {});
   /** Required. Threat ID to match. */
   threatId?: string;
 }
@@ -1158,7 +1165,7 @@ export const WildfireThreatOverride = /*@__PURE__*/ S.suspend(() =>
   identifier: "WildfireThreatOverride",
 }) as any as S.Schema<WildfireThreatOverride>;
 
-export type WildfireThreatOverrideList = ReadonlyArray<WildfireThreatOverride>;
+export type WildfireThreatOverrideList = Array<WildfireThreatOverride>;
 export const WildfireThreatOverrideList = /*@__PURE__*/ S.Array(
   WildfireThreatOverride,
 ) as any as S.Schema<WildfireThreatOverrideList>;
@@ -1178,8 +1185,9 @@ export type WildfireSubmissionRuleCustomFileTypesFileTypesItemEnum =
 export const WildfireSubmissionRuleCustomFileTypesFileTypesItemEnum =
   /*@__PURE__*/ S.String;
 
-export type WildfireSubmissionRuleCustomFileTypesFileTypesItemEnumList =
-  ReadonlyArray<WildfireSubmissionRuleCustomFileTypesFileTypesItemEnum>;
+export type WildfireSubmissionRuleCustomFileTypesFileTypesItemEnumList = Array<
+  WildfireSubmissionRuleCustomFileTypesFileTypesItemEnum | (string & {})
+>;
 export const WildfireSubmissionRuleCustomFileTypesFileTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     WildfireSubmissionRuleCustomFileTypesFileTypesItemEnum,
@@ -1220,9 +1228,11 @@ export interface WildfireSubmissionRule {
   /** Submit a custom list of file types for WildFire analysis. */
   customFileTypes?: WildfireSubmissionRuleCustomFileTypes;
   /** Required. File selection mode for WildFire analysis. */
-  fileSelectionMode?: WildfireSubmissionRuleFileSelectionModeEnum;
+  fileSelectionMode?:
+    | WildfireSubmissionRuleFileSelectionModeEnum
+    | (string & {});
   /** Required. Direction for the files to be analyzed by WildFire. */
-  direction?: WildfireSubmissionRuleDirectionEnum;
+  direction?: WildfireSubmissionRuleDirectionEnum | (string & {});
 }
 export const WildfireSubmissionRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1234,7 +1244,7 @@ export const WildfireSubmissionRule = /*@__PURE__*/ S.suspend(() =>
   identifier: "WildfireSubmissionRule",
 }) as any as S.Schema<WildfireSubmissionRule>;
 
-export type WildfireSubmissionRuleList = ReadonlyArray<WildfireSubmissionRule>;
+export type WildfireSubmissionRuleList = Array<WildfireSubmissionRule>;
 export const WildfireSubmissionRuleList = /*@__PURE__*/ S.Array(
   WildfireSubmissionRule,
 ) as any as S.Schema<WildfireSubmissionRuleList>;
@@ -1253,7 +1263,10 @@ export const WildfireInlineCloudAnalysisRuleCustomFileTypesFileTypesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type WildfireInlineCloudAnalysisRuleCustomFileTypesFileTypesItemEnumList =
-  ReadonlyArray<WildfireInlineCloudAnalysisRuleCustomFileTypesFileTypesItemEnum>;
+  Array<
+    | WildfireInlineCloudAnalysisRuleCustomFileTypesFileTypesItemEnum
+    | (string & {})
+  >;
 export const WildfireInlineCloudAnalysisRuleCustomFileTypesFileTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     WildfireInlineCloudAnalysisRuleCustomFileTypesFileTypesItemEnum,
@@ -1293,13 +1306,15 @@ export const WildfireInlineCloudAnalysisRuleDirectionEnum =
 /** The list of file type configurations to be scanned by WildFire Inline Cloud Analysis. */
 export interface WildfireInlineCloudAnalysisRule {
   /** Required. Action to take when a threat is detected using WildFire Inline Cloud Analysis. The default Value is DENY. */
-  action?: WildfireInlineCloudAnalysisRuleActionEnum;
+  action?: WildfireInlineCloudAnalysisRuleActionEnum | (string & {});
   /** Submit a custom list of file types for WildFire analysis. */
   customFileTypes?: WildfireInlineCloudAnalysisRuleCustomFileTypes;
   /** Required. File selection mode for WildFire inline cloud analysis. */
-  fileSelectionMode?: WildfireInlineCloudAnalysisRuleFileSelectionModeEnum;
+  fileSelectionMode?:
+    | WildfireInlineCloudAnalysisRuleFileSelectionModeEnum
+    | (string & {});
   /** Required. Direction for the file to be analyzed by WildFire Inline Cloud Analysis. */
-  direction?: WildfireInlineCloudAnalysisRuleDirectionEnum;
+  direction?: WildfireInlineCloudAnalysisRuleDirectionEnum | (string & {});
 }
 export const WildfireInlineCloudAnalysisRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1315,7 +1330,7 @@ export const WildfireInlineCloudAnalysisRule = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WildfireInlineCloudAnalysisRule>;
 
 export type WildfireInlineCloudAnalysisRuleList =
-  ReadonlyArray<WildfireInlineCloudAnalysisRule>;
+  Array<WildfireInlineCloudAnalysisRule>;
 export const WildfireInlineCloudAnalysisRuleList = /*@__PURE__*/ S.Array(
   WildfireInlineCloudAnalysisRule,
 ) as any as S.Schema<WildfireInlineCloudAnalysisRuleList>;
@@ -1342,9 +1357,9 @@ export const WildfireOverrideProtocolEnum = /*@__PURE__*/ S.String;
 /** Defines what action to take for WildFire threats per protocol. */
 export interface WildfireOverride {
   /** Required. Threat action override. For some threat types, only a subset of actions applies. */
-  action?: WildfireOverrideActionEnum;
+  action?: WildfireOverrideActionEnum | (string & {});
   /** Required. Protocol to match. */
-  protocol?: WildfireOverrideProtocolEnum;
+  protocol?: WildfireOverrideProtocolEnum | (string & {});
 }
 export const WildfireOverride = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1355,7 +1370,7 @@ export const WildfireOverride = /*@__PURE__*/ S.suspend(() =>
   identifier: "WildfireOverride",
 }) as any as S.Schema<WildfireOverride>;
 
-export type WildfireOverrideList = ReadonlyArray<WildfireOverride>;
+export type WildfireOverrideList = Array<WildfireOverride>;
 export const WildfireOverrideList = /*@__PURE__*/ S.Array(
   WildfireOverride,
 ) as any as S.Schema<WildfireOverrideList>;
@@ -1426,7 +1441,7 @@ export interface SecurityProfile {
   /** Optional. Labels as key value pairs. */
   labels?: StringMap;
   /** Immutable. The single ProfileType that the SecurityProfile resource configures. */
-  type?: SecurityProfileTypeEnum;
+  type?: SecurityProfileTypeEnum | (string & {});
   /** Immutable. Identifier. Name of the SecurityProfile resource. It matches pattern `projects|organizations/*\/locations/{location}/securityProfiles/{security_profile}`. */
   name?: string;
   /** The WildFire Analysis configurations for SecurityProfile. */
@@ -1528,12 +1543,12 @@ export const Source = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Source" }) as any as S.Schema<Source>;
 
-export type SourceList = ReadonlyArray<Source>;
+export type SourceList = Array<Source>;
 export const SourceList = /*@__PURE__*/ S.Array(
   Source,
 ) as any as S.Schema<SourceList>;
 
-export type IntegerList = ReadonlyArray<number>;
+export type IntegerList = Array<number>;
 export const IntegerList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<IntegerList>;
@@ -1574,7 +1589,7 @@ export const Destination = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Destination" }) as any as S.Schema<Destination>;
 
-export type DestinationList = ReadonlyArray<Destination>;
+export type DestinationList = Array<Destination>;
 export const DestinationList = /*@__PURE__*/ S.Array(
   Destination,
 ) as any as S.Schema<DestinationList>;
@@ -1593,7 +1608,7 @@ export const Rule = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Rule" }) as any as S.Schema<Rule>;
 
-export type RuleList = ReadonlyArray<Rule>;
+export type RuleList = Array<Rule>;
 export const RuleList = /*@__PURE__*/ S.Array(
   Rule,
 ) as any as S.Schema<RuleList>;
@@ -1601,7 +1616,7 @@ export const RuleList = /*@__PURE__*/ S.Array(
 /** AuthorizationPolicy is a resource that specifies how a server should authorize incoming connections. This resource in itself does not change the configuration unless it's attached to a target https proxy or endpoint config selector resource. */
 export interface AuthorizationPolicy {
   /** Required. The action to take when a rule match is found. Possible values are "ALLOW" or "DENY". */
-  action?: AuthorizationPolicyActionEnum;
+  action?: AuthorizationPolicyActionEnum | (string & {});
   /** Output only. The timestamp when the resource was updated. */
   updateTime?: string;
   /** Optional. Free-text description of the resource. */
@@ -1710,7 +1725,7 @@ export const AuthzPolicyAuthzRuleRequestResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AuthzPolicyAuthzRuleRequestResource>;
 
 export type AuthzPolicyAuthzRuleRequestResourceList =
-  ReadonlyArray<AuthzPolicyAuthzRuleRequestResource>;
+  Array<AuthzPolicyAuthzRuleRequestResource>;
 export const AuthzPolicyAuthzRuleRequestResourceList = /*@__PURE__*/ S.Array(
   AuthzPolicyAuthzRuleRequestResource,
 ) as any as S.Schema<AuthzPolicyAuthzRuleRequestResourceList>;
@@ -1726,7 +1741,9 @@ export const AuthzPolicyAuthzRulePrincipalPrincipalSelectorEnum =
 /** Describes the properties of a principal to be matched against. */
 export interface AuthzPolicyAuthzRulePrincipal {
   /** Optional. An enum to decide what principal value the principal rule will match against. If not specified, the PrincipalSelector is CLIENT_CERT_URI_SAN. */
-  principalSelector?: AuthzPolicyAuthzRulePrincipalPrincipalSelectorEnum;
+  principalSelector?:
+    | AuthzPolicyAuthzRulePrincipalPrincipalSelectorEnum
+    | (string & {});
   /** Required. A non-empty string whose value is matched against the principal value based on the principal_selector. Only exact match can be applied for CLIENT_CERT_URI_SAN, CLIENT_CERT_DNS_NAME_SAN, CLIENT_CERT_COMMON_NAME selectors. */
   principal?: AuthzPolicyAuthzRuleStringMatch;
 }
@@ -1742,7 +1759,7 @@ export const AuthzPolicyAuthzRulePrincipal = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AuthzPolicyAuthzRulePrincipal>;
 
 export type AuthzPolicyAuthzRulePrincipalList =
-  ReadonlyArray<AuthzPolicyAuthzRulePrincipal>;
+  Array<AuthzPolicyAuthzRulePrincipal>;
 export const AuthzPolicyAuthzRulePrincipalList = /*@__PURE__*/ S.Array(
   AuthzPolicyAuthzRulePrincipal,
 ) as any as S.Schema<AuthzPolicyAuthzRulePrincipalList>;
@@ -1764,7 +1781,7 @@ export const AuthzPolicyAuthzRuleIpBlock = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AuthzPolicyAuthzRuleIpBlock>;
 
 export type AuthzPolicyAuthzRuleIpBlockList =
-  ReadonlyArray<AuthzPolicyAuthzRuleIpBlock>;
+  Array<AuthzPolicyAuthzRuleIpBlock>;
 export const AuthzPolicyAuthzRuleIpBlockList = /*@__PURE__*/ S.Array(
   AuthzPolicyAuthzRuleIpBlock,
 ) as any as S.Schema<AuthzPolicyAuthzRuleIpBlockList>;
@@ -1790,7 +1807,7 @@ export const AuthzPolicyAuthzRuleFromRequestSource = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<AuthzPolicyAuthzRuleFromRequestSource>;
 
 export type AuthzPolicyAuthzRuleFromRequestSourceList =
-  ReadonlyArray<AuthzPolicyAuthzRuleFromRequestSource>;
+  Array<AuthzPolicyAuthzRuleFromRequestSource>;
 export const AuthzPolicyAuthzRuleFromRequestSourceList = /*@__PURE__*/ S.Array(
   AuthzPolicyAuthzRuleFromRequestSource,
 ) as any as S.Schema<AuthzPolicyAuthzRuleFromRequestSourceList>;
@@ -1812,7 +1829,7 @@ export const AuthzPolicyAuthzRuleFrom = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AuthzPolicyAuthzRuleFrom>;
 
 export type AuthzPolicyAuthzRuleStringMatchList =
-  ReadonlyArray<AuthzPolicyAuthzRuleStringMatch>;
+  Array<AuthzPolicyAuthzRuleStringMatch>;
 export const AuthzPolicyAuthzRuleStringMatchList = /*@__PURE__*/ S.Array(
   AuthzPolicyAuthzRuleStringMatch,
 ) as any as S.Schema<AuthzPolicyAuthzRuleStringMatchList>;
@@ -1842,7 +1859,7 @@ export const AuthzPolicyAuthzRuleToRequestOperationMCPMethod =
   }) as any as S.Schema<AuthzPolicyAuthzRuleToRequestOperationMCPMethod>;
 
 export type AuthzPolicyAuthzRuleToRequestOperationMCPMethodList =
-  ReadonlyArray<AuthzPolicyAuthzRuleToRequestOperationMCPMethod>;
+  Array<AuthzPolicyAuthzRuleToRequestOperationMCPMethod>;
 export const AuthzPolicyAuthzRuleToRequestOperationMCPMethodList =
   /*@__PURE__*/ S.Array(
     AuthzPolicyAuthzRuleToRequestOperationMCPMethod,
@@ -1851,7 +1868,9 @@ export const AuthzPolicyAuthzRuleToRequestOperationMCPMethodList =
 /** Describes a set of MCP protocol attributes to match against for a given MCP request. */
 export interface AuthzPolicyAuthzRuleToRequestOperationMCP {
   /** Optional. If specified, matches on the MCP protocol’s non-access specific methods namely: * initialize * completion/ * logging/ * notifications/ * ping Defaults to SKIP_BASE_PROTOCOL_METHODS if not specified. */
-  baseProtocolMethodsOption?: AuthzPolicyAuthzRuleToRequestOperationMCPBaseProtocolMethodsOptionEnum;
+  baseProtocolMethodsOption?:
+    | AuthzPolicyAuthzRuleToRequestOperationMCPBaseProtocolMethodsOptionEnum
+    | (string & {});
   /** Optional. A list of MCP methods and associated parameters to match on. It is recommended to use this field to match on tools, prompts and resource accesses while setting the baseProtocolMethodsOption to MATCH_BASE_PROTOCOL_METHODS to match on all the other MCP protocol methods. Limited to 10 MCP methods per Authorization Policy. */
   methods?: AuthzPolicyAuthzRuleToRequestOperationMCPMethodList;
 }
@@ -1884,7 +1903,7 @@ export const AuthzPolicyAuthzRuleHeaderMatch = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AuthzPolicyAuthzRuleHeaderMatch>;
 
 export type AuthzPolicyAuthzRuleHeaderMatchList =
-  ReadonlyArray<AuthzPolicyAuthzRuleHeaderMatch>;
+  Array<AuthzPolicyAuthzRuleHeaderMatch>;
 export const AuthzPolicyAuthzRuleHeaderMatchList = /*@__PURE__*/ S.Array(
   AuthzPolicyAuthzRuleHeaderMatch,
 ) as any as S.Schema<AuthzPolicyAuthzRuleHeaderMatchList>;
@@ -1933,7 +1952,7 @@ export const AuthzPolicyAuthzRuleToRequestOperation = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<AuthzPolicyAuthzRuleToRequestOperation>;
 
 export type AuthzPolicyAuthzRuleToRequestOperationList =
-  ReadonlyArray<AuthzPolicyAuthzRuleToRequestOperation>;
+  Array<AuthzPolicyAuthzRuleToRequestOperation>;
 export const AuthzPolicyAuthzRuleToRequestOperationList = /*@__PURE__*/ S.Array(
   AuthzPolicyAuthzRuleToRequestOperation,
 ) as any as S.Schema<AuthzPolicyAuthzRuleToRequestOperationList>;
@@ -1973,7 +1992,7 @@ export const AuthzPolicyAuthzRule = /*@__PURE__*/ S.suspend(() =>
   identifier: "AuthzPolicyAuthzRule",
 }) as any as S.Schema<AuthzPolicyAuthzRule>;
 
-export type AuthzPolicyAuthzRuleList = ReadonlyArray<AuthzPolicyAuthzRule>;
+export type AuthzPolicyAuthzRuleList = Array<AuthzPolicyAuthzRule>;
 export const AuthzPolicyAuthzRuleList = /*@__PURE__*/ S.Array(
   AuthzPolicyAuthzRule,
 ) as any as S.Schema<AuthzPolicyAuthzRuleList>;
@@ -2039,7 +2058,9 @@ export const AuthzPolicyTargetLoadBalancingSchemeEnum = /*@__PURE__*/ S.String;
 /** Specifies the set of targets to which this policy should be applied to. */
 export interface AuthzPolicyTarget {
   /** Optional. All gateways and forwarding rules referenced by this policy and extensions must share the same load balancing scheme. Required only when targeting forwarding rules. If targeting Secure Web Proxy, this field must be `INTERNAL_MANAGED` or not specified. Must not be specified when targeting Agent Gateway. Supported values: `INTERNAL_MANAGED` and `EXTERNAL_MANAGED`. For more information, refer to [Backend services overview](https://cloud.google.com/load-balancing/docs/backend-service). */
-  loadBalancingScheme?: AuthzPolicyTargetLoadBalancingSchemeEnum;
+  loadBalancingScheme?:
+    | AuthzPolicyTargetLoadBalancingSchemeEnum
+    | (string & {});
   /** Required. A list of references to the Forwarding Rules, Secure Web Proxy Gateways, or Agent Gateways on which this policy will be applied. */
   resources?: StringList;
 }
@@ -2071,9 +2092,9 @@ export interface AuthzPolicy {
   /** Output only. The timestamp when the resource was created. */
   createTime?: string;
   /** Optional. Immutable. Defines the type of authorization being performed. If not specified, `REQUEST_AUTHZ` is applied. This field cannot be changed once AuthzPolicy is created. */
-  policyProfile?: AuthzPolicyPolicyProfileEnum;
+  policyProfile?: AuthzPolicyPolicyProfileEnum | (string & {});
   /** Required. Can be one of `ALLOW`, `DENY`, `CUSTOM`. When the action is `CUSTOM`, `customProvider` must be specified. When the action is `ALLOW`, only requests matching the policy will be allowed. When the action is `DENY`, only requests matching the policy will be denied. When a request arrives, the policies are evaluated in the following order: 1. If there is a `CUSTOM` policy that matches the request, the `CUSTOM` policy is evaluated using the custom authorization providers and the request is denied if the provider rejects the request. 2. If there are any `DENY` policies that match the request, the request is denied. 3. If there are no `ALLOW` policies for the resource or if any of the `ALLOW` policies match the request, the request is allowed. 4. Else the request is denied by default if none of the configured AuthzPolicies with `ALLOW` action match the request. */
-  action?: AuthzPolicyActionEnum;
+  action?: AuthzPolicyActionEnum | (string & {});
   /** Required. Specifies the set of resources to which this policy should be applied to. */
   target?: AuthzPolicyTarget;
 }
@@ -2143,7 +2164,9 @@ export interface BackendAuthenticationConfig {
   /** Set of label tags associated with the resource. */
   labels?: StringMap;
   /** Well known roots to use for server certificate validation. */
-  wellKnownRoots?: BackendAuthenticationConfigWellKnownRootsEnum;
+  wellKnownRoots?:
+    | BackendAuthenticationConfigWellKnownRootsEnum
+    | (string & {});
   /** Optional. A reference to a TrustConfig resource from the certificatemanager.googleapis.com namespace. This is a relative resource path following the form "projects/{project}/locations/{location}/trustConfigs/{trust_config}". A BackendService uses the chain of trust represented by this TrustConfig, if specified, to validate the server certificates presented by the backend. Required unless wellKnownRoots is set to PUBLIC_ROOTS. */
   trustConfig?: string;
   /** Required. Name of the BackendAuthenticationConfig resource. It matches the pattern `projects/*\/locations/{location}/backendAuthenticationConfigs/{backend_authentication_config}` */
@@ -2248,7 +2271,7 @@ export const ValidationCA = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ValidationCA" }) as any as S.Schema<ValidationCA>;
 
-export type ValidationCAList = ReadonlyArray<ValidationCA>;
+export type ValidationCAList = Array<ValidationCA>;
 export const ValidationCAList = /*@__PURE__*/ S.Array(
   ValidationCA,
 ) as any as S.Schema<ValidationCAList>;
@@ -2330,7 +2353,7 @@ export interface DnsThreatDetector {
   /** Output only. Update time stamp. */
   updateTime?: string;
   /** Required. The provider used for DNS threat analysis. */
-  provider?: DnsThreatDetectorProviderEnum;
+  provider?: DnsThreatDetectorProviderEnum | (string & {});
 }
 export const DnsThreatDetector = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2392,7 +2415,7 @@ export interface FirewallEndpointAssociation {
   /** Optional. Whether the association is disabled. True indicates that traffic won't be intercepted */
   disabled?: boolean;
   /** Output only. Current state of the association. */
-  state?: FirewallEndpointAssociationStateEnum;
+  state?: FirewallEndpointAssociationStateEnum | (string & {});
   /** Immutable. Identifier. name of resource */
   name?: string;
   /** Optional. Labels as key value pairs */
@@ -2557,7 +2580,7 @@ export const GatewaySecurityPolicyRuleBasicProfileEnum = /*@__PURE__*/ S.String;
 /** The GatewaySecurityPolicyRule resource is in a nested collection within a GatewaySecurityPolicy and represents a traffic matching condition and associated action to perform. */
 export interface GatewaySecurityPolicyRule {
   /** Required. Profile which tells what the primitive action should be. */
-  basicProfile?: GatewaySecurityPolicyRuleBasicProfileEnum;
+  basicProfile?: GatewaySecurityPolicyRuleBasicProfileEnum | (string & {});
   /** Required. CEL expression for matching on session criteria. */
   sessionMatcher?: string;
   /** Optional. Free-text description of the resource. */
@@ -2632,7 +2655,7 @@ export const InterceptDeploymentGroupDeploymentStateEnum =
 /** A deployment belonging to this deployment group. */
 export interface InterceptDeploymentGroupDeployment {
   /** Output only. Most recent known state of the deployment. */
-  state?: InterceptDeploymentGroupDeploymentStateEnum;
+  state?: InterceptDeploymentGroupDeploymentStateEnum | (string & {});
   /** Output only. The name of the Intercept Deployment, in the format: `projects/{project}/locations/{location}/interceptDeployments/{intercept_deployment}`. */
   name?: string;
 }
@@ -2646,7 +2669,7 @@ export const InterceptDeploymentGroupDeployment = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InterceptDeploymentGroupDeployment>;
 
 export type InterceptDeploymentGroupDeploymentList =
-  ReadonlyArray<InterceptDeploymentGroupDeployment>;
+  Array<InterceptDeploymentGroupDeployment>;
 export const InterceptDeploymentGroupDeploymentList = /*@__PURE__*/ S.Array(
   InterceptDeploymentGroupDeployment,
 ) as any as S.Schema<InterceptDeploymentGroupDeploymentList>;
@@ -2666,7 +2689,7 @@ export const InterceptDeploymentGroupConnectedEndpointGroup =
   }) as any as S.Schema<InterceptDeploymentGroupConnectedEndpointGroup>;
 
 export type InterceptDeploymentGroupConnectedEndpointGroupList =
-  ReadonlyArray<InterceptDeploymentGroupConnectedEndpointGroup>;
+  Array<InterceptDeploymentGroupConnectedEndpointGroup>;
 export const InterceptDeploymentGroupConnectedEndpointGroupList =
   /*@__PURE__*/ S.Array(
     InterceptDeploymentGroupConnectedEndpointGroup,
@@ -2683,7 +2706,7 @@ export interface InterceptLocation {
   /** Output only. The cloud location, e.g. "us-central1-a" or "asia-south1". */
   location?: string;
   /** Output only. The current state of the association in this location. */
-  state?: InterceptLocationStateEnum;
+  state?: InterceptLocationStateEnum | (string & {});
 }
 export const InterceptLocation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2694,7 +2717,7 @@ export const InterceptLocation = /*@__PURE__*/ S.suspend(() =>
   identifier: "InterceptLocation",
 }) as any as S.Schema<InterceptLocation>;
 
-export type InterceptLocationList = ReadonlyArray<InterceptLocation>;
+export type InterceptLocationList = Array<InterceptLocation>;
 export const InterceptLocationList = /*@__PURE__*/ S.Array(
   InterceptLocation,
 ) as any as S.Schema<InterceptLocationList>;
@@ -2727,7 +2750,7 @@ export interface InterceptDeploymentGroup {
   /** Output only. The list of locations where the deployment group is present. */
   locations?: InterceptLocationList;
   /** Output only. The current state of the deployment group. See https://google.aip.dev/216. */
-  state?: InterceptDeploymentGroupStateEnum;
+  state?: InterceptDeploymentGroupStateEnum | (string & {});
   /** Optional. User-provided description of the deployment group. Used as additional context for the deployment group. */
   description?: string;
 }
@@ -2801,7 +2824,7 @@ export interface InterceptDeployment {
   /** Optional. User-provided description of the deployment. Used as additional context for the deployment. */
   description?: string;
   /** Output only. The current state of the deployment. See https://google.aip.dev/216. */
-  state?: InterceptDeploymentStateEnum;
+  state?: InterceptDeploymentStateEnum | (string & {});
   /** Output only. The timestamp when the resource was most recently updated. See https://google.aip.dev/148#timestamps. */
   updateTime?: string;
   /** Output only. The timestamp when the resource was created. See https://google.aip.dev/148#timestamps. */
@@ -2865,7 +2888,9 @@ export interface InterceptEndpointGroupAssociationLocationDetails {
   /** Output only. The cloud location, e.g. "us-central1-a" or "asia-south1". */
   location?: string;
   /** Output only. The current state of the association in this location. */
-  state?: InterceptEndpointGroupAssociationLocationDetailsStateEnum;
+  state?:
+    | InterceptEndpointGroupAssociationLocationDetailsStateEnum
+    | (string & {});
 }
 export const InterceptEndpointGroupAssociationLocationDetails =
   /*@__PURE__*/ S.suspend(() =>
@@ -2880,7 +2905,7 @@ export const InterceptEndpointGroupAssociationLocationDetails =
   }) as any as S.Schema<InterceptEndpointGroupAssociationLocationDetails>;
 
 export type InterceptEndpointGroupAssociationLocationDetailsList =
-  ReadonlyArray<InterceptEndpointGroupAssociationLocationDetails>;
+  Array<InterceptEndpointGroupAssociationLocationDetails>;
 export const InterceptEndpointGroupAssociationLocationDetailsList =
   /*@__PURE__*/ S.Array(
     InterceptEndpointGroupAssociationLocationDetails,
@@ -2914,7 +2939,7 @@ export interface InterceptEndpointGroupAssociation {
   /** Immutable. Identifier. The resource name of this endpoint group association, for example: `projects/123456789/locations/global/interceptEndpointGroupAssociations/my-eg-association`. See https://google.aip.dev/122 for more details. */
   name?: string;
   /** Output only. Current state of the endpoint group association. */
-  state?: InterceptEndpointGroupAssociationStateEnum;
+  state?: InterceptEndpointGroupAssociationStateEnum | (string & {});
   /** Output only. Identifier used by the data-path. See the NSI GENEVE format for more details: https://docs.cloud.google.com/network-security-integration/docs/understand-geneve#network_id */
   networkCookie?: number;
   /** Output only. The timestamp when the resource was most recently updated. See https://google.aip.dev/148#timestamps. */
@@ -2987,7 +3012,7 @@ export interface InterceptEndpointGroupAssociationDetails {
   /** Output only. The connected association's resource name, for example: `projects/123456789/locations/global/interceptEndpointGroupAssociations/my-ega`. See https://google.aip.dev/124. */
   name?: string;
   /** Output only. Most recent known state of the association. */
-  state?: InterceptEndpointGroupAssociationDetailsStateEnum;
+  state?: InterceptEndpointGroupAssociationDetailsStateEnum | (string & {});
   /** Output only. The associated network, for example: projects/123456789/global/networks/my-network. See https://google.aip.dev/124. */
   network?: string;
 }
@@ -3003,7 +3028,7 @@ export const InterceptEndpointGroupAssociationDetails = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<InterceptEndpointGroupAssociationDetails>;
 
 export type InterceptEndpointGroupAssociationDetailsList =
-  ReadonlyArray<InterceptEndpointGroupAssociationDetails>;
+  Array<InterceptEndpointGroupAssociationDetails>;
 export const InterceptEndpointGroupAssociationDetailsList =
   /*@__PURE__*/ S.Array(
     InterceptEndpointGroupAssociationDetails,
@@ -3053,7 +3078,7 @@ export interface InterceptEndpointGroup {
   /** Output only. Details about the connected deployment group to this endpoint group. */
   connectedDeploymentGroup?: InterceptEndpointGroupConnectedDeploymentGroup;
   /** Output only. The current state of the endpoint group. See https://google.aip.dev/216. */
-  state?: InterceptEndpointGroupStateEnum;
+  state?: InterceptEndpointGroupStateEnum | (string & {});
   /** Optional. User-provided description of the endpoint group. Used as additional context for the endpoint group. */
   description?: string;
   /** Output only. The timestamp when the resource was most recently updated. See https://google.aip.dev/148#timestamps. */
@@ -3121,7 +3146,7 @@ export interface MirroringDeploymentGroupDeployment {
   /** Output only. The name of the Mirroring Deployment, in the format: `projects/{project}/locations/{location}/mirroringDeployments/{mirroring_deployment}`. */
   name?: string;
   /** Output only. Most recent known state of the deployment. */
-  state?: MirroringDeploymentGroupDeploymentStateEnum;
+  state?: MirroringDeploymentGroupDeploymentStateEnum | (string & {});
 }
 export const MirroringDeploymentGroupDeployment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3133,7 +3158,7 @@ export const MirroringDeploymentGroupDeployment = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MirroringDeploymentGroupDeployment>;
 
 export type MirroringDeploymentGroupDeploymentList =
-  ReadonlyArray<MirroringDeploymentGroupDeployment>;
+  Array<MirroringDeploymentGroupDeployment>;
 export const MirroringDeploymentGroupDeploymentList = /*@__PURE__*/ S.Array(
   MirroringDeploymentGroupDeployment,
 ) as any as S.Schema<MirroringDeploymentGroupDeploymentList>;
@@ -3153,7 +3178,7 @@ export const MirroringDeploymentGroupConnectedEndpointGroup =
   }) as any as S.Schema<MirroringDeploymentGroupConnectedEndpointGroup>;
 
 export type MirroringDeploymentGroupConnectedEndpointGroupList =
-  ReadonlyArray<MirroringDeploymentGroupConnectedEndpointGroup>;
+  Array<MirroringDeploymentGroupConnectedEndpointGroup>;
 export const MirroringDeploymentGroupConnectedEndpointGroupList =
   /*@__PURE__*/ S.Array(
     MirroringDeploymentGroupConnectedEndpointGroup,
@@ -3170,7 +3195,7 @@ export interface MirroringLocation {
   /** Output only. The cloud location, e.g. "us-central1-a" or "asia-south1". */
   location?: string;
   /** Output only. The current state of the association in this location. */
-  state?: MirroringLocationStateEnum;
+  state?: MirroringLocationStateEnum | (string & {});
 }
 export const MirroringLocation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3181,7 +3206,7 @@ export const MirroringLocation = /*@__PURE__*/ S.suspend(() =>
   identifier: "MirroringLocation",
 }) as any as S.Schema<MirroringLocation>;
 
-export type MirroringLocationList = ReadonlyArray<MirroringLocation>;
+export type MirroringLocationList = Array<MirroringLocation>;
 export const MirroringLocationList = /*@__PURE__*/ S.Array(
   MirroringLocation,
 ) as any as S.Schema<MirroringLocationList>;
@@ -3213,7 +3238,7 @@ export interface MirroringDeploymentGroup {
   /** Output only. The list of locations where the deployment group is present. */
   locations?: MirroringLocationList;
   /** Output only. The current state of the deployment group. See https://google.aip.dev/216. */
-  state?: MirroringDeploymentGroupStateEnum;
+  state?: MirroringDeploymentGroupStateEnum | (string & {});
   /** Optional. User-provided description of the deployment group. Used as additional context for the deployment group. */
   description?: string;
   /** Output only. The timestamp when the resource was created. See https://google.aip.dev/148#timestamps. */
@@ -3291,7 +3316,7 @@ export interface MirroringDeployment {
   /** Immutable. Identifier. The resource name of this deployment, for example: `projects/123456789/locations/us-central1-a/mirroringDeployments/my-dep`. See https://google.aip.dev/122 for more details. */
   name?: string;
   /** Output only. The current state of the deployment. See https://google.aip.dev/216. */
-  state?: MirroringDeploymentStateEnum;
+  state?: MirroringDeploymentStateEnum | (string & {});
   /** Optional. User-provided description of the deployment. Used as additional context for the deployment. */
   description?: string;
   /** Output only. The timestamp when the resource was most recently updated. See https://google.aip.dev/148#timestamps. */
@@ -3364,7 +3389,9 @@ export interface MirroringEndpointGroupAssociationLocationDetails {
   /** Output only. The cloud location, e.g. "us-central1-a" or "asia-south1". */
   location?: string;
   /** Output only. The current state of the association in this location. */
-  state?: MirroringEndpointGroupAssociationLocationDetailsStateEnum;
+  state?:
+    | MirroringEndpointGroupAssociationLocationDetailsStateEnum
+    | (string & {});
 }
 export const MirroringEndpointGroupAssociationLocationDetails =
   /*@__PURE__*/ S.suspend(() =>
@@ -3379,7 +3406,7 @@ export const MirroringEndpointGroupAssociationLocationDetails =
   }) as any as S.Schema<MirroringEndpointGroupAssociationLocationDetails>;
 
 export type MirroringEndpointGroupAssociationLocationDetailsList =
-  ReadonlyArray<MirroringEndpointGroupAssociationLocationDetails>;
+  Array<MirroringEndpointGroupAssociationLocationDetails>;
 export const MirroringEndpointGroupAssociationLocationDetailsList =
   /*@__PURE__*/ S.Array(
     MirroringEndpointGroupAssociationLocationDetails,
@@ -3396,7 +3423,7 @@ export interface MirroringEndpointGroupAssociation {
   /** Output only. The list of locations where the association is configured. This information is retrieved from the linked endpoint group. */
   locations?: MirroringLocationList;
   /** Output only. Current state of the endpoint group association. */
-  state?: MirroringEndpointGroupAssociationStateEnum;
+  state?: MirroringEndpointGroupAssociationStateEnum | (string & {});
   /** Immutable. Identifier. The resource name of this endpoint group association, for example: `projects/123456789/locations/global/mirroringEndpointGroupAssociations/my-eg-association`. See https://google.aip.dev/122 for more details. */
   name?: string;
   /** Immutable. The VPC network that is associated. for example: `projects/123456789/global/networks/my-network`. See https://google.aip.dev/124. */
@@ -3478,7 +3505,7 @@ export interface MirroringEndpointGroupAssociationDetails {
   /** Output only. The associated network, for example: projects/123456789/global/networks/my-network. See https://google.aip.dev/124. */
   network?: string;
   /** Output only. Most recent known state of the association. */
-  state?: MirroringEndpointGroupAssociationDetailsStateEnum;
+  state?: MirroringEndpointGroupAssociationDetailsStateEnum | (string & {});
   /** Output only. The connected association's resource name, for example: `projects/123456789/locations/global/mirroringEndpointGroupAssociations/my-ega`. See https://google.aip.dev/124. */
   name?: string;
 }
@@ -3494,7 +3521,7 @@ export const MirroringEndpointGroupAssociationDetails = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<MirroringEndpointGroupAssociationDetails>;
 
 export type MirroringEndpointGroupAssociationDetailsList =
-  ReadonlyArray<MirroringEndpointGroupAssociationDetails>;
+  Array<MirroringEndpointGroupAssociationDetails>;
 export const MirroringEndpointGroupAssociationDetailsList =
   /*@__PURE__*/ S.Array(
     MirroringEndpointGroupAssociationDetails,
@@ -3528,7 +3555,7 @@ export const MirroringEndpointGroupConnectedDeploymentGroup =
   }) as any as S.Schema<MirroringEndpointGroupConnectedDeploymentGroup>;
 
 export type MirroringEndpointGroupConnectedDeploymentGroupList =
-  ReadonlyArray<MirroringEndpointGroupConnectedDeploymentGroup>;
+  Array<MirroringEndpointGroupConnectedDeploymentGroup>;
 export const MirroringEndpointGroupConnectedDeploymentGroupList =
   /*@__PURE__*/ S.Array(
     MirroringEndpointGroupConnectedDeploymentGroup,
@@ -3541,7 +3568,7 @@ export interface MirroringEndpointGroup {
   /** Immutable. The deployment group that this DIRECT endpoint group is connected to, for example: `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`. See https://google.aip.dev/124. */
   mirroringDeploymentGroup?: string;
   /** Immutable. The type of the endpoint group. If left unspecified, defaults to DIRECT. */
-  type?: MirroringEndpointGroupTypeEnum;
+  type?: MirroringEndpointGroupTypeEnum | (string & {});
   /** Immutable. Identifier. The resource name of this endpoint group, for example: `projects/123456789/locations/global/mirroringEndpointGroups/my-eg`. See https://google.aip.dev/122 for more details. */
   name?: string;
   /** Optional. Labels are key/value pairs that help to organize and filter resources. */
@@ -3553,7 +3580,7 @@ export interface MirroringEndpointGroup {
   /** Output only. The timestamp when the resource was most recently updated. See https://google.aip.dev/148#timestamps. */
   updateTime?: string;
   /** Output only. The current state of the endpoint group. See https://google.aip.dev/216. */
-  state?: MirroringEndpointGroupStateEnum;
+  state?: MirroringEndpointGroupStateEnum | (string & {});
   /** Output only. List of details about the connected deployment groups to this endpoint group. */
   connectedDeploymentGroups?: MirroringEndpointGroupConnectedDeploymentGroupList;
   /** Optional. User-provided description of the endpoint group. Used as additional context for the endpoint group. */
@@ -3638,7 +3665,7 @@ export interface SACAttachment {
   /** Optional. Case-insensitive ISO-3166 alpha-2 country code used for localization. Only valid for Symantec attachments. */
   country?: string;
   /** Output only. State of the attachment. */
-  state?: SACAttachmentStateEnum;
+  state?: SACAttachmentStateEnum | (string & {});
   /** Identifier. Resource name, in the form `projects/{project}/locations/{location}/sacAttachments/{sac_attachment}`. */
   name?: string;
   /** Required. SAC Realm which owns the attachment. This can be input as an ID or a full resource name. The output always has the form `projects/{project_number}/locations/{location}/sacRealms/{sac_realm}`. */
@@ -3719,7 +3746,9 @@ export interface SACRealmSACRealmSymantecOptions {
   /** Optional. API Key used to call Symantec APIs on the user's behalf. Required if using Symantec Cloud SWG. P4SA account needs permissions granted to read this secret. A secret ID, secret name, or secret URI can be specified, but it will be parsed and stored as a secret URI in the form `projects/{project_number}/secrets/my-secret`. */
   secretPath?: string;
   /** Output only. Connection status to Symantec API. */
-  symantecConnectionState?: SACRealmSACRealmSymantecOptionsSymantecConnectionStateEnum;
+  symantecConnectionState?:
+    | SACRealmSACRealmSymantecOptionsSymantecConnectionStateEnum
+    | (string & {});
 }
 export const SACRealmSACRealmSymantecOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3764,13 +3793,13 @@ export interface SACRealm {
   /** Optional. Optional list of labels applied to the resource. */
   labels?: StringMap;
   /** Immutable. SSE service provider associated with the realm. */
-  securityService?: SACRealmSecurityServiceEnum;
+  securityService?: SACRealmSecurityServiceEnum | (string & {});
   /** Optional. Configuration required for Symantec realms. */
   symantecOptions?: SACRealmSACRealmSymantecOptions;
   /** Identifier. Resource name, in the form `projects/{project}/locations/global/sacRealms/{sacRealm}`. */
   name?: string;
   /** Output only. State of the realm. */
-  state?: SACRealmStateEnum;
+  state?: SACRealmStateEnum | (string & {});
   /** Output only. Timestamp when the realm was last updated. */
   updateTime?: string;
   /** Output only. Key to be shared with SSE service provider during pairing. */
@@ -3878,7 +3907,7 @@ export interface MTLSPolicy {
   /** Reference to the TrustConfig from certificatemanager.googleapis.com namespace. If specified, the chain validation will be performed against certificates configured in the given TrustConfig. Allowed only if the policy is to be used with Application Load Balancers. */
   clientValidationTrustConfig?: string;
   /** When the client presents an invalid certificate or no certificate to the load balancer, the `client_validation_mode` specifies how the client connection is handled. Required if the policy is to be used with the Application Load Balancers. For Traffic Director it must be empty. */
-  clientValidationMode?: MTLSPolicyClientValidationModeEnum;
+  clientValidationMode?: MTLSPolicyClientValidationModeEnum | (string & {});
   /** Required if the policy is to be used with Traffic Director. For Application Load Balancers it must be empty. Defines the mechanism to obtain the Certificate Authority certificate to validate the client certificate. */
   clientValidationCa?: ValidationCAList;
 }
@@ -3974,11 +4003,11 @@ export interface TlsInspectionPolicy {
   /** Optional. If FALSE (the default), use our default set of public CAs in addition to any CAs specified in trust_config. These public CAs are currently based on the Mozilla Root Program and are subject to change over time. If TRUE, do not accept our default set of public CAs. Only CAs specified in trust_config will be accepted. This defaults to FALSE (use public CAs in addition to trust_config) for backwards compatibility, but trusting public root CAs is *not recommended* unless the traffic in question is outbound to public web servers. When possible, prefer setting this to "false" and explicitly specifying trusted CAs and certificates in a TrustConfig. Note that Secure Web Proxy does not yet honor this field. */
   excludePublicCaSet?: boolean;
   /** Optional. Minimum TLS version that the firewall should use when negotiating connections with both clients and servers. If this is not set, then the default value is to allow the broadest set of clients and servers (TLS 1.0 or higher). Setting this to more restrictive values may improve security, but may also prevent the firewall from connecting to some clients or servers. Note that Secure Web Proxy does not yet honor this field. */
-  minTlsVersion?: TlsInspectionPolicyMinTlsVersionEnum;
+  minTlsVersion?: TlsInspectionPolicyMinTlsVersionEnum | (string & {});
   /** Optional. A TrustConfig resource used when making a connection to the TLS server. This is a relative resource path following the form "projects/{project}/locations/{location}/trustConfigs/{trust_config}". This is necessary to intercept TLS connections to servers with certificates signed by a private CA or self-signed certificates. Note that Secure Web Proxy does not yet honor this field. */
   trustConfig?: string;
   /** Optional. The selected Profile. If this is not set, then the default value is to allow the broadest set of clients and servers ("PROFILE_COMPATIBLE"). Setting this to more restrictive values may improve security, but may also prevent the TLS inspection proxy from connecting to some clients or servers. Note that Secure Web Proxy does not yet honor this field. */
-  tlsFeatureProfile?: TlsInspectionPolicyTlsFeatureProfileEnum;
+  tlsFeatureProfile?: TlsInspectionPolicyTlsFeatureProfileEnum | (string & {});
   /** Optional. List of custom TLS cipher suites selected. This field is valid only if the selected tls_feature_profile is CUSTOM. The compute.SslPoliciesService.ListAvailableFeatures method returns the set of features that can be specified in this list. Note that Secure Web Proxy does not yet honor this field. */
   customTlsFeatures?: StringList;
   /** Required. Name of the resource. Name is of the form projects/{project}/locations/{location}/tlsInspectionPolicies/{tls_inspection_policy} tls_inspection_policy should match the pattern:(^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$). */
@@ -4798,7 +4827,7 @@ export const GoogleIamV1Binding = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleIamV1Binding",
 }) as any as S.Schema<GoogleIamV1Binding>;
 
-export type GoogleIamV1BindingList = ReadonlyArray<GoogleIamV1Binding>;
+export type GoogleIamV1BindingList = Array<GoogleIamV1Binding>;
 export const GoogleIamV1BindingList = /*@__PURE__*/ S.Array(
   GoogleIamV1Binding,
 ) as any as S.Schema<GoogleIamV1BindingList>;
@@ -4813,7 +4842,7 @@ export const GoogleIamV1AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
 export interface GoogleIamV1AuditLogConfig {
   /** The log type that this config enables. */
-  logType?: GoogleIamV1AuditLogConfigLogTypeEnum;
+  logType?: GoogleIamV1AuditLogConfigLogTypeEnum | (string & {});
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
   exemptedMembers?: StringList;
 }
@@ -4826,8 +4855,7 @@ export const GoogleIamV1AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleIamV1AuditLogConfig",
 }) as any as S.Schema<GoogleIamV1AuditLogConfig>;
 
-export type GoogleIamV1AuditLogConfigList =
-  ReadonlyArray<GoogleIamV1AuditLogConfig>;
+export type GoogleIamV1AuditLogConfigList = Array<GoogleIamV1AuditLogConfig>;
 export const GoogleIamV1AuditLogConfigList = /*@__PURE__*/ S.Array(
   GoogleIamV1AuditLogConfig,
 ) as any as S.Schema<GoogleIamV1AuditLogConfigList>;
@@ -4848,7 +4876,7 @@ export const GoogleIamV1AuditConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleIamV1AuditConfig",
 }) as any as S.Schema<GoogleIamV1AuditConfig>;
 
-export type GoogleIamV1AuditConfigList = ReadonlyArray<GoogleIamV1AuditConfig>;
+export type GoogleIamV1AuditConfigList = Array<GoogleIamV1AuditConfig>;
 export const GoogleIamV1AuditConfigList = /*@__PURE__*/ S.Array(
   GoogleIamV1AuditConfig,
 ) as any as S.Schema<GoogleIamV1AuditConfigList>;
@@ -5680,7 +5708,7 @@ export const ListOrganizationsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListOrganizationsLocationsRequest",
 }) as any as S.Schema<ListOrganizationsLocationsRequest>;
 
-export type LocationList = ReadonlyArray<Location>;
+export type LocationList = Array<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -5729,7 +5757,7 @@ export const ListOrganizationsLocationsAddressGroupsRequest =
     identifier: "ListOrganizationsLocationsAddressGroupsRequest",
   }) as any as S.Schema<ListOrganizationsLocationsAddressGroupsRequest>;
 
-export type AddressGroupList = ReadonlyArray<AddressGroup>;
+export type AddressGroupList = Array<AddressGroup>;
 export const AddressGroupList = /*@__PURE__*/ S.Array(
   AddressGroup,
 ) as any as S.Schema<AddressGroupList>;
@@ -5784,7 +5812,7 @@ export const ListOrganizationsLocationsFirewallEndpointsRequest =
     identifier: "ListOrganizationsLocationsFirewallEndpointsRequest",
   }) as any as S.Schema<ListOrganizationsLocationsFirewallEndpointsRequest>;
 
-export type FirewallEndpointList = ReadonlyArray<FirewallEndpoint>;
+export type FirewallEndpointList = Array<FirewallEndpoint>;
 export const FirewallEndpointList = /*@__PURE__*/ S.Array(
   FirewallEndpoint,
 ) as any as S.Schema<FirewallEndpointList>;
@@ -5838,7 +5866,7 @@ export const ListOrganizationsLocationsFirewallEndpointsWildfireVerdictChangeReq
   }) as any as S.Schema<ListOrganizationsLocationsFirewallEndpointsWildfireVerdictChangeRequestsRequest>;
 
 export type WildfireVerdictChangeRequestList =
-  ReadonlyArray<WildfireVerdictChangeRequest>;
+  Array<WildfireVerdictChangeRequest>;
 export const WildfireVerdictChangeRequestList = /*@__PURE__*/ S.Array(
   WildfireVerdictChangeRequest,
 ) as any as S.Schema<WildfireVerdictChangeRequestList>;
@@ -5896,7 +5924,7 @@ export const ListOrganizationsLocationsOperationsRequest =
     identifier: "ListOrganizationsLocationsOperationsRequest",
   }) as any as S.Schema<ListOrganizationsLocationsOperationsRequest>;
 
-export type OperationList = ReadonlyArray<Operation>;
+export type OperationList = Array<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -5945,7 +5973,7 @@ export const ListOrganizationsLocationsSecurityProfileGroupsRequest =
     identifier: "ListOrganizationsLocationsSecurityProfileGroupsRequest",
   }) as any as S.Schema<ListOrganizationsLocationsSecurityProfileGroupsRequest>;
 
-export type SecurityProfileGroupList = ReadonlyArray<SecurityProfileGroup>;
+export type SecurityProfileGroupList = Array<SecurityProfileGroup>;
 export const SecurityProfileGroupList = /*@__PURE__*/ S.Array(
   SecurityProfileGroup,
 ) as any as S.Schema<SecurityProfileGroupList>;
@@ -5991,7 +6019,7 @@ export const ListOrganizationsLocationsSecurityProfilesRequest =
     identifier: "ListOrganizationsLocationsSecurityProfilesRequest",
   }) as any as S.Schema<ListOrganizationsLocationsSecurityProfilesRequest>;
 
-export type SecurityProfileList = ReadonlyArray<SecurityProfile>;
+export type SecurityProfileList = Array<SecurityProfile>;
 export const SecurityProfileList = /*@__PURE__*/ S.Array(
   SecurityProfile,
 ) as any as S.Schema<SecurityProfileList>;
@@ -6095,7 +6123,7 @@ export const ListProjectsLocationsAuthorizationPoliciesRequest =
     identifier: "ListProjectsLocationsAuthorizationPoliciesRequest",
   }) as any as S.Schema<ListProjectsLocationsAuthorizationPoliciesRequest>;
 
-export type AuthorizationPolicyList = ReadonlyArray<AuthorizationPolicy>;
+export type AuthorizationPolicyList = Array<AuthorizationPolicy>;
 export const AuthorizationPolicyList = /*@__PURE__*/ S.Array(
   AuthorizationPolicy,
 ) as any as S.Schema<AuthorizationPolicyList>;
@@ -6147,7 +6175,7 @@ export const ListProjectsLocationsAuthzPoliciesRequest =
     identifier: "ListProjectsLocationsAuthzPoliciesRequest",
   }) as any as S.Schema<ListProjectsLocationsAuthzPoliciesRequest>;
 
-export type AuthzPolicyList = ReadonlyArray<AuthzPolicy>;
+export type AuthzPolicyList = Array<AuthzPolicy>;
 export const AuthzPolicyList = /*@__PURE__*/ S.Array(
   AuthzPolicy,
 ) as any as S.Schema<AuthzPolicyList>;
@@ -6197,7 +6225,7 @@ export const ListProjectsLocationsBackendAuthenticationConfigsRequest =
   }) as any as S.Schema<ListProjectsLocationsBackendAuthenticationConfigsRequest>;
 
 export type BackendAuthenticationConfigList =
-  ReadonlyArray<BackendAuthenticationConfig>;
+  Array<BackendAuthenticationConfig>;
 export const BackendAuthenticationConfigList = /*@__PURE__*/ S.Array(
   BackendAuthenticationConfig,
 ) as any as S.Schema<BackendAuthenticationConfigList>;
@@ -6247,7 +6275,7 @@ export const ListProjectsLocationsClientTlsPoliciesRequest =
     identifier: "ListProjectsLocationsClientTlsPoliciesRequest",
   }) as any as S.Schema<ListProjectsLocationsClientTlsPoliciesRequest>;
 
-export type ClientTlsPolicyList = ReadonlyArray<ClientTlsPolicy>;
+export type ClientTlsPolicyList = Array<ClientTlsPolicy>;
 export const ClientTlsPolicyList = /*@__PURE__*/ S.Array(
   ClientTlsPolicy,
 ) as any as S.Schema<ClientTlsPolicyList>;
@@ -6293,7 +6321,7 @@ export const ListProjectsLocationsDnsThreatDetectorsRequest =
     identifier: "ListProjectsLocationsDnsThreatDetectorsRequest",
   }) as any as S.Schema<ListProjectsLocationsDnsThreatDetectorsRequest>;
 
-export type DnsThreatDetectorList = ReadonlyArray<DnsThreatDetector>;
+export type DnsThreatDetectorList = Array<DnsThreatDetector>;
 export const DnsThreatDetectorList = /*@__PURE__*/ S.Array(
   DnsThreatDetector,
 ) as any as S.Schema<DnsThreatDetectorList>;
@@ -6349,7 +6377,7 @@ export const ListProjectsLocationsFirewallEndpointAssociationsRequest =
   }) as any as S.Schema<ListProjectsLocationsFirewallEndpointAssociationsRequest>;
 
 export type FirewallEndpointAssociationList =
-  ReadonlyArray<FirewallEndpointAssociation>;
+  Array<FirewallEndpointAssociation>;
 export const FirewallEndpointAssociationList = /*@__PURE__*/ S.Array(
   FirewallEndpointAssociation,
 ) as any as S.Schema<FirewallEndpointAssociationList>;
@@ -6459,7 +6487,7 @@ export const ListProjectsLocationsGatewaySecurityPoliciesRequest =
     identifier: "ListProjectsLocationsGatewaySecurityPoliciesRequest",
   }) as any as S.Schema<ListProjectsLocationsGatewaySecurityPoliciesRequest>;
 
-export type GatewaySecurityPolicyList = ReadonlyArray<GatewaySecurityPolicy>;
+export type GatewaySecurityPolicyList = Array<GatewaySecurityPolicy>;
 export const GatewaySecurityPolicyList = /*@__PURE__*/ S.Array(
   GatewaySecurityPolicy,
 ) as any as S.Schema<GatewaySecurityPolicyList>;
@@ -6508,8 +6536,7 @@ export const ListProjectsLocationsGatewaySecurityPoliciesRulesRequest =
     identifier: "ListProjectsLocationsGatewaySecurityPoliciesRulesRequest",
   }) as any as S.Schema<ListProjectsLocationsGatewaySecurityPoliciesRulesRequest>;
 
-export type GatewaySecurityPolicyRuleList =
-  ReadonlyArray<GatewaySecurityPolicyRule>;
+export type GatewaySecurityPolicyRuleList = Array<GatewaySecurityPolicyRule>;
 export const GatewaySecurityPolicyRuleList = /*@__PURE__*/ S.Array(
   GatewaySecurityPolicyRule,
 ) as any as S.Schema<GatewaySecurityPolicyRuleList>;
@@ -6565,8 +6592,7 @@ export const ListProjectsLocationsInterceptDeploymentGroupsRequest =
     identifier: "ListProjectsLocationsInterceptDeploymentGroupsRequest",
   }) as any as S.Schema<ListProjectsLocationsInterceptDeploymentGroupsRequest>;
 
-export type InterceptDeploymentGroupList =
-  ReadonlyArray<InterceptDeploymentGroup>;
+export type InterceptDeploymentGroupList = Array<InterceptDeploymentGroup>;
 export const InterceptDeploymentGroupList = /*@__PURE__*/ S.Array(
   InterceptDeploymentGroup,
 ) as any as S.Schema<InterceptDeploymentGroupList>;
@@ -6619,7 +6645,7 @@ export const ListProjectsLocationsInterceptDeploymentsRequest =
     identifier: "ListProjectsLocationsInterceptDeploymentsRequest",
   }) as any as S.Schema<ListProjectsLocationsInterceptDeploymentsRequest>;
 
-export type InterceptDeploymentList = ReadonlyArray<InterceptDeployment>;
+export type InterceptDeploymentList = Array<InterceptDeployment>;
 export const InterceptDeploymentList = /*@__PURE__*/ S.Array(
   InterceptDeployment,
 ) as any as S.Schema<InterceptDeploymentList>;
@@ -6676,7 +6702,7 @@ export const ListProjectsLocationsInterceptEndpointGroupAssociationsRequest =
   }) as any as S.Schema<ListProjectsLocationsInterceptEndpointGroupAssociationsRequest>;
 
 export type InterceptEndpointGroupAssociationList =
-  ReadonlyArray<InterceptEndpointGroupAssociation>;
+  Array<InterceptEndpointGroupAssociation>;
 export const InterceptEndpointGroupAssociationList = /*@__PURE__*/ S.Array(
   InterceptEndpointGroupAssociation,
 ) as any as S.Schema<InterceptEndpointGroupAssociationList>;
@@ -6731,7 +6757,7 @@ export const ListProjectsLocationsInterceptEndpointGroupsRequest =
     identifier: "ListProjectsLocationsInterceptEndpointGroupsRequest",
   }) as any as S.Schema<ListProjectsLocationsInterceptEndpointGroupsRequest>;
 
-export type InterceptEndpointGroupList = ReadonlyArray<InterceptEndpointGroup>;
+export type InterceptEndpointGroupList = Array<InterceptEndpointGroup>;
 export const InterceptEndpointGroupList = /*@__PURE__*/ S.Array(
   InterceptEndpointGroup,
 ) as any as S.Schema<InterceptEndpointGroupList>;
@@ -6783,8 +6809,7 @@ export const ListProjectsLocationsMirroringDeploymentGroupsRequest =
     identifier: "ListProjectsLocationsMirroringDeploymentGroupsRequest",
   }) as any as S.Schema<ListProjectsLocationsMirroringDeploymentGroupsRequest>;
 
-export type MirroringDeploymentGroupList =
-  ReadonlyArray<MirroringDeploymentGroup>;
+export type MirroringDeploymentGroupList = Array<MirroringDeploymentGroup>;
 export const MirroringDeploymentGroupList = /*@__PURE__*/ S.Array(
   MirroringDeploymentGroup,
 ) as any as S.Schema<MirroringDeploymentGroupList>;
@@ -6837,7 +6862,7 @@ export const ListProjectsLocationsMirroringDeploymentsRequest =
     identifier: "ListProjectsLocationsMirroringDeploymentsRequest",
   }) as any as S.Schema<ListProjectsLocationsMirroringDeploymentsRequest>;
 
-export type MirroringDeploymentList = ReadonlyArray<MirroringDeployment>;
+export type MirroringDeploymentList = Array<MirroringDeployment>;
 export const MirroringDeploymentList = /*@__PURE__*/ S.Array(
   MirroringDeployment,
 ) as any as S.Schema<MirroringDeploymentList>;
@@ -6894,7 +6919,7 @@ export const ListProjectsLocationsMirroringEndpointGroupAssociationsRequest =
   }) as any as S.Schema<ListProjectsLocationsMirroringEndpointGroupAssociationsRequest>;
 
 export type MirroringEndpointGroupAssociationList =
-  ReadonlyArray<MirroringEndpointGroupAssociation>;
+  Array<MirroringEndpointGroupAssociation>;
 export const MirroringEndpointGroupAssociationList = /*@__PURE__*/ S.Array(
   MirroringEndpointGroupAssociation,
 ) as any as S.Schema<MirroringEndpointGroupAssociationList>;
@@ -6949,7 +6974,7 @@ export const ListProjectsLocationsMirroringEndpointGroupsRequest =
     identifier: "ListProjectsLocationsMirroringEndpointGroupsRequest",
   }) as any as S.Schema<ListProjectsLocationsMirroringEndpointGroupsRequest>;
 
-export type MirroringEndpointGroupList = ReadonlyArray<MirroringEndpointGroup>;
+export type MirroringEndpointGroupList = Array<MirroringEndpointGroup>;
 export const MirroringEndpointGroupList = /*@__PURE__*/ S.Array(
   MirroringEndpointGroup,
 ) as any as S.Schema<MirroringEndpointGroupList>;
@@ -7032,7 +7057,7 @@ export const ListProjectsLocationsSacAttachmentsRequest =
     identifier: "ListProjectsLocationsSacAttachmentsRequest",
   }) as any as S.Schema<ListProjectsLocationsSacAttachmentsRequest>;
 
-export type SACAttachmentList = ReadonlyArray<SACAttachment>;
+export type SACAttachmentList = Array<SACAttachment>;
 export const SACAttachmentList = /*@__PURE__*/ S.Array(
   SACAttachment,
 ) as any as S.Schema<SACAttachmentList>;
@@ -7087,7 +7112,7 @@ export const ListProjectsLocationsSacRealmsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsSacRealmsRequest",
 }) as any as S.Schema<ListProjectsLocationsSacRealmsRequest>;
 
-export type SACRealmList = ReadonlyArray<SACRealm>;
+export type SACRealmList = Array<SACRealm>;
 export const SACRealmList = /*@__PURE__*/ S.Array(
   SACRealm,
 ) as any as S.Schema<SACRealmList>;
@@ -7189,7 +7214,7 @@ export const ListProjectsLocationsServerTlsPoliciesRequest =
     identifier: "ListProjectsLocationsServerTlsPoliciesRequest",
   }) as any as S.Schema<ListProjectsLocationsServerTlsPoliciesRequest>;
 
-export type ServerTlsPolicyList = ReadonlyArray<ServerTlsPolicy>;
+export type ServerTlsPolicyList = Array<ServerTlsPolicy>;
 export const ServerTlsPolicyList = /*@__PURE__*/ S.Array(
   ServerTlsPolicy,
 ) as any as S.Schema<ServerTlsPolicyList>;
@@ -7238,7 +7263,7 @@ export const ListProjectsLocationsTlsInspectionPoliciesRequest =
     identifier: "ListProjectsLocationsTlsInspectionPoliciesRequest",
   }) as any as S.Schema<ListProjectsLocationsTlsInspectionPoliciesRequest>;
 
-export type TlsInspectionPolicyList = ReadonlyArray<TlsInspectionPolicy>;
+export type TlsInspectionPolicyList = Array<TlsInspectionPolicy>;
 export const TlsInspectionPolicyList = /*@__PURE__*/ S.Array(
   TlsInspectionPolicy,
 ) as any as S.Schema<TlsInspectionPolicyList>;
@@ -7287,7 +7312,7 @@ export const ListProjectsLocationsUrlListsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsUrlListsRequest",
 }) as any as S.Schema<ListProjectsLocationsUrlListsRequest>;
 
-export type UrlListList = ReadonlyArray<UrlList>;
+export type UrlListList = Array<UrlList>;
 export const UrlListList = /*@__PURE__*/ S.Array(
   UrlList,
 ) as any as S.Schema<UrlListList>;
@@ -7357,7 +7382,7 @@ export const ListAddressGroupReferencesResponseAddressGroupReference =
   }) as any as S.Schema<ListAddressGroupReferencesResponseAddressGroupReference>;
 
 export type ListAddressGroupReferencesResponseAddressGroupReferenceList =
-  ReadonlyArray<ListAddressGroupReferencesResponseAddressGroupReference>;
+  Array<ListAddressGroupReferencesResponseAddressGroupReference>;
 export const ListAddressGroupReferencesResponseAddressGroupReferenceList =
   /*@__PURE__*/ S.Array(
     ListAddressGroupReferencesResponseAddressGroupReference,

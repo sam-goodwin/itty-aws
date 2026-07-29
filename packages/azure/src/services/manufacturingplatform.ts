@@ -121,7 +121,7 @@ export const DenyAssignmentExclusion = /*@__PURE__*/ S.suspend(() =>
 
 /** Deny Assignments exclusion list. */
 export type MdsResourcePropertiesInputDenyAssignmentExclusionsList =
-  ReadonlyArray<DenyAssignmentExclusion>;
+  Array<DenyAssignmentExclusion>;
 export const MdsResourcePropertiesInputDenyAssignmentExclusionsList =
   /*@__PURE__*/ S.Array(
     DenyAssignmentExclusion,
@@ -529,7 +529,7 @@ export const MoboBrokerResource = /*@__PURE__*/ S.suspend(() =>
 
 /** Associated MoboBrokerResources. */
 export type ManagedOnBehalfOfConfigurationMoboBrokerResourcesList =
-  ReadonlyArray<MoboBrokerResource>;
+  Array<MoboBrokerResource>;
 export const ManagedOnBehalfOfConfigurationMoboBrokerResourcesList =
   /*@__PURE__*/ S.Array(
     MoboBrokerResource,
@@ -572,7 +572,7 @@ export const UserManagedOpenAIProfile = /*@__PURE__*/ S.suspend(() =>
 
 /** Deny Assignments exclusion list. */
 export type MdsResourcePropertiesDenyAssignmentExclusionsList =
-  ReadonlyArray<DenyAssignmentExclusion>;
+  Array<DenyAssignmentExclusion>;
 export const MdsResourcePropertiesDenyAssignmentExclusionsList =
   /*@__PURE__*/ S.Array(
     DenyAssignmentExclusion,
@@ -974,8 +974,7 @@ export const ApplicationVersion = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ApplicationVersion>;
 
 /** The list of versions */
-export type AvailableVersionListResultVersionsList =
-  ReadonlyArray<ApplicationVersion>;
+export type AvailableVersionListResultVersionsList = Array<ApplicationVersion>;
 export const AvailableVersionListResultVersionsList = /*@__PURE__*/ S.Array(
   ApplicationVersion,
 ) as any as S.Schema<AvailableVersionListResultVersionsList>;
@@ -1101,7 +1100,7 @@ export const MdsResource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MdsResource" }) as any as S.Schema<MdsResource>;
 
 /** The MdsResource items on this page */
-export type MdsResourceListResultValueList = ReadonlyArray<MdsResource>;
+export type MdsResourceListResultValueList = Array<MdsResource>;
 export const MdsResourceListResultValueList = /*@__PURE__*/ S.Array(
   MdsResource,
 ) as any as S.Schema<MdsResourceListResultValueList>;
@@ -1278,7 +1277,7 @@ export const UserManagedOpenAIProfileUpdate = /*@__PURE__*/ S.suspend(() =>
 
 /** Deny Assignments exclusion list. */
 export type MdsResourceUpdatePropertiesInputDenyAssignmentExclusionsList =
-  ReadonlyArray<DenyAssignmentExclusion>;
+  Array<DenyAssignmentExclusion>;
 export const MdsResourceUpdatePropertiesInputDenyAssignmentExclusionsList =
   /*@__PURE__*/ S.Array(
     DenyAssignmentExclusion,
@@ -1521,7 +1520,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = ReadonlyArray<Operation>;
+export type OperationsListResponseValueList = Array<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;

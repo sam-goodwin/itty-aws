@@ -116,7 +116,7 @@ export type CasePriorityEnum =
   | "P4";
 export const CasePriorityEnum = /*@__PURE__*/ S.String;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -130,7 +130,7 @@ export const ProductProductLineEnum = /*@__PURE__*/ S.String;
 /** The product a case may be associated with. */
 export interface Product {
   /** The product line of the Product. */
-  productLine?: ProductProductLineEnum;
+  productLine?: ProductProductLineEnum | (string & {});
 }
 export const Product = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -184,13 +184,13 @@ export interface Case {
   /** The language the user has requested to receive support in. This should be a BCP 47 language code (e.g., `"en"`, `"zh-CN"`, `"zh-TW"`, `"ja"`, `"ko"`). If no language or an unsupported language is specified, this field defaults to English (en). Language selection during case creation may affect your available support options. For a list of supported languages and their support working hours, see: https://cloud.google.com/support/docs/language-working-hours */
   languageCode?: string;
   /** Output only. The current status of the support case. */
-  state?: CaseStateEnum;
+  state?: CaseStateEnum | (string & {});
   /** REMOVED. The severity of this case. Use priority instead. */
-  severity?: CaseSeverityEnum;
+  severity?: CaseSeverityEnum | (string & {});
   /** Whether this case was created for internal API testing and should not be acted on by the support team. */
   testCase?: boolean;
   /** The priority of this case. */
-  priority?: CasePriorityEnum;
+  priority?: CasePriorityEnum | (string & {});
   /** The email addresses to receive updates on this case. */
   subscriberEmailAddresses?: StringList;
   /** Output only. The time this case was last updated. */
@@ -321,13 +321,13 @@ export interface SupportEventSubscription {
   /** Output only. The time at which the subscription will be purged. */
   purgeTime?: string;
   /** Output only. The state of the subscription. */
-  state?: SupportEventSubscriptionStateEnum;
+  state?: SupportEventSubscriptionStateEnum | (string & {});
   /** Output only. The time at which the subscription was created. */
   createTime?: string;
   /** Identifier. The resource name of the support event subscription. */
   name?: string;
   /** Output only. Reason why subscription is failing. State of subscription must be FAILING in order for this to have a value. */
-  failureReason?: SupportEventSubscriptionFailureReasonEnum;
+  failureReason?: SupportEventSubscriptionFailureReasonEnum | (string & {});
   /** Required. The name of the Pub/Sub topic to publish notifications to. Format: projects/{project}/topics/{topic} */
   pubSubTopic?: string;
 }
@@ -500,7 +500,7 @@ export const CompositeMedia = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CompositeMedia" }) as any as S.Schema<CompositeMedia>;
 
-export type CompositeMediaList = ReadonlyArray<CompositeMedia>;
+export type CompositeMediaList = Array<CompositeMedia>;
 export const CompositeMediaList = /*@__PURE__*/ S.Array(
   CompositeMedia,
 ) as any as S.Schema<CompositeMediaList>;
@@ -985,7 +985,7 @@ export const ListCasesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListCasesRequest",
 }) as any as S.Schema<ListCasesRequest>;
 
-export type CaseList = ReadonlyArray<Case>;
+export type CaseList = Array<Case>;
 export const CaseList = /*@__PURE__*/ S.Array(
   Case,
 ) as any as S.Schema<CaseList>;
@@ -1030,7 +1030,7 @@ export const ListCasesAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListCasesAttachmentsRequest",
 }) as any as S.Schema<ListCasesAttachmentsRequest>;
 
-export type AttachmentList = ReadonlyArray<Attachment>;
+export type AttachmentList = Array<Attachment>;
 export const AttachmentList = /*@__PURE__*/ S.Array(
   Attachment,
 ) as any as S.Schema<AttachmentList>;
@@ -1075,7 +1075,7 @@ export const ListCasesCommentsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListCasesCommentsRequest",
 }) as any as S.Schema<ListCasesCommentsRequest>;
 
-export type CommentList = ReadonlyArray<Comment>;
+export type CommentList = Array<Comment>;
 export const CommentList = /*@__PURE__*/ S.Array(
   Comment,
 ) as any as S.Schema<CommentList>;
@@ -1127,8 +1127,7 @@ export const ListSupportEventSubscriptionsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListSupportEventSubscriptionsRequest",
 }) as any as S.Schema<ListSupportEventSubscriptionsRequest>;
 
-export type SupportEventSubscriptionList =
-  ReadonlyArray<SupportEventSubscription>;
+export type SupportEventSubscriptionList = Array<SupportEventSubscription>;
 export const SupportEventSubscriptionList = /*@__PURE__*/ S.Array(
   SupportEventSubscription,
 ) as any as S.Schema<SupportEventSubscriptionList>;
@@ -1237,7 +1236,7 @@ export const SearchCaseClassificationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "SearchCaseClassificationsRequest",
 }) as any as S.Schema<SearchCaseClassificationsRequest>;
 
-export type CaseClassificationList = ReadonlyArray<CaseClassification>;
+export type CaseClassificationList = Array<CaseClassification>;
 export const CaseClassificationList = /*@__PURE__*/ S.Array(
   CaseClassification,
 ) as any as S.Schema<CaseClassificationList>;
@@ -1391,7 +1390,7 @@ export const FeedItem = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "FeedItem" }) as any as S.Schema<FeedItem>;
 
-export type FeedItemList = ReadonlyArray<FeedItem>;
+export type FeedItemList = Array<FeedItem>;
 export const FeedItemList = /*@__PURE__*/ S.Array(
   FeedItem,
 ) as any as S.Schema<FeedItemList>;

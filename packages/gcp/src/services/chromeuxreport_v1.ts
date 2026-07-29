@@ -67,7 +67,7 @@ export type QueryHistoryRequestFormFactorEnum =
   | "TABLET";
 export const QueryHistoryRequestFormFactorEnum = /*@__PURE__*/ S.String;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -190,12 +190,12 @@ export const CollectionPeriod = /*@__PURE__*/ S.suspend(() =>
   identifier: "CollectionPeriod",
 }) as any as S.Schema<CollectionPeriod>;
 
-export type CollectionPeriodList = ReadonlyArray<CollectionPeriod>;
+export type CollectionPeriodList = Array<CollectionPeriod>;
 export const CollectionPeriodList = /*@__PURE__*/ S.Array(
   CollectionPeriod,
 ) as any as S.Schema<CollectionPeriodList>;
 
-export type DoubleList = ReadonlyArray<number>;
+export type DoubleList = Array<number>;
 export const DoubleList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<DoubleList>;
@@ -217,12 +217,12 @@ export const TimeseriesBin = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TimeseriesBin" }) as any as S.Schema<TimeseriesBin>;
 
-export type TimeseriesBinList = ReadonlyArray<TimeseriesBin>;
+export type TimeseriesBinList = Array<TimeseriesBin>;
 export const TimeseriesBinList = /*@__PURE__*/ S.Array(
   TimeseriesBin,
 ) as any as S.Schema<TimeseriesBinList>;
 
-export type DocumentList = ReadonlyArray<unknown>;
+export type DocumentList = Array<unknown>;
 export const DocumentList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<DocumentList>;
@@ -386,7 +386,7 @@ export const Bin = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Bin" }) as any as S.Schema<Bin>;
 
-export type BinList = ReadonlyArray<Bin>;
+export type BinList = Array<Bin>;
 export const BinList = /*@__PURE__*/ S.Array(Bin) as any as S.Schema<BinList>;
 
 /** Percentiles contains synthetic values of a metric at a given statistical percentile. These are used for estimating a metric's value as experienced by a percentage of users out of the total number of users. */

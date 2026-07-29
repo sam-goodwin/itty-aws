@@ -266,7 +266,7 @@ export type DayOfWeek =
 export const DayOfWeek = /*@__PURE__*/ S.String;
 
 export interface WeeklyStartTime {
-  DayOfWeek?: DayOfWeek;
+  DayOfWeek?: DayOfWeek | (string & {});
   TimeOfDay?: string;
   TimeZone?: string;
 }

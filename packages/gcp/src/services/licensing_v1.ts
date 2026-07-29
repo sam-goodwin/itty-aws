@@ -216,7 +216,7 @@ export const ListForProductAndSkuLicenseAssignmentsRequest =
     identifier: "ListForProductAndSkuLicenseAssignmentsRequest",
   }) as any as S.Schema<ListForProductAndSkuLicenseAssignmentsRequest>;
 
-export type LicenseAssignmentList_ = ReadonlyArray<LicenseAssignment>;
+export type LicenseAssignmentList_ = Array<LicenseAssignment>;
 export const LicenseAssignmentList_ = /*@__PURE__*/ S.Array(
   LicenseAssignment,
 ) as any as S.Schema<LicenseAssignmentList_>;

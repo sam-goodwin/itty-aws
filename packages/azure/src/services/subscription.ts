@@ -297,7 +297,7 @@ export const AliasListRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of alias. */
 export type SubscriptionAliasListResultValueList =
-  ReadonlyArray<SubscriptionAliasResponse>;
+  Array<SubscriptionAliasResponse>;
 export const SubscriptionAliasListResultValueList = /*@__PURE__*/ S.Array(
   SubscriptionAliasResponse,
 ) as any as S.Schema<SubscriptionAliasListResultValueList>;
@@ -355,7 +355,7 @@ export const ServiceTenantResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Service tenant for the billing account. */
 export type BillingAccountPoliciesResponsePropertiesServiceTenantsList =
-  ReadonlyArray<ServiceTenantResponse>;
+  Array<ServiceTenantResponse>;
 export const BillingAccountPoliciesResponsePropertiesServiceTenantsList =
   /*@__PURE__*/ S.Array(
     ServiceTenantResponse,
@@ -510,7 +510,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations. */
-export type OperationListResultValueList = ReadonlyArray<Operation>;
+export type OperationListResultValueList = Array<Operation>;
 export const OperationListResultValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationListResultValueList>;
@@ -748,7 +748,7 @@ export const SubscriptionCreationResult = /*@__PURE__*/ S.suspend(() =>
 
 /** List of user objectIds that are exempted from the set subscription tenant policies for the user's tenant. */
 export type SubscriptionPolicyAddUpdatePolicyForTenantRequestExemptedPrincipalsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const SubscriptionPolicyAddUpdatePolicyForTenantRequestExemptedPrincipalsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -783,7 +783,7 @@ export const SubscriptionPolicyAddUpdatePolicyForTenantRequest =
   }) as any as S.Schema<SubscriptionPolicyAddUpdatePolicyForTenantRequest>;
 
 /** List of user objectIds that are exempted from the set subscription tenant policies for the user's tenant. */
-export type TenantPolicyExemptedPrincipalsList = ReadonlyArray<string>;
+export type TenantPolicyExemptedPrincipalsList = Array<string>;
 export const TenantPolicyExemptedPrincipalsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<TenantPolicyExemptedPrincipalsList>;
@@ -913,7 +913,7 @@ export const SubscriptionPolicyListPolicyForTenantRequest =
 
 /** The list of tenant policies. */
 export type GetTenantPolicyListResponseValueList =
-  ReadonlyArray<GetTenantPolicyResponse>;
+  Array<GetTenantPolicyResponse>;
 export const GetTenantPolicyListResponseValueList = /*@__PURE__*/ S.Array(
   GetTenantPolicyResponse,
 ) as any as S.Schema<GetTenantPolicyListResponseValueList>;

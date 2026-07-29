@@ -241,7 +241,7 @@ export const TimeUnit = /*@__PURE__*/ S.String;
 
 export type PositiveInteger = number;
 export interface TimePeriod {
-  unit: TimeUnit;
+  unit: TimeUnit | (string & {});
   value: number;
 }
 export const TimePeriod = /*@__PURE__*/ S.suspend(() =>
@@ -517,7 +517,7 @@ export type LanguageVersion = number;
 export interface ConditionBasedCollectionScheme {
   expression: string | redacted.Redacted<string>;
   minimumTriggerIntervalMs?: number;
-  triggerMode?: TriggerMode;
+  triggerMode?: TriggerMode | (string & {});
   conditionLanguageVersion?: number;
 }
 export const ConditionBasedCollectionScheme = /*@__PURE__*/ S.suspend(() =>
@@ -556,8 +556,8 @@ export const StorageCompressionFormat = /*@__PURE__*/ S.String;
 export type Prefix = string;
 export interface S3Config {
   bucketArn: string;
-  dataFormat?: DataFormat;
-  storageCompressionFormat?: StorageCompressionFormat;
+  dataFormat?: DataFormat | (string & {});
+  storageCompressionFormat?: StorageCompressionFormat | (string & {});
   prefix?: string;
 }
 export const S3Config = /*@__PURE__*/ S.suspend(() =>
@@ -615,7 +615,7 @@ export const StorageMaximumSizeUnit = /*@__PURE__*/ S.String;
 
 export type StorageMaximumSizeValue = number;
 export interface StorageMaximumSize {
-  unit: StorageMaximumSizeUnit;
+  unit: StorageMaximumSizeUnit | (string & {});
   value: number;
 }
 export const StorageMaximumSize = /*@__PURE__*/ S.suspend(() =>
@@ -629,7 +629,7 @@ export const StorageMinimumTimeToLiveUnit = /*@__PURE__*/ S.String;
 
 export type StorageMinimumTimeToLiveValue = number;
 export interface StorageMinimumTimeToLive {
-  unit: StorageMinimumTimeToLiveUnit;
+  unit: StorageMinimumTimeToLiveUnit | (string & {});
   value: number;
 }
 export const StorageMinimumTimeToLive = /*@__PURE__*/ S.suspend(() =>
@@ -689,7 +689,7 @@ export const TimeBasedSignalFetchConfig = /*@__PURE__*/ S.suspend(() =>
 export type FetchConfigEventExpression = string | redacted.Redacted<string>;
 export interface ConditionBasedSignalFetchConfig {
   conditionExpression: string | redacted.Redacted<string>;
-  triggerMode: TriggerMode;
+  triggerMode: TriggerMode | (string & {});
 }
 export const ConditionBasedSignalFetchConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ conditionExpression: SensitiveString, triggerMode: TriggerMode }),
@@ -813,7 +813,7 @@ export interface CanSignal {
   factor: number;
   length: number;
   name?: string;
-  signalValueType?: SignalValueType;
+  signalValueType?: SignalValueType | (string & {});
 }
 export const CanSignal = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -841,7 +841,7 @@ export interface ObdSignal {
   bitRightShift?: number;
   bitMaskLength?: number;
   isSigned?: boolean;
-  signalValueType?: SignalValueType;
+  signalValueType?: SignalValueType | (string & {});
 }
 export const ObdSignal = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -879,7 +879,7 @@ export const ROS2PrimitiveType = /*@__PURE__*/ S.String;
 
 export type MaxStringSize = number;
 export interface ROS2PrimitiveMessageDefinition {
-  primitiveType: ROS2PrimitiveType;
+  primitiveType: ROS2PrimitiveType | (string & {});
   offset?: number;
   scaling?: number;
   upperBound?: number;
@@ -910,7 +910,7 @@ export const StructuredMessageListType = /*@__PURE__*/ S.String;
 export interface StructuredMessageListDefinition {
   name: string;
   memberType: StructuredMessage;
-  listType: StructuredMessageListType;
+  listType: StructuredMessageListType | (string & {});
   capacity?: number;
 }
 export const StructuredMessageListDefinition = /*@__PURE__*/ S.suspend(() =>
@@ -996,7 +996,7 @@ export const CustomDecodingSignal = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CustomDecodingSignal>;
 export interface SignalDecoder {
   fullyQualifiedName: string;
-  type: SignalDecoderType;
+  type: SignalDecoderType | (string & {});
   interfaceId: string;
   canSignal?: CanSignal;
   obdSignal?: ObdSignal;
@@ -1066,7 +1066,7 @@ export const VehicleMiddlewareProtocol = /*@__PURE__*/ S.String;
 
 export interface VehicleMiddleware {
   name: string;
-  protocolName: VehicleMiddlewareProtocol;
+  protocolName: VehicleMiddlewareProtocol | (string & {});
 }
 export const VehicleMiddleware = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ name: S.String, protocolName: VehicleMiddlewareProtocol }),
@@ -1084,7 +1084,7 @@ export const CustomDecodingInterface = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CustomDecodingInterface>;
 export interface NetworkInterface {
   interfaceId: string;
-  type: NetworkInterfaceType;
+  type: NetworkInterfaceType | (string & {});
   canInterface?: CanInterface;
   obdInterface?: ObdInterface;
   vehicleMiddleware?: VehicleMiddleware;
@@ -1268,7 +1268,7 @@ export const NodeDataType = /*@__PURE__*/ S.String;
 
 export interface Sensor {
   fullyQualifiedName: string;
-  dataType: NodeDataType;
+  dataType: NodeDataType | (string & {});
   description?: string;
   unit?: string;
   allowedValues?: string[];
@@ -1294,7 +1294,7 @@ export const Sensor = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Sensor" }) as any as S.Schema<Sensor>;
 export interface Actuator {
   fullyQualifiedName: string;
-  dataType: NodeDataType;
+  dataType: NodeDataType | (string & {});
   description?: string;
   unit?: string;
   allowedValues?: string[];
@@ -1322,7 +1322,7 @@ export const Actuator = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Actuator" }) as any as S.Schema<Actuator>;
 export interface Attribute {
   fullyQualifiedName: string;
-  dataType: NodeDataType;
+  dataType: NodeDataType | (string & {});
   description?: string;
   unit?: string;
   allowedValues?: string[];
@@ -1367,8 +1367,8 @@ export const NodeDataEncoding = /*@__PURE__*/ S.String;
 
 export interface CustomProperty {
   fullyQualifiedName: string;
-  dataType: NodeDataType;
-  dataEncoding?: NodeDataEncoding;
+  dataType: NodeDataType | (string & {});
+  dataEncoding?: NodeDataEncoding | (string & {});
   description?: string;
   deprecationMessage?: string;
   comment?: string;
@@ -2018,7 +2018,7 @@ export const LogType = /*@__PURE__*/ S.String;
 
 export type CloudWatchLogGroupName = string;
 export interface CloudWatchLogDeliveryOptions {
-  logType: LogType;
+  logType: LogType | (string & {});
   logGroupName?: string;
 }
 export const CloudWatchLogDeliveryOptions = /*@__PURE__*/ S.suspend(() =>

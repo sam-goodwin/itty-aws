@@ -315,7 +315,7 @@ export const GdataDiffDownloadResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GdataDiffDownloadResponse",
 }) as any as S.Schema<GdataDiffDownloadResponse>;
 
-export type GdataCompositeMediaList = ReadonlyArray<GdataCompositeMedia>;
+export type GdataCompositeMediaList = Array<GdataCompositeMedia>;
 export const GdataCompositeMediaList = /*@__PURE__*/ S.Array(
   GdataCompositeMedia,
 ) as any as S.Schema<GdataCompositeMediaList>;
@@ -608,7 +608,7 @@ export const ListJobsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListJobsRequest",
 }) as any as S.Schema<ListJobsRequest>;
 
-export type JobList = ReadonlyArray<Job>;
+export type JobList = Array<Job>;
 export const JobList = /*@__PURE__*/ S.Array(Job) as any as S.Schema<JobList>;
 
 /** Response message for ReportingService.ListJobs. */
@@ -663,7 +663,7 @@ export const ListJobsReportsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListJobsReportsRequest",
 }) as any as S.Schema<ListJobsReportsRequest>;
 
-export type ReportList = ReadonlyArray<Report>;
+export type ReportList = Array<Report>;
 export const ReportList = /*@__PURE__*/ S.Array(
   Report,
 ) as any as S.Schema<ReportList>;
@@ -731,7 +731,7 @@ export const ReportType = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ReportType" }) as any as S.Schema<ReportType>;
 
-export type ReportTypeList = ReadonlyArray<ReportType>;
+export type ReportTypeList = Array<ReportType>;
 export const ReportTypeList = /*@__PURE__*/ S.Array(
   ReportType,
 ) as any as S.Schema<ReportTypeList>;

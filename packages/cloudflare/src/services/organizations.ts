@@ -155,7 +155,7 @@ export const CreateResponseMetaFlags = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateResponseMetaFlags",
 }) as any as S.Schema<CreateResponseMetaFlags>;
 
-export type CreateResponseMetaHierarchyTagsList = ReadonlyArray<string>;
+export type CreateResponseMetaHierarchyTagsList = Array<string>;
 export const CreateResponseMetaHierarchyTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateResponseMetaHierarchyTagsList>;
@@ -412,8 +412,7 @@ export const BillingUsageGetResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "BillingUsageGetResultItem",
 }) as any as S.Schema<BillingUsageGetResultItem>;
 
-export type BillingUsageGetResultList =
-  ReadonlyArray<BillingUsageGetResultItem>;
+export type BillingUsageGetResultList = Array<BillingUsageGetResultItem>;
 export const BillingUsageGetResultList = /*@__PURE__*/ S.Array(
   BillingUsageGetResultItem,
 ) as any as S.Schema<BillingUsageGetResultList>;
@@ -463,7 +462,7 @@ export const GetResponseMetaFlags = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetResponseMetaFlags",
 }) as any as S.Schema<GetResponseMetaFlags>;
 
-export type GetResponseMetaHierarchyTagsList = ReadonlyArray<string>;
+export type GetResponseMetaHierarchyTagsList = Array<string>;
 export const GetResponseMetaHierarchyTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetResponseMetaHierarchyTagsList>;
@@ -580,7 +579,7 @@ export const GetOrganizationProfileResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetOrganizationProfileResponse",
 }) as any as S.Schema<GetOrganizationProfileResponse>;
 
-export type LogsAuditListRequestIdNotList = ReadonlyArray<string>;
+export type LogsAuditListRequestIdNotList = Array<string>;
 export const LogsAuditListRequestIdNotList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LogsAuditListRequestIdNotList>;
@@ -600,7 +599,7 @@ export const LogsAuditListRequestId = /*@__PURE__*/ S.suspend(() =>
 export type LogsAuditListRequestActionResultNotItem = "success" | "failure";
 export const LogsAuditListRequestActionResultNotItem = /*@__PURE__*/ S.String;
 
-export type LogsAuditListRequestActionResultNotList = ReadonlyArray<
+export type LogsAuditListRequestActionResultNotList = Array<
   LogsAuditListRequestActionResultNotItem | (string & {})
 >;
 export const LogsAuditListRequestActionResultNotList = /*@__PURE__*/ S.Array(
@@ -626,7 +625,7 @@ export type LogsAuditListRequestActionTypeNotItem =
   | "update";
 export const LogsAuditListRequestActionTypeNotItem = /*@__PURE__*/ S.String;
 
-export type LogsAuditListRequestActionTypeNotList = ReadonlyArray<
+export type LogsAuditListRequestActionTypeNotList = Array<
   LogsAuditListRequestActionTypeNotItem | (string & {})
 >;
 export const LogsAuditListRequestActionTypeNotList = /*@__PURE__*/ S.Array(
@@ -653,7 +652,7 @@ export type LogsAuditListRequestActorContextNotItem =
   | "origin_ca_key";
 export const LogsAuditListRequestActorContextNotItem = /*@__PURE__*/ S.String;
 
-export type LogsAuditListRequestActorContextNotList = ReadonlyArray<
+export type LogsAuditListRequestActorContextNotList = Array<
   LogsAuditListRequestActorContextNotItem | (string & {})
 >;
 export const LogsAuditListRequestActorContextNotList = /*@__PURE__*/ S.Array(
@@ -672,7 +671,7 @@ export const LogsAuditListRequestActorContext = /*@__PURE__*/ S.suspend(() =>
   identifier: "LogsAuditListRequestActorContext",
 }) as any as S.Schema<LogsAuditListRequestActorContext>;
 
-export type LogsAuditListRequestActorEmailNotList = ReadonlyArray<string>;
+export type LogsAuditListRequestActorEmailNotList = Array<string>;
 export const LogsAuditListRequestActorEmailNotList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LogsAuditListRequestActorEmailNotList>;
@@ -689,7 +688,7 @@ export const LogsAuditListRequestActorEmail = /*@__PURE__*/ S.suspend(() =>
   identifier: "LogsAuditListRequestActorEmail",
 }) as any as S.Schema<LogsAuditListRequestActorEmail>;
 
-export type LogsAuditListRequestActorIdNotList = ReadonlyArray<string>;
+export type LogsAuditListRequestActorIdNotList = Array<string>;
 export const LogsAuditListRequestActorIdNotList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LogsAuditListRequestActorIdNotList>;
@@ -706,7 +705,7 @@ export const LogsAuditListRequestActorId = /*@__PURE__*/ S.suspend(() =>
   identifier: "LogsAuditListRequestActorId",
 }) as any as S.Schema<LogsAuditListRequestActorId>;
 
-export type LogsAuditListRequestActorIpAddressNotList = ReadonlyArray<string>;
+export type LogsAuditListRequestActorIpAddressNotList = Array<string>;
 export const LogsAuditListRequestActorIpAddressNotList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LogsAuditListRequestActorIpAddressNotList>;
@@ -723,7 +722,7 @@ export const LogsAuditListRequestActorIpAddress = /*@__PURE__*/ S.suspend(() =>
   identifier: "LogsAuditListRequestActorIpAddress",
 }) as any as S.Schema<LogsAuditListRequestActorIpAddress>;
 
-export type LogsAuditListRequestActorTokenIdNotList = ReadonlyArray<string>;
+export type LogsAuditListRequestActorTokenIdNotList = Array<string>;
 export const LogsAuditListRequestActorTokenIdNotList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LogsAuditListRequestActorTokenIdNotList>;
@@ -740,7 +739,7 @@ export const LogsAuditListRequestActorTokenId = /*@__PURE__*/ S.suspend(() =>
   identifier: "LogsAuditListRequestActorTokenId",
 }) as any as S.Schema<LogsAuditListRequestActorTokenId>;
 
-export type LogsAuditListRequestActorTokenNameNotList = ReadonlyArray<string>;
+export type LogsAuditListRequestActorTokenNameNotList = Array<string>;
 export const LogsAuditListRequestActorTokenNameNotList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LogsAuditListRequestActorTokenNameNotList>;
@@ -763,7 +762,7 @@ export type LogsAuditListRequestActorTypeNotItem =
   | "user";
 export const LogsAuditListRequestActorTypeNotItem = /*@__PURE__*/ S.String;
 
-export type LogsAuditListRequestActorTypeNotList = ReadonlyArray<
+export type LogsAuditListRequestActorTypeNotList = Array<
   LogsAuditListRequestActorTypeNotItem | (string & {})
 >;
 export const LogsAuditListRequestActorTypeNotList = /*@__PURE__*/ S.Array(
@@ -785,7 +784,7 @@ export const LogsAuditListRequestActorType = /*@__PURE__*/ S.suspend(() =>
 export type LogsAuditListRequestDirection = "desc" | "asc";
 export const LogsAuditListRequestDirection = /*@__PURE__*/ S.String;
 
-export type LogsAuditListRequestRawCfRayIdNotList = ReadonlyArray<string>;
+export type LogsAuditListRequestRawCfRayIdNotList = Array<string>;
 export const LogsAuditListRequestRawCfRayIdNotList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LogsAuditListRequestRawCfRayIdNotList>;
@@ -802,7 +801,7 @@ export const LogsAuditListRequestRawCfRayId = /*@__PURE__*/ S.suspend(() =>
   identifier: "LogsAuditListRequestRawCfRayId",
 }) as any as S.Schema<LogsAuditListRequestRawCfRayId>;
 
-export type LogsAuditListRequestRawMethodNotList = ReadonlyArray<string>;
+export type LogsAuditListRequestRawMethodNotList = Array<string>;
 export const LogsAuditListRequestRawMethodNotList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LogsAuditListRequestRawMethodNotList>;
@@ -819,7 +818,7 @@ export const LogsAuditListRequestRawMethod = /*@__PURE__*/ S.suspend(() =>
   identifier: "LogsAuditListRequestRawMethod",
 }) as any as S.Schema<LogsAuditListRequestRawMethod>;
 
-export type LogsAuditListRequestRawStatusCodeNotList = ReadonlyArray<number>;
+export type LogsAuditListRequestRawStatusCodeNotList = Array<number>;
 export const LogsAuditListRequestRawStatusCodeNotList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<LogsAuditListRequestRawStatusCodeNotList>;
@@ -836,7 +835,7 @@ export const LogsAuditListRequestRawStatusCode = /*@__PURE__*/ S.suspend(() =>
   identifier: "LogsAuditListRequestRawStatusCode",
 }) as any as S.Schema<LogsAuditListRequestRawStatusCode>;
 
-export type LogsAuditListRequestRawUriNotList = ReadonlyArray<string>;
+export type LogsAuditListRequestRawUriNotList = Array<string>;
 export const LogsAuditListRequestRawUriNotList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LogsAuditListRequestRawUriNotList>;
@@ -853,7 +852,7 @@ export const LogsAuditListRequestRawUri = /*@__PURE__*/ S.suspend(() =>
   identifier: "LogsAuditListRequestRawUri",
 }) as any as S.Schema<LogsAuditListRequestRawUri>;
 
-export type LogsAuditListRequestResourceIdNotList = ReadonlyArray<string>;
+export type LogsAuditListRequestResourceIdNotList = Array<string>;
 export const LogsAuditListRequestResourceIdNotList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LogsAuditListRequestResourceIdNotList>;
@@ -870,7 +869,7 @@ export const LogsAuditListRequestResourceId = /*@__PURE__*/ S.suspend(() =>
   identifier: "LogsAuditListRequestResourceId",
 }) as any as S.Schema<LogsAuditListRequestResourceId>;
 
-export type LogsAuditListRequestResourceProductNotList = ReadonlyArray<string>;
+export type LogsAuditListRequestResourceProductNotList = Array<string>;
 export const LogsAuditListRequestResourceProductNotList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LogsAuditListRequestResourceProductNotList>;
@@ -890,7 +889,7 @@ export const LogsAuditListRequestResourceProduct = /*@__PURE__*/ S.suspend(() =>
 export type LogsAuditListRequestResourceScopeNotItem = "organizations";
 export const LogsAuditListRequestResourceScopeNotItem = /*@__PURE__*/ S.String;
 
-export type LogsAuditListRequestResourceScopeNotList = ReadonlyArray<
+export type LogsAuditListRequestResourceScopeNotList = Array<
   LogsAuditListRequestResourceScopeNotItem | (string & {})
 >;
 export const LogsAuditListRequestResourceScopeNotList = /*@__PURE__*/ S.Array(
@@ -909,7 +908,7 @@ export const LogsAuditListRequestResourceScope = /*@__PURE__*/ S.suspend(() =>
   identifier: "LogsAuditListRequestResourceScope",
 }) as any as S.Schema<LogsAuditListRequestResourceScope>;
 
-export type LogsAuditListRequestResourceTypeNotList = ReadonlyArray<string>;
+export type LogsAuditListRequestResourceTypeNotList = Array<string>;
 export const LogsAuditListRequestResourceTypeNotList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LogsAuditListRequestResourceTypeNotList>;
@@ -1234,7 +1233,7 @@ export const LogsAuditListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "LogsAuditListResultItem",
 }) as any as S.Schema<LogsAuditListResultItem>;
 
-export type LogsAuditListResultList = ReadonlyArray<LogsAuditListResultItem>;
+export type LogsAuditListResultList = Array<LogsAuditListResultItem>;
 export const LogsAuditListResultList = /*@__PURE__*/ S.Array(
   LogsAuditListResultItem,
 ) as any as S.Schema<LogsAuditListResultList>;
@@ -1254,7 +1253,7 @@ export const ListLogAuditsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListLogAuditsResponse",
 }) as any as S.Schema<ListLogAuditsResponse>;
 
-export type ListRequestIdList = ReadonlyArray<string>;
+export type ListRequestIdList = Array<string>;
 export const ListRequestIdList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ListRequestIdList>;
@@ -1354,7 +1353,7 @@ export const ListResultItemMetaFlags = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListResultItemMetaFlags",
 }) as any as S.Schema<ListResultItemMetaFlags>;
 
-export type ListResultItemMetaHierarchyTagsList = ReadonlyArray<string>;
+export type ListResultItemMetaHierarchyTagsList = Array<string>;
 export const ListResultItemMetaHierarchyTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ListResultItemMetaHierarchyTagsList>;
@@ -1429,7 +1428,7 @@ export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ListResultItem" }) as any as S.Schema<ListResultItem>;
 
-export type ListResultList = ReadonlyArray<ListResultItem>;
+export type ListResultList = Array<ListResultItem>;
 export const ListResultList = /*@__PURE__*/ S.Array(
   ListResultItem,
 ) as any as S.Schema<ListResultList>;
@@ -1655,7 +1654,7 @@ export const MembersGetResponse = /*@__PURE__*/ S.suspend(() =>
 export type MembersListRequestStatus = "active" | "canceled";
 export const MembersListRequestStatus = /*@__PURE__*/ S.String;
 
-export type MembersListRequestStatusList = ReadonlyArray<
+export type MembersListRequestStatusList = Array<
   MembersListRequestStatus | (string & {})
 >;
 export const MembersListRequestStatusList = /*@__PURE__*/ S.Array(
@@ -1756,7 +1755,7 @@ export const MembersListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "MembersListResultItem",
 }) as any as S.Schema<MembersListResultItem>;
 
-export type MembersListResultList = ReadonlyArray<MembersListResultItem>;
+export type MembersListResultList = Array<MembersListResultItem>;
 export const MembersListResultList = /*@__PURE__*/ S.Array(
   MembersListResultItem,
 ) as any as S.Schema<MembersListResultList>;
@@ -1906,7 +1905,7 @@ export const OrganizationAccountsGetResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OrganizationAccountsGetResultItem>;
 
 export type OrganizationAccountsGetResultList =
-  ReadonlyArray<OrganizationAccountsGetResultItem>;
+  Array<OrganizationAccountsGetResultItem>;
 export const OrganizationAccountsGetResultList = /*@__PURE__*/ S.Array(
   OrganizationAccountsGetResultItem,
 ) as any as S.Schema<OrganizationAccountsGetResultList>;
@@ -2030,7 +2029,7 @@ export const UpdateResponseMetaFlags = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateResponseMetaFlags",
 }) as any as S.Schema<UpdateResponseMetaFlags>;
 
-export type UpdateResponseMetaHierarchyTagsList = ReadonlyArray<string>;
+export type UpdateResponseMetaHierarchyTagsList = Array<string>;
 export const UpdateResponseMetaHierarchyTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<UpdateResponseMetaHierarchyTagsList>;

@@ -2138,7 +2138,7 @@ export interface Parameter {
   AllowedValues?: string;
   IsModifiable?: boolean;
   MinimumEngineVersion?: string;
-  ApplyMethod?: ApplyMethod;
+  ApplyMethod?: ApplyMethod | (string & {});
 }
 export const Parameter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

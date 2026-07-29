@@ -300,7 +300,7 @@ export const GoogleChromeManagementV1ChromeAppRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleChromeManagementV1ChromeAppRequest>;
 
 export type GoogleChromeManagementV1ChromeAppRequestList =
-  ReadonlyArray<GoogleChromeManagementV1ChromeAppRequest>;
+  Array<GoogleChromeManagementV1ChromeAppRequest>;
 export const GoogleChromeManagementV1ChromeAppRequestList =
   /*@__PURE__*/ S.Array(
     GoogleChromeManagementV1ChromeAppRequest,
@@ -436,7 +436,7 @@ export const GoogleChromeManagementV1CountChromeCrashEventsResponseCrashEventCou
   }) as any as S.Schema<GoogleChromeManagementV1CountChromeCrashEventsResponseCrashEventCount>;
 
 export type GoogleChromeManagementV1CountChromeCrashEventsResponseCrashEventCountList =
-  ReadonlyArray<GoogleChromeManagementV1CountChromeCrashEventsResponseCrashEventCount>;
+  Array<GoogleChromeManagementV1CountChromeCrashEventsResponseCrashEventCount>;
 export const GoogleChromeManagementV1CountChromeCrashEventsResponseCrashEventCountList =
   /*@__PURE__*/ S.Array(
     GoogleChromeManagementV1CountChromeCrashEventsResponseCrashEventCount,
@@ -533,7 +533,7 @@ export const GoogleChromeManagementV1DeviceAueCountReport =
   }) as any as S.Schema<GoogleChromeManagementV1DeviceAueCountReport>;
 
 export type GoogleChromeManagementV1DeviceAueCountReportList =
-  ReadonlyArray<GoogleChromeManagementV1DeviceAueCountReport>;
+  Array<GoogleChromeManagementV1DeviceAueCountReport>;
 export const GoogleChromeManagementV1DeviceAueCountReportList =
   /*@__PURE__*/ S.Array(
     GoogleChromeManagementV1DeviceAueCountReport,
@@ -651,7 +651,7 @@ export const GoogleChromeManagementV1DeviceHardwareCountReport =
   }) as any as S.Schema<GoogleChromeManagementV1DeviceHardwareCountReport>;
 
 export type GoogleChromeManagementV1DeviceHardwareCountReportList =
-  ReadonlyArray<GoogleChromeManagementV1DeviceHardwareCountReport>;
+  Array<GoogleChromeManagementV1DeviceHardwareCountReport>;
 export const GoogleChromeManagementV1DeviceHardwareCountReportList =
   /*@__PURE__*/ S.Array(
     GoogleChromeManagementV1DeviceHardwareCountReport,
@@ -768,7 +768,7 @@ export const GoogleChromeManagementV1BrowserVersion = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleChromeManagementV1BrowserVersion>;
 
 export type GoogleChromeManagementV1BrowserVersionList =
-  ReadonlyArray<GoogleChromeManagementV1BrowserVersion>;
+  Array<GoogleChromeManagementV1BrowserVersion>;
 export const GoogleChromeManagementV1BrowserVersionList = /*@__PURE__*/ S.Array(
   GoogleChromeManagementV1BrowserVersion,
 ) as any as S.Schema<GoogleChromeManagementV1BrowserVersionList>;
@@ -1008,7 +1008,7 @@ export type GoogleChromeManagementV1InstalledAppAppTypeEnum =
 export const GoogleChromeManagementV1InstalledAppAppTypeEnum =
   /*@__PURE__*/ S.String;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -1086,7 +1086,7 @@ export const GoogleChromeManagementV1RiskAssessmentEntry =
   }) as any as S.Schema<GoogleChromeManagementV1RiskAssessmentEntry>;
 
 export type GoogleChromeManagementV1RiskAssessmentEntryList =
-  ReadonlyArray<GoogleChromeManagementV1RiskAssessmentEntry>;
+  Array<GoogleChromeManagementV1RiskAssessmentEntry>;
 export const GoogleChromeManagementV1RiskAssessmentEntryList =
   /*@__PURE__*/ S.Array(
     GoogleChromeManagementV1RiskAssessmentEntry,
@@ -1172,7 +1172,7 @@ export const GoogleChromeManagementV1InstalledApp = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleChromeManagementV1InstalledApp>;
 
 export type GoogleChromeManagementV1InstalledAppList =
-  ReadonlyArray<GoogleChromeManagementV1InstalledApp>;
+  Array<GoogleChromeManagementV1InstalledApp>;
 export const GoogleChromeManagementV1InstalledAppList = /*@__PURE__*/ S.Array(
   GoogleChromeManagementV1InstalledApp,
 ) as any as S.Schema<GoogleChromeManagementV1InstalledAppList>;
@@ -1261,7 +1261,7 @@ export const GoogleChromeManagementV1PrinterReport = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleChromeManagementV1PrinterReport>;
 
 export type GoogleChromeManagementV1PrinterReportList =
-  ReadonlyArray<GoogleChromeManagementV1PrinterReport>;
+  Array<GoogleChromeManagementV1PrinterReport>;
 export const GoogleChromeManagementV1PrinterReportList = /*@__PURE__*/ S.Array(
   GoogleChromeManagementV1PrinterReport,
 ) as any as S.Schema<GoogleChromeManagementV1PrinterReportList>;
@@ -1347,7 +1347,7 @@ export const GoogleChromeManagementV1UserPrintReport = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleChromeManagementV1UserPrintReport>;
 
 export type GoogleChromeManagementV1UserPrintReportList =
-  ReadonlyArray<GoogleChromeManagementV1UserPrintReport>;
+  Array<GoogleChromeManagementV1UserPrintReport>;
 export const GoogleChromeManagementV1UserPrintReportList =
   /*@__PURE__*/ S.Array(
     GoogleChromeManagementV1UserPrintReport,
@@ -1399,7 +1399,9 @@ export interface GoogleChromeManagementVersionsV1ConnectorConfigStatus {
   /** Output only. Field recording time of most recent modification of the status. For `ENABLED`, this is the time the status was changed to `ENABLED`. For `DISABLED_BY_FAILURES`, this is the time of the most recent failed attempt to send an event to this config. */
   updateTime?: string;
   /** Output only. The state of the connector config. The connector state is disabled if the connector has not successfully sent an event in the last 24 hours. */
-  state?: GoogleChromeManagementVersionsV1ConnectorConfigStatusStateEnum;
+  state?:
+    | GoogleChromeManagementVersionsV1ConnectorConfigStatusStateEnum
+    | (string & {});
 }
 export const GoogleChromeManagementVersionsV1ConnectorConfigStatus =
   /*@__PURE__*/ S.suspend(() =>
@@ -1433,7 +1435,10 @@ export const GoogleChromeManagementVersionsV1ReportingSettingsEnabledDefaultEven
   /*@__PURE__*/ S.String;
 
 export type GoogleChromeManagementVersionsV1ReportingSettingsEnabledDefaultEventsItemEnumList =
-  ReadonlyArray<GoogleChromeManagementVersionsV1ReportingSettingsEnabledDefaultEventsItemEnum>;
+  Array<
+    | GoogleChromeManagementVersionsV1ReportingSettingsEnabledDefaultEventsItemEnum
+    | (string & {})
+  >;
 export const GoogleChromeManagementVersionsV1ReportingSettingsEnabledDefaultEventsItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleChromeManagementVersionsV1ReportingSettingsEnabledDefaultEventsItemEnum,
@@ -1450,7 +1455,10 @@ export const GoogleChromeManagementVersionsV1ReportingSettingsEnabledOptInEvents
   /*@__PURE__*/ S.String;
 
 export type GoogleChromeManagementVersionsV1ReportingSettingsEnabledOptInEventsItemEnumList =
-  ReadonlyArray<GoogleChromeManagementVersionsV1ReportingSettingsEnabledOptInEventsItemEnum>;
+  Array<
+    | GoogleChromeManagementVersionsV1ReportingSettingsEnabledOptInEventsItemEnum
+    | (string & {})
+  >;
 export const GoogleChromeManagementVersionsV1ReportingSettingsEnabledOptInEventsItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleChromeManagementVersionsV1ReportingSettingsEnabledOptInEventsItemEnum,
@@ -1467,7 +1475,10 @@ export const GoogleChromeManagementVersionsV1ReportingSettingsEnabledDeviceEvent
   /*@__PURE__*/ S.String;
 
 export type GoogleChromeManagementVersionsV1ReportingSettingsEnabledDeviceEventsItemEnumList =
-  ReadonlyArray<GoogleChromeManagementVersionsV1ReportingSettingsEnabledDeviceEventsItemEnum>;
+  Array<
+    | GoogleChromeManagementVersionsV1ReportingSettingsEnabledDeviceEventsItemEnum
+    | (string & {})
+  >;
 export const GoogleChromeManagementVersionsV1ReportingSettingsEnabledDeviceEventsItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleChromeManagementVersionsV1ReportingSettingsEnabledDeviceEventsItemEnum,
@@ -1549,9 +1560,13 @@ export interface GoogleChromeManagementVersionsV1DeviceTrustConfig {
   /** Required. A list of email addresses of the service accounts which are allowed to call the Verified Access API with full access. */
   serviceAccounts?: StringList;
   /** Required. The scope at which this configuration will be applied. Note that this only applies to Chrome browser, as in ChromeOS it's always applied. */
-  scope?: GoogleChromeManagementVersionsV1DeviceTrustConfigScopeEnum;
+  scope?:
+    | GoogleChromeManagementVersionsV1DeviceTrustConfigScopeEnum
+    | (string & {});
   /** Optional. The service provider for the device trust connector. */
-  serviceProvider?: GoogleChromeManagementVersionsV1DeviceTrustConfigServiceProviderEnum;
+  serviceProvider?:
+    | GoogleChromeManagementVersionsV1DeviceTrustConfigServiceProviderEnum
+    | (string & {});
 }
 export const GoogleChromeManagementVersionsV1DeviceTrustConfig =
   /*@__PURE__*/ S.suspend(() =>
@@ -1816,7 +1831,9 @@ export interface GoogleChromeManagementVersionsV1ConnectorConfig {
   /** Identifier. Format: customers/{customer}/connectorConfigs/{connector_config} */
   name?: string;
   /** Required. The type of the connector. */
-  type?: GoogleChromeManagementVersionsV1ConnectorConfigTypeEnum;
+  type?:
+    | GoogleChromeManagementVersionsV1ConnectorConfigTypeEnum
+    | (string & {});
   /** Output only. The status of the connector config. */
   status?: GoogleChromeManagementVersionsV1ConnectorConfigStatus;
   /** Required. The display name of the config. */
@@ -1880,7 +1897,9 @@ export const GoogleChromeManagementVersionsV1ChromeBrowserProfileCommandCommandR
 /** Result of the execution of a command. */
 export interface GoogleChromeManagementVersionsV1ChromeBrowserProfileCommandCommandResult {
   /** Output only. Result type of the remote command. */
-  resultType?: GoogleChromeManagementVersionsV1ChromeBrowserProfileCommandCommandResultResultTypeEnum;
+  resultType?:
+    | GoogleChromeManagementVersionsV1ChromeBrowserProfileCommandCommandResultResultTypeEnum
+    | (string & {});
   /** Output only. Timestamp of the client execution of the remote command. */
   clientExecutionTime?: string;
   /** Output only. Result code that indicates the type of error or success of the command. */
@@ -1916,7 +1935,9 @@ export interface GoogleChromeManagementVersionsV1ChromeBrowserProfileCommand {
   /** Identifier. Format: customers/{customer_id}/profiles/{profile_permanent_id}/commands/{command_id} */
   name?: string;
   /** Output only. State of the remote command. */
-  commandState?: GoogleChromeManagementVersionsV1ChromeBrowserProfileCommandCommandStateEnum;
+  commandState?:
+    | GoogleChromeManagementVersionsV1ChromeBrowserProfileCommandCommandStateEnum
+    | (string & {});
   /** Output only. Timestamp of the issurance of the remote command. */
   issueTime?: string;
   /** Output only. Valid duration of the remote command. */
@@ -1987,7 +2008,10 @@ export const GoogleChromeManagementV1TelemetryEventNotificationFilterEventTypesI
   /*@__PURE__*/ S.String;
 
 export type GoogleChromeManagementV1TelemetryEventNotificationFilterEventTypesItemEnumList =
-  ReadonlyArray<GoogleChromeManagementV1TelemetryEventNotificationFilterEventTypesItemEnum>;
+  Array<
+    | GoogleChromeManagementV1TelemetryEventNotificationFilterEventTypesItemEnum
+    | (string & {})
+  >;
 export const GoogleChromeManagementV1TelemetryEventNotificationFilterEventTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleChromeManagementV1TelemetryEventNotificationFilterEventTypesItemEnum,
@@ -2383,7 +2407,7 @@ export const GoogleChromeManagementV1PrintJob = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleChromeManagementV1PrintJob>;
 
 export type GoogleChromeManagementV1PrintJobList =
-  ReadonlyArray<GoogleChromeManagementV1PrintJob>;
+  Array<GoogleChromeManagementV1PrintJob>;
 export const GoogleChromeManagementV1PrintJobList = /*@__PURE__*/ S.Array(
   GoogleChromeManagementV1PrintJob,
 ) as any as S.Schema<GoogleChromeManagementV1PrintJobList>;
@@ -2457,7 +2481,7 @@ export const GoogleChromeManagementV1DeviceRequestingExtensionDetails =
   }) as any as S.Schema<GoogleChromeManagementV1DeviceRequestingExtensionDetails>;
 
 export type GoogleChromeManagementV1DeviceRequestingExtensionDetailsList =
-  ReadonlyArray<GoogleChromeManagementV1DeviceRequestingExtensionDetails>;
+  Array<GoogleChromeManagementV1DeviceRequestingExtensionDetails>;
 export const GoogleChromeManagementV1DeviceRequestingExtensionDetailsList =
   /*@__PURE__*/ S.Array(
     GoogleChromeManagementV1DeviceRequestingExtensionDetails,
@@ -2535,7 +2559,7 @@ export const GoogleChromeManagementV1UserRequestingExtensionDetails =
   }) as any as S.Schema<GoogleChromeManagementV1UserRequestingExtensionDetails>;
 
 export type GoogleChromeManagementV1UserRequestingExtensionDetailsList =
-  ReadonlyArray<GoogleChromeManagementV1UserRequestingExtensionDetails>;
+  Array<GoogleChromeManagementV1UserRequestingExtensionDetails>;
 export const GoogleChromeManagementV1UserRequestingExtensionDetailsList =
   /*@__PURE__*/ S.Array(
     GoogleChromeManagementV1UserRequestingExtensionDetails,
@@ -2632,7 +2656,7 @@ export const GoogleChromeManagementV1Device = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleChromeManagementV1Device>;
 
 export type GoogleChromeManagementV1DeviceList =
-  ReadonlyArray<GoogleChromeManagementV1Device>;
+  Array<GoogleChromeManagementV1Device>;
 export const GoogleChromeManagementV1DeviceList = /*@__PURE__*/ S.Array(
   GoogleChromeManagementV1Device,
 ) as any as S.Schema<GoogleChromeManagementV1DeviceList>;
@@ -2733,7 +2757,7 @@ export const GoogleChromeManagementV1ProfileAppInstallInstance =
   }) as any as S.Schema<GoogleChromeManagementV1ProfileAppInstallInstance>;
 
 export type GoogleChromeManagementV1ProfileAppInstallInstanceList =
-  ReadonlyArray<GoogleChromeManagementV1ProfileAppInstallInstance>;
+  Array<GoogleChromeManagementV1ProfileAppInstallInstance>;
 export const GoogleChromeManagementV1ProfileAppInstallInstanceList =
   /*@__PURE__*/ S.Array(
     GoogleChromeManagementV1ProfileAppInstallInstance,
@@ -2800,7 +2824,7 @@ export const GoogleChromeManagementV1ChromeAppPermission =
   }) as any as S.Schema<GoogleChromeManagementV1ChromeAppPermission>;
 
 export type GoogleChromeManagementV1ChromeAppPermissionList =
-  ReadonlyArray<GoogleChromeManagementV1ChromeAppPermission>;
+  Array<GoogleChromeManagementV1ChromeAppPermission>;
 export const GoogleChromeManagementV1ChromeAppPermissionList =
   /*@__PURE__*/ S.Array(
     GoogleChromeManagementV1ChromeAppPermission,
@@ -2821,7 +2845,7 @@ export const GoogleChromeManagementV1ChromeAppSiteAccess =
   }) as any as S.Schema<GoogleChromeManagementV1ChromeAppSiteAccess>;
 
 export type GoogleChromeManagementV1ChromeAppSiteAccessList =
-  ReadonlyArray<GoogleChromeManagementV1ChromeAppSiteAccess>;
+  Array<GoogleChromeManagementV1ChromeAppSiteAccess>;
 export const GoogleChromeManagementV1ChromeAppSiteAccessList =
   /*@__PURE__*/ S.Array(
     GoogleChromeManagementV1ChromeAppSiteAccess,
@@ -2889,7 +2913,7 @@ export type GoogleChromeManagementV1AppDetailsTypeEnum =
 export const GoogleChromeManagementV1AppDetailsTypeEnum =
   /*@__PURE__*/ S.String;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -2928,7 +2952,7 @@ export const GoogleChromeManagementV1AndroidAppPermission =
   }) as any as S.Schema<GoogleChromeManagementV1AndroidAppPermission>;
 
 export type GoogleChromeManagementV1AndroidAppPermissionList =
-  ReadonlyArray<GoogleChromeManagementV1AndroidAppPermission>;
+  Array<GoogleChromeManagementV1AndroidAppPermission>;
 export const GoogleChromeManagementV1AndroidAppPermissionList =
   /*@__PURE__*/ S.Array(
     GoogleChromeManagementV1AndroidAppPermission,
@@ -3148,7 +3172,7 @@ export const GoogleChromeManagementVersionsV1ScepProfileKeyUsagesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleChromeManagementVersionsV1ScepProfileKeyUsagesItemEnumList =
-  ReadonlyArray<GoogleChromeManagementVersionsV1ScepProfileKeyUsagesItemEnum>;
+  Array<GoogleChromeManagementVersionsV1ScepProfileKeyUsagesItemEnum>;
 export const GoogleChromeManagementVersionsV1ScepProfileKeyUsagesItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleChromeManagementVersionsV1ScepProfileKeyUsagesItemEnum,
@@ -3181,7 +3205,7 @@ export const GoogleChromeManagementVersionsV1SubjectAltName =
   }) as any as S.Schema<GoogleChromeManagementVersionsV1SubjectAltName>;
 
 export type GoogleChromeManagementVersionsV1SubjectAltNameList =
-  ReadonlyArray<GoogleChromeManagementVersionsV1SubjectAltName>;
+  Array<GoogleChromeManagementVersionsV1SubjectAltName>;
 export const GoogleChromeManagementVersionsV1SubjectAltNameList =
   /*@__PURE__*/ S.Array(
     GoogleChromeManagementVersionsV1SubjectAltName,
@@ -3495,7 +3519,7 @@ export const GoogleChromeManagementVersionsV1ReportingDataExtensionData =
   }) as any as S.Schema<GoogleChromeManagementVersionsV1ReportingDataExtensionData>;
 
 export type GoogleChromeManagementVersionsV1ReportingDataExtensionDataList =
-  ReadonlyArray<GoogleChromeManagementVersionsV1ReportingDataExtensionData>;
+  Array<GoogleChromeManagementVersionsV1ReportingDataExtensionData>;
 export const GoogleChromeManagementVersionsV1ReportingDataExtensionDataList =
   /*@__PURE__*/ S.Array(
     GoogleChromeManagementVersionsV1ReportingDataExtensionData,
@@ -3529,7 +3553,7 @@ export const GoogleChromeManagementVersionsV1ReportingDataConflictingPolicyData 
   }) as any as S.Schema<GoogleChromeManagementVersionsV1ReportingDataConflictingPolicyData>;
 
 export type GoogleChromeManagementVersionsV1ReportingDataConflictingPolicyDataList =
-  ReadonlyArray<GoogleChromeManagementVersionsV1ReportingDataConflictingPolicyData>;
+  Array<GoogleChromeManagementVersionsV1ReportingDataConflictingPolicyData>;
 export const GoogleChromeManagementVersionsV1ReportingDataConflictingPolicyDataList =
   /*@__PURE__*/ S.Array(
     GoogleChromeManagementVersionsV1ReportingDataConflictingPolicyData,
@@ -3576,7 +3600,7 @@ export const GoogleChromeManagementVersionsV1ReportingDataPolicyData =
   }) as any as S.Schema<GoogleChromeManagementVersionsV1ReportingDataPolicyData>;
 
 export type GoogleChromeManagementVersionsV1ReportingDataPolicyDataList =
-  ReadonlyArray<GoogleChromeManagementVersionsV1ReportingDataPolicyData>;
+  Array<GoogleChromeManagementVersionsV1ReportingDataPolicyData>;
 export const GoogleChromeManagementVersionsV1ReportingDataPolicyDataList =
   /*@__PURE__*/ S.Array(
     GoogleChromeManagementVersionsV1ReportingDataPolicyData,
@@ -3606,7 +3630,7 @@ export const GoogleChromeManagementVersionsV1ReportingDataExtensionPolicyData =
   }) as any as S.Schema<GoogleChromeManagementVersionsV1ReportingDataExtensionPolicyData>;
 
 export type GoogleChromeManagementVersionsV1ReportingDataExtensionPolicyDataList =
-  ReadonlyArray<GoogleChromeManagementVersionsV1ReportingDataExtensionPolicyData>;
+  Array<GoogleChromeManagementVersionsV1ReportingDataExtensionPolicyData>;
 export const GoogleChromeManagementVersionsV1ReportingDataExtensionPolicyDataList =
   /*@__PURE__*/ S.Array(
     GoogleChromeManagementVersionsV1ReportingDataExtensionPolicyData,
@@ -3860,7 +3884,7 @@ export const GoogleChromeManagementV1CpuTemperatureInfo =
   }) as any as S.Schema<GoogleChromeManagementV1CpuTemperatureInfo>;
 
 export type GoogleChromeManagementV1CpuTemperatureInfoList =
-  ReadonlyArray<GoogleChromeManagementV1CpuTemperatureInfo>;
+  Array<GoogleChromeManagementV1CpuTemperatureInfo>;
 export const GoogleChromeManagementV1CpuTemperatureInfoList =
   /*@__PURE__*/ S.Array(
     GoogleChromeManagementV1CpuTemperatureInfo,
@@ -3892,7 +3916,7 @@ export const GoogleChromeManagementV1CpuStatusReport = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleChromeManagementV1CpuStatusReport>;
 
 export type GoogleChromeManagementV1CpuStatusReportList =
-  ReadonlyArray<GoogleChromeManagementV1CpuStatusReport>;
+  Array<GoogleChromeManagementV1CpuStatusReport>;
 export const GoogleChromeManagementV1CpuStatusReportList =
   /*@__PURE__*/ S.Array(
     GoogleChromeManagementV1CpuStatusReport,
@@ -3927,7 +3951,7 @@ export const GoogleChromeManagementV1BatteryInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleChromeManagementV1BatteryInfo>;
 
 export type GoogleChromeManagementV1BatteryInfoList =
-  ReadonlyArray<GoogleChromeManagementV1BatteryInfo>;
+  Array<GoogleChromeManagementV1BatteryInfo>;
 export const GoogleChromeManagementV1BatteryInfoList = /*@__PURE__*/ S.Array(
   GoogleChromeManagementV1BatteryInfo,
 ) as any as S.Schema<GoogleChromeManagementV1BatteryInfoList>;
@@ -3953,7 +3977,7 @@ export const GoogleChromeManagementV1StorageInfoDiskVolume =
   }) as any as S.Schema<GoogleChromeManagementV1StorageInfoDiskVolume>;
 
 export type GoogleChromeManagementV1StorageInfoDiskVolumeList =
-  ReadonlyArray<GoogleChromeManagementV1StorageInfoDiskVolume>;
+  Array<GoogleChromeManagementV1StorageInfoDiskVolume>;
 export const GoogleChromeManagementV1StorageInfoDiskVolumeList =
   /*@__PURE__*/ S.Array(
     GoogleChromeManagementV1StorageInfoDiskVolume,
@@ -4005,7 +4029,7 @@ export const GoogleChromeManagementV1RuntimeCountersReport =
   }) as any as S.Schema<GoogleChromeManagementV1RuntimeCountersReport>;
 
 export type GoogleChromeManagementV1RuntimeCountersReportList =
-  ReadonlyArray<GoogleChromeManagementV1RuntimeCountersReport>;
+  Array<GoogleChromeManagementV1RuntimeCountersReport>;
 export const GoogleChromeManagementV1RuntimeCountersReportList =
   /*@__PURE__*/ S.Array(
     GoogleChromeManagementV1RuntimeCountersReport,
@@ -4047,7 +4071,7 @@ export const GoogleChromeManagementV1UsbPeripheralReport =
   }) as any as S.Schema<GoogleChromeManagementV1UsbPeripheralReport>;
 
 export type GoogleChromeManagementV1UsbPeripheralReportList =
-  ReadonlyArray<GoogleChromeManagementV1UsbPeripheralReport>;
+  Array<GoogleChromeManagementV1UsbPeripheralReport>;
 export const GoogleChromeManagementV1UsbPeripheralReportList =
   /*@__PURE__*/ S.Array(
     GoogleChromeManagementV1UsbPeripheralReport,
@@ -4073,7 +4097,7 @@ export const GoogleChromeManagementV1PeripheralsReport =
   }) as any as S.Schema<GoogleChromeManagementV1PeripheralsReport>;
 
 export type GoogleChromeManagementV1PeripheralsReportList =
-  ReadonlyArray<GoogleChromeManagementV1PeripheralsReport>;
+  Array<GoogleChromeManagementV1PeripheralsReport>;
 export const GoogleChromeManagementV1PeripheralsReportList =
   /*@__PURE__*/ S.Array(
     GoogleChromeManagementV1PeripheralsReport,
@@ -4114,7 +4138,7 @@ export const GoogleChromeManagementV1DisplayInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleChromeManagementV1DisplayInfo>;
 
 export type GoogleChromeManagementV1DisplayInfoList =
-  ReadonlyArray<GoogleChromeManagementV1DisplayInfo>;
+  Array<GoogleChromeManagementV1DisplayInfo>;
 export const GoogleChromeManagementV1DisplayInfoList = /*@__PURE__*/ S.Array(
   GoogleChromeManagementV1DisplayInfo,
 ) as any as S.Schema<GoogleChromeManagementV1DisplayInfoList>;
@@ -4137,7 +4161,7 @@ export const GoogleChromeManagementV1GraphicsStatusReport =
   }) as any as S.Schema<GoogleChromeManagementV1GraphicsStatusReport>;
 
 export type GoogleChromeManagementV1GraphicsStatusReportList =
-  ReadonlyArray<GoogleChromeManagementV1GraphicsStatusReport>;
+  Array<GoogleChromeManagementV1GraphicsStatusReport>;
 export const GoogleChromeManagementV1GraphicsStatusReportList =
   /*@__PURE__*/ S.Array(
     GoogleChromeManagementV1GraphicsStatusReport,
@@ -4232,7 +4256,7 @@ export const GoogleChromeManagementV1MemoryStatusReport =
   }) as any as S.Schema<GoogleChromeManagementV1MemoryStatusReport>;
 
 export type GoogleChromeManagementV1MemoryStatusReportList =
-  ReadonlyArray<GoogleChromeManagementV1MemoryStatusReport>;
+  Array<GoogleChromeManagementV1MemoryStatusReport>;
 export const GoogleChromeManagementV1MemoryStatusReportList =
   /*@__PURE__*/ S.Array(
     GoogleChromeManagementV1MemoryStatusReport,
@@ -4288,7 +4312,7 @@ export const GoogleChromeManagementV1DiskInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleChromeManagementV1DiskInfo>;
 
 export type GoogleChromeManagementV1DiskInfoList =
-  ReadonlyArray<GoogleChromeManagementV1DiskInfo>;
+  Array<GoogleChromeManagementV1DiskInfo>;
 export const GoogleChromeManagementV1DiskInfoList = /*@__PURE__*/ S.Array(
   GoogleChromeManagementV1DiskInfo,
 ) as any as S.Schema<GoogleChromeManagementV1DiskInfoList>;
@@ -4311,7 +4335,7 @@ export const GoogleChromeManagementV1StorageStatusReport =
   }) as any as S.Schema<GoogleChromeManagementV1StorageStatusReport>;
 
 export type GoogleChromeManagementV1StorageStatusReportList =
-  ReadonlyArray<GoogleChromeManagementV1StorageStatusReport>;
+  Array<GoogleChromeManagementV1StorageStatusReport>;
 export const GoogleChromeManagementV1StorageStatusReportList =
   /*@__PURE__*/ S.Array(
     GoogleChromeManagementV1StorageStatusReport,
@@ -4353,7 +4377,7 @@ export const GoogleChromeManagementV1BatterySampleReport =
   }) as any as S.Schema<GoogleChromeManagementV1BatterySampleReport>;
 
 export type GoogleChromeManagementV1BatterySampleReportList =
-  ReadonlyArray<GoogleChromeManagementV1BatterySampleReport>;
+  Array<GoogleChromeManagementV1BatterySampleReport>;
 export const GoogleChromeManagementV1BatterySampleReportList =
   /*@__PURE__*/ S.Array(
     GoogleChromeManagementV1BatterySampleReport,
@@ -4399,7 +4423,7 @@ export const GoogleChromeManagementV1BatteryStatusReport =
   }) as any as S.Schema<GoogleChromeManagementV1BatteryStatusReport>;
 
 export type GoogleChromeManagementV1BatteryStatusReportList =
-  ReadonlyArray<GoogleChromeManagementV1BatteryStatusReport>;
+  Array<GoogleChromeManagementV1BatteryStatusReport>;
 export const GoogleChromeManagementV1BatteryStatusReportList =
   /*@__PURE__*/ S.Array(
     GoogleChromeManagementV1BatteryStatusReport,
@@ -4453,7 +4477,7 @@ export const GoogleChromeManagementV1NetworkDiagnosticsReport =
   }) as any as S.Schema<GoogleChromeManagementV1NetworkDiagnosticsReport>;
 
 export type GoogleChromeManagementV1NetworkDiagnosticsReportList =
-  ReadonlyArray<GoogleChromeManagementV1NetworkDiagnosticsReport>;
+  Array<GoogleChromeManagementV1NetworkDiagnosticsReport>;
 export const GoogleChromeManagementV1NetworkDiagnosticsReportList =
   /*@__PURE__*/ S.Array(
     GoogleChromeManagementV1NetworkDiagnosticsReport,
@@ -4497,7 +4521,7 @@ export const GoogleChromeManagementV1NetworkDevice = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleChromeManagementV1NetworkDevice>;
 
 export type GoogleChromeManagementV1NetworkDeviceList =
-  ReadonlyArray<GoogleChromeManagementV1NetworkDevice>;
+  Array<GoogleChromeManagementV1NetworkDevice>;
 export const GoogleChromeManagementV1NetworkDeviceList = /*@__PURE__*/ S.Array(
   GoogleChromeManagementV1NetworkDevice,
 ) as any as S.Schema<GoogleChromeManagementV1NetworkDeviceList>;
@@ -4533,7 +4557,7 @@ export const GoogleChromeManagementV1NetworkBandwidthReport =
   }) as any as S.Schema<GoogleChromeManagementV1NetworkBandwidthReport>;
 
 export type GoogleChromeManagementV1NetworkBandwidthReportList =
-  ReadonlyArray<GoogleChromeManagementV1NetworkBandwidthReport>;
+  Array<GoogleChromeManagementV1NetworkBandwidthReport>;
 export const GoogleChromeManagementV1NetworkBandwidthReportList =
   /*@__PURE__*/ S.Array(
     GoogleChromeManagementV1NetworkBandwidthReport,
@@ -4580,7 +4604,7 @@ export const GoogleChromeManagementV1BootPerformanceReport =
   }) as any as S.Schema<GoogleChromeManagementV1BootPerformanceReport>;
 
 export type GoogleChromeManagementV1BootPerformanceReportList =
-  ReadonlyArray<GoogleChromeManagementV1BootPerformanceReport>;
+  Array<GoogleChromeManagementV1BootPerformanceReport>;
 export const GoogleChromeManagementV1BootPerformanceReportList =
   /*@__PURE__*/ S.Array(
     GoogleChromeManagementV1BootPerformanceReport,
@@ -4619,7 +4643,7 @@ export const GoogleChromeManagementV1AudioStatusReport =
   }) as any as S.Schema<GoogleChromeManagementV1AudioStatusReport>;
 
 export type GoogleChromeManagementV1AudioStatusReportList =
-  ReadonlyArray<GoogleChromeManagementV1AudioStatusReport>;
+  Array<GoogleChromeManagementV1AudioStatusReport>;
 export const GoogleChromeManagementV1AudioStatusReportList =
   /*@__PURE__*/ S.Array(
     GoogleChromeManagementV1AudioStatusReport,
@@ -4665,7 +4689,7 @@ export const GoogleChromeManagementV1OsUpdateStatus = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleChromeManagementV1OsUpdateStatus>;
 
 export type GoogleChromeManagementV1OsUpdateStatusList =
-  ReadonlyArray<GoogleChromeManagementV1OsUpdateStatus>;
+  Array<GoogleChromeManagementV1OsUpdateStatus>;
 export const GoogleChromeManagementV1OsUpdateStatusList = /*@__PURE__*/ S.Array(
   GoogleChromeManagementV1OsUpdateStatus,
 ) as any as S.Schema<GoogleChromeManagementV1OsUpdateStatusList>;
@@ -4714,7 +4738,7 @@ export const GoogleChromeManagementV1AppUsageData = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleChromeManagementV1AppUsageData>;
 
 export type GoogleChromeManagementV1AppUsageDataList =
-  ReadonlyArray<GoogleChromeManagementV1AppUsageData>;
+  Array<GoogleChromeManagementV1AppUsageData>;
 export const GoogleChromeManagementV1AppUsageDataList = /*@__PURE__*/ S.Array(
   GoogleChromeManagementV1AppUsageData,
 ) as any as S.Schema<GoogleChromeManagementV1AppUsageDataList>;
@@ -4736,7 +4760,7 @@ export const GoogleChromeManagementV1AppReport = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleChromeManagementV1AppReport>;
 
 export type GoogleChromeManagementV1AppReportList =
-  ReadonlyArray<GoogleChromeManagementV1AppReport>;
+  Array<GoogleChromeManagementV1AppReport>;
 export const GoogleChromeManagementV1AppReportList = /*@__PURE__*/ S.Array(
   GoogleChromeManagementV1AppReport,
 ) as any as S.Schema<GoogleChromeManagementV1AppReportList>;
@@ -4831,7 +4855,7 @@ export const GoogleChromeManagementV1NetworkStatusReport =
   }) as any as S.Schema<GoogleChromeManagementV1NetworkStatusReport>;
 
 export type GoogleChromeManagementV1NetworkStatusReportList =
-  ReadonlyArray<GoogleChromeManagementV1NetworkStatusReport>;
+  Array<GoogleChromeManagementV1NetworkStatusReport>;
 export const GoogleChromeManagementV1NetworkStatusReportList =
   /*@__PURE__*/ S.Array(
     GoogleChromeManagementV1NetworkStatusReport,
@@ -4858,7 +4882,7 @@ export const GoogleChromeManagementV1KioskAppStatusReport =
   }) as any as S.Schema<GoogleChromeManagementV1KioskAppStatusReport>;
 
 export type GoogleChromeManagementV1KioskAppStatusReportList =
-  ReadonlyArray<GoogleChromeManagementV1KioskAppStatusReport>;
+  Array<GoogleChromeManagementV1KioskAppStatusReport>;
 export const GoogleChromeManagementV1KioskAppStatusReportList =
   /*@__PURE__*/ S.Array(
     GoogleChromeManagementV1KioskAppStatusReport,
@@ -4892,7 +4916,7 @@ export const GoogleChromeManagementV1ThunderboltInfo = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleChromeManagementV1ThunderboltInfo>;
 
 export type GoogleChromeManagementV1ThunderboltInfoList =
-  ReadonlyArray<GoogleChromeManagementV1ThunderboltInfo>;
+  Array<GoogleChromeManagementV1ThunderboltInfo>;
 export const GoogleChromeManagementV1ThunderboltInfoList =
   /*@__PURE__*/ S.Array(
     GoogleChromeManagementV1ThunderboltInfo,
@@ -4939,7 +4963,7 @@ export const GoogleChromeManagementV1TouchScreenDevice =
   }) as any as S.Schema<GoogleChromeManagementV1TouchScreenDevice>;
 
 export type GoogleChromeManagementV1TouchScreenDeviceList =
-  ReadonlyArray<GoogleChromeManagementV1TouchScreenDevice>;
+  Array<GoogleChromeManagementV1TouchScreenDevice>;
 export const GoogleChromeManagementV1TouchScreenDeviceList =
   /*@__PURE__*/ S.Array(
     GoogleChromeManagementV1TouchScreenDevice,
@@ -5001,7 +5025,7 @@ export const GoogleChromeManagementV1DisplayDevice = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleChromeManagementV1DisplayDevice>;
 
 export type GoogleChromeManagementV1DisplayDeviceList =
-  ReadonlyArray<GoogleChromeManagementV1DisplayDevice>;
+  Array<GoogleChromeManagementV1DisplayDevice>;
 export const GoogleChromeManagementV1DisplayDeviceList = /*@__PURE__*/ S.Array(
   GoogleChromeManagementV1DisplayDevice,
 ) as any as S.Schema<GoogleChromeManagementV1DisplayDeviceList>;
@@ -5061,7 +5085,7 @@ export const GoogleChromeManagementV1CpuInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleChromeManagementV1CpuInfo>;
 
 export type GoogleChromeManagementV1CpuInfoList =
-  ReadonlyArray<GoogleChromeManagementV1CpuInfo>;
+  Array<GoogleChromeManagementV1CpuInfo>;
 export const GoogleChromeManagementV1CpuInfoList = /*@__PURE__*/ S.Array(
   GoogleChromeManagementV1CpuInfo,
 ) as any as S.Schema<GoogleChromeManagementV1CpuInfoList>;
@@ -5093,7 +5117,7 @@ export const GoogleChromeManagementV1HeartbeatStatusReport =
   }) as any as S.Schema<GoogleChromeManagementV1HeartbeatStatusReport>;
 
 export type GoogleChromeManagementV1HeartbeatStatusReportList =
-  ReadonlyArray<GoogleChromeManagementV1HeartbeatStatusReport>;
+  Array<GoogleChromeManagementV1HeartbeatStatusReport>;
 export const GoogleChromeManagementV1HeartbeatStatusReportList =
   /*@__PURE__*/ S.Array(
     GoogleChromeManagementV1HeartbeatStatusReport,
@@ -5266,7 +5290,7 @@ export const GoogleChromeManagementV1DeviceActivityReport =
   }) as any as S.Schema<GoogleChromeManagementV1DeviceActivityReport>;
 
 export type GoogleChromeManagementV1DeviceActivityReportList =
-  ReadonlyArray<GoogleChromeManagementV1DeviceActivityReport>;
+  Array<GoogleChromeManagementV1DeviceActivityReport>;
 export const GoogleChromeManagementV1DeviceActivityReportList =
   /*@__PURE__*/ S.Array(
     GoogleChromeManagementV1DeviceActivityReport,
@@ -5310,7 +5334,7 @@ export const GoogleChromeManagementV1TelemetryUserDevice =
   }) as any as S.Schema<GoogleChromeManagementV1TelemetryUserDevice>;
 
 export type GoogleChromeManagementV1TelemetryUserDeviceList =
-  ReadonlyArray<GoogleChromeManagementV1TelemetryUserDevice>;
+  Array<GoogleChromeManagementV1TelemetryUserDevice>;
 export const GoogleChromeManagementV1TelemetryUserDeviceList =
   /*@__PURE__*/ S.Array(
     GoogleChromeManagementV1TelemetryUserDevice,
@@ -5371,7 +5395,7 @@ export const ListCustomersConnectorConfigsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListCustomersConnectorConfigsRequest>;
 
 export type GoogleChromeManagementVersionsV1ConnectorConfigList =
-  ReadonlyArray<GoogleChromeManagementVersionsV1ConnectorConfig>;
+  Array<GoogleChromeManagementVersionsV1ConnectorConfig>;
 export const GoogleChromeManagementVersionsV1ConnectorConfigList =
   /*@__PURE__*/ S.Array(
     GoogleChromeManagementVersionsV1ConnectorConfig,
@@ -5427,7 +5451,7 @@ export const ListCustomersProfilesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListCustomersProfilesRequest>;
 
 export type GoogleChromeManagementVersionsV1ChromeBrowserProfileList =
-  ReadonlyArray<GoogleChromeManagementVersionsV1ChromeBrowserProfile>;
+  Array<GoogleChromeManagementVersionsV1ChromeBrowserProfile>;
 export const GoogleChromeManagementVersionsV1ChromeBrowserProfileList =
   /*@__PURE__*/ S.Array(
     GoogleChromeManagementVersionsV1ChromeBrowserProfile,
@@ -5482,7 +5506,7 @@ export const ListCustomersProfilesCommandsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListCustomersProfilesCommandsRequest>;
 
 export type GoogleChromeManagementVersionsV1ChromeBrowserProfileCommandList =
-  ReadonlyArray<GoogleChromeManagementVersionsV1ChromeBrowserProfileCommand>;
+  Array<GoogleChromeManagementVersionsV1ChromeBrowserProfileCommand>;
 export const GoogleChromeManagementVersionsV1ChromeBrowserProfileCommandList =
   /*@__PURE__*/ S.Array(
     GoogleChromeManagementVersionsV1ChromeBrowserProfileCommand,
@@ -5543,7 +5567,7 @@ export const ListCustomersTelemetryDevicesRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListCustomersTelemetryDevicesRequest>;
 
 export type GoogleChromeManagementV1TelemetryDeviceList =
-  ReadonlyArray<GoogleChromeManagementV1TelemetryDevice>;
+  Array<GoogleChromeManagementV1TelemetryDevice>;
 export const GoogleChromeManagementV1TelemetryDeviceList =
   /*@__PURE__*/ S.Array(
     GoogleChromeManagementV1TelemetryDevice,
@@ -5651,7 +5675,7 @@ export const GoogleChromeManagementV1TelemetryExternalDisplayData =
   }) as any as S.Schema<GoogleChromeManagementV1TelemetryExternalDisplayData>;
 
 export type GoogleChromeManagementV1TelemetryExternalDisplayDataList =
-  ReadonlyArray<GoogleChromeManagementV1TelemetryExternalDisplayData>;
+  Array<GoogleChromeManagementV1TelemetryExternalDisplayData>;
 export const GoogleChromeManagementV1TelemetryExternalDisplayDataList =
   /*@__PURE__*/ S.Array(
     GoogleChromeManagementV1TelemetryExternalDisplayData,
@@ -6148,7 +6172,7 @@ export const GoogleChromeManagementV1TelemetryEvent = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleChromeManagementV1TelemetryEvent>;
 
 export type GoogleChromeManagementV1TelemetryEventList =
-  ReadonlyArray<GoogleChromeManagementV1TelemetryEvent>;
+  Array<GoogleChromeManagementV1TelemetryEvent>;
 export const GoogleChromeManagementV1TelemetryEventList = /*@__PURE__*/ S.Array(
   GoogleChromeManagementV1TelemetryEvent,
 ) as any as S.Schema<GoogleChromeManagementV1TelemetryEventList>;
@@ -6196,7 +6220,7 @@ export const ListCustomersTelemetryNotificationConfigsRequest =
   }) as any as S.Schema<ListCustomersTelemetryNotificationConfigsRequest>;
 
 export type GoogleChromeManagementV1TelemetryNotificationConfigList =
-  ReadonlyArray<GoogleChromeManagementV1TelemetryNotificationConfig>;
+  Array<GoogleChromeManagementV1TelemetryNotificationConfig>;
 export const GoogleChromeManagementV1TelemetryNotificationConfigList =
   /*@__PURE__*/ S.Array(
     GoogleChromeManagementV1TelemetryNotificationConfig,
@@ -6253,7 +6277,7 @@ export const ListCustomersTelemetryUsersRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListCustomersTelemetryUsersRequest>;
 
 export type GoogleChromeManagementV1TelemetryUserList =
-  ReadonlyArray<GoogleChromeManagementV1TelemetryUser>;
+  Array<GoogleChromeManagementV1TelemetryUser>;
 export const GoogleChromeManagementV1TelemetryUserList = /*@__PURE__*/ S.Array(
   GoogleChromeManagementV1TelemetryUser,
 ) as any as S.Schema<GoogleChromeManagementV1TelemetryUserList>;
@@ -6305,8 +6329,7 @@ export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListOperationsRequest",
 }) as any as S.Schema<ListOperationsRequest>;
 
-export type GoogleLongrunningOperationList =
-  ReadonlyArray<GoogleLongrunningOperation>;
+export type GoogleLongrunningOperationList = Array<GoogleLongrunningOperation>;
 export const GoogleLongrunningOperationList = /*@__PURE__*/ S.Array(
   GoogleLongrunningOperation,
 ) as any as S.Schema<GoogleLongrunningOperationList>;
@@ -6577,7 +6600,7 @@ export const GoogleChromeManagementVersionsV1ContentTransfersBreakdown =
   }) as any as S.Schema<GoogleChromeManagementVersionsV1ContentTransfersBreakdown>;
 
 export type GoogleChromeManagementVersionsV1ContentTransfersBreakdownList =
-  ReadonlyArray<GoogleChromeManagementVersionsV1ContentTransfersBreakdown>;
+  Array<GoogleChromeManagementVersionsV1ContentTransfersBreakdown>;
 export const GoogleChromeManagementVersionsV1ContentTransfersBreakdownList =
   /*@__PURE__*/ S.Array(
     GoogleChromeManagementVersionsV1ContentTransfersBreakdown,
@@ -6627,7 +6650,7 @@ export const QueryContentTransfersCustomersEnterpriseSecurityInsightsRequest =
   }) as any as S.Schema<QueryContentTransfersCustomersEnterpriseSecurityInsightsRequest>;
 
 export type GoogleChromeManagementVersionsV1ContentTransfersSummaryList =
-  ReadonlyArray<GoogleChromeManagementVersionsV1ContentTransfersSummary>;
+  Array<GoogleChromeManagementVersionsV1ContentTransfersSummary>;
 export const GoogleChromeManagementVersionsV1ContentTransfersSummaryList =
   /*@__PURE__*/ S.Array(
     GoogleChromeManagementVersionsV1ContentTransfersSummary,
@@ -6777,7 +6800,7 @@ export const GoogleChromeManagementVersionsV1UrlVisitsBreakdown =
   }) as any as S.Schema<GoogleChromeManagementVersionsV1UrlVisitsBreakdown>;
 
 export type GoogleChromeManagementVersionsV1UrlVisitsBreakdownList =
-  ReadonlyArray<GoogleChromeManagementVersionsV1UrlVisitsBreakdown>;
+  Array<GoogleChromeManagementVersionsV1UrlVisitsBreakdown>;
 export const GoogleChromeManagementVersionsV1UrlVisitsBreakdownList =
   /*@__PURE__*/ S.Array(
     GoogleChromeManagementVersionsV1UrlVisitsBreakdown,
@@ -6826,7 +6849,7 @@ export const QueryUrlVisitsCustomersEnterpriseSecurityInsightsRequest =
   }) as any as S.Schema<QueryUrlVisitsCustomersEnterpriseSecurityInsightsRequest>;
 
 export type GoogleChromeManagementVersionsV1UrlVisitsSummaryList =
-  ReadonlyArray<GoogleChromeManagementVersionsV1UrlVisitsSummary>;
+  Array<GoogleChromeManagementVersionsV1UrlVisitsSummary>;
 export const GoogleChromeManagementVersionsV1UrlVisitsSummaryList =
   /*@__PURE__*/ S.Array(
     GoogleChromeManagementVersionsV1UrlVisitsSummary,

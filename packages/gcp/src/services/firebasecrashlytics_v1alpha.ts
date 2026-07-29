@@ -60,7 +60,7 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -103,7 +103,7 @@ export const IssueSignalsSignalEnum = /*@__PURE__*/ S.String;
 /** Distinctive characteristics assigned by the Crashlytics analyzer. */
 export interface IssueSignals {
   /** Output only. The signal name. */
-  signal?: IssueSignalsSignalEnum;
+  signal?: IssueSignalsSignalEnum | (string & {});
   /** Output only. Supporting detail information. */
   description?: string;
 }
@@ -114,7 +114,7 @@ export const IssueSignals = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "IssueSignals" }) as any as S.Schema<IssueSignals>;
 
-export type IssueSignalsList = ReadonlyArray<IssueSignals>;
+export type IssueSignalsList = Array<IssueSignals>;
 export const IssueSignalsList = /*@__PURE__*/ S.Array(
   IssueSignals,
 ) as any as S.Schema<IssueSignalsList>;
@@ -136,7 +136,7 @@ export const IssueVariant = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "IssueVariant" }) as any as S.Schema<IssueVariant>;
 
-export type IssueVariantList = ReadonlyArray<IssueVariant>;
+export type IssueVariantList = Array<IssueVariant>;
 export const IssueVariantList = /*@__PURE__*/ S.Array(
   IssueVariant,
 ) as any as S.Schema<IssueVariantList>;
@@ -157,7 +157,7 @@ export interface Issue {
   /** Required. Output only. Immutable. Identifier. The name of the issue resource. Format: "projects/{project}/apps/{app}/issues/{issue}". */
   name?: string;
   /** Output only. Indicates whether this issue is open, closed or muted. For details on how issue states change without user actions, see [Regressed Issues](https://firebase.google.com/docs/crashlytics/troubleshooting?platform=ios#regressed-issues). */
-  state?: IssueStateEnum;
+  state?: IssueStateEnum | (string & {});
   /** Output only. The time at which the issue state was last changed. */
   stateUpdateTime?: string;
   /** Output only. The resource name for a sample event in this issue. */
@@ -177,7 +177,7 @@ export interface Issue {
   /** Output only. Immutable. Caption subtitle. This is usually a symbol or an exception message. */
   subtitle?: string;
   /** Output only. Immutable. Indicates whether this issue is a crash, non-fatal exception, or ANR. */
-  errorType?: IssueErrorTypeEnum;
+  errorType?: IssueErrorTypeEnum | (string & {});
   /** Output only. Immutable. Caption title. This is usually a source file or method name. */
   title?: string;
   /** Output only. Immutable. The first app display_version in which this issue was seen, populated for mobile issues only. */
@@ -264,7 +264,7 @@ export const Frame = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Frame" }) as any as S.Schema<Frame>;
 
-export type FrameList = ReadonlyArray<Frame>;
+export type FrameList = Array<Frame>;
 export const FrameList = /*@__PURE__*/ S.Array(
   Frame,
 ) as any as S.Schema<FrameList>;
@@ -328,7 +328,7 @@ export const Thread = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Thread" }) as any as S.Schema<Thread>;
 
-export type ThreadList = ReadonlyArray<Thread>;
+export type ThreadList = Array<Thread>;
 export const ThreadList = /*@__PURE__*/ S.Array(
   Thread,
 ) as any as S.Schema<ThreadList>;
@@ -390,7 +390,7 @@ export const PlayTrack = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PlayTrack" }) as any as S.Schema<PlayTrack>;
 
-export type PlayTrackList = ReadonlyArray<PlayTrack>;
+export type PlayTrackList = Array<PlayTrack>;
 export const PlayTrackList = /*@__PURE__*/ S.Array(
   PlayTrack,
 ) as any as S.Schema<PlayTrackList>;
@@ -443,8 +443,7 @@ export const Firebasecrashlytics_Error = /*@__PURE__*/ S.suspend(() =>
   identifier: "Firebasecrashlytics_Error",
 }) as any as S.Schema<Firebasecrashlytics_Error>;
 
-export type Firebasecrashlytics_ErrorList =
-  ReadonlyArray<Firebasecrashlytics_Error>;
+export type Firebasecrashlytics_ErrorList = Array<Firebasecrashlytics_Error>;
 export const Firebasecrashlytics_ErrorList = /*@__PURE__*/ S.Array(
   Firebasecrashlytics_Error,
 ) as any as S.Schema<Firebasecrashlytics_ErrorList>;
@@ -483,7 +482,7 @@ export const Breadcrumb = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Breadcrumb" }) as any as S.Schema<Breadcrumb>;
 
-export type BreadcrumbList = ReadonlyArray<Breadcrumb>;
+export type BreadcrumbList = Array<Breadcrumb>;
 export const BreadcrumbList = /*@__PURE__*/ S.Array(
   Breadcrumb,
 ) as any as S.Schema<BreadcrumbList>;
@@ -517,7 +516,7 @@ export const Exception = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Exception" }) as any as S.Schema<Exception>;
 
-export type ExceptionList = ReadonlyArray<Exception>;
+export type ExceptionList = Array<Exception>;
 export const ExceptionList = /*@__PURE__*/ S.Array(
   Exception,
 ) as any as S.Schema<ExceptionList>;
@@ -574,7 +573,7 @@ export const Log = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Log" }) as any as S.Schema<Log>;
 
-export type LogList = ReadonlyArray<Log>;
+export type LogList = Array<Log>;
 export const LogList = /*@__PURE__*/ S.Array(Log) as any as S.Schema<LogList>;
 
 /** Mobile device disk/flash usage. Not reported for all devices. */
@@ -695,7 +694,7 @@ export const Event = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Event" }) as any as S.Schema<Event>;
 
-export type EventList = ReadonlyArray<Event>;
+export type EventList = Array<Event>;
 export const EventList = /*@__PURE__*/ S.Array(
   Event,
 ) as any as S.Schema<EventList>;
@@ -729,7 +728,7 @@ export const UpdateIssueRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateIssueRequest",
 }) as any as S.Schema<UpdateIssueRequest>;
 
-export type UpdateIssueRequestList = ReadonlyArray<UpdateIssueRequest>;
+export type UpdateIssueRequestList = Array<UpdateIssueRequest>;
 export const UpdateIssueRequestList = /*@__PURE__*/ S.Array(
   UpdateIssueRequest,
 ) as any as S.Schema<UpdateIssueRequestList>;
@@ -772,7 +771,7 @@ export const BatchUpdateProjectsAppsIssuesRequest = /*@__PURE__*/ S.suspend(
   identifier: "BatchUpdateProjectsAppsIssuesRequest",
 }) as any as S.Schema<BatchUpdateProjectsAppsIssuesRequest>;
 
-export type IssueList = ReadonlyArray<Issue>;
+export type IssueList = Array<Issue>;
 export const IssueList = /*@__PURE__*/ S.Array(
   Issue,
 ) as any as S.Schema<IssueList>;
@@ -915,7 +914,7 @@ export type GetProjectsAppsReportsFilter_issue_statesEnum =
 export const GetProjectsAppsReportsFilter_issue_statesEnum =
   /*@__PURE__*/ S.String;
 
-export type GetProjectsAppsReportsFilter_issue_statesEnumList = ReadonlyArray<
+export type GetProjectsAppsReportsFilter_issue_statesEnumList = Array<
   GetProjectsAppsReportsFilter_issue_statesEnum | (string & {})
 >;
 export const GetProjectsAppsReportsFilter_issue_statesEnumList =
@@ -931,10 +930,9 @@ export type GetProjectsAppsReportsFilter_issue_errorTypesEnum =
 export const GetProjectsAppsReportsFilter_issue_errorTypesEnum =
   /*@__PURE__*/ S.String;
 
-export type GetProjectsAppsReportsFilter_issue_errorTypesEnumList =
-  ReadonlyArray<
-    GetProjectsAppsReportsFilter_issue_errorTypesEnum | (string & {})
-  >;
+export type GetProjectsAppsReportsFilter_issue_errorTypesEnumList = Array<
+  GetProjectsAppsReportsFilter_issue_errorTypesEnum | (string & {})
+>;
 export const GetProjectsAppsReportsFilter_issue_errorTypesEnumList =
   /*@__PURE__*/ S.Array(
     GetProjectsAppsReportsFilter_issue_errorTypesEnum,
@@ -950,10 +948,9 @@ export type GetProjectsAppsReportsFilter_device_formFactorsEnum =
 export const GetProjectsAppsReportsFilter_device_formFactorsEnum =
   /*@__PURE__*/ S.String;
 
-export type GetProjectsAppsReportsFilter_device_formFactorsEnumList =
-  ReadonlyArray<
-    GetProjectsAppsReportsFilter_device_formFactorsEnum | (string & {})
-  >;
+export type GetProjectsAppsReportsFilter_device_formFactorsEnumList = Array<
+  GetProjectsAppsReportsFilter_device_formFactorsEnum | (string & {})
+>;
 export const GetProjectsAppsReportsFilter_device_formFactorsEnumList =
   /*@__PURE__*/ S.Array(
     GetProjectsAppsReportsFilter_device_formFactorsEnum,
@@ -968,7 +965,7 @@ export type GetProjectsAppsReportsFilter_issue_signalsEnum =
 export const GetProjectsAppsReportsFilter_issue_signalsEnum =
   /*@__PURE__*/ S.String;
 
-export type GetProjectsAppsReportsFilter_issue_signalsEnumList = ReadonlyArray<
+export type GetProjectsAppsReportsFilter_issue_signalsEnumList = Array<
   GetProjectsAppsReportsFilter_issue_signalsEnum | (string & {})
 >;
 export const GetProjectsAppsReportsFilter_issue_signalsEnumList =
@@ -1101,7 +1098,7 @@ export const IntervalMetrics = /*@__PURE__*/ S.suspend(() =>
   identifier: "IntervalMetrics",
 }) as any as S.Schema<IntervalMetrics>;
 
-export type IntervalMetricsList = ReadonlyArray<IntervalMetrics>;
+export type IntervalMetricsList = Array<IntervalMetrics>;
 export const IntervalMetricsList = /*@__PURE__*/ S.Array(
   IntervalMetrics,
 ) as any as S.Schema<IntervalMetricsList>;
@@ -1154,7 +1151,7 @@ export const ReportGroup = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ReportGroup" }) as any as S.Schema<ReportGroup>;
 
-export type ReportGroupList = ReadonlyArray<ReportGroup>;
+export type ReportGroupList = Array<ReportGroup>;
 export const ReportGroupList = /*@__PURE__*/ S.Array(
   ReportGroup,
 ) as any as S.Schema<ReportGroupList>;
@@ -1203,10 +1200,9 @@ export type ListProjectsAppsEventsFilter_device_formFactorsEnum =
 export const ListProjectsAppsEventsFilter_device_formFactorsEnum =
   /*@__PURE__*/ S.String;
 
-export type ListProjectsAppsEventsFilter_device_formFactorsEnumList =
-  ReadonlyArray<
-    ListProjectsAppsEventsFilter_device_formFactorsEnum | (string & {})
-  >;
+export type ListProjectsAppsEventsFilter_device_formFactorsEnumList = Array<
+  ListProjectsAppsEventsFilter_device_formFactorsEnum | (string & {})
+>;
 export const ListProjectsAppsEventsFilter_device_formFactorsEnumList =
   /*@__PURE__*/ S.Array(
     ListProjectsAppsEventsFilter_device_formFactorsEnum,
@@ -1221,7 +1217,7 @@ export type ListProjectsAppsEventsFilter_issue_signalsEnum =
 export const ListProjectsAppsEventsFilter_issue_signalsEnum =
   /*@__PURE__*/ S.String;
 
-export type ListProjectsAppsEventsFilter_issue_signalsEnumList = ReadonlyArray<
+export type ListProjectsAppsEventsFilter_issue_signalsEnumList = Array<
   ListProjectsAppsEventsFilter_issue_signalsEnum | (string & {})
 >;
 export const ListProjectsAppsEventsFilter_issue_signalsEnumList =
@@ -1237,7 +1233,7 @@ export type ListProjectsAppsEventsFilter_issue_statesEnum =
 export const ListProjectsAppsEventsFilter_issue_statesEnum =
   /*@__PURE__*/ S.String;
 
-export type ListProjectsAppsEventsFilter_issue_statesEnumList = ReadonlyArray<
+export type ListProjectsAppsEventsFilter_issue_statesEnumList = Array<
   ListProjectsAppsEventsFilter_issue_statesEnum | (string & {})
 >;
 export const ListProjectsAppsEventsFilter_issue_statesEnumList =
@@ -1253,10 +1249,9 @@ export type ListProjectsAppsEventsFilter_issue_errorTypesEnum =
 export const ListProjectsAppsEventsFilter_issue_errorTypesEnum =
   /*@__PURE__*/ S.String;
 
-export type ListProjectsAppsEventsFilter_issue_errorTypesEnumList =
-  ReadonlyArray<
-    ListProjectsAppsEventsFilter_issue_errorTypesEnum | (string & {})
-  >;
+export type ListProjectsAppsEventsFilter_issue_errorTypesEnumList = Array<
+  ListProjectsAppsEventsFilter_issue_errorTypesEnum | (string & {})
+>;
 export const ListProjectsAppsEventsFilter_issue_errorTypesEnumList =
   /*@__PURE__*/ S.Array(
     ListProjectsAppsEventsFilter_issue_errorTypesEnum,
@@ -1385,7 +1380,7 @@ export const ListProjectsAppsIssuesNotesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsAppsIssuesNotesRequest",
 }) as any as S.Schema<ListProjectsAppsIssuesNotesRequest>;
 
-export type NoteList = ReadonlyArray<Note>;
+export type NoteList = Array<Note>;
 export const NoteList = /*@__PURE__*/ S.Array(
   Note,
 ) as any as S.Schema<NoteList>;
@@ -1424,7 +1419,7 @@ export const ListProjectsAppsReportsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsAppsReportsRequest",
 }) as any as S.Schema<ListProjectsAppsReportsRequest>;
 
-export type ReportList = ReadonlyArray<Report>;
+export type ReportList = Array<Report>;
 export const ReportList = /*@__PURE__*/ S.Array(
   Report,
 ) as any as S.Schema<ReportList>;

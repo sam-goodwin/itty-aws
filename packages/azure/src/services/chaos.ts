@@ -317,7 +317,7 @@ export const Capability = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Capability" }) as any as S.Schema<Capability>;
 
 /** The Capability items on this page */
-export type CapabilityListResultValueList = ReadonlyArray<Capability>;
+export type CapabilityListResultValueList = Array<Capability>;
 export const CapabilityListResultValueList = /*@__PURE__*/ S.Array(
   Capability,
 ) as any as S.Schema<CapabilityListResultValueList>;
@@ -367,16 +367,14 @@ export const CapabilityTypesGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CapabilityTypesGetRequest>;
 
 /** Control plane actions necessary to execute capability type. */
-export type CapabilityTypePropertiesAzureRbacActionsList =
-  ReadonlyArray<string>;
+export type CapabilityTypePropertiesAzureRbacActionsList = Array<string>;
 export const CapabilityTypePropertiesAzureRbacActionsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<CapabilityTypePropertiesAzureRbacActionsList>;
 
 /** Data plane actions necessary to execute capability type. */
-export type CapabilityTypePropertiesAzureRbacDataActionsList =
-  ReadonlyArray<string>;
+export type CapabilityTypePropertiesAzureRbacDataActionsList = Array<string>;
 export const CapabilityTypePropertiesAzureRbacDataActionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -384,7 +382,7 @@ export const CapabilityTypePropertiesAzureRbacDataActionsList =
 
 /** Required Azure Role Definition Ids to execute capability type. */
 export type CapabilityTypePropertiesRequiredAzureRoleDefinitionIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CapabilityTypePropertiesRequiredAzureRoleDefinitionIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -527,7 +525,7 @@ export const CapabilityType = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CapabilityType" }) as any as S.Schema<CapabilityType>;
 
 /** The CapabilityType items on this page */
-export type CapabilityTypeListResultValueList = ReadonlyArray<CapabilityType>;
+export type CapabilityTypeListResultValueList = Array<CapabilityType>;
 export const CapabilityTypeListResultValueList = /*@__PURE__*/ S.Array(
   CapabilityType,
 ) as any as S.Schema<CapabilityTypeListResultValueList>;
@@ -638,7 +636,7 @@ export interface ChaosExperimentAction {
   /** String that represents a Capability URN. */
   name: string;
   /** Chaos experiment action discriminator type */
-  type: ExperimentActionType;
+  type: ExperimentActionType | (string & {});
 }
 export const ChaosExperimentAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -650,8 +648,7 @@ export const ChaosExperimentAction = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ChaosExperimentAction>;
 
 /** List of actions. */
-export type ChaosExperimentBranchActionsList =
-  ReadonlyArray<ChaosExperimentAction>;
+export type ChaosExperimentBranchActionsList = Array<ChaosExperimentAction>;
 export const ChaosExperimentBranchActionsList = /*@__PURE__*/ S.Array(
   ChaosExperimentAction,
 ) as any as S.Schema<ChaosExperimentBranchActionsList>;
@@ -673,8 +670,7 @@ export const ChaosExperimentBranch = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ChaosExperimentBranch>;
 
 /** List of branches. */
-export type ChaosExperimentStepBranchesList =
-  ReadonlyArray<ChaosExperimentBranch>;
+export type ChaosExperimentStepBranchesList = Array<ChaosExperimentBranch>;
 export const ChaosExperimentStepBranchesList = /*@__PURE__*/ S.Array(
   ChaosExperimentBranch,
 ) as any as S.Schema<ChaosExperimentStepBranchesList>;
@@ -696,8 +692,7 @@ export const ChaosExperimentStep = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ChaosExperimentStep>;
 
 /** List of steps. */
-export type ExperimentPropertiesInputStepsList =
-  ReadonlyArray<ChaosExperimentStep>;
+export type ExperimentPropertiesInputStepsList = Array<ChaosExperimentStep>;
 export const ExperimentPropertiesInputStepsList = /*@__PURE__*/ S.Array(
   ChaosExperimentStep,
 ) as any as S.Schema<ExperimentPropertiesInputStepsList>;
@@ -713,7 +708,7 @@ export const FilterType = /*@__PURE__*/ S.String;
 /** Model that represents available filter types that can be applied to a targets list. */
 export interface ChaosTargetFilter {
   /** Chaos target filter discriminator type */
-  type: FilterType;
+  type: FilterType | (string & {});
 }
 export const ChaosTargetFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -728,7 +723,7 @@ export interface ChaosTargetSelector {
   /** String of the selector ID. */
   id: string;
   /** Chaos target selector discriminator type */
-  type: SelectorType;
+  type: SelectorType | (string & {});
   /** Model that represents available filter types that can be applied to a targets list. */
   filter?: ChaosTargetFilter;
 }
@@ -743,8 +738,7 @@ export const ChaosTargetSelector = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ChaosTargetSelector>;
 
 /** List of selectors. */
-export type ExperimentPropertiesInputSelectorsList =
-  ReadonlyArray<ChaosTargetSelector>;
+export type ExperimentPropertiesInputSelectorsList = Array<ChaosTargetSelector>;
 export const ExperimentPropertiesInputSelectorsList = /*@__PURE__*/ S.Array(
   ChaosTargetSelector,
 ) as any as S.Schema<ExperimentPropertiesInputSelectorsList>;
@@ -868,14 +862,13 @@ export type ProvisioningState =
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** List of steps. */
-export type ExperimentPropertiesStepsList = ReadonlyArray<ChaosExperimentStep>;
+export type ExperimentPropertiesStepsList = Array<ChaosExperimentStep>;
 export const ExperimentPropertiesStepsList = /*@__PURE__*/ S.Array(
   ChaosExperimentStep,
 ) as any as S.Schema<ExperimentPropertiesStepsList>;
 
 /** List of selectors. */
-export type ExperimentPropertiesSelectorsList =
-  ReadonlyArray<ChaosTargetSelector>;
+export type ExperimentPropertiesSelectorsList = Array<ChaosTargetSelector>;
 export const ExperimentPropertiesSelectorsList = /*@__PURE__*/ S.Array(
   ChaosTargetSelector,
 ) as any as S.Schema<ExperimentPropertiesSelectorsList>;
@@ -1037,7 +1030,7 @@ export const ExperimentExecutionActionTargetDetailsProperties =
 
 /** The array of targets. */
 export type ActionStatusTargetsList =
-  ReadonlyArray<ExperimentExecutionActionTargetDetailsProperties>;
+  Array<ExperimentExecutionActionTargetDetailsProperties>;
 export const ActionStatusTargetsList = /*@__PURE__*/ S.Array(
   ExperimentExecutionActionTargetDetailsProperties,
 ) as any as S.Schema<ActionStatusTargetsList>;
@@ -1069,7 +1062,7 @@ export const ActionStatus = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ActionStatus" }) as any as S.Schema<ActionStatus>;
 
 /** The array of actions. */
-export type BranchStatusActionsList = ReadonlyArray<ActionStatus>;
+export type BranchStatusActionsList = Array<ActionStatus>;
 export const BranchStatusActionsList = /*@__PURE__*/ S.Array(
   ActionStatus,
 ) as any as S.Schema<BranchStatusActionsList>;
@@ -1095,7 +1088,7 @@ export const BranchStatus = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BranchStatus" }) as any as S.Schema<BranchStatus>;
 
 /** The array of branches. */
-export type StepStatusBranchesList = ReadonlyArray<BranchStatus>;
+export type StepStatusBranchesList = Array<BranchStatus>;
 export const StepStatusBranchesList = /*@__PURE__*/ S.Array(
   BranchStatus,
 ) as any as S.Schema<StepStatusBranchesList>;
@@ -1122,7 +1115,7 @@ export const StepStatus = /*@__PURE__*/ S.suspend(() =>
 
 /** The steps of the experiment run. */
 export type ExperimentExecutionDetailsPropertiesRunInformationStepsList =
-  ReadonlyArray<StepStatus>;
+  Array<StepStatus>;
 export const ExperimentExecutionDetailsPropertiesRunInformationStepsList =
   /*@__PURE__*/ S.Array(
     StepStatus,
@@ -1443,7 +1436,7 @@ export const Experiment = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Experiment" }) as any as S.Schema<Experiment>;
 
 /** The Experiment items on this page */
-export type ExperimentListResultValueList = ReadonlyArray<Experiment>;
+export type ExperimentListResultValueList = Array<Experiment>;
 export const ExperimentListResultValueList = /*@__PURE__*/ S.Array(
   Experiment,
 ) as any as S.Schema<ExperimentListResultValueList>;
@@ -1540,8 +1533,7 @@ export const ExperimentExecution = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExperimentExecution>;
 
 /** The ExperimentExecution items on this page */
-export type ExperimentExecutionListResultValueList =
-  ReadonlyArray<ExperimentExecution>;
+export type ExperimentExecutionListResultValueList = Array<ExperimentExecution>;
 export const ExperimentExecutionListResultValueList = /*@__PURE__*/ S.Array(
   ExperimentExecution,
 ) as any as S.Schema<ExperimentExecutionListResultValueList>;
@@ -1778,7 +1770,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListAllResponseValueList = ReadonlyArray<Operation>;
+export type OperationsListAllResponseValueList = Array<Operation>;
 export const OperationsListAllResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListAllResponseValueList>;
@@ -1824,14 +1816,13 @@ export const OperationStatusesGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationStatusesGetRequest>;
 
 /** The operations list. */
-export type OperationStatusResultOperationsList =
-  ReadonlyArray<OperationStatusResult>;
+export type OperationStatusResultOperationsList = Array<OperationStatusResult>;
 export const OperationStatusResultOperationsList = /*@__PURE__*/ S.Array(
   S.suspend(() => OperationStatusResult),
 ) as any as S.Schema<OperationStatusResultOperationsList>;
 
 /** The error details. */
-export type ErrorDetailDetailsList = ReadonlyArray<ErrorDetail>;
+export type ErrorDetailDetailsList = Array<ErrorDetail>;
 export const ErrorDetailDetailsList = /*@__PURE__*/ S.Array(
   S.suspend(() => ErrorDetail),
 ) as any as S.Schema<ErrorDetailDetailsList>;
@@ -1853,7 +1844,7 @@ export const ErrorAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ErrorAdditionalInfo>;
 
 /** The error additional info. */
-export type ErrorDetailAdditionalInfoList = ReadonlyArray<ErrorAdditionalInfo>;
+export type ErrorDetailAdditionalInfoList = Array<ErrorAdditionalInfo>;
 export const ErrorDetailAdditionalInfoList = /*@__PURE__*/ S.Array(
   ErrorAdditionalInfo,
 ) as any as S.Schema<ErrorDetailAdditionalInfoList>;
@@ -1920,7 +1911,7 @@ export const OperationStatusResult = /*@__PURE__*/ S.suspend(() =>
 
 /** The operations list. */
 export type OperationStatusesGetResponseOperationsList =
-  ReadonlyArray<OperationStatusResult>;
+  Array<OperationStatusResult>;
 export const OperationStatusesGetResponseOperationsList = /*@__PURE__*/ S.Array(
   OperationStatusResult,
 ) as any as S.Schema<OperationStatusesGetResponseOperationsList>;
@@ -2226,7 +2217,7 @@ export const Target = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Target" }) as any as S.Schema<Target>;
 
 /** The Target items on this page */
-export type TargetListResultValueList = ReadonlyArray<Target>;
+export type TargetListResultValueList = Array<Target>;
 export const TargetListResultValueList = /*@__PURE__*/ S.Array(
   Target,
 ) as any as S.Schema<TargetListResultValueList>;
@@ -2273,7 +2264,7 @@ export const TargetTypesGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TargetTypesGetRequest>;
 
 /** List of resource types this Target Type can extend. */
-export type TargetTypePropertiesResourceTypesList = ReadonlyArray<string>;
+export type TargetTypePropertiesResourceTypesList = Array<string>;
 export const TargetTypePropertiesResourceTypesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<TargetTypePropertiesResourceTypesList>;
@@ -2373,7 +2364,7 @@ export const TargetType = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TargetType" }) as any as S.Schema<TargetType>;
 
 /** The TargetType items on this page */
-export type TargetTypeListResultValueList = ReadonlyArray<TargetType>;
+export type TargetTypeListResultValueList = Array<TargetType>;
 export const TargetTypeListResultValueList = /*@__PURE__*/ S.Array(
   TargetType,
 ) as any as S.Schema<TargetTypeListResultValueList>;

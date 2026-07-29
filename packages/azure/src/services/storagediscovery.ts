@@ -80,7 +80,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = ReadonlyArray<Operation>;
+export type OperationsListResponseValueList = Array<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;
@@ -101,7 +101,7 @@ export const OperationsListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationsListResponse>;
 
 /** The queries to execute against Storage Discovery data. Format: Base64-encoded JSON object with structure: {"queries":[{"name":"queryName","query":"KQL query"}]} For query syntax and available tables, see: https://aka.ms/storageDiscoveryQuery */
-export type ReportGenerateReportRequestQueriesList = ReadonlyArray<string>;
+export type ReportGenerateReportRequestQueriesList = Array<string>;
 export const ReportGenerateReportRequestQueriesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ReportGenerateReportRequestQueriesList>;
@@ -154,19 +154,18 @@ export const ReportResultColumn = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReportResultColumn>;
 
 /** Array of columns object, present only if the query succeeded */
-export type ReportResultSetColumnsList = ReadonlyArray<ReportResultColumn>;
+export type ReportResultSetColumnsList = Array<ReportResultColumn>;
 export const ReportResultSetColumnsList = /*@__PURE__*/ S.Array(
   ReportResultColumn,
 ) as any as S.Schema<ReportResultSetColumnsList>;
 
-export type ReportResultSetRowsItemList = ReadonlyArray<string>;
+export type ReportResultSetRowsItemList = Array<string>;
 export const ReportResultSetRowsItemList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ReportResultSetRowsItemList>;
 
 /** Array of all rows from ADX, present only if the query succeeded */
-export type ReportResultSetRowsList =
-  ReadonlyArray<ReportResultSetRowsItemList>;
+export type ReportResultSetRowsList = Array<ReportResultSetRowsItemList>;
 export const ReportResultSetRowsList = /*@__PURE__*/ S.Array(
   ReportResultSetRowsItemList,
 ) as any as S.Schema<ReportResultSetRowsList>;
@@ -191,7 +190,7 @@ export const ReportResultSet = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReportResultSet>;
 
 /** One or more result sets, in the same order as the queries in the request body */
-export type GetReportResultResultsList = ReadonlyArray<ReportResultSet>;
+export type GetReportResultResultsList = Array<ReportResultSet>;
 export const GetReportResultResultsList = /*@__PURE__*/ S.Array(
   ReportResultSet,
 ) as any as S.Schema<GetReportResultResultsList>;
@@ -375,7 +374,7 @@ export const ReportResource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ReportResource" }) as any as S.Schema<ReportResource>;
 
 /** The ReportResource items on this page */
-export type ReportResourceListResultValueList = ReadonlyArray<ReportResource>;
+export type ReportResourceListResultValueList = Array<ReportResource>;
 export const ReportResourceListResultValueList = /*@__PURE__*/ S.Array(
   ReportResource,
 ) as any as S.Schema<ReportResourceListResultValueList>;
@@ -435,7 +434,7 @@ export const StorageDiscoveryWorkspacePropertiesInputSku =
 
 /** The view level storage discovery data estate */
 export type StorageDiscoveryWorkspacePropertiesInputWorkspaceRootsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const StorageDiscoveryWorkspacePropertiesInputWorkspaceRootsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -446,14 +445,15 @@ export type StorageDiscoveryResourceType = "Microsoft.Storage/storageAccounts";
 export const StorageDiscoveryResourceType = /*@__PURE__*/ S.String;
 
 /** Resource types for the collection */
-export type StorageDiscoveryScopeResourceTypesList =
-  ReadonlyArray<StorageDiscoveryResourceType>;
+export type StorageDiscoveryScopeResourceTypesList = Array<
+  StorageDiscoveryResourceType | (string & {})
+>;
 export const StorageDiscoveryScopeResourceTypesList = /*@__PURE__*/ S.Array(
   StorageDiscoveryResourceType,
 ) as any as S.Schema<StorageDiscoveryScopeResourceTypesList>;
 
 /** The storage account tags keys to filter */
-export type StorageDiscoveryScopeTagKeysOnlyList = ReadonlyArray<string>;
+export type StorageDiscoveryScopeTagKeysOnlyList = Array<string>;
 export const StorageDiscoveryScopeTagKeysOnlyList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StorageDiscoveryScopeTagKeysOnlyList>;
@@ -491,7 +491,7 @@ export const StorageDiscoveryScope = /*@__PURE__*/ S.suspend(() =>
 
 /** The scopes of the storage discovery workspace. */
 export type StorageDiscoveryWorkspacePropertiesInputScopesList =
-  ReadonlyArray<StorageDiscoveryScope>;
+  Array<StorageDiscoveryScope>;
 export const StorageDiscoveryWorkspacePropertiesInputScopesList =
   /*@__PURE__*/ S.Array(
     StorageDiscoveryScope,
@@ -572,7 +572,7 @@ export const StorageDiscoveryWorkspacePropertiesSku = /*@__PURE__*/ S.String;
 
 /** The view level storage discovery data estate */
 export type StorageDiscoveryWorkspacePropertiesWorkspaceRootsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const StorageDiscoveryWorkspacePropertiesWorkspaceRootsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -580,7 +580,7 @@ export const StorageDiscoveryWorkspacePropertiesWorkspaceRootsList =
 
 /** The scopes of the storage discovery workspace. */
 export type StorageDiscoveryWorkspacePropertiesScopesList =
-  ReadonlyArray<StorageDiscoveryScope>;
+  Array<StorageDiscoveryScope>;
 export const StorageDiscoveryWorkspacePropertiesScopesList =
   /*@__PURE__*/ S.Array(
     StorageDiscoveryScope,
@@ -809,7 +809,7 @@ export const StorageDiscoveryWorkspace = /*@__PURE__*/ S.suspend(() =>
 
 /** The StorageDiscoveryWorkspace items on this page */
 export type StorageDiscoveryWorkspaceListResultValueList =
-  ReadonlyArray<StorageDiscoveryWorkspace>;
+  Array<StorageDiscoveryWorkspace>;
 export const StorageDiscoveryWorkspaceListResultValueList =
   /*@__PURE__*/ S.Array(
     StorageDiscoveryWorkspace,
@@ -852,8 +852,7 @@ export const StorageDiscoveryWorkspacesListBySubscriptionRequest =
   }) as any as S.Schema<StorageDiscoveryWorkspacesListBySubscriptionRequest>;
 
 /** The queries to execute against Storage Discovery data. Format: Base64-encoded JSON object with structure: {"queries":[{"name":"queryName","query":"KQL query"}]} For query syntax and available tables, see: https://aka.ms/storageDiscoveryQuery */
-export type StorageDiscoveryWorkspacesReportRequestQueriesList =
-  ReadonlyArray<string>;
+export type StorageDiscoveryWorkspacesReportRequestQueriesList = Array<string>;
 export const StorageDiscoveryWorkspacesReportRequestQueriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -904,7 +903,7 @@ export const StorageDiscoverySku = /*@__PURE__*/ S.String;
 
 /** The view level storage discovery data estate */
 export type StorageDiscoveryWorkspacePropertiesUpdateWorkspaceRootsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const StorageDiscoveryWorkspacePropertiesUpdateWorkspaceRootsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -912,7 +911,7 @@ export const StorageDiscoveryWorkspacePropertiesUpdateWorkspaceRootsList =
 
 /** The scopes of the storage discovery workspace. */
 export type StorageDiscoveryWorkspacePropertiesUpdateScopesList =
-  ReadonlyArray<StorageDiscoveryScope>;
+  Array<StorageDiscoveryScope>;
 export const StorageDiscoveryWorkspacePropertiesUpdateScopesList =
   /*@__PURE__*/ S.Array(
     StorageDiscoveryScope,

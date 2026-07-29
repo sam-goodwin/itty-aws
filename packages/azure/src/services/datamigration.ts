@@ -73,7 +73,7 @@ export const MongoMigrationCollectionInput = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Mongo Collections to be migrated. */
 export type DatabaseMigrationPropertiesCosmosDbMongoInputCollectionListList =
-  ReadonlyArray<MongoMigrationCollectionInput>;
+  Array<MongoMigrationCollectionInput>;
 export const DatabaseMigrationPropertiesCosmosDbMongoInputCollectionListList =
   /*@__PURE__*/ S.Array(
     MongoMigrationCollectionInput,
@@ -282,7 +282,7 @@ export const MongoMigrationCollection = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Mongo Collections to be migrated. */
 export type DatabaseMigrationPropertiesCosmosDbMongoCollectionListList =
-  ReadonlyArray<MongoMigrationCollection>;
+  Array<MongoMigrationCollection>;
 export const DatabaseMigrationPropertiesCosmosDbMongoCollectionListList =
   /*@__PURE__*/ S.Array(
     MongoMigrationCollection,
@@ -507,7 +507,7 @@ export const DatabaseMigrationCosmosDbMongo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DatabaseMigrationCosmosDbMongo>;
 
 export type DatabaseMigrationCosmosDbMongoListResultValueList =
-  ReadonlyArray<DatabaseMigrationCosmosDbMongo>;
+  Array<DatabaseMigrationCosmosDbMongo>;
 export const DatabaseMigrationCosmosDbMongoListResultValueList =
   /*@__PURE__*/ S.Array(
     DatabaseMigrationCosmosDbMongo,
@@ -774,8 +774,7 @@ export const SqlConnectionInformation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SqlConnectionInformation>;
 
 /** List of tables to copy. */
-export type DatabaseMigrationPropertiesSqlDbInputTableListList =
-  ReadonlyArray<string>;
+export type DatabaseMigrationPropertiesSqlDbInputTableListList = Array<string>;
 export const DatabaseMigrationPropertiesSqlDbInputTableListList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -869,8 +868,7 @@ export const DatabaseMigrationPropertiesSqlDbProvisioningState =
   /*@__PURE__*/ S.String;
 
 /** Sql Data Copy errors, if any. */
-export type SqlDbMigrationStatusDetailsSqlDataCopyErrorsList =
-  ReadonlyArray<string>;
+export type SqlDbMigrationStatusDetailsSqlDataCopyErrorsList = Array<string>;
 export const SqlDbMigrationStatusDetailsSqlDataCopyErrorsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -921,7 +919,7 @@ export const CopyProgressDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** Details on progress of ADF copy activities. */
 export type SqlDbMigrationStatusDetailsListOfCopyProgressDetailsList =
-  ReadonlyArray<CopyProgressDetails>;
+  Array<CopyProgressDetails>;
 export const SqlDbMigrationStatusDetailsListOfCopyProgressDetailsList =
   /*@__PURE__*/ S.Array(
     CopyProgressDetails,
@@ -964,8 +962,7 @@ export const SqlDbOfflineConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SqlDbOfflineConfiguration>;
 
 /** List of tables to copy. */
-export type DatabaseMigrationPropertiesSqlDbTableListList =
-  ReadonlyArray<string>;
+export type DatabaseMigrationPropertiesSqlDbTableListList = Array<string>;
 export const DatabaseMigrationPropertiesSqlDbTableListList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1507,14 +1504,13 @@ export const SqlBackupFileInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SqlBackupFileInfo>;
 
 /** List of files in the backup set. */
-export type SqlBackupSetInfoListOfBackupFilesList =
-  ReadonlyArray<SqlBackupFileInfo>;
+export type SqlBackupSetInfoListOfBackupFilesList = Array<SqlBackupFileInfo>;
 export const SqlBackupSetInfoListOfBackupFilesList = /*@__PURE__*/ S.Array(
   SqlBackupFileInfo,
 ) as any as S.Schema<SqlBackupSetInfoListOfBackupFilesList>;
 
 /** The reasons why the backup set is ignored */
-export type SqlBackupSetInfoIgnoreReasonsList = ReadonlyArray<string>;
+export type SqlBackupSetInfoIgnoreReasonsList = Array<string>;
 export const SqlBackupSetInfoIgnoreReasonsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SqlBackupSetInfoIgnoreReasonsList>;
@@ -1564,20 +1560,19 @@ export const SqlBackupSetInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** Backup sets that are currently active. */
 export type MigrationStatusDetailsActiveBackupSetsList =
-  ReadonlyArray<SqlBackupSetInfo>;
+  Array<SqlBackupSetInfo>;
 export const MigrationStatusDetailsActiveBackupSetsList = /*@__PURE__*/ S.Array(
   SqlBackupSetInfo,
 ) as any as S.Schema<MigrationStatusDetailsActiveBackupSetsList>;
 
 /** Files that are not valid backup files. */
-export type MigrationStatusDetailsInvalidFilesList = ReadonlyArray<string>;
+export type MigrationStatusDetailsInvalidFilesList = Array<string>;
 export const MigrationStatusDetailsInvalidFilesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<MigrationStatusDetailsInvalidFilesList>;
 
 /** File upload blocking errors, if any. */
-export type MigrationStatusDetailsFileUploadBlockingErrorsList =
-  ReadonlyArray<string>;
+export type MigrationStatusDetailsFileUploadBlockingErrorsList = Array<string>;
 export const MigrationStatusDetailsFileUploadBlockingErrorsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2604,7 +2599,7 @@ export const ProjectFile = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ProjectFile" }) as any as S.Schema<ProjectFile>;
 
 /** List of files */
-export type FilesListResponseValueList = ReadonlyArray<ProjectFile>;
+export type FilesListResponseValueList = Array<ProjectFile>;
 export const FilesListResponseValueList = /*@__PURE__*/ S.Array(
   ProjectFile,
 ) as any as S.Schema<FilesListResponseValueList>;
@@ -3065,8 +3060,7 @@ export const MigrationService = /*@__PURE__*/ S.suspend(() =>
   identifier: "MigrationService",
 }) as any as S.Schema<MigrationService>;
 
-export type MigrationServiceListResultValueList =
-  ReadonlyArray<MigrationService>;
+export type MigrationServiceListResultValueList = Array<MigrationService>;
 export const MigrationServiceListResultValueList = /*@__PURE__*/ S.Array(
   MigrationService,
 ) as any as S.Schema<MigrationServiceListResultValueList>;
@@ -3214,7 +3208,7 @@ export const DatabaseMigrationBase = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DatabaseMigrationBase>;
 
 export type DatabaseMigrationBaseListResultValueList =
-  ReadonlyArray<DatabaseMigrationBase>;
+  Array<DatabaseMigrationBase>;
 export const DatabaseMigrationBaseListResultValueList = /*@__PURE__*/ S.Array(
   DatabaseMigrationBase,
 ) as any as S.Schema<DatabaseMigrationBaseListResultValueList>;
@@ -3368,7 +3362,7 @@ export const OperationsDefinition = /*@__PURE__*/ S.suspend(() =>
   identifier: "OperationsDefinition",
 }) as any as S.Schema<OperationsDefinition>;
 
-export type OperationListResultValueList = ReadonlyArray<OperationsDefinition>;
+export type OperationListResultValueList = Array<OperationsDefinition>;
 export const OperationListResultValueList = /*@__PURE__*/ S.Array(
   OperationsDefinition,
 ) as any as S.Schema<OperationListResultValueList>;
@@ -3490,8 +3484,7 @@ export const DatabaseInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DatabaseInfo" }) as any as S.Schema<DatabaseInfo>;
 
 /** List of DatabaseInfo */
-export type ProjectPropertiesInputDatabasesInfoList =
-  ReadonlyArray<DatabaseInfo>;
+export type ProjectPropertiesInputDatabasesInfoList = Array<DatabaseInfo>;
 export const ProjectPropertiesInputDatabasesInfoList = /*@__PURE__*/ S.Array(
   DatabaseInfo,
 ) as any as S.Schema<ProjectPropertiesInputDatabasesInfoList>;
@@ -3643,7 +3636,7 @@ export const ProjectPropertiesTargetConnectionInfo = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ProjectPropertiesTargetConnectionInfo>;
 
 /** List of DatabaseInfo */
-export type ProjectPropertiesDatabasesInfoList = ReadonlyArray<DatabaseInfo>;
+export type ProjectPropertiesDatabasesInfoList = Array<DatabaseInfo>;
 export const ProjectPropertiesDatabasesInfoList = /*@__PURE__*/ S.Array(
   DatabaseInfo,
 ) as any as S.Schema<ProjectPropertiesDatabasesInfoList>;
@@ -3892,7 +3885,7 @@ export const Project = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Project" }) as any as S.Schema<Project>;
 
 /** List of projects */
-export type ProjectsListResponseValueList = ReadonlyArray<Project>;
+export type ProjectsListResponseValueList = Array<Project>;
 export const ProjectsListResponseValueList = /*@__PURE__*/ S.Array(
   Project,
 ) as any as S.Schema<ProjectsListResponseValueList>;
@@ -4049,13 +4042,13 @@ export const ResourceSkuCapacity = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourceSkuCapacity>;
 
 /** The set of locations that the SKU is available. */
-export type ResourceSkuLocationsList = ReadonlyArray<string>;
+export type ResourceSkuLocationsList = Array<string>;
 export const ResourceSkuLocationsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ResourceSkuLocationsList>;
 
 /** The api versions that support this SKU. */
-export type ResourceSkuApiVersionsList = ReadonlyArray<string>;
+export type ResourceSkuApiVersionsList = Array<string>;
 export const ResourceSkuApiVersionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ResourceSkuApiVersionsList>;
@@ -4080,7 +4073,7 @@ export const ResourceSkuCosts = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourceSkuCosts>;
 
 /** Metadata for retrieving price info. */
-export type ResourceSkuCostsList = ReadonlyArray<ResourceSkuCosts>;
+export type ResourceSkuCostsList = Array<ResourceSkuCosts>;
 export const ResourceSkuCostsList = /*@__PURE__*/ S.Array(
   ResourceSkuCosts,
 ) as any as S.Schema<ResourceSkuCostsList>;
@@ -4102,8 +4095,7 @@ export const ResourceSkuCapabilities = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourceSkuCapabilities>;
 
 /** A name value pair to describe the capability. */
-export type ResourceSkuCapabilitiesList =
-  ReadonlyArray<ResourceSkuCapabilities>;
+export type ResourceSkuCapabilitiesList = Array<ResourceSkuCapabilities>;
 export const ResourceSkuCapabilitiesList = /*@__PURE__*/ S.Array(
   ResourceSkuCapabilities,
 ) as any as S.Schema<ResourceSkuCapabilitiesList>;
@@ -4113,7 +4105,7 @@ export type ResourceSkuRestrictionsType = "location";
 export const ResourceSkuRestrictionsType = /*@__PURE__*/ S.String;
 
 /** The value of restrictions. If the restriction type is set to location. This would be different locations where the SKU is restricted. */
-export type ResourceSkuRestrictionsValuesList = ReadonlyArray<string>;
+export type ResourceSkuRestrictionsValuesList = Array<string>;
 export const ResourceSkuRestrictionsValuesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ResourceSkuRestrictionsValuesList>;
@@ -4144,8 +4136,7 @@ export const ResourceSkuRestrictions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourceSkuRestrictions>;
 
 /** The restrictions because of which SKU cannot be used. This is empty if there are no restrictions. */
-export type ResourceSkuRestrictionsList =
-  ReadonlyArray<ResourceSkuRestrictions>;
+export type ResourceSkuRestrictionsList = Array<ResourceSkuRestrictions>;
 export const ResourceSkuRestrictionsList = /*@__PURE__*/ S.Array(
   ResourceSkuRestrictions,
 ) as any as S.Schema<ResourceSkuRestrictionsList>;
@@ -4195,7 +4186,7 @@ export const ResourceSku = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResourceSku" }) as any as S.Schema<ResourceSku>;
 
 /** The list of SKUs available for the subscription. */
-export type ResourceSkusListSkusResponseValueList = ReadonlyArray<ResourceSku>;
+export type ResourceSkusListSkusResponseValueList = Array<ResourceSku>;
 export const ResourceSkusListSkusResponseValueList = /*@__PURE__*/ S.Array(
   ResourceSku,
 ) as any as S.Schema<ResourceSkusListSkusResponseValueList>;
@@ -4354,8 +4345,7 @@ export const ServicesCheckStatusRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServicesCheckStatusRequest>;
 
 /** The list of supported task types */
-export type ServicesCheckStatusResponseSupportedTaskTypesList =
-  ReadonlyArray<string>;
+export type ServicesCheckStatusResponseSupportedTaskTypesList = Array<string>;
 export const ServicesCheckStatusResponseSupportedTaskTypesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4753,7 +4743,7 @@ export const DataMigrationService = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DataMigrationService>;
 
 /** List of services */
-export type ServicesListResponseValueList = ReadonlyArray<DataMigrationService>;
+export type ServicesListResponseValueList = Array<DataMigrationService>;
 export const ServicesListResponseValueList = /*@__PURE__*/ S.Array(
   DataMigrationService,
 ) as any as S.Schema<ServicesListResponseValueList>;
@@ -4797,7 +4787,7 @@ export const ServicesListByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of services */
 export type ServicesListByResourceGroupResponseValueList =
-  ReadonlyArray<DataMigrationService>;
+  Array<DataMigrationService>;
 export const ServicesListByResourceGroupResponseValueList =
   /*@__PURE__*/ S.Array(
     DataMigrationService,
@@ -4914,8 +4904,7 @@ export const AvailableServiceSku = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AvailableServiceSku>;
 
 /** List of service SKUs */
-export type ServicesListSkusResponseValueList =
-  ReadonlyArray<AvailableServiceSku>;
+export type ServicesListSkusResponseValueList = Array<AvailableServiceSku>;
 export const ServicesListSkusResponseValueList = /*@__PURE__*/ S.Array(
   AvailableServiceSku,
 ) as any as S.Schema<ServicesListSkusResponseValueList>;
@@ -5170,7 +5159,7 @@ export type ProjectTaskPropertiesTaskType =
 export const ProjectTaskPropertiesTaskType = /*@__PURE__*/ S.String;
 
 /** Inner errors that caused this error */
-export type ODataErrorDetailsList = ReadonlyArray<ODataError>;
+export type ODataErrorDetailsList = Array<ODataError>;
 export const ODataErrorDetailsList = /*@__PURE__*/ S.Array(
   S.suspend(() => ODataError),
 ) as any as S.Schema<ODataErrorDetailsList>;
@@ -5193,8 +5182,7 @@ export const ODataError = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ODataError" }) as any as S.Schema<ODataError>;
 
 /** Inner errors that caused this error */
-export type ProjectTaskPropertiesErrorsItemDetailsList =
-  ReadonlyArray<ODataError>;
+export type ProjectTaskPropertiesErrorsItemDetailsList = Array<ODataError>;
 export const ProjectTaskPropertiesErrorsItemDetailsList = /*@__PURE__*/ S.Array(
   ODataError,
 ) as any as S.Schema<ProjectTaskPropertiesErrorsItemDetailsList>;
@@ -5220,7 +5208,7 @@ export const ProjectTaskPropertiesErrorsItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of errors. This is ignored if submitted. */
 export type ProjectTaskPropertiesErrorsList =
-  ReadonlyArray<ProjectTaskPropertiesErrorsItem>;
+  Array<ProjectTaskPropertiesErrorsItem>;
 export const ProjectTaskPropertiesErrorsList = /*@__PURE__*/ S.Array(
   ProjectTaskPropertiesErrorsItem,
 ) as any as S.Schema<ProjectTaskPropertiesErrorsList>;
@@ -5249,7 +5237,7 @@ export const ProjectTaskPropertiesCommandsItemCommandType =
 
 /** Inner errors that caused this error */
 export type ProjectTaskPropertiesCommandsItemErrorsItemDetailsList =
-  ReadonlyArray<ODataError>;
+  Array<ODataError>;
 export const ProjectTaskPropertiesCommandsItemErrorsItemDetailsList =
   /*@__PURE__*/ S.Array(
     ODataError,
@@ -5279,7 +5267,7 @@ export const ProjectTaskPropertiesCommandsItemErrorsItem =
 
 /** Array of errors. This is ignored if submitted. */
 export type ProjectTaskPropertiesCommandsItemErrorsList =
-  ReadonlyArray<ProjectTaskPropertiesCommandsItemErrorsItem>;
+  Array<ProjectTaskPropertiesCommandsItemErrorsItem>;
 export const ProjectTaskPropertiesCommandsItemErrorsList =
   /*@__PURE__*/ S.Array(
     ProjectTaskPropertiesCommandsItemErrorsItem,
@@ -5315,7 +5303,7 @@ export const ProjectTaskPropertiesCommandsItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of command properties. */
 export type ProjectTaskPropertiesCommandsList =
-  ReadonlyArray<ProjectTaskPropertiesCommandsItem>;
+  Array<ProjectTaskPropertiesCommandsItem>;
 export const ProjectTaskPropertiesCommandsList = /*@__PURE__*/ S.Array(
   ProjectTaskPropertiesCommandsItem,
 ) as any as S.Schema<ProjectTaskPropertiesCommandsList>;
@@ -5660,7 +5648,7 @@ export const ProjectTask = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ProjectTask" }) as any as S.Schema<ProjectTask>;
 
 /** List of tasks */
-export type ServiceTasksListResponseValueList = ReadonlyArray<ProjectTask>;
+export type ServiceTasksListResponseValueList = Array<ProjectTask>;
 export const ServiceTasksListResponseValueList = /*@__PURE__*/ S.Array(
   ProjectTask,
 ) as any as S.Schema<ServiceTasksListResponseValueList>;
@@ -6092,8 +6080,7 @@ export const SqlMigrationService = /*@__PURE__*/ S.suspend(() =>
   identifier: "SqlMigrationService",
 }) as any as S.Schema<SqlMigrationService>;
 
-export type SqlMigrationListResultValueList =
-  ReadonlyArray<SqlMigrationService>;
+export type SqlMigrationListResultValueList = Array<SqlMigrationService>;
 export const SqlMigrationListResultValueList = /*@__PURE__*/ S.Array(
   SqlMigrationService,
 ) as any as S.Schema<SqlMigrationListResultValueList>;
@@ -6250,8 +6237,7 @@ export const DatabaseMigration = /*@__PURE__*/ S.suspend(() =>
   identifier: "DatabaseMigration",
 }) as any as S.Schema<DatabaseMigration>;
 
-export type DatabaseMigrationListResultValueList =
-  ReadonlyArray<DatabaseMigration>;
+export type DatabaseMigrationListResultValueList = Array<DatabaseMigration>;
 export const DatabaseMigrationListResultValueList = /*@__PURE__*/ S.Array(
   DatabaseMigration,
 ) as any as S.Schema<DatabaseMigrationListResultValueList>;
@@ -6343,7 +6329,7 @@ export const NodeMonitoringData = /*@__PURE__*/ S.suspend(() =>
 
 /** Integration Runtime node monitoring data. */
 export type IntegrationRuntimeMonitoringDataNodesList =
-  ReadonlyArray<NodeMonitoringData>;
+  Array<NodeMonitoringData>;
 export const IntegrationRuntimeMonitoringDataNodesList = /*@__PURE__*/ S.Array(
   NodeMonitoringData,
 ) as any as S.Schema<IntegrationRuntimeMonitoringDataNodesList>;
@@ -6600,8 +6586,7 @@ export type TasksCommandResponseCommandType =
 export const TasksCommandResponseCommandType = /*@__PURE__*/ S.String;
 
 /** Inner errors that caused this error */
-export type TasksCommandResponseErrorsItemDetailsList =
-  ReadonlyArray<ODataError>;
+export type TasksCommandResponseErrorsItemDetailsList = Array<ODataError>;
 export const TasksCommandResponseErrorsItemDetailsList = /*@__PURE__*/ S.Array(
   ODataError,
 ) as any as S.Schema<TasksCommandResponseErrorsItemDetailsList>;
@@ -6627,7 +6612,7 @@ export const TasksCommandResponseErrorsItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of errors. This is ignored if submitted. */
 export type TasksCommandResponseErrorsList =
-  ReadonlyArray<TasksCommandResponseErrorsItem>;
+  Array<TasksCommandResponseErrorsItem>;
 export const TasksCommandResponseErrorsList = /*@__PURE__*/ S.Array(
   TasksCommandResponseErrorsItem,
 ) as any as S.Schema<TasksCommandResponseErrorsList>;
@@ -6857,7 +6842,7 @@ export const TasksListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TasksListRequest>;
 
 /** List of tasks */
-export type TasksListResponseValueList = ReadonlyArray<ProjectTask>;
+export type TasksListResponseValueList = Array<ProjectTask>;
 export const TasksListResponseValueList = /*@__PURE__*/ S.Array(
   ProjectTask,
 ) as any as S.Schema<TasksListResponseValueList>;
@@ -7001,7 +6986,7 @@ export const Quota = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Quota" }) as any as S.Schema<Quota>;
 
 /** List of quotas */
-export type UsagesListResponseValueList = ReadonlyArray<Quota>;
+export type UsagesListResponseValueList = Array<Quota>;
 export const UsagesListResponseValueList = /*@__PURE__*/ S.Array(
   Quota,
 ) as any as S.Schema<UsagesListResponseValueList>;

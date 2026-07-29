@@ -125,7 +125,7 @@ export const IdentitySelector = /*@__PURE__*/ S.suspend(() =>
   identifier: "IdentitySelector",
 }) as any as S.Schema<IdentitySelector>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -281,7 +281,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -456,8 +456,7 @@ export const GoogleCloudAssetV1Access = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleCloudAssetV1Access",
 }) as any as S.Schema<GoogleCloudAssetV1Access>;
 
-export type GoogleCloudAssetV1AccessList =
-  ReadonlyArray<GoogleCloudAssetV1Access>;
+export type GoogleCloudAssetV1AccessList = Array<GoogleCloudAssetV1Access>;
 export const GoogleCloudAssetV1AccessList = /*@__PURE__*/ S.Array(
   GoogleCloudAssetV1Access,
 ) as any as S.Schema<GoogleCloudAssetV1AccessList>;
@@ -498,8 +497,7 @@ export const GoogleCloudAssetV1Resource = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleCloudAssetV1Resource",
 }) as any as S.Schema<GoogleCloudAssetV1Resource>;
 
-export type GoogleCloudAssetV1ResourceList =
-  ReadonlyArray<GoogleCloudAssetV1Resource>;
+export type GoogleCloudAssetV1ResourceList = Array<GoogleCloudAssetV1Resource>;
 export const GoogleCloudAssetV1ResourceList = /*@__PURE__*/ S.Array(
   GoogleCloudAssetV1Resource,
 ) as any as S.Schema<GoogleCloudAssetV1ResourceList>;
@@ -520,7 +518,7 @@ export const GoogleCloudAssetV1Edge = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleCloudAssetV1Edge",
 }) as any as S.Schema<GoogleCloudAssetV1Edge>;
 
-export type GoogleCloudAssetV1EdgeList = ReadonlyArray<GoogleCloudAssetV1Edge>;
+export type GoogleCloudAssetV1EdgeList = Array<GoogleCloudAssetV1Edge>;
 export const GoogleCloudAssetV1EdgeList = /*@__PURE__*/ S.Array(
   GoogleCloudAssetV1Edge,
 ) as any as S.Schema<GoogleCloudAssetV1EdgeList>;
@@ -548,7 +546,7 @@ export const GoogleCloudAssetV1AccessControlList = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudAssetV1AccessControlList>;
 
 export type GoogleCloudAssetV1AccessControlListList =
-  ReadonlyArray<GoogleCloudAssetV1AccessControlList>;
+  Array<GoogleCloudAssetV1AccessControlList>;
 export const GoogleCloudAssetV1AccessControlListList = /*@__PURE__*/ S.Array(
   GoogleCloudAssetV1AccessControlList,
 ) as any as S.Schema<GoogleCloudAssetV1AccessControlListList>;
@@ -606,8 +604,7 @@ export const GoogleCloudAssetV1Identity = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleCloudAssetV1Identity",
 }) as any as S.Schema<GoogleCloudAssetV1Identity>;
 
-export type GoogleCloudAssetV1IdentityList_ =
-  ReadonlyArray<GoogleCloudAssetV1Identity>;
+export type GoogleCloudAssetV1IdentityList_ = Array<GoogleCloudAssetV1Identity>;
 export const GoogleCloudAssetV1IdentityList_ = /*@__PURE__*/ S.Array(
   GoogleCloudAssetV1Identity,
 ) as any as S.Schema<GoogleCloudAssetV1IdentityList_>;
@@ -653,13 +650,12 @@ export const IamPolicyAnalysisResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "IamPolicyAnalysisResult",
 }) as any as S.Schema<IamPolicyAnalysisResult>;
 
-export type IamPolicyAnalysisResultList =
-  ReadonlyArray<IamPolicyAnalysisResult>;
+export type IamPolicyAnalysisResultList = Array<IamPolicyAnalysisResult>;
 export const IamPolicyAnalysisResultList = /*@__PURE__*/ S.Array(
   IamPolicyAnalysisResult,
 ) as any as S.Schema<IamPolicyAnalysisResultList>;
 
-export type IamPolicyAnalysisStateList = ReadonlyArray<IamPolicyAnalysisState>;
+export type IamPolicyAnalysisStateList = Array<IamPolicyAnalysisState>;
 export const IamPolicyAnalysisStateList = /*@__PURE__*/ S.Array(
   IamPolicyAnalysisState,
 ) as any as S.Schema<IamPolicyAnalysisStateList>;
@@ -686,7 +682,7 @@ export const IamPolicyAnalysis = /*@__PURE__*/ S.suspend(() =>
   identifier: "IamPolicyAnalysis",
 }) as any as S.Schema<IamPolicyAnalysis>;
 
-export type IamPolicyAnalysisList = ReadonlyArray<IamPolicyAnalysis>;
+export type IamPolicyAnalysisList = Array<IamPolicyAnalysis>;
 export const IamPolicyAnalysisList = /*@__PURE__*/ S.Array(
   IamPolicyAnalysis,
 ) as any as S.Schema<IamPolicyAnalysisList>;
@@ -751,7 +747,7 @@ export const MoveImpact = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MoveImpact" }) as any as S.Schema<MoveImpact>;
 
-export type MoveImpactList = ReadonlyArray<MoveImpact>;
+export type MoveImpactList = Array<MoveImpact>;
 export const MoveImpactList = /*@__PURE__*/ S.Array(
   MoveImpact,
 ) as any as S.Schema<MoveImpactList>;
@@ -789,7 +785,7 @@ export const MoveAnalysis = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MoveAnalysis" }) as any as S.Schema<MoveAnalysis>;
 
-export type MoveAnalysisList = ReadonlyArray<MoveAnalysis>;
+export type MoveAnalysisList = Array<MoveAnalysis>;
 export const MoveAnalysisList = /*@__PURE__*/ S.Array(
   MoveAnalysis,
 ) as any as S.Schema<MoveAnalysisList>;
@@ -848,7 +844,7 @@ export const GoogleCloudAssetV1CustomConstraintMethodTypesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudAssetV1CustomConstraintMethodTypesItemEnumList =
-  ReadonlyArray<GoogleCloudAssetV1CustomConstraintMethodTypesItemEnum>;
+  Array<GoogleCloudAssetV1CustomConstraintMethodTypesItemEnum>;
 export const GoogleCloudAssetV1CustomConstraintMethodTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAssetV1CustomConstraintMethodTypesItemEnum,
@@ -1015,7 +1011,7 @@ export const GoogleCloudAssetV1Rule = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleCloudAssetV1Rule",
 }) as any as S.Schema<GoogleCloudAssetV1Rule>;
 
-export type GoogleCloudAssetV1RuleList = ReadonlyArray<GoogleCloudAssetV1Rule>;
+export type GoogleCloudAssetV1RuleList = Array<GoogleCloudAssetV1Rule>;
 export const GoogleCloudAssetV1RuleList = /*@__PURE__*/ S.Array(
   GoogleCloudAssetV1Rule,
 ) as any as S.Schema<GoogleCloudAssetV1RuleList>;
@@ -1045,7 +1041,7 @@ export const AnalyzerOrgPolicy = /*@__PURE__*/ S.suspend(() =>
   identifier: "AnalyzerOrgPolicy",
 }) as any as S.Schema<AnalyzerOrgPolicy>;
 
-export type AnalyzerOrgPolicyList = ReadonlyArray<AnalyzerOrgPolicy>;
+export type AnalyzerOrgPolicyList = Array<AnalyzerOrgPolicy>;
 export const AnalyzerOrgPolicyList = /*@__PURE__*/ S.Array(
   AnalyzerOrgPolicy,
 ) as any as S.Schema<AnalyzerOrgPolicyList>;
@@ -1075,7 +1071,7 @@ export const OrgPolicyResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "OrgPolicyResult",
 }) as any as S.Schema<OrgPolicyResult>;
 
-export type OrgPolicyResultList = ReadonlyArray<OrgPolicyResult>;
+export type OrgPolicyResultList = Array<OrgPolicyResult>;
 export const OrgPolicyResultList = /*@__PURE__*/ S.Array(
   OrgPolicyResult,
 ) as any as S.Schema<OrgPolicyResultList>;
@@ -1150,7 +1146,7 @@ export const Tag = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
 
-export type TagList = ReadonlyArray<Tag>;
+export type TagList = Array<Tag>;
 export const TagList = /*@__PURE__*/ S.Array(Tag) as any as S.Schema<TagList>;
 
 /** The effective tags and the ancestor resources from which they were inherited. */
@@ -1169,7 +1165,7 @@ export const EffectiveTagDetails = /*@__PURE__*/ S.suspend(() =>
   identifier: "EffectiveTagDetails",
 }) as any as S.Schema<EffectiveTagDetails>;
 
-export type EffectiveTagDetailsList = ReadonlyArray<EffectiveTagDetails>;
+export type EffectiveTagDetailsList = Array<EffectiveTagDetails>;
 export const EffectiveTagDetailsList = /*@__PURE__*/ S.Array(
   EffectiveTagDetails,
 ) as any as S.Schema<EffectiveTagDetailsList>;
@@ -1228,7 +1224,7 @@ export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
-export type AuditLogConfigList = ReadonlyArray<AuditLogConfig>;
+export type AuditLogConfigList = Array<AuditLogConfig>;
 export const AuditLogConfigList = /*@__PURE__*/ S.Array(
   AuditLogConfig,
 ) as any as S.Schema<AuditLogConfigList>;
@@ -1247,12 +1243,12 @@ export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
-export type AuditConfigList = ReadonlyArray<AuditConfig>;
+export type AuditConfigList = Array<AuditConfig>;
 export const AuditConfigList = /*@__PURE__*/ S.Array(
   AuditConfig,
 ) as any as S.Schema<AuditConfigList>;
 
-export type BindingList = ReadonlyArray<Binding>;
+export type BindingList = Array<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -1336,7 +1332,7 @@ export const GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedAss
   }) as any as S.Schema<GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedAsset>;
 
 export type GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedAssetList =
-  ReadonlyArray<GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedAsset>;
+  Array<GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedAsset>;
 export const GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedAssetList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedAsset,
@@ -1430,7 +1426,7 @@ export const GoogleCloudAssetV1GovernedContainer = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudAssetV1GovernedContainer>;
 
 export type GoogleCloudAssetV1GovernedContainerList =
-  ReadonlyArray<GoogleCloudAssetV1GovernedContainer>;
+  Array<GoogleCloudAssetV1GovernedContainer>;
 export const GoogleCloudAssetV1GovernedContainerList = /*@__PURE__*/ S.Array(
   GoogleCloudAssetV1GovernedContainer,
 ) as any as S.Schema<GoogleCloudAssetV1GovernedContainerList>;
@@ -1542,7 +1538,7 @@ export const RelationshipAttributes = /*@__PURE__*/ S.suspend(() =>
   identifier: "RelationshipAttributes",
 }) as any as S.Schema<RelationshipAttributes>;
 
-export type RelatedAssetList = ReadonlyArray<RelatedAsset>;
+export type RelatedAssetList = Array<RelatedAsset>;
 export const RelatedAssetList = /*@__PURE__*/ S.Array(
   RelatedAsset,
 ) as any as S.Schema<RelatedAssetList>;
@@ -1595,7 +1591,7 @@ export const GoogleIdentityAccesscontextmanagerV1Modifier =
   }) as any as S.Schema<GoogleIdentityAccesscontextmanagerV1Modifier>;
 
 export type GoogleIdentityAccesscontextmanagerV1ModifierList =
-  ReadonlyArray<GoogleIdentityAccesscontextmanagerV1Modifier>;
+  Array<GoogleIdentityAccesscontextmanagerV1Modifier>;
 export const GoogleIdentityAccesscontextmanagerV1ModifierList =
   /*@__PURE__*/ S.Array(
     GoogleIdentityAccesscontextmanagerV1Modifier,
@@ -1622,7 +1618,7 @@ export const GoogleIdentityAccesscontextmanagerV1ServicePattern =
   }) as any as S.Schema<GoogleIdentityAccesscontextmanagerV1ServicePattern>;
 
 export type GoogleIdentityAccesscontextmanagerV1ServicePatternList =
-  ReadonlyArray<GoogleIdentityAccesscontextmanagerV1ServicePattern>;
+  Array<GoogleIdentityAccesscontextmanagerV1ServicePattern>;
 export const GoogleIdentityAccesscontextmanagerV1ServicePatternList =
   /*@__PURE__*/ S.Array(
     GoogleIdentityAccesscontextmanagerV1ServicePattern,
@@ -1635,7 +1631,7 @@ export const GoogleIdentityAccesscontextmanagerV1VpcAccessibleServicesServicePat
   /*@__PURE__*/ S.String;
 
 export type GoogleIdentityAccesscontextmanagerV1VpcAccessibleServicesServicePatternsEnforcementScopesItemEnumList =
-  ReadonlyArray<GoogleIdentityAccesscontextmanagerV1VpcAccessibleServicesServicePatternsEnforcementScopesItemEnum>;
+  Array<GoogleIdentityAccesscontextmanagerV1VpcAccessibleServicesServicePatternsEnforcementScopesItemEnum>;
 export const GoogleIdentityAccesscontextmanagerV1VpcAccessibleServicesServicePatternsEnforcementScopesItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleIdentityAccesscontextmanagerV1VpcAccessibleServicesServicePatternsEnforcementScopesItemEnum,
@@ -1686,7 +1682,7 @@ export const GoogleIdentityAccesscontextmanagerV1MethodSelector =
   }) as any as S.Schema<GoogleIdentityAccesscontextmanagerV1MethodSelector>;
 
 export type GoogleIdentityAccesscontextmanagerV1MethodSelectorList =
-  ReadonlyArray<GoogleIdentityAccesscontextmanagerV1MethodSelector>;
+  Array<GoogleIdentityAccesscontextmanagerV1MethodSelector>;
 export const GoogleIdentityAccesscontextmanagerV1MethodSelectorList =
   /*@__PURE__*/ S.Array(
     GoogleIdentityAccesscontextmanagerV1MethodSelector,
@@ -1712,7 +1708,7 @@ export const GoogleIdentityAccesscontextmanagerV1ApiOperation =
   }) as any as S.Schema<GoogleIdentityAccesscontextmanagerV1ApiOperation>;
 
 export type GoogleIdentityAccesscontextmanagerV1ApiOperationList =
-  ReadonlyArray<GoogleIdentityAccesscontextmanagerV1ApiOperation>;
+  Array<GoogleIdentityAccesscontextmanagerV1ApiOperation>;
 export const GoogleIdentityAccesscontextmanagerV1ApiOperationList =
   /*@__PURE__*/ S.Array(
     GoogleIdentityAccesscontextmanagerV1ApiOperation,
@@ -1778,7 +1774,7 @@ export const GoogleIdentityAccesscontextmanagerV1IngressSource =
   }) as any as S.Schema<GoogleIdentityAccesscontextmanagerV1IngressSource>;
 
 export type GoogleIdentityAccesscontextmanagerV1IngressSourceList =
-  ReadonlyArray<GoogleIdentityAccesscontextmanagerV1IngressSource>;
+  Array<GoogleIdentityAccesscontextmanagerV1IngressSource>;
 export const GoogleIdentityAccesscontextmanagerV1IngressSourceList =
   /*@__PURE__*/ S.Array(
     GoogleIdentityAccesscontextmanagerV1IngressSource,
@@ -1837,7 +1833,7 @@ export const GoogleIdentityAccesscontextmanagerV1IngressPolicy =
   }) as any as S.Schema<GoogleIdentityAccesscontextmanagerV1IngressPolicy>;
 
 export type GoogleIdentityAccesscontextmanagerV1IngressPolicyList =
-  ReadonlyArray<GoogleIdentityAccesscontextmanagerV1IngressPolicy>;
+  Array<GoogleIdentityAccesscontextmanagerV1IngressPolicy>;
 export const GoogleIdentityAccesscontextmanagerV1IngressPolicyList =
   /*@__PURE__*/ S.Array(
     GoogleIdentityAccesscontextmanagerV1IngressPolicy,
@@ -1874,7 +1870,7 @@ export const GoogleIdentityAccesscontextmanagerV1EgressSource =
   }) as any as S.Schema<GoogleIdentityAccesscontextmanagerV1EgressSource>;
 
 export type GoogleIdentityAccesscontextmanagerV1EgressSourceList =
-  ReadonlyArray<GoogleIdentityAccesscontextmanagerV1EgressSource>;
+  Array<GoogleIdentityAccesscontextmanagerV1EgressSource>;
 export const GoogleIdentityAccesscontextmanagerV1EgressSourceList =
   /*@__PURE__*/ S.Array(
     GoogleIdentityAccesscontextmanagerV1EgressSource,
@@ -1960,7 +1956,7 @@ export const GoogleIdentityAccesscontextmanagerV1EgressPolicy =
   }) as any as S.Schema<GoogleIdentityAccesscontextmanagerV1EgressPolicy>;
 
 export type GoogleIdentityAccesscontextmanagerV1EgressPolicyList =
-  ReadonlyArray<GoogleIdentityAccesscontextmanagerV1EgressPolicy>;
+  Array<GoogleIdentityAccesscontextmanagerV1EgressPolicy>;
 export const GoogleIdentityAccesscontextmanagerV1EgressPolicyList =
   /*@__PURE__*/ S.Array(
     GoogleIdentityAccesscontextmanagerV1EgressPolicy,
@@ -2066,7 +2062,7 @@ export const AssetException = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AssetException" }) as any as S.Schema<AssetException>;
 
-export type AssetExceptionList = ReadonlyArray<AssetException>;
+export type AssetExceptionList = Array<AssetException>;
 export const AssetExceptionList = /*@__PURE__*/ S.Array(
   AssetException,
 ) as any as S.Schema<AssetExceptionList>;
@@ -2211,7 +2207,7 @@ export const GoogleCloudOrgpolicyV1Policy = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudOrgpolicyV1Policy>;
 
 export type GoogleCloudOrgpolicyV1PolicyList =
-  ReadonlyArray<GoogleCloudOrgpolicyV1Policy>;
+  Array<GoogleCloudOrgpolicyV1Policy>;
 export const GoogleCloudOrgpolicyV1PolicyList = /*@__PURE__*/ S.Array(
   GoogleCloudOrgpolicyV1Policy,
 ) as any as S.Schema<GoogleCloudOrgpolicyV1PolicyList>;
@@ -2241,7 +2237,7 @@ export const GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedDeviceManage
   /*@__PURE__*/ S.String;
 
 export type GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedDeviceManagementLevelsItemEnumList =
-  ReadonlyArray<GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedDeviceManagementLevelsItemEnum>;
+  Array<GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedDeviceManagementLevelsItemEnum>;
 export const GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedDeviceManagementLevelsItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedDeviceManagementLevelsItemEnum,
@@ -2256,7 +2252,7 @@ export const GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedEncryptionSt
   /*@__PURE__*/ S.String;
 
 export type GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedEncryptionStatusesItemEnumList =
-  ReadonlyArray<GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedEncryptionStatusesItemEnum>;
+  Array<GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedEncryptionStatusesItemEnum>;
 export const GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedEncryptionStatusesItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedEncryptionStatusesItemEnum,
@@ -2296,7 +2292,7 @@ export const GoogleIdentityAccesscontextmanagerV1OsConstraint =
   }) as any as S.Schema<GoogleIdentityAccesscontextmanagerV1OsConstraint>;
 
 export type GoogleIdentityAccesscontextmanagerV1OsConstraintList =
-  ReadonlyArray<GoogleIdentityAccesscontextmanagerV1OsConstraint>;
+  Array<GoogleIdentityAccesscontextmanagerV1OsConstraint>;
 export const GoogleIdentityAccesscontextmanagerV1OsConstraintList =
   /*@__PURE__*/ S.Array(
     GoogleIdentityAccesscontextmanagerV1OsConstraint,
@@ -2371,7 +2367,7 @@ export const GoogleIdentityAccesscontextmanagerV1VpcNetworkSource =
   }) as any as S.Schema<GoogleIdentityAccesscontextmanagerV1VpcNetworkSource>;
 
 export type GoogleIdentityAccesscontextmanagerV1VpcNetworkSourceList =
-  ReadonlyArray<GoogleIdentityAccesscontextmanagerV1VpcNetworkSource>;
+  Array<GoogleIdentityAccesscontextmanagerV1VpcNetworkSource>;
 export const GoogleIdentityAccesscontextmanagerV1VpcNetworkSourceList =
   /*@__PURE__*/ S.Array(
     GoogleIdentityAccesscontextmanagerV1VpcNetworkSource,
@@ -2414,7 +2410,7 @@ export const GoogleIdentityAccesscontextmanagerV1Condition =
   }) as any as S.Schema<GoogleIdentityAccesscontextmanagerV1Condition>;
 
 export type GoogleIdentityAccesscontextmanagerV1ConditionList =
-  ReadonlyArray<GoogleIdentityAccesscontextmanagerV1Condition>;
+  Array<GoogleIdentityAccesscontextmanagerV1Condition>;
 export const GoogleIdentityAccesscontextmanagerV1ConditionList =
   /*@__PURE__*/ S.Array(
     GoogleIdentityAccesscontextmanagerV1Condition,
@@ -2604,7 +2600,7 @@ export const WindowsUpdateCategory = /*@__PURE__*/ S.suspend(() =>
   identifier: "WindowsUpdateCategory",
 }) as any as S.Schema<WindowsUpdateCategory>;
 
-export type WindowsUpdateCategoryList = ReadonlyArray<WindowsUpdateCategory>;
+export type WindowsUpdateCategoryList = Array<WindowsUpdateCategory>;
 export const WindowsUpdateCategoryList = /*@__PURE__*/ S.Array(
   WindowsUpdateCategory,
 ) as any as S.Schema<WindowsUpdateCategoryList>;
@@ -2858,7 +2854,7 @@ export const TemporalAsset = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TemporalAsset" }) as any as S.Schema<TemporalAsset>;
 
-export type TemporalAssetList = ReadonlyArray<TemporalAsset>;
+export type TemporalAssetList = Array<TemporalAsset>;
 export const TemporalAssetList = /*@__PURE__*/ S.Array(
   TemporalAsset,
 ) as any as S.Schema<TemporalAssetList>;
@@ -2911,7 +2907,7 @@ export const PolicyInfo = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PolicyInfo" }) as any as S.Schema<PolicyInfo>;
 
-export type PolicyInfoList = ReadonlyArray<PolicyInfo>;
+export type PolicyInfoList = Array<PolicyInfo>;
 export const PolicyInfoList = /*@__PURE__*/ S.Array(
   PolicyInfo,
 ) as any as S.Schema<PolicyInfoList>;
@@ -2932,7 +2928,7 @@ export const EffectiveIamPolicy = /*@__PURE__*/ S.suspend(() =>
   identifier: "EffectiveIamPolicy",
 }) as any as S.Schema<EffectiveIamPolicy>;
 
-export type EffectiveIamPolicyList = ReadonlyArray<EffectiveIamPolicy>;
+export type EffectiveIamPolicyList = Array<EffectiveIamPolicy>;
 export const EffectiveIamPolicyList = /*@__PURE__*/ S.Array(
   EffectiveIamPolicy,
 ) as any as S.Schema<EffectiveIamPolicyList>;
@@ -2990,7 +2986,7 @@ export const FeedOutputConfig = /*@__PURE__*/ S.suspend(() =>
 /** An asset feed used to export asset updates to a destinations. An asset feed filter controls what updates are exported. The asset feed must be created within a project, organization, or folder. Supported destinations are: Pub/Sub topics. */
 export interface Feed {
   /** Asset content type. If not specified, no content but the asset name and type will be returned. */
-  contentType?: FeedContentTypeEnum;
+  contentType?: FeedContentTypeEnum | (string & {});
   /** A condition which determines whether an asset update should be published. If specified, an asset will be returned only when the expression evaluates to true. When set, `expression` field in the `Expr` must be a valid [CEL expression] (https://github.com/google/cel-spec) on a TemporalAsset with name `temporal_asset`. Example: a Feed with expression ("temporal_asset.deleted == true") will only publish Asset deletions. Other fields of `Expr` are optional. See our [user guide](https://cloud.google.com/asset-inventory/docs/monitoring-asset-changes-with-condition) for detailed instructions. */
   condition?: Expr;
   /** A list of the full names of the assets to receive updates. You must specify either or both of asset_names and asset_types. Only asset updates matching specified asset_names or asset_types are exported to the feed. Example: `//compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1`. For a list of the full names for supported asset types, see [Resource name format](/asset-inventory/docs/resource-name-format). */
@@ -3394,7 +3390,7 @@ export const ListAssetsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAssetsRequest",
 }) as any as S.Schema<ListAssetsRequest>;
 
-export type AssetList = ReadonlyArray<Asset>;
+export type AssetList = Array<Asset>;
 export const AssetList = /*@__PURE__*/ S.Array(
   Asset,
 ) as any as S.Schema<AssetList>;
@@ -3436,7 +3432,7 @@ export const ListFeedsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListFeedsRequest",
 }) as any as S.Schema<ListFeedsRequest>;
 
-export type FeedList = ReadonlyArray<Feed>;
+export type FeedList = Array<Feed>;
 export const FeedList = /*@__PURE__*/ S.Array(
   Feed,
 ) as any as S.Schema<FeedList>;
@@ -3480,7 +3476,7 @@ export const ListSavedQueriesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListSavedQueriesRequest",
 }) as any as S.Schema<ListSavedQueriesRequest>;
 
-export type SavedQueryList = ReadonlyArray<SavedQuery>;
+export type SavedQueryList = Array<SavedQuery>;
 export const SavedQueryList = /*@__PURE__*/ S.Array(
   SavedQuery,
 ) as any as S.Schema<SavedQueryList>;
@@ -3674,7 +3670,7 @@ export const TableFieldSchema = /*@__PURE__*/ S.suspend(() =>
   identifier: "TableFieldSchema",
 }) as any as S.Schema<TableFieldSchema>;
 
-export type TableFieldSchemaList = ReadonlyArray<TableFieldSchema>;
+export type TableFieldSchemaList = Array<TableFieldSchema>;
 export const TableFieldSchemaList = /*@__PURE__*/ S.Array(
   TableFieldSchema,
 ) as any as S.Schema<TableFieldSchemaList>;
@@ -3827,7 +3823,7 @@ export const IamPolicySearchResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "IamPolicySearchResult",
 }) as any as S.Schema<IamPolicySearchResult>;
 
-export type IamPolicySearchResultList = ReadonlyArray<IamPolicySearchResult>;
+export type IamPolicySearchResultList = Array<IamPolicySearchResult>;
 export const IamPolicySearchResultList = /*@__PURE__*/ S.Array(
   IamPolicySearchResult,
 ) as any as S.Schema<IamPolicySearchResultList>;
@@ -3900,7 +3896,7 @@ export const RelatedResource = /*@__PURE__*/ S.suspend(() =>
   identifier: "RelatedResource",
 }) as any as S.Schema<RelatedResource>;
 
-export type RelatedResourceList = ReadonlyArray<RelatedResource>;
+export type RelatedResourceList = Array<RelatedResource>;
 export const RelatedResourceList = /*@__PURE__*/ S.Array(
   RelatedResource,
 ) as any as S.Schema<RelatedResourceList>;
@@ -3945,7 +3941,7 @@ export const VersionedResource = /*@__PURE__*/ S.suspend(() =>
   identifier: "VersionedResource",
 }) as any as S.Schema<VersionedResource>;
 
-export type VersionedResourceList = ReadonlyArray<VersionedResource>;
+export type VersionedResourceList = Array<VersionedResource>;
 export const VersionedResourceList = /*@__PURE__*/ S.Array(
   VersionedResource,
 ) as any as S.Schema<VersionedResourceList>;
@@ -3974,7 +3970,7 @@ export const AssetEnrichment = /*@__PURE__*/ S.suspend(() =>
   identifier: "AssetEnrichment",
 }) as any as S.Schema<AssetEnrichment>;
 
-export type AssetEnrichmentList = ReadonlyArray<AssetEnrichment>;
+export type AssetEnrichmentList = Array<AssetEnrichment>;
 export const AssetEnrichmentList = /*@__PURE__*/ S.Array(
   AssetEnrichment,
 ) as any as S.Schema<AssetEnrichmentList>;
@@ -3995,7 +3991,7 @@ export const AttachedResource = /*@__PURE__*/ S.suspend(() =>
   identifier: "AttachedResource",
 }) as any as S.Schema<AttachedResource>;
 
-export type AttachedResourceList = ReadonlyArray<AttachedResource>;
+export type AttachedResourceList = Array<AttachedResource>;
 export const AttachedResourceList = /*@__PURE__*/ S.Array(
   AttachedResource,
 ) as any as S.Schema<AttachedResourceList>;
@@ -4094,7 +4090,7 @@ export const ResourceSearchResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "ResourceSearchResult",
 }) as any as S.Schema<ResourceSearchResult>;
 
-export type ResourceSearchResultList = ReadonlyArray<ResourceSearchResult>;
+export type ResourceSearchResultList = Array<ResourceSearchResult>;
 export const ResourceSearchResultList = /*@__PURE__*/ S.Array(
   ResourceSearchResult,
 ) as any as S.Schema<ResourceSearchResultList>;

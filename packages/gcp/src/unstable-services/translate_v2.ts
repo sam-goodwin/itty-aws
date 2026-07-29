@@ -60,7 +60,7 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -121,12 +121,12 @@ export const DetectionsResourceItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DetectionsResourceItem>;
 
 /** An array of languages which we detect for the given text The most likely language list first. */
-export type DetectionsResource = ReadonlyArray<DetectionsResourceItem>;
+export type DetectionsResource = Array<DetectionsResourceItem>;
 export const DetectionsResource = /*@__PURE__*/ S.Array(
   DetectionsResourceItem,
 ) as any as S.Schema<DetectionsResource>;
 
-export type DetectionsResourceList = ReadonlyArray<DetectionsResource>;
+export type DetectionsResourceList = Array<DetectionsResource>;
 export const DetectionsResourceList = /*@__PURE__*/ S.Array(
   DetectionsResource,
 ) as any as S.Schema<DetectionsResourceList>;
@@ -209,7 +209,7 @@ export const LanguagesResource = /*@__PURE__*/ S.suspend(() =>
   identifier: "LanguagesResource",
 }) as any as S.Schema<LanguagesResource>;
 
-export type LanguagesResourceList = ReadonlyArray<LanguagesResource>;
+export type LanguagesResourceList = Array<LanguagesResource>;
 export const LanguagesResourceList = /*@__PURE__*/ S.Array(
   LanguagesResource,
 ) as any as S.Schema<LanguagesResourceList>;
@@ -286,7 +286,7 @@ export const TranslationsResource = /*@__PURE__*/ S.suspend(() =>
   identifier: "TranslationsResource",
 }) as any as S.Schema<TranslationsResource>;
 
-export type TranslationsResourceList = ReadonlyArray<TranslationsResource>;
+export type TranslationsResourceList = Array<TranslationsResource>;
 export const TranslationsResourceList = /*@__PURE__*/ S.Array(
   TranslationsResource,
 ) as any as S.Schema<TranslationsResourceList>;

@@ -184,7 +184,7 @@ export const BinaryHardeningResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The BinaryHardeningResource items on this page */
 export type BinaryHardeningResourceListResultValueList =
-  ReadonlyArray<BinaryHardeningResource>;
+  Array<BinaryHardeningResource>;
 export const BinaryHardeningResourceListResultValueList = /*@__PURE__*/ S.Array(
   BinaryHardeningResource,
 ) as any as S.Schema<BinaryHardeningResourceListResultValueList>;
@@ -280,14 +280,13 @@ export type CertificateUsage =
 export const CertificateUsage = /*@__PURE__*/ S.String;
 
 /** List of functions the certificate can fulfill. */
-export type CryptoCertificateCertificateUsageList =
-  ReadonlyArray<CertificateUsage>;
+export type CryptoCertificateCertificateUsageList = Array<CertificateUsage>;
 export const CryptoCertificateCertificateUsageList = /*@__PURE__*/ S.Array(
   CertificateUsage,
 ) as any as S.Schema<CryptoCertificateCertificateUsageList>;
 
 /** List of files where this certificate was found. */
-export type CryptoCertificateFilePathsList = ReadonlyArray<string>;
+export type CryptoCertificateFilePathsList = Array<string>;
 export const CryptoCertificateFilePathsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CryptoCertificateFilePathsList>;
@@ -406,7 +405,7 @@ export const CryptoCertificateResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The CryptoCertificateResource items on this page */
 export type CryptoCertificateResourceListResultValueList =
-  ReadonlyArray<CryptoCertificateResource>;
+  Array<CryptoCertificateResource>;
 export const CryptoCertificateResourceListResultValueList =
   /*@__PURE__*/ S.Array(
     CryptoCertificateResource,
@@ -461,13 +460,13 @@ export type CryptoKeyType = "Public" | "Private";
 export const CryptoKeyType = /*@__PURE__*/ S.String;
 
 /** Functions the key can fulfill. */
-export type CryptoKeyUsageList = ReadonlyArray<string>;
+export type CryptoKeyUsageList = Array<string>;
 export const CryptoKeyUsageList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CryptoKeyUsageList>;
 
 /** List of files where this key was found. */
-export type CryptoKeyFilePathsList = ReadonlyArray<string>;
+export type CryptoKeyFilePathsList = Array<string>;
 export const CryptoKeyFilePathsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CryptoKeyFilePathsList>;
@@ -533,8 +532,7 @@ export const CryptoKeyResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CryptoKeyResource>;
 
 /** The CryptoKeyResource items on this page */
-export type CryptoKeyResourceListResultValueList =
-  ReadonlyArray<CryptoKeyResource>;
+export type CryptoKeyResourceListResultValueList = Array<CryptoKeyResource>;
 export const CryptoKeyResourceListResultValueList = /*@__PURE__*/ S.Array(
   CryptoKeyResource,
 ) as any as S.Schema<CryptoKeyResourceListResultValueList>;
@@ -615,7 +613,7 @@ export const CvssScore = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CvssScore" }) as any as S.Schema<CvssScore>;
 
 /** All known CVSS scores for the CVE. */
-export type CveResultCvssScoresList = ReadonlyArray<CvssScore>;
+export type CveResultCvssScoresList = Array<CvssScore>;
 export const CveResultCvssScoresList = /*@__PURE__*/ S.Array(
   CvssScore,
 ) as any as S.Schema<CveResultCvssScoresList>;
@@ -635,7 +633,7 @@ export const CveLink = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CveLink" }) as any as S.Schema<CveLink>;
 
 /** The list of reference links for the CVE. */
-export type CveResultLinksList = ReadonlyArray<CveLink>;
+export type CveResultLinksList = Array<CveLink>;
 export const CveResultLinksList = /*@__PURE__*/ S.Array(
   CveLink,
 ) as any as S.Schema<CveResultLinksList>;
@@ -723,7 +721,7 @@ export const CveResource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CveResource" }) as any as S.Schema<CveResource>;
 
 /** The CveResource items on this page */
-export type CveResourceListResultValueList = ReadonlyArray<CveResource>;
+export type CveResourceListResultValueList = Array<CveResource>;
 export const CveResourceListResultValueList = /*@__PURE__*/ S.Array(
   CveResource,
 ) as any as S.Schema<CveResourceListResultValueList>;
@@ -763,8 +761,7 @@ export const StatusMessage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StatusMessage" }) as any as S.Schema<StatusMessage>;
 
 /** A list of errors or other messages generated during firmware analysis */
-export type FirmwarePropertiesInputStatusMessagesList =
-  ReadonlyArray<StatusMessage>;
+export type FirmwarePropertiesInputStatusMessagesList = Array<StatusMessage>;
 export const FirmwarePropertiesInputStatusMessagesList = /*@__PURE__*/ S.Array(
   StatusMessage,
 ) as any as S.Schema<FirmwarePropertiesInputStatusMessagesList>;
@@ -835,7 +832,7 @@ export const FirmwaresCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FirmwaresCreateRequest>;
 
 /** A list of errors or other messages generated during firmware analysis */
-export type FirmwarePropertiesStatusMessagesList = ReadonlyArray<StatusMessage>;
+export type FirmwarePropertiesStatusMessagesList = Array<StatusMessage>;
 export const FirmwarePropertiesStatusMessagesList = /*@__PURE__*/ S.Array(
   StatusMessage,
 ) as any as S.Schema<FirmwarePropertiesStatusMessagesList>;
@@ -1037,7 +1034,7 @@ export const Firmware = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Firmware" }) as any as S.Schema<Firmware>;
 
 /** The Firmware items on this page */
-export type FirmwareListResultValueList = ReadonlyArray<Firmware>;
+export type FirmwareListResultValueList = Array<Firmware>;
 export const FirmwareListResultValueList = /*@__PURE__*/ S.Array(
   Firmware,
 ) as any as S.Schema<FirmwareListResultValueList>;
@@ -1181,7 +1178,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = ReadonlyArray<Operation>;
+export type OperationsListResponseValueList = Array<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;
@@ -1288,7 +1285,7 @@ export const PasswordHashResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The PasswordHashResource items on this page */
 export type PasswordHashResourceListResultValueList =
-  ReadonlyArray<PasswordHashResource>;
+  Array<PasswordHashResource>;
 export const PasswordHashResourceListResultValueList = /*@__PURE__*/ S.Array(
   PasswordHashResource,
 ) as any as S.Schema<PasswordHashResourceListResultValueList>;
@@ -1338,7 +1335,7 @@ export const SbomComponentsListByFirmwareRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SbomComponentsListByFirmwareRequest>;
 
 /** File paths related to the component. Note, relatedFiles should be used instead of this property. */
-export type SbomComponentFilePathsList = ReadonlyArray<string>;
+export type SbomComponentFilePathsList = Array<string>;
 export const SbomComponentFilePathsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SbomComponentFilePathsList>;
@@ -1396,7 +1393,7 @@ export const SbomComponentResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The SbomComponentResource items on this page */
 export type SbomComponentResourceListResultValueList =
-  ReadonlyArray<SbomComponentResource>;
+  Array<SbomComponentResource>;
 export const SbomComponentResourceListResultValueList = /*@__PURE__*/ S.Array(
   SbomComponentResource,
 ) as any as S.Schema<SbomComponentResourceListResultValueList>;
@@ -1559,7 +1556,7 @@ export const SummaryResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SummaryResource>;
 
 /** The SummaryResource items on this page */
-export type SummaryResourceListResultValueList = ReadonlyArray<SummaryResource>;
+export type SummaryResourceListResultValueList = Array<SummaryResource>;
 export const SummaryResourceListResultValueList = /*@__PURE__*/ S.Array(
   SummaryResource,
 ) as any as S.Schema<SummaryResourceListResultValueList>;
@@ -1700,7 +1697,7 @@ export const UsageMetric = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UsageMetric" }) as any as S.Schema<UsageMetric>;
 
 /** The UsageMetric items on this page */
-export type UsageMetricListResultValueList = ReadonlyArray<UsageMetric>;
+export type UsageMetricListResultValueList = Array<UsageMetric>;
 export const UsageMetricListResultValueList = /*@__PURE__*/ S.Array(
   UsageMetric,
 ) as any as S.Schema<UsageMetricListResultValueList>;
@@ -2129,7 +2126,7 @@ export const Workspace = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Workspace" }) as any as S.Schema<Workspace>;
 
 /** The Workspace items on this page */
-export type WorkspaceListResultValueList = ReadonlyArray<Workspace>;
+export type WorkspaceListResultValueList = Array<Workspace>;
 export const WorkspaceListResultValueList = /*@__PURE__*/ S.Array(
   Workspace,
 ) as any as S.Schema<WorkspaceListResultValueList>;

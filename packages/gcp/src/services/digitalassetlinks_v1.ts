@@ -133,7 +133,7 @@ export const StatementTemplate = /*@__PURE__*/ S.suspend(() =>
   identifier: "StatementTemplate",
 }) as any as S.Schema<StatementTemplate>;
 
-export type StatementTemplateList = ReadonlyArray<StatementTemplate>;
+export type StatementTemplateList = Array<StatementTemplate>;
 export const StatementTemplateList = /*@__PURE__*/ S.Array(
   StatementTemplate,
 ) as any as S.Schema<StatementTemplateList>;
@@ -210,7 +210,7 @@ export type CheckResponseErrorCodeItemEnum =
 export const CheckResponseErrorCodeItemEnum = /*@__PURE__*/ S.String;
 
 export type CheckResponseErrorCodeItemEnumList =
-  ReadonlyArray<CheckResponseErrorCodeItemEnum>;
+  Array<CheckResponseErrorCodeItemEnum>;
 export const CheckResponseErrorCodeItemEnumList = /*@__PURE__*/ S.Array(
   CheckResponseErrorCodeItemEnum,
 ) as any as S.Schema<CheckResponseErrorCodeItemEnumList>;
@@ -221,7 +221,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -249,7 +249,7 @@ export const CheckResponse = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CheckResponse" }) as any as S.Schema<CheckResponse>;
 
-export type CheckResponseList = ReadonlyArray<CheckResponse>;
+export type CheckResponseList = Array<CheckResponse>;
 export const CheckResponseList = /*@__PURE__*/ S.Array(
   CheckResponse,
 ) as any as S.Schema<CheckResponseList>;
@@ -365,7 +365,7 @@ export const Statement = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Statement" }) as any as S.Schema<Statement>;
 
-export type StatementList = ReadonlyArray<Statement>;
+export type StatementList = Array<Statement>;
 export const StatementList = /*@__PURE__*/ S.Array(
   Statement,
 ) as any as S.Schema<StatementList>;
@@ -385,7 +385,7 @@ export type ListResponseErrorCodeItemEnum =
 export const ListResponseErrorCodeItemEnum = /*@__PURE__*/ S.String;
 
 export type ListResponseErrorCodeItemEnumList =
-  ReadonlyArray<ListResponseErrorCodeItemEnum>;
+  Array<ListResponseErrorCodeItemEnum>;
 export const ListResponseErrorCodeItemEnumList = /*@__PURE__*/ S.Array(
   ListResponseErrorCodeItemEnum,
 ) as any as S.Schema<ListResponseErrorCodeItemEnumList>;

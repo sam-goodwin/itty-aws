@@ -125,7 +125,7 @@ export interface Account {
   /** Output only. Creation time of the account. */
   createTime?: string;
   /** Output only. Approval state of the account. */
-  state?: AccountStateEnum;
+  state?: AccountStateEnum | (string & {});
   /** Required. An opaque token that uniquely identifies the account among all the platform's accounts. This string may contain at most 64 non-whitespace ASCII characters, but otherwise has no predefined structure. However, it is expected to be a platform-specific identifier for the user creating the account, so that only a single account can be created for any given user. This field must not contain any information that is recognizable as personally identifiable information. e.g. it should not be an email address or login name. Once an account has been created, a second attempt to create an account using the same creation_request_id will result in an ALREADY_EXISTS error. */
   creationRequestId?: string;
   /** Output only. Resource name of the account. Format: platforms/pub-[0-9]+/accounts/pub-[0-9]+ */
@@ -233,7 +233,7 @@ export interface Event {
   /** Required. Event timestamp. */
   eventTime?: string;
   /** Required. Event type. */
-  eventType?: EventEventTypeEnum;
+  eventType?: EventEventTypeEnum | (string & {});
 }
 export const Event = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -276,7 +276,7 @@ export const SiteStateEnum = /*@__PURE__*/ S.String;
 /** Representation of a Site. */
 export interface Site {
   /** Output only. State of a site. */
-  state?: SiteStateEnum;
+  state?: SiteStateEnum | (string & {});
   /** Domain/sub-domain of the site. Must be a valid domain complying with [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt) and formatted as punycode [RFC 3492](https://www.ietf.org/rfc/rfc3492.txt) in case the domain contains unicode characters. */
   domain?: string;
   /** Output only. Resource name of a site. Format: platforms/{platform}/accounts/{account}/sites/{site} */
@@ -395,7 +395,7 @@ export const ListPlatformsAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListPlatformsAccountsRequest",
 }) as any as S.Schema<ListPlatformsAccountsRequest>;
 
-export type AccountList = ReadonlyArray<Account>;
+export type AccountList = Array<Account>;
 export const AccountList = /*@__PURE__*/ S.Array(
   Account,
 ) as any as S.Schema<AccountList>;
@@ -440,7 +440,7 @@ export const ListPlatformsAccountsSitesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListPlatformsAccountsSitesRequest",
 }) as any as S.Schema<ListPlatformsAccountsSitesRequest>;
 
-export type SiteList = ReadonlyArray<Site>;
+export type SiteList = Array<Site>;
 export const SiteList = /*@__PURE__*/ S.Array(
   Site,
 ) as any as S.Schema<SiteList>;

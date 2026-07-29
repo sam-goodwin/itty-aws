@@ -504,7 +504,10 @@ export type SavingsPlanPaymentOption =
   | "No Upfront";
 export const SavingsPlanPaymentOption = /*@__PURE__*/ S.String;
 
-export type SavingsPlanProductTypeList = SavingsPlanProductType[];
+export type SavingsPlanProductTypeList = (
+  | SavingsPlanProductType
+  | (string & {})
+)[];
 export const SavingsPlanProductTypeList = /*@__PURE__*/ S.Array(
   SavingsPlanProductType,
 );

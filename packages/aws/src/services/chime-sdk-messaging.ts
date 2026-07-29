@@ -480,7 +480,7 @@ export const ExpirationCriterion = /*@__PURE__*/ S.String;
 
 export interface ExpirationSettings {
   ExpirationDays: number;
-  ExpirationCriterion: ExpirationCriterion;
+  ExpirationCriterion: ExpirationCriterion | (string & {});
 }
 export const ExpirationSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -579,7 +579,7 @@ export const InvocationType = /*@__PURE__*/ S.String;
 
 export interface LambdaConfiguration {
   ResourceArn: string;
-  InvocationType: InvocationType;
+  InvocationType: InvocationType | (string & {});
 }
 export const LambdaConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ResourceArn: S.String, InvocationType: InvocationType }),
@@ -602,7 +602,7 @@ export interface Processor {
   Name: string | redacted.Redacted<string>;
   Configuration: ProcessorConfiguration;
   ExecutionOrder: number;
-  FallbackAction: FallbackAction;
+  FallbackAction: FallbackAction | (string & {});
 }
 export const Processor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1407,7 +1407,7 @@ export const AllowNotifications = /*@__PURE__*/ S.String;
 
 export type FilterRule = string | redacted.Redacted<string>;
 export interface PushNotificationPreferences {
-  AllowNotifications: AllowNotifications;
+  AllowNotifications: AllowNotifications | (string & {});
   FilterRule?: string | redacted.Redacted<string>;
 }
 export const PushNotificationPreferences = /*@__PURE__*/ S.suspend(() =>
@@ -1654,7 +1654,7 @@ export type MessagingDataType = "Channel" | "ChannelMessage";
 export const MessagingDataType = /*@__PURE__*/ S.String;
 
 export interface StreamingConfiguration {
-  DataType: MessagingDataType;
+  DataType: MessagingDataType | (string & {});
   ResourceArn: string;
 }
 export const StreamingConfiguration = /*@__PURE__*/ S.suspend(() =>

@@ -60,7 +60,7 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -105,7 +105,7 @@ export const GoogleFirebaseAppcheckV1AppAttestConfig = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleFirebaseAppcheckV1AppAttestConfig>;
 
 export type GoogleFirebaseAppcheckV1AppAttestConfigList =
-  ReadonlyArray<GoogleFirebaseAppcheckV1AppAttestConfig>;
+  Array<GoogleFirebaseAppcheckV1AppAttestConfig>;
 export const GoogleFirebaseAppcheckV1AppAttestConfigList =
   /*@__PURE__*/ S.Array(
     GoogleFirebaseAppcheckV1AppAttestConfig,
@@ -174,7 +174,7 @@ export const GoogleFirebaseAppcheckV1DeviceCheckConfig =
   }) as any as S.Schema<GoogleFirebaseAppcheckV1DeviceCheckConfig>;
 
 export type GoogleFirebaseAppcheckV1DeviceCheckConfigList =
-  ReadonlyArray<GoogleFirebaseAppcheckV1DeviceCheckConfig>;
+  Array<GoogleFirebaseAppcheckV1DeviceCheckConfig>;
 export const GoogleFirebaseAppcheckV1DeviceCheckConfigList =
   /*@__PURE__*/ S.Array(
     GoogleFirebaseAppcheckV1DeviceCheckConfig,
@@ -256,7 +256,9 @@ export const GoogleFirebaseAppcheckV1PlayIntegrityConfigDeviceIntegrityMinDevice
 /** A settings object specifying device integrity requirements for Android devices running your app. These settings correspond to requirements on the [**device integrity** field](https://developer.android.com/google/play/integrity/verdicts#device-integrity-field) obtained from the Play Integrity API. See the [default responses table](https://developer.android.com/google/play/integrity/setup#default) for a quick summary. Warning: There are also [conditional](https://developer.android.com/google/play/integrity/setup#conditional) as well as [optional](https://developer.android.com/google/play/integrity/setup#optional_device_information) responses that you can receive, but requires additional explicit opt-in from you. The App Check API is **not** responsible for any such opt-ins. The default values for these settings work for most apps, and are recommended. */
 export interface GoogleFirebaseAppcheckV1PlayIntegrityConfigDeviceIntegrity {
   /** Specifies the minimum device integrity level in order for the device to be considered valid. Any device with a device recognition verdict lower than this level will be rejected. If this is unspecified, the default level is `NO_INTEGRITY`. */
-  minDeviceRecognitionLevel?: GoogleFirebaseAppcheckV1PlayIntegrityConfigDeviceIntegrityMinDeviceRecognitionLevelEnum;
+  minDeviceRecognitionLevel?:
+    | GoogleFirebaseAppcheckV1PlayIntegrityConfigDeviceIntegrityMinDeviceRecognitionLevelEnum
+    | (string & {});
 }
 export const GoogleFirebaseAppcheckV1PlayIntegrityConfigDeviceIntegrity =
   /*@__PURE__*/ S.suspend(() =>
@@ -302,7 +304,7 @@ export const GoogleFirebaseAppcheckV1PlayIntegrityConfig =
   }) as any as S.Schema<GoogleFirebaseAppcheckV1PlayIntegrityConfig>;
 
 export type GoogleFirebaseAppcheckV1PlayIntegrityConfigList =
-  ReadonlyArray<GoogleFirebaseAppcheckV1PlayIntegrityConfig>;
+  Array<GoogleFirebaseAppcheckV1PlayIntegrityConfig>;
 export const GoogleFirebaseAppcheckV1PlayIntegrityConfigList =
   /*@__PURE__*/ S.Array(
     GoogleFirebaseAppcheckV1PlayIntegrityConfig,
@@ -384,7 +386,7 @@ export const GoogleFirebaseAppcheckV1RecaptchaEnterpriseConfig =
   }) as any as S.Schema<GoogleFirebaseAppcheckV1RecaptchaEnterpriseConfig>;
 
 export type GoogleFirebaseAppcheckV1RecaptchaEnterpriseConfigList =
-  ReadonlyArray<GoogleFirebaseAppcheckV1RecaptchaEnterpriseConfig>;
+  Array<GoogleFirebaseAppcheckV1RecaptchaEnterpriseConfig>;
 export const GoogleFirebaseAppcheckV1RecaptchaEnterpriseConfigList =
   /*@__PURE__*/ S.Array(
     GoogleFirebaseAppcheckV1RecaptchaEnterpriseConfig,
@@ -456,7 +458,7 @@ export const GoogleFirebaseAppcheckV1RecaptchaV3Config =
   }) as any as S.Schema<GoogleFirebaseAppcheckV1RecaptchaV3Config>;
 
 export type GoogleFirebaseAppcheckV1RecaptchaV3ConfigList =
-  ReadonlyArray<GoogleFirebaseAppcheckV1RecaptchaV3Config>;
+  Array<GoogleFirebaseAppcheckV1RecaptchaV3Config>;
 export const GoogleFirebaseAppcheckV1RecaptchaV3ConfigList =
   /*@__PURE__*/ S.Array(
     GoogleFirebaseAppcheckV1RecaptchaV3Config,
@@ -493,13 +495,17 @@ export const GoogleFirebaseAppcheckV1ServiceEnforcementModeEnum =
 /** The enforcement configuration for a Firebase service supported by App Check. */
 export interface GoogleFirebaseAppcheckV1Service {
   /** Optional. The replay protection EnforcementMode for this service. Note that this field cannot be set to a level higher than that of baseline protection. For example, if the enforcement mode for baseline protection is set to `UNENFORCED`, this field cannot be set to `ENFORCED`. In order to enforce replay protection, you must first enforce App Check's baseline protection. An HTTP 400 error will be returned in this case. By default, this field is set to `OFF`. Setting this field to `UNENFORCED` or `ENFORCED` is considered opting into replay protection. Opting in can impact your requests by adding some latency and sometimes cost (depending on your attestation provider). To opt out of replay protection after opting in, set this field to `OFF`. */
-  replayProtection?: GoogleFirebaseAppcheckV1ServiceReplayProtectionEnum;
+  replayProtection?:
+    | GoogleFirebaseAppcheckV1ServiceReplayProtectionEnum
+    | (string & {});
   /** Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding. This etag is strongly validated as defined by RFC 7232. */
   etag?: string;
   /** Required. The relative resource name of the service configuration object, in the format: ``` projects/{project_number}/services/{service_id} ``` Note that the `service_id` element must be a supported service ID. Currently, the following service IDs are supported. Firebase and Google Cloud services: * `identitytoolkit.googleapis.com` (Firebase Authentication) * `firebasedataconnect.googleapis.com` (Firebase SQL Connect) * `firestore.googleapis.com` (Cloud Firestore) * `firebasedatabase.googleapis.com` (Firebase Realtime Database) * `firebasestorage.googleapis.com` (Cloud Storage for Firebase) * `firebaseml.googleapis.com` (Firebase AI Logic) Google Maps Platform services: * `maps-backend.googleapis.com` (Maps JavaScript API) * `places.googleapis.com` (Places API (New)) Other supported Google services: * `oauth2.googleapis.com` (Google Identity for iOS) Note: While all the supported `service_id`s may appear to be subdomains of `googleapis.com`, the `service_id` has no semantic meaning beyond identifying the service to App Check. It is not intended to represent the actual domain to which your apps send traffic, nor is it necessarily the API that should be enabled to use the service. For information on using these Google services, consult their documentation. */
   name?: string;
   /** Required. The baseline protection EnforcementMode for this service. */
-  enforcementMode?: GoogleFirebaseAppcheckV1ServiceEnforcementModeEnum;
+  enforcementMode?:
+    | GoogleFirebaseAppcheckV1ServiceEnforcementModeEnum
+    | (string & {});
   /** Output only. Timestamp when this service configuration object was most recently updated. */
   updateTime?: string;
 }
@@ -537,7 +543,7 @@ export const GoogleFirebaseAppcheckV1UpdateServiceRequest =
   }) as any as S.Schema<GoogleFirebaseAppcheckV1UpdateServiceRequest>;
 
 export type GoogleFirebaseAppcheckV1UpdateServiceRequestList =
-  ReadonlyArray<GoogleFirebaseAppcheckV1UpdateServiceRequest>;
+  Array<GoogleFirebaseAppcheckV1UpdateServiceRequest>;
 export const GoogleFirebaseAppcheckV1UpdateServiceRequestList =
   /*@__PURE__*/ S.Array(
     GoogleFirebaseAppcheckV1UpdateServiceRequest,
@@ -584,7 +590,7 @@ export const BatchUpdateProjectsServicesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BatchUpdateProjectsServicesRequest>;
 
 export type GoogleFirebaseAppcheckV1ServiceList =
-  ReadonlyArray<GoogleFirebaseAppcheckV1Service>;
+  Array<GoogleFirebaseAppcheckV1Service>;
 export const GoogleFirebaseAppcheckV1ServiceList = /*@__PURE__*/ S.Array(
   GoogleFirebaseAppcheckV1Service,
 ) as any as S.Schema<GoogleFirebaseAppcheckV1ServiceList>;
@@ -619,7 +625,9 @@ export interface GoogleFirebaseAppcheckV1ResourcePolicy {
   /** Required. Service specific name of the resource object to which this policy applies, in the format: * **iOS OAuth clients** (Google Identity for iOS): `//oauth2.googleapis.com/projects/{project_number}/oauthClients/{oauth_client_id}` Note that the resource must belong to the service specified in the `name` and be from the same project as this policy, but the resource is allowed to be missing at the time of creation of this policy; in that case, we make a best-effort attempt at respecting this policy, but it may not have any effect until the resource is fully created. */
   targetResource?: string;
   /** Required. The baseline protection EnforcementMode for this resource. This will override the service-level baseline protection EnforcementMode. */
-  enforcementMode?: GoogleFirebaseAppcheckV1ResourcePolicyEnforcementModeEnum;
+  enforcementMode?:
+    | GoogleFirebaseAppcheckV1ResourcePolicyEnforcementModeEnum
+    | (string & {});
   /** Output only. Timestamp when this resource policy configuration object was most recently updated. */
   updateTime?: string;
 }
@@ -656,7 +664,7 @@ export const GoogleFirebaseAppcheckV1UpdateResourcePolicyRequest =
   }) as any as S.Schema<GoogleFirebaseAppcheckV1UpdateResourcePolicyRequest>;
 
 export type GoogleFirebaseAppcheckV1UpdateResourcePolicyRequestList =
-  ReadonlyArray<GoogleFirebaseAppcheckV1UpdateResourcePolicyRequest>;
+  Array<GoogleFirebaseAppcheckV1UpdateResourcePolicyRequest>;
 export const GoogleFirebaseAppcheckV1UpdateResourcePolicyRequestList =
   /*@__PURE__*/ S.Array(
     GoogleFirebaseAppcheckV1UpdateResourcePolicyRequest,
@@ -708,7 +716,7 @@ export const BatchUpdateProjectsServicesResourcePoliciesRequest =
   }) as any as S.Schema<BatchUpdateProjectsServicesResourcePoliciesRequest>;
 
 export type GoogleFirebaseAppcheckV1ResourcePolicyList =
-  ReadonlyArray<GoogleFirebaseAppcheckV1ResourcePolicy>;
+  Array<GoogleFirebaseAppcheckV1ResourcePolicy>;
 export const GoogleFirebaseAppcheckV1ResourcePolicyList = /*@__PURE__*/ S.Array(
   GoogleFirebaseAppcheckV1ResourcePolicy,
 ) as any as S.Schema<GoogleFirebaseAppcheckV1ResourcePolicyList>;
@@ -1488,7 +1496,7 @@ export const GoogleFirebaseAppcheckV1PublicJwk = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleFirebaseAppcheckV1PublicJwk>;
 
 export type GoogleFirebaseAppcheckV1PublicJwkList =
-  ReadonlyArray<GoogleFirebaseAppcheckV1PublicJwk>;
+  Array<GoogleFirebaseAppcheckV1PublicJwk>;
 export const GoogleFirebaseAppcheckV1PublicJwkList = /*@__PURE__*/ S.Array(
   GoogleFirebaseAppcheckV1PublicJwk,
 ) as any as S.Schema<GoogleFirebaseAppcheckV1PublicJwkList>;
@@ -1682,7 +1690,7 @@ export const ListProjectsAppsDebugTokensRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsAppsDebugTokensRequest>;
 
 export type GoogleFirebaseAppcheckV1DebugTokenList =
-  ReadonlyArray<GoogleFirebaseAppcheckV1DebugToken>;
+  Array<GoogleFirebaseAppcheckV1DebugToken>;
 export const GoogleFirebaseAppcheckV1DebugTokenList = /*@__PURE__*/ S.Array(
   GoogleFirebaseAppcheckV1DebugToken,
 ) as any as S.Schema<GoogleFirebaseAppcheckV1DebugTokenList>;

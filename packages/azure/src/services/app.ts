@@ -340,7 +340,7 @@ export const AgentConnector = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AgentConnector" }) as any as S.Schema<AgentConnector>;
 
 /** The AgentConnector items on this page */
-export type AgentConnectorListResultValueList = ReadonlyArray<AgentConnector>;
+export type AgentConnectorListResultValueList = Array<AgentConnector>;
 export const AgentConnectorListResultValueList = /*@__PURE__*/ S.Array(
   AgentConnector,
 ) as any as S.Schema<AgentConnectorListResultValueList>;
@@ -440,7 +440,7 @@ export const AgentsConnectorsListWithSecretsByAgentRequest =
   }) as any as S.Schema<AgentsConnectorsListWithSecretsByAgentRequest>;
 
 /** The AgentConnector items on this page */
-export type AgentConnectorCollectionValueList = ReadonlyArray<AgentConnector>;
+export type AgentConnectorCollectionValueList = Array<AgentConnector>;
 export const AgentConnectorCollectionValueList = /*@__PURE__*/ S.Array(
   AgentConnector,
 ) as any as S.Schema<AgentConnectorCollectionValueList>;
@@ -471,8 +471,7 @@ export const AgentsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<AgentsCreateOrUpdateRequestTagsMap>;
 
 /** The list of resources managed by agent */
-export type KnowledgeGraphConfigurationManagedResourcesList =
-  ReadonlyArray<string>;
+export type KnowledgeGraphConfigurationManagedResourcesList = Array<string>;
 export const KnowledgeGraphConfigurationManagedResourcesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -509,9 +508,9 @@ export interface ActionConfiguration {
   /** The identity used by the action */
   identity?: string;
   /** The mode of the action */
-  mode?: AgentMode;
+  mode?: AgentMode | (string & {});
   /** The access level of the action */
-  accessLevel?: AgentAccessLevel;
+  accessLevel?: AgentAccessLevel | (string & {});
 }
 export const ActionConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1116,7 +1115,7 @@ export const Agent = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Agent" }) as any as S.Schema<Agent>;
 
 /** The Agent items on this page */
-export type AgentListResultValueList = ReadonlyArray<Agent>;
+export type AgentListResultValueList = Array<Agent>;
 export const AgentListResultValueList = /*@__PURE__*/ S.Array(
   Agent,
 ) as any as S.Schema<AgentListResultValueList>;
@@ -1432,8 +1431,7 @@ export const AgentSpaceConnector = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AgentSpaceConnector>;
 
 /** The AgentSpaceConnector items on this page */
-export type AgentSpaceConnectorCollectionValueList =
-  ReadonlyArray<AgentSpaceConnector>;
+export type AgentSpaceConnectorCollectionValueList = Array<AgentSpaceConnector>;
 export const AgentSpaceConnectorCollectionValueList = /*@__PURE__*/ S.Array(
   AgentSpaceConnector,
 ) as any as S.Schema<AgentSpaceConnectorCollectionValueList>;
@@ -1481,8 +1479,7 @@ export const AgentSpacesConnectorsListByAgentSpaceRequest =
   }) as any as S.Schema<AgentSpacesConnectorsListByAgentSpaceRequest>;
 
 /** The AgentSpaceConnector items on this page */
-export type AgentSpaceConnectorListResultValueList =
-  ReadonlyArray<AgentSpaceConnector>;
+export type AgentSpaceConnectorListResultValueList = Array<AgentSpaceConnector>;
 export const AgentSpaceConnectorListResultValueList = /*@__PURE__*/ S.Array(
   AgentSpaceConnector,
 ) as any as S.Schema<AgentSpaceConnectorListResultValueList>;
@@ -1588,7 +1585,7 @@ export const GenevaActionParameter = /*@__PURE__*/ S.suspend(() =>
 
 /** Parameters for the Geneva action */
 export type GenevaActionConfigActionParametersList =
-  ReadonlyArray<GenevaActionParameter>;
+  Array<GenevaActionParameter>;
 export const GenevaActionConfigActionParametersList = /*@__PURE__*/ S.Array(
   GenevaActionParameter,
 ) as any as S.Schema<GenevaActionConfigActionParametersList>;
@@ -1617,7 +1614,7 @@ export const GenevaActionConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** Collection of allowed Geneva actions */
 export type GenevaActionsPolicyInputAllowedActionsList =
-  ReadonlyArray<GenevaActionConfig>;
+  Array<GenevaActionConfig>;
 export const GenevaActionsPolicyInputAllowedActionsList = /*@__PURE__*/ S.Array(
   GenevaActionConfig,
 ) as any as S.Schema<GenevaActionsPolicyInputAllowedActionsList>;
@@ -1768,14 +1765,13 @@ export type AgentSpaceProvisioningState =
 export const AgentSpaceProvisioningState = /*@__PURE__*/ S.String;
 
 /** List of agents referencing the Agent Space */
-export type AgentSpacePropertiesMemberAgentsList = ReadonlyArray<string>;
+export type AgentSpacePropertiesMemberAgentsList = Array<string>;
 export const AgentSpacePropertiesMemberAgentsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AgentSpacePropertiesMemberAgentsList>;
 
 /** List of compliance issues found in the Agent Space */
-export type AgentSpaceComplianceStatusComplianceIssuesList =
-  ReadonlyArray<string>;
+export type AgentSpaceComplianceStatusComplianceIssuesList = Array<string>;
 export const AgentSpaceComplianceStatusComplianceIssuesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1803,8 +1799,7 @@ export const AgentSpaceComplianceStatus = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AgentSpaceComplianceStatus>;
 
 /** Collection of allowed Geneva actions */
-export type GenevaActionsPolicyAllowedActionsList =
-  ReadonlyArray<GenevaActionConfig>;
+export type GenevaActionsPolicyAllowedActionsList = Array<GenevaActionConfig>;
 export const GenevaActionsPolicyAllowedActionsList = /*@__PURE__*/ S.Array(
   GenevaActionConfig,
 ) as any as S.Schema<GenevaActionsPolicyAllowedActionsList>;
@@ -2184,7 +2179,7 @@ export const AgentSpace = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AgentSpace" }) as any as S.Schema<AgentSpace>;
 
 /** The AgentSpace items on this page */
-export type AgentSpaceListResultValueList = ReadonlyArray<AgentSpace>;
+export type AgentSpaceListResultValueList = Array<AgentSpace>;
 export const AgentSpaceListResultValueList = /*@__PURE__*/ S.Array(
   AgentSpace,
 ) as any as S.Schema<AgentSpaceListResultValueList>;
@@ -2263,7 +2258,7 @@ export const AgentSpacesUpdateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
 
 /** Collection of allowed Geneva actions */
 export type GenevaActionsPolicyPatchAllowedActionsList =
-  ReadonlyArray<GenevaActionConfig>;
+  Array<GenevaActionConfig>;
 export const GenevaActionsPolicyPatchAllowedActionsList = /*@__PURE__*/ S.Array(
   GenevaActionConfig,
 ) as any as S.Schema<GenevaActionsPolicyPatchAllowedActionsList>;
@@ -2910,7 +2905,7 @@ export const AvailableWorkloadProfile = /*@__PURE__*/ S.suspend(() =>
 
 /** The AvailableWorkloadProfile items on this page */
 export type AvailableWorkloadProfilesCollectionValueList =
-  ReadonlyArray<AvailableWorkloadProfile>;
+  Array<AvailableWorkloadProfile>;
 export const AvailableWorkloadProfilesCollectionValueList =
   /*@__PURE__*/ S.Array(
     AvailableWorkloadProfile,
@@ -3000,7 +2995,7 @@ export const BillingMeter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BillingMeter" }) as any as S.Schema<BillingMeter>;
 
 /** Collection of billing meters. */
-export type BillingMeterCollectionValueList = ReadonlyArray<BillingMeter>;
+export type BillingMeterCollectionValueList = Array<BillingMeter>;
 export const BillingMeterCollectionValueList = /*@__PURE__*/ S.Array(
   BillingMeter,
 ) as any as S.Schema<BillingMeterCollectionValueList>;
@@ -3119,8 +3114,7 @@ export type CertificateProvisioningState =
 export const CertificateProvisioningState = /*@__PURE__*/ S.String;
 
 /** Subject alternative names the certificate applies to. */
-export type CertificatePropertiesSubjectAlternativeNamesList =
-  ReadonlyArray<string>;
+export type CertificatePropertiesSubjectAlternativeNamesList = Array<string>;
 export const CertificatePropertiesSubjectAlternativeNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3371,7 +3365,7 @@ export const Certificate = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Certificate" }) as any as S.Schema<Certificate>;
 
 /** The Certificate items on this page */
-export type CertificateCollectionValueList = ReadonlyArray<Certificate>;
+export type CertificateCollectionValueList = Array<Certificate>;
 export const CertificateCollectionValueList = /*@__PURE__*/ S.Array(
   Certificate,
 ) as any as S.Schema<CertificateCollectionValueList>;
@@ -3898,7 +3892,7 @@ export interface ExtendedLocation {
   /** The name of the extended location. */
   name?: string;
   /** The type of the extended location. */
-  type?: ExtendedLocationTypes;
+  type?: ExtendedLocationTypes | (string & {});
 }
 export const ExtendedLocation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4086,7 +4080,7 @@ export const Secret = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Secret" }) as any as S.Schema<Secret>;
 
 /** Collection of secrets used by a Dapr component */
-export type DaprComponentPropertiesInputSecretsList = ReadonlyArray<Secret>;
+export type DaprComponentPropertiesInputSecretsList = Array<Secret>;
 export const DaprComponentPropertiesInputSecretsList = /*@__PURE__*/ S.Array(
   Secret,
 ) as any as S.Schema<DaprComponentPropertiesInputSecretsList>;
@@ -4109,14 +4103,13 @@ export const DaprMetadata = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DaprMetadata" }) as any as S.Schema<DaprMetadata>;
 
 /** Component metadata */
-export type DaprComponentPropertiesInputMetadataList =
-  ReadonlyArray<DaprMetadata>;
+export type DaprComponentPropertiesInputMetadataList = Array<DaprMetadata>;
 export const DaprComponentPropertiesInputMetadataList = /*@__PURE__*/ S.Array(
   DaprMetadata,
 ) as any as S.Schema<DaprComponentPropertiesInputMetadataList>;
 
 /** Names of container apps that can use this Dapr component */
-export type DaprComponentPropertiesInputScopesList = ReadonlyArray<string>;
+export type DaprComponentPropertiesInputScopesList = Array<string>;
 export const DaprComponentPropertiesInputScopesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DaprComponentPropertiesInputScopesList>;
@@ -4188,19 +4181,19 @@ export const ConnectedEnvironmentsDaprComponentsCreateOrUpdateRequest =
   }) as any as S.Schema<ConnectedEnvironmentsDaprComponentsCreateOrUpdateRequest>;
 
 /** Collection of secrets used by a Dapr component */
-export type DaprComponentPropertiesSecretsList = ReadonlyArray<Secret>;
+export type DaprComponentPropertiesSecretsList = Array<Secret>;
 export const DaprComponentPropertiesSecretsList = /*@__PURE__*/ S.Array(
   Secret,
 ) as any as S.Schema<DaprComponentPropertiesSecretsList>;
 
 /** Component metadata */
-export type DaprComponentPropertiesMetadataList = ReadonlyArray<DaprMetadata>;
+export type DaprComponentPropertiesMetadataList = Array<DaprMetadata>;
 export const DaprComponentPropertiesMetadataList = /*@__PURE__*/ S.Array(
   DaprMetadata,
 ) as any as S.Schema<DaprComponentPropertiesMetadataList>;
 
 /** Names of container apps that can use this Dapr component */
-export type DaprComponentPropertiesScopesList = ReadonlyArray<string>;
+export type DaprComponentPropertiesScopesList = Array<string>;
 export const DaprComponentPropertiesScopesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DaprComponentPropertiesScopesList>;
@@ -4418,7 +4411,7 @@ export const DaprComponent = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DaprComponent" }) as any as S.Schema<DaprComponent>;
 
 /** The DaprComponent items on this page */
-export type DaprComponentsCollectionValueList = ReadonlyArray<DaprComponent>;
+export type DaprComponentsCollectionValueList = Array<DaprComponent>;
 export const DaprComponentsCollectionValueList = /*@__PURE__*/ S.Array(
   DaprComponent,
 ) as any as S.Schema<DaprComponentsCollectionValueList>;
@@ -4483,7 +4476,7 @@ export const DaprSecret = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DaprSecret" }) as any as S.Schema<DaprSecret>;
 
 /** Collection of secrets used by a Dapr component */
-export type DaprSecretsCollectionValueList = ReadonlyArray<DaprSecret>;
+export type DaprSecretsCollectionValueList = Array<DaprSecret>;
 export const DaprSecretsCollectionValueList = /*@__PURE__*/ S.Array(
   DaprSecret,
 ) as any as S.Schema<DaprSecretsCollectionValueList>;
@@ -4666,7 +4659,7 @@ export const ConnectedEnvironment = /*@__PURE__*/ S.suspend(() =>
 
 /** The ConnectedEnvironment items on this page */
 export type ConnectedEnvironmentCollectionValueList =
-  ReadonlyArray<ConnectedEnvironment>;
+  Array<ConnectedEnvironment>;
 export const ConnectedEnvironmentCollectionValueList = /*@__PURE__*/ S.Array(
   ConnectedEnvironment,
 ) as any as S.Schema<ConnectedEnvironmentCollectionValueList>;
@@ -4736,7 +4729,7 @@ export interface AzureFileProperties {
   /** Storage account key stored as an Azure Key Vault secret. */
   accountKeyVaultProperties?: SecretKeyVaultProperties;
   /** Access mode for storage */
-  accessMode?: AccessMode;
+  accessMode?: AccessMode | (string & {});
   /** Azure file share name. */
   shareName?: string;
 }
@@ -4997,7 +4990,7 @@ export const ConnectedEnvironmentStorage = /*@__PURE__*/ S.suspend(() =>
 
 /** Collection of storage resources. */
 export type ConnectedEnvironmentStoragesCollectionValueList =
-  ReadonlyArray<ConnectedEnvironmentStorage>;
+  Array<ConnectedEnvironmentStorage>;
 export const ConnectedEnvironmentStoragesCollectionValueList =
   /*@__PURE__*/ S.Array(
     ConnectedEnvironmentStorage,
@@ -5120,7 +5113,7 @@ export type UnauthenticatedClientActionV2 =
 export const UnauthenticatedClientActionV2 = /*@__PURE__*/ S.String;
 
 /** The paths for which unauthenticated flow would not be redirected to the login page. */
-export type GlobalValidationExcludedPathsList = ReadonlyArray<string>;
+export type GlobalValidationExcludedPathsList = Array<string>;
 export const GlobalValidationExcludedPathsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GlobalValidationExcludedPathsList>;
@@ -5128,7 +5121,7 @@ export const GlobalValidationExcludedPathsList = /*@__PURE__*/ S.Array(
 /** The configuration settings that determines the validation flow of users using ContainerApp Service Authentication/Authorization. */
 export interface GlobalValidation {
   /** The action to take when an unauthenticated client attempts to access the app. */
-  unauthenticatedClientAction?: UnauthenticatedClientActionV2;
+  unauthenticatedClientAction?: UnauthenticatedClientActionV2 | (string & {});
   /** The default authentication provider to use when multiple providers are configured. This setting is only needed if multiple providers are configured and the unauthenticated client action is set to "RedirectToLoginPage". */
   redirectToProvider?: string;
   /** The paths for which unauthenticated flow would not be redirected to the login page. */
@@ -5173,8 +5166,7 @@ export const AzureActiveDirectoryRegistration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AzureActiveDirectoryRegistration>;
 
 /** Login parameters to send to the OpenID Connect authorization endpoint when a user logs in. Each parameter must be in the form "key=value". */
-export type AzureActiveDirectoryLoginLoginParametersList =
-  ReadonlyArray<string>;
+export type AzureActiveDirectoryLoginLoginParametersList = Array<string>;
 export const AzureActiveDirectoryLoginLoginParametersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5197,13 +5189,13 @@ export const AzureActiveDirectoryLogin = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AzureActiveDirectoryLogin>;
 
 /** The list of the allowed groups. */
-export type JwtClaimChecksAllowedGroupsList = ReadonlyArray<string>;
+export type JwtClaimChecksAllowedGroupsList = Array<string>;
 export const JwtClaimChecksAllowedGroupsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<JwtClaimChecksAllowedGroupsList>;
 
 /** The list of the allowed client applications. */
-export type JwtClaimChecksAllowedClientApplicationsList = ReadonlyArray<string>;
+export type JwtClaimChecksAllowedClientApplicationsList = Array<string>;
 export const JwtClaimChecksAllowedClientApplicationsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5226,21 +5218,20 @@ export const JwtClaimChecks = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "JwtClaimChecks" }) as any as S.Schema<JwtClaimChecks>;
 
 /** The list of audiences that can make successful authentication/authorization requests. */
-export type AzureActiveDirectoryValidationAllowedAudiencesList =
-  ReadonlyArray<string>;
+export type AzureActiveDirectoryValidationAllowedAudiencesList = Array<string>;
 export const AzureActiveDirectoryValidationAllowedAudiencesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AzureActiveDirectoryValidationAllowedAudiencesList>;
 
 /** The list of the allowed groups. */
-export type AllowedPrincipalsGroupsList = ReadonlyArray<string>;
+export type AllowedPrincipalsGroupsList = Array<string>;
 export const AllowedPrincipalsGroupsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AllowedPrincipalsGroupsList>;
 
 /** The list of the allowed identities. */
-export type AllowedPrincipalsIdentitiesList = ReadonlyArray<string>;
+export type AllowedPrincipalsIdentitiesList = Array<string>;
 export const AllowedPrincipalsIdentitiesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AllowedPrincipalsIdentitiesList>;
@@ -5262,8 +5253,7 @@ export const AllowedPrincipals = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AllowedPrincipals>;
 
 /** The configuration settings of the Azure Active Directory allowed applications. */
-export type DefaultAuthorizationPolicyAllowedApplicationsList =
-  ReadonlyArray<string>;
+export type DefaultAuthorizationPolicyAllowedApplicationsList = Array<string>;
 export const DefaultAuthorizationPolicyAllowedApplicationsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5350,7 +5340,7 @@ export const AppRegistration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AppRegistration>;
 
 /** A list of the scopes that should be requested while authenticating. */
-export type LoginScopesScopesList = ReadonlyArray<string>;
+export type LoginScopesScopesList = Array<string>;
 export const LoginScopesScopesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LoginScopesScopesList>;
@@ -5420,8 +5410,7 @@ export const GitHub = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GitHub" }) as any as S.Schema<GitHub>;
 
 /** The configuration settings of the allowed list of audiences from which to validate the JWT token. */
-export type AllowedAudiencesValidationAllowedAudiencesList =
-  ReadonlyArray<string>;
+export type AllowedAudiencesValidationAllowedAudiencesList = Array<string>;
 export const AllowedAudiencesValidationAllowedAudiencesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5561,7 +5550,7 @@ export const OpenIdConnectClientCredentialMethod = /*@__PURE__*/ S.String;
 /** The authentication client credentials of the custom Open ID Connect provider. */
 export interface OpenIdConnectClientCredential {
   /** The method that should be used to authenticate the user. */
-  method?: OpenIdConnectClientCredentialMethod;
+  method?: OpenIdConnectClientCredentialMethod | (string & {});
   /** The app setting that contains the client secret for the custom Open ID Connect provider. */
   clientSecretSettingName?: string;
 }
@@ -5619,7 +5608,7 @@ export const OpenIdConnectRegistration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OpenIdConnectRegistration>;
 
 /** A list of the scopes that should be requested while authenticating. */
-export type OpenIdConnectLoginScopesList = ReadonlyArray<string>;
+export type OpenIdConnectLoginScopesList = Array<string>;
 export const OpenIdConnectLoginScopesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<OpenIdConnectLoginScopesList>;
@@ -5747,7 +5736,7 @@ export const TokenStore = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TokenStore" }) as any as S.Schema<TokenStore>;
 
 /** External URLs that can be redirected to as part of logging in or logging out of the app. Note that the query string part of the URL is ignored. This is an advanced setting typically only needed by Windows Store application backends. Note that URLs within the current domain are always implicitly allowed. */
-export type LoginAllowedExternalRedirectUrlsList = ReadonlyArray<string>;
+export type LoginAllowedExternalRedirectUrlsList = Array<string>;
 export const LoginAllowedExternalRedirectUrlsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LoginAllowedExternalRedirectUrlsList>;
@@ -5761,7 +5750,7 @@ export const CookieExpirationConvention = /*@__PURE__*/ S.String;
 /** The configuration settings of the session cookie's expiration. */
 export interface CookieExpiration {
   /** The convention used when determining the session cookie's expiration. */
-  convention?: CookieExpirationConvention;
+  convention?: CookieExpirationConvention | (string & {});
   /** The time after the request is made when the session cookie should expire. */
   timeToExpiration?: string;
 }
@@ -5836,7 +5825,7 @@ export const ForwardProxyConvention = /*@__PURE__*/ S.String;
 /** The configuration settings of a forward proxy used to make the requests. */
 export interface ForwardProxy {
   /** The convention used to determine the url of the request made. */
-  convention?: ForwardProxyConvention;
+  convention?: ForwardProxyConvention | (string & {});
   /** The name of the header containing the host of the request. */
   customHostHeaderName?: string;
   /** The name of the header containing the scheme of the request. */
@@ -6106,7 +6095,7 @@ export const AuthConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AuthConfig" }) as any as S.Schema<AuthConfig>;
 
 /** The AuthConfig items on this page */
-export type AuthConfigCollectionValueList = ReadonlyArray<AuthConfig>;
+export type AuthConfigCollectionValueList = Array<AuthConfig>;
 export const AuthConfigCollectionValueList = /*@__PURE__*/ S.Array(
   AuthConfig,
 ) as any as S.Schema<AuthConfigCollectionValueList>;
@@ -6137,7 +6126,7 @@ export const ContainerAppsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ContainerAppsCreateOrUpdateRequestTagsMap>;
 
 /** Collection of secrets used by a Container app */
-export type ConfigurationInputSecretsList = ReadonlyArray<Secret>;
+export type ConfigurationInputSecretsList = Array<Secret>;
 export const ConfigurationInputSecretsList = /*@__PURE__*/ S.Array(
   Secret,
 ) as any as S.Schema<ConfigurationInputSecretsList>;
@@ -6171,7 +6160,7 @@ export const TrafficWeight = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TrafficWeight" }) as any as S.Schema<TrafficWeight>;
 
 /** Traffic weights for app's revisions */
-export type IngressInputTrafficList = ReadonlyArray<TrafficWeight>;
+export type IngressInputTrafficList = Array<TrafficWeight>;
 export const IngressInputTrafficList = /*@__PURE__*/ S.Array(
   TrafficWeight,
 ) as any as S.Schema<IngressInputTrafficList>;
@@ -6185,7 +6174,7 @@ export interface CustomDomain {
   /** Hostname. */
   name: string;
   /** Custom Domain binding type. */
-  bindingType?: BindingType;
+  bindingType?: BindingType | (string & {});
   /** Resource Id of the Certificate to be bound to this hostname. Must exist in the Managed Environment. */
   certificateId?: string;
 }
@@ -6198,7 +6187,7 @@ export const CustomDomain = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CustomDomain" }) as any as S.Schema<CustomDomain>;
 
 /** custom domain bindings for Container Apps' hostnames. */
-export type IngressInputCustomDomainsList = ReadonlyArray<CustomDomain>;
+export type IngressInputCustomDomainsList = Array<CustomDomain>;
 export const IngressInputCustomDomainsList = /*@__PURE__*/ S.Array(
   CustomDomain,
 ) as any as S.Schema<IngressInputCustomDomainsList>;
@@ -6216,7 +6205,7 @@ export interface IpSecurityRestrictionRule {
   /** CIDR notation to match incoming IP address */
   ipAddressRange: string;
   /** Allow or Deny rules to determine for incoming IP. Note: Rules can only consist of ALL Allow or ALL Deny */
-  action: Action;
+  action: Action | (string & {});
 }
 export const IpSecurityRestrictionRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6231,7 +6220,7 @@ export const IpSecurityRestrictionRule = /*@__PURE__*/ S.suspend(() =>
 
 /** Rules to restrict incoming IP address. */
 export type IngressInputIpSecurityRestrictionsList =
-  ReadonlyArray<IpSecurityRestrictionRule>;
+  Array<IpSecurityRestrictionRule>;
 export const IngressInputIpSecurityRestrictionsList = /*@__PURE__*/ S.Array(
   IpSecurityRestrictionRule,
 ) as any as S.Schema<IngressInputIpSecurityRestrictionsList>;
@@ -6243,7 +6232,7 @@ export const Affinity = /*@__PURE__*/ S.String;
 /** Sticky Sessions for Single Revision Mode */
 export interface IngressStickySessions {
   /** Sticky Session Affinity */
-  affinity?: Affinity;
+  affinity?: Affinity | (string & {});
 }
 export const IngressStickySessions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6258,25 +6247,25 @@ export type IngressClientCertificateMode = "ignore" | "accept" | "require";
 export const IngressClientCertificateMode = /*@__PURE__*/ S.String;
 
 /** Specifies the content for the access-control-allow-origins header */
-export type CorsPolicyAllowedOriginsList = ReadonlyArray<string>;
+export type CorsPolicyAllowedOriginsList = Array<string>;
 export const CorsPolicyAllowedOriginsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CorsPolicyAllowedOriginsList>;
 
 /** Specifies the content for the access-control-allow-methods header */
-export type CorsPolicyAllowedMethodsList = ReadonlyArray<string>;
+export type CorsPolicyAllowedMethodsList = Array<string>;
 export const CorsPolicyAllowedMethodsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CorsPolicyAllowedMethodsList>;
 
 /** Specifies the content for the access-control-allow-headers header */
-export type CorsPolicyAllowedHeadersList = ReadonlyArray<string>;
+export type CorsPolicyAllowedHeadersList = Array<string>;
 export const CorsPolicyAllowedHeadersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CorsPolicyAllowedHeadersList>;
 
 /** Specifies the content for the access-control-expose-headers header */
-export type CorsPolicyExposeHeadersList = ReadonlyArray<string>;
+export type CorsPolicyExposeHeadersList = Array<string>;
 export const CorsPolicyExposeHeadersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CorsPolicyExposeHeadersList>;
@@ -6327,8 +6316,7 @@ export const IngressPortMapping = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IngressPortMapping>;
 
 /** Settings to expose additional ports on container app */
-export type IngressInputAdditionalPortMappingsList =
-  ReadonlyArray<IngressPortMapping>;
+export type IngressInputAdditionalPortMappingsList = Array<IngressPortMapping>;
 export const IngressInputAdditionalPortMappingsList = /*@__PURE__*/ S.Array(
   IngressPortMapping,
 ) as any as S.Schema<IngressInputAdditionalPortMappingsList>;
@@ -6400,8 +6388,7 @@ export const RegistryCredentials = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RegistryCredentials>;
 
 /** Collection of private container registry credentials for containers used by the Container app */
-export type ConfigurationInputRegistriesList =
-  ReadonlyArray<RegistryCredentials>;
+export type ConfigurationInputRegistriesList = Array<RegistryCredentials>;
 export const ConfigurationInputRegistriesList = /*@__PURE__*/ S.Array(
   RegistryCredentials,
 ) as any as S.Schema<ConfigurationInputRegistriesList>;
@@ -6444,7 +6431,7 @@ export interface Dapr {
   /** Dapr application identifier */
   appId?: string;
   /** Tells Dapr which protocol your application is using. Valid options are http and grpc. Default is http */
-  appProtocol?: DaprAppProtocol;
+  appProtocol?: DaprAppProtocol | (string & {});
   /** Tells Dapr which port your application is listening on */
   appPort?: number;
   /** Dapr max size of http header read buffer in KB to handle when sending multi-KB headers. Default is 65KB. */
@@ -6452,7 +6439,7 @@ export interface Dapr {
   /** Increasing max size of request body http and grpc servers parameter in MB to handle uploading of big files. Default is 4 MB. */
   httpMaxRequestSize?: number;
   /** Sets the log level for the Dapr sidecar. Allowed values are debug, info, warn, error. Default is info. */
-  logLevel?: LogLevel;
+  logLevel?: LogLevel | (string & {});
   /** Enables API logging for the Dapr sidecar */
   enableApiLogging?: boolean;
   /** Dapr application health check configuration */
@@ -6517,7 +6504,7 @@ export interface IdentitySettings {
   /** The resource ID of a user-assigned managed identity that is assigned to the Container App, or 'system' for system-assigned identity. */
   identity: string;
   /** Use to select the lifecycle stages of a Container App during which the Managed Identity should be available. */
-  lifecycle?: IdentitySettingsLifecycle;
+  lifecycle?: IdentitySettingsLifecycle | (string & {});
 }
 export const IdentitySettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6529,8 +6516,7 @@ export const IdentitySettings = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IdentitySettings>;
 
 /** Optional settings for Managed Identities that are assigned to the Container App. If a Managed Identity is not specified here, default settings will be used. */
-export type ConfigurationInputIdentitySettingsList =
-  ReadonlyArray<IdentitySettings>;
+export type ConfigurationInputIdentitySettingsList = Array<IdentitySettings>;
 export const ConfigurationInputIdentitySettingsList = /*@__PURE__*/ S.Array(
   IdentitySettings,
 ) as any as S.Schema<ConfigurationInputIdentitySettingsList>;
@@ -6573,13 +6559,13 @@ export const ConfigurationInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConfigurationInput>;
 
 /** Container start command. */
-export type BaseContainerInputCommandList = ReadonlyArray<string>;
+export type BaseContainerInputCommandList = Array<string>;
 export const BaseContainerInputCommandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BaseContainerInputCommandList>;
 
 /** Container start command arguments. */
-export type BaseContainerInputArgsList = ReadonlyArray<string>;
+export type BaseContainerInputArgsList = Array<string>;
 export const BaseContainerInputArgsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BaseContainerInputArgsList>;
@@ -6602,7 +6588,7 @@ export const EnvironmentVar = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EnvironmentVar" }) as any as S.Schema<EnvironmentVar>;
 
 /** Container environment variables. */
-export type BaseContainerInputEnvList = ReadonlyArray<EnvironmentVar>;
+export type BaseContainerInputEnvList = Array<EnvironmentVar>;
 export const BaseContainerInputEnvList = /*@__PURE__*/ S.Array(
   EnvironmentVar,
 ) as any as S.Schema<BaseContainerInputEnvList>;
@@ -6641,7 +6627,7 @@ export const VolumeMount = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VolumeMount" }) as any as S.Schema<VolumeMount>;
 
 /** Container volume mounts. */
-export type BaseContainerInputVolumeMountsList = ReadonlyArray<VolumeMount>;
+export type BaseContainerInputVolumeMountsList = Array<VolumeMount>;
 export const BaseContainerInputVolumeMountsList = /*@__PURE__*/ S.Array(
   VolumeMount,
 ) as any as S.Schema<BaseContainerInputVolumeMountsList>;
@@ -6678,31 +6664,31 @@ export const BaseContainerInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BaseContainerInput>;
 
 /** List of specialized containers that run before app containers. */
-export type TemplateInputInitContainersList = ReadonlyArray<BaseContainerInput>;
+export type TemplateInputInitContainersList = Array<BaseContainerInput>;
 export const TemplateInputInitContainersList = /*@__PURE__*/ S.Array(
   BaseContainerInput,
 ) as any as S.Schema<TemplateInputInitContainersList>;
 
 /** Container start command. */
-export type ContainerInputCommandList = ReadonlyArray<string>;
+export type ContainerInputCommandList = Array<string>;
 export const ContainerInputCommandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ContainerInputCommandList>;
 
 /** Container start command arguments. */
-export type ContainerInputArgsList = ReadonlyArray<string>;
+export type ContainerInputArgsList = Array<string>;
 export const ContainerInputArgsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ContainerInputArgsList>;
 
 /** Container environment variables. */
-export type ContainerInputEnvList = ReadonlyArray<EnvironmentVar>;
+export type ContainerInputEnvList = Array<EnvironmentVar>;
 export const ContainerInputEnvList = /*@__PURE__*/ S.Array(
   EnvironmentVar,
 ) as any as S.Schema<ContainerInputEnvList>;
 
 /** Container volume mounts. */
-export type ContainerInputVolumeMountsList = ReadonlyArray<VolumeMount>;
+export type ContainerInputVolumeMountsList = Array<VolumeMount>;
 export const ContainerInputVolumeMountsList = /*@__PURE__*/ S.Array(
   VolumeMount,
 ) as any as S.Schema<ContainerInputVolumeMountsList>;
@@ -6726,7 +6712,7 @@ export const ContainerAppProbeHttpGetHttpHeadersItem = /*@__PURE__*/ S.suspend(
 
 /** Custom headers to set in the request. HTTP allows repeated headers. */
 export type ContainerAppProbeHttpGetHttpHeadersList =
-  ReadonlyArray<ContainerAppProbeHttpGetHttpHeadersItem>;
+  Array<ContainerAppProbeHttpGetHttpHeadersItem>;
 export const ContainerAppProbeHttpGetHttpHeadersList = /*@__PURE__*/ S.Array(
   ContainerAppProbeHttpGetHttpHeadersItem,
 ) as any as S.Schema<ContainerAppProbeHttpGetHttpHeadersList>;
@@ -6746,7 +6732,7 @@ export interface ContainerAppProbeHttpGet {
   /** Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME. */
   port: number;
   /** Scheme to use for connecting to the host. Defaults to HTTP. */
-  scheme?: Scheme;
+  scheme?: Scheme | (string & {});
 }
 export const ContainerAppProbeHttpGet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6799,7 +6785,7 @@ export interface ContainerAppProbe {
   /** Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 240. */
   timeoutSeconds?: number;
   /** The type of probe. */
-  type?: Type;
+  type?: Type | (string & {});
 }
 export const ContainerAppProbe = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6818,7 +6804,7 @@ export const ContainerAppProbe = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ContainerAppProbe>;
 
 /** List of probes for the container. */
-export type ContainerInputProbesList = ReadonlyArray<ContainerAppProbe>;
+export type ContainerInputProbesList = Array<ContainerAppProbe>;
 export const ContainerInputProbesList = /*@__PURE__*/ S.Array(
   ContainerAppProbe,
 ) as any as S.Schema<ContainerInputProbesList>;
@@ -6856,7 +6842,7 @@ export const ContainerInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ContainerInput" }) as any as S.Schema<ContainerInput>;
 
 /** List of container definitions for the Container App. */
-export type TemplateInputContainersList = ReadonlyArray<ContainerInput>;
+export type TemplateInputContainersList = Array<ContainerInput>;
 export const TemplateInputContainersList = /*@__PURE__*/ S.Array(
   ContainerInput,
 ) as any as S.Schema<TemplateInputContainersList>;
@@ -6876,7 +6862,7 @@ export const ScaleRuleAuth = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ScaleRuleAuth" }) as any as S.Schema<ScaleRuleAuth>;
 
 /** Authentication secrets for the queue scale rule. */
-export type QueueScaleRuleAuthList = ReadonlyArray<ScaleRuleAuth>;
+export type QueueScaleRuleAuthList = Array<ScaleRuleAuth>;
 export const QueueScaleRuleAuthList = /*@__PURE__*/ S.Array(
   ScaleRuleAuth,
 ) as any as S.Schema<QueueScaleRuleAuthList>;
@@ -6912,7 +6898,7 @@ export const CustomScaleRuleMetadataMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<CustomScaleRuleMetadataMap>;
 
 /** Authentication secrets for the custom scale rule. */
-export type CustomScaleRuleAuthList = ReadonlyArray<ScaleRuleAuth>;
+export type CustomScaleRuleAuthList = Array<ScaleRuleAuth>;
 export const CustomScaleRuleAuthList = /*@__PURE__*/ S.Array(
   ScaleRuleAuth,
 ) as any as S.Schema<CustomScaleRuleAuthList>;
@@ -6947,7 +6933,7 @@ export const HttpScaleRuleMetadataMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<HttpScaleRuleMetadataMap>;
 
 /** Authentication secrets for the custom scale rule. */
-export type HttpScaleRuleAuthList = ReadonlyArray<ScaleRuleAuth>;
+export type HttpScaleRuleAuthList = Array<ScaleRuleAuth>;
 export const HttpScaleRuleAuthList = /*@__PURE__*/ S.Array(
   ScaleRuleAuth,
 ) as any as S.Schema<HttpScaleRuleAuthList>;
@@ -6977,7 +6963,7 @@ export const TcpScaleRuleMetadataMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<TcpScaleRuleMetadataMap>;
 
 /** Authentication secrets for the tcp scale rule. */
-export type TcpScaleRuleAuthList = ReadonlyArray<ScaleRuleAuth>;
+export type TcpScaleRuleAuthList = Array<ScaleRuleAuth>;
 export const TcpScaleRuleAuthList = /*@__PURE__*/ S.Array(
   ScaleRuleAuth,
 ) as any as S.Schema<TcpScaleRuleAuthList>;
@@ -7023,7 +7009,7 @@ export const ScaleRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ScaleRule" }) as any as S.Schema<ScaleRule>;
 
 /** Scaling rules. */
-export type ScaleRulesList = ReadonlyArray<ScaleRule>;
+export type ScaleRulesList = Array<ScaleRule>;
 export const ScaleRulesList = /*@__PURE__*/ S.Array(
   ScaleRule,
 ) as any as S.Schema<ScaleRulesList>;
@@ -7072,7 +7058,7 @@ export const SecretVolumeItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SecretVolumeItem>;
 
 /** List of secrets to be added in volume. If no secrets are provided, all secrets in collection will be added to volume. */
-export type VolumeSecretsList = ReadonlyArray<SecretVolumeItem>;
+export type VolumeSecretsList = Array<SecretVolumeItem>;
 export const VolumeSecretsList = /*@__PURE__*/ S.Array(
   SecretVolumeItem,
 ) as any as S.Schema<VolumeSecretsList>;
@@ -7082,7 +7068,7 @@ export interface Volume {
   /** Volume name. */
   name?: string;
   /** Storage type for the volume. If not provided, use EmptyDir. */
-  storageType?: StorageType;
+  storageType?: StorageType | (string & {});
   /** Name of storage resource. No need to provide for EmptyDir and Secret. */
   storageName?: string;
   /** List of secrets to be added in volume. If no secrets are provided, all secrets in collection will be added to volume. */
@@ -7101,7 +7087,7 @@ export const Volume = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Volume" }) as any as S.Schema<Volume>;
 
 /** List of volume definitions for the Container App. */
-export type TemplateInputVolumesList = ReadonlyArray<Volume>;
+export type TemplateInputVolumesList = Array<Volume>;
 export const TemplateInputVolumesList = /*@__PURE__*/ S.Array(
   Volume,
 ) as any as S.Schema<TemplateInputVolumesList>;
@@ -7121,7 +7107,7 @@ export const ServiceBind = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ServiceBind" }) as any as S.Schema<ServiceBind>;
 
 /** List of container app services bound to the app */
-export type TemplateInputServiceBindsList = ReadonlyArray<ServiceBind>;
+export type TemplateInputServiceBindsList = Array<ServiceBind>;
 export const TemplateInputServiceBindsList = /*@__PURE__*/ S.Array(
   ServiceBind,
 ) as any as S.Schema<TemplateInputServiceBindsList>;
@@ -7283,7 +7269,7 @@ export type ContainerAppRunningStatus =
 export const ContainerAppRunningStatus = /*@__PURE__*/ S.String;
 
 /** Collection of secrets used by a Container app */
-export type ConfigurationSecretsList = ReadonlyArray<Secret>;
+export type ConfigurationSecretsList = Array<Secret>;
 export const ConfigurationSecretsList = /*@__PURE__*/ S.Array(
   Secret,
 ) as any as S.Schema<ConfigurationSecretsList>;
@@ -7297,27 +7283,26 @@ export type IngressTransport = "auto" | "http" | "http2" | "tcp";
 export const IngressTransport = /*@__PURE__*/ S.String;
 
 /** Traffic weights for app's revisions */
-export type IngressTrafficList = ReadonlyArray<TrafficWeight>;
+export type IngressTrafficList = Array<TrafficWeight>;
 export const IngressTrafficList = /*@__PURE__*/ S.Array(
   TrafficWeight,
 ) as any as S.Schema<IngressTrafficList>;
 
 /** custom domain bindings for Container Apps' hostnames. */
-export type IngressCustomDomainsList = ReadonlyArray<CustomDomain>;
+export type IngressCustomDomainsList = Array<CustomDomain>;
 export const IngressCustomDomainsList = /*@__PURE__*/ S.Array(
   CustomDomain,
 ) as any as S.Schema<IngressCustomDomainsList>;
 
 /** Rules to restrict incoming IP address. */
 export type IngressIpSecurityRestrictionsList =
-  ReadonlyArray<IpSecurityRestrictionRule>;
+  Array<IpSecurityRestrictionRule>;
 export const IngressIpSecurityRestrictionsList = /*@__PURE__*/ S.Array(
   IpSecurityRestrictionRule,
 ) as any as S.Schema<IngressIpSecurityRestrictionsList>;
 
 /** Settings to expose additional ports on container app */
-export type IngressAdditionalPortMappingsList =
-  ReadonlyArray<IngressPortMapping>;
+export type IngressAdditionalPortMappingsList = Array<IngressPortMapping>;
 export const IngressAdditionalPortMappingsList = /*@__PURE__*/ S.Array(
   IngressPortMapping,
 ) as any as S.Schema<IngressAdditionalPortMappingsList>;
@@ -7370,13 +7355,13 @@ export const Ingress = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Ingress" }) as any as S.Schema<Ingress>;
 
 /** Collection of private container registry credentials for containers used by the Container app */
-export type ConfigurationRegistriesList = ReadonlyArray<RegistryCredentials>;
+export type ConfigurationRegistriesList = Array<RegistryCredentials>;
 export const ConfigurationRegistriesList = /*@__PURE__*/ S.Array(
   RegistryCredentials,
 ) as any as S.Schema<ConfigurationRegistriesList>;
 
 /** Optional settings for Managed Identities that are assigned to the Container App. If a Managed Identity is not specified here, default settings will be used. */
-export type ConfigurationIdentitySettingsList = ReadonlyArray<IdentitySettings>;
+export type ConfigurationIdentitySettingsList = Array<IdentitySettings>;
 export const ConfigurationIdentitySettingsList = /*@__PURE__*/ S.Array(
   IdentitySettings,
 ) as any as S.Schema<ConfigurationIdentitySettingsList>;
@@ -7417,19 +7402,19 @@ export const Configuration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Configuration" }) as any as S.Schema<Configuration>;
 
 /** Container start command. */
-export type BaseContainerCommandList = ReadonlyArray<string>;
+export type BaseContainerCommandList = Array<string>;
 export const BaseContainerCommandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BaseContainerCommandList>;
 
 /** Container start command arguments. */
-export type BaseContainerArgsList = ReadonlyArray<string>;
+export type BaseContainerArgsList = Array<string>;
 export const BaseContainerArgsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BaseContainerArgsList>;
 
 /** Container environment variables. */
-export type BaseContainerEnvList = ReadonlyArray<EnvironmentVar>;
+export type BaseContainerEnvList = Array<EnvironmentVar>;
 export const BaseContainerEnvList = /*@__PURE__*/ S.Array(
   EnvironmentVar,
 ) as any as S.Schema<BaseContainerEnvList>;
@@ -7454,7 +7439,7 @@ export const ContainerResources = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ContainerResources>;
 
 /** Container volume mounts. */
-export type BaseContainerVolumeMountsList = ReadonlyArray<VolumeMount>;
+export type BaseContainerVolumeMountsList = Array<VolumeMount>;
 export const BaseContainerVolumeMountsList = /*@__PURE__*/ S.Array(
   VolumeMount,
 ) as any as S.Schema<BaseContainerVolumeMountsList>;
@@ -7489,37 +7474,37 @@ export const BaseContainer = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BaseContainer" }) as any as S.Schema<BaseContainer>;
 
 /** List of specialized containers that run before app containers. */
-export type TemplateInitContainersList = ReadonlyArray<BaseContainer>;
+export type TemplateInitContainersList = Array<BaseContainer>;
 export const TemplateInitContainersList = /*@__PURE__*/ S.Array(
   BaseContainer,
 ) as any as S.Schema<TemplateInitContainersList>;
 
 /** Container start command. */
-export type ContainerCommandList = ReadonlyArray<string>;
+export type ContainerCommandList = Array<string>;
 export const ContainerCommandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ContainerCommandList>;
 
 /** Container start command arguments. */
-export type ContainerArgsList = ReadonlyArray<string>;
+export type ContainerArgsList = Array<string>;
 export const ContainerArgsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ContainerArgsList>;
 
 /** Container environment variables. */
-export type ContainerEnvList = ReadonlyArray<EnvironmentVar>;
+export type ContainerEnvList = Array<EnvironmentVar>;
 export const ContainerEnvList = /*@__PURE__*/ S.Array(
   EnvironmentVar,
 ) as any as S.Schema<ContainerEnvList>;
 
 /** Container volume mounts. */
-export type ContainerVolumeMountsList = ReadonlyArray<VolumeMount>;
+export type ContainerVolumeMountsList = Array<VolumeMount>;
 export const ContainerVolumeMountsList = /*@__PURE__*/ S.Array(
   VolumeMount,
 ) as any as S.Schema<ContainerVolumeMountsList>;
 
 /** List of probes for the container. */
-export type ContainerProbesList = ReadonlyArray<ContainerAppProbe>;
+export type ContainerProbesList = Array<ContainerAppProbe>;
 export const ContainerProbesList = /*@__PURE__*/ S.Array(
   ContainerAppProbe,
 ) as any as S.Schema<ContainerProbesList>;
@@ -7557,19 +7542,19 @@ export const Container = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Container" }) as any as S.Schema<Container>;
 
 /** List of container definitions for the Container App. */
-export type TemplateContainersList = ReadonlyArray<Container>;
+export type TemplateContainersList = Array<Container>;
 export const TemplateContainersList = /*@__PURE__*/ S.Array(
   Container,
 ) as any as S.Schema<TemplateContainersList>;
 
 /** List of volume definitions for the Container App. */
-export type TemplateVolumesList = ReadonlyArray<Volume>;
+export type TemplateVolumesList = Array<Volume>;
 export const TemplateVolumesList = /*@__PURE__*/ S.Array(
   Volume,
 ) as any as S.Schema<TemplateVolumesList>;
 
 /** List of container app services bound to the app */
-export type TemplateServiceBindsList = ReadonlyArray<ServiceBind>;
+export type TemplateServiceBindsList = Array<ServiceBind>;
 export const TemplateServiceBindsList = /*@__PURE__*/ S.Array(
   ServiceBind,
 ) as any as S.Schema<TemplateServiceBindsList>;
@@ -7604,8 +7589,7 @@ export const Template = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Template" }) as any as S.Schema<Template>;
 
 /** Outbound IP Addresses for container app. */
-export type ContainerAppPropertiesOutboundIpAddressesList =
-  ReadonlyArray<string>;
+export type ContainerAppPropertiesOutboundIpAddressesList = Array<string>;
 export const ContainerAppPropertiesOutboundIpAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -7813,13 +7797,13 @@ export const DiagnosticSupportTopic = /*@__PURE__*/ S.suspend(() =>
 
 /** List of support topics */
 export type DiagnosticsDefinitionSupportTopicListList =
-  ReadonlyArray<DiagnosticSupportTopic>;
+  Array<DiagnosticSupportTopic>;
 export const DiagnosticsDefinitionSupportTopicListList = /*@__PURE__*/ S.Array(
   DiagnosticSupportTopic,
 ) as any as S.Schema<DiagnosticsDefinitionSupportTopicListList>;
 
 /** List of analysis types */
-export type DiagnosticsDefinitionAnalysisTypesList = ReadonlyArray<string>;
+export type DiagnosticsDefinitionAnalysisTypesList = Array<string>;
 export const DiagnosticsDefinitionAnalysisTypesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DiagnosticsDefinitionAnalysisTypesList>;
@@ -7882,14 +7866,14 @@ export const DiagnosticDataTableResponseColumn = /*@__PURE__*/ S.suspend(() =>
 
 /** Columns in the table */
 export type DiagnosticDataTableResponseObjectColumnsList =
-  ReadonlyArray<DiagnosticDataTableResponseColumn>;
+  Array<DiagnosticDataTableResponseColumn>;
 export const DiagnosticDataTableResponseObjectColumnsList =
   /*@__PURE__*/ S.Array(
     DiagnosticDataTableResponseColumn,
   ) as any as S.Schema<DiagnosticDataTableResponseObjectColumnsList>;
 
 /** Rows in the table */
-export type DiagnosticDataTableResponseObjectRowsList = ReadonlyArray<unknown>;
+export type DiagnosticDataTableResponseObjectRowsList = Array<unknown>;
 export const DiagnosticDataTableResponseObjectRowsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<DiagnosticDataTableResponseObjectRowsList>;
@@ -7953,7 +7937,7 @@ export const DiagnosticsDataApiResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Set of data collections associated with the response. */
 export type DiagnosticsPropertiesDatasetList =
-  ReadonlyArray<DiagnosticsDataApiResponse>;
+  Array<DiagnosticsDataApiResponse>;
 export const DiagnosticsPropertiesDatasetList = /*@__PURE__*/ S.Array(
   DiagnosticsDataApiResponse,
 ) as any as S.Schema<DiagnosticsPropertiesDatasetList>;
@@ -7993,7 +7977,7 @@ export const DiagnosticDataProviderMetadataPropertyBagItem =
 
 /** Collection of properties */
 export type DiagnosticDataProviderMetadataPropertyBagList =
-  ReadonlyArray<DiagnosticDataProviderMetadataPropertyBagItem>;
+  Array<DiagnosticDataProviderMetadataPropertyBagItem>;
 export const DiagnosticDataProviderMetadataPropertyBagList =
   /*@__PURE__*/ S.Array(
     DiagnosticDataProviderMetadataPropertyBagItem,
@@ -8332,7 +8316,7 @@ export const Diagnostics = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Diagnostics" }) as any as S.Schema<Diagnostics>;
 
 /** The Diagnostics items on this page */
-export type DiagnosticsCollectionValueList = ReadonlyArray<Diagnostics>;
+export type DiagnosticsCollectionValueList = Array<Diagnostics>;
 export const DiagnosticsCollectionValueList = /*@__PURE__*/ S.Array(
   Diagnostics,
 ) as any as S.Schema<DiagnosticsCollectionValueList>;
@@ -8406,7 +8390,7 @@ export const Revision = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Revision" }) as any as S.Schema<Revision>;
 
 /** The Revision items on this page */
-export type RevisionCollectionValueList = ReadonlyArray<Revision>;
+export type RevisionCollectionValueList = Array<Revision>;
 export const RevisionCollectionValueList = /*@__PURE__*/ S.Array(
   Revision,
 ) as any as S.Schema<RevisionCollectionValueList>;
@@ -8695,7 +8679,7 @@ export const ContainerApp = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ContainerApp" }) as any as S.Schema<ContainerApp>;
 
 /** The ContainerApp items on this page */
-export type ContainerAppCollectionValueList = ReadonlyArray<ContainerApp>;
+export type ContainerAppCollectionValueList = Array<ContainerApp>;
 export const ContainerAppCollectionValueList = /*@__PURE__*/ S.Array(
   ContainerApp,
 ) as any as S.Schema<ContainerAppCollectionValueList>;
@@ -8792,7 +8776,7 @@ export const CustomHostnameAnalysisResultCustomDomainVerificationFailureInfoDeta
 
 /** Details or the error */
 export type CustomHostnameAnalysisResultCustomDomainVerificationFailureInfoDetailsList =
-  ReadonlyArray<CustomHostnameAnalysisResultCustomDomainVerificationFailureInfoDetailsItem>;
+  Array<CustomHostnameAnalysisResultCustomDomainVerificationFailureInfoDetailsItem>;
 export const CustomHostnameAnalysisResultCustomDomainVerificationFailureInfoDetailsList =
   /*@__PURE__*/ S.Array(
     CustomHostnameAnalysisResultCustomDomainVerificationFailureInfoDetailsItem,
@@ -8825,36 +8809,34 @@ export const CustomHostnameAnalysisResultCustomDomainVerificationFailureInfo =
   }) as any as S.Schema<CustomHostnameAnalysisResultCustomDomainVerificationFailureInfo>;
 
 /** CName records visible for this hostname. */
-export type CustomHostnameAnalysisResultCNameRecordsList =
-  ReadonlyArray<string>;
+export type CustomHostnameAnalysisResultCNameRecordsList = Array<string>;
 export const CustomHostnameAnalysisResultCNameRecordsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<CustomHostnameAnalysisResultCNameRecordsList>;
 
 /** TXT records visible for this hostname. */
-export type CustomHostnameAnalysisResultTxtRecordsList = ReadonlyArray<string>;
+export type CustomHostnameAnalysisResultTxtRecordsList = Array<string>;
 export const CustomHostnameAnalysisResultTxtRecordsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CustomHostnameAnalysisResultTxtRecordsList>;
 
 /** A records visible for this hostname. */
-export type CustomHostnameAnalysisResultARecordsList = ReadonlyArray<string>;
+export type CustomHostnameAnalysisResultARecordsList = Array<string>;
 export const CustomHostnameAnalysisResultARecordsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CustomHostnameAnalysisResultARecordsList>;
 
 /** Alternate CName records visible for this hostname. */
 export type CustomHostnameAnalysisResultAlternateCNameRecordsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CustomHostnameAnalysisResultAlternateCNameRecordsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<CustomHostnameAnalysisResultAlternateCNameRecordsList>;
 
 /** Alternate TXT records visible for this hostname. */
-export type CustomHostnameAnalysisResultAlternateTxtRecordsList =
-  ReadonlyArray<string>;
+export type CustomHostnameAnalysisResultAlternateTxtRecordsList = Array<string>;
 export const CustomHostnameAnalysisResultAlternateTxtRecordsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -8960,7 +8942,7 @@ export const ContainerAppSecret = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ContainerAppSecret>;
 
 /** Collection of resources. */
-export type SecretsCollectionValueList = ReadonlyArray<ContainerAppSecret>;
+export type SecretsCollectionValueList = Array<ContainerAppSecret>;
 export const SecretsCollectionValueList = /*@__PURE__*/ S.Array(
   ContainerAppSecret,
 ) as any as S.Schema<SecretsCollectionValueList>;
@@ -9062,14 +9044,13 @@ export const ReplicaContainer = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReplicaContainer>;
 
 /** The containers collection under a replica. */
-export type ReplicaPropertiesContainersList = ReadonlyArray<ReplicaContainer>;
+export type ReplicaPropertiesContainersList = Array<ReplicaContainer>;
 export const ReplicaPropertiesContainersList = /*@__PURE__*/ S.Array(
   ReplicaContainer,
 ) as any as S.Schema<ReplicaPropertiesContainersList>;
 
 /** The init containers collection under a replica. */
-export type ReplicaPropertiesInitContainersList =
-  ReadonlyArray<ReplicaContainer>;
+export type ReplicaPropertiesInitContainersList = Array<ReplicaContainer>;
 export const ReplicaPropertiesInitContainersList = /*@__PURE__*/ S.Array(
   ReplicaContainer,
 ) as any as S.Schema<ReplicaPropertiesInitContainersList>;
@@ -9177,7 +9158,7 @@ export const Replica = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Replica" }) as any as S.Schema<Replica>;
 
 /** Collection of resources. */
-export type ReplicaCollectionValueList = ReadonlyArray<Replica>;
+export type ReplicaCollectionValueList = Array<Replica>;
 export const ReplicaCollectionValueList = /*@__PURE__*/ S.Array(
   Replica,
 ) as any as S.Schema<ReplicaCollectionValueList>;
@@ -9434,8 +9415,7 @@ export const SessionPoolSecret = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SessionPoolSecret>;
 
 /** The secrets of the session pool. */
-export type SessionPoolPropertiesInputSecretsList =
-  ReadonlyArray<SessionPoolSecret>;
+export type SessionPoolPropertiesInputSecretsList = Array<SessionPoolSecret>;
 export const SessionPoolPropertiesInputSecretsList = /*@__PURE__*/ S.Array(
   SessionPoolSecret,
 ) as any as S.Schema<SessionPoolPropertiesInputSecretsList>;
@@ -9447,7 +9427,7 @@ export const LifecycleType = /*@__PURE__*/ S.String;
 /** The lifecycle configuration properties of a session in the dynamic session pool */
 export interface LifecycleConfiguration {
   /** The lifecycle type of the session pool. */
-  lifecycleType?: LifecycleType;
+  lifecycleType?: LifecycleType | (string & {});
   /** The cooldown period of a session in seconds when the lifecycle type is 'Timed'. */
   cooldownPeriodInSeconds?: number;
   /** The maximum alive period of a session in seconds when the lifecycle type is 'OnContainerExit'. */
@@ -9499,19 +9479,19 @@ export const SessionRegistryCredentials = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SessionRegistryCredentials>;
 
 /** Container start command. */
-export type SessionContainerCommandList = ReadonlyArray<string>;
+export type SessionContainerCommandList = Array<string>;
 export const SessionContainerCommandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SessionContainerCommandList>;
 
 /** Container start command arguments. */
-export type SessionContainerArgsList = ReadonlyArray<string>;
+export type SessionContainerArgsList = Array<string>;
 export const SessionContainerArgsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SessionContainerArgsList>;
 
 /** Container environment variables. */
-export type SessionContainerEnvList = ReadonlyArray<EnvironmentVar>;
+export type SessionContainerEnvList = Array<EnvironmentVar>;
 export const SessionContainerEnvList = /*@__PURE__*/ S.Array(
   EnvironmentVar,
 ) as any as S.Schema<SessionContainerEnvList>;
@@ -9561,8 +9541,7 @@ export const SessionContainer = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SessionContainer>;
 
 /** List of container definitions for the sessions of the session pool. */
-export type CustomContainerTemplateContainersList =
-  ReadonlyArray<SessionContainer>;
+export type CustomContainerTemplateContainersList = Array<SessionContainer>;
 export const CustomContainerTemplateContainersList = /*@__PURE__*/ S.Array(
   SessionContainer,
 ) as any as S.Schema<CustomContainerTemplateContainersList>;
@@ -9604,7 +9583,7 @@ export const SessionNetworkStatus = /*@__PURE__*/ S.String;
 /** Session network configuration. */
 export interface SessionNetworkConfiguration {
   /** Network status for the sessions. */
-  status?: SessionNetworkStatus;
+  status?: SessionNetworkStatus | (string & {});
 }
 export const SessionNetworkConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -9623,7 +9602,7 @@ export interface ManagedIdentitySetting {
   /** The resource ID of a user-assigned managed identity that is assigned to the Session Pool, or 'system' for system-assigned identity. */
   identity: string;
   /** Use to select the lifecycle stages of a Session Pool during which the Managed Identity should be available. */
-  lifecycle?: ManagedIdentitySettingLifecycle;
+  lifecycle?: ManagedIdentitySettingLifecycle | (string & {});
 }
 export const ManagedIdentitySetting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -9636,7 +9615,7 @@ export const ManagedIdentitySetting = /*@__PURE__*/ S.suspend(() =>
 
 /** Optional settings for a Managed Identity that is assigned to the Session pool. */
 export type SessionPoolPropertiesInputManagedIdentitySettingsList =
-  ReadonlyArray<ManagedIdentitySetting>;
+  Array<ManagedIdentitySetting>;
 export const SessionPoolPropertiesInputManagedIdentitySettingsList =
   /*@__PURE__*/ S.Array(
     ManagedIdentitySetting,
@@ -9747,7 +9726,7 @@ export const ContainerAppsSessionPoolsCreateOrUpdateResponseTagsMap =
   ) as any as S.Schema<ContainerAppsSessionPoolsCreateOrUpdateResponseTagsMap>;
 
 /** The secrets of the session pool. */
-export type SessionPoolPropertiesSecretsList = ReadonlyArray<SessionPoolSecret>;
+export type SessionPoolPropertiesSecretsList = Array<SessionPoolSecret>;
 export const SessionPoolPropertiesSecretsList = /*@__PURE__*/ S.Array(
   SessionPoolSecret,
 ) as any as S.Schema<SessionPoolPropertiesSecretsList>;
@@ -9763,7 +9742,7 @@ export const SessionPoolProvisioningState = /*@__PURE__*/ S.String;
 
 /** Optional settings for a Managed Identity that is assigned to the Session pool. */
 export type SessionPoolPropertiesManagedIdentitySettingsList =
-  ReadonlyArray<ManagedIdentitySetting>;
+  Array<ManagedIdentitySetting>;
 export const SessionPoolPropertiesManagedIdentitySettingsList =
   /*@__PURE__*/ S.Array(
     ManagedIdentitySetting,
@@ -10080,7 +10059,7 @@ export const SessionPool = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SessionPool" }) as any as S.Schema<SessionPool>;
 
 /** The SessionPool items on this page */
-export type SessionPoolCollectionValueList = ReadonlyArray<SessionPool>;
+export type SessionPoolCollectionValueList = Array<SessionPool>;
 export const SessionPoolCollectionValueList = /*@__PURE__*/ S.Array(
   SessionPool,
 ) as any as S.Schema<SessionPoolCollectionValueList>;
@@ -10148,7 +10127,7 @@ export const ContainerAppsSessionPoolsUpdateRequestIdentity =
 
 /** The secrets of the session pool. */
 export type SessionPoolUpdatablePropertiesPropertiesSecretsList =
-  ReadonlyArray<SessionPoolSecret>;
+  Array<SessionPoolSecret>;
 export const SessionPoolUpdatablePropertiesPropertiesSecretsList =
   /*@__PURE__*/ S.Array(
     SessionPoolSecret,
@@ -10370,7 +10349,7 @@ export const GithubActionConfiguration = /*@__PURE__*/ S.suspend(() =>
 /** SourceControl resource specific properties */
 export interface SourceControlProperties {
   /** Current provisioning State of the operation */
-  operationState?: SourceControlOperationState;
+  operationState?: SourceControlOperationState | (string & {});
   /** The repo url which will be integrated to ContainerApp. */
   repoUrl?: string;
   /** The branch which will trigger the auto deployment */
@@ -10585,7 +10564,7 @@ export const SourceControl = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SourceControl" }) as any as S.Schema<SourceControl>;
 
 /** The SourceControl items on this page */
-export type SourceControlCollectionValueList = ReadonlyArray<SourceControl>;
+export type SourceControlCollectionValueList = Array<SourceControl>;
 export const SourceControlCollectionValueList = /*@__PURE__*/ S.Array(
   SourceControl,
 ) as any as S.Schema<SourceControlCollectionValueList>;
@@ -11163,7 +11142,7 @@ export const GetCustomDomainVerificationIdResponse = /*@__PURE__*/ S.suspend(
 
 /** Custom domain bindings for http Routes' hostnames. */
 export type HttpRouteConfigPropertiesInputCustomDomainsList =
-  ReadonlyArray<CustomDomain>;
+  Array<CustomDomain>;
 export const HttpRouteConfigPropertiesInputCustomDomainsList =
   /*@__PURE__*/ S.Array(
     CustomDomain,
@@ -11189,7 +11168,7 @@ export const HttpRouteTarget = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HttpRouteTarget>;
 
 /** Targets- container apps, revisions, labels */
-export type HttpRouteRuleTargetsList = ReadonlyArray<HttpRouteTarget>;
+export type HttpRouteRuleTargetsList = Array<HttpRouteTarget>;
 export const HttpRouteRuleTargetsList = /*@__PURE__*/ S.Array(
   HttpRouteTarget,
 ) as any as S.Schema<HttpRouteRuleTargetsList>;
@@ -11242,7 +11221,7 @@ export const HttpRoute = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "HttpRoute" }) as any as S.Schema<HttpRoute>;
 
 /** Routing configuration that will allow matches on specific paths/headers. */
-export type HttpRouteRuleRoutesList = ReadonlyArray<HttpRoute>;
+export type HttpRouteRuleRoutesList = Array<HttpRoute>;
 export const HttpRouteRuleRoutesList = /*@__PURE__*/ S.Array(
   HttpRoute,
 ) as any as S.Schema<HttpRouteRuleRoutesList>;
@@ -11265,8 +11244,7 @@ export const HttpRouteRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "HttpRouteRule" }) as any as S.Schema<HttpRouteRule>;
 
 /** Routing Rules for http route resource. */
-export type HttpRouteConfigPropertiesInputRulesList =
-  ReadonlyArray<HttpRouteRule>;
+export type HttpRouteConfigPropertiesInputRulesList = Array<HttpRouteRule>;
 export const HttpRouteConfigPropertiesInputRulesList = /*@__PURE__*/ S.Array(
   HttpRouteRule,
 ) as any as S.Schema<HttpRouteConfigPropertiesInputRulesList>;
@@ -11348,21 +11326,20 @@ export const HttpRouteProvisioningErrors = /*@__PURE__*/ S.suspend(() =>
 
 /** List of errors when trying to reconcile http routes */
 export type HttpRouteConfigPropertiesProvisioningErrorsList =
-  ReadonlyArray<HttpRouteProvisioningErrors>;
+  Array<HttpRouteProvisioningErrors>;
 export const HttpRouteConfigPropertiesProvisioningErrorsList =
   /*@__PURE__*/ S.Array(
     HttpRouteProvisioningErrors,
   ) as any as S.Schema<HttpRouteConfigPropertiesProvisioningErrorsList>;
 
 /** Custom domain bindings for http Routes' hostnames. */
-export type HttpRouteConfigPropertiesCustomDomainsList =
-  ReadonlyArray<CustomDomain>;
+export type HttpRouteConfigPropertiesCustomDomainsList = Array<CustomDomain>;
 export const HttpRouteConfigPropertiesCustomDomainsList = /*@__PURE__*/ S.Array(
   CustomDomain,
 ) as any as S.Schema<HttpRouteConfigPropertiesCustomDomainsList>;
 
 /** Routing Rules for http route resource. */
-export type HttpRouteConfigPropertiesRulesList = ReadonlyArray<HttpRouteRule>;
+export type HttpRouteConfigPropertiesRulesList = Array<HttpRouteRule>;
 export const HttpRouteConfigPropertiesRulesList = /*@__PURE__*/ S.Array(
   HttpRouteRule,
 ) as any as S.Schema<HttpRouteConfigPropertiesRulesList>;
@@ -11557,7 +11534,7 @@ export const HttpRouteConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HttpRouteConfig>;
 
 /** The HttpRouteConfig items on this page */
-export type HttpRouteConfigCollectionValueList = ReadonlyArray<HttpRouteConfig>;
+export type HttpRouteConfigCollectionValueList = Array<HttpRouteConfig>;
 export const HttpRouteConfigCollectionValueList = /*@__PURE__*/ S.Array(
   HttpRouteConfig,
 ) as any as S.Schema<HttpRouteConfigCollectionValueList>;
@@ -11667,7 +11644,7 @@ export const JavaComponentConfigurationProperty = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Java Components configuration properties */
 export type JavaComponentPropertiesConfigurationsList =
-  ReadonlyArray<JavaComponentConfigurationProperty>;
+  Array<JavaComponentConfigurationProperty>;
 export const JavaComponentPropertiesConfigurationsList = /*@__PURE__*/ S.Array(
   JavaComponentConfigurationProperty,
 ) as any as S.Schema<JavaComponentPropertiesConfigurationsList>;
@@ -11706,7 +11683,7 @@ export const JavaComponentServiceBind = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Java Components that are bound to the Java component */
 export type JavaComponentPropertiesServiceBindsList =
-  ReadonlyArray<JavaComponentServiceBind>;
+  Array<JavaComponentServiceBind>;
 export const JavaComponentPropertiesServiceBindsList = /*@__PURE__*/ S.Array(
   JavaComponentServiceBind,
 ) as any as S.Schema<JavaComponentPropertiesServiceBindsList>;
@@ -11714,9 +11691,9 @@ export const JavaComponentPropertiesServiceBindsList = /*@__PURE__*/ S.Array(
 /** Java Component common properties. */
 export interface JavaComponentProperties {
   /** Type of the Java Component. */
-  componentType: JavaComponentType;
+  componentType: JavaComponentType | (string & {});
   /** Provisioning state of the Java Component. */
-  provisioningState?: JavaComponentProvisioningState;
+  provisioningState?: JavaComponentProvisioningState | (string & {});
   /** List of Java Components configuration properties */
   configurations?: JavaComponentPropertiesConfigurationsList;
   /** Java component scaling configurations */
@@ -11928,7 +11905,7 @@ export const JavaComponent = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "JavaComponent" }) as any as S.Schema<JavaComponent>;
 
 /** The JavaComponent items on this page */
-export type JavaComponentsCollectionValueList = ReadonlyArray<JavaComponent>;
+export type JavaComponentsCollectionValueList = Array<JavaComponent>;
 export const JavaComponentsCollectionValueList = /*@__PURE__*/ S.Array(
   JavaComponent,
 ) as any as S.Schema<JavaComponentsCollectionValueList>;
@@ -12044,19 +12021,19 @@ export type JobExecutionRunningState =
 export const JobExecutionRunningState = /*@__PURE__*/ S.String;
 
 /** Container start command. */
-export type JobExecutionContainerCommandList = ReadonlyArray<string>;
+export type JobExecutionContainerCommandList = Array<string>;
 export const JobExecutionContainerCommandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<JobExecutionContainerCommandList>;
 
 /** Container start command arguments. */
-export type JobExecutionContainerArgsList = ReadonlyArray<string>;
+export type JobExecutionContainerArgsList = Array<string>;
 export const JobExecutionContainerArgsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<JobExecutionContainerArgsList>;
 
 /** Container environment variables. */
-export type JobExecutionContainerEnvList = ReadonlyArray<EnvironmentVar>;
+export type JobExecutionContainerEnvList = Array<EnvironmentVar>;
 export const JobExecutionContainerEnvList = /*@__PURE__*/ S.Array(
   EnvironmentVar,
 ) as any as S.Schema<JobExecutionContainerEnvList>;
@@ -12090,15 +12067,14 @@ export const JobExecutionContainer = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<JobExecutionContainer>;
 
 /** List of container definitions for the Container Apps Job. */
-export type JobExecutionTemplateContainersList =
-  ReadonlyArray<JobExecutionContainer>;
+export type JobExecutionTemplateContainersList = Array<JobExecutionContainer>;
 export const JobExecutionTemplateContainersList = /*@__PURE__*/ S.Array(
   JobExecutionContainer,
 ) as any as S.Schema<JobExecutionTemplateContainersList>;
 
 /** List of specialized containers that run before job containers. */
 export type JobExecutionTemplateInitContainersList =
-  ReadonlyArray<JobExecutionContainer>;
+  Array<JobExecutionContainer>;
 export const JobExecutionTemplateInitContainersList = /*@__PURE__*/ S.Array(
   JobExecutionContainer,
 ) as any as S.Schema<JobExecutionTemplateInitContainersList>;
@@ -12175,7 +12151,7 @@ export const JobsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<JobsCreateOrUpdateRequestTagsMap>;
 
 /** Collection of secrets used by a Container Apps Job */
-export type JobConfigurationSecretsList = ReadonlyArray<Secret>;
+export type JobConfigurationSecretsList = Array<Secret>;
 export const JobConfigurationSecretsList = /*@__PURE__*/ S.Array(
   Secret,
 ) as any as S.Schema<JobConfigurationSecretsList>;
@@ -12221,7 +12197,7 @@ export const JobConfigurationScheduleTriggerConfig = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<JobConfigurationScheduleTriggerConfig>;
 
 /** Authentication secrets for the scale rule. */
-export type JobScaleRuleAuthList = ReadonlyArray<ScaleRuleAuth>;
+export type JobScaleRuleAuthList = Array<ScaleRuleAuth>;
 export const JobScaleRuleAuthList = /*@__PURE__*/ S.Array(
   ScaleRuleAuth,
 ) as any as S.Schema<JobScaleRuleAuthList>;
@@ -12250,7 +12226,7 @@ export const JobScaleRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "JobScaleRule" }) as any as S.Schema<JobScaleRule>;
 
 /** Scaling rules. */
-export type JobScaleRulesList = ReadonlyArray<JobScaleRule>;
+export type JobScaleRulesList = Array<JobScaleRule>;
 export const JobScaleRulesList = /*@__PURE__*/ S.Array(
   JobScaleRule,
 ) as any as S.Schema<JobScaleRulesList>;
@@ -12295,14 +12271,13 @@ export const JobConfigurationEventTriggerConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<JobConfigurationEventTriggerConfig>;
 
 /** Collection of private container registry credentials used by a Container apps job */
-export type JobConfigurationRegistriesList = ReadonlyArray<RegistryCredentials>;
+export type JobConfigurationRegistriesList = Array<RegistryCredentials>;
 export const JobConfigurationRegistriesList = /*@__PURE__*/ S.Array(
   RegistryCredentials,
 ) as any as S.Schema<JobConfigurationRegistriesList>;
 
 /** Optional settings for Managed Identities that are assigned to the Container App Job. If a Managed Identity is not specified here, default settings will be used. */
-export type JobConfigurationIdentitySettingsList =
-  ReadonlyArray<IdentitySettings>;
+export type JobConfigurationIdentitySettingsList = Array<IdentitySettings>;
 export const JobConfigurationIdentitySettingsList = /*@__PURE__*/ S.Array(
   IdentitySettings,
 ) as any as S.Schema<JobConfigurationIdentitySettingsList>;
@@ -12312,7 +12287,7 @@ export interface JobConfiguration {
   /** Collection of secrets used by a Container Apps Job */
   secrets?: JobConfigurationSecretsList;
   /** Trigger type of the job */
-  triggerType: JobConfigurationTriggerType;
+  triggerType: JobConfigurationTriggerType | (string & {});
   /** Maximum number of seconds a replica is allowed to run. */
   replicaTimeout: number;
   /** Maximum number of retries before failing the job. */
@@ -12345,20 +12320,19 @@ export const JobConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<JobConfiguration>;
 
 /** List of specialized containers that run before app containers. */
-export type JobTemplateInputInitContainersList =
-  ReadonlyArray<BaseContainerInput>;
+export type JobTemplateInputInitContainersList = Array<BaseContainerInput>;
 export const JobTemplateInputInitContainersList = /*@__PURE__*/ S.Array(
   BaseContainerInput,
 ) as any as S.Schema<JobTemplateInputInitContainersList>;
 
 /** List of container definitions for the Container App. */
-export type JobTemplateInputContainersList = ReadonlyArray<ContainerInput>;
+export type JobTemplateInputContainersList = Array<ContainerInput>;
 export const JobTemplateInputContainersList = /*@__PURE__*/ S.Array(
   ContainerInput,
 ) as any as S.Schema<JobTemplateInputContainersList>;
 
 /** List of volume definitions for the Container App. */
-export type JobTemplateInputVolumesList = ReadonlyArray<Volume>;
+export type JobTemplateInputVolumesList = Array<Volume>;
 export const JobTemplateInputVolumesList = /*@__PURE__*/ S.Array(
   Volume,
 ) as any as S.Schema<JobTemplateInputVolumesList>;
@@ -12474,19 +12448,19 @@ export type JobProvisioningState =
 export const JobProvisioningState = /*@__PURE__*/ S.String;
 
 /** List of specialized containers that run before app containers. */
-export type JobTemplateInitContainersList = ReadonlyArray<BaseContainer>;
+export type JobTemplateInitContainersList = Array<BaseContainer>;
 export const JobTemplateInitContainersList = /*@__PURE__*/ S.Array(
   BaseContainer,
 ) as any as S.Schema<JobTemplateInitContainersList>;
 
 /** List of container definitions for the Container App. */
-export type JobTemplateContainersList = ReadonlyArray<Container>;
+export type JobTemplateContainersList = Array<Container>;
 export const JobTemplateContainersList = /*@__PURE__*/ S.Array(
   Container,
 ) as any as S.Schema<JobTemplateContainersList>;
 
 /** List of volume definitions for the Container App. */
-export type JobTemplateVolumesList = ReadonlyArray<Volume>;
+export type JobTemplateVolumesList = Array<Volume>;
 export const JobTemplateVolumesList = /*@__PURE__*/ S.Array(
   Volume,
 ) as any as S.Schema<JobTemplateVolumesList>;
@@ -12509,7 +12483,7 @@ export const JobTemplate = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "JobTemplate" }) as any as S.Schema<JobTemplate>;
 
 /** Outbound IP Addresses of a container apps job. */
-export type JobPropertiesOutboundIpAddressesList = ReadonlyArray<string>;
+export type JobPropertiesOutboundIpAddressesList = Array<string>;
 export const JobPropertiesOutboundIpAddressesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<JobPropertiesOutboundIpAddressesList>;
@@ -12680,7 +12654,7 @@ export const JobExecution = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "JobExecution" }) as any as S.Schema<JobExecution>;
 
 /** The JobExecution items on this page */
-export type ContainerAppJobExecutionsValueList = ReadonlyArray<JobExecution>;
+export type ContainerAppJobExecutionsValueList = Array<JobExecution>;
 export const ContainerAppJobExecutionsValueList = /*@__PURE__*/ S.Array(
   JobExecution,
 ) as any as S.Schema<ContainerAppJobExecutionsValueList>;
@@ -12916,7 +12890,7 @@ export const Job = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Job" }) as any as S.Schema<Job>;
 
 /** The Job items on this page */
-export type JobsCollectionValueList = ReadonlyArray<Job>;
+export type JobsCollectionValueList = Array<Job>;
 export const JobsCollectionValueList = /*@__PURE__*/ S.Array(
   Job,
 ) as any as S.Schema<JobsCollectionValueList>;
@@ -13005,7 +12979,7 @@ export const JobsListSecretsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<JobsListSecretsRequest>;
 
 /** Collection of resources. */
-export type JobSecretsCollectionValueList = ReadonlyArray<Secret>;
+export type JobSecretsCollectionValueList = Array<Secret>;
 export const JobSecretsCollectionValueList = /*@__PURE__*/ S.Array(
   Secret,
 ) as any as S.Schema<JobSecretsCollectionValueList>;
@@ -13112,19 +13086,19 @@ export const JobsProxyGetResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<JobsProxyGetResponse>;
 
 /** Container start command. */
-export type JobExecutionContainerInputCommandList = ReadonlyArray<string>;
+export type JobExecutionContainerInputCommandList = Array<string>;
 export const JobExecutionContainerInputCommandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<JobExecutionContainerInputCommandList>;
 
 /** Container start command arguments. */
-export type JobExecutionContainerInputArgsList = ReadonlyArray<string>;
+export type JobExecutionContainerInputArgsList = Array<string>;
 export const JobExecutionContainerInputArgsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<JobExecutionContainerInputArgsList>;
 
 /** Container environment variables. */
-export type JobExecutionContainerInputEnvList = ReadonlyArray<EnvironmentVar>;
+export type JobExecutionContainerInputEnvList = Array<EnvironmentVar>;
 export const JobExecutionContainerInputEnvList = /*@__PURE__*/ S.Array(
   EnvironmentVar,
 ) as any as S.Schema<JobExecutionContainerInputEnvList>;
@@ -13158,15 +13132,14 @@ export const JobExecutionContainerInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<JobExecutionContainerInput>;
 
 /** List of container definitions for the Container Apps Job. */
-export type JobsStartRequestContainersList =
-  ReadonlyArray<JobExecutionContainerInput>;
+export type JobsStartRequestContainersList = Array<JobExecutionContainerInput>;
 export const JobsStartRequestContainersList = /*@__PURE__*/ S.Array(
   JobExecutionContainerInput,
 ) as any as S.Schema<JobsStartRequestContainersList>;
 
 /** List of specialized containers that run before job containers. */
 export type JobsStartRequestInitContainersList =
-  ReadonlyArray<JobExecutionContainerInput>;
+  Array<JobExecutionContainerInput>;
 export const JobsStartRequestInitContainersList = /*@__PURE__*/ S.Array(
   JobExecutionContainerInput,
 ) as any as S.Schema<JobsStartRequestInitContainersList>;
@@ -13301,7 +13274,7 @@ export const JobsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 
 /** Outbound IP Addresses of a container apps job. */
 export type JobPatchPropertiesPropertiesInputOutboundIpAddressesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const JobPatchPropertiesPropertiesInputOutboundIpAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -13609,19 +13582,19 @@ export type WorkflowHealthState =
 export const WorkflowHealthState = /*@__PURE__*/ S.String;
 
 /** Parameters for the template. */
-export type ErrorEntityParametersList = ReadonlyArray<string>;
+export type ErrorEntityParametersList = Array<string>;
 export const ErrorEntityParametersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ErrorEntityParametersList>;
 
 /** Inner errors. */
-export type ErrorEntityInnerErrorsList = ReadonlyArray<ErrorEntity>;
+export type ErrorEntityInnerErrorsList = Array<ErrorEntity>;
 export const ErrorEntityInnerErrorsList = /*@__PURE__*/ S.Array(
   S.suspend(() => ErrorEntity),
 ) as any as S.Schema<ErrorEntityInnerErrorsList>;
 
 /** Error Details. */
-export type ErrorEntityDetailsList = ReadonlyArray<ErrorEntity>;
+export type ErrorEntityDetailsList = Array<ErrorEntity>;
 export const ErrorEntityDetailsList = /*@__PURE__*/ S.Array(
   S.suspend(() => ErrorEntity),
 ) as any as S.Schema<ErrorEntityDetailsList>;
@@ -13779,8 +13752,7 @@ export const WorkflowEnvelope = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WorkflowEnvelope>;
 
 /** The WorkflowEnvelope items on this page */
-export type WorkflowEnvelopeCollectionValueList =
-  ReadonlyArray<WorkflowEnvelope>;
+export type WorkflowEnvelopeCollectionValueList = Array<WorkflowEnvelope>;
 export const WorkflowEnvelopeCollectionValueList = /*@__PURE__*/ S.Array(
   WorkflowEnvelope,
 ) as any as S.Schema<WorkflowEnvelopeCollectionValueList>;
@@ -13872,7 +13844,7 @@ export const WeekDay = /*@__PURE__*/ S.String;
 /** Maintenance schedule entry for a managed environment. */
 export interface ScheduledEntry {
   /** Day of the week when a managed environment can be patched. */
-  weekDay: WeekDay;
+  weekDay: WeekDay | (string & {});
   /** Start hour after which managed environment maintenance can start from 0 to 23 hour. */
   startHourUtc: number;
   /** Length of maintenance window range from 8 to 24 hours. */
@@ -13887,8 +13859,7 @@ export const ScheduledEntry = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ScheduledEntry" }) as any as S.Schema<ScheduledEntry>;
 
 /** List of maintenance schedules for a managed environment. */
-export type ScheduledEntriesScheduledEntriesList =
-  ReadonlyArray<ScheduledEntry>;
+export type ScheduledEntriesScheduledEntriesList = Array<ScheduledEntry>;
 export const ScheduledEntriesScheduledEntriesList = /*@__PURE__*/ S.Array(
   ScheduledEntry,
 ) as any as S.Schema<ScheduledEntriesScheduledEntriesList>;
@@ -14105,7 +14076,7 @@ export const MaintenanceConfigurationResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The MaintenanceConfigurationResource items on this page */
 export type MaintenanceConfigurationCollectionValueList =
-  ReadonlyArray<MaintenanceConfigurationResource>;
+  Array<MaintenanceConfigurationResource>;
 export const MaintenanceConfigurationCollectionValueList =
   /*@__PURE__*/ S.Array(
     MaintenanceConfigurationResource,
@@ -14436,8 +14407,7 @@ export const ManagedCertificate = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ManagedCertificate>;
 
 /** The ManagedCertificate items on this page */
-export type ManagedCertificateCollectionValueList =
-  ReadonlyArray<ManagedCertificate>;
+export type ManagedCertificateCollectionValueList = Array<ManagedCertificate>;
 export const ManagedCertificateCollectionValueList = /*@__PURE__*/ S.Array(
   ManagedCertificate,
 ) as any as S.Schema<ManagedCertificateCollectionValueList>;
@@ -14636,7 +14606,7 @@ export const PrivateEndpointServiceConnectionStatus = /*@__PURE__*/ S.String;
 /** A collection of information about the state of the connection between service consumer and provider. */
 export interface PrivateLinkServiceConnectionState {
   /** Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service. */
-  status?: PrivateEndpointServiceConnectionStatus;
+  status?: PrivateEndpointServiceConnectionStatus | (string & {});
   /** The reason for approval/rejection of the connection. */
   description?: string;
   /** A message indicating if changes on the service provider require any updates on the consumer. */
@@ -14703,8 +14673,7 @@ export const ManagedEnvironmentPrivateEndpointConnectionsCreateOrUpdateRequest =
   }) as any as S.Schema<ManagedEnvironmentPrivateEndpointConnectionsCreateOrUpdateRequest>;
 
 /** The group ids for the private endpoint resource. */
-export type PrivateEndpointConnectionPropertiesGroupIdsList =
-  ReadonlyArray<string>;
+export type PrivateEndpointConnectionPropertiesGroupIdsList = Array<string>;
 export const PrivateEndpointConnectionPropertiesGroupIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -14925,7 +14894,7 @@ export const PrivateEndpointConnection = /*@__PURE__*/ S.suspend(() =>
 
 /** The PrivateEndpointConnection items on this page */
 export type PrivateEndpointConnectionListResultValueList =
-  ReadonlyArray<PrivateEndpointConnection>;
+  Array<PrivateEndpointConnection>;
 export const PrivateEndpointConnectionListResultValueList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection,
@@ -14974,16 +14943,14 @@ export const ManagedEnvironmentPrivateLinkResourcesListRequest =
   }) as any as S.Schema<ManagedEnvironmentPrivateLinkResourcesListRequest>;
 
 /** The private link resource required member names. */
-export type PrivateLinkResourcePropertiesRequiredMembersList =
-  ReadonlyArray<string>;
+export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
 export const PrivateLinkResourcePropertiesRequiredMembersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
 
 /** The private link resource private link DNS zone name. */
-export type PrivateLinkResourcePropertiesRequiredZoneNamesList =
-  ReadonlyArray<string>;
+export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
 export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -15038,8 +15005,7 @@ export const PrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateLinkResource>;
 
 /** The PrivateLinkResource items on this page */
-export type PrivateLinkResourceListResultValueList =
-  ReadonlyArray<PrivateLinkResource>;
+export type PrivateLinkResourceListResultValueList = Array<PrivateLinkResource>;
 export const PrivateLinkResourceListResultValueList = /*@__PURE__*/ S.Array(
   PrivateLinkResource,
 ) as any as S.Schema<PrivateLinkResourceListResultValueList>;
@@ -15151,7 +15117,7 @@ export const WorkloadProfile = /*@__PURE__*/ S.suspend(() =>
 
 /** Workload profiles configured for the Managed Environment. */
 export type ManagedEnvironmentPropertiesInputWorkloadProfilesList =
-  ReadonlyArray<WorkloadProfile>;
+  Array<WorkloadProfile>;
 export const ManagedEnvironmentPropertiesInputWorkloadProfilesList =
   /*@__PURE__*/ S.Array(
     WorkloadProfile,
@@ -15395,7 +15361,7 @@ export const EnvironmentProvisioningState = /*@__PURE__*/ S.String;
 
 /** Workload profiles configured for the Managed Environment. */
 export type ManagedEnvironmentPropertiesWorkloadProfilesList =
-  ReadonlyArray<WorkloadProfile>;
+  Array<WorkloadProfile>;
 export const ManagedEnvironmentPropertiesWorkloadProfilesList =
   /*@__PURE__*/ S.Array(
     WorkloadProfile,
@@ -15429,7 +15395,7 @@ export const DaprConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** Private endpoint connections to the resource. */
 export type ManagedEnvironmentPropertiesPrivateEndpointConnectionsList =
-  ReadonlyArray<PrivateEndpointConnection>;
+  Array<PrivateEndpointConnection>;
 export const ManagedEnvironmentPropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection,
@@ -15961,8 +15927,7 @@ export const ManagedEnvironment = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ManagedEnvironment>;
 
 /** The ManagedEnvironment items on this page */
-export type ManagedEnvironmentsCollectionValueList =
-  ReadonlyArray<ManagedEnvironment>;
+export type ManagedEnvironmentsCollectionValueList = Array<ManagedEnvironment>;
 export const ManagedEnvironmentsCollectionValueList = /*@__PURE__*/ S.Array(
   ManagedEnvironment,
 ) as any as S.Schema<ManagedEnvironmentsCollectionValueList>;
@@ -16075,7 +16040,7 @@ export const WorkloadProfileStates = /*@__PURE__*/ S.suspend(() =>
 
 /** The workloadProfileStates items on this page */
 export type WorkloadProfileStatesCollectionValueList =
-  ReadonlyArray<WorkloadProfileStates>;
+  Array<WorkloadProfileStates>;
 export const WorkloadProfileStatesCollectionValueList = /*@__PURE__*/ S.Array(
   WorkloadProfileStates,
 ) as any as S.Schema<WorkloadProfileStatesCollectionValueList>;
@@ -16101,7 +16066,7 @@ export interface NfsAzureFileProperties {
   /** Server for NFS azure file. Specify the Azure storage account server address. */
   server?: string;
   /** Access mode for storage */
-  accessMode?: AccessMode;
+  accessMode?: AccessMode | (string & {});
   /** NFS Azure file share name. */
   shareName?: string;
 }
@@ -16330,7 +16295,7 @@ export const ManagedEnvironmentStorage = /*@__PURE__*/ S.suspend(() =>
 
 /** Collection of storage resources. */
 export type ManagedEnvironmentStoragesCollectionValueList =
-  ReadonlyArray<ManagedEnvironmentStorage>;
+  Array<ManagedEnvironmentStorage>;
 export const ManagedEnvironmentStoragesCollectionValueList =
   /*@__PURE__*/ S.Array(
     ManagedEnvironmentStorage,
@@ -16544,7 +16509,7 @@ export const Usage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Usage" }) as any as S.Schema<Usage>;
 
 /** The Usage items on this page */
-export type ListUsagesResultValueList = ReadonlyArray<Usage>;
+export type ListUsagesResultValueList = Array<Usage>;
 export const ListUsagesResultValueList = /*@__PURE__*/ S.Array(
   Usage,
 ) as any as S.Schema<ListUsagesResultValueList>;
@@ -16682,7 +16647,7 @@ export const OperationDetail = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDetail>;
 
 /** The OperationDetail items on this page */
-export type AvailableOperationsValueList = ReadonlyArray<OperationDetail>;
+export type AvailableOperationsValueList = Array<OperationDetail>;
 export const AvailableOperationsValueList = /*@__PURE__*/ S.Array(
   OperationDetail,
 ) as any as S.Schema<AvailableOperationsValueList>;
@@ -16780,8 +16745,7 @@ export const SupportedAgentModel = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SupportedAgentModel>;
 
 /** The SupportedAgentModel items on this page */
-export type SupportedAgentModelListResultValueList =
-  ReadonlyArray<SupportedAgentModel>;
+export type SupportedAgentModelListResultValueList = Array<SupportedAgentModel>;
 export const SupportedAgentModelListResultValueList = /*@__PURE__*/ S.Array(
   SupportedAgentModel,
 ) as any as S.Schema<SupportedAgentModelListResultValueList>;

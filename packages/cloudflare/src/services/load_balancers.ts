@@ -228,7 +228,7 @@ export type PoolsBulkEditResultItemCheckRegionsItem =
 export const PoolsBulkEditResultItemCheckRegionsItem = /*@__PURE__*/ S.String;
 
 export type PoolsBulkEditResultItemCheckRegionsList =
-  ReadonlyArray<PoolsBulkEditResultItemCheckRegionsItem>;
+  Array<PoolsBulkEditResultItemCheckRegionsItem>;
 export const PoolsBulkEditResultItemCheckRegionsList = /*@__PURE__*/ S.Array(
   PoolsBulkEditResultItemCheckRegionsItem,
 ) as any as S.Schema<PoolsBulkEditResultItemCheckRegionsList>;
@@ -272,7 +272,7 @@ export const PoolsBulkEditResultItemLoadShedding = /*@__PURE__*/ S.suspend(() =>
   identifier: "PoolsBulkEditResultItemLoadShedding",
 }) as any as S.Schema<PoolsBulkEditResultItemLoadShedding>;
 
-export type PoolsBulkEditResultItemNetworksList = ReadonlyArray<string>;
+export type PoolsBulkEditResultItemNetworksList = Array<string>;
 export const PoolsBulkEditResultItemNetworksList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoolsBulkEditResultItemNetworksList>;
@@ -330,8 +330,7 @@ export const PoolsBulkEditResultItemOriginSteering = /*@__PURE__*/ S.suspend(
   identifier: "PoolsBulkEditResultItemOriginSteering",
 }) as any as S.Schema<PoolsBulkEditResultItemOriginSteering>;
 
-export type PoolsBulkEditResultItemOriginsItemHeaderHostList =
-  ReadonlyArray<string>;
+export type PoolsBulkEditResultItemOriginsItemHeaderHostList = Array<string>;
 export const PoolsBulkEditResultItemOriginsItemHeaderHostList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -387,7 +386,7 @@ export const PoolsBulkEditResultItemOriginsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PoolsBulkEditResultItemOriginsItem>;
 
 export type PoolsBulkEditResultItemOriginsList =
-  ReadonlyArray<PoolsBulkEditResultItemOriginsItem>;
+  Array<PoolsBulkEditResultItemOriginsItem>;
 export const PoolsBulkEditResultItemOriginsList = /*@__PURE__*/ S.Array(
   PoolsBulkEditResultItemOriginsItem,
 ) as any as S.Schema<PoolsBulkEditResultItemOriginsList>;
@@ -465,7 +464,7 @@ export const PoolsBulkEditResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "PoolsBulkEditResultItem",
 }) as any as S.Schema<PoolsBulkEditResultItem>;
 
-export type PoolsBulkEditResultList = ReadonlyArray<PoolsBulkEditResultItem>;
+export type PoolsBulkEditResultList = Array<PoolsBulkEditResultItem>;
 export const PoolsBulkEditResultList = /*@__PURE__*/ S.Array(
   PoolsBulkEditResultItem,
 ) as any as S.Schema<PoolsBulkEditResultList>;
@@ -485,7 +484,7 @@ export const BulkPatchPoolsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "BulkPatchPoolsResponse",
 }) as any as S.Schema<BulkPatchPoolsResponse>;
 
-export type CreateRequestDefaultPoolsList = ReadonlyArray<string>;
+export type CreateRequestDefaultPoolsList = Array<string>;
 export const CreateRequestDefaultPoolsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateRequestDefaultPoolsList>;
@@ -504,7 +503,7 @@ export const CreateRequestAdaptiveRouting = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateRequestAdaptiveRouting",
 }) as any as S.Schema<CreateRequestAdaptiveRouting>;
 
-export type CreateRequestCountryPoolsValueList = ReadonlyArray<string>;
+export type CreateRequestCountryPoolsValueList = Array<string>;
 export const CreateRequestCountryPoolsValueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateRequestCountryPoolsValueList>;
@@ -544,12 +543,12 @@ export const CreateRequestLocationStrategy = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateRequestLocationStrategy",
 }) as any as S.Schema<CreateRequestLocationStrategy>;
 
-export type CreateRequestNetworksList = ReadonlyArray<string>;
+export type CreateRequestNetworksList = Array<string>;
 export const CreateRequestNetworksList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateRequestNetworksList>;
 
-export type CreateRequestPopPoolsValueList = ReadonlyArray<string>;
+export type CreateRequestPopPoolsValueList = Array<string>;
 export const CreateRequestPopPoolsValueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateRequestPopPoolsValueList>;
@@ -587,7 +586,7 @@ export const CreateRequestRandomSteering = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateRequestRandomSteering",
 }) as any as S.Schema<CreateRequestRandomSteering>;
 
-export type CreateRequestRegionPoolsValueList = ReadonlyArray<string>;
+export type CreateRequestRegionPoolsValueList = Array<string>;
 export const CreateRequestRegionPoolsValueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateRequestRegionPoolsValueList>;
@@ -622,7 +621,7 @@ export const CreateRequestRulesItemFixedResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateRequestRulesItemFixedResponse>;
 
 export type CreateRequestRulesItemOverridesCountryPoolsValueList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CreateRequestRulesItemOverridesCountryPoolsValueList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -639,15 +638,13 @@ export const CreateRequestRulesItemOverridesCountryPoolsMap =
     CreateRequestRulesItemOverridesCountryPoolsValueList,
   ) as any as S.Schema<CreateRequestRulesItemOverridesCountryPoolsMap>;
 
-export type CreateRequestRulesItemOverridesDefaultPoolsList =
-  ReadonlyArray<string>;
+export type CreateRequestRulesItemOverridesDefaultPoolsList = Array<string>;
 export const CreateRequestRulesItemOverridesDefaultPoolsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<CreateRequestRulesItemOverridesDefaultPoolsList>;
 
-export type CreateRequestRulesItemOverridesPopPoolsValueList =
-  ReadonlyArray<string>;
+export type CreateRequestRulesItemOverridesPopPoolsValueList = Array<string>;
 export const CreateRequestRulesItemOverridesPopPoolsValueList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -662,8 +659,7 @@ export const CreateRequestRulesItemOverridesPopPoolsMap =
     CreateRequestRulesItemOverridesPopPoolsValueList,
   ) as any as S.Schema<CreateRequestRulesItemOverridesPopPoolsMap>;
 
-export type CreateRequestRulesItemOverridesRegionPoolsValueList =
-  ReadonlyArray<string>;
+export type CreateRequestRulesItemOverridesRegionPoolsValueList = Array<string>;
 export const CreateRequestRulesItemOverridesRegionPoolsValueList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -689,7 +685,7 @@ export const CreateRequestRulesItemOverridesSessionAffinity =
   /*@__PURE__*/ S.String;
 
 export type CreateRequestRulesItemOverridesSessionAffinityAttributesHeadersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CreateRequestRulesItemOverridesSessionAffinityAttributesHeadersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -891,7 +887,7 @@ export const CreateRequestRulesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateRequestRulesItem",
 }) as any as S.Schema<CreateRequestRulesItem>;
 
-export type CreateRequestRulesList = ReadonlyArray<CreateRequestRulesItem>;
+export type CreateRequestRulesList = Array<CreateRequestRulesItem>;
 export const CreateRequestRulesList = /*@__PURE__*/ S.Array(
   CreateRequestRulesItem,
 ) as any as S.Schema<CreateRequestRulesList>;
@@ -1011,7 +1007,7 @@ export const CreateResponseAdaptiveRouting = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateResponseAdaptiveRouting",
 }) as any as S.Schema<CreateResponseAdaptiveRouting>;
 
-export type CreateResponseCountryPoolsValueList = ReadonlyArray<string>;
+export type CreateResponseCountryPoolsValueList = Array<string>;
 export const CreateResponseCountryPoolsValueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateResponseCountryPoolsValueList>;
@@ -1024,7 +1020,7 @@ export const CreateResponseCountryPoolsMap = /*@__PURE__*/ S.Record(
   CreateResponseCountryPoolsValueList,
 ) as any as S.Schema<CreateResponseCountryPoolsMap>;
 
-export type CreateResponseDefaultPoolsList = ReadonlyArray<string>;
+export type CreateResponseDefaultPoolsList = Array<string>;
 export const CreateResponseDefaultPoolsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateResponseDefaultPoolsList>;
@@ -1056,12 +1052,12 @@ export const CreateResponseLocationStrategy = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateResponseLocationStrategy",
 }) as any as S.Schema<CreateResponseLocationStrategy>;
 
-export type CreateResponseNetworksList = ReadonlyArray<string>;
+export type CreateResponseNetworksList = Array<string>;
 export const CreateResponseNetworksList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateResponseNetworksList>;
 
-export type CreateResponsePopPoolsValueList = ReadonlyArray<string>;
+export type CreateResponsePopPoolsValueList = Array<string>;
 export const CreateResponsePopPoolsValueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateResponsePopPoolsValueList>;
@@ -1100,7 +1096,7 @@ export const CreateResponseRandomSteering = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateResponseRandomSteering",
 }) as any as S.Schema<CreateResponseRandomSteering>;
 
-export type CreateResponseRegionPoolsValueList = ReadonlyArray<string>;
+export type CreateResponseRegionPoolsValueList = Array<string>;
 export const CreateResponseRegionPoolsValueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateResponseRegionPoolsValueList>;
@@ -1136,7 +1132,7 @@ export const CreateResponseRulesItemFixedResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CreateResponseRulesItemFixedResponse>;
 
 export type CreateResponseRulesItemOverridesCountryPoolsValueList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CreateResponseRulesItemOverridesCountryPoolsValueList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1153,15 +1149,13 @@ export const CreateResponseRulesItemOverridesCountryPoolsMap =
     CreateResponseRulesItemOverridesCountryPoolsValueList,
   ) as any as S.Schema<CreateResponseRulesItemOverridesCountryPoolsMap>;
 
-export type CreateResponseRulesItemOverridesDefaultPoolsList =
-  ReadonlyArray<string>;
+export type CreateResponseRulesItemOverridesDefaultPoolsList = Array<string>;
 export const CreateResponseRulesItemOverridesDefaultPoolsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<CreateResponseRulesItemOverridesDefaultPoolsList>;
 
-export type CreateResponseRulesItemOverridesPopPoolsValueList =
-  ReadonlyArray<string>;
+export type CreateResponseRulesItemOverridesPopPoolsValueList = Array<string>;
 export const CreateResponseRulesItemOverridesPopPoolsValueList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1177,7 +1171,7 @@ export const CreateResponseRulesItemOverridesPopPoolsMap =
   ) as any as S.Schema<CreateResponseRulesItemOverridesPopPoolsMap>;
 
 export type CreateResponseRulesItemOverridesRegionPoolsValueList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CreateResponseRulesItemOverridesRegionPoolsValueList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1203,7 +1197,7 @@ export const CreateResponseRulesItemOverridesSessionAffinity =
   /*@__PURE__*/ S.String;
 
 export type CreateResponseRulesItemOverridesSessionAffinityAttributesHeadersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CreateResponseRulesItemOverridesSessionAffinityAttributesHeadersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1395,7 +1389,7 @@ export const CreateResponseRulesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateResponseRulesItem",
 }) as any as S.Schema<CreateResponseRulesItem>;
 
-export type CreateResponseRulesList = ReadonlyArray<CreateResponseRulesItem>;
+export type CreateResponseRulesList = Array<CreateResponseRulesItem>;
 export const CreateResponseRulesList = /*@__PURE__*/ S.Array(
   CreateResponseRulesItem,
 ) as any as S.Schema<CreateResponseRulesList>;
@@ -1501,7 +1495,7 @@ export const CreateLoadBalancerResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateLoadBalancerResponse",
 }) as any as S.Schema<CreateLoadBalancerResponse>;
 
-export type MonitorsCreateRequestHeaderValueList = ReadonlyArray<string>;
+export type MonitorsCreateRequestHeaderValueList = Array<string>;
 export const MonitorsCreateRequestHeaderValueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<MonitorsCreateRequestHeaderValueList>;
@@ -1591,7 +1585,7 @@ export const CreateMonitorRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateMonitorRequest",
 }) as any as S.Schema<CreateMonitorRequest>;
 
-export type MonitorsCreateResponseHeaderValueList = ReadonlyArray<string>;
+export type MonitorsCreateResponseHeaderValueList = Array<string>;
 export const MonitorsCreateResponseHeaderValueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<MonitorsCreateResponseHeaderValueList>;
@@ -1706,7 +1700,7 @@ export const MonitorGroupsCreateRequestMembersItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<MonitorGroupsCreateRequestMembersItem>;
 
 export type MonitorGroupsCreateRequestMembersList =
-  ReadonlyArray<MonitorGroupsCreateRequestMembersItem>;
+  Array<MonitorGroupsCreateRequestMembersItem>;
 export const MonitorGroupsCreateRequestMembersList = /*@__PURE__*/ S.Array(
   MonitorGroupsCreateRequestMembersItem,
 ) as any as S.Schema<MonitorGroupsCreateRequestMembersList>;
@@ -1766,7 +1760,7 @@ export const MonitorGroupsCreateResponseMembersItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<MonitorGroupsCreateResponseMembersItem>;
 
 export type MonitorGroupsCreateResponseMembersList =
-  ReadonlyArray<MonitorGroupsCreateResponseMembersItem>;
+  Array<MonitorGroupsCreateResponseMembersItem>;
 export const MonitorGroupsCreateResponseMembersList = /*@__PURE__*/ S.Array(
   MonitorGroupsCreateResponseMembersItem,
 ) as any as S.Schema<MonitorGroupsCreateResponseMembersList>;
@@ -1796,8 +1790,7 @@ export const CreateMonitorGroupResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateMonitorGroupResponse",
 }) as any as S.Schema<CreateMonitorGroupResponse>;
 
-export type MonitorsPreviewsCreateRequestHeaderValueList =
-  ReadonlyArray<string>;
+export type MonitorsPreviewsCreateRequestHeaderValueList = Array<string>;
 export const MonitorsPreviewsCreateRequestHeaderValueList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1913,7 +1906,7 @@ export const CreateMonitorPreviewResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateMonitorPreviewResponse",
 }) as any as S.Schema<CreateMonitorPreviewResponse>;
 
-export type PoolsCreateRequestOriginsItemHeaderHostList = ReadonlyArray<string>;
+export type PoolsCreateRequestOriginsItemHeaderHostList = Array<string>;
 export const PoolsCreateRequestOriginsItemHeaderHostList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1968,7 +1961,7 @@ export const PoolsCreateRequestOriginsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PoolsCreateRequestOriginsItem>;
 
 export type PoolsCreateRequestOriginsList =
-  ReadonlyArray<PoolsCreateRequestOriginsItem>;
+  Array<PoolsCreateRequestOriginsItem>;
 export const PoolsCreateRequestOriginsList = /*@__PURE__*/ S.Array(
   PoolsCreateRequestOriginsItem,
 ) as any as S.Schema<PoolsCreateRequestOriginsList>;
@@ -2144,7 +2137,7 @@ export type PoolsCreateResponseCheckRegionsItem =
 export const PoolsCreateResponseCheckRegionsItem = /*@__PURE__*/ S.String;
 
 export type PoolsCreateResponseCheckRegionsList =
-  ReadonlyArray<PoolsCreateResponseCheckRegionsItem>;
+  Array<PoolsCreateResponseCheckRegionsItem>;
 export const PoolsCreateResponseCheckRegionsList = /*@__PURE__*/ S.Array(
   PoolsCreateResponseCheckRegionsItem,
 ) as any as S.Schema<PoolsCreateResponseCheckRegionsList>;
@@ -2186,7 +2179,7 @@ export const PoolsCreateResponseLoadShedding = /*@__PURE__*/ S.suspend(() =>
   identifier: "PoolsCreateResponseLoadShedding",
 }) as any as S.Schema<PoolsCreateResponseLoadShedding>;
 
-export type PoolsCreateResponseNetworksList = ReadonlyArray<string>;
+export type PoolsCreateResponseNetworksList = Array<string>;
 export const PoolsCreateResponseNetworksList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoolsCreateResponseNetworksList>;
@@ -2242,8 +2235,7 @@ export const PoolsCreateResponseOriginSteering = /*@__PURE__*/ S.suspend(() =>
   identifier: "PoolsCreateResponseOriginSteering",
 }) as any as S.Schema<PoolsCreateResponseOriginSteering>;
 
-export type PoolsCreateResponseOriginsItemHeaderHostList =
-  ReadonlyArray<string>;
+export type PoolsCreateResponseOriginsItemHeaderHostList = Array<string>;
 export const PoolsCreateResponseOriginsItemHeaderHostList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2299,7 +2291,7 @@ export const PoolsCreateResponseOriginsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PoolsCreateResponseOriginsItem>;
 
 export type PoolsCreateResponseOriginsList =
-  ReadonlyArray<PoolsCreateResponseOriginsItem>;
+  Array<PoolsCreateResponseOriginsItem>;
 export const PoolsCreateResponseOriginsList = /*@__PURE__*/ S.Array(
   PoolsCreateResponseOriginsItem,
 ) as any as S.Schema<PoolsCreateResponseOriginsList>;
@@ -2376,7 +2368,7 @@ export const CreatePoolResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreatePoolResponse",
 }) as any as S.Schema<CreatePoolResponse>;
 
-export type PoolsHealthCreateRequestHeaderValueList = ReadonlyArray<string>;
+export type PoolsHealthCreateRequestHeaderValueList = Array<string>;
 export const PoolsHealthCreateRequestHeaderValueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoolsHealthCreateRequestHeaderValueList>;
@@ -2609,7 +2601,7 @@ export const MonitorGroupsDeleteResponseMembersItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<MonitorGroupsDeleteResponseMembersItem>;
 
 export type MonitorGroupsDeleteResponseMembersList =
-  ReadonlyArray<MonitorGroupsDeleteResponseMembersItem>;
+  Array<MonitorGroupsDeleteResponseMembersItem>;
 export const MonitorGroupsDeleteResponseMembersList = /*@__PURE__*/ S.Array(
   MonitorGroupsDeleteResponseMembersItem,
 ) as any as S.Schema<MonitorGroupsDeleteResponseMembersList>;
@@ -2708,7 +2700,7 @@ export const GetResponseAdaptiveRouting = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetResponseAdaptiveRouting",
 }) as any as S.Schema<GetResponseAdaptiveRouting>;
 
-export type GetResponseCountryPoolsValueList = ReadonlyArray<string>;
+export type GetResponseCountryPoolsValueList = Array<string>;
 export const GetResponseCountryPoolsValueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetResponseCountryPoolsValueList>;
@@ -2721,7 +2713,7 @@ export const GetResponseCountryPoolsMap = /*@__PURE__*/ S.Record(
   GetResponseCountryPoolsValueList,
 ) as any as S.Schema<GetResponseCountryPoolsMap>;
 
-export type GetResponseDefaultPoolsList = ReadonlyArray<string>;
+export type GetResponseDefaultPoolsList = Array<string>;
 export const GetResponseDefaultPoolsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetResponseDefaultPoolsList>;
@@ -2753,12 +2745,12 @@ export const GetResponseLocationStrategy = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetResponseLocationStrategy",
 }) as any as S.Schema<GetResponseLocationStrategy>;
 
-export type GetResponseNetworksList = ReadonlyArray<string>;
+export type GetResponseNetworksList = Array<string>;
 export const GetResponseNetworksList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetResponseNetworksList>;
 
-export type GetResponsePopPoolsValueList = ReadonlyArray<string>;
+export type GetResponsePopPoolsValueList = Array<string>;
 export const GetResponsePopPoolsValueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetResponsePopPoolsValueList>;
@@ -2796,7 +2788,7 @@ export const GetResponseRandomSteering = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetResponseRandomSteering",
 }) as any as S.Schema<GetResponseRandomSteering>;
 
-export type GetResponseRegionPoolsValueList = ReadonlyArray<string>;
+export type GetResponseRegionPoolsValueList = Array<string>;
 export const GetResponseRegionPoolsValueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetResponseRegionPoolsValueList>;
@@ -2830,8 +2822,7 @@ export const GetResponseRulesItemFixedResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetResponseRulesItemFixedResponse",
 }) as any as S.Schema<GetResponseRulesItemFixedResponse>;
 
-export type GetResponseRulesItemOverridesCountryPoolsValueList =
-  ReadonlyArray<string>;
+export type GetResponseRulesItemOverridesCountryPoolsValueList = Array<string>;
 export const GetResponseRulesItemOverridesCountryPoolsValueList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2846,15 +2837,13 @@ export const GetResponseRulesItemOverridesCountryPoolsMap =
     GetResponseRulesItemOverridesCountryPoolsValueList,
   ) as any as S.Schema<GetResponseRulesItemOverridesCountryPoolsMap>;
 
-export type GetResponseRulesItemOverridesDefaultPoolsList =
-  ReadonlyArray<string>;
+export type GetResponseRulesItemOverridesDefaultPoolsList = Array<string>;
 export const GetResponseRulesItemOverridesDefaultPoolsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<GetResponseRulesItemOverridesDefaultPoolsList>;
 
-export type GetResponseRulesItemOverridesPopPoolsValueList =
-  ReadonlyArray<string>;
+export type GetResponseRulesItemOverridesPopPoolsValueList = Array<string>;
 export const GetResponseRulesItemOverridesPopPoolsValueList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2868,8 +2857,7 @@ export const GetResponseRulesItemOverridesPopPoolsMap = /*@__PURE__*/ S.Record(
   GetResponseRulesItemOverridesPopPoolsValueList,
 ) as any as S.Schema<GetResponseRulesItemOverridesPopPoolsMap>;
 
-export type GetResponseRulesItemOverridesRegionPoolsValueList =
-  ReadonlyArray<string>;
+export type GetResponseRulesItemOverridesRegionPoolsValueList = Array<string>;
 export const GetResponseRulesItemOverridesRegionPoolsValueList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2893,7 +2881,7 @@ export const GetResponseRulesItemOverridesSessionAffinity =
   /*@__PURE__*/ S.String;
 
 export type GetResponseRulesItemOverridesSessionAffinityAttributesHeadersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GetResponseRulesItemOverridesSessionAffinityAttributesHeadersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3083,7 +3071,7 @@ export const GetResponseRulesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetResponseRulesItem",
 }) as any as S.Schema<GetResponseRulesItem>;
 
-export type GetResponseRulesList = ReadonlyArray<GetResponseRulesItem>;
+export type GetResponseRulesList = Array<GetResponseRulesItem>;
 export const GetResponseRulesList = /*@__PURE__*/ S.Array(
   GetResponseRulesItem,
 ) as any as S.Schema<GetResponseRulesList>;
@@ -3211,7 +3199,7 @@ export const GetMonitorRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetMonitorRequest",
 }) as any as S.Schema<GetMonitorRequest>;
 
-export type MonitorsGetResponseHeaderValueList = ReadonlyArray<string>;
+export type MonitorsGetResponseHeaderValueList = Array<string>;
 export const MonitorsGetResponseHeaderValueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<MonitorsGetResponseHeaderValueList>;
@@ -3347,7 +3335,7 @@ export const MonitorGroupsGetResponseMembersItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MonitorGroupsGetResponseMembersItem>;
 
 export type MonitorGroupsGetResponseMembersList =
-  ReadonlyArray<MonitorGroupsGetResponseMembersItem>;
+  Array<MonitorGroupsGetResponseMembersItem>;
 export const MonitorGroupsGetResponseMembersList = /*@__PURE__*/ S.Array(
   MonitorGroupsGetResponseMembersItem,
 ) as any as S.Schema<MonitorGroupsGetResponseMembersList>;
@@ -3429,7 +3417,7 @@ export const MonitorGroupsReferencesGetResultItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<MonitorGroupsReferencesGetResultItem>;
 
 export type MonitorGroupsReferencesGetResultList =
-  ReadonlyArray<MonitorGroupsReferencesGetResultItem>;
+  Array<MonitorGroupsReferencesGetResultItem>;
 export const MonitorGroupsReferencesGetResultList = /*@__PURE__*/ S.Array(
   MonitorGroupsReferencesGetResultItem,
 ) as any as S.Schema<MonitorGroupsReferencesGetResultList>;
@@ -3500,7 +3488,7 @@ export const MonitorsReferencesGetResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MonitorsReferencesGetResultItem>;
 
 export type MonitorsReferencesGetResultList =
-  ReadonlyArray<MonitorsReferencesGetResultItem>;
+  Array<MonitorsReferencesGetResultItem>;
 export const MonitorsReferencesGetResultList = /*@__PURE__*/ S.Array(
   MonitorsReferencesGetResultItem,
 ) as any as S.Schema<MonitorsReferencesGetResultList>;
@@ -3558,7 +3546,7 @@ export type PoolsGetResponseCheckRegionsItem =
 export const PoolsGetResponseCheckRegionsItem = /*@__PURE__*/ S.String;
 
 export type PoolsGetResponseCheckRegionsList =
-  ReadonlyArray<PoolsGetResponseCheckRegionsItem>;
+  Array<PoolsGetResponseCheckRegionsItem>;
 export const PoolsGetResponseCheckRegionsList = /*@__PURE__*/ S.Array(
   PoolsGetResponseCheckRegionsItem,
 ) as any as S.Schema<PoolsGetResponseCheckRegionsList>;
@@ -3594,7 +3582,7 @@ export const PoolsGetResponseLoadShedding = /*@__PURE__*/ S.suspend(() =>
   identifier: "PoolsGetResponseLoadShedding",
 }) as any as S.Schema<PoolsGetResponseLoadShedding>;
 
-export type PoolsGetResponseNetworksList = ReadonlyArray<string>;
+export type PoolsGetResponseNetworksList = Array<string>;
 export const PoolsGetResponseNetworksList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoolsGetResponseNetworksList>;
@@ -3649,7 +3637,7 @@ export const PoolsGetResponseOriginSteering = /*@__PURE__*/ S.suspend(() =>
   identifier: "PoolsGetResponseOriginSteering",
 }) as any as S.Schema<PoolsGetResponseOriginSteering>;
 
-export type PoolsGetResponseOriginsItemHeaderHostList = ReadonlyArray<string>;
+export type PoolsGetResponseOriginsItemHeaderHostList = Array<string>;
 export const PoolsGetResponseOriginsItemHeaderHostList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoolsGetResponseOriginsItemHeaderHostList>;
@@ -3702,8 +3690,7 @@ export const PoolsGetResponseOriginsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "PoolsGetResponseOriginsItem",
 }) as any as S.Schema<PoolsGetResponseOriginsItem>;
 
-export type PoolsGetResponseOriginsList =
-  ReadonlyArray<PoolsGetResponseOriginsItem>;
+export type PoolsGetResponseOriginsList = Array<PoolsGetResponseOriginsItem>;
 export const PoolsGetResponseOriginsList = /*@__PURE__*/ S.Array(
   PoolsGetResponseOriginsItem,
 ) as any as S.Schema<PoolsGetResponseOriginsList>;
@@ -3837,7 +3824,7 @@ export const PoolsHealthGetResponsePopHealthOriginsItem =
   }) as any as S.Schema<PoolsHealthGetResponsePopHealthOriginsItem>;
 
 export type PoolsHealthGetResponsePopHealthOriginsList =
-  ReadonlyArray<PoolsHealthGetResponsePopHealthOriginsItem>;
+  Array<PoolsHealthGetResponsePopHealthOriginsItem>;
 export const PoolsHealthGetResponsePopHealthOriginsList = /*@__PURE__*/ S.Array(
   PoolsHealthGetResponsePopHealthOriginsItem,
 ) as any as S.Schema<PoolsHealthGetResponsePopHealthOriginsList>;
@@ -3921,8 +3908,7 @@ export const PoolsReferencesGetResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "PoolsReferencesGetResultItem",
 }) as any as S.Schema<PoolsReferencesGetResultItem>;
 
-export type PoolsReferencesGetResultList =
-  ReadonlyArray<PoolsReferencesGetResultItem>;
+export type PoolsReferencesGetResultList = Array<PoolsReferencesGetResultItem>;
 export const PoolsReferencesGetResultList = /*@__PURE__*/ S.Array(
   PoolsReferencesGetResultItem,
 ) as any as S.Schema<PoolsReferencesGetResultList>;
@@ -3991,7 +3977,7 @@ export const PreviewsGetResultValueOriginsItemMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<PreviewsGetResultValueOriginsItemMap>;
 
 export type PreviewsGetResultValueOriginsList =
-  ReadonlyArray<PreviewsGetResultValueOriginsItemMap>;
+  Array<PreviewsGetResultValueOriginsItemMap>;
 export const PreviewsGetResultValueOriginsList = /*@__PURE__*/ S.Array(
   PreviewsGetResultValueOriginsItemMap,
 ) as any as S.Schema<PreviewsGetResultValueOriginsList>;
@@ -4103,7 +4089,7 @@ export const ListResultItemAdaptiveRouting = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListResultItemAdaptiveRouting",
 }) as any as S.Schema<ListResultItemAdaptiveRouting>;
 
-export type ListResultItemCountryPoolsValueList = ReadonlyArray<string>;
+export type ListResultItemCountryPoolsValueList = Array<string>;
 export const ListResultItemCountryPoolsValueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ListResultItemCountryPoolsValueList>;
@@ -4116,7 +4102,7 @@ export const ListResultItemCountryPoolsMap = /*@__PURE__*/ S.Record(
   ListResultItemCountryPoolsValueList,
 ) as any as S.Schema<ListResultItemCountryPoolsMap>;
 
-export type ListResultItemDefaultPoolsList = ReadonlyArray<string>;
+export type ListResultItemDefaultPoolsList = Array<string>;
 export const ListResultItemDefaultPoolsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ListResultItemDefaultPoolsList>;
@@ -4148,12 +4134,12 @@ export const ListResultItemLocationStrategy = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListResultItemLocationStrategy",
 }) as any as S.Schema<ListResultItemLocationStrategy>;
 
-export type ListResultItemNetworksList = ReadonlyArray<string>;
+export type ListResultItemNetworksList = Array<string>;
 export const ListResultItemNetworksList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ListResultItemNetworksList>;
 
-export type ListResultItemPopPoolsValueList = ReadonlyArray<string>;
+export type ListResultItemPopPoolsValueList = Array<string>;
 export const ListResultItemPopPoolsValueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ListResultItemPopPoolsValueList>;
@@ -4192,7 +4178,7 @@ export const ListResultItemRandomSteering = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListResultItemRandomSteering",
 }) as any as S.Schema<ListResultItemRandomSteering>;
 
-export type ListResultItemRegionPoolsValueList = ReadonlyArray<string>;
+export type ListResultItemRegionPoolsValueList = Array<string>;
 export const ListResultItemRegionPoolsValueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ListResultItemRegionPoolsValueList>;
@@ -4228,7 +4214,7 @@ export const ListResultItemRulesItemFixedResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListResultItemRulesItemFixedResponse>;
 
 export type ListResultItemRulesItemOverridesCountryPoolsValueList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ListResultItemRulesItemOverridesCountryPoolsValueList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4245,15 +4231,13 @@ export const ListResultItemRulesItemOverridesCountryPoolsMap =
     ListResultItemRulesItemOverridesCountryPoolsValueList,
   ) as any as S.Schema<ListResultItemRulesItemOverridesCountryPoolsMap>;
 
-export type ListResultItemRulesItemOverridesDefaultPoolsList =
-  ReadonlyArray<string>;
+export type ListResultItemRulesItemOverridesDefaultPoolsList = Array<string>;
 export const ListResultItemRulesItemOverridesDefaultPoolsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ListResultItemRulesItemOverridesDefaultPoolsList>;
 
-export type ListResultItemRulesItemOverridesPopPoolsValueList =
-  ReadonlyArray<string>;
+export type ListResultItemRulesItemOverridesPopPoolsValueList = Array<string>;
 export const ListResultItemRulesItemOverridesPopPoolsValueList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4269,7 +4253,7 @@ export const ListResultItemRulesItemOverridesPopPoolsMap =
   ) as any as S.Schema<ListResultItemRulesItemOverridesPopPoolsMap>;
 
 export type ListResultItemRulesItemOverridesRegionPoolsValueList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ListResultItemRulesItemOverridesRegionPoolsValueList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4295,7 +4279,7 @@ export const ListResultItemRulesItemOverridesSessionAffinity =
   /*@__PURE__*/ S.String;
 
 export type ListResultItemRulesItemOverridesSessionAffinityAttributesHeadersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ListResultItemRulesItemOverridesSessionAffinityAttributesHeadersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4487,7 +4471,7 @@ export const ListResultItemRulesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListResultItemRulesItem",
 }) as any as S.Schema<ListResultItemRulesItem>;
 
-export type ListResultItemRulesList = ReadonlyArray<ListResultItemRulesItem>;
+export type ListResultItemRulesList = Array<ListResultItemRulesItem>;
 export const ListResultItemRulesList = /*@__PURE__*/ S.Array(
   ListResultItemRulesItem,
 ) as any as S.Schema<ListResultItemRulesList>;
@@ -4590,7 +4574,7 @@ export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ListResultItem" }) as any as S.Schema<ListResultItem>;
 
-export type ListResultList = ReadonlyArray<ListResultItem>;
+export type ListResultList = Array<ListResultItem>;
 export const ListResultList = /*@__PURE__*/ S.Array(
   ListResultItem,
 ) as any as S.Schema<ListResultList>;
@@ -4659,7 +4643,7 @@ export const MonitorGroupsListResultItemMembersItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<MonitorGroupsListResultItemMembersItem>;
 
 export type MonitorGroupsListResultItemMembersList =
-  ReadonlyArray<MonitorGroupsListResultItemMembersItem>;
+  Array<MonitorGroupsListResultItemMembersItem>;
 export const MonitorGroupsListResultItemMembersList = /*@__PURE__*/ S.Array(
   MonitorGroupsListResultItemMembersItem,
 ) as any as S.Schema<MonitorGroupsListResultItemMembersList>;
@@ -4688,8 +4672,7 @@ export const MonitorGroupsListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "MonitorGroupsListResultItem",
 }) as any as S.Schema<MonitorGroupsListResultItem>;
 
-export type MonitorGroupsListResultList =
-  ReadonlyArray<MonitorGroupsListResultItem>;
+export type MonitorGroupsListResultList = Array<MonitorGroupsListResultItem>;
 export const MonitorGroupsListResultList = /*@__PURE__*/ S.Array(
   MonitorGroupsListResultItem,
 ) as any as S.Schema<MonitorGroupsListResultList>;
@@ -4729,7 +4712,7 @@ export const ListMonitorsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListMonitorsRequest",
 }) as any as S.Schema<ListMonitorsRequest>;
 
-export type MonitorsListResultItemHeaderValueList = ReadonlyArray<string>;
+export type MonitorsListResultItemHeaderValueList = Array<string>;
 export const MonitorsListResultItemHeaderValueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<MonitorsListResultItemHeaderValueList>;
@@ -4814,7 +4797,7 @@ export const MonitorsListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "MonitorsListResultItem",
 }) as any as S.Schema<MonitorsListResultItem>;
 
-export type MonitorsListResultList = ReadonlyArray<MonitorsListResultItem>;
+export type MonitorsListResultList = Array<MonitorsListResultItem>;
 export const MonitorsListResultList = /*@__PURE__*/ S.Array(
   MonitorsListResultItem,
 ) as any as S.Schema<MonitorsListResultList>;
@@ -4875,7 +4858,7 @@ export type PoolsListResultItemCheckRegionsItem =
 export const PoolsListResultItemCheckRegionsItem = /*@__PURE__*/ S.String;
 
 export type PoolsListResultItemCheckRegionsList =
-  ReadonlyArray<PoolsListResultItemCheckRegionsItem>;
+  Array<PoolsListResultItemCheckRegionsItem>;
 export const PoolsListResultItemCheckRegionsList = /*@__PURE__*/ S.Array(
   PoolsListResultItemCheckRegionsItem,
 ) as any as S.Schema<PoolsListResultItemCheckRegionsList>;
@@ -4917,7 +4900,7 @@ export const PoolsListResultItemLoadShedding = /*@__PURE__*/ S.suspend(() =>
   identifier: "PoolsListResultItemLoadShedding",
 }) as any as S.Schema<PoolsListResultItemLoadShedding>;
 
-export type PoolsListResultItemNetworksList = ReadonlyArray<string>;
+export type PoolsListResultItemNetworksList = Array<string>;
 export const PoolsListResultItemNetworksList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoolsListResultItemNetworksList>;
@@ -4973,8 +4956,7 @@ export const PoolsListResultItemOriginSteering = /*@__PURE__*/ S.suspend(() =>
   identifier: "PoolsListResultItemOriginSteering",
 }) as any as S.Schema<PoolsListResultItemOriginSteering>;
 
-export type PoolsListResultItemOriginsItemHeaderHostList =
-  ReadonlyArray<string>;
+export type PoolsListResultItemOriginsItemHeaderHostList = Array<string>;
 export const PoolsListResultItemOriginsItemHeaderHostList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5030,7 +5012,7 @@ export const PoolsListResultItemOriginsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PoolsListResultItemOriginsItem>;
 
 export type PoolsListResultItemOriginsList =
-  ReadonlyArray<PoolsListResultItemOriginsItem>;
+  Array<PoolsListResultItemOriginsItem>;
 export const PoolsListResultItemOriginsList = /*@__PURE__*/ S.Array(
   PoolsListResultItemOriginsItem,
 ) as any as S.Schema<PoolsListResultItemOriginsList>;
@@ -5106,7 +5088,7 @@ export const PoolsListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "PoolsListResultItem",
 }) as any as S.Schema<PoolsListResultItem>;
 
-export type PoolsListResultList = ReadonlyArray<PoolsListResultItem>;
+export type PoolsListResultList = Array<PoolsListResultItem>;
 export const PoolsListResultList = /*@__PURE__*/ S.Array(
   PoolsListResultItem,
 ) as any as S.Schema<PoolsListResultList>;
@@ -5203,8 +5185,7 @@ export type SearchesListResponseResourcesItemReferenceType =
 export const SearchesListResponseResourcesItemReferenceType =
   /*@__PURE__*/ S.String;
 
-export type SearchesListResponseResourcesItemReferencesList =
-  ReadonlyArray<unknown>;
+export type SearchesListResponseResourcesItemReferencesList = Array<unknown>;
 export const SearchesListResponseResourcesItemReferencesList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -5249,7 +5230,7 @@ export const SearchesListResponseResourcesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SearchesListResponseResourcesItem>;
 
 export type SearchesListResponseResourcesList =
-  ReadonlyArray<SearchesListResponseResourcesItem>;
+  Array<SearchesListResponseResourcesItem>;
 export const SearchesListResponseResourcesList = /*@__PURE__*/ S.Array(
   SearchesListResponseResourcesItem,
 ) as any as S.Schema<SearchesListResponseResourcesList>;
@@ -5281,7 +5262,7 @@ export const EditRequestAdaptiveRouting = /*@__PURE__*/ S.suspend(() =>
   identifier: "EditRequestAdaptiveRouting",
 }) as any as S.Schema<EditRequestAdaptiveRouting>;
 
-export type EditRequestCountryPoolsValueList = ReadonlyArray<string>;
+export type EditRequestCountryPoolsValueList = Array<string>;
 export const EditRequestCountryPoolsValueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EditRequestCountryPoolsValueList>;
@@ -5294,7 +5275,7 @@ export const EditRequestCountryPoolsMap = /*@__PURE__*/ S.Record(
   EditRequestCountryPoolsValueList,
 ) as any as S.Schema<EditRequestCountryPoolsMap>;
 
-export type EditRequestDefaultPoolsList = ReadonlyArray<string>;
+export type EditRequestDefaultPoolsList = Array<string>;
 export const EditRequestDefaultPoolsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EditRequestDefaultPoolsList>;
@@ -5326,7 +5307,7 @@ export const EditRequestLocationStrategy = /*@__PURE__*/ S.suspend(() =>
   identifier: "EditRequestLocationStrategy",
 }) as any as S.Schema<EditRequestLocationStrategy>;
 
-export type EditRequestPopPoolsValueList = ReadonlyArray<string>;
+export type EditRequestPopPoolsValueList = Array<string>;
 export const EditRequestPopPoolsValueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EditRequestPopPoolsValueList>;
@@ -5364,7 +5345,7 @@ export const EditRequestRandomSteering = /*@__PURE__*/ S.suspend(() =>
   identifier: "EditRequestRandomSteering",
 }) as any as S.Schema<EditRequestRandomSteering>;
 
-export type EditRequestRegionPoolsValueList = ReadonlyArray<string>;
+export type EditRequestRegionPoolsValueList = Array<string>;
 export const EditRequestRegionPoolsValueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EditRequestRegionPoolsValueList>;
@@ -5398,8 +5379,7 @@ export const EditRequestRulesItemFixedResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "EditRequestRulesItemFixedResponse",
 }) as any as S.Schema<EditRequestRulesItemFixedResponse>;
 
-export type EditRequestRulesItemOverridesCountryPoolsValueList =
-  ReadonlyArray<string>;
+export type EditRequestRulesItemOverridesCountryPoolsValueList = Array<string>;
 export const EditRequestRulesItemOverridesCountryPoolsValueList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5414,15 +5394,13 @@ export const EditRequestRulesItemOverridesCountryPoolsMap =
     EditRequestRulesItemOverridesCountryPoolsValueList,
   ) as any as S.Schema<EditRequestRulesItemOverridesCountryPoolsMap>;
 
-export type EditRequestRulesItemOverridesDefaultPoolsList =
-  ReadonlyArray<string>;
+export type EditRequestRulesItemOverridesDefaultPoolsList = Array<string>;
 export const EditRequestRulesItemOverridesDefaultPoolsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<EditRequestRulesItemOverridesDefaultPoolsList>;
 
-export type EditRequestRulesItemOverridesPopPoolsValueList =
-  ReadonlyArray<string>;
+export type EditRequestRulesItemOverridesPopPoolsValueList = Array<string>;
 export const EditRequestRulesItemOverridesPopPoolsValueList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5436,8 +5414,7 @@ export const EditRequestRulesItemOverridesPopPoolsMap = /*@__PURE__*/ S.Record(
   EditRequestRulesItemOverridesPopPoolsValueList,
 ) as any as S.Schema<EditRequestRulesItemOverridesPopPoolsMap>;
 
-export type EditRequestRulesItemOverridesRegionPoolsValueList =
-  ReadonlyArray<string>;
+export type EditRequestRulesItemOverridesRegionPoolsValueList = Array<string>;
 export const EditRequestRulesItemOverridesRegionPoolsValueList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5461,7 +5438,7 @@ export const EditRequestRulesItemOverridesSessionAffinity =
   /*@__PURE__*/ S.String;
 
 export type EditRequestRulesItemOverridesSessionAffinityAttributesHeadersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const EditRequestRulesItemOverridesSessionAffinityAttributesHeadersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5659,7 +5636,7 @@ export const EditRequestRulesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "EditRequestRulesItem",
 }) as any as S.Schema<EditRequestRulesItem>;
 
-export type EditRequestRulesList = ReadonlyArray<EditRequestRulesItem>;
+export type EditRequestRulesList = Array<EditRequestRulesItem>;
 export const EditRequestRulesList = /*@__PURE__*/ S.Array(
   EditRequestRulesItem,
 ) as any as S.Schema<EditRequestRulesList>;
@@ -5781,7 +5758,7 @@ export const EditResponseAdaptiveRouting = /*@__PURE__*/ S.suspend(() =>
   identifier: "EditResponseAdaptiveRouting",
 }) as any as S.Schema<EditResponseAdaptiveRouting>;
 
-export type EditResponseCountryPoolsValueList = ReadonlyArray<string>;
+export type EditResponseCountryPoolsValueList = Array<string>;
 export const EditResponseCountryPoolsValueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EditResponseCountryPoolsValueList>;
@@ -5794,7 +5771,7 @@ export const EditResponseCountryPoolsMap = /*@__PURE__*/ S.Record(
   EditResponseCountryPoolsValueList,
 ) as any as S.Schema<EditResponseCountryPoolsMap>;
 
-export type EditResponseDefaultPoolsList = ReadonlyArray<string>;
+export type EditResponseDefaultPoolsList = Array<string>;
 export const EditResponseDefaultPoolsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EditResponseDefaultPoolsList>;
@@ -5826,12 +5803,12 @@ export const EditResponseLocationStrategy = /*@__PURE__*/ S.suspend(() =>
   identifier: "EditResponseLocationStrategy",
 }) as any as S.Schema<EditResponseLocationStrategy>;
 
-export type EditResponseNetworksList = ReadonlyArray<string>;
+export type EditResponseNetworksList = Array<string>;
 export const EditResponseNetworksList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EditResponseNetworksList>;
 
-export type EditResponsePopPoolsValueList = ReadonlyArray<string>;
+export type EditResponsePopPoolsValueList = Array<string>;
 export const EditResponsePopPoolsValueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EditResponsePopPoolsValueList>;
@@ -5869,7 +5846,7 @@ export const EditResponseRandomSteering = /*@__PURE__*/ S.suspend(() =>
   identifier: "EditResponseRandomSteering",
 }) as any as S.Schema<EditResponseRandomSteering>;
 
-export type EditResponseRegionPoolsValueList = ReadonlyArray<string>;
+export type EditResponseRegionPoolsValueList = Array<string>;
 export const EditResponseRegionPoolsValueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EditResponseRegionPoolsValueList>;
@@ -5903,8 +5880,7 @@ export const EditResponseRulesItemFixedResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "EditResponseRulesItemFixedResponse",
 }) as any as S.Schema<EditResponseRulesItemFixedResponse>;
 
-export type EditResponseRulesItemOverridesCountryPoolsValueList =
-  ReadonlyArray<string>;
+export type EditResponseRulesItemOverridesCountryPoolsValueList = Array<string>;
 export const EditResponseRulesItemOverridesCountryPoolsValueList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5921,15 +5897,13 @@ export const EditResponseRulesItemOverridesCountryPoolsMap =
     EditResponseRulesItemOverridesCountryPoolsValueList,
   ) as any as S.Schema<EditResponseRulesItemOverridesCountryPoolsMap>;
 
-export type EditResponseRulesItemOverridesDefaultPoolsList =
-  ReadonlyArray<string>;
+export type EditResponseRulesItemOverridesDefaultPoolsList = Array<string>;
 export const EditResponseRulesItemOverridesDefaultPoolsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<EditResponseRulesItemOverridesDefaultPoolsList>;
 
-export type EditResponseRulesItemOverridesPopPoolsValueList =
-  ReadonlyArray<string>;
+export type EditResponseRulesItemOverridesPopPoolsValueList = Array<string>;
 export const EditResponseRulesItemOverridesPopPoolsValueList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5943,8 +5917,7 @@ export const EditResponseRulesItemOverridesPopPoolsMap = /*@__PURE__*/ S.Record(
   EditResponseRulesItemOverridesPopPoolsValueList,
 ) as any as S.Schema<EditResponseRulesItemOverridesPopPoolsMap>;
 
-export type EditResponseRulesItemOverridesRegionPoolsValueList =
-  ReadonlyArray<string>;
+export type EditResponseRulesItemOverridesRegionPoolsValueList = Array<string>;
 export const EditResponseRulesItemOverridesRegionPoolsValueList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5968,7 +5941,7 @@ export const EditResponseRulesItemOverridesSessionAffinity =
   /*@__PURE__*/ S.String;
 
 export type EditResponseRulesItemOverridesSessionAffinityAttributesHeadersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const EditResponseRulesItemOverridesSessionAffinityAttributesHeadersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6158,7 +6131,7 @@ export const EditResponseRulesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "EditResponseRulesItem",
 }) as any as S.Schema<EditResponseRulesItem>;
 
-export type EditResponseRulesList = ReadonlyArray<EditResponseRulesItem>;
+export type EditResponseRulesList = Array<EditResponseRulesItem>;
 export const EditResponseRulesList = /*@__PURE__*/ S.Array(
   EditResponseRulesItem,
 ) as any as S.Schema<EditResponseRulesList>;
@@ -6264,7 +6237,7 @@ export const PatchLoadBalancerResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchLoadBalancerResponse",
 }) as any as S.Schema<PatchLoadBalancerResponse>;
 
-export type MonitorsEditRequestHeaderValueList = ReadonlyArray<string>;
+export type MonitorsEditRequestHeaderValueList = Array<string>;
 export const MonitorsEditRequestHeaderValueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<MonitorsEditRequestHeaderValueList>;
@@ -6356,7 +6329,7 @@ export const PatchMonitorRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchMonitorRequest",
 }) as any as S.Schema<PatchMonitorRequest>;
 
-export type MonitorsEditResponseHeaderValueList = ReadonlyArray<string>;
+export type MonitorsEditResponseHeaderValueList = Array<string>;
 export const MonitorsEditResponseHeaderValueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<MonitorsEditResponseHeaderValueList>;
@@ -6470,7 +6443,7 @@ export const MonitorGroupsEditRequestMembersItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MonitorGroupsEditRequestMembersItem>;
 
 export type MonitorGroupsEditRequestMembersList =
-  ReadonlyArray<MonitorGroupsEditRequestMembersItem>;
+  Array<MonitorGroupsEditRequestMembersItem>;
 export const MonitorGroupsEditRequestMembersList = /*@__PURE__*/ S.Array(
   MonitorGroupsEditRequestMembersItem,
 ) as any as S.Schema<MonitorGroupsEditRequestMembersList>;
@@ -6532,7 +6505,7 @@ export const MonitorGroupsEditResponseMembersItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<MonitorGroupsEditResponseMembersItem>;
 
 export type MonitorGroupsEditResponseMembersList =
-  ReadonlyArray<MonitorGroupsEditResponseMembersItem>;
+  Array<MonitorGroupsEditResponseMembersItem>;
 export const MonitorGroupsEditResponseMembersList = /*@__PURE__*/ S.Array(
   MonitorGroupsEditResponseMembersItem,
 ) as any as S.Schema<MonitorGroupsEditResponseMembersList>;
@@ -6579,7 +6552,7 @@ export type PoolsEditRequestCheckRegionsItem =
   | "ALL_REGIONS";
 export const PoolsEditRequestCheckRegionsItem = /*@__PURE__*/ S.String;
 
-export type PoolsEditRequestCheckRegionsList = ReadonlyArray<
+export type PoolsEditRequestCheckRegionsList = Array<
   PoolsEditRequestCheckRegionsItem | (string & {})
 >;
 export const PoolsEditRequestCheckRegionsList = /*@__PURE__*/ S.Array(
@@ -6667,7 +6640,7 @@ export const PoolsEditRequestOriginSteering = /*@__PURE__*/ S.suspend(() =>
   identifier: "PoolsEditRequestOriginSteering",
 }) as any as S.Schema<PoolsEditRequestOriginSteering>;
 
-export type PoolsEditRequestOriginsItemHeaderHostList = ReadonlyArray<string>;
+export type PoolsEditRequestOriginsItemHeaderHostList = Array<string>;
 export const PoolsEditRequestOriginsItemHeaderHostList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoolsEditRequestOriginsItemHeaderHostList>;
@@ -6720,8 +6693,7 @@ export const PoolsEditRequestOriginsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "PoolsEditRequestOriginsItem",
 }) as any as S.Schema<PoolsEditRequestOriginsItem>;
 
-export type PoolsEditRequestOriginsList =
-  ReadonlyArray<PoolsEditRequestOriginsItem>;
+export type PoolsEditRequestOriginsList = Array<PoolsEditRequestOriginsItem>;
 export const PoolsEditRequestOriginsList = /*@__PURE__*/ S.Array(
   PoolsEditRequestOriginsItem,
 ) as any as S.Schema<PoolsEditRequestOriginsList>;
@@ -6816,7 +6788,7 @@ export type PoolsEditResponseCheckRegionsItem =
 export const PoolsEditResponseCheckRegionsItem = /*@__PURE__*/ S.String;
 
 export type PoolsEditResponseCheckRegionsList =
-  ReadonlyArray<PoolsEditResponseCheckRegionsItem>;
+  Array<PoolsEditResponseCheckRegionsItem>;
 export const PoolsEditResponseCheckRegionsList = /*@__PURE__*/ S.Array(
   PoolsEditResponseCheckRegionsItem,
 ) as any as S.Schema<PoolsEditResponseCheckRegionsList>;
@@ -6854,7 +6826,7 @@ export const PoolsEditResponseLoadShedding = /*@__PURE__*/ S.suspend(() =>
   identifier: "PoolsEditResponseLoadShedding",
 }) as any as S.Schema<PoolsEditResponseLoadShedding>;
 
-export type PoolsEditResponseNetworksList = ReadonlyArray<string>;
+export type PoolsEditResponseNetworksList = Array<string>;
 export const PoolsEditResponseNetworksList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoolsEditResponseNetworksList>;
@@ -6909,7 +6881,7 @@ export const PoolsEditResponseOriginSteering = /*@__PURE__*/ S.suspend(() =>
   identifier: "PoolsEditResponseOriginSteering",
 }) as any as S.Schema<PoolsEditResponseOriginSteering>;
 
-export type PoolsEditResponseOriginsItemHeaderHostList = ReadonlyArray<string>;
+export type PoolsEditResponseOriginsItemHeaderHostList = Array<string>;
 export const PoolsEditResponseOriginsItemHeaderHostList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoolsEditResponseOriginsItemHeaderHostList>;
@@ -6962,8 +6934,7 @@ export const PoolsEditResponseOriginsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "PoolsEditResponseOriginsItem",
 }) as any as S.Schema<PoolsEditResponseOriginsItem>;
 
-export type PoolsEditResponseOriginsList =
-  ReadonlyArray<PoolsEditResponseOriginsItem>;
+export type PoolsEditResponseOriginsList = Array<PoolsEditResponseOriginsItem>;
 export const PoolsEditResponseOriginsList = /*@__PURE__*/ S.Array(
   PoolsEditResponseOriginsItem,
 ) as any as S.Schema<PoolsEditResponseOriginsList>;
@@ -7040,7 +7011,7 @@ export const PatchPoolResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchPoolResponse",
 }) as any as S.Schema<PatchPoolResponse>;
 
-export type UpdateRequestDefaultPoolsList = ReadonlyArray<string>;
+export type UpdateRequestDefaultPoolsList = Array<string>;
 export const UpdateRequestDefaultPoolsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<UpdateRequestDefaultPoolsList>;
@@ -7059,7 +7030,7 @@ export const UpdateRequestAdaptiveRouting = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateRequestAdaptiveRouting",
 }) as any as S.Schema<UpdateRequestAdaptiveRouting>;
 
-export type UpdateRequestCountryPoolsValueList = ReadonlyArray<string>;
+export type UpdateRequestCountryPoolsValueList = Array<string>;
 export const UpdateRequestCountryPoolsValueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<UpdateRequestCountryPoolsValueList>;
@@ -7099,12 +7070,12 @@ export const UpdateRequestLocationStrategy = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateRequestLocationStrategy",
 }) as any as S.Schema<UpdateRequestLocationStrategy>;
 
-export type UpdateRequestNetworksList = ReadonlyArray<string>;
+export type UpdateRequestNetworksList = Array<string>;
 export const UpdateRequestNetworksList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<UpdateRequestNetworksList>;
 
-export type UpdateRequestPopPoolsValueList = ReadonlyArray<string>;
+export type UpdateRequestPopPoolsValueList = Array<string>;
 export const UpdateRequestPopPoolsValueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<UpdateRequestPopPoolsValueList>;
@@ -7142,7 +7113,7 @@ export const UpdateRequestRandomSteering = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateRequestRandomSteering",
 }) as any as S.Schema<UpdateRequestRandomSteering>;
 
-export type UpdateRequestRegionPoolsValueList = ReadonlyArray<string>;
+export type UpdateRequestRegionPoolsValueList = Array<string>;
 export const UpdateRequestRegionPoolsValueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<UpdateRequestRegionPoolsValueList>;
@@ -7177,7 +7148,7 @@ export const UpdateRequestRulesItemFixedResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateRequestRulesItemFixedResponse>;
 
 export type UpdateRequestRulesItemOverridesCountryPoolsValueList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const UpdateRequestRulesItemOverridesCountryPoolsValueList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -7194,15 +7165,13 @@ export const UpdateRequestRulesItemOverridesCountryPoolsMap =
     UpdateRequestRulesItemOverridesCountryPoolsValueList,
   ) as any as S.Schema<UpdateRequestRulesItemOverridesCountryPoolsMap>;
 
-export type UpdateRequestRulesItemOverridesDefaultPoolsList =
-  ReadonlyArray<string>;
+export type UpdateRequestRulesItemOverridesDefaultPoolsList = Array<string>;
 export const UpdateRequestRulesItemOverridesDefaultPoolsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<UpdateRequestRulesItemOverridesDefaultPoolsList>;
 
-export type UpdateRequestRulesItemOverridesPopPoolsValueList =
-  ReadonlyArray<string>;
+export type UpdateRequestRulesItemOverridesPopPoolsValueList = Array<string>;
 export const UpdateRequestRulesItemOverridesPopPoolsValueList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -7217,8 +7186,7 @@ export const UpdateRequestRulesItemOverridesPopPoolsMap =
     UpdateRequestRulesItemOverridesPopPoolsValueList,
   ) as any as S.Schema<UpdateRequestRulesItemOverridesPopPoolsMap>;
 
-export type UpdateRequestRulesItemOverridesRegionPoolsValueList =
-  ReadonlyArray<string>;
+export type UpdateRequestRulesItemOverridesRegionPoolsValueList = Array<string>;
 export const UpdateRequestRulesItemOverridesRegionPoolsValueList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -7244,7 +7212,7 @@ export const UpdateRequestRulesItemOverridesSessionAffinity =
   /*@__PURE__*/ S.String;
 
 export type UpdateRequestRulesItemOverridesSessionAffinityAttributesHeadersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const UpdateRequestRulesItemOverridesSessionAffinityAttributesHeadersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -7446,7 +7414,7 @@ export const UpdateRequestRulesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateRequestRulesItem",
 }) as any as S.Schema<UpdateRequestRulesItem>;
 
-export type UpdateRequestRulesList = ReadonlyArray<UpdateRequestRulesItem>;
+export type UpdateRequestRulesList = Array<UpdateRequestRulesItem>;
 export const UpdateRequestRulesList = /*@__PURE__*/ S.Array(
   UpdateRequestRulesItem,
 ) as any as S.Schema<UpdateRequestRulesList>;
@@ -7571,7 +7539,7 @@ export const UpdateResponseAdaptiveRouting = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateResponseAdaptiveRouting",
 }) as any as S.Schema<UpdateResponseAdaptiveRouting>;
 
-export type UpdateResponseCountryPoolsValueList = ReadonlyArray<string>;
+export type UpdateResponseCountryPoolsValueList = Array<string>;
 export const UpdateResponseCountryPoolsValueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<UpdateResponseCountryPoolsValueList>;
@@ -7584,7 +7552,7 @@ export const UpdateResponseCountryPoolsMap = /*@__PURE__*/ S.Record(
   UpdateResponseCountryPoolsValueList,
 ) as any as S.Schema<UpdateResponseCountryPoolsMap>;
 
-export type UpdateResponseDefaultPoolsList = ReadonlyArray<string>;
+export type UpdateResponseDefaultPoolsList = Array<string>;
 export const UpdateResponseDefaultPoolsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<UpdateResponseDefaultPoolsList>;
@@ -7616,12 +7584,12 @@ export const UpdateResponseLocationStrategy = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateResponseLocationStrategy",
 }) as any as S.Schema<UpdateResponseLocationStrategy>;
 
-export type UpdateResponseNetworksList = ReadonlyArray<string>;
+export type UpdateResponseNetworksList = Array<string>;
 export const UpdateResponseNetworksList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<UpdateResponseNetworksList>;
 
-export type UpdateResponsePopPoolsValueList = ReadonlyArray<string>;
+export type UpdateResponsePopPoolsValueList = Array<string>;
 export const UpdateResponsePopPoolsValueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<UpdateResponsePopPoolsValueList>;
@@ -7660,7 +7628,7 @@ export const UpdateResponseRandomSteering = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateResponseRandomSteering",
 }) as any as S.Schema<UpdateResponseRandomSteering>;
 
-export type UpdateResponseRegionPoolsValueList = ReadonlyArray<string>;
+export type UpdateResponseRegionPoolsValueList = Array<string>;
 export const UpdateResponseRegionPoolsValueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<UpdateResponseRegionPoolsValueList>;
@@ -7696,7 +7664,7 @@ export const UpdateResponseRulesItemFixedResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<UpdateResponseRulesItemFixedResponse>;
 
 export type UpdateResponseRulesItemOverridesCountryPoolsValueList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const UpdateResponseRulesItemOverridesCountryPoolsValueList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -7713,15 +7681,13 @@ export const UpdateResponseRulesItemOverridesCountryPoolsMap =
     UpdateResponseRulesItemOverridesCountryPoolsValueList,
   ) as any as S.Schema<UpdateResponseRulesItemOverridesCountryPoolsMap>;
 
-export type UpdateResponseRulesItemOverridesDefaultPoolsList =
-  ReadonlyArray<string>;
+export type UpdateResponseRulesItemOverridesDefaultPoolsList = Array<string>;
 export const UpdateResponseRulesItemOverridesDefaultPoolsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<UpdateResponseRulesItemOverridesDefaultPoolsList>;
 
-export type UpdateResponseRulesItemOverridesPopPoolsValueList =
-  ReadonlyArray<string>;
+export type UpdateResponseRulesItemOverridesPopPoolsValueList = Array<string>;
 export const UpdateResponseRulesItemOverridesPopPoolsValueList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -7737,7 +7703,7 @@ export const UpdateResponseRulesItemOverridesPopPoolsMap =
   ) as any as S.Schema<UpdateResponseRulesItemOverridesPopPoolsMap>;
 
 export type UpdateResponseRulesItemOverridesRegionPoolsValueList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const UpdateResponseRulesItemOverridesRegionPoolsValueList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -7763,7 +7729,7 @@ export const UpdateResponseRulesItemOverridesSessionAffinity =
   /*@__PURE__*/ S.String;
 
 export type UpdateResponseRulesItemOverridesSessionAffinityAttributesHeadersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const UpdateResponseRulesItemOverridesSessionAffinityAttributesHeadersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -7955,7 +7921,7 @@ export const UpdateResponseRulesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateResponseRulesItem",
 }) as any as S.Schema<UpdateResponseRulesItem>;
 
-export type UpdateResponseRulesList = ReadonlyArray<UpdateResponseRulesItem>;
+export type UpdateResponseRulesList = Array<UpdateResponseRulesItem>;
 export const UpdateResponseRulesList = /*@__PURE__*/ S.Array(
   UpdateResponseRulesItem,
 ) as any as S.Schema<UpdateResponseRulesList>;
@@ -8061,7 +8027,7 @@ export const UpdateLoadBalancerResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateLoadBalancerResponse",
 }) as any as S.Schema<UpdateLoadBalancerResponse>;
 
-export type MonitorsUpdateRequestHeaderValueList = ReadonlyArray<string>;
+export type MonitorsUpdateRequestHeaderValueList = Array<string>;
 export const MonitorsUpdateRequestHeaderValueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<MonitorsUpdateRequestHeaderValueList>;
@@ -8153,7 +8119,7 @@ export const UpdateMonitorRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateMonitorRequest",
 }) as any as S.Schema<UpdateMonitorRequest>;
 
-export type MonitorsUpdateResponseHeaderValueList = ReadonlyArray<string>;
+export type MonitorsUpdateResponseHeaderValueList = Array<string>;
 export const MonitorsUpdateResponseHeaderValueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<MonitorsUpdateResponseHeaderValueList>;
@@ -8268,7 +8234,7 @@ export const MonitorGroupsUpdateRequestMembersItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<MonitorGroupsUpdateRequestMembersItem>;
 
 export type MonitorGroupsUpdateRequestMembersList =
-  ReadonlyArray<MonitorGroupsUpdateRequestMembersItem>;
+  Array<MonitorGroupsUpdateRequestMembersItem>;
 export const MonitorGroupsUpdateRequestMembersList = /*@__PURE__*/ S.Array(
   MonitorGroupsUpdateRequestMembersItem,
 ) as any as S.Schema<MonitorGroupsUpdateRequestMembersList>;
@@ -8330,7 +8296,7 @@ export const MonitorGroupsUpdateResponseMembersItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<MonitorGroupsUpdateResponseMembersItem>;
 
 export type MonitorGroupsUpdateResponseMembersList =
-  ReadonlyArray<MonitorGroupsUpdateResponseMembersItem>;
+  Array<MonitorGroupsUpdateResponseMembersItem>;
 export const MonitorGroupsUpdateResponseMembersList = /*@__PURE__*/ S.Array(
   MonitorGroupsUpdateResponseMembersItem,
 ) as any as S.Schema<MonitorGroupsUpdateResponseMembersList>;
@@ -8360,7 +8326,7 @@ export const UpdateMonitorGroupResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateMonitorGroupResponse",
 }) as any as S.Schema<UpdateMonitorGroupResponse>;
 
-export type PoolsUpdateRequestOriginsItemHeaderHostList = ReadonlyArray<string>;
+export type PoolsUpdateRequestOriginsItemHeaderHostList = Array<string>;
 export const PoolsUpdateRequestOriginsItemHeaderHostList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -8415,7 +8381,7 @@ export const PoolsUpdateRequestOriginsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PoolsUpdateRequestOriginsItem>;
 
 export type PoolsUpdateRequestOriginsList =
-  ReadonlyArray<PoolsUpdateRequestOriginsItem>;
+  Array<PoolsUpdateRequestOriginsItem>;
 export const PoolsUpdateRequestOriginsList = /*@__PURE__*/ S.Array(
   PoolsUpdateRequestOriginsItem,
 ) as any as S.Schema<PoolsUpdateRequestOriginsList>;
@@ -8437,7 +8403,7 @@ export type PoolsUpdateRequestCheckRegionsItem =
   | "ALL_REGIONS";
 export const PoolsUpdateRequestCheckRegionsItem = /*@__PURE__*/ S.String;
 
-export type PoolsUpdateRequestCheckRegionsList = ReadonlyArray<
+export type PoolsUpdateRequestCheckRegionsList = Array<
   PoolsUpdateRequestCheckRegionsItem | (string & {})
 >;
 export const PoolsUpdateRequestCheckRegionsList = /*@__PURE__*/ S.Array(
@@ -8622,7 +8588,7 @@ export type PoolsUpdateResponseCheckRegionsItem =
 export const PoolsUpdateResponseCheckRegionsItem = /*@__PURE__*/ S.String;
 
 export type PoolsUpdateResponseCheckRegionsList =
-  ReadonlyArray<PoolsUpdateResponseCheckRegionsItem>;
+  Array<PoolsUpdateResponseCheckRegionsItem>;
 export const PoolsUpdateResponseCheckRegionsList = /*@__PURE__*/ S.Array(
   PoolsUpdateResponseCheckRegionsItem,
 ) as any as S.Schema<PoolsUpdateResponseCheckRegionsList>;
@@ -8664,7 +8630,7 @@ export const PoolsUpdateResponseLoadShedding = /*@__PURE__*/ S.suspend(() =>
   identifier: "PoolsUpdateResponseLoadShedding",
 }) as any as S.Schema<PoolsUpdateResponseLoadShedding>;
 
-export type PoolsUpdateResponseNetworksList = ReadonlyArray<string>;
+export type PoolsUpdateResponseNetworksList = Array<string>;
 export const PoolsUpdateResponseNetworksList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoolsUpdateResponseNetworksList>;
@@ -8720,8 +8686,7 @@ export const PoolsUpdateResponseOriginSteering = /*@__PURE__*/ S.suspend(() =>
   identifier: "PoolsUpdateResponseOriginSteering",
 }) as any as S.Schema<PoolsUpdateResponseOriginSteering>;
 
-export type PoolsUpdateResponseOriginsItemHeaderHostList =
-  ReadonlyArray<string>;
+export type PoolsUpdateResponseOriginsItemHeaderHostList = Array<string>;
 export const PoolsUpdateResponseOriginsItemHeaderHostList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -8777,7 +8742,7 @@ export const PoolsUpdateResponseOriginsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PoolsUpdateResponseOriginsItem>;
 
 export type PoolsUpdateResponseOriginsList =
-  ReadonlyArray<PoolsUpdateResponseOriginsItem>;
+  Array<PoolsUpdateResponseOriginsItem>;
 export const PoolsUpdateResponseOriginsList = /*@__PURE__*/ S.Array(
   PoolsUpdateResponseOriginsItem,
 ) as any as S.Schema<PoolsUpdateResponseOriginsList>;

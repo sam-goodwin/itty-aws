@@ -589,7 +589,7 @@ export const CredentialType = /*@__PURE__*/ S.String;
 export type SecretId = string | redacted.Redacted<string>;
 export interface ApplicationCredential {
   DatabaseName: string;
-  CredentialType: CredentialType;
+  CredentialType: CredentialType | (string & {});
   SecretId: string | redacted.Redacted<string>;
 }
 export const ApplicationCredential = /*@__PURE__*/ S.suspend(() =>

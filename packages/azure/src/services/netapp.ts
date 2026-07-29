@@ -31,7 +31,7 @@ export const KeyVaultPrivateEndpoint = /*@__PURE__*/ S.suspend(() =>
 
 /** Pairs of virtual network ID and private endpoint ID. Every virtual network that has volumes encrypted with customer-managed keys needs its own key vault private endpoint. */
 export type AccountsChangeKeyVaultRequestKeyVaultPrivateEndpointsList =
-  ReadonlyArray<KeyVaultPrivateEndpoint>;
+  Array<KeyVaultPrivateEndpoint>;
 export const AccountsChangeKeyVaultRequestKeyVaultPrivateEndpointsList =
   /*@__PURE__*/ S.Array(
     KeyVaultPrivateEndpoint,
@@ -92,19 +92,19 @@ export const AccountsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<AccountsCreateOrUpdateRequestTagsMap>;
 
 /** Users to be added to the Built-in Backup Operator active directory group. A list of unique usernames without domain specifier */
-export type ActiveDirectoryInputBackupOperatorsList = ReadonlyArray<string>;
+export type ActiveDirectoryInputBackupOperatorsList = Array<string>;
 export const ActiveDirectoryInputBackupOperatorsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ActiveDirectoryInputBackupOperatorsList>;
 
 /** Users to be added to the Built-in Administrators active directory group. A list of unique usernames without domain specifier */
-export type ActiveDirectoryInputAdministratorsList = ReadonlyArray<string>;
+export type ActiveDirectoryInputAdministratorsList = Array<string>;
 export const ActiveDirectoryInputAdministratorsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ActiveDirectoryInputAdministratorsList>;
 
 /** Domain Users in the Active directory to be given SeSecurityPrivilege privilege (Needed for SMB Continuously available shares for SQL). A list of unique usernames without domain specifier */
-export type ActiveDirectoryInputSecurityOperatorsList = ReadonlyArray<string>;
+export type ActiveDirectoryInputSecurityOperatorsList = Array<string>;
 export const ActiveDirectoryInputSecurityOperatorsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ActiveDirectoryInputSecurityOperatorsList>;
@@ -203,7 +203,7 @@ export const ActiveDirectoryInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Active Directories */
 export type AccountPropertiesInputActiveDirectoriesList =
-  ReadonlyArray<ActiveDirectoryInput>;
+  Array<ActiveDirectoryInput>;
 export const AccountPropertiesInputActiveDirectoriesList =
   /*@__PURE__*/ S.Array(
     ActiveDirectoryInput,
@@ -430,19 +430,19 @@ export type ActiveDirectoryStatus =
 export const ActiveDirectoryStatus = /*@__PURE__*/ S.String;
 
 /** Users to be added to the Built-in Backup Operator active directory group. A list of unique usernames without domain specifier */
-export type ActiveDirectoryBackupOperatorsList = ReadonlyArray<string>;
+export type ActiveDirectoryBackupOperatorsList = Array<string>;
 export const ActiveDirectoryBackupOperatorsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ActiveDirectoryBackupOperatorsList>;
 
 /** Users to be added to the Built-in Administrators active directory group. A list of unique usernames without domain specifier */
-export type ActiveDirectoryAdministratorsList = ReadonlyArray<string>;
+export type ActiveDirectoryAdministratorsList = Array<string>;
 export const ActiveDirectoryAdministratorsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ActiveDirectoryAdministratorsList>;
 
 /** Domain Users in the Active directory to be given SeSecurityPrivilege privilege (Needed for SMB Continuously available shares for SQL). A list of unique usernames without domain specifier */
-export type ActiveDirectorySecurityOperatorsList = ReadonlyArray<string>;
+export type ActiveDirectorySecurityOperatorsList = Array<string>;
 export const ActiveDirectorySecurityOperatorsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ActiveDirectorySecurityOperatorsList>;
@@ -527,8 +527,7 @@ export const ActiveDirectory = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ActiveDirectory>;
 
 /** Active Directories */
-export type AccountPropertiesActiveDirectoriesList =
-  ReadonlyArray<ActiveDirectory>;
+export type AccountPropertiesActiveDirectoriesList = Array<ActiveDirectory>;
 export const AccountPropertiesActiveDirectoriesList = /*@__PURE__*/ S.Array(
   ActiveDirectory,
 ) as any as S.Schema<AccountPropertiesActiveDirectoriesList>;
@@ -890,7 +889,7 @@ export const AccountsGetChangeKeyVaultInformationRequest =
 
 /** Pairs of virtual network ID and private endpoint ID. Every virtual network that has volumes encrypted with customer-managed keys needs its own key vault private endpoint. */
 export type GetKeyVaultStatusResponsePropertiesKeyVaultPrivateEndpointsList =
-  ReadonlyArray<KeyVaultPrivateEndpoint>;
+  Array<KeyVaultPrivateEndpoint>;
 export const GetKeyVaultStatusResponsePropertiesKeyVaultPrivateEndpointsList =
   /*@__PURE__*/ S.Array(
     KeyVaultPrivateEndpoint,
@@ -1031,7 +1030,7 @@ export const NetAppAccount = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NetAppAccount" }) as any as S.Schema<NetAppAccount>;
 
 /** The NetAppAccount items on this page */
-export type NetAppAccountListValueList = ReadonlyArray<NetAppAccount>;
+export type NetAppAccountListValueList = Array<NetAppAccount>;
 export const NetAppAccountListValueList = /*@__PURE__*/ S.Array(
   NetAppAccount,
 ) as any as S.Schema<NetAppAccountListValueList>;
@@ -1390,8 +1389,7 @@ export const VolumeBackups = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VolumeBackups" }) as any as S.Schema<VolumeBackups>;
 
 /** A list of volumes assigned to this policy */
-export type BackupPolicyPropertiesVolumeBackupsList =
-  ReadonlyArray<VolumeBackups>;
+export type BackupPolicyPropertiesVolumeBackupsList = Array<VolumeBackups>;
 export const BackupPolicyPropertiesVolumeBackupsList = /*@__PURE__*/ S.Array(
   VolumeBackups,
 ) as any as S.Schema<BackupPolicyPropertiesVolumeBackupsList>;
@@ -1633,7 +1631,7 @@ export const BackupPolicy = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BackupPolicy" }) as any as S.Schema<BackupPolicy>;
 
 /** The BackupPolicy items on this page */
-export type BackupPoliciesListValueList = ReadonlyArray<BackupPolicy>;
+export type BackupPoliciesListValueList = Array<BackupPolicy>;
 export const BackupPoliciesListValueList = /*@__PURE__*/ S.Array(
   BackupPolicy,
 ) as any as S.Schema<BackupPoliciesListValueList>;
@@ -2170,7 +2168,7 @@ export const Backup = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Backup" }) as any as S.Schema<Backup>;
 
 /** The Backup items on this page */
-export type BackupsListValueList = ReadonlyArray<Backup>;
+export type BackupsListValueList = Array<Backup>;
 export const BackupsListValueList = /*@__PURE__*/ S.Array(
   Backup,
 ) as any as S.Schema<BackupsListValueList>;
@@ -2226,7 +2224,7 @@ export const BackupsUnderAccountMigrateBackupsResponse =
 
 /** List of files to be restored */
 export type BackupsUnderBackupVaultRestoreFilesRequestFileListList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const BackupsUnderBackupVaultRestoreFilesRequestFileListList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2663,7 +2661,7 @@ export const BackupVault = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BackupVault" }) as any as S.Schema<BackupVault>;
 
 /** The BackupVault items on this page */
-export type BackupVaultsListValueList = ReadonlyArray<BackupVault>;
+export type BackupVaultsListValueList = Array<BackupVault>;
 export const BackupVaultsListValueList = /*@__PURE__*/ S.Array(
   BackupVault,
 ) as any as S.Schema<BackupVaultsListValueList>;
@@ -3300,7 +3298,7 @@ export const Bucket = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Bucket" }) as any as S.Schema<Bucket>;
 
 /** The Bucket items on this page */
-export type BucketListValueList = ReadonlyArray<Bucket>;
+export type BucketListValueList = Array<Bucket>;
 export const BucketListValueList = /*@__PURE__*/ S.Array(
   Bucket,
 ) as any as S.Schema<BucketListValueList>;
@@ -3510,7 +3508,7 @@ export interface ExportPolicyRule {
   /** Has root access to volume */
   hasRootAccess?: boolean;
   /** This parameter specifies who is authorized to change the ownership of a file. restricted - Only root user can change the ownership of the file. unrestricted - Non-root users can change ownership of files that they own. */
-  chownMode?: ExportPolicyRuleChownMode;
+  chownMode?: ExportPolicyRuleChownMode | (string & {});
 }
 export const ExportPolicyRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3535,8 +3533,7 @@ export const ExportPolicyRule = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExportPolicyRule>;
 
 /** Export policy rule */
-export type CachePropertiesExportPolicyRulesList =
-  ReadonlyArray<ExportPolicyRule>;
+export type CachePropertiesExportPolicyRulesList = Array<ExportPolicyRule>;
 export const CachePropertiesExportPolicyRulesList = /*@__PURE__*/ S.Array(
   ExportPolicyRule,
 ) as any as S.Schema<CachePropertiesExportPolicyRulesList>;
@@ -3559,7 +3556,7 @@ export type ProtocolTypes = "NFSv3" | "NFSv4" | "SMB";
 export const ProtocolTypes = /*@__PURE__*/ S.String;
 
 /** Set of supported protocol types, which include NFSv3, NFSv4 and SMB protocol */
-export type CachePropertiesInputProtocolTypesList = ReadonlyArray<
+export type CachePropertiesInputProtocolTypesList = Array<
   ProtocolTypes | (string & {})
 >;
 export const CachePropertiesInputProtocolTypesList = /*@__PURE__*/ S.Array(
@@ -3585,11 +3582,11 @@ export const SmbNonBrowsable = /*@__PURE__*/ S.String;
 /** SMB settings for the cache */
 export interface SmbSettings {
   /** Enables encryption for in-flight smb3 data. Only applicable for SMB/DualProtocol cache. */
-  smbEncryption?: SmbEncryptionState;
+  smbEncryption?: SmbEncryptionState | (string & {});
   /** Enables access-based enumeration share property for SMB Shares. Only applicable for SMB/DualProtocol volume */
-  smbAccessBasedEnumeration?: SmbAccessBasedEnumeration;
+  smbAccessBasedEnumeration?: SmbAccessBasedEnumeration | (string & {});
   /** Enables non-browsable property for SMB Shares. Only applicable for SMB/DualProtocol volume */
-  smbNonBrowsable?: SmbNonBrowsable;
+  smbNonBrowsable?: SmbNonBrowsable | (string & {});
 }
 export const SmbSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3612,7 +3609,7 @@ export type LdapServerType = "ActiveDirectory" | "OpenLDAP";
 export const LdapServerType = /*@__PURE__*/ S.String;
 
 /** ONTAP Intercluster LIF IP addresses. One IP address per cluster node is required */
-export type OriginClusterInformationPeerAddressesList = ReadonlyArray<string>;
+export type OriginClusterInformationPeerAddressesList = Array<string>;
 export const OriginClusterInformationPeerAddressesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<OriginClusterInformationPeerAddressesList>;
@@ -3713,7 +3710,7 @@ export const CachePropertiesInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CachePropertiesInput>;
 
 /** The availability zones. */
-export type CachesCreateOrUpdateRequestZonesList = ReadonlyArray<string>;
+export type CachesCreateOrUpdateRequestZonesList = Array<string>;
 export const CachesCreateOrUpdateRequestZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CachesCreateOrUpdateRequestZonesList>;
@@ -3771,7 +3768,7 @@ export const CachesCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<CachesCreateOrUpdateResponseTagsMap>;
 
 /** Set of supported protocol types, which include NFSv3, NFSv4 and SMB protocol */
-export type CachePropertiesProtocolTypesList = ReadonlyArray<ProtocolTypes>;
+export type CachePropertiesProtocolTypesList = Array<ProtocolTypes>;
 export const CachePropertiesProtocolTypesList = /*@__PURE__*/ S.Array(
   ProtocolTypes,
 ) as any as S.Schema<CachePropertiesProtocolTypesList>;
@@ -3815,8 +3812,7 @@ export const CacheMountTargetProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CacheMountTargetProperties>;
 
 /** List of mount targets that can be used to mount this cache */
-export type CachePropertiesMountTargetsList =
-  ReadonlyArray<CacheMountTargetProperties>;
+export type CachePropertiesMountTargetsList = Array<CacheMountTargetProperties>;
 export const CachePropertiesMountTargetsList = /*@__PURE__*/ S.Array(
   CacheMountTargetProperties,
 ) as any as S.Schema<CachePropertiesMountTargetsList>;
@@ -3988,7 +3984,7 @@ export const CacheProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CacheProperties>;
 
 /** The availability zones. */
-export type CachesCreateOrUpdateResponseZonesList = ReadonlyArray<string>;
+export type CachesCreateOrUpdateResponseZonesList = Array<string>;
 export const CachesCreateOrUpdateResponseZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CachesCreateOrUpdateResponseZonesList>;
@@ -4106,7 +4102,7 @@ export const CachesGetResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<CachesGetResponseTagsMap>;
 
 /** The availability zones. */
-export type CachesGetResponseZonesList = ReadonlyArray<string>;
+export type CachesGetResponseZonesList = Array<string>;
 export const CachesGetResponseZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CachesGetResponseZonesList>;
@@ -4183,7 +4179,7 @@ export const CacheTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<CacheTagsMap>;
 
 /** The availability zones. */
-export type CacheZonesList = ReadonlyArray<string>;
+export type CacheZonesList = Array<string>;
 export const CacheZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CacheZonesList>;
@@ -4224,7 +4220,7 @@ export const Cache = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Cache" }) as any as S.Schema<Cache>;
 
 /** The Cache items on this page */
-export type CacheListValueList = ReadonlyArray<Cache>;
+export type CacheListValueList = Array<Cache>;
 export const CacheListValueList = /*@__PURE__*/ S.Array(
   Cache,
 ) as any as S.Schema<CacheListValueList>;
@@ -4340,7 +4336,7 @@ export const CachesPoolChangeResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<CachesPoolChangeResponseTagsMap>;
 
 /** The availability zones. */
-export type CachesPoolChangeResponseZonesList = ReadonlyArray<string>;
+export type CachesPoolChangeResponseZonesList = Array<string>;
 export const CachesPoolChangeResponseZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CachesPoolChangeResponseZonesList>;
@@ -4422,7 +4418,7 @@ export const CachesResetSmbPasswordResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<CachesResetSmbPasswordResponseTagsMap>;
 
 /** The availability zones. */
-export type CachesResetSmbPasswordResponseZonesList = ReadonlyArray<string>;
+export type CachesResetSmbPasswordResponseZonesList = Array<string>;
 export const CachesResetSmbPasswordResponseZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CachesResetSmbPasswordResponseZonesList>;
@@ -4471,7 +4467,7 @@ export const CachesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<CachesUpdateRequestTagsMap>;
 
 /** Set of supported protocol types, which include NFSv3, NFSv4 and SMB protocol */
-export type CacheUpdatePropertiesProtocolTypesList = ReadonlyArray<
+export type CacheUpdatePropertiesProtocolTypesList = Array<
   ProtocolTypes | (string & {})
 >;
 export const CacheUpdatePropertiesProtocolTypesList = /*@__PURE__*/ S.Array(
@@ -4557,7 +4553,7 @@ export const CachesUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<CachesUpdateResponseTagsMap>;
 
 /** The availability zones. */
-export type CachesUpdateResponseZonesList = ReadonlyArray<string>;
+export type CachesUpdateResponseZonesList = Array<string>;
 export const CachesUpdateResponseZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CachesUpdateResponseZonesList>;
@@ -4783,7 +4779,7 @@ export type NetworkSiblingSetProvisioningState =
 export const NetworkSiblingSetProvisioningState = /*@__PURE__*/ S.String;
 
 /** Volume resource Ids */
-export type NicInfoVolumeResourceIdsList = ReadonlyArray<string>;
+export type NicInfoVolumeResourceIdsList = Array<string>;
 export const NicInfoVolumeResourceIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<NicInfoVolumeResourceIdsList>;
@@ -4803,7 +4799,7 @@ export const NicInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NicInfo" }) as any as S.Schema<NicInfo>;
 
 /** List of NIC information */
-export type NetworkSiblingSetNicInfoListList = ReadonlyArray<NicInfo>;
+export type NetworkSiblingSetNicInfoListList = Array<NicInfo>;
 export const NetworkSiblingSetNicInfoListList = /*@__PURE__*/ S.Array(
   NicInfo,
 ) as any as S.Schema<NetworkSiblingSetNicInfoListList>;
@@ -4889,7 +4885,7 @@ export const RegionInfoAvailabilityZoneMappingsItem = /*@__PURE__*/ S.suspend(
 
 /** Provides logical availability zone mappings for the subscription for a region. */
 export type RegionInfoAvailabilityZoneMappingsList =
-  ReadonlyArray<RegionInfoAvailabilityZoneMappingsItem>;
+  Array<RegionInfoAvailabilityZoneMappingsItem>;
 export const RegionInfoAvailabilityZoneMappingsList = /*@__PURE__*/ S.Array(
   RegionInfoAvailabilityZoneMappingsItem,
 ) as any as S.Schema<RegionInfoAvailabilityZoneMappingsList>;
@@ -5033,7 +5029,7 @@ export const QuotaItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "QuotaItem" }) as any as S.Schema<QuotaItem>;
 
 /** The QuotaItem items on this page */
-export type QuotaItemListValueList = ReadonlyArray<QuotaItem>;
+export type QuotaItemListValueList = Array<QuotaItem>;
 export const QuotaItemListValueList = /*@__PURE__*/ S.Array(
   QuotaItem,
 ) as any as S.Schema<QuotaItemListValueList>;
@@ -5221,7 +5217,7 @@ export const RegionInfoResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RegionInfoResource>;
 
 /** The RegionInfoResource items on this page */
-export type RegionInfosListValueList = ReadonlyArray<RegionInfoResource>;
+export type RegionInfosListValueList = Array<RegionInfoResource>;
 export const RegionInfosListValueList = /*@__PURE__*/ S.Array(
   RegionInfoResource,
 ) as any as S.Schema<RegionInfosListValueList>;
@@ -5387,7 +5383,7 @@ export const NetAppResourceUsagesListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NetAppResourceUsagesListRequest>;
 
 /** The UsageResult items on this page */
-export type UsagesListResultValueList = ReadonlyArray<UsageResult>;
+export type UsagesListResultValueList = Array<UsageResult>;
 export const UsagesListResultValueList = /*@__PURE__*/ S.Array(
   UsageResult,
 ) as any as S.Schema<UsagesListResultValueList>;
@@ -5449,15 +5445,14 @@ export const MetricAggregationType = /*@__PURE__*/ S.String;
 
 /** Support metric aggregation type. */
 export type MetricSpecificationSupportedAggregationTypesList =
-  ReadonlyArray<MetricAggregationType>;
+  Array<MetricAggregationType>;
 export const MetricSpecificationSupportedAggregationTypesList =
   /*@__PURE__*/ S.Array(
     MetricAggregationType,
   ) as any as S.Schema<MetricSpecificationSupportedAggregationTypesList>;
 
 /** The supported time grain types for the metrics. */
-export type MetricSpecificationSupportedTimeGrainTypesList =
-  ReadonlyArray<string>;
+export type MetricSpecificationSupportedTimeGrainTypesList = Array<string>;
 export const MetricSpecificationSupportedTimeGrainTypesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5478,7 +5473,7 @@ export const Dimension = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Dimension" }) as any as S.Schema<Dimension>;
 
 /** Dimensions of blobs, including blob type and access tier. */
-export type MetricSpecificationDimensionsList = ReadonlyArray<Dimension>;
+export type MetricSpecificationDimensionsList = Array<Dimension>;
 export const MetricSpecificationDimensionsList = /*@__PURE__*/ S.Array(
   Dimension,
 ) as any as S.Schema<MetricSpecificationDimensionsList>;
@@ -5547,7 +5542,7 @@ export const MetricSpecification = /*@__PURE__*/ S.suspend(() =>
 
 /** Metric specifications of operation. */
 export type ServiceSpecificationMetricSpecificationsList =
-  ReadonlyArray<MetricSpecification>;
+  Array<MetricSpecification>;
 export const ServiceSpecificationMetricSpecificationsList =
   /*@__PURE__*/ S.Array(
     MetricSpecification,
@@ -5570,8 +5565,7 @@ export const LogSpecification = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LogSpecification>;
 
 /** Log specification of operation. */
-export type ServiceSpecificationLogSpecificationsList =
-  ReadonlyArray<LogSpecification>;
+export type ServiceSpecificationLogSpecificationsList = Array<LogSpecification>;
 export const ServiceSpecificationLogSpecificationsList = /*@__PURE__*/ S.Array(
   LogSpecification,
 ) as any as S.Schema<ServiceSpecificationLogSpecificationsList>;
@@ -5628,7 +5622,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** The Operation items on this page */
-export type OperationListResultValueList = ReadonlyArray<Operation>;
+export type OperationListResultValueList = Array<Operation>;
 export const OperationListResultValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationListResultValueList>;
@@ -6005,7 +5999,7 @@ export const CapacityPool = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CapacityPool" }) as any as S.Schema<CapacityPool>;
 
 /** The CapacityPool items on this page */
-export type CapacityPoolListValueList = ReadonlyArray<CapacityPool>;
+export type CapacityPoolListValueList = Array<CapacityPool>;
 export const CapacityPoolListValueList = /*@__PURE__*/ S.Array(
   CapacityPool,
 ) as any as S.Schema<CapacityPoolListValueList>;
@@ -6141,8 +6135,7 @@ export type RansomwareSuspectResolution = "PotentialThreat" | "FalsePositive";
 export const RansomwareSuspectResolution = /*@__PURE__*/ S.String;
 
 /** List of file extensions resolved (PotentialThreat or FalsePositive) */
-export type RansomwareReportsClearSuspectsRequestExtensionsList =
-  ReadonlyArray<string>;
+export type RansomwareReportsClearSuspectsRequestExtensionsList = Array<string>;
 export const RansomwareReportsClearSuspectsRequestExtensionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6253,7 +6246,7 @@ export const SuspectFile = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SuspectFile" }) as any as S.Schema<SuspectFile>;
 
 /** Suspect files */
-export type RansomwareSuspectsSuspectFilesList = ReadonlyArray<SuspectFile>;
+export type RansomwareSuspectsSuspectFilesList = Array<SuspectFile>;
 export const RansomwareSuspectsSuspectFilesList = /*@__PURE__*/ S.Array(
   SuspectFile,
 ) as any as S.Schema<RansomwareSuspectsSuspectFilesList>;
@@ -6281,8 +6274,7 @@ export const RansomwareSuspects = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RansomwareSuspects>;
 
 /** Suspects identified in an ARP report */
-export type RansomwareReportPropertiesSuspectsList =
-  ReadonlyArray<RansomwareSuspects>;
+export type RansomwareReportPropertiesSuspectsList = Array<RansomwareSuspects>;
 export const RansomwareReportPropertiesSuspectsList = /*@__PURE__*/ S.Array(
   RansomwareSuspects,
 ) as any as S.Schema<RansomwareReportPropertiesSuspectsList>;
@@ -6399,7 +6391,7 @@ export const RansomwareReport = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RansomwareReport>;
 
 /** The RansomwareReport items on this page */
-export type RansomwareReportsListValueList = ReadonlyArray<RansomwareReport>;
+export type RansomwareReportsListValueList = Array<RansomwareReport>;
 export const RansomwareReportsListValueList = /*@__PURE__*/ S.Array(
   RansomwareReport,
 ) as any as S.Schema<RansomwareReportsListValueList>;
@@ -6816,7 +6808,7 @@ export const SnapshotPolicy = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SnapshotPolicy" }) as any as S.Schema<SnapshotPolicy>;
 
 /** The SnapshotPolicy items on this page */
-export type SnapshotPoliciesListValueList = ReadonlyArray<SnapshotPolicy>;
+export type SnapshotPoliciesListValueList = Array<SnapshotPolicy>;
 export const SnapshotPoliciesListValueList = /*@__PURE__*/ S.Array(
   SnapshotPolicy,
 ) as any as S.Schema<SnapshotPoliciesListValueList>;
@@ -6882,8 +6874,7 @@ export type VolumePropertiesServiceLevel =
 export const VolumePropertiesServiceLevel = /*@__PURE__*/ S.String;
 
 /** Export policy rule */
-export type VolumePropertiesExportPolicyRulesList =
-  ReadonlyArray<ExportPolicyRule>;
+export type VolumePropertiesExportPolicyRulesList = Array<ExportPolicyRule>;
 export const VolumePropertiesExportPolicyRulesList = /*@__PURE__*/ S.Array(
   ExportPolicyRule,
 ) as any as S.Schema<VolumePropertiesExportPolicyRulesList>;
@@ -6902,7 +6893,7 @@ export const VolumePropertiesExportPolicy = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VolumePropertiesExportPolicy>;
 
 /** Set of protocol types, default NFSv3, CIFS for SMB protocol */
-export type VolumePropertiesProtocolTypesList = ReadonlyArray<string>;
+export type VolumePropertiesProtocolTypesList = Array<string>;
 export const VolumePropertiesProtocolTypesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<VolumePropertiesProtocolTypesList>;
@@ -6954,8 +6945,7 @@ export const MountTargetProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MountTargetProperties>;
 
 /** List of mount targets */
-export type VolumePropertiesMountTargetsList =
-  ReadonlyArray<MountTargetProperties>;
+export type VolumePropertiesMountTargetsList = Array<MountTargetProperties>;
 export const VolumePropertiesMountTargetsList = /*@__PURE__*/ S.Array(
   MountTargetProperties,
 ) as any as S.Schema<VolumePropertiesMountTargetsList>;
@@ -7032,7 +7022,7 @@ export const DestinationReplication = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of destination replications */
 export type ReplicationObjectDestinationReplicationsList =
-  ReadonlyArray<DestinationReplication>;
+  Array<DestinationReplication>;
 export const ReplicationObjectDestinationReplicationsList =
   /*@__PURE__*/ S.Array(
     DestinationReplication,
@@ -7140,9 +7130,13 @@ export const ActualRansomwareProtectionState = /*@__PURE__*/ S.String;
 /** Advanced Ransomware Protection reports (ARP) settings */
 export interface RansomwareProtectionSettings {
   /** The desired value of the Advanced Ransomware Protection feature state available to the volume */
-  desiredRansomwareProtectionState?: DesiredRansomwareProtectionState;
+  desiredRansomwareProtectionState?:
+    | DesiredRansomwareProtectionState
+    | (string & {});
   /** The actual state of the Advanced Ransomware Protection feature currently active on the volume */
-  actualRansomwareProtectionState?: ActualRansomwareProtectionState;
+  actualRansomwareProtectionState?:
+    | ActualRansomwareProtectionState
+    | (string & {});
 }
 export const RansomwareProtectionSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -7216,7 +7210,7 @@ export type VolumePropertiesAvsDataStore = "Enabled" | "Disabled";
 export const VolumePropertiesAvsDataStore = /*@__PURE__*/ S.String;
 
 /** Data store resource unique identifier */
-export type VolumePropertiesDataStoreResourceIdList = ReadonlyArray<string>;
+export type VolumePropertiesDataStoreResourceIdList = Array<string>;
 export const VolumePropertiesDataStoreResourceIdList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<VolumePropertiesDataStoreResourceIdList>;
@@ -7238,8 +7232,7 @@ export const PlacementKeyValuePairs = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PlacementKeyValuePairs>;
 
 /** Application specific placement rules for the particular volume */
-export type VolumePropertiesPlacementRulesList =
-  ReadonlyArray<PlacementKeyValuePairs>;
+export type VolumePropertiesPlacementRulesList = Array<PlacementKeyValuePairs>;
 export const VolumePropertiesPlacementRulesList = /*@__PURE__*/ S.Array(
   PlacementKeyValuePairs,
 ) as any as S.Schema<VolumePropertiesPlacementRulesList>;
@@ -7444,7 +7437,7 @@ export const VolumeProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VolumeProperties>;
 
 /** The availability zones. */
-export type VolumeZonesList = ReadonlyArray<string>;
+export type VolumeZonesList = Array<string>;
 export const VolumeZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<VolumeZonesList>;
@@ -7485,7 +7478,7 @@ export const Volume = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Volume" }) as any as S.Schema<Volume>;
 
 /** The Volume items on this page */
-export type SnapshotPolicyVolumeListValueList = ReadonlyArray<Volume>;
+export type SnapshotPolicyVolumeListValueList = Array<Volume>;
 export const SnapshotPolicyVolumeListValueList = /*@__PURE__*/ S.Array(
   Volume,
 ) as any as S.Schema<SnapshotPolicyVolumeListValueList>;
@@ -7848,7 +7841,7 @@ export const Snapshot = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Snapshot" }) as any as S.Schema<Snapshot>;
 
 /** The Snapshot items on this page */
-export type SnapshotsListValueList = ReadonlyArray<Snapshot>;
+export type SnapshotsListValueList = Array<Snapshot>;
 export const SnapshotsListValueList = /*@__PURE__*/ S.Array(
   Snapshot,
 ) as any as S.Schema<SnapshotsListValueList>;
@@ -7868,7 +7861,7 @@ export const SnapshotsList = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SnapshotsList" }) as any as S.Schema<SnapshotsList>;
 
 /** List of files to be restored */
-export type SnapshotsRestoreFilesRequestFilePathsList = ReadonlyArray<string>;
+export type SnapshotsRestoreFilesRequestFilePathsList = Array<string>;
 export const SnapshotsRestoreFilesRequestFilePathsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SnapshotsRestoreFilesRequestFilePathsList>;
@@ -8331,7 +8324,7 @@ export const SubvolumeInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SubvolumeInfo" }) as any as S.Schema<SubvolumeInfo>;
 
 /** The SubvolumeInfo items on this page */
-export type SubvolumesListValueList = ReadonlyArray<SubvolumeInfo>;
+export type SubvolumesListValueList = Array<SubvolumeInfo>;
 export const SubvolumesListValueList = /*@__PURE__*/ S.Array(
   SubvolumeInfo,
 ) as any as S.Schema<SubvolumesListValueList>;
@@ -8433,7 +8426,7 @@ export const ApplicationType = /*@__PURE__*/ S.String;
 
 /** Application specific placement rules for the volume group */
 export type VolumeGroupMetaDataInputGlobalPlacementRulesList =
-  ReadonlyArray<PlacementKeyValuePairs>;
+  Array<PlacementKeyValuePairs>;
 export const VolumeGroupMetaDataInputGlobalPlacementRulesList =
   /*@__PURE__*/ S.Array(
     PlacementKeyValuePairs,
@@ -8473,7 +8466,7 @@ export const VolumeGroupVolumePropertiesInputTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<VolumeGroupVolumePropertiesInputTagsMap>;
 
 /** Availability Zone */
-export type VolumeGroupVolumePropertiesInputZonesList = ReadonlyArray<string>;
+export type VolumeGroupVolumePropertiesInputZonesList = Array<string>;
 export const VolumeGroupVolumePropertiesInputZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<VolumeGroupVolumePropertiesInputZonesList>;
@@ -8488,7 +8481,7 @@ export type VolumePropertiesInputServiceLevel =
 export const VolumePropertiesInputServiceLevel = /*@__PURE__*/ S.String;
 
 /** Set of protocol types, default NFSv3, CIFS for SMB protocol */
-export type VolumePropertiesInputProtocolTypesList = ReadonlyArray<string>;
+export type VolumePropertiesInputProtocolTypesList = Array<string>;
 export const VolumePropertiesInputProtocolTypesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<VolumePropertiesInputProtocolTypesList>;
@@ -8577,7 +8570,7 @@ export const VolumePropertiesInputAvsDataStore = /*@__PURE__*/ S.String;
 
 /** Application specific placement rules for the particular volume */
 export type VolumePropertiesInputPlacementRulesList =
-  ReadonlyArray<PlacementKeyValuePairs>;
+  Array<PlacementKeyValuePairs>;
 export const VolumePropertiesInputPlacementRulesList = /*@__PURE__*/ S.Array(
   PlacementKeyValuePairs,
 ) as any as S.Schema<VolumePropertiesInputPlacementRulesList>;
@@ -8746,7 +8739,7 @@ export const VolumeGroupVolumePropertiesInput = /*@__PURE__*/ S.suspend(() =>
 
 /** List of volumes from group */
 export type VolumeGroupPropertiesInputVolumesList =
-  ReadonlyArray<VolumeGroupVolumePropertiesInput>;
+  Array<VolumeGroupVolumePropertiesInput>;
 export const VolumeGroupPropertiesInputVolumesList = /*@__PURE__*/ S.Array(
   VolumeGroupVolumePropertiesInput,
 ) as any as S.Schema<VolumeGroupPropertiesInputVolumesList>;
@@ -8803,7 +8796,7 @@ export const VolumeGroupsCreateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Application specific placement rules for the volume group */
 export type VolumeGroupMetaDataGlobalPlacementRulesList =
-  ReadonlyArray<PlacementKeyValuePairs>;
+  Array<PlacementKeyValuePairs>;
 export const VolumeGroupMetaDataGlobalPlacementRulesList =
   /*@__PURE__*/ S.Array(
     PlacementKeyValuePairs,
@@ -8846,7 +8839,7 @@ export const VolumeGroupVolumePropertiesTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<VolumeGroupVolumePropertiesTagsMap>;
 
 /** Availability Zone */
-export type VolumeGroupVolumePropertiesZonesList = ReadonlyArray<string>;
+export type VolumeGroupVolumePropertiesZonesList = Array<string>;
 export const VolumeGroupVolumePropertiesZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<VolumeGroupVolumePropertiesZonesList>;
@@ -8881,7 +8874,7 @@ export const VolumeGroupVolumeProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** List of volumes from group */
 export type VolumeGroupPropertiesVolumesList =
-  ReadonlyArray<VolumeGroupVolumeProperties>;
+  Array<VolumeGroupVolumeProperties>;
 export const VolumeGroupPropertiesVolumesList = /*@__PURE__*/ S.Array(
   VolumeGroupVolumeProperties,
 ) as any as S.Schema<VolumeGroupPropertiesVolumesList>;
@@ -9088,7 +9081,7 @@ export const VolumeGroup = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VolumeGroup" }) as any as S.Schema<VolumeGroup>;
 
 /** The VolumeGroup items on this page */
-export type VolumeGroupListValueList = ReadonlyArray<VolumeGroup>;
+export type VolumeGroupListValueList = Array<VolumeGroup>;
 export const VolumeGroupListValueList = /*@__PURE__*/ S.Array(
   VolumeGroup,
 ) as any as S.Schema<VolumeGroupListValueList>;
@@ -9433,7 +9426,7 @@ export const VolumeQuotaRule = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VolumeQuotaRule>;
 
 /** The VolumeQuotaRule items on this page */
-export type VolumeQuotaRulesListValueList = ReadonlyArray<VolumeQuotaRule>;
+export type VolumeQuotaRulesListValueList = Array<VolumeQuotaRule>;
 export const VolumeQuotaRulesListValueList = /*@__PURE__*/ S.Array(
   VolumeQuotaRule,
 ) as any as S.Schema<VolumeQuotaRulesListValueList>;
@@ -9736,7 +9729,7 @@ export const VolumesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<VolumesCreateOrUpdateRequestTagsMap>;
 
 /** The availability zones. */
-export type VolumesCreateOrUpdateRequestZonesList = ReadonlyArray<string>;
+export type VolumesCreateOrUpdateRequestZonesList = Array<string>;
 export const VolumesCreateOrUpdateRequestZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<VolumesCreateOrUpdateRequestZonesList>;
@@ -9794,7 +9787,7 @@ export const VolumesCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<VolumesCreateOrUpdateResponseTagsMap>;
 
 /** The availability zones. */
-export type VolumesCreateOrUpdateResponseZonesList = ReadonlyArray<string>;
+export type VolumesCreateOrUpdateResponseZonesList = Array<string>;
 export const VolumesCreateOrUpdateResponseZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<VolumesCreateOrUpdateResponseZonesList>;
@@ -10029,7 +10022,7 @@ export const VolumesGetResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<VolumesGetResponseTagsMap>;
 
 /** The availability zones. */
-export type VolumesGetResponseZonesList = ReadonlyArray<string>;
+export type VolumesGetResponseZonesList = Array<string>;
 export const VolumesGetResponseZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<VolumesGetResponseZonesList>;
@@ -10099,7 +10092,7 @@ export const VolumesListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VolumesListRequest>;
 
 /** The Volume items on this page */
-export type VolumeListValueList = ReadonlyArray<Volume>;
+export type VolumeListValueList = Array<Volume>;
 export const VolumeListValueList = /*@__PURE__*/ S.Array(
   Volume,
 ) as any as S.Schema<VolumeListValueList>;
@@ -10155,7 +10148,7 @@ export const VolumesListGetGroupIdListForLdapUserRequest =
 
 /** Group Id list */
 export type GetGroupIdListForLdapUserResponseGroupIdsForLdapUserList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GetGroupIdListForLdapUserResponseGroupIdsForLdapUserList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -10243,8 +10236,7 @@ export const QuotaReport = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "QuotaReport" }) as any as S.Schema<QuotaReport>;
 
 /** List of quota reports */
-export type ListQuotaReportResponseQuotaReportRecordsList =
-  ReadonlyArray<QuotaReport>;
+export type ListQuotaReportResponseQuotaReportRecordsList = Array<QuotaReport>;
 export const ListQuotaReportResponseQuotaReportRecordsList =
   /*@__PURE__*/ S.Array(
     QuotaReport,
@@ -10353,7 +10345,7 @@ export const Replication = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Replication" }) as any as S.Schema<Replication>;
 
 /** The Replication items on this page */
-export type ListReplicationsValueList = ReadonlyArray<Replication>;
+export type ListReplicationsValueList = Array<Replication>;
 export const ListReplicationsValueList = /*@__PURE__*/ S.Array(
   Replication,
 ) as any as S.Schema<ListReplicationsValueList>;
@@ -10376,7 +10368,7 @@ export const ListReplications = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of IC-LIF IPs that can be used to connect to the On-prem cluster */
 export type VolumesPeerExternalClusterRequestPeerIpAddressesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const VolumesPeerExternalClusterRequestPeerIpAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -10568,8 +10560,7 @@ export const VolumesPopulateAvailabilityZoneResponseTagsMap =
   ) as any as S.Schema<VolumesPopulateAvailabilityZoneResponseTagsMap>;
 
 /** The availability zones. */
-export type VolumesPopulateAvailabilityZoneResponseZonesList =
-  ReadonlyArray<string>;
+export type VolumesPopulateAvailabilityZoneResponseZonesList = Array<string>;
 export const VolumesPopulateAvailabilityZoneResponseZonesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -10987,8 +10978,7 @@ export const VolumesSplitCloneFromParentResponseTagsMap =
   ) as any as S.Schema<VolumesSplitCloneFromParentResponseTagsMap>;
 
 /** The availability zones. */
-export type VolumesSplitCloneFromParentResponseZonesList =
-  ReadonlyArray<string>;
+export type VolumesSplitCloneFromParentResponseZonesList = Array<string>;
 export const VolumesSplitCloneFromParentResponseZonesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -11048,7 +11038,7 @@ export const ServiceLevel = /*@__PURE__*/ S.String;
 
 /** Export policy rule */
 export type VolumePatchPropertiesExportPolicyRulesList =
-  ReadonlyArray<ExportPolicyRule>;
+  Array<ExportPolicyRule>;
 export const VolumePatchPropertiesExportPolicyRulesList = /*@__PURE__*/ S.Array(
   ExportPolicyRule,
 ) as any as S.Schema<VolumePatchPropertiesExportPolicyRulesList>;
@@ -11067,7 +11057,7 @@ export const VolumePatchPropertiesExportPolicy = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VolumePatchPropertiesExportPolicy>;
 
 /** Set of protocol types, default NFSv3, CIFS for SMB protocol */
-export type VolumePatchPropertiesProtocolTypesList = ReadonlyArray<string>;
+export type VolumePatchPropertiesProtocolTypesList = Array<string>;
 export const VolumePatchPropertiesProtocolTypesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<VolumePatchPropertiesProtocolTypesList>;
@@ -11219,7 +11209,7 @@ export const VolumesUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<VolumesUpdateResponseTagsMap>;
 
 /** The availability zones. */
-export type VolumesUpdateResponseZonesList = ReadonlyArray<string>;
+export type VolumesUpdateResponseZonesList = Array<string>;
 export const VolumesUpdateResponseZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<VolumesUpdateResponseZonesList>;

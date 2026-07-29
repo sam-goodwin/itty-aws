@@ -317,7 +317,7 @@ export const StorageType = /*@__PURE__*/ S.String;
 
 export interface StorageRuleType {
   StorageAllocatedInBytes?: number;
-  StorageType?: StorageType;
+  StorageType?: StorageType | (string & {});
 }
 export const StorageRuleType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

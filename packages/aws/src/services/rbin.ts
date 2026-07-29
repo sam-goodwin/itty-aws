@@ -144,7 +144,7 @@ export const RetentionPeriodUnit = /*@__PURE__*/ S.String;
 
 export interface RetentionPeriod {
   RetentionPeriodValue: number;
-  RetentionPeriodUnit: RetentionPeriodUnit;
+  RetentionPeriodUnit: RetentionPeriodUnit | (string & {});
 }
 export const RetentionPeriod = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -189,7 +189,7 @@ export const UnlockDelayUnit = /*@__PURE__*/ S.String;
 
 export interface UnlockDelay {
   UnlockDelayValue: number;
-  UnlockDelayUnit: UnlockDelayUnit;
+  UnlockDelayUnit: UnlockDelayUnit | (string & {});
 }
 export const UnlockDelay = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ UnlockDelayValue: S.Number, UnlockDelayUnit: UnlockDelayUnit }),

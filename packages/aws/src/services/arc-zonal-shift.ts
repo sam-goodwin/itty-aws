@@ -222,7 +222,7 @@ export const ControlConditionType = /*@__PURE__*/ S.String;
 
 export type MetricIdentifier = string;
 export interface ControlCondition {
-  type: ControlConditionType;
+  type: ControlConditionType | (string & {});
   alarmIdentifier: string;
 }
 export const ControlCondition = /*@__PURE__*/ S.suspend(() =>

@@ -172,14 +172,13 @@ export type PersonsBulkDeleteCreateRequestFormat = "csv" | "json";
 export const PersonsBulkDeleteCreateRequestFormat = /*@__PURE__*/ S.String;
 
 /** A list of PostHog person UUIDs to delete (max 1000). */
-export type PersonsBulkDeleteCreateRequestIdsList = ReadonlyArray<string>;
+export type PersonsBulkDeleteCreateRequestIdsList = Array<string>;
 export const PersonsBulkDeleteCreateRequestIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PersonsBulkDeleteCreateRequestIdsList>;
 
 /** A list of distinct IDs whose associated persons will be deleted (max 1000). */
-export type PersonsBulkDeleteCreateRequestDistinctIdsList =
-  ReadonlyArray<string>;
+export type PersonsBulkDeleteCreateRequestDistinctIdsList = Array<string>;
 export const PersonsBulkDeleteCreateRequestDistinctIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -361,7 +360,7 @@ export const AsyncDeletionStatus = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AsyncDeletionStatus>;
 
 export type PaginatedAsyncDeletionStatusListResultsList =
-  ReadonlyArray<AsyncDeletionStatus>;
+  Array<AsyncDeletionStatus>;
 export const PaginatedAsyncDeletionStatusListResultsList =
   /*@__PURE__*/ S.Array(
     AsyncDeletionStatus,
@@ -465,7 +464,7 @@ export const MessageAsset = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MessageAsset" }) as any as S.Schema<MessageAsset>;
 
-export type PersonsEmailsListResponseBodyList = ReadonlyArray<MessageAsset>;
+export type PersonsEmailsListResponseBodyList = Array<MessageAsset>;
 export const PersonsEmailsListResponseBodyList = /*@__PURE__*/ S.Array(
   MessageAsset,
 ) as any as S.Schema<PersonsEmailsListResponseBodyList>;
@@ -487,8 +486,7 @@ export type PropertyItemValueCase3Item = string | number;
 export const PropertyItemValueCase3Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<PropertyItemValueCase3Item>;
 
-export type PropertyItemValueCase3List =
-  ReadonlyArray<PropertyItemValueCase3Item>;
+export type PropertyItemValueCase3List = Array<PropertyItemValueCase3Item>;
 export const PropertyItemValueCase3List = /*@__PURE__*/ S.Array(
   PropertyItemValueCase3Item,
 ) as any as S.Schema<PropertyItemValueCase3List>;
@@ -585,7 +583,7 @@ export const PropertyItem = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PropertyItem" }) as any as S.Schema<PropertyItem>;
 
-export type PropertyValuesList = ReadonlyArray<PropertyItem>;
+export type PropertyValuesList = Array<PropertyItem>;
 export const PropertyValuesList = /*@__PURE__*/ S.Array(
   PropertyItem,
 ) as any as S.Schema<PropertyValuesList>;
@@ -602,7 +600,7 @@ export const Property = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Property" }) as any as S.Schema<Property>;
 
-export type PersonsListRequestPropertiesList = ReadonlyArray<Property>;
+export type PersonsListRequestPropertiesList = Array<Property>;
 export const PersonsListRequestPropertiesList = /*@__PURE__*/ S.Array(
   Property,
 ) as any as S.Schema<PersonsListRequestPropertiesList>;
@@ -645,7 +643,7 @@ export const PersonsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PersonsListRequest",
 }) as any as S.Schema<PersonsListRequest>;
 
-export type PersonRecordDistinctIdsList = ReadonlyArray<string>;
+export type PersonRecordDistinctIdsList = Array<string>;
 export const PersonRecordDistinctIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PersonRecordDistinctIdsList>;
@@ -677,7 +675,7 @@ export const PersonRecord = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PersonRecord" }) as any as S.Schema<PersonRecord>;
 
-export type PaginatedPersonRecordListResultsList = ReadonlyArray<PersonRecord>;
+export type PaginatedPersonRecordListResultsList = Array<PersonRecord>;
 export const PaginatedPersonRecordListResultsList = /*@__PURE__*/ S.Array(
   PersonRecord,
 ) as any as S.Schema<PaginatedPersonRecordListResultsList>;
@@ -768,8 +766,7 @@ export const PersonsPropertiesAtTimeRetrieveRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PersonsPropertiesAtTimeRetrieveRequest>;
 
 /** All distinct IDs associated with this person */
-export type PersonPropertiesAtTimeResponseDistinctIdsList =
-  ReadonlyArray<string>;
+export type PersonPropertiesAtTimeResponseDistinctIdsList = Array<string>;
 export const PersonPropertiesAtTimeResponseDistinctIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -787,7 +784,7 @@ export const PersonPropertiesAtTimeResponsePropertiesMap =
 
 /** All distinct_ids that were queried for this person */
 export type PersonPropertiesAtTimeMetadataDistinctIdsQueriedList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PersonPropertiesAtTimeMetadataDistinctIdsQueriedList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -962,8 +959,7 @@ export type PersonsSplitCreateRequestFormat = "csv" | "json";
 export const PersonsSplitCreateRequestFormat = /*@__PURE__*/ S.String;
 
 /** List of distinct_ids to **move off** this person onto new single-id persons. The original person keeps every other distinct_id and its properties. New persons are created with deterministic UUIDs derived from `(team_id, distinct_id)`. Cannot be combined with `main_distinct_id`. */
-export type PersonsSplitCreateRequestDistinctIdsToSplitList =
-  ReadonlyArray<string>;
+export type PersonsSplitCreateRequestDistinctIdsToSplitList = Array<string>;
 export const PersonsSplitCreateRequestDistinctIdsToSplitList =
   /*@__PURE__*/ S.Array(
     S.String,

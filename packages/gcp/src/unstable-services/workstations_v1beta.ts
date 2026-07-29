@@ -126,7 +126,7 @@ export const DomainConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DomainConfig" }) as any as S.Schema<DomainConfig>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -159,7 +159,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -181,7 +181,7 @@ export const Status = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
-export type StatusList = ReadonlyArray<Status>;
+export type StatusList = Array<Status>;
 export const StatusList = /*@__PURE__*/ S.Array(
   Status,
 ) as any as S.Schema<StatusList>;
@@ -327,7 +327,9 @@ export const ReservationAffinityConsumeReservationTypeEnum =
 /** ReservationAffinity is the configuration of the desired reservation from which instances can consume resources. */
 export interface ReservationAffinity {
   /** Optional. Corresponds to the type of reservation consumption. */
-  consumeReservationType?: ReservationAffinityConsumeReservationTypeEnum;
+  consumeReservationType?:
+    | ReservationAffinityConsumeReservationTypeEnum
+    | (string & {});
   /** Optional. Corresponds to the label key of reservation resource. */
   key?: string;
   /** Optional. Corresponds to the label values of reservation resources. Valid values are either the name of a reservation in the same project or "projects/{project}/reservations/{reservation}" to target a shared reservation in the same zone but in a different project. */
@@ -359,7 +361,7 @@ export const Accelerator = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Accelerator" }) as any as S.Schema<Accelerator>;
 
-export type AcceleratorList = ReadonlyArray<Accelerator>;
+export type AcceleratorList = Array<Accelerator>;
 export const AcceleratorList = /*@__PURE__*/ S.Array(
   Accelerator,
 ) as any as S.Schema<AcceleratorList>;
@@ -393,7 +395,7 @@ export const BoostConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "BoostConfig" }) as any as S.Schema<BoostConfig>;
 
-export type BoostConfigList = ReadonlyArray<BoostConfig>;
+export type BoostConfigList = Array<BoostConfig>;
 export const BoostConfigList = /*@__PURE__*/ S.Array(
   BoostConfig,
 ) as any as S.Schema<BoostConfigList>;
@@ -533,7 +535,7 @@ export const PortRange = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PortRange" }) as any as S.Schema<PortRange>;
 
-export type PortRangeList = ReadonlyArray<PortRange>;
+export type PortRangeList = Array<PortRange>;
 export const PortRangeList = /*@__PURE__*/ S.Array(
   PortRange,
 ) as any as S.Schema<PortRangeList>;
@@ -550,7 +552,9 @@ export interface GceHyperdiskBalancedHighAvailability {
   /** Optional. The GB capacity of a persistent home directory for each workstation created with this configuration. Must be empty if source_snapshot is set. Valid values are `10`, `50`, `100`, `200`, `500`, or `1000`. Defaults to `200`. */
   sizeGb?: number;
   /** Optional. Whether the persistent disk should be deleted when the workstation is deleted. Valid values are `DELETE` and `RETAIN`. Defaults to `DELETE`. */
-  reclaimPolicy?: GceHyperdiskBalancedHighAvailabilityReclaimPolicyEnum;
+  reclaimPolicy?:
+    | GceHyperdiskBalancedHighAvailabilityReclaimPolicyEnum
+    | (string & {});
   /** Optional. Maximum size in GB to which this persistent directory can be resized. Defaults to unlimited if not set. */
   maxSizeGb?: number;
   /** Optional. Name of the snapshot to use as the source for the disk. If set, size_gb must be empty. Must be formatted as ext4 file system with no partitions. */
@@ -593,7 +597,7 @@ export interface GceRegionalPersistentDisk {
   /** Optional. The GB capacity of a persistent home directory for each workstation created with this configuration. Must be empty if source_snapshot is set. Valid values are `10`, `50`, `100`, `200`, `500`, or `1000`. Defaults to `200`. If less than `200` GB, the disk_type must be `"pd-balanced"` or `"pd-ssd"`. */
   sizeGb?: number;
   /** Optional. Whether the persistent disk should be deleted when the workstation is deleted. Valid values are `DELETE` and `RETAIN`. Defaults to `DELETE`. */
-  reclaimPolicy?: GceRegionalPersistentDiskReclaimPolicyEnum;
+  reclaimPolicy?: GceRegionalPersistentDiskReclaimPolicyEnum | (string & {});
   /** Optional. The [type of the persistent disk](https://cloud.google.com/compute/docs/disks#disk-types) for the home directory. Defaults to `"pd-standard"`. */
   diskType?: string;
 }
@@ -630,7 +634,7 @@ export const PersistentDirectory = /*@__PURE__*/ S.suspend(() =>
   identifier: "PersistentDirectory",
 }) as any as S.Schema<PersistentDirectory>;
 
-export type PersistentDirectoryList = ReadonlyArray<PersistentDirectory>;
+export type PersistentDirectoryList = Array<PersistentDirectory>;
 export const PersistentDirectoryList = /*@__PURE__*/ S.Array(
   PersistentDirectory,
 ) as any as S.Schema<PersistentDirectoryList>;
@@ -663,7 +667,7 @@ export const ReadinessCheck = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ReadinessCheck" }) as any as S.Schema<ReadinessCheck>;
 
-export type ReadinessCheckList = ReadonlyArray<ReadinessCheck>;
+export type ReadinessCheckList = Array<ReadinessCheck>;
 export const ReadinessCheckList = /*@__PURE__*/ S.Array(
   ReadinessCheck,
 ) as any as S.Schema<ReadinessCheckList>;
@@ -738,7 +742,7 @@ export const EphemeralDirectory = /*@__PURE__*/ S.suspend(() =>
   identifier: "EphemeralDirectory",
 }) as any as S.Schema<EphemeralDirectory>;
 
-export type EphemeralDirectoryList = ReadonlyArray<EphemeralDirectory>;
+export type EphemeralDirectoryList = Array<EphemeralDirectory>;
 export const EphemeralDirectoryList = /*@__PURE__*/ S.Array(
   EphemeralDirectory,
 ) as any as S.Schema<EphemeralDirectoryList>;
@@ -786,7 +790,7 @@ export interface WorkstationConfig {
   /** Output only. Reserved for future use. */
   satisfiesPzi?: boolean;
   /** Optional. The action to take when the workstation has been idle for the duration specified in idle_timeout. Defaults to STOP. */
-  idleAction?: WorkstationConfigIdleActionEnum;
+  idleAction?: WorkstationConfigIdleActionEnum | (string & {});
   /** Optional. Container that runs upon startup for each workstation using this workstation configuration. */
   container?: Container;
   /** Output only. Reserved for future use. */
@@ -902,7 +906,7 @@ export const WorkstationPersistentDirectory = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WorkstationPersistentDirectory>;
 
 export type WorkstationPersistentDirectoryList =
-  ReadonlyArray<WorkstationPersistentDirectory>;
+  Array<WorkstationPersistentDirectory>;
 export const WorkstationPersistentDirectoryList = /*@__PURE__*/ S.Array(
   WorkstationPersistentDirectory,
 ) as any as S.Schema<WorkstationPersistentDirectoryList>;
@@ -953,7 +957,7 @@ export const WorkstationBoostConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "WorkstationBoostConfig",
 }) as any as S.Schema<WorkstationBoostConfig>;
 
-export type WorkstationBoostConfigList = ReadonlyArray<WorkstationBoostConfig>;
+export type WorkstationBoostConfigList = Array<WorkstationBoostConfig>;
 export const WorkstationBoostConfigList = /*@__PURE__*/ S.Array(
   WorkstationBoostConfig,
 ) as any as S.Schema<WorkstationBoostConfigList>;
@@ -985,7 +989,7 @@ export interface Workstation {
   /** Output only. Time when this workstation was created. */
   createTime?: string;
   /** Output only. Current state of the workstation. */
-  state?: WorkstationStateEnum;
+  state?: WorkstationStateEnum | (string & {});
   /** Output only. Reserved for future use. */
   satisfiesPzi?: boolean;
   /** Identifier. Full name of this workstation. */
@@ -1284,7 +1288,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
-export type BindingList = ReadonlyArray<Binding>;
+export type BindingList = Array<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -1301,7 +1305,7 @@ export interface AuditLogConfig {
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
   exemptedMembers?: StringList;
   /** The log type that this config enables. */
-  logType?: AuditLogConfigLogTypeEnum;
+  logType?: AuditLogConfigLogTypeEnum | (string & {});
 }
 export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1310,7 +1314,7 @@ export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
-export type AuditLogConfigList = ReadonlyArray<AuditLogConfig>;
+export type AuditLogConfigList = Array<AuditLogConfig>;
 export const AuditLogConfigList = /*@__PURE__*/ S.Array(
   AuditLogConfig,
 ) as any as S.Schema<AuditLogConfigList>;
@@ -1329,7 +1333,7 @@ export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
-export type AuditConfigList = ReadonlyArray<AuditConfig>;
+export type AuditConfigList = Array<AuditConfig>;
 export const AuditConfigList = /*@__PURE__*/ S.Array(
   AuditConfig,
 ) as any as S.Schema<AuditConfigList>;
@@ -1486,7 +1490,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type OperationList = ReadonlyArray<Operation>;
+export type OperationList = Array<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -1538,7 +1542,7 @@ export const ListProjectsLocationsWorkstationClustersRequest =
     identifier: "ListProjectsLocationsWorkstationClustersRequest",
   }) as any as S.Schema<ListProjectsLocationsWorkstationClustersRequest>;
 
-export type WorkstationClusterList = ReadonlyArray<WorkstationCluster>;
+export type WorkstationClusterList = Array<WorkstationCluster>;
 export const WorkstationClusterList = /*@__PURE__*/ S.Array(
   WorkstationCluster,
 ) as any as S.Schema<WorkstationClusterList>;
@@ -1591,7 +1595,7 @@ export const ListProjectsLocationsWorkstationClustersWorkstationConfigsRequest =
       "ListProjectsLocationsWorkstationClustersWorkstationConfigsRequest",
   }) as any as S.Schema<ListProjectsLocationsWorkstationClustersWorkstationConfigsRequest>;
 
-export type WorkstationConfigList = ReadonlyArray<WorkstationConfig>;
+export type WorkstationConfigList = Array<WorkstationConfig>;
 export const WorkstationConfigList = /*@__PURE__*/ S.Array(
   WorkstationConfig,
 ) as any as S.Schema<WorkstationConfigList>;
@@ -1644,7 +1648,7 @@ export const ListProjectsLocationsWorkstationClustersWorkstationConfigsWorkstati
       "ListProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest",
   }) as any as S.Schema<ListProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest>;
 
-export type WorkstationList = ReadonlyArray<Workstation>;
+export type WorkstationList = Array<Workstation>;
 export const WorkstationList = /*@__PURE__*/ S.Array(
   Workstation,
 ) as any as S.Schema<WorkstationList>;

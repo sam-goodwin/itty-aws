@@ -349,7 +349,7 @@ export const DelegatedController = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DelegatedController>;
 
 /** An array of Delegated controller resources. */
-export type DelegatedControllersValueList = ReadonlyArray<DelegatedController>;
+export type DelegatedControllersValueList = Array<DelegatedController>;
 export const DelegatedControllersValueList = /*@__PURE__*/ S.Array(
   DelegatedController,
 ) as any as S.Schema<DelegatedControllersValueList>;
@@ -604,7 +604,7 @@ export const DelegatedSubnet = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DelegatedSubnet>;
 
 /** An array of DelegatedSubnet resources. */
-export type DelegatedSubnetsValueList = ReadonlyArray<DelegatedSubnet>;
+export type DelegatedSubnetsValueList = Array<DelegatedSubnet>;
 export const DelegatedSubnetsValueList = /*@__PURE__*/ S.Array(
   DelegatedSubnet,
 ) as any as S.Schema<DelegatedSubnetsValueList>;
@@ -905,7 +905,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = ReadonlyArray<Operation>;
+export type OperationsListResponseValueList = Array<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;
@@ -1346,7 +1346,7 @@ export const Orchestrator = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Orchestrator" }) as any as S.Schema<Orchestrator>;
 
 /** An array of OrchestratorInstance resources. */
-export type OrchestratorsValueList = ReadonlyArray<Orchestrator>;
+export type OrchestratorsValueList = Array<Orchestrator>;
 export const OrchestratorsValueList = /*@__PURE__*/ S.Array(
   Orchestrator,
 ) as any as S.Schema<OrchestratorsValueList>;

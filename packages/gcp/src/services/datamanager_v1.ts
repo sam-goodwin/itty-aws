@@ -85,7 +85,7 @@ export const PartnerCustomerAccount = /*@__PURE__*/ S.suspend(() =>
   identifier: "PartnerCustomerAccount",
 }) as any as S.Schema<PartnerCustomerAccount>;
 
-export type PartnerCustomerAccountList = ReadonlyArray<PartnerCustomerAccount>;
+export type PartnerCustomerAccountList = Array<PartnerCustomerAccount>;
 export const PartnerCustomerAccountList = /*@__PURE__*/ S.Array(
   PartnerCustomerAccount,
 ) as any as S.Schema<PartnerCustomerAccountList>;
@@ -125,11 +125,11 @@ export const ProductAccountAccountTypeEnum = /*@__PURE__*/ S.String;
 /** Represents a specific account. */
 export interface ProductAccount {
   /** Deprecated. Use `account_type` instead. */
-  product?: ProductAccountProductEnum;
+  product?: ProductAccountProductEnum | (string & {});
   /** Required. The ID of the account. For example, your Google Ads account ID. */
   accountId?: string;
   /** Required. The type of the account. For example, `GOOGLE_ADS`. Either `account_type` or the deprecated `product` is required. If both are set, the values must match. */
-  accountType?: ProductAccountAccountTypeEnum;
+  accountType?: ProductAccountAccountTypeEnum | (string & {});
 }
 export const ProductAccount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -142,7 +142,7 @@ export const ProductAccount = /*@__PURE__*/ S.suspend(() =>
 /** A partner link between an owning account and a partner account. */
 export interface PartnerLink {
   /** Optional. Immutable. The set of features supported for the partner link. If not specified, the system behavior defaults to FEATURE_SET_AUDIENCE_AND_EVENT_MANAGEMENT. */
-  featureSet?: PartnerLinkFeatureSetEnum;
+  featureSet?: PartnerLinkFeatureSetEnum | (string & {});
   /** Optional. Metadata associated with the partner link. This is optional and only accepted for partner links with the FEATURE_SET_AD_EVENT_MANAGEMENT. */
   partnerLinkMetadata?: PartnerLinkMetadata;
   /** Required. The partner account granted access by the owning account. */
@@ -235,7 +235,7 @@ export interface UserListLicensePricing {
   /** Optional. The maximum CPM a commerce audience can be charged when the MEDIA_SHARE cost type is used. The value is in micro units (10^-6) and in the currency specified by the currency_code field. For example, 2000000 means $2 if `currency_code` is `USD`. This is only relevant when cost_type is MEDIA_SHARE. When cost_type is not MEDIA_SHARE, and this field is set, a MAX_COST_NOT_ALLOWED error will be returned. If not set or set to`0`, there is no cap. */
   maxCostMicros?: string;
   /** Immutable. The cost type of this pricing. Can be set only in the `create` operation. Can't be updated for an existing license. */
-  costType?: UserListLicensePricingCostTypeEnum;
+  costType?: UserListLicensePricingCostTypeEnum | (string & {});
   /** Optional. End time of the pricing. */
   endTime?: string;
   /** Optional. The currency in which cost and max_cost is specified. Must be a three-letter currency code defined in ISO 4217. */
@@ -247,7 +247,9 @@ export interface UserListLicensePricing {
   /** Output only. Start time of the pricing. */
   startTime?: string;
   /** Output only. The buyer approval state of this pricing. This field is read-only. */
-  buyerApprovalState?: UserListLicensePricingBuyerApprovalStateEnum;
+  buyerApprovalState?:
+    | UserListLicensePricingBuyerApprovalStateEnum
+    | (string & {});
   /** Optional. The cost associated with the model, in micro units (10^-6), in the currency specified by the currency_code field. For example, 2000000 means $2 if `currency_code` is `USD`. */
   costMicros?: string;
 }
@@ -284,7 +286,7 @@ export type UserListDirectLicenseStatusEnum =
   | "USER_LIST_LICENSE_STATUS_DISABLED";
 export const UserListDirectLicenseStatusEnum = /*@__PURE__*/ S.String;
 
-export type UserListLicensePricingList = ReadonlyArray<UserListLicensePricing>;
+export type UserListLicensePricingList = Array<UserListLicensePricing>;
 export const UserListLicensePricingList = /*@__PURE__*/ S.Array(
   UserListLicensePricing,
 ) as any as S.Schema<UserListLicensePricingList>;
@@ -300,13 +302,15 @@ export interface UserListDirectLicense {
   /** Optional. UserListDirectLicense pricing. */
   pricing?: UserListLicensePricing;
   /** Immutable. Account type of client customer which the user list is being licensed to. */
-  clientAccountType?: UserListDirectLicenseClientAccountTypeEnum;
+  clientAccountType?:
+    | UserListDirectLicenseClientAccountTypeEnum
+    | (string & {});
   /** Immutable. ID of the user list being licensed. */
   userListId?: string;
   /** Immutable. ID of client customer which the user list is being licensed to. */
   clientAccountId?: string;
   /** Optional. Status of UserListDirectLicense - ENABLED or DISABLED. */
-  status?: UserListDirectLicenseStatusEnum;
+  status?: UserListDirectLicenseStatusEnum | (string & {});
   /** Output only. Name of the user list being licensed. This field is read-only. */
   userListDisplayName?: string;
   /** Output only. Pricing history of this user list license. This field is read-only. */
@@ -367,9 +371,9 @@ export const UserListGlobalLicenseStatusEnum = /*@__PURE__*/ S.String;
 /** A user list global license. This feature is only available to data partners. */
 export interface UserListGlobalLicense {
   /** Immutable. Product type of client customer which the user list is being licensed to. */
-  licenseType?: UserListGlobalLicenseLicenseTypeEnum;
+  licenseType?: UserListGlobalLicenseLicenseTypeEnum | (string & {});
   /** Optional. Status of UserListGlobalLicense - ENABLED or DISABLED. */
-  status?: UserListGlobalLicenseStatusEnum;
+  status?: UserListGlobalLicenseStatusEnum | (string & {});
   /** Output only. Metrics related to this license This field is read-only and only populated if the start and end dates are set in the ListUserListGlobalLicenses call */
   metrics?: UserListLicenseMetrics;
   /** Identifier. The resource name of the user list global license. */
@@ -452,11 +456,11 @@ export const MobileIdInfoKeySpaceEnum = /*@__PURE__*/ S.String;
 /** Additional information when `MOBILE_ID` is one of the `upload_key_types`. */
 export interface MobileIdInfo {
   /** Optional. Immutable. Source of the upload data. */
-  dataSourceType?: MobileIdInfoDataSourceTypeEnum;
+  dataSourceType?: MobileIdInfoDataSourceTypeEnum | (string & {});
   /** Required. Immutable. A string that uniquely identifies a mobile application from which the data was collected. */
   appId?: string;
   /** Required. Immutable. The key space of mobile IDs. */
-  keySpace?: MobileIdInfoKeySpaceEnum;
+  keySpace?: MobileIdInfoKeySpaceEnum | (string & {});
 }
 export const MobileIdInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -479,7 +483,9 @@ export interface PartnerAudienceInfo {
   /** Optional. The commerce partner name. Only allowed if `partner_audience_source` is `COMMERCE_AUDIENCE`. */
   commercePartner?: string;
   /** Required. Immutable. The source of the partner audience. */
-  partnerAudienceSource?: PartnerAudienceInfoPartnerAudienceSourceEnum;
+  partnerAudienceSource?:
+    | PartnerAudienceInfoPartnerAudienceSourceEnum
+    | (string & {});
 }
 export const PartnerAudienceInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -503,7 +509,7 @@ export const ContactIdInfoDataSourceTypeEnum = /*@__PURE__*/ S.String;
 /** Additional information when `CONTACT_ID` is one of the `upload_key_types`. */
 export interface ContactIdInfo {
   /** Optional. Immutable. Source of the upload data */
-  dataSourceType?: ContactIdInfoDataSourceTypeEnum;
+  dataSourceType?: ContactIdInfoDataSourceTypeEnum | (string & {});
   /** Output only. Match rate for customer match user lists. */
   matchRatePercentage?: number;
 }
@@ -547,7 +553,7 @@ export const PseudonymousIdInfoSyncStatusEnum = /*@__PURE__*/ S.String;
 /** Additional information when `PSEUDONYMOUS_ID` is one of the `upload_key_types`. */
 export interface PseudonymousIdInfo {
   /** Output only. Sync status of the user list. */
-  syncStatus?: PseudonymousIdInfoSyncStatusEnum;
+  syncStatus?: PseudonymousIdInfoSyncStatusEnum | (string & {});
   /** Optional. Immutable. The number of billable records (e.g. uploaded or matched). */
   billableRecordCount?: string;
 }
@@ -570,8 +576,9 @@ export type IngestedUserListInfoUploadKeyTypesItemEnum =
 export const IngestedUserListInfoUploadKeyTypesItemEnum =
   /*@__PURE__*/ S.String;
 
-export type IngestedUserListInfoUploadKeyTypesItemEnumList =
-  ReadonlyArray<IngestedUserListInfoUploadKeyTypesItemEnum>;
+export type IngestedUserListInfoUploadKeyTypesItemEnumList = Array<
+  IngestedUserListInfoUploadKeyTypesItemEnum | (string & {})
+>;
 export const IngestedUserListInfoUploadKeyTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     IngestedUserListInfoUploadKeyTypesItemEnum,
@@ -588,7 +595,7 @@ export const UserIdInfoDataSourceTypeEnum = /*@__PURE__*/ S.String;
 /** Additional information when `USER_ID` is one of the `upload_key_types`. */
 export interface UserIdInfo {
   /** Optional. Immutable. Source of the upload data. */
-  dataSourceType?: UserIdInfoDataSourceTypeEnum;
+  dataSourceType?: UserIdInfoDataSourceTypeEnum | (string & {});
 }
 export const UserIdInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -679,7 +686,7 @@ export interface UserList {
   /** Identifier. The resource name of the user list. Format: accountTypes/{account_type}/accounts/{account}/userLists/{user_list} */
   name?: string;
   /** Optional. Indicates if this share is still enabled. When a user list is shared with the account this field is set to `ENABLED`. Later the user list owner can decide to revoke the share and make it `DISABLED`. */
-  accountAccessStatus?: UserListAccountAccessStatusEnum;
+  accountAccessStatus?: UserListAccountAccessStatusEnum | (string & {});
   /** Output only. An option that indicates if a user may edit a list. */
   readOnly?: boolean;
   /** Required. The display name of the user list. */
@@ -689,19 +696,19 @@ export interface UserList {
   /** Optional. An ID from external system. It is used by user list sellers to correlate IDs on their systems. */
   integrationCode?: string;
   /** Output only. The reason this account has been granted access to the list. */
-  accessReason?: UserListAccessReasonEnum;
+  accessReason?: UserListAccessReasonEnum | (string & {});
   /** Optional. Represents a user list that is populated by user ingested data. */
   ingestedUserListInfo?: IngestedUserListInfo;
   /** Optional. The duration a user remains in the user list. Valid durations are exact multiples of 24 hours (86400 seconds). Providing a value that is not an exact multiple of 24 hours will result in an INVALID_ARGUMENT error. */
   membershipDuration?: string;
   /** Output only. The reason why this user list membership status is closed. */
-  closingReason?: UserListClosingReasonEnum;
+  closingReason?: UserListClosingReasonEnum | (string & {});
   /** Optional. Eligibility information for different target networks. */
   targetNetworkInfo?: TargetNetworkInfo;
   /** Output only. Estimated number of members in this user list in different target networks. */
   sizeInfo?: SizeInfo;
   /** Optional. Membership status of this user list. */
-  membershipStatus?: UserListMembershipStatusEnum;
+  membershipStatus?: UserListMembershipStatusEnum | (string & {});
 }
 export const UserList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -974,7 +981,7 @@ export const UserIdentifier = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "UserIdentifier" }) as any as S.Schema<UserIdentifier>;
 
-export type UserIdentifierList = ReadonlyArray<UserIdentifier>;
+export type UserIdentifierList = Array<UserIdentifier>;
 export const UserIdentifierList = /*@__PURE__*/ S.Array(
   UserIdentifier,
 ) as any as S.Schema<UserIdentifierList>;
@@ -1198,7 +1205,7 @@ export const AdEvent = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AdEvent" }) as any as S.Schema<AdEvent>;
 
-export type AdEventList = ReadonlyArray<AdEvent>;
+export type AdEventList = Array<AdEvent>;
 export const AdEventList = /*@__PURE__*/ S.Array(
   AdEvent,
 ) as any as S.Schema<AdEventList>;
@@ -1355,7 +1362,7 @@ export const Destination = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Destination" }) as any as S.Schema<Destination>;
 
-export type DestinationList = ReadonlyArray<Destination>;
+export type DestinationList = Array<Destination>;
 export const DestinationList = /*@__PURE__*/ S.Array(
   Destination,
 ) as any as S.Schema<DestinationList>;
@@ -1388,7 +1395,7 @@ export const TermsOfService = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TermsOfService" }) as any as S.Schema<TermsOfService>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -1421,7 +1428,7 @@ export const IpData = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "IpData" }) as any as S.Schema<IpData>;
 
-export type IpDataList = ReadonlyArray<IpData>;
+export type IpDataList = Array<IpData>;
 export const IpDataList = /*@__PURE__*/ S.Array(
   IpData,
 ) as any as S.Schema<IpDataList>;
@@ -1531,7 +1538,7 @@ export const AudienceMember = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AudienceMember" }) as any as S.Schema<AudienceMember>;
 
-export type AudienceMemberList = ReadonlyArray<AudienceMember>;
+export type AudienceMemberList = Array<AudienceMember>;
 export const AudienceMemberList = /*@__PURE__*/ S.Array(
   AudienceMember,
 ) as any as S.Schema<AudienceMemberList>;
@@ -1617,7 +1624,7 @@ export const ItemCustomVariable = /*@__PURE__*/ S.suspend(() =>
   identifier: "ItemCustomVariable",
 }) as any as S.Schema<ItemCustomVariable>;
 
-export type ItemCustomVariableList = ReadonlyArray<ItemCustomVariable>;
+export type ItemCustomVariableList = Array<ItemCustomVariable>;
 export const ItemCustomVariableList = /*@__PURE__*/ S.Array(
   ItemCustomVariable,
 ) as any as S.Schema<ItemCustomVariableList>;
@@ -1636,7 +1643,7 @@ export const ItemParameter = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ItemParameter" }) as any as S.Schema<ItemParameter>;
 
-export type ItemParameterList = ReadonlyArray<ItemParameter>;
+export type ItemParameterList = Array<ItemParameter>;
 export const ItemParameterList = /*@__PURE__*/ S.Array(
   ItemParameter,
 ) as any as S.Schema<ItemParameterList>;
@@ -1679,7 +1686,7 @@ export const Item = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Item" }) as any as S.Schema<Item>;
 
-export type ItemList = ReadonlyArray<Item>;
+export type ItemList = Array<Item>;
 export const ItemList = /*@__PURE__*/ S.Array(
   Item,
 ) as any as S.Schema<ItemList>;
@@ -1727,7 +1734,7 @@ export const CustomVariable = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CustomVariable" }) as any as S.Schema<CustomVariable>;
 
-export type CustomVariableList = ReadonlyArray<CustomVariable>;
+export type CustomVariableList = Array<CustomVariable>;
 export const CustomVariableList = /*@__PURE__*/ S.Array(
   CustomVariable,
 ) as any as S.Schema<CustomVariableList>;
@@ -1746,7 +1753,7 @@ export const EventParameter = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "EventParameter" }) as any as S.Schema<EventParameter>;
 
-export type EventParameterList = ReadonlyArray<EventParameter>;
+export type EventParameterList = Array<EventParameter>;
 export const EventParameterList = /*@__PURE__*/ S.Array(
   EventParameter,
 ) as any as S.Schema<EventParameterList>;
@@ -1789,7 +1796,7 @@ export const UserProperty = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "UserProperty" }) as any as S.Schema<UserProperty>;
 
-export type UserPropertyList = ReadonlyArray<UserProperty>;
+export type UserPropertyList = Array<UserProperty>;
 export const UserPropertyList = /*@__PURE__*/ S.Array(
   UserProperty,
 ) as any as S.Schema<UserPropertyList>;
@@ -1875,7 +1882,7 @@ export const EncryptedUserId = /*@__PURE__*/ S.suspend(() =>
   identifier: "EncryptedUserId",
 }) as any as S.Schema<EncryptedUserId>;
 
-export type EncryptedUserIdList = ReadonlyArray<EncryptedUserId>;
+export type EncryptedUserIdList = Array<EncryptedUserId>;
 export const EncryptedUserIdList = /*@__PURE__*/ S.Array(
   EncryptedUserId,
 ) as any as S.Schema<EncryptedUserIdList>;
@@ -1934,7 +1941,7 @@ export const ExperimentalField = /*@__PURE__*/ S.suspend(() =>
   identifier: "ExperimentalField",
 }) as any as S.Schema<ExperimentalField>;
 
-export type ExperimentalFieldList = ReadonlyArray<ExperimentalField>;
+export type ExperimentalFieldList = Array<ExperimentalField>;
 export const ExperimentalFieldList = /*@__PURE__*/ S.Array(
   ExperimentalField,
 ) as any as S.Schema<ExperimentalFieldList>;
@@ -2016,7 +2023,7 @@ export const Event = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Event" }) as any as S.Schema<Event>;
 
-export type EventList = ReadonlyArray<Event>;
+export type EventList = Array<Event>;
 export const EventList = /*@__PURE__*/ S.Array(
   Event,
 ) as any as S.Schema<EventList>;
@@ -2114,7 +2121,7 @@ export const ListAccountTypesAccountsUserListDirectLicensesRequest =
     identifier: "ListAccountTypesAccountsUserListDirectLicensesRequest",
   }) as any as S.Schema<ListAccountTypesAccountsUserListDirectLicensesRequest>;
 
-export type UserListDirectLicenseList = ReadonlyArray<UserListDirectLicense>;
+export type UserListDirectLicenseList = Array<UserListDirectLicense>;
 export const UserListDirectLicenseList = /*@__PURE__*/ S.Array(
   UserListDirectLicense,
 ) as any as S.Schema<UserListDirectLicenseList>;
@@ -2163,7 +2170,7 @@ export const ListAccountTypesAccountsUserListGlobalLicensesRequest =
     identifier: "ListAccountTypesAccountsUserListGlobalLicensesRequest",
   }) as any as S.Schema<ListAccountTypesAccountsUserListGlobalLicensesRequest>;
 
-export type UserListGlobalLicenseList = ReadonlyArray<UserListGlobalLicense>;
+export type UserListGlobalLicenseList = Array<UserListGlobalLicense>;
 export const UserListGlobalLicenseList = /*@__PURE__*/ S.Array(
   UserListGlobalLicense,
 ) as any as S.Schema<UserListGlobalLicenseList>;
@@ -2283,7 +2290,7 @@ export const UserListGlobalLicenseCustomerInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UserListGlobalLicenseCustomerInfo>;
 
 export type UserListGlobalLicenseCustomerInfoList =
-  ReadonlyArray<UserListGlobalLicenseCustomerInfo>;
+  Array<UserListGlobalLicenseCustomerInfo>;
 export const UserListGlobalLicenseCustomerInfoList = /*@__PURE__*/ S.Array(
   UserListGlobalLicenseCustomerInfo,
 ) as any as S.Schema<UserListGlobalLicenseCustomerInfoList>;
@@ -2335,7 +2342,7 @@ export const ListAccountTypesAccountsUserListsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListAccountTypesAccountsUserListsRequest",
 }) as any as S.Schema<ListAccountTypesAccountsUserListsRequest>;
 
-export type UserListList = ReadonlyArray<UserList>;
+export type UserListList = Array<UserList>;
 export const UserListList = /*@__PURE__*/ S.Array(
   UserList,
 ) as any as S.Schema<UserListList>;
@@ -2601,7 +2608,7 @@ export const MarketingDataInsightsAttribute = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MarketingDataInsightsAttribute>;
 
 export type MarketingDataInsightsAttributeList =
-  ReadonlyArray<MarketingDataInsightsAttribute>;
+  Array<MarketingDataInsightsAttribute>;
 export const MarketingDataInsightsAttributeList = /*@__PURE__*/ S.Array(
   MarketingDataInsightsAttribute,
 ) as any as S.Schema<MarketingDataInsightsAttributeList>;
@@ -2631,7 +2638,7 @@ export const MarketingDataInsight = /*@__PURE__*/ S.suspend(() =>
   identifier: "MarketingDataInsight",
 }) as any as S.Schema<MarketingDataInsight>;
 
-export type MarketingDataInsightList = ReadonlyArray<MarketingDataInsight>;
+export type MarketingDataInsightList = Array<MarketingDataInsight>;
 export const MarketingDataInsightList = /*@__PURE__*/ S.Array(
   MarketingDataInsight,
 ) as any as S.Schema<MarketingDataInsightList>;
@@ -2750,7 +2757,7 @@ export const DataTypeCount = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DataTypeCount" }) as any as S.Schema<DataTypeCount>;
 
-export type DataTypeCountList = ReadonlyArray<DataTypeCount>;
+export type DataTypeCountList = Array<DataTypeCount>;
 export const DataTypeCountList = /*@__PURE__*/ S.Array(
   DataTypeCount,
 ) as any as S.Schema<DataTypeCountList>;
@@ -3057,7 +3064,7 @@ export const ErrorCount = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ErrorCount" }) as any as S.Schema<ErrorCount>;
 
-export type ErrorCountList = ReadonlyArray<ErrorCount>;
+export type ErrorCountList = Array<ErrorCount>;
 export const ErrorCountList = /*@__PURE__*/ S.Array(
   ErrorCount,
 ) as any as S.Schema<ErrorCountList>;
@@ -3100,7 +3107,7 @@ export const WarningCount = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "WarningCount" }) as any as S.Schema<WarningCount>;
 
-export type WarningCountList = ReadonlyArray<WarningCount>;
+export type WarningCountList = Array<WarningCount>;
 export const WarningCountList = /*@__PURE__*/ S.Array(
   WarningCount,
 ) as any as S.Schema<WarningCountList>;
@@ -3157,7 +3164,7 @@ export const RequestStatusPerDestination = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RequestStatusPerDestination>;
 
 export type RequestStatusPerDestinationList =
-  ReadonlyArray<RequestStatusPerDestination>;
+  Array<RequestStatusPerDestination>;
 export const RequestStatusPerDestinationList = /*@__PURE__*/ S.Array(
   RequestStatusPerDestination,
 ) as any as S.Schema<RequestStatusPerDestinationList>;
@@ -3203,7 +3210,7 @@ export const SearchAccountTypesAccountsPartnerLinksRequest =
     identifier: "SearchAccountTypesAccountsPartnerLinksRequest",
   }) as any as S.Schema<SearchAccountTypesAccountsPartnerLinksRequest>;
 
-export type PartnerLinkList = ReadonlyArray<PartnerLink>;
+export type PartnerLinkList = Array<PartnerLink>;
 export const PartnerLinkList = /*@__PURE__*/ S.Array(
   PartnerLink,
 ) as any as S.Schema<PartnerLinkList>;

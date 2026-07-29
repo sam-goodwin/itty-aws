@@ -167,7 +167,9 @@ export type RankingInfluenceType = "POPULARITY" | "FRESHNESS";
 export const RankingInfluenceType = /*@__PURE__*/ S.String;
 
 export type RankingInfluenceWeight = number;
-export type RankingInfluence = { [key in RankingInfluenceType]?: number };
+export type RankingInfluence = {
+  [key in RankingInfluenceType | (string & {})]?: number;
+};
 export const RankingInfluence = /*@__PURE__*/ S.Record(
   RankingInfluenceType,
   S.Number.pipe(S.optional),
@@ -888,7 +890,7 @@ export const ObjectiveSensitivity = /*@__PURE__*/ S.String;
 
 export interface OptimizationObjective {
   itemAttribute?: string;
-  objectiveSensitivity?: ObjectiveSensitivity;
+  objectiveSensitivity?: ObjectiveSensitivity | (string & {});
 }
 export const OptimizationObjective = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

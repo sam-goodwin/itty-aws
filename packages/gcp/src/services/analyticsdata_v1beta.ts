@@ -77,12 +77,12 @@ export const Metric = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Metric" }) as any as S.Schema<Metric>;
 
-export type MetricList = ReadonlyArray<Metric>;
+export type MetricList = Array<Metric>;
 export const MetricList = /*@__PURE__*/ S.Array(
   Metric,
 ) as any as S.Schema<MetricList>;
 
-export type FilterExpressionList_ = ReadonlyArray<FilterExpression>;
+export type FilterExpressionList_ = Array<FilterExpression>;
 export const FilterExpressionList_ = /*@__PURE__*/ S.Array(
   S.suspend(() => FilterExpression),
 ) as any as S.Schema<FilterExpressionList_>;
@@ -137,7 +137,7 @@ export const NumericFilter = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "NumericFilter" }) as any as S.Schema<NumericFilter>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -288,7 +288,7 @@ export const PivotSelection = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PivotSelection" }) as any as S.Schema<PivotSelection>;
 
-export type PivotSelectionList = ReadonlyArray<PivotSelection>;
+export type PivotSelectionList = Array<PivotSelection>;
 export const PivotSelectionList = /*@__PURE__*/ S.Array(
   PivotSelection,
 ) as any as S.Schema<PivotSelectionList>;
@@ -338,7 +338,7 @@ export const OrderBy = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "OrderBy" }) as any as S.Schema<OrderBy>;
 
-export type OrderByList = ReadonlyArray<OrderBy>;
+export type OrderByList = Array<OrderBy>;
 export const OrderByList = /*@__PURE__*/ S.Array(
   OrderBy,
 ) as any as S.Schema<OrderByList>;
@@ -351,7 +351,7 @@ export type PivotMetricAggregationsItemEnum =
   | "COUNT";
 export const PivotMetricAggregationsItemEnum = /*@__PURE__*/ S.String;
 
-export type PivotMetricAggregationsItemEnumList = ReadonlyArray<
+export type PivotMetricAggregationsItemEnumList = Array<
   PivotMetricAggregationsItemEnum | (string & {})
 >;
 export const PivotMetricAggregationsItemEnumList = /*@__PURE__*/ S.Array(
@@ -381,7 +381,7 @@ export const Pivot = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Pivot" }) as any as S.Schema<Pivot>;
 
-export type PivotList = ReadonlyArray<Pivot>;
+export type PivotList = Array<Pivot>;
 export const PivotList = /*@__PURE__*/ S.Array(
   Pivot,
 ) as any as S.Schema<PivotList>;
@@ -446,7 +446,7 @@ export const Dimension = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Dimension" }) as any as S.Schema<Dimension>;
 
-export type DimensionList = ReadonlyArray<Dimension>;
+export type DimensionList = Array<Dimension>;
 export const DimensionList = /*@__PURE__*/ S.Array(
   Dimension,
 ) as any as S.Schema<DimensionList>;
@@ -468,7 +468,7 @@ export const DateRange = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DateRange" }) as any as S.Schema<DateRange>;
 
-export type DateRangeList = ReadonlyArray<DateRange>;
+export type DateRangeList = Array<DateRange>;
 export const DateRangeList = /*@__PURE__*/ S.Array(
   DateRange,
 ) as any as S.Schema<DateRangeList>;
@@ -490,7 +490,7 @@ export const Comparison = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Comparison" }) as any as S.Schema<Comparison>;
 
-export type ComparisonList = ReadonlyArray<Comparison>;
+export type ComparisonList = Array<Comparison>;
 export const ComparisonList = /*@__PURE__*/ S.Array(
   Comparison,
 ) as any as S.Schema<ComparisonList>;
@@ -549,7 +549,7 @@ export const Cohort = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Cohort" }) as any as S.Schema<Cohort>;
 
-export type CohortList = ReadonlyArray<Cohort>;
+export type CohortList = Array<Cohort>;
 export const CohortList = /*@__PURE__*/ S.Array(
   Cohort,
 ) as any as S.Schema<CohortList>;
@@ -617,7 +617,7 @@ export const RunPivotReportRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "RunPivotReportRequest",
 }) as any as S.Schema<RunPivotReportRequest>;
 
-export type RunPivotReportRequestList = ReadonlyArray<RunPivotReportRequest>;
+export type RunPivotReportRequestList = Array<RunPivotReportRequest>;
 export const RunPivotReportRequestList = /*@__PURE__*/ S.Array(
   RunPivotReportRequest,
 ) as any as S.Schema<RunPivotReportRequestList>;
@@ -670,7 +670,7 @@ export const DimensionHeader = /*@__PURE__*/ S.suspend(() =>
   identifier: "DimensionHeader",
 }) as any as S.Schema<DimensionHeader>;
 
-export type DimensionHeaderList = ReadonlyArray<DimensionHeader>;
+export type DimensionHeaderList = Array<DimensionHeader>;
 export const DimensionHeaderList = /*@__PURE__*/ S.Array(
   DimensionHeader,
 ) as any as S.Schema<DimensionHeaderList>;
@@ -686,7 +686,7 @@ export const DimensionValue = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DimensionValue" }) as any as S.Schema<DimensionValue>;
 
-export type DimensionValueList = ReadonlyArray<DimensionValue>;
+export type DimensionValueList = Array<DimensionValue>;
 export const DimensionValueList = /*@__PURE__*/ S.Array(
   DimensionValue,
 ) as any as S.Schema<DimensionValueList>;
@@ -702,7 +702,7 @@ export const MetricValue = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MetricValue" }) as any as S.Schema<MetricValue>;
 
-export type MetricValueList = ReadonlyArray<MetricValue>;
+export type MetricValueList = Array<MetricValue>;
 export const MetricValueList = /*@__PURE__*/ S.Array(
   MetricValue,
 ) as any as S.Schema<MetricValueList>;
@@ -721,7 +721,7 @@ export const Row = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Row" }) as any as S.Schema<Row>;
 
-export type RowList = ReadonlyArray<Row>;
+export type RowList = Array<Row>;
 export const RowList = /*@__PURE__*/ S.Array(Row) as any as S.Schema<RowList>;
 
 export type MetricHeaderTypeEnum =
@@ -754,7 +754,7 @@ export const MetricHeader = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MetricHeader" }) as any as S.Schema<MetricHeader>;
 
-export type MetricHeaderList = ReadonlyArray<MetricHeader>;
+export type MetricHeaderList = Array<MetricHeader>;
 export const MetricHeaderList = /*@__PURE__*/ S.Array(
   MetricHeader,
 ) as any as S.Schema<MetricHeaderList>;
@@ -767,7 +767,7 @@ export const ActiveMetricRestrictionRestrictedMetricTypesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type ActiveMetricRestrictionRestrictedMetricTypesItemEnumList =
-  ReadonlyArray<ActiveMetricRestrictionRestrictedMetricTypesItemEnum>;
+  Array<ActiveMetricRestrictionRestrictedMetricTypesItemEnum>;
 export const ActiveMetricRestrictionRestrictedMetricTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     ActiveMetricRestrictionRestrictedMetricTypesItemEnum,
@@ -791,8 +791,7 @@ export const ActiveMetricRestriction = /*@__PURE__*/ S.suspend(() =>
   identifier: "ActiveMetricRestriction",
 }) as any as S.Schema<ActiveMetricRestriction>;
 
-export type ActiveMetricRestrictionList =
-  ReadonlyArray<ActiveMetricRestriction>;
+export type ActiveMetricRestrictionList = Array<ActiveMetricRestriction>;
 export const ActiveMetricRestrictionList = /*@__PURE__*/ S.Array(
   ActiveMetricRestriction,
 ) as any as S.Schema<ActiveMetricRestrictionList>;
@@ -826,7 +825,7 @@ export const SamplingMetadata = /*@__PURE__*/ S.suspend(() =>
   identifier: "SamplingMetadata",
 }) as any as S.Schema<SamplingMetadata>;
 
-export type SamplingMetadataList = ReadonlyArray<SamplingMetadata>;
+export type SamplingMetadataList = Array<SamplingMetadata>;
 export const SamplingMetadataList = /*@__PURE__*/ S.Array(
   SamplingMetadata,
 ) as any as S.Schema<SamplingMetadataList>;
@@ -875,7 +874,7 @@ export const PivotDimensionHeader = /*@__PURE__*/ S.suspend(() =>
   identifier: "PivotDimensionHeader",
 }) as any as S.Schema<PivotDimensionHeader>;
 
-export type PivotDimensionHeaderList = ReadonlyArray<PivotDimensionHeader>;
+export type PivotDimensionHeaderList = Array<PivotDimensionHeader>;
 export const PivotDimensionHeaderList = /*@__PURE__*/ S.Array(
   PivotDimensionHeader,
 ) as any as S.Schema<PivotDimensionHeaderList>;
@@ -894,7 +893,7 @@ export const PivotHeader = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PivotHeader" }) as any as S.Schema<PivotHeader>;
 
-export type PivotHeaderList = ReadonlyArray<PivotHeader>;
+export type PivotHeaderList = Array<PivotHeader>;
 export const PivotHeaderList = /*@__PURE__*/ S.Array(
   PivotHeader,
 ) as any as S.Schema<PivotHeaderList>;
@@ -973,7 +972,7 @@ export const RunPivotReportResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "RunPivotReportResponse",
 }) as any as S.Schema<RunPivotReportResponse>;
 
-export type RunPivotReportResponseList = ReadonlyArray<RunPivotReportResponse>;
+export type RunPivotReportResponseList = Array<RunPivotReportResponse>;
 export const RunPivotReportResponseList = /*@__PURE__*/ S.Array(
   RunPivotReportResponse,
 ) as any as S.Schema<RunPivotReportResponseList>;
@@ -1003,7 +1002,7 @@ export type RunReportRequestMetricAggregationsItemEnum =
 export const RunReportRequestMetricAggregationsItemEnum =
   /*@__PURE__*/ S.String;
 
-export type RunReportRequestMetricAggregationsItemEnumList = ReadonlyArray<
+export type RunReportRequestMetricAggregationsItemEnumList = Array<
   RunReportRequestMetricAggregationsItemEnum | (string & {})
 >;
 export const RunReportRequestMetricAggregationsItemEnumList =
@@ -1068,7 +1067,7 @@ export const RunReportRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "RunReportRequest",
 }) as any as S.Schema<RunReportRequest>;
 
-export type RunReportRequestList = ReadonlyArray<RunReportRequest>;
+export type RunReportRequestList = Array<RunReportRequest>;
 export const RunReportRequestList = /*@__PURE__*/ S.Array(
   RunReportRequest,
 ) as any as S.Schema<RunReportRequestList>;
@@ -1147,7 +1146,7 @@ export const RunReportResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "RunReportResponse",
 }) as any as S.Schema<RunReportResponse>;
 
-export type RunReportResponseList = ReadonlyArray<RunReportResponse>;
+export type RunReportResponseList = Array<RunReportResponse>;
 export const RunReportResponseList = /*@__PURE__*/ S.Array(
   RunReportResponse,
 ) as any as S.Schema<RunReportResponseList>;
@@ -1275,7 +1274,7 @@ export const DimensionCompatibility = /*@__PURE__*/ S.suspend(() =>
   identifier: "DimensionCompatibility",
 }) as any as S.Schema<DimensionCompatibility>;
 
-export type DimensionCompatibilityList = ReadonlyArray<DimensionCompatibility>;
+export type DimensionCompatibilityList = Array<DimensionCompatibility>;
 export const DimensionCompatibilityList = /*@__PURE__*/ S.Array(
   DimensionCompatibility,
 ) as any as S.Schema<DimensionCompatibilityList>;
@@ -1287,7 +1286,7 @@ export type MetricMetadataBlockedReasonsItemEnum =
 export const MetricMetadataBlockedReasonsItemEnum = /*@__PURE__*/ S.String;
 
 export type MetricMetadataBlockedReasonsItemEnumList =
-  ReadonlyArray<MetricMetadataBlockedReasonsItemEnum>;
+  Array<MetricMetadataBlockedReasonsItemEnum>;
 export const MetricMetadataBlockedReasonsItemEnumList = /*@__PURE__*/ S.Array(
   MetricMetadataBlockedReasonsItemEnum,
 ) as any as S.Schema<MetricMetadataBlockedReasonsItemEnumList>;
@@ -1365,7 +1364,7 @@ export const MetricCompatibility = /*@__PURE__*/ S.suspend(() =>
   identifier: "MetricCompatibility",
 }) as any as S.Schema<MetricCompatibility>;
 
-export type MetricCompatibilityList = ReadonlyArray<MetricCompatibility>;
+export type MetricCompatibilityList = Array<MetricCompatibility>;
 export const MetricCompatibilityList = /*@__PURE__*/ S.Array(
   MetricCompatibility,
 ) as any as S.Schema<MetricCompatibilityList>;
@@ -1406,8 +1405,7 @@ export const V1betaAudienceDimension = /*@__PURE__*/ S.suspend(() =>
   identifier: "V1betaAudienceDimension",
 }) as any as S.Schema<V1betaAudienceDimension>;
 
-export type V1betaAudienceDimensionList =
-  ReadonlyArray<V1betaAudienceDimension>;
+export type V1betaAudienceDimensionList = Array<V1betaAudienceDimension>;
 export const V1betaAudienceDimensionList = /*@__PURE__*/ S.Array(
   V1betaAudienceDimension,
 ) as any as S.Schema<V1betaAudienceDimensionList>;
@@ -1419,7 +1417,7 @@ export interface AudienceExport {
   /** Output only. The descriptive display name for this audience. For example, "Purchasers". */
   audienceDisplayName?: string;
   /** Output only. The current state for this AudienceExport. */
-  state?: AudienceExportStateEnum;
+  state?: AudienceExportStateEnum | (string & {});
   /** Required. The audience resource name. This resource name identifies the audience being listed and is shared between the Analytics Data & Admin APIs. Format: `properties/{property}/audiences/{audience}` */
   audience?: string;
   /** Required. The dimensions requested and displayed in the query response. */
@@ -1478,7 +1476,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -1541,12 +1539,12 @@ export const GetMetadataPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetMetadataPropertiesRequest",
 }) as any as S.Schema<GetMetadataPropertiesRequest>;
 
-export type DimensionMetadataList = ReadonlyArray<DimensionMetadata>;
+export type DimensionMetadataList = Array<DimensionMetadata>;
 export const DimensionMetadataList = /*@__PURE__*/ S.Array(
   DimensionMetadata,
 ) as any as S.Schema<DimensionMetadataList>;
 
-export type MetricMetadataList = ReadonlyArray<MetricMetadata>;
+export type MetricMetadataList = Array<MetricMetadata>;
 export const MetricMetadataList = /*@__PURE__*/ S.Array(
   MetricMetadata,
 ) as any as S.Schema<MetricMetadataList>;
@@ -1570,7 +1568,7 @@ export const ComparisonMetadata = /*@__PURE__*/ S.suspend(() =>
   identifier: "ComparisonMetadata",
 }) as any as S.Schema<ComparisonMetadata>;
 
-export type ComparisonMetadataList = ReadonlyArray<ComparisonMetadata>;
+export type ComparisonMetadataList = Array<ComparisonMetadata>;
 export const ComparisonMetadataList = /*@__PURE__*/ S.Array(
   ComparisonMetadata,
 ) as any as S.Schema<ComparisonMetadataList>;
@@ -1638,7 +1636,7 @@ export const ListPropertiesAudienceExportsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListPropertiesAudienceExportsRequest",
 }) as any as S.Schema<ListPropertiesAudienceExportsRequest>;
 
-export type AudienceExportList = ReadonlyArray<AudienceExport>;
+export type AudienceExportList = Array<AudienceExport>;
 export const AudienceExportList = /*@__PURE__*/ S.Array(
   AudienceExport,
 ) as any as S.Schema<AudienceExportList>;
@@ -1711,7 +1709,7 @@ export const V1betaAudienceDimensionValue = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<V1betaAudienceDimensionValue>;
 
 export type V1betaAudienceDimensionValueList =
-  ReadonlyArray<V1betaAudienceDimensionValue>;
+  Array<V1betaAudienceDimensionValue>;
 export const V1betaAudienceDimensionValueList = /*@__PURE__*/ S.Array(
   V1betaAudienceDimensionValue,
 ) as any as S.Schema<V1betaAudienceDimensionValueList>;
@@ -1729,7 +1727,7 @@ export const V1betaAudienceRow = /*@__PURE__*/ S.suspend(() =>
   identifier: "V1betaAudienceRow",
 }) as any as S.Schema<V1betaAudienceRow>;
 
-export type V1betaAudienceRowList = ReadonlyArray<V1betaAudienceRow>;
+export type V1betaAudienceRowList = Array<V1betaAudienceRow>;
 export const V1betaAudienceRowList = /*@__PURE__*/ S.Array(
   V1betaAudienceRow,
 ) as any as S.Schema<V1betaAudienceRowList>;
@@ -1783,10 +1781,9 @@ export type RunRealtimeReportRequestMetricAggregationsItemEnum =
 export const RunRealtimeReportRequestMetricAggregationsItemEnum =
   /*@__PURE__*/ S.String;
 
-export type RunRealtimeReportRequestMetricAggregationsItemEnumList =
-  ReadonlyArray<
-    RunRealtimeReportRequestMetricAggregationsItemEnum | (string & {})
-  >;
+export type RunRealtimeReportRequestMetricAggregationsItemEnumList = Array<
+  RunRealtimeReportRequestMetricAggregationsItemEnum | (string & {})
+>;
 export const RunRealtimeReportRequestMetricAggregationsItemEnumList =
   /*@__PURE__*/ S.Array(
     RunRealtimeReportRequestMetricAggregationsItemEnum,
@@ -1809,7 +1806,7 @@ export const MinuteRange = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MinuteRange" }) as any as S.Schema<MinuteRange>;
 
-export type MinuteRangeList = ReadonlyArray<MinuteRange>;
+export type MinuteRangeList = Array<MinuteRange>;
 export const MinuteRangeList = /*@__PURE__*/ S.Array(
   MinuteRange,
 ) as any as S.Schema<MinuteRangeList>;

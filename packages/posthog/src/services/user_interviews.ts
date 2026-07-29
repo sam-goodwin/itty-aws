@@ -11,8 +11,7 @@ import * as Retry from "../retry.ts";
 
 export type { PosthogOpError, PosthogOpContext };
 
-export type UserInterviewsCreateRequestIntervieweeEmailsList =
-  ReadonlyArray<string>;
+export type UserInterviewsCreateRequestIntervieweeEmailsList = Array<string>;
 export const UserInterviewsCreateRequestIntervieweeEmailsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -23,7 +22,7 @@ export type ClassificationsEnum = "abandoned" | "off-topic";
 export const ClassificationsEnum = /*@__PURE__*/ S.String;
 
 /** Searchable classifications on the response. `abandoned` is auto-derived from the transcript when the interview is recorded; `off-topic` is set manually. Sending `classifications` on an update replaces the whole list — pass the full desired set, not a delta. */
-export type UserInterviewsCreateRequestClassificationsList = ReadonlyArray<
+export type UserInterviewsCreateRequestClassificationsList = Array<
   ClassificationsEnum | (string & {})
 >;
 export const UserInterviewsCreateRequestClassificationsList =
@@ -110,14 +109,13 @@ export const UserBasic = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "UserBasic" }) as any as S.Schema<UserBasic>;
 
-export type UserInterviewOutputIntervieweeEmailsList = ReadonlyArray<string>;
+export type UserInterviewOutputIntervieweeEmailsList = Array<string>;
 export const UserInterviewOutputIntervieweeEmailsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<UserInterviewOutputIntervieweeEmailsList>;
 
 /** Searchable classifications on the response. `abandoned` is auto-derived from the transcript when the interview is recorded; `off-topic` is set manually. Sending `classifications` on an update replaces the whole list — pass the full desired set, not a delta. */
-export type UserInterviewOutputClassificationsList =
-  ReadonlyArray<ClassificationsEnum>;
+export type UserInterviewOutputClassificationsList = Array<ClassificationsEnum>;
 export const UserInterviewOutputClassificationsList = /*@__PURE__*/ S.Array(
   ClassificationsEnum,
 ) as any as S.Schema<UserInterviewOutputClassificationsList>;
@@ -208,7 +206,7 @@ export const UserInterviewsListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UserInterviewsListRequest>;
 
 export type PaginatedUserInterviewListOutputResultsList =
-  ReadonlyArray<UserInterviewOutput>;
+  Array<UserInterviewOutput>;
 export const PaginatedUserInterviewListOutputResultsList =
   /*@__PURE__*/ S.Array(
     UserInterviewOutput,
@@ -232,15 +230,16 @@ export const PaginatedUserInterviewListOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PaginatedUserInterviewListOutput>;
 
 export type UserInterviewsPartialUpdateRequestIntervieweeEmailsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const UserInterviewsPartialUpdateRequestIntervieweeEmailsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<UserInterviewsPartialUpdateRequestIntervieweeEmailsList>;
 
 /** Searchable classifications on the response. `abandoned` is auto-derived from the transcript when the interview is recorded; `off-topic` is set manually. Sending `classifications` on an update replaces the whole list — pass the full desired set, not a delta. */
-export type UserInterviewsPartialUpdateRequestClassificationsList =
-  ReadonlyArray<ClassificationsEnum | (string & {})>;
+export type UserInterviewsPartialUpdateRequestClassificationsList = Array<
+  ClassificationsEnum | (string & {})
+>;
 export const UserInterviewsPartialUpdateRequestClassificationsList =
   /*@__PURE__*/ S.Array(
     ClassificationsEnum,
@@ -306,7 +305,7 @@ export type UserInterviewSearchDocumentTypeEnum = "transcript" | "summary";
 export const UserInterviewSearchDocumentTypeEnum = /*@__PURE__*/ S.String;
 
 /** Which document types to search across. Omit to default to both `transcript` and `summary`. Pass a non-empty subset to restrict the search. */
-export type UserInterviewsSearchCreateRequestDocumentTypesList = ReadonlyArray<
+export type UserInterviewsSearchCreateRequestDocumentTypesList = Array<
   UserInterviewSearchDocumentTypeEnum | (string & {})
 >;
 export const UserInterviewsSearchCreateRequestDocumentTypesList =
@@ -315,8 +314,9 @@ export const UserInterviewsSearchCreateRequestDocumentTypesList =
   ) as any as S.Schema<UserInterviewsSearchCreateRequestDocumentTypesList>;
 
 /** Optional. Restrict results to interviews carrying any of these classifications (OR). Combines with `topic_id` as AND. */
-export type UserInterviewsSearchCreateRequestClassificationsList =
-  ReadonlyArray<ClassificationsEnum | (string & {})>;
+export type UserInterviewsSearchCreateRequestClassificationsList = Array<
+  ClassificationsEnum | (string & {})
+>;
 export const UserInterviewsSearchCreateRequestClassificationsList =
   /*@__PURE__*/ S.Array(
     ClassificationsEnum,
@@ -390,7 +390,7 @@ export const UserInterviewSearchResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UserInterviewSearchResult>;
 
 export type UserInterviewsSearchCreateResponseBodyList =
-  ReadonlyArray<UserInterviewSearchResult>;
+  Array<UserInterviewSearchResult>;
 export const UserInterviewsSearchCreateResponseBodyList = /*@__PURE__*/ S.Array(
   UserInterviewSearchResult,
 ) as any as S.Schema<UserInterviewsSearchCreateResponseBodyList>;
@@ -403,15 +403,14 @@ export const UserInterviewsSearchCreateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "UserInterviewsSearchCreateResponse",
 }) as any as S.Schema<UserInterviewsSearchCreateResponse>;
 
-export type UserInterviewsUpdateRequestIntervieweeEmailsList =
-  ReadonlyArray<string>;
+export type UserInterviewsUpdateRequestIntervieweeEmailsList = Array<string>;
 export const UserInterviewsUpdateRequestIntervieweeEmailsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<UserInterviewsUpdateRequestIntervieweeEmailsList>;
 
 /** Searchable classifications on the response. `abandoned` is auto-derived from the transcript when the interview is recorded; `off-topic` is set manually. Sending `classifications` on an update replaces the whole list — pass the full desired set, not a delta. */
-export type UserInterviewsUpdateRequestClassificationsList = ReadonlyArray<
+export type UserInterviewsUpdateRequestClassificationsList = Array<
   ClassificationsEnum | (string & {})
 >;
 export const UserInterviewsUpdateRequestClassificationsList =

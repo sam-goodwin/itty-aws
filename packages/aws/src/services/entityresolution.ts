@@ -261,7 +261,7 @@ export const IdNamespaceType = /*@__PURE__*/ S.String;
 export interface IdMappingWorkflowInputSource {
   inputSourceARN: string;
   schemaName?: string;
-  type?: IdNamespaceType;
+  type?: IdNamespaceType | (string & {});
 }
 export const IdMappingWorkflowInputSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -320,9 +320,9 @@ export const RecordMatchingModel = /*@__PURE__*/ S.String;
 
 export interface IdMappingRuleBasedProperties {
   rules?: Rule[];
-  ruleDefinitionType: IdMappingWorkflowRuleDefinitionType;
-  attributeMatchingModel: AttributeMatchingModel;
-  recordMatchingModel: RecordMatchingModel;
+  ruleDefinitionType: IdMappingWorkflowRuleDefinitionType | (string & {});
+  attributeMatchingModel: AttributeMatchingModel | (string & {});
+  recordMatchingModel: RecordMatchingModel | (string & {});
 }
 export const IdMappingRuleBasedProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -360,7 +360,7 @@ export const ProviderProperties = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProviderProperties",
 }) as any as S.Schema<ProviderProperties>;
 export interface IdMappingTechniques {
-  idMappingType: IdMappingType;
+  idMappingType: IdMappingType | (string & {});
   ruleBasedProperties?: IdMappingRuleBasedProperties;
   providerProperties?: ProviderProperties;
 }
@@ -377,7 +377,7 @@ export type IdMappingIncrementalRunType = "ON_DEMAND";
 export const IdMappingIncrementalRunType = /*@__PURE__*/ S.String;
 
 export interface IdMappingIncrementalRunConfig {
-  incrementalRunType?: IdMappingIncrementalRunType;
+  incrementalRunType?: IdMappingIncrementalRunType | (string & {});
 }
 export const IdMappingIncrementalRunConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ incrementalRunType: S.optional(IdMappingIncrementalRunType) }),
@@ -463,18 +463,20 @@ export type IdNamespaceInputSourceConfig = IdNamespaceInputSource[];
 export const IdNamespaceInputSourceConfig = /*@__PURE__*/ S.Array(
   IdNamespaceInputSource,
 );
-export type IdMappingWorkflowRuleDefinitionTypeList =
-  IdMappingWorkflowRuleDefinitionType[];
+export type IdMappingWorkflowRuleDefinitionTypeList = (
+  | IdMappingWorkflowRuleDefinitionType
+  | (string & {})
+)[];
 export const IdMappingWorkflowRuleDefinitionTypeList = /*@__PURE__*/ S.Array(
   IdMappingWorkflowRuleDefinitionType,
 );
-export type RecordMatchingModelList = RecordMatchingModel[];
+export type RecordMatchingModelList = (RecordMatchingModel | (string & {}))[];
 export const RecordMatchingModelList =
   /*@__PURE__*/ S.Array(RecordMatchingModel);
 export interface NamespaceRuleBasedProperties {
   rules?: Rule[];
   ruleDefinitionTypes?: IdMappingWorkflowRuleDefinitionType[];
-  attributeMatchingModel?: AttributeMatchingModel;
+  attributeMatchingModel?: AttributeMatchingModel | (string & {});
   recordMatchingModels?: RecordMatchingModel[];
 }
 export const NamespaceRuleBasedProperties = /*@__PURE__*/ S.suspend(() =>
@@ -500,7 +502,7 @@ export const NamespaceProviderProperties = /*@__PURE__*/ S.suspend(() =>
   identifier: "NamespaceProviderProperties",
 }) as any as S.Schema<NamespaceProviderProperties>;
 export interface IdNamespaceIdMappingWorkflowProperties {
-  idMappingType: IdMappingType;
+  idMappingType: IdMappingType | (string & {});
   ruleBasedProperties?: NamespaceRuleBasedProperties;
   providerProperties?: NamespaceProviderProperties;
 }
@@ -649,8 +651,8 @@ export const MatchPurpose = /*@__PURE__*/ S.String;
 
 export interface RuleBasedProperties {
   rules: Rule[];
-  attributeMatchingModel: AttributeMatchingModel;
-  matchPurpose?: MatchPurpose;
+  attributeMatchingModel: AttributeMatchingModel | (string & {});
+  matchPurpose?: MatchPurpose | (string & {});
 }
 export const RuleBasedProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -689,7 +691,7 @@ export const RuleConditionProperties = /*@__PURE__*/ S.suspend(() =>
   identifier: "RuleConditionProperties",
 }) as any as S.Schema<RuleConditionProperties>;
 export interface ResolutionTechniques {
-  resolutionType: ResolutionType;
+  resolutionType: ResolutionType | (string & {});
   ruleBasedProperties?: RuleBasedProperties;
   ruleConditionProperties?: RuleConditionProperties;
   providerProperties?: ProviderProperties;
@@ -708,7 +710,7 @@ export type IncrementalRunType = "IMMEDIATE";
 export const IncrementalRunType = /*@__PURE__*/ S.String;
 
 export interface IncrementalRunConfig {
-  incrementalRunType?: IncrementalRunType;
+  incrementalRunType?: IncrementalRunType | (string & {});
 }
 export const IncrementalRunConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ incrementalRunType: S.optional(IncrementalRunType) }),
@@ -801,7 +803,7 @@ export const SchemaAttributeType = /*@__PURE__*/ S.String;
 
 export interface SchemaInputAttribute {
   fieldName: string;
-  type: SchemaAttributeType;
+  type: SchemaAttributeType | (string & {});
   groupName?: string;
   matchKey?: string;
   subType?: string;

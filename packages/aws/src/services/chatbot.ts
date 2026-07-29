@@ -397,7 +397,7 @@ export type CustomActionAttachmentCriteriaOperator = "HAS_VALUE" | "EQUALS";
 export const CustomActionAttachmentCriteriaOperator = /*@__PURE__*/ S.String;
 
 export interface CustomActionAttachmentCriteria {
-  Operator: CustomActionAttachmentCriteriaOperator;
+  Operator: CustomActionAttachmentCriteriaOperator | (string & {});
   VariableName: string;
   Value?: string;
 }

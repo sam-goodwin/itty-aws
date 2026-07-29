@@ -34,13 +34,13 @@ export type SecurityRuleDirection = "Inbound" | "Outbound";
 export const SecurityRuleDirection = /*@__PURE__*/ S.String;
 
 /** The set of IPv4 addresses permitted as the source or destination of the security rule. For as single address, utilize a /32 (CIDR notation). One or both Ipv4Addresses and Ipv6Addresses must be specified. Example formats: 10.10.10.10-10.10.10.20 or 10.10.10.10/24. */
-export type AccessBridgeSecurityRuleIpv4AddressesList = ReadonlyArray<string>;
+export type AccessBridgeSecurityRuleIpv4AddressesList = Array<string>;
 export const AccessBridgeSecurityRuleIpv4AddressesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AccessBridgeSecurityRuleIpv4AddressesList>;
 
 /** The set of IPv6 addresses permitted as the source or destination of the security rule. For as single address, utilize a /128 (CIDR notation). One or both Ipv4Addresses and Ipv6Addresses must be specified. Example formats: 2001:db8:abcd::1-2001:db8:abcd::ff or 2001:db8:abcd::1/64. */
-export type AccessBridgeSecurityRuleIpv6AddressesList = ReadonlyArray<string>;
+export type AccessBridgeSecurityRuleIpv6AddressesList = Array<string>;
 export const AccessBridgeSecurityRuleIpv6AddressesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AccessBridgeSecurityRuleIpv6AddressesList>;
@@ -50,7 +50,7 @@ export interface AccessBridgeSecurityRule {
   /** The user provided value describing this rule. */
   description?: string;
   /** The direction of allowed network traffic based on the rule. */
-  direction: SecurityRuleDirection;
+  direction: SecurityRuleDirection | (string & {});
   /** The set of IPv4 addresses permitted as the source or destination of the security rule. For as single address, utilize a /32 (CIDR notation). One or both Ipv4Addresses and Ipv6Addresses must be specified. Example formats: 10.10.10.10-10.10.10.20 or 10.10.10.10/24. */
   ipv4Addresses?: AccessBridgeSecurityRuleIpv4AddressesList;
   /** The set of IPv6 addresses permitted as the source or destination of the security rule. For as single address, utilize a /128 (CIDR notation). One or both Ipv4Addresses and Ipv6Addresses must be specified. Example formats: 2001:db8:abcd::1-2001:db8:abcd::ff or 2001:db8:abcd::1/64. */
@@ -72,7 +72,7 @@ export const AccessBridgeSecurityRule = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of security rules enforced by the access bridge. */
 export type AccessBridgePropertiesInputSecurityRulesList =
-  ReadonlyArray<AccessBridgeSecurityRule>;
+  Array<AccessBridgeSecurityRule>;
 export const AccessBridgePropertiesInputSecurityRulesList =
   /*@__PURE__*/ S.Array(
     AccessBridgeSecurityRule,
@@ -112,7 +112,7 @@ export interface AzureResourceManagerCommonTypesExtendedLocation {
   /** The name of the extended location. */
   name: string;
   /** The type of the extended location. */
-  type: AzureResourceManagerCommonTypesExtendedLocationType;
+  type: AzureResourceManagerCommonTypesExtendedLocationType | (string & {});
 }
 export const AzureResourceManagerCommonTypesExtendedLocation =
   /*@__PURE__*/ S.suspend(() =>
@@ -219,7 +219,7 @@ export const AccessBridgesCreateOrUpdateResponseTagsMap =
 
 /** The list of security rules enforced by the access bridge. */
 export type AccessBridgePropertiesSecurityRulesList =
-  ReadonlyArray<AccessBridgeSecurityRule>;
+  Array<AccessBridgeSecurityRule>;
 export const AccessBridgePropertiesSecurityRulesList = /*@__PURE__*/ S.Array(
   AccessBridgeSecurityRule,
 ) as any as S.Schema<AccessBridgePropertiesSecurityRulesList>;
@@ -251,8 +251,7 @@ export const AccessBridgeEndpoint = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccessBridgeEndpoint>;
 
 /** The observed endpoints that clients should use to reach the access bridge. */
-export type AccessBridgePropertiesEndpointsList =
-  ReadonlyArray<AccessBridgeEndpoint>;
+export type AccessBridgePropertiesEndpointsList = Array<AccessBridgeEndpoint>;
 export const AccessBridgePropertiesEndpointsList = /*@__PURE__*/ S.Array(
   AccessBridgeEndpoint,
 ) as any as S.Schema<AccessBridgePropertiesEndpointsList>;
@@ -532,7 +531,7 @@ export const AccessBridge = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AccessBridge" }) as any as S.Schema<AccessBridge>;
 
 /** The AccessBridge items on this page */
-export type AccessBridgeListValueList = ReadonlyArray<AccessBridge>;
+export type AccessBridgeListValueList = Array<AccessBridge>;
 export const AccessBridgeListValueList = /*@__PURE__*/ S.Array(
   AccessBridge,
 ) as any as S.Schema<AccessBridgeListValueList>;
@@ -588,7 +587,7 @@ export const AccessBridgesUpdateRequestAccessBridgeName =
 
 /** The list of security rules enforced by the access bridge. */
 export type AccessBridgePatchPropertiesSecurityRulesList =
-  ReadonlyArray<AccessBridgeSecurityRule>;
+  Array<AccessBridgeSecurityRule>;
 export const AccessBridgePatchPropertiesSecurityRulesList =
   /*@__PURE__*/ S.Array(
     AccessBridgeSecurityRule,
@@ -715,8 +714,7 @@ export const SshPublicKey = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SshPublicKey" }) as any as S.Schema<SshPublicKey>;
 
 /** The SSH configuration for the operating systems that run the nodes in the Kubernetes cluster. In some cases, specification of public keys may be required to produce a working environment. */
-export type AdministratorConfigurationSshPublicKeysList =
-  ReadonlyArray<SshPublicKey>;
+export type AdministratorConfigurationSshPublicKeysList = Array<SshPublicKey>;
 export const AdministratorConfigurationSshPublicKeysList =
   /*@__PURE__*/ S.Array(
     SshPublicKey,
@@ -747,7 +745,7 @@ export interface AgentOptions {
   /** The number of hugepages to allocate. */
   hugepagesCount: number;
   /** The size of the hugepages to allocate. */
-  hugepagesSize?: AgentOptionsHugepagesSize;
+  hugepagesSize?: AgentOptionsHugepagesSize | (string & {});
 }
 export const AgentOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -771,7 +769,7 @@ export interface L2NetworkAttachmentConfiguration {
   /** The resource ID of the network that is being configured for attachment. */
   networkId: string;
   /** The indicator of how this network will be utilized by the Kubernetes cluster. */
-  pluginType?: L2NetworkAttachmentConfigurationPluginType;
+  pluginType?: L2NetworkAttachmentConfigurationPluginType | (string & {});
 }
 export const L2NetworkAttachmentConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -784,7 +782,7 @@ export const L2NetworkAttachmentConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of Layer 2 Networks and related configuration for attachment. */
 export type AttachedNetworkConfigurationL2NetworksList =
-  ReadonlyArray<L2NetworkAttachmentConfiguration>;
+  Array<L2NetworkAttachmentConfiguration>;
 export const AttachedNetworkConfigurationL2NetworksList = /*@__PURE__*/ S.Array(
   L2NetworkAttachmentConfiguration,
 ) as any as S.Schema<AttachedNetworkConfigurationL2NetworksList>;
@@ -807,11 +805,11 @@ export const L3NetworkAttachmentConfigurationPluginType =
 /** L3NetworkAttachmentConfiguration represents the configuration of the attachment of a Layer 3 network. */
 export interface L3NetworkAttachmentConfiguration {
   /** The indication of whether this network will or will not perform IP address management and allocate IP addresses when attached. */
-  ipamEnabled?: L3NetworkAttachmentConfigurationIpamEnabled;
+  ipamEnabled?: L3NetworkAttachmentConfigurationIpamEnabled | (string & {});
   /** The resource ID of the network that is being configured for attachment. */
   networkId: string;
   /** The indicator of how this network will be utilized by the Kubernetes cluster. */
-  pluginType?: L3NetworkAttachmentConfigurationPluginType;
+  pluginType?: L3NetworkAttachmentConfigurationPluginType | (string & {});
 }
 export const L3NetworkAttachmentConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -825,7 +823,7 @@ export const L3NetworkAttachmentConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of Layer 3 Networks and related configuration for attachment. */
 export type AttachedNetworkConfigurationL3NetworksList =
-  ReadonlyArray<L3NetworkAttachmentConfiguration>;
+  Array<L3NetworkAttachmentConfiguration>;
 export const AttachedNetworkConfigurationL3NetworksList = /*@__PURE__*/ S.Array(
   L3NetworkAttachmentConfiguration,
 ) as any as S.Schema<AttachedNetworkConfigurationL3NetworksList>;
@@ -845,7 +843,7 @@ export interface TrunkedNetworkAttachmentConfiguration {
   /** The resource ID of the network that is being configured for attachment. */
   networkId: string;
   /** The indicator of how this network will be utilized by the Kubernetes cluster. */
-  pluginType?: TrunkedNetworkAttachmentConfigurationPluginType;
+  pluginType?: TrunkedNetworkAttachmentConfigurationPluginType | (string & {});
 }
 export const TrunkedNetworkAttachmentConfiguration = /*@__PURE__*/ S.suspend(
   () =>
@@ -859,7 +857,7 @@ export const TrunkedNetworkAttachmentConfiguration = /*@__PURE__*/ S.suspend(
 
 /** The list of Trunked Networks and related configuration for attachment. */
 export type AttachedNetworkConfigurationTrunkedNetworksList =
-  ReadonlyArray<TrunkedNetworkAttachmentConfiguration>;
+  Array<TrunkedNetworkAttachmentConfiguration>;
 export const AttachedNetworkConfigurationTrunkedNetworksList =
   /*@__PURE__*/ S.Array(
     TrunkedNetworkAttachmentConfiguration,
@@ -887,8 +885,7 @@ export const AttachedNetworkConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AttachedNetworkConfiguration>;
 
 /** The list of availability zones of the Network Cloud cluster used for the provisioning of nodes in this agent pool. If not specified, all availability zones will be used. */
-export type AgentPoolPropertiesInputAvailabilityZonesList =
-  ReadonlyArray<string>;
+export type AgentPoolPropertiesInputAvailabilityZonesList = Array<string>;
 export const AgentPoolPropertiesInputAvailabilityZonesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -911,7 +908,7 @@ export const KubernetesLabel = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<KubernetesLabel>;
 
 /** The labels applied to the nodes in this agent pool. */
-export type AgentPoolPropertiesInputLabelsList = ReadonlyArray<KubernetesLabel>;
+export type AgentPoolPropertiesInputLabelsList = Array<KubernetesLabel>;
 export const AgentPoolPropertiesInputLabelsList = /*@__PURE__*/ S.Array(
   KubernetesLabel,
 ) as any as S.Schema<AgentPoolPropertiesInputLabelsList>;
@@ -921,7 +918,7 @@ export type AgentPoolMode = "System" | "User" | "NotApplicable";
 export const AgentPoolMode = /*@__PURE__*/ S.String;
 
 /** The taints applied to the nodes in this agent pool. */
-export type AgentPoolPropertiesInputTaintsList = ReadonlyArray<KubernetesLabel>;
+export type AgentPoolPropertiesInputTaintsList = Array<KubernetesLabel>;
 export const AgentPoolPropertiesInputTaintsList = /*@__PURE__*/ S.Array(
   KubernetesLabel,
 ) as any as S.Schema<AgentPoolPropertiesInputTaintsList>;
@@ -1038,19 +1035,19 @@ export const AgentPoolsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<AgentPoolsCreateOrUpdateResponseTagsMap>;
 
 /** The list of availability zones of the Network Cloud cluster used for the provisioning of nodes in this agent pool. If not specified, all availability zones will be used. */
-export type AgentPoolPropertiesAvailabilityZonesList = ReadonlyArray<string>;
+export type AgentPoolPropertiesAvailabilityZonesList = Array<string>;
 export const AgentPoolPropertiesAvailabilityZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AgentPoolPropertiesAvailabilityZonesList>;
 
 /** The labels applied to the nodes in this agent pool. */
-export type AgentPoolPropertiesLabelsList = ReadonlyArray<KubernetesLabel>;
+export type AgentPoolPropertiesLabelsList = Array<KubernetesLabel>;
 export const AgentPoolPropertiesLabelsList = /*@__PURE__*/ S.Array(
   KubernetesLabel,
 ) as any as S.Schema<AgentPoolPropertiesLabelsList>;
 
 /** The taints applied to the nodes in this agent pool. */
-export type AgentPoolPropertiesTaintsList = ReadonlyArray<KubernetesLabel>;
+export type AgentPoolPropertiesTaintsList = Array<KubernetesLabel>;
 export const AgentPoolPropertiesTaintsList = /*@__PURE__*/ S.Array(
   KubernetesLabel,
 ) as any as S.Schema<AgentPoolPropertiesTaintsList>;
@@ -1344,7 +1341,7 @@ export const AgentPool = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AgentPool" }) as any as S.Schema<AgentPool>;
 
 /** The AgentPool items on this page */
-export type AgentPoolListValueList = ReadonlyArray<AgentPool>;
+export type AgentPoolListValueList = Array<AgentPool>;
 export const AgentPoolListValueList = /*@__PURE__*/ S.Array(
   AgentPool,
 ) as any as S.Schema<AgentPoolListValueList>;
@@ -1365,7 +1362,7 @@ export const AgentPoolList = /*@__PURE__*/ S.suspend(() =>
 
 /** SshPublicKey represents the public key used to authenticate with a resource through SSH. */
 export type NodePoolAdministratorConfigurationPatchSshPublicKeysList =
-  ReadonlyArray<SshPublicKey>;
+  Array<SshPublicKey>;
 export const NodePoolAdministratorConfigurationPatchSshPublicKeysList =
   /*@__PURE__*/ S.Array(
     SshPublicKey,
@@ -1509,7 +1506,7 @@ export const BareMetalMachineKeySetsCreateOrUpdateRequestTagsMap =
 
 /** The list of IP addresses of jump hosts with management network access from which a login will be allowed for the users. */
 export type BareMetalMachineKeySetPropertiesInputJumpHostsAllowedList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const BareMetalMachineKeySetPropertiesInputJumpHostsAllowedList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1544,7 +1541,7 @@ export const KeySetUser = /*@__PURE__*/ S.suspend(() =>
 
 /** The unique list of permitted users. */
 export type BareMetalMachineKeySetPropertiesInputUserListList =
-  ReadonlyArray<KeySetUser>;
+  Array<KeySetUser>;
 export const BareMetalMachineKeySetPropertiesInputUserListList =
   /*@__PURE__*/ S.Array(
     KeySetUser,
@@ -1636,15 +1633,14 @@ export const BareMetalMachineKeySetsCreateOrUpdateResponseTagsMap =
 
 /** The list of IP addresses of jump hosts with management network access from which a login will be allowed for the users. */
 export type BareMetalMachineKeySetPropertiesJumpHostsAllowedList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const BareMetalMachineKeySetPropertiesJumpHostsAllowedList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<BareMetalMachineKeySetPropertiesJumpHostsAllowedList>;
 
 /** The unique list of permitted users. */
-export type BareMetalMachineKeySetPropertiesUserListList =
-  ReadonlyArray<KeySetUser>;
+export type BareMetalMachineKeySetPropertiesUserListList = Array<KeySetUser>;
 export const BareMetalMachineKeySetPropertiesUserListList =
   /*@__PURE__*/ S.Array(
     KeySetUser,
@@ -1683,7 +1679,7 @@ export const KeySetUserStatus = /*@__PURE__*/ S.suspend(() =>
 
 /** The status evaluation of each user. */
 export type BareMetalMachineKeySetPropertiesUserListStatusList =
-  ReadonlyArray<KeySetUserStatus>;
+  Array<KeySetUserStatus>;
 export const BareMetalMachineKeySetPropertiesUserListStatusList =
   /*@__PURE__*/ S.Array(
     KeySetUserStatus,
@@ -1971,8 +1967,7 @@ export const BareMetalMachineKeySet = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BareMetalMachineKeySet>;
 
 /** The BareMetalMachineKeySet items on this page */
-export type BareMetalMachineKeySetListValueList =
-  ReadonlyArray<BareMetalMachineKeySet>;
+export type BareMetalMachineKeySetListValueList = Array<BareMetalMachineKeySet>;
 export const BareMetalMachineKeySetListValueList = /*@__PURE__*/ S.Array(
   BareMetalMachineKeySet,
 ) as any as S.Schema<BareMetalMachineKeySetListValueList>;
@@ -1995,7 +1990,7 @@ export const BareMetalMachineKeySetList = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of IP addresses of jump hosts with management network access from which a login will be allowed for the users. */
 export type BareMetalMachineKeySetPatchPropertiesJumpHostsAllowedList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const BareMetalMachineKeySetPatchPropertiesJumpHostsAllowedList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2003,7 +1998,7 @@ export const BareMetalMachineKeySetPatchPropertiesJumpHostsAllowedList =
 
 /** The unique list of permitted users. */
 export type BareMetalMachineKeySetPatchPropertiesUserListList =
-  ReadonlyArray<KeySetUser>;
+  Array<KeySetUser>;
 export const BareMetalMachineKeySetPatchPropertiesUserListList =
   /*@__PURE__*/ S.Array(
     KeySetUser,
@@ -2315,7 +2310,7 @@ export const StepState = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StepState" }) as any as S.Schema<StepState>;
 
 /** The ordered list of the individual steps which make up the action. */
-export type ActionStateStepStatesList = ReadonlyArray<StepState>;
+export type ActionStateStepStatesList = Array<StepState>;
 export const ActionStateStepStatesList = /*@__PURE__*/ S.Array(
   StepState,
 ) as any as S.Schema<ActionStateStepStatesList>;
@@ -2350,15 +2345,13 @@ export const ActionState = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ActionState" }) as any as S.Schema<ActionState>;
 
 /** The current state of any in progress or completed actions. The most recent known instance of each action type is shown. */
-export type BareMetalMachinePropertiesActionStatesList =
-  ReadonlyArray<ActionState>;
+export type BareMetalMachinePropertiesActionStatesList = Array<ActionState>;
 export const BareMetalMachinePropertiesActionStatesList = /*@__PURE__*/ S.Array(
   ActionState,
 ) as any as S.Schema<BareMetalMachinePropertiesActionStatesList>;
 
 /** The list of resource IDs for the other Microsoft.NetworkCloud resources that have attached this network. */
-export type BareMetalMachinePropertiesAssociatedResourceIdsList =
-  ReadonlyArray<string>;
+export type BareMetalMachinePropertiesAssociatedResourceIdsList = Array<string>;
 export const BareMetalMachinePropertiesAssociatedResourceIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2418,7 +2411,7 @@ export const HardwareInventoryNetworkInterface = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of network interfaces and associated details for the bare metal machine. */
 export type HardwareInventoryInterfacesList =
-  ReadonlyArray<HardwareInventoryNetworkInterface>;
+  Array<HardwareInventoryNetworkInterface>;
 export const HardwareInventoryInterfacesList = /*@__PURE__*/ S.Array(
   HardwareInventoryNetworkInterface,
 ) as any as S.Schema<HardwareInventoryInterfacesList>;
@@ -2461,7 +2454,7 @@ export const Nic = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Nic" }) as any as S.Schema<Nic>;
 
 /** Field Deprecated. Will be removed in an upcoming version. The list of network interface cards and associated details for the bare metal machine. */
-export type HardwareInventoryNicsList = ReadonlyArray<Nic>;
+export type HardwareInventoryNicsList = Array<Nic>;
 export const HardwareInventoryNicsList = /*@__PURE__*/ S.Array(
   Nic,
 ) as any as S.Schema<HardwareInventoryNicsList>;
@@ -2507,14 +2500,14 @@ export const HardwareValidationStatus = /*@__PURE__*/ S.suspend(() =>
 
 /** Field Deprecated. These fields will be empty/omitted. The list of the resource IDs for the HybridAksClusters that have nodes hosted on this bare metal machine. */
 export type BareMetalMachinePropertiesHybridAksClustersAssociatedIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const BareMetalMachinePropertiesHybridAksClustersAssociatedIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<BareMetalMachinePropertiesHybridAksClustersAssociatedIdsList>;
 
 /** The list of roles that are assigned to the cluster node running on this machine. */
-export type BareMetalMachinePropertiesMachineRolesList = ReadonlyArray<string>;
+export type BareMetalMachinePropertiesMachineRolesList = Array<string>;
 export const BareMetalMachinePropertiesMachineRolesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BareMetalMachinePropertiesMachineRolesList>;
@@ -2567,8 +2560,7 @@ export type RuntimeProtectionAgentHealthStatus = "Healthy" | "Unhealthy";
 export const RuntimeProtectionAgentHealthStatus = /*@__PURE__*/ S.String;
 
 /** The runtime protection agent health status issues, if present. */
-export type RuntimeProtectionStatusAgentHealthStatusIssuesList =
-  ReadonlyArray<string>;
+export type RuntimeProtectionStatusAgentHealthStatusIssuesList = Array<string>;
 export const RuntimeProtectionStatusAgentHealthStatusIssuesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2682,7 +2674,7 @@ export const SecretRotationStatus = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of statuses that represent secret rotation activity. */
 export type BareMetalMachinePropertiesSecretRotationStatusList =
-  ReadonlyArray<SecretRotationStatus>;
+  Array<SecretRotationStatus>;
 export const BareMetalMachinePropertiesSecretRotationStatusList =
   /*@__PURE__*/ S.Array(
     SecretRotationStatus,
@@ -2690,7 +2682,7 @@ export const BareMetalMachinePropertiesSecretRotationStatusList =
 
 /** Field Deprecated. These fields will be empty/omitted. The list of the resource IDs for the VirtualMachines that are hosted on this bare metal machine. */
 export type BareMetalMachinePropertiesVirtualMachinesAssociatedIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const BareMetalMachinePropertiesVirtualMachinesAssociatedIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3049,7 +3041,7 @@ export const BareMetalMachine = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BareMetalMachine>;
 
 /** The BareMetalMachine items on this page */
-export type BareMetalMachineListValueList = ReadonlyArray<BareMetalMachine>;
+export type BareMetalMachineListValueList = Array<BareMetalMachine>;
 export const BareMetalMachineListValueList = /*@__PURE__*/ S.Array(
   BareMetalMachine,
 ) as any as S.Schema<BareMetalMachineListValueList>;
@@ -3273,8 +3265,7 @@ export const BareMetalMachinesRestartResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BareMetalMachinesRestartResponse>;
 
 /** The list of string arguments that will be passed to the script in order as separate arguments. */
-export type BareMetalMachinesRunCommandRequestArgumentsList =
-  ReadonlyArray<string>;
+export type BareMetalMachinesRunCommandRequestArgumentsList = Array<string>;
 export const BareMetalMachinesRunCommandRequestArgumentsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3322,8 +3313,7 @@ export const BareMetalMachinesRunCommandResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BareMetalMachinesRunCommandResponse>;
 
 /** The list of string arguments that will be passed to the script in order as separate arguments. */
-export type BareMetalMachineCommandSpecificationArgumentsList =
-  ReadonlyArray<string>;
+export type BareMetalMachineCommandSpecificationArgumentsList = Array<string>;
 export const BareMetalMachineCommandSpecificationArgumentsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3348,7 +3338,7 @@ export const BareMetalMachineCommandSpecification = /*@__PURE__*/ S.suspend(
 
 /** The list of curated data extraction commands to be executed directly against the target machine. */
 export type BareMetalMachinesRunDataExtractsRequestCommandsList =
-  ReadonlyArray<BareMetalMachineCommandSpecification>;
+  Array<BareMetalMachineCommandSpecification>;
 export const BareMetalMachinesRunDataExtractsRequestCommandsList =
   /*@__PURE__*/ S.Array(
     BareMetalMachineCommandSpecification,
@@ -3395,7 +3385,7 @@ export const BareMetalMachinesRunDataExtractsResponse = /*@__PURE__*/ S.suspend(
 
 /** The list of curated data extraction commands to be executed directly against the target machine. */
 export type BareMetalMachinesRunDataExtractsRestrictedRequestCommandsList =
-  ReadonlyArray<BareMetalMachineCommandSpecification>;
+  Array<BareMetalMachineCommandSpecification>;
 export const BareMetalMachinesRunDataExtractsRestrictedRequestCommandsList =
   /*@__PURE__*/ S.Array(
     BareMetalMachineCommandSpecification,
@@ -3441,7 +3431,7 @@ export const BareMetalMachinesRunDataExtractsRestrictedResponse =
 
 /** The list of read-only commands to be executed directly against the target machine. */
 export type BareMetalMachinesRunReadCommandsRequestCommandsList =
-  ReadonlyArray<BareMetalMachineCommandSpecification>;
+  Array<BareMetalMachineCommandSpecification>;
 export const BareMetalMachinesRunReadCommandsRequestCommandsList =
   /*@__PURE__*/ S.Array(
     BareMetalMachineCommandSpecification,
@@ -3662,7 +3652,7 @@ export type BmcKeySetPrivilegeLevel = "ReadOnly" | "Administrator";
 export const BmcKeySetPrivilegeLevel = /*@__PURE__*/ S.String;
 
 /** The unique list of permitted users. */
-export type BmcKeySetPropertiesInputUserListList = ReadonlyArray<KeySetUser>;
+export type BmcKeySetPropertiesInputUserListList = Array<KeySetUser>;
 export const BmcKeySetPropertiesInputUserListList = /*@__PURE__*/ S.Array(
   KeySetUser,
 ) as any as S.Schema<BmcKeySetPropertiesInputUserListList>;
@@ -3739,7 +3729,7 @@ export const BmcKeySetsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<BmcKeySetsCreateOrUpdateResponseTagsMap>;
 
 /** The unique list of permitted users. */
-export type BmcKeySetPropertiesUserListList = ReadonlyArray<KeySetUser>;
+export type BmcKeySetPropertiesUserListList = Array<KeySetUser>;
 export const BmcKeySetPropertiesUserListList = /*@__PURE__*/ S.Array(
   KeySetUser,
 ) as any as S.Schema<BmcKeySetPropertiesUserListList>;
@@ -3753,8 +3743,7 @@ export type BmcKeySetDetailedStatus =
 export const BmcKeySetDetailedStatus = /*@__PURE__*/ S.String;
 
 /** The status evaluation of each user. */
-export type BmcKeySetPropertiesUserListStatusList =
-  ReadonlyArray<KeySetUserStatus>;
+export type BmcKeySetPropertiesUserListStatusList = Array<KeySetUserStatus>;
 export const BmcKeySetPropertiesUserListStatusList = /*@__PURE__*/ S.Array(
   KeySetUserStatus,
 ) as any as S.Schema<BmcKeySetPropertiesUserListStatusList>;
@@ -4023,7 +4012,7 @@ export const BmcKeySet = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BmcKeySet" }) as any as S.Schema<BmcKeySet>;
 
 /** The BmcKeySet items on this page */
-export type BmcKeySetListValueList = ReadonlyArray<BmcKeySet>;
+export type BmcKeySetListValueList = Array<BmcKeySet>;
 export const BmcKeySetListValueList = /*@__PURE__*/ S.Array(
   BmcKeySet,
 ) as any as S.Schema<BmcKeySetListValueList>;
@@ -4043,7 +4032,7 @@ export const BmcKeySetList = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BmcKeySetList" }) as any as S.Schema<BmcKeySetList>;
 
 /** The unique list of permitted users. */
-export type BmcKeySetPatchPropertiesUserListList = ReadonlyArray<KeySetUser>;
+export type BmcKeySetPatchPropertiesUserListList = Array<KeySetUser>;
 export const BmcKeySetPatchPropertiesUserListList = /*@__PURE__*/ S.Array(
   KeySetUser,
 ) as any as S.Schema<BmcKeySetPatchPropertiesUserListList>;
@@ -4179,7 +4168,7 @@ export const EndpointDependency = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EndpointDependency>;
 
 /** The list of endpoint dependencies. */
-export type EgressEndpointEndpointsList = ReadonlyArray<EndpointDependency>;
+export type EgressEndpointEndpointsList = Array<EndpointDependency>;
 export const EgressEndpointEndpointsList = /*@__PURE__*/ S.Array(
   EndpointDependency,
 ) as any as S.Schema<EgressEndpointEndpointsList>;
@@ -4200,7 +4189,7 @@ export const EgressEndpoint = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of egress endpoints. This allows for connection from a Hybrid AKS cluster to the specified endpoint. */
 export type CloudServicesNetworkPropertiesInputAdditionalEgressEndpointsList =
-  ReadonlyArray<EgressEndpoint>;
+  Array<EgressEndpoint>;
 export const CloudServicesNetworkPropertiesInputAdditionalEgressEndpointsList =
   /*@__PURE__*/ S.Array(
     EgressEndpoint,
@@ -4220,7 +4209,7 @@ export const CloudServicesNetworkStorageOptionsMode = /*@__PURE__*/ S.String;
 /** CloudServicesNetworkStorageOptions represents the storage options for the cloud services network. */
 export interface CloudServicesNetworkStorageOptions {
   /** The indicator to enable shared storage on the cloud services network. If not specified, the allocation will align with the standard storage enablement. */
-  mode?: CloudServicesNetworkStorageOptionsMode;
+  mode?: CloudServicesNetworkStorageOptionsMode | (string & {});
   /** The requested storage allocation for the volume in Mebibytes. */
   sizeMiB?: number;
   /** The resource ID of the storage appliance that hosts the storage. */
@@ -4311,7 +4300,7 @@ export const CloudServicesNetworksCreateOrUpdateResponseTagsMap =
 
 /** The list of egress endpoints. This allows for connection from a Hybrid AKS cluster to the specified endpoint. */
 export type CloudServicesNetworkPropertiesAdditionalEgressEndpointsList =
-  ReadonlyArray<EgressEndpoint>;
+  Array<EgressEndpoint>;
 export const CloudServicesNetworkPropertiesAdditionalEgressEndpointsList =
   /*@__PURE__*/ S.Array(
     EgressEndpoint,
@@ -4326,7 +4315,7 @@ export const CloudServicesNetworkPropertiesEnableDefaultEgressEndpoints =
 
 /** The list of resource IDs for the other Microsoft.NetworkCloud resources that have attached this network. */
 export type CloudServicesNetworkPropertiesAssociatedResourceIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CloudServicesNetworkPropertiesAssociatedResourceIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4341,7 +4330,7 @@ export const CloudServicesNetworkDetailedStatus = /*@__PURE__*/ S.String;
 
 /** The full list of additional and default egress endpoints that are currently enabled. */
 export type CloudServicesNetworkPropertiesEnabledEgressEndpointsList =
-  ReadonlyArray<EgressEndpoint>;
+  Array<EgressEndpoint>;
 export const CloudServicesNetworkPropertiesEnabledEgressEndpointsList =
   /*@__PURE__*/ S.Array(
     EgressEndpoint,
@@ -4349,7 +4338,7 @@ export const CloudServicesNetworkPropertiesEnabledEgressEndpointsList =
 
 /** Field Deprecated. These fields will be empty/omitted. The list of Hybrid AKS cluster resource IDs that are associated with this cloud services network. */
 export type CloudServicesNetworkPropertiesHybridAksClustersAssociatedIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CloudServicesNetworkPropertiesHybridAksClustersAssociatedIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4396,7 +4385,7 @@ export const CloudServicesNetworkStorageStatus = /*@__PURE__*/ S.suspend(() =>
 
 /** Field Deprecated. These fields will be empty/omitted. The list of virtual machine resource IDs, excluding any Hybrid AKS virtual machines, that are currently using this cloud services network. */
 export type CloudServicesNetworkPropertiesVirtualMachinesAssociatedIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CloudServicesNetworkPropertiesVirtualMachinesAssociatedIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4685,8 +4674,7 @@ export const CloudServicesNetwork = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CloudServicesNetwork>;
 
 /** The CloudServicesNetwork items on this page */
-export type CloudServicesNetworkListValueList =
-  ReadonlyArray<CloudServicesNetwork>;
+export type CloudServicesNetworkListValueList = Array<CloudServicesNetwork>;
 export const CloudServicesNetworkListValueList = /*@__PURE__*/ S.Array(
   CloudServicesNetwork,
 ) as any as S.Schema<CloudServicesNetworkListValueList>;
@@ -4735,7 +4723,7 @@ export const CloudServicesNetworksListBySubscriptionRequest =
 
 /** The list of egress endpoints. This allows for connection from a Hybrid AKS cluster to the specified endpoint. */
 export type CloudServicesNetworkPatchPropertiesAdditionalEgressEndpointsList =
-  ReadonlyArray<EgressEndpoint>;
+  Array<EgressEndpoint>;
 export const CloudServicesNetworkPatchPropertiesAdditionalEgressEndpointsList =
   /*@__PURE__*/ S.Array(
     EgressEndpoint,
@@ -4888,8 +4876,7 @@ export const ClusterManagersCreateOrUpdateRequestTagsMap =
   ) as any as S.Schema<ClusterManagersCreateOrUpdateRequestTagsMap>;
 
 /** The Azure availability zones within the region that will be used to support the cluster manager resource. */
-export type ClusterManagerPropertiesInputAvailabilityZonesList =
-  ReadonlyArray<string>;
+export type ClusterManagerPropertiesInputAvailabilityZonesList = Array<string>;
 export const ClusterManagerPropertiesInputAvailabilityZonesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5039,8 +5026,7 @@ export const ClusterManagersCreateOrUpdateResponseTagsMap =
   ) as any as S.Schema<ClusterManagersCreateOrUpdateResponseTagsMap>;
 
 /** The Azure availability zones within the region that will be used to support the cluster manager resource. */
-export type ClusterManagerPropertiesAvailabilityZonesList =
-  ReadonlyArray<string>;
+export type ClusterManagerPropertiesAvailabilityZonesList = Array<string>;
 export const ClusterManagerPropertiesAvailabilityZonesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5064,7 +5050,7 @@ export const ClusterAvailableVersion = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of the cluster versions the manager supports. It is used as input in clusterVersion property of a cluster resource. */
 export type ClusterManagerPropertiesClusterVersionsList =
-  ReadonlyArray<ClusterAvailableVersion>;
+  Array<ClusterAvailableVersion>;
 export const ClusterManagerPropertiesClusterVersionsList =
   /*@__PURE__*/ S.Array(
     ClusterAvailableVersion,
@@ -5487,7 +5473,7 @@ export const ClusterManager = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ClusterManager" }) as any as S.Schema<ClusterManager>;
 
 /** The ClusterManager items on this page */
-export type ClusterManagerListValueList = ReadonlyArray<ClusterManager>;
+export type ClusterManagerListValueList = Array<ClusterManager>;
 export const ClusterManagerListValueList = /*@__PURE__*/ S.Array(
   ClusterManager,
 ) as any as S.Schema<ClusterManagerListValueList>;
@@ -5825,7 +5811,7 @@ export const BareMetalMachineConfigurationDataInput = /*@__PURE__*/ S.suspend(
 
 /** The unordered list of bare metal machine configuration. */
 export type RackDefinitionInputBareMetalMachineConfigurationDataList =
-  ReadonlyArray<BareMetalMachineConfigurationDataInput>;
+  Array<BareMetalMachineConfigurationDataInput>;
 export const RackDefinitionInputBareMetalMachineConfigurationDataList =
   /*@__PURE__*/ S.Array(
     BareMetalMachineConfigurationDataInput,
@@ -5855,7 +5841,7 @@ export const StorageApplianceConfigurationData = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of storage appliance configuration data for this rack. */
 export type RackDefinitionInputStorageApplianceConfigurationDataList =
-  ReadonlyArray<StorageApplianceConfigurationData>;
+  Array<StorageApplianceConfigurationData>;
 export const RackDefinitionInputStorageApplianceConfigurationDataList =
   /*@__PURE__*/ S.Array(
     StorageApplianceConfigurationData,
@@ -5905,7 +5891,7 @@ export const ManagedServiceIdentitySelectorType = /*@__PURE__*/ S.String;
 /** IdentitySelector represents the selection of a managed identity for use. */
 export interface IdentitySelector {
   /** The type of managed identity that is being selected. */
-  identityType?: ManagedServiceIdentitySelectorType;
+  identityType?: ManagedServiceIdentitySelectorType | (string & {});
   /** The user assigned managed identity resource ID to use. Mutually exclusive with a system assigned identity type. */
   userAssignedIdentityResourceId?: string;
 }
@@ -5975,7 +5961,7 @@ export interface CommandOutputOverride {
   /** The selection of the managed identity to use with this storage account container. The identity type must be either system assigned or user assigned. */
   associatedIdentity?: IdentitySelector;
   /** The type of command output for the override. */
-  commandOutputType?: CommandOutputType;
+  commandOutputType?: CommandOutputType | (string & {});
   /** The URL of the storage account container that is to be used by the specified identities. */
   containerUrl?: string;
 }
@@ -5990,8 +5976,7 @@ export const CommandOutputOverride = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CommandOutputOverride>;
 
 /** The list of optional overrides allowing for association of storage containers and identities to specific types of command output. If a type is not overridden, the default identity and storage container will be utilized. */
-export type CommandOutputSettingsOverridesList =
-  ReadonlyArray<CommandOutputOverride>;
+export type CommandOutputSettingsOverridesList = Array<CommandOutputOverride>;
 export const CommandOutputSettingsOverridesList = /*@__PURE__*/ S.Array(
   CommandOutputOverride,
 ) as any as S.Schema<CommandOutputSettingsOverridesList>;
@@ -6026,9 +6011,9 @@ export const ValidationThresholdType = /*@__PURE__*/ S.String;
 /** ValidationThreshold indicates allowed machine and node hardware and deployment failures. */
 export interface ValidationThreshold {
   /** Selection of how the type evaluation is applied to the cluster calculation. */
-  grouping: ValidationThresholdGrouping;
+  grouping: ValidationThresholdGrouping | (string & {});
   /** Selection of how the threshold should be evaluated. */
-  type: ValidationThresholdType;
+  type: ValidationThresholdType | (string & {});
   /** The numeric threshold value. */
   value: number;
 }
@@ -6044,7 +6029,7 @@ export const ValidationThreshold = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of rack definitions for the compute racks in a multi-rack cluster, or an empty list in a single-rack cluster. */
 export type ClusterPropertiesInputComputeRackDefinitionsList =
-  ReadonlyArray<RackDefinitionInput>;
+  Array<RackDefinitionInput>;
 export const ClusterPropertiesInputComputeRackDefinitionsList =
   /*@__PURE__*/ S.Array(
     RackDefinitionInput,
@@ -6070,9 +6055,13 @@ export const RuntimeProtectionConfigurationEnforcementLevel =
 /** RuntimeProtectionConfiguration represents the runtime protection configuration for the cluster. */
 export interface RuntimeProtectionConfiguration {
   /** The definition update mode for runtime protection. */
-  definitionUpdateMode?: RuntimeProtectionConfigurationDefinitionUpdateMode;
+  definitionUpdateMode?:
+    | RuntimeProtectionConfigurationDefinitionUpdateMode
+    | (string & {});
   /** The mode of operation for runtime protection. */
-  enforcementLevel?: RuntimeProtectionConfigurationEnforcementLevel;
+  enforcementLevel?:
+    | RuntimeProtectionConfigurationEnforcementLevel
+    | (string & {});
 }
 export const RuntimeProtectionConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6096,7 +6085,7 @@ export interface ClusterSecretArchive {
   /** The resource ID of the key vault to archive the secrets of the cluster. */
   keyVaultId: string;
   /** The indicator if the specified key vault should be used to archive the secrets of the cluster. */
-  useKeyVault?: ClusterSecretArchiveUseKeyVault;
+  useKeyVault?: ClusterSecretArchiveUseKeyVault | (string & {});
 }
 export const ClusterSecretArchive = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6132,9 +6121,9 @@ export interface ClusterUpdateStrategy {
   /** The maximum number of worker nodes that can be offline within the increment of update, e.g., rack-by-rack. Limited by the maximum number of machines in the increment. Defaults to the whole increment size. */
   maxUnavailable?: number;
   /** The mode of operation for runtime protection. */
-  strategyType: ClusterUpdateStrategyType;
+  strategyType: ClusterUpdateStrategyType | (string & {});
   /** Selection of how the threshold should be evaluated. */
-  thresholdType: ValidationThresholdType;
+  thresholdType: ValidationThresholdType | (string & {});
   /** The numeric threshold value. */
   thresholdValue: number;
   /** The time to wait between the increments of update defined by the strategy. */
@@ -6160,7 +6149,7 @@ export const VulnerabilityScanningSettingsContainerScan =
 /** VulnerabilityScanningSettings represents the settings for how security vulnerability scanning is applied to the cluster. */
 export interface VulnerabilityScanningSettings {
   /** The mode selection for container vulnerability scanning. */
-  containerScan?: VulnerabilityScanningSettingsContainerScan;
+  containerScan?: VulnerabilityScanningSettingsContainerScan | (string & {});
 }
 export const VulnerabilityScanningSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6351,7 +6340,7 @@ export const BareMetalMachineConfigurationData = /*@__PURE__*/ S.suspend(() =>
 
 /** The unordered list of bare metal machine configuration. */
 export type RackDefinitionBareMetalMachineConfigurationDataList =
-  ReadonlyArray<BareMetalMachineConfigurationData>;
+  Array<BareMetalMachineConfigurationData>;
 export const RackDefinitionBareMetalMachineConfigurationDataList =
   /*@__PURE__*/ S.Array(
     BareMetalMachineConfigurationData,
@@ -6359,7 +6348,7 @@ export const RackDefinitionBareMetalMachineConfigurationDataList =
 
 /** The list of storage appliance configuration data for this rack. */
 export type RackDefinitionStorageApplianceConfigurationDataList =
-  ReadonlyArray<StorageApplianceConfigurationData>;
+  Array<StorageApplianceConfigurationData>;
 export const RackDefinitionStorageApplianceConfigurationDataList =
   /*@__PURE__*/ S.Array(
     StorageApplianceConfigurationData,
@@ -6399,15 +6388,14 @@ export const RackDefinition = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RackDefinition" }) as any as S.Schema<RackDefinition>;
 
 /** The list of rack definitions for the compute racks in a multi-rack cluster, or an empty list in a single-rack cluster. */
-export type ClusterPropertiesComputeRackDefinitionsList =
-  ReadonlyArray<RackDefinition>;
+export type ClusterPropertiesComputeRackDefinitionsList = Array<RackDefinition>;
 export const ClusterPropertiesComputeRackDefinitionsList =
   /*@__PURE__*/ S.Array(
     RackDefinition,
   ) as any as S.Schema<ClusterPropertiesComputeRackDefinitionsList>;
 
 /** The current state of any in progress or completed actions. The most recent known instance of each action type is shown. */
-export type ClusterPropertiesActionStatesList = ReadonlyArray<ActionState>;
+export type ClusterPropertiesActionStatesList = Array<ActionState>;
 export const ClusterPropertiesActionStatesList = /*@__PURE__*/ S.Array(
   ActionState,
 ) as any as S.Schema<ClusterPropertiesActionStatesList>;
@@ -6450,7 +6438,7 @@ export const ClusterAvailableUpgradeVersion = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of cluster runtime version upgrades available for this cluster. */
 export type ClusterPropertiesAvailableUpgradeVersionsList =
-  ReadonlyArray<ClusterAvailableUpgradeVersion>;
+  Array<ClusterAvailableUpgradeVersion>;
 export const ClusterPropertiesAvailableUpgradeVersionsList =
   /*@__PURE__*/ S.Array(
     ClusterAvailableUpgradeVersion,
@@ -6516,13 +6504,13 @@ export type ClusterDetailedStatus =
 export const ClusterDetailedStatus = /*@__PURE__*/ S.String;
 
 /** The list of credentials that are managed for the cluster and can be rotated on-demand. */
-export type ClusterPropertiesManagedCredentialsList = ReadonlyArray<string>;
+export type ClusterPropertiesManagedCredentialsList = Array<string>;
 export const ClusterPropertiesManagedCredentialsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ClusterPropertiesManagedCredentialsList>;
 
 /** The list of workload resource IDs that are hosted within this cluster. */
-export type ClusterPropertiesWorkloadResourceIdsList = ReadonlyArray<string>;
+export type ClusterPropertiesWorkloadResourceIdsList = Array<string>;
 export const ClusterPropertiesWorkloadResourceIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ClusterPropertiesWorkloadResourceIdsList>;
@@ -6765,8 +6753,7 @@ export const ClustersDeleteResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ClustersDeleteResponse>;
 
 /** The names of bare metal machines in the cluster that should be skipped during environment validation. */
-export type ClustersDeployRequestSkipValidationsForMachinesList =
-  ReadonlyArray<string>;
+export type ClustersDeployRequestSkipValidationsForMachinesList = Array<string>;
 export const ClustersDeployRequestSkipValidationsForMachinesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6921,7 +6908,7 @@ export type ClusterInspectAdditionalAction = "ResetHardware";
 export const ClusterInspectAdditionalAction = /*@__PURE__*/ S.String;
 
 /** Additional actions supplement the default non-disruptive cluster inspection. Additional actions may be disallowed if the cluster is in a deployed and running state. */
-export type ClustersInspectRequestAdditionalActionsList = ReadonlyArray<
+export type ClustersInspectRequestAdditionalActionsList = Array<
   ClusterInspectAdditionalAction | (string & {})
 >;
 export const ClustersInspectRequestAdditionalActionsList =
@@ -6930,13 +6917,13 @@ export const ClustersInspectRequestAdditionalActionsList =
   ) as any as S.Schema<ClustersInspectRequestAdditionalActionsList>;
 
 /** The list of bare metal machine names to include in the inspection. */
-export type FilterDevicesBareMetalMachineNamesList = ReadonlyArray<string>;
+export type FilterDevicesBareMetalMachineNamesList = Array<string>;
 export const FilterDevicesBareMetalMachineNamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<FilterDevicesBareMetalMachineNamesList>;
 
 /** The list of rack names to include in the inspection. */
-export type FilterDevicesRackNamesList = ReadonlyArray<string>;
+export type FilterDevicesRackNamesList = Array<string>;
 export const FilterDevicesRackNamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<FilterDevicesRackNamesList>;
@@ -7102,7 +7089,7 @@ export const Cluster = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Cluster" }) as any as S.Schema<Cluster>;
 
 /** The Cluster items on this page */
-export type ClusterListValueList = ReadonlyArray<Cluster>;
+export type ClusterListValueList = Array<Cluster>;
 export const ClusterListValueList = /*@__PURE__*/ S.Array(
   Cluster,
 ) as any as S.Schema<ClusterListValueList>;
@@ -7147,8 +7134,7 @@ export const ClustersListBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ClustersListBySubscriptionRequest>;
 
 /** The list of credential names for the credentials to rotate. */
-export type ClustersRotateCredentialRequestCredentialsList =
-  ReadonlyArray<string>;
+export type ClustersRotateCredentialRequestCredentialsList = Array<string>;
 export const ClustersRotateCredentialRequestCredentialsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -7305,7 +7291,7 @@ export const BareMetalMachineConfigurationDataPatchInput =
 
 /** The unordered list of bare metal machine configuration. */
 export type RackDefinitionPatchInputBareMetalMachineConfigurationDataList =
-  ReadonlyArray<BareMetalMachineConfigurationDataPatchInput>;
+  Array<BareMetalMachineConfigurationDataPatchInput>;
 export const RackDefinitionPatchInputBareMetalMachineConfigurationDataList =
   /*@__PURE__*/ S.Array(
     BareMetalMachineConfigurationDataPatchInput,
@@ -7336,7 +7322,7 @@ export const StorageApplianceConfigurationDataPatch = /*@__PURE__*/ S.suspend(
 
 /** The list of storage appliance configuration data for this rack. */
 export type RackDefinitionPatchInputStorageApplianceConfigurationDataList =
-  ReadonlyArray<StorageApplianceConfigurationDataPatch>;
+  Array<StorageApplianceConfigurationDataPatch>;
 export const RackDefinitionPatchInputStorageApplianceConfigurationDataList =
   /*@__PURE__*/ S.Array(
     StorageApplianceConfigurationDataPatch,
@@ -7420,7 +7406,7 @@ export const ValidationThresholdPatch = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of rack definitions for the compute racks in a multi-rack cluster, or an empty list in a single-rack cluster. */
 export type ClusterPatchPropertiesInputComputeRackDefinitionsList =
-  ReadonlyArray<RackDefinitionPatchInput>;
+  Array<RackDefinitionPatchInput>;
 export const ClusterPatchPropertiesInputComputeRackDefinitionsList =
   /*@__PURE__*/ S.Array(
     RackDefinitionPatchInput,
@@ -8072,7 +8058,7 @@ export const Console = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Console" }) as any as S.Schema<Console>;
 
 /** The Console items on this page */
-export type ConsoleListValueList = ReadonlyArray<Console>;
+export type ConsoleListValueList = Array<Console>;
 export const ConsoleListValueList = /*@__PURE__*/ S.Array(
   Console,
 ) as any as S.Schema<ConsoleListValueList>;
@@ -8239,7 +8225,7 @@ export const StringKeyValuePair = /*@__PURE__*/ S.suspend(() =>
 
 /** The configured options for the feature. */
 export type KubernetesClusterFeaturePropertiesInputOptionsList =
-  ReadonlyArray<StringKeyValuePair>;
+  Array<StringKeyValuePair>;
 export const KubernetesClusterFeaturePropertiesInputOptionsList =
   /*@__PURE__*/ S.Array(
     StringKeyValuePair,
@@ -8309,7 +8295,7 @@ export const KubernetesClusterFeaturesCreateOrUpdateResponseTagsMap =
 
 /** The configured options for the feature. */
 export type KubernetesClusterFeaturePropertiesOptionsList =
-  ReadonlyArray<StringKeyValuePair>;
+  Array<StringKeyValuePair>;
 export const KubernetesClusterFeaturePropertiesOptionsList =
   /*@__PURE__*/ S.Array(
     StringKeyValuePair,
@@ -8595,7 +8581,7 @@ export const KubernetesClusterFeature = /*@__PURE__*/ S.suspend(() =>
 
 /** The KubernetesClusterFeature items on this page */
 export type KubernetesClusterFeatureListValueList =
-  ReadonlyArray<KubernetesClusterFeature>;
+  Array<KubernetesClusterFeature>;
 export const KubernetesClusterFeatureListValueList = /*@__PURE__*/ S.Array(
   KubernetesClusterFeature,
 ) as any as S.Schema<KubernetesClusterFeatureListValueList>;
@@ -8618,7 +8604,7 @@ export const KubernetesClusterFeatureList = /*@__PURE__*/ S.suspend(() =>
 
 /** The configured options for the feature. */
 export type KubernetesClusterFeaturePatchPropertiesOptionsList =
-  ReadonlyArray<StringKeyValuePair>;
+  Array<StringKeyValuePair>;
 export const KubernetesClusterFeaturePatchPropertiesOptionsList =
   /*@__PURE__*/ S.Array(
     StringKeyValuePair,
@@ -8738,7 +8724,7 @@ export const KubernetesClustersCreateOrUpdateRequestTagsMap =
   ) as any as S.Schema<KubernetesClustersCreateOrUpdateRequestTagsMap>;
 
 /** The list of Azure Active Directory group object IDs that will have an administrative role on the Kubernetes cluster. */
-export type AadConfigurationAdminGroupObjectIdsList = ReadonlyArray<string>;
+export type AadConfigurationAdminGroupObjectIdsList = Array<string>;
 export const AadConfigurationAdminGroupObjectIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AadConfigurationAdminGroupObjectIdsList>;
@@ -8757,8 +8743,7 @@ export const AadConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AadConfiguration>;
 
 /** The list of availability zones of the Network Cloud cluster to be used for the provisioning of nodes in the control plane. If not specified, all availability zones will be used. */
-export type ControlPlaneNodeConfigurationAvailabilityZonesList =
-  ReadonlyArray<string>;
+export type ControlPlaneNodeConfigurationAvailabilityZonesList = Array<string>;
 export const ControlPlaneNodeConfigurationAvailabilityZonesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -8789,23 +8774,20 @@ export const ControlPlaneNodeConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ControlPlaneNodeConfiguration>;
 
 /** The list of availability zones of the Network Cloud cluster used for the provisioning of nodes in this agent pool. If not specified, all availability zones will be used. */
-export type InitialAgentPoolConfigurationAvailabilityZonesList =
-  ReadonlyArray<string>;
+export type InitialAgentPoolConfigurationAvailabilityZonesList = Array<string>;
 export const InitialAgentPoolConfigurationAvailabilityZonesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<InitialAgentPoolConfigurationAvailabilityZonesList>;
 
 /** The labels applied to the nodes in this agent pool. */
-export type InitialAgentPoolConfigurationLabelsList =
-  ReadonlyArray<KubernetesLabel>;
+export type InitialAgentPoolConfigurationLabelsList = Array<KubernetesLabel>;
 export const InitialAgentPoolConfigurationLabelsList = /*@__PURE__*/ S.Array(
   KubernetesLabel,
 ) as any as S.Schema<InitialAgentPoolConfigurationLabelsList>;
 
 /** The taints applied to the nodes in this agent pool. */
-export type InitialAgentPoolConfigurationTaintsList =
-  ReadonlyArray<KubernetesLabel>;
+export type InitialAgentPoolConfigurationTaintsList = Array<KubernetesLabel>;
 export const InitialAgentPoolConfigurationTaintsList = /*@__PURE__*/ S.Array(
   KubernetesLabel,
 ) as any as S.Schema<InitialAgentPoolConfigurationTaintsList>;
@@ -8825,7 +8807,7 @@ export interface InitialAgentPoolConfiguration {
   /** The labels applied to the nodes in this agent pool. */
   labels?: InitialAgentPoolConfigurationLabelsList;
   /** The selection of how this agent pool is utilized, either as a system pool or a user pool. System pools run the features and critical services for the Kubernetes Cluster, while user pools are dedicated to user workloads. Every Kubernetes cluster must contain at least one system node pool with at least one node. */
-  mode: AgentPoolMode;
+  mode: AgentPoolMode | (string & {});
   /** The taints applied to the nodes in this agent pool. */
   taints?: InitialAgentPoolConfigurationTaintsList;
   /** The configuration of the agent pool. */
@@ -8857,7 +8839,7 @@ export const InitialAgentPoolConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** The agent pools that are created with this Kubernetes cluster for running critical system services and workloads. This data in this field is only used during creation, and the field will be empty following the creation of the Kubernetes Cluster. After creation, the management of agent pools is done using the agentPools sub-resource. */
 export type KubernetesClusterPropertiesInputInitialAgentPoolConfigurationsList =
-  ReadonlyArray<InitialAgentPoolConfiguration>;
+  Array<InitialAgentPoolConfiguration>;
 export const KubernetesClusterPropertiesInputInitialAgentPoolConfigurationsList =
   /*@__PURE__*/ S.Array(
     InitialAgentPoolConfiguration,
@@ -8868,19 +8850,19 @@ export type BgpAdvertisementAdvertiseToFabric = "True" | "False";
 export const BgpAdvertisementAdvertiseToFabric = /*@__PURE__*/ S.String;
 
 /** The names of the BGP communities to be associated with the announcement, utilizing a BGP community string in 1234:1234 format. */
-export type BgpAdvertisementCommunitiesList = ReadonlyArray<string>;
+export type BgpAdvertisementCommunitiesList = Array<string>;
 export const BgpAdvertisementCommunitiesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BgpAdvertisementCommunitiesList>;
 
 /** The names of the IP address pools associated with this announcement. */
-export type BgpAdvertisementIpAddressPoolsList = ReadonlyArray<string>;
+export type BgpAdvertisementIpAddressPoolsList = Array<string>;
 export const BgpAdvertisementIpAddressPoolsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BgpAdvertisementIpAddressPoolsList>;
 
 /** The names of the BGP peers to limit this advertisement to. If no values are specified, all BGP peers will receive this advertisement. */
-export type BgpAdvertisementPeersList = ReadonlyArray<string>;
+export type BgpAdvertisementPeersList = Array<string>;
 export const BgpAdvertisementPeersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BgpAdvertisementPeersList>;
@@ -8888,7 +8870,7 @@ export const BgpAdvertisementPeersList = /*@__PURE__*/ S.Array(
 /** BgpAdvertisement represents the association of IP address pools to the communities and peers. */
 export interface BgpAdvertisement {
   /** The indicator of if this advertisement is also made to the network fabric associated with the Network Cloud Cluster. This field is ignored if fabricPeeringEnabled is set to False. */
-  advertiseToFabric?: BgpAdvertisementAdvertiseToFabric;
+  advertiseToFabric?: BgpAdvertisementAdvertiseToFabric | (string & {});
   /** The names of the BGP communities to be associated with the announcement, utilizing a BGP community string in 1234:1234 format. */
   communities?: BgpAdvertisementCommunitiesList;
   /** The names of the IP address pools associated with this announcement. */
@@ -8909,7 +8891,7 @@ export const BgpAdvertisement = /*@__PURE__*/ S.suspend(() =>
 
 /** The association of IP address pools to the communities and peers, allowing for announcement of IPs. */
 export type BgpServiceLoadBalancerConfigurationBgpAdvertisementsList =
-  ReadonlyArray<BgpAdvertisement>;
+  Array<BgpAdvertisement>;
 export const BgpServiceLoadBalancerConfigurationBgpAdvertisementsList =
   /*@__PURE__*/ S.Array(
     BgpAdvertisement,
@@ -8926,9 +8908,9 @@ export const ServiceLoadBalancerBgpPeerBgpMultiHop = /*@__PURE__*/ S.String;
 /** ServiceLoadBalancerBgpPeer represents the configuration of the BGP service load balancer for the Kubernetes cluster. */
 export interface ServiceLoadBalancerBgpPeer {
   /** The indicator of BFD enablement for this BgpPeer. */
-  bfdEnabled?: ServiceLoadBalancerBgpPeerBfdEnabled;
+  bfdEnabled?: ServiceLoadBalancerBgpPeerBfdEnabled | (string & {});
   /** The indicator to enable multi-hop peering support. */
-  bgpMultiHop?: ServiceLoadBalancerBgpPeerBgpMultiHop;
+  bgpMultiHop?: ServiceLoadBalancerBgpPeerBgpMultiHop | (string & {});
   /** Field Deprecated. The field was previously optional, now it will have no defined behavior and will be ignored. The requested BGP hold time value. This field uses ISO 8601 duration format, for example P1H. */
   holdTime?: string;
   /** Field Deprecated. The field was previously optional, now it will have no defined behavior and will be ignored. The requested BGP keepalive time value. This field uses ISO 8601 duration format, for example P1H. */
@@ -8965,7 +8947,7 @@ export const ServiceLoadBalancerBgpPeer = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of additional BgpPeer entities that the Kubernetes cluster will peer with. All peering must be explicitly defined. */
 export type BgpServiceLoadBalancerConfigurationBgpPeersList =
-  ReadonlyArray<ServiceLoadBalancerBgpPeer>;
+  Array<ServiceLoadBalancerBgpPeer>;
 export const BgpServiceLoadBalancerConfigurationBgpPeersList =
   /*@__PURE__*/ S.Array(
     ServiceLoadBalancerBgpPeer,
@@ -8979,7 +8961,7 @@ export const BgpServiceLoadBalancerConfigurationFabricPeeringEnabled =
   /*@__PURE__*/ S.String;
 
 /** The list of IP address ranges. Each range can be a either a subnet in CIDR format or an explicit start-end range of IP addresses. For a BGP service load balancer configuration, only CIDR format is supported and excludes /32 (IPv4) and /128 (IPv6) prefixes. */
-export type IpAddressPoolAddressesList = ReadonlyArray<string>;
+export type IpAddressPoolAddressesList = Array<string>;
 export const IpAddressPoolAddressesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<IpAddressPoolAddressesList>;
@@ -8997,11 +8979,11 @@ export interface IpAddressPool {
   /** The list of IP address ranges. Each range can be a either a subnet in CIDR format or an explicit start-end range of IP addresses. For a BGP service load balancer configuration, only CIDR format is supported and excludes /32 (IPv4) and /128 (IPv6) prefixes. */
   addresses: IpAddressPoolAddressesList;
   /** The indicator to determine if automatic allocation from the pool should occur. */
-  autoAssign?: IpAddressPoolAutoAssign;
+  autoAssign?: IpAddressPoolAutoAssign | (string & {});
   /** The name used to identify this IP address pool for association with a BGP advertisement. */
   name: string;
   /** The indicator to prevent the use of IP addresses ending with .0 and .255 for this pool. Enabling this option will only use IP addresses between .1 and .254 inclusive. */
-  onlyUseHostIps?: IpAddressPoolOnlyUseHostIps;
+  onlyUseHostIps?: IpAddressPoolOnlyUseHostIps | (string & {});
 }
 export const IpAddressPool = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -9014,7 +8996,7 @@ export const IpAddressPool = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of pools of IP addresses that can be allocated to load balancer services. */
 export type BgpServiceLoadBalancerConfigurationIpAddressPoolsList =
-  ReadonlyArray<IpAddressPool>;
+  Array<IpAddressPool>;
 export const BgpServiceLoadBalancerConfigurationIpAddressPoolsList =
   /*@__PURE__*/ S.Array(
     IpAddressPool,
@@ -9027,7 +9009,9 @@ export interface BgpServiceLoadBalancerConfiguration {
   /** The list of additional BgpPeer entities that the Kubernetes cluster will peer with. All peering must be explicitly defined. */
   bgpPeers?: BgpServiceLoadBalancerConfigurationBgpPeersList;
   /** The indicator to specify if the load balancer peers with the network fabric. */
-  fabricPeeringEnabled?: BgpServiceLoadBalancerConfigurationFabricPeeringEnabled;
+  fabricPeeringEnabled?:
+    | BgpServiceLoadBalancerConfigurationFabricPeeringEnabled
+    | (string & {});
   /** The list of pools of IP addresses that can be allocated to load balancer services. */
   ipAddressPools?: BgpServiceLoadBalancerConfigurationIpAddressPoolsList;
 }
@@ -9050,7 +9034,7 @@ export const BgpServiceLoadBalancerConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of pools of IP addresses that can be allocated to load balancer services. */
 export type L2ServiceLoadBalancerConfigurationIpAddressPoolsList =
-  ReadonlyArray<IpAddressPool>;
+  Array<IpAddressPool>;
 export const L2ServiceLoadBalancerConfigurationIpAddressPoolsList =
   /*@__PURE__*/ S.Array(
     IpAddressPool,
@@ -9072,13 +9056,13 @@ export const L2ServiceLoadBalancerConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<L2ServiceLoadBalancerConfiguration>;
 
 /** The CIDR notation IP ranges from which to assign pod IPs. One IPv4 CIDR is expected for single-stack networking. Two CIDRs, one for each IP family (IPv4/IPv6), is expected for dual-stack networking. */
-export type NetworkConfigurationPodCidrsList = ReadonlyArray<string>;
+export type NetworkConfigurationPodCidrsList = Array<string>;
 export const NetworkConfigurationPodCidrsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<NetworkConfigurationPodCidrsList>;
 
 /** The CIDR notation IP ranges from which to assign service IPs. One IPv4 CIDR is expected for single-stack networking. Two CIDRs, one for each IP family (IPv4/IPv6), is expected for dual-stack networking. */
-export type NetworkConfigurationServiceCidrsList = ReadonlyArray<string>;
+export type NetworkConfigurationServiceCidrsList = Array<string>;
 export const NetworkConfigurationServiceCidrsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<NetworkConfigurationServiceCidrsList>;
@@ -9205,15 +9189,14 @@ export const KubernetesClustersCreateOrUpdateResponseTagsMap =
 
 /** The agent pools that are created with this Kubernetes cluster for running critical system services and workloads. This data in this field is only used during creation, and the field will be empty following the creation of the Kubernetes Cluster. After creation, the management of agent pools is done using the agentPools sub-resource. */
 export type KubernetesClusterPropertiesInitialAgentPoolConfigurationsList =
-  ReadonlyArray<InitialAgentPoolConfiguration>;
+  Array<InitialAgentPoolConfiguration>;
 export const KubernetesClusterPropertiesInitialAgentPoolConfigurationsList =
   /*@__PURE__*/ S.Array(
     InitialAgentPoolConfiguration,
   ) as any as S.Schema<KubernetesClusterPropertiesInitialAgentPoolConfigurationsList>;
 
 /** The full list of network resource IDs that are attached to this cluster, including those attached only to specific agent pools. */
-export type KubernetesClusterPropertiesAttachedNetworkIdsList =
-  ReadonlyArray<string>;
+export type KubernetesClusterPropertiesAttachedNetworkIdsList = Array<string>;
 export const KubernetesClusterPropertiesAttachedNetworkIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -9241,7 +9224,7 @@ export const AvailableUpgrade = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of versions that this Kubernetes cluster can be upgraded to. */
 export type KubernetesClusterPropertiesAvailableUpgradesList =
-  ReadonlyArray<AvailableUpgrade>;
+  Array<AvailableUpgrade>;
 export const KubernetesClusterPropertiesAvailableUpgradesList =
   /*@__PURE__*/ S.Array(
     AvailableUpgrade,
@@ -9280,7 +9263,7 @@ export const FeatureStatus = /*@__PURE__*/ S.suspend(() =>
 
 /** The current feature settings. */
 export type KubernetesClusterPropertiesFeatureStatusesList =
-  ReadonlyArray<FeatureStatus>;
+  Array<FeatureStatus>;
 export const KubernetesClusterPropertiesFeatureStatusesList =
   /*@__PURE__*/ S.Array(
     FeatureStatus,
@@ -9299,7 +9282,7 @@ export type KubernetesClusterNodeDetailedStatus =
 export const KubernetesClusterNodeDetailedStatus = /*@__PURE__*/ S.String;
 
 /** The list of labels on this node that have been assigned to the agent pool containing this node. */
-export type KubernetesClusterNodeLabelsList = ReadonlyArray<KubernetesLabel>;
+export type KubernetesClusterNodeLabelsList = Array<KubernetesLabel>;
 export const KubernetesClusterNodeLabelsList = /*@__PURE__*/ S.Array(
   KubernetesLabel,
 ) as any as S.Schema<KubernetesClusterNodeLabelsList>;
@@ -9348,7 +9331,7 @@ export const NetworkAttachment = /*@__PURE__*/ S.suspend(() =>
 
 /** The NetworkAttachments made to this node. */
 export type KubernetesClusterNodeNetworkAttachmentsList =
-  ReadonlyArray<NetworkAttachment>;
+  Array<NetworkAttachment>;
 export const KubernetesClusterNodeNetworkAttachmentsList =
   /*@__PURE__*/ S.Array(
     NetworkAttachment,
@@ -9363,7 +9346,7 @@ export type KubernetesNodeRole = "ControlPlane" | "Worker";
 export const KubernetesNodeRole = /*@__PURE__*/ S.String;
 
 /** The list of taints that have been assigned to the agent pool containing this node. */
-export type KubernetesClusterNodeTaintsList = ReadonlyArray<KubernetesLabel>;
+export type KubernetesClusterNodeTaintsList = Array<KubernetesLabel>;
 export const KubernetesClusterNodeTaintsList = /*@__PURE__*/ S.Array(
   KubernetesLabel,
 ) as any as S.Schema<KubernetesClusterNodeTaintsList>;
@@ -9433,8 +9416,7 @@ export const KubernetesClusterNode = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<KubernetesClusterNode>;
 
 /** The details of the nodes in this cluster. */
-export type KubernetesClusterPropertiesNodesList =
-  ReadonlyArray<KubernetesClusterNode>;
+export type KubernetesClusterPropertiesNodesList = Array<KubernetesClusterNode>;
 export const KubernetesClusterPropertiesNodesList = /*@__PURE__*/ S.Array(
   KubernetesClusterNode,
 ) as any as S.Schema<KubernetesClusterPropertiesNodesList>;
@@ -9732,7 +9714,7 @@ export const KubernetesCluster = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<KubernetesCluster>;
 
 /** The KubernetesCluster items on this page */
-export type KubernetesClusterListValueList = ReadonlyArray<KubernetesCluster>;
+export type KubernetesClusterListValueList = Array<KubernetesCluster>;
 export const KubernetesClusterListValueList = /*@__PURE__*/ S.Array(
   KubernetesCluster,
 ) as any as S.Schema<KubernetesClusterListValueList>;
@@ -9817,7 +9799,7 @@ export const KubernetesClustersRestartNodeResponse = /*@__PURE__*/ S.suspend(
 
 /** SshPublicKey represents the public key used to authenticate with a resource through SSH. */
 export type AdministratorConfigurationPatchSshPublicKeysList =
-  ReadonlyArray<SshPublicKey>;
+  Array<SshPublicKey>;
 export const AdministratorConfigurationPatchSshPublicKeysList =
   /*@__PURE__*/ S.Array(
     SshPublicKey,
@@ -10042,7 +10024,7 @@ export const KubernetesVersionValue = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of available Kubernetes versions. */
 export type KubernetesVersionPropertiesValuesList =
-  ReadonlyArray<KubernetesVersionValue>;
+  Array<KubernetesVersionValue>;
 export const KubernetesVersionPropertiesValuesList = /*@__PURE__*/ S.Array(
   KubernetesVersionValue,
 ) as any as S.Schema<KubernetesVersionPropertiesValuesList>;
@@ -10284,7 +10266,7 @@ export const KubernetesVersion = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<KubernetesVersion>;
 
 /** The KubernetesVersion items on this page */
-export type KubernetesVersionListValueList = ReadonlyArray<KubernetesVersion>;
+export type KubernetesVersionListValueList = Array<KubernetesVersion>;
 export const KubernetesVersionListValueList = /*@__PURE__*/ S.Array(
   KubernetesVersion,
 ) as any as S.Schema<KubernetesVersionListValueList>;
@@ -10507,8 +10489,7 @@ export type L2NetworkPropertiesHybridAksPluginType =
 export const L2NetworkPropertiesHybridAksPluginType = /*@__PURE__*/ S.String;
 
 /** The list of resource IDs for the other Microsoft.NetworkCloud resources that have attached this network. */
-export type L2NetworkPropertiesAssociatedResourceIdsList =
-  ReadonlyArray<string>;
+export type L2NetworkPropertiesAssociatedResourceIdsList = Array<string>;
 export const L2NetworkPropertiesAssociatedResourceIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -10520,15 +10501,14 @@ export const L2NetworkDetailedStatus = /*@__PURE__*/ S.String;
 
 /** Field Deprecated. These fields will be empty/omitted. The list of Hybrid AKS cluster resource ID(s) that are associated with this L2 network. */
 export type L2NetworkPropertiesHybridAksClustersAssociatedIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const L2NetworkPropertiesHybridAksClustersAssociatedIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<L2NetworkPropertiesHybridAksClustersAssociatedIdsList>;
 
 /** Field Deprecated. These fields will be empty/omitted. The list of virtual machine resource ID(s), excluding any Hybrid AKS virtual machines, that are currently using this L2 network. */
-export type L2NetworkPropertiesVirtualMachinesAssociatedIdsList =
-  ReadonlyArray<string>;
+export type L2NetworkPropertiesVirtualMachinesAssociatedIdsList = Array<string>;
 export const L2NetworkPropertiesVirtualMachinesAssociatedIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -10799,7 +10779,7 @@ export const L2Network = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "L2Network" }) as any as S.Schema<L2Network>;
 
 /** The L2Network items on this page */
-export type L2NetworkListValueList = ReadonlyArray<L2Network>;
+export type L2NetworkListValueList = Array<L2Network>;
 export const L2NetworkListValueList = /*@__PURE__*/ S.Array(
   L2Network,
 ) as any as S.Schema<L2NetworkListValueList>;
@@ -11058,8 +11038,7 @@ export type L3NetworkPropertiesIpAllocationType = "IPV4" | "IPV6" | "DualStack";
 export const L3NetworkPropertiesIpAllocationType = /*@__PURE__*/ S.String;
 
 /** The list of resource IDs for the other Microsoft.NetworkCloud resources that have attached this network. */
-export type L3NetworkPropertiesAssociatedResourceIdsList =
-  ReadonlyArray<string>;
+export type L3NetworkPropertiesAssociatedResourceIdsList = Array<string>;
 export const L3NetworkPropertiesAssociatedResourceIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -11071,15 +11050,14 @@ export const L3NetworkDetailedStatus = /*@__PURE__*/ S.String;
 
 /** Field Deprecated. These fields will be empty/omitted. The list of Hybrid AKS cluster resource IDs that are associated with this L3 network. */
 export type L3NetworkPropertiesHybridAksClustersAssociatedIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const L3NetworkPropertiesHybridAksClustersAssociatedIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<L3NetworkPropertiesHybridAksClustersAssociatedIdsList>;
 
 /** Field Deprecated. These fields will be empty/omitted. The list of virtual machine resource IDs, excluding any Hybrid AKS virtual machines, that are currently using this L3 network. */
-export type L3NetworkPropertiesVirtualMachinesAssociatedIdsList =
-  ReadonlyArray<string>;
+export type L3NetworkPropertiesVirtualMachinesAssociatedIdsList = Array<string>;
 export const L3NetworkPropertiesVirtualMachinesAssociatedIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -11365,7 +11343,7 @@ export const L3Network = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "L3Network" }) as any as S.Schema<L3Network>;
 
 /** The L3Network items on this page */
-export type L3NetworkListValueList = ReadonlyArray<L3Network>;
+export type L3NetworkListValueList = Array<L3Network>;
 export const L3NetworkListValueList = /*@__PURE__*/ S.Array(
   L3Network,
 ) as any as S.Schema<L3NetworkListValueList>;
@@ -11503,7 +11481,7 @@ export const MetricsConfigurationsCreateOrUpdateRequestTagsMap =
 
 /** The list of metric names that have been chosen to be enabled in addition to the core set of enabled metrics. */
 export type ClusterMetricsConfigurationPropertiesInputEnabledMetricsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ClusterMetricsConfigurationPropertiesInputEnabledMetricsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -11581,7 +11559,7 @@ export const MetricsConfigurationsCreateOrUpdateResponseTagsMap =
 
 /** The list of metric names that have been chosen to be enabled in addition to the core set of enabled metrics. */
 export type ClusterMetricsConfigurationPropertiesEnabledMetricsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ClusterMetricsConfigurationPropertiesEnabledMetricsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -11596,7 +11574,7 @@ export const ClusterMetricsConfigurationDetailedStatus = /*@__PURE__*/ S.String;
 
 /** The list of metrics that are available for the cluster but disabled at the moment. */
 export type ClusterMetricsConfigurationPropertiesDisabledMetricsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ClusterMetricsConfigurationPropertiesDisabledMetricsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -11872,7 +11850,7 @@ export const ClusterMetricsConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** The ClusterMetricsConfiguration items on this page */
 export type ClusterMetricsConfigurationListValueList =
-  ReadonlyArray<ClusterMetricsConfiguration>;
+  Array<ClusterMetricsConfiguration>;
 export const ClusterMetricsConfigurationListValueList = /*@__PURE__*/ S.Array(
   ClusterMetricsConfiguration,
 ) as any as S.Schema<ClusterMetricsConfigurationListValueList>;
@@ -11895,7 +11873,7 @@ export const ClusterMetricsConfigurationList = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of metric names that have been chosen to be enabled in addition to the core set of enabled metrics. */
 export type ClusterMetricsConfigurationPatchPropertiesEnabledMetricsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ClusterMetricsConfigurationPatchPropertiesEnabledMetricsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -12077,7 +12055,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = ReadonlyArray<Operation>;
+export type OperationsListResponseValueList = Array<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;
@@ -12407,7 +12385,7 @@ export const MachineDisk = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MachineDisk" }) as any as S.Schema<MachineDisk>;
 
 /** The list of disks. */
-export type MachineSkuPropertiesDisksList = ReadonlyArray<MachineDisk>;
+export type MachineSkuPropertiesDisksList = Array<MachineDisk>;
 export const MachineSkuPropertiesDisksList = /*@__PURE__*/ S.Array(
   MachineDisk,
 ) as any as S.Schema<MachineSkuPropertiesDisksList>;
@@ -12448,8 +12426,7 @@ export const NetworkInterface = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NetworkInterface>;
 
 /** The list of network interfaces. */
-export type MachineSkuPropertiesNetworkInterfacesList =
-  ReadonlyArray<NetworkInterface>;
+export type MachineSkuPropertiesNetworkInterfacesList = Array<NetworkInterface>;
 export const MachineSkuPropertiesNetworkInterfacesList = /*@__PURE__*/ S.Array(
   NetworkInterface,
 ) as any as S.Schema<MachineSkuPropertiesNetworkInterfacesList>;
@@ -12512,15 +12489,13 @@ export const MachineSkuSlot = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MachineSkuSlot" }) as any as S.Schema<MachineSkuSlot>;
 
 /** The list of machine SKUs and associated rack slot for the compute-dedicated machines in this rack model. */
-export type RackSkuPropertiesComputeMachinesList =
-  ReadonlyArray<MachineSkuSlot>;
+export type RackSkuPropertiesComputeMachinesList = Array<MachineSkuSlot>;
 export const RackSkuPropertiesComputeMachinesList = /*@__PURE__*/ S.Array(
   MachineSkuSlot,
 ) as any as S.Schema<RackSkuPropertiesComputeMachinesList>;
 
 /** The list of machine SKUs and associated rack slot for the control-plane dedicated machines in this rack model. */
-export type RackSkuPropertiesControllerMachinesList =
-  ReadonlyArray<MachineSkuSlot>;
+export type RackSkuPropertiesControllerMachinesList = Array<MachineSkuSlot>;
 export const RackSkuPropertiesControllerMachinesList = /*@__PURE__*/ S.Array(
   MachineSkuSlot,
 ) as any as S.Schema<RackSkuPropertiesControllerMachinesList>;
@@ -12567,13 +12542,13 @@ export const StorageApplianceSkuSlot = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of appliance SKUs and associated rack slot for the storage appliance(s) in this rack model. */
 export type RackSkuPropertiesStorageAppliancesList =
-  ReadonlyArray<StorageApplianceSkuSlot>;
+  Array<StorageApplianceSkuSlot>;
 export const RackSkuPropertiesStorageAppliancesList = /*@__PURE__*/ S.Array(
   StorageApplianceSkuSlot,
 ) as any as S.Schema<RackSkuPropertiesStorageAppliancesList>;
 
 /** The list of supported SKUs if the rack is an aggregator. */
-export type RackSkuPropertiesSupportedRackSkuIdsList = ReadonlyArray<string>;
+export type RackSkuPropertiesSupportedRackSkuIdsList = Array<string>;
 export const RackSkuPropertiesSupportedRackSkuIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RackSkuPropertiesSupportedRackSkuIdsList>;
@@ -12682,7 +12657,7 @@ export const RackSku = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RackSku" }) as any as S.Schema<RackSku>;
 
 /** The RackSku items on this page */
-export type RackSkuListValueList = ReadonlyArray<RackSku>;
+export type RackSkuListValueList = Array<RackSku>;
 export const RackSkuListValueList = /*@__PURE__*/ S.Array(
   RackSku,
 ) as any as S.Schema<RackSkuListValueList>;
@@ -12772,7 +12747,7 @@ export const Rack = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Rack" }) as any as S.Schema<Rack>;
 
 /** The Rack items on this page */
-export type RackListValueList = ReadonlyArray<Rack>;
+export type RackListValueList = Array<Rack>;
 export const RackListValueList = /*@__PURE__*/ S.Array(
   Rack,
 ) as any as S.Schema<RackListValueList>;
@@ -13022,7 +12997,7 @@ export const StorageApplianceExpansionShelf = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of expansion shelves connected to the storage appliance. */
 export type StorageAppliancePropertiesExpansionShelvesList =
-  ReadonlyArray<StorageApplianceExpansionShelf>;
+  Array<StorageApplianceExpansionShelf>;
 export const StorageAppliancePropertiesExpansionShelvesList =
   /*@__PURE__*/ S.Array(
     StorageApplianceExpansionShelf,
@@ -13076,7 +13051,7 @@ export const RemoteVendorManagementStatus = /*@__PURE__*/ S.String;
 
 /** The list of statuses that represent secret rotation activity. */
 export type StorageAppliancePropertiesSecretRotationStatusList =
-  ReadonlyArray<SecretRotationStatus>;
+  Array<SecretRotationStatus>;
 export const StorageAppliancePropertiesSecretRotationStatusList =
   /*@__PURE__*/ S.Array(
     SecretRotationStatus,
@@ -13273,7 +13248,7 @@ export const StorageAppliancesDisableRemoteVendorManagementResponse =
 
 /** Field Deprecated. This field is not used and will be rejected if provided. The list of IPv4 subnets (in CIDR format), IPv6 subnets (in CIDR format), or hostnames that the storage appliance needs accessible in order to turn on the remote vendor management. */
 export type StorageAppliancesEnableRemoteVendorManagementRequestSupportEndpointsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const StorageAppliancesEnableRemoteVendorManagementRequestSupportEndpointsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -13460,7 +13435,7 @@ export const StorageAppliance = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StorageAppliance>;
 
 /** The StorageAppliance items on this page */
-export type StorageApplianceListValueList = ReadonlyArray<StorageAppliance>;
+export type StorageApplianceListValueList = Array<StorageAppliance>;
 export const StorageApplianceListValueList = /*@__PURE__*/ S.Array(
   StorageAppliance,
 ) as any as S.Schema<StorageApplianceListValueList>;
@@ -13508,8 +13483,7 @@ export const StorageAppliancesListBySubscriptionRequest =
   }) as any as S.Schema<StorageAppliancesListBySubscriptionRequest>;
 
 /** The list of strings that will be passed to the script in order as separate arguments. */
-export type StorageApplianceCommandSpecificationArgumentsList =
-  ReadonlyArray<string>;
+export type StorageApplianceCommandSpecificationArgumentsList = Array<string>;
 export const StorageApplianceCommandSpecificationArgumentsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -13534,7 +13508,7 @@ export const StorageApplianceCommandSpecification = /*@__PURE__*/ S.suspend(
 
 /** The list of read-only commands to be executed directly against the target storage appliance. */
 export type StorageAppliancesRunReadCommandsRequestCommandsList =
-  ReadonlyArray<StorageApplianceCommandSpecification>;
+  Array<StorageApplianceCommandSpecification>;
 export const StorageAppliancesRunReadCommandsRequestCommandsList =
   /*@__PURE__*/ S.Array(
     StorageApplianceCommandSpecification,
@@ -13696,15 +13670,14 @@ export const TrunkedNetworkPropertiesInputHybridAksPluginType =
   /*@__PURE__*/ S.String;
 
 /** The list of resource IDs representing the Network Fabric isolation domains. It can be any combination of l2IsolationDomain and l3IsolationDomain resources. */
-export type TrunkedNetworkPropertiesInputIsolationDomainIdsList =
-  ReadonlyArray<string>;
+export type TrunkedNetworkPropertiesInputIsolationDomainIdsList = Array<string>;
 export const TrunkedNetworkPropertiesInputIsolationDomainIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<TrunkedNetworkPropertiesInputIsolationDomainIdsList>;
 
 /** The list of vlans that are selected from the isolation domains for trunking. */
-export type TrunkedNetworkPropertiesInputVlansList = ReadonlyArray<number>;
+export type TrunkedNetworkPropertiesInputVlansList = Array<number>;
 export const TrunkedNetworkPropertiesInputVlansList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<TrunkedNetworkPropertiesInputVlansList>;
@@ -13792,22 +13765,20 @@ export const TrunkedNetworkPropertiesHybridAksPluginType =
   /*@__PURE__*/ S.String;
 
 /** The list of resource IDs representing the Network Fabric isolation domains. It can be any combination of l2IsolationDomain and l3IsolationDomain resources. */
-export type TrunkedNetworkPropertiesIsolationDomainIdsList =
-  ReadonlyArray<string>;
+export type TrunkedNetworkPropertiesIsolationDomainIdsList = Array<string>;
 export const TrunkedNetworkPropertiesIsolationDomainIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<TrunkedNetworkPropertiesIsolationDomainIdsList>;
 
 /** The list of vlans that are selected from the isolation domains for trunking. */
-export type TrunkedNetworkPropertiesVlansList = ReadonlyArray<number>;
+export type TrunkedNetworkPropertiesVlansList = Array<number>;
 export const TrunkedNetworkPropertiesVlansList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<TrunkedNetworkPropertiesVlansList>;
 
 /** The list of resource IDs for the other Microsoft.NetworkCloud resources that have attached this network. */
-export type TrunkedNetworkPropertiesAssociatedResourceIdsList =
-  ReadonlyArray<string>;
+export type TrunkedNetworkPropertiesAssociatedResourceIdsList = Array<string>;
 export const TrunkedNetworkPropertiesAssociatedResourceIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -13822,7 +13793,7 @@ export const TrunkedNetworkDetailedStatus = /*@__PURE__*/ S.String;
 
 /** Field Deprecated. These fields will be empty/omitted. The list of Hybrid AKS cluster resource IDs that are associated with this trunked network. */
 export type TrunkedNetworkPropertiesHybridAksClustersAssociatedIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const TrunkedNetworkPropertiesHybridAksClustersAssociatedIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -13830,7 +13801,7 @@ export const TrunkedNetworkPropertiesHybridAksClustersAssociatedIdsList =
 
 /** Field Deprecated. These fields will be empty/omitted. The list of virtual machine resource IDs, excluding any Hybrid AKS virtual machines, that are currently using this trunked network. */
 export type TrunkedNetworkPropertiesVirtualMachinesAssociatedIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const TrunkedNetworkPropertiesVirtualMachinesAssociatedIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -14107,7 +14078,7 @@ export const TrunkedNetwork = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TrunkedNetwork" }) as any as S.Schema<TrunkedNetwork>;
 
 /** The TrunkedNetwork items on this page */
-export type TrunkedNetworkListValueList = ReadonlyArray<TrunkedNetwork>;
+export type TrunkedNetworkListValueList = Array<TrunkedNetwork>;
 export const TrunkedNetworkListValueList = /*@__PURE__*/ S.Array(
   TrunkedNetwork,
 ) as any as S.Schema<TrunkedNetworkListValueList>;
@@ -14330,7 +14301,7 @@ export const VirtualMachinePropertiesInputIsolateEmulatorThread =
 
 /** The list of network attachments to the virtual machine. */
 export type VirtualMachinePropertiesInputNetworkAttachmentsList =
-  ReadonlyArray<NetworkAttachmentInput>;
+  Array<NetworkAttachmentInput>;
 export const VirtualMachinePropertiesInputNetworkAttachmentsList =
   /*@__PURE__*/ S.Array(
     NetworkAttachmentInput,
@@ -14352,13 +14323,13 @@ export const VirtualMachinePlacementHintPodAffinityScope =
 /** VirtualMachinePlacementHint represents a single scheduling hint of the virtual machine. */
 export interface VirtualMachinePlacementHint {
   /** The specification of whether this hint supports affinity or anti-affinity with the referenced resources. */
-  hintType: VirtualMachinePlacementHintType;
+  hintType: VirtualMachinePlacementHintType | (string & {});
   /** The resource ID of the target object that the placement hints will be checked against, e.g., the bare metal node to host the virtual machine. */
   resourceId: string;
   /** The indicator of whether the hint is a hard or soft requirement during scheduling. */
-  schedulingExecution: VirtualMachineSchedulingExecution;
+  schedulingExecution: VirtualMachineSchedulingExecution | (string & {});
   /** The scope for the virtual machine affinity or anti-affinity placement hint. It should always be "Machine" in the case of node affinity. */
-  scope: VirtualMachinePlacementHintPodAffinityScope;
+  scope: VirtualMachinePlacementHintPodAffinityScope | (string & {});
 }
 export const VirtualMachinePlacementHint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -14373,7 +14344,7 @@ export const VirtualMachinePlacementHint = /*@__PURE__*/ S.suspend(() =>
 
 /** The scheduling hints for the virtual machine. */
 export type VirtualMachinePropertiesInputPlacementHintsList =
-  ReadonlyArray<VirtualMachinePlacementHint>;
+  Array<VirtualMachinePlacementHint>;
 export const VirtualMachinePropertiesInputPlacementHintsList =
   /*@__PURE__*/ S.Array(
     VirtualMachinePlacementHint,
@@ -14381,7 +14352,7 @@ export const VirtualMachinePropertiesInputPlacementHintsList =
 
 /** The list of ssh public keys. Each key will be added to the virtual machine using the cloud-init ssh_authorized_keys mechanism for the adminUsername. */
 export type VirtualMachinePropertiesInputSshPublicKeysList =
-  ReadonlyArray<SshPublicKey>;
+  Array<SshPublicKey>;
 export const VirtualMachinePropertiesInputSshPublicKeysList =
   /*@__PURE__*/ S.Array(
     SshPublicKey,
@@ -14398,9 +14369,9 @@ export const OsDiskDeleteOption = /*@__PURE__*/ S.String;
 /** OsDisk represents configuration of the boot disk. */
 export interface OsDisk {
   /** The strategy for creating the OS disk. */
-  createOption?: OsDiskCreateOption;
+  createOption?: OsDiskCreateOption | (string & {});
   /** The strategy for deleting the OS disk. */
-  deleteOption?: OsDiskDeleteOption;
+  deleteOption?: OsDiskDeleteOption | (string & {});
   /** The size of the disk. Required if the createOption is Ephemeral. Allocations are measured in gibibytes. */
   diskSizeGB: number;
 }
@@ -14413,7 +14384,7 @@ export const OsDisk = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "OsDisk" }) as any as S.Schema<OsDisk>;
 
 /** The resource IDs of volumes that are requested to be attached to the virtual machine. */
-export type StorageProfileVolumeAttachmentsList = ReadonlyArray<string>;
+export type StorageProfileVolumeAttachmentsList = Array<string>;
 export const StorageProfileVolumeAttachmentsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StorageProfileVolumeAttachmentsList>;
@@ -14629,7 +14600,7 @@ export const VirtualMachinePropertiesIsolateEmulatorThread =
 
 /** The list of network attachments to the virtual machine. */
 export type VirtualMachinePropertiesNetworkAttachmentsList =
-  ReadonlyArray<NetworkAttachment>;
+  Array<NetworkAttachment>;
 export const VirtualMachinePropertiesNetworkAttachmentsList =
   /*@__PURE__*/ S.Array(
     NetworkAttachment,
@@ -14637,14 +14608,13 @@ export const VirtualMachinePropertiesNetworkAttachmentsList =
 
 /** The scheduling hints for the virtual machine. */
 export type VirtualMachinePropertiesPlacementHintsList =
-  ReadonlyArray<VirtualMachinePlacementHint>;
+  Array<VirtualMachinePlacementHint>;
 export const VirtualMachinePropertiesPlacementHintsList = /*@__PURE__*/ S.Array(
   VirtualMachinePlacementHint,
 ) as any as S.Schema<VirtualMachinePropertiesPlacementHintsList>;
 
 /** The list of ssh public keys. Each key will be added to the virtual machine using the cloud-init ssh_authorized_keys mechanism for the adminUsername. */
-export type VirtualMachinePropertiesSshPublicKeysList =
-  ReadonlyArray<SshPublicKey>;
+export type VirtualMachinePropertiesSshPublicKeysList = Array<SshPublicKey>;
 export const VirtualMachinePropertiesSshPublicKeysList = /*@__PURE__*/ S.Array(
   SshPublicKey,
 ) as any as S.Schema<VirtualMachinePropertiesSshPublicKeysList>;
@@ -14674,7 +14644,7 @@ export type VirtualMachinePowerState = "Off" | "On" | "Unknown";
 export const VirtualMachinePowerState = /*@__PURE__*/ S.String;
 
 /** The resource IDs of volumes that are attached to the virtual machine. */
-export type VirtualMachinePropertiesVolumesList = ReadonlyArray<string>;
+export type VirtualMachinePropertiesVolumesList = Array<string>;
 export const VirtualMachinePropertiesVolumesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<VirtualMachinePropertiesVolumesList>;
@@ -15104,7 +15074,7 @@ export const VirtualMachine = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VirtualMachine" }) as any as S.Schema<VirtualMachine>;
 
 /** The VirtualMachine items on this page */
-export type VirtualMachineListValueList = ReadonlyArray<VirtualMachine>;
+export type VirtualMachineListValueList = Array<VirtualMachine>;
 export const VirtualMachineListValueList = /*@__PURE__*/ S.Array(
   VirtualMachine,
 ) as any as S.Schema<VirtualMachineListValueList>;
@@ -15544,7 +15514,7 @@ export const VolumesCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<VolumesCreateOrUpdateResponseTagsMap>;
 
 /** The list of resource IDs that attach the volume. It may include virtual machines and Hybrid AKS clusters. */
-export type VolumePropertiesAttachedToList = ReadonlyArray<string>;
+export type VolumePropertiesAttachedToList = Array<string>;
 export const VolumePropertiesAttachedToList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<VolumePropertiesAttachedToList>;
@@ -15806,7 +15776,7 @@ export const Volume = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Volume" }) as any as S.Schema<Volume>;
 
 /** The Volume items on this page */
-export type VolumeListValueList = ReadonlyArray<Volume>;
+export type VolumeListValueList = Array<Volume>;
 export const VolumeListValueList = /*@__PURE__*/ S.Array(
   Volume,
 ) as any as S.Schema<VolumeListValueList>;

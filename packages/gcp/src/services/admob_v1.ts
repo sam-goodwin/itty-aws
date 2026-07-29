@@ -79,14 +79,14 @@ export type MediationReportSpecDimensionsItemEnum =
   | "SERVING_RESTRICTION";
 export const MediationReportSpecDimensionsItemEnum = /*@__PURE__*/ S.String;
 
-export type MediationReportSpecDimensionsItemEnumList = ReadonlyArray<
+export type MediationReportSpecDimensionsItemEnumList = Array<
   MediationReportSpecDimensionsItemEnum | (string & {})
 >;
 export const MediationReportSpecDimensionsItemEnumList = /*@__PURE__*/ S.Array(
   MediationReportSpecDimensionsItemEnum,
 ) as any as S.Schema<MediationReportSpecDimensionsItemEnumList>;
 
-export type StringList_ = ReadonlyArray<string>;
+export type StringList_ = Array<string>;
 export const StringList_ = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList_>;
@@ -139,7 +139,7 @@ export const MediationReportSpecDimensionFilter = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MediationReportSpecDimensionFilter>;
 
 export type MediationReportSpecDimensionFilterList =
-  ReadonlyArray<MediationReportSpecDimensionFilter>;
+  Array<MediationReportSpecDimensionFilter>;
 export const MediationReportSpecDimensionFilterList = /*@__PURE__*/ S.Array(
   MediationReportSpecDimensionFilter,
 ) as any as S.Schema<MediationReportSpecDimensionFilterList>;
@@ -203,7 +203,7 @@ export const MediationReportSpecSortCondition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MediationReportSpecSortCondition>;
 
 export type MediationReportSpecSortConditionList =
-  ReadonlyArray<MediationReportSpecSortCondition>;
+  Array<MediationReportSpecSortCondition>;
 export const MediationReportSpecSortConditionList = /*@__PURE__*/ S.Array(
   MediationReportSpecSortCondition,
 ) as any as S.Schema<MediationReportSpecSortConditionList>;
@@ -220,7 +220,7 @@ export type MediationReportSpecMetricsItemEnum =
   | "OBSERVED_ECPM";
 export const MediationReportSpecMetricsItemEnum = /*@__PURE__*/ S.String;
 
-export type MediationReportSpecMetricsItemEnumList = ReadonlyArray<
+export type MediationReportSpecMetricsItemEnumList = Array<
   MediationReportSpecMetricsItemEnum | (string & {})
 >;
 export const MediationReportSpecMetricsItemEnumList = /*@__PURE__*/ S.Array(
@@ -365,7 +365,7 @@ export const ReportWarning = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ReportWarning" }) as any as S.Schema<ReportWarning>;
 
-export type ReportWarningList = ReadonlyArray<ReportWarning>;
+export type ReportWarningList = Array<ReportWarning>;
 export const ReportWarningList = /*@__PURE__*/ S.Array(
   ReportWarning,
 ) as any as S.Schema<ReportWarningList>;
@@ -498,7 +498,7 @@ export type NetworkReportSpecMetricsItemEnum =
   | "SHOW_RATE";
 export const NetworkReportSpecMetricsItemEnum = /*@__PURE__*/ S.String;
 
-export type NetworkReportSpecMetricsItemEnumList = ReadonlyArray<
+export type NetworkReportSpecMetricsItemEnumList = Array<
   NetworkReportSpecMetricsItemEnum | (string & {})
 >;
 export const NetworkReportSpecMetricsItemEnumList = /*@__PURE__*/ S.Array(
@@ -540,7 +540,7 @@ export const NetworkReportSpecDimensionFilter = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NetworkReportSpecDimensionFilter>;
 
 export type NetworkReportSpecDimensionFilterList =
-  ReadonlyArray<NetworkReportSpecDimensionFilter>;
+  Array<NetworkReportSpecDimensionFilter>;
 export const NetworkReportSpecDimensionFilterList = /*@__PURE__*/ S.Array(
   NetworkReportSpecDimensionFilter,
 ) as any as S.Schema<NetworkReportSpecDimensionFilterList>;
@@ -602,7 +602,7 @@ export const NetworkReportSpecSortCondition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NetworkReportSpecSortCondition>;
 
 export type NetworkReportSpecSortConditionList =
-  ReadonlyArray<NetworkReportSpecSortCondition>;
+  Array<NetworkReportSpecSortCondition>;
 export const NetworkReportSpecSortConditionList = /*@__PURE__*/ S.Array(
   NetworkReportSpecSortCondition,
 ) as any as S.Schema<NetworkReportSpecSortConditionList>;
@@ -624,7 +624,7 @@ export type NetworkReportSpecDimensionsItemEnum =
   | "SERVING_RESTRICTION";
 export const NetworkReportSpecDimensionsItemEnum = /*@__PURE__*/ S.String;
 
-export type NetworkReportSpecDimensionsItemEnumList = ReadonlyArray<
+export type NetworkReportSpecDimensionsItemEnumList = Array<
   NetworkReportSpecDimensionsItemEnum | (string & {})
 >;
 export const NetworkReportSpecDimensionsItemEnumList = /*@__PURE__*/ S.Array(
@@ -780,7 +780,7 @@ export const ListAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAccountsRequest",
 }) as any as S.Schema<ListAccountsRequest>;
 
-export type PublisherAccountList = ReadonlyArray<PublisherAccount>;
+export type PublisherAccountList = Array<PublisherAccount>;
 export const PublisherAccountList = /*@__PURE__*/ S.Array(
   PublisherAccount,
 ) as any as S.Schema<PublisherAccountList>;
@@ -851,7 +851,7 @@ export const AdUnit = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AdUnit" }) as any as S.Schema<AdUnit>;
 
-export type AdUnitList = ReadonlyArray<AdUnit>;
+export type AdUnitList = Array<AdUnit>;
 export const AdUnitList = /*@__PURE__*/ S.Array(
   AdUnit,
 ) as any as S.Schema<AdUnitList>;
@@ -958,7 +958,7 @@ export const App = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "App" }) as any as S.Schema<App>;
 
-export type AppList = ReadonlyArray<App>;
+export type AppList = Array<App>;
 export const AppList = /*@__PURE__*/ S.Array(App) as any as S.Schema<AppList>;
 
 /** Response for the apps list request. */

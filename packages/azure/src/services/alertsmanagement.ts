@@ -23,7 +23,7 @@ export const AlertProcessingRulesCreateOrUpdateRequestTagsMap =
   ) as any as S.Schema<AlertProcessingRulesCreateOrUpdateRequestTagsMap>;
 
 /** Scopes on which alert processing rule will apply. */
-export type AlertProcessingRulePropertiesScopesList = ReadonlyArray<string>;
+export type AlertProcessingRulePropertiesScopesList = Array<string>;
 export const AlertProcessingRulePropertiesScopesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AlertProcessingRulePropertiesScopesList>;
@@ -48,7 +48,7 @@ export type Operator = "Equals" | "NotEquals" | "Contains" | "DoesNotContain";
 export const Operator = /*@__PURE__*/ S.String;
 
 /** List of values to match for a given condition. */
-export type ConditionValuesList = ReadonlyArray<string>;
+export type ConditionValuesList = Array<string>;
 export const ConditionValuesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ConditionValuesList>;
@@ -56,9 +56,9 @@ export const ConditionValuesList = /*@__PURE__*/ S.Array(
 /** Condition to trigger an alert processing rule. */
 export interface Condition {
   /** Field for a given condition. */
-  field?: Field;
+  field?: Field | (string & {});
   /** Operator for a given condition. */
-  operator?: Operator;
+  operator?: Operator | (string & {});
   /** List of values to match for a given condition. */
   values?: ConditionValuesList;
 }
@@ -71,8 +71,7 @@ export const Condition = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Condition" }) as any as S.Schema<Condition>;
 
 /** Conditions on which alerts will be filtered. */
-export type AlertProcessingRulePropertiesConditionsList =
-  ReadonlyArray<Condition>;
+export type AlertProcessingRulePropertiesConditionsList = Array<Condition>;
 export const AlertProcessingRulePropertiesConditionsList =
   /*@__PURE__*/ S.Array(
     Condition,
@@ -85,7 +84,7 @@ export const RecurrenceType = /*@__PURE__*/ S.String;
 /** Recurrence object. */
 export interface Recurrence {
   /** Specifies when the recurrence should be applied. */
-  recurrenceType: RecurrenceType;
+  recurrenceType: RecurrenceType | (string & {});
   /** Start time for recurrence. */
   startTime?: string;
   /** End time for recurrence. */
@@ -100,7 +99,7 @@ export const Recurrence = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Recurrence" }) as any as S.Schema<Recurrence>;
 
 /** List of recurrences. */
-export type ScheduleRecurrencesList = ReadonlyArray<Recurrence>;
+export type ScheduleRecurrencesList = Array<Recurrence>;
 export const ScheduleRecurrencesList = /*@__PURE__*/ S.Array(
   Recurrence,
 ) as any as S.Schema<ScheduleRecurrencesList>;
@@ -132,7 +131,7 @@ export const ActionType = /*@__PURE__*/ S.String;
 /** Action to be applied. */
 export interface Action {
   /** Action that should be applied. */
-  actionType: ActionType;
+  actionType: ActionType | (string & {});
 }
 export const Action = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -141,7 +140,7 @@ export const Action = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Action" }) as any as S.Schema<Action>;
 
 /** Actions to be applied. */
-export type AlertProcessingRulePropertiesActionsList = ReadonlyArray<Action>;
+export type AlertProcessingRulePropertiesActionsList = Array<Action>;
 export const AlertProcessingRulePropertiesActionsList = /*@__PURE__*/ S.Array(
   Action,
 ) as any as S.Schema<AlertProcessingRulePropertiesActionsList>;
@@ -402,8 +401,7 @@ export const AlertProcessingRule = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AlertProcessingRule>;
 
 /** The AlertProcessingRule items on this page */
-export type AlertProcessingRulesListValueList =
-  ReadonlyArray<AlertProcessingRule>;
+export type AlertProcessingRulesListValueList = Array<AlertProcessingRule>;
 export const AlertProcessingRulesListValueList = /*@__PURE__*/ S.Array(
   AlertProcessingRule,
 ) as any as S.Schema<AlertProcessingRulesListValueList>;
@@ -857,7 +855,7 @@ export const Alert = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Alert" }) as any as S.Schema<Alert>;
 
 /** List of alerts */
-export type AlertsListValueList = ReadonlyArray<Alert>;
+export type AlertsListValueList = Array<Alert>;
 export const AlertsListValueList = /*@__PURE__*/ S.Array(
   Alert,
 ) as any as S.Schema<AlertsListValueList>;
@@ -980,7 +978,7 @@ export const AlertModificationItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Modification details */
 export type AlertModificationPropertiesModificationsList =
-  ReadonlyArray<AlertModificationItem>;
+  Array<AlertModificationItem>;
 export const AlertModificationPropertiesModificationsList =
   /*@__PURE__*/ S.Array(
     AlertModificationItem,
@@ -1129,8 +1127,7 @@ export const AlertsGetSummaryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AlertsGetSummaryRequest>;
 
 /** List of the items */
-export type AlertsSummaryGroupItemValuesList =
-  ReadonlyArray<AlertsSummaryGroupItem>;
+export type AlertsSummaryGroupItemValuesList = Array<AlertsSummaryGroupItem>;
 export const AlertsSummaryGroupItemValuesList = /*@__PURE__*/ S.Array(
   S.suspend(() => AlertsSummaryGroupItem),
 ) as any as S.Schema<AlertsSummaryGroupItemValuesList>;
@@ -1158,8 +1155,7 @@ export const AlertsSummaryGroupItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AlertsSummaryGroupItem>;
 
 /** List of the items */
-export type AlertsSummaryGroupValuesList =
-  ReadonlyArray<AlertsSummaryGroupItem>;
+export type AlertsSummaryGroupValuesList = Array<AlertsSummaryGroupItem>;
 export const AlertsSummaryGroupValuesList = /*@__PURE__*/ S.Array(
   AlertsSummaryGroupItem,
 ) as any as S.Schema<AlertsSummaryGroupValuesList>;
@@ -1307,7 +1303,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** Array of operations */
-export type OperationsListValueList = ReadonlyArray<Operation>;
+export type OperationsListValueList = Array<Operation>;
 export const OperationsListValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListValueList>;
@@ -1337,7 +1333,7 @@ export const PrometheusRuleGroupsCreateOrUpdateRequestTagsMap =
   ) as any as S.Schema<PrometheusRuleGroupsCreateOrUpdateRequestTagsMap>;
 
 /** Target Azure Monitor workspaces resource ids. This api-version is currently limited to creating with one scope. This may change in future. */
-export type PrometheusRuleGroupPropertiesScopesList = ReadonlyArray<string>;
+export type PrometheusRuleGroupPropertiesScopesList = Array<string>;
 export const PrometheusRuleGroupPropertiesScopesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PrometheusRuleGroupPropertiesScopesList>;
@@ -1385,8 +1381,7 @@ export const PrometheusRuleGroupAction = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrometheusRuleGroupAction>;
 
 /** Actions that are performed when the alert rule becomes active, and when an alert condition is resolved. */
-export type PrometheusRuleActionsList =
-  ReadonlyArray<PrometheusRuleGroupAction>;
+export type PrometheusRuleActionsList = Array<PrometheusRuleGroupAction>;
 export const PrometheusRuleActionsList = /*@__PURE__*/ S.Array(
   PrometheusRuleGroupAction,
 ) as any as S.Schema<PrometheusRuleActionsList>;
@@ -1446,8 +1441,7 @@ export const PrometheusRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PrometheusRule" }) as any as S.Schema<PrometheusRule>;
 
 /** Defines the rules in the Prometheus rule group. */
-export type PrometheusRuleGroupPropertiesRulesList =
-  ReadonlyArray<PrometheusRule>;
+export type PrometheusRuleGroupPropertiesRulesList = Array<PrometheusRule>;
 export const PrometheusRuleGroupPropertiesRulesList = /*@__PURE__*/ S.Array(
   PrometheusRule,
 ) as any as S.Schema<PrometheusRuleGroupPropertiesRulesList>;
@@ -1759,7 +1753,7 @@ export const PrometheusRuleGroupResource = /*@__PURE__*/ S.suspend(() =>
 
 /** the values for the alert rule resources. */
 export type PrometheusRuleGroupResourceCollectionValueList =
-  ReadonlyArray<PrometheusRuleGroupResource>;
+  Array<PrometheusRuleGroupResource>;
 export const PrometheusRuleGroupResourceCollectionValueList =
   /*@__PURE__*/ S.Array(
     PrometheusRuleGroupResource,
@@ -1939,13 +1933,13 @@ export const DetectorInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DetectorInput" }) as any as S.Schema<DetectorInput>;
 
 /** The alert rule resources scope. */
-export type AlertRulePropertiesInputScopeList = ReadonlyArray<string>;
+export type AlertRulePropertiesInputScopeList = Array<string>;
 export const AlertRulePropertiesInputScopeList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AlertRulePropertiesInputScopeList>;
 
 /** The Action Group resource IDs. */
-export type ActionGroupsInformationGroupIdsList = ReadonlyArray<string>;
+export type ActionGroupsInformationGroupIdsList = Array<string>;
 export const ActionGroupsInformationGroupIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ActionGroupsInformationGroupIdsList>;
@@ -2082,13 +2076,13 @@ export const DetectorParametersMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<DetectorParametersMap>;
 
 /** The Smart Detector supported resource types. */
-export type DetectorSupportedResourceTypesList = ReadonlyArray<string>;
+export type DetectorSupportedResourceTypesList = Array<string>;
 export const DetectorSupportedResourceTypesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DetectorSupportedResourceTypesList>;
 
 /** The Smart Detector image path. By default this is not populated, unless it's specified in expandDetector */
-export type DetectorImagePathsList = ReadonlyArray<string>;
+export type DetectorImagePathsList = Array<string>;
 export const DetectorImagePathsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DetectorImagePathsList>;
@@ -2129,13 +2123,13 @@ export const DetectorParameterDefinition = /*@__PURE__*/ S.suspend(() =>
 
 /** The Smart Detector parameters definitions.' */
 export type DetectorParameterDefinitionsList =
-  ReadonlyArray<DetectorParameterDefinition>;
+  Array<DetectorParameterDefinition>;
 export const DetectorParameterDefinitionsList = /*@__PURE__*/ S.Array(
   DetectorParameterDefinition,
 ) as any as S.Schema<DetectorParameterDefinitionsList>;
 
 /** The Smart Detector supported cadences. */
-export type DetectorSupportedCadencesList = ReadonlyArray<number>;
+export type DetectorSupportedCadencesList = Array<number>;
 export const DetectorSupportedCadencesList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<DetectorSupportedCadencesList>;
@@ -2173,7 +2167,7 @@ export const Detector = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Detector" }) as any as S.Schema<Detector>;
 
 /** The alert rule resources scope. */
-export type AlertRulePropertiesScopeList = ReadonlyArray<string>;
+export type AlertRulePropertiesScopeList = Array<string>;
 export const AlertRulePropertiesScopeList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AlertRulePropertiesScopeList>;
@@ -2393,7 +2387,7 @@ export const AlertRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AlertRule" }) as any as S.Schema<AlertRule>;
 
 /** List of Smart Detector alert rules. */
-export type AlertRulesListValueList = ReadonlyArray<AlertRule>;
+export type AlertRulesListValueList = Array<AlertRule>;
 export const AlertRulesListValueList = /*@__PURE__*/ S.Array(
   AlertRule,
 ) as any as S.Schema<AlertRulesListValueList>;

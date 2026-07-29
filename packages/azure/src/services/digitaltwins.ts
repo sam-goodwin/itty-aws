@@ -132,7 +132,7 @@ export const PrivateEndpointInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateEndpointInput>;
 
 /** The list of group ids for the private endpoint connection. */
-export type ConnectionPropertiesInputGroupIdsList = ReadonlyArray<string>;
+export type ConnectionPropertiesInputGroupIdsList = Array<string>;
 export const ConnectionPropertiesInputGroupIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ConnectionPropertiesInputGroupIdsList>;
@@ -148,7 +148,7 @@ export const ConnectionStateStatus = /*@__PURE__*/ S.String;
 /** The current state of a private endpoint connection. */
 export interface ConnectionState {
   /** The status of a private endpoint connection. */
-  status: ConnectionStateStatus;
+  status: ConnectionStateStatus | (string & {});
   /** The description for the current state of a private endpoint connection. */
   description: string;
   /** Actions required for a private endpoint connection. */
@@ -198,7 +198,7 @@ export const PrivateEndpointConnectionInput = /*@__PURE__*/ S.suspend(() =>
 
 /** The private endpoint connections. */
 export type DigitalTwinsPropertiesInputPrivateEndpointConnectionsList =
-  ReadonlyArray<PrivateEndpointConnectionInput>;
+  Array<PrivateEndpointConnectionInput>;
 export const DigitalTwinsPropertiesInputPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnectionInput,
@@ -417,7 +417,7 @@ export const PrivateEndpoint = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateEndpoint>;
 
 /** The list of group ids for the private endpoint connection. */
-export type ConnectionPropertiesGroupIdsList = ReadonlyArray<string>;
+export type ConnectionPropertiesGroupIdsList = Array<string>;
 export const ConnectionPropertiesGroupIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ConnectionPropertiesGroupIdsList>;
@@ -473,7 +473,7 @@ export const PrivateEndpointConnection = /*@__PURE__*/ S.suspend(() =>
 
 /** The private endpoint connections. */
 export type DigitalTwinsPropertiesPrivateEndpointConnectionsList =
-  ReadonlyArray<PrivateEndpointConnection>;
+  Array<PrivateEndpointConnection>;
 export const DigitalTwinsPropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection,
@@ -637,7 +637,7 @@ export const ManagedIdentityReferenceType = /*@__PURE__*/ S.String;
 /** The properties of the Managed Identity. */
 export interface ManagedIdentityReference {
   /** The type of managed identity used. */
-  type?: ManagedIdentityReferenceType;
+  type?: ManagedIdentityReferenceType | (string & {});
   /** The user identity ARM resource id if the managed identity type is 'UserAssigned'. */
   userAssignedIdentity?: string | null;
 }
@@ -963,7 +963,7 @@ export const DigitalTwinsEndpointResource = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of DigitalTwinsInstance Endpoints. */
 export type DigitalTwinsEndpointResourceListResultValueList =
-  ReadonlyArray<DigitalTwinsEndpointResource>;
+  Array<DigitalTwinsEndpointResource>;
 export const DigitalTwinsEndpointResourceListResultValueList =
   /*@__PURE__*/ S.Array(
     DigitalTwinsEndpointResource,
@@ -1117,7 +1117,7 @@ export const DigitalTwinsDescription = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of DigitalTwins description objects. */
 export type DigitalTwinsDescriptionListResultValueList =
-  ReadonlyArray<DigitalTwinsDescription>;
+  Array<DigitalTwinsDescription>;
 export const DigitalTwinsDescriptionListResultValueList = /*@__PURE__*/ S.Array(
   DigitalTwinsDescription,
 ) as any as S.Schema<DigitalTwinsDescriptionListResultValueList>;
@@ -1338,7 +1338,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** A list of DigitalTwins operations supported by the Microsoft.DigitalTwins resource provider. */
-export type OperationListResultValueList = ReadonlyArray<Operation>;
+export type OperationListResultValueList = Array<Operation>;
 export const OperationListResultValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationListResultValueList>;
@@ -1484,7 +1484,7 @@ export const PrivateEndpointConnectionsListRequest = /*@__PURE__*/ S.suspend(
 
 /** The list of available private link connections for a Digital Twin. */
 export type PrivateEndpointConnectionsResponseValueList =
-  ReadonlyArray<PrivateEndpointConnection>;
+  Array<PrivateEndpointConnection>;
 export const PrivateEndpointConnectionsResponseValueList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection,
@@ -1532,16 +1532,14 @@ export const PrivateLinkResourcesGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateLinkResourcesGetRequest>;
 
 /** The required members for a specific group id. */
-export type GroupIdInformationPropertiesRequiredMembersList =
-  ReadonlyArray<string>;
+export type GroupIdInformationPropertiesRequiredMembersList = Array<string>;
 export const GroupIdInformationPropertiesRequiredMembersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<GroupIdInformationPropertiesRequiredMembersList>;
 
 /** The required DNS zones for a specific group id. */
-export type GroupIdInformationPropertiesRequiredZoneNamesList =
-  ReadonlyArray<string>;
+export type GroupIdInformationPropertiesRequiredZoneNamesList = Array<string>;
 export const GroupIdInformationPropertiesRequiredZoneNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1618,8 +1616,7 @@ export const PrivateLinkResourcesListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateLinkResourcesListRequest>;
 
 /** The list of available private link resources for a Digital Twin. */
-export type GroupIdInformationResponseValueList =
-  ReadonlyArray<GroupIdInformation>;
+export type GroupIdInformationResponseValueList = Array<GroupIdInformation>;
 export const GroupIdInformationResponseValueList = /*@__PURE__*/ S.Array(
   GroupIdInformation,
 ) as any as S.Schema<GroupIdInformationResponseValueList>;
@@ -1939,7 +1936,7 @@ export const TimeSeriesDatabaseConnection = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of time series database connection resources. */
 export type TimeSeriesDatabaseConnectionListResultValueList =
-  ReadonlyArray<TimeSeriesDatabaseConnection>;
+  Array<TimeSeriesDatabaseConnection>;
 export const TimeSeriesDatabaseConnectionListResultValueList =
   /*@__PURE__*/ S.Array(
     TimeSeriesDatabaseConnection,

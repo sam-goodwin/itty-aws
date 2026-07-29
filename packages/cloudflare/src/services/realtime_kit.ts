@@ -417,7 +417,7 @@ export const MeetingsCreateRequestAiConfigSummarization =
   }) as any as S.Schema<MeetingsCreateRequestAiConfigSummarization>;
 
 export type MeetingsCreateRequestAiConfigTranscriptionKeywordsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const MeetingsCreateRequestAiConfigTranscriptionKeywordsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -835,7 +835,7 @@ export const MeetingsCreateResponseDataAiConfigSummarization =
   }) as any as S.Schema<MeetingsCreateResponseDataAiConfigSummarization>;
 
 export type MeetingsCreateResponseDataAiConfigTranscriptionKeywordsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const MeetingsCreateResponseDataAiConfigTranscriptionKeywordsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1221,7 +1221,7 @@ export const CreateMeetingResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateMeetingResponse",
 }) as any as S.Schema<CreateMeetingResponse>;
 
-export type ActiveSessionCreatePollRequestOptionsList = ReadonlyArray<string>;
+export type ActiveSessionCreatePollRequestOptionsList = Array<string>;
 export const ActiveSessionCreatePollRequestOptionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ActiveSessionCreatePollRequestOptionsList>;
@@ -1278,7 +1278,7 @@ export const ActiveSessionCreatePollResponseDataPollOptionsItemVotesItem =
   }) as any as S.Schema<ActiveSessionCreatePollResponseDataPollOptionsItemVotesItem>;
 
 export type ActiveSessionCreatePollResponseDataPollOptionsItemVotesList =
-  ReadonlyArray<ActiveSessionCreatePollResponseDataPollOptionsItemVotesItem>;
+  Array<ActiveSessionCreatePollResponseDataPollOptionsItemVotesItem>;
 export const ActiveSessionCreatePollResponseDataPollOptionsItemVotesList =
   /*@__PURE__*/ S.Array(
     ActiveSessionCreatePollResponseDataPollOptionsItemVotesItem,
@@ -1302,14 +1302,13 @@ export const ActiveSessionCreatePollResponseDataPollOptionsItem =
   }) as any as S.Schema<ActiveSessionCreatePollResponseDataPollOptionsItem>;
 
 export type ActiveSessionCreatePollResponseDataPollOptionsList =
-  ReadonlyArray<ActiveSessionCreatePollResponseDataPollOptionsItem>;
+  Array<ActiveSessionCreatePollResponseDataPollOptionsItem>;
 export const ActiveSessionCreatePollResponseDataPollOptionsList =
   /*@__PURE__*/ S.Array(
     ActiveSessionCreatePollResponseDataPollOptionsItem,
   ) as any as S.Schema<ActiveSessionCreatePollResponseDataPollOptionsList>;
 
-export type ActiveSessionCreatePollResponseDataPollVotedList =
-  ReadonlyArray<string>;
+export type ActiveSessionCreatePollResponseDataPollVotedList = Array<string>;
 export const ActiveSessionCreatePollResponseDataPollVotedList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1480,7 +1479,7 @@ export type PresetsCreateRequestConfigViewType =
 export const PresetsCreateRequestConfigViewType = /*@__PURE__*/ S.String;
 
 export type PresetsCreateRequestConfigLivestreamViewerQualitiesList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const PresetsCreateRequestConfigLivestreamViewerQualitiesList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -2144,7 +2143,7 @@ export type PresetsCreateResponseDataConfigViewType =
 export const PresetsCreateResponseDataConfigViewType = /*@__PURE__*/ S.String;
 
 export type PresetsCreateResponseDataConfigLivestreamViewerQualitiesList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const PresetsCreateResponseDataConfigLivestreamViewerQualitiesList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -2712,7 +2711,7 @@ export type WebhooksCreateWebhookRequestEventsItem =
   | "meeting.summary";
 export const WebhooksCreateWebhookRequestEventsItem = /*@__PURE__*/ S.String;
 
-export type WebhooksCreateWebhookRequestEventsList = ReadonlyArray<
+export type WebhooksCreateWebhookRequestEventsList = Array<
   WebhooksCreateWebhookRequestEventsItem | (string & {})
 >;
 export const WebhooksCreateWebhookRequestEventsList = /*@__PURE__*/ S.Array(
@@ -2768,7 +2767,7 @@ export const WebhooksCreateWebhookResponseDataEventsItem =
   /*@__PURE__*/ S.String;
 
 export type WebhooksCreateWebhookResponseDataEventsList =
-  ReadonlyArray<WebhooksCreateWebhookResponseDataEventsItem>;
+  Array<WebhooksCreateWebhookResponseDataEventsItem>;
 export const WebhooksCreateWebhookResponseDataEventsList =
   /*@__PURE__*/ S.Array(
     WebhooksCreateWebhookResponseDataEventsItem,
@@ -3019,7 +3018,7 @@ export type PresetsDeleteResponseDataConfigViewType =
 export const PresetsDeleteResponseDataConfigViewType = /*@__PURE__*/ S.String;
 
 export type PresetsDeleteResponseDataConfigLivestreamViewerQualitiesList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const PresetsDeleteResponseDataConfigLivestreamViewerQualitiesList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -3614,7 +3613,7 @@ export const WebhooksDeleteWebhookResponseDataEventsItem =
   /*@__PURE__*/ S.String;
 
 export type WebhooksDeleteWebhookResponseDataEventsList =
-  ReadonlyArray<WebhooksDeleteWebhookResponseDataEventsItem>;
+  Array<WebhooksDeleteWebhookResponseDataEventsItem>;
 export const WebhooksDeleteWebhookResponseDataEventsList =
   /*@__PURE__*/ S.Array(
     WebhooksDeleteWebhookResponseDataEventsItem,
@@ -3756,7 +3755,7 @@ export type WebhooksEditWebhookRequestEventsItem =
   | "meeting.summary";
 export const WebhooksEditWebhookRequestEventsItem = /*@__PURE__*/ S.String;
 
-export type WebhooksEditWebhookRequestEventsList = ReadonlyArray<
+export type WebhooksEditWebhookRequestEventsList = Array<
   WebhooksEditWebhookRequestEventsItem | (string & {})
 >;
 export const WebhooksEditWebhookRequestEventsList = /*@__PURE__*/ S.Array(
@@ -3812,7 +3811,7 @@ export type WebhooksEditWebhookResponseDataEventsItem =
 export const WebhooksEditWebhookResponseDataEventsItem = /*@__PURE__*/ S.String;
 
 export type WebhooksEditWebhookResponseDataEventsList =
-  ReadonlyArray<WebhooksEditWebhookResponseDataEventsItem>;
+  Array<WebhooksEditWebhookResponseDataEventsItem>;
 export const WebhooksEditWebhookResponseDataEventsList = /*@__PURE__*/ S.Array(
   WebhooksEditWebhookResponseDataEventsItem,
 ) as any as S.Schema<WebhooksEditWebhookResponseDataEventsList>;
@@ -4190,7 +4189,7 @@ export const ActiveSessionGetActiveSessionResponseDataType =
   /*@__PURE__*/ S.String;
 
 export type ActiveSessionGetActiveSessionResponseDataBreakoutRoomsList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const ActiveSessionGetActiveSessionResponseDataBreakoutRoomsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -4450,7 +4449,7 @@ export const AppsGetResponseDataItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "AppsGetResponseDataItem",
 }) as any as S.Schema<AppsGetResponseDataItem>;
 
-export type AppsGetResponseDataList = ReadonlyArray<AppsGetResponseDataItem>;
+export type AppsGetResponseDataList = Array<AppsGetResponseDataItem>;
 export const AppsGetResponseDataList = /*@__PURE__*/ S.Array(
   AppsGetResponseDataItem,
 ) as any as S.Schema<AppsGetResponseDataList>;
@@ -4611,7 +4610,7 @@ export const LivestreamsGetLivestreamAnalyticsDaywiseResponseDataItem =
   }) as any as S.Schema<LivestreamsGetLivestreamAnalyticsDaywiseResponseDataItem>;
 
 export type LivestreamsGetLivestreamAnalyticsDaywiseResponseDataList =
-  ReadonlyArray<LivestreamsGetLivestreamAnalyticsDaywiseResponseDataItem>;
+  Array<LivestreamsGetLivestreamAnalyticsDaywiseResponseDataItem>;
 export const LivestreamsGetLivestreamAnalyticsDaywiseResponseDataList =
   /*@__PURE__*/ S.Array(
     LivestreamsGetLivestreamAnalyticsDaywiseResponseDataItem,
@@ -5237,8 +5236,7 @@ export const MeetingsGetResponseDataItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "MeetingsGetResponseDataItem",
 }) as any as S.Schema<MeetingsGetResponseDataItem>;
 
-export type MeetingsGetResponseDataList =
-  ReadonlyArray<MeetingsGetResponseDataItem>;
+export type MeetingsGetResponseDataList = Array<MeetingsGetResponseDataItem>;
 export const MeetingsGetResponseDataList = /*@__PURE__*/ S.Array(
   MeetingsGetResponseDataItem,
 ) as any as S.Schema<MeetingsGetResponseDataList>;
@@ -5433,7 +5431,7 @@ export const MeetingsGetMeetingByIdResponseDataAiConfigSummarization =
   }) as any as S.Schema<MeetingsGetMeetingByIdResponseDataAiConfigSummarization>;
 
 export type MeetingsGetMeetingByIdResponseDataAiConfigTranscriptionKeywordsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const MeetingsGetMeetingByIdResponseDataAiConfigTranscriptionKeywordsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5957,7 +5955,7 @@ export const MeetingsGetMeetingParticipantsResponseDataItem =
   }) as any as S.Schema<MeetingsGetMeetingParticipantsResponseDataItem>;
 
 export type MeetingsGetMeetingParticipantsResponseDataList =
-  ReadonlyArray<MeetingsGetMeetingParticipantsResponseDataItem>;
+  Array<MeetingsGetMeetingParticipantsResponseDataItem>;
 export const MeetingsGetMeetingParticipantsResponseDataList =
   /*@__PURE__*/ S.Array(
     MeetingsGetMeetingParticipantsResponseDataItem,
@@ -6325,7 +6323,7 @@ export const AnalyticsGetOrgAnalyticsResponseDataRecordingStatsDayStatsItem =
   }) as any as S.Schema<AnalyticsGetOrgAnalyticsResponseDataRecordingStatsDayStatsItem>;
 
 export type AnalyticsGetOrgAnalyticsResponseDataRecordingStatsDayStatsList =
-  ReadonlyArray<AnalyticsGetOrgAnalyticsResponseDataRecordingStatsDayStatsItem>;
+  Array<AnalyticsGetOrgAnalyticsResponseDataRecordingStatsDayStatsItem>;
 export const AnalyticsGetOrgAnalyticsResponseDataRecordingStatsDayStatsList =
   /*@__PURE__*/ S.Array(
     AnalyticsGetOrgAnalyticsResponseDataRecordingStatsDayStatsItem,
@@ -6377,7 +6375,7 @@ export const AnalyticsGetOrgAnalyticsResponseDataSessionStatsDayStatsItem =
   }) as any as S.Schema<AnalyticsGetOrgAnalyticsResponseDataSessionStatsDayStatsItem>;
 
 export type AnalyticsGetOrgAnalyticsResponseDataSessionStatsDayStatsList =
-  ReadonlyArray<AnalyticsGetOrgAnalyticsResponseDataSessionStatsDayStatsItem>;
+  Array<AnalyticsGetOrgAnalyticsResponseDataSessionStatsDayStatsItem>;
 export const AnalyticsGetOrgAnalyticsResponseDataSessionStatsDayStatsList =
   /*@__PURE__*/ S.Array(
     AnalyticsGetOrgAnalyticsResponseDataSessionStatsDayStatsItem,
@@ -6549,7 +6547,7 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerEven
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerEventsItem>;
 
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerEventsList =
-  ReadonlyArray<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerEventsItem>;
+  Array<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerEventsItem>;
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerEventsList =
   /*@__PURE__*/ S.Array(
     SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerEventsItem,
@@ -6576,7 +6574,7 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemAddedItem>;
 
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemAddedList =
-  ReadonlyArray<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemAddedItem>;
+  Array<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemAddedItem>;
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemAddedList =
   /*@__PURE__*/ S.Array(
     SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemAddedItem,
@@ -6603,7 +6601,7 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemRemovedItem>;
 
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemRemovedList =
-  ReadonlyArray<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemRemovedItem>;
+  Array<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemRemovedItem>;
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemRemovedList =
   /*@__PURE__*/ S.Array(
     SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemRemovedItem,
@@ -6634,7 +6632,7 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItem>;
 
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesList =
-  ReadonlyArray<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItem>;
+  Array<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItem>;
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesList =
   /*@__PURE__*/ S.Array(
     SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItem,
@@ -6775,7 +6773,7 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairsConsumingTransportItem>;
 
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairsConsumingTransportList =
-  ReadonlyArray<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairsConsumingTransportItem>;
+  Array<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairsConsumingTransportItem>;
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairsConsumingTransportList =
   /*@__PURE__*/ S.Array(
     SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairsConsumingTransportItem,
@@ -6895,7 +6893,7 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairsProducingTransportItem>;
 
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairsProducingTransportList =
-  ReadonlyArray<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairsProducingTransportItem>;
+  Array<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairsProducingTransportItem>;
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairsProducingTransportList =
   /*@__PURE__*/ S.Array(
     SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairsProducingTransportItem,
@@ -6971,7 +6969,7 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataEventsItem>;
 
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataEventsList =
-  ReadonlyArray<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataEventsItem>;
+  Array<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataEventsItem>;
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataEventsList =
   /*@__PURE__*/ S.Array(
     SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataEventsItem,
@@ -7041,7 +7039,7 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataNativeMetadata>;
 
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataPcMetadataItemSdpList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataPcMetadataItemSdpList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -7079,7 +7077,7 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataPcMetadataItem>;
 
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataPcMetadataList =
-  ReadonlyArray<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataPcMetadataItem>;
+  Array<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataPcMetadataItem>;
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataPcMetadataList =
   /*@__PURE__*/ S.Array(
     SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataPcMetadataItem,
@@ -7124,7 +7122,7 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSelectedDeviceUpdatesItem>;
 
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSelectedDeviceUpdatesList =
-  ReadonlyArray<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSelectedDeviceUpdatesItem>;
+  Array<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSelectedDeviceUpdatesItem>;
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSelectedDeviceUpdatesList =
   /*@__PURE__*/ S.Array(
     SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSelectedDeviceUpdatesItem,
@@ -7151,7 +7149,7 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesItemAddedItem>;
 
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesItemAddedList =
-  ReadonlyArray<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesItemAddedItem>;
+  Array<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesItemAddedItem>;
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesItemAddedList =
   /*@__PURE__*/ S.Array(
     SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesItemAddedItem,
@@ -7178,7 +7176,7 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesItemRemovedItem>;
 
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesItemRemovedList =
-  ReadonlyArray<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesItemRemovedItem>;
+  Array<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesItemRemovedItem>;
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesItemRemovedList =
   /*@__PURE__*/ S.Array(
     SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesItemRemovedItem,
@@ -7209,7 +7207,7 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesItem>;
 
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesList =
-  ReadonlyArray<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesItem>;
+  Array<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesItem>;
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesList =
   /*@__PURE__*/ S.Array(
     SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesItem,
@@ -7236,7 +7234,7 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesItemAddedItem>;
 
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesItemAddedList =
-  ReadonlyArray<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesItemAddedItem>;
+  Array<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesItemAddedItem>;
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesItemAddedList =
   /*@__PURE__*/ S.Array(
     SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesItemAddedItem,
@@ -7263,7 +7261,7 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesItemRemovedItem>;
 
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesItemRemovedList =
-  ReadonlyArray<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesItemRemovedItem>;
+  Array<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesItemRemovedItem>;
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesItemRemovedList =
   /*@__PURE__*/ S.Array(
     SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesItemRemovedItem,
@@ -7294,7 +7292,7 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesItem>;
 
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesList =
-  ReadonlyArray<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesItem>;
+  Array<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesItem>;
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesList =
   /*@__PURE__*/ S.Array(
     SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesItem,
@@ -7429,7 +7427,7 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerItem>;
 
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerList =
-  ReadonlyArray<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerItem>;
+  Array<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerItem>;
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerList =
   /*@__PURE__*/ S.Array(
     SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerItem,
@@ -7572,7 +7570,7 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerItem>;
 
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerList =
-  ReadonlyArray<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerItem>;
+  Array<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerItem>;
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerList =
   /*@__PURE__*/ S.Array(
     SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerItem,
@@ -7727,7 +7725,7 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerItem>;
 
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerList =
-  ReadonlyArray<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerItem>;
+  Array<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerItem>;
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerList =
   /*@__PURE__*/ S.Array(
     SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerItem,
@@ -7870,7 +7868,7 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerItem>;
 
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerList =
-  ReadonlyArray<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerItem>;
+  Array<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerItem>;
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerList =
   /*@__PURE__*/ S.Array(
     SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerItem,
@@ -8035,7 +8033,7 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerItem>;
 
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerList =
-  ReadonlyArray<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerItem>;
+  Array<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerItem>;
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerList =
   /*@__PURE__*/ S.Array(
     SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerItem,
@@ -8311,7 +8309,7 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerItem>;
 
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerList =
-  ReadonlyArray<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerItem>;
+  Array<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerItem>;
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerList =
   /*@__PURE__*/ S.Array(
     SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerItem,
@@ -8569,7 +8567,7 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerItem>;
 
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerList =
-  ReadonlyArray<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerItem>;
+  Array<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerItem>;
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerList =
   /*@__PURE__*/ S.Array(
     SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerItem,
@@ -8845,7 +8843,7 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerItem>;
 
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerList =
-  ReadonlyArray<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerItem>;
+  Array<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerItem>;
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerList =
   /*@__PURE__*/ S.Array(
     SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerItem,
@@ -9321,8 +9319,7 @@ export const PresetsGetResponseDataItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "PresetsGetResponseDataItem",
 }) as any as S.Schema<PresetsGetResponseDataItem>;
 
-export type PresetsGetResponseDataList =
-  ReadonlyArray<PresetsGetResponseDataItem>;
+export type PresetsGetResponseDataList = Array<PresetsGetResponseDataItem>;
 export const PresetsGetResponseDataList = /*@__PURE__*/ S.Array(
   PresetsGetResponseDataItem,
 ) as any as S.Schema<PresetsGetResponseDataList>;
@@ -9496,7 +9493,7 @@ export const PresetsGetPresetByIdResponseDataConfigViewType =
   /*@__PURE__*/ S.String;
 
 export type PresetsGetPresetByIdResponseDataConfigLivestreamViewerQualitiesList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const PresetsGetPresetByIdResponseDataConfigLivestreamViewerQualitiesList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -10080,7 +10077,7 @@ export type RecordingsGetRecordingsRequestStatus =
   | "PAUSED";
 export const RecordingsGetRecordingsRequestStatus = /*@__PURE__*/ S.String;
 
-export type RecordingsGetRecordingsRequestStatusList = ReadonlyArray<
+export type RecordingsGetRecordingsRequestStatusList = Array<
   RecordingsGetRecordingsRequestStatus | (string & {})
 >;
 export const RecordingsGetRecordingsRequestStatusList = /*@__PURE__*/ S.Array(
@@ -10587,7 +10584,7 @@ export const RecordingsGetRecordingsResponseDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<RecordingsGetRecordingsResponseDataItem>;
 
 export type RecordingsGetRecordingsResponseDataList =
-  ReadonlyArray<RecordingsGetRecordingsResponseDataItem>;
+  Array<RecordingsGetRecordingsResponseDataItem>;
 export const RecordingsGetRecordingsResponseDataList = /*@__PURE__*/ S.Array(
   RecordingsGetRecordingsResponseDataItem,
 ) as any as S.Schema<RecordingsGetRecordingsResponseDataList>;
@@ -10715,7 +10712,7 @@ export type SessionsGetSessionDetailsResponseDataType =
 export const SessionsGetSessionDetailsResponseDataType = /*@__PURE__*/ S.String;
 
 export type SessionsGetSessionDetailsResponseDataBreakoutRoomsList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const SessionsGetSessionDetailsResponseDataBreakoutRoomsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -10883,7 +10880,7 @@ export const SessionsGetSessionParticipantDetailsResponseDataParticipantPeerEven
   }) as any as S.Schema<SessionsGetSessionParticipantDetailsResponseDataParticipantPeerEventsItem>;
 
 export type SessionsGetSessionParticipantDetailsResponseDataParticipantPeerEventsList =
-  ReadonlyArray<SessionsGetSessionParticipantDetailsResponseDataParticipantPeerEventsItem>;
+  Array<SessionsGetSessionParticipantDetailsResponseDataParticipantPeerEventsItem>;
 export const SessionsGetSessionParticipantDetailsResponseDataParticipantPeerEventsList =
   /*@__PURE__*/ S.Array(
     SessionsGetSessionParticipantDetailsResponseDataParticipantPeerEventsItem,
@@ -11093,7 +11090,7 @@ export const SessionsGetSessionParticipantsResponseDataParticipantsItemPeerEvent
   }) as any as S.Schema<SessionsGetSessionParticipantsResponseDataParticipantsItemPeerEventsItem>;
 
 export type SessionsGetSessionParticipantsResponseDataParticipantsItemPeerEventsList =
-  ReadonlyArray<SessionsGetSessionParticipantsResponseDataParticipantsItemPeerEventsItem>;
+  Array<SessionsGetSessionParticipantsResponseDataParticipantsItemPeerEventsItem>;
 export const SessionsGetSessionParticipantsResponseDataParticipantsItemPeerEventsList =
   /*@__PURE__*/ S.Array(
     SessionsGetSessionParticipantsResponseDataParticipantsItemPeerEventsItem,
@@ -11149,7 +11146,7 @@ export const SessionsGetSessionParticipantsResponseDataParticipantsItem =
   }) as any as S.Schema<SessionsGetSessionParticipantsResponseDataParticipantsItem>;
 
 export type SessionsGetSessionParticipantsResponseDataParticipantsList =
-  ReadonlyArray<SessionsGetSessionParticipantsResponseDataParticipantsItem>;
+  Array<SessionsGetSessionParticipantsResponseDataParticipantsItem>;
 export const SessionsGetSessionParticipantsResponseDataParticipantsList =
   /*@__PURE__*/ S.Array(
     SessionsGetSessionParticipantsResponseDataParticipantsItem,
@@ -11258,7 +11255,7 @@ export const SessionsGetSessionsResponseDataSessionsItemType =
   /*@__PURE__*/ S.String;
 
 export type SessionsGetSessionsResponseDataSessionsItemBreakoutRoomsList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const SessionsGetSessionsResponseDataSessionsItemBreakoutRoomsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -11322,7 +11319,7 @@ export const SessionsGetSessionsResponseDataSessionsItem =
   }) as any as S.Schema<SessionsGetSessionsResponseDataSessionsItem>;
 
 export type SessionsGetSessionsResponseDataSessionsList =
-  ReadonlyArray<SessionsGetSessionsResponseDataSessionsItem>;
+  Array<SessionsGetSessionsResponseDataSessionsItem>;
 export const SessionsGetSessionsResponseDataSessionsList =
   /*@__PURE__*/ S.Array(
     SessionsGetSessionsResponseDataSessionsItem,
@@ -11533,7 +11530,7 @@ export const WebhooksGetWebhookByIdResponseDataEventsItem =
   /*@__PURE__*/ S.String;
 
 export type WebhooksGetWebhookByIdResponseDataEventsList =
-  ReadonlyArray<WebhooksGetWebhookByIdResponseDataEventsItem>;
+  Array<WebhooksGetWebhookByIdResponseDataEventsItem>;
 export const WebhooksGetWebhookByIdResponseDataEventsList =
   /*@__PURE__*/ S.Array(
     WebhooksGetWebhookByIdResponseDataEventsItem,
@@ -11618,7 +11615,7 @@ export const WebhooksGetWebhooksResponseDataItemEventsItem =
   /*@__PURE__*/ S.String;
 
 export type WebhooksGetWebhooksResponseDataItemEventsList =
-  ReadonlyArray<WebhooksGetWebhooksResponseDataItemEventsItem>;
+  Array<WebhooksGetWebhooksResponseDataItemEventsItem>;
 export const WebhooksGetWebhooksResponseDataItemEventsList =
   /*@__PURE__*/ S.Array(
     WebhooksGetWebhooksResponseDataItemEventsItem,
@@ -11655,7 +11652,7 @@ export const WebhooksGetWebhooksResponseDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WebhooksGetWebhooksResponseDataItem>;
 
 export type WebhooksGetWebhooksResponseDataList =
-  ReadonlyArray<WebhooksGetWebhooksResponseDataItem>;
+  Array<WebhooksGetWebhooksResponseDataItem>;
 export const WebhooksGetWebhooksResponseDataList = /*@__PURE__*/ S.Array(
   WebhooksGetWebhooksResponseDataItem,
 ) as any as S.Schema<WebhooksGetWebhooksResponseDataList>;
@@ -11728,14 +11725,14 @@ export const KickAllParticipantsActiveSessionResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<KickAllParticipantsActiveSessionResponse>;
 
 export type ActiveSessionKickParticipantsRequestCustomParticipantIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ActiveSessionKickParticipantsRequestCustomParticipantIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ActiveSessionKickParticipantsRequestCustomParticipantIdsList>;
 
 export type ActiveSessionKickParticipantsRequestParticipantIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ActiveSessionKickParticipantsRequestParticipantIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -11804,7 +11801,7 @@ export const ActiveSessionKickParticipantsResponseDataParticipantsItem =
   }) as any as S.Schema<ActiveSessionKickParticipantsResponseDataParticipantsItem>;
 
 export type ActiveSessionKickParticipantsResponseDataParticipantsList =
-  ReadonlyArray<ActiveSessionKickParticipantsResponseDataParticipantsItem>;
+  Array<ActiveSessionKickParticipantsResponseDataParticipantsItem>;
 export const ActiveSessionKickParticipantsResponseDataParticipantsList =
   /*@__PURE__*/ S.Array(
     ActiveSessionKickParticipantsResponseDataParticipantsItem,
@@ -11890,7 +11887,7 @@ export const LivestreamsGetOrgAnalyticsResponseDataRecordingStatsDayStatsItem =
   }) as any as S.Schema<LivestreamsGetOrgAnalyticsResponseDataRecordingStatsDayStatsItem>;
 
 export type LivestreamsGetOrgAnalyticsResponseDataRecordingStatsDayStatsList =
-  ReadonlyArray<LivestreamsGetOrgAnalyticsResponseDataRecordingStatsDayStatsItem>;
+  Array<LivestreamsGetOrgAnalyticsResponseDataRecordingStatsDayStatsItem>;
 export const LivestreamsGetOrgAnalyticsResponseDataRecordingStatsDayStatsList =
   /*@__PURE__*/ S.Array(
     LivestreamsGetOrgAnalyticsResponseDataRecordingStatsDayStatsItem,
@@ -11943,7 +11940,7 @@ export const LivestreamsGetOrgAnalyticsResponseDataSessionStatsDayStatsItem =
   }) as any as S.Schema<LivestreamsGetOrgAnalyticsResponseDataSessionStatsDayStatsItem>;
 
 export type LivestreamsGetOrgAnalyticsResponseDataSessionStatsDayStatsList =
-  ReadonlyArray<LivestreamsGetOrgAnalyticsResponseDataSessionStatsDayStatsItem>;
+  Array<LivestreamsGetOrgAnalyticsResponseDataSessionStatsDayStatsItem>;
 export const LivestreamsGetOrgAnalyticsResponseDataSessionStatsDayStatsList =
   /*@__PURE__*/ S.Array(
     LivestreamsGetOrgAnalyticsResponseDataSessionStatsDayStatsItem,
@@ -12011,7 +12008,7 @@ export const LivestreamsGetOrgAnalyticsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LivestreamsGetOrgAnalyticsResponse>;
 
 export type PresetsUpdateRequestConfigLivestreamViewerQualitiesList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const PresetsUpdateRequestConfigLivestreamViewerQualitiesList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -12816,7 +12813,7 @@ export type PresetsUpdateResponseDataConfigViewType =
 export const PresetsUpdateResponseDataConfigViewType = /*@__PURE__*/ S.String;
 
 export type PresetsUpdateResponseDataConfigLivestreamViewerQualitiesList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const PresetsUpdateResponseDataConfigLivestreamViewerQualitiesList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -13829,7 +13826,7 @@ export const MeetingsReplaceMeetingByIdRequestAiConfigSummarization =
   }) as any as S.Schema<MeetingsReplaceMeetingByIdRequestAiConfigSummarization>;
 
 export type MeetingsReplaceMeetingByIdRequestAiConfigTranscriptionKeywordsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const MeetingsReplaceMeetingByIdRequestAiConfigTranscriptionKeywordsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -14268,7 +14265,7 @@ export const MeetingsReplaceMeetingByIdResponseDataAiConfigSummarization =
   }) as any as S.Schema<MeetingsReplaceMeetingByIdResponseDataAiConfigSummarization>;
 
 export type MeetingsReplaceMeetingByIdResponseDataAiConfigTranscriptionKeywordsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const MeetingsReplaceMeetingByIdResponseDataAiConfigTranscriptionKeywordsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -14665,7 +14662,7 @@ export type WebhooksReplaceWebhookRequestEventsItem =
   | "meeting.summary";
 export const WebhooksReplaceWebhookRequestEventsItem = /*@__PURE__*/ S.String;
 
-export type WebhooksReplaceWebhookRequestEventsList = ReadonlyArray<
+export type WebhooksReplaceWebhookRequestEventsList = Array<
   WebhooksReplaceWebhookRequestEventsItem | (string & {})
 >;
 export const WebhooksReplaceWebhookRequestEventsList = /*@__PURE__*/ S.Array(
@@ -14723,7 +14720,7 @@ export const WebhooksReplaceWebhookResponseDataEventsItem =
   /*@__PURE__*/ S.String;
 
 export type WebhooksReplaceWebhookResponseDataEventsList =
-  ReadonlyArray<WebhooksReplaceWebhookResponseDataEventsItem>;
+  Array<WebhooksReplaceWebhookResponseDataEventsItem>;
 export const WebhooksReplaceWebhookResponseDataEventsList =
   /*@__PURE__*/ S.Array(
     WebhooksReplaceWebhookResponseDataEventsItem,
@@ -15451,8 +15448,7 @@ export const RecordingsStartTrackRecordingRequestLayersMap =
     RecordingsStartTrackRecordingRequestLayersValue,
   ) as any as S.Schema<RecordingsStartTrackRecordingRequestLayersMap>;
 
-export type RecordingsStartTrackRecordingRequestUserIdsList =
-  ReadonlyArray<string>;
+export type RecordingsStartTrackRecordingRequestUserIdsList = Array<string>;
 export const RecordingsStartTrackRecordingRequestUserIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -15678,7 +15674,7 @@ export const MeetingsUpdateMeetingByIdRequestAiConfigSummarization =
   }) as any as S.Schema<MeetingsUpdateMeetingByIdRequestAiConfigSummarization>;
 
 export type MeetingsUpdateMeetingByIdRequestAiConfigTranscriptionKeywordsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const MeetingsUpdateMeetingByIdRequestAiConfigTranscriptionKeywordsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -16124,7 +16120,7 @@ export const MeetingsUpdateMeetingByIdResponseDataAiConfigSummarization =
   }) as any as S.Schema<MeetingsUpdateMeetingByIdResponseDataAiConfigSummarization>;
 
 export type MeetingsUpdateMeetingByIdResponseDataAiConfigTranscriptionKeywordsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const MeetingsUpdateMeetingByIdResponseDataAiConfigTranscriptionKeywordsList =
   /*@__PURE__*/ S.Array(
     S.String,

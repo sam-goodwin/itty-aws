@@ -13,8 +13,7 @@ import * as Retry from "../retry.ts";
 export type { AzureOpError, AzureOpContext };
 
 /** The list of audiences that can appear in the issued token. */
-export type FederatedIdentityCredentialPropertiesAudiencesList =
-  ReadonlyArray<string>;
+export type FederatedIdentityCredentialPropertiesAudiencesList = Array<string>;
 export const FederatedIdentityCredentialPropertiesAudiencesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -287,7 +286,7 @@ export const FederatedIdentityCredential = /*@__PURE__*/ S.suspend(() =>
 
 /** The FederatedIdentityCredential items on this page */
 export type FederatedIdentityCredentialsListResultValueList =
-  ReadonlyArray<FederatedIdentityCredential>;
+  Array<FederatedIdentityCredential>;
 export const FederatedIdentityCredentialsListResultValueList =
   /*@__PURE__*/ S.Array(
     FederatedIdentityCredential,
@@ -361,7 +360,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** The Operation items on this page */
-export type OperationListResultValueList = ReadonlyArray<Operation>;
+export type OperationListResultValueList = Array<Operation>;
 export const OperationListResultValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationListResultValueList>;
@@ -485,7 +484,7 @@ export interface UserAssignedIdentityProperties {
   /** The id of the app associated with the identity. This is a random generated UUID by MSI. */
   clientId?: string;
   /** Enum to configure regional restrictions on identity assignment, as necessary. */
-  isolationScope?: IsolationScope;
+  isolationScope?: IsolationScope | (string & {});
 }
 export const UserAssignedIdentityProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -730,7 +729,7 @@ export const Identity = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Identity" }) as any as S.Schema<Identity>;
 
 /** The Identity items on this page */
-export type UserAssignedIdentitiesListResultValueList = ReadonlyArray<Identity>;
+export type UserAssignedIdentitiesListResultValueList = Array<Identity>;
 export const UserAssignedIdentitiesListResultValueList = /*@__PURE__*/ S.Array(
   Identity,
 ) as any as S.Schema<UserAssignedIdentitiesListResultValueList>;

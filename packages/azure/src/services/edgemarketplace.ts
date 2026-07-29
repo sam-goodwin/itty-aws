@@ -204,13 +204,13 @@ export const TermsAndConditions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TermsAndConditions>;
 
 /** The category ids */
-export type OfferContentCategoryIdsList = ReadonlyArray<string>;
+export type OfferContentCategoryIdsList = Array<string>;
 export const OfferContentCategoryIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<OfferContentCategoryIdsList>;
 
 /** The operating systems */
-export type OfferContentOperatingSystemsList = ReadonlyArray<string>;
+export type OfferContentOperatingSystemsList = Array<string>;
 export const OfferContentOperatingSystemsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<OfferContentOperatingSystemsList>;
@@ -326,7 +326,7 @@ export const MarketplaceSkuVersion = /*@__PURE__*/ S.suspend(() =>
 
 /** The marketplace sku version */
 export type MarketplaceSkuMarketplaceSkuVersionsList =
-  ReadonlyArray<MarketplaceSkuVersion>;
+  Array<MarketplaceSkuVersion>;
 export const MarketplaceSkuMarketplaceSkuVersionsList = /*@__PURE__*/ S.Array(
   MarketplaceSkuVersion,
 ) as any as S.Schema<MarketplaceSkuMarketplaceSkuVersionsList>;
@@ -375,7 +375,7 @@ export const MarketplaceSku = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MarketplaceSku" }) as any as S.Schema<MarketplaceSku>;
 
 /** The marketplace skus */
-export type OfferPropertiesMarketplaceSkusList = ReadonlyArray<MarketplaceSku>;
+export type OfferPropertiesMarketplaceSkusList = Array<MarketplaceSku>;
 export const OfferPropertiesMarketplaceSkusList = /*@__PURE__*/ S.Array(
   MarketplaceSku,
 ) as any as S.Schema<OfferPropertiesMarketplaceSkusList>;
@@ -514,7 +514,7 @@ export const Offer = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Offer" }) as any as S.Schema<Offer>;
 
 /** The Offer items on this page */
-export type OfferListResultValueList = ReadonlyArray<Offer>;
+export type OfferListResultValueList = Array<Offer>;
 export const OfferListResultValueList = /*@__PURE__*/ S.Array(
   Offer,
 ) as any as S.Schema<OfferListResultValueList>;
@@ -622,7 +622,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = ReadonlyArray<Operation>;
+export type OperationsListResponseValueList = Array<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;
@@ -761,7 +761,7 @@ export const Publisher = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Publisher" }) as any as S.Schema<Publisher>;
 
 /** The Publisher items on this page */
-export type PublisherListResultValueList = ReadonlyArray<Publisher>;
+export type PublisherListResultValueList = Array<Publisher>;
 export const PublisherListResultValueList = /*@__PURE__*/ S.Array(
   Publisher,
 ) as any as S.Schema<PublisherListResultValueList>;

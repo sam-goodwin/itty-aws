@@ -110,7 +110,7 @@ export type TransferType = "ImportToAzure" | "ExportFromAzure";
 export const TransferType = /*@__PURE__*/ S.String;
 
 /** List of Email-ids to be notified about job progress. */
-export type ContactDetailsEmailListList = ReadonlyArray<string>;
+export type ContactDetailsEmailListList = Array<string>;
 export const ContactDetailsEmailListList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ContactDetailsEmailListList>;
@@ -130,7 +130,7 @@ export const NotificationStageName = /*@__PURE__*/ S.String;
 /** Notification preference for a job stage. */
 export interface NotificationPreference {
   /** Name of the stage. */
-  stageName: NotificationStageName;
+  stageName: NotificationStageName | (string & {});
   /** Notification is required or not. */
   sendNotification: boolean;
 }
@@ -145,7 +145,7 @@ export const NotificationPreference = /*@__PURE__*/ S.suspend(() =>
 
 /** Notification preference for a job stage. */
 export type ContactDetailsNotificationPreferenceList =
-  ReadonlyArray<NotificationPreference>;
+  Array<NotificationPreference>;
 export const ContactDetailsNotificationPreferenceList = /*@__PURE__*/ S.Array(
   NotificationPreference,
 ) as any as S.Schema<ContactDetailsNotificationPreferenceList>;
@@ -203,7 +203,7 @@ export interface ShippingAddress {
   /** Name of the company. */
   companyName?: string;
   /** Type of address. */
-  addressType?: ShippingAddressAddressType;
+  addressType?: ShippingAddressAddressType | (string & {});
   /** Flag to indicate if customer has chosen to skip default address validation */
   skipAddressValidation?: boolean;
   /** Tax Identification Number */
@@ -237,7 +237,7 @@ export const DataAccountDetailsDataAccountType = /*@__PURE__*/ S.String;
 /** Account details of the data to be transferred */
 export interface DataAccountDetails {
   /** Account Type of the data to be transferred. */
-  dataAccountType: DataAccountDetailsDataAccountType;
+  dataAccountType: DataAccountDetailsDataAccountType | (string & {});
   /** Password for all the shares to be created on the device. Should not be passed for TransferType:ExportFromAzure jobs. If this is not passed, the service will generate password itself. This will not be returned in Get Call. Password Requirements : Password must be minimum of 12 and maximum of 64 characters. Password must have at least one uppercase alphabet, one number and one special character. Password cannot have the following characters : IilLoO0 Password can have only alphabets, numbers and these characters : @#\-$%^!+=;:_()]+ */
   sharePassword?: string | Redacted.Redacted<string>;
 }
@@ -259,7 +259,7 @@ export interface DataImportDetails {
   /** Account details of the data to be transferred */
   accountDetails: DataAccountDetails;
   /** Level of the logs to be collected. */
-  logCollectionLevel?: DataImportDetailsLogCollectionLevel;
+  logCollectionLevel?: DataImportDetailsLogCollectionLevel | (string & {});
 }
 export const DataImportDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -271,8 +271,7 @@ export const DataImportDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DataImportDetails>;
 
 /** Details of the data to be imported into azure. */
-export type JobDetailsInputDataImportDetailsList =
-  ReadonlyArray<DataImportDetails>;
+export type JobDetailsInputDataImportDetailsList = Array<DataImportDetails>;
 export const JobDetailsInputDataImportDetailsList = /*@__PURE__*/ S.Array(
   DataImportDetails,
 ) as any as S.Schema<JobDetailsInputDataImportDetailsList>;
@@ -288,19 +287,19 @@ export type TransferFilterDetailsDataAccountType =
 export const TransferFilterDetailsDataAccountType = /*@__PURE__*/ S.String;
 
 /** Prefix list of the Azure blobs to be transferred. */
-export type BlobFilterDetailsBlobPrefixListList = ReadonlyArray<string>;
+export type BlobFilterDetailsBlobPrefixListList = Array<string>;
 export const BlobFilterDetailsBlobPrefixListList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BlobFilterDetailsBlobPrefixListList>;
 
 /** List of full path of the blobs to be transferred. */
-export type BlobFilterDetailsBlobPathListList = ReadonlyArray<string>;
+export type BlobFilterDetailsBlobPathListList = Array<string>;
 export const BlobFilterDetailsBlobPathListList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BlobFilterDetailsBlobPathListList>;
 
 /** List of blob containers to be transferred. */
-export type BlobFilterDetailsContainerListList = ReadonlyArray<string>;
+export type BlobFilterDetailsContainerListList = Array<string>;
 export const BlobFilterDetailsContainerListList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BlobFilterDetailsContainerListList>;
@@ -325,19 +324,19 @@ export const BlobFilterDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BlobFilterDetails>;
 
 /** Prefix list of the Azure files to be transferred. */
-export type AzureFileFilterDetailsFilePrefixListList = ReadonlyArray<string>;
+export type AzureFileFilterDetailsFilePrefixListList = Array<string>;
 export const AzureFileFilterDetailsFilePrefixListList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AzureFileFilterDetailsFilePrefixListList>;
 
 /** List of full path of the files to be transferred. */
-export type AzureFileFilterDetailsFilePathListList = ReadonlyArray<string>;
+export type AzureFileFilterDetailsFilePathListList = Array<string>;
 export const AzureFileFilterDetailsFilePathListList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AzureFileFilterDetailsFilePathListList>;
 
 /** List of file shares to be transferred. */
-export type AzureFileFilterDetailsFileShareListList = ReadonlyArray<string>;
+export type AzureFileFilterDetailsFileShareListList = Array<string>;
 export const AzureFileFilterDetailsFileShareListList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AzureFileFilterDetailsFileShareListList>;
@@ -368,7 +367,7 @@ export const FilterFileType = /*@__PURE__*/ S.String;
 /** Details of the filter files to be used for data transfer. */
 export interface FilterFileDetails {
   /** Type of the filter file. */
-  filterFileType: FilterFileType;
+  filterFileType: FilterFileType | (string & {});
   /** Path of the file that contains the details of all items to transfer. */
   filterFilePath: string;
 }
@@ -383,7 +382,7 @@ export const FilterFileDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** Details of the filter files to be used for data transfer. */
 export type TransferFilterDetailsFilterFileDetailsList =
-  ReadonlyArray<FilterFileDetails>;
+  Array<FilterFileDetails>;
 export const TransferFilterDetailsFilterFileDetailsList = /*@__PURE__*/ S.Array(
   FilterFileDetails,
 ) as any as S.Schema<TransferFilterDetailsFilterFileDetailsList>;
@@ -391,7 +390,7 @@ export const TransferFilterDetailsFilterFileDetailsList = /*@__PURE__*/ S.Array(
 /** Details of the filtering the transfer of data. */
 export interface TransferFilterDetails {
   /** Type of the account of data. */
-  dataAccountType: TransferFilterDetailsDataAccountType;
+  dataAccountType: TransferFilterDetailsDataAccountType | (string & {});
   /** Filter details to transfer blobs. */
   blobFilterDetails?: BlobFilterDetails;
   /** Filter details to transfer Azure files. */
@@ -433,7 +432,7 @@ export const TransferAllDetailsDataAccountType = /*@__PURE__*/ S.String;
 /** Details to transfer all data. */
 export interface TransferAllDetails {
   /** Type of the account of data */
-  dataAccountType: TransferAllDetailsDataAccountType;
+  dataAccountType: TransferAllDetailsDataAccountType | (string & {});
   /** To indicate if all Azure blobs have to be transferred */
   transferAllBlobs?: boolean;
   /** To indicate if all Azure Files have to be transferred */
@@ -466,7 +465,7 @@ export const TransferConfigurationTransferAllDetails = /*@__PURE__*/ S.suspend(
 /** Configuration for defining the transfer of data. */
 export interface TransferConfiguration {
   /** Type of the configuration for transfer. */
-  transferConfigurationType: TransferConfigurationType;
+  transferConfigurationType: TransferConfigurationType | (string & {});
   /** Map of filter type and the details to filter. This field is required only if the TransferConfigurationType is given as TransferUsingFilter. */
   transferFilterDetails?: TransferConfigurationTransferFilterDetails;
   /** Map of filter type and the details to transfer all data. This field is required only if the TransferConfigurationType is given as TransferAll */
@@ -493,7 +492,7 @@ export interface DataExportDetails {
   /** Configuration for the data transfer. */
   transferConfiguration: TransferConfiguration;
   /** Level of the logs to be collected. */
-  logCollectionLevel?: DataExportDetailsLogCollectionLevel;
+  logCollectionLevel?: DataExportDetailsLogCollectionLevel | (string & {});
   /** Account details of the data to be transferred */
   accountDetails: DataAccountDetails;
 }
@@ -508,8 +507,7 @@ export const DataExportDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DataExportDetails>;
 
 /** Details of the data to be exported from azure. */
-export type JobDetailsInputDataExportDetailsList =
-  ReadonlyArray<DataExportDetails>;
+export type JobDetailsInputDataExportDetailsList = Array<DataExportDetails>;
 export const JobDetailsInputDataExportDetailsList = /*@__PURE__*/ S.Array(
   DataExportDetails,
 ) as any as S.Schema<JobDetailsInputDataExportDetailsList>;
@@ -523,8 +521,7 @@ export type ClassDiscriminator =
 export const ClassDiscriminator = /*@__PURE__*/ S.String;
 
 /** Preferred data center region. */
-export type PreferencesInputPreferredDataCenterRegionList =
-  ReadonlyArray<string>;
+export type PreferencesInputPreferredDataCenterRegionList = Array<string>;
 export const PreferencesInputPreferredDataCenterRegionList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -558,9 +555,9 @@ export const HardwareEncryption = /*@__PURE__*/ S.String;
 /** Preferences related to the Encryption. */
 export interface EncryptionPreferences {
   /** Defines secondary layer of software-based encryption enablement. */
-  doubleEncryption?: EncryptionPreferencesDoubleEncryption;
+  doubleEncryption?: EncryptionPreferencesDoubleEncryption | (string & {});
   /** Defines Hardware level encryption (Only for disk) */
-  hardwareEncryption?: HardwareEncryption;
+  hardwareEncryption?: HardwareEncryption | (string & {});
 }
 export const EncryptionPreferences = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -576,10 +573,9 @@ export const PreferencesInputStorageAccountAccessTierPreferencesItem =
   /*@__PURE__*/ S.String;
 
 /** Preferences related to the Access Tier of storage accounts. */
-export type PreferencesInputStorageAccountAccessTierPreferencesList =
-  ReadonlyArray<
-    PreferencesInputStorageAccountAccessTierPreferencesItem | (string & {})
-  >;
+export type PreferencesInputStorageAccountAccessTierPreferencesList = Array<
+  PreferencesInputStorageAccountAccessTierPreferencesItem | (string & {})
+>;
 export const PreferencesInputStorageAccountAccessTierPreferencesList =
   /*@__PURE__*/ S.Array(
     PreferencesInputStorageAccountAccessTierPreferencesItem,
@@ -686,7 +682,7 @@ export const IdentityProperties = /*@__PURE__*/ S.suspend(() =>
 /** Encryption key containing details about key to encrypt different keys. */
 export interface KeyEncryptionKey {
   /** Type of encryption key used for key encryption. */
-  kekType: KeyEncryptionKeyKekType;
+  kekType: KeyEncryptionKeyKekType | (string & {});
   /** Managed identity properties used for key encryption. */
   identityProperties?: IdentityProperties;
   /** Key encryption key. It is required in case of Customer managed KekType. */
@@ -802,13 +798,13 @@ export const ModelName = /*@__PURE__*/ S.String;
 /** The Sku. */
 export interface Sku {
   /** The sku name. */
-  name: SkuName;
+  name: SkuName | (string & {});
   /** The display name of the sku. */
   displayName?: string;
   /** The sku family. */
   family?: string;
   /** The customer friendly name of the combination of version and capacity of the device. This field is necessary only at the time of ordering the newer generation device i.e. AzureDataBox120 and AzureDataBox525 as of Feb/2025 */
-  model?: ModelName;
+  model?: ModelName | (string & {});
 }
 export const Sku = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1006,13 +1002,13 @@ export const AdditionalErrorInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AdditionalErrorInfo>;
 
 /** Gets or sets additional error info. */
-export type CloudErrorAdditionalInfoList = ReadonlyArray<AdditionalErrorInfo>;
+export type CloudErrorAdditionalInfoList = Array<AdditionalErrorInfo>;
 export const CloudErrorAdditionalInfoList = /*@__PURE__*/ S.Array(
   AdditionalErrorInfo,
 ) as any as S.Schema<CloudErrorAdditionalInfoList>;
 
 /** Gets or sets details for the error. */
-export type CloudErrorDetailsList = ReadonlyArray<CloudError>;
+export type CloudErrorDetailsList = Array<CloudError>;
 export const CloudErrorDetailsList = /*@__PURE__*/ S.Array(
   S.suspend(() => CloudError),
 ) as any as S.Schema<CloudErrorDetailsList>;
@@ -1095,7 +1091,7 @@ export const JobDelayDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<JobDelayDetails>;
 
 /** Delay information for the job stages. */
-export type JobStagesDelayInformationList = ReadonlyArray<JobDelayDetails>;
+export type JobStagesDelayInformationList = Array<JobDelayDetails>;
 export const JobStagesDelayInformationList = /*@__PURE__*/ S.Array(
   JobDelayDetails,
 ) as any as S.Schema<JobStagesDelayInformationList>;
@@ -1127,7 +1123,7 @@ export const JobStages = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "JobStages" }) as any as S.Schema<JobStages>;
 
 /** List of stages that run in the job. */
-export type JobDetailsJobStagesList = ReadonlyArray<JobStages>;
+export type JobDetailsJobStagesList = Array<JobStages>;
 export const JobDetailsJobStagesList = /*@__PURE__*/ S.Array(
   JobStages,
 ) as any as S.Schema<JobDetailsJobStagesList>;
@@ -1152,19 +1148,19 @@ export const PackageShippingDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PackageShippingDetails>;
 
 /** Details of the data to be imported into azure. */
-export type JobDetailsDataImportDetailsList = ReadonlyArray<DataImportDetails>;
+export type JobDetailsDataImportDetailsList = Array<DataImportDetails>;
 export const JobDetailsDataImportDetailsList = /*@__PURE__*/ S.Array(
   DataImportDetails,
 ) as any as S.Schema<JobDetailsDataImportDetailsList>;
 
 /** Details of the data to be exported from azure. */
-export type JobDetailsDataExportDetailsList = ReadonlyArray<DataExportDetails>;
+export type JobDetailsDataExportDetailsList = Array<DataExportDetails>;
 export const JobDetailsDataExportDetailsList = /*@__PURE__*/ S.Array(
   DataExportDetails,
 ) as any as S.Schema<JobDetailsDataExportDetailsList>;
 
 /** Preferred data center region. */
-export type PreferencesPreferredDataCenterRegionList = ReadonlyArray<string>;
+export type PreferencesPreferredDataCenterRegionList = Array<string>;
 export const PreferencesPreferredDataCenterRegionList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PreferencesPreferredDataCenterRegionList>;
@@ -1191,7 +1187,7 @@ export const PreferencesStorageAccountAccessTierPreferencesItem =
 
 /** Preferences related to the Access Tier of storage accounts. */
 export type PreferencesStorageAccountAccessTierPreferencesList =
-  ReadonlyArray<PreferencesStorageAccountAccessTierPreferencesItem>;
+  Array<PreferencesStorageAccountAccessTierPreferencesItem>;
 export const PreferencesStorageAccountAccessTierPreferencesList =
   /*@__PURE__*/ S.Array(
     PreferencesStorageAccountAccessTierPreferencesItem,
@@ -1255,7 +1251,7 @@ export const CopyLogDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CopyLogDetails" }) as any as S.Schema<CopyLogDetails>;
 
 /** List of copy log details. */
-export type JobDetailsCopyLogDetailsList = ReadonlyArray<CopyLogDetails>;
+export type JobDetailsCopyLogDetailsList = Array<CopyLogDetails>;
 export const JobDetailsCopyLogDetailsList = /*@__PURE__*/ S.Array(
   CopyLogDetails,
 ) as any as S.Schema<JobDetailsCopyLogDetailsList>;
@@ -1289,7 +1285,7 @@ export type CustomerResolutionCode =
 export const CustomerResolutionCode = /*@__PURE__*/ S.String;
 
 /** Available actions on the job. */
-export type JobDetailsActionsList = ReadonlyArray<CustomerResolutionCode>;
+export type JobDetailsActionsList = Array<CustomerResolutionCode>;
 export const JobDetailsActionsList = /*@__PURE__*/ S.Array(
   CustomerResolutionCode,
 ) as any as S.Schema<JobDetailsActionsList>;
@@ -1321,7 +1317,7 @@ export const DatacenterAddressType = /*@__PURE__*/ S.String;
 
 /** List of supported carriers for return shipment. */
 export type DatacenterAddressResponseSupportedCarriersForReturnShipmentList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const DatacenterAddressResponseSupportedCarriersForReturnShipmentList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1805,7 +1801,7 @@ export const JobResource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "JobResource" }) as any as S.Schema<JobResource>;
 
 /** The JobResource items on this page */
-export type JobResourceListValueList = ReadonlyArray<JobResource>;
+export type JobResourceListValueList = Array<JobResource>;
 export const JobResourceListValueList = /*@__PURE__*/ S.Array(
   JobResource,
 ) as any as S.Schema<JobResourceListValueList>;
@@ -1926,8 +1922,7 @@ export const UnencryptedCredentials = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UnencryptedCredentials>;
 
 /** The UnencryptedCredentials items on this page */
-export type UnencryptedCredentialsListValueList =
-  ReadonlyArray<UnencryptedCredentials>;
+export type UnencryptedCredentialsListValueList = Array<UnencryptedCredentials>;
 export const UnencryptedCredentialsListValueList = /*@__PURE__*/ S.Array(
   UnencryptedCredentials,
 ) as any as S.Schema<UnencryptedCredentialsListValueList>;
@@ -2253,7 +2248,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** The list of connected cluster API operations. */
-export type OperationListValueList = ReadonlyArray<Operation>;
+export type OperationListValueList = Array<Operation>;
 export const OperationListValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationListValueList>;
@@ -2273,8 +2268,9 @@ export const OperationList = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "OperationList" }) as any as S.Schema<OperationList>;
 
 /** Sku Names to filter for available skus */
-export type ServiceListAvailableSkusByResourceGroupRequestSkuNamesList =
-  ReadonlyArray<SkuName | (string & {})>;
+export type ServiceListAvailableSkusByResourceGroupRequestSkuNamesList = Array<
+  SkuName | (string & {})
+>;
 export const ServiceListAvailableSkusByResourceGroupRequestSkuNamesList =
   /*@__PURE__*/ S.Array(
     SkuName,
@@ -2335,7 +2331,7 @@ export const DataLocationToServiceLocationMap = /*@__PURE__*/ S.suspend(() =>
 
 /** The map of data location to service location. */
 export type SkuPropertiesDataLocationToServiceLocationMapList =
-  ReadonlyArray<DataLocationToServiceLocationMap>;
+  Array<DataLocationToServiceLocationMap>;
 export const SkuPropertiesDataLocationToServiceLocationMapList =
   /*@__PURE__*/ S.Array(
     DataLocationToServiceLocationMap,
@@ -2376,13 +2372,13 @@ export const SkuCost = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SkuCost" }) as any as S.Schema<SkuCost>;
 
 /** Cost of the Sku. */
-export type SkuPropertiesCostsList = ReadonlyArray<SkuCost>;
+export type SkuPropertiesCostsList = Array<SkuCost>;
 export const SkuPropertiesCostsList = /*@__PURE__*/ S.Array(
   SkuCost,
 ) as any as S.Schema<SkuPropertiesCostsList>;
 
 /** Api versions that support this Sku. */
-export type SkuPropertiesApiVersionsList = ReadonlyArray<string>;
+export type SkuPropertiesApiVersionsList = Array<string>;
 export const SkuPropertiesApiVersionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SkuPropertiesApiVersionsList>;
@@ -2398,8 +2394,7 @@ export type SkuDisabledReason =
 export const SkuDisabledReason = /*@__PURE__*/ S.String;
 
 /** List of all the Countries in the SKU specific commerce boundary */
-export type SkuPropertiesCountriesWithinCommerceBoundaryList =
-  ReadonlyArray<string>;
+export type SkuPropertiesCountriesWithinCommerceBoundaryList = Array<string>;
 export const SkuPropertiesCountriesWithinCommerceBoundaryList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2459,7 +2454,7 @@ export const SkuInformation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SkuInformation" }) as any as S.Schema<SkuInformation>;
 
 /** [Placeholder] Description for page model */
-export type AvailableSkusResultValueList = ReadonlyArray<SkuInformation>;
+export type AvailableSkusResultValueList = Array<SkuInformation>;
 export const AvailableSkusResultValueList = /*@__PURE__*/ S.Array(
   SkuInformation,
 ) as any as S.Schema<AvailableSkusResultValueList>;
@@ -2588,8 +2583,7 @@ export const ServiceRegionConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServiceRegionConfigurationRequest>;
 
 /** List of dates available to schedule */
-export type ScheduleAvailabilityResponseAvailableDatesList =
-  ReadonlyArray<string>;
+export type ScheduleAvailabilityResponseAvailableDatesList = Array<string>;
 export const ScheduleAvailabilityResponseAvailableDatesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2623,7 +2617,7 @@ export const TransportAvailabilityDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** List of transport availability details for given region */
 export type TransportAvailabilityResponseTransportAvailabilityDetailsList =
-  ReadonlyArray<TransportAvailabilityDetails>;
+  Array<TransportAvailabilityDetails>;
 export const TransportAvailabilityResponseTransportAvailabilityDetailsList =
   /*@__PURE__*/ S.Array(
     TransportAvailabilityDetails,
@@ -2659,7 +2653,7 @@ export const DeviceCapabilityDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** List of device capabilities available for a given region and a given sku */
 export type DeviceCapabilityResponseDeviceCapabilityDetailsList =
-  ReadonlyArray<DeviceCapabilityDetails>;
+  Array<DeviceCapabilityDetails>;
 export const DeviceCapabilityResponseDeviceCapabilityDetailsList =
   /*@__PURE__*/ S.Array(
     DeviceCapabilityDetails,
@@ -2771,7 +2765,7 @@ export const ValidationInputRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of request details contain validationType and its request as key and value respectively. */
 export type ServiceValidateInputsRequestIndividualRequestDetailsList =
-  ReadonlyArray<ValidationInputRequest>;
+  Array<ValidationInputRequest>;
 export const ServiceValidateInputsRequestIndividualRequestDetailsList =
   /*@__PURE__*/ S.Array(
     ValidationInputRequest,
@@ -2833,7 +2827,7 @@ export const ValidationInputResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** List of response details contain validationType and its response as key and value respectively. */
 export type ValidationResponsePropertiesIndividualResponseDetailsList =
-  ReadonlyArray<ValidationInputResponse>;
+  Array<ValidationInputResponse>;
 export const ValidationResponsePropertiesIndividualResponseDetailsList =
   /*@__PURE__*/ S.Array(
     ValidationInputResponse,
@@ -2878,7 +2872,7 @@ export const ServiceValidateInputsByResourceGroupRequestValidationCategory =
 
 /** List of request details contain validationType and its request as key and value respectively. */
 export type ServiceValidateInputsByResourceGroupRequestIndividualRequestDetailsList =
-  ReadonlyArray<ValidationInputRequest>;
+  Array<ValidationInputRequest>;
 export const ServiceValidateInputsByResourceGroupRequestIndividualRequestDetailsList =
   /*@__PURE__*/ S.Array(
     ValidationInputRequest,

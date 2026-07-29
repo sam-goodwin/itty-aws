@@ -264,13 +264,13 @@ export const ServerNameItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ServerNameItem" }) as any as S.Schema<ServerNameItem>;
 
 /** The list of server names in the cluster */
-export type ClusterPropertiesServerNamesList = ReadonlyArray<ServerNameItem>;
+export type ClusterPropertiesServerNamesList = Array<ServerNameItem>;
 export const ClusterPropertiesServerNamesList = /*@__PURE__*/ S.Array(
   ServerNameItem,
 ) as any as S.Schema<ClusterPropertiesServerNamesList>;
 
 /** The array of read replica clusters. */
-export type ClusterPropertiesReadReplicasList = ReadonlyArray<string>;
+export type ClusterPropertiesReadReplicasList = Array<string>;
 export const ClusterPropertiesReadReplicasList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ClusterPropertiesReadReplicasList>;
@@ -290,7 +290,7 @@ export const PrivateEndpointProperty = /*@__PURE__*/ S.suspend(() =>
 
 /** Group ids of the private endpoint connection. */
 export type PrivateEndpointConnectionSimplePropertiesGroupIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PrivateEndpointConnectionSimplePropertiesGroupIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -375,7 +375,7 @@ export const SimplePrivateEndpointConnection = /*@__PURE__*/ S.suspend(() =>
 
 /** The private endpoint connections for a cluster. */
 export type ClusterPropertiesPrivateEndpointConnectionsList =
-  ReadonlyArray<SimplePrivateEndpointConnection>;
+  Array<SimplePrivateEndpointConnection>;
 export const ClusterPropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     SimplePrivateEndpointConnection,
@@ -651,7 +651,7 @@ export const Cluster = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Cluster" }) as any as S.Schema<Cluster>;
 
 /** The list of clusters */
-export type ClusterListResultValueList = ReadonlyArray<Cluster>;
+export type ClusterListResultValueList = Array<Cluster>;
 export const ClusterListResultValueList = /*@__PURE__*/ S.Array(
   Cluster,
 ) as any as S.Schema<ClusterListResultValueList>;
@@ -1020,7 +1020,7 @@ export const ServerRoleGroupConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of server role group configuration values. */
 export type ConfigurationPropertiesServerRoleGroupConfigurationsList =
-  ReadonlyArray<ServerRoleGroupConfiguration>;
+  Array<ServerRoleGroupConfiguration>;
 export const ConfigurationPropertiesServerRoleGroupConfigurationsList =
   /*@__PURE__*/ S.Array(
     ServerRoleGroupConfiguration,
@@ -1283,8 +1283,7 @@ export const Configuration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Configuration" }) as any as S.Schema<Configuration>;
 
 /** The list of cluster configurations. */
-export type ClusterConfigurationListResultValueList =
-  ReadonlyArray<Configuration>;
+export type ClusterConfigurationListResultValueList = Array<Configuration>;
 export const ClusterConfigurationListResultValueList = /*@__PURE__*/ S.Array(
   Configuration,
 ) as any as S.Schema<ClusterConfigurationListResultValueList>;
@@ -1359,8 +1358,7 @@ export const ServerConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServerConfiguration>;
 
 /** The list of server configurations. */
-export type ServerConfigurationListResultValueList =
-  ReadonlyArray<ServerConfiguration>;
+export type ServerConfigurationListResultValueList = Array<ServerConfiguration>;
 export const ServerConfigurationListResultValueList = /*@__PURE__*/ S.Array(
   ServerConfiguration,
 ) as any as S.Schema<ServerConfigurationListResultValueList>;
@@ -1732,7 +1730,7 @@ export const FirewallRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FirewallRule" }) as any as S.Schema<FirewallRule>;
 
 /** The list of firewall rules in a cluster. */
-export type FirewallRuleListResultValueList = ReadonlyArray<FirewallRule>;
+export type FirewallRuleListResultValueList = Array<FirewallRule>;
 export const FirewallRuleListResultValueList = /*@__PURE__*/ S.Array(
   FirewallRule,
 ) as any as S.Schema<FirewallRuleListResultValueList>;
@@ -1821,7 +1819,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** Collection of available operation details. */
-export type OperationListResultValueList = ReadonlyArray<Operation>;
+export type OperationListResultValueList = Array<Operation>;
 export const OperationListResultValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationListResultValueList>;
@@ -1853,7 +1851,7 @@ export const PrivateEndpointInput = /*@__PURE__*/ S.suspend(() =>
 /** A collection of information about the state of the connection between service consumer and provider. */
 export interface PrivateLinkServiceConnectionState {
   /** Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service. */
-  status?: PrivateEndpointServiceConnectionStatus;
+  status?: PrivateEndpointServiceConnectionStatus | (string & {});
   /** The reason for approval/rejection of the connection. */
   description?: string;
   /** A message indicating if changes on the service provider require any updates on the consumer. */
@@ -1919,8 +1917,7 @@ export const PrivateEndpointConnectionsCreateOrUpdateRequest =
   }) as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateRequest>;
 
 /** The group ids for the private endpoint resource. */
-export type PrivateEndpointConnectionPropertiesGroupIdsList =
-  ReadonlyArray<string>;
+export type PrivateEndpointConnectionPropertiesGroupIdsList = Array<string>;
 export const PrivateEndpointConnectionPropertiesGroupIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2139,7 +2136,7 @@ export const PrivateEndpointConnectionListResultValueItem =
 
 /** Array of private endpoint connections. */
 export type PrivateEndpointConnectionListResultValueList =
-  ReadonlyArray<PrivateEndpointConnectionListResultValueItem>;
+  Array<PrivateEndpointConnectionListResultValueItem>;
 export const PrivateEndpointConnectionListResultValueList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnectionListResultValueItem,
@@ -2187,16 +2184,14 @@ export const PrivateLinkResourcesGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateLinkResourcesGetRequest>;
 
 /** The private link resource required member names. */
-export type PrivateLinkResourcePropertiesRequiredMembersList =
-  ReadonlyArray<string>;
+export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
 export const PrivateLinkResourcePropertiesRequiredMembersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
 
 /** The private link resource private link DNS zone name. */
-export type PrivateLinkResourcePropertiesRequiredZoneNamesList =
-  ReadonlyArray<string>;
+export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
 export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2303,7 +2298,7 @@ export const PrivateLinkResourceListResultValueItem = /*@__PURE__*/ S.suspend(
 
 /** Array of private link resources */
 export type PrivateLinkResourceListResultValueList =
-  ReadonlyArray<PrivateLinkResourceListResultValueItem>;
+  Array<PrivateLinkResourceListResultValueItem>;
 export const PrivateLinkResourceListResultValueList = /*@__PURE__*/ S.Array(
   PrivateLinkResourceListResultValueItem,
 ) as any as S.Schema<PrivateLinkResourceListResultValueList>;
@@ -2539,7 +2534,7 @@ export const Role = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Role" }) as any as S.Schema<Role>;
 
 /** The list of roles in a cluster. */
-export type RoleListResultValueList = ReadonlyArray<Role>;
+export type RoleListResultValueList = Array<Role>;
 export const RoleListResultValueList = /*@__PURE__*/ S.Array(
   Role,
 ) as any as S.Schema<RoleListResultValueList>;
@@ -2708,7 +2703,7 @@ export const ClusterServer = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ClusterServer" }) as any as S.Schema<ClusterServer>;
 
 /** The list of servers in a cluster. */
-export type ClusterServerListResultValueList = ReadonlyArray<ClusterServer>;
+export type ClusterServerListResultValueList = Array<ClusterServer>;
 export const ClusterServerListResultValueList = /*@__PURE__*/ S.Array(
   ClusterServer,
 ) as any as S.Schema<ClusterServerListResultValueList>;

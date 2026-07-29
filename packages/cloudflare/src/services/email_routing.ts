@@ -230,7 +230,7 @@ export const CreateDnsResponse = /*@__PURE__*/ S.suspend(() =>
 export type RulesCreateRequestActionsItemType = "drop" | "forward" | "worker";
 export const RulesCreateRequestActionsItemType = /*@__PURE__*/ S.String;
 
-export type RulesCreateRequestActionsItemValueList = ReadonlyArray<string>;
+export type RulesCreateRequestActionsItemValueList = Array<string>;
 export const RulesCreateRequestActionsItemValueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RulesCreateRequestActionsItemValueList>;
@@ -250,7 +250,7 @@ export const RulesCreateRequestActionsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RulesCreateRequestActionsItem>;
 
 export type RulesCreateRequestActionsList =
-  ReadonlyArray<RulesCreateRequestActionsItem>;
+  Array<RulesCreateRequestActionsItem>;
 export const RulesCreateRequestActionsList = /*@__PURE__*/ S.Array(
   RulesCreateRequestActionsItem,
 ) as any as S.Schema<RulesCreateRequestActionsList>;
@@ -280,7 +280,7 @@ export const RulesCreateRequestMatchersItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RulesCreateRequestMatchersItem>;
 
 export type RulesCreateRequestMatchersList =
-  ReadonlyArray<RulesCreateRequestMatchersItem>;
+  Array<RulesCreateRequestMatchersItem>;
 export const RulesCreateRequestMatchersList = /*@__PURE__*/ S.Array(
   RulesCreateRequestMatchersItem,
 ) as any as S.Schema<RulesCreateRequestMatchersList>;
@@ -332,7 +332,7 @@ export const CreateRuleRequest = /*@__PURE__*/ S.suspend(() =>
 export type RulesCreateResponseActionsItemType = "drop" | "forward" | "worker";
 export const RulesCreateResponseActionsItemType = /*@__PURE__*/ S.String;
 
-export type RulesCreateResponseActionsItemValueList = ReadonlyArray<string>;
+export type RulesCreateResponseActionsItemValueList = Array<string>;
 export const RulesCreateResponseActionsItemValueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RulesCreateResponseActionsItemValueList>;
@@ -352,7 +352,7 @@ export const RulesCreateResponseActionsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RulesCreateResponseActionsItem>;
 
 export type RulesCreateResponseActionsList =
-  ReadonlyArray<RulesCreateResponseActionsItem>;
+  Array<RulesCreateResponseActionsItem>;
 export const RulesCreateResponseActionsList = /*@__PURE__*/ S.Array(
   RulesCreateResponseActionsItem,
 ) as any as S.Schema<RulesCreateResponseActionsList>;
@@ -382,7 +382,7 @@ export const RulesCreateResponseMatchersItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RulesCreateResponseMatchersItem>;
 
 export type RulesCreateResponseMatchersList =
-  ReadonlyArray<RulesCreateResponseMatchersItem>;
+  Array<RulesCreateResponseMatchersItem>;
 export const RulesCreateResponseMatchersList = /*@__PURE__*/ S.Array(
   RulesCreateResponseMatchersItem,
 ) as any as S.Schema<RulesCreateResponseMatchersList>;
@@ -531,7 +531,7 @@ export const DeleteRuleRequest = /*@__PURE__*/ S.suspend(() =>
 export type RulesDeleteResponseActionsItemType = "drop" | "forward" | "worker";
 export const RulesDeleteResponseActionsItemType = /*@__PURE__*/ S.String;
 
-export type RulesDeleteResponseActionsItemValueList = ReadonlyArray<string>;
+export type RulesDeleteResponseActionsItemValueList = Array<string>;
 export const RulesDeleteResponseActionsItemValueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RulesDeleteResponseActionsItemValueList>;
@@ -551,7 +551,7 @@ export const RulesDeleteResponseActionsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RulesDeleteResponseActionsItem>;
 
 export type RulesDeleteResponseActionsList =
-  ReadonlyArray<RulesDeleteResponseActionsItem>;
+  Array<RulesDeleteResponseActionsItem>;
 export const RulesDeleteResponseActionsList = /*@__PURE__*/ S.Array(
   RulesDeleteResponseActionsItem,
 ) as any as S.Schema<RulesDeleteResponseActionsList>;
@@ -581,7 +581,7 @@ export const RulesDeleteResponseMatchersItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RulesDeleteResponseMatchersItem>;
 
 export type RulesDeleteResponseMatchersList =
-  ReadonlyArray<RulesDeleteResponseMatchersItem>;
+  Array<RulesDeleteResponseMatchersItem>;
 export const RulesDeleteResponseMatchersList = /*@__PURE__*/ S.Array(
   RulesDeleteResponseMatchersItem,
 ) as any as S.Schema<RulesDeleteResponseMatchersList>;
@@ -922,7 +922,7 @@ export const GetRuleRequest = /*@__PURE__*/ S.suspend(() =>
 export type RulesGetResponseActionsItemType = "drop" | "forward" | "worker";
 export const RulesGetResponseActionsItemType = /*@__PURE__*/ S.String;
 
-export type RulesGetResponseActionsItemValueList = ReadonlyArray<string>;
+export type RulesGetResponseActionsItemValueList = Array<string>;
 export const RulesGetResponseActionsItemValueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RulesGetResponseActionsItemValueList>;
@@ -941,8 +941,7 @@ export const RulesGetResponseActionsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "RulesGetResponseActionsItem",
 }) as any as S.Schema<RulesGetResponseActionsItem>;
 
-export type RulesGetResponseActionsList =
-  ReadonlyArray<RulesGetResponseActionsItem>;
+export type RulesGetResponseActionsList = Array<RulesGetResponseActionsItem>;
 export const RulesGetResponseActionsList = /*@__PURE__*/ S.Array(
   RulesGetResponseActionsItem,
 ) as any as S.Schema<RulesGetResponseActionsList>;
@@ -971,8 +970,7 @@ export const RulesGetResponseMatchersItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "RulesGetResponseMatchersItem",
 }) as any as S.Schema<RulesGetResponseMatchersItem>;
 
-export type RulesGetResponseMatchersList =
-  ReadonlyArray<RulesGetResponseMatchersItem>;
+export type RulesGetResponseMatchersList = Array<RulesGetResponseMatchersItem>;
 export const RulesGetResponseMatchersList = /*@__PURE__*/ S.Array(
   RulesGetResponseMatchersItem,
 ) as any as S.Schema<RulesGetResponseMatchersList>;
@@ -1040,8 +1038,7 @@ export type RulesCatchAllsGetResponseActionsItemType =
   | "worker";
 export const RulesCatchAllsGetResponseActionsItemType = /*@__PURE__*/ S.String;
 
-export type RulesCatchAllsGetResponseActionsItemValueList =
-  ReadonlyArray<string>;
+export type RulesCatchAllsGetResponseActionsItemValueList = Array<string>;
 export const RulesCatchAllsGetResponseActionsItemValueList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1063,7 +1060,7 @@ export const RulesCatchAllsGetResponseActionsItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<RulesCatchAllsGetResponseActionsItem>;
 
 export type RulesCatchAllsGetResponseActionsList =
-  ReadonlyArray<RulesCatchAllsGetResponseActionsItem>;
+  Array<RulesCatchAllsGetResponseActionsItem>;
 export const RulesCatchAllsGetResponseActionsList = /*@__PURE__*/ S.Array(
   RulesCatchAllsGetResponseActionsItem,
 ) as any as S.Schema<RulesCatchAllsGetResponseActionsList>;
@@ -1085,7 +1082,7 @@ export const RulesCatchAllsGetResponseMatchersItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<RulesCatchAllsGetResponseMatchersItem>;
 
 export type RulesCatchAllsGetResponseMatchersList =
-  ReadonlyArray<RulesCatchAllsGetResponseMatchersItem>;
+  Array<RulesCatchAllsGetResponseMatchersItem>;
 export const RulesCatchAllsGetResponseMatchersList = /*@__PURE__*/ S.Array(
   RulesCatchAllsGetResponseMatchersItem,
 ) as any as S.Schema<RulesCatchAllsGetResponseMatchersList>;
@@ -1186,7 +1183,7 @@ export const AddressesListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "AddressesListResultItem",
 }) as any as S.Schema<AddressesListResultItem>;
 
-export type AddressesListResultList = ReadonlyArray<AddressesListResultItem>;
+export type AddressesListResultList = Array<AddressesListResultItem>;
 export const AddressesListResultList = /*@__PURE__*/ S.Array(
   AddressesListResultItem,
 ) as any as S.Schema<AddressesListResultList>;
@@ -1233,7 +1230,7 @@ export const ListRulesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListRulesRequest",
 }) as any as S.Schema<ListRulesRequest>;
 
-export type ListRulesResponseResultList = ReadonlyArray<GetRuleResponse>;
+export type ListRulesResponseResultList = Array<GetRuleResponse>;
 export const ListRulesResponseResultList = /*@__PURE__*/ S.Array(
   GetRuleResponse,
 ) as any as S.Schema<ListRulesResponseResultList>;
@@ -1328,8 +1325,7 @@ export type RulesCatchAllsUpdateRequestActionsItemType =
 export const RulesCatchAllsUpdateRequestActionsItemType =
   /*@__PURE__*/ S.String;
 
-export type RulesCatchAllsUpdateRequestActionsItemValueList =
-  ReadonlyArray<string>;
+export type RulesCatchAllsUpdateRequestActionsItemValueList = Array<string>;
 export const RulesCatchAllsUpdateRequestActionsItemValueList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1351,7 +1347,7 @@ export const RulesCatchAllsUpdateRequestActionsItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<RulesCatchAllsUpdateRequestActionsItem>;
 
 export type RulesCatchAllsUpdateRequestActionsList =
-  ReadonlyArray<RulesCatchAllsUpdateRequestActionsItem>;
+  Array<RulesCatchAllsUpdateRequestActionsItem>;
 export const RulesCatchAllsUpdateRequestActionsList = /*@__PURE__*/ S.Array(
   RulesCatchAllsUpdateRequestActionsItem,
 ) as any as S.Schema<RulesCatchAllsUpdateRequestActionsList>;
@@ -1374,7 +1370,7 @@ export const RulesCatchAllsUpdateRequestMatchersItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<RulesCatchAllsUpdateRequestMatchersItem>;
 
 export type RulesCatchAllsUpdateRequestMatchersList =
-  ReadonlyArray<RulesCatchAllsUpdateRequestMatchersItem>;
+  Array<RulesCatchAllsUpdateRequestMatchersItem>;
 export const RulesCatchAllsUpdateRequestMatchersList = /*@__PURE__*/ S.Array(
   RulesCatchAllsUpdateRequestMatchersItem,
 ) as any as S.Schema<RulesCatchAllsUpdateRequestMatchersList>;
@@ -1427,8 +1423,7 @@ export type RulesCatchAllsUpdateResponseActionsItemType =
 export const RulesCatchAllsUpdateResponseActionsItemType =
   /*@__PURE__*/ S.String;
 
-export type RulesCatchAllsUpdateResponseActionsItemValueList =
-  ReadonlyArray<string>;
+export type RulesCatchAllsUpdateResponseActionsItemValueList = Array<string>;
 export const RulesCatchAllsUpdateResponseActionsItemValueList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1450,7 +1445,7 @@ export const RulesCatchAllsUpdateResponseActionsItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<RulesCatchAllsUpdateResponseActionsItem>;
 
 export type RulesCatchAllsUpdateResponseActionsList =
-  ReadonlyArray<RulesCatchAllsUpdateResponseActionsItem>;
+  Array<RulesCatchAllsUpdateResponseActionsItem>;
 export const RulesCatchAllsUpdateResponseActionsList = /*@__PURE__*/ S.Array(
   RulesCatchAllsUpdateResponseActionsItem,
 ) as any as S.Schema<RulesCatchAllsUpdateResponseActionsList>;
@@ -1473,7 +1468,7 @@ export const RulesCatchAllsUpdateResponseMatchersItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<RulesCatchAllsUpdateResponseMatchersItem>;
 
 export type RulesCatchAllsUpdateResponseMatchersList =
-  ReadonlyArray<RulesCatchAllsUpdateResponseMatchersItem>;
+  Array<RulesCatchAllsUpdateResponseMatchersItem>;
 export const RulesCatchAllsUpdateResponseMatchersList = /*@__PURE__*/ S.Array(
   RulesCatchAllsUpdateResponseMatchersItem,
 ) as any as S.Schema<RulesCatchAllsUpdateResponseMatchersList>;
@@ -1579,7 +1574,7 @@ export const UnlockResponse = /*@__PURE__*/ S.suspend(() =>
 export type RulesUpdateRequestActionsItemType = "drop" | "forward" | "worker";
 export const RulesUpdateRequestActionsItemType = /*@__PURE__*/ S.String;
 
-export type RulesUpdateRequestActionsItemValueList = ReadonlyArray<string>;
+export type RulesUpdateRequestActionsItemValueList = Array<string>;
 export const RulesUpdateRequestActionsItemValueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RulesUpdateRequestActionsItemValueList>;
@@ -1599,7 +1594,7 @@ export const RulesUpdateRequestActionsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RulesUpdateRequestActionsItem>;
 
 export type RulesUpdateRequestActionsList =
-  ReadonlyArray<RulesUpdateRequestActionsItem>;
+  Array<RulesUpdateRequestActionsItem>;
 export const RulesUpdateRequestActionsList = /*@__PURE__*/ S.Array(
   RulesUpdateRequestActionsItem,
 ) as any as S.Schema<RulesUpdateRequestActionsList>;
@@ -1629,7 +1624,7 @@ export const RulesUpdateRequestMatchersItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RulesUpdateRequestMatchersItem>;
 
 export type RulesUpdateRequestMatchersList =
-  ReadonlyArray<RulesUpdateRequestMatchersItem>;
+  Array<RulesUpdateRequestMatchersItem>;
 export const RulesUpdateRequestMatchersList = /*@__PURE__*/ S.Array(
   RulesUpdateRequestMatchersItem,
 ) as any as S.Schema<RulesUpdateRequestMatchersList>;
@@ -1684,7 +1679,7 @@ export const UpdateRuleRequest = /*@__PURE__*/ S.suspend(() =>
 export type RulesUpdateResponseActionsItemType = "drop" | "forward" | "worker";
 export const RulesUpdateResponseActionsItemType = /*@__PURE__*/ S.String;
 
-export type RulesUpdateResponseActionsItemValueList = ReadonlyArray<string>;
+export type RulesUpdateResponseActionsItemValueList = Array<string>;
 export const RulesUpdateResponseActionsItemValueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RulesUpdateResponseActionsItemValueList>;
@@ -1704,7 +1699,7 @@ export const RulesUpdateResponseActionsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RulesUpdateResponseActionsItem>;
 
 export type RulesUpdateResponseActionsList =
-  ReadonlyArray<RulesUpdateResponseActionsItem>;
+  Array<RulesUpdateResponseActionsItem>;
 export const RulesUpdateResponseActionsList = /*@__PURE__*/ S.Array(
   RulesUpdateResponseActionsItem,
 ) as any as S.Schema<RulesUpdateResponseActionsList>;
@@ -1734,7 +1729,7 @@ export const RulesUpdateResponseMatchersItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RulesUpdateResponseMatchersItem>;
 
 export type RulesUpdateResponseMatchersList =
-  ReadonlyArray<RulesUpdateResponseMatchersItem>;
+  Array<RulesUpdateResponseMatchersItem>;
 export const RulesUpdateResponseMatchersList = /*@__PURE__*/ S.Array(
   RulesUpdateResponseMatchersItem,
 ) as any as S.Schema<RulesUpdateResponseMatchersList>;

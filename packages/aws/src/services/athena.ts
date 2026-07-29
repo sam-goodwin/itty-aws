@@ -326,7 +326,7 @@ export type EncryptionOption = "SSE_S3" | "SSE_KMS" | "CSE_KMS";
 export const EncryptionOption = /*@__PURE__*/ S.String;
 
 export interface EncryptionConfiguration {
-  EncryptionOption: EncryptionOption;
+  EncryptionOption: EncryptionOption | (string & {});
   KmsKey?: string;
 }
 export const EncryptionConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -342,7 +342,7 @@ export type S3AclOption = "BUCKET_OWNER_FULL_CONTROL";
 export const S3AclOption = /*@__PURE__*/ S.String;
 
 export interface AclConfiguration {
-  S3AclOption: S3AclOption;
+  S3AclOption: S3AclOption | (string & {});
 }
 export const AclConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ S3AclOption: S3AclOption }),
@@ -498,7 +498,7 @@ export const AuthenticationType = /*@__PURE__*/ S.String;
 export interface QueryResultsS3AccessGrantsConfiguration {
   EnableS3AccessGrants: boolean;
   CreateUserLevelPrefix?: boolean;
-  AuthenticationType: AuthenticationType;
+  AuthenticationType: AuthenticationType | (string & {});
 }
 export const QueryResultsS3AccessGrantsConfiguration = /*@__PURE__*/ S.suspend(
   () =>

@@ -333,7 +333,7 @@ export const EntitlementDataUnit = /*@__PURE__*/ S.String;
 export interface EntitlementData {
   Name: string;
   Value?: string;
-  Unit: EntitlementDataUnit;
+  Unit: EntitlementDataUnit | (string & {});
 }
 export const EntitlementData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -486,7 +486,7 @@ export type AllowedOperation =
   | "CreateToken";
 export const AllowedOperation = /*@__PURE__*/ S.String;
 
-export type AllowedOperationList = AllowedOperation[];
+export type AllowedOperationList = (AllowedOperation | (string & {}))[];
 export const AllowedOperationList = /*@__PURE__*/ S.Array(AllowedOperation);
 export interface Tag {
   Key?: string;
@@ -550,7 +550,7 @@ export type ActivationOverrideBehavior =
 export const ActivationOverrideBehavior = /*@__PURE__*/ S.String;
 
 export interface Options {
-  ActivationOverrideBehavior?: ActivationOverrideBehavior;
+  ActivationOverrideBehavior?: ActivationOverrideBehavior | (string & {});
 }
 export const Options = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -655,7 +655,7 @@ export interface Entitlement {
   Value?: string;
   MaxCount?: number;
   Overage?: boolean;
-  Unit: EntitlementUnit;
+  Unit: EntitlementUnit | (string & {});
   AllowCheckIn?: boolean;
 }
 export const Entitlement = /*@__PURE__*/ S.suspend(() =>
@@ -692,7 +692,7 @@ export const BorrowConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "BorrowConfiguration",
 }) as any as S.Schema<BorrowConfiguration>;
 export interface ConsumptionConfiguration {
-  RenewType?: RenewType;
+  RenewType?: RenewType | (string & {});
   ProvisionalConfiguration?: ProvisionalConfiguration;
   BorrowConfiguration?: BorrowConfiguration;
 }
@@ -1091,7 +1091,7 @@ export const ProductCodeType = /*@__PURE__*/ S.String;
 
 export interface ProductCodeListItem {
   ProductCodeId: string;
-  ProductCodeType: ProductCodeType;
+  ProductCodeType: ProductCodeType | (string & {});
 }
 export const ProductCodeListItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ProductCodeId: S.String, ProductCodeType: ProductCodeType }),
@@ -1154,7 +1154,7 @@ export type ReportType =
   | "LicenseAssetGroupUsageReport";
 export const ReportType = /*@__PURE__*/ S.String;
 
-export type ReportTypeList = ReportType[];
+export type ReportTypeList = (ReportType | (string & {}))[];
 export const ReportTypeList = /*@__PURE__*/ S.Array(ReportType);
 export type ArnList = string[];
 export const ArnList = /*@__PURE__*/ S.Array(S.String);
@@ -1179,7 +1179,7 @@ export const ReportFrequencyType = /*@__PURE__*/ S.String;
 
 export interface ReportFrequency {
   value?: number;
-  period?: ReportFrequencyType;
+  period?: ReportFrequencyType | (string & {});
 }
 export const ReportFrequency = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

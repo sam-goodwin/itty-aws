@@ -280,7 +280,7 @@ export const CreateRequestSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourc
   /*@__PURE__*/ S.String;
 
 export type CreateRequestSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceCorsOriginsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CreateRequestSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceCorsOriginsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -380,7 +380,7 @@ export const CreateRequestSourceItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateRequestSourceItem",
 }) as any as S.Schema<CreateRequestSourceItem>;
 
-export type CreateRequestSourceList = ReadonlyArray<CreateRequestSourceItem>;
+export type CreateRequestSourceList = Array<CreateRequestSourceItem>;
 export const CreateRequestSourceList = /*@__PURE__*/ S.Array(
   CreateRequestSourceItem,
 ) as any as S.Schema<CreateRequestSourceList>;
@@ -503,7 +503,7 @@ export const CreateResponseSourceItemCloudflarePipelinesWorkersPipelinesHTTPSour
   /*@__PURE__*/ S.String;
 
 export type CreateResponseSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceCorsOriginsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CreateResponseSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceCorsOriginsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -597,7 +597,7 @@ export const CreateResponseSourceItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateResponseSourceItem",
 }) as any as S.Schema<CreateResponseSourceItem>;
 
-export type CreateResponseSourceList = ReadonlyArray<CreateResponseSourceItem>;
+export type CreateResponseSourceList = Array<CreateResponseSourceItem>;
 export const CreateResponseSourceList = /*@__PURE__*/ S.Array(
   CreateResponseSourceItem,
 ) as any as S.Schema<CreateResponseSourceList>;
@@ -969,7 +969,7 @@ export const SinksCreateRequestFormat = /*@__PURE__*/ S.suspend(() =>
   identifier: "SinksCreateRequestFormat",
 }) as any as S.Schema<SinksCreateRequestFormat>;
 
-export type SinksCreateRequestSchemaFieldsList = ReadonlyArray<unknown>;
+export type SinksCreateRequestSchemaFieldsList = Array<unknown>;
 export const SinksCreateRequestSchemaFieldsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<SinksCreateRequestSchemaFieldsList>;
@@ -1478,7 +1478,7 @@ export const SinksCreateResponseFormat = /*@__PURE__*/ S.suspend(() =>
   identifier: "SinksCreateResponseFormat",
 }) as any as S.Schema<SinksCreateResponseFormat>;
 
-export type SinksCreateResponseSchemaFieldsList = ReadonlyArray<unknown>;
+export type SinksCreateResponseSchemaFieldsList = Array<unknown>;
 export const SinksCreateResponseSchemaFieldsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<SinksCreateResponseSchemaFieldsList>;
@@ -1746,7 +1746,7 @@ export const StreamsCreateRequestFormat = /*@__PURE__*/ S.suspend(() =>
   identifier: "StreamsCreateRequestFormat",
 }) as any as S.Schema<StreamsCreateRequestFormat>;
 
-export type StreamsCreateRequestHttpCorsOriginsList = ReadonlyArray<string>;
+export type StreamsCreateRequestHttpCorsOriginsList = Array<string>;
 export const StreamsCreateRequestHttpCorsOriginsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StreamsCreateRequestHttpCorsOriginsList>;
@@ -1780,7 +1780,7 @@ export const StreamsCreateRequestHttp = /*@__PURE__*/ S.suspend(() =>
   identifier: "StreamsCreateRequestHttp",
 }) as any as S.Schema<StreamsCreateRequestHttp>;
 
-export type StreamsCreateRequestSchemaFieldsList = ReadonlyArray<unknown>;
+export type StreamsCreateRequestSchemaFieldsList = Array<unknown>;
 export const StreamsCreateRequestSchemaFieldsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<StreamsCreateRequestSchemaFieldsList>;
@@ -1966,7 +1966,7 @@ export const CreateStreamRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateStreamRequest",
 }) as any as S.Schema<CreateStreamRequest>;
 
-export type StreamsCreateResponseHttpCorsOriginsList = ReadonlyArray<string>;
+export type StreamsCreateResponseHttpCorsOriginsList = Array<string>;
 export const StreamsCreateResponseHttpCorsOriginsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StreamsCreateResponseHttpCorsOriginsList>;
@@ -2114,7 +2114,7 @@ export const StreamsCreateResponseFormat = /*@__PURE__*/ S.suspend(() =>
   identifier: "StreamsCreateResponseFormat",
 }) as any as S.Schema<StreamsCreateResponseFormat>;
 
-export type StreamsCreateResponseSchemaFieldsList = ReadonlyArray<unknown>;
+export type StreamsCreateResponseSchemaFieldsList = Array<unknown>;
 export const StreamsCreateResponseSchemaFieldsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<StreamsCreateResponseSchemaFieldsList>;
@@ -2567,7 +2567,7 @@ export const GetResponseSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceF
   /*@__PURE__*/ S.String;
 
 export type GetResponseSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceCorsOriginsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GetResponseSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceCorsOriginsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2661,7 +2661,7 @@ export const GetResponseSourceItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetResponseSourceItem",
 }) as any as S.Schema<GetResponseSourceItem>;
 
-export type GetResponseSourceList = ReadonlyArray<GetResponseSourceItem>;
+export type GetResponseSourceList = Array<GetResponseSourceItem>;
 export const GetResponseSourceList = /*@__PURE__*/ S.Array(
   GetResponseSourceItem,
 ) as any as S.Schema<GetResponseSourceList>;
@@ -3018,7 +3018,7 @@ export const SinksGetResponseFormat = /*@__PURE__*/ S.suspend(() =>
   identifier: "SinksGetResponseFormat",
 }) as any as S.Schema<SinksGetResponseFormat>;
 
-export type SinksGetResponseSchemaFieldsList = ReadonlyArray<unknown>;
+export type SinksGetResponseSchemaFieldsList = Array<unknown>;
 export const SinksGetResponseSchemaFieldsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<SinksGetResponseSchemaFieldsList>;
@@ -3193,7 +3193,7 @@ export const GetStreamRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetStreamRequest",
 }) as any as S.Schema<GetStreamRequest>;
 
-export type StreamsGetResponseHttpCorsOriginsList = ReadonlyArray<string>;
+export type StreamsGetResponseHttpCorsOriginsList = Array<string>;
 export const StreamsGetResponseHttpCorsOriginsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StreamsGetResponseHttpCorsOriginsList>;
@@ -3339,7 +3339,7 @@ export const StreamsGetResponseFormat = /*@__PURE__*/ S.suspend(() =>
   identifier: "StreamsGetResponseFormat",
 }) as any as S.Schema<StreamsGetResponseFormat>;
 
-export type StreamsGetResponseSchemaFieldsList = ReadonlyArray<unknown>;
+export type StreamsGetResponseSchemaFieldsList = Array<unknown>;
 export const StreamsGetResponseSchemaFieldsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<StreamsGetResponseSchemaFieldsList>;
@@ -3548,7 +3548,7 @@ export const GetV1ResponseTablesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetV1ResponseTablesItem",
 }) as any as S.Schema<GetV1ResponseTablesItem>;
 
-export type GetV1ResponseTablesList = ReadonlyArray<GetV1ResponseTablesItem>;
+export type GetV1ResponseTablesList = Array<GetV1ResponseTablesItem>;
 export const GetV1ResponseTablesList = /*@__PURE__*/ S.Array(
   GetV1ResponseTablesItem,
 ) as any as S.Schema<GetV1ResponseTablesList>;
@@ -3708,7 +3708,7 @@ export const ListResponseResultsItemSourceItemCloudflarePipelinesWorkersPipeline
   /*@__PURE__*/ S.String;
 
 export type ListResponseResultsItemSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceCorsOriginsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ListResponseResultsItemSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceCorsOriginsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3803,7 +3803,7 @@ export const ListResponseResultsItemSourceItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListResponseResultsItemSourceItem>;
 
 export type ListResponseResultsItemSourceList =
-  ReadonlyArray<ListResponseResultsItemSourceItem>;
+  Array<ListResponseResultsItemSourceItem>;
 export const ListResponseResultsItemSourceList = /*@__PURE__*/ S.Array(
   ListResponseResultsItemSourceItem,
 ) as any as S.Schema<ListResponseResultsItemSourceList>;
@@ -3833,7 +3833,7 @@ export const ListResponseResultsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListResponseResultsItem",
 }) as any as S.Schema<ListResponseResultsItem>;
 
-export type ListResponseResultsList = ReadonlyArray<ListResponseResultsItem>;
+export type ListResponseResultsList = Array<ListResponseResultsItem>;
 export const ListResponseResultsList = /*@__PURE__*/ S.Array(
   ListResponseResultsItem,
 ) as any as S.Schema<ListResponseResultsList>;
@@ -4189,7 +4189,7 @@ export const SinksListResultItemFormat = /*@__PURE__*/ S.suspend(() =>
   identifier: "SinksListResultItemFormat",
 }) as any as S.Schema<SinksListResultItemFormat>;
 
-export type SinksListResultItemSchemaFieldsList = ReadonlyArray<unknown>;
+export type SinksListResultItemSchemaFieldsList = Array<unknown>;
 export const SinksListResultItemSchemaFieldsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<SinksListResultItemSchemaFieldsList>;
@@ -4344,7 +4344,7 @@ export const SinksListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "SinksListResultItem",
 }) as any as S.Schema<SinksListResultItem>;
 
-export type SinksListResultList = ReadonlyArray<SinksListResultItem>;
+export type SinksListResultList = Array<SinksListResultItem>;
 export const SinksListResultList = /*@__PURE__*/ S.Array(
   SinksListResultItem,
 ) as any as S.Schema<SinksListResultList>;
@@ -4394,7 +4394,7 @@ export const ListStreamsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListStreamsRequest",
 }) as any as S.Schema<ListStreamsRequest>;
 
-export type StreamsListResultItemHttpCorsOriginsList = ReadonlyArray<string>;
+export type StreamsListResultItemHttpCorsOriginsList = Array<string>;
 export const StreamsListResultItemHttpCorsOriginsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StreamsListResultItemHttpCorsOriginsList>;
@@ -4542,7 +4542,7 @@ export const StreamsListResultItemFormat = /*@__PURE__*/ S.suspend(() =>
   identifier: "StreamsListResultItemFormat",
 }) as any as S.Schema<StreamsListResultItemFormat>;
 
-export type StreamsListResultItemSchemaFieldsList = ReadonlyArray<unknown>;
+export type StreamsListResultItemSchemaFieldsList = Array<unknown>;
 export const StreamsListResultItemSchemaFieldsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<StreamsListResultItemSchemaFieldsList>;
@@ -4706,7 +4706,7 @@ export const StreamsListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "StreamsListResultItem",
 }) as any as S.Schema<StreamsListResultItem>;
 
-export type StreamsListResultList = ReadonlyArray<StreamsListResultItem>;
+export type StreamsListResultList = Array<StreamsListResultItem>;
 export const StreamsListResultList = /*@__PURE__*/ S.Array(
   StreamsListResultItem,
 ) as any as S.Schema<StreamsListResultList>;
@@ -4778,7 +4778,7 @@ export const ListV1ResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListV1ResultItem",
 }) as any as S.Schema<ListV1ResultItem>;
 
-export type ListV1ResultList = ReadonlyArray<ListV1ResultItem>;
+export type ListV1ResultList = Array<ListV1ResultItem>;
 export const ListV1ResultList = /*@__PURE__*/ S.Array(
   ListV1ResultItem,
 ) as any as S.Schema<ListV1ResultList>;
@@ -4798,7 +4798,7 @@ export const ListV1PipelineResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListV1PipelineResponse",
 }) as any as S.Schema<ListV1PipelineResponse>;
 
-export type StreamsUpdateRequestHttpCorsOriginsList = ReadonlyArray<string>;
+export type StreamsUpdateRequestHttpCorsOriginsList = Array<string>;
 export const StreamsUpdateRequestHttpCorsOriginsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StreamsUpdateRequestHttpCorsOriginsList>;
@@ -4873,7 +4873,7 @@ export const PatchStreamRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchStreamRequest",
 }) as any as S.Schema<PatchStreamRequest>;
 
-export type StreamsUpdateResponseHttpCorsOriginsList = ReadonlyArray<string>;
+export type StreamsUpdateResponseHttpCorsOriginsList = Array<string>;
 export const StreamsUpdateResponseHttpCorsOriginsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StreamsUpdateResponseHttpCorsOriginsList>;
@@ -5165,7 +5165,7 @@ export const UpdateRequestSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourc
   /*@__PURE__*/ S.String;
 
 export type UpdateRequestSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceCorsOriginsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const UpdateRequestSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceCorsOriginsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5265,7 +5265,7 @@ export const UpdateRequestSourceItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateRequestSourceItem",
 }) as any as S.Schema<UpdateRequestSourceItem>;
 
-export type UpdateRequestSourceList = ReadonlyArray<UpdateRequestSourceItem>;
+export type UpdateRequestSourceList = Array<UpdateRequestSourceItem>;
 export const UpdateRequestSourceList = /*@__PURE__*/ S.Array(
   UpdateRequestSourceItem,
 ) as any as S.Schema<UpdateRequestSourceList>;
@@ -5391,7 +5391,7 @@ export const UpdateResponseSourceItemCloudflarePipelinesWorkersPipelinesHTTPSour
   /*@__PURE__*/ S.String;
 
 export type UpdateResponseSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceCorsOriginsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const UpdateResponseSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceCorsOriginsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5485,7 +5485,7 @@ export const UpdateResponseSourceItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateResponseSourceItem",
 }) as any as S.Schema<UpdateResponseSourceItem>;
 
-export type UpdateResponseSourceList = ReadonlyArray<UpdateResponseSourceItem>;
+export type UpdateResponseSourceList = Array<UpdateResponseSourceItem>;
 export const UpdateResponseSourceList = /*@__PURE__*/ S.Array(
   UpdateResponseSourceItem,
 ) as any as S.Schema<UpdateResponseSourceList>;
@@ -5584,7 +5584,7 @@ export const ValidateSqlResponseGraphEdgesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ValidateSqlResponseGraphEdgesItem>;
 
 export type ValidateSqlResponseGraphEdgesList =
-  ReadonlyArray<ValidateSqlResponseGraphEdgesItem>;
+  Array<ValidateSqlResponseGraphEdgesItem>;
 export const ValidateSqlResponseGraphEdgesList = /*@__PURE__*/ S.Array(
   ValidateSqlResponseGraphEdgesItem,
 ) as any as S.Schema<ValidateSqlResponseGraphEdgesList>;
@@ -5607,7 +5607,7 @@ export const ValidateSqlResponseGraphNodesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ValidateSqlResponseGraphNodesItem>;
 
 export type ValidateSqlResponseGraphNodesList =
-  ReadonlyArray<ValidateSqlResponseGraphNodesItem>;
+  Array<ValidateSqlResponseGraphNodesItem>;
 export const ValidateSqlResponseGraphNodesList = /*@__PURE__*/ S.Array(
   ValidateSqlResponseGraphNodesItem,
 ) as any as S.Schema<ValidateSqlResponseGraphNodesList>;

@@ -178,7 +178,7 @@ export interface VpcOptions {
   SubnetIds: string[];
   SecurityGroupIds?: string[];
   VpcAttachmentOptions?: VpcAttachmentOptions;
-  VpcEndpointManagement?: VpcEndpointManagement;
+  VpcEndpointManagement?: VpcEndpointManagement | (string & {});
 }
 export const VpcOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

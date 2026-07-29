@@ -21,7 +21,7 @@ const KEY_DICTIONARY: Record<string, string> = {
   totalCount: "total_count",
 };
 
-export type BulkDeleteRequestIdList = ReadonlyArray<string>;
+export type BulkDeleteRequestIdList = Array<string>;
 export const BulkDeleteRequestIdList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BulkDeleteRequestIdList>;
@@ -56,7 +56,7 @@ export const BulkDeleteResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "BulkDeleteResultItem",
 }) as any as S.Schema<BulkDeleteResultItem>;
 
-export type BulkDeleteResultList = ReadonlyArray<BulkDeleteResultItem>;
+export type BulkDeleteResultList = Array<BulkDeleteResultItem>;
 export const BulkDeleteResultList = /*@__PURE__*/ S.Array(
   BulkDeleteResultItem,
 ) as any as S.Schema<BulkDeleteResultList>;
@@ -92,8 +92,7 @@ export const BulkUpdateRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "BulkUpdateRequestBodyItem",
 }) as any as S.Schema<BulkUpdateRequestBodyItem>;
 
-export type BulkUpdateRequestBodyList =
-  ReadonlyArray<BulkUpdateRequestBodyItem>;
+export type BulkUpdateRequestBodyList = Array<BulkUpdateRequestBodyItem>;
 export const BulkUpdateRequestBodyList = /*@__PURE__*/ S.Array(
   BulkUpdateRequestBodyItem,
 ) as any as S.Schema<BulkUpdateRequestBodyList>;
@@ -138,7 +137,7 @@ export const BulkUpdateResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "BulkUpdateResultItem",
 }) as any as S.Schema<BulkUpdateResultItem>;
 
-export type BulkUpdateResultList = ReadonlyArray<BulkUpdateResultItem>;
+export type BulkUpdateResultList = Array<BulkUpdateResultItem>;
 export const BulkUpdateResultList = /*@__PURE__*/ S.Array(
   BulkUpdateResultItem,
 ) as any as S.Schema<BulkUpdateResultList>;
@@ -182,7 +181,7 @@ export const CreateRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateRequestBodyItem",
 }) as any as S.Schema<CreateRequestBodyItem>;
 
-export type CreateRequestBodyList = ReadonlyArray<CreateRequestBodyItem>;
+export type CreateRequestBodyList = Array<CreateRequestBodyItem>;
 export const CreateRequestBodyList = /*@__PURE__*/ S.Array(
   CreateRequestBodyItem,
 ) as any as S.Schema<CreateRequestBodyList>;
@@ -229,7 +228,7 @@ export const CreateResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateResultItem",
 }) as any as S.Schema<CreateResultItem>;
 
-export type CreateResultList = ReadonlyArray<CreateResultItem>;
+export type CreateResultList = Array<CreateResultItem>;
 export const CreateResultList = /*@__PURE__*/ S.Array(
   CreateResultItem,
 ) as any as S.Schema<CreateResultList>;
@@ -390,7 +389,7 @@ export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ListResultItem" }) as any as S.Schema<ListResultItem>;
 
-export type ListResultList = ReadonlyArray<ListResultItem>;
+export type ListResultList = Array<ListResultItem>;
 export const ListResultList = /*@__PURE__*/ S.Array(
   ListResultItem,
 ) as any as S.Schema<ListResultList>;

@@ -284,8 +284,7 @@ export const AccessPolicyAssignment = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccessPolicyAssignment>;
 
 /** List of access policy assignments. */
-export type AccessPolicyAssignmentListValueList =
-  ReadonlyArray<AccessPolicyAssignment>;
+export type AccessPolicyAssignmentListValueList = Array<AccessPolicyAssignment>;
 export const AccessPolicyAssignmentListValueList = /*@__PURE__*/ S.Array(
   AccessPolicyAssignment,
 ) as any as S.Schema<AccessPolicyAssignmentListValueList>;
@@ -349,9 +348,9 @@ export interface Persistence {
   /** Sets whether RDB is enabled. Note that at most one of AOF or RDB persistence may be enabled. */
   rdbEnabled?: boolean;
   /** Sets the frequency at which data is written to disk. Defaults to '1s', meaning 'every second'. Note that the 'always' setting is deprecated, because of its performance impact. */
-  aofFrequency?: PersistenceAofFrequency;
+  aofFrequency?: PersistenceAofFrequency | (string & {});
   /** Sets the frequency at which a snapshot of the database is created. */
-  rdbFrequency?: PersistenceRdbFrequency;
+  rdbFrequency?: PersistenceRdbFrequency | (string & {});
 }
 export const Persistence = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -377,8 +376,7 @@ export const ModuleInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ModuleInput" }) as any as S.Schema<ModuleInput>;
 
 /** Optional set of redis modules to enable in this database - modules can only be added at creation time. */
-export type DatabaseCreatePropertiesInputModulesList =
-  ReadonlyArray<ModuleInput>;
+export type DatabaseCreatePropertiesInputModulesList = Array<ModuleInput>;
 export const DatabaseCreatePropertiesInputModulesList = /*@__PURE__*/ S.Array(
   ModuleInput,
 ) as any as S.Schema<DatabaseCreatePropertiesInputModulesList>;
@@ -398,7 +396,7 @@ export const LinkedDatabaseInput = /*@__PURE__*/ S.suspend(() =>
 
 /** List of database resources to link with this database */
 export type DatabaseCreatePropertiesInputGeoReplicationLinkedDatabasesList =
-  ReadonlyArray<LinkedDatabaseInput>;
+  Array<LinkedDatabaseInput>;
 export const DatabaseCreatePropertiesInputGeoReplicationLinkedDatabasesList =
   /*@__PURE__*/ S.Array(
     LinkedDatabaseInput,
@@ -570,7 +568,7 @@ export const Module = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Module" }) as any as S.Schema<Module>;
 
 /** Optional set of redis modules to enable in this database - modules can only be added at creation time. */
-export type DatabaseCreatePropertiesModulesList = ReadonlyArray<Module>;
+export type DatabaseCreatePropertiesModulesList = Array<Module>;
 export const DatabaseCreatePropertiesModulesList = /*@__PURE__*/ S.Array(
   Module,
 ) as any as S.Schema<DatabaseCreatePropertiesModulesList>;
@@ -600,7 +598,7 @@ export const LinkedDatabase = /*@__PURE__*/ S.suspend(() =>
 
 /** List of database resources to link with this database */
 export type DatabaseCreatePropertiesGeoReplicationLinkedDatabasesList =
-  ReadonlyArray<LinkedDatabase>;
+  Array<LinkedDatabase>;
 export const DatabaseCreatePropertiesGeoReplicationLinkedDatabasesList =
   /*@__PURE__*/ S.Array(
     LinkedDatabase,
@@ -779,7 +777,7 @@ export const DatabasesExportResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DatabasesExportResponse>;
 
 /** The identifiers of all the other database resources in the georeplication group to be flushed. */
-export type DatabasesFlushRequestIdsList = ReadonlyArray<string>;
+export type DatabasesFlushRequestIdsList = Array<string>;
 export const DatabasesFlushRequestIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DatabasesFlushRequestIdsList>;
@@ -824,7 +822,7 @@ export const DatabasesFlushResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The resource IDs of the databases that are expected to be linked and included in the replication group. This parameter is used to validate that the linking is to the expected (unlinked) part of the replication group, if it is splintered. */
 export type DatabasesForceLinkToReplicationGroupRequestGeoReplicationLinkedDatabasesList =
-  ReadonlyArray<LinkedDatabaseInput>;
+  Array<LinkedDatabaseInput>;
 export const DatabasesForceLinkToReplicationGroupRequestGeoReplicationLinkedDatabasesList =
   /*@__PURE__*/ S.Array(
     LinkedDatabaseInput,
@@ -888,7 +886,7 @@ export const DatabasesForceLinkToReplicationGroupResponse =
   }) as any as S.Schema<DatabasesForceLinkToReplicationGroupResponse>;
 
 /** The resource IDs of the database resources to be unlinked. */
-export type DatabasesForceUnlinkRequestIdsList = ReadonlyArray<string>;
+export type DatabasesForceUnlinkRequestIdsList = Array<string>;
 export const DatabasesForceUnlinkRequestIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DatabasesForceUnlinkRequestIdsList>;
@@ -981,7 +979,7 @@ export const DatabasesGetResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DatabasesGetResponse>;
 
 /** SAS URIs for the target blobs to import from */
-export type DatabasesImportRequestSasUrisList = ReadonlyArray<string>;
+export type DatabasesImportRequestSasUrisList = Array<string>;
 export const DatabasesImportRequestSasUrisList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DatabasesImportRequestSasUrisList>;
@@ -1070,7 +1068,7 @@ export const Database = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Database" }) as any as S.Schema<Database>;
 
 /** List of databases */
-export type DatabaseListValueList = ReadonlyArray<Database>;
+export type DatabaseListValueList = Array<Database>;
 export const DatabaseListValueList = /*@__PURE__*/ S.Array(
   Database,
 ) as any as S.Schema<DatabaseListValueList>;
@@ -1195,15 +1193,14 @@ export const DatabaseUpdatePropertiesInputEvictionPolicy =
   /*@__PURE__*/ S.String;
 
 /** Optional set of redis modules to enable in this database - modules can only be added at creation time. */
-export type DatabaseUpdatePropertiesInputModulesList =
-  ReadonlyArray<ModuleInput>;
+export type DatabaseUpdatePropertiesInputModulesList = Array<ModuleInput>;
 export const DatabaseUpdatePropertiesInputModulesList = /*@__PURE__*/ S.Array(
   ModuleInput,
 ) as any as S.Schema<DatabaseUpdatePropertiesInputModulesList>;
 
 /** List of database resources to link with this database */
 export type DatabaseUpdatePropertiesInputGeoReplicationLinkedDatabasesList =
-  ReadonlyArray<LinkedDatabaseInput>;
+  Array<LinkedDatabaseInput>;
 export const DatabaseUpdatePropertiesInputGeoReplicationLinkedDatabasesList =
   /*@__PURE__*/ S.Array(
     LinkedDatabaseInput,
@@ -1440,7 +1437,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = ReadonlyArray<Operation>;
+export type OperationsListResponseValueList = Array<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;
@@ -1486,7 +1483,7 @@ export const OperationsStatusGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationsStatusGetRequest>;
 
 /** The error details. */
-export type ErrorDetailDetailsList = ReadonlyArray<ErrorDetail>;
+export type ErrorDetailDetailsList = Array<ErrorDetail>;
 export const ErrorDetailDetailsList = /*@__PURE__*/ S.Array(
   S.suspend(() => ErrorDetail),
 ) as any as S.Schema<ErrorDetailDetailsList>;
@@ -1508,7 +1505,7 @@ export const ErrorAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ErrorAdditionalInfo>;
 
 /** The error additional info. */
-export type ErrorDetailAdditionalInfoList = ReadonlyArray<ErrorAdditionalInfo>;
+export type ErrorDetailAdditionalInfoList = Array<ErrorAdditionalInfo>;
 export const ErrorDetailAdditionalInfoList = /*@__PURE__*/ S.Array(
   ErrorAdditionalInfo,
 ) as any as S.Schema<ErrorDetailAdditionalInfoList>;
@@ -1665,7 +1662,7 @@ export const PrivateEndpointServiceConnectionStatus = /*@__PURE__*/ S.String;
 /** A collection of information about the state of the connection between service consumer and provider. */
 export interface PrivateLinkServiceConnectionState {
   /** Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service. */
-  status?: PrivateEndpointServiceConnectionStatus;
+  status?: PrivateEndpointServiceConnectionStatus | (string & {});
   /** The reason for approval/rejection of the connection. */
   description?: string;
   /** A message indicating if changes on the service provider require any updates on the consumer. */
@@ -1781,7 +1778,7 @@ export const PrivateEndpointConnection = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of private endpoint connections */
 export type PrivateEndpointConnectionsListResponseValueList =
-  ReadonlyArray<PrivateEndpointConnection>;
+  Array<PrivateEndpointConnection>;
 export const PrivateEndpointConnectionsListResponseValueList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection,
@@ -1906,16 +1903,14 @@ export const PrivateLinkResourcesListByClusterRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PrivateLinkResourcesListByClusterRequest>;
 
 /** The private link resource required member names. */
-export type PrivateLinkResourcePropertiesRequiredMembersList =
-  ReadonlyArray<string>;
+export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
 export const PrivateLinkResourcePropertiesRequiredMembersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
 
 /** The private link resource Private link DNS zone name. */
-export type PrivateLinkResourcePropertiesRequiredZoneNamesList =
-  ReadonlyArray<string>;
+export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
 export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1968,7 +1963,7 @@ export const PrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of private link resources */
 export type PrivateLinkResourcesListByClusterResponseValueList =
-  ReadonlyArray<PrivateLinkResource>;
+  Array<PrivateLinkResource>;
 export const PrivateLinkResourcesListByClusterResponseValueList =
   /*@__PURE__*/ S.Array(
     PrivateLinkResource,
@@ -2058,7 +2053,7 @@ export const SkuName = /*@__PURE__*/ S.String;
 /** SKU parameters supplied to the create Redis Enterprise cluster operation. */
 export interface Sku {
   /** The level of Redis Enterprise cluster to deploy. Possible values: ('Balanced_B5', 'MemoryOptimized_M10', 'ComputeOptimized_X5', etc.). For more information on SKUs see the latest pricing documentation. Note that additional SKUs may become supported in the future. */
-  name: SkuName;
+  name: SkuName | (string & {});
   /** This property is only used with Enterprise and EnterpriseFlash SKUs. Determines the size of the cluster. Valid values are (2, 4, 6, ...) for Enterprise SKUs and (3, 9, 15, ...) for EnterpriseFlash SKUs. */
   capacity?: number;
 }
@@ -2070,7 +2065,7 @@ export const Sku = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Sku" }) as any as S.Schema<Sku>;
 
 /** The Availability Zones where this cluster will be deployed. */
-export type RedisEnterpriseCreateRequestZonesList = ReadonlyArray<string>;
+export type RedisEnterpriseCreateRequestZonesList = Array<string>;
 export const RedisEnterpriseCreateRequestZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RedisEnterpriseCreateRequestZonesList>;
@@ -2291,7 +2286,7 @@ export type Kind = "v1" | "v2";
 export const Kind = /*@__PURE__*/ S.String;
 
 /** The Availability Zones where this cluster will be deployed. */
-export type RedisEnterpriseCreateResponseZonesList = ReadonlyArray<string>;
+export type RedisEnterpriseCreateResponseZonesList = Array<string>;
 export const RedisEnterpriseCreateResponseZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RedisEnterpriseCreateResponseZonesList>;
@@ -2439,7 +2434,7 @@ export const ClusterCreatePropertiesPrivateEndpointConnectionsItem =
 
 /** List of private endpoint connections associated with the specified Redis Enterprise cluster */
 export type ClusterCreatePropertiesPrivateEndpointConnectionsList =
-  ReadonlyArray<ClusterCreatePropertiesPrivateEndpointConnectionsItem>;
+  Array<ClusterCreatePropertiesPrivateEndpointConnectionsItem>;
 export const ClusterCreatePropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     ClusterCreatePropertiesPrivateEndpointConnectionsItem,
@@ -2597,7 +2592,7 @@ export const RedisEnterpriseGetResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<RedisEnterpriseGetResponseTagsMap>;
 
 /** The Availability Zones where this cluster will be deployed. */
-export type RedisEnterpriseGetResponseZonesList = ReadonlyArray<string>;
+export type RedisEnterpriseGetResponseZonesList = Array<string>;
 export const RedisEnterpriseGetResponseZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RedisEnterpriseGetResponseZonesList>;
@@ -2687,7 +2682,7 @@ export const ClusterTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ClusterTagsMap>;
 
 /** The Availability Zones where this cluster will be deployed. */
-export type ClusterZonesList = ReadonlyArray<string>;
+export type ClusterZonesList = Array<string>;
 export const ClusterZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ClusterZonesList>;
@@ -2750,7 +2745,7 @@ export const Cluster = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Cluster" }) as any as S.Schema<Cluster>;
 
 /** List of clusters. */
-export type ClusterListValueList = ReadonlyArray<Cluster>;
+export type ClusterListValueList = Array<Cluster>;
 export const ClusterListValueList = /*@__PURE__*/ S.Array(
   Cluster,
 ) as any as S.Schema<ClusterListValueList>;
@@ -2833,7 +2828,7 @@ export const SkuDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SkuDetails" }) as any as S.Schema<SkuDetails>;
 
 /** List of SKUS available to scale up or scale down. */
-export type SkuDetailsListSkusList = ReadonlyArray<SkuDetails>;
+export type SkuDetailsListSkusList = Array<SkuDetails>;
 export const SkuDetailsListSkusList = /*@__PURE__*/ S.Array(
   SkuDetails,
 ) as any as S.Schema<SkuDetailsListSkusList>;
@@ -3039,7 +3034,7 @@ export const RedisEnterpriseUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<RedisEnterpriseUpdateResponseTagsMap>;
 
 /** The Availability Zones where this cluster will be deployed. */
-export type RedisEnterpriseUpdateResponseZonesList = ReadonlyArray<string>;
+export type RedisEnterpriseUpdateResponseZonesList = Array<string>;
 export const RedisEnterpriseUpdateResponseZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RedisEnterpriseUpdateResponseZonesList>;

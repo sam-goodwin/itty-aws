@@ -48,7 +48,7 @@ export const IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap =
 
 /** Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. Finalizers may be processed and removed in any order. Order is NOT enforced because it introduces significant risk of stuck finalizers. finalizers is a shared field, any actor with permission can reorder it. If the finalizer list is processed in order, then this can lead to a situation in which the component responsible for the first finalizer in the list is waiting for a signal (field value, external system, or other) produced by a component responsible for a finalizer later in the list, resulting in a deadlock. Without enforced ordering finalizers are free to order amongst themselves and are not vulnerable to ordering changes in the list. */
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -98,7 +98,7 @@ export const IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry =
 
 /** ManagedFields maps workflow-id and version to the set of fields that are managed by that workflow. This is mostly for internal housekeeping, and users typically shouldn't need to set or understand this field. A workflow can be the user's name, a controller's name, or the name of a specific apply path like "ci-cd". The set of fields is always in the version that the workflow used when modifying the object. */
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaManagedFieldsList =
-  ReadonlyArray<IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry>;
+  Array<IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry>;
 export const IoK8sApimachineryPkgApisMetaV1ObjectMetaManagedFieldsList =
   /*@__PURE__*/ S.Array(
     IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry,
@@ -135,7 +135,7 @@ export const IoK8sApimachineryPkgApisMetaV1OwnerReference =
 
 /** List of objects depended by this object. If ALL objects in the list have been deleted, this object will be garbage collected. If this object is managed by a controller, then an entry in this list will point to this controller, with the controller field set to true. There cannot be more than one managing controller. */
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaOwnerReferencesList =
-  ReadonlyArray<IoK8sApimachineryPkgApisMetaV1OwnerReference>;
+  Array<IoK8sApimachineryPkgApisMetaV1OwnerReference>;
 export const IoK8sApimachineryPkgApisMetaV1ObjectMetaOwnerReferencesList =
   /*@__PURE__*/ S.Array(
     IoK8sApimachineryPkgApisMetaV1OwnerReference,
@@ -223,7 +223,7 @@ export const IoK8sApiStorageV1TokenRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** tokenRequests indicates the CSI driver needs pods' service account tokens it is mounting volume for to do necessary authentication. Kubelet will pass the tokens in VolumeContext in the CSI NodePublishVolume calls. The CSI driver should parse and validate the following VolumeContext: "csi.storage.k8s.io/serviceAccount.tokens": { "<audience>": { "token": <token>, "expirationTimestamp": <expiration timestamp in RFC3339>, }, ... } Note: Audience in each TokenRequest should be different and at most one token is empty string. To receive a new token after expiry, RequiresRepublish can be used to trigger NodePublishVolume periodically. */
 export type IoK8sApiStorageV1CSIDriverSpecTokenRequestsList =
-  ReadonlyArray<IoK8sApiStorageV1TokenRequest>;
+  Array<IoK8sApiStorageV1TokenRequest>;
 export const IoK8sApiStorageV1CSIDriverSpecTokenRequestsList =
   /*@__PURE__*/ S.Array(
     IoK8sApiStorageV1TokenRequest,
@@ -231,7 +231,7 @@ export const IoK8sApiStorageV1CSIDriverSpecTokenRequestsList =
 
 /** volumeLifecycleModes defines what kind of volumes this CSI volume driver supports. The default if the list is empty is "Persistent", which is the usage defined by the CSI specification and implemented in Kubernetes via the usual PV/PVC mechanism. The other mode is "Ephemeral". In this mode, volumes are defined inline inside the pod spec with CSIVolumeSource and their lifecycle is tied to the lifecycle of that pod. A driver has to be aware of this because it is only going to get a NodePublishVolume call for such a volume. For more information about implementing this mode, see https://kubernetes-csi.github.io/docs/ephemeral-local-volumes.html A driver can support one or more of these modes and more modes may be added in the future. This field is beta. This field is immutable. */
 export type IoK8sApiStorageV1CSIDriverSpecVolumeLifecycleModesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const IoK8sApiStorageV1CSIDriverSpecVolumeLifecycleModesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -358,8 +358,7 @@ export const IoK8sApiStorageV1VolumeNodeResources = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<IoK8sApiStorageV1VolumeNodeResources>;
 
 /** topologyKeys is the list of keys supported by the driver. When a driver is initialized on a cluster, it provides a set of topology keys that it understands (e.g. "company.com/zone", "company.com/region"). When a driver is initialized on a node, it provides the same topology keys along with values. Kubelet will expose these topology keys as labels on its own node object. When Kubernetes does topology aware provisioning, it can use this list to determine which labels it should retrieve from the node object and pass back to the driver. It is possible for different nodes to use different topology keys. This can be empty if driver does not support topology. */
-export type IoK8sApiStorageV1CSINodeDriverTopologyKeysList =
-  ReadonlyArray<string>;
+export type IoK8sApiStorageV1CSINodeDriverTopologyKeysList = Array<string>;
 export const IoK8sApiStorageV1CSINodeDriverTopologyKeysList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -389,7 +388,7 @@ export const IoK8sApiStorageV1CSINodeDriver = /*@__PURE__*/ S.suspend(() =>
 
 /** drivers is a list of information of all CSI Drivers existing on a node. If all drivers in the list are uninstalled, this can become empty. */
 export type IoK8sApiStorageV1CSINodeSpecDriversList =
-  ReadonlyArray<IoK8sApiStorageV1CSINodeDriver>;
+  Array<IoK8sApiStorageV1CSINodeDriver>;
 export const IoK8sApiStorageV1CSINodeSpecDriversList = /*@__PURE__*/ S.Array(
   IoK8sApiStorageV1CSINodeDriver,
 ) as any as S.Schema<IoK8sApiStorageV1CSINodeSpecDriversList>;
@@ -438,7 +437,7 @@ export const IoK8sApiStorageV1StorageHealthCondition = /*@__PURE__*/ S.suspend(
 
 /** healthConditions are the adverse storage backend conditions reported by the CSI driver. At most 16 conditions may be reported. */
 export type IoK8sApiStorageV1StorageHealthHealthConditionsList =
-  ReadonlyArray<IoK8sApiStorageV1StorageHealthCondition>;
+  Array<IoK8sApiStorageV1StorageHealthCondition>;
 export const IoK8sApiStorageV1StorageHealthHealthConditionsList =
   /*@__PURE__*/ S.Array(
     IoK8sApiStorageV1StorageHealthCondition,
@@ -464,7 +463,7 @@ export const IoK8sApiStorageV1StorageHealth = /*@__PURE__*/ S.suspend(() =>
 
 /** storageHealth contains backend health reports for CSI drivers registered on the node. */
 export type IoK8sApiStorageV1CSINodeStatusStorageHealthList =
-  ReadonlyArray<IoK8sApiStorageV1StorageHealth>;
+  Array<IoK8sApiStorageV1StorageHealth>;
 export const IoK8sApiStorageV1CSINodeStatusStorageHealthList =
   /*@__PURE__*/ S.Array(
     IoK8sApiStorageV1StorageHealth,
@@ -552,7 +551,7 @@ export const IoK8sApiStorageV1CSINode = /*@__PURE__*/ S.suspend(() =>
 
 /** values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch. */
 export type IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirementValuesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirementValuesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -582,7 +581,7 @@ export const IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement =
 
 /** matchExpressions is a list of label selector requirements. The requirements are ANDed. */
 export type IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchExpressionsList =
-  ReadonlyArray<IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement>;
+  Array<IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement>;
 export const IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchExpressionsList =
   /*@__PURE__*/ S.Array(
     IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement,
@@ -704,7 +703,7 @@ export const IoK8sApiStorageV1CSIStorageCapacity = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of string values. One value must match the label to be selected. Each entry in Values is ORed. */
 export type IoK8sApiCoreV1TopologySelectorLabelRequirementValuesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const IoK8sApiCoreV1TopologySelectorLabelRequirementValuesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -729,7 +728,7 @@ export const IoK8sApiCoreV1TopologySelectorLabelRequirement =
 
 /** A list of topology selector requirements by labels. */
 export type IoK8sApiCoreV1TopologySelectorTermMatchLabelExpressionsList =
-  ReadonlyArray<IoK8sApiCoreV1TopologySelectorLabelRequirement>;
+  Array<IoK8sApiCoreV1TopologySelectorLabelRequirement>;
 export const IoK8sApiCoreV1TopologySelectorTermMatchLabelExpressionsList =
   /*@__PURE__*/ S.Array(
     IoK8sApiCoreV1TopologySelectorLabelRequirement,
@@ -752,15 +751,14 @@ export const IoK8sApiCoreV1TopologySelectorTerm = /*@__PURE__*/ S.suspend(() =>
 
 /** allowedTopologies restrict the node topologies where volumes can be dynamically provisioned. Each volume plugin defines its own supported topology specifications. An empty TopologySelectorTerm list means there is no topology restriction. This field is only honored by servers that enable the VolumeScheduling feature. */
 export type CreateStorageV1StorageClassRequestAllowedTopologiesList =
-  ReadonlyArray<IoK8sApiCoreV1TopologySelectorTerm>;
+  Array<IoK8sApiCoreV1TopologySelectorTerm>;
 export const CreateStorageV1StorageClassRequestAllowedTopologiesList =
   /*@__PURE__*/ S.Array(
     IoK8sApiCoreV1TopologySelectorTerm,
   ) as any as S.Schema<CreateStorageV1StorageClassRequestAllowedTopologiesList>;
 
 /** mountOptions controls the mountOptions for dynamically provisioned PersistentVolumes of this storage class. e.g. ["ro", "soft"]. Not validated - mount of the PVs will simply fail if one is invalid. */
-export type CreateStorageV1StorageClassRequestMountOptionsList =
-  ReadonlyArray<string>;
+export type CreateStorageV1StorageClassRequestMountOptionsList = Array<string>;
 export const CreateStorageV1StorageClassRequestMountOptionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -839,15 +837,14 @@ export const CreateStorageV1StorageClassRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** allowedTopologies restrict the node topologies where volumes can be dynamically provisioned. Each volume plugin defines its own supported topology specifications. An empty TopologySelectorTerm list means there is no topology restriction. This field is only honored by servers that enable the VolumeScheduling feature. */
 export type IoK8sApiStorageV1StorageClassAllowedTopologiesList =
-  ReadonlyArray<IoK8sApiCoreV1TopologySelectorTerm>;
+  Array<IoK8sApiCoreV1TopologySelectorTerm>;
 export const IoK8sApiStorageV1StorageClassAllowedTopologiesList =
   /*@__PURE__*/ S.Array(
     IoK8sApiCoreV1TopologySelectorTerm,
   ) as any as S.Schema<IoK8sApiStorageV1StorageClassAllowedTopologiesList>;
 
 /** mountOptions controls the mountOptions for dynamically provisioned PersistentVolumes of this storage class. e.g. ["ro", "soft"]. Not validated - mount of the PVs will simply fail if one is invalid. */
-export type IoK8sApiStorageV1StorageClassMountOptionsList =
-  ReadonlyArray<string>;
+export type IoK8sApiStorageV1StorageClassMountOptionsList = Array<string>;
 export const IoK8sApiStorageV1StorageClassMountOptionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -906,8 +903,7 @@ export const IoK8sApiStorageV1StorageClass = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IoK8sApiStorageV1StorageClass>;
 
 /** accessModes contains all ways the volume can be mounted. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#access-modes */
-export type IoK8sApiCoreV1PersistentVolumeSpecAccessModesList =
-  ReadonlyArray<string>;
+export type IoK8sApiCoreV1PersistentVolumeSpecAccessModesList = Array<string>;
 export const IoK8sApiCoreV1PersistentVolumeSpecAccessModesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -999,7 +995,7 @@ export const IoK8sApiCoreV1PersistentVolumeSpecCapacityMap =
 
 /** monitors is Required: Monitors is a collection of Ceph monitors More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it */
 export type IoK8sApiCoreV1CephFSPersistentVolumeSourceMonitorsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const IoK8sApiCoreV1CephFSPersistentVolumeSourceMonitorsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1158,13 +1154,13 @@ export const IoK8sApiCoreV1CSIPersistentVolumeSource = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<IoK8sApiCoreV1CSIPersistentVolumeSource>;
 
 /** targetWWNs is Optional: FC target worldwide names (WWNs) */
-export type IoK8sApiCoreV1FCVolumeSourceTargetWWNsList = ReadonlyArray<string>;
+export type IoK8sApiCoreV1FCVolumeSourceTargetWWNsList = Array<string>;
 export const IoK8sApiCoreV1FCVolumeSourceTargetWWNsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<IoK8sApiCoreV1FCVolumeSourceTargetWWNsList>;
 
 /** wwids Optional: FC volume world wide identifiers (wwids) Either wwids or combination of targetWWNs and lun must be set, but not both simultaneously. */
-export type IoK8sApiCoreV1FCVolumeSourceWwidsList = ReadonlyArray<string>;
+export type IoK8sApiCoreV1FCVolumeSourceWwidsList = Array<string>;
 export const IoK8sApiCoreV1FCVolumeSourceWwidsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<IoK8sApiCoreV1FCVolumeSourceWwidsList>;
@@ -1310,7 +1306,7 @@ export const IoK8sApiCoreV1HostPathVolumeSource = /*@__PURE__*/ S.suspend(() =>
 
 /** portals is the iSCSI Target Portal List. The Portal is either an IP or ip_addr:port if the port is other than default (typically TCP ports 860 and 3260). */
 export type IoK8sApiCoreV1ISCSIPersistentVolumeSourcePortalsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const IoK8sApiCoreV1ISCSIPersistentVolumeSourcePortalsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1377,8 +1373,7 @@ export const IoK8sApiCoreV1LocalVolumeSource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IoK8sApiCoreV1LocalVolumeSource>;
 
 /** mountOptions is the list of mount options, e.g. ["ro", "soft"]. Not validated - mount will simply fail if one is invalid. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes/#mount-options */
-export type IoK8sApiCoreV1PersistentVolumeSpecMountOptionsList =
-  ReadonlyArray<string>;
+export type IoK8sApiCoreV1PersistentVolumeSpecMountOptionsList = Array<string>;
 export const IoK8sApiCoreV1PersistentVolumeSpecMountOptionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1404,8 +1399,7 @@ export const IoK8sApiCoreV1NFSVolumeSource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IoK8sApiCoreV1NFSVolumeSource>;
 
 /** An array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. If the operator is Gt or Lt, the values array must have a single element, which will be interpreted as an integer. This array is replaced during a strategic merge patch. */
-export type IoK8sApiCoreV1NodeSelectorRequirementValuesList =
-  ReadonlyArray<string>;
+export type IoK8sApiCoreV1NodeSelectorRequirementValuesList = Array<string>;
 export const IoK8sApiCoreV1NodeSelectorRequirementValuesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1433,7 +1427,7 @@ export const IoK8sApiCoreV1NodeSelectorRequirement = /*@__PURE__*/ S.suspend(
 
 /** A list of node selector requirements by node's labels. */
 export type IoK8sApiCoreV1NodeSelectorTermMatchExpressionsList =
-  ReadonlyArray<IoK8sApiCoreV1NodeSelectorRequirement>;
+  Array<IoK8sApiCoreV1NodeSelectorRequirement>;
 export const IoK8sApiCoreV1NodeSelectorTermMatchExpressionsList =
   /*@__PURE__*/ S.Array(
     IoK8sApiCoreV1NodeSelectorRequirement,
@@ -1441,7 +1435,7 @@ export const IoK8sApiCoreV1NodeSelectorTermMatchExpressionsList =
 
 /** A list of node selector requirements by node's fields. */
 export type IoK8sApiCoreV1NodeSelectorTermMatchFieldsList =
-  ReadonlyArray<IoK8sApiCoreV1NodeSelectorRequirement>;
+  Array<IoK8sApiCoreV1NodeSelectorRequirement>;
 export const IoK8sApiCoreV1NodeSelectorTermMatchFieldsList =
   /*@__PURE__*/ S.Array(
     IoK8sApiCoreV1NodeSelectorRequirement,
@@ -1467,7 +1461,7 @@ export const IoK8sApiCoreV1NodeSelectorTerm = /*@__PURE__*/ S.suspend(() =>
 
 /** Required. A list of node selector terms. The terms are ORed. */
 export type IoK8sApiCoreV1NodeSelectorNodeSelectorTermsList =
-  ReadonlyArray<IoK8sApiCoreV1NodeSelectorTerm>;
+  Array<IoK8sApiCoreV1NodeSelectorTerm>;
 export const IoK8sApiCoreV1NodeSelectorNodeSelectorTermsList =
   /*@__PURE__*/ S.Array(
     IoK8sApiCoreV1NodeSelectorTerm,
@@ -1564,8 +1558,7 @@ export const IoK8sApiCoreV1QuobyteVolumeSource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IoK8sApiCoreV1QuobyteVolumeSource>;
 
 /** monitors is a collection of Ceph monitors. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it */
-export type IoK8sApiCoreV1RBDPersistentVolumeSourceMonitorsList =
-  ReadonlyArray<string>;
+export type IoK8sApiCoreV1RBDPersistentVolumeSourceMonitorsList = Array<string>;
 export const IoK8sApiCoreV1RBDPersistentVolumeSourceMonitorsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2168,7 +2161,7 @@ export const IoK8sApimachineryPkgApisMetaV1StatusCause =
 
 /** The Causes array includes more details associated with the StatusReason failure. Not all StatusReasons may provide detailed causes. */
 export type IoK8sApimachineryPkgApisMetaV1StatusDetailsCausesList =
-  ReadonlyArray<IoK8sApimachineryPkgApisMetaV1StatusCause>;
+  Array<IoK8sApimachineryPkgApisMetaV1StatusCause>;
 export const IoK8sApimachineryPkgApisMetaV1StatusDetailsCausesList =
   /*@__PURE__*/ S.Array(
     IoK8sApimachineryPkgApisMetaV1StatusCause,
@@ -2974,7 +2967,7 @@ export const IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR =
 
 /** a map of client CIDR to server address that is serving this group. This is to help clients reach servers in the most network-efficient way possible. Clients can use the appropriate server address as per the CIDR that they match. In case of multiple matches, clients should use the longest matching CIDR. The server returns only those CIDRs that it thinks that the client can match. For example: the master will return an internal IP CIDR only, if the client reaches the server using an internal IP. Server looks at X-Forwarded-For header or X-Real-Ip header or request.RemoteAddr (in that order) to get the client IP. */
 export type IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList =
-  ReadonlyArray<IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR>;
+  Array<IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR>;
 export const IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList =
   /*@__PURE__*/ S.Array(
     IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR,
@@ -2982,7 +2975,7 @@ export const IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsLis
 
 /** versions are the versions supported in this group. */
 export type IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList =
-  ReadonlyArray<IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery>;
+  Array<IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery>;
 export const IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList =
   /*@__PURE__*/ S.Array(
     IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery,
@@ -3032,7 +3025,7 @@ export const GetStorageV1APIResourcesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** categories is a list of the grouped resources this resource belongs to (e.g. 'all') */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3040,15 +3033,14 @@ export const IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList =
 
 /** shortNames is a list of suggested short names of the resource. */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList>;
 
 /** verbs is a list of supported kube verbs (this includes get, list, watch, create, update, patch, delete, deletecollection, and proxy) */
-export type IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList =
-  ReadonlyArray<string>;
+export type IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList = Array<string>;
 export const IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3101,7 +3093,7 @@ export const IoK8sApimachineryPkgApisMetaV1APIResource =
 
 /** resources contains the name of the resources and if they are namespaced. */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList =
-  ReadonlyArray<IoK8sApimachineryPkgApisMetaV1APIResource>;
+  Array<IoK8sApimachineryPkgApisMetaV1APIResource>;
 export const IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList =
   /*@__PURE__*/ S.Array(
     IoK8sApimachineryPkgApisMetaV1APIResource,
@@ -3183,7 +3175,7 @@ export const ListStorageV1CSIDriverRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** items is the list of CSIDriver */
 export type IoK8sApiStorageV1CSIDriverListItemsList =
-  ReadonlyArray<IoK8sApiStorageV1CSIDriver>;
+  Array<IoK8sApiStorageV1CSIDriver>;
 export const IoK8sApiStorageV1CSIDriverListItemsList = /*@__PURE__*/ S.Array(
   IoK8sApiStorageV1CSIDriver,
 ) as any as S.Schema<IoK8sApiStorageV1CSIDriverListItemsList>;
@@ -3263,7 +3255,7 @@ export const ListStorageV1CSINodeRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** items is the list of CSINode */
 export type IoK8sApiStorageV1CSINodeListItemsList =
-  ReadonlyArray<IoK8sApiStorageV1CSINode>;
+  Array<IoK8sApiStorageV1CSINode>;
 export const IoK8sApiStorageV1CSINodeListItemsList = /*@__PURE__*/ S.Array(
   IoK8sApiStorageV1CSINode,
 ) as any as S.Schema<IoK8sApiStorageV1CSINodeListItemsList>;
@@ -3344,7 +3336,7 @@ export const ListStorageV1CSIStorageCapacityForAllNamespacesRequest =
 
 /** items is the list of CSIStorageCapacity objects. */
 export type IoK8sApiStorageV1CSIStorageCapacityListItemsList =
-  ReadonlyArray<IoK8sApiStorageV1CSIStorageCapacity>;
+  Array<IoK8sApiStorageV1CSIStorageCapacity>;
 export const IoK8sApiStorageV1CSIStorageCapacityListItemsList =
   /*@__PURE__*/ S.Array(
     IoK8sApiStorageV1CSIStorageCapacity,
@@ -3481,7 +3473,7 @@ export const ListStorageV1StorageClassRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** items is the list of StorageClasses */
 export type IoK8sApiStorageV1StorageClassListItemsList =
-  ReadonlyArray<IoK8sApiStorageV1StorageClass>;
+  Array<IoK8sApiStorageV1StorageClass>;
 export const IoK8sApiStorageV1StorageClassListItemsList = /*@__PURE__*/ S.Array(
   IoK8sApiStorageV1StorageClass,
 ) as any as S.Schema<IoK8sApiStorageV1StorageClassListItemsList>;
@@ -3562,7 +3554,7 @@ export const ListStorageV1VolumeAttachmentRequest = /*@__PURE__*/ S.suspend(
 
 /** items is the list of VolumeAttachments */
 export type IoK8sApiStorageV1VolumeAttachmentListItemsList =
-  ReadonlyArray<IoK8sApiStorageV1VolumeAttachment>;
+  Array<IoK8sApiStorageV1VolumeAttachment>;
 export const IoK8sApiStorageV1VolumeAttachmentListItemsList =
   /*@__PURE__*/ S.Array(
     IoK8sApiStorageV1VolumeAttachment,
@@ -3645,7 +3637,7 @@ export const ListStorageV1VolumeAttributesClassRequest =
 
 /** items is the list of VolumeAttributesClass objects. */
 export type IoK8sApiStorageV1VolumeAttributesClassListItemsList =
-  ReadonlyArray<IoK8sApiStorageV1VolumeAttributesClass>;
+  Array<IoK8sApiStorageV1VolumeAttributesClass>;
 export const IoK8sApiStorageV1VolumeAttributesClassListItemsList =
   /*@__PURE__*/ S.Array(
     IoK8sApiStorageV1VolumeAttributesClass,
@@ -4310,15 +4302,14 @@ export const ReplaceStorageV1NamespacedCSIStorageCapacityRequest =
 
 /** allowedTopologies restrict the node topologies where volumes can be dynamically provisioned. Each volume plugin defines its own supported topology specifications. An empty TopologySelectorTerm list means there is no topology restriction. This field is only honored by servers that enable the VolumeScheduling feature. */
 export type ReplaceStorageV1StorageClassRequestAllowedTopologiesList =
-  ReadonlyArray<IoK8sApiCoreV1TopologySelectorTerm>;
+  Array<IoK8sApiCoreV1TopologySelectorTerm>;
 export const ReplaceStorageV1StorageClassRequestAllowedTopologiesList =
   /*@__PURE__*/ S.Array(
     IoK8sApiCoreV1TopologySelectorTerm,
   ) as any as S.Schema<ReplaceStorageV1StorageClassRequestAllowedTopologiesList>;
 
 /** mountOptions controls the mountOptions for dynamically provisioned PersistentVolumes of this storage class. e.g. ["ro", "soft"]. Not validated - mount of the PVs will simply fail if one is invalid. */
-export type ReplaceStorageV1StorageClassRequestMountOptionsList =
-  ReadonlyArray<string>;
+export type ReplaceStorageV1StorageClassRequestMountOptionsList = Array<string>;
 export const ReplaceStorageV1StorageClassRequestMountOptionsList =
   /*@__PURE__*/ S.Array(
     S.String,

@@ -440,7 +440,7 @@ export const DocumentEnrichmentConditionOperator = /*@__PURE__*/ S.String;
 
 export interface DocumentAttributeCondition {
   key: string;
-  operator: DocumentEnrichmentConditionOperator;
+  operator: DocumentEnrichmentConditionOperator | (string & {});
   value?: DocumentAttributeValue;
 }
 export const DocumentAttributeCondition = /*@__PURE__*/ S.suspend(() =>
@@ -458,7 +458,7 @@ export const AttributeValueOperator = /*@__PURE__*/ S.String;
 export interface DocumentAttributeTarget {
   key: string;
   value?: DocumentAttributeValue;
-  attributeValueOperator?: AttributeValueOperator;
+  attributeValueOperator?: AttributeValueOperator | (string & {});
 }
 export const DocumentAttributeTarget = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -475,7 +475,7 @@ export const DocumentContentOperator = /*@__PURE__*/ S.String;
 export interface InlineDocumentEnrichmentConfiguration {
   condition?: DocumentAttributeCondition;
   target?: DocumentAttributeTarget;
-  documentContentOperator?: DocumentContentOperator;
+  documentContentOperator?: DocumentContentOperator | (string & {});
 }
 export const InlineDocumentEnrichmentConfiguration = /*@__PURE__*/ S.suspend(
   () =>
@@ -528,7 +528,7 @@ export type ImageExtractionStatus = "ENABLED" | "DISABLED";
 export const ImageExtractionStatus = /*@__PURE__*/ S.String;
 
 export interface ImageExtractionConfiguration {
-  imageExtractionStatus: ImageExtractionStatus;
+  imageExtractionStatus: ImageExtractionStatus | (string & {});
 }
 export const ImageExtractionConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ imageExtractionStatus: ImageExtractionStatus }),
@@ -539,7 +539,7 @@ export type AudioExtractionStatus = "ENABLED" | "DISABLED";
 export const AudioExtractionStatus = /*@__PURE__*/ S.String;
 
 export interface AudioExtractionConfiguration {
-  audioExtractionStatus: AudioExtractionStatus;
+  audioExtractionStatus: AudioExtractionStatus | (string & {});
 }
 export const AudioExtractionConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ audioExtractionStatus: AudioExtractionStatus }),
@@ -550,7 +550,7 @@ export type VideoExtractionStatus = "ENABLED" | "DISABLED";
 export const VideoExtractionStatus = /*@__PURE__*/ S.String;
 
 export interface VideoExtractionConfiguration {
-  videoExtractionStatus: VideoExtractionStatus;
+  videoExtractionStatus: VideoExtractionStatus | (string & {});
 }
 export const VideoExtractionConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ videoExtractionStatus: VideoExtractionStatus }),
@@ -1651,7 +1651,7 @@ export type QAppsControlMode = "ENABLED" | "DISABLED";
 export const QAppsControlMode = /*@__PURE__*/ S.String;
 
 export interface QAppsConfiguration {
-  qAppsControlMode: QAppsControlMode;
+  qAppsControlMode: QAppsControlMode | (string & {});
 }
 export const QAppsConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ qAppsControlMode: QAppsControlMode }),
@@ -1662,7 +1662,7 @@ export type PersonalizationControlMode = "ENABLED" | "DISABLED";
 export const PersonalizationControlMode = /*@__PURE__*/ S.String;
 
 export interface PersonalizationConfiguration {
-  personalizationControlMode: PersonalizationControlMode;
+  personalizationControlMode: PersonalizationControlMode | (string & {});
 }
 export const PersonalizationConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ personalizationControlMode: PersonalizationControlMode }),
@@ -1774,7 +1774,7 @@ export const ResponseConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "ResponseConfiguration",
 }) as any as S.Schema<ResponseConfiguration>;
 export type ResponseConfigurations = {
-  [key in ResponseConfigurationType]?: ResponseConfiguration;
+  [key in ResponseConfigurationType | (string & {})]?: ResponseConfiguration;
 };
 export const ResponseConfigurations = /*@__PURE__*/ S.Record(
   ResponseConfigurationType,
@@ -1878,7 +1878,7 @@ export type DataAccessorExternalId = string;
 export type DataAccessorExternalIds = string[];
 export const DataAccessorExternalIds = /*@__PURE__*/ S.Array(S.String);
 export interface DataAccessorAuthenticationDetail {
-  authenticationType: DataAccessorAuthenticationType;
+  authenticationType: DataAccessorAuthenticationType | (string & {});
   authenticationConfiguration?: DataAccessorAuthenticationConfiguration;
   externalIds?: string[];
 }
@@ -2164,7 +2164,7 @@ export const APISchema = /*@__PURE__*/ S.Union([
 ]);
 export interface CustomPluginConfiguration {
   description: string;
-  apiSchemaType: APISchemaType;
+  apiSchemaType: APISchemaType | (string & {});
   apiSchema?: APISchema;
 }
 export const CustomPluginConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -2254,8 +2254,8 @@ export type NumberAttributeBoostingType =
 export const NumberAttributeBoostingType = /*@__PURE__*/ S.String;
 
 export interface NumberAttributeBoostingConfiguration {
-  boostingLevel: DocumentAttributeBoostingLevel;
-  boostingType?: NumberAttributeBoostingType;
+  boostingLevel: DocumentAttributeBoostingLevel | (string & {});
+  boostingType?: NumberAttributeBoostingType | (string & {});
 }
 export const NumberAttributeBoostingConfiguration = /*@__PURE__*/ S.suspend(
   () =>
@@ -2279,14 +2279,14 @@ export type StringAttributeValueBoostingLevel =
 export const StringAttributeValueBoostingLevel = /*@__PURE__*/ S.String;
 
 export type StringAttributeValueBoosting = {
-  [key: string]: StringAttributeValueBoostingLevel | undefined;
+  [key: string]: StringAttributeValueBoostingLevel | (string & {}) | undefined;
 };
 export const StringAttributeValueBoosting = /*@__PURE__*/ S.Record(
   S.String,
   StringAttributeValueBoostingLevel.pipe(S.optional),
 );
 export interface StringAttributeBoostingConfiguration {
-  boostingLevel: DocumentAttributeBoostingLevel;
+  boostingLevel: DocumentAttributeBoostingLevel | (string & {});
   attributeValueBoosting?: {
     [key: string]: StringAttributeValueBoostingLevel | undefined;
   };
@@ -2302,7 +2302,7 @@ export const StringAttributeBoostingConfiguration = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<StringAttributeBoostingConfiguration>;
 export type BoostingDurationInSeconds = number;
 export interface DateAttributeBoostingConfiguration {
-  boostingLevel: DocumentAttributeBoostingLevel;
+  boostingLevel: DocumentAttributeBoostingLevel | (string & {});
   boostingDurationInSeconds?: number;
 }
 export const DateAttributeBoostingConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -2314,7 +2314,7 @@ export const DateAttributeBoostingConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "DateAttributeBoostingConfiguration",
 }) as any as S.Schema<DateAttributeBoostingConfiguration>;
 export interface StringListAttributeBoostingConfiguration {
-  boostingLevel: DocumentAttributeBoostingLevel;
+  boostingLevel: DocumentAttributeBoostingLevel | (string & {});
 }
 export const StringListAttributeBoostingConfiguration = /*@__PURE__*/ S.suspend(
   () => S.Struct({ boostingLevel: DocumentAttributeBoostingLevel }),
@@ -3139,8 +3139,8 @@ export type AutoSubscriptionStatus = "ENABLED" | "DISABLED";
 export const AutoSubscriptionStatus = /*@__PURE__*/ S.String;
 
 export interface AutoSubscriptionConfiguration {
-  autoSubscribe?: AutoSubscriptionStatus;
-  defaultSubscriptionType?: SubscriptionType;
+  autoSubscribe?: AutoSubscriptionStatus | (string & {});
+  defaultSubscriptionType?: SubscriptionType | (string & {});
 }
 export const AutoSubscriptionConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3316,7 +3316,7 @@ export const RuleConfiguration = /*@__PURE__*/ S.Union([
 export interface Rule {
   includedUsersAndGroups?: UsersAndGroups;
   excludedUsersAndGroups?: UsersAndGroups;
-  ruleType: RuleType;
+  ruleType: RuleType | (string & {});
   ruleConfiguration?: RuleConfiguration;
 }
 export const Rule = /*@__PURE__*/ S.suspend(() =>
@@ -3362,7 +3362,7 @@ export type HallucinationReductionControl = "ENABLED" | "DISABLED";
 export const HallucinationReductionControl = /*@__PURE__*/ S.String;
 
 export interface HallucinationReductionConfiguration {
-  hallucinationReductionControl?: HallucinationReductionControl;
+  hallucinationReductionControl?: HallucinationReductionControl | (string & {});
 }
 export const HallucinationReductionConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3746,8 +3746,8 @@ export const Status = /*@__PURE__*/ S.String;
 
 export interface DocumentAttributeConfiguration {
   name?: string;
-  type?: AttributeType;
-  search?: Status;
+  type?: AttributeType | (string & {});
+  search?: Status | (string & {});
 }
 export const DocumentAttributeConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

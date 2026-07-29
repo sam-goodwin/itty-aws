@@ -327,7 +327,7 @@ export type RecordType = "SRV" | "A" | "AAAA" | "CNAME";
 export const RecordType = /*@__PURE__*/ S.String;
 
 export interface DnsRecord {
-  Type: RecordType;
+  Type: RecordType | (string & {});
   TTL: number;
 }
 export const DnsRecord = /*@__PURE__*/ S.suspend(() =>
@@ -337,7 +337,7 @@ export type DnsRecordList = DnsRecord[];
 export const DnsRecordList = /*@__PURE__*/ S.Array(DnsRecord);
 export interface DnsConfig {
   NamespaceId?: string;
-  RoutingPolicy?: RoutingPolicy;
+  RoutingPolicy?: RoutingPolicy | (string & {});
   DnsRecords?: DnsRecord[];
 }
 export const DnsConfig = /*@__PURE__*/ S.suspend(() =>
@@ -353,7 +353,7 @@ export const HealthCheckType = /*@__PURE__*/ S.String;
 export type ResourcePath = string;
 export type FailureThreshold = number;
 export interface HealthCheckConfig {
-  Type: HealthCheckType;
+  Type: HealthCheckType | (string & {});
   ResourcePath?: string;
   FailureThreshold?: number;
 }

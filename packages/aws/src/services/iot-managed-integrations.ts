@@ -276,7 +276,9 @@ export interface OAuthConfig {
   authUrl: string;
   tokenUrl: string;
   scope?: string;
-  tokenEndpointAuthenticationScheme: TokenEndpointAuthenticationScheme;
+  tokenEndpointAuthenticationScheme:
+    | TokenEndpointAuthenticationScheme
+    | (string & {});
   oAuthCompleteRedirectUrl?: string;
   proactiveRefreshTokenRenewal?: ProactiveRefreshTokenRenewal;
 }
@@ -785,7 +787,7 @@ export const ScheduleMaintenanceWindowList = /*@__PURE__*/ S.Array(
 );
 export type ScheduleStartTime = string;
 export interface OtaTaskSchedulingConfig {
-  EndBehavior?: SchedulingConfigEndBehavior;
+  EndBehavior?: SchedulingConfigEndBehavior | (string & {});
   EndTime?: string;
   MaintenanceWindows?: ScheduleMaintenanceWindow[];
   StartTime?: string;
@@ -805,7 +807,7 @@ export const RetryCriteriaFailureType = /*@__PURE__*/ S.String;
 
 export type MinNumberOfRetries = number;
 export interface RetryConfigCriteria {
-  FailureType?: RetryCriteriaFailureType;
+  FailureType?: RetryCriteriaFailureType | (string & {});
   MinNumberOfRetries?: number;
 }
 export const RetryConfigCriteria = /*@__PURE__*/ S.suspend(() =>
@@ -898,8 +900,8 @@ export const AbortCriteriaFailureType = /*@__PURE__*/ S.String;
 export type MinNumberOfExecutedThings = number;
 export type ThresholdPercentage = number;
 export interface AbortConfigCriteria {
-  Action?: AbortCriteriaAction;
-  FailureType?: AbortCriteriaFailureType;
+  Action?: AbortCriteriaAction | (string & {});
+  FailureType?: AbortCriteriaFailureType | (string & {});
   MinNumberOfExecutedThings?: number;
   ThresholdPercentage?: number;
 }
@@ -2359,8 +2361,8 @@ export type UploadLog = boolean;
 export type UploadPeriodMinutes = number;
 export type DeleteLocalStoreAfterUpload = boolean;
 export interface RuntimeLogConfigurations {
-  LogLevel?: LogLevel;
-  LogFlushLevel?: LogLevel;
+  LogLevel?: LogLevel | (string & {});
+  LogFlushLevel?: LogLevel | (string & {});
   LocalStoreLocation?: string;
   LocalStoreFileRotationMaxFiles?: number;
   LocalStoreFileRotationMaxBytes?: number;

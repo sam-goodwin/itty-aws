@@ -36,7 +36,7 @@ export interface ManifestArtifactFormat {
   /** The artifact name */
   artifactName?: string;
   /** The artifact type. */
-  artifactType?: ArtifactType;
+  artifactType?: ArtifactType | (string & {});
   /** The artifact version. */
   artifactVersion?: string;
 }
@@ -52,7 +52,7 @@ export const ManifestArtifactFormat = /*@__PURE__*/ S.suspend(() =>
 
 /** The artifacts list. */
 export type ArtifactManifestPropertiesFormatInputArtifactsList =
-  ReadonlyArray<ManifestArtifactFormat>;
+  Array<ManifestArtifactFormat>;
 export const ArtifactManifestPropertiesFormatInputArtifactsList =
   /*@__PURE__*/ S.Array(
     ManifestArtifactFormat,
@@ -190,7 +190,7 @@ export const ArtifactManifestState = /*@__PURE__*/ S.String;
 
 /** The artifacts list. */
 export type ArtifactManifestPropertiesFormatArtifactsList =
-  ReadonlyArray<ManifestArtifactFormat>;
+  Array<ManifestArtifactFormat>;
 export const ArtifactManifestPropertiesFormatArtifactsList =
   /*@__PURE__*/ S.Array(
     ManifestArtifactFormat,
@@ -424,8 +424,7 @@ export const ArtifactManifest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ArtifactManifest>;
 
 /** A list of artifact manifests. */
-export type ArtifactManifestListResultValueList =
-  ReadonlyArray<ArtifactManifest>;
+export type ArtifactManifestListResultValueList = Array<ArtifactManifest>;
 export const ArtifactManifestListResultValueList = /*@__PURE__*/ S.Array(
   ArtifactManifest,
 ) as any as S.Schema<ArtifactManifestListResultValueList>;
@@ -645,7 +644,7 @@ export const ArtifactStoresAddNetworkFabricControllerEndPointsRequestNetworkFabr
 
 /** list of network fabric controllers. */
 export type ArtifactStoresAddNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsList =
-  ReadonlyArray<ArtifactStoresAddNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem>;
+  Array<ArtifactStoresAddNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem>;
 export const ArtifactStoresAddNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsList =
   /*@__PURE__*/ S.Array(
     ArtifactStoresAddNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem,
@@ -708,7 +707,7 @@ export const ArtifactStoresApprovePrivateEndPointsRequestManualPrivateEndPointCo
 
 /** list of private endpoints. */
 export type ArtifactStoresApprovePrivateEndPointsRequestManualPrivateEndPointConnectionsList =
-  ReadonlyArray<ArtifactStoresApprovePrivateEndPointsRequestManualPrivateEndPointConnectionsItem>;
+  Array<ArtifactStoresApprovePrivateEndPointsRequestManualPrivateEndPointConnectionsItem>;
 export const ArtifactStoresApprovePrivateEndPointsRequestManualPrivateEndPointConnectionsList =
   /*@__PURE__*/ S.Array(
     ArtifactStoresApprovePrivateEndPointsRequestManualPrivateEndPointConnectionsItem,
@@ -1049,7 +1048,7 @@ export const ArtifactStoresDeleteNetworkFabricControllerEndPointsRequestNetworkF
 
 /** list of network fabric controllers. */
 export type ArtifactStoresDeleteNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsList =
-  ReadonlyArray<ArtifactStoresDeleteNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem>;
+  Array<ArtifactStoresDeleteNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem>;
 export const ArtifactStoresDeleteNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsList =
   /*@__PURE__*/ S.Array(
     ArtifactStoresDeleteNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem,
@@ -1225,7 +1224,7 @@ export const ArtifactStore = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ArtifactStore" }) as any as S.Schema<ArtifactStore>;
 
 /** A list of artifact stores. */
-export type ArtifactStoreListResultValueList = ReadonlyArray<ArtifactStore>;
+export type ArtifactStoreListResultValueList = Array<ArtifactStore>;
 export const ArtifactStoreListResultValueList = /*@__PURE__*/ S.Array(
   ArtifactStore,
 ) as any as S.Schema<ArtifactStoreListResultValueList>;
@@ -1293,7 +1292,7 @@ export const ArtifactStoreNetworkFabricControllerEndPointsNetworkFabricControlle
 
 /** list of network fabric controllers. */
 export type ArtifactStoreNetworkFabricControllerEndPointsNetworkFabricControllerIdsList =
-  ReadonlyArray<ArtifactStoreNetworkFabricControllerEndPointsNetworkFabricControllerIdsItem>;
+  Array<ArtifactStoreNetworkFabricControllerEndPointsNetworkFabricControllerIdsItem>;
 export const ArtifactStoreNetworkFabricControllerEndPointsNetworkFabricControllerIdsList =
   /*@__PURE__*/ S.Array(
     ArtifactStoreNetworkFabricControllerEndPointsNetworkFabricControllerIdsItem,
@@ -1317,7 +1316,7 @@ export const ArtifactStoreNetworkFabricControllerEndPoints =
 
 /** A list of network fabric controllers. */
 export type ArtifactStoreNetworkFabricControllerEndPointsListValueList =
-  ReadonlyArray<ArtifactStoreNetworkFabricControllerEndPoints>;
+  Array<ArtifactStoreNetworkFabricControllerEndPoints>;
 export const ArtifactStoreNetworkFabricControllerEndPointsListValueList =
   /*@__PURE__*/ S.Array(
     ArtifactStoreNetworkFabricControllerEndPoints,
@@ -1388,7 +1387,7 @@ export const ArtifactStorePrivateEndPointsFormatManualPrivateEndPointConnections
 
 /** list of private endpoints. */
 export type ArtifactStorePrivateEndPointsFormatManualPrivateEndPointConnectionsList =
-  ReadonlyArray<ArtifactStorePrivateEndPointsFormatManualPrivateEndPointConnectionsItem>;
+  Array<ArtifactStorePrivateEndPointsFormatManualPrivateEndPointConnectionsItem>;
 export const ArtifactStorePrivateEndPointsFormatManualPrivateEndPointConnectionsList =
   /*@__PURE__*/ S.Array(
     ArtifactStorePrivateEndPointsFormatManualPrivateEndPointConnectionsItem,
@@ -1411,7 +1410,7 @@ export const ArtifactStorePrivateEndPointsFormat = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of private endpoints. */
 export type ArtifactStorePrivateEndPointsListResultValueList =
-  ReadonlyArray<ArtifactStorePrivateEndPointsFormat>;
+  Array<ArtifactStorePrivateEndPointsFormat>;
 export const ArtifactStorePrivateEndPointsListResultValueList =
   /*@__PURE__*/ S.Array(
     ArtifactStorePrivateEndPointsFormat,
@@ -1451,7 +1450,7 @@ export const ArtifactStoresRemovePrivateEndPointsRequestManualPrivateEndPointCon
 
 /** list of private endpoints. */
 export type ArtifactStoresRemovePrivateEndPointsRequestManualPrivateEndPointConnectionsList =
-  ReadonlyArray<ArtifactStoresRemovePrivateEndPointsRequestManualPrivateEndPointConnectionsItem>;
+  Array<ArtifactStoresRemovePrivateEndPointsRequestManualPrivateEndPointConnectionsItem>;
 export const ArtifactStoresRemovePrivateEndPointsRequestManualPrivateEndPointConnectionsList =
   /*@__PURE__*/ S.Array(
     ArtifactStoresRemovePrivateEndPointsRequestManualPrivateEndPointConnectionsItem,
@@ -1664,7 +1663,7 @@ export const Deployment = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Deployment" }) as any as S.Schema<Deployment>;
 
 /** Deployments that are related to component resource. */
-export type ResourcesDeploymentsList = ReadonlyArray<Deployment>;
+export type ResourcesDeploymentsList = Array<Deployment>;
 export const ResourcesDeploymentsList = /*@__PURE__*/ S.Array(
   Deployment,
 ) as any as S.Schema<ResourcesDeploymentsList>;
@@ -1705,7 +1704,7 @@ export const PodEvent = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PodEvent" }) as any as S.Schema<PodEvent>;
 
 /** Last 5 Pod events. */
-export type PodEventsList = ReadonlyArray<PodEvent>;
+export type PodEventsList = Array<PodEvent>;
 export const PodEventsList = /*@__PURE__*/ S.Array(
   PodEvent,
 ) as any as S.Schema<PodEventsList>;
@@ -1740,7 +1739,7 @@ export const Pod = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Pod" }) as any as S.Schema<Pod>;
 
 /** Pods related to component resource. */
-export type ResourcesPodsList = ReadonlyArray<Pod>;
+export type ResourcesPodsList = Array<Pod>;
 export const ResourcesPodsList = /*@__PURE__*/ S.Array(
   Pod,
 ) as any as S.Schema<ResourcesPodsList>;
@@ -1772,7 +1771,7 @@ export const ReplicaSet = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ReplicaSet" }) as any as S.Schema<ReplicaSet>;
 
 /** Replica sets related to component resource. */
-export type ResourcesReplicaSetsList = ReadonlyArray<ReplicaSet>;
+export type ResourcesReplicaSetsList = Array<ReplicaSet>;
 export const ResourcesReplicaSetsList = /*@__PURE__*/ S.Array(
   ReplicaSet,
 ) as any as S.Schema<ResourcesReplicaSetsList>;
@@ -1801,7 +1800,7 @@ export const StatefulSet = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StatefulSet" }) as any as S.Schema<StatefulSet>;
 
 /** Stateful sets related to component resource. */
-export type ResourcesStatefulSetsList = ReadonlyArray<StatefulSet>;
+export type ResourcesStatefulSetsList = Array<StatefulSet>;
 export const ResourcesStatefulSetsList = /*@__PURE__*/ S.Array(
   StatefulSet,
 ) as any as S.Schema<ResourcesStatefulSetsList>;
@@ -1839,7 +1838,7 @@ export const DaemonSet = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DaemonSet" }) as any as S.Schema<DaemonSet>;
 
 /** Daemonsets related to component resource. */
-export type ResourcesDaemonSetsList = ReadonlyArray<DaemonSet>;
+export type ResourcesDaemonSetsList = Array<DaemonSet>;
 export const ResourcesDaemonSetsList = /*@__PURE__*/ S.Array(
   DaemonSet,
 ) as any as S.Schema<ResourcesDaemonSetsList>;
@@ -1979,7 +1978,7 @@ export const Component = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Component" }) as any as S.Schema<Component>;
 
 /** A list of component resources in a networkFunction. */
-export type ComponentListResultValueList = ReadonlyArray<Component>;
+export type ComponentListResultValueList = Array<Component>;
 export const ComponentListResultValueList = /*@__PURE__*/ S.Array(
   Component,
 ) as any as S.Schema<ComponentListResultValueList>;
@@ -2325,7 +2324,7 @@ export const ConfigurationGroupSchema = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of configuration group schema. */
 export type ConfigurationGroupSchemaListResultValueList =
-  ReadonlyArray<ConfigurationGroupSchema>;
+  Array<ConfigurationGroupSchema>;
 export const ConfigurationGroupSchemaListResultValueList =
   /*@__PURE__*/ S.Array(
     ConfigurationGroupSchema,
@@ -2857,7 +2856,7 @@ export const ConfigurationGroupValue = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of hybrid configurationGroups. */
 export type ConfigurationGroupValueListResultValueList =
-  ReadonlyArray<ConfigurationGroupValue>;
+  Array<ConfigurationGroupValue>;
 export const ConfigurationGroupValueListResultValueList = /*@__PURE__*/ S.Array(
   ConfigurationGroupValue,
 ) as any as S.Schema<ConfigurationGroupValueListResultValueList>;
@@ -3292,7 +3291,7 @@ export const NetworkFunctionDefinitionGroup = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of network function definition group. */
 export type NetworkFunctionDefinitionGroupListResultValueList =
-  ReadonlyArray<NetworkFunctionDefinitionGroup>;
+  Array<NetworkFunctionDefinitionGroup>;
 export const NetworkFunctionDefinitionGroupListResultValueList =
   /*@__PURE__*/ S.Array(
     NetworkFunctionDefinitionGroup,
@@ -3766,7 +3765,7 @@ export const NetworkFunctionDefinitionVersion = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of network function definition versions. */
 export type NetworkFunctionDefinitionVersionListResultValueList =
-  ReadonlyArray<NetworkFunctionDefinitionVersion>;
+  Array<NetworkFunctionDefinitionVersion>;
 export const NetworkFunctionDefinitionVersionListResultValueList =
   /*@__PURE__*/ S.Array(
     NetworkFunctionDefinitionVersion,
@@ -3971,7 +3970,7 @@ export const NetworkFunctionConfigurationType = /*@__PURE__*/ S.String;
 
 /** The role configuration override values from the user. */
 export type NetworkFunctionPropertiesFormatInputRoleOverrideValuesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const NetworkFunctionPropertiesFormatInputRoleOverrideValuesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4165,7 +4164,7 @@ export const NetworkFunctionPropertiesFormatNfviType = /*@__PURE__*/ S.String;
 
 /** The role configuration override values from the user. */
 export type NetworkFunctionPropertiesFormatRoleOverrideValuesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const NetworkFunctionPropertiesFormatRoleOverrideValuesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4587,7 +4586,7 @@ export const NetworkFunction = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NetworkFunction>;
 
 /** A list of network function resources in a subscription or resource group. */
-export type NetworkFunctionListResultValueList = ReadonlyArray<NetworkFunction>;
+export type NetworkFunctionListResultValueList = Array<NetworkFunction>;
 export const NetworkFunctionListResultValueList = /*@__PURE__*/ S.Array(
   NetworkFunction,
 ) as any as S.Schema<NetworkFunctionListResultValueList>;
@@ -5040,7 +5039,7 @@ export const NetworkServiceDesignGroup = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of network service design group. */
 export type NetworkServiceDesignGroupListResultValueList =
-  ReadonlyArray<NetworkServiceDesignGroup>;
+  Array<NetworkServiceDesignGroup>;
 export const NetworkServiceDesignGroupListResultValueList =
   /*@__PURE__*/ S.Array(
     NetworkServiceDesignGroup,
@@ -5216,7 +5215,7 @@ export const Type = /*@__PURE__*/ S.String;
 
 /** Application installation operation dependency. */
 export type ResourceElementTemplateDependsOnProfileInstallDependsOnList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ResourceElementTemplateDependsOnProfileInstallDependsOnList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5224,7 +5223,7 @@ export const ResourceElementTemplateDependsOnProfileInstallDependsOnList =
 
 /** Application deletion operation dependency. */
 export type ResourceElementTemplateDependsOnProfileUninstallDependsOnList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ResourceElementTemplateDependsOnProfileUninstallDependsOnList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5232,7 +5231,7 @@ export const ResourceElementTemplateDependsOnProfileUninstallDependsOnList =
 
 /** Application update operation dependency. */
 export type ResourceElementTemplateDependsOnProfileUpdateDependsOnList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ResourceElementTemplateDependsOnProfileUpdateDependsOnList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5269,7 +5268,7 @@ export interface ResourceElementTemplate {
   /** Name of the resource element template. */
   name?: string;
   /** The resource element template type. */
-  type: Type;
+  type: Type | (string & {});
   /** Depends on profile definition. */
   dependsOnProfile?: ResourceElementTemplateDependsOnProfile;
 }
@@ -5285,7 +5284,7 @@ export const ResourceElementTemplate = /*@__PURE__*/ S.suspend(() =>
 
 /** List of resource element template */
 export type NetworkServiceDesignVersionPropertiesFormatInputResourceElementTemplatesList =
-  ReadonlyArray<ResourceElementTemplate>;
+  Array<ResourceElementTemplate>;
 export const NetworkServiceDesignVersionPropertiesFormatInputResourceElementTemplatesList =
   /*@__PURE__*/ S.Array(
     ResourceElementTemplate,
@@ -5430,7 +5429,7 @@ export const NetworkServiceDesignVersionPropertiesFormatNfvisFromSiteMap =
 
 /** List of resource element template */
 export type NetworkServiceDesignVersionPropertiesFormatResourceElementTemplatesList =
-  ReadonlyArray<ResourceElementTemplate>;
+  Array<ResourceElementTemplate>;
 export const NetworkServiceDesignVersionPropertiesFormatResourceElementTemplatesList =
   /*@__PURE__*/ S.Array(
     ResourceElementTemplate,
@@ -5689,7 +5688,7 @@ export const NetworkServiceDesignVersion = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of network service design versions. */
 export type NetworkServiceDesignVersionListResultValueList =
-  ReadonlyArray<NetworkServiceDesignVersion>;
+  Array<NetworkServiceDesignVersion>;
 export const NetworkServiceDesignVersionListResultValueList =
   /*@__PURE__*/ S.Array(
     NetworkServiceDesignVersion,
@@ -5915,7 +5914,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = ReadonlyArray<Operation>;
+export type OperationsListResponseValueList = Array<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;
@@ -6028,7 +6027,7 @@ export const ProxyArtifactVersionsListOverview = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of available proxy artifacts. */
 export type ProxyArtifactVersionsOverviewListResultValueList =
-  ReadonlyArray<ProxyArtifactVersionsListOverview>;
+  Array<ProxyArtifactVersionsListOverview>;
 export const ProxyArtifactVersionsOverviewListResultValueList =
   /*@__PURE__*/ S.Array(
     ProxyArtifactVersionsListOverview,
@@ -6100,7 +6099,7 @@ export const Resource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Resource" }) as any as S.Schema<Resource>;
 
 /** A list of available proxy artifacts. */
-export type ProxyArtifactOverviewListResultValueList = ReadonlyArray<Resource>;
+export type ProxyArtifactOverviewListResultValueList = Array<Resource>;
 export const ProxyArtifactOverviewListResultValueList = /*@__PURE__*/ S.Array(
   Resource,
 ) as any as S.Schema<ProxyArtifactOverviewListResultValueList>;
@@ -6571,7 +6570,7 @@ export const Publisher = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Publisher" }) as any as S.Schema<Publisher>;
 
 /** A list of publishers. */
-export type PublisherListResultValueList = ReadonlyArray<Publisher>;
+export type PublisherListResultValueList = Array<Publisher>;
 export const PublisherListResultValueList = /*@__PURE__*/ S.Array(
   Publisher,
 ) as any as S.Schema<PublisherListResultValueList>;
@@ -7393,8 +7392,7 @@ export const SiteNetworkService = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SiteNetworkService>;
 
 /** A list of site network services in a resource group. */
-export type SiteNetworkServiceListResultValueList =
-  ReadonlyArray<SiteNetworkService>;
+export type SiteNetworkServiceListResultValueList = Array<SiteNetworkService>;
 export const SiteNetworkServiceListResultValueList = /*@__PURE__*/ S.Array(
   SiteNetworkService,
 ) as any as S.Schema<SiteNetworkServiceListResultValueList>;
@@ -7564,7 +7562,7 @@ export interface NFVIs {
   /** Name of the nfvi. */
   name?: string;
   /** The NFVI type. */
-  nfviType: NFVIsNfviType;
+  nfviType: NFVIsNfviType | (string & {});
 }
 export const NFVIs = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -7574,7 +7572,7 @@ export const NFVIs = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NFVIs" }) as any as S.Schema<NFVIs>;
 
 /** List of NFVIs */
-export type SitePropertiesFormatInputNfvisList = ReadonlyArray<NFVIs>;
+export type SitePropertiesFormatInputNfvisList = Array<NFVIs>;
 export const SitePropertiesFormatInputNfvisList = /*@__PURE__*/ S.Array(
   NFVIs,
 ) as any as S.Schema<SitePropertiesFormatInputNfvisList>;
@@ -7648,7 +7646,7 @@ export type SitePropertiesFormatProvisioningState =
 export const SitePropertiesFormatProvisioningState = /*@__PURE__*/ S.String;
 
 /** List of NFVIs */
-export type SitePropertiesFormatNfvisList = ReadonlyArray<NFVIs>;
+export type SitePropertiesFormatNfvisList = Array<NFVIs>;
 export const SitePropertiesFormatNfvisList = /*@__PURE__*/ S.Array(
   NFVIs,
 ) as any as S.Schema<SitePropertiesFormatNfvisList>;
@@ -7669,7 +7667,7 @@ export const SitePropertiesFormatSiteNetworkServiceReferencesItem =
 
 /** The list of site network services on the site. */
 export type SitePropertiesFormatSiteNetworkServiceReferencesList =
-  ReadonlyArray<SitePropertiesFormatSiteNetworkServiceReferencesItem>;
+  Array<SitePropertiesFormatSiteNetworkServiceReferencesItem>;
 export const SitePropertiesFormatSiteNetworkServiceReferencesList =
   /*@__PURE__*/ S.Array(
     SitePropertiesFormatSiteNetworkServiceReferencesItem,
@@ -7879,7 +7877,7 @@ export const Site = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Site" }) as any as S.Schema<Site>;
 
 /** A list of sites in a resource group. */
-export type SiteListResultValueList = ReadonlyArray<Site>;
+export type SiteListResultValueList = Array<Site>;
 export const SiteListResultValueList = /*@__PURE__*/ S.Array(
   Site,
 ) as any as S.Schema<SiteListResultValueList>;

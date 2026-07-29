@@ -175,7 +175,7 @@ export const ListProjectsTraceSinksRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsTraceSinksRequest",
 }) as any as S.Schema<ListProjectsTraceSinksRequest>;
 
-export type TraceSinkList = ReadonlyArray<TraceSink>;
+export type TraceSinkList = Array<TraceSink>;
 export const TraceSinkList = /*@__PURE__*/ S.Array(
   TraceSink,
 ) as any as S.Schema<TraceSinkList>;

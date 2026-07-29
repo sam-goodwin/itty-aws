@@ -137,7 +137,7 @@ export const WarehouseColumnAnnotationsListRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<WarehouseColumnAnnotationsListRequest>;
 
 export type PaginatedWarehouseColumnAnnotationListResultsList =
-  ReadonlyArray<WarehouseColumnAnnotation>;
+  Array<WarehouseColumnAnnotation>;
 export const PaginatedWarehouseColumnAnnotationListResultsList =
   /*@__PURE__*/ S.Array(
     WarehouseColumnAnnotation,

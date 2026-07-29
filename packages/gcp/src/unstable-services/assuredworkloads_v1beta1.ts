@@ -153,7 +153,7 @@ export const AggregateFoldersLocationsDbFrameworkComplianceReportsRequest =
     identifier: "AggregateFoldersLocationsDbFrameworkComplianceReportsRequest",
   }) as any as S.Schema<AggregateFoldersLocationsDbFrameworkComplianceReportsRequest>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -213,7 +213,7 @@ export const GoogleCloudAssuredworkloadsV1beta1AggregatedComplianceReport =
   }) as any as S.Schema<GoogleCloudAssuredworkloadsV1beta1AggregatedComplianceReport>;
 
 export type GoogleCloudAssuredworkloadsV1beta1AggregatedComplianceReportList =
-  ReadonlyArray<GoogleCloudAssuredworkloadsV1beta1AggregatedComplianceReport>;
+  Array<GoogleCloudAssuredworkloadsV1beta1AggregatedComplianceReport>;
 export const GoogleCloudAssuredworkloadsV1beta1AggregatedComplianceReportList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAssuredworkloadsV1beta1AggregatedComplianceReport,
@@ -330,7 +330,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -369,7 +369,7 @@ export const GoogleCloudAssuredworkloadsV1beta1MoveImpact =
   }) as any as S.Schema<GoogleCloudAssuredworkloadsV1beta1MoveImpact>;
 
 export type GoogleCloudAssuredworkloadsV1beta1MoveImpactList =
-  ReadonlyArray<GoogleCloudAssuredworkloadsV1beta1MoveImpact>;
+  Array<GoogleCloudAssuredworkloadsV1beta1MoveImpact>;
 export const GoogleCloudAssuredworkloadsV1beta1MoveImpactList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAssuredworkloadsV1beta1MoveImpact,
@@ -415,7 +415,7 @@ export const GoogleCloudAssuredworkloadsV1beta1MoveAnalysisGroup =
   }) as any as S.Schema<GoogleCloudAssuredworkloadsV1beta1MoveAnalysisGroup>;
 
 export type GoogleCloudAssuredworkloadsV1beta1MoveAnalysisGroupList =
-  ReadonlyArray<GoogleCloudAssuredworkloadsV1beta1MoveAnalysisGroup>;
+  Array<GoogleCloudAssuredworkloadsV1beta1MoveAnalysisGroup>;
 export const GoogleCloudAssuredworkloadsV1beta1MoveAnalysisGroupList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAssuredworkloadsV1beta1MoveAnalysisGroup,
@@ -444,7 +444,7 @@ export const GoogleCloudAssuredworkloadsV1beta1AssetMoveAnalysis =
   }) as any as S.Schema<GoogleCloudAssuredworkloadsV1beta1AssetMoveAnalysis>;
 
 export type GoogleCloudAssuredworkloadsV1beta1AssetMoveAnalysisList =
-  ReadonlyArray<GoogleCloudAssuredworkloadsV1beta1AssetMoveAnalysis>;
+  Array<GoogleCloudAssuredworkloadsV1beta1AssetMoveAnalysis>;
 export const GoogleCloudAssuredworkloadsV1beta1AssetMoveAnalysisList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAssuredworkloadsV1beta1AssetMoveAnalysis,
@@ -753,7 +753,10 @@ export const GoogleCloudAssuredworkloadsV1beta1WorkloadSaaEnrollmentResponseSetu
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudAssuredworkloadsV1beta1WorkloadSaaEnrollmentResponseSetupErrorsItemEnumList =
-  ReadonlyArray<GoogleCloudAssuredworkloadsV1beta1WorkloadSaaEnrollmentResponseSetupErrorsItemEnum>;
+  Array<
+    | GoogleCloudAssuredworkloadsV1beta1WorkloadSaaEnrollmentResponseSetupErrorsItemEnum
+    | (string & {})
+  >;
 export const GoogleCloudAssuredworkloadsV1beta1WorkloadSaaEnrollmentResponseSetupErrorsItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAssuredworkloadsV1beta1WorkloadSaaEnrollmentResponseSetupErrorsItemEnum,
@@ -762,7 +765,9 @@ export const GoogleCloudAssuredworkloadsV1beta1WorkloadSaaEnrollmentResponseSetu
 /** Signed Access Approvals (SAA) enrollment response. */
 export interface GoogleCloudAssuredworkloadsV1beta1WorkloadSaaEnrollmentResponse {
   /** Output only. Indicates SAA enrollment status of a given workload. */
-  setupStatus?: GoogleCloudAssuredworkloadsV1beta1WorkloadSaaEnrollmentResponseSetupStatusEnum;
+  setupStatus?:
+    | GoogleCloudAssuredworkloadsV1beta1WorkloadSaaEnrollmentResponseSetupStatusEnum
+    | (string & {});
   /** Indicates SAA enrollment setup error if any. */
   setupErrors?: GoogleCloudAssuredworkloadsV1beta1WorkloadSaaEnrollmentResponseSetupErrorsItemEnumList;
 }
@@ -828,7 +833,9 @@ export const GoogleCloudAssuredworkloadsV1beta1WorkloadWorkloadOptionsKajEnrollm
 /** Options to be set for the given created workload. */
 export interface GoogleCloudAssuredworkloadsV1beta1WorkloadWorkloadOptions {
   /** Optional. Specifies type of KAJ Enrollment if provided. */
-  kajEnrollmentType?: GoogleCloudAssuredworkloadsV1beta1WorkloadWorkloadOptionsKajEnrollmentTypeEnum;
+  kajEnrollmentType?:
+    | GoogleCloudAssuredworkloadsV1beta1WorkloadWorkloadOptionsKajEnrollmentTypeEnum
+    | (string & {});
 }
 export const GoogleCloudAssuredworkloadsV1beta1WorkloadWorkloadOptions =
   /*@__PURE__*/ S.suspend(() =>
@@ -870,11 +877,17 @@ export const GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEk
 /** External key management systems(EKM) Provisioning response */
 export interface GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponse {
   /** Indicates Ekm provisioning error if any. */
-  ekmProvisioningErrorDomain?: GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorDomainEnum;
+  ekmProvisioningErrorDomain?:
+    | GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorDomainEnum
+    | (string & {});
   /** Output only. Indicates Ekm enrollment Provisioning of a given workload. */
-  ekmProvisioningState?: GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningStateEnum;
+  ekmProvisioningState?:
+    | GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningStateEnum
+    | (string & {});
   /** Detailed error message if Ekm provisioning fails */
-  ekmProvisioningErrorMapping?: GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorMappingEnum;
+  ekmProvisioningErrorMapping?:
+    | GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorMappingEnum
+    | (string & {});
 }
 export const GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponse =
   /*@__PURE__*/ S.suspend(() =>
@@ -1037,7 +1050,9 @@ export interface GoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfo {
   /** Output only. Resource identifier. For a project this represents project_number. */
   resourceId?: string;
   /** Indicates the type of resource. */
-  resourceType?: GoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfoResourceTypeEnum;
+  resourceType?:
+    | GoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfoResourceTypeEnum
+    | (string & {});
 }
 export const GoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfo =
   /*@__PURE__*/ S.suspend(() =>
@@ -1052,7 +1067,7 @@ export const GoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfo =
   }) as any as S.Schema<GoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfo>;
 
 export type GoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfoList =
-  ReadonlyArray<GoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfo>;
+  Array<GoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfo>;
 export const GoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfoList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfo,
@@ -1097,7 +1112,9 @@ export interface GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettings {
   /** User-assigned resource display name. If not empty it will be used to create a resource with the specified name. */
   displayName?: string;
   /** Indicates the type of resource. This field should be specified to correspond the id to the right project type (CONSUMER_PROJECT or ENCRYPTION_KEYS_PROJECT) */
-  resourceType?: GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsResourceTypeEnum;
+  resourceType?:
+    | GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsResourceTypeEnum
+    | (string & {});
 }
 export const GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettings =
   /*@__PURE__*/ S.suspend(() =>
@@ -1113,7 +1130,7 @@ export const GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettings =
   }) as any as S.Schema<GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettings>;
 
 export type GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsList =
-  ReadonlyArray<GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettings>;
+  Array<GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettings>;
 export const GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettings,
@@ -1170,9 +1187,13 @@ export interface GoogleCloudAssuredworkloadsV1beta1Workload {
   /** Required. The user-assigned display name of the Workload. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example: My Workload */
   displayName?: string;
   /** Required. Immutable. Compliance Regime associated with this workload. */
-  complianceRegime?: GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceRegimeEnum;
+  complianceRegime?:
+    | GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceRegimeEnum
+    | (string & {});
   /** Output only. Represents the KAJ enrollment state of the given workload. */
-  kajEnrollmentState?: GoogleCloudAssuredworkloadsV1beta1WorkloadKajEnrollmentStateEnum;
+  kajEnrollmentState?:
+    | GoogleCloudAssuredworkloadsV1beta1WorkloadKajEnrollmentStateEnum
+    | (string & {});
   /** Input only. Immutable. Settings specific to resources needed for FedRAMP Moderate. */
   fedrampModerateSettings?: GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettings;
   /** Optional. Indicates the sovereignty status of the given workload. Currently meant to be used by Europe/Canada customers. */
@@ -1186,7 +1207,9 @@ export interface GoogleCloudAssuredworkloadsV1beta1Workload {
   /** Input only. Resource properties that are used to customize workload resources. These properties (such as custom project id) will be used to create workload resources if possible. This field is optional. */
   resourceSettings?: GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsList;
   /** Optional. Partner regime associated with this workload. */
-  partner?: GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerEnum;
+  partner?:
+    | GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerEnum
+    | (string & {});
   /** Output only. Urls for services which are compliant for this Assured Workload, but which are currently disallowed by the ResourceUsageRestriction org policy. Invoke RestrictAllowedResources endpoint to allow your project developers to use these services in their environment. */
   compliantButDisallowedServices?: StringList;
   /** Optional. Billing account necessary for purchasing services from Sovereign Partners. This field is required for creating SIA/PSN/CNTXT/Telefonica partner workloads. The caller should have 'billing.resourceAssociations.create' IAM permission on this billing-account. The format of this string is billingAccounts/AAAAAA-BBBBBB-CCCCCC */
@@ -1402,7 +1425,7 @@ export const GoogleCloudAssuredworkloadsV1beta1FetchDbFrameworkComplianceReportR
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudAssuredworkloadsV1beta1FetchDbFrameworkComplianceReportResponseSupportedCloudProvidersItemEnumList =
-  ReadonlyArray<GoogleCloudAssuredworkloadsV1beta1FetchDbFrameworkComplianceReportResponseSupportedCloudProvidersItemEnum>;
+  Array<GoogleCloudAssuredworkloadsV1beta1FetchDbFrameworkComplianceReportResponseSupportedCloudProvidersItemEnum>;
 export const GoogleCloudAssuredworkloadsV1beta1FetchDbFrameworkComplianceReportResponseSupportedCloudProvidersItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAssuredworkloadsV1beta1FetchDbFrameworkComplianceReportResponseSupportedCloudProvidersItemEnum,
@@ -1441,7 +1464,7 @@ export const GoogleCloudAssuredworkloadsV1beta1TargetResourceDetails =
   }) as any as S.Schema<GoogleCloudAssuredworkloadsV1beta1TargetResourceDetails>;
 
 export type GoogleCloudAssuredworkloadsV1beta1TargetResourceDetailsList =
-  ReadonlyArray<GoogleCloudAssuredworkloadsV1beta1TargetResourceDetails>;
+  Array<GoogleCloudAssuredworkloadsV1beta1TargetResourceDetails>;
 export const GoogleCloudAssuredworkloadsV1beta1TargetResourceDetailsList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAssuredworkloadsV1beta1TargetResourceDetails,
@@ -1458,7 +1481,7 @@ export const GoogleCloudAssuredworkloadsV1beta1FetchDbFrameworkComplianceReportR
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudAssuredworkloadsV1beta1FetchDbFrameworkComplianceReportResponseFrameworkCategoriesItemEnumList =
-  ReadonlyArray<GoogleCloudAssuredworkloadsV1beta1FetchDbFrameworkComplianceReportResponseFrameworkCategoriesItemEnum>;
+  Array<GoogleCloudAssuredworkloadsV1beta1FetchDbFrameworkComplianceReportResponseFrameworkCategoriesItemEnum>;
 export const GoogleCloudAssuredworkloadsV1beta1FetchDbFrameworkComplianceReportResponseFrameworkCategoriesItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAssuredworkloadsV1beta1FetchDbFrameworkComplianceReportResponseFrameworkCategoriesItemEnum,
@@ -1755,7 +1778,7 @@ export const GoogleCloudAssuredworkloadsV1beta1ViolationExceptionContext =
   }) as any as S.Schema<GoogleCloudAssuredworkloadsV1beta1ViolationExceptionContext>;
 
 export type GoogleCloudAssuredworkloadsV1beta1ViolationExceptionContextList =
-  ReadonlyArray<GoogleCloudAssuredworkloadsV1beta1ViolationExceptionContext>;
+  Array<GoogleCloudAssuredworkloadsV1beta1ViolationExceptionContext>;
 export const GoogleCloudAssuredworkloadsV1beta1ViolationExceptionContextList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAssuredworkloadsV1beta1ViolationExceptionContext,
@@ -1941,7 +1964,7 @@ export const GoogleCloudAssuredworkloadsV1beta1DbFindingSummary =
   }) as any as S.Schema<GoogleCloudAssuredworkloadsV1beta1DbFindingSummary>;
 
 export type GoogleCloudAssuredworkloadsV1beta1DbFindingSummaryList =
-  ReadonlyArray<GoogleCloudAssuredworkloadsV1beta1DbFindingSummary>;
+  Array<GoogleCloudAssuredworkloadsV1beta1DbFindingSummary>;
 export const GoogleCloudAssuredworkloadsV1beta1DbFindingSummaryList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAssuredworkloadsV1beta1DbFindingSummary,
@@ -2030,7 +2053,7 @@ export const GoogleCloudAssuredworkloadsV1beta1SimilarControls =
   }) as any as S.Schema<GoogleCloudAssuredworkloadsV1beta1SimilarControls>;
 
 export type GoogleCloudAssuredworkloadsV1beta1SimilarControlsList =
-  ReadonlyArray<GoogleCloudAssuredworkloadsV1beta1SimilarControls>;
+  Array<GoogleCloudAssuredworkloadsV1beta1SimilarControls>;
 export const GoogleCloudAssuredworkloadsV1beta1SimilarControlsList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAssuredworkloadsV1beta1SimilarControls,
@@ -2055,7 +2078,7 @@ export const GoogleCloudAssuredworkloadsV1beta1RuleRuleActionTypesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudAssuredworkloadsV1beta1RuleRuleActionTypesItemEnumList =
-  ReadonlyArray<GoogleCloudAssuredworkloadsV1beta1RuleRuleActionTypesItemEnum>;
+  Array<GoogleCloudAssuredworkloadsV1beta1RuleRuleActionTypesItemEnum>;
 export const GoogleCloudAssuredworkloadsV1beta1RuleRuleActionTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAssuredworkloadsV1beta1RuleRuleActionTypesItemEnum,
@@ -2119,7 +2142,7 @@ export const GoogleCloudAssuredworkloadsV1beta1Rule = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudAssuredworkloadsV1beta1Rule>;
 
 export type GoogleCloudAssuredworkloadsV1beta1RuleList =
-  ReadonlyArray<GoogleCloudAssuredworkloadsV1beta1Rule>;
+  Array<GoogleCloudAssuredworkloadsV1beta1Rule>;
 export const GoogleCloudAssuredworkloadsV1beta1RuleList = /*@__PURE__*/ S.Array(
   GoogleCloudAssuredworkloadsV1beta1Rule,
 ) as any as S.Schema<GoogleCloudAssuredworkloadsV1beta1RuleList>;
@@ -2244,7 +2267,7 @@ export const GoogleCloudAssuredworkloadsV1beta1CloudControlReport =
   }) as any as S.Schema<GoogleCloudAssuredworkloadsV1beta1CloudControlReport>;
 
 export type GoogleCloudAssuredworkloadsV1beta1CloudControlReportList =
-  ReadonlyArray<GoogleCloudAssuredworkloadsV1beta1CloudControlReport>;
+  Array<GoogleCloudAssuredworkloadsV1beta1CloudControlReport>;
 export const GoogleCloudAssuredworkloadsV1beta1CloudControlReportList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAssuredworkloadsV1beta1CloudControlReport,
@@ -2303,7 +2326,7 @@ export const GoogleCloudAssuredworkloadsV1beta1DbControlComplianceSummary =
   }) as any as S.Schema<GoogleCloudAssuredworkloadsV1beta1DbControlComplianceSummary>;
 
 export type GoogleCloudAssuredworkloadsV1beta1DbControlComplianceSummaryList =
-  ReadonlyArray<GoogleCloudAssuredworkloadsV1beta1DbControlComplianceSummary>;
+  Array<GoogleCloudAssuredworkloadsV1beta1DbControlComplianceSummary>;
 export const GoogleCloudAssuredworkloadsV1beta1DbControlComplianceSummaryList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAssuredworkloadsV1beta1DbControlComplianceSummary,
@@ -2379,7 +2402,7 @@ export const GoogleCloudAssuredworkloadsV1beta1DbFrameworkComplianceSummarySuppo
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudAssuredworkloadsV1beta1DbFrameworkComplianceSummarySupportedCloudProvidersItemEnumList =
-  ReadonlyArray<GoogleCloudAssuredworkloadsV1beta1DbFrameworkComplianceSummarySupportedCloudProvidersItemEnum>;
+  Array<GoogleCloudAssuredworkloadsV1beta1DbFrameworkComplianceSummarySupportedCloudProvidersItemEnum>;
 export const GoogleCloudAssuredworkloadsV1beta1DbFrameworkComplianceSummarySupportedCloudProvidersItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAssuredworkloadsV1beta1DbFrameworkComplianceSummarySupportedCloudProvidersItemEnum,
@@ -2418,7 +2441,7 @@ export const GoogleCloudAssuredworkloadsV1beta1DbFrameworkComplianceSummaryFrame
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudAssuredworkloadsV1beta1DbFrameworkComplianceSummaryFrameworkCategoriesItemEnumList =
-  ReadonlyArray<GoogleCloudAssuredworkloadsV1beta1DbFrameworkComplianceSummaryFrameworkCategoriesItemEnum>;
+  Array<GoogleCloudAssuredworkloadsV1beta1DbFrameworkComplianceSummaryFrameworkCategoriesItemEnum>;
 export const GoogleCloudAssuredworkloadsV1beta1DbFrameworkComplianceSummaryFrameworkCategoriesItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAssuredworkloadsV1beta1DbFrameworkComplianceSummaryFrameworkCategoriesItemEnum,
@@ -2483,7 +2506,7 @@ export const GoogleCloudAssuredworkloadsV1beta1DbFrameworkComplianceSummary =
   }) as any as S.Schema<GoogleCloudAssuredworkloadsV1beta1DbFrameworkComplianceSummary>;
 
 export type GoogleCloudAssuredworkloadsV1beta1DbFrameworkComplianceSummaryList =
-  ReadonlyArray<GoogleCloudAssuredworkloadsV1beta1DbFrameworkComplianceSummary>;
+  Array<GoogleCloudAssuredworkloadsV1beta1DbFrameworkComplianceSummary>;
 export const GoogleCloudAssuredworkloadsV1beta1DbFrameworkComplianceSummaryList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAssuredworkloadsV1beta1DbFrameworkComplianceSummary,
@@ -2642,8 +2665,7 @@ export const ListOrganizationsLocationsOperationsRequest =
     identifier: "ListOrganizationsLocationsOperationsRequest",
   }) as any as S.Schema<ListOrganizationsLocationsOperationsRequest>;
 
-export type GoogleLongrunningOperationList =
-  ReadonlyArray<GoogleLongrunningOperation>;
+export type GoogleLongrunningOperationList = Array<GoogleLongrunningOperation>;
 export const GoogleLongrunningOperationList = /*@__PURE__*/ S.Array(
   GoogleLongrunningOperation,
 ) as any as S.Schema<GoogleLongrunningOperationList>;
@@ -2697,7 +2719,7 @@ export const ListOrganizationsLocationsWorkloadsRequest =
   }) as any as S.Schema<ListOrganizationsLocationsWorkloadsRequest>;
 
 export type GoogleCloudAssuredworkloadsV1beta1WorkloadList =
-  ReadonlyArray<GoogleCloudAssuredworkloadsV1beta1Workload>;
+  Array<GoogleCloudAssuredworkloadsV1beta1Workload>;
 export const GoogleCloudAssuredworkloadsV1beta1WorkloadList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAssuredworkloadsV1beta1Workload,
@@ -2884,7 +2906,7 @@ export const GoogleCloudAssuredworkloadsV1beta1WorkloadUpdate =
   }) as any as S.Schema<GoogleCloudAssuredworkloadsV1beta1WorkloadUpdate>;
 
 export type GoogleCloudAssuredworkloadsV1beta1WorkloadUpdateList =
-  ReadonlyArray<GoogleCloudAssuredworkloadsV1beta1WorkloadUpdate>;
+  Array<GoogleCloudAssuredworkloadsV1beta1WorkloadUpdate>;
 export const GoogleCloudAssuredworkloadsV1beta1WorkloadUpdateList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAssuredworkloadsV1beta1WorkloadUpdate,
@@ -2947,7 +2969,7 @@ export const ListOrganizationsLocationsWorkloadsViolationsRequest =
   }) as any as S.Schema<ListOrganizationsLocationsWorkloadsViolationsRequest>;
 
 export type GoogleCloudAssuredworkloadsV1beta1ViolationList =
-  ReadonlyArray<GoogleCloudAssuredworkloadsV1beta1Violation>;
+  Array<GoogleCloudAssuredworkloadsV1beta1Violation>;
 export const GoogleCloudAssuredworkloadsV1beta1ViolationList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAssuredworkloadsV1beta1Violation,

@@ -262,7 +262,7 @@ export const Addon = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Addon" }) as any as S.Schema<Addon>;
 
 /** The Addon items on this page */
-export type AddonListValueList = ReadonlyArray<Addon>;
+export type AddonListValueList = Array<Addon>;
 export const AddonListValueList = /*@__PURE__*/ S.Array(
   Addon,
 ) as any as S.Schema<AddonListValueList>;
@@ -446,7 +446,7 @@ export const Alert = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Alert" }) as any as S.Schema<Alert>;
 
 /** The Alert items on this page */
-export type AlertListValueList = ReadonlyArray<Alert>;
+export type AlertListValueList = Array<Alert>;
 export const AlertListValueList = /*@__PURE__*/ S.Array(
   Alert,
 ) as any as S.Schema<AlertListValueList>;
@@ -522,25 +522,25 @@ export type SkuTier = "Standard";
 export const SkuTier = /*@__PURE__*/ S.String;
 
 /** Availability of the Sku for the region. */
-export type DataBoxEdgeSkuLocationsList = ReadonlyArray<string>;
+export type DataBoxEdgeSkuLocationsList = Array<string>;
 export const DataBoxEdgeSkuLocationsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DataBoxEdgeSkuLocationsList>;
 
 /** The API versions in which Sku is available. */
-export type DataBoxEdgeSkuApiVersionsList = ReadonlyArray<string>;
+export type DataBoxEdgeSkuApiVersionsList = Array<string>;
 export const DataBoxEdgeSkuApiVersionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DataBoxEdgeSkuApiVersionsList>;
 
 /** The zones. */
-export type SkuLocationInfoZonesList = ReadonlyArray<string>;
+export type SkuLocationInfoZonesList = Array<string>;
 export const SkuLocationInfoZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SkuLocationInfoZonesList>;
 
 /** The sites. */
-export type SkuLocationInfoSitesList = ReadonlyArray<string>;
+export type SkuLocationInfoSitesList = Array<string>;
 export const SkuLocationInfoSitesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SkuLocationInfoSitesList>;
@@ -565,7 +565,7 @@ export const SkuLocationInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SkuLocationInfo>;
 
 /** Availability of the Sku for the location/zone/site. */
-export type DataBoxEdgeSkuLocationInfoList = ReadonlyArray<SkuLocationInfo>;
+export type DataBoxEdgeSkuLocationInfoList = Array<SkuLocationInfo>;
 export const DataBoxEdgeSkuLocationInfoList = /*@__PURE__*/ S.Array(
   SkuLocationInfo,
 ) as any as S.Schema<DataBoxEdgeSkuLocationInfoList>;
@@ -588,7 +588,7 @@ export const SkuCost = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SkuCost" }) as any as S.Schema<SkuCost>;
 
 /** The pricing info of the Sku. */
-export type DataBoxEdgeSkuCostsList = ReadonlyArray<SkuCost>;
+export type DataBoxEdgeSkuCostsList = Array<SkuCost>;
 export const DataBoxEdgeSkuCostsList = /*@__PURE__*/ S.Array(
   SkuCost,
 ) as any as S.Schema<DataBoxEdgeSkuCostsList>;
@@ -609,7 +609,7 @@ export type ShipmentType = "NotApplicable" | "ShippedToCustomer" | "SelfPickup";
 export const ShipmentType = /*@__PURE__*/ S.String;
 
 /** List of Shipment Types supported by this SKU */
-export type DataBoxEdgeSkuShipmentTypesList = ReadonlyArray<ShipmentType>;
+export type DataBoxEdgeSkuShipmentTypesList = Array<ShipmentType>;
 export const DataBoxEdgeSkuShipmentTypesList = /*@__PURE__*/ S.Array(
   ShipmentType,
 ) as any as S.Schema<DataBoxEdgeSkuShipmentTypesList>;
@@ -629,7 +629,7 @@ export const SkuCapability = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SkuCapability" }) as any as S.Schema<SkuCapability>;
 
 /** The capability info of the SKU. */
-export type DataBoxEdgeSkuCapabilitiesList = ReadonlyArray<SkuCapability>;
+export type DataBoxEdgeSkuCapabilitiesList = Array<SkuCapability>;
 export const DataBoxEdgeSkuCapabilitiesList = /*@__PURE__*/ S.Array(
   SkuCapability,
 ) as any as S.Schema<DataBoxEdgeSkuCapabilitiesList>;
@@ -688,7 +688,7 @@ export const DataBoxEdgeSku = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DataBoxEdgeSku" }) as any as S.Schema<DataBoxEdgeSku>;
 
 /** The DataBoxEdgeSku items on this page */
-export type DataBoxEdgeSkuListValueList = ReadonlyArray<DataBoxEdgeSku>;
+export type DataBoxEdgeSkuListValueList = Array<DataBoxEdgeSku>;
 export const DataBoxEdgeSkuListValueList = /*@__PURE__*/ S.Array(
   DataBoxEdgeSku,
 ) as any as S.Schema<DataBoxEdgeSkuListValueList>;
@@ -720,7 +720,9 @@ export type DayOfWeek =
 export const DayOfWeek = /*@__PURE__*/ S.String;
 
 /** The days of the week when this schedule is applicable. */
-export type BandwidthSchedulePropertiesDaysList = ReadonlyArray<DayOfWeek>;
+export type BandwidthSchedulePropertiesDaysList = Array<
+  DayOfWeek | (string & {})
+>;
 export const BandwidthSchedulePropertiesDaysList = /*@__PURE__*/ S.Array(
   DayOfWeek,
 ) as any as S.Schema<BandwidthSchedulePropertiesDaysList>;
@@ -943,7 +945,7 @@ export const BandwidthSchedule = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BandwidthSchedule>;
 
 /** The BandwidthSchedule items on this page */
-export type BandwidthSchedulesListValueList = ReadonlyArray<BandwidthSchedule>;
+export type BandwidthSchedulesListValueList = Array<BandwidthSchedule>;
 export const BandwidthSchedulesListValueList = /*@__PURE__*/ S.Array(
   BandwidthSchedule,
 ) as any as S.Schema<BandwidthSchedulesListValueList>;
@@ -1236,7 +1238,7 @@ export const Container = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Container" }) as any as S.Schema<Container>;
 
 /** The Container items on this page */
-export type ContainerListValueList = ReadonlyArray<Container>;
+export type ContainerListValueList = Array<Container>;
 export const ContainerListValueList = /*@__PURE__*/ S.Array(
   Container,
 ) as any as S.Schema<ContainerListValueList>;
@@ -1294,7 +1296,7 @@ export const ContainersRefreshResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ContainersRefreshResponse>;
 
 export type DeviceCapacityRequestInfoPropertiesVmPlacementQueryItemList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const DeviceCapacityRequestInfoPropertiesVmPlacementQueryItemList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1302,14 +1304,14 @@ export const DeviceCapacityRequestInfoPropertiesVmPlacementQueryItemList =
 
 /** Array containing the sizes of the VMs for checking if its feasible to create them on the appliance. */
 export type DeviceCapacityRequestInfoPropertiesVmPlacementQueryList =
-  ReadonlyArray<DeviceCapacityRequestInfoPropertiesVmPlacementQueryItemList>;
+  Array<DeviceCapacityRequestInfoPropertiesVmPlacementQueryItemList>;
 export const DeviceCapacityRequestInfoPropertiesVmPlacementQueryList =
   /*@__PURE__*/ S.Array(
     DeviceCapacityRequestInfoPropertiesVmPlacementQueryItemList,
   ) as any as S.Schema<DeviceCapacityRequestInfoPropertiesVmPlacementQueryList>;
 
 /** List of VM sizes being checked. */
-export type VmPlacementRequestResultVmSizeList = ReadonlyArray<string>;
+export type VmPlacementRequestResultVmSizeList = Array<string>;
 export const VmPlacementRequestResultVmSizeList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<VmPlacementRequestResultVmSizeList>;
@@ -1338,7 +1340,7 @@ export const VmPlacementRequestResult = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of the VMs of the sizes in VmSizes can be provisioned on the appliance. */
 export type DeviceCapacityRequestInfoPropertiesVmPlacementResultsList =
-  ReadonlyArray<VmPlacementRequestResult>;
+  Array<VmPlacementRequestResult>;
 export const DeviceCapacityRequestInfoPropertiesVmPlacementResultsList =
   /*@__PURE__*/ S.Array(
     VmPlacementRequestResult,
@@ -1553,19 +1555,19 @@ export const HostCapacityVmUsedMemoryMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<HostCapacityVmUsedMemoryMap>;
 
 /** The free VCPU indices for the Hpn VMs. */
-export type NumaNodeDataFreeVCpuIndexesForHpnList = ReadonlyArray<number>;
+export type NumaNodeDataFreeVCpuIndexesForHpnList = Array<number>;
 export const NumaNodeDataFreeVCpuIndexesForHpnList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<NumaNodeDataFreeVCpuIndexesForHpnList>;
 
 /** The VCPU indices for Hpn VMs */
-export type NumaNodeDataVCpuIndexesForHpnList = ReadonlyArray<number>;
+export type NumaNodeDataVCpuIndexesForHpnList = Array<number>;
 export const NumaNodeDataVCpuIndexesForHpnList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<NumaNodeDataVCpuIndexesForHpnList>;
 
 /** The VCPU indices for the root. */
-export type NumaNodeDataVCpuIndexesForRootList = ReadonlyArray<number>;
+export type NumaNodeDataVCpuIndexesForRootList = Array<number>;
 export const NumaNodeDataVCpuIndexesForRootList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<NumaNodeDataVCpuIndexesForRootList>;
@@ -1600,7 +1602,7 @@ export const NumaNodeData = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NumaNodeData" }) as any as S.Schema<NumaNodeData>;
 
 /** The numa nodes information for Hpn VMs. */
-export type HostCapacityNumaNodesDataList = ReadonlyArray<NumaNodeData>;
+export type HostCapacityNumaNodesDataList = Array<NumaNodeData>;
 export const HostCapacityNumaNodesDataList = /*@__PURE__*/ S.Array(
   NumaNodeData,
 ) as any as S.Schema<HostCapacityNumaNodesDataList>;
@@ -1706,7 +1708,7 @@ export const DataResidencyType = /*@__PURE__*/ S.String;
 /** Wraps data-residency related information for edge-resource and this should be used with ARM layer. */
 export interface DataResidency {
   /** DataResidencyType enum */
-  type?: DataResidencyType;
+  type?: DataResidencyType | (string & {});
 }
 export const DataResidency = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1730,9 +1732,9 @@ export const DataBoxEdgeDevicePropertiesInput = /*@__PURE__*/ S.suspend(() =>
 /** The SKU type. */
 export interface Sku {
   /** SKU name. */
-  name?: SkuName;
+  name?: SkuName | (string & {});
   /** The SKU tier. This is based on the SKU name. */
-  tier?: SkuTier;
+  tier?: SkuTier | (string & {});
 }
 export const Sku = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1888,7 +1890,7 @@ export const RoleTypes = /*@__PURE__*/ S.String;
 
 /** Type of compute roles configured. */
 export type DataBoxEdgeDevicePropertiesConfiguredRoleTypesList =
-  ReadonlyArray<RoleTypes>;
+  Array<RoleTypes>;
 export const DataBoxEdgeDevicePropertiesConfiguredRoleTypesList =
   /*@__PURE__*/ S.Array(
     RoleTypes,
@@ -1939,7 +1941,7 @@ export const SubscriptionRegisteredFeatures = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SubscriptionRegisteredFeatures>;
 
 export type SubscriptionPropertiesRegisteredFeaturesList =
-  ReadonlyArray<SubscriptionRegisteredFeatures>;
+  Array<SubscriptionRegisteredFeatures>;
 export const SubscriptionPropertiesRegisteredFeaturesList =
   /*@__PURE__*/ S.Array(
     SubscriptionRegisteredFeatures,
@@ -2150,7 +2152,7 @@ export interface AsymmetricEncryptedSecret {
   /** Thumbprint certificate used to encrypt \"Value\". If the value is unencrypted, it will be null. */
   encryptionCertThumbprint?: string;
   /** The algorithm used to encrypt "Value". */
-  encryptionAlgorithm: EncryptionAlgorithm;
+  encryptionAlgorithm: EncryptionAlgorithm | (string & {});
 }
 export const AsymmetricEncryptedSecret = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2682,7 +2684,7 @@ export const Ipv6Config = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Ipv6Config" }) as any as S.Schema<Ipv6Config>;
 
 /** The list of DNS Servers of the device. */
-export type NetworkAdapterDnsServersList = ReadonlyArray<string>;
+export type NetworkAdapterDnsServersList = Array<string>;
 export const NetworkAdapterDnsServersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<NetworkAdapterDnsServersList>;
@@ -2742,7 +2744,7 @@ export const NetworkAdapter = /*@__PURE__*/ S.suspend(() =>
 
 /** The network adapter list on the device. */
 export type NetworkSettingsPropertiesNetworkAdaptersList =
-  ReadonlyArray<NetworkAdapter>;
+  Array<NetworkAdapter>;
 export const NetworkSettingsPropertiesNetworkAdaptersList =
   /*@__PURE__*/ S.Array(
     NetworkAdapter,
@@ -2833,7 +2835,7 @@ export type UpdateOperation = "None" | "Scan" | "Download" | "Install";
 export const UpdateOperation = /*@__PURE__*/ S.String;
 
 /** The list of updates available for install. */
-export type UpdateSummaryPropertiesUpdateTitlesList = ReadonlyArray<string>;
+export type UpdateSummaryPropertiesUpdateTitlesList = Array<string>;
 export const UpdateSummaryPropertiesUpdateTitlesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<UpdateSummaryPropertiesUpdateTitlesList>;
@@ -2894,7 +2896,7 @@ export const UpdateDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateDetails" }) as any as S.Schema<UpdateDetails>;
 
 /** The list of updates available for install. */
-export type UpdateSummaryPropertiesUpdatesList = ReadonlyArray<UpdateDetails>;
+export type UpdateSummaryPropertiesUpdatesList = Array<UpdateDetails>;
 export const UpdateSummaryPropertiesUpdatesList = /*@__PURE__*/ S.Array(
   UpdateDetails,
 ) as any as S.Schema<UpdateSummaryPropertiesUpdatesList>;
@@ -3116,7 +3118,7 @@ export const DataBoxEdgeDevice = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DataBoxEdgeDevice>;
 
 /** The DataBoxEdgeDevice items on this page */
-export type DataBoxEdgeDeviceListValueList = ReadonlyArray<DataBoxEdgeDevice>;
+export type DataBoxEdgeDeviceListValueList = Array<DataBoxEdgeDevice>;
 export const DataBoxEdgeDeviceListValueList = /*@__PURE__*/ S.Array(
   DataBoxEdgeDevice,
 ) as any as S.Schema<DataBoxEdgeDeviceListValueList>;
@@ -3554,7 +3556,7 @@ export const ProactiveDiagnosticsConsent = /*@__PURE__*/ S.String;
 /** The properties of proactive log collection settings. */
 export interface ProactiveLogCollectionSettingsProperties {
   /** Proactive diagnostic collection consent flag */
-  userConsent: ProactiveDiagnosticsConsent;
+  userConsent: ProactiveDiagnosticsConsent | (string & {});
 }
 export const ProactiveLogCollectionSettingsProperties = /*@__PURE__*/ S.suspend(
   () =>
@@ -3632,9 +3634,9 @@ export const AccessLevel = /*@__PURE__*/ S.String;
 /** RemoteApplicationType for which remote support settings is being modified */
 export interface RemoteSupportSettings {
   /** Remote application type */
-  remoteApplicationType?: RemoteApplicationType;
+  remoteApplicationType?: RemoteApplicationType | (string & {});
   /** Access level allowed for this remote application type */
-  accessLevel?: AccessLevel;
+  accessLevel?: AccessLevel | (string & {});
   /** Expiration time stamp */
   expirationTimeStampInUTC?: string;
 }
@@ -3650,7 +3652,7 @@ export const RemoteSupportSettings = /*@__PURE__*/ S.suspend(() =>
 
 /** Remote support settings list according to the RemoteApplicationType */
 export type DiagnosticRemoteSupportSettingsPropertiesRemoteSupportSettingsListList =
-  ReadonlyArray<RemoteSupportSettings>;
+  Array<RemoteSupportSettings>;
 export const DiagnosticRemoteSupportSettingsPropertiesRemoteSupportSettingsListList =
   /*@__PURE__*/ S.Array(
     RemoteSupportSettings,
@@ -3957,7 +3959,7 @@ export const JobProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "JobProperties" }) as any as S.Schema<JobProperties>;
 
 /** The recommended actions. */
-export type JobErrorItemRecommendationsList = ReadonlyArray<string>;
+export type JobErrorItemRecommendationsList = Array<string>;
 export const JobErrorItemRecommendationsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<JobErrorItemRecommendationsList>;
@@ -3980,7 +3982,7 @@ export const JobErrorItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "JobErrorItem" }) as any as S.Schema<JobErrorItem>;
 
 /** The error details. */
-export type JobErrorDetailsErrorDetailsList = ReadonlyArray<JobErrorItem>;
+export type JobErrorDetailsErrorDetailsList = Array<JobErrorItem>;
 export const JobErrorDetailsErrorDetailsList = /*@__PURE__*/ S.Array(
   JobErrorItem,
 ) as any as S.Schema<JobErrorDetailsErrorDetailsList>;
@@ -4060,14 +4062,13 @@ export const MetricDimension = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MetricDimension>;
 
 /** The dimension filter. */
-export type MetricCounterDimensionFilterList = ReadonlyArray<MetricDimension>;
+export type MetricCounterDimensionFilterList = Array<MetricDimension>;
 export const MetricCounterDimensionFilterList = /*@__PURE__*/ S.Array(
   MetricDimension,
 ) as any as S.Schema<MetricCounterDimensionFilterList>;
 
 /** The additional dimensions to be added to metric. */
-export type MetricCounterAdditionalDimensionsList =
-  ReadonlyArray<MetricDimension>;
+export type MetricCounterAdditionalDimensionsList = Array<MetricDimension>;
 export const MetricCounterAdditionalDimensionsList = /*@__PURE__*/ S.Array(
   MetricDimension,
 ) as any as S.Schema<MetricCounterAdditionalDimensionsList>;
@@ -4093,7 +4094,7 @@ export const MetricCounter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MetricCounter" }) as any as S.Schema<MetricCounter>;
 
 /** The counters that should be collected in this set. */
-export type MetricCounterSetCountersList = ReadonlyArray<MetricCounter>;
+export type MetricCounterSetCountersList = Array<MetricCounter>;
 export const MetricCounterSetCountersList = /*@__PURE__*/ S.Array(
   MetricCounter,
 ) as any as S.Schema<MetricCounterSetCountersList>;
@@ -4112,8 +4113,7 @@ export const MetricCounterSet = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MetricCounterSet>;
 
 /** Host name for the IoT hub associated to the device. */
-export type MetricConfigurationCounterSetsList =
-  ReadonlyArray<MetricCounterSet>;
+export type MetricConfigurationCounterSetsList = Array<MetricCounterSet>;
 export const MetricConfigurationCounterSetsList = /*@__PURE__*/ S.Array(
   MetricCounterSet,
 ) as any as S.Schema<MetricConfigurationCounterSetsList>;
@@ -4142,7 +4142,7 @@ export const MetricConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** The metrics configuration details */
 export type MonitoringMetricConfigurationPropertiesMetricConfigurationsList =
-  ReadonlyArray<MetricConfiguration>;
+  Array<MetricConfiguration>;
 export const MonitoringMetricConfigurationPropertiesMetricConfigurationsList =
   /*@__PURE__*/ S.Array(
     MetricConfiguration,
@@ -4362,7 +4362,7 @@ export const MonitoringMetricConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** The MonitoringMetricConfiguration items on this page */
 export type MonitoringMetricConfigurationListValueList =
-  ReadonlyArray<MonitoringMetricConfiguration>;
+  Array<MonitoringMetricConfiguration>;
 export const MonitoringMetricConfigurationListValueList = /*@__PURE__*/ S.Array(
   MonitoringMetricConfiguration,
 ) as any as S.Schema<MonitoringMetricConfigurationListValueList>;
@@ -4467,7 +4467,7 @@ export const Node = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Node" }) as any as S.Schema<Node>;
 
 /** The Node items on this page */
-export type NodeListValueList = ReadonlyArray<Node>;
+export type NodeListValueList = Array<Node>;
 export const NodeListValueList = /*@__PURE__*/ S.Array(
   Node,
 ) as any as S.Schema<NodeListValueList>;
@@ -4565,8 +4565,7 @@ export const MetricDimensionV1 = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MetricDimensionV1>;
 
 /** Metric dimensions, other than default dimension which is resource. */
-export type MetricSpecificationV1DimensionsList =
-  ReadonlyArray<MetricDimensionV1>;
+export type MetricSpecificationV1DimensionsList = Array<MetricDimensionV1>;
 export const MetricSpecificationV1DimensionsList = /*@__PURE__*/ S.Array(
   MetricDimensionV1,
 ) as any as S.Schema<MetricSpecificationV1DimensionsList>;
@@ -4587,15 +4586,14 @@ export type TimeGrain =
 export const TimeGrain = /*@__PURE__*/ S.String;
 
 /** Support granularity of metrics. */
-export type MetricSpecificationV1SupportedTimeGrainTypesList =
-  ReadonlyArray<TimeGrain>;
+export type MetricSpecificationV1SupportedTimeGrainTypesList = Array<TimeGrain>;
 export const MetricSpecificationV1SupportedTimeGrainTypesList =
   /*@__PURE__*/ S.Array(
     TimeGrain,
   ) as any as S.Schema<MetricSpecificationV1SupportedTimeGrainTypesList>;
 
 export type MetricSpecificationV1SupportedAggregationTypesList =
-  ReadonlyArray<MetricAggregationType>;
+  Array<MetricAggregationType>;
 export const MetricSpecificationV1SupportedAggregationTypesList =
   /*@__PURE__*/ S.Array(
     MetricAggregationType,
@@ -4649,7 +4647,7 @@ export const MetricSpecificationV1 = /*@__PURE__*/ S.suspend(() =>
 
 /** Metric specification as defined by shoebox. */
 export type ServiceSpecificationMetricSpecificationsList =
-  ReadonlyArray<MetricSpecificationV1>;
+  Array<MetricSpecificationV1>;
 export const ServiceSpecificationMetricSpecificationsList =
   /*@__PURE__*/ S.Array(
     MetricSpecificationV1,
@@ -4707,7 +4705,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** The list of operations. */
-export type OperationsListValueList = ReadonlyArray<Operation>;
+export type OperationsListValueList = Array<Operation>;
 export const OperationsListValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListValueList>;
@@ -4794,7 +4792,7 @@ export const OperationsStatusGetResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationsStatusGetResponse>;
 
 /** The email list. */
-export type ContactDetailsEmailListList = ReadonlyArray<string>;
+export type ContactDetailsEmailListList = Array<string>;
 export const ContactDetailsEmailListList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ContactDetailsEmailListList>;
@@ -4969,20 +4967,19 @@ export const OrderStatus = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "OrderStatus" }) as any as S.Schema<OrderStatus>;
 
 /** List of status changes in the order. */
-export type OrderPropertiesOrderHistoryList = ReadonlyArray<OrderStatus>;
+export type OrderPropertiesOrderHistoryList = Array<OrderStatus>;
 export const OrderPropertiesOrderHistoryList = /*@__PURE__*/ S.Array(
   OrderStatus,
 ) as any as S.Schema<OrderPropertiesOrderHistoryList>;
 
 /** Tracking information for the package delivered to the customer whether it has an original or a replacement device. */
-export type OrderPropertiesDeliveryTrackingInfoList =
-  ReadonlyArray<TrackingInfo>;
+export type OrderPropertiesDeliveryTrackingInfoList = Array<TrackingInfo>;
 export const OrderPropertiesDeliveryTrackingInfoList = /*@__PURE__*/ S.Array(
   TrackingInfo,
 ) as any as S.Schema<OrderPropertiesDeliveryTrackingInfoList>;
 
 /** Tracking information for the package returned from the customer whether it has an original or a replacement device. */
-export type OrderPropertiesReturnTrackingInfoList = ReadonlyArray<TrackingInfo>;
+export type OrderPropertiesReturnTrackingInfoList = Array<TrackingInfo>;
 export const OrderPropertiesReturnTrackingInfoList = /*@__PURE__*/ S.Array(
   TrackingInfo,
 ) as any as S.Schema<OrderPropertiesReturnTrackingInfoList>;
@@ -5188,7 +5185,7 @@ export const Order = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Order" }) as any as S.Schema<Order>;
 
 /** The Order items on this page */
-export type OrderListValueList = ReadonlyArray<Order>;
+export type OrderListValueList = Array<Order>;
 export const OrderListValueList = /*@__PURE__*/ S.Array(
   Order,
 ) as any as S.Schema<OrderListValueList>;
@@ -5447,7 +5444,7 @@ export const Role = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Role" }) as any as S.Schema<Role>;
 
 /** The Role items on this page */
-export type RoleListValueList = ReadonlyArray<Role>;
+export type RoleListValueList = Array<Role>;
 export const RoleListValueList = /*@__PURE__*/ S.Array(
   Role,
 ) as any as S.Schema<RoleListValueList>;
@@ -5486,7 +5483,7 @@ export interface AzureContainerInfo {
   /** Container name (Based on the data format specified, this represents the name of Azure Files/Page blob/Block blob). */
   containerName: string;
   /** Storage format used for the file represented by the share. */
-  dataFormat: AzureContainerDataFormat;
+  dataFormat: AzureContainerDataFormat | (string & {});
 }
 export const AzureContainerInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5511,7 +5508,7 @@ export interface UserAccessRight {
   /** User ID (already existing in the device). */
   userId: string;
   /** Type of access to be allowed for the user. */
-  accessType: ShareAccessType;
+  accessType: ShareAccessType | (string & {});
 }
 export const UserAccessRight = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5523,8 +5520,7 @@ export const UserAccessRight = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UserAccessRight>;
 
 /** Mapping of users and corresponding access rights on the share (required for SMB protocol). */
-export type SharePropertiesInputUserAccessRightsList =
-  ReadonlyArray<UserAccessRight>;
+export type SharePropertiesInputUserAccessRightsList = Array<UserAccessRight>;
 export const SharePropertiesInputUserAccessRightsList = /*@__PURE__*/ S.Array(
   UserAccessRight,
 ) as any as S.Schema<SharePropertiesInputUserAccessRightsList>;
@@ -5538,7 +5534,7 @@ export interface ClientAccessRight {
   /** IP of the client. */
   client: string;
   /** Type of access to be allowed for the client. */
-  accessPermission: ClientPermissionType;
+  accessPermission: ClientPermissionType | (string & {});
 }
 export const ClientAccessRight = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5551,7 +5547,7 @@ export const ClientAccessRight = /*@__PURE__*/ S.suspend(() =>
 
 /** List of IP addresses and corresponding access rights on the share(required for NFS protocol). */
 export type SharePropertiesInputClientAccessRightsList =
-  ReadonlyArray<ClientAccessRight>;
+  Array<ClientAccessRight>;
 export const SharePropertiesInputClientAccessRightsList = /*@__PURE__*/ S.Array(
   ClientAccessRight,
 ) as any as S.Schema<SharePropertiesInputClientAccessRightsList>;
@@ -5629,15 +5625,13 @@ export const SharesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SharesCreateOrUpdateRequest>;
 
 /** Mapping of users and corresponding access rights on the share (required for SMB protocol). */
-export type SharePropertiesUserAccessRightsList =
-  ReadonlyArray<UserAccessRight>;
+export type SharePropertiesUserAccessRightsList = Array<UserAccessRight>;
 export const SharePropertiesUserAccessRightsList = /*@__PURE__*/ S.Array(
   UserAccessRight,
 ) as any as S.Schema<SharePropertiesUserAccessRightsList>;
 
 /** List of IP addresses and corresponding access rights on the share(required for NFS protocol). */
-export type SharePropertiesClientAccessRightsList =
-  ReadonlyArray<ClientAccessRight>;
+export type SharePropertiesClientAccessRightsList = Array<ClientAccessRight>;
 export const SharePropertiesClientAccessRightsList = /*@__PURE__*/ S.Array(
   ClientAccessRight,
 ) as any as S.Schema<SharePropertiesClientAccessRightsList>;
@@ -5670,7 +5664,7 @@ export const MountPointMap = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MountPointMap" }) as any as S.Schema<MountPointMap>;
 
 /** Share mount point to the role. */
-export type SharePropertiesShareMappingsList = ReadonlyArray<MountPointMap>;
+export type SharePropertiesShareMappingsList = Array<MountPointMap>;
 export const SharePropertiesShareMappingsList = /*@__PURE__*/ S.Array(
   MountPointMap,
 ) as any as S.Schema<SharePropertiesShareMappingsList>;
@@ -5876,7 +5870,7 @@ export const Share = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Share" }) as any as S.Schema<Share>;
 
 /** The Share items on this page */
-export type ShareListValueList = ReadonlyArray<Share>;
+export type ShareListValueList = Array<Share>;
 export const ShareListValueList = /*@__PURE__*/ S.Array(
   Share,
 ) as any as S.Schema<ShareListValueList>;
@@ -5949,11 +5943,11 @@ export interface StorageAccountCredentialProperties {
   /** Connection string for the storage account. Use this string if username and account key are not specified. */
   connectionString?: string | Redacted.Redacted<string>;
   /** Signifies whether SSL needs to be enabled or not. */
-  sslStatus: SSLStatus;
+  sslStatus: SSLStatus | (string & {});
   /** Blob end point for private clouds. */
   blobDomainName?: string;
   /** Type of storage accessed on the storage account. */
-  accountType: AccountType;
+  accountType: AccountType | (string & {});
   /** Id of the storage account. */
   storageAccountId?: string;
 }
@@ -6171,7 +6165,7 @@ export const StorageAccountCredential = /*@__PURE__*/ S.suspend(() =>
 
 /** The StorageAccountCredential items on this page */
 export type StorageAccountCredentialListValueList =
-  ReadonlyArray<StorageAccountCredential>;
+  Array<StorageAccountCredential>;
 export const StorageAccountCredentialListValueList = /*@__PURE__*/ S.Array(
   StorageAccountCredential,
 ) as any as S.Schema<StorageAccountCredentialListValueList>;
@@ -6445,7 +6439,7 @@ export const StorageAccount = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StorageAccount" }) as any as S.Schema<StorageAccount>;
 
 /** The StorageAccount items on this page */
-export type StorageAccountListValueList = ReadonlyArray<StorageAccount>;
+export type StorageAccountListValueList = Array<StorageAccount>;
 export const StorageAccountListValueList = /*@__PURE__*/ S.Array(
   StorageAccount,
 ) as any as S.Schema<StorageAccountListValueList>;
@@ -6719,7 +6713,7 @@ export const Trigger = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Trigger" }) as any as S.Schema<Trigger>;
 
 /** The Trigger items on this page */
-export type TriggerListValueList = ReadonlyArray<Trigger>;
+export type TriggerListValueList = Array<Trigger>;
 export const TriggerListValueList = /*@__PURE__*/ S.Array(
   Trigger,
 ) as any as S.Schema<TriggerListValueList>;
@@ -6806,8 +6800,7 @@ export const ShareAccessRight = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ShareAccessRight>;
 
 /** List of shares that the user has rights on. This field should not be specified during user creation. */
-export type UserPropertiesShareAccessRightsList =
-  ReadonlyArray<ShareAccessRight>;
+export type UserPropertiesShareAccessRightsList = Array<ShareAccessRight>;
 export const UserPropertiesShareAccessRightsList = /*@__PURE__*/ S.Array(
   ShareAccessRight,
 ) as any as S.Schema<UserPropertiesShareAccessRightsList>;
@@ -6992,7 +6985,7 @@ export const User = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "User" }) as any as S.Schema<User>;
 
 /** The User items on this page */
-export type UserListValueList = ReadonlyArray<User>;
+export type UserListValueList = Array<User>;
 export const UserListValueList = /*@__PURE__*/ S.Array(
   User,
 ) as any as S.Schema<UserListValueList>;

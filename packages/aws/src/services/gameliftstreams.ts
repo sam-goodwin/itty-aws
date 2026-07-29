@@ -260,7 +260,7 @@ export const RuntimeEnvironmentType = /*@__PURE__*/ S.String;
 
 export type RuntimeEnvironmentVersion = string;
 export interface RuntimeEnvironment {
-  Type: RuntimeEnvironmentType;
+  Type: RuntimeEnvironmentType | (string & {});
   Version: string;
 }
 export const RuntimeEnvironment = /*@__PURE__*/ S.suspend(() =>

@@ -389,8 +389,10 @@ export type DocumentExtractionGranularityType =
   | "LINE";
 export const DocumentExtractionGranularityType = /*@__PURE__*/ S.String;
 
-export type DocumentExtractionGranularityTypes =
-  DocumentExtractionGranularityType[];
+export type DocumentExtractionGranularityTypes = (
+  | DocumentExtractionGranularityType
+  | (string & {})
+)[];
 export const DocumentExtractionGranularityTypes = /*@__PURE__*/ S.Array(
   DocumentExtractionGranularityType,
 );
@@ -406,7 +408,7 @@ export type State = "ENABLED" | "DISABLED";
 export const State = /*@__PURE__*/ S.String;
 
 export interface DocumentBoundingBox {
-  state: State;
+  state: State | (string & {});
 }
 export const DocumentBoundingBox = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ state: State }),
@@ -426,7 +428,7 @@ export const DocumentStandardExtraction = /*@__PURE__*/ S.suspend(() =>
   identifier: "DocumentStandardExtraction",
 }) as any as S.Schema<DocumentStandardExtraction>;
 export interface DocumentStandardGenerativeField {
-  state: State;
+  state: State | (string & {});
 }
 export const DocumentStandardGenerativeField = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ state: State }),
@@ -440,7 +442,10 @@ export type DocumentOutputTextFormatType =
   | "CSV";
 export const DocumentOutputTextFormatType = /*@__PURE__*/ S.String;
 
-export type DocumentOutputTextFormatTypes = DocumentOutputTextFormatType[];
+export type DocumentOutputTextFormatTypes = (
+  | DocumentOutputTextFormatType
+  | (string & {})
+)[];
 export const DocumentOutputTextFormatTypes = /*@__PURE__*/ S.Array(
   DocumentOutputTextFormatType,
 );
@@ -453,7 +458,7 @@ export const DocumentOutputTextFormat = /*@__PURE__*/ S.suspend(() =>
   identifier: "DocumentOutputTextFormat",
 }) as any as S.Schema<DocumentOutputTextFormat>;
 export interface DocumentOutputAdditionalFileFormat {
-  state: State;
+  state: State | (string & {});
 }
 export const DocumentOutputAdditionalFileFormat = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ state: State }),
@@ -492,12 +497,15 @@ export type ImageExtractionCategoryType =
   | "LOGOS";
 export const ImageExtractionCategoryType = /*@__PURE__*/ S.String;
 
-export type ImageExtractionCategoryTypes = ImageExtractionCategoryType[];
+export type ImageExtractionCategoryTypes = (
+  | ImageExtractionCategoryType
+  | (string & {})
+)[];
 export const ImageExtractionCategoryTypes = /*@__PURE__*/ S.Array(
   ImageExtractionCategoryType,
 );
 export interface ImageExtractionCategory {
-  state: State;
+  state: State | (string & {});
   types?: ImageExtractionCategoryType[];
 }
 export const ImageExtractionCategory = /*@__PURE__*/ S.suspend(() =>
@@ -506,7 +514,7 @@ export const ImageExtractionCategory = /*@__PURE__*/ S.suspend(() =>
   identifier: "ImageExtractionCategory",
 }) as any as S.Schema<ImageExtractionCategory>;
 export interface ImageBoundingBox {
-  state: State;
+  state: State | (string & {});
 }
 export const ImageBoundingBox = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ state: State }),
@@ -528,13 +536,15 @@ export const ImageStandardExtraction = /*@__PURE__*/ S.suspend(() =>
 export type ImageStandardGenerativeFieldType = "IMAGE_SUMMARY" | "IAB";
 export const ImageStandardGenerativeFieldType = /*@__PURE__*/ S.String;
 
-export type ImageStandardGenerativeFieldTypes =
-  ImageStandardGenerativeFieldType[];
+export type ImageStandardGenerativeFieldTypes = (
+  | ImageStandardGenerativeFieldType
+  | (string & {})
+)[];
 export const ImageStandardGenerativeFieldTypes = /*@__PURE__*/ S.Array(
   ImageStandardGenerativeFieldType,
 );
 export interface ImageStandardGenerativeField {
-  state: State;
+  state: State | (string & {});
   types?: ImageStandardGenerativeFieldType[];
 }
 export const ImageStandardGenerativeField = /*@__PURE__*/ S.suspend(() =>
@@ -564,12 +574,15 @@ export type VideoExtractionCategoryType =
   | "LOGOS";
 export const VideoExtractionCategoryType = /*@__PURE__*/ S.String;
 
-export type VideoExtractionCategoryTypes = VideoExtractionCategoryType[];
+export type VideoExtractionCategoryTypes = (
+  | VideoExtractionCategoryType
+  | (string & {})
+)[];
 export const VideoExtractionCategoryTypes = /*@__PURE__*/ S.Array(
   VideoExtractionCategoryType,
 );
 export interface VideoExtractionCategory {
-  state: State;
+  state: State | (string & {});
   types?: VideoExtractionCategoryType[];
 }
 export const VideoExtractionCategory = /*@__PURE__*/ S.suspend(() =>
@@ -578,7 +591,7 @@ export const VideoExtractionCategory = /*@__PURE__*/ S.suspend(() =>
   identifier: "VideoExtractionCategory",
 }) as any as S.Schema<VideoExtractionCategory>;
 export interface VideoBoundingBox {
-  state: State;
+  state: State | (string & {});
 }
 export const VideoBoundingBox = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ state: State }),
@@ -603,13 +616,15 @@ export type VideoStandardGenerativeFieldType =
   | "CHAPTER_SUMMARY";
 export const VideoStandardGenerativeFieldType = /*@__PURE__*/ S.String;
 
-export type VideoStandardGenerativeFieldTypes =
-  VideoStandardGenerativeFieldType[];
+export type VideoStandardGenerativeFieldTypes = (
+  | VideoStandardGenerativeFieldType
+  | (string & {})
+)[];
 export const VideoStandardGenerativeFieldTypes = /*@__PURE__*/ S.Array(
   VideoStandardGenerativeFieldType,
 );
 export interface VideoStandardGenerativeField {
-  state: State;
+  state: State | (string & {});
   types?: VideoStandardGenerativeFieldType[];
 }
 export const VideoStandardGenerativeField = /*@__PURE__*/ S.suspend(() =>
@@ -638,12 +653,15 @@ export type AudioExtractionCategoryType =
   | "TOPIC_CONTENT_MODERATION";
 export const AudioExtractionCategoryType = /*@__PURE__*/ S.String;
 
-export type AudioExtractionCategoryTypes = AudioExtractionCategoryType[];
+export type AudioExtractionCategoryTypes = (
+  | AudioExtractionCategoryType
+  | (string & {})
+)[];
 export const AudioExtractionCategoryTypes = /*@__PURE__*/ S.Array(
   AudioExtractionCategoryType,
 );
 export interface SpeakerLabelingConfiguration {
-  state: State;
+  state: State | (string & {});
 }
 export const SpeakerLabelingConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ state: State }),
@@ -651,7 +669,7 @@ export const SpeakerLabelingConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "SpeakerLabelingConfiguration",
 }) as any as S.Schema<SpeakerLabelingConfiguration>;
 export interface ChannelLabelingConfiguration {
-  state: State;
+  state: State | (string & {});
 }
 export const ChannelLabelingConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ state: State }),
@@ -679,7 +697,7 @@ export const AudioExtractionCategoryTypeConfiguration = /*@__PURE__*/ S.suspend(
   identifier: "AudioExtractionCategoryTypeConfiguration",
 }) as any as S.Schema<AudioExtractionCategoryTypeConfiguration>;
 export interface AudioExtractionCategory {
-  state: State;
+  state: State | (string & {});
   types?: AudioExtractionCategoryType[];
   typeConfiguration?: AudioExtractionCategoryTypeConfiguration;
 }
@@ -706,13 +724,15 @@ export type AudioStandardGenerativeFieldType =
   | "TOPIC_SUMMARY";
 export const AudioStandardGenerativeFieldType = /*@__PURE__*/ S.String;
 
-export type AudioStandardGenerativeFieldTypes =
-  AudioStandardGenerativeFieldType[];
+export type AudioStandardGenerativeFieldTypes = (
+  | AudioStandardGenerativeFieldType
+  | (string & {})
+)[];
 export const AudioStandardGenerativeFieldTypes = /*@__PURE__*/ S.Array(
   AudioStandardGenerativeFieldType,
 );
 export interface AudioStandardGenerativeField {
-  state: State;
+  state: State | (string & {});
   types?: AudioStandardGenerativeFieldType[];
 }
 export const AudioStandardGenerativeField = /*@__PURE__*/ S.suspend(() =>
@@ -754,7 +774,7 @@ export const StandardOutputConfiguration = /*@__PURE__*/ S.suspend(() =>
 export interface BlueprintItem {
   blueprintArn: string;
   blueprintVersion?: string;
-  blueprintStage?: BlueprintStage;
+  blueprintStage?: BlueprintStage | (string & {});
 }
 export const BlueprintItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -788,7 +808,7 @@ export const CustomOutputConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "CustomOutputConfiguration",
 }) as any as S.Schema<CustomOutputConfiguration>;
 export interface SplitterConfiguration {
-  state?: State;
+  state?: State | (string & {});
 }
 export const SplitterConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ state: S.optional(State) }),
@@ -796,7 +816,7 @@ export const SplitterConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "SplitterConfiguration",
 }) as any as S.Schema<SplitterConfiguration>;
 export interface ModalityProcessingConfiguration {
-  state?: State;
+  state?: State | (string & {});
 }
 export const ModalityProcessingConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ state: S.optional(State) }),
@@ -811,7 +831,10 @@ export const SensitiveDataDetectionMode = /*@__PURE__*/ S.String;
 export type SensitiveDataDetectionScopeType = "STANDARD" | "CUSTOM";
 export const SensitiveDataDetectionScopeType = /*@__PURE__*/ S.String;
 
-export type SensitiveDataDetectionScope = SensitiveDataDetectionScopeType[];
+export type SensitiveDataDetectionScope = (
+  | SensitiveDataDetectionScopeType
+  | (string & {})
+)[];
 export const SensitiveDataDetectionScope = /*@__PURE__*/ S.Array(
   SensitiveDataDetectionScopeType,
 );
@@ -850,14 +873,14 @@ export type PIIEntityType =
   | "UK_UNIQUE_TAXPAYER_REFERENCE_NUMBER";
 export const PIIEntityType = /*@__PURE__*/ S.String;
 
-export type PIIEntityTypes = PIIEntityType[];
+export type PIIEntityTypes = (PIIEntityType | (string & {}))[];
 export const PIIEntityTypes = /*@__PURE__*/ S.Array(PIIEntityType);
 export type PIIRedactionMaskMode = "PII" | "ENTITY_TYPE";
 export const PIIRedactionMaskMode = /*@__PURE__*/ S.String;
 
 export interface PIIEntitiesConfiguration {
   piiEntityTypes?: PIIEntityType[];
-  redactionMaskMode?: PIIRedactionMaskMode;
+  redactionMaskMode?: PIIRedactionMaskMode | (string & {});
 }
 export const PIIEntitiesConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -868,7 +891,7 @@ export const PIIEntitiesConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "PIIEntitiesConfiguration",
 }) as any as S.Schema<PIIEntitiesConfiguration>;
 export interface SensitiveDataConfiguration {
-  detectionMode: SensitiveDataDetectionMode;
+  detectionMode: SensitiveDataDetectionMode | (string & {});
   detectionScope?: SensitiveDataDetectionScopeType[];
   piiEntitiesConfiguration?: PIIEntitiesConfiguration;
 }
@@ -933,14 +956,14 @@ export type Language =
   | "HK";
 export const Language = /*@__PURE__*/ S.String;
 
-export type AudioInputLanguages = Language[];
+export type AudioInputLanguages = (Language | (string & {}))[];
 export const AudioInputLanguages = /*@__PURE__*/ S.Array(Language);
 export type AudioGenerativeOutputLanguage = "DEFAULT" | "EN";
 export const AudioGenerativeOutputLanguage = /*@__PURE__*/ S.String;
 
 export interface AudioLanguageConfiguration {
   inputLanguages?: Language[];
-  generativeOutputLanguage?: AudioGenerativeOutputLanguage;
+  generativeOutputLanguage?: AudioGenerativeOutputLanguage | (string & {});
   identifyMultipleLanguages?: boolean;
 }
 export const AudioLanguageConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -970,10 +993,10 @@ export type DesiredModality = "IMAGE" | "DOCUMENT" | "AUDIO" | "VIDEO";
 export const DesiredModality = /*@__PURE__*/ S.String;
 
 export interface ModalityRoutingConfiguration {
-  jpeg?: DesiredModality;
-  png?: DesiredModality;
-  mp4?: DesiredModality;
-  mov?: DesiredModality;
+  jpeg?: DesiredModality | (string & {});
+  png?: DesiredModality | (string & {});
+  mp4?: DesiredModality | (string & {});
+  mov?: DesiredModality | (string & {});
 }
 export const ModalityRoutingConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

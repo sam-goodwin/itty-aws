@@ -231,7 +231,7 @@ export const BatchExportsBackfillsListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BatchExportsBackfillsListRequest>;
 
 export type PaginatedBatchExportBackfillListResultsList =
-  ReadonlyArray<BatchExportBackfill>;
+  Array<BatchExportBackfill>;
 export const PaginatedBatchExportBackfillListResultsList =
   /*@__PURE__*/ S.Array(
     BatchExportBackfill,
@@ -348,9 +348,9 @@ export interface AzureBlobDestinationConfig {
   /** Object key prefix applied to every exported file. */
   prefix?: string;
   /** Optional compression codec applied to exported files. Valid codecs depend on file_format. * `brotli` - brotli * `gzip` - gzip * `lz4` - lz4 * `snappy` - snappy * `zstd` - zstd */
-  compression?: CompressionEnum | null;
+  compression?: CompressionEnum | (string & {}) | null;
   /** File format used for exported objects. * `JSONLines` - JSONLines * `Parquet` - Parquet */
-  file_format?: FileFormatEnum;
+  file_format?: FileFormatEnum | (string & {});
   /** If set, rolls to a new file once the current file exceeds this size in MB. */
   max_file_size_mb?: number | null;
 }
@@ -479,9 +479,9 @@ export interface AwsS3DestinationConfig {
   /** Object key prefix applied to every exported file. */
   prefix: string;
   /** Optional compression codec applied to exported files. Valid codecs depend on file_format. * `brotli` - brotli * `gzip` - gzip * `lz4` - lz4 * `snappy` - snappy * `zstd` - zstd */
-  compression?: CompressionEnum | null;
+  compression?: CompressionEnum | (string & {}) | null;
   /** File format used for exported objects. * `Parquet` - Parquet * `JSONLines` - JSONLines */
-  file_format?: FileFormatEnum;
+  file_format?: FileFormatEnum | (string & {});
   /** If set, rolls to a new file once the current file exceeds this size in MB. */
   max_file_size_mb?: number | null;
   /** Optional S3 server-side encryption algorithm (e.g. 'AES256' or 'aws:kms'). */
@@ -534,9 +534,9 @@ export interface S3CompatibleDestinationConfig {
   /** Object key prefix applied to every exported file. */
   prefix: string;
   /** Optional compression codec applied to exported files. Valid codecs depend on file_format. * `brotli` - brotli * `gzip` - gzip * `lz4` - lz4 * `snappy` - snappy * `zstd` - zstd */
-  compression?: CompressionEnum | null;
+  compression?: CompressionEnum | (string & {}) | null;
   /** File format used for exported objects. * `Parquet` - Parquet * `JSONLines` - JSONLines */
-  file_format?: FileFormatEnum;
+  file_format?: FileFormatEnum | (string & {});
   /** If set, rolls to a new file once the current file exceeds this size in MB. */
   max_file_size_mb?: number | null;
   /** Use virtual-hosted-style addressing rather than path-style. */
@@ -772,9 +772,9 @@ export interface BatchExportDestinationConfig {
   /** Object key prefix applied to every exported file. */
   prefix?: string;
   /** Optional compression codec applied to exported files. Valid codecs depend on file_format. * `brotli` - brotli * `gzip` - gzip * `lz4` - lz4 * `snappy` - snappy * `zstd` - zstd */
-  compression?: CompressionEnum | null;
+  compression?: CompressionEnum | (string & {}) | null;
   /** File format used for exported objects. * `JSONLines` - JSONLines * `Parquet` - Parquet */
-  file_format?: FileFormatEnum;
+  file_format?: FileFormatEnum | (string & {});
   /** If set, rolls to a new file once the current file exceeds this size in MB. */
   max_file_size_mb?: number | null;
   /** BigQuery dataset ID to write to. */
@@ -921,7 +921,7 @@ export const BatchExportRun = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BatchExportRun" }) as any as S.Schema<BatchExportRun>;
 
 /** The 10 most recent runs of this batch export, ordered newest first. */
-export type BatchExportOutputLatestRunsList = ReadonlyArray<BatchExportRun>;
+export type BatchExportOutputLatestRunsList = Array<BatchExportRun>;
 export const BatchExportOutputLatestRunsList = /*@__PURE__*/ S.Array(
   BatchExportRun,
 ) as any as S.Schema<BatchExportOutputLatestRunsList>;
@@ -1644,7 +1644,7 @@ export const BatchExportsListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BatchExportsListRequest>;
 
 export type PaginatedBatchExportListOutputResultsList =
-  ReadonlyArray<BatchExportOutput>;
+  Array<BatchExportOutput>;
 export const PaginatedBatchExportListOutputResultsList = /*@__PURE__*/ S.Array(
   BatchExportOutput,
 ) as any as S.Schema<PaginatedBatchExportListOutputResultsList>;
@@ -1969,8 +1969,7 @@ export const BatchExportsRunsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "BatchExportsRunsListRequest",
 }) as any as S.Schema<BatchExportsRunsListRequest>;
 
-export type PaginatedBatchExportRunListResultsList =
-  ReadonlyArray<BatchExportRun>;
+export type PaginatedBatchExportRunListResultsList = Array<BatchExportRun>;
 export const PaginatedBatchExportRunListResultsList = /*@__PURE__*/ S.Array(
   BatchExportRun,
 ) as any as S.Schema<PaginatedBatchExportRunListResultsList>;
@@ -2444,14 +2443,14 @@ export type FileDownloadBatchExportOnDemandModelEnum =
 export const FileDownloadBatchExportOnDemandModelEnum = /*@__PURE__*/ S.String;
 
 export type FileDownloadBatchExportsCancelCreateRequestIncludeList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const FileDownloadBatchExportsCancelCreateRequestIncludeList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<FileDownloadBatchExportsCancelCreateRequestIncludeList>;
 
 export type FileDownloadBatchExportsCancelCreateRequestExcludeList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const FileDownloadBatchExportsCancelCreateRequestExcludeList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2505,12 +2504,12 @@ export const FileDownloadBatchExportsCancelCreateResponse =
 export type FileDownloadEventsRequestModelEnum = "events";
 export const FileDownloadEventsRequestModelEnum = /*@__PURE__*/ S.String;
 
-export type FileDownloadEventsRequestIncludeList = ReadonlyArray<string>;
+export type FileDownloadEventsRequestIncludeList = Array<string>;
 export const FileDownloadEventsRequestIncludeList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<FileDownloadEventsRequestIncludeList>;
 
-export type FileDownloadEventsRequestExcludeList = ReadonlyArray<string>;
+export type FileDownloadEventsRequestExcludeList = Array<string>;
 export const FileDownloadEventsRequestExcludeList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<FileDownloadEventsRequestExcludeList>;
@@ -2706,7 +2705,7 @@ export const ListOutput = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ListOutput" }) as any as S.Schema<ListOutput>;
 
-export type PaginatedListOutputListResultsList = ReadonlyArray<ListOutput>;
+export type PaginatedListOutputListResultsList = Array<ListOutput>;
 export const PaginatedListOutputListResultsList = /*@__PURE__*/ S.Array(
   ListOutput,
 ) as any as S.Schema<PaginatedListOutputListResultsList>;
@@ -2819,7 +2818,7 @@ export const RetrieveBasicOutput = /*@__PURE__*/ S.suspend(() =>
 export type RetrieveCompletedOutputStatusEnum = "Completed";
 export const RetrieveCompletedOutputStatusEnum = /*@__PURE__*/ S.String;
 
-export type RetrieveCompletedOutputFilesList = ReadonlyArray<string>;
+export type RetrieveCompletedOutputFilesList = Array<string>;
 export const RetrieveCompletedOutputFilesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RetrieveCompletedOutputFilesList>;

@@ -234,7 +234,7 @@ export type SourceAuthType = "OAUTH" | "CODECONNECTIONS" | "SECRETS_MANAGER";
 export const SourceAuthType = /*@__PURE__*/ S.String;
 
 export interface SourceAuth {
-  type: SourceAuthType;
+  type: SourceAuthType | (string & {});
   resource?: string;
 }
 export const SourceAuth = /*@__PURE__*/ S.suspend(() =>
@@ -250,7 +250,7 @@ export const BuildStatusConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "BuildStatusConfig",
 }) as any as S.Schema<BuildStatusConfig>;
 export interface ProjectSource {
-  type: SourceType;
+  type: SourceType | (string & {});
   location?: string;
   gitCloneDepth?: number;
   gitSubmodulesConfig?: GitSubmodulesConfig;
@@ -323,10 +323,10 @@ export type CacheMode =
   | "LOCAL_CUSTOM_CACHE";
 export const CacheMode = /*@__PURE__*/ S.String;
 
-export type ProjectCacheModes = CacheMode[];
+export type ProjectCacheModes = (CacheMode | (string & {}))[];
 export const ProjectCacheModes = /*@__PURE__*/ S.Array(CacheMode);
 export interface ProjectCache {
-  type: CacheType;
+  type: CacheType | (string & {});
   location?: string;
   modes?: CacheMode[];
   cacheNamespace?: string;
@@ -376,7 +376,7 @@ export interface ComputeConfiguration {
   vCpu?: number;
   memory?: number;
   disk?: number;
-  machineType?: MachineType;
+  machineType?: MachineType | (string & {});
   instanceType?: string;
 }
 export const ComputeConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -405,7 +405,7 @@ export const EnvironmentVariableType = /*@__PURE__*/ S.String;
 export interface EnvironmentVariable {
   name: string;
   value: string;
-  type?: EnvironmentVariableType;
+  type?: EnvironmentVariableType | (string & {});
 }
 export const EnvironmentVariable = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -423,7 +423,7 @@ export const CredentialProviderType = /*@__PURE__*/ S.String;
 
 export interface RegistryCredential {
   credential: string;
-  credentialProvider: CredentialProviderType;
+  credentialProvider: CredentialProviderType | (string & {});
 }
 export const RegistryCredential = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -448,7 +448,7 @@ export const DockerServerStatus = /*@__PURE__*/ S.suspend(() =>
   identifier: "DockerServerStatus",
 }) as any as S.Schema<DockerServerStatus>;
 export interface DockerServer {
-  computeType: ComputeType;
+  computeType: ComputeType | (string & {});
   securityGroupIds?: string[];
   status?: DockerServerStatus;
 }
@@ -460,16 +460,16 @@ export const DockerServer = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DockerServer" }) as any as S.Schema<DockerServer>;
 export interface ProjectEnvironment {
-  type: EnvironmentType;
+  type: EnvironmentType | (string & {});
   image: string;
-  computeType: ComputeType;
+  computeType: ComputeType | (string & {});
   computeConfiguration?: ComputeConfiguration;
   fleet?: ProjectFleet;
   environmentVariables?: EnvironmentVariable[];
   privilegedMode?: boolean;
   certificate?: string;
   registryCredential?: RegistryCredential;
-  imagePullCredentialsType?: ImagePullCredentialsType;
+  imagePullCredentialsType?: ImagePullCredentialsType | (string & {});
   dockerServer?: DockerServer;
 }
 export const ProjectEnvironment = /*@__PURE__*/ S.suspend(() =>
@@ -493,7 +493,7 @@ export type LogsConfigStatusType = "ENABLED" | "DISABLED";
 export const LogsConfigStatusType = /*@__PURE__*/ S.String;
 
 export interface CloudWatchLogsConfig {
-  status: LogsConfigStatusType;
+  status: LogsConfigStatusType | (string & {});
   groupName?: string;
   streamName?: string;
 }
@@ -507,10 +507,10 @@ export const CloudWatchLogsConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "CloudWatchLogsConfig",
 }) as any as S.Schema<CloudWatchLogsConfig>;
 export interface S3LogsConfig {
-  status: LogsConfigStatusType;
+  status: LogsConfigStatusType | (string & {});
   location?: string;
   encryptionDisabled?: boolean;
-  bucketOwnerAccess?: BucketOwnerAccess;
+  bucketOwnerAccess?: BucketOwnerAccess | (string & {});
 }
 export const S3LogsConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -548,7 +548,7 @@ export type FileSystemType = "EFS";
 export const FileSystemType = /*@__PURE__*/ S.String;
 
 export interface ProjectFileSystemLocation {
-  type?: FileSystemType;
+  type?: FileSystemType | (string & {});
   location?: string;
   mountPoint?: string;
   identifier?: string;
@@ -597,7 +597,7 @@ export interface ProjectBuildBatchConfig {
   combineArtifacts?: boolean;
   restrictions?: BatchRestrictions;
   timeoutInMins?: number;
-  batchReportMode?: BatchReportModeType;
+  batchReportMode?: BatchReportModeType | (string & {});
 }
 export const ProjectBuildBatchConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1075,7 +1075,7 @@ export type FleetScalingMetricType = "FLEET_UTILIZATION_RATE";
 export const FleetScalingMetricType = /*@__PURE__*/ S.String;
 
 export interface TargetTrackingScalingConfiguration {
-  metricType?: FleetScalingMetricType;
+  metricType?: FleetScalingMetricType | (string & {});
   targetValue?: number;
 }
 export const TargetTrackingScalingConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -1124,8 +1124,8 @@ export const FleetProxyRuleEffectType = /*@__PURE__*/ S.String;
 export type FleetProxyRuleEntities = string[];
 export const FleetProxyRuleEntities = /*@__PURE__*/ S.Array(S.String);
 export interface FleetProxyRule {
-  type: FleetProxyRuleType;
-  effect: FleetProxyRuleEffectType;
+  type: FleetProxyRuleType | (string & {});
+  effect: FleetProxyRuleEffectType | (string & {});
   entities: string[];
 }
 export const FleetProxyRule = /*@__PURE__*/ S.suspend(() =>
@@ -1138,7 +1138,7 @@ export const FleetProxyRule = /*@__PURE__*/ S.suspend(() =>
 export type FleetProxyRules = FleetProxyRule[];
 export const FleetProxyRules = /*@__PURE__*/ S.Array(FleetProxyRule);
 export interface ProxyConfiguration {
-  defaultBehavior?: FleetProxyRuleBehavior;
+  defaultBehavior?: FleetProxyRuleBehavior | (string & {});
   orderedProxyRules?: FleetProxyRule[];
 }
 export const ProxyConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -1235,16 +1235,16 @@ export type ArtifactPackaging = "NONE" | "ZIP";
 export const ArtifactPackaging = /*@__PURE__*/ S.String;
 
 export interface ProjectArtifacts {
-  type: ArtifactsType;
+  type: ArtifactsType | (string & {});
   location?: string;
   path?: string;
-  namespaceType?: ArtifactNamespace;
+  namespaceType?: ArtifactNamespace | (string & {});
   name?: string;
-  packaging?: ArtifactPackaging;
+  packaging?: ArtifactPackaging | (string & {});
   overrideArtifactName?: boolean;
   encryptionDisabled?: boolean;
   artifactIdentifier?: string;
-  bucketOwnerAccess?: BucketOwnerAccess;
+  bucketOwnerAccess?: BucketOwnerAccess | (string & {});
 }
 export const ProjectArtifacts = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1281,7 +1281,7 @@ export type WebhookFilterType =
 export const WebhookFilterType = /*@__PURE__*/ S.String;
 
 export interface WebhookFilter {
-  type: WebhookFilterType;
+  type: WebhookFilterType | (string & {});
   pattern: string;
   excludeMatchedPattern?: boolean;
 }
@@ -1311,7 +1311,7 @@ export const WebhookScopeType = /*@__PURE__*/ S.String;
 export interface ScopeConfiguration {
   name: string;
   domain?: string;
-  scope: WebhookScopeType;
+  scope: WebhookScopeType | (string & {});
 }
 export const ScopeConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1352,12 +1352,15 @@ export type PullRequestBuildApproverRole =
   | "BITBUCKET_ADMIN";
 export const PullRequestBuildApproverRole = /*@__PURE__*/ S.String;
 
-export type PullRequestBuildApproverRoles = PullRequestBuildApproverRole[];
+export type PullRequestBuildApproverRoles = (
+  | PullRequestBuildApproverRole
+  | (string & {})
+)[];
 export const PullRequestBuildApproverRoles = /*@__PURE__*/ S.Array(
   PullRequestBuildApproverRole,
 );
 export interface PullRequestBuildPolicy {
-  requiresCommentApproval: PullRequestBuildCommentApproval;
+  requiresCommentApproval: PullRequestBuildCommentApproval | (string & {});
   approverRoles?: PullRequestBuildApproverRole[];
 }
 export const PullRequestBuildPolicy = /*@__PURE__*/ S.suspend(() =>
@@ -1517,7 +1520,7 @@ export interface S3ReportExportConfig {
   bucket?: string;
   bucketOwner?: string;
   path?: string;
-  packaging?: ReportPackagingType;
+  packaging?: ReportPackagingType | (string & {});
   encryptionKey?: string;
   encryptionDisabled?: boolean;
 }
@@ -1534,7 +1537,7 @@ export const S3ReportExportConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "S3ReportExportConfig",
 }) as any as S.Schema<S3ReportExportConfig>;
 export interface ReportExportConfig {
-  exportConfigType?: ReportExportConfigType;
+  exportConfigType?: ReportExportConfigType | (string & {});
   s3Destination?: S3ReportExportConfig;
 }
 export const ReportExportConfig = /*@__PURE__*/ S.suspend(() =>

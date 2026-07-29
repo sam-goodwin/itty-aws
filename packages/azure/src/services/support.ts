@@ -110,7 +110,7 @@ export const MessageProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** List of chat transcript communication resources. */
 export type ChatTranscriptDetailsPropertiesMessagesList =
-  ReadonlyArray<MessageProperties>;
+  Array<MessageProperties>;
 export const ChatTranscriptDetailsPropertiesMessagesList =
   /*@__PURE__*/ S.Array(
     MessageProperties,
@@ -204,8 +204,7 @@ export const ChatTranscriptDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ChatTranscriptDetails>;
 
 /** [Placeholder] Description for value property */
-export type ChatTranscriptsListResultValueList =
-  ReadonlyArray<ChatTranscriptDetails>;
+export type ChatTranscriptsListResultValueList = Array<ChatTranscriptDetails>;
 export const ChatTranscriptsListResultValueList = /*@__PURE__*/ S.Array(
   ChatTranscriptDetails,
 ) as any as S.Schema<ChatTranscriptsListResultValueList>;
@@ -554,8 +553,7 @@ export const CommunicationDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CommunicationDetails>;
 
 /** [Placeholder] Description for value property */
-export type CommunicationsListResultValueList =
-  ReadonlyArray<CommunicationDetails>;
+export type CommunicationsListResultValueList = Array<CommunicationDetails>;
 export const CommunicationsListResultValueList = /*@__PURE__*/ S.Array(
   CommunicationDetails,
 ) as any as S.Schema<CommunicationsListResultValueList>;
@@ -915,7 +913,7 @@ export const FileDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FileDetails" }) as any as S.Schema<FileDetails>;
 
 /** [Placeholder] Description for value property */
-export type FilesListResultValueList = ReadonlyArray<FileDetails>;
+export type FilesListResultValueList = Array<FileDetails>;
 export const FilesListResultValueList = /*@__PURE__*/ S.Array(
   FileDetails,
 ) as any as S.Schema<FilesListResultValueList>;
@@ -1429,7 +1427,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = ReadonlyArray<Operation>;
+export type OperationsListResponseValueList = Array<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;
@@ -1479,7 +1477,7 @@ export const ProblemClassificationsClassifyProblemsRequest =
   }) as any as S.Schema<ProblemClassificationsClassifyProblemsRequest>;
 
 /** List of applicable ARM resource types for this service. */
-export type ClassificationServiceResourceTypesList = ReadonlyArray<string>;
+export type ClassificationServiceResourceTypesList = Array<string>;
 export const ClassificationServiceResourceTypesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ClassificationServiceResourceTypesList>;
@@ -1537,7 +1535,7 @@ export const ProblemClassificationsClassificationResult =
 
 /** Set of problem classification objects classified. */
 export type ProblemClassificationsClassificationOutputProblemClassificationResultsList =
-  ReadonlyArray<ProblemClassificationsClassificationResult>;
+  Array<ProblemClassificationsClassificationResult>;
 export const ProblemClassificationsClassificationOutputProblemClassificationResultsList =
   /*@__PURE__*/ S.Array(
     ProblemClassificationsClassificationResult,
@@ -1599,7 +1597,7 @@ export const SecondaryConsentEnabled = /*@__PURE__*/ S.suspend(() =>
 
 /** This property indicates whether secondary consent is present for problem classification */
 export type ProblemClassificationPropertiesSecondaryConsentEnabledList =
-  ReadonlyArray<SecondaryConsentEnabled>;
+  Array<SecondaryConsentEnabled>;
 export const ProblemClassificationPropertiesSecondaryConsentEnabledList =
   /*@__PURE__*/ S.Array(
     SecondaryConsentEnabled,
@@ -1693,7 +1691,7 @@ export const ProblemClassification = /*@__PURE__*/ S.suspend(() =>
 
 /** List of ProblemClassification resources. */
 export type ProblemClassificationsListResultValueList =
-  ReadonlyArray<ProblemClassification>;
+  Array<ProblemClassification>;
 export const ProblemClassificationsListResultValueList = /*@__PURE__*/ S.Array(
   ProblemClassification,
 ) as any as S.Schema<ProblemClassificationsListResultValueList>;
@@ -1770,8 +1768,7 @@ export const ServiceClassificationsClassifyServicesRequest =
   }) as any as S.Schema<ServiceClassificationsClassifyServicesRequest>;
 
 /** List of applicable ARM resource types for this service. */
-export type ServiceClassificationAnswerResourceTypesList =
-  ReadonlyArray<string>;
+export type ServiceClassificationAnswerResourceTypesList = Array<string>;
 export const ServiceClassificationAnswerResourceTypesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1801,7 +1798,7 @@ export const ServiceClassificationAnswer = /*@__PURE__*/ S.suspend(() =>
 
 /** Set of problem classification objects classified. */
 export type ServiceClassificationOutputServiceClassificationResultsList =
-  ReadonlyArray<ServiceClassificationAnswer>;
+  Array<ServiceClassificationAnswer>;
 export const ServiceClassificationOutputServiceClassificationResultsList =
   /*@__PURE__*/ S.Array(
     ServiceClassificationAnswer,
@@ -1868,7 +1865,7 @@ export const ServicesGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServicesGetRequest>;
 
 /** ARM Resource types. */
-export type ServicePropertiesResourceTypesList = ReadonlyArray<string>;
+export type ServicePropertiesResourceTypesList = Array<string>;
 export const ServicePropertiesResourceTypesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ServicePropertiesResourceTypesList>;
@@ -1951,7 +1948,7 @@ export const Service = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Service" }) as any as S.Schema<Service>;
 
 /** List of Service resources. */
-export type ServicesListResultValueList = ReadonlyArray<Service>;
+export type ServicesListResultValueList = Array<Service>;
 export const ServicesListResultValueList = /*@__PURE__*/ S.Array(
   Service,
 ) as any as S.Schema<ServicesListResultValueList>;
@@ -2015,7 +2012,7 @@ export type PreferredContactMethod = "email" | "phone";
 export const PreferredContactMethod = /*@__PURE__*/ S.String;
 
 /** Additional email addresses listed will be copied on any correspondence about the support ticket. */
-export type ContactProfileAdditionalEmailAddressesList = ReadonlyArray<string>;
+export type ContactProfileAdditionalEmailAddressesList = Array<string>;
 export const ContactProfileAdditionalEmailAddressesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ContactProfileAdditionalEmailAddressesList>;
@@ -2027,7 +2024,7 @@ export interface ContactProfile {
   /** Last name. */
   lastName: string;
   /** Preferred contact method. */
-  preferredContactMethod: PreferredContactMethod;
+  preferredContactMethod: PreferredContactMethod | (string & {});
   /** Primary email address. */
   primaryEmailAddress: string;
   /** Additional email addresses listed will be copied on any correspondence about the support ticket. */
@@ -2104,7 +2101,7 @@ export const QuotaChangeRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** This property is required for providing the region and new quota limits. */
 export type QuotaTicketDetailsQuotaChangeRequestsList =
-  ReadonlyArray<QuotaChangeRequest>;
+  Array<QuotaChangeRequest>;
 export const QuotaTicketDetailsQuotaChangeRequestsList = /*@__PURE__*/ S.Array(
   QuotaChangeRequest,
 ) as any as S.Schema<QuotaTicketDetailsQuotaChangeRequestsList>;
@@ -2135,7 +2132,7 @@ export const UserConsent = /*@__PURE__*/ S.String;
 /** This property indicates secondary consent for the support ticket. */
 export interface SecondaryConsent {
   /** User consent value provided */
-  userConsent?: UserConsent;
+  userConsent?: UserConsent | (string & {});
   /** The service name for which the secondary consent is being provided. The value needs to be retrieved from the Problem Classification API response. */
   type?: string;
 }
@@ -2150,7 +2147,7 @@ export const SecondaryConsent = /*@__PURE__*/ S.suspend(() =>
 
 /** This property indicates secondary consents for the support ticket */
 export type SupportTicketDetailsPropertiesInputSecondaryConsentList =
-  ReadonlyArray<SecondaryConsent>;
+  Array<SecondaryConsent>;
 export const SupportTicketDetailsPropertiesInputSecondaryConsentList =
   /*@__PURE__*/ S.Array(
     SecondaryConsent,
@@ -2166,8 +2163,9 @@ export type EscalationStatus =
 export const EscalationStatus = /*@__PURE__*/ S.String;
 
 /** An array containing the allowed severities for direct connect escalation. */
-export type DirectConnectEscalationAllowedSeveritiesList =
-  ReadonlyArray<SeverityLevel>;
+export type DirectConnectEscalationAllowedSeveritiesList = Array<
+  SeverityLevel | (string & {})
+>;
 export const DirectConnectEscalationAllowedSeveritiesList =
   /*@__PURE__*/ S.Array(
     SeverityLevel,
@@ -2176,7 +2174,7 @@ export const DirectConnectEscalationAllowedSeveritiesList =
 /** Direct Connect Escalation details for a support ticket. */
 export interface DirectConnectEscalation {
   /** Status of Direct Connect Escalation. */
-  azureEEStatus?: EscalationStatus;
+  azureEEStatus?: EscalationStatus | (string & {});
   /** An array containing the allowed severities for direct connect escalation. */
   allowedSeverities?: DirectConnectEscalationAllowedSeveritiesList;
   /** Reason for escalation / business impact. */
@@ -2330,7 +2328,7 @@ export const IsTemporaryTicket = /*@__PURE__*/ S.String;
 
 /** This property indicates secondary consents for the support ticket */
 export type SupportTicketDetailsPropertiesSecondaryConsentList =
-  ReadonlyArray<SecondaryConsent>;
+  Array<SecondaryConsent>;
 export const SupportTicketDetailsPropertiesSecondaryConsentList =
   /*@__PURE__*/ S.Array(
     SecondaryConsent,
@@ -2570,8 +2568,7 @@ export const SupportTicketDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SupportTicketDetails>;
 
 /** [Placeholder] Description for value property */
-export type SupportTicketsListResultValueList =
-  ReadonlyArray<SupportTicketDetails>;
+export type SupportTicketsListResultValueList = Array<SupportTicketDetails>;
 export const SupportTicketsListResultValueList = /*@__PURE__*/ S.Array(
   SupportTicketDetails,
 ) as any as S.Schema<SupportTicketsListResultValueList>;
@@ -2736,8 +2733,7 @@ export type Status = "open" | "closed";
 export const Status = /*@__PURE__*/ S.String;
 
 /** Email addresses listed will be copied on any correspondence about the support ticket. */
-export type UpdateContactProfileAdditionalEmailAddressesList =
-  ReadonlyArray<string>;
+export type UpdateContactProfileAdditionalEmailAddressesList = Array<string>;
 export const UpdateContactProfileAdditionalEmailAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2784,7 +2780,7 @@ export const UpdateContactProfile = /*@__PURE__*/ S.suspend(() =>
 
 /** This property indicates secondary consents for the support ticket */
 export type SupportTicketsNoSubscriptionUpdateRequestSecondaryConsentList =
-  ReadonlyArray<SecondaryConsent>;
+  Array<SecondaryConsent>;
 export const SupportTicketsNoSubscriptionUpdateRequestSecondaryConsentList =
   /*@__PURE__*/ S.Array(
     SecondaryConsent,
@@ -2857,7 +2853,7 @@ export const SupportTicketsNoSubscriptionUpdateResponse =
 
 /** This property indicates secondary consents for the support ticket */
 export type SupportTicketsUpdateRequestSecondaryConsentList =
-  ReadonlyArray<SecondaryConsent>;
+  Array<SecondaryConsent>;
 export const SupportTicketsUpdateRequestSecondaryConsentList =
   /*@__PURE__*/ S.Array(
     SecondaryConsent,

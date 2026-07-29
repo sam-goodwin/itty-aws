@@ -354,7 +354,7 @@ export interface CloudRunConfig {
   /** Whether Cloud Run addon is enabled for this cluster. */
   disabled?: boolean;
   /** Which load balancer type is installed for Cloud Run. */
-  loadBalancerType?: CloudRunConfigLoadBalancerTypeEnum;
+  loadBalancerType?: CloudRunConfigLoadBalancerTypeEnum | (string & {});
 }
 export const CloudRunConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -546,9 +546,9 @@ export interface StatusCondition {
   /** Human-friendly representation of the condition */
   message?: string;
   /** Canonical code of the condition. */
-  canonicalCode?: StatusConditionCanonicalCodeEnum;
+  canonicalCode?: StatusConditionCanonicalCodeEnum | (string & {});
   /** Machine-friendly representation of the condition Deprecated. Use canonical_code instead. */
-  code?: StatusConditionCodeEnum;
+  code?: StatusConditionCodeEnum | (string & {});
 }
 export const StatusCondition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -560,7 +560,7 @@ export const StatusCondition = /*@__PURE__*/ S.suspend(() =>
   identifier: "StatusCondition",
 }) as any as S.Schema<StatusCondition>;
 
-export type StatusConditionList = ReadonlyArray<StatusCondition>;
+export type StatusConditionList = Array<StatusCondition>;
 export const StatusConditionList = /*@__PURE__*/ S.Array(
   StatusCondition,
 ) as any as S.Schema<StatusConditionList>;
@@ -571,7 +571,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -635,12 +635,12 @@ export const Metric = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Metric" }) as any as S.Schema<Metric>;
 
-export type MetricList = ReadonlyArray<Metric>;
+export type MetricList = Array<Metric>;
 export const MetricList = /*@__PURE__*/ S.Array(
   Metric,
 ) as any as S.Schema<MetricList>;
 
-export type OperationProgressList = ReadonlyArray<OperationProgress>;
+export type OperationProgressList = Array<OperationProgress>;
 export const OperationProgressList = /*@__PURE__*/ S.Array(
   S.suspend(() => OperationProgress),
 ) as any as S.Schema<OperationProgressList>;
@@ -745,7 +745,7 @@ export interface NodePoolAutoscaling {
   /** Can this node pool be deleted automatically. */
   autoprovisioned?: boolean;
   /** Location policy used when scaling up a node pool. */
-  locationPolicy?: NodePoolAutoscalingLocationPolicyEnum;
+  locationPolicy?: NodePoolAutoscalingLocationPolicyEnum | (string & {});
   /** Maximum number of nodes in the node pool. Must be greater than or equal to total_min_node_count. There has to be enough quota to scale up the cluster. The total_*_node_count fields are mutually exclusive with the *_node_count fields. */
   totalMaxNodeCount?: number;
   /** Minimum number of nodes for one location in the node pool. Must be greater than or equal to 0 and less than or equal to max_node_count. */
@@ -929,7 +929,7 @@ export type AutopilotCompatibilityIssueIncompatibilityTypeEnum =
 export const AutopilotCompatibilityIssueIncompatibilityTypeEnum =
   /*@__PURE__*/ S.String;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -965,7 +965,7 @@ export const AutopilotCompatibilityIssue = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AutopilotCompatibilityIssue>;
 
 export type AutopilotCompatibilityIssueList =
-  ReadonlyArray<AutopilotCompatibilityIssue>;
+  Array<AutopilotCompatibilityIssue>;
 export const AutopilotCompatibilityIssueList = /*@__PURE__*/ S.Array(
   AutopilotCompatibilityIssue,
 ) as any as S.Schema<AutopilotCompatibilityIssueList>;
@@ -1154,7 +1154,7 @@ export const ManagedOpenTelemetryConfigScopeEnum = /*@__PURE__*/ S.String;
 /** ManagedOpenTelemetryConfig is the configuration for the GKE Managed OpenTelemetry pipeline. */
 export interface ManagedOpenTelemetryConfig {
   /** Scope of the Managed OpenTelemetry pipeline. */
-  scope?: ManagedOpenTelemetryConfigScopeEnum;
+  scope?: ManagedOpenTelemetryConfigScopeEnum | (string & {});
 }
 export const ManagedOpenTelemetryConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1236,7 +1236,7 @@ export const NetworkTierConfigNetworkTierEnum = /*@__PURE__*/ S.String;
 /** NetworkTierConfig contains network tier information. */
 export interface NetworkTierConfig {
   /** Network tier configuration. */
-  networkTier?: NetworkTierConfigNetworkTierEnum;
+  networkTier?: NetworkTierConfigNetworkTierEnum | (string & {});
 }
 export const NetworkTierConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1255,7 +1255,9 @@ export const NetworkPerformanceConfigTotalEgressBandwidthTierEnum =
 /** Configuration of all network bandwidth tiers */
 export interface NetworkPerformanceConfig {
   /** Specifies the total network bandwidth tier for the NodePool. */
-  totalEgressBandwidthTier?: NetworkPerformanceConfigTotalEgressBandwidthTierEnum;
+  totalEgressBandwidthTier?:
+    | NetworkPerformanceConfigTotalEgressBandwidthTierEnum
+    | (string & {});
 }
 export const NetworkPerformanceConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1297,7 +1299,7 @@ export const AdditionalNodeNetworkConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AdditionalNodeNetworkConfig>;
 
 export type AdditionalNodeNetworkConfigList =
-  ReadonlyArray<AdditionalNodeNetworkConfig>;
+  Array<AdditionalNodeNetworkConfig>;
 export const AdditionalNodeNetworkConfigList = /*@__PURE__*/ S.Array(
   AdditionalNodeNetworkConfig,
 ) as any as S.Schema<AdditionalNodeNetworkConfigList>;
@@ -1337,8 +1339,7 @@ export const AdditionalPodNetworkConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "AdditionalPodNetworkConfig",
 }) as any as S.Schema<AdditionalPodNetworkConfig>;
 
-export type AdditionalPodNetworkConfigList =
-  ReadonlyArray<AdditionalPodNetworkConfig>;
+export type AdditionalPodNetworkConfigList = Array<AdditionalPodNetworkConfig>;
 export const AdditionalPodNetworkConfigList = /*@__PURE__*/ S.Array(
   AdditionalPodNetworkConfig,
 ) as any as S.Schema<AdditionalPodNetworkConfigList>;
@@ -1465,7 +1466,7 @@ export interface BlueGreenInfo {
   /** Time to start deleting blue pool to complete blue-green upgrade, in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format. */
   bluePoolDeletionStartTime?: string;
   /** Current blue-green upgrade phase. */
-  phase?: BlueGreenInfoPhaseEnum;
+  phase?: BlueGreenInfoPhaseEnum | (string & {});
   /** The resource URLs of the [managed instance groups] (/compute/docs/instance-groups/creating-groups-of-managed-instances) associated with blue pool. */
   blueInstanceGroupUrls?: StringList;
   /** Version of green pool. */
@@ -1559,7 +1560,7 @@ export interface UpgradeSettings {
   /** The maximum number of nodes that can be simultaneously unavailable during the upgrade process. A node is considered available if its status is Ready. */
   maxUnavailable?: number;
   /** Update strategy of the node pool. */
-  strategy?: UpgradeSettingsStrategyEnum;
+  strategy?: UpgradeSettingsStrategyEnum | (string & {});
 }
 export const UpgradeSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1578,7 +1579,7 @@ export const PlacementPolicyTypeEnum = /*@__PURE__*/ S.String;
 /** PlacementPolicy defines the placement policy used by the node pool. */
 export interface PlacementPolicy {
   /** The type of placement. */
-  type?: PlacementPolicyTypeEnum;
+  type?: PlacementPolicyTypeEnum | (string & {});
   /** Optional. TPU placement topology for pod slice node pool. https://cloud.google.com/tpu/docs/types-topologies#tpu_topologies */
   tpuTopology?: string;
   /** If set, refers to the name of a custom resource policy supplied by the user. The resource policy must be in the same project and region as the node pool. If not found, InvalidArgument error is returned. */
@@ -1657,7 +1658,7 @@ export const NodeKernelModuleLoadingPolicyEnum = /*@__PURE__*/ S.String;
 /** Configuration for kernel module loading on nodes. */
 export interface NodeKernelModuleLoading {
   /** Set the node module loading policy for nodes in the node pool. */
-  policy?: NodeKernelModuleLoadingPolicyEnum;
+  policy?: NodeKernelModuleLoadingPolicyEnum | (string & {});
 }
 export const NodeKernelModuleLoading = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1843,7 +1844,9 @@ export interface LinuxNodeConfig {
   /** Optional. The accurate time configuration for the node pool. */
   accurateTimeConfig?: AccurateTimeConfig;
   /** Optional. Transparent hugepage support for anonymous memory can be entirely disabled (mostly for debugging purposes) or only enabled inside MADV_HUGEPAGE regions (to avoid the risk of consuming more memory resources) or enabled system wide. See https://docs.kernel.org/admin-guide/mm/transhuge.html for more details. */
-  transparentHugepageEnabled?: LinuxNodeConfigTransparentHugepageEnabledEnum;
+  transparentHugepageEnabled?:
+    | LinuxNodeConfigTransparentHugepageEnabledEnum
+    | (string & {});
   /** Optional. Configuration for kernel module loading on nodes. When enabled, the node pool will be provisioned with a Container-Optimized OS image that enforces kernel module signature verification. */
   nodeKernelModuleLoading?: NodeKernelModuleLoading;
   /** Optional. Amounts for 2M and 1G hugepages */
@@ -1855,13 +1858,15 @@ export interface LinuxNodeConfig {
   /** The Linux kernel parameters to be applied to the nodes and all pods running on the nodes. The following parameters are supported. net.core.busy_poll net.core.busy_read net.core.netdev_max_backlog net.core.rmem_max net.core.rmem_default net.core.wmem_default net.core.wmem_max net.core.optmem_max net.core.somaxconn net.ipv4.neigh.default.gc_thresh1 net.ipv4.neigh.default.gc_thresh2 net.ipv4.neigh.default.gc_thresh3 net.ipv4.tcp_rmem net.ipv4.tcp_wmem net.ipv4.tcp_tw_reuse net.ipv4.tcp_mtu_probing net.ipv4.tcp_max_orphans net.ipv4.tcp_max_tw_buckets net.ipv4.tcp_syn_retries net.ipv4.tcp_ecn net.ipv4.tcp_congestion_control net.netfilter.nf_conntrack_max net.netfilter.nf_conntrack_buckets net.netfilter.nf_conntrack_tcp_timeout_close_wait net.netfilter.nf_conntrack_tcp_timeout_time_wait net.netfilter.nf_conntrack_tcp_timeout_established net.netfilter.nf_conntrack_acct kernel.keys.maxkeys kernel.keys.maxbytes kernel.shmmni kernel.shmmax kernel.shmall kernel.core_pattern kernel.perf_event_paranoid kernel.sched_rt_runtime_us kernel.softlockup_panic kernel.yama.ptrace_scope kernel.kptr_restrict kernel.dmesg_restrict kernel.sysrq fs.aio-max-nr fs.file-max fs.inotify.max_user_instances fs.inotify.max_user_watches fs.nr_open vm.dirty_background_ratio vm.dirty_background_bytes vm.dirty_expire_centisecs vm.dirty_ratio vm.dirty_bytes vm.dirty_writeback_centisecs vm.max_map_count vm.overcommit_memory vm.overcommit_ratio vm.vfs_cache_pressure vm.swappiness vm.watermark_scale_factor vm.min_free_kbytes */
   sysctls?: StringMap;
   /** cgroup_mode specifies the cgroup mode to be used on the node. */
-  cgroupMode?: LinuxNodeConfigCgroupModeEnum;
+  cgroupMode?: LinuxNodeConfigCgroupModeEnum | (string & {});
   /** Optional. Allow users to run arbitrary bash script or container on the node. */
   customNodeInit?: CustomNodeInit;
   /** Optional. Controls the configuration for the disk IO scheduler. */
   diskIoScheduler?: DiskIoScheduler;
   /** Optional. Defines the transparent hugepage defrag configuration on the node. VM hugepage allocation can be managed by either limiting defragmentation for delayed allocation or skipping it entirely for immediate allocation only. See https://docs.kernel.org/admin-guide/mm/transhuge.html for more details. */
-  transparentHugepageDefrag?: LinuxNodeConfigTransparentHugepageDefragEnum;
+  transparentHugepageDefrag?:
+    | LinuxNodeConfigTransparentHugepageDefragEnum
+    | (string & {});
 }
 export const LinuxNodeConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1897,7 +1902,7 @@ export const SandboxConfigTypeEnum = /*@__PURE__*/ S.String;
 /** SandboxConfig contains configurations of the sandbox to use for the node. */
 export interface SandboxConfig {
   /** Type of the sandbox to use for the node. */
-  type?: SandboxConfigTypeEnum;
+  type?: SandboxConfigTypeEnum | (string & {});
 }
 export const SandboxConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1920,7 +1925,9 @@ export interface AdvancedMachineFeatures {
   /** The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed. */
   threadsPerCore?: string;
   /** Type of Performance Monitoring Unit (PMU) requested on node pool instances. If unset, PMU will not be available to the node. */
-  performanceMonitoringUnit?: AdvancedMachineFeaturesPerformanceMonitoringUnitEnum;
+  performanceMonitoringUnit?:
+    | AdvancedMachineFeaturesPerformanceMonitoringUnitEnum
+    | (string & {});
 }
 export const AdvancedMachineFeatures = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1945,7 +1952,9 @@ export const ConfidentialNodesConfidentialInstanceTypeEnum =
 /** ConfidentialNodes is configuration for the confidential nodes feature, which makes nodes run on confidential VMs. */
 export interface ConfidentialNodes {
   /** Defines the type of technology used by the confidential node. */
-  confidentialInstanceType?: ConfidentialNodesConfidentialInstanceTypeEnum;
+  confidentialInstanceType?:
+    | ConfidentialNodesConfidentialInstanceTypeEnum
+    | (string & {});
   /** Whether Confidential Nodes feature is enabled. */
   enabled?: boolean;
 }
@@ -1969,7 +1978,7 @@ export const GPUSharingConfigGpuSharingStrategyEnum = /*@__PURE__*/ S.String;
 /** GPUSharingConfig represents the GPU sharing configuration for Hardware Accelerators. */
 export interface GPUSharingConfig {
   /** The type of GPU sharing strategy to enable on the GPU node. */
-  gpuSharingStrategy?: GPUSharingConfigGpuSharingStrategyEnum;
+  gpuSharingStrategy?: GPUSharingConfigGpuSharingStrategyEnum | (string & {});
   /** The max number of containers that can share a physical GPU. */
   maxSharedClientsPerGpu?: string;
 }
@@ -1993,7 +2002,9 @@ export const GPUDriverInstallationConfigGpuDriverVersionEnum =
 /** GPUDriverInstallationConfig specifies the version of GPU driver to be auto installed. */
 export interface GPUDriverInstallationConfig {
   /** Mode for how the GPU driver is installed. */
-  gpuDriverVersion?: GPUDriverInstallationConfigGpuDriverVersionEnum;
+  gpuDriverVersion?:
+    | GPUDriverInstallationConfigGpuDriverVersionEnum
+    | (string & {});
 }
 export const GPUDriverInstallationConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2030,7 +2041,7 @@ export const AcceleratorConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "AcceleratorConfig",
 }) as any as S.Schema<AcceleratorConfig>;
 
-export type AcceleratorConfigList = ReadonlyArray<AcceleratorConfig>;
+export type AcceleratorConfigList = Array<AcceleratorConfig>;
 export const AcceleratorConfigList = /*@__PURE__*/ S.Array(
   AcceleratorConfig,
 ) as any as S.Schema<AcceleratorConfigList>;
@@ -2061,7 +2072,7 @@ export interface NodeAffinity {
   /** Key for NodeAffinity. */
   key?: string;
   /** Operator for NodeAffinity. */
-  operator?: NodeAffinityOperatorEnum;
+  operator?: NodeAffinityOperatorEnum | (string & {});
 }
 export const NodeAffinity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2071,7 +2082,7 @@ export const NodeAffinity = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "NodeAffinity" }) as any as S.Schema<NodeAffinity>;
 
-export type NodeAffinityList = ReadonlyArray<NodeAffinity>;
+export type NodeAffinityList = Array<NodeAffinity>;
 export const NodeAffinityList = /*@__PURE__*/ S.Array(
   NodeAffinity,
 ) as any as S.Schema<NodeAffinityList>;
@@ -2124,7 +2135,7 @@ export const CertificateAuthorityDomainConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CertificateAuthorityDomainConfig>;
 
 export type CertificateAuthorityDomainConfigList =
-  ReadonlyArray<CertificateAuthorityDomainConfig>;
+  Array<CertificateAuthorityDomainConfig>;
 export const CertificateAuthorityDomainConfigList = /*@__PURE__*/ S.Array(
   CertificateAuthorityDomainConfig,
 ) as any as S.Schema<CertificateAuthorityDomainConfigList>;
@@ -2167,8 +2178,9 @@ export type HostConfigCapabilitiesItemEnum =
   | "HOST_CAPABILITY_PUSH";
 export const HostConfigCapabilitiesItemEnum = /*@__PURE__*/ S.String;
 
-export type HostConfigCapabilitiesItemEnumList =
-  ReadonlyArray<HostConfigCapabilitiesItemEnum>;
+export type HostConfigCapabilitiesItemEnumList = Array<
+  HostConfigCapabilitiesItemEnum | (string & {})
+>;
 export const HostConfigCapabilitiesItemEnumList = /*@__PURE__*/ S.Array(
   HostConfigCapabilitiesItemEnum,
 ) as any as S.Schema<HostConfigCapabilitiesItemEnumList>;
@@ -2187,7 +2199,7 @@ export const RegistryHeader = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "RegistryHeader" }) as any as S.Schema<RegistryHeader>;
 
-export type RegistryHeaderList = ReadonlyArray<RegistryHeader>;
+export type RegistryHeaderList = Array<RegistryHeader>;
 export const RegistryHeaderList = /*@__PURE__*/ S.Array(
   RegistryHeader,
 ) as any as S.Schema<RegistryHeaderList>;
@@ -2221,12 +2233,12 @@ export const CertificateConfigPair = /*@__PURE__*/ S.suspend(() =>
   identifier: "CertificateConfigPair",
 }) as any as S.Schema<CertificateConfigPair>;
 
-export type CertificateConfigPairList = ReadonlyArray<CertificateConfigPair>;
+export type CertificateConfigPairList = Array<CertificateConfigPair>;
 export const CertificateConfigPairList = /*@__PURE__*/ S.Array(
   CertificateConfigPair,
 ) as any as S.Schema<CertificateConfigPairList>;
 
-export type CertificateConfigList = ReadonlyArray<CertificateConfig>;
+export type CertificateConfigList = Array<CertificateConfig>;
 export const CertificateConfigList = /*@__PURE__*/ S.Array(
   CertificateConfig,
 ) as any as S.Schema<CertificateConfigList>;
@@ -2260,7 +2272,7 @@ export const HostConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "HostConfig" }) as any as S.Schema<HostConfig>;
 
-export type HostConfigList = ReadonlyArray<HostConfig>;
+export type HostConfigList = Array<HostConfig>;
 export const HostConfigList = /*@__PURE__*/ S.Array(
   HostConfig,
 ) as any as S.Schema<HostConfigList>;
@@ -2281,7 +2293,7 @@ export const RegistryHostConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "RegistryHostConfig",
 }) as any as S.Schema<RegistryHostConfig>;
 
-export type RegistryHostConfigList = ReadonlyArray<RegistryHostConfig>;
+export type RegistryHostConfigList = Array<RegistryHostConfig>;
 export const RegistryHostConfigList = /*@__PURE__*/ S.Array(
   RegistryHostConfig,
 ) as any as S.Schema<RegistryHostConfigList>;
@@ -2334,7 +2346,7 @@ export const LoggingVariantConfigVariantEnum = /*@__PURE__*/ S.String;
 /** LoggingVariantConfig specifies the behaviour of the logging component. */
 export interface LoggingVariantConfig {
   /** Logging variant deployed on nodes. */
-  variant?: LoggingVariantConfigVariantEnum;
+  variant?: LoggingVariantConfigVariantEnum | (string & {});
 }
 export const LoggingVariantConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2366,7 +2378,9 @@ export const TaintConfigArchitectureTaintBehaviorEnum = /*@__PURE__*/ S.String;
 /** TaintConfig contains the configuration for the taints of the node pool. */
 export interface TaintConfig {
   /** Optional. Controls architecture tainting behavior. */
-  architectureTaintBehavior?: TaintConfigArchitectureTaintBehaviorEnum;
+  architectureTaintBehavior?:
+    | TaintConfigArchitectureTaintBehaviorEnum
+    | (string & {});
 }
 export const TaintConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2611,7 +2625,7 @@ export interface SecondaryBootDisk {
   /** Fully-qualified resource ID for an existing disk image. */
   diskImage?: string;
   /** Disk mode (container image cache, etc.) */
-  mode?: SecondaryBootDiskModeEnum;
+  mode?: SecondaryBootDiskModeEnum | (string & {});
 }
 export const SecondaryBootDisk = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2622,7 +2636,7 @@ export const SecondaryBootDisk = /*@__PURE__*/ S.suspend(() =>
   identifier: "SecondaryBootDisk",
 }) as any as S.Schema<SecondaryBootDisk>;
 
-export type SecondaryBootDiskList = ReadonlyArray<SecondaryBootDisk>;
+export type SecondaryBootDiskList = Array<SecondaryBootDisk>;
 export const SecondaryBootDiskList = /*@__PURE__*/ S.Array(
   SecondaryBootDisk,
 ) as any as S.Schema<SecondaryBootDiskList>;
@@ -2674,7 +2688,7 @@ export interface NodeTaint {
   /** Key for taint. */
   key?: string;
   /** Effect for taint. */
-  effect?: NodeTaintEffectEnum;
+  effect?: NodeTaintEffectEnum | (string & {});
   /** Value for taint. */
   value?: string;
 }
@@ -2686,7 +2700,7 @@ export const NodeTaint = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "NodeTaint" }) as any as S.Schema<NodeTaint>;
 
-export type NodeTaintList = ReadonlyArray<NodeTaint>;
+export type NodeTaintList = Array<NodeTaint>;
 export const NodeTaintList = /*@__PURE__*/ S.Array(
   NodeTaint,
 ) as any as S.Schema<NodeTaintList>;
@@ -2700,7 +2714,7 @@ export const WindowsNodeConfigOsVersionEnum = /*@__PURE__*/ S.String;
 /** Parameters that can be configured on Windows nodes. Windows Node Config that define the parameters that will be used to configure the Windows node pool settings. */
 export interface WindowsNodeConfig {
   /** OSVersion specifies the Windows node config to be used on the node. */
-  osVersion?: WindowsNodeConfigOsVersionEnum;
+  osVersion?: WindowsNodeConfigOsVersionEnum | (string & {});
 }
 export const WindowsNodeConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2719,7 +2733,7 @@ export const WorkloadMetadataConfigModeEnum = /*@__PURE__*/ S.String;
 /** WorkloadMetadataConfig defines the metadata configuration to expose to workloads on the node pool. */
 export interface WorkloadMetadataConfig {
   /** Mode is the configuration for how to expose metadata to workloads running on the node pool. */
-  mode?: WorkloadMetadataConfigModeEnum;
+  mode?: WorkloadMetadataConfigModeEnum | (string & {});
 }
 export const WorkloadMetadataConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2737,7 +2751,7 @@ export const GPUDirectConfigGpuDirectStrategyEnum = /*@__PURE__*/ S.String;
 /** GPUDirectConfig specifies the GPU direct strategy on the node pool. */
 export interface GPUDirectConfig {
   /** The type of GPU direct strategy to enable on the node pool. */
-  gpuDirectStrategy?: GPUDirectConfigGpuDirectStrategyEnum;
+  gpuDirectStrategy?: GPUDirectConfigGpuDirectStrategyEnum | (string & {});
 }
 export const GPUDirectConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2775,7 +2789,9 @@ export const ReservationAffinityConsumeReservationTypeEnum =
 /** [ReservationAffinity](https://cloud.google.com/compute/docs/instances/reserving-zonal-resources) is the configuration of desired reservation which instances could take capacity from. */
 export interface ReservationAffinity {
   /** Corresponds to the type of reservation consumption. */
-  consumeReservationType?: ReservationAffinityConsumeReservationTypeEnum;
+  consumeReservationType?:
+    | ReservationAffinityConsumeReservationTypeEnum
+    | (string & {});
   /** Corresponds to the label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify "compute.googleapis.com/reservation-name" as the key and specify the name of your reservation as its value. */
   key?: string;
   /** Corresponds to the label value(s) of reservation resource(s). */
@@ -2828,7 +2844,7 @@ export interface NodeConfig {
   /** Type of the disk attached to each node (e.g. 'pd-standard', 'pd-ssd' or 'pd-balanced') If unspecified, the default disk type is 'pd-standard' */
   diskType?: string;
   /** Output only. effective_cgroup_mode is the cgroup mode actually used by the node pool. It is determined by the cgroup mode specified in the LinuxNodeConfig or the default cgroup mode based on the cluster creation version. */
-  effectiveCgroupMode?: NodeConfigEffectiveCgroupModeEnum;
+  effectiveCgroupMode?: NodeConfigEffectiveCgroupModeEnum | (string & {});
   /** Sandbox configuration for this node. */
   sandboxConfig?: SandboxConfig;
   /** Advanced features for the Compute Engine VM. */
@@ -2882,7 +2898,7 @@ export interface NodeConfig {
   /** Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB. If unspecified, the default disk size is 100GB. */
   diskSizeGb?: number;
   /** Specifies which method should be used for encrypting the Local SSDs attached to the node. */
-  localSsdEncryptionMode?: NodeConfigLocalSsdEncryptionModeEnum;
+  localSsdEncryptionMode?: NodeConfigLocalSsdEncryptionModeEnum | (string & {});
   /** The Kubernetes labels (key/value pairs) to apply to each node. The values in this field are added to the set of default labels Kubernetes applies to nodes. This field has the following restrictions: * Labels must use a valid Kubernetes syntax and character set, as defined in https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#syntax-and-character-set. * This field supports up to 1,024 total characters in a single request. Depending on the Kubernetes version, keys in this field might conflict with the keys of the default labels, which might change which of your labels are applied to the nodes. Assume that the behavior is unpredictable and avoid label key conflicts. For more information about the default labels, see: https://kubernetes.io/docs/reference/labels-annotations-taints/ */
   labels?: StringMap;
   /** A map of resource manager tag keys and values to be attached to the nodes. */
@@ -3013,7 +3029,7 @@ export interface NodePool {
   /** Output only. Which conditions caused the current node pool state. */
   conditions?: StatusConditionList;
   /** Output only. The status of the nodes in this pool instance. */
-  status?: NodePoolStatusEnum;
+  status?: NodePoolStatusEnum | (string & {});
   /** The list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in which the NodePool's nodes should be located. If this value is unspecified during node pool creation, the [Cluster.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#Cluster.FIELDS.locations) value will be used, instead. Warning: changing node pool locations will result in nodes being added and/or removed. */
   locations?: StringList;
   /** Autoscaler configuration for this NodePool. Autoscaler is enabled only if a valid configuration is present. */
@@ -3073,7 +3089,7 @@ export const NodePool = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "NodePool" }) as any as S.Schema<NodePool>;
 
-export type NodePoolList = ReadonlyArray<NodePool>;
+export type NodePoolList = Array<NodePool>;
 export const NodePoolList = /*@__PURE__*/ S.Array(
   NodePool,
 ) as any as S.Schema<NodePoolList>;
@@ -3168,9 +3184,11 @@ export const MaintenanceExclusionOptionsEndTimeBehaviorEnum =
 /** Represents the Maintenance exclusion option. */
 export interface MaintenanceExclusionOptions {
   /** Scope specifies the upgrade scope which upgrades are blocked by the exclusion. */
-  scope?: MaintenanceExclusionOptionsScopeEnum;
+  scope?: MaintenanceExclusionOptionsScopeEnum | (string & {});
   /** EndTimeBehavior specifies the behavior of the exclusion end time. */
-  endTimeBehavior?: MaintenanceExclusionOptionsEndTimeBehaviorEnum;
+  endTimeBehavior?:
+    | MaintenanceExclusionOptionsEndTimeBehaviorEnum
+    | (string & {});
 }
 export const MaintenanceExclusionOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3334,7 +3352,9 @@ export const ClusterNetworkPerformanceConfigTotalEgressBandwidthTierEnum =
 /** Configuration of network bandwidth tiers */
 export interface ClusterNetworkPerformanceConfig {
   /** Specifies the total network bandwidth tier for NodePools in the cluster. */
-  totalEgressBandwidthTier?: ClusterNetworkPerformanceConfigTotalEgressBandwidthTierEnum;
+  totalEgressBandwidthTier?:
+    | ClusterNetworkPerformanceConfigTotalEgressBandwidthTierEnum
+    | (string & {});
 }
 export const ClusterNetworkPerformanceConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3377,9 +3397,9 @@ export interface DNSConfig {
   /** Optional. The domain used in Additive VPC scope. */
   additiveVpcScopeDnsDomain?: string;
   /** cluster_dns indicates which in-cluster DNS provider should be used. */
-  clusterDns?: DNSConfigClusterDnsEnum;
+  clusterDns?: DNSConfigClusterDnsEnum | (string & {});
   /** cluster_dns_scope indicates the scope of access to cluster DNS records. */
-  clusterDnsScope?: DNSConfigClusterDnsScopeEnum;
+  clusterDnsScope?: DNSConfigClusterDnsScopeEnum | (string & {});
   /** cluster_dns_domain is the suffix used for all cluster service records. */
   clusterDnsDomain?: string;
 }
@@ -3408,7 +3428,7 @@ export const DataplaneV2ConfigScalabilityModeEnum = /*@__PURE__*/ S.String;
 /** DataplaneV2Config is the configuration for DPv2. */
 export interface DataplaneV2Config {
   /** Optional. Scalability mode for the cluster. */
-  scalabilityMode?: DataplaneV2ConfigScalabilityModeEnum;
+  scalabilityMode?: DataplaneV2ConfigScalabilityModeEnum | (string & {});
 }
 export const DataplaneV2Config = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3428,7 +3448,7 @@ export const GatewayAPIConfigChannelEnum = /*@__PURE__*/ S.String;
 /** GatewayAPIConfig contains the desired config of Gateway API on this cluster. */
 export interface GatewayAPIConfig {
   /** The Gateway API release channel to use for Gateway API. */
-  channel?: GatewayAPIConfigChannelEnum;
+  channel?: GatewayAPIConfigChannelEnum | (string & {});
 }
 export const GatewayAPIConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3441,7 +3461,7 @@ export const GatewayAPIConfig = /*@__PURE__*/ S.suspend(() =>
 /** NetworkConfig reports the relative names of network & subnetwork. */
 export interface NetworkConfig {
   /** The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation. */
-  datapathProvider?: NetworkConfigDatapathProviderEnum;
+  datapathProvider?: NetworkConfigDatapathProviderEnum | (string & {});
   /** Controls whether by default nodes have private IP addresses only. It is invalid to specify both PrivateClusterConfig.enablePrivateNodes and this field at the same time. To update the default setting, use ClusterUpdate.desired_default_enable_private_nodes */
   defaultEnablePrivateNodes?: boolean;
   /** Disable L4 load balancer VPC firewalls to enable firewall policies. */
@@ -3449,7 +3469,9 @@ export interface NetworkConfig {
   /** ServiceExternalIPsConfig specifies if services with externalIPs field are blocked or not. */
   serviceExternalIpsConfig?: ServiceExternalIPsConfig;
   /** Specify the details of in-transit encryption. Now named inter-node transparent encryption. */
-  inTransitEncryptionConfig?: NetworkConfigInTransitEncryptionConfigEnum;
+  inTransitEncryptionConfig?:
+    | NetworkConfigInTransitEncryptionConfigEnum
+    | (string & {});
   /** Whether CiliumClusterwideNetworkPolicy is enabled on this cluster. */
   enableCiliumClusterwideNetworkPolicy?: boolean;
   /** Output only. The relative name of the Google Compute Engine [network](https://cloud.google.com/compute/docs/networks-and-firewalls#networks) to which the cluster is connected. Example: projects/my-project/global/networks/my-network */
@@ -3469,7 +3491,9 @@ export interface NetworkConfig {
   /** Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network. */
   enableIntraNodeVisibility?: boolean;
   /** The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or from Google Services (all access will be via IPv4) */
-  privateIpv6GoogleAccess?: NetworkConfigPrivateIpv6GoogleAccessEnum;
+  privateIpv6GoogleAccess?:
+    | NetworkConfigPrivateIpv6GoogleAccessEnum
+    | (string & {});
   /** Optional. DataplaneV2Config specifies the DPv2 configuration. */
   dataplaneV2Config?: DataplaneV2Config;
   /** GatewayAPIConfig contains the desired config of Gateway API on this cluster. */
@@ -3553,7 +3577,7 @@ export const CidrBlock = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CidrBlock" }) as any as S.Schema<CidrBlock>;
 
-export type CidrBlockList = ReadonlyArray<CidrBlock>;
+export type CidrBlockList = Array<CidrBlock>;
 export const CidrBlockList = /*@__PURE__*/ S.Array(
   CidrBlock,
 ) as any as S.Schema<CidrBlockList>;
@@ -3718,9 +3742,11 @@ export const SecurityPostureConfigVulnerabilityModeEnum =
 /** SecurityPostureConfig defines the flags needed to enable/disable features for the Security Posture API. */
 export interface SecurityPostureConfig {
   /** Sets which mode to use for Security Posture features. */
-  mode?: SecurityPostureConfigModeEnum;
+  mode?: SecurityPostureConfigModeEnum | (string & {});
   /** Sets which mode to use for vulnerability scanning. */
-  vulnerabilityMode?: SecurityPostureConfigVulnerabilityModeEnum;
+  vulnerabilityMode?:
+    | SecurityPostureConfigVulnerabilityModeEnum
+    | (string & {});
 }
 export const SecurityPostureConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3737,7 +3763,7 @@ export const NetworkPolicyProviderEnum = /*@__PURE__*/ S.String;
 /** Configuration options for the NetworkPolicy feature. https://kubernetes.io/docs/concepts/services-networking/networkpolicies/ */
 export interface NetworkPolicy {
   /** The selected network policy provider. */
-  provider?: NetworkPolicyProviderEnum;
+  provider?: NetworkPolicyProviderEnum | (string & {});
   /** Whether network policy is enabled on the cluster. */
   enabled?: boolean;
 }
@@ -3940,7 +3966,7 @@ export interface AdditionalIPRangesConfig {
   /** List of secondary ranges names within this subnetwork that can be used for pod IPs. Example1: gke-pod-range1 Example2: gke-pod-range1,gke-pod-range2 */
   podIpv4RangeNames?: StringList;
   /** Draining status of the additional subnet. */
-  status?: AdditionalIPRangesConfigStatusEnum;
+  status?: AdditionalIPRangesConfigStatusEnum | (string & {});
 }
 export const AdditionalIPRangesConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3952,8 +3978,7 @@ export const AdditionalIPRangesConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "AdditionalIPRangesConfig",
 }) as any as S.Schema<AdditionalIPRangesConfig>;
 
-export type AdditionalIPRangesConfigList =
-  ReadonlyArray<AdditionalIPRangesConfig>;
+export type AdditionalIPRangesConfigList = Array<AdditionalIPRangesConfig>;
 export const AdditionalIPRangesConfigList = /*@__PURE__*/ S.Array(
   AdditionalIPRangesConfig,
 ) as any as S.Schema<AdditionalIPRangesConfigList>;
@@ -3972,7 +3997,7 @@ export const RangeInfo = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "RangeInfo" }) as any as S.Schema<RangeInfo>;
 
-export type RangeInfoList = ReadonlyArray<RangeInfo>;
+export type RangeInfoList = Array<RangeInfo>;
 export const RangeInfoList = /*@__PURE__*/ S.Array(
   RangeInfo,
 ) as any as S.Schema<RangeInfoList>;
@@ -4004,7 +4029,7 @@ export interface IPAllocationPolicy {
   /** This field is deprecated, use node_ipv4_cidr_block. */
   nodeIpv4Cidr?: string;
   /** The IP stack type of the cluster */
-  stackType?: IPAllocationPolicyStackTypeEnum;
+  stackType?: IPAllocationPolicyStackTypeEnum | (string & {});
   /** Optional. AutoIpamConfig contains all information related to Auto IPAM */
   autoIpamConfig?: AutoIpamConfig;
   /** This field is deprecated, use cluster_ipv4_cidr_block. */
@@ -4026,7 +4051,7 @@ export interface IPAllocationPolicy {
   /** Whether routes will be used for pod IPs in the cluster. This is used in conjunction with use_ip_aliases. It cannot be true if use_ip_aliases is true. If both use_ip_aliases and use_routes are false, then the server picks the default IP allocation mode */
   useRoutes?: boolean;
   /** The ipv6 access type (internal or external) when create_subnetwork is true */
-  ipv6AccessType?: IPAllocationPolicyIpv6AccessTypeEnum;
+  ipv6AccessType?: IPAllocationPolicyIpv6AccessTypeEnum | (string & {});
   /** Whether alias IPs will be used for pod IPs in the cluster. This is used in conjunction with use_routes. It cannot be true if use_routes is true. If both use_ip_aliases and use_routes are false, then the server picks the default IP allocation mode */
   useIpAliases?: boolean;
   /** The IP address range for the cluster pod IPs. If this field is set, then `cluster.cluster_ipv4_cidr` must be left blank. This field is only applicable when `use_ip_aliases` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use. */
@@ -4132,7 +4157,7 @@ export const ControlPlaneEgressModeEnum = /*@__PURE__*/ S.String;
 /** ControlPlaneEgress defines the settings needed to enable control plane egress control. */
 export interface ControlPlaneEgress {
   /** Defines the mode of control plane egress. */
-  mode?: ControlPlaneEgressModeEnum;
+  mode?: ControlPlaneEgressModeEnum | (string & {});
 }
 export const ControlPlaneEgress = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4203,9 +4228,9 @@ export const EnterpriseConfigDesiredTierEnum = /*@__PURE__*/ S.String;
 /** EnterpriseConfig is the cluster enterprise configuration. Deprecated: GKE Enterprise features are now available without an Enterprise tier. */
 export interface EnterpriseConfig {
   /** Output only. cluster_tier indicates the effective tier of the cluster. */
-  clusterTier?: EnterpriseConfigClusterTierEnum;
+  clusterTier?: EnterpriseConfigClusterTierEnum | (string & {});
   /** desired_tier specifies the desired tier of the cluster. */
-  desiredTier?: EnterpriseConfigDesiredTierEnum;
+  desiredTier?: EnterpriseConfigDesiredTierEnum | (string & {});
 }
 export const EnterpriseConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4224,7 +4249,7 @@ export const GkeAutoUpgradeConfigPatchModeEnum = /*@__PURE__*/ S.String;
 /** GkeAutoUpgradeConfig is the configuration for GKE auto upgrades. */
 export interface GkeAutoUpgradeConfig {
   /** PatchMode specifies how auto upgrade patch builds should be selected. */
-  patchMode?: GkeAutoUpgradeConfigPatchModeEnum;
+  patchMode?: GkeAutoUpgradeConfigPatchModeEnum | (string & {});
 }
 export const GkeAutoUpgradeConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4243,7 +4268,7 @@ export const AutoMonitoringConfigScopeEnum = /*@__PURE__*/ S.String;
 /** AutoMonitoringConfig defines the configuration for GKE Workload Auto-Monitoring. */
 export interface AutoMonitoringConfig {
   /** Scope for GKE Workload Auto-Monitoring. */
-  scope?: AutoMonitoringConfigScopeEnum;
+  scope?: AutoMonitoringConfigScopeEnum | (string & {});
 }
 export const AutoMonitoringConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4288,8 +4313,9 @@ export type MonitoringComponentConfigEnableComponentsItemEnum =
 export const MonitoringComponentConfigEnableComponentsItemEnum =
   /*@__PURE__*/ S.String;
 
-export type MonitoringComponentConfigEnableComponentsItemEnumList =
-  ReadonlyArray<MonitoringComponentConfigEnableComponentsItemEnum>;
+export type MonitoringComponentConfigEnableComponentsItemEnumList = Array<
+  MonitoringComponentConfigEnableComponentsItemEnum | (string & {})
+>;
 export const MonitoringComponentConfigEnableComponentsItemEnumList =
   /*@__PURE__*/ S.Array(
     MonitoringComponentConfigEnableComponentsItemEnum,
@@ -4323,7 +4349,7 @@ export interface AdvancedDatapathObservabilityConfig {
   /** Expose flow metrics on nodes */
   enableMetrics?: boolean;
   /** Method used to make Relay available */
-  relayMode?: AdvancedDatapathObservabilityConfigRelayModeEnum;
+  relayMode?: AdvancedDatapathObservabilityConfigRelayModeEnum | (string & {});
   /** Enable Relay component */
   enableRelay?: boolean;
 }
@@ -4419,8 +4445,9 @@ export type FilterEventTypeItemEnum =
   | "UPGRADE_INFO_EVENT";
 export const FilterEventTypeItemEnum = /*@__PURE__*/ S.String;
 
-export type FilterEventTypeItemEnumList =
-  ReadonlyArray<FilterEventTypeItemEnum>;
+export type FilterEventTypeItemEnumList = Array<
+  FilterEventTypeItemEnum | (string & {})
+>;
 export const FilterEventTypeItemEnumList = /*@__PURE__*/ S.Array(
   FilterEventTypeItemEnum,
 ) as any as S.Schema<FilterEventTypeItemEnumList>;
@@ -4507,7 +4534,7 @@ export const PodAutoscalingHpaProfileEnum = /*@__PURE__*/ S.String;
 /** PodAutoscaling is used for configuration of parameters for workload autoscaling. */
 export interface PodAutoscaling {
   /** Selected Horizontal Pod Autoscaling profile. */
-  hpaProfile?: PodAutoscalingHpaProfileEnum;
+  hpaProfile?: PodAutoscalingHpaProfileEnum | (string & {});
 }
 export const PodAutoscaling = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4588,7 +4615,7 @@ export interface BinaryAuthorization {
   /** This field is deprecated. Leave this unset and instead configure BinaryAuthorization using evaluation_mode. If evaluation_mode is set to anything other than EVALUATION_MODE_UNSPECIFIED, this field is ignored. */
   enabled?: boolean;
   /** Mode of operation for binauthz policy evaluation. If unspecified, defaults to DISABLED. */
-  evaluationMode?: BinaryAuthorizationEvaluationModeEnum;
+  evaluationMode?: BinaryAuthorizationEvaluationModeEnum | (string & {});
 }
 export const BinaryAuthorization = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4663,7 +4690,7 @@ export const AnonymousAuthenticationConfigModeEnum = /*@__PURE__*/ S.String;
 /** AnonymousAuthenticationConfig defines the settings needed to limit endpoints that allow anonymous authentication. */
 export interface AnonymousAuthenticationConfig {
   /** Defines the mode of limiting anonymous access in the cluster. */
-  mode?: AnonymousAuthenticationConfigModeEnum;
+  mode?: AnonymousAuthenticationConfigModeEnum | (string & {});
 }
 export const AnonymousAuthenticationConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4692,7 +4719,7 @@ export const ComplianceStandard = /*@__PURE__*/ S.suspend(() =>
   identifier: "ComplianceStandard",
 }) as any as S.Schema<ComplianceStandard>;
 
-export type ComplianceStandardList = ReadonlyArray<ComplianceStandard>;
+export type ComplianceStandardList = Array<ComplianceStandard>;
 export const ComplianceStandardList = /*@__PURE__*/ S.Array(
   ComplianceStandard,
 ) as any as S.Schema<ComplianceStandardList>;
@@ -4700,7 +4727,7 @@ export const ComplianceStandardList = /*@__PURE__*/ S.Array(
 /** Deprecated: Compliance Posture is no longer supported. For more details, see https://cloud.google.com/kubernetes-engine/docs/deprecations/posture-management-deprecation. CompliancePostureConfig defines the settings needed to enable/disable features for the Compliance Posture. */
 export interface CompliancePostureConfig {
   /** Defines the enablement mode for Compliance Posture. */
-  mode?: CompliancePostureConfigModeEnum;
+  mode?: CompliancePostureConfigModeEnum | (string & {});
   /** List of enabled compliance standards. */
   complianceStandards?: ComplianceStandardList;
 }
@@ -4722,7 +4749,7 @@ export const NodeCreationConfigNodeCreationModeEnum = /*@__PURE__*/ S.String;
 /** NodeCreationConfig defines the settings of node creation mode. */
 export interface NodeCreationConfig {
   /** The mode of node creation. */
-  nodeCreationMode?: NodeCreationConfigNodeCreationModeEnum;
+  nodeCreationMode?: NodeCreationConfigNodeCreationModeEnum | (string & {});
 }
 export const NodeCreationConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4818,7 +4845,7 @@ export const ResourceLimit = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ResourceLimit" }) as any as S.Schema<ResourceLimit>;
 
-export type ResourceLimitList = ReadonlyArray<ResourceLimit>;
+export type ResourceLimitList = Array<ResourceLimit>;
 export const ResourceLimitList = /*@__PURE__*/ S.Array(
   ResourceLimit,
 ) as any as S.Schema<ResourceLimitList>;
@@ -4828,7 +4855,7 @@ export interface ClusterAutoscaling {
   /** Enables automatic node pool creation and deletion. */
   enableNodeAutoprovisioning?: boolean;
   /** Defines autoscaling behaviour. */
-  autoscalingProfile?: ClusterAutoscalingAutoscalingProfileEnum;
+  autoscalingProfile?: ClusterAutoscalingAutoscalingProfileEnum | (string & {});
   /** The list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in which the NodePool's nodes can be created by NAP. */
   autoprovisioningLocations?: StringList;
   /** Default compute class is a configuration for default compute class. */
@@ -4836,7 +4863,9 @@ export interface ClusterAutoscaling {
   /** AutoprovisioningNodePoolDefaults contains defaults for a node pool created by NAP. */
   autoprovisioningNodePoolDefaults?: AutoprovisioningNodePoolDefaults;
   /** Autopilot general profile for the cluster, which defines the configuration for the cluster. */
-  autopilotGeneralProfile?: ClusterAutoscalingAutopilotGeneralProfileEnum;
+  autopilotGeneralProfile?:
+    | ClusterAutoscalingAutopilotGeneralProfileEnum
+    | (string & {});
   /** Contains global constraints regarding minimum and maximum amount of resources in the cluster. */
   resourceLimits?: ResourceLimitList;
 }
@@ -4869,7 +4898,7 @@ export const ReleaseChannelChannelEnum = /*@__PURE__*/ S.String;
 /** ReleaseChannel indicates which release channel a cluster is subscribed to. Release channels are arranged in order of risk. When a cluster is subscribed to a release channel, Google maintains both the master version and the node version. Node auto-upgrade defaults to true and cannot be disabled. */
 export interface ReleaseChannel {
   /** channel specifies which release channel the cluster is subscribed to. */
-  channel?: ReleaseChannelChannelEnum;
+  channel?: ReleaseChannelChannelEnum | (string & {});
 }
 export const ReleaseChannel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4885,7 +4914,7 @@ export const FleetMembershipTypeEnum = /*@__PURE__*/ S.String;
 /** Fleet is the fleet configuration for the cluster. */
 export interface Fleet {
   /** The type of the cluster's fleet membership. */
-  membershipType?: FleetMembershipTypeEnum;
+  membershipType?: FleetMembershipTypeEnum | (string & {});
   /** The Fleet host project(project ID or project number) where this cluster will be registered to. This field cannot be changed after the cluster has been registered. */
   project?: string;
   /** Output only. The full resource name of the registered fleet membership of the cluster, in the format `//gkehub.googleapis.com/projects/*\/locations/*\/memberships/*`. */
@@ -4929,8 +4958,9 @@ export type LoggingComponentConfigEnableComponentsItemEnum =
 export const LoggingComponentConfigEnableComponentsItemEnum =
   /*@__PURE__*/ S.String;
 
-export type LoggingComponentConfigEnableComponentsItemEnumList =
-  ReadonlyArray<LoggingComponentConfigEnableComponentsItemEnum>;
+export type LoggingComponentConfigEnableComponentsItemEnumList = Array<
+  LoggingComponentConfigEnableComponentsItemEnum | (string & {})
+>;
 export const LoggingComponentConfigEnableComponentsItemEnumList =
   /*@__PURE__*/ S.Array(
     LoggingComponentConfigEnableComponentsItemEnum,
@@ -4979,7 +5009,7 @@ export const OperationError = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "OperationError" }) as any as S.Schema<OperationError>;
 
-export type OperationErrorList = ReadonlyArray<OperationError>;
+export type OperationErrorList = Array<OperationError>;
 export const OperationErrorList = /*@__PURE__*/ S.Array(
   OperationError,
 ) as any as S.Schema<OperationErrorList>;
@@ -5011,9 +5041,9 @@ export interface DatabaseEncryption {
   /** Output only. Records errors seen during DatabaseEncryption update operations. */
   lastOperationErrors?: OperationErrorList;
   /** The desired state of etcd encryption. */
-  state?: DatabaseEncryptionStateEnum;
+  state?: DatabaseEncryptionStateEnum | (string & {});
   /** Output only. The current state of etcd encryption. */
-  currentState?: DatabaseEncryptionCurrentStateEnum;
+  currentState?: DatabaseEncryptionCurrentStateEnum | (string & {});
   /** Output only. Keys in use by the cluster for decrypting existing objects, in addition to the key in `key_name`. Each item is a CloudKMS key resource. */
   decryptionKeys?: StringList;
 }
@@ -5054,7 +5084,7 @@ export interface Cluster {
   /** Output only. Unique id for the cluster. */
   id?: string;
   /** Output only. The current status of this cluster. */
-  status?: ClusterStatusEnum;
+  status?: ClusterStatusEnum | (string & {});
   /** Cluster-level Vertical Pod Autoscaling configuration. */
   verticalPodAutoscaling?: VerticalPodAutoscaling;
   /** Enable the ability to use Cloud TPUs in this cluster. This field is deprecated due to the deprecation of 2VM TPU. The end of life date for 2VM TPU is 2025-04-25. */
@@ -5593,7 +5623,7 @@ export type ClusterUpgradeInfoPausedReasonItemEnum =
 export const ClusterUpgradeInfoPausedReasonItemEnum = /*@__PURE__*/ S.String;
 
 export type ClusterUpgradeInfoPausedReasonItemEnumList =
-  ReadonlyArray<ClusterUpgradeInfoPausedReasonItemEnum>;
+  Array<ClusterUpgradeInfoPausedReasonItemEnum>;
 export const ClusterUpgradeInfoPausedReasonItemEnumList = /*@__PURE__*/ S.Array(
   ClusterUpgradeInfoPausedReasonItemEnum,
 ) as any as S.Schema<ClusterUpgradeInfoPausedReasonItemEnumList>;
@@ -5631,7 +5661,7 @@ export const ClusterUpgradeInfoAutoUpgradeStatusItemEnum =
   /*@__PURE__*/ S.String;
 
 export type ClusterUpgradeInfoAutoUpgradeStatusItemEnumList =
-  ReadonlyArray<ClusterUpgradeInfoAutoUpgradeStatusItemEnum>;
+  Array<ClusterUpgradeInfoAutoUpgradeStatusItemEnum>;
 export const ClusterUpgradeInfoAutoUpgradeStatusItemEnumList =
   /*@__PURE__*/ S.Array(
     ClusterUpgradeInfoAutoUpgradeStatusItemEnum,
@@ -5683,7 +5713,7 @@ export const UpgradeDetails = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "UpgradeDetails" }) as any as S.Schema<UpgradeDetails>;
 
-export type UpgradeDetailsList = ReadonlyArray<UpgradeDetails>;
+export type UpgradeDetailsList = Array<UpgradeDetails>;
 export const UpgradeDetailsList = /*@__PURE__*/ S.Array(
   UpgradeDetails,
 ) as any as S.Schema<UpgradeDetailsList>;
@@ -5778,7 +5808,7 @@ export const NodePoolUpgradeInfoAutoUpgradeStatusItemEnum =
   /*@__PURE__*/ S.String;
 
 export type NodePoolUpgradeInfoAutoUpgradeStatusItemEnumList =
-  ReadonlyArray<NodePoolUpgradeInfoAutoUpgradeStatusItemEnum>;
+  Array<NodePoolUpgradeInfoAutoUpgradeStatusItemEnum>;
 export const NodePoolUpgradeInfoAutoUpgradeStatusItemEnumList =
   /*@__PURE__*/ S.Array(
     NodePoolUpgradeInfoAutoUpgradeStatusItemEnum,
@@ -5806,7 +5836,7 @@ export type NodePoolUpgradeInfoPausedReasonItemEnum =
 export const NodePoolUpgradeInfoPausedReasonItemEnum = /*@__PURE__*/ S.String;
 
 export type NodePoolUpgradeInfoPausedReasonItemEnumList =
-  ReadonlyArray<NodePoolUpgradeInfoPausedReasonItemEnum>;
+  Array<NodePoolUpgradeInfoPausedReasonItemEnum>;
 export const NodePoolUpgradeInfoPausedReasonItemEnumList =
   /*@__PURE__*/ S.Array(
     NodePoolUpgradeInfoPausedReasonItemEnum,
@@ -5924,7 +5954,7 @@ export const Jwk = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Jwk" }) as any as S.Schema<Jwk>;
 
-export type JwkList = ReadonlyArray<Jwk>;
+export type JwkList = Array<Jwk>;
 export const JwkList = /*@__PURE__*/ S.Array(Jwk) as any as S.Schema<JwkList>;
 
 /** RFC-2616: cache control support */
@@ -6242,7 +6272,7 @@ export const ReleaseChannelConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "ReleaseChannelConfig",
 }) as any as S.Schema<ReleaseChannelConfig>;
 
-export type ReleaseChannelConfigList = ReadonlyArray<ReleaseChannelConfig>;
+export type ReleaseChannelConfigList = Array<ReleaseChannelConfig>;
 export const ReleaseChannelConfigList = /*@__PURE__*/ S.Array(
   ReleaseChannelConfig,
 ) as any as S.Schema<ReleaseChannelConfigList>;
@@ -6406,7 +6436,7 @@ export const UsableSubnetworkSecondaryRange = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UsableSubnetworkSecondaryRange>;
 
 export type UsableSubnetworkSecondaryRangeList =
-  ReadonlyArray<UsableSubnetworkSecondaryRange>;
+  Array<UsableSubnetworkSecondaryRange>;
 export const UsableSubnetworkSecondaryRangeList = /*@__PURE__*/ S.Array(
   UsableSubnetworkSecondaryRange,
 ) as any as S.Schema<UsableSubnetworkSecondaryRangeList>;
@@ -6436,7 +6466,7 @@ export const UsableSubnetwork = /*@__PURE__*/ S.suspend(() =>
   identifier: "UsableSubnetwork",
 }) as any as S.Schema<UsableSubnetwork>;
 
-export type UsableSubnetworkList = ReadonlyArray<UsableSubnetwork>;
+export type UsableSubnetworkList = Array<UsableSubnetwork>;
 export const UsableSubnetworkList = /*@__PURE__*/ S.Array(
   UsableSubnetwork,
 ) as any as S.Schema<UsableSubnetworkList>;
@@ -6482,7 +6512,7 @@ export const ListProjectsLocationsClustersRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsClustersRequest",
 }) as any as S.Schema<ListProjectsLocationsClustersRequest>;
 
-export type ClusterList = ReadonlyArray<Cluster>;
+export type ClusterList = Array<Cluster>;
 export const ClusterList = /*@__PURE__*/ S.Array(
   Cluster,
 ) as any as S.Schema<ClusterList>;
@@ -6569,7 +6599,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type OperationList = ReadonlyArray<Operation>;
+export type OperationList = Array<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;

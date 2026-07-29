@@ -311,7 +311,7 @@ export type Expression = LFTag[];
 export const Expression = /*@__PURE__*/ S.Array(LFTag);
 export interface LFTagPolicyResource {
   CatalogId?: string;
-  ResourceType: ResourceType;
+  ResourceType: ResourceType | (string & {});
   Expression?: LFTag[];
   ExpressionName?: string;
 }
@@ -501,7 +501,7 @@ export type Permission =
   | "SUPER_USER";
 export const Permission = /*@__PURE__*/ S.String;
 
-export type PermissionList = Permission[];
+export type PermissionList = (Permission | (string & {}))[];
 export const PermissionList = /*@__PURE__*/ S.Array(Permission);
 export type ExpressionString = string;
 export interface Condition {
@@ -737,7 +737,7 @@ export type ScopeTarget = string;
 export type ScopeTargets = string[];
 export const ScopeTargets = /*@__PURE__*/ S.Array(S.String);
 export interface ExternalFilteringConfiguration {
-  Status: EnableStatus;
+  Status: EnableStatus | (string & {});
   AuthorizedTargets: string[];
 }
 export const ExternalFilteringConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -751,7 +751,7 @@ export type ServiceAuthorization = "ENABLED" | "DISABLED";
 export const ServiceAuthorization = /*@__PURE__*/ S.String;
 
 export interface RedshiftConnect {
-  Authorization: ServiceAuthorization;
+  Authorization: ServiceAuthorization | (string & {});
 }
 export const RedshiftConnect = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Authorization: ServiceAuthorization }),

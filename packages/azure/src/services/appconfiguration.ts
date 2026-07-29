@@ -119,9 +119,13 @@ export const DataPlaneProxyPropertiesPrivateLinkDelegation =
 /** The data plane proxy settings for a configuration store. */
 export interface DataPlaneProxyProperties {
   /** The data plane proxy authentication mode. This property manages the authentication mode of request to the data plane resources. */
-  authenticationMode?: DataPlaneProxyPropertiesAuthenticationMode;
+  authenticationMode?:
+    | DataPlaneProxyPropertiesAuthenticationMode
+    | (string & {});
   /** The data plane proxy private link delegation. This property manages if a request from delegated Azure Resource Manager (ARM) private link is allowed when the data plane resource requires private link. */
-  privateLinkDelegation?: DataPlaneProxyPropertiesPrivateLinkDelegation;
+  privateLinkDelegation?:
+    | DataPlaneProxyPropertiesPrivateLinkDelegation
+    | (string & {});
 }
 export const DataPlaneProxyProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -408,7 +412,7 @@ export const PrivateEndpointConnectionReference = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of private endpoint connections that are set up for this resource. */
 export type ConfigurationStorePropertiesPrivateEndpointConnectionsList =
-  ReadonlyArray<PrivateEndpointConnectionReference>;
+  Array<PrivateEndpointConnectionReference>;
 export const ConfigurationStorePropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnectionReference,
@@ -917,8 +921,7 @@ export const ConfigurationStore = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConfigurationStore>;
 
 /** The collection value. */
-export type ConfigurationStoreListResultValueList =
-  ReadonlyArray<ConfigurationStore>;
+export type ConfigurationStoreListResultValueList = Array<ConfigurationStore>;
 export const ConfigurationStoreListResultValueList = /*@__PURE__*/ S.Array(
   ConfigurationStore,
 ) as any as S.Schema<ConfigurationStoreListResultValueList>;
@@ -987,7 +990,7 @@ export const ConfigurationStoresListDeletedRequest = /*@__PURE__*/ S.suspend(
 
 /** The list of deleted configuration store. */
 export type DeletedConfigurationStoreListResultValueList =
-  ReadonlyArray<DeletedConfigurationStore>;
+  Array<DeletedConfigurationStore>;
 export const DeletedConfigurationStoreListResultValueList =
   /*@__PURE__*/ S.Array(
     DeletedConfigurationStore,
@@ -1064,7 +1067,7 @@ export const ApiKey = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ApiKey" }) as any as S.Schema<ApiKey>;
 
 /** The collection value. */
-export type ApiKeyListResultValueList = ReadonlyArray<ApiKey>;
+export type ApiKeyListResultValueList = Array<ApiKey>;
 export const ApiKeyListResultValueList = /*@__PURE__*/ S.Array(
   ApiKey,
 ) as any as S.Schema<ApiKeyListResultValueList>;
@@ -1624,8 +1627,7 @@ export const LogSpecification = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LogSpecification>;
 
 /** Specifications of the Log for Azure Monitoring */
-export type ServiceSpecificationLogSpecificationsList =
-  ReadonlyArray<LogSpecification>;
+export type ServiceSpecificationLogSpecificationsList = Array<LogSpecification>;
 export const ServiceSpecificationLogSpecificationsList = /*@__PURE__*/ S.Array(
   LogSpecification,
 ) as any as S.Schema<ServiceSpecificationLogSpecificationsList>;
@@ -1650,7 +1652,7 @@ export const MetricDimension = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MetricDimension>;
 
 /** Dimensions of the metric */
-export type MetricSpecificationDimensionsList = ReadonlyArray<MetricDimension>;
+export type MetricSpecificationDimensionsList = Array<MetricDimension>;
 export const MetricSpecificationDimensionsList = /*@__PURE__*/ S.Array(
   MetricDimension,
 ) as any as S.Schema<MetricSpecificationDimensionsList>;
@@ -1691,7 +1693,7 @@ export const MetricSpecification = /*@__PURE__*/ S.suspend(() =>
 
 /** Specifications of the Metrics for Azure Monitoring */
 export type ServiceSpecificationMetricSpecificationsList =
-  ReadonlyArray<MetricSpecification>;
+  Array<MetricSpecification>;
 export const ServiceSpecificationMetricSpecificationsList =
   /*@__PURE__*/ S.Array(
     MetricSpecification,
@@ -1754,8 +1756,7 @@ export const OperationDefinition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDefinition>;
 
 /** The collection value. */
-export type OperationDefinitionListResultValueList =
-  ReadonlyArray<OperationDefinition>;
+export type OperationDefinitionListResultValueList = Array<OperationDefinition>;
 export const OperationDefinitionListResultValueList = /*@__PURE__*/ S.Array(
   OperationDefinition,
 ) as any as S.Schema<OperationDefinitionListResultValueList>;
@@ -2001,7 +2002,7 @@ export const PrivateEndpointConnectionsListByConfigurationStoreRequest =
 
 /** The collection value. */
 export type PrivateEndpointConnectionListResultValueList =
-  ReadonlyArray<PrivateEndpointConnection>;
+  Array<PrivateEndpointConnection>;
 export const PrivateEndpointConnectionListResultValueList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection,
@@ -2052,16 +2053,14 @@ export const PrivateLinkResourcesGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateLinkResourcesGetRequest>;
 
 /** The private link resource required member names. */
-export type PrivateLinkResourcePropertiesRequiredMembersList =
-  ReadonlyArray<string>;
+export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
 export const PrivateLinkResourcePropertiesRequiredMembersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
 
 /** The list of required DNS zone names of the private link resource. */
-export type PrivateLinkResourcePropertiesRequiredZoneNamesList =
-  ReadonlyArray<string>;
+export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
 export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2139,8 +2138,7 @@ export const PrivateLinkResourcesListByConfigurationStoreRequest =
   }) as any as S.Schema<PrivateLinkResourcesListByConfigurationStoreRequest>;
 
 /** The collection value. */
-export type PrivateLinkResourceListResultValueList =
-  ReadonlyArray<PrivateLinkResource>;
+export type PrivateLinkResourceListResultValueList = Array<PrivateLinkResource>;
 export const PrivateLinkResourceListResultValueList = /*@__PURE__*/ S.Array(
   PrivateLinkResource,
 ) as any as S.Schema<PrivateLinkResourceListResultValueList>;
@@ -2380,7 +2378,7 @@ export const ReplicasListByConfigurationStoreRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ReplicasListByConfigurationStoreRequest>;
 
 /** The collection value. */
-export type ReplicaListResultValueList = ReadonlyArray<Replica>;
+export type ReplicaListResultValueList = Array<Replica>;
 export const ReplicaListResultValueList = /*@__PURE__*/ S.Array(
   Replica,
 ) as any as S.Schema<ReplicaListResultValueList>;
@@ -2416,7 +2414,7 @@ export const KeyValueFilter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "KeyValueFilter" }) as any as S.Schema<KeyValueFilter>;
 
 /** A list of filters used to filter the key-values included in the snapshot. */
-export type SnapshotPropertiesInputFiltersList = ReadonlyArray<KeyValueFilter>;
+export type SnapshotPropertiesInputFiltersList = Array<KeyValueFilter>;
 export const SnapshotPropertiesInputFiltersList = /*@__PURE__*/ S.Array(
   KeyValueFilter,
 ) as any as S.Schema<SnapshotPropertiesInputFiltersList>;
@@ -2506,7 +2504,7 @@ export type SnapshotPropertiesStatus =
 export const SnapshotPropertiesStatus = /*@__PURE__*/ S.String;
 
 /** A list of filters used to filter the key-values included in the snapshot. */
-export type SnapshotPropertiesFiltersList = ReadonlyArray<KeyValueFilter>;
+export type SnapshotPropertiesFiltersList = Array<KeyValueFilter>;
 export const SnapshotPropertiesFiltersList = /*@__PURE__*/ S.Array(
   KeyValueFilter,
 ) as any as S.Schema<SnapshotPropertiesFiltersList>;

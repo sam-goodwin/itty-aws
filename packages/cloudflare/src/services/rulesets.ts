@@ -199,8 +199,7 @@ export const RulesCreateRequestBodyBlockRule = /*@__PURE__*/ S.suspend(() =>
 export type RulesCreateRequestBodyChallengeRuleAction = "challenge";
 export const RulesCreateRequestBodyChallengeRuleAction = /*@__PURE__*/ S.String;
 
-export type RulesCreateRequestBodyChallengeRuleCategoriesList =
-  ReadonlyArray<string>;
+export type RulesCreateRequestBodyChallengeRuleCategoriesList = Array<string>;
 export const RulesCreateRequestBodyChallengeRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -294,7 +293,7 @@ export const RulesCreateRequestBodyChallengeRulePosition =
   }) as any as S.Schema<RulesCreateRequestBodyChallengeRulePosition>;
 
 export type RulesCreateRequestBodyChallengeRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesCreateRequestBodyChallengeRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -699,7 +698,7 @@ export const RulesCreateRequestBodyJavaScriptChallengeRuleAction =
   /*@__PURE__*/ S.String;
 
 export type RulesCreateRequestBodyJavaScriptChallengeRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesCreateRequestBodyJavaScriptChallengeRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -784,7 +783,7 @@ export const RulesCreateRequestBodyJavaScriptChallengeRulePosition =
   }) as any as S.Schema<RulesCreateRequestBodyJavaScriptChallengeRulePosition>;
 
 export type RulesCreateRequestBodyJavaScriptChallengeRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesCreateRequestBodyJavaScriptChallengeRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1777,7 +1776,7 @@ export const RulesCreateRequestBodySetCacheControlRuleActionParametersNoCacheSet
   /*@__PURE__*/ S.String;
 
 export type RulesCreateRequestBodySetCacheControlRuleActionParametersNoCacheSetDirectiveQualifiersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesCreateRequestBodySetCacheControlRuleActionParametersNoCacheSetDirectiveQualifiersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2016,7 +2015,7 @@ export const RulesCreateRequestBodySetCacheControlRuleActionParametersPrivateSet
   /*@__PURE__*/ S.String;
 
 export type RulesCreateRequestBodySetCacheControlRuleActionParametersPrivateSetDirectiveQualifiersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesCreateRequestBodySetCacheControlRuleActionParametersPrivateSetDirectiveQualifiersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2585,7 +2584,7 @@ export const RulesCreateRequestBodySetCacheControlRuleActionParameters =
   }) as any as S.Schema<RulesCreateRequestBodySetCacheControlRuleActionParameters>;
 
 export type RulesCreateRequestBodySetCacheControlRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesCreateRequestBodySetCacheControlRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2670,7 +2669,7 @@ export const RulesCreateRequestBodySetCacheControlRulePosition =
   }) as any as S.Schema<RulesCreateRequestBodySetCacheControlRulePosition>;
 
 export type RulesCreateRequestBodySetCacheControlRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesCreateRequestBodySetCacheControlRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2867,7 +2866,7 @@ export const RulesCreateRequestBodySetCacheTagsRuleActionParametersAddCacheTagsV
   /*@__PURE__*/ S.String;
 
 export type RulesCreateRequestBodySetCacheTagsRuleActionParametersAddCacheTagsValuesValuesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesCreateRequestBodySetCacheTagsRuleActionParametersAddCacheTagsValuesValuesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2925,7 +2924,7 @@ export const RulesCreateRequestBodySetCacheTagsRuleActionParametersRemoveCacheTa
   /*@__PURE__*/ S.String;
 
 export type RulesCreateRequestBodySetCacheTagsRuleActionParametersRemoveCacheTagsValuesValuesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesCreateRequestBodySetCacheTagsRuleActionParametersRemoveCacheTagsValuesValuesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2983,7 +2982,7 @@ export const RulesCreateRequestBodySetCacheTagsRuleActionParametersSetCacheTagsV
   /*@__PURE__*/ S.String;
 
 export type RulesCreateRequestBodySetCacheTagsRuleActionParametersSetCacheTagsValuesValuesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesCreateRequestBodySetCacheTagsRuleActionParametersSetCacheTagsValuesValuesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3083,7 +3082,7 @@ export const RulesCreateRequestBodySetCacheTagsRuleActionParameters =
   }) as any as S.Schema<RulesCreateRequestBodySetCacheTagsRuleActionParameters>;
 
 export type RulesCreateRequestBodySetCacheTagsRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesCreateRequestBodySetCacheTagsRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3164,7 +3163,7 @@ export const RulesCreateRequestBodySetCacheTagsRulePosition =
   }) as any as S.Schema<RulesCreateRequestBodySetCacheTagsRulePosition>;
 
 export type RulesCreateRequestBodySetCacheTagsRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesCreateRequestBodySetCacheTagsRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3441,7 +3440,7 @@ export const RulesCreateRequestBodyTransformResponseHTMLRuleActionParameters =
   }) as any as S.Schema<RulesCreateRequestBodyTransformResponseHTMLRuleActionParameters>;
 
 export type RulesCreateRequestBodyTransformResponseHTMLRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesCreateRequestBodyTransformResponseHTMLRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3526,7 +3525,7 @@ export const RulesCreateRequestBodyTransformResponseHTMLRulePosition =
   }) as any as S.Schema<RulesCreateRequestBodyTransformResponseHTMLRulePosition>;
 
 export type RulesCreateRequestBodyTransformResponseHTMLRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesCreateRequestBodyTransformResponseHTMLRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3902,8 +3901,7 @@ export const RulesCreateResponseRulesItemBlockRuleActionParameters =
     identifier: "RulesCreateResponseRulesItemBlockRuleActionParameters",
   }) as any as S.Schema<RulesCreateResponseRulesItemBlockRuleActionParameters>;
 
-export type RulesCreateResponseRulesItemBlockRuleCategoriesList =
-  ReadonlyArray<string>;
+export type RulesCreateResponseRulesItemBlockRuleCategoriesList = Array<string>;
 export const RulesCreateResponseRulesItemBlockRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3939,7 +3937,7 @@ export const RulesCreateResponseRulesItemBlockRuleLogging =
   }) as any as S.Schema<RulesCreateResponseRulesItemBlockRuleLogging>;
 
 export type RulesCreateResponseRulesItemBlockRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesCreateResponseRulesItemBlockRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4053,8 +4051,7 @@ export type RulesCreateResponseRulesItemChallengeAction = "challenge";
 export const RulesCreateResponseRulesItemChallengeAction =
   /*@__PURE__*/ S.String;
 
-export type RulesCreateResponseRulesItemChallengeCategoriesList =
-  ReadonlyArray<string>;
+export type RulesCreateResponseRulesItemChallengeCategoriesList = Array<string>;
 export const RulesCreateResponseRulesItemChallengeCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4077,7 +4074,7 @@ export const RulesCreateResponseRulesItemChallengeExposedCredentialCheck =
   }) as any as S.Schema<RulesCreateResponseRulesItemChallengeExposedCredentialCheck>;
 
 export type RulesCreateResponseRulesItemChallengeRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesCreateResponseRulesItemChallengeRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4210,7 +4207,7 @@ export const RulesCreateResponseRulesItemCompressResponseRuleActionParametersAlg
   }) as any as S.Schema<RulesCreateResponseRulesItemCompressResponseRuleActionParametersAlgorithmsItem>;
 
 export type RulesCreateResponseRulesItemCompressResponseRuleActionParametersAlgorithmsList =
-  ReadonlyArray<RulesCreateResponseRulesItemCompressResponseRuleActionParametersAlgorithmsItem>;
+  Array<RulesCreateResponseRulesItemCompressResponseRuleActionParametersAlgorithmsItem>;
 export const RulesCreateResponseRulesItemCompressResponseRuleActionParametersAlgorithmsList =
   /*@__PURE__*/ S.Array(
     RulesCreateResponseRulesItemCompressResponseRuleActionParametersAlgorithmsItem,
@@ -4232,7 +4229,7 @@ export const RulesCreateResponseRulesItemCompressResponseRuleActionParameters =
   }) as any as S.Schema<RulesCreateResponseRulesItemCompressResponseRuleActionParameters>;
 
 export type RulesCreateResponseRulesItemCompressResponseRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesCreateResponseRulesItemCompressResponseRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4256,7 +4253,7 @@ export const RulesCreateResponseRulesItemCompressResponseRuleExposedCredentialCh
   }) as any as S.Schema<RulesCreateResponseRulesItemCompressResponseRuleExposedCredentialCheck>;
 
 export type RulesCreateResponseRulesItemCompressResponseRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesCreateResponseRulesItemCompressResponseRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4375,7 +4372,7 @@ export const RulesCreateResponseRulesItemDDoSDynamicRuleAction =
   /*@__PURE__*/ S.String;
 
 export type RulesCreateResponseRulesItemDDoSDynamicRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesCreateResponseRulesItemDDoSDynamicRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4399,7 +4396,7 @@ export const RulesCreateResponseRulesItemDDoSDynamicRuleExposedCredentialCheck =
   }) as any as S.Schema<RulesCreateResponseRulesItemDDoSDynamicRuleExposedCredentialCheck>;
 
 export type RulesCreateResponseRulesItemDDoSDynamicRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesCreateResponseRulesItemDDoSDynamicRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4558,7 +4555,7 @@ export const RulesCreateResponseRulesItemExecuteRuleActionParametersOverridesCat
   }) as any as S.Schema<RulesCreateResponseRulesItemExecuteRuleActionParametersOverridesCategoriesItem>;
 
 export type RulesCreateResponseRulesItemExecuteRuleActionParametersOverridesCategoriesList =
-  ReadonlyArray<RulesCreateResponseRulesItemExecuteRuleActionParametersOverridesCategoriesItem>;
+  Array<RulesCreateResponseRulesItemExecuteRuleActionParametersOverridesCategoriesItem>;
 export const RulesCreateResponseRulesItemExecuteRuleActionParametersOverridesCategoriesList =
   /*@__PURE__*/ S.Array(
     RulesCreateResponseRulesItemExecuteRuleActionParametersOverridesCategoriesItem,
@@ -4600,7 +4597,7 @@ export const RulesCreateResponseRulesItemExecuteRuleActionParametersOverridesRul
   }) as any as S.Schema<RulesCreateResponseRulesItemExecuteRuleActionParametersOverridesRulesItem>;
 
 export type RulesCreateResponseRulesItemExecuteRuleActionParametersOverridesRulesList =
-  ReadonlyArray<RulesCreateResponseRulesItemExecuteRuleActionParametersOverridesRulesItem>;
+  Array<RulesCreateResponseRulesItemExecuteRuleActionParametersOverridesRulesItem>;
 export const RulesCreateResponseRulesItemExecuteRuleActionParametersOverridesRulesList =
   /*@__PURE__*/ S.Array(
     RulesCreateResponseRulesItemExecuteRuleActionParametersOverridesRulesItem,
@@ -4671,7 +4668,7 @@ export const RulesCreateResponseRulesItemExecuteRuleActionParameters =
   }) as any as S.Schema<RulesCreateResponseRulesItemExecuteRuleActionParameters>;
 
 export type RulesCreateResponseRulesItemExecuteRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesCreateResponseRulesItemExecuteRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4694,7 +4691,7 @@ export const RulesCreateResponseRulesItemExecuteRuleExposedCredentialCheck =
   }) as any as S.Schema<RulesCreateResponseRulesItemExecuteRuleExposedCredentialCheck>;
 
 export type RulesCreateResponseRulesItemExecuteRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesCreateResponseRulesItemExecuteRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4810,7 +4807,7 @@ export const RulesCreateResponseRulesItemForceConnectionCloseRuleAction =
   /*@__PURE__*/ S.String;
 
 export type RulesCreateResponseRulesItemForceConnectionCloseRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesCreateResponseRulesItemForceConnectionCloseRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4834,7 +4831,7 @@ export const RulesCreateResponseRulesItemForceConnectionCloseRuleExposedCredenti
   }) as any as S.Schema<RulesCreateResponseRulesItemForceConnectionCloseRuleExposedCredentialCheck>;
 
 export type RulesCreateResponseRulesItemForceConnectionCloseRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesCreateResponseRulesItemForceConnectionCloseRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4949,7 +4946,7 @@ export const RulesCreateResponseRulesItemJSChallengeAction =
   /*@__PURE__*/ S.String;
 
 export type RulesCreateResponseRulesItemJSChallengeCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesCreateResponseRulesItemJSChallengeCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4972,7 +4969,7 @@ export const RulesCreateResponseRulesItemJSChallengeExposedCredentialCheck =
   }) as any as S.Schema<RulesCreateResponseRulesItemJSChallengeExposedCredentialCheck>;
 
 export type RulesCreateResponseRulesItemJSChallengeRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesCreateResponseRulesItemJSChallengeRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5081,8 +5078,7 @@ export const RulesCreateResponseRulesItemJSChallenge = /*@__PURE__*/ S.suspend(
 export type RulesCreateResponseRulesItemLogRuleAction = "log";
 export const RulesCreateResponseRulesItemLogRuleAction = /*@__PURE__*/ S.String;
 
-export type RulesCreateResponseRulesItemLogRuleCategoriesList =
-  ReadonlyArray<string>;
+export type RulesCreateResponseRulesItemLogRuleCategoriesList = Array<string>;
 export const RulesCreateResponseRulesItemLogRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5105,7 +5101,7 @@ export const RulesCreateResponseRulesItemLogRuleExposedCredentialCheck =
   }) as any as S.Schema<RulesCreateResponseRulesItemLogRuleExposedCredentialCheck>;
 
 export type RulesCreateResponseRulesItemLogRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesCreateResponseRulesItemLogRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5228,7 +5224,7 @@ export const RulesCreateResponseRulesItemLogCustomFieldRuleActionParametersCooki
   }) as any as S.Schema<RulesCreateResponseRulesItemLogCustomFieldRuleActionParametersCookieFieldsItem>;
 
 export type RulesCreateResponseRulesItemLogCustomFieldRuleActionParametersCookieFieldsList =
-  ReadonlyArray<RulesCreateResponseRulesItemLogCustomFieldRuleActionParametersCookieFieldsItem>;
+  Array<RulesCreateResponseRulesItemLogCustomFieldRuleActionParametersCookieFieldsItem>;
 export const RulesCreateResponseRulesItemLogCustomFieldRuleActionParametersCookieFieldsList =
   /*@__PURE__*/ S.Array(
     RulesCreateResponseRulesItemLogCustomFieldRuleActionParametersCookieFieldsItem,
@@ -5254,7 +5250,7 @@ export const RulesCreateResponseRulesItemLogCustomFieldRuleActionParametersRawRe
   }) as any as S.Schema<RulesCreateResponseRulesItemLogCustomFieldRuleActionParametersRawResponseFieldsItem>;
 
 export type RulesCreateResponseRulesItemLogCustomFieldRuleActionParametersRawResponseFieldsList =
-  ReadonlyArray<RulesCreateResponseRulesItemLogCustomFieldRuleActionParametersRawResponseFieldsItem>;
+  Array<RulesCreateResponseRulesItemLogCustomFieldRuleActionParametersRawResponseFieldsItem>;
 export const RulesCreateResponseRulesItemLogCustomFieldRuleActionParametersRawResponseFieldsList =
   /*@__PURE__*/ S.Array(
     RulesCreateResponseRulesItemLogCustomFieldRuleActionParametersRawResponseFieldsItem,
@@ -5275,7 +5271,7 @@ export const RulesCreateResponseRulesItemLogCustomFieldRuleActionParametersReque
   }) as any as S.Schema<RulesCreateResponseRulesItemLogCustomFieldRuleActionParametersRequestFieldsItem>;
 
 export type RulesCreateResponseRulesItemLogCustomFieldRuleActionParametersRequestFieldsList =
-  ReadonlyArray<RulesCreateResponseRulesItemLogCustomFieldRuleActionParametersRequestFieldsItem>;
+  Array<RulesCreateResponseRulesItemLogCustomFieldRuleActionParametersRequestFieldsItem>;
 export const RulesCreateResponseRulesItemLogCustomFieldRuleActionParametersRequestFieldsList =
   /*@__PURE__*/ S.Array(
     RulesCreateResponseRulesItemLogCustomFieldRuleActionParametersRequestFieldsItem,
@@ -5301,7 +5297,7 @@ export const RulesCreateResponseRulesItemLogCustomFieldRuleActionParametersRespo
   }) as any as S.Schema<RulesCreateResponseRulesItemLogCustomFieldRuleActionParametersResponseFieldsItem>;
 
 export type RulesCreateResponseRulesItemLogCustomFieldRuleActionParametersResponseFieldsList =
-  ReadonlyArray<RulesCreateResponseRulesItemLogCustomFieldRuleActionParametersResponseFieldsItem>;
+  Array<RulesCreateResponseRulesItemLogCustomFieldRuleActionParametersResponseFieldsItem>;
 export const RulesCreateResponseRulesItemLogCustomFieldRuleActionParametersResponseFieldsList =
   /*@__PURE__*/ S.Array(
     RulesCreateResponseRulesItemLogCustomFieldRuleActionParametersResponseFieldsItem,
@@ -5322,7 +5318,7 @@ export const RulesCreateResponseRulesItemLogCustomFieldRuleActionParametersTrans
   }) as any as S.Schema<RulesCreateResponseRulesItemLogCustomFieldRuleActionParametersTransformedRequestFieldsItem>;
 
 export type RulesCreateResponseRulesItemLogCustomFieldRuleActionParametersTransformedRequestFieldsList =
-  ReadonlyArray<RulesCreateResponseRulesItemLogCustomFieldRuleActionParametersTransformedRequestFieldsItem>;
+  Array<RulesCreateResponseRulesItemLogCustomFieldRuleActionParametersTransformedRequestFieldsItem>;
 export const RulesCreateResponseRulesItemLogCustomFieldRuleActionParametersTransformedRequestFieldsList =
   /*@__PURE__*/ S.Array(
     RulesCreateResponseRulesItemLogCustomFieldRuleActionParametersTransformedRequestFieldsItem,
@@ -5375,7 +5371,7 @@ export const RulesCreateResponseRulesItemLogCustomFieldRuleActionParameters =
   }) as any as S.Schema<RulesCreateResponseRulesItemLogCustomFieldRuleActionParameters>;
 
 export type RulesCreateResponseRulesItemLogCustomFieldRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesCreateResponseRulesItemLogCustomFieldRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5399,7 +5395,7 @@ export const RulesCreateResponseRulesItemLogCustomFieldRuleExposedCredentialChec
   }) as any as S.Schema<RulesCreateResponseRulesItemLogCustomFieldRuleExposedCredentialCheck>;
 
 export type RulesCreateResponseRulesItemLogCustomFieldRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesCreateResponseRulesItemLogCustomFieldRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5517,7 +5513,7 @@ export const RulesCreateResponseRulesItemManagedChallengeRuleAction =
   /*@__PURE__*/ S.String;
 
 export type RulesCreateResponseRulesItemManagedChallengeRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesCreateResponseRulesItemManagedChallengeRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5541,7 +5537,7 @@ export const RulesCreateResponseRulesItemManagedChallengeRuleExposedCredentialCh
   }) as any as S.Schema<RulesCreateResponseRulesItemManagedChallengeRuleExposedCredentialCheck>;
 
 export type RulesCreateResponseRulesItemManagedChallengeRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesCreateResponseRulesItemManagedChallengeRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5748,7 +5744,7 @@ export const RulesCreateResponseRulesItemRedirectRuleActionParameters =
   }) as any as S.Schema<RulesCreateResponseRulesItemRedirectRuleActionParameters>;
 
 export type RulesCreateResponseRulesItemRedirectRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesCreateResponseRulesItemRedirectRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5772,7 +5768,7 @@ export const RulesCreateResponseRulesItemRedirectRuleExposedCredentialCheck =
   }) as any as S.Schema<RulesCreateResponseRulesItemRedirectRuleExposedCredentialCheck>;
 
 export type RulesCreateResponseRulesItemRedirectRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesCreateResponseRulesItemRedirectRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6142,7 +6138,7 @@ export const RulesCreateResponseRulesItemRewriteRuleActionParameters =
   }) as any as S.Schema<RulesCreateResponseRulesItemRewriteRuleActionParameters>;
 
 export type RulesCreateResponseRulesItemRewriteRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesCreateResponseRulesItemRewriteRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6165,7 +6161,7 @@ export const RulesCreateResponseRulesItemRewriteRuleExposedCredentialCheck =
   }) as any as S.Schema<RulesCreateResponseRulesItemRewriteRuleExposedCredentialCheck>;
 
 export type RulesCreateResponseRulesItemRewriteRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesCreateResponseRulesItemRewriteRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6329,8 +6325,7 @@ export const RulesCreateResponseRulesItemRouteRuleActionParameters =
     identifier: "RulesCreateResponseRulesItemRouteRuleActionParameters",
   }) as any as S.Schema<RulesCreateResponseRulesItemRouteRuleActionParameters>;
 
-export type RulesCreateResponseRulesItemRouteRuleCategoriesList =
-  ReadonlyArray<string>;
+export type RulesCreateResponseRulesItemRouteRuleCategoriesList = Array<string>;
 export const RulesCreateResponseRulesItemRouteRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6353,7 +6348,7 @@ export const RulesCreateResponseRulesItemRouteRuleExposedCredentialCheck =
   }) as any as S.Schema<RulesCreateResponseRulesItemRouteRuleExposedCredentialCheck>;
 
 export type RulesCreateResponseRulesItemRouteRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesCreateResponseRulesItemRouteRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6480,8 +6475,7 @@ export const RulesCreateResponseRulesItemScoreRuleActionParameters =
     identifier: "RulesCreateResponseRulesItemScoreRuleActionParameters",
   }) as any as S.Schema<RulesCreateResponseRulesItemScoreRuleActionParameters>;
 
-export type RulesCreateResponseRulesItemScoreRuleCategoriesList =
-  ReadonlyArray<string>;
+export type RulesCreateResponseRulesItemScoreRuleCategoriesList = Array<string>;
 export const RulesCreateResponseRulesItemScoreRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6504,7 +6498,7 @@ export const RulesCreateResponseRulesItemScoreRuleExposedCredentialCheck =
   }) as any as S.Schema<RulesCreateResponseRulesItemScoreRuleExposedCredentialCheck>;
 
 export type RulesCreateResponseRulesItemScoreRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesCreateResponseRulesItemScoreRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6706,7 +6700,7 @@ export const RulesCreateResponseRulesItemServeErrorRuleActionParameters =
   }) as any as S.Schema<RulesCreateResponseRulesItemServeErrorRuleActionParameters>;
 
 export type RulesCreateResponseRulesItemServeErrorRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesCreateResponseRulesItemServeErrorRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6730,7 +6724,7 @@ export const RulesCreateResponseRulesItemServeErrorRuleExposedCredentialCheck =
   }) as any as S.Schema<RulesCreateResponseRulesItemServeErrorRuleExposedCredentialCheck>;
 
 export type RulesCreateResponseRulesItemServeErrorRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesCreateResponseRulesItemServeErrorRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -7131,7 +7125,7 @@ export const RulesCreateResponseRulesItemSetCacheControlActionParametersNoCacheS
   /*@__PURE__*/ S.String;
 
 export type RulesCreateResponseRulesItemSetCacheControlActionParametersNoCacheSetDirectiveQualifiersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesCreateResponseRulesItemSetCacheControlActionParametersNoCacheSetDirectiveQualifiersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -7352,7 +7346,7 @@ export const RulesCreateResponseRulesItemSetCacheControlActionParametersPrivateS
   /*@__PURE__*/ S.String;
 
 export type RulesCreateResponseRulesItemSetCacheControlActionParametersPrivateSetDirectiveQualifiersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesCreateResponseRulesItemSetCacheControlActionParametersPrivateSetDirectiveQualifiersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -7885,7 +7879,7 @@ export const RulesCreateResponseRulesItemSetCacheControlActionParameters =
   }) as any as S.Schema<RulesCreateResponseRulesItemSetCacheControlActionParameters>;
 
 export type RulesCreateResponseRulesItemSetCacheControlCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesCreateResponseRulesItemSetCacheControlCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -7909,7 +7903,7 @@ export const RulesCreateResponseRulesItemSetCacheControlExposedCredentialCheck =
   }) as any as S.Schema<RulesCreateResponseRulesItemSetCacheControlExposedCredentialCheck>;
 
 export type RulesCreateResponseRulesItemSetCacheControlRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesCreateResponseRulesItemSetCacheControlRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -8027,7 +8021,7 @@ export const RulesCreateResponseRulesItemSetCacheSettingsRuleAction =
   /*@__PURE__*/ S.String;
 
 export type RulesCreateResponseRulesItemSetCacheSettingsRuleActionParametersAdditionalCacheablePortsList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const RulesCreateResponseRulesItemSetCacheSettingsRuleActionParametersAdditionalCacheablePortsList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -8056,14 +8050,14 @@ export const RulesCreateResponseRulesItemSetCacheSettingsRuleActionParametersBro
   }) as any as S.Schema<RulesCreateResponseRulesItemSetCacheSettingsRuleActionParametersBrowserTtl>;
 
 export type RulesCreateResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookieCheckPresenceList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesCreateResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookieCheckPresenceList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<RulesCreateResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookieCheckPresenceList>;
 
 export type RulesCreateResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookieIncludeList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesCreateResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookieIncludeList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -8093,14 +8087,14 @@ export const RulesCreateResponseRulesItemSetCacheSettingsRuleActionParametersCac
   }) as any as S.Schema<RulesCreateResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookie>;
 
 export type RulesCreateResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderCheckPresenceList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesCreateResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderCheckPresenceList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<RulesCreateResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderCheckPresenceList>;
 
 export type RulesCreateResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderContainsValueList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesCreateResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderContainsValueList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -8119,7 +8113,7 @@ export const RulesCreateResponseRulesItemSetCacheSettingsRuleActionParametersCac
   ) as any as S.Schema<RulesCreateResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderContainsMap>;
 
 export type RulesCreateResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderIncludeList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesCreateResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderIncludeList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -8171,7 +8165,7 @@ export const RulesCreateResponseRulesItemSetCacheSettingsRuleActionParametersCac
   }) as any as S.Schema<RulesCreateResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHost>;
 
 export type RulesCreateResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringExcludeListList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesCreateResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringExcludeListList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -8197,7 +8191,7 @@ export const RulesCreateResponseRulesItemSetCacheSettingsRuleActionParametersCac
   }) as any as S.Schema<RulesCreateResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringExclude>;
 
 export type RulesCreateResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringIncludeListList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesCreateResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringIncludeListList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -8398,7 +8392,7 @@ export const RulesCreateResponseRulesItemSetCacheSettingsRuleActionParametersEdg
   }) as any as S.Schema<RulesCreateResponseRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlItem>;
 
 export type RulesCreateResponseRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlList =
-  ReadonlyArray<RulesCreateResponseRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlItem>;
+  Array<RulesCreateResponseRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlItem>;
 export const RulesCreateResponseRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlList =
   /*@__PURE__*/ S.Array(
     RulesCreateResponseRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlItem,
@@ -8484,14 +8478,14 @@ export const RulesCreateResponseRulesItemSetCacheSettingsRuleActionParametersVar
   /*@__PURE__*/ S.String;
 
 export type RulesCreateResponseRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValueLanguagesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesCreateResponseRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValueLanguagesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<RulesCreateResponseRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValueLanguagesList>;
 
 export type RulesCreateResponseRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValueMediaTypesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesCreateResponseRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValueMediaTypesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -8655,7 +8649,7 @@ export const RulesCreateResponseRulesItemSetCacheSettingsRuleActionParameters =
   }) as any as S.Schema<RulesCreateResponseRulesItemSetCacheSettingsRuleActionParameters>;
 
 export type RulesCreateResponseRulesItemSetCacheSettingsRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesCreateResponseRulesItemSetCacheSettingsRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -8679,7 +8673,7 @@ export const RulesCreateResponseRulesItemSetCacheSettingsRuleExposedCredentialCh
   }) as any as S.Schema<RulesCreateResponseRulesItemSetCacheSettingsRuleExposedCredentialCheck>;
 
 export type RulesCreateResponseRulesItemSetCacheSettingsRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesCreateResponseRulesItemSetCacheSettingsRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -8803,7 +8797,7 @@ export const RulesCreateResponseRulesItemSetCacheTagsActionParametersAddCacheTag
   /*@__PURE__*/ S.String;
 
 export type RulesCreateResponseRulesItemSetCacheTagsActionParametersAddCacheTagsValuesValuesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesCreateResponseRulesItemSetCacheTagsActionParametersAddCacheTagsValuesValuesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -8857,7 +8851,7 @@ export const RulesCreateResponseRulesItemSetCacheTagsActionParametersRemoveCache
   /*@__PURE__*/ S.String;
 
 export type RulesCreateResponseRulesItemSetCacheTagsActionParametersRemoveCacheTagsValuesValuesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesCreateResponseRulesItemSetCacheTagsActionParametersRemoveCacheTagsValuesValuesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -8911,7 +8905,7 @@ export const RulesCreateResponseRulesItemSetCacheTagsActionParametersSetCacheTag
   /*@__PURE__*/ S.String;
 
 export type RulesCreateResponseRulesItemSetCacheTagsActionParametersSetCacheTagsValuesValuesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesCreateResponseRulesItemSetCacheTagsActionParametersSetCacheTagsValuesValuesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -9001,7 +8995,7 @@ export const RulesCreateResponseRulesItemSetCacheTagsActionParameters =
   }) as any as S.Schema<RulesCreateResponseRulesItemSetCacheTagsActionParameters>;
 
 export type RulesCreateResponseRulesItemSetCacheTagsCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesCreateResponseRulesItemSetCacheTagsCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -9025,7 +9019,7 @@ export const RulesCreateResponseRulesItemSetCacheTagsExposedCredentialCheck =
   }) as any as S.Schema<RulesCreateResponseRulesItemSetCacheTagsExposedCredentialCheck>;
 
 export type RulesCreateResponseRulesItemSetCacheTagsRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesCreateResponseRulesItemSetCacheTagsRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -9298,7 +9292,7 @@ export const RulesCreateResponseRulesItemSetConfigRuleActionParameters =
   }) as any as S.Schema<RulesCreateResponseRulesItemSetConfigRuleActionParameters>;
 
 export type RulesCreateResponseRulesItemSetConfigRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesCreateResponseRulesItemSetConfigRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -9322,7 +9316,7 @@ export const RulesCreateResponseRulesItemSetConfigRuleExposedCredentialCheck =
   }) as any as S.Schema<RulesCreateResponseRulesItemSetConfigRuleExposedCredentialCheck>;
 
 export type RulesCreateResponseRulesItemSetConfigRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesCreateResponseRulesItemSetConfigRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -9470,7 +9464,7 @@ export const RulesCreateResponseRulesItemSkipRuleActionParametersPhasesItem =
   /*@__PURE__*/ S.String;
 
 export type RulesCreateResponseRulesItemSkipRuleActionParametersPhasesList =
-  ReadonlyArray<RulesCreateResponseRulesItemSkipRuleActionParametersPhasesItem>;
+  Array<RulesCreateResponseRulesItemSkipRuleActionParametersPhasesItem>;
 export const RulesCreateResponseRulesItemSkipRuleActionParametersPhasesList =
   /*@__PURE__*/ S.Array(
     RulesCreateResponseRulesItemSkipRuleActionParametersPhasesItem,
@@ -9488,14 +9482,14 @@ export const RulesCreateResponseRulesItemSkipRuleActionParametersProductsItem =
   /*@__PURE__*/ S.String;
 
 export type RulesCreateResponseRulesItemSkipRuleActionParametersProductsList =
-  ReadonlyArray<RulesCreateResponseRulesItemSkipRuleActionParametersProductsItem>;
+  Array<RulesCreateResponseRulesItemSkipRuleActionParametersProductsItem>;
 export const RulesCreateResponseRulesItemSkipRuleActionParametersProductsList =
   /*@__PURE__*/ S.Array(
     RulesCreateResponseRulesItemSkipRuleActionParametersProductsItem,
   ) as any as S.Schema<RulesCreateResponseRulesItemSkipRuleActionParametersProductsList>;
 
 export type RulesCreateResponseRulesItemSkipRuleActionParametersRulesValueList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesCreateResponseRulesItemSkipRuleActionParametersRulesValueList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -9518,7 +9512,7 @@ export const RulesCreateResponseRulesItemSkipRuleActionParametersRuleset =
   /*@__PURE__*/ S.String;
 
 export type RulesCreateResponseRulesItemSkipRuleActionParametersRulesetsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesCreateResponseRulesItemSkipRuleActionParametersRulesetsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -9564,8 +9558,7 @@ export const RulesCreateResponseRulesItemSkipRuleActionParameters =
     identifier: "RulesCreateResponseRulesItemSkipRuleActionParameters",
   }) as any as S.Schema<RulesCreateResponseRulesItemSkipRuleActionParameters>;
 
-export type RulesCreateResponseRulesItemSkipRuleCategoriesList =
-  ReadonlyArray<string>;
+export type RulesCreateResponseRulesItemSkipRuleCategoriesList = Array<string>;
 export const RulesCreateResponseRulesItemSkipRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -9588,7 +9581,7 @@ export const RulesCreateResponseRulesItemSkipRuleExposedCredentialCheck =
   }) as any as S.Schema<RulesCreateResponseRulesItemSkipRuleExposedCredentialCheck>;
 
 export type RulesCreateResponseRulesItemSkipRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesCreateResponseRulesItemSkipRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -9718,7 +9711,7 @@ export const RulesCreateResponseRulesItemTransformResponseHTMLActionParameters =
   }) as any as S.Schema<RulesCreateResponseRulesItemTransformResponseHTMLActionParameters>;
 
 export type RulesCreateResponseRulesItemTransformResponseHTMLCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesCreateResponseRulesItemTransformResponseHTMLCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -9742,7 +9735,7 @@ export const RulesCreateResponseRulesItemTransformResponseHTMLExposedCredentialC
   }) as any as S.Schema<RulesCreateResponseRulesItemTransformResponseHTMLExposedCredentialCheck>;
 
 export type RulesCreateResponseRulesItemTransformResponseHTMLRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesCreateResponseRulesItemTransformResponseHTMLRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -10119,8 +10112,7 @@ export const RulesCreateResponseRulesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "RulesCreateResponseRulesItem",
 }) as any as S.Schema<RulesCreateResponseRulesItem>;
 
-export type RulesCreateResponseRulesList =
-  ReadonlyArray<RulesCreateResponseRulesItem>;
+export type RulesCreateResponseRulesList = Array<RulesCreateResponseRulesItem>;
 export const RulesCreateResponseRulesList = /*@__PURE__*/ S.Array(
   RulesCreateResponseRulesItem,
 ) as any as S.Schema<RulesCreateResponseRulesList>;
@@ -10251,8 +10243,7 @@ export const CreateRequestRulesItemBlockRuleActionParameters =
     identifier: "CreateRequestRulesItemBlockRuleActionParameters",
   }) as any as S.Schema<CreateRequestRulesItemBlockRuleActionParameters>;
 
-export type CreateRequestRulesItemBlockRuleCategoriesList =
-  ReadonlyArray<string>;
+export type CreateRequestRulesItemBlockRuleCategoriesList = Array<string>;
 export const CreateRequestRulesItemBlockRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -10288,7 +10279,7 @@ export const CreateRequestRulesItemBlockRuleLogging = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CreateRequestRulesItemBlockRuleLogging>;
 
 export type CreateRequestRulesItemBlockRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CreateRequestRulesItemBlockRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -10398,8 +10389,7 @@ export const CreateRequestRulesItemBlockRule = /*@__PURE__*/ S.suspend(() =>
 export type CreateRequestRulesItemChallengeAction = "challenge";
 export const CreateRequestRulesItemChallengeAction = /*@__PURE__*/ S.String;
 
-export type CreateRequestRulesItemChallengeCategoriesList =
-  ReadonlyArray<string>;
+export type CreateRequestRulesItemChallengeCategoriesList = Array<string>;
 export const CreateRequestRulesItemChallengeCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -10422,7 +10412,7 @@ export const CreateRequestRulesItemChallengeExposedCredentialCheck =
   }) as any as S.Schema<CreateRequestRulesItemChallengeExposedCredentialCheck>;
 
 export type CreateRequestRulesItemChallengeRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CreateRequestRulesItemChallengeRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -10554,7 +10544,7 @@ export const CreateRequestRulesItemCompressResponseRuleActionParametersAlgorithm
   }) as any as S.Schema<CreateRequestRulesItemCompressResponseRuleActionParametersAlgorithmsItem>;
 
 export type CreateRequestRulesItemCompressResponseRuleActionParametersAlgorithmsList =
-  ReadonlyArray<CreateRequestRulesItemCompressResponseRuleActionParametersAlgorithmsItem>;
+  Array<CreateRequestRulesItemCompressResponseRuleActionParametersAlgorithmsItem>;
 export const CreateRequestRulesItemCompressResponseRuleActionParametersAlgorithmsList =
   /*@__PURE__*/ S.Array(
     CreateRequestRulesItemCompressResponseRuleActionParametersAlgorithmsItem,
@@ -10575,7 +10565,7 @@ export const CreateRequestRulesItemCompressResponseRuleActionParameters =
   }) as any as S.Schema<CreateRequestRulesItemCompressResponseRuleActionParameters>;
 
 export type CreateRequestRulesItemCompressResponseRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CreateRequestRulesItemCompressResponseRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -10599,7 +10589,7 @@ export const CreateRequestRulesItemCompressResponseRuleExposedCredentialCheck =
   }) as any as S.Schema<CreateRequestRulesItemCompressResponseRuleExposedCredentialCheck>;
 
 export type CreateRequestRulesItemCompressResponseRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CreateRequestRulesItemCompressResponseRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -10715,8 +10705,7 @@ export type CreateRequestRulesItemDDoSDynamicRuleAction = "ddos_dynamic";
 export const CreateRequestRulesItemDDoSDynamicRuleAction =
   /*@__PURE__*/ S.String;
 
-export type CreateRequestRulesItemDDoSDynamicRuleCategoriesList =
-  ReadonlyArray<string>;
+export type CreateRequestRulesItemDDoSDynamicRuleCategoriesList = Array<string>;
 export const CreateRequestRulesItemDDoSDynamicRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -10739,7 +10728,7 @@ export const CreateRequestRulesItemDDoSDynamicRuleExposedCredentialCheck =
   }) as any as S.Schema<CreateRequestRulesItemDDoSDynamicRuleExposedCredentialCheck>;
 
 export type CreateRequestRulesItemDDoSDynamicRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CreateRequestRulesItemDDoSDynamicRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -10896,7 +10885,7 @@ export const CreateRequestRulesItemExecuteRuleActionParametersOverridesCategorie
   }) as any as S.Schema<CreateRequestRulesItemExecuteRuleActionParametersOverridesCategoriesItem>;
 
 export type CreateRequestRulesItemExecuteRuleActionParametersOverridesCategoriesList =
-  ReadonlyArray<CreateRequestRulesItemExecuteRuleActionParametersOverridesCategoriesItem>;
+  Array<CreateRequestRulesItemExecuteRuleActionParametersOverridesCategoriesItem>;
 export const CreateRequestRulesItemExecuteRuleActionParametersOverridesCategoriesList =
   /*@__PURE__*/ S.Array(
     CreateRequestRulesItemExecuteRuleActionParametersOverridesCategoriesItem,
@@ -10940,7 +10929,7 @@ export const CreateRequestRulesItemExecuteRuleActionParametersOverridesRulesItem
   }) as any as S.Schema<CreateRequestRulesItemExecuteRuleActionParametersOverridesRulesItem>;
 
 export type CreateRequestRulesItemExecuteRuleActionParametersOverridesRulesList =
-  ReadonlyArray<CreateRequestRulesItemExecuteRuleActionParametersOverridesRulesItem>;
+  Array<CreateRequestRulesItemExecuteRuleActionParametersOverridesRulesItem>;
 export const CreateRequestRulesItemExecuteRuleActionParametersOverridesRulesList =
   /*@__PURE__*/ S.Array(
     CreateRequestRulesItemExecuteRuleActionParametersOverridesRulesItem,
@@ -11011,8 +11000,7 @@ export const CreateRequestRulesItemExecuteRuleActionParameters =
     identifier: "CreateRequestRulesItemExecuteRuleActionParameters",
   }) as any as S.Schema<CreateRequestRulesItemExecuteRuleActionParameters>;
 
-export type CreateRequestRulesItemExecuteRuleCategoriesList =
-  ReadonlyArray<string>;
+export type CreateRequestRulesItemExecuteRuleCategoriesList = Array<string>;
 export const CreateRequestRulesItemExecuteRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -11035,7 +11023,7 @@ export const CreateRequestRulesItemExecuteRuleExposedCredentialCheck =
   }) as any as S.Schema<CreateRequestRulesItemExecuteRuleExposedCredentialCheck>;
 
 export type CreateRequestRulesItemExecuteRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CreateRequestRulesItemExecuteRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -11148,7 +11136,7 @@ export const CreateRequestRulesItemForceConnectionCloseRuleAction =
   /*@__PURE__*/ S.String;
 
 export type CreateRequestRulesItemForceConnectionCloseRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CreateRequestRulesItemForceConnectionCloseRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -11172,7 +11160,7 @@ export const CreateRequestRulesItemForceConnectionCloseRuleExposedCredentialChec
   }) as any as S.Schema<CreateRequestRulesItemForceConnectionCloseRuleExposedCredentialCheck>;
 
 export type CreateRequestRulesItemForceConnectionCloseRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CreateRequestRulesItemForceConnectionCloseRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -11283,8 +11271,7 @@ export const CreateRequestRulesItemForceConnectionCloseRule =
 export type CreateRequestRulesItemJSChallengeAction = "js_challenge";
 export const CreateRequestRulesItemJSChallengeAction = /*@__PURE__*/ S.String;
 
-export type CreateRequestRulesItemJSChallengeCategoriesList =
-  ReadonlyArray<string>;
+export type CreateRequestRulesItemJSChallengeCategoriesList = Array<string>;
 export const CreateRequestRulesItemJSChallengeCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -11307,7 +11294,7 @@ export const CreateRequestRulesItemJSChallengeExposedCredentialCheck =
   }) as any as S.Schema<CreateRequestRulesItemJSChallengeExposedCredentialCheck>;
 
 export type CreateRequestRulesItemJSChallengeRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CreateRequestRulesItemJSChallengeRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -11413,7 +11400,7 @@ export const CreateRequestRulesItemJSChallenge = /*@__PURE__*/ S.suspend(() =>
 export type CreateRequestRulesItemLogRuleAction = "log";
 export const CreateRequestRulesItemLogRuleAction = /*@__PURE__*/ S.String;
 
-export type CreateRequestRulesItemLogRuleCategoriesList = ReadonlyArray<string>;
+export type CreateRequestRulesItemLogRuleCategoriesList = Array<string>;
 export const CreateRequestRulesItemLogRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -11436,7 +11423,7 @@ export const CreateRequestRulesItemLogRuleExposedCredentialCheck =
   }) as any as S.Schema<CreateRequestRulesItemLogRuleExposedCredentialCheck>;
 
 export type CreateRequestRulesItemLogRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CreateRequestRulesItemLogRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -11558,7 +11545,7 @@ export const CreateRequestRulesItemLogCustomFieldRuleActionParametersCookieField
   }) as any as S.Schema<CreateRequestRulesItemLogCustomFieldRuleActionParametersCookieFieldsItem>;
 
 export type CreateRequestRulesItemLogCustomFieldRuleActionParametersCookieFieldsList =
-  ReadonlyArray<CreateRequestRulesItemLogCustomFieldRuleActionParametersCookieFieldsItem>;
+  Array<CreateRequestRulesItemLogCustomFieldRuleActionParametersCookieFieldsItem>;
 export const CreateRequestRulesItemLogCustomFieldRuleActionParametersCookieFieldsList =
   /*@__PURE__*/ S.Array(
     CreateRequestRulesItemLogCustomFieldRuleActionParametersCookieFieldsItem,
@@ -11584,7 +11571,7 @@ export const CreateRequestRulesItemLogCustomFieldRuleActionParametersRawResponse
   }) as any as S.Schema<CreateRequestRulesItemLogCustomFieldRuleActionParametersRawResponseFieldsItem>;
 
 export type CreateRequestRulesItemLogCustomFieldRuleActionParametersRawResponseFieldsList =
-  ReadonlyArray<CreateRequestRulesItemLogCustomFieldRuleActionParametersRawResponseFieldsItem>;
+  Array<CreateRequestRulesItemLogCustomFieldRuleActionParametersRawResponseFieldsItem>;
 export const CreateRequestRulesItemLogCustomFieldRuleActionParametersRawResponseFieldsList =
   /*@__PURE__*/ S.Array(
     CreateRequestRulesItemLogCustomFieldRuleActionParametersRawResponseFieldsItem,
@@ -11605,7 +11592,7 @@ export const CreateRequestRulesItemLogCustomFieldRuleActionParametersRequestFiel
   }) as any as S.Schema<CreateRequestRulesItemLogCustomFieldRuleActionParametersRequestFieldsItem>;
 
 export type CreateRequestRulesItemLogCustomFieldRuleActionParametersRequestFieldsList =
-  ReadonlyArray<CreateRequestRulesItemLogCustomFieldRuleActionParametersRequestFieldsItem>;
+  Array<CreateRequestRulesItemLogCustomFieldRuleActionParametersRequestFieldsItem>;
 export const CreateRequestRulesItemLogCustomFieldRuleActionParametersRequestFieldsList =
   /*@__PURE__*/ S.Array(
     CreateRequestRulesItemLogCustomFieldRuleActionParametersRequestFieldsItem,
@@ -11631,7 +11618,7 @@ export const CreateRequestRulesItemLogCustomFieldRuleActionParametersResponseFie
   }) as any as S.Schema<CreateRequestRulesItemLogCustomFieldRuleActionParametersResponseFieldsItem>;
 
 export type CreateRequestRulesItemLogCustomFieldRuleActionParametersResponseFieldsList =
-  ReadonlyArray<CreateRequestRulesItemLogCustomFieldRuleActionParametersResponseFieldsItem>;
+  Array<CreateRequestRulesItemLogCustomFieldRuleActionParametersResponseFieldsItem>;
 export const CreateRequestRulesItemLogCustomFieldRuleActionParametersResponseFieldsList =
   /*@__PURE__*/ S.Array(
     CreateRequestRulesItemLogCustomFieldRuleActionParametersResponseFieldsItem,
@@ -11652,7 +11639,7 @@ export const CreateRequestRulesItemLogCustomFieldRuleActionParametersTransformed
   }) as any as S.Schema<CreateRequestRulesItemLogCustomFieldRuleActionParametersTransformedRequestFieldsItem>;
 
 export type CreateRequestRulesItemLogCustomFieldRuleActionParametersTransformedRequestFieldsList =
-  ReadonlyArray<CreateRequestRulesItemLogCustomFieldRuleActionParametersTransformedRequestFieldsItem>;
+  Array<CreateRequestRulesItemLogCustomFieldRuleActionParametersTransformedRequestFieldsItem>;
 export const CreateRequestRulesItemLogCustomFieldRuleActionParametersTransformedRequestFieldsList =
   /*@__PURE__*/ S.Array(
     CreateRequestRulesItemLogCustomFieldRuleActionParametersTransformedRequestFieldsItem,
@@ -11704,7 +11691,7 @@ export const CreateRequestRulesItemLogCustomFieldRuleActionParameters =
   }) as any as S.Schema<CreateRequestRulesItemLogCustomFieldRuleActionParameters>;
 
 export type CreateRequestRulesItemLogCustomFieldRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CreateRequestRulesItemLogCustomFieldRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -11728,7 +11715,7 @@ export const CreateRequestRulesItemLogCustomFieldRuleExposedCredentialCheck =
   }) as any as S.Schema<CreateRequestRulesItemLogCustomFieldRuleExposedCredentialCheck>;
 
 export type CreateRequestRulesItemLogCustomFieldRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CreateRequestRulesItemLogCustomFieldRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -11844,7 +11831,7 @@ export const CreateRequestRulesItemManagedChallengeRuleAction =
   /*@__PURE__*/ S.String;
 
 export type CreateRequestRulesItemManagedChallengeRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CreateRequestRulesItemManagedChallengeRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -11868,7 +11855,7 @@ export const CreateRequestRulesItemManagedChallengeRuleExposedCredentialCheck =
   }) as any as S.Schema<CreateRequestRulesItemManagedChallengeRuleExposedCredentialCheck>;
 
 export type CreateRequestRulesItemManagedChallengeRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CreateRequestRulesItemManagedChallengeRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -12071,8 +12058,7 @@ export const CreateRequestRulesItemRedirectRuleActionParameters =
     identifier: "CreateRequestRulesItemRedirectRuleActionParameters",
   }) as any as S.Schema<CreateRequestRulesItemRedirectRuleActionParameters>;
 
-export type CreateRequestRulesItemRedirectRuleCategoriesList =
-  ReadonlyArray<string>;
+export type CreateRequestRulesItemRedirectRuleCategoriesList = Array<string>;
 export const CreateRequestRulesItemRedirectRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -12095,7 +12081,7 @@ export const CreateRequestRulesItemRedirectRuleExposedCredentialCheck =
   }) as any as S.Schema<CreateRequestRulesItemRedirectRuleExposedCredentialCheck>;
 
 export type CreateRequestRulesItemRedirectRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CreateRequestRulesItemRedirectRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -12469,8 +12455,7 @@ export const CreateRequestRulesItemRewriteRuleActionParameters =
     identifier: "CreateRequestRulesItemRewriteRuleActionParameters",
   }) as any as S.Schema<CreateRequestRulesItemRewriteRuleActionParameters>;
 
-export type CreateRequestRulesItemRewriteRuleCategoriesList =
-  ReadonlyArray<string>;
+export type CreateRequestRulesItemRewriteRuleCategoriesList = Array<string>;
 export const CreateRequestRulesItemRewriteRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -12493,7 +12478,7 @@ export const CreateRequestRulesItemRewriteRuleExposedCredentialCheck =
   }) as any as S.Schema<CreateRequestRulesItemRewriteRuleExposedCredentialCheck>;
 
 export type CreateRequestRulesItemRewriteRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CreateRequestRulesItemRewriteRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -12651,8 +12636,7 @@ export const CreateRequestRulesItemRouteRuleActionParameters =
     identifier: "CreateRequestRulesItemRouteRuleActionParameters",
   }) as any as S.Schema<CreateRequestRulesItemRouteRuleActionParameters>;
 
-export type CreateRequestRulesItemRouteRuleCategoriesList =
-  ReadonlyArray<string>;
+export type CreateRequestRulesItemRouteRuleCategoriesList = Array<string>;
 export const CreateRequestRulesItemRouteRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -12675,7 +12659,7 @@ export const CreateRequestRulesItemRouteRuleExposedCredentialCheck =
   }) as any as S.Schema<CreateRequestRulesItemRouteRuleExposedCredentialCheck>;
 
 export type CreateRequestRulesItemRouteRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CreateRequestRulesItemRouteRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -12798,8 +12782,7 @@ export const CreateRequestRulesItemScoreRuleActionParameters =
     identifier: "CreateRequestRulesItemScoreRuleActionParameters",
   }) as any as S.Schema<CreateRequestRulesItemScoreRuleActionParameters>;
 
-export type CreateRequestRulesItemScoreRuleCategoriesList =
-  ReadonlyArray<string>;
+export type CreateRequestRulesItemScoreRuleCategoriesList = Array<string>;
 export const CreateRequestRulesItemScoreRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -12822,7 +12805,7 @@ export const CreateRequestRulesItemScoreRuleExposedCredentialCheck =
   }) as any as S.Schema<CreateRequestRulesItemScoreRuleExposedCredentialCheck>;
 
 export type CreateRequestRulesItemScoreRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CreateRequestRulesItemScoreRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -13026,8 +13009,7 @@ export const CreateRequestRulesItemServeErrorRuleActionParameters =
     identifier: "CreateRequestRulesItemServeErrorRuleActionParameters",
   }) as any as S.Schema<CreateRequestRulesItemServeErrorRuleActionParameters>;
 
-export type CreateRequestRulesItemServeErrorRuleCategoriesList =
-  ReadonlyArray<string>;
+export type CreateRequestRulesItemServeErrorRuleCategoriesList = Array<string>;
 export const CreateRequestRulesItemServeErrorRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -13050,7 +13032,7 @@ export const CreateRequestRulesItemServeErrorRuleExposedCredentialCheck =
   }) as any as S.Schema<CreateRequestRulesItemServeErrorRuleExposedCredentialCheck>;
 
 export type CreateRequestRulesItemServeErrorRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CreateRequestRulesItemServeErrorRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -13471,7 +13453,7 @@ export const CreateRequestRulesItemSetCacheControlActionParametersNoCacheSetDire
   /*@__PURE__*/ S.String;
 
 export type CreateRequestRulesItemSetCacheControlActionParametersNoCacheSetDirectiveQualifiersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CreateRequestRulesItemSetCacheControlActionParametersNoCacheSetDirectiveQualifiersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -13708,7 +13690,7 @@ export const CreateRequestRulesItemSetCacheControlActionParametersPrivateSetDire
   /*@__PURE__*/ S.String;
 
 export type CreateRequestRulesItemSetCacheControlActionParametersPrivateSetDirectiveQualifiersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CreateRequestRulesItemSetCacheControlActionParametersPrivateSetDirectiveQualifiersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -14273,8 +14255,7 @@ export const CreateRequestRulesItemSetCacheControlActionParameters =
     identifier: "CreateRequestRulesItemSetCacheControlActionParameters",
   }) as any as S.Schema<CreateRequestRulesItemSetCacheControlActionParameters>;
 
-export type CreateRequestRulesItemSetCacheControlCategoriesList =
-  ReadonlyArray<string>;
+export type CreateRequestRulesItemSetCacheControlCategoriesList = Array<string>;
 export const CreateRequestRulesItemSetCacheControlCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -14297,7 +14278,7 @@ export const CreateRequestRulesItemSetCacheControlExposedCredentialCheck =
   }) as any as S.Schema<CreateRequestRulesItemSetCacheControlExposedCredentialCheck>;
 
 export type CreateRequestRulesItemSetCacheControlRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CreateRequestRulesItemSetCacheControlRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -14413,7 +14394,7 @@ export const CreateRequestRulesItemSetCacheSettingsRuleAction =
   /*@__PURE__*/ S.String;
 
 export type CreateRequestRulesItemSetCacheSettingsRuleActionParametersAdditionalCacheablePortsList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const CreateRequestRulesItemSetCacheSettingsRuleActionParametersAdditionalCacheablePortsList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -14444,14 +14425,14 @@ export const CreateRequestRulesItemSetCacheSettingsRuleActionParametersBrowserTt
   }) as any as S.Schema<CreateRequestRulesItemSetCacheSettingsRuleActionParametersBrowserTtl>;
 
 export type CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookieCheckPresenceList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookieCheckPresenceList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookieCheckPresenceList>;
 
 export type CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookieIncludeList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookieIncludeList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -14481,14 +14462,14 @@ export const CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyC
   }) as any as S.Schema<CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookie>;
 
 export type CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderCheckPresenceList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderCheckPresenceList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderCheckPresenceList>;
 
 export type CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderContainsValueList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderContainsValueList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -14507,7 +14488,7 @@ export const CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyC
   ) as any as S.Schema<CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderContainsMap>;
 
 export type CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderIncludeList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderIncludeList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -14559,7 +14540,7 @@ export const CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyC
   }) as any as S.Schema<CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHost>;
 
 export type CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringExcludeListList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringExcludeListList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -14585,7 +14566,7 @@ export const CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyC
   }) as any as S.Schema<CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringExclude>;
 
 export type CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringIncludeListList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringIncludeListList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -14786,7 +14767,7 @@ export const CreateRequestRulesItemSetCacheSettingsRuleActionParametersEdgeTtlSt
   }) as any as S.Schema<CreateRequestRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlItem>;
 
 export type CreateRequestRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlList =
-  ReadonlyArray<CreateRequestRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlItem>;
+  Array<CreateRequestRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlItem>;
 export const CreateRequestRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlList =
   /*@__PURE__*/ S.Array(
     CreateRequestRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlItem,
@@ -14876,14 +14857,14 @@ export const CreateRequestRulesItemSetCacheSettingsRuleActionParametersVaryHeade
   /*@__PURE__*/ S.String;
 
 export type CreateRequestRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValueLanguagesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CreateRequestRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValueLanguagesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<CreateRequestRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValueLanguagesList>;
 
 export type CreateRequestRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValueMediaTypesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CreateRequestRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValueMediaTypesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -15048,7 +15029,7 @@ export const CreateRequestRulesItemSetCacheSettingsRuleActionParameters =
   }) as any as S.Schema<CreateRequestRulesItemSetCacheSettingsRuleActionParameters>;
 
 export type CreateRequestRulesItemSetCacheSettingsRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CreateRequestRulesItemSetCacheSettingsRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -15072,7 +15053,7 @@ export const CreateRequestRulesItemSetCacheSettingsRuleExposedCredentialCheck =
   }) as any as S.Schema<CreateRequestRulesItemSetCacheSettingsRuleExposedCredentialCheck>;
 
 export type CreateRequestRulesItemSetCacheSettingsRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CreateRequestRulesItemSetCacheSettingsRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -15193,7 +15174,7 @@ export const CreateRequestRulesItemSetCacheTagsActionParametersAddCacheTagsValue
   /*@__PURE__*/ S.String;
 
 export type CreateRequestRulesItemSetCacheTagsActionParametersAddCacheTagsValuesValuesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CreateRequestRulesItemSetCacheTagsActionParametersAddCacheTagsValuesValuesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -15251,7 +15232,7 @@ export const CreateRequestRulesItemSetCacheTagsActionParametersRemoveCacheTagsVa
   /*@__PURE__*/ S.String;
 
 export type CreateRequestRulesItemSetCacheTagsActionParametersRemoveCacheTagsValuesValuesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CreateRequestRulesItemSetCacheTagsActionParametersRemoveCacheTagsValuesValuesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -15309,7 +15290,7 @@ export const CreateRequestRulesItemSetCacheTagsActionParametersSetCacheTagsValue
   /*@__PURE__*/ S.String;
 
 export type CreateRequestRulesItemSetCacheTagsActionParametersSetCacheTagsValuesValuesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CreateRequestRulesItemSetCacheTagsActionParametersSetCacheTagsValuesValuesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -15408,8 +15389,7 @@ export const CreateRequestRulesItemSetCacheTagsActionParameters =
     identifier: "CreateRequestRulesItemSetCacheTagsActionParameters",
   }) as any as S.Schema<CreateRequestRulesItemSetCacheTagsActionParameters>;
 
-export type CreateRequestRulesItemSetCacheTagsCategoriesList =
-  ReadonlyArray<string>;
+export type CreateRequestRulesItemSetCacheTagsCategoriesList = Array<string>;
 export const CreateRequestRulesItemSetCacheTagsCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -15432,7 +15412,7 @@ export const CreateRequestRulesItemSetCacheTagsExposedCredentialCheck =
   }) as any as S.Schema<CreateRequestRulesItemSetCacheTagsExposedCredentialCheck>;
 
 export type CreateRequestRulesItemSetCacheTagsRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CreateRequestRulesItemSetCacheTagsRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -15710,8 +15690,7 @@ export const CreateRequestRulesItemSetConfigRuleActionParameters =
     identifier: "CreateRequestRulesItemSetConfigRuleActionParameters",
   }) as any as S.Schema<CreateRequestRulesItemSetConfigRuleActionParameters>;
 
-export type CreateRequestRulesItemSetConfigRuleCategoriesList =
-  ReadonlyArray<string>;
+export type CreateRequestRulesItemSetConfigRuleCategoriesList = Array<string>;
 export const CreateRequestRulesItemSetConfigRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -15734,7 +15713,7 @@ export const CreateRequestRulesItemSetConfigRuleExposedCredentialCheck =
   }) as any as S.Schema<CreateRequestRulesItemSetConfigRuleExposedCredentialCheck>;
 
 export type CreateRequestRulesItemSetConfigRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CreateRequestRulesItemSetConfigRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -15876,10 +15855,9 @@ export type CreateRequestRulesItemSkipRuleActionParametersPhasesItem =
 export const CreateRequestRulesItemSkipRuleActionParametersPhasesItem =
   /*@__PURE__*/ S.String;
 
-export type CreateRequestRulesItemSkipRuleActionParametersPhasesList =
-  ReadonlyArray<
-    CreateRequestRulesItemSkipRuleActionParametersPhasesItem | (string & {})
-  >;
+export type CreateRequestRulesItemSkipRuleActionParametersPhasesList = Array<
+  CreateRequestRulesItemSkipRuleActionParametersPhasesItem | (string & {})
+>;
 export const CreateRequestRulesItemSkipRuleActionParametersPhasesList =
   /*@__PURE__*/ S.Array(
     CreateRequestRulesItemSkipRuleActionParametersPhasesItem,
@@ -15896,17 +15874,16 @@ export type CreateRequestRulesItemSkipRuleActionParametersProductsItem =
 export const CreateRequestRulesItemSkipRuleActionParametersProductsItem =
   /*@__PURE__*/ S.String;
 
-export type CreateRequestRulesItemSkipRuleActionParametersProductsList =
-  ReadonlyArray<
-    CreateRequestRulesItemSkipRuleActionParametersProductsItem | (string & {})
-  >;
+export type CreateRequestRulesItemSkipRuleActionParametersProductsList = Array<
+  CreateRequestRulesItemSkipRuleActionParametersProductsItem | (string & {})
+>;
 export const CreateRequestRulesItemSkipRuleActionParametersProductsList =
   /*@__PURE__*/ S.Array(
     CreateRequestRulesItemSkipRuleActionParametersProductsItem,
   ) as any as S.Schema<CreateRequestRulesItemSkipRuleActionParametersProductsList>;
 
 export type CreateRequestRulesItemSkipRuleActionParametersRulesValueList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CreateRequestRulesItemSkipRuleActionParametersRulesValueList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -15928,7 +15905,7 @@ export const CreateRequestRulesItemSkipRuleActionParametersRuleset =
   /*@__PURE__*/ S.String;
 
 export type CreateRequestRulesItemSkipRuleActionParametersRulesetsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CreateRequestRulesItemSkipRuleActionParametersRulesetsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -15972,8 +15949,7 @@ export const CreateRequestRulesItemSkipRuleActionParameters =
     identifier: "CreateRequestRulesItemSkipRuleActionParameters",
   }) as any as S.Schema<CreateRequestRulesItemSkipRuleActionParameters>;
 
-export type CreateRequestRulesItemSkipRuleCategoriesList =
-  ReadonlyArray<string>;
+export type CreateRequestRulesItemSkipRuleCategoriesList = Array<string>;
 export const CreateRequestRulesItemSkipRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -15996,7 +15972,7 @@ export const CreateRequestRulesItemSkipRuleExposedCredentialCheck =
   }) as any as S.Schema<CreateRequestRulesItemSkipRuleExposedCredentialCheck>;
 
 export type CreateRequestRulesItemSkipRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CreateRequestRulesItemSkipRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -16122,7 +16098,7 @@ export const CreateRequestRulesItemTransformResponseHTMLActionParameters =
   }) as any as S.Schema<CreateRequestRulesItemTransformResponseHTMLActionParameters>;
 
 export type CreateRequestRulesItemTransformResponseHTMLCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CreateRequestRulesItemTransformResponseHTMLCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -16146,7 +16122,7 @@ export const CreateRequestRulesItemTransformResponseHTMLExposedCredentialCheck =
   }) as any as S.Schema<CreateRequestRulesItemTransformResponseHTMLExposedCredentialCheck>;
 
 export type CreateRequestRulesItemTransformResponseHTMLRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CreateRequestRulesItemTransformResponseHTMLRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -16542,7 +16518,7 @@ export const CreateRequestRulesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateRequestRulesItem",
 }) as any as S.Schema<CreateRequestRulesItem>;
 
-export type CreateRequestRulesList = ReadonlyArray<CreateRequestRulesItem>;
+export type CreateRequestRulesList = Array<CreateRequestRulesItem>;
 export const CreateRequestRulesList = /*@__PURE__*/ S.Array(
   CreateRequestRulesItem,
 ) as any as S.Schema<CreateRequestRulesList>;
@@ -16649,8 +16625,7 @@ export const CreateResponseRulesItemBlockRuleActionParameters =
     identifier: "CreateResponseRulesItemBlockRuleActionParameters",
   }) as any as S.Schema<CreateResponseRulesItemBlockRuleActionParameters>;
 
-export type CreateResponseRulesItemBlockRuleCategoriesList =
-  ReadonlyArray<string>;
+export type CreateResponseRulesItemBlockRuleCategoriesList = Array<string>;
 export const CreateResponseRulesItemBlockRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -16686,7 +16661,7 @@ export const CreateResponseRulesItemBlockRuleLogging = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CreateResponseRulesItemBlockRuleLogging>;
 
 export type CreateResponseRulesItemBlockRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CreateResponseRulesItemBlockRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -16796,8 +16771,7 @@ export const CreateResponseRulesItemBlockRule = /*@__PURE__*/ S.suspend(() =>
 export type CreateResponseRulesItemChallengeAction = "challenge";
 export const CreateResponseRulesItemChallengeAction = /*@__PURE__*/ S.String;
 
-export type CreateResponseRulesItemChallengeCategoriesList =
-  ReadonlyArray<string>;
+export type CreateResponseRulesItemChallengeCategoriesList = Array<string>;
 export const CreateResponseRulesItemChallengeCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -16820,7 +16794,7 @@ export const CreateResponseRulesItemChallengeExposedCredentialCheck =
   }) as any as S.Schema<CreateResponseRulesItemChallengeExposedCredentialCheck>;
 
 export type CreateResponseRulesItemChallengeRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CreateResponseRulesItemChallengeRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -16950,7 +16924,7 @@ export const CreateResponseRulesItemCompressResponseRuleActionParametersAlgorith
   }) as any as S.Schema<CreateResponseRulesItemCompressResponseRuleActionParametersAlgorithmsItem>;
 
 export type CreateResponseRulesItemCompressResponseRuleActionParametersAlgorithmsList =
-  ReadonlyArray<CreateResponseRulesItemCompressResponseRuleActionParametersAlgorithmsItem>;
+  Array<CreateResponseRulesItemCompressResponseRuleActionParametersAlgorithmsItem>;
 export const CreateResponseRulesItemCompressResponseRuleActionParametersAlgorithmsList =
   /*@__PURE__*/ S.Array(
     CreateResponseRulesItemCompressResponseRuleActionParametersAlgorithmsItem,
@@ -16971,7 +16945,7 @@ export const CreateResponseRulesItemCompressResponseRuleActionParameters =
   }) as any as S.Schema<CreateResponseRulesItemCompressResponseRuleActionParameters>;
 
 export type CreateResponseRulesItemCompressResponseRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CreateResponseRulesItemCompressResponseRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -16995,7 +16969,7 @@ export const CreateResponseRulesItemCompressResponseRuleExposedCredentialCheck =
   }) as any as S.Schema<CreateResponseRulesItemCompressResponseRuleExposedCredentialCheck>;
 
 export type CreateResponseRulesItemCompressResponseRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CreateResponseRulesItemCompressResponseRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -17112,7 +17086,7 @@ export const CreateResponseRulesItemDDoSDynamicRuleAction =
   /*@__PURE__*/ S.String;
 
 export type CreateResponseRulesItemDDoSDynamicRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CreateResponseRulesItemDDoSDynamicRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -17135,7 +17109,7 @@ export const CreateResponseRulesItemDDoSDynamicRuleExposedCredentialCheck =
   }) as any as S.Schema<CreateResponseRulesItemDDoSDynamicRuleExposedCredentialCheck>;
 
 export type CreateResponseRulesItemDDoSDynamicRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CreateResponseRulesItemDDoSDynamicRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -17290,7 +17264,7 @@ export const CreateResponseRulesItemExecuteRuleActionParametersOverridesCategori
   }) as any as S.Schema<CreateResponseRulesItemExecuteRuleActionParametersOverridesCategoriesItem>;
 
 export type CreateResponseRulesItemExecuteRuleActionParametersOverridesCategoriesList =
-  ReadonlyArray<CreateResponseRulesItemExecuteRuleActionParametersOverridesCategoriesItem>;
+  Array<CreateResponseRulesItemExecuteRuleActionParametersOverridesCategoriesItem>;
 export const CreateResponseRulesItemExecuteRuleActionParametersOverridesCategoriesList =
   /*@__PURE__*/ S.Array(
     CreateResponseRulesItemExecuteRuleActionParametersOverridesCategoriesItem,
@@ -17332,7 +17306,7 @@ export const CreateResponseRulesItemExecuteRuleActionParametersOverridesRulesIte
   }) as any as S.Schema<CreateResponseRulesItemExecuteRuleActionParametersOverridesRulesItem>;
 
 export type CreateResponseRulesItemExecuteRuleActionParametersOverridesRulesList =
-  ReadonlyArray<CreateResponseRulesItemExecuteRuleActionParametersOverridesRulesItem>;
+  Array<CreateResponseRulesItemExecuteRuleActionParametersOverridesRulesItem>;
 export const CreateResponseRulesItemExecuteRuleActionParametersOverridesRulesList =
   /*@__PURE__*/ S.Array(
     CreateResponseRulesItemExecuteRuleActionParametersOverridesRulesItem,
@@ -17401,8 +17375,7 @@ export const CreateResponseRulesItemExecuteRuleActionParameters =
     identifier: "CreateResponseRulesItemExecuteRuleActionParameters",
   }) as any as S.Schema<CreateResponseRulesItemExecuteRuleActionParameters>;
 
-export type CreateResponseRulesItemExecuteRuleCategoriesList =
-  ReadonlyArray<string>;
+export type CreateResponseRulesItemExecuteRuleCategoriesList = Array<string>;
 export const CreateResponseRulesItemExecuteRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -17425,7 +17398,7 @@ export const CreateResponseRulesItemExecuteRuleExposedCredentialCheck =
   }) as any as S.Schema<CreateResponseRulesItemExecuteRuleExposedCredentialCheck>;
 
 export type CreateResponseRulesItemExecuteRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CreateResponseRulesItemExecuteRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -17538,7 +17511,7 @@ export const CreateResponseRulesItemForceConnectionCloseRuleAction =
   /*@__PURE__*/ S.String;
 
 export type CreateResponseRulesItemForceConnectionCloseRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CreateResponseRulesItemForceConnectionCloseRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -17562,7 +17535,7 @@ export const CreateResponseRulesItemForceConnectionCloseRuleExposedCredentialChe
   }) as any as S.Schema<CreateResponseRulesItemForceConnectionCloseRuleExposedCredentialCheck>;
 
 export type CreateResponseRulesItemForceConnectionCloseRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CreateResponseRulesItemForceConnectionCloseRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -17673,8 +17646,7 @@ export const CreateResponseRulesItemForceConnectionCloseRule =
 export type CreateResponseRulesItemJSChallengeAction = "js_challenge";
 export const CreateResponseRulesItemJSChallengeAction = /*@__PURE__*/ S.String;
 
-export type CreateResponseRulesItemJSChallengeCategoriesList =
-  ReadonlyArray<string>;
+export type CreateResponseRulesItemJSChallengeCategoriesList = Array<string>;
 export const CreateResponseRulesItemJSChallengeCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -17697,7 +17669,7 @@ export const CreateResponseRulesItemJSChallengeExposedCredentialCheck =
   }) as any as S.Schema<CreateResponseRulesItemJSChallengeExposedCredentialCheck>;
 
 export type CreateResponseRulesItemJSChallengeRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CreateResponseRulesItemJSChallengeRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -17803,8 +17775,7 @@ export const CreateResponseRulesItemJSChallenge = /*@__PURE__*/ S.suspend(() =>
 export type CreateResponseRulesItemLogRuleAction = "log";
 export const CreateResponseRulesItemLogRuleAction = /*@__PURE__*/ S.String;
 
-export type CreateResponseRulesItemLogRuleCategoriesList =
-  ReadonlyArray<string>;
+export type CreateResponseRulesItemLogRuleCategoriesList = Array<string>;
 export const CreateResponseRulesItemLogRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -17827,7 +17798,7 @@ export const CreateResponseRulesItemLogRuleExposedCredentialCheck =
   }) as any as S.Schema<CreateResponseRulesItemLogRuleExposedCredentialCheck>;
 
 export type CreateResponseRulesItemLogRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CreateResponseRulesItemLogRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -17950,7 +17921,7 @@ export const CreateResponseRulesItemLogCustomFieldRuleActionParametersCookieFiel
   }) as any as S.Schema<CreateResponseRulesItemLogCustomFieldRuleActionParametersCookieFieldsItem>;
 
 export type CreateResponseRulesItemLogCustomFieldRuleActionParametersCookieFieldsList =
-  ReadonlyArray<CreateResponseRulesItemLogCustomFieldRuleActionParametersCookieFieldsItem>;
+  Array<CreateResponseRulesItemLogCustomFieldRuleActionParametersCookieFieldsItem>;
 export const CreateResponseRulesItemLogCustomFieldRuleActionParametersCookieFieldsList =
   /*@__PURE__*/ S.Array(
     CreateResponseRulesItemLogCustomFieldRuleActionParametersCookieFieldsItem,
@@ -17976,7 +17947,7 @@ export const CreateResponseRulesItemLogCustomFieldRuleActionParametersRawRespons
   }) as any as S.Schema<CreateResponseRulesItemLogCustomFieldRuleActionParametersRawResponseFieldsItem>;
 
 export type CreateResponseRulesItemLogCustomFieldRuleActionParametersRawResponseFieldsList =
-  ReadonlyArray<CreateResponseRulesItemLogCustomFieldRuleActionParametersRawResponseFieldsItem>;
+  Array<CreateResponseRulesItemLogCustomFieldRuleActionParametersRawResponseFieldsItem>;
 export const CreateResponseRulesItemLogCustomFieldRuleActionParametersRawResponseFieldsList =
   /*@__PURE__*/ S.Array(
     CreateResponseRulesItemLogCustomFieldRuleActionParametersRawResponseFieldsItem,
@@ -17997,7 +17968,7 @@ export const CreateResponseRulesItemLogCustomFieldRuleActionParametersRequestFie
   }) as any as S.Schema<CreateResponseRulesItemLogCustomFieldRuleActionParametersRequestFieldsItem>;
 
 export type CreateResponseRulesItemLogCustomFieldRuleActionParametersRequestFieldsList =
-  ReadonlyArray<CreateResponseRulesItemLogCustomFieldRuleActionParametersRequestFieldsItem>;
+  Array<CreateResponseRulesItemLogCustomFieldRuleActionParametersRequestFieldsItem>;
 export const CreateResponseRulesItemLogCustomFieldRuleActionParametersRequestFieldsList =
   /*@__PURE__*/ S.Array(
     CreateResponseRulesItemLogCustomFieldRuleActionParametersRequestFieldsItem,
@@ -18023,7 +17994,7 @@ export const CreateResponseRulesItemLogCustomFieldRuleActionParametersResponseFi
   }) as any as S.Schema<CreateResponseRulesItemLogCustomFieldRuleActionParametersResponseFieldsItem>;
 
 export type CreateResponseRulesItemLogCustomFieldRuleActionParametersResponseFieldsList =
-  ReadonlyArray<CreateResponseRulesItemLogCustomFieldRuleActionParametersResponseFieldsItem>;
+  Array<CreateResponseRulesItemLogCustomFieldRuleActionParametersResponseFieldsItem>;
 export const CreateResponseRulesItemLogCustomFieldRuleActionParametersResponseFieldsList =
   /*@__PURE__*/ S.Array(
     CreateResponseRulesItemLogCustomFieldRuleActionParametersResponseFieldsItem,
@@ -18044,7 +18015,7 @@ export const CreateResponseRulesItemLogCustomFieldRuleActionParametersTransforme
   }) as any as S.Schema<CreateResponseRulesItemLogCustomFieldRuleActionParametersTransformedRequestFieldsItem>;
 
 export type CreateResponseRulesItemLogCustomFieldRuleActionParametersTransformedRequestFieldsList =
-  ReadonlyArray<CreateResponseRulesItemLogCustomFieldRuleActionParametersTransformedRequestFieldsItem>;
+  Array<CreateResponseRulesItemLogCustomFieldRuleActionParametersTransformedRequestFieldsItem>;
 export const CreateResponseRulesItemLogCustomFieldRuleActionParametersTransformedRequestFieldsList =
   /*@__PURE__*/ S.Array(
     CreateResponseRulesItemLogCustomFieldRuleActionParametersTransformedRequestFieldsItem,
@@ -18096,7 +18067,7 @@ export const CreateResponseRulesItemLogCustomFieldRuleActionParameters =
   }) as any as S.Schema<CreateResponseRulesItemLogCustomFieldRuleActionParameters>;
 
 export type CreateResponseRulesItemLogCustomFieldRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CreateResponseRulesItemLogCustomFieldRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -18120,7 +18091,7 @@ export const CreateResponseRulesItemLogCustomFieldRuleExposedCredentialCheck =
   }) as any as S.Schema<CreateResponseRulesItemLogCustomFieldRuleExposedCredentialCheck>;
 
 export type CreateResponseRulesItemLogCustomFieldRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CreateResponseRulesItemLogCustomFieldRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -18236,7 +18207,7 @@ export const CreateResponseRulesItemManagedChallengeRuleAction =
   /*@__PURE__*/ S.String;
 
 export type CreateResponseRulesItemManagedChallengeRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CreateResponseRulesItemManagedChallengeRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -18260,7 +18231,7 @@ export const CreateResponseRulesItemManagedChallengeRuleExposedCredentialCheck =
   }) as any as S.Schema<CreateResponseRulesItemManagedChallengeRuleExposedCredentialCheck>;
 
 export type CreateResponseRulesItemManagedChallengeRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CreateResponseRulesItemManagedChallengeRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -18461,8 +18432,7 @@ export const CreateResponseRulesItemRedirectRuleActionParameters =
     identifier: "CreateResponseRulesItemRedirectRuleActionParameters",
   }) as any as S.Schema<CreateResponseRulesItemRedirectRuleActionParameters>;
 
-export type CreateResponseRulesItemRedirectRuleCategoriesList =
-  ReadonlyArray<string>;
+export type CreateResponseRulesItemRedirectRuleCategoriesList = Array<string>;
 export const CreateResponseRulesItemRedirectRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -18485,7 +18455,7 @@ export const CreateResponseRulesItemRedirectRuleExposedCredentialCheck =
   }) as any as S.Schema<CreateResponseRulesItemRedirectRuleExposedCredentialCheck>;
 
 export type CreateResponseRulesItemRedirectRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CreateResponseRulesItemRedirectRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -18844,8 +18814,7 @@ export const CreateResponseRulesItemRewriteRuleActionParameters =
     identifier: "CreateResponseRulesItemRewriteRuleActionParameters",
   }) as any as S.Schema<CreateResponseRulesItemRewriteRuleActionParameters>;
 
-export type CreateResponseRulesItemRewriteRuleCategoriesList =
-  ReadonlyArray<string>;
+export type CreateResponseRulesItemRewriteRuleCategoriesList = Array<string>;
 export const CreateResponseRulesItemRewriteRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -18868,7 +18837,7 @@ export const CreateResponseRulesItemRewriteRuleExposedCredentialCheck =
   }) as any as S.Schema<CreateResponseRulesItemRewriteRuleExposedCredentialCheck>;
 
 export type CreateResponseRulesItemRewriteRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CreateResponseRulesItemRewriteRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -19028,8 +18997,7 @@ export const CreateResponseRulesItemRouteRuleActionParameters =
     identifier: "CreateResponseRulesItemRouteRuleActionParameters",
   }) as any as S.Schema<CreateResponseRulesItemRouteRuleActionParameters>;
 
-export type CreateResponseRulesItemRouteRuleCategoriesList =
-  ReadonlyArray<string>;
+export type CreateResponseRulesItemRouteRuleCategoriesList = Array<string>;
 export const CreateResponseRulesItemRouteRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -19052,7 +19020,7 @@ export const CreateResponseRulesItemRouteRuleExposedCredentialCheck =
   }) as any as S.Schema<CreateResponseRulesItemRouteRuleExposedCredentialCheck>;
 
 export type CreateResponseRulesItemRouteRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CreateResponseRulesItemRouteRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -19175,8 +19143,7 @@ export const CreateResponseRulesItemScoreRuleActionParameters =
     identifier: "CreateResponseRulesItemScoreRuleActionParameters",
   }) as any as S.Schema<CreateResponseRulesItemScoreRuleActionParameters>;
 
-export type CreateResponseRulesItemScoreRuleCategoriesList =
-  ReadonlyArray<string>;
+export type CreateResponseRulesItemScoreRuleCategoriesList = Array<string>;
 export const CreateResponseRulesItemScoreRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -19199,7 +19166,7 @@ export const CreateResponseRulesItemScoreRuleExposedCredentialCheck =
   }) as any as S.Schema<CreateResponseRulesItemScoreRuleExposedCredentialCheck>;
 
 export type CreateResponseRulesItemScoreRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CreateResponseRulesItemScoreRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -19397,8 +19364,7 @@ export const CreateResponseRulesItemServeErrorRuleActionParameters =
     identifier: "CreateResponseRulesItemServeErrorRuleActionParameters",
   }) as any as S.Schema<CreateResponseRulesItemServeErrorRuleActionParameters>;
 
-export type CreateResponseRulesItemServeErrorRuleCategoriesList =
-  ReadonlyArray<string>;
+export type CreateResponseRulesItemServeErrorRuleCategoriesList = Array<string>;
 export const CreateResponseRulesItemServeErrorRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -19421,7 +19387,7 @@ export const CreateResponseRulesItemServeErrorRuleExposedCredentialCheck =
   }) as any as S.Schema<CreateResponseRulesItemServeErrorRuleExposedCredentialCheck>;
 
 export type CreateResponseRulesItemServeErrorRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CreateResponseRulesItemServeErrorRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -19818,7 +19784,7 @@ export const CreateResponseRulesItemSetCacheControlActionParametersNoCacheSetDir
   /*@__PURE__*/ S.String;
 
 export type CreateResponseRulesItemSetCacheControlActionParametersNoCacheSetDirectiveQualifiersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CreateResponseRulesItemSetCacheControlActionParametersNoCacheSetDirectiveQualifiersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -20037,7 +20003,7 @@ export const CreateResponseRulesItemSetCacheControlActionParametersPrivateSetDir
   /*@__PURE__*/ S.String;
 
 export type CreateResponseRulesItemSetCacheControlActionParametersPrivateSetDirectiveQualifiersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CreateResponseRulesItemSetCacheControlActionParametersPrivateSetDirectiveQualifiersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -20567,7 +20533,7 @@ export const CreateResponseRulesItemSetCacheControlActionParameters =
   }) as any as S.Schema<CreateResponseRulesItemSetCacheControlActionParameters>;
 
 export type CreateResponseRulesItemSetCacheControlCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CreateResponseRulesItemSetCacheControlCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -20590,7 +20556,7 @@ export const CreateResponseRulesItemSetCacheControlExposedCredentialCheck =
   }) as any as S.Schema<CreateResponseRulesItemSetCacheControlExposedCredentialCheck>;
 
 export type CreateResponseRulesItemSetCacheControlRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CreateResponseRulesItemSetCacheControlRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -20706,7 +20672,7 @@ export const CreateResponseRulesItemSetCacheSettingsRuleAction =
   /*@__PURE__*/ S.String;
 
 export type CreateResponseRulesItemSetCacheSettingsRuleActionParametersAdditionalCacheablePortsList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const CreateResponseRulesItemSetCacheSettingsRuleActionParametersAdditionalCacheablePortsList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -20735,14 +20701,14 @@ export const CreateResponseRulesItemSetCacheSettingsRuleActionParametersBrowserT
   }) as any as S.Schema<CreateResponseRulesItemSetCacheSettingsRuleActionParametersBrowserTtl>;
 
 export type CreateResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookieCheckPresenceList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CreateResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookieCheckPresenceList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<CreateResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookieCheckPresenceList>;
 
 export type CreateResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookieIncludeList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CreateResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookieIncludeList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -20772,14 +20738,14 @@ export const CreateResponseRulesItemSetCacheSettingsRuleActionParametersCacheKey
   }) as any as S.Schema<CreateResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookie>;
 
 export type CreateResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderCheckPresenceList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CreateResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderCheckPresenceList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<CreateResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderCheckPresenceList>;
 
 export type CreateResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderContainsValueList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CreateResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderContainsValueList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -20798,7 +20764,7 @@ export const CreateResponseRulesItemSetCacheSettingsRuleActionParametersCacheKey
   ) as any as S.Schema<CreateResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderContainsMap>;
 
 export type CreateResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderIncludeList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CreateResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderIncludeList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -20850,7 +20816,7 @@ export const CreateResponseRulesItemSetCacheSettingsRuleActionParametersCacheKey
   }) as any as S.Schema<CreateResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHost>;
 
 export type CreateResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringExcludeListList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CreateResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringExcludeListList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -20876,7 +20842,7 @@ export const CreateResponseRulesItemSetCacheSettingsRuleActionParametersCacheKey
   }) as any as S.Schema<CreateResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringExclude>;
 
 export type CreateResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringIncludeListList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CreateResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringIncludeListList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -21077,7 +21043,7 @@ export const CreateResponseRulesItemSetCacheSettingsRuleActionParametersEdgeTtlS
   }) as any as S.Schema<CreateResponseRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlItem>;
 
 export type CreateResponseRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlList =
-  ReadonlyArray<CreateResponseRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlItem>;
+  Array<CreateResponseRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlItem>;
 export const CreateResponseRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlList =
   /*@__PURE__*/ S.Array(
     CreateResponseRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlItem,
@@ -21163,14 +21129,14 @@ export const CreateResponseRulesItemSetCacheSettingsRuleActionParametersVaryHead
   /*@__PURE__*/ S.String;
 
 export type CreateResponseRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValueLanguagesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CreateResponseRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValueLanguagesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<CreateResponseRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValueLanguagesList>;
 
 export type CreateResponseRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValueMediaTypesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CreateResponseRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValueMediaTypesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -21333,7 +21299,7 @@ export const CreateResponseRulesItemSetCacheSettingsRuleActionParameters =
   }) as any as S.Schema<CreateResponseRulesItemSetCacheSettingsRuleActionParameters>;
 
 export type CreateResponseRulesItemSetCacheSettingsRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CreateResponseRulesItemSetCacheSettingsRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -21357,7 +21323,7 @@ export const CreateResponseRulesItemSetCacheSettingsRuleExposedCredentialCheck =
   }) as any as S.Schema<CreateResponseRulesItemSetCacheSettingsRuleExposedCredentialCheck>;
 
 export type CreateResponseRulesItemSetCacheSettingsRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CreateResponseRulesItemSetCacheSettingsRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -21478,7 +21444,7 @@ export const CreateResponseRulesItemSetCacheTagsActionParametersAddCacheTagsValu
   /*@__PURE__*/ S.String;
 
 export type CreateResponseRulesItemSetCacheTagsActionParametersAddCacheTagsValuesValuesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CreateResponseRulesItemSetCacheTagsActionParametersAddCacheTagsValuesValuesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -21532,7 +21498,7 @@ export const CreateResponseRulesItemSetCacheTagsActionParametersRemoveCacheTagsV
   /*@__PURE__*/ S.String;
 
 export type CreateResponseRulesItemSetCacheTagsActionParametersRemoveCacheTagsValuesValuesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CreateResponseRulesItemSetCacheTagsActionParametersRemoveCacheTagsValuesValuesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -21586,7 +21552,7 @@ export const CreateResponseRulesItemSetCacheTagsActionParametersSetCacheTagsValu
   /*@__PURE__*/ S.String;
 
 export type CreateResponseRulesItemSetCacheTagsActionParametersSetCacheTagsValuesValuesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CreateResponseRulesItemSetCacheTagsActionParametersSetCacheTagsValuesValuesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -21675,8 +21641,7 @@ export const CreateResponseRulesItemSetCacheTagsActionParameters =
     identifier: "CreateResponseRulesItemSetCacheTagsActionParameters",
   }) as any as S.Schema<CreateResponseRulesItemSetCacheTagsActionParameters>;
 
-export type CreateResponseRulesItemSetCacheTagsCategoriesList =
-  ReadonlyArray<string>;
+export type CreateResponseRulesItemSetCacheTagsCategoriesList = Array<string>;
 export const CreateResponseRulesItemSetCacheTagsCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -21699,7 +21664,7 @@ export const CreateResponseRulesItemSetCacheTagsExposedCredentialCheck =
   }) as any as S.Schema<CreateResponseRulesItemSetCacheTagsExposedCredentialCheck>;
 
 export type CreateResponseRulesItemSetCacheTagsRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CreateResponseRulesItemSetCacheTagsRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -21971,8 +21936,7 @@ export const CreateResponseRulesItemSetConfigRuleActionParameters =
     identifier: "CreateResponseRulesItemSetConfigRuleActionParameters",
   }) as any as S.Schema<CreateResponseRulesItemSetConfigRuleActionParameters>;
 
-export type CreateResponseRulesItemSetConfigRuleCategoriesList =
-  ReadonlyArray<string>;
+export type CreateResponseRulesItemSetConfigRuleCategoriesList = Array<string>;
 export const CreateResponseRulesItemSetConfigRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -21995,7 +21959,7 @@ export const CreateResponseRulesItemSetConfigRuleExposedCredentialCheck =
   }) as any as S.Schema<CreateResponseRulesItemSetConfigRuleExposedCredentialCheck>;
 
 export type CreateResponseRulesItemSetConfigRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CreateResponseRulesItemSetConfigRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -22141,7 +22105,7 @@ export const CreateResponseRulesItemSkipRuleActionParametersPhasesItem =
   /*@__PURE__*/ S.String;
 
 export type CreateResponseRulesItemSkipRuleActionParametersPhasesList =
-  ReadonlyArray<CreateResponseRulesItemSkipRuleActionParametersPhasesItem>;
+  Array<CreateResponseRulesItemSkipRuleActionParametersPhasesItem>;
 export const CreateResponseRulesItemSkipRuleActionParametersPhasesList =
   /*@__PURE__*/ S.Array(
     CreateResponseRulesItemSkipRuleActionParametersPhasesItem,
@@ -22159,14 +22123,14 @@ export const CreateResponseRulesItemSkipRuleActionParametersProductsItem =
   /*@__PURE__*/ S.String;
 
 export type CreateResponseRulesItemSkipRuleActionParametersProductsList =
-  ReadonlyArray<CreateResponseRulesItemSkipRuleActionParametersProductsItem>;
+  Array<CreateResponseRulesItemSkipRuleActionParametersProductsItem>;
 export const CreateResponseRulesItemSkipRuleActionParametersProductsList =
   /*@__PURE__*/ S.Array(
     CreateResponseRulesItemSkipRuleActionParametersProductsItem,
   ) as any as S.Schema<CreateResponseRulesItemSkipRuleActionParametersProductsList>;
 
 export type CreateResponseRulesItemSkipRuleActionParametersRulesValueList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CreateResponseRulesItemSkipRuleActionParametersRulesValueList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -22188,7 +22152,7 @@ export const CreateResponseRulesItemSkipRuleActionParametersRuleset =
   /*@__PURE__*/ S.String;
 
 export type CreateResponseRulesItemSkipRuleActionParametersRulesetsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CreateResponseRulesItemSkipRuleActionParametersRulesetsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -22232,8 +22196,7 @@ export const CreateResponseRulesItemSkipRuleActionParameters =
     identifier: "CreateResponseRulesItemSkipRuleActionParameters",
   }) as any as S.Schema<CreateResponseRulesItemSkipRuleActionParameters>;
 
-export type CreateResponseRulesItemSkipRuleCategoriesList =
-  ReadonlyArray<string>;
+export type CreateResponseRulesItemSkipRuleCategoriesList = Array<string>;
 export const CreateResponseRulesItemSkipRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -22256,7 +22219,7 @@ export const CreateResponseRulesItemSkipRuleExposedCredentialCheck =
   }) as any as S.Schema<CreateResponseRulesItemSkipRuleExposedCredentialCheck>;
 
 export type CreateResponseRulesItemSkipRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CreateResponseRulesItemSkipRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -22382,7 +22345,7 @@ export const CreateResponseRulesItemTransformResponseHTMLActionParameters =
   }) as any as S.Schema<CreateResponseRulesItemTransformResponseHTMLActionParameters>;
 
 export type CreateResponseRulesItemTransformResponseHTMLCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CreateResponseRulesItemTransformResponseHTMLCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -22406,7 +22369,7 @@ export const CreateResponseRulesItemTransformResponseHTMLExposedCredentialCheck 
   }) as any as S.Schema<CreateResponseRulesItemTransformResponseHTMLExposedCredentialCheck>;
 
 export type CreateResponseRulesItemTransformResponseHTMLRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CreateResponseRulesItemTransformResponseHTMLRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -22781,7 +22744,7 @@ export const CreateResponseRulesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateResponseRulesItem",
 }) as any as S.Schema<CreateResponseRulesItem>;
 
-export type CreateResponseRulesList = ReadonlyArray<CreateResponseRulesItem>;
+export type CreateResponseRulesList = Array<CreateResponseRulesItem>;
 export const CreateResponseRulesList = /*@__PURE__*/ S.Array(
   CreateResponseRulesItem,
 ) as any as S.Schema<CreateResponseRulesList>;
@@ -22945,8 +22908,7 @@ export const RulesDeleteResponseRulesItemBlockRuleActionParameters =
     identifier: "RulesDeleteResponseRulesItemBlockRuleActionParameters",
   }) as any as S.Schema<RulesDeleteResponseRulesItemBlockRuleActionParameters>;
 
-export type RulesDeleteResponseRulesItemBlockRuleCategoriesList =
-  ReadonlyArray<string>;
+export type RulesDeleteResponseRulesItemBlockRuleCategoriesList = Array<string>;
 export const RulesDeleteResponseRulesItemBlockRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -22982,7 +22944,7 @@ export const RulesDeleteResponseRulesItemBlockRuleLogging =
   }) as any as S.Schema<RulesDeleteResponseRulesItemBlockRuleLogging>;
 
 export type RulesDeleteResponseRulesItemBlockRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesDeleteResponseRulesItemBlockRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -23096,8 +23058,7 @@ export type RulesDeleteResponseRulesItemChallengeAction = "challenge";
 export const RulesDeleteResponseRulesItemChallengeAction =
   /*@__PURE__*/ S.String;
 
-export type RulesDeleteResponseRulesItemChallengeCategoriesList =
-  ReadonlyArray<string>;
+export type RulesDeleteResponseRulesItemChallengeCategoriesList = Array<string>;
 export const RulesDeleteResponseRulesItemChallengeCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -23120,7 +23081,7 @@ export const RulesDeleteResponseRulesItemChallengeExposedCredentialCheck =
   }) as any as S.Schema<RulesDeleteResponseRulesItemChallengeExposedCredentialCheck>;
 
 export type RulesDeleteResponseRulesItemChallengeRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesDeleteResponseRulesItemChallengeRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -23253,7 +23214,7 @@ export const RulesDeleteResponseRulesItemCompressResponseRuleActionParametersAlg
   }) as any as S.Schema<RulesDeleteResponseRulesItemCompressResponseRuleActionParametersAlgorithmsItem>;
 
 export type RulesDeleteResponseRulesItemCompressResponseRuleActionParametersAlgorithmsList =
-  ReadonlyArray<RulesDeleteResponseRulesItemCompressResponseRuleActionParametersAlgorithmsItem>;
+  Array<RulesDeleteResponseRulesItemCompressResponseRuleActionParametersAlgorithmsItem>;
 export const RulesDeleteResponseRulesItemCompressResponseRuleActionParametersAlgorithmsList =
   /*@__PURE__*/ S.Array(
     RulesDeleteResponseRulesItemCompressResponseRuleActionParametersAlgorithmsItem,
@@ -23275,7 +23236,7 @@ export const RulesDeleteResponseRulesItemCompressResponseRuleActionParameters =
   }) as any as S.Schema<RulesDeleteResponseRulesItemCompressResponseRuleActionParameters>;
 
 export type RulesDeleteResponseRulesItemCompressResponseRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesDeleteResponseRulesItemCompressResponseRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -23299,7 +23260,7 @@ export const RulesDeleteResponseRulesItemCompressResponseRuleExposedCredentialCh
   }) as any as S.Schema<RulesDeleteResponseRulesItemCompressResponseRuleExposedCredentialCheck>;
 
 export type RulesDeleteResponseRulesItemCompressResponseRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesDeleteResponseRulesItemCompressResponseRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -23418,7 +23379,7 @@ export const RulesDeleteResponseRulesItemDDoSDynamicRuleAction =
   /*@__PURE__*/ S.String;
 
 export type RulesDeleteResponseRulesItemDDoSDynamicRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesDeleteResponseRulesItemDDoSDynamicRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -23442,7 +23403,7 @@ export const RulesDeleteResponseRulesItemDDoSDynamicRuleExposedCredentialCheck =
   }) as any as S.Schema<RulesDeleteResponseRulesItemDDoSDynamicRuleExposedCredentialCheck>;
 
 export type RulesDeleteResponseRulesItemDDoSDynamicRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesDeleteResponseRulesItemDDoSDynamicRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -23601,7 +23562,7 @@ export const RulesDeleteResponseRulesItemExecuteRuleActionParametersOverridesCat
   }) as any as S.Schema<RulesDeleteResponseRulesItemExecuteRuleActionParametersOverridesCategoriesItem>;
 
 export type RulesDeleteResponseRulesItemExecuteRuleActionParametersOverridesCategoriesList =
-  ReadonlyArray<RulesDeleteResponseRulesItemExecuteRuleActionParametersOverridesCategoriesItem>;
+  Array<RulesDeleteResponseRulesItemExecuteRuleActionParametersOverridesCategoriesItem>;
 export const RulesDeleteResponseRulesItemExecuteRuleActionParametersOverridesCategoriesList =
   /*@__PURE__*/ S.Array(
     RulesDeleteResponseRulesItemExecuteRuleActionParametersOverridesCategoriesItem,
@@ -23643,7 +23604,7 @@ export const RulesDeleteResponseRulesItemExecuteRuleActionParametersOverridesRul
   }) as any as S.Schema<RulesDeleteResponseRulesItemExecuteRuleActionParametersOverridesRulesItem>;
 
 export type RulesDeleteResponseRulesItemExecuteRuleActionParametersOverridesRulesList =
-  ReadonlyArray<RulesDeleteResponseRulesItemExecuteRuleActionParametersOverridesRulesItem>;
+  Array<RulesDeleteResponseRulesItemExecuteRuleActionParametersOverridesRulesItem>;
 export const RulesDeleteResponseRulesItemExecuteRuleActionParametersOverridesRulesList =
   /*@__PURE__*/ S.Array(
     RulesDeleteResponseRulesItemExecuteRuleActionParametersOverridesRulesItem,
@@ -23714,7 +23675,7 @@ export const RulesDeleteResponseRulesItemExecuteRuleActionParameters =
   }) as any as S.Schema<RulesDeleteResponseRulesItemExecuteRuleActionParameters>;
 
 export type RulesDeleteResponseRulesItemExecuteRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesDeleteResponseRulesItemExecuteRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -23737,7 +23698,7 @@ export const RulesDeleteResponseRulesItemExecuteRuleExposedCredentialCheck =
   }) as any as S.Schema<RulesDeleteResponseRulesItemExecuteRuleExposedCredentialCheck>;
 
 export type RulesDeleteResponseRulesItemExecuteRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesDeleteResponseRulesItemExecuteRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -23853,7 +23814,7 @@ export const RulesDeleteResponseRulesItemForceConnectionCloseRuleAction =
   /*@__PURE__*/ S.String;
 
 export type RulesDeleteResponseRulesItemForceConnectionCloseRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesDeleteResponseRulesItemForceConnectionCloseRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -23877,7 +23838,7 @@ export const RulesDeleteResponseRulesItemForceConnectionCloseRuleExposedCredenti
   }) as any as S.Schema<RulesDeleteResponseRulesItemForceConnectionCloseRuleExposedCredentialCheck>;
 
 export type RulesDeleteResponseRulesItemForceConnectionCloseRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesDeleteResponseRulesItemForceConnectionCloseRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -23992,7 +23953,7 @@ export const RulesDeleteResponseRulesItemJSChallengeAction =
   /*@__PURE__*/ S.String;
 
 export type RulesDeleteResponseRulesItemJSChallengeCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesDeleteResponseRulesItemJSChallengeCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -24015,7 +23976,7 @@ export const RulesDeleteResponseRulesItemJSChallengeExposedCredentialCheck =
   }) as any as S.Schema<RulesDeleteResponseRulesItemJSChallengeExposedCredentialCheck>;
 
 export type RulesDeleteResponseRulesItemJSChallengeRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesDeleteResponseRulesItemJSChallengeRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -24124,8 +24085,7 @@ export const RulesDeleteResponseRulesItemJSChallenge = /*@__PURE__*/ S.suspend(
 export type RulesDeleteResponseRulesItemLogRuleAction = "log";
 export const RulesDeleteResponseRulesItemLogRuleAction = /*@__PURE__*/ S.String;
 
-export type RulesDeleteResponseRulesItemLogRuleCategoriesList =
-  ReadonlyArray<string>;
+export type RulesDeleteResponseRulesItemLogRuleCategoriesList = Array<string>;
 export const RulesDeleteResponseRulesItemLogRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -24148,7 +24108,7 @@ export const RulesDeleteResponseRulesItemLogRuleExposedCredentialCheck =
   }) as any as S.Schema<RulesDeleteResponseRulesItemLogRuleExposedCredentialCheck>;
 
 export type RulesDeleteResponseRulesItemLogRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesDeleteResponseRulesItemLogRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -24271,7 +24231,7 @@ export const RulesDeleteResponseRulesItemLogCustomFieldRuleActionParametersCooki
   }) as any as S.Schema<RulesDeleteResponseRulesItemLogCustomFieldRuleActionParametersCookieFieldsItem>;
 
 export type RulesDeleteResponseRulesItemLogCustomFieldRuleActionParametersCookieFieldsList =
-  ReadonlyArray<RulesDeleteResponseRulesItemLogCustomFieldRuleActionParametersCookieFieldsItem>;
+  Array<RulesDeleteResponseRulesItemLogCustomFieldRuleActionParametersCookieFieldsItem>;
 export const RulesDeleteResponseRulesItemLogCustomFieldRuleActionParametersCookieFieldsList =
   /*@__PURE__*/ S.Array(
     RulesDeleteResponseRulesItemLogCustomFieldRuleActionParametersCookieFieldsItem,
@@ -24297,7 +24257,7 @@ export const RulesDeleteResponseRulesItemLogCustomFieldRuleActionParametersRawRe
   }) as any as S.Schema<RulesDeleteResponseRulesItemLogCustomFieldRuleActionParametersRawResponseFieldsItem>;
 
 export type RulesDeleteResponseRulesItemLogCustomFieldRuleActionParametersRawResponseFieldsList =
-  ReadonlyArray<RulesDeleteResponseRulesItemLogCustomFieldRuleActionParametersRawResponseFieldsItem>;
+  Array<RulesDeleteResponseRulesItemLogCustomFieldRuleActionParametersRawResponseFieldsItem>;
 export const RulesDeleteResponseRulesItemLogCustomFieldRuleActionParametersRawResponseFieldsList =
   /*@__PURE__*/ S.Array(
     RulesDeleteResponseRulesItemLogCustomFieldRuleActionParametersRawResponseFieldsItem,
@@ -24318,7 +24278,7 @@ export const RulesDeleteResponseRulesItemLogCustomFieldRuleActionParametersReque
   }) as any as S.Schema<RulesDeleteResponseRulesItemLogCustomFieldRuleActionParametersRequestFieldsItem>;
 
 export type RulesDeleteResponseRulesItemLogCustomFieldRuleActionParametersRequestFieldsList =
-  ReadonlyArray<RulesDeleteResponseRulesItemLogCustomFieldRuleActionParametersRequestFieldsItem>;
+  Array<RulesDeleteResponseRulesItemLogCustomFieldRuleActionParametersRequestFieldsItem>;
 export const RulesDeleteResponseRulesItemLogCustomFieldRuleActionParametersRequestFieldsList =
   /*@__PURE__*/ S.Array(
     RulesDeleteResponseRulesItemLogCustomFieldRuleActionParametersRequestFieldsItem,
@@ -24344,7 +24304,7 @@ export const RulesDeleteResponseRulesItemLogCustomFieldRuleActionParametersRespo
   }) as any as S.Schema<RulesDeleteResponseRulesItemLogCustomFieldRuleActionParametersResponseFieldsItem>;
 
 export type RulesDeleteResponseRulesItemLogCustomFieldRuleActionParametersResponseFieldsList =
-  ReadonlyArray<RulesDeleteResponseRulesItemLogCustomFieldRuleActionParametersResponseFieldsItem>;
+  Array<RulesDeleteResponseRulesItemLogCustomFieldRuleActionParametersResponseFieldsItem>;
 export const RulesDeleteResponseRulesItemLogCustomFieldRuleActionParametersResponseFieldsList =
   /*@__PURE__*/ S.Array(
     RulesDeleteResponseRulesItemLogCustomFieldRuleActionParametersResponseFieldsItem,
@@ -24365,7 +24325,7 @@ export const RulesDeleteResponseRulesItemLogCustomFieldRuleActionParametersTrans
   }) as any as S.Schema<RulesDeleteResponseRulesItemLogCustomFieldRuleActionParametersTransformedRequestFieldsItem>;
 
 export type RulesDeleteResponseRulesItemLogCustomFieldRuleActionParametersTransformedRequestFieldsList =
-  ReadonlyArray<RulesDeleteResponseRulesItemLogCustomFieldRuleActionParametersTransformedRequestFieldsItem>;
+  Array<RulesDeleteResponseRulesItemLogCustomFieldRuleActionParametersTransformedRequestFieldsItem>;
 export const RulesDeleteResponseRulesItemLogCustomFieldRuleActionParametersTransformedRequestFieldsList =
   /*@__PURE__*/ S.Array(
     RulesDeleteResponseRulesItemLogCustomFieldRuleActionParametersTransformedRequestFieldsItem,
@@ -24418,7 +24378,7 @@ export const RulesDeleteResponseRulesItemLogCustomFieldRuleActionParameters =
   }) as any as S.Schema<RulesDeleteResponseRulesItemLogCustomFieldRuleActionParameters>;
 
 export type RulesDeleteResponseRulesItemLogCustomFieldRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesDeleteResponseRulesItemLogCustomFieldRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -24442,7 +24402,7 @@ export const RulesDeleteResponseRulesItemLogCustomFieldRuleExposedCredentialChec
   }) as any as S.Schema<RulesDeleteResponseRulesItemLogCustomFieldRuleExposedCredentialCheck>;
 
 export type RulesDeleteResponseRulesItemLogCustomFieldRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesDeleteResponseRulesItemLogCustomFieldRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -24560,7 +24520,7 @@ export const RulesDeleteResponseRulesItemManagedChallengeRuleAction =
   /*@__PURE__*/ S.String;
 
 export type RulesDeleteResponseRulesItemManagedChallengeRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesDeleteResponseRulesItemManagedChallengeRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -24584,7 +24544,7 @@ export const RulesDeleteResponseRulesItemManagedChallengeRuleExposedCredentialCh
   }) as any as S.Schema<RulesDeleteResponseRulesItemManagedChallengeRuleExposedCredentialCheck>;
 
 export type RulesDeleteResponseRulesItemManagedChallengeRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesDeleteResponseRulesItemManagedChallengeRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -24791,7 +24751,7 @@ export const RulesDeleteResponseRulesItemRedirectRuleActionParameters =
   }) as any as S.Schema<RulesDeleteResponseRulesItemRedirectRuleActionParameters>;
 
 export type RulesDeleteResponseRulesItemRedirectRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesDeleteResponseRulesItemRedirectRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -24815,7 +24775,7 @@ export const RulesDeleteResponseRulesItemRedirectRuleExposedCredentialCheck =
   }) as any as S.Schema<RulesDeleteResponseRulesItemRedirectRuleExposedCredentialCheck>;
 
 export type RulesDeleteResponseRulesItemRedirectRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesDeleteResponseRulesItemRedirectRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -25185,7 +25145,7 @@ export const RulesDeleteResponseRulesItemRewriteRuleActionParameters =
   }) as any as S.Schema<RulesDeleteResponseRulesItemRewriteRuleActionParameters>;
 
 export type RulesDeleteResponseRulesItemRewriteRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesDeleteResponseRulesItemRewriteRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -25208,7 +25168,7 @@ export const RulesDeleteResponseRulesItemRewriteRuleExposedCredentialCheck =
   }) as any as S.Schema<RulesDeleteResponseRulesItemRewriteRuleExposedCredentialCheck>;
 
 export type RulesDeleteResponseRulesItemRewriteRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesDeleteResponseRulesItemRewriteRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -25372,8 +25332,7 @@ export const RulesDeleteResponseRulesItemRouteRuleActionParameters =
     identifier: "RulesDeleteResponseRulesItemRouteRuleActionParameters",
   }) as any as S.Schema<RulesDeleteResponseRulesItemRouteRuleActionParameters>;
 
-export type RulesDeleteResponseRulesItemRouteRuleCategoriesList =
-  ReadonlyArray<string>;
+export type RulesDeleteResponseRulesItemRouteRuleCategoriesList = Array<string>;
 export const RulesDeleteResponseRulesItemRouteRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -25396,7 +25355,7 @@ export const RulesDeleteResponseRulesItemRouteRuleExposedCredentialCheck =
   }) as any as S.Schema<RulesDeleteResponseRulesItemRouteRuleExposedCredentialCheck>;
 
 export type RulesDeleteResponseRulesItemRouteRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesDeleteResponseRulesItemRouteRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -25523,8 +25482,7 @@ export const RulesDeleteResponseRulesItemScoreRuleActionParameters =
     identifier: "RulesDeleteResponseRulesItemScoreRuleActionParameters",
   }) as any as S.Schema<RulesDeleteResponseRulesItemScoreRuleActionParameters>;
 
-export type RulesDeleteResponseRulesItemScoreRuleCategoriesList =
-  ReadonlyArray<string>;
+export type RulesDeleteResponseRulesItemScoreRuleCategoriesList = Array<string>;
 export const RulesDeleteResponseRulesItemScoreRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -25547,7 +25505,7 @@ export const RulesDeleteResponseRulesItemScoreRuleExposedCredentialCheck =
   }) as any as S.Schema<RulesDeleteResponseRulesItemScoreRuleExposedCredentialCheck>;
 
 export type RulesDeleteResponseRulesItemScoreRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesDeleteResponseRulesItemScoreRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -25749,7 +25707,7 @@ export const RulesDeleteResponseRulesItemServeErrorRuleActionParameters =
   }) as any as S.Schema<RulesDeleteResponseRulesItemServeErrorRuleActionParameters>;
 
 export type RulesDeleteResponseRulesItemServeErrorRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesDeleteResponseRulesItemServeErrorRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -25773,7 +25731,7 @@ export const RulesDeleteResponseRulesItemServeErrorRuleExposedCredentialCheck =
   }) as any as S.Schema<RulesDeleteResponseRulesItemServeErrorRuleExposedCredentialCheck>;
 
 export type RulesDeleteResponseRulesItemServeErrorRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesDeleteResponseRulesItemServeErrorRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -26174,7 +26132,7 @@ export const RulesDeleteResponseRulesItemSetCacheControlActionParametersNoCacheS
   /*@__PURE__*/ S.String;
 
 export type RulesDeleteResponseRulesItemSetCacheControlActionParametersNoCacheSetDirectiveQualifiersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesDeleteResponseRulesItemSetCacheControlActionParametersNoCacheSetDirectiveQualifiersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -26395,7 +26353,7 @@ export const RulesDeleteResponseRulesItemSetCacheControlActionParametersPrivateS
   /*@__PURE__*/ S.String;
 
 export type RulesDeleteResponseRulesItemSetCacheControlActionParametersPrivateSetDirectiveQualifiersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesDeleteResponseRulesItemSetCacheControlActionParametersPrivateSetDirectiveQualifiersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -26928,7 +26886,7 @@ export const RulesDeleteResponseRulesItemSetCacheControlActionParameters =
   }) as any as S.Schema<RulesDeleteResponseRulesItemSetCacheControlActionParameters>;
 
 export type RulesDeleteResponseRulesItemSetCacheControlCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesDeleteResponseRulesItemSetCacheControlCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -26952,7 +26910,7 @@ export const RulesDeleteResponseRulesItemSetCacheControlExposedCredentialCheck =
   }) as any as S.Schema<RulesDeleteResponseRulesItemSetCacheControlExposedCredentialCheck>;
 
 export type RulesDeleteResponseRulesItemSetCacheControlRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesDeleteResponseRulesItemSetCacheControlRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -27070,7 +27028,7 @@ export const RulesDeleteResponseRulesItemSetCacheSettingsRuleAction =
   /*@__PURE__*/ S.String;
 
 export type RulesDeleteResponseRulesItemSetCacheSettingsRuleActionParametersAdditionalCacheablePortsList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const RulesDeleteResponseRulesItemSetCacheSettingsRuleActionParametersAdditionalCacheablePortsList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -27099,14 +27057,14 @@ export const RulesDeleteResponseRulesItemSetCacheSettingsRuleActionParametersBro
   }) as any as S.Schema<RulesDeleteResponseRulesItemSetCacheSettingsRuleActionParametersBrowserTtl>;
 
 export type RulesDeleteResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookieCheckPresenceList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesDeleteResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookieCheckPresenceList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<RulesDeleteResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookieCheckPresenceList>;
 
 export type RulesDeleteResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookieIncludeList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesDeleteResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookieIncludeList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -27136,14 +27094,14 @@ export const RulesDeleteResponseRulesItemSetCacheSettingsRuleActionParametersCac
   }) as any as S.Schema<RulesDeleteResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookie>;
 
 export type RulesDeleteResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderCheckPresenceList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesDeleteResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderCheckPresenceList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<RulesDeleteResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderCheckPresenceList>;
 
 export type RulesDeleteResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderContainsValueList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesDeleteResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderContainsValueList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -27162,7 +27120,7 @@ export const RulesDeleteResponseRulesItemSetCacheSettingsRuleActionParametersCac
   ) as any as S.Schema<RulesDeleteResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderContainsMap>;
 
 export type RulesDeleteResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderIncludeList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesDeleteResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderIncludeList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -27214,7 +27172,7 @@ export const RulesDeleteResponseRulesItemSetCacheSettingsRuleActionParametersCac
   }) as any as S.Schema<RulesDeleteResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHost>;
 
 export type RulesDeleteResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringExcludeListList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesDeleteResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringExcludeListList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -27240,7 +27198,7 @@ export const RulesDeleteResponseRulesItemSetCacheSettingsRuleActionParametersCac
   }) as any as S.Schema<RulesDeleteResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringExclude>;
 
 export type RulesDeleteResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringIncludeListList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesDeleteResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringIncludeListList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -27441,7 +27399,7 @@ export const RulesDeleteResponseRulesItemSetCacheSettingsRuleActionParametersEdg
   }) as any as S.Schema<RulesDeleteResponseRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlItem>;
 
 export type RulesDeleteResponseRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlList =
-  ReadonlyArray<RulesDeleteResponseRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlItem>;
+  Array<RulesDeleteResponseRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlItem>;
 export const RulesDeleteResponseRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlList =
   /*@__PURE__*/ S.Array(
     RulesDeleteResponseRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlItem,
@@ -27527,14 +27485,14 @@ export const RulesDeleteResponseRulesItemSetCacheSettingsRuleActionParametersVar
   /*@__PURE__*/ S.String;
 
 export type RulesDeleteResponseRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValueLanguagesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesDeleteResponseRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValueLanguagesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<RulesDeleteResponseRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValueLanguagesList>;
 
 export type RulesDeleteResponseRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValueMediaTypesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesDeleteResponseRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValueMediaTypesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -27698,7 +27656,7 @@ export const RulesDeleteResponseRulesItemSetCacheSettingsRuleActionParameters =
   }) as any as S.Schema<RulesDeleteResponseRulesItemSetCacheSettingsRuleActionParameters>;
 
 export type RulesDeleteResponseRulesItemSetCacheSettingsRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesDeleteResponseRulesItemSetCacheSettingsRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -27722,7 +27680,7 @@ export const RulesDeleteResponseRulesItemSetCacheSettingsRuleExposedCredentialCh
   }) as any as S.Schema<RulesDeleteResponseRulesItemSetCacheSettingsRuleExposedCredentialCheck>;
 
 export type RulesDeleteResponseRulesItemSetCacheSettingsRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesDeleteResponseRulesItemSetCacheSettingsRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -27846,7 +27804,7 @@ export const RulesDeleteResponseRulesItemSetCacheTagsActionParametersAddCacheTag
   /*@__PURE__*/ S.String;
 
 export type RulesDeleteResponseRulesItemSetCacheTagsActionParametersAddCacheTagsValuesValuesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesDeleteResponseRulesItemSetCacheTagsActionParametersAddCacheTagsValuesValuesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -27900,7 +27858,7 @@ export const RulesDeleteResponseRulesItemSetCacheTagsActionParametersRemoveCache
   /*@__PURE__*/ S.String;
 
 export type RulesDeleteResponseRulesItemSetCacheTagsActionParametersRemoveCacheTagsValuesValuesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesDeleteResponseRulesItemSetCacheTagsActionParametersRemoveCacheTagsValuesValuesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -27954,7 +27912,7 @@ export const RulesDeleteResponseRulesItemSetCacheTagsActionParametersSetCacheTag
   /*@__PURE__*/ S.String;
 
 export type RulesDeleteResponseRulesItemSetCacheTagsActionParametersSetCacheTagsValuesValuesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesDeleteResponseRulesItemSetCacheTagsActionParametersSetCacheTagsValuesValuesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -28044,7 +28002,7 @@ export const RulesDeleteResponseRulesItemSetCacheTagsActionParameters =
   }) as any as S.Schema<RulesDeleteResponseRulesItemSetCacheTagsActionParameters>;
 
 export type RulesDeleteResponseRulesItemSetCacheTagsCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesDeleteResponseRulesItemSetCacheTagsCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -28068,7 +28026,7 @@ export const RulesDeleteResponseRulesItemSetCacheTagsExposedCredentialCheck =
   }) as any as S.Schema<RulesDeleteResponseRulesItemSetCacheTagsExposedCredentialCheck>;
 
 export type RulesDeleteResponseRulesItemSetCacheTagsRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesDeleteResponseRulesItemSetCacheTagsRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -28341,7 +28299,7 @@ export const RulesDeleteResponseRulesItemSetConfigRuleActionParameters =
   }) as any as S.Schema<RulesDeleteResponseRulesItemSetConfigRuleActionParameters>;
 
 export type RulesDeleteResponseRulesItemSetConfigRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesDeleteResponseRulesItemSetConfigRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -28365,7 +28323,7 @@ export const RulesDeleteResponseRulesItemSetConfigRuleExposedCredentialCheck =
   }) as any as S.Schema<RulesDeleteResponseRulesItemSetConfigRuleExposedCredentialCheck>;
 
 export type RulesDeleteResponseRulesItemSetConfigRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesDeleteResponseRulesItemSetConfigRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -28513,7 +28471,7 @@ export const RulesDeleteResponseRulesItemSkipRuleActionParametersPhasesItem =
   /*@__PURE__*/ S.String;
 
 export type RulesDeleteResponseRulesItemSkipRuleActionParametersPhasesList =
-  ReadonlyArray<RulesDeleteResponseRulesItemSkipRuleActionParametersPhasesItem>;
+  Array<RulesDeleteResponseRulesItemSkipRuleActionParametersPhasesItem>;
 export const RulesDeleteResponseRulesItemSkipRuleActionParametersPhasesList =
   /*@__PURE__*/ S.Array(
     RulesDeleteResponseRulesItemSkipRuleActionParametersPhasesItem,
@@ -28531,14 +28489,14 @@ export const RulesDeleteResponseRulesItemSkipRuleActionParametersProductsItem =
   /*@__PURE__*/ S.String;
 
 export type RulesDeleteResponseRulesItemSkipRuleActionParametersProductsList =
-  ReadonlyArray<RulesDeleteResponseRulesItemSkipRuleActionParametersProductsItem>;
+  Array<RulesDeleteResponseRulesItemSkipRuleActionParametersProductsItem>;
 export const RulesDeleteResponseRulesItemSkipRuleActionParametersProductsList =
   /*@__PURE__*/ S.Array(
     RulesDeleteResponseRulesItemSkipRuleActionParametersProductsItem,
   ) as any as S.Schema<RulesDeleteResponseRulesItemSkipRuleActionParametersProductsList>;
 
 export type RulesDeleteResponseRulesItemSkipRuleActionParametersRulesValueList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesDeleteResponseRulesItemSkipRuleActionParametersRulesValueList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -28561,7 +28519,7 @@ export const RulesDeleteResponseRulesItemSkipRuleActionParametersRuleset =
   /*@__PURE__*/ S.String;
 
 export type RulesDeleteResponseRulesItemSkipRuleActionParametersRulesetsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesDeleteResponseRulesItemSkipRuleActionParametersRulesetsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -28607,8 +28565,7 @@ export const RulesDeleteResponseRulesItemSkipRuleActionParameters =
     identifier: "RulesDeleteResponseRulesItemSkipRuleActionParameters",
   }) as any as S.Schema<RulesDeleteResponseRulesItemSkipRuleActionParameters>;
 
-export type RulesDeleteResponseRulesItemSkipRuleCategoriesList =
-  ReadonlyArray<string>;
+export type RulesDeleteResponseRulesItemSkipRuleCategoriesList = Array<string>;
 export const RulesDeleteResponseRulesItemSkipRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -28631,7 +28588,7 @@ export const RulesDeleteResponseRulesItemSkipRuleExposedCredentialCheck =
   }) as any as S.Schema<RulesDeleteResponseRulesItemSkipRuleExposedCredentialCheck>;
 
 export type RulesDeleteResponseRulesItemSkipRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesDeleteResponseRulesItemSkipRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -28761,7 +28718,7 @@ export const RulesDeleteResponseRulesItemTransformResponseHTMLActionParameters =
   }) as any as S.Schema<RulesDeleteResponseRulesItemTransformResponseHTMLActionParameters>;
 
 export type RulesDeleteResponseRulesItemTransformResponseHTMLCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesDeleteResponseRulesItemTransformResponseHTMLCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -28785,7 +28742,7 @@ export const RulesDeleteResponseRulesItemTransformResponseHTMLExposedCredentialC
   }) as any as S.Schema<RulesDeleteResponseRulesItemTransformResponseHTMLExposedCredentialCheck>;
 
 export type RulesDeleteResponseRulesItemTransformResponseHTMLRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesDeleteResponseRulesItemTransformResponseHTMLRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -29162,8 +29119,7 @@ export const RulesDeleteResponseRulesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "RulesDeleteResponseRulesItem",
 }) as any as S.Schema<RulesDeleteResponseRulesItem>;
 
-export type RulesDeleteResponseRulesList =
-  ReadonlyArray<RulesDeleteResponseRulesItem>;
+export type RulesDeleteResponseRulesList = Array<RulesDeleteResponseRulesItem>;
 export const RulesDeleteResponseRulesList = /*@__PURE__*/ S.Array(
   RulesDeleteResponseRulesItem,
 ) as any as S.Schema<RulesDeleteResponseRulesList>;
@@ -29444,8 +29400,7 @@ export const PhasesGetResponseRulesItemBlockRuleActionParameters =
     identifier: "PhasesGetResponseRulesItemBlockRuleActionParameters",
   }) as any as S.Schema<PhasesGetResponseRulesItemBlockRuleActionParameters>;
 
-export type PhasesGetResponseRulesItemBlockRuleCategoriesList =
-  ReadonlyArray<string>;
+export type PhasesGetResponseRulesItemBlockRuleCategoriesList = Array<string>;
 export const PhasesGetResponseRulesItemBlockRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -29481,7 +29436,7 @@ export const PhasesGetResponseRulesItemBlockRuleLogging =
   }) as any as S.Schema<PhasesGetResponseRulesItemBlockRuleLogging>;
 
 export type PhasesGetResponseRulesItemBlockRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesGetResponseRulesItemBlockRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -29591,8 +29546,7 @@ export const PhasesGetResponseRulesItemBlockRule = /*@__PURE__*/ S.suspend(() =>
 export type PhasesGetResponseRulesItemChallengeAction = "challenge";
 export const PhasesGetResponseRulesItemChallengeAction = /*@__PURE__*/ S.String;
 
-export type PhasesGetResponseRulesItemChallengeCategoriesList =
-  ReadonlyArray<string>;
+export type PhasesGetResponseRulesItemChallengeCategoriesList = Array<string>;
 export const PhasesGetResponseRulesItemChallengeCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -29615,7 +29569,7 @@ export const PhasesGetResponseRulesItemChallengeExposedCredentialCheck =
   }) as any as S.Schema<PhasesGetResponseRulesItemChallengeExposedCredentialCheck>;
 
 export type PhasesGetResponseRulesItemChallengeRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesGetResponseRulesItemChallengeRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -29745,7 +29699,7 @@ export const PhasesGetResponseRulesItemCompressResponseRuleActionParametersAlgor
   }) as any as S.Schema<PhasesGetResponseRulesItemCompressResponseRuleActionParametersAlgorithmsItem>;
 
 export type PhasesGetResponseRulesItemCompressResponseRuleActionParametersAlgorithmsList =
-  ReadonlyArray<PhasesGetResponseRulesItemCompressResponseRuleActionParametersAlgorithmsItem>;
+  Array<PhasesGetResponseRulesItemCompressResponseRuleActionParametersAlgorithmsItem>;
 export const PhasesGetResponseRulesItemCompressResponseRuleActionParametersAlgorithmsList =
   /*@__PURE__*/ S.Array(
     PhasesGetResponseRulesItemCompressResponseRuleActionParametersAlgorithmsItem,
@@ -29767,7 +29721,7 @@ export const PhasesGetResponseRulesItemCompressResponseRuleActionParameters =
   }) as any as S.Schema<PhasesGetResponseRulesItemCompressResponseRuleActionParameters>;
 
 export type PhasesGetResponseRulesItemCompressResponseRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesGetResponseRulesItemCompressResponseRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -29791,7 +29745,7 @@ export const PhasesGetResponseRulesItemCompressResponseRuleExposedCredentialChec
   }) as any as S.Schema<PhasesGetResponseRulesItemCompressResponseRuleExposedCredentialCheck>;
 
 export type PhasesGetResponseRulesItemCompressResponseRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesGetResponseRulesItemCompressResponseRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -29908,7 +29862,7 @@ export const PhasesGetResponseRulesItemDDoSDynamicRuleAction =
   /*@__PURE__*/ S.String;
 
 export type PhasesGetResponseRulesItemDDoSDynamicRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesGetResponseRulesItemDDoSDynamicRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -29932,7 +29886,7 @@ export const PhasesGetResponseRulesItemDDoSDynamicRuleExposedCredentialCheck =
   }) as any as S.Schema<PhasesGetResponseRulesItemDDoSDynamicRuleExposedCredentialCheck>;
 
 export type PhasesGetResponseRulesItemDDoSDynamicRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesGetResponseRulesItemDDoSDynamicRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -30089,7 +30043,7 @@ export const PhasesGetResponseRulesItemExecuteRuleActionParametersOverridesCateg
   }) as any as S.Schema<PhasesGetResponseRulesItemExecuteRuleActionParametersOverridesCategoriesItem>;
 
 export type PhasesGetResponseRulesItemExecuteRuleActionParametersOverridesCategoriesList =
-  ReadonlyArray<PhasesGetResponseRulesItemExecuteRuleActionParametersOverridesCategoriesItem>;
+  Array<PhasesGetResponseRulesItemExecuteRuleActionParametersOverridesCategoriesItem>;
 export const PhasesGetResponseRulesItemExecuteRuleActionParametersOverridesCategoriesList =
   /*@__PURE__*/ S.Array(
     PhasesGetResponseRulesItemExecuteRuleActionParametersOverridesCategoriesItem,
@@ -30131,7 +30085,7 @@ export const PhasesGetResponseRulesItemExecuteRuleActionParametersOverridesRules
   }) as any as S.Schema<PhasesGetResponseRulesItemExecuteRuleActionParametersOverridesRulesItem>;
 
 export type PhasesGetResponseRulesItemExecuteRuleActionParametersOverridesRulesList =
-  ReadonlyArray<PhasesGetResponseRulesItemExecuteRuleActionParametersOverridesRulesItem>;
+  Array<PhasesGetResponseRulesItemExecuteRuleActionParametersOverridesRulesItem>;
 export const PhasesGetResponseRulesItemExecuteRuleActionParametersOverridesRulesList =
   /*@__PURE__*/ S.Array(
     PhasesGetResponseRulesItemExecuteRuleActionParametersOverridesRulesItem,
@@ -30201,8 +30155,7 @@ export const PhasesGetResponseRulesItemExecuteRuleActionParameters =
     identifier: "PhasesGetResponseRulesItemExecuteRuleActionParameters",
   }) as any as S.Schema<PhasesGetResponseRulesItemExecuteRuleActionParameters>;
 
-export type PhasesGetResponseRulesItemExecuteRuleCategoriesList =
-  ReadonlyArray<string>;
+export type PhasesGetResponseRulesItemExecuteRuleCategoriesList = Array<string>;
 export const PhasesGetResponseRulesItemExecuteRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -30225,7 +30178,7 @@ export const PhasesGetResponseRulesItemExecuteRuleExposedCredentialCheck =
   }) as any as S.Schema<PhasesGetResponseRulesItemExecuteRuleExposedCredentialCheck>;
 
 export type PhasesGetResponseRulesItemExecuteRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesGetResponseRulesItemExecuteRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -30341,7 +30294,7 @@ export const PhasesGetResponseRulesItemForceConnectionCloseRuleAction =
   /*@__PURE__*/ S.String;
 
 export type PhasesGetResponseRulesItemForceConnectionCloseRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesGetResponseRulesItemForceConnectionCloseRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -30365,7 +30318,7 @@ export const PhasesGetResponseRulesItemForceConnectionCloseRuleExposedCredential
   }) as any as S.Schema<PhasesGetResponseRulesItemForceConnectionCloseRuleExposedCredentialCheck>;
 
 export type PhasesGetResponseRulesItemForceConnectionCloseRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesGetResponseRulesItemForceConnectionCloseRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -30479,8 +30432,7 @@ export type PhasesGetResponseRulesItemJSChallengeAction = "js_challenge";
 export const PhasesGetResponseRulesItemJSChallengeAction =
   /*@__PURE__*/ S.String;
 
-export type PhasesGetResponseRulesItemJSChallengeCategoriesList =
-  ReadonlyArray<string>;
+export type PhasesGetResponseRulesItemJSChallengeCategoriesList = Array<string>;
 export const PhasesGetResponseRulesItemJSChallengeCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -30503,7 +30455,7 @@ export const PhasesGetResponseRulesItemJSChallengeExposedCredentialCheck =
   }) as any as S.Schema<PhasesGetResponseRulesItemJSChallengeExposedCredentialCheck>;
 
 export type PhasesGetResponseRulesItemJSChallengeRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesGetResponseRulesItemJSChallengeRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -30612,8 +30564,7 @@ export const PhasesGetResponseRulesItemJSChallenge = /*@__PURE__*/ S.suspend(
 export type PhasesGetResponseRulesItemLogRuleAction = "log";
 export const PhasesGetResponseRulesItemLogRuleAction = /*@__PURE__*/ S.String;
 
-export type PhasesGetResponseRulesItemLogRuleCategoriesList =
-  ReadonlyArray<string>;
+export type PhasesGetResponseRulesItemLogRuleCategoriesList = Array<string>;
 export const PhasesGetResponseRulesItemLogRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -30636,7 +30587,7 @@ export const PhasesGetResponseRulesItemLogRuleExposedCredentialCheck =
   }) as any as S.Schema<PhasesGetResponseRulesItemLogRuleExposedCredentialCheck>;
 
 export type PhasesGetResponseRulesItemLogRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesGetResponseRulesItemLogRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -30759,7 +30710,7 @@ export const PhasesGetResponseRulesItemLogCustomFieldRuleActionParametersCookieF
   }) as any as S.Schema<PhasesGetResponseRulesItemLogCustomFieldRuleActionParametersCookieFieldsItem>;
 
 export type PhasesGetResponseRulesItemLogCustomFieldRuleActionParametersCookieFieldsList =
-  ReadonlyArray<PhasesGetResponseRulesItemLogCustomFieldRuleActionParametersCookieFieldsItem>;
+  Array<PhasesGetResponseRulesItemLogCustomFieldRuleActionParametersCookieFieldsItem>;
 export const PhasesGetResponseRulesItemLogCustomFieldRuleActionParametersCookieFieldsList =
   /*@__PURE__*/ S.Array(
     PhasesGetResponseRulesItemLogCustomFieldRuleActionParametersCookieFieldsItem,
@@ -30785,7 +30736,7 @@ export const PhasesGetResponseRulesItemLogCustomFieldRuleActionParametersRawResp
   }) as any as S.Schema<PhasesGetResponseRulesItemLogCustomFieldRuleActionParametersRawResponseFieldsItem>;
 
 export type PhasesGetResponseRulesItemLogCustomFieldRuleActionParametersRawResponseFieldsList =
-  ReadonlyArray<PhasesGetResponseRulesItemLogCustomFieldRuleActionParametersRawResponseFieldsItem>;
+  Array<PhasesGetResponseRulesItemLogCustomFieldRuleActionParametersRawResponseFieldsItem>;
 export const PhasesGetResponseRulesItemLogCustomFieldRuleActionParametersRawResponseFieldsList =
   /*@__PURE__*/ S.Array(
     PhasesGetResponseRulesItemLogCustomFieldRuleActionParametersRawResponseFieldsItem,
@@ -30806,7 +30757,7 @@ export const PhasesGetResponseRulesItemLogCustomFieldRuleActionParametersRequest
   }) as any as S.Schema<PhasesGetResponseRulesItemLogCustomFieldRuleActionParametersRequestFieldsItem>;
 
 export type PhasesGetResponseRulesItemLogCustomFieldRuleActionParametersRequestFieldsList =
-  ReadonlyArray<PhasesGetResponseRulesItemLogCustomFieldRuleActionParametersRequestFieldsItem>;
+  Array<PhasesGetResponseRulesItemLogCustomFieldRuleActionParametersRequestFieldsItem>;
 export const PhasesGetResponseRulesItemLogCustomFieldRuleActionParametersRequestFieldsList =
   /*@__PURE__*/ S.Array(
     PhasesGetResponseRulesItemLogCustomFieldRuleActionParametersRequestFieldsItem,
@@ -30832,7 +30783,7 @@ export const PhasesGetResponseRulesItemLogCustomFieldRuleActionParametersRespons
   }) as any as S.Schema<PhasesGetResponseRulesItemLogCustomFieldRuleActionParametersResponseFieldsItem>;
 
 export type PhasesGetResponseRulesItemLogCustomFieldRuleActionParametersResponseFieldsList =
-  ReadonlyArray<PhasesGetResponseRulesItemLogCustomFieldRuleActionParametersResponseFieldsItem>;
+  Array<PhasesGetResponseRulesItemLogCustomFieldRuleActionParametersResponseFieldsItem>;
 export const PhasesGetResponseRulesItemLogCustomFieldRuleActionParametersResponseFieldsList =
   /*@__PURE__*/ S.Array(
     PhasesGetResponseRulesItemLogCustomFieldRuleActionParametersResponseFieldsItem,
@@ -30853,7 +30804,7 @@ export const PhasesGetResponseRulesItemLogCustomFieldRuleActionParametersTransfo
   }) as any as S.Schema<PhasesGetResponseRulesItemLogCustomFieldRuleActionParametersTransformedRequestFieldsItem>;
 
 export type PhasesGetResponseRulesItemLogCustomFieldRuleActionParametersTransformedRequestFieldsList =
-  ReadonlyArray<PhasesGetResponseRulesItemLogCustomFieldRuleActionParametersTransformedRequestFieldsItem>;
+  Array<PhasesGetResponseRulesItemLogCustomFieldRuleActionParametersTransformedRequestFieldsItem>;
 export const PhasesGetResponseRulesItemLogCustomFieldRuleActionParametersTransformedRequestFieldsList =
   /*@__PURE__*/ S.Array(
     PhasesGetResponseRulesItemLogCustomFieldRuleActionParametersTransformedRequestFieldsItem,
@@ -30905,7 +30856,7 @@ export const PhasesGetResponseRulesItemLogCustomFieldRuleActionParameters =
   }) as any as S.Schema<PhasesGetResponseRulesItemLogCustomFieldRuleActionParameters>;
 
 export type PhasesGetResponseRulesItemLogCustomFieldRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesGetResponseRulesItemLogCustomFieldRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -30929,7 +30880,7 @@ export const PhasesGetResponseRulesItemLogCustomFieldRuleExposedCredentialCheck 
   }) as any as S.Schema<PhasesGetResponseRulesItemLogCustomFieldRuleExposedCredentialCheck>;
 
 export type PhasesGetResponseRulesItemLogCustomFieldRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesGetResponseRulesItemLogCustomFieldRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -31047,7 +30998,7 @@ export const PhasesGetResponseRulesItemManagedChallengeRuleAction =
   /*@__PURE__*/ S.String;
 
 export type PhasesGetResponseRulesItemManagedChallengeRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesGetResponseRulesItemManagedChallengeRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -31071,7 +31022,7 @@ export const PhasesGetResponseRulesItemManagedChallengeRuleExposedCredentialChec
   }) as any as S.Schema<PhasesGetResponseRulesItemManagedChallengeRuleExposedCredentialCheck>;
 
 export type PhasesGetResponseRulesItemManagedChallengeRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesGetResponseRulesItemManagedChallengeRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -31276,7 +31227,7 @@ export const PhasesGetResponseRulesItemRedirectRuleActionParameters =
   }) as any as S.Schema<PhasesGetResponseRulesItemRedirectRuleActionParameters>;
 
 export type PhasesGetResponseRulesItemRedirectRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesGetResponseRulesItemRedirectRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -31299,7 +31250,7 @@ export const PhasesGetResponseRulesItemRedirectRuleExposedCredentialCheck =
   }) as any as S.Schema<PhasesGetResponseRulesItemRedirectRuleExposedCredentialCheck>;
 
 export type PhasesGetResponseRulesItemRedirectRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesGetResponseRulesItemRedirectRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -31665,8 +31616,7 @@ export const PhasesGetResponseRulesItemRewriteRuleActionParameters =
     identifier: "PhasesGetResponseRulesItemRewriteRuleActionParameters",
   }) as any as S.Schema<PhasesGetResponseRulesItemRewriteRuleActionParameters>;
 
-export type PhasesGetResponseRulesItemRewriteRuleCategoriesList =
-  ReadonlyArray<string>;
+export type PhasesGetResponseRulesItemRewriteRuleCategoriesList = Array<string>;
 export const PhasesGetResponseRulesItemRewriteRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -31689,7 +31639,7 @@ export const PhasesGetResponseRulesItemRewriteRuleExposedCredentialCheck =
   }) as any as S.Schema<PhasesGetResponseRulesItemRewriteRuleExposedCredentialCheck>;
 
 export type PhasesGetResponseRulesItemRewriteRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesGetResponseRulesItemRewriteRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -31852,8 +31802,7 @@ export const PhasesGetResponseRulesItemRouteRuleActionParameters =
     identifier: "PhasesGetResponseRulesItemRouteRuleActionParameters",
   }) as any as S.Schema<PhasesGetResponseRulesItemRouteRuleActionParameters>;
 
-export type PhasesGetResponseRulesItemRouteRuleCategoriesList =
-  ReadonlyArray<string>;
+export type PhasesGetResponseRulesItemRouteRuleCategoriesList = Array<string>;
 export const PhasesGetResponseRulesItemRouteRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -31876,7 +31825,7 @@ export const PhasesGetResponseRulesItemRouteRuleExposedCredentialCheck =
   }) as any as S.Schema<PhasesGetResponseRulesItemRouteRuleExposedCredentialCheck>;
 
 export type PhasesGetResponseRulesItemRouteRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesGetResponseRulesItemRouteRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -31999,8 +31948,7 @@ export const PhasesGetResponseRulesItemScoreRuleActionParameters =
     identifier: "PhasesGetResponseRulesItemScoreRuleActionParameters",
   }) as any as S.Schema<PhasesGetResponseRulesItemScoreRuleActionParameters>;
 
-export type PhasesGetResponseRulesItemScoreRuleCategoriesList =
-  ReadonlyArray<string>;
+export type PhasesGetResponseRulesItemScoreRuleCategoriesList = Array<string>;
 export const PhasesGetResponseRulesItemScoreRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -32023,7 +31971,7 @@ export const PhasesGetResponseRulesItemScoreRuleExposedCredentialCheck =
   }) as any as S.Schema<PhasesGetResponseRulesItemScoreRuleExposedCredentialCheck>;
 
 export type PhasesGetResponseRulesItemScoreRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesGetResponseRulesItemScoreRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -32222,7 +32170,7 @@ export const PhasesGetResponseRulesItemServeErrorRuleActionParameters =
   }) as any as S.Schema<PhasesGetResponseRulesItemServeErrorRuleActionParameters>;
 
 export type PhasesGetResponseRulesItemServeErrorRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesGetResponseRulesItemServeErrorRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -32246,7 +32194,7 @@ export const PhasesGetResponseRulesItemServeErrorRuleExposedCredentialCheck =
   }) as any as S.Schema<PhasesGetResponseRulesItemServeErrorRuleExposedCredentialCheck>;
 
 export type PhasesGetResponseRulesItemServeErrorRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesGetResponseRulesItemServeErrorRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -32645,7 +32593,7 @@ export const PhasesGetResponseRulesItemSetCacheControlActionParametersNoCacheSet
   /*@__PURE__*/ S.String;
 
 export type PhasesGetResponseRulesItemSetCacheControlActionParametersNoCacheSetDirectiveQualifiersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesGetResponseRulesItemSetCacheControlActionParametersNoCacheSetDirectiveQualifiersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -32866,7 +32814,7 @@ export const PhasesGetResponseRulesItemSetCacheControlActionParametersPrivateSet
   /*@__PURE__*/ S.String;
 
 export type PhasesGetResponseRulesItemSetCacheControlActionParametersPrivateSetDirectiveQualifiersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesGetResponseRulesItemSetCacheControlActionParametersPrivateSetDirectiveQualifiersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -33399,7 +33347,7 @@ export const PhasesGetResponseRulesItemSetCacheControlActionParameters =
   }) as any as S.Schema<PhasesGetResponseRulesItemSetCacheControlActionParameters>;
 
 export type PhasesGetResponseRulesItemSetCacheControlCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesGetResponseRulesItemSetCacheControlCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -33423,7 +33371,7 @@ export const PhasesGetResponseRulesItemSetCacheControlExposedCredentialCheck =
   }) as any as S.Schema<PhasesGetResponseRulesItemSetCacheControlExposedCredentialCheck>;
 
 export type PhasesGetResponseRulesItemSetCacheControlRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesGetResponseRulesItemSetCacheControlRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -33539,7 +33487,7 @@ export const PhasesGetResponseRulesItemSetCacheSettingsRuleAction =
   /*@__PURE__*/ S.String;
 
 export type PhasesGetResponseRulesItemSetCacheSettingsRuleActionParametersAdditionalCacheablePortsList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const PhasesGetResponseRulesItemSetCacheSettingsRuleActionParametersAdditionalCacheablePortsList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -33568,14 +33516,14 @@ export const PhasesGetResponseRulesItemSetCacheSettingsRuleActionParametersBrows
   }) as any as S.Schema<PhasesGetResponseRulesItemSetCacheSettingsRuleActionParametersBrowserTtl>;
 
 export type PhasesGetResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookieCheckPresenceList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesGetResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookieCheckPresenceList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PhasesGetResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookieCheckPresenceList>;
 
 export type PhasesGetResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookieIncludeList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesGetResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookieIncludeList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -33605,14 +33553,14 @@ export const PhasesGetResponseRulesItemSetCacheSettingsRuleActionParametersCache
   }) as any as S.Schema<PhasesGetResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookie>;
 
 export type PhasesGetResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderCheckPresenceList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesGetResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderCheckPresenceList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PhasesGetResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderCheckPresenceList>;
 
 export type PhasesGetResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderContainsValueList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesGetResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderContainsValueList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -33631,7 +33579,7 @@ export const PhasesGetResponseRulesItemSetCacheSettingsRuleActionParametersCache
   ) as any as S.Schema<PhasesGetResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderContainsMap>;
 
 export type PhasesGetResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderIncludeList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesGetResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderIncludeList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -33683,7 +33631,7 @@ export const PhasesGetResponseRulesItemSetCacheSettingsRuleActionParametersCache
   }) as any as S.Schema<PhasesGetResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHost>;
 
 export type PhasesGetResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringExcludeListList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesGetResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringExcludeListList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -33709,7 +33657,7 @@ export const PhasesGetResponseRulesItemSetCacheSettingsRuleActionParametersCache
   }) as any as S.Schema<PhasesGetResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringExclude>;
 
 export type PhasesGetResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringIncludeListList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesGetResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringIncludeListList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -33910,7 +33858,7 @@ export const PhasesGetResponseRulesItemSetCacheSettingsRuleActionParametersEdgeT
   }) as any as S.Schema<PhasesGetResponseRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlItem>;
 
 export type PhasesGetResponseRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlList =
-  ReadonlyArray<PhasesGetResponseRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlItem>;
+  Array<PhasesGetResponseRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlItem>;
 export const PhasesGetResponseRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlList =
   /*@__PURE__*/ S.Array(
     PhasesGetResponseRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlItem,
@@ -33996,14 +33944,14 @@ export const PhasesGetResponseRulesItemSetCacheSettingsRuleActionParametersVaryH
   /*@__PURE__*/ S.String;
 
 export type PhasesGetResponseRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValueLanguagesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesGetResponseRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValueLanguagesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PhasesGetResponseRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValueLanguagesList>;
 
 export type PhasesGetResponseRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValueMediaTypesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesGetResponseRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValueMediaTypesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -34167,7 +34115,7 @@ export const PhasesGetResponseRulesItemSetCacheSettingsRuleActionParameters =
   }) as any as S.Schema<PhasesGetResponseRulesItemSetCacheSettingsRuleActionParameters>;
 
 export type PhasesGetResponseRulesItemSetCacheSettingsRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesGetResponseRulesItemSetCacheSettingsRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -34191,7 +34139,7 @@ export const PhasesGetResponseRulesItemSetCacheSettingsRuleExposedCredentialChec
   }) as any as S.Schema<PhasesGetResponseRulesItemSetCacheSettingsRuleExposedCredentialCheck>;
 
 export type PhasesGetResponseRulesItemSetCacheSettingsRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesGetResponseRulesItemSetCacheSettingsRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -34313,7 +34261,7 @@ export const PhasesGetResponseRulesItemSetCacheTagsActionParametersAddCacheTagsV
   /*@__PURE__*/ S.String;
 
 export type PhasesGetResponseRulesItemSetCacheTagsActionParametersAddCacheTagsValuesValuesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesGetResponseRulesItemSetCacheTagsActionParametersAddCacheTagsValuesValuesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -34367,7 +34315,7 @@ export const PhasesGetResponseRulesItemSetCacheTagsActionParametersRemoveCacheTa
   /*@__PURE__*/ S.String;
 
 export type PhasesGetResponseRulesItemSetCacheTagsActionParametersRemoveCacheTagsValuesValuesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesGetResponseRulesItemSetCacheTagsActionParametersRemoveCacheTagsValuesValuesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -34421,7 +34369,7 @@ export const PhasesGetResponseRulesItemSetCacheTagsActionParametersSetCacheTagsV
   /*@__PURE__*/ S.String;
 
 export type PhasesGetResponseRulesItemSetCacheTagsActionParametersSetCacheTagsValuesValuesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesGetResponseRulesItemSetCacheTagsActionParametersSetCacheTagsValuesValuesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -34511,7 +34459,7 @@ export const PhasesGetResponseRulesItemSetCacheTagsActionParameters =
   }) as any as S.Schema<PhasesGetResponseRulesItemSetCacheTagsActionParameters>;
 
 export type PhasesGetResponseRulesItemSetCacheTagsCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesGetResponseRulesItemSetCacheTagsCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -34534,7 +34482,7 @@ export const PhasesGetResponseRulesItemSetCacheTagsExposedCredentialCheck =
   }) as any as S.Schema<PhasesGetResponseRulesItemSetCacheTagsExposedCredentialCheck>;
 
 export type PhasesGetResponseRulesItemSetCacheTagsRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesGetResponseRulesItemSetCacheTagsRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -34807,7 +34755,7 @@ export const PhasesGetResponseRulesItemSetConfigRuleActionParameters =
   }) as any as S.Schema<PhasesGetResponseRulesItemSetConfigRuleActionParameters>;
 
 export type PhasesGetResponseRulesItemSetConfigRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesGetResponseRulesItemSetConfigRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -34830,7 +34778,7 @@ export const PhasesGetResponseRulesItemSetConfigRuleExposedCredentialCheck =
   }) as any as S.Schema<PhasesGetResponseRulesItemSetConfigRuleExposedCredentialCheck>;
 
 export type PhasesGetResponseRulesItemSetConfigRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesGetResponseRulesItemSetConfigRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -34976,7 +34924,7 @@ export const PhasesGetResponseRulesItemSkipRuleActionParametersPhasesItem =
   /*@__PURE__*/ S.String;
 
 export type PhasesGetResponseRulesItemSkipRuleActionParametersPhasesList =
-  ReadonlyArray<PhasesGetResponseRulesItemSkipRuleActionParametersPhasesItem>;
+  Array<PhasesGetResponseRulesItemSkipRuleActionParametersPhasesItem>;
 export const PhasesGetResponseRulesItemSkipRuleActionParametersPhasesList =
   /*@__PURE__*/ S.Array(
     PhasesGetResponseRulesItemSkipRuleActionParametersPhasesItem,
@@ -34994,14 +34942,14 @@ export const PhasesGetResponseRulesItemSkipRuleActionParametersProductsItem =
   /*@__PURE__*/ S.String;
 
 export type PhasesGetResponseRulesItemSkipRuleActionParametersProductsList =
-  ReadonlyArray<PhasesGetResponseRulesItemSkipRuleActionParametersProductsItem>;
+  Array<PhasesGetResponseRulesItemSkipRuleActionParametersProductsItem>;
 export const PhasesGetResponseRulesItemSkipRuleActionParametersProductsList =
   /*@__PURE__*/ S.Array(
     PhasesGetResponseRulesItemSkipRuleActionParametersProductsItem,
   ) as any as S.Schema<PhasesGetResponseRulesItemSkipRuleActionParametersProductsList>;
 
 export type PhasesGetResponseRulesItemSkipRuleActionParametersRulesValueList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesGetResponseRulesItemSkipRuleActionParametersRulesValueList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -35024,7 +34972,7 @@ export const PhasesGetResponseRulesItemSkipRuleActionParametersRuleset =
   /*@__PURE__*/ S.String;
 
 export type PhasesGetResponseRulesItemSkipRuleActionParametersRulesetsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesGetResponseRulesItemSkipRuleActionParametersRulesetsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -35070,8 +35018,7 @@ export const PhasesGetResponseRulesItemSkipRuleActionParameters =
     identifier: "PhasesGetResponseRulesItemSkipRuleActionParameters",
   }) as any as S.Schema<PhasesGetResponseRulesItemSkipRuleActionParameters>;
 
-export type PhasesGetResponseRulesItemSkipRuleCategoriesList =
-  ReadonlyArray<string>;
+export type PhasesGetResponseRulesItemSkipRuleCategoriesList = Array<string>;
 export const PhasesGetResponseRulesItemSkipRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -35094,7 +35041,7 @@ export const PhasesGetResponseRulesItemSkipRuleExposedCredentialCheck =
   }) as any as S.Schema<PhasesGetResponseRulesItemSkipRuleExposedCredentialCheck>;
 
 export type PhasesGetResponseRulesItemSkipRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesGetResponseRulesItemSkipRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -35221,7 +35168,7 @@ export const PhasesGetResponseRulesItemTransformResponseHTMLActionParameters =
   }) as any as S.Schema<PhasesGetResponseRulesItemTransformResponseHTMLActionParameters>;
 
 export type PhasesGetResponseRulesItemTransformResponseHTMLCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesGetResponseRulesItemTransformResponseHTMLCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -35245,7 +35192,7 @@ export const PhasesGetResponseRulesItemTransformResponseHTMLExposedCredentialChe
   }) as any as S.Schema<PhasesGetResponseRulesItemTransformResponseHTMLExposedCredentialCheck>;
 
 export type PhasesGetResponseRulesItemTransformResponseHTMLRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesGetResponseRulesItemTransformResponseHTMLRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -35620,8 +35567,7 @@ export const PhasesGetResponseRulesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "PhasesGetResponseRulesItem",
 }) as any as S.Schema<PhasesGetResponseRulesItem>;
 
-export type PhasesGetResponseRulesList =
-  ReadonlyArray<PhasesGetResponseRulesItem>;
+export type PhasesGetResponseRulesList = Array<PhasesGetResponseRulesItem>;
 export const PhasesGetResponseRulesList = /*@__PURE__*/ S.Array(
   PhasesGetResponseRulesItem,
 ) as any as S.Schema<PhasesGetResponseRulesList>;
@@ -35783,7 +35729,7 @@ export const PhasesVersionsGetResponseRulesItemBlockRuleActionParameters =
   }) as any as S.Schema<PhasesVersionsGetResponseRulesItemBlockRuleActionParameters>;
 
 export type PhasesVersionsGetResponseRulesItemBlockRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesVersionsGetResponseRulesItemBlockRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -35820,7 +35766,7 @@ export const PhasesVersionsGetResponseRulesItemBlockRuleLogging =
   }) as any as S.Schema<PhasesVersionsGetResponseRulesItemBlockRuleLogging>;
 
 export type PhasesVersionsGetResponseRulesItemBlockRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesVersionsGetResponseRulesItemBlockRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -35937,7 +35883,7 @@ export const PhasesVersionsGetResponseRulesItemChallengeAction =
   /*@__PURE__*/ S.String;
 
 export type PhasesVersionsGetResponseRulesItemChallengeCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesVersionsGetResponseRulesItemChallengeCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -35961,7 +35907,7 @@ export const PhasesVersionsGetResponseRulesItemChallengeExposedCredentialCheck =
   }) as any as S.Schema<PhasesVersionsGetResponseRulesItemChallengeExposedCredentialCheck>;
 
 export type PhasesVersionsGetResponseRulesItemChallengeRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesVersionsGetResponseRulesItemChallengeRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -36096,7 +36042,7 @@ export const PhasesVersionsGetResponseRulesItemCompressResponseRuleActionParamet
   }) as any as S.Schema<PhasesVersionsGetResponseRulesItemCompressResponseRuleActionParametersAlgorithmsItem>;
 
 export type PhasesVersionsGetResponseRulesItemCompressResponseRuleActionParametersAlgorithmsList =
-  ReadonlyArray<PhasesVersionsGetResponseRulesItemCompressResponseRuleActionParametersAlgorithmsItem>;
+  Array<PhasesVersionsGetResponseRulesItemCompressResponseRuleActionParametersAlgorithmsItem>;
 export const PhasesVersionsGetResponseRulesItemCompressResponseRuleActionParametersAlgorithmsList =
   /*@__PURE__*/ S.Array(
     PhasesVersionsGetResponseRulesItemCompressResponseRuleActionParametersAlgorithmsItem,
@@ -36118,7 +36064,7 @@ export const PhasesVersionsGetResponseRulesItemCompressResponseRuleActionParamet
   }) as any as S.Schema<PhasesVersionsGetResponseRulesItemCompressResponseRuleActionParameters>;
 
 export type PhasesVersionsGetResponseRulesItemCompressResponseRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesVersionsGetResponseRulesItemCompressResponseRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -36142,7 +36088,7 @@ export const PhasesVersionsGetResponseRulesItemCompressResponseRuleExposedCreden
   }) as any as S.Schema<PhasesVersionsGetResponseRulesItemCompressResponseRuleExposedCredentialCheck>;
 
 export type PhasesVersionsGetResponseRulesItemCompressResponseRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesVersionsGetResponseRulesItemCompressResponseRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -36263,7 +36209,7 @@ export const PhasesVersionsGetResponseRulesItemDDoSDynamicRuleAction =
   /*@__PURE__*/ S.String;
 
 export type PhasesVersionsGetResponseRulesItemDDoSDynamicRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesVersionsGetResponseRulesItemDDoSDynamicRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -36287,7 +36233,7 @@ export const PhasesVersionsGetResponseRulesItemDDoSDynamicRuleExposedCredentialC
   }) as any as S.Schema<PhasesVersionsGetResponseRulesItemDDoSDynamicRuleExposedCredentialCheck>;
 
 export type PhasesVersionsGetResponseRulesItemDDoSDynamicRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesVersionsGetResponseRulesItemDDoSDynamicRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -36448,7 +36394,7 @@ export const PhasesVersionsGetResponseRulesItemExecuteRuleActionParametersOverri
   }) as any as S.Schema<PhasesVersionsGetResponseRulesItemExecuteRuleActionParametersOverridesCategoriesItem>;
 
 export type PhasesVersionsGetResponseRulesItemExecuteRuleActionParametersOverridesCategoriesList =
-  ReadonlyArray<PhasesVersionsGetResponseRulesItemExecuteRuleActionParametersOverridesCategoriesItem>;
+  Array<PhasesVersionsGetResponseRulesItemExecuteRuleActionParametersOverridesCategoriesItem>;
 export const PhasesVersionsGetResponseRulesItemExecuteRuleActionParametersOverridesCategoriesList =
   /*@__PURE__*/ S.Array(
     PhasesVersionsGetResponseRulesItemExecuteRuleActionParametersOverridesCategoriesItem,
@@ -36490,7 +36436,7 @@ export const PhasesVersionsGetResponseRulesItemExecuteRuleActionParametersOverri
   }) as any as S.Schema<PhasesVersionsGetResponseRulesItemExecuteRuleActionParametersOverridesRulesItem>;
 
 export type PhasesVersionsGetResponseRulesItemExecuteRuleActionParametersOverridesRulesList =
-  ReadonlyArray<PhasesVersionsGetResponseRulesItemExecuteRuleActionParametersOverridesRulesItem>;
+  Array<PhasesVersionsGetResponseRulesItemExecuteRuleActionParametersOverridesRulesItem>;
 export const PhasesVersionsGetResponseRulesItemExecuteRuleActionParametersOverridesRulesList =
   /*@__PURE__*/ S.Array(
     PhasesVersionsGetResponseRulesItemExecuteRuleActionParametersOverridesRulesItem,
@@ -36561,7 +36507,7 @@ export const PhasesVersionsGetResponseRulesItemExecuteRuleActionParameters =
   }) as any as S.Schema<PhasesVersionsGetResponseRulesItemExecuteRuleActionParameters>;
 
 export type PhasesVersionsGetResponseRulesItemExecuteRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesVersionsGetResponseRulesItemExecuteRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -36585,7 +36531,7 @@ export const PhasesVersionsGetResponseRulesItemExecuteRuleExposedCredentialCheck
   }) as any as S.Schema<PhasesVersionsGetResponseRulesItemExecuteRuleExposedCredentialCheck>;
 
 export type PhasesVersionsGetResponseRulesItemExecuteRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesVersionsGetResponseRulesItemExecuteRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -36703,7 +36649,7 @@ export const PhasesVersionsGetResponseRulesItemForceConnectionCloseRuleAction =
   /*@__PURE__*/ S.String;
 
 export type PhasesVersionsGetResponseRulesItemForceConnectionCloseRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesVersionsGetResponseRulesItemForceConnectionCloseRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -36727,7 +36673,7 @@ export const PhasesVersionsGetResponseRulesItemForceConnectionCloseRuleExposedCr
   }) as any as S.Schema<PhasesVersionsGetResponseRulesItemForceConnectionCloseRuleExposedCredentialCheck>;
 
 export type PhasesVersionsGetResponseRulesItemForceConnectionCloseRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesVersionsGetResponseRulesItemForceConnectionCloseRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -36844,7 +36790,7 @@ export const PhasesVersionsGetResponseRulesItemJSChallengeAction =
   /*@__PURE__*/ S.String;
 
 export type PhasesVersionsGetResponseRulesItemJSChallengeCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesVersionsGetResponseRulesItemJSChallengeCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -36868,7 +36814,7 @@ export const PhasesVersionsGetResponseRulesItemJSChallengeExposedCredentialCheck
   }) as any as S.Schema<PhasesVersionsGetResponseRulesItemJSChallengeExposedCredentialCheck>;
 
 export type PhasesVersionsGetResponseRulesItemJSChallengeRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesVersionsGetResponseRulesItemJSChallengeRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -36981,7 +36927,7 @@ export const PhasesVersionsGetResponseRulesItemLogRuleAction =
   /*@__PURE__*/ S.String;
 
 export type PhasesVersionsGetResponseRulesItemLogRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesVersionsGetResponseRulesItemLogRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -37005,7 +36951,7 @@ export const PhasesVersionsGetResponseRulesItemLogRuleExposedCredentialCheck =
   }) as any as S.Schema<PhasesVersionsGetResponseRulesItemLogRuleExposedCredentialCheck>;
 
 export type PhasesVersionsGetResponseRulesItemLogRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesVersionsGetResponseRulesItemLogRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -37131,7 +37077,7 @@ export const PhasesVersionsGetResponseRulesItemLogCustomFieldRuleActionParameter
   }) as any as S.Schema<PhasesVersionsGetResponseRulesItemLogCustomFieldRuleActionParametersCookieFieldsItem>;
 
 export type PhasesVersionsGetResponseRulesItemLogCustomFieldRuleActionParametersCookieFieldsList =
-  ReadonlyArray<PhasesVersionsGetResponseRulesItemLogCustomFieldRuleActionParametersCookieFieldsItem>;
+  Array<PhasesVersionsGetResponseRulesItemLogCustomFieldRuleActionParametersCookieFieldsItem>;
 export const PhasesVersionsGetResponseRulesItemLogCustomFieldRuleActionParametersCookieFieldsList =
   /*@__PURE__*/ S.Array(
     PhasesVersionsGetResponseRulesItemLogCustomFieldRuleActionParametersCookieFieldsItem,
@@ -37157,7 +37103,7 @@ export const PhasesVersionsGetResponseRulesItemLogCustomFieldRuleActionParameter
   }) as any as S.Schema<PhasesVersionsGetResponseRulesItemLogCustomFieldRuleActionParametersRawResponseFieldsItem>;
 
 export type PhasesVersionsGetResponseRulesItemLogCustomFieldRuleActionParametersRawResponseFieldsList =
-  ReadonlyArray<PhasesVersionsGetResponseRulesItemLogCustomFieldRuleActionParametersRawResponseFieldsItem>;
+  Array<PhasesVersionsGetResponseRulesItemLogCustomFieldRuleActionParametersRawResponseFieldsItem>;
 export const PhasesVersionsGetResponseRulesItemLogCustomFieldRuleActionParametersRawResponseFieldsList =
   /*@__PURE__*/ S.Array(
     PhasesVersionsGetResponseRulesItemLogCustomFieldRuleActionParametersRawResponseFieldsItem,
@@ -37178,7 +37124,7 @@ export const PhasesVersionsGetResponseRulesItemLogCustomFieldRuleActionParameter
   }) as any as S.Schema<PhasesVersionsGetResponseRulesItemLogCustomFieldRuleActionParametersRequestFieldsItem>;
 
 export type PhasesVersionsGetResponseRulesItemLogCustomFieldRuleActionParametersRequestFieldsList =
-  ReadonlyArray<PhasesVersionsGetResponseRulesItemLogCustomFieldRuleActionParametersRequestFieldsItem>;
+  Array<PhasesVersionsGetResponseRulesItemLogCustomFieldRuleActionParametersRequestFieldsItem>;
 export const PhasesVersionsGetResponseRulesItemLogCustomFieldRuleActionParametersRequestFieldsList =
   /*@__PURE__*/ S.Array(
     PhasesVersionsGetResponseRulesItemLogCustomFieldRuleActionParametersRequestFieldsItem,
@@ -37204,7 +37150,7 @@ export const PhasesVersionsGetResponseRulesItemLogCustomFieldRuleActionParameter
   }) as any as S.Schema<PhasesVersionsGetResponseRulesItemLogCustomFieldRuleActionParametersResponseFieldsItem>;
 
 export type PhasesVersionsGetResponseRulesItemLogCustomFieldRuleActionParametersResponseFieldsList =
-  ReadonlyArray<PhasesVersionsGetResponseRulesItemLogCustomFieldRuleActionParametersResponseFieldsItem>;
+  Array<PhasesVersionsGetResponseRulesItemLogCustomFieldRuleActionParametersResponseFieldsItem>;
 export const PhasesVersionsGetResponseRulesItemLogCustomFieldRuleActionParametersResponseFieldsList =
   /*@__PURE__*/ S.Array(
     PhasesVersionsGetResponseRulesItemLogCustomFieldRuleActionParametersResponseFieldsItem,
@@ -37225,7 +37171,7 @@ export const PhasesVersionsGetResponseRulesItemLogCustomFieldRuleActionParameter
   }) as any as S.Schema<PhasesVersionsGetResponseRulesItemLogCustomFieldRuleActionParametersTransformedRequestFieldsItem>;
 
 export type PhasesVersionsGetResponseRulesItemLogCustomFieldRuleActionParametersTransformedRequestFieldsList =
-  ReadonlyArray<PhasesVersionsGetResponseRulesItemLogCustomFieldRuleActionParametersTransformedRequestFieldsItem>;
+  Array<PhasesVersionsGetResponseRulesItemLogCustomFieldRuleActionParametersTransformedRequestFieldsItem>;
 export const PhasesVersionsGetResponseRulesItemLogCustomFieldRuleActionParametersTransformedRequestFieldsList =
   /*@__PURE__*/ S.Array(
     PhasesVersionsGetResponseRulesItemLogCustomFieldRuleActionParametersTransformedRequestFieldsItem,
@@ -37278,7 +37224,7 @@ export const PhasesVersionsGetResponseRulesItemLogCustomFieldRuleActionParameter
   }) as any as S.Schema<PhasesVersionsGetResponseRulesItemLogCustomFieldRuleActionParameters>;
 
 export type PhasesVersionsGetResponseRulesItemLogCustomFieldRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesVersionsGetResponseRulesItemLogCustomFieldRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -37302,7 +37248,7 @@ export const PhasesVersionsGetResponseRulesItemLogCustomFieldRuleExposedCredenti
   }) as any as S.Schema<PhasesVersionsGetResponseRulesItemLogCustomFieldRuleExposedCredentialCheck>;
 
 export type PhasesVersionsGetResponseRulesItemLogCustomFieldRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesVersionsGetResponseRulesItemLogCustomFieldRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -37422,7 +37368,7 @@ export const PhasesVersionsGetResponseRulesItemManagedChallengeRuleAction =
   /*@__PURE__*/ S.String;
 
 export type PhasesVersionsGetResponseRulesItemManagedChallengeRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesVersionsGetResponseRulesItemManagedChallengeRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -37446,7 +37392,7 @@ export const PhasesVersionsGetResponseRulesItemManagedChallengeRuleExposedCreden
   }) as any as S.Schema<PhasesVersionsGetResponseRulesItemManagedChallengeRuleExposedCredentialCheck>;
 
 export type PhasesVersionsGetResponseRulesItemManagedChallengeRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesVersionsGetResponseRulesItemManagedChallengeRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -37655,7 +37601,7 @@ export const PhasesVersionsGetResponseRulesItemRedirectRuleActionParameters =
   }) as any as S.Schema<PhasesVersionsGetResponseRulesItemRedirectRuleActionParameters>;
 
 export type PhasesVersionsGetResponseRulesItemRedirectRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesVersionsGetResponseRulesItemRedirectRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -37679,7 +37625,7 @@ export const PhasesVersionsGetResponseRulesItemRedirectRuleExposedCredentialChec
   }) as any as S.Schema<PhasesVersionsGetResponseRulesItemRedirectRuleExposedCredentialCheck>;
 
 export type PhasesVersionsGetResponseRulesItemRedirectRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesVersionsGetResponseRulesItemRedirectRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -38052,7 +37998,7 @@ export const PhasesVersionsGetResponseRulesItemRewriteRuleActionParameters =
   }) as any as S.Schema<PhasesVersionsGetResponseRulesItemRewriteRuleActionParameters>;
 
 export type PhasesVersionsGetResponseRulesItemRewriteRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesVersionsGetResponseRulesItemRewriteRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -38076,7 +38022,7 @@ export const PhasesVersionsGetResponseRulesItemRewriteRuleExposedCredentialCheck
   }) as any as S.Schema<PhasesVersionsGetResponseRulesItemRewriteRuleExposedCredentialCheck>;
 
 export type PhasesVersionsGetResponseRulesItemRewriteRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesVersionsGetResponseRulesItemRewriteRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -38247,7 +38193,7 @@ export const PhasesVersionsGetResponseRulesItemRouteRuleActionParameters =
   }) as any as S.Schema<PhasesVersionsGetResponseRulesItemRouteRuleActionParameters>;
 
 export type PhasesVersionsGetResponseRulesItemRouteRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesVersionsGetResponseRulesItemRouteRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -38271,7 +38217,7 @@ export const PhasesVersionsGetResponseRulesItemRouteRuleExposedCredentialCheck =
   }) as any as S.Schema<PhasesVersionsGetResponseRulesItemRouteRuleExposedCredentialCheck>;
 
 export type PhasesVersionsGetResponseRulesItemRouteRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesVersionsGetResponseRulesItemRouteRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -38401,7 +38347,7 @@ export const PhasesVersionsGetResponseRulesItemScoreRuleActionParameters =
   }) as any as S.Schema<PhasesVersionsGetResponseRulesItemScoreRuleActionParameters>;
 
 export type PhasesVersionsGetResponseRulesItemScoreRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesVersionsGetResponseRulesItemScoreRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -38425,7 +38371,7 @@ export const PhasesVersionsGetResponseRulesItemScoreRuleExposedCredentialCheck =
   }) as any as S.Schema<PhasesVersionsGetResponseRulesItemScoreRuleExposedCredentialCheck>;
 
 export type PhasesVersionsGetResponseRulesItemScoreRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesVersionsGetResponseRulesItemScoreRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -38631,7 +38577,7 @@ export const PhasesVersionsGetResponseRulesItemServeErrorRuleActionParameters =
   }) as any as S.Schema<PhasesVersionsGetResponseRulesItemServeErrorRuleActionParameters>;
 
 export type PhasesVersionsGetResponseRulesItemServeErrorRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesVersionsGetResponseRulesItemServeErrorRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -38655,7 +38601,7 @@ export const PhasesVersionsGetResponseRulesItemServeErrorRuleExposedCredentialCh
   }) as any as S.Schema<PhasesVersionsGetResponseRulesItemServeErrorRuleExposedCredentialCheck>;
 
 export type PhasesVersionsGetResponseRulesItemServeErrorRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesVersionsGetResponseRulesItemServeErrorRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -39058,7 +39004,7 @@ export const PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersNo
   /*@__PURE__*/ S.String;
 
 export type PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersNoCacheSetDirectiveQualifiersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersNoCacheSetDirectiveQualifiersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -39279,7 +39225,7 @@ export const PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersPr
   /*@__PURE__*/ S.String;
 
 export type PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersPrivateSetDirectiveQualifiersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersPrivateSetDirectiveQualifiersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -39813,7 +39759,7 @@ export const PhasesVersionsGetResponseRulesItemSetCacheControlActionParameters =
   }) as any as S.Schema<PhasesVersionsGetResponseRulesItemSetCacheControlActionParameters>;
 
 export type PhasesVersionsGetResponseRulesItemSetCacheControlCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesVersionsGetResponseRulesItemSetCacheControlCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -39837,7 +39783,7 @@ export const PhasesVersionsGetResponseRulesItemSetCacheControlExposedCredentialC
   }) as any as S.Schema<PhasesVersionsGetResponseRulesItemSetCacheControlExposedCredentialCheck>;
 
 export type PhasesVersionsGetResponseRulesItemSetCacheControlRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesVersionsGetResponseRulesItemSetCacheControlRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -39957,7 +39903,7 @@ export const PhasesVersionsGetResponseRulesItemSetCacheSettingsRuleAction =
   /*@__PURE__*/ S.String;
 
 export type PhasesVersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersAdditionalCacheablePortsList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const PhasesVersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersAdditionalCacheablePortsList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -39986,14 +39932,14 @@ export const PhasesVersionsGetResponseRulesItemSetCacheSettingsRuleActionParamet
   }) as any as S.Schema<PhasesVersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersBrowserTtl>;
 
 export type PhasesVersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookieCheckPresenceList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesVersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookieCheckPresenceList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PhasesVersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookieCheckPresenceList>;
 
 export type PhasesVersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookieIncludeList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesVersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookieIncludeList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -40023,14 +39969,14 @@ export const PhasesVersionsGetResponseRulesItemSetCacheSettingsRuleActionParamet
   }) as any as S.Schema<PhasesVersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookie>;
 
 export type PhasesVersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderCheckPresenceList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesVersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderCheckPresenceList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PhasesVersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderCheckPresenceList>;
 
 export type PhasesVersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderContainsValueList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesVersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderContainsValueList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -40049,7 +39995,7 @@ export const PhasesVersionsGetResponseRulesItemSetCacheSettingsRuleActionParamet
   ) as any as S.Schema<PhasesVersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderContainsMap>;
 
 export type PhasesVersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderIncludeList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesVersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderIncludeList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -40101,7 +40047,7 @@ export const PhasesVersionsGetResponseRulesItemSetCacheSettingsRuleActionParamet
   }) as any as S.Schema<PhasesVersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHost>;
 
 export type PhasesVersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringExcludeListList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesVersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringExcludeListList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -40127,7 +40073,7 @@ export const PhasesVersionsGetResponseRulesItemSetCacheSettingsRuleActionParamet
   }) as any as S.Schema<PhasesVersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringExclude>;
 
 export type PhasesVersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringIncludeListList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesVersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringIncludeListList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -40328,7 +40274,7 @@ export const PhasesVersionsGetResponseRulesItemSetCacheSettingsRuleActionParamet
   }) as any as S.Schema<PhasesVersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlItem>;
 
 export type PhasesVersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlList =
-  ReadonlyArray<PhasesVersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlItem>;
+  Array<PhasesVersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlItem>;
 export const PhasesVersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlList =
   /*@__PURE__*/ S.Array(
     PhasesVersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlItem,
@@ -40414,14 +40360,14 @@ export const PhasesVersionsGetResponseRulesItemSetCacheSettingsRuleActionParamet
   /*@__PURE__*/ S.String;
 
 export type PhasesVersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValueLanguagesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesVersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValueLanguagesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PhasesVersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValueLanguagesList>;
 
 export type PhasesVersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValueMediaTypesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesVersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValueMediaTypesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -40585,7 +40531,7 @@ export const PhasesVersionsGetResponseRulesItemSetCacheSettingsRuleActionParamet
   }) as any as S.Schema<PhasesVersionsGetResponseRulesItemSetCacheSettingsRuleActionParameters>;
 
 export type PhasesVersionsGetResponseRulesItemSetCacheSettingsRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesVersionsGetResponseRulesItemSetCacheSettingsRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -40609,7 +40555,7 @@ export const PhasesVersionsGetResponseRulesItemSetCacheSettingsRuleExposedCreden
   }) as any as S.Schema<PhasesVersionsGetResponseRulesItemSetCacheSettingsRuleExposedCredentialCheck>;
 
 export type PhasesVersionsGetResponseRulesItemSetCacheSettingsRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesVersionsGetResponseRulesItemSetCacheSettingsRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -40735,7 +40681,7 @@ export const PhasesVersionsGetResponseRulesItemSetCacheTagsActionParametersAddCa
   /*@__PURE__*/ S.String;
 
 export type PhasesVersionsGetResponseRulesItemSetCacheTagsActionParametersAddCacheTagsValuesValuesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesVersionsGetResponseRulesItemSetCacheTagsActionParametersAddCacheTagsValuesValuesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -40789,7 +40735,7 @@ export const PhasesVersionsGetResponseRulesItemSetCacheTagsActionParametersRemov
   /*@__PURE__*/ S.String;
 
 export type PhasesVersionsGetResponseRulesItemSetCacheTagsActionParametersRemoveCacheTagsValuesValuesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesVersionsGetResponseRulesItemSetCacheTagsActionParametersRemoveCacheTagsValuesValuesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -40843,7 +40789,7 @@ export const PhasesVersionsGetResponseRulesItemSetCacheTagsActionParametersSetCa
   /*@__PURE__*/ S.String;
 
 export type PhasesVersionsGetResponseRulesItemSetCacheTagsActionParametersSetCacheTagsValuesValuesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesVersionsGetResponseRulesItemSetCacheTagsActionParametersSetCacheTagsValuesValuesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -40934,7 +40880,7 @@ export const PhasesVersionsGetResponseRulesItemSetCacheTagsActionParameters =
   }) as any as S.Schema<PhasesVersionsGetResponseRulesItemSetCacheTagsActionParameters>;
 
 export type PhasesVersionsGetResponseRulesItemSetCacheTagsCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesVersionsGetResponseRulesItemSetCacheTagsCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -40958,7 +40904,7 @@ export const PhasesVersionsGetResponseRulesItemSetCacheTagsExposedCredentialChec
   }) as any as S.Schema<PhasesVersionsGetResponseRulesItemSetCacheTagsExposedCredentialCheck>;
 
 export type PhasesVersionsGetResponseRulesItemSetCacheTagsRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesVersionsGetResponseRulesItemSetCacheTagsRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -41228,7 +41174,7 @@ export const PhasesVersionsGetResponseRulesItemSetConfigRuleActionParameters =
   }) as any as S.Schema<PhasesVersionsGetResponseRulesItemSetConfigRuleActionParameters>;
 
 export type PhasesVersionsGetResponseRulesItemSetConfigRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesVersionsGetResponseRulesItemSetConfigRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -41252,7 +41198,7 @@ export const PhasesVersionsGetResponseRulesItemSetConfigRuleExposedCredentialChe
   }) as any as S.Schema<PhasesVersionsGetResponseRulesItemSetConfigRuleExposedCredentialCheck>;
 
 export type PhasesVersionsGetResponseRulesItemSetConfigRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesVersionsGetResponseRulesItemSetConfigRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -41402,7 +41348,7 @@ export const PhasesVersionsGetResponseRulesItemSkipRuleActionParametersPhasesIte
   /*@__PURE__*/ S.String;
 
 export type PhasesVersionsGetResponseRulesItemSkipRuleActionParametersPhasesList =
-  ReadonlyArray<PhasesVersionsGetResponseRulesItemSkipRuleActionParametersPhasesItem>;
+  Array<PhasesVersionsGetResponseRulesItemSkipRuleActionParametersPhasesItem>;
 export const PhasesVersionsGetResponseRulesItemSkipRuleActionParametersPhasesList =
   /*@__PURE__*/ S.Array(
     PhasesVersionsGetResponseRulesItemSkipRuleActionParametersPhasesItem,
@@ -41420,14 +41366,14 @@ export const PhasesVersionsGetResponseRulesItemSkipRuleActionParametersProductsI
   /*@__PURE__*/ S.String;
 
 export type PhasesVersionsGetResponseRulesItemSkipRuleActionParametersProductsList =
-  ReadonlyArray<PhasesVersionsGetResponseRulesItemSkipRuleActionParametersProductsItem>;
+  Array<PhasesVersionsGetResponseRulesItemSkipRuleActionParametersProductsItem>;
 export const PhasesVersionsGetResponseRulesItemSkipRuleActionParametersProductsList =
   /*@__PURE__*/ S.Array(
     PhasesVersionsGetResponseRulesItemSkipRuleActionParametersProductsItem,
   ) as any as S.Schema<PhasesVersionsGetResponseRulesItemSkipRuleActionParametersProductsList>;
 
 export type PhasesVersionsGetResponseRulesItemSkipRuleActionParametersRulesValueList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesVersionsGetResponseRulesItemSkipRuleActionParametersRulesValueList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -41451,7 +41397,7 @@ export const PhasesVersionsGetResponseRulesItemSkipRuleActionParametersRuleset =
   /*@__PURE__*/ S.String;
 
 export type PhasesVersionsGetResponseRulesItemSkipRuleActionParametersRulesetsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesVersionsGetResponseRulesItemSkipRuleActionParametersRulesetsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -41498,7 +41444,7 @@ export const PhasesVersionsGetResponseRulesItemSkipRuleActionParameters =
   }) as any as S.Schema<PhasesVersionsGetResponseRulesItemSkipRuleActionParameters>;
 
 export type PhasesVersionsGetResponseRulesItemSkipRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesVersionsGetResponseRulesItemSkipRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -41522,7 +41468,7 @@ export const PhasesVersionsGetResponseRulesItemSkipRuleExposedCredentialCheck =
   }) as any as S.Schema<PhasesVersionsGetResponseRulesItemSkipRuleExposedCredentialCheck>;
 
 export type PhasesVersionsGetResponseRulesItemSkipRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesVersionsGetResponseRulesItemSkipRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -41654,7 +41600,7 @@ export const PhasesVersionsGetResponseRulesItemTransformResponseHTMLActionParame
   }) as any as S.Schema<PhasesVersionsGetResponseRulesItemTransformResponseHTMLActionParameters>;
 
 export type PhasesVersionsGetResponseRulesItemTransformResponseHTMLCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesVersionsGetResponseRulesItemTransformResponseHTMLCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -41678,7 +41624,7 @@ export const PhasesVersionsGetResponseRulesItemTransformResponseHTMLExposedCrede
   }) as any as S.Schema<PhasesVersionsGetResponseRulesItemTransformResponseHTMLExposedCredentialCheck>;
 
 export type PhasesVersionsGetResponseRulesItemTransformResponseHTMLRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesVersionsGetResponseRulesItemTransformResponseHTMLRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -42057,7 +42003,7 @@ export const PhasesVersionsGetResponseRulesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PhasesVersionsGetResponseRulesItem>;
 
 export type PhasesVersionsGetResponseRulesList =
-  ReadonlyArray<PhasesVersionsGetResponseRulesItem>;
+  Array<PhasesVersionsGetResponseRulesItem>;
 export const PhasesVersionsGetResponseRulesList = /*@__PURE__*/ S.Array(
   PhasesVersionsGetResponseRulesItem,
 ) as any as S.Schema<PhasesVersionsGetResponseRulesList>;
@@ -42212,7 +42158,7 @@ export const GetResponseRulesItemBlockRuleActionParameters =
     identifier: "GetResponseRulesItemBlockRuleActionParameters",
   }) as any as S.Schema<GetResponseRulesItemBlockRuleActionParameters>;
 
-export type GetResponseRulesItemBlockRuleCategoriesList = ReadonlyArray<string>;
+export type GetResponseRulesItemBlockRuleCategoriesList = Array<string>;
 export const GetResponseRulesItemBlockRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -42248,7 +42194,7 @@ export const GetResponseRulesItemBlockRuleLogging = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GetResponseRulesItemBlockRuleLogging>;
 
 export type GetResponseRulesItemBlockRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GetResponseRulesItemBlockRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -42358,7 +42304,7 @@ export const GetResponseRulesItemBlockRule = /*@__PURE__*/ S.suspend(() =>
 export type GetResponseRulesItemChallengeAction = "challenge";
 export const GetResponseRulesItemChallengeAction = /*@__PURE__*/ S.String;
 
-export type GetResponseRulesItemChallengeCategoriesList = ReadonlyArray<string>;
+export type GetResponseRulesItemChallengeCategoriesList = Array<string>;
 export const GetResponseRulesItemChallengeCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -42381,7 +42327,7 @@ export const GetResponseRulesItemChallengeExposedCredentialCheck =
   }) as any as S.Schema<GetResponseRulesItemChallengeExposedCredentialCheck>;
 
 export type GetResponseRulesItemChallengeRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GetResponseRulesItemChallengeRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -42511,7 +42457,7 @@ export const GetResponseRulesItemCompressResponseRuleActionParametersAlgorithmsI
   }) as any as S.Schema<GetResponseRulesItemCompressResponseRuleActionParametersAlgorithmsItem>;
 
 export type GetResponseRulesItemCompressResponseRuleActionParametersAlgorithmsList =
-  ReadonlyArray<GetResponseRulesItemCompressResponseRuleActionParametersAlgorithmsItem>;
+  Array<GetResponseRulesItemCompressResponseRuleActionParametersAlgorithmsItem>;
 export const GetResponseRulesItemCompressResponseRuleActionParametersAlgorithmsList =
   /*@__PURE__*/ S.Array(
     GetResponseRulesItemCompressResponseRuleActionParametersAlgorithmsItem,
@@ -42532,7 +42478,7 @@ export const GetResponseRulesItemCompressResponseRuleActionParameters =
   }) as any as S.Schema<GetResponseRulesItemCompressResponseRuleActionParameters>;
 
 export type GetResponseRulesItemCompressResponseRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GetResponseRulesItemCompressResponseRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -42556,7 +42502,7 @@ export const GetResponseRulesItemCompressResponseRuleExposedCredentialCheck =
   }) as any as S.Schema<GetResponseRulesItemCompressResponseRuleExposedCredentialCheck>;
 
 export type GetResponseRulesItemCompressResponseRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GetResponseRulesItemCompressResponseRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -42669,8 +42615,7 @@ export const GetResponseRulesItemCompressResponseRule = /*@__PURE__*/ S.suspend(
 export type GetResponseRulesItemDDoSDynamicRuleAction = "ddos_dynamic";
 export const GetResponseRulesItemDDoSDynamicRuleAction = /*@__PURE__*/ S.String;
 
-export type GetResponseRulesItemDDoSDynamicRuleCategoriesList =
-  ReadonlyArray<string>;
+export type GetResponseRulesItemDDoSDynamicRuleCategoriesList = Array<string>;
 export const GetResponseRulesItemDDoSDynamicRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -42693,7 +42638,7 @@ export const GetResponseRulesItemDDoSDynamicRuleExposedCredentialCheck =
   }) as any as S.Schema<GetResponseRulesItemDDoSDynamicRuleExposedCredentialCheck>;
 
 export type GetResponseRulesItemDDoSDynamicRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GetResponseRulesItemDDoSDynamicRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -42845,7 +42790,7 @@ export const GetResponseRulesItemExecuteRuleActionParametersOverridesCategoriesI
   }) as any as S.Schema<GetResponseRulesItemExecuteRuleActionParametersOverridesCategoriesItem>;
 
 export type GetResponseRulesItemExecuteRuleActionParametersOverridesCategoriesList =
-  ReadonlyArray<GetResponseRulesItemExecuteRuleActionParametersOverridesCategoriesItem>;
+  Array<GetResponseRulesItemExecuteRuleActionParametersOverridesCategoriesItem>;
 export const GetResponseRulesItemExecuteRuleActionParametersOverridesCategoriesList =
   /*@__PURE__*/ S.Array(
     GetResponseRulesItemExecuteRuleActionParametersOverridesCategoriesItem,
@@ -42887,7 +42832,7 @@ export const GetResponseRulesItemExecuteRuleActionParametersOverridesRulesItem =
   }) as any as S.Schema<GetResponseRulesItemExecuteRuleActionParametersOverridesRulesItem>;
 
 export type GetResponseRulesItemExecuteRuleActionParametersOverridesRulesList =
-  ReadonlyArray<GetResponseRulesItemExecuteRuleActionParametersOverridesRulesItem>;
+  Array<GetResponseRulesItemExecuteRuleActionParametersOverridesRulesItem>;
 export const GetResponseRulesItemExecuteRuleActionParametersOverridesRulesList =
   /*@__PURE__*/ S.Array(
     GetResponseRulesItemExecuteRuleActionParametersOverridesRulesItem,
@@ -42956,8 +42901,7 @@ export const GetResponseRulesItemExecuteRuleActionParameters =
     identifier: "GetResponseRulesItemExecuteRuleActionParameters",
   }) as any as S.Schema<GetResponseRulesItemExecuteRuleActionParameters>;
 
-export type GetResponseRulesItemExecuteRuleCategoriesList =
-  ReadonlyArray<string>;
+export type GetResponseRulesItemExecuteRuleCategoriesList = Array<string>;
 export const GetResponseRulesItemExecuteRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -42980,7 +42924,7 @@ export const GetResponseRulesItemExecuteRuleExposedCredentialCheck =
   }) as any as S.Schema<GetResponseRulesItemExecuteRuleExposedCredentialCheck>;
 
 export type GetResponseRulesItemExecuteRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GetResponseRulesItemExecuteRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -43093,7 +43037,7 @@ export const GetResponseRulesItemForceConnectionCloseRuleAction =
   /*@__PURE__*/ S.String;
 
 export type GetResponseRulesItemForceConnectionCloseRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GetResponseRulesItemForceConnectionCloseRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -43117,7 +43061,7 @@ export const GetResponseRulesItemForceConnectionCloseRuleExposedCredentialCheck 
   }) as any as S.Schema<GetResponseRulesItemForceConnectionCloseRuleExposedCredentialCheck>;
 
 export type GetResponseRulesItemForceConnectionCloseRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GetResponseRulesItemForceConnectionCloseRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -43228,8 +43172,7 @@ export const GetResponseRulesItemForceConnectionCloseRule =
 export type GetResponseRulesItemJSChallengeAction = "js_challenge";
 export const GetResponseRulesItemJSChallengeAction = /*@__PURE__*/ S.String;
 
-export type GetResponseRulesItemJSChallengeCategoriesList =
-  ReadonlyArray<string>;
+export type GetResponseRulesItemJSChallengeCategoriesList = Array<string>;
 export const GetResponseRulesItemJSChallengeCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -43252,7 +43195,7 @@ export const GetResponseRulesItemJSChallengeExposedCredentialCheck =
   }) as any as S.Schema<GetResponseRulesItemJSChallengeExposedCredentialCheck>;
 
 export type GetResponseRulesItemJSChallengeRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GetResponseRulesItemJSChallengeRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -43358,7 +43301,7 @@ export const GetResponseRulesItemJSChallenge = /*@__PURE__*/ S.suspend(() =>
 export type GetResponseRulesItemLogRuleAction = "log";
 export const GetResponseRulesItemLogRuleAction = /*@__PURE__*/ S.String;
 
-export type GetResponseRulesItemLogRuleCategoriesList = ReadonlyArray<string>;
+export type GetResponseRulesItemLogRuleCategoriesList = Array<string>;
 export const GetResponseRulesItemLogRuleCategoriesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetResponseRulesItemLogRuleCategoriesList>;
@@ -43380,7 +43323,7 @@ export const GetResponseRulesItemLogRuleExposedCredentialCheck =
   }) as any as S.Schema<GetResponseRulesItemLogRuleExposedCredentialCheck>;
 
 export type GetResponseRulesItemLogRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GetResponseRulesItemLogRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -43501,7 +43444,7 @@ export const GetResponseRulesItemLogCustomFieldRuleActionParametersCookieFieldsI
   }) as any as S.Schema<GetResponseRulesItemLogCustomFieldRuleActionParametersCookieFieldsItem>;
 
 export type GetResponseRulesItemLogCustomFieldRuleActionParametersCookieFieldsList =
-  ReadonlyArray<GetResponseRulesItemLogCustomFieldRuleActionParametersCookieFieldsItem>;
+  Array<GetResponseRulesItemLogCustomFieldRuleActionParametersCookieFieldsItem>;
 export const GetResponseRulesItemLogCustomFieldRuleActionParametersCookieFieldsList =
   /*@__PURE__*/ S.Array(
     GetResponseRulesItemLogCustomFieldRuleActionParametersCookieFieldsItem,
@@ -43527,7 +43470,7 @@ export const GetResponseRulesItemLogCustomFieldRuleActionParametersRawResponseFi
   }) as any as S.Schema<GetResponseRulesItemLogCustomFieldRuleActionParametersRawResponseFieldsItem>;
 
 export type GetResponseRulesItemLogCustomFieldRuleActionParametersRawResponseFieldsList =
-  ReadonlyArray<GetResponseRulesItemLogCustomFieldRuleActionParametersRawResponseFieldsItem>;
+  Array<GetResponseRulesItemLogCustomFieldRuleActionParametersRawResponseFieldsItem>;
 export const GetResponseRulesItemLogCustomFieldRuleActionParametersRawResponseFieldsList =
   /*@__PURE__*/ S.Array(
     GetResponseRulesItemLogCustomFieldRuleActionParametersRawResponseFieldsItem,
@@ -43548,7 +43491,7 @@ export const GetResponseRulesItemLogCustomFieldRuleActionParametersRequestFields
   }) as any as S.Schema<GetResponseRulesItemLogCustomFieldRuleActionParametersRequestFieldsItem>;
 
 export type GetResponseRulesItemLogCustomFieldRuleActionParametersRequestFieldsList =
-  ReadonlyArray<GetResponseRulesItemLogCustomFieldRuleActionParametersRequestFieldsItem>;
+  Array<GetResponseRulesItemLogCustomFieldRuleActionParametersRequestFieldsItem>;
 export const GetResponseRulesItemLogCustomFieldRuleActionParametersRequestFieldsList =
   /*@__PURE__*/ S.Array(
     GetResponseRulesItemLogCustomFieldRuleActionParametersRequestFieldsItem,
@@ -43574,7 +43517,7 @@ export const GetResponseRulesItemLogCustomFieldRuleActionParametersResponseField
   }) as any as S.Schema<GetResponseRulesItemLogCustomFieldRuleActionParametersResponseFieldsItem>;
 
 export type GetResponseRulesItemLogCustomFieldRuleActionParametersResponseFieldsList =
-  ReadonlyArray<GetResponseRulesItemLogCustomFieldRuleActionParametersResponseFieldsItem>;
+  Array<GetResponseRulesItemLogCustomFieldRuleActionParametersResponseFieldsItem>;
 export const GetResponseRulesItemLogCustomFieldRuleActionParametersResponseFieldsList =
   /*@__PURE__*/ S.Array(
     GetResponseRulesItemLogCustomFieldRuleActionParametersResponseFieldsItem,
@@ -43595,7 +43538,7 @@ export const GetResponseRulesItemLogCustomFieldRuleActionParametersTransformedRe
   }) as any as S.Schema<GetResponseRulesItemLogCustomFieldRuleActionParametersTransformedRequestFieldsItem>;
 
 export type GetResponseRulesItemLogCustomFieldRuleActionParametersTransformedRequestFieldsList =
-  ReadonlyArray<GetResponseRulesItemLogCustomFieldRuleActionParametersTransformedRequestFieldsItem>;
+  Array<GetResponseRulesItemLogCustomFieldRuleActionParametersTransformedRequestFieldsItem>;
 export const GetResponseRulesItemLogCustomFieldRuleActionParametersTransformedRequestFieldsList =
   /*@__PURE__*/ S.Array(
     GetResponseRulesItemLogCustomFieldRuleActionParametersTransformedRequestFieldsItem,
@@ -43647,7 +43590,7 @@ export const GetResponseRulesItemLogCustomFieldRuleActionParameters =
   }) as any as S.Schema<GetResponseRulesItemLogCustomFieldRuleActionParameters>;
 
 export type GetResponseRulesItemLogCustomFieldRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GetResponseRulesItemLogCustomFieldRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -43670,7 +43613,7 @@ export const GetResponseRulesItemLogCustomFieldRuleExposedCredentialCheck =
   }) as any as S.Schema<GetResponseRulesItemLogCustomFieldRuleExposedCredentialCheck>;
 
 export type GetResponseRulesItemLogCustomFieldRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GetResponseRulesItemLogCustomFieldRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -43786,7 +43729,7 @@ export const GetResponseRulesItemManagedChallengeRuleAction =
   /*@__PURE__*/ S.String;
 
 export type GetResponseRulesItemManagedChallengeRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GetResponseRulesItemManagedChallengeRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -43810,7 +43753,7 @@ export const GetResponseRulesItemManagedChallengeRuleExposedCredentialCheck =
   }) as any as S.Schema<GetResponseRulesItemManagedChallengeRuleExposedCredentialCheck>;
 
 export type GetResponseRulesItemManagedChallengeRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GetResponseRulesItemManagedChallengeRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -44009,8 +43952,7 @@ export const GetResponseRulesItemRedirectRuleActionParameters =
     identifier: "GetResponseRulesItemRedirectRuleActionParameters",
   }) as any as S.Schema<GetResponseRulesItemRedirectRuleActionParameters>;
 
-export type GetResponseRulesItemRedirectRuleCategoriesList =
-  ReadonlyArray<string>;
+export type GetResponseRulesItemRedirectRuleCategoriesList = Array<string>;
 export const GetResponseRulesItemRedirectRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -44033,7 +43975,7 @@ export const GetResponseRulesItemRedirectRuleExposedCredentialCheck =
   }) as any as S.Schema<GetResponseRulesItemRedirectRuleExposedCredentialCheck>;
 
 export type GetResponseRulesItemRedirectRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GetResponseRulesItemRedirectRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -44391,8 +44333,7 @@ export const GetResponseRulesItemRewriteRuleActionParameters =
     identifier: "GetResponseRulesItemRewriteRuleActionParameters",
   }) as any as S.Schema<GetResponseRulesItemRewriteRuleActionParameters>;
 
-export type GetResponseRulesItemRewriteRuleCategoriesList =
-  ReadonlyArray<string>;
+export type GetResponseRulesItemRewriteRuleCategoriesList = Array<string>;
 export const GetResponseRulesItemRewriteRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -44415,7 +44356,7 @@ export const GetResponseRulesItemRewriteRuleExposedCredentialCheck =
   }) as any as S.Schema<GetResponseRulesItemRewriteRuleExposedCredentialCheck>;
 
 export type GetResponseRulesItemRewriteRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GetResponseRulesItemRewriteRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -44573,7 +44514,7 @@ export const GetResponseRulesItemRouteRuleActionParameters =
     identifier: "GetResponseRulesItemRouteRuleActionParameters",
   }) as any as S.Schema<GetResponseRulesItemRouteRuleActionParameters>;
 
-export type GetResponseRulesItemRouteRuleCategoriesList = ReadonlyArray<string>;
+export type GetResponseRulesItemRouteRuleCategoriesList = Array<string>;
 export const GetResponseRulesItemRouteRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -44596,7 +44537,7 @@ export const GetResponseRulesItemRouteRuleExposedCredentialCheck =
   }) as any as S.Schema<GetResponseRulesItemRouteRuleExposedCredentialCheck>;
 
 export type GetResponseRulesItemRouteRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GetResponseRulesItemRouteRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -44719,7 +44660,7 @@ export const GetResponseRulesItemScoreRuleActionParameters =
     identifier: "GetResponseRulesItemScoreRuleActionParameters",
   }) as any as S.Schema<GetResponseRulesItemScoreRuleActionParameters>;
 
-export type GetResponseRulesItemScoreRuleCategoriesList = ReadonlyArray<string>;
+export type GetResponseRulesItemScoreRuleCategoriesList = Array<string>;
 export const GetResponseRulesItemScoreRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -44742,7 +44683,7 @@ export const GetResponseRulesItemScoreRuleExposedCredentialCheck =
   }) as any as S.Schema<GetResponseRulesItemScoreRuleExposedCredentialCheck>;
 
 export type GetResponseRulesItemScoreRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GetResponseRulesItemScoreRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -44939,8 +44880,7 @@ export const GetResponseRulesItemServeErrorRuleActionParameters =
     identifier: "GetResponseRulesItemServeErrorRuleActionParameters",
   }) as any as S.Schema<GetResponseRulesItemServeErrorRuleActionParameters>;
 
-export type GetResponseRulesItemServeErrorRuleCategoriesList =
-  ReadonlyArray<string>;
+export type GetResponseRulesItemServeErrorRuleCategoriesList = Array<string>;
 export const GetResponseRulesItemServeErrorRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -44963,7 +44903,7 @@ export const GetResponseRulesItemServeErrorRuleExposedCredentialCheck =
   }) as any as S.Schema<GetResponseRulesItemServeErrorRuleExposedCredentialCheck>;
 
 export type GetResponseRulesItemServeErrorRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GetResponseRulesItemServeErrorRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -45355,7 +45295,7 @@ export const GetResponseRulesItemSetCacheControlActionParametersNoCacheSetDirect
   /*@__PURE__*/ S.String;
 
 export type GetResponseRulesItemSetCacheControlActionParametersNoCacheSetDirectiveQualifiersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GetResponseRulesItemSetCacheControlActionParametersNoCacheSetDirectiveQualifiersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -45574,7 +45514,7 @@ export const GetResponseRulesItemSetCacheControlActionParametersPrivateSetDirect
   /*@__PURE__*/ S.String;
 
 export type GetResponseRulesItemSetCacheControlActionParametersPrivateSetDirectiveQualifiersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GetResponseRulesItemSetCacheControlActionParametersPrivateSetDirectiveQualifiersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -46103,8 +46043,7 @@ export const GetResponseRulesItemSetCacheControlActionParameters =
     identifier: "GetResponseRulesItemSetCacheControlActionParameters",
   }) as any as S.Schema<GetResponseRulesItemSetCacheControlActionParameters>;
 
-export type GetResponseRulesItemSetCacheControlCategoriesList =
-  ReadonlyArray<string>;
+export type GetResponseRulesItemSetCacheControlCategoriesList = Array<string>;
 export const GetResponseRulesItemSetCacheControlCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -46127,7 +46066,7 @@ export const GetResponseRulesItemSetCacheControlExposedCredentialCheck =
   }) as any as S.Schema<GetResponseRulesItemSetCacheControlExposedCredentialCheck>;
 
 export type GetResponseRulesItemSetCacheControlRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GetResponseRulesItemSetCacheControlRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -46240,7 +46179,7 @@ export const GetResponseRulesItemSetCacheSettingsRuleAction =
   /*@__PURE__*/ S.String;
 
 export type GetResponseRulesItemSetCacheSettingsRuleActionParametersAdditionalCacheablePortsList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const GetResponseRulesItemSetCacheSettingsRuleActionParametersAdditionalCacheablePortsList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -46269,14 +46208,14 @@ export const GetResponseRulesItemSetCacheSettingsRuleActionParametersBrowserTtl 
   }) as any as S.Schema<GetResponseRulesItemSetCacheSettingsRuleActionParametersBrowserTtl>;
 
 export type GetResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookieCheckPresenceList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GetResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookieCheckPresenceList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<GetResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookieCheckPresenceList>;
 
 export type GetResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookieIncludeList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GetResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookieIncludeList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -46306,14 +46245,14 @@ export const GetResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCus
   }) as any as S.Schema<GetResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookie>;
 
 export type GetResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderCheckPresenceList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GetResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderCheckPresenceList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<GetResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderCheckPresenceList>;
 
 export type GetResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderContainsValueList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GetResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderContainsValueList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -46332,7 +46271,7 @@ export const GetResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCus
   ) as any as S.Schema<GetResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderContainsMap>;
 
 export type GetResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderIncludeList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GetResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderIncludeList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -46384,7 +46323,7 @@ export const GetResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCus
   }) as any as S.Schema<GetResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHost>;
 
 export type GetResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringExcludeListList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GetResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringExcludeListList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -46410,7 +46349,7 @@ export const GetResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCus
   }) as any as S.Schema<GetResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringExclude>;
 
 export type GetResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringIncludeListList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GetResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringIncludeListList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -46611,7 +46550,7 @@ export const GetResponseRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStat
   }) as any as S.Schema<GetResponseRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlItem>;
 
 export type GetResponseRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlList =
-  ReadonlyArray<GetResponseRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlItem>;
+  Array<GetResponseRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlItem>;
 export const GetResponseRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlList =
   /*@__PURE__*/ S.Array(
     GetResponseRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlItem,
@@ -46697,14 +46636,14 @@ export const GetResponseRulesItemSetCacheSettingsRuleActionParametersVaryHeaders
   /*@__PURE__*/ S.String;
 
 export type GetResponseRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValueLanguagesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GetResponseRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValueLanguagesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<GetResponseRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValueLanguagesList>;
 
 export type GetResponseRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValueMediaTypesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GetResponseRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValueMediaTypesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -46866,7 +46805,7 @@ export const GetResponseRulesItemSetCacheSettingsRuleActionParameters =
   }) as any as S.Schema<GetResponseRulesItemSetCacheSettingsRuleActionParameters>;
 
 export type GetResponseRulesItemSetCacheSettingsRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GetResponseRulesItemSetCacheSettingsRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -46890,7 +46829,7 @@ export const GetResponseRulesItemSetCacheSettingsRuleExposedCredentialCheck =
   }) as any as S.Schema<GetResponseRulesItemSetCacheSettingsRuleExposedCredentialCheck>;
 
 export type GetResponseRulesItemSetCacheSettingsRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GetResponseRulesItemSetCacheSettingsRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -47009,7 +46948,7 @@ export const GetResponseRulesItemSetCacheTagsActionParametersAddCacheTagsValuesO
   /*@__PURE__*/ S.String;
 
 export type GetResponseRulesItemSetCacheTagsActionParametersAddCacheTagsValuesValuesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GetResponseRulesItemSetCacheTagsActionParametersAddCacheTagsValuesValuesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -47063,7 +47002,7 @@ export const GetResponseRulesItemSetCacheTagsActionParametersRemoveCacheTagsValu
   /*@__PURE__*/ S.String;
 
 export type GetResponseRulesItemSetCacheTagsActionParametersRemoveCacheTagsValuesValuesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GetResponseRulesItemSetCacheTagsActionParametersRemoveCacheTagsValuesValuesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -47117,7 +47056,7 @@ export const GetResponseRulesItemSetCacheTagsActionParametersSetCacheTagsValuesO
   /*@__PURE__*/ S.String;
 
 export type GetResponseRulesItemSetCacheTagsActionParametersSetCacheTagsValuesValuesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GetResponseRulesItemSetCacheTagsActionParametersSetCacheTagsValuesValuesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -47206,8 +47145,7 @@ export const GetResponseRulesItemSetCacheTagsActionParameters =
     identifier: "GetResponseRulesItemSetCacheTagsActionParameters",
   }) as any as S.Schema<GetResponseRulesItemSetCacheTagsActionParameters>;
 
-export type GetResponseRulesItemSetCacheTagsCategoriesList =
-  ReadonlyArray<string>;
+export type GetResponseRulesItemSetCacheTagsCategoriesList = Array<string>;
 export const GetResponseRulesItemSetCacheTagsCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -47230,7 +47168,7 @@ export const GetResponseRulesItemSetCacheTagsExposedCredentialCheck =
   }) as any as S.Schema<GetResponseRulesItemSetCacheTagsExposedCredentialCheck>;
 
 export type GetResponseRulesItemSetCacheTagsRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GetResponseRulesItemSetCacheTagsRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -47500,8 +47438,7 @@ export const GetResponseRulesItemSetConfigRuleActionParameters =
     identifier: "GetResponseRulesItemSetConfigRuleActionParameters",
   }) as any as S.Schema<GetResponseRulesItemSetConfigRuleActionParameters>;
 
-export type GetResponseRulesItemSetConfigRuleCategoriesList =
-  ReadonlyArray<string>;
+export type GetResponseRulesItemSetConfigRuleCategoriesList = Array<string>;
 export const GetResponseRulesItemSetConfigRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -47524,7 +47461,7 @@ export const GetResponseRulesItemSetConfigRuleExposedCredentialCheck =
   }) as any as S.Schema<GetResponseRulesItemSetConfigRuleExposedCredentialCheck>;
 
 export type GetResponseRulesItemSetConfigRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GetResponseRulesItemSetConfigRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -47667,7 +47604,7 @@ export const GetResponseRulesItemSkipRuleActionParametersPhasesItem =
   /*@__PURE__*/ S.String;
 
 export type GetResponseRulesItemSkipRuleActionParametersPhasesList =
-  ReadonlyArray<GetResponseRulesItemSkipRuleActionParametersPhasesItem>;
+  Array<GetResponseRulesItemSkipRuleActionParametersPhasesItem>;
 export const GetResponseRulesItemSkipRuleActionParametersPhasesList =
   /*@__PURE__*/ S.Array(
     GetResponseRulesItemSkipRuleActionParametersPhasesItem,
@@ -47685,14 +47622,14 @@ export const GetResponseRulesItemSkipRuleActionParametersProductsItem =
   /*@__PURE__*/ S.String;
 
 export type GetResponseRulesItemSkipRuleActionParametersProductsList =
-  ReadonlyArray<GetResponseRulesItemSkipRuleActionParametersProductsItem>;
+  Array<GetResponseRulesItemSkipRuleActionParametersProductsItem>;
 export const GetResponseRulesItemSkipRuleActionParametersProductsList =
   /*@__PURE__*/ S.Array(
     GetResponseRulesItemSkipRuleActionParametersProductsItem,
   ) as any as S.Schema<GetResponseRulesItemSkipRuleActionParametersProductsList>;
 
 export type GetResponseRulesItemSkipRuleActionParametersRulesValueList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GetResponseRulesItemSkipRuleActionParametersRulesValueList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -47714,7 +47651,7 @@ export const GetResponseRulesItemSkipRuleActionParametersRuleset =
   /*@__PURE__*/ S.String;
 
 export type GetResponseRulesItemSkipRuleActionParametersRulesetsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GetResponseRulesItemSkipRuleActionParametersRulesetsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -47754,7 +47691,7 @@ export const GetResponseRulesItemSkipRuleActionParameters =
     identifier: "GetResponseRulesItemSkipRuleActionParameters",
   }) as any as S.Schema<GetResponseRulesItemSkipRuleActionParameters>;
 
-export type GetResponseRulesItemSkipRuleCategoriesList = ReadonlyArray<string>;
+export type GetResponseRulesItemSkipRuleCategoriesList = Array<string>;
 export const GetResponseRulesItemSkipRuleCategoriesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetResponseRulesItemSkipRuleCategoriesList>;
@@ -47776,7 +47713,7 @@ export const GetResponseRulesItemSkipRuleExposedCredentialCheck =
   }) as any as S.Schema<GetResponseRulesItemSkipRuleExposedCredentialCheck>;
 
 export type GetResponseRulesItemSkipRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GetResponseRulesItemSkipRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -47901,7 +47838,7 @@ export const GetResponseRulesItemTransformResponseHTMLActionParameters =
   }) as any as S.Schema<GetResponseRulesItemTransformResponseHTMLActionParameters>;
 
 export type GetResponseRulesItemTransformResponseHTMLCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GetResponseRulesItemTransformResponseHTMLCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -47925,7 +47862,7 @@ export const GetResponseRulesItemTransformResponseHTMLExposedCredentialCheck =
   }) as any as S.Schema<GetResponseRulesItemTransformResponseHTMLExposedCredentialCheck>;
 
 export type GetResponseRulesItemTransformResponseHTMLRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GetResponseRulesItemTransformResponseHTMLRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -48298,7 +48235,7 @@ export const GetResponseRulesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetResponseRulesItem",
 }) as any as S.Schema<GetResponseRulesItem>;
 
-export type GetResponseRulesList = ReadonlyArray<GetResponseRulesItem>;
+export type GetResponseRulesList = Array<GetResponseRulesItem>;
 export const GetResponseRulesList = /*@__PURE__*/ S.Array(
   GetResponseRulesItem,
 ) as any as S.Schema<GetResponseRulesList>;
@@ -48454,8 +48391,7 @@ export const VersionsGetResponseRulesItemBlockRuleActionParameters =
     identifier: "VersionsGetResponseRulesItemBlockRuleActionParameters",
   }) as any as S.Schema<VersionsGetResponseRulesItemBlockRuleActionParameters>;
 
-export type VersionsGetResponseRulesItemBlockRuleCategoriesList =
-  ReadonlyArray<string>;
+export type VersionsGetResponseRulesItemBlockRuleCategoriesList = Array<string>;
 export const VersionsGetResponseRulesItemBlockRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -48491,7 +48427,7 @@ export const VersionsGetResponseRulesItemBlockRuleLogging =
   }) as any as S.Schema<VersionsGetResponseRulesItemBlockRuleLogging>;
 
 export type VersionsGetResponseRulesItemBlockRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const VersionsGetResponseRulesItemBlockRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -48605,8 +48541,7 @@ export type VersionsGetResponseRulesItemChallengeAction = "challenge";
 export const VersionsGetResponseRulesItemChallengeAction =
   /*@__PURE__*/ S.String;
 
-export type VersionsGetResponseRulesItemChallengeCategoriesList =
-  ReadonlyArray<string>;
+export type VersionsGetResponseRulesItemChallengeCategoriesList = Array<string>;
 export const VersionsGetResponseRulesItemChallengeCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -48629,7 +48564,7 @@ export const VersionsGetResponseRulesItemChallengeExposedCredentialCheck =
   }) as any as S.Schema<VersionsGetResponseRulesItemChallengeExposedCredentialCheck>;
 
 export type VersionsGetResponseRulesItemChallengeRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const VersionsGetResponseRulesItemChallengeRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -48762,7 +48697,7 @@ export const VersionsGetResponseRulesItemCompressResponseRuleActionParametersAlg
   }) as any as S.Schema<VersionsGetResponseRulesItemCompressResponseRuleActionParametersAlgorithmsItem>;
 
 export type VersionsGetResponseRulesItemCompressResponseRuleActionParametersAlgorithmsList =
-  ReadonlyArray<VersionsGetResponseRulesItemCompressResponseRuleActionParametersAlgorithmsItem>;
+  Array<VersionsGetResponseRulesItemCompressResponseRuleActionParametersAlgorithmsItem>;
 export const VersionsGetResponseRulesItemCompressResponseRuleActionParametersAlgorithmsList =
   /*@__PURE__*/ S.Array(
     VersionsGetResponseRulesItemCompressResponseRuleActionParametersAlgorithmsItem,
@@ -48784,7 +48719,7 @@ export const VersionsGetResponseRulesItemCompressResponseRuleActionParameters =
   }) as any as S.Schema<VersionsGetResponseRulesItemCompressResponseRuleActionParameters>;
 
 export type VersionsGetResponseRulesItemCompressResponseRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const VersionsGetResponseRulesItemCompressResponseRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -48808,7 +48743,7 @@ export const VersionsGetResponseRulesItemCompressResponseRuleExposedCredentialCh
   }) as any as S.Schema<VersionsGetResponseRulesItemCompressResponseRuleExposedCredentialCheck>;
 
 export type VersionsGetResponseRulesItemCompressResponseRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const VersionsGetResponseRulesItemCompressResponseRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -48927,7 +48862,7 @@ export const VersionsGetResponseRulesItemDDoSDynamicRuleAction =
   /*@__PURE__*/ S.String;
 
 export type VersionsGetResponseRulesItemDDoSDynamicRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const VersionsGetResponseRulesItemDDoSDynamicRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -48951,7 +48886,7 @@ export const VersionsGetResponseRulesItemDDoSDynamicRuleExposedCredentialCheck =
   }) as any as S.Schema<VersionsGetResponseRulesItemDDoSDynamicRuleExposedCredentialCheck>;
 
 export type VersionsGetResponseRulesItemDDoSDynamicRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const VersionsGetResponseRulesItemDDoSDynamicRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -49110,7 +49045,7 @@ export const VersionsGetResponseRulesItemExecuteRuleActionParametersOverridesCat
   }) as any as S.Schema<VersionsGetResponseRulesItemExecuteRuleActionParametersOverridesCategoriesItem>;
 
 export type VersionsGetResponseRulesItemExecuteRuleActionParametersOverridesCategoriesList =
-  ReadonlyArray<VersionsGetResponseRulesItemExecuteRuleActionParametersOverridesCategoriesItem>;
+  Array<VersionsGetResponseRulesItemExecuteRuleActionParametersOverridesCategoriesItem>;
 export const VersionsGetResponseRulesItemExecuteRuleActionParametersOverridesCategoriesList =
   /*@__PURE__*/ S.Array(
     VersionsGetResponseRulesItemExecuteRuleActionParametersOverridesCategoriesItem,
@@ -49152,7 +49087,7 @@ export const VersionsGetResponseRulesItemExecuteRuleActionParametersOverridesRul
   }) as any as S.Schema<VersionsGetResponseRulesItemExecuteRuleActionParametersOverridesRulesItem>;
 
 export type VersionsGetResponseRulesItemExecuteRuleActionParametersOverridesRulesList =
-  ReadonlyArray<VersionsGetResponseRulesItemExecuteRuleActionParametersOverridesRulesItem>;
+  Array<VersionsGetResponseRulesItemExecuteRuleActionParametersOverridesRulesItem>;
 export const VersionsGetResponseRulesItemExecuteRuleActionParametersOverridesRulesList =
   /*@__PURE__*/ S.Array(
     VersionsGetResponseRulesItemExecuteRuleActionParametersOverridesRulesItem,
@@ -49223,7 +49158,7 @@ export const VersionsGetResponseRulesItemExecuteRuleActionParameters =
   }) as any as S.Schema<VersionsGetResponseRulesItemExecuteRuleActionParameters>;
 
 export type VersionsGetResponseRulesItemExecuteRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const VersionsGetResponseRulesItemExecuteRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -49246,7 +49181,7 @@ export const VersionsGetResponseRulesItemExecuteRuleExposedCredentialCheck =
   }) as any as S.Schema<VersionsGetResponseRulesItemExecuteRuleExposedCredentialCheck>;
 
 export type VersionsGetResponseRulesItemExecuteRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const VersionsGetResponseRulesItemExecuteRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -49362,7 +49297,7 @@ export const VersionsGetResponseRulesItemForceConnectionCloseRuleAction =
   /*@__PURE__*/ S.String;
 
 export type VersionsGetResponseRulesItemForceConnectionCloseRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const VersionsGetResponseRulesItemForceConnectionCloseRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -49386,7 +49321,7 @@ export const VersionsGetResponseRulesItemForceConnectionCloseRuleExposedCredenti
   }) as any as S.Schema<VersionsGetResponseRulesItemForceConnectionCloseRuleExposedCredentialCheck>;
 
 export type VersionsGetResponseRulesItemForceConnectionCloseRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const VersionsGetResponseRulesItemForceConnectionCloseRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -49501,7 +49436,7 @@ export const VersionsGetResponseRulesItemJSChallengeAction =
   /*@__PURE__*/ S.String;
 
 export type VersionsGetResponseRulesItemJSChallengeCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const VersionsGetResponseRulesItemJSChallengeCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -49524,7 +49459,7 @@ export const VersionsGetResponseRulesItemJSChallengeExposedCredentialCheck =
   }) as any as S.Schema<VersionsGetResponseRulesItemJSChallengeExposedCredentialCheck>;
 
 export type VersionsGetResponseRulesItemJSChallengeRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const VersionsGetResponseRulesItemJSChallengeRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -49633,8 +49568,7 @@ export const VersionsGetResponseRulesItemJSChallenge = /*@__PURE__*/ S.suspend(
 export type VersionsGetResponseRulesItemLogRuleAction = "log";
 export const VersionsGetResponseRulesItemLogRuleAction = /*@__PURE__*/ S.String;
 
-export type VersionsGetResponseRulesItemLogRuleCategoriesList =
-  ReadonlyArray<string>;
+export type VersionsGetResponseRulesItemLogRuleCategoriesList = Array<string>;
 export const VersionsGetResponseRulesItemLogRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -49657,7 +49591,7 @@ export const VersionsGetResponseRulesItemLogRuleExposedCredentialCheck =
   }) as any as S.Schema<VersionsGetResponseRulesItemLogRuleExposedCredentialCheck>;
 
 export type VersionsGetResponseRulesItemLogRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const VersionsGetResponseRulesItemLogRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -49780,7 +49714,7 @@ export const VersionsGetResponseRulesItemLogCustomFieldRuleActionParametersCooki
   }) as any as S.Schema<VersionsGetResponseRulesItemLogCustomFieldRuleActionParametersCookieFieldsItem>;
 
 export type VersionsGetResponseRulesItemLogCustomFieldRuleActionParametersCookieFieldsList =
-  ReadonlyArray<VersionsGetResponseRulesItemLogCustomFieldRuleActionParametersCookieFieldsItem>;
+  Array<VersionsGetResponseRulesItemLogCustomFieldRuleActionParametersCookieFieldsItem>;
 export const VersionsGetResponseRulesItemLogCustomFieldRuleActionParametersCookieFieldsList =
   /*@__PURE__*/ S.Array(
     VersionsGetResponseRulesItemLogCustomFieldRuleActionParametersCookieFieldsItem,
@@ -49806,7 +49740,7 @@ export const VersionsGetResponseRulesItemLogCustomFieldRuleActionParametersRawRe
   }) as any as S.Schema<VersionsGetResponseRulesItemLogCustomFieldRuleActionParametersRawResponseFieldsItem>;
 
 export type VersionsGetResponseRulesItemLogCustomFieldRuleActionParametersRawResponseFieldsList =
-  ReadonlyArray<VersionsGetResponseRulesItemLogCustomFieldRuleActionParametersRawResponseFieldsItem>;
+  Array<VersionsGetResponseRulesItemLogCustomFieldRuleActionParametersRawResponseFieldsItem>;
 export const VersionsGetResponseRulesItemLogCustomFieldRuleActionParametersRawResponseFieldsList =
   /*@__PURE__*/ S.Array(
     VersionsGetResponseRulesItemLogCustomFieldRuleActionParametersRawResponseFieldsItem,
@@ -49827,7 +49761,7 @@ export const VersionsGetResponseRulesItemLogCustomFieldRuleActionParametersReque
   }) as any as S.Schema<VersionsGetResponseRulesItemLogCustomFieldRuleActionParametersRequestFieldsItem>;
 
 export type VersionsGetResponseRulesItemLogCustomFieldRuleActionParametersRequestFieldsList =
-  ReadonlyArray<VersionsGetResponseRulesItemLogCustomFieldRuleActionParametersRequestFieldsItem>;
+  Array<VersionsGetResponseRulesItemLogCustomFieldRuleActionParametersRequestFieldsItem>;
 export const VersionsGetResponseRulesItemLogCustomFieldRuleActionParametersRequestFieldsList =
   /*@__PURE__*/ S.Array(
     VersionsGetResponseRulesItemLogCustomFieldRuleActionParametersRequestFieldsItem,
@@ -49853,7 +49787,7 @@ export const VersionsGetResponseRulesItemLogCustomFieldRuleActionParametersRespo
   }) as any as S.Schema<VersionsGetResponseRulesItemLogCustomFieldRuleActionParametersResponseFieldsItem>;
 
 export type VersionsGetResponseRulesItemLogCustomFieldRuleActionParametersResponseFieldsList =
-  ReadonlyArray<VersionsGetResponseRulesItemLogCustomFieldRuleActionParametersResponseFieldsItem>;
+  Array<VersionsGetResponseRulesItemLogCustomFieldRuleActionParametersResponseFieldsItem>;
 export const VersionsGetResponseRulesItemLogCustomFieldRuleActionParametersResponseFieldsList =
   /*@__PURE__*/ S.Array(
     VersionsGetResponseRulesItemLogCustomFieldRuleActionParametersResponseFieldsItem,
@@ -49874,7 +49808,7 @@ export const VersionsGetResponseRulesItemLogCustomFieldRuleActionParametersTrans
   }) as any as S.Schema<VersionsGetResponseRulesItemLogCustomFieldRuleActionParametersTransformedRequestFieldsItem>;
 
 export type VersionsGetResponseRulesItemLogCustomFieldRuleActionParametersTransformedRequestFieldsList =
-  ReadonlyArray<VersionsGetResponseRulesItemLogCustomFieldRuleActionParametersTransformedRequestFieldsItem>;
+  Array<VersionsGetResponseRulesItemLogCustomFieldRuleActionParametersTransformedRequestFieldsItem>;
 export const VersionsGetResponseRulesItemLogCustomFieldRuleActionParametersTransformedRequestFieldsList =
   /*@__PURE__*/ S.Array(
     VersionsGetResponseRulesItemLogCustomFieldRuleActionParametersTransformedRequestFieldsItem,
@@ -49927,7 +49861,7 @@ export const VersionsGetResponseRulesItemLogCustomFieldRuleActionParameters =
   }) as any as S.Schema<VersionsGetResponseRulesItemLogCustomFieldRuleActionParameters>;
 
 export type VersionsGetResponseRulesItemLogCustomFieldRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const VersionsGetResponseRulesItemLogCustomFieldRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -49951,7 +49885,7 @@ export const VersionsGetResponseRulesItemLogCustomFieldRuleExposedCredentialChec
   }) as any as S.Schema<VersionsGetResponseRulesItemLogCustomFieldRuleExposedCredentialCheck>;
 
 export type VersionsGetResponseRulesItemLogCustomFieldRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const VersionsGetResponseRulesItemLogCustomFieldRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -50069,7 +50003,7 @@ export const VersionsGetResponseRulesItemManagedChallengeRuleAction =
   /*@__PURE__*/ S.String;
 
 export type VersionsGetResponseRulesItemManagedChallengeRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const VersionsGetResponseRulesItemManagedChallengeRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -50093,7 +50027,7 @@ export const VersionsGetResponseRulesItemManagedChallengeRuleExposedCredentialCh
   }) as any as S.Schema<VersionsGetResponseRulesItemManagedChallengeRuleExposedCredentialCheck>;
 
 export type VersionsGetResponseRulesItemManagedChallengeRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const VersionsGetResponseRulesItemManagedChallengeRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -50300,7 +50234,7 @@ export const VersionsGetResponseRulesItemRedirectRuleActionParameters =
   }) as any as S.Schema<VersionsGetResponseRulesItemRedirectRuleActionParameters>;
 
 export type VersionsGetResponseRulesItemRedirectRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const VersionsGetResponseRulesItemRedirectRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -50324,7 +50258,7 @@ export const VersionsGetResponseRulesItemRedirectRuleExposedCredentialCheck =
   }) as any as S.Schema<VersionsGetResponseRulesItemRedirectRuleExposedCredentialCheck>;
 
 export type VersionsGetResponseRulesItemRedirectRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const VersionsGetResponseRulesItemRedirectRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -50694,7 +50628,7 @@ export const VersionsGetResponseRulesItemRewriteRuleActionParameters =
   }) as any as S.Schema<VersionsGetResponseRulesItemRewriteRuleActionParameters>;
 
 export type VersionsGetResponseRulesItemRewriteRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const VersionsGetResponseRulesItemRewriteRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -50717,7 +50651,7 @@ export const VersionsGetResponseRulesItemRewriteRuleExposedCredentialCheck =
   }) as any as S.Schema<VersionsGetResponseRulesItemRewriteRuleExposedCredentialCheck>;
 
 export type VersionsGetResponseRulesItemRewriteRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const VersionsGetResponseRulesItemRewriteRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -50881,8 +50815,7 @@ export const VersionsGetResponseRulesItemRouteRuleActionParameters =
     identifier: "VersionsGetResponseRulesItemRouteRuleActionParameters",
   }) as any as S.Schema<VersionsGetResponseRulesItemRouteRuleActionParameters>;
 
-export type VersionsGetResponseRulesItemRouteRuleCategoriesList =
-  ReadonlyArray<string>;
+export type VersionsGetResponseRulesItemRouteRuleCategoriesList = Array<string>;
 export const VersionsGetResponseRulesItemRouteRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -50905,7 +50838,7 @@ export const VersionsGetResponseRulesItemRouteRuleExposedCredentialCheck =
   }) as any as S.Schema<VersionsGetResponseRulesItemRouteRuleExposedCredentialCheck>;
 
 export type VersionsGetResponseRulesItemRouteRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const VersionsGetResponseRulesItemRouteRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -51032,8 +50965,7 @@ export const VersionsGetResponseRulesItemScoreRuleActionParameters =
     identifier: "VersionsGetResponseRulesItemScoreRuleActionParameters",
   }) as any as S.Schema<VersionsGetResponseRulesItemScoreRuleActionParameters>;
 
-export type VersionsGetResponseRulesItemScoreRuleCategoriesList =
-  ReadonlyArray<string>;
+export type VersionsGetResponseRulesItemScoreRuleCategoriesList = Array<string>;
 export const VersionsGetResponseRulesItemScoreRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -51056,7 +50988,7 @@ export const VersionsGetResponseRulesItemScoreRuleExposedCredentialCheck =
   }) as any as S.Schema<VersionsGetResponseRulesItemScoreRuleExposedCredentialCheck>;
 
 export type VersionsGetResponseRulesItemScoreRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const VersionsGetResponseRulesItemScoreRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -51258,7 +51190,7 @@ export const VersionsGetResponseRulesItemServeErrorRuleActionParameters =
   }) as any as S.Schema<VersionsGetResponseRulesItemServeErrorRuleActionParameters>;
 
 export type VersionsGetResponseRulesItemServeErrorRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const VersionsGetResponseRulesItemServeErrorRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -51282,7 +51214,7 @@ export const VersionsGetResponseRulesItemServeErrorRuleExposedCredentialCheck =
   }) as any as S.Schema<VersionsGetResponseRulesItemServeErrorRuleExposedCredentialCheck>;
 
 export type VersionsGetResponseRulesItemServeErrorRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const VersionsGetResponseRulesItemServeErrorRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -51683,7 +51615,7 @@ export const VersionsGetResponseRulesItemSetCacheControlActionParametersNoCacheS
   /*@__PURE__*/ S.String;
 
 export type VersionsGetResponseRulesItemSetCacheControlActionParametersNoCacheSetDirectiveQualifiersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const VersionsGetResponseRulesItemSetCacheControlActionParametersNoCacheSetDirectiveQualifiersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -51904,7 +51836,7 @@ export const VersionsGetResponseRulesItemSetCacheControlActionParametersPrivateS
   /*@__PURE__*/ S.String;
 
 export type VersionsGetResponseRulesItemSetCacheControlActionParametersPrivateSetDirectiveQualifiersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const VersionsGetResponseRulesItemSetCacheControlActionParametersPrivateSetDirectiveQualifiersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -52437,7 +52369,7 @@ export const VersionsGetResponseRulesItemSetCacheControlActionParameters =
   }) as any as S.Schema<VersionsGetResponseRulesItemSetCacheControlActionParameters>;
 
 export type VersionsGetResponseRulesItemSetCacheControlCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const VersionsGetResponseRulesItemSetCacheControlCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -52461,7 +52393,7 @@ export const VersionsGetResponseRulesItemSetCacheControlExposedCredentialCheck =
   }) as any as S.Schema<VersionsGetResponseRulesItemSetCacheControlExposedCredentialCheck>;
 
 export type VersionsGetResponseRulesItemSetCacheControlRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const VersionsGetResponseRulesItemSetCacheControlRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -52579,7 +52511,7 @@ export const VersionsGetResponseRulesItemSetCacheSettingsRuleAction =
   /*@__PURE__*/ S.String;
 
 export type VersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersAdditionalCacheablePortsList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const VersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersAdditionalCacheablePortsList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -52608,14 +52540,14 @@ export const VersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersBro
   }) as any as S.Schema<VersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersBrowserTtl>;
 
 export type VersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookieCheckPresenceList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const VersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookieCheckPresenceList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<VersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookieCheckPresenceList>;
 
 export type VersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookieIncludeList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const VersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookieIncludeList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -52645,14 +52577,14 @@ export const VersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersCac
   }) as any as S.Schema<VersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookie>;
 
 export type VersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderCheckPresenceList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const VersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderCheckPresenceList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<VersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderCheckPresenceList>;
 
 export type VersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderContainsValueList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const VersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderContainsValueList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -52671,7 +52603,7 @@ export const VersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersCac
   ) as any as S.Schema<VersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderContainsMap>;
 
 export type VersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderIncludeList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const VersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderIncludeList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -52723,7 +52655,7 @@ export const VersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersCac
   }) as any as S.Schema<VersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHost>;
 
 export type VersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringExcludeListList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const VersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringExcludeListList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -52749,7 +52681,7 @@ export const VersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersCac
   }) as any as S.Schema<VersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringExclude>;
 
 export type VersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringIncludeListList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const VersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringIncludeListList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -52950,7 +52882,7 @@ export const VersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersEdg
   }) as any as S.Schema<VersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlItem>;
 
 export type VersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlList =
-  ReadonlyArray<VersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlItem>;
+  Array<VersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlItem>;
 export const VersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlList =
   /*@__PURE__*/ S.Array(
     VersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlItem,
@@ -53036,14 +52968,14 @@ export const VersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersVar
   /*@__PURE__*/ S.String;
 
 export type VersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValueLanguagesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const VersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValueLanguagesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<VersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValueLanguagesList>;
 
 export type VersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValueMediaTypesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const VersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValueMediaTypesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -53207,7 +53139,7 @@ export const VersionsGetResponseRulesItemSetCacheSettingsRuleActionParameters =
   }) as any as S.Schema<VersionsGetResponseRulesItemSetCacheSettingsRuleActionParameters>;
 
 export type VersionsGetResponseRulesItemSetCacheSettingsRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const VersionsGetResponseRulesItemSetCacheSettingsRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -53231,7 +53163,7 @@ export const VersionsGetResponseRulesItemSetCacheSettingsRuleExposedCredentialCh
   }) as any as S.Schema<VersionsGetResponseRulesItemSetCacheSettingsRuleExposedCredentialCheck>;
 
 export type VersionsGetResponseRulesItemSetCacheSettingsRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const VersionsGetResponseRulesItemSetCacheSettingsRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -53355,7 +53287,7 @@ export const VersionsGetResponseRulesItemSetCacheTagsActionParametersAddCacheTag
   /*@__PURE__*/ S.String;
 
 export type VersionsGetResponseRulesItemSetCacheTagsActionParametersAddCacheTagsValuesValuesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const VersionsGetResponseRulesItemSetCacheTagsActionParametersAddCacheTagsValuesValuesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -53409,7 +53341,7 @@ export const VersionsGetResponseRulesItemSetCacheTagsActionParametersRemoveCache
   /*@__PURE__*/ S.String;
 
 export type VersionsGetResponseRulesItemSetCacheTagsActionParametersRemoveCacheTagsValuesValuesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const VersionsGetResponseRulesItemSetCacheTagsActionParametersRemoveCacheTagsValuesValuesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -53463,7 +53395,7 @@ export const VersionsGetResponseRulesItemSetCacheTagsActionParametersSetCacheTag
   /*@__PURE__*/ S.String;
 
 export type VersionsGetResponseRulesItemSetCacheTagsActionParametersSetCacheTagsValuesValuesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const VersionsGetResponseRulesItemSetCacheTagsActionParametersSetCacheTagsValuesValuesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -53553,7 +53485,7 @@ export const VersionsGetResponseRulesItemSetCacheTagsActionParameters =
   }) as any as S.Schema<VersionsGetResponseRulesItemSetCacheTagsActionParameters>;
 
 export type VersionsGetResponseRulesItemSetCacheTagsCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const VersionsGetResponseRulesItemSetCacheTagsCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -53577,7 +53509,7 @@ export const VersionsGetResponseRulesItemSetCacheTagsExposedCredentialCheck =
   }) as any as S.Schema<VersionsGetResponseRulesItemSetCacheTagsExposedCredentialCheck>;
 
 export type VersionsGetResponseRulesItemSetCacheTagsRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const VersionsGetResponseRulesItemSetCacheTagsRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -53850,7 +53782,7 @@ export const VersionsGetResponseRulesItemSetConfigRuleActionParameters =
   }) as any as S.Schema<VersionsGetResponseRulesItemSetConfigRuleActionParameters>;
 
 export type VersionsGetResponseRulesItemSetConfigRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const VersionsGetResponseRulesItemSetConfigRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -53874,7 +53806,7 @@ export const VersionsGetResponseRulesItemSetConfigRuleExposedCredentialCheck =
   }) as any as S.Schema<VersionsGetResponseRulesItemSetConfigRuleExposedCredentialCheck>;
 
 export type VersionsGetResponseRulesItemSetConfigRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const VersionsGetResponseRulesItemSetConfigRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -54022,7 +53954,7 @@ export const VersionsGetResponseRulesItemSkipRuleActionParametersPhasesItem =
   /*@__PURE__*/ S.String;
 
 export type VersionsGetResponseRulesItemSkipRuleActionParametersPhasesList =
-  ReadonlyArray<VersionsGetResponseRulesItemSkipRuleActionParametersPhasesItem>;
+  Array<VersionsGetResponseRulesItemSkipRuleActionParametersPhasesItem>;
 export const VersionsGetResponseRulesItemSkipRuleActionParametersPhasesList =
   /*@__PURE__*/ S.Array(
     VersionsGetResponseRulesItemSkipRuleActionParametersPhasesItem,
@@ -54040,14 +53972,14 @@ export const VersionsGetResponseRulesItemSkipRuleActionParametersProductsItem =
   /*@__PURE__*/ S.String;
 
 export type VersionsGetResponseRulesItemSkipRuleActionParametersProductsList =
-  ReadonlyArray<VersionsGetResponseRulesItemSkipRuleActionParametersProductsItem>;
+  Array<VersionsGetResponseRulesItemSkipRuleActionParametersProductsItem>;
 export const VersionsGetResponseRulesItemSkipRuleActionParametersProductsList =
   /*@__PURE__*/ S.Array(
     VersionsGetResponseRulesItemSkipRuleActionParametersProductsItem,
   ) as any as S.Schema<VersionsGetResponseRulesItemSkipRuleActionParametersProductsList>;
 
 export type VersionsGetResponseRulesItemSkipRuleActionParametersRulesValueList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const VersionsGetResponseRulesItemSkipRuleActionParametersRulesValueList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -54070,7 +54002,7 @@ export const VersionsGetResponseRulesItemSkipRuleActionParametersRuleset =
   /*@__PURE__*/ S.String;
 
 export type VersionsGetResponseRulesItemSkipRuleActionParametersRulesetsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const VersionsGetResponseRulesItemSkipRuleActionParametersRulesetsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -54116,8 +54048,7 @@ export const VersionsGetResponseRulesItemSkipRuleActionParameters =
     identifier: "VersionsGetResponseRulesItemSkipRuleActionParameters",
   }) as any as S.Schema<VersionsGetResponseRulesItemSkipRuleActionParameters>;
 
-export type VersionsGetResponseRulesItemSkipRuleCategoriesList =
-  ReadonlyArray<string>;
+export type VersionsGetResponseRulesItemSkipRuleCategoriesList = Array<string>;
 export const VersionsGetResponseRulesItemSkipRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -54140,7 +54071,7 @@ export const VersionsGetResponseRulesItemSkipRuleExposedCredentialCheck =
   }) as any as S.Schema<VersionsGetResponseRulesItemSkipRuleExposedCredentialCheck>;
 
 export type VersionsGetResponseRulesItemSkipRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const VersionsGetResponseRulesItemSkipRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -54270,7 +54201,7 @@ export const VersionsGetResponseRulesItemTransformResponseHTMLActionParameters =
   }) as any as S.Schema<VersionsGetResponseRulesItemTransformResponseHTMLActionParameters>;
 
 export type VersionsGetResponseRulesItemTransformResponseHTMLCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const VersionsGetResponseRulesItemTransformResponseHTMLCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -54294,7 +54225,7 @@ export const VersionsGetResponseRulesItemTransformResponseHTMLExposedCredentialC
   }) as any as S.Schema<VersionsGetResponseRulesItemTransformResponseHTMLExposedCredentialCheck>;
 
 export type VersionsGetResponseRulesItemTransformResponseHTMLRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const VersionsGetResponseRulesItemTransformResponseHTMLRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -54671,8 +54602,7 @@ export const VersionsGetResponseRulesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "VersionsGetResponseRulesItem",
 }) as any as S.Schema<VersionsGetResponseRulesItem>;
 
-export type VersionsGetResponseRulesList =
-  ReadonlyArray<VersionsGetResponseRulesItem>;
+export type VersionsGetResponseRulesList = Array<VersionsGetResponseRulesItem>;
 export const VersionsGetResponseRulesList = /*@__PURE__*/ S.Array(
   VersionsGetResponseRulesItem,
 ) as any as S.Schema<VersionsGetResponseRulesList>;
@@ -54824,8 +54754,7 @@ export const PhasesVersionsListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "PhasesVersionsListResultItem",
 }) as any as S.Schema<PhasesVersionsListResultItem>;
 
-export type PhasesVersionsListResultList =
-  ReadonlyArray<PhasesVersionsListResultItem>;
+export type PhasesVersionsListResultList = Array<PhasesVersionsListResultItem>;
 export const PhasesVersionsListResultList = /*@__PURE__*/ S.Array(
   PhasesVersionsListResultItem,
 ) as any as S.Schema<PhasesVersionsListResultList>;
@@ -54952,7 +54881,7 @@ export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ListResultItem" }) as any as S.Schema<ListResultItem>;
 
-export type ListResultList = ReadonlyArray<ListResultItem>;
+export type ListResultList = Array<ListResultItem>;
 export const ListResultList = /*@__PURE__*/ S.Array(
   ListResultItem,
 ) as any as S.Schema<ListResultList>;
@@ -55077,7 +55006,7 @@ export const VersionsListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "VersionsListResultItem",
 }) as any as S.Schema<VersionsListResultItem>;
 
-export type VersionsListResultList = ReadonlyArray<VersionsListResultItem>;
+export type VersionsListResultList = Array<VersionsListResultItem>;
 export const VersionsListResultList = /*@__PURE__*/ S.Array(
   VersionsListResultItem,
 ) as any as S.Schema<VersionsListResultList>;
@@ -55193,8 +55122,7 @@ export const RulesEditRequestBodyBlockRule = /*@__PURE__*/ S.suspend(() =>
 export type RulesEditRequestBodyChallengeRuleAction = "challenge";
 export const RulesEditRequestBodyChallengeRuleAction = /*@__PURE__*/ S.String;
 
-export type RulesEditRequestBodyChallengeRuleCategoriesList =
-  ReadonlyArray<string>;
+export type RulesEditRequestBodyChallengeRuleCategoriesList = Array<string>;
 export const RulesEditRequestBodyChallengeRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -55288,7 +55216,7 @@ export const RulesEditRequestBodyChallengeRulePosition =
   }) as any as S.Schema<RulesEditRequestBodyChallengeRulePosition>;
 
 export type RulesEditRequestBodyChallengeRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesEditRequestBodyChallengeRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -55689,7 +55617,7 @@ export const RulesEditRequestBodyJavaScriptChallengeRuleAction =
   /*@__PURE__*/ S.String;
 
 export type RulesEditRequestBodyJavaScriptChallengeRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesEditRequestBodyJavaScriptChallengeRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -55774,7 +55702,7 @@ export const RulesEditRequestBodyJavaScriptChallengeRulePosition =
   }) as any as S.Schema<RulesEditRequestBodyJavaScriptChallengeRulePosition>;
 
 export type RulesEditRequestBodyJavaScriptChallengeRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesEditRequestBodyJavaScriptChallengeRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -56758,7 +56686,7 @@ export const RulesEditRequestBodySetCacheControlRuleActionParametersNoCacheSetDi
   /*@__PURE__*/ S.String;
 
 export type RulesEditRequestBodySetCacheControlRuleActionParametersNoCacheSetDirectiveQualifiersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesEditRequestBodySetCacheControlRuleActionParametersNoCacheSetDirectiveQualifiersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -56997,7 +56925,7 @@ export const RulesEditRequestBodySetCacheControlRuleActionParametersPrivateSetDi
   /*@__PURE__*/ S.String;
 
 export type RulesEditRequestBodySetCacheControlRuleActionParametersPrivateSetDirectiveQualifiersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesEditRequestBodySetCacheControlRuleActionParametersPrivateSetDirectiveQualifiersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -57565,7 +57493,7 @@ export const RulesEditRequestBodySetCacheControlRuleActionParameters =
   }) as any as S.Schema<RulesEditRequestBodySetCacheControlRuleActionParameters>;
 
 export type RulesEditRequestBodySetCacheControlRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesEditRequestBodySetCacheControlRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -57646,7 +57574,7 @@ export const RulesEditRequestBodySetCacheControlRulePosition =
   }) as any as S.Schema<RulesEditRequestBodySetCacheControlRulePosition>;
 
 export type RulesEditRequestBodySetCacheControlRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesEditRequestBodySetCacheControlRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -57841,7 +57769,7 @@ export const RulesEditRequestBodySetCacheTagsRuleActionParametersAddCacheTagsVal
   /*@__PURE__*/ S.String;
 
 export type RulesEditRequestBodySetCacheTagsRuleActionParametersAddCacheTagsValuesValuesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesEditRequestBodySetCacheTagsRuleActionParametersAddCacheTagsValuesValuesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -57899,7 +57827,7 @@ export const RulesEditRequestBodySetCacheTagsRuleActionParametersRemoveCacheTags
   /*@__PURE__*/ S.String;
 
 export type RulesEditRequestBodySetCacheTagsRuleActionParametersRemoveCacheTagsValuesValuesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesEditRequestBodySetCacheTagsRuleActionParametersRemoveCacheTagsValuesValuesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -57957,7 +57885,7 @@ export const RulesEditRequestBodySetCacheTagsRuleActionParametersSetCacheTagsVal
   /*@__PURE__*/ S.String;
 
 export type RulesEditRequestBodySetCacheTagsRuleActionParametersSetCacheTagsValuesValuesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesEditRequestBodySetCacheTagsRuleActionParametersSetCacheTagsValuesValuesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -58056,8 +57984,7 @@ export const RulesEditRequestBodySetCacheTagsRuleActionParameters =
     identifier: "RulesEditRequestBodySetCacheTagsRuleActionParameters",
   }) as any as S.Schema<RulesEditRequestBodySetCacheTagsRuleActionParameters>;
 
-export type RulesEditRequestBodySetCacheTagsRuleCategoriesList =
-  ReadonlyArray<string>;
+export type RulesEditRequestBodySetCacheTagsRuleCategoriesList = Array<string>;
 export const RulesEditRequestBodySetCacheTagsRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -58138,7 +58065,7 @@ export const RulesEditRequestBodySetCacheTagsRulePosition =
   }) as any as S.Schema<RulesEditRequestBodySetCacheTagsRulePosition>;
 
 export type RulesEditRequestBodySetCacheTagsRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesEditRequestBodySetCacheTagsRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -58412,7 +58339,7 @@ export const RulesEditRequestBodyTransformResponseHTMLRuleActionParameters =
   }) as any as S.Schema<RulesEditRequestBodyTransformResponseHTMLRuleActionParameters>;
 
 export type RulesEditRequestBodyTransformResponseHTMLRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesEditRequestBodyTransformResponseHTMLRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -58497,7 +58424,7 @@ export const RulesEditRequestBodyTransformResponseHTMLRulePosition =
   }) as any as S.Schema<RulesEditRequestBodyTransformResponseHTMLRulePosition>;
 
 export type RulesEditRequestBodyTransformResponseHTMLRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesEditRequestBodyTransformResponseHTMLRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -58873,8 +58800,7 @@ export const RulesEditResponseRulesItemBlockRuleActionParameters =
     identifier: "RulesEditResponseRulesItemBlockRuleActionParameters",
   }) as any as S.Schema<RulesEditResponseRulesItemBlockRuleActionParameters>;
 
-export type RulesEditResponseRulesItemBlockRuleCategoriesList =
-  ReadonlyArray<string>;
+export type RulesEditResponseRulesItemBlockRuleCategoriesList = Array<string>;
 export const RulesEditResponseRulesItemBlockRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -58910,7 +58836,7 @@ export const RulesEditResponseRulesItemBlockRuleLogging =
   }) as any as S.Schema<RulesEditResponseRulesItemBlockRuleLogging>;
 
 export type RulesEditResponseRulesItemBlockRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesEditResponseRulesItemBlockRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -59020,8 +58946,7 @@ export const RulesEditResponseRulesItemBlockRule = /*@__PURE__*/ S.suspend(() =>
 export type RulesEditResponseRulesItemChallengeAction = "challenge";
 export const RulesEditResponseRulesItemChallengeAction = /*@__PURE__*/ S.String;
 
-export type RulesEditResponseRulesItemChallengeCategoriesList =
-  ReadonlyArray<string>;
+export type RulesEditResponseRulesItemChallengeCategoriesList = Array<string>;
 export const RulesEditResponseRulesItemChallengeCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -59044,7 +58969,7 @@ export const RulesEditResponseRulesItemChallengeExposedCredentialCheck =
   }) as any as S.Schema<RulesEditResponseRulesItemChallengeExposedCredentialCheck>;
 
 export type RulesEditResponseRulesItemChallengeRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesEditResponseRulesItemChallengeRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -59174,7 +59099,7 @@ export const RulesEditResponseRulesItemCompressResponseRuleActionParametersAlgor
   }) as any as S.Schema<RulesEditResponseRulesItemCompressResponseRuleActionParametersAlgorithmsItem>;
 
 export type RulesEditResponseRulesItemCompressResponseRuleActionParametersAlgorithmsList =
-  ReadonlyArray<RulesEditResponseRulesItemCompressResponseRuleActionParametersAlgorithmsItem>;
+  Array<RulesEditResponseRulesItemCompressResponseRuleActionParametersAlgorithmsItem>;
 export const RulesEditResponseRulesItemCompressResponseRuleActionParametersAlgorithmsList =
   /*@__PURE__*/ S.Array(
     RulesEditResponseRulesItemCompressResponseRuleActionParametersAlgorithmsItem,
@@ -59196,7 +59121,7 @@ export const RulesEditResponseRulesItemCompressResponseRuleActionParameters =
   }) as any as S.Schema<RulesEditResponseRulesItemCompressResponseRuleActionParameters>;
 
 export type RulesEditResponseRulesItemCompressResponseRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesEditResponseRulesItemCompressResponseRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -59220,7 +59145,7 @@ export const RulesEditResponseRulesItemCompressResponseRuleExposedCredentialChec
   }) as any as S.Schema<RulesEditResponseRulesItemCompressResponseRuleExposedCredentialCheck>;
 
 export type RulesEditResponseRulesItemCompressResponseRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesEditResponseRulesItemCompressResponseRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -59337,7 +59262,7 @@ export const RulesEditResponseRulesItemDDoSDynamicRuleAction =
   /*@__PURE__*/ S.String;
 
 export type RulesEditResponseRulesItemDDoSDynamicRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesEditResponseRulesItemDDoSDynamicRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -59361,7 +59286,7 @@ export const RulesEditResponseRulesItemDDoSDynamicRuleExposedCredentialCheck =
   }) as any as S.Schema<RulesEditResponseRulesItemDDoSDynamicRuleExposedCredentialCheck>;
 
 export type RulesEditResponseRulesItemDDoSDynamicRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesEditResponseRulesItemDDoSDynamicRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -59518,7 +59443,7 @@ export const RulesEditResponseRulesItemExecuteRuleActionParametersOverridesCateg
   }) as any as S.Schema<RulesEditResponseRulesItemExecuteRuleActionParametersOverridesCategoriesItem>;
 
 export type RulesEditResponseRulesItemExecuteRuleActionParametersOverridesCategoriesList =
-  ReadonlyArray<RulesEditResponseRulesItemExecuteRuleActionParametersOverridesCategoriesItem>;
+  Array<RulesEditResponseRulesItemExecuteRuleActionParametersOverridesCategoriesItem>;
 export const RulesEditResponseRulesItemExecuteRuleActionParametersOverridesCategoriesList =
   /*@__PURE__*/ S.Array(
     RulesEditResponseRulesItemExecuteRuleActionParametersOverridesCategoriesItem,
@@ -59560,7 +59485,7 @@ export const RulesEditResponseRulesItemExecuteRuleActionParametersOverridesRules
   }) as any as S.Schema<RulesEditResponseRulesItemExecuteRuleActionParametersOverridesRulesItem>;
 
 export type RulesEditResponseRulesItemExecuteRuleActionParametersOverridesRulesList =
-  ReadonlyArray<RulesEditResponseRulesItemExecuteRuleActionParametersOverridesRulesItem>;
+  Array<RulesEditResponseRulesItemExecuteRuleActionParametersOverridesRulesItem>;
 export const RulesEditResponseRulesItemExecuteRuleActionParametersOverridesRulesList =
   /*@__PURE__*/ S.Array(
     RulesEditResponseRulesItemExecuteRuleActionParametersOverridesRulesItem,
@@ -59630,8 +59555,7 @@ export const RulesEditResponseRulesItemExecuteRuleActionParameters =
     identifier: "RulesEditResponseRulesItemExecuteRuleActionParameters",
   }) as any as S.Schema<RulesEditResponseRulesItemExecuteRuleActionParameters>;
 
-export type RulesEditResponseRulesItemExecuteRuleCategoriesList =
-  ReadonlyArray<string>;
+export type RulesEditResponseRulesItemExecuteRuleCategoriesList = Array<string>;
 export const RulesEditResponseRulesItemExecuteRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -59654,7 +59578,7 @@ export const RulesEditResponseRulesItemExecuteRuleExposedCredentialCheck =
   }) as any as S.Schema<RulesEditResponseRulesItemExecuteRuleExposedCredentialCheck>;
 
 export type RulesEditResponseRulesItemExecuteRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesEditResponseRulesItemExecuteRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -59770,7 +59694,7 @@ export const RulesEditResponseRulesItemForceConnectionCloseRuleAction =
   /*@__PURE__*/ S.String;
 
 export type RulesEditResponseRulesItemForceConnectionCloseRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesEditResponseRulesItemForceConnectionCloseRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -59794,7 +59718,7 @@ export const RulesEditResponseRulesItemForceConnectionCloseRuleExposedCredential
   }) as any as S.Schema<RulesEditResponseRulesItemForceConnectionCloseRuleExposedCredentialCheck>;
 
 export type RulesEditResponseRulesItemForceConnectionCloseRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesEditResponseRulesItemForceConnectionCloseRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -59908,8 +59832,7 @@ export type RulesEditResponseRulesItemJSChallengeAction = "js_challenge";
 export const RulesEditResponseRulesItemJSChallengeAction =
   /*@__PURE__*/ S.String;
 
-export type RulesEditResponseRulesItemJSChallengeCategoriesList =
-  ReadonlyArray<string>;
+export type RulesEditResponseRulesItemJSChallengeCategoriesList = Array<string>;
 export const RulesEditResponseRulesItemJSChallengeCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -59932,7 +59855,7 @@ export const RulesEditResponseRulesItemJSChallengeExposedCredentialCheck =
   }) as any as S.Schema<RulesEditResponseRulesItemJSChallengeExposedCredentialCheck>;
 
 export type RulesEditResponseRulesItemJSChallengeRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesEditResponseRulesItemJSChallengeRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -60041,8 +59964,7 @@ export const RulesEditResponseRulesItemJSChallenge = /*@__PURE__*/ S.suspend(
 export type RulesEditResponseRulesItemLogRuleAction = "log";
 export const RulesEditResponseRulesItemLogRuleAction = /*@__PURE__*/ S.String;
 
-export type RulesEditResponseRulesItemLogRuleCategoriesList =
-  ReadonlyArray<string>;
+export type RulesEditResponseRulesItemLogRuleCategoriesList = Array<string>;
 export const RulesEditResponseRulesItemLogRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -60065,7 +59987,7 @@ export const RulesEditResponseRulesItemLogRuleExposedCredentialCheck =
   }) as any as S.Schema<RulesEditResponseRulesItemLogRuleExposedCredentialCheck>;
 
 export type RulesEditResponseRulesItemLogRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesEditResponseRulesItemLogRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -60188,7 +60110,7 @@ export const RulesEditResponseRulesItemLogCustomFieldRuleActionParametersCookieF
   }) as any as S.Schema<RulesEditResponseRulesItemLogCustomFieldRuleActionParametersCookieFieldsItem>;
 
 export type RulesEditResponseRulesItemLogCustomFieldRuleActionParametersCookieFieldsList =
-  ReadonlyArray<RulesEditResponseRulesItemLogCustomFieldRuleActionParametersCookieFieldsItem>;
+  Array<RulesEditResponseRulesItemLogCustomFieldRuleActionParametersCookieFieldsItem>;
 export const RulesEditResponseRulesItemLogCustomFieldRuleActionParametersCookieFieldsList =
   /*@__PURE__*/ S.Array(
     RulesEditResponseRulesItemLogCustomFieldRuleActionParametersCookieFieldsItem,
@@ -60214,7 +60136,7 @@ export const RulesEditResponseRulesItemLogCustomFieldRuleActionParametersRawResp
   }) as any as S.Schema<RulesEditResponseRulesItemLogCustomFieldRuleActionParametersRawResponseFieldsItem>;
 
 export type RulesEditResponseRulesItemLogCustomFieldRuleActionParametersRawResponseFieldsList =
-  ReadonlyArray<RulesEditResponseRulesItemLogCustomFieldRuleActionParametersRawResponseFieldsItem>;
+  Array<RulesEditResponseRulesItemLogCustomFieldRuleActionParametersRawResponseFieldsItem>;
 export const RulesEditResponseRulesItemLogCustomFieldRuleActionParametersRawResponseFieldsList =
   /*@__PURE__*/ S.Array(
     RulesEditResponseRulesItemLogCustomFieldRuleActionParametersRawResponseFieldsItem,
@@ -60235,7 +60157,7 @@ export const RulesEditResponseRulesItemLogCustomFieldRuleActionParametersRequest
   }) as any as S.Schema<RulesEditResponseRulesItemLogCustomFieldRuleActionParametersRequestFieldsItem>;
 
 export type RulesEditResponseRulesItemLogCustomFieldRuleActionParametersRequestFieldsList =
-  ReadonlyArray<RulesEditResponseRulesItemLogCustomFieldRuleActionParametersRequestFieldsItem>;
+  Array<RulesEditResponseRulesItemLogCustomFieldRuleActionParametersRequestFieldsItem>;
 export const RulesEditResponseRulesItemLogCustomFieldRuleActionParametersRequestFieldsList =
   /*@__PURE__*/ S.Array(
     RulesEditResponseRulesItemLogCustomFieldRuleActionParametersRequestFieldsItem,
@@ -60261,7 +60183,7 @@ export const RulesEditResponseRulesItemLogCustomFieldRuleActionParametersRespons
   }) as any as S.Schema<RulesEditResponseRulesItemLogCustomFieldRuleActionParametersResponseFieldsItem>;
 
 export type RulesEditResponseRulesItemLogCustomFieldRuleActionParametersResponseFieldsList =
-  ReadonlyArray<RulesEditResponseRulesItemLogCustomFieldRuleActionParametersResponseFieldsItem>;
+  Array<RulesEditResponseRulesItemLogCustomFieldRuleActionParametersResponseFieldsItem>;
 export const RulesEditResponseRulesItemLogCustomFieldRuleActionParametersResponseFieldsList =
   /*@__PURE__*/ S.Array(
     RulesEditResponseRulesItemLogCustomFieldRuleActionParametersResponseFieldsItem,
@@ -60282,7 +60204,7 @@ export const RulesEditResponseRulesItemLogCustomFieldRuleActionParametersTransfo
   }) as any as S.Schema<RulesEditResponseRulesItemLogCustomFieldRuleActionParametersTransformedRequestFieldsItem>;
 
 export type RulesEditResponseRulesItemLogCustomFieldRuleActionParametersTransformedRequestFieldsList =
-  ReadonlyArray<RulesEditResponseRulesItemLogCustomFieldRuleActionParametersTransformedRequestFieldsItem>;
+  Array<RulesEditResponseRulesItemLogCustomFieldRuleActionParametersTransformedRequestFieldsItem>;
 export const RulesEditResponseRulesItemLogCustomFieldRuleActionParametersTransformedRequestFieldsList =
   /*@__PURE__*/ S.Array(
     RulesEditResponseRulesItemLogCustomFieldRuleActionParametersTransformedRequestFieldsItem,
@@ -60334,7 +60256,7 @@ export const RulesEditResponseRulesItemLogCustomFieldRuleActionParameters =
   }) as any as S.Schema<RulesEditResponseRulesItemLogCustomFieldRuleActionParameters>;
 
 export type RulesEditResponseRulesItemLogCustomFieldRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesEditResponseRulesItemLogCustomFieldRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -60358,7 +60280,7 @@ export const RulesEditResponseRulesItemLogCustomFieldRuleExposedCredentialCheck 
   }) as any as S.Schema<RulesEditResponseRulesItemLogCustomFieldRuleExposedCredentialCheck>;
 
 export type RulesEditResponseRulesItemLogCustomFieldRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesEditResponseRulesItemLogCustomFieldRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -60476,7 +60398,7 @@ export const RulesEditResponseRulesItemManagedChallengeRuleAction =
   /*@__PURE__*/ S.String;
 
 export type RulesEditResponseRulesItemManagedChallengeRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesEditResponseRulesItemManagedChallengeRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -60500,7 +60422,7 @@ export const RulesEditResponseRulesItemManagedChallengeRuleExposedCredentialChec
   }) as any as S.Schema<RulesEditResponseRulesItemManagedChallengeRuleExposedCredentialCheck>;
 
 export type RulesEditResponseRulesItemManagedChallengeRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesEditResponseRulesItemManagedChallengeRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -60705,7 +60627,7 @@ export const RulesEditResponseRulesItemRedirectRuleActionParameters =
   }) as any as S.Schema<RulesEditResponseRulesItemRedirectRuleActionParameters>;
 
 export type RulesEditResponseRulesItemRedirectRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesEditResponseRulesItemRedirectRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -60728,7 +60650,7 @@ export const RulesEditResponseRulesItemRedirectRuleExposedCredentialCheck =
   }) as any as S.Schema<RulesEditResponseRulesItemRedirectRuleExposedCredentialCheck>;
 
 export type RulesEditResponseRulesItemRedirectRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesEditResponseRulesItemRedirectRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -61094,8 +61016,7 @@ export const RulesEditResponseRulesItemRewriteRuleActionParameters =
     identifier: "RulesEditResponseRulesItemRewriteRuleActionParameters",
   }) as any as S.Schema<RulesEditResponseRulesItemRewriteRuleActionParameters>;
 
-export type RulesEditResponseRulesItemRewriteRuleCategoriesList =
-  ReadonlyArray<string>;
+export type RulesEditResponseRulesItemRewriteRuleCategoriesList = Array<string>;
 export const RulesEditResponseRulesItemRewriteRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -61118,7 +61039,7 @@ export const RulesEditResponseRulesItemRewriteRuleExposedCredentialCheck =
   }) as any as S.Schema<RulesEditResponseRulesItemRewriteRuleExposedCredentialCheck>;
 
 export type RulesEditResponseRulesItemRewriteRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesEditResponseRulesItemRewriteRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -61281,8 +61202,7 @@ export const RulesEditResponseRulesItemRouteRuleActionParameters =
     identifier: "RulesEditResponseRulesItemRouteRuleActionParameters",
   }) as any as S.Schema<RulesEditResponseRulesItemRouteRuleActionParameters>;
 
-export type RulesEditResponseRulesItemRouteRuleCategoriesList =
-  ReadonlyArray<string>;
+export type RulesEditResponseRulesItemRouteRuleCategoriesList = Array<string>;
 export const RulesEditResponseRulesItemRouteRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -61305,7 +61225,7 @@ export const RulesEditResponseRulesItemRouteRuleExposedCredentialCheck =
   }) as any as S.Schema<RulesEditResponseRulesItemRouteRuleExposedCredentialCheck>;
 
 export type RulesEditResponseRulesItemRouteRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesEditResponseRulesItemRouteRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -61428,8 +61348,7 @@ export const RulesEditResponseRulesItemScoreRuleActionParameters =
     identifier: "RulesEditResponseRulesItemScoreRuleActionParameters",
   }) as any as S.Schema<RulesEditResponseRulesItemScoreRuleActionParameters>;
 
-export type RulesEditResponseRulesItemScoreRuleCategoriesList =
-  ReadonlyArray<string>;
+export type RulesEditResponseRulesItemScoreRuleCategoriesList = Array<string>;
 export const RulesEditResponseRulesItemScoreRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -61452,7 +61371,7 @@ export const RulesEditResponseRulesItemScoreRuleExposedCredentialCheck =
   }) as any as S.Schema<RulesEditResponseRulesItemScoreRuleExposedCredentialCheck>;
 
 export type RulesEditResponseRulesItemScoreRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesEditResponseRulesItemScoreRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -61651,7 +61570,7 @@ export const RulesEditResponseRulesItemServeErrorRuleActionParameters =
   }) as any as S.Schema<RulesEditResponseRulesItemServeErrorRuleActionParameters>;
 
 export type RulesEditResponseRulesItemServeErrorRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesEditResponseRulesItemServeErrorRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -61675,7 +61594,7 @@ export const RulesEditResponseRulesItemServeErrorRuleExposedCredentialCheck =
   }) as any as S.Schema<RulesEditResponseRulesItemServeErrorRuleExposedCredentialCheck>;
 
 export type RulesEditResponseRulesItemServeErrorRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesEditResponseRulesItemServeErrorRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -62074,7 +61993,7 @@ export const RulesEditResponseRulesItemSetCacheControlActionParametersNoCacheSet
   /*@__PURE__*/ S.String;
 
 export type RulesEditResponseRulesItemSetCacheControlActionParametersNoCacheSetDirectiveQualifiersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesEditResponseRulesItemSetCacheControlActionParametersNoCacheSetDirectiveQualifiersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -62295,7 +62214,7 @@ export const RulesEditResponseRulesItemSetCacheControlActionParametersPrivateSet
   /*@__PURE__*/ S.String;
 
 export type RulesEditResponseRulesItemSetCacheControlActionParametersPrivateSetDirectiveQualifiersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesEditResponseRulesItemSetCacheControlActionParametersPrivateSetDirectiveQualifiersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -62828,7 +62747,7 @@ export const RulesEditResponseRulesItemSetCacheControlActionParameters =
   }) as any as S.Schema<RulesEditResponseRulesItemSetCacheControlActionParameters>;
 
 export type RulesEditResponseRulesItemSetCacheControlCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesEditResponseRulesItemSetCacheControlCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -62852,7 +62771,7 @@ export const RulesEditResponseRulesItemSetCacheControlExposedCredentialCheck =
   }) as any as S.Schema<RulesEditResponseRulesItemSetCacheControlExposedCredentialCheck>;
 
 export type RulesEditResponseRulesItemSetCacheControlRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesEditResponseRulesItemSetCacheControlRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -62968,7 +62887,7 @@ export const RulesEditResponseRulesItemSetCacheSettingsRuleAction =
   /*@__PURE__*/ S.String;
 
 export type RulesEditResponseRulesItemSetCacheSettingsRuleActionParametersAdditionalCacheablePortsList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const RulesEditResponseRulesItemSetCacheSettingsRuleActionParametersAdditionalCacheablePortsList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -62997,14 +62916,14 @@ export const RulesEditResponseRulesItemSetCacheSettingsRuleActionParametersBrows
   }) as any as S.Schema<RulesEditResponseRulesItemSetCacheSettingsRuleActionParametersBrowserTtl>;
 
 export type RulesEditResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookieCheckPresenceList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesEditResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookieCheckPresenceList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<RulesEditResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookieCheckPresenceList>;
 
 export type RulesEditResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookieIncludeList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesEditResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookieIncludeList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -63034,14 +62953,14 @@ export const RulesEditResponseRulesItemSetCacheSettingsRuleActionParametersCache
   }) as any as S.Schema<RulesEditResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookie>;
 
 export type RulesEditResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderCheckPresenceList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesEditResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderCheckPresenceList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<RulesEditResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderCheckPresenceList>;
 
 export type RulesEditResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderContainsValueList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesEditResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderContainsValueList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -63060,7 +62979,7 @@ export const RulesEditResponseRulesItemSetCacheSettingsRuleActionParametersCache
   ) as any as S.Schema<RulesEditResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderContainsMap>;
 
 export type RulesEditResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderIncludeList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesEditResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderIncludeList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -63112,7 +63031,7 @@ export const RulesEditResponseRulesItemSetCacheSettingsRuleActionParametersCache
   }) as any as S.Schema<RulesEditResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHost>;
 
 export type RulesEditResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringExcludeListList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesEditResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringExcludeListList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -63138,7 +63057,7 @@ export const RulesEditResponseRulesItemSetCacheSettingsRuleActionParametersCache
   }) as any as S.Schema<RulesEditResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringExclude>;
 
 export type RulesEditResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringIncludeListList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesEditResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringIncludeListList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -63339,7 +63258,7 @@ export const RulesEditResponseRulesItemSetCacheSettingsRuleActionParametersEdgeT
   }) as any as S.Schema<RulesEditResponseRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlItem>;
 
 export type RulesEditResponseRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlList =
-  ReadonlyArray<RulesEditResponseRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlItem>;
+  Array<RulesEditResponseRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlItem>;
 export const RulesEditResponseRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlList =
   /*@__PURE__*/ S.Array(
     RulesEditResponseRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlItem,
@@ -63425,14 +63344,14 @@ export const RulesEditResponseRulesItemSetCacheSettingsRuleActionParametersVaryH
   /*@__PURE__*/ S.String;
 
 export type RulesEditResponseRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValueLanguagesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesEditResponseRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValueLanguagesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<RulesEditResponseRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValueLanguagesList>;
 
 export type RulesEditResponseRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValueMediaTypesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesEditResponseRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValueMediaTypesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -63596,7 +63515,7 @@ export const RulesEditResponseRulesItemSetCacheSettingsRuleActionParameters =
   }) as any as S.Schema<RulesEditResponseRulesItemSetCacheSettingsRuleActionParameters>;
 
 export type RulesEditResponseRulesItemSetCacheSettingsRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesEditResponseRulesItemSetCacheSettingsRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -63620,7 +63539,7 @@ export const RulesEditResponseRulesItemSetCacheSettingsRuleExposedCredentialChec
   }) as any as S.Schema<RulesEditResponseRulesItemSetCacheSettingsRuleExposedCredentialCheck>;
 
 export type RulesEditResponseRulesItemSetCacheSettingsRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesEditResponseRulesItemSetCacheSettingsRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -63742,7 +63661,7 @@ export const RulesEditResponseRulesItemSetCacheTagsActionParametersAddCacheTagsV
   /*@__PURE__*/ S.String;
 
 export type RulesEditResponseRulesItemSetCacheTagsActionParametersAddCacheTagsValuesValuesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesEditResponseRulesItemSetCacheTagsActionParametersAddCacheTagsValuesValuesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -63796,7 +63715,7 @@ export const RulesEditResponseRulesItemSetCacheTagsActionParametersRemoveCacheTa
   /*@__PURE__*/ S.String;
 
 export type RulesEditResponseRulesItemSetCacheTagsActionParametersRemoveCacheTagsValuesValuesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesEditResponseRulesItemSetCacheTagsActionParametersRemoveCacheTagsValuesValuesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -63850,7 +63769,7 @@ export const RulesEditResponseRulesItemSetCacheTagsActionParametersSetCacheTagsV
   /*@__PURE__*/ S.String;
 
 export type RulesEditResponseRulesItemSetCacheTagsActionParametersSetCacheTagsValuesValuesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesEditResponseRulesItemSetCacheTagsActionParametersSetCacheTagsValuesValuesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -63940,7 +63859,7 @@ export const RulesEditResponseRulesItemSetCacheTagsActionParameters =
   }) as any as S.Schema<RulesEditResponseRulesItemSetCacheTagsActionParameters>;
 
 export type RulesEditResponseRulesItemSetCacheTagsCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesEditResponseRulesItemSetCacheTagsCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -63963,7 +63882,7 @@ export const RulesEditResponseRulesItemSetCacheTagsExposedCredentialCheck =
   }) as any as S.Schema<RulesEditResponseRulesItemSetCacheTagsExposedCredentialCheck>;
 
 export type RulesEditResponseRulesItemSetCacheTagsRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesEditResponseRulesItemSetCacheTagsRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -64236,7 +64155,7 @@ export const RulesEditResponseRulesItemSetConfigRuleActionParameters =
   }) as any as S.Schema<RulesEditResponseRulesItemSetConfigRuleActionParameters>;
 
 export type RulesEditResponseRulesItemSetConfigRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesEditResponseRulesItemSetConfigRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -64259,7 +64178,7 @@ export const RulesEditResponseRulesItemSetConfigRuleExposedCredentialCheck =
   }) as any as S.Schema<RulesEditResponseRulesItemSetConfigRuleExposedCredentialCheck>;
 
 export type RulesEditResponseRulesItemSetConfigRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesEditResponseRulesItemSetConfigRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -64405,7 +64324,7 @@ export const RulesEditResponseRulesItemSkipRuleActionParametersPhasesItem =
   /*@__PURE__*/ S.String;
 
 export type RulesEditResponseRulesItemSkipRuleActionParametersPhasesList =
-  ReadonlyArray<RulesEditResponseRulesItemSkipRuleActionParametersPhasesItem>;
+  Array<RulesEditResponseRulesItemSkipRuleActionParametersPhasesItem>;
 export const RulesEditResponseRulesItemSkipRuleActionParametersPhasesList =
   /*@__PURE__*/ S.Array(
     RulesEditResponseRulesItemSkipRuleActionParametersPhasesItem,
@@ -64423,14 +64342,14 @@ export const RulesEditResponseRulesItemSkipRuleActionParametersProductsItem =
   /*@__PURE__*/ S.String;
 
 export type RulesEditResponseRulesItemSkipRuleActionParametersProductsList =
-  ReadonlyArray<RulesEditResponseRulesItemSkipRuleActionParametersProductsItem>;
+  Array<RulesEditResponseRulesItemSkipRuleActionParametersProductsItem>;
 export const RulesEditResponseRulesItemSkipRuleActionParametersProductsList =
   /*@__PURE__*/ S.Array(
     RulesEditResponseRulesItemSkipRuleActionParametersProductsItem,
   ) as any as S.Schema<RulesEditResponseRulesItemSkipRuleActionParametersProductsList>;
 
 export type RulesEditResponseRulesItemSkipRuleActionParametersRulesValueList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesEditResponseRulesItemSkipRuleActionParametersRulesValueList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -64453,7 +64372,7 @@ export const RulesEditResponseRulesItemSkipRuleActionParametersRuleset =
   /*@__PURE__*/ S.String;
 
 export type RulesEditResponseRulesItemSkipRuleActionParametersRulesetsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesEditResponseRulesItemSkipRuleActionParametersRulesetsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -64499,8 +64418,7 @@ export const RulesEditResponseRulesItemSkipRuleActionParameters =
     identifier: "RulesEditResponseRulesItemSkipRuleActionParameters",
   }) as any as S.Schema<RulesEditResponseRulesItemSkipRuleActionParameters>;
 
-export type RulesEditResponseRulesItemSkipRuleCategoriesList =
-  ReadonlyArray<string>;
+export type RulesEditResponseRulesItemSkipRuleCategoriesList = Array<string>;
 export const RulesEditResponseRulesItemSkipRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -64523,7 +64441,7 @@ export const RulesEditResponseRulesItemSkipRuleExposedCredentialCheck =
   }) as any as S.Schema<RulesEditResponseRulesItemSkipRuleExposedCredentialCheck>;
 
 export type RulesEditResponseRulesItemSkipRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesEditResponseRulesItemSkipRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -64650,7 +64568,7 @@ export const RulesEditResponseRulesItemTransformResponseHTMLActionParameters =
   }) as any as S.Schema<RulesEditResponseRulesItemTransformResponseHTMLActionParameters>;
 
 export type RulesEditResponseRulesItemTransformResponseHTMLCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesEditResponseRulesItemTransformResponseHTMLCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -64674,7 +64592,7 @@ export const RulesEditResponseRulesItemTransformResponseHTMLExposedCredentialChe
   }) as any as S.Schema<RulesEditResponseRulesItemTransformResponseHTMLExposedCredentialCheck>;
 
 export type RulesEditResponseRulesItemTransformResponseHTMLRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesEditResponseRulesItemTransformResponseHTMLRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -65049,8 +64967,7 @@ export const RulesEditResponseRulesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "RulesEditResponseRulesItem",
 }) as any as S.Schema<RulesEditResponseRulesItem>;
 
-export type RulesEditResponseRulesList =
-  ReadonlyArray<RulesEditResponseRulesItem>;
+export type RulesEditResponseRulesList = Array<RulesEditResponseRulesItem>;
 export const RulesEditResponseRulesList = /*@__PURE__*/ S.Array(
   RulesEditResponseRulesItem,
 ) as any as S.Schema<RulesEditResponseRulesList>;
@@ -65155,8 +65072,7 @@ export const PhasesUpdateRequestRulesItemBlockRuleActionParameters =
     identifier: "PhasesUpdateRequestRulesItemBlockRuleActionParameters",
   }) as any as S.Schema<PhasesUpdateRequestRulesItemBlockRuleActionParameters>;
 
-export type PhasesUpdateRequestRulesItemBlockRuleCategoriesList =
-  ReadonlyArray<string>;
+export type PhasesUpdateRequestRulesItemBlockRuleCategoriesList = Array<string>;
 export const PhasesUpdateRequestRulesItemBlockRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -65192,7 +65108,7 @@ export const PhasesUpdateRequestRulesItemBlockRuleLogging =
   }) as any as S.Schema<PhasesUpdateRequestRulesItemBlockRuleLogging>;
 
 export type PhasesUpdateRequestRulesItemBlockRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesUpdateRequestRulesItemBlockRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -65306,8 +65222,7 @@ export type PhasesUpdateRequestRulesItemChallengeAction = "challenge";
 export const PhasesUpdateRequestRulesItemChallengeAction =
   /*@__PURE__*/ S.String;
 
-export type PhasesUpdateRequestRulesItemChallengeCategoriesList =
-  ReadonlyArray<string>;
+export type PhasesUpdateRequestRulesItemChallengeCategoriesList = Array<string>;
 export const PhasesUpdateRequestRulesItemChallengeCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -65330,7 +65245,7 @@ export const PhasesUpdateRequestRulesItemChallengeExposedCredentialCheck =
   }) as any as S.Schema<PhasesUpdateRequestRulesItemChallengeExposedCredentialCheck>;
 
 export type PhasesUpdateRequestRulesItemChallengeRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesUpdateRequestRulesItemChallengeRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -65465,7 +65380,7 @@ export const PhasesUpdateRequestRulesItemCompressResponseRuleActionParametersAlg
   }) as any as S.Schema<PhasesUpdateRequestRulesItemCompressResponseRuleActionParametersAlgorithmsItem>;
 
 export type PhasesUpdateRequestRulesItemCompressResponseRuleActionParametersAlgorithmsList =
-  ReadonlyArray<PhasesUpdateRequestRulesItemCompressResponseRuleActionParametersAlgorithmsItem>;
+  Array<PhasesUpdateRequestRulesItemCompressResponseRuleActionParametersAlgorithmsItem>;
 export const PhasesUpdateRequestRulesItemCompressResponseRuleActionParametersAlgorithmsList =
   /*@__PURE__*/ S.Array(
     PhasesUpdateRequestRulesItemCompressResponseRuleActionParametersAlgorithmsItem,
@@ -65487,7 +65402,7 @@ export const PhasesUpdateRequestRulesItemCompressResponseRuleActionParameters =
   }) as any as S.Schema<PhasesUpdateRequestRulesItemCompressResponseRuleActionParameters>;
 
 export type PhasesUpdateRequestRulesItemCompressResponseRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesUpdateRequestRulesItemCompressResponseRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -65511,7 +65426,7 @@ export const PhasesUpdateRequestRulesItemCompressResponseRuleExposedCredentialCh
   }) as any as S.Schema<PhasesUpdateRequestRulesItemCompressResponseRuleExposedCredentialCheck>;
 
 export type PhasesUpdateRequestRulesItemCompressResponseRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesUpdateRequestRulesItemCompressResponseRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -65632,7 +65547,7 @@ export const PhasesUpdateRequestRulesItemDDoSDynamicRuleAction =
   /*@__PURE__*/ S.String;
 
 export type PhasesUpdateRequestRulesItemDDoSDynamicRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesUpdateRequestRulesItemDDoSDynamicRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -65656,7 +65571,7 @@ export const PhasesUpdateRequestRulesItemDDoSDynamicRuleExposedCredentialCheck =
   }) as any as S.Schema<PhasesUpdateRequestRulesItemDDoSDynamicRuleExposedCredentialCheck>;
 
 export type PhasesUpdateRequestRulesItemDDoSDynamicRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesUpdateRequestRulesItemDDoSDynamicRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -65817,7 +65732,7 @@ export const PhasesUpdateRequestRulesItemExecuteRuleActionParametersOverridesCat
   }) as any as S.Schema<PhasesUpdateRequestRulesItemExecuteRuleActionParametersOverridesCategoriesItem>;
 
 export type PhasesUpdateRequestRulesItemExecuteRuleActionParametersOverridesCategoriesList =
-  ReadonlyArray<PhasesUpdateRequestRulesItemExecuteRuleActionParametersOverridesCategoriesItem>;
+  Array<PhasesUpdateRequestRulesItemExecuteRuleActionParametersOverridesCategoriesItem>;
 export const PhasesUpdateRequestRulesItemExecuteRuleActionParametersOverridesCategoriesList =
   /*@__PURE__*/ S.Array(
     PhasesUpdateRequestRulesItemExecuteRuleActionParametersOverridesCategoriesItem,
@@ -65861,7 +65776,7 @@ export const PhasesUpdateRequestRulesItemExecuteRuleActionParametersOverridesRul
   }) as any as S.Schema<PhasesUpdateRequestRulesItemExecuteRuleActionParametersOverridesRulesItem>;
 
 export type PhasesUpdateRequestRulesItemExecuteRuleActionParametersOverridesRulesList =
-  ReadonlyArray<PhasesUpdateRequestRulesItemExecuteRuleActionParametersOverridesRulesItem>;
+  Array<PhasesUpdateRequestRulesItemExecuteRuleActionParametersOverridesRulesItem>;
 export const PhasesUpdateRequestRulesItemExecuteRuleActionParametersOverridesRulesList =
   /*@__PURE__*/ S.Array(
     PhasesUpdateRequestRulesItemExecuteRuleActionParametersOverridesRulesItem,
@@ -65934,7 +65849,7 @@ export const PhasesUpdateRequestRulesItemExecuteRuleActionParameters =
   }) as any as S.Schema<PhasesUpdateRequestRulesItemExecuteRuleActionParameters>;
 
 export type PhasesUpdateRequestRulesItemExecuteRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesUpdateRequestRulesItemExecuteRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -65957,7 +65872,7 @@ export const PhasesUpdateRequestRulesItemExecuteRuleExposedCredentialCheck =
   }) as any as S.Schema<PhasesUpdateRequestRulesItemExecuteRuleExposedCredentialCheck>;
 
 export type PhasesUpdateRequestRulesItemExecuteRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesUpdateRequestRulesItemExecuteRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -66073,7 +65988,7 @@ export const PhasesUpdateRequestRulesItemForceConnectionCloseRuleAction =
   /*@__PURE__*/ S.String;
 
 export type PhasesUpdateRequestRulesItemForceConnectionCloseRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesUpdateRequestRulesItemForceConnectionCloseRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -66097,7 +66012,7 @@ export const PhasesUpdateRequestRulesItemForceConnectionCloseRuleExposedCredenti
   }) as any as S.Schema<PhasesUpdateRequestRulesItemForceConnectionCloseRuleExposedCredentialCheck>;
 
 export type PhasesUpdateRequestRulesItemForceConnectionCloseRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesUpdateRequestRulesItemForceConnectionCloseRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -66214,7 +66129,7 @@ export const PhasesUpdateRequestRulesItemJSChallengeAction =
   /*@__PURE__*/ S.String;
 
 export type PhasesUpdateRequestRulesItemJSChallengeCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesUpdateRequestRulesItemJSChallengeCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -66237,7 +66152,7 @@ export const PhasesUpdateRequestRulesItemJSChallengeExposedCredentialCheck =
   }) as any as S.Schema<PhasesUpdateRequestRulesItemJSChallengeExposedCredentialCheck>;
 
 export type PhasesUpdateRequestRulesItemJSChallengeRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesUpdateRequestRulesItemJSChallengeRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -66346,8 +66261,7 @@ export const PhasesUpdateRequestRulesItemJSChallenge = /*@__PURE__*/ S.suspend(
 export type PhasesUpdateRequestRulesItemLogRuleAction = "log";
 export const PhasesUpdateRequestRulesItemLogRuleAction = /*@__PURE__*/ S.String;
 
-export type PhasesUpdateRequestRulesItemLogRuleCategoriesList =
-  ReadonlyArray<string>;
+export type PhasesUpdateRequestRulesItemLogRuleCategoriesList = Array<string>;
 export const PhasesUpdateRequestRulesItemLogRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -66370,7 +66284,7 @@ export const PhasesUpdateRequestRulesItemLogRuleExposedCredentialCheck =
   }) as any as S.Schema<PhasesUpdateRequestRulesItemLogRuleExposedCredentialCheck>;
 
 export type PhasesUpdateRequestRulesItemLogRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesUpdateRequestRulesItemLogRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -66493,7 +66407,7 @@ export const PhasesUpdateRequestRulesItemLogCustomFieldRuleActionParametersCooki
   }) as any as S.Schema<PhasesUpdateRequestRulesItemLogCustomFieldRuleActionParametersCookieFieldsItem>;
 
 export type PhasesUpdateRequestRulesItemLogCustomFieldRuleActionParametersCookieFieldsList =
-  ReadonlyArray<PhasesUpdateRequestRulesItemLogCustomFieldRuleActionParametersCookieFieldsItem>;
+  Array<PhasesUpdateRequestRulesItemLogCustomFieldRuleActionParametersCookieFieldsItem>;
 export const PhasesUpdateRequestRulesItemLogCustomFieldRuleActionParametersCookieFieldsList =
   /*@__PURE__*/ S.Array(
     PhasesUpdateRequestRulesItemLogCustomFieldRuleActionParametersCookieFieldsItem,
@@ -66519,7 +66433,7 @@ export const PhasesUpdateRequestRulesItemLogCustomFieldRuleActionParametersRawRe
   }) as any as S.Schema<PhasesUpdateRequestRulesItemLogCustomFieldRuleActionParametersRawResponseFieldsItem>;
 
 export type PhasesUpdateRequestRulesItemLogCustomFieldRuleActionParametersRawResponseFieldsList =
-  ReadonlyArray<PhasesUpdateRequestRulesItemLogCustomFieldRuleActionParametersRawResponseFieldsItem>;
+  Array<PhasesUpdateRequestRulesItemLogCustomFieldRuleActionParametersRawResponseFieldsItem>;
 export const PhasesUpdateRequestRulesItemLogCustomFieldRuleActionParametersRawResponseFieldsList =
   /*@__PURE__*/ S.Array(
     PhasesUpdateRequestRulesItemLogCustomFieldRuleActionParametersRawResponseFieldsItem,
@@ -66540,7 +66454,7 @@ export const PhasesUpdateRequestRulesItemLogCustomFieldRuleActionParametersReque
   }) as any as S.Schema<PhasesUpdateRequestRulesItemLogCustomFieldRuleActionParametersRequestFieldsItem>;
 
 export type PhasesUpdateRequestRulesItemLogCustomFieldRuleActionParametersRequestFieldsList =
-  ReadonlyArray<PhasesUpdateRequestRulesItemLogCustomFieldRuleActionParametersRequestFieldsItem>;
+  Array<PhasesUpdateRequestRulesItemLogCustomFieldRuleActionParametersRequestFieldsItem>;
 export const PhasesUpdateRequestRulesItemLogCustomFieldRuleActionParametersRequestFieldsList =
   /*@__PURE__*/ S.Array(
     PhasesUpdateRequestRulesItemLogCustomFieldRuleActionParametersRequestFieldsItem,
@@ -66566,7 +66480,7 @@ export const PhasesUpdateRequestRulesItemLogCustomFieldRuleActionParametersRespo
   }) as any as S.Schema<PhasesUpdateRequestRulesItemLogCustomFieldRuleActionParametersResponseFieldsItem>;
 
 export type PhasesUpdateRequestRulesItemLogCustomFieldRuleActionParametersResponseFieldsList =
-  ReadonlyArray<PhasesUpdateRequestRulesItemLogCustomFieldRuleActionParametersResponseFieldsItem>;
+  Array<PhasesUpdateRequestRulesItemLogCustomFieldRuleActionParametersResponseFieldsItem>;
 export const PhasesUpdateRequestRulesItemLogCustomFieldRuleActionParametersResponseFieldsList =
   /*@__PURE__*/ S.Array(
     PhasesUpdateRequestRulesItemLogCustomFieldRuleActionParametersResponseFieldsItem,
@@ -66587,7 +66501,7 @@ export const PhasesUpdateRequestRulesItemLogCustomFieldRuleActionParametersTrans
   }) as any as S.Schema<PhasesUpdateRequestRulesItemLogCustomFieldRuleActionParametersTransformedRequestFieldsItem>;
 
 export type PhasesUpdateRequestRulesItemLogCustomFieldRuleActionParametersTransformedRequestFieldsList =
-  ReadonlyArray<PhasesUpdateRequestRulesItemLogCustomFieldRuleActionParametersTransformedRequestFieldsItem>;
+  Array<PhasesUpdateRequestRulesItemLogCustomFieldRuleActionParametersTransformedRequestFieldsItem>;
 export const PhasesUpdateRequestRulesItemLogCustomFieldRuleActionParametersTransformedRequestFieldsList =
   /*@__PURE__*/ S.Array(
     PhasesUpdateRequestRulesItemLogCustomFieldRuleActionParametersTransformedRequestFieldsItem,
@@ -66640,7 +66554,7 @@ export const PhasesUpdateRequestRulesItemLogCustomFieldRuleActionParameters =
   }) as any as S.Schema<PhasesUpdateRequestRulesItemLogCustomFieldRuleActionParameters>;
 
 export type PhasesUpdateRequestRulesItemLogCustomFieldRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesUpdateRequestRulesItemLogCustomFieldRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -66664,7 +66578,7 @@ export const PhasesUpdateRequestRulesItemLogCustomFieldRuleExposedCredentialChec
   }) as any as S.Schema<PhasesUpdateRequestRulesItemLogCustomFieldRuleExposedCredentialCheck>;
 
 export type PhasesUpdateRequestRulesItemLogCustomFieldRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesUpdateRequestRulesItemLogCustomFieldRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -66782,7 +66696,7 @@ export const PhasesUpdateRequestRulesItemManagedChallengeRuleAction =
   /*@__PURE__*/ S.String;
 
 export type PhasesUpdateRequestRulesItemManagedChallengeRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesUpdateRequestRulesItemManagedChallengeRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -66806,7 +66720,7 @@ export const PhasesUpdateRequestRulesItemManagedChallengeRuleExposedCredentialCh
   }) as any as S.Schema<PhasesUpdateRequestRulesItemManagedChallengeRuleExposedCredentialCheck>;
 
 export type PhasesUpdateRequestRulesItemManagedChallengeRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesUpdateRequestRulesItemManagedChallengeRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -67017,7 +66931,7 @@ export const PhasesUpdateRequestRulesItemRedirectRuleActionParameters =
   }) as any as S.Schema<PhasesUpdateRequestRulesItemRedirectRuleActionParameters>;
 
 export type PhasesUpdateRequestRulesItemRedirectRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesUpdateRequestRulesItemRedirectRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -67041,7 +66955,7 @@ export const PhasesUpdateRequestRulesItemRedirectRuleExposedCredentialCheck =
   }) as any as S.Schema<PhasesUpdateRequestRulesItemRedirectRuleExposedCredentialCheck>;
 
 export type PhasesUpdateRequestRulesItemRedirectRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesUpdateRequestRulesItemRedirectRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -67426,7 +67340,7 @@ export const PhasesUpdateRequestRulesItemRewriteRuleActionParameters =
   }) as any as S.Schema<PhasesUpdateRequestRulesItemRewriteRuleActionParameters>;
 
 export type PhasesUpdateRequestRulesItemRewriteRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesUpdateRequestRulesItemRewriteRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -67449,7 +67363,7 @@ export const PhasesUpdateRequestRulesItemRewriteRuleExposedCredentialCheck =
   }) as any as S.Schema<PhasesUpdateRequestRulesItemRewriteRuleExposedCredentialCheck>;
 
 export type PhasesUpdateRequestRulesItemRewriteRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesUpdateRequestRulesItemRewriteRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -67613,8 +67527,7 @@ export const PhasesUpdateRequestRulesItemRouteRuleActionParameters =
     identifier: "PhasesUpdateRequestRulesItemRouteRuleActionParameters",
   }) as any as S.Schema<PhasesUpdateRequestRulesItemRouteRuleActionParameters>;
 
-export type PhasesUpdateRequestRulesItemRouteRuleCategoriesList =
-  ReadonlyArray<string>;
+export type PhasesUpdateRequestRulesItemRouteRuleCategoriesList = Array<string>;
 export const PhasesUpdateRequestRulesItemRouteRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -67637,7 +67550,7 @@ export const PhasesUpdateRequestRulesItemRouteRuleExposedCredentialCheck =
   }) as any as S.Schema<PhasesUpdateRequestRulesItemRouteRuleExposedCredentialCheck>;
 
 export type PhasesUpdateRequestRulesItemRouteRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesUpdateRequestRulesItemRouteRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -67764,8 +67677,7 @@ export const PhasesUpdateRequestRulesItemScoreRuleActionParameters =
     identifier: "PhasesUpdateRequestRulesItemScoreRuleActionParameters",
   }) as any as S.Schema<PhasesUpdateRequestRulesItemScoreRuleActionParameters>;
 
-export type PhasesUpdateRequestRulesItemScoreRuleCategoriesList =
-  ReadonlyArray<string>;
+export type PhasesUpdateRequestRulesItemScoreRuleCategoriesList = Array<string>;
 export const PhasesUpdateRequestRulesItemScoreRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -67788,7 +67700,7 @@ export const PhasesUpdateRequestRulesItemScoreRuleExposedCredentialCheck =
   }) as any as S.Schema<PhasesUpdateRequestRulesItemScoreRuleExposedCredentialCheck>;
 
 export type PhasesUpdateRequestRulesItemScoreRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesUpdateRequestRulesItemScoreRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -67996,7 +67908,7 @@ export const PhasesUpdateRequestRulesItemServeErrorRuleActionParameters =
   }) as any as S.Schema<PhasesUpdateRequestRulesItemServeErrorRuleActionParameters>;
 
 export type PhasesUpdateRequestRulesItemServeErrorRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesUpdateRequestRulesItemServeErrorRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -68020,7 +67932,7 @@ export const PhasesUpdateRequestRulesItemServeErrorRuleExposedCredentialCheck =
   }) as any as S.Schema<PhasesUpdateRequestRulesItemServeErrorRuleExposedCredentialCheck>;
 
 export type PhasesUpdateRequestRulesItemServeErrorRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesUpdateRequestRulesItemServeErrorRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -68445,7 +68357,7 @@ export const PhasesUpdateRequestRulesItemSetCacheControlActionParametersNoCacheS
   /*@__PURE__*/ S.String;
 
 export type PhasesUpdateRequestRulesItemSetCacheControlActionParametersNoCacheSetDirectiveQualifiersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesUpdateRequestRulesItemSetCacheControlActionParametersNoCacheSetDirectiveQualifiersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -68684,7 +68596,7 @@ export const PhasesUpdateRequestRulesItemSetCacheControlActionParametersPrivateS
   /*@__PURE__*/ S.String;
 
 export type PhasesUpdateRequestRulesItemSetCacheControlActionParametersPrivateSetDirectiveQualifiersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesUpdateRequestRulesItemSetCacheControlActionParametersPrivateSetDirectiveQualifiersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -69253,7 +69165,7 @@ export const PhasesUpdateRequestRulesItemSetCacheControlActionParameters =
   }) as any as S.Schema<PhasesUpdateRequestRulesItemSetCacheControlActionParameters>;
 
 export type PhasesUpdateRequestRulesItemSetCacheControlCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesUpdateRequestRulesItemSetCacheControlCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -69277,7 +69189,7 @@ export const PhasesUpdateRequestRulesItemSetCacheControlExposedCredentialCheck =
   }) as any as S.Schema<PhasesUpdateRequestRulesItemSetCacheControlExposedCredentialCheck>;
 
 export type PhasesUpdateRequestRulesItemSetCacheControlRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesUpdateRequestRulesItemSetCacheControlRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -69395,7 +69307,7 @@ export const PhasesUpdateRequestRulesItemSetCacheSettingsRuleAction =
   /*@__PURE__*/ S.String;
 
 export type PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersAdditionalCacheablePortsList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersAdditionalCacheablePortsList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -69426,14 +69338,14 @@ export const PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersBro
   }) as any as S.Schema<PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersBrowserTtl>;
 
 export type PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookieCheckPresenceList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookieCheckPresenceList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookieCheckPresenceList>;
 
 export type PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookieIncludeList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookieIncludeList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -69463,14 +69375,14 @@ export const PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCac
   }) as any as S.Schema<PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookie>;
 
 export type PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderCheckPresenceList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderCheckPresenceList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderCheckPresenceList>;
 
 export type PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderContainsValueList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderContainsValueList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -69489,7 +69401,7 @@ export const PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCac
   ) as any as S.Schema<PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderContainsMap>;
 
 export type PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderIncludeList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderIncludeList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -69541,7 +69453,7 @@ export const PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCac
   }) as any as S.Schema<PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHost>;
 
 export type PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringExcludeListList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringExcludeListList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -69567,7 +69479,7 @@ export const PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCac
   }) as any as S.Schema<PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringExclude>;
 
 export type PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringIncludeListList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringIncludeListList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -69768,7 +69680,7 @@ export const PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersEdg
   }) as any as S.Schema<PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlItem>;
 
 export type PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlList =
-  ReadonlyArray<PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlItem>;
+  Array<PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlItem>;
 export const PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlList =
   /*@__PURE__*/ S.Array(
     PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlItem,
@@ -69858,14 +69770,14 @@ export const PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersVar
   /*@__PURE__*/ S.String;
 
 export type PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValueLanguagesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValueLanguagesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValueLanguagesList>;
 
 export type PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValueMediaTypesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValueMediaTypesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -70031,7 +69943,7 @@ export const PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParameters =
   }) as any as S.Schema<PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParameters>;
 
 export type PhasesUpdateRequestRulesItemSetCacheSettingsRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesUpdateRequestRulesItemSetCacheSettingsRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -70055,7 +69967,7 @@ export const PhasesUpdateRequestRulesItemSetCacheSettingsRuleExposedCredentialCh
   }) as any as S.Schema<PhasesUpdateRequestRulesItemSetCacheSettingsRuleExposedCredentialCheck>;
 
 export type PhasesUpdateRequestRulesItemSetCacheSettingsRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesUpdateRequestRulesItemSetCacheSettingsRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -70181,7 +70093,7 @@ export const PhasesUpdateRequestRulesItemSetCacheTagsActionParametersAddCacheTag
   /*@__PURE__*/ S.String;
 
 export type PhasesUpdateRequestRulesItemSetCacheTagsActionParametersAddCacheTagsValuesValuesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesUpdateRequestRulesItemSetCacheTagsActionParametersAddCacheTagsValuesValuesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -70239,7 +70151,7 @@ export const PhasesUpdateRequestRulesItemSetCacheTagsActionParametersRemoveCache
   /*@__PURE__*/ S.String;
 
 export type PhasesUpdateRequestRulesItemSetCacheTagsActionParametersRemoveCacheTagsValuesValuesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesUpdateRequestRulesItemSetCacheTagsActionParametersRemoveCacheTagsValuesValuesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -70297,7 +70209,7 @@ export const PhasesUpdateRequestRulesItemSetCacheTagsActionParametersSetCacheTag
   /*@__PURE__*/ S.String;
 
 export type PhasesUpdateRequestRulesItemSetCacheTagsActionParametersSetCacheTagsValuesValuesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesUpdateRequestRulesItemSetCacheTagsActionParametersSetCacheTagsValuesValuesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -70397,7 +70309,7 @@ export const PhasesUpdateRequestRulesItemSetCacheTagsActionParameters =
   }) as any as S.Schema<PhasesUpdateRequestRulesItemSetCacheTagsActionParameters>;
 
 export type PhasesUpdateRequestRulesItemSetCacheTagsCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesUpdateRequestRulesItemSetCacheTagsCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -70421,7 +70333,7 @@ export const PhasesUpdateRequestRulesItemSetCacheTagsExposedCredentialCheck =
   }) as any as S.Schema<PhasesUpdateRequestRulesItemSetCacheTagsExposedCredentialCheck>;
 
 export type PhasesUpdateRequestRulesItemSetCacheTagsRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesUpdateRequestRulesItemSetCacheTagsRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -70704,7 +70616,7 @@ export const PhasesUpdateRequestRulesItemSetConfigRuleActionParameters =
   }) as any as S.Schema<PhasesUpdateRequestRulesItemSetConfigRuleActionParameters>;
 
 export type PhasesUpdateRequestRulesItemSetConfigRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesUpdateRequestRulesItemSetConfigRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -70728,7 +70640,7 @@ export const PhasesUpdateRequestRulesItemSetConfigRuleExposedCredentialCheck =
   }) as any as S.Schema<PhasesUpdateRequestRulesItemSetConfigRuleExposedCredentialCheck>;
 
 export type PhasesUpdateRequestRulesItemSetConfigRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesUpdateRequestRulesItemSetConfigRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -70876,7 +70788,7 @@ export const PhasesUpdateRequestRulesItemSkipRuleActionParametersPhasesItem =
   /*@__PURE__*/ S.String;
 
 export type PhasesUpdateRequestRulesItemSkipRuleActionParametersPhasesList =
-  ReadonlyArray<
+  Array<
     | PhasesUpdateRequestRulesItemSkipRuleActionParametersPhasesItem
     | (string & {})
   >;
@@ -70897,7 +70809,7 @@ export const PhasesUpdateRequestRulesItemSkipRuleActionParametersProductsItem =
   /*@__PURE__*/ S.String;
 
 export type PhasesUpdateRequestRulesItemSkipRuleActionParametersProductsList =
-  ReadonlyArray<
+  Array<
     | PhasesUpdateRequestRulesItemSkipRuleActionParametersProductsItem
     | (string & {})
   >;
@@ -70907,7 +70819,7 @@ export const PhasesUpdateRequestRulesItemSkipRuleActionParametersProductsList =
   ) as any as S.Schema<PhasesUpdateRequestRulesItemSkipRuleActionParametersProductsList>;
 
 export type PhasesUpdateRequestRulesItemSkipRuleActionParametersRulesValueList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesUpdateRequestRulesItemSkipRuleActionParametersRulesValueList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -70930,7 +70842,7 @@ export const PhasesUpdateRequestRulesItemSkipRuleActionParametersRuleset =
   /*@__PURE__*/ S.String;
 
 export type PhasesUpdateRequestRulesItemSkipRuleActionParametersRulesetsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesUpdateRequestRulesItemSkipRuleActionParametersRulesetsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -70980,8 +70892,7 @@ export const PhasesUpdateRequestRulesItemSkipRuleActionParameters =
     identifier: "PhasesUpdateRequestRulesItemSkipRuleActionParameters",
   }) as any as S.Schema<PhasesUpdateRequestRulesItemSkipRuleActionParameters>;
 
-export type PhasesUpdateRequestRulesItemSkipRuleCategoriesList =
-  ReadonlyArray<string>;
+export type PhasesUpdateRequestRulesItemSkipRuleCategoriesList = Array<string>;
 export const PhasesUpdateRequestRulesItemSkipRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -71004,7 +70915,7 @@ export const PhasesUpdateRequestRulesItemSkipRuleExposedCredentialCheck =
   }) as any as S.Schema<PhasesUpdateRequestRulesItemSkipRuleExposedCredentialCheck>;
 
 export type PhasesUpdateRequestRulesItemSkipRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesUpdateRequestRulesItemSkipRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -71134,7 +71045,7 @@ export const PhasesUpdateRequestRulesItemTransformResponseHTMLActionParameters =
   }) as any as S.Schema<PhasesUpdateRequestRulesItemTransformResponseHTMLActionParameters>;
 
 export type PhasesUpdateRequestRulesItemTransformResponseHTMLCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesUpdateRequestRulesItemTransformResponseHTMLCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -71158,7 +71069,7 @@ export const PhasesUpdateRequestRulesItemTransformResponseHTMLExposedCredentialC
   }) as any as S.Schema<PhasesUpdateRequestRulesItemTransformResponseHTMLExposedCredentialCheck>;
 
 export type PhasesUpdateRequestRulesItemTransformResponseHTMLRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesUpdateRequestRulesItemTransformResponseHTMLRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -71558,8 +71469,7 @@ export const PhasesUpdateRequestRulesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "PhasesUpdateRequestRulesItem",
 }) as any as S.Schema<PhasesUpdateRequestRulesItem>;
 
-export type PhasesUpdateRequestRulesList =
-  ReadonlyArray<PhasesUpdateRequestRulesItem>;
+export type PhasesUpdateRequestRulesList = Array<PhasesUpdateRequestRulesItem>;
 export const PhasesUpdateRequestRulesList = /*@__PURE__*/ S.Array(
   PhasesUpdateRequestRulesItem,
 ) as any as S.Schema<PhasesUpdateRequestRulesList>;
@@ -71666,7 +71576,7 @@ export const PhasesUpdateResponseRulesItemBlockRuleActionParameters =
   }) as any as S.Schema<PhasesUpdateResponseRulesItemBlockRuleActionParameters>;
 
 export type PhasesUpdateResponseRulesItemBlockRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesUpdateResponseRulesItemBlockRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -71702,7 +71612,7 @@ export const PhasesUpdateResponseRulesItemBlockRuleLogging =
   }) as any as S.Schema<PhasesUpdateResponseRulesItemBlockRuleLogging>;
 
 export type PhasesUpdateResponseRulesItemBlockRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesUpdateResponseRulesItemBlockRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -71817,7 +71727,7 @@ export const PhasesUpdateResponseRulesItemChallengeAction =
   /*@__PURE__*/ S.String;
 
 export type PhasesUpdateResponseRulesItemChallengeCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesUpdateResponseRulesItemChallengeCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -71840,7 +71750,7 @@ export const PhasesUpdateResponseRulesItemChallengeExposedCredentialCheck =
   }) as any as S.Schema<PhasesUpdateResponseRulesItemChallengeExposedCredentialCheck>;
 
 export type PhasesUpdateResponseRulesItemChallengeRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesUpdateResponseRulesItemChallengeRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -71973,7 +71883,7 @@ export const PhasesUpdateResponseRulesItemCompressResponseRuleActionParametersAl
   }) as any as S.Schema<PhasesUpdateResponseRulesItemCompressResponseRuleActionParametersAlgorithmsItem>;
 
 export type PhasesUpdateResponseRulesItemCompressResponseRuleActionParametersAlgorithmsList =
-  ReadonlyArray<PhasesUpdateResponseRulesItemCompressResponseRuleActionParametersAlgorithmsItem>;
+  Array<PhasesUpdateResponseRulesItemCompressResponseRuleActionParametersAlgorithmsItem>;
 export const PhasesUpdateResponseRulesItemCompressResponseRuleActionParametersAlgorithmsList =
   /*@__PURE__*/ S.Array(
     PhasesUpdateResponseRulesItemCompressResponseRuleActionParametersAlgorithmsItem,
@@ -71995,7 +71905,7 @@ export const PhasesUpdateResponseRulesItemCompressResponseRuleActionParameters =
   }) as any as S.Schema<PhasesUpdateResponseRulesItemCompressResponseRuleActionParameters>;
 
 export type PhasesUpdateResponseRulesItemCompressResponseRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesUpdateResponseRulesItemCompressResponseRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -72019,7 +71929,7 @@ export const PhasesUpdateResponseRulesItemCompressResponseRuleExposedCredentialC
   }) as any as S.Schema<PhasesUpdateResponseRulesItemCompressResponseRuleExposedCredentialCheck>;
 
 export type PhasesUpdateResponseRulesItemCompressResponseRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesUpdateResponseRulesItemCompressResponseRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -72138,7 +72048,7 @@ export const PhasesUpdateResponseRulesItemDDoSDynamicRuleAction =
   /*@__PURE__*/ S.String;
 
 export type PhasesUpdateResponseRulesItemDDoSDynamicRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesUpdateResponseRulesItemDDoSDynamicRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -72162,7 +72072,7 @@ export const PhasesUpdateResponseRulesItemDDoSDynamicRuleExposedCredentialCheck 
   }) as any as S.Schema<PhasesUpdateResponseRulesItemDDoSDynamicRuleExposedCredentialCheck>;
 
 export type PhasesUpdateResponseRulesItemDDoSDynamicRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesUpdateResponseRulesItemDDoSDynamicRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -72321,7 +72231,7 @@ export const PhasesUpdateResponseRulesItemExecuteRuleActionParametersOverridesCa
   }) as any as S.Schema<PhasesUpdateResponseRulesItemExecuteRuleActionParametersOverridesCategoriesItem>;
 
 export type PhasesUpdateResponseRulesItemExecuteRuleActionParametersOverridesCategoriesList =
-  ReadonlyArray<PhasesUpdateResponseRulesItemExecuteRuleActionParametersOverridesCategoriesItem>;
+  Array<PhasesUpdateResponseRulesItemExecuteRuleActionParametersOverridesCategoriesItem>;
 export const PhasesUpdateResponseRulesItemExecuteRuleActionParametersOverridesCategoriesList =
   /*@__PURE__*/ S.Array(
     PhasesUpdateResponseRulesItemExecuteRuleActionParametersOverridesCategoriesItem,
@@ -72363,7 +72273,7 @@ export const PhasesUpdateResponseRulesItemExecuteRuleActionParametersOverridesRu
   }) as any as S.Schema<PhasesUpdateResponseRulesItemExecuteRuleActionParametersOverridesRulesItem>;
 
 export type PhasesUpdateResponseRulesItemExecuteRuleActionParametersOverridesRulesList =
-  ReadonlyArray<PhasesUpdateResponseRulesItemExecuteRuleActionParametersOverridesRulesItem>;
+  Array<PhasesUpdateResponseRulesItemExecuteRuleActionParametersOverridesRulesItem>;
 export const PhasesUpdateResponseRulesItemExecuteRuleActionParametersOverridesRulesList =
   /*@__PURE__*/ S.Array(
     PhasesUpdateResponseRulesItemExecuteRuleActionParametersOverridesRulesItem,
@@ -72434,7 +72344,7 @@ export const PhasesUpdateResponseRulesItemExecuteRuleActionParameters =
   }) as any as S.Schema<PhasesUpdateResponseRulesItemExecuteRuleActionParameters>;
 
 export type PhasesUpdateResponseRulesItemExecuteRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesUpdateResponseRulesItemExecuteRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -72458,7 +72368,7 @@ export const PhasesUpdateResponseRulesItemExecuteRuleExposedCredentialCheck =
   }) as any as S.Schema<PhasesUpdateResponseRulesItemExecuteRuleExposedCredentialCheck>;
 
 export type PhasesUpdateResponseRulesItemExecuteRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesUpdateResponseRulesItemExecuteRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -72574,7 +72484,7 @@ export const PhasesUpdateResponseRulesItemForceConnectionCloseRuleAction =
   /*@__PURE__*/ S.String;
 
 export type PhasesUpdateResponseRulesItemForceConnectionCloseRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesUpdateResponseRulesItemForceConnectionCloseRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -72598,7 +72508,7 @@ export const PhasesUpdateResponseRulesItemForceConnectionCloseRuleExposedCredent
   }) as any as S.Schema<PhasesUpdateResponseRulesItemForceConnectionCloseRuleExposedCredentialCheck>;
 
 export type PhasesUpdateResponseRulesItemForceConnectionCloseRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesUpdateResponseRulesItemForceConnectionCloseRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -72714,7 +72624,7 @@ export const PhasesUpdateResponseRulesItemJSChallengeAction =
   /*@__PURE__*/ S.String;
 
 export type PhasesUpdateResponseRulesItemJSChallengeCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesUpdateResponseRulesItemJSChallengeCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -72738,7 +72648,7 @@ export const PhasesUpdateResponseRulesItemJSChallengeExposedCredentialCheck =
   }) as any as S.Schema<PhasesUpdateResponseRulesItemJSChallengeExposedCredentialCheck>;
 
 export type PhasesUpdateResponseRulesItemJSChallengeRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesUpdateResponseRulesItemJSChallengeRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -72848,8 +72758,7 @@ export type PhasesUpdateResponseRulesItemLogRuleAction = "log";
 export const PhasesUpdateResponseRulesItemLogRuleAction =
   /*@__PURE__*/ S.String;
 
-export type PhasesUpdateResponseRulesItemLogRuleCategoriesList =
-  ReadonlyArray<string>;
+export type PhasesUpdateResponseRulesItemLogRuleCategoriesList = Array<string>;
 export const PhasesUpdateResponseRulesItemLogRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -72872,7 +72781,7 @@ export const PhasesUpdateResponseRulesItemLogRuleExposedCredentialCheck =
   }) as any as S.Schema<PhasesUpdateResponseRulesItemLogRuleExposedCredentialCheck>;
 
 export type PhasesUpdateResponseRulesItemLogRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesUpdateResponseRulesItemLogRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -72998,7 +72907,7 @@ export const PhasesUpdateResponseRulesItemLogCustomFieldRuleActionParametersCook
   }) as any as S.Schema<PhasesUpdateResponseRulesItemLogCustomFieldRuleActionParametersCookieFieldsItem>;
 
 export type PhasesUpdateResponseRulesItemLogCustomFieldRuleActionParametersCookieFieldsList =
-  ReadonlyArray<PhasesUpdateResponseRulesItemLogCustomFieldRuleActionParametersCookieFieldsItem>;
+  Array<PhasesUpdateResponseRulesItemLogCustomFieldRuleActionParametersCookieFieldsItem>;
 export const PhasesUpdateResponseRulesItemLogCustomFieldRuleActionParametersCookieFieldsList =
   /*@__PURE__*/ S.Array(
     PhasesUpdateResponseRulesItemLogCustomFieldRuleActionParametersCookieFieldsItem,
@@ -73024,7 +72933,7 @@ export const PhasesUpdateResponseRulesItemLogCustomFieldRuleActionParametersRawR
   }) as any as S.Schema<PhasesUpdateResponseRulesItemLogCustomFieldRuleActionParametersRawResponseFieldsItem>;
 
 export type PhasesUpdateResponseRulesItemLogCustomFieldRuleActionParametersRawResponseFieldsList =
-  ReadonlyArray<PhasesUpdateResponseRulesItemLogCustomFieldRuleActionParametersRawResponseFieldsItem>;
+  Array<PhasesUpdateResponseRulesItemLogCustomFieldRuleActionParametersRawResponseFieldsItem>;
 export const PhasesUpdateResponseRulesItemLogCustomFieldRuleActionParametersRawResponseFieldsList =
   /*@__PURE__*/ S.Array(
     PhasesUpdateResponseRulesItemLogCustomFieldRuleActionParametersRawResponseFieldsItem,
@@ -73045,7 +72954,7 @@ export const PhasesUpdateResponseRulesItemLogCustomFieldRuleActionParametersRequ
   }) as any as S.Schema<PhasesUpdateResponseRulesItemLogCustomFieldRuleActionParametersRequestFieldsItem>;
 
 export type PhasesUpdateResponseRulesItemLogCustomFieldRuleActionParametersRequestFieldsList =
-  ReadonlyArray<PhasesUpdateResponseRulesItemLogCustomFieldRuleActionParametersRequestFieldsItem>;
+  Array<PhasesUpdateResponseRulesItemLogCustomFieldRuleActionParametersRequestFieldsItem>;
 export const PhasesUpdateResponseRulesItemLogCustomFieldRuleActionParametersRequestFieldsList =
   /*@__PURE__*/ S.Array(
     PhasesUpdateResponseRulesItemLogCustomFieldRuleActionParametersRequestFieldsItem,
@@ -73071,7 +72980,7 @@ export const PhasesUpdateResponseRulesItemLogCustomFieldRuleActionParametersResp
   }) as any as S.Schema<PhasesUpdateResponseRulesItemLogCustomFieldRuleActionParametersResponseFieldsItem>;
 
 export type PhasesUpdateResponseRulesItemLogCustomFieldRuleActionParametersResponseFieldsList =
-  ReadonlyArray<PhasesUpdateResponseRulesItemLogCustomFieldRuleActionParametersResponseFieldsItem>;
+  Array<PhasesUpdateResponseRulesItemLogCustomFieldRuleActionParametersResponseFieldsItem>;
 export const PhasesUpdateResponseRulesItemLogCustomFieldRuleActionParametersResponseFieldsList =
   /*@__PURE__*/ S.Array(
     PhasesUpdateResponseRulesItemLogCustomFieldRuleActionParametersResponseFieldsItem,
@@ -73092,7 +73001,7 @@ export const PhasesUpdateResponseRulesItemLogCustomFieldRuleActionParametersTran
   }) as any as S.Schema<PhasesUpdateResponseRulesItemLogCustomFieldRuleActionParametersTransformedRequestFieldsItem>;
 
 export type PhasesUpdateResponseRulesItemLogCustomFieldRuleActionParametersTransformedRequestFieldsList =
-  ReadonlyArray<PhasesUpdateResponseRulesItemLogCustomFieldRuleActionParametersTransformedRequestFieldsItem>;
+  Array<PhasesUpdateResponseRulesItemLogCustomFieldRuleActionParametersTransformedRequestFieldsItem>;
 export const PhasesUpdateResponseRulesItemLogCustomFieldRuleActionParametersTransformedRequestFieldsList =
   /*@__PURE__*/ S.Array(
     PhasesUpdateResponseRulesItemLogCustomFieldRuleActionParametersTransformedRequestFieldsItem,
@@ -73145,7 +73054,7 @@ export const PhasesUpdateResponseRulesItemLogCustomFieldRuleActionParameters =
   }) as any as S.Schema<PhasesUpdateResponseRulesItemLogCustomFieldRuleActionParameters>;
 
 export type PhasesUpdateResponseRulesItemLogCustomFieldRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesUpdateResponseRulesItemLogCustomFieldRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -73169,7 +73078,7 @@ export const PhasesUpdateResponseRulesItemLogCustomFieldRuleExposedCredentialChe
   }) as any as S.Schema<PhasesUpdateResponseRulesItemLogCustomFieldRuleExposedCredentialCheck>;
 
 export type PhasesUpdateResponseRulesItemLogCustomFieldRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesUpdateResponseRulesItemLogCustomFieldRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -73287,7 +73196,7 @@ export const PhasesUpdateResponseRulesItemManagedChallengeRuleAction =
   /*@__PURE__*/ S.String;
 
 export type PhasesUpdateResponseRulesItemManagedChallengeRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesUpdateResponseRulesItemManagedChallengeRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -73311,7 +73220,7 @@ export const PhasesUpdateResponseRulesItemManagedChallengeRuleExposedCredentialC
   }) as any as S.Schema<PhasesUpdateResponseRulesItemManagedChallengeRuleExposedCredentialCheck>;
 
 export type PhasesUpdateResponseRulesItemManagedChallengeRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesUpdateResponseRulesItemManagedChallengeRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -73518,7 +73427,7 @@ export const PhasesUpdateResponseRulesItemRedirectRuleActionParameters =
   }) as any as S.Schema<PhasesUpdateResponseRulesItemRedirectRuleActionParameters>;
 
 export type PhasesUpdateResponseRulesItemRedirectRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesUpdateResponseRulesItemRedirectRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -73542,7 +73451,7 @@ export const PhasesUpdateResponseRulesItemRedirectRuleExposedCredentialCheck =
   }) as any as S.Schema<PhasesUpdateResponseRulesItemRedirectRuleExposedCredentialCheck>;
 
 export type PhasesUpdateResponseRulesItemRedirectRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesUpdateResponseRulesItemRedirectRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -73912,7 +73821,7 @@ export const PhasesUpdateResponseRulesItemRewriteRuleActionParameters =
   }) as any as S.Schema<PhasesUpdateResponseRulesItemRewriteRuleActionParameters>;
 
 export type PhasesUpdateResponseRulesItemRewriteRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesUpdateResponseRulesItemRewriteRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -73936,7 +73845,7 @@ export const PhasesUpdateResponseRulesItemRewriteRuleExposedCredentialCheck =
   }) as any as S.Schema<PhasesUpdateResponseRulesItemRewriteRuleExposedCredentialCheck>;
 
 export type PhasesUpdateResponseRulesItemRewriteRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesUpdateResponseRulesItemRewriteRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -74103,7 +74012,7 @@ export const PhasesUpdateResponseRulesItemRouteRuleActionParameters =
   }) as any as S.Schema<PhasesUpdateResponseRulesItemRouteRuleActionParameters>;
 
 export type PhasesUpdateResponseRulesItemRouteRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesUpdateResponseRulesItemRouteRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -74126,7 +74035,7 @@ export const PhasesUpdateResponseRulesItemRouteRuleExposedCredentialCheck =
   }) as any as S.Schema<PhasesUpdateResponseRulesItemRouteRuleExposedCredentialCheck>;
 
 export type PhasesUpdateResponseRulesItemRouteRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesUpdateResponseRulesItemRouteRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -74254,7 +74163,7 @@ export const PhasesUpdateResponseRulesItemScoreRuleActionParameters =
   }) as any as S.Schema<PhasesUpdateResponseRulesItemScoreRuleActionParameters>;
 
 export type PhasesUpdateResponseRulesItemScoreRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesUpdateResponseRulesItemScoreRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -74277,7 +74186,7 @@ export const PhasesUpdateResponseRulesItemScoreRuleExposedCredentialCheck =
   }) as any as S.Schema<PhasesUpdateResponseRulesItemScoreRuleExposedCredentialCheck>;
 
 export type PhasesUpdateResponseRulesItemScoreRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesUpdateResponseRulesItemScoreRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -74479,7 +74388,7 @@ export const PhasesUpdateResponseRulesItemServeErrorRuleActionParameters =
   }) as any as S.Schema<PhasesUpdateResponseRulesItemServeErrorRuleActionParameters>;
 
 export type PhasesUpdateResponseRulesItemServeErrorRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesUpdateResponseRulesItemServeErrorRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -74503,7 +74412,7 @@ export const PhasesUpdateResponseRulesItemServeErrorRuleExposedCredentialCheck =
   }) as any as S.Schema<PhasesUpdateResponseRulesItemServeErrorRuleExposedCredentialCheck>;
 
 export type PhasesUpdateResponseRulesItemServeErrorRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesUpdateResponseRulesItemServeErrorRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -74904,7 +74813,7 @@ export const PhasesUpdateResponseRulesItemSetCacheControlActionParametersNoCache
   /*@__PURE__*/ S.String;
 
 export type PhasesUpdateResponseRulesItemSetCacheControlActionParametersNoCacheSetDirectiveQualifiersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesUpdateResponseRulesItemSetCacheControlActionParametersNoCacheSetDirectiveQualifiersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -75125,7 +75034,7 @@ export const PhasesUpdateResponseRulesItemSetCacheControlActionParametersPrivate
   /*@__PURE__*/ S.String;
 
 export type PhasesUpdateResponseRulesItemSetCacheControlActionParametersPrivateSetDirectiveQualifiersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesUpdateResponseRulesItemSetCacheControlActionParametersPrivateSetDirectiveQualifiersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -75658,7 +75567,7 @@ export const PhasesUpdateResponseRulesItemSetCacheControlActionParameters =
   }) as any as S.Schema<PhasesUpdateResponseRulesItemSetCacheControlActionParameters>;
 
 export type PhasesUpdateResponseRulesItemSetCacheControlCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesUpdateResponseRulesItemSetCacheControlCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -75682,7 +75591,7 @@ export const PhasesUpdateResponseRulesItemSetCacheControlExposedCredentialCheck 
   }) as any as S.Schema<PhasesUpdateResponseRulesItemSetCacheControlExposedCredentialCheck>;
 
 export type PhasesUpdateResponseRulesItemSetCacheControlRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesUpdateResponseRulesItemSetCacheControlRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -75800,7 +75709,7 @@ export const PhasesUpdateResponseRulesItemSetCacheSettingsRuleAction =
   /*@__PURE__*/ S.String;
 
 export type PhasesUpdateResponseRulesItemSetCacheSettingsRuleActionParametersAdditionalCacheablePortsList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const PhasesUpdateResponseRulesItemSetCacheSettingsRuleActionParametersAdditionalCacheablePortsList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -75829,14 +75738,14 @@ export const PhasesUpdateResponseRulesItemSetCacheSettingsRuleActionParametersBr
   }) as any as S.Schema<PhasesUpdateResponseRulesItemSetCacheSettingsRuleActionParametersBrowserTtl>;
 
 export type PhasesUpdateResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookieCheckPresenceList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesUpdateResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookieCheckPresenceList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PhasesUpdateResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookieCheckPresenceList>;
 
 export type PhasesUpdateResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookieIncludeList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesUpdateResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookieIncludeList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -75866,14 +75775,14 @@ export const PhasesUpdateResponseRulesItemSetCacheSettingsRuleActionParametersCa
   }) as any as S.Schema<PhasesUpdateResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookie>;
 
 export type PhasesUpdateResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderCheckPresenceList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesUpdateResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderCheckPresenceList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PhasesUpdateResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderCheckPresenceList>;
 
 export type PhasesUpdateResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderContainsValueList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesUpdateResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderContainsValueList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -75892,7 +75801,7 @@ export const PhasesUpdateResponseRulesItemSetCacheSettingsRuleActionParametersCa
   ) as any as S.Schema<PhasesUpdateResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderContainsMap>;
 
 export type PhasesUpdateResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderIncludeList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesUpdateResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderIncludeList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -75944,7 +75853,7 @@ export const PhasesUpdateResponseRulesItemSetCacheSettingsRuleActionParametersCa
   }) as any as S.Schema<PhasesUpdateResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHost>;
 
 export type PhasesUpdateResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringExcludeListList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesUpdateResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringExcludeListList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -75970,7 +75879,7 @@ export const PhasesUpdateResponseRulesItemSetCacheSettingsRuleActionParametersCa
   }) as any as S.Schema<PhasesUpdateResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringExclude>;
 
 export type PhasesUpdateResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringIncludeListList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesUpdateResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringIncludeListList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -76171,7 +76080,7 @@ export const PhasesUpdateResponseRulesItemSetCacheSettingsRuleActionParametersEd
   }) as any as S.Schema<PhasesUpdateResponseRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlItem>;
 
 export type PhasesUpdateResponseRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlList =
-  ReadonlyArray<PhasesUpdateResponseRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlItem>;
+  Array<PhasesUpdateResponseRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlItem>;
 export const PhasesUpdateResponseRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlList =
   /*@__PURE__*/ S.Array(
     PhasesUpdateResponseRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlItem,
@@ -76257,14 +76166,14 @@ export const PhasesUpdateResponseRulesItemSetCacheSettingsRuleActionParametersVa
   /*@__PURE__*/ S.String;
 
 export type PhasesUpdateResponseRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValueLanguagesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesUpdateResponseRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValueLanguagesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PhasesUpdateResponseRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValueLanguagesList>;
 
 export type PhasesUpdateResponseRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValueMediaTypesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesUpdateResponseRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValueMediaTypesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -76428,7 +76337,7 @@ export const PhasesUpdateResponseRulesItemSetCacheSettingsRuleActionParameters =
   }) as any as S.Schema<PhasesUpdateResponseRulesItemSetCacheSettingsRuleActionParameters>;
 
 export type PhasesUpdateResponseRulesItemSetCacheSettingsRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesUpdateResponseRulesItemSetCacheSettingsRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -76452,7 +76361,7 @@ export const PhasesUpdateResponseRulesItemSetCacheSettingsRuleExposedCredentialC
   }) as any as S.Schema<PhasesUpdateResponseRulesItemSetCacheSettingsRuleExposedCredentialCheck>;
 
 export type PhasesUpdateResponseRulesItemSetCacheSettingsRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesUpdateResponseRulesItemSetCacheSettingsRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -76576,7 +76485,7 @@ export const PhasesUpdateResponseRulesItemSetCacheTagsActionParametersAddCacheTa
   /*@__PURE__*/ S.String;
 
 export type PhasesUpdateResponseRulesItemSetCacheTagsActionParametersAddCacheTagsValuesValuesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesUpdateResponseRulesItemSetCacheTagsActionParametersAddCacheTagsValuesValuesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -76630,7 +76539,7 @@ export const PhasesUpdateResponseRulesItemSetCacheTagsActionParametersRemoveCach
   /*@__PURE__*/ S.String;
 
 export type PhasesUpdateResponseRulesItemSetCacheTagsActionParametersRemoveCacheTagsValuesValuesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesUpdateResponseRulesItemSetCacheTagsActionParametersRemoveCacheTagsValuesValuesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -76684,7 +76593,7 @@ export const PhasesUpdateResponseRulesItemSetCacheTagsActionParametersSetCacheTa
   /*@__PURE__*/ S.String;
 
 export type PhasesUpdateResponseRulesItemSetCacheTagsActionParametersSetCacheTagsValuesValuesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesUpdateResponseRulesItemSetCacheTagsActionParametersSetCacheTagsValuesValuesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -76774,7 +76683,7 @@ export const PhasesUpdateResponseRulesItemSetCacheTagsActionParameters =
   }) as any as S.Schema<PhasesUpdateResponseRulesItemSetCacheTagsActionParameters>;
 
 export type PhasesUpdateResponseRulesItemSetCacheTagsCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesUpdateResponseRulesItemSetCacheTagsCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -76798,7 +76707,7 @@ export const PhasesUpdateResponseRulesItemSetCacheTagsExposedCredentialCheck =
   }) as any as S.Schema<PhasesUpdateResponseRulesItemSetCacheTagsExposedCredentialCheck>;
 
 export type PhasesUpdateResponseRulesItemSetCacheTagsRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesUpdateResponseRulesItemSetCacheTagsRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -77071,7 +76980,7 @@ export const PhasesUpdateResponseRulesItemSetConfigRuleActionParameters =
   }) as any as S.Schema<PhasesUpdateResponseRulesItemSetConfigRuleActionParameters>;
 
 export type PhasesUpdateResponseRulesItemSetConfigRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesUpdateResponseRulesItemSetConfigRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -77095,7 +77004,7 @@ export const PhasesUpdateResponseRulesItemSetConfigRuleExposedCredentialCheck =
   }) as any as S.Schema<PhasesUpdateResponseRulesItemSetConfigRuleExposedCredentialCheck>;
 
 export type PhasesUpdateResponseRulesItemSetConfigRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesUpdateResponseRulesItemSetConfigRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -77245,7 +77154,7 @@ export const PhasesUpdateResponseRulesItemSkipRuleActionParametersPhasesItem =
   /*@__PURE__*/ S.String;
 
 export type PhasesUpdateResponseRulesItemSkipRuleActionParametersPhasesList =
-  ReadonlyArray<PhasesUpdateResponseRulesItemSkipRuleActionParametersPhasesItem>;
+  Array<PhasesUpdateResponseRulesItemSkipRuleActionParametersPhasesItem>;
 export const PhasesUpdateResponseRulesItemSkipRuleActionParametersPhasesList =
   /*@__PURE__*/ S.Array(
     PhasesUpdateResponseRulesItemSkipRuleActionParametersPhasesItem,
@@ -77263,14 +77172,14 @@ export const PhasesUpdateResponseRulesItemSkipRuleActionParametersProductsItem =
   /*@__PURE__*/ S.String;
 
 export type PhasesUpdateResponseRulesItemSkipRuleActionParametersProductsList =
-  ReadonlyArray<PhasesUpdateResponseRulesItemSkipRuleActionParametersProductsItem>;
+  Array<PhasesUpdateResponseRulesItemSkipRuleActionParametersProductsItem>;
 export const PhasesUpdateResponseRulesItemSkipRuleActionParametersProductsList =
   /*@__PURE__*/ S.Array(
     PhasesUpdateResponseRulesItemSkipRuleActionParametersProductsItem,
   ) as any as S.Schema<PhasesUpdateResponseRulesItemSkipRuleActionParametersProductsList>;
 
 export type PhasesUpdateResponseRulesItemSkipRuleActionParametersRulesValueList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesUpdateResponseRulesItemSkipRuleActionParametersRulesValueList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -77293,7 +77202,7 @@ export const PhasesUpdateResponseRulesItemSkipRuleActionParametersRuleset =
   /*@__PURE__*/ S.String;
 
 export type PhasesUpdateResponseRulesItemSkipRuleActionParametersRulesetsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesUpdateResponseRulesItemSkipRuleActionParametersRulesetsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -77339,8 +77248,7 @@ export const PhasesUpdateResponseRulesItemSkipRuleActionParameters =
     identifier: "PhasesUpdateResponseRulesItemSkipRuleActionParameters",
   }) as any as S.Schema<PhasesUpdateResponseRulesItemSkipRuleActionParameters>;
 
-export type PhasesUpdateResponseRulesItemSkipRuleCategoriesList =
-  ReadonlyArray<string>;
+export type PhasesUpdateResponseRulesItemSkipRuleCategoriesList = Array<string>;
 export const PhasesUpdateResponseRulesItemSkipRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -77363,7 +77271,7 @@ export const PhasesUpdateResponseRulesItemSkipRuleExposedCredentialCheck =
   }) as any as S.Schema<PhasesUpdateResponseRulesItemSkipRuleExposedCredentialCheck>;
 
 export type PhasesUpdateResponseRulesItemSkipRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesUpdateResponseRulesItemSkipRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -77493,7 +77401,7 @@ export const PhasesUpdateResponseRulesItemTransformResponseHTMLActionParameters 
   }) as any as S.Schema<PhasesUpdateResponseRulesItemTransformResponseHTMLActionParameters>;
 
 export type PhasesUpdateResponseRulesItemTransformResponseHTMLCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesUpdateResponseRulesItemTransformResponseHTMLCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -77517,7 +77425,7 @@ export const PhasesUpdateResponseRulesItemTransformResponseHTMLExposedCredential
   }) as any as S.Schema<PhasesUpdateResponseRulesItemTransformResponseHTMLExposedCredentialCheck>;
 
 export type PhasesUpdateResponseRulesItemTransformResponseHTMLRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PhasesUpdateResponseRulesItemTransformResponseHTMLRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -77895,7 +77803,7 @@ export const PhasesUpdateResponseRulesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PhasesUpdateResponseRulesItem>;
 
 export type PhasesUpdateResponseRulesList =
-  ReadonlyArray<PhasesUpdateResponseRulesItem>;
+  Array<PhasesUpdateResponseRulesItem>;
 export const PhasesUpdateResponseRulesList = /*@__PURE__*/ S.Array(
   PhasesUpdateResponseRulesItem,
 ) as any as S.Schema<PhasesUpdateResponseRulesList>;
@@ -78033,8 +77941,7 @@ export const UpdateRequestRulesItemBlockRuleActionParameters =
     identifier: "UpdateRequestRulesItemBlockRuleActionParameters",
   }) as any as S.Schema<UpdateRequestRulesItemBlockRuleActionParameters>;
 
-export type UpdateRequestRulesItemBlockRuleCategoriesList =
-  ReadonlyArray<string>;
+export type UpdateRequestRulesItemBlockRuleCategoriesList = Array<string>;
 export const UpdateRequestRulesItemBlockRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -78070,7 +77977,7 @@ export const UpdateRequestRulesItemBlockRuleLogging = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<UpdateRequestRulesItemBlockRuleLogging>;
 
 export type UpdateRequestRulesItemBlockRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const UpdateRequestRulesItemBlockRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -78180,8 +78087,7 @@ export const UpdateRequestRulesItemBlockRule = /*@__PURE__*/ S.suspend(() =>
 export type UpdateRequestRulesItemChallengeAction = "challenge";
 export const UpdateRequestRulesItemChallengeAction = /*@__PURE__*/ S.String;
 
-export type UpdateRequestRulesItemChallengeCategoriesList =
-  ReadonlyArray<string>;
+export type UpdateRequestRulesItemChallengeCategoriesList = Array<string>;
 export const UpdateRequestRulesItemChallengeCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -78204,7 +78110,7 @@ export const UpdateRequestRulesItemChallengeExposedCredentialCheck =
   }) as any as S.Schema<UpdateRequestRulesItemChallengeExposedCredentialCheck>;
 
 export type UpdateRequestRulesItemChallengeRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const UpdateRequestRulesItemChallengeRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -78336,7 +78242,7 @@ export const UpdateRequestRulesItemCompressResponseRuleActionParametersAlgorithm
   }) as any as S.Schema<UpdateRequestRulesItemCompressResponseRuleActionParametersAlgorithmsItem>;
 
 export type UpdateRequestRulesItemCompressResponseRuleActionParametersAlgorithmsList =
-  ReadonlyArray<UpdateRequestRulesItemCompressResponseRuleActionParametersAlgorithmsItem>;
+  Array<UpdateRequestRulesItemCompressResponseRuleActionParametersAlgorithmsItem>;
 export const UpdateRequestRulesItemCompressResponseRuleActionParametersAlgorithmsList =
   /*@__PURE__*/ S.Array(
     UpdateRequestRulesItemCompressResponseRuleActionParametersAlgorithmsItem,
@@ -78357,7 +78263,7 @@ export const UpdateRequestRulesItemCompressResponseRuleActionParameters =
   }) as any as S.Schema<UpdateRequestRulesItemCompressResponseRuleActionParameters>;
 
 export type UpdateRequestRulesItemCompressResponseRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const UpdateRequestRulesItemCompressResponseRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -78381,7 +78287,7 @@ export const UpdateRequestRulesItemCompressResponseRuleExposedCredentialCheck =
   }) as any as S.Schema<UpdateRequestRulesItemCompressResponseRuleExposedCredentialCheck>;
 
 export type UpdateRequestRulesItemCompressResponseRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const UpdateRequestRulesItemCompressResponseRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -78497,8 +78403,7 @@ export type UpdateRequestRulesItemDDoSDynamicRuleAction = "ddos_dynamic";
 export const UpdateRequestRulesItemDDoSDynamicRuleAction =
   /*@__PURE__*/ S.String;
 
-export type UpdateRequestRulesItemDDoSDynamicRuleCategoriesList =
-  ReadonlyArray<string>;
+export type UpdateRequestRulesItemDDoSDynamicRuleCategoriesList = Array<string>;
 export const UpdateRequestRulesItemDDoSDynamicRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -78521,7 +78426,7 @@ export const UpdateRequestRulesItemDDoSDynamicRuleExposedCredentialCheck =
   }) as any as S.Schema<UpdateRequestRulesItemDDoSDynamicRuleExposedCredentialCheck>;
 
 export type UpdateRequestRulesItemDDoSDynamicRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const UpdateRequestRulesItemDDoSDynamicRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -78678,7 +78583,7 @@ export const UpdateRequestRulesItemExecuteRuleActionParametersOverridesCategorie
   }) as any as S.Schema<UpdateRequestRulesItemExecuteRuleActionParametersOverridesCategoriesItem>;
 
 export type UpdateRequestRulesItemExecuteRuleActionParametersOverridesCategoriesList =
-  ReadonlyArray<UpdateRequestRulesItemExecuteRuleActionParametersOverridesCategoriesItem>;
+  Array<UpdateRequestRulesItemExecuteRuleActionParametersOverridesCategoriesItem>;
 export const UpdateRequestRulesItemExecuteRuleActionParametersOverridesCategoriesList =
   /*@__PURE__*/ S.Array(
     UpdateRequestRulesItemExecuteRuleActionParametersOverridesCategoriesItem,
@@ -78722,7 +78627,7 @@ export const UpdateRequestRulesItemExecuteRuleActionParametersOverridesRulesItem
   }) as any as S.Schema<UpdateRequestRulesItemExecuteRuleActionParametersOverridesRulesItem>;
 
 export type UpdateRequestRulesItemExecuteRuleActionParametersOverridesRulesList =
-  ReadonlyArray<UpdateRequestRulesItemExecuteRuleActionParametersOverridesRulesItem>;
+  Array<UpdateRequestRulesItemExecuteRuleActionParametersOverridesRulesItem>;
 export const UpdateRequestRulesItemExecuteRuleActionParametersOverridesRulesList =
   /*@__PURE__*/ S.Array(
     UpdateRequestRulesItemExecuteRuleActionParametersOverridesRulesItem,
@@ -78793,8 +78698,7 @@ export const UpdateRequestRulesItemExecuteRuleActionParameters =
     identifier: "UpdateRequestRulesItemExecuteRuleActionParameters",
   }) as any as S.Schema<UpdateRequestRulesItemExecuteRuleActionParameters>;
 
-export type UpdateRequestRulesItemExecuteRuleCategoriesList =
-  ReadonlyArray<string>;
+export type UpdateRequestRulesItemExecuteRuleCategoriesList = Array<string>;
 export const UpdateRequestRulesItemExecuteRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -78817,7 +78721,7 @@ export const UpdateRequestRulesItemExecuteRuleExposedCredentialCheck =
   }) as any as S.Schema<UpdateRequestRulesItemExecuteRuleExposedCredentialCheck>;
 
 export type UpdateRequestRulesItemExecuteRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const UpdateRequestRulesItemExecuteRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -78930,7 +78834,7 @@ export const UpdateRequestRulesItemForceConnectionCloseRuleAction =
   /*@__PURE__*/ S.String;
 
 export type UpdateRequestRulesItemForceConnectionCloseRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const UpdateRequestRulesItemForceConnectionCloseRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -78954,7 +78858,7 @@ export const UpdateRequestRulesItemForceConnectionCloseRuleExposedCredentialChec
   }) as any as S.Schema<UpdateRequestRulesItemForceConnectionCloseRuleExposedCredentialCheck>;
 
 export type UpdateRequestRulesItemForceConnectionCloseRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const UpdateRequestRulesItemForceConnectionCloseRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -79065,8 +78969,7 @@ export const UpdateRequestRulesItemForceConnectionCloseRule =
 export type UpdateRequestRulesItemJSChallengeAction = "js_challenge";
 export const UpdateRequestRulesItemJSChallengeAction = /*@__PURE__*/ S.String;
 
-export type UpdateRequestRulesItemJSChallengeCategoriesList =
-  ReadonlyArray<string>;
+export type UpdateRequestRulesItemJSChallengeCategoriesList = Array<string>;
 export const UpdateRequestRulesItemJSChallengeCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -79089,7 +78992,7 @@ export const UpdateRequestRulesItemJSChallengeExposedCredentialCheck =
   }) as any as S.Schema<UpdateRequestRulesItemJSChallengeExposedCredentialCheck>;
 
 export type UpdateRequestRulesItemJSChallengeRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const UpdateRequestRulesItemJSChallengeRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -79195,7 +79098,7 @@ export const UpdateRequestRulesItemJSChallenge = /*@__PURE__*/ S.suspend(() =>
 export type UpdateRequestRulesItemLogRuleAction = "log";
 export const UpdateRequestRulesItemLogRuleAction = /*@__PURE__*/ S.String;
 
-export type UpdateRequestRulesItemLogRuleCategoriesList = ReadonlyArray<string>;
+export type UpdateRequestRulesItemLogRuleCategoriesList = Array<string>;
 export const UpdateRequestRulesItemLogRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -79218,7 +79121,7 @@ export const UpdateRequestRulesItemLogRuleExposedCredentialCheck =
   }) as any as S.Schema<UpdateRequestRulesItemLogRuleExposedCredentialCheck>;
 
 export type UpdateRequestRulesItemLogRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const UpdateRequestRulesItemLogRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -79340,7 +79243,7 @@ export const UpdateRequestRulesItemLogCustomFieldRuleActionParametersCookieField
   }) as any as S.Schema<UpdateRequestRulesItemLogCustomFieldRuleActionParametersCookieFieldsItem>;
 
 export type UpdateRequestRulesItemLogCustomFieldRuleActionParametersCookieFieldsList =
-  ReadonlyArray<UpdateRequestRulesItemLogCustomFieldRuleActionParametersCookieFieldsItem>;
+  Array<UpdateRequestRulesItemLogCustomFieldRuleActionParametersCookieFieldsItem>;
 export const UpdateRequestRulesItemLogCustomFieldRuleActionParametersCookieFieldsList =
   /*@__PURE__*/ S.Array(
     UpdateRequestRulesItemLogCustomFieldRuleActionParametersCookieFieldsItem,
@@ -79366,7 +79269,7 @@ export const UpdateRequestRulesItemLogCustomFieldRuleActionParametersRawResponse
   }) as any as S.Schema<UpdateRequestRulesItemLogCustomFieldRuleActionParametersRawResponseFieldsItem>;
 
 export type UpdateRequestRulesItemLogCustomFieldRuleActionParametersRawResponseFieldsList =
-  ReadonlyArray<UpdateRequestRulesItemLogCustomFieldRuleActionParametersRawResponseFieldsItem>;
+  Array<UpdateRequestRulesItemLogCustomFieldRuleActionParametersRawResponseFieldsItem>;
 export const UpdateRequestRulesItemLogCustomFieldRuleActionParametersRawResponseFieldsList =
   /*@__PURE__*/ S.Array(
     UpdateRequestRulesItemLogCustomFieldRuleActionParametersRawResponseFieldsItem,
@@ -79387,7 +79290,7 @@ export const UpdateRequestRulesItemLogCustomFieldRuleActionParametersRequestFiel
   }) as any as S.Schema<UpdateRequestRulesItemLogCustomFieldRuleActionParametersRequestFieldsItem>;
 
 export type UpdateRequestRulesItemLogCustomFieldRuleActionParametersRequestFieldsList =
-  ReadonlyArray<UpdateRequestRulesItemLogCustomFieldRuleActionParametersRequestFieldsItem>;
+  Array<UpdateRequestRulesItemLogCustomFieldRuleActionParametersRequestFieldsItem>;
 export const UpdateRequestRulesItemLogCustomFieldRuleActionParametersRequestFieldsList =
   /*@__PURE__*/ S.Array(
     UpdateRequestRulesItemLogCustomFieldRuleActionParametersRequestFieldsItem,
@@ -79413,7 +79316,7 @@ export const UpdateRequestRulesItemLogCustomFieldRuleActionParametersResponseFie
   }) as any as S.Schema<UpdateRequestRulesItemLogCustomFieldRuleActionParametersResponseFieldsItem>;
 
 export type UpdateRequestRulesItemLogCustomFieldRuleActionParametersResponseFieldsList =
-  ReadonlyArray<UpdateRequestRulesItemLogCustomFieldRuleActionParametersResponseFieldsItem>;
+  Array<UpdateRequestRulesItemLogCustomFieldRuleActionParametersResponseFieldsItem>;
 export const UpdateRequestRulesItemLogCustomFieldRuleActionParametersResponseFieldsList =
   /*@__PURE__*/ S.Array(
     UpdateRequestRulesItemLogCustomFieldRuleActionParametersResponseFieldsItem,
@@ -79434,7 +79337,7 @@ export const UpdateRequestRulesItemLogCustomFieldRuleActionParametersTransformed
   }) as any as S.Schema<UpdateRequestRulesItemLogCustomFieldRuleActionParametersTransformedRequestFieldsItem>;
 
 export type UpdateRequestRulesItemLogCustomFieldRuleActionParametersTransformedRequestFieldsList =
-  ReadonlyArray<UpdateRequestRulesItemLogCustomFieldRuleActionParametersTransformedRequestFieldsItem>;
+  Array<UpdateRequestRulesItemLogCustomFieldRuleActionParametersTransformedRequestFieldsItem>;
 export const UpdateRequestRulesItemLogCustomFieldRuleActionParametersTransformedRequestFieldsList =
   /*@__PURE__*/ S.Array(
     UpdateRequestRulesItemLogCustomFieldRuleActionParametersTransformedRequestFieldsItem,
@@ -79486,7 +79389,7 @@ export const UpdateRequestRulesItemLogCustomFieldRuleActionParameters =
   }) as any as S.Schema<UpdateRequestRulesItemLogCustomFieldRuleActionParameters>;
 
 export type UpdateRequestRulesItemLogCustomFieldRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const UpdateRequestRulesItemLogCustomFieldRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -79510,7 +79413,7 @@ export const UpdateRequestRulesItemLogCustomFieldRuleExposedCredentialCheck =
   }) as any as S.Schema<UpdateRequestRulesItemLogCustomFieldRuleExposedCredentialCheck>;
 
 export type UpdateRequestRulesItemLogCustomFieldRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const UpdateRequestRulesItemLogCustomFieldRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -79626,7 +79529,7 @@ export const UpdateRequestRulesItemManagedChallengeRuleAction =
   /*@__PURE__*/ S.String;
 
 export type UpdateRequestRulesItemManagedChallengeRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const UpdateRequestRulesItemManagedChallengeRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -79650,7 +79553,7 @@ export const UpdateRequestRulesItemManagedChallengeRuleExposedCredentialCheck =
   }) as any as S.Schema<UpdateRequestRulesItemManagedChallengeRuleExposedCredentialCheck>;
 
 export type UpdateRequestRulesItemManagedChallengeRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const UpdateRequestRulesItemManagedChallengeRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -79853,8 +79756,7 @@ export const UpdateRequestRulesItemRedirectRuleActionParameters =
     identifier: "UpdateRequestRulesItemRedirectRuleActionParameters",
   }) as any as S.Schema<UpdateRequestRulesItemRedirectRuleActionParameters>;
 
-export type UpdateRequestRulesItemRedirectRuleCategoriesList =
-  ReadonlyArray<string>;
+export type UpdateRequestRulesItemRedirectRuleCategoriesList = Array<string>;
 export const UpdateRequestRulesItemRedirectRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -79877,7 +79779,7 @@ export const UpdateRequestRulesItemRedirectRuleExposedCredentialCheck =
   }) as any as S.Schema<UpdateRequestRulesItemRedirectRuleExposedCredentialCheck>;
 
 export type UpdateRequestRulesItemRedirectRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const UpdateRequestRulesItemRedirectRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -80251,8 +80153,7 @@ export const UpdateRequestRulesItemRewriteRuleActionParameters =
     identifier: "UpdateRequestRulesItemRewriteRuleActionParameters",
   }) as any as S.Schema<UpdateRequestRulesItemRewriteRuleActionParameters>;
 
-export type UpdateRequestRulesItemRewriteRuleCategoriesList =
-  ReadonlyArray<string>;
+export type UpdateRequestRulesItemRewriteRuleCategoriesList = Array<string>;
 export const UpdateRequestRulesItemRewriteRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -80275,7 +80176,7 @@ export const UpdateRequestRulesItemRewriteRuleExposedCredentialCheck =
   }) as any as S.Schema<UpdateRequestRulesItemRewriteRuleExposedCredentialCheck>;
 
 export type UpdateRequestRulesItemRewriteRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const UpdateRequestRulesItemRewriteRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -80433,8 +80334,7 @@ export const UpdateRequestRulesItemRouteRuleActionParameters =
     identifier: "UpdateRequestRulesItemRouteRuleActionParameters",
   }) as any as S.Schema<UpdateRequestRulesItemRouteRuleActionParameters>;
 
-export type UpdateRequestRulesItemRouteRuleCategoriesList =
-  ReadonlyArray<string>;
+export type UpdateRequestRulesItemRouteRuleCategoriesList = Array<string>;
 export const UpdateRequestRulesItemRouteRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -80457,7 +80357,7 @@ export const UpdateRequestRulesItemRouteRuleExposedCredentialCheck =
   }) as any as S.Schema<UpdateRequestRulesItemRouteRuleExposedCredentialCheck>;
 
 export type UpdateRequestRulesItemRouteRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const UpdateRequestRulesItemRouteRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -80580,8 +80480,7 @@ export const UpdateRequestRulesItemScoreRuleActionParameters =
     identifier: "UpdateRequestRulesItemScoreRuleActionParameters",
   }) as any as S.Schema<UpdateRequestRulesItemScoreRuleActionParameters>;
 
-export type UpdateRequestRulesItemScoreRuleCategoriesList =
-  ReadonlyArray<string>;
+export type UpdateRequestRulesItemScoreRuleCategoriesList = Array<string>;
 export const UpdateRequestRulesItemScoreRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -80604,7 +80503,7 @@ export const UpdateRequestRulesItemScoreRuleExposedCredentialCheck =
   }) as any as S.Schema<UpdateRequestRulesItemScoreRuleExposedCredentialCheck>;
 
 export type UpdateRequestRulesItemScoreRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const UpdateRequestRulesItemScoreRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -80808,8 +80707,7 @@ export const UpdateRequestRulesItemServeErrorRuleActionParameters =
     identifier: "UpdateRequestRulesItemServeErrorRuleActionParameters",
   }) as any as S.Schema<UpdateRequestRulesItemServeErrorRuleActionParameters>;
 
-export type UpdateRequestRulesItemServeErrorRuleCategoriesList =
-  ReadonlyArray<string>;
+export type UpdateRequestRulesItemServeErrorRuleCategoriesList = Array<string>;
 export const UpdateRequestRulesItemServeErrorRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -80832,7 +80730,7 @@ export const UpdateRequestRulesItemServeErrorRuleExposedCredentialCheck =
   }) as any as S.Schema<UpdateRequestRulesItemServeErrorRuleExposedCredentialCheck>;
 
 export type UpdateRequestRulesItemServeErrorRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const UpdateRequestRulesItemServeErrorRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -81253,7 +81151,7 @@ export const UpdateRequestRulesItemSetCacheControlActionParametersNoCacheSetDire
   /*@__PURE__*/ S.String;
 
 export type UpdateRequestRulesItemSetCacheControlActionParametersNoCacheSetDirectiveQualifiersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const UpdateRequestRulesItemSetCacheControlActionParametersNoCacheSetDirectiveQualifiersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -81490,7 +81388,7 @@ export const UpdateRequestRulesItemSetCacheControlActionParametersPrivateSetDire
   /*@__PURE__*/ S.String;
 
 export type UpdateRequestRulesItemSetCacheControlActionParametersPrivateSetDirectiveQualifiersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const UpdateRequestRulesItemSetCacheControlActionParametersPrivateSetDirectiveQualifiersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -82055,8 +81953,7 @@ export const UpdateRequestRulesItemSetCacheControlActionParameters =
     identifier: "UpdateRequestRulesItemSetCacheControlActionParameters",
   }) as any as S.Schema<UpdateRequestRulesItemSetCacheControlActionParameters>;
 
-export type UpdateRequestRulesItemSetCacheControlCategoriesList =
-  ReadonlyArray<string>;
+export type UpdateRequestRulesItemSetCacheControlCategoriesList = Array<string>;
 export const UpdateRequestRulesItemSetCacheControlCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -82079,7 +81976,7 @@ export const UpdateRequestRulesItemSetCacheControlExposedCredentialCheck =
   }) as any as S.Schema<UpdateRequestRulesItemSetCacheControlExposedCredentialCheck>;
 
 export type UpdateRequestRulesItemSetCacheControlRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const UpdateRequestRulesItemSetCacheControlRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -82195,7 +82092,7 @@ export const UpdateRequestRulesItemSetCacheSettingsRuleAction =
   /*@__PURE__*/ S.String;
 
 export type UpdateRequestRulesItemSetCacheSettingsRuleActionParametersAdditionalCacheablePortsList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const UpdateRequestRulesItemSetCacheSettingsRuleActionParametersAdditionalCacheablePortsList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -82226,14 +82123,14 @@ export const UpdateRequestRulesItemSetCacheSettingsRuleActionParametersBrowserTt
   }) as any as S.Schema<UpdateRequestRulesItemSetCacheSettingsRuleActionParametersBrowserTtl>;
 
 export type UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookieCheckPresenceList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookieCheckPresenceList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookieCheckPresenceList>;
 
 export type UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookieIncludeList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookieIncludeList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -82263,14 +82160,14 @@ export const UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyC
   }) as any as S.Schema<UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookie>;
 
 export type UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderCheckPresenceList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderCheckPresenceList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderCheckPresenceList>;
 
 export type UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderContainsValueList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderContainsValueList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -82289,7 +82186,7 @@ export const UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyC
   ) as any as S.Schema<UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderContainsMap>;
 
 export type UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderIncludeList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderIncludeList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -82341,7 +82238,7 @@ export const UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyC
   }) as any as S.Schema<UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHost>;
 
 export type UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringExcludeListList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringExcludeListList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -82367,7 +82264,7 @@ export const UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyC
   }) as any as S.Schema<UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringExclude>;
 
 export type UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringIncludeListList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringIncludeListList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -82568,7 +82465,7 @@ export const UpdateRequestRulesItemSetCacheSettingsRuleActionParametersEdgeTtlSt
   }) as any as S.Schema<UpdateRequestRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlItem>;
 
 export type UpdateRequestRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlList =
-  ReadonlyArray<UpdateRequestRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlItem>;
+  Array<UpdateRequestRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlItem>;
 export const UpdateRequestRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlList =
   /*@__PURE__*/ S.Array(
     UpdateRequestRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlItem,
@@ -82658,14 +82555,14 @@ export const UpdateRequestRulesItemSetCacheSettingsRuleActionParametersVaryHeade
   /*@__PURE__*/ S.String;
 
 export type UpdateRequestRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValueLanguagesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const UpdateRequestRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValueLanguagesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<UpdateRequestRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValueLanguagesList>;
 
 export type UpdateRequestRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValueMediaTypesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const UpdateRequestRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValueMediaTypesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -82830,7 +82727,7 @@ export const UpdateRequestRulesItemSetCacheSettingsRuleActionParameters =
   }) as any as S.Schema<UpdateRequestRulesItemSetCacheSettingsRuleActionParameters>;
 
 export type UpdateRequestRulesItemSetCacheSettingsRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const UpdateRequestRulesItemSetCacheSettingsRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -82854,7 +82751,7 @@ export const UpdateRequestRulesItemSetCacheSettingsRuleExposedCredentialCheck =
   }) as any as S.Schema<UpdateRequestRulesItemSetCacheSettingsRuleExposedCredentialCheck>;
 
 export type UpdateRequestRulesItemSetCacheSettingsRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const UpdateRequestRulesItemSetCacheSettingsRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -82975,7 +82872,7 @@ export const UpdateRequestRulesItemSetCacheTagsActionParametersAddCacheTagsValue
   /*@__PURE__*/ S.String;
 
 export type UpdateRequestRulesItemSetCacheTagsActionParametersAddCacheTagsValuesValuesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const UpdateRequestRulesItemSetCacheTagsActionParametersAddCacheTagsValuesValuesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -83033,7 +82930,7 @@ export const UpdateRequestRulesItemSetCacheTagsActionParametersRemoveCacheTagsVa
   /*@__PURE__*/ S.String;
 
 export type UpdateRequestRulesItemSetCacheTagsActionParametersRemoveCacheTagsValuesValuesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const UpdateRequestRulesItemSetCacheTagsActionParametersRemoveCacheTagsValuesValuesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -83091,7 +82988,7 @@ export const UpdateRequestRulesItemSetCacheTagsActionParametersSetCacheTagsValue
   /*@__PURE__*/ S.String;
 
 export type UpdateRequestRulesItemSetCacheTagsActionParametersSetCacheTagsValuesValuesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const UpdateRequestRulesItemSetCacheTagsActionParametersSetCacheTagsValuesValuesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -83190,8 +83087,7 @@ export const UpdateRequestRulesItemSetCacheTagsActionParameters =
     identifier: "UpdateRequestRulesItemSetCacheTagsActionParameters",
   }) as any as S.Schema<UpdateRequestRulesItemSetCacheTagsActionParameters>;
 
-export type UpdateRequestRulesItemSetCacheTagsCategoriesList =
-  ReadonlyArray<string>;
+export type UpdateRequestRulesItemSetCacheTagsCategoriesList = Array<string>;
 export const UpdateRequestRulesItemSetCacheTagsCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -83214,7 +83110,7 @@ export const UpdateRequestRulesItemSetCacheTagsExposedCredentialCheck =
   }) as any as S.Schema<UpdateRequestRulesItemSetCacheTagsExposedCredentialCheck>;
 
 export type UpdateRequestRulesItemSetCacheTagsRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const UpdateRequestRulesItemSetCacheTagsRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -83492,8 +83388,7 @@ export const UpdateRequestRulesItemSetConfigRuleActionParameters =
     identifier: "UpdateRequestRulesItemSetConfigRuleActionParameters",
   }) as any as S.Schema<UpdateRequestRulesItemSetConfigRuleActionParameters>;
 
-export type UpdateRequestRulesItemSetConfigRuleCategoriesList =
-  ReadonlyArray<string>;
+export type UpdateRequestRulesItemSetConfigRuleCategoriesList = Array<string>;
 export const UpdateRequestRulesItemSetConfigRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -83516,7 +83411,7 @@ export const UpdateRequestRulesItemSetConfigRuleExposedCredentialCheck =
   }) as any as S.Schema<UpdateRequestRulesItemSetConfigRuleExposedCredentialCheck>;
 
 export type UpdateRequestRulesItemSetConfigRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const UpdateRequestRulesItemSetConfigRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -83658,10 +83553,9 @@ export type UpdateRequestRulesItemSkipRuleActionParametersPhasesItem =
 export const UpdateRequestRulesItemSkipRuleActionParametersPhasesItem =
   /*@__PURE__*/ S.String;
 
-export type UpdateRequestRulesItemSkipRuleActionParametersPhasesList =
-  ReadonlyArray<
-    UpdateRequestRulesItemSkipRuleActionParametersPhasesItem | (string & {})
-  >;
+export type UpdateRequestRulesItemSkipRuleActionParametersPhasesList = Array<
+  UpdateRequestRulesItemSkipRuleActionParametersPhasesItem | (string & {})
+>;
 export const UpdateRequestRulesItemSkipRuleActionParametersPhasesList =
   /*@__PURE__*/ S.Array(
     UpdateRequestRulesItemSkipRuleActionParametersPhasesItem,
@@ -83678,17 +83572,16 @@ export type UpdateRequestRulesItemSkipRuleActionParametersProductsItem =
 export const UpdateRequestRulesItemSkipRuleActionParametersProductsItem =
   /*@__PURE__*/ S.String;
 
-export type UpdateRequestRulesItemSkipRuleActionParametersProductsList =
-  ReadonlyArray<
-    UpdateRequestRulesItemSkipRuleActionParametersProductsItem | (string & {})
-  >;
+export type UpdateRequestRulesItemSkipRuleActionParametersProductsList = Array<
+  UpdateRequestRulesItemSkipRuleActionParametersProductsItem | (string & {})
+>;
 export const UpdateRequestRulesItemSkipRuleActionParametersProductsList =
   /*@__PURE__*/ S.Array(
     UpdateRequestRulesItemSkipRuleActionParametersProductsItem,
   ) as any as S.Schema<UpdateRequestRulesItemSkipRuleActionParametersProductsList>;
 
 export type UpdateRequestRulesItemSkipRuleActionParametersRulesValueList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const UpdateRequestRulesItemSkipRuleActionParametersRulesValueList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -83710,7 +83603,7 @@ export const UpdateRequestRulesItemSkipRuleActionParametersRuleset =
   /*@__PURE__*/ S.String;
 
 export type UpdateRequestRulesItemSkipRuleActionParametersRulesetsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const UpdateRequestRulesItemSkipRuleActionParametersRulesetsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -83754,8 +83647,7 @@ export const UpdateRequestRulesItemSkipRuleActionParameters =
     identifier: "UpdateRequestRulesItemSkipRuleActionParameters",
   }) as any as S.Schema<UpdateRequestRulesItemSkipRuleActionParameters>;
 
-export type UpdateRequestRulesItemSkipRuleCategoriesList =
-  ReadonlyArray<string>;
+export type UpdateRequestRulesItemSkipRuleCategoriesList = Array<string>;
 export const UpdateRequestRulesItemSkipRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -83778,7 +83670,7 @@ export const UpdateRequestRulesItemSkipRuleExposedCredentialCheck =
   }) as any as S.Schema<UpdateRequestRulesItemSkipRuleExposedCredentialCheck>;
 
 export type UpdateRequestRulesItemSkipRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const UpdateRequestRulesItemSkipRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -83904,7 +83796,7 @@ export const UpdateRequestRulesItemTransformResponseHTMLActionParameters =
   }) as any as S.Schema<UpdateRequestRulesItemTransformResponseHTMLActionParameters>;
 
 export type UpdateRequestRulesItemTransformResponseHTMLCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const UpdateRequestRulesItemTransformResponseHTMLCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -83928,7 +83820,7 @@ export const UpdateRequestRulesItemTransformResponseHTMLExposedCredentialCheck =
   }) as any as S.Schema<UpdateRequestRulesItemTransformResponseHTMLExposedCredentialCheck>;
 
 export type UpdateRequestRulesItemTransformResponseHTMLRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const UpdateRequestRulesItemTransformResponseHTMLRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -84324,7 +84216,7 @@ export const UpdateRequestRulesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateRequestRulesItem",
 }) as any as S.Schema<UpdateRequestRulesItem>;
 
-export type UpdateRequestRulesList = ReadonlyArray<UpdateRequestRulesItem>;
+export type UpdateRequestRulesList = Array<UpdateRequestRulesItem>;
 export const UpdateRequestRulesList = /*@__PURE__*/ S.Array(
   UpdateRequestRulesItem,
 ) as any as S.Schema<UpdateRequestRulesList>;
@@ -84434,8 +84326,7 @@ export const UpdateResponseRulesItemBlockRuleActionParameters =
     identifier: "UpdateResponseRulesItemBlockRuleActionParameters",
   }) as any as S.Schema<UpdateResponseRulesItemBlockRuleActionParameters>;
 
-export type UpdateResponseRulesItemBlockRuleCategoriesList =
-  ReadonlyArray<string>;
+export type UpdateResponseRulesItemBlockRuleCategoriesList = Array<string>;
 export const UpdateResponseRulesItemBlockRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -84471,7 +84362,7 @@ export const UpdateResponseRulesItemBlockRuleLogging = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<UpdateResponseRulesItemBlockRuleLogging>;
 
 export type UpdateResponseRulesItemBlockRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const UpdateResponseRulesItemBlockRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -84581,8 +84472,7 @@ export const UpdateResponseRulesItemBlockRule = /*@__PURE__*/ S.suspend(() =>
 export type UpdateResponseRulesItemChallengeAction = "challenge";
 export const UpdateResponseRulesItemChallengeAction = /*@__PURE__*/ S.String;
 
-export type UpdateResponseRulesItemChallengeCategoriesList =
-  ReadonlyArray<string>;
+export type UpdateResponseRulesItemChallengeCategoriesList = Array<string>;
 export const UpdateResponseRulesItemChallengeCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -84605,7 +84495,7 @@ export const UpdateResponseRulesItemChallengeExposedCredentialCheck =
   }) as any as S.Schema<UpdateResponseRulesItemChallengeExposedCredentialCheck>;
 
 export type UpdateResponseRulesItemChallengeRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const UpdateResponseRulesItemChallengeRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -84735,7 +84625,7 @@ export const UpdateResponseRulesItemCompressResponseRuleActionParametersAlgorith
   }) as any as S.Schema<UpdateResponseRulesItemCompressResponseRuleActionParametersAlgorithmsItem>;
 
 export type UpdateResponseRulesItemCompressResponseRuleActionParametersAlgorithmsList =
-  ReadonlyArray<UpdateResponseRulesItemCompressResponseRuleActionParametersAlgorithmsItem>;
+  Array<UpdateResponseRulesItemCompressResponseRuleActionParametersAlgorithmsItem>;
 export const UpdateResponseRulesItemCompressResponseRuleActionParametersAlgorithmsList =
   /*@__PURE__*/ S.Array(
     UpdateResponseRulesItemCompressResponseRuleActionParametersAlgorithmsItem,
@@ -84756,7 +84646,7 @@ export const UpdateResponseRulesItemCompressResponseRuleActionParameters =
   }) as any as S.Schema<UpdateResponseRulesItemCompressResponseRuleActionParameters>;
 
 export type UpdateResponseRulesItemCompressResponseRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const UpdateResponseRulesItemCompressResponseRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -84780,7 +84670,7 @@ export const UpdateResponseRulesItemCompressResponseRuleExposedCredentialCheck =
   }) as any as S.Schema<UpdateResponseRulesItemCompressResponseRuleExposedCredentialCheck>;
 
 export type UpdateResponseRulesItemCompressResponseRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const UpdateResponseRulesItemCompressResponseRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -84897,7 +84787,7 @@ export const UpdateResponseRulesItemDDoSDynamicRuleAction =
   /*@__PURE__*/ S.String;
 
 export type UpdateResponseRulesItemDDoSDynamicRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const UpdateResponseRulesItemDDoSDynamicRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -84920,7 +84810,7 @@ export const UpdateResponseRulesItemDDoSDynamicRuleExposedCredentialCheck =
   }) as any as S.Schema<UpdateResponseRulesItemDDoSDynamicRuleExposedCredentialCheck>;
 
 export type UpdateResponseRulesItemDDoSDynamicRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const UpdateResponseRulesItemDDoSDynamicRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -85075,7 +84965,7 @@ export const UpdateResponseRulesItemExecuteRuleActionParametersOverridesCategori
   }) as any as S.Schema<UpdateResponseRulesItemExecuteRuleActionParametersOverridesCategoriesItem>;
 
 export type UpdateResponseRulesItemExecuteRuleActionParametersOverridesCategoriesList =
-  ReadonlyArray<UpdateResponseRulesItemExecuteRuleActionParametersOverridesCategoriesItem>;
+  Array<UpdateResponseRulesItemExecuteRuleActionParametersOverridesCategoriesItem>;
 export const UpdateResponseRulesItemExecuteRuleActionParametersOverridesCategoriesList =
   /*@__PURE__*/ S.Array(
     UpdateResponseRulesItemExecuteRuleActionParametersOverridesCategoriesItem,
@@ -85117,7 +85007,7 @@ export const UpdateResponseRulesItemExecuteRuleActionParametersOverridesRulesIte
   }) as any as S.Schema<UpdateResponseRulesItemExecuteRuleActionParametersOverridesRulesItem>;
 
 export type UpdateResponseRulesItemExecuteRuleActionParametersOverridesRulesList =
-  ReadonlyArray<UpdateResponseRulesItemExecuteRuleActionParametersOverridesRulesItem>;
+  Array<UpdateResponseRulesItemExecuteRuleActionParametersOverridesRulesItem>;
 export const UpdateResponseRulesItemExecuteRuleActionParametersOverridesRulesList =
   /*@__PURE__*/ S.Array(
     UpdateResponseRulesItemExecuteRuleActionParametersOverridesRulesItem,
@@ -85186,8 +85076,7 @@ export const UpdateResponseRulesItemExecuteRuleActionParameters =
     identifier: "UpdateResponseRulesItemExecuteRuleActionParameters",
   }) as any as S.Schema<UpdateResponseRulesItemExecuteRuleActionParameters>;
 
-export type UpdateResponseRulesItemExecuteRuleCategoriesList =
-  ReadonlyArray<string>;
+export type UpdateResponseRulesItemExecuteRuleCategoriesList = Array<string>;
 export const UpdateResponseRulesItemExecuteRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -85210,7 +85099,7 @@ export const UpdateResponseRulesItemExecuteRuleExposedCredentialCheck =
   }) as any as S.Schema<UpdateResponseRulesItemExecuteRuleExposedCredentialCheck>;
 
 export type UpdateResponseRulesItemExecuteRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const UpdateResponseRulesItemExecuteRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -85323,7 +85212,7 @@ export const UpdateResponseRulesItemForceConnectionCloseRuleAction =
   /*@__PURE__*/ S.String;
 
 export type UpdateResponseRulesItemForceConnectionCloseRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const UpdateResponseRulesItemForceConnectionCloseRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -85347,7 +85236,7 @@ export const UpdateResponseRulesItemForceConnectionCloseRuleExposedCredentialChe
   }) as any as S.Schema<UpdateResponseRulesItemForceConnectionCloseRuleExposedCredentialCheck>;
 
 export type UpdateResponseRulesItemForceConnectionCloseRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const UpdateResponseRulesItemForceConnectionCloseRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -85458,8 +85347,7 @@ export const UpdateResponseRulesItemForceConnectionCloseRule =
 export type UpdateResponseRulesItemJSChallengeAction = "js_challenge";
 export const UpdateResponseRulesItemJSChallengeAction = /*@__PURE__*/ S.String;
 
-export type UpdateResponseRulesItemJSChallengeCategoriesList =
-  ReadonlyArray<string>;
+export type UpdateResponseRulesItemJSChallengeCategoriesList = Array<string>;
 export const UpdateResponseRulesItemJSChallengeCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -85482,7 +85370,7 @@ export const UpdateResponseRulesItemJSChallengeExposedCredentialCheck =
   }) as any as S.Schema<UpdateResponseRulesItemJSChallengeExposedCredentialCheck>;
 
 export type UpdateResponseRulesItemJSChallengeRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const UpdateResponseRulesItemJSChallengeRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -85588,8 +85476,7 @@ export const UpdateResponseRulesItemJSChallenge = /*@__PURE__*/ S.suspend(() =>
 export type UpdateResponseRulesItemLogRuleAction = "log";
 export const UpdateResponseRulesItemLogRuleAction = /*@__PURE__*/ S.String;
 
-export type UpdateResponseRulesItemLogRuleCategoriesList =
-  ReadonlyArray<string>;
+export type UpdateResponseRulesItemLogRuleCategoriesList = Array<string>;
 export const UpdateResponseRulesItemLogRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -85612,7 +85499,7 @@ export const UpdateResponseRulesItemLogRuleExposedCredentialCheck =
   }) as any as S.Schema<UpdateResponseRulesItemLogRuleExposedCredentialCheck>;
 
 export type UpdateResponseRulesItemLogRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const UpdateResponseRulesItemLogRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -85735,7 +85622,7 @@ export const UpdateResponseRulesItemLogCustomFieldRuleActionParametersCookieFiel
   }) as any as S.Schema<UpdateResponseRulesItemLogCustomFieldRuleActionParametersCookieFieldsItem>;
 
 export type UpdateResponseRulesItemLogCustomFieldRuleActionParametersCookieFieldsList =
-  ReadonlyArray<UpdateResponseRulesItemLogCustomFieldRuleActionParametersCookieFieldsItem>;
+  Array<UpdateResponseRulesItemLogCustomFieldRuleActionParametersCookieFieldsItem>;
 export const UpdateResponseRulesItemLogCustomFieldRuleActionParametersCookieFieldsList =
   /*@__PURE__*/ S.Array(
     UpdateResponseRulesItemLogCustomFieldRuleActionParametersCookieFieldsItem,
@@ -85761,7 +85648,7 @@ export const UpdateResponseRulesItemLogCustomFieldRuleActionParametersRawRespons
   }) as any as S.Schema<UpdateResponseRulesItemLogCustomFieldRuleActionParametersRawResponseFieldsItem>;
 
 export type UpdateResponseRulesItemLogCustomFieldRuleActionParametersRawResponseFieldsList =
-  ReadonlyArray<UpdateResponseRulesItemLogCustomFieldRuleActionParametersRawResponseFieldsItem>;
+  Array<UpdateResponseRulesItemLogCustomFieldRuleActionParametersRawResponseFieldsItem>;
 export const UpdateResponseRulesItemLogCustomFieldRuleActionParametersRawResponseFieldsList =
   /*@__PURE__*/ S.Array(
     UpdateResponseRulesItemLogCustomFieldRuleActionParametersRawResponseFieldsItem,
@@ -85782,7 +85669,7 @@ export const UpdateResponseRulesItemLogCustomFieldRuleActionParametersRequestFie
   }) as any as S.Schema<UpdateResponseRulesItemLogCustomFieldRuleActionParametersRequestFieldsItem>;
 
 export type UpdateResponseRulesItemLogCustomFieldRuleActionParametersRequestFieldsList =
-  ReadonlyArray<UpdateResponseRulesItemLogCustomFieldRuleActionParametersRequestFieldsItem>;
+  Array<UpdateResponseRulesItemLogCustomFieldRuleActionParametersRequestFieldsItem>;
 export const UpdateResponseRulesItemLogCustomFieldRuleActionParametersRequestFieldsList =
   /*@__PURE__*/ S.Array(
     UpdateResponseRulesItemLogCustomFieldRuleActionParametersRequestFieldsItem,
@@ -85808,7 +85695,7 @@ export const UpdateResponseRulesItemLogCustomFieldRuleActionParametersResponseFi
   }) as any as S.Schema<UpdateResponseRulesItemLogCustomFieldRuleActionParametersResponseFieldsItem>;
 
 export type UpdateResponseRulesItemLogCustomFieldRuleActionParametersResponseFieldsList =
-  ReadonlyArray<UpdateResponseRulesItemLogCustomFieldRuleActionParametersResponseFieldsItem>;
+  Array<UpdateResponseRulesItemLogCustomFieldRuleActionParametersResponseFieldsItem>;
 export const UpdateResponseRulesItemLogCustomFieldRuleActionParametersResponseFieldsList =
   /*@__PURE__*/ S.Array(
     UpdateResponseRulesItemLogCustomFieldRuleActionParametersResponseFieldsItem,
@@ -85829,7 +85716,7 @@ export const UpdateResponseRulesItemLogCustomFieldRuleActionParametersTransforme
   }) as any as S.Schema<UpdateResponseRulesItemLogCustomFieldRuleActionParametersTransformedRequestFieldsItem>;
 
 export type UpdateResponseRulesItemLogCustomFieldRuleActionParametersTransformedRequestFieldsList =
-  ReadonlyArray<UpdateResponseRulesItemLogCustomFieldRuleActionParametersTransformedRequestFieldsItem>;
+  Array<UpdateResponseRulesItemLogCustomFieldRuleActionParametersTransformedRequestFieldsItem>;
 export const UpdateResponseRulesItemLogCustomFieldRuleActionParametersTransformedRequestFieldsList =
   /*@__PURE__*/ S.Array(
     UpdateResponseRulesItemLogCustomFieldRuleActionParametersTransformedRequestFieldsItem,
@@ -85881,7 +85768,7 @@ export const UpdateResponseRulesItemLogCustomFieldRuleActionParameters =
   }) as any as S.Schema<UpdateResponseRulesItemLogCustomFieldRuleActionParameters>;
 
 export type UpdateResponseRulesItemLogCustomFieldRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const UpdateResponseRulesItemLogCustomFieldRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -85905,7 +85792,7 @@ export const UpdateResponseRulesItemLogCustomFieldRuleExposedCredentialCheck =
   }) as any as S.Schema<UpdateResponseRulesItemLogCustomFieldRuleExposedCredentialCheck>;
 
 export type UpdateResponseRulesItemLogCustomFieldRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const UpdateResponseRulesItemLogCustomFieldRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -86021,7 +85908,7 @@ export const UpdateResponseRulesItemManagedChallengeRuleAction =
   /*@__PURE__*/ S.String;
 
 export type UpdateResponseRulesItemManagedChallengeRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const UpdateResponseRulesItemManagedChallengeRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -86045,7 +85932,7 @@ export const UpdateResponseRulesItemManagedChallengeRuleExposedCredentialCheck =
   }) as any as S.Schema<UpdateResponseRulesItemManagedChallengeRuleExposedCredentialCheck>;
 
 export type UpdateResponseRulesItemManagedChallengeRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const UpdateResponseRulesItemManagedChallengeRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -86246,8 +86133,7 @@ export const UpdateResponseRulesItemRedirectRuleActionParameters =
     identifier: "UpdateResponseRulesItemRedirectRuleActionParameters",
   }) as any as S.Schema<UpdateResponseRulesItemRedirectRuleActionParameters>;
 
-export type UpdateResponseRulesItemRedirectRuleCategoriesList =
-  ReadonlyArray<string>;
+export type UpdateResponseRulesItemRedirectRuleCategoriesList = Array<string>;
 export const UpdateResponseRulesItemRedirectRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -86270,7 +86156,7 @@ export const UpdateResponseRulesItemRedirectRuleExposedCredentialCheck =
   }) as any as S.Schema<UpdateResponseRulesItemRedirectRuleExposedCredentialCheck>;
 
 export type UpdateResponseRulesItemRedirectRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const UpdateResponseRulesItemRedirectRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -86629,8 +86515,7 @@ export const UpdateResponseRulesItemRewriteRuleActionParameters =
     identifier: "UpdateResponseRulesItemRewriteRuleActionParameters",
   }) as any as S.Schema<UpdateResponseRulesItemRewriteRuleActionParameters>;
 
-export type UpdateResponseRulesItemRewriteRuleCategoriesList =
-  ReadonlyArray<string>;
+export type UpdateResponseRulesItemRewriteRuleCategoriesList = Array<string>;
 export const UpdateResponseRulesItemRewriteRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -86653,7 +86538,7 @@ export const UpdateResponseRulesItemRewriteRuleExposedCredentialCheck =
   }) as any as S.Schema<UpdateResponseRulesItemRewriteRuleExposedCredentialCheck>;
 
 export type UpdateResponseRulesItemRewriteRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const UpdateResponseRulesItemRewriteRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -86813,8 +86698,7 @@ export const UpdateResponseRulesItemRouteRuleActionParameters =
     identifier: "UpdateResponseRulesItemRouteRuleActionParameters",
   }) as any as S.Schema<UpdateResponseRulesItemRouteRuleActionParameters>;
 
-export type UpdateResponseRulesItemRouteRuleCategoriesList =
-  ReadonlyArray<string>;
+export type UpdateResponseRulesItemRouteRuleCategoriesList = Array<string>;
 export const UpdateResponseRulesItemRouteRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -86837,7 +86721,7 @@ export const UpdateResponseRulesItemRouteRuleExposedCredentialCheck =
   }) as any as S.Schema<UpdateResponseRulesItemRouteRuleExposedCredentialCheck>;
 
 export type UpdateResponseRulesItemRouteRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const UpdateResponseRulesItemRouteRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -86960,8 +86844,7 @@ export const UpdateResponseRulesItemScoreRuleActionParameters =
     identifier: "UpdateResponseRulesItemScoreRuleActionParameters",
   }) as any as S.Schema<UpdateResponseRulesItemScoreRuleActionParameters>;
 
-export type UpdateResponseRulesItemScoreRuleCategoriesList =
-  ReadonlyArray<string>;
+export type UpdateResponseRulesItemScoreRuleCategoriesList = Array<string>;
 export const UpdateResponseRulesItemScoreRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -86984,7 +86867,7 @@ export const UpdateResponseRulesItemScoreRuleExposedCredentialCheck =
   }) as any as S.Schema<UpdateResponseRulesItemScoreRuleExposedCredentialCheck>;
 
 export type UpdateResponseRulesItemScoreRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const UpdateResponseRulesItemScoreRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -87182,8 +87065,7 @@ export const UpdateResponseRulesItemServeErrorRuleActionParameters =
     identifier: "UpdateResponseRulesItemServeErrorRuleActionParameters",
   }) as any as S.Schema<UpdateResponseRulesItemServeErrorRuleActionParameters>;
 
-export type UpdateResponseRulesItemServeErrorRuleCategoriesList =
-  ReadonlyArray<string>;
+export type UpdateResponseRulesItemServeErrorRuleCategoriesList = Array<string>;
 export const UpdateResponseRulesItemServeErrorRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -87206,7 +87088,7 @@ export const UpdateResponseRulesItemServeErrorRuleExposedCredentialCheck =
   }) as any as S.Schema<UpdateResponseRulesItemServeErrorRuleExposedCredentialCheck>;
 
 export type UpdateResponseRulesItemServeErrorRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const UpdateResponseRulesItemServeErrorRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -87603,7 +87485,7 @@ export const UpdateResponseRulesItemSetCacheControlActionParametersNoCacheSetDir
   /*@__PURE__*/ S.String;
 
 export type UpdateResponseRulesItemSetCacheControlActionParametersNoCacheSetDirectiveQualifiersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const UpdateResponseRulesItemSetCacheControlActionParametersNoCacheSetDirectiveQualifiersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -87822,7 +87704,7 @@ export const UpdateResponseRulesItemSetCacheControlActionParametersPrivateSetDir
   /*@__PURE__*/ S.String;
 
 export type UpdateResponseRulesItemSetCacheControlActionParametersPrivateSetDirectiveQualifiersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const UpdateResponseRulesItemSetCacheControlActionParametersPrivateSetDirectiveQualifiersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -88352,7 +88234,7 @@ export const UpdateResponseRulesItemSetCacheControlActionParameters =
   }) as any as S.Schema<UpdateResponseRulesItemSetCacheControlActionParameters>;
 
 export type UpdateResponseRulesItemSetCacheControlCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const UpdateResponseRulesItemSetCacheControlCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -88375,7 +88257,7 @@ export const UpdateResponseRulesItemSetCacheControlExposedCredentialCheck =
   }) as any as S.Schema<UpdateResponseRulesItemSetCacheControlExposedCredentialCheck>;
 
 export type UpdateResponseRulesItemSetCacheControlRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const UpdateResponseRulesItemSetCacheControlRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -88491,7 +88373,7 @@ export const UpdateResponseRulesItemSetCacheSettingsRuleAction =
   /*@__PURE__*/ S.String;
 
 export type UpdateResponseRulesItemSetCacheSettingsRuleActionParametersAdditionalCacheablePortsList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const UpdateResponseRulesItemSetCacheSettingsRuleActionParametersAdditionalCacheablePortsList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -88520,14 +88402,14 @@ export const UpdateResponseRulesItemSetCacheSettingsRuleActionParametersBrowserT
   }) as any as S.Schema<UpdateResponseRulesItemSetCacheSettingsRuleActionParametersBrowserTtl>;
 
 export type UpdateResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookieCheckPresenceList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const UpdateResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookieCheckPresenceList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<UpdateResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookieCheckPresenceList>;
 
 export type UpdateResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookieIncludeList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const UpdateResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookieIncludeList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -88557,14 +88439,14 @@ export const UpdateResponseRulesItemSetCacheSettingsRuleActionParametersCacheKey
   }) as any as S.Schema<UpdateResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookie>;
 
 export type UpdateResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderCheckPresenceList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const UpdateResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderCheckPresenceList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<UpdateResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderCheckPresenceList>;
 
 export type UpdateResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderContainsValueList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const UpdateResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderContainsValueList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -88583,7 +88465,7 @@ export const UpdateResponseRulesItemSetCacheSettingsRuleActionParametersCacheKey
   ) as any as S.Schema<UpdateResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderContainsMap>;
 
 export type UpdateResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderIncludeList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const UpdateResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderIncludeList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -88635,7 +88517,7 @@ export const UpdateResponseRulesItemSetCacheSettingsRuleActionParametersCacheKey
   }) as any as S.Schema<UpdateResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHost>;
 
 export type UpdateResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringExcludeListList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const UpdateResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringExcludeListList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -88661,7 +88543,7 @@ export const UpdateResponseRulesItemSetCacheSettingsRuleActionParametersCacheKey
   }) as any as S.Schema<UpdateResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringExclude>;
 
 export type UpdateResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringIncludeListList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const UpdateResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringIncludeListList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -88862,7 +88744,7 @@ export const UpdateResponseRulesItemSetCacheSettingsRuleActionParametersEdgeTtlS
   }) as any as S.Schema<UpdateResponseRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlItem>;
 
 export type UpdateResponseRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlList =
-  ReadonlyArray<UpdateResponseRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlItem>;
+  Array<UpdateResponseRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlItem>;
 export const UpdateResponseRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlList =
   /*@__PURE__*/ S.Array(
     UpdateResponseRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlItem,
@@ -88948,14 +88830,14 @@ export const UpdateResponseRulesItemSetCacheSettingsRuleActionParametersVaryHead
   /*@__PURE__*/ S.String;
 
 export type UpdateResponseRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValueLanguagesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const UpdateResponseRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValueLanguagesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<UpdateResponseRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValueLanguagesList>;
 
 export type UpdateResponseRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValueMediaTypesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const UpdateResponseRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValueMediaTypesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -89118,7 +89000,7 @@ export const UpdateResponseRulesItemSetCacheSettingsRuleActionParameters =
   }) as any as S.Schema<UpdateResponseRulesItemSetCacheSettingsRuleActionParameters>;
 
 export type UpdateResponseRulesItemSetCacheSettingsRuleCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const UpdateResponseRulesItemSetCacheSettingsRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -89142,7 +89024,7 @@ export const UpdateResponseRulesItemSetCacheSettingsRuleExposedCredentialCheck =
   }) as any as S.Schema<UpdateResponseRulesItemSetCacheSettingsRuleExposedCredentialCheck>;
 
 export type UpdateResponseRulesItemSetCacheSettingsRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const UpdateResponseRulesItemSetCacheSettingsRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -89263,7 +89145,7 @@ export const UpdateResponseRulesItemSetCacheTagsActionParametersAddCacheTagsValu
   /*@__PURE__*/ S.String;
 
 export type UpdateResponseRulesItemSetCacheTagsActionParametersAddCacheTagsValuesValuesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const UpdateResponseRulesItemSetCacheTagsActionParametersAddCacheTagsValuesValuesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -89317,7 +89199,7 @@ export const UpdateResponseRulesItemSetCacheTagsActionParametersRemoveCacheTagsV
   /*@__PURE__*/ S.String;
 
 export type UpdateResponseRulesItemSetCacheTagsActionParametersRemoveCacheTagsValuesValuesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const UpdateResponseRulesItemSetCacheTagsActionParametersRemoveCacheTagsValuesValuesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -89371,7 +89253,7 @@ export const UpdateResponseRulesItemSetCacheTagsActionParametersSetCacheTagsValu
   /*@__PURE__*/ S.String;
 
 export type UpdateResponseRulesItemSetCacheTagsActionParametersSetCacheTagsValuesValuesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const UpdateResponseRulesItemSetCacheTagsActionParametersSetCacheTagsValuesValuesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -89460,8 +89342,7 @@ export const UpdateResponseRulesItemSetCacheTagsActionParameters =
     identifier: "UpdateResponseRulesItemSetCacheTagsActionParameters",
   }) as any as S.Schema<UpdateResponseRulesItemSetCacheTagsActionParameters>;
 
-export type UpdateResponseRulesItemSetCacheTagsCategoriesList =
-  ReadonlyArray<string>;
+export type UpdateResponseRulesItemSetCacheTagsCategoriesList = Array<string>;
 export const UpdateResponseRulesItemSetCacheTagsCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -89484,7 +89365,7 @@ export const UpdateResponseRulesItemSetCacheTagsExposedCredentialCheck =
   }) as any as S.Schema<UpdateResponseRulesItemSetCacheTagsExposedCredentialCheck>;
 
 export type UpdateResponseRulesItemSetCacheTagsRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const UpdateResponseRulesItemSetCacheTagsRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -89756,8 +89637,7 @@ export const UpdateResponseRulesItemSetConfigRuleActionParameters =
     identifier: "UpdateResponseRulesItemSetConfigRuleActionParameters",
   }) as any as S.Schema<UpdateResponseRulesItemSetConfigRuleActionParameters>;
 
-export type UpdateResponseRulesItemSetConfigRuleCategoriesList =
-  ReadonlyArray<string>;
+export type UpdateResponseRulesItemSetConfigRuleCategoriesList = Array<string>;
 export const UpdateResponseRulesItemSetConfigRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -89780,7 +89660,7 @@ export const UpdateResponseRulesItemSetConfigRuleExposedCredentialCheck =
   }) as any as S.Schema<UpdateResponseRulesItemSetConfigRuleExposedCredentialCheck>;
 
 export type UpdateResponseRulesItemSetConfigRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const UpdateResponseRulesItemSetConfigRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -89926,7 +89806,7 @@ export const UpdateResponseRulesItemSkipRuleActionParametersPhasesItem =
   /*@__PURE__*/ S.String;
 
 export type UpdateResponseRulesItemSkipRuleActionParametersPhasesList =
-  ReadonlyArray<UpdateResponseRulesItemSkipRuleActionParametersPhasesItem>;
+  Array<UpdateResponseRulesItemSkipRuleActionParametersPhasesItem>;
 export const UpdateResponseRulesItemSkipRuleActionParametersPhasesList =
   /*@__PURE__*/ S.Array(
     UpdateResponseRulesItemSkipRuleActionParametersPhasesItem,
@@ -89944,14 +89824,14 @@ export const UpdateResponseRulesItemSkipRuleActionParametersProductsItem =
   /*@__PURE__*/ S.String;
 
 export type UpdateResponseRulesItemSkipRuleActionParametersProductsList =
-  ReadonlyArray<UpdateResponseRulesItemSkipRuleActionParametersProductsItem>;
+  Array<UpdateResponseRulesItemSkipRuleActionParametersProductsItem>;
 export const UpdateResponseRulesItemSkipRuleActionParametersProductsList =
   /*@__PURE__*/ S.Array(
     UpdateResponseRulesItemSkipRuleActionParametersProductsItem,
   ) as any as S.Schema<UpdateResponseRulesItemSkipRuleActionParametersProductsList>;
 
 export type UpdateResponseRulesItemSkipRuleActionParametersRulesValueList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const UpdateResponseRulesItemSkipRuleActionParametersRulesValueList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -89973,7 +89853,7 @@ export const UpdateResponseRulesItemSkipRuleActionParametersRuleset =
   /*@__PURE__*/ S.String;
 
 export type UpdateResponseRulesItemSkipRuleActionParametersRulesetsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const UpdateResponseRulesItemSkipRuleActionParametersRulesetsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -90017,8 +89897,7 @@ export const UpdateResponseRulesItemSkipRuleActionParameters =
     identifier: "UpdateResponseRulesItemSkipRuleActionParameters",
   }) as any as S.Schema<UpdateResponseRulesItemSkipRuleActionParameters>;
 
-export type UpdateResponseRulesItemSkipRuleCategoriesList =
-  ReadonlyArray<string>;
+export type UpdateResponseRulesItemSkipRuleCategoriesList = Array<string>;
 export const UpdateResponseRulesItemSkipRuleCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -90041,7 +89920,7 @@ export const UpdateResponseRulesItemSkipRuleExposedCredentialCheck =
   }) as any as S.Schema<UpdateResponseRulesItemSkipRuleExposedCredentialCheck>;
 
 export type UpdateResponseRulesItemSkipRuleRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const UpdateResponseRulesItemSkipRuleRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -90167,7 +90046,7 @@ export const UpdateResponseRulesItemTransformResponseHTMLActionParameters =
   }) as any as S.Schema<UpdateResponseRulesItemTransformResponseHTMLActionParameters>;
 
 export type UpdateResponseRulesItemTransformResponseHTMLCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const UpdateResponseRulesItemTransformResponseHTMLCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -90191,7 +90070,7 @@ export const UpdateResponseRulesItemTransformResponseHTMLExposedCredentialCheck 
   }) as any as S.Schema<UpdateResponseRulesItemTransformResponseHTMLExposedCredentialCheck>;
 
 export type UpdateResponseRulesItemTransformResponseHTMLRatelimitCharacteristicsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const UpdateResponseRulesItemTransformResponseHTMLRatelimitCharacteristicsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -90566,7 +90445,7 @@ export const UpdateResponseRulesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateResponseRulesItem",
 }) as any as S.Schema<UpdateResponseRulesItem>;
 
-export type UpdateResponseRulesList = ReadonlyArray<UpdateResponseRulesItem>;
+export type UpdateResponseRulesList = Array<UpdateResponseRulesItem>;
 export const UpdateResponseRulesList = /*@__PURE__*/ S.Array(
   UpdateResponseRulesItem,
 ) as any as S.Schema<UpdateResponseRulesList>;

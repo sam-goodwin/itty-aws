@@ -97,7 +97,7 @@ export const DiagnosticInvocation = /*@__PURE__*/ S.suspend(() =>
 
 /** SolutionIds that are needed to be invoked. */
 export type DiagnosticResourcePropertiesInputInsightsList =
-  ReadonlyArray<DiagnosticInvocation>;
+  Array<DiagnosticInvocation>;
 export const DiagnosticResourcePropertiesInputInsightsList =
   /*@__PURE__*/ S.Array(
     DiagnosticInvocation,
@@ -200,7 +200,7 @@ export const DiagnosticResourcePropertiesGlobalParametersMap =
 
 /** SolutionIds that are needed to be invoked. */
 export type DiagnosticResourcePropertiesInsightsList =
-  ReadonlyArray<DiagnosticInvocation>;
+  Array<DiagnosticInvocation>;
 export const DiagnosticResourcePropertiesInsightsList = /*@__PURE__*/ S.Array(
   DiagnosticInvocation,
 ) as any as S.Schema<DiagnosticResourcePropertiesInsightsList>;
@@ -248,13 +248,13 @@ export const Insight = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Insight" }) as any as S.Schema<Insight>;
 
 /** The problems (if any) detected by this insight. */
-export type DiagnosticInsightsList = ReadonlyArray<Insight>;
+export type DiagnosticInsightsList = Array<Insight>;
 export const DiagnosticInsightsList = /*@__PURE__*/ S.Array(
   Insight,
 ) as any as S.Schema<DiagnosticInsightsList>;
 
 /** An array of additional nested error response info objects, as described by this contract. */
-export type ErrorDetailsList = ReadonlyArray<Error>;
+export type ErrorDetailsList = Array<Error>;
 export const ErrorDetailsList = /*@__PURE__*/ S.Array(
   S.suspend(() => Error),
 ) as any as S.Schema<ErrorDetailsList>;
@@ -298,8 +298,7 @@ export const Diagnostic = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Diagnostic" }) as any as S.Schema<Diagnostic>;
 
 /** Array of Diagnostics. */
-export type DiagnosticResourcePropertiesDiagnosticsList =
-  ReadonlyArray<Diagnostic>;
+export type DiagnosticResourcePropertiesDiagnosticsList = Array<Diagnostic>;
 export const DiagnosticResourcePropertiesDiagnosticsList =
   /*@__PURE__*/ S.Array(
     Diagnostic,
@@ -430,7 +429,7 @@ export const DiscoverySolutionListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DiscoverySolutionListRequest>;
 
 export type SolutionMetadataPropertiesRequiredParameterSetsItemList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const SolutionMetadataPropertiesRequiredParameterSetsItemList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -438,7 +437,7 @@ export const SolutionMetadataPropertiesRequiredParameterSetsItemList =
 
 /** Required parameters for invoking this particular solution. */
 export type SolutionMetadataPropertiesRequiredParameterSetsList =
-  ReadonlyArray<SolutionMetadataPropertiesRequiredParameterSetsItemList>;
+  Array<SolutionMetadataPropertiesRequiredParameterSetsItemList>;
 export const SolutionMetadataPropertiesRequiredParameterSetsList =
   /*@__PURE__*/ S.Array(
     SolutionMetadataPropertiesRequiredParameterSetsItemList,
@@ -494,8 +493,7 @@ export const SolutionMetadataResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SolutionMetadataResource>;
 
 /** The list of solution metadata. */
-export type DiscoveryResponseValueList =
-  ReadonlyArray<SolutionMetadataResource>;
+export type DiscoveryResponseValueList = Array<SolutionMetadataResource>;
 export const DiscoveryResponseValueList = /*@__PURE__*/ S.Array(
   SolutionMetadataResource,
 ) as any as S.Schema<DiscoveryResponseValueList>;
@@ -584,7 +582,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = ReadonlyArray<Operation>;
+export type OperationsListResponseValueList = Array<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;

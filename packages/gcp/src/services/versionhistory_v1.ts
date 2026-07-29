@@ -93,7 +93,7 @@ export const Platform = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Platform" }) as any as S.Schema<Platform>;
 
-export type PlatformList = ReadonlyArray<Platform>;
+export type PlatformList = Array<Platform>;
 export const PlatformList = /*@__PURE__*/ S.Array(
   Platform,
 ) as any as S.Schema<PlatformList>;
@@ -165,7 +165,7 @@ export const Channel = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Channel" }) as any as S.Schema<Channel>;
 
-export type ChannelList = ReadonlyArray<Channel>;
+export type ChannelList = Array<Channel>;
 export const ChannelList = /*@__PURE__*/ S.Array(
   Channel,
 ) as any as S.Schema<ChannelList>;
@@ -231,7 +231,7 @@ export const Version = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Version" }) as any as S.Schema<Version>;
 
-export type VersionList = ReadonlyArray<Version>;
+export type VersionList = Array<Version>;
 export const VersionList = /*@__PURE__*/ S.Array(
   Version,
 ) as any as S.Schema<VersionList>;
@@ -283,7 +283,7 @@ export const ListPlatformsChannelsVersionsReleasesRequest =
     identifier: "ListPlatformsChannelsVersionsReleasesRequest",
   }) as any as S.Schema<ListPlatformsChannelsVersionsReleasesRequest>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -302,7 +302,7 @@ export const RolloutData = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "RolloutData" }) as any as S.Schema<RolloutData>;
 
-export type RolloutDataList = ReadonlyArray<RolloutData>;
+export type RolloutDataList = Array<RolloutData>;
 export const RolloutDataList = /*@__PURE__*/ S.Array(
   RolloutData,
 ) as any as S.Schema<RolloutDataList>;
@@ -350,7 +350,7 @@ export const Release = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Release" }) as any as S.Schema<Release>;
 
-export type ReleaseList = ReadonlyArray<Release>;
+export type ReleaseList = Array<Release>;
 export const ReleaseList = /*@__PURE__*/ S.Array(
   Release,
 ) as any as S.Schema<ReleaseList>;

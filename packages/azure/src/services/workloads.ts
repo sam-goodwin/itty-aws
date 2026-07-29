@@ -250,7 +250,7 @@ export type MonitorPropertiesProvisioningState =
 export const MonitorPropertiesProvisioningState = /*@__PURE__*/ S.String;
 
 /** Array of details about specific errors that led to this reported error. */
-export type ErrorDetailsList = ReadonlyArray<Error>;
+export type ErrorDetailsList = Array<Error>;
 export const ErrorDetailsList = /*@__PURE__*/ S.Array(
   S.suspend(() => Error),
 ) as any as S.Schema<ErrorDetailsList>;
@@ -393,14 +393,13 @@ export const MonitorsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MonitorsDeleteRequest>;
 
 /** The operations list. */
-export type OperationStatusResultOperationsList =
-  ReadonlyArray<OperationStatusResult>;
+export type OperationStatusResultOperationsList = Array<OperationStatusResult>;
 export const OperationStatusResultOperationsList = /*@__PURE__*/ S.Array(
   S.suspend(() => OperationStatusResult),
 ) as any as S.Schema<OperationStatusResultOperationsList>;
 
 /** The error details. */
-export type ErrorDetailDetailsList = ReadonlyArray<ErrorDetail>;
+export type ErrorDetailDetailsList = Array<ErrorDetail>;
 export const ErrorDetailDetailsList = /*@__PURE__*/ S.Array(
   S.suspend(() => ErrorDetail),
 ) as any as S.Schema<ErrorDetailDetailsList>;
@@ -422,7 +421,7 @@ export const ErrorAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ErrorAdditionalInfo>;
 
 /** The error additional info. */
-export type ErrorDetailAdditionalInfoList = ReadonlyArray<ErrorAdditionalInfo>;
+export type ErrorDetailAdditionalInfoList = Array<ErrorAdditionalInfo>;
 export const ErrorDetailAdditionalInfoList = /*@__PURE__*/ S.Array(
   ErrorAdditionalInfo,
 ) as any as S.Schema<ErrorDetailAdditionalInfoList>;
@@ -485,8 +484,7 @@ export const OperationStatusResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationStatusResult>;
 
 /** The operations list. */
-export type MonitorsDeleteResponseOperationsList =
-  ReadonlyArray<OperationStatusResult>;
+export type MonitorsDeleteResponseOperationsList = Array<OperationStatusResult>;
 export const MonitorsDeleteResponseOperationsList = /*@__PURE__*/ S.Array(
   OperationStatusResult,
 ) as any as S.Schema<MonitorsDeleteResponseOperationsList>;
@@ -703,7 +701,7 @@ export const Monitor = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Monitor" }) as any as S.Schema<Monitor>;
 
 /** The list of SAP monitors. */
-export type MonitorListResultValueList = ReadonlyArray<Monitor>;
+export type MonitorListResultValueList = Array<Monitor>;
 export const MonitorListResultValueList = /*@__PURE__*/ S.Array(
   Monitor,
 ) as any as S.Schema<MonitorListResultValueList>;
@@ -952,7 +950,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = ReadonlyArray<Operation>;
+export type OperationsListResponseValueList = Array<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;
@@ -1182,7 +1180,7 @@ export const ProviderInstancesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The operations list. */
 export type ProviderInstancesDeleteResponseOperationsList =
-  ReadonlyArray<OperationStatusResult>;
+  Array<OperationStatusResult>;
 export const ProviderInstancesDeleteResponseOperationsList =
   /*@__PURE__*/ S.Array(
     OperationStatusResult,
@@ -1387,8 +1385,7 @@ export const ProviderInstance = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProviderInstance>;
 
 /** The list of provider instances. */
-export type ProviderInstanceListResultValueList =
-  ReadonlyArray<ProviderInstance>;
+export type ProviderInstanceListResultValueList = Array<ProviderInstance>;
 export const ProviderInstanceListResultValueList = /*@__PURE__*/ S.Array(
   ProviderInstance,
 ) as any as S.Schema<ProviderInstanceListResultValueList>;
@@ -1510,7 +1507,7 @@ export const StorageInformation_2 = /*@__PURE__*/ S.suspend(() =>
 
 /** Storage details of all the Storage Accounts attached to the App Virtual Machine. For e.g. NFS on AFS Shared Storage. */
 export type ApplicationServerVmDetailsStorageDetailsList_2 =
-  ReadonlyArray<StorageInformation_2>;
+  Array<StorageInformation_2>;
 export const ApplicationServerVmDetailsStorageDetailsList_2 =
   /*@__PURE__*/ S.Array(
     StorageInformation_2,
@@ -1537,7 +1534,7 @@ export const ApplicationServerVmDetails_2 = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of virtual machines. */
 export type SAPApplicationServerPropertiesVmDetailsList_2 =
-  ReadonlyArray<ApplicationServerVmDetails_2>;
+  Array<ApplicationServerVmDetails_2>;
 export const SAPApplicationServerPropertiesVmDetailsList_2 =
   /*@__PURE__*/ S.Array(
     ApplicationServerVmDetails_2,
@@ -1569,7 +1566,7 @@ export type SapVirtualInstanceProvisioningState =
 export const SapVirtualInstanceProvisioningState = /*@__PURE__*/ S.String;
 
 /** Internal error details. */
-export type ErrorDefinitionDetailsList = ReadonlyArray<ErrorDefinition>;
+export type ErrorDefinitionDetailsList = Array<ErrorDefinition>;
 export const ErrorDefinitionDetailsList = /*@__PURE__*/ S.Array(
   S.suspend(() => ErrorDefinition),
 ) as any as S.Schema<ErrorDefinitionDetailsList>;
@@ -1778,7 +1775,7 @@ export const StorageInformation = /*@__PURE__*/ S.suspend(() =>
 
 /** Storage details of all the Storage Accounts attached to the App Virtual Machine. For e.g. NFS on AFS Shared Storage. */
 export type ApplicationServerVmDetailsStorageDetailsList =
-  ReadonlyArray<StorageInformation>;
+  Array<StorageInformation>;
 export const ApplicationServerVmDetailsStorageDetailsList =
   /*@__PURE__*/ S.Array(
     StorageInformation,
@@ -1803,7 +1800,7 @@ export const ApplicationServerVmDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of virtual machines. */
 export type SAPApplicationServerPropertiesVmDetailsList =
-  ReadonlyArray<ApplicationServerVmDetails>;
+  Array<ApplicationServerVmDetails>;
 export const SAPApplicationServerPropertiesVmDetailsList =
   /*@__PURE__*/ S.Array(
     ApplicationServerVmDetails,
@@ -1970,7 +1967,7 @@ export const SAPApplicationServerInstancesDeleteRequest =
 
 /** The operations list. */
 export type SAPApplicationServerInstancesDeleteResponseOperationsList =
-  ReadonlyArray<OperationStatusResult>;
+  Array<OperationStatusResult>;
 export const SAPApplicationServerInstancesDeleteResponseOperationsList =
   /*@__PURE__*/ S.Array(
     OperationStatusResult,
@@ -2219,7 +2216,7 @@ export const SAPApplicationServerInstance_2 = /*@__PURE__*/ S.suspend(() =>
 
 /** The SAPApplicationServerInstance items on this page */
 export type SAPApplicationServerInstanceListResultValueList =
-  ReadonlyArray<SAPApplicationServerInstance_2>;
+  Array<SAPApplicationServerInstance_2>;
 export const SAPApplicationServerInstanceListResultValueList =
   /*@__PURE__*/ S.Array(
     SAPApplicationServerInstance_2,
@@ -2300,7 +2297,7 @@ export const SAPApplicationServerInstance = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets the list of SAP Application Server instance resources. */
 export type SAPApplicationServerInstanceListValueList =
-  ReadonlyArray<SAPApplicationServerInstance>;
+  Array<SAPApplicationServerInstance>;
 export const SAPApplicationServerInstanceListValueList = /*@__PURE__*/ S.Array(
   SAPApplicationServerInstance,
 ) as any as S.Schema<SAPApplicationServerInstanceListValueList>;
@@ -2355,7 +2352,7 @@ export const SapApplicationServerInstancesStartRequest =
 
 /** The operations list. */
 export type OperationStatusResultOperationsList_2 =
-  ReadonlyArray<OperationStatusResult_2>;
+  Array<OperationStatusResult_2>;
 export const OperationStatusResultOperationsList_2 = /*@__PURE__*/ S.Array(
   S.suspend(() => OperationStatusResult_2),
 ) as any as S.Schema<OperationStatusResultOperationsList_2>;
@@ -2399,7 +2396,7 @@ export const OperationStatusResult_2 = /*@__PURE__*/ S.suspend(() =>
 
 /** The operations list. */
 export type SapApplicationServerInstancesStartResponseOperationsList =
-  ReadonlyArray<OperationStatusResult_2>;
+  Array<OperationStatusResult_2>;
 export const SapApplicationServerInstancesStartResponseOperationsList =
   /*@__PURE__*/ S.Array(
     OperationStatusResult_2,
@@ -2475,7 +2472,7 @@ export const SAPApplicationServerInstancesStartInstanceRequest =
 
 /** The operations list. */
 export type SAPApplicationServerInstancesStartInstanceResponseOperationsList =
-  ReadonlyArray<OperationStatusResult>;
+  Array<OperationStatusResult>;
 export const SAPApplicationServerInstancesStartInstanceResponseOperationsList =
   /*@__PURE__*/ S.Array(
     OperationStatusResult,
@@ -2554,7 +2551,7 @@ export const SapApplicationServerInstancesStopRequest = /*@__PURE__*/ S.suspend(
 
 /** The operations list. */
 export type SapApplicationServerInstancesStopResponseOperationsList =
-  ReadonlyArray<OperationStatusResult_2>;
+  Array<OperationStatusResult_2>;
 export const SapApplicationServerInstancesStopResponseOperationsList =
   /*@__PURE__*/ S.Array(
     OperationStatusResult_2,
@@ -2633,7 +2630,7 @@ export const SAPApplicationServerInstancesStopInstanceRequest =
 
 /** The operations list. */
 export type SAPApplicationServerInstancesStopInstanceResponseOperationsList =
-  ReadonlyArray<OperationStatusResult>;
+  Array<OperationStatusResult>;
 export const SAPApplicationServerInstancesStopInstanceResponseOperationsList =
   /*@__PURE__*/ S.Array(
     OperationStatusResult,
@@ -2896,7 +2893,7 @@ export const SAPAvailabilityZonePair = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets the list of availability zone pairs. */
 export type SAPAvailabilityZoneDetailsResultAvailabilityZonePairsList =
-  ReadonlyArray<SAPAvailabilityZonePair>;
+  Array<SAPAvailabilityZonePair>;
 export const SAPAvailabilityZoneDetailsResultAvailabilityZonePairsList =
   /*@__PURE__*/ S.Array(
     SAPAvailabilityZonePair,
@@ -3137,7 +3134,7 @@ export const CentralServerVirtualMachineType = /*@__PURE__*/ S.String;
 
 /** Storage details of all the Storage Accounts attached to the ASCS Virtual Machine. For e.g. NFS on AFS Shared Storage. */
 export type CentralServerVmDetailsStorageDetailsList =
-  ReadonlyArray<StorageInformation>;
+  Array<StorageInformation>;
 export const CentralServerVmDetailsStorageDetailsList = /*@__PURE__*/ S.Array(
   StorageInformation,
 ) as any as S.Schema<CentralServerVmDetailsStorageDetailsList>;
@@ -3161,7 +3158,7 @@ export const CentralServerVmDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of virtual machines corresponding to the Central Services instance. */
 export type SAPCentralServerPropertiesVmDetailsList =
-  ReadonlyArray<CentralServerVmDetails>;
+  Array<CentralServerVmDetails>;
 export const SAPCentralServerPropertiesVmDetailsList = /*@__PURE__*/ S.Array(
   CentralServerVmDetails,
 ) as any as S.Schema<SAPCentralServerPropertiesVmDetailsList>;
@@ -3272,7 +3269,7 @@ export const SAPCentralInstancesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The operations list. */
 export type SAPCentralInstancesDeleteResponseOperationsList =
-  ReadonlyArray<OperationStatusResult>;
+  Array<OperationStatusResult>;
 export const SAPCentralInstancesDeleteResponseOperationsList =
   /*@__PURE__*/ S.Array(
     OperationStatusResult,
@@ -3442,8 +3439,7 @@ export const SAPCentralServerInstance = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SAPCentralServerInstance>;
 
 /** Gets the list of SAP central services instance resources. */
-export type SAPCentralInstanceListValueList =
-  ReadonlyArray<SAPCentralServerInstance>;
+export type SAPCentralInstanceListValueList = Array<SAPCentralServerInstance>;
 export const SAPCentralInstanceListValueList = /*@__PURE__*/ S.Array(
   SAPCentralServerInstance,
 ) as any as S.Schema<SAPCentralInstanceListValueList>;
@@ -3495,7 +3491,7 @@ export const SAPCentralInstancesStartInstanceRequest = /*@__PURE__*/ S.suspend(
 
 /** The operations list. */
 export type SAPCentralInstancesStartInstanceResponseOperationsList =
-  ReadonlyArray<OperationStatusResult>;
+  Array<OperationStatusResult>;
 export const SAPCentralInstancesStartInstanceResponseOperationsList =
   /*@__PURE__*/ S.Array(
     OperationStatusResult,
@@ -3571,7 +3567,7 @@ export const SAPCentralInstancesStopInstanceRequest = /*@__PURE__*/ S.suspend(
 
 /** The operations list. */
 export type SAPCentralInstancesStopInstanceResponseOperationsList =
-  ReadonlyArray<OperationStatusResult>;
+  Array<OperationStatusResult>;
 export const SAPCentralInstancesStopInstanceResponseOperationsList =
   /*@__PURE__*/ S.Array(
     OperationStatusResult,
@@ -3884,7 +3880,7 @@ export const EnqueueReplicationServerProperties_2 = /*@__PURE__*/ S.suspend(
 
 /** Storage details of all the Storage Accounts attached to the ASCS Virtual Machine. For e.g. NFS on AFS Shared Storage. */
 export type CentralServerVmDetailsStorageDetailsList_2 =
-  ReadonlyArray<StorageInformation_2>;
+  Array<StorageInformation_2>;
 export const CentralServerVmDetailsStorageDetailsList_2 = /*@__PURE__*/ S.Array(
   StorageInformation_2,
 ) as any as S.Schema<CentralServerVmDetailsStorageDetailsList_2>;
@@ -3910,7 +3906,7 @@ export const CentralServerVmDetails_2 = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of virtual machines corresponding to the Central Services instance. */
 export type SAPCentralServerPropertiesVmDetailsList_2 =
-  ReadonlyArray<CentralServerVmDetails_2>;
+  Array<CentralServerVmDetails_2>;
 export const SAPCentralServerPropertiesVmDetailsList_2 = /*@__PURE__*/ S.Array(
   CentralServerVmDetails_2,
 ) as any as S.Schema<SAPCentralServerPropertiesVmDetailsList_2>;
@@ -4164,7 +4160,7 @@ export const SAPCentralServerInstance_2 = /*@__PURE__*/ S.suspend(() =>
 
 /** The SAPCentralServerInstance items on this page */
 export type SAPCentralServerInstanceListResultValueList =
-  ReadonlyArray<SAPCentralServerInstance_2>;
+  Array<SAPCentralServerInstance_2>;
 export const SAPCentralServerInstanceListResultValueList =
   /*@__PURE__*/ S.Array(
     SAPCentralServerInstance_2,
@@ -4220,7 +4216,7 @@ export const SapCentralServerInstancesStartRequest = /*@__PURE__*/ S.suspend(
 
 /** The operations list. */
 export type SapCentralServerInstancesStartResponseOperationsList =
-  ReadonlyArray<OperationStatusResult_2>;
+  Array<OperationStatusResult_2>;
 export const SapCentralServerInstancesStartResponseOperationsList =
   /*@__PURE__*/ S.Array(
     OperationStatusResult_2,
@@ -4302,7 +4298,7 @@ export const SapCentralServerInstancesStopRequest = /*@__PURE__*/ S.suspend(
 
 /** The operations list. */
 export type SapCentralServerInstancesStopResponseOperationsList =
-  ReadonlyArray<OperationStatusResult_2>;
+  Array<OperationStatusResult_2>;
 export const SapCentralServerInstancesStopResponseOperationsList =
   /*@__PURE__*/ S.Array(
     OperationStatusResult_2,
@@ -4494,8 +4490,7 @@ export const SapDatabaseInstancesCreateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<SapDatabaseInstancesCreateResponseTagsMap>;
 
 /** Storage details of all the Storage Accounts attached to the Database Virtual Machine. For e.g. NFS on AFS Shared Storage. */
-export type DatabaseVmDetailsStorageDetailsList_2 =
-  ReadonlyArray<StorageInformation_2>;
+export type DatabaseVmDetailsStorageDetailsList_2 = Array<StorageInformation_2>;
 export const DatabaseVmDetailsStorageDetailsList_2 = /*@__PURE__*/ S.Array(
   StorageInformation_2,
 ) as any as S.Schema<DatabaseVmDetailsStorageDetailsList_2>;
@@ -4520,8 +4515,7 @@ export const DatabaseVmDetails_2 = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DatabaseVmDetails_2>;
 
 /** The list of virtual machines corresponding to the Database resource. */
-export type SAPDatabasePropertiesVmDetailsList_2 =
-  ReadonlyArray<DatabaseVmDetails_2>;
+export type SAPDatabasePropertiesVmDetailsList_2 = Array<DatabaseVmDetails_2>;
 export const SAPDatabasePropertiesVmDetailsList_2 = /*@__PURE__*/ S.Array(
   DatabaseVmDetails_2,
 ) as any as S.Schema<SAPDatabasePropertiesVmDetailsList_2>;
@@ -4648,8 +4642,7 @@ export const SAPDatabaseInstancesCreateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<SAPDatabaseInstancesCreateResponseTagsMap>;
 
 /** Storage details of all the Storage Accounts attached to the Database Virtual Machine. For e.g. NFS on AFS Shared Storage. */
-export type DatabaseVmDetailsStorageDetailsList =
-  ReadonlyArray<StorageInformation>;
+export type DatabaseVmDetailsStorageDetailsList = Array<StorageInformation>;
 export const DatabaseVmDetailsStorageDetailsList = /*@__PURE__*/ S.Array(
   StorageInformation,
 ) as any as S.Schema<DatabaseVmDetailsStorageDetailsList>;
@@ -4672,8 +4665,7 @@ export const DatabaseVmDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DatabaseVmDetails>;
 
 /** The list of virtual machines corresponding to the Database resource. */
-export type SAPDatabasePropertiesVmDetailsList =
-  ReadonlyArray<DatabaseVmDetails>;
+export type SAPDatabasePropertiesVmDetailsList = Array<DatabaseVmDetails>;
 export const SAPDatabasePropertiesVmDetailsList = /*@__PURE__*/ S.Array(
   DatabaseVmDetails,
 ) as any as S.Schema<SAPDatabasePropertiesVmDetailsList>;
@@ -4807,7 +4799,7 @@ export const SAPDatabaseInstancesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The operations list. */
 export type SAPDatabaseInstancesDeleteResponseOperationsList =
-  ReadonlyArray<OperationStatusResult>;
+  Array<OperationStatusResult>;
 export const SAPDatabaseInstancesDeleteResponseOperationsList =
   /*@__PURE__*/ S.Array(
     OperationStatusResult,
@@ -5044,7 +5036,7 @@ export const SAPDatabaseInstance_2 = /*@__PURE__*/ S.suspend(() =>
 
 /** The SAPDatabaseInstance items on this page */
 export type SAPDatabaseInstanceListResultValueList =
-  ReadonlyArray<SAPDatabaseInstance_2>;
+  Array<SAPDatabaseInstance_2>;
 export const SAPDatabaseInstanceListResultValueList = /*@__PURE__*/ S.Array(
   SAPDatabaseInstance_2,
 ) as any as S.Schema<SAPDatabaseInstanceListResultValueList>;
@@ -5121,8 +5113,7 @@ export const SAPDatabaseInstance = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SAPDatabaseInstance>;
 
 /** Gets the list of SAP Database instances. */
-export type SAPDatabaseInstanceListValueList =
-  ReadonlyArray<SAPDatabaseInstance>;
+export type SAPDatabaseInstanceListValueList = Array<SAPDatabaseInstance>;
 export const SAPDatabaseInstanceListValueList = /*@__PURE__*/ S.Array(
   SAPDatabaseInstance,
 ) as any as S.Schema<SAPDatabaseInstanceListValueList>;
@@ -5176,7 +5167,7 @@ export const SapDatabaseInstancesStartRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The operations list. */
 export type SapDatabaseInstancesStartResponseOperationsList =
-  ReadonlyArray<OperationStatusResult_2>;
+  Array<OperationStatusResult_2>;
 export const SapDatabaseInstancesStartResponseOperationsList =
   /*@__PURE__*/ S.Array(
     OperationStatusResult_2,
@@ -5249,7 +5240,7 @@ export const SAPDatabaseInstancesStartInstanceRequest = /*@__PURE__*/ S.suspend(
 
 /** The operations list. */
 export type SAPDatabaseInstancesStartInstanceResponseOperationsList =
-  ReadonlyArray<OperationStatusResult>;
+  Array<OperationStatusResult>;
 export const SAPDatabaseInstancesStartInstanceResponseOperationsList =
   /*@__PURE__*/ S.Array(
     OperationStatusResult,
@@ -5327,7 +5318,7 @@ export const SapDatabaseInstancesStopRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The operations list. */
 export type SapDatabaseInstancesStopResponseOperationsList =
-  ReadonlyArray<OperationStatusResult_2>;
+  Array<OperationStatusResult_2>;
 export const SapDatabaseInstancesStopResponseOperationsList =
   /*@__PURE__*/ S.Array(
     OperationStatusResult_2,
@@ -5403,7 +5394,7 @@ export const SAPDatabaseInstancesStopInstanceRequest = /*@__PURE__*/ S.suspend(
 
 /** The operations list. */
 export type SAPDatabaseInstancesStopInstanceResponseOperationsList =
-  ReadonlyArray<OperationStatusResult>;
+  Array<OperationStatusResult>;
 export const SAPDatabaseInstancesStopInstanceResponseOperationsList =
   /*@__PURE__*/ S.Array(
     OperationStatusResult,
@@ -5718,7 +5709,7 @@ export const DiskDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of supported disks for a given VM Sku. */
 export type SAPDiskConfigurationSupportedConfigurationsList =
-  ReadonlyArray<DiskDetails>;
+  Array<DiskDetails>;
 export const SAPDiskConfigurationSupportedConfigurationsList =
   /*@__PURE__*/ S.Array(
     DiskDetails,
@@ -5768,7 +5759,7 @@ export const SAPDiskConfigurationsResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SAPDiskConfigurationsResult>;
 
 /** Gets or sets the list of SID's. */
-export type SapLandscapeMonitorSidMappingTopSidList = ReadonlyArray<string>;
+export type SapLandscapeMonitorSidMappingTopSidList = Array<string>;
 export const SapLandscapeMonitorSidMappingTopSidList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SapLandscapeMonitorSidMappingTopSidList>;
@@ -5791,7 +5782,7 @@ export const SapLandscapeMonitorSidMapping = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets the list of landscape to SID mappings. */
 export type SapLandscapeMonitorPropertiesInputGroupingLandscapeList =
-  ReadonlyArray<SapLandscapeMonitorSidMapping>;
+  Array<SapLandscapeMonitorSidMapping>;
 export const SapLandscapeMonitorPropertiesInputGroupingLandscapeList =
   /*@__PURE__*/ S.Array(
     SapLandscapeMonitorSidMapping,
@@ -5799,7 +5790,7 @@ export const SapLandscapeMonitorPropertiesInputGroupingLandscapeList =
 
 /** Gets or sets the list of Sap Applications to SID mappings. */
 export type SapLandscapeMonitorPropertiesInputGroupingSapApplicationList =
-  ReadonlyArray<SapLandscapeMonitorSidMapping>;
+  Array<SapLandscapeMonitorSidMapping>;
 export const SapLandscapeMonitorPropertiesInputGroupingSapApplicationList =
   /*@__PURE__*/ S.Array(
     SapLandscapeMonitorSidMapping,
@@ -5850,7 +5841,7 @@ export const SapLandscapeMonitorMetricThresholds = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets the list Top Metric Thresholds for SAP Landscape Monitor Dashboard */
 export type SapLandscapeMonitorPropertiesInputTopMetricsThresholdsList =
-  ReadonlyArray<SapLandscapeMonitorMetricThresholds>;
+  Array<SapLandscapeMonitorMetricThresholds>;
 export const SapLandscapeMonitorPropertiesInputTopMetricsThresholdsList =
   /*@__PURE__*/ S.Array(
     SapLandscapeMonitorMetricThresholds,
@@ -5914,7 +5905,7 @@ export const SapLandscapeMonitorPropertiesProvisioningState =
 
 /** Gets or sets the list of landscape to SID mappings. */
 export type SapLandscapeMonitorPropertiesGroupingLandscapeList =
-  ReadonlyArray<SapLandscapeMonitorSidMapping>;
+  Array<SapLandscapeMonitorSidMapping>;
 export const SapLandscapeMonitorPropertiesGroupingLandscapeList =
   /*@__PURE__*/ S.Array(
     SapLandscapeMonitorSidMapping,
@@ -5922,7 +5913,7 @@ export const SapLandscapeMonitorPropertiesGroupingLandscapeList =
 
 /** Gets or sets the list of Sap Applications to SID mappings. */
 export type SapLandscapeMonitorPropertiesGroupingSapApplicationList =
-  ReadonlyArray<SapLandscapeMonitorSidMapping>;
+  Array<SapLandscapeMonitorSidMapping>;
 export const SapLandscapeMonitorPropertiesGroupingSapApplicationList =
   /*@__PURE__*/ S.Array(
     SapLandscapeMonitorSidMapping,
@@ -5949,7 +5940,7 @@ export const SapLandscapeMonitorPropertiesGrouping = /*@__PURE__*/ S.suspend(
 
 /** Gets or sets the list Top Metric Thresholds for SAP Landscape Monitor Dashboard */
 export type SapLandscapeMonitorPropertiesTopMetricsThresholdsList =
-  ReadonlyArray<SapLandscapeMonitorMetricThresholds>;
+  Array<SapLandscapeMonitorMetricThresholds>;
 export const SapLandscapeMonitorPropertiesTopMetricsThresholdsList =
   /*@__PURE__*/ S.Array(
     SapLandscapeMonitorMetricThresholds,
@@ -6134,8 +6125,7 @@ export const SapLandscapeMonitor = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SapLandscapeMonitor>;
 
 /** The list of Sap Landscape Monitor configuration. */
-export type SapLandscapeMonitorListResultValueList =
-  ReadonlyArray<SapLandscapeMonitor>;
+export type SapLandscapeMonitorListResultValueList = Array<SapLandscapeMonitor>;
 export const SapLandscapeMonitorListResultValueList = /*@__PURE__*/ S.Array(
   SapLandscapeMonitor,
 ) as any as S.Schema<SapLandscapeMonitorListResultValueList>;
@@ -6334,7 +6324,7 @@ export const SAPSupportedSku = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets the list of SAP supported SKUs. */
 export type SAPSupportedResourceSkusResultSupportedSkusList =
-  ReadonlyArray<SAPSupportedSku>;
+  Array<SAPSupportedSku>;
 export const SAPSupportedResourceSkusResultSupportedSkusList =
   /*@__PURE__*/ S.Array(
     SAPSupportedSku,
@@ -6380,7 +6370,7 @@ export const SAPConfigurationType = /*@__PURE__*/ S.String;
 /** The SAP Configuration. */
 export interface SAPConfiguration_2 {
   /** The configuration type. Eg: Deployment/Discovery */
-  configurationType: SAPConfigurationType;
+  configurationType: SAPConfigurationType | (string & {});
 }
 export const SAPConfiguration_2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6693,7 +6683,7 @@ export const ConfigurationType = /*@__PURE__*/ S.String;
 
 /** The SAP Configuration. */
 export interface SAPConfiguration {
-  configurationType: ConfigurationType;
+  configurationType: ConfigurationType | (string & {});
 }
 export const SAPConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6936,7 +6926,7 @@ export const SAPVirtualInstancesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The operations list. */
 export type SAPVirtualInstancesDeleteResponseOperationsList =
-  ReadonlyArray<OperationStatusResult>;
+  Array<OperationStatusResult>;
 export const SAPVirtualInstancesDeleteResponseOperationsList =
   /*@__PURE__*/ S.Array(
     OperationStatusResult,
@@ -7277,7 +7267,7 @@ export const DiskDetails_2 = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of supported disks for a given VM Sku. */
 export type SAPDiskConfigurationSupportedConfigurationsList_2 =
-  ReadonlyArray<DiskDetails_2>;
+  Array<DiskDetails_2>;
 export const SAPDiskConfigurationSupportedConfigurationsList_2 =
   /*@__PURE__*/ S.Array(
     DiskDetails_2,
@@ -7503,8 +7493,7 @@ export const SAPVirtualInstance_2 = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SAPVirtualInstance_2>;
 
 /** The SAPVirtualInstance items on this page */
-export type SAPVirtualInstanceListResultValueList =
-  ReadonlyArray<SAPVirtualInstance_2>;
+export type SAPVirtualInstanceListResultValueList = Array<SAPVirtualInstance_2>;
 export const SAPVirtualInstanceListResultValueList = /*@__PURE__*/ S.Array(
   SAPVirtualInstance_2,
 ) as any as S.Schema<SAPVirtualInstanceListResultValueList>;
@@ -7610,7 +7599,7 @@ export const SAPVirtualInstance = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SAPVirtualInstance>;
 
 /** Gets the list of Virtual Instances for SAP solutions resources. */
-export type SAPVirtualInstanceListValueList = ReadonlyArray<SAPVirtualInstance>;
+export type SAPVirtualInstanceListValueList = Array<SAPVirtualInstance>;
 export const SAPVirtualInstanceListValueList = /*@__PURE__*/ S.Array(
   SAPVirtualInstance,
 ) as any as S.Schema<SAPVirtualInstanceListValueList>;
@@ -7701,7 +7690,7 @@ export const SapVirtualInstancesStartRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The operations list. */
 export type SapVirtualInstancesStartResponseOperationsList =
-  ReadonlyArray<OperationStatusResult_2>;
+  Array<OperationStatusResult_2>;
 export const SapVirtualInstancesStartResponseOperationsList =
   /*@__PURE__*/ S.Array(
     OperationStatusResult_2,
@@ -7770,7 +7759,7 @@ export const SAPVirtualInstancesStartRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The operations list. */
 export type SAPVirtualInstancesStartResponseOperationsList =
-  ReadonlyArray<OperationStatusResult>;
+  Array<OperationStatusResult>;
 export const SAPVirtualInstancesStartResponseOperationsList =
   /*@__PURE__*/ S.Array(
     OperationStatusResult,
@@ -7842,7 +7831,7 @@ export const SapVirtualInstancesStopRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The operations list. */
 export type SapVirtualInstancesStopResponseOperationsList =
-  ReadonlyArray<OperationStatusResult_2>;
+  Array<OperationStatusResult_2>;
 export const SapVirtualInstancesStopResponseOperationsList =
   /*@__PURE__*/ S.Array(
     OperationStatusResult_2,
@@ -7914,7 +7903,7 @@ export const SAPVirtualInstancesStopRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The operations list. */
 export type SAPVirtualInstancesStopResponseOperationsList =
-  ReadonlyArray<OperationStatusResult>;
+  Array<OperationStatusResult>;
 export const SAPVirtualInstancesStopResponseOperationsList =
   /*@__PURE__*/ S.Array(
     OperationStatusResult,

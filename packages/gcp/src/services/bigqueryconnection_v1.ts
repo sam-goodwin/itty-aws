@@ -144,7 +144,7 @@ export interface ConnectorConfigurationSecret {
   /** Input only. Secret as plaintext. */
   plaintext?: string;
   /** Output only. Indicates type of secret. Can be used to check type of stored secret value even if it's `INPUT_ONLY`. */
-  secretType?: ConnectorConfigurationSecretSecretTypeEnum;
+  secretType?: ConnectorConfigurationSecretSecretTypeEnum | (string & {});
 }
 export const ConnectorConfigurationSecret = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -382,7 +382,7 @@ export interface CloudSqlProperties {
   /** Database name. */
   database?: string;
   /** Type of the Cloud SQL database. */
-  type?: CloudSqlPropertiesTypeEnum;
+  type?: CloudSqlPropertiesTypeEnum | (string & {});
   /** Input only. Cloud SQL credential. */
   credential?: CloudSqlCredential;
   /** Output only. The account ID of the service used for the purpose of this connection. When the connection is used in the context of an operation in BigQuery, this service account will serve as the identity being used for connecting to the CloudSQL instance specified in this connection. */
@@ -598,7 +598,7 @@ export const GetIamPolicyProjectsLocationsConnectionsRequest =
     identifier: "GetIamPolicyProjectsLocationsConnectionsRequest",
   }) as any as S.Schema<GetIamPolicyProjectsLocationsConnectionsRequest>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -640,7 +640,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
-export type BindingList = ReadonlyArray<Binding>;
+export type BindingList = Array<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -655,7 +655,7 @@ export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
 export interface AuditLogConfig {
   /** The log type that this config enables. */
-  logType?: AuditLogConfigLogTypeEnum;
+  logType?: AuditLogConfigLogTypeEnum | (string & {});
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
   exemptedMembers?: StringList;
 }
@@ -666,7 +666,7 @@ export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
-export type AuditLogConfigList = ReadonlyArray<AuditLogConfig>;
+export type AuditLogConfigList = Array<AuditLogConfig>;
 export const AuditLogConfigList = /*@__PURE__*/ S.Array(
   AuditLogConfig,
 ) as any as S.Schema<AuditLogConfigList>;
@@ -685,7 +685,7 @@ export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
-export type AuditConfigList = ReadonlyArray<AuditConfig>;
+export type AuditConfigList = Array<AuditConfig>;
 export const AuditConfigList = /*@__PURE__*/ S.Array(
   AuditConfig,
 ) as any as S.Schema<AuditConfigList>;
@@ -754,7 +754,7 @@ export const ListProjectsLocationsConnectionsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsConnectionsRequest",
 }) as any as S.Schema<ListProjectsLocationsConnectionsRequest>;
 
-export type ConnectionList = ReadonlyArray<Connection>;
+export type ConnectionList = Array<Connection>;
 export const ConnectionList = /*@__PURE__*/ S.Array(
   Connection,
 ) as any as S.Schema<ConnectionList>;

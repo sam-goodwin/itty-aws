@@ -274,7 +274,7 @@ export const EncryptionType = /*@__PURE__*/ S.String;
 export interface EncryptionConfiguration {
   kmsKeyId?: string;
   kmsDataKeyReusePeriodSeconds?: number;
-  type: EncryptionType;
+  type: EncryptionType | (string & {});
 }
 export const EncryptionConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -347,7 +347,7 @@ export const LogDestination = /*@__PURE__*/ S.suspend(() =>
 export type LogDestinationList = LogDestination[];
 export const LogDestinationList = /*@__PURE__*/ S.Array(LogDestination);
 export interface LoggingConfiguration {
-  level?: LogLevel;
+  level?: LogLevel | (string & {});
   includeExecutionData?: boolean;
   destinations?: LogDestination[];
 }

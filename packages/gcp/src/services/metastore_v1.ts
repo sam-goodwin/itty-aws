@@ -105,7 +105,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -311,7 +311,7 @@ export const BackendMetastoreMetastoreTypeEnum = /*@__PURE__*/ S.String;
 /** Represents a backend metastore for the federation. */
 export interface BackendMetastore {
   /** The type of the backend metastore. */
-  metastoreType?: BackendMetastoreMetastoreTypeEnum;
+  metastoreType?: BackendMetastoreMetastoreTypeEnum | (string & {});
   /** The relative resource name of the metastore that is being federated. The formats of the relative resource names for the currently supported metastores are listed below: BigQuery projects/{project_id} Dataproc Metastore projects/{project_id}/locations/{location}/services/{service_id} */
   name?: string;
 }
@@ -349,7 +349,7 @@ export interface Federation {
   /** Output only. Additional information about the current state of the metastore federation, if available. */
   stateMessage?: string;
   /** Output only. The current state of the federation. */
-  state?: FederationStateEnum;
+  state?: FederationStateEnum | (string & {});
   /** User-defined labels for the metastore federation. */
   labels?: StringMap;
   /** Immutable. The relative resource name of the federation, of the form: projects/{project_number}/locations/{location_id}/federations/{federation_id}`. */
@@ -452,7 +452,7 @@ export const Consumer = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Consumer" }) as any as S.Schema<Consumer>;
 
-export type ConsumerList = ReadonlyArray<Consumer>;
+export type ConsumerList = Array<Consumer>;
 export const ConsumerList = /*@__PURE__*/ S.Array(
   Consumer,
 ) as any as S.Schema<ConsumerList>;
@@ -498,7 +498,7 @@ export const AuxiliaryVersionConfigMap = /*@__PURE__*/ S.Record(
 /** Specifies configuration information specific to running Hive metastore software as the metastore service. */
 export interface HiveMetastoreConfig {
   /** Optional. The protocol to use for the metastore service endpoint. If unspecified, defaults to THRIFT. */
-  endpointProtocol?: HiveMetastoreConfigEndpointProtocolEnum;
+  endpointProtocol?: HiveMetastoreConfigEndpointProtocolEnum | (string & {});
   /** Immutable. The Hive metastore schema version. */
   version?: string;
   /** Optional. Information used to configure the Hive metastore service as a service principal in a Kerberos realm. To disable Kerberos, use the UpdateService method and specify this field's path (hive_metastore_config.kerberos_config) in the request's update_mask while omitting this field from the request's service. */
@@ -529,7 +529,7 @@ export const TelemetryConfigLogFormatEnum = /*@__PURE__*/ S.String;
 /** Telemetry Configuration for the Dataproc Metastore service. */
 export interface TelemetryConfig {
   /** Optional. The output format of the Dataproc Metastore service's logs. */
-  logFormat?: TelemetryConfigLogFormatEnum;
+  logFormat?: TelemetryConfigLogFormatEnum | (string & {});
 }
 export const TelemetryConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -570,7 +570,7 @@ export interface MaintenanceWindow {
   /** Optional. The hour of day (0-23) when the window starts. */
   hourOfDay?: number;
   /** Optional. The day of week, when the window starts. */
-  dayOfWeek?: MaintenanceWindowDayOfWeekEnum;
+  dayOfWeek?: MaintenanceWindowDayOfWeekEnum | (string & {});
 }
 export const MaintenanceWindow = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -656,7 +656,7 @@ export interface ScalingConfig {
   /** Scaling factor, increments of 0.1 for values less than 1.0, and increments of 1.0 for values greater than 1.0. */
   scalingFactor?: number;
   /** An enum of readable instance sizes, with each instance size mapping to a float value (e.g. InstanceSize.EXTRA_SMALL = scaling_factor(0.1)) */
-  instanceSize?: ScalingConfigInstanceSizeEnum;
+  instanceSize?: ScalingConfigInstanceSizeEnum | (string & {});
 }
 export const ScalingConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -701,13 +701,13 @@ export interface Restore {
   /** Output only. The restore details containing the revision of the service to be restored to, in format of JSON. */
   details?: string;
   /** Output only. The current state of the restore. */
-  state?: RestoreStateEnum;
+  state?: RestoreStateEnum | (string & {});
   /** Output only. The time when the restore started. */
   startTime?: string;
   /** Output only. The relative resource name of the metastore service backup to restore from, in the following form:projects/{project_id}/locations/{location_id}/services/{service_id}/backups/{backup_id}. */
   backup?: string;
   /** Output only. The type of restore. */
-  type?: RestoreTypeEnum;
+  type?: RestoreTypeEnum | (string & {});
   /** Optional. A Cloud Storage URI specifying where the backup artifacts are stored, in the format gs:///. */
   backupLocation?: string;
 }
@@ -723,7 +723,7 @@ export const Restore = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Restore" }) as any as S.Schema<Restore>;
 
-export type RestoreList = ReadonlyArray<Restore>;
+export type RestoreList = Array<Restore>;
 export const RestoreList = /*@__PURE__*/ S.Array(
   Restore,
 ) as any as S.Schema<RestoreList>;
@@ -751,9 +751,9 @@ export interface MetadataExport {
   /** Output only. The time when the export ended. */
   endTime?: string;
   /** Output only. The type of the database dump. */
-  databaseDumpType?: MetadataExportDatabaseDumpTypeEnum;
+  databaseDumpType?: MetadataExportDatabaseDumpTypeEnum | (string & {});
   /** Output only. The current state of the export. */
-  state?: MetadataExportStateEnum;
+  state?: MetadataExportStateEnum | (string & {});
 }
 export const MetadataExport = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -765,7 +765,7 @@ export const MetadataExport = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MetadataExport" }) as any as S.Schema<MetadataExport>;
 
-export type MetadataExportList = ReadonlyArray<MetadataExport>;
+export type MetadataExportList = Array<MetadataExport>;
 export const MetadataExportList = /*@__PURE__*/ S.Array(
   MetadataExport,
 ) as any as S.Schema<MetadataExportList>;
@@ -813,7 +813,7 @@ export interface LatestBackup {
   /** Output only. The ID of an in-progress scheduled backup. Empty if no backup is in progress. */
   backupId?: string;
   /** Output only. The current state of the backup. */
-  state?: LatestBackupStateEnum;
+  state?: LatestBackupStateEnum | (string & {});
   /** Output only. The time when the backup was started. */
   startTime?: string;
 }
@@ -869,15 +869,15 @@ export interface Service {
   /** Optional. The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON. */
   telemetryConfig?: TelemetryConfig;
   /** Optional. The tier of the service. */
-  tier?: ServiceTierEnum;
+  tier?: ServiceTierEnum | (string & {});
   /** Output only. The globally unique resource identifier of the metastore service. */
   uid?: string;
   /** Immutable. The database type that the Metastore service stores its data. */
-  databaseType?: ServiceDatabaseTypeEnum;
+  databaseType?: ServiceDatabaseTypeEnum | (string & {});
   /** Optional. The TCP port at which the metastore service is reached. Default: 9083. */
   port?: number;
   /** Immutable. The release channel of the service. If unspecified, defaults to STABLE. */
-  releaseChannel?: ServiceReleaseChannelEnum;
+  releaseChannel?: ServiceReleaseChannelEnum | (string & {});
   /** Output only. The time when the metastore service was last updated. */
   updateTime?: string;
   /** Optional. The one hour maintenance window of the metastore service. This specifies when the service can be restarted for maintenance purposes in UTC time. Maintenance window is not needed for services with the SPANNER database type. */
@@ -887,7 +887,7 @@ export interface Service {
   /** Optional. Scaling configuration of the metastore service. */
   scalingConfig?: ScalingConfig;
   /** Output only. The current state of the metastore service. */
-  state?: ServiceStateEnum;
+  state?: ServiceStateEnum | (string & {});
   /** Output only. The metadata management activities of the metastore service. */
   metadataManagementActivity?: MetadataManagementActivity;
   /** Output only. The time when the metastore service was created. */
@@ -974,7 +974,7 @@ export type BackupStateEnum =
   | "RESTORING";
 export const BackupStateEnum = /*@__PURE__*/ S.String;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -982,7 +982,7 @@ export const StringList = /*@__PURE__*/ S.Array(
 /** The details of a backup resource. */
 export interface Backup {
   /** Output only. The current state of the backup. */
-  state?: BackupStateEnum;
+  state?: BackupStateEnum | (string & {});
   /** Output only. The revision of the service at the time of backup. */
   serviceRevision?: Service;
   /** Output only. The time when the backup finished creating. */
@@ -1049,11 +1049,11 @@ export interface DatabaseDump {
   /** Optional. The name of the source database. */
   sourceDatabase?: string;
   /** The type of the database. */
-  databaseType?: DatabaseDumpDatabaseTypeEnum;
+  databaseType?: DatabaseDumpDatabaseTypeEnum | (string & {});
   /** Optional. A Cloud Storage object or folder URI that specifies the source from which to import metadata. It must begin with gs://. */
   gcsUri?: string;
   /** Optional. The type of the database dump. If unspecified, defaults to MYSQL. */
-  type?: DatabaseDumpTypeEnum;
+  type?: DatabaseDumpTypeEnum | (string & {});
 }
 export const DatabaseDump = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1087,7 +1087,7 @@ export interface MetadataImport {
   /** Immutable. Identifier. The relative resource name of the metadata import, of the form:projects/{project_number}/locations/{location_id}/services/{service_id}/metadataImports/{metadata_import_id}. */
   name?: string;
   /** Output only. The current state of the metadata import. */
-  state?: MetadataImportStateEnum;
+  state?: MetadataImportStateEnum | (string & {});
 }
 export const MetadataImport = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1342,7 +1342,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
-export type BindingList = ReadonlyArray<Binding>;
+export type BindingList = Array<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -1357,7 +1357,7 @@ export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
 export interface AuditLogConfig {
   /** The log type that this config enables. */
-  logType?: AuditLogConfigLogTypeEnum;
+  logType?: AuditLogConfigLogTypeEnum | (string & {});
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
   exemptedMembers?: StringList;
 }
@@ -1368,7 +1368,7 @@ export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
-export type AuditLogConfigList = ReadonlyArray<AuditLogConfig>;
+export type AuditLogConfigList = Array<AuditLogConfig>;
 export const AuditLogConfigList = /*@__PURE__*/ S.Array(
   AuditLogConfig,
 ) as any as S.Schema<AuditLogConfigList>;
@@ -1387,7 +1387,7 @@ export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
-export type AuditConfigList = ReadonlyArray<AuditConfig>;
+export type AuditConfigList = Array<AuditConfig>;
 export const AuditConfigList = /*@__PURE__*/ S.Array(
   AuditConfig,
 ) as any as S.Schema<AuditConfigList>;
@@ -1757,11 +1757,11 @@ export interface MigrationExecution {
   /** Output only. The time when the migration execution was started. */
   createTime?: string;
   /** Output only. Deprecated: Phase was designed for incoming migrations to Dataproc Metastore, not applicable when migrating away from it. The current phase of the migration execution. */
-  phase?: MigrationExecutionPhaseEnum;
+  phase?: MigrationExecutionPhaseEnum | (string & {});
   /** Deprecated: Migrations to Dataproc Metastore are no longer supported. Use BigLake Metastore migration instead. Configuration information specific to migrating from self-managed hive metastore on Google Cloud using Cloud SQL as the backend database to Dataproc Metastore. */
   cloudSqlMigrationConfig?: CloudSQLMigrationConfig;
   /** Output only. The current state of the migration execution. */
-  state?: MigrationExecutionStateEnum;
+  state?: MigrationExecutionStateEnum | (string & {});
   /** Output only. The relative resource name of the migration execution, in the following form: projects/{project_number}/locations/{location_id}/services/{service_id}/migrationExecutions/{migration_execution_id} */
   name?: string;
   /** Output only. The time when the migration execution finished. */
@@ -1813,7 +1813,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = ReadonlyArray<Location>;
+export type LocationList = Array<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -1865,7 +1865,7 @@ export const ListProjectsLocationsFederationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsFederationsRequest",
 }) as any as S.Schema<ListProjectsLocationsFederationsRequest>;
 
-export type FederationList = ReadonlyArray<Federation>;
+export type FederationList = Array<Federation>;
 export const FederationList = /*@__PURE__*/ S.Array(
   Federation,
 ) as any as S.Schema<FederationList>;
@@ -1920,7 +1920,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type OperationList = ReadonlyArray<Operation>;
+export type OperationList = Array<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -1975,7 +1975,7 @@ export const ListProjectsLocationsServicesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsServicesRequest",
 }) as any as S.Schema<ListProjectsLocationsServicesRequest>;
 
-export type ServiceList = ReadonlyArray<Service>;
+export type ServiceList = Array<Service>;
 export const ServiceList = /*@__PURE__*/ S.Array(
   Service,
 ) as any as S.Schema<ServiceList>;
@@ -2030,7 +2030,7 @@ export const ListProjectsLocationsServicesBackupsRequest =
     identifier: "ListProjectsLocationsServicesBackupsRequest",
   }) as any as S.Schema<ListProjectsLocationsServicesBackupsRequest>;
 
-export type BackupList = ReadonlyArray<Backup>;
+export type BackupList = Array<Backup>;
 export const BackupList = /*@__PURE__*/ S.Array(
   Backup,
 ) as any as S.Schema<BackupList>;
@@ -2085,7 +2085,7 @@ export const ListProjectsLocationsServicesMetadataImportsRequest =
     identifier: "ListProjectsLocationsServicesMetadataImportsRequest",
   }) as any as S.Schema<ListProjectsLocationsServicesMetadataImportsRequest>;
 
-export type MetadataImportList = ReadonlyArray<MetadataImport>;
+export type MetadataImportList = Array<MetadataImport>;
 export const MetadataImportList = /*@__PURE__*/ S.Array(
   MetadataImport,
 ) as any as S.Schema<MetadataImportList>;
@@ -2140,7 +2140,7 @@ export const ListProjectsLocationsServicesMigrationExecutionsRequest =
     identifier: "ListProjectsLocationsServicesMigrationExecutionsRequest",
   }) as any as S.Schema<ListProjectsLocationsServicesMigrationExecutionsRequest>;
 
-export type MigrationExecutionList = ReadonlyArray<MigrationExecution>;
+export type MigrationExecutionList = Array<MigrationExecution>;
 export const MigrationExecutionList = /*@__PURE__*/ S.Array(
   MigrationExecution,
 ) as any as S.Schema<MigrationExecutionList>;

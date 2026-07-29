@@ -210,10 +210,10 @@ export type OverwriteOption = "CREATE_NEW_REPORT" | "OVERWRITE_REPORT";
 export const OverwriteOption = /*@__PURE__*/ S.String;
 
 export interface S3OutputConfigurations {
-  OutputType: S3OutputType;
-  Format: FormatOption;
-  Compression: CompressionOption;
-  Overwrite: OverwriteOption;
+  OutputType: S3OutputType | (string & {});
+  Format: FormatOption | (string & {});
+  Compression: CompressionOption | (string & {});
+  Overwrite: OverwriteOption | (string & {});
 }
 export const S3OutputConfigurations = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -253,7 +253,7 @@ export type FrequencyOption = "SYNCHRONOUS";
 export const FrequencyOption = /*@__PURE__*/ S.String;
 
 export interface RefreshCadence {
-  Frequency: FrequencyOption;
+  Frequency: FrequencyOption | (string & {});
 }
 export const RefreshCadence = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Frequency: FrequencyOption }),

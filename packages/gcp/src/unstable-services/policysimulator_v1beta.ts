@@ -82,7 +82,7 @@ export type GoogleIamV1AuditLogConfigLogTypeEnum =
   | "DATA_READ";
 export const GoogleIamV1AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -90,7 +90,7 @@ export const StringList = /*@__PURE__*/ S.Array(
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
 export interface GoogleIamV1AuditLogConfig {
   /** The log type that this config enables. */
-  logType?: GoogleIamV1AuditLogConfigLogTypeEnum;
+  logType?: GoogleIamV1AuditLogConfigLogTypeEnum | (string & {});
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
   exemptedMembers?: StringList;
 }
@@ -103,8 +103,7 @@ export const GoogleIamV1AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleIamV1AuditLogConfig",
 }) as any as S.Schema<GoogleIamV1AuditLogConfig>;
 
-export type GoogleIamV1AuditLogConfigList =
-  ReadonlyArray<GoogleIamV1AuditLogConfig>;
+export type GoogleIamV1AuditLogConfigList = Array<GoogleIamV1AuditLogConfig>;
 export const GoogleIamV1AuditLogConfigList = /*@__PURE__*/ S.Array(
   GoogleIamV1AuditLogConfig,
 ) as any as S.Schema<GoogleIamV1AuditLogConfigList>;
@@ -125,7 +124,7 @@ export const GoogleIamV1AuditConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleIamV1AuditConfig",
 }) as any as S.Schema<GoogleIamV1AuditConfig>;
 
-export type GoogleIamV1AuditConfigList = ReadonlyArray<GoogleIamV1AuditConfig>;
+export type GoogleIamV1AuditConfigList = Array<GoogleIamV1AuditConfig>;
 export const GoogleIamV1AuditConfigList = /*@__PURE__*/ S.Array(
   GoogleIamV1AuditConfig,
 ) as any as S.Schema<GoogleIamV1AuditConfigList>;
@@ -169,7 +168,7 @@ export const GoogleIamV1Binding = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleIamV1Binding",
 }) as any as S.Schema<GoogleIamV1Binding>;
 
-export type GoogleIamV1BindingList = ReadonlyArray<GoogleIamV1Binding>;
+export type GoogleIamV1BindingList = Array<GoogleIamV1Binding>;
 export const GoogleIamV1BindingList = /*@__PURE__*/ S.Array(
   GoogleIamV1Binding,
 ) as any as S.Schema<GoogleIamV1BindingList>;
@@ -207,7 +206,9 @@ export const GoogleIamV1PolicyMap = /*@__PURE__*/ S.Record(
 /** The configuration used for a Replay. */
 export interface GoogleCloudPolicysimulatorV1betaReplayConfig {
   /** The logs to use as input for the Replay. */
-  logSource?: GoogleCloudPolicysimulatorV1betaReplayConfigLogSourceEnum;
+  logSource?:
+    | GoogleCloudPolicysimulatorV1betaReplayConfigLogSourceEnum
+    | (string & {});
   /** A mapping of the resources that you want to simulate policies for and the policies that you want to simulate. Keys are the full resource names for the resources. For example, `//cloudresourcemanager.googleapis.com/projects/my-project`. For examples of full resource names for Google Cloud services, see https://cloud.google.com/iam/help/troubleshooter/full-resource-names. Values are Policy objects representing the policies that you want to simulate. Replays automatically take into account any IAM policies inherited through the resource hierarchy, and any policies set on descendant resources. You do not need to include these policies in the policy overlay. */
   policyOverlay?: GoogleIamV1PolicyMap;
 }
@@ -272,7 +273,7 @@ export const GoogleCloudPolicysimulatorV1betaReplayResultsSummary =
 /** A resource describing a `Replay`, or simulation. */
 export interface GoogleCloudPolicysimulatorV1betaReplay {
   /** Output only. The current state of the `Replay`. */
-  state?: GoogleCloudPolicysimulatorV1betaReplayStateEnum;
+  state?: GoogleCloudPolicysimulatorV1betaReplayStateEnum | (string & {});
   /** Required. The configuration used for the `Replay`. */
   config?: GoogleCloudPolicysimulatorV1betaReplayConfig;
   /** Output only. The resource name of the `Replay`, which has the following format: `{projects|folders|organizations}/{resource-id}/locations/global/replays/{replay-id}`, where `{resource-id}` is the ID of the project, folder, or organization that owns the Replay. Example: `projects/my-example-project/locations/global/replays/506a5f7f-38ce-4d7d-8e03-479ce1833c36` */
@@ -324,7 +325,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -422,7 +423,7 @@ export const GoogleCloudOrgpolicyV2PolicySpecPolicyRule =
   }) as any as S.Schema<GoogleCloudOrgpolicyV2PolicySpecPolicyRule>;
 
 export type GoogleCloudOrgpolicyV2PolicySpecPolicyRuleList =
-  ReadonlyArray<GoogleCloudOrgpolicyV2PolicySpecPolicyRule>;
+  Array<GoogleCloudOrgpolicyV2PolicySpecPolicyRule>;
 export const GoogleCloudOrgpolicyV2PolicySpecPolicyRuleList =
   /*@__PURE__*/ S.Array(
     GoogleCloudOrgpolicyV2PolicySpecPolicyRule,
@@ -513,7 +514,7 @@ export const GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayPolicyOverlay =
   }) as any as S.Schema<GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayPolicyOverlay>;
 
 export type GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayPolicyOverlayList =
-  ReadonlyArray<GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayPolicyOverlay>;
+  Array<GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayPolicyOverlay>;
 export const GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayPolicyOverlayList =
   /*@__PURE__*/ S.Array(
     GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayPolicyOverlay,
@@ -537,7 +538,9 @@ export const GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemEnumList =
-  ReadonlyArray<GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemEnum>;
+  Array<
+    GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemEnum | (string & {})
+  >;
 export const GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemEnum,
@@ -550,7 +553,9 @@ export interface GoogleCloudOrgpolicyV2CustomConstraint {
   /** Immutable. The resource instance type on which this policy applies. Format will be of the form : `/` Example: * `compute.googleapis.com/Instance`. */
   resourceTypes?: StringList;
   /** Allow or deny type. */
-  actionType?: GoogleCloudOrgpolicyV2CustomConstraintActionTypeEnum;
+  actionType?:
+    | GoogleCloudOrgpolicyV2CustomConstraintActionTypeEnum
+    | (string & {});
   /** One line display name for the UI. The max length of the display_name is 200 characters. */
   displayName?: string;
   /** A Common Expression Language (CEL) condition which is used in the evaluation of the constraint. For example: `resource.instanceName.matches("(production|test)_(.+_)?[\d]+")` or, `resource.management.auto_upgrade == true` The max length of the condition is 1000 characters. */
@@ -601,7 +606,7 @@ export const GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayCustomConstraintOve
   }) as any as S.Schema<GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayCustomConstraintOverlay>;
 
 export type GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayCustomConstraintOverlayList =
-  ReadonlyArray<GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayCustomConstraintOverlay>;
+  Array<GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayCustomConstraintOverlay>;
 export const GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayCustomConstraintOverlayList =
   /*@__PURE__*/ S.Array(
     GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayCustomConstraintOverlay,
@@ -675,7 +680,9 @@ export interface GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreview {
   /** Output only. The number of OrgPolicyViolations in this `OrgPolicyViolationsPreview`. This count may differ from `resource_summary.noncompliant_count` because each OrgPolicyViolation is specific to a resource **and** constraint. If there are multiple constraints being evaluated (i.e. multiple policies in the overlay), a single resource may violate multiple constraints. */
   violationsCount?: number;
   /** Output only. The state of the `OrgPolicyViolationsPreview`. */
-  state?: GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreviewStateEnum;
+  state?:
+    | GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreviewStateEnum
+    | (string & {});
   /** Output only. A summary of the state of all resources scanned for compliance with the changed OrgPolicy. */
   resourceCounts?: GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreviewResourceCounts;
   /** Output only. Time when this `OrgPolicyViolationsPreview` was created. */
@@ -1097,7 +1104,7 @@ export const ListFoldersLocationsReplaysRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListFoldersLocationsReplaysRequest>;
 
 export type GoogleCloudPolicysimulatorV1betaReplayList =
-  ReadonlyArray<GoogleCloudPolicysimulatorV1betaReplay>;
+  Array<GoogleCloudPolicysimulatorV1betaReplay>;
 export const GoogleCloudPolicysimulatorV1betaReplayList = /*@__PURE__*/ S.Array(
   GoogleCloudPolicysimulatorV1betaReplay,
 ) as any as S.Schema<GoogleCloudPolicysimulatorV1betaReplayList>;
@@ -1150,8 +1157,7 @@ export const ListFoldersLocationsReplaysOperationsRequest =
     identifier: "ListFoldersLocationsReplaysOperationsRequest",
   }) as any as S.Schema<ListFoldersLocationsReplaysOperationsRequest>;
 
-export type GoogleLongrunningOperationList =
-  ReadonlyArray<GoogleLongrunningOperation>;
+export type GoogleLongrunningOperationList = Array<GoogleLongrunningOperation>;
 export const GoogleLongrunningOperationList = /*@__PURE__*/ S.Array(
   GoogleLongrunningOperation,
 ) as any as S.Schema<GoogleLongrunningOperationList>;
@@ -1339,7 +1345,7 @@ export const GoogleCloudPolicysimulatorV1betaBindingExplanation =
   }) as any as S.Schema<GoogleCloudPolicysimulatorV1betaBindingExplanation>;
 
 export type GoogleCloudPolicysimulatorV1betaBindingExplanationList =
-  ReadonlyArray<GoogleCloudPolicysimulatorV1betaBindingExplanation>;
+  Array<GoogleCloudPolicysimulatorV1betaBindingExplanation>;
 export const GoogleCloudPolicysimulatorV1betaBindingExplanationList =
   /*@__PURE__*/ S.Array(
     GoogleCloudPolicysimulatorV1betaBindingExplanation,
@@ -1385,13 +1391,13 @@ export const GoogleCloudPolicysimulatorV1betaExplainedPolicy =
   }) as any as S.Schema<GoogleCloudPolicysimulatorV1betaExplainedPolicy>;
 
 export type GoogleCloudPolicysimulatorV1betaExplainedPolicyList =
-  ReadonlyArray<GoogleCloudPolicysimulatorV1betaExplainedPolicy>;
+  Array<GoogleCloudPolicysimulatorV1betaExplainedPolicy>;
 export const GoogleCloudPolicysimulatorV1betaExplainedPolicyList =
   /*@__PURE__*/ S.Array(
     GoogleCloudPolicysimulatorV1betaExplainedPolicy,
   ) as any as S.Schema<GoogleCloudPolicysimulatorV1betaExplainedPolicyList>;
 
-export type GoogleRpcStatusList = ReadonlyArray<GoogleRpcStatus>;
+export type GoogleRpcStatusList = Array<GoogleRpcStatus>;
 export const GoogleRpcStatusList = /*@__PURE__*/ S.Array(
   GoogleRpcStatus,
 ) as any as S.Schema<GoogleRpcStatusList>;
@@ -1515,7 +1521,7 @@ export const GoogleCloudPolicysimulatorV1betaReplayResult =
   }) as any as S.Schema<GoogleCloudPolicysimulatorV1betaReplayResult>;
 
 export type GoogleCloudPolicysimulatorV1betaReplayResultList =
-  ReadonlyArray<GoogleCloudPolicysimulatorV1betaReplayResult>;
+  Array<GoogleCloudPolicysimulatorV1betaReplayResult>;
 export const GoogleCloudPolicysimulatorV1betaReplayResultList =
   /*@__PURE__*/ S.Array(
     GoogleCloudPolicysimulatorV1betaReplayResult,
@@ -1596,7 +1602,7 @@ export const ListOrganizationsLocationsOrgPolicyViolationsPreviewsRequest =
   }) as any as S.Schema<ListOrganizationsLocationsOrgPolicyViolationsPreviewsRequest>;
 
 export type GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreviewList =
-  ReadonlyArray<GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreview>;
+  Array<GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreview>;
 export const GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreviewList =
   /*@__PURE__*/ S.Array(
     GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreview,
@@ -1692,7 +1698,7 @@ export const GoogleCloudPolicysimulatorV1betaOrgPolicyViolation =
   }) as any as S.Schema<GoogleCloudPolicysimulatorV1betaOrgPolicyViolation>;
 
 export type GoogleCloudPolicysimulatorV1betaOrgPolicyViolationList =
-  ReadonlyArray<GoogleCloudPolicysimulatorV1betaOrgPolicyViolation>;
+  Array<GoogleCloudPolicysimulatorV1betaOrgPolicyViolation>;
 export const GoogleCloudPolicysimulatorV1betaOrgPolicyViolationList =
   /*@__PURE__*/ S.Array(
     GoogleCloudPolicysimulatorV1betaOrgPolicyViolation,

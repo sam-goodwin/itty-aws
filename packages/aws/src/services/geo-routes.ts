@@ -1576,7 +1576,10 @@ export type RouteHazardousCargoType =
   | "Radioactive";
 export const RouteHazardousCargoType = /*@__PURE__*/ S.String;
 
-export type RouteHazardousCargoTypeList = RouteHazardousCargoType[];
+export type RouteHazardousCargoTypeList = (
+  | RouteHazardousCargoType
+  | (string & {})
+)[];
 export const RouteHazardousCargoTypeList = /*@__PURE__*/ S.Array(
   RouteHazardousCargoType,
 );

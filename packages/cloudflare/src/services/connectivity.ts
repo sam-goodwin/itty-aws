@@ -149,7 +149,7 @@ export const DirectoryServicesCreateRequestHostInfraDualStackHost =
   }) as any as S.Schema<DirectoryServicesCreateRequestHostInfraDualStackHost>;
 
 export type DirectoryServicesCreateRequestHostInfraHostnameHostResolverNetworkResolverIpsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const DirectoryServicesCreateRequestHostInfraHostnameHostResolverNetworkResolverIpsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -379,7 +379,7 @@ export const DirectoryServicesCreateResultInfraHTTPServiceConfigHostInfraDualSta
   }) as any as S.Schema<DirectoryServicesCreateResultInfraHTTPServiceConfigHostInfraDualStackHost>;
 
 export type DirectoryServicesCreateResultInfraHTTPServiceConfigHostInfraHostnameHostResolverNetworkResolverIpsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const DirectoryServicesCreateResultInfraHTTPServiceConfigHostInfraHostnameHostResolverNetworkResolverIpsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -598,7 +598,7 @@ export const DirectoryServicesCreateResultInfraTCPServiceConfigHostInfraDualStac
   }) as any as S.Schema<DirectoryServicesCreateResultInfraTCPServiceConfigHostInfraDualStackHost>;
 
 export type DirectoryServicesCreateResultInfraTCPServiceConfigHostInfraHostnameHostResolverNetworkResolverIpsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const DirectoryServicesCreateResultInfraTCPServiceConfigHostInfraHostnameHostResolverNetworkResolverIpsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -935,7 +935,7 @@ export const DirectoryServicesGetResultInfraHTTPServiceConfigHostInfraDualStackH
   }) as any as S.Schema<DirectoryServicesGetResultInfraHTTPServiceConfigHostInfraDualStackHost>;
 
 export type DirectoryServicesGetResultInfraHTTPServiceConfigHostInfraHostnameHostResolverNetworkResolverIpsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const DirectoryServicesGetResultInfraHTTPServiceConfigHostInfraHostnameHostResolverNetworkResolverIpsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1153,7 +1153,7 @@ export const DirectoryServicesGetResultInfraTCPServiceConfigHostInfraDualStackHo
   }) as any as S.Schema<DirectoryServicesGetResultInfraTCPServiceConfigHostInfraDualStackHost>;
 
 export type DirectoryServicesGetResultInfraTCPServiceConfigHostInfraHostnameHostResolverNetworkResolverIpsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const DirectoryServicesGetResultInfraTCPServiceConfigHostInfraHostnameHostResolverNetworkResolverIpsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1472,7 +1472,7 @@ export const DirectoryServicesListResultItemInfraHTTPServiceConfigHostInfraDualS
   }) as any as S.Schema<DirectoryServicesListResultItemInfraHTTPServiceConfigHostInfraDualStackHost>;
 
 export type DirectoryServicesListResultItemInfraHTTPServiceConfigHostInfraHostnameHostResolverNetworkResolverIpsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const DirectoryServicesListResultItemInfraHTTPServiceConfigHostInfraHostnameHostResolverNetworkResolverIpsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1691,7 +1691,7 @@ export const DirectoryServicesListResultItemInfraTCPServiceConfigHostInfraDualSt
   }) as any as S.Schema<DirectoryServicesListResultItemInfraTCPServiceConfigHostInfraDualStackHost>;
 
 export type DirectoryServicesListResultItemInfraTCPServiceConfigHostInfraHostnameHostResolverNetworkResolverIpsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const DirectoryServicesListResultItemInfraTCPServiceConfigHostInfraHostnameHostResolverNetworkResolverIpsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1884,7 +1884,7 @@ export const DirectoryServicesListResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DirectoryServicesListResultItem>;
 
 export type DirectoryServicesListResultList =
-  ReadonlyArray<DirectoryServicesListResultItem>;
+  Array<DirectoryServicesListResultItem>;
 export const DirectoryServicesListResultList = /*@__PURE__*/ S.Array(
   DirectoryServicesListResultItem,
 ) as any as S.Schema<DirectoryServicesListResultList>;
@@ -1985,7 +1985,7 @@ export const DirectoryServicesUpdateRequestHostInfraDualStackHost =
   }) as any as S.Schema<DirectoryServicesUpdateRequestHostInfraDualStackHost>;
 
 export type DirectoryServicesUpdateRequestHostInfraHostnameHostResolverNetworkResolverIpsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const DirectoryServicesUpdateRequestHostInfraHostnameHostResolverNetworkResolverIpsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2214,7 +2214,7 @@ export const DirectoryServicesUpdateResultInfraHTTPServiceConfigHostInfraDualSta
   }) as any as S.Schema<DirectoryServicesUpdateResultInfraHTTPServiceConfigHostInfraDualStackHost>;
 
 export type DirectoryServicesUpdateResultInfraHTTPServiceConfigHostInfraHostnameHostResolverNetworkResolverIpsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const DirectoryServicesUpdateResultInfraHTTPServiceConfigHostInfraHostnameHostResolverNetworkResolverIpsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2433,7 +2433,7 @@ export const DirectoryServicesUpdateResultInfraTCPServiceConfigHostInfraDualStac
   }) as any as S.Schema<DirectoryServicesUpdateResultInfraTCPServiceConfigHostInfraDualStackHost>;
 
 export type DirectoryServicesUpdateResultInfraTCPServiceConfigHostInfraHostnameHostResolverNetworkResolverIpsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const DirectoryServicesUpdateResultInfraTCPServiceConfigHostInfraHostnameHostResolverNetworkResolverIpsList =
   /*@__PURE__*/ S.Array(
     S.String,

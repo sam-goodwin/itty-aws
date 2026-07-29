@@ -28,7 +28,7 @@ export const Type = /*@__PURE__*/ S.String;
 /** All identity configuration for Customer-managed key settings defining which identity should be used to auth to Key Vault. */
 export interface EncryptionPropertiesIdentity {
   /** Managed identity type to use for accessing encryption key Url. */
-  type?: Type;
+  type?: Type | (string & {});
   /** User assigned identity to use for accessing key encryption key Url. Ex: /subscriptions/a0a0a0a0-bbbb-cccd-dddd-e1e1e1e1e1e1/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId. */
   resourceId?: string | null;
 }
@@ -507,8 +507,7 @@ export const LoadTestResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LoadTestResource>;
 
 /** The LoadTestResource items on this page */
-export type LoadTestResourceListResultValueList =
-  ReadonlyArray<LoadTestResource>;
+export type LoadTestResourceListResultValueList = Array<LoadTestResource>;
 export const LoadTestResourceListResultValueList = /*@__PURE__*/ S.Array(
   LoadTestResource,
 ) as any as S.Schema<LoadTestResourceListResultValueList>;
@@ -586,8 +585,7 @@ export const EndpointDetail = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EndpointDetail" }) as any as S.Schema<EndpointDetail>;
 
 /** The list of connection details for this endpoint. */
-export type EndpointDependencyEndpointDetailsList =
-  ReadonlyArray<EndpointDetail>;
+export type EndpointDependencyEndpointDetailsList = Array<EndpointDetail>;
 export const EndpointDependencyEndpointDetailsList = /*@__PURE__*/ S.Array(
   EndpointDetail,
 ) as any as S.Schema<EndpointDependencyEndpointDetailsList>;
@@ -613,7 +611,7 @@ export const EndpointDependency = /*@__PURE__*/ S.suspend(() =>
 
 /** The endpoints for this service to which the Batch service makes outbound calls. */
 export type OutboundEnvironmentEndpointEndpointsList =
-  ReadonlyArray<EndpointDependency>;
+  Array<EndpointDependency>;
 export const OutboundEnvironmentEndpointEndpointsList = /*@__PURE__*/ S.Array(
   EndpointDependency,
 ) as any as S.Schema<OutboundEnvironmentEndpointEndpointsList>;
@@ -636,7 +634,7 @@ export const OutboundEnvironmentEndpoint = /*@__PURE__*/ S.suspend(() =>
 
 /** The OutboundEnvironmentEndpoint items on this page */
 export type PagedOutboundEnvironmentEndpointValueList =
-  ReadonlyArray<OutboundEnvironmentEndpoint>;
+  Array<OutboundEnvironmentEndpoint>;
 export const PagedOutboundEnvironmentEndpointValueList = /*@__PURE__*/ S.Array(
   OutboundEnvironmentEndpoint,
 ) as any as S.Schema<PagedOutboundEnvironmentEndpointValueList>;
@@ -860,7 +858,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = ReadonlyArray<Operation>;
+export type OperationsListResponseValueList = Array<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;
@@ -1032,7 +1030,7 @@ export const PlaywrightQuota = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PlaywrightQuota>;
 
 /** The PlaywrightQuota items on this page */
-export type PlaywrightQuotaListResultValueList = ReadonlyArray<PlaywrightQuota>;
+export type PlaywrightQuotaListResultValueList = Array<PlaywrightQuota>;
 export const PlaywrightQuotaListResultValueList = /*@__PURE__*/ S.Array(
   PlaywrightQuota,
 ) as any as S.Schema<PlaywrightQuotaListResultValueList>;
@@ -1205,7 +1203,7 @@ export const PlaywrightWorkspaceQuota = /*@__PURE__*/ S.suspend(() =>
 
 /** The PlaywrightWorkspaceQuota items on this page */
 export type PlaywrightWorkspaceQuotaListResultValueList =
-  ReadonlyArray<PlaywrightWorkspaceQuota>;
+  Array<PlaywrightWorkspaceQuota>;
 export const PlaywrightWorkspaceQuotaListResultValueList =
   /*@__PURE__*/ S.Array(
     PlaywrightWorkspaceQuota,
@@ -1595,8 +1593,7 @@ export const PlaywrightWorkspace = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PlaywrightWorkspace>;
 
 /** The PlaywrightWorkspace items on this page */
-export type PlaywrightWorkspaceListResultValueList =
-  ReadonlyArray<PlaywrightWorkspace>;
+export type PlaywrightWorkspaceListResultValueList = Array<PlaywrightWorkspace>;
 export const PlaywrightWorkspaceListResultValueList = /*@__PURE__*/ S.Array(
   PlaywrightWorkspace,
 ) as any as S.Schema<PlaywrightWorkspaceListResultValueList>;
@@ -2010,7 +2007,7 @@ export const QuotaResource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "QuotaResource" }) as any as S.Schema<QuotaResource>;
 
 /** The QuotaResource items on this page */
-export type QuotaResourceListResultValueList = ReadonlyArray<QuotaResource>;
+export type QuotaResourceListResultValueList = Array<QuotaResource>;
 export const QuotaResourceListResultValueList = /*@__PURE__*/ S.Array(
   QuotaResource,
 ) as any as S.Schema<QuotaResourceListResultValueList>;

@@ -33,7 +33,7 @@ export const Provider = /*@__PURE__*/ S.String;
 /** Contains infrastructure information about the Appliance */
 export interface AppliancePropertiesInfrastructureConfig {
   /** Information about the connected appliance. */
-  provider?: Provider;
+  provider?: Provider | (string & {});
 }
 export const AppliancePropertiesInfrastructureConfig = /*@__PURE__*/ S.suspend(
   () =>
@@ -518,7 +518,7 @@ export const SupportedVersion = /*@__PURE__*/ S.suspend(() =>
 
 /** This contains the current version and supported upgrade versions. */
 export type UpgradeGraphPropertiesSupportedVersionsList =
-  ReadonlyArray<SupportedVersion>;
+  Array<SupportedVersion>;
 export const UpgradeGraphPropertiesSupportedVersionsList =
   /*@__PURE__*/ S.Array(
     SupportedVersion,
@@ -620,7 +620,7 @@ export const Appliance = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Appliance" }) as any as S.Schema<Appliance>;
 
 /** The Appliance items on this page */
-export type ApplianceListResultValueList = ReadonlyArray<Appliance>;
+export type ApplianceListResultValueList = Array<Appliance>;
 export const ApplianceListResultValueList = /*@__PURE__*/ S.Array(
   Appliance,
 ) as any as S.Schema<ApplianceListResultValueList>;
@@ -730,7 +730,7 @@ export const ApplianceCredentialKubeconfig = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of appliance kubeconfigs. */
 export type ApplianceListCredentialResultsKubeconfigsList =
-  ReadonlyArray<ApplianceCredentialKubeconfig>;
+  Array<ApplianceCredentialKubeconfig>;
 export const ApplianceListCredentialResultsKubeconfigsList =
   /*@__PURE__*/ S.Array(
     ApplianceCredentialKubeconfig,
@@ -805,7 +805,7 @@ export const ApplianceListKeysResultsArtifactProfilesMap =
 
 /** The list of appliance kubeconfigs. */
 export type ApplianceListKeysResultsKubeconfigsList =
-  ReadonlyArray<ApplianceCredentialKubeconfig>;
+  Array<ApplianceCredentialKubeconfig>;
 export const ApplianceListKeysResultsKubeconfigsList = /*@__PURE__*/ S.Array(
   ApplianceCredentialKubeconfig,
 ) as any as S.Schema<ApplianceListKeysResultsKubeconfigsList>;
@@ -920,8 +920,7 @@ export const ApplianceOperation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ApplianceOperation>;
 
 /** The ApplianceOperation items on this page */
-export type ApplianceOperationsListValueList =
-  ReadonlyArray<ApplianceOperation>;
+export type ApplianceOperationsListValueList = Array<ApplianceOperation>;
 export const ApplianceOperationsListValueList = /*@__PURE__*/ S.Array(
   ApplianceOperation,
 ) as any as S.Schema<ApplianceOperationsListValueList>;

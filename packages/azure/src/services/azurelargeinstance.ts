@@ -178,7 +178,7 @@ export const Disk = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Disk" }) as any as S.Schema<Disk>;
 
 /** Specifies information about the operating system disk used by Azure Large Instance. */
-export type StorageProfileOsDisksList = ReadonlyArray<Disk>;
+export type StorageProfileOsDisksList = Array<Disk>;
 export const StorageProfileOsDisksList = /*@__PURE__*/ S.Array(
   Disk,
 ) as any as S.Schema<StorageProfileOsDisksList>;
@@ -229,7 +229,7 @@ export const IpAddress = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IpAddress" }) as any as S.Schema<IpAddress>;
 
 /** Specifies the network interfaces for the Azure Large Instance. */
-export type NetworkProfileNetworkInterfacesList = ReadonlyArray<IpAddress>;
+export type NetworkProfileNetworkInterfacesList = Array<IpAddress>;
 export const NetworkProfileNetworkInterfacesList = /*@__PURE__*/ S.Array(
   IpAddress,
 ) as any as S.Schema<NetworkProfileNetworkInterfacesList>;
@@ -399,8 +399,7 @@ export const AzureLargeInstance = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AzureLargeInstance>;
 
 /** The AzureLargeInstance items on this page */
-export type AzureLargeInstanceListResultValueList =
-  ReadonlyArray<AzureLargeInstance>;
+export type AzureLargeInstanceListResultValueList = Array<AzureLargeInstance>;
 export const AzureLargeInstanceListResultValueList = /*@__PURE__*/ S.Array(
   AzureLargeInstance,
 ) as any as S.Schema<AzureLargeInstanceListResultValueList>;
@@ -474,14 +473,13 @@ export const AzureLargeInstanceRestartRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AzureLargeInstanceRestartRequest>;
 
 /** The operations list. */
-export type OperationStatusResultOperationsList =
-  ReadonlyArray<OperationStatusResult>;
+export type OperationStatusResultOperationsList = Array<OperationStatusResult>;
 export const OperationStatusResultOperationsList = /*@__PURE__*/ S.Array(
   S.suspend(() => OperationStatusResult),
 ) as any as S.Schema<OperationStatusResultOperationsList>;
 
 /** The error details. */
-export type ErrorDetailDetailsList = ReadonlyArray<ErrorDetail>;
+export type ErrorDetailDetailsList = Array<ErrorDetail>;
 export const ErrorDetailDetailsList = /*@__PURE__*/ S.Array(
   S.suspend(() => ErrorDetail),
 ) as any as S.Schema<ErrorDetailDetailsList>;
@@ -503,7 +501,7 @@ export const ErrorAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ErrorAdditionalInfo>;
 
 /** The error additional info. */
-export type ErrorDetailAdditionalInfoList = ReadonlyArray<ErrorAdditionalInfo>;
+export type ErrorDetailAdditionalInfoList = Array<ErrorAdditionalInfo>;
 export const ErrorDetailAdditionalInfoList = /*@__PURE__*/ S.Array(
   ErrorAdditionalInfo,
 ) as any as S.Schema<ErrorDetailAdditionalInfoList>;
@@ -570,7 +568,7 @@ export const OperationStatusResult = /*@__PURE__*/ S.suspend(() =>
 
 /** The operations list. */
 export type AzureLargeInstanceRestartResponseOperationsList =
-  ReadonlyArray<OperationStatusResult>;
+  Array<OperationStatusResult>;
 export const AzureLargeInstanceRestartResponseOperationsList =
   /*@__PURE__*/ S.Array(
     OperationStatusResult,
@@ -639,7 +637,7 @@ export const AzureLargeInstanceShutdownRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The operations list. */
 export type AzureLargeInstanceShutdownResponseOperationsList =
-  ReadonlyArray<OperationStatusResult>;
+  Array<OperationStatusResult>;
 export const AzureLargeInstanceShutdownResponseOperationsList =
   /*@__PURE__*/ S.Array(
     OperationStatusResult,
@@ -708,7 +706,7 @@ export const AzureLargeInstanceStartRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The operations list. */
 export type AzureLargeInstanceStartResponseOperationsList =
-  ReadonlyArray<OperationStatusResult>;
+  Array<OperationStatusResult>;
 export const AzureLargeInstanceStartResponseOperationsList =
   /*@__PURE__*/ S.Array(
     OperationStatusResult,
@@ -1032,7 +1030,7 @@ export const AzureLargeStorageInstance = /*@__PURE__*/ S.suspend(() =>
 
 /** The AzureLargeStorageInstance items on this page */
 export type AzureLargeStorageInstanceListResultValueList =
-  ReadonlyArray<AzureLargeStorageInstance>;
+  Array<AzureLargeStorageInstance>;
 export const AzureLargeStorageInstanceListResultValueList =
   /*@__PURE__*/ S.Array(
     AzureLargeStorageInstance,
@@ -1222,7 +1220,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = ReadonlyArray<Operation>;
+export type OperationsListResponseValueList = Array<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;

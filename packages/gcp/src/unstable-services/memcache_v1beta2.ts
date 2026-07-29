@@ -60,7 +60,7 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -109,7 +109,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -262,7 +262,7 @@ export const TimeOfDay = /*@__PURE__*/ S.suspend(() =>
 /** Time window specified for weekly operations. */
 export interface WeeklyMaintenanceWindow {
   /** Required. Allows to define schedule that runs specified day of the week. */
-  day?: WeeklyMaintenanceWindowDayEnum;
+  day?: WeeklyMaintenanceWindowDayEnum | (string & {});
   /** Required. Start time of the window in UTC. */
   startTime?: TimeOfDay;
   /** Required. Duration of the time window. */
@@ -278,8 +278,7 @@ export const WeeklyMaintenanceWindow = /*@__PURE__*/ S.suspend(() =>
   identifier: "WeeklyMaintenanceWindow",
 }) as any as S.Schema<WeeklyMaintenanceWindow>;
 
-export type WeeklyMaintenanceWindowList =
-  ReadonlyArray<WeeklyMaintenanceWindow>;
+export type WeeklyMaintenanceWindowList = Array<WeeklyMaintenanceWindow>;
 export const WeeklyMaintenanceWindowList = /*@__PURE__*/ S.Array(
   WeeklyMaintenanceWindow,
 ) as any as S.Schema<WeeklyMaintenanceWindowList>;
@@ -393,11 +392,11 @@ export const NodeMemcacheVersionEnum = /*@__PURE__*/ S.String;
 
 export interface Node {
   /** Output only. Current state of the Memcached node. */
-  state?: NodeStateEnum;
+  state?: NodeStateEnum | (string & {});
   /** Output only. Hostname or IP address of the Memcached node used by the clients to connect to the Memcached server on this node. */
   host?: string;
   /** Output only. Major version of memcached server running on this node, e.g. MEMCACHE_1_5 */
-  memcacheVersion?: NodeMemcacheVersionEnum;
+  memcacheVersion?: NodeMemcacheVersionEnum | (string & {});
   /** Output only. Returns true if there is an update waiting to be applied */
   updateAvailable?: boolean;
   /** Output only. The full version of memcached server running on this node. e.g. - memcached-1.5.16 */
@@ -425,7 +424,7 @@ export const Node = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Node" }) as any as S.Schema<Node>;
 
-export type NodeList = ReadonlyArray<Node>;
+export type NodeList = Array<Node>;
 export const NodeList = /*@__PURE__*/ S.Array(
   Node,
 ) as any as S.Schema<NodeList>;
@@ -437,7 +436,7 @@ export const InstanceMessageCodeEnum = /*@__PURE__*/ S.String;
 
 export interface InstanceMessage {
   /** A code that correspond to one type of user-facing message. */
-  code?: InstanceMessageCodeEnum;
+  code?: InstanceMessageCodeEnum | (string & {});
   /** Message on memcached instance which will be exposed to users. */
   message?: string;
 }
@@ -450,7 +449,7 @@ export const InstanceMessage = /*@__PURE__*/ S.suspend(() =>
   identifier: "InstanceMessage",
 }) as any as S.Schema<InstanceMessage>;
 
-export type InstanceMessageList = ReadonlyArray<InstanceMessage>;
+export type InstanceMessageList = Array<InstanceMessage>;
 export const InstanceMessageList = /*@__PURE__*/ S.Array(
   InstanceMessage,
 ) as any as S.Schema<InstanceMessageList>;
@@ -478,13 +477,13 @@ export interface Instance {
   /** Required. Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Memcached instances are managed and addressed at the regional level so `location_id` here refers to a Google Cloud region; however, users may choose which zones Memcached nodes should be provisioned in within an instance. Refer to zones field for more details. */
   name?: string;
   /** Output only. The state of this Memcached instance. */
-  state?: InstanceStateEnum;
+  state?: InstanceStateEnum | (string & {});
   /** Optional. Output only. Reserved for future use. */
   satisfiesPzs?: boolean;
   /** Required. Configuration for Memcached nodes. */
   nodeConfig?: NodeConfig;
   /** The major version of Memcached software. If not provided, latest supported version will be used. Currently the latest supported major version is `MEMCACHE_1_5`. The minor version will be automatically determined by our system based on the latest supported minor version. */
-  memcacheVersion?: InstanceMemcacheVersionEnum;
+  memcacheVersion?: InstanceMemcacheVersionEnum | (string & {});
   /** Output only. List of Memcached nodes. Refer to Node message for more details. */
   memcacheNodes?: NodeList;
   /** Output only. The time the instance was updated. */
@@ -710,7 +709,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = ReadonlyArray<Location>;
+export type LocationList = Array<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -762,7 +761,7 @@ export const ListProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsInstancesRequest",
 }) as any as S.Schema<ListProjectsLocationsInstancesRequest>;
 
-export type InstanceList = ReadonlyArray<Instance>;
+export type InstanceList = Array<Instance>;
 export const InstanceList = /*@__PURE__*/ S.Array(
   Instance,
 ) as any as S.Schema<InstanceList>;
@@ -817,7 +816,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type OperationList = ReadonlyArray<Operation>;
+export type OperationList = Array<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;

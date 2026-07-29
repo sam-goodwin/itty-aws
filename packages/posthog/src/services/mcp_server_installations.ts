@@ -290,7 +290,7 @@ export const McpServerInstallationsListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<McpServerInstallationsListRequest>;
 
 export type PaginatedMCPServerInstallationListResultsList =
-  ReadonlyArray<MCPServerInstallation>;
+  Array<MCPServerInstallation>;
 export const PaginatedMCPServerInstallationListResultsList =
   /*@__PURE__*/ S.Array(
     MCPServerInstallation,
@@ -526,7 +526,7 @@ export const McpServerInstallationsToolsRefreshCreateRequest =
   }) as any as S.Schema<McpServerInstallationsToolsRefreshCreateRequest>;
 
 export type PaginatedMCPServerInstallationToolListResultsList =
-  ReadonlyArray<MCPServerInstallationTool>;
+  Array<MCPServerInstallationTool>;
 export const PaginatedMCPServerInstallationToolListResultsList =
   /*@__PURE__*/ S.Array(
     MCPServerInstallationTool,

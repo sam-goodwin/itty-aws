@@ -45,14 +45,14 @@ export const EndpointsCreateRequestBucketOverridesMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<EndpointsCreateRequestBucketOverridesMap>;
 
 /** List of tag names to associate with this endpoint. Replaces any existing tags. */
-export type EndpointsCreateRequestTagsList = ReadonlyArray<string>;
+export type EndpointsCreateRequestTagsList = Array<string>;
 export const EndpointsCreateRequestTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EndpointsCreateRequestTagsList>;
 
 /** Breakdown property names that may be omitted on /run. Omitted ones return data aggregated across all values of that breakdown. Defaults to [] — every breakdown variable is required. */
 export type EndpointsCreateRequestOptionalBreakdownPropertiesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const EndpointsCreateRequestOptionalBreakdownPropertiesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -221,20 +221,19 @@ export const EndpointColumn = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EndpointColumn" }) as any as S.Schema<EndpointColumn>;
 
 /** Column names and types from the query's SELECT clause. */
-export type EndpointResponseColumnsList = ReadonlyArray<EndpointColumn>;
+export type EndpointResponseColumnsList = Array<EndpointColumn>;
 export const EndpointResponseColumnsList = /*@__PURE__*/ S.Array(
   EndpointColumn,
 ) as any as S.Schema<EndpointResponseColumnsList>;
 
 /** Tag names associated with this endpoint. */
-export type EndpointResponseTagsList = ReadonlyArray<string>;
+export type EndpointResponseTagsList = Array<string>;
 export const EndpointResponseTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EndpointResponseTagsList>;
 
 /** Breakdown property names that may be omitted on /run. Omitted ones return data aggregated across all values of that breakdown. */
-export type EndpointResponseOptionalBreakdownPropertiesList =
-  ReadonlyArray<string>;
+export type EndpointResponseOptionalBreakdownPropertiesList = Array<string>;
 export const EndpointResponseOptionalBreakdownPropertiesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -348,8 +347,7 @@ export const EndpointsDestroyResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "EndpointsDestroyResponse",
 }) as any as S.Schema<EndpointsDestroyResponse>;
 
-export type EndpointsLastExecutionTimesCreateRequestNamesList =
-  ReadonlyArray<string>;
+export type EndpointsLastExecutionTimesCreateRequestNamesList = Array<string>;
 export const EndpointsLastExecutionTimesCreateRequestNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -376,7 +374,7 @@ export const EndpointsLastExecutionTimesCreateRequest = /*@__PURE__*/ S.suspend(
   identifier: "EndpointsLastExecutionTimesCreateRequest",
 }) as any as S.Schema<EndpointsLastExecutionTimesCreateRequest>;
 
-export type QueryStatusLabelsList = ReadonlyArray<string>;
+export type QueryStatusLabelsList = Array<string>;
 export const QueryStatusLabelsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<QueryStatusLabelsList>;
@@ -487,8 +485,7 @@ export const EndpointsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "EndpointsListRequest",
 }) as any as S.Schema<EndpointsListRequest>;
 
-export type PaginatedEndpointResponseListResultsList =
-  ReadonlyArray<EndpointResponse>;
+export type PaginatedEndpointResponseListResultsList = Array<EndpointResponse>;
 export const PaginatedEndpointResponseListResultsList = /*@__PURE__*/ S.Array(
   EndpointResponse,
 ) as any as S.Schema<PaginatedEndpointResponseListResultsList>;
@@ -758,14 +755,14 @@ export const EndpointsPartialUpdateRequestBucketOverridesMap =
   ) as any as S.Schema<EndpointsPartialUpdateRequestBucketOverridesMap>;
 
 /** List of tag names to associate with this endpoint. Replaces any existing tags. */
-export type EndpointsPartialUpdateRequestTagsList = ReadonlyArray<string>;
+export type EndpointsPartialUpdateRequestTagsList = Array<string>;
 export const EndpointsPartialUpdateRequestTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EndpointsPartialUpdateRequestTagsList>;
 
 /** Breakdown property names that may be omitted on /run. Omitted ones return data aggregated across all values of that breakdown. Defaults to [] — every breakdown variable is required. */
 export type EndpointsPartialUpdateRequestOptionalBreakdownPropertiesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const EndpointsPartialUpdateRequestOptionalBreakdownPropertiesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -858,20 +855,20 @@ export const EndpointVersionResponseBucketOverridesMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<EndpointVersionResponseBucketOverridesMap>;
 
 /** Column names and types from the query's SELECT clause. */
-export type EndpointVersionResponseColumnsList = ReadonlyArray<EndpointColumn>;
+export type EndpointVersionResponseColumnsList = Array<EndpointColumn>;
 export const EndpointVersionResponseColumnsList = /*@__PURE__*/ S.Array(
   EndpointColumn,
 ) as any as S.Schema<EndpointVersionResponseColumnsList>;
 
 /** Tag names associated with this endpoint. */
-export type EndpointVersionResponseTagsList = ReadonlyArray<string>;
+export type EndpointVersionResponseTagsList = Array<string>;
 export const EndpointVersionResponseTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EndpointVersionResponseTagsList>;
 
 /** Breakdown property names that may be omitted on /run. Omitted ones return data aggregated across all values of that breakdown. */
 export type EndpointVersionResponseOptionalBreakdownPropertiesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const EndpointVersionResponseOptionalBreakdownPropertiesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -983,7 +980,7 @@ export const BreakdownFilterBreakdownCase1Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<BreakdownFilterBreakdownCase1Item>;
 
 export type BreakdownFilterBreakdownCase1List =
-  ReadonlyArray<BreakdownFilterBreakdownCase1Item>;
+  Array<BreakdownFilterBreakdownCase1Item>;
 export const BreakdownFilterBreakdownCase1List = /*@__PURE__*/ S.Array(
   BreakdownFilterBreakdownCase1Item,
 ) as any as S.Schema<BreakdownFilterBreakdownCase1List>;
@@ -1042,7 +1039,7 @@ export const Breakdown = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Breakdown" }) as any as S.Schema<Breakdown>;
 
-export type BreakdownFilterBreakdownsList = ReadonlyArray<Breakdown>;
+export type BreakdownFilterBreakdownsList = Array<Breakdown>;
 export const BreakdownFilterBreakdownsList = /*@__PURE__*/ S.Array(
   Breakdown,
 ) as any as S.Schema<BreakdownFilterBreakdownsList>;
@@ -1127,7 +1124,7 @@ export const EventPropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<EventPropertyFilterValueCase0Item>;
 
 export type EventPropertyFilterValueCase0List =
-  ReadonlyArray<EventPropertyFilterValueCase0Item>;
+  Array<EventPropertyFilterValueCase0Item>;
 export const EventPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
   EventPropertyFilterValueCase0Item,
 ) as any as S.Schema<EventPropertyFilterValueCase0List>;
@@ -1165,7 +1162,7 @@ export const PersonPropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<PersonPropertyFilterValueCase0Item>;
 
 export type PersonPropertyFilterValueCase0List =
-  ReadonlyArray<PersonPropertyFilterValueCase0Item>;
+  Array<PersonPropertyFilterValueCase0Item>;
 export const PersonPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
   PersonPropertyFilterValueCase0Item,
 ) as any as S.Schema<PersonPropertyFilterValueCase0List>;
@@ -1206,7 +1203,7 @@ export const PersonMetadataPropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<PersonMetadataPropertyFilterValueCase0Item>;
 
 export type PersonMetadataPropertyFilterValueCase0List =
-  ReadonlyArray<PersonMetadataPropertyFilterValueCase0Item>;
+  Array<PersonMetadataPropertyFilterValueCase0Item>;
 export const PersonMetadataPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
   PersonMetadataPropertyFilterValueCase0Item,
 ) as any as S.Schema<PersonMetadataPropertyFilterValueCase0List>;
@@ -1247,7 +1244,7 @@ export const ElementPropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<ElementPropertyFilterValueCase0Item>;
 
 export type ElementPropertyFilterValueCase0List =
-  ReadonlyArray<ElementPropertyFilterValueCase0Item>;
+  Array<ElementPropertyFilterValueCase0Item>;
 export const ElementPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
   ElementPropertyFilterValueCase0Item,
 ) as any as S.Schema<ElementPropertyFilterValueCase0List>;
@@ -1287,7 +1284,7 @@ export const EventMetadataPropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<EventMetadataPropertyFilterValueCase0Item>;
 
 export type EventMetadataPropertyFilterValueCase0List =
-  ReadonlyArray<EventMetadataPropertyFilterValueCase0Item>;
+  Array<EventMetadataPropertyFilterValueCase0Item>;
 export const EventMetadataPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
   EventMetadataPropertyFilterValueCase0Item,
 ) as any as S.Schema<EventMetadataPropertyFilterValueCase0List>;
@@ -1324,7 +1321,7 @@ export const SessionPropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<SessionPropertyFilterValueCase0Item>;
 
 export type SessionPropertyFilterValueCase0List =
-  ReadonlyArray<SessionPropertyFilterValueCase0Item>;
+  Array<SessionPropertyFilterValueCase0Item>;
 export const SessionPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
   SessionPropertyFilterValueCase0Item,
 ) as any as S.Schema<SessionPropertyFilterValueCase0List>;
@@ -1389,7 +1386,7 @@ export const RecordingPropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<RecordingPropertyFilterValueCase0Item>;
 
 export type RecordingPropertyFilterValueCase0List =
-  ReadonlyArray<RecordingPropertyFilterValueCase0Item>;
+  Array<RecordingPropertyFilterValueCase0Item>;
 export const RecordingPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
   RecordingPropertyFilterValueCase0Item,
 ) as any as S.Schema<RecordingPropertyFilterValueCase0List>;
@@ -1426,7 +1423,7 @@ export const LogEntryPropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<LogEntryPropertyFilterValueCase0Item>;
 
 export type LogEntryPropertyFilterValueCase0List =
-  ReadonlyArray<LogEntryPropertyFilterValueCase0Item>;
+  Array<LogEntryPropertyFilterValueCase0Item>;
 export const LogEntryPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
   LogEntryPropertyFilterValueCase0Item,
 ) as any as S.Schema<LogEntryPropertyFilterValueCase0List>;
@@ -1471,7 +1468,7 @@ export const GroupPropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<GroupPropertyFilterValueCase0Item>;
 
 export type GroupPropertyFilterValueCase0List =
-  ReadonlyArray<GroupPropertyFilterValueCase0Item>;
+  Array<GroupPropertyFilterValueCase0Item>;
 export const GroupPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
   GroupPropertyFilterValueCase0Item,
 ) as any as S.Schema<GroupPropertyFilterValueCase0List>;
@@ -1512,7 +1509,7 @@ export const FeaturePropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<FeaturePropertyFilterValueCase0Item>;
 
 export type FeaturePropertyFilterValueCase0List =
-  ReadonlyArray<FeaturePropertyFilterValueCase0Item>;
+  Array<FeaturePropertyFilterValueCase0Item>;
 export const FeaturePropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
   FeaturePropertyFilterValueCase0Item,
 ) as any as S.Schema<FeaturePropertyFilterValueCase0List>;
@@ -1578,7 +1575,7 @@ export const HogQLPropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<HogQLPropertyFilterValueCase0Item>;
 
 export type HogQLPropertyFilterValueCase0List =
-  ReadonlyArray<HogQLPropertyFilterValueCase0Item>;
+  Array<HogQLPropertyFilterValueCase0Item>;
 export const HogQLPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
   HogQLPropertyFilterValueCase0Item,
 ) as any as S.Schema<HogQLPropertyFilterValueCase0List>;
@@ -1627,7 +1624,7 @@ export const DataWarehousePropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<DataWarehousePropertyFilterValueCase0Item>;
 
 export type DataWarehousePropertyFilterValueCase0List =
-  ReadonlyArray<DataWarehousePropertyFilterValueCase0Item>;
+  Array<DataWarehousePropertyFilterValueCase0Item>;
 export const DataWarehousePropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
   DataWarehousePropertyFilterValueCase0Item,
 ) as any as S.Schema<DataWarehousePropertyFilterValueCase0List>;
@@ -1667,7 +1664,7 @@ export const DataWarehousePersonPropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<DataWarehousePersonPropertyFilterValueCase0Item>;
 
 export type DataWarehousePersonPropertyFilterValueCase0List =
-  ReadonlyArray<DataWarehousePersonPropertyFilterValueCase0Item>;
+  Array<DataWarehousePersonPropertyFilterValueCase0Item>;
 export const DataWarehousePersonPropertyFilterValueCase0List =
   /*@__PURE__*/ S.Array(
     DataWarehousePersonPropertyFilterValueCase0Item,
@@ -1705,7 +1702,7 @@ export const ErrorTrackingIssueFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<ErrorTrackingIssueFilterValueCase0Item>;
 
 export type ErrorTrackingIssueFilterValueCase0List =
-  ReadonlyArray<ErrorTrackingIssueFilterValueCase0Item>;
+  Array<ErrorTrackingIssueFilterValueCase0Item>;
 export const ErrorTrackingIssueFilterValueCase0List = /*@__PURE__*/ S.Array(
   ErrorTrackingIssueFilterValueCase0Item,
 ) as any as S.Schema<ErrorTrackingIssueFilterValueCase0List>;
@@ -1748,7 +1745,7 @@ export const LogPropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<LogPropertyFilterValueCase0Item>;
 
 export type LogPropertyFilterValueCase0List =
-  ReadonlyArray<LogPropertyFilterValueCase0Item>;
+  Array<LogPropertyFilterValueCase0Item>;
 export const LogPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
   LogPropertyFilterValueCase0Item,
 ) as any as S.Schema<LogPropertyFilterValueCase0List>;
@@ -1785,7 +1782,7 @@ export const MetricPropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<MetricPropertyFilterValueCase0Item>;
 
 export type MetricPropertyFilterValueCase0List =
-  ReadonlyArray<MetricPropertyFilterValueCase0Item>;
+  Array<MetricPropertyFilterValueCase0Item>;
 export const MetricPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
   MetricPropertyFilterValueCase0Item,
 ) as any as S.Schema<MetricPropertyFilterValueCase0List>;
@@ -1828,7 +1825,7 @@ export const SpanPropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<SpanPropertyFilterValueCase0Item>;
 
 export type SpanPropertyFilterValueCase0List =
-  ReadonlyArray<SpanPropertyFilterValueCase0Item>;
+  Array<SpanPropertyFilterValueCase0Item>;
 export const SpanPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
   SpanPropertyFilterValueCase0Item,
 ) as any as S.Schema<SpanPropertyFilterValueCase0List>;
@@ -1868,7 +1865,7 @@ export const RevenueAnalyticsPropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<RevenueAnalyticsPropertyFilterValueCase0Item>;
 
 export type RevenueAnalyticsPropertyFilterValueCase0List =
-  ReadonlyArray<RevenueAnalyticsPropertyFilterValueCase0Item>;
+  Array<RevenueAnalyticsPropertyFilterValueCase0Item>;
 export const RevenueAnalyticsPropertyFilterValueCase0List =
   /*@__PURE__*/ S.Array(
     RevenueAnalyticsPropertyFilterValueCase0Item,
@@ -1909,7 +1906,7 @@ export const AccountCustomPropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<AccountCustomPropertyFilterValueCase0Item>;
 
 export type AccountCustomPropertyFilterValueCase0List =
-  ReadonlyArray<AccountCustomPropertyFilterValueCase0Item>;
+  Array<AccountCustomPropertyFilterValueCase0Item>;
 export const AccountCustomPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
   AccountCustomPropertyFilterValueCase0Item,
 ) as any as S.Schema<AccountCustomPropertyFilterValueCase0List>;
@@ -1950,7 +1947,7 @@ export const WorkflowVariablePropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<WorkflowVariablePropertyFilterValueCase0Item>;
 
 export type WorkflowVariablePropertyFilterValueCase0List =
-  ReadonlyArray<WorkflowVariablePropertyFilterValueCase0Item>;
+  Array<WorkflowVariablePropertyFilterValueCase0Item>;
 export const WorkflowVariablePropertyFilterValueCase0List =
   /*@__PURE__*/ S.Array(
     WorkflowVariablePropertyFilterValueCase0Item,
@@ -2070,7 +2067,7 @@ export const DashboardFilterPropertiesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DashboardFilterPropertiesItem>;
 
 export type DashboardFilterPropertiesList =
-  ReadonlyArray<DashboardFilterPropertiesItem>;
+  Array<DashboardFilterPropertiesItem>;
 export const DashboardFilterPropertiesList = /*@__PURE__*/ S.Array(
   DashboardFilterPropertiesItem,
 ) as any as S.Schema<DashboardFilterPropertiesList>;
@@ -2154,13 +2151,13 @@ export const EndpointsRunCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EndpointsRunCreateRequest>;
 
 /** Query result rows. Each row is a list of values matching the columns order. */
-export type EndpointRunResponseResultsList = ReadonlyArray<unknown>;
+export type EndpointRunResponseResultsList = Array<unknown>;
 export const EndpointRunResponseResultsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<EndpointRunResponseResultsList>;
 
 /** Column names from the query SELECT clause. */
-export type EndpointRunResponseColumnsList = ReadonlyArray<string>;
+export type EndpointRunResponseColumnsList = Array<string>;
 export const EndpointRunResponseColumnsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EndpointRunResponseColumnsList>;
@@ -2223,14 +2220,14 @@ export const EndpointsUpdateRequestBucketOverridesMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<EndpointsUpdateRequestBucketOverridesMap>;
 
 /** List of tag names to associate with this endpoint. Replaces any existing tags. */
-export type EndpointsUpdateRequestTagsList = ReadonlyArray<string>;
+export type EndpointsUpdateRequestTagsList = Array<string>;
 export const EndpointsUpdateRequestTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EndpointsUpdateRequestTagsList>;
 
 /** Breakdown property names that may be omitted on /run. Omitted ones return data aggregated across all values of that breakdown. Defaults to [] — every breakdown variable is required. */
 export type EndpointsUpdateRequestOptionalBreakdownPropertiesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const EndpointsUpdateRequestOptionalBreakdownPropertiesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2324,7 +2321,7 @@ export const EndpointsVersionsListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EndpointsVersionsListRequest>;
 
 export type PaginatedEndpointVersionResponseListResultsList =
-  ReadonlyArray<EndpointVersionResponse>;
+  Array<EndpointVersionResponse>;
 export const PaginatedEndpointVersionResponseListResultsList =
   /*@__PURE__*/ S.Array(
     EndpointVersionResponse,

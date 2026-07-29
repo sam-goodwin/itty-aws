@@ -436,8 +436,7 @@ export const DpsCertificateListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DpsCertificateListRequest>;
 
 /** The array of Certificate objects. */
-export type CertificateListDescriptionValueList =
-  ReadonlyArray<CertificateResponse>;
+export type CertificateListDescriptionValueList = Array<CertificateResponse>;
 export const CertificateListDescriptionValueList = /*@__PURE__*/ S.Array(
   CertificateResponse,
 ) as any as S.Schema<CertificateListDescriptionValueList>;
@@ -627,11 +626,11 @@ export interface IpFilterRule {
   /** The name of the IP filter rule. */
   filterName: string;
   /** The desired action for requests captured by this rule. */
-  action: IpFilterRuleAction;
+  action: IpFilterRuleAction | (string & {});
   /** A string that contains the IP address range in CIDR notation for the rule. */
   ipMask: string;
   /** Target for requests captured by this rule. */
-  target?: IpFilterRuleTarget;
+  target?: IpFilterRuleTarget | (string & {});
 }
 export const IpFilterRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -644,7 +643,7 @@ export const IpFilterRule = /*@__PURE__*/ S.suspend(() =>
 
 /** The IP filter rules. */
 export type IotDpsPropertiesDescriptionInputIpFilterRulesList =
-  ReadonlyArray<IpFilterRule>;
+  Array<IpFilterRule>;
 export const IotDpsPropertiesDescriptionInputIpFilterRulesList =
   /*@__PURE__*/ S.Array(
     IpFilterRule,
@@ -669,7 +668,7 @@ export const PrivateLinkServiceConnectionStateStatus = /*@__PURE__*/ S.String;
 /** The current state of a private endpoint connection */
 export interface PrivateLinkServiceConnectionState {
   /** The status of a private endpoint connection */
-  status: PrivateLinkServiceConnectionStateStatus;
+  status: PrivateLinkServiceConnectionStateStatus | (string & {});
   /** The description for the current state of a private endpoint connection */
   description: string;
   /** Actions required for a private endpoint connection */
@@ -717,7 +716,7 @@ export const PrivateEndpointConnectionInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Private endpoint connections created on this IotHub */
 export type IotDpsPropertiesDescriptionInputPrivateEndpointConnectionsList =
-  ReadonlyArray<PrivateEndpointConnectionInput>;
+  Array<PrivateEndpointConnectionInput>;
 export const IotDpsPropertiesDescriptionInputPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnectionInput,
@@ -747,7 +746,7 @@ export const IotHubDefinitionDescriptionInput = /*@__PURE__*/ S.suspend(() =>
 
 /** List of IoT hubs associated with this provisioning service. */
 export type IotDpsPropertiesDescriptionInputIotHubsList =
-  ReadonlyArray<IotHubDefinitionDescriptionInput>;
+  Array<IotHubDefinitionDescriptionInput>;
 export const IotDpsPropertiesDescriptionInputIotHubsList =
   /*@__PURE__*/ S.Array(
     IotHubDefinitionDescriptionInput,
@@ -781,7 +780,9 @@ export interface SharedAccessSignatureAuthorizationRuleAccessRightsDescription {
   /** Secondary SAS key value. */
   secondaryKey?: string;
   /** Rights that this key has. */
-  rights: SharedAccessSignatureAuthorizationRuleAccessRightsDescriptionRights;
+  rights:
+    | SharedAccessSignatureAuthorizationRuleAccessRightsDescriptionRights
+    | (string & {});
 }
 export const SharedAccessSignatureAuthorizationRuleAccessRightsDescription =
   /*@__PURE__*/ S.suspend(() =>
@@ -798,7 +799,7 @@ export const SharedAccessSignatureAuthorizationRuleAccessRightsDescription =
 
 /** List of authorization keys for a provisioning service. */
 export type IotDpsPropertiesDescriptionInputAuthorizationPoliciesList =
-  ReadonlyArray<SharedAccessSignatureAuthorizationRuleAccessRightsDescription>;
+  Array<SharedAccessSignatureAuthorizationRuleAccessRightsDescription>;
 export const IotDpsPropertiesDescriptionInputAuthorizationPoliciesList =
   /*@__PURE__*/ S.Array(
     SharedAccessSignatureAuthorizationRuleAccessRightsDescription,
@@ -958,8 +959,7 @@ export const IotDpsPropertiesDescriptionPublicNetworkAccess =
   /*@__PURE__*/ S.String;
 
 /** The IP filter rules. */
-export type IotDpsPropertiesDescriptionIpFilterRulesList =
-  ReadonlyArray<IpFilterRule>;
+export type IotDpsPropertiesDescriptionIpFilterRulesList = Array<IpFilterRule>;
 export const IotDpsPropertiesDescriptionIpFilterRulesList =
   /*@__PURE__*/ S.Array(
     IpFilterRule,
@@ -1069,7 +1069,7 @@ export const PrivateEndpointConnection = /*@__PURE__*/ S.suspend(() =>
 
 /** Private endpoint connections created on this IotHub */
 export type IotDpsPropertiesDescriptionPrivateEndpointConnectionsList =
-  ReadonlyArray<PrivateEndpointConnection>;
+  Array<PrivateEndpointConnection>;
 export const IotDpsPropertiesDescriptionPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection,
@@ -1102,7 +1102,7 @@ export const IotHubDefinitionDescription = /*@__PURE__*/ S.suspend(() =>
 
 /** List of IoT hubs associated with this provisioning service. */
 export type IotDpsPropertiesDescriptionIotHubsList =
-  ReadonlyArray<IotHubDefinitionDescription>;
+  Array<IotHubDefinitionDescription>;
 export const IotDpsPropertiesDescriptionIotHubsList = /*@__PURE__*/ S.Array(
   IotHubDefinitionDescription,
 ) as any as S.Schema<IotDpsPropertiesDescriptionIotHubsList>;
@@ -1117,7 +1117,7 @@ export const IotDpsPropertiesDescriptionAllocationPolicy =
 
 /** List of authorization keys for a provisioning service. */
 export type IotDpsPropertiesDescriptionAuthorizationPoliciesList =
-  ReadonlyArray<SharedAccessSignatureAuthorizationRuleAccessRightsDescription>;
+  Array<SharedAccessSignatureAuthorizationRuleAccessRightsDescription>;
 export const IotDpsPropertiesDescriptionAuthorizationPoliciesList =
   /*@__PURE__*/ S.Array(
     SharedAccessSignatureAuthorizationRuleAccessRightsDescription,
@@ -1634,16 +1634,14 @@ export const IotDpsResourceGetPrivateLinkResourcesRequest =
   }) as any as S.Schema<IotDpsResourceGetPrivateLinkResourcesRequest>;
 
 /** The required members for a specific group id */
-export type GroupIdInformationPropertiesRequiredMembersList =
-  ReadonlyArray<string>;
+export type GroupIdInformationPropertiesRequiredMembersList = Array<string>;
 export const GroupIdInformationPropertiesRequiredMembersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<GroupIdInformationPropertiesRequiredMembersList>;
 
 /** The required DNS zones for a specific group id */
-export type GroupIdInformationPropertiesRequiredZoneNamesList =
-  ReadonlyArray<string>;
+export type GroupIdInformationPropertiesRequiredZoneNamesList = Array<string>;
 export const GroupIdInformationPropertiesRequiredZoneNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1822,7 +1820,7 @@ export const ProvisioningServiceDescription = /*@__PURE__*/ S.suspend(() =>
 
 /** List of provisioning service descriptions. */
 export type ProvisioningServiceDescriptionListResultValueList =
-  ReadonlyArray<ProvisioningServiceDescription>;
+  Array<ProvisioningServiceDescription>;
 export const ProvisioningServiceDescriptionListResultValueList =
   /*@__PURE__*/ S.Array(
     ProvisioningServiceDescription,
@@ -1892,7 +1890,7 @@ export const IotDpsResourceListKeysRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of shared access policies. */
 export type SharedAccessSignatureAuthorizationRuleListResultValueList =
-  ReadonlyArray<SharedAccessSignatureAuthorizationRuleAccessRightsDescription>;
+  Array<SharedAccessSignatureAuthorizationRuleAccessRightsDescription>;
 export const SharedAccessSignatureAuthorizationRuleListResultValueList =
   /*@__PURE__*/ S.Array(
     SharedAccessSignatureAuthorizationRuleAccessRightsDescription,
@@ -1973,8 +1971,7 @@ export const IotDpsResourceListPrivateEndpointConnectionsRequest =
   }) as any as S.Schema<IotDpsResourceListPrivateEndpointConnectionsRequest>;
 
 /** The list of private endpoint connections for a provisioning service */
-export type PrivateEndpointConnectionsList =
-  ReadonlyArray<PrivateEndpointConnection>;
+export type PrivateEndpointConnectionsList = Array<PrivateEndpointConnection>;
 export const PrivateEndpointConnectionsList = /*@__PURE__*/ S.Array(
   PrivateEndpointConnection,
 ) as any as S.Schema<PrivateEndpointConnectionsList>;
@@ -2015,7 +2012,7 @@ export const IotDpsResourceListPrivateLinkResourcesRequest =
   }) as any as S.Schema<IotDpsResourceListPrivateLinkResourcesRequest>;
 
 /** The list of available private link resources for a provisioning service */
-export type PrivateLinkResourcesValueList = ReadonlyArray<GroupIdInformation>;
+export type PrivateLinkResourcesValueList = Array<GroupIdInformation>;
 export const PrivateLinkResourcesValueList = /*@__PURE__*/ S.Array(
   GroupIdInformation,
 ) as any as S.Schema<PrivateLinkResourcesValueList>;
@@ -2076,8 +2073,7 @@ export const IotDpsSkuDefinition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IotDpsSkuDefinition>;
 
 /** The list of SKUs */
-export type IotDpsSkuDefinitionListResultValueList =
-  ReadonlyArray<IotDpsSkuDefinition>;
+export type IotDpsSkuDefinitionListResultValueList = Array<IotDpsSkuDefinition>;
 export const IotDpsSkuDefinitionListResultValueList = /*@__PURE__*/ S.Array(
   IotDpsSkuDefinition,
 ) as any as S.Schema<IotDpsSkuDefinitionListResultValueList>;
@@ -2285,7 +2281,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** Provisioning service operations supported by the Microsoft.Devices resource provider. */
-export type OperationListResultValueList = ReadonlyArray<Operation>;
+export type OperationListResultValueList = Array<Operation>;
 export const OperationListResultValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationListResultValueList>;

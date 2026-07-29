@@ -51,10 +51,9 @@ export type FindClosestBuildingInsightsAdditionalInsightsEnum =
 export const FindClosestBuildingInsightsAdditionalInsightsEnum =
   /*@__PURE__*/ S.String;
 
-export type FindClosestBuildingInsightsAdditionalInsightsEnumList =
-  ReadonlyArray<
-    FindClosestBuildingInsightsAdditionalInsightsEnum | (string & {})
-  >;
+export type FindClosestBuildingInsightsAdditionalInsightsEnumList = Array<
+  FindClosestBuildingInsightsAdditionalInsightsEnum | (string & {})
+>;
 export const FindClosestBuildingInsightsAdditionalInsightsEnumList =
   /*@__PURE__*/ S.Array(
     FindClosestBuildingInsightsAdditionalInsightsEnum,
@@ -66,7 +65,7 @@ export type FindClosestBuildingInsightsExperimentsEnum =
 export const FindClosestBuildingInsightsExperimentsEnum =
   /*@__PURE__*/ S.String;
 
-export type FindClosestBuildingInsightsExperimentsEnumList = ReadonlyArray<
+export type FindClosestBuildingInsightsExperimentsEnumList = Array<
   FindClosestBuildingInsightsExperimentsEnum | (string & {})
 >;
 export const FindClosestBuildingInsightsExperimentsEnumList =
@@ -380,7 +379,7 @@ export const FinancialAnalysis = /*@__PURE__*/ S.suspend(() =>
   identifier: "FinancialAnalysis",
 }) as any as S.Schema<FinancialAnalysis>;
 
-export type FinancialAnalysisList = ReadonlyArray<FinancialAnalysis>;
+export type FinancialAnalysisList = Array<FinancialAnalysis>;
 export const FinancialAnalysisList = /*@__PURE__*/ S.Array(
   FinancialAnalysis,
 ) as any as S.Schema<FinancialAnalysisList>;
@@ -411,7 +410,7 @@ export const SolarPanel = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SolarPanel" }) as any as S.Schema<SolarPanel>;
 
-export type SolarPanelList = ReadonlyArray<SolarPanel>;
+export type SolarPanelList = Array<SolarPanel>;
 export const SolarPanelList = /*@__PURE__*/ S.Array(
   SolarPanel,
 ) as any as S.Schema<SolarPanelList>;
@@ -441,7 +440,7 @@ export const RoofSegmentSummary = /*@__PURE__*/ S.suspend(() =>
   identifier: "RoofSegmentSummary",
 }) as any as S.Schema<RoofSegmentSummary>;
 
-export type RoofSegmentSummaryList = ReadonlyArray<RoofSegmentSummary>;
+export type RoofSegmentSummaryList = Array<RoofSegmentSummary>;
 export const RoofSegmentSummaryList = /*@__PURE__*/ S.Array(
   RoofSegmentSummary,
 ) as any as S.Schema<RoofSegmentSummaryList>;
@@ -465,12 +464,12 @@ export const SolarPanelConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "SolarPanelConfig",
 }) as any as S.Schema<SolarPanelConfig>;
 
-export type SolarPanelConfigList = ReadonlyArray<SolarPanelConfig>;
+export type SolarPanelConfigList = Array<SolarPanelConfig>;
 export const SolarPanelConfigList = /*@__PURE__*/ S.Array(
   SolarPanelConfig,
 ) as any as S.Schema<SolarPanelConfigList>;
 
-export type DoubleList = ReadonlyArray<number>;
+export type DoubleList = Array<number>;
 export const DoubleList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<DoubleList>;
@@ -523,7 +522,7 @@ export const RoofSegmentSizeAndSunshineStats = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RoofSegmentSizeAndSunshineStats>;
 
 export type RoofSegmentSizeAndSunshineStatsList =
-  ReadonlyArray<RoofSegmentSizeAndSunshineStats>;
+  Array<RoofSegmentSizeAndSunshineStats>;
 export const RoofSegmentSizeAndSunshineStatsList = /*@__PURE__*/ S.Array(
   RoofSegmentSizeAndSunshineStats,
 ) as any as S.Schema<RoofSegmentSizeAndSunshineStatsList>;
@@ -629,7 +628,7 @@ export type GetDataLayersExperimentsEnum =
   | "EXPANDED_COVERAGE";
 export const GetDataLayersExperimentsEnum = /*@__PURE__*/ S.String;
 
-export type GetDataLayersExperimentsEnumList = ReadonlyArray<
+export type GetDataLayersExperimentsEnumList = Array<
   GetDataLayersExperimentsEnum | (string & {})
 >;
 export const GetDataLayersExperimentsEnumList = /*@__PURE__*/ S.Array(
@@ -702,7 +701,7 @@ export type DataLayersImageryQualityEnum =
   | "BASE";
 export const DataLayersImageryQualityEnum = /*@__PURE__*/ S.String;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -766,7 +765,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;

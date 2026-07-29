@@ -68,8 +68,7 @@ export const ElasticTrafficFilterRule = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ElasticTrafficFilterRule>;
 
 /** Rules in the elastic filter */
-export type ElasticTrafficFilterRulesList =
-  ReadonlyArray<ElasticTrafficFilterRule>;
+export type ElasticTrafficFilterRulesList = Array<ElasticTrafficFilterRule>;
 export const ElasticTrafficFilterRulesList = /*@__PURE__*/ S.Array(
   ElasticTrafficFilterRule,
 ) as any as S.Schema<ElasticTrafficFilterRulesList>;
@@ -107,7 +106,7 @@ export const ElasticTrafficFilter = /*@__PURE__*/ S.suspend(() =>
 
 /** List of elastic traffic filters in the account */
 export type ElasticTrafficFilterResponseRulesetsList =
-  ReadonlyArray<ElasticTrafficFilter>;
+  Array<ElasticTrafficFilter>;
 export const ElasticTrafficFilterResponseRulesetsList = /*@__PURE__*/ S.Array(
   ElasticTrafficFilter,
 ) as any as S.Schema<ElasticTrafficFilterResponseRulesetsList>;
@@ -337,7 +336,7 @@ export const ConnectedPartnerResourcesListFormat = /*@__PURE__*/ S.suspend(() =>
 
 /** The ConnectedPartnerResourcesListFormat items on this page */
 export type ConnectedPartnerResourcesListResponseValueList =
-  ReadonlyArray<ConnectedPartnerResourcesListFormat>;
+  Array<ConnectedPartnerResourcesListFormat>;
 export const ConnectedPartnerResourcesListResponseValueList =
   /*@__PURE__*/ S.Array(
     ConnectedPartnerResourcesListFormat,
@@ -627,7 +626,7 @@ export const ElasticVersionListFormat = /*@__PURE__*/ S.suspend(() =>
 
 /** The ElasticVersionListFormat items on this page */
 export type ElasticVersionsListResponseValueList =
-  ReadonlyArray<ElasticVersionListFormat>;
+  Array<ElasticVersionListFormat>;
 export const ElasticVersionsListResponseValueList = /*@__PURE__*/ S.Array(
   ElasticVersionListFormat,
 ) as any as S.Schema<ElasticVersionsListResponseValueList>;
@@ -649,7 +648,7 @@ export const ElasticVersionsListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ElasticVersionsListResponse>;
 
 /** Roles to be assigned for created or updated user */
-export type ExternalUserCreateOrUpdateRequestRolesList = ReadonlyArray<string>;
+export type ExternalUserCreateOrUpdateRequestRolesList = Array<string>;
 export const ExternalUserCreateOrUpdateRequestRolesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ExternalUserCreateOrUpdateRequestRolesList>;
@@ -782,8 +781,7 @@ export const MonitoredResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MonitoredResource>;
 
 /** The MonitoredResource items on this page */
-export type MonitoredResourceListResponseValueList =
-  ReadonlyArray<MonitoredResource>;
+export type MonitoredResourceListResponseValueList = Array<MonitoredResource>;
 export const MonitoredResourceListResponseValueList = /*@__PURE__*/ S.Array(
   MonitoredResource,
 ) as any as S.Schema<MonitoredResourceListResponseValueList>;
@@ -841,7 +839,7 @@ export interface FilteringTag {
   /** The value of the tag. */
   value?: string;
   /** Valid actions for a filtering tag. */
-  action?: TagAction;
+  action?: TagAction | (string & {});
 }
 export const FilteringTag = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -852,7 +850,7 @@ export const FilteringTag = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FilteringTag" }) as any as S.Schema<FilteringTag>;
 
 /** List of filtering tags to be used for capturing logs. This only takes effect if SendActivityLogs flag is enabled. If empty, all resources will be captured. If only Exclude action is specified, the rules will apply to the list of all available resources. If Include actions are specified, the rules will only include resources with the associated tags. */
-export type LogRulesFilteringTagsList = ReadonlyArray<FilteringTag>;
+export type LogRulesFilteringTagsList = Array<FilteringTag>;
 export const LogRulesFilteringTagsList = /*@__PURE__*/ S.Array(
   FilteringTag,
 ) as any as S.Schema<LogRulesFilteringTagsList>;
@@ -880,7 +878,7 @@ export const LogRules = /*@__PURE__*/ S.suspend(() =>
 /** Definition of the properties for a TagRules resource. */
 export interface MonitoringTagRulesProperties {
   /** Provisioning state of the monitoring tag rules. */
-  provisioningState?: ProvisioningState;
+  provisioningState?: ProvisioningState | (string & {});
   /** Rules for sending logs. */
   logRules?: LogRules;
 }
@@ -898,7 +896,7 @@ export interface MonitoredSubscription {
   /** The subscriptionId to be monitored. */
   subscriptionId: string;
   /** The state of monitoring. */
-  status?: Status;
+  status?: Status | (string & {});
   /** The reason of not monitoring the subscription. */
   error?: string;
   /** Definition of the properties for a TagRules resource. */
@@ -917,7 +915,7 @@ export const MonitoredSubscription = /*@__PURE__*/ S.suspend(() =>
 
 /** List of subscriptions and the state of the monitoring. */
 export type SubscriptionListMonitoredSubscriptionListList =
-  ReadonlyArray<MonitoredSubscription>;
+  Array<MonitoredSubscription>;
 export const SubscriptionListMonitoredSubscriptionListList =
   /*@__PURE__*/ S.Array(
     MonitoredSubscription,
@@ -926,11 +924,11 @@ export const SubscriptionListMonitoredSubscriptionListList =
 /** The request to update subscriptions needed to be monitored by the Elastic monitor resource. */
 export interface SubscriptionList {
   /** The operation for the patch on the resource. */
-  operation?: Operation;
+  operation?: Operation | (string & {});
   /** List of subscriptions and the state of the monitoring. */
   monitoredSubscriptionList?: SubscriptionListMonitoredSubscriptionListList;
   /** Provisioning State of the resource */
-  provisioningState?: ProvisioningState;
+  provisioningState?: ProvisioningState | (string & {});
 }
 export const SubscriptionList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1180,7 +1178,7 @@ export const MonitoredSubscriptionProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** The MonitoredSubscriptionProperties items on this page */
 export type MonitoredSubscriptionPropertiesListValueList =
-  ReadonlyArray<MonitoredSubscriptionProperties>;
+  Array<MonitoredSubscriptionProperties>;
 export const MonitoredSubscriptionPropertiesListValueList =
   /*@__PURE__*/ S.Array(
     MonitoredSubscriptionProperties,
@@ -1393,9 +1391,9 @@ export const ConfigurationType = /*@__PURE__*/ S.String;
 /** Project details of the monitor resource IF it belongs to Serverless offer kind. */
 export interface ProjectDetails {
   /** Project type; ex: Elasticsearch / Observability / Security */
-  projectType?: ProjectType;
+  projectType?: ProjectType | (string & {});
   /** Configuration type of the Elasticsearch project */
-  configurationType?: ConfigurationType;
+  configurationType?: ConfigurationType | (string & {});
 }
 export const ProjectDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1883,7 +1881,7 @@ export const ElasticMonitorResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The ElasticMonitorResource items on this page */
 export type ElasticMonitorResourceListResponseValueList =
-  ReadonlyArray<ElasticMonitorResource>;
+  Array<ElasticMonitorResource>;
 export const ElasticMonitorResourceListResponseValueList =
   /*@__PURE__*/ S.Array(
     ElasticMonitorResource,
@@ -2340,7 +2338,7 @@ export const OpenAIIntegrationRPModel = /*@__PURE__*/ S.suspend(() =>
 
 /** The OpenAIIntegrationRPModel items on this page */
 export type OpenAIIntegrationRPModelListResponseValueList =
-  ReadonlyArray<OpenAIIntegrationRPModel>;
+  Array<OpenAIIntegrationRPModel>;
 export const OpenAIIntegrationRPModelListResponseValueList =
   /*@__PURE__*/ S.Array(
     OpenAIIntegrationRPModel,
@@ -2422,7 +2420,7 @@ export const OperationResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationResult>;
 
 /** The list of operations. */
-export type OperationListResultValueList = ReadonlyArray<OperationResult>;
+export type OperationListResultValueList = Array<OperationResult>;
 export const OperationListResultValueList = /*@__PURE__*/ S.Array(
   OperationResult,
 ) as any as S.Schema<OperationListResultValueList>;
@@ -2825,8 +2823,7 @@ export const MonitoringTagRules = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MonitoringTagRules>;
 
 /** The MonitoringTagRules items on this page */
-export type MonitoringTagRulesListResponseValueList =
-  ReadonlyArray<MonitoringTagRules>;
+export type MonitoringTagRulesListResponseValueList = Array<MonitoringTagRules>;
 export const MonitoringTagRulesListResponseValueList = /*@__PURE__*/ S.Array(
   MonitoringTagRules,
 ) as any as S.Schema<MonitoringTagRulesListResponseValueList>;
@@ -2908,8 +2905,7 @@ export const UpgradableVersionsDetailsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpgradableVersionsDetailsRequest>;
 
 /** Stack Versions that this version can upgrade to */
-export type UpgradableVersionsListUpgradableVersionsList =
-  ReadonlyArray<string>;
+export type UpgradableVersionsListUpgradableVersionsList = Array<string>;
 export const UpgradableVersionsListUpgradableVersionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3012,7 +3008,7 @@ export const VMResources = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VMResources" }) as any as S.Schema<VMResources>;
 
 /** The VMResources items on this page */
-export type VMHostListResponseValueList = ReadonlyArray<VMResources>;
+export type VMHostListResponseValueList = Array<VMResources>;
 export const VMHostListResponseValueList = /*@__PURE__*/ S.Array(
   VMResources,
 ) as any as S.Schema<VMHostListResponseValueList>;

@@ -128,7 +128,7 @@ export const ParametersValueFileInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** File name and parameter values information from all azuredeploy.*.parameters.json for the ARM template. */
 export type ArmTemplatePropertiesParametersValueFilesInfoList =
-  ReadonlyArray<ParametersValueFileInfo>;
+  Array<ParametersValueFileInfo>;
 export const ArmTemplatePropertiesParametersValueFilesInfoList =
   /*@__PURE__*/ S.Array(
     ParametersValueFileInfo,
@@ -286,7 +286,7 @@ export const ArmTemplate = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ArmTemplate" }) as any as S.Schema<ArmTemplate>;
 
 /** The ArmTemplate items on this page */
-export type ArmTemplateListValueList = ReadonlyArray<ArmTemplate>;
+export type ArmTemplateListValueList = Array<ArmTemplate>;
 export const ArmTemplateListValueList = /*@__PURE__*/ S.Array(
   ArmTemplate,
 ) as any as S.Schema<ArmTemplateListValueList>;
@@ -323,7 +323,7 @@ export const ParameterInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** The parameters of the ARM template. */
 export type ArtifactsGenerateArmTemplateRequestParametersList =
-  ReadonlyArray<ParameterInfo>;
+  Array<ParameterInfo>;
 export const ArtifactsGenerateArmTemplateRequestParametersList =
   /*@__PURE__*/ S.Array(
     ParameterInfo,
@@ -599,7 +599,7 @@ export const Artifact = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Artifact" }) as any as S.Schema<Artifact>;
 
 /** The Artifact items on this page */
-export type ArtifactListValueList = ReadonlyArray<Artifact>;
+export type ArtifactListValueList = Array<Artifact>;
 export const ArtifactListValueList = /*@__PURE__*/ S.Array(
   Artifact,
 ) as any as S.Schema<ArtifactListValueList>;
@@ -971,7 +971,7 @@ export const ArtifactSource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ArtifactSource" }) as any as S.Schema<ArtifactSource>;
 
 /** The ArtifactSource items on this page */
-export type ArtifactSourceListValueList = ReadonlyArray<ArtifactSource>;
+export type ArtifactSourceListValueList = Array<ArtifactSource>;
 export const ArtifactSourceListValueList = /*@__PURE__*/ S.Array(
   ArtifactSource,
 ) as any as S.Schema<ArtifactSourceListValueList>;
@@ -1099,9 +1099,9 @@ export interface CostThresholdProperties {
   /** The value of the percentage cost threshold. */
   percentageThreshold?: PercentageCostThresholdProperties;
   /** Indicates whether this threshold will be displayed on cost charts. */
-  displayOnChart?: CostThresholdStatus;
+  displayOnChart?: CostThresholdStatus | (string & {});
   /** Indicates whether notifications will be sent when this threshold is exceeded. */
-  sendNotificationWhenExceeded?: CostThresholdStatus;
+  sendNotificationWhenExceeded?: CostThresholdStatus | (string & {});
   /** Indicates the datetime when notifications were last sent for this threshold. */
   notificationSent?: string;
 }
@@ -1119,7 +1119,7 @@ export const CostThresholdProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Cost thresholds. */
 export type TargetCostPropertiesCostThresholdsList =
-  ReadonlyArray<CostThresholdProperties>;
+  Array<CostThresholdProperties>;
 export const TargetCostPropertiesCostThresholdsList = /*@__PURE__*/ S.Array(
   CostThresholdProperties,
 ) as any as S.Schema<TargetCostPropertiesCostThresholdsList>;
@@ -1131,7 +1131,7 @@ export const ReportingCycleType = /*@__PURE__*/ S.String;
 /** Properties of a cost target. */
 export interface TargetCostProperties {
   /** Target cost status */
-  status?: TargetCostStatus;
+  status?: TargetCostStatus | (string & {});
   /** Lab target cost */
   target?: number;
   /** Cost thresholds. */
@@ -1141,7 +1141,7 @@ export interface TargetCostProperties {
   /** Reporting cycle end date. */
   cycleEndDateTime?: string;
   /** Reporting cycle type. */
-  cycleType?: ReportingCycleType;
+  cycleType?: ReportingCycleType | (string & {});
 }
 export const TargetCostProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1265,7 +1265,7 @@ export const LabCostDetailsProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** The lab cost details component of the cost data. */
 export type LabCostPropertiesLabCostDetailsList =
-  ReadonlyArray<LabCostDetailsProperties>;
+  Array<LabCostDetailsProperties>;
 export const LabCostPropertiesLabCostDetailsList = /*@__PURE__*/ S.Array(
   LabCostDetailsProperties,
 ) as any as S.Schema<LabCostPropertiesLabCostDetailsList>;
@@ -1309,7 +1309,7 @@ export const LabResourceCostProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** The resource cost component of the cost data. */
 export type LabCostPropertiesResourceCostsList =
-  ReadonlyArray<LabResourceCostProperties>;
+  Array<LabResourceCostProperties>;
 export const LabCostPropertiesResourceCostsList = /*@__PURE__*/ S.Array(
   LabResourceCostProperties,
 ) as any as S.Schema<LabCostPropertiesResourceCostsList>;
@@ -1471,7 +1471,7 @@ export const WindowsOsState = /*@__PURE__*/ S.String;
 /** Information about a Windows OS. */
 export interface WindowsOsInfo {
   /** The state of the Windows OS (i.e. NonSysprepped, SysprepRequested, SysprepApplied). */
-  windowsOsState?: WindowsOsState;
+  windowsOsState?: WindowsOsState | (string & {});
 }
 export const WindowsOsInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1489,7 +1489,7 @@ export const LinuxOsState = /*@__PURE__*/ S.String;
 /** Information about a Linux OS. */
 export interface LinuxOsInfo {
   /** The state of the Linux OS (i.e. NonDeprovisioned, DeprovisionRequested, DeprovisionApplied). */
-  linuxOsState?: LinuxOsState;
+  linuxOsState?: LinuxOsState | (string & {});
 }
 export const LinuxOsInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1527,7 +1527,7 @@ export interface CustomImagePropertiesCustom {
   /** Indicates whether sysprep has been run on the VHD. */
   sysPrep?: boolean;
   /** The OS type of the custom image (i.e. Windows, Linux) */
-  osType: CustomImageOsType;
+  osType: CustomImageOsType | (string & {});
 }
 export const CustomImagePropertiesCustom = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1548,7 +1548,7 @@ export interface DataDiskStorageTypeInfo {
   /** Disk Lun */
   lun?: string;
   /** Disk Storage Type */
-  storageType?: StorageType;
+  storageType?: StorageType | (string & {});
 }
 export const DataDiskStorageTypeInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1561,7 +1561,7 @@ export const DataDiskStorageTypeInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** Storage information about the data disks present in the custom image */
 export type CustomImagePropertiesInputDataDiskStorageInfoList =
-  ReadonlyArray<DataDiskStorageTypeInfo>;
+  Array<DataDiskStorageTypeInfo>;
 export const CustomImagePropertiesInputDataDiskStorageInfoList =
   /*@__PURE__*/ S.Array(
     DataDiskStorageTypeInfo,
@@ -1673,7 +1673,7 @@ export const CustomImagesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Storage information about the data disks present in the custom image */
 export type CustomImagePropertiesDataDiskStorageInfoList =
-  ReadonlyArray<DataDiskStorageTypeInfo>;
+  Array<DataDiskStorageTypeInfo>;
 export const CustomImagePropertiesDataDiskStorageInfoList =
   /*@__PURE__*/ S.Array(
     DataDiskStorageTypeInfo,
@@ -1945,7 +1945,7 @@ export const CustomImage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CustomImage" }) as any as S.Schema<CustomImage>;
 
 /** The CustomImage items on this page */
-export type CustomImageListValueList = ReadonlyArray<CustomImage>;
+export type CustomImageListValueList = Array<CustomImage>;
 export const CustomImageListValueList = /*@__PURE__*/ S.Array(
   CustomImage,
 ) as any as S.Schema<CustomImageListValueList>;
@@ -2476,7 +2476,7 @@ export const Disk = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Disk" }) as any as S.Schema<Disk>;
 
 /** The Disk items on this page */
-export type DiskListValueList = ReadonlyArray<Disk>;
+export type DiskListValueList = Array<Disk>;
 export const DiskListValueList = /*@__PURE__*/ S.Array(
   Disk,
 ) as any as S.Schema<DiskListValueList>;
@@ -2591,7 +2591,7 @@ export const ArmTemplateParameterProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** The parameters of the Azure Resource Manager template. */
 export type EnvironmentDeploymentPropertiesParametersList =
-  ReadonlyArray<ArmTemplateParameterProperties>;
+  Array<ArmTemplateParameterProperties>;
 export const EnvironmentDeploymentPropertiesParametersList =
   /*@__PURE__*/ S.Array(
     ArmTemplateParameterProperties,
@@ -2933,7 +2933,7 @@ export const DtlEnvironment = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DtlEnvironment" }) as any as S.Schema<DtlEnvironment>;
 
 /** The DtlEnvironment items on this page */
-export type DtlEnvironmentListValueList = ReadonlyArray<DtlEnvironment>;
+export type DtlEnvironmentListValueList = Array<DtlEnvironment>;
 export const DtlEnvironmentListValueList = /*@__PURE__*/ S.Array(
   DtlEnvironment,
 ) as any as S.Schema<DtlEnvironmentListValueList>;
@@ -3067,7 +3067,7 @@ export const ArtifactParameterProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** The parameters of the artifact. */
 export type ArtifactInstallPropertiesParametersList =
-  ReadonlyArray<ArtifactParameterProperties>;
+  Array<ArtifactParameterProperties>;
 export const ArtifactInstallPropertiesParametersList = /*@__PURE__*/ S.Array(
   ArtifactParameterProperties,
 ) as any as S.Schema<ArtifactInstallPropertiesParametersList>;
@@ -3105,7 +3105,7 @@ export const ArtifactInstallProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** The artifacts to be installed on the virtual machine. */
 export type LabVirtualMachineCreationParameterPropertiesInputArtifactsList =
-  ReadonlyArray<ArtifactInstallProperties>;
+  Array<ArtifactInstallProperties>;
 export const LabVirtualMachineCreationParameterPropertiesInputArtifactsList =
   /*@__PURE__*/ S.Array(
     ArtifactInstallProperties,
@@ -3143,7 +3143,7 @@ export const TransportProtocol = /*@__PURE__*/ S.String;
 /** A rule for NAT - exposing a VM's port (backendPort) on the public IP address using a load balancer. */
 export interface InboundNatRule {
   /** The transport protocol for the endpoint. */
-  transportProtocol?: TransportProtocol;
+  transportProtocol?: TransportProtocol | (string & {});
   /** The external endpoint port of the inbound connection. Possible values range between 1 and 65535, inclusive. If unspecified, a value will be allocated automatically. */
   frontendPort?: number;
   /** The port to which the external traffic will be redirected. */
@@ -3159,7 +3159,7 @@ export const InboundNatRule = /*@__PURE__*/ S.suspend(() =>
 
 /** The incoming NAT rules */
 export type SharedPublicIpAddressConfigurationInboundNatRulesList =
-  ReadonlyArray<InboundNatRule>;
+  Array<InboundNatRule>;
 export const SharedPublicIpAddressConfigurationInboundNatRulesList =
   /*@__PURE__*/ S.Array(
     InboundNatRule,
@@ -3226,7 +3226,7 @@ export interface AttachNewDataDiskOptions {
   /** The name of the disk to be attached. */
   diskName?: string;
   /** The storage type for the disk (i.e. Standard, Premium). */
-  diskType?: StorageType;
+  diskType?: StorageType | (string & {});
 }
 export const AttachNewDataDiskOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3249,7 +3249,7 @@ export interface DataDiskProperties {
   /** Specifies the existing lab disk id to attach to virtual machine. */
   existingLabDiskId?: string;
   /** Caching option for a data disk (i.e. None, ReadOnly, ReadWrite). */
-  hostCaching?: HostCachingOptions;
+  hostCaching?: HostCachingOptions | (string & {});
 }
 export const DataDiskProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3263,7 +3263,7 @@ export const DataDiskProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** New or existing data disks to attach to the virtual machine after creation */
 export type LabVirtualMachineCreationParameterPropertiesInputDataDiskParametersList =
-  ReadonlyArray<DataDiskProperties>;
+  Array<DataDiskProperties>;
 export const LabVirtualMachineCreationParameterPropertiesInputDataDiskParametersList =
   /*@__PURE__*/ S.Array(
     DataDiskProperties,
@@ -3274,7 +3274,7 @@ export type ScheduleCreationParameterPropertiesStatus = "Enabled" | "Disabled";
 export const ScheduleCreationParameterPropertiesStatus = /*@__PURE__*/ S.String;
 
 /** The days of the week for which the schedule is set (e.g. Sunday, Monday, Tuesday, etc.). */
-export type WeekDetailsWeekdaysList = ReadonlyArray<string>;
+export type WeekDetailsWeekdaysList = Array<string>;
 export const WeekDetailsWeekdaysList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<WeekDetailsWeekdaysList>;
@@ -3322,7 +3322,7 @@ export const NotificationSettingsStatus = /*@__PURE__*/ S.String;
 /** Notification settings for a schedule. */
 export interface NotificationSettings {
   /** If notifications are enabled for this schedule (i.e. Enabled, Disabled). */
-  status?: NotificationSettingsStatus;
+  status?: NotificationSettingsStatus | (string & {});
   /** Time in minutes before event at which notification will be sent. */
   timeInMinutes?: number;
   /** The webhook URL to which the notification will be sent. */
@@ -3347,7 +3347,7 @@ export const NotificationSettings = /*@__PURE__*/ S.suspend(() =>
 /** Properties for schedule creation. */
 export interface ScheduleCreationParameterProperties {
   /** The status of the schedule (i.e. Enabled, Disabled) */
-  status?: ScheduleCreationParameterPropertiesStatus;
+  status?: ScheduleCreationParameterPropertiesStatus | (string & {});
   /** The task type of the schedule (e.g. LabVmsShutdownTask, LabVmAutoStart). */
   taskType?: string;
   /** If the schedule will occur only some days of the week, specify the weekly recurrence. */
@@ -3408,7 +3408,7 @@ export const ScheduleCreationParameterInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Virtual Machine schedules to be created */
 export type LabVirtualMachineCreationParameterPropertiesInputScheduleParametersList =
-  ReadonlyArray<ScheduleCreationParameterInput>;
+  Array<ScheduleCreationParameterInput>;
 export const LabVirtualMachineCreationParameterPropertiesInputScheduleParametersList =
   /*@__PURE__*/ S.Array(
     ScheduleCreationParameterInput,
@@ -3619,7 +3619,7 @@ export const FormulasCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The artifacts to be installed on the virtual machine. */
 export type LabVirtualMachineCreationParameterPropertiesArtifactsList =
-  ReadonlyArray<ArtifactInstallProperties>;
+  Array<ArtifactInstallProperties>;
 export const LabVirtualMachineCreationParameterPropertiesArtifactsList =
   /*@__PURE__*/ S.Array(
     ArtifactInstallProperties,
@@ -3627,7 +3627,7 @@ export const LabVirtualMachineCreationParameterPropertiesArtifactsList =
 
 /** New or existing data disks to attach to the virtual machine after creation */
 export type LabVirtualMachineCreationParameterPropertiesDataDiskParametersList =
-  ReadonlyArray<DataDiskProperties>;
+  Array<DataDiskProperties>;
 export const LabVirtualMachineCreationParameterPropertiesDataDiskParametersList =
   /*@__PURE__*/ S.Array(
     DataDiskProperties,
@@ -3666,7 +3666,7 @@ export const ScheduleCreationParameter = /*@__PURE__*/ S.suspend(() =>
 
 /** Virtual Machine schedules to be created */
 export type LabVirtualMachineCreationParameterPropertiesScheduleParametersList =
-  ReadonlyArray<ScheduleCreationParameter>;
+  Array<ScheduleCreationParameter>;
 export const LabVirtualMachineCreationParameterPropertiesScheduleParametersList =
   /*@__PURE__*/ S.Array(
     ScheduleCreationParameter,
@@ -4042,7 +4042,7 @@ export const Formula = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Formula" }) as any as S.Schema<Formula>;
 
 /** The Formula items on this page */
-export type FormulaListValueList = ReadonlyArray<Formula>;
+export type FormulaListValueList = Array<Formula>;
 export const FormulaListValueList = /*@__PURE__*/ S.Array(
   Formula,
 ) as any as S.Schema<FormulaListValueList>;
@@ -4248,7 +4248,7 @@ export const GalleryImage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GalleryImage" }) as any as S.Schema<GalleryImage>;
 
 /** The GalleryImage items on this page */
-export type GalleryImageListValueList = ReadonlyArray<GalleryImage>;
+export type GalleryImageListValueList = Array<GalleryImage>;
 export const GalleryImageListValueList = /*@__PURE__*/ S.Array(
   GalleryImage,
 ) as any as S.Schema<GalleryImageListValueList>;
@@ -4643,7 +4643,7 @@ export const Schedule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Schedule" }) as any as S.Schema<Schedule>;
 
 /** The Schedule items on this page */
-export type ScheduleListValueList = ReadonlyArray<Schedule>;
+export type ScheduleListValueList = Array<Schedule>;
 export const ScheduleListValueList = /*@__PURE__*/ S.Array(
   Schedule,
 ) as any as S.Schema<ScheduleListValueList>;
@@ -4899,7 +4899,7 @@ export const LabPropertiesInputLabStorageType = /*@__PURE__*/ S.String;
 
 /** The ordered list of artifact resource IDs that should be applied on all Linux VM creations by default, prior to the artifacts specified by the user. */
 export type LabPropertiesInputMandatoryArtifactsResourceIdsLinuxList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const LabPropertiesInputMandatoryArtifactsResourceIdsLinuxList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4907,7 +4907,7 @@ export const LabPropertiesInputMandatoryArtifactsResourceIdsLinuxList =
 
 /** The ordered list of artifact resource IDs that should be applied on all Windows VM creations by default, prior to the artifacts specified by the user. */
 export type LabPropertiesInputMandatoryArtifactsResourceIdsWindowsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const LabPropertiesInputMandatoryArtifactsResourceIdsWindowsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4949,7 +4949,7 @@ export const LabAnnouncementPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 /** Properties of a lab's support banner */
 export interface LabSupportProperties {
   /** Is the lab support banner active/enabled at this time? */
-  enabled?: EnableStatus;
+  enabled?: EnableStatus | (string & {});
   /** The markdown text (if any) that this lab displays in the UI. If left empty/null, nothing will be shown. */
   markdown?: string;
 }
@@ -5060,8 +5060,7 @@ export type LabPropertiesLabStorageType =
 export const LabPropertiesLabStorageType = /*@__PURE__*/ S.String;
 
 /** The ordered list of artifact resource IDs that should be applied on all Linux VM creations by default, prior to the artifacts specified by the user. */
-export type LabPropertiesMandatoryArtifactsResourceIdsLinuxList =
-  ReadonlyArray<string>;
+export type LabPropertiesMandatoryArtifactsResourceIdsLinuxList = Array<string>;
 export const LabPropertiesMandatoryArtifactsResourceIdsLinuxList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5069,7 +5068,7 @@ export const LabPropertiesMandatoryArtifactsResourceIdsLinuxList =
 
 /** The ordered list of artifact resource IDs that should be applied on all Windows VM creations by default, prior to the artifacts specified by the user. */
 export type LabPropertiesMandatoryArtifactsResourceIdsWindowsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const LabPropertiesMandatoryArtifactsResourceIdsWindowsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5509,7 +5508,7 @@ export const Lab = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Lab" }) as any as S.Schema<Lab>;
 
 /** The Lab items on this page */
-export type LabListValueList = ReadonlyArray<Lab>;
+export type LabListValueList = Array<Lab>;
 export const LabListValueList = /*@__PURE__*/ S.Array(
   Lab,
 ) as any as S.Schema<LabListValueList>;
@@ -5596,7 +5595,7 @@ export const LabVhd = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LabVhd" }) as any as S.Schema<LabVhd>;
 
 /** The LabVhd items on this page */
-export type LabVhdListValueList = ReadonlyArray<LabVhd>;
+export type LabVhdListValueList = Array<LabVhd>;
 export const LabVhdListValueList = /*@__PURE__*/ S.Array(
   LabVhd,
 ) as any as S.Schema<LabVhdListValueList>;
@@ -5694,7 +5693,7 @@ export const NotificationChannelEventType = /*@__PURE__*/ S.String;
 /** An event to be notified for. */
 export interface Event {
   /** The event type for which this notification is enabled (i.e. AutoShutdown, Cost) */
-  eventName?: NotificationChannelEventType;
+  eventName?: NotificationChannelEventType | (string & {});
 }
 export const Event = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5703,7 +5702,7 @@ export const Event = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Event" }) as any as S.Schema<Event>;
 
 /** The list of event for which this notification is enabled. */
-export type NotificationChannelPropertiesInputEventsList = ReadonlyArray<Event>;
+export type NotificationChannelPropertiesInputEventsList = Array<Event>;
 export const NotificationChannelPropertiesInputEventsList =
   /*@__PURE__*/ S.Array(
     Event,
@@ -5783,7 +5782,7 @@ export const NotificationChannelsCreateOrUpdateRequest =
   }) as any as S.Schema<NotificationChannelsCreateOrUpdateRequest>;
 
 /** The list of event for which this notification is enabled. */
-export type NotificationChannelPropertiesEventsList = ReadonlyArray<Event>;
+export type NotificationChannelPropertiesEventsList = Array<Event>;
 export const NotificationChannelPropertiesEventsList = /*@__PURE__*/ S.Array(
   Event,
 ) as any as S.Schema<NotificationChannelPropertiesEventsList>;
@@ -6044,8 +6043,7 @@ export const NotificationChannel = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NotificationChannel>;
 
 /** The NotificationChannel items on this page */
-export type NotificationChannelListValueList =
-  ReadonlyArray<NotificationChannel>;
+export type NotificationChannelListValueList = Array<NotificationChannel>;
 export const NotificationChannelListValueList = /*@__PURE__*/ S.Array(
   NotificationChannel,
 ) as any as S.Schema<NotificationChannelListValueList>;
@@ -6656,7 +6654,7 @@ export const Policy = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Policy" }) as any as S.Schema<Policy>;
 
 /** The Policy items on this page */
-export type PolicyListValueList = ReadonlyArray<Policy>;
+export type PolicyListValueList = Array<Policy>;
 export const PolicyListValueList = /*@__PURE__*/ S.Array(
   Policy,
 ) as any as S.Schema<PolicyListValueList>;
@@ -6781,7 +6779,7 @@ export const EvaluatePoliciesProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Policies to evaluate. */
 export type PolicySetsEvaluatePoliciesRequestPoliciesList =
-  ReadonlyArray<EvaluatePoliciesProperties>;
+  Array<EvaluatePoliciesProperties>;
 export const PolicySetsEvaluatePoliciesRequestPoliciesList =
   /*@__PURE__*/ S.Array(
     EvaluatePoliciesProperties,
@@ -6835,8 +6833,7 @@ export const PolicyViolation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PolicyViolation>;
 
 /** The list of policy violations. */
-export type PolicySetResultPolicyViolationsList =
-  ReadonlyArray<PolicyViolation>;
+export type PolicySetResultPolicyViolationsList = Array<PolicyViolation>;
 export const PolicySetResultPolicyViolationsList = /*@__PURE__*/ S.Array(
   PolicyViolation,
 ) as any as S.Schema<PolicySetResultPolicyViolationsList>;
@@ -6858,8 +6855,7 @@ export const PolicySetResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PolicySetResult>;
 
 /** Results of evaluating a policy set. */
-export type EvaluatePoliciesResponseResultsList =
-  ReadonlyArray<PolicySetResult>;
+export type EvaluatePoliciesResponseResultsList = Array<PolicySetResult>;
 export const EvaluatePoliciesResponseResultsList = /*@__PURE__*/ S.Array(
   PolicySetResult,
 ) as any as S.Schema<EvaluatePoliciesResponseResultsList>;
@@ -6945,7 +6941,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type ProviderOperationsListResponseValueList = ReadonlyArray<Operation>;
+export type ProviderOperationsListResponseValueList = Array<Operation>;
 export const ProviderOperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<ProviderOperationsListResponseValueList>;
@@ -7638,7 +7634,7 @@ export const Secret = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Secret" }) as any as S.Schema<Secret>;
 
 /** The Secret items on this page */
-export type SecretListValueList = ReadonlyArray<Secret>;
+export type SecretListValueList = Array<Secret>;
 export const SecretListValueList = /*@__PURE__*/ S.Array(
   Secret,
 ) as any as S.Schema<SecretListValueList>;
@@ -8496,7 +8492,7 @@ export const ServiceFabric = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ServiceFabric" }) as any as S.Schema<ServiceFabric>;
 
 /** The ServiceFabric items on this page */
-export type ServiceFabricListValueList = ReadonlyArray<ServiceFabric>;
+export type ServiceFabricListValueList = Array<ServiceFabric>;
 export const ServiceFabricListValueList = /*@__PURE__*/ S.Array(
   ServiceFabric,
 ) as any as S.Schema<ServiceFabricListValueList>;
@@ -8769,7 +8765,7 @@ export const ManagedIdentityType = /*@__PURE__*/ S.String;
 /** Properties of a managed identity */
 export interface IdentityProperties {
   /** Managed identity. */
-  type?: ManagedIdentityType;
+  type?: ManagedIdentityType | (string & {});
   /** The principal id of resource identity. */
   principalId?: string;
   /** The tenant identifier of resource. */
@@ -9308,7 +9304,7 @@ export const User = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "User" }) as any as S.Schema<User>;
 
 /** The User items on this page */
-export type UserListValueList = ReadonlyArray<User>;
+export type UserListValueList = Array<User>;
 export const UserListValueList = /*@__PURE__*/ S.Array(
   User,
 ) as any as S.Schema<UserListValueList>;
@@ -9448,7 +9444,7 @@ export const VirtualMachinesAddDataDiskResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of artifacts to apply. */
 export type VirtualMachinesApplyArtifactsRequestArtifactsList =
-  ReadonlyArray<ArtifactInstallProperties>;
+  Array<ArtifactInstallProperties>;
 export const VirtualMachinesApplyArtifactsRequestArtifactsList =
   /*@__PURE__*/ S.Array(
     ArtifactInstallProperties,
@@ -9899,7 +9895,7 @@ export const VirtualMachinesClaimResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The artifacts to be installed on the virtual machine. */
 export type LabVirtualMachinePropertiesInputArtifactsList =
-  ReadonlyArray<ArtifactInstallProperties>;
+  Array<ArtifactInstallProperties>;
 export const LabVirtualMachinePropertiesInputArtifactsList =
   /*@__PURE__*/ S.Array(
     ArtifactInstallProperties,
@@ -9907,7 +9903,7 @@ export const LabVirtualMachinePropertiesInputArtifactsList =
 
 /** New or existing data disks to attach to the virtual machine after creation */
 export type LabVirtualMachinePropertiesInputDataDiskParametersList =
-  ReadonlyArray<DataDiskProperties>;
+  Array<DataDiskProperties>;
 export const LabVirtualMachinePropertiesInputDataDiskParametersList =
   /*@__PURE__*/ S.Array(
     DataDiskProperties,
@@ -9915,7 +9911,7 @@ export const LabVirtualMachinePropertiesInputDataDiskParametersList =
 
 /** Virtual Machine schedules to be created */
 export type LabVirtualMachinePropertiesInputScheduleParametersList =
-  ReadonlyArray<ScheduleCreationParameterInput>;
+  Array<ScheduleCreationParameterInput>;
 export const LabVirtualMachinePropertiesInputScheduleParametersList =
   /*@__PURE__*/ S.Array(
     ScheduleCreationParameterInput,
@@ -10054,7 +10050,7 @@ export const VirtualMachinesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
 
 /** The artifacts to be installed on the virtual machine. */
 export type LabVirtualMachinePropertiesArtifactsList =
-  ReadonlyArray<ArtifactInstallProperties>;
+  Array<ArtifactInstallProperties>;
 export const LabVirtualMachinePropertiesArtifactsList = /*@__PURE__*/ S.Array(
   ArtifactInstallProperties,
 ) as any as S.Schema<LabVirtualMachinePropertiesArtifactsList>;
@@ -10099,13 +10095,13 @@ export const ComputeVmInstanceViewStatus = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets the statuses of the virtual machine. */
 export type ComputeVmPropertiesStatusesList =
-  ReadonlyArray<ComputeVmInstanceViewStatus>;
+  Array<ComputeVmInstanceViewStatus>;
 export const ComputeVmPropertiesStatusesList = /*@__PURE__*/ S.Array(
   ComputeVmInstanceViewStatus,
 ) as any as S.Schema<ComputeVmPropertiesStatusesList>;
 
 /** Gets data disks blob uri for the virtual machine. */
-export type ComputeVmPropertiesDataDiskIdsList = ReadonlyArray<string>;
+export type ComputeVmPropertiesDataDiskIdsList = Array<string>;
 export const ComputeVmPropertiesDataDiskIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ComputeVmPropertiesDataDiskIdsList>;
@@ -10133,7 +10129,7 @@ export const ComputeDataDisk = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ComputeDataDisk>;
 
 /** Gets all data disks attached to the virtual machine. */
-export type ComputeVmPropertiesDataDisksList = ReadonlyArray<ComputeDataDisk>;
+export type ComputeVmPropertiesDataDisksList = Array<ComputeDataDisk>;
 export const ComputeVmPropertiesDataDisksList = /*@__PURE__*/ S.Array(
   ComputeDataDisk,
 ) as any as S.Schema<ComputeVmPropertiesDataDisksList>;
@@ -10178,7 +10174,7 @@ export const VirtualMachineCreationSource = /*@__PURE__*/ S.String;
 
 /** New or existing data disks to attach to the virtual machine after creation */
 export type LabVirtualMachinePropertiesDataDiskParametersList =
-  ReadonlyArray<DataDiskProperties>;
+  Array<DataDiskProperties>;
 export const LabVirtualMachinePropertiesDataDiskParametersList =
   /*@__PURE__*/ S.Array(
     DataDiskProperties,
@@ -10186,7 +10182,7 @@ export const LabVirtualMachinePropertiesDataDiskParametersList =
 
 /** Virtual Machine schedules to be created */
 export type LabVirtualMachinePropertiesScheduleParametersList =
-  ReadonlyArray<ScheduleCreationParameter>;
+  Array<ScheduleCreationParameter>;
 export const LabVirtualMachinePropertiesScheduleParametersList =
   /*@__PURE__*/ S.Array(
     ScheduleCreationParameter,
@@ -10612,7 +10608,7 @@ export const LabVirtualMachine = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LabVirtualMachine>;
 
 /** The LabVirtualMachine items on this page */
-export type LabVirtualMachineListValueList = ReadonlyArray<LabVirtualMachine>;
+export type LabVirtualMachineListValueList = Array<LabVirtualMachine>;
 export const LabVirtualMachineListValueList = /*@__PURE__*/ S.Array(
   LabVirtualMachine,
 ) as any as S.Schema<LabVirtualMachineListValueList>;
@@ -11041,7 +11037,7 @@ export interface Subnet {
   /** The name of the subnet as seen in the lab. */
   labSubnetName?: string;
   /** The permission policy of the subnet for allowing public IP addresses (i.e. Allow, Deny)). */
-  allowPublicIp?: UsagePermissionType;
+  allowPublicIp?: UsagePermissionType | (string & {});
 }
 export const Subnet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -11052,8 +11048,7 @@ export const Subnet = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Subnet" }) as any as S.Schema<Subnet>;
 
 /** The allowed subnets of the virtual network. */
-export type VirtualNetworkPropertiesInputAllowedSubnetsList =
-  ReadonlyArray<Subnet>;
+export type VirtualNetworkPropertiesInputAllowedSubnetsList = Array<Subnet>;
 export const VirtualNetworkPropertiesInputAllowedSubnetsList =
   /*@__PURE__*/ S.Array(
     Subnet,
@@ -11062,7 +11057,7 @@ export const VirtualNetworkPropertiesInputAllowedSubnetsList =
 /** Properties of a network port. */
 export interface Port {
   /** Protocol type of the port. */
-  transportProtocol?: TransportProtocol;
+  transportProtocol?: TransportProtocol | (string & {});
   /** Backend port of the target virtual machine. */
   backendPort?: number;
 }
@@ -11075,7 +11070,7 @@ export const Port = /*@__PURE__*/ S.suspend(() =>
 
 /** Backend ports that virtual machines on this subnet are allowed to expose */
 export type SubnetSharedPublicIpAddressConfigurationAllowedPortsList =
-  ReadonlyArray<Port>;
+  Array<Port>;
 export const SubnetSharedPublicIpAddressConfigurationAllowedPortsList =
   /*@__PURE__*/ S.Array(
     Port,
@@ -11104,9 +11099,9 @@ export interface SubnetOverride {
   /** The name given to the subnet within the lab. */
   labSubnetName?: string;
   /** Indicates whether this subnet can be used during virtual machine creation (i.e. Allow, Deny). */
-  useInVmCreationPermission?: UsagePermissionType;
+  useInVmCreationPermission?: UsagePermissionType | (string & {});
   /** Indicates whether public IP addresses can be assigned to virtual machines on this subnet (i.e. Allow, Deny). */
-  usePublicIpAddressPermission?: UsagePermissionType;
+  usePublicIpAddressPermission?: UsagePermissionType | (string & {});
   /** Properties that virtual machines on this subnet will share. */
   sharedPublicIpAddressConfiguration?: SubnetSharedPublicIpAddressConfiguration;
   /** The virtual network pool associated with this subnet. */
@@ -11127,7 +11122,7 @@ export const SubnetOverride = /*@__PURE__*/ S.suspend(() =>
 
 /** The subnet overrides of the virtual network. */
 export type VirtualNetworkPropertiesInputSubnetOverridesList =
-  ReadonlyArray<SubnetOverride>;
+  Array<SubnetOverride>;
 export const VirtualNetworkPropertiesInputSubnetOverridesList =
   /*@__PURE__*/ S.Array(
     SubnetOverride,
@@ -11206,7 +11201,7 @@ export const VirtualNetworksCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<VirtualNetworksCreateOrUpdateRequest>;
 
 /** The allowed subnets of the virtual network. */
-export type VirtualNetworkPropertiesAllowedSubnetsList = ReadonlyArray<Subnet>;
+export type VirtualNetworkPropertiesAllowedSubnetsList = Array<Subnet>;
 export const VirtualNetworkPropertiesAllowedSubnetsList = /*@__PURE__*/ S.Array(
   Subnet,
 ) as any as S.Schema<VirtualNetworkPropertiesAllowedSubnetsList>;
@@ -11226,16 +11221,14 @@ export const ExternalSubnet = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ExternalSubnet" }) as any as S.Schema<ExternalSubnet>;
 
 /** The external subnet properties. */
-export type VirtualNetworkPropertiesExternalSubnetsList =
-  ReadonlyArray<ExternalSubnet>;
+export type VirtualNetworkPropertiesExternalSubnetsList = Array<ExternalSubnet>;
 export const VirtualNetworkPropertiesExternalSubnetsList =
   /*@__PURE__*/ S.Array(
     ExternalSubnet,
   ) as any as S.Schema<VirtualNetworkPropertiesExternalSubnetsList>;
 
 /** The subnet overrides of the virtual network. */
-export type VirtualNetworkPropertiesSubnetOverridesList =
-  ReadonlyArray<SubnetOverride>;
+export type VirtualNetworkPropertiesSubnetOverridesList = Array<SubnetOverride>;
 export const VirtualNetworkPropertiesSubnetOverridesList =
   /*@__PURE__*/ S.Array(
     SubnetOverride,
@@ -11495,7 +11488,7 @@ export const VirtualNetwork = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VirtualNetwork" }) as any as S.Schema<VirtualNetwork>;
 
 /** The VirtualNetwork items on this page */
-export type VirtualNetworkListValueList = ReadonlyArray<VirtualNetwork>;
+export type VirtualNetworkListValueList = Array<VirtualNetwork>;
 export const VirtualNetworkListValueList = /*@__PURE__*/ S.Array(
   VirtualNetwork,
 ) as any as S.Schema<VirtualNetworkListValueList>;

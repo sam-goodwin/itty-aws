@@ -44,7 +44,7 @@ export interface AppServiceCertificate {
   /** Key Vault secret name. */
   keyVaultSecretName?: string;
   /** Status of the Key Vault secret. */
-  provisioningState?: KeyVaultSecretStatus;
+  provisioningState?: KeyVaultSecretStatus | (string & {});
 }
 export const AppServiceCertificate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -274,7 +274,7 @@ export const ResourceNotRenewableReason = /*@__PURE__*/ S.String;
 
 /** Reasons why App Service Certificate is not renewable at the current moment. */
 export type AppServiceCertificateOrderPropertiesAppServiceCertificateNotRenewableReasonsList =
-  ReadonlyArray<ResourceNotRenewableReason>;
+  Array<ResourceNotRenewableReason>;
 export const AppServiceCertificateOrderPropertiesAppServiceCertificateNotRenewableReasonsList =
   /*@__PURE__*/ S.Array(
     ResourceNotRenewableReason,
@@ -782,7 +782,7 @@ export const AppServiceCertificateOrder = /*@__PURE__*/ S.suspend(() =>
 
 /** Collection of resources. */
 export type AppServiceCertificateOrderCollectionValueList =
-  ReadonlyArray<AppServiceCertificateOrder>;
+  Array<AppServiceCertificateOrder>;
 export const AppServiceCertificateOrderCollectionValueList =
   /*@__PURE__*/ S.Array(
     AppServiceCertificateOrder,
@@ -899,7 +899,7 @@ export const AppServiceCertificateResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The AppServiceCertificateResource items on this page */
 export type AppServiceCertificateCollectionValueList =
-  ReadonlyArray<AppServiceCertificateResource>;
+  Array<AppServiceCertificateResource>;
 export const AppServiceCertificateCollectionValueList = /*@__PURE__*/ S.Array(
   AppServiceCertificateResource,
 ) as any as S.Schema<AppServiceCertificateCollectionValueList>;
@@ -1168,7 +1168,7 @@ export const CertificateOrderAction = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CertificateOrderAction>;
 
 export type AppServiceCertificateOrdersRetrieveCertificateActionsResponseBodyList =
-  ReadonlyArray<CertificateOrderAction>;
+  Array<CertificateOrderAction>;
 export const AppServiceCertificateOrdersRetrieveCertificateActionsResponseBodyList =
   /*@__PURE__*/ S.Array(
     CertificateOrderAction,
@@ -1229,7 +1229,7 @@ export const CertificateEmail = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CertificateEmail>;
 
 export type AppServiceCertificateOrdersRetrieveCertificateEmailHistoryResponseBodyList =
-  ReadonlyArray<CertificateEmail>;
+  Array<CertificateEmail>;
 export const AppServiceCertificateOrdersRetrieveCertificateEmailHistoryResponseBodyList =
   /*@__PURE__*/ S.Array(
     CertificateEmail,
@@ -1628,13 +1628,13 @@ export const SupportTopic = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SupportTopic" }) as any as S.Schema<SupportTopic>;
 
 /** List of Support Topics for which this detector is enabled. */
-export type DetectorInfoSupportTopicListList = ReadonlyArray<SupportTopic>;
+export type DetectorInfoSupportTopicListList = Array<SupportTopic>;
 export const DetectorInfoSupportTopicListList = /*@__PURE__*/ S.Array(
   SupportTopic,
 ) as any as S.Schema<DetectorInfoSupportTopicListList>;
 
 /** Analysis Types for which this detector should apply to. */
-export type DetectorInfoAnalysisTypeList = ReadonlyArray<string>;
+export type DetectorInfoAnalysisTypeList = Array<string>;
 export const DetectorInfoAnalysisTypeList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DetectorInfoAnalysisTypeList>;
@@ -1698,20 +1698,19 @@ export const DataTableResponseColumn = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DataTableResponseColumn>;
 
 /** List of columns with data types */
-export type DataTableResponseObjectColumnsList =
-  ReadonlyArray<DataTableResponseColumn>;
+export type DataTableResponseObjectColumnsList = Array<DataTableResponseColumn>;
 export const DataTableResponseObjectColumnsList = /*@__PURE__*/ S.Array(
   DataTableResponseColumn,
 ) as any as S.Schema<DataTableResponseObjectColumnsList>;
 
-export type DataTableResponseObjectRowsItemList = ReadonlyArray<string>;
+export type DataTableResponseObjectRowsItemList = Array<string>;
 export const DataTableResponseObjectRowsItemList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DataTableResponseObjectRowsItemList>;
 
 /** Raw row values */
 export type DataTableResponseObjectRowsList =
-  ReadonlyArray<DataTableResponseObjectRowsItemList>;
+  Array<DataTableResponseObjectRowsItemList>;
 export const DataTableResponseObjectRowsList = /*@__PURE__*/ S.Array(
   DataTableResponseObjectRowsItemList,
 ) as any as S.Schema<DataTableResponseObjectRowsList>;
@@ -1796,8 +1795,7 @@ export const DiagnosticData = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DiagnosticData" }) as any as S.Schema<DiagnosticData>;
 
 /** Data Set */
-export type DetectorResponsePropertiesDatasetList =
-  ReadonlyArray<DiagnosticData>;
+export type DetectorResponsePropertiesDatasetList = Array<DiagnosticData>;
 export const DetectorResponsePropertiesDatasetList = /*@__PURE__*/ S.Array(
   DiagnosticData,
 ) as any as S.Schema<DetectorResponsePropertiesDatasetList>;
@@ -1850,7 +1848,7 @@ export const KeyValuePairStringObject = /*@__PURE__*/ S.suspend(() =>
 
 /** Settings for the data provider */
 export type DataProviderMetadataPropertyBagList =
-  ReadonlyArray<KeyValuePairStringObject>;
+  Array<KeyValuePairStringObject>;
 export const DataProviderMetadataPropertyBagList = /*@__PURE__*/ S.Array(
   KeyValuePairStringObject,
 ) as any as S.Schema<DataProviderMetadataPropertyBagList>;
@@ -1872,14 +1870,14 @@ export const DataProviderMetadata = /*@__PURE__*/ S.suspend(() =>
 
 /** Additional configuration for different data providers to be used by the UI */
 export type DetectorResponsePropertiesDataProvidersMetadataList =
-  ReadonlyArray<DataProviderMetadata>;
+  Array<DataProviderMetadata>;
 export const DetectorResponsePropertiesDataProvidersMetadataList =
   /*@__PURE__*/ S.Array(
     DataProviderMetadata,
   ) as any as S.Schema<DetectorResponsePropertiesDataProvidersMetadataList>;
 
 /** Links attribute of sample utterance. */
-export type SampleUtteranceLinksList = ReadonlyArray<string>;
+export type SampleUtteranceLinksList = Array<string>;
 export const SampleUtteranceLinksList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SampleUtteranceLinksList>;
@@ -1920,8 +1918,7 @@ export const QueryUtterancesResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<QueryUtterancesResult>;
 
 /** Array of utterance results for search query. */
-export type QueryUtterancesResultsResultsList =
-  ReadonlyArray<QueryUtterancesResult>;
+export type QueryUtterancesResultsResultsList = Array<QueryUtterancesResult>;
 export const QueryUtterancesResultsResultsList = /*@__PURE__*/ S.Array(
   QueryUtterancesResult,
 ) as any as S.Schema<QueryUtterancesResultsResultsList>;
@@ -2054,8 +2051,7 @@ export const DetectorResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DetectorResponse>;
 
 /** The DetectorResponse items on this page */
-export type DetectorResponseCollectionValueList =
-  ReadonlyArray<DetectorResponse>;
+export type DetectorResponseCollectionValueList = Array<DetectorResponse>;
 export const DetectorResponseCollectionValueList = /*@__PURE__*/ S.Array(
   DetectorResponse,
 ) as any as S.Schema<DetectorResponseCollectionValueList>;
@@ -2125,7 +2121,7 @@ export const Dimension = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Dimension" }) as any as S.Schema<Dimension>;
 
-export type MetricSpecificationDimensionsList = ReadonlyArray<Dimension>;
+export type MetricSpecificationDimensionsList = Array<Dimension>;
 export const MetricSpecificationDimensionsList = /*@__PURE__*/ S.Array(
   Dimension,
 ) as any as S.Schema<MetricSpecificationDimensionsList>;
@@ -2144,21 +2140,18 @@ export const MetricAvailability = /*@__PURE__*/ S.suspend(() =>
   identifier: "MetricAvailability",
 }) as any as S.Schema<MetricAvailability>;
 
-export type MetricSpecificationAvailabilitiesList =
-  ReadonlyArray<MetricAvailability>;
+export type MetricSpecificationAvailabilitiesList = Array<MetricAvailability>;
 export const MetricSpecificationAvailabilitiesList = /*@__PURE__*/ S.Array(
   MetricAvailability,
 ) as any as S.Schema<MetricSpecificationAvailabilitiesList>;
 
-export type MetricSpecificationSupportedTimeGrainTypesList =
-  ReadonlyArray<string>;
+export type MetricSpecificationSupportedTimeGrainTypesList = Array<string>;
 export const MetricSpecificationSupportedTimeGrainTypesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<MetricSpecificationSupportedTimeGrainTypesList>;
 
-export type MetricSpecificationSupportedAggregationTypesList =
-  ReadonlyArray<string>;
+export type MetricSpecificationSupportedAggregationTypesList = Array<string>;
 export const MetricSpecificationSupportedAggregationTypesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2213,7 +2206,7 @@ export const MetricSpecification = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MetricSpecification>;
 
 export type ServiceSpecificationMetricSpecificationsList =
-  ReadonlyArray<MetricSpecification>;
+  Array<MetricSpecification>;
 export const ServiceSpecificationMetricSpecificationsList =
   /*@__PURE__*/ S.Array(
     MetricSpecification,
@@ -2237,8 +2230,7 @@ export const LogSpecification = /*@__PURE__*/ S.suspend(() =>
   identifier: "LogSpecification",
 }) as any as S.Schema<LogSpecification>;
 
-export type ServiceSpecificationLogSpecificationsList =
-  ReadonlyArray<LogSpecification>;
+export type ServiceSpecificationLogSpecificationsList = Array<LogSpecification>;
 export const ServiceSpecificationLogSpecificationsList = /*@__PURE__*/ S.Array(
   LogSpecification,
 ) as any as S.Schema<ServiceSpecificationLogSpecificationsList>;
@@ -2295,8 +2287,7 @@ export const CsmOperationDescription = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CsmOperationDescription>;
 
 /** Collection of resources. */
-export type CsmOperationCollectionValueList =
-  ReadonlyArray<CsmOperationDescription>;
+export type CsmOperationCollectionValueList = Array<CsmOperationDescription>;
 export const CsmOperationCollectionValueList = /*@__PURE__*/ S.Array(
   CsmOperationDescription,
 ) as any as S.Schema<CsmOperationCollectionValueList>;

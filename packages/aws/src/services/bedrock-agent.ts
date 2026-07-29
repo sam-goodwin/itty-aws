@@ -349,12 +349,12 @@ export const InferenceConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "InferenceConfiguration",
 }) as any as S.Schema<InferenceConfiguration>;
 export interface PromptConfiguration {
-  promptType?: PromptType;
-  promptCreationMode?: CreationMode;
-  promptState?: PromptState;
+  promptType?: PromptType | (string & {});
+  promptCreationMode?: CreationMode | (string & {});
+  promptState?: PromptState | (string & {});
   basePromptTemplate?: string | redacted.Redacted<string>;
   inferenceConfiguration?: InferenceConfiguration;
-  parserMode?: CreationMode;
+  parserMode?: CreationMode | (string & {});
   foundationModel?: string;
   additionalModelRequestFields?: any;
 }
@@ -403,7 +403,7 @@ export const GuardrailConfiguration = /*@__PURE__*/ S.suspend(() =>
 export type MemoryType = "SESSION_SUMMARY";
 export const MemoryType = /*@__PURE__*/ S.String;
 
-export type EnabledMemoryTypes = MemoryType[];
+export type EnabledMemoryTypes = (MemoryType | (string & {}))[];
 export const EnabledMemoryTypes = /*@__PURE__*/ S.Array(MemoryType);
 export type StorageDays = number;
 export type MaxRecentSessions = number;
@@ -580,7 +580,7 @@ export const CustomControlMethod = /*@__PURE__*/ S.String;
 
 export type ActionGroupExecutor =
   | { lambda: string; customControl?: never }
-  | { lambda?: never; customControl: CustomControlMethod };
+  | { lambda?: never; customControl: CustomControlMethod | (string & {}) };
 export const ActionGroupExecutor = /*@__PURE__*/ S.Union([
   S.Struct({ lambda: S.String }),
   S.Struct({ customControl: CustomControlMethod }),
@@ -615,7 +615,7 @@ export const Type = /*@__PURE__*/ S.String;
 
 export interface ParameterDetail {
   description?: string;
-  type: Type;
+  type: Type | (string & {});
   required?: boolean;
 }
 export const ParameterDetail = /*@__PURE__*/ S.suspend(() =>
@@ -639,7 +639,7 @@ export interface Function {
   name: string;
   description?: string;
   parameters?: { [key: string]: ParameterDetail | undefined };
-  requireConfirmation?: RequireConfirmation;
+  requireConfirmation?: RequireConfirmation | (string & {});
 }
 export const Function = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -877,7 +877,7 @@ export type EnabledOrDisabledState = "ENABLED" | "DISABLED";
 export const EnabledOrDisabledState = /*@__PURE__*/ S.String;
 
 export interface DeletionProtectionConfiguration {
-  deletionProtectionStatus: EnabledOrDisabledState;
+  deletionProtectionStatus: EnabledOrDisabledState | (string & {});
   deletionProtectionThreshold?: number;
 }
 export const DeletionProtectionConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -889,7 +889,7 @@ export const DeletionProtectionConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeletionProtectionConfiguration",
 }) as any as S.Schema<DeletionProtectionConfiguration>;
 export interface ImageExtractionConfiguration {
-  imageExtractionStatus: EnabledOrDisabledState;
+  imageExtractionStatus: EnabledOrDisabledState | (string & {});
 }
 export const ImageExtractionConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ imageExtractionStatus: EnabledOrDisabledState }),
@@ -897,7 +897,7 @@ export const ImageExtractionConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "ImageExtractionConfiguration",
 }) as any as S.Schema<ImageExtractionConfiguration>;
 export interface AudioExtractionConfiguration {
-  audioExtractionStatus: EnabledOrDisabledState;
+  audioExtractionStatus: EnabledOrDisabledState | (string & {});
 }
 export const AudioExtractionConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ audioExtractionStatus: EnabledOrDisabledState }),
@@ -905,7 +905,7 @@ export const AudioExtractionConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "AudioExtractionConfiguration",
 }) as any as S.Schema<AudioExtractionConfiguration>;
 export interface VideoExtractionConfiguration {
-  videoExtractionStatus: EnabledOrDisabledState;
+  videoExtractionStatus: EnabledOrDisabledState | (string & {});
 }
 export const VideoExtractionConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ videoExtractionStatus: EnabledOrDisabledState }),
@@ -1008,7 +1008,7 @@ export interface WebCrawlerConfiguration {
   crawlerLimits?: WebCrawlerLimits;
   inclusionFilters?: (string | redacted.Redacted<string>)[];
   exclusionFilters?: (string | redacted.Redacted<string>)[];
-  scope?: WebScopeType;
+  scope?: WebScopeType | (string & {});
   userAgent?: string | redacted.Redacted<string>;
   userAgentHeader?: string | redacted.Redacted<string>;
 }
@@ -1046,8 +1046,8 @@ export const ConfluenceAuthType = /*@__PURE__*/ S.String;
 export type SecretArn = string;
 export interface ConfluenceSourceConfiguration {
   hostUrl: string;
-  hostType: ConfluenceHostType;
-  authType: ConfluenceAuthType;
+  hostType: ConfluenceHostType | (string & {});
+  authType: ConfluenceAuthType | (string & {});
   credentialsSecretArn: string;
 }
 export const ConfluenceSourceConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -1090,7 +1090,7 @@ export const PatternObjectFilterConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatternObjectFilterConfiguration",
 }) as any as S.Schema<PatternObjectFilterConfiguration>;
 export interface CrawlFilterConfiguration {
-  type: CrawlFilterConfigurationType;
+  type: CrawlFilterConfigurationType | (string & {});
   patternObjectFilter?: PatternObjectFilterConfiguration;
 }
 export const CrawlFilterConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -1126,7 +1126,7 @@ export const SalesforceAuthType = /*@__PURE__*/ S.String;
 
 export interface SalesforceSourceConfiguration {
   hostUrl: string;
-  authType: SalesforceAuthType;
+  authType: SalesforceAuthType | (string & {});
   credentialsSecretArn: string;
 }
 export const SalesforceSourceConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -1174,8 +1174,8 @@ export interface SharePointSourceConfiguration {
   tenantId?: string;
   domain: string;
   siteUrls: string[];
-  hostType: SharePointHostType;
-  authType: SharePointAuthType;
+  hostType: SharePointHostType | (string & {});
+  authType: SharePointAuthType | (string & {});
   credentialsSecretArn: string;
 }
 export const SharePointSourceConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -1211,7 +1211,7 @@ export const SharePointDataSourceConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "SharePointDataSourceConfiguration",
 }) as any as S.Schema<SharePointDataSourceConfiguration>;
 export interface DataSourceConfiguration {
-  type: DataSourceType;
+  type: DataSourceType | (string & {});
   managedKnowledgeBaseConnectorConfiguration?: ManagedKnowledgeBaseConnectorConfiguration;
   s3Configuration?: S3DataSourceConfiguration;
   webConfiguration?: WebDataSourceConfiguration;
@@ -1301,7 +1301,7 @@ export const SemanticChunkingConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "SemanticChunkingConfiguration",
 }) as any as S.Schema<SemanticChunkingConfiguration>;
 export interface ChunkingConfiguration {
-  chunkingStrategy: ChunkingStrategy;
+  chunkingStrategy: ChunkingStrategy | (string & {});
   fixedSizeChunkingConfiguration?: FixedSizeChunkingConfiguration;
   hierarchicalChunkingConfiguration?: HierarchicalChunkingConfiguration;
   semanticChunkingConfiguration?: SemanticChunkingConfiguration;
@@ -1356,7 +1356,7 @@ export const StepType = /*@__PURE__*/ S.String;
 
 export interface Transformation {
   transformationFunction: TransformationFunction;
-  stepToApply: StepType;
+  stepToApply: StepType | (string & {});
 }
 export const Transformation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1398,7 +1398,7 @@ export const ParsingModality = /*@__PURE__*/ S.String;
 export interface BedrockFoundationModelConfiguration {
   modelArn: string;
   parsingPrompt?: ParsingPrompt;
-  parsingModality?: ParsingModality;
+  parsingModality?: ParsingModality | (string & {});
 }
 export const BedrockFoundationModelConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1410,7 +1410,7 @@ export const BedrockFoundationModelConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "BedrockFoundationModelConfiguration",
 }) as any as S.Schema<BedrockFoundationModelConfiguration>;
 export interface BedrockDataAutomationConfiguration {
-  parsingModality?: ParsingModality;
+  parsingModality?: ParsingModality | (string & {});
 }
 export const BedrockDataAutomationConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ parsingModality: S.optional(ParsingModality) }),
@@ -1418,7 +1418,7 @@ export const BedrockDataAutomationConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "BedrockDataAutomationConfiguration",
 }) as any as S.Schema<BedrockDataAutomationConfiguration>;
 export interface ParsingConfiguration {
-  parsingStrategy: ParsingStrategy;
+  parsingStrategy: ParsingStrategy | (string & {});
   bedrockFoundationModelConfiguration?: BedrockFoundationModelConfiguration;
   bedrockDataAutomationConfiguration?: BedrockDataAutomationConfiguration;
 }
@@ -1442,7 +1442,7 @@ export type EnrichmentStrategyMethod = "CHUNK_ENTITY_EXTRACTION";
 export const EnrichmentStrategyMethod = /*@__PURE__*/ S.String;
 
 export interface EnrichmentStrategyConfiguration {
-  method: EnrichmentStrategyMethod;
+  method: EnrichmentStrategyMethod | (string & {});
 }
 export const EnrichmentStrategyConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ method: EnrichmentStrategyMethod }),
@@ -1463,7 +1463,7 @@ export const BedrockFoundationModelContextEnrichmentConfiguration =
     identifier: "BedrockFoundationModelContextEnrichmentConfiguration",
   }) as any as S.Schema<BedrockFoundationModelContextEnrichmentConfiguration>;
 export interface ContextEnrichmentConfiguration {
-  type: ContextEnrichmentType;
+  type: ContextEnrichmentType | (string & {});
   bedrockFoundationModelConfiguration?: BedrockFoundationModelContextEnrichmentConfiguration;
 }
 export const ContextEnrichmentConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -1695,7 +1695,7 @@ export const RerankingMetadataSelectiveModeConfiguration =
     S.Struct({ fieldsToExclude: FieldsForReranking }),
   ]);
 export interface MetadataConfigurationForReranking {
-  selectionMode: RerankingMetadataSelectionMode;
+  selectionMode: RerankingMetadataSelectionMode | (string & {});
   selectiveModeConfiguration?: RerankingMetadataSelectiveModeConfiguration;
 }
 export const MetadataConfigurationForReranking = /*@__PURE__*/ S.suspend(() =>
@@ -1724,7 +1724,7 @@ export const VectorSearchBedrockRerankingConfiguration =
     identifier: "VectorSearchBedrockRerankingConfiguration",
   }) as any as S.Schema<VectorSearchBedrockRerankingConfiguration>;
 export interface VectorSearchRerankingConfiguration {
-  type: VectorSearchRerankingConfigurationType;
+  type: VectorSearchRerankingConfigurationType | (string & {});
   bedrockRerankingConfiguration?: VectorSearchBedrockRerankingConfiguration;
 }
 export const VectorSearchRerankingConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -1741,7 +1741,7 @@ export type PerformanceConfigLatency = "standard" | "optimized";
 export const PerformanceConfigLatency = /*@__PURE__*/ S.String;
 
 export interface PerformanceConfiguration {
-  latency?: PerformanceConfigLatency;
+  latency?: PerformanceConfigLatency | (string & {});
 }
 export const PerformanceConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ latency: S.optional(PerformanceConfigLatency) }),
@@ -1838,7 +1838,7 @@ export type CachePointType = "default";
 export const CachePointType = /*@__PURE__*/ S.String;
 
 export interface CachePointBlock {
-  type: CachePointType;
+  type: CachePointType | (string & {});
 }
 export const CachePointBlock = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ type: CachePointType }),
@@ -1884,7 +1884,7 @@ export const ContentBlock = /*@__PURE__*/ S.Union([
 export type ContentBlocks = ContentBlock[];
 export const ContentBlocks = /*@__PURE__*/ S.Array(ContentBlock);
 export interface Message {
-  role: ConversationRole;
+  role: ConversationRole | (string & {});
   content: ContentBlock[];
 }
 export const Message = /*@__PURE__*/ S.suspend(() =>
@@ -1991,7 +1991,7 @@ export const PromptTemplateConfiguration = /*@__PURE__*/ S.Union([
 ]);
 export type FlowPromptModelIdentifier = string;
 export interface PromptFlowNodeInlineConfiguration {
-  templateType: PromptTemplateType;
+  templateType: PromptTemplateType | (string & {});
   templateConfiguration: PromptTemplateConfiguration;
   modelId: string;
   inferenceConfiguration?: PromptInferenceConfiguration;
@@ -2108,7 +2108,7 @@ export const SupportedLanguages = /*@__PURE__*/ S.String;
 
 export interface InlineCodeFlowNodeConfiguration {
   code: string | redacted.Redacted<string>;
-  language: SupportedLanguages;
+  language: SupportedLanguages | (string & {});
 }
 export const InlineCodeFlowNodeConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ code: SensitiveString, language: SupportedLanguages }),
@@ -2474,9 +2474,9 @@ export const FlowNodeInputCategory = /*@__PURE__*/ S.String;
 
 export interface FlowNodeInput {
   name: string;
-  type: FlowNodeIODataType;
+  type: FlowNodeIODataType | (string & {});
   expression: string | redacted.Redacted<string>;
-  category?: FlowNodeInputCategory;
+  category?: FlowNodeInputCategory | (string & {});
 }
 export const FlowNodeInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2491,7 +2491,7 @@ export const FlowNodeInputs = /*@__PURE__*/ S.Array(FlowNodeInput);
 export type FlowNodeOutputName = string;
 export interface FlowNodeOutput {
   name: string;
-  type: FlowNodeIODataType;
+  type: FlowNodeIODataType | (string & {});
 }
 export const FlowNodeOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ name: S.String, type: FlowNodeIODataType }),
@@ -2500,7 +2500,7 @@ export type FlowNodeOutputs = FlowNodeOutput[];
 export const FlowNodeOutputs = /*@__PURE__*/ S.Array(FlowNodeOutput);
 export interface FlowNode {
   name: string;
-  type: FlowNodeType;
+  type: FlowNodeType | (string & {});
   configuration?: FlowNodeConfiguration;
   inputs?: FlowNodeInput[];
   outputs?: FlowNodeOutput[];
@@ -2553,7 +2553,7 @@ export const FlowConnectionConfiguration = /*@__PURE__*/ S.Union([
   S.Struct({ conditional: FlowConditionalConnectionConfiguration }),
 ]);
 export interface FlowConnection {
-  type: FlowConnectionType;
+  type: FlowConnectionType | (string & {});
   name: string;
   source: string;
   target: string;
@@ -2665,7 +2665,7 @@ export type ConcurrencyType = "Automatic" | "Manual";
 export const ConcurrencyType = /*@__PURE__*/ S.String;
 
 export interface FlowAliasConcurrencyConfiguration {
-  type: ConcurrencyType;
+  type: ConcurrencyType | (string & {});
   maxConcurrency?: number;
 }
 export const FlowAliasConcurrencyConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -2832,7 +2832,7 @@ export type VideoConfigurations = VideoConfiguration[];
 export const VideoConfigurations = /*@__PURE__*/ S.Array(VideoConfiguration);
 export interface BedrockEmbeddingModelConfiguration {
   dimensions?: number;
-  embeddingDataType?: EmbeddingDataType;
+  embeddingDataType?: EmbeddingDataType | (string & {});
   audio?: AudioConfiguration[];
   video?: VideoConfiguration[];
 }
@@ -2862,7 +2862,7 @@ export type SupplementalDataStorageLocationType = "S3";
 export const SupplementalDataStorageLocationType = /*@__PURE__*/ S.String;
 
 export interface SupplementalDataStorageLocation {
-  type: SupplementalDataStorageLocationType;
+  type: SupplementalDataStorageLocationType | (string & {});
   s3Location?: S3Location;
 }
 export const SupplementalDataStorageLocation = /*@__PURE__*/ S.suspend(() =>
@@ -2906,7 +2906,7 @@ export type EmbeddingModelType = "CUSTOM" | "MANAGED";
 export const EmbeddingModelType = /*@__PURE__*/ S.String;
 
 export interface ManagedKnowledgeBaseConfiguration {
-  embeddingModelType?: EmbeddingModelType;
+  embeddingModelType?: EmbeddingModelType | (string & {});
   embeddingModelArn?: string;
   embeddingModelConfiguration?: EmbeddingModelConfiguration;
   serverSideEncryptionConfiguration?: ServerSideEncryptionConfiguration;
@@ -2959,7 +2959,7 @@ export const RedshiftQueryEngineRedshiftStorageConfiguration =
     identifier: "RedshiftQueryEngineRedshiftStorageConfiguration",
   }) as any as S.Schema<RedshiftQueryEngineRedshiftStorageConfiguration>;
 export interface RedshiftQueryEngineStorageConfiguration {
-  type: RedshiftQueryEngineStorageType;
+  type: RedshiftQueryEngineStorageType | (string & {});
   awsDataCatalogConfiguration?: RedshiftQueryEngineAwsDataCatalogStorageConfiguration;
   redshiftConfiguration?: RedshiftQueryEngineRedshiftStorageConfiguration;
 }
@@ -2990,7 +2990,7 @@ export type RedshiftServerlessAuthType = "IAM" | "USERNAME_PASSWORD";
 export const RedshiftServerlessAuthType = /*@__PURE__*/ S.String;
 
 export interface RedshiftServerlessAuthConfiguration {
-  type: RedshiftServerlessAuthType;
+  type: RedshiftServerlessAuthType | (string & {});
   usernamePasswordSecretArn?: string;
 }
 export const RedshiftServerlessAuthConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -3021,7 +3021,7 @@ export type RedshiftProvisionedAuthType =
 export const RedshiftProvisionedAuthType = /*@__PURE__*/ S.String;
 
 export interface RedshiftProvisionedAuthConfiguration {
-  type: RedshiftProvisionedAuthType;
+  type: RedshiftProvisionedAuthType | (string & {});
   databaseUser?: string;
   usernamePasswordSecretArn?: string;
 }
@@ -3048,7 +3048,7 @@ export const RedshiftProvisionedConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "RedshiftProvisionedConfiguration",
 }) as any as S.Schema<RedshiftProvisionedConfiguration>;
 export interface RedshiftQueryEngineConfiguration {
-  type: RedshiftQueryEngineType;
+  type: RedshiftQueryEngineType | (string & {});
   serverlessConfiguration?: RedshiftServerlessConfiguration;
   provisionedConfiguration?: RedshiftProvisionedConfiguration;
 }
@@ -3071,7 +3071,7 @@ export type QueryGenerationColumnName = string;
 export interface QueryGenerationColumn {
   name?: string;
   description?: string;
-  inclusion?: IncludeExclude;
+  inclusion?: IncludeExclude | (string & {});
 }
 export const QueryGenerationColumn = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3089,7 +3089,7 @@ export const QueryGenerationColumns = /*@__PURE__*/ S.Array(
 export interface QueryGenerationTable {
   name: string;
   description?: string;
-  inclusion?: IncludeExclude;
+  inclusion?: IncludeExclude | (string & {});
   columns?: QueryGenerationColumn[];
 }
 export const QueryGenerationTable = /*@__PURE__*/ S.suspend(() =>
@@ -3155,7 +3155,7 @@ export const RedshiftConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "RedshiftConfiguration",
 }) as any as S.Schema<RedshiftConfiguration>;
 export interface SqlKnowledgeBaseConfiguration {
-  type: QueryEngineType;
+  type: QueryEngineType | (string & {});
   redshiftConfiguration?: RedshiftConfiguration;
 }
 export const SqlKnowledgeBaseConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -3167,7 +3167,7 @@ export const SqlKnowledgeBaseConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "SqlKnowledgeBaseConfiguration",
 }) as any as S.Schema<SqlKnowledgeBaseConfiguration>;
 export interface KnowledgeBaseConfiguration {
-  type: KnowledgeBaseType;
+  type: KnowledgeBaseType | (string & {});
   vectorKnowledgeBaseConfiguration?: VectorKnowledgeBaseConfiguration;
   managedKnowledgeBaseConfiguration?: ManagedKnowledgeBaseConfiguration;
   kendraKnowledgeBaseConfiguration?: KendraKnowledgeBaseConfiguration;
@@ -3451,7 +3451,7 @@ export const S3VectorsConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "S3VectorsConfiguration",
 }) as any as S.Schema<S3VectorsConfiguration>;
 export interface StorageConfiguration {
-  type: KnowledgeBaseStorageType;
+  type: KnowledgeBaseStorageType | (string & {});
   opensearchServerlessConfiguration?: OpenSearchServerlessConfiguration;
   opensearchManagedClusterConfiguration?: OpenSearchManagedClusterConfiguration;
   pineconeConfiguration?: PineconeConfiguration;
@@ -3591,7 +3591,7 @@ export const PromptGenAiResource = /*@__PURE__*/ S.Union([
 ]);
 export interface PromptVariant {
   name: string;
-  templateType: PromptTemplateType;
+  templateType: PromptTemplateType | (string & {});
   templateConfiguration: PromptTemplateConfiguration;
   modelId?: string;
   inferenceConfiguration?: PromptInferenceConfiguration;
@@ -4056,7 +4056,7 @@ export const CustomDocumentIdentifier = /*@__PURE__*/ S.suspend(() =>
   identifier: "CustomDocumentIdentifier",
 }) as any as S.Schema<CustomDocumentIdentifier>;
 export interface DocumentIdentifier {
-  dataSourceType: ContentDataSourceType;
+  dataSourceType: ContentDataSourceType | (string & {});
   s3?: S3Location;
   custom?: CustomDocumentIdentifier;
 }

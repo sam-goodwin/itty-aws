@@ -124,7 +124,7 @@ export const CustomAttribute = /*@__PURE__*/ S.suspend(() =>
   identifier: "CustomAttribute",
 }) as any as S.Schema<CustomAttribute>;
 
-export type CustomAttributeList = ReadonlyArray<CustomAttribute>;
+export type CustomAttributeList = Array<CustomAttribute>;
 export const CustomAttributeList = /*@__PURE__*/ S.Array(
   CustomAttribute,
 ) as any as S.Schema<CustomAttributeList>;
@@ -168,7 +168,7 @@ export type ProductChannelEnum =
   | "LOCAL";
 export const ProductChannelEnum = /*@__PURE__*/ S.String;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -238,7 +238,7 @@ export const ItemLevelIssue = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ItemLevelIssue" }) as any as S.Schema<ItemLevelIssue>;
 
-export type ItemLevelIssueList = ReadonlyArray<ItemLevelIssue>;
+export type ItemLevelIssueList = Array<ItemLevelIssue>;
 export const ItemLevelIssueList = /*@__PURE__*/ S.Array(
   ItemLevelIssue,
 ) as any as S.Schema<ItemLevelIssueList>;
@@ -288,7 +288,7 @@ export const DestinationStatus = /*@__PURE__*/ S.suspend(() =>
   identifier: "DestinationStatus",
 }) as any as S.Schema<DestinationStatus>;
 
-export type DestinationStatusList = ReadonlyArray<DestinationStatus>;
+export type DestinationStatusList = Array<DestinationStatus>;
 export const DestinationStatusList = /*@__PURE__*/ S.Array(
   DestinationStatus,
 ) as any as S.Schema<DestinationStatusList>;
@@ -370,7 +370,7 @@ export const Tax = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Tax" }) as any as S.Schema<Tax>;
 
-export type TaxList = ReadonlyArray<Tax>;
+export type TaxList = Array<Tax>;
 export const TaxList = /*@__PURE__*/ S.Array(Tax) as any as S.Schema<TaxList>;
 
 /** Conditions to be met for a product to have free shipping. */
@@ -389,7 +389,7 @@ export const FreeShippingThreshold = /*@__PURE__*/ S.suspend(() =>
   identifier: "FreeShippingThreshold",
 }) as any as S.Schema<FreeShippingThreshold>;
 
-export type FreeShippingThresholdList = ReadonlyArray<FreeShippingThreshold>;
+export type FreeShippingThresholdList = Array<FreeShippingThreshold>;
 export const FreeShippingThresholdList = /*@__PURE__*/ S.Array(
   FreeShippingThreshold,
 ) as any as S.Schema<FreeShippingThresholdList>;
@@ -407,7 +407,7 @@ export interface ProductSustainabilityIncentive {
   /** The percentage of the sale price that the incentive is applied to. */
   percentage?: number;
   /** Sustainability incentive program. */
-  type?: ProductSustainabilityIncentiveTypeEnum;
+  type?: ProductSustainabilityIncentiveTypeEnum | (string & {});
 }
 export const ProductSustainabilityIncentive = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -420,7 +420,7 @@ export const ProductSustainabilityIncentive = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProductSustainabilityIncentive>;
 
 export type ProductSustainabilityIncentiveList =
-  ReadonlyArray<ProductSustainabilityIncentive>;
+  Array<ProductSustainabilityIncentive>;
 export const ProductSustainabilityIncentiveList = /*@__PURE__*/ S.Array(
   ProductSustainabilityIncentive,
 ) as any as S.Schema<ProductSustainabilityIncentiveList>;
@@ -510,7 +510,7 @@ export const Shipping = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Shipping" }) as any as S.Schema<Shipping>;
 
-export type ShippingList = ReadonlyArray<Shipping>;
+export type ShippingList = Array<Shipping>;
 export const ShippingList = /*@__PURE__*/ S.Array(
   Shipping,
 ) as any as S.Schema<ShippingList>;
@@ -578,7 +578,7 @@ export const Interval = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Interval" }) as any as S.Schema<Interval>;
 
-export type DoubleList = ReadonlyArray<number>;
+export type DoubleList = Array<number>;
 export const DoubleList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<DoubleList>;
@@ -618,7 +618,7 @@ export const CloudExportAdditionalProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CloudExportAdditionalProperties>;
 
 export type CloudExportAdditionalPropertiesList =
-  ReadonlyArray<CloudExportAdditionalProperties>;
+  Array<CloudExportAdditionalProperties>;
 export const CloudExportAdditionalPropertiesList = /*@__PURE__*/ S.Array(
   CloudExportAdditionalProperties,
 ) as any as S.Schema<CloudExportAdditionalPropertiesList>;
@@ -643,7 +643,7 @@ export const Certification = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Certification" }) as any as S.Schema<Certification>;
 
-export type CertificationList = ReadonlyArray<Certification>;
+export type CertificationList = Array<Certification>;
 export const CertificationList = /*@__PURE__*/ S.Array(
   Certification,
 ) as any as S.Schema<CertificationList>;
@@ -697,7 +697,7 @@ export const ProductDetail = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ProductDetail" }) as any as S.Schema<ProductDetail>;
 
-export type ProductDetailList = ReadonlyArray<ProductDetail>;
+export type ProductDetailList = Array<ProductDetail>;
 export const ProductDetailList = /*@__PURE__*/ S.Array(
   ProductDetail,
 ) as any as S.Schema<ProductDetailList>;
@@ -716,7 +716,7 @@ export interface SubscriptionCost {
   /** The amount the buyer has to pay per subscription period. */
   amount?: Price;
   /** The type of subscription period. Supported values are: * "`month`" * "`year`" * "`week`" */
-  period?: SubscriptionCostPeriodEnum;
+  period?: SubscriptionCostPeriodEnum | (string & {});
 }
 export const SubscriptionCost = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -757,7 +757,7 @@ export const LoyaltyProgram = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "LoyaltyProgram" }) as any as S.Schema<LoyaltyProgram>;
 
-export type LoyaltyProgramList = ReadonlyArray<LoyaltyProgram>;
+export type LoyaltyProgramList = Array<LoyaltyProgram>;
 export const LoyaltyProgramList = /*@__PURE__*/ S.Array(
   LoyaltyProgram,
 ) as any as S.Schema<LoyaltyProgramList>;
@@ -1135,7 +1135,7 @@ export interface ProductInput {
   /** Required. Immutable. The feed label that lets you categorize and identify your products. The maximum allowed characters are 20, and the supported characters are `A-Z`, `0-9`, hyphen, and underscore. The feed label must not include any spaces. For more information, see [Using feed labels](//support.google.com/merchants/answer/14994087). */
   feedLabel?: string;
   /** Immutable. The [channel](https://support.google.com/merchants/answer/7361332) of the product. */
-  channel?: ProductInputChannelEnum;
+  channel?: ProductInputChannelEnum | (string & {});
   /** Output only. The **unpadded base64url encoded name** of the processed product. Format: `accounts/{account}/products/{product}` where the last section `product` is the unpadded base64url encoding of the `content_language~feed_label~offer_id` name. Example: `accounts/123/products/ZW5-VVN-c2t1LzEyMw` for the decoded product name `accounts/123/products/en~US~sku/123`. This field can be used directly as input to the API methods that require the product name to be encoded if it contains special characters, for example [`GetProduct`](https://developers.google.com/merchant/api/reference/rest/products_v1beta/accounts.products/get). */
   base64EncodedProduct?: string;
   /** Output only. The **unpadded base64url encoded name** of the product input. Format: `accounts/{account}/productInputs/{productinput}` where the last section `productinput` is the unpadded base64url encoding of the `content_language~feed_label~offer_id` name. Example: `accounts/123/productInputs/ZW5-VVN-c2t1LzEyMw` for the decoded product input name `accounts/123/productInputs/en~US~sku/123`. This field can be used directly as input to the API methods that require the product input name to be encoded if it contains special characters, for example [`GetProductInput`](https://developers.google.com/merchant/api/reference/rest/products_v1beta/accounts.productInputs/get). */
@@ -1219,7 +1219,7 @@ export const ListAccountsProductsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAccountsProductsRequest",
 }) as any as S.Schema<ListAccountsProductsRequest>;
 
-export type ProductList = ReadonlyArray<Product>;
+export type ProductList = Array<Product>;
 export const ProductList = /*@__PURE__*/ S.Array(
   Product,
 ) as any as S.Schema<ProductList>;

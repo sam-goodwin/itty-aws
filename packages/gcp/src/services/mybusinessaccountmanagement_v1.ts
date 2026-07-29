@@ -125,7 +125,7 @@ export type AccountVettedStateEnum =
   | "INVALID";
 export const AccountVettedStateEnum = /*@__PURE__*/ S.String;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -201,19 +201,19 @@ export interface Account {
   /** Required. Input only. The resource name of the account which will be the primary owner of the account being created. It should be of the form `accounts/{account_id}`. */
   primaryOwner?: string;
   /** Required. Contains the type of account. Accounts of type PERSONAL and ORGANIZATION cannot be created using this API. */
-  type?: AccountTypeEnum;
+  type?: AccountTypeEnum | (string & {});
   /** Output only. If verified, future locations that are created are automatically connected to Google Maps, and have Google+ pages created, without requiring moderation. */
-  verificationState?: AccountVerificationStateEnum;
+  verificationState?: AccountVerificationStateEnum | (string & {});
   /** Output only. Specifies the AccountRole of this account. */
-  role?: AccountRoleEnum;
+  role?: AccountRoleEnum | (string & {});
   /** Output only. Indicates whether the account is vetted by Google. A vetted account is able to verify locations via the VETTED_PARTNER method. */
-  vettedState?: AccountVettedStateEnum;
+  vettedState?: AccountVettedStateEnum | (string & {});
   /** Output only. Additional info for an organization. This is populated only for an organization account. */
   organizationInfo?: OrganizationInfo;
   /** Required. The name of the account. For an account of type `PERSONAL`, this is the first and last name of the user account. */
   accountName?: string;
   /** Output only. Specifies the permission level the user has for this account. */
-  permissionLevel?: AccountPermissionLevelEnum;
+  permissionLevel?: AccountPermissionLevelEnum | (string & {});
   /** Immutable. The resource name, in the format `accounts/{account_id}`. */
   name?: string;
   /** Output only. Account reference number if provisioned. */
@@ -263,7 +263,7 @@ export const AdminRoleEnum = /*@__PURE__*/ S.String;
 /** An administrator of an Account or a location. */
 export interface Admin {
   /** Required. Specifies the role that this admin uses with the specified Account or Location. */
-  role?: AdminRoleEnum;
+  role?: AdminRoleEnum | (string & {});
   /** Optional. The name of the admin. When making the initial invitation, this is the invitee's email address. On `GET` calls, the user's email address is returned if the invitation is still pending. Otherwise, it contains the user's first and last names. This field is only needed to be set during admin creation. */
   admin?: string;
   /** Immutable. The name of the Account resource that this Admin refers to. Used when calling locations.admins.create to invite a LocationGroup as an admin. If both this field and `admin` are set on `CREATE` requests, this field takes precedence and the email address in `admin` will be ignored. Format: `accounts/{account}`. */
@@ -435,7 +435,7 @@ export const ListAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAccountsRequest",
 }) as any as S.Schema<ListAccountsRequest>;
 
-export type AccountList = ReadonlyArray<Account>;
+export type AccountList = Array<Account>;
 export const AccountList = /*@__PURE__*/ S.Array(
   Account,
 ) as any as S.Schema<AccountList>;
@@ -474,7 +474,7 @@ export const ListAccountsAdminsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAccountsAdminsRequest",
 }) as any as S.Schema<ListAccountsAdminsRequest>;
 
-export type AdminList = ReadonlyArray<Admin>;
+export type AdminList = Array<Admin>;
 export const AdminList = /*@__PURE__*/ S.Array(
   Admin,
 ) as any as S.Schema<AdminList>;
@@ -567,7 +567,7 @@ export const Invitation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Invitation" }) as any as S.Schema<Invitation>;
 
-export type InvitationList = ReadonlyArray<Invitation>;
+export type InvitationList = Array<Invitation>;
 export const InvitationList = /*@__PURE__*/ S.Array(
   Invitation,
 ) as any as S.Schema<InvitationList>;

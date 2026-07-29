@@ -246,7 +246,7 @@ export type OversizeHandling = "CONTINUE" | "MATCH" | "NO_MATCH";
 export const OversizeHandling = /*@__PURE__*/ S.String;
 
 export interface Body {
-  OversizeHandling?: OversizeHandling;
+  OversizeHandling?: OversizeHandling | (string & {});
 }
 export const Body = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ OversizeHandling: S.optional(OversizeHandling) }),
@@ -285,9 +285,9 @@ export const BodyParsingFallbackBehavior = /*@__PURE__*/ S.String;
 
 export interface JsonBody {
   MatchPattern: JsonMatchPattern;
-  MatchScope: JsonMatchScope;
-  InvalidFallbackBehavior?: BodyParsingFallbackBehavior;
-  OversizeHandling?: OversizeHandling;
+  MatchScope: JsonMatchScope | (string & {});
+  InvalidFallbackBehavior?: BodyParsingFallbackBehavior | (string & {});
+  OversizeHandling?: OversizeHandling | (string & {});
 }
 export const JsonBody = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -318,8 +318,8 @@ export const MapMatchScope = /*@__PURE__*/ S.String;
 
 export interface Headers {
   MatchPattern: HeaderMatchPattern;
-  MatchScope: MapMatchScope;
-  OversizeHandling: OversizeHandling;
+  MatchScope: MapMatchScope | (string & {});
+  OversizeHandling: OversizeHandling | (string & {});
 }
 export const Headers = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -347,8 +347,8 @@ export const CookieMatchPattern = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CookieMatchPattern>;
 export interface Cookies {
   MatchPattern: CookieMatchPattern;
-  MatchScope: MapMatchScope;
-  OversizeHandling: OversizeHandling;
+  MatchScope: MapMatchScope | (string & {});
+  OversizeHandling: OversizeHandling | (string & {});
 }
 export const Cookies = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -358,7 +358,7 @@ export const Cookies = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Cookies" }) as any as S.Schema<Cookies>;
 export interface HeaderOrder {
-  OversizeHandling: OversizeHandling;
+  OversizeHandling: OversizeHandling | (string & {});
 }
 export const HeaderOrder = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ OversizeHandling: OversizeHandling }),
@@ -367,19 +367,19 @@ export type FallbackBehavior = "MATCH" | "NO_MATCH";
 export const FallbackBehavior = /*@__PURE__*/ S.String;
 
 export interface JA3Fingerprint {
-  FallbackBehavior: FallbackBehavior;
+  FallbackBehavior: FallbackBehavior | (string & {});
 }
 export const JA3Fingerprint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ FallbackBehavior: FallbackBehavior }),
 ).annotate({ identifier: "JA3Fingerprint" }) as any as S.Schema<JA3Fingerprint>;
 export interface JA4Fingerprint {
-  FallbackBehavior: FallbackBehavior;
+  FallbackBehavior: FallbackBehavior | (string & {});
 }
 export const JA4Fingerprint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ FallbackBehavior: FallbackBehavior }),
 ).annotate({ identifier: "JA4Fingerprint" }) as any as S.Schema<JA4Fingerprint>;
 export interface UriFragment {
-  FallbackBehavior?: FallbackBehavior;
+  FallbackBehavior?: FallbackBehavior | (string & {});
 }
 export const UriFragment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ FallbackBehavior: S.optional(FallbackBehavior) }),
@@ -445,7 +445,7 @@ export const TextTransformationType = /*@__PURE__*/ S.String;
 
 export interface TextTransformation {
   Priority: number;
-  Type: TextTransformationType;
+  Type: TextTransformationType | (string & {});
 }
 export const TextTransformation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Priority: S.Number, Type: TextTransformationType }),
@@ -466,7 +466,7 @@ export interface ByteMatchStatement {
   SearchString: Uint8Array;
   FieldToMatch: FieldToMatch;
   TextTransformations: TextTransformation[];
-  PositionalConstraint: PositionalConstraint;
+  PositionalConstraint: PositionalConstraint | (string & {});
 }
 export const ByteMatchStatement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -484,7 +484,7 @@ export const SensitivityLevel = /*@__PURE__*/ S.String;
 export interface SqliMatchStatement {
   FieldToMatch: FieldToMatch;
   TextTransformations: TextTransformation[];
-  SensitivityLevel?: SensitivityLevel;
+  SensitivityLevel?: SensitivityLevel | (string & {});
 }
 export const SqliMatchStatement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -513,7 +513,7 @@ export const ComparisonOperator = /*@__PURE__*/ S.String;
 export type Size = number;
 export interface SizeConstraintStatement {
   FieldToMatch: FieldToMatch;
-  ComparisonOperator: ComparisonOperator;
+  ComparisonOperator: ComparisonOperator | (string & {});
   Size: number;
   TextTransformations: TextTransformation[];
 }
@@ -780,12 +780,12 @@ export type CountryCode =
   | "XK";
 export const CountryCode = /*@__PURE__*/ S.String;
 
-export type CountryCodes = CountryCode[];
+export type CountryCodes = (CountryCode | (string & {}))[];
 export const CountryCodes = /*@__PURE__*/ S.Array(CountryCode);
 export type ForwardedIPHeaderName = string;
 export interface ForwardedIPConfig {
   HeaderName: string;
-  FallbackBehavior: FallbackBehavior;
+  FallbackBehavior: FallbackBehavior | (string & {});
 }
 export const ForwardedIPConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ HeaderName: S.String, FallbackBehavior: FallbackBehavior }),
@@ -933,8 +933,8 @@ export const ForwardedIPPosition = /*@__PURE__*/ S.String;
 
 export interface IPSetForwardedIPConfig {
   HeaderName: string;
-  FallbackBehavior: FallbackBehavior;
-  Position: ForwardedIPPosition;
+  FallbackBehavior: FallbackBehavior | (string & {});
+  Position: ForwardedIPPosition | (string & {});
 }
 export const IPSetForwardedIPConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1049,7 +1049,7 @@ export const RateLimitUriPath = /*@__PURE__*/ S.suspend(() =>
   identifier: "RateLimitUriPath",
 }) as any as S.Schema<RateLimitUriPath>;
 export interface RateLimitJA3Fingerprint {
-  FallbackBehavior: FallbackBehavior;
+  FallbackBehavior: FallbackBehavior | (string & {});
 }
 export const RateLimitJA3Fingerprint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ FallbackBehavior: FallbackBehavior }),
@@ -1057,7 +1057,7 @@ export const RateLimitJA3Fingerprint = /*@__PURE__*/ S.suspend(() =>
   identifier: "RateLimitJA3Fingerprint",
 }) as any as S.Schema<RateLimitJA3Fingerprint>;
 export interface RateLimitJA4Fingerprint {
-  FallbackBehavior: FallbackBehavior;
+  FallbackBehavior: FallbackBehavior | (string & {});
 }
 export const RateLimitJA4Fingerprint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ FallbackBehavior: FallbackBehavior }),
@@ -1107,7 +1107,7 @@ export const RateBasedStatementCustomKeys = /*@__PURE__*/ S.Array(
 export interface RateBasedStatement {
   Limit: number;
   EvaluationWindowSec?: number;
-  AggregateKeyType: RateBasedStatementAggregateKeyType;
+  AggregateKeyType: RateBasedStatementAggregateKeyType | (string & {});
   ScopeDownStatement?: Statement;
   ForwardedIPConfig?: ForwardedIPConfig;
   CustomKeys?: RateBasedStatementCustomKey[];
@@ -1188,7 +1188,7 @@ export const InspectionLevel = /*@__PURE__*/ S.String;
 
 export type EnableMachineLearning = boolean;
 export interface AWSManagedRulesBotControlRuleSet {
-  InspectionLevel: InspectionLevel;
+  InspectionLevel: InspectionLevel | (string & {});
   EnableMachineLearning?: boolean;
 }
 export const AWSManagedRulesBotControlRuleSet = /*@__PURE__*/ S.suspend(() =>
@@ -1200,7 +1200,7 @@ export const AWSManagedRulesBotControlRuleSet = /*@__PURE__*/ S.suspend(() =>
   identifier: "AWSManagedRulesBotControlRuleSet",
 }) as any as S.Schema<AWSManagedRulesBotControlRuleSet>;
 export interface RequestInspection {
-  PayloadType: PayloadType;
+  PayloadType: PayloadType | (string & {});
   UsernameField: UsernameField;
   PasswordField: PasswordField;
 }
@@ -1359,7 +1359,7 @@ export const AddressField = /*@__PURE__*/ S.suspend(() =>
 export type AddressFields = AddressField[];
 export const AddressFields = /*@__PURE__*/ S.Array(AddressField);
 export interface RequestInspectionACFP {
-  PayloadType: PayloadType;
+  PayloadType: PayloadType | (string & {});
   UsernameField?: UsernameField;
   PasswordField?: PasswordField;
   EmailField?: EmailField;
@@ -1412,8 +1412,8 @@ export const Regex = /*@__PURE__*/ S.suspend(() =>
 export type RegularExpressionList = Regex[];
 export const RegularExpressionList = /*@__PURE__*/ S.Array(Regex);
 export interface ClientSideAction {
-  UsageOfAction: UsageOfAction;
-  Sensitivity?: SensitivityToAct;
+  UsageOfAction: UsageOfAction | (string & {});
+  Sensitivity?: SensitivityToAct | (string & {});
   ExemptUriRegularExpressions?: Regex[];
 }
 export const ClientSideAction = /*@__PURE__*/ S.suspend(() =>
@@ -1435,7 +1435,7 @@ export const ClientSideActionConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ClientSideActionConfig>;
 export interface AWSManagedRulesAntiDDoSRuleSet {
   ClientSideActionConfig: ClientSideActionConfig;
-  SensitivityToBlock?: SensitivityToAct;
+  SensitivityToBlock?: SensitivityToAct | (string & {});
 }
 export const AWSManagedRulesAntiDDoSRuleSet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1447,7 +1447,7 @@ export const AWSManagedRulesAntiDDoSRuleSet = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AWSManagedRulesAntiDDoSRuleSet>;
 export interface ManagedRuleGroupConfig {
   LoginPath?: string;
-  PayloadType?: PayloadType;
+  PayloadType?: PayloadType | (string & {});
   UsernameField?: UsernameField;
   PasswordField?: PasswordField;
   AWSManagedRulesBotControlRuleSet?: AWSManagedRulesBotControlRuleSet;
@@ -1506,7 +1506,7 @@ export const LabelMatchScope = /*@__PURE__*/ S.String;
 
 export type LabelMatchKey = string;
 export interface LabelMatchStatement {
-  Scope: LabelMatchScope;
+  Scope: LabelMatchScope | (string & {});
   Key: string;
 }
 export const LabelMatchStatement = /*@__PURE__*/ S.suspend(() =>
@@ -1883,7 +1883,7 @@ export const ResponseContentType = /*@__PURE__*/ S.String;
 
 export type ResponseContent = string;
 export interface CustomResponseBody {
-  ContentType: ResponseContentType;
+  ContentType: ResponseContentType | (string & {});
   Content: string;
 }
 export const CustomResponseBody = /*@__PURE__*/ S.suspend(() =>
@@ -1912,7 +1912,7 @@ export const CryptoCurrency = /*@__PURE__*/ S.String;
 
 export interface Price {
   Amount: string;
-  Currency: CryptoCurrency;
+  Currency: CryptoCurrency | (string & {});
 }
 export const Price = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Amount: S.String, Currency: CryptoCurrency }),
@@ -1920,7 +1920,7 @@ export const Price = /*@__PURE__*/ S.suspend(() =>
 export type Prices = Price[];
 export const Prices = /*@__PURE__*/ S.Array(Price);
 export interface PaymentNetwork {
-  Chain: BlockchainChain;
+  Chain: BlockchainChain | (string & {});
   WalletAddress: string;
   Prices: Price[];
 }
@@ -1940,7 +1940,7 @@ export const CurrencyMode = /*@__PURE__*/ S.String;
 
 export interface MonetizationConfig {
   CryptoConfig?: CryptoConfig;
-  CurrencyMode?: CurrencyMode;
+  CurrencyMode?: CurrencyMode | (string & {});
 }
 export const MonetizationConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2031,7 +2031,7 @@ export type FieldToProtectKeyName = string;
 export type FieldToProtectKeys = string[];
 export const FieldToProtectKeys = /*@__PURE__*/ S.Array(S.String);
 export interface FieldToProtect {
-  FieldType: FieldToProtectType;
+  FieldType: FieldToProtectType | (string & {});
   FieldKeys?: string[];
 }
 export const FieldToProtect = /*@__PURE__*/ S.suspend(() =>
@@ -2045,7 +2045,7 @@ export const DataProtectionAction = /*@__PURE__*/ S.String;
 
 export interface DataProtection {
   Field: FieldToProtect;
-  Action: DataProtectionAction;
+  Action: DataProtectionAction | (string & {});
   ExcludeRuleMatchDetails?: boolean;
   ExcludeRateBasedDetails?: boolean;
 }
@@ -2082,7 +2082,7 @@ export type SizeInspectionLimit = "KB_16" | "KB_32" | "KB_48" | "KB_64";
 export const SizeInspectionLimit = /*@__PURE__*/ S.String;
 
 export interface RequestBodyAssociatedResourceTypeConfig {
-  DefaultSizeInspectionLimit: SizeInspectionLimit;
+  DefaultSizeInspectionLimit: SizeInspectionLimit | (string & {});
 }
 export const RequestBodyAssociatedResourceTypeConfig = /*@__PURE__*/ S.suspend(
   () => S.Struct({ DefaultSizeInspectionLimit: SizeInspectionLimit }),
@@ -2090,7 +2090,9 @@ export const RequestBodyAssociatedResourceTypeConfig = /*@__PURE__*/ S.suspend(
   identifier: "RequestBodyAssociatedResourceTypeConfig",
 }) as any as S.Schema<RequestBodyAssociatedResourceTypeConfig>;
 export type RequestBody = {
-  [key in AssociatedResourceType]?: RequestBodyAssociatedResourceTypeConfig;
+  [key in
+    | AssociatedResourceType
+    | (string & {})]?: RequestBodyAssociatedResourceTypeConfig;
 };
 export const RequestBody = /*@__PURE__*/ S.Record(
   AssociatedResourceType,
@@ -2110,7 +2112,7 @@ export type LowReputationMode = "ACTIVE_UNDER_DDOS" | "ALWAYS_ON";
 export const LowReputationMode = /*@__PURE__*/ S.String;
 
 export interface OnSourceDDoSProtectionConfig {
-  ALBLowReputationMode: LowReputationMode;
+  ALBLowReputationMode: LowReputationMode | (string & {});
 }
 export const OnSourceDDoSProtectionConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ALBLowReputationMode: LowReputationMode }),
@@ -2797,7 +2799,7 @@ export type ActionValue =
 export const ActionValue = /*@__PURE__*/ S.String;
 
 export interface ActionCondition {
-  Action: ActionValue;
+  Action: ActionValue | (string & {});
 }
 export const ActionCondition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Action: ActionValue }),
@@ -2825,8 +2827,8 @@ export const Condition = /*@__PURE__*/ S.suspend(() =>
 export type Conditions = Condition[];
 export const Conditions = /*@__PURE__*/ S.Array(Condition);
 export interface Filter {
-  Behavior: FilterBehavior;
-  Requirement: FilterRequirement;
+  Behavior: FilterBehavior | (string & {});
+  Requirement: FilterRequirement | (string & {});
   Conditions: Condition[];
 }
 export const Filter = /*@__PURE__*/ S.suspend(() =>
@@ -2840,7 +2842,7 @@ export type Filters = Filter[];
 export const Filters = /*@__PURE__*/ S.Array(Filter);
 export interface LoggingFilter {
   Filters: Filter[];
-  DefaultBehavior: FilterBehavior;
+  DefaultBehavior: FilterBehavior | (string & {});
 }
 export const LoggingFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Filters: Filters, DefaultBehavior: FilterBehavior }),
@@ -2851,8 +2853,8 @@ export interface LoggingConfiguration {
   RedactedFields?: FieldToMatch[];
   ManagedByFirewallManager?: boolean;
   LoggingFilter?: LoggingFilter;
-  LogType?: LogType;
-  LogScope?: LogScope;
+  LogType?: LogType | (string & {});
+  LogScope?: LogScope | (string & {});
 }
 export const LoggingConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

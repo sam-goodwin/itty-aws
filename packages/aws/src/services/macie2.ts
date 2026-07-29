@@ -396,8 +396,8 @@ export type SimpleCriterionKeyForJob =
 export const SimpleCriterionKeyForJob = /*@__PURE__*/ S.String;
 
 export interface SimpleCriterionForJob {
-  comparator?: JobComparator;
-  key?: SimpleCriterionKeyForJob;
+  comparator?: JobComparator | (string & {});
+  key?: SimpleCriterionKeyForJob | (string & {});
   values?: string[];
 }
 export const SimpleCriterionForJob = /*@__PURE__*/ S.suspend(() =>
@@ -423,7 +423,7 @@ export const __listOfTagCriterionPairForJob = /*@__PURE__*/ S.Array(
   TagCriterionPairForJob,
 );
 export interface TagCriterionForJob {
-  comparator?: JobComparator;
+  comparator?: JobComparator | (string & {});
   tagValues?: TagCriterionPairForJob[];
 }
 export const TagCriterionForJob = /*@__PURE__*/ S.suspend(() =>
@@ -490,8 +490,8 @@ export type ScopeFilterKey =
 export const ScopeFilterKey = /*@__PURE__*/ S.String;
 
 export interface SimpleScopeTerm {
-  comparator?: JobComparator;
-  key?: ScopeFilterKey;
+  comparator?: JobComparator | (string & {});
+  key?: ScopeFilterKey | (string & {});
   values?: string[];
 }
 export const SimpleScopeTerm = /*@__PURE__*/ S.suspend(() =>
@@ -516,10 +516,10 @@ export type TagTarget = "S3_OBJECT";
 export const TagTarget = /*@__PURE__*/ S.String;
 
 export interface TagScopeTerm {
-  comparator?: JobComparator;
+  comparator?: JobComparator | (string & {});
   key?: string;
   tagValues?: TagValuePair[];
-  target?: TagTarget;
+  target?: TagTarget | (string & {});
 }
 export const TagScopeTerm = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -596,7 +596,7 @@ export type DayOfWeek =
 export const DayOfWeek = /*@__PURE__*/ S.String;
 
 export interface WeeklySchedule {
-  dayOfWeek?: DayOfWeek;
+  dayOfWeek?: DayOfWeek | (string & {});
 }
 export const WeeklySchedule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ dayOfWeek: S.optional(DayOfWeek) }),
@@ -672,7 +672,7 @@ export const DataIdentifierSeverity = /*@__PURE__*/ S.String;
 
 export interface SeverityLevel {
   occurrencesThreshold?: number;
-  severity?: DataIdentifierSeverity;
+  severity?: DataIdentifierSeverity | (string & {});
 }
 export const SeverityLevel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3259,7 +3259,7 @@ export const RevealStatus = /*@__PURE__*/ S.String;
 
 export interface RevealConfiguration {
   kmsKeyId?: string;
-  status?: RevealStatus;
+  status?: RevealStatus | (string & {});
 }
 export const RevealConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

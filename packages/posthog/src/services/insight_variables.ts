@@ -156,8 +156,7 @@ export const InsightVariablesListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "InsightVariablesListRequest",
 }) as any as S.Schema<InsightVariablesListRequest>;
 
-export type PaginatedInsightVariableListResultsList =
-  ReadonlyArray<InsightVariable>;
+export type PaginatedInsightVariableListResultsList = Array<InsightVariable>;
 export const PaginatedInsightVariableListResultsList = /*@__PURE__*/ S.Array(
   InsightVariable,
 ) as any as S.Schema<PaginatedInsightVariableListResultsList>;

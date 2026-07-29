@@ -60,7 +60,7 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -130,7 +130,7 @@ export const AmpUrlError = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AmpUrlError" }) as any as S.Schema<AmpUrlError>;
 
-export type AmpUrlErrorList = ReadonlyArray<AmpUrlError>;
+export type AmpUrlErrorList = Array<AmpUrlError>;
 export const AmpUrlErrorList = /*@__PURE__*/ S.Array(
   AmpUrlError,
 ) as any as S.Schema<AmpUrlErrorList>;
@@ -152,7 +152,7 @@ export const AmpUrl = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AmpUrl" }) as any as S.Schema<AmpUrl>;
 
-export type AmpUrlList = ReadonlyArray<AmpUrl>;
+export type AmpUrlList = Array<AmpUrl>;
 export const AmpUrlList = /*@__PURE__*/ S.Array(
   AmpUrl,
 ) as any as S.Schema<AmpUrlList>;

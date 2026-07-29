@@ -94,7 +94,7 @@ export const PayloadsCreateRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PayloadsCreateRequestBodyItem>;
 
 export type PayloadsCreateRequestBodyList =
-  ReadonlyArray<PayloadsCreateRequestBodyItem>;
+  Array<PayloadsCreateRequestBodyItem>;
 export const PayloadsCreateRequestBodyList = /*@__PURE__*/ S.Array(
   PayloadsCreateRequestBodyItem,
 ) as any as S.Schema<PayloadsCreateRequestBodyList>;
@@ -134,7 +134,7 @@ export const PayloadsCreateResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "PayloadsCreateResultItem",
 }) as any as S.Schema<PayloadsCreateResultItem>;
 
-export type PayloadsCreateResultList = ReadonlyArray<PayloadsCreateResultItem>;
+export type PayloadsCreateResultList = Array<PayloadsCreateResultItem>;
 export const PayloadsCreateResultList = /*@__PURE__*/ S.Array(
   PayloadsCreateResultItem,
 ) as any as S.Schema<PayloadsCreateResultList>;
@@ -190,7 +190,7 @@ export const PayloadsDeleteResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "PayloadsDeleteResultItem",
 }) as any as S.Schema<PayloadsDeleteResultItem>;
 
-export type PayloadsDeleteResultList = ReadonlyArray<PayloadsDeleteResultItem>;
+export type PayloadsDeleteResultList = Array<PayloadsDeleteResultItem>;
 export const PayloadsDeleteResultList = /*@__PURE__*/ S.Array(
   PayloadsDeleteResultItem,
 ) as any as S.Schema<PayloadsDeleteResultList>;
@@ -327,7 +327,7 @@ export const PayloadsListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "PayloadsListResultItem",
 }) as any as S.Schema<PayloadsListResultItem>;
 
-export type PayloadsListResultList = ReadonlyArray<PayloadsListResultItem>;
+export type PayloadsListResultList = Array<PayloadsListResultItem>;
 export const PayloadsListResultList = /*@__PURE__*/ S.Array(
   PayloadsListResultItem,
 ) as any as S.Schema<PayloadsListResultList>;

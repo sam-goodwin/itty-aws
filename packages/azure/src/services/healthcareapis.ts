@@ -71,19 +71,19 @@ export const DicomServiceAuthenticationConfigurationInput =
   }) as any as S.Schema<DicomServiceAuthenticationConfigurationInput>;
 
 /** The origins to be allowed via CORS. */
-export type CorsConfigurationOriginsList = ReadonlyArray<string>;
+export type CorsConfigurationOriginsList = Array<string>;
 export const CorsConfigurationOriginsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CorsConfigurationOriginsList>;
 
 /** The headers to be allowed via CORS. */
-export type CorsConfigurationHeadersList = ReadonlyArray<string>;
+export type CorsConfigurationHeadersList = Array<string>;
 export const CorsConfigurationHeadersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CorsConfigurationHeadersList>;
 
 /** The methods to be allowed via CORS. */
-export type CorsConfigurationMethodsList = ReadonlyArray<string>;
+export type CorsConfigurationMethodsList = Array<string>;
 export const CorsConfigurationMethodsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CorsConfigurationMethodsList>;
@@ -311,7 +311,7 @@ export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** The audiences for the service */
 export type DicomServiceAuthenticationConfigurationAudiencesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const DicomServiceAuthenticationConfigurationAudiencesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -359,7 +359,7 @@ export const PrivateEndpointServiceConnectionStatus = /*@__PURE__*/ S.String;
 /** A collection of information about the state of the connection between service consumer and provider. */
 export interface PrivateLinkServiceConnectionState {
   /** Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service. */
-  status?: PrivateEndpointServiceConnectionStatus;
+  status?: PrivateEndpointServiceConnectionStatus | (string & {});
   /** The reason for approval/rejection of the connection. */
   description?: string;
   /** A message indicating if changes on the service provider require any updates on the consumer. */
@@ -428,7 +428,7 @@ export const DicomServicePropertiesPrivateEndpointConnectionsItem =
 
 /** The list of private endpoint connections that are set up for this resource. */
 export type DicomServicePropertiesPrivateEndpointConnectionsList =
-  ReadonlyArray<DicomServicePropertiesPrivateEndpointConnectionsItem>;
+  Array<DicomServicePropertiesPrivateEndpointConnectionsItem>;
 export const DicomServicePropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     DicomServicePropertiesPrivateEndpointConnectionsItem,
@@ -798,7 +798,7 @@ export const DicomService = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DicomService" }) as any as S.Schema<DicomService>;
 
 /** The list of Dicom Services. */
-export type DicomServiceCollectionValueList = ReadonlyArray<DicomService>;
+export type DicomServiceCollectionValueList = Array<DicomService>;
 export const DicomServiceCollectionValueList = /*@__PURE__*/ S.Array(
   DicomService,
 ) as any as S.Schema<DicomServiceCollectionValueList>;
@@ -1059,8 +1059,7 @@ export const IotFhirDestination = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IotFhirDestination>;
 
 /** The list of IoT Connector FHIR destinations. */
-export type IotFhirDestinationCollectionValueList =
-  ReadonlyArray<IotFhirDestination>;
+export type IotFhirDestinationCollectionValueList = Array<IotFhirDestination>;
 export const IotFhirDestinationCollectionValueList = /*@__PURE__*/ S.Array(
   IotFhirDestination,
 ) as any as S.Schema<IotFhirDestinationCollectionValueList>;
@@ -1120,7 +1119,7 @@ export type FhirServicesCreateOrUpdateRequestKind = "fhir-Stu3" | "fhir-R4";
 export const FhirServicesCreateOrUpdateRequestKind = /*@__PURE__*/ S.String;
 
 /** The list of the Azure container registry login servers. */
-export type FhirServiceAcrConfigurationLoginServersList = ReadonlyArray<string>;
+export type FhirServiceAcrConfigurationLoginServersList = Array<string>;
 export const FhirServiceAcrConfigurationLoginServersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1147,7 +1146,7 @@ export const ServiceOciArtifactEntry = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of Open Container Initiative (OCI) artifacts. */
 export type FhirServiceAcrConfigurationOciArtifactsList =
-  ReadonlyArray<ServiceOciArtifactEntry>;
+  Array<ServiceOciArtifactEntry>;
 export const FhirServiceAcrConfigurationOciArtifactsList =
   /*@__PURE__*/ S.Array(
     ServiceOciArtifactEntry,
@@ -1174,8 +1173,9 @@ export type SmartDataActions = "Read";
 export const SmartDataActions = /*@__PURE__*/ S.String;
 
 /** The actions that are permitted to be performed on FHIR resources for the application. */
-export type SmartIdentityProviderApplicationAllowedDataActionsList =
-  ReadonlyArray<SmartDataActions>;
+export type SmartIdentityProviderApplicationAllowedDataActionsList = Array<
+  SmartDataActions | (string & {})
+>;
 export const SmartIdentityProviderApplicationAllowedDataActionsList =
   /*@__PURE__*/ S.Array(
     SmartDataActions,
@@ -1204,7 +1204,7 @@ export const SmartIdentityProviderApplication = /*@__PURE__*/ S.suspend(() =>
 
 /** The array of identity provider applications for SMART on FHIR authentication. */
 export type SmartIdentityProviderConfigurationApplicationsList =
-  ReadonlyArray<SmartIdentityProviderApplication>;
+  Array<SmartIdentityProviderApplication>;
 export const SmartIdentityProviderConfigurationApplicationsList =
   /*@__PURE__*/ S.Array(
     SmartIdentityProviderApplication,
@@ -1230,7 +1230,7 @@ export const SmartIdentityProviderConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** The array of identity provider configurations for SMART on FHIR authentication. */
 export type FhirServiceAuthenticationConfigurationSmartIdentityProvidersList =
-  ReadonlyArray<SmartIdentityProviderConfiguration>;
+  Array<SmartIdentityProviderConfiguration>;
 export const FhirServiceAuthenticationConfigurationSmartIdentityProvidersList =
   /*@__PURE__*/ S.Array(
     SmartIdentityProviderConfiguration,
@@ -1262,19 +1262,19 @@ export const FhirServiceAuthenticationConfiguration = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<FhirServiceAuthenticationConfiguration>;
 
 /** The origins to be allowed via CORS. */
-export type FhirServiceCorsConfigurationOriginsList = ReadonlyArray<string>;
+export type FhirServiceCorsConfigurationOriginsList = Array<string>;
 export const FhirServiceCorsConfigurationOriginsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<FhirServiceCorsConfigurationOriginsList>;
 
 /** The headers to be allowed via CORS. */
-export type FhirServiceCorsConfigurationHeadersList = ReadonlyArray<string>;
+export type FhirServiceCorsConfigurationHeadersList = Array<string>;
 export const FhirServiceCorsConfigurationHeadersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<FhirServiceCorsConfigurationHeadersList>;
 
 /** The methods to be allowed via CORS. */
-export type FhirServiceCorsConfigurationMethodsList = ReadonlyArray<string>;
+export type FhirServiceCorsConfigurationMethodsList = Array<string>;
 export const FhirServiceCorsConfigurationMethodsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<FhirServiceCorsConfigurationMethodsList>;
@@ -1326,7 +1326,7 @@ export const FhirResourceVersionPolicy = /*@__PURE__*/ S.String;
 
 /** A list of FHIR Resources and their version policy overrides. */
 export type ResourceVersionPolicyConfigurationResourceTypeOverridesMap = {
-  [key: string]: FhirResourceVersionPolicy | undefined;
+  [key: string]: FhirResourceVersionPolicy | (string & {}) | undefined;
 };
 export const ResourceVersionPolicyConfigurationResourceTypeOverridesMap =
   /*@__PURE__*/ S.Record(
@@ -1337,7 +1337,7 @@ export const ResourceVersionPolicyConfigurationResourceTypeOverridesMap =
 /** The settings for history tracking for FHIR resources. */
 export interface ResourceVersionPolicyConfiguration {
   /** The default value for tracking history across all resources. */
-  default?: FhirResourceVersionPolicy;
+  default?: FhirResourceVersionPolicy | (string & {});
   /** A list of FHIR Resources and their version policy overrides. */
   resourceTypeOverrides?: ResourceVersionPolicyConfigurationResourceTypeOverridesMap;
 }
@@ -1539,7 +1539,7 @@ export const FhirServicePropertiesPrivateEndpointConnectionsItem =
 
 /** The list of private endpoint connections that are set up for this resource. */
 export type FhirServicePropertiesPrivateEndpointConnectionsList =
-  ReadonlyArray<FhirServicePropertiesPrivateEndpointConnectionsItem>;
+  Array<FhirServicePropertiesPrivateEndpointConnectionsItem>;
 export const FhirServicePropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     FhirServicePropertiesPrivateEndpointConnectionsItem,
@@ -1886,7 +1886,7 @@ export const FhirService = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FhirService" }) as any as S.Schema<FhirService>;
 
 /** The list of Fhir Services. */
-export type FhirServiceCollectionValueList = ReadonlyArray<FhirService>;
+export type FhirServiceCollectionValueList = Array<FhirService>;
 export const FhirServiceCollectionValueList = /*@__PURE__*/ S.Array(
   FhirService,
 ) as any as S.Schema<FhirServiceCollectionValueList>;
@@ -2693,7 +2693,7 @@ export const IotConnector = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IotConnector" }) as any as S.Schema<IotConnector>;
 
 /** The list of IoT Connectors. */
-export type IotConnectorCollectionValueList = ReadonlyArray<IotConnector>;
+export type IotConnectorCollectionValueList = Array<IotConnector>;
 export const IotConnectorCollectionValueList = /*@__PURE__*/ S.Array(
   IotConnector,
 ) as any as S.Schema<IotConnectorCollectionValueList>;
@@ -2976,23 +2976,20 @@ export const LogSpecification = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LogSpecification>;
 
 /** Specifications of the Log for Azure Monitoring */
-export type ServiceSpecificationLogSpecificationsList =
-  ReadonlyArray<LogSpecification>;
+export type ServiceSpecificationLogSpecificationsList = Array<LogSpecification>;
 export const ServiceSpecificationLogSpecificationsList = /*@__PURE__*/ S.Array(
   LogSpecification,
 ) as any as S.Schema<ServiceSpecificationLogSpecificationsList>;
 
 /** Supported aggregation types */
-export type MetricSpecificationSupportedAggregationTypesList =
-  ReadonlyArray<string>;
+export type MetricSpecificationSupportedAggregationTypesList = Array<string>;
 export const MetricSpecificationSupportedAggregationTypesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<MetricSpecificationSupportedAggregationTypesList>;
 
 /** Supported time grain types */
-export type MetricSpecificationSupportedTimeGrainTypesList =
-  ReadonlyArray<string>;
+export type MetricSpecificationSupportedTimeGrainTypesList = Array<string>;
 export const MetricSpecificationSupportedTimeGrainTypesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3018,7 +3015,7 @@ export const MetricDimension = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MetricDimension>;
 
 /** Dimensions of the metric */
-export type MetricSpecificationDimensionsList = ReadonlyArray<MetricDimension>;
+export type MetricSpecificationDimensionsList = Array<MetricDimension>;
 export const MetricSpecificationDimensionsList = /*@__PURE__*/ S.Array(
   MetricDimension,
 ) as any as S.Schema<MetricSpecificationDimensionsList>;
@@ -3087,7 +3084,7 @@ export const MetricSpecification = /*@__PURE__*/ S.suspend(() =>
 
 /** Specifications of the Metrics for Azure Monitoring */
 export type ServiceSpecificationMetricSpecificationsList =
-  ReadonlyArray<MetricSpecification>;
+  Array<MetricSpecification>;
 export const ServiceSpecificationMetricSpecificationsList =
   /*@__PURE__*/ S.Array(
     MetricSpecification,
@@ -3153,7 +3150,7 @@ export const OperationDetail = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDetail>;
 
 /** Collection of available operation details */
-export type ListOperationsValueList = ReadonlyArray<OperationDetail>;
+export type ListOperationsValueList = Array<OperationDetail>;
 export const ListOperationsValueList = /*@__PURE__*/ S.Array(
   OperationDetail,
 ) as any as S.Schema<ListOperationsValueList>;
@@ -3547,7 +3544,7 @@ export const PrivateEndpointConnectionDescription = /*@__PURE__*/ S.suspend(
 
 /** Array of private endpoint connections */
 export type PrivateEndpointConnectionListResultDescriptionValueList =
-  ReadonlyArray<PrivateEndpointConnectionDescription>;
+  Array<PrivateEndpointConnectionDescription>;
 export const PrivateEndpointConnectionListResultDescriptionValueList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnectionDescription,
@@ -3598,16 +3595,14 @@ export const PrivateLinkResourcesGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateLinkResourcesGetRequest>;
 
 /** The private link resource required member names. */
-export type PrivateLinkResourcePropertiesRequiredMembersList =
-  ReadonlyArray<string>;
+export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
 export const PrivateLinkResourcePropertiesRequiredMembersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
 
 /** The private link resource Private link DNS zone name. */
-export type PrivateLinkResourcePropertiesRequiredZoneNamesList =
-  ReadonlyArray<string>;
+export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
 export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3815,7 +3810,7 @@ export const PrivateLinkResourceDescription = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of private link resources */
 export type PrivateLinkResourceListResultDescriptionValueList =
-  ReadonlyArray<PrivateLinkResourceDescription>;
+  Array<PrivateLinkResourceDescription>;
 export const PrivateLinkResourceListResultDescriptionValueList =
   /*@__PURE__*/ S.Array(
     PrivateLinkResourceDescription,
@@ -3934,7 +3929,7 @@ export const ServiceAccessPolicyEntry = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServiceAccessPolicyEntry>;
 
 /** The access policies of the service instance. */
-export type ServiceAccessPoliciesInfo = ReadonlyArray<ServiceAccessPolicyEntry>;
+export type ServiceAccessPoliciesInfo = Array<ServiceAccessPolicyEntry>;
 export const ServiceAccessPoliciesInfo = /*@__PURE__*/ S.Array(
   ServiceAccessPolicyEntry,
 ) as any as S.Schema<ServiceAccessPoliciesInfo>;
@@ -3979,19 +3974,19 @@ export const ServiceAuthenticationConfigurationInfo = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ServiceAuthenticationConfigurationInfo>;
 
 /** The origins to be allowed via CORS. */
-export type ServiceCorsConfigurationInfoOriginsList = ReadonlyArray<string>;
+export type ServiceCorsConfigurationInfoOriginsList = Array<string>;
 export const ServiceCorsConfigurationInfoOriginsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ServiceCorsConfigurationInfoOriginsList>;
 
 /** The headers to be allowed via CORS. */
-export type ServiceCorsConfigurationInfoHeadersList = ReadonlyArray<string>;
+export type ServiceCorsConfigurationInfoHeadersList = Array<string>;
 export const ServiceCorsConfigurationInfoHeadersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ServiceCorsConfigurationInfoHeadersList>;
 
 /** The methods to be allowed via CORS. */
-export type ServiceCorsConfigurationInfoMethodsList = ReadonlyArray<string>;
+export type ServiceCorsConfigurationInfoMethodsList = Array<string>;
 export const ServiceCorsConfigurationInfoMethodsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ServiceCorsConfigurationInfoMethodsList>;
@@ -4050,7 +4045,7 @@ export const ServicesPropertiesInputPrivateEndpointConnectionsItem =
 
 /** The list of private endpoint connections that are set up for this resource. */
 export type ServicesPropertiesInputPrivateEndpointConnectionsList =
-  ReadonlyArray<ServicesPropertiesInputPrivateEndpointConnectionsItem>;
+  Array<ServicesPropertiesInputPrivateEndpointConnectionsItem>;
 export const ServicesPropertiesInputPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     ServicesPropertiesInputPrivateEndpointConnectionsItem,
@@ -4062,7 +4057,7 @@ export const ServicesPropertiesInputPublicNetworkAccess =
   /*@__PURE__*/ S.String;
 
 /** The list of the ACR login servers. */
-export type ServiceAcrConfigurationInfoLoginServersList = ReadonlyArray<string>;
+export type ServiceAcrConfigurationInfoLoginServersList = Array<string>;
 export const ServiceAcrConfigurationInfoLoginServersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4070,7 +4065,7 @@ export const ServiceAcrConfigurationInfoLoginServersList =
 
 /** The list of Open Container Initiative (OCI) artifacts. */
 export type ServiceAcrConfigurationInfoOciArtifactsList =
-  ReadonlyArray<ServiceOciArtifactEntry>;
+  Array<ServiceOciArtifactEntry>;
 export const ServiceAcrConfigurationInfoOciArtifactsList =
   /*@__PURE__*/ S.Array(
     ServiceOciArtifactEntry,
@@ -4265,7 +4260,7 @@ export const ServicesPropertiesPrivateEndpointConnectionsItem =
 
 /** The list of private endpoint connections that are set up for this resource. */
 export type ServicesPropertiesPrivateEndpointConnectionsList =
-  ReadonlyArray<ServicesPropertiesPrivateEndpointConnectionsItem>;
+  Array<ServicesPropertiesPrivateEndpointConnectionsItem>;
 export const ServicesPropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     ServicesPropertiesPrivateEndpointConnectionsItem,
@@ -4582,8 +4577,7 @@ export const ServicesDescription = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServicesDescription>;
 
 /** A list of service description objects. */
-export type ServicesDescriptionListResultValueList =
-  ReadonlyArray<ServicesDescription>;
+export type ServicesDescriptionListResultValueList = Array<ServicesDescription>;
 export const ServicesDescriptionListResultValueList = /*@__PURE__*/ S.Array(
   ServicesDescription,
 ) as any as S.Schema<ServicesDescriptionListResultValueList>;
@@ -5250,7 +5244,7 @@ export const WorkspacesCreateOrUpdateResponsePropertiesPrivateEndpointConnection
 
 /** The list of private endpoint connections that are set up for this resource. */
 export type WorkspacesCreateOrUpdateResponsePropertiesPrivateEndpointConnectionsList =
-  ReadonlyArray<WorkspacesCreateOrUpdateResponsePropertiesPrivateEndpointConnectionsItem>;
+  Array<WorkspacesCreateOrUpdateResponsePropertiesPrivateEndpointConnectionsItem>;
 export const WorkspacesCreateOrUpdateResponsePropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     WorkspacesCreateOrUpdateResponsePropertiesPrivateEndpointConnectionsItem,
@@ -5402,7 +5396,7 @@ export const WorkspacesGetResponsePropertiesPrivateEndpointConnectionsItem =
 
 /** The list of private endpoint connections that are set up for this resource. */
 export type WorkspacesGetResponsePropertiesPrivateEndpointConnectionsList =
-  ReadonlyArray<WorkspacesGetResponsePropertiesPrivateEndpointConnectionsItem>;
+  Array<WorkspacesGetResponsePropertiesPrivateEndpointConnectionsItem>;
 export const WorkspacesGetResponsePropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     WorkspacesGetResponsePropertiesPrivateEndpointConnectionsItem,
@@ -5517,7 +5511,7 @@ export const WorkspacePropertiesPrivateEndpointConnectionsItem =
 
 /** The list of private endpoint connections that are set up for this resource. */
 export type WorkspacePropertiesPrivateEndpointConnectionsList =
-  ReadonlyArray<WorkspacePropertiesPrivateEndpointConnectionsItem>;
+  Array<WorkspacePropertiesPrivateEndpointConnectionsItem>;
 export const WorkspacePropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     WorkspacePropertiesPrivateEndpointConnectionsItem,
@@ -5577,7 +5571,7 @@ export const Workspace = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Workspace" }) as any as S.Schema<Workspace>;
 
 /** Collection of resources. */
-export type WorkspaceListValueList = ReadonlyArray<Workspace>;
+export type WorkspaceListValueList = Array<Workspace>;
 export const WorkspaceListValueList = /*@__PURE__*/ S.Array(
   Workspace,
 ) as any as S.Schema<WorkspaceListValueList>;
@@ -5687,7 +5681,7 @@ export const WorkspacesUpdateResponsePropertiesPrivateEndpointConnectionsItem =
 
 /** The list of private endpoint connections that are set up for this resource. */
 export type WorkspacesUpdateResponsePropertiesPrivateEndpointConnectionsList =
-  ReadonlyArray<WorkspacesUpdateResponsePropertiesPrivateEndpointConnectionsItem>;
+  Array<WorkspacesUpdateResponsePropertiesPrivateEndpointConnectionsItem>;
 export const WorkspacesUpdateResponsePropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     WorkspacesUpdateResponsePropertiesPrivateEndpointConnectionsItem,

@@ -84,7 +84,7 @@ export const IngestionWarningV2SparklinePoint = /*@__PURE__*/ S.suspend(() =>
 
 /** Warning counts over time, oldest bucket first. Buckets are hourly for time ranges up to 2 days and daily for wider ranges. */
 export type IngestionWarningsV2SummarySparklineList =
-  ReadonlyArray<IngestionWarningV2SparklinePoint>;
+  Array<IngestionWarningV2SparklinePoint>;
 export const IngestionWarningsV2SummarySparklineList = /*@__PURE__*/ S.Array(
   IngestionWarningV2SparklinePoint,
 ) as any as S.Schema<IngestionWarningsV2SummarySparklineList>;
@@ -133,7 +133,7 @@ export const IngestionWarningV2Sample = /*@__PURE__*/ S.suspend(() =>
 
 /** The most recent warnings of this type (up to the `samples` query parameter, 5 by default), newest first. */
 export type IngestionWarningsV2SummarySamplesList =
-  ReadonlyArray<IngestionWarningV2Sample>;
+  Array<IngestionWarningV2Sample>;
 export const IngestionWarningsV2SummarySamplesList = /*@__PURE__*/ S.Array(
   IngestionWarningV2Sample,
 ) as any as S.Schema<IngestionWarningsV2SummarySamplesList>;
@@ -169,7 +169,7 @@ export const IngestionWarningsV2Summary = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IngestionWarningsV2Summary>;
 
 export type IngestionWarningsV2ListResponseBodyList =
-  ReadonlyArray<IngestionWarningsV2Summary>;
+  Array<IngestionWarningsV2Summary>;
 export const IngestionWarningsV2ListResponseBodyList = /*@__PURE__*/ S.Array(
   IngestionWarningsV2Summary,
 ) as any as S.Schema<IngestionWarningsV2ListResponseBodyList>;

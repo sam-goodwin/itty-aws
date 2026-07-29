@@ -101,7 +101,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -321,7 +321,7 @@ export interface Group {
   /** Display name is a user defined name for this group which can be updated. */
   displayName?: string;
   /** Immutable. The target type of this group. */
-  migrationTargetType?: GroupMigrationTargetTypeEnum;
+  migrationTargetType?: GroupMigrationTargetTypeEnum | (string & {});
 }
 export const Group = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -373,7 +373,7 @@ export const Encryption = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Encryption" }) as any as S.Schema<Encryption>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -389,7 +389,7 @@ export interface NetworkInterface {
   /** Optional. The subnetwork to connect the NIC to. */
   subnetwork?: string;
   /** Optional. The networking tier used for optimizing connectivity between instances and systems on the internet. Applies only for external ephemeral IP addresses. If left empty, will default to PREMIUM. */
-  networkTier?: NetworkInterfaceNetworkTierEnum;
+  networkTier?: NetworkInterfaceNetworkTierEnum | (string & {});
   /** Optional. The network to connect the NIC to. */
   network?: string;
   /** Optional. The internal IP to define in the NIC. The formats accepted are: `ephemeral` \ ipv4 address \ a named address resource full path. */
@@ -409,7 +409,7 @@ export const NetworkInterface = /*@__PURE__*/ S.suspend(() =>
   identifier: "NetworkInterface",
 }) as any as S.Schema<NetworkInterface>;
 
-export type NetworkInterfaceList = ReadonlyArray<NetworkInterface>;
+export type NetworkInterfaceList = Array<NetworkInterface>;
 export const NetworkInterfaceList = /*@__PURE__*/ S.Array(
   NetworkInterface,
 ) as any as S.Schema<NetworkInterfaceList>;
@@ -423,7 +423,7 @@ export const ShieldedInstanceConfigSecureBootEnum = /*@__PURE__*/ S.String;
 /** Shielded instance configuration. */
 export interface ShieldedInstanceConfig {
   /** Optional. Defines whether the instance created by the machine image has Secure Boot enabled. This can be set to true only if the image boot option is EFI. */
-  secureBoot?: ShieldedInstanceConfigSecureBootEnum;
+  secureBoot?: ShieldedInstanceConfigSecureBootEnum | (string & {});
   /** Optional. Defines whether the instance created by the machine image has vTPM enabled. This can be set to true only if the image boot option is EFI. */
   enableVtpm?: boolean;
   /** Optional. Defines whether the instance created by the machine image has integrity monitoring enabled. This can be set to true only if the image boot option is EFI, and vTPM is enabled. */
@@ -489,7 +489,7 @@ export const AdaptationModifier = /*@__PURE__*/ S.suspend(() =>
   identifier: "AdaptationModifier",
 }) as any as S.Schema<AdaptationModifier>;
 
-export type AdaptationModifierList = ReadonlyArray<AdaptationModifier>;
+export type AdaptationModifierList = Array<AdaptationModifier>;
 export const AdaptationModifierList = /*@__PURE__*/ S.Array(
   AdaptationModifier,
 ) as any as S.Schema<AdaptationModifierList>;
@@ -497,11 +497,15 @@ export const AdaptationModifierList = /*@__PURE__*/ S.Array(
 /** Parameters affecting the OS adaptation process. */
 export interface ImageImportOsAdaptationParameters {
   /** Optional. By default the image will keep its existing boot option. Setting this property will trigger an internal process which will convert the image from using the existing boot option to another. The size of the boot disk might be increased to allow the conversion */
-  bootConversion?: ImageImportOsAdaptationParametersBootConversionEnum;
+  bootConversion?:
+    | ImageImportOsAdaptationParametersBootConversionEnum
+    | (string & {});
   /** Optional. Set to true in order to generalize the imported image. The generalization process enables co-existence of multiple VMs created from the same image. For Windows, generalizing the image removes computer-specific information such as installed drivers and the computer security identifier (SID). */
   generalize?: boolean;
   /** Optional. Choose which type of license to apply to the imported image. */
-  licenseType?: ImageImportOsAdaptationParametersLicenseTypeEnum;
+  licenseType?:
+    | ImageImportOsAdaptationParametersLicenseTypeEnum
+    | (string & {});
   /** Optional. Modifiers to be used as configuration of the OS adaptation process. */
   adaptationModifiers?: AdaptationModifierList;
 }
@@ -665,7 +669,7 @@ export const Link = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Link" }) as any as S.Schema<Link>;
 
-export type LinkList = ReadonlyArray<Link>;
+export type LinkList = Array<Link>;
 export const LinkList = /*@__PURE__*/ S.Array(
   Link,
 ) as any as S.Schema<LinkList>;
@@ -689,7 +693,7 @@ export const LocalizedMessage = /*@__PURE__*/ S.suspend(() =>
 /** Represents migration resource warning information that can be used with google.rpc.Status message. MigrationWarning is used to present the user with warning information in migration operations. */
 export interface MigrationWarning {
   /** The warning code. */
-  code?: MigrationWarningCodeEnum;
+  code?: MigrationWarningCodeEnum | (string & {});
   /** Output only. URL(s) pointing to additional information on handling the current warning. */
   helpLinks?: LinkList;
   /** The time the warning occurred. */
@@ -711,7 +715,7 @@ export const MigrationWarning = /*@__PURE__*/ S.suspend(() =>
   identifier: "MigrationWarning",
 }) as any as S.Schema<MigrationWarning>;
 
-export type MigrationWarningList = ReadonlyArray<MigrationWarning>;
+export type MigrationWarningList = Array<MigrationWarning>;
 export const MigrationWarningList = /*@__PURE__*/ S.Array(
   MigrationWarning,
 ) as any as S.Schema<MigrationWarningList>;
@@ -774,12 +778,12 @@ export const ImageImportStep = /*@__PURE__*/ S.suspend(() =>
   identifier: "ImageImportStep",
 }) as any as S.Schema<ImageImportStep>;
 
-export type ImageImportStepList = ReadonlyArray<ImageImportStep>;
+export type ImageImportStepList = Array<ImageImportStep>;
 export const ImageImportStepList = /*@__PURE__*/ S.Array(
   ImageImportStep,
 ) as any as S.Schema<ImageImportStepList>;
 
-export type StatusList = ReadonlyArray<Status>;
+export type StatusList = Array<Status>;
 export const StatusList = /*@__PURE__*/ S.Array(
   Status,
 ) as any as S.Schema<StatusList>;
@@ -817,7 +821,7 @@ export interface ImageImportJob {
   /** Output only. Provides details on the error that led to the image import state in case of an error. */
   errors?: StatusList;
   /** Output only. The state of the image import. */
-  state?: ImageImportJobStateEnum;
+  state?: ImageImportJobStateEnum | (string & {});
 }
 export const ImageImportJob = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -835,7 +839,7 @@ export const ImageImportJob = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ImageImportJob" }) as any as S.Schema<ImageImportJob>;
 
-export type ImageImportJobList = ReadonlyArray<ImageImportJob>;
+export type ImageImportJobList = Array<ImageImportJob>;
 export const ImageImportJobList = /*@__PURE__*/ S.Array(
   ImageImportJob,
 ) as any as S.Schema<ImageImportJobList>;
@@ -911,7 +915,7 @@ export const Tag = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
 
-export type TagList = ReadonlyArray<Tag>;
+export type TagList = Array<Tag>;
 export const TagList = /*@__PURE__*/ S.Array(Tag) as any as S.Schema<TagList>;
 
 /** Message describing AWS Credentials using access key id and secret. */
@@ -955,7 +959,7 @@ export interface AwsSourceDetails {
   /** Output only. The source's public IP. All communication initiated by this source will originate from this IP. */
   publicIp?: string;
   /** Output only. State of the source as determined by the health check. */
-  state?: AwsSourceDetailsStateEnum;
+  state?: AwsSourceDetailsStateEnum | (string & {});
   /** User specified tags to add to every M2VM generated resource in AWS. These tags will be set in addition to the default tags that are set as part of the migration process. The tags must not begin with the reserved prefix `m2vm`. */
   migrationResourcesUserTags?: StringMap;
 }
@@ -1038,7 +1042,7 @@ export interface AzureSourceDetails {
   /** Output only. The ID of the Azure resource group that contains all resources related to the migration process of this source. */
   resourceGroupId?: string;
   /** Output only. State of the source as determined by the health check. */
-  state?: AzureSourceDetailsStateEnum;
+  state?: AzureSourceDetailsStateEnum | (string & {});
   /** User specified tags to add to every M2VM generated resource in Azure. These tags will be set in addition to the default tags that are set as part of the migration process. The tags must not begin with the reserved prefix `m4ce` or `m2vm`. */
   migrationResourcesUserTags?: StringMap;
 }
@@ -1138,7 +1142,7 @@ export interface UpgradeStatus {
   /** The version from which we upgraded. */
   previousVersion?: string;
   /** The state of the upgradeAppliance operation. */
-  state?: UpgradeStatusStateEnum;
+  state?: UpgradeStatusStateEnum | (string & {});
   /** The time the operation was started. */
   startTime?: string;
 }
@@ -1205,7 +1209,7 @@ export interface DatacenterConnector {
   /** Output only. The communication channel between the datacenter connector and Google Cloud. */
   bucket?: string;
   /** Output only. State of the DatacenterConnector, as determined by the health checks. */
-  state?: DatacenterConnectorStateEnum;
+  state?: DatacenterConnectorStateEnum | (string & {});
   /** Output only. Provides details on the state of the Datacenter Connector in case of an error. */
   error?: Status;
   /** Output only. Appliance OVA version. This is the OVA which is manually installed by the user and contains the infrastructure for the automatically updatable components on the appliance. */
@@ -1296,7 +1300,7 @@ export interface ComputeEngineDisk {
   /** Optional. Replication zones of the regional disk. Should be of the form: projects/{target-project}/locations/{replica-zone} Currently only one replica zone is supported. */
   replicaZones?: StringList;
   /** Required. The disk type to use. */
-  diskType?: ComputeEngineDiskDiskTypeEnum;
+  diskType?: ComputeEngineDiskDiskTypeEnum | (string & {});
 }
 export const ComputeEngineDisk = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1355,7 +1359,7 @@ export const AwsSourceDiskDetailsDiskTypeEnum = /*@__PURE__*/ S.String;
 /** Represents the source AWS Disk details. */
 export interface AwsSourceDiskDetails {
   /** Optional. Output only. Disk type. */
-  diskType?: AwsSourceDiskDetailsDiskTypeEnum;
+  diskType?: AwsSourceDiskDetailsDiskTypeEnum | (string & {});
   /** Required. AWS volume ID. */
   volumeId?: string;
   /** Output only. Size in GiB. */
@@ -1423,7 +1427,7 @@ export const DiskMigrationStep = /*@__PURE__*/ S.suspend(() =>
   identifier: "DiskMigrationStep",
 }) as any as S.Schema<DiskMigrationStep>;
 
-export type DiskMigrationStepList = ReadonlyArray<DiskMigrationStep>;
+export type DiskMigrationStepList = Array<DiskMigrationStep>;
 export const DiskMigrationStepList = /*@__PURE__*/ S.Array(
   DiskMigrationStep,
 ) as any as S.Schema<DiskMigrationStepList>;
@@ -1433,7 +1437,7 @@ export interface DiskMigrationJob {
   /** Required. Details of the target Disk in Compute Engine. */
   targetDetails?: DiskMigrationJobTargetDetails;
   /** Output only. State of the DiskMigrationJob. */
-  state?: DiskMigrationJobStateEnum;
+  state?: DiskMigrationJobStateEnum | (string & {});
   /** Details of the unattached AWS source disk. */
   awsSourceDiskDetails?: AwsSourceDiskDetails;
   /** Output only. Provides details on the errors that led to the disk migration job's state in case of an error. */
@@ -1525,7 +1529,7 @@ export const PersistentDisk = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PersistentDisk" }) as any as S.Schema<PersistentDisk>;
 
-export type PersistentDiskList = ReadonlyArray<PersistentDisk>;
+export type PersistentDiskList = Array<PersistentDisk>;
 export const PersistentDiskList = /*@__PURE__*/ S.Array(
   PersistentDisk,
 ) as any as S.Schema<PersistentDiskList>;
@@ -1583,7 +1587,7 @@ export interface SchedulingNodeAffinity {
   /** Corresponds to the label values of Node resource. */
   values?: StringList;
   /** The operator to use for the node resources specified in the `values` parameter. */
-  operator?: SchedulingNodeAffinityOperatorEnum;
+  operator?: SchedulingNodeAffinityOperatorEnum | (string & {});
 }
 export const SchedulingNodeAffinity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1595,7 +1599,7 @@ export const SchedulingNodeAffinity = /*@__PURE__*/ S.suspend(() =>
   identifier: "SchedulingNodeAffinity",
 }) as any as S.Schema<SchedulingNodeAffinity>;
 
-export type SchedulingNodeAffinityList = ReadonlyArray<SchedulingNodeAffinity>;
+export type SchedulingNodeAffinityList = Array<SchedulingNodeAffinity>;
 export const SchedulingNodeAffinityList = /*@__PURE__*/ S.Array(
   SchedulingNodeAffinity,
 ) as any as S.Schema<SchedulingNodeAffinityList>;
@@ -1605,10 +1609,10 @@ export interface ComputeScheduling {
   /** The minimum number of virtual CPUs this instance will consume when running on a sole-tenant node. Ignored if no node_affinites are configured. */
   minNodeCpus?: number;
   /** How the instance should behave when the host machine undergoes maintenance that may temporarily impact instance performance. */
-  onHostMaintenance?: ComputeSchedulingOnHostMaintenanceEnum;
+  onHostMaintenance?: ComputeSchedulingOnHostMaintenanceEnum | (string & {});
   automaticRestart?: boolean;
   /** Whether the Instance should be automatically restarted whenever it is terminated by Compute Engine (not terminated by user). This configuration is identical to `automaticRestart` field in Compute Engine create instance under scheduling. It was changed to an enum (instead of a boolean) to match the default value in Compute Engine which is automatic restart. */
-  restartType?: ComputeSchedulingRestartTypeEnum;
+  restartType?: ComputeSchedulingRestartTypeEnum | (string & {});
   /** A set of node affinity and anti-affinity configurations for sole tenant nodes. */
   nodeAffinities?: SchedulingNodeAffinityList;
 }
@@ -1647,7 +1651,7 @@ export const AppliedLicenseTypeEnum = /*@__PURE__*/ S.String;
 /** AppliedLicense holds the license data returned by adaptation module report. */
 export interface AppliedLicense {
   /** The license type that was used in OS adaptation. */
-  type?: AppliedLicenseTypeEnum;
+  type?: AppliedLicenseTypeEnum | (string & {});
   /** The OS license returned from the adaptation module's report. */
   osLicense?: string;
 }
@@ -1689,7 +1693,7 @@ export interface ComputeEngineTargetDetails {
   /** Additional licenses to assign to the VM. */
   additionalLicenses?: StringList;
   /** The disk type to use in the VM. */
-  diskType?: ComputeEngineTargetDetailsDiskTypeEnum;
+  diskType?: ComputeEngineTargetDetailsDiskTypeEnum | (string & {});
   /** Optional. Additional replica zones of the target regional disks. If this list is not empty a regional disk will be created. The first supported zone would be the one stated in the zone field. The rest are taken from this list. Please refer to the [regional disk creation API](https://cloud.google.com/compute/docs/regions-zones/global-regional-zonal-resources) for further details about regional vs zonal disks. If not specified, a zonal disk will be created in the same zone the VM is created. */
   diskReplicaZones?: StringList;
   /** The Google Cloud target project ID or project name. */
@@ -1697,9 +1701,9 @@ export interface ComputeEngineTargetDetails {
   /** Compute instance scheduling information (if empty default is used). */
   computeScheduling?: ComputeScheduling;
   /** Optional. By default the virtual machine will keep its existing boot option. Setting this property will trigger an internal process which will convert the virtual machine from using the existing boot option to another. */
-  bootConversion?: ComputeEngineTargetDetailsBootConversionEnum;
+  bootConversion?: ComputeEngineTargetDetailsBootConversionEnum | (string & {});
   /** The VM Boot Option, as set in the source VM. */
-  bootOption?: ComputeEngineTargetDetailsBootOptionEnum;
+  bootOption?: ComputeEngineTargetDetailsBootOptionEnum | (string & {});
   /** List of NICs connected to this VM. */
   networkInterfaces?: NetworkInterfaceList;
   /** The hostname to assign to the VM. */
@@ -1713,7 +1717,7 @@ export interface ComputeEngineTargetDetails {
   /** A list of network tags to associate with the VM. */
   networkTags?: StringList;
   /** The license type to use in OS adaptation. */
-  licenseType?: ComputeEngineTargetDetailsLicenseTypeEnum;
+  licenseType?: ComputeEngineTargetDetailsLicenseTypeEnum | (string & {});
   /** Defines whether the instance has Secure Boot enabled. This can be set to true only if the VM boot option is EFI. */
   secureBoot?: boolean;
 }
@@ -1776,7 +1780,7 @@ export interface TargetVMDetails {
   /** The internal IP to define in the VM. The formats accepted are: `ephemeral` \ ipv4 address \ a named address resource full path. */
   internalIp?: string;
   /** The disk type to use in the VM. */
-  diskType?: TargetVMDetailsDiskTypeEnum;
+  diskType?: TargetVMDetailsDiskTypeEnum | (string & {});
   /** Output only. The project in which to create the VM. */
   project?: string;
   /** The external IP to define in the VM. */
@@ -1786,7 +1790,7 @@ export interface TargetVMDetails {
   /** The machine type series to create the VM with. */
   machineTypeSeries?: string;
   /** Output only. The VM Boot Option, as set in the source VM. */
-  bootOption?: TargetVMDetailsBootOptionEnum;
+  bootOption?: TargetVMDetailsBootOptionEnum | (string & {});
   /** List of NICs connected to this VM. */
   networkInterfaces?: NetworkInterfaceList;
   /** Output only. The OS license returned from the adaptation module report. */
@@ -1810,7 +1814,7 @@ export interface TargetVMDetails {
   /** A list of network tags to associate with the VM. */
   networkTags?: StringList;
   /** The license type to use in OS adaptation. */
-  licenseType?: TargetVMDetailsLicenseTypeEnum;
+  licenseType?: TargetVMDetailsLicenseTypeEnum | (string & {});
 }
 export const TargetVMDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1890,7 +1894,7 @@ export const CloneStep = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CloneStep" }) as any as S.Schema<CloneStep>;
 
-export type CloneStepList = ReadonlyArray<CloneStep>;
+export type CloneStepList = Array<CloneStep>;
 export const CloneStepList = /*@__PURE__*/ S.Array(
   CloneStep,
 ) as any as S.Schema<CloneStepList>;
@@ -1908,7 +1912,7 @@ export interface CloneJob {
   /** Output only. Details of the VM to create as the target of this clone job. Deprecated: Use compute_engine_target_details instead. */
   targetDetails?: TargetVMDetails;
   /** Output only. State of the clone job. */
-  state?: CloneJobStateEnum;
+  state?: CloneJobStateEnum | (string & {});
   /** Output only. Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_details instead. */
   computeEngineVmDetails?: TargetVMDetails;
   /** Output only. The time the clone job was ended. */
@@ -1938,7 +1942,7 @@ export const CloneJob = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CloneJob" }) as any as S.Schema<CloneJob>;
 
-export type CloneJobList = ReadonlyArray<CloneJob>;
+export type CloneJobList = Array<CloneJob>;
 export const CloneJobList = /*@__PURE__*/ S.Array(
   CloneJob,
 ) as any as S.Schema<CloneJobList>;
@@ -2021,7 +2025,7 @@ export interface PersistentDiskDefaults {
   /** Required. The ordinal number of the source VM disk. */
   sourceDiskNumber?: number;
   /** The disk type to use. */
-  diskType?: PersistentDiskDefaultsDiskTypeEnum;
+  diskType?: PersistentDiskDefaultsDiskTypeEnum | (string & {});
 }
 export const PersistentDiskDefaults = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2036,7 +2040,7 @@ export const PersistentDiskDefaults = /*@__PURE__*/ S.suspend(() =>
   identifier: "PersistentDiskDefaults",
 }) as any as S.Schema<PersistentDiskDefaults>;
 
-export type PersistentDiskDefaultsList = ReadonlyArray<PersistentDiskDefaults>;
+export type PersistentDiskDefaultsList = Array<PersistentDiskDefaults>;
 export const PersistentDiskDefaultsList = /*@__PURE__*/ S.Array(
   PersistentDiskDefaults,
 ) as any as S.Schema<PersistentDiskDefaultsList>;
@@ -2062,21 +2066,23 @@ export interface ComputeEngineTargetDefaults {
   /** List of NICs connected to this VM. */
   networkInterfaces?: NetworkInterfaceList;
   /** Output only. The VM Boot Option, as set in the source VM. */
-  bootOption?: ComputeEngineTargetDefaultsBootOptionEnum;
+  bootOption?: ComputeEngineTargetDefaultsBootOptionEnum | (string & {});
   /** Optional. By default the virtual machine will keep its existing boot option. Setting this property will trigger an internal process which will convert the virtual machine from using the existing boot option to another. */
-  bootConversion?: ComputeEngineTargetDefaultsBootConversionEnum;
+  bootConversion?:
+    | ComputeEngineTargetDefaultsBootConversionEnum
+    | (string & {});
   /** Optional. The details of each disk to create. */
   disks?: PersistentDiskDefaultsList;
   /** Optional. Additional replica zones of the target regional disks. If this list is not empty a regional disk will be created. The first supported zone would be the one stated in the zone field. The rest are taken from this list. Please refer to the [regional disk creation API](https://cloud.google.com/compute/docs/regions-zones/global-regional-zonal-resources) for further details about regional vs zonal disks. If not specified, a zonal disk will be created in the same zone the VM is created. */
   diskReplicaZones?: StringList;
   /** The disk type to use in the VM. */
-  diskType?: ComputeEngineTargetDefaultsDiskTypeEnum;
+  diskType?: ComputeEngineTargetDefaultsDiskTypeEnum | (string & {});
   /** Additional licenses to assign to the VM. */
   additionalLicenses?: StringList;
   /** Compute instance scheduling information (if empty default is used). */
   computeScheduling?: ComputeScheduling;
   /** The license type to use in OS adaptation. */
-  licenseType?: ComputeEngineTargetDefaultsLicenseTypeEnum;
+  licenseType?: ComputeEngineTargetDefaultsLicenseTypeEnum | (string & {});
   /** A list of network tags to associate with the VM. */
   networkTags?: StringList;
   /** Defines whether the instance has Secure Boot enabled. This can be set to true only if the VM boot option is EFI. */
@@ -2244,7 +2250,7 @@ export const CycleStep = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CycleStep" }) as any as S.Schema<CycleStep>;
 
-export type CycleStepList = ReadonlyArray<CycleStep>;
+export type CycleStepList = Array<CycleStep>;
 export const CycleStepList = /*@__PURE__*/ S.Array(
   CycleStep,
 ) as any as S.Schema<CycleStepList>;
@@ -2260,7 +2266,7 @@ export interface ReplicationCycle {
   /** The identifier of the ReplicationCycle. */
   name?: string;
   /** State of the ReplicationCycle. */
-  state?: ReplicationCycleStateEnum;
+  state?: ReplicationCycleStateEnum | (string & {});
   /** The accumulated duration the replication cycle was paused. */
   totalPauseDuration?: string;
   /** The time the replication cycle has ended. */
@@ -2331,7 +2337,7 @@ export interface BootDiskDefaults {
   /** Optional. Specifies a unique device name of your choice that is reflected into the /dev/disk/by-id/google-* tree of a Linux operating system running within the instance. If not specified, the server chooses a default device name to apply to this disk, in the form persistent-disk-x, where x is a number assigned by Google Compute Engine. This field is only applicable for persistent disks. */
   deviceName?: string;
   /** Optional. The type of disk provisioning to use for the VM. */
-  diskType?: BootDiskDefaultsDiskTypeEnum;
+  diskType?: BootDiskDefaultsDiskTypeEnum | (string & {});
   /** Optional. The name of the disk. */
   diskName?: string;
 }
@@ -2443,8 +2449,9 @@ export type VmCapabilitiesOsCapabilitiesItemEnum =
   | "OS_CAPABILITY_IDPF_NETWORK_INTERFACE";
 export const VmCapabilitiesOsCapabilitiesItemEnum = /*@__PURE__*/ S.String;
 
-export type VmCapabilitiesOsCapabilitiesItemEnumList =
-  ReadonlyArray<VmCapabilitiesOsCapabilitiesItemEnum>;
+export type VmCapabilitiesOsCapabilitiesItemEnumList = Array<
+  VmCapabilitiesOsCapabilitiesItemEnum | (string & {})
+>;
 export const VmCapabilitiesOsCapabilitiesItemEnumList = /*@__PURE__*/ S.Array(
   VmCapabilitiesOsCapabilitiesItemEnum,
 ) as any as S.Schema<VmCapabilitiesOsCapabilitiesItemEnumList>;
@@ -2488,7 +2495,7 @@ export const VmwareDiskDetails = /*@__PURE__*/ S.suspend(() =>
   identifier: "VmwareDiskDetails",
 }) as any as S.Schema<VmwareDiskDetails>;
 
-export type VmwareDiskDetailsList = ReadonlyArray<VmwareDiskDetails>;
+export type VmwareDiskDetailsList = Array<VmwareDiskDetails>;
 export const VmwareDiskDetailsList = /*@__PURE__*/ S.Array(
   VmwareDiskDetails,
 ) as any as S.Schema<VmwareDiskDetailsList>;
@@ -2496,11 +2503,11 @@ export const VmwareDiskDetailsList = /*@__PURE__*/ S.Array(
 /** Represent the source Vmware VM details. */
 export interface VmwareSourceVmDetails {
   /** Output only. The firmware type of the source VM. */
-  firmware?: VmwareSourceVmDetailsFirmwareEnum;
+  firmware?: VmwareSourceVmDetailsFirmwareEnum | (string & {});
   /** Output only. Information about VM capabilities needed for some Compute Engine features. */
   vmCapabilitiesInfo?: VmCapabilities;
   /** Output only. The VM architecture. */
-  architecture?: VmwareSourceVmDetailsArchitectureEnum;
+  architecture?: VmwareSourceVmDetailsArchitectureEnum | (string & {});
   /** Output only. The total size of the disks being migrated in bytes. */
   committedStorageBytes?: string;
   /** Output only. The disks attached to the source VM. */
@@ -2537,7 +2544,7 @@ export const AzureDiskDetails = /*@__PURE__*/ S.suspend(() =>
   identifier: "AzureDiskDetails",
 }) as any as S.Schema<AzureDiskDetails>;
 
-export type AzureDiskDetailsList = ReadonlyArray<AzureDiskDetails>;
+export type AzureDiskDetailsList = Array<AzureDiskDetails>;
 export const AzureDiskDetailsList = /*@__PURE__*/ S.Array(
   AzureDiskDetails,
 ) as any as S.Schema<AzureDiskDetailsList>;
@@ -2563,9 +2570,9 @@ export interface AzureSourceVmDetails {
   /** Output only. Information about VM capabilities needed for some Compute Engine features. */
   vmCapabilitiesInfo?: VmCapabilities;
   /** Output only. The VM architecture. */
-  architecture?: AzureSourceVmDetailsArchitectureEnum;
+  architecture?: AzureSourceVmDetailsArchitectureEnum | (string & {});
   /** Output only. The firmware type of the source VM. */
-  firmware?: AzureSourceVmDetailsFirmwareEnum;
+  firmware?: AzureSourceVmDetailsFirmwareEnum | (string & {});
 }
 export const AzureSourceVmDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2616,7 +2623,7 @@ export const CutoverStep = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CutoverStep" }) as any as S.Schema<CutoverStep>;
 
-export type CutoverStepList = ReadonlyArray<CutoverStep>;
+export type CutoverStepList = Array<CutoverStep>;
 export const CutoverStepList = /*@__PURE__*/ S.Array(
   CutoverStep,
 ) as any as S.Schema<CutoverStepList>;
@@ -2661,7 +2668,7 @@ export interface CutoverJob {
   /** Output only. The cutover steps list representing its progress. */
   steps?: CutoverStepList;
   /** Output only. State of the cutover job. */
-  state?: CutoverJobStateEnum;
+  state?: CutoverJobStateEnum | (string & {});
 }
 export const CutoverJob = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2684,7 +2691,7 @@ export const CutoverJob = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CutoverJob" }) as any as S.Schema<CutoverJob>;
 
-export type CutoverJobList = ReadonlyArray<CutoverJob>;
+export type CutoverJobList = Array<CutoverJob>;
 export const CutoverJobList = /*@__PURE__*/ S.Array(
   CutoverJob,
 ) as any as S.Schema<CutoverJobList>;
@@ -2732,7 +2739,7 @@ export const AwsDiskDetails = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AwsDiskDetails" }) as any as S.Schema<AwsDiskDetails>;
 
-export type AwsDiskDetailsList = ReadonlyArray<AwsDiskDetails>;
+export type AwsDiskDetailsList = Array<AwsDiskDetails>;
 export const AwsDiskDetailsList = /*@__PURE__*/ S.Array(
   AwsDiskDetails,
 ) as any as S.Schema<AwsDiskDetailsList>;
@@ -2742,9 +2749,9 @@ export interface AwsSourceVmDetails {
   /** Output only. Information about VM capabilities needed for some Compute Engine features. */
   vmCapabilitiesInfo?: VmCapabilities;
   /** Output only. The VM architecture. */
-  architecture?: AwsSourceVmDetailsArchitectureEnum;
+  architecture?: AwsSourceVmDetailsArchitectureEnum | (string & {});
   /** Output only. The firmware type of the source VM. */
-  firmware?: AwsSourceVmDetailsFirmwareEnum;
+  firmware?: AwsSourceVmDetailsFirmwareEnum | (string & {});
   /** Output only. The total size of the disks being migrated in bytes. */
   committedStorageBytes?: string;
   /** Output only. The disks attached to the source VM. */
@@ -2767,7 +2774,7 @@ export interface MigratingVm {
   /** Output only. The recent clone jobs performed on the migrating VM. This field holds the vm's last completed clone job and the vm's running clone job, if one exists. Note: To have this field populated you need to explicitly request it via the "view" parameter of the Get/List request. */
   recentCloneJobs?: CloneJobList;
   /** Output only. State of the MigratingVm. */
-  state?: MigratingVmStateEnum;
+  state?: MigratingVmStateEnum | (string & {});
   /** Output only. Provides details of future CutoverJobs of a MigratingVm. Set to empty when cutover forecast is unavailable. */
   cutoverForecast?: CutoverForecast;
   /** Details of the target VM in Compute Engine. */
@@ -2956,13 +2963,13 @@ export const VmwareVmDetailsBootOptionEnum = /*@__PURE__*/ S.String;
 /** VmwareVmDetails describes a VM in vCenter. */
 export interface VmwareVmDetails {
   /** The power state of the VM at the moment list was taken. */
-  powerState?: VmwareVmDetailsPowerStateEnum;
+  powerState?: VmwareVmDetailsPowerStateEnum | (string & {});
   /** The total size of the storage allocated to the VM in MB. */
   committedStorageMb?: string;
   /** The VM's OS. See for example https://vdc-repo.vmware.com/vmwb-repository/dcr-public/da47f910-60ac-438b-8b9b-6122f4d14524/16b7274a-bf8b-4b4c-a05e-746f2aa93c8c/doc/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html for types of strings this might hold. */
   guestDescription?: string;
   /** Output only. The CPU architecture. */
-  architecture?: VmwareVmDetailsArchitectureEnum;
+  architecture?: VmwareVmDetailsArchitectureEnum | (string & {});
   /** The descriptive name of the vCenter's datacenter this VM is contained in. */
   datacenterDescription?: string;
   /** The number of disks the VM has. */
@@ -2978,7 +2985,7 @@ export interface VmwareVmDetails {
   /** The number of cpus in the VM. */
   cpuCount?: number;
   /** Output only. The VM Boot Option. */
-  bootOption?: VmwareVmDetailsBootOptionEnum;
+  bootOption?: VmwareVmDetailsBootOptionEnum | (string & {});
   /** The id of the vCenter's datacenter this VM is contained in. */
   datacenterId?: string;
   /** The size of the memory of the VM in MB. */
@@ -3082,7 +3089,7 @@ export const VmUtilizationInfo = /*@__PURE__*/ S.suspend(() =>
   identifier: "VmUtilizationInfo",
 }) as any as S.Schema<VmUtilizationInfo>;
 
-export type VmUtilizationInfoList = ReadonlyArray<VmUtilizationInfo>;
+export type VmUtilizationInfoList = Array<VmUtilizationInfo>;
 export const VmUtilizationInfoList = /*@__PURE__*/ S.Array(
   VmUtilizationInfo,
 ) as any as S.Schema<VmUtilizationInfoList>;
@@ -3120,9 +3127,9 @@ export interface UtilizationReport {
   /** Output only. The time the state was last set. */
   stateTime?: string;
   /** Time frame of the report. */
-  timeFrame?: UtilizationReportTimeFrameEnum;
+  timeFrame?: UtilizationReportTimeFrameEnum | (string & {});
   /** Output only. Current state of the report. */
-  state?: UtilizationReportStateEnum;
+  state?: UtilizationReportStateEnum | (string & {});
   /** Output only. Total number of VMs included in the report. */
   vmCount?: number;
 }
@@ -3514,7 +3521,7 @@ export const AwsSecurityGroup = /*@__PURE__*/ S.suspend(() =>
   identifier: "AwsSecurityGroup",
 }) as any as S.Schema<AwsSecurityGroup>;
 
-export type AwsSecurityGroupList = ReadonlyArray<AwsSecurityGroup>;
+export type AwsSecurityGroupList = Array<AwsSecurityGroup>;
 export const AwsSecurityGroupList = /*@__PURE__*/ S.Array(
   AwsSecurityGroup,
 ) as any as S.Schema<AwsSecurityGroupList>;
@@ -3584,7 +3591,7 @@ export const AwsVmDetails = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AwsVmDetails" }) as any as S.Schema<AwsVmDetails>;
 
-export type AwsVmDetailsList = ReadonlyArray<AwsVmDetails>;
+export type AwsVmDetailsList = Array<AwsVmDetails>;
 export const AwsVmDetailsList = /*@__PURE__*/ S.Array(
   AwsVmDetails,
 ) as any as S.Schema<AwsVmDetailsList>;
@@ -3600,7 +3607,7 @@ export const AwsVmsDetails = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AwsVmsDetails" }) as any as S.Schema<AwsVmsDetails>;
 
-export type VmwareVmDetailsList = ReadonlyArray<VmwareVmDetails>;
+export type VmwareVmDetailsList = Array<VmwareVmDetails>;
 export const VmwareVmDetailsList = /*@__PURE__*/ S.Array(
   VmwareVmDetails,
 ) as any as S.Schema<VmwareVmDetailsList>;
@@ -3652,7 +3659,7 @@ export const Disk = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Disk" }) as any as S.Schema<Disk>;
 
-export type DiskList = ReadonlyArray<Disk>;
+export type DiskList = Array<Disk>;
 export const DiskList = /*@__PURE__*/ S.Array(
   Disk,
 ) as any as S.Schema<DiskList>;
@@ -3750,7 +3757,7 @@ export const AzureVmDetails = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AzureVmDetails" }) as any as S.Schema<AzureVmDetails>;
 
-export type AzureVmDetailsList = ReadonlyArray<AzureVmDetails>;
+export type AzureVmDetailsList = Array<AzureVmDetails>;
 export const AzureVmDetailsList = /*@__PURE__*/ S.Array(
   AzureVmDetails,
 ) as any as S.Schema<AzureVmDetailsList>;
@@ -3846,7 +3853,7 @@ export const SourceStorageResource = /*@__PURE__*/ S.suspend(() =>
   identifier: "SourceStorageResource",
 }) as any as S.Schema<SourceStorageResource>;
 
-export type SourceStorageResourceList = ReadonlyArray<SourceStorageResource>;
+export type SourceStorageResourceList = Array<SourceStorageResource>;
 export const SourceStorageResourceList = /*@__PURE__*/ S.Array(
   SourceStorageResource,
 ) as any as S.Schema<SourceStorageResourceList>;
@@ -4241,7 +4248,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = ReadonlyArray<Location>;
+export type LocationList = Array<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -4292,7 +4299,7 @@ export const ListProjectsLocationsGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsGroupsRequest",
 }) as any as S.Schema<ListProjectsLocationsGroupsRequest>;
 
-export type GroupList = ReadonlyArray<Group>;
+export type GroupList = Array<Group>;
 export const GroupList = /*@__PURE__*/ S.Array(
   Group,
 ) as any as S.Schema<GroupList>;
@@ -4347,7 +4354,7 @@ export const ListProjectsLocationsImageImportsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsImageImportsRequest",
 }) as any as S.Schema<ListProjectsLocationsImageImportsRequest>;
 
-export type ImageImportList = ReadonlyArray<ImageImport>;
+export type ImageImportList = Array<ImageImport>;
 export const ImageImportList = /*@__PURE__*/ S.Array(
   ImageImport,
 ) as any as S.Schema<ImageImportList>;
@@ -4452,7 +4459,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type OperationList = ReadonlyArray<Operation>;
+export type OperationList = Array<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -4506,7 +4513,7 @@ export const ListProjectsLocationsSourcesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsSourcesRequest",
 }) as any as S.Schema<ListProjectsLocationsSourcesRequest>;
 
-export type SourceList = ReadonlyArray<Source>;
+export type SourceList = Array<Source>;
 export const SourceList = /*@__PURE__*/ S.Array(
   Source,
 ) as any as S.Schema<SourceList>;
@@ -4561,7 +4568,7 @@ export const ListProjectsLocationsSourcesDatacenterConnectorsRequest =
     identifier: "ListProjectsLocationsSourcesDatacenterConnectorsRequest",
   }) as any as S.Schema<ListProjectsLocationsSourcesDatacenterConnectorsRequest>;
 
-export type DatacenterConnectorList = ReadonlyArray<DatacenterConnector>;
+export type DatacenterConnectorList = Array<DatacenterConnector>;
 export const DatacenterConnectorList = /*@__PURE__*/ S.Array(
   DatacenterConnector,
 ) as any as S.Schema<DatacenterConnectorList>;
@@ -4616,7 +4623,7 @@ export const ListProjectsLocationsSourcesDiskMigrationJobsRequest =
     identifier: "ListProjectsLocationsSourcesDiskMigrationJobsRequest",
   }) as any as S.Schema<ListProjectsLocationsSourcesDiskMigrationJobsRequest>;
 
-export type DiskMigrationJobList = ReadonlyArray<DiskMigrationJob>;
+export type DiskMigrationJobList = Array<DiskMigrationJob>;
 export const DiskMigrationJobList = /*@__PURE__*/ S.Array(
   DiskMigrationJob,
 ) as any as S.Schema<DiskMigrationJobList>;
@@ -4683,7 +4690,7 @@ export const ListProjectsLocationsSourcesMigratingVmsRequest =
     identifier: "ListProjectsLocationsSourcesMigratingVmsRequest",
   }) as any as S.Schema<ListProjectsLocationsSourcesMigratingVmsRequest>;
 
-export type MigratingVmList = ReadonlyArray<MigratingVm>;
+export type MigratingVmList = Array<MigratingVm>;
 export const MigratingVmList = /*@__PURE__*/ S.Array(
   MigratingVm,
 ) as any as S.Schema<MigratingVmList>;
@@ -4839,7 +4846,7 @@ export const ListProjectsLocationsSourcesMigratingVmsReplicationCyclesRequest =
       "ListProjectsLocationsSourcesMigratingVmsReplicationCyclesRequest",
   }) as any as S.Schema<ListProjectsLocationsSourcesMigratingVmsReplicationCyclesRequest>;
 
-export type ReplicationCycleList = ReadonlyArray<ReplicationCycle>;
+export type ReplicationCycleList = Array<ReplicationCycle>;
 export const ReplicationCycleList = /*@__PURE__*/ S.Array(
   ReplicationCycle,
 ) as any as S.Schema<ReplicationCycleList>;
@@ -4906,7 +4913,7 @@ export const ListProjectsLocationsSourcesUtilizationReportsRequest =
     identifier: "ListProjectsLocationsSourcesUtilizationReportsRequest",
   }) as any as S.Schema<ListProjectsLocationsSourcesUtilizationReportsRequest>;
 
-export type UtilizationReportList = ReadonlyArray<UtilizationReport>;
+export type UtilizationReportList = Array<UtilizationReport>;
 export const UtilizationReportList = /*@__PURE__*/ S.Array(
   UtilizationReport,
 ) as any as S.Schema<UtilizationReportList>;
@@ -4961,7 +4968,7 @@ export const ListProjectsLocationsTargetProjectsRequest =
     identifier: "ListProjectsLocationsTargetProjectsRequest",
   }) as any as S.Schema<ListProjectsLocationsTargetProjectsRequest>;
 
-export type TargetProjectList = ReadonlyArray<TargetProject>;
+export type TargetProjectList = Array<TargetProject>;
 export const TargetProjectList = /*@__PURE__*/ S.Array(
   TargetProject,
 ) as any as S.Schema<TargetProjectList>;

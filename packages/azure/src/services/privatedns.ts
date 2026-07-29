@@ -355,7 +355,7 @@ export const PrivateZone = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PrivateZone" }) as any as S.Schema<PrivateZone>;
 
 /** The PrivateZone items on this page */
-export type PrivateZoneListResultValueList = ReadonlyArray<PrivateZone>;
+export type PrivateZoneListResultValueList = Array<PrivateZone>;
 export const PrivateZoneListResultValueList = /*@__PURE__*/ S.Array(
   PrivateZone,
 ) as any as S.Schema<PrivateZoneListResultValueList>;
@@ -522,7 +522,7 @@ export const ARecord = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ARecord" }) as any as S.Schema<ARecord>;
 
 /** The list of A records in the record set. */
-export type RecordSetPropertiesInputARecordsList = ReadonlyArray<ARecord>;
+export type RecordSetPropertiesInputARecordsList = Array<ARecord>;
 export const RecordSetPropertiesInputARecordsList = /*@__PURE__*/ S.Array(
   ARecord,
 ) as any as S.Schema<RecordSetPropertiesInputARecordsList>;
@@ -539,7 +539,7 @@ export const AaaaRecord = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AaaaRecord" }) as any as S.Schema<AaaaRecord>;
 
 /** The list of AAAA records in the record set. */
-export type RecordSetPropertiesInputAaaaRecordsList = ReadonlyArray<AaaaRecord>;
+export type RecordSetPropertiesInputAaaaRecordsList = Array<AaaaRecord>;
 export const RecordSetPropertiesInputAaaaRecordsList = /*@__PURE__*/ S.Array(
   AaaaRecord,
 ) as any as S.Schema<RecordSetPropertiesInputAaaaRecordsList>;
@@ -570,7 +570,7 @@ export const MxRecord = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MxRecord" }) as any as S.Schema<MxRecord>;
 
 /** The list of MX records in the record set. */
-export type RecordSetPropertiesInputMxRecordsList = ReadonlyArray<MxRecord>;
+export type RecordSetPropertiesInputMxRecordsList = Array<MxRecord>;
 export const RecordSetPropertiesInputMxRecordsList = /*@__PURE__*/ S.Array(
   MxRecord,
 ) as any as S.Schema<RecordSetPropertiesInputMxRecordsList>;
@@ -587,7 +587,7 @@ export const PtrRecord = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PtrRecord" }) as any as S.Schema<PtrRecord>;
 
 /** The list of PTR records in the record set. */
-export type RecordSetPropertiesInputPtrRecordsList = ReadonlyArray<PtrRecord>;
+export type RecordSetPropertiesInputPtrRecordsList = Array<PtrRecord>;
 export const RecordSetPropertiesInputPtrRecordsList = /*@__PURE__*/ S.Array(
   PtrRecord,
 ) as any as S.Schema<RecordSetPropertiesInputPtrRecordsList>;
@@ -642,13 +642,13 @@ export const SrvRecord = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SrvRecord" }) as any as S.Schema<SrvRecord>;
 
 /** The list of SRV records in the record set. */
-export type RecordSetPropertiesInputSrvRecordsList = ReadonlyArray<SrvRecord>;
+export type RecordSetPropertiesInputSrvRecordsList = Array<SrvRecord>;
 export const RecordSetPropertiesInputSrvRecordsList = /*@__PURE__*/ S.Array(
   SrvRecord,
 ) as any as S.Schema<RecordSetPropertiesInputSrvRecordsList>;
 
 /** The text value of this TXT record. */
-export type TxtRecordValueList = ReadonlyArray<string>;
+export type TxtRecordValueList = Array<string>;
 export const TxtRecordValueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<TxtRecordValueList>;
@@ -665,7 +665,7 @@ export const TxtRecord = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TxtRecord" }) as any as S.Schema<TxtRecord>;
 
 /** The list of TXT records in the record set. */
-export type RecordSetPropertiesInputTxtRecordsList = ReadonlyArray<TxtRecord>;
+export type RecordSetPropertiesInputTxtRecordsList = Array<TxtRecord>;
 export const RecordSetPropertiesInputTxtRecordsList = /*@__PURE__*/ S.Array(
   TxtRecord,
 ) as any as S.Schema<RecordSetPropertiesInputTxtRecordsList>;
@@ -757,37 +757,37 @@ export const RecordSetPropertiesMetadataMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<RecordSetPropertiesMetadataMap>;
 
 /** The list of A records in the record set. */
-export type RecordSetPropertiesARecordsList = ReadonlyArray<ARecord>;
+export type RecordSetPropertiesARecordsList = Array<ARecord>;
 export const RecordSetPropertiesARecordsList = /*@__PURE__*/ S.Array(
   ARecord,
 ) as any as S.Schema<RecordSetPropertiesARecordsList>;
 
 /** The list of AAAA records in the record set. */
-export type RecordSetPropertiesAaaaRecordsList = ReadonlyArray<AaaaRecord>;
+export type RecordSetPropertiesAaaaRecordsList = Array<AaaaRecord>;
 export const RecordSetPropertiesAaaaRecordsList = /*@__PURE__*/ S.Array(
   AaaaRecord,
 ) as any as S.Schema<RecordSetPropertiesAaaaRecordsList>;
 
 /** The list of MX records in the record set. */
-export type RecordSetPropertiesMxRecordsList = ReadonlyArray<MxRecord>;
+export type RecordSetPropertiesMxRecordsList = Array<MxRecord>;
 export const RecordSetPropertiesMxRecordsList = /*@__PURE__*/ S.Array(
   MxRecord,
 ) as any as S.Schema<RecordSetPropertiesMxRecordsList>;
 
 /** The list of PTR records in the record set. */
-export type RecordSetPropertiesPtrRecordsList = ReadonlyArray<PtrRecord>;
+export type RecordSetPropertiesPtrRecordsList = Array<PtrRecord>;
 export const RecordSetPropertiesPtrRecordsList = /*@__PURE__*/ S.Array(
   PtrRecord,
 ) as any as S.Schema<RecordSetPropertiesPtrRecordsList>;
 
 /** The list of SRV records in the record set. */
-export type RecordSetPropertiesSrvRecordsList = ReadonlyArray<SrvRecord>;
+export type RecordSetPropertiesSrvRecordsList = Array<SrvRecord>;
 export const RecordSetPropertiesSrvRecordsList = /*@__PURE__*/ S.Array(
   SrvRecord,
 ) as any as S.Schema<RecordSetPropertiesSrvRecordsList>;
 
 /** The list of TXT records in the record set. */
-export type RecordSetPropertiesTxtRecordsList = ReadonlyArray<TxtRecord>;
+export type RecordSetPropertiesTxtRecordsList = Array<TxtRecord>;
 export const RecordSetPropertiesTxtRecordsList = /*@__PURE__*/ S.Array(
   TxtRecord,
 ) as any as S.Schema<RecordSetPropertiesTxtRecordsList>;
@@ -1043,7 +1043,7 @@ export const RecordSet = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RecordSet" }) as any as S.Schema<RecordSet>;
 
 /** The RecordSet items on this page */
-export type RecordSetListResultValueList = ReadonlyArray<RecordSet>;
+export type RecordSetListResultValueList = Array<RecordSet>;
 export const RecordSetListResultValueList = /*@__PURE__*/ S.Array(
   RecordSet,
 ) as any as S.Schema<RecordSetListResultValueList>;
@@ -1519,8 +1519,7 @@ export const VirtualNetworkLink = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VirtualNetworkLink>;
 
 /** The VirtualNetworkLink items on this page */
-export type VirtualNetworkLinkListResultValueList =
-  ReadonlyArray<VirtualNetworkLink>;
+export type VirtualNetworkLinkListResultValueList = Array<VirtualNetworkLink>;
 export const VirtualNetworkLinkListResultValueList = /*@__PURE__*/ S.Array(
   VirtualNetworkLink,
 ) as any as S.Schema<VirtualNetworkLinkListResultValueList>;

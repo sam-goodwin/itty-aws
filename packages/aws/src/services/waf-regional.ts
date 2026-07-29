@@ -245,7 +245,7 @@ export const MatchFieldType = /*@__PURE__*/ S.String;
 
 export type MatchFieldData = string;
 export interface FieldToMatch {
-  Type: MatchFieldType;
+  Type: MatchFieldType | (string & {});
   Data?: string;
 }
 export const FieldToMatch = /*@__PURE__*/ S.suspend(() =>
@@ -272,8 +272,8 @@ export const PositionalConstraint = /*@__PURE__*/ S.String;
 export interface ByteMatchTuple {
   FieldToMatch: FieldToMatch;
   TargetString: Uint8Array;
-  TextTransformation: TextTransformation;
-  PositionalConstraint: PositionalConstraint;
+  TextTransformation: TextTransformation | (string & {});
+  PositionalConstraint: PositionalConstraint | (string & {});
 }
 export const ByteMatchTuple = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -584,8 +584,8 @@ export type GeoMatchConstraintValue =
 export const GeoMatchConstraintValue = /*@__PURE__*/ S.String;
 
 export interface GeoMatchConstraint {
-  Type: GeoMatchConstraintType;
-  Value: GeoMatchConstraintValue;
+  Type: GeoMatchConstraintType | (string & {});
+  Value: GeoMatchConstraintValue | (string & {});
 }
 export const GeoMatchConstraint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Type: GeoMatchConstraintType, Value: GeoMatchConstraintValue }),
@@ -642,7 +642,7 @@ export const IPSetDescriptorType = /*@__PURE__*/ S.String;
 
 export type IPSetDescriptorValue = string;
 export interface IPSetDescriptor {
-  Type: IPSetDescriptorType;
+  Type: IPSetDescriptorType | (string & {});
   Value: string;
 }
 export const IPSetDescriptor = /*@__PURE__*/ S.suspend(() =>
@@ -735,7 +735,7 @@ export const PredicateType = /*@__PURE__*/ S.String;
 
 export interface Predicate {
   Negated: boolean;
-  Type: PredicateType;
+  Type: PredicateType | (string & {});
   DataId: string;
 }
 export const Predicate = /*@__PURE__*/ S.suspend(() =>
@@ -794,7 +794,7 @@ export const CreateRegexMatchSetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateRegexMatchSetRequest>;
 export interface RegexMatchTuple {
   FieldToMatch: FieldToMatch;
-  TextTransformation: TextTransformation;
+  TextTransformation: TextTransformation | (string & {});
   RegexPatternSetId: string;
 }
 export const RegexMatchTuple = /*@__PURE__*/ S.suspend(() =>
@@ -1006,8 +1006,8 @@ export const ComparisonOperator = /*@__PURE__*/ S.String;
 export type Size = number;
 export interface SizeConstraint {
   FieldToMatch: FieldToMatch;
-  TextTransformation: TextTransformation;
-  ComparisonOperator: ComparisonOperator;
+  TextTransformation: TextTransformation | (string & {});
+  ComparisonOperator: ComparisonOperator | (string & {});
   Size: number;
 }
 export const SizeConstraint = /*@__PURE__*/ S.suspend(() =>
@@ -1067,7 +1067,7 @@ export const CreateSqlInjectionMatchSetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateSqlInjectionMatchSetRequest>;
 export interface SqlInjectionMatchTuple {
   FieldToMatch: FieldToMatch;
-  TextTransformation: TextTransformation;
+  TextTransformation: TextTransformation | (string & {});
 }
 export const SqlInjectionMatchTuple = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1111,7 +1111,7 @@ export type WafActionType = "BLOCK" | "ALLOW" | "COUNT";
 export const WafActionType = /*@__PURE__*/ S.String;
 
 export interface WafAction {
-  Type: WafActionType;
+  Type: WafActionType | (string & {});
 }
 export const WafAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Type: WafActionType }),
@@ -1149,7 +1149,7 @@ export type WafOverrideActionType = "NONE" | "COUNT";
 export const WafOverrideActionType = /*@__PURE__*/ S.String;
 
 export interface WafOverrideAction {
-  Type: WafOverrideActionType;
+  Type: WafOverrideActionType | (string & {});
 }
 export const WafOverrideAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Type: WafOverrideActionType }),
@@ -1172,7 +1172,7 @@ export interface ActivatedRule {
   RuleId: string;
   Action?: WafAction;
   OverrideAction?: WafOverrideAction;
-  Type?: WafRuleType;
+  Type?: WafRuleType | (string & {});
   ExcludedRules?: ExcludedRule[];
 }
 export const ActivatedRule = /*@__PURE__*/ S.suspend(() =>
@@ -1273,7 +1273,7 @@ export const CreateXssMatchSetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateXssMatchSetRequest>;
 export interface XssMatchTuple {
   FieldToMatch: FieldToMatch;
-  TextTransformation: TextTransformation;
+  TextTransformation: TextTransformation | (string & {});
 }
 export const XssMatchTuple = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

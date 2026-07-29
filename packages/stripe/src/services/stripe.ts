@@ -444,7 +444,7 @@ export const AccountBusinessProfileMinorityOwnedBusinessDesignationItem =
 
 /** Whether the business is a minority-owned, women-owned, and/or LGBTQI+ -owned business. */
 export type AccountBusinessProfileMinorityOwnedBusinessDesignationList =
-  ReadonlyArray<AccountBusinessProfileMinorityOwnedBusinessDesignationItem>;
+  Array<AccountBusinessProfileMinorityOwnedBusinessDesignationItem>;
 export const AccountBusinessProfileMinorityOwnedBusinessDesignationList =
   /*@__PURE__*/ S.Array(
     AccountBusinessProfileMinorityOwnedBusinessDesignationItem,
@@ -1360,7 +1360,7 @@ export const FileLink = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FileLink" }) as any as S.Schema<FileLink>;
 
 /** Details about each object. */
-export type FileLinksDataList = ReadonlyArray<FileLink>;
+export type FileLinksDataList = Array<FileLink>;
 export const FileLinksDataList = /*@__PURE__*/ S.Array(
   FileLink,
 ) as any as S.Schema<FileLinksDataList>;
@@ -1693,7 +1693,7 @@ export const BankAccountAvailablePayoutMethodsItem = /*@__PURE__*/ S.String;
 
 /** A set of available payout methods for this bank account. Only values from this set should be passed as the `method` when creating a payout. */
 export type BankAccountAvailablePayoutMethodsList =
-  ReadonlyArray<BankAccountAvailablePayoutMethodsItem>;
+  Array<BankAccountAvailablePayoutMethodsItem>;
 export const BankAccountAvailablePayoutMethodsList = /*@__PURE__*/ S.Array(
   BankAccountAvailablePayoutMethodsItem,
 ) as any as S.Schema<BankAccountAvailablePayoutMethodsList>;
@@ -1704,7 +1704,7 @@ export const BankAccountCustomer =
   /*@__PURE__*/ S.Unknown as any as S.Schema<BankAccountCustomer>;
 
 /** Fields that need to be resolved to keep the external account enabled. If not resolved by `current_deadline`, these fields will appear in `past_due` as well, and the account is disabled. */
-export type ExternalAccountRequirementsCurrentlyDueList = ReadonlyArray<string>;
+export type ExternalAccountRequirementsCurrentlyDueList = Array<string>;
 export const ExternalAccountRequirementsCurrentlyDueList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1831,20 +1831,19 @@ export const AccountRequirementsError = /*@__PURE__*/ S.suspend(() =>
 
 /** Details about validation and verification failures for `due` requirements that must be resolved. */
 export type ExternalAccountRequirementsErrorsList =
-  ReadonlyArray<AccountRequirementsError>;
+  Array<AccountRequirementsError>;
 export const ExternalAccountRequirementsErrorsList = /*@__PURE__*/ S.Array(
   AccountRequirementsError,
 ) as any as S.Schema<ExternalAccountRequirementsErrorsList>;
 
 /** Fields that haven't been resolved by `current_deadline`. These fields need to be resolved to enable the external account. */
-export type ExternalAccountRequirementsPastDueList = ReadonlyArray<string>;
+export type ExternalAccountRequirementsPastDueList = Array<string>;
 export const ExternalAccountRequirementsPastDueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ExternalAccountRequirementsPastDueList>;
 
 /** Fields that are being reviewed, or might become required depending on the results of a review. If the review fails, these fields can move to `eventually_due`, `currently_due`, `past_due` or `alternatives`. Fields might appear in `eventually_due`, `currently_due`, `past_due` or `alternatives` and in `pending_verification` if one verification fails but another is still pending. */
-export type ExternalAccountRequirementsPendingVerificationList =
-  ReadonlyArray<string>;
+export type ExternalAccountRequirementsPendingVerificationList = Array<string>;
 export const ExternalAccountRequirementsPendingVerificationList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1964,7 +1963,7 @@ export const CardAvailablePayoutMethodsItem = /*@__PURE__*/ S.String;
 
 /** A set of available payout methods for this card. Only values from this set should be passed as the `method` when creating a payout. */
 export type CardAvailablePayoutMethodsList =
-  ReadonlyArray<CardAvailablePayoutMethodsItem>;
+  Array<CardAvailablePayoutMethodsItem>;
 export const CardAvailablePayoutMethodsList = /*@__PURE__*/ S.Array(
   CardAvailablePayoutMethodsItem,
 ) as any as S.Schema<CardAvailablePayoutMethodsList>;
@@ -2255,7 +2254,7 @@ export const ExternalAccount = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExternalAccount>;
 
 /** The list contains all external accounts that have been attached to the Stripe account. These may be bank accounts or cards. */
-export type AccountExternalAccountsDataList = ReadonlyArray<ExternalAccount>;
+export type AccountExternalAccountsDataList = Array<ExternalAccount>;
 export const AccountExternalAccountsDataList = /*@__PURE__*/ S.Array(
   ExternalAccount,
 ) as any as S.Schema<AccountExternalAccountsDataList>;
@@ -2288,15 +2287,14 @@ export const AccountExternalAccounts = /*@__PURE__*/ S.suspend(() =>
 
 /** Fields that can be provided to resolve all fields in `original_fields_due`. */
 export type AccountRequirementsAlternativeAlternativeFieldsDueList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const AccountRequirementsAlternativeAlternativeFieldsDueList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AccountRequirementsAlternativeAlternativeFieldsDueList>;
 
 /** Fields that are due and can be resolved by providing all fields in `alternative_fields_due`. */
-export type AccountRequirementsAlternativeOriginalFieldsDueList =
-  ReadonlyArray<string>;
+export type AccountRequirementsAlternativeOriginalFieldsDueList = Array<string>;
 export const AccountRequirementsAlternativeOriginalFieldsDueList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2320,13 +2318,13 @@ export const AccountRequirementsAlternative = /*@__PURE__*/ S.suspend(() =>
 
 /** Fields that are due and can be resolved by providing the corresponding alternative fields instead. Many alternatives can list the same `original_fields_due`, and any of these alternatives can serve as a pathway for attempting to resolve the fields again. Re-providing `original_fields_due` also serves as a pathway for attempting to resolve the fields again. */
 export type AccountFutureRequirementsAlternativesList =
-  ReadonlyArray<AccountRequirementsAlternative>;
+  Array<AccountRequirementsAlternative>;
 export const AccountFutureRequirementsAlternativesList = /*@__PURE__*/ S.Array(
   AccountRequirementsAlternative,
 ) as any as S.Schema<AccountFutureRequirementsAlternativesList>;
 
 /** Fields that need to be resolved to keep the account enabled. If not resolved by `future_requirements[current_deadline]`, these fields will transition to the main `requirements` hash. */
-export type AccountFutureRequirementsCurrentlyDueList = ReadonlyArray<string>;
+export type AccountFutureRequirementsCurrentlyDueList = Array<string>;
 export const AccountFutureRequirementsCurrentlyDueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AccountFutureRequirementsCurrentlyDueList>;
@@ -2352,26 +2350,25 @@ export const AccountFutureRequirementsDisabledReason = /*@__PURE__*/ S.String;
 
 /** Details about validation and verification failures for `due` requirements that must be resolved. */
 export type AccountFutureRequirementsErrorsList =
-  ReadonlyArray<AccountRequirementsError>;
+  Array<AccountRequirementsError>;
 export const AccountFutureRequirementsErrorsList = /*@__PURE__*/ S.Array(
   AccountRequirementsError,
 ) as any as S.Schema<AccountFutureRequirementsErrorsList>;
 
 /** Fields you must collect when all thresholds are reached. As they become required, they appear in `currently_due` as well. */
-export type AccountFutureRequirementsEventuallyDueList = ReadonlyArray<string>;
+export type AccountFutureRequirementsEventuallyDueList = Array<string>;
 export const AccountFutureRequirementsEventuallyDueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AccountFutureRequirementsEventuallyDueList>;
 
 /** Fields that haven't been resolved by `requirements.current_deadline`. These fields need to be resolved to enable the capability on the account. `future_requirements.past_due` is a subset of `requirements.past_due`. */
-export type AccountFutureRequirementsPastDueList = ReadonlyArray<string>;
+export type AccountFutureRequirementsPastDueList = Array<string>;
 export const AccountFutureRequirementsPastDueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AccountFutureRequirementsPastDueList>;
 
 /** Fields that are being reviewed, or might become required depending on the results of a review. If the review fails, these fields can move to `eventually_due`, `currently_due`, `past_due` or `alternatives`. Fields might appear in `eventually_due`, `currently_due`, `past_due` or `alternatives` and in `pending_verification` if one verification fails but another is still pending. */
-export type AccountFutureRequirementsPendingVerificationList =
-  ReadonlyArray<string>;
+export type AccountFutureRequirementsPendingVerificationList = Array<string>;
 export const AccountFutureRequirementsPendingVerificationList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2471,46 +2468,45 @@ export const LegalEntityDob = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LegalEntityDob" }) as any as S.Schema<LegalEntityDob>;
 
 /** A list of alternate names or aliases that the person is known by. Also available for accounts where [controller.requirement_collection](/api/accounts/object#account_object-controller-requirement_collection) is `stripe`. */
-export type PersonFullNameAliasesList = ReadonlyArray<string>;
+export type PersonFullNameAliasesList = Array<string>;
 export const PersonFullNameAliasesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PersonFullNameAliasesList>;
 
 /** Fields that are due and can be resolved by providing the corresponding alternative fields instead. Many alternatives can list the same `original_fields_due`, and any of these alternatives can serve as a pathway for attempting to resolve the fields again. Re-providing `original_fields_due` also serves as a pathway for attempting to resolve the fields again. */
 export type PersonFutureRequirementsAlternativesList =
-  ReadonlyArray<AccountRequirementsAlternative>;
+  Array<AccountRequirementsAlternative>;
 export const PersonFutureRequirementsAlternativesList = /*@__PURE__*/ S.Array(
   AccountRequirementsAlternative,
 ) as any as S.Schema<PersonFutureRequirementsAlternativesList>;
 
 /** Fields that need to be resolved to keep the person's account enabled. If not resolved by the account's `future_requirements[current_deadline]`, these fields will transition to the main `requirements` hash, and may immediately become `past_due`, but the account may also be given a grace period depending on the account's enablement state prior to transition. */
-export type PersonFutureRequirementsCurrentlyDueList = ReadonlyArray<string>;
+export type PersonFutureRequirementsCurrentlyDueList = Array<string>;
 export const PersonFutureRequirementsCurrentlyDueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PersonFutureRequirementsCurrentlyDueList>;
 
 /** Details about validation and verification failures for `due` requirements that must be resolved. */
 export type PersonFutureRequirementsErrorsList =
-  ReadonlyArray<AccountRequirementsError>;
+  Array<AccountRequirementsError>;
 export const PersonFutureRequirementsErrorsList = /*@__PURE__*/ S.Array(
   AccountRequirementsError,
 ) as any as S.Schema<PersonFutureRequirementsErrorsList>;
 
 /** Fields you must collect when all thresholds are reached. As they become required, they appear in `currently_due` as well, and the account's `future_requirements[current_deadline]` becomes set. */
-export type PersonFutureRequirementsEventuallyDueList = ReadonlyArray<string>;
+export type PersonFutureRequirementsEventuallyDueList = Array<string>;
 export const PersonFutureRequirementsEventuallyDueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PersonFutureRequirementsEventuallyDueList>;
 
 /** Fields that haven't been resolved by the account's `requirements.current_deadline`. These fields need to be resolved to enable the person's account. `future_requirements.past_due` is a subset of `requirements.past_due`. */
-export type PersonFutureRequirementsPastDueList = ReadonlyArray<string>;
+export type PersonFutureRequirementsPastDueList = Array<string>;
 export const PersonFutureRequirementsPastDueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PersonFutureRequirementsPastDueList>;
 
 /** Fields that are being reviewed, or might become required depending on the results of a review. If the review fails, these fields can move to `eventually_due`, `currently_due`, `past_due` or `alternatives`. Fields might appear in `eventually_due`, `currently_due`, `past_due` or `alternatives` and in `pending_verification` if one verification fails but another is still pending. */
-export type PersonFutureRequirementsPendingVerificationList =
-  ReadonlyArray<string>;
+export type PersonFutureRequirementsPendingVerificationList = Array<string>;
 export const PersonFutureRequirementsPendingVerificationList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2593,38 +2589,37 @@ export const PersonRelationship = /*@__PURE__*/ S.suspend(() =>
 
 /** Fields that are due and can be resolved by providing the corresponding alternative fields instead. Many alternatives can list the same `original_fields_due`, and any of these alternatives can serve as a pathway for attempting to resolve the fields again. Re-providing `original_fields_due` also serves as a pathway for attempting to resolve the fields again. */
 export type PersonRequirementsAlternativesList =
-  ReadonlyArray<AccountRequirementsAlternative>;
+  Array<AccountRequirementsAlternative>;
 export const PersonRequirementsAlternativesList = /*@__PURE__*/ S.Array(
   AccountRequirementsAlternative,
 ) as any as S.Schema<PersonRequirementsAlternativesList>;
 
 /** Fields that need to be resolved to keep the person's account enabled. If not resolved by the account's `current_deadline`, these fields will appear in `past_due` as well, and the account is disabled. */
-export type PersonRequirementsCurrentlyDueList = ReadonlyArray<string>;
+export type PersonRequirementsCurrentlyDueList = Array<string>;
 export const PersonRequirementsCurrentlyDueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PersonRequirementsCurrentlyDueList>;
 
 /** Details about validation and verification failures for `due` requirements that must be resolved. */
-export type PersonRequirementsErrorsList =
-  ReadonlyArray<AccountRequirementsError>;
+export type PersonRequirementsErrorsList = Array<AccountRequirementsError>;
 export const PersonRequirementsErrorsList = /*@__PURE__*/ S.Array(
   AccountRequirementsError,
 ) as any as S.Schema<PersonRequirementsErrorsList>;
 
 /** Fields you must collect when all thresholds are reached. As they become required, they appear in `currently_due` as well, and the account's `current_deadline` becomes set. */
-export type PersonRequirementsEventuallyDueList = ReadonlyArray<string>;
+export type PersonRequirementsEventuallyDueList = Array<string>;
 export const PersonRequirementsEventuallyDueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PersonRequirementsEventuallyDueList>;
 
 /** Fields that haven't been resolved by `current_deadline`. These fields need to be resolved to enable the person's account. */
-export type PersonRequirementsPastDueList = ReadonlyArray<string>;
+export type PersonRequirementsPastDueList = Array<string>;
 export const PersonRequirementsPastDueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PersonRequirementsPastDueList>;
 
 /** Fields that are being reviewed, or might become required depending on the results of a review. If the review fails, these fields can move to `eventually_due`, `currently_due`, `past_due` or `alternatives`. Fields might appear in `eventually_due`, `currently_due`, `past_due` or `alternatives` and in `pending_verification` if one verification fails but another is still pending. */
-export type PersonRequirementsPendingVerificationList = ReadonlyArray<string>;
+export type PersonRequirementsPendingVerificationList = Array<string>;
 export const PersonRequirementsPendingVerificationList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PersonRequirementsPendingVerificationList>;
@@ -2668,7 +2663,7 @@ export const PersonEthnicityDetailsEthnicityItem = /*@__PURE__*/ S.String;
 
 /** The persons ethnicity */
 export type PersonEthnicityDetailsEthnicityList =
-  ReadonlyArray<PersonEthnicityDetailsEthnicityItem>;
+  Array<PersonEthnicityDetailsEthnicityItem>;
 export const PersonEthnicityDetailsEthnicityList = /*@__PURE__*/ S.Array(
   PersonEthnicityDetailsEthnicityItem,
 ) as any as S.Schema<PersonEthnicityDetailsEthnicityList>;
@@ -2716,8 +2711,7 @@ export type PersonRaceDetailsRaceItem =
 export const PersonRaceDetailsRaceItem = /*@__PURE__*/ S.String;
 
 /** The persons race. */
-export type PersonRaceDetailsRaceList =
-  ReadonlyArray<PersonRaceDetailsRaceItem>;
+export type PersonRaceDetailsRaceList = Array<PersonRaceDetailsRaceItem>;
 export const PersonRaceDetailsRaceList = /*@__PURE__*/ S.Array(
   PersonRaceDetailsRaceItem,
 ) as any as S.Schema<PersonRaceDetailsRaceList>;
@@ -2923,13 +2917,13 @@ export const AccountObject = /*@__PURE__*/ S.String;
 
 /** Fields that are due and can be resolved by providing the corresponding alternative fields instead. Many alternatives can list the same `original_fields_due`, and any of these alternatives can serve as a pathway for attempting to resolve the fields again. Re-providing `original_fields_due` also serves as a pathway for attempting to resolve the fields again. */
 export type AccountRequirementsAlternativesList =
-  ReadonlyArray<AccountRequirementsAlternative>;
+  Array<AccountRequirementsAlternative>;
 export const AccountRequirementsAlternativesList = /*@__PURE__*/ S.Array(
   AccountRequirementsAlternative,
 ) as any as S.Schema<AccountRequirementsAlternativesList>;
 
 /** Fields that need to be resolved to keep the account enabled. If not resolved by `current_deadline`, these fields will appear in `past_due` as well, and the account is disabled. */
-export type AccountRequirementsCurrentlyDueList = ReadonlyArray<string>;
+export type AccountRequirementsCurrentlyDueList = Array<string>;
 export const AccountRequirementsCurrentlyDueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AccountRequirementsCurrentlyDueList>;
@@ -2954,26 +2948,25 @@ export type AccountRequirementsDisabledReason =
 export const AccountRequirementsDisabledReason = /*@__PURE__*/ S.String;
 
 /** Details about validation and verification failures for `due` requirements that must be resolved. */
-export type AccountRequirementsErrorsList =
-  ReadonlyArray<AccountRequirementsError>;
+export type AccountRequirementsErrorsList = Array<AccountRequirementsError>;
 export const AccountRequirementsErrorsList = /*@__PURE__*/ S.Array(
   AccountRequirementsError,
 ) as any as S.Schema<AccountRequirementsErrorsList>;
 
 /** Fields you must collect when all thresholds are reached. As they become required, they appear in `currently_due` as well, and `current_deadline` becomes set. */
-export type AccountRequirementsEventuallyDueList = ReadonlyArray<string>;
+export type AccountRequirementsEventuallyDueList = Array<string>;
 export const AccountRequirementsEventuallyDueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AccountRequirementsEventuallyDueList>;
 
 /** Fields that haven't been resolved by `current_deadline`. These fields need to be resolved to enable the account. */
-export type AccountRequirementsPastDueList = ReadonlyArray<string>;
+export type AccountRequirementsPastDueList = Array<string>;
 export const AccountRequirementsPastDueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AccountRequirementsPastDueList>;
 
 /** Fields that are being reviewed, or might become required depending on the results of a review. If the review fails, these fields can move to `eventually_due`, `currently_due`, `past_due` or `alternatives`. Fields might appear in `eventually_due`, `currently_due`, `past_due` or `alternatives` and in `pending_verification` if one verification fails but another is still pending. */
-export type AccountRequirementsPendingVerificationList = ReadonlyArray<string>;
+export type AccountRequirementsPendingVerificationList = Array<string>;
 export const AccountRequirementsPendingVerificationList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AccountRequirementsPendingVerificationList>;
@@ -3400,7 +3393,7 @@ export const AccountInvoicesSettingsDefaultAccountTaxIdsItem =
 
 /** The list of default Account Tax IDs to automatically include on invoices. Account Tax IDs get added when an invoice is finalized. */
 export type AccountInvoicesSettingsDefaultAccountTaxIdsList =
-  ReadonlyArray<AccountInvoicesSettingsDefaultAccountTaxIdsItem>;
+  Array<AccountInvoicesSettingsDefaultAccountTaxIdsItem>;
 export const AccountInvoicesSettingsDefaultAccountTaxIdsList =
   /*@__PURE__*/ S.Array(
     AccountInvoicesSettingsDefaultAccountTaxIdsItem,
@@ -3458,7 +3451,7 @@ export const AccountPaymentsSettings = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccountPaymentsSettings>;
 
 /** The days of the month funds will be paid out. Only shown if `interval` is monthly. Payouts scheduled between the 29th and 31st of the month are sent on the last day of shorter months. */
-export type TransferScheduleMonthlyPayoutDaysList = ReadonlyArray<number>;
+export type TransferScheduleMonthlyPayoutDaysList = Array<number>;
 export const TransferScheduleMonthlyPayoutDaysList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<TransferScheduleMonthlyPayoutDaysList>;
@@ -3473,7 +3466,7 @@ export const TransferScheduleWeeklyPayoutDaysItem = /*@__PURE__*/ S.String;
 
 /** The days of the week when available funds are paid out, specified as an array, for example, [`monday`, `tuesday`]. Only shown if `interval` is weekly. */
 export type TransferScheduleWeeklyPayoutDaysList =
-  ReadonlyArray<TransferScheduleWeeklyPayoutDaysItem>;
+  Array<TransferScheduleWeeklyPayoutDaysItem>;
 export const TransferScheduleWeeklyPayoutDaysList = /*@__PURE__*/ S.Array(
   TransferScheduleWeeklyPayoutDaysItem,
 ) as any as S.Schema<TransferScheduleWeeklyPayoutDaysList>;
@@ -4273,7 +4266,7 @@ export const SourceOrderItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SourceOrderItem>;
 
 /** List of items constituting the order. */
-export type SourceOrderItemsList = ReadonlyArray<SourceOrderItem>;
+export type SourceOrderItemsList = Array<SourceOrderItem>;
 export const SourceOrderItemsList = /*@__PURE__*/ S.Array(
   SourceOrderItem,
 ) as any as S.Schema<SourceOrderItemsList>;
@@ -4817,7 +4810,7 @@ export type PromotionCodeObject = "promotion_code";
 export const PromotionCodeObject = /*@__PURE__*/ S.String;
 
 /** A list of product IDs this coupon applies to */
-export type CouponAppliesToProductsList = ReadonlyArray<string>;
+export type CouponAppliesToProductsList = Array<string>;
 export const CouponAppliesToProductsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CouponAppliesToProductsList>;
@@ -5144,7 +5137,7 @@ export const InvoiceSettingCustomField = /*@__PURE__*/ S.suspend(() =>
 
 /** Default custom fields to be displayed on invoices for this customer. */
 export type InvoiceSettingCustomerSettingCustomFieldsList =
-  ReadonlyArray<InvoiceSettingCustomField>;
+  Array<InvoiceSettingCustomField>;
 export const InvoiceSettingCustomerSettingCustomFieldsList =
   /*@__PURE__*/ S.Array(
     InvoiceSettingCustomField,
@@ -5312,8 +5305,7 @@ export const PaymentMethodDetailsCardPresentOffline = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PaymentMethodDetailsCardPresentOffline>;
 
 /** The languages that the issuing bank recommends using for localizing any customer-facing text, as read from the card. Referenced from EMV tag 5F2D, data encoded on the card's chip. */
-export type PaymentMethodDetailsCardPresentPreferredLocalesList =
-  ReadonlyArray<string>;
+export type PaymentMethodDetailsCardPresentPreferredLocalesList = Array<string>;
 export const PaymentMethodDetailsCardPresentPreferredLocalesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5521,7 +5513,7 @@ export const SetupAttemptFlowDirectionsItem = /*@__PURE__*/ S.String;
 
 /** Indicates the directions of money movement for which this payment method is intended to be used. Include `inbound` if you intend to use the payment method as the origin to pull funds from. Include `outbound` if you intend to use the payment method as the destination to send funds to. You can include both if you intend to use the payment method for both purposes. */
 export type SetupAttemptFlowDirectionsList =
-  ReadonlyArray<SetupAttemptFlowDirectionsItem>;
+  Array<SetupAttemptFlowDirectionsItem>;
 export const SetupAttemptFlowDirectionsList = /*@__PURE__*/ S.Array(
   SetupAttemptFlowDirectionsItem,
 ) as any as S.Schema<SetupAttemptFlowDirectionsList>;
@@ -5614,7 +5606,7 @@ export const MandateAcssDebitDefaultForItem = /*@__PURE__*/ S.String;
 
 /** List of Stripe products where this mandate can be selected automatically. */
 export type MandateAcssDebitDefaultForList =
-  ReadonlyArray<MandateAcssDebitDefaultForItem>;
+  Array<MandateAcssDebitDefaultForItem>;
 export const MandateAcssDebitDefaultForList = /*@__PURE__*/ S.Array(
   MandateAcssDebitDefaultForItem,
 ) as any as S.Schema<MandateAcssDebitDefaultForList>;
@@ -6874,7 +6866,7 @@ export const PaymentIntentAmountDetailsLineItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Details about each object. */
 export type PaymentFlowsAmountDetailsLineItemsDataList =
-  ReadonlyArray<PaymentIntentAmountDetailsLineItem>;
+  Array<PaymentIntentAmountDetailsLineItem>;
 export const PaymentFlowsAmountDetailsLineItemsDataList = /*@__PURE__*/ S.Array(
   PaymentIntentAmountDetailsLineItem,
 ) as any as S.Schema<PaymentFlowsAmountDetailsLineItemsDataList>;
@@ -7090,7 +7082,7 @@ export const PaymentIntentExcludedPaymentMethodTypesItem =
 
 /** The list of payment method types to exclude from use with this payment. */
 export type PaymentIntentExcludedPaymentMethodTypesList =
-  ReadonlyArray<PaymentIntentExcludedPaymentMethodTypesItem>;
+  Array<PaymentIntentExcludedPaymentMethodTypesItem>;
 export const PaymentIntentExcludedPaymentMethodTypesList =
   /*@__PURE__*/ S.Array(
     PaymentIntentExcludedPaymentMethodTypesItem,
@@ -7182,7 +7174,7 @@ export const Fee = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Fee" }) as any as S.Schema<Fee>;
 
 /** Detailed breakdown of fees (in cents (or local equivalent)) paid for this transaction. */
-export type BalanceTransactionFeeDetailsList = ReadonlyArray<Fee>;
+export type BalanceTransactionFeeDetailsList = Array<Fee>;
 export const BalanceTransactionFeeDetailsList = /*@__PURE__*/ S.Array(
   Fee,
 ) as any as S.Schema<BalanceTransactionFeeDetailsList>;
@@ -7403,7 +7395,7 @@ export const FeeRefund = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FeeRefund" }) as any as S.Schema<FeeRefund>;
 
 /** Details about each object. */
-export type ApplicationFeeRefundsDataList = ReadonlyArray<FeeRefund>;
+export type ApplicationFeeRefundsDataList = Array<FeeRefund>;
 export const ApplicationFeeRefundsDataList = /*@__PURE__*/ S.Array(
   FeeRefund,
 ) as any as S.Schema<ApplicationFeeRefundsDataList>;
@@ -7542,7 +7534,7 @@ export const Level3LineItems = /*@__PURE__*/ S.suspend(() =>
   identifier: "Level3LineItems",
 }) as any as S.Schema<Level3LineItems>;
 
-export type Level3LineItemsList = ReadonlyArray<Level3LineItems>;
+export type Level3LineItemsList = Array<Level3LineItems>;
 export const Level3LineItemsList = /*@__PURE__*/ S.Array(
   Level3LineItems,
 ) as any as S.Schema<Level3LineItemsList>;
@@ -8686,7 +8678,7 @@ export const PaymentMethodDetailsIdeal = /*@__PURE__*/ S.suspend(() =>
 
 /** The languages that the issuing bank recommends using for localizing any customer-facing text, as read from the card. Referenced from EMV tag 5F2D, data encoded on the card's chip. */
 export type PaymentMethodDetailsInteracPresentPreferredLocalesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PaymentMethodDetailsInteracPresentPreferredLocalesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -9150,8 +9142,7 @@ export const PaymentMethodDetailsPaynow = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PaymentMethodDetailsPaynow>;
 
 /** An array of conditions that are covered for the transaction, if applicable. */
-export type PaypalSellerProtectionDisputeCategoriesList =
-  ReadonlyArray<unknown>;
+export type PaypalSellerProtectionDisputeCategoriesList = Array<unknown>;
 export const PaypalSellerProtectionDisputeCategoriesList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -10300,7 +10291,7 @@ export const Refund = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Refund" }) as any as S.Schema<Refund>;
 
 /** Details about each object. */
-export type ChargeRefundsDataList = ReadonlyArray<Refund>;
+export type ChargeRefundsDataList = Array<Refund>;
 export const ChargeRefundsDataList = /*@__PURE__*/ S.Array(
   Refund,
 ) as any as S.Schema<ChargeRefundsDataList>;
@@ -10885,7 +10876,7 @@ export const FundingInstructionsBankTransferFinancialAddressSupportedNetworksIte
 
 /** The payment networks supported by this FinancialAddress */
 export type FundingInstructionsBankTransferFinancialAddressSupportedNetworksList =
-  ReadonlyArray<FundingInstructionsBankTransferFinancialAddressSupportedNetworksItem>;
+  Array<FundingInstructionsBankTransferFinancialAddressSupportedNetworksItem>;
 export const FundingInstructionsBankTransferFinancialAddressSupportedNetworksList =
   /*@__PURE__*/ S.Array(
     FundingInstructionsBankTransferFinancialAddressSupportedNetworksItem,
@@ -11001,7 +10992,7 @@ export const FundingInstructionsBankTransferFinancialAddress =
 
 /** A list of financial addresses that can be used to fund the customer balance */
 export type PaymentIntentNextActionDisplayBankTransferInstructionsFinancialAddressesList =
-  ReadonlyArray<FundingInstructionsBankTransferFinancialAddress>;
+  Array<FundingInstructionsBankTransferFinancialAddress>;
 export const PaymentIntentNextActionDisplayBankTransferInstructionsFinancialAddressesList =
   /*@__PURE__*/ S.Array(
     FundingInstructionsBankTransferFinancialAddress,
@@ -11995,7 +11986,7 @@ export const PaymentMethodDetailsCardInstallmentsPlan = /*@__PURE__*/ S.suspend(
 
 /** Installment plans that may be selected for this PaymentIntent. */
 export type PaymentMethodOptionsCardInstallmentsAvailablePlansList =
-  ReadonlyArray<PaymentMethodDetailsCardInstallmentsPlan>;
+  Array<PaymentMethodDetailsCardInstallmentsPlan>;
 export const PaymentMethodOptionsCardInstallmentsAvailablePlansList =
   /*@__PURE__*/ S.Array(
     PaymentMethodDetailsCardInstallmentsPlan,
@@ -12045,7 +12036,7 @@ export const PaymentMethodOptionsCardMandateOptionsSupportedTypesItem =
 
 /** Specifies the type of mandates supported. Possible values are `india`. */
 export type PaymentMethodOptionsCardMandateOptionsSupportedTypesList =
-  ReadonlyArray<PaymentMethodOptionsCardMandateOptionsSupportedTypesItem>;
+  Array<PaymentMethodOptionsCardMandateOptionsSupportedTypesItem>;
 export const PaymentMethodOptionsCardMandateOptionsSupportedTypesList =
   /*@__PURE__*/ S.Array(
     PaymentMethodOptionsCardMandateOptionsSupportedTypesItem,
@@ -12338,7 +12329,7 @@ export const PaymentMethodOptionsCustomerBalanceBankTransferRequestedAddressType
 
 /** List of address types that should be returned in the financial_addresses response. If not specified, all valid types will be returned. Permitted values include: `sort_code`, `zengin`, `iban`, or `spei`. */
 export type PaymentMethodOptionsCustomerBalanceBankTransferRequestedAddressTypesList =
-  ReadonlyArray<PaymentMethodOptionsCustomerBalanceBankTransferRequestedAddressTypesItem>;
+  Array<PaymentMethodOptionsCustomerBalanceBankTransferRequestedAddressTypesItem>;
 export const PaymentMethodOptionsCustomerBalanceBankTransferRequestedAddressTypesList =
   /*@__PURE__*/ S.Array(
     PaymentMethodOptionsCustomerBalanceBankTransferRequestedAddressTypesItem,
@@ -13334,7 +13325,7 @@ export const PaymentFlowsPrivatePaymentMethodsFinancialConnectionsCommonLinkedAc
 
 /** The account subcategories to use to filter for possible accounts to link. Valid subcategories are `checking` and `savings`. */
 export type PaymentFlowsPrivatePaymentMethodsFinancialConnectionsCommonLinkedAccountOptionsFiltersAccountSubcategoriesList =
-  ReadonlyArray<PaymentFlowsPrivatePaymentMethodsFinancialConnectionsCommonLinkedAccountOptionsFiltersAccountSubcategoriesItem>;
+  Array<PaymentFlowsPrivatePaymentMethodsFinancialConnectionsCommonLinkedAccountOptionsFiltersAccountSubcategoriesItem>;
 export const PaymentFlowsPrivatePaymentMethodsFinancialConnectionsCommonLinkedAccountOptionsFiltersAccountSubcategoriesList =
   /*@__PURE__*/ S.Array(
     PaymentFlowsPrivatePaymentMethodsFinancialConnectionsCommonLinkedAccountOptionsFiltersAccountSubcategoriesItem,
@@ -13365,7 +13356,7 @@ export const LinkedAccountOptionsCommonPermissionsItem = /*@__PURE__*/ S.String;
 
 /** The list of permissions to request. The `payment_method` permission must be included. */
 export type LinkedAccountOptionsCommonPermissionsList =
-  ReadonlyArray<LinkedAccountOptionsCommonPermissionsItem>;
+  Array<LinkedAccountOptionsCommonPermissionsItem>;
 export const LinkedAccountOptionsCommonPermissionsList = /*@__PURE__*/ S.Array(
   LinkedAccountOptionsCommonPermissionsItem,
 ) as any as S.Schema<LinkedAccountOptionsCommonPermissionsList>;
@@ -13378,7 +13369,7 @@ export const LinkedAccountOptionsCommonPrefetchItem = /*@__PURE__*/ S.String;
 
 /** Data features requested to be retrieved upon account creation. */
 export type LinkedAccountOptionsCommonPrefetchList =
-  ReadonlyArray<LinkedAccountOptionsCommonPrefetchItem>;
+  Array<LinkedAccountOptionsCommonPrefetchItem>;
 export const LinkedAccountOptionsCommonPrefetchList = /*@__PURE__*/ S.Array(
   LinkedAccountOptionsCommonPrefetchItem,
 ) as any as S.Schema<LinkedAccountOptionsCommonPrefetchList>;
@@ -13660,7 +13651,7 @@ export const PaymentIntentPaymentMethodOptions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PaymentIntentPaymentMethodOptions>;
 
 /** The list of payment method types (e.g. card) that this PaymentIntent is allowed to use. A comprehensive list of valid payment method types can be found [here](https://docs.stripe.com/api/payment_methods/object#payment_method_object-type). */
-export type PaymentIntentPaymentMethodTypesList = ReadonlyArray<string>;
+export type PaymentIntentPaymentMethodTypesList = Array<string>;
 export const PaymentIntentPaymentMethodTypesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PaymentIntentPaymentMethodTypesList>;
@@ -14058,7 +14049,7 @@ export const SetupIntentExcludedPaymentMethodTypesItem = /*@__PURE__*/ S.String;
 
 /** Payment method types that are excluded from this SetupIntent. */
 export type SetupIntentExcludedPaymentMethodTypesList =
-  ReadonlyArray<SetupIntentExcludedPaymentMethodTypesItem>;
+  Array<SetupIntentExcludedPaymentMethodTypesItem>;
 export const SetupIntentExcludedPaymentMethodTypesList = /*@__PURE__*/ S.Array(
   SetupIntentExcludedPaymentMethodTypesItem,
 ) as any as S.Schema<SetupIntentExcludedPaymentMethodTypesList>;
@@ -14068,7 +14059,7 @@ export const SetupIntentFlowDirectionsItem = /*@__PURE__*/ S.String;
 
 /** Indicates the directions of money movement for which this payment method is intended to be used. Include `inbound` if you intend to use the payment method as the origin to pull funds from. Include `outbound` if you intend to use the payment method as the destination to send funds to. You can include both if you intend to use the payment method for both purposes. */
 export type SetupIntentFlowDirectionsList =
-  ReadonlyArray<SetupIntentFlowDirectionsItem>;
+  Array<SetupIntentFlowDirectionsItem>;
 export const SetupIntentFlowDirectionsList = /*@__PURE__*/ S.Array(
   SetupIntentFlowDirectionsItem,
 ) as any as S.Schema<SetupIntentFlowDirectionsList>;
@@ -14217,7 +14208,7 @@ export const SetupIntentPaymentMethodOptionsMandateOptionsAcssDebitDefaultForIte
 
 /** List of Stripe products where this mandate can be selected automatically. */
 export type SetupIntentPaymentMethodOptionsMandateOptionsAcssDebitDefaultForList =
-  ReadonlyArray<SetupIntentPaymentMethodOptionsMandateOptionsAcssDebitDefaultForItem>;
+  Array<SetupIntentPaymentMethodOptionsMandateOptionsAcssDebitDefaultForItem>;
 export const SetupIntentPaymentMethodOptionsMandateOptionsAcssDebitDefaultForList =
   /*@__PURE__*/ S.Array(
     SetupIntentPaymentMethodOptionsMandateOptionsAcssDebitDefaultForItem,
@@ -14347,7 +14338,7 @@ export const SetupIntentPaymentMethodOptionsCardMandateOptionsSupportedTypesItem
 
 /** Specifies the type of mandates supported. Possible values are `india`. */
 export type SetupIntentPaymentMethodOptionsCardMandateOptionsSupportedTypesList =
-  ReadonlyArray<SetupIntentPaymentMethodOptionsCardMandateOptionsSupportedTypesItem>;
+  Array<SetupIntentPaymentMethodOptionsCardMandateOptionsSupportedTypesItem>;
 export const SetupIntentPaymentMethodOptionsCardMandateOptionsSupportedTypesList =
   /*@__PURE__*/ S.Array(
     SetupIntentPaymentMethodOptionsCardMandateOptionsSupportedTypesItem,
@@ -14716,7 +14707,7 @@ export const SetupIntentPaymentMethodOptions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SetupIntentPaymentMethodOptions>;
 
 /** The list of payment method types (e.g. card) that this SetupIntent is allowed to set up. A list of valid payment method types can be found [here](https://docs.stripe.com/api/payment_methods/object#payment_method_object-type). */
-export type SetupIntentPaymentMethodTypesList = ReadonlyArray<string>;
+export type SetupIntentPaymentMethodTypesList = Array<string>;
 export const SetupIntentPaymentMethodTypesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SetupIntentPaymentMethodTypesList>;
@@ -14976,7 +14967,7 @@ export const PaymentMethodCardGeneratedCard = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PaymentMethodCardGeneratedCard>;
 
 /** All networks available for selection via [payment_method_options.card.network](/api/payment_intents/confirm#confirm_payment_intent-payment_method_options-card-network). */
-export type NetworksAvailableList = ReadonlyArray<string>;
+export type NetworksAvailableList = Array<string>;
 export const NetworksAvailableList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<NetworksAvailableList>;
@@ -15153,8 +15144,7 @@ export const PaymentMethodCard = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PaymentMethodCard>;
 
 /** All networks available for selection via [payment_method_options.card.network](/api/payment_intents/confirm#confirm_payment_intent-payment_method_options-card-network). */
-export type PaymentMethodCardPresentNetworksAvailableList =
-  ReadonlyArray<string>;
+export type PaymentMethodCardPresentNetworksAvailableList = Array<string>;
 export const PaymentMethodCardPresentNetworksAvailableList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -15176,8 +15166,7 @@ export const PaymentMethodCardPresentNetworks = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PaymentMethodCardPresentNetworks>;
 
 /** The languages that the issuing bank recommends using for localizing any customer-facing text, as read from the card. Referenced from EMV tag 5F2D, data encoded on the card's chip. */
-export type PaymentMethodCardPresentPreferredLocalesList =
-  ReadonlyArray<string>;
+export type PaymentMethodCardPresentPreferredLocalesList = Array<string>;
 export const PaymentMethodCardPresentPreferredLocalesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -15458,8 +15447,7 @@ export const PaymentMethodIdeal = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PaymentMethodIdeal>;
 
 /** The languages that the issuing bank recommends using for localizing any customer-facing text, as read from the card. Referenced from EMV tag 5F2D, data encoded on the card's chip. */
-export type PaymentMethodInteracPresentPreferredLocalesList =
-  ReadonlyArray<string>;
+export type PaymentMethodInteracPresentPreferredLocalesList = Array<string>;
 export const PaymentMethodInteracPresentPreferredLocalesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -15914,7 +15902,7 @@ export const UsBankAccountNetworksSupportedItem = /*@__PURE__*/ S.String;
 
 /** All supported networks. */
 export type UsBankAccountNetworksSupportedList =
-  ReadonlyArray<UsBankAccountNetworksSupportedItem>;
+  Array<UsBankAccountNetworksSupportedItem>;
 export const UsBankAccountNetworksSupportedList = /*@__PURE__*/ S.Array(
   UsBankAccountNetworksSupportedItem,
 ) as any as S.Schema<UsBankAccountNetworksSupportedList>;
@@ -16235,13 +16223,13 @@ export type CustomerObject = "customer";
 export const CustomerObject = /*@__PURE__*/ S.String;
 
 /** The customer's preferred locales (languages), ordered by preference. */
-export type CustomerPreferredLocalesList = ReadonlyArray<string>;
+export type CustomerPreferredLocalesList = Array<string>;
 export const CustomerPreferredLocalesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CustomerPreferredLocalesList>;
 
 /** Details about each object. */
-export type CustomerSourcesDataList = ReadonlyArray<PaymentSource>;
+export type CustomerSourcesDataList = Array<PaymentSource>;
 export const CustomerSourcesDataList = /*@__PURE__*/ S.Array(
   PaymentSource,
 ) as any as S.Schema<CustomerSourcesDataList>;
@@ -16470,7 +16458,7 @@ export const PriceTier = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PriceTier" }) as any as S.Schema<PriceTier>;
 
 /** Each element represents a pricing tier. This parameter requires `billing_scheme` to be set to `tiered`. See also the documentation for `billing_scheme`. */
-export type CurrencyOptionTiersList = ReadonlyArray<PriceTier>;
+export type CurrencyOptionTiersList = Array<PriceTier>;
 export const CurrencyOptionTiersList = /*@__PURE__*/ S.Array(
   PriceTier,
 ) as any as S.Schema<CurrencyOptionTiersList>;
@@ -16523,7 +16511,7 @@ export const ProductDefaultPrice =
   /*@__PURE__*/ S.Unknown as any as S.Schema<ProductDefaultPrice>;
 
 /** A list of up to 8 URLs of images for this product, meant to be displayable to the customer. */
-export type ProductImagesList = ReadonlyArray<string>;
+export type ProductImagesList = Array<string>;
 export const ProductImagesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ProductImagesList>;
@@ -16541,8 +16529,7 @@ export const ProductMarketingFeature = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProductMarketingFeature>;
 
 /** A list of up to 15 marketing features for this product. These are displayed in [pricing tables](https://docs.stripe.com/payments/checkout/pricing-table). */
-export type ProductMarketingFeaturesList =
-  ReadonlyArray<ProductMarketingFeature>;
+export type ProductMarketingFeaturesList = Array<ProductMarketingFeature>;
 export const ProductMarketingFeaturesList = /*@__PURE__*/ S.Array(
   ProductMarketingFeature,
 ) as any as S.Schema<ProductMarketingFeaturesList>;
@@ -16737,7 +16724,7 @@ export type PriceTaxBehavior = "exclusive" | "inclusive" | "unspecified";
 export const PriceTaxBehavior = /*@__PURE__*/ S.String;
 
 /** Each element represents a pricing tier. This parameter requires `billing_scheme` to be set to `tiered`. See also the documentation for `billing_scheme`. */
-export type PriceTiersList = ReadonlyArray<PriceTier>;
+export type PriceTiersList = Array<PriceTier>;
 export const PriceTiersList = /*@__PURE__*/ S.Array(
   PriceTier,
 ) as any as S.Schema<PriceTiersList>;
@@ -16871,7 +16858,7 @@ export const SubscriptionsResourceBillingSchedulesAppliesTo =
 
 /** Specifies which subscription items the billing schedule applies to. */
 export type SubscriptionsResourceBillingSchedulesAppliesToList =
-  ReadonlyArray<SubscriptionsResourceBillingSchedulesAppliesTo>;
+  Array<SubscriptionsResourceBillingSchedulesAppliesTo>;
 export const SubscriptionsResourceBillingSchedulesAppliesToList =
   /*@__PURE__*/ S.Array(
     SubscriptionsResourceBillingSchedulesAppliesTo,
@@ -16956,7 +16943,7 @@ export const SubscriptionsResourceBillingSchedules = /*@__PURE__*/ S.suspend(
 
 /** Billing schedules for this subscription. */
 export type SubscriptionBillingSchedulesList =
-  ReadonlyArray<SubscriptionsResourceBillingSchedules>;
+  Array<SubscriptionsResourceBillingSchedules>;
 export const SubscriptionBillingSchedulesList = /*@__PURE__*/ S.Array(
   SubscriptionsResourceBillingSchedules,
 ) as any as S.Schema<SubscriptionBillingSchedulesList>;
@@ -17157,7 +17144,7 @@ export const TaxRate = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TaxRate" }) as any as S.Schema<TaxRate>;
 
 /** The tax rates that will apply to any subscription item that does not have `tax_rates` set. Invoices created will have their `default_tax_rates` populated from the subscription. */
-export type SubscriptionDefaultTaxRatesList = ReadonlyArray<TaxRate>;
+export type SubscriptionDefaultTaxRatesList = Array<TaxRate>;
 export const SubscriptionDefaultTaxRatesList = /*@__PURE__*/ S.Array(
   TaxRate,
 ) as any as S.Schema<SubscriptionDefaultTaxRatesList>;
@@ -17167,8 +17154,7 @@ export const SubscriptionDiscountsItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<SubscriptionDiscountsItem>;
 
 /** The discounts applied to the subscription. Subscription item discounts are applied before subscription discounts. Use `expand[]=discounts` to expand each discount. */
-export type SubscriptionDiscountsList =
-  ReadonlyArray<SubscriptionDiscountsItem>;
+export type SubscriptionDiscountsList = Array<SubscriptionDiscountsItem>;
 export const SubscriptionDiscountsList = /*@__PURE__*/ S.Array(
   SubscriptionDiscountsItem,
 ) as any as S.Schema<SubscriptionDiscountsList>;
@@ -17202,7 +17188,7 @@ export const SubscriptionsResourceSubscriptionInvoiceSettingsAccountTaxIdsItem =
 
 /** The account tax IDs associated with the subscription. Will be set on invoices generated by the subscription. */
 export type SubscriptionsResourceSubscriptionInvoiceSettingsAccountTaxIdsList =
-  ReadonlyArray<SubscriptionsResourceSubscriptionInvoiceSettingsAccountTaxIdsItem>;
+  Array<SubscriptionsResourceSubscriptionInvoiceSettingsAccountTaxIdsItem>;
 export const SubscriptionsResourceSubscriptionInvoiceSettingsAccountTaxIdsList =
   /*@__PURE__*/ S.Array(
     SubscriptionsResourceSubscriptionInvoiceSettingsAccountTaxIdsItem,
@@ -17210,7 +17196,7 @@ export const SubscriptionsResourceSubscriptionInvoiceSettingsAccountTaxIdsList =
 
 /** A list of up to 4 custom fields to be displayed on the invoice. */
 export type SubscriptionsResourceSubscriptionInvoiceSettingsCustomFieldsList =
-  ReadonlyArray<InvoiceSettingCustomField>;
+  Array<InvoiceSettingCustomField>;
 export const SubscriptionsResourceSubscriptionInvoiceSettingsCustomFieldsList =
   /*@__PURE__*/ S.Array(
     InvoiceSettingCustomField,
@@ -17262,7 +17248,7 @@ export const SubscriptionItemDiscountsItem =
 
 /** The discounts applied to the subscription item. Subscription item discounts are applied before subscription discounts. Use `expand[]=discounts` to expand each discount. */
 export type SubscriptionItemDiscountsList =
-  ReadonlyArray<SubscriptionItemDiscountsItem>;
+  Array<SubscriptionItemDiscountsItem>;
 export const SubscriptionItemDiscountsList = /*@__PURE__*/ S.Array(
   SubscriptionItemDiscountsItem,
 ) as any as S.Schema<SubscriptionItemDiscountsList>;
@@ -17325,7 +17311,7 @@ export const PlanTier = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PlanTier" }) as any as S.Schema<PlanTier>;
 
 /** Each element represents a pricing tier. This parameter requires `billing_scheme` to be set to `tiered`. See also the documentation for `billing_scheme`. */
-export type PlanTiersList = ReadonlyArray<PlanTier>;
+export type PlanTiersList = Array<PlanTier>;
 export const PlanTiersList = /*@__PURE__*/ S.Array(
   PlanTier,
 ) as any as S.Schema<PlanTiersList>;
@@ -17424,7 +17410,7 @@ export const Plan = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Plan" }) as any as S.Schema<Plan>;
 
 /** The tax rates which apply to this `subscription_item`. When set, the `default_tax_rates` on the subscription do not apply to this `subscription_item`. */
-export type SubscriptionItemTaxRatesList = ReadonlyArray<TaxRate>;
+export type SubscriptionItemTaxRatesList = Array<TaxRate>;
 export const SubscriptionItemTaxRatesList = /*@__PURE__*/ S.Array(
   TaxRate,
 ) as any as S.Schema<SubscriptionItemTaxRatesList>;
@@ -17480,7 +17466,7 @@ export const SubscriptionItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SubscriptionItem>;
 
 /** Details about each object. */
-export type SubscriptionItemsDataList = ReadonlyArray<SubscriptionItem>;
+export type SubscriptionItemsDataList = Array<SubscriptionItem>;
 export const SubscriptionItemsDataList = /*@__PURE__*/ S.Array(
   SubscriptionItem,
 ) as any as S.Schema<SubscriptionItemsDataList>;
@@ -17516,7 +17502,7 @@ export const InvoiceAccountTaxIdsItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<InvoiceAccountTaxIdsItem>;
 
 /** The account tax IDs associated with the invoice. Only editable when the invoice is a draft. */
-export type InvoiceAccountTaxIdsList = ReadonlyArray<InvoiceAccountTaxIdsItem>;
+export type InvoiceAccountTaxIdsList = Array<InvoiceAccountTaxIdsItem>;
 export const InvoiceAccountTaxIdsList = /*@__PURE__*/ S.Array(
   InvoiceAccountTaxIdsItem,
 ) as any as S.Schema<InvoiceAccountTaxIdsList>;
@@ -17594,7 +17580,7 @@ export const InvoicesResourceConfirmationSecret = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InvoicesResourceConfirmationSecret>;
 
 /** Custom fields displayed on the invoice. */
-export type InvoiceCustomFieldsList = ReadonlyArray<InvoiceSettingCustomField>;
+export type InvoiceCustomFieldsList = Array<InvoiceSettingCustomField>;
 export const InvoiceCustomFieldsList = /*@__PURE__*/ S.Array(
   InvoiceSettingCustomField,
 ) as any as S.Schema<InvoiceCustomFieldsList>;
@@ -17745,8 +17731,7 @@ export const InvoicesResourceInvoiceTaxId = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InvoicesResourceInvoiceTaxId>;
 
 /** The customer's tax IDs. Until the invoice is finalized, this field will contain the same tax IDs as `customer.tax_ids`. Once the invoice is finalized, this field will no longer be updated. */
-export type InvoiceCustomerTaxIdsList =
-  ReadonlyArray<InvoicesResourceInvoiceTaxId>;
+export type InvoiceCustomerTaxIdsList = Array<InvoicesResourceInvoiceTaxId>;
 export const InvoiceCustomerTaxIdsList = /*@__PURE__*/ S.Array(
   InvoicesResourceInvoiceTaxId,
 ) as any as S.Schema<InvoiceCustomerTaxIdsList>;
@@ -17762,7 +17747,7 @@ export const InvoiceDefaultSource =
   /*@__PURE__*/ S.Unknown as any as S.Schema<InvoiceDefaultSource>;
 
 /** The tax rates applied to this invoice, if any. */
-export type InvoiceDefaultTaxRatesList = ReadonlyArray<TaxRate>;
+export type InvoiceDefaultTaxRatesList = Array<TaxRate>;
 export const InvoiceDefaultTaxRatesList = /*@__PURE__*/ S.Array(
   TaxRate,
 ) as any as S.Schema<InvoiceDefaultTaxRatesList>;
@@ -17772,7 +17757,7 @@ export const InvoiceDiscountsItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<InvoiceDiscountsItem>;
 
 /** The discounts applied to the invoice. Line item discounts are applied before invoice discounts. Use `expand[]=discounts` to expand each discount. */
-export type InvoiceDiscountsList = ReadonlyArray<InvoiceDiscountsItem>;
+export type InvoiceDiscountsList = Array<InvoiceDiscountsItem>;
 export const InvoiceDiscountsList = /*@__PURE__*/ S.Array(
   InvoiceDiscountsItem,
 ) as any as S.Schema<InvoiceDiscountsList>;
@@ -17827,7 +17812,7 @@ export const DiscountsResourceDiscountAmount = /*@__PURE__*/ S.suspend(() =>
 
 /** The amount of discount calculated per discount for this line item. */
 export type LineItemDiscountAmountsList =
-  ReadonlyArray<DiscountsResourceDiscountAmount>;
+  Array<DiscountsResourceDiscountAmount>;
 export const LineItemDiscountAmountsList = /*@__PURE__*/ S.Array(
   DiscountsResourceDiscountAmount,
 ) as any as S.Schema<LineItemDiscountAmountsList>;
@@ -17837,7 +17822,7 @@ export const LineItemDiscountsItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<LineItemDiscountsItem>;
 
 /** The discounts applied to the invoice line item. Line item discounts are applied before invoice discounts. Use `expand[]=discounts` to expand each discount. */
-export type LineItemDiscountsList = ReadonlyArray<LineItemDiscountsItem>;
+export type LineItemDiscountsList = Array<LineItemDiscountsItem>;
 export const LineItemDiscountsList = /*@__PURE__*/ S.Array(
   LineItemDiscountsItem,
 ) as any as S.Schema<LineItemDiscountsList>;
@@ -17855,7 +17840,7 @@ export const LineItemObject = /*@__PURE__*/ S.String;
 
 /** Credited invoice line items */
 export type BillingBillResourceInvoicingLinesCommonCreditedItemsInvoiceLineItemsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const BillingBillResourceInvoicingLinesCommonCreditedItemsInvoiceLineItemsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -18096,7 +18081,7 @@ export const BillingCreditGrantsResourceApplicablePrice =
 
 /** The prices that credit grants can apply to. We currently only support `metered` prices. This refers to prices that have a [Billing Meter](https://docs.stripe.com/api/billing/meter) attached to them. Cannot be used in combination with `price_type`. */
 export type BillingCreditGrantsResourceScopePricesList =
-  ReadonlyArray<BillingCreditGrantsResourceApplicablePrice>;
+  Array<BillingCreditGrantsResourceApplicablePrice>;
 export const BillingCreditGrantsResourceScopePricesList = /*@__PURE__*/ S.Array(
   BillingCreditGrantsResourceApplicablePrice,
 ) as any as S.Schema<BillingCreditGrantsResourceScopePricesList>;
@@ -18448,7 +18433,7 @@ export const InvoicesResourcePretaxCreditAmount = /*@__PURE__*/ S.suspend(() =>
 
 /** Contains pretax credit amounts (ex: discount, credit grants, etc) that apply to this line item. */
 export type LineItemPretaxCreditAmountsList =
-  ReadonlyArray<InvoicesResourcePretaxCreditAmount>;
+  Array<InvoicesResourcePretaxCreditAmount>;
 export const LineItemPretaxCreditAmountsList = /*@__PURE__*/ S.Array(
   InvoicesResourcePretaxCreditAmount,
 ) as any as S.Schema<LineItemPretaxCreditAmountsList>;
@@ -18588,8 +18573,7 @@ export const BillingBillResourceInvoicingTaxesTax = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<BillingBillResourceInvoicingTaxesTax>;
 
 /** The tax information of the line item. */
-export type LineItemTaxesList =
-  ReadonlyArray<BillingBillResourceInvoicingTaxesTax>;
+export type LineItemTaxesList = Array<BillingBillResourceInvoicingTaxesTax>;
 export const LineItemTaxesList = /*@__PURE__*/ S.Array(
   BillingBillResourceInvoicingTaxesTax,
 ) as any as S.Schema<LineItemTaxesList>;
@@ -18663,7 +18647,7 @@ export const LineItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LineItem" }) as any as S.Schema<LineItem>;
 
 /** Details about each object. */
-export type InvoiceLinesDataList = ReadonlyArray<LineItem>;
+export type InvoiceLinesDataList = Array<LineItem>;
 export const InvoiceLinesDataList = /*@__PURE__*/ S.Array(
   LineItem,
 ) as any as S.Schema<InvoiceLinesDataList>;
@@ -19080,7 +19064,7 @@ export const InvoicePaymentMethodOptionsUsBankAccountLinkedAccountOptionsFilters
 
 /** The account subcategories to use to filter for possible accounts to link. Valid subcategories are `checking` and `savings`. */
 export type InvoicePaymentMethodOptionsUsBankAccountLinkedAccountOptionsFiltersAccountSubcategoriesList =
-  ReadonlyArray<InvoicePaymentMethodOptionsUsBankAccountLinkedAccountOptionsFiltersAccountSubcategoriesItem>;
+  Array<InvoicePaymentMethodOptionsUsBankAccountLinkedAccountOptionsFiltersAccountSubcategoriesItem>;
 export const InvoicePaymentMethodOptionsUsBankAccountLinkedAccountOptionsFiltersAccountSubcategoriesList =
   /*@__PURE__*/ S.Array(
     InvoicePaymentMethodOptionsUsBankAccountLinkedAccountOptionsFiltersAccountSubcategoriesItem,
@@ -19109,7 +19093,7 @@ export const InvoicePaymentMethodOptionsUsBankAccountLinkedAccountOptionsPermiss
 
 /** The list of permissions to request. The `payment_method` permission must be included. */
 export type InvoicePaymentMethodOptionsUsBankAccountLinkedAccountOptionsPermissionsList =
-  ReadonlyArray<InvoicePaymentMethodOptionsUsBankAccountLinkedAccountOptionsPermissionsItem>;
+  Array<InvoicePaymentMethodOptionsUsBankAccountLinkedAccountOptionsPermissionsItem>;
 export const InvoicePaymentMethodOptionsUsBankAccountLinkedAccountOptionsPermissionsList =
   /*@__PURE__*/ S.Array(
     InvoicePaymentMethodOptionsUsBankAccountLinkedAccountOptionsPermissionsItem,
@@ -19122,7 +19106,7 @@ export const InvoicePaymentMethodOptionsUsBankAccountLinkedAccountOptionsPrefetc
 
 /** Data features requested to be retrieved upon account creation. */
 export type InvoicePaymentMethodOptionsUsBankAccountLinkedAccountOptionsPrefetchList =
-  ReadonlyArray<InvoicePaymentMethodOptionsUsBankAccountLinkedAccountOptionsPrefetchItem>;
+  Array<InvoicePaymentMethodOptionsUsBankAccountLinkedAccountOptionsPrefetchItem>;
 export const InvoicePaymentMethodOptionsUsBankAccountLinkedAccountOptionsPrefetchList =
   /*@__PURE__*/ S.Array(
     InvoicePaymentMethodOptionsUsBankAccountLinkedAccountOptionsPrefetchItem,
@@ -19270,7 +19254,7 @@ export const InvoicesPaymentSettingsPaymentMethodTypesItem =
 
 /** The list of payment method types (e.g. card) to provide to the invoice’s PaymentIntent. If not set, Stripe attempts to automatically determine the types to use by looking at the invoice’s default payment method, the subscription’s default payment method, the customer’s default payment method, and your [invoice template settings](https://dashboard.stripe.com/settings/billing/invoice). */
 export type InvoicesPaymentSettingsPaymentMethodTypesList =
-  ReadonlyArray<InvoicesPaymentSettingsPaymentMethodTypesItem>;
+  Array<InvoicesPaymentSettingsPaymentMethodTypesItem>;
 export const InvoicesPaymentSettingsPaymentMethodTypesList =
   /*@__PURE__*/ S.Array(
     InvoicesPaymentSettingsPaymentMethodTypesItem,
@@ -21399,7 +21383,7 @@ export const InvoicePayment = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "InvoicePayment" }) as any as S.Schema<InvoicePayment>;
 
 /** Details about each object. */
-export type InvoicePaymentsDataList = ReadonlyArray<InvoicePayment>;
+export type InvoicePaymentsDataList = Array<InvoicePayment>;
 export const InvoicePaymentsDataList = /*@__PURE__*/ S.Array(
   InvoicePayment,
 ) as any as S.Schema<InvoicePaymentsDataList>;
@@ -21667,8 +21651,7 @@ export const LineItemsTaxAmount = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LineItemsTaxAmount>;
 
 /** The taxes applied to the shipping rate. */
-export type InvoicesResourceShippingCostTaxesList =
-  ReadonlyArray<LineItemsTaxAmount>;
+export type InvoicesResourceShippingCostTaxesList = Array<LineItemsTaxAmount>;
 export const InvoicesResourceShippingCostTaxesList = /*@__PURE__*/ S.Array(
   LineItemsTaxAmount,
 ) as any as S.Schema<InvoicesResourceShippingCostTaxesList>;
@@ -21737,7 +21720,7 @@ export const InvoiceTestClock =
   /*@__PURE__*/ S.Unknown as any as S.Schema<InvoiceTestClock>;
 
 /** The IDs of the line items that triggered the threshold invoice. */
-export type InvoiceItemThresholdReasonLineItemIdsList = ReadonlyArray<string>;
+export type InvoiceItemThresholdReasonLineItemIdsList = Array<string>;
 export const InvoiceItemThresholdReasonLineItemIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<InvoiceItemThresholdReasonLineItemIdsList>;
@@ -21759,7 +21742,7 @@ export const InvoiceItemThresholdReason = /*@__PURE__*/ S.suspend(() =>
 
 /** Indicates which line items triggered a threshold invoice. */
 export type InvoiceThresholdReasonItemReasonsList =
-  ReadonlyArray<InvoiceItemThresholdReason>;
+  Array<InvoiceItemThresholdReason>;
 export const InvoiceThresholdReasonItemReasonsList = /*@__PURE__*/ S.Array(
   InvoiceItemThresholdReason,
 ) as any as S.Schema<InvoiceThresholdReasonItemReasonsList>;
@@ -21781,21 +21764,20 @@ export const InvoiceThresholdReason = /*@__PURE__*/ S.suspend(() =>
 
 /** The aggregate amounts calculated per discount across all line items. */
 export type InvoiceTotalDiscountAmountsList =
-  ReadonlyArray<DiscountsResourceDiscountAmount>;
+  Array<DiscountsResourceDiscountAmount>;
 export const InvoiceTotalDiscountAmountsList = /*@__PURE__*/ S.Array(
   DiscountsResourceDiscountAmount,
 ) as any as S.Schema<InvoiceTotalDiscountAmountsList>;
 
 /** Contains pretax credit amounts (ex: discount, credit grants, etc) that apply to this invoice. This is a combined list of total_pretax_credit_amounts across all invoice line items. */
 export type InvoiceTotalPretaxCreditAmountsList =
-  ReadonlyArray<InvoicesResourcePretaxCreditAmount>;
+  Array<InvoicesResourcePretaxCreditAmount>;
 export const InvoiceTotalPretaxCreditAmountsList = /*@__PURE__*/ S.Array(
   InvoicesResourcePretaxCreditAmount,
 ) as any as S.Schema<InvoiceTotalPretaxCreditAmountsList>;
 
 /** The aggregate tax information of all line items. */
-export type InvoiceTotalTaxesList =
-  ReadonlyArray<BillingBillResourceInvoicingTaxesTax>;
+export type InvoiceTotalTaxesList = Array<BillingBillResourceInvoicingTaxesTax>;
 export const InvoiceTotalTaxesList = /*@__PURE__*/ S.Array(
   BillingBillResourceInvoicingTaxesTax,
 ) as any as S.Schema<InvoiceTotalTaxesList>;
@@ -22305,7 +22287,7 @@ export const SubscriptionsResourcePaymentSettingsPaymentMethodTypesItem =
 
 /** The list of payment method types to provide to every invoice created by the subscription. If not set, Stripe attempts to automatically determine the types to use by looking at the invoice’s default payment method, the subscription’s default payment method, the customer’s default payment method, and your [invoice template settings](https://dashboard.stripe.com/settings/billing/invoice). */
 export type SubscriptionsResourcePaymentSettingsPaymentMethodTypesList =
-  ReadonlyArray<SubscriptionsResourcePaymentSettingsPaymentMethodTypesItem>;
+  Array<SubscriptionsResourcePaymentSettingsPaymentMethodTypesItem>;
 export const SubscriptionsResourcePaymentSettingsPaymentMethodTypesList =
   /*@__PURE__*/ S.Array(
     SubscriptionsResourcePaymentSettingsPaymentMethodTypesItem,
@@ -22379,7 +22361,7 @@ export const SubscriptionsResourcePendingUpdateDiscountsItem =
 
 /** The discounts that will be applied to the subscription when the pending update is applied. Use `expand[]=discounts` to expand each discount. */
 export type SubscriptionsResourcePendingUpdateDiscountsList =
-  ReadonlyArray<SubscriptionsResourcePendingUpdateDiscountsItem>;
+  Array<SubscriptionsResourcePendingUpdateDiscountsItem>;
 export const SubscriptionsResourcePendingUpdateDiscountsList =
   /*@__PURE__*/ S.Array(
     SubscriptionsResourcePendingUpdateDiscountsItem,
@@ -22397,7 +22379,7 @@ export const SubscriptionsResourcePendingUpdateMetadataMap =
 
 /** List of subscription items, each with an attached plan, that will be set if the update is applied. */
 export type SubscriptionsResourcePendingUpdateSubscriptionItemsList =
-  ReadonlyArray<SubscriptionItem>;
+  Array<SubscriptionItem>;
 export const SubscriptionsResourcePendingUpdateSubscriptionItemsList =
   /*@__PURE__*/ S.Array(
     SubscriptionItem,
@@ -22537,7 +22519,7 @@ export const InvoiceSettingSubscriptionScheduleSettingAccountTaxIdsItem =
 
 /** The account tax IDs associated with the subscription schedule. Will be set on invoices generated by the subscription schedule. */
 export type InvoiceSettingSubscriptionScheduleSettingAccountTaxIdsList =
-  ReadonlyArray<InvoiceSettingSubscriptionScheduleSettingAccountTaxIdsItem>;
+  Array<InvoiceSettingSubscriptionScheduleSettingAccountTaxIdsItem>;
 export const InvoiceSettingSubscriptionScheduleSettingAccountTaxIdsList =
   /*@__PURE__*/ S.Array(
     InvoiceSettingSubscriptionScheduleSettingAccountTaxIdsItem,
@@ -22704,7 +22686,7 @@ export const DiscountsResourceStackableDiscountWithDiscountEnd =
 
 /** The stackable discounts that will be applied to the item. */
 export type SubscriptionScheduleAddInvoiceItemDiscountsList =
-  ReadonlyArray<DiscountsResourceStackableDiscountWithDiscountEnd>;
+  Array<DiscountsResourceStackableDiscountWithDiscountEnd>;
 export const SubscriptionScheduleAddInvoiceItemDiscountsList =
   /*@__PURE__*/ S.Array(
     DiscountsResourceStackableDiscountWithDiscountEnd,
@@ -22809,8 +22791,7 @@ export const SubscriptionScheduleAddInvoiceItemPrice =
   /*@__PURE__*/ S.Unknown as any as S.Schema<SubscriptionScheduleAddInvoiceItemPrice>;
 
 /** The tax rates which apply to the item. When set, the `default_tax_rates` do not apply to this item. */
-export type SubscriptionScheduleAddInvoiceItemTaxRatesList =
-  ReadonlyArray<TaxRate>;
+export type SubscriptionScheduleAddInvoiceItemTaxRatesList = Array<TaxRate>;
 export const SubscriptionScheduleAddInvoiceItemTaxRatesList =
   /*@__PURE__*/ S.Array(
     TaxRate,
@@ -22850,7 +22831,7 @@ export const SubscriptionScheduleAddInvoiceItem = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of prices and quantities that will generate invoice items appended to the next invoice for this phase. */
 export type SubscriptionSchedulePhaseConfigurationAddInvoiceItemsList =
-  ReadonlyArray<SubscriptionScheduleAddInvoiceItem>;
+  Array<SubscriptionScheduleAddInvoiceItem>;
 export const SubscriptionSchedulePhaseConfigurationAddInvoiceItemsList =
   /*@__PURE__*/ S.Array(
     SubscriptionScheduleAddInvoiceItem,
@@ -22902,7 +22883,7 @@ export const SubscriptionSchedulePhaseConfigurationDefaultPaymentMethod =
 
 /** The default tax rates to apply to the subscription during this phase of the subscription schedule. */
 export type SubscriptionSchedulePhaseConfigurationDefaultTaxRatesList =
-  ReadonlyArray<TaxRate>;
+  Array<TaxRate>;
 export const SubscriptionSchedulePhaseConfigurationDefaultTaxRatesList =
   /*@__PURE__*/ S.Array(
     TaxRate,
@@ -22956,7 +22937,7 @@ export const StackableDiscountWithDiscountSettingsAndDiscountEnd =
 
 /** The stackable discounts that will be applied to the subscription on this phase. Subscription item discounts are applied before subscription discounts. */
 export type SubscriptionSchedulePhaseConfigurationDiscountsList =
-  ReadonlyArray<StackableDiscountWithDiscountSettingsAndDiscountEnd>;
+  Array<StackableDiscountWithDiscountSettingsAndDiscountEnd>;
 export const SubscriptionSchedulePhaseConfigurationDiscountsList =
   /*@__PURE__*/ S.Array(
     StackableDiscountWithDiscountSettingsAndDiscountEnd,
@@ -22971,7 +22952,7 @@ export const InvoiceSettingSubscriptionSchedulePhaseSettingAccountTaxIdsItem =
 
 /** The account tax IDs associated with this phase of the subscription schedule. Will be set on invoices generated by this phase of the subscription schedule. */
 export type InvoiceSettingSubscriptionSchedulePhaseSettingAccountTaxIdsList =
-  ReadonlyArray<InvoiceSettingSubscriptionSchedulePhaseSettingAccountTaxIdsItem>;
+  Array<InvoiceSettingSubscriptionSchedulePhaseSettingAccountTaxIdsItem>;
 export const InvoiceSettingSubscriptionSchedulePhaseSettingAccountTaxIdsList =
   /*@__PURE__*/ S.Array(
     InvoiceSettingSubscriptionSchedulePhaseSettingAccountTaxIdsItem,
@@ -23038,7 +23019,7 @@ export const StackableDiscountWithDiscountSettings = /*@__PURE__*/ S.suspend(
 
 /** The discounts applied to the subscription item. Subscription item discounts are applied before subscription discounts. Use `expand[]=discounts` to expand each discount. */
 export type SubscriptionScheduleConfigurationItemDiscountsList =
-  ReadonlyArray<StackableDiscountWithDiscountSettings>;
+  Array<StackableDiscountWithDiscountSettings>;
 export const SubscriptionScheduleConfigurationItemDiscountsList =
   /*@__PURE__*/ S.Array(
     StackableDiscountWithDiscountSettings,
@@ -23091,8 +23072,7 @@ export const SubscriptionScheduleConfigurationItemPrice =
   /*@__PURE__*/ S.Unknown as any as S.Schema<SubscriptionScheduleConfigurationItemPrice>;
 
 /** The tax rates which apply to this `phase_item`. When set, the `default_tax_rates` on the phase do not apply to this `phase_item`. */
-export type SubscriptionScheduleConfigurationItemTaxRatesList =
-  ReadonlyArray<TaxRate>;
+export type SubscriptionScheduleConfigurationItemTaxRatesList = Array<TaxRate>;
 export const SubscriptionScheduleConfigurationItemTaxRatesList =
   /*@__PURE__*/ S.Array(
     TaxRate,
@@ -23134,7 +23114,7 @@ export const SubscriptionScheduleConfigurationItem = /*@__PURE__*/ S.suspend(
 
 /** Subscription items to configure the subscription to during this phase of the subscription schedule. */
 export type SubscriptionSchedulePhaseConfigurationItemsList =
-  ReadonlyArray<SubscriptionScheduleConfigurationItem>;
+  Array<SubscriptionScheduleConfigurationItem>;
 export const SubscriptionSchedulePhaseConfigurationItemsList =
   /*@__PURE__*/ S.Array(
     SubscriptionScheduleConfigurationItem,
@@ -23247,7 +23227,7 @@ export const SubscriptionSchedulePhaseConfiguration = /*@__PURE__*/ S.suspend(
 
 /** Configuration for the subscription schedule's phases. */
 export type SubscriptionSchedulePhasesList =
-  ReadonlyArray<SubscriptionSchedulePhaseConfiguration>;
+  Array<SubscriptionSchedulePhaseConfiguration>;
 export const SubscriptionSchedulePhasesList = /*@__PURE__*/ S.Array(
   SubscriptionSchedulePhaseConfiguration,
 ) as any as S.Schema<SubscriptionSchedulePhasesList>;
@@ -23552,7 +23532,7 @@ export const Subscription = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Subscription" }) as any as S.Schema<Subscription>;
 
 /** Details about each object. */
-export type CustomerSubscriptionsDataList = ReadonlyArray<Subscription>;
+export type CustomerSubscriptionsDataList = Array<Subscription>;
 export const CustomerSubscriptionsDataList = /*@__PURE__*/ S.Array(
   Subscription,
 ) as any as S.Schema<CustomerSubscriptionsDataList>;
@@ -23645,7 +23625,7 @@ export type CustomerTaxExempt = "exempt" | "none" | "reverse";
 export const CustomerTaxExempt = /*@__PURE__*/ S.String;
 
 /** Details about each object. */
-export type CustomerTaxIdsDataList = ReadonlyArray<TaxId>;
+export type CustomerTaxIdsDataList = Array<TaxId>;
 export const CustomerTaxIdsDataList = /*@__PURE__*/ S.Array(
   TaxId,
 ) as any as S.Schema<CustomerTaxIdsDataList>;
@@ -23840,8 +23820,7 @@ export const DeletedDiscount = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeletedDiscount>;
 
 /** Specifies which fields in the response should be expanded. */
-export type DeleteCustomersCustomerSourcesIdRequestExpandList =
-  ReadonlyArray<string>;
+export type DeleteCustomersCustomerSourcesIdRequestExpandList = Array<string>;
 export const DeleteCustomersCustomerSourcesIdRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -23907,7 +23886,7 @@ export const DeleteCustomersCustomerTaxIdsIdRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DeleteCustomersCustomerTaxIdsIdRequest>;
 
 /** Specifies which fields in the response should be expanded. */
-export type DeleteEphemeralKeysKeyRequestExpandList = ReadonlyArray<string>;
+export type DeleteEphemeralKeysKeyRequestExpandList = Array<string>;
 export const DeleteEphemeralKeysKeyRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DeleteEphemeralKeysKeyRequestExpandList>;
@@ -24311,7 +24290,7 @@ export const DeleteSubscriptionsSubscriptionExposedIdRequestCancellationDetails 
 
 /** Specifies which fields in the response should be expanded. */
 export type DeleteSubscriptionsSubscriptionExposedIdRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const DeleteSubscriptionsSubscriptionExposedIdRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -24678,7 +24657,7 @@ export const DeletedWebhookEndpoint = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeletedWebhookEndpoint",
 }) as any as S.Schema<DeletedWebhookEndpoint>;
 
-export type GetAccountRequestExpandList = ReadonlyArray<string>;
+export type GetAccountRequestExpandList = Array<string>;
 export const GetAccountRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetAccountRequestExpandList>;
@@ -24727,7 +24706,7 @@ export type GetAccountsRequestCreated = GetAccountsRequestCreatedCase0 | number;
 export const GetAccountsRequestCreated =
   /*@__PURE__*/ S.Unknown as any as S.Schema<GetAccountsRequestCreated>;
 
-export type GetAccountsRequestExpandList = ReadonlyArray<string>;
+export type GetAccountsRequestExpandList = Array<string>;
 export const GetAccountsRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetAccountsRequestExpandList>;
@@ -24763,7 +24742,7 @@ export const GetAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetAccountsRequest",
 }) as any as S.Schema<GetAccountsRequest>;
 
-export type GetAccountsResponseDataList = ReadonlyArray<Account>;
+export type GetAccountsResponseDataList = Array<Account>;
 export const GetAccountsResponseDataList = /*@__PURE__*/ S.Array(
   Account,
 ) as any as S.Schema<GetAccountsResponseDataList>;
@@ -24792,7 +24771,7 @@ export const GetAccountsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetAccountsResponse",
 }) as any as S.Schema<GetAccountsResponse>;
 
-export type GetAccountsAccountRequestExpandList = ReadonlyArray<string>;
+export type GetAccountsAccountRequestExpandList = Array<string>;
 export const GetAccountsAccountRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetAccountsAccountRequestExpandList>;
@@ -24818,8 +24797,7 @@ export const GetAccountsAccountRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetAccountsAccountRequest",
 }) as any as S.Schema<GetAccountsAccountRequest>;
 
-export type GetAccountsAccountCapabilitiesRequestExpandList =
-  ReadonlyArray<string>;
+export type GetAccountsAccountCapabilitiesRequestExpandList = Array<string>;
 export const GetAccountsAccountCapabilitiesRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -24856,15 +24834,14 @@ export const CapabilityAccount =
 
 /** Fields that are due and can be resolved by providing the corresponding alternative fields instead. Multiple alternatives can reference the same `original_fields_due`. When this happens, any of these alternatives can serve as a pathway for attempting to resolve the fields. Additionally, providing `original_fields_due` again also serves as a pathway for attempting to resolve the fields. */
 export type AccountCapabilityFutureRequirementsAlternativesList =
-  ReadonlyArray<AccountRequirementsAlternative>;
+  Array<AccountRequirementsAlternative>;
 export const AccountCapabilityFutureRequirementsAlternativesList =
   /*@__PURE__*/ S.Array(
     AccountRequirementsAlternative,
   ) as any as S.Schema<AccountCapabilityFutureRequirementsAlternativesList>;
 
 /** Fields that need to be resolved to keep the capability enabled. If not resolved by `future_requirements[current_deadline]`, these fields will transition to the main `requirements` hash. */
-export type AccountCapabilityFutureRequirementsCurrentlyDueList =
-  ReadonlyArray<string>;
+export type AccountCapabilityFutureRequirementsCurrentlyDueList = Array<string>;
 export const AccountCapabilityFutureRequirementsCurrentlyDueList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -24887,7 +24864,7 @@ export const AccountCapabilityFutureRequirementsDisabledReason =
 
 /** Details about validation and verification failures for `due` requirements that must be resolved. */
 export type AccountCapabilityFutureRequirementsErrorsList =
-  ReadonlyArray<AccountRequirementsError>;
+  Array<AccountRequirementsError>;
 export const AccountCapabilityFutureRequirementsErrorsList =
   /*@__PURE__*/ S.Array(
     AccountRequirementsError,
@@ -24895,15 +24872,14 @@ export const AccountCapabilityFutureRequirementsErrorsList =
 
 /** Fields you must collect when all thresholds are reached. As they become required, they appear in `currently_due` as well. */
 export type AccountCapabilityFutureRequirementsEventuallyDueList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const AccountCapabilityFutureRequirementsEventuallyDueList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AccountCapabilityFutureRequirementsEventuallyDueList>;
 
 /** Fields that haven't been resolved by `requirements.current_deadline`. These fields need to be resolved to enable the capability on the account. `future_requirements.past_due` is a subset of `requirements.past_due`. */
-export type AccountCapabilityFutureRequirementsPastDueList =
-  ReadonlyArray<string>;
+export type AccountCapabilityFutureRequirementsPastDueList = Array<string>;
 export const AccountCapabilityFutureRequirementsPastDueList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -24911,7 +24887,7 @@ export const AccountCapabilityFutureRequirementsPastDueList =
 
 /** Fields that are being reviewed, or might become required depending on the results of a review. If the review fails, these fields can move to `eventually_due`, `currently_due`, `past_due` or `alternatives`. Fields might appear in `eventually_due`, `currently_due`, `past_due` or `alternatives` and in `pending_verification` if one verification fails but another is still pending. */
 export type AccountCapabilityFutureRequirementsPendingVerificationList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const AccountCapabilityFutureRequirementsPendingVerificationList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -24959,15 +24935,14 @@ export const CapabilityObject = /*@__PURE__*/ S.String;
 
 /** Fields that are due and can be resolved by providing the corresponding alternative fields instead. Multiple alternatives can reference the same `original_fields_due`. When this happens, any of these alternatives can serve as a pathway for attempting to resolve the fields. Additionally, providing `original_fields_due` again also serves as a pathway for attempting to resolve the fields. */
 export type AccountCapabilityRequirementsAlternativesList =
-  ReadonlyArray<AccountRequirementsAlternative>;
+  Array<AccountRequirementsAlternative>;
 export const AccountCapabilityRequirementsAlternativesList =
   /*@__PURE__*/ S.Array(
     AccountRequirementsAlternative,
   ) as any as S.Schema<AccountCapabilityRequirementsAlternativesList>;
 
 /** Fields that need to be resolved to keep the capability enabled. If not resolved by `current_deadline`, these fields will appear in `past_due` as well, and the capability is disabled. */
-export type AccountCapabilityRequirementsCurrentlyDueList =
-  ReadonlyArray<string>;
+export type AccountCapabilityRequirementsCurrentlyDueList = Array<string>;
 export const AccountCapabilityRequirementsCurrentlyDueList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -24990,28 +24965,27 @@ export const AccountCapabilityRequirementsDisabledReason =
 
 /** Details about validation and verification failures for `due` requirements that must be resolved. */
 export type AccountCapabilityRequirementsErrorsList =
-  ReadonlyArray<AccountRequirementsError>;
+  Array<AccountRequirementsError>;
 export const AccountCapabilityRequirementsErrorsList = /*@__PURE__*/ S.Array(
   AccountRequirementsError,
 ) as any as S.Schema<AccountCapabilityRequirementsErrorsList>;
 
 /** Fields you must collect when all thresholds are reached. As they become required, they appear in `currently_due` as well, and `current_deadline` becomes set. */
-export type AccountCapabilityRequirementsEventuallyDueList =
-  ReadonlyArray<string>;
+export type AccountCapabilityRequirementsEventuallyDueList = Array<string>;
 export const AccountCapabilityRequirementsEventuallyDueList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AccountCapabilityRequirementsEventuallyDueList>;
 
 /** Fields that haven't been resolved by `current_deadline`. These fields need to be resolved to enable the capability on the account. */
-export type AccountCapabilityRequirementsPastDueList = ReadonlyArray<string>;
+export type AccountCapabilityRequirementsPastDueList = Array<string>;
 export const AccountCapabilityRequirementsPastDueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AccountCapabilityRequirementsPastDueList>;
 
 /** Fields that are being reviewed, or might become required depending on the results of a review. If the review fails, these fields can move to `eventually_due`, `currently_due`, `past_due` or `alternatives`. Fields might appear in `eventually_due`, `currently_due`, `past_due` or `alternatives` and in `pending_verification` if one verification fails but another is still pending. */
 export type AccountCapabilityRequirementsPendingVerificationList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const AccountCapabilityRequirementsPendingVerificationList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -25088,8 +25062,7 @@ export const Capability = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Capability" }) as any as S.Schema<Capability>;
 
-export type GetAccountsAccountCapabilitiesResponseDataList =
-  ReadonlyArray<Capability>;
+export type GetAccountsAccountCapabilitiesResponseDataList = Array<Capability>;
 export const GetAccountsAccountCapabilitiesResponseDataList =
   /*@__PURE__*/ S.Array(
     Capability,
@@ -25122,7 +25095,7 @@ export const GetAccountsAccountCapabilitiesResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GetAccountsAccountCapabilitiesResponse>;
 
 export type GetAccountsAccountCapabilitiesCapabilityRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GetAccountsAccountCapabilitiesCapabilityRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -25156,8 +25129,7 @@ export const GetAccountsAccountCapabilitiesCapabilityRequest =
     identifier: "GetAccountsAccountCapabilitiesCapabilityRequest",
   }) as any as S.Schema<GetAccountsAccountCapabilitiesCapabilityRequest>;
 
-export type GetAccountsAccountExternalAccountsRequestExpandList =
-  ReadonlyArray<string>;
+export type GetAccountsAccountExternalAccountsRequestExpandList = Array<string>;
 export const GetAccountsAccountExternalAccountsRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -25209,7 +25181,7 @@ export const GetAccountsAccountExternalAccountsRequest =
 
 /** The list contains all external accounts that have been attached to the Stripe account. These may be bank accounts or cards. */
 export type GetAccountsAccountExternalAccountsResponseDataList =
-  ReadonlyArray<ExternalAccount>;
+  Array<ExternalAccount>;
 export const GetAccountsAccountExternalAccountsResponseDataList =
   /*@__PURE__*/ S.Array(
     ExternalAccount,
@@ -25243,7 +25215,7 @@ export const GetAccountsAccountExternalAccountsResponse =
   }) as any as S.Schema<GetAccountsAccountExternalAccountsResponse>;
 
 export type GetAccountsAccountExternalAccountsIdRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GetAccountsAccountExternalAccountsIdRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -25284,7 +25256,7 @@ export const GetAccountsAccountExternalAccountsIdResponse =
     identifier: "GetAccountsAccountExternalAccountsIdResponse",
   }) as any as S.Schema<GetAccountsAccountExternalAccountsIdResponse>;
 
-export type GetAccountsAccountPersonsRequestExpandList = ReadonlyArray<string>;
+export type GetAccountsAccountPersonsRequestExpandList = Array<string>;
 export const GetAccountsAccountPersonsRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetAccountsAccountPersonsRequestExpandList>;
@@ -25354,7 +25326,7 @@ export const GetAccountsAccountPersonsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetAccountsAccountPersonsRequest",
 }) as any as S.Schema<GetAccountsAccountPersonsRequest>;
 
-export type GetAccountsAccountPersonsResponseDataList = ReadonlyArray<Person>;
+export type GetAccountsAccountPersonsResponseDataList = Array<Person>;
 export const GetAccountsAccountPersonsResponseDataList = /*@__PURE__*/ S.Array(
   Person,
 ) as any as S.Schema<GetAccountsAccountPersonsResponseDataList>;
@@ -25383,8 +25355,7 @@ export const GetAccountsAccountPersonsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetAccountsAccountPersonsResponse",
 }) as any as S.Schema<GetAccountsAccountPersonsResponse>;
 
-export type GetAccountsAccountPersonsPersonRequestExpandList =
-  ReadonlyArray<string>;
+export type GetAccountsAccountPersonsPersonRequestExpandList = Array<string>;
 export const GetAccountsAccountPersonsPersonRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -25416,7 +25387,7 @@ export const GetAccountsAccountPersonsPersonRequest = /*@__PURE__*/ S.suspend(
   identifier: "GetAccountsAccountPersonsPersonRequest",
 }) as any as S.Schema<GetAccountsAccountPersonsPersonRequest>;
 
-export type GetApplePayDomainsRequestExpandList = ReadonlyArray<string>;
+export type GetApplePayDomainsRequestExpandList = Array<string>;
 export const GetApplePayDomainsRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetApplePayDomainsRequestExpandList>;
@@ -25476,7 +25447,7 @@ export const ApplePayDomain = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ApplePayDomain" }) as any as S.Schema<ApplePayDomain>;
 
-export type GetApplePayDomainsResponseDataList = ReadonlyArray<ApplePayDomain>;
+export type GetApplePayDomainsResponseDataList = Array<ApplePayDomain>;
 export const GetApplePayDomainsResponseDataList = /*@__PURE__*/ S.Array(
   ApplePayDomain,
 ) as any as S.Schema<GetApplePayDomainsResponseDataList>;
@@ -25505,7 +25476,7 @@ export const GetApplePayDomainsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetApplePayDomainsResponse",
 }) as any as S.Schema<GetApplePayDomainsResponse>;
 
-export type GetApplePayDomainsDomainRequestExpandList = ReadonlyArray<string>;
+export type GetApplePayDomainsDomainRequestExpandList = Array<string>;
 export const GetApplePayDomainsDomainRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetApplePayDomainsDomainRequestExpandList>;
@@ -25561,7 +25532,7 @@ export type GetApplicationFeesRequestCreated =
 export const GetApplicationFeesRequestCreated =
   /*@__PURE__*/ S.Unknown as any as S.Schema<GetApplicationFeesRequestCreated>;
 
-export type GetApplicationFeesRequestExpandList = ReadonlyArray<string>;
+export type GetApplicationFeesRequestExpandList = Array<string>;
 export const GetApplicationFeesRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetApplicationFeesRequestExpandList>;
@@ -25600,7 +25571,7 @@ export const GetApplicationFeesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetApplicationFeesRequest",
 }) as any as S.Schema<GetApplicationFeesRequest>;
 
-export type GetApplicationFeesResponseDataList = ReadonlyArray<ApplicationFee>;
+export type GetApplicationFeesResponseDataList = Array<ApplicationFee>;
 export const GetApplicationFeesResponseDataList = /*@__PURE__*/ S.Array(
   ApplicationFee,
 ) as any as S.Schema<GetApplicationFeesResponseDataList>;
@@ -25629,8 +25600,7 @@ export const GetApplicationFeesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetApplicationFeesResponse",
 }) as any as S.Schema<GetApplicationFeesResponse>;
 
-export type GetApplicationFeesFeeRefundsIdRequestExpandList =
-  ReadonlyArray<string>;
+export type GetApplicationFeesFeeRefundsIdRequestExpandList = Array<string>;
 export const GetApplicationFeesFeeRefundsIdRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -25662,7 +25632,7 @@ export const GetApplicationFeesFeeRefundsIdRequest = /*@__PURE__*/ S.suspend(
   identifier: "GetApplicationFeesFeeRefundsIdRequest",
 }) as any as S.Schema<GetApplicationFeesFeeRefundsIdRequest>;
 
-export type GetApplicationFeesIdRequestExpandList = ReadonlyArray<string>;
+export type GetApplicationFeesIdRequestExpandList = Array<string>;
 export const GetApplicationFeesIdRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetApplicationFeesIdRequestExpandList>;
@@ -25688,8 +25658,7 @@ export const GetApplicationFeesIdRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetApplicationFeesIdRequest",
 }) as any as S.Schema<GetApplicationFeesIdRequest>;
 
-export type GetApplicationFeesIdRefundsRequestExpandList =
-  ReadonlyArray<string>;
+export type GetApplicationFeesIdRefundsRequestExpandList = Array<string>;
 export const GetApplicationFeesIdRefundsRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -25728,8 +25697,7 @@ export const GetApplicationFeesIdRefundsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetApplicationFeesIdRefundsRequest>;
 
 /** Details about each object. */
-export type GetApplicationFeesIdRefundsResponseDataList =
-  ReadonlyArray<FeeRefund>;
+export type GetApplicationFeesIdRefundsResponseDataList = Array<FeeRefund>;
 export const GetApplicationFeesIdRefundsResponseDataList =
   /*@__PURE__*/ S.Array(
     FeeRefund,
@@ -25760,7 +25728,7 @@ export const GetApplicationFeesIdRefundsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetApplicationFeesIdRefundsResponse",
 }) as any as S.Schema<GetApplicationFeesIdRefundsResponse>;
 
-export type GetAppsSecretsRequestExpandList = ReadonlyArray<string>;
+export type GetAppsSecretsRequestExpandList = Array<string>;
 export const GetAppsSecretsRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetAppsSecretsRequestExpandList>;
@@ -25872,7 +25840,7 @@ export const AppsSecret = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AppsSecret" }) as any as S.Schema<AppsSecret>;
 
-export type GetAppsSecretsResponseDataList = ReadonlyArray<AppsSecret>;
+export type GetAppsSecretsResponseDataList = Array<AppsSecret>;
 export const GetAppsSecretsResponseDataList = /*@__PURE__*/ S.Array(
   AppsSecret,
 ) as any as S.Schema<GetAppsSecretsResponseDataList>;
@@ -25901,7 +25869,7 @@ export const GetAppsSecretsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetAppsSecretsResponse",
 }) as any as S.Schema<GetAppsSecretsResponse>;
 
-export type GetAppsSecretsFindRequestExpandList = ReadonlyArray<string>;
+export type GetAppsSecretsFindRequestExpandList = Array<string>;
 export const GetAppsSecretsFindRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetAppsSecretsFindRequestExpandList>;
@@ -25950,7 +25918,7 @@ export const GetAppsSecretsFindRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetAppsSecretsFindRequest",
 }) as any as S.Schema<GetAppsSecretsFindRequest>;
 
-export type GetBalanceRequestExpandList = ReadonlyArray<string>;
+export type GetBalanceRequestExpandList = Array<string>;
 export const GetBalanceRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetBalanceRequestExpandList>;
@@ -26008,13 +25976,13 @@ export const BalanceAmount = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BalanceAmount" }) as any as S.Schema<BalanceAmount>;
 
 /** Available funds that you can transfer or pay out automatically by Stripe or explicitly through the [Transfers API](https://api.stripe.com#transfers) or [Payouts API](https://api.stripe.com#payouts). You can find the available balance for each currency and payment type in the `source_types` property. */
-export type BalanceAvailableList = ReadonlyArray<BalanceAmount>;
+export type BalanceAvailableList = Array<BalanceAmount>;
 export const BalanceAvailableList = /*@__PURE__*/ S.Array(
   BalanceAmount,
 ) as any as S.Schema<BalanceAvailableList>;
 
 /** Funds held due to negative balances on connected accounts where [account.controller.requirement_collection](/api/accounts/object#account_object-controller-requirement_collection) is `application`, which includes Custom accounts. You can find the connect reserve balance for each currency and payment type in the `source_types` property. */
-export type BalanceConnectReservedList = ReadonlyArray<BalanceAmount>;
+export type BalanceConnectReservedList = Array<BalanceAmount>;
 export const BalanceConnectReservedList = /*@__PURE__*/ S.Array(
   BalanceAmount,
 ) as any as S.Schema<BalanceConnectReservedList>;
@@ -26037,8 +26005,7 @@ export const BalanceNetAvailable = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BalanceNetAvailable>;
 
 /** Breakdown of balance by destination. */
-export type BalanceAmountNetNetAvailableList =
-  ReadonlyArray<BalanceNetAvailable>;
+export type BalanceAmountNetNetAvailableList = Array<BalanceNetAvailable>;
 export const BalanceAmountNetNetAvailableList = /*@__PURE__*/ S.Array(
   BalanceNetAvailable,
 ) as any as S.Schema<BalanceAmountNetNetAvailableList>;
@@ -26064,13 +26031,13 @@ export const BalanceAmountNet = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BalanceAmountNet>;
 
 /** Funds that you can pay out using Instant Payouts. */
-export type BalanceInstantAvailableList = ReadonlyArray<BalanceAmountNet>;
+export type BalanceInstantAvailableList = Array<BalanceAmountNet>;
 export const BalanceInstantAvailableList = /*@__PURE__*/ S.Array(
   BalanceAmountNet,
 ) as any as S.Schema<BalanceInstantAvailableList>;
 
 /** Funds that are available for use. */
-export type BalanceDetailAvailableList = ReadonlyArray<BalanceAmount>;
+export type BalanceDetailAvailableList = Array<BalanceAmount>;
 export const BalanceDetailAvailableList = /*@__PURE__*/ S.Array(
   BalanceAmount,
 ) as any as S.Schema<BalanceDetailAvailableList>;
@@ -26090,19 +26057,19 @@ export type BalanceObject = "balance";
 export const BalanceObject = /*@__PURE__*/ S.String;
 
 /** Funds that aren't available in the balance yet. You can find the pending balance for each currency and each payment type in the `source_types` property. */
-export type BalancePendingList = ReadonlyArray<BalanceAmount>;
+export type BalancePendingList = Array<BalanceAmount>;
 export const BalancePendingList = /*@__PURE__*/ S.Array(
   BalanceAmount,
 ) as any as S.Schema<BalancePendingList>;
 
 /** Funds that are available for use. */
-export type BalanceDetailUngatedAvailableList = ReadonlyArray<BalanceAmount>;
+export type BalanceDetailUngatedAvailableList = Array<BalanceAmount>;
 export const BalanceDetailUngatedAvailableList = /*@__PURE__*/ S.Array(
   BalanceAmount,
 ) as any as S.Schema<BalanceDetailUngatedAvailableList>;
 
 /** Funds that are pending */
-export type BalanceDetailUngatedPendingList = ReadonlyArray<BalanceAmount>;
+export type BalanceDetailUngatedPendingList = Array<BalanceAmount>;
 export const BalanceDetailUngatedPendingList = /*@__PURE__*/ S.Array(
   BalanceAmount,
 ) as any as S.Schema<BalanceDetailUngatedPendingList>;
@@ -26152,7 +26119,7 @@ export const Balance = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Balance" }) as any as S.Schema<Balance>;
 
-export type GetBalanceSettingsRequestExpandList = ReadonlyArray<string>;
+export type GetBalanceSettingsRequestExpandList = Array<string>;
 export const GetBalanceSettingsRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetBalanceSettingsRequestExpandList>;
@@ -26207,7 +26174,7 @@ export const BalanceSettingsResourceAutomaticTransferRule =
   }) as any as S.Schema<BalanceSettingsResourceAutomaticTransferRule>;
 
 export type BalanceSettingsResourcePayoutsAutomaticTransferRulesByCurrencyValueList =
-  ReadonlyArray<BalanceSettingsResourceAutomaticTransferRule>;
+  Array<BalanceSettingsResourceAutomaticTransferRule>;
 export const BalanceSettingsResourcePayoutsAutomaticTransferRulesByCurrencyValueList =
   /*@__PURE__*/ S.Array(
     BalanceSettingsResourceAutomaticTransferRule,
@@ -26247,7 +26214,7 @@ export const BalanceSettingsResourcePayoutScheduleInterval =
 
 /** The day of the month funds will be paid out. Only shown if `interval` is monthly. Payouts scheduled between the 29th and 31st of the month are sent on the last day of shorter months. */
 export type BalanceSettingsResourcePayoutScheduleMonthlyPayoutDaysList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const BalanceSettingsResourcePayoutScheduleMonthlyPayoutDaysList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -26264,7 +26231,7 @@ export const BalanceSettingsResourcePayoutScheduleWeeklyPayoutDaysItem =
 
 /** The days of the week when available funds are paid out, specified as an array, for example, [`monday`, `tuesday`]. Only shown if `interval` is weekly. */
 export type BalanceSettingsResourcePayoutScheduleWeeklyPayoutDaysList =
-  ReadonlyArray<BalanceSettingsResourcePayoutScheduleWeeklyPayoutDaysItem>;
+  Array<BalanceSettingsResourcePayoutScheduleWeeklyPayoutDaysItem>;
 export const BalanceSettingsResourcePayoutScheduleWeeklyPayoutDaysList =
   /*@__PURE__*/ S.Array(
     BalanceSettingsResourcePayoutScheduleWeeklyPayoutDaysItem,
@@ -26422,7 +26389,7 @@ export type GetBalanceTransactionsRequestCreated =
 export const GetBalanceTransactionsRequestCreated =
   /*@__PURE__*/ S.Unknown as any as S.Schema<GetBalanceTransactionsRequestCreated>;
 
-export type GetBalanceTransactionsRequestExpandList = ReadonlyArray<string>;
+export type GetBalanceTransactionsRequestExpandList = Array<string>;
 export const GetBalanceTransactionsRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetBalanceTransactionsRequestExpandList>;
@@ -26470,8 +26437,7 @@ export const GetBalanceTransactionsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetBalanceTransactionsRequest",
 }) as any as S.Schema<GetBalanceTransactionsRequest>;
 
-export type GetBalanceTransactionsResponseDataList =
-  ReadonlyArray<BalanceTransaction>;
+export type GetBalanceTransactionsResponseDataList = Array<BalanceTransaction>;
 export const GetBalanceTransactionsResponseDataList = /*@__PURE__*/ S.Array(
   BalanceTransaction,
 ) as any as S.Schema<GetBalanceTransactionsResponseDataList>;
@@ -26500,7 +26466,7 @@ export const GetBalanceTransactionsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetBalanceTransactionsResponse",
 }) as any as S.Schema<GetBalanceTransactionsResponse>;
 
-export type GetBalanceTransactionsIdRequestExpandList = ReadonlyArray<string>;
+export type GetBalanceTransactionsIdRequestExpandList = Array<string>;
 export const GetBalanceTransactionsIdRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetBalanceTransactionsIdRequestExpandList>;
@@ -26531,7 +26497,7 @@ export const GetBalanceTransactionsIdRequest = /*@__PURE__*/ S.suspend(() =>
 export type GetBillingAlertsRequestAlertType = "usage_threshold";
 export const GetBillingAlertsRequestAlertType = /*@__PURE__*/ S.String;
 
-export type GetBillingAlertsRequestExpandList = ReadonlyArray<string>;
+export type GetBillingAlertsRequestExpandList = Array<string>;
 export const GetBillingAlertsRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetBillingAlertsRequestExpandList>;
@@ -26606,7 +26572,7 @@ export const ThresholdsResourceUsageAlertFilter = /*@__PURE__*/ S.suspend(() =>
 
 /** The filters allow limiting the scope of this usage alert. You can only specify up to one filter at this time. */
 export type ThresholdsResourceUsageThresholdConfigFiltersList =
-  ReadonlyArray<ThresholdsResourceUsageAlertFilter>;
+  Array<ThresholdsResourceUsageAlertFilter>;
 export const ThresholdsResourceUsageThresholdConfigFiltersList =
   /*@__PURE__*/ S.Array(
     ThresholdsResourceUsageAlertFilter,
@@ -26797,7 +26763,7 @@ export const BillingAlert = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "BillingAlert" }) as any as S.Schema<BillingAlert>;
 
-export type GetBillingAlertsResponseDataList = ReadonlyArray<BillingAlert>;
+export type GetBillingAlertsResponseDataList = Array<BillingAlert>;
 export const GetBillingAlertsResponseDataList = /*@__PURE__*/ S.Array(
   BillingAlert,
 ) as any as S.Schema<GetBillingAlertsResponseDataList>;
@@ -26826,7 +26792,7 @@ export const GetBillingAlertsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetBillingAlertsResponse",
 }) as any as S.Schema<GetBillingAlertsResponse>;
 
-export type GetBillingAlertsIdRequestExpandList = ReadonlyArray<string>;
+export type GetBillingAlertsIdRequestExpandList = Array<string>;
 export const GetBillingAlertsIdRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetBillingAlertsIdRequestExpandList>;
@@ -26852,8 +26818,7 @@ export const GetBillingAlertsIdRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetBillingAlertsIdRequest",
 }) as any as S.Schema<GetBillingAlertsIdRequest>;
 
-export type GetBillingCreditBalanceSummaryRequestExpandList =
-  ReadonlyArray<string>;
+export type GetBillingCreditBalanceSummaryRequestExpandList = Array<string>;
 export const GetBillingCreditBalanceSummaryRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -26881,7 +26846,7 @@ export const GetBillingCreditBalanceSummaryRequestFilterApplicabilityScopePrices
 
 /** A list of prices that the credit grant can apply to. We currently only support the `metered` prices. Cannot be used in combination with `price_type`. Limit 20 prices. */
 export type GetBillingCreditBalanceSummaryRequestFilterApplicabilityScopePricesList =
-  ReadonlyArray<GetBillingCreditBalanceSummaryRequestFilterApplicabilityScopePricesItem>;
+  Array<GetBillingCreditBalanceSummaryRequestFilterApplicabilityScopePricesItem>;
 export const GetBillingCreditBalanceSummaryRequestFilterApplicabilityScopePricesList =
   /*@__PURE__*/ S.Array(
     GetBillingCreditBalanceSummaryRequestFilterApplicabilityScopePricesItem,
@@ -26981,8 +26946,7 @@ export const CreditBalance = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreditBalance" }) as any as S.Schema<CreditBalance>;
 
 /** The billing credit balances. One entry per credit grant currency. If a customer only has credit grants in a single currency, then this will have a single balance entry. */
-export type BillingCreditBalanceSummaryBalancesList =
-  ReadonlyArray<CreditBalance>;
+export type BillingCreditBalanceSummaryBalancesList = Array<CreditBalance>;
 export const BillingCreditBalanceSummaryBalancesList = /*@__PURE__*/ S.Array(
   CreditBalance,
 ) as any as S.Schema<BillingCreditBalanceSummaryBalancesList>;
@@ -27026,7 +26990,7 @@ export const BillingCreditBalanceSummary = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BillingCreditBalanceSummary>;
 
 export type GetBillingCreditBalanceTransactionsRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GetBillingCreditBalanceTransactionsRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -27073,7 +27037,7 @@ export const GetBillingCreditBalanceTransactionsRequest =
   }) as any as S.Schema<GetBillingCreditBalanceTransactionsRequest>;
 
 export type GetBillingCreditBalanceTransactionsResponseDataList =
-  ReadonlyArray<BillingCreditBalanceTransaction>;
+  Array<BillingCreditBalanceTransaction>;
 export const GetBillingCreditBalanceTransactionsResponseDataList =
   /*@__PURE__*/ S.Array(
     BillingCreditBalanceTransaction,
@@ -27106,7 +27070,7 @@ export const GetBillingCreditBalanceTransactionsResponse =
   }) as any as S.Schema<GetBillingCreditBalanceTransactionsResponse>;
 
 export type GetBillingCreditBalanceTransactionsIdRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GetBillingCreditBalanceTransactionsIdRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -27137,7 +27101,7 @@ export const GetBillingCreditBalanceTransactionsIdRequest =
     identifier: "GetBillingCreditBalanceTransactionsIdRequest",
   }) as any as S.Schema<GetBillingCreditBalanceTransactionsIdRequest>;
 
-export type GetBillingCreditGrantsRequestExpandList = ReadonlyArray<string>;
+export type GetBillingCreditGrantsRequestExpandList = Array<string>;
 export const GetBillingCreditGrantsRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetBillingCreditGrantsRequestExpandList>;
@@ -27176,8 +27140,7 @@ export const GetBillingCreditGrantsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetBillingCreditGrantsRequest",
 }) as any as S.Schema<GetBillingCreditGrantsRequest>;
 
-export type GetBillingCreditGrantsResponseDataList =
-  ReadonlyArray<BillingCreditGrant>;
+export type GetBillingCreditGrantsResponseDataList = Array<BillingCreditGrant>;
 export const GetBillingCreditGrantsResponseDataList = /*@__PURE__*/ S.Array(
   BillingCreditGrant,
 ) as any as S.Schema<GetBillingCreditGrantsResponseDataList>;
@@ -27206,7 +27169,7 @@ export const GetBillingCreditGrantsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetBillingCreditGrantsResponse",
 }) as any as S.Schema<GetBillingCreditGrantsResponse>;
 
-export type GetBillingCreditGrantsIdRequestExpandList = ReadonlyArray<string>;
+export type GetBillingCreditGrantsIdRequestExpandList = Array<string>;
 export const GetBillingCreditGrantsIdRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetBillingCreditGrantsIdRequestExpandList>;
@@ -27235,7 +27198,7 @@ export const GetBillingCreditGrantsIdRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetBillingCreditGrantsIdRequest",
 }) as any as S.Schema<GetBillingCreditGrantsIdRequest>;
 
-export type GetBillingMetersRequestExpandList = ReadonlyArray<string>;
+export type GetBillingMetersRequestExpandList = Array<string>;
 export const GetBillingMetersRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetBillingMetersRequestExpandList>;
@@ -27274,7 +27237,7 @@ export const GetBillingMetersRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetBillingMetersRequest",
 }) as any as S.Schema<GetBillingMetersRequest>;
 
-export type GetBillingMetersResponseDataList = ReadonlyArray<BillingMeter>;
+export type GetBillingMetersResponseDataList = Array<BillingMeter>;
 export const GetBillingMetersResponseDataList = /*@__PURE__*/ S.Array(
   BillingMeter,
 ) as any as S.Schema<GetBillingMetersResponseDataList>;
@@ -27303,7 +27266,7 @@ export const GetBillingMetersResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetBillingMetersResponse",
 }) as any as S.Schema<GetBillingMetersResponse>;
 
-export type GetBillingMetersIdRequestExpandList = ReadonlyArray<string>;
+export type GetBillingMetersIdRequestExpandList = Array<string>;
 export const GetBillingMetersIdRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetBillingMetersIdRequestExpandList>;
@@ -27329,8 +27292,7 @@ export const GetBillingMetersIdRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetBillingMetersIdRequest",
 }) as any as S.Schema<GetBillingMetersIdRequest>;
 
-export type GetBillingMetersIdEventSummariesRequestExpandList =
-  ReadonlyArray<string>;
+export type GetBillingMetersIdEventSummariesRequestExpandList = Array<string>;
 export const GetBillingMetersIdEventSummariesRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -27430,7 +27392,7 @@ export const BillingMeterEventSummary = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BillingMeterEventSummary>;
 
 export type GetBillingMetersIdEventSummariesResponseDataList =
-  ReadonlyArray<BillingMeterEventSummary>;
+  Array<BillingMeterEventSummary>;
 export const GetBillingMetersIdEventSummariesResponseDataList =
   /*@__PURE__*/ S.Array(
     BillingMeterEventSummary,
@@ -27462,8 +27424,7 @@ export const GetBillingMetersIdEventSummariesResponse = /*@__PURE__*/ S.suspend(
   identifier: "GetBillingMetersIdEventSummariesResponse",
 }) as any as S.Schema<GetBillingMetersIdEventSummariesResponse>;
 
-export type GetBillingPortalConfigurationsRequestExpandList =
-  ReadonlyArray<string>;
+export type GetBillingPortalConfigurationsRequestExpandList = Array<string>;
 export const GetBillingPortalConfigurationsRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -27543,7 +27504,7 @@ export const PortalCustomerUpdateAllowedUpdatesItem = /*@__PURE__*/ S.String;
 
 /** The types of customer updates that are supported. When empty, customers are not updateable. */
 export type PortalCustomerUpdateAllowedUpdatesList =
-  ReadonlyArray<PortalCustomerUpdateAllowedUpdatesItem>;
+  Array<PortalCustomerUpdateAllowedUpdatesItem>;
 export const PortalCustomerUpdateAllowedUpdatesList = /*@__PURE__*/ S.Array(
   PortalCustomerUpdateAllowedUpdatesItem,
 ) as any as S.Schema<PortalCustomerUpdateAllowedUpdatesList>;
@@ -27604,7 +27565,7 @@ export const PortalSubscriptionCancellationReasonOptionsItem =
 
 /** Which cancellation reasons will be given as options to the customer. */
 export type PortalSubscriptionCancellationReasonOptionsList =
-  ReadonlyArray<PortalSubscriptionCancellationReasonOptionsItem>;
+  Array<PortalSubscriptionCancellationReasonOptionsItem>;
 export const PortalSubscriptionCancellationReasonOptionsList =
   /*@__PURE__*/ S.Array(
     PortalSubscriptionCancellationReasonOptionsItem,
@@ -27671,7 +27632,7 @@ export const PortalSubscriptionUpdateDefaultAllowedUpdatesItem =
 
 /** The types of subscription updates that are supported for items listed in the `products` attribute. When empty, subscriptions are not updateable. */
 export type PortalSubscriptionUpdateDefaultAllowedUpdatesList =
-  ReadonlyArray<PortalSubscriptionUpdateDefaultAllowedUpdatesItem>;
+  Array<PortalSubscriptionUpdateDefaultAllowedUpdatesItem>;
 export const PortalSubscriptionUpdateDefaultAllowedUpdatesList =
   /*@__PURE__*/ S.Array(
     PortalSubscriptionUpdateDefaultAllowedUpdatesItem,
@@ -27697,7 +27658,7 @@ export const PortalSubscriptionUpdateProductAdjustableQuantity =
   }) as any as S.Schema<PortalSubscriptionUpdateProductAdjustableQuantity>;
 
 /** The list of price IDs which, when subscribed to, a subscription can be updated. */
-export type PortalSubscriptionUpdateProductPricesList = ReadonlyArray<string>;
+export type PortalSubscriptionUpdateProductPricesList = Array<string>;
 export const PortalSubscriptionUpdateProductPricesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PortalSubscriptionUpdateProductPricesList>;
@@ -27721,7 +27682,7 @@ export const PortalSubscriptionUpdateProduct = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of up to 10 products that support subscription updates. */
 export type PortalSubscriptionUpdateProductsList =
-  ReadonlyArray<PortalSubscriptionUpdateProduct>;
+  Array<PortalSubscriptionUpdateProduct>;
 export const PortalSubscriptionUpdateProductsList = /*@__PURE__*/ S.Array(
   PortalSubscriptionUpdateProduct,
 ) as any as S.Schema<PortalSubscriptionUpdateProductsList>;
@@ -27755,7 +27716,7 @@ export const PortalResourceScheduleUpdateAtPeriodEndCondition =
 
 /** List of conditions. When any condition is true, an update will be scheduled at the end of the current period. */
 export type PortalResourceScheduleUpdateAtPeriodEndConditionsList =
-  ReadonlyArray<PortalResourceScheduleUpdateAtPeriodEndCondition>;
+  Array<PortalResourceScheduleUpdateAtPeriodEndCondition>;
 export const PortalResourceScheduleUpdateAtPeriodEndConditionsList =
   /*@__PURE__*/ S.Array(
     PortalResourceScheduleUpdateAtPeriodEndCondition,
@@ -27905,7 +27866,7 @@ export const BillingPortalConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BillingPortalConfiguration>;
 
 export type GetBillingPortalConfigurationsResponseDataList =
-  ReadonlyArray<BillingPortalConfiguration>;
+  Array<BillingPortalConfiguration>;
 export const GetBillingPortalConfigurationsResponseDataList =
   /*@__PURE__*/ S.Array(
     BillingPortalConfiguration,
@@ -27938,7 +27899,7 @@ export const GetBillingPortalConfigurationsResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GetBillingPortalConfigurationsResponse>;
 
 export type GetBillingPortalConfigurationsConfigurationRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GetBillingPortalConfigurationsConfigurationRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -27995,7 +27956,7 @@ export type GetChargesRequestCreated = GetChargesRequestCreatedCase0 | number;
 export const GetChargesRequestCreated =
   /*@__PURE__*/ S.Unknown as any as S.Schema<GetChargesRequestCreated>;
 
-export type GetChargesRequestExpandList = ReadonlyArray<string>;
+export type GetChargesRequestExpandList = Array<string>;
 export const GetChargesRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetChargesRequestExpandList>;
@@ -28040,7 +28001,7 @@ export const GetChargesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetChargesRequest",
 }) as any as S.Schema<GetChargesRequest>;
 
-export type GetChargesResponseDataList = ReadonlyArray<Charge>;
+export type GetChargesResponseDataList = Array<Charge>;
 export const GetChargesResponseDataList = /*@__PURE__*/ S.Array(
   Charge,
 ) as any as S.Schema<GetChargesResponseDataList>;
@@ -28069,7 +28030,7 @@ export const GetChargesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetChargesResponse",
 }) as any as S.Schema<GetChargesResponse>;
 
-export type GetChargesChargeRequestExpandList = ReadonlyArray<string>;
+export type GetChargesChargeRequestExpandList = Array<string>;
 export const GetChargesChargeRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetChargesChargeRequestExpandList>;
@@ -28095,7 +28056,7 @@ export const GetChargesChargeRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetChargesChargeRequest",
 }) as any as S.Schema<GetChargesChargeRequest>;
 
-export type GetChargesChargeRefundsRequestExpandList = ReadonlyArray<string>;
+export type GetChargesChargeRefundsRequestExpandList = Array<string>;
 export const GetChargesChargeRefundsRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetChargesChargeRefundsRequestExpandList>;
@@ -28133,7 +28094,7 @@ export const GetChargesChargeRefundsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetChargesChargeRefundsRequest>;
 
 /** Details about each object. */
-export type GetChargesChargeRefundsResponseDataList = ReadonlyArray<Refund>;
+export type GetChargesChargeRefundsResponseDataList = Array<Refund>;
 export const GetChargesChargeRefundsResponseDataList = /*@__PURE__*/ S.Array(
   Refund,
 ) as any as S.Schema<GetChargesChargeRefundsResponseDataList>;
@@ -28163,8 +28124,7 @@ export const GetChargesChargeRefundsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetChargesChargeRefundsResponse",
 }) as any as S.Schema<GetChargesChargeRefundsResponse>;
 
-export type GetChargesChargeRefundsRefundRequestExpandList =
-  ReadonlyArray<string>;
+export type GetChargesChargeRefundsRefundRequestExpandList = Array<string>;
 export const GetChargesChargeRefundsRefundRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -28196,7 +28156,7 @@ export const GetChargesChargeRefundsRefundRequest = /*@__PURE__*/ S.suspend(
   identifier: "GetChargesChargeRefundsRefundRequest",
 }) as any as S.Schema<GetChargesChargeRefundsRefundRequest>;
 
-export type GetChargesSearchRequestExpandList = ReadonlyArray<string>;
+export type GetChargesSearchRequestExpandList = Array<string>;
 export const GetChargesSearchRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetChargesSearchRequestExpandList>;
@@ -28229,7 +28189,7 @@ export const GetChargesSearchRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetChargesSearchRequest",
 }) as any as S.Schema<GetChargesSearchRequest>;
 
-export type GetChargesSearchResponseDataList = ReadonlyArray<Charge>;
+export type GetChargesSearchResponseDataList = Array<Charge>;
 export const GetChargesSearchResponseDataList = /*@__PURE__*/ S.Array(
   Charge,
 ) as any as S.Schema<GetChargesSearchResponseDataList>;
@@ -28302,7 +28262,7 @@ export const GetCheckoutSessionsRequestCustomerDetails =
     identifier: "GetCheckoutSessionsRequestCustomerDetails",
   }) as any as S.Schema<GetCheckoutSessionsRequestCustomerDetails>;
 
-export type GetCheckoutSessionsRequestExpandList = ReadonlyArray<string>;
+export type GetCheckoutSessionsRequestExpandList = Array<string>;
 export const GetCheckoutSessionsRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetCheckoutSessionsRequestExpandList>;
@@ -28699,7 +28659,7 @@ export const PaymentPagesCheckoutSessionCustomFieldsOption =
 
 /** The options available for the customer to select. Up to 200 options allowed. */
 export type PaymentPagesCheckoutSessionCustomFieldsDropdownOptionsList =
-  ReadonlyArray<PaymentPagesCheckoutSessionCustomFieldsOption>;
+  Array<PaymentPagesCheckoutSessionCustomFieldsOption>;
 export const PaymentPagesCheckoutSessionCustomFieldsDropdownOptionsList =
   /*@__PURE__*/ S.Array(
     PaymentPagesCheckoutSessionCustomFieldsOption,
@@ -28826,7 +28786,7 @@ export const PaymentPagesCheckoutSessionCustomFields = /*@__PURE__*/ S.suspend(
 
 /** Collect additional information from your customer using custom fields. Up to 3 fields are supported. You can't set this parameter if `ui_mode` is `custom`. */
 export type CheckoutSessionCustomFieldsList =
-  ReadonlyArray<PaymentPagesCheckoutSessionCustomFields>;
+  Array<PaymentPagesCheckoutSessionCustomFields>;
 export const CheckoutSessionCustomFieldsList = /*@__PURE__*/ S.Array(
   PaymentPagesCheckoutSessionCustomFields,
 ) as any as S.Schema<CheckoutSessionCustomFieldsList>;
@@ -29023,7 +28983,7 @@ export const PaymentPagesCheckoutSessionTaxId = /*@__PURE__*/ S.suspend(() =>
 
 /** The customer’s tax IDs after a completed Checkout Session. */
 export type PaymentPagesCheckoutSessionCustomerDetailsTaxIdsList =
-  ReadonlyArray<PaymentPagesCheckoutSessionTaxId>;
+  Array<PaymentPagesCheckoutSessionTaxId>;
 export const PaymentPagesCheckoutSessionCustomerDetailsTaxIdsList =
   /*@__PURE__*/ S.Array(
     PaymentPagesCheckoutSessionTaxId,
@@ -29092,14 +29052,13 @@ export const PaymentPagesCheckoutSessionDiscount = /*@__PURE__*/ S.suspend(() =>
 
 /** List of coupons and promotion codes attached to the Checkout Session. */
 export type CheckoutSessionDiscountsList =
-  ReadonlyArray<PaymentPagesCheckoutSessionDiscount>;
+  Array<PaymentPagesCheckoutSessionDiscount>;
 export const CheckoutSessionDiscountsList = /*@__PURE__*/ S.Array(
   PaymentPagesCheckoutSessionDiscount,
 ) as any as S.Schema<CheckoutSessionDiscountsList>;
 
 /** A list of the types of payment methods (e.g., `card`) that should be excluded from this Checkout Session. This should only be used when payment methods for this Checkout Session are managed through the [Stripe Dashboard](https://dashboard.stripe.com/settings/payment_methods). */
-export type CheckoutSessionExcludedPaymentMethodTypesList =
-  ReadonlyArray<string>;
+export type CheckoutSessionExcludedPaymentMethodTypesList = Array<string>;
 export const CheckoutSessionExcludedPaymentMethodTypesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -29119,7 +29078,7 @@ export const PaymentPagesCheckoutSessionInvoiceSettingsAccountTaxIdsItem =
 
 /** The account tax IDs associated with the invoice. */
 export type PaymentPagesCheckoutSessionInvoiceSettingsAccountTaxIdsList =
-  ReadonlyArray<PaymentPagesCheckoutSessionInvoiceSettingsAccountTaxIdsItem>;
+  Array<PaymentPagesCheckoutSessionInvoiceSettingsAccountTaxIdsItem>;
 export const PaymentPagesCheckoutSessionInvoiceSettingsAccountTaxIdsList =
   /*@__PURE__*/ S.Array(
     PaymentPagesCheckoutSessionInvoiceSettingsAccountTaxIdsItem,
@@ -29127,7 +29086,7 @@ export const PaymentPagesCheckoutSessionInvoiceSettingsAccountTaxIdsList =
 
 /** Custom fields displayed on the invoice. */
 export type PaymentPagesCheckoutSessionInvoiceSettingsCustomFieldsList =
-  ReadonlyArray<InvoiceSettingCustomField>;
+  Array<InvoiceSettingCustomField>;
 export const PaymentPagesCheckoutSessionInvoiceSettingsCustomFieldsList =
   /*@__PURE__*/ S.Array(
     InvoiceSettingCustomField,
@@ -29239,7 +29198,7 @@ export const LineItemsDiscountAmount = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LineItemsDiscountAmount>;
 
 /** The discounts applied to the line item. */
-export type ItemDiscountsList = ReadonlyArray<LineItemsDiscountAmount>;
+export type ItemDiscountsList = Array<LineItemsDiscountAmount>;
 export const ItemDiscountsList = /*@__PURE__*/ S.Array(
   LineItemsDiscountAmount,
 ) as any as S.Schema<ItemDiscountsList>;
@@ -29256,7 +29215,7 @@ export type ItemObject = "item";
 export const ItemObject = /*@__PURE__*/ S.String;
 
 /** The taxes applied to the line item. */
-export type ItemTaxesList = ReadonlyArray<LineItemsTaxAmount>;
+export type ItemTaxesList = Array<LineItemsTaxAmount>;
 export const ItemTaxesList = /*@__PURE__*/ S.Array(
   LineItemsTaxAmount,
 ) as any as S.Schema<ItemTaxesList>;
@@ -29311,7 +29270,7 @@ export const Item = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Item" }) as any as S.Schema<Item>;
 
 /** Details about each object. */
-export type CheckoutSessionLineItemsDataList = ReadonlyArray<Item>;
+export type CheckoutSessionLineItemsDataList = Array<Item>;
 export const CheckoutSessionLineItemsDataList = /*@__PURE__*/ S.Array(
   Item,
 ) as any as S.Schema<CheckoutSessionLineItemsDataList>;
@@ -29500,7 +29459,7 @@ export const PaymentPagesCheckoutSessionOptionalItem = /*@__PURE__*/ S.suspend(
 
 /** The optional items presented to the customer at checkout. */
 export type CheckoutSessionOptionalItemsList =
-  ReadonlyArray<PaymentPagesCheckoutSessionOptionalItem>;
+  Array<PaymentPagesCheckoutSessionOptionalItem>;
 export const CheckoutSessionOptionalItemsList = /*@__PURE__*/ S.Array(
   PaymentPagesCheckoutSessionOptionalItem,
 ) as any as S.Schema<CheckoutSessionOptionalItemsList>;
@@ -29661,7 +29620,7 @@ export const PaymentLinksResourceCustomFieldsDropdownOption =
 
 /** The options available for the customer to select. Up to 200 options allowed. */
 export type PaymentLinksResourceCustomFieldsDropdownOptionsList =
-  ReadonlyArray<PaymentLinksResourceCustomFieldsDropdownOption>;
+  Array<PaymentLinksResourceCustomFieldsDropdownOption>;
 export const PaymentLinksResourceCustomFieldsDropdownOptionsList =
   /*@__PURE__*/ S.Array(
     PaymentLinksResourceCustomFieldsDropdownOption,
@@ -29776,7 +29735,7 @@ export const PaymentLinksResourceCustomFields = /*@__PURE__*/ S.suspend(() =>
 
 /** Collect additional information from your customer using custom fields. Up to 3 fields are supported. You can't set this parameter if `ui_mode` is `custom`. */
 export type PaymentLinkCustomFieldsList =
-  ReadonlyArray<PaymentLinksResourceCustomFields>;
+  Array<PaymentLinksResourceCustomFields>;
 export const PaymentLinkCustomFieldsList = /*@__PURE__*/ S.Array(
   PaymentLinksResourceCustomFields,
 ) as any as S.Schema<PaymentLinkCustomFieldsList>;
@@ -29830,7 +29789,7 @@ export const PaymentLinksResourceInvoiceSettingsAccountTaxIdsItem =
 
 /** The account tax IDs associated with the invoice. */
 export type PaymentLinksResourceInvoiceSettingsAccountTaxIdsList =
-  ReadonlyArray<PaymentLinksResourceInvoiceSettingsAccountTaxIdsItem>;
+  Array<PaymentLinksResourceInvoiceSettingsAccountTaxIdsItem>;
 export const PaymentLinksResourceInvoiceSettingsAccountTaxIdsList =
   /*@__PURE__*/ S.Array(
     PaymentLinksResourceInvoiceSettingsAccountTaxIdsItem,
@@ -29838,7 +29797,7 @@ export const PaymentLinksResourceInvoiceSettingsAccountTaxIdsList =
 
 /** A list of up to 4 custom fields to be displayed on the invoice. */
 export type PaymentLinksResourceInvoiceSettingsCustomFieldsList =
-  ReadonlyArray<InvoiceSettingCustomField>;
+  Array<InvoiceSettingCustomField>;
 export const PaymentLinksResourceInvoiceSettingsCustomFieldsList =
   /*@__PURE__*/ S.Array(
     InvoiceSettingCustomField,
@@ -29904,7 +29863,7 @@ export const PaymentLinksResourceInvoiceCreation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PaymentLinksResourceInvoiceCreation>;
 
 /** Details about each object. */
-export type PaymentLinkLineItemsDataList = ReadonlyArray<Item>;
+export type PaymentLinkLineItemsDataList = Array<Item>;
 export const PaymentLinkLineItemsDataList = /*@__PURE__*/ S.Array(
   Item,
 ) as any as S.Schema<PaymentLinkLineItemsDataList>;
@@ -30032,7 +29991,7 @@ export const PaymentLinksResourceOptionalItem = /*@__PURE__*/ S.suspend(() =>
 
 /** The optional items presented to the customer at checkout. */
 export type PaymentLinkOptionalItemsList =
-  ReadonlyArray<PaymentLinksResourceOptionalItem>;
+  Array<PaymentLinksResourceOptionalItem>;
 export const PaymentLinkOptionalItemsList = /*@__PURE__*/ S.Array(
   PaymentLinksResourceOptionalItem,
 ) as any as S.Schema<PaymentLinkOptionalItemsList>;
@@ -30111,7 +30070,7 @@ export const PaymentLinksResourceCardRestrictionsBrandsBlockedItem =
 
 /** The card brands to block. If a customer enters or selects a card belonging to a blocked brand, they can't complete the payment. */
 export type PaymentLinksResourceCardRestrictionsBrandsBlockedList =
-  ReadonlyArray<PaymentLinksResourceCardRestrictionsBrandsBlockedItem>;
+  Array<PaymentLinksResourceCardRestrictionsBrandsBlockedItem>;
 export const PaymentLinksResourceCardRestrictionsBrandsBlockedList =
   /*@__PURE__*/ S.Array(
     PaymentLinksResourceCardRestrictionsBrandsBlockedItem,
@@ -30203,7 +30162,7 @@ export const PaymentLinkPaymentMethodTypesItem = /*@__PURE__*/ S.String;
 
 /** The list of payment method types that customers can use. When `null`, Stripe will dynamically show relevant payment methods you've enabled in your [payment method settings](https://dashboard.stripe.com/settings/payment_methods). */
 export type PaymentLinkPaymentMethodTypesList =
-  ReadonlyArray<PaymentLinkPaymentMethodTypesItem>;
+  Array<PaymentLinkPaymentMethodTypesItem>;
 export const PaymentLinkPaymentMethodTypesList = /*@__PURE__*/ S.Array(
   PaymentLinkPaymentMethodTypesItem,
 ) as any as S.Schema<PaymentLinkPaymentMethodTypesList>;
@@ -30492,7 +30451,7 @@ export const PaymentLinksResourceShippingAddressCollectionAllowedCountriesItem =
 
 /** An array of two-letter ISO country codes representing which countries Checkout should provide as options for shipping locations. Unsupported country codes: `AS, CX, CC, CU, HM, IR, KP, MH, FM, NF, MP, PW, SD, SY, UM, VI`. */
 export type PaymentLinksResourceShippingAddressCollectionAllowedCountriesList =
-  ReadonlyArray<PaymentLinksResourceShippingAddressCollectionAllowedCountriesItem>;
+  Array<PaymentLinksResourceShippingAddressCollectionAllowedCountriesItem>;
 export const PaymentLinksResourceShippingAddressCollectionAllowedCountriesList =
   /*@__PURE__*/ S.Array(
     PaymentLinksResourceShippingAddressCollectionAllowedCountriesItem,
@@ -30536,7 +30495,7 @@ export const PaymentLinksResourceShippingOption = /*@__PURE__*/ S.suspend(() =>
 
 /** The shipping rate options applied to the session. */
 export type PaymentLinkShippingOptionsList =
-  ReadonlyArray<PaymentLinksResourceShippingOption>;
+  Array<PaymentLinksResourceShippingOption>;
 export const PaymentLinkShippingOptionsList = /*@__PURE__*/ S.Array(
   PaymentLinksResourceShippingOption,
 ) as any as S.Schema<PaymentLinkShippingOptionsList>;
@@ -30809,7 +30768,7 @@ export const CheckoutAcssDebitMandateOptionsDefaultForItem =
 
 /** List of Stripe products where this mandate can be selected automatically. Returned when the Session is in `setup` mode. */
 export type CheckoutAcssDebitMandateOptionsDefaultForList =
-  ReadonlyArray<CheckoutAcssDebitMandateOptionsDefaultForItem>;
+  Array<CheckoutAcssDebitMandateOptionsDefaultForItem>;
 export const CheckoutAcssDebitMandateOptionsDefaultForList =
   /*@__PURE__*/ S.Array(
     CheckoutAcssDebitMandateOptionsDefaultForItem,
@@ -31213,7 +31172,7 @@ export const PaymentPagesPrivateCardPaymentMethodOptionsResourceRestrictionsBran
 
 /** The card brands to block. If a customer enters or selects a card belonging to a blocked brand, they can't complete the payment. */
 export type PaymentPagesPrivateCardPaymentMethodOptionsResourceRestrictionsBrandsBlockedList =
-  ReadonlyArray<PaymentPagesPrivateCardPaymentMethodOptionsResourceRestrictionsBrandsBlockedItem>;
+  Array<PaymentPagesPrivateCardPaymentMethodOptionsResourceRestrictionsBrandsBlockedItem>;
 export const PaymentPagesPrivateCardPaymentMethodOptionsResourceRestrictionsBrandsBlockedList =
   /*@__PURE__*/ S.Array(
     PaymentPagesPrivateCardPaymentMethodOptionsResourceRestrictionsBrandsBlockedItem,
@@ -31331,7 +31290,7 @@ export const CheckoutCustomerBalanceBankTransferPaymentMethodOptionsRequestedAdd
 
 /** List of address types that should be returned in the financial_addresses response. If not specified, all valid types will be returned. Permitted values include: `sort_code`, `zengin`, `iban`, or `spei`. */
 export type CheckoutCustomerBalanceBankTransferPaymentMethodOptionsRequestedAddressTypesList =
-  ReadonlyArray<CheckoutCustomerBalanceBankTransferPaymentMethodOptionsRequestedAddressTypesItem>;
+  Array<CheckoutCustomerBalanceBankTransferPaymentMethodOptionsRequestedAddressTypesItem>;
 export const CheckoutCustomerBalanceBankTransferPaymentMethodOptionsRequestedAddressTypesList =
   /*@__PURE__*/ S.Array(
     CheckoutCustomerBalanceBankTransferPaymentMethodOptionsRequestedAddressTypesItem,
@@ -32399,7 +32358,7 @@ export const CheckoutSessionPaymentMethodOptions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CheckoutSessionPaymentMethodOptions>;
 
 /** A list of the types of payment methods (e.g. card) this Checkout Session is allowed to accept. */
-export type CheckoutSessionPaymentMethodTypesList = ReadonlyArray<string>;
+export type CheckoutSessionPaymentMethodTypesList = Array<string>;
 export const CheckoutSessionPaymentMethodTypesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CheckoutSessionPaymentMethodTypesList>;
@@ -32460,7 +32419,7 @@ export const PaymentPagesCheckoutSessionSavedPaymentMethodOptionsAllowRedisplayF
 
 /** Uses the `allow_redisplay` value of each saved payment method to filter the set presented to a returning customer. By default, only saved payment methods with ’allow_redisplay: ‘always’ are shown in Checkout. */
 export type PaymentPagesCheckoutSessionSavedPaymentMethodOptionsAllowRedisplayFiltersList =
-  ReadonlyArray<PaymentPagesCheckoutSessionSavedPaymentMethodOptionsAllowRedisplayFiltersItem>;
+  Array<PaymentPagesCheckoutSessionSavedPaymentMethodOptionsAllowRedisplayFiltersItem>;
 export const PaymentPagesCheckoutSessionSavedPaymentMethodOptionsAllowRedisplayFiltersList =
   /*@__PURE__*/ S.Array(
     PaymentPagesCheckoutSessionSavedPaymentMethodOptionsAllowRedisplayFiltersItem,
@@ -32752,7 +32711,7 @@ export const PaymentPagesCheckoutSessionShippingAddressCollectionAllowedCountrie
 
 /** An array of two-letter ISO country codes representing which countries Checkout should provide as options for shipping locations. Unsupported country codes: `AS, CX, CC, CU, HM, IR, KP, MH, FM, NF, MP, PW, SY, UM, VI`. */
 export type PaymentPagesCheckoutSessionShippingAddressCollectionAllowedCountriesList =
-  ReadonlyArray<PaymentPagesCheckoutSessionShippingAddressCollectionAllowedCountriesItem>;
+  Array<PaymentPagesCheckoutSessionShippingAddressCollectionAllowedCountriesItem>;
 export const PaymentPagesCheckoutSessionShippingAddressCollectionAllowedCountriesList =
   /*@__PURE__*/ S.Array(
     PaymentPagesCheckoutSessionShippingAddressCollectionAllowedCountriesItem,
@@ -32781,7 +32740,7 @@ export const PaymentPagesCheckoutSessionShippingCostShippingRate =
 
 /** The taxes applied to the shipping rate. */
 export type PaymentPagesCheckoutSessionShippingCostTaxesList =
-  ReadonlyArray<LineItemsTaxAmount>;
+  Array<LineItemsTaxAmount>;
 export const PaymentPagesCheckoutSessionShippingCostTaxesList =
   /*@__PURE__*/ S.Array(
     LineItemsTaxAmount,
@@ -32839,7 +32798,7 @@ export const PaymentPagesCheckoutSessionShippingOption =
 
 /** The shipping rate options applied to this Session. */
 export type CheckoutSessionShippingOptionsList =
-  ReadonlyArray<PaymentPagesCheckoutSessionShippingOption>;
+  Array<PaymentPagesCheckoutSessionShippingOption>;
 export const CheckoutSessionShippingOptionsList = /*@__PURE__*/ S.Array(
   PaymentPagesCheckoutSessionShippingOption,
 ) as any as S.Schema<CheckoutSessionShippingOptionsList>;
@@ -32887,7 +32846,7 @@ export const PaymentPagesCheckoutSessionTaxIdCollection =
 
 /** The aggregated discounts. */
 export type PaymentPagesCheckoutSessionTotalDetailsResourceBreakdownDiscountsList =
-  ReadonlyArray<LineItemsDiscountAmount>;
+  Array<LineItemsDiscountAmount>;
 export const PaymentPagesCheckoutSessionTotalDetailsResourceBreakdownDiscountsList =
   /*@__PURE__*/ S.Array(
     LineItemsDiscountAmount,
@@ -32895,7 +32854,7 @@ export const PaymentPagesCheckoutSessionTotalDetailsResourceBreakdownDiscountsLi
 
 /** The aggregated tax amounts by rate. */
 export type PaymentPagesCheckoutSessionTotalDetailsResourceBreakdownTaxesList =
-  ReadonlyArray<LineItemsTaxAmount>;
+  Array<LineItemsTaxAmount>;
 export const PaymentPagesCheckoutSessionTotalDetailsResourceBreakdownTaxesList =
   /*@__PURE__*/ S.Array(
     LineItemsTaxAmount,
@@ -33201,8 +33160,7 @@ export const CheckoutSession = /*@__PURE__*/ S.suspend(() =>
   identifier: "CheckoutSession",
 }) as any as S.Schema<CheckoutSession>;
 
-export type GetCheckoutSessionsResponseDataList =
-  ReadonlyArray<CheckoutSession>;
+export type GetCheckoutSessionsResponseDataList = Array<CheckoutSession>;
 export const GetCheckoutSessionsResponseDataList = /*@__PURE__*/ S.Array(
   CheckoutSession,
 ) as any as S.Schema<GetCheckoutSessionsResponseDataList>;
@@ -33231,7 +33189,7 @@ export const GetCheckoutSessionsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetCheckoutSessionsResponse",
 }) as any as S.Schema<GetCheckoutSessionsResponse>;
 
-export type GetCheckoutSessionsSessionRequestExpandList = ReadonlyArray<string>;
+export type GetCheckoutSessionsSessionRequestExpandList = Array<string>;
 export const GetCheckoutSessionsSessionRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -33261,7 +33219,7 @@ export const GetCheckoutSessionsSessionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetCheckoutSessionsSessionRequest>;
 
 export type GetCheckoutSessionsSessionLineItemsRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GetCheckoutSessionsSessionLineItemsRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -33301,8 +33259,7 @@ export const GetCheckoutSessionsSessionLineItemsRequest =
   }) as any as S.Schema<GetCheckoutSessionsSessionLineItemsRequest>;
 
 /** Details about each object. */
-export type GetCheckoutSessionsSessionLineItemsResponseDataList =
-  ReadonlyArray<Item>;
+export type GetCheckoutSessionsSessionLineItemsResponseDataList = Array<Item>;
 export const GetCheckoutSessionsSessionLineItemsResponseDataList =
   /*@__PURE__*/ S.Array(
     Item,
@@ -33335,7 +33292,7 @@ export const GetCheckoutSessionsSessionLineItemsResponse =
     identifier: "GetCheckoutSessionsSessionLineItemsResponse",
   }) as any as S.Schema<GetCheckoutSessionsSessionLineItemsResponse>;
 
-export type GetClimateOrdersRequestExpandList = ReadonlyArray<string>;
+export type GetClimateOrdersRequestExpandList = Array<string>;
 export const GetClimateOrdersRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetClimateOrdersRequestExpandList>;
@@ -33412,8 +33369,7 @@ export const ClimateRemovalsLocation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ClimateRemovalsLocation>;
 
 /** The locations in which this supplier operates. */
-export type ClimateSupplierLocationsList =
-  ReadonlyArray<ClimateRemovalsLocation>;
+export type ClimateSupplierLocationsList = Array<ClimateRemovalsLocation>;
 export const ClimateSupplierLocationsList = /*@__PURE__*/ S.Array(
   ClimateRemovalsLocation,
 ) as any as S.Schema<ClimateSupplierLocationsList>;
@@ -33487,7 +33443,7 @@ export const ClimateRemovalsOrderDeliveries = /*@__PURE__*/ S.suspend(() =>
 
 /** Details about the delivery of carbon removal for this order. */
 export type ClimateOrderDeliveryDetailsList =
-  ReadonlyArray<ClimateRemovalsOrderDeliveries>;
+  Array<ClimateRemovalsOrderDeliveries>;
 export const ClimateOrderDeliveryDetailsList = /*@__PURE__*/ S.Array(
   ClimateRemovalsOrderDeliveries,
 ) as any as S.Schema<ClimateOrderDeliveryDetailsList>;
@@ -33536,7 +33492,7 @@ export type ClimateProductObject = "climate.product";
 export const ClimateProductObject = /*@__PURE__*/ S.String;
 
 /** The carbon removal suppliers that fulfill orders for this Climate product. */
-export type ClimateProductSuppliersList = ReadonlyArray<ClimateSupplier>;
+export type ClimateProductSuppliersList = Array<ClimateSupplier>;
 export const ClimateProductSuppliersList = /*@__PURE__*/ S.Array(
   ClimateSupplier,
 ) as any as S.Schema<ClimateProductSuppliersList>;
@@ -33663,7 +33619,7 @@ export const ClimateOrder = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ClimateOrder" }) as any as S.Schema<ClimateOrder>;
 
-export type GetClimateOrdersResponseDataList = ReadonlyArray<ClimateOrder>;
+export type GetClimateOrdersResponseDataList = Array<ClimateOrder>;
 export const GetClimateOrdersResponseDataList = /*@__PURE__*/ S.Array(
   ClimateOrder,
 ) as any as S.Schema<GetClimateOrdersResponseDataList>;
@@ -33692,7 +33648,7 @@ export const GetClimateOrdersResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetClimateOrdersResponse",
 }) as any as S.Schema<GetClimateOrdersResponse>;
 
-export type GetClimateOrdersOrderRequestExpandList = ReadonlyArray<string>;
+export type GetClimateOrdersOrderRequestExpandList = Array<string>;
 export const GetClimateOrdersOrderRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetClimateOrdersOrderRequestExpandList>;
@@ -33719,7 +33675,7 @@ export const GetClimateOrdersOrderRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetClimateOrdersOrderRequest",
 }) as any as S.Schema<GetClimateOrdersOrderRequest>;
 
-export type GetClimateProductsRequestExpandList = ReadonlyArray<string>;
+export type GetClimateProductsRequestExpandList = Array<string>;
 export const GetClimateProductsRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetClimateProductsRequestExpandList>;
@@ -33752,7 +33708,7 @@ export const GetClimateProductsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetClimateProductsRequest",
 }) as any as S.Schema<GetClimateProductsRequest>;
 
-export type GetClimateProductsResponseDataList = ReadonlyArray<ClimateProduct>;
+export type GetClimateProductsResponseDataList = Array<ClimateProduct>;
 export const GetClimateProductsResponseDataList = /*@__PURE__*/ S.Array(
   ClimateProduct,
 ) as any as S.Schema<GetClimateProductsResponseDataList>;
@@ -33781,7 +33737,7 @@ export const GetClimateProductsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetClimateProductsResponse",
 }) as any as S.Schema<GetClimateProductsResponse>;
 
-export type GetClimateProductsProductRequestExpandList = ReadonlyArray<string>;
+export type GetClimateProductsProductRequestExpandList = Array<string>;
 export const GetClimateProductsProductRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetClimateProductsProductRequestExpandList>;
@@ -33809,7 +33765,7 @@ export const GetClimateProductsProductRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetClimateProductsProductRequest",
 }) as any as S.Schema<GetClimateProductsProductRequest>;
 
-export type GetClimateSuppliersRequestExpandList = ReadonlyArray<string>;
+export type GetClimateSuppliersRequestExpandList = Array<string>;
 export const GetClimateSuppliersRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetClimateSuppliersRequestExpandList>;
@@ -33842,8 +33798,7 @@ export const GetClimateSuppliersRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetClimateSuppliersRequest",
 }) as any as S.Schema<GetClimateSuppliersRequest>;
 
-export type GetClimateSuppliersResponseDataList =
-  ReadonlyArray<ClimateSupplier>;
+export type GetClimateSuppliersResponseDataList = Array<ClimateSupplier>;
 export const GetClimateSuppliersResponseDataList = /*@__PURE__*/ S.Array(
   ClimateSupplier,
 ) as any as S.Schema<GetClimateSuppliersResponseDataList>;
@@ -33872,8 +33827,7 @@ export const GetClimateSuppliersResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetClimateSuppliersResponse",
 }) as any as S.Schema<GetClimateSuppliersResponse>;
 
-export type GetClimateSuppliersSupplierRequestExpandList =
-  ReadonlyArray<string>;
+export type GetClimateSuppliersSupplierRequestExpandList = Array<string>;
 export const GetClimateSuppliersSupplierRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -33903,7 +33857,7 @@ export const GetClimateSuppliersSupplierRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetClimateSuppliersSupplierRequest>;
 
 export type GetConfirmationTokensConfirmationTokenRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GetConfirmationTokensConfirmationTokenRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -34331,7 +34285,7 @@ export const ConfirmationToken = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConfirmationToken",
 }) as any as S.Schema<ConfirmationToken>;
 
-export type GetCountrySpecsRequestExpandList = ReadonlyArray<string>;
+export type GetCountrySpecsRequestExpandList = Array<string>;
 export const GetCountrySpecsRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetCountrySpecsRequestExpandList>;
@@ -34368,8 +34322,7 @@ export const GetCountrySpecsRequest = /*@__PURE__*/ S.suspend(() =>
 export type CountrySpecObject = "country_spec";
 export const CountrySpecObject = /*@__PURE__*/ S.String;
 
-export type CountrySpecSupportedBankAccountCurrenciesValueList =
-  ReadonlyArray<string>;
+export type CountrySpecSupportedBankAccountCurrenciesValueList = Array<string>;
 export const CountrySpecSupportedBankAccountCurrenciesValueList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -34386,34 +34339,32 @@ export const CountrySpecSupportedBankAccountCurrenciesMap =
   ) as any as S.Schema<CountrySpecSupportedBankAccountCurrenciesMap>;
 
 /** Currencies that can be accepted in the specified country (for payments). */
-export type CountrySpecSupportedPaymentCurrenciesList = ReadonlyArray<string>;
+export type CountrySpecSupportedPaymentCurrenciesList = Array<string>;
 export const CountrySpecSupportedPaymentCurrenciesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CountrySpecSupportedPaymentCurrenciesList>;
 
 /** Payment methods available in the specified country. You may need to enable some payment methods (e.g., [ACH](https://stripe.com/docs/ach)) on your account before they appear in this list. The `stripe` payment method refers to [charging through your platform](https://stripe.com/docs/connect/destination-charges). */
-export type CountrySpecSupportedPaymentMethodsList = ReadonlyArray<string>;
+export type CountrySpecSupportedPaymentMethodsList = Array<string>;
 export const CountrySpecSupportedPaymentMethodsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CountrySpecSupportedPaymentMethodsList>;
 
 /** Countries that can accept transfers from the specified country. */
-export type CountrySpecSupportedTransferCountriesList = ReadonlyArray<string>;
+export type CountrySpecSupportedTransferCountriesList = Array<string>;
 export const CountrySpecSupportedTransferCountriesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CountrySpecSupportedTransferCountriesList>;
 
 /** Additional fields which are only required for some users. */
-export type CountrySpecVerificationFieldDetailsAdditionalList =
-  ReadonlyArray<string>;
+export type CountrySpecVerificationFieldDetailsAdditionalList = Array<string>;
 export const CountrySpecVerificationFieldDetailsAdditionalList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<CountrySpecVerificationFieldDetailsAdditionalList>;
 
 /** Fields which every account must eventually provide. */
-export type CountrySpecVerificationFieldDetailsMinimumList =
-  ReadonlyArray<string>;
+export type CountrySpecVerificationFieldDetailsMinimumList = Array<string>;
 export const CountrySpecVerificationFieldDetailsMinimumList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -34479,7 +34430,7 @@ export const CountrySpec = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CountrySpec" }) as any as S.Schema<CountrySpec>;
 
-export type GetCountrySpecsResponseDataList = ReadonlyArray<CountrySpec>;
+export type GetCountrySpecsResponseDataList = Array<CountrySpec>;
 export const GetCountrySpecsResponseDataList = /*@__PURE__*/ S.Array(
   CountrySpec,
 ) as any as S.Schema<GetCountrySpecsResponseDataList>;
@@ -34508,7 +34459,7 @@ export const GetCountrySpecsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetCountrySpecsResponse",
 }) as any as S.Schema<GetCountrySpecsResponse>;
 
-export type GetCountrySpecsCountryRequestExpandList = ReadonlyArray<string>;
+export type GetCountrySpecsCountryRequestExpandList = Array<string>;
 export const GetCountrySpecsCountryRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetCountrySpecsCountryRequestExpandList>;
@@ -34559,7 +34510,7 @@ export type GetCouponsRequestCreated = GetCouponsRequestCreatedCase0 | number;
 export const GetCouponsRequestCreated =
   /*@__PURE__*/ S.Unknown as any as S.Schema<GetCouponsRequestCreated>;
 
-export type GetCouponsRequestExpandList = ReadonlyArray<string>;
+export type GetCouponsRequestExpandList = Array<string>;
 export const GetCouponsRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetCouponsRequestExpandList>;
@@ -34595,7 +34546,7 @@ export const GetCouponsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetCouponsRequest",
 }) as any as S.Schema<GetCouponsRequest>;
 
-export type GetCouponsResponseDataList = ReadonlyArray<Coupon>;
+export type GetCouponsResponseDataList = Array<Coupon>;
 export const GetCouponsResponseDataList = /*@__PURE__*/ S.Array(
   Coupon,
 ) as any as S.Schema<GetCouponsResponseDataList>;
@@ -34624,7 +34575,7 @@ export const GetCouponsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetCouponsResponse",
 }) as any as S.Schema<GetCouponsResponse>;
 
-export type GetCouponsCouponRequestExpandList = ReadonlyArray<string>;
+export type GetCouponsCouponRequestExpandList = Array<string>;
 export const GetCouponsCouponRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetCouponsCouponRequestExpandList>;
@@ -34677,7 +34628,7 @@ export type GetCreditNotesRequestCreated =
 export const GetCreditNotesRequestCreated =
   /*@__PURE__*/ S.Unknown as any as S.Schema<GetCreditNotesRequestCreated>;
 
-export type GetCreditNotesRequestExpandList = ReadonlyArray<string>;
+export type GetCreditNotesRequestExpandList = Array<string>;
 export const GetCreditNotesRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetCreditNotesRequestExpandList>;
@@ -34842,7 +34793,7 @@ export const CreditNoteCustomerBalanceTransaction =
 
 /** The aggregate amounts calculated per discount for all line items. */
 export type CreditNoteDiscountAmountsList =
-  ReadonlyArray<DiscountsResourceDiscountAmount>;
+  Array<DiscountsResourceDiscountAmount>;
 export const CreditNoteDiscountAmountsList = /*@__PURE__*/ S.Array(
   DiscountsResourceDiscountAmount,
 ) as any as S.Schema<CreditNoteDiscountAmountsList>;
@@ -34854,7 +34805,7 @@ export const CreditNoteInvoice =
 
 /** The amount of discount calculated per discount for this line item */
 export type CreditNoteLineItemDiscountAmountsList =
-  ReadonlyArray<DiscountsResourceDiscountAmount>;
+  Array<DiscountsResourceDiscountAmount>;
 export const CreditNoteLineItemDiscountAmountsList = /*@__PURE__*/ S.Array(
   DiscountsResourceDiscountAmount,
 ) as any as S.Schema<CreditNoteLineItemDiscountAmountsList>;
@@ -34918,20 +34869,20 @@ export const CreditNotesPretaxCreditAmount = /*@__PURE__*/ S.suspend(() =>
 
 /** The pretax credit amounts (ex: discount, credit grants, etc) for this line item. */
 export type CreditNoteLineItemPretaxCreditAmountsList =
-  ReadonlyArray<CreditNotesPretaxCreditAmount>;
+  Array<CreditNotesPretaxCreditAmount>;
 export const CreditNoteLineItemPretaxCreditAmountsList = /*@__PURE__*/ S.Array(
   CreditNotesPretaxCreditAmount,
 ) as any as S.Schema<CreditNoteLineItemPretaxCreditAmountsList>;
 
 /** The tax rates which apply to the line item. */
-export type CreditNoteLineItemTaxRatesList = ReadonlyArray<TaxRate>;
+export type CreditNoteLineItemTaxRatesList = Array<TaxRate>;
 export const CreditNoteLineItemTaxRatesList = /*@__PURE__*/ S.Array(
   TaxRate,
 ) as any as S.Schema<CreditNoteLineItemTaxRatesList>;
 
 /** The tax information of the line item. */
 export type CreditNoteLineItemTaxesList =
-  ReadonlyArray<BillingBillResourceInvoicingTaxesTax>;
+  Array<BillingBillResourceInvoicingTaxesTax>;
 export const CreditNoteLineItemTaxesList = /*@__PURE__*/ S.Array(
   BillingBillResourceInvoicingTaxesTax,
 ) as any as S.Schema<CreditNoteLineItemTaxesList>;
@@ -34999,7 +34950,7 @@ export const CreditNoteLineItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreditNoteLineItem>;
 
 /** Details about each object. */
-export type CreditNoteLinesDataList = ReadonlyArray<CreditNoteLineItem>;
+export type CreditNoteLinesDataList = Array<CreditNoteLineItem>;
 export const CreditNoteLinesDataList = /*@__PURE__*/ S.Array(
   CreditNoteLineItem,
 ) as any as S.Schema<CreditNoteLinesDataList>;
@@ -35043,7 +34994,7 @@ export const CreditNoteObject = /*@__PURE__*/ S.String;
 
 /** The pretax credit amounts (ex: discount, credit grants, etc) for all line items. */
 export type CreditNotePretaxCreditAmountsList =
-  ReadonlyArray<CreditNotesPretaxCreditAmount>;
+  Array<CreditNotesPretaxCreditAmount>;
 export const CreditNotePretaxCreditAmountsList = /*@__PURE__*/ S.Array(
   CreditNotesPretaxCreditAmount,
 ) as any as S.Schema<CreditNotePretaxCreditAmountsList>;
@@ -35102,7 +35053,7 @@ export const CreditNoteRefund = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreditNoteRefund>;
 
 /** Refunds related to this credit note. */
-export type CreditNoteRefundsList = ReadonlyArray<CreditNoteRefund>;
+export type CreditNoteRefundsList = Array<CreditNoteRefund>;
 export const CreditNoteRefundsList = /*@__PURE__*/ S.Array(
   CreditNoteRefund,
 ) as any as S.Schema<CreditNoteRefundsList>;
@@ -35113,7 +35064,7 @@ export const CreditNoteStatus = /*@__PURE__*/ S.String;
 
 /** The aggregate tax information for all line items. */
 export type CreditNoteTotalTaxesList =
-  ReadonlyArray<BillingBillResourceInvoicingTaxesTax>;
+  Array<BillingBillResourceInvoicingTaxesTax>;
 export const CreditNoteTotalTaxesList = /*@__PURE__*/ S.Array(
   BillingBillResourceInvoicingTaxesTax,
 ) as any as S.Schema<CreditNoteTotalTaxesList>;
@@ -35234,7 +35185,7 @@ export const CreditNote = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CreditNote" }) as any as S.Schema<CreditNote>;
 
-export type GetCreditNotesResponseDataList = ReadonlyArray<CreditNote>;
+export type GetCreditNotesResponseDataList = Array<CreditNote>;
 export const GetCreditNotesResponseDataList = /*@__PURE__*/ S.Array(
   CreditNote,
 ) as any as S.Schema<GetCreditNotesResponseDataList>;
@@ -35263,8 +35214,7 @@ export const GetCreditNotesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetCreditNotesResponse",
 }) as any as S.Schema<GetCreditNotesResponse>;
 
-export type GetCreditNotesCreditNoteLinesRequestExpandList =
-  ReadonlyArray<string>;
+export type GetCreditNotesCreditNoteLinesRequestExpandList = Array<string>;
 export const GetCreditNotesCreditNoteLinesRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -35305,7 +35255,7 @@ export const GetCreditNotesCreditNoteLinesRequest = /*@__PURE__*/ S.suspend(
 
 /** Details about each object. */
 export type GetCreditNotesCreditNoteLinesResponseDataList =
-  ReadonlyArray<CreditNoteLineItem>;
+  Array<CreditNoteLineItem>;
 export const GetCreditNotesCreditNoteLinesResponseDataList =
   /*@__PURE__*/ S.Array(
     CreditNoteLineItem,
@@ -35338,7 +35288,7 @@ export const GetCreditNotesCreditNoteLinesResponse = /*@__PURE__*/ S.suspend(
   identifier: "GetCreditNotesCreditNoteLinesResponse",
 }) as any as S.Schema<GetCreditNotesCreditNoteLinesResponse>;
 
-export type GetCreditNotesIdRequestExpandList = ReadonlyArray<string>;
+export type GetCreditNotesIdRequestExpandList = Array<string>;
 export const GetCreditNotesIdRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetCreditNotesIdRequestExpandList>;
@@ -35367,7 +35317,7 @@ export const GetCreditNotesIdRequest = /*@__PURE__*/ S.suspend(() =>
 export type GetCreditNotesPreviewRequestEmailType = "credit_note" | "none";
 export const GetCreditNotesPreviewRequestEmailType = /*@__PURE__*/ S.String;
 
-export type GetCreditNotesPreviewRequestExpandList = ReadonlyArray<string>;
+export type GetCreditNotesPreviewRequestExpandList = Array<string>;
 export const GetCreditNotesPreviewRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetCreditNotesPreviewRequestExpandList>;
@@ -35402,7 +35352,7 @@ export const GetCreditNotesPreviewRequestLinesItemTaxAmountsCase0Item =
   }) as any as S.Schema<GetCreditNotesPreviewRequestLinesItemTaxAmountsCase0Item>;
 
 export type GetCreditNotesPreviewRequestLinesItemTaxAmountsCase0List =
-  ReadonlyArray<GetCreditNotesPreviewRequestLinesItemTaxAmountsCase0Item>;
+  Array<GetCreditNotesPreviewRequestLinesItemTaxAmountsCase0Item>;
 export const GetCreditNotesPreviewRequestLinesItemTaxAmountsCase0List =
   /*@__PURE__*/ S.Array(
     GetCreditNotesPreviewRequestLinesItemTaxAmountsCase0Item,
@@ -35420,7 +35370,7 @@ export const GetCreditNotesPreviewRequestLinesItemTaxAmounts =
   /*@__PURE__*/ S.Unknown as any as S.Schema<GetCreditNotesPreviewRequestLinesItemTaxAmounts>;
 
 export type GetCreditNotesPreviewRequestLinesItemTaxRatesCase0List =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GetCreditNotesPreviewRequestLinesItemTaxRatesCase0List =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -35484,7 +35434,7 @@ export const GetCreditNotesPreviewRequestLinesItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GetCreditNotesPreviewRequestLinesItem>;
 
 export type GetCreditNotesPreviewRequestLinesList =
-  ReadonlyArray<GetCreditNotesPreviewRequestLinesItem>;
+  Array<GetCreditNotesPreviewRequestLinesItem>;
 export const GetCreditNotesPreviewRequestLinesList = /*@__PURE__*/ S.Array(
   GetCreditNotesPreviewRequestLinesItem,
 ) as any as S.Schema<GetCreditNotesPreviewRequestLinesList>;
@@ -35553,7 +35503,7 @@ export const GetCreditNotesPreviewRequestRefundsItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GetCreditNotesPreviewRequestRefundsItem>;
 
 export type GetCreditNotesPreviewRequestRefundsList =
-  ReadonlyArray<GetCreditNotesPreviewRequestRefundsItem>;
+  Array<GetCreditNotesPreviewRequestRefundsItem>;
 export const GetCreditNotesPreviewRequestRefundsList = /*@__PURE__*/ S.Array(
   GetCreditNotesPreviewRequestRefundsItem,
 ) as any as S.Schema<GetCreditNotesPreviewRequestRefundsList>;
@@ -35641,7 +35591,7 @@ export type GetCreditNotesPreviewLinesRequestEmailType = "credit_note" | "none";
 export const GetCreditNotesPreviewLinesRequestEmailType =
   /*@__PURE__*/ S.String;
 
-export type GetCreditNotesPreviewLinesRequestExpandList = ReadonlyArray<string>;
+export type GetCreditNotesPreviewLinesRequestExpandList = Array<string>;
 export const GetCreditNotesPreviewLinesRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -35677,7 +35627,7 @@ export const GetCreditNotesPreviewLinesRequestLinesItemTaxAmountsCase0Item =
   }) as any as S.Schema<GetCreditNotesPreviewLinesRequestLinesItemTaxAmountsCase0Item>;
 
 export type GetCreditNotesPreviewLinesRequestLinesItemTaxAmountsCase0List =
-  ReadonlyArray<GetCreditNotesPreviewLinesRequestLinesItemTaxAmountsCase0Item>;
+  Array<GetCreditNotesPreviewLinesRequestLinesItemTaxAmountsCase0Item>;
 export const GetCreditNotesPreviewLinesRequestLinesItemTaxAmountsCase0List =
   /*@__PURE__*/ S.Array(
     GetCreditNotesPreviewLinesRequestLinesItemTaxAmountsCase0Item,
@@ -35695,7 +35645,7 @@ export const GetCreditNotesPreviewLinesRequestLinesItemTaxAmounts =
   /*@__PURE__*/ S.Unknown as any as S.Schema<GetCreditNotesPreviewLinesRequestLinesItemTaxAmounts>;
 
 export type GetCreditNotesPreviewLinesRequestLinesItemTaxRatesCase0List =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GetCreditNotesPreviewLinesRequestLinesItemTaxRatesCase0List =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -35764,7 +35714,7 @@ export const GetCreditNotesPreviewLinesRequestLinesItem =
   }) as any as S.Schema<GetCreditNotesPreviewLinesRequestLinesItem>;
 
 export type GetCreditNotesPreviewLinesRequestLinesList =
-  ReadonlyArray<GetCreditNotesPreviewLinesRequestLinesItem>;
+  Array<GetCreditNotesPreviewLinesRequestLinesItem>;
 export const GetCreditNotesPreviewLinesRequestLinesList = /*@__PURE__*/ S.Array(
   GetCreditNotesPreviewLinesRequestLinesItem,
 ) as any as S.Schema<GetCreditNotesPreviewLinesRequestLinesList>;
@@ -35835,7 +35785,7 @@ export const GetCreditNotesPreviewLinesRequestRefundsItem =
   }) as any as S.Schema<GetCreditNotesPreviewLinesRequestRefundsItem>;
 
 export type GetCreditNotesPreviewLinesRequestRefundsList =
-  ReadonlyArray<GetCreditNotesPreviewLinesRequestRefundsItem>;
+  Array<GetCreditNotesPreviewLinesRequestRefundsItem>;
 export const GetCreditNotesPreviewLinesRequestRefundsList =
   /*@__PURE__*/ S.Array(
     GetCreditNotesPreviewLinesRequestRefundsItem,
@@ -35935,7 +35885,7 @@ export const GetCreditNotesPreviewLinesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Details about each object. */
 export type GetCreditNotesPreviewLinesResponseDataList =
-  ReadonlyArray<CreditNoteLineItem>;
+  Array<CreditNoteLineItem>;
 export const GetCreditNotesPreviewLinesResponseDataList = /*@__PURE__*/ S.Array(
   CreditNoteLineItem,
 ) as any as S.Schema<GetCreditNotesPreviewLinesResponseDataList>;
@@ -35992,7 +35942,7 @@ export type GetCustomersRequestCreated =
 export const GetCustomersRequestCreated =
   /*@__PURE__*/ S.Unknown as any as S.Schema<GetCustomersRequestCreated>;
 
-export type GetCustomersRequestExpandList = ReadonlyArray<string>;
+export type GetCustomersRequestExpandList = Array<string>;
 export const GetCustomersRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetCustomersRequestExpandList>;
@@ -36034,7 +35984,7 @@ export const GetCustomersRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetCustomersRequest",
 }) as any as S.Schema<GetCustomersRequest>;
 
-export type GetCustomersResponseDataList = ReadonlyArray<Customer>;
+export type GetCustomersResponseDataList = Array<Customer>;
 export const GetCustomersResponseDataList = /*@__PURE__*/ S.Array(
   Customer,
 ) as any as S.Schema<GetCustomersResponseDataList>;
@@ -36063,7 +36013,7 @@ export const GetCustomersResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetCustomersResponse",
 }) as any as S.Schema<GetCustomersResponse>;
 
-export type GetCustomersCustomerRequestExpandList = ReadonlyArray<string>;
+export type GetCustomersCustomerRequestExpandList = Array<string>;
 export const GetCustomersCustomerRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetCustomersCustomerRequestExpandList>;
@@ -36228,7 +36178,7 @@ export const GetCustomersCustomerBalanceTransactionsRequestCreated =
   /*@__PURE__*/ S.Unknown as any as S.Schema<GetCustomersCustomerBalanceTransactionsRequestCreated>;
 
 export type GetCustomersCustomerBalanceTransactionsRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GetCustomersCustomerBalanceTransactionsRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -36279,7 +36229,7 @@ export const GetCustomersCustomerBalanceTransactionsRequest =
 
 /** Details about each object. */
 export type GetCustomersCustomerBalanceTransactionsResponseDataList =
-  ReadonlyArray<CustomerBalanceTransaction>;
+  Array<CustomerBalanceTransaction>;
 export const GetCustomersCustomerBalanceTransactionsResponseDataList =
   /*@__PURE__*/ S.Array(
     CustomerBalanceTransaction,
@@ -36313,7 +36263,7 @@ export const GetCustomersCustomerBalanceTransactionsResponse =
   }) as any as S.Schema<GetCustomersCustomerBalanceTransactionsResponse>;
 
 export type GetCustomersCustomerBalanceTransactionsTransactionRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GetCustomersCustomerBalanceTransactionsTransactionRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -36347,8 +36297,7 @@ export const GetCustomersCustomerBalanceTransactionsTransactionRequest =
     identifier: "GetCustomersCustomerBalanceTransactionsTransactionRequest",
   }) as any as S.Schema<GetCustomersCustomerBalanceTransactionsTransactionRequest>;
 
-export type GetCustomersCustomerCashBalanceRequestExpandList =
-  ReadonlyArray<string>;
+export type GetCustomersCustomerCashBalanceRequestExpandList = Array<string>;
 export const GetCustomersCustomerCashBalanceRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -36379,7 +36328,7 @@ export const GetCustomersCustomerCashBalanceRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GetCustomersCustomerCashBalanceRequest>;
 
 export type GetCustomersCustomerCashBalanceTransactionsRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GetCustomersCustomerCashBalanceTransactionsRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -36766,7 +36715,7 @@ export const CustomerCashBalanceTransaction = /*@__PURE__*/ S.suspend(() =>
 
 /** Details about each object. */
 export type GetCustomersCustomerCashBalanceTransactionsResponseDataList =
-  ReadonlyArray<CustomerCashBalanceTransaction>;
+  Array<CustomerCashBalanceTransaction>;
 export const GetCustomersCustomerCashBalanceTransactionsResponseDataList =
   /*@__PURE__*/ S.Array(
     CustomerCashBalanceTransaction,
@@ -36800,7 +36749,7 @@ export const GetCustomersCustomerCashBalanceTransactionsResponse =
   }) as any as S.Schema<GetCustomersCustomerCashBalanceTransactionsResponse>;
 
 export type GetCustomersCustomerCashBalanceTransactionsTransactionRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GetCustomersCustomerCashBalanceTransactionsTransactionRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -36841,8 +36790,7 @@ export type GetCustomersCustomerPaymentMethodsRequestAllowRedisplay =
 export const GetCustomersCustomerPaymentMethodsRequestAllowRedisplay =
   /*@__PURE__*/ S.String;
 
-export type GetCustomersCustomerPaymentMethodsRequestExpandList =
-  ReadonlyArray<string>;
+export type GetCustomersCustomerPaymentMethodsRequestExpandList = Array<string>;
 export const GetCustomersCustomerPaymentMethodsRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -36953,7 +36901,7 @@ export const GetCustomersCustomerPaymentMethodsRequest =
   }) as any as S.Schema<GetCustomersCustomerPaymentMethodsRequest>;
 
 export type GetCustomersCustomerPaymentMethodsResponseDataList =
-  ReadonlyArray<PaymentMethod>;
+  Array<PaymentMethod>;
 export const GetCustomersCustomerPaymentMethodsResponseDataList =
   /*@__PURE__*/ S.Array(
     PaymentMethod,
@@ -36986,7 +36934,7 @@ export const GetCustomersCustomerPaymentMethodsResponse =
   }) as any as S.Schema<GetCustomersCustomerPaymentMethodsResponse>;
 
 export type GetCustomersCustomerPaymentMethodsPaymentMethodRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GetCustomersCustomerPaymentMethodsPaymentMethodRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -37020,8 +36968,7 @@ export const GetCustomersCustomerPaymentMethodsPaymentMethodRequest =
     identifier: "GetCustomersCustomerPaymentMethodsPaymentMethodRequest",
   }) as any as S.Schema<GetCustomersCustomerPaymentMethodsPaymentMethodRequest>;
 
-export type GetCustomersCustomerSourcesRequestExpandList =
-  ReadonlyArray<string>;
+export type GetCustomersCustomerSourcesRequestExpandList = Array<string>;
 export const GetCustomersCustomerSourcesRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -37063,8 +37010,7 @@ export const GetCustomersCustomerSourcesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetCustomersCustomerSourcesRequest>;
 
 /** Details about each object. */
-export type GetCustomersCustomerSourcesResponseDataList =
-  ReadonlyArray<PaymentSource>;
+export type GetCustomersCustomerSourcesResponseDataList = Array<PaymentSource>;
 export const GetCustomersCustomerSourcesResponseDataList =
   /*@__PURE__*/ S.Array(
     PaymentSource,
@@ -37095,8 +37041,7 @@ export const GetCustomersCustomerSourcesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetCustomersCustomerSourcesResponse",
 }) as any as S.Schema<GetCustomersCustomerSourcesResponse>;
 
-export type GetCustomersCustomerSourcesIdRequestExpandList =
-  ReadonlyArray<string>;
+export type GetCustomersCustomerSourcesIdRequestExpandList = Array<string>;
 export const GetCustomersCustomerSourcesIdRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -37135,7 +37080,7 @@ export const GetCustomersCustomerSourcesIdResponse = /*@__PURE__*/ S.suspend(
   identifier: "GetCustomersCustomerSourcesIdResponse",
 }) as any as S.Schema<GetCustomersCustomerSourcesIdResponse>;
 
-export type GetCustomersCustomerTaxIdsRequestExpandList = ReadonlyArray<string>;
+export type GetCustomersCustomerTaxIdsRequestExpandList = Array<string>;
 export const GetCustomersCustomerTaxIdsRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -37174,7 +37119,7 @@ export const GetCustomersCustomerTaxIdsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetCustomersCustomerTaxIdsRequest>;
 
 /** Details about each object. */
-export type GetCustomersCustomerTaxIdsResponseDataList = ReadonlyArray<TaxId>;
+export type GetCustomersCustomerTaxIdsResponseDataList = Array<TaxId>;
 export const GetCustomersCustomerTaxIdsResponseDataList = /*@__PURE__*/ S.Array(
   TaxId,
 ) as any as S.Schema<GetCustomersCustomerTaxIdsResponseDataList>;
@@ -37204,8 +37149,7 @@ export const GetCustomersCustomerTaxIdsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetCustomersCustomerTaxIdsResponse",
 }) as any as S.Schema<GetCustomersCustomerTaxIdsResponse>;
 
-export type GetCustomersCustomerTaxIdsIdRequestExpandList =
-  ReadonlyArray<string>;
+export type GetCustomersCustomerTaxIdsIdRequestExpandList = Array<string>;
 export const GetCustomersCustomerTaxIdsIdRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -37236,7 +37180,7 @@ export const GetCustomersCustomerTaxIdsIdRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetCustomersCustomerTaxIdsIdRequest",
 }) as any as S.Schema<GetCustomersCustomerTaxIdsIdRequest>;
 
-export type GetCustomersSearchRequestExpandList = ReadonlyArray<string>;
+export type GetCustomersSearchRequestExpandList = Array<string>;
 export const GetCustomersSearchRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetCustomersSearchRequestExpandList>;
@@ -37269,7 +37213,7 @@ export const GetCustomersSearchRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetCustomersSearchRequest",
 }) as any as S.Schema<GetCustomersSearchRequest>;
 
-export type GetCustomersSearchResponseDataList = ReadonlyArray<Customer>;
+export type GetCustomersSearchResponseDataList = Array<Customer>;
 export const GetCustomersSearchResponseDataList = /*@__PURE__*/ S.Array(
   Customer,
 ) as any as S.Schema<GetCustomersSearchResponseDataList>;
@@ -37326,7 +37270,7 @@ export type GetDisputesRequestCreated = GetDisputesRequestCreatedCase0 | number;
 export const GetDisputesRequestCreated =
   /*@__PURE__*/ S.Unknown as any as S.Schema<GetDisputesRequestCreated>;
 
-export type GetDisputesRequestExpandList = ReadonlyArray<string>;
+export type GetDisputesRequestExpandList = Array<string>;
 export const GetDisputesRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetDisputesRequestExpandList>;
@@ -37369,7 +37313,7 @@ export const GetDisputesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetDisputesRequest>;
 
 /** List of zero, one, or two balance transactions that show funds withdrawn and reinstated to your Stripe account as a result of this dispute. */
-export type DisputeBalanceTransactionsList = ReadonlyArray<BalanceTransaction>;
+export type DisputeBalanceTransactionsList = Array<BalanceTransaction>;
 export const DisputeBalanceTransactionsList = /*@__PURE__*/ S.Array(
   BalanceTransaction,
 ) as any as S.Schema<DisputeBalanceTransactionsList>;
@@ -37387,7 +37331,7 @@ export const DisputeEnhancedEligibilityTypesItem = /*@__PURE__*/ S.String;
 
 /** List of eligibility types that are included in `enhanced_evidence`. */
 export type DisputeEnhancedEligibilityTypesList =
-  ReadonlyArray<DisputeEnhancedEligibilityTypesItem>;
+  Array<DisputeEnhancedEligibilityTypesItem>;
 export const DisputeEnhancedEligibilityTypesList = /*@__PURE__*/ S.Array(
   DisputeEnhancedEligibilityTypesItem,
 ) as any as S.Schema<DisputeEnhancedEligibilityTypesList>;
@@ -37530,7 +37474,7 @@ export const DisputeVisaCompellingEvidence3PriorUndisputedTransaction =
 
 /** List of exactly two prior undisputed transaction objects for Visa Compelling Evidence 3.0 evidence submission. */
 export type DisputeEnhancedEvidenceVisaCompellingEvidence3PriorUndisputedTransactionsList =
-  ReadonlyArray<DisputeVisaCompellingEvidence3PriorUndisputedTransaction>;
+  Array<DisputeVisaCompellingEvidence3PriorUndisputedTransaction>;
 export const DisputeEnhancedEvidenceVisaCompellingEvidence3PriorUndisputedTransactionsList =
   /*@__PURE__*/ S.Array(
     DisputeVisaCompellingEvidence3PriorUndisputedTransaction,
@@ -37737,7 +37681,7 @@ export const DisputeEnhancedEligibilityVisaCompellingEvidence3RequiredActionsIte
 
 /** List of actions required to qualify dispute for Visa Compelling Evidence 3.0 evidence submission. */
 export type DisputeEnhancedEligibilityVisaCompellingEvidence3RequiredActionsList =
-  ReadonlyArray<DisputeEnhancedEligibilityVisaCompellingEvidence3RequiredActionsItem>;
+  Array<DisputeEnhancedEligibilityVisaCompellingEvidence3RequiredActionsItem>;
 export const DisputeEnhancedEligibilityVisaCompellingEvidence3RequiredActionsList =
   /*@__PURE__*/ S.Array(
     DisputeEnhancedEligibilityVisaCompellingEvidence3RequiredActionsItem,
@@ -38022,7 +37966,7 @@ export const Dispute = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Dispute" }) as any as S.Schema<Dispute>;
 
-export type GetDisputesResponseDataList = ReadonlyArray<Dispute>;
+export type GetDisputesResponseDataList = Array<Dispute>;
 export const GetDisputesResponseDataList = /*@__PURE__*/ S.Array(
   Dispute,
 ) as any as S.Schema<GetDisputesResponseDataList>;
@@ -38051,7 +37995,7 @@ export const GetDisputesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetDisputesResponse",
 }) as any as S.Schema<GetDisputesResponse>;
 
-export type GetDisputesDisputeRequestExpandList = ReadonlyArray<string>;
+export type GetDisputesDisputeRequestExpandList = Array<string>;
 export const GetDisputesDisputeRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetDisputesDisputeRequestExpandList>;
@@ -38077,8 +38021,7 @@ export const GetDisputesDisputeRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetDisputesDisputeRequest",
 }) as any as S.Schema<GetDisputesDisputeRequest>;
 
-export type GetEntitlementsActiveEntitlementsRequestExpandList =
-  ReadonlyArray<string>;
+export type GetEntitlementsActiveEntitlementsRequestExpandList = Array<string>;
 export const GetEntitlementsActiveEntitlementsRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -38198,7 +38141,7 @@ export const EntitlementsActiveEntitlement = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EntitlementsActiveEntitlement>;
 
 export type GetEntitlementsActiveEntitlementsResponseDataList =
-  ReadonlyArray<EntitlementsActiveEntitlement>;
+  Array<EntitlementsActiveEntitlement>;
 export const GetEntitlementsActiveEntitlementsResponseDataList =
   /*@__PURE__*/ S.Array(
     EntitlementsActiveEntitlement,
@@ -38231,7 +38174,7 @@ export const GetEntitlementsActiveEntitlementsResponse =
   }) as any as S.Schema<GetEntitlementsActiveEntitlementsResponse>;
 
 export type GetEntitlementsActiveEntitlementsIdRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GetEntitlementsActiveEntitlementsIdRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -38262,7 +38205,7 @@ export const GetEntitlementsActiveEntitlementsIdRequest =
     identifier: "GetEntitlementsActiveEntitlementsIdRequest",
   }) as any as S.Schema<GetEntitlementsActiveEntitlementsIdRequest>;
 
-export type GetEntitlementsFeaturesRequestExpandList = ReadonlyArray<string>;
+export type GetEntitlementsFeaturesRequestExpandList = Array<string>;
 export const GetEntitlementsFeaturesRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetEntitlementsFeaturesRequestExpandList>;
@@ -38304,7 +38247,7 @@ export const GetEntitlementsFeaturesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetEntitlementsFeaturesRequest>;
 
 export type GetEntitlementsFeaturesResponseDataList =
-  ReadonlyArray<EntitlementsFeature>;
+  Array<EntitlementsFeature>;
 export const GetEntitlementsFeaturesResponseDataList = /*@__PURE__*/ S.Array(
   EntitlementsFeature,
 ) as any as S.Schema<GetEntitlementsFeaturesResponseDataList>;
@@ -38333,7 +38276,7 @@ export const GetEntitlementsFeaturesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetEntitlementsFeaturesResponse",
 }) as any as S.Schema<GetEntitlementsFeaturesResponse>;
 
-export type GetEntitlementsFeaturesIdRequestExpandList = ReadonlyArray<string>;
+export type GetEntitlementsFeaturesIdRequestExpandList = Array<string>;
 export const GetEntitlementsFeaturesIdRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetEntitlementsFeaturesIdRequestExpandList>;
@@ -38387,12 +38330,12 @@ export type GetEventsRequestCreated = GetEventsRequestCreatedCase0 | number;
 export const GetEventsRequestCreated =
   /*@__PURE__*/ S.Unknown as any as S.Schema<GetEventsRequestCreated>;
 
-export type GetEventsRequestExpandList = ReadonlyArray<string>;
+export type GetEventsRequestExpandList = Array<string>;
 export const GetEventsRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetEventsRequestExpandList>;
 
-export type GetEventsRequestTypesList = ReadonlyArray<string>;
+export type GetEventsRequestTypesList = Array<string>;
 export const GetEventsRequestTypesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetEventsRequestTypesList>;
@@ -38775,7 +38718,7 @@ export const Event = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Event" }) as any as S.Schema<Event>;
 
-export type GetEventsResponseDataList = ReadonlyArray<Event>;
+export type GetEventsResponseDataList = Array<Event>;
 export const GetEventsResponseDataList = /*@__PURE__*/ S.Array(
   Event,
 ) as any as S.Schema<GetEventsResponseDataList>;
@@ -38804,7 +38747,7 @@ export const GetEventsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetEventsResponse",
 }) as any as S.Schema<GetEventsResponse>;
 
-export type GetEventsIdRequestExpandList = ReadonlyArray<string>;
+export type GetEventsIdRequestExpandList = Array<string>;
 export const GetEventsIdRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetEventsIdRequestExpandList>;
@@ -38830,7 +38773,7 @@ export const GetEventsIdRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetEventsIdRequest",
 }) as any as S.Schema<GetEventsIdRequest>;
 
-export type GetExchangeRatesRequestExpandList = ReadonlyArray<string>;
+export type GetExchangeRatesRequestExpandList = Array<string>;
 export const GetExchangeRatesRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetExchangeRatesRequestExpandList>;
@@ -38891,7 +38834,7 @@ export const ExchangeRate = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ExchangeRate" }) as any as S.Schema<ExchangeRate>;
 
-export type GetExchangeRatesResponseDataList = ReadonlyArray<ExchangeRate>;
+export type GetExchangeRatesResponseDataList = Array<ExchangeRate>;
 export const GetExchangeRatesResponseDataList = /*@__PURE__*/ S.Array(
   ExchangeRate,
 ) as any as S.Schema<GetExchangeRatesResponseDataList>;
@@ -38920,7 +38863,7 @@ export const GetExchangeRatesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetExchangeRatesResponse",
 }) as any as S.Schema<GetExchangeRatesResponse>;
 
-export type GetExchangeRatesRateIdRequestExpandList = ReadonlyArray<string>;
+export type GetExchangeRatesRateIdRequestExpandList = Array<string>;
 export const GetExchangeRatesRateIdRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetExchangeRatesRateIdRequestExpandList>;
@@ -38973,7 +38916,7 @@ export type GetFileLinksRequestCreated =
 export const GetFileLinksRequestCreated =
   /*@__PURE__*/ S.Unknown as any as S.Schema<GetFileLinksRequestCreated>;
 
-export type GetFileLinksRequestExpandList = ReadonlyArray<string>;
+export type GetFileLinksRequestExpandList = Array<string>;
 export const GetFileLinksRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetFileLinksRequestExpandList>;
@@ -39016,7 +38959,7 @@ export const GetFileLinksRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetFileLinksRequest>;
 
 /** Details about each object. */
-export type GetFileLinksResponseDataList = ReadonlyArray<FileLink>;
+export type GetFileLinksResponseDataList = Array<FileLink>;
 export const GetFileLinksResponseDataList = /*@__PURE__*/ S.Array(
   FileLink,
 ) as any as S.Schema<GetFileLinksResponseDataList>;
@@ -39046,7 +38989,7 @@ export const GetFileLinksResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetFileLinksResponse",
 }) as any as S.Schema<GetFileLinksResponse>;
 
-export type GetFileLinksLinkRequestExpandList = ReadonlyArray<string>;
+export type GetFileLinksLinkRequestExpandList = Array<string>;
 export const GetFileLinksLinkRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetFileLinksLinkRequestExpandList>;
@@ -39097,7 +39040,7 @@ export type GetFilesRequestCreated = GetFilesRequestCreatedCase0 | number;
 export const GetFilesRequestCreated =
   /*@__PURE__*/ S.Unknown as any as S.Schema<GetFilesRequestCreated>;
 
-export type GetFilesRequestExpandList = ReadonlyArray<string>;
+export type GetFilesRequestExpandList = Array<string>;
 export const GetFilesRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetFilesRequestExpandList>;
@@ -39160,7 +39103,7 @@ export const GetFilesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetFilesRequest",
 }) as any as S.Schema<GetFilesRequest>;
 
-export type GetFilesResponseDataList = ReadonlyArray<File>;
+export type GetFilesResponseDataList = Array<File>;
 export const GetFilesResponseDataList = /*@__PURE__*/ S.Array(
   File,
 ) as any as S.Schema<GetFilesResponseDataList>;
@@ -39189,7 +39132,7 @@ export const GetFilesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetFilesResponse",
 }) as any as S.Schema<GetFilesResponse>;
 
-export type GetFilesFileRequestExpandList = ReadonlyArray<string>;
+export type GetFilesFileRequestExpandList = Array<string>;
 export const GetFilesFileRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetFilesFileRequestExpandList>;
@@ -39234,8 +39177,7 @@ export const GetFinancialConnectionsAccountsRequestAccountHolder =
     identifier: "GetFinancialConnectionsAccountsRequestAccountHolder",
   }) as any as S.Schema<GetFinancialConnectionsAccountsRequestAccountHolder>;
 
-export type GetFinancialConnectionsAccountsRequestExpandList =
-  ReadonlyArray<string>;
+export type GetFinancialConnectionsAccountsRequestExpandList = Array<string>;
 export const GetFinancialConnectionsAccountsRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -39336,7 +39278,7 @@ export const BankConnectionsResourceAccountNumberDetailsSupportedNetworksItem =
 
 /** The payment networks that the account number can be used for. */
 export type BankConnectionsResourceAccountNumberDetailsSupportedNetworksList =
-  ReadonlyArray<BankConnectionsResourceAccountNumberDetailsSupportedNetworksItem>;
+  Array<BankConnectionsResourceAccountNumberDetailsSupportedNetworksItem>;
 export const BankConnectionsResourceAccountNumberDetailsSupportedNetworksList =
   /*@__PURE__*/ S.Array(
     BankConnectionsResourceAccountNumberDetailsSupportedNetworksItem,
@@ -39368,7 +39310,7 @@ export const BankConnectionsResourceAccountNumberDetails =
 
 /** Details about the account numbers. */
 export type FinancialConnectionsAccountAccountNumbersList =
-  ReadonlyArray<BankConnectionsResourceAccountNumberDetails>;
+  Array<BankConnectionsResourceAccountNumberDetails>;
 export const FinancialConnectionsAccountAccountNumbersList =
   /*@__PURE__*/ S.Array(
     BankConnectionsResourceAccountNumberDetails,
@@ -39545,7 +39487,7 @@ export const FinancialConnectionsAccountOwner = /*@__PURE__*/ S.suspend(() =>
 
 /** Details about each object. */
 export type FinancialConnectionsAccountOwnershipOwnersDataList =
-  ReadonlyArray<FinancialConnectionsAccountOwner>;
+  Array<FinancialConnectionsAccountOwner>;
 export const FinancialConnectionsAccountOwnershipOwnersDataList =
   /*@__PURE__*/ S.Array(
     FinancialConnectionsAccountOwner,
@@ -39646,7 +39588,7 @@ export const FinancialConnectionsAccountPermissionsItem =
 
 /** The list of permissions granted by this account. */
 export type FinancialConnectionsAccountPermissionsList =
-  ReadonlyArray<FinancialConnectionsAccountPermissionsItem>;
+  Array<FinancialConnectionsAccountPermissionsItem>;
 export const FinancialConnectionsAccountPermissionsList = /*@__PURE__*/ S.Array(
   FinancialConnectionsAccountPermissionsItem,
 ) as any as S.Schema<FinancialConnectionsAccountPermissionsList>;
@@ -39722,7 +39664,7 @@ export const FinancialConnectionsAccountSubscriptionsItem =
 
 /** The list of data refresh subscriptions requested on this account. */
 export type FinancialConnectionsAccountSubscriptionsList =
-  ReadonlyArray<FinancialConnectionsAccountSubscriptionsItem>;
+  Array<FinancialConnectionsAccountSubscriptionsItem>;
 export const FinancialConnectionsAccountSubscriptionsList =
   /*@__PURE__*/ S.Array(
     FinancialConnectionsAccountSubscriptionsItem,
@@ -39736,7 +39678,7 @@ export const FinancialConnectionsAccountSupportedPaymentMethodTypesItem =
 
 /** The [PaymentMethod type](https://docs.stripe.com/api/payment_methods/object#payment_method_object-type)(s) that can be created from this account. */
 export type FinancialConnectionsAccountSupportedPaymentMethodTypesList =
-  ReadonlyArray<FinancialConnectionsAccountSupportedPaymentMethodTypesItem>;
+  Array<FinancialConnectionsAccountSupportedPaymentMethodTypesItem>;
 export const FinancialConnectionsAccountSupportedPaymentMethodTypesList =
   /*@__PURE__*/ S.Array(
     FinancialConnectionsAccountSupportedPaymentMethodTypesItem,
@@ -39847,7 +39789,7 @@ export const FinancialConnectionsAccount = /*@__PURE__*/ S.suspend(() =>
 
 /** Details about each object. */
 export type GetFinancialConnectionsAccountsResponseDataList =
-  ReadonlyArray<FinancialConnectionsAccount>;
+  Array<FinancialConnectionsAccount>;
 export const GetFinancialConnectionsAccountsResponseDataList =
   /*@__PURE__*/ S.Array(
     FinancialConnectionsAccount,
@@ -39881,7 +39823,7 @@ export const GetFinancialConnectionsAccountsResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GetFinancialConnectionsAccountsResponse>;
 
 export type GetFinancialConnectionsAccountsAccountRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GetFinancialConnectionsAccountsAccountRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -39912,7 +39854,7 @@ export const GetFinancialConnectionsAccountsAccountRequest =
   }) as any as S.Schema<GetFinancialConnectionsAccountsAccountRequest>;
 
 export type GetFinancialConnectionsAccountsAccountOwnersRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GetFinancialConnectionsAccountsAccountOwnersRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -39958,7 +39900,7 @@ export const GetFinancialConnectionsAccountsAccountOwnersRequest =
 
 /** Details about each object. */
 export type GetFinancialConnectionsAccountsAccountOwnersResponseDataList =
-  ReadonlyArray<FinancialConnectionsAccountOwner>;
+  Array<FinancialConnectionsAccountOwner>;
 export const GetFinancialConnectionsAccountsAccountOwnersResponseDataList =
   /*@__PURE__*/ S.Array(
     FinancialConnectionsAccountOwner,
@@ -39992,7 +39934,7 @@ export const GetFinancialConnectionsAccountsAccountOwnersResponse =
   }) as any as S.Schema<GetFinancialConnectionsAccountsAccountOwnersResponse>;
 
 export type GetFinancialConnectionsSessionsSessionRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GetFinancialConnectionsSessionsSessionRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -40024,7 +39966,7 @@ export const GetFinancialConnectionsSessionsSessionRequest =
 
 /** Details about each object. */
 export type FinancialConnectionsSessionAccountsDataList =
-  ReadonlyArray<FinancialConnectionsAccount>;
+  Array<FinancialConnectionsAccount>;
 export const FinancialConnectionsSessionAccountsDataList =
   /*@__PURE__*/ S.Array(
     FinancialConnectionsAccount,
@@ -40063,7 +40005,7 @@ export const BankConnectionsResourceLinkAccountSessionFiltersAccountSubcategorie
 
 /** Restricts the Session to subcategories of accounts that can be linked. Valid subcategories are: `checking`, `savings`, `mortgage`, `line_of_credit`, `credit_card`. */
 export type BankConnectionsResourceLinkAccountSessionFiltersAccountSubcategoriesList =
-  ReadonlyArray<BankConnectionsResourceLinkAccountSessionFiltersAccountSubcategoriesItem>;
+  Array<BankConnectionsResourceLinkAccountSessionFiltersAccountSubcategoriesItem>;
 export const BankConnectionsResourceLinkAccountSessionFiltersAccountSubcategoriesList =
   /*@__PURE__*/ S.Array(
     BankConnectionsResourceLinkAccountSessionFiltersAccountSubcategoriesItem,
@@ -40071,7 +40013,7 @@ export const BankConnectionsResourceLinkAccountSessionFiltersAccountSubcategorie
 
 /** List of countries from which to filter accounts. */
 export type BankConnectionsResourceLinkAccountSessionFiltersCountriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const BankConnectionsResourceLinkAccountSessionFiltersCountriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -40111,7 +40053,7 @@ export const FinancialConnectionsSessionPermissionsItem =
 
 /** Permissions requested for accounts collected during this session. */
 export type FinancialConnectionsSessionPermissionsList =
-  ReadonlyArray<FinancialConnectionsSessionPermissionsItem>;
+  Array<FinancialConnectionsSessionPermissionsItem>;
 export const FinancialConnectionsSessionPermissionsList = /*@__PURE__*/ S.Array(
   FinancialConnectionsSessionPermissionsItem,
 ) as any as S.Schema<FinancialConnectionsSessionPermissionsList>;
@@ -40124,7 +40066,7 @@ export const FinancialConnectionsSessionPrefetchItem = /*@__PURE__*/ S.String;
 
 /** Data features requested to be retrieved upon account creation. */
 export type FinancialConnectionsSessionPrefetchList =
-  ReadonlyArray<FinancialConnectionsSessionPrefetchItem>;
+  Array<FinancialConnectionsSessionPrefetchItem>;
 export const FinancialConnectionsSessionPrefetchList = /*@__PURE__*/ S.Array(
   FinancialConnectionsSessionPrefetchItem,
 ) as any as S.Schema<FinancialConnectionsSessionPrefetchList>;
@@ -40169,7 +40111,7 @@ export const FinancialConnectionsSession = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FinancialConnectionsSession>;
 
 export type GetFinancialConnectionsTransactionsRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GetFinancialConnectionsTransactionsRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -40338,7 +40280,7 @@ export const FinancialConnectionsTransaction = /*@__PURE__*/ S.suspend(() =>
 
 /** Details about each object. */
 export type GetFinancialConnectionsTransactionsResponseDataList =
-  ReadonlyArray<FinancialConnectionsTransaction>;
+  Array<FinancialConnectionsTransaction>;
 export const GetFinancialConnectionsTransactionsResponseDataList =
   /*@__PURE__*/ S.Array(
     FinancialConnectionsTransaction,
@@ -40372,7 +40314,7 @@ export const GetFinancialConnectionsTransactionsResponse =
   }) as any as S.Schema<GetFinancialConnectionsTransactionsResponse>;
 
 export type GetFinancialConnectionsTransactionsTransactionRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GetFinancialConnectionsTransactionsTransactionRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -40425,7 +40367,7 @@ export const GetForwardingRequestsRequestCreated = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetForwardingRequestsRequestCreated",
 }) as any as S.Schema<GetForwardingRequestsRequestCreated>;
 
-export type GetForwardingRequestsRequestExpandList = ReadonlyArray<string>;
+export type GetForwardingRequestsRequestExpandList = Array<string>;
 export const GetForwardingRequestsRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetForwardingRequestsRequestExpandList>;
@@ -40484,7 +40426,7 @@ export const ForwardingRequestReplacementsItem = /*@__PURE__*/ S.String;
 
 /** The field kinds to be replaced in the forwarded request. */
 export type ForwardingRequestReplacementsList =
-  ReadonlyArray<ForwardingRequestReplacementsItem>;
+  Array<ForwardingRequestReplacementsItem>;
 export const ForwardingRequestReplacementsList = /*@__PURE__*/ S.Array(
   ForwardingRequestReplacementsItem,
 ) as any as S.Schema<ForwardingRequestReplacementsList>;
@@ -40522,8 +40464,7 @@ export const ForwardedRequestHeader = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ForwardedRequestHeader>;
 
 /** The headers to include in the forwarded request. Can be omitted if no additional headers (excluding Stripe-generated ones such as the Content-Type header) should be included. */
-export type ForwardedRequestDetailsHeadersList =
-  ReadonlyArray<ForwardedRequestHeader>;
+export type ForwardedRequestDetailsHeadersList = Array<ForwardedRequestHeader>;
 export const ForwardedRequestDetailsHeadersList = /*@__PURE__*/ S.Array(
   ForwardedRequestHeader,
 ) as any as S.Schema<ForwardedRequestDetailsHeadersList>;
@@ -40552,8 +40493,7 @@ export const ForwardedRequestDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ForwardedRequestDetails>;
 
 /** HTTP headers that the destination endpoint returned. */
-export type ForwardedResponseDetailsHeadersList =
-  ReadonlyArray<ForwardedRequestHeader>;
+export type ForwardedResponseDetailsHeadersList = Array<ForwardedRequestHeader>;
 export const ForwardedResponseDetailsHeadersList = /*@__PURE__*/ S.Array(
   ForwardedRequestHeader,
 ) as any as S.Schema<ForwardedResponseDetailsHeadersList>;
@@ -40620,8 +40560,7 @@ export const ForwardingRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ForwardingRequest",
 }) as any as S.Schema<ForwardingRequest>;
 
-export type GetForwardingRequestsResponseDataList =
-  ReadonlyArray<ForwardingRequest>;
+export type GetForwardingRequestsResponseDataList = Array<ForwardingRequest>;
 export const GetForwardingRequestsResponseDataList = /*@__PURE__*/ S.Array(
   ForwardingRequest,
 ) as any as S.Schema<GetForwardingRequestsResponseDataList>;
@@ -40650,7 +40589,7 @@ export const GetForwardingRequestsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetForwardingRequestsResponse",
 }) as any as S.Schema<GetForwardingRequestsResponse>;
 
-export type GetForwardingRequestsIdRequestExpandList = ReadonlyArray<string>;
+export type GetForwardingRequestsIdRequestExpandList = Array<string>;
 export const GetForwardingRequestsIdRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetForwardingRequestsIdRequestExpandList>;
@@ -40706,8 +40645,7 @@ export type GetIdentityVerificationReportsRequestCreated =
 export const GetIdentityVerificationReportsRequestCreated =
   /*@__PURE__*/ S.Unknown as any as S.Schema<GetIdentityVerificationReportsRequestCreated>;
 
-export type GetIdentityVerificationReportsRequestExpandList =
-  ReadonlyArray<string>;
+export type GetIdentityVerificationReportsRequestExpandList = Array<string>;
 export const GetIdentityVerificationReportsRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -40827,7 +40765,7 @@ export const GelatoDataDocumentReportExpirationDate = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GelatoDataDocumentReportExpirationDate>;
 
 /** Array of [File](https://docs.stripe.com/api/files) ids containing images for this document. */
-export type GelatoDocumentReportFilesList = ReadonlyArray<string>;
+export type GelatoDocumentReportFilesList = Array<string>;
 export const GelatoDocumentReportFilesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GelatoDocumentReportFilesList>;
@@ -41064,7 +41002,7 @@ export const GelatoReportDocumentOptionsAllowedTypesItem =
 
 /** Array of strings of allowed identity document types. If the provided identity document isn’t one of the allowed types, the verification check will fail with a document_type_not_allowed error code. */
 export type GelatoReportDocumentOptionsAllowedTypesList =
-  ReadonlyArray<GelatoReportDocumentOptionsAllowedTypesItem>;
+  Array<GelatoReportDocumentOptionsAllowedTypesItem>;
 export const GelatoReportDocumentOptionsAllowedTypesList =
   /*@__PURE__*/ S.Array(
     GelatoReportDocumentOptionsAllowedTypesItem,
@@ -41251,7 +41189,7 @@ export const IdentityVerificationReport = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IdentityVerificationReport>;
 
 export type GetIdentityVerificationReportsResponseDataList =
-  ReadonlyArray<IdentityVerificationReport>;
+  Array<IdentityVerificationReport>;
 export const GetIdentityVerificationReportsResponseDataList =
   /*@__PURE__*/ S.Array(
     IdentityVerificationReport,
@@ -41284,7 +41222,7 @@ export const GetIdentityVerificationReportsResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GetIdentityVerificationReportsResponse>;
 
 export type GetIdentityVerificationReportsReportRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GetIdentityVerificationReportsReportRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -41342,8 +41280,7 @@ export type GetIdentityVerificationSessionsRequestCreated =
 export const GetIdentityVerificationSessionsRequestCreated =
   /*@__PURE__*/ S.Unknown as any as S.Schema<GetIdentityVerificationSessionsRequestCreated>;
 
-export type GetIdentityVerificationSessionsRequestExpandList =
-  ReadonlyArray<string>;
+export type GetIdentityVerificationSessionsRequestExpandList = Array<string>;
 export const GetIdentityVerificationSessionsRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -41475,7 +41412,7 @@ export const GelatoSessionDocumentOptionsAllowedTypesItem =
 
 /** Array of strings of allowed identity document types. If the provided identity document isn’t one of the allowed types, the verification check will fail with a document_type_not_allowed error code. */
 export type GelatoSessionDocumentOptionsAllowedTypesList =
-  ReadonlyArray<GelatoSessionDocumentOptionsAllowedTypesItem>;
+  Array<GelatoSessionDocumentOptionsAllowedTypesItem>;
 export const GelatoSessionDocumentOptionsAllowedTypesList =
   /*@__PURE__*/ S.Array(
     GelatoSessionDocumentOptionsAllowedTypesItem,
@@ -41777,7 +41714,7 @@ export const IdentityVerificationSession = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IdentityVerificationSession>;
 
 export type GetIdentityVerificationSessionsResponseDataList =
-  ReadonlyArray<IdentityVerificationSession>;
+  Array<IdentityVerificationSession>;
 export const GetIdentityVerificationSessionsResponseDataList =
   /*@__PURE__*/ S.Array(
     IdentityVerificationSession,
@@ -41810,7 +41747,7 @@ export const GetIdentityVerificationSessionsResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GetIdentityVerificationSessionsResponse>;
 
 export type GetIdentityVerificationSessionsSessionRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GetIdentityVerificationSessionsSessionRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -41867,7 +41804,7 @@ export type GetInvoiceitemsRequestCreated =
 export const GetInvoiceitemsRequestCreated =
   /*@__PURE__*/ S.Unknown as any as S.Schema<GetInvoiceitemsRequestCreated>;
 
-export type GetInvoiceitemsRequestExpandList = ReadonlyArray<string>;
+export type GetInvoiceitemsRequestExpandList = Array<string>;
 export const GetInvoiceitemsRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetInvoiceitemsRequestExpandList>;
@@ -41925,7 +41862,7 @@ export const InvoiceitemDiscountsItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<InvoiceitemDiscountsItem>;
 
 /** The discounts which apply to the invoice item. Item discounts are applied before invoice discounts. Use `expand[]=discounts` to expand each discount. */
-export type InvoiceitemDiscountsList = ReadonlyArray<InvoiceitemDiscountsItem>;
+export type InvoiceitemDiscountsList = Array<InvoiceitemDiscountsItem>;
 export const InvoiceitemDiscountsList = /*@__PURE__*/ S.Array(
   InvoiceitemDiscountsItem,
 ) as any as S.Schema<InvoiceitemDiscountsList>;
@@ -41988,8 +41925,7 @@ export const BillingBillResourceInvoiceItemParentsInvoiceItemParent =
   }) as any as S.Schema<BillingBillResourceInvoiceItemParentsInvoiceItemParent>;
 
 /** IDs of the debited invoice line item(s) on the invoice that correspond to the credit proration. */
-export type CreditedItemsInvoiceLineItemsInvoiceLineItemsList =
-  ReadonlyArray<string>;
+export type CreditedItemsInvoiceLineItemsInvoiceLineItemsList = Array<string>;
 export const CreditedItemsInvoiceLineItemsInvoiceLineItemsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -42035,7 +41971,7 @@ export const InvoiceItemProrationCreditedItems = /*@__PURE__*/ S.suspend(() =>
 
 /** Discount amounts applied when the proration was created. */
 export type ProrationDetailsDiscountAmountsList =
-  ReadonlyArray<DiscountsResourceDiscountAmount>;
+  Array<DiscountsResourceDiscountAmount>;
 export const ProrationDetailsDiscountAmountsList = /*@__PURE__*/ S.Array(
   DiscountsResourceDiscountAmount,
 ) as any as S.Schema<ProrationDetailsDiscountAmountsList>;
@@ -42056,7 +41992,7 @@ export const ProrationDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProrationDetails>;
 
 /** The tax rates which apply to the invoice item. When set, the `default_tax_rates` on the invoice do not apply to this invoice item. */
-export type InvoiceitemTaxRatesList = ReadonlyArray<TaxRate>;
+export type InvoiceitemTaxRatesList = Array<TaxRate>;
 export const InvoiceitemTaxRatesList = /*@__PURE__*/ S.Array(
   TaxRate,
 ) as any as S.Schema<InvoiceitemTaxRatesList>;
@@ -42141,7 +42077,7 @@ export const Invoiceitem = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Invoiceitem" }) as any as S.Schema<Invoiceitem>;
 
-export type GetInvoiceitemsResponseDataList = ReadonlyArray<Invoiceitem>;
+export type GetInvoiceitemsResponseDataList = Array<Invoiceitem>;
 export const GetInvoiceitemsResponseDataList = /*@__PURE__*/ S.Array(
   Invoiceitem,
 ) as any as S.Schema<GetInvoiceitemsResponseDataList>;
@@ -42170,7 +42106,7 @@ export const GetInvoiceitemsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetInvoiceitemsResponse",
 }) as any as S.Schema<GetInvoiceitemsResponse>;
 
-export type GetInvoiceitemsInvoiceitemRequestExpandList = ReadonlyArray<string>;
+export type GetInvoiceitemsInvoiceitemRequestExpandList = Array<string>;
 export const GetInvoiceitemsInvoiceitemRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -42227,7 +42163,7 @@ export type GetInvoicePaymentsRequestCreated =
 export const GetInvoicePaymentsRequestCreated =
   /*@__PURE__*/ S.Unknown as any as S.Schema<GetInvoicePaymentsRequestCreated>;
 
-export type GetInvoicePaymentsRequestExpandList = ReadonlyArray<string>;
+export type GetInvoicePaymentsRequestExpandList = Array<string>;
 export const GetInvoicePaymentsRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetInvoicePaymentsRequestExpandList>;
@@ -42300,7 +42236,7 @@ export const GetInvoicePaymentsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetInvoicePaymentsRequest>;
 
 /** Details about each object. */
-export type GetInvoicePaymentsResponseDataList = ReadonlyArray<InvoicePayment>;
+export type GetInvoicePaymentsResponseDataList = Array<InvoicePayment>;
 export const GetInvoicePaymentsResponseDataList = /*@__PURE__*/ S.Array(
   InvoicePayment,
 ) as any as S.Schema<GetInvoicePaymentsResponseDataList>;
@@ -42330,8 +42266,7 @@ export const GetInvoicePaymentsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetInvoicePaymentsResponse",
 }) as any as S.Schema<GetInvoicePaymentsResponse>;
 
-export type GetInvoicePaymentsInvoicePaymentRequestExpandList =
-  ReadonlyArray<string>;
+export type GetInvoicePaymentsInvoicePaymentRequestExpandList = Array<string>;
 export const GetInvoicePaymentsInvoicePaymentRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -42361,8 +42296,7 @@ export const GetInvoicePaymentsInvoicePaymentRequest = /*@__PURE__*/ S.suspend(
   identifier: "GetInvoicePaymentsInvoicePaymentRequest",
 }) as any as S.Schema<GetInvoicePaymentsInvoicePaymentRequest>;
 
-export type GetInvoiceRenderingTemplatesRequestExpandList =
-  ReadonlyArray<string>;
+export type GetInvoiceRenderingTemplatesRequestExpandList = Array<string>;
 export const GetInvoiceRenderingTemplatesRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -42458,7 +42392,7 @@ export const InvoiceRenderingTemplate = /*@__PURE__*/ S.suspend(() =>
 
 /** Details about each object. */
 export type GetInvoiceRenderingTemplatesResponseDataList =
-  ReadonlyArray<InvoiceRenderingTemplate>;
+  Array<InvoiceRenderingTemplate>;
 export const GetInvoiceRenderingTemplatesResponseDataList =
   /*@__PURE__*/ S.Array(
     InvoiceRenderingTemplate,
@@ -42492,7 +42426,7 @@ export const GetInvoiceRenderingTemplatesResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GetInvoiceRenderingTemplatesResponse>;
 
 export type GetInvoiceRenderingTemplatesTemplateRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GetInvoiceRenderingTemplatesTemplateRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -42579,7 +42513,7 @@ export type GetInvoicesRequestDueDate = GetInvoicesRequestDueDateCase0 | number;
 export const GetInvoicesRequestDueDate =
   /*@__PURE__*/ S.Unknown as any as S.Schema<GetInvoicesRequestDueDate>;
 
-export type GetInvoicesRequestExpandList = ReadonlyArray<string>;
+export type GetInvoicesRequestExpandList = Array<string>;
 export const GetInvoicesRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetInvoicesRequestExpandList>;
@@ -42642,7 +42576,7 @@ export const GetInvoicesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetInvoicesRequest",
 }) as any as S.Schema<GetInvoicesRequest>;
 
-export type GetInvoicesResponseDataList = ReadonlyArray<Invoice>;
+export type GetInvoicesResponseDataList = Array<Invoice>;
 export const GetInvoicesResponseDataList = /*@__PURE__*/ S.Array(
   Invoice,
 ) as any as S.Schema<GetInvoicesResponseDataList>;
@@ -42671,7 +42605,7 @@ export const GetInvoicesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetInvoicesResponse",
 }) as any as S.Schema<GetInvoicesResponse>;
 
-export type GetInvoicesInvoiceRequestExpandList = ReadonlyArray<string>;
+export type GetInvoicesInvoiceRequestExpandList = Array<string>;
 export const GetInvoicesInvoiceRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetInvoicesInvoiceRequestExpandList>;
@@ -42697,7 +42631,7 @@ export const GetInvoicesInvoiceRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetInvoicesInvoiceRequest",
 }) as any as S.Schema<GetInvoicesInvoiceRequest>;
 
-export type GetInvoicesInvoiceLinesRequestExpandList = ReadonlyArray<string>;
+export type GetInvoicesInvoiceLinesRequestExpandList = Array<string>;
 export const GetInvoicesInvoiceLinesRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetInvoicesInvoiceLinesRequestExpandList>;
@@ -42735,7 +42669,7 @@ export const GetInvoicesInvoiceLinesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetInvoicesInvoiceLinesRequest>;
 
 /** Details about each object. */
-export type GetInvoicesInvoiceLinesResponseDataList = ReadonlyArray<LineItem>;
+export type GetInvoicesInvoiceLinesResponseDataList = Array<LineItem>;
 export const GetInvoicesInvoiceLinesResponseDataList = /*@__PURE__*/ S.Array(
   LineItem,
 ) as any as S.Schema<GetInvoicesInvoiceLinesResponseDataList>;
@@ -42765,7 +42699,7 @@ export const GetInvoicesInvoiceLinesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetInvoicesInvoiceLinesResponse",
 }) as any as S.Schema<GetInvoicesInvoiceLinesResponse>;
 
-export type GetInvoicesSearchRequestExpandList = ReadonlyArray<string>;
+export type GetInvoicesSearchRequestExpandList = Array<string>;
 export const GetInvoicesSearchRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetInvoicesSearchRequestExpandList>;
@@ -42798,7 +42732,7 @@ export const GetInvoicesSearchRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetInvoicesSearchRequest",
 }) as any as S.Schema<GetInvoicesSearchRequest>;
 
-export type GetInvoicesSearchResponseDataList = ReadonlyArray<Invoice>;
+export type GetInvoicesSearchResponseDataList = Array<Invoice>;
 export const GetInvoicesSearchResponseDataList = /*@__PURE__*/ S.Array(
   Invoice,
 ) as any as S.Schema<GetInvoicesSearchResponseDataList>;
@@ -42858,7 +42792,7 @@ export type GetIssuingAuthorizationsRequestCreated =
 export const GetIssuingAuthorizationsRequestCreated =
   /*@__PURE__*/ S.Unknown as any as S.Schema<GetIssuingAuthorizationsRequestCreated>;
 
-export type GetIssuingAuthorizationsRequestExpandList = ReadonlyArray<string>;
+export type GetIssuingAuthorizationsRequestExpandList = Array<string>;
 export const GetIssuingAuthorizationsRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetIssuingAuthorizationsRequestExpandList>;
@@ -42938,7 +42872,7 @@ export const IssuingAuthorizationAuthorizationMethod = /*@__PURE__*/ S.String;
 
 /** List of balance transactions associated with this authorization. */
 export type IssuingAuthorizationBalanceTransactionsList =
-  ReadonlyArray<BalanceTransaction>;
+  Array<BalanceTransaction>;
 export const IssuingAuthorizationBalanceTransactionsList =
   /*@__PURE__*/ S.Array(
     BalanceTransaction,
@@ -43108,7 +43042,7 @@ export const IssuingCardholderPreferredLocalesItem = /*@__PURE__*/ S.String;
 
 /** The cardholder’s preferred locales (languages), ordered by preference. Locales can be `da`, `de`, `en`, `es`, `fr`, `it`, `pl`, or `sv`. This changes the language of the [3D Secure flow](https://docs.stripe.com/issuing/3d-secure) and one-time password messages sent to the cardholder. */
 export type IssuingCardholderPreferredLocalesList =
-  ReadonlyArray<IssuingCardholderPreferredLocalesItem>;
+  Array<IssuingCardholderPreferredLocalesItem>;
 export const IssuingCardholderPreferredLocalesList = /*@__PURE__*/ S.Array(
   IssuingCardholderPreferredLocalesItem,
 ) as any as S.Schema<IssuingCardholderPreferredLocalesList>;
@@ -43136,7 +43070,7 @@ export const IssuingCardholderRequirementsPastDueItem = /*@__PURE__*/ S.String;
 
 /** Array of fields that need to be collected in order to verify and re-enable the cardholder. */
 export type IssuingCardholderRequirementsPastDueList =
-  ReadonlyArray<IssuingCardholderRequirementsPastDueItem>;
+  Array<IssuingCardholderRequirementsPastDueItem>;
 export const IssuingCardholderRequirementsPastDueList = /*@__PURE__*/ S.Array(
   IssuingCardholderRequirementsPastDueItem,
 ) as any as S.Schema<IssuingCardholderRequirementsPastDueList>;
@@ -43164,7 +43098,7 @@ export const IssuingCardholderAuthorizationControlsAllowedCardPresencesItem =
 
 /** Array of card presence statuses from which authorizations will be allowed. Possible options are `present`, `not_present`. All other statuses will be blocked. Cannot be set with `blocked_card_presences`. Provide an empty value to unset this control. */
 export type IssuingCardholderAuthorizationControlsAllowedCardPresencesList =
-  ReadonlyArray<IssuingCardholderAuthorizationControlsAllowedCardPresencesItem>;
+  Array<IssuingCardholderAuthorizationControlsAllowedCardPresencesItem>;
 export const IssuingCardholderAuthorizationControlsAllowedCardPresencesList =
   /*@__PURE__*/ S.Array(
     IssuingCardholderAuthorizationControlsAllowedCardPresencesItem,
@@ -43471,7 +43405,7 @@ export const IssuingCardholderAuthorizationControlsAllowedCategoriesItem =
 
 /** Array of strings containing [categories](https://docs.stripe.com/api#issuing_authorization_object-merchant_data-category) of authorizations to allow. All other categories will be blocked. Cannot be set with `blocked_categories`. */
 export type IssuingCardholderAuthorizationControlsAllowedCategoriesList =
-  ReadonlyArray<IssuingCardholderAuthorizationControlsAllowedCategoriesItem>;
+  Array<IssuingCardholderAuthorizationControlsAllowedCategoriesItem>;
 export const IssuingCardholderAuthorizationControlsAllowedCategoriesList =
   /*@__PURE__*/ S.Array(
     IssuingCardholderAuthorizationControlsAllowedCategoriesItem,
@@ -43479,7 +43413,7 @@ export const IssuingCardholderAuthorizationControlsAllowedCategoriesList =
 
 /** Array of strings containing representing countries from which authorizations will be allowed. Authorizations from merchants in all other countries will be declined. Country codes should be ISO 3166 alpha-2 country codes (e.g. `US`). Cannot be set with `blocked_merchant_countries`. Provide an empty value to unset this control. */
 export type IssuingCardholderAuthorizationControlsAllowedMerchantCountriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const IssuingCardholderAuthorizationControlsAllowedMerchantCountriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -43493,7 +43427,7 @@ export const IssuingCardholderAuthorizationControlsBlockedCardPresencesItem =
 
 /** Array of card presence statuses from which authorizations will be declined. Possible options are `present`, `not_present`. Cannot be set with `allowed_card_presences`. Provide an empty value to unset this control. */
 export type IssuingCardholderAuthorizationControlsBlockedCardPresencesList =
-  ReadonlyArray<IssuingCardholderAuthorizationControlsBlockedCardPresencesItem>;
+  Array<IssuingCardholderAuthorizationControlsBlockedCardPresencesItem>;
 export const IssuingCardholderAuthorizationControlsBlockedCardPresencesList =
   /*@__PURE__*/ S.Array(
     IssuingCardholderAuthorizationControlsBlockedCardPresencesItem,
@@ -43800,7 +43734,7 @@ export const IssuingCardholderAuthorizationControlsBlockedCategoriesItem =
 
 /** Array of strings containing [categories](https://docs.stripe.com/api#issuing_authorization_object-merchant_data-category) of authorizations to decline. All other categories will be allowed. Cannot be set with `allowed_categories`. */
 export type IssuingCardholderAuthorizationControlsBlockedCategoriesList =
-  ReadonlyArray<IssuingCardholderAuthorizationControlsBlockedCategoriesItem>;
+  Array<IssuingCardholderAuthorizationControlsBlockedCategoriesItem>;
 export const IssuingCardholderAuthorizationControlsBlockedCategoriesList =
   /*@__PURE__*/ S.Array(
     IssuingCardholderAuthorizationControlsBlockedCategoriesItem,
@@ -43808,7 +43742,7 @@ export const IssuingCardholderAuthorizationControlsBlockedCategoriesList =
 
 /** Array of strings containing representing countries from which authorizations will be declined. Country codes should be ISO 3166 alpha-2 country codes (e.g. `US`). Cannot be set with `allowed_merchant_countries`. Provide an empty value to unset this control. */
 export type IssuingCardholderAuthorizationControlsBlockedMerchantCountriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const IssuingCardholderAuthorizationControlsBlockedMerchantCountriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -44115,7 +44049,7 @@ export const IssuingCardholderSpendingLimitCategoriesItem =
 
 /** Array of strings containing [categories](https://docs.stripe.com/api#issuing_authorization_object-merchant_data-category) this limit applies to. Omitting this field will apply the limit to all categories. */
 export type IssuingCardholderSpendingLimitCategoriesList =
-  ReadonlyArray<IssuingCardholderSpendingLimitCategoriesItem>;
+  Array<IssuingCardholderSpendingLimitCategoriesItem>;
 export const IssuingCardholderSpendingLimitCategoriesList =
   /*@__PURE__*/ S.Array(
     IssuingCardholderSpendingLimitCategoriesItem,
@@ -44151,7 +44085,7 @@ export const IssuingCardholderSpendingLimit = /*@__PURE__*/ S.suspend(() =>
 
 /** Limit spending with amount-based rules that apply across this cardholder's cards. */
 export type IssuingCardholderAuthorizationControlsSpendingLimitsList =
-  ReadonlyArray<IssuingCardholderSpendingLimit>;
+  Array<IssuingCardholderSpendingLimit>;
 export const IssuingCardholderAuthorizationControlsSpendingLimitsList =
   /*@__PURE__*/ S.Array(
     IssuingCardholderSpendingLimit,
@@ -44485,7 +44419,7 @@ export const IssuingPersonalizationDesignRejectionReasonsCardLogoItem =
 
 /** The reason(s) the card logo was rejected. */
 export type IssuingPersonalizationDesignRejectionReasonsCardLogoList =
-  ReadonlyArray<IssuingPersonalizationDesignRejectionReasonsCardLogoItem>;
+  Array<IssuingPersonalizationDesignRejectionReasonsCardLogoItem>;
 export const IssuingPersonalizationDesignRejectionReasonsCardLogoList =
   /*@__PURE__*/ S.Array(
     IssuingPersonalizationDesignRejectionReasonsCardLogoItem,
@@ -44504,7 +44438,7 @@ export const IssuingPersonalizationDesignRejectionReasonsCarrierTextItem =
 
 /** The reason(s) the carrier text was rejected. */
 export type IssuingPersonalizationDesignRejectionReasonsCarrierTextList =
-  ReadonlyArray<IssuingPersonalizationDesignRejectionReasonsCarrierTextItem>;
+  Array<IssuingPersonalizationDesignRejectionReasonsCarrierTextItem>;
 export const IssuingPersonalizationDesignRejectionReasonsCarrierTextList =
   /*@__PURE__*/ S.Array(
     IssuingPersonalizationDesignRejectionReasonsCarrierTextItem,
@@ -44739,7 +44673,7 @@ export const IssuingCardAuthorizationControlsAllowedCardPresencesItem =
 
 /** Array of card presence statuses from which authorizations will be allowed. Possible options are `present`, `not_present`. All other statuses will be blocked. Cannot be set with `blocked_card_presences`. Provide an empty value to unset this control. */
 export type IssuingCardAuthorizationControlsAllowedCardPresencesList =
-  ReadonlyArray<IssuingCardAuthorizationControlsAllowedCardPresencesItem>;
+  Array<IssuingCardAuthorizationControlsAllowedCardPresencesItem>;
 export const IssuingCardAuthorizationControlsAllowedCardPresencesList =
   /*@__PURE__*/ S.Array(
     IssuingCardAuthorizationControlsAllowedCardPresencesItem,
@@ -45046,7 +44980,7 @@ export const IssuingCardAuthorizationControlsAllowedCategoriesItem =
 
 /** Array of strings containing [categories](https://docs.stripe.com/api#issuing_authorization_object-merchant_data-category) of authorizations to allow. All other categories will be blocked. Cannot be set with `blocked_categories`. */
 export type IssuingCardAuthorizationControlsAllowedCategoriesList =
-  ReadonlyArray<IssuingCardAuthorizationControlsAllowedCategoriesItem>;
+  Array<IssuingCardAuthorizationControlsAllowedCategoriesItem>;
 export const IssuingCardAuthorizationControlsAllowedCategoriesList =
   /*@__PURE__*/ S.Array(
     IssuingCardAuthorizationControlsAllowedCategoriesItem,
@@ -45054,7 +44988,7 @@ export const IssuingCardAuthorizationControlsAllowedCategoriesList =
 
 /** Array of strings containing representing countries from which authorizations will be allowed. Authorizations from merchants in all other countries will be declined. Country codes should be ISO 3166 alpha-2 country codes (e.g. `US`). Cannot be set with `blocked_merchant_countries`. Provide an empty value to unset this control. */
 export type IssuingCardAuthorizationControlsAllowedMerchantCountriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const IssuingCardAuthorizationControlsAllowedMerchantCountriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -45068,7 +45002,7 @@ export const IssuingCardAuthorizationControlsBlockedCardPresencesItem =
 
 /** Array of card presence statuses from which authorizations will be declined. Possible options are `present`, `not_present`. Cannot be set with `allowed_card_presences`. Provide an empty value to unset this control. */
 export type IssuingCardAuthorizationControlsBlockedCardPresencesList =
-  ReadonlyArray<IssuingCardAuthorizationControlsBlockedCardPresencesItem>;
+  Array<IssuingCardAuthorizationControlsBlockedCardPresencesItem>;
 export const IssuingCardAuthorizationControlsBlockedCardPresencesList =
   /*@__PURE__*/ S.Array(
     IssuingCardAuthorizationControlsBlockedCardPresencesItem,
@@ -45375,7 +45309,7 @@ export const IssuingCardAuthorizationControlsBlockedCategoriesItem =
 
 /** Array of strings containing [categories](https://docs.stripe.com/api#issuing_authorization_object-merchant_data-category) of authorizations to decline. All other categories will be allowed. Cannot be set with `allowed_categories`. */
 export type IssuingCardAuthorizationControlsBlockedCategoriesList =
-  ReadonlyArray<IssuingCardAuthorizationControlsBlockedCategoriesItem>;
+  Array<IssuingCardAuthorizationControlsBlockedCategoriesItem>;
 export const IssuingCardAuthorizationControlsBlockedCategoriesList =
   /*@__PURE__*/ S.Array(
     IssuingCardAuthorizationControlsBlockedCategoriesItem,
@@ -45383,7 +45317,7 @@ export const IssuingCardAuthorizationControlsBlockedCategoriesList =
 
 /** Array of strings containing representing countries from which authorizations will be declined. Country codes should be ISO 3166 alpha-2 country codes (e.g. `US`). Cannot be set with `allowed_merchant_countries`. Provide an empty value to unset this control. */
 export type IssuingCardAuthorizationControlsBlockedMerchantCountriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const IssuingCardAuthorizationControlsBlockedMerchantCountriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -45689,7 +45623,7 @@ export const IssuingCardSpendingLimitCategoriesItem = /*@__PURE__*/ S.String;
 
 /** Array of strings containing [categories](https://docs.stripe.com/api#issuing_authorization_object-merchant_data-category) this limit applies to. Omitting this field will apply the limit to all categories. */
 export type IssuingCardSpendingLimitCategoriesList =
-  ReadonlyArray<IssuingCardSpendingLimitCategoriesItem>;
+  Array<IssuingCardSpendingLimitCategoriesItem>;
 export const IssuingCardSpendingLimitCategoriesList = /*@__PURE__*/ S.Array(
   IssuingCardSpendingLimitCategoriesItem,
 ) as any as S.Schema<IssuingCardSpendingLimitCategoriesList>;
@@ -45724,7 +45658,7 @@ export const IssuingCardSpendingLimit = /*@__PURE__*/ S.suspend(() =>
 
 /** Limit spending with amount-based rules that apply across any cards this card replaced (i.e., its `replacement_for` card and _that_ card's `replacement_for` card, up the chain). */
 export type IssuingCardAuthorizationControlsSpendingLimitsList =
-  ReadonlyArray<IssuingCardSpendingLimit>;
+  Array<IssuingCardSpendingLimit>;
 export const IssuingCardAuthorizationControlsSpendingLimitsList =
   /*@__PURE__*/ S.Array(
     IssuingCardSpendingLimit,
@@ -46108,7 +46042,7 @@ export const IssuingAuthorizationFraudChallenge = /*@__PURE__*/ S.suspend(() =>
 
 /** Fraud challenges sent to the cardholder, if this authorization was declined for fraud risk reasons. */
 export type IssuingAuthorizationFraudChallengesList =
-  ReadonlyArray<IssuingAuthorizationFraudChallenge>;
+  Array<IssuingAuthorizationFraudChallenge>;
 export const IssuingAuthorizationFraudChallengesList = /*@__PURE__*/ S.Array(
   IssuingAuthorizationFraudChallenge,
 ) as any as S.Schema<IssuingAuthorizationFraudChallengesList>;
@@ -46332,7 +46266,7 @@ export const IssuingAuthorizationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** History of every time a `pending_request` authorization was approved/declined, either by you directly or by Stripe (e.g. based on your spending_controls). If the merchant changes the authorization by performing an incremental authorization, you can look at this field to see the previous requests for the authorization. This field can be helpful in determining why a given authorization was approved/declined. */
 export type IssuingAuthorizationRequestHistoryList =
-  ReadonlyArray<IssuingAuthorizationRequest>;
+  Array<IssuingAuthorizationRequest>;
 export const IssuingAuthorizationRequestHistoryList = /*@__PURE__*/ S.Array(
   IssuingAuthorizationRequest,
 ) as any as S.Schema<IssuingAuthorizationRequestHistoryList>;
@@ -46489,7 +46423,7 @@ export const IssuingNetworkTokenWalletProviderReasonCodesItem =
 
 /** The reasons for suggested tokenization given by the card network. */
 export type IssuingNetworkTokenWalletProviderReasonCodesList =
-  ReadonlyArray<IssuingNetworkTokenWalletProviderReasonCodesItem>;
+  Array<IssuingNetworkTokenWalletProviderReasonCodesItem>;
 export const IssuingNetworkTokenWalletProviderReasonCodesList =
   /*@__PURE__*/ S.Array(
     IssuingNetworkTokenWalletProviderReasonCodesItem,
@@ -46668,8 +46602,7 @@ export const IssuingTransactionCardholder =
   /*@__PURE__*/ S.Unknown as any as S.Schema<IssuingTransactionCardholder>;
 
 /** List of balance transactions associated with the dispute. */
-export type IssuingDisputeBalanceTransactionsList =
-  ReadonlyArray<BalanceTransaction>;
+export type IssuingDisputeBalanceTransactionsList = Array<BalanceTransaction>;
 export const IssuingDisputeBalanceTransactionsList = /*@__PURE__*/ S.Array(
   BalanceTransaction,
 ) as any as S.Schema<IssuingDisputeBalanceTransactionsList>;
@@ -47316,7 +47249,7 @@ export const IssuingTransactionFlightDataLeg = /*@__PURE__*/ S.suspend(() =>
 
 /** The legs of the trip. */
 export type IssuingTransactionFlightDataSegmentsList =
-  ReadonlyArray<IssuingTransactionFlightDataLeg>;
+  Array<IssuingTransactionFlightDataLeg>;
 export const IssuingTransactionFlightDataSegmentsList = /*@__PURE__*/ S.Array(
   IssuingTransactionFlightDataLeg,
 ) as any as S.Schema<IssuingTransactionFlightDataSegmentsList>;
@@ -47407,7 +47340,7 @@ export const IssuingTransactionReceiptData = /*@__PURE__*/ S.suspend(() =>
 
 /** The line items in the purchase. */
 export type IssuingTransactionPurchaseDetailsReceiptList =
-  ReadonlyArray<IssuingTransactionReceiptData>;
+  Array<IssuingTransactionReceiptData>;
 export const IssuingTransactionPurchaseDetailsReceiptList =
   /*@__PURE__*/ S.Array(
     IssuingTransactionReceiptData,
@@ -47547,23 +47480,20 @@ export const IssuingTransaction = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IssuingTransaction>;
 
 /** List of [transactions](https://docs.stripe.com/api/issuing/transactions) associated with this authorization. */
-export type IssuingAuthorizationTransactionsList =
-  ReadonlyArray<IssuingTransaction>;
+export type IssuingAuthorizationTransactionsList = Array<IssuingTransaction>;
 export const IssuingAuthorizationTransactionsList = /*@__PURE__*/ S.Array(
   IssuingTransaction,
 ) as any as S.Schema<IssuingAuthorizationTransactionsList>;
 
 /** The array of [ReceivedCredits](https://docs.stripe.com/api/treasury/received_credits) associated with this authorization */
-export type IssuingAuthorizationTreasuryReceivedCreditsList =
-  ReadonlyArray<string>;
+export type IssuingAuthorizationTreasuryReceivedCreditsList = Array<string>;
 export const IssuingAuthorizationTreasuryReceivedCreditsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<IssuingAuthorizationTreasuryReceivedCreditsList>;
 
 /** The array of [ReceivedDebits](https://docs.stripe.com/api/treasury/received_debits) associated with this authorization */
-export type IssuingAuthorizationTreasuryReceivedDebitsList =
-  ReadonlyArray<string>;
+export type IssuingAuthorizationTreasuryReceivedDebitsList = Array<string>;
 export const IssuingAuthorizationTreasuryReceivedDebitsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -47805,7 +47735,7 @@ export const IssuingAuthorization = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IssuingAuthorization>;
 
 export type GetIssuingAuthorizationsResponseDataList =
-  ReadonlyArray<IssuingAuthorization>;
+  Array<IssuingAuthorization>;
 export const GetIssuingAuthorizationsResponseDataList = /*@__PURE__*/ S.Array(
   IssuingAuthorization,
 ) as any as S.Schema<GetIssuingAuthorizationsResponseDataList>;
@@ -47835,7 +47765,7 @@ export const GetIssuingAuthorizationsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetIssuingAuthorizationsResponse>;
 
 export type GetIssuingAuthorizationsAuthorizationRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GetIssuingAuthorizationsAuthorizationRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -47893,7 +47823,7 @@ export type GetIssuingCardholdersRequestCreated =
 export const GetIssuingCardholdersRequestCreated =
   /*@__PURE__*/ S.Unknown as any as S.Schema<GetIssuingCardholdersRequestCreated>;
 
-export type GetIssuingCardholdersRequestExpandList = ReadonlyArray<string>;
+export type GetIssuingCardholdersRequestExpandList = Array<string>;
 export const GetIssuingCardholdersRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetIssuingCardholdersRequestExpandList>;
@@ -47950,8 +47880,7 @@ export const GetIssuingCardholdersRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetIssuingCardholdersRequest",
 }) as any as S.Schema<GetIssuingCardholdersRequest>;
 
-export type GetIssuingCardholdersResponseDataList =
-  ReadonlyArray<IssuingCardholder>;
+export type GetIssuingCardholdersResponseDataList = Array<IssuingCardholder>;
 export const GetIssuingCardholdersResponseDataList = /*@__PURE__*/ S.Array(
   IssuingCardholder,
 ) as any as S.Schema<GetIssuingCardholdersResponseDataList>;
@@ -47980,8 +47909,7 @@ export const GetIssuingCardholdersResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetIssuingCardholdersResponse",
 }) as any as S.Schema<GetIssuingCardholdersResponse>;
 
-export type GetIssuingCardholdersCardholderRequestExpandList =
-  ReadonlyArray<string>;
+export type GetIssuingCardholdersCardholderRequestExpandList = Array<string>;
 export const GetIssuingCardholdersCardholderRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -48038,7 +47966,7 @@ export type GetIssuingCardsRequestCreated =
 export const GetIssuingCardsRequestCreated =
   /*@__PURE__*/ S.Unknown as any as S.Schema<GetIssuingCardsRequestCreated>;
 
-export type GetIssuingCardsRequestExpandList = ReadonlyArray<string>;
+export type GetIssuingCardsRequestExpandList = Array<string>;
 export const GetIssuingCardsRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetIssuingCardsRequestExpandList>;
@@ -48100,7 +48028,7 @@ export const GetIssuingCardsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetIssuingCardsRequest",
 }) as any as S.Schema<GetIssuingCardsRequest>;
 
-export type GetIssuingCardsResponseDataList = ReadonlyArray<IssuingCard>;
+export type GetIssuingCardsResponseDataList = Array<IssuingCard>;
 export const GetIssuingCardsResponseDataList = /*@__PURE__*/ S.Array(
   IssuingCard,
 ) as any as S.Schema<GetIssuingCardsResponseDataList>;
@@ -48129,7 +48057,7 @@ export const GetIssuingCardsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetIssuingCardsResponse",
 }) as any as S.Schema<GetIssuingCardsResponse>;
 
-export type GetIssuingCardsCardRequestExpandList = ReadonlyArray<string>;
+export type GetIssuingCardsCardRequestExpandList = Array<string>;
 export const GetIssuingCardsCardRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetIssuingCardsCardRequestExpandList>;
@@ -48183,7 +48111,7 @@ export type GetIssuingDisputesRequestCreated =
 export const GetIssuingDisputesRequestCreated =
   /*@__PURE__*/ S.Unknown as any as S.Schema<GetIssuingDisputesRequestCreated>;
 
-export type GetIssuingDisputesRequestExpandList = ReadonlyArray<string>;
+export type GetIssuingDisputesRequestExpandList = Array<string>;
 export const GetIssuingDisputesRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetIssuingDisputesRequestExpandList>;
@@ -48233,7 +48161,7 @@ export const GetIssuingDisputesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetIssuingDisputesRequest",
 }) as any as S.Schema<GetIssuingDisputesRequest>;
 
-export type GetIssuingDisputesResponseDataList = ReadonlyArray<IssuingDispute>;
+export type GetIssuingDisputesResponseDataList = Array<IssuingDispute>;
 export const GetIssuingDisputesResponseDataList = /*@__PURE__*/ S.Array(
   IssuingDispute,
 ) as any as S.Schema<GetIssuingDisputesResponseDataList>;
@@ -48262,7 +48190,7 @@ export const GetIssuingDisputesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetIssuingDisputesResponse",
 }) as any as S.Schema<GetIssuingDisputesResponse>;
 
-export type GetIssuingDisputesDisputeRequestExpandList = ReadonlyArray<string>;
+export type GetIssuingDisputesDisputeRequestExpandList = Array<string>;
 export const GetIssuingDisputesDisputeRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetIssuingDisputesDisputeRequestExpandList>;
@@ -48290,15 +48218,14 @@ export const GetIssuingDisputesDisputeRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetIssuingDisputesDisputeRequest",
 }) as any as S.Schema<GetIssuingDisputesDisputeRequest>;
 
-export type GetIssuingPersonalizationDesignsRequestExpandList =
-  ReadonlyArray<string>;
+export type GetIssuingPersonalizationDesignsRequestExpandList = Array<string>;
 export const GetIssuingPersonalizationDesignsRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<GetIssuingPersonalizationDesignsRequestExpandList>;
 
 export type GetIssuingPersonalizationDesignsRequestLookupKeysList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GetIssuingPersonalizationDesignsRequestLookupKeysList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -48375,7 +48302,7 @@ export const GetIssuingPersonalizationDesignsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GetIssuingPersonalizationDesignsRequest>;
 
 export type GetIssuingPersonalizationDesignsResponseDataList =
-  ReadonlyArray<IssuingPersonalizationDesign>;
+  Array<IssuingPersonalizationDesign>;
 export const GetIssuingPersonalizationDesignsResponseDataList =
   /*@__PURE__*/ S.Array(
     IssuingPersonalizationDesign,
@@ -48408,7 +48335,7 @@ export const GetIssuingPersonalizationDesignsResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GetIssuingPersonalizationDesignsResponse>;
 
 export type GetIssuingPersonalizationDesignsPersonalizationDesignRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GetIssuingPersonalizationDesignsPersonalizationDesignRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -48440,7 +48367,7 @@ export const GetIssuingPersonalizationDesignsPersonalizationDesignRequest =
     identifier: "GetIssuingPersonalizationDesignsPersonalizationDesignRequest",
   }) as any as S.Schema<GetIssuingPersonalizationDesignsPersonalizationDesignRequest>;
 
-export type GetIssuingPhysicalBundlesRequestExpandList = ReadonlyArray<string>;
+export type GetIssuingPhysicalBundlesRequestExpandList = Array<string>;
 export const GetIssuingPhysicalBundlesRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetIssuingPhysicalBundlesRequestExpandList>;
@@ -48491,7 +48418,7 @@ export const GetIssuingPhysicalBundlesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetIssuingPhysicalBundlesRequest>;
 
 export type GetIssuingPhysicalBundlesResponseDataList =
-  ReadonlyArray<IssuingPhysicalBundle>;
+  Array<IssuingPhysicalBundle>;
 export const GetIssuingPhysicalBundlesResponseDataList = /*@__PURE__*/ S.Array(
   IssuingPhysicalBundle,
 ) as any as S.Schema<GetIssuingPhysicalBundlesResponseDataList>;
@@ -48521,7 +48448,7 @@ export const GetIssuingPhysicalBundlesResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetIssuingPhysicalBundlesResponse>;
 
 export type GetIssuingPhysicalBundlesPhysicalBundleRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GetIssuingPhysicalBundlesPhysicalBundleRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -48580,7 +48507,7 @@ export type GetIssuingTokensRequestCreated =
 export const GetIssuingTokensRequestCreated =
   /*@__PURE__*/ S.Unknown as any as S.Schema<GetIssuingTokensRequestCreated>;
 
-export type GetIssuingTokensRequestExpandList = ReadonlyArray<string>;
+export type GetIssuingTokensRequestExpandList = Array<string>;
 export const GetIssuingTokensRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetIssuingTokensRequestExpandList>;
@@ -48629,7 +48556,7 @@ export const GetIssuingTokensRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetIssuingTokensRequest",
 }) as any as S.Schema<GetIssuingTokensRequest>;
 
-export type GetIssuingTokensResponseDataList = ReadonlyArray<IssuingToken>;
+export type GetIssuingTokensResponseDataList = Array<IssuingToken>;
 export const GetIssuingTokensResponseDataList = /*@__PURE__*/ S.Array(
   IssuingToken,
 ) as any as S.Schema<GetIssuingTokensResponseDataList>;
@@ -48658,7 +48585,7 @@ export const GetIssuingTokensResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetIssuingTokensResponse",
 }) as any as S.Schema<GetIssuingTokensResponse>;
 
-export type GetIssuingTokensTokenRequestExpandList = ReadonlyArray<string>;
+export type GetIssuingTokensTokenRequestExpandList = Array<string>;
 export const GetIssuingTokensTokenRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetIssuingTokensTokenRequestExpandList>;
@@ -48712,7 +48639,7 @@ export type GetIssuingTransactionsRequestCreated =
 export const GetIssuingTransactionsRequestCreated =
   /*@__PURE__*/ S.Unknown as any as S.Schema<GetIssuingTransactionsRequestCreated>;
 
-export type GetIssuingTransactionsRequestExpandList = ReadonlyArray<string>;
+export type GetIssuingTransactionsRequestExpandList = Array<string>;
 export const GetIssuingTransactionsRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetIssuingTransactionsRequestExpandList>;
@@ -48760,8 +48687,7 @@ export const GetIssuingTransactionsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetIssuingTransactionsRequest",
 }) as any as S.Schema<GetIssuingTransactionsRequest>;
 
-export type GetIssuingTransactionsResponseDataList =
-  ReadonlyArray<IssuingTransaction>;
+export type GetIssuingTransactionsResponseDataList = Array<IssuingTransaction>;
 export const GetIssuingTransactionsResponseDataList = /*@__PURE__*/ S.Array(
   IssuingTransaction,
 ) as any as S.Schema<GetIssuingTransactionsResponseDataList>;
@@ -48790,8 +48716,7 @@ export const GetIssuingTransactionsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetIssuingTransactionsResponse",
 }) as any as S.Schema<GetIssuingTransactionsResponse>;
 
-export type GetIssuingTransactionsTransactionRequestExpandList =
-  ReadonlyArray<string>;
+export type GetIssuingTransactionsTransactionRequestExpandList = Array<string>;
 export const GetIssuingTransactionsTransactionRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -48821,7 +48746,7 @@ export const GetIssuingTransactionsTransactionRequest = /*@__PURE__*/ S.suspend(
   identifier: "GetIssuingTransactionsTransactionRequest",
 }) as any as S.Schema<GetIssuingTransactionsTransactionRequest>;
 
-export type GetMandatesMandateRequestExpandList = ReadonlyArray<string>;
+export type GetMandatesMandateRequestExpandList = Array<string>;
 export const GetMandatesMandateRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetMandatesMandateRequestExpandList>;
@@ -48847,7 +48772,7 @@ export const GetMandatesMandateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetMandatesMandateRequest",
 }) as any as S.Schema<GetMandatesMandateRequest>;
 
-export type GetPaymentAttemptRecordsRequestExpandList = ReadonlyArray<string>;
+export type GetPaymentAttemptRecordsRequestExpandList = Array<string>;
 export const GetPaymentAttemptRecordsRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetPaymentAttemptRecordsRequestExpandList>;
@@ -48975,7 +48900,7 @@ export const PaymentAttemptRecord = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PaymentAttemptRecord>;
 
 export type GetPaymentAttemptRecordsResponseDataList =
-  ReadonlyArray<PaymentAttemptRecord>;
+  Array<PaymentAttemptRecord>;
 export const GetPaymentAttemptRecordsResponseDataList = /*@__PURE__*/ S.Array(
   PaymentAttemptRecord,
 ) as any as S.Schema<GetPaymentAttemptRecordsResponseDataList>;
@@ -49004,7 +48929,7 @@ export const GetPaymentAttemptRecordsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetPaymentAttemptRecordsResponse",
 }) as any as S.Schema<GetPaymentAttemptRecordsResponse>;
 
-export type GetPaymentAttemptRecordsIdRequestExpandList = ReadonlyArray<string>;
+export type GetPaymentAttemptRecordsIdRequestExpandList = Array<string>;
 export const GetPaymentAttemptRecordsIdRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -49062,7 +48987,7 @@ export type GetPaymentIntentsRequestCreated =
 export const GetPaymentIntentsRequestCreated =
   /*@__PURE__*/ S.Unknown as any as S.Schema<GetPaymentIntentsRequestCreated>;
 
-export type GetPaymentIntentsRequestExpandList = ReadonlyArray<string>;
+export type GetPaymentIntentsRequestExpandList = Array<string>;
 export const GetPaymentIntentsRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetPaymentIntentsRequestExpandList>;
@@ -49104,7 +49029,7 @@ export const GetPaymentIntentsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetPaymentIntentsRequest",
 }) as any as S.Schema<GetPaymentIntentsRequest>;
 
-export type GetPaymentIntentsResponseDataList = ReadonlyArray<PaymentIntent>;
+export type GetPaymentIntentsResponseDataList = Array<PaymentIntent>;
 export const GetPaymentIntentsResponseDataList = /*@__PURE__*/ S.Array(
   PaymentIntent,
 ) as any as S.Schema<GetPaymentIntentsResponseDataList>;
@@ -49133,7 +49058,7 @@ export const GetPaymentIntentsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetPaymentIntentsResponse",
 }) as any as S.Schema<GetPaymentIntentsResponse>;
 
-export type GetPaymentIntentsIntentRequestExpandList = ReadonlyArray<string>;
+export type GetPaymentIntentsIntentRequestExpandList = Array<string>;
 export const GetPaymentIntentsIntentRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetPaymentIntentsIntentRequestExpandList>;
@@ -49165,7 +49090,7 @@ export const GetPaymentIntentsIntentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetPaymentIntentsIntentRequest>;
 
 export type GetPaymentIntentsIntentAmountDetailsLineItemsRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GetPaymentIntentsIntentAmountDetailsLineItemsRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -49208,7 +49133,7 @@ export const GetPaymentIntentsIntentAmountDetailsLineItemsRequest =
 
 /** Details about each object. */
 export type GetPaymentIntentsIntentAmountDetailsLineItemsResponseDataList =
-  ReadonlyArray<PaymentIntentAmountDetailsLineItem>;
+  Array<PaymentIntentAmountDetailsLineItem>;
 export const GetPaymentIntentsIntentAmountDetailsLineItemsResponseDataList =
   /*@__PURE__*/ S.Array(
     PaymentIntentAmountDetailsLineItem,
@@ -49242,7 +49167,7 @@ export const GetPaymentIntentsIntentAmountDetailsLineItemsResponse =
     identifier: "GetPaymentIntentsIntentAmountDetailsLineItemsResponse",
   }) as any as S.Schema<GetPaymentIntentsIntentAmountDetailsLineItemsResponse>;
 
-export type GetPaymentIntentsSearchRequestExpandList = ReadonlyArray<string>;
+export type GetPaymentIntentsSearchRequestExpandList = Array<string>;
 export const GetPaymentIntentsSearchRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetPaymentIntentsSearchRequestExpandList>;
@@ -49277,8 +49202,7 @@ export const GetPaymentIntentsSearchRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetPaymentIntentsSearchRequest",
 }) as any as S.Schema<GetPaymentIntentsSearchRequest>;
 
-export type GetPaymentIntentsSearchResponseDataList =
-  ReadonlyArray<PaymentIntent>;
+export type GetPaymentIntentsSearchResponseDataList = Array<PaymentIntent>;
 export const GetPaymentIntentsSearchResponseDataList = /*@__PURE__*/ S.Array(
   PaymentIntent,
 ) as any as S.Schema<GetPaymentIntentsSearchResponseDataList>;
@@ -49310,7 +49234,7 @@ export const GetPaymentIntentsSearchResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetPaymentIntentsSearchResponse",
 }) as any as S.Schema<GetPaymentIntentsSearchResponse>;
 
-export type GetPaymentLinksRequestExpandList = ReadonlyArray<string>;
+export type GetPaymentLinksRequestExpandList = Array<string>;
 export const GetPaymentLinksRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetPaymentLinksRequestExpandList>;
@@ -49346,7 +49270,7 @@ export const GetPaymentLinksRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetPaymentLinksRequest",
 }) as any as S.Schema<GetPaymentLinksRequest>;
 
-export type GetPaymentLinksResponseDataList = ReadonlyArray<PaymentLink>;
+export type GetPaymentLinksResponseDataList = Array<PaymentLink>;
 export const GetPaymentLinksResponseDataList = /*@__PURE__*/ S.Array(
   PaymentLink,
 ) as any as S.Schema<GetPaymentLinksResponseDataList>;
@@ -49375,7 +49299,7 @@ export const GetPaymentLinksResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetPaymentLinksResponse",
 }) as any as S.Schema<GetPaymentLinksResponse>;
 
-export type GetPaymentLinksPaymentLinkRequestExpandList = ReadonlyArray<string>;
+export type GetPaymentLinksPaymentLinkRequestExpandList = Array<string>;
 export const GetPaymentLinksPaymentLinkRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -49405,7 +49329,7 @@ export const GetPaymentLinksPaymentLinkRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetPaymentLinksPaymentLinkRequest>;
 
 export type GetPaymentLinksPaymentLinkLineItemsRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GetPaymentLinksPaymentLinkLineItemsRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -49445,8 +49369,7 @@ export const GetPaymentLinksPaymentLinkLineItemsRequest =
   }) as any as S.Schema<GetPaymentLinksPaymentLinkLineItemsRequest>;
 
 /** Details about each object. */
-export type GetPaymentLinksPaymentLinkLineItemsResponseDataList =
-  ReadonlyArray<Item>;
+export type GetPaymentLinksPaymentLinkLineItemsResponseDataList = Array<Item>;
 export const GetPaymentLinksPaymentLinkLineItemsResponseDataList =
   /*@__PURE__*/ S.Array(
     Item,
@@ -49489,8 +49412,7 @@ export type GetPaymentMethodConfigurationsRequestApplication =
 export const GetPaymentMethodConfigurationsRequestApplication =
   /*@__PURE__*/ S.Unknown as any as S.Schema<GetPaymentMethodConfigurationsRequestApplication>;
 
-export type GetPaymentMethodConfigurationsRequestExpandList =
-  ReadonlyArray<string>;
+export type GetPaymentMethodConfigurationsRequestExpandList = Array<string>;
 export const GetPaymentMethodConfigurationsRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -49749,7 +49671,7 @@ export const PaymentMethodConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PaymentMethodConfiguration>;
 
 export type GetPaymentMethodConfigurationsResponseDataList =
-  ReadonlyArray<PaymentMethodConfiguration>;
+  Array<PaymentMethodConfiguration>;
 export const GetPaymentMethodConfigurationsResponseDataList =
   /*@__PURE__*/ S.Array(
     PaymentMethodConfiguration,
@@ -49782,7 +49704,7 @@ export const GetPaymentMethodConfigurationsResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GetPaymentMethodConfigurationsResponse>;
 
 export type GetPaymentMethodConfigurationsConfigurationRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GetPaymentMethodConfigurationsConfigurationRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -49814,7 +49736,7 @@ export const GetPaymentMethodConfigurationsConfigurationRequest =
     identifier: "GetPaymentMethodConfigurationsConfigurationRequest",
   }) as any as S.Schema<GetPaymentMethodConfigurationsConfigurationRequest>;
 
-export type GetPaymentMethodDomainsRequestExpandList = ReadonlyArray<string>;
+export type GetPaymentMethodDomainsRequestExpandList = Array<string>;
 export const GetPaymentMethodDomainsRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetPaymentMethodDomainsRequestExpandList>;
@@ -49939,7 +49861,7 @@ export const PaymentMethodDomain = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PaymentMethodDomain>;
 
 export type GetPaymentMethodDomainsResponseDataList =
-  ReadonlyArray<PaymentMethodDomain>;
+  Array<PaymentMethodDomain>;
 export const GetPaymentMethodDomainsResponseDataList = /*@__PURE__*/ S.Array(
   PaymentMethodDomain,
 ) as any as S.Schema<GetPaymentMethodDomainsResponseDataList>;
@@ -49969,7 +49891,7 @@ export const GetPaymentMethodDomainsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetPaymentMethodDomainsResponse>;
 
 export type GetPaymentMethodDomainsPaymentMethodDomainRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GetPaymentMethodDomainsPaymentMethodDomainRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -50007,7 +49929,7 @@ export type GetPaymentMethodsRequestAllowRedisplay =
   | "unspecified";
 export const GetPaymentMethodsRequestAllowRedisplay = /*@__PURE__*/ S.String;
 
-export type GetPaymentMethodsRequestExpandList = ReadonlyArray<string>;
+export type GetPaymentMethodsRequestExpandList = Array<string>;
 export const GetPaymentMethodsRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetPaymentMethodsRequestExpandList>;
@@ -50112,7 +50034,7 @@ export const GetPaymentMethodsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetPaymentMethodsRequest",
 }) as any as S.Schema<GetPaymentMethodsRequest>;
 
-export type GetPaymentMethodsResponseDataList = ReadonlyArray<PaymentMethod>;
+export type GetPaymentMethodsResponseDataList = Array<PaymentMethod>;
 export const GetPaymentMethodsResponseDataList = /*@__PURE__*/ S.Array(
   PaymentMethod,
 ) as any as S.Schema<GetPaymentMethodsResponseDataList>;
@@ -50141,8 +50063,7 @@ export const GetPaymentMethodsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetPaymentMethodsResponse",
 }) as any as S.Schema<GetPaymentMethodsResponse>;
 
-export type GetPaymentMethodsPaymentMethodRequestExpandList =
-  ReadonlyArray<string>;
+export type GetPaymentMethodsPaymentMethodRequestExpandList = Array<string>;
 export const GetPaymentMethodsPaymentMethodRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -50172,7 +50093,7 @@ export const GetPaymentMethodsPaymentMethodRequest = /*@__PURE__*/ S.suspend(
   identifier: "GetPaymentMethodsPaymentMethodRequest",
 }) as any as S.Schema<GetPaymentMethodsPaymentMethodRequest>;
 
-export type GetPaymentRecordsIdRequestExpandList = ReadonlyArray<string>;
+export type GetPaymentRecordsIdRequestExpandList = Array<string>;
 export const GetPaymentRecordsIdRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetPaymentRecordsIdRequestExpandList>;
@@ -50251,7 +50172,7 @@ export type GetPayoutsRequestCreated = GetPayoutsRequestCreatedCase0 | number;
 export const GetPayoutsRequestCreated =
   /*@__PURE__*/ S.Unknown as any as S.Schema<GetPayoutsRequestCreated>;
 
-export type GetPayoutsRequestExpandList = ReadonlyArray<string>;
+export type GetPayoutsRequestExpandList = Array<string>;
 export const GetPayoutsRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetPayoutsRequestExpandList>;
@@ -50453,7 +50374,7 @@ export const Payout = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Payout" }) as any as S.Schema<Payout>;
 
-export type GetPayoutsResponseDataList = ReadonlyArray<Payout>;
+export type GetPayoutsResponseDataList = Array<Payout>;
 export const GetPayoutsResponseDataList = /*@__PURE__*/ S.Array(
   Payout,
 ) as any as S.Schema<GetPayoutsResponseDataList>;
@@ -50482,7 +50403,7 @@ export const GetPayoutsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetPayoutsResponse",
 }) as any as S.Schema<GetPayoutsResponse>;
 
-export type GetPayoutsPayoutRequestExpandList = ReadonlyArray<string>;
+export type GetPayoutsPayoutRequestExpandList = Array<string>;
 export const GetPayoutsPayoutRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetPayoutsPayoutRequestExpandList>;
@@ -50533,7 +50454,7 @@ export type GetPlansRequestCreated = GetPlansRequestCreatedCase0 | number;
 export const GetPlansRequestCreated =
   /*@__PURE__*/ S.Unknown as any as S.Schema<GetPlansRequestCreated>;
 
-export type GetPlansRequestExpandList = ReadonlyArray<string>;
+export type GetPlansRequestExpandList = Array<string>;
 export const GetPlansRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetPlansRequestExpandList>;
@@ -50576,7 +50497,7 @@ export const GetPlansRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetPlansRequest>;
 
 /** Details about each object. */
-export type GetPlansResponseDataList = ReadonlyArray<Plan>;
+export type GetPlansResponseDataList = Array<Plan>;
 export const GetPlansResponseDataList = /*@__PURE__*/ S.Array(
   Plan,
 ) as any as S.Schema<GetPlansResponseDataList>;
@@ -50606,7 +50527,7 @@ export const GetPlansResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetPlansResponse",
 }) as any as S.Schema<GetPlansResponse>;
 
-export type GetPlansPlanRequestExpandList = ReadonlyArray<string>;
+export type GetPlansPlanRequestExpandList = Array<string>;
 export const GetPlansPlanRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetPlansPlanRequestExpandList>;
@@ -50657,12 +50578,12 @@ export type GetPricesRequestCreated = GetPricesRequestCreatedCase0 | number;
 export const GetPricesRequestCreated =
   /*@__PURE__*/ S.Unknown as any as S.Schema<GetPricesRequestCreated>;
 
-export type GetPricesRequestExpandList = ReadonlyArray<string>;
+export type GetPricesRequestExpandList = Array<string>;
 export const GetPricesRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetPricesRequestExpandList>;
 
-export type GetPricesRequestLookupKeysList = ReadonlyArray<string>;
+export type GetPricesRequestLookupKeysList = Array<string>;
 export const GetPricesRequestLookupKeysList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetPricesRequestLookupKeysList>;
@@ -50750,7 +50671,7 @@ export const GetPricesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetPricesRequest>;
 
 /** Details about each object. */
-export type GetPricesResponseDataList = ReadonlyArray<Price>;
+export type GetPricesResponseDataList = Array<Price>;
 export const GetPricesResponseDataList = /*@__PURE__*/ S.Array(
   Price,
 ) as any as S.Schema<GetPricesResponseDataList>;
@@ -50780,7 +50701,7 @@ export const GetPricesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetPricesResponse",
 }) as any as S.Schema<GetPricesResponse>;
 
-export type GetPricesPriceRequestExpandList = ReadonlyArray<string>;
+export type GetPricesPriceRequestExpandList = Array<string>;
 export const GetPricesPriceRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetPricesPriceRequestExpandList>;
@@ -50806,7 +50727,7 @@ export const GetPricesPriceRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetPricesPriceRequest",
 }) as any as S.Schema<GetPricesPriceRequest>;
 
-export type GetPricesSearchRequestExpandList = ReadonlyArray<string>;
+export type GetPricesSearchRequestExpandList = Array<string>;
 export const GetPricesSearchRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetPricesSearchRequestExpandList>;
@@ -50839,7 +50760,7 @@ export const GetPricesSearchRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetPricesSearchRequest",
 }) as any as S.Schema<GetPricesSearchRequest>;
 
-export type GetPricesSearchResponseDataList = ReadonlyArray<Price>;
+export type GetPricesSearchResponseDataList = Array<Price>;
 export const GetPricesSearchResponseDataList = /*@__PURE__*/ S.Array(
   Price,
 ) as any as S.Schema<GetPricesSearchResponseDataList>;
@@ -50896,12 +50817,12 @@ export type GetProductsRequestCreated = GetProductsRequestCreatedCase0 | number;
 export const GetProductsRequestCreated =
   /*@__PURE__*/ S.Unknown as any as S.Schema<GetProductsRequestCreated>;
 
-export type GetProductsRequestExpandList = ReadonlyArray<string>;
+export type GetProductsRequestExpandList = Array<string>;
 export const GetProductsRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetProductsRequestExpandList>;
 
-export type GetProductsRequestIdsList = ReadonlyArray<string>;
+export type GetProductsRequestIdsList = Array<string>;
 export const GetProductsRequestIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetProductsRequestIdsList>;
@@ -50956,7 +50877,7 @@ export const GetProductsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetProductsRequest>;
 
 /** Details about each object. */
-export type GetProductsResponseDataList = ReadonlyArray<Product>;
+export type GetProductsResponseDataList = Array<Product>;
 export const GetProductsResponseDataList = /*@__PURE__*/ S.Array(
   Product,
 ) as any as S.Schema<GetProductsResponseDataList>;
@@ -50986,7 +50907,7 @@ export const GetProductsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetProductsResponse",
 }) as any as S.Schema<GetProductsResponse>;
 
-export type GetProductsIdRequestExpandList = ReadonlyArray<string>;
+export type GetProductsIdRequestExpandList = Array<string>;
 export const GetProductsIdRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetProductsIdRequestExpandList>;
@@ -51012,7 +50933,7 @@ export const GetProductsIdRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetProductsIdRequest",
 }) as any as S.Schema<GetProductsIdRequest>;
 
-export type GetProductsProductFeaturesRequestExpandList = ReadonlyArray<string>;
+export type GetProductsProductFeaturesRequestExpandList = Array<string>;
 export const GetProductsProductFeaturesRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -51073,8 +50994,7 @@ export const ProductFeature = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ProductFeature" }) as any as S.Schema<ProductFeature>;
 
-export type GetProductsProductFeaturesResponseDataList =
-  ReadonlyArray<ProductFeature>;
+export type GetProductsProductFeaturesResponseDataList = Array<ProductFeature>;
 export const GetProductsProductFeaturesResponseDataList = /*@__PURE__*/ S.Array(
   ProductFeature,
 ) as any as S.Schema<GetProductsProductFeaturesResponseDataList>;
@@ -51103,8 +51023,7 @@ export const GetProductsProductFeaturesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetProductsProductFeaturesResponse",
 }) as any as S.Schema<GetProductsProductFeaturesResponse>;
 
-export type GetProductsProductFeaturesIdRequestExpandList =
-  ReadonlyArray<string>;
+export type GetProductsProductFeaturesIdRequestExpandList = Array<string>;
 export const GetProductsProductFeaturesIdRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -51137,7 +51056,7 @@ export const GetProductsProductFeaturesIdRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetProductsProductFeaturesIdRequest",
 }) as any as S.Schema<GetProductsProductFeaturesIdRequest>;
 
-export type GetProductsSearchRequestExpandList = ReadonlyArray<string>;
+export type GetProductsSearchRequestExpandList = Array<string>;
 export const GetProductsSearchRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetProductsSearchRequestExpandList>;
@@ -51170,7 +51089,7 @@ export const GetProductsSearchRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetProductsSearchRequest",
 }) as any as S.Schema<GetProductsSearchRequest>;
 
-export type GetProductsSearchResponseDataList = ReadonlyArray<Product>;
+export type GetProductsSearchResponseDataList = Array<Product>;
 export const GetProductsSearchResponseDataList = /*@__PURE__*/ S.Array(
   Product,
 ) as any as S.Schema<GetProductsSearchResponseDataList>;
@@ -51230,7 +51149,7 @@ export type GetPromotionCodesRequestCreated =
 export const GetPromotionCodesRequestCreated =
   /*@__PURE__*/ S.Unknown as any as S.Schema<GetPromotionCodesRequestCreated>;
 
-export type GetPromotionCodesRequestExpandList = ReadonlyArray<string>;
+export type GetPromotionCodesRequestExpandList = Array<string>;
 export const GetPromotionCodesRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetPromotionCodesRequestExpandList>;
@@ -51281,7 +51200,7 @@ export const GetPromotionCodesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetPromotionCodesRequest",
 }) as any as S.Schema<GetPromotionCodesRequest>;
 
-export type GetPromotionCodesResponseDataList = ReadonlyArray<PromotionCode>;
+export type GetPromotionCodesResponseDataList = Array<PromotionCode>;
 export const GetPromotionCodesResponseDataList = /*@__PURE__*/ S.Array(
   PromotionCode,
 ) as any as S.Schema<GetPromotionCodesResponseDataList>;
@@ -51310,8 +51229,7 @@ export const GetPromotionCodesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetPromotionCodesResponse",
 }) as any as S.Schema<GetPromotionCodesResponse>;
 
-export type GetPromotionCodesPromotionCodeRequestExpandList =
-  ReadonlyArray<string>;
+export type GetPromotionCodesPromotionCodeRequestExpandList = Array<string>;
 export const GetPromotionCodesPromotionCodeRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -51341,7 +51259,7 @@ export const GetPromotionCodesPromotionCodeRequest = /*@__PURE__*/ S.suspend(
   identifier: "GetPromotionCodesPromotionCodeRequest",
 }) as any as S.Schema<GetPromotionCodesPromotionCodeRequest>;
 
-export type GetQuotesRequestExpandList = ReadonlyArray<string>;
+export type GetQuotesRequestExpandList = Array<string>;
 export const GetQuotesRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetQuotesRequestExpandList>;
@@ -51432,7 +51350,7 @@ export const QuotesResourceRecurringInterval = /*@__PURE__*/ S.String;
 
 /** The aggregated discounts. */
 export type QuotesResourceTotalDetailsResourceBreakdownDiscountsList =
-  ReadonlyArray<LineItemsDiscountAmount>;
+  Array<LineItemsDiscountAmount>;
 export const QuotesResourceTotalDetailsResourceBreakdownDiscountsList =
   /*@__PURE__*/ S.Array(
     LineItemsDiscountAmount,
@@ -51440,7 +51358,7 @@ export const QuotesResourceTotalDetailsResourceBreakdownDiscountsList =
 
 /** The aggregated tax amounts by rate. */
 export type QuotesResourceTotalDetailsResourceBreakdownTaxesList =
-  ReadonlyArray<LineItemsTaxAmount>;
+  Array<LineItemsTaxAmount>;
 export const QuotesResourceTotalDetailsResourceBreakdownTaxesList =
   /*@__PURE__*/ S.Array(
     LineItemsTaxAmount,
@@ -51506,7 +51424,7 @@ export const QuotesResourceRecurring = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<QuotesResourceRecurring>;
 
 /** Details about each object. */
-export type QuotesResourceUpfrontLineItemsDataList = ReadonlyArray<Item>;
+export type QuotesResourceUpfrontLineItemsDataList = Array<Item>;
 export const QuotesResourceUpfrontLineItemsDataList = /*@__PURE__*/ S.Array(
   Item,
 ) as any as S.Schema<QuotesResourceUpfrontLineItemsDataList>;
@@ -51581,7 +51499,7 @@ export const QuoteDefaultTaxRatesItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<QuoteDefaultTaxRatesItem>;
 
 /** The tax rates applied to this quote. */
-export type QuoteDefaultTaxRatesList = ReadonlyArray<QuoteDefaultTaxRatesItem>;
+export type QuoteDefaultTaxRatesList = Array<QuoteDefaultTaxRatesItem>;
 export const QuoteDefaultTaxRatesList = /*@__PURE__*/ S.Array(
   QuoteDefaultTaxRatesItem,
 ) as any as S.Schema<QuoteDefaultTaxRatesList>;
@@ -51591,7 +51509,7 @@ export const QuoteDiscountsItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<QuoteDiscountsItem>;
 
 /** The discounts applied to this quote. */
-export type QuoteDiscountsList = ReadonlyArray<QuoteDiscountsItem>;
+export type QuoteDiscountsList = Array<QuoteDiscountsItem>;
 export const QuoteDiscountsList = /*@__PURE__*/ S.Array(
   QuoteDiscountsItem,
 ) as any as S.Schema<QuoteDiscountsList>;
@@ -51636,7 +51554,7 @@ export const InvoiceSettingQuoteSetting = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InvoiceSettingQuoteSetting>;
 
 /** Details about each object. */
-export type QuoteLineItemsDataList = ReadonlyArray<Item>;
+export type QuoteLineItemsDataList = Array<Item>;
 export const QuoteLineItemsDataList = /*@__PURE__*/ S.Array(
   Item,
 ) as any as S.Schema<QuoteLineItemsDataList>;
@@ -51910,7 +51828,7 @@ export const Quote = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Quote" }) as any as S.Schema<Quote>;
 
-export type GetQuotesResponseDataList = ReadonlyArray<Quote>;
+export type GetQuotesResponseDataList = Array<Quote>;
 export const GetQuotesResponseDataList = /*@__PURE__*/ S.Array(
   Quote,
 ) as any as S.Schema<GetQuotesResponseDataList>;
@@ -51939,7 +51857,7 @@ export const GetQuotesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetQuotesResponse",
 }) as any as S.Schema<GetQuotesResponse>;
 
-export type GetQuotesQuoteRequestExpandList = ReadonlyArray<string>;
+export type GetQuotesQuoteRequestExpandList = Array<string>;
 export const GetQuotesQuoteRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetQuotesQuoteRequestExpandList>;
@@ -51966,7 +51884,7 @@ export const GetQuotesQuoteRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetQuotesQuoteRequest>;
 
 export type GetQuotesQuoteComputedUpfrontLineItemsRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GetQuotesQuoteComputedUpfrontLineItemsRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -52007,7 +51925,7 @@ export const GetQuotesQuoteComputedUpfrontLineItemsRequest =
 
 /** Details about each object. */
 export type GetQuotesQuoteComputedUpfrontLineItemsResponseDataList =
-  ReadonlyArray<Item>;
+  Array<Item>;
 export const GetQuotesQuoteComputedUpfrontLineItemsResponseDataList =
   /*@__PURE__*/ S.Array(
     Item,
@@ -52040,7 +51958,7 @@ export const GetQuotesQuoteComputedUpfrontLineItemsResponse =
     identifier: "GetQuotesQuoteComputedUpfrontLineItemsResponse",
   }) as any as S.Schema<GetQuotesQuoteComputedUpfrontLineItemsResponse>;
 
-export type GetQuotesQuoteLineItemsRequestExpandList = ReadonlyArray<string>;
+export type GetQuotesQuoteLineItemsRequestExpandList = Array<string>;
 export const GetQuotesQuoteLineItemsRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetQuotesQuoteLineItemsRequestExpandList>;
@@ -52078,7 +51996,7 @@ export const GetQuotesQuoteLineItemsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetQuotesQuoteLineItemsRequest>;
 
 /** Details about each object. */
-export type GetQuotesQuoteLineItemsResponseDataList = ReadonlyArray<Item>;
+export type GetQuotesQuoteLineItemsResponseDataList = Array<Item>;
 export const GetQuotesQuoteLineItemsResponseDataList = /*@__PURE__*/ S.Array(
   Item,
 ) as any as S.Schema<GetQuotesQuoteLineItemsResponseDataList>;
@@ -52108,7 +52026,7 @@ export const GetQuotesQuoteLineItemsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetQuotesQuoteLineItemsResponse",
 }) as any as S.Schema<GetQuotesQuoteLineItemsResponse>;
 
-export type GetQuotesQuotePdfRequestExpandList = ReadonlyArray<string>;
+export type GetQuotesQuotePdfRequestExpandList = Array<string>;
 export const GetQuotesQuotePdfRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetQuotesQuotePdfRequestExpandList>;
@@ -52169,7 +52087,7 @@ export type GetRadarEarlyFraudWarningsRequestCreated =
 export const GetRadarEarlyFraudWarningsRequestCreated =
   /*@__PURE__*/ S.Unknown as any as S.Schema<GetRadarEarlyFraudWarningsRequestCreated>;
 
-export type GetRadarEarlyFraudWarningsRequestExpandList = ReadonlyArray<string>;
+export type GetRadarEarlyFraudWarningsRequestExpandList = Array<string>;
 export const GetRadarEarlyFraudWarningsRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -52265,7 +52183,7 @@ export const RadarEarlyFraudWarning = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RadarEarlyFraudWarning>;
 
 export type GetRadarEarlyFraudWarningsResponseDataList =
-  ReadonlyArray<RadarEarlyFraudWarning>;
+  Array<RadarEarlyFraudWarning>;
 export const GetRadarEarlyFraudWarningsResponseDataList = /*@__PURE__*/ S.Array(
   RadarEarlyFraudWarning,
 ) as any as S.Schema<GetRadarEarlyFraudWarningsResponseDataList>;
@@ -52295,7 +52213,7 @@ export const GetRadarEarlyFraudWarningsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetRadarEarlyFraudWarningsResponse>;
 
 export type GetRadarEarlyFraudWarningsEarlyFraudWarningRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GetRadarEarlyFraudWarningsEarlyFraudWarningRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -52355,7 +52273,7 @@ export type GetRadarValueListItemsRequestCreated =
 export const GetRadarValueListItemsRequestCreated =
   /*@__PURE__*/ S.Unknown as any as S.Schema<GetRadarValueListItemsRequestCreated>;
 
-export type GetRadarValueListItemsRequestExpandList = ReadonlyArray<string>;
+export type GetRadarValueListItemsRequestExpandList = Array<string>;
 export const GetRadarValueListItemsRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetRadarValueListItemsRequestExpandList>;
@@ -52432,8 +52350,7 @@ export const RadarValueListItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "RadarValueListItem",
 }) as any as S.Schema<RadarValueListItem>;
 
-export type GetRadarValueListItemsResponseDataList =
-  ReadonlyArray<RadarValueListItem>;
+export type GetRadarValueListItemsResponseDataList = Array<RadarValueListItem>;
 export const GetRadarValueListItemsResponseDataList = /*@__PURE__*/ S.Array(
   RadarValueListItem,
 ) as any as S.Schema<GetRadarValueListItemsResponseDataList>;
@@ -52462,7 +52379,7 @@ export const GetRadarValueListItemsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetRadarValueListItemsResponse",
 }) as any as S.Schema<GetRadarValueListItemsResponse>;
 
-export type GetRadarValueListItemsItemRequestExpandList = ReadonlyArray<string>;
+export type GetRadarValueListItemsItemRequestExpandList = Array<string>;
 export const GetRadarValueListItemsItemRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -52519,7 +52436,7 @@ export type GetRadarValueListsRequestCreated =
 export const GetRadarValueListsRequestCreated =
   /*@__PURE__*/ S.Unknown as any as S.Schema<GetRadarValueListsRequestCreated>;
 
-export type GetRadarValueListsRequestExpandList = ReadonlyArray<string>;
+export type GetRadarValueListsRequestExpandList = Array<string>;
 export const GetRadarValueListsRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetRadarValueListsRequestExpandList>;
@@ -52578,7 +52495,7 @@ export type RadarValueListItemType =
 export const RadarValueListItemType = /*@__PURE__*/ S.String;
 
 /** Details about each object. */
-export type RadarValueListListItemsDataList = ReadonlyArray<RadarValueListItem>;
+export type RadarValueListListItemsDataList = Array<RadarValueListItem>;
 export const RadarValueListListItemsDataList = /*@__PURE__*/ S.Array(
   RadarValueListItem,
 ) as any as S.Schema<RadarValueListListItemsDataList>;
@@ -52658,7 +52575,7 @@ export const RadarValueList = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "RadarValueList" }) as any as S.Schema<RadarValueList>;
 
-export type GetRadarValueListsResponseDataList = ReadonlyArray<RadarValueList>;
+export type GetRadarValueListsResponseDataList = Array<RadarValueList>;
 export const GetRadarValueListsResponseDataList = /*@__PURE__*/ S.Array(
   RadarValueList,
 ) as any as S.Schema<GetRadarValueListsResponseDataList>;
@@ -52687,8 +52604,7 @@ export const GetRadarValueListsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetRadarValueListsResponse",
 }) as any as S.Schema<GetRadarValueListsResponse>;
 
-export type GetRadarValueListsValueListRequestExpandList =
-  ReadonlyArray<string>;
+export type GetRadarValueListsValueListRequestExpandList = Array<string>;
 export const GetRadarValueListsValueListRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -52742,7 +52658,7 @@ export type GetRefundsRequestCreated = GetRefundsRequestCreatedCase0 | number;
 export const GetRefundsRequestCreated =
   /*@__PURE__*/ S.Unknown as any as S.Schema<GetRefundsRequestCreated>;
 
-export type GetRefundsRequestExpandList = ReadonlyArray<string>;
+export type GetRefundsRequestExpandList = Array<string>;
 export const GetRefundsRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetRefundsRequestExpandList>;
@@ -52784,7 +52700,7 @@ export const GetRefundsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetRefundsRequest",
 }) as any as S.Schema<GetRefundsRequest>;
 
-export type GetRefundsResponseDataList = ReadonlyArray<Refund>;
+export type GetRefundsResponseDataList = Array<Refund>;
 export const GetRefundsResponseDataList = /*@__PURE__*/ S.Array(
   Refund,
 ) as any as S.Schema<GetRefundsResponseDataList>;
@@ -52813,7 +52729,7 @@ export const GetRefundsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetRefundsResponse",
 }) as any as S.Schema<GetRefundsResponse>;
 
-export type GetRefundsRefundRequestExpandList = ReadonlyArray<string>;
+export type GetRefundsRefundRequestExpandList = Array<string>;
 export const GetRefundsRefundRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetRefundsRefundRequestExpandList>;
@@ -52867,7 +52783,7 @@ export type GetReportingReportRunsRequestCreated =
 export const GetReportingReportRunsRequestCreated =
   /*@__PURE__*/ S.Unknown as any as S.Schema<GetReportingReportRunsRequestCreated>;
 
-export type GetReportingReportRunsRequestExpandList = ReadonlyArray<string>;
+export type GetReportingReportRunsRequestExpandList = Array<string>;
 export const GetReportingReportRunsRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetReportingReportRunsRequestExpandList>;
@@ -52909,7 +52825,7 @@ export const ReportingReportRunObject = /*@__PURE__*/ S.String;
 
 /** The set of output columns requested for inclusion in the report run. */
 export type FinancialReportingFinanceReportRunRunParametersColumnsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const FinancialReportingFinanceReportRunRunParametersColumnsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -52990,8 +52906,7 @@ export const ReportingReportRun = /*@__PURE__*/ S.suspend(() =>
   identifier: "ReportingReportRun",
 }) as any as S.Schema<ReportingReportRun>;
 
-export type GetReportingReportRunsResponseDataList =
-  ReadonlyArray<ReportingReportRun>;
+export type GetReportingReportRunsResponseDataList = Array<ReportingReportRun>;
 export const GetReportingReportRunsResponseDataList = /*@__PURE__*/ S.Array(
   ReportingReportRun,
 ) as any as S.Schema<GetReportingReportRunsResponseDataList>;
@@ -53020,8 +52935,7 @@ export const GetReportingReportRunsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetReportingReportRunsResponse",
 }) as any as S.Schema<GetReportingReportRunsResponse>;
 
-export type GetReportingReportRunsReportRunRequestExpandList =
-  ReadonlyArray<string>;
+export type GetReportingReportRunsReportRunRequestExpandList = Array<string>;
 export const GetReportingReportRunsReportRunRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -53051,7 +52965,7 @@ export const GetReportingReportRunsReportRunRequest = /*@__PURE__*/ S.suspend(
   identifier: "GetReportingReportRunsReportRunRequest",
 }) as any as S.Schema<GetReportingReportRunsReportRunRequest>;
 
-export type GetReportingReportTypesRequestExpandList = ReadonlyArray<string>;
+export type GetReportingReportTypesRequestExpandList = Array<string>;
 export const GetReportingReportTypesRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetReportingReportTypesRequestExpandList>;
@@ -53078,7 +52992,7 @@ export const GetReportingReportTypesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetReportingReportTypesRequest>;
 
 /** List of column names that are included by default when this Report Type gets run. (If the Report Type doesn't support the `columns` parameter, this will be null.) */
-export type ReportingReportTypeDefaultColumnsList = ReadonlyArray<string>;
+export type ReportingReportTypeDefaultColumnsList = Array<string>;
 export const ReportingReportTypeDefaultColumnsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ReportingReportTypeDefaultColumnsList>;
@@ -53125,7 +53039,7 @@ export const ReportingReportType = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReportingReportType>;
 
 export type GetReportingReportTypesResponseDataList =
-  ReadonlyArray<ReportingReportType>;
+  Array<ReportingReportType>;
 export const GetReportingReportTypesResponseDataList = /*@__PURE__*/ S.Array(
   ReportingReportType,
 ) as any as S.Schema<GetReportingReportTypesResponseDataList>;
@@ -53154,8 +53068,7 @@ export const GetReportingReportTypesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetReportingReportTypesResponse",
 }) as any as S.Schema<GetReportingReportTypesResponse>;
 
-export type GetReportingReportTypesReportTypeRequestExpandList =
-  ReadonlyArray<string>;
+export type GetReportingReportTypesReportTypeRequestExpandList = Array<string>;
 export const GetReportingReportTypesReportTypeRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -53210,7 +53123,7 @@ export type GetReviewsRequestCreated = GetReviewsRequestCreatedCase0 | number;
 export const GetReviewsRequestCreated =
   /*@__PURE__*/ S.Unknown as any as S.Schema<GetReviewsRequestCreated>;
 
-export type GetReviewsRequestExpandList = ReadonlyArray<string>;
+export type GetReviewsRequestExpandList = Array<string>;
 export const GetReviewsRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetReviewsRequestExpandList>;
@@ -53246,7 +53159,7 @@ export const GetReviewsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetReviewsRequest",
 }) as any as S.Schema<GetReviewsRequest>;
 
-export type GetReviewsResponseDataList = ReadonlyArray<Review>;
+export type GetReviewsResponseDataList = Array<Review>;
 export const GetReviewsResponseDataList = /*@__PURE__*/ S.Array(
   Review,
 ) as any as S.Schema<GetReviewsResponseDataList>;
@@ -53275,7 +53188,7 @@ export const GetReviewsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetReviewsResponse",
 }) as any as S.Schema<GetReviewsResponse>;
 
-export type GetReviewsReviewRequestExpandList = ReadonlyArray<string>;
+export type GetReviewsReviewRequestExpandList = Array<string>;
 export const GetReviewsReviewRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetReviewsReviewRequestExpandList>;
@@ -53328,7 +53241,7 @@ export type GetSetupAttemptsRequestCreated =
 export const GetSetupAttemptsRequestCreated =
   /*@__PURE__*/ S.Unknown as any as S.Schema<GetSetupAttemptsRequestCreated>;
 
-export type GetSetupAttemptsRequestExpandList = ReadonlyArray<string>;
+export type GetSetupAttemptsRequestExpandList = Array<string>;
 export const GetSetupAttemptsRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetSetupAttemptsRequestExpandList>;
@@ -53367,7 +53280,7 @@ export const GetSetupAttemptsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetSetupAttemptsRequest",
 }) as any as S.Schema<GetSetupAttemptsRequest>;
 
-export type GetSetupAttemptsResponseDataList = ReadonlyArray<SetupAttempt>;
+export type GetSetupAttemptsResponseDataList = Array<SetupAttempt>;
 export const GetSetupAttemptsResponseDataList = /*@__PURE__*/ S.Array(
   SetupAttempt,
 ) as any as S.Schema<GetSetupAttemptsResponseDataList>;
@@ -53423,7 +53336,7 @@ export type GetSetupIntentsRequestCreated =
 export const GetSetupIntentsRequestCreated =
   /*@__PURE__*/ S.Unknown as any as S.Schema<GetSetupIntentsRequestCreated>;
 
-export type GetSetupIntentsRequestExpandList = ReadonlyArray<string>;
+export type GetSetupIntentsRequestExpandList = Array<string>;
 export const GetSetupIntentsRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetSetupIntentsRequestExpandList>;
@@ -53471,7 +53384,7 @@ export const GetSetupIntentsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetSetupIntentsRequest",
 }) as any as S.Schema<GetSetupIntentsRequest>;
 
-export type GetSetupIntentsResponseDataList = ReadonlyArray<SetupIntent>;
+export type GetSetupIntentsResponseDataList = Array<SetupIntent>;
 export const GetSetupIntentsResponseDataList = /*@__PURE__*/ S.Array(
   SetupIntent,
 ) as any as S.Schema<GetSetupIntentsResponseDataList>;
@@ -53500,7 +53413,7 @@ export const GetSetupIntentsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetSetupIntentsResponse",
 }) as any as S.Schema<GetSetupIntentsResponse>;
 
-export type GetSetupIntentsIntentRequestExpandList = ReadonlyArray<string>;
+export type GetSetupIntentsIntentRequestExpandList = Array<string>;
 export const GetSetupIntentsIntentRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetSetupIntentsIntentRequestExpandList>;
@@ -53556,7 +53469,7 @@ export type GetShippingRatesRequestCreated =
 export const GetShippingRatesRequestCreated =
   /*@__PURE__*/ S.Unknown as any as S.Schema<GetShippingRatesRequestCreated>;
 
-export type GetShippingRatesRequestExpandList = ReadonlyArray<string>;
+export type GetShippingRatesRequestExpandList = Array<string>;
 export const GetShippingRatesRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetShippingRatesRequestExpandList>;
@@ -53598,7 +53511,7 @@ export const GetShippingRatesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetShippingRatesRequest",
 }) as any as S.Schema<GetShippingRatesRequest>;
 
-export type GetShippingRatesResponseDataList = ReadonlyArray<ShippingRate>;
+export type GetShippingRatesResponseDataList = Array<ShippingRate>;
 export const GetShippingRatesResponseDataList = /*@__PURE__*/ S.Array(
   ShippingRate,
 ) as any as S.Schema<GetShippingRatesResponseDataList>;
@@ -53627,8 +53540,7 @@ export const GetShippingRatesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetShippingRatesResponse",
 }) as any as S.Schema<GetShippingRatesResponse>;
 
-export type GetShippingRatesShippingRateTokenRequestExpandList =
-  ReadonlyArray<string>;
+export type GetShippingRatesShippingRateTokenRequestExpandList = Array<string>;
 export const GetShippingRatesShippingRateTokenRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -53658,7 +53570,7 @@ export const GetShippingRatesShippingRateTokenRequest = /*@__PURE__*/ S.suspend(
   identifier: "GetShippingRatesShippingRateTokenRequest",
 }) as any as S.Schema<GetShippingRatesShippingRateTokenRequest>;
 
-export type GetSigmaScheduledQueryRunsRequestExpandList = ReadonlyArray<string>;
+export type GetSigmaScheduledQueryRunsRequestExpandList = Array<string>;
 export const GetSigmaScheduledQueryRunsRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -53753,7 +53665,7 @@ export const ScheduledQueryRun = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScheduledQueryRun>;
 
 export type GetSigmaScheduledQueryRunsResponseDataList =
-  ReadonlyArray<ScheduledQueryRun>;
+  Array<ScheduledQueryRun>;
 export const GetSigmaScheduledQueryRunsResponseDataList = /*@__PURE__*/ S.Array(
   ScheduledQueryRun,
 ) as any as S.Schema<GetSigmaScheduledQueryRunsResponseDataList>;
@@ -53783,7 +53695,7 @@ export const GetSigmaScheduledQueryRunsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetSigmaScheduledQueryRunsResponse>;
 
 export type GetSigmaScheduledQueryRunsScheduledQueryRunRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GetSigmaScheduledQueryRunsScheduledQueryRunRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -53815,7 +53727,7 @@ export const GetSigmaScheduledQueryRunsScheduledQueryRunRequest =
     identifier: "GetSigmaScheduledQueryRunsScheduledQueryRunRequest",
   }) as any as S.Schema<GetSigmaScheduledQueryRunsScheduledQueryRunRequest>;
 
-export type GetSourcesSourceRequestExpandList = ReadonlyArray<string>;
+export type GetSourcesSourceRequestExpandList = Array<string>;
 export const GetSourcesSourceRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetSourcesSourceRequestExpandList>;
@@ -53844,8 +53756,7 @@ export const GetSourcesSourceRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetSourcesSourceRequest",
 }) as any as S.Schema<GetSourcesSourceRequest>;
 
-export type GetSourcesSourceSourceTransactionsRequestExpandList =
-  ReadonlyArray<string>;
+export type GetSourcesSourceSourceTransactionsRequestExpandList = Array<string>;
 export const GetSourcesSourceSourceTransactionsRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -54068,7 +53979,7 @@ export const SourceTransaction = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SourceTransaction>;
 
 export type GetSourcesSourceSourceTransactionsResponseDataList =
-  ReadonlyArray<SourceTransaction>;
+  Array<SourceTransaction>;
 export const GetSourcesSourceSourceTransactionsResponseDataList =
   /*@__PURE__*/ S.Array(
     SourceTransaction,
@@ -54100,7 +54011,7 @@ export const GetSourcesSourceSourceTransactionsResponse =
     identifier: "GetSourcesSourceSourceTransactionsResponse",
   }) as any as S.Schema<GetSourcesSourceSourceTransactionsResponse>;
 
-export type GetSubscriptionItemsRequestExpandList = ReadonlyArray<string>;
+export type GetSubscriptionItemsRequestExpandList = Array<string>;
 export const GetSubscriptionItemsRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetSubscriptionItemsRequestExpandList>;
@@ -54136,8 +54047,7 @@ export const GetSubscriptionItemsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetSubscriptionItemsRequest",
 }) as any as S.Schema<GetSubscriptionItemsRequest>;
 
-export type GetSubscriptionItemsResponseDataList =
-  ReadonlyArray<SubscriptionItem>;
+export type GetSubscriptionItemsResponseDataList = Array<SubscriptionItem>;
 export const GetSubscriptionItemsResponseDataList = /*@__PURE__*/ S.Array(
   SubscriptionItem,
 ) as any as S.Schema<GetSubscriptionItemsResponseDataList>;
@@ -54166,7 +54076,7 @@ export const GetSubscriptionItemsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetSubscriptionItemsResponse",
 }) as any as S.Schema<GetSubscriptionItemsResponse>;
 
-export type GetSubscriptionItemsItemRequestExpandList = ReadonlyArray<string>;
+export type GetSubscriptionItemsItemRequestExpandList = Array<string>;
 export const GetSubscriptionItemsItemRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetSubscriptionItemsItemRequestExpandList>;
@@ -54294,7 +54204,7 @@ export type GetSubscriptionsRequestCurrentPeriodStart =
 export const GetSubscriptionsRequestCurrentPeriodStart =
   /*@__PURE__*/ S.Unknown as any as S.Schema<GetSubscriptionsRequestCurrentPeriodStart>;
 
-export type GetSubscriptionsRequestExpandList = ReadonlyArray<string>;
+export type GetSubscriptionsRequestExpandList = Array<string>;
 export const GetSubscriptionsRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetSubscriptionsRequestExpandList>;
@@ -54381,7 +54291,7 @@ export const GetSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetSubscriptionsRequest",
 }) as any as S.Schema<GetSubscriptionsRequest>;
 
-export type GetSubscriptionsResponseDataList = ReadonlyArray<Subscription>;
+export type GetSubscriptionsResponseDataList = Array<Subscription>;
 export const GetSubscriptionsResponseDataList = /*@__PURE__*/ S.Array(
   Subscription,
 ) as any as S.Schema<GetSubscriptionsResponseDataList>;
@@ -54494,7 +54404,7 @@ export type GetSubscriptionSchedulesRequestCreated =
 export const GetSubscriptionSchedulesRequestCreated =
   /*@__PURE__*/ S.Unknown as any as S.Schema<GetSubscriptionSchedulesRequestCreated>;
 
-export type GetSubscriptionSchedulesRequestExpandList = ReadonlyArray<string>;
+export type GetSubscriptionSchedulesRequestExpandList = Array<string>;
 export const GetSubscriptionSchedulesRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetSubscriptionSchedulesRequestExpandList>;
@@ -54585,7 +54495,7 @@ export const GetSubscriptionSchedulesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetSubscriptionSchedulesRequest>;
 
 export type GetSubscriptionSchedulesResponseDataList =
-  ReadonlyArray<SubscriptionSchedule>;
+  Array<SubscriptionSchedule>;
 export const GetSubscriptionSchedulesResponseDataList = /*@__PURE__*/ S.Array(
   SubscriptionSchedule,
 ) as any as S.Schema<GetSubscriptionSchedulesResponseDataList>;
@@ -54614,8 +54524,7 @@ export const GetSubscriptionSchedulesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetSubscriptionSchedulesResponse",
 }) as any as S.Schema<GetSubscriptionSchedulesResponse>;
 
-export type GetSubscriptionSchedulesScheduleRequestExpandList =
-  ReadonlyArray<string>;
+export type GetSubscriptionSchedulesScheduleRequestExpandList = Array<string>;
 export const GetSubscriptionSchedulesScheduleRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -54645,7 +54554,7 @@ export const GetSubscriptionSchedulesScheduleRequest = /*@__PURE__*/ S.suspend(
   identifier: "GetSubscriptionSchedulesScheduleRequest",
 }) as any as S.Schema<GetSubscriptionSchedulesScheduleRequest>;
 
-export type GetSubscriptionsSearchRequestExpandList = ReadonlyArray<string>;
+export type GetSubscriptionsSearchRequestExpandList = Array<string>;
 export const GetSubscriptionsSearchRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetSubscriptionsSearchRequestExpandList>;
@@ -54678,8 +54587,7 @@ export const GetSubscriptionsSearchRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetSubscriptionsSearchRequest",
 }) as any as S.Schema<GetSubscriptionsSearchRequest>;
 
-export type GetSubscriptionsSearchResponseDataList =
-  ReadonlyArray<Subscription>;
+export type GetSubscriptionsSearchResponseDataList = Array<Subscription>;
 export const GetSubscriptionsSearchResponseDataList = /*@__PURE__*/ S.Array(
   Subscription,
 ) as any as S.Schema<GetSubscriptionsSearchResponseDataList>;
@@ -54712,7 +54620,7 @@ export const GetSubscriptionsSearchResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetSubscriptionsSearchResponse>;
 
 export type GetSubscriptionsSubscriptionExposedIdRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GetSubscriptionsSubscriptionExposedIdRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -54742,7 +54650,7 @@ export const GetSubscriptionsSubscriptionExposedIdRequest =
     identifier: "GetSubscriptionsSubscriptionExposedIdRequest",
   }) as any as S.Schema<GetSubscriptionsSubscriptionExposedIdRequest>;
 
-export type GetTaxAssociationsFindRequestExpandList = ReadonlyArray<string>;
+export type GetTaxAssociationsFindRequestExpandList = Array<string>;
 export const GetTaxAssociationsFindRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetTaxAssociationsFindRequestExpandList>;
@@ -54838,7 +54746,7 @@ export const TaxProductResourceTaxAssociationTransactionAttempts =
 
 /** Information about the tax transactions linked to this payment intent */
 export type TaxAssociationTaxTransactionAttemptsList =
-  ReadonlyArray<TaxProductResourceTaxAssociationTransactionAttempts>;
+  Array<TaxProductResourceTaxAssociationTransactionAttempts>;
 export const TaxAssociationTaxTransactionAttemptsList = /*@__PURE__*/ S.Array(
   TaxProductResourceTaxAssociationTransactionAttempts,
 ) as any as S.Schema<TaxAssociationTaxTransactionAttemptsList>;
@@ -54868,8 +54776,7 @@ export const TaxAssociation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TaxAssociation" }) as any as S.Schema<TaxAssociation>;
 
-export type GetTaxCalculationsCalculationRequestExpandList =
-  ReadonlyArray<string>;
+export type GetTaxCalculationsCalculationRequestExpandList = Array<string>;
 export const GetTaxCalculationsCalculationRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -55073,7 +54980,7 @@ export const TaxProductResourceCustomerDetailsResourceTaxId =
 
 /** The customer's tax IDs (for example, EU VAT numbers). */
 export type TaxProductResourceCustomerDetailsTaxIdsList =
-  ReadonlyArray<TaxProductResourceCustomerDetailsResourceTaxId>;
+  Array<TaxProductResourceCustomerDetailsResourceTaxId>;
 export const TaxProductResourceCustomerDetailsTaxIdsList =
   /*@__PURE__*/ S.Array(
     TaxProductResourceCustomerDetailsResourceTaxId,
@@ -55252,7 +55159,7 @@ export const TaxProductResourceLineItemTaxBreakdown = /*@__PURE__*/ S.suspend(
 
 /** Detailed account of taxes relevant to this line item. */
 export type TaxCalculationLineItemTaxBreakdownList =
-  ReadonlyArray<TaxProductResourceLineItemTaxBreakdown>;
+  Array<TaxProductResourceLineItemTaxBreakdown>;
 export const TaxCalculationLineItemTaxBreakdownList = /*@__PURE__*/ S.Array(
   TaxProductResourceLineItemTaxBreakdown,
 ) as any as S.Schema<TaxCalculationLineItemTaxBreakdownList>;
@@ -55303,8 +55210,7 @@ export const TaxCalculationLineItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TaxCalculationLineItem>;
 
 /** Details about each object. */
-export type TaxCalculationLineItemsDataList =
-  ReadonlyArray<TaxCalculationLineItem>;
+export type TaxCalculationLineItemsDataList = Array<TaxCalculationLineItem>;
 export const TaxCalculationLineItemsDataList = /*@__PURE__*/ S.Array(
   TaxCalculationLineItem,
 ) as any as S.Schema<TaxCalculationLineItemsDataList>;
@@ -55359,7 +55265,7 @@ export const TaxProductResourceTaxCalculationShippingCostTaxBehavior =
 
 /** Detailed account of taxes relevant to shipping cost. */
 export type TaxProductResourceTaxCalculationShippingCostTaxBreakdownList =
-  ReadonlyArray<TaxProductResourceLineItemTaxBreakdown>;
+  Array<TaxProductResourceLineItemTaxBreakdown>;
 export const TaxProductResourceTaxCalculationShippingCostTaxBreakdownList =
   /*@__PURE__*/ S.Array(
     TaxProductResourceLineItemTaxBreakdown,
@@ -55491,7 +55397,7 @@ export const TaxProductResourceTaxBreakdown = /*@__PURE__*/ S.suspend(() =>
 
 /** Breakdown of individual tax amounts that add up to the total. */
 export type TaxCalculationTaxBreakdownList =
-  ReadonlyArray<TaxProductResourceTaxBreakdown>;
+  Array<TaxProductResourceTaxBreakdown>;
 export const TaxCalculationTaxBreakdownList = /*@__PURE__*/ S.Array(
   TaxProductResourceTaxBreakdown,
 ) as any as S.Schema<TaxCalculationTaxBreakdownList>;
@@ -55549,7 +55455,7 @@ export const TaxCalculation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TaxCalculation" }) as any as S.Schema<TaxCalculation>;
 
 export type GetTaxCalculationsCalculationLineItemsRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GetTaxCalculationsCalculationLineItemsRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -55590,7 +55496,7 @@ export const GetTaxCalculationsCalculationLineItemsRequest =
 
 /** Details about each object. */
 export type GetTaxCalculationsCalculationLineItemsResponseDataList =
-  ReadonlyArray<TaxCalculationLineItem>;
+  Array<TaxCalculationLineItem>;
 export const GetTaxCalculationsCalculationLineItemsResponseDataList =
   /*@__PURE__*/ S.Array(
     TaxCalculationLineItem,
@@ -55623,7 +55529,7 @@ export const GetTaxCalculationsCalculationLineItemsResponse =
     identifier: "GetTaxCalculationsCalculationLineItemsResponse",
   }) as any as S.Schema<GetTaxCalculationsCalculationLineItemsResponse>;
 
-export type GetTaxCodesRequestExpandList = ReadonlyArray<string>;
+export type GetTaxCodesRequestExpandList = Array<string>;
 export const GetTaxCodesRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetTaxCodesRequestExpandList>;
@@ -55656,7 +55562,7 @@ export const GetTaxCodesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetTaxCodesRequest",
 }) as any as S.Schema<GetTaxCodesRequest>;
 
-export type GetTaxCodesResponseDataList = ReadonlyArray<TaxCode>;
+export type GetTaxCodesResponseDataList = Array<TaxCode>;
 export const GetTaxCodesResponseDataList = /*@__PURE__*/ S.Array(
   TaxCode,
 ) as any as S.Schema<GetTaxCodesResponseDataList>;
@@ -55685,7 +55591,7 @@ export const GetTaxCodesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetTaxCodesResponse",
 }) as any as S.Schema<GetTaxCodesResponse>;
 
-export type GetTaxCodesIdRequestExpandList = ReadonlyArray<string>;
+export type GetTaxCodesIdRequestExpandList = Array<string>;
 export const GetTaxCodesIdRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetTaxCodesIdRequestExpandList>;
@@ -55711,7 +55617,7 @@ export const GetTaxCodesIdRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetTaxCodesIdRequest",
 }) as any as S.Schema<GetTaxCodesIdRequest>;
 
-export type GetTaxIdsRequestExpandList = ReadonlyArray<string>;
+export type GetTaxIdsRequestExpandList = Array<string>;
 export const GetTaxIdsRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetTaxIdsRequestExpandList>;
@@ -55777,7 +55683,7 @@ export const GetTaxIdsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetTaxIdsRequest>;
 
 /** Details about each object. */
-export type GetTaxIdsResponseDataList = ReadonlyArray<TaxId>;
+export type GetTaxIdsResponseDataList = Array<TaxId>;
 export const GetTaxIdsResponseDataList = /*@__PURE__*/ S.Array(
   TaxId,
 ) as any as S.Schema<GetTaxIdsResponseDataList>;
@@ -55807,7 +55713,7 @@ export const GetTaxIdsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetTaxIdsResponse",
 }) as any as S.Schema<GetTaxIdsResponse>;
 
-export type GetTaxIdsIdRequestExpandList = ReadonlyArray<string>;
+export type GetTaxIdsIdRequestExpandList = Array<string>;
 export const GetTaxIdsIdRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetTaxIdsIdRequestExpandList>;
@@ -55858,7 +55764,7 @@ export type GetTaxRatesRequestCreated = GetTaxRatesRequestCreatedCase0 | number;
 export const GetTaxRatesRequestCreated =
   /*@__PURE__*/ S.Unknown as any as S.Schema<GetTaxRatesRequestCreated>;
 
-export type GetTaxRatesRequestExpandList = ReadonlyArray<string>;
+export type GetTaxRatesRequestExpandList = Array<string>;
 export const GetTaxRatesRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetTaxRatesRequestExpandList>;
@@ -55900,7 +55806,7 @@ export const GetTaxRatesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetTaxRatesRequest",
 }) as any as S.Schema<GetTaxRatesRequest>;
 
-export type GetTaxRatesResponseDataList = ReadonlyArray<TaxRate>;
+export type GetTaxRatesResponseDataList = Array<TaxRate>;
 export const GetTaxRatesResponseDataList = /*@__PURE__*/ S.Array(
   TaxRate,
 ) as any as S.Schema<GetTaxRatesResponseDataList>;
@@ -55929,7 +55835,7 @@ export const GetTaxRatesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetTaxRatesResponse",
 }) as any as S.Schema<GetTaxRatesResponse>;
 
-export type GetTaxRatesTaxRateRequestExpandList = ReadonlyArray<string>;
+export type GetTaxRatesTaxRateRequestExpandList = Array<string>;
 export const GetTaxRatesTaxRateRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetTaxRatesTaxRateRequestExpandList>;
@@ -55955,7 +55861,7 @@ export const GetTaxRatesTaxRateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetTaxRatesTaxRateRequest",
 }) as any as S.Schema<GetTaxRatesTaxRateRequest>;
 
-export type GetTaxRegistrationsRequestExpandList = ReadonlyArray<string>;
+export type GetTaxRegistrationsRequestExpandList = Array<string>;
 export const GetTaxRegistrationsRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetTaxRegistrationsRequestExpandList>;
@@ -56236,7 +56142,7 @@ export const TaxProductRegistrationsResourceCountryOptionsUsStateSalesTaxElectio
 
 /** Elections for the state sales tax registration. */
 export type TaxProductRegistrationsResourceCountryOptionsUsStateSalesTaxElectionsList =
-  ReadonlyArray<TaxProductRegistrationsResourceCountryOptionsUsStateSalesTaxElection>;
+  Array<TaxProductRegistrationsResourceCountryOptionsUsStateSalesTaxElection>;
 export const TaxProductRegistrationsResourceCountryOptionsUsStateSalesTaxElectionsList =
   /*@__PURE__*/ S.Array(
     TaxProductRegistrationsResourceCountryOptionsUsStateSalesTaxElection,
@@ -56567,8 +56473,7 @@ export const TaxRegistration = /*@__PURE__*/ S.suspend(() =>
   identifier: "TaxRegistration",
 }) as any as S.Schema<TaxRegistration>;
 
-export type GetTaxRegistrationsResponseDataList =
-  ReadonlyArray<TaxRegistration>;
+export type GetTaxRegistrationsResponseDataList = Array<TaxRegistration>;
 export const GetTaxRegistrationsResponseDataList = /*@__PURE__*/ S.Array(
   TaxRegistration,
 ) as any as S.Schema<GetTaxRegistrationsResponseDataList>;
@@ -56597,7 +56502,7 @@ export const GetTaxRegistrationsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetTaxRegistrationsResponse",
 }) as any as S.Schema<GetTaxRegistrationsResponse>;
 
-export type GetTaxRegistrationsIdRequestExpandList = ReadonlyArray<string>;
+export type GetTaxRegistrationsIdRequestExpandList = Array<string>;
 export const GetTaxRegistrationsIdRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetTaxRegistrationsIdRequestExpandList>;
@@ -56623,7 +56528,7 @@ export const GetTaxRegistrationsIdRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetTaxRegistrationsIdRequest",
 }) as any as S.Schema<GetTaxRegistrationsIdRequest>;
 
-export type GetTaxSettingsRequestExpandList = ReadonlyArray<string>;
+export type GetTaxSettingsRequestExpandList = Array<string>;
 export const GetTaxSettingsRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetTaxSettingsRequestExpandList>;
@@ -56705,7 +56610,7 @@ export const TaxSettingsStatus = /*@__PURE__*/ S.String;
 
 /** The list of missing fields that are required to perform calculations. It includes the entry `head_office` when the status is `pending`. It is recommended to set the optional values even if they aren't listed as required for calculating taxes. Calculations can fail if missing fields aren't explicitly provided on every call. */
 export type TaxProductResourceTaxSettingsStatusDetailsResourcePendingMissingFieldsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const TaxProductResourceTaxSettingsStatusDetailsResourcePendingMissingFieldsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -56766,8 +56671,7 @@ export const TaxSettings = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TaxSettings" }) as any as S.Schema<TaxSettings>;
 
-export type GetTaxTransactionsTransactionRequestExpandList =
-  ReadonlyArray<string>;
+export type GetTaxTransactionsTransactionRequestExpandList = Array<string>;
 export const GetTaxTransactionsTransactionRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -56882,8 +56786,7 @@ export const TaxTransactionLineItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TaxTransactionLineItem>;
 
 /** Details about each object. */
-export type TaxTransactionLineItemsDataList =
-  ReadonlyArray<TaxTransactionLineItem>;
+export type TaxTransactionLineItemsDataList = Array<TaxTransactionLineItem>;
 export const TaxTransactionLineItemsDataList = /*@__PURE__*/ S.Array(
   TaxTransactionLineItem,
 ) as any as S.Schema<TaxTransactionLineItemsDataList>;
@@ -56947,7 +56850,7 @@ export const TaxProductResourceTaxTransactionShippingCostTaxBehavior =
 
 /** Detailed account of taxes relevant to shipping cost. (It is not populated for the transaction resource object and will be removed in the next API version.) */
 export type TaxProductResourceTaxTransactionShippingCostTaxBreakdownList =
-  ReadonlyArray<TaxProductResourceLineItemTaxBreakdown>;
+  Array<TaxProductResourceLineItemTaxBreakdown>;
 export const TaxProductResourceTaxTransactionShippingCostTaxBreakdownList =
   /*@__PURE__*/ S.Array(
     TaxProductResourceLineItemTaxBreakdown,
@@ -57043,7 +56946,7 @@ export const TaxTransaction = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TaxTransaction" }) as any as S.Schema<TaxTransaction>;
 
 export type GetTaxTransactionsTransactionLineItemsRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GetTaxTransactionsTransactionLineItemsRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -57084,7 +56987,7 @@ export const GetTaxTransactionsTransactionLineItemsRequest =
 
 /** Details about each object. */
 export type GetTaxTransactionsTransactionLineItemsResponseDataList =
-  ReadonlyArray<TaxTransactionLineItem>;
+  Array<TaxTransactionLineItem>;
 export const GetTaxTransactionsTransactionLineItemsResponseDataList =
   /*@__PURE__*/ S.Array(
     TaxTransactionLineItem,
@@ -57117,7 +57020,7 @@ export const GetTaxTransactionsTransactionLineItemsResponse =
     identifier: "GetTaxTransactionsTransactionLineItemsResponse",
   }) as any as S.Schema<GetTaxTransactionsTransactionLineItemsResponse>;
 
-export type GetTerminalConfigurationsRequestExpandList = ReadonlyArray<string>;
+export type GetTerminalConfigurationsRequestExpandList = Array<string>;
 export const GetTerminalConfigurationsRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetTerminalConfigurationsRequestExpandList>;
@@ -57225,7 +57128,7 @@ export const TerminalConfigurationConfigurationResourceRebootWindow =
 
 /** Fixed amounts displayed when collecting a tip */
 export type TerminalConfigurationConfigurationResourceCurrencySpecificConfigFixedAmountsList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const TerminalConfigurationConfigurationResourceCurrencySpecificConfigFixedAmountsList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -57233,7 +57136,7 @@ export const TerminalConfigurationConfigurationResourceCurrencySpecificConfigFix
 
 /** Percentages displayed when collecting a tip */
 export type TerminalConfigurationConfigurationResourceCurrencySpecificConfigPercentagesList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const TerminalConfigurationConfigurationResourceCurrencySpecificConfigPercentagesList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -57537,7 +57440,7 @@ export const TerminalConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TerminalConfiguration>;
 
 export type GetTerminalConfigurationsResponseDataList =
-  ReadonlyArray<TerminalConfiguration>;
+  Array<TerminalConfiguration>;
 export const GetTerminalConfigurationsResponseDataList = /*@__PURE__*/ S.Array(
   TerminalConfiguration,
 ) as any as S.Schema<GetTerminalConfigurationsResponseDataList>;
@@ -57567,7 +57470,7 @@ export const GetTerminalConfigurationsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetTerminalConfigurationsResponse>;
 
 export type GetTerminalConfigurationsConfigurationRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GetTerminalConfigurationsConfigurationRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -57691,7 +57594,7 @@ export const GetTerminalConfigurationsConfigurationResponse =
     identifier: "GetTerminalConfigurationsConfigurationResponse",
   }) as any as S.Schema<GetTerminalConfigurationsConfigurationResponse>;
 
-export type GetTerminalLocationsRequestExpandList = ReadonlyArray<string>;
+export type GetTerminalLocationsRequestExpandList = Array<string>;
 export const GetTerminalLocationsRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetTerminalLocationsRequestExpandList>;
@@ -57778,8 +57681,7 @@ export const TerminalLocation = /*@__PURE__*/ S.suspend(() =>
   identifier: "TerminalLocation",
 }) as any as S.Schema<TerminalLocation>;
 
-export type GetTerminalLocationsResponseDataList =
-  ReadonlyArray<TerminalLocation>;
+export type GetTerminalLocationsResponseDataList = Array<TerminalLocation>;
 export const GetTerminalLocationsResponseDataList = /*@__PURE__*/ S.Array(
   TerminalLocation,
 ) as any as S.Schema<GetTerminalLocationsResponseDataList>;
@@ -57808,8 +57710,7 @@ export const GetTerminalLocationsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetTerminalLocationsResponse",
 }) as any as S.Schema<GetTerminalLocationsResponse>;
 
-export type GetTerminalLocationsLocationRequestExpandList =
-  ReadonlyArray<string>;
+export type GetTerminalLocationsLocationRequestExpandList = Array<string>;
 export const GetTerminalLocationsLocationRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -57914,7 +57815,7 @@ export type GetTerminalReadersRequestDeviceType =
   | "verifone_v660p";
 export const GetTerminalReadersRequestDeviceType = /*@__PURE__*/ S.String;
 
-export type GetTerminalReadersRequestExpandList = ReadonlyArray<string>;
+export type GetTerminalReadersRequestExpandList = Array<string>;
 export const GetTerminalReadersRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetTerminalReadersRequestExpandList>;
@@ -58051,7 +57952,7 @@ export const TerminalReaderReaderResourceChoice = /*@__PURE__*/ S.suspend(() =>
 
 /** List of possible choices to be selected */
 export type TerminalReaderReaderResourceSelectionChoicesList =
-  ReadonlyArray<TerminalReaderReaderResourceChoice>;
+  Array<TerminalReaderReaderResourceChoice>;
 export const TerminalReaderReaderResourceSelectionChoicesList =
   /*@__PURE__*/ S.Array(
     TerminalReaderReaderResourceChoice,
@@ -58139,7 +58040,7 @@ export const TerminalReaderReaderResourceToggle = /*@__PURE__*/ S.suspend(() =>
 
 /** List of toggles being collected. Values are present if collection is complete. */
 export type TerminalReaderReaderResourceInputTogglesList =
-  ReadonlyArray<TerminalReaderReaderResourceToggle>;
+  Array<TerminalReaderReaderResourceToggle>;
 export const TerminalReaderReaderResourceInputTogglesList =
   /*@__PURE__*/ S.Array(
     TerminalReaderReaderResourceToggle,
@@ -58194,7 +58095,7 @@ export const TerminalReaderReaderResourceInput = /*@__PURE__*/ S.suspend(() =>
 
 /** List of inputs to be collected. */
 export type TerminalReaderReaderResourceCollectInputsActionInputsList =
-  ReadonlyArray<TerminalReaderReaderResourceInput>;
+  Array<TerminalReaderReaderResourceInput>;
 export const TerminalReaderReaderResourceCollectInputsActionInputsList =
   /*@__PURE__*/ S.Array(
     TerminalReaderReaderResourceInput,
@@ -58574,7 +58475,7 @@ export const TerminalReaderReaderResourceLineItem = /*@__PURE__*/ S.suspend(
 
 /** List of line items in the cart. */
 export type TerminalReaderReaderResourceCartLineItemsList =
-  ReadonlyArray<TerminalReaderReaderResourceLineItem>;
+  Array<TerminalReaderReaderResourceLineItem>;
 export const TerminalReaderReaderResourceCartLineItemsList =
   /*@__PURE__*/ S.Array(
     TerminalReaderReaderResourceLineItem,
@@ -58792,7 +58693,7 @@ export const TerminalReader = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TerminalReader" }) as any as S.Schema<TerminalReader>;
 
 /** A list of readers */
-export type GetTerminalReadersResponseDataList = ReadonlyArray<TerminalReader>;
+export type GetTerminalReadersResponseDataList = Array<TerminalReader>;
 export const GetTerminalReadersResponseDataList = /*@__PURE__*/ S.Array(
   TerminalReader,
 ) as any as S.Schema<GetTerminalReadersResponseDataList>;
@@ -58822,7 +58723,7 @@ export const GetTerminalReadersResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetTerminalReadersResponse",
 }) as any as S.Schema<GetTerminalReadersResponse>;
 
-export type GetTerminalReadersReaderRequestExpandList = ReadonlyArray<string>;
+export type GetTerminalReadersReaderRequestExpandList = Array<string>;
 export const GetTerminalReadersReaderRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetTerminalReadersReaderRequestExpandList>;
@@ -58913,7 +58814,7 @@ export const GetTerminalReadersReaderResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetTerminalReadersReaderResponse",
 }) as any as S.Schema<GetTerminalReadersReaderResponse>;
 
-export type GetTestHelpersTestClocksRequestExpandList = ReadonlyArray<string>;
+export type GetTestHelpersTestClocksRequestExpandList = Array<string>;
 export const GetTestHelpersTestClocksRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetTestHelpersTestClocksRequestExpandList>;
@@ -58949,7 +58850,7 @@ export const GetTestHelpersTestClocksRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetTestHelpersTestClocksRequest>;
 
 export type GetTestHelpersTestClocksResponseDataList =
-  ReadonlyArray<TestHelpersTestClock>;
+  Array<TestHelpersTestClock>;
 export const GetTestHelpersTestClocksResponseDataList = /*@__PURE__*/ S.Array(
   TestHelpersTestClock,
 ) as any as S.Schema<GetTestHelpersTestClocksResponseDataList>;
@@ -58978,8 +58879,7 @@ export const GetTestHelpersTestClocksResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetTestHelpersTestClocksResponse",
 }) as any as S.Schema<GetTestHelpersTestClocksResponse>;
 
-export type GetTestHelpersTestClocksTestClockRequestExpandList =
-  ReadonlyArray<string>;
+export type GetTestHelpersTestClocksTestClockRequestExpandList = Array<string>;
 export const GetTestHelpersTestClocksTestClockRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -59009,7 +58909,7 @@ export const GetTestHelpersTestClocksTestClockRequest = /*@__PURE__*/ S.suspend(
   identifier: "GetTestHelpersTestClocksTestClockRequest",
 }) as any as S.Schema<GetTestHelpersTestClocksTestClockRequest>;
 
-export type GetTokensTokenRequestExpandList = ReadonlyArray<string>;
+export type GetTokensTokenRequestExpandList = Array<string>;
 export const GetTokensTokenRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetTokensTokenRequestExpandList>;
@@ -59122,7 +59022,7 @@ export type GetTopupsRequestCreated = GetTopupsRequestCreatedCase0 | number;
 export const GetTopupsRequestCreated =
   /*@__PURE__*/ S.Unknown as any as S.Schema<GetTopupsRequestCreated>;
 
-export type GetTopupsRequestExpandList = ReadonlyArray<string>;
+export type GetTopupsRequestExpandList = Array<string>;
 export const GetTopupsRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetTopupsRequestExpandList>;
@@ -59252,7 +59152,7 @@ export const Topup = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Topup" }) as any as S.Schema<Topup>;
 
-export type GetTopupsResponseDataList = ReadonlyArray<Topup>;
+export type GetTopupsResponseDataList = Array<Topup>;
 export const GetTopupsResponseDataList = /*@__PURE__*/ S.Array(
   Topup,
 ) as any as S.Schema<GetTopupsResponseDataList>;
@@ -59281,7 +59181,7 @@ export const GetTopupsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetTopupsResponse",
 }) as any as S.Schema<GetTopupsResponse>;
 
-export type GetTopupsTopupRequestExpandList = ReadonlyArray<string>;
+export type GetTopupsTopupRequestExpandList = Array<string>;
 export const GetTopupsTopupRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetTopupsTopupRequestExpandList>;
@@ -59334,7 +59234,7 @@ export type GetTransfersRequestCreated =
 export const GetTransfersRequestCreated =
   /*@__PURE__*/ S.Unknown as any as S.Schema<GetTransfersRequestCreated>;
 
-export type GetTransfersRequestExpandList = ReadonlyArray<string>;
+export type GetTransfersRequestExpandList = Array<string>;
 export const GetTransfersRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetTransfersRequestExpandList>;
@@ -59377,7 +59277,7 @@ export const GetTransfersRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetTransfersRequest>;
 
 /** Details about each object. */
-export type GetTransfersResponseDataList = ReadonlyArray<unknown>;
+export type GetTransfersResponseDataList = Array<unknown>;
 export const GetTransfersResponseDataList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<GetTransfersResponseDataList>;
@@ -59407,7 +59307,7 @@ export const GetTransfersResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetTransfersResponse",
 }) as any as S.Schema<GetTransfersResponse>;
 
-export type GetTransfersIdReversalsRequestExpandList = ReadonlyArray<string>;
+export type GetTransfersIdReversalsRequestExpandList = Array<string>;
 export const GetTransfersIdReversalsRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetTransfersIdReversalsRequestExpandList>;
@@ -59445,8 +59345,7 @@ export const GetTransfersIdReversalsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetTransfersIdReversalsRequest>;
 
 /** Details about each object. */
-export type GetTransfersIdReversalsResponseDataList =
-  ReadonlyArray<TransferReversal>;
+export type GetTransfersIdReversalsResponseDataList = Array<TransferReversal>;
 export const GetTransfersIdReversalsResponseDataList = /*@__PURE__*/ S.Array(
   TransferReversal,
 ) as any as S.Schema<GetTransfersIdReversalsResponseDataList>;
@@ -59476,7 +59375,7 @@ export const GetTransfersIdReversalsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetTransfersIdReversalsResponse",
 }) as any as S.Schema<GetTransfersIdReversalsResponse>;
 
-export type GetTransfersTransferRequestExpandList = ReadonlyArray<string>;
+export type GetTransfersTransferRequestExpandList = Array<string>;
 export const GetTransfersTransferRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetTransfersTransferRequestExpandList>;
@@ -59502,8 +59401,7 @@ export const GetTransfersTransferRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetTransfersTransferRequest",
 }) as any as S.Schema<GetTransfersTransferRequest>;
 
-export type GetTransfersTransferReversalsIdRequestExpandList =
-  ReadonlyArray<string>;
+export type GetTransfersTransferReversalsIdRequestExpandList = Array<string>;
 export const GetTransfersTransferReversalsIdRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -59535,7 +59433,7 @@ export const GetTransfersTransferReversalsIdRequest = /*@__PURE__*/ S.suspend(
   identifier: "GetTransfersTransferReversalsIdRequest",
 }) as any as S.Schema<GetTransfersTransferReversalsIdRequest>;
 
-export type GetTreasuryCreditReversalsRequestExpandList = ReadonlyArray<string>;
+export type GetTreasuryCreditReversalsRequestExpandList = Array<string>;
 export const GetTreasuryCreditReversalsRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -61256,7 +61154,7 @@ export const TreasuryTransactionEntry = /*@__PURE__*/ S.suspend(() =>
 
 /** Details about each object. */
 export type TreasuryTransactionEntriesDataList =
-  ReadonlyArray<TreasuryTransactionEntry>;
+  Array<TreasuryTransactionEntry>;
 export const TreasuryTransactionEntriesDataList = /*@__PURE__*/ S.Array(
   TreasuryTransactionEntry,
 ) as any as S.Schema<TreasuryTransactionEntriesDataList>;
@@ -61437,7 +61335,7 @@ export const TreasuryCreditReversal = /*@__PURE__*/ S.suspend(() =>
 
 /** Details about each object. */
 export type GetTreasuryCreditReversalsResponseDataList =
-  ReadonlyArray<TreasuryCreditReversal>;
+  Array<TreasuryCreditReversal>;
 export const GetTreasuryCreditReversalsResponseDataList = /*@__PURE__*/ S.Array(
   TreasuryCreditReversal,
 ) as any as S.Schema<GetTreasuryCreditReversalsResponseDataList>;
@@ -61468,7 +61366,7 @@ export const GetTreasuryCreditReversalsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetTreasuryCreditReversalsResponse>;
 
 export type GetTreasuryCreditReversalsCreditReversalRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GetTreasuryCreditReversalsCreditReversalRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -61500,7 +61398,7 @@ export const GetTreasuryCreditReversalsCreditReversalRequest =
     identifier: "GetTreasuryCreditReversalsCreditReversalRequest",
   }) as any as S.Schema<GetTreasuryCreditReversalsCreditReversalRequest>;
 
-export type GetTreasuryDebitReversalsRequestExpandList = ReadonlyArray<string>;
+export type GetTreasuryDebitReversalsRequestExpandList = Array<string>;
 export const GetTreasuryDebitReversalsRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetTreasuryDebitReversalsRequestExpandList>;
@@ -61561,7 +61459,7 @@ export const GetTreasuryDebitReversalsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Details about each object. */
 export type GetTreasuryDebitReversalsResponseDataList =
-  ReadonlyArray<TreasuryDebitReversal>;
+  Array<TreasuryDebitReversal>;
 export const GetTreasuryDebitReversalsResponseDataList = /*@__PURE__*/ S.Array(
   TreasuryDebitReversal,
 ) as any as S.Schema<GetTreasuryDebitReversalsResponseDataList>;
@@ -61592,7 +61490,7 @@ export const GetTreasuryDebitReversalsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetTreasuryDebitReversalsResponse>;
 
 export type GetTreasuryDebitReversalsDebitReversalRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GetTreasuryDebitReversalsDebitReversalRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -61650,8 +61548,7 @@ export type GetTreasuryFinancialAccountsRequestCreated =
 export const GetTreasuryFinancialAccountsRequestCreated =
   /*@__PURE__*/ S.Unknown as any as S.Schema<GetTreasuryFinancialAccountsRequestCreated>;
 
-export type GetTreasuryFinancialAccountsRequestExpandList =
-  ReadonlyArray<string>;
+export type GetTreasuryFinancialAccountsRequestExpandList = Array<string>;
 export const GetTreasuryFinancialAccountsRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -61717,7 +61614,7 @@ export const TreasuryFinancialAccountActiveFeaturesItem =
 
 /** The array of paths to active Features in the Features hash. */
 export type TreasuryFinancialAccountActiveFeaturesList =
-  ReadonlyArray<TreasuryFinancialAccountActiveFeaturesItem>;
+  Array<TreasuryFinancialAccountActiveFeaturesItem>;
 export const TreasuryFinancialAccountActiveFeaturesList = /*@__PURE__*/ S.Array(
   TreasuryFinancialAccountActiveFeaturesItem,
 ) as any as S.Schema<TreasuryFinancialAccountActiveFeaturesList>;
@@ -61834,7 +61731,7 @@ export const TreasuryFinancialAccountsResourceTogglesSettingStatusDetails =
 
 /** Additional details; includes at least one entry when the status is not `active`. */
 export type TreasuryFinancialAccountsResourceToggleSettingsStatusDetailsList =
-  ReadonlyArray<TreasuryFinancialAccountsResourceTogglesSettingStatusDetails>;
+  Array<TreasuryFinancialAccountsResourceTogglesSettingStatusDetails>;
 export const TreasuryFinancialAccountsResourceToggleSettingsStatusDetailsList =
   /*@__PURE__*/ S.Array(
     TreasuryFinancialAccountsResourceTogglesSettingStatusDetails,
@@ -61871,7 +61768,7 @@ export const TreasuryFinancialAccountsResourceAbaToggleSettingsStatus =
 
 /** Additional details; includes at least one entry when the status is not `active`. */
 export type TreasuryFinancialAccountsResourceAbaToggleSettingsStatusDetailsList =
-  ReadonlyArray<TreasuryFinancialAccountsResourceTogglesSettingStatusDetails>;
+  Array<TreasuryFinancialAccountsResourceTogglesSettingStatusDetails>;
 export const TreasuryFinancialAccountsResourceAbaToggleSettingsStatusDetailsList =
   /*@__PURE__*/ S.Array(
     TreasuryFinancialAccountsResourceTogglesSettingStatusDetails,
@@ -61921,7 +61818,7 @@ export const TreasuryFinancialAccountsResourceInboundAchToggleSettingsStatus =
 
 /** Additional details; includes at least one entry when the status is not `active`. */
 export type TreasuryFinancialAccountsResourceInboundAchToggleSettingsStatusDetailsList =
-  ReadonlyArray<TreasuryFinancialAccountsResourceTogglesSettingStatusDetails>;
+  Array<TreasuryFinancialAccountsResourceTogglesSettingStatusDetails>;
 export const TreasuryFinancialAccountsResourceInboundAchToggleSettingsStatusDetailsList =
   /*@__PURE__*/ S.Array(
     TreasuryFinancialAccountsResourceTogglesSettingStatusDetails,
@@ -61978,7 +61875,7 @@ export const TreasuryFinancialAccountsResourceOutboundAchToggleSettingsStatus =
 
 /** Additional details; includes at least one entry when the status is not `active`. */
 export type TreasuryFinancialAccountsResourceOutboundAchToggleSettingsStatusDetailsList =
-  ReadonlyArray<TreasuryFinancialAccountsResourceTogglesSettingStatusDetails>;
+  Array<TreasuryFinancialAccountsResourceTogglesSettingStatusDetails>;
 export const TreasuryFinancialAccountsResourceOutboundAchToggleSettingsStatusDetailsList =
   /*@__PURE__*/ S.Array(
     TreasuryFinancialAccountsResourceTogglesSettingStatusDetails,
@@ -62115,7 +62012,7 @@ export const TreasuryFinancialAccountsResourceFinancialAddressSupportedNetworksI
 
 /** The list of networks that the address supports */
 export type TreasuryFinancialAccountsResourceFinancialAddressSupportedNetworksList =
-  ReadonlyArray<TreasuryFinancialAccountsResourceFinancialAddressSupportedNetworksItem>;
+  Array<TreasuryFinancialAccountsResourceFinancialAddressSupportedNetworksItem>;
 export const TreasuryFinancialAccountsResourceFinancialAddressSupportedNetworksList =
   /*@__PURE__*/ S.Array(
     TreasuryFinancialAccountsResourceFinancialAddressSupportedNetworksItem,
@@ -62149,7 +62046,7 @@ export const TreasuryFinancialAccountsResourceFinancialAddress =
 
 /** The set of credentials that resolve to a FinancialAccount. */
 export type TreasuryFinancialAccountFinancialAddressesList =
-  ReadonlyArray<TreasuryFinancialAccountsResourceFinancialAddress>;
+  Array<TreasuryFinancialAccountsResourceFinancialAddress>;
 export const TreasuryFinancialAccountFinancialAddressesList =
   /*@__PURE__*/ S.Array(
     TreasuryFinancialAccountsResourceFinancialAddress,
@@ -62185,7 +62082,7 @@ export const TreasuryFinancialAccountPendingFeaturesItem =
 
 /** The array of paths to pending Features in the Features hash. */
 export type TreasuryFinancialAccountPendingFeaturesList =
-  ReadonlyArray<TreasuryFinancialAccountPendingFeaturesItem>;
+  Array<TreasuryFinancialAccountPendingFeaturesItem>;
 export const TreasuryFinancialAccountPendingFeaturesList =
   /*@__PURE__*/ S.Array(
     TreasuryFinancialAccountPendingFeaturesItem,
@@ -62242,7 +62139,7 @@ export const TreasuryFinancialAccountRestrictedFeaturesItem =
 
 /** The array of paths to restricted Features in the Features hash. */
 export type TreasuryFinancialAccountRestrictedFeaturesList =
-  ReadonlyArray<TreasuryFinancialAccountRestrictedFeaturesItem>;
+  Array<TreasuryFinancialAccountRestrictedFeaturesItem>;
 export const TreasuryFinancialAccountRestrictedFeaturesList =
   /*@__PURE__*/ S.Array(
     TreasuryFinancialAccountRestrictedFeaturesItem,
@@ -62261,7 +62158,7 @@ export const TreasuryFinancialAccountsResourceClosedStatusDetailsReasonsItem =
 
 /** The array that contains reasons for a FinancialAccount closure. */
 export type TreasuryFinancialAccountsResourceClosedStatusDetailsReasonsList =
-  ReadonlyArray<TreasuryFinancialAccountsResourceClosedStatusDetailsReasonsItem>;
+  Array<TreasuryFinancialAccountsResourceClosedStatusDetailsReasonsItem>;
 export const TreasuryFinancialAccountsResourceClosedStatusDetailsReasonsList =
   /*@__PURE__*/ S.Array(
     TreasuryFinancialAccountsResourceClosedStatusDetailsReasonsItem,
@@ -62294,8 +62191,7 @@ export const TreasuryFinancialAccountsResourceStatusDetails =
   }) as any as S.Schema<TreasuryFinancialAccountsResourceStatusDetails>;
 
 /** The currencies the FinancialAccount can hold a balance in. Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. */
-export type TreasuryFinancialAccountSupportedCurrenciesList =
-  ReadonlyArray<string>;
+export type TreasuryFinancialAccountSupportedCurrenciesList = Array<string>;
 export const TreasuryFinancialAccountSupportedCurrenciesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -62366,7 +62262,7 @@ export const TreasuryFinancialAccount = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TreasuryFinancialAccount>;
 
 export type GetTreasuryFinancialAccountsResponseDataList =
-  ReadonlyArray<TreasuryFinancialAccount>;
+  Array<TreasuryFinancialAccount>;
 export const GetTreasuryFinancialAccountsResponseDataList =
   /*@__PURE__*/ S.Array(
     TreasuryFinancialAccount,
@@ -62399,7 +62295,7 @@ export const GetTreasuryFinancialAccountsResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GetTreasuryFinancialAccountsResponse>;
 
 export type GetTreasuryFinancialAccountsFinancialAccountRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GetTreasuryFinancialAccountsFinancialAccountRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -62432,7 +62328,7 @@ export const GetTreasuryFinancialAccountsFinancialAccountRequest =
   }) as any as S.Schema<GetTreasuryFinancialAccountsFinancialAccountRequest>;
 
 export type GetTreasuryFinancialAccountsFinancialAccountFeaturesRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GetTreasuryFinancialAccountsFinancialAccountFeaturesRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -62464,8 +62360,7 @@ export const GetTreasuryFinancialAccountsFinancialAccountFeaturesRequest =
     identifier: "GetTreasuryFinancialAccountsFinancialAccountFeaturesRequest",
   }) as any as S.Schema<GetTreasuryFinancialAccountsFinancialAccountFeaturesRequest>;
 
-export type GetTreasuryInboundTransfersRequestExpandList =
-  ReadonlyArray<string>;
+export type GetTreasuryInboundTransfersRequestExpandList = Array<string>;
 export const GetTreasuryInboundTransfersRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -62518,7 +62413,7 @@ export const GetTreasuryInboundTransfersRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Details about each object. */
 export type GetTreasuryInboundTransfersResponseDataList =
-  ReadonlyArray<TreasuryInboundTransfer>;
+  Array<TreasuryInboundTransfer>;
 export const GetTreasuryInboundTransfersResponseDataList =
   /*@__PURE__*/ S.Array(
     TreasuryInboundTransfer,
@@ -62549,8 +62444,7 @@ export const GetTreasuryInboundTransfersResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetTreasuryInboundTransfersResponse",
 }) as any as S.Schema<GetTreasuryInboundTransfersResponse>;
 
-export type GetTreasuryInboundTransfersIdRequestExpandList =
-  ReadonlyArray<string>;
+export type GetTreasuryInboundTransfersIdRequestExpandList = Array<string>;
 export const GetTreasuryInboundTransfersIdRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -62608,8 +62502,7 @@ export type GetTreasuryOutboundPaymentsRequestCreated =
 export const GetTreasuryOutboundPaymentsRequestCreated =
   /*@__PURE__*/ S.Unknown as any as S.Schema<GetTreasuryOutboundPaymentsRequestCreated>;
 
-export type GetTreasuryOutboundPaymentsRequestExpandList =
-  ReadonlyArray<string>;
+export type GetTreasuryOutboundPaymentsRequestExpandList = Array<string>;
 export const GetTreasuryOutboundPaymentsRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -62671,7 +62564,7 @@ export const GetTreasuryOutboundPaymentsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Details about each object. */
 export type GetTreasuryOutboundPaymentsResponseDataList =
-  ReadonlyArray<TreasuryOutboundPayment>;
+  Array<TreasuryOutboundPayment>;
 export const GetTreasuryOutboundPaymentsResponseDataList =
   /*@__PURE__*/ S.Array(
     TreasuryOutboundPayment,
@@ -62702,8 +62595,7 @@ export const GetTreasuryOutboundPaymentsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetTreasuryOutboundPaymentsResponse",
 }) as any as S.Schema<GetTreasuryOutboundPaymentsResponse>;
 
-export type GetTreasuryOutboundPaymentsIdRequestExpandList =
-  ReadonlyArray<string>;
+export type GetTreasuryOutboundPaymentsIdRequestExpandList = Array<string>;
 export const GetTreasuryOutboundPaymentsIdRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -62733,8 +62625,7 @@ export const GetTreasuryOutboundPaymentsIdRequest = /*@__PURE__*/ S.suspend(
   identifier: "GetTreasuryOutboundPaymentsIdRequest",
 }) as any as S.Schema<GetTreasuryOutboundPaymentsIdRequest>;
 
-export type GetTreasuryOutboundTransfersRequestExpandList =
-  ReadonlyArray<string>;
+export type GetTreasuryOutboundTransfersRequestExpandList = Array<string>;
 export const GetTreasuryOutboundTransfersRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -62788,7 +62679,7 @@ export const GetTreasuryOutboundTransfersRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Details about each object. */
 export type GetTreasuryOutboundTransfersResponseDataList =
-  ReadonlyArray<TreasuryOutboundTransfer>;
+  Array<TreasuryOutboundTransfer>;
 export const GetTreasuryOutboundTransfersResponseDataList =
   /*@__PURE__*/ S.Array(
     TreasuryOutboundTransfer,
@@ -62822,7 +62713,7 @@ export const GetTreasuryOutboundTransfersResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GetTreasuryOutboundTransfersResponse>;
 
 export type GetTreasuryOutboundTransfersOutboundTransferRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GetTreasuryOutboundTransfersOutboundTransferRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -62854,7 +62745,7 @@ export const GetTreasuryOutboundTransfersOutboundTransferRequest =
     identifier: "GetTreasuryOutboundTransfersOutboundTransferRequest",
   }) as any as S.Schema<GetTreasuryOutboundTransfersOutboundTransferRequest>;
 
-export type GetTreasuryReceivedCreditsRequestExpandList = ReadonlyArray<string>;
+export type GetTreasuryReceivedCreditsRequestExpandList = Array<string>;
 export const GetTreasuryReceivedCreditsRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -62932,7 +62823,7 @@ export const GetTreasuryReceivedCreditsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Details about each object. */
 export type GetTreasuryReceivedCreditsResponseDataList =
-  ReadonlyArray<TreasuryReceivedCredit>;
+  Array<TreasuryReceivedCredit>;
 export const GetTreasuryReceivedCreditsResponseDataList = /*@__PURE__*/ S.Array(
   TreasuryReceivedCredit,
 ) as any as S.Schema<GetTreasuryReceivedCreditsResponseDataList>;
@@ -62962,8 +62853,7 @@ export const GetTreasuryReceivedCreditsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetTreasuryReceivedCreditsResponse",
 }) as any as S.Schema<GetTreasuryReceivedCreditsResponse>;
 
-export type GetTreasuryReceivedCreditsIdRequestExpandList =
-  ReadonlyArray<string>;
+export type GetTreasuryReceivedCreditsIdRequestExpandList = Array<string>;
 export const GetTreasuryReceivedCreditsIdRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -62992,7 +62882,7 @@ export const GetTreasuryReceivedCreditsIdRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetTreasuryReceivedCreditsIdRequest",
 }) as any as S.Schema<GetTreasuryReceivedCreditsIdRequest>;
 
-export type GetTreasuryReceivedDebitsRequestExpandList = ReadonlyArray<string>;
+export type GetTreasuryReceivedDebitsRequestExpandList = Array<string>;
 export const GetTreasuryReceivedDebitsRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetTreasuryReceivedDebitsRequestExpandList>;
@@ -63038,7 +62928,7 @@ export const GetTreasuryReceivedDebitsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Details about each object. */
 export type GetTreasuryReceivedDebitsResponseDataList =
-  ReadonlyArray<TreasuryReceivedDebit>;
+  Array<TreasuryReceivedDebit>;
 export const GetTreasuryReceivedDebitsResponseDataList = /*@__PURE__*/ S.Array(
   TreasuryReceivedDebit,
 ) as any as S.Schema<GetTreasuryReceivedDebitsResponseDataList>;
@@ -63068,8 +62958,7 @@ export const GetTreasuryReceivedDebitsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetTreasuryReceivedDebitsResponse",
 }) as any as S.Schema<GetTreasuryReceivedDebitsResponse>;
 
-export type GetTreasuryReceivedDebitsIdRequestExpandList =
-  ReadonlyArray<string>;
+export type GetTreasuryReceivedDebitsIdRequestExpandList = Array<string>;
 export const GetTreasuryReceivedDebitsIdRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -63154,8 +63043,7 @@ export type GetTreasuryTransactionEntriesRequestEffectiveAt =
 export const GetTreasuryTransactionEntriesRequestEffectiveAt =
   /*@__PURE__*/ S.Unknown as any as S.Schema<GetTreasuryTransactionEntriesRequestEffectiveAt>;
 
-export type GetTreasuryTransactionEntriesRequestExpandList =
-  ReadonlyArray<string>;
+export type GetTreasuryTransactionEntriesRequestExpandList = Array<string>;
 export const GetTreasuryTransactionEntriesRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -63220,7 +63108,7 @@ export const GetTreasuryTransactionEntriesRequest = /*@__PURE__*/ S.suspend(
 
 /** Details about each object. */
 export type GetTreasuryTransactionEntriesResponseDataList =
-  ReadonlyArray<TreasuryTransactionEntry>;
+  Array<TreasuryTransactionEntry>;
 export const GetTreasuryTransactionEntriesResponseDataList =
   /*@__PURE__*/ S.Array(
     TreasuryTransactionEntry,
@@ -63253,8 +63141,7 @@ export const GetTreasuryTransactionEntriesResponse = /*@__PURE__*/ S.suspend(
   identifier: "GetTreasuryTransactionEntriesResponse",
 }) as any as S.Schema<GetTreasuryTransactionEntriesResponse>;
 
-export type GetTreasuryTransactionEntriesIdRequestExpandList =
-  ReadonlyArray<string>;
+export type GetTreasuryTransactionEntriesIdRequestExpandList = Array<string>;
 export const GetTreasuryTransactionEntriesIdRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -63312,7 +63199,7 @@ export type GetTreasuryTransactionsRequestCreated =
 export const GetTreasuryTransactionsRequestCreated =
   /*@__PURE__*/ S.Unknown as any as S.Schema<GetTreasuryTransactionsRequestCreated>;
 
-export type GetTreasuryTransactionsRequestExpandList = ReadonlyArray<string>;
+export type GetTreasuryTransactionsRequestExpandList = Array<string>;
 export const GetTreasuryTransactionsRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetTreasuryTransactionsRequestExpandList>;
@@ -63416,7 +63303,7 @@ export const GetTreasuryTransactionsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Details about each object. */
 export type GetTreasuryTransactionsResponseDataList =
-  ReadonlyArray<TreasuryTransaction>;
+  Array<TreasuryTransaction>;
 export const GetTreasuryTransactionsResponseDataList = /*@__PURE__*/ S.Array(
   TreasuryTransaction,
 ) as any as S.Schema<GetTreasuryTransactionsResponseDataList>;
@@ -63446,7 +63333,7 @@ export const GetTreasuryTransactionsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetTreasuryTransactionsResponse",
 }) as any as S.Schema<GetTreasuryTransactionsResponse>;
 
-export type GetTreasuryTransactionsIdRequestExpandList = ReadonlyArray<string>;
+export type GetTreasuryTransactionsIdRequestExpandList = Array<string>;
 export const GetTreasuryTransactionsIdRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetTreasuryTransactionsIdRequestExpandList>;
@@ -63734,7 +63621,7 @@ export const V2CommerceProductCatalogImportStatusDetailsSucceededWithErrorsSampl
 
 /** A sample of errors that occurred during processing. */
 export type V2CommerceProductCatalogImportStatusDetailsSucceededWithErrorsSamplesList =
-  ReadonlyArray<V2CommerceProductCatalogImportStatusDetailsSucceededWithErrorsSamplesItem>;
+  Array<V2CommerceProductCatalogImportStatusDetailsSucceededWithErrorsSamplesItem>;
 export const V2CommerceProductCatalogImportStatusDetailsSucceededWithErrorsSamplesList =
   /*@__PURE__*/ S.Array(
     V2CommerceProductCatalogImportStatusDetailsSucceededWithErrorsSamplesItem,
@@ -63839,7 +63726,7 @@ export const V2CommerceProductCatalogImport = /*@__PURE__*/ S.suspend(() =>
 
 /** List of ProductCatalogImport objects. */
 export type GetV2CommerceProductCatalogImportsResponseDataList =
-  ReadonlyArray<V2CommerceProductCatalogImport>;
+  Array<V2CommerceProductCatalogImport>;
 export const GetV2CommerceProductCatalogImportsResponseDataList =
   /*@__PURE__*/ S.Array(
     V2CommerceProductCatalogImport,
@@ -63890,7 +63777,7 @@ export type GetV2CoreAccountsRequestAppliedConfigurationsItem =
 export const GetV2CoreAccountsRequestAppliedConfigurationsItem =
   /*@__PURE__*/ S.String;
 
-export type GetV2CoreAccountsRequestAppliedConfigurationsList = ReadonlyArray<
+export type GetV2CoreAccountsRequestAppliedConfigurationsList = Array<
   GetV2CoreAccountsRequestAppliedConfigurationsItem | (string & {})
 >;
 export const GetV2CoreAccountsRequestAppliedConfigurationsList =
@@ -63926,7 +63813,7 @@ export const V2CoreAccountAppliedConfigurationsItem = /*@__PURE__*/ S.String;
 
 /** The configurations that have been applied to this account. */
 export type V2CoreAccountAppliedConfigurationsList =
-  ReadonlyArray<V2CoreAccountAppliedConfigurationsItem>;
+  Array<V2CoreAccountAppliedConfigurationsItem>;
 export const V2CoreAccountAppliedConfigurationsList = /*@__PURE__*/ S.Array(
   V2CoreAccountAppliedConfigurationsItem,
 ) as any as S.Schema<V2CoreAccountAppliedConfigurationsList>;
@@ -64011,7 +63898,7 @@ export const V2CoreAccountConfigurationCustomerBillingInvoiceCustomFieldsItem =
 
 /** The list of up to 4 default custom fields to be displayed on invoices for this customer. When updating, pass an empty string to remove previously-defined fields. */
 export type V2CoreAccountConfigurationCustomerBillingInvoiceCustomFieldsList =
-  ReadonlyArray<V2CoreAccountConfigurationCustomerBillingInvoiceCustomFieldsItem>;
+  Array<V2CoreAccountConfigurationCustomerBillingInvoiceCustomFieldsItem>;
 export const V2CoreAccountConfigurationCustomerBillingInvoiceCustomFieldsList =
   /*@__PURE__*/ S.Array(
     V2CoreAccountConfigurationCustomerBillingInvoiceCustomFieldsItem,
@@ -64132,7 +64019,7 @@ export const V2CoreAccountConfigurationCustomerCapabilitiesAutomaticIndirectTaxS
 
 /** Additional details about the capability's status. This value is empty when `status` is `active`. */
 export type V2CoreAccountConfigurationCustomerCapabilitiesAutomaticIndirectTaxStatusDetailsList =
-  ReadonlyArray<V2CoreAccountConfigurationCustomerCapabilitiesAutomaticIndirectTaxStatusDetailsItem>;
+  Array<V2CoreAccountConfigurationCustomerCapabilitiesAutomaticIndirectTaxStatusDetailsItem>;
 export const V2CoreAccountConfigurationCustomerCapabilitiesAutomaticIndirectTaxStatusDetailsList =
   /*@__PURE__*/ S.Array(
     V2CoreAccountConfigurationCustomerCapabilitiesAutomaticIndirectTaxStatusDetailsItem,
@@ -64337,7 +64224,7 @@ export const V2CoreAccountConfigurationMerchantCapabilitiesAchDebitPaymentsStatu
 
 /** Additional details about the capability's status. This value is empty when `status` is `active`. */
 export type V2CoreAccountConfigurationMerchantCapabilitiesAchDebitPaymentsStatusDetailsList =
-  ReadonlyArray<V2CoreAccountConfigurationMerchantCapabilitiesAchDebitPaymentsStatusDetailsItem>;
+  Array<V2CoreAccountConfigurationMerchantCapabilitiesAchDebitPaymentsStatusDetailsItem>;
 export const V2CoreAccountConfigurationMerchantCapabilitiesAchDebitPaymentsStatusDetailsList =
   /*@__PURE__*/ S.Array(
     V2CoreAccountConfigurationMerchantCapabilitiesAchDebitPaymentsStatusDetailsItem,
@@ -64407,7 +64294,7 @@ export const V2CoreAccountConfigurationMerchantCapabilitiesAcssDebitPaymentsStat
 
 /** Additional details about the capability's status. This value is empty when `status` is `active`. */
 export type V2CoreAccountConfigurationMerchantCapabilitiesAcssDebitPaymentsStatusDetailsList =
-  ReadonlyArray<V2CoreAccountConfigurationMerchantCapabilitiesAcssDebitPaymentsStatusDetailsItem>;
+  Array<V2CoreAccountConfigurationMerchantCapabilitiesAcssDebitPaymentsStatusDetailsItem>;
 export const V2CoreAccountConfigurationMerchantCapabilitiesAcssDebitPaymentsStatusDetailsList =
   /*@__PURE__*/ S.Array(
     V2CoreAccountConfigurationMerchantCapabilitiesAcssDebitPaymentsStatusDetailsItem,
@@ -64477,7 +64364,7 @@ export const V2CoreAccountConfigurationMerchantCapabilitiesAffirmPaymentsStatusD
 
 /** Additional details about the capability's status. This value is empty when `status` is `active`. */
 export type V2CoreAccountConfigurationMerchantCapabilitiesAffirmPaymentsStatusDetailsList =
-  ReadonlyArray<V2CoreAccountConfigurationMerchantCapabilitiesAffirmPaymentsStatusDetailsItem>;
+  Array<V2CoreAccountConfigurationMerchantCapabilitiesAffirmPaymentsStatusDetailsItem>;
 export const V2CoreAccountConfigurationMerchantCapabilitiesAffirmPaymentsStatusDetailsList =
   /*@__PURE__*/ S.Array(
     V2CoreAccountConfigurationMerchantCapabilitiesAffirmPaymentsStatusDetailsItem,
@@ -64546,7 +64433,7 @@ export const V2CoreAccountConfigurationMerchantCapabilitiesAfterpayClearpayPayme
 
 /** Additional details about the capability's status. This value is empty when `status` is `active`. */
 export type V2CoreAccountConfigurationMerchantCapabilitiesAfterpayClearpayPaymentsStatusDetailsList =
-  ReadonlyArray<V2CoreAccountConfigurationMerchantCapabilitiesAfterpayClearpayPaymentsStatusDetailsItem>;
+  Array<V2CoreAccountConfigurationMerchantCapabilitiesAfterpayClearpayPaymentsStatusDetailsItem>;
 export const V2CoreAccountConfigurationMerchantCapabilitiesAfterpayClearpayPaymentsStatusDetailsList =
   /*@__PURE__*/ S.Array(
     V2CoreAccountConfigurationMerchantCapabilitiesAfterpayClearpayPaymentsStatusDetailsItem,
@@ -64619,7 +64506,7 @@ export const V2CoreAccountConfigurationMerchantCapabilitiesAlmaPaymentsStatusDet
 
 /** Additional details about the capability's status. This value is empty when `status` is `active`. */
 export type V2CoreAccountConfigurationMerchantCapabilitiesAlmaPaymentsStatusDetailsList =
-  ReadonlyArray<V2CoreAccountConfigurationMerchantCapabilitiesAlmaPaymentsStatusDetailsItem>;
+  Array<V2CoreAccountConfigurationMerchantCapabilitiesAlmaPaymentsStatusDetailsItem>;
 export const V2CoreAccountConfigurationMerchantCapabilitiesAlmaPaymentsStatusDetailsList =
   /*@__PURE__*/ S.Array(
     V2CoreAccountConfigurationMerchantCapabilitiesAlmaPaymentsStatusDetailsItem,
@@ -64687,7 +64574,7 @@ export const V2CoreAccountConfigurationMerchantCapabilitiesAmazonPayPaymentsStat
 
 /** Additional details about the capability's status. This value is empty when `status` is `active`. */
 export type V2CoreAccountConfigurationMerchantCapabilitiesAmazonPayPaymentsStatusDetailsList =
-  ReadonlyArray<V2CoreAccountConfigurationMerchantCapabilitiesAmazonPayPaymentsStatusDetailsItem>;
+  Array<V2CoreAccountConfigurationMerchantCapabilitiesAmazonPayPaymentsStatusDetailsItem>;
 export const V2CoreAccountConfigurationMerchantCapabilitiesAmazonPayPaymentsStatusDetailsList =
   /*@__PURE__*/ S.Array(
     V2CoreAccountConfigurationMerchantCapabilitiesAmazonPayPaymentsStatusDetailsItem,
@@ -64757,7 +64644,7 @@ export const V2CoreAccountConfigurationMerchantCapabilitiesAuBecsDebitPaymentsSt
 
 /** Additional details about the capability's status. This value is empty when `status` is `active`. */
 export type V2CoreAccountConfigurationMerchantCapabilitiesAuBecsDebitPaymentsStatusDetailsList =
-  ReadonlyArray<V2CoreAccountConfigurationMerchantCapabilitiesAuBecsDebitPaymentsStatusDetailsItem>;
+  Array<V2CoreAccountConfigurationMerchantCapabilitiesAuBecsDebitPaymentsStatusDetailsItem>;
 export const V2CoreAccountConfigurationMerchantCapabilitiesAuBecsDebitPaymentsStatusDetailsList =
   /*@__PURE__*/ S.Array(
     V2CoreAccountConfigurationMerchantCapabilitiesAuBecsDebitPaymentsStatusDetailsItem,
@@ -64827,7 +64714,7 @@ export const V2CoreAccountConfigurationMerchantCapabilitiesBacsDebitPaymentsStat
 
 /** Additional details about the capability's status. This value is empty when `status` is `active`. */
 export type V2CoreAccountConfigurationMerchantCapabilitiesBacsDebitPaymentsStatusDetailsList =
-  ReadonlyArray<V2CoreAccountConfigurationMerchantCapabilitiesBacsDebitPaymentsStatusDetailsItem>;
+  Array<V2CoreAccountConfigurationMerchantCapabilitiesBacsDebitPaymentsStatusDetailsItem>;
 export const V2CoreAccountConfigurationMerchantCapabilitiesBacsDebitPaymentsStatusDetailsList =
   /*@__PURE__*/ S.Array(
     V2CoreAccountConfigurationMerchantCapabilitiesBacsDebitPaymentsStatusDetailsItem,
@@ -64897,7 +64784,7 @@ export const V2CoreAccountConfigurationMerchantCapabilitiesBancontactPaymentsSta
 
 /** Additional details about the capability's status. This value is empty when `status` is `active`. */
 export type V2CoreAccountConfigurationMerchantCapabilitiesBancontactPaymentsStatusDetailsList =
-  ReadonlyArray<V2CoreAccountConfigurationMerchantCapabilitiesBancontactPaymentsStatusDetailsItem>;
+  Array<V2CoreAccountConfigurationMerchantCapabilitiesBancontactPaymentsStatusDetailsItem>;
 export const V2CoreAccountConfigurationMerchantCapabilitiesBancontactPaymentsStatusDetailsList =
   /*@__PURE__*/ S.Array(
     V2CoreAccountConfigurationMerchantCapabilitiesBancontactPaymentsStatusDetailsItem,
@@ -64970,7 +64857,7 @@ export const V2CoreAccountConfigurationMerchantCapabilitiesBlikPaymentsStatusDet
 
 /** Additional details about the capability's status. This value is empty when `status` is `active`. */
 export type V2CoreAccountConfigurationMerchantCapabilitiesBlikPaymentsStatusDetailsList =
-  ReadonlyArray<V2CoreAccountConfigurationMerchantCapabilitiesBlikPaymentsStatusDetailsItem>;
+  Array<V2CoreAccountConfigurationMerchantCapabilitiesBlikPaymentsStatusDetailsItem>;
 export const V2CoreAccountConfigurationMerchantCapabilitiesBlikPaymentsStatusDetailsList =
   /*@__PURE__*/ S.Array(
     V2CoreAccountConfigurationMerchantCapabilitiesBlikPaymentsStatusDetailsItem,
@@ -65038,7 +64925,7 @@ export const V2CoreAccountConfigurationMerchantCapabilitiesBoletoPaymentsStatusD
 
 /** Additional details about the capability's status. This value is empty when `status` is `active`. */
 export type V2CoreAccountConfigurationMerchantCapabilitiesBoletoPaymentsStatusDetailsList =
-  ReadonlyArray<V2CoreAccountConfigurationMerchantCapabilitiesBoletoPaymentsStatusDetailsItem>;
+  Array<V2CoreAccountConfigurationMerchantCapabilitiesBoletoPaymentsStatusDetailsItem>;
 export const V2CoreAccountConfigurationMerchantCapabilitiesBoletoPaymentsStatusDetailsList =
   /*@__PURE__*/ S.Array(
     V2CoreAccountConfigurationMerchantCapabilitiesBoletoPaymentsStatusDetailsItem,
@@ -65110,7 +64997,7 @@ export const V2CoreAccountConfigurationMerchantCapabilitiesCardPaymentsStatusDet
 
 /** Additional details about the capability's status. This value is empty when `status` is `active`. */
 export type V2CoreAccountConfigurationMerchantCapabilitiesCardPaymentsStatusDetailsList =
-  ReadonlyArray<V2CoreAccountConfigurationMerchantCapabilitiesCardPaymentsStatusDetailsItem>;
+  Array<V2CoreAccountConfigurationMerchantCapabilitiesCardPaymentsStatusDetailsItem>;
 export const V2CoreAccountConfigurationMerchantCapabilitiesCardPaymentsStatusDetailsList =
   /*@__PURE__*/ S.Array(
     V2CoreAccountConfigurationMerchantCapabilitiesCardPaymentsStatusDetailsItem,
@@ -65178,7 +65065,7 @@ export const V2CoreAccountConfigurationMerchantCapabilitiesCartesBancairesPaymen
 
 /** Additional details about the capability's status. This value is empty when `status` is `active`. */
 export type V2CoreAccountConfigurationMerchantCapabilitiesCartesBancairesPaymentsStatusDetailsList =
-  ReadonlyArray<V2CoreAccountConfigurationMerchantCapabilitiesCartesBancairesPaymentsStatusDetailsItem>;
+  Array<V2CoreAccountConfigurationMerchantCapabilitiesCartesBancairesPaymentsStatusDetailsItem>;
 export const V2CoreAccountConfigurationMerchantCapabilitiesCartesBancairesPaymentsStatusDetailsList =
   /*@__PURE__*/ S.Array(
     V2CoreAccountConfigurationMerchantCapabilitiesCartesBancairesPaymentsStatusDetailsItem,
@@ -65248,7 +65135,7 @@ export const V2CoreAccountConfigurationMerchantCapabilitiesCashappPaymentsStatus
 
 /** Additional details about the capability's status. This value is empty when `status` is `active`. */
 export type V2CoreAccountConfigurationMerchantCapabilitiesCashappPaymentsStatusDetailsList =
-  ReadonlyArray<V2CoreAccountConfigurationMerchantCapabilitiesCashappPaymentsStatusDetailsItem>;
+  Array<V2CoreAccountConfigurationMerchantCapabilitiesCashappPaymentsStatusDetailsItem>;
 export const V2CoreAccountConfigurationMerchantCapabilitiesCashappPaymentsStatusDetailsList =
   /*@__PURE__*/ S.Array(
     V2CoreAccountConfigurationMerchantCapabilitiesCashappPaymentsStatusDetailsItem,
@@ -65320,7 +65207,7 @@ export const V2CoreAccountConfigurationMerchantCapabilitiesEpsPaymentsStatusDeta
 
 /** Additional details about the capability's status. This value is empty when `status` is `active`. */
 export type V2CoreAccountConfigurationMerchantCapabilitiesEpsPaymentsStatusDetailsList =
-  ReadonlyArray<V2CoreAccountConfigurationMerchantCapabilitiesEpsPaymentsStatusDetailsItem>;
+  Array<V2CoreAccountConfigurationMerchantCapabilitiesEpsPaymentsStatusDetailsItem>;
 export const V2CoreAccountConfigurationMerchantCapabilitiesEpsPaymentsStatusDetailsList =
   /*@__PURE__*/ S.Array(
     V2CoreAccountConfigurationMerchantCapabilitiesEpsPaymentsStatusDetailsItem,
@@ -65391,7 +65278,7 @@ export const V2CoreAccountConfigurationMerchantCapabilitiesFpxPaymentsStatusDeta
 
 /** Additional details about the capability's status. This value is empty when `status` is `active`. */
 export type V2CoreAccountConfigurationMerchantCapabilitiesFpxPaymentsStatusDetailsList =
-  ReadonlyArray<V2CoreAccountConfigurationMerchantCapabilitiesFpxPaymentsStatusDetailsItem>;
+  Array<V2CoreAccountConfigurationMerchantCapabilitiesFpxPaymentsStatusDetailsItem>;
 export const V2CoreAccountConfigurationMerchantCapabilitiesFpxPaymentsStatusDetailsList =
   /*@__PURE__*/ S.Array(
     V2CoreAccountConfigurationMerchantCapabilitiesFpxPaymentsStatusDetailsItem,
@@ -65459,7 +65346,7 @@ export const V2CoreAccountConfigurationMerchantCapabilitiesGbBankTransferPayment
 
 /** Additional details about the capability's status. This value is empty when `status` is `active`. */
 export type V2CoreAccountConfigurationMerchantCapabilitiesGbBankTransferPaymentsStatusDetailsList =
-  ReadonlyArray<V2CoreAccountConfigurationMerchantCapabilitiesGbBankTransferPaymentsStatusDetailsItem>;
+  Array<V2CoreAccountConfigurationMerchantCapabilitiesGbBankTransferPaymentsStatusDetailsItem>;
 export const V2CoreAccountConfigurationMerchantCapabilitiesGbBankTransferPaymentsStatusDetailsList =
   /*@__PURE__*/ S.Array(
     V2CoreAccountConfigurationMerchantCapabilitiesGbBankTransferPaymentsStatusDetailsItem,
@@ -65529,7 +65416,7 @@ export const V2CoreAccountConfigurationMerchantCapabilitiesGrabpayPaymentsStatus
 
 /** Additional details about the capability's status. This value is empty when `status` is `active`. */
 export type V2CoreAccountConfigurationMerchantCapabilitiesGrabpayPaymentsStatusDetailsList =
-  ReadonlyArray<V2CoreAccountConfigurationMerchantCapabilitiesGrabpayPaymentsStatusDetailsItem>;
+  Array<V2CoreAccountConfigurationMerchantCapabilitiesGrabpayPaymentsStatusDetailsItem>;
 export const V2CoreAccountConfigurationMerchantCapabilitiesGrabpayPaymentsStatusDetailsList =
   /*@__PURE__*/ S.Array(
     V2CoreAccountConfigurationMerchantCapabilitiesGrabpayPaymentsStatusDetailsItem,
@@ -65601,7 +65488,7 @@ export const V2CoreAccountConfigurationMerchantCapabilitiesIdealPaymentsStatusDe
 
 /** Additional details about the capability's status. This value is empty when `status` is `active`. */
 export type V2CoreAccountConfigurationMerchantCapabilitiesIdealPaymentsStatusDetailsList =
-  ReadonlyArray<V2CoreAccountConfigurationMerchantCapabilitiesIdealPaymentsStatusDetailsItem>;
+  Array<V2CoreAccountConfigurationMerchantCapabilitiesIdealPaymentsStatusDetailsItem>;
 export const V2CoreAccountConfigurationMerchantCapabilitiesIdealPaymentsStatusDetailsList =
   /*@__PURE__*/ S.Array(
     V2CoreAccountConfigurationMerchantCapabilitiesIdealPaymentsStatusDetailsItem,
@@ -65672,7 +65559,7 @@ export const V2CoreAccountConfigurationMerchantCapabilitiesJcbPaymentsStatusDeta
 
 /** Additional details about the capability's status. This value is empty when `status` is `active`. */
 export type V2CoreAccountConfigurationMerchantCapabilitiesJcbPaymentsStatusDetailsList =
-  ReadonlyArray<V2CoreAccountConfigurationMerchantCapabilitiesJcbPaymentsStatusDetailsItem>;
+  Array<V2CoreAccountConfigurationMerchantCapabilitiesJcbPaymentsStatusDetailsItem>;
 export const V2CoreAccountConfigurationMerchantCapabilitiesJcbPaymentsStatusDetailsList =
   /*@__PURE__*/ S.Array(
     V2CoreAccountConfigurationMerchantCapabilitiesJcbPaymentsStatusDetailsItem,
@@ -65740,7 +65627,7 @@ export const V2CoreAccountConfigurationMerchantCapabilitiesJpBankTransferPayment
 
 /** Additional details about the capability's status. This value is empty when `status` is `active`. */
 export type V2CoreAccountConfigurationMerchantCapabilitiesJpBankTransferPaymentsStatusDetailsList =
-  ReadonlyArray<V2CoreAccountConfigurationMerchantCapabilitiesJpBankTransferPaymentsStatusDetailsItem>;
+  Array<V2CoreAccountConfigurationMerchantCapabilitiesJpBankTransferPaymentsStatusDetailsItem>;
 export const V2CoreAccountConfigurationMerchantCapabilitiesJpBankTransferPaymentsStatusDetailsList =
   /*@__PURE__*/ S.Array(
     V2CoreAccountConfigurationMerchantCapabilitiesJpBankTransferPaymentsStatusDetailsItem,
@@ -65810,7 +65697,7 @@ export const V2CoreAccountConfigurationMerchantCapabilitiesKakaoPayPaymentsStatu
 
 /** Additional details about the capability's status. This value is empty when `status` is `active`. */
 export type V2CoreAccountConfigurationMerchantCapabilitiesKakaoPayPaymentsStatusDetailsList =
-  ReadonlyArray<V2CoreAccountConfigurationMerchantCapabilitiesKakaoPayPaymentsStatusDetailsItem>;
+  Array<V2CoreAccountConfigurationMerchantCapabilitiesKakaoPayPaymentsStatusDetailsItem>;
 export const V2CoreAccountConfigurationMerchantCapabilitiesKakaoPayPaymentsStatusDetailsList =
   /*@__PURE__*/ S.Array(
     V2CoreAccountConfigurationMerchantCapabilitiesKakaoPayPaymentsStatusDetailsItem,
@@ -65880,7 +65767,7 @@ export const V2CoreAccountConfigurationMerchantCapabilitiesKlarnaPaymentsStatusD
 
 /** Additional details about the capability's status. This value is empty when `status` is `active`. */
 export type V2CoreAccountConfigurationMerchantCapabilitiesKlarnaPaymentsStatusDetailsList =
-  ReadonlyArray<V2CoreAccountConfigurationMerchantCapabilitiesKlarnaPaymentsStatusDetailsItem>;
+  Array<V2CoreAccountConfigurationMerchantCapabilitiesKlarnaPaymentsStatusDetailsItem>;
 export const V2CoreAccountConfigurationMerchantCapabilitiesKlarnaPaymentsStatusDetailsList =
   /*@__PURE__*/ S.Array(
     V2CoreAccountConfigurationMerchantCapabilitiesKlarnaPaymentsStatusDetailsItem,
@@ -65949,7 +65836,7 @@ export const V2CoreAccountConfigurationMerchantCapabilitiesKonbiniPaymentsStatus
 
 /** Additional details about the capability's status. This value is empty when `status` is `active`. */
 export type V2CoreAccountConfigurationMerchantCapabilitiesKonbiniPaymentsStatusDetailsList =
-  ReadonlyArray<V2CoreAccountConfigurationMerchantCapabilitiesKonbiniPaymentsStatusDetailsItem>;
+  Array<V2CoreAccountConfigurationMerchantCapabilitiesKonbiniPaymentsStatusDetailsItem>;
 export const V2CoreAccountConfigurationMerchantCapabilitiesKonbiniPaymentsStatusDetailsList =
   /*@__PURE__*/ S.Array(
     V2CoreAccountConfigurationMerchantCapabilitiesKonbiniPaymentsStatusDetailsItem,
@@ -66018,7 +65905,7 @@ export const V2CoreAccountConfigurationMerchantCapabilitiesKrCardPaymentsStatusD
 
 /** Additional details about the capability's status. This value is empty when `status` is `active`. */
 export type V2CoreAccountConfigurationMerchantCapabilitiesKrCardPaymentsStatusDetailsList =
-  ReadonlyArray<V2CoreAccountConfigurationMerchantCapabilitiesKrCardPaymentsStatusDetailsItem>;
+  Array<V2CoreAccountConfigurationMerchantCapabilitiesKrCardPaymentsStatusDetailsItem>;
 export const V2CoreAccountConfigurationMerchantCapabilitiesKrCardPaymentsStatusDetailsList =
   /*@__PURE__*/ S.Array(
     V2CoreAccountConfigurationMerchantCapabilitiesKrCardPaymentsStatusDetailsItem,
@@ -66090,7 +65977,7 @@ export const V2CoreAccountConfigurationMerchantCapabilitiesLinkPaymentsStatusDet
 
 /** Additional details about the capability's status. This value is empty when `status` is `active`. */
 export type V2CoreAccountConfigurationMerchantCapabilitiesLinkPaymentsStatusDetailsList =
-  ReadonlyArray<V2CoreAccountConfigurationMerchantCapabilitiesLinkPaymentsStatusDetailsItem>;
+  Array<V2CoreAccountConfigurationMerchantCapabilitiesLinkPaymentsStatusDetailsItem>;
 export const V2CoreAccountConfigurationMerchantCapabilitiesLinkPaymentsStatusDetailsList =
   /*@__PURE__*/ S.Array(
     V2CoreAccountConfigurationMerchantCapabilitiesLinkPaymentsStatusDetailsItem,
@@ -66158,7 +66045,7 @@ export const V2CoreAccountConfigurationMerchantCapabilitiesMobilepayPaymentsStat
 
 /** Additional details about the capability's status. This value is empty when `status` is `active`. */
 export type V2CoreAccountConfigurationMerchantCapabilitiesMobilepayPaymentsStatusDetailsList =
-  ReadonlyArray<V2CoreAccountConfigurationMerchantCapabilitiesMobilepayPaymentsStatusDetailsItem>;
+  Array<V2CoreAccountConfigurationMerchantCapabilitiesMobilepayPaymentsStatusDetailsItem>;
 export const V2CoreAccountConfigurationMerchantCapabilitiesMobilepayPaymentsStatusDetailsList =
   /*@__PURE__*/ S.Array(
     V2CoreAccountConfigurationMerchantCapabilitiesMobilepayPaymentsStatusDetailsItem,
@@ -66228,7 +66115,7 @@ export const V2CoreAccountConfigurationMerchantCapabilitiesMultibancoPaymentsSta
 
 /** Additional details about the capability's status. This value is empty when `status` is `active`. */
 export type V2CoreAccountConfigurationMerchantCapabilitiesMultibancoPaymentsStatusDetailsList =
-  ReadonlyArray<V2CoreAccountConfigurationMerchantCapabilitiesMultibancoPaymentsStatusDetailsItem>;
+  Array<V2CoreAccountConfigurationMerchantCapabilitiesMultibancoPaymentsStatusDetailsItem>;
 export const V2CoreAccountConfigurationMerchantCapabilitiesMultibancoPaymentsStatusDetailsList =
   /*@__PURE__*/ S.Array(
     V2CoreAccountConfigurationMerchantCapabilitiesMultibancoPaymentsStatusDetailsItem,
@@ -66298,7 +66185,7 @@ export const V2CoreAccountConfigurationMerchantCapabilitiesMxBankTransferPayment
 
 /** Additional details about the capability's status. This value is empty when `status` is `active`. */
 export type V2CoreAccountConfigurationMerchantCapabilitiesMxBankTransferPaymentsStatusDetailsList =
-  ReadonlyArray<V2CoreAccountConfigurationMerchantCapabilitiesMxBankTransferPaymentsStatusDetailsItem>;
+  Array<V2CoreAccountConfigurationMerchantCapabilitiesMxBankTransferPaymentsStatusDetailsItem>;
 export const V2CoreAccountConfigurationMerchantCapabilitiesMxBankTransferPaymentsStatusDetailsList =
   /*@__PURE__*/ S.Array(
     V2CoreAccountConfigurationMerchantCapabilitiesMxBankTransferPaymentsStatusDetailsItem,
@@ -66368,7 +66255,7 @@ export const V2CoreAccountConfigurationMerchantCapabilitiesNaverPayPaymentsStatu
 
 /** Additional details about the capability's status. This value is empty when `status` is `active`. */
 export type V2CoreAccountConfigurationMerchantCapabilitiesNaverPayPaymentsStatusDetailsList =
-  ReadonlyArray<V2CoreAccountConfigurationMerchantCapabilitiesNaverPayPaymentsStatusDetailsItem>;
+  Array<V2CoreAccountConfigurationMerchantCapabilitiesNaverPayPaymentsStatusDetailsItem>;
 export const V2CoreAccountConfigurationMerchantCapabilitiesNaverPayPaymentsStatusDetailsList =
   /*@__PURE__*/ S.Array(
     V2CoreAccountConfigurationMerchantCapabilitiesNaverPayPaymentsStatusDetailsItem,
@@ -66441,7 +66328,7 @@ export const V2CoreAccountConfigurationMerchantCapabilitiesOxxoPaymentsStatusDet
 
 /** Additional details about the capability's status. This value is empty when `status` is `active`. */
 export type V2CoreAccountConfigurationMerchantCapabilitiesOxxoPaymentsStatusDetailsList =
-  ReadonlyArray<V2CoreAccountConfigurationMerchantCapabilitiesOxxoPaymentsStatusDetailsItem>;
+  Array<V2CoreAccountConfigurationMerchantCapabilitiesOxxoPaymentsStatusDetailsItem>;
 export const V2CoreAccountConfigurationMerchantCapabilitiesOxxoPaymentsStatusDetailsList =
   /*@__PURE__*/ S.Array(
     V2CoreAccountConfigurationMerchantCapabilitiesOxxoPaymentsStatusDetailsItem,
@@ -66512,7 +66399,7 @@ export const V2CoreAccountConfigurationMerchantCapabilitiesP24PaymentsStatusDeta
 
 /** Additional details about the capability's status. This value is empty when `status` is `active`. */
 export type V2CoreAccountConfigurationMerchantCapabilitiesP24PaymentsStatusDetailsList =
-  ReadonlyArray<V2CoreAccountConfigurationMerchantCapabilitiesP24PaymentsStatusDetailsItem>;
+  Array<V2CoreAccountConfigurationMerchantCapabilitiesP24PaymentsStatusDetailsItem>;
 export const V2CoreAccountConfigurationMerchantCapabilitiesP24PaymentsStatusDetailsList =
   /*@__PURE__*/ S.Array(
     V2CoreAccountConfigurationMerchantCapabilitiesP24PaymentsStatusDetailsItem,
@@ -66580,7 +66467,7 @@ export const V2CoreAccountConfigurationMerchantCapabilitiesPayByBankPaymentsStat
 
 /** Additional details about the capability's status. This value is empty when `status` is `active`. */
 export type V2CoreAccountConfigurationMerchantCapabilitiesPayByBankPaymentsStatusDetailsList =
-  ReadonlyArray<V2CoreAccountConfigurationMerchantCapabilitiesPayByBankPaymentsStatusDetailsItem>;
+  Array<V2CoreAccountConfigurationMerchantCapabilitiesPayByBankPaymentsStatusDetailsItem>;
 export const V2CoreAccountConfigurationMerchantCapabilitiesPayByBankPaymentsStatusDetailsList =
   /*@__PURE__*/ S.Array(
     V2CoreAccountConfigurationMerchantCapabilitiesPayByBankPaymentsStatusDetailsItem,
@@ -66653,7 +66540,7 @@ export const V2CoreAccountConfigurationMerchantCapabilitiesPaycoPaymentsStatusDe
 
 /** Additional details about the capability's status. This value is empty when `status` is `active`. */
 export type V2CoreAccountConfigurationMerchantCapabilitiesPaycoPaymentsStatusDetailsList =
-  ReadonlyArray<V2CoreAccountConfigurationMerchantCapabilitiesPaycoPaymentsStatusDetailsItem>;
+  Array<V2CoreAccountConfigurationMerchantCapabilitiesPaycoPaymentsStatusDetailsItem>;
 export const V2CoreAccountConfigurationMerchantCapabilitiesPaycoPaymentsStatusDetailsList =
   /*@__PURE__*/ S.Array(
     V2CoreAccountConfigurationMerchantCapabilitiesPaycoPaymentsStatusDetailsItem,
@@ -66721,7 +66608,7 @@ export const V2CoreAccountConfigurationMerchantCapabilitiesPaynowPaymentsStatusD
 
 /** Additional details about the capability's status. This value is empty when `status` is `active`. */
 export type V2CoreAccountConfigurationMerchantCapabilitiesPaynowPaymentsStatusDetailsList =
-  ReadonlyArray<V2CoreAccountConfigurationMerchantCapabilitiesPaynowPaymentsStatusDetailsItem>;
+  Array<V2CoreAccountConfigurationMerchantCapabilitiesPaynowPaymentsStatusDetailsItem>;
 export const V2CoreAccountConfigurationMerchantCapabilitiesPaynowPaymentsStatusDetailsList =
   /*@__PURE__*/ S.Array(
     V2CoreAccountConfigurationMerchantCapabilitiesPaynowPaymentsStatusDetailsItem,
@@ -66790,7 +66677,7 @@ export const V2CoreAccountConfigurationMerchantCapabilitiesPromptpayPaymentsStat
 
 /** Additional details about the capability's status. This value is empty when `status` is `active`. */
 export type V2CoreAccountConfigurationMerchantCapabilitiesPromptpayPaymentsStatusDetailsList =
-  ReadonlyArray<V2CoreAccountConfigurationMerchantCapabilitiesPromptpayPaymentsStatusDetailsItem>;
+  Array<V2CoreAccountConfigurationMerchantCapabilitiesPromptpayPaymentsStatusDetailsItem>;
 export const V2CoreAccountConfigurationMerchantCapabilitiesPromptpayPaymentsStatusDetailsList =
   /*@__PURE__*/ S.Array(
     V2CoreAccountConfigurationMerchantCapabilitiesPromptpayPaymentsStatusDetailsItem,
@@ -66860,7 +66747,7 @@ export const V2CoreAccountConfigurationMerchantCapabilitiesRevolutPayPaymentsSta
 
 /** Additional details about the capability's status. This value is empty when `status` is `active`. */
 export type V2CoreAccountConfigurationMerchantCapabilitiesRevolutPayPaymentsStatusDetailsList =
-  ReadonlyArray<V2CoreAccountConfigurationMerchantCapabilitiesRevolutPayPaymentsStatusDetailsItem>;
+  Array<V2CoreAccountConfigurationMerchantCapabilitiesRevolutPayPaymentsStatusDetailsItem>;
 export const V2CoreAccountConfigurationMerchantCapabilitiesRevolutPayPaymentsStatusDetailsList =
   /*@__PURE__*/ S.Array(
     V2CoreAccountConfigurationMerchantCapabilitiesRevolutPayPaymentsStatusDetailsItem,
@@ -66930,7 +66817,7 @@ export const V2CoreAccountConfigurationMerchantCapabilitiesSamsungPayPaymentsSta
 
 /** Additional details about the capability's status. This value is empty when `status` is `active`. */
 export type V2CoreAccountConfigurationMerchantCapabilitiesSamsungPayPaymentsStatusDetailsList =
-  ReadonlyArray<V2CoreAccountConfigurationMerchantCapabilitiesSamsungPayPaymentsStatusDetailsItem>;
+  Array<V2CoreAccountConfigurationMerchantCapabilitiesSamsungPayPaymentsStatusDetailsItem>;
 export const V2CoreAccountConfigurationMerchantCapabilitiesSamsungPayPaymentsStatusDetailsList =
   /*@__PURE__*/ S.Array(
     V2CoreAccountConfigurationMerchantCapabilitiesSamsungPayPaymentsStatusDetailsItem,
@@ -67000,7 +66887,7 @@ export const V2CoreAccountConfigurationMerchantCapabilitiesSepaBankTransferPayme
 
 /** Additional details about the capability's status. This value is empty when `status` is `active`. */
 export type V2CoreAccountConfigurationMerchantCapabilitiesSepaBankTransferPaymentsStatusDetailsList =
-  ReadonlyArray<V2CoreAccountConfigurationMerchantCapabilitiesSepaBankTransferPaymentsStatusDetailsItem>;
+  Array<V2CoreAccountConfigurationMerchantCapabilitiesSepaBankTransferPaymentsStatusDetailsItem>;
 export const V2CoreAccountConfigurationMerchantCapabilitiesSepaBankTransferPaymentsStatusDetailsList =
   /*@__PURE__*/ S.Array(
     V2CoreAccountConfigurationMerchantCapabilitiesSepaBankTransferPaymentsStatusDetailsItem,
@@ -67070,7 +66957,7 @@ export const V2CoreAccountConfigurationMerchantCapabilitiesSepaDebitPaymentsStat
 
 /** Additional details about the capability's status. This value is empty when `status` is `active`. */
 export type V2CoreAccountConfigurationMerchantCapabilitiesSepaDebitPaymentsStatusDetailsList =
-  ReadonlyArray<V2CoreAccountConfigurationMerchantCapabilitiesSepaDebitPaymentsStatusDetailsItem>;
+  Array<V2CoreAccountConfigurationMerchantCapabilitiesSepaDebitPaymentsStatusDetailsItem>;
 export const V2CoreAccountConfigurationMerchantCapabilitiesSepaDebitPaymentsStatusDetailsList =
   /*@__PURE__*/ S.Array(
     V2CoreAccountConfigurationMerchantCapabilitiesSepaDebitPaymentsStatusDetailsItem,
@@ -67140,7 +67027,7 @@ export const V2CoreAccountConfigurationMerchantCapabilitiesStripeBalancePayoutsS
 
 /** Additional details about the capability's status. This value is empty when `status` is `active`. */
 export type V2CoreAccountConfigurationMerchantCapabilitiesStripeBalancePayoutsStatusDetailsList =
-  ReadonlyArray<V2CoreAccountConfigurationMerchantCapabilitiesStripeBalancePayoutsStatusDetailsItem>;
+  Array<V2CoreAccountConfigurationMerchantCapabilitiesStripeBalancePayoutsStatusDetailsItem>;
 export const V2CoreAccountConfigurationMerchantCapabilitiesStripeBalancePayoutsStatusDetailsList =
   /*@__PURE__*/ S.Array(
     V2CoreAccountConfigurationMerchantCapabilitiesStripeBalancePayoutsStatusDetailsItem,
@@ -67226,7 +67113,7 @@ export const V2CoreAccountConfigurationMerchantCapabilitiesSunbitPaymentsStatusD
 
 /** Additional details about the capability's status. This value is empty when `status` is `active`. */
 export type V2CoreAccountConfigurationMerchantCapabilitiesSunbitPaymentsStatusDetailsList =
-  ReadonlyArray<V2CoreAccountConfigurationMerchantCapabilitiesSunbitPaymentsStatusDetailsItem>;
+  Array<V2CoreAccountConfigurationMerchantCapabilitiesSunbitPaymentsStatusDetailsItem>;
 export const V2CoreAccountConfigurationMerchantCapabilitiesSunbitPaymentsStatusDetailsList =
   /*@__PURE__*/ S.Array(
     V2CoreAccountConfigurationMerchantCapabilitiesSunbitPaymentsStatusDetailsItem,
@@ -67298,7 +67185,7 @@ export const V2CoreAccountConfigurationMerchantCapabilitiesSwishPaymentsStatusDe
 
 /** Additional details about the capability's status. This value is empty when `status` is `active`. */
 export type V2CoreAccountConfigurationMerchantCapabilitiesSwishPaymentsStatusDetailsList =
-  ReadonlyArray<V2CoreAccountConfigurationMerchantCapabilitiesSwishPaymentsStatusDetailsItem>;
+  Array<V2CoreAccountConfigurationMerchantCapabilitiesSwishPaymentsStatusDetailsItem>;
 export const V2CoreAccountConfigurationMerchantCapabilitiesSwishPaymentsStatusDetailsList =
   /*@__PURE__*/ S.Array(
     V2CoreAccountConfigurationMerchantCapabilitiesSwishPaymentsStatusDetailsItem,
@@ -67369,7 +67256,7 @@ export const V2CoreAccountConfigurationMerchantCapabilitiesTwintPaymentsStatusDe
 
 /** Additional details about the capability's status. This value is empty when `status` is `active`. */
 export type V2CoreAccountConfigurationMerchantCapabilitiesTwintPaymentsStatusDetailsList =
-  ReadonlyArray<V2CoreAccountConfigurationMerchantCapabilitiesTwintPaymentsStatusDetailsItem>;
+  Array<V2CoreAccountConfigurationMerchantCapabilitiesTwintPaymentsStatusDetailsItem>;
 export const V2CoreAccountConfigurationMerchantCapabilitiesTwintPaymentsStatusDetailsList =
   /*@__PURE__*/ S.Array(
     V2CoreAccountConfigurationMerchantCapabilitiesTwintPaymentsStatusDetailsItem,
@@ -67437,7 +67324,7 @@ export const V2CoreAccountConfigurationMerchantCapabilitiesUsBankTransferPayment
 
 /** Additional details about the capability's status. This value is empty when `status` is `active`. */
 export type V2CoreAccountConfigurationMerchantCapabilitiesUsBankTransferPaymentsStatusDetailsList =
-  ReadonlyArray<V2CoreAccountConfigurationMerchantCapabilitiesUsBankTransferPaymentsStatusDetailsItem>;
+  Array<V2CoreAccountConfigurationMerchantCapabilitiesUsBankTransferPaymentsStatusDetailsItem>;
 export const V2CoreAccountConfigurationMerchantCapabilitiesUsBankTransferPaymentsStatusDetailsList =
   /*@__PURE__*/ S.Array(
     V2CoreAccountConfigurationMerchantCapabilitiesUsBankTransferPaymentsStatusDetailsItem,
@@ -67510,7 +67397,7 @@ export const V2CoreAccountConfigurationMerchantCapabilitiesZipPaymentsStatusDeta
 
 /** Additional details about the capability's status. This value is empty when `status` is `active`. */
 export type V2CoreAccountConfigurationMerchantCapabilitiesZipPaymentsStatusDetailsList =
-  ReadonlyArray<V2CoreAccountConfigurationMerchantCapabilitiesZipPaymentsStatusDetailsItem>;
+  Array<V2CoreAccountConfigurationMerchantCapabilitiesZipPaymentsStatusDetailsItem>;
 export const V2CoreAccountConfigurationMerchantCapabilitiesZipPaymentsStatusDetailsList =
   /*@__PURE__*/ S.Array(
     V2CoreAccountConfigurationMerchantCapabilitiesZipPaymentsStatusDetailsItem,
@@ -68103,7 +67990,7 @@ export const V2CoreAccountConfigurationRecipientCapabilitiesStripeBalancePayouts
 
 /** Additional details about the capability's status. This value is empty when `status` is `active`. */
 export type V2CoreAccountConfigurationRecipientCapabilitiesStripeBalancePayoutsStatusDetailsList =
-  ReadonlyArray<V2CoreAccountConfigurationRecipientCapabilitiesStripeBalancePayoutsStatusDetailsItem>;
+  Array<V2CoreAccountConfigurationRecipientCapabilitiesStripeBalancePayoutsStatusDetailsItem>;
 export const V2CoreAccountConfigurationRecipientCapabilitiesStripeBalancePayoutsStatusDetailsList =
   /*@__PURE__*/ S.Array(
     V2CoreAccountConfigurationRecipientCapabilitiesStripeBalancePayoutsStatusDetailsItem,
@@ -68173,7 +68060,7 @@ export const V2CoreAccountConfigurationRecipientCapabilitiesStripeBalanceStripeT
 
 /** Additional details about the capability's status. This value is empty when `status` is `active`. */
 export type V2CoreAccountConfigurationRecipientCapabilitiesStripeBalanceStripeTransfersStatusDetailsList =
-  ReadonlyArray<V2CoreAccountConfigurationRecipientCapabilitiesStripeBalanceStripeTransfersStatusDetailsItem>;
+  Array<V2CoreAccountConfigurationRecipientCapabilitiesStripeBalanceStripeTransfersStatusDetailsItem>;
 export const V2CoreAccountConfigurationRecipientCapabilitiesStripeBalanceStripeTransfersStatusDetailsList =
   /*@__PURE__*/ S.Array(
     V2CoreAccountConfigurationRecipientCapabilitiesStripeBalanceStripeTransfersStatusDetailsItem,
@@ -68364,7 +68251,7 @@ export const V2CoreAccountDefaultsLocalesItem = /*@__PURE__*/ S.String;
 
 /** The Account's preferred locales (languages), ordered by preference. */
 export type V2CoreAccountDefaultsLocalesList =
-  ReadonlyArray<V2CoreAccountDefaultsLocalesItem>;
+  Array<V2CoreAccountDefaultsLocalesItem>;
 export const V2CoreAccountDefaultsLocalesList = /*@__PURE__*/ S.Array(
   V2CoreAccountDefaultsLocalesItem,
 ) as any as S.Schema<V2CoreAccountDefaultsLocalesList>;
@@ -68584,7 +68471,7 @@ export const V2CoreAccountFutureRequirementsEntriesItemErrorsItem =
 
 /** Descriptions of why the requirement must be collected, or why the collected information isn't satisfactory to Stripe. */
 export type V2CoreAccountFutureRequirementsEntriesItemErrorsList =
-  ReadonlyArray<V2CoreAccountFutureRequirementsEntriesItemErrorsItem>;
+  Array<V2CoreAccountFutureRequirementsEntriesItemErrorsItem>;
 export const V2CoreAccountFutureRequirementsEntriesItemErrorsList =
   /*@__PURE__*/ S.Array(
     V2CoreAccountFutureRequirementsEntriesItemErrorsItem,
@@ -68698,7 +68585,7 @@ export const V2CoreAccountFutureRequirementsEntriesItemImpactRestrictsCapabiliti
 
 /** The Capabilities that will be restricted if the requirement is not collected and satisfactory to Stripe. */
 export type V2CoreAccountFutureRequirementsEntriesItemImpactRestrictsCapabilitiesList =
-  ReadonlyArray<V2CoreAccountFutureRequirementsEntriesItemImpactRestrictsCapabilitiesItem>;
+  Array<V2CoreAccountFutureRequirementsEntriesItemImpactRestrictsCapabilitiesItem>;
 export const V2CoreAccountFutureRequirementsEntriesItemImpactRestrictsCapabilitiesList =
   /*@__PURE__*/ S.Array(
     V2CoreAccountFutureRequirementsEntriesItemImpactRestrictsCapabilitiesItem,
@@ -68792,7 +68679,7 @@ export const V2CoreAccountFutureRequirementsEntriesItemRequestedReasonsItem =
 
 /** A list of reasons why Stripe is collecting the requirement. */
 export type V2CoreAccountFutureRequirementsEntriesItemRequestedReasonsList =
-  ReadonlyArray<V2CoreAccountFutureRequirementsEntriesItemRequestedReasonsItem>;
+  Array<V2CoreAccountFutureRequirementsEntriesItemRequestedReasonsItem>;
 export const V2CoreAccountFutureRequirementsEntriesItemRequestedReasonsList =
   /*@__PURE__*/ S.Array(
     V2CoreAccountFutureRequirementsEntriesItemRequestedReasonsItem,
@@ -68836,7 +68723,7 @@ export const V2CoreAccountFutureRequirementsEntriesItem =
 
 /** A list of requirements for the Account. */
 export type V2CoreAccountFutureRequirementsEntriesList =
-  ReadonlyArray<V2CoreAccountFutureRequirementsEntriesItem>;
+  Array<V2CoreAccountFutureRequirementsEntriesItem>;
 export const V2CoreAccountFutureRequirementsEntriesList = /*@__PURE__*/ S.Array(
   V2CoreAccountFutureRequirementsEntriesItem,
 ) as any as S.Schema<V2CoreAccountFutureRequirementsEntriesList>;
@@ -69134,7 +69021,7 @@ export const V2CoreAccountIdentityBusinessDetailsAnnualRevenue =
 
 /** One or more document IDs returned by a [file upload](https://docs.stripe.com/api/persons/update#create_file) with a purpose value of `account_requirement`. */
 export type V2CoreAccountIdentityBusinessDetailsDocumentsBankAccountOwnershipVerificationFilesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const V2CoreAccountIdentityBusinessDetailsDocumentsBankAccountOwnershipVerificationFilesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -69167,7 +69054,7 @@ export const V2CoreAccountIdentityBusinessDetailsDocumentsBankAccountOwnershipVe
 
 /** One or more document IDs returned by a [file upload](https://docs.stripe.com/api/persons/update#create_file) with a purpose value of `account_requirement`. */
 export type V2CoreAccountIdentityBusinessDetailsDocumentsCompanyLicenseFilesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const V2CoreAccountIdentityBusinessDetailsDocumentsCompanyLicenseFilesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -69199,7 +69086,7 @@ export const V2CoreAccountIdentityBusinessDetailsDocumentsCompanyLicense =
 
 /** One or more document IDs returned by a [file upload](https://docs.stripe.com/api/persons/update#create_file) with a purpose value of `account_requirement`. */
 export type V2CoreAccountIdentityBusinessDetailsDocumentsCompanyMemorandumOfAssociationFilesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const V2CoreAccountIdentityBusinessDetailsDocumentsCompanyMemorandumOfAssociationFilesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -69232,7 +69119,7 @@ export const V2CoreAccountIdentityBusinessDetailsDocumentsCompanyMemorandumOfAss
 
 /** One or more document IDs returned by a [file upload](https://docs.stripe.com/api/persons/update#create_file) with a purpose value of `account_requirement`. */
 export type V2CoreAccountIdentityBusinessDetailsDocumentsCompanyMinisterialDecreeFilesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const V2CoreAccountIdentityBusinessDetailsDocumentsCompanyMinisterialDecreeFilesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -69265,7 +69152,7 @@ export const V2CoreAccountIdentityBusinessDetailsDocumentsCompanyMinisterialDecr
 
 /** One or more document IDs returned by a [file upload](https://docs.stripe.com/api/persons/update#create_file) with a purpose value of `account_requirement`. */
 export type V2CoreAccountIdentityBusinessDetailsDocumentsCompanyRegistrationVerificationFilesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const V2CoreAccountIdentityBusinessDetailsDocumentsCompanyRegistrationVerificationFilesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -69298,7 +69185,7 @@ export const V2CoreAccountIdentityBusinessDetailsDocumentsCompanyRegistrationVer
 
 /** One or more document IDs returned by a [file upload](https://docs.stripe.com/api/persons/update#create_file) with a purpose value of `account_requirement`. */
 export type V2CoreAccountIdentityBusinessDetailsDocumentsCompanyTaxIdVerificationFilesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const V2CoreAccountIdentityBusinessDetailsDocumentsCompanyTaxIdVerificationFilesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -69374,7 +69261,7 @@ export const V2CoreAccountIdentityBusinessDetailsDocumentsPrimaryVerification =
 
 /** One or more document IDs returned by a [file upload](https://docs.stripe.com/api/persons/update#create_file) with a purpose value of `account_requirement`. */
 export type V2CoreAccountIdentityBusinessDetailsDocumentsProofOfAddressFilesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const V2CoreAccountIdentityBusinessDetailsDocumentsProofOfAddressFilesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -69406,7 +69293,7 @@ export const V2CoreAccountIdentityBusinessDetailsDocumentsProofOfAddress =
 
 /** One or more document IDs returned by a [file upload](https://docs.stripe.com/api/persons/update#create_file) with a purpose value of `account_requirement`. */
 export type V2CoreAccountIdentityBusinessDetailsDocumentsProofOfRegistrationFilesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const V2CoreAccountIdentityBusinessDetailsDocumentsProofOfRegistrationFilesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -69459,7 +69346,7 @@ export const V2CoreAccountIdentityBusinessDetailsDocumentsProofOfRegistration =
 
 /** One or more document IDs returned by a [file upload](https://docs.stripe.com/api/persons/update#create_file) with a purpose value of `account_requirement`. */
 export type V2CoreAccountIdentityBusinessDetailsDocumentsProofOfUltimateBeneficialOwnershipFilesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const V2CoreAccountIdentityBusinessDetailsDocumentsProofOfUltimateBeneficialOwnershipFilesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -69709,7 +69596,7 @@ export const V2CoreAccountIdentityBusinessDetailsIdNumbersItem =
 
 /** The provided ID numbers of a business entity. */
 export type V2CoreAccountIdentityBusinessDetailsIdNumbersList =
-  ReadonlyArray<V2CoreAccountIdentityBusinessDetailsIdNumbersItem>;
+  Array<V2CoreAccountIdentityBusinessDetailsIdNumbersItem>;
 export const V2CoreAccountIdentityBusinessDetailsIdNumbersList =
   /*@__PURE__*/ S.Array(
     V2CoreAccountIdentityBusinessDetailsIdNumbersItem,
@@ -70034,7 +69921,7 @@ export const V2CoreAccountIdentityIndividualAdditionalAddressesItem =
 
 /** Additional addresses associated with the individual. */
 export type V2CoreAccountIdentityIndividualAdditionalAddressesList =
-  ReadonlyArray<V2CoreAccountIdentityIndividualAdditionalAddressesItem>;
+  Array<V2CoreAccountIdentityIndividualAdditionalAddressesItem>;
 export const V2CoreAccountIdentityIndividualAdditionalAddressesList =
   /*@__PURE__*/ S.Array(
     V2CoreAccountIdentityIndividualAdditionalAddressesItem,
@@ -70071,7 +69958,7 @@ export const V2CoreAccountIdentityIndividualAdditionalNamesItem =
 
 /** Additional names (e.g. aliases) associated with the individual. */
 export type V2CoreAccountIdentityIndividualAdditionalNamesList =
-  ReadonlyArray<V2CoreAccountIdentityIndividualAdditionalNamesItem>;
+  Array<V2CoreAccountIdentityIndividualAdditionalNamesItem>;
 export const V2CoreAccountIdentityIndividualAdditionalNamesList =
   /*@__PURE__*/ S.Array(
     V2CoreAccountIdentityIndividualAdditionalNamesItem,
@@ -70168,7 +70055,7 @@ export const V2CoreAccountIdentityIndividualDateOfBirth =
 
 /** One or more document IDs returned by a [file upload](https://docs.stripe.com/api/persons/update#create_file) with a purpose value of `account_requirement`. */
 export type V2CoreAccountIdentityIndividualDocumentsCompanyAuthorizationFilesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const V2CoreAccountIdentityIndividualDocumentsCompanyAuthorizationFilesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -70200,7 +70087,7 @@ export const V2CoreAccountIdentityIndividualDocumentsCompanyAuthorization =
 
 /** One or more document IDs returned by a [file upload](https://docs.stripe.com/api/persons/update#create_file) with a purpose value of `account_requirement`. */
 export type V2CoreAccountIdentityIndividualDocumentsPassportFilesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const V2CoreAccountIdentityIndividualDocumentsPassportFilesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -70314,7 +70201,7 @@ export const V2CoreAccountIdentityIndividualDocumentsSecondaryVerification =
 
 /** One or more document IDs returned by a [file upload](https://docs.stripe.com/api/persons/update#create_file) with a purpose value of `account_requirement`. */
 export type V2CoreAccountIdentityIndividualDocumentsVisaFilesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const V2CoreAccountIdentityIndividualDocumentsVisaFilesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -70471,7 +70358,7 @@ export const V2CoreAccountIdentityIndividualIdNumbersItem =
 
 /** The identification numbers (e.g., SSN) associated with the individual. */
 export type V2CoreAccountIdentityIndividualIdNumbersList =
-  ReadonlyArray<V2CoreAccountIdentityIndividualIdNumbersItem>;
+  Array<V2CoreAccountIdentityIndividualIdNumbersItem>;
 export const V2CoreAccountIdentityIndividualIdNumbersList =
   /*@__PURE__*/ S.Array(
     V2CoreAccountIdentityIndividualIdNumbersItem,
@@ -70493,8 +70380,7 @@ export const V2CoreAccountIdentityIndividualMetadataMap =
   ) as any as S.Schema<V2CoreAccountIdentityIndividualMetadataMap>;
 
 /** The countries where the individual is a national. Two-letter country code ([ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)). */
-export type V2CoreAccountIdentityIndividualNationalitiesList =
-  ReadonlyArray<string>;
+export type V2CoreAccountIdentityIndividualNationalitiesList = Array<string>;
 export const V2CoreAccountIdentityIndividualNationalitiesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -70925,7 +70811,7 @@ export const V2CoreAccountRequirementsEntriesItemErrorsItem =
 
 /** Descriptions of why the requirement must be collected, or why the collected information isn't satisfactory to Stripe. */
 export type V2CoreAccountRequirementsEntriesItemErrorsList =
-  ReadonlyArray<V2CoreAccountRequirementsEntriesItemErrorsItem>;
+  Array<V2CoreAccountRequirementsEntriesItemErrorsItem>;
 export const V2CoreAccountRequirementsEntriesItemErrorsList =
   /*@__PURE__*/ S.Array(
     V2CoreAccountRequirementsEntriesItemErrorsItem,
@@ -71039,7 +70925,7 @@ export const V2CoreAccountRequirementsEntriesItemImpactRestrictsCapabilitiesItem
 
 /** The Capabilities that will be restricted if the requirement is not collected and satisfactory to Stripe. */
 export type V2CoreAccountRequirementsEntriesItemImpactRestrictsCapabilitiesList =
-  ReadonlyArray<V2CoreAccountRequirementsEntriesItemImpactRestrictsCapabilitiesItem>;
+  Array<V2CoreAccountRequirementsEntriesItemImpactRestrictsCapabilitiesItem>;
 export const V2CoreAccountRequirementsEntriesItemImpactRestrictsCapabilitiesList =
   /*@__PURE__*/ S.Array(
     V2CoreAccountRequirementsEntriesItemImpactRestrictsCapabilitiesItem,
@@ -71133,7 +71019,7 @@ export const V2CoreAccountRequirementsEntriesItemRequestedReasonsItem =
 
 /** A list of reasons why Stripe is collecting the requirement. */
 export type V2CoreAccountRequirementsEntriesItemRequestedReasonsList =
-  ReadonlyArray<V2CoreAccountRequirementsEntriesItemRequestedReasonsItem>;
+  Array<V2CoreAccountRequirementsEntriesItemRequestedReasonsItem>;
 export const V2CoreAccountRequirementsEntriesItemRequestedReasonsList =
   /*@__PURE__*/ S.Array(
     V2CoreAccountRequirementsEntriesItemRequestedReasonsItem,
@@ -71174,7 +71060,7 @@ export const V2CoreAccountRequirementsEntriesItem = /*@__PURE__*/ S.suspend(
 
 /** A list of requirements for the Account. */
 export type V2CoreAccountRequirementsEntriesList =
-  ReadonlyArray<V2CoreAccountRequirementsEntriesItem>;
+  Array<V2CoreAccountRequirementsEntriesItem>;
 export const V2CoreAccountRequirementsEntriesList = /*@__PURE__*/ S.Array(
   V2CoreAccountRequirementsEntriesItem,
 ) as any as S.Schema<V2CoreAccountRequirementsEntriesList>;
@@ -71292,7 +71178,7 @@ export const V2CoreAccount = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "V2CoreAccount" }) as any as S.Schema<V2CoreAccount>;
 
 /** A list of retrieved Account objects. */
-export type GetV2CoreAccountsResponseDataList = ReadonlyArray<V2CoreAccount>;
+export type GetV2CoreAccountsResponseDataList = Array<V2CoreAccount>;
 export const GetV2CoreAccountsResponseDataList = /*@__PURE__*/ S.Array(
   V2CoreAccount,
 ) as any as S.Schema<GetV2CoreAccountsResponseDataList>;
@@ -71378,7 +71264,7 @@ export const V2CoreAccountPersonAdditionalAddressesItem =
 
 /** Additional addresses associated with the person. */
 export type V2CoreAccountPersonAdditionalAddressesList =
-  ReadonlyArray<V2CoreAccountPersonAdditionalAddressesItem>;
+  Array<V2CoreAccountPersonAdditionalAddressesItem>;
 export const V2CoreAccountPersonAdditionalAddressesList = /*@__PURE__*/ S.Array(
   V2CoreAccountPersonAdditionalAddressesItem,
 ) as any as S.Schema<V2CoreAccountPersonAdditionalAddressesList>;
@@ -71412,7 +71298,7 @@ export const V2CoreAccountPersonAdditionalNamesItem = /*@__PURE__*/ S.suspend(
 
 /** Additional names (e.g. aliases) associated with the person. */
 export type V2CoreAccountPersonAdditionalNamesList =
-  ReadonlyArray<V2CoreAccountPersonAdditionalNamesItem>;
+  Array<V2CoreAccountPersonAdditionalNamesItem>;
 export const V2CoreAccountPersonAdditionalNamesList = /*@__PURE__*/ S.Array(
   V2CoreAccountPersonAdditionalNamesItem,
 ) as any as S.Schema<V2CoreAccountPersonAdditionalNamesList>;
@@ -71503,7 +71389,7 @@ export const V2CoreAccountPersonDateOfBirth = /*@__PURE__*/ S.suspend(() =>
 
 /** One or more document IDs returned by a [file upload](https://docs.stripe.com/api/persons/update#create_file) with a purpose value of `account_requirement`. */
 export type V2CoreAccountPersonDocumentsCompanyAuthorizationFilesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const V2CoreAccountPersonDocumentsCompanyAuthorizationFilesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -71532,8 +71418,7 @@ export const V2CoreAccountPersonDocumentsCompanyAuthorization =
   }) as any as S.Schema<V2CoreAccountPersonDocumentsCompanyAuthorization>;
 
 /** One or more document IDs returned by a [file upload](https://docs.stripe.com/api/persons/update#create_file) with a purpose value of `account_requirement`. */
-export type V2CoreAccountPersonDocumentsPassportFilesList =
-  ReadonlyArray<string>;
+export type V2CoreAccountPersonDocumentsPassportFilesList = Array<string>;
 export const V2CoreAccountPersonDocumentsPassportFilesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -71640,7 +71525,7 @@ export const V2CoreAccountPersonDocumentsSecondaryVerification =
   }) as any as S.Schema<V2CoreAccountPersonDocumentsSecondaryVerification>;
 
 /** One or more document IDs returned by a [file upload](https://docs.stripe.com/api/persons/update#create_file) with a purpose value of `account_requirement`. */
-export type V2CoreAccountPersonDocumentsVisaFilesList = ReadonlyArray<string>;
+export type V2CoreAccountPersonDocumentsVisaFilesList = Array<string>;
 export const V2CoreAccountPersonDocumentsVisaFilesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<V2CoreAccountPersonDocumentsVisaFilesList>;
@@ -71791,7 +71676,7 @@ export const V2CoreAccountPersonIdNumbersItem = /*@__PURE__*/ S.suspend(() =>
 
 /** The identification numbers (e.g., SSN) associated with the person. */
 export type V2CoreAccountPersonIdNumbersList =
-  ReadonlyArray<V2CoreAccountPersonIdNumbersItem>;
+  Array<V2CoreAccountPersonIdNumbersItem>;
 export const V2CoreAccountPersonIdNumbersList = /*@__PURE__*/ S.Array(
   V2CoreAccountPersonIdNumbersItem,
 ) as any as S.Schema<V2CoreAccountPersonIdNumbersList>;
@@ -71810,7 +71695,7 @@ export const V2CoreAccountPersonMetadataMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<V2CoreAccountPersonMetadataMap>;
 
 /** The countries where the person is a national. Two-letter country code ([ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)). */
-export type V2CoreAccountPersonNationalitiesList = ReadonlyArray<string>;
+export type V2CoreAccountPersonNationalitiesList = Array<string>;
 export const V2CoreAccountPersonNationalitiesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<V2CoreAccountPersonNationalitiesList>;
@@ -72073,7 +71958,7 @@ export const V2CoreAccountPerson = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of retrieved Person objects. */
 export type GetV2CoreAccountsAccountIdPersonsResponseDataList =
-  ReadonlyArray<V2CoreAccountPerson>;
+  Array<V2CoreAccountPerson>;
 export const GetV2CoreAccountsAccountIdPersonsResponseDataList =
   /*@__PURE__*/ S.Array(
     V2CoreAccountPerson,
@@ -72184,7 +72069,7 @@ export type GetV2CoreAccountsIdRequestIncludeItem =
   | "requirements";
 export const GetV2CoreAccountsIdRequestIncludeItem = /*@__PURE__*/ S.String;
 
-export type GetV2CoreAccountsIdRequestIncludeList = ReadonlyArray<
+export type GetV2CoreAccountsIdRequestIncludeList = Array<
   GetV2CoreAccountsIdRequestIncludeItem | (string & {})
 >;
 export const GetV2CoreAccountsIdRequestIncludeList = /*@__PURE__*/ S.Array(
@@ -72257,7 +72142,7 @@ export type GetV2CoreEventDestinationsRequestIncludeItem =
 export const GetV2CoreEventDestinationsRequestIncludeItem =
   /*@__PURE__*/ S.String;
 
-export type GetV2CoreEventDestinationsRequestIncludeList = ReadonlyArray<
+export type GetV2CoreEventDestinationsRequestIncludeList = Array<
   GetV2CoreEventDestinationsRequestIncludeItem | (string & {})
 >;
 export const GetV2CoreEventDestinationsRequestIncludeList =
@@ -72351,7 +72236,7 @@ export const V2CoreEventDestinationAzureEventGrid = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<V2CoreEventDestinationAzureEventGrid>;
 
 /** The list of events to enable for this endpoint. */
-export type V2CoreEventDestinationEnabledEventsList = ReadonlyArray<string>;
+export type V2CoreEventDestinationEnabledEventsList = Array<string>;
 export const V2CoreEventDestinationEnabledEventsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<V2CoreEventDestinationEnabledEventsList>;
@@ -72361,7 +72246,7 @@ export type V2CoreEventDestinationEventPayload = "snapshot" | "thin";
 export const V2CoreEventDestinationEventPayload = /*@__PURE__*/ S.String;
 
 /** Specifies which accounts' events route to this destination. `@self`: Receive events from the account that owns the event destination. `@accounts`: Receive events emitted from other accounts you manage which includes your v1 and v2 accounts. `@organization_members`: Receive events from accounts directly linked to the organization. `@organization_members/@accounts`: Receive events from all accounts connected to any platform accounts in the organization. */
-export type V2CoreEventDestinationEventsFromList = ReadonlyArray<string>;
+export type V2CoreEventDestinationEventsFromList = Array<string>;
 export const V2CoreEventDestinationEventsFromList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<V2CoreEventDestinationEventsFromList>;
@@ -72508,7 +72393,7 @@ export const V2CoreEventDestination = /*@__PURE__*/ S.suspend(() =>
 
 /** List of event destinations. */
 export type GetV2CoreEventDestinationsResponseDataList =
-  ReadonlyArray<V2CoreEventDestination>;
+  Array<V2CoreEventDestination>;
 export const GetV2CoreEventDestinationsResponseDataList = /*@__PURE__*/ S.Array(
   V2CoreEventDestination,
 ) as any as S.Schema<GetV2CoreEventDestinationsResponseDataList>;
@@ -72536,7 +72421,7 @@ export type GetV2CoreEventDestinationsIdRequestIncludeItem =
 export const GetV2CoreEventDestinationsIdRequestIncludeItem =
   /*@__PURE__*/ S.String;
 
-export type GetV2CoreEventDestinationsIdRequestIncludeList = ReadonlyArray<
+export type GetV2CoreEventDestinationsIdRequestIncludeList = Array<
   GetV2CoreEventDestinationsIdRequestIncludeItem | (string & {})
 >;
 export const GetV2CoreEventDestinationsIdRequestIncludeList =
@@ -72588,7 +72473,7 @@ export const GetV2CoreEventsRequestCreated = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetV2CoreEventsRequestCreated",
 }) as any as S.Schema<GetV2CoreEventsRequestCreated>;
 
-export type GetV2CoreEventsRequestTypesList = ReadonlyArray<string>;
+export type GetV2CoreEventsRequestTypesList = Array<string>;
 export const GetV2CoreEventsRequestTypesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetV2CoreEventsRequestTypesList>;
@@ -72687,7 +72572,7 @@ export const V2CoreEvent = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "V2CoreEvent" }) as any as S.Schema<V2CoreEvent>;
 
 /** List of events. */
-export type GetV2CoreEventsResponseDataList = ReadonlyArray<V2CoreEvent>;
+export type GetV2CoreEventsResponseDataList = Array<V2CoreEvent>;
 export const GetV2CoreEventsResponseDataList = /*@__PURE__*/ S.Array(
   V2CoreEvent,
 ) as any as S.Schema<GetV2CoreEventsResponseDataList>;
@@ -72722,7 +72607,7 @@ export const GetV2CoreEventsIdRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetV2CoreEventsIdRequest",
 }) as any as S.Schema<GetV2CoreEventsIdRequest>;
 
-export type GetWebhookEndpointsRequestExpandList = ReadonlyArray<string>;
+export type GetWebhookEndpointsRequestExpandList = Array<string>;
 export const GetWebhookEndpointsRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetWebhookEndpointsRequestExpandList>;
@@ -72756,7 +72641,7 @@ export const GetWebhookEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetWebhookEndpointsRequest>;
 
 /** The list of events to enable for this endpoint. `['*']` indicates that all events are enabled, except those that require explicit selection. */
-export type WebhookEndpointEnabledEventsList = ReadonlyArray<string>;
+export type WebhookEndpointEnabledEventsList = Array<string>;
 export const WebhookEndpointEnabledEventsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<WebhookEndpointEnabledEventsList>;
@@ -72818,8 +72703,7 @@ export const WebhookEndpoint = /*@__PURE__*/ S.suspend(() =>
   identifier: "WebhookEndpoint",
 }) as any as S.Schema<WebhookEndpoint>;
 
-export type GetWebhookEndpointsResponseDataList =
-  ReadonlyArray<WebhookEndpoint>;
+export type GetWebhookEndpointsResponseDataList = Array<WebhookEndpoint>;
 export const GetWebhookEndpointsResponseDataList = /*@__PURE__*/ S.Array(
   WebhookEndpoint,
 ) as any as S.Schema<GetWebhookEndpointsResponseDataList>;
@@ -72848,8 +72732,7 @@ export const GetWebhookEndpointsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetWebhookEndpointsResponse",
 }) as any as S.Schema<GetWebhookEndpointsResponse>;
 
-export type GetWebhookEndpointsWebhookEndpointRequestExpandList =
-  ReadonlyArray<string>;
+export type GetWebhookEndpointsWebhookEndpointRequestExpandList = Array<string>;
 export const GetWebhookEndpointsWebhookEndpointRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -72919,7 +72802,7 @@ export const PostAccountLinksRequestCollectionOptions = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PostAccountLinksRequestCollectionOptions>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostAccountLinksRequestExpandList = ReadonlyArray<string>;
+export type PostAccountLinksRequestExpandList = Array<string>;
 export const PostAccountLinksRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostAccountLinksRequestExpandList>;
@@ -73022,7 +72905,7 @@ export const PostAccountsRequestBusinessProfileMinorityOwnedBusinessDesignationI
 
 /** Whether the business is a minority-owned, women-owned, and/or LGBTQI+ -owned business. */
 export type PostAccountsRequestBusinessProfileMinorityOwnedBusinessDesignationList =
-  ReadonlyArray<
+  Array<
     | PostAccountsRequestBusinessProfileMinorityOwnedBusinessDesignationItem
     | (string & {})
   >;
@@ -74780,7 +74663,7 @@ export const PostAccountsRequestController = /*@__PURE__*/ S.suspend(() =>
 
 /** One or more document ids returned by a [file upload](https://api.stripe.com#create_file) with a `purpose` value of `account_requirement`. */
 export type PostAccountsRequestDocumentsBankAccountOwnershipVerificationFilesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostAccountsRequestDocumentsBankAccountOwnershipVerificationFilesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -74803,8 +74686,7 @@ export const PostAccountsRequestDocumentsBankAccountOwnershipVerification =
   }) as any as S.Schema<PostAccountsRequestDocumentsBankAccountOwnershipVerification>;
 
 /** One or more document ids returned by a [file upload](https://api.stripe.com#create_file) with a `purpose` value of `account_requirement`. */
-export type PostAccountsRequestDocumentsCompanyLicenseFilesList =
-  ReadonlyArray<string>;
+export type PostAccountsRequestDocumentsCompanyLicenseFilesList = Array<string>;
 export const PostAccountsRequestDocumentsCompanyLicenseFilesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -74826,7 +74708,7 @@ export const PostAccountsRequestDocumentsCompanyLicense =
 
 /** One or more document ids returned by a [file upload](https://api.stripe.com#create_file) with a `purpose` value of `account_requirement`. */
 export type PostAccountsRequestDocumentsCompanyMemorandumOfAssociationFilesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostAccountsRequestDocumentsCompanyMemorandumOfAssociationFilesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -74850,7 +74732,7 @@ export const PostAccountsRequestDocumentsCompanyMemorandumOfAssociation =
 
 /** One or more document ids returned by a [file upload](https://api.stripe.com#create_file) with a `purpose` value of `account_requirement`. */
 export type PostAccountsRequestDocumentsCompanyMinisterialDecreeFilesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostAccountsRequestDocumentsCompanyMinisterialDecreeFilesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -74874,7 +74756,7 @@ export const PostAccountsRequestDocumentsCompanyMinisterialDecree =
 
 /** One or more document ids returned by a [file upload](https://api.stripe.com#create_file) with a `purpose` value of `account_requirement`. */
 export type PostAccountsRequestDocumentsCompanyRegistrationVerificationFilesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostAccountsRequestDocumentsCompanyRegistrationVerificationFilesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -74898,7 +74780,7 @@ export const PostAccountsRequestDocumentsCompanyRegistrationVerification =
 
 /** One or more document ids returned by a [file upload](https://api.stripe.com#create_file) with a `purpose` value of `account_requirement`. */
 export type PostAccountsRequestDocumentsCompanyTaxIdVerificationFilesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostAccountsRequestDocumentsCompanyTaxIdVerificationFilesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -74921,8 +74803,7 @@ export const PostAccountsRequestDocumentsCompanyTaxIdVerification =
   }) as any as S.Schema<PostAccountsRequestDocumentsCompanyTaxIdVerification>;
 
 /** One or more document ids returned by a [file upload](https://api.stripe.com#create_file) with a `purpose` value of `account_requirement`. */
-export type PostAccountsRequestDocumentsProofOfAddressFilesList =
-  ReadonlyArray<string>;
+export type PostAccountsRequestDocumentsProofOfAddressFilesList = Array<string>;
 export const PostAccountsRequestDocumentsProofOfAddressFilesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -74944,7 +74825,7 @@ export const PostAccountsRequestDocumentsProofOfAddress =
 
 /** One or more document ids returned by a [file upload](https://api.stripe.com#create_file) with a `purpose` value of `account_requirement`. */
 export type PostAccountsRequestDocumentsProofOfRegistrationFilesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostAccountsRequestDocumentsProofOfRegistrationFilesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -74985,7 +74866,7 @@ export const PostAccountsRequestDocumentsProofOfRegistration =
 
 /** One or more document ids returned by a [file upload](https://api.stripe.com#create_file) with a `purpose` value of `account_requirement`. */
 export type PostAccountsRequestDocumentsProofOfUltimateBeneficialOwnershipFilesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostAccountsRequestDocumentsProofOfUltimateBeneficialOwnershipFilesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -75080,7 +74961,7 @@ export const PostAccountsRequestDocuments = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostAccountsRequestDocuments>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostAccountsRequestExpandList = ReadonlyArray<string>;
+export type PostAccountsRequestExpandList = Array<string>;
 export const PostAccountsRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostAccountsRequestExpandList>;
@@ -75232,7 +75113,7 @@ export const PostAccountsRequestIndividualDob =
   /*@__PURE__*/ S.Unknown as any as S.Schema<PostAccountsRequestIndividualDob>;
 
 export type PostAccountsRequestIndividualFullNameAliasesCase0List =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostAccountsRequestIndividualFullNameAliasesCase0List =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -75721,7 +75602,7 @@ export const PostAccountsRequestSettingsPayoutsScheduleInterval =
 
 /** The days of the month when available funds are paid out, specified as an array of numbers between 1--31. Payouts nominally scheduled between the 29th and 31st of the month are instead sent on the last day of a shorter month. Required and applicable only if `interval` is `monthly` and `monthly_anchor` is not set. */
 export type PostAccountsRequestSettingsPayoutsScheduleMonthlyPayoutDaysList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const PostAccountsRequestSettingsPayoutsScheduleMonthlyPayoutDaysList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -75750,7 +75631,7 @@ export const PostAccountsRequestSettingsPayoutsScheduleWeeklyPayoutDaysItem =
 
 /** The days of the week when available funds are paid out, specified as an array, e.g., [`monday`, `tuesday`]. Required and applicable only if `interval` is `weekly`. */
 export type PostAccountsRequestSettingsPayoutsScheduleWeeklyPayoutDaysList =
-  ReadonlyArray<
+  Array<
     | PostAccountsRequestSettingsPayoutsScheduleWeeklyPayoutDaysItem
     | (string & {})
   >;
@@ -76028,7 +75909,7 @@ export const PostAccountsAccountRequestBusinessProfileMinorityOwnedBusinessDesig
 
 /** Whether the business is a minority-owned, women-owned, and/or LGBTQI+ -owned business. */
 export type PostAccountsAccountRequestBusinessProfileMinorityOwnedBusinessDesignationList =
-  ReadonlyArray<
+  Array<
     | PostAccountsAccountRequestBusinessProfileMinorityOwnedBusinessDesignationItem
     | (string & {})
   >;
@@ -77770,7 +77651,7 @@ export const PostAccountsAccountRequestCompany = /*@__PURE__*/ S.suspend(() =>
 
 /** One or more document ids returned by a [file upload](https://api.stripe.com#create_file) with a `purpose` value of `account_requirement`. */
 export type PostAccountsAccountRequestDocumentsBankAccountOwnershipVerificationFilesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostAccountsAccountRequestDocumentsBankAccountOwnershipVerificationFilesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -77795,7 +77676,7 @@ export const PostAccountsAccountRequestDocumentsBankAccountOwnershipVerification
 
 /** One or more document ids returned by a [file upload](https://api.stripe.com#create_file) with a `purpose` value of `account_requirement`. */
 export type PostAccountsAccountRequestDocumentsCompanyLicenseFilesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostAccountsAccountRequestDocumentsCompanyLicenseFilesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -77819,7 +77700,7 @@ export const PostAccountsAccountRequestDocumentsCompanyLicense =
 
 /** One or more document ids returned by a [file upload](https://api.stripe.com#create_file) with a `purpose` value of `account_requirement`. */
 export type PostAccountsAccountRequestDocumentsCompanyMemorandumOfAssociationFilesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostAccountsAccountRequestDocumentsCompanyMemorandumOfAssociationFilesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -77844,7 +77725,7 @@ export const PostAccountsAccountRequestDocumentsCompanyMemorandumOfAssociation =
 
 /** One or more document ids returned by a [file upload](https://api.stripe.com#create_file) with a `purpose` value of `account_requirement`. */
 export type PostAccountsAccountRequestDocumentsCompanyMinisterialDecreeFilesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostAccountsAccountRequestDocumentsCompanyMinisterialDecreeFilesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -77868,7 +77749,7 @@ export const PostAccountsAccountRequestDocumentsCompanyMinisterialDecree =
 
 /** One or more document ids returned by a [file upload](https://api.stripe.com#create_file) with a `purpose` value of `account_requirement`. */
 export type PostAccountsAccountRequestDocumentsCompanyRegistrationVerificationFilesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostAccountsAccountRequestDocumentsCompanyRegistrationVerificationFilesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -77893,7 +77774,7 @@ export const PostAccountsAccountRequestDocumentsCompanyRegistrationVerification 
 
 /** One or more document ids returned by a [file upload](https://api.stripe.com#create_file) with a `purpose` value of `account_requirement`. */
 export type PostAccountsAccountRequestDocumentsCompanyTaxIdVerificationFilesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostAccountsAccountRequestDocumentsCompanyTaxIdVerificationFilesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -77917,7 +77798,7 @@ export const PostAccountsAccountRequestDocumentsCompanyTaxIdVerification =
 
 /** One or more document ids returned by a [file upload](https://api.stripe.com#create_file) with a `purpose` value of `account_requirement`. */
 export type PostAccountsAccountRequestDocumentsProofOfAddressFilesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostAccountsAccountRequestDocumentsProofOfAddressFilesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -77941,7 +77822,7 @@ export const PostAccountsAccountRequestDocumentsProofOfAddress =
 
 /** One or more document ids returned by a [file upload](https://api.stripe.com#create_file) with a `purpose` value of `account_requirement`. */
 export type PostAccountsAccountRequestDocumentsProofOfRegistrationFilesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostAccountsAccountRequestDocumentsProofOfRegistrationFilesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -77984,7 +77865,7 @@ export const PostAccountsAccountRequestDocumentsProofOfRegistration =
 
 /** One or more document ids returned by a [file upload](https://api.stripe.com#create_file) with a `purpose` value of `account_requirement`. */
 export type PostAccountsAccountRequestDocumentsProofOfUltimateBeneficialOwnershipFilesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostAccountsAccountRequestDocumentsProofOfUltimateBeneficialOwnershipFilesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -78083,7 +77964,7 @@ export const PostAccountsAccountRequestDocuments = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostAccountsAccountRequestDocuments>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostAccountsAccountRequestExpandList = ReadonlyArray<string>;
+export type PostAccountsAccountRequestExpandList = Array<string>;
 export const PostAccountsAccountRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostAccountsAccountRequestExpandList>;
@@ -78238,7 +78119,7 @@ export const PostAccountsAccountRequestIndividualDob =
   /*@__PURE__*/ S.Unknown as any as S.Schema<PostAccountsAccountRequestIndividualDob>;
 
 export type PostAccountsAccountRequestIndividualFullNameAliasesCase0List =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostAccountsAccountRequestIndividualFullNameAliasesCase0List =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -78678,7 +78559,7 @@ export const PostAccountsAccountRequestSettingsCardPayments =
   }) as any as S.Schema<PostAccountsAccountRequestSettingsCardPayments>;
 
 export type PostAccountsAccountRequestSettingsInvoicesDefaultAccountTaxIdsCase0List =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostAccountsAccountRequestSettingsInvoicesDefaultAccountTaxIdsCase0List =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -78770,7 +78651,7 @@ export const PostAccountsAccountRequestSettingsPayoutsScheduleInterval =
 
 /** The days of the month when available funds are paid out, specified as an array of numbers between 1--31. Payouts nominally scheduled between the 29th and 31st of the month are instead sent on the last day of a shorter month. Required and applicable only if `interval` is `monthly` and `monthly_anchor` is not set. */
 export type PostAccountsAccountRequestSettingsPayoutsScheduleMonthlyPayoutDaysList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const PostAccountsAccountRequestSettingsPayoutsScheduleMonthlyPayoutDaysList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -78795,7 +78676,7 @@ export const PostAccountsAccountRequestSettingsPayoutsScheduleWeeklyPayoutDaysIt
 
 /** The days of the week when available funds are paid out, specified as an array, e.g., [`monday`, `tuesday`]. Required and applicable only if `interval` is `weekly`. */
 export type PostAccountsAccountRequestSettingsPayoutsScheduleWeeklyPayoutDaysList =
-  ReadonlyArray<
+  Array<
     | PostAccountsAccountRequestSettingsPayoutsScheduleWeeklyPayoutDaysItem
     | (string & {})
   >;
@@ -79041,7 +78922,7 @@ export const PostAccountsAccountRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Specifies which fields in the response should be expanded. */
 export type PostAccountsAccountCapabilitiesCapabilityRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostAccountsAccountCapabilitiesCapabilityRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -79078,7 +78959,7 @@ export const PostAccountsAccountCapabilitiesCapabilityRequest =
 
 /** Specifies which fields in the response should be expanded. */
 export type PostAccountsAccountExternalAccountsRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostAccountsAccountExternalAccountsRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -79154,7 +79035,7 @@ export const PostAccountsAccountExternalAccountsIdRequestAccountType =
 
 /** One or more document ids returned by a [file upload](https://api.stripe.com#create_file) with a `purpose` value of `account_requirement`. */
 export type PostAccountsAccountExternalAccountsIdRequestDocumentsBankAccountOwnershipVerificationFilesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostAccountsAccountExternalAccountsIdRequestDocumentsBankAccountOwnershipVerificationFilesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -79195,7 +79076,7 @@ export const PostAccountsAccountExternalAccountsIdRequestDocuments =
 
 /** Specifies which fields in the response should be expanded. */
 export type PostAccountsAccountExternalAccountsIdRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostAccountsAccountExternalAccountsIdRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -79313,8 +79194,7 @@ export const PostAccountsAccountExternalAccountsIdResponse =
   }) as any as S.Schema<PostAccountsAccountExternalAccountsIdResponse>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostAccountsAccountLoginLinksRequestExpandList =
-  ReadonlyArray<string>;
+export type PostAccountsAccountLoginLinksRequestExpandList = Array<string>;
 export const PostAccountsAccountLoginLinksRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -79549,7 +79429,7 @@ export const PostAccountsAccountPersonsRequestDocumentsCompanyAuthorizationFiles
 
 /** One or more document ids returned by a [file upload](https://api.stripe.com#create_file) with a `purpose` value of `account_requirement`. */
 export type PostAccountsAccountPersonsRequestDocumentsCompanyAuthorizationFilesList =
-  ReadonlyArray<PostAccountsAccountPersonsRequestDocumentsCompanyAuthorizationFilesItem>;
+  Array<PostAccountsAccountPersonsRequestDocumentsCompanyAuthorizationFilesItem>;
 export const PostAccountsAccountPersonsRequestDocumentsCompanyAuthorizationFilesList =
   /*@__PURE__*/ S.Array(
     PostAccountsAccountPersonsRequestDocumentsCompanyAuthorizationFilesItem,
@@ -79585,7 +79465,7 @@ export const PostAccountsAccountPersonsRequestDocumentsPassportFilesItem =
 
 /** One or more document ids returned by a [file upload](https://api.stripe.com#create_file) with a `purpose` value of `account_requirement`. */
 export type PostAccountsAccountPersonsRequestDocumentsPassportFilesList =
-  ReadonlyArray<PostAccountsAccountPersonsRequestDocumentsPassportFilesItem>;
+  Array<PostAccountsAccountPersonsRequestDocumentsPassportFilesItem>;
 export const PostAccountsAccountPersonsRequestDocumentsPassportFilesList =
   /*@__PURE__*/ S.Array(
     PostAccountsAccountPersonsRequestDocumentsPassportFilesItem,
@@ -79619,7 +79499,7 @@ export const PostAccountsAccountPersonsRequestDocumentsVisaFilesItem =
 
 /** One or more document ids returned by a [file upload](https://api.stripe.com#create_file) with a `purpose` value of `account_requirement`. */
 export type PostAccountsAccountPersonsRequestDocumentsVisaFilesList =
-  ReadonlyArray<PostAccountsAccountPersonsRequestDocumentsVisaFilesItem>;
+  Array<PostAccountsAccountPersonsRequestDocumentsVisaFilesItem>;
 export const PostAccountsAccountPersonsRequestDocumentsVisaFilesList =
   /*@__PURE__*/ S.Array(
     PostAccountsAccountPersonsRequestDocumentsVisaFilesItem,
@@ -79664,14 +79544,14 @@ export const PostAccountsAccountPersonsRequestDocuments =
   }) as any as S.Schema<PostAccountsAccountPersonsRequestDocuments>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostAccountsAccountPersonsRequestExpandList = ReadonlyArray<string>;
+export type PostAccountsAccountPersonsRequestExpandList = Array<string>;
 export const PostAccountsAccountPersonsRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PostAccountsAccountPersonsRequestExpandList>;
 
 export type PostAccountsAccountPersonsRequestFullNameAliasesCase0List =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostAccountsAccountPersonsRequestFullNameAliasesCase0List =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -79806,7 +79686,7 @@ export const PostAccountsAccountPersonsRequestUsCfpbDataEthnicityDetailsEthnicit
 
 /** The persons ethnicity */
 export type PostAccountsAccountPersonsRequestUsCfpbDataEthnicityDetailsEthnicityList =
-  ReadonlyArray<
+  Array<
     | PostAccountsAccountPersonsRequestUsCfpbDataEthnicityDetailsEthnicityItem
     | (string & {})
   >;
@@ -79864,7 +79744,7 @@ export const PostAccountsAccountPersonsRequestUsCfpbDataRaceDetailsRaceItem =
 
 /** The persons race. */
 export type PostAccountsAccountPersonsRequestUsCfpbDataRaceDetailsRaceList =
-  ReadonlyArray<
+  Array<
     | PostAccountsAccountPersonsRequestUsCfpbDataRaceDetailsRaceItem
     | (string & {})
   >;
@@ -80275,7 +80155,7 @@ export const PostAccountsAccountPersonsPersonRequestDocumentsCompanyAuthorizatio
 
 /** One or more document ids returned by a [file upload](https://api.stripe.com#create_file) with a `purpose` value of `account_requirement`. */
 export type PostAccountsAccountPersonsPersonRequestDocumentsCompanyAuthorizationFilesList =
-  ReadonlyArray<PostAccountsAccountPersonsPersonRequestDocumentsCompanyAuthorizationFilesItem>;
+  Array<PostAccountsAccountPersonsPersonRequestDocumentsCompanyAuthorizationFilesItem>;
 export const PostAccountsAccountPersonsPersonRequestDocumentsCompanyAuthorizationFilesList =
   /*@__PURE__*/ S.Array(
     PostAccountsAccountPersonsPersonRequestDocumentsCompanyAuthorizationFilesItem,
@@ -80311,7 +80191,7 @@ export const PostAccountsAccountPersonsPersonRequestDocumentsPassportFilesItem =
 
 /** One or more document ids returned by a [file upload](https://api.stripe.com#create_file) with a `purpose` value of `account_requirement`. */
 export type PostAccountsAccountPersonsPersonRequestDocumentsPassportFilesList =
-  ReadonlyArray<PostAccountsAccountPersonsPersonRequestDocumentsPassportFilesItem>;
+  Array<PostAccountsAccountPersonsPersonRequestDocumentsPassportFilesItem>;
 export const PostAccountsAccountPersonsPersonRequestDocumentsPassportFilesList =
   /*@__PURE__*/ S.Array(
     PostAccountsAccountPersonsPersonRequestDocumentsPassportFilesItem,
@@ -80346,7 +80226,7 @@ export const PostAccountsAccountPersonsPersonRequestDocumentsVisaFilesItem =
 
 /** One or more document ids returned by a [file upload](https://api.stripe.com#create_file) with a `purpose` value of `account_requirement`. */
 export type PostAccountsAccountPersonsPersonRequestDocumentsVisaFilesList =
-  ReadonlyArray<PostAccountsAccountPersonsPersonRequestDocumentsVisaFilesItem>;
+  Array<PostAccountsAccountPersonsPersonRequestDocumentsVisaFilesItem>;
 export const PostAccountsAccountPersonsPersonRequestDocumentsVisaFilesList =
   /*@__PURE__*/ S.Array(
     PostAccountsAccountPersonsPersonRequestDocumentsVisaFilesItem,
@@ -80393,15 +80273,14 @@ export const PostAccountsAccountPersonsPersonRequestDocuments =
   }) as any as S.Schema<PostAccountsAccountPersonsPersonRequestDocuments>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostAccountsAccountPersonsPersonRequestExpandList =
-  ReadonlyArray<string>;
+export type PostAccountsAccountPersonsPersonRequestExpandList = Array<string>;
 export const PostAccountsAccountPersonsPersonRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PostAccountsAccountPersonsPersonRequestExpandList>;
 
 export type PostAccountsAccountPersonsPersonRequestFullNameAliasesCase0List =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostAccountsAccountPersonsPersonRequestFullNameAliasesCase0List =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -80536,7 +80415,7 @@ export const PostAccountsAccountPersonsPersonRequestUsCfpbDataEthnicityDetailsEt
 
 /** The persons ethnicity */
 export type PostAccountsAccountPersonsPersonRequestUsCfpbDataEthnicityDetailsEthnicityList =
-  ReadonlyArray<
+  Array<
     | PostAccountsAccountPersonsPersonRequestUsCfpbDataEthnicityDetailsEthnicityItem
     | (string & {})
   >;
@@ -80595,7 +80474,7 @@ export const PostAccountsAccountPersonsPersonRequestUsCfpbDataRaceDetailsRaceIte
 
 /** The persons race. */
 export type PostAccountsAccountPersonsPersonRequestUsCfpbDataRaceDetailsRaceList =
-  ReadonlyArray<
+  Array<
     | PostAccountsAccountPersonsPersonRequestUsCfpbDataRaceDetailsRaceItem
     | (string & {})
   >;
@@ -80832,7 +80711,7 @@ export const PostAccountsAccountPersonsPersonRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PostAccountsAccountPersonsPersonRequest>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostAccountsAccountRejectRequestExpandList = ReadonlyArray<string>;
+export type PostAccountsAccountRejectRequestExpandList = Array<string>;
 export const PostAccountsAccountRejectRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostAccountsAccountRejectRequestExpandList>;
@@ -81650,7 +81529,7 @@ export const PostAccountSessionsRequestComponents = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PostAccountSessionsRequestComponents>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostAccountSessionsRequestExpandList = ReadonlyArray<string>;
+export type PostAccountSessionsRequestExpandList = Array<string>;
 export const PostAccountSessionsRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostAccountSessionsRequestExpandList>;
@@ -82123,7 +82002,7 @@ export const AccountSession = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AccountSession" }) as any as S.Schema<AccountSession>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostApplePayDomainsRequestExpandList = ReadonlyArray<string>;
+export type PostApplePayDomainsRequestExpandList = Array<string>;
 export const PostApplePayDomainsRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostApplePayDomainsRequestExpandList>;
@@ -82150,8 +82029,7 @@ export const PostApplePayDomainsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostApplePayDomainsRequest>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostApplicationFeesFeeRefundsIdRequestExpandList =
-  ReadonlyArray<string>;
+export type PostApplicationFeesFeeRefundsIdRequestExpandList = Array<string>;
 export const PostApplicationFeesFeeRefundsIdRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -82205,8 +82083,7 @@ export const PostApplicationFeesFeeRefundsIdRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PostApplicationFeesFeeRefundsIdRequest>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostApplicationFeesIdRefundsRequestExpandList =
-  ReadonlyArray<string>;
+export type PostApplicationFeesIdRefundsRequestExpandList = Array<string>;
 export const PostApplicationFeesIdRefundsRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -82250,7 +82127,7 @@ export const PostApplicationFeesIdRefundsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostApplicationFeesIdRefundsRequest>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostAppsSecretsRequestExpandList = ReadonlyArray<string>;
+export type PostAppsSecretsRequestExpandList = Array<string>;
 export const PostAppsSecretsRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostAppsSecretsRequestExpandList>;
@@ -82307,7 +82184,7 @@ export const PostAppsSecretsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostAppsSecretsRequest>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostAppsSecretsDeleteRequestExpandList = ReadonlyArray<string>;
+export type PostAppsSecretsDeleteRequestExpandList = Array<string>;
 export const PostAppsSecretsDeleteRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostAppsSecretsDeleteRequestExpandList>;
@@ -82358,7 +82235,7 @@ export const PostAppsSecretsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostAppsSecretsDeleteRequest>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostBalanceSettingsRequestExpandList = ReadonlyArray<string>;
+export type PostBalanceSettingsRequestExpandList = Array<string>;
 export const PostBalanceSettingsRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostBalanceSettingsRequestExpandList>;
@@ -82392,7 +82269,7 @@ export const PostBalanceSettingsRequestPaymentsPayoutsAutomaticTransferRulesByCu
   }) as any as S.Schema<PostBalanceSettingsRequestPaymentsPayoutsAutomaticTransferRulesByCurrencyCase0ValueCase0Item>;
 
 export type PostBalanceSettingsRequestPaymentsPayoutsAutomaticTransferRulesByCurrencyCase0ValueCase0List =
-  ReadonlyArray<PostBalanceSettingsRequestPaymentsPayoutsAutomaticTransferRulesByCurrencyCase0ValueCase0Item>;
+  Array<PostBalanceSettingsRequestPaymentsPayoutsAutomaticTransferRulesByCurrencyCase0ValueCase0Item>;
 export const PostBalanceSettingsRequestPaymentsPayoutsAutomaticTransferRulesByCurrencyCase0ValueCase0List =
   /*@__PURE__*/ S.Array(
     PostBalanceSettingsRequestPaymentsPayoutsAutomaticTransferRulesByCurrencyCase0ValueCase0Item,
@@ -82479,7 +82356,7 @@ export const PostBalanceSettingsRequestPaymentsPayoutsScheduleInterval =
 
 /** The days of the month when available funds are paid out, specified as an array of numbers between 1--31. Payouts nominally scheduled between the 29th and 31st of the month are instead sent on the last day of a shorter month. Required and applicable only if `interval` is `monthly`. */
 export type PostBalanceSettingsRequestPaymentsPayoutsScheduleMonthlyPayoutDaysList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const PostBalanceSettingsRequestPaymentsPayoutsScheduleMonthlyPayoutDaysList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -82492,7 +82369,7 @@ export const PostBalanceSettingsRequestPaymentsPayoutsScheduleWeeklyPayoutDaysIt
 
 /** The days of the week when available funds are paid out, specified as an array, e.g., [`monday`, `tuesday`]. Required and applicable only if `interval` is `weekly`. */
 export type PostBalanceSettingsRequestPaymentsPayoutsScheduleWeeklyPayoutDaysList =
-  ReadonlyArray<
+  Array<
     | PostBalanceSettingsRequestPaymentsPayoutsScheduleWeeklyPayoutDaysItem
     | (string & {})
   >;
@@ -82669,7 +82546,7 @@ export type PostBillingAlertsRequestAlertType = "usage_threshold";
 export const PostBillingAlertsRequestAlertType = /*@__PURE__*/ S.String;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostBillingAlertsRequestExpandList = ReadonlyArray<string>;
+export type PostBillingAlertsRequestExpandList = Array<string>;
 export const PostBillingAlertsRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostBillingAlertsRequestExpandList>;
@@ -82697,7 +82574,7 @@ export const PostBillingAlertsRequestUsageThresholdFiltersItem =
 
 /** The filters allows limiting the scope of this usage alert. You can only specify up to one filter at this time. */
 export type PostBillingAlertsRequestUsageThresholdFiltersList =
-  ReadonlyArray<PostBillingAlertsRequestUsageThresholdFiltersItem>;
+  Array<PostBillingAlertsRequestUsageThresholdFiltersItem>;
 export const PostBillingAlertsRequestUsageThresholdFiltersList =
   /*@__PURE__*/ S.Array(
     PostBillingAlertsRequestUsageThresholdFiltersItem,
@@ -82760,8 +82637,7 @@ export const PostBillingAlertsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostBillingAlertsRequest>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostBillingAlertsIdActivateRequestExpandList =
-  ReadonlyArray<string>;
+export type PostBillingAlertsIdActivateRequestExpandList = Array<string>;
 export const PostBillingAlertsIdActivateRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -82789,7 +82665,7 @@ export const PostBillingAlertsIdActivateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostBillingAlertsIdActivateRequest>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostBillingAlertsIdArchiveRequestExpandList = ReadonlyArray<string>;
+export type PostBillingAlertsIdArchiveRequestExpandList = Array<string>;
 export const PostBillingAlertsIdArchiveRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -82817,8 +82693,7 @@ export const PostBillingAlertsIdArchiveRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostBillingAlertsIdArchiveRequest>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostBillingAlertsIdDeactivateRequestExpandList =
-  ReadonlyArray<string>;
+export type PostBillingAlertsIdDeactivateRequestExpandList = Array<string>;
 export const PostBillingAlertsIdDeactivateRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -82906,7 +82781,7 @@ export const PostBillingCreditGrantsRequestApplicabilityConfigScopePricesItem =
 
 /** A list of prices that the credit grant can apply to. We currently only support the `metered` prices. Cannot be used in combination with `price_type`. Limit 20 prices. */
 export type PostBillingCreditGrantsRequestApplicabilityConfigScopePricesList =
-  ReadonlyArray<PostBillingCreditGrantsRequestApplicabilityConfigScopePricesItem>;
+  Array<PostBillingCreditGrantsRequestApplicabilityConfigScopePricesItem>;
 export const PostBillingCreditGrantsRequestApplicabilityConfigScopePricesList =
   /*@__PURE__*/ S.Array(
     PostBillingCreditGrantsRequestApplicabilityConfigScopePricesItem,
@@ -82954,7 +82829,7 @@ export type PostBillingCreditGrantsRequestCategory = "paid" | "promotional";
 export const PostBillingCreditGrantsRequestCategory = /*@__PURE__*/ S.String;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostBillingCreditGrantsRequestExpandList = ReadonlyArray<string>;
+export type PostBillingCreditGrantsRequestExpandList = Array<string>;
 export const PostBillingCreditGrantsRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostBillingCreditGrantsRequestExpandList>;
@@ -83018,7 +82893,7 @@ export const PostBillingCreditGrantsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostBillingCreditGrantsRequest>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostBillingCreditGrantsIdRequestExpandList = ReadonlyArray<string>;
+export type PostBillingCreditGrantsIdRequestExpandList = Array<string>;
 export const PostBillingCreditGrantsIdRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostBillingCreditGrantsIdRequestExpandList>;
@@ -83073,8 +82948,7 @@ export const PostBillingCreditGrantsIdRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostBillingCreditGrantsIdRequest>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostBillingCreditGrantsIdExpireRequestExpandList =
-  ReadonlyArray<string>;
+export type PostBillingCreditGrantsIdExpireRequestExpandList = Array<string>;
 export const PostBillingCreditGrantsIdExpireRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -83104,8 +82978,7 @@ export const PostBillingCreditGrantsIdExpireRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PostBillingCreditGrantsIdExpireRequest>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostBillingCreditGrantsIdVoidRequestExpandList =
-  ReadonlyArray<string>;
+export type PostBillingCreditGrantsIdVoidRequestExpandList = Array<string>;
 export const PostBillingCreditGrantsIdVoidRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -83149,8 +83022,7 @@ export const PostBillingMeterEventAdjustmentsRequestCancel =
   }) as any as S.Schema<PostBillingMeterEventAdjustmentsRequestCancel>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostBillingMeterEventAdjustmentsRequestExpandList =
-  ReadonlyArray<string>;
+export type PostBillingMeterEventAdjustmentsRequestExpandList = Array<string>;
 export const PostBillingMeterEventAdjustmentsRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -83245,7 +83117,7 @@ export const BillingMeterEventAdjustment = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BillingMeterEventAdjustment>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostBillingMeterEventsRequestExpandList = ReadonlyArray<string>;
+export type PostBillingMeterEventsRequestExpandList = Array<string>;
 export const PostBillingMeterEventsRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostBillingMeterEventsRequestExpandList>;
@@ -83381,7 +83253,7 @@ export type PostBillingMetersRequestEventTimeWindow = "day" | "hour";
 export const PostBillingMetersRequestEventTimeWindow = /*@__PURE__*/ S.String;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostBillingMetersRequestExpandList = ReadonlyArray<string>;
+export type PostBillingMetersRequestExpandList = Array<string>;
 export const PostBillingMetersRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostBillingMetersRequestExpandList>;
@@ -83438,7 +83310,7 @@ export const PostBillingMetersRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostBillingMetersRequest>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostBillingMetersIdRequestExpandList = ReadonlyArray<string>;
+export type PostBillingMetersIdRequestExpandList = Array<string>;
 export const PostBillingMetersIdRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostBillingMetersIdRequestExpandList>;
@@ -83468,8 +83340,7 @@ export const PostBillingMetersIdRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostBillingMetersIdRequest>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostBillingMetersIdDeactivateRequestExpandList =
-  ReadonlyArray<string>;
+export type PostBillingMetersIdDeactivateRequestExpandList = Array<string>;
 export const PostBillingMetersIdDeactivateRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -83498,8 +83369,7 @@ export const PostBillingMetersIdDeactivateRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PostBillingMetersIdDeactivateRequest>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostBillingMetersIdReactivateRequestExpandList =
-  ReadonlyArray<string>;
+export type PostBillingMetersIdReactivateRequestExpandList = Array<string>;
 export const PostBillingMetersIdReactivateRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -83573,8 +83443,7 @@ export const PostBillingPortalConfigurationsRequestDefaultReturnUrl =
   /*@__PURE__*/ S.Unknown as any as S.Schema<PostBillingPortalConfigurationsRequestDefaultReturnUrl>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostBillingPortalConfigurationsRequestExpandList =
-  ReadonlyArray<string>;
+export type PostBillingPortalConfigurationsRequestExpandList = Array<string>;
 export const PostBillingPortalConfigurationsRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -83586,7 +83455,7 @@ export const PostBillingPortalConfigurationsRequestFeaturesCustomerUpdateAllowed
   /*@__PURE__*/ S.String;
 
 export type PostBillingPortalConfigurationsRequestFeaturesCustomerUpdateAllowedUpdatesCase0List =
-  ReadonlyArray<
+  Array<
     | PostBillingPortalConfigurationsRequestFeaturesCustomerUpdateAllowedUpdatesCase0Item
     | (string & {})
   >;
@@ -83685,7 +83554,7 @@ export const PostBillingPortalConfigurationsRequestFeaturesSubscriptionCancelCan
   /*@__PURE__*/ S.String;
 
 export type PostBillingPortalConfigurationsRequestFeaturesSubscriptionCancelCancellationReasonOptionsCase0List =
-  ReadonlyArray<
+  Array<
     | PostBillingPortalConfigurationsRequestFeaturesSubscriptionCancelCancellationReasonOptionsCase0Item
     | (string & {})
   >;
@@ -83783,7 +83652,7 @@ export const PostBillingPortalConfigurationsRequestFeaturesSubscriptionUpdateDef
   /*@__PURE__*/ S.String;
 
 export type PostBillingPortalConfigurationsRequestFeaturesSubscriptionUpdateDefaultAllowedUpdatesCase0List =
-  ReadonlyArray<
+  Array<
     | PostBillingPortalConfigurationsRequestFeaturesSubscriptionUpdateDefaultAllowedUpdatesCase0Item
     | (string & {})
   >;
@@ -83827,7 +83696,7 @@ export const PostBillingPortalConfigurationsRequestFeaturesSubscriptionUpdatePro
 
 /** The list of price IDs for the product that a subscription can be updated to. */
 export type PostBillingPortalConfigurationsRequestFeaturesSubscriptionUpdateProductsCase0ItemPricesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostBillingPortalConfigurationsRequestFeaturesSubscriptionUpdateProductsCase0ItemPricesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -83857,7 +83726,7 @@ export const PostBillingPortalConfigurationsRequestFeaturesSubscriptionUpdatePro
   }) as any as S.Schema<PostBillingPortalConfigurationsRequestFeaturesSubscriptionUpdateProductsCase0Item>;
 
 export type PostBillingPortalConfigurationsRequestFeaturesSubscriptionUpdateProductsCase0List =
-  ReadonlyArray<PostBillingPortalConfigurationsRequestFeaturesSubscriptionUpdateProductsCase0Item>;
+  Array<PostBillingPortalConfigurationsRequestFeaturesSubscriptionUpdateProductsCase0Item>;
 export const PostBillingPortalConfigurationsRequestFeaturesSubscriptionUpdateProductsCase0List =
   /*@__PURE__*/ S.Array(
     PostBillingPortalConfigurationsRequestFeaturesSubscriptionUpdateProductsCase0Item,
@@ -83905,7 +83774,7 @@ export const PostBillingPortalConfigurationsRequestFeaturesSubscriptionUpdateSch
 
 /** List of conditions. When any condition is true, the update will be scheduled at the end of the current period. */
 export type PostBillingPortalConfigurationsRequestFeaturesSubscriptionUpdateScheduleAtPeriodEndConditionsList =
-  ReadonlyArray<PostBillingPortalConfigurationsRequestFeaturesSubscriptionUpdateScheduleAtPeriodEndConditionsItem>;
+  Array<PostBillingPortalConfigurationsRequestFeaturesSubscriptionUpdateScheduleAtPeriodEndConditionsItem>;
 export const PostBillingPortalConfigurationsRequestFeaturesSubscriptionUpdateScheduleAtPeriodEndConditionsList =
   /*@__PURE__*/ S.Array(
     PostBillingPortalConfigurationsRequestFeaturesSubscriptionUpdateScheduleAtPeriodEndConditionsItem,
@@ -84175,7 +84044,7 @@ export const PostBillingPortalConfigurationsConfigurationRequestDefaultReturnUrl
 
 /** Specifies which fields in the response should be expanded. */
 export type PostBillingPortalConfigurationsConfigurationRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostBillingPortalConfigurationsConfigurationRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -84187,7 +84056,7 @@ export const PostBillingPortalConfigurationsConfigurationRequestFeaturesCustomer
   /*@__PURE__*/ S.String;
 
 export type PostBillingPortalConfigurationsConfigurationRequestFeaturesCustomerUpdateAllowedUpdatesCase0List =
-  ReadonlyArray<
+  Array<
     | PostBillingPortalConfigurationsConfigurationRequestFeaturesCustomerUpdateAllowedUpdatesCase0Item
     | (string & {})
   >;
@@ -84288,7 +84157,7 @@ export const PostBillingPortalConfigurationsConfigurationRequestFeaturesSubscrip
   /*@__PURE__*/ S.String;
 
 export type PostBillingPortalConfigurationsConfigurationRequestFeaturesSubscriptionCancelCancellationReasonOptionsCase0List =
-  ReadonlyArray<
+  Array<
     | PostBillingPortalConfigurationsConfigurationRequestFeaturesSubscriptionCancelCancellationReasonOptionsCase0Item
     | (string & {})
   >;
@@ -84387,7 +84256,7 @@ export const PostBillingPortalConfigurationsConfigurationRequestFeaturesSubscrip
   /*@__PURE__*/ S.String;
 
 export type PostBillingPortalConfigurationsConfigurationRequestFeaturesSubscriptionUpdateDefaultAllowedUpdatesCase0List =
-  ReadonlyArray<
+  Array<
     | PostBillingPortalConfigurationsConfigurationRequestFeaturesSubscriptionUpdateDefaultAllowedUpdatesCase0Item
     | (string & {})
   >;
@@ -84431,7 +84300,7 @@ export const PostBillingPortalConfigurationsConfigurationRequestFeaturesSubscrip
 
 /** The list of price IDs for the product that a subscription can be updated to. */
 export type PostBillingPortalConfigurationsConfigurationRequestFeaturesSubscriptionUpdateProductsCase0ItemPricesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostBillingPortalConfigurationsConfigurationRequestFeaturesSubscriptionUpdateProductsCase0ItemPricesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -84461,7 +84330,7 @@ export const PostBillingPortalConfigurationsConfigurationRequestFeaturesSubscrip
   }) as any as S.Schema<PostBillingPortalConfigurationsConfigurationRequestFeaturesSubscriptionUpdateProductsCase0Item>;
 
 export type PostBillingPortalConfigurationsConfigurationRequestFeaturesSubscriptionUpdateProductsCase0List =
-  ReadonlyArray<PostBillingPortalConfigurationsConfigurationRequestFeaturesSubscriptionUpdateProductsCase0Item>;
+  Array<PostBillingPortalConfigurationsConfigurationRequestFeaturesSubscriptionUpdateProductsCase0Item>;
 export const PostBillingPortalConfigurationsConfigurationRequestFeaturesSubscriptionUpdateProductsCase0List =
   /*@__PURE__*/ S.Array(
     PostBillingPortalConfigurationsConfigurationRequestFeaturesSubscriptionUpdateProductsCase0Item,
@@ -84508,7 +84377,7 @@ export const PostBillingPortalConfigurationsConfigurationRequestFeaturesSubscrip
   }) as any as S.Schema<PostBillingPortalConfigurationsConfigurationRequestFeaturesSubscriptionUpdateScheduleAtPeriodEndConditionsCase0Item>;
 
 export type PostBillingPortalConfigurationsConfigurationRequestFeaturesSubscriptionUpdateScheduleAtPeriodEndConditionsCase0List =
-  ReadonlyArray<PostBillingPortalConfigurationsConfigurationRequestFeaturesSubscriptionUpdateScheduleAtPeriodEndConditionsCase0Item>;
+  Array<PostBillingPortalConfigurationsConfigurationRequestFeaturesSubscriptionUpdateScheduleAtPeriodEndConditionsCase0Item>;
 export const PostBillingPortalConfigurationsConfigurationRequestFeaturesSubscriptionUpdateScheduleAtPeriodEndConditionsCase0List =
   /*@__PURE__*/ S.Array(
     PostBillingPortalConfigurationsConfigurationRequestFeaturesSubscriptionUpdateScheduleAtPeriodEndConditionsCase0Item,
@@ -84737,7 +84606,7 @@ export const PostBillingPortalConfigurationsConfigurationRequest =
   }) as any as S.Schema<PostBillingPortalConfigurationsConfigurationRequest>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostBillingPortalSessionsRequestExpandList = ReadonlyArray<string>;
+export type PostBillingPortalSessionsRequestExpandList = Array<string>;
 export const PostBillingPortalSessionsRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostBillingPortalSessionsRequestExpandList>;
@@ -84900,7 +84769,7 @@ export const PostBillingPortalSessionsRequestFlowDataSubscriptionUpdateConfirmDi
 
 /** The coupon or promotion code to apply to this subscription update. */
 export type PostBillingPortalSessionsRequestFlowDataSubscriptionUpdateConfirmDiscountsList =
-  ReadonlyArray<PostBillingPortalSessionsRequestFlowDataSubscriptionUpdateConfirmDiscountsItem>;
+  Array<PostBillingPortalSessionsRequestFlowDataSubscriptionUpdateConfirmDiscountsItem>;
 export const PostBillingPortalSessionsRequestFlowDataSubscriptionUpdateConfirmDiscountsList =
   /*@__PURE__*/ S.Array(
     PostBillingPortalSessionsRequestFlowDataSubscriptionUpdateConfirmDiscountsItem,
@@ -84928,7 +84797,7 @@ export const PostBillingPortalSessionsRequestFlowDataSubscriptionUpdateConfirmIt
 
 /** The [subscription item](https://docs.stripe.com/api/subscription_items) to be updated through this flow. Currently, only up to one may be specified and subscriptions with multiple items are not updatable. */
 export type PostBillingPortalSessionsRequestFlowDataSubscriptionUpdateConfirmItemsList =
-  ReadonlyArray<PostBillingPortalSessionsRequestFlowDataSubscriptionUpdateConfirmItemsItem>;
+  Array<PostBillingPortalSessionsRequestFlowDataSubscriptionUpdateConfirmItemsItem>;
 export const PostBillingPortalSessionsRequestFlowDataSubscriptionUpdateConfirmItemsList =
   /*@__PURE__*/ S.Array(
     PostBillingPortalSessionsRequestFlowDataSubscriptionUpdateConfirmItemsItem,
@@ -85225,7 +85094,7 @@ export const PortalFlowsSubscriptionUpdateConfirmDiscount =
 
 /** The coupon or promotion code to apply to this subscription update. */
 export type PortalFlowsFlowSubscriptionUpdateConfirmDiscountsList =
-  ReadonlyArray<PortalFlowsSubscriptionUpdateConfirmDiscount>;
+  Array<PortalFlowsSubscriptionUpdateConfirmDiscount>;
 export const PortalFlowsFlowSubscriptionUpdateConfirmDiscountsList =
   /*@__PURE__*/ S.Array(
     PortalFlowsSubscriptionUpdateConfirmDiscount,
@@ -85252,7 +85121,7 @@ export const PortalFlowsSubscriptionUpdateConfirmItem = /*@__PURE__*/ S.suspend(
 
 /** The [subscription item](https://docs.stripe.com/api/subscription_items) to be updated through this flow. Currently, only up to one may be specified and subscriptions with multiple items are not updatable. */
 export type PortalFlowsFlowSubscriptionUpdateConfirmItemsList =
-  ReadonlyArray<PortalFlowsSubscriptionUpdateConfirmItem>;
+  Array<PortalFlowsSubscriptionUpdateConfirmItem>;
 export const PortalFlowsFlowSubscriptionUpdateConfirmItemsList =
   /*@__PURE__*/ S.Array(
     PortalFlowsSubscriptionUpdateConfirmItem,
@@ -85429,7 +85298,7 @@ export const PostChargesRequestDestination = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostChargesRequestDestination>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostChargesRequestExpandList = ReadonlyArray<string>;
+export type PostChargesRequestExpandList = Array<string>;
 export const PostChargesRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostChargesRequestExpandList>;
@@ -85609,7 +85478,7 @@ export const PostChargesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostChargesRequest>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostChargesChargeRequestExpandList = ReadonlyArray<string>;
+export type PostChargesChargeRequestExpandList = Array<string>;
 export const PostChargesChargeRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostChargesChargeRequestExpandList>;
@@ -85751,7 +85620,7 @@ export const PostChargesChargeRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostChargesChargeRequest>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostChargesChargeCaptureRequestExpandList = ReadonlyArray<string>;
+export type PostChargesChargeCaptureRequestExpandList = Array<string>;
 export const PostChargesChargeCaptureRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostChargesChargeCaptureRequestExpandList>;
@@ -86157,7 +86026,7 @@ export const PostCheckoutSessionsRequestCustomFieldsItemDropdownOptionsItem =
 
 /** The options available for the customer to select. Up to 200 options allowed. */
 export type PostCheckoutSessionsRequestCustomFieldsItemDropdownOptionsList =
-  ReadonlyArray<PostCheckoutSessionsRequestCustomFieldsItemDropdownOptionsItem>;
+  Array<PostCheckoutSessionsRequestCustomFieldsItemDropdownOptionsItem>;
 export const PostCheckoutSessionsRequestCustomFieldsItemDropdownOptionsList =
   /*@__PURE__*/ S.Array(
     PostCheckoutSessionsRequestCustomFieldsItemDropdownOptionsItem,
@@ -86283,7 +86152,7 @@ export const PostCheckoutSessionsRequestCustomFieldsItem =
 
 /** Collect additional information from your customer using custom fields. Up to 3 fields are supported. You can't set this parameter if `ui_mode` is `custom`. */
 export type PostCheckoutSessionsRequestCustomFieldsList =
-  ReadonlyArray<PostCheckoutSessionsRequestCustomFieldsItem>;
+  Array<PostCheckoutSessionsRequestCustomFieldsItem>;
 export const PostCheckoutSessionsRequestCustomFieldsList =
   /*@__PURE__*/ S.Array(
     PostCheckoutSessionsRequestCustomFieldsItem,
@@ -86478,7 +86347,7 @@ export const PostCheckoutSessionsRequestDiscountsItem = /*@__PURE__*/ S.suspend(
 
 /** The coupon or promotion code to apply to this Session. Currently, only up to one may be specified. */
 export type PostCheckoutSessionsRequestDiscountsList =
-  ReadonlyArray<PostCheckoutSessionsRequestDiscountsItem>;
+  Array<PostCheckoutSessionsRequestDiscountsItem>;
 export const PostCheckoutSessionsRequestDiscountsList = /*@__PURE__*/ S.Array(
   PostCheckoutSessionsRequestDiscountsItem,
 ) as any as S.Schema<PostCheckoutSessionsRequestDiscountsList>;
@@ -86541,23 +86410,22 @@ export const PostCheckoutSessionsRequestExcludedPaymentMethodTypesItem =
   /*@__PURE__*/ S.String;
 
 /** A list of the types of payment methods (e.g., `card`) that should be excluded from this Checkout Session. This should only be used when payment methods for this Checkout Session are managed through the [Stripe Dashboard](https://dashboard.stripe.com/settings/payment_methods). */
-export type PostCheckoutSessionsRequestExcludedPaymentMethodTypesList =
-  ReadonlyArray<
-    PostCheckoutSessionsRequestExcludedPaymentMethodTypesItem | (string & {})
-  >;
+export type PostCheckoutSessionsRequestExcludedPaymentMethodTypesList = Array<
+  PostCheckoutSessionsRequestExcludedPaymentMethodTypesItem | (string & {})
+>;
 export const PostCheckoutSessionsRequestExcludedPaymentMethodTypesList =
   /*@__PURE__*/ S.Array(
     PostCheckoutSessionsRequestExcludedPaymentMethodTypesItem,
   ) as any as S.Schema<PostCheckoutSessionsRequestExcludedPaymentMethodTypesList>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostCheckoutSessionsRequestExpandList = ReadonlyArray<string>;
+export type PostCheckoutSessionsRequestExpandList = Array<string>;
 export const PostCheckoutSessionsRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostCheckoutSessionsRequestExpandList>;
 
 export type PostCheckoutSessionsRequestInvoiceCreationInvoiceDataAccountTaxIdsCase0List =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostCheckoutSessionsRequestInvoiceCreationInvoiceDataAccountTaxIdsCase0List =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -86593,7 +86461,7 @@ export const PostCheckoutSessionsRequestInvoiceCreationInvoiceDataCustomFieldsCa
   }) as any as S.Schema<PostCheckoutSessionsRequestInvoiceCreationInvoiceDataCustomFieldsCase0Item>;
 
 export type PostCheckoutSessionsRequestInvoiceCreationInvoiceDataCustomFieldsCase0List =
-  ReadonlyArray<PostCheckoutSessionsRequestInvoiceCreationInvoiceDataCustomFieldsCase0Item>;
+  Array<PostCheckoutSessionsRequestInvoiceCreationInvoiceDataCustomFieldsCase0Item>;
 export const PostCheckoutSessionsRequestInvoiceCreationInvoiceDataCustomFieldsCase0List =
   /*@__PURE__*/ S.Array(
     PostCheckoutSessionsRequestInvoiceCreationInvoiceDataCustomFieldsCase0Item,
@@ -86769,7 +86637,7 @@ export const PostCheckoutSessionsRequestLineItemsItemAdjustableQuantity =
 
 /** The [tax rates](https://docs.stripe.com/api/tax_rates) that will be applied to this line item depending on the customer's billing/shipping address. We currently support the following countries: US, GB, AU, and all countries in the EU. You can't set this parameter if `ui_mode` is `custom`. */
 export type PostCheckoutSessionsRequestLineItemsItemDynamicTaxRatesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostCheckoutSessionsRequestLineItemsItemDynamicTaxRatesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -86787,7 +86655,7 @@ export const PostCheckoutSessionsRequestLineItemsItemMetadataMap =
 
 /** A list of up to 8 URLs of images for this product, meant to be displayable to the customer. */
 export type PostCheckoutSessionsRequestLineItemsItemPriceDataProductDataImagesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostCheckoutSessionsRequestLineItemsItemPriceDataProductDataImagesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -86911,7 +86779,7 @@ export const PostCheckoutSessionsRequestLineItemsItemPriceData =
 
 /** The [tax rates](https://docs.stripe.com/api/tax_rates) which apply to this line item. */
 export type PostCheckoutSessionsRequestLineItemsItemTaxRatesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostCheckoutSessionsRequestLineItemsItemTaxRatesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -86956,7 +86824,7 @@ export const PostCheckoutSessionsRequestLineItemsItem = /*@__PURE__*/ S.suspend(
 
 /** A list of items the customer is purchasing. Use this parameter to pass one-time or recurring [Prices](https://docs.stripe.com/api/prices). The parameter is required for `payment` and `subscription` mode. For `payment` mode, there is a maximum of 100 line items, however it is recommended to consolidate line items if there are more than a few dozen. For `subscription` mode, there is a maximum of 20 line items with recurring Prices and 20 line items with one-time Prices. Line items with one-time Prices will be on the initial invoice only. */
 export type PostCheckoutSessionsRequestLineItemsList =
-  ReadonlyArray<PostCheckoutSessionsRequestLineItemsItem>;
+  Array<PostCheckoutSessionsRequestLineItemsItem>;
 export const PostCheckoutSessionsRequestLineItemsList = /*@__PURE__*/ S.Array(
   PostCheckoutSessionsRequestLineItemsItem,
 ) as any as S.Schema<PostCheckoutSessionsRequestLineItemsList>;
@@ -87133,7 +87001,7 @@ export const PostCheckoutSessionsRequestOptionalItemsItem =
 
 /** A list of optional items the customer can add to their order at checkout. Use this parameter to pass one-time or recurring [Prices](https://docs.stripe.com/api/prices). There is a maximum of 10 optional items allowed on a Checkout Session, and the existing limits on the number of line items allowed on a Checkout Session apply to the combined number of line items and optional items. For `payment` mode, there is a maximum of 100 combined line items and optional items, however it is recommended to consolidate items if there are more than a few dozen. For `subscription` mode, there is a maximum of 20 line items and optional items with recurring Prices and 20 line items and optional items with one-time Prices. You can't set this parameter if `ui_mode` is `custom`. */
 export type PostCheckoutSessionsRequestOptionalItemsList =
-  ReadonlyArray<PostCheckoutSessionsRequestOptionalItemsItem>;
+  Array<PostCheckoutSessionsRequestOptionalItemsItem>;
 export const PostCheckoutSessionsRequestOptionalItemsList =
   /*@__PURE__*/ S.Array(
     PostCheckoutSessionsRequestOptionalItemsItem,
@@ -87360,7 +87228,7 @@ export const PostCheckoutSessionsRequestPaymentMethodOptionsAcssDebitMandateOpti
 
 /** List of Stripe products where this mandate can be selected automatically. Only usable in `setup` mode. */
 export type PostCheckoutSessionsRequestPaymentMethodOptionsAcssDebitMandateOptionsDefaultForList =
-  ReadonlyArray<
+  Array<
     | PostCheckoutSessionsRequestPaymentMethodOptionsAcssDebitMandateOptionsDefaultForItem
     | (string & {})
   >;
@@ -87853,7 +87721,7 @@ export const PostCheckoutSessionsRequestPaymentMethodOptionsCardRestrictionsBran
 
 /** The card brands to block. If a customer enters or selects a card belonging to a blocked brand, they can't complete the payment. */
 export type PostCheckoutSessionsRequestPaymentMethodOptionsCardRestrictionsBrandsBlockedList =
-  ReadonlyArray<
+  Array<
     | PostCheckoutSessionsRequestPaymentMethodOptionsCardRestrictionsBrandsBlockedItem
     | (string & {})
   >;
@@ -88044,7 +87912,7 @@ export const PostCheckoutSessionsRequestPaymentMethodOptionsCustomerBalanceBankT
 
 /** List of address types that should be returned in the financial_addresses response. If not specified, all valid types will be returned. Permitted values include: `sort_code`, `zengin`, `iban`, or `spei`. */
 export type PostCheckoutSessionsRequestPaymentMethodOptionsCustomerBalanceBankTransferRequestedAddressTypesList =
-  ReadonlyArray<
+  Array<
     | PostCheckoutSessionsRequestPaymentMethodOptionsCustomerBalanceBankTransferRequestedAddressTypesItem
     | (string & {})
   >;
@@ -88381,7 +88249,7 @@ export const PostCheckoutSessionsRequestPaymentMethodOptionsKlarnaSubscriptionsC
   }) as any as S.Schema<PostCheckoutSessionsRequestPaymentMethodOptionsKlarnaSubscriptionsCase0Item>;
 
 export type PostCheckoutSessionsRequestPaymentMethodOptionsKlarnaSubscriptionsCase0List =
-  ReadonlyArray<PostCheckoutSessionsRequestPaymentMethodOptionsKlarnaSubscriptionsCase0Item>;
+  Array<PostCheckoutSessionsRequestPaymentMethodOptionsKlarnaSubscriptionsCase0Item>;
 export const PostCheckoutSessionsRequestPaymentMethodOptionsKlarnaSubscriptionsCase0List =
   /*@__PURE__*/ S.Array(
     PostCheckoutSessionsRequestPaymentMethodOptionsKlarnaSubscriptionsCase0Item,
@@ -89421,7 +89289,7 @@ export const PostCheckoutSessionsRequestPaymentMethodOptionsUsBankAccountFinanci
 
 /** The list of permissions to request. If this parameter is passed, the `payment_method` permission must be included. Valid permissions include: `balances`, `ownership`, `payment_method`, and `transactions`. */
 export type PostCheckoutSessionsRequestPaymentMethodOptionsUsBankAccountFinancialConnectionsPermissionsList =
-  ReadonlyArray<
+  Array<
     | PostCheckoutSessionsRequestPaymentMethodOptionsUsBankAccountFinancialConnectionsPermissionsItem
     | (string & {})
   >;
@@ -89437,7 +89305,7 @@ export const PostCheckoutSessionsRequestPaymentMethodOptionsUsBankAccountFinanci
 
 /** List of data features that you would like to retrieve upon account creation. */
 export type PostCheckoutSessionsRequestPaymentMethodOptionsUsBankAccountFinancialConnectionsPrefetchList =
-  ReadonlyArray<
+  Array<
     | PostCheckoutSessionsRequestPaymentMethodOptionsUsBankAccountFinancialConnectionsPrefetchItem
     | (string & {})
   >;
@@ -89818,7 +89686,7 @@ export const PostCheckoutSessionsRequestPaymentMethodTypesItem =
   /*@__PURE__*/ S.String;
 
 /** A list of the types of payment methods (e.g., `card`) this Checkout Session can accept. You can omit this attribute to manage your payment methods from the [Stripe Dashboard](https://dashboard.stripe.com/settings/payment_methods). See [Dynamic Payment Methods](https://docs.stripe.com/payments/payment-methods/integration-options#using-dynamic-payment-methods) for more details. Read more about the supported payment methods and their requirements in our [payment method details guide](/docs/payments/checkout/payment-methods). If multiple payment methods are passed, Checkout will dynamically reorder them to prioritize the most relevant payment methods based on the customer's location and other characteristics. */
-export type PostCheckoutSessionsRequestPaymentMethodTypesList = ReadonlyArray<
+export type PostCheckoutSessionsRequestPaymentMethodTypesList = Array<
   PostCheckoutSessionsRequestPaymentMethodTypesItem | (string & {})
 >;
 export const PostCheckoutSessionsRequestPaymentMethodTypesList =
@@ -89880,7 +89748,7 @@ export const PostCheckoutSessionsRequestSavedPaymentMethodOptionsAllowRedisplayF
 
 /** Uses the `allow_redisplay` value of each saved payment method to filter the set presented to a returning customer. By default, only saved payment methods with ’allow_redisplay: ‘always’ are shown in Checkout. */
 export type PostCheckoutSessionsRequestSavedPaymentMethodOptionsAllowRedisplayFiltersList =
-  ReadonlyArray<
+  Array<
     | PostCheckoutSessionsRequestSavedPaymentMethodOptionsAllowRedisplayFiltersItem
     | (string & {})
   >;
@@ -90207,7 +90075,7 @@ export const PostCheckoutSessionsRequestShippingAddressCollectionAllowedCountrie
 
 /** An array of two-letter ISO country codes representing which countries Checkout should provide as options for shipping locations. */
 export type PostCheckoutSessionsRequestShippingAddressCollectionAllowedCountriesList =
-  ReadonlyArray<
+  Array<
     | PostCheckoutSessionsRequestShippingAddressCollectionAllowedCountriesItem
     | (string & {})
   >;
@@ -90456,7 +90324,7 @@ export const PostCheckoutSessionsRequestShippingOptionsItem =
 
 /** The shipping rate options to apply to this Session. Up to a maximum of 5. */
 export type PostCheckoutSessionsRequestShippingOptionsList =
-  ReadonlyArray<PostCheckoutSessionsRequestShippingOptionsItem>;
+  Array<PostCheckoutSessionsRequestShippingOptionsItem>;
 export const PostCheckoutSessionsRequestShippingOptionsList =
   /*@__PURE__*/ S.Array(
     PostCheckoutSessionsRequestShippingOptionsItem,
@@ -90553,7 +90421,7 @@ export const PostCheckoutSessionsRequestSubscriptionDataBillingMode =
 
 /** The tax rates that will apply to any subscription item that does not have `tax_rates` set. Invoices created will have their `default_tax_rates` populated from the subscription. */
 export type PostCheckoutSessionsRequestSubscriptionDataDefaultTaxRatesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostCheckoutSessionsRequestSubscriptionDataDefaultTaxRatesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -91113,8 +90981,7 @@ export const PostCheckoutSessionsSessionRequestCollectedInformation =
   }) as any as S.Schema<PostCheckoutSessionsSessionRequestCollectedInformation>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostCheckoutSessionsSessionRequestExpandList =
-  ReadonlyArray<string>;
+export type PostCheckoutSessionsSessionRequestExpandList = Array<string>;
 export const PostCheckoutSessionsSessionRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -91163,7 +91030,7 @@ export const PostCheckoutSessionsSessionRequestLineItemsItemMetadata =
 
 /** A list of up to 8 URLs of images for this product, meant to be displayable to the customer. */
 export type PostCheckoutSessionsSessionRequestLineItemsItemPriceDataProductDataImagesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostCheckoutSessionsSessionRequestLineItemsItemPriceDataProductDataImagesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -91286,7 +91153,7 @@ export const PostCheckoutSessionsSessionRequestLineItemsItemPriceData =
   }) as any as S.Schema<PostCheckoutSessionsSessionRequestLineItemsItemPriceData>;
 
 export type PostCheckoutSessionsSessionRequestLineItemsItemTaxRatesCase0List =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostCheckoutSessionsSessionRequestLineItemsItemTaxRatesCase0List =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -91344,7 +91211,7 @@ export const PostCheckoutSessionsSessionRequestLineItemsItem =
 
 /** A list of items the customer is purchasing. When updating line items, you must retransmit the entire array of line items. To retain an existing line item, specify its `id`. To update an existing line item, specify its `id` along with the new values of the fields to update. To add a new line item, specify one of `price` or `price_data` and `quantity`. To remove an existing line item, omit the line item's ID from the retransmitted array. To reorder a line item, specify it at the desired position in the retransmitted array. */
 export type PostCheckoutSessionsSessionRequestLineItemsList =
-  ReadonlyArray<PostCheckoutSessionsSessionRequestLineItemsItem>;
+  Array<PostCheckoutSessionsSessionRequestLineItemsItem>;
 export const PostCheckoutSessionsSessionRequestLineItemsList =
   /*@__PURE__*/ S.Array(
     PostCheckoutSessionsSessionRequestLineItemsItem,
@@ -91594,7 +91461,7 @@ export const PostCheckoutSessionsSessionRequestShippingOptionsCase0Item =
   }) as any as S.Schema<PostCheckoutSessionsSessionRequestShippingOptionsCase0Item>;
 
 export type PostCheckoutSessionsSessionRequestShippingOptionsCase0List =
-  ReadonlyArray<PostCheckoutSessionsSessionRequestShippingOptionsCase0Item>;
+  Array<PostCheckoutSessionsSessionRequestShippingOptionsCase0Item>;
 export const PostCheckoutSessionsSessionRequestShippingOptionsCase0List =
   /*@__PURE__*/ S.Array(
     PostCheckoutSessionsSessionRequestShippingOptionsCase0Item,
@@ -91649,8 +91516,7 @@ export const PostCheckoutSessionsSessionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostCheckoutSessionsSessionRequest>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostCheckoutSessionsSessionExpireRequestExpandList =
-  ReadonlyArray<string>;
+export type PostCheckoutSessionsSessionExpireRequestExpandList = Array<string>;
 export const PostCheckoutSessionsSessionExpireRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -91692,7 +91558,7 @@ export const PostClimateOrdersRequestBeneficiary = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostClimateOrdersRequestBeneficiary>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostClimateOrdersRequestExpandList = ReadonlyArray<string>;
+export type PostClimateOrdersRequestExpandList = Array<string>;
 export const PostClimateOrdersRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostClimateOrdersRequestExpandList>;
@@ -91779,7 +91645,7 @@ export const PostClimateOrdersOrderRequestBeneficiary =
   /*@__PURE__*/ S.Unknown as any as S.Schema<PostClimateOrdersOrderRequestBeneficiary>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostClimateOrdersOrderRequestExpandList = ReadonlyArray<string>;
+export type PostClimateOrdersOrderRequestExpandList = Array<string>;
 export const PostClimateOrdersOrderRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostClimateOrdersOrderRequestExpandList>;
@@ -91822,8 +91688,7 @@ export const PostClimateOrdersOrderRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostClimateOrdersOrderRequest>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostClimateOrdersOrderCancelRequestExpandList =
-  ReadonlyArray<string>;
+export type PostClimateOrdersOrderCancelRequestExpandList = Array<string>;
 export const PostClimateOrdersOrderCancelRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -91852,7 +91717,7 @@ export const PostClimateOrdersOrderCancelRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostClimateOrdersOrderCancelRequest>;
 
 /** An array of Product IDs that this Coupon will apply to. */
-export type PostCouponsRequestAppliesToProductsList = ReadonlyArray<string>;
+export type PostCouponsRequestAppliesToProductsList = Array<string>;
 export const PostCouponsRequestAppliesToProductsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostCouponsRequestAppliesToProductsList>;
@@ -91897,7 +91762,7 @@ export type PostCouponsRequestDuration = "forever" | "once" | "repeating";
 export const PostCouponsRequestDuration = /*@__PURE__*/ S.String;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostCouponsRequestExpandList = ReadonlyArray<string>;
+export type PostCouponsRequestExpandList = Array<string>;
 export const PostCouponsRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostCouponsRequestExpandList>;
@@ -91999,7 +91864,7 @@ export const PostCouponsCouponRequestCurrencyOptionsMap =
   ) as any as S.Schema<PostCouponsCouponRequestCurrencyOptionsMap>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostCouponsCouponRequestExpandList = ReadonlyArray<string>;
+export type PostCouponsCouponRequestExpandList = Array<string>;
 export const PostCouponsCouponRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostCouponsCouponRequestExpandList>;
@@ -92057,7 +91922,7 @@ export type PostCreditNotesRequestEmailType = "credit_note" | "none";
 export const PostCreditNotesRequestEmailType = /*@__PURE__*/ S.String;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostCreditNotesRequestExpandList = ReadonlyArray<string>;
+export type PostCreditNotesRequestExpandList = Array<string>;
 export const PostCreditNotesRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostCreditNotesRequestExpandList>;
@@ -92092,7 +91957,7 @@ export const PostCreditNotesRequestLinesItemTaxAmountsCase0Item =
   }) as any as S.Schema<PostCreditNotesRequestLinesItemTaxAmountsCase0Item>;
 
 export type PostCreditNotesRequestLinesItemTaxAmountsCase0List =
-  ReadonlyArray<PostCreditNotesRequestLinesItemTaxAmountsCase0Item>;
+  Array<PostCreditNotesRequestLinesItemTaxAmountsCase0Item>;
 export const PostCreditNotesRequestLinesItemTaxAmountsCase0List =
   /*@__PURE__*/ S.Array(
     PostCreditNotesRequestLinesItemTaxAmountsCase0Item,
@@ -92109,8 +91974,7 @@ export type PostCreditNotesRequestLinesItemTaxAmounts =
 export const PostCreditNotesRequestLinesItemTaxAmounts =
   /*@__PURE__*/ S.Unknown as any as S.Schema<PostCreditNotesRequestLinesItemTaxAmounts>;
 
-export type PostCreditNotesRequestLinesItemTaxRatesCase0List =
-  ReadonlyArray<string>;
+export type PostCreditNotesRequestLinesItemTaxRatesCase0List = Array<string>;
 export const PostCreditNotesRequestLinesItemTaxRatesCase0List =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -92174,7 +92038,7 @@ export const PostCreditNotesRequestLinesItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Line items that make up the credit note. One of `amount`, `lines`, or `shipping_cost` must be provided. */
 export type PostCreditNotesRequestLinesList =
-  ReadonlyArray<PostCreditNotesRequestLinesItem>;
+  Array<PostCreditNotesRequestLinesItem>;
 export const PostCreditNotesRequestLinesList = /*@__PURE__*/ S.Array(
   PostCreditNotesRequestLinesItem,
 ) as any as S.Schema<PostCreditNotesRequestLinesList>;
@@ -92244,7 +92108,7 @@ export const PostCreditNotesRequestRefundsItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Refunds to link to this credit note. */
 export type PostCreditNotesRequestRefundsList =
-  ReadonlyArray<PostCreditNotesRequestRefundsItem>;
+  Array<PostCreditNotesRequestRefundsItem>;
 export const PostCreditNotesRequestRefundsList = /*@__PURE__*/ S.Array(
   PostCreditNotesRequestRefundsItem,
 ) as any as S.Schema<PostCreditNotesRequestRefundsList>;
@@ -92321,7 +92185,7 @@ export const PostCreditNotesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostCreditNotesRequest>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostCreditNotesIdRequestExpandList = ReadonlyArray<string>;
+export type PostCreditNotesIdRequestExpandList = Array<string>;
 export const PostCreditNotesIdRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostCreditNotesIdRequestExpandList>;
@@ -92363,7 +92227,7 @@ export const PostCreditNotesIdRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostCreditNotesIdRequest>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostCreditNotesIdVoidRequestExpandList = ReadonlyArray<string>;
+export type PostCreditNotesIdVoidRequestExpandList = Array<string>;
 export const PostCreditNotesIdVoidRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostCreditNotesIdVoidRequestExpandList>;
@@ -92476,7 +92340,7 @@ export const PostCustomersRequestCashBalance = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostCustomersRequestCashBalance>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostCustomersRequestExpandList = ReadonlyArray<string>;
+export type PostCustomersRequestExpandList = Array<string>;
 export const PostCustomersRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostCustomersRequestExpandList>;
@@ -92508,7 +92372,7 @@ export const PostCustomersRequestInvoiceSettingsCustomFieldsCase0Item =
   }) as any as S.Schema<PostCustomersRequestInvoiceSettingsCustomFieldsCase0Item>;
 
 export type PostCustomersRequestInvoiceSettingsCustomFieldsCase0List =
-  ReadonlyArray<PostCustomersRequestInvoiceSettingsCustomFieldsCase0Item>;
+  Array<PostCustomersRequestInvoiceSettingsCustomFieldsCase0Item>;
 export const PostCustomersRequestInvoiceSettingsCustomFieldsCase0List =
   /*@__PURE__*/ S.Array(
     PostCustomersRequestInvoiceSettingsCustomFieldsCase0Item,
@@ -92605,7 +92469,7 @@ export const PostCustomersRequestMetadata =
   /*@__PURE__*/ S.Unknown as any as S.Schema<PostCustomersRequestMetadata>;
 
 /** Customer's preferred languages, ordered by preference. */
-export type PostCustomersRequestPreferredLocalesList = ReadonlyArray<string>;
+export type PostCustomersRequestPreferredLocalesList = Array<string>;
 export const PostCustomersRequestPreferredLocalesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostCustomersRequestPreferredLocalesList>;
@@ -92840,7 +92704,7 @@ export const PostCustomersRequestTaxIdDataItem = /*@__PURE__*/ S.suspend(() =>
 
 /** The customer's tax IDs. */
 export type PostCustomersRequestTaxIdDataList =
-  ReadonlyArray<PostCustomersRequestTaxIdDataItem>;
+  Array<PostCustomersRequestTaxIdDataItem>;
 export const PostCustomersRequestTaxIdDataList = /*@__PURE__*/ S.Array(
   PostCustomersRequestTaxIdDataItem,
 ) as any as S.Schema<PostCustomersRequestTaxIdDataList>;
@@ -93017,7 +92881,7 @@ export const PostCustomersCustomerRequestCashBalance = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PostCustomersCustomerRequestCashBalance>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostCustomersCustomerRequestExpandList = ReadonlyArray<string>;
+export type PostCustomersCustomerRequestExpandList = Array<string>;
 export const PostCustomersCustomerRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostCustomersCustomerRequestExpandList>;
@@ -93051,7 +92915,7 @@ export const PostCustomersCustomerRequestInvoiceSettingsCustomFieldsCase0Item =
   }) as any as S.Schema<PostCustomersCustomerRequestInvoiceSettingsCustomFieldsCase0Item>;
 
 export type PostCustomersCustomerRequestInvoiceSettingsCustomFieldsCase0List =
-  ReadonlyArray<PostCustomersCustomerRequestInvoiceSettingsCustomFieldsCase0Item>;
+  Array<PostCustomersCustomerRequestInvoiceSettingsCustomFieldsCase0Item>;
 export const PostCustomersCustomerRequestInvoiceSettingsCustomFieldsCase0List =
   /*@__PURE__*/ S.Array(
     PostCustomersCustomerRequestInvoiceSettingsCustomFieldsCase0Item,
@@ -93154,8 +93018,7 @@ export const PostCustomersCustomerRequestMetadata =
   /*@__PURE__*/ S.Unknown as any as S.Schema<PostCustomersCustomerRequestMetadata>;
 
 /** Customer's preferred languages, ordered by preference. */
-export type PostCustomersCustomerRequestPreferredLocalesList =
-  ReadonlyArray<string>;
+export type PostCustomersCustomerRequestPreferredLocalesList = Array<string>;
 export const PostCustomersCustomerRequestPreferredLocalesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -93349,7 +93212,7 @@ export const PostCustomersCustomerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Specifies which fields in the response should be expanded. */
 export type PostCustomersCustomerBalanceTransactionsRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostCustomersCustomerBalanceTransactionsRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -93415,7 +93278,7 @@ export const PostCustomersCustomerBalanceTransactionsRequest =
 
 /** Specifies which fields in the response should be expanded. */
 export type PostCustomersCustomerBalanceTransactionsTransactionRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostCustomersCustomerBalanceTransactionsTransactionRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -93476,8 +93339,7 @@ export const PostCustomersCustomerBalanceTransactionsTransactionRequest =
   }) as any as S.Schema<PostCustomersCustomerBalanceTransactionsTransactionRequest>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostCustomersCustomerCashBalanceRequestExpandList =
-  ReadonlyArray<string>;
+export type PostCustomersCustomerCashBalanceRequestExpandList = Array<string>;
 export const PostCustomersCustomerCashBalanceRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -93556,7 +93418,7 @@ export const PostCustomersCustomerFundingInstructionsRequestBankTransferRequeste
 
 /** List of address types that should be returned in the financial_addresses response. If not specified, all valid types will be returned. Permitted values include: `sort_code`, `zengin`, `iban`, or `spei`. */
 export type PostCustomersCustomerFundingInstructionsRequestBankTransferRequestedAddressTypesList =
-  ReadonlyArray<
+  Array<
     | PostCustomersCustomerFundingInstructionsRequestBankTransferRequestedAddressTypesItem
     | (string & {})
   >;
@@ -93603,7 +93465,7 @@ export const PostCustomersCustomerFundingInstructionsRequestBankTransfer =
 
 /** Specifies which fields in the response should be expanded. */
 export type PostCustomersCustomerFundingInstructionsRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostCustomersCustomerFundingInstructionsRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -93653,7 +93515,7 @@ export const PostCustomersCustomerFundingInstructionsRequest =
 
 /** A list of financial addresses that can be used to fund a particular balance */
 export type FundingInstructionsBankTransferFinancialAddressesList =
-  ReadonlyArray<FundingInstructionsBankTransferFinancialAddress>;
+  Array<FundingInstructionsBankTransferFinancialAddress>;
 export const FundingInstructionsBankTransferFinancialAddressesList =
   /*@__PURE__*/ S.Array(
     FundingInstructionsBankTransferFinancialAddress,
@@ -93716,8 +93578,7 @@ export const FundingInstructions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FundingInstructions>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostCustomersCustomerSourcesRequestExpandList =
-  ReadonlyArray<string>;
+export type PostCustomersCustomerSourcesRequestExpandList = Array<string>;
 export const PostCustomersCustomerSourcesRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -93777,8 +93638,7 @@ export const PostCustomersCustomerSourcesIdRequestAccountHolderType =
   /*@__PURE__*/ S.String;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostCustomersCustomerSourcesIdRequestExpandList =
-  ReadonlyArray<string>;
+export type PostCustomersCustomerSourcesIdRequestExpandList = Array<string>;
 export const PostCustomersCustomerSourcesIdRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -94158,7 +94018,7 @@ export const PostCustomersCustomerSourcesIdResponse = /*@__PURE__*/ S.suspend(
 
 /** Two positive integers, in *cents*, equal to the values of the microdeposits sent to the bank account. */
 export type PostCustomersCustomerSourcesIdVerifyRequestAmountsList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const PostCustomersCustomerSourcesIdVerifyRequestAmountsList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -94166,7 +94026,7 @@ export const PostCustomersCustomerSourcesIdVerifyRequestAmountsList =
 
 /** Specifies which fields in the response should be expanded. */
 export type PostCustomersCustomerSourcesIdVerifyRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostCustomersCustomerSourcesIdVerifyRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -94202,8 +94062,7 @@ export const PostCustomersCustomerSourcesIdVerifyRequest =
   }) as any as S.Schema<PostCustomersCustomerSourcesIdVerifyRequest>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostCustomersCustomerTaxIdsRequestExpandList =
-  ReadonlyArray<string>;
+export type PostCustomersCustomerTaxIdsRequestExpandList = Array<string>;
 export const PostCustomersCustomerTaxIdsRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -94377,7 +94236,7 @@ export const PostCustomerSessionsRequestComponentsCustomerSheetFeaturesPaymentMe
 
 /** A list of [`allow_redisplay`](https://docs.stripe.com/api/payment_methods/object#payment_method_object-allow_redisplay) values that controls which saved payment methods the customer sheet displays by filtering to only show payment methods with an `allow_redisplay` value that is present in this list. If not specified, defaults to ["always"]. In order to display all saved payment methods, specify ["always", "limited", "unspecified"]. */
 export type PostCustomerSessionsRequestComponentsCustomerSheetFeaturesPaymentMethodAllowRedisplayFiltersList =
-  ReadonlyArray<
+  Array<
     | PostCustomerSessionsRequestComponentsCustomerSheetFeaturesPaymentMethodAllowRedisplayFiltersItem
     | (string & {})
   >;
@@ -94441,7 +94300,7 @@ export const PostCustomerSessionsRequestComponentsMobilePaymentElementFeaturesPa
 
 /** A list of [`allow_redisplay`](https://docs.stripe.com/api/payment_methods/object#payment_method_object-allow_redisplay) values that controls which saved payment methods the mobile payment element displays by filtering to only show payment methods with an `allow_redisplay` value that is present in this list. If not specified, defaults to ["always"]. In order to display all saved payment methods, specify ["always", "limited", "unspecified"]. */
 export type PostCustomerSessionsRequestComponentsMobilePaymentElementFeaturesPaymentMethodAllowRedisplayFiltersList =
-  ReadonlyArray<
+  Array<
     | PostCustomerSessionsRequestComponentsMobilePaymentElementFeaturesPaymentMethodAllowRedisplayFiltersItem
     | (string & {})
   >;
@@ -94545,7 +94404,7 @@ export const PostCustomerSessionsRequestComponentsPaymentElementFeaturesPaymentM
 
 /** A list of [`allow_redisplay`](https://docs.stripe.com/api/payment_methods/object#payment_method_object-allow_redisplay) values that controls which saved payment methods the Payment Element displays by filtering to only show payment methods with an `allow_redisplay` value that is present in this list. If not specified, defaults to ["always"]. In order to display all saved payment methods, specify ["always", "limited", "unspecified"]. */
 export type PostCustomerSessionsRequestComponentsPaymentElementFeaturesPaymentMethodAllowRedisplayFiltersList =
-  ReadonlyArray<
+  Array<
     | PostCustomerSessionsRequestComponentsPaymentElementFeaturesPaymentMethodAllowRedisplayFiltersItem
     | (string & {})
   >;
@@ -94693,7 +94552,7 @@ export const PostCustomerSessionsRequestComponents = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PostCustomerSessionsRequestComponents>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostCustomerSessionsRequestExpandList = ReadonlyArray<string>;
+export type PostCustomerSessionsRequestExpandList = Array<string>;
 export const PostCustomerSessionsRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostCustomerSessionsRequestExpandList>;
@@ -94747,7 +94606,7 @@ export const CustomerSessionResourceComponentsResourceCustomerSheetResourceFeatu
 
 /** A list of [`allow_redisplay`](https://docs.stripe.com/api/payment_methods/object#payment_method_object-allow_redisplay) values that controls which saved payment methods the customer sheet displays by filtering to only show payment methods with an `allow_redisplay` value that is present in this list. If not specified, defaults to ["always"]. In order to display all saved payment methods, specify ["always", "limited", "unspecified"]. */
 export type CustomerSessionResourceComponentsResourceCustomerSheetResourceFeaturesPaymentMethodAllowRedisplayFiltersList =
-  ReadonlyArray<CustomerSessionResourceComponentsResourceCustomerSheetResourceFeaturesPaymentMethodAllowRedisplayFiltersItem>;
+  Array<CustomerSessionResourceComponentsResourceCustomerSheetResourceFeaturesPaymentMethodAllowRedisplayFiltersItem>;
 export const CustomerSessionResourceComponentsResourceCustomerSheetResourceFeaturesPaymentMethodAllowRedisplayFiltersList =
   /*@__PURE__*/ S.Array(
     CustomerSessionResourceComponentsResourceCustomerSheetResourceFeaturesPaymentMethodAllowRedisplayFiltersItem,
@@ -94807,7 +94666,7 @@ export const CustomerSessionResourceComponentsResourceMobilePaymentElementResour
 
 /** A list of [`allow_redisplay`](https://docs.stripe.com/api/payment_methods/object#payment_method_object-allow_redisplay) values that controls which saved payment methods the mobile payment element displays by filtering to only show payment methods with an `allow_redisplay` value that is present in this list. If not specified, defaults to ["always"]. In order to display all saved payment methods, specify ["always", "limited", "unspecified"]. */
 export type CustomerSessionResourceComponentsResourceMobilePaymentElementResourceFeaturesPaymentMethodAllowRedisplayFiltersList =
-  ReadonlyArray<CustomerSessionResourceComponentsResourceMobilePaymentElementResourceFeaturesPaymentMethodAllowRedisplayFiltersItem>;
+  Array<CustomerSessionResourceComponentsResourceMobilePaymentElementResourceFeaturesPaymentMethodAllowRedisplayFiltersItem>;
 export const CustomerSessionResourceComponentsResourceMobilePaymentElementResourceFeaturesPaymentMethodAllowRedisplayFiltersList =
   /*@__PURE__*/ S.Array(
     CustomerSessionResourceComponentsResourceMobilePaymentElementResourceFeaturesPaymentMethodAllowRedisplayFiltersItem,
@@ -94900,7 +94759,7 @@ export const CustomerSessionResourceComponentsResourcePaymentElementResourceFeat
 
 /** A list of [`allow_redisplay`](https://docs.stripe.com/api/payment_methods/object#payment_method_object-allow_redisplay) values that controls which saved payment methods the Payment Element displays by filtering to only show payment methods with an `allow_redisplay` value that is present in this list. If not specified, defaults to ["always"]. In order to display all saved payment methods, specify ["always", "limited", "unspecified"]. */
 export type CustomerSessionResourceComponentsResourcePaymentElementResourceFeaturesPaymentMethodAllowRedisplayFiltersList =
-  ReadonlyArray<CustomerSessionResourceComponentsResourcePaymentElementResourceFeaturesPaymentMethodAllowRedisplayFiltersItem>;
+  Array<CustomerSessionResourceComponentsResourcePaymentElementResourceFeaturesPaymentMethodAllowRedisplayFiltersItem>;
 export const CustomerSessionResourceComponentsResourcePaymentElementResourceFeaturesPaymentMethodAllowRedisplayFiltersList =
   /*@__PURE__*/ S.Array(
     CustomerSessionResourceComponentsResourcePaymentElementResourceFeaturesPaymentMethodAllowRedisplayFiltersItem,
@@ -95560,7 +95419,7 @@ export const PostDisputesDisputeRequestEvidenceEnhancedEvidenceCase0VisaCompelli
 
 /** List of exactly two prior undisputed transaction objects for Visa Compelling Evidence 3.0 evidence submission. */
 export type PostDisputesDisputeRequestEvidenceEnhancedEvidenceCase0VisaCompellingEvidence3PriorUndisputedTransactionsList =
-  ReadonlyArray<PostDisputesDisputeRequestEvidenceEnhancedEvidenceCase0VisaCompellingEvidence3PriorUndisputedTransactionsItem>;
+  Array<PostDisputesDisputeRequestEvidenceEnhancedEvidenceCase0VisaCompellingEvidence3PriorUndisputedTransactionsItem>;
 export const PostDisputesDisputeRequestEvidenceEnhancedEvidenceCase0VisaCompellingEvidence3PriorUndisputedTransactionsList =
   /*@__PURE__*/ S.Array(
     PostDisputesDisputeRequestEvidenceEnhancedEvidenceCase0VisaCompellingEvidence3PriorUndisputedTransactionsItem,
@@ -95736,7 +95595,7 @@ export const PostDisputesDisputeRequestEvidence = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostDisputesDisputeRequestEvidence>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostDisputesDisputeRequestExpandList = ReadonlyArray<string>;
+export type PostDisputesDisputeRequestExpandList = Array<string>;
 export const PostDisputesDisputeRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostDisputesDisputeRequestExpandList>;
@@ -95791,7 +95650,7 @@ export const PostDisputesDisputeRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostDisputesDisputeRequest>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostDisputesDisputeCloseRequestExpandList = ReadonlyArray<string>;
+export type PostDisputesDisputeCloseRequestExpandList = Array<string>;
 export const PostDisputesDisputeCloseRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostDisputesDisputeCloseRequestExpandList>;
@@ -95818,7 +95677,7 @@ export const PostDisputesDisputeCloseRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostDisputesDisputeCloseRequest>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostEntitlementsFeaturesRequestExpandList = ReadonlyArray<string>;
+export type PostEntitlementsFeaturesRequestExpandList = Array<string>;
 export const PostEntitlementsFeaturesRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostEntitlementsFeaturesRequestExpandList>;
@@ -95862,7 +95721,7 @@ export const PostEntitlementsFeaturesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostEntitlementsFeaturesRequest>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostEntitlementsFeaturesIdRequestExpandList = ReadonlyArray<string>;
+export type PostEntitlementsFeaturesIdRequestExpandList = Array<string>;
 export const PostEntitlementsFeaturesIdRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -95919,7 +95778,7 @@ export const PostEntitlementsFeaturesIdRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostEntitlementsFeaturesIdRequest>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostEphemeralKeysRequestExpandList = ReadonlyArray<string>;
+export type PostEphemeralKeysRequestExpandList = Array<string>;
 export const PostEphemeralKeysRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostEphemeralKeysRequestExpandList>;
@@ -95956,7 +95815,7 @@ export const PostEphemeralKeysRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostEphemeralKeysRequest>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostFileLinksRequestExpandList = ReadonlyArray<string>;
+export type PostFileLinksRequestExpandList = Array<string>;
 export const PostFileLinksRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostFileLinksRequestExpandList>;
@@ -96008,7 +95867,7 @@ export const PostFileLinksRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostFileLinksRequest>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostFileLinksLinkRequestExpandList = ReadonlyArray<string>;
+export type PostFileLinksLinkRequestExpandList = Array<string>;
 export const PostFileLinksLinkRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostFileLinksLinkRequestExpandList>;
@@ -96073,7 +95932,7 @@ export const PostFileLinksLinkRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostFileLinksLinkRequest>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostFilesRequestExpandList = ReadonlyArray<string>;
+export type PostFilesRequestExpandList = Array<string>;
 export const PostFilesRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostFilesRequestExpandList>;
@@ -96165,7 +96024,7 @@ export const PostFilesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Specifies which fields in the response should be expanded. */
 export type PostFinancialConnectionsAccountsAccountDisconnectRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostFinancialConnectionsAccountsAccountDisconnectRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -96197,7 +96056,7 @@ export const PostFinancialConnectionsAccountsAccountDisconnectRequest =
 
 /** Specifies which fields in the response should be expanded. */
 export type PostFinancialConnectionsAccountsAccountRefreshRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostFinancialConnectionsAccountsAccountRefreshRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -96212,7 +96071,7 @@ export const PostFinancialConnectionsAccountsAccountRefreshRequestFeaturesItem =
 
 /** The list of account features that you would like to refresh. */
 export type PostFinancialConnectionsAccountsAccountRefreshRequestFeaturesList =
-  ReadonlyArray<
+  Array<
     | PostFinancialConnectionsAccountsAccountRefreshRequestFeaturesItem
     | (string & {})
   >;
@@ -96251,7 +96110,7 @@ export const PostFinancialConnectionsAccountsAccountRefreshRequest =
 
 /** Specifies which fields in the response should be expanded. */
 export type PostFinancialConnectionsAccountsAccountSubscribeRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostFinancialConnectionsAccountsAccountSubscribeRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -96264,7 +96123,7 @@ export const PostFinancialConnectionsAccountsAccountSubscribeRequestFeaturesItem
 
 /** The list of account features to which you would like to subscribe. */
 export type PostFinancialConnectionsAccountsAccountSubscribeRequestFeaturesList =
-  ReadonlyArray<
+  Array<
     | PostFinancialConnectionsAccountsAccountSubscribeRequestFeaturesItem
     | (string & {})
   >;
@@ -96303,7 +96162,7 @@ export const PostFinancialConnectionsAccountsAccountSubscribeRequest =
 
 /** Specifies which fields in the response should be expanded. */
 export type PostFinancialConnectionsAccountsAccountUnsubscribeRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostFinancialConnectionsAccountsAccountUnsubscribeRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -96316,7 +96175,7 @@ export const PostFinancialConnectionsAccountsAccountUnsubscribeRequestFeaturesIt
 
 /** The list of account features from which you would like to unsubscribe. */
 export type PostFinancialConnectionsAccountsAccountUnsubscribeRequestFeaturesList =
-  ReadonlyArray<
+  Array<
     | PostFinancialConnectionsAccountsAccountUnsubscribeRequestFeaturesItem
     | (string & {})
   >;
@@ -96386,8 +96245,7 @@ export const PostFinancialConnectionsSessionsRequestAccountHolder =
   }) as any as S.Schema<PostFinancialConnectionsSessionsRequestAccountHolder>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostFinancialConnectionsSessionsRequestExpandList =
-  ReadonlyArray<string>;
+export type PostFinancialConnectionsSessionsRequestExpandList = Array<string>;
 export const PostFinancialConnectionsSessionsRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -96400,7 +96258,7 @@ export const PostFinancialConnectionsSessionsRequestFiltersAccountSubcategoriesI
 
 /** Restricts the Session to subcategories of accounts that can be linked. Valid subcategories are: `checking`, `savings`, `mortgage`, `line_of_credit`, `credit_card`. */
 export type PostFinancialConnectionsSessionsRequestFiltersAccountSubcategoriesList =
-  ReadonlyArray<
+  Array<
     | PostFinancialConnectionsSessionsRequestFiltersAccountSubcategoriesItem
     | (string & {})
   >;
@@ -96411,7 +96269,7 @@ export const PostFinancialConnectionsSessionsRequestFiltersAccountSubcategoriesL
 
 /** List of countries from which to collect accounts. */
 export type PostFinancialConnectionsSessionsRequestFiltersCountriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostFinancialConnectionsSessionsRequestFiltersCountriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -96447,10 +96305,9 @@ export const PostFinancialConnectionsSessionsRequestPermissionsItem =
   /*@__PURE__*/ S.String;
 
 /** List of data features that you would like to request access to. Possible values are `balances`, `transactions`, `ownership`, and `payment_method`. */
-export type PostFinancialConnectionsSessionsRequestPermissionsList =
-  ReadonlyArray<
-    PostFinancialConnectionsSessionsRequestPermissionsItem | (string & {})
-  >;
+export type PostFinancialConnectionsSessionsRequestPermissionsList = Array<
+  PostFinancialConnectionsSessionsRequestPermissionsItem | (string & {})
+>;
 export const PostFinancialConnectionsSessionsRequestPermissionsList =
   /*@__PURE__*/ S.Array(
     PostFinancialConnectionsSessionsRequestPermissionsItem,
@@ -96464,7 +96321,7 @@ export const PostFinancialConnectionsSessionsRequestPrefetchItem =
   /*@__PURE__*/ S.String;
 
 /** List of data features that you would like to retrieve upon account creation. */
-export type PostFinancialConnectionsSessionsRequestPrefetchList = ReadonlyArray<
+export type PostFinancialConnectionsSessionsRequestPrefetchList = Array<
   PostFinancialConnectionsSessionsRequestPrefetchItem | (string & {})
 >;
 export const PostFinancialConnectionsSessionsRequestPrefetchList =
@@ -96508,7 +96365,7 @@ export const PostFinancialConnectionsSessionsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PostFinancialConnectionsSessionsRequest>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostForwardingRequestsRequestExpandList = ReadonlyArray<string>;
+export type PostForwardingRequestsRequestExpandList = Array<string>;
 export const PostForwardingRequestsRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostForwardingRequestsRequestExpandList>;
@@ -96532,7 +96389,7 @@ export const PostForwardingRequestsRequestReplacementsItem =
   /*@__PURE__*/ S.String;
 
 /** The field kinds to be replaced in the forwarded request. */
-export type PostForwardingRequestsRequestReplacementsList = ReadonlyArray<
+export type PostForwardingRequestsRequestReplacementsList = Array<
   PostForwardingRequestsRequestReplacementsItem | (string & {})
 >;
 export const PostForwardingRequestsRequestReplacementsList =
@@ -96558,7 +96415,7 @@ export const PostForwardingRequestsRequestRequestHeadersItem =
 
 /** The headers to include in the forwarded request. Can be omitted if no additional headers (excluding Stripe-generated ones such as the Content-Type header) should be included. */
 export type PostForwardingRequestsRequestRequestHeadersList =
-  ReadonlyArray<PostForwardingRequestsRequestRequestHeadersItem>;
+  Array<PostForwardingRequestsRequestRequestHeadersItem>;
 export const PostForwardingRequestsRequestRequestHeadersList =
   /*@__PURE__*/ S.Array(
     PostForwardingRequestsRequestRequestHeadersItem,
@@ -96616,8 +96473,7 @@ export const PostForwardingRequestsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostForwardingRequestsRequest>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostIdentityVerificationSessionsRequestExpandList =
-  ReadonlyArray<string>;
+export type PostIdentityVerificationSessionsRequestExpandList = Array<string>;
 export const PostIdentityVerificationSessionsRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -96640,7 +96496,7 @@ export const PostIdentityVerificationSessionsRequestOptionsDocumentCase0AllowedT
 
 /** Array of strings of allowed identity document types. If the provided identity document isn’t one of the allowed types, the verification check will fail with a document_type_not_allowed error code. */
 export type PostIdentityVerificationSessionsRequestOptionsDocumentCase0AllowedTypesList =
-  ReadonlyArray<
+  Array<
     | PostIdentityVerificationSessionsRequestOptionsDocumentCase0AllowedTypesItem
     | (string & {})
   >;
@@ -96797,7 +96653,7 @@ export const PostIdentityVerificationSessionsRequest = /*@__PURE__*/ S.suspend(
 
 /** Specifies which fields in the response should be expanded. */
 export type PostIdentityVerificationSessionsSessionRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostIdentityVerificationSessionsSessionRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -96820,7 +96676,7 @@ export const PostIdentityVerificationSessionsSessionRequestOptionsDocumentCase0A
 
 /** Array of strings of allowed identity document types. If the provided identity document isn’t one of the allowed types, the verification check will fail with a document_type_not_allowed error code. */
 export type PostIdentityVerificationSessionsSessionRequestOptionsDocumentCase0AllowedTypesList =
-  ReadonlyArray<
+  Array<
     | PostIdentityVerificationSessionsSessionRequestOptionsDocumentCase0AllowedTypesItem
     | (string & {})
   >;
@@ -96950,7 +96806,7 @@ export const PostIdentityVerificationSessionsSessionRequest =
 
 /** Specifies which fields in the response should be expanded. */
 export type PostIdentityVerificationSessionsSessionCancelRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostIdentityVerificationSessionsSessionCancelRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -96982,7 +96838,7 @@ export const PostIdentityVerificationSessionsSessionCancelRequest =
 
 /** Specifies which fields in the response should be expanded. */
 export type PostIdentityVerificationSessionsSessionRedactRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostIdentityVerificationSessionsSessionRedactRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -97032,7 +96888,7 @@ export const PostInvoiceitemsRequestDiscountsCase0Item =
   }) as any as S.Schema<PostInvoiceitemsRequestDiscountsCase0Item>;
 
 export type PostInvoiceitemsRequestDiscountsCase0List =
-  ReadonlyArray<PostInvoiceitemsRequestDiscountsCase0Item>;
+  Array<PostInvoiceitemsRequestDiscountsCase0Item>;
 export const PostInvoiceitemsRequestDiscountsCase0List = /*@__PURE__*/ S.Array(
   PostInvoiceitemsRequestDiscountsCase0Item,
 ) as any as S.Schema<PostInvoiceitemsRequestDiscountsCase0List>;
@@ -97048,7 +96904,7 @@ export const PostInvoiceitemsRequestDiscounts =
   /*@__PURE__*/ S.Unknown as any as S.Schema<PostInvoiceitemsRequestDiscounts>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostInvoiceitemsRequestExpandList = ReadonlyArray<string>;
+export type PostInvoiceitemsRequestExpandList = Array<string>;
 export const PostInvoiceitemsRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostInvoiceitemsRequestExpandList>;
@@ -97151,7 +97007,7 @@ export const PostInvoiceitemsRequestTaxCode =
   /*@__PURE__*/ S.Unknown as any as S.Schema<PostInvoiceitemsRequestTaxCode>;
 
 /** The tax rates which apply to the invoice item. When set, the `default_tax_rates` on the invoice do not apply to this invoice item. */
-export type PostInvoiceitemsRequestTaxRatesList = ReadonlyArray<string>;
+export type PostInvoiceitemsRequestTaxRatesList = Array<string>;
 export const PostInvoiceitemsRequestTaxRatesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostInvoiceitemsRequestTaxRatesList>;
@@ -97252,7 +97108,7 @@ export const PostInvoiceitemsInvoiceitemRequestDiscountsCase0Item =
   }) as any as S.Schema<PostInvoiceitemsInvoiceitemRequestDiscountsCase0Item>;
 
 export type PostInvoiceitemsInvoiceitemRequestDiscountsCase0List =
-  ReadonlyArray<PostInvoiceitemsInvoiceitemRequestDiscountsCase0Item>;
+  Array<PostInvoiceitemsInvoiceitemRequestDiscountsCase0Item>;
 export const PostInvoiceitemsInvoiceitemRequestDiscountsCase0List =
   /*@__PURE__*/ S.Array(
     PostInvoiceitemsInvoiceitemRequestDiscountsCase0Item,
@@ -97270,8 +97126,7 @@ export const PostInvoiceitemsInvoiceitemRequestDiscounts =
   /*@__PURE__*/ S.Unknown as any as S.Schema<PostInvoiceitemsInvoiceitemRequestDiscounts>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostInvoiceitemsInvoiceitemRequestExpandList =
-  ReadonlyArray<string>;
+export type PostInvoiceitemsInvoiceitemRequestExpandList = Array<string>;
 export const PostInvoiceitemsInvoiceitemRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -97385,8 +97240,7 @@ export type PostInvoiceitemsInvoiceitemRequestTaxCode =
 export const PostInvoiceitemsInvoiceitemRequestTaxCode =
   /*@__PURE__*/ S.Unknown as any as S.Schema<PostInvoiceitemsInvoiceitemRequestTaxCode>;
 
-export type PostInvoiceitemsInvoiceitemRequestTaxRatesCase0List =
-  ReadonlyArray<string>;
+export type PostInvoiceitemsInvoiceitemRequestTaxRatesCase0List = Array<string>;
 export const PostInvoiceitemsInvoiceitemRequestTaxRatesCase0List =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -97468,7 +97322,7 @@ export const PostInvoiceitemsInvoiceitemRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Specifies which fields in the response should be expanded. */
 export type PostInvoiceRenderingTemplatesTemplateArchiveRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostInvoiceRenderingTemplatesTemplateArchiveRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -97500,7 +97354,7 @@ export const PostInvoiceRenderingTemplatesTemplateArchiveRequest =
 
 /** Specifies which fields in the response should be expanded. */
 export type PostInvoiceRenderingTemplatesTemplateUnarchiveRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostInvoiceRenderingTemplatesTemplateUnarchiveRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -97530,7 +97384,7 @@ export const PostInvoiceRenderingTemplatesTemplateUnarchiveRequest =
     identifier: "PostInvoiceRenderingTemplatesTemplateUnarchiveRequest",
   }) as any as S.Schema<PostInvoiceRenderingTemplatesTemplateUnarchiveRequest>;
 
-export type PostInvoicesRequestAccountTaxIdsCase0List = ReadonlyArray<string>;
+export type PostInvoicesRequestAccountTaxIdsCase0List = Array<string>;
 export const PostInvoicesRequestAccountTaxIdsCase0List = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostInvoicesRequestAccountTaxIdsCase0List>;
@@ -97606,7 +97460,7 @@ export const PostInvoicesRequestCustomFieldsCase0Item = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PostInvoicesRequestCustomFieldsCase0Item>;
 
 export type PostInvoicesRequestCustomFieldsCase0List =
-  ReadonlyArray<PostInvoicesRequestCustomFieldsCase0Item>;
+  Array<PostInvoicesRequestCustomFieldsCase0Item>;
 export const PostInvoicesRequestCustomFieldsCase0List = /*@__PURE__*/ S.Array(
   PostInvoicesRequestCustomFieldsCase0Item,
 ) as any as S.Schema<PostInvoicesRequestCustomFieldsCase0List>;
@@ -97622,7 +97476,7 @@ export const PostInvoicesRequestCustomFields =
   /*@__PURE__*/ S.Unknown as any as S.Schema<PostInvoicesRequestCustomFields>;
 
 /** The tax rates that will apply to any line item that does not have `tax_rates` set. */
-export type PostInvoicesRequestDefaultTaxRatesList = ReadonlyArray<string>;
+export type PostInvoicesRequestDefaultTaxRatesList = Array<string>;
 export const PostInvoicesRequestDefaultTaxRatesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostInvoicesRequestDefaultTaxRatesList>;
@@ -97647,7 +97501,7 @@ export const PostInvoicesRequestDiscountsCase0Item = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PostInvoicesRequestDiscountsCase0Item>;
 
 export type PostInvoicesRequestDiscountsCase0List =
-  ReadonlyArray<PostInvoicesRequestDiscountsCase0Item>;
+  Array<PostInvoicesRequestDiscountsCase0Item>;
 export const PostInvoicesRequestDiscountsCase0List = /*@__PURE__*/ S.Array(
   PostInvoicesRequestDiscountsCase0Item,
 ) as any as S.Schema<PostInvoicesRequestDiscountsCase0List>;
@@ -97663,7 +97517,7 @@ export const PostInvoicesRequestDiscounts =
   /*@__PURE__*/ S.Unknown as any as S.Schema<PostInvoicesRequestDiscounts>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostInvoicesRequestExpandList = ReadonlyArray<string>;
+export type PostInvoicesRequestExpandList = Array<string>;
 export const PostInvoicesRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostInvoicesRequestExpandList>;
@@ -98212,7 +98066,7 @@ export const PostInvoicesRequestPaymentSettingsPaymentMethodOptionsUsBankAccount
 
 /** The account subcategories to use to filter for selectable accounts. Valid subcategories are `checking` and `savings`. */
 export type PostInvoicesRequestPaymentSettingsPaymentMethodOptionsUsBankAccountCase0FinancialConnectionsFiltersAccountSubcategoriesList =
-  ReadonlyArray<
+  Array<
     | PostInvoicesRequestPaymentSettingsPaymentMethodOptionsUsBankAccountCase0FinancialConnectionsFiltersAccountSubcategoriesItem
     | (string & {})
   >;
@@ -98245,7 +98099,7 @@ export const PostInvoicesRequestPaymentSettingsPaymentMethodOptionsUsBankAccount
 
 /** The list of permissions to request. If this parameter is passed, the `payment_method` permission must be included. Valid permissions include: `balances`, `ownership`, `payment_method`, and `transactions`. */
 export type PostInvoicesRequestPaymentSettingsPaymentMethodOptionsUsBankAccountCase0FinancialConnectionsPermissionsList =
-  ReadonlyArray<
+  Array<
     | PostInvoicesRequestPaymentSettingsPaymentMethodOptionsUsBankAccountCase0FinancialConnectionsPermissionsItem
     | (string & {})
   >;
@@ -98261,7 +98115,7 @@ export const PostInvoicesRequestPaymentSettingsPaymentMethodOptionsUsBankAccount
 
 /** List of data features that you would like to retrieve upon account creation. */
 export type PostInvoicesRequestPaymentSettingsPaymentMethodOptionsUsBankAccountCase0FinancialConnectionsPrefetchList =
-  ReadonlyArray<
+  Array<
     | PostInvoicesRequestPaymentSettingsPaymentMethodOptionsUsBankAccountCase0FinancialConnectionsPrefetchItem
     | (string & {})
   >;
@@ -98450,7 +98304,7 @@ export const PostInvoicesRequestPaymentSettingsPaymentMethodTypesCase0Item =
   /*@__PURE__*/ S.String;
 
 export type PostInvoicesRequestPaymentSettingsPaymentMethodTypesCase0List =
-  ReadonlyArray<
+  Array<
     | PostInvoicesRequestPaymentSettingsPaymentMethodTypesCase0Item
     | (string & {})
   >;
@@ -99301,7 +99155,7 @@ export const PostInvoicesCreatePreviewRequestCustomerDetailsTaxIdsItem =
 
 /** The customer's tax IDs. */
 export type PostInvoicesCreatePreviewRequestCustomerDetailsTaxIdsList =
-  ReadonlyArray<PostInvoicesCreatePreviewRequestCustomerDetailsTaxIdsItem>;
+  Array<PostInvoicesCreatePreviewRequestCustomerDetailsTaxIdsItem>;
 export const PostInvoicesCreatePreviewRequestCustomerDetailsTaxIdsList =
   /*@__PURE__*/ S.Array(
     PostInvoicesCreatePreviewRequestCustomerDetailsTaxIdsItem,
@@ -99363,7 +99217,7 @@ export const PostInvoicesCreatePreviewRequestDiscountsCase0Item =
   }) as any as S.Schema<PostInvoicesCreatePreviewRequestDiscountsCase0Item>;
 
 export type PostInvoicesCreatePreviewRequestDiscountsCase0List =
-  ReadonlyArray<PostInvoicesCreatePreviewRequestDiscountsCase0Item>;
+  Array<PostInvoicesCreatePreviewRequestDiscountsCase0Item>;
 export const PostInvoicesCreatePreviewRequestDiscountsCase0List =
   /*@__PURE__*/ S.Array(
     PostInvoicesCreatePreviewRequestDiscountsCase0Item,
@@ -99381,7 +99235,7 @@ export const PostInvoicesCreatePreviewRequestDiscounts =
   /*@__PURE__*/ S.Unknown as any as S.Schema<PostInvoicesCreatePreviewRequestDiscounts>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostInvoicesCreatePreviewRequestExpandList = ReadonlyArray<string>;
+export type PostInvoicesCreatePreviewRequestExpandList = Array<string>;
 export const PostInvoicesCreatePreviewRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostInvoicesCreatePreviewRequestExpandList>;
@@ -99407,7 +99261,7 @@ export const PostInvoicesCreatePreviewRequestInvoiceItemsItemDiscountsCase0Item 
   }) as any as S.Schema<PostInvoicesCreatePreviewRequestInvoiceItemsItemDiscountsCase0Item>;
 
 export type PostInvoicesCreatePreviewRequestInvoiceItemsItemDiscountsCase0List =
-  ReadonlyArray<PostInvoicesCreatePreviewRequestInvoiceItemsItemDiscountsCase0Item>;
+  Array<PostInvoicesCreatePreviewRequestInvoiceItemsItemDiscountsCase0Item>;
 export const PostInvoicesCreatePreviewRequestInvoiceItemsItemDiscountsCase0List =
   /*@__PURE__*/ S.Array(
     PostInvoicesCreatePreviewRequestInvoiceItemsItemDiscountsCase0Item,
@@ -99517,7 +99371,7 @@ export const PostInvoicesCreatePreviewRequestInvoiceItemsItemTaxCode =
   /*@__PURE__*/ S.Unknown as any as S.Schema<PostInvoicesCreatePreviewRequestInvoiceItemsItemTaxCode>;
 
 export type PostInvoicesCreatePreviewRequestInvoiceItemsItemTaxRatesCase0List =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostInvoicesCreatePreviewRequestInvoiceItemsItemTaxRatesCase0List =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -99613,7 +99467,7 @@ export const PostInvoicesCreatePreviewRequestInvoiceItemsItem =
 
 /** List of invoice items to add or update in the upcoming invoice preview (up to 250). */
 export type PostInvoicesCreatePreviewRequestInvoiceItemsList =
-  ReadonlyArray<PostInvoicesCreatePreviewRequestInvoiceItemsItem>;
+  Array<PostInvoicesCreatePreviewRequestInvoiceItemsItem>;
 export const PostInvoicesCreatePreviewRequestInvoiceItemsList =
   /*@__PURE__*/ S.Array(
     PostInvoicesCreatePreviewRequestInvoiceItemsItem,
@@ -99739,7 +99593,7 @@ export const PostInvoicesCreatePreviewRequestScheduleDetailsPhasesItemAddInvoice
 
 /** The coupons to redeem into discounts for the item. */
 export type PostInvoicesCreatePreviewRequestScheduleDetailsPhasesItemAddInvoiceItemsItemDiscountsList =
-  ReadonlyArray<PostInvoicesCreatePreviewRequestScheduleDetailsPhasesItemAddInvoiceItemsItemDiscountsItem>;
+  Array<PostInvoicesCreatePreviewRequestScheduleDetailsPhasesItemAddInvoiceItemsItemDiscountsItem>;
 export const PostInvoicesCreatePreviewRequestScheduleDetailsPhasesItemAddInvoiceItemsItemDiscountsList =
   /*@__PURE__*/ S.Array(
     PostInvoicesCreatePreviewRequestScheduleDetailsPhasesItemAddInvoiceItemsItemDiscountsItem,
@@ -99863,7 +99717,7 @@ export const PostInvoicesCreatePreviewRequestScheduleDetailsPhasesItemAddInvoice
   }) as any as S.Schema<PostInvoicesCreatePreviewRequestScheduleDetailsPhasesItemAddInvoiceItemsItemPriceData>;
 
 export type PostInvoicesCreatePreviewRequestScheduleDetailsPhasesItemAddInvoiceItemsItemTaxRatesCase0List =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostInvoicesCreatePreviewRequestScheduleDetailsPhasesItemAddInvoiceItemsItemTaxRatesCase0List =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -99928,7 +99782,7 @@ export const PostInvoicesCreatePreviewRequestScheduleDetailsPhasesItemAddInvoice
 
 /** A list of prices and quantities that will generate invoice items appended to the next invoice for this phase. You may pass up to 20 items. */
 export type PostInvoicesCreatePreviewRequestScheduleDetailsPhasesItemAddInvoiceItemsList =
-  ReadonlyArray<PostInvoicesCreatePreviewRequestScheduleDetailsPhasesItemAddInvoiceItemsItem>;
+  Array<PostInvoicesCreatePreviewRequestScheduleDetailsPhasesItemAddInvoiceItemsItem>;
 export const PostInvoicesCreatePreviewRequestScheduleDetailsPhasesItemAddInvoiceItemsList =
   /*@__PURE__*/ S.Array(
     PostInvoicesCreatePreviewRequestScheduleDetailsPhasesItemAddInvoiceItemsItem,
@@ -100022,7 +99876,7 @@ export const PostInvoicesCreatePreviewRequestScheduleDetailsPhasesItemCollection
   /*@__PURE__*/ S.String;
 
 export type PostInvoicesCreatePreviewRequestScheduleDetailsPhasesItemDefaultTaxRatesCase0List =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostInvoicesCreatePreviewRequestScheduleDetailsPhasesItemDefaultTaxRatesCase0List =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -100073,7 +99927,7 @@ export const PostInvoicesCreatePreviewRequestScheduleDetailsPhasesItemDiscountsC
   }) as any as S.Schema<PostInvoicesCreatePreviewRequestScheduleDetailsPhasesItemDiscountsCase0Item>;
 
 export type PostInvoicesCreatePreviewRequestScheduleDetailsPhasesItemDiscountsCase0List =
-  ReadonlyArray<PostInvoicesCreatePreviewRequestScheduleDetailsPhasesItemDiscountsCase0Item>;
+  Array<PostInvoicesCreatePreviewRequestScheduleDetailsPhasesItemDiscountsCase0Item>;
 export const PostInvoicesCreatePreviewRequestScheduleDetailsPhasesItemDiscountsCase0List =
   /*@__PURE__*/ S.Array(
     PostInvoicesCreatePreviewRequestScheduleDetailsPhasesItemDiscountsCase0Item,
@@ -100131,7 +99985,7 @@ export const PostInvoicesCreatePreviewRequestScheduleDetailsPhasesItemEndDate =
   /*@__PURE__*/ S.Unknown as any as S.Schema<PostInvoicesCreatePreviewRequestScheduleDetailsPhasesItemEndDate>;
 
 export type PostInvoicesCreatePreviewRequestScheduleDetailsPhasesItemInvoiceSettingsAccountTaxIdsCase0List =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostInvoicesCreatePreviewRequestScheduleDetailsPhasesItemInvoiceSettingsAccountTaxIdsCase0List =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -100247,7 +100101,7 @@ export const PostInvoicesCreatePreviewRequestScheduleDetailsPhasesItemItemsItemD
   }) as any as S.Schema<PostInvoicesCreatePreviewRequestScheduleDetailsPhasesItemItemsItemDiscountsCase0Item>;
 
 export type PostInvoicesCreatePreviewRequestScheduleDetailsPhasesItemItemsItemDiscountsCase0List =
-  ReadonlyArray<PostInvoicesCreatePreviewRequestScheduleDetailsPhasesItemItemsItemDiscountsCase0Item>;
+  Array<PostInvoicesCreatePreviewRequestScheduleDetailsPhasesItemItemsItemDiscountsCase0Item>;
 export const PostInvoicesCreatePreviewRequestScheduleDetailsPhasesItemItemsItemDiscountsCase0List =
   /*@__PURE__*/ S.Array(
     PostInvoicesCreatePreviewRequestScheduleDetailsPhasesItemItemsItemDiscountsCase0Item,
@@ -100343,7 +100197,7 @@ export const PostInvoicesCreatePreviewRequestScheduleDetailsPhasesItemItemsItemP
   }) as any as S.Schema<PostInvoicesCreatePreviewRequestScheduleDetailsPhasesItemItemsItemPriceData>;
 
 export type PostInvoicesCreatePreviewRequestScheduleDetailsPhasesItemItemsItemTaxRatesCase0List =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostInvoicesCreatePreviewRequestScheduleDetailsPhasesItemItemsItemTaxRatesCase0List =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -100408,7 +100262,7 @@ export const PostInvoicesCreatePreviewRequestScheduleDetailsPhasesItemItemsItem 
 
 /** List of configuration items, each with an attached price, to apply during this phase of the subscription schedule. */
 export type PostInvoicesCreatePreviewRequestScheduleDetailsPhasesItemItemsList =
-  ReadonlyArray<PostInvoicesCreatePreviewRequestScheduleDetailsPhasesItemItemsItem>;
+  Array<PostInvoicesCreatePreviewRequestScheduleDetailsPhasesItemItemsItem>;
 export const PostInvoicesCreatePreviewRequestScheduleDetailsPhasesItemItemsList =
   /*@__PURE__*/ S.Array(
     PostInvoicesCreatePreviewRequestScheduleDetailsPhasesItemItemsItem,
@@ -100587,7 +100441,7 @@ export const PostInvoicesCreatePreviewRequestScheduleDetailsPhasesItem =
 
 /** List representing phases of the subscription schedule. Each phase can be customized to have different durations, plans, and coupons. If there are multiple phases, the `end_date` of one phase will always equal the `start_date` of the next phase. */
 export type PostInvoicesCreatePreviewRequestScheduleDetailsPhasesList =
-  ReadonlyArray<PostInvoicesCreatePreviewRequestScheduleDetailsPhasesItem>;
+  Array<PostInvoicesCreatePreviewRequestScheduleDetailsPhasesItem>;
 export const PostInvoicesCreatePreviewRequestScheduleDetailsPhasesList =
   /*@__PURE__*/ S.Array(
     PostInvoicesCreatePreviewRequestScheduleDetailsPhasesItem,
@@ -100728,7 +100582,7 @@ export const PostInvoicesCreatePreviewRequestSubscriptionDetailsBillingSchedules
 
 /** Configure billing schedule differently for individual subscription items. */
 export type PostInvoicesCreatePreviewRequestSubscriptionDetailsBillingSchedulesCase0ItemAppliesToList =
-  ReadonlyArray<PostInvoicesCreatePreviewRequestSubscriptionDetailsBillingSchedulesCase0ItemAppliesToItem>;
+  Array<PostInvoicesCreatePreviewRequestSubscriptionDetailsBillingSchedulesCase0ItemAppliesToItem>;
 export const PostInvoicesCreatePreviewRequestSubscriptionDetailsBillingSchedulesCase0ItemAppliesToList =
   /*@__PURE__*/ S.Array(
     PostInvoicesCreatePreviewRequestSubscriptionDetailsBillingSchedulesCase0ItemAppliesToItem,
@@ -100817,7 +100671,7 @@ export const PostInvoicesCreatePreviewRequestSubscriptionDetailsBillingSchedules
   }) as any as S.Schema<PostInvoicesCreatePreviewRequestSubscriptionDetailsBillingSchedulesCase0Item>;
 
 export type PostInvoicesCreatePreviewRequestSubscriptionDetailsBillingSchedulesCase0List =
-  ReadonlyArray<PostInvoicesCreatePreviewRequestSubscriptionDetailsBillingSchedulesCase0Item>;
+  Array<PostInvoicesCreatePreviewRequestSubscriptionDetailsBillingSchedulesCase0Item>;
 export const PostInvoicesCreatePreviewRequestSubscriptionDetailsBillingSchedulesCase0List =
   /*@__PURE__*/ S.Array(
     PostInvoicesCreatePreviewRequestSubscriptionDetailsBillingSchedulesCase0Item,
@@ -100856,7 +100710,7 @@ export const PostInvoicesCreatePreviewRequestSubscriptionDetailsCancelAt =
   /*@__PURE__*/ S.Unknown as any as S.Schema<PostInvoicesCreatePreviewRequestSubscriptionDetailsCancelAt>;
 
 export type PostInvoicesCreatePreviewRequestSubscriptionDetailsDefaultTaxRatesCase0List =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostInvoicesCreatePreviewRequestSubscriptionDetailsDefaultTaxRatesCase0List =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -100921,7 +100775,7 @@ export const PostInvoicesCreatePreviewRequestSubscriptionDetailsItemsItemDiscoun
   }) as any as S.Schema<PostInvoicesCreatePreviewRequestSubscriptionDetailsItemsItemDiscountsCase0Item>;
 
 export type PostInvoicesCreatePreviewRequestSubscriptionDetailsItemsItemDiscountsCase0List =
-  ReadonlyArray<PostInvoicesCreatePreviewRequestSubscriptionDetailsItemsItemDiscountsCase0Item>;
+  Array<PostInvoicesCreatePreviewRequestSubscriptionDetailsItemsItemDiscountsCase0Item>;
 export const PostInvoicesCreatePreviewRequestSubscriptionDetailsItemsItemDiscountsCase0List =
   /*@__PURE__*/ S.Array(
     PostInvoicesCreatePreviewRequestSubscriptionDetailsItemsItemDiscountsCase0Item,
@@ -101028,7 +100882,7 @@ export const PostInvoicesCreatePreviewRequestSubscriptionDetailsItemsItemPriceDa
   }) as any as S.Schema<PostInvoicesCreatePreviewRequestSubscriptionDetailsItemsItemPriceData>;
 
 export type PostInvoicesCreatePreviewRequestSubscriptionDetailsItemsItemTaxRatesCase0List =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostInvoicesCreatePreviewRequestSubscriptionDetailsItemsItemTaxRatesCase0List =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -101101,7 +100955,7 @@ export const PostInvoicesCreatePreviewRequestSubscriptionDetailsItemsItem =
 
 /** A list of up to 20 subscription items, each with an attached price. */
 export type PostInvoicesCreatePreviewRequestSubscriptionDetailsItemsList =
-  ReadonlyArray<PostInvoicesCreatePreviewRequestSubscriptionDetailsItemsItem>;
+  Array<PostInvoicesCreatePreviewRequestSubscriptionDetailsItemsItem>;
 export const PostInvoicesCreatePreviewRequestSubscriptionDetailsItemsList =
   /*@__PURE__*/ S.Array(
     PostInvoicesCreatePreviewRequestSubscriptionDetailsItemsItem,
@@ -101269,8 +101123,7 @@ export const PostInvoicesCreatePreviewRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PostInvoicesCreatePreviewRequest",
 }) as any as S.Schema<PostInvoicesCreatePreviewRequest>;
 
-export type PostInvoicesInvoiceRequestAccountTaxIdsCase0List =
-  ReadonlyArray<string>;
+export type PostInvoicesInvoiceRequestAccountTaxIdsCase0List = Array<string>;
 export const PostInvoicesInvoiceRequestAccountTaxIdsCase0List =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -101352,7 +101205,7 @@ export const PostInvoicesInvoiceRequestCustomFieldsCase0Item =
   }) as any as S.Schema<PostInvoicesInvoiceRequestCustomFieldsCase0Item>;
 
 export type PostInvoicesInvoiceRequestCustomFieldsCase0List =
-  ReadonlyArray<PostInvoicesInvoiceRequestCustomFieldsCase0Item>;
+  Array<PostInvoicesInvoiceRequestCustomFieldsCase0Item>;
 export const PostInvoicesInvoiceRequestCustomFieldsCase0List =
   /*@__PURE__*/ S.Array(
     PostInvoicesInvoiceRequestCustomFieldsCase0Item,
@@ -101380,8 +101233,7 @@ export type PostInvoicesInvoiceRequestDefaultSource =
 export const PostInvoicesInvoiceRequestDefaultSource =
   /*@__PURE__*/ S.Unknown as any as S.Schema<PostInvoicesInvoiceRequestDefaultSource>;
 
-export type PostInvoicesInvoiceRequestDefaultTaxRatesCase0List =
-  ReadonlyArray<string>;
+export type PostInvoicesInvoiceRequestDefaultTaxRatesCase0List = Array<string>;
 export const PostInvoicesInvoiceRequestDefaultTaxRatesCase0List =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -101418,7 +101270,7 @@ export const PostInvoicesInvoiceRequestDiscountsCase0Item =
   }) as any as S.Schema<PostInvoicesInvoiceRequestDiscountsCase0Item>;
 
 export type PostInvoicesInvoiceRequestDiscountsCase0List =
-  ReadonlyArray<PostInvoicesInvoiceRequestDiscountsCase0Item>;
+  Array<PostInvoicesInvoiceRequestDiscountsCase0Item>;
 export const PostInvoicesInvoiceRequestDiscountsCase0List =
   /*@__PURE__*/ S.Array(
     PostInvoicesInvoiceRequestDiscountsCase0Item,
@@ -101446,7 +101298,7 @@ export const PostInvoicesInvoiceRequestEffectiveAt =
   /*@__PURE__*/ S.Unknown as any as S.Schema<PostInvoicesInvoiceRequestEffectiveAt>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostInvoicesInvoiceRequestExpandList = ReadonlyArray<string>;
+export type PostInvoicesInvoiceRequestExpandList = Array<string>;
 export const PostInvoicesInvoiceRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostInvoicesInvoiceRequestExpandList>;
@@ -101998,7 +101850,7 @@ export const PostInvoicesInvoiceRequestPaymentSettingsPaymentMethodOptionsUsBank
 
 /** The account subcategories to use to filter for selectable accounts. Valid subcategories are `checking` and `savings`. */
 export type PostInvoicesInvoiceRequestPaymentSettingsPaymentMethodOptionsUsBankAccountCase0FinancialConnectionsFiltersAccountSubcategoriesList =
-  ReadonlyArray<
+  Array<
     | PostInvoicesInvoiceRequestPaymentSettingsPaymentMethodOptionsUsBankAccountCase0FinancialConnectionsFiltersAccountSubcategoriesItem
     | (string & {})
   >;
@@ -102031,7 +101883,7 @@ export const PostInvoicesInvoiceRequestPaymentSettingsPaymentMethodOptionsUsBank
 
 /** The list of permissions to request. If this parameter is passed, the `payment_method` permission must be included. Valid permissions include: `balances`, `ownership`, `payment_method`, and `transactions`. */
 export type PostInvoicesInvoiceRequestPaymentSettingsPaymentMethodOptionsUsBankAccountCase0FinancialConnectionsPermissionsList =
-  ReadonlyArray<
+  Array<
     | PostInvoicesInvoiceRequestPaymentSettingsPaymentMethodOptionsUsBankAccountCase0FinancialConnectionsPermissionsItem
     | (string & {})
   >;
@@ -102047,7 +101899,7 @@ export const PostInvoicesInvoiceRequestPaymentSettingsPaymentMethodOptionsUsBank
 
 /** List of data features that you would like to retrieve upon account creation. */
 export type PostInvoicesInvoiceRequestPaymentSettingsPaymentMethodOptionsUsBankAccountCase0FinancialConnectionsPrefetchList =
-  ReadonlyArray<
+  Array<
     | PostInvoicesInvoiceRequestPaymentSettingsPaymentMethodOptionsUsBankAccountCase0FinancialConnectionsPrefetchItem
     | (string & {})
   >;
@@ -102236,7 +102088,7 @@ export const PostInvoicesInvoiceRequestPaymentSettingsPaymentMethodTypesCase0Ite
   /*@__PURE__*/ S.String;
 
 export type PostInvoicesInvoiceRequestPaymentSettingsPaymentMethodTypesCase0List =
-  ReadonlyArray<
+  Array<
     | PostInvoicesInvoiceRequestPaymentSettingsPaymentMethodTypesCase0Item
     | (string & {})
   >;
@@ -102784,8 +102636,7 @@ export const PostInvoicesInvoiceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostInvoicesInvoiceRequest>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostInvoicesInvoiceAddLinesRequestExpandList =
-  ReadonlyArray<string>;
+export type PostInvoicesInvoiceAddLinesRequestExpandList = Array<string>;
 export const PostInvoicesInvoiceAddLinesRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -102831,7 +102682,7 @@ export const PostInvoicesInvoiceAddLinesRequestLinesItemDiscountsCase0Item =
   }) as any as S.Schema<PostInvoicesInvoiceAddLinesRequestLinesItemDiscountsCase0Item>;
 
 export type PostInvoicesInvoiceAddLinesRequestLinesItemDiscountsCase0List =
-  ReadonlyArray<PostInvoicesInvoiceAddLinesRequestLinesItemDiscountsCase0Item>;
+  Array<PostInvoicesInvoiceAddLinesRequestLinesItemDiscountsCase0Item>;
 export const PostInvoicesInvoiceAddLinesRequestLinesItemDiscountsCase0List =
   /*@__PURE__*/ S.Array(
     PostInvoicesInvoiceAddLinesRequestLinesItemDiscountsCase0Item,
@@ -102887,7 +102738,7 @@ export const PostInvoicesInvoiceAddLinesRequestLinesItemPeriod =
 
 /** A list of up to 8 URLs of images for this product, meant to be displayable to the customer. */
 export type PostInvoicesInvoiceAddLinesRequestLinesItemPriceDataProductDataImagesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostInvoicesInvoiceAddLinesRequestLinesItemPriceDataProductDataImagesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -103114,7 +102965,7 @@ export const PostInvoicesInvoiceAddLinesRequestLinesItemTaxAmountsCase0Item =
   }) as any as S.Schema<PostInvoicesInvoiceAddLinesRequestLinesItemTaxAmountsCase0Item>;
 
 export type PostInvoicesInvoiceAddLinesRequestLinesItemTaxAmountsCase0List =
-  ReadonlyArray<PostInvoicesInvoiceAddLinesRequestLinesItemTaxAmountsCase0Item>;
+  Array<PostInvoicesInvoiceAddLinesRequestLinesItemTaxAmountsCase0Item>;
 export const PostInvoicesInvoiceAddLinesRequestLinesItemTaxAmountsCase0List =
   /*@__PURE__*/ S.Array(
     PostInvoicesInvoiceAddLinesRequestLinesItemTaxAmountsCase0Item,
@@ -103132,7 +102983,7 @@ export const PostInvoicesInvoiceAddLinesRequestLinesItemTaxAmounts =
   /*@__PURE__*/ S.Unknown as any as S.Schema<PostInvoicesInvoiceAddLinesRequestLinesItemTaxAmounts>;
 
 export type PostInvoicesInvoiceAddLinesRequestLinesItemTaxRatesCase0List =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostInvoicesInvoiceAddLinesRequestLinesItemTaxRatesCase0List =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -103208,7 +103059,7 @@ export const PostInvoicesInvoiceAddLinesRequestLinesItem =
 
 /** The line items to add. */
 export type PostInvoicesInvoiceAddLinesRequestLinesList =
-  ReadonlyArray<PostInvoicesInvoiceAddLinesRequestLinesItem>;
+  Array<PostInvoicesInvoiceAddLinesRequestLinesItem>;
 export const PostInvoicesInvoiceAddLinesRequestLinesList =
   /*@__PURE__*/ S.Array(
     PostInvoicesInvoiceAddLinesRequestLinesItem,
@@ -103244,8 +103095,7 @@ export const PostInvoicesInvoiceAddLinesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostInvoicesInvoiceAddLinesRequest>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostInvoicesInvoiceAttachPaymentRequestExpandList =
-  ReadonlyArray<string>;
+export type PostInvoicesInvoiceAttachPaymentRequestExpandList = Array<string>;
 export const PostInvoicesInvoiceAttachPaymentRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -103280,8 +103130,7 @@ export const PostInvoicesInvoiceAttachPaymentRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PostInvoicesInvoiceAttachPaymentRequest>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostInvoicesInvoiceFinalizeRequestExpandList =
-  ReadonlyArray<string>;
+export type PostInvoicesInvoiceFinalizeRequestExpandList = Array<string>;
 export const PostInvoicesInvoiceFinalizeRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -103331,7 +103180,7 @@ export const PostInvoicesInvoiceLinesLineItemIdRequestDiscountsCase0Item =
   }) as any as S.Schema<PostInvoicesInvoiceLinesLineItemIdRequestDiscountsCase0Item>;
 
 export type PostInvoicesInvoiceLinesLineItemIdRequestDiscountsCase0List =
-  ReadonlyArray<PostInvoicesInvoiceLinesLineItemIdRequestDiscountsCase0Item>;
+  Array<PostInvoicesInvoiceLinesLineItemIdRequestDiscountsCase0Item>;
 export const PostInvoicesInvoiceLinesLineItemIdRequestDiscountsCase0List =
   /*@__PURE__*/ S.Array(
     PostInvoicesInvoiceLinesLineItemIdRequestDiscountsCase0Item,
@@ -103349,8 +103198,7 @@ export const PostInvoicesInvoiceLinesLineItemIdRequestDiscounts =
   /*@__PURE__*/ S.Unknown as any as S.Schema<PostInvoicesInvoiceLinesLineItemIdRequestDiscounts>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostInvoicesInvoiceLinesLineItemIdRequestExpandList =
-  ReadonlyArray<string>;
+export type PostInvoicesInvoiceLinesLineItemIdRequestExpandList = Array<string>;
 export const PostInvoicesInvoiceLinesLineItemIdRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -103395,7 +103243,7 @@ export const PostInvoicesInvoiceLinesLineItemIdRequestPeriod =
 
 /** A list of up to 8 URLs of images for this product, meant to be displayable to the customer. */
 export type PostInvoicesInvoiceLinesLineItemIdRequestPriceDataProductDataImagesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostInvoicesInvoiceLinesLineItemIdRequestPriceDataProductDataImagesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -103620,7 +103468,7 @@ export const PostInvoicesInvoiceLinesLineItemIdRequestTaxAmountsCase0Item =
   }) as any as S.Schema<PostInvoicesInvoiceLinesLineItemIdRequestTaxAmountsCase0Item>;
 
 export type PostInvoicesInvoiceLinesLineItemIdRequestTaxAmountsCase0List =
-  ReadonlyArray<PostInvoicesInvoiceLinesLineItemIdRequestTaxAmountsCase0Item>;
+  Array<PostInvoicesInvoiceLinesLineItemIdRequestTaxAmountsCase0Item>;
 export const PostInvoicesInvoiceLinesLineItemIdRequestTaxAmountsCase0List =
   /*@__PURE__*/ S.Array(
     PostInvoicesInvoiceLinesLineItemIdRequestTaxAmountsCase0Item,
@@ -103638,7 +103486,7 @@ export const PostInvoicesInvoiceLinesLineItemIdRequestTaxAmounts =
   /*@__PURE__*/ S.Unknown as any as S.Schema<PostInvoicesInvoiceLinesLineItemIdRequestTaxAmounts>;
 
 export type PostInvoicesInvoiceLinesLineItemIdRequestTaxRatesCase0List =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostInvoicesInvoiceLinesLineItemIdRequestTaxRatesCase0List =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -103723,7 +103571,7 @@ export const PostInvoicesInvoiceLinesLineItemIdRequest =
 
 /** Specifies which fields in the response should be expanded. */
 export type PostInvoicesInvoiceMarkUncollectibleRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostInvoicesInvoiceMarkUncollectibleRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -103752,7 +103600,7 @@ export const PostInvoicesInvoiceMarkUncollectibleRequest =
   }) as any as S.Schema<PostInvoicesInvoiceMarkUncollectibleRequest>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostInvoicesInvoicePayRequestExpandList = ReadonlyArray<string>;
+export type PostInvoicesInvoicePayRequestExpandList = Array<string>;
 export const PostInvoicesInvoicePayRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostInvoicesInvoicePayRequestExpandList>;
@@ -103807,8 +103655,7 @@ export const PostInvoicesInvoicePayRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostInvoicesInvoicePayRequest>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostInvoicesInvoiceRemoveLinesRequestExpandList =
-  ReadonlyArray<string>;
+export type PostInvoicesInvoiceRemoveLinesRequestExpandList = Array<string>;
 export const PostInvoicesInvoiceRemoveLinesRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -103861,7 +103708,7 @@ export const PostInvoicesInvoiceRemoveLinesRequestLinesItem =
 
 /** The line items to remove. */
 export type PostInvoicesInvoiceRemoveLinesRequestLinesList =
-  ReadonlyArray<PostInvoicesInvoiceRemoveLinesRequestLinesItem>;
+  Array<PostInvoicesInvoiceRemoveLinesRequestLinesItem>;
 export const PostInvoicesInvoiceRemoveLinesRequestLinesList =
   /*@__PURE__*/ S.Array(
     PostInvoicesInvoiceRemoveLinesRequestLinesItem,
@@ -103898,7 +103745,7 @@ export const PostInvoicesInvoiceRemoveLinesRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PostInvoicesInvoiceRemoveLinesRequest>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostInvoicesInvoiceSendRequestExpandList = ReadonlyArray<string>;
+export type PostInvoicesInvoiceSendRequestExpandList = Array<string>;
 export const PostInvoicesInvoiceSendRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostInvoicesInvoiceSendRequestExpandList>;
@@ -103925,8 +103772,7 @@ export const PostInvoicesInvoiceSendRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostInvoicesInvoiceSendRequest>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostInvoicesInvoiceUpdateLinesRequestExpandList =
-  ReadonlyArray<string>;
+export type PostInvoicesInvoiceUpdateLinesRequestExpandList = Array<string>;
 export const PostInvoicesInvoiceUpdateLinesRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -103973,7 +103819,7 @@ export const PostInvoicesInvoiceUpdateLinesRequestLinesItemDiscountsCase0Item =
   }) as any as S.Schema<PostInvoicesInvoiceUpdateLinesRequestLinesItemDiscountsCase0Item>;
 
 export type PostInvoicesInvoiceUpdateLinesRequestLinesItemDiscountsCase0List =
-  ReadonlyArray<PostInvoicesInvoiceUpdateLinesRequestLinesItemDiscountsCase0Item>;
+  Array<PostInvoicesInvoiceUpdateLinesRequestLinesItemDiscountsCase0Item>;
 export const PostInvoicesInvoiceUpdateLinesRequestLinesItemDiscountsCase0List =
   /*@__PURE__*/ S.Array(
     PostInvoicesInvoiceUpdateLinesRequestLinesItemDiscountsCase0Item,
@@ -104029,7 +103875,7 @@ export const PostInvoicesInvoiceUpdateLinesRequestLinesItemPeriod =
 
 /** A list of up to 8 URLs of images for this product, meant to be displayable to the customer. */
 export type PostInvoicesInvoiceUpdateLinesRequestLinesItemPriceDataProductDataImagesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostInvoicesInvoiceUpdateLinesRequestLinesItemPriceDataProductDataImagesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -104254,7 +104100,7 @@ export const PostInvoicesInvoiceUpdateLinesRequestLinesItemTaxAmountsCase0Item =
   }) as any as S.Schema<PostInvoicesInvoiceUpdateLinesRequestLinesItemTaxAmountsCase0Item>;
 
 export type PostInvoicesInvoiceUpdateLinesRequestLinesItemTaxAmountsCase0List =
-  ReadonlyArray<PostInvoicesInvoiceUpdateLinesRequestLinesItemTaxAmountsCase0Item>;
+  Array<PostInvoicesInvoiceUpdateLinesRequestLinesItemTaxAmountsCase0Item>;
 export const PostInvoicesInvoiceUpdateLinesRequestLinesItemTaxAmountsCase0List =
   /*@__PURE__*/ S.Array(
     PostInvoicesInvoiceUpdateLinesRequestLinesItemTaxAmountsCase0Item,
@@ -104272,7 +104118,7 @@ export const PostInvoicesInvoiceUpdateLinesRequestLinesItemTaxAmounts =
   /*@__PURE__*/ S.Unknown as any as S.Schema<PostInvoicesInvoiceUpdateLinesRequestLinesItemTaxAmounts>;
 
 export type PostInvoicesInvoiceUpdateLinesRequestLinesItemTaxRatesCase0List =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostInvoicesInvoiceUpdateLinesRequestLinesItemTaxRatesCase0List =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -104352,7 +104198,7 @@ export const PostInvoicesInvoiceUpdateLinesRequestLinesItem =
 
 /** The line items to update. */
 export type PostInvoicesInvoiceUpdateLinesRequestLinesList =
-  ReadonlyArray<PostInvoicesInvoiceUpdateLinesRequestLinesItem>;
+  Array<PostInvoicesInvoiceUpdateLinesRequestLinesItem>;
 export const PostInvoicesInvoiceUpdateLinesRequestLinesList =
   /*@__PURE__*/ S.Array(
     PostInvoicesInvoiceUpdateLinesRequestLinesItem,
@@ -104389,7 +104235,7 @@ export const PostInvoicesInvoiceUpdateLinesRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PostInvoicesInvoiceUpdateLinesRequest>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostInvoicesInvoiceVoidRequestExpandList = ReadonlyArray<string>;
+export type PostInvoicesInvoiceVoidRequestExpandList = Array<string>;
 export const PostInvoicesInvoiceVoidRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostInvoicesInvoiceVoidRequestExpandList>;
@@ -104417,7 +104263,7 @@ export const PostInvoicesInvoiceVoidRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Specifies which fields in the response should be expanded. */
 export type PostIssuingAuthorizationsAuthorizationRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostIssuingAuthorizationsAuthorizationRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -104530,7 +104376,7 @@ export const PostIssuingCardholdersRequestCompany = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PostIssuingCardholdersRequestCompany>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostIssuingCardholdersRequestExpandList = ReadonlyArray<string>;
+export type PostIssuingCardholdersRequestExpandList = Array<string>;
 export const PostIssuingCardholdersRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostIssuingCardholdersRequestExpandList>;
@@ -104688,7 +104534,7 @@ export const PostIssuingCardholdersRequestPreferredLocalesItem =
   /*@__PURE__*/ S.String;
 
 /** The cardholder’s preferred locales (languages), ordered by preference. Locales can be `da`, `de`, `en`, `es`, `fr`, `it`, `pl`, or `sv`. This changes the language of the [3D Secure flow](https://docs.stripe.com/issuing/3d-secure) and one-time password messages sent to the cardholder. */
-export type PostIssuingCardholdersRequestPreferredLocalesList = ReadonlyArray<
+export type PostIssuingCardholdersRequestPreferredLocalesList = Array<
   PostIssuingCardholdersRequestPreferredLocalesItem | (string & {})
 >;
 export const PostIssuingCardholdersRequestPreferredLocalesList =
@@ -104703,7 +104549,7 @@ export const PostIssuingCardholdersRequestSpendingControlsAllowedCardPresencesIt
 
 /** Array of card presence statuses from which authorizations will be allowed. Possible options are `present`, `not_present`. All other statuses will be blocked. Cannot be set with `blocked_card_presences`. Provide an empty value to unset this control. */
 export type PostIssuingCardholdersRequestSpendingControlsAllowedCardPresencesList =
-  ReadonlyArray<
+  Array<
     | PostIssuingCardholdersRequestSpendingControlsAllowedCardPresencesItem
     | (string & {})
   >;
@@ -105013,7 +104859,7 @@ export const PostIssuingCardholdersRequestSpendingControlsAllowedCategoriesItem 
 
 /** Array of strings containing [categories](https://docs.stripe.com/api#issuing_authorization_object-merchant_data-category) of authorizations to allow. All other categories will be blocked. Cannot be set with `blocked_categories`. */
 export type PostIssuingCardholdersRequestSpendingControlsAllowedCategoriesList =
-  ReadonlyArray<
+  Array<
     | PostIssuingCardholdersRequestSpendingControlsAllowedCategoriesItem
     | (string & {})
   >;
@@ -105024,7 +104870,7 @@ export const PostIssuingCardholdersRequestSpendingControlsAllowedCategoriesList 
 
 /** Array of strings containing representing countries from which authorizations will be allowed. Authorizations from merchants in all other countries will be declined. Country codes should be ISO 3166 alpha-2 country codes (e.g. `US`). Cannot be set with `blocked_merchant_countries`. Provide an empty value to unset this control. */
 export type PostIssuingCardholdersRequestSpendingControlsAllowedMerchantCountriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostIssuingCardholdersRequestSpendingControlsAllowedMerchantCountriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -105037,7 +104883,7 @@ export const PostIssuingCardholdersRequestSpendingControlsBlockedCardPresencesIt
 
 /** Array of card presence statuses from which authorizations will be declined. Possible options are `present`, `not_present`. Cannot be set with `allowed_card_presences`. Provide an empty value to unset this control. */
 export type PostIssuingCardholdersRequestSpendingControlsBlockedCardPresencesList =
-  ReadonlyArray<
+  Array<
     | PostIssuingCardholdersRequestSpendingControlsBlockedCardPresencesItem
     | (string & {})
   >;
@@ -105347,7 +105193,7 @@ export const PostIssuingCardholdersRequestSpendingControlsBlockedCategoriesItem 
 
 /** Array of strings containing [categories](https://docs.stripe.com/api#issuing_authorization_object-merchant_data-category) of authorizations to decline. All other categories will be allowed. Cannot be set with `allowed_categories`. */
 export type PostIssuingCardholdersRequestSpendingControlsBlockedCategoriesList =
-  ReadonlyArray<
+  Array<
     | PostIssuingCardholdersRequestSpendingControlsBlockedCategoriesItem
     | (string & {})
   >;
@@ -105358,7 +105204,7 @@ export const PostIssuingCardholdersRequestSpendingControlsBlockedCategoriesList 
 
 /** Array of strings containing representing countries from which authorizations will be declined. Country codes should be ISO 3166 alpha-2 country codes (e.g. `US`). Cannot be set with `allowed_merchant_countries`. Provide an empty value to unset this control. */
 export type PostIssuingCardholdersRequestSpendingControlsBlockedMerchantCountriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostIssuingCardholdersRequestSpendingControlsBlockedMerchantCountriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -105665,7 +105511,7 @@ export const PostIssuingCardholdersRequestSpendingControlsSpendingLimitsItemCate
 
 /** Array of strings containing [categories](https://docs.stripe.com/api#issuing_authorization_object-merchant_data-category) this limit applies to. Omitting this field will apply the limit to all categories. */
 export type PostIssuingCardholdersRequestSpendingControlsSpendingLimitsItemCategoriesList =
-  ReadonlyArray<
+  Array<
     | PostIssuingCardholdersRequestSpendingControlsSpendingLimitsItemCategoriesItem
     | (string & {})
   >;
@@ -105707,7 +105553,7 @@ export const PostIssuingCardholdersRequestSpendingControlsSpendingLimitsItem =
 
 /** Limit spending with amount-based rules that apply across this cardholder's cards. */
 export type PostIssuingCardholdersRequestSpendingControlsSpendingLimitsList =
-  ReadonlyArray<PostIssuingCardholdersRequestSpendingControlsSpendingLimitsItem>;
+  Array<PostIssuingCardholdersRequestSpendingControlsSpendingLimitsItem>;
 export const PostIssuingCardholdersRequestSpendingControlsSpendingLimitsList =
   /*@__PURE__*/ S.Array(
     PostIssuingCardholdersRequestSpendingControlsSpendingLimitsItem,
@@ -105884,8 +105730,7 @@ export const PostIssuingCardholdersCardholderRequestCompany =
   }) as any as S.Schema<PostIssuingCardholdersCardholderRequestCompany>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostIssuingCardholdersCardholderRequestExpandList =
-  ReadonlyArray<string>;
+export type PostIssuingCardholdersCardholderRequestExpandList = Array<string>;
 export const PostIssuingCardholdersCardholderRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -106046,10 +105891,9 @@ export const PostIssuingCardholdersCardholderRequestPreferredLocalesItem =
   /*@__PURE__*/ S.String;
 
 /** The cardholder’s preferred locales (languages), ordered by preference. Locales can be `da`, `de`, `en`, `es`, `fr`, `it`, `pl`, or `sv`. This changes the language of the [3D Secure flow](https://docs.stripe.com/issuing/3d-secure) and one-time password messages sent to the cardholder. */
-export type PostIssuingCardholdersCardholderRequestPreferredLocalesList =
-  ReadonlyArray<
-    PostIssuingCardholdersCardholderRequestPreferredLocalesItem | (string & {})
-  >;
+export type PostIssuingCardholdersCardholderRequestPreferredLocalesList = Array<
+  PostIssuingCardholdersCardholderRequestPreferredLocalesItem | (string & {})
+>;
 export const PostIssuingCardholdersCardholderRequestPreferredLocalesList =
   /*@__PURE__*/ S.Array(
     PostIssuingCardholdersCardholderRequestPreferredLocalesItem,
@@ -106062,7 +105906,7 @@ export const PostIssuingCardholdersCardholderRequestSpendingControlsAllowedCardP
 
 /** Array of card presence statuses from which authorizations will be allowed. Possible options are `present`, `not_present`. All other statuses will be blocked. Cannot be set with `blocked_card_presences`. Provide an empty value to unset this control. */
 export type PostIssuingCardholdersCardholderRequestSpendingControlsAllowedCardPresencesList =
-  ReadonlyArray<
+  Array<
     | PostIssuingCardholdersCardholderRequestSpendingControlsAllowedCardPresencesItem
     | (string & {})
   >;
@@ -106372,7 +106216,7 @@ export const PostIssuingCardholdersCardholderRequestSpendingControlsAllowedCateg
 
 /** Array of strings containing [categories](https://docs.stripe.com/api#issuing_authorization_object-merchant_data-category) of authorizations to allow. All other categories will be blocked. Cannot be set with `blocked_categories`. */
 export type PostIssuingCardholdersCardholderRequestSpendingControlsAllowedCategoriesList =
-  ReadonlyArray<
+  Array<
     | PostIssuingCardholdersCardholderRequestSpendingControlsAllowedCategoriesItem
     | (string & {})
   >;
@@ -106383,7 +106227,7 @@ export const PostIssuingCardholdersCardholderRequestSpendingControlsAllowedCateg
 
 /** Array of strings containing representing countries from which authorizations will be allowed. Authorizations from merchants in all other countries will be declined. Country codes should be ISO 3166 alpha-2 country codes (e.g. `US`). Cannot be set with `blocked_merchant_countries`. Provide an empty value to unset this control. */
 export type PostIssuingCardholdersCardholderRequestSpendingControlsAllowedMerchantCountriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostIssuingCardholdersCardholderRequestSpendingControlsAllowedMerchantCountriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -106396,7 +106240,7 @@ export const PostIssuingCardholdersCardholderRequestSpendingControlsBlockedCardP
 
 /** Array of card presence statuses from which authorizations will be declined. Possible options are `present`, `not_present`. Cannot be set with `allowed_card_presences`. Provide an empty value to unset this control. */
 export type PostIssuingCardholdersCardholderRequestSpendingControlsBlockedCardPresencesList =
-  ReadonlyArray<
+  Array<
     | PostIssuingCardholdersCardholderRequestSpendingControlsBlockedCardPresencesItem
     | (string & {})
   >;
@@ -106706,7 +106550,7 @@ export const PostIssuingCardholdersCardholderRequestSpendingControlsBlockedCateg
 
 /** Array of strings containing [categories](https://docs.stripe.com/api#issuing_authorization_object-merchant_data-category) of authorizations to decline. All other categories will be allowed. Cannot be set with `allowed_categories`. */
 export type PostIssuingCardholdersCardholderRequestSpendingControlsBlockedCategoriesList =
-  ReadonlyArray<
+  Array<
     | PostIssuingCardholdersCardholderRequestSpendingControlsBlockedCategoriesItem
     | (string & {})
   >;
@@ -106717,7 +106561,7 @@ export const PostIssuingCardholdersCardholderRequestSpendingControlsBlockedCateg
 
 /** Array of strings containing representing countries from which authorizations will be declined. Country codes should be ISO 3166 alpha-2 country codes (e.g. `US`). Cannot be set with `allowed_merchant_countries`. Provide an empty value to unset this control. */
 export type PostIssuingCardholdersCardholderRequestSpendingControlsBlockedMerchantCountriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostIssuingCardholdersCardholderRequestSpendingControlsBlockedMerchantCountriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -107024,7 +106868,7 @@ export const PostIssuingCardholdersCardholderRequestSpendingControlsSpendingLimi
 
 /** Array of strings containing [categories](https://docs.stripe.com/api#issuing_authorization_object-merchant_data-category) this limit applies to. Omitting this field will apply the limit to all categories. */
 export type PostIssuingCardholdersCardholderRequestSpendingControlsSpendingLimitsItemCategoriesList =
-  ReadonlyArray<
+  Array<
     | PostIssuingCardholdersCardholderRequestSpendingControlsSpendingLimitsItemCategoriesItem
     | (string & {})
   >;
@@ -107066,7 +106910,7 @@ export const PostIssuingCardholdersCardholderRequestSpendingControlsSpendingLimi
 
 /** Limit spending with amount-based rules that apply across this cardholder's cards. */
 export type PostIssuingCardholdersCardholderRequestSpendingControlsSpendingLimitsList =
-  ReadonlyArray<PostIssuingCardholdersCardholderRequestSpendingControlsSpendingLimitsItem>;
+  Array<PostIssuingCardholdersCardholderRequestSpendingControlsSpendingLimitsItem>;
 export const PostIssuingCardholdersCardholderRequestSpendingControlsSpendingLimitsList =
   /*@__PURE__*/ S.Array(
     PostIssuingCardholdersCardholderRequestSpendingControlsSpendingLimitsItem,
@@ -107182,7 +107026,7 @@ export const PostIssuingCardholdersCardholderRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PostIssuingCardholdersCardholderRequest>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostIssuingCardsRequestExpandList = ReadonlyArray<string>;
+export type PostIssuingCardsRequestExpandList = Array<string>;
 export const PostIssuingCardsRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostIssuingCardsRequestExpandList>;
@@ -107375,7 +107219,7 @@ export const PostIssuingCardsRequestSpendingControlsAllowedCardPresencesItem =
 
 /** Array of card presence statuses from which authorizations will be allowed. Possible options are `present`, `not_present`. All other statuses will be blocked. Cannot be set with `blocked_card_presences`. Provide an empty value to unset this control. */
 export type PostIssuingCardsRequestSpendingControlsAllowedCardPresencesList =
-  ReadonlyArray<
+  Array<
     | PostIssuingCardsRequestSpendingControlsAllowedCardPresencesItem
     | (string & {})
   >;
@@ -107685,7 +107529,7 @@ export const PostIssuingCardsRequestSpendingControlsAllowedCategoriesItem =
 
 /** Array of strings containing [categories](https://docs.stripe.com/api#issuing_authorization_object-merchant_data-category) of authorizations to allow. All other categories will be blocked. Cannot be set with `blocked_categories`. */
 export type PostIssuingCardsRequestSpendingControlsAllowedCategoriesList =
-  ReadonlyArray<
+  Array<
     PostIssuingCardsRequestSpendingControlsAllowedCategoriesItem | (string & {})
   >;
 export const PostIssuingCardsRequestSpendingControlsAllowedCategoriesList =
@@ -107695,7 +107539,7 @@ export const PostIssuingCardsRequestSpendingControlsAllowedCategoriesList =
 
 /** Array of strings containing representing countries from which authorizations will be allowed. Authorizations from merchants in all other countries will be declined. Country codes should be ISO 3166 alpha-2 country codes (e.g. `US`). Cannot be set with `blocked_merchant_countries`. Provide an empty value to unset this control. */
 export type PostIssuingCardsRequestSpendingControlsAllowedMerchantCountriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostIssuingCardsRequestSpendingControlsAllowedMerchantCountriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -107709,7 +107553,7 @@ export const PostIssuingCardsRequestSpendingControlsBlockedCardPresencesItem =
 
 /** Array of card presence statuses from which authorizations will be declined. Possible options are `present`, `not_present`. Cannot be set with `allowed_card_presences`. Provide an empty value to unset this control. */
 export type PostIssuingCardsRequestSpendingControlsBlockedCardPresencesList =
-  ReadonlyArray<
+  Array<
     | PostIssuingCardsRequestSpendingControlsBlockedCardPresencesItem
     | (string & {})
   >;
@@ -108019,7 +107863,7 @@ export const PostIssuingCardsRequestSpendingControlsBlockedCategoriesItem =
 
 /** Array of strings containing [categories](https://docs.stripe.com/api#issuing_authorization_object-merchant_data-category) of authorizations to decline. All other categories will be allowed. Cannot be set with `allowed_categories`. */
 export type PostIssuingCardsRequestSpendingControlsBlockedCategoriesList =
-  ReadonlyArray<
+  Array<
     PostIssuingCardsRequestSpendingControlsBlockedCategoriesItem | (string & {})
   >;
 export const PostIssuingCardsRequestSpendingControlsBlockedCategoriesList =
@@ -108029,7 +107873,7 @@ export const PostIssuingCardsRequestSpendingControlsBlockedCategoriesList =
 
 /** Array of strings containing representing countries from which authorizations will be declined. Country codes should be ISO 3166 alpha-2 country codes (e.g. `US`). Cannot be set with `allowed_merchant_countries`. Provide an empty value to unset this control. */
 export type PostIssuingCardsRequestSpendingControlsBlockedMerchantCountriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostIssuingCardsRequestSpendingControlsBlockedMerchantCountriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -108336,7 +108180,7 @@ export const PostIssuingCardsRequestSpendingControlsSpendingLimitsItemCategories
 
 /** Array of strings containing [categories](https://docs.stripe.com/api#issuing_authorization_object-merchant_data-category) this limit applies to. Omitting this field will apply the limit to all categories. */
 export type PostIssuingCardsRequestSpendingControlsSpendingLimitsItemCategoriesList =
-  ReadonlyArray<
+  Array<
     | PostIssuingCardsRequestSpendingControlsSpendingLimitsItemCategoriesItem
     | (string & {})
   >;
@@ -108382,7 +108226,7 @@ export const PostIssuingCardsRequestSpendingControlsSpendingLimitsItem =
 
 /** Limit spending with amount-based rules that apply across any cards this card replaced (i.e., its `replacement_for` card and _that_ card's `replacement_for` card, up the chain). */
 export type PostIssuingCardsRequestSpendingControlsSpendingLimitsList =
-  ReadonlyArray<PostIssuingCardsRequestSpendingControlsSpendingLimitsItem>;
+  Array<PostIssuingCardsRequestSpendingControlsSpendingLimitsItem>;
 export const PostIssuingCardsRequestSpendingControlsSpendingLimitsList =
   /*@__PURE__*/ S.Array(
     PostIssuingCardsRequestSpendingControlsSpendingLimitsItem,
@@ -108515,7 +108359,7 @@ export const PostIssuingCardsCardRequestCancellationReason =
   /*@__PURE__*/ S.String;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostIssuingCardsCardRequestExpandList = ReadonlyArray<string>;
+export type PostIssuingCardsCardRequestExpandList = Array<string>;
 export const PostIssuingCardsCardRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostIssuingCardsCardRequestExpandList>;
@@ -108674,7 +108518,7 @@ export const PostIssuingCardsCardRequestSpendingControlsAllowedCardPresencesItem
 
 /** Array of card presence statuses from which authorizations will be allowed. Possible options are `present`, `not_present`. All other statuses will be blocked. Cannot be set with `blocked_card_presences`. Provide an empty value to unset this control. */
 export type PostIssuingCardsCardRequestSpendingControlsAllowedCardPresencesList =
-  ReadonlyArray<
+  Array<
     | PostIssuingCardsCardRequestSpendingControlsAllowedCardPresencesItem
     | (string & {})
   >;
@@ -108984,7 +108828,7 @@ export const PostIssuingCardsCardRequestSpendingControlsAllowedCategoriesItem =
 
 /** Array of strings containing [categories](https://docs.stripe.com/api#issuing_authorization_object-merchant_data-category) of authorizations to allow. All other categories will be blocked. Cannot be set with `blocked_categories`. */
 export type PostIssuingCardsCardRequestSpendingControlsAllowedCategoriesList =
-  ReadonlyArray<
+  Array<
     | PostIssuingCardsCardRequestSpendingControlsAllowedCategoriesItem
     | (string & {})
   >;
@@ -108995,7 +108839,7 @@ export const PostIssuingCardsCardRequestSpendingControlsAllowedCategoriesList =
 
 /** Array of strings containing representing countries from which authorizations will be allowed. Authorizations from merchants in all other countries will be declined. Country codes should be ISO 3166 alpha-2 country codes (e.g. `US`). Cannot be set with `blocked_merchant_countries`. Provide an empty value to unset this control. */
 export type PostIssuingCardsCardRequestSpendingControlsAllowedMerchantCountriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostIssuingCardsCardRequestSpendingControlsAllowedMerchantCountriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -109008,7 +108852,7 @@ export const PostIssuingCardsCardRequestSpendingControlsBlockedCardPresencesItem
 
 /** Array of card presence statuses from which authorizations will be declined. Possible options are `present`, `not_present`. Cannot be set with `allowed_card_presences`. Provide an empty value to unset this control. */
 export type PostIssuingCardsCardRequestSpendingControlsBlockedCardPresencesList =
-  ReadonlyArray<
+  Array<
     | PostIssuingCardsCardRequestSpendingControlsBlockedCardPresencesItem
     | (string & {})
   >;
@@ -109318,7 +109162,7 @@ export const PostIssuingCardsCardRequestSpendingControlsBlockedCategoriesItem =
 
 /** Array of strings containing [categories](https://docs.stripe.com/api#issuing_authorization_object-merchant_data-category) of authorizations to decline. All other categories will be allowed. Cannot be set with `allowed_categories`. */
 export type PostIssuingCardsCardRequestSpendingControlsBlockedCategoriesList =
-  ReadonlyArray<
+  Array<
     | PostIssuingCardsCardRequestSpendingControlsBlockedCategoriesItem
     | (string & {})
   >;
@@ -109329,7 +109173,7 @@ export const PostIssuingCardsCardRequestSpendingControlsBlockedCategoriesList =
 
 /** Array of strings containing representing countries from which authorizations will be declined. Country codes should be ISO 3166 alpha-2 country codes (e.g. `US`). Cannot be set with `allowed_merchant_countries`. Provide an empty value to unset this control. */
 export type PostIssuingCardsCardRequestSpendingControlsBlockedMerchantCountriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostIssuingCardsCardRequestSpendingControlsBlockedMerchantCountriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -109636,7 +109480,7 @@ export const PostIssuingCardsCardRequestSpendingControlsSpendingLimitsItemCatego
 
 /** Array of strings containing [categories](https://docs.stripe.com/api#issuing_authorization_object-merchant_data-category) this limit applies to. Omitting this field will apply the limit to all categories. */
 export type PostIssuingCardsCardRequestSpendingControlsSpendingLimitsItemCategoriesList =
-  ReadonlyArray<
+  Array<
     | PostIssuingCardsCardRequestSpendingControlsSpendingLimitsItemCategoriesItem
     | (string & {})
   >;
@@ -109677,7 +109521,7 @@ export const PostIssuingCardsCardRequestSpendingControlsSpendingLimitsItem =
 
 /** Limit spending with amount-based rules that apply across any cards this card replaced (i.e., its `replacement_for` card and _that_ card's `replacement_for` card, up the chain). */
 export type PostIssuingCardsCardRequestSpendingControlsSpendingLimitsList =
-  ReadonlyArray<PostIssuingCardsCardRequestSpendingControlsSpendingLimitsItem>;
+  Array<PostIssuingCardsCardRequestSpendingControlsSpendingLimitsItem>;
 export const PostIssuingCardsCardRequestSpendingControlsSpendingLimitsList =
   /*@__PURE__*/ S.Array(
     PostIssuingCardsCardRequestSpendingControlsSpendingLimitsItem,
@@ -110657,7 +110501,7 @@ export const PostIssuingDisputesRequestEvidence = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostIssuingDisputesRequestEvidence>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostIssuingDisputesRequestExpandList = ReadonlyArray<string>;
+export type PostIssuingDisputesRequestExpandList = Array<string>;
 export const PostIssuingDisputesRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostIssuingDisputesRequestExpandList>;
@@ -111604,7 +111448,7 @@ export const PostIssuingDisputesDisputeRequestEvidence =
   }) as any as S.Schema<PostIssuingDisputesDisputeRequestEvidence>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostIssuingDisputesDisputeRequestExpandList = ReadonlyArray<string>;
+export type PostIssuingDisputesDisputeRequestExpandList = Array<string>;
 export const PostIssuingDisputesDisputeRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -111661,8 +111505,7 @@ export const PostIssuingDisputesDisputeRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostIssuingDisputesDisputeRequest>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostIssuingDisputesDisputeSubmitRequestExpandList =
-  ReadonlyArray<string>;
+export type PostIssuingDisputesDisputeSubmitRequestExpandList = Array<string>;
 export const PostIssuingDisputesDisputeSubmitRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -111793,8 +111636,7 @@ export const PostIssuingPersonalizationDesignsRequestCarrierText =
   }) as any as S.Schema<PostIssuingPersonalizationDesignsRequestCarrierText>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostIssuingPersonalizationDesignsRequestExpandList =
-  ReadonlyArray<string>;
+export type PostIssuingPersonalizationDesignsRequestExpandList = Array<string>;
 export const PostIssuingPersonalizationDesignsRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -111977,7 +111819,7 @@ export const PostIssuingPersonalizationDesignsPersonalizationDesignRequestCarrie
 
 /** Specifies which fields in the response should be expanded. */
 export type PostIssuingPersonalizationDesignsPersonalizationDesignRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostIssuingPersonalizationDesignsPersonalizationDesignRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -112092,7 +111934,7 @@ export const PostIssuingPersonalizationDesignsPersonalizationDesignRequest =
   }) as any as S.Schema<PostIssuingPersonalizationDesignsPersonalizationDesignRequest>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostIssuingTokensTokenRequestExpandList = ReadonlyArray<string>;
+export type PostIssuingTokensTokenRequestExpandList = Array<string>;
 export const PostIssuingTokensTokenRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostIssuingTokensTokenRequestExpandList>;
@@ -112129,8 +111971,7 @@ export const PostIssuingTokensTokenRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostIssuingTokensTokenRequest>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostIssuingTransactionsTransactionRequestExpandList =
-  ReadonlyArray<string>;
+export type PostIssuingTransactionsTransactionRequestExpandList = Array<string>;
 export const PostIssuingTransactionsTransactionRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -112362,7 +112203,7 @@ export const PostPaymentIntentsRequestAmountDetailsLineItemsCase0Item =
   }) as any as S.Schema<PostPaymentIntentsRequestAmountDetailsLineItemsCase0Item>;
 
 export type PostPaymentIntentsRequestAmountDetailsLineItemsCase0List =
-  ReadonlyArray<PostPaymentIntentsRequestAmountDetailsLineItemsCase0Item>;
+  Array<PostPaymentIntentsRequestAmountDetailsLineItemsCase0Item>;
 export const PostPaymentIntentsRequestAmountDetailsLineItemsCase0List =
   /*@__PURE__*/ S.Array(
     PostPaymentIntentsRequestAmountDetailsLineItemsCase0Item,
@@ -112602,17 +112443,16 @@ export const PostPaymentIntentsRequestExcludedPaymentMethodTypesItem =
   /*@__PURE__*/ S.String;
 
 /** The list of payment method types to exclude from use with this payment. */
-export type PostPaymentIntentsRequestExcludedPaymentMethodTypesList =
-  ReadonlyArray<
-    PostPaymentIntentsRequestExcludedPaymentMethodTypesItem | (string & {})
-  >;
+export type PostPaymentIntentsRequestExcludedPaymentMethodTypesList = Array<
+  PostPaymentIntentsRequestExcludedPaymentMethodTypesItem | (string & {})
+>;
 export const PostPaymentIntentsRequestExcludedPaymentMethodTypesList =
   /*@__PURE__*/ S.Array(
     PostPaymentIntentsRequestExcludedPaymentMethodTypesItem,
   ) as any as S.Schema<PostPaymentIntentsRequestExcludedPaymentMethodTypesList>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostPaymentIntentsRequestExpandList = ReadonlyArray<string>;
+export type PostPaymentIntentsRequestExpandList = Array<string>;
 export const PostPaymentIntentsRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostPaymentIntentsRequestExpandList>;
@@ -114414,7 +114254,7 @@ export const PostPaymentIntentsRequestPaymentMethodOptionsCardCase0MandateOption
 
 /** Specifies the type of mandates supported. Possible values are `india`. */
 export type PostPaymentIntentsRequestPaymentMethodOptionsCardCase0MandateOptionsSupportedTypesList =
-  ReadonlyArray<
+  Array<
     | PostPaymentIntentsRequestPaymentMethodOptionsCardCase0MandateOptionsSupportedTypesItem
     | (string & {})
   >;
@@ -114956,7 +114796,7 @@ export const PostPaymentIntentsRequestPaymentMethodOptionsCustomerBalanceCase0Ba
 
 /** List of address types that should be returned in the financial_addresses response. If not specified, all valid types will be returned. Permitted values include: `sort_code`, `zengin`, `iban`, or `spei`. */
 export type PostPaymentIntentsRequestPaymentMethodOptionsCustomerBalanceCase0BankTransferRequestedAddressTypesList =
-  ReadonlyArray<
+  Array<
     | PostPaymentIntentsRequestPaymentMethodOptionsCustomerBalanceCase0BankTransferRequestedAddressTypesItem
     | (string & {})
   >;
@@ -115441,7 +115281,7 @@ export const PostPaymentIntentsRequestPaymentMethodOptionsKlarnaCase0Subscriptio
   }) as any as S.Schema<PostPaymentIntentsRequestPaymentMethodOptionsKlarnaCase0SubscriptionsCase0Item>;
 
 export type PostPaymentIntentsRequestPaymentMethodOptionsKlarnaCase0SubscriptionsCase0List =
-  ReadonlyArray<PostPaymentIntentsRequestPaymentMethodOptionsKlarnaCase0SubscriptionsCase0Item>;
+  Array<PostPaymentIntentsRequestPaymentMethodOptionsKlarnaCase0SubscriptionsCase0Item>;
 export const PostPaymentIntentsRequestPaymentMethodOptionsKlarnaCase0SubscriptionsCase0List =
   /*@__PURE__*/ S.Array(
     PostPaymentIntentsRequestPaymentMethodOptionsKlarnaCase0SubscriptionsCase0Item,
@@ -116958,7 +116798,7 @@ export const PostPaymentIntentsRequestPaymentMethodOptionsUsBankAccountCase0Fina
 
 /** The account subcategories to use to filter for selectable accounts. Valid subcategories are `checking` and `savings`. */
 export type PostPaymentIntentsRequestPaymentMethodOptionsUsBankAccountCase0FinancialConnectionsFiltersAccountSubcategoriesList =
-  ReadonlyArray<
+  Array<
     | PostPaymentIntentsRequestPaymentMethodOptionsUsBankAccountCase0FinancialConnectionsFiltersAccountSubcategoriesItem
     | (string & {})
   >;
@@ -116991,7 +116831,7 @@ export const PostPaymentIntentsRequestPaymentMethodOptionsUsBankAccountCase0Fina
 
 /** The list of permissions to request. If this parameter is passed, the `payment_method` permission must be included. Valid permissions include: `balances`, `ownership`, `payment_method`, and `transactions`. */
 export type PostPaymentIntentsRequestPaymentMethodOptionsUsBankAccountCase0FinancialConnectionsPermissionsList =
-  ReadonlyArray<
+  Array<
     | PostPaymentIntentsRequestPaymentMethodOptionsUsBankAccountCase0FinancialConnectionsPermissionsItem
     | (string & {})
   >;
@@ -117007,7 +116847,7 @@ export const PostPaymentIntentsRequestPaymentMethodOptionsUsBankAccountCase0Fina
 
 /** List of data features that you would like to retrieve upon account creation. */
 export type PostPaymentIntentsRequestPaymentMethodOptionsUsBankAccountCase0FinancialConnectionsPrefetchList =
-  ReadonlyArray<
+  Array<
     | PostPaymentIntentsRequestPaymentMethodOptionsUsBankAccountCase0FinancialConnectionsPrefetchItem
     | (string & {})
   >;
@@ -117078,7 +116918,7 @@ export const PostPaymentIntentsRequestPaymentMethodOptionsUsBankAccountCase0Netw
 
 /** Triggers validations to run across the selected networks */
 export type PostPaymentIntentsRequestPaymentMethodOptionsUsBankAccountCase0NetworksRequestedList =
-  ReadonlyArray<
+  Array<
     | PostPaymentIntentsRequestPaymentMethodOptionsUsBankAccountCase0NetworksRequestedItem
     | (string & {})
   >;
@@ -117496,8 +117336,7 @@ export const PostPaymentIntentsRequestPaymentMethodOptions =
   }) as any as S.Schema<PostPaymentIntentsRequestPaymentMethodOptions>;
 
 /** The list of payment method types (for example, a card) that this PaymentIntent can use. If you don't provide this, Stripe will dynamically show relevant payment methods from your [payment method settings](https://dashboard.stripe.com/settings/payment_methods). A list of valid payment method types can be found [here](https://docs.stripe.com/api/payment_methods/object#payment_method_object-type). */
-export type PostPaymentIntentsRequestPaymentMethodTypesList =
-  ReadonlyArray<string>;
+export type PostPaymentIntentsRequestPaymentMethodTypesList = Array<string>;
 export const PostPaymentIntentsRequestPaymentMethodTypesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -117989,7 +117828,7 @@ export const PostPaymentIntentsIntentRequestAmountDetailsCase0LineItemsCase0Item
   }) as any as S.Schema<PostPaymentIntentsIntentRequestAmountDetailsCase0LineItemsCase0Item>;
 
 export type PostPaymentIntentsIntentRequestAmountDetailsCase0LineItemsCase0List =
-  ReadonlyArray<PostPaymentIntentsIntentRequestAmountDetailsCase0LineItemsCase0Item>;
+  Array<PostPaymentIntentsIntentRequestAmountDetailsCase0LineItemsCase0Item>;
 export const PostPaymentIntentsIntentRequestAmountDetailsCase0LineItemsCase0List =
   /*@__PURE__*/ S.Array(
     PostPaymentIntentsIntentRequestAmountDetailsCase0LineItemsCase0Item,
@@ -118223,7 +118062,7 @@ export const PostPaymentIntentsIntentRequestExcludedPaymentMethodTypesCase0Item 
   /*@__PURE__*/ S.String;
 
 export type PostPaymentIntentsIntentRequestExcludedPaymentMethodTypesCase0List =
-  ReadonlyArray<
+  Array<
     | PostPaymentIntentsIntentRequestExcludedPaymentMethodTypesCase0Item
     | (string & {})
   >;
@@ -118244,7 +118083,7 @@ export const PostPaymentIntentsIntentRequestExcludedPaymentMethodTypes =
   /*@__PURE__*/ S.Unknown as any as S.Schema<PostPaymentIntentsIntentRequestExcludedPaymentMethodTypes>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostPaymentIntentsIntentRequestExpandList = ReadonlyArray<string>;
+export type PostPaymentIntentsIntentRequestExpandList = Array<string>;
 export const PostPaymentIntentsIntentRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostPaymentIntentsIntentRequestExpandList>;
@@ -120017,7 +119856,7 @@ export const PostPaymentIntentsIntentRequestPaymentMethodOptionsCardCase0Mandate
 
 /** Specifies the type of mandates supported. Possible values are `india`. */
 export type PostPaymentIntentsIntentRequestPaymentMethodOptionsCardCase0MandateOptionsSupportedTypesList =
-  ReadonlyArray<
+  Array<
     | PostPaymentIntentsIntentRequestPaymentMethodOptionsCardCase0MandateOptionsSupportedTypesItem
     | (string & {})
   >;
@@ -120564,7 +120403,7 @@ export const PostPaymentIntentsIntentRequestPaymentMethodOptionsCustomerBalanceC
 
 /** List of address types that should be returned in the financial_addresses response. If not specified, all valid types will be returned. Permitted values include: `sort_code`, `zengin`, `iban`, or `spei`. */
 export type PostPaymentIntentsIntentRequestPaymentMethodOptionsCustomerBalanceCase0BankTransferRequestedAddressTypesList =
-  ReadonlyArray<
+  Array<
     | PostPaymentIntentsIntentRequestPaymentMethodOptionsCustomerBalanceCase0BankTransferRequestedAddressTypesItem
     | (string & {})
   >;
@@ -121055,7 +120894,7 @@ export const PostPaymentIntentsIntentRequestPaymentMethodOptionsKlarnaCase0Subsc
   }) as any as S.Schema<PostPaymentIntentsIntentRequestPaymentMethodOptionsKlarnaCase0SubscriptionsCase0Item>;
 
 export type PostPaymentIntentsIntentRequestPaymentMethodOptionsKlarnaCase0SubscriptionsCase0List =
-  ReadonlyArray<PostPaymentIntentsIntentRequestPaymentMethodOptionsKlarnaCase0SubscriptionsCase0Item>;
+  Array<PostPaymentIntentsIntentRequestPaymentMethodOptionsKlarnaCase0SubscriptionsCase0Item>;
 export const PostPaymentIntentsIntentRequestPaymentMethodOptionsKlarnaCase0SubscriptionsCase0List =
   /*@__PURE__*/ S.Array(
     PostPaymentIntentsIntentRequestPaymentMethodOptionsKlarnaCase0SubscriptionsCase0Item,
@@ -122599,7 +122438,7 @@ export const PostPaymentIntentsIntentRequestPaymentMethodOptionsUsBankAccountCas
 
 /** The account subcategories to use to filter for selectable accounts. Valid subcategories are `checking` and `savings`. */
 export type PostPaymentIntentsIntentRequestPaymentMethodOptionsUsBankAccountCase0FinancialConnectionsFiltersAccountSubcategoriesList =
-  ReadonlyArray<
+  Array<
     | PostPaymentIntentsIntentRequestPaymentMethodOptionsUsBankAccountCase0FinancialConnectionsFiltersAccountSubcategoriesItem
     | (string & {})
   >;
@@ -122632,7 +122471,7 @@ export const PostPaymentIntentsIntentRequestPaymentMethodOptionsUsBankAccountCas
 
 /** The list of permissions to request. If this parameter is passed, the `payment_method` permission must be included. Valid permissions include: `balances`, `ownership`, `payment_method`, and `transactions`. */
 export type PostPaymentIntentsIntentRequestPaymentMethodOptionsUsBankAccountCase0FinancialConnectionsPermissionsList =
-  ReadonlyArray<
+  Array<
     | PostPaymentIntentsIntentRequestPaymentMethodOptionsUsBankAccountCase0FinancialConnectionsPermissionsItem
     | (string & {})
   >;
@@ -122648,7 +122487,7 @@ export const PostPaymentIntentsIntentRequestPaymentMethodOptionsUsBankAccountCas
 
 /** List of data features that you would like to retrieve upon account creation. */
 export type PostPaymentIntentsIntentRequestPaymentMethodOptionsUsBankAccountCase0FinancialConnectionsPrefetchList =
-  ReadonlyArray<
+  Array<
     | PostPaymentIntentsIntentRequestPaymentMethodOptionsUsBankAccountCase0FinancialConnectionsPrefetchItem
     | (string & {})
   >;
@@ -122719,7 +122558,7 @@ export const PostPaymentIntentsIntentRequestPaymentMethodOptionsUsBankAccountCas
 
 /** Triggers validations to run across the selected networks */
 export type PostPaymentIntentsIntentRequestPaymentMethodOptionsUsBankAccountCase0NetworksRequestedList =
-  ReadonlyArray<
+  Array<
     | PostPaymentIntentsIntentRequestPaymentMethodOptionsUsBankAccountCase0NetworksRequestedItem
     | (string & {})
   >;
@@ -123182,7 +123021,7 @@ export const PostPaymentIntentsIntentRequestPaymentMethodOptions =
 
 /** The list of payment method types (for example, card) that this PaymentIntent can use. Use `automatic_payment_methods` to manage payment methods from the [Stripe Dashboard](https://dashboard.stripe.com/settings/payment_methods). A list of valid payment method types can be found [here](https://docs.stripe.com/api/payment_methods/object#payment_method_object-type). */
 export type PostPaymentIntentsIntentRequestPaymentMethodTypesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostPaymentIntentsIntentRequestPaymentMethodTypesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -123465,7 +123304,7 @@ export const PostPaymentIntentsIntentRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Specifies which fields in the response should be expanded. */
 export type PostPaymentIntentsIntentApplyCustomerBalanceRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostPaymentIntentsIntentApplyCustomerBalanceRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -123511,8 +123350,7 @@ export const PostPaymentIntentsIntentCancelRequestCancellationReason =
   /*@__PURE__*/ S.String;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostPaymentIntentsIntentCancelRequestExpandList =
-  ReadonlyArray<string>;
+export type PostPaymentIntentsIntentCancelRequestExpandList = Array<string>;
 export const PostPaymentIntentsIntentCancelRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -123731,7 +123569,7 @@ export const PostPaymentIntentsIntentCaptureRequestAmountDetailsLineItemsCase0It
   }) as any as S.Schema<PostPaymentIntentsIntentCaptureRequestAmountDetailsLineItemsCase0Item>;
 
 export type PostPaymentIntentsIntentCaptureRequestAmountDetailsLineItemsCase0List =
-  ReadonlyArray<PostPaymentIntentsIntentCaptureRequestAmountDetailsLineItemsCase0Item>;
+  Array<PostPaymentIntentsIntentCaptureRequestAmountDetailsLineItemsCase0Item>;
 export const PostPaymentIntentsIntentCaptureRequestAmountDetailsLineItemsCase0List =
   /*@__PURE__*/ S.Array(
     PostPaymentIntentsIntentCaptureRequestAmountDetailsLineItemsCase0Item,
@@ -123880,8 +123718,7 @@ export const PostPaymentIntentsIntentCaptureRequestAmountDetails =
   }) as any as S.Schema<PostPaymentIntentsIntentCaptureRequestAmountDetails>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostPaymentIntentsIntentCaptureRequestExpandList =
-  ReadonlyArray<string>;
+export type PostPaymentIntentsIntentCaptureRequestExpandList = Array<string>;
 export const PostPaymentIntentsIntentCaptureRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -124273,7 +124110,7 @@ export const PostPaymentIntentsIntentConfirmRequestAmountDetailsCase0LineItemsCa
   }) as any as S.Schema<PostPaymentIntentsIntentConfirmRequestAmountDetailsCase0LineItemsCase0Item>;
 
 export type PostPaymentIntentsIntentConfirmRequestAmountDetailsCase0LineItemsCase0List =
-  ReadonlyArray<PostPaymentIntentsIntentConfirmRequestAmountDetailsCase0LineItemsCase0Item>;
+  Array<PostPaymentIntentsIntentConfirmRequestAmountDetailsCase0LineItemsCase0Item>;
 export const PostPaymentIntentsIntentConfirmRequestAmountDetailsCase0LineItemsCase0List =
   /*@__PURE__*/ S.Array(
     PostPaymentIntentsIntentConfirmRequestAmountDetailsCase0LineItemsCase0Item,
@@ -124501,7 +124338,7 @@ export const PostPaymentIntentsIntentConfirmRequestExcludedPaymentMethodTypesCas
   /*@__PURE__*/ S.String;
 
 export type PostPaymentIntentsIntentConfirmRequestExcludedPaymentMethodTypesCase0List =
-  ReadonlyArray<
+  Array<
     | PostPaymentIntentsIntentConfirmRequestExcludedPaymentMethodTypesCase0Item
     | (string & {})
   >;
@@ -124523,8 +124360,7 @@ export const PostPaymentIntentsIntentConfirmRequestExcludedPaymentMethodTypes =
   /*@__PURE__*/ S.Unknown as any as S.Schema<PostPaymentIntentsIntentConfirmRequestExcludedPaymentMethodTypes>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostPaymentIntentsIntentConfirmRequestExpandList =
-  ReadonlyArray<string>;
+export type PostPaymentIntentsIntentConfirmRequestExpandList = Array<string>;
 export const PostPaymentIntentsIntentConfirmRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -126460,7 +126296,7 @@ export const PostPaymentIntentsIntentConfirmRequestPaymentMethodOptionsCardCase0
 
 /** Specifies the type of mandates supported. Possible values are `india`. */
 export type PostPaymentIntentsIntentConfirmRequestPaymentMethodOptionsCardCase0MandateOptionsSupportedTypesList =
-  ReadonlyArray<
+  Array<
     | PostPaymentIntentsIntentConfirmRequestPaymentMethodOptionsCardCase0MandateOptionsSupportedTypesItem
     | (string & {})
   >;
@@ -127010,7 +126846,7 @@ export const PostPaymentIntentsIntentConfirmRequestPaymentMethodOptionsCustomerB
 
 /** List of address types that should be returned in the financial_addresses response. If not specified, all valid types will be returned. Permitted values include: `sort_code`, `zengin`, `iban`, or `spei`. */
 export type PostPaymentIntentsIntentConfirmRequestPaymentMethodOptionsCustomerBalanceCase0BankTransferRequestedAddressTypesList =
-  ReadonlyArray<
+  Array<
     | PostPaymentIntentsIntentConfirmRequestPaymentMethodOptionsCustomerBalanceCase0BankTransferRequestedAddressTypesItem
     | (string & {})
   >;
@@ -127507,7 +127343,7 @@ export const PostPaymentIntentsIntentConfirmRequestPaymentMethodOptionsKlarnaCas
   }) as any as S.Schema<PostPaymentIntentsIntentConfirmRequestPaymentMethodOptionsKlarnaCase0SubscriptionsCase0Item>;
 
 export type PostPaymentIntentsIntentConfirmRequestPaymentMethodOptionsKlarnaCase0SubscriptionsCase0List =
-  ReadonlyArray<PostPaymentIntentsIntentConfirmRequestPaymentMethodOptionsKlarnaCase0SubscriptionsCase0Item>;
+  Array<PostPaymentIntentsIntentConfirmRequestPaymentMethodOptionsKlarnaCase0SubscriptionsCase0Item>;
 export const PostPaymentIntentsIntentConfirmRequestPaymentMethodOptionsKlarnaCase0SubscriptionsCase0List =
   /*@__PURE__*/ S.Array(
     PostPaymentIntentsIntentConfirmRequestPaymentMethodOptionsKlarnaCase0SubscriptionsCase0Item,
@@ -129077,7 +128913,7 @@ export const PostPaymentIntentsIntentConfirmRequestPaymentMethodOptionsUsBankAcc
 
 /** The account subcategories to use to filter for selectable accounts. Valid subcategories are `checking` and `savings`. */
 export type PostPaymentIntentsIntentConfirmRequestPaymentMethodOptionsUsBankAccountCase0FinancialConnectionsFiltersAccountSubcategoriesList =
-  ReadonlyArray<
+  Array<
     | PostPaymentIntentsIntentConfirmRequestPaymentMethodOptionsUsBankAccountCase0FinancialConnectionsFiltersAccountSubcategoriesItem
     | (string & {})
   >;
@@ -129110,7 +128946,7 @@ export const PostPaymentIntentsIntentConfirmRequestPaymentMethodOptionsUsBankAcc
 
 /** The list of permissions to request. If this parameter is passed, the `payment_method` permission must be included. Valid permissions include: `balances`, `ownership`, `payment_method`, and `transactions`. */
 export type PostPaymentIntentsIntentConfirmRequestPaymentMethodOptionsUsBankAccountCase0FinancialConnectionsPermissionsList =
-  ReadonlyArray<
+  Array<
     | PostPaymentIntentsIntentConfirmRequestPaymentMethodOptionsUsBankAccountCase0FinancialConnectionsPermissionsItem
     | (string & {})
   >;
@@ -129126,7 +128962,7 @@ export const PostPaymentIntentsIntentConfirmRequestPaymentMethodOptionsUsBankAcc
 
 /** List of data features that you would like to retrieve upon account creation. */
 export type PostPaymentIntentsIntentConfirmRequestPaymentMethodOptionsUsBankAccountCase0FinancialConnectionsPrefetchList =
-  ReadonlyArray<
+  Array<
     | PostPaymentIntentsIntentConfirmRequestPaymentMethodOptionsUsBankAccountCase0FinancialConnectionsPrefetchItem
     | (string & {})
   >;
@@ -129197,7 +129033,7 @@ export const PostPaymentIntentsIntentConfirmRequestPaymentMethodOptionsUsBankAcc
 
 /** Triggers validations to run across the selected networks */
 export type PostPaymentIntentsIntentConfirmRequestPaymentMethodOptionsUsBankAccountCase0NetworksRequestedList =
-  ReadonlyArray<
+  Array<
     | PostPaymentIntentsIntentConfirmRequestPaymentMethodOptionsUsBankAccountCase0NetworksRequestedItem
     | (string & {})
   >;
@@ -129684,7 +129520,7 @@ export const PostPaymentIntentsIntentConfirmRequestPaymentMethodOptions =
 
 /** The list of payment method types (for example, a card) that this PaymentIntent can use. Use `automatic_payment_methods` to manage payment methods from the [Stripe Dashboard](https://dashboard.stripe.com/settings/payment_methods). A list of valid payment method types can be found [here](https://docs.stripe.com/api/payment_methods/object#payment_method_object-type). */
 export type PostPaymentIntentsIntentConfirmRequestPaymentMethodTypesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostPaymentIntentsIntentConfirmRequestPaymentMethodTypesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -130082,7 +129918,7 @@ export const PostPaymentIntentsIntentIncrementAuthorizationRequestAmountDetailsL
   }) as any as S.Schema<PostPaymentIntentsIntentIncrementAuthorizationRequestAmountDetailsLineItemsCase0Item>;
 
 export type PostPaymentIntentsIntentIncrementAuthorizationRequestAmountDetailsLineItemsCase0List =
-  ReadonlyArray<PostPaymentIntentsIntentIncrementAuthorizationRequestAmountDetailsLineItemsCase0Item>;
+  Array<PostPaymentIntentsIntentIncrementAuthorizationRequestAmountDetailsLineItemsCase0Item>;
 export const PostPaymentIntentsIntentIncrementAuthorizationRequestAmountDetailsLineItemsCase0List =
   /*@__PURE__*/ S.Array(
     PostPaymentIntentsIntentIncrementAuthorizationRequestAmountDetailsLineItemsCase0Item,
@@ -130237,7 +130073,7 @@ export const PostPaymentIntentsIntentIncrementAuthorizationRequestAmountDetails 
 
 /** Specifies which fields in the response should be expanded. */
 export type PostPaymentIntentsIntentIncrementAuthorizationRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostPaymentIntentsIntentIncrementAuthorizationRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -130438,7 +130274,7 @@ export const PostPaymentIntentsIntentIncrementAuthorizationRequest =
 
 /** Two positive integers, in *cents*, equal to the values of the microdeposits sent to the bank account. */
 export type PostPaymentIntentsIntentVerifyMicrodepositsRequestAmountsList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const PostPaymentIntentsIntentVerifyMicrodepositsRequestAmountsList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -130446,7 +130282,7 @@ export const PostPaymentIntentsIntentVerifyMicrodepositsRequestAmountsList =
 
 /** Specifies which fields in the response should be expanded. */
 export type PostPaymentIntentsIntentVerifyMicrodepositsRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostPaymentIntentsIntentVerifyMicrodepositsRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -130674,7 +130510,7 @@ export const PostPaymentLinksRequestCustomFieldsItemDropdownOptionsItem =
 
 /** The options available for the customer to select. Up to 200 options allowed. */
 export type PostPaymentLinksRequestCustomFieldsItemDropdownOptionsList =
-  ReadonlyArray<PostPaymentLinksRequestCustomFieldsItemDropdownOptionsItem>;
+  Array<PostPaymentLinksRequestCustomFieldsItemDropdownOptionsItem>;
 export const PostPaymentLinksRequestCustomFieldsItemDropdownOptionsList =
   /*@__PURE__*/ S.Array(
     PostPaymentLinksRequestCustomFieldsItemDropdownOptionsItem,
@@ -130800,7 +130636,7 @@ export const PostPaymentLinksRequestCustomFieldsItem = /*@__PURE__*/ S.suspend(
 
 /** Collect additional information from your customer using custom fields. Up to 3 fields are supported. You can't set this parameter if `ui_mode` is `custom`. */
 export type PostPaymentLinksRequestCustomFieldsList =
-  ReadonlyArray<PostPaymentLinksRequestCustomFieldsItem>;
+  Array<PostPaymentLinksRequestCustomFieldsItem>;
 export const PostPaymentLinksRequestCustomFieldsList = /*@__PURE__*/ S.Array(
   PostPaymentLinksRequestCustomFieldsItem,
 ) as any as S.Schema<PostPaymentLinksRequestCustomFieldsList>;
@@ -130933,13 +130769,13 @@ export type PostPaymentLinksRequestCustomerCreation = "always" | "if_required";
 export const PostPaymentLinksRequestCustomerCreation = /*@__PURE__*/ S.String;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostPaymentLinksRequestExpandList = ReadonlyArray<string>;
+export type PostPaymentLinksRequestExpandList = Array<string>;
 export const PostPaymentLinksRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostPaymentLinksRequestExpandList>;
 
 export type PostPaymentLinksRequestInvoiceCreationInvoiceDataAccountTaxIdsCase0List =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostPaymentLinksRequestInvoiceCreationInvoiceDataAccountTaxIdsCase0List =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -130975,7 +130811,7 @@ export const PostPaymentLinksRequestInvoiceCreationInvoiceDataCustomFieldsCase0I
   }) as any as S.Schema<PostPaymentLinksRequestInvoiceCreationInvoiceDataCustomFieldsCase0Item>;
 
 export type PostPaymentLinksRequestInvoiceCreationInvoiceDataCustomFieldsCase0List =
-  ReadonlyArray<PostPaymentLinksRequestInvoiceCreationInvoiceDataCustomFieldsCase0Item>;
+  Array<PostPaymentLinksRequestInvoiceCreationInvoiceDataCustomFieldsCase0Item>;
 export const PostPaymentLinksRequestInvoiceCreationInvoiceDataCustomFieldsCase0List =
   /*@__PURE__*/ S.Array(
     PostPaymentLinksRequestInvoiceCreationInvoiceDataCustomFieldsCase0Item,
@@ -131160,7 +130996,7 @@ export const PostPaymentLinksRequestLineItemsItemAdjustableQuantity =
 
 /** A list of up to 8 URLs of images for this product, meant to be displayable to the customer. */
 export type PostPaymentLinksRequestLineItemsItemPriceDataProductDataImagesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostPaymentLinksRequestLineItemsItemPriceDataProductDataImagesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -131310,7 +131146,7 @@ export const PostPaymentLinksRequestLineItemsItem = /*@__PURE__*/ S.suspend(
 
 /** The line items representing what is being sold. Each line item represents an item being sold. Up to 20 line items are supported. */
 export type PostPaymentLinksRequestLineItemsList =
-  ReadonlyArray<PostPaymentLinksRequestLineItemsItem>;
+  Array<PostPaymentLinksRequestLineItemsItem>;
 export const PostPaymentLinksRequestLineItemsList = /*@__PURE__*/ S.Array(
   PostPaymentLinksRequestLineItemsItem,
 ) as any as S.Schema<PostPaymentLinksRequestLineItemsList>;
@@ -131432,7 +131268,7 @@ export const PostPaymentLinksRequestOptionalItemsItem = /*@__PURE__*/ S.suspend(
 
 /** A list of optional items the customer can add to their order at checkout. Use this parameter to pass one-time or recurring [Prices](https://docs.stripe.com/api/prices). There is a maximum of 10 optional items allowed on a payment link, and the existing limits on the number of line items allowed on a payment link apply to the combined number of line items and optional items. There is a maximum of 20 combined line items and optional items. */
 export type PostPaymentLinksRequestOptionalItemsList =
-  ReadonlyArray<PostPaymentLinksRequestOptionalItemsItem>;
+  Array<PostPaymentLinksRequestOptionalItemsItem>;
 export const PostPaymentLinksRequestOptionalItemsList = /*@__PURE__*/ S.Array(
   PostPaymentLinksRequestOptionalItemsItem,
 ) as any as S.Schema<PostPaymentLinksRequestOptionalItemsList>;
@@ -131516,7 +131352,7 @@ export const PostPaymentLinksRequestPaymentMethodOptionsCardRestrictionsBrandsBl
 
 /** The card brands to block. If a customer enters or selects a card belonging to a blocked brand, they can't complete the payment. */
 export type PostPaymentLinksRequestPaymentMethodOptionsCardRestrictionsBrandsBlockedList =
-  ReadonlyArray<
+  Array<
     | PostPaymentLinksRequestPaymentMethodOptionsCardRestrictionsBrandsBlockedItem
     | (string & {})
   >;
@@ -131618,7 +131454,7 @@ export const PostPaymentLinksRequestPaymentMethodTypesItem =
   /*@__PURE__*/ S.String;
 
 /** The list of payment method types that customers can use. If no value is passed, Stripe will dynamically show relevant payment methods from your [payment method settings](https://dashboard.stripe.com/settings/payment_methods) (20+ payment methods [supported](https://docs.stripe.com/payments/payment-methods/integration-options#payment-method-product-support)). */
-export type PostPaymentLinksRequestPaymentMethodTypesList = ReadonlyArray<
+export type PostPaymentLinksRequestPaymentMethodTypesList = Array<
   PostPaymentLinksRequestPaymentMethodTypesItem | (string & {})
 >;
 export const PostPaymentLinksRequestPaymentMethodTypesList =
@@ -131911,7 +131747,7 @@ export const PostPaymentLinksRequestShippingAddressCollectionAllowedCountriesIte
 
 /** An array of two-letter ISO country codes representing which countries Checkout should provide as options for shipping locations. */
 export type PostPaymentLinksRequestShippingAddressCollectionAllowedCountriesList =
-  ReadonlyArray<
+  Array<
     | PostPaymentLinksRequestShippingAddressCollectionAllowedCountriesItem
     | (string & {})
   >;
@@ -131950,7 +131786,7 @@ export const PostPaymentLinksRequestShippingOptionsItem =
 
 /** The shipping rate options to apply to [checkout sessions](https://docs.stripe.com/api/checkout/sessions) created by this payment link. */
 export type PostPaymentLinksRequestShippingOptionsList =
-  ReadonlyArray<PostPaymentLinksRequestShippingOptionsItem>;
+  Array<PostPaymentLinksRequestShippingOptionsItem>;
 export const PostPaymentLinksRequestShippingOptionsList = /*@__PURE__*/ S.Array(
   PostPaymentLinksRequestShippingOptionsItem,
 ) as any as S.Schema<PostPaymentLinksRequestShippingOptionsList>;
@@ -132384,7 +132220,7 @@ export const PostPaymentLinksPaymentLinkRequestCustomFieldsCase0ItemDropdownOpti
 
 /** The options available for the customer to select. Up to 200 options allowed. */
 export type PostPaymentLinksPaymentLinkRequestCustomFieldsCase0ItemDropdownOptionsList =
-  ReadonlyArray<PostPaymentLinksPaymentLinkRequestCustomFieldsCase0ItemDropdownOptionsItem>;
+  Array<PostPaymentLinksPaymentLinkRequestCustomFieldsCase0ItemDropdownOptionsItem>;
 export const PostPaymentLinksPaymentLinkRequestCustomFieldsCase0ItemDropdownOptionsList =
   /*@__PURE__*/ S.Array(
     PostPaymentLinksPaymentLinkRequestCustomFieldsCase0ItemDropdownOptionsItem,
@@ -132523,7 +132359,7 @@ export const PostPaymentLinksPaymentLinkRequestCustomFieldsCase0Item =
   }) as any as S.Schema<PostPaymentLinksPaymentLinkRequestCustomFieldsCase0Item>;
 
 export type PostPaymentLinksPaymentLinkRequestCustomFieldsCase0List =
-  ReadonlyArray<PostPaymentLinksPaymentLinkRequestCustomFieldsCase0Item>;
+  Array<PostPaymentLinksPaymentLinkRequestCustomFieldsCase0Item>;
 export const PostPaymentLinksPaymentLinkRequestCustomFieldsCase0List =
   /*@__PURE__*/ S.Array(
     PostPaymentLinksPaymentLinkRequestCustomFieldsCase0Item,
@@ -132677,8 +132513,7 @@ export const PostPaymentLinksPaymentLinkRequestCustomerCreation =
   /*@__PURE__*/ S.String;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostPaymentLinksPaymentLinkRequestExpandList =
-  ReadonlyArray<string>;
+export type PostPaymentLinksPaymentLinkRequestExpandList = Array<string>;
 export const PostPaymentLinksPaymentLinkRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -132696,7 +132531,7 @@ export const PostPaymentLinksPaymentLinkRequestInactiveMessage =
   /*@__PURE__*/ S.Unknown as any as S.Schema<PostPaymentLinksPaymentLinkRequestInactiveMessage>;
 
 export type PostPaymentLinksPaymentLinkRequestInvoiceCreationInvoiceDataAccountTaxIdsCase0List =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostPaymentLinksPaymentLinkRequestInvoiceCreationInvoiceDataAccountTaxIdsCase0List =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -132732,7 +132567,7 @@ export const PostPaymentLinksPaymentLinkRequestInvoiceCreationInvoiceDataCustomF
   }) as any as S.Schema<PostPaymentLinksPaymentLinkRequestInvoiceCreationInvoiceDataCustomFieldsCase0Item>;
 
 export type PostPaymentLinksPaymentLinkRequestInvoiceCreationInvoiceDataCustomFieldsCase0List =
-  ReadonlyArray<PostPaymentLinksPaymentLinkRequestInvoiceCreationInvoiceDataCustomFieldsCase0Item>;
+  Array<PostPaymentLinksPaymentLinkRequestInvoiceCreationInvoiceDataCustomFieldsCase0Item>;
 export const PostPaymentLinksPaymentLinkRequestInvoiceCreationInvoiceDataCustomFieldsCase0List =
   /*@__PURE__*/ S.Array(
     PostPaymentLinksPaymentLinkRequestInvoiceCreationInvoiceDataCustomFieldsCase0Item,
@@ -132940,7 +132775,7 @@ export const PostPaymentLinksPaymentLinkRequestLineItemsItem =
 
 /** The line items representing what is being sold. Each line item represents an item being sold. Up to 20 line items are supported. */
 export type PostPaymentLinksPaymentLinkRequestLineItemsList =
-  ReadonlyArray<PostPaymentLinksPaymentLinkRequestLineItemsItem>;
+  Array<PostPaymentLinksPaymentLinkRequestLineItemsItem>;
 export const PostPaymentLinksPaymentLinkRequestLineItemsList =
   /*@__PURE__*/ S.Array(
     PostPaymentLinksPaymentLinkRequestLineItemsItem,
@@ -133065,7 +132900,7 @@ export const PostPaymentLinksPaymentLinkRequestOptionalItemsCase0Item =
   }) as any as S.Schema<PostPaymentLinksPaymentLinkRequestOptionalItemsCase0Item>;
 
 export type PostPaymentLinksPaymentLinkRequestOptionalItemsCase0List =
-  ReadonlyArray<PostPaymentLinksPaymentLinkRequestOptionalItemsCase0Item>;
+  Array<PostPaymentLinksPaymentLinkRequestOptionalItemsCase0Item>;
 export const PostPaymentLinksPaymentLinkRequestOptionalItemsCase0List =
   /*@__PURE__*/ S.Array(
     PostPaymentLinksPaymentLinkRequestOptionalItemsCase0Item,
@@ -133199,7 +133034,7 @@ export const PostPaymentLinksPaymentLinkRequestPaymentMethodOptionsCase0CardCase
   /*@__PURE__*/ S.String;
 
 export type PostPaymentLinksPaymentLinkRequestPaymentMethodOptionsCase0CardCase0RestrictionsCase0BrandsBlockedCase0List =
-  ReadonlyArray<
+  Array<
     | PostPaymentLinksPaymentLinkRequestPaymentMethodOptionsCase0CardCase0RestrictionsCase0BrandsBlockedCase0Item
     | (string & {})
   >;
@@ -133349,7 +133184,7 @@ export const PostPaymentLinksPaymentLinkRequestPaymentMethodTypesCase0Item =
   /*@__PURE__*/ S.String;
 
 export type PostPaymentLinksPaymentLinkRequestPaymentMethodTypesCase0List =
-  ReadonlyArray<
+  Array<
     | PostPaymentLinksPaymentLinkRequestPaymentMethodTypesCase0Item
     | (string & {})
   >;
@@ -133667,7 +133502,7 @@ export const PostPaymentLinksPaymentLinkRequestShippingAddressCollectionCase0All
 
 /** An array of two-letter ISO country codes representing which countries Checkout should provide as options for shipping locations. */
 export type PostPaymentLinksPaymentLinkRequestShippingAddressCollectionCase0AllowedCountriesList =
-  ReadonlyArray<
+  Array<
     | PostPaymentLinksPaymentLinkRequestShippingAddressCollectionCase0AllowedCountriesItem
     | (string & {})
   >;
@@ -134877,8 +134712,7 @@ export const PostPaymentMethodConfigurationsRequestEps =
   }) as any as S.Schema<PostPaymentMethodConfigurationsRequestEps>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostPaymentMethodConfigurationsRequestExpandList =
-  ReadonlyArray<string>;
+export type PostPaymentMethodConfigurationsRequestExpandList = Array<string>;
 export const PostPaymentMethodConfigurationsRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -137553,7 +137387,7 @@ export const PostPaymentMethodConfigurationsConfigurationRequestEps =
 
 /** Specifies which fields in the response should be expanded. */
 export type PostPaymentMethodConfigurationsConfigurationRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostPaymentMethodConfigurationsConfigurationRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -139468,7 +139302,7 @@ export const PostPaymentMethodConfigurationsConfigurationRequest =
   }) as any as S.Schema<PostPaymentMethodConfigurationsConfigurationRequest>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostPaymentMethodDomainsRequestExpandList = ReadonlyArray<string>;
+export type PostPaymentMethodDomainsRequestExpandList = Array<string>;
 export const PostPaymentMethodDomainsRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostPaymentMethodDomainsRequestExpandList>;
@@ -139500,7 +139334,7 @@ export const PostPaymentMethodDomainsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Specifies which fields in the response should be expanded. */
 export type PostPaymentMethodDomainsPaymentMethodDomainRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostPaymentMethodDomainsPaymentMethodDomainRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -139535,7 +139369,7 @@ export const PostPaymentMethodDomainsPaymentMethodDomainRequest =
 
 /** Specifies which fields in the response should be expanded. */
 export type PostPaymentMethodDomainsPaymentMethodDomainValidateRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostPaymentMethodDomainsPaymentMethodDomainValidateRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -139884,7 +139718,7 @@ export const PostPaymentMethodsRequestEps = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostPaymentMethodsRequestEps>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostPaymentMethodsRequestExpandList = ReadonlyArray<string>;
+export type PostPaymentMethodsRequestExpandList = Array<string>;
 export const PostPaymentMethodsRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostPaymentMethodsRequestExpandList>;
@@ -140703,8 +140537,7 @@ export const PostPaymentMethodsPaymentMethodRequestCard =
   }) as any as S.Schema<PostPaymentMethodsPaymentMethodRequestCard>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostPaymentMethodsPaymentMethodRequestExpandList =
-  ReadonlyArray<string>;
+export type PostPaymentMethodsPaymentMethodRequestExpandList = Array<string>;
 export const PostPaymentMethodsPaymentMethodRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -140838,7 +140671,7 @@ export const PostPaymentMethodsPaymentMethodRequest = /*@__PURE__*/ S.suspend(
 
 /** Specifies which fields in the response should be expanded. */
 export type PostPaymentMethodsPaymentMethodAttachRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostPaymentMethodsPaymentMethodAttachRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -140876,7 +140709,7 @@ export const PostPaymentMethodsPaymentMethodAttachRequest =
 
 /** Specifies which fields in the response should be expanded. */
 export type PostPaymentMethodsPaymentMethodDetachRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostPaymentMethodsPaymentMethodDetachRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -140908,7 +140741,7 @@ export const PostPaymentMethodsPaymentMethodDetachRequest =
 
 /** Specifies which fields in the response should be expanded. */
 export type PostPaymentRecordsIdReportPaymentAttemptRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostPaymentRecordsIdReportPaymentAttemptRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -141197,7 +141030,7 @@ export const PostPaymentRecordsIdReportPaymentAttemptRequest =
 
 /** Specifies which fields in the response should be expanded. */
 export type PostPaymentRecordsIdReportPaymentAttemptCanceledRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostPaymentRecordsIdReportPaymentAttemptCanceledRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -141258,7 +141091,7 @@ export const PostPaymentRecordsIdReportPaymentAttemptCanceledRequest =
 
 /** Specifies which fields in the response should be expanded. */
 export type PostPaymentRecordsIdReportPaymentAttemptFailedRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostPaymentRecordsIdReportPaymentAttemptFailedRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -141319,7 +141152,7 @@ export const PostPaymentRecordsIdReportPaymentAttemptFailedRequest =
 
 /** Specifies which fields in the response should be expanded. */
 export type PostPaymentRecordsIdReportPaymentAttemptGuaranteedRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostPaymentRecordsIdReportPaymentAttemptGuaranteedRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -141416,7 +141249,7 @@ export const PostPaymentRecordsIdReportPaymentAttemptInformationalRequestDescrip
 
 /** Specifies which fields in the response should be expanded. */
 export type PostPaymentRecordsIdReportPaymentAttemptInformationalRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostPaymentRecordsIdReportPaymentAttemptInformationalRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -141569,8 +141402,7 @@ export const PostPaymentRecordsIdReportRefundRequestAmount =
   }) as any as S.Schema<PostPaymentRecordsIdReportRefundRequestAmount>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostPaymentRecordsIdReportRefundRequestExpandList =
-  ReadonlyArray<string>;
+export type PostPaymentRecordsIdReportRefundRequestExpandList = Array<string>;
 export const PostPaymentRecordsIdReportRefundRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -141746,8 +141578,7 @@ export const PostPaymentRecordsReportPaymentRequestCustomerPresence =
   /*@__PURE__*/ S.String;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostPaymentRecordsReportPaymentRequestExpandList =
-  ReadonlyArray<string>;
+export type PostPaymentRecordsReportPaymentRequestExpandList = Array<string>;
 export const PostPaymentRecordsReportPaymentRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -142079,7 +141910,7 @@ export const PostPaymentRecordsReportPaymentRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PostPaymentRecordsReportPaymentRequest>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostPayoutsRequestExpandList = ReadonlyArray<string>;
+export type PostPayoutsRequestExpandList = Array<string>;
 export const PostPayoutsRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostPayoutsRequestExpandList>;
@@ -142148,7 +141979,7 @@ export const PostPayoutsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostPayoutsRequest>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostPayoutsPayoutRequestExpandList = ReadonlyArray<string>;
+export type PostPayoutsPayoutRequestExpandList = Array<string>;
 export const PostPayoutsPayoutRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostPayoutsPayoutRequestExpandList>;
@@ -142196,7 +142027,7 @@ export const PostPayoutsPayoutRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostPayoutsPayoutRequest>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostPayoutsPayoutCancelRequestExpandList = ReadonlyArray<string>;
+export type PostPayoutsPayoutCancelRequestExpandList = Array<string>;
 export const PostPayoutsPayoutCancelRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostPayoutsPayoutCancelRequestExpandList>;
@@ -142223,7 +142054,7 @@ export const PostPayoutsPayoutCancelRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostPayoutsPayoutCancelRequest>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostPayoutsPayoutReverseRequestExpandList = ReadonlyArray<string>;
+export type PostPayoutsPayoutReverseRequestExpandList = Array<string>;
 export const PostPayoutsPayoutReverseRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostPayoutsPayoutReverseRequestExpandList>;
@@ -142267,7 +142098,7 @@ export type PostPlansRequestBillingScheme = "per_unit" | "tiered";
 export const PostPlansRequestBillingScheme = /*@__PURE__*/ S.String;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostPlansRequestExpandList = ReadonlyArray<string>;
+export type PostPlansRequestExpandList = Array<string>;
 export const PostPlansRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostPlansRequestExpandList>;
@@ -142373,8 +142204,7 @@ export const PostPlansRequestTiersItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostPlansRequestTiersItem>;
 
 /** Each element represents a pricing tier. This parameter requires `billing_scheme` to be set to `tiered`. See also the documentation for `billing_scheme`. */
-export type PostPlansRequestTiersList =
-  ReadonlyArray<PostPlansRequestTiersItem>;
+export type PostPlansRequestTiersList = Array<PostPlansRequestTiersItem>;
 export const PostPlansRequestTiersList = /*@__PURE__*/ S.Array(
   PostPlansRequestTiersItem,
 ) as any as S.Schema<PostPlansRequestTiersList>;
@@ -142477,7 +142307,7 @@ export const PostPlansRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostPlansRequest>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostPlansPlanRequestExpandList = ReadonlyArray<string>;
+export type PostPlansPlanRequestExpandList = Array<string>;
 export const PostPlansPlanRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostPlansPlanRequestExpandList>;
@@ -142609,7 +142439,7 @@ export const PostPricesRequestCurrencyOptionsValueTiersItem =
 
 /** Each element represents a pricing tier. This parameter requires `billing_scheme` to be set to `tiered`. See also the documentation for `billing_scheme`. */
 export type PostPricesRequestCurrencyOptionsValueTiersList =
-  ReadonlyArray<PostPricesRequestCurrencyOptionsValueTiersItem>;
+  Array<PostPricesRequestCurrencyOptionsValueTiersItem>;
 export const PostPricesRequestCurrencyOptionsValueTiersList =
   /*@__PURE__*/ S.Array(
     PostPricesRequestCurrencyOptionsValueTiersItem,
@@ -142678,7 +142508,7 @@ export const PostPricesRequestCustomUnitAmount = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostPricesRequestCustomUnitAmount>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostPricesRequestExpandList = ReadonlyArray<string>;
+export type PostPricesRequestExpandList = Array<string>;
 export const PostPricesRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostPricesRequestExpandList>;
@@ -142811,8 +142641,7 @@ export const PostPricesRequestTiersItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostPricesRequestTiersItem>;
 
 /** Each element represents a pricing tier. This parameter requires `billing_scheme` to be set to `tiered`. See also the documentation for `billing_scheme`. */
-export type PostPricesRequestTiersList =
-  ReadonlyArray<PostPricesRequestTiersItem>;
+export type PostPricesRequestTiersList = Array<PostPricesRequestTiersItem>;
 export const PostPricesRequestTiersList = /*@__PURE__*/ S.Array(
   PostPricesRequestTiersItem,
 ) as any as S.Schema<PostPricesRequestTiersList>;
@@ -142985,7 +142814,7 @@ export const PostPricesPriceRequestCurrencyOptionsCase0ValueTiersItem =
 
 /** Each element represents a pricing tier. This parameter requires `billing_scheme` to be set to `tiered`. See also the documentation for `billing_scheme`. */
 export type PostPricesPriceRequestCurrencyOptionsCase0ValueTiersList =
-  ReadonlyArray<PostPricesPriceRequestCurrencyOptionsCase0ValueTiersItem>;
+  Array<PostPricesPriceRequestCurrencyOptionsCase0ValueTiersItem>;
 export const PostPricesPriceRequestCurrencyOptionsCase0ValueTiersList =
   /*@__PURE__*/ S.Array(
     PostPricesPriceRequestCurrencyOptionsCase0ValueTiersItem,
@@ -143045,7 +142874,7 @@ export const PostPricesPriceRequestCurrencyOptions =
   /*@__PURE__*/ S.Unknown as any as S.Schema<PostPricesPriceRequestCurrencyOptions>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostPricesPriceRequestExpandList = ReadonlyArray<string>;
+export type PostPricesPriceRequestExpandList = Array<string>;
 export const PostPricesPriceRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostPricesPriceRequestExpandList>;
@@ -143188,7 +143017,7 @@ export const PostProductsRequestDefaultPriceDataCurrencyOptionsValueTiersItem =
 
 /** Each element represents a pricing tier. This parameter requires `billing_scheme` to be set to `tiered`. See also the documentation for `billing_scheme`. */
 export type PostProductsRequestDefaultPriceDataCurrencyOptionsValueTiersList =
-  ReadonlyArray<PostProductsRequestDefaultPriceDataCurrencyOptionsValueTiersItem>;
+  Array<PostProductsRequestDefaultPriceDataCurrencyOptionsValueTiersItem>;
 export const PostProductsRequestDefaultPriceDataCurrencyOptionsValueTiersList =
   /*@__PURE__*/ S.Array(
     PostProductsRequestDefaultPriceDataCurrencyOptionsValueTiersItem,
@@ -143347,13 +143176,13 @@ export const PostProductsRequestDefaultPriceData = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostProductsRequestDefaultPriceData>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostProductsRequestExpandList = ReadonlyArray<string>;
+export type PostProductsRequestExpandList = Array<string>;
 export const PostProductsRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostProductsRequestExpandList>;
 
 /** A list of up to 8 URLs of images for this product, meant to be displayable to the customer. */
-export type PostProductsRequestImagesList = ReadonlyArray<string>;
+export type PostProductsRequestImagesList = Array<string>;
 export const PostProductsRequestImagesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostProductsRequestImagesList>;
@@ -143373,7 +143202,7 @@ export const PostProductsRequestMarketingFeaturesItem = /*@__PURE__*/ S.suspend(
 
 /** A list of up to 15 marketing features for this product. These are displayed in [pricing tables](https://docs.stripe.com/payments/checkout/pricing-table). */
 export type PostProductsRequestMarketingFeaturesList =
-  ReadonlyArray<PostProductsRequestMarketingFeaturesItem>;
+  Array<PostProductsRequestMarketingFeaturesItem>;
 export const PostProductsRequestMarketingFeaturesList = /*@__PURE__*/ S.Array(
   PostProductsRequestMarketingFeaturesItem,
 ) as any as S.Schema<PostProductsRequestMarketingFeaturesList>;
@@ -143489,12 +143318,12 @@ export const PostProductsIdRequestDescription =
   /*@__PURE__*/ S.Unknown as any as S.Schema<PostProductsIdRequestDescription>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostProductsIdRequestExpandList = ReadonlyArray<string>;
+export type PostProductsIdRequestExpandList = Array<string>;
 export const PostProductsIdRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostProductsIdRequestExpandList>;
 
-export type PostProductsIdRequestImagesCase0List = ReadonlyArray<string>;
+export type PostProductsIdRequestImagesCase0List = Array<string>;
 export const PostProductsIdRequestImagesCase0List = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostProductsIdRequestImagesCase0List>;
@@ -143523,7 +143352,7 @@ export const PostProductsIdRequestMarketingFeaturesCase0Item =
   }) as any as S.Schema<PostProductsIdRequestMarketingFeaturesCase0Item>;
 
 export type PostProductsIdRequestMarketingFeaturesCase0List =
-  ReadonlyArray<PostProductsIdRequestMarketingFeaturesCase0Item>;
+  Array<PostProductsIdRequestMarketingFeaturesCase0Item>;
 export const PostProductsIdRequestMarketingFeaturesCase0List =
   /*@__PURE__*/ S.Array(
     PostProductsIdRequestMarketingFeaturesCase0Item,
@@ -143690,8 +143519,7 @@ export const PostProductsIdRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostProductsIdRequest>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostProductsProductFeaturesRequestExpandList =
-  ReadonlyArray<string>;
+export type PostProductsProductFeaturesRequestExpandList = Array<string>;
 export const PostProductsProductFeaturesRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -143722,7 +143550,7 @@ export const PostProductsProductFeaturesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostProductsProductFeaturesRequest>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostPromotionCodesRequestExpandList = ReadonlyArray<string>;
+export type PostPromotionCodesRequestExpandList = Array<string>;
 export const PostPromotionCodesRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostPromotionCodesRequestExpandList>;
@@ -143853,8 +143681,7 @@ export const PostPromotionCodesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostPromotionCodesRequest>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostPromotionCodesPromotionCodeRequestExpandList =
-  ReadonlyArray<string>;
+export type PostPromotionCodesPromotionCodeRequestExpandList = Array<string>;
 export const PostPromotionCodesPromotionCodeRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -144022,7 +143849,7 @@ export type PostQuotesRequestCollectionMethod =
   | "send_invoice";
 export const PostQuotesRequestCollectionMethod = /*@__PURE__*/ S.String;
 
-export type PostQuotesRequestDefaultTaxRatesCase0List = ReadonlyArray<string>;
+export type PostQuotesRequestDefaultTaxRatesCase0List = Array<string>;
 export const PostQuotesRequestDefaultTaxRatesCase0List = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostQuotesRequestDefaultTaxRatesCase0List>;
@@ -144066,7 +143893,7 @@ export const PostQuotesRequestDiscountsCase0Item = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostQuotesRequestDiscountsCase0Item>;
 
 export type PostQuotesRequestDiscountsCase0List =
-  ReadonlyArray<PostQuotesRequestDiscountsCase0Item>;
+  Array<PostQuotesRequestDiscountsCase0Item>;
 export const PostQuotesRequestDiscountsCase0List = /*@__PURE__*/ S.Array(
   PostQuotesRequestDiscountsCase0Item,
 ) as any as S.Schema<PostQuotesRequestDiscountsCase0List>;
@@ -144082,7 +143909,7 @@ export const PostQuotesRequestDiscounts =
   /*@__PURE__*/ S.Unknown as any as S.Schema<PostQuotesRequestDiscounts>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostQuotesRequestExpandList = ReadonlyArray<string>;
+export type PostQuotesRequestExpandList = Array<string>;
 export const PostQuotesRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostQuotesRequestExpandList>;
@@ -144177,7 +144004,7 @@ export const PostQuotesRequestLineItemsItemDiscountsCase0Item =
   }) as any as S.Schema<PostQuotesRequestLineItemsItemDiscountsCase0Item>;
 
 export type PostQuotesRequestLineItemsItemDiscountsCase0List =
-  ReadonlyArray<PostQuotesRequestLineItemsItemDiscountsCase0Item>;
+  Array<PostQuotesRequestLineItemsItemDiscountsCase0Item>;
 export const PostQuotesRequestLineItemsItemDiscountsCase0List =
   /*@__PURE__*/ S.Array(
     PostQuotesRequestLineItemsItemDiscountsCase0Item,
@@ -144263,8 +144090,7 @@ export const PostQuotesRequestLineItemsItemPriceData = /*@__PURE__*/ S.suspend(
   identifier: "PostQuotesRequestLineItemsItemPriceData",
 }) as any as S.Schema<PostQuotesRequestLineItemsItemPriceData>;
 
-export type PostQuotesRequestLineItemsItemTaxRatesCase0List =
-  ReadonlyArray<string>;
+export type PostQuotesRequestLineItemsItemTaxRatesCase0List = Array<string>;
 export const PostQuotesRequestLineItemsItemTaxRatesCase0List =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -144307,7 +144133,7 @@ export const PostQuotesRequestLineItemsItem = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of line items the customer is being quoted for. Each line item includes information about the product, the quantity, and the resulting cost. */
 export type PostQuotesRequestLineItemsList =
-  ReadonlyArray<PostQuotesRequestLineItemsItem>;
+  Array<PostQuotesRequestLineItemsItem>;
 export const PostQuotesRequestLineItemsList = /*@__PURE__*/ S.Array(
   PostQuotesRequestLineItemsItem,
 ) as any as S.Schema<PostQuotesRequestLineItemsList>;
@@ -144621,8 +144447,7 @@ export type PostQuotesQuoteRequestCollectionMethod =
   | "send_invoice";
 export const PostQuotesQuoteRequestCollectionMethod = /*@__PURE__*/ S.String;
 
-export type PostQuotesQuoteRequestDefaultTaxRatesCase0List =
-  ReadonlyArray<string>;
+export type PostQuotesQuoteRequestDefaultTaxRatesCase0List = Array<string>;
 export const PostQuotesQuoteRequestDefaultTaxRatesCase0List =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -144669,7 +144494,7 @@ export const PostQuotesQuoteRequestDiscountsCase0Item = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PostQuotesQuoteRequestDiscountsCase0Item>;
 
 export type PostQuotesQuoteRequestDiscountsCase0List =
-  ReadonlyArray<PostQuotesQuoteRequestDiscountsCase0Item>;
+  Array<PostQuotesQuoteRequestDiscountsCase0Item>;
 export const PostQuotesQuoteRequestDiscountsCase0List = /*@__PURE__*/ S.Array(
   PostQuotesQuoteRequestDiscountsCase0Item,
 ) as any as S.Schema<PostQuotesQuoteRequestDiscountsCase0List>;
@@ -144685,7 +144510,7 @@ export const PostQuotesQuoteRequestDiscounts =
   /*@__PURE__*/ S.Unknown as any as S.Schema<PostQuotesQuoteRequestDiscounts>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostQuotesQuoteRequestExpandList = ReadonlyArray<string>;
+export type PostQuotesQuoteRequestExpandList = Array<string>;
 export const PostQuotesQuoteRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostQuotesQuoteRequestExpandList>;
@@ -144771,7 +144596,7 @@ export const PostQuotesQuoteRequestLineItemsItemDiscountsCase0Item =
   }) as any as S.Schema<PostQuotesQuoteRequestLineItemsItemDiscountsCase0Item>;
 
 export type PostQuotesQuoteRequestLineItemsItemDiscountsCase0List =
-  ReadonlyArray<PostQuotesQuoteRequestLineItemsItemDiscountsCase0Item>;
+  Array<PostQuotesQuoteRequestLineItemsItemDiscountsCase0Item>;
 export const PostQuotesQuoteRequestLineItemsItemDiscountsCase0List =
   /*@__PURE__*/ S.Array(
     PostQuotesQuoteRequestLineItemsItemDiscountsCase0Item,
@@ -144860,7 +144685,7 @@ export const PostQuotesQuoteRequestLineItemsItemPriceData =
   }) as any as S.Schema<PostQuotesQuoteRequestLineItemsItemPriceData>;
 
 export type PostQuotesQuoteRequestLineItemsItemTaxRatesCase0List =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostQuotesQuoteRequestLineItemsItemTaxRatesCase0List =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -144906,7 +144731,7 @@ export const PostQuotesQuoteRequestLineItemsItem = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of line items the customer is being quoted for. Each line item includes information about the product, the quantity, and the resulting cost. */
 export type PostQuotesQuoteRequestLineItemsList =
-  ReadonlyArray<PostQuotesQuoteRequestLineItemsItem>;
+  Array<PostQuotesQuoteRequestLineItemsItem>;
 export const PostQuotesQuoteRequestLineItemsList = /*@__PURE__*/ S.Array(
   PostQuotesQuoteRequestLineItemsItem,
 ) as any as S.Schema<PostQuotesQuoteRequestLineItemsList>;
@@ -145117,7 +144942,7 @@ export const PostQuotesQuoteRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostQuotesQuoteRequest>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostQuotesQuoteAcceptRequestExpandList = ReadonlyArray<string>;
+export type PostQuotesQuoteAcceptRequestExpandList = Array<string>;
 export const PostQuotesQuoteAcceptRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostQuotesQuoteAcceptRequestExpandList>;
@@ -145144,7 +144969,7 @@ export const PostQuotesQuoteAcceptRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostQuotesQuoteAcceptRequest>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostQuotesQuoteCancelRequestExpandList = ReadonlyArray<string>;
+export type PostQuotesQuoteCancelRequestExpandList = Array<string>;
 export const PostQuotesQuoteCancelRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostQuotesQuoteCancelRequestExpandList>;
@@ -145171,7 +144996,7 @@ export const PostQuotesQuoteCancelRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostQuotesQuoteCancelRequest>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostQuotesQuoteFinalizeRequestExpandList = ReadonlyArray<string>;
+export type PostQuotesQuoteFinalizeRequestExpandList = Array<string>;
 export const PostQuotesQuoteFinalizeRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostQuotesQuoteFinalizeRequestExpandList>;
@@ -145241,8 +145066,7 @@ export const PostRadarPaymentEvaluationsRequestCustomerDetails =
   }) as any as S.Schema<PostRadarPaymentEvaluationsRequestCustomerDetails>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostRadarPaymentEvaluationsRequestExpandList =
-  ReadonlyArray<string>;
+export type PostRadarPaymentEvaluationsRequestExpandList = Array<string>;
 export const PostRadarPaymentEvaluationsRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -145771,7 +145595,7 @@ export const InsightsResourcesPaymentEvaluationEvent = /*@__PURE__*/ S.suspend(
 
 /** Event information associated with the payment evaluation, such as refunds, dispute, early fraud warnings, or user interventions. */
 export type RadarPaymentEvaluationEventsList =
-  ReadonlyArray<InsightsResourcesPaymentEvaluationEvent>;
+  Array<InsightsResourcesPaymentEvaluationEvent>;
 export const RadarPaymentEvaluationEventsList = /*@__PURE__*/ S.Array(
   InsightsResourcesPaymentEvaluationEvent,
 ) as any as S.Schema<RadarPaymentEvaluationEventsList>;
@@ -146274,7 +146098,7 @@ export const RadarPaymentEvaluation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RadarPaymentEvaluation>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostRadarValueListItemsRequestExpandList = ReadonlyArray<string>;
+export type PostRadarValueListItemsRequestExpandList = Array<string>;
 export const PostRadarValueListItemsRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostRadarValueListItemsRequestExpandList>;
@@ -146305,7 +146129,7 @@ export const PostRadarValueListItemsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostRadarValueListItemsRequest>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostRadarValueListsRequestExpandList = ReadonlyArray<string>;
+export type PostRadarValueListsRequestExpandList = Array<string>;
 export const PostRadarValueListsRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostRadarValueListsRequestExpandList>;
@@ -146367,8 +146191,7 @@ export const PostRadarValueListsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostRadarValueListsRequest>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostRadarValueListsValueListRequestExpandList =
-  ReadonlyArray<string>;
+export type PostRadarValueListsValueListRequestExpandList = Array<string>;
 export const PostRadarValueListsValueListRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -146415,7 +146238,7 @@ export const PostRadarValueListsValueListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostRadarValueListsValueListRequest>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostRefundsRequestExpandList = ReadonlyArray<string>;
+export type PostRefundsRequestExpandList = Array<string>;
 export const PostRefundsRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostRefundsRequestExpandList>;
@@ -146501,7 +146324,7 @@ export const PostRefundsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostRefundsRequest>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostRefundsRefundRequestExpandList = ReadonlyArray<string>;
+export type PostRefundsRefundRequestExpandList = Array<string>;
 export const PostRefundsRefundRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostRefundsRefundRequestExpandList>;
@@ -146549,7 +146372,7 @@ export const PostRefundsRefundRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostRefundsRefundRequest>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostRefundsRefundCancelRequestExpandList = ReadonlyArray<string>;
+export type PostRefundsRefundCancelRequestExpandList = Array<string>;
 export const PostRefundsRefundCancelRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostRefundsRefundCancelRequestExpandList>;
@@ -146576,14 +146399,13 @@ export const PostRefundsRefundCancelRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostRefundsRefundCancelRequest>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostReportingReportRunsRequestExpandList = ReadonlyArray<string>;
+export type PostReportingReportRunsRequestExpandList = Array<string>;
 export const PostReportingReportRunsRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostReportingReportRunsRequestExpandList>;
 
 /** The set of report columns to include in the report output. If omitted, the Report Type is run with its default column set. */
-export type PostReportingReportRunsRequestParametersColumnsList =
-  ReadonlyArray<string>;
+export type PostReportingReportRunsRequestParametersColumnsList = Array<string>;
 export const PostReportingReportRunsRequestParametersColumnsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -147300,7 +147122,7 @@ export const PostReportingReportRunsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostReportingReportRunsRequest>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostReviewsReviewApproveRequestExpandList = ReadonlyArray<string>;
+export type PostReviewsReviewApproveRequestExpandList = Array<string>;
 export const PostReviewsReviewApproveRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostReviewsReviewApproveRequestExpandList>;
@@ -147412,17 +147234,16 @@ export const PostSetupIntentsRequestExcludedPaymentMethodTypesItem =
   /*@__PURE__*/ S.String;
 
 /** The list of payment method types to exclude from use with this SetupIntent. */
-export type PostSetupIntentsRequestExcludedPaymentMethodTypesList =
-  ReadonlyArray<
-    PostSetupIntentsRequestExcludedPaymentMethodTypesItem | (string & {})
-  >;
+export type PostSetupIntentsRequestExcludedPaymentMethodTypesList = Array<
+  PostSetupIntentsRequestExcludedPaymentMethodTypesItem | (string & {})
+>;
 export const PostSetupIntentsRequestExcludedPaymentMethodTypesList =
   /*@__PURE__*/ S.Array(
     PostSetupIntentsRequestExcludedPaymentMethodTypesItem,
   ) as any as S.Schema<PostSetupIntentsRequestExcludedPaymentMethodTypesList>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostSetupIntentsRequestExpandList = ReadonlyArray<string>;
+export type PostSetupIntentsRequestExpandList = Array<string>;
 export const PostSetupIntentsRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostSetupIntentsRequestExpandList>;
@@ -147431,7 +147252,7 @@ export type PostSetupIntentsRequestFlowDirectionsItem = "inbound" | "outbound";
 export const PostSetupIntentsRequestFlowDirectionsItem = /*@__PURE__*/ S.String;
 
 /** Indicates the directions of money movement for which this payment method is intended to be used. Include `inbound` if you intend to use the payment method as the origin to pull funds from. Include `outbound` if you intend to use the payment method as the destination to send funds to. You can include both if you intend to use the payment method for both purposes. */
-export type PostSetupIntentsRequestFlowDirectionsList = ReadonlyArray<
+export type PostSetupIntentsRequestFlowDirectionsList = Array<
   PostSetupIntentsRequestFlowDirectionsItem | (string & {})
 >;
 export const PostSetupIntentsRequestFlowDirectionsList = /*@__PURE__*/ S.Array(
@@ -148450,7 +148271,7 @@ export const PostSetupIntentsRequestPaymentMethodOptionsAcssDebitMandateOptionsD
 
 /** List of Stripe products where this mandate can be selected automatically. */
 export type PostSetupIntentsRequestPaymentMethodOptionsAcssDebitMandateOptionsDefaultForList =
-  ReadonlyArray<
+  Array<
     | PostSetupIntentsRequestPaymentMethodOptionsAcssDebitMandateOptionsDefaultForItem
     | (string & {})
   >;
@@ -148610,7 +148431,7 @@ export const PostSetupIntentsRequestPaymentMethodOptionsCardMandateOptionsSuppor
 
 /** Specifies the type of mandates supported. Possible values are `india`. */
 export type PostSetupIntentsRequestPaymentMethodOptionsCardMandateOptionsSupportedTypesList =
-  ReadonlyArray<
+  Array<
     | PostSetupIntentsRequestPaymentMethodOptionsCardMandateOptionsSupportedTypesItem
     | (string & {})
   >;
@@ -148983,7 +148804,7 @@ export const PostSetupIntentsRequestPaymentMethodOptionsKlarnaSubscriptionsCase0
   }) as any as S.Schema<PostSetupIntentsRequestPaymentMethodOptionsKlarnaSubscriptionsCase0Item>;
 
 export type PostSetupIntentsRequestPaymentMethodOptionsKlarnaSubscriptionsCase0List =
-  ReadonlyArray<PostSetupIntentsRequestPaymentMethodOptionsKlarnaSubscriptionsCase0Item>;
+  Array<PostSetupIntentsRequestPaymentMethodOptionsKlarnaSubscriptionsCase0Item>;
 export const PostSetupIntentsRequestPaymentMethodOptionsKlarnaSubscriptionsCase0List =
   /*@__PURE__*/ S.Array(
     PostSetupIntentsRequestPaymentMethodOptionsKlarnaSubscriptionsCase0Item,
@@ -149410,7 +149231,7 @@ export const PostSetupIntentsRequestPaymentMethodOptionsUsBankAccountFinancialCo
 
 /** The account subcategories to use to filter for selectable accounts. Valid subcategories are `checking` and `savings`. */
 export type PostSetupIntentsRequestPaymentMethodOptionsUsBankAccountFinancialConnectionsFiltersAccountSubcategoriesList =
-  ReadonlyArray<
+  Array<
     | PostSetupIntentsRequestPaymentMethodOptionsUsBankAccountFinancialConnectionsFiltersAccountSubcategoriesItem
     | (string & {})
   >;
@@ -149443,7 +149264,7 @@ export const PostSetupIntentsRequestPaymentMethodOptionsUsBankAccountFinancialCo
 
 /** The list of permissions to request. If this parameter is passed, the `payment_method` permission must be included. Valid permissions include: `balances`, `ownership`, `payment_method`, and `transactions`. */
 export type PostSetupIntentsRequestPaymentMethodOptionsUsBankAccountFinancialConnectionsPermissionsList =
-  ReadonlyArray<
+  Array<
     | PostSetupIntentsRequestPaymentMethodOptionsUsBankAccountFinancialConnectionsPermissionsItem
     | (string & {})
   >;
@@ -149459,7 +149280,7 @@ export const PostSetupIntentsRequestPaymentMethodOptionsUsBankAccountFinancialCo
 
 /** List of data features that you would like to retrieve upon account creation. */
 export type PostSetupIntentsRequestPaymentMethodOptionsUsBankAccountFinancialConnectionsPrefetchList =
-  ReadonlyArray<
+  Array<
     | PostSetupIntentsRequestPaymentMethodOptionsUsBankAccountFinancialConnectionsPrefetchItem
     | (string & {})
   >;
@@ -149530,7 +149351,7 @@ export const PostSetupIntentsRequestPaymentMethodOptionsUsBankAccountNetworksReq
 
 /** Triggers validations to run across the selected networks */
 export type PostSetupIntentsRequestPaymentMethodOptionsUsBankAccountNetworksRequestedList =
-  ReadonlyArray<
+  Array<
     | PostSetupIntentsRequestPaymentMethodOptionsUsBankAccountNetworksRequestedItem
     | (string & {})
   >;
@@ -149657,8 +149478,7 @@ export const PostSetupIntentsRequestPaymentMethodOptions =
   }) as any as S.Schema<PostSetupIntentsRequestPaymentMethodOptions>;
 
 /** The list of payment method types (for example, card) that this SetupIntent can use. If you don't provide this, Stripe will dynamically show relevant payment methods from your [payment method settings](https://dashboard.stripe.com/settings/payment_methods). A list of valid payment method types can be found [here](https://docs.stripe.com/api/payment_methods/object#payment_method_object-type). */
-export type PostSetupIntentsRequestPaymentMethodTypesList =
-  ReadonlyArray<string>;
+export type PostSetupIntentsRequestPaymentMethodTypesList = Array<string>;
 export const PostSetupIntentsRequestPaymentMethodTypesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -149832,7 +149652,7 @@ export const PostSetupIntentsIntentRequestExcludedPaymentMethodTypesCase0Item =
   /*@__PURE__*/ S.String;
 
 export type PostSetupIntentsIntentRequestExcludedPaymentMethodTypesCase0List =
-  ReadonlyArray<
+  Array<
     | PostSetupIntentsIntentRequestExcludedPaymentMethodTypesCase0Item
     | (string & {})
   >;
@@ -149853,7 +149673,7 @@ export const PostSetupIntentsIntentRequestExcludedPaymentMethodTypes =
   /*@__PURE__*/ S.Unknown as any as S.Schema<PostSetupIntentsIntentRequestExcludedPaymentMethodTypes>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostSetupIntentsIntentRequestExpandList = ReadonlyArray<string>;
+export type PostSetupIntentsIntentRequestExpandList = Array<string>;
 export const PostSetupIntentsIntentRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostSetupIntentsIntentRequestExpandList>;
@@ -149865,7 +149685,7 @@ export const PostSetupIntentsIntentRequestFlowDirectionsItem =
   /*@__PURE__*/ S.String;
 
 /** Indicates the directions of money movement for which this payment method is intended to be used. Include `inbound` if you intend to use the payment method as the origin to pull funds from. Include `outbound` if you intend to use the payment method as the destination to send funds to. You can include both if you intend to use the payment method for both purposes. */
-export type PostSetupIntentsIntentRequestFlowDirectionsList = ReadonlyArray<
+export type PostSetupIntentsIntentRequestFlowDirectionsList = Array<
   PostSetupIntentsIntentRequestFlowDirectionsItem | (string & {})
 >;
 export const PostSetupIntentsIntentRequestFlowDirectionsList =
@@ -150830,7 +150650,7 @@ export const PostSetupIntentsIntentRequestPaymentMethodOptionsAcssDebitMandateOp
 
 /** List of Stripe products where this mandate can be selected automatically. */
 export type PostSetupIntentsIntentRequestPaymentMethodOptionsAcssDebitMandateOptionsDefaultForList =
-  ReadonlyArray<
+  Array<
     | PostSetupIntentsIntentRequestPaymentMethodOptionsAcssDebitMandateOptionsDefaultForItem
     | (string & {})
   >;
@@ -150990,7 +150810,7 @@ export const PostSetupIntentsIntentRequestPaymentMethodOptionsCardMandateOptions
 
 /** Specifies the type of mandates supported. Possible values are `india`. */
 export type PostSetupIntentsIntentRequestPaymentMethodOptionsCardMandateOptionsSupportedTypesList =
-  ReadonlyArray<
+  Array<
     | PostSetupIntentsIntentRequestPaymentMethodOptionsCardMandateOptionsSupportedTypesItem
     | (string & {})
   >;
@@ -151366,7 +151186,7 @@ export const PostSetupIntentsIntentRequestPaymentMethodOptionsKlarnaSubscription
   }) as any as S.Schema<PostSetupIntentsIntentRequestPaymentMethodOptionsKlarnaSubscriptionsCase0Item>;
 
 export type PostSetupIntentsIntentRequestPaymentMethodOptionsKlarnaSubscriptionsCase0List =
-  ReadonlyArray<PostSetupIntentsIntentRequestPaymentMethodOptionsKlarnaSubscriptionsCase0Item>;
+  Array<PostSetupIntentsIntentRequestPaymentMethodOptionsKlarnaSubscriptionsCase0Item>;
 export const PostSetupIntentsIntentRequestPaymentMethodOptionsKlarnaSubscriptionsCase0List =
   /*@__PURE__*/ S.Array(
     PostSetupIntentsIntentRequestPaymentMethodOptionsKlarnaSubscriptionsCase0Item,
@@ -151792,7 +151612,7 @@ export const PostSetupIntentsIntentRequestPaymentMethodOptionsUsBankAccountFinan
 
 /** The account subcategories to use to filter for selectable accounts. Valid subcategories are `checking` and `savings`. */
 export type PostSetupIntentsIntentRequestPaymentMethodOptionsUsBankAccountFinancialConnectionsFiltersAccountSubcategoriesList =
-  ReadonlyArray<
+  Array<
     | PostSetupIntentsIntentRequestPaymentMethodOptionsUsBankAccountFinancialConnectionsFiltersAccountSubcategoriesItem
     | (string & {})
   >;
@@ -151825,7 +151645,7 @@ export const PostSetupIntentsIntentRequestPaymentMethodOptionsUsBankAccountFinan
 
 /** The list of permissions to request. If this parameter is passed, the `payment_method` permission must be included. Valid permissions include: `balances`, `ownership`, `payment_method`, and `transactions`. */
 export type PostSetupIntentsIntentRequestPaymentMethodOptionsUsBankAccountFinancialConnectionsPermissionsList =
-  ReadonlyArray<
+  Array<
     | PostSetupIntentsIntentRequestPaymentMethodOptionsUsBankAccountFinancialConnectionsPermissionsItem
     | (string & {})
   >;
@@ -151841,7 +151661,7 @@ export const PostSetupIntentsIntentRequestPaymentMethodOptionsUsBankAccountFinan
 
 /** List of data features that you would like to retrieve upon account creation. */
 export type PostSetupIntentsIntentRequestPaymentMethodOptionsUsBankAccountFinancialConnectionsPrefetchList =
-  ReadonlyArray<
+  Array<
     | PostSetupIntentsIntentRequestPaymentMethodOptionsUsBankAccountFinancialConnectionsPrefetchItem
     | (string & {})
   >;
@@ -151912,7 +151732,7 @@ export const PostSetupIntentsIntentRequestPaymentMethodOptionsUsBankAccountNetwo
 
 /** Triggers validations to run across the selected networks */
 export type PostSetupIntentsIntentRequestPaymentMethodOptionsUsBankAccountNetworksRequestedList =
-  ReadonlyArray<
+  Array<
     | PostSetupIntentsIntentRequestPaymentMethodOptionsUsBankAccountNetworksRequestedItem
     | (string & {})
   >;
@@ -152044,8 +151864,7 @@ export const PostSetupIntentsIntentRequestPaymentMethodOptions =
   }) as any as S.Schema<PostSetupIntentsIntentRequestPaymentMethodOptions>;
 
 /** The list of payment method types (for example, card) that this SetupIntent can set up. If you don't provide this, Stripe will dynamically show relevant payment methods from your [payment method settings](https://dashboard.stripe.com/settings/payment_methods). A list of valid payment method types can be found [here](https://docs.stripe.com/api/payment_methods/object#payment_method_object-type). */
-export type PostSetupIntentsIntentRequestPaymentMethodTypesList =
-  ReadonlyArray<string>;
+export type PostSetupIntentsIntentRequestPaymentMethodTypesList = Array<string>;
 export const PostSetupIntentsIntentRequestPaymentMethodTypesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -152127,8 +151946,7 @@ export const PostSetupIntentsIntentCancelRequestCancellationReason =
   /*@__PURE__*/ S.String;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostSetupIntentsIntentCancelRequestExpandList =
-  ReadonlyArray<string>;
+export type PostSetupIntentsIntentCancelRequestExpandList = Array<string>;
 export const PostSetupIntentsIntentCancelRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -152163,8 +151981,7 @@ export const PostSetupIntentsIntentCancelRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostSetupIntentsIntentCancelRequest>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostSetupIntentsIntentConfirmRequestExpandList =
-  ReadonlyArray<string>;
+export type PostSetupIntentsIntentConfirmRequestExpandList = Array<string>;
 export const PostSetupIntentsIntentConfirmRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -153272,7 +153089,7 @@ export const PostSetupIntentsIntentConfirmRequestPaymentMethodOptionsAcssDebitMa
 
 /** List of Stripe products where this mandate can be selected automatically. */
 export type PostSetupIntentsIntentConfirmRequestPaymentMethodOptionsAcssDebitMandateOptionsDefaultForList =
-  ReadonlyArray<
+  Array<
     | PostSetupIntentsIntentConfirmRequestPaymentMethodOptionsAcssDebitMandateOptionsDefaultForItem
     | (string & {})
   >;
@@ -153434,7 +153251,7 @@ export const PostSetupIntentsIntentConfirmRequestPaymentMethodOptionsCardMandate
 
 /** Specifies the type of mandates supported. Possible values are `india`. */
 export type PostSetupIntentsIntentConfirmRequestPaymentMethodOptionsCardMandateOptionsSupportedTypesList =
-  ReadonlyArray<
+  Array<
     | PostSetupIntentsIntentConfirmRequestPaymentMethodOptionsCardMandateOptionsSupportedTypesItem
     | (string & {})
   >;
@@ -153810,7 +153627,7 @@ export const PostSetupIntentsIntentConfirmRequestPaymentMethodOptionsKlarnaSubsc
   }) as any as S.Schema<PostSetupIntentsIntentConfirmRequestPaymentMethodOptionsKlarnaSubscriptionsCase0Item>;
 
 export type PostSetupIntentsIntentConfirmRequestPaymentMethodOptionsKlarnaSubscriptionsCase0List =
-  ReadonlyArray<PostSetupIntentsIntentConfirmRequestPaymentMethodOptionsKlarnaSubscriptionsCase0Item>;
+  Array<PostSetupIntentsIntentConfirmRequestPaymentMethodOptionsKlarnaSubscriptionsCase0Item>;
 export const PostSetupIntentsIntentConfirmRequestPaymentMethodOptionsKlarnaSubscriptionsCase0List =
   /*@__PURE__*/ S.Array(
     PostSetupIntentsIntentConfirmRequestPaymentMethodOptionsKlarnaSubscriptionsCase0Item,
@@ -154239,7 +154056,7 @@ export const PostSetupIntentsIntentConfirmRequestPaymentMethodOptionsUsBankAccou
 
 /** The account subcategories to use to filter for selectable accounts. Valid subcategories are `checking` and `savings`. */
 export type PostSetupIntentsIntentConfirmRequestPaymentMethodOptionsUsBankAccountFinancialConnectionsFiltersAccountSubcategoriesList =
-  ReadonlyArray<
+  Array<
     | PostSetupIntentsIntentConfirmRequestPaymentMethodOptionsUsBankAccountFinancialConnectionsFiltersAccountSubcategoriesItem
     | (string & {})
   >;
@@ -154272,7 +154089,7 @@ export const PostSetupIntentsIntentConfirmRequestPaymentMethodOptionsUsBankAccou
 
 /** The list of permissions to request. If this parameter is passed, the `payment_method` permission must be included. Valid permissions include: `balances`, `ownership`, `payment_method`, and `transactions`. */
 export type PostSetupIntentsIntentConfirmRequestPaymentMethodOptionsUsBankAccountFinancialConnectionsPermissionsList =
-  ReadonlyArray<
+  Array<
     | PostSetupIntentsIntentConfirmRequestPaymentMethodOptionsUsBankAccountFinancialConnectionsPermissionsItem
     | (string & {})
   >;
@@ -154288,7 +154105,7 @@ export const PostSetupIntentsIntentConfirmRequestPaymentMethodOptionsUsBankAccou
 
 /** List of data features that you would like to retrieve upon account creation. */
 export type PostSetupIntentsIntentConfirmRequestPaymentMethodOptionsUsBankAccountFinancialConnectionsPrefetchList =
-  ReadonlyArray<
+  Array<
     | PostSetupIntentsIntentConfirmRequestPaymentMethodOptionsUsBankAccountFinancialConnectionsPrefetchItem
     | (string & {})
   >;
@@ -154359,7 +154176,7 @@ export const PostSetupIntentsIntentConfirmRequestPaymentMethodOptionsUsBankAccou
 
 /** Triggers validations to run across the selected networks */
 export type PostSetupIntentsIntentConfirmRequestPaymentMethodOptionsUsBankAccountNetworksRequestedList =
-  ReadonlyArray<
+  Array<
     | PostSetupIntentsIntentConfirmRequestPaymentMethodOptionsUsBankAccountNetworksRequestedItem
     | (string & {})
   >;
@@ -154548,7 +154365,7 @@ export const PostSetupIntentsIntentConfirmRequest = /*@__PURE__*/ S.suspend(
 
 /** Two positive integers, in *cents*, equal to the values of the microdeposits sent to the bank account. */
 export type PostSetupIntentsIntentVerifyMicrodepositsRequestAmountsList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const PostSetupIntentsIntentVerifyMicrodepositsRequestAmountsList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -154556,7 +154373,7 @@ export const PostSetupIntentsIntentVerifyMicrodepositsRequestAmountsList =
 
 /** Specifies which fields in the response should be expanded. */
 export type PostSetupIntentsIntentVerifyMicrodepositsRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostSetupIntentsIntentVerifyMicrodepositsRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -154666,7 +154483,7 @@ export const PostShippingRatesRequestDeliveryEstimate = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PostShippingRatesRequestDeliveryEstimate>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostShippingRatesRequestExpandList = ReadonlyArray<string>;
+export type PostShippingRatesRequestExpandList = Array<string>;
 export const PostShippingRatesRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostShippingRatesRequestExpandList>;
@@ -154791,8 +154608,7 @@ export const PostShippingRatesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostShippingRatesRequest>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostShippingRatesShippingRateTokenRequestExpandList =
-  ReadonlyArray<string>;
+export type PostShippingRatesShippingRateTokenRequestExpandList = Array<string>;
 export const PostShippingRatesShippingRateTokenRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -154923,7 +154739,7 @@ export const PostShippingRatesShippingRateTokenRequest =
   }) as any as S.Schema<PostShippingRatesShippingRateTokenRequest>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostSourcesRequestExpandList = ReadonlyArray<string>;
+export type PostSourcesRequestExpandList = Array<string>;
 export const PostSourcesRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostSourcesRequestExpandList>;
@@ -155199,7 +155015,7 @@ export const PostSourcesRequestSourceOrderItemsItem = /*@__PURE__*/ S.suspend(
 
 /** List of items constituting the order. */
 export type PostSourcesRequestSourceOrderItemsList =
-  ReadonlyArray<PostSourcesRequestSourceOrderItemsItem>;
+  Array<PostSourcesRequestSourceOrderItemsItem>;
 export const PostSourcesRequestSourceOrderItemsList = /*@__PURE__*/ S.Array(
   PostSourcesRequestSourceOrderItemsItem,
 ) as any as S.Schema<PostSourcesRequestSourceOrderItemsList>;
@@ -155341,7 +155157,7 @@ export const PostSourcesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostSourcesRequest>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostSourcesSourceRequestExpandList = ReadonlyArray<string>;
+export type PostSourcesSourceRequestExpandList = Array<string>;
 export const PostSourcesSourceRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostSourcesSourceRequestExpandList>;
@@ -155588,7 +155404,7 @@ export const PostSourcesSourceRequestSourceOrderItemsItem =
 
 /** List of items constituting the order. */
 export type PostSourcesSourceRequestSourceOrderItemsList =
-  ReadonlyArray<PostSourcesSourceRequestSourceOrderItemsItem>;
+  Array<PostSourcesSourceRequestSourceOrderItemsItem>;
 export const PostSourcesSourceRequestSourceOrderItemsList =
   /*@__PURE__*/ S.Array(
     PostSourcesSourceRequestSourceOrderItemsItem,
@@ -155702,13 +155518,13 @@ export const PostSourcesSourceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostSourcesSourceRequest>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostSourcesSourceVerifyRequestExpandList = ReadonlyArray<string>;
+export type PostSourcesSourceVerifyRequestExpandList = Array<string>;
 export const PostSourcesSourceVerifyRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostSourcesSourceVerifyRequestExpandList>;
 
 /** The values needed to verify the source. */
-export type PostSourcesSourceVerifyRequestValuesList = ReadonlyArray<string>;
+export type PostSourcesSourceVerifyRequestValuesList = Array<string>;
 export const PostSourcesSourceVerifyRequestValuesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostSourcesSourceVerifyRequestValuesList>;
@@ -155781,7 +155597,7 @@ export const PostSubscriptionItemsRequestDiscountsCase0Item =
   }) as any as S.Schema<PostSubscriptionItemsRequestDiscountsCase0Item>;
 
 export type PostSubscriptionItemsRequestDiscountsCase0List =
-  ReadonlyArray<PostSubscriptionItemsRequestDiscountsCase0Item>;
+  Array<PostSubscriptionItemsRequestDiscountsCase0Item>;
 export const PostSubscriptionItemsRequestDiscountsCase0List =
   /*@__PURE__*/ S.Array(
     PostSubscriptionItemsRequestDiscountsCase0Item,
@@ -155799,7 +155615,7 @@ export const PostSubscriptionItemsRequestDiscounts =
   /*@__PURE__*/ S.Unknown as any as S.Schema<PostSubscriptionItemsRequestDiscounts>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostSubscriptionItemsRequestExpandList = ReadonlyArray<string>;
+export type PostSubscriptionItemsRequestExpandList = Array<string>;
 export const PostSubscriptionItemsRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostSubscriptionItemsRequestExpandList>;
@@ -155899,8 +155715,7 @@ export type PostSubscriptionItemsRequestProrationBehavior =
 export const PostSubscriptionItemsRequestProrationBehavior =
   /*@__PURE__*/ S.String;
 
-export type PostSubscriptionItemsRequestTaxRatesCase0List =
-  ReadonlyArray<string>;
+export type PostSubscriptionItemsRequestTaxRatesCase0List = Array<string>;
 export const PostSubscriptionItemsRequestTaxRatesCase0List =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -156023,7 +155838,7 @@ export const PostSubscriptionItemsItemRequestDiscountsCase0Item =
   }) as any as S.Schema<PostSubscriptionItemsItemRequestDiscountsCase0Item>;
 
 export type PostSubscriptionItemsItemRequestDiscountsCase0List =
-  ReadonlyArray<PostSubscriptionItemsItemRequestDiscountsCase0Item>;
+  Array<PostSubscriptionItemsItemRequestDiscountsCase0Item>;
 export const PostSubscriptionItemsItemRequestDiscountsCase0List =
   /*@__PURE__*/ S.Array(
     PostSubscriptionItemsItemRequestDiscountsCase0Item,
@@ -156041,7 +155856,7 @@ export const PostSubscriptionItemsItemRequestDiscounts =
   /*@__PURE__*/ S.Unknown as any as S.Schema<PostSubscriptionItemsItemRequestDiscounts>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostSubscriptionItemsItemRequestExpandList = ReadonlyArray<string>;
+export type PostSubscriptionItemsItemRequestExpandList = Array<string>;
 export const PostSubscriptionItemsItemRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostSubscriptionItemsItemRequestExpandList>;
@@ -156152,8 +155967,7 @@ export type PostSubscriptionItemsItemRequestProrationBehavior =
 export const PostSubscriptionItemsItemRequestProrationBehavior =
   /*@__PURE__*/ S.String;
 
-export type PostSubscriptionItemsItemRequestTaxRatesCase0List =
-  ReadonlyArray<string>;
+export type PostSubscriptionItemsItemRequestTaxRatesCase0List = Array<string>;
 export const PostSubscriptionItemsItemRequestTaxRatesCase0List =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -156258,7 +156072,7 @@ export const PostSubscriptionsRequestAddInvoiceItemsItemDiscountsItem =
 
 /** The coupons to redeem into discounts for the item. */
 export type PostSubscriptionsRequestAddInvoiceItemsItemDiscountsList =
-  ReadonlyArray<PostSubscriptionsRequestAddInvoiceItemsItemDiscountsItem>;
+  Array<PostSubscriptionsRequestAddInvoiceItemsItemDiscountsItem>;
 export const PostSubscriptionsRequestAddInvoiceItemsItemDiscountsList =
   /*@__PURE__*/ S.Array(
     PostSubscriptionsRequestAddInvoiceItemsItemDiscountsItem,
@@ -156383,7 +156197,7 @@ export const PostSubscriptionsRequestAddInvoiceItemsItemPriceData =
   }) as any as S.Schema<PostSubscriptionsRequestAddInvoiceItemsItemPriceData>;
 
 export type PostSubscriptionsRequestAddInvoiceItemsItemTaxRatesCase0List =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostSubscriptionsRequestAddInvoiceItemsItemTaxRatesCase0List =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -156444,7 +156258,7 @@ export const PostSubscriptionsRequestAddInvoiceItemsItem =
 
 /** A list of prices and quantities that will generate invoice items appended to the next invoice for this subscription. You may pass up to 20 items. */
 export type PostSubscriptionsRequestAddInvoiceItemsList =
-  ReadonlyArray<PostSubscriptionsRequestAddInvoiceItemsItem>;
+  Array<PostSubscriptionsRequestAddInvoiceItemsItem>;
 export const PostSubscriptionsRequestAddInvoiceItemsList =
   /*@__PURE__*/ S.Array(
     PostSubscriptionsRequestAddInvoiceItemsItem,
@@ -156599,7 +156413,7 @@ export const PostSubscriptionsRequestBillingSchedulesItemAppliesToItem =
 
 /** Configure billing schedule differently for individual subscription items. */
 export type PostSubscriptionsRequestBillingSchedulesItemAppliesToList =
-  ReadonlyArray<PostSubscriptionsRequestBillingSchedulesItemAppliesToItem>;
+  Array<PostSubscriptionsRequestBillingSchedulesItemAppliesToItem>;
 export const PostSubscriptionsRequestBillingSchedulesItemAppliesToList =
   /*@__PURE__*/ S.Array(
     PostSubscriptionsRequestBillingSchedulesItemAppliesToItem,
@@ -156685,7 +156499,7 @@ export const PostSubscriptionsRequestBillingSchedulesItem =
 
 /** Sets the billing schedules for the subscription. */
 export type PostSubscriptionsRequestBillingSchedulesList =
-  ReadonlyArray<PostSubscriptionsRequestBillingSchedulesItem>;
+  Array<PostSubscriptionsRequestBillingSchedulesItem>;
 export const PostSubscriptionsRequestBillingSchedulesList =
   /*@__PURE__*/ S.Array(
     PostSubscriptionsRequestBillingSchedulesItem,
@@ -156737,8 +156551,7 @@ export type PostSubscriptionsRequestCollectionMethod =
   | "send_invoice";
 export const PostSubscriptionsRequestCollectionMethod = /*@__PURE__*/ S.String;
 
-export type PostSubscriptionsRequestDefaultTaxRatesCase0List =
-  ReadonlyArray<string>;
+export type PostSubscriptionsRequestDefaultTaxRatesCase0List = Array<string>;
 export const PostSubscriptionsRequestDefaultTaxRatesCase0List =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -156775,7 +156588,7 @@ export const PostSubscriptionsRequestDiscountsCase0Item =
   }) as any as S.Schema<PostSubscriptionsRequestDiscountsCase0Item>;
 
 export type PostSubscriptionsRequestDiscountsCase0List =
-  ReadonlyArray<PostSubscriptionsRequestDiscountsCase0Item>;
+  Array<PostSubscriptionsRequestDiscountsCase0Item>;
 export const PostSubscriptionsRequestDiscountsCase0List = /*@__PURE__*/ S.Array(
   PostSubscriptionsRequestDiscountsCase0Item,
 ) as any as S.Schema<PostSubscriptionsRequestDiscountsCase0List>;
@@ -156791,13 +156604,13 @@ export const PostSubscriptionsRequestDiscounts =
   /*@__PURE__*/ S.Unknown as any as S.Schema<PostSubscriptionsRequestDiscounts>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostSubscriptionsRequestExpandList = ReadonlyArray<string>;
+export type PostSubscriptionsRequestExpandList = Array<string>;
 export const PostSubscriptionsRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostSubscriptionsRequestExpandList>;
 
 export type PostSubscriptionsRequestInvoiceSettingsAccountTaxIdsCase0List =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostSubscriptionsRequestInvoiceSettingsAccountTaxIdsCase0List =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -156831,7 +156644,7 @@ export const PostSubscriptionsRequestInvoiceSettingsCustomFieldsCase0Item =
   }) as any as S.Schema<PostSubscriptionsRequestInvoiceSettingsCustomFieldsCase0Item>;
 
 export type PostSubscriptionsRequestInvoiceSettingsCustomFieldsCase0List =
-  ReadonlyArray<PostSubscriptionsRequestInvoiceSettingsCustomFieldsCase0Item>;
+  Array<PostSubscriptionsRequestInvoiceSettingsCustomFieldsCase0Item>;
 export const PostSubscriptionsRequestInvoiceSettingsCustomFieldsCase0List =
   /*@__PURE__*/ S.Array(
     PostSubscriptionsRequestInvoiceSettingsCustomFieldsCase0Item,
@@ -156946,7 +156759,7 @@ export const PostSubscriptionsRequestItemsItemDiscountsCase0Item =
   }) as any as S.Schema<PostSubscriptionsRequestItemsItemDiscountsCase0Item>;
 
 export type PostSubscriptionsRequestItemsItemDiscountsCase0List =
-  ReadonlyArray<PostSubscriptionsRequestItemsItemDiscountsCase0Item>;
+  Array<PostSubscriptionsRequestItemsItemDiscountsCase0Item>;
 export const PostSubscriptionsRequestItemsItemDiscountsCase0List =
   /*@__PURE__*/ S.Array(
     PostSubscriptionsRequestItemsItemDiscountsCase0Item,
@@ -157042,8 +156855,7 @@ export const PostSubscriptionsRequestItemsItemPriceData =
     identifier: "PostSubscriptionsRequestItemsItemPriceData",
   }) as any as S.Schema<PostSubscriptionsRequestItemsItemPriceData>;
 
-export type PostSubscriptionsRequestItemsItemTaxRatesCase0List =
-  ReadonlyArray<string>;
+export type PostSubscriptionsRequestItemsItemTaxRatesCase0List = Array<string>;
 export const PostSubscriptionsRequestItemsItemTaxRatesCase0List =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -157097,7 +156909,7 @@ export const PostSubscriptionsRequestItemsItem = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of up to 20 subscription items, each with an attached price. */
 export type PostSubscriptionsRequestItemsList =
-  ReadonlyArray<PostSubscriptionsRequestItemsItem>;
+  Array<PostSubscriptionsRequestItemsItem>;
 export const PostSubscriptionsRequestItemsList = /*@__PURE__*/ S.Array(
   PostSubscriptionsRequestItemsItem,
 ) as any as S.Schema<PostSubscriptionsRequestItemsList>;
@@ -157637,7 +157449,7 @@ export const PostSubscriptionsRequestPaymentSettingsPaymentMethodOptionsUsBankAc
 
 /** The account subcategories to use to filter for selectable accounts. Valid subcategories are `checking` and `savings`. */
 export type PostSubscriptionsRequestPaymentSettingsPaymentMethodOptionsUsBankAccountCase0FinancialConnectionsFiltersAccountSubcategoriesList =
-  ReadonlyArray<
+  Array<
     | PostSubscriptionsRequestPaymentSettingsPaymentMethodOptionsUsBankAccountCase0FinancialConnectionsFiltersAccountSubcategoriesItem
     | (string & {})
   >;
@@ -157670,7 +157482,7 @@ export const PostSubscriptionsRequestPaymentSettingsPaymentMethodOptionsUsBankAc
 
 /** The list of permissions to request. If this parameter is passed, the `payment_method` permission must be included. Valid permissions include: `balances`, `ownership`, `payment_method`, and `transactions`. */
 export type PostSubscriptionsRequestPaymentSettingsPaymentMethodOptionsUsBankAccountCase0FinancialConnectionsPermissionsList =
-  ReadonlyArray<
+  Array<
     | PostSubscriptionsRequestPaymentSettingsPaymentMethodOptionsUsBankAccountCase0FinancialConnectionsPermissionsItem
     | (string & {})
   >;
@@ -157686,7 +157498,7 @@ export const PostSubscriptionsRequestPaymentSettingsPaymentMethodOptionsUsBankAc
 
 /** List of data features that you would like to retrieve upon account creation. */
 export type PostSubscriptionsRequestPaymentSettingsPaymentMethodOptionsUsBankAccountCase0FinancialConnectionsPrefetchList =
-  ReadonlyArray<
+  Array<
     | PostSubscriptionsRequestPaymentSettingsPaymentMethodOptionsUsBankAccountCase0FinancialConnectionsPrefetchItem
     | (string & {})
   >;
@@ -157875,7 +157687,7 @@ export const PostSubscriptionsRequestPaymentSettingsPaymentMethodTypesCase0Item 
   /*@__PURE__*/ S.String;
 
 export type PostSubscriptionsRequestPaymentSettingsPaymentMethodTypesCase0List =
-  ReadonlyArray<
+  Array<
     | PostSubscriptionsRequestPaymentSettingsPaymentMethodTypesCase0Item
     | (string & {})
   >;
@@ -158320,7 +158132,7 @@ export const PostSubscriptionSchedulesRequestDefaultSettingsDescription =
   /*@__PURE__*/ S.Unknown as any as S.Schema<PostSubscriptionSchedulesRequestDefaultSettingsDescription>;
 
 export type PostSubscriptionSchedulesRequestDefaultSettingsInvoiceSettingsAccountTaxIdsCase0List =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostSubscriptionSchedulesRequestDefaultSettingsInvoiceSettingsAccountTaxIdsCase0List =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -158500,7 +158312,7 @@ export const PostSubscriptionSchedulesRequestEndBehavior =
   /*@__PURE__*/ S.String;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostSubscriptionSchedulesRequestExpandList = ReadonlyArray<string>;
+export type PostSubscriptionSchedulesRequestExpandList = Array<string>;
 export const PostSubscriptionSchedulesRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostSubscriptionSchedulesRequestExpandList>;
@@ -158547,7 +158359,7 @@ export const PostSubscriptionSchedulesRequestPhasesItemAddInvoiceItemsItemDiscou
 
 /** The coupons to redeem into discounts for the item. */
 export type PostSubscriptionSchedulesRequestPhasesItemAddInvoiceItemsItemDiscountsList =
-  ReadonlyArray<PostSubscriptionSchedulesRequestPhasesItemAddInvoiceItemsItemDiscountsItem>;
+  Array<PostSubscriptionSchedulesRequestPhasesItemAddInvoiceItemsItemDiscountsItem>;
 export const PostSubscriptionSchedulesRequestPhasesItemAddInvoiceItemsItemDiscountsList =
   /*@__PURE__*/ S.Array(
     PostSubscriptionSchedulesRequestPhasesItemAddInvoiceItemsItemDiscountsItem,
@@ -158671,7 +158483,7 @@ export const PostSubscriptionSchedulesRequestPhasesItemAddInvoiceItemsItemPriceD
   }) as any as S.Schema<PostSubscriptionSchedulesRequestPhasesItemAddInvoiceItemsItemPriceData>;
 
 export type PostSubscriptionSchedulesRequestPhasesItemAddInvoiceItemsItemTaxRatesCase0List =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostSubscriptionSchedulesRequestPhasesItemAddInvoiceItemsItemTaxRatesCase0List =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -158735,7 +158547,7 @@ export const PostSubscriptionSchedulesRequestPhasesItemAddInvoiceItemsItem =
 
 /** A list of prices and quantities that will generate invoice items appended to the next invoice for this phase. You may pass up to 20 items. */
 export type PostSubscriptionSchedulesRequestPhasesItemAddInvoiceItemsList =
-  ReadonlyArray<PostSubscriptionSchedulesRequestPhasesItemAddInvoiceItemsItem>;
+  Array<PostSubscriptionSchedulesRequestPhasesItemAddInvoiceItemsItem>;
 export const PostSubscriptionSchedulesRequestPhasesItemAddInvoiceItemsList =
   /*@__PURE__*/ S.Array(
     PostSubscriptionSchedulesRequestPhasesItemAddInvoiceItemsItem,
@@ -158830,7 +158642,7 @@ export const PostSubscriptionSchedulesRequestPhasesItemCollectionMethod =
   /*@__PURE__*/ S.String;
 
 export type PostSubscriptionSchedulesRequestPhasesItemDefaultTaxRatesCase0List =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostSubscriptionSchedulesRequestPhasesItemDefaultTaxRatesCase0List =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -158878,7 +158690,7 @@ export const PostSubscriptionSchedulesRequestPhasesItemDiscountsCase0Item =
   }) as any as S.Schema<PostSubscriptionSchedulesRequestPhasesItemDiscountsCase0Item>;
 
 export type PostSubscriptionSchedulesRequestPhasesItemDiscountsCase0List =
-  ReadonlyArray<PostSubscriptionSchedulesRequestPhasesItemDiscountsCase0Item>;
+  Array<PostSubscriptionSchedulesRequestPhasesItemDiscountsCase0Item>;
 export const PostSubscriptionSchedulesRequestPhasesItemDiscountsCase0List =
   /*@__PURE__*/ S.Array(
     PostSubscriptionSchedulesRequestPhasesItemDiscountsCase0Item,
@@ -158924,7 +158736,7 @@ export const PostSubscriptionSchedulesRequestPhasesItemDuration =
   }) as any as S.Schema<PostSubscriptionSchedulesRequestPhasesItemDuration>;
 
 export type PostSubscriptionSchedulesRequestPhasesItemInvoiceSettingsAccountTaxIdsCase0List =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostSubscriptionSchedulesRequestPhasesItemInvoiceSettingsAccountTaxIdsCase0List =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -159039,7 +158851,7 @@ export const PostSubscriptionSchedulesRequestPhasesItemItemsItemDiscountsCase0It
   }) as any as S.Schema<PostSubscriptionSchedulesRequestPhasesItemItemsItemDiscountsCase0Item>;
 
 export type PostSubscriptionSchedulesRequestPhasesItemItemsItemDiscountsCase0List =
-  ReadonlyArray<PostSubscriptionSchedulesRequestPhasesItemItemsItemDiscountsCase0Item>;
+  Array<PostSubscriptionSchedulesRequestPhasesItemItemsItemDiscountsCase0Item>;
 export const PostSubscriptionSchedulesRequestPhasesItemItemsItemDiscountsCase0List =
   /*@__PURE__*/ S.Array(
     PostSubscriptionSchedulesRequestPhasesItemItemsItemDiscountsCase0Item,
@@ -159135,7 +158947,7 @@ export const PostSubscriptionSchedulesRequestPhasesItemItemsItemPriceData =
   }) as any as S.Schema<PostSubscriptionSchedulesRequestPhasesItemItemsItemPriceData>;
 
 export type PostSubscriptionSchedulesRequestPhasesItemItemsItemTaxRatesCase0List =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostSubscriptionSchedulesRequestPhasesItemItemsItemTaxRatesCase0List =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -159199,7 +159011,7 @@ export const PostSubscriptionSchedulesRequestPhasesItemItemsItem =
 
 /** List of configuration items, each with an attached price, to apply during this phase of the subscription schedule. */
 export type PostSubscriptionSchedulesRequestPhasesItemItemsList =
-  ReadonlyArray<PostSubscriptionSchedulesRequestPhasesItemItemsItem>;
+  Array<PostSubscriptionSchedulesRequestPhasesItemItemsItem>;
 export const PostSubscriptionSchedulesRequestPhasesItemItemsList =
   /*@__PURE__*/ S.Array(
     PostSubscriptionSchedulesRequestPhasesItemItemsItem,
@@ -159345,7 +159157,7 @@ export const PostSubscriptionSchedulesRequestPhasesItem =
 
 /** List representing phases of the subscription schedule. Each phase can be customized to have different durations, plans, and coupons. If there are multiple phases, the `end_date` of one phase will always equal the `start_date` of the next phase. */
 export type PostSubscriptionSchedulesRequestPhasesList =
-  ReadonlyArray<PostSubscriptionSchedulesRequestPhasesItem>;
+  Array<PostSubscriptionSchedulesRequestPhasesItem>;
 export const PostSubscriptionSchedulesRequestPhasesList = /*@__PURE__*/ S.Array(
   PostSubscriptionSchedulesRequestPhasesItem,
 ) as any as S.Schema<PostSubscriptionSchedulesRequestPhasesList>;
@@ -159509,7 +159321,7 @@ export const PostSubscriptionSchedulesScheduleRequestDefaultSettingsDescription 
   /*@__PURE__*/ S.Unknown as any as S.Schema<PostSubscriptionSchedulesScheduleRequestDefaultSettingsDescription>;
 
 export type PostSubscriptionSchedulesScheduleRequestDefaultSettingsInvoiceSettingsAccountTaxIdsCase0List =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostSubscriptionSchedulesScheduleRequestDefaultSettingsInvoiceSettingsAccountTaxIdsCase0List =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -159690,8 +159502,7 @@ export const PostSubscriptionSchedulesScheduleRequestEndBehavior =
   /*@__PURE__*/ S.String;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostSubscriptionSchedulesScheduleRequestExpandList =
-  ReadonlyArray<string>;
+export type PostSubscriptionSchedulesScheduleRequestExpandList = Array<string>;
 export const PostSubscriptionSchedulesScheduleRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -159739,7 +159550,7 @@ export const PostSubscriptionSchedulesScheduleRequestPhasesItemAddInvoiceItemsIt
 
 /** The coupons to redeem into discounts for the item. */
 export type PostSubscriptionSchedulesScheduleRequestPhasesItemAddInvoiceItemsItemDiscountsList =
-  ReadonlyArray<PostSubscriptionSchedulesScheduleRequestPhasesItemAddInvoiceItemsItemDiscountsItem>;
+  Array<PostSubscriptionSchedulesScheduleRequestPhasesItemAddInvoiceItemsItemDiscountsItem>;
 export const PostSubscriptionSchedulesScheduleRequestPhasesItemAddInvoiceItemsItemDiscountsList =
   /*@__PURE__*/ S.Array(
     PostSubscriptionSchedulesScheduleRequestPhasesItemAddInvoiceItemsItemDiscountsItem,
@@ -159863,7 +159674,7 @@ export const PostSubscriptionSchedulesScheduleRequestPhasesItemAddInvoiceItemsIt
   }) as any as S.Schema<PostSubscriptionSchedulesScheduleRequestPhasesItemAddInvoiceItemsItemPriceData>;
 
 export type PostSubscriptionSchedulesScheduleRequestPhasesItemAddInvoiceItemsItemTaxRatesCase0List =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostSubscriptionSchedulesScheduleRequestPhasesItemAddInvoiceItemsItemTaxRatesCase0List =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -159928,7 +159739,7 @@ export const PostSubscriptionSchedulesScheduleRequestPhasesItemAddInvoiceItemsIt
 
 /** A list of prices and quantities that will generate invoice items appended to the next invoice for this phase. You may pass up to 20 items. */
 export type PostSubscriptionSchedulesScheduleRequestPhasesItemAddInvoiceItemsList =
-  ReadonlyArray<PostSubscriptionSchedulesScheduleRequestPhasesItemAddInvoiceItemsItem>;
+  Array<PostSubscriptionSchedulesScheduleRequestPhasesItemAddInvoiceItemsItem>;
 export const PostSubscriptionSchedulesScheduleRequestPhasesItemAddInvoiceItemsList =
   /*@__PURE__*/ S.Array(
     PostSubscriptionSchedulesScheduleRequestPhasesItemAddInvoiceItemsItem,
@@ -160022,7 +159833,7 @@ export const PostSubscriptionSchedulesScheduleRequestPhasesItemCollectionMethod 
   /*@__PURE__*/ S.String;
 
 export type PostSubscriptionSchedulesScheduleRequestPhasesItemDefaultTaxRatesCase0List =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostSubscriptionSchedulesScheduleRequestPhasesItemDefaultTaxRatesCase0List =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -160073,7 +159884,7 @@ export const PostSubscriptionSchedulesScheduleRequestPhasesItemDiscountsCase0Ite
   }) as any as S.Schema<PostSubscriptionSchedulesScheduleRequestPhasesItemDiscountsCase0Item>;
 
 export type PostSubscriptionSchedulesScheduleRequestPhasesItemDiscountsCase0List =
-  ReadonlyArray<PostSubscriptionSchedulesScheduleRequestPhasesItemDiscountsCase0Item>;
+  Array<PostSubscriptionSchedulesScheduleRequestPhasesItemDiscountsCase0Item>;
 export const PostSubscriptionSchedulesScheduleRequestPhasesItemDiscountsCase0List =
   /*@__PURE__*/ S.Array(
     PostSubscriptionSchedulesScheduleRequestPhasesItemDiscountsCase0Item,
@@ -160130,7 +159941,7 @@ export const PostSubscriptionSchedulesScheduleRequestPhasesItemEndDate =
   /*@__PURE__*/ S.Unknown as any as S.Schema<PostSubscriptionSchedulesScheduleRequestPhasesItemEndDate>;
 
 export type PostSubscriptionSchedulesScheduleRequestPhasesItemInvoiceSettingsAccountTaxIdsCase0List =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostSubscriptionSchedulesScheduleRequestPhasesItemInvoiceSettingsAccountTaxIdsCase0List =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -160246,7 +160057,7 @@ export const PostSubscriptionSchedulesScheduleRequestPhasesItemItemsItemDiscount
   }) as any as S.Schema<PostSubscriptionSchedulesScheduleRequestPhasesItemItemsItemDiscountsCase0Item>;
 
 export type PostSubscriptionSchedulesScheduleRequestPhasesItemItemsItemDiscountsCase0List =
-  ReadonlyArray<PostSubscriptionSchedulesScheduleRequestPhasesItemItemsItemDiscountsCase0Item>;
+  Array<PostSubscriptionSchedulesScheduleRequestPhasesItemItemsItemDiscountsCase0Item>;
 export const PostSubscriptionSchedulesScheduleRequestPhasesItemItemsItemDiscountsCase0List =
   /*@__PURE__*/ S.Array(
     PostSubscriptionSchedulesScheduleRequestPhasesItemItemsItemDiscountsCase0Item,
@@ -160342,7 +160153,7 @@ export const PostSubscriptionSchedulesScheduleRequestPhasesItemItemsItemPriceDat
   }) as any as S.Schema<PostSubscriptionSchedulesScheduleRequestPhasesItemItemsItemPriceData>;
 
 export type PostSubscriptionSchedulesScheduleRequestPhasesItemItemsItemTaxRatesCase0List =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostSubscriptionSchedulesScheduleRequestPhasesItemItemsItemTaxRatesCase0List =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -160406,7 +160217,7 @@ export const PostSubscriptionSchedulesScheduleRequestPhasesItemItemsItem =
 
 /** List of configuration items, each with an attached price, to apply during this phase of the subscription schedule. */
 export type PostSubscriptionSchedulesScheduleRequestPhasesItemItemsList =
-  ReadonlyArray<PostSubscriptionSchedulesScheduleRequestPhasesItemItemsItem>;
+  Array<PostSubscriptionSchedulesScheduleRequestPhasesItemItemsItem>;
 export const PostSubscriptionSchedulesScheduleRequestPhasesItemItemsList =
   /*@__PURE__*/ S.Array(
     PostSubscriptionSchedulesScheduleRequestPhasesItemItemsItem,
@@ -160586,7 +160397,7 @@ export const PostSubscriptionSchedulesScheduleRequestPhasesItem =
 
 /** List representing phases of the subscription schedule. Each phase can be customized to have different durations, plans, and coupons. If there are multiple phases, the `end_date` of one phase will always equal the `start_date` of the next phase. Note that past phases can be omitted. */
 export type PostSubscriptionSchedulesScheduleRequestPhasesList =
-  ReadonlyArray<PostSubscriptionSchedulesScheduleRequestPhasesItem>;
+  Array<PostSubscriptionSchedulesScheduleRequestPhasesItem>;
 export const PostSubscriptionSchedulesScheduleRequestPhasesList =
   /*@__PURE__*/ S.Array(
     PostSubscriptionSchedulesScheduleRequestPhasesItem,
@@ -160649,7 +160460,7 @@ export const PostSubscriptionSchedulesScheduleRequest = /*@__PURE__*/ S.suspend(
 
 /** Specifies which fields in the response should be expanded. */
 export type PostSubscriptionSchedulesScheduleCancelRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostSubscriptionSchedulesScheduleCancelRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -160687,7 +160498,7 @@ export const PostSubscriptionSchedulesScheduleCancelRequest =
 
 /** Specifies which fields in the response should be expanded. */
 export type PostSubscriptionSchedulesScheduleReleaseRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostSubscriptionSchedulesScheduleReleaseRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -160742,7 +160553,7 @@ export const PostSubscriptionsSubscriptionExposedIdRequestAddInvoiceItemsItemDis
 
 /** The coupons to redeem into discounts for the item. */
 export type PostSubscriptionsSubscriptionExposedIdRequestAddInvoiceItemsItemDiscountsList =
-  ReadonlyArray<PostSubscriptionsSubscriptionExposedIdRequestAddInvoiceItemsItemDiscountsItem>;
+  Array<PostSubscriptionsSubscriptionExposedIdRequestAddInvoiceItemsItemDiscountsItem>;
 export const PostSubscriptionsSubscriptionExposedIdRequestAddInvoiceItemsItemDiscountsList =
   /*@__PURE__*/ S.Array(
     PostSubscriptionsSubscriptionExposedIdRequestAddInvoiceItemsItemDiscountsItem,
@@ -160866,7 +160677,7 @@ export const PostSubscriptionsSubscriptionExposedIdRequestAddInvoiceItemsItemPri
   }) as any as S.Schema<PostSubscriptionsSubscriptionExposedIdRequestAddInvoiceItemsItemPriceData>;
 
 export type PostSubscriptionsSubscriptionExposedIdRequestAddInvoiceItemsItemTaxRatesCase0List =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostSubscriptionsSubscriptionExposedIdRequestAddInvoiceItemsItemTaxRatesCase0List =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -160931,7 +160742,7 @@ export const PostSubscriptionsSubscriptionExposedIdRequestAddInvoiceItemsItem =
 
 /** A list of prices and quantities that will generate invoice items appended to the next invoice for this subscription. You may pass up to 20 items. */
 export type PostSubscriptionsSubscriptionExposedIdRequestAddInvoiceItemsList =
-  ReadonlyArray<PostSubscriptionsSubscriptionExposedIdRequestAddInvoiceItemsItem>;
+  Array<PostSubscriptionsSubscriptionExposedIdRequestAddInvoiceItemsItem>;
 export const PostSubscriptionsSubscriptionExposedIdRequestAddInvoiceItemsList =
   /*@__PURE__*/ S.Array(
     PostSubscriptionsSubscriptionExposedIdRequestAddInvoiceItemsItem,
@@ -161028,7 +160839,7 @@ export const PostSubscriptionsSubscriptionExposedIdRequestBillingSchedulesCase0I
 
 /** Configure billing schedule differently for individual subscription items. */
 export type PostSubscriptionsSubscriptionExposedIdRequestBillingSchedulesCase0ItemAppliesToList =
-  ReadonlyArray<PostSubscriptionsSubscriptionExposedIdRequestBillingSchedulesCase0ItemAppliesToItem>;
+  Array<PostSubscriptionsSubscriptionExposedIdRequestBillingSchedulesCase0ItemAppliesToItem>;
 export const PostSubscriptionsSubscriptionExposedIdRequestBillingSchedulesCase0ItemAppliesToList =
   /*@__PURE__*/ S.Array(
     PostSubscriptionsSubscriptionExposedIdRequestBillingSchedulesCase0ItemAppliesToItem,
@@ -161117,7 +160928,7 @@ export const PostSubscriptionsSubscriptionExposedIdRequestBillingSchedulesCase0I
   }) as any as S.Schema<PostSubscriptionsSubscriptionExposedIdRequestBillingSchedulesCase0Item>;
 
 export type PostSubscriptionsSubscriptionExposedIdRequestBillingSchedulesCase0List =
-  ReadonlyArray<PostSubscriptionsSubscriptionExposedIdRequestBillingSchedulesCase0Item>;
+  Array<PostSubscriptionsSubscriptionExposedIdRequestBillingSchedulesCase0Item>;
 export const PostSubscriptionsSubscriptionExposedIdRequestBillingSchedulesCase0List =
   /*@__PURE__*/ S.Array(
     PostSubscriptionsSubscriptionExposedIdRequestBillingSchedulesCase0Item,
@@ -161253,7 +161064,7 @@ export const PostSubscriptionsSubscriptionExposedIdRequestDefaultSource =
   /*@__PURE__*/ S.Unknown as any as S.Schema<PostSubscriptionsSubscriptionExposedIdRequestDefaultSource>;
 
 export type PostSubscriptionsSubscriptionExposedIdRequestDefaultTaxRatesCase0List =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostSubscriptionsSubscriptionExposedIdRequestDefaultTaxRatesCase0List =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -161303,7 +161114,7 @@ export const PostSubscriptionsSubscriptionExposedIdRequestDiscountsCase0Item =
   }) as any as S.Schema<PostSubscriptionsSubscriptionExposedIdRequestDiscountsCase0Item>;
 
 export type PostSubscriptionsSubscriptionExposedIdRequestDiscountsCase0List =
-  ReadonlyArray<PostSubscriptionsSubscriptionExposedIdRequestDiscountsCase0Item>;
+  Array<PostSubscriptionsSubscriptionExposedIdRequestDiscountsCase0Item>;
 export const PostSubscriptionsSubscriptionExposedIdRequestDiscountsCase0List =
   /*@__PURE__*/ S.Array(
     PostSubscriptionsSubscriptionExposedIdRequestDiscountsCase0Item,
@@ -161322,14 +161133,14 @@ export const PostSubscriptionsSubscriptionExposedIdRequestDiscounts =
 
 /** Specifies which fields in the response should be expanded. */
 export type PostSubscriptionsSubscriptionExposedIdRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostSubscriptionsSubscriptionExposedIdRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PostSubscriptionsSubscriptionExposedIdRequestExpandList>;
 
 export type PostSubscriptionsSubscriptionExposedIdRequestInvoiceSettingsAccountTaxIdsCase0List =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostSubscriptionsSubscriptionExposedIdRequestInvoiceSettingsAccountTaxIdsCase0List =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -161365,7 +161176,7 @@ export const PostSubscriptionsSubscriptionExposedIdRequestInvoiceSettingsCustomF
   }) as any as S.Schema<PostSubscriptionsSubscriptionExposedIdRequestInvoiceSettingsCustomFieldsCase0Item>;
 
 export type PostSubscriptionsSubscriptionExposedIdRequestInvoiceSettingsCustomFieldsCase0List =
-  ReadonlyArray<PostSubscriptionsSubscriptionExposedIdRequestInvoiceSettingsCustomFieldsCase0Item>;
+  Array<PostSubscriptionsSubscriptionExposedIdRequestInvoiceSettingsCustomFieldsCase0Item>;
 export const PostSubscriptionsSubscriptionExposedIdRequestInvoiceSettingsCustomFieldsCase0List =
   /*@__PURE__*/ S.Array(
     PostSubscriptionsSubscriptionExposedIdRequestInvoiceSettingsCustomFieldsCase0Item,
@@ -161516,7 +161327,7 @@ export const PostSubscriptionsSubscriptionExposedIdRequestItemsItemDiscountsCase
   }) as any as S.Schema<PostSubscriptionsSubscriptionExposedIdRequestItemsItemDiscountsCase0Item>;
 
 export type PostSubscriptionsSubscriptionExposedIdRequestItemsItemDiscountsCase0List =
-  ReadonlyArray<PostSubscriptionsSubscriptionExposedIdRequestItemsItemDiscountsCase0Item>;
+  Array<PostSubscriptionsSubscriptionExposedIdRequestItemsItemDiscountsCase0Item>;
 export const PostSubscriptionsSubscriptionExposedIdRequestItemsItemDiscountsCase0List =
   /*@__PURE__*/ S.Array(
     PostSubscriptionsSubscriptionExposedIdRequestItemsItemDiscountsCase0Item,
@@ -161623,7 +161434,7 @@ export const PostSubscriptionsSubscriptionExposedIdRequestItemsItemPriceData =
   }) as any as S.Schema<PostSubscriptionsSubscriptionExposedIdRequestItemsItemPriceData>;
 
 export type PostSubscriptionsSubscriptionExposedIdRequestItemsItemTaxRatesCase0List =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostSubscriptionsSubscriptionExposedIdRequestItemsItemTaxRatesCase0List =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -161696,7 +161507,7 @@ export const PostSubscriptionsSubscriptionExposedIdRequestItemsItem =
 
 /** A list of up to 20 subscription items, each with an attached price. */
 export type PostSubscriptionsSubscriptionExposedIdRequestItemsList =
-  ReadonlyArray<PostSubscriptionsSubscriptionExposedIdRequestItemsItem>;
+  Array<PostSubscriptionsSubscriptionExposedIdRequestItemsItem>;
 export const PostSubscriptionsSubscriptionExposedIdRequestItemsList =
   /*@__PURE__*/ S.Array(
     PostSubscriptionsSubscriptionExposedIdRequestItemsItem,
@@ -162279,7 +162090,7 @@ export const PostSubscriptionsSubscriptionExposedIdRequestPaymentSettingsPayment
 
 /** The account subcategories to use to filter for selectable accounts. Valid subcategories are `checking` and `savings`. */
 export type PostSubscriptionsSubscriptionExposedIdRequestPaymentSettingsPaymentMethodOptionsUsBankAccountCase0FinancialConnectionsFiltersAccountSubcategoriesList =
-  ReadonlyArray<
+  Array<
     | PostSubscriptionsSubscriptionExposedIdRequestPaymentSettingsPaymentMethodOptionsUsBankAccountCase0FinancialConnectionsFiltersAccountSubcategoriesItem
     | (string & {})
   >;
@@ -162312,7 +162123,7 @@ export const PostSubscriptionsSubscriptionExposedIdRequestPaymentSettingsPayment
 
 /** The list of permissions to request. If this parameter is passed, the `payment_method` permission must be included. Valid permissions include: `balances`, `ownership`, `payment_method`, and `transactions`. */
 export type PostSubscriptionsSubscriptionExposedIdRequestPaymentSettingsPaymentMethodOptionsUsBankAccountCase0FinancialConnectionsPermissionsList =
-  ReadonlyArray<
+  Array<
     | PostSubscriptionsSubscriptionExposedIdRequestPaymentSettingsPaymentMethodOptionsUsBankAccountCase0FinancialConnectionsPermissionsItem
     | (string & {})
   >;
@@ -162328,7 +162139,7 @@ export const PostSubscriptionsSubscriptionExposedIdRequestPaymentSettingsPayment
 
 /** List of data features that you would like to retrieve upon account creation. */
 export type PostSubscriptionsSubscriptionExposedIdRequestPaymentSettingsPaymentMethodOptionsUsBankAccountCase0FinancialConnectionsPrefetchList =
-  ReadonlyArray<
+  Array<
     | PostSubscriptionsSubscriptionExposedIdRequestPaymentSettingsPaymentMethodOptionsUsBankAccountCase0FinancialConnectionsPrefetchItem
     | (string & {})
   >;
@@ -162518,7 +162329,7 @@ export const PostSubscriptionsSubscriptionExposedIdRequestPaymentSettingsPayment
   /*@__PURE__*/ S.String;
 
 export type PostSubscriptionsSubscriptionExposedIdRequestPaymentSettingsPaymentMethodTypesCase0List =
-  ReadonlyArray<
+  Array<
     | PostSubscriptionsSubscriptionExposedIdRequestPaymentSettingsPaymentMethodTypesCase0Item
     | (string & {})
   >;
@@ -162924,7 +162735,7 @@ export const PostSubscriptionsSubscriptionMigrateRequestBillingMode =
 
 /** Specifies which fields in the response should be expanded. */
 export type PostSubscriptionsSubscriptionMigrateRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostSubscriptionsSubscriptionMigrateRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -162964,7 +162775,7 @@ export const PostSubscriptionsSubscriptionResumeRequestBillingCycleAnchor =
 
 /** Specifies which fields in the response should be expanded. */
 export type PostSubscriptionsSubscriptionResumeRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostSubscriptionsSubscriptionResumeRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -163250,7 +163061,7 @@ export const PostTaxCalculationsRequestCustomerDetailsTaxIdsItem =
 
 /** The customer's tax IDs. Stripe Tax might consider a transaction with applicable tax IDs to be B2B, which might affect the tax calculation result. Stripe Tax doesn't validate tax IDs for correctness. */
 export type PostTaxCalculationsRequestCustomerDetailsTaxIdsList =
-  ReadonlyArray<PostTaxCalculationsRequestCustomerDetailsTaxIdsItem>;
+  Array<PostTaxCalculationsRequestCustomerDetailsTaxIdsItem>;
 export const PostTaxCalculationsRequestCustomerDetailsTaxIdsList =
   /*@__PURE__*/ S.Array(
     PostTaxCalculationsRequestCustomerDetailsTaxIdsItem,
@@ -163299,7 +163110,7 @@ export const PostTaxCalculationsRequestCustomerDetails =
   }) as any as S.Schema<PostTaxCalculationsRequestCustomerDetails>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostTaxCalculationsRequestExpandList = ReadonlyArray<string>;
+export type PostTaxCalculationsRequestExpandList = Array<string>;
 export const PostTaxCalculationsRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostTaxCalculationsRequestExpandList>;
@@ -163358,7 +163169,7 @@ export const PostTaxCalculationsRequestLineItemsItem = /*@__PURE__*/ S.suspend(
 
 /** A list of items the customer is purchasing. */
 export type PostTaxCalculationsRequestLineItemsList =
-  ReadonlyArray<PostTaxCalculationsRequestLineItemsItem>;
+  Array<PostTaxCalculationsRequestLineItemsItem>;
 export const PostTaxCalculationsRequestLineItemsList = /*@__PURE__*/ S.Array(
   PostTaxCalculationsRequestLineItemsItem,
 ) as any as S.Schema<PostTaxCalculationsRequestLineItemsList>;
@@ -163539,7 +163350,7 @@ export const PostTaxCalculationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostTaxCalculationsRequest>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostTaxIdsRequestExpandList = ReadonlyArray<string>;
+export type PostTaxIdsRequestExpandList = Array<string>;
 export const PostTaxIdsRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostTaxIdsRequestExpandList>;
@@ -163723,7 +163534,7 @@ export const PostTaxIdsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostTaxIdsRequest>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostTaxRatesRequestExpandList = ReadonlyArray<string>;
+export type PostTaxRatesRequestExpandList = Array<string>;
 export const PostTaxRatesRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostTaxRatesRequestExpandList>;
@@ -163805,7 +163616,7 @@ export const PostTaxRatesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostTaxRatesRequest>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostTaxRatesTaxRateRequestExpandList = ReadonlyArray<string>;
+export type PostTaxRatesTaxRateRequestExpandList = Array<string>;
 export const PostTaxRatesTaxRateRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostTaxRatesTaxRateRequestExpandList>;
@@ -167305,7 +167116,7 @@ export const PostTaxRegistrationsRequestCountryOptionsUsStateSalesTaxElectionsIt
 
 /** Elections for the state sales tax registration. */
 export type PostTaxRegistrationsRequestCountryOptionsUsStateSalesTaxElectionsList =
-  ReadonlyArray<PostTaxRegistrationsRequestCountryOptionsUsStateSalesTaxElectionsItem>;
+  Array<PostTaxRegistrationsRequestCountryOptionsUsStateSalesTaxElectionsItem>;
 export const PostTaxRegistrationsRequestCountryOptionsUsStateSalesTaxElectionsList =
   /*@__PURE__*/ S.Array(
     PostTaxRegistrationsRequestCountryOptionsUsStateSalesTaxElectionsItem,
@@ -167878,7 +167689,7 @@ export const PostTaxRegistrationsRequestCountryOptions =
   }) as any as S.Schema<PostTaxRegistrationsRequestCountryOptions>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostTaxRegistrationsRequestExpandList = ReadonlyArray<string>;
+export type PostTaxRegistrationsRequestExpandList = Array<string>;
 export const PostTaxRegistrationsRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostTaxRegistrationsRequestExpandList>;
@@ -167926,7 +167737,7 @@ export const PostTaxRegistrationsIdRequestActiveFrom =
   /*@__PURE__*/ S.Unknown as any as S.Schema<PostTaxRegistrationsIdRequestActiveFrom>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostTaxRegistrationsIdRequestExpandList = ReadonlyArray<string>;
+export type PostTaxRegistrationsIdRequestExpandList = Array<string>;
 export const PostTaxRegistrationsIdRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostTaxRegistrationsIdRequestExpandList>;
@@ -167998,7 +167809,7 @@ export const PostTaxSettingsRequestDefaults = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostTaxSettingsRequestDefaults>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostTaxSettingsRequestExpandList = ReadonlyArray<string>;
+export type PostTaxSettingsRequestExpandList = Array<string>;
 export const PostTaxSettingsRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostTaxSettingsRequestExpandList>;
@@ -168072,7 +167883,7 @@ export const PostTaxSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Specifies which fields in the response should be expanded. */
 export type PostTaxTransactionsCreateFromCalculationRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostTaxTransactionsCreateFromCalculationRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -168125,8 +167936,7 @@ export const PostTaxTransactionsCreateFromCalculationRequest =
   }) as any as S.Schema<PostTaxTransactionsCreateFromCalculationRequest>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostTaxTransactionsCreateReversalRequestExpandList =
-  ReadonlyArray<string>;
+export type PostTaxTransactionsCreateReversalRequestExpandList = Array<string>;
 export const PostTaxTransactionsCreateReversalRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -168174,7 +167984,7 @@ export const PostTaxTransactionsCreateReversalRequestLineItemsItem =
 
 /** The line item amounts to reverse. */
 export type PostTaxTransactionsCreateReversalRequestLineItemsList =
-  ReadonlyArray<PostTaxTransactionsCreateReversalRequestLineItemsItem>;
+  Array<PostTaxTransactionsCreateReversalRequestLineItemsItem>;
 export const PostTaxTransactionsCreateReversalRequestLineItemsList =
   /*@__PURE__*/ S.Array(
     PostTaxTransactionsCreateReversalRequestLineItemsItem,
@@ -168338,7 +168148,7 @@ export const PostTerminalConfigurationsRequestCellular =
   /*@__PURE__*/ S.Unknown as any as S.Schema<PostTerminalConfigurationsRequestCellular>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostTerminalConfigurationsRequestExpandList = ReadonlyArray<string>;
+export type PostTerminalConfigurationsRequestExpandList = Array<string>;
 export const PostTerminalConfigurationsRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -168441,7 +168251,7 @@ export const PostTerminalConfigurationsRequestStripeS710 =
 
 /** Fixed amounts displayed when collecting a tip */
 export type PostTerminalConfigurationsRequestTippingCase0AedFixedAmountsList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const PostTerminalConfigurationsRequestTippingCase0AedFixedAmountsList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -168449,7 +168259,7 @@ export const PostTerminalConfigurationsRequestTippingCase0AedFixedAmountsList =
 
 /** Percentages displayed when collecting a tip */
 export type PostTerminalConfigurationsRequestTippingCase0AedPercentagesList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const PostTerminalConfigurationsRequestTippingCase0AedPercentagesList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -168481,7 +168291,7 @@ export const PostTerminalConfigurationsRequestTippingCase0Aed =
 
 /** Fixed amounts displayed when collecting a tip */
 export type PostTerminalConfigurationsRequestTippingCase0AudFixedAmountsList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const PostTerminalConfigurationsRequestTippingCase0AudFixedAmountsList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -168489,7 +168299,7 @@ export const PostTerminalConfigurationsRequestTippingCase0AudFixedAmountsList =
 
 /** Percentages displayed when collecting a tip */
 export type PostTerminalConfigurationsRequestTippingCase0AudPercentagesList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const PostTerminalConfigurationsRequestTippingCase0AudPercentagesList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -168521,7 +168331,7 @@ export const PostTerminalConfigurationsRequestTippingCase0Aud =
 
 /** Fixed amounts displayed when collecting a tip */
 export type PostTerminalConfigurationsRequestTippingCase0CadFixedAmountsList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const PostTerminalConfigurationsRequestTippingCase0CadFixedAmountsList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -168529,7 +168339,7 @@ export const PostTerminalConfigurationsRequestTippingCase0CadFixedAmountsList =
 
 /** Percentages displayed when collecting a tip */
 export type PostTerminalConfigurationsRequestTippingCase0CadPercentagesList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const PostTerminalConfigurationsRequestTippingCase0CadPercentagesList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -168561,7 +168371,7 @@ export const PostTerminalConfigurationsRequestTippingCase0Cad =
 
 /** Fixed amounts displayed when collecting a tip */
 export type PostTerminalConfigurationsRequestTippingCase0ChfFixedAmountsList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const PostTerminalConfigurationsRequestTippingCase0ChfFixedAmountsList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -168569,7 +168379,7 @@ export const PostTerminalConfigurationsRequestTippingCase0ChfFixedAmountsList =
 
 /** Percentages displayed when collecting a tip */
 export type PostTerminalConfigurationsRequestTippingCase0ChfPercentagesList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const PostTerminalConfigurationsRequestTippingCase0ChfPercentagesList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -168601,7 +168411,7 @@ export const PostTerminalConfigurationsRequestTippingCase0Chf =
 
 /** Fixed amounts displayed when collecting a tip */
 export type PostTerminalConfigurationsRequestTippingCase0CzkFixedAmountsList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const PostTerminalConfigurationsRequestTippingCase0CzkFixedAmountsList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -168609,7 +168419,7 @@ export const PostTerminalConfigurationsRequestTippingCase0CzkFixedAmountsList =
 
 /** Percentages displayed when collecting a tip */
 export type PostTerminalConfigurationsRequestTippingCase0CzkPercentagesList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const PostTerminalConfigurationsRequestTippingCase0CzkPercentagesList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -168641,7 +168451,7 @@ export const PostTerminalConfigurationsRequestTippingCase0Czk =
 
 /** Fixed amounts displayed when collecting a tip */
 export type PostTerminalConfigurationsRequestTippingCase0DkkFixedAmountsList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const PostTerminalConfigurationsRequestTippingCase0DkkFixedAmountsList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -168649,7 +168459,7 @@ export const PostTerminalConfigurationsRequestTippingCase0DkkFixedAmountsList =
 
 /** Percentages displayed when collecting a tip */
 export type PostTerminalConfigurationsRequestTippingCase0DkkPercentagesList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const PostTerminalConfigurationsRequestTippingCase0DkkPercentagesList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -168681,7 +168491,7 @@ export const PostTerminalConfigurationsRequestTippingCase0Dkk =
 
 /** Fixed amounts displayed when collecting a tip */
 export type PostTerminalConfigurationsRequestTippingCase0EurFixedAmountsList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const PostTerminalConfigurationsRequestTippingCase0EurFixedAmountsList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -168689,7 +168499,7 @@ export const PostTerminalConfigurationsRequestTippingCase0EurFixedAmountsList =
 
 /** Percentages displayed when collecting a tip */
 export type PostTerminalConfigurationsRequestTippingCase0EurPercentagesList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const PostTerminalConfigurationsRequestTippingCase0EurPercentagesList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -168721,7 +168531,7 @@ export const PostTerminalConfigurationsRequestTippingCase0Eur =
 
 /** Fixed amounts displayed when collecting a tip */
 export type PostTerminalConfigurationsRequestTippingCase0GbpFixedAmountsList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const PostTerminalConfigurationsRequestTippingCase0GbpFixedAmountsList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -168729,7 +168539,7 @@ export const PostTerminalConfigurationsRequestTippingCase0GbpFixedAmountsList =
 
 /** Percentages displayed when collecting a tip */
 export type PostTerminalConfigurationsRequestTippingCase0GbpPercentagesList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const PostTerminalConfigurationsRequestTippingCase0GbpPercentagesList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -168761,7 +168571,7 @@ export const PostTerminalConfigurationsRequestTippingCase0Gbp =
 
 /** Fixed amounts displayed when collecting a tip */
 export type PostTerminalConfigurationsRequestTippingCase0GipFixedAmountsList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const PostTerminalConfigurationsRequestTippingCase0GipFixedAmountsList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -168769,7 +168579,7 @@ export const PostTerminalConfigurationsRequestTippingCase0GipFixedAmountsList =
 
 /** Percentages displayed when collecting a tip */
 export type PostTerminalConfigurationsRequestTippingCase0GipPercentagesList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const PostTerminalConfigurationsRequestTippingCase0GipPercentagesList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -168801,7 +168611,7 @@ export const PostTerminalConfigurationsRequestTippingCase0Gip =
 
 /** Fixed amounts displayed when collecting a tip */
 export type PostTerminalConfigurationsRequestTippingCase0HkdFixedAmountsList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const PostTerminalConfigurationsRequestTippingCase0HkdFixedAmountsList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -168809,7 +168619,7 @@ export const PostTerminalConfigurationsRequestTippingCase0HkdFixedAmountsList =
 
 /** Percentages displayed when collecting a tip */
 export type PostTerminalConfigurationsRequestTippingCase0HkdPercentagesList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const PostTerminalConfigurationsRequestTippingCase0HkdPercentagesList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -168841,7 +168651,7 @@ export const PostTerminalConfigurationsRequestTippingCase0Hkd =
 
 /** Fixed amounts displayed when collecting a tip */
 export type PostTerminalConfigurationsRequestTippingCase0HufFixedAmountsList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const PostTerminalConfigurationsRequestTippingCase0HufFixedAmountsList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -168849,7 +168659,7 @@ export const PostTerminalConfigurationsRequestTippingCase0HufFixedAmountsList =
 
 /** Percentages displayed when collecting a tip */
 export type PostTerminalConfigurationsRequestTippingCase0HufPercentagesList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const PostTerminalConfigurationsRequestTippingCase0HufPercentagesList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -168881,7 +168691,7 @@ export const PostTerminalConfigurationsRequestTippingCase0Huf =
 
 /** Fixed amounts displayed when collecting a tip */
 export type PostTerminalConfigurationsRequestTippingCase0JpyFixedAmountsList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const PostTerminalConfigurationsRequestTippingCase0JpyFixedAmountsList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -168889,7 +168699,7 @@ export const PostTerminalConfigurationsRequestTippingCase0JpyFixedAmountsList =
 
 /** Percentages displayed when collecting a tip */
 export type PostTerminalConfigurationsRequestTippingCase0JpyPercentagesList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const PostTerminalConfigurationsRequestTippingCase0JpyPercentagesList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -168921,7 +168731,7 @@ export const PostTerminalConfigurationsRequestTippingCase0Jpy =
 
 /** Fixed amounts displayed when collecting a tip */
 export type PostTerminalConfigurationsRequestTippingCase0MxnFixedAmountsList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const PostTerminalConfigurationsRequestTippingCase0MxnFixedAmountsList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -168929,7 +168739,7 @@ export const PostTerminalConfigurationsRequestTippingCase0MxnFixedAmountsList =
 
 /** Percentages displayed when collecting a tip */
 export type PostTerminalConfigurationsRequestTippingCase0MxnPercentagesList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const PostTerminalConfigurationsRequestTippingCase0MxnPercentagesList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -168961,7 +168771,7 @@ export const PostTerminalConfigurationsRequestTippingCase0Mxn =
 
 /** Fixed amounts displayed when collecting a tip */
 export type PostTerminalConfigurationsRequestTippingCase0MyrFixedAmountsList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const PostTerminalConfigurationsRequestTippingCase0MyrFixedAmountsList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -168969,7 +168779,7 @@ export const PostTerminalConfigurationsRequestTippingCase0MyrFixedAmountsList =
 
 /** Percentages displayed when collecting a tip */
 export type PostTerminalConfigurationsRequestTippingCase0MyrPercentagesList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const PostTerminalConfigurationsRequestTippingCase0MyrPercentagesList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -169001,7 +168811,7 @@ export const PostTerminalConfigurationsRequestTippingCase0Myr =
 
 /** Fixed amounts displayed when collecting a tip */
 export type PostTerminalConfigurationsRequestTippingCase0NokFixedAmountsList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const PostTerminalConfigurationsRequestTippingCase0NokFixedAmountsList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -169009,7 +168819,7 @@ export const PostTerminalConfigurationsRequestTippingCase0NokFixedAmountsList =
 
 /** Percentages displayed when collecting a tip */
 export type PostTerminalConfigurationsRequestTippingCase0NokPercentagesList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const PostTerminalConfigurationsRequestTippingCase0NokPercentagesList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -169041,7 +168851,7 @@ export const PostTerminalConfigurationsRequestTippingCase0Nok =
 
 /** Fixed amounts displayed when collecting a tip */
 export type PostTerminalConfigurationsRequestTippingCase0NzdFixedAmountsList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const PostTerminalConfigurationsRequestTippingCase0NzdFixedAmountsList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -169049,7 +168859,7 @@ export const PostTerminalConfigurationsRequestTippingCase0NzdFixedAmountsList =
 
 /** Percentages displayed when collecting a tip */
 export type PostTerminalConfigurationsRequestTippingCase0NzdPercentagesList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const PostTerminalConfigurationsRequestTippingCase0NzdPercentagesList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -169081,7 +168891,7 @@ export const PostTerminalConfigurationsRequestTippingCase0Nzd =
 
 /** Fixed amounts displayed when collecting a tip */
 export type PostTerminalConfigurationsRequestTippingCase0PlnFixedAmountsList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const PostTerminalConfigurationsRequestTippingCase0PlnFixedAmountsList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -169089,7 +168899,7 @@ export const PostTerminalConfigurationsRequestTippingCase0PlnFixedAmountsList =
 
 /** Percentages displayed when collecting a tip */
 export type PostTerminalConfigurationsRequestTippingCase0PlnPercentagesList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const PostTerminalConfigurationsRequestTippingCase0PlnPercentagesList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -169121,7 +168931,7 @@ export const PostTerminalConfigurationsRequestTippingCase0Pln =
 
 /** Fixed amounts displayed when collecting a tip */
 export type PostTerminalConfigurationsRequestTippingCase0RonFixedAmountsList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const PostTerminalConfigurationsRequestTippingCase0RonFixedAmountsList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -169129,7 +168939,7 @@ export const PostTerminalConfigurationsRequestTippingCase0RonFixedAmountsList =
 
 /** Percentages displayed when collecting a tip */
 export type PostTerminalConfigurationsRequestTippingCase0RonPercentagesList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const PostTerminalConfigurationsRequestTippingCase0RonPercentagesList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -169161,7 +168971,7 @@ export const PostTerminalConfigurationsRequestTippingCase0Ron =
 
 /** Fixed amounts displayed when collecting a tip */
 export type PostTerminalConfigurationsRequestTippingCase0SekFixedAmountsList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const PostTerminalConfigurationsRequestTippingCase0SekFixedAmountsList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -169169,7 +168979,7 @@ export const PostTerminalConfigurationsRequestTippingCase0SekFixedAmountsList =
 
 /** Percentages displayed when collecting a tip */
 export type PostTerminalConfigurationsRequestTippingCase0SekPercentagesList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const PostTerminalConfigurationsRequestTippingCase0SekPercentagesList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -169201,7 +169011,7 @@ export const PostTerminalConfigurationsRequestTippingCase0Sek =
 
 /** Fixed amounts displayed when collecting a tip */
 export type PostTerminalConfigurationsRequestTippingCase0SgdFixedAmountsList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const PostTerminalConfigurationsRequestTippingCase0SgdFixedAmountsList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -169209,7 +169019,7 @@ export const PostTerminalConfigurationsRequestTippingCase0SgdFixedAmountsList =
 
 /** Percentages displayed when collecting a tip */
 export type PostTerminalConfigurationsRequestTippingCase0SgdPercentagesList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const PostTerminalConfigurationsRequestTippingCase0SgdPercentagesList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -169241,7 +169051,7 @@ export const PostTerminalConfigurationsRequestTippingCase0Sgd =
 
 /** Fixed amounts displayed when collecting a tip */
 export type PostTerminalConfigurationsRequestTippingCase0UsdFixedAmountsList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const PostTerminalConfigurationsRequestTippingCase0UsdFixedAmountsList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -169249,7 +169059,7 @@ export const PostTerminalConfigurationsRequestTippingCase0UsdFixedAmountsList =
 
 /** Percentages displayed when collecting a tip */
 export type PostTerminalConfigurationsRequestTippingCase0UsdPercentagesList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const PostTerminalConfigurationsRequestTippingCase0UsdPercentagesList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -169785,7 +169595,7 @@ export const PostTerminalConfigurationsConfigurationRequestCellular =
 
 /** Specifies which fields in the response should be expanded. */
 export type PostTerminalConfigurationsConfigurationRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostTerminalConfigurationsConfigurationRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -169922,7 +169732,7 @@ export const PostTerminalConfigurationsConfigurationRequestStripeS710 =
 
 /** Fixed amounts displayed when collecting a tip */
 export type PostTerminalConfigurationsConfigurationRequestTippingCase0AedFixedAmountsList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const PostTerminalConfigurationsConfigurationRequestTippingCase0AedFixedAmountsList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -169930,7 +169740,7 @@ export const PostTerminalConfigurationsConfigurationRequestTippingCase0AedFixedA
 
 /** Percentages displayed when collecting a tip */
 export type PostTerminalConfigurationsConfigurationRequestTippingCase0AedPercentagesList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const PostTerminalConfigurationsConfigurationRequestTippingCase0AedPercentagesList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -169962,7 +169772,7 @@ export const PostTerminalConfigurationsConfigurationRequestTippingCase0Aed =
 
 /** Fixed amounts displayed when collecting a tip */
 export type PostTerminalConfigurationsConfigurationRequestTippingCase0AudFixedAmountsList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const PostTerminalConfigurationsConfigurationRequestTippingCase0AudFixedAmountsList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -169970,7 +169780,7 @@ export const PostTerminalConfigurationsConfigurationRequestTippingCase0AudFixedA
 
 /** Percentages displayed when collecting a tip */
 export type PostTerminalConfigurationsConfigurationRequestTippingCase0AudPercentagesList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const PostTerminalConfigurationsConfigurationRequestTippingCase0AudPercentagesList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -170002,7 +169812,7 @@ export const PostTerminalConfigurationsConfigurationRequestTippingCase0Aud =
 
 /** Fixed amounts displayed when collecting a tip */
 export type PostTerminalConfigurationsConfigurationRequestTippingCase0CadFixedAmountsList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const PostTerminalConfigurationsConfigurationRequestTippingCase0CadFixedAmountsList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -170010,7 +169820,7 @@ export const PostTerminalConfigurationsConfigurationRequestTippingCase0CadFixedA
 
 /** Percentages displayed when collecting a tip */
 export type PostTerminalConfigurationsConfigurationRequestTippingCase0CadPercentagesList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const PostTerminalConfigurationsConfigurationRequestTippingCase0CadPercentagesList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -170042,7 +169852,7 @@ export const PostTerminalConfigurationsConfigurationRequestTippingCase0Cad =
 
 /** Fixed amounts displayed when collecting a tip */
 export type PostTerminalConfigurationsConfigurationRequestTippingCase0ChfFixedAmountsList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const PostTerminalConfigurationsConfigurationRequestTippingCase0ChfFixedAmountsList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -170050,7 +169860,7 @@ export const PostTerminalConfigurationsConfigurationRequestTippingCase0ChfFixedA
 
 /** Percentages displayed when collecting a tip */
 export type PostTerminalConfigurationsConfigurationRequestTippingCase0ChfPercentagesList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const PostTerminalConfigurationsConfigurationRequestTippingCase0ChfPercentagesList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -170082,7 +169892,7 @@ export const PostTerminalConfigurationsConfigurationRequestTippingCase0Chf =
 
 /** Fixed amounts displayed when collecting a tip */
 export type PostTerminalConfigurationsConfigurationRequestTippingCase0CzkFixedAmountsList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const PostTerminalConfigurationsConfigurationRequestTippingCase0CzkFixedAmountsList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -170090,7 +169900,7 @@ export const PostTerminalConfigurationsConfigurationRequestTippingCase0CzkFixedA
 
 /** Percentages displayed when collecting a tip */
 export type PostTerminalConfigurationsConfigurationRequestTippingCase0CzkPercentagesList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const PostTerminalConfigurationsConfigurationRequestTippingCase0CzkPercentagesList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -170122,7 +169932,7 @@ export const PostTerminalConfigurationsConfigurationRequestTippingCase0Czk =
 
 /** Fixed amounts displayed when collecting a tip */
 export type PostTerminalConfigurationsConfigurationRequestTippingCase0DkkFixedAmountsList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const PostTerminalConfigurationsConfigurationRequestTippingCase0DkkFixedAmountsList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -170130,7 +169940,7 @@ export const PostTerminalConfigurationsConfigurationRequestTippingCase0DkkFixedA
 
 /** Percentages displayed when collecting a tip */
 export type PostTerminalConfigurationsConfigurationRequestTippingCase0DkkPercentagesList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const PostTerminalConfigurationsConfigurationRequestTippingCase0DkkPercentagesList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -170162,7 +169972,7 @@ export const PostTerminalConfigurationsConfigurationRequestTippingCase0Dkk =
 
 /** Fixed amounts displayed when collecting a tip */
 export type PostTerminalConfigurationsConfigurationRequestTippingCase0EurFixedAmountsList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const PostTerminalConfigurationsConfigurationRequestTippingCase0EurFixedAmountsList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -170170,7 +169980,7 @@ export const PostTerminalConfigurationsConfigurationRequestTippingCase0EurFixedA
 
 /** Percentages displayed when collecting a tip */
 export type PostTerminalConfigurationsConfigurationRequestTippingCase0EurPercentagesList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const PostTerminalConfigurationsConfigurationRequestTippingCase0EurPercentagesList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -170202,7 +170012,7 @@ export const PostTerminalConfigurationsConfigurationRequestTippingCase0Eur =
 
 /** Fixed amounts displayed when collecting a tip */
 export type PostTerminalConfigurationsConfigurationRequestTippingCase0GbpFixedAmountsList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const PostTerminalConfigurationsConfigurationRequestTippingCase0GbpFixedAmountsList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -170210,7 +170020,7 @@ export const PostTerminalConfigurationsConfigurationRequestTippingCase0GbpFixedA
 
 /** Percentages displayed when collecting a tip */
 export type PostTerminalConfigurationsConfigurationRequestTippingCase0GbpPercentagesList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const PostTerminalConfigurationsConfigurationRequestTippingCase0GbpPercentagesList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -170242,7 +170052,7 @@ export const PostTerminalConfigurationsConfigurationRequestTippingCase0Gbp =
 
 /** Fixed amounts displayed when collecting a tip */
 export type PostTerminalConfigurationsConfigurationRequestTippingCase0GipFixedAmountsList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const PostTerminalConfigurationsConfigurationRequestTippingCase0GipFixedAmountsList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -170250,7 +170060,7 @@ export const PostTerminalConfigurationsConfigurationRequestTippingCase0GipFixedA
 
 /** Percentages displayed when collecting a tip */
 export type PostTerminalConfigurationsConfigurationRequestTippingCase0GipPercentagesList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const PostTerminalConfigurationsConfigurationRequestTippingCase0GipPercentagesList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -170282,7 +170092,7 @@ export const PostTerminalConfigurationsConfigurationRequestTippingCase0Gip =
 
 /** Fixed amounts displayed when collecting a tip */
 export type PostTerminalConfigurationsConfigurationRequestTippingCase0HkdFixedAmountsList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const PostTerminalConfigurationsConfigurationRequestTippingCase0HkdFixedAmountsList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -170290,7 +170100,7 @@ export const PostTerminalConfigurationsConfigurationRequestTippingCase0HkdFixedA
 
 /** Percentages displayed when collecting a tip */
 export type PostTerminalConfigurationsConfigurationRequestTippingCase0HkdPercentagesList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const PostTerminalConfigurationsConfigurationRequestTippingCase0HkdPercentagesList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -170322,7 +170132,7 @@ export const PostTerminalConfigurationsConfigurationRequestTippingCase0Hkd =
 
 /** Fixed amounts displayed when collecting a tip */
 export type PostTerminalConfigurationsConfigurationRequestTippingCase0HufFixedAmountsList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const PostTerminalConfigurationsConfigurationRequestTippingCase0HufFixedAmountsList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -170330,7 +170140,7 @@ export const PostTerminalConfigurationsConfigurationRequestTippingCase0HufFixedA
 
 /** Percentages displayed when collecting a tip */
 export type PostTerminalConfigurationsConfigurationRequestTippingCase0HufPercentagesList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const PostTerminalConfigurationsConfigurationRequestTippingCase0HufPercentagesList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -170362,7 +170172,7 @@ export const PostTerminalConfigurationsConfigurationRequestTippingCase0Huf =
 
 /** Fixed amounts displayed when collecting a tip */
 export type PostTerminalConfigurationsConfigurationRequestTippingCase0JpyFixedAmountsList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const PostTerminalConfigurationsConfigurationRequestTippingCase0JpyFixedAmountsList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -170370,7 +170180,7 @@ export const PostTerminalConfigurationsConfigurationRequestTippingCase0JpyFixedA
 
 /** Percentages displayed when collecting a tip */
 export type PostTerminalConfigurationsConfigurationRequestTippingCase0JpyPercentagesList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const PostTerminalConfigurationsConfigurationRequestTippingCase0JpyPercentagesList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -170402,7 +170212,7 @@ export const PostTerminalConfigurationsConfigurationRequestTippingCase0Jpy =
 
 /** Fixed amounts displayed when collecting a tip */
 export type PostTerminalConfigurationsConfigurationRequestTippingCase0MxnFixedAmountsList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const PostTerminalConfigurationsConfigurationRequestTippingCase0MxnFixedAmountsList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -170410,7 +170220,7 @@ export const PostTerminalConfigurationsConfigurationRequestTippingCase0MxnFixedA
 
 /** Percentages displayed when collecting a tip */
 export type PostTerminalConfigurationsConfigurationRequestTippingCase0MxnPercentagesList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const PostTerminalConfigurationsConfigurationRequestTippingCase0MxnPercentagesList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -170442,7 +170252,7 @@ export const PostTerminalConfigurationsConfigurationRequestTippingCase0Mxn =
 
 /** Fixed amounts displayed when collecting a tip */
 export type PostTerminalConfigurationsConfigurationRequestTippingCase0MyrFixedAmountsList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const PostTerminalConfigurationsConfigurationRequestTippingCase0MyrFixedAmountsList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -170450,7 +170260,7 @@ export const PostTerminalConfigurationsConfigurationRequestTippingCase0MyrFixedA
 
 /** Percentages displayed when collecting a tip */
 export type PostTerminalConfigurationsConfigurationRequestTippingCase0MyrPercentagesList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const PostTerminalConfigurationsConfigurationRequestTippingCase0MyrPercentagesList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -170482,7 +170292,7 @@ export const PostTerminalConfigurationsConfigurationRequestTippingCase0Myr =
 
 /** Fixed amounts displayed when collecting a tip */
 export type PostTerminalConfigurationsConfigurationRequestTippingCase0NokFixedAmountsList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const PostTerminalConfigurationsConfigurationRequestTippingCase0NokFixedAmountsList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -170490,7 +170300,7 @@ export const PostTerminalConfigurationsConfigurationRequestTippingCase0NokFixedA
 
 /** Percentages displayed when collecting a tip */
 export type PostTerminalConfigurationsConfigurationRequestTippingCase0NokPercentagesList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const PostTerminalConfigurationsConfigurationRequestTippingCase0NokPercentagesList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -170522,7 +170332,7 @@ export const PostTerminalConfigurationsConfigurationRequestTippingCase0Nok =
 
 /** Fixed amounts displayed when collecting a tip */
 export type PostTerminalConfigurationsConfigurationRequestTippingCase0NzdFixedAmountsList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const PostTerminalConfigurationsConfigurationRequestTippingCase0NzdFixedAmountsList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -170530,7 +170340,7 @@ export const PostTerminalConfigurationsConfigurationRequestTippingCase0NzdFixedA
 
 /** Percentages displayed when collecting a tip */
 export type PostTerminalConfigurationsConfigurationRequestTippingCase0NzdPercentagesList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const PostTerminalConfigurationsConfigurationRequestTippingCase0NzdPercentagesList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -170562,7 +170372,7 @@ export const PostTerminalConfigurationsConfigurationRequestTippingCase0Nzd =
 
 /** Fixed amounts displayed when collecting a tip */
 export type PostTerminalConfigurationsConfigurationRequestTippingCase0PlnFixedAmountsList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const PostTerminalConfigurationsConfigurationRequestTippingCase0PlnFixedAmountsList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -170570,7 +170380,7 @@ export const PostTerminalConfigurationsConfigurationRequestTippingCase0PlnFixedA
 
 /** Percentages displayed when collecting a tip */
 export type PostTerminalConfigurationsConfigurationRequestTippingCase0PlnPercentagesList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const PostTerminalConfigurationsConfigurationRequestTippingCase0PlnPercentagesList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -170602,7 +170412,7 @@ export const PostTerminalConfigurationsConfigurationRequestTippingCase0Pln =
 
 /** Fixed amounts displayed when collecting a tip */
 export type PostTerminalConfigurationsConfigurationRequestTippingCase0RonFixedAmountsList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const PostTerminalConfigurationsConfigurationRequestTippingCase0RonFixedAmountsList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -170610,7 +170420,7 @@ export const PostTerminalConfigurationsConfigurationRequestTippingCase0RonFixedA
 
 /** Percentages displayed when collecting a tip */
 export type PostTerminalConfigurationsConfigurationRequestTippingCase0RonPercentagesList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const PostTerminalConfigurationsConfigurationRequestTippingCase0RonPercentagesList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -170642,7 +170452,7 @@ export const PostTerminalConfigurationsConfigurationRequestTippingCase0Ron =
 
 /** Fixed amounts displayed when collecting a tip */
 export type PostTerminalConfigurationsConfigurationRequestTippingCase0SekFixedAmountsList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const PostTerminalConfigurationsConfigurationRequestTippingCase0SekFixedAmountsList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -170650,7 +170460,7 @@ export const PostTerminalConfigurationsConfigurationRequestTippingCase0SekFixedA
 
 /** Percentages displayed when collecting a tip */
 export type PostTerminalConfigurationsConfigurationRequestTippingCase0SekPercentagesList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const PostTerminalConfigurationsConfigurationRequestTippingCase0SekPercentagesList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -170682,7 +170492,7 @@ export const PostTerminalConfigurationsConfigurationRequestTippingCase0Sek =
 
 /** Fixed amounts displayed when collecting a tip */
 export type PostTerminalConfigurationsConfigurationRequestTippingCase0SgdFixedAmountsList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const PostTerminalConfigurationsConfigurationRequestTippingCase0SgdFixedAmountsList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -170690,7 +170500,7 @@ export const PostTerminalConfigurationsConfigurationRequestTippingCase0SgdFixedA
 
 /** Percentages displayed when collecting a tip */
 export type PostTerminalConfigurationsConfigurationRequestTippingCase0SgdPercentagesList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const PostTerminalConfigurationsConfigurationRequestTippingCase0SgdPercentagesList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -170722,7 +170532,7 @@ export const PostTerminalConfigurationsConfigurationRequestTippingCase0Sgd =
 
 /** Fixed amounts displayed when collecting a tip */
 export type PostTerminalConfigurationsConfigurationRequestTippingCase0UsdFixedAmountsList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const PostTerminalConfigurationsConfigurationRequestTippingCase0UsdFixedAmountsList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -170730,7 +170540,7 @@ export const PostTerminalConfigurationsConfigurationRequestTippingCase0UsdFixedA
 
 /** Percentages displayed when collecting a tip */
 export type PostTerminalConfigurationsConfigurationRequestTippingCase0UsdPercentagesList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const PostTerminalConfigurationsConfigurationRequestTippingCase0UsdPercentagesList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -171396,8 +171206,7 @@ export const PostTerminalConfigurationsConfigurationResponse =
   }) as any as S.Schema<PostTerminalConfigurationsConfigurationResponse>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostTerminalConnectionTokensRequestExpandList =
-  ReadonlyArray<string>;
+export type PostTerminalConnectionTokensRequestExpandList = Array<string>;
 export const PostTerminalConnectionTokensRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -171541,7 +171350,7 @@ export const PostTerminalLocationsRequestAddressKanji = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PostTerminalLocationsRequestAddressKanji>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostTerminalLocationsRequestExpandList = ReadonlyArray<string>;
+export type PostTerminalLocationsRequestExpandList = Array<string>;
 export const PostTerminalLocationsRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostTerminalLocationsRequestExpandList>;
@@ -171750,8 +171559,7 @@ export const PostTerminalLocationsLocationRequestDisplayNameKanji =
   /*@__PURE__*/ S.Unknown as any as S.Schema<PostTerminalLocationsLocationRequestDisplayNameKanji>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostTerminalLocationsLocationRequestExpandList =
-  ReadonlyArray<string>;
+export type PostTerminalLocationsLocationRequestExpandList = Array<string>;
 export const PostTerminalLocationsLocationRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -171900,8 +171708,7 @@ export const PostTerminalLocationsLocationResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PostTerminalLocationsLocationResponse>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostTerminalOnboardingLinksRequestExpandList =
-  ReadonlyArray<string>;
+export type PostTerminalOnboardingLinksRequestExpandList = Array<string>;
 export const PostTerminalOnboardingLinksRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -172038,7 +171845,7 @@ export const TerminalOnboardingLink = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TerminalOnboardingLink>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostTerminalReadersRequestExpandList = ReadonlyArray<string>;
+export type PostTerminalReadersRequestExpandList = Array<string>;
 export const PostTerminalReadersRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostTerminalReadersRequestExpandList>;
@@ -172094,7 +171901,7 @@ export const PostTerminalReadersRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostTerminalReadersRequest>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostTerminalReadersReaderRequestExpandList = ReadonlyArray<string>;
+export type PostTerminalReadersReaderRequestExpandList = Array<string>;
 export const PostTerminalReadersReaderRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostTerminalReadersReaderRequestExpandList>;
@@ -172222,7 +172029,7 @@ export const PostTerminalReadersReaderResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Specifies which fields in the response should be expanded. */
 export type PostTerminalReadersReaderCancelActionRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostTerminalReadersReaderCancelActionRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -172254,7 +172061,7 @@ export const PostTerminalReadersReaderCancelActionRequest =
 
 /** Specifies which fields in the response should be expanded. */
 export type PostTerminalReadersReaderCollectInputsRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostTerminalReadersReaderCollectInputsRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -172316,7 +172123,7 @@ export const PostTerminalReadersReaderCollectInputsRequestInputsItemSelectionCho
 
 /** List of choices for the `selection` input */
 export type PostTerminalReadersReaderCollectInputsRequestInputsItemSelectionChoicesList =
-  ReadonlyArray<PostTerminalReadersReaderCollectInputsRequestInputsItemSelectionChoicesItem>;
+  Array<PostTerminalReadersReaderCollectInputsRequestInputsItemSelectionChoicesItem>;
 export const PostTerminalReadersReaderCollectInputsRequestInputsItemSelectionChoicesList =
   /*@__PURE__*/ S.Array(
     PostTerminalReadersReaderCollectInputsRequestInputsItemSelectionChoicesItem,
@@ -172370,7 +172177,7 @@ export const PostTerminalReadersReaderCollectInputsRequestInputsItemTogglesItem 
 
 /** List of toggles to be displayed and customization for the toggles */
 export type PostTerminalReadersReaderCollectInputsRequestInputsItemTogglesList =
-  ReadonlyArray<PostTerminalReadersReaderCollectInputsRequestInputsItemTogglesItem>;
+  Array<PostTerminalReadersReaderCollectInputsRequestInputsItemTogglesItem>;
 export const PostTerminalReadersReaderCollectInputsRequestInputsItemTogglesList =
   /*@__PURE__*/ S.Array(
     PostTerminalReadersReaderCollectInputsRequestInputsItemTogglesItem,
@@ -172421,7 +172228,7 @@ export const PostTerminalReadersReaderCollectInputsRequestInputsItem =
 
 /** List of inputs to be collected from the customer using the Reader. Maximum 5 inputs. */
 export type PostTerminalReadersReaderCollectInputsRequestInputsList =
-  ReadonlyArray<PostTerminalReadersReaderCollectInputsRequestInputsItem>;
+  Array<PostTerminalReadersReaderCollectInputsRequestInputsItem>;
 export const PostTerminalReadersReaderCollectInputsRequestInputsList =
   /*@__PURE__*/ S.Array(
     PostTerminalReadersReaderCollectInputsRequestInputsItem,
@@ -172522,7 +172329,7 @@ export const PostTerminalReadersReaderCollectPaymentMethodRequestCollectConfig =
 
 /** Specifies which fields in the response should be expanded. */
 export type PostTerminalReadersReaderCollectPaymentMethodRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostTerminalReadersReaderCollectPaymentMethodRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -172577,7 +172384,7 @@ export const PostTerminalReadersReaderConfirmPaymentIntentRequestConfirmConfig =
 
 /** Specifies which fields in the response should be expanded. */
 export type PostTerminalReadersReaderConfirmPaymentIntentRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostTerminalReadersReaderConfirmPaymentIntentRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -172617,7 +172424,7 @@ export const PostTerminalReadersReaderConfirmPaymentIntentRequest =
 
 /** Specifies which fields in the response should be expanded. */
 export type PostTerminalReadersReaderProcessPaymentIntentRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostTerminalReadersReaderProcessPaymentIntentRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -172719,7 +172526,7 @@ export const PostTerminalReadersReaderProcessSetupIntentRequestAllowRedisplay =
 
 /** Specifies which fields in the response should be expanded. */
 export type PostTerminalReadersReaderProcessSetupIntentRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostTerminalReadersReaderProcessSetupIntentRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -172780,7 +172587,7 @@ export const PostTerminalReadersReaderProcessSetupIntentRequest =
 
 /** Specifies which fields in the response should be expanded. */
 export type PostTerminalReadersReaderRefundPaymentRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostTerminalReadersReaderRefundPaymentRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -172882,7 +172689,7 @@ export const PostTerminalReadersReaderSetReaderDisplayRequestCartLineItemsItem =
 
 /** Array of line items to display. */
 export type PostTerminalReadersReaderSetReaderDisplayRequestCartLineItemsList =
-  ReadonlyArray<PostTerminalReadersReaderSetReaderDisplayRequestCartLineItemsItem>;
+  Array<PostTerminalReadersReaderSetReaderDisplayRequestCartLineItemsItem>;
 export const PostTerminalReadersReaderSetReaderDisplayRequestCartLineItemsList =
   /*@__PURE__*/ S.Array(
     PostTerminalReadersReaderSetReaderDisplayRequestCartLineItemsItem,
@@ -172914,7 +172721,7 @@ export const PostTerminalReadersReaderSetReaderDisplayRequestCart =
 
 /** Specifies which fields in the response should be expanded. */
 export type PostTerminalReadersReaderSetReaderDisplayRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostTerminalReadersReaderSetReaderDisplayRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -172956,8 +172763,7 @@ export const PostTerminalReadersReaderSetReaderDisplayRequest =
   }) as any as S.Schema<PostTerminalReadersReaderSetReaderDisplayRequest>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostTestHelpersConfirmationTokensRequestExpandList =
-  ReadonlyArray<string>;
+export type PostTestHelpersConfirmationTokensRequestExpandList = Array<string>;
 export const PostTestHelpersConfirmationTokensRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -174118,7 +173924,7 @@ export const PostTestHelpersConfirmationTokensRequest = /*@__PURE__*/ S.suspend(
 
 /** Specifies which fields in the response should be expanded. */
 export type PostTestHelpersCustomersCustomerFundCashBalanceRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostTestHelpersCustomersCustomerFundCashBalanceRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -174186,7 +173992,7 @@ export const PostTestHelpersIssuingAuthorizationsRequestAuthorizationMethod =
 
 /** Specifies which fields in the response should be expanded. */
 export type PostTestHelpersIssuingAuthorizationsRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostTestHelpersIssuingAuthorizationsRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -175093,7 +174899,7 @@ export const PostTestHelpersIssuingAuthorizationsRequest =
 
 /** Specifies which fields in the response should be expanded. */
 export type PostTestHelpersIssuingAuthorizationsAuthorizationCaptureRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostTestHelpersIssuingAuthorizationsAuthorizationCaptureRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -175280,7 +175086,7 @@ export const PostTestHelpersIssuingAuthorizationsAuthorizationCaptureRequestPurc
 
 /** The legs of the trip. */
 export type PostTestHelpersIssuingAuthorizationsAuthorizationCaptureRequestPurchaseDetailsFlightSegmentsList =
-  ReadonlyArray<PostTestHelpersIssuingAuthorizationsAuthorizationCaptureRequestPurchaseDetailsFlightSegmentsItem>;
+  Array<PostTestHelpersIssuingAuthorizationsAuthorizationCaptureRequestPurchaseDetailsFlightSegmentsItem>;
 export const PostTestHelpersIssuingAuthorizationsAuthorizationCaptureRequestPurchaseDetailsFlightSegmentsList =
   /*@__PURE__*/ S.Array(
     PostTestHelpersIssuingAuthorizationsAuthorizationCaptureRequestPurchaseDetailsFlightSegmentsItem,
@@ -175408,7 +175214,7 @@ export const PostTestHelpersIssuingAuthorizationsAuthorizationCaptureRequestPurc
 
 /** The line items in the purchase. */
 export type PostTestHelpersIssuingAuthorizationsAuthorizationCaptureRequestPurchaseDetailsReceiptList =
-  ReadonlyArray<PostTestHelpersIssuingAuthorizationsAuthorizationCaptureRequestPurchaseDetailsReceiptItem>;
+  Array<PostTestHelpersIssuingAuthorizationsAuthorizationCaptureRequestPurchaseDetailsReceiptItem>;
 export const PostTestHelpersIssuingAuthorizationsAuthorizationCaptureRequestPurchaseDetailsReceiptList =
   /*@__PURE__*/ S.Array(
     PostTestHelpersIssuingAuthorizationsAuthorizationCaptureRequestPurchaseDetailsReceiptItem,
@@ -175492,7 +175298,7 @@ export const PostTestHelpersIssuingAuthorizationsAuthorizationCaptureRequest =
 
 /** Specifies which fields in the response should be expanded. */
 export type PostTestHelpersIssuingAuthorizationsAuthorizationExpireRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostTestHelpersIssuingAuthorizationsAuthorizationExpireRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -175525,7 +175331,7 @@ export const PostTestHelpersIssuingAuthorizationsAuthorizationExpireRequest =
 
 /** Specifies which fields in the response should be expanded. */
 export type PostTestHelpersIssuingAuthorizationsAuthorizationFinalizeAmountRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostTestHelpersIssuingAuthorizationsAuthorizationFinalizeAmountRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -175775,7 +175581,7 @@ export const PostTestHelpersIssuingAuthorizationsAuthorizationFinalizeAmountRequ
 
 /** Specifies which fields in the response should be expanded. */
 export type PostTestHelpersIssuingAuthorizationsAuthorizationFraudChallengesRespondRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostTestHelpersIssuingAuthorizationsAuthorizationFraudChallengesRespondRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -175811,7 +175617,7 @@ export const PostTestHelpersIssuingAuthorizationsAuthorizationFraudChallengesRes
 
 /** Specifies which fields in the response should be expanded. */
 export type PostTestHelpersIssuingAuthorizationsAuthorizationIncrementRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostTestHelpersIssuingAuthorizationsAuthorizationIncrementRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -175850,7 +175656,7 @@ export const PostTestHelpersIssuingAuthorizationsAuthorizationIncrementRequest =
 
 /** Specifies which fields in the response should be expanded. */
 export type PostTestHelpersIssuingAuthorizationsAuthorizationReverseRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostTestHelpersIssuingAuthorizationsAuthorizationReverseRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -175886,7 +175692,7 @@ export const PostTestHelpersIssuingAuthorizationsAuthorizationReverseRequest =
 
 /** Specifies which fields in the response should be expanded. */
 export type PostTestHelpersIssuingCardsCardShippingDeliverRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostTestHelpersIssuingCardsCardShippingDeliverRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -175918,7 +175724,7 @@ export const PostTestHelpersIssuingCardsCardShippingDeliverRequest =
 
 /** Specifies which fields in the response should be expanded. */
 export type PostTestHelpersIssuingCardsCardShippingFailRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostTestHelpersIssuingCardsCardShippingFailRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -175950,7 +175756,7 @@ export const PostTestHelpersIssuingCardsCardShippingFailRequest =
 
 /** Specifies which fields in the response should be expanded. */
 export type PostTestHelpersIssuingCardsCardShippingReturnRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostTestHelpersIssuingCardsCardShippingReturnRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -175982,7 +175788,7 @@ export const PostTestHelpersIssuingCardsCardShippingReturnRequest =
 
 /** Specifies which fields in the response should be expanded. */
 export type PostTestHelpersIssuingCardsCardShippingShipRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostTestHelpersIssuingCardsCardShippingShipRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -176014,7 +175820,7 @@ export const PostTestHelpersIssuingCardsCardShippingShipRequest =
 
 /** Specifies which fields in the response should be expanded. */
 export type PostTestHelpersIssuingCardsCardShippingSubmitRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostTestHelpersIssuingCardsCardShippingSubmitRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -176046,7 +175852,7 @@ export const PostTestHelpersIssuingCardsCardShippingSubmitRequest =
 
 /** Specifies which fields in the response should be expanded. */
 export type PostTestHelpersIssuingPersonalizationDesignsPersonalizationDesignActivateRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostTestHelpersIssuingPersonalizationDesignsPersonalizationDesignActivateRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -176079,7 +175885,7 @@ export const PostTestHelpersIssuingPersonalizationDesignsPersonalizationDesignAc
 
 /** Specifies which fields in the response should be expanded. */
 export type PostTestHelpersIssuingPersonalizationDesignsPersonalizationDesignDeactivateRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostTestHelpersIssuingPersonalizationDesignsPersonalizationDesignDeactivateRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -176112,7 +175918,7 @@ export const PostTestHelpersIssuingPersonalizationDesignsPersonalizationDesignDe
 
 /** Specifies which fields in the response should be expanded. */
 export type PostTestHelpersIssuingPersonalizationDesignsPersonalizationDesignRejectRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostTestHelpersIssuingPersonalizationDesignsPersonalizationDesignRejectRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -176132,7 +175938,7 @@ export const PostTestHelpersIssuingPersonalizationDesignsPersonalizationDesignRe
 
 /** The reason(s) the card logo was rejected. */
 export type PostTestHelpersIssuingPersonalizationDesignsPersonalizationDesignRejectRequestRejectionReasonsCardLogoList =
-  ReadonlyArray<
+  Array<
     | PostTestHelpersIssuingPersonalizationDesignsPersonalizationDesignRejectRequestRejectionReasonsCardLogoItem
     | (string & {})
   >;
@@ -176154,7 +175960,7 @@ export const PostTestHelpersIssuingPersonalizationDesignsPersonalizationDesignRe
 
 /** The reason(s) the carrier text was rejected. */
 export type PostTestHelpersIssuingPersonalizationDesignsPersonalizationDesignRejectRequestRejectionReasonsCarrierTextList =
-  ReadonlyArray<
+  Array<
     | PostTestHelpersIssuingPersonalizationDesignsPersonalizationDesignRejectRequestRejectionReasonsCarrierTextItem
     | (string & {})
   >;
@@ -176216,7 +176022,7 @@ export const PostTestHelpersIssuingPersonalizationDesignsPersonalizationDesignRe
 
 /** Specifies which fields in the response should be expanded. */
 export type PostTestHelpersIssuingTransactionsCreateForceCaptureRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostTestHelpersIssuingTransactionsCreateForceCaptureRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -176745,7 +176551,7 @@ export const PostTestHelpersIssuingTransactionsCreateForceCaptureRequestPurchase
 
 /** The legs of the trip. */
 export type PostTestHelpersIssuingTransactionsCreateForceCaptureRequestPurchaseDetailsFlightSegmentsList =
-  ReadonlyArray<PostTestHelpersIssuingTransactionsCreateForceCaptureRequestPurchaseDetailsFlightSegmentsItem>;
+  Array<PostTestHelpersIssuingTransactionsCreateForceCaptureRequestPurchaseDetailsFlightSegmentsItem>;
 export const PostTestHelpersIssuingTransactionsCreateForceCaptureRequestPurchaseDetailsFlightSegmentsList =
   /*@__PURE__*/ S.Array(
     PostTestHelpersIssuingTransactionsCreateForceCaptureRequestPurchaseDetailsFlightSegmentsItem,
@@ -176873,7 +176679,7 @@ export const PostTestHelpersIssuingTransactionsCreateForceCaptureRequestPurchase
 
 /** The line items in the purchase. */
 export type PostTestHelpersIssuingTransactionsCreateForceCaptureRequestPurchaseDetailsReceiptList =
-  ReadonlyArray<PostTestHelpersIssuingTransactionsCreateForceCaptureRequestPurchaseDetailsReceiptItem>;
+  Array<PostTestHelpersIssuingTransactionsCreateForceCaptureRequestPurchaseDetailsReceiptItem>;
 export const PostTestHelpersIssuingTransactionsCreateForceCaptureRequestPurchaseDetailsReceiptList =
   /*@__PURE__*/ S.Array(
     PostTestHelpersIssuingTransactionsCreateForceCaptureRequestPurchaseDetailsReceiptItem,
@@ -176962,7 +176768,7 @@ export const PostTestHelpersIssuingTransactionsCreateForceCaptureRequest =
 
 /** Specifies which fields in the response should be expanded. */
 export type PostTestHelpersIssuingTransactionsCreateUnlinkedRefundRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostTestHelpersIssuingTransactionsCreateUnlinkedRefundRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -177491,7 +177297,7 @@ export const PostTestHelpersIssuingTransactionsCreateUnlinkedRefundRequestPurcha
 
 /** The legs of the trip. */
 export type PostTestHelpersIssuingTransactionsCreateUnlinkedRefundRequestPurchaseDetailsFlightSegmentsList =
-  ReadonlyArray<PostTestHelpersIssuingTransactionsCreateUnlinkedRefundRequestPurchaseDetailsFlightSegmentsItem>;
+  Array<PostTestHelpersIssuingTransactionsCreateUnlinkedRefundRequestPurchaseDetailsFlightSegmentsItem>;
 export const PostTestHelpersIssuingTransactionsCreateUnlinkedRefundRequestPurchaseDetailsFlightSegmentsList =
   /*@__PURE__*/ S.Array(
     PostTestHelpersIssuingTransactionsCreateUnlinkedRefundRequestPurchaseDetailsFlightSegmentsItem,
@@ -177619,7 +177425,7 @@ export const PostTestHelpersIssuingTransactionsCreateUnlinkedRefundRequestPurcha
 
 /** The line items in the purchase. */
 export type PostTestHelpersIssuingTransactionsCreateUnlinkedRefundRequestPurchaseDetailsReceiptList =
-  ReadonlyArray<PostTestHelpersIssuingTransactionsCreateUnlinkedRefundRequestPurchaseDetailsReceiptItem>;
+  Array<PostTestHelpersIssuingTransactionsCreateUnlinkedRefundRequestPurchaseDetailsReceiptItem>;
 export const PostTestHelpersIssuingTransactionsCreateUnlinkedRefundRequestPurchaseDetailsReceiptList =
   /*@__PURE__*/ S.Array(
     PostTestHelpersIssuingTransactionsCreateUnlinkedRefundRequestPurchaseDetailsReceiptItem,
@@ -177708,7 +177514,7 @@ export const PostTestHelpersIssuingTransactionsCreateUnlinkedRefundRequest =
 
 /** Specifies which fields in the response should be expanded. */
 export type PostTestHelpersIssuingTransactionsTransactionRefundRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostTestHelpersIssuingTransactionsTransactionRefundRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -177742,8 +177548,7 @@ export const PostTestHelpersIssuingTransactionsTransactionRefundRequest =
   }) as any as S.Schema<PostTestHelpersIssuingTransactionsTransactionRefundRequest>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostTestHelpersRefundsRefundExpireRequestExpandList =
-  ReadonlyArray<string>;
+export type PostTestHelpersRefundsRefundExpireRequestExpandList = Array<string>;
 export const PostTestHelpersRefundsRefundExpireRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -177812,7 +177617,7 @@ export const PostTestHelpersTerminalReadersReaderPresentPaymentMethodRequestCard
 
 /** Specifies which fields in the response should be expanded. */
 export type PostTestHelpersTerminalReadersReaderPresentPaymentMethodRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostTestHelpersTerminalReadersReaderPresentPaymentMethodRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -177891,7 +177696,7 @@ export const PostTestHelpersTerminalReadersReaderPresentPaymentMethodRequest =
 
 /** Specifies which fields in the response should be expanded. */
 export type PostTestHelpersTerminalReadersReaderSucceedInputCollectionRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostTestHelpersTerminalReadersReaderSucceedInputCollectionRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -177937,7 +177742,7 @@ export const PostTestHelpersTerminalReadersReaderSucceedInputCollectionRequest =
 
 /** Specifies which fields in the response should be expanded. */
 export type PostTestHelpersTerminalReadersReaderTimeoutInputCollectionRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostTestHelpersTerminalReadersReaderTimeoutInputCollectionRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -177969,7 +177774,7 @@ export const PostTestHelpersTerminalReadersReaderTimeoutInputCollectionRequest =
   }) as any as S.Schema<PostTestHelpersTerminalReadersReaderTimeoutInputCollectionRequest>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostTestHelpersTestClocksRequestExpandList = ReadonlyArray<string>;
+export type PostTestHelpersTestClocksRequestExpandList = Array<string>;
 export const PostTestHelpersTestClocksRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostTestHelpersTestClocksRequestExpandList>;
@@ -178004,7 +177809,7 @@ export const PostTestHelpersTestClocksRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Specifies which fields in the response should be expanded. */
 export type PostTestHelpersTestClocksTestClockAdvanceRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostTestHelpersTestClocksTestClockAdvanceRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -178039,7 +177844,7 @@ export const PostTestHelpersTestClocksTestClockAdvanceRequest =
 
 /** Specifies which fields in the response should be expanded. */
 export type PostTestHelpersTreasuryInboundTransfersIdFailRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostTestHelpersTreasuryInboundTransfersIdFailRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -178113,7 +177918,7 @@ export const PostTestHelpersTreasuryInboundTransfersIdFailRequest =
 
 /** Specifies which fields in the response should be expanded. */
 export type PostTestHelpersTreasuryInboundTransfersIdReturnRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostTestHelpersTreasuryInboundTransfersIdReturnRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -178145,7 +177950,7 @@ export const PostTestHelpersTreasuryInboundTransfersIdReturnRequest =
 
 /** Specifies which fields in the response should be expanded. */
 export type PostTestHelpersTreasuryInboundTransfersIdSucceedRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostTestHelpersTreasuryInboundTransfersIdSucceedRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -178177,7 +177982,7 @@ export const PostTestHelpersTreasuryInboundTransfersIdSucceedRequest =
 
 /** Specifies which fields in the response should be expanded. */
 export type PostTestHelpersTreasuryOutboundPaymentsIdRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostTestHelpersTreasuryOutboundPaymentsIdRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -178282,7 +178087,7 @@ export const PostTestHelpersTreasuryOutboundPaymentsIdRequest =
 
 /** Specifies which fields in the response should be expanded. */
 export type PostTestHelpersTreasuryOutboundPaymentsIdFailRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostTestHelpersTreasuryOutboundPaymentsIdFailRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -178314,7 +178119,7 @@ export const PostTestHelpersTreasuryOutboundPaymentsIdFailRequest =
 
 /** Specifies which fields in the response should be expanded. */
 export type PostTestHelpersTreasuryOutboundPaymentsIdPostRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostTestHelpersTreasuryOutboundPaymentsIdPostRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -178346,7 +178151,7 @@ export const PostTestHelpersTreasuryOutboundPaymentsIdPostRequest =
 
 /** Specifies which fields in the response should be expanded. */
 export type PostTestHelpersTreasuryOutboundPaymentsIdReturnRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostTestHelpersTreasuryOutboundPaymentsIdReturnRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -178417,7 +178222,7 @@ export const PostTestHelpersTreasuryOutboundPaymentsIdReturnRequest =
 
 /** Specifies which fields in the response should be expanded. */
 export type PostTestHelpersTreasuryOutboundTransfersOutboundTransferRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostTestHelpersTreasuryOutboundTransfersOutboundTransferRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -178523,7 +178328,7 @@ export const PostTestHelpersTreasuryOutboundTransfersOutboundTransferRequest =
 
 /** Specifies which fields in the response should be expanded. */
 export type PostTestHelpersTreasuryOutboundTransfersOutboundTransferFailRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostTestHelpersTreasuryOutboundTransfersOutboundTransferFailRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -178556,7 +178361,7 @@ export const PostTestHelpersTreasuryOutboundTransfersOutboundTransferFailRequest
 
 /** Specifies which fields in the response should be expanded. */
 export type PostTestHelpersTreasuryOutboundTransfersOutboundTransferPostRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostTestHelpersTreasuryOutboundTransfersOutboundTransferPostRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -178589,7 +178394,7 @@ export const PostTestHelpersTreasuryOutboundTransfersOutboundTransferPostRequest
 
 /** Specifies which fields in the response should be expanded. */
 export type PostTestHelpersTreasuryOutboundTransfersOutboundTransferReturnRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostTestHelpersTreasuryOutboundTransfersOutboundTransferReturnRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -178661,7 +178466,7 @@ export const PostTestHelpersTreasuryOutboundTransfersOutboundTransferReturnReque
 
 /** Specifies which fields in the response should be expanded. */
 export type PostTestHelpersTreasuryReceivedCreditsRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostTestHelpersTreasuryReceivedCreditsRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -178767,7 +178572,7 @@ export const PostTestHelpersTreasuryReceivedCreditsRequest =
 
 /** Specifies which fields in the response should be expanded. */
 export type PostTestHelpersTreasuryReceivedDebitsRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostTestHelpersTreasuryReceivedDebitsRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -179345,7 +179150,7 @@ export const PostTokensRequestAccountIndividualDob =
   /*@__PURE__*/ S.Unknown as any as S.Schema<PostTokensRequestAccountIndividualDob>;
 
 export type PostTokensRequestAccountIndividualFullNameAliasesCase0List =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostTokensRequestAccountIndividualFullNameAliasesCase0List =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -179764,7 +179569,7 @@ export const PostTokensRequestCvcUpdate = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostTokensRequestCvcUpdate>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostTokensRequestExpandList = ReadonlyArray<string>;
+export type PostTokensRequestExpandList = Array<string>;
 export const PostTokensRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostTokensRequestExpandList>;
@@ -179950,7 +179755,7 @@ export const PostTokensRequestPersonDocumentsCompanyAuthorizationFilesItem =
 
 /** One or more document ids returned by a [file upload](https://api.stripe.com#create_file) with a `purpose` value of `account_requirement`. */
 export type PostTokensRequestPersonDocumentsCompanyAuthorizationFilesList =
-  ReadonlyArray<PostTokensRequestPersonDocumentsCompanyAuthorizationFilesItem>;
+  Array<PostTokensRequestPersonDocumentsCompanyAuthorizationFilesItem>;
 export const PostTokensRequestPersonDocumentsCompanyAuthorizationFilesList =
   /*@__PURE__*/ S.Array(
     PostTokensRequestPersonDocumentsCompanyAuthorizationFilesItem,
@@ -179984,7 +179789,7 @@ export const PostTokensRequestPersonDocumentsPassportFilesItem =
 
 /** One or more document ids returned by a [file upload](https://api.stripe.com#create_file) with a `purpose` value of `account_requirement`. */
 export type PostTokensRequestPersonDocumentsPassportFilesList =
-  ReadonlyArray<PostTokensRequestPersonDocumentsPassportFilesItem>;
+  Array<PostTokensRequestPersonDocumentsPassportFilesItem>;
 export const PostTokensRequestPersonDocumentsPassportFilesList =
   /*@__PURE__*/ S.Array(
     PostTokensRequestPersonDocumentsPassportFilesItem,
@@ -180016,7 +179821,7 @@ export const PostTokensRequestPersonDocumentsVisaFilesItem =
 
 /** One or more document ids returned by a [file upload](https://api.stripe.com#create_file) with a `purpose` value of `account_requirement`. */
 export type PostTokensRequestPersonDocumentsVisaFilesList =
-  ReadonlyArray<PostTokensRequestPersonDocumentsVisaFilesItem>;
+  Array<PostTokensRequestPersonDocumentsVisaFilesItem>;
 export const PostTokensRequestPersonDocumentsVisaFilesList =
   /*@__PURE__*/ S.Array(
     PostTokensRequestPersonDocumentsVisaFilesItem,
@@ -180057,8 +179862,7 @@ export const PostTokensRequestPersonDocuments = /*@__PURE__*/ S.suspend(() =>
   identifier: "PostTokensRequestPersonDocuments",
 }) as any as S.Schema<PostTokensRequestPersonDocuments>;
 
-export type PostTokensRequestPersonFullNameAliasesCase0List =
-  ReadonlyArray<string>;
+export type PostTokensRequestPersonFullNameAliasesCase0List = Array<string>;
 export const PostTokensRequestPersonFullNameAliasesCase0List =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -180186,7 +179990,7 @@ export const PostTokensRequestPersonUsCfpbDataEthnicityDetailsEthnicityItem =
 
 /** The persons ethnicity */
 export type PostTokensRequestPersonUsCfpbDataEthnicityDetailsEthnicityList =
-  ReadonlyArray<
+  Array<
     | PostTokensRequestPersonUsCfpbDataEthnicityDetailsEthnicityItem
     | (string & {})
   >;
@@ -180243,10 +180047,9 @@ export const PostTokensRequestPersonUsCfpbDataRaceDetailsRaceItem =
   /*@__PURE__*/ S.String;
 
 /** The persons race. */
-export type PostTokensRequestPersonUsCfpbDataRaceDetailsRaceList =
-  ReadonlyArray<
-    PostTokensRequestPersonUsCfpbDataRaceDetailsRaceItem | (string & {})
-  >;
+export type PostTokensRequestPersonUsCfpbDataRaceDetailsRaceList = Array<
+  PostTokensRequestPersonUsCfpbDataRaceDetailsRaceItem | (string & {})
+>;
 export const PostTokensRequestPersonUsCfpbDataRaceDetailsRaceList =
   /*@__PURE__*/ S.Array(
     PostTokensRequestPersonUsCfpbDataRaceDetailsRaceItem,
@@ -180489,7 +180292,7 @@ export const PostTokensRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostTokensRequest>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostTopupsRequestExpandList = ReadonlyArray<string>;
+export type PostTopupsRequestExpandList = Array<string>;
 export const PostTopupsRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostTopupsRequestExpandList>;
@@ -180592,7 +180395,7 @@ export const PostTopupsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostTopupsRequest>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostTopupsTopupRequestExpandList = ReadonlyArray<string>;
+export type PostTopupsTopupRequestExpandList = Array<string>;
 export const PostTopupsTopupRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostTopupsTopupRequestExpandList>;
@@ -180643,7 +180446,7 @@ export const PostTopupsTopupRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostTopupsTopupRequest>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostTopupsTopupCancelRequestExpandList = ReadonlyArray<string>;
+export type PostTopupsTopupCancelRequestExpandList = Array<string>;
 export const PostTopupsTopupCancelRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostTopupsTopupCancelRequestExpandList>;
@@ -180670,7 +180473,7 @@ export const PostTopupsTopupCancelRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostTopupsTopupCancelRequest>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostTransfersRequestExpandList = ReadonlyArray<string>;
+export type PostTransfersRequestExpandList = Array<string>;
 export const PostTransfersRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostTransfersRequestExpandList>;
@@ -180732,7 +180535,7 @@ export const PostTransfersRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostTransfersRequest>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostTransfersIdReversalsRequestExpandList = ReadonlyArray<string>;
+export type PostTransfersIdReversalsRequestExpandList = Array<string>;
 export const PostTransfersIdReversalsRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostTransfersIdReversalsRequestExpandList>;
@@ -180791,7 +180594,7 @@ export const PostTransfersIdReversalsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostTransfersIdReversalsRequest>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostTransfersTransferRequestExpandList = ReadonlyArray<string>;
+export type PostTransfersTransferRequestExpandList = Array<string>;
 export const PostTransfersTransferRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostTransfersTransferRequestExpandList>;
@@ -180843,8 +180646,7 @@ export const PostTransfersTransferRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostTransfersTransferRequest>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostTransfersTransferReversalsIdRequestExpandList =
-  ReadonlyArray<string>;
+export type PostTransfersTransferReversalsIdRequestExpandList = Array<string>;
 export const PostTransfersTransferReversalsIdRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -180898,8 +180700,7 @@ export const PostTransfersTransferReversalsIdRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PostTransfersTransferReversalsIdRequest>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostTreasuryCreditReversalsRequestExpandList =
-  ReadonlyArray<string>;
+export type PostTreasuryCreditReversalsRequestExpandList = Array<string>;
 export const PostTreasuryCreditReversalsRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -180941,7 +180742,7 @@ export const PostTreasuryCreditReversalsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostTreasuryCreditReversalsRequest>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostTreasuryDebitReversalsRequestExpandList = ReadonlyArray<string>;
+export type PostTreasuryDebitReversalsRequestExpandList = Array<string>;
 export const PostTreasuryDebitReversalsRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -180983,8 +180784,7 @@ export const PostTreasuryDebitReversalsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostTreasuryDebitReversalsRequest>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostTreasuryFinancialAccountsRequestExpandList =
-  ReadonlyArray<string>;
+export type PostTreasuryFinancialAccountsRequestExpandList = Array<string>;
 export const PostTreasuryFinancialAccountsRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -181303,7 +181103,7 @@ export const PostTreasuryFinancialAccountsRequestPlatformRestrictions =
 
 /** The currencies the FinancialAccount can hold a balance in. */
 export type PostTreasuryFinancialAccountsRequestSupportedCurrenciesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostTreasuryFinancialAccountsRequestSupportedCurrenciesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -181349,7 +181149,7 @@ export const PostTreasuryFinancialAccountsRequest = /*@__PURE__*/ S.suspend(
 
 /** Specifies which fields in the response should be expanded. */
 export type PostTreasuryFinancialAccountsFinancialAccountRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostTreasuryFinancialAccountsFinancialAccountRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -181754,7 +181554,7 @@ export const PostTreasuryFinancialAccountsFinancialAccountRequest =
 
 /** Specifies which fields in the response should be expanded. */
 export type PostTreasuryFinancialAccountsFinancialAccountCloseRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostTreasuryFinancialAccountsFinancialAccountCloseRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -181850,7 +181650,7 @@ export const PostTreasuryFinancialAccountsFinancialAccountFeaturesRequestDeposit
 
 /** Specifies which fields in the response should be expanded. */
 export type PostTreasuryFinancialAccountsFinancialAccountFeaturesRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostTreasuryFinancialAccountsFinancialAccountFeaturesRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -182099,8 +181899,7 @@ export const PostTreasuryFinancialAccountsFinancialAccountFeaturesRequest =
   }) as any as S.Schema<PostTreasuryFinancialAccountsFinancialAccountFeaturesRequest>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostTreasuryInboundTransfersRequestExpandList =
-  ReadonlyArray<string>;
+export type PostTreasuryInboundTransfersRequestExpandList = Array<string>;
 export const PostTreasuryInboundTransfersRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -182158,7 +181957,7 @@ export const PostTreasuryInboundTransfersRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Specifies which fields in the response should be expanded. */
 export type PostTreasuryInboundTransfersInboundTransferCancelRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostTreasuryInboundTransfersInboundTransferCancelRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -182465,8 +182264,7 @@ export const PostTreasuryOutboundPaymentsRequestEndUserDetails =
   }) as any as S.Schema<PostTreasuryOutboundPaymentsRequestEndUserDetails>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostTreasuryOutboundPaymentsRequestExpandList =
-  ReadonlyArray<string>;
+export type PostTreasuryOutboundPaymentsRequestExpandList = Array<string>;
 export const PostTreasuryOutboundPaymentsRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -182542,7 +182340,7 @@ export const PostTreasuryOutboundPaymentsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Specifies which fields in the response should be expanded. */
 export type PostTreasuryOutboundPaymentsIdCancelRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostTreasuryOutboundPaymentsIdCancelRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -182650,8 +182448,7 @@ export const PostTreasuryOutboundTransfersRequestDestinationPaymentMethodOptions
   }) as any as S.Schema<PostTreasuryOutboundTransfersRequestDestinationPaymentMethodOptions>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostTreasuryOutboundTransfersRequestExpandList =
-  ReadonlyArray<string>;
+export type PostTreasuryOutboundTransfersRequestExpandList = Array<string>;
 export const PostTreasuryOutboundTransfersRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -182720,7 +182517,7 @@ export const PostTreasuryOutboundTransfersRequest = /*@__PURE__*/ S.suspend(
 
 /** Specifies which fields in the response should be expanded. */
 export type PostTreasuryOutboundTransfersOutboundTransferCancelRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostTreasuryOutboundTransfersOutboundTransferCancelRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -183010,7 +182807,7 @@ export const PostV2BillingMeterEventStreamRequestEventsItem =
 
 /** List of meter events to include in the request. Supports up to 100 events per request. */
 export type PostV2BillingMeterEventStreamRequestEventsList =
-  ReadonlyArray<PostV2BillingMeterEventStreamRequestEventsItem>;
+  Array<PostV2BillingMeterEventStreamRequestEventsItem>;
 export const PostV2BillingMeterEventStreamRequestEventsList =
   /*@__PURE__*/ S.Array(
     PostV2BillingMeterEventStreamRequestEventsItem,
@@ -183138,7 +182935,7 @@ export const PostV2CoreAccountLinksRequestUseCaseAccountOnboardingConfigurations
 
 /** Open Enum. A v2/core/account can be configured to enable certain functionality. The configuration param targets the v2/core/account_link to collect information for the specified v2/core/account configuration/s. */
 export type PostV2CoreAccountLinksRequestUseCaseAccountOnboardingConfigurationsList =
-  ReadonlyArray<
+  Array<
     | PostV2CoreAccountLinksRequestUseCaseAccountOnboardingConfigurationsItem
     | (string & {})
   >;
@@ -183218,7 +183015,7 @@ export const PostV2CoreAccountLinksRequestUseCaseAccountUpdateConfigurationsItem
 
 /** Open Enum. A v2/account can be configured to enable certain functionality. The configuration param targets the v2/account_link to collect information for the specified v2/account configuration/s. */
 export type PostV2CoreAccountLinksRequestUseCaseAccountUpdateConfigurationsList =
-  ReadonlyArray<
+  Array<
     | PostV2CoreAccountLinksRequestUseCaseAccountUpdateConfigurationsItem
     | (string & {})
   >;
@@ -183345,7 +183142,7 @@ export const V2CoreAccountLinkUseCaseAccountOnboardingConfigurationsItem =
 
 /** Open Enum. A v2/core/account can be configured to enable certain functionality. The configuration param targets the v2/core/account_link to collect information for the specified v2/core/account configuration/s. */
 export type V2CoreAccountLinkUseCaseAccountOnboardingConfigurationsList =
-  ReadonlyArray<V2CoreAccountLinkUseCaseAccountOnboardingConfigurationsItem>;
+  Array<V2CoreAccountLinkUseCaseAccountOnboardingConfigurationsItem>;
 export const V2CoreAccountLinkUseCaseAccountOnboardingConfigurationsList =
   /*@__PURE__*/ S.Array(
     V2CoreAccountLinkUseCaseAccountOnboardingConfigurationsItem,
@@ -183420,7 +183217,7 @@ export const V2CoreAccountLinkUseCaseAccountUpdateConfigurationsItem =
 
 /** Open Enum. A v2/account can be configured to enable certain functionality. The configuration param targets the v2/account_link to collect information for the specified v2/account configuration/s. */
 export type V2CoreAccountLinkUseCaseAccountUpdateConfigurationsList =
-  ReadonlyArray<V2CoreAccountLinkUseCaseAccountUpdateConfigurationsItem>;
+  Array<V2CoreAccountLinkUseCaseAccountUpdateConfigurationsItem>;
 export const V2CoreAccountLinkUseCaseAccountUpdateConfigurationsList =
   /*@__PURE__*/ S.Array(
     V2CoreAccountLinkUseCaseAccountUpdateConfigurationsItem,
@@ -183554,7 +183351,7 @@ export const PostV2CoreAccountsRequestConfigurationCustomerBillingInvoiceCustomF
 
 /** The list of up to 4 default custom fields to be displayed on invoices for this customer. */
 export type PostV2CoreAccountsRequestConfigurationCustomerBillingInvoiceCustomFieldsList =
-  ReadonlyArray<PostV2CoreAccountsRequestConfigurationCustomerBillingInvoiceCustomFieldsItem>;
+  Array<PostV2CoreAccountsRequestConfigurationCustomerBillingInvoiceCustomFieldsItem>;
 export const PostV2CoreAccountsRequestConfigurationCustomerBillingInvoiceCustomFieldsList =
   /*@__PURE__*/ S.Array(
     PostV2CoreAccountsRequestConfigurationCustomerBillingInvoiceCustomFieldsItem,
@@ -185154,7 +184951,7 @@ export const PostV2CoreAccountsRequestDefaultsLocalesItem =
   /*@__PURE__*/ S.String;
 
 /** The Account's preferred locales (languages), ordered by preference. */
-export type PostV2CoreAccountsRequestDefaultsLocalesList = ReadonlyArray<
+export type PostV2CoreAccountsRequestDefaultsLocalesList = Array<
   PostV2CoreAccountsRequestDefaultsLocalesItem | (string & {})
 >;
 export const PostV2CoreAccountsRequestDefaultsLocalesList =
@@ -185486,7 +185283,7 @@ export const PostV2CoreAccountsRequestIdentityBusinessDetailsAnnualRevenue =
 
 /** One or more document IDs returned by a [file upload](https://docs.stripe.com/api/persons/update#create_file) with a purpose value of `account_requirement`. */
 export type PostV2CoreAccountsRequestIdentityBusinessDetailsDocumentsBankAccountOwnershipVerificationFilesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostV2CoreAccountsRequestIdentityBusinessDetailsDocumentsBankAccountOwnershipVerificationFilesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -185521,7 +185318,7 @@ export const PostV2CoreAccountsRequestIdentityBusinessDetailsDocumentsBankAccoun
 
 /** One or more document IDs returned by a [file upload](https://docs.stripe.com/api/persons/update#create_file) with a purpose value of `account_requirement`. */
 export type PostV2CoreAccountsRequestIdentityBusinessDetailsDocumentsCompanyLicenseFilesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostV2CoreAccountsRequestIdentityBusinessDetailsDocumentsCompanyLicenseFilesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -185556,7 +185353,7 @@ export const PostV2CoreAccountsRequestIdentityBusinessDetailsDocumentsCompanyLic
 
 /** One or more document IDs returned by a [file upload](https://docs.stripe.com/api/persons/update#create_file) with a purpose value of `account_requirement`. */
 export type PostV2CoreAccountsRequestIdentityBusinessDetailsDocumentsCompanyMemorandumOfAssociationFilesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostV2CoreAccountsRequestIdentityBusinessDetailsDocumentsCompanyMemorandumOfAssociationFilesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -185591,7 +185388,7 @@ export const PostV2CoreAccountsRequestIdentityBusinessDetailsDocumentsCompanyMem
 
 /** One or more document IDs returned by a [file upload](https://docs.stripe.com/api/persons/update#create_file) with a purpose value of `account_requirement`. */
 export type PostV2CoreAccountsRequestIdentityBusinessDetailsDocumentsCompanyMinisterialDecreeFilesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostV2CoreAccountsRequestIdentityBusinessDetailsDocumentsCompanyMinisterialDecreeFilesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -185626,7 +185423,7 @@ export const PostV2CoreAccountsRequestIdentityBusinessDetailsDocumentsCompanyMin
 
 /** One or more document IDs returned by a [file upload](https://docs.stripe.com/api/persons/update#create_file) with a purpose value of `account_requirement`. */
 export type PostV2CoreAccountsRequestIdentityBusinessDetailsDocumentsCompanyRegistrationVerificationFilesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostV2CoreAccountsRequestIdentityBusinessDetailsDocumentsCompanyRegistrationVerificationFilesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -185661,7 +185458,7 @@ export const PostV2CoreAccountsRequestIdentityBusinessDetailsDocumentsCompanyReg
 
 /** One or more document IDs returned by a [file upload](https://docs.stripe.com/api/persons/update#create_file) with a purpose value of `account_requirement`. */
 export type PostV2CoreAccountsRequestIdentityBusinessDetailsDocumentsCompanyTaxIdVerificationFilesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostV2CoreAccountsRequestIdentityBusinessDetailsDocumentsCompanyTaxIdVerificationFilesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -185741,7 +185538,7 @@ export const PostV2CoreAccountsRequestIdentityBusinessDetailsDocumentsPrimaryVer
 
 /** One or more document IDs returned by a [file upload](https://docs.stripe.com/api/persons/update#create_file) with a purpose value of `account_requirement`. */
 export type PostV2CoreAccountsRequestIdentityBusinessDetailsDocumentsProofOfAddressFilesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostV2CoreAccountsRequestIdentityBusinessDetailsDocumentsProofOfAddressFilesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -185776,7 +185573,7 @@ export const PostV2CoreAccountsRequestIdentityBusinessDetailsDocumentsProofOfAdd
 
 /** One or more document IDs returned by a [file upload](https://docs.stripe.com/api/persons/update#create_file) with a purpose value of `account_requirement`. */
 export type PostV2CoreAccountsRequestIdentityBusinessDetailsDocumentsProofOfRegistrationFilesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostV2CoreAccountsRequestIdentityBusinessDetailsDocumentsProofOfRegistrationFilesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -185831,7 +185628,7 @@ export const PostV2CoreAccountsRequestIdentityBusinessDetailsDocumentsProofOfReg
 
 /** One or more document IDs returned by a [file upload](https://docs.stripe.com/api/persons/update#create_file) with a purpose value of `account_requirement`. */
 export type PostV2CoreAccountsRequestIdentityBusinessDetailsDocumentsProofOfUltimateBeneficialOwnershipFilesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostV2CoreAccountsRequestIdentityBusinessDetailsDocumentsProofOfUltimateBeneficialOwnershipFilesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -186088,7 +185885,7 @@ export const PostV2CoreAccountsRequestIdentityBusinessDetailsIdNumbersItem =
 
 /** The ID numbers of a business entity. */
 export type PostV2CoreAccountsRequestIdentityBusinessDetailsIdNumbersList =
-  ReadonlyArray<PostV2CoreAccountsRequestIdentityBusinessDetailsIdNumbersItem>;
+  Array<PostV2CoreAccountsRequestIdentityBusinessDetailsIdNumbersItem>;
 export const PostV2CoreAccountsRequestIdentityBusinessDetailsIdNumbersList =
   /*@__PURE__*/ S.Array(
     PostV2CoreAccountsRequestIdentityBusinessDetailsIdNumbersItem,
@@ -186443,7 +186240,7 @@ export const PostV2CoreAccountsRequestIdentityIndividualAdditionalAddressesItem 
 
 /** Additional addresses associated with the individual. */
 export type PostV2CoreAccountsRequestIdentityIndividualAdditionalAddressesList =
-  ReadonlyArray<PostV2CoreAccountsRequestIdentityIndividualAdditionalAddressesItem>;
+  Array<PostV2CoreAccountsRequestIdentityIndividualAdditionalAddressesItem>;
 export const PostV2CoreAccountsRequestIdentityIndividualAdditionalAddressesList =
   /*@__PURE__*/ S.Array(
     PostV2CoreAccountsRequestIdentityIndividualAdditionalAddressesItem,
@@ -186483,7 +186280,7 @@ export const PostV2CoreAccountsRequestIdentityIndividualAdditionalNamesItem =
 
 /** Additional names (e.g. aliases) associated with the individual. */
 export type PostV2CoreAccountsRequestIdentityIndividualAdditionalNamesList =
-  ReadonlyArray<PostV2CoreAccountsRequestIdentityIndividualAdditionalNamesItem>;
+  Array<PostV2CoreAccountsRequestIdentityIndividualAdditionalNamesItem>;
 export const PostV2CoreAccountsRequestIdentityIndividualAdditionalNamesList =
   /*@__PURE__*/ S.Array(
     PostV2CoreAccountsRequestIdentityIndividualAdditionalNamesItem,
@@ -186543,7 +186340,7 @@ export const PostV2CoreAccountsRequestIdentityIndividualDateOfBirth =
 
 /** One or more document IDs returned by a [file upload](https://docs.stripe.com/api/persons/update#create_file) with a purpose value of `account_requirement`. */
 export type PostV2CoreAccountsRequestIdentityIndividualDocumentsCompanyAuthorizationFilesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostV2CoreAccountsRequestIdentityIndividualDocumentsCompanyAuthorizationFilesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -186578,7 +186375,7 @@ export const PostV2CoreAccountsRequestIdentityIndividualDocumentsCompanyAuthoriz
 
 /** One or more document IDs returned by a [file upload](https://docs.stripe.com/api/persons/update#create_file) with a purpose value of `account_requirement`. */
 export type PostV2CoreAccountsRequestIdentityIndividualDocumentsPassportFilesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostV2CoreAccountsRequestIdentityIndividualDocumentsPassportFilesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -186702,7 +186499,7 @@ export const PostV2CoreAccountsRequestIdentityIndividualDocumentsSecondaryVerifi
 
 /** One or more document IDs returned by a [file upload](https://docs.stripe.com/api/persons/update#create_file) with a purpose value of `account_requirement`. */
 export type PostV2CoreAccountsRequestIdentityIndividualDocumentsVisaFilesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostV2CoreAccountsRequestIdentityIndividualDocumentsVisaFilesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -186871,7 +186668,7 @@ export const PostV2CoreAccountsRequestIdentityIndividualIdNumbersItem =
 
 /** The identification numbers (e.g., SSN) associated with the individual. */
 export type PostV2CoreAccountsRequestIdentityIndividualIdNumbersList =
-  ReadonlyArray<PostV2CoreAccountsRequestIdentityIndividualIdNumbersItem>;
+  Array<PostV2CoreAccountsRequestIdentityIndividualIdNumbersItem>;
 export const PostV2CoreAccountsRequestIdentityIndividualIdNumbersList =
   /*@__PURE__*/ S.Array(
     PostV2CoreAccountsRequestIdentityIndividualIdNumbersItem,
@@ -186896,7 +186693,7 @@ export const PostV2CoreAccountsRequestIdentityIndividualMetadataMap =
 
 /** The countries where the individual is a national. Two-letter country code ([ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)). */
 export type PostV2CoreAccountsRequestIdentityIndividualNationalitiesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostV2CoreAccountsRequestIdentityIndividualNationalitiesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -187205,7 +187002,7 @@ export type PostV2CoreAccountsRequestIncludeItem =
 export const PostV2CoreAccountsRequestIncludeItem = /*@__PURE__*/ S.String;
 
 /** Additional fields to include in the response. */
-export type PostV2CoreAccountsRequestIncludeList = ReadonlyArray<
+export type PostV2CoreAccountsRequestIncludeList = Array<
   PostV2CoreAccountsRequestIncludeItem | (string & {})
 >;
 export const PostV2CoreAccountsRequestIncludeList = /*@__PURE__*/ S.Array(
@@ -187306,7 +187103,7 @@ export const PostV2CoreAccountsAccountIdPersonsRequestAdditionalAddressesItem =
 
 /** Additional addresses associated with the person. */
 export type PostV2CoreAccountsAccountIdPersonsRequestAdditionalAddressesList =
-  ReadonlyArray<PostV2CoreAccountsAccountIdPersonsRequestAdditionalAddressesItem>;
+  Array<PostV2CoreAccountsAccountIdPersonsRequestAdditionalAddressesItem>;
 export const PostV2CoreAccountsAccountIdPersonsRequestAdditionalAddressesList =
   /*@__PURE__*/ S.Array(
     PostV2CoreAccountsAccountIdPersonsRequestAdditionalAddressesItem,
@@ -187345,7 +187142,7 @@ export const PostV2CoreAccountsAccountIdPersonsRequestAdditionalNamesItem =
 
 /** Additional names (e.g. aliases) associated with the person. */
 export type PostV2CoreAccountsAccountIdPersonsRequestAdditionalNamesList =
-  ReadonlyArray<PostV2CoreAccountsAccountIdPersonsRequestAdditionalNamesItem>;
+  Array<PostV2CoreAccountsAccountIdPersonsRequestAdditionalNamesItem>;
 export const PostV2CoreAccountsAccountIdPersonsRequestAdditionalNamesList =
   /*@__PURE__*/ S.Array(
     PostV2CoreAccountsAccountIdPersonsRequestAdditionalNamesItem,
@@ -187443,7 +187240,7 @@ export const PostV2CoreAccountsAccountIdPersonsRequestDateOfBirth =
 
 /** One or more document IDs returned by a [file upload](https://docs.stripe.com/api/persons/update#create_file) with a purpose value of `account_requirement`. */
 export type PostV2CoreAccountsAccountIdPersonsRequestDocumentsCompanyAuthorizationFilesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostV2CoreAccountsAccountIdPersonsRequestDocumentsCompanyAuthorizationFilesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -187478,7 +187275,7 @@ export const PostV2CoreAccountsAccountIdPersonsRequestDocumentsCompanyAuthorizat
 
 /** One or more document IDs returned by a [file upload](https://docs.stripe.com/api/persons/update#create_file) with a purpose value of `account_requirement`. */
 export type PostV2CoreAccountsAccountIdPersonsRequestDocumentsPassportFilesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostV2CoreAccountsAccountIdPersonsRequestDocumentsPassportFilesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -187602,7 +187399,7 @@ export const PostV2CoreAccountsAccountIdPersonsRequestDocumentsSecondaryVerifica
 
 /** One or more document IDs returned by a [file upload](https://docs.stripe.com/api/persons/update#create_file) with a purpose value of `account_requirement`. */
 export type PostV2CoreAccountsAccountIdPersonsRequestDocumentsVisaFilesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostV2CoreAccountsAccountIdPersonsRequestDocumentsVisaFilesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -187769,7 +187566,7 @@ export const PostV2CoreAccountsAccountIdPersonsRequestIdNumbersItem =
 
 /** The identification numbers (e.g., SSN) associated with the person. */
 export type PostV2CoreAccountsAccountIdPersonsRequestIdNumbersList =
-  ReadonlyArray<PostV2CoreAccountsAccountIdPersonsRequestIdNumbersItem>;
+  Array<PostV2CoreAccountsAccountIdPersonsRequestIdNumbersItem>;
 export const PostV2CoreAccountsAccountIdPersonsRequestIdNumbersList =
   /*@__PURE__*/ S.Array(
     PostV2CoreAccountsAccountIdPersonsRequestIdNumbersItem,
@@ -187794,7 +187591,7 @@ export const PostV2CoreAccountsAccountIdPersonsRequestMetadataMap =
 
 /** The nationalities (countries) this person is associated with. */
 export type PostV2CoreAccountsAccountIdPersonsRequestNationalitiesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostV2CoreAccountsAccountIdPersonsRequestNationalitiesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -188132,7 +187929,7 @@ export const PostV2CoreAccountsAccountIdPersonsIdRequestAdditionalAddressesItem 
 
 /** Additional addresses associated with the person. */
 export type PostV2CoreAccountsAccountIdPersonsIdRequestAdditionalAddressesList =
-  ReadonlyArray<PostV2CoreAccountsAccountIdPersonsIdRequestAdditionalAddressesItem>;
+  Array<PostV2CoreAccountsAccountIdPersonsIdRequestAdditionalAddressesItem>;
 export const PostV2CoreAccountsAccountIdPersonsIdRequestAdditionalAddressesList =
   /*@__PURE__*/ S.Array(
     PostV2CoreAccountsAccountIdPersonsIdRequestAdditionalAddressesItem,
@@ -188172,7 +187969,7 @@ export const PostV2CoreAccountsAccountIdPersonsIdRequestAdditionalNamesItem =
 
 /** Additional names (e.g. aliases) associated with the person. */
 export type PostV2CoreAccountsAccountIdPersonsIdRequestAdditionalNamesList =
-  ReadonlyArray<PostV2CoreAccountsAccountIdPersonsIdRequestAdditionalNamesItem>;
+  Array<PostV2CoreAccountsAccountIdPersonsIdRequestAdditionalNamesItem>;
 export const PostV2CoreAccountsAccountIdPersonsIdRequestAdditionalNamesList =
   /*@__PURE__*/ S.Array(
     PostV2CoreAccountsAccountIdPersonsIdRequestAdditionalNamesItem,
@@ -188270,7 +188067,7 @@ export const PostV2CoreAccountsAccountIdPersonsIdRequestDateOfBirth =
 
 /** One or more document IDs returned by a [file upload](https://docs.stripe.com/api/persons/update#create_file) with a purpose value of `account_requirement`. */
 export type PostV2CoreAccountsAccountIdPersonsIdRequestDocumentsCompanyAuthorizationFilesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostV2CoreAccountsAccountIdPersonsIdRequestDocumentsCompanyAuthorizationFilesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -188305,7 +188102,7 @@ export const PostV2CoreAccountsAccountIdPersonsIdRequestDocumentsCompanyAuthoriz
 
 /** One or more document IDs returned by a [file upload](https://docs.stripe.com/api/persons/update#create_file) with a purpose value of `account_requirement`. */
 export type PostV2CoreAccountsAccountIdPersonsIdRequestDocumentsPassportFilesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostV2CoreAccountsAccountIdPersonsIdRequestDocumentsPassportFilesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -188429,7 +188226,7 @@ export const PostV2CoreAccountsAccountIdPersonsIdRequestDocumentsSecondaryVerifi
 
 /** One or more document IDs returned by a [file upload](https://docs.stripe.com/api/persons/update#create_file) with a purpose value of `account_requirement`. */
 export type PostV2CoreAccountsAccountIdPersonsIdRequestDocumentsVisaFilesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostV2CoreAccountsAccountIdPersonsIdRequestDocumentsVisaFilesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -188598,7 +188395,7 @@ export const PostV2CoreAccountsAccountIdPersonsIdRequestIdNumbersItem =
 
 /** The identification numbers (e.g., SSN) associated with the person. */
 export type PostV2CoreAccountsAccountIdPersonsIdRequestIdNumbersList =
-  ReadonlyArray<PostV2CoreAccountsAccountIdPersonsIdRequestIdNumbersItem>;
+  Array<PostV2CoreAccountsAccountIdPersonsIdRequestIdNumbersItem>;
 export const PostV2CoreAccountsAccountIdPersonsIdRequestIdNumbersList =
   /*@__PURE__*/ S.Array(
     PostV2CoreAccountsAccountIdPersonsIdRequestIdNumbersItem,
@@ -188623,7 +188420,7 @@ export const PostV2CoreAccountsAccountIdPersonsIdRequestMetadataMap =
 
 /** The nationalities (countries) this person is associated with. */
 export type PostV2CoreAccountsAccountIdPersonsIdRequestNationalitiesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostV2CoreAccountsAccountIdPersonsIdRequestNationalitiesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -188968,7 +188765,7 @@ export const PostV2CoreAccountsAccountIdPersonTokensRequestAdditionalAddressesIt
 
 /** Additional addresses associated with the person. */
 export type PostV2CoreAccountsAccountIdPersonTokensRequestAdditionalAddressesList =
-  ReadonlyArray<PostV2CoreAccountsAccountIdPersonTokensRequestAdditionalAddressesItem>;
+  Array<PostV2CoreAccountsAccountIdPersonTokensRequestAdditionalAddressesItem>;
 export const PostV2CoreAccountsAccountIdPersonTokensRequestAdditionalAddressesList =
   /*@__PURE__*/ S.Array(
     PostV2CoreAccountsAccountIdPersonTokensRequestAdditionalAddressesItem,
@@ -189008,7 +188805,7 @@ export const PostV2CoreAccountsAccountIdPersonTokensRequestAdditionalNamesItem =
 
 /** Additional names (e.g. aliases) associated with the person. */
 export type PostV2CoreAccountsAccountIdPersonTokensRequestAdditionalNamesList =
-  ReadonlyArray<PostV2CoreAccountsAccountIdPersonTokensRequestAdditionalNamesItem>;
+  Array<PostV2CoreAccountsAccountIdPersonTokensRequestAdditionalNamesItem>;
 export const PostV2CoreAccountsAccountIdPersonTokensRequestAdditionalNamesList =
   /*@__PURE__*/ S.Array(
     PostV2CoreAccountsAccountIdPersonTokensRequestAdditionalNamesItem,
@@ -189100,7 +188897,7 @@ export const PostV2CoreAccountsAccountIdPersonTokensRequestDateOfBirth =
 
 /** One or more document IDs returned by a [file upload](https://docs.stripe.com/api/persons/update#create_file) with a purpose value of `account_requirement`. */
 export type PostV2CoreAccountsAccountIdPersonTokensRequestDocumentsCompanyAuthorizationFilesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostV2CoreAccountsAccountIdPersonTokensRequestDocumentsCompanyAuthorizationFilesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -189135,7 +188932,7 @@ export const PostV2CoreAccountsAccountIdPersonTokensRequestDocumentsCompanyAutho
 
 /** One or more document IDs returned by a [file upload](https://docs.stripe.com/api/persons/update#create_file) with a purpose value of `account_requirement`. */
 export type PostV2CoreAccountsAccountIdPersonTokensRequestDocumentsPassportFilesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostV2CoreAccountsAccountIdPersonTokensRequestDocumentsPassportFilesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -189260,7 +189057,7 @@ export const PostV2CoreAccountsAccountIdPersonTokensRequestDocumentsSecondaryVer
 
 /** One or more document IDs returned by a [file upload](https://docs.stripe.com/api/persons/update#create_file) with a purpose value of `account_requirement`. */
 export type PostV2CoreAccountsAccountIdPersonTokensRequestDocumentsVisaFilesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostV2CoreAccountsAccountIdPersonTokensRequestDocumentsVisaFilesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -189430,7 +189227,7 @@ export const PostV2CoreAccountsAccountIdPersonTokensRequestIdNumbersItem =
 
 /** The identification numbers (e.g., SSN) associated with the person. */
 export type PostV2CoreAccountsAccountIdPersonTokensRequestIdNumbersList =
-  ReadonlyArray<PostV2CoreAccountsAccountIdPersonTokensRequestIdNumbersItem>;
+  Array<PostV2CoreAccountsAccountIdPersonTokensRequestIdNumbersItem>;
 export const PostV2CoreAccountsAccountIdPersonTokensRequestIdNumbersList =
   /*@__PURE__*/ S.Array(
     PostV2CoreAccountsAccountIdPersonTokensRequestIdNumbersItem,
@@ -189455,7 +189252,7 @@ export const PostV2CoreAccountsAccountIdPersonTokensRequestMetadataMap =
 
 /** The nationalities (countries) this person is associated with. */
 export type PostV2CoreAccountsAccountIdPersonTokensRequestNationalitiesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostV2CoreAccountsAccountIdPersonTokensRequestNationalitiesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -189811,7 +189608,7 @@ export const PostV2CoreAccountsIdRequestConfigurationCustomerBillingInvoiceCusto
 
 /** The list of up to 4 default custom fields to be displayed on invoices for this customer. */
 export type PostV2CoreAccountsIdRequestConfigurationCustomerBillingInvoiceCustomFieldsList =
-  ReadonlyArray<PostV2CoreAccountsIdRequestConfigurationCustomerBillingInvoiceCustomFieldsItem>;
+  Array<PostV2CoreAccountsIdRequestConfigurationCustomerBillingInvoiceCustomFieldsItem>;
 export const PostV2CoreAccountsIdRequestConfigurationCustomerBillingInvoiceCustomFieldsList =
   /*@__PURE__*/ S.Array(
     PostV2CoreAccountsIdRequestConfigurationCustomerBillingInvoiceCustomFieldsItem,
@@ -191427,7 +191224,7 @@ export const PostV2CoreAccountsIdRequestDefaultsLocalesItem =
   /*@__PURE__*/ S.String;
 
 /** The Account's preferred locales (languages), ordered by preference. */
-export type PostV2CoreAccountsIdRequestDefaultsLocalesList = ReadonlyArray<
+export type PostV2CoreAccountsIdRequestDefaultsLocalesList = Array<
   PostV2CoreAccountsIdRequestDefaultsLocalesItem | (string & {})
 >;
 export const PostV2CoreAccountsIdRequestDefaultsLocalesList =
@@ -191812,7 +191609,7 @@ export const PostV2CoreAccountsIdRequestIdentityBusinessDetailsAnnualRevenue =
 
 /** One or more document IDs returned by a [file upload](https://docs.stripe.com/api/persons/update#create_file) with a purpose value of `account_requirement`. */
 export type PostV2CoreAccountsIdRequestIdentityBusinessDetailsDocumentsBankAccountOwnershipVerificationFilesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostV2CoreAccountsIdRequestIdentityBusinessDetailsDocumentsBankAccountOwnershipVerificationFilesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -191847,7 +191644,7 @@ export const PostV2CoreAccountsIdRequestIdentityBusinessDetailsDocumentsBankAcco
 
 /** One or more document IDs returned by a [file upload](https://docs.stripe.com/api/persons/update#create_file) with a purpose value of `account_requirement`. */
 export type PostV2CoreAccountsIdRequestIdentityBusinessDetailsDocumentsCompanyLicenseFilesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostV2CoreAccountsIdRequestIdentityBusinessDetailsDocumentsCompanyLicenseFilesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -191882,7 +191679,7 @@ export const PostV2CoreAccountsIdRequestIdentityBusinessDetailsDocumentsCompanyL
 
 /** One or more document IDs returned by a [file upload](https://docs.stripe.com/api/persons/update#create_file) with a purpose value of `account_requirement`. */
 export type PostV2CoreAccountsIdRequestIdentityBusinessDetailsDocumentsCompanyMemorandumOfAssociationFilesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostV2CoreAccountsIdRequestIdentityBusinessDetailsDocumentsCompanyMemorandumOfAssociationFilesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -191917,7 +191714,7 @@ export const PostV2CoreAccountsIdRequestIdentityBusinessDetailsDocumentsCompanyM
 
 /** One or more document IDs returned by a [file upload](https://docs.stripe.com/api/persons/update#create_file) with a purpose value of `account_requirement`. */
 export type PostV2CoreAccountsIdRequestIdentityBusinessDetailsDocumentsCompanyMinisterialDecreeFilesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostV2CoreAccountsIdRequestIdentityBusinessDetailsDocumentsCompanyMinisterialDecreeFilesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -191952,7 +191749,7 @@ export const PostV2CoreAccountsIdRequestIdentityBusinessDetailsDocumentsCompanyM
 
 /** One or more document IDs returned by a [file upload](https://docs.stripe.com/api/persons/update#create_file) with a purpose value of `account_requirement`. */
 export type PostV2CoreAccountsIdRequestIdentityBusinessDetailsDocumentsCompanyRegistrationVerificationFilesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostV2CoreAccountsIdRequestIdentityBusinessDetailsDocumentsCompanyRegistrationVerificationFilesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -191987,7 +191784,7 @@ export const PostV2CoreAccountsIdRequestIdentityBusinessDetailsDocumentsCompanyR
 
 /** One or more document IDs returned by a [file upload](https://docs.stripe.com/api/persons/update#create_file) with a purpose value of `account_requirement`. */
 export type PostV2CoreAccountsIdRequestIdentityBusinessDetailsDocumentsCompanyTaxIdVerificationFilesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostV2CoreAccountsIdRequestIdentityBusinessDetailsDocumentsCompanyTaxIdVerificationFilesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -192067,7 +191864,7 @@ export const PostV2CoreAccountsIdRequestIdentityBusinessDetailsDocumentsPrimaryV
 
 /** One or more document IDs returned by a [file upload](https://docs.stripe.com/api/persons/update#create_file) with a purpose value of `account_requirement`. */
 export type PostV2CoreAccountsIdRequestIdentityBusinessDetailsDocumentsProofOfAddressFilesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostV2CoreAccountsIdRequestIdentityBusinessDetailsDocumentsProofOfAddressFilesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -192102,7 +191899,7 @@ export const PostV2CoreAccountsIdRequestIdentityBusinessDetailsDocumentsProofOfA
 
 /** One or more document IDs returned by a [file upload](https://docs.stripe.com/api/persons/update#create_file) with a purpose value of `account_requirement`. */
 export type PostV2CoreAccountsIdRequestIdentityBusinessDetailsDocumentsProofOfRegistrationFilesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostV2CoreAccountsIdRequestIdentityBusinessDetailsDocumentsProofOfRegistrationFilesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -192157,7 +191954,7 @@ export const PostV2CoreAccountsIdRequestIdentityBusinessDetailsDocumentsProofOfR
 
 /** One or more document IDs returned by a [file upload](https://docs.stripe.com/api/persons/update#create_file) with a purpose value of `account_requirement`. */
 export type PostV2CoreAccountsIdRequestIdentityBusinessDetailsDocumentsProofOfUltimateBeneficialOwnershipFilesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostV2CoreAccountsIdRequestIdentityBusinessDetailsDocumentsProofOfUltimateBeneficialOwnershipFilesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -192415,7 +192212,7 @@ export const PostV2CoreAccountsIdRequestIdentityBusinessDetailsIdNumbersItem =
 
 /** The ID numbers of a business entity. */
 export type PostV2CoreAccountsIdRequestIdentityBusinessDetailsIdNumbersList =
-  ReadonlyArray<PostV2CoreAccountsIdRequestIdentityBusinessDetailsIdNumbersItem>;
+  Array<PostV2CoreAccountsIdRequestIdentityBusinessDetailsIdNumbersItem>;
 export const PostV2CoreAccountsIdRequestIdentityBusinessDetailsIdNumbersList =
   /*@__PURE__*/ S.Array(
     PostV2CoreAccountsIdRequestIdentityBusinessDetailsIdNumbersItem,
@@ -192770,7 +192567,7 @@ export const PostV2CoreAccountsIdRequestIdentityIndividualAdditionalAddressesIte
 
 /** Additional addresses associated with the individual. */
 export type PostV2CoreAccountsIdRequestIdentityIndividualAdditionalAddressesList =
-  ReadonlyArray<PostV2CoreAccountsIdRequestIdentityIndividualAdditionalAddressesItem>;
+  Array<PostV2CoreAccountsIdRequestIdentityIndividualAdditionalAddressesItem>;
 export const PostV2CoreAccountsIdRequestIdentityIndividualAdditionalAddressesList =
   /*@__PURE__*/ S.Array(
     PostV2CoreAccountsIdRequestIdentityIndividualAdditionalAddressesItem,
@@ -192810,7 +192607,7 @@ export const PostV2CoreAccountsIdRequestIdentityIndividualAdditionalNamesItem =
 
 /** Additional names (e.g. aliases) associated with the individual. */
 export type PostV2CoreAccountsIdRequestIdentityIndividualAdditionalNamesList =
-  ReadonlyArray<PostV2CoreAccountsIdRequestIdentityIndividualAdditionalNamesItem>;
+  Array<PostV2CoreAccountsIdRequestIdentityIndividualAdditionalNamesItem>;
 export const PostV2CoreAccountsIdRequestIdentityIndividualAdditionalNamesList =
   /*@__PURE__*/ S.Array(
     PostV2CoreAccountsIdRequestIdentityIndividualAdditionalNamesItem,
@@ -192870,7 +192667,7 @@ export const PostV2CoreAccountsIdRequestIdentityIndividualDateOfBirth =
 
 /** One or more document IDs returned by a [file upload](https://docs.stripe.com/api/persons/update#create_file) with a purpose value of `account_requirement`. */
 export type PostV2CoreAccountsIdRequestIdentityIndividualDocumentsCompanyAuthorizationFilesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostV2CoreAccountsIdRequestIdentityIndividualDocumentsCompanyAuthorizationFilesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -192905,7 +192702,7 @@ export const PostV2CoreAccountsIdRequestIdentityIndividualDocumentsCompanyAuthor
 
 /** One or more document IDs returned by a [file upload](https://docs.stripe.com/api/persons/update#create_file) with a purpose value of `account_requirement`. */
 export type PostV2CoreAccountsIdRequestIdentityIndividualDocumentsPassportFilesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostV2CoreAccountsIdRequestIdentityIndividualDocumentsPassportFilesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -193030,7 +192827,7 @@ export const PostV2CoreAccountsIdRequestIdentityIndividualDocumentsSecondaryVeri
 
 /** One or more document IDs returned by a [file upload](https://docs.stripe.com/api/persons/update#create_file) with a purpose value of `account_requirement`. */
 export type PostV2CoreAccountsIdRequestIdentityIndividualDocumentsVisaFilesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostV2CoreAccountsIdRequestIdentityIndividualDocumentsVisaFilesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -193200,7 +192997,7 @@ export const PostV2CoreAccountsIdRequestIdentityIndividualIdNumbersItem =
 
 /** The identification numbers (e.g., SSN) associated with the individual. */
 export type PostV2CoreAccountsIdRequestIdentityIndividualIdNumbersList =
-  ReadonlyArray<PostV2CoreAccountsIdRequestIdentityIndividualIdNumbersItem>;
+  Array<PostV2CoreAccountsIdRequestIdentityIndividualIdNumbersItem>;
 export const PostV2CoreAccountsIdRequestIdentityIndividualIdNumbersList =
   /*@__PURE__*/ S.Array(
     PostV2CoreAccountsIdRequestIdentityIndividualIdNumbersItem,
@@ -193225,7 +193022,7 @@ export const PostV2CoreAccountsIdRequestIdentityIndividualMetadataMap =
 
 /** The countries where the individual is a national. Two-letter country code ([ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)). */
 export type PostV2CoreAccountsIdRequestIdentityIndividualNationalitiesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostV2CoreAccountsIdRequestIdentityIndividualNationalitiesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -193534,7 +193331,7 @@ export type PostV2CoreAccountsIdRequestIncludeItem =
 export const PostV2CoreAccountsIdRequestIncludeItem = /*@__PURE__*/ S.String;
 
 /** Additional fields to include in the response. */
-export type PostV2CoreAccountsIdRequestIncludeList = ReadonlyArray<
+export type PostV2CoreAccountsIdRequestIncludeList = Array<
   PostV2CoreAccountsIdRequestIncludeItem | (string & {})
 >;
 export const PostV2CoreAccountsIdRequestIncludeList = /*@__PURE__*/ S.Array(
@@ -193600,10 +193397,9 @@ export const PostV2CoreAccountsIdCloseRequestAppliedConfigurationsItem =
   /*@__PURE__*/ S.String;
 
 /** Configurations on the Account to be closed. All configurations on the Account must be passed in for this request to succeed. */
-export type PostV2CoreAccountsIdCloseRequestAppliedConfigurationsList =
-  ReadonlyArray<
-    PostV2CoreAccountsIdCloseRequestAppliedConfigurationsItem | (string & {})
-  >;
+export type PostV2CoreAccountsIdCloseRequestAppliedConfigurationsList = Array<
+  PostV2CoreAccountsIdCloseRequestAppliedConfigurationsItem | (string & {})
+>;
 export const PostV2CoreAccountsIdCloseRequestAppliedConfigurationsList =
   /*@__PURE__*/ S.Array(
     PostV2CoreAccountsIdCloseRequestAppliedConfigurationsItem,
@@ -193848,7 +193644,7 @@ export const PostV2CoreAccountTokensRequestIdentityBusinessDetailsAnnualRevenue 
 
 /** One or more document IDs returned by a [file upload](https://docs.stripe.com/api/persons/update#create_file) with a purpose value of `account_requirement`. */
 export type PostV2CoreAccountTokensRequestIdentityBusinessDetailsDocumentsBankAccountOwnershipVerificationFilesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostV2CoreAccountTokensRequestIdentityBusinessDetailsDocumentsBankAccountOwnershipVerificationFilesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -193883,7 +193679,7 @@ export const PostV2CoreAccountTokensRequestIdentityBusinessDetailsDocumentsBankA
 
 /** One or more document IDs returned by a [file upload](https://docs.stripe.com/api/persons/update#create_file) with a purpose value of `account_requirement`. */
 export type PostV2CoreAccountTokensRequestIdentityBusinessDetailsDocumentsCompanyLicenseFilesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostV2CoreAccountTokensRequestIdentityBusinessDetailsDocumentsCompanyLicenseFilesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -193918,7 +193714,7 @@ export const PostV2CoreAccountTokensRequestIdentityBusinessDetailsDocumentsCompa
 
 /** One or more document IDs returned by a [file upload](https://docs.stripe.com/api/persons/update#create_file) with a purpose value of `account_requirement`. */
 export type PostV2CoreAccountTokensRequestIdentityBusinessDetailsDocumentsCompanyMemorandumOfAssociationFilesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostV2CoreAccountTokensRequestIdentityBusinessDetailsDocumentsCompanyMemorandumOfAssociationFilesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -193953,7 +193749,7 @@ export const PostV2CoreAccountTokensRequestIdentityBusinessDetailsDocumentsCompa
 
 /** One or more document IDs returned by a [file upload](https://docs.stripe.com/api/persons/update#create_file) with a purpose value of `account_requirement`. */
 export type PostV2CoreAccountTokensRequestIdentityBusinessDetailsDocumentsCompanyMinisterialDecreeFilesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostV2CoreAccountTokensRequestIdentityBusinessDetailsDocumentsCompanyMinisterialDecreeFilesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -193988,7 +193784,7 @@ export const PostV2CoreAccountTokensRequestIdentityBusinessDetailsDocumentsCompa
 
 /** One or more document IDs returned by a [file upload](https://docs.stripe.com/api/persons/update#create_file) with a purpose value of `account_requirement`. */
 export type PostV2CoreAccountTokensRequestIdentityBusinessDetailsDocumentsCompanyRegistrationVerificationFilesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostV2CoreAccountTokensRequestIdentityBusinessDetailsDocumentsCompanyRegistrationVerificationFilesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -194023,7 +193819,7 @@ export const PostV2CoreAccountTokensRequestIdentityBusinessDetailsDocumentsCompa
 
 /** One or more document IDs returned by a [file upload](https://docs.stripe.com/api/persons/update#create_file) with a purpose value of `account_requirement`. */
 export type PostV2CoreAccountTokensRequestIdentityBusinessDetailsDocumentsCompanyTaxIdVerificationFilesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostV2CoreAccountTokensRequestIdentityBusinessDetailsDocumentsCompanyTaxIdVerificationFilesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -194103,7 +193899,7 @@ export const PostV2CoreAccountTokensRequestIdentityBusinessDetailsDocumentsPrima
 
 /** One or more document IDs returned by a [file upload](https://docs.stripe.com/api/persons/update#create_file) with a purpose value of `account_requirement`. */
 export type PostV2CoreAccountTokensRequestIdentityBusinessDetailsDocumentsProofOfAddressFilesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostV2CoreAccountTokensRequestIdentityBusinessDetailsDocumentsProofOfAddressFilesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -194138,7 +193934,7 @@ export const PostV2CoreAccountTokensRequestIdentityBusinessDetailsDocumentsProof
 
 /** One or more document IDs returned by a [file upload](https://docs.stripe.com/api/persons/update#create_file) with a purpose value of `account_requirement`. */
 export type PostV2CoreAccountTokensRequestIdentityBusinessDetailsDocumentsProofOfRegistrationFilesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostV2CoreAccountTokensRequestIdentityBusinessDetailsDocumentsProofOfRegistrationFilesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -194193,7 +193989,7 @@ export const PostV2CoreAccountTokensRequestIdentityBusinessDetailsDocumentsProof
 
 /** One or more document IDs returned by a [file upload](https://docs.stripe.com/api/persons/update#create_file) with a purpose value of `account_requirement`. */
 export type PostV2CoreAccountTokensRequestIdentityBusinessDetailsDocumentsProofOfUltimateBeneficialOwnershipFilesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostV2CoreAccountTokensRequestIdentityBusinessDetailsDocumentsProofOfUltimateBeneficialOwnershipFilesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -194452,7 +194248,7 @@ export const PostV2CoreAccountTokensRequestIdentityBusinessDetailsIdNumbersItem 
 
 /** The ID numbers of a business entity. */
 export type PostV2CoreAccountTokensRequestIdentityBusinessDetailsIdNumbersList =
-  ReadonlyArray<PostV2CoreAccountTokensRequestIdentityBusinessDetailsIdNumbersItem>;
+  Array<PostV2CoreAccountTokensRequestIdentityBusinessDetailsIdNumbersItem>;
 export const PostV2CoreAccountTokensRequestIdentityBusinessDetailsIdNumbersList =
   /*@__PURE__*/ S.Array(
     PostV2CoreAccountTokensRequestIdentityBusinessDetailsIdNumbersItem,
@@ -194808,7 +194604,7 @@ export const PostV2CoreAccountTokensRequestIdentityIndividualAdditionalAddresses
 
 /** Additional addresses associated with the individual. */
 export type PostV2CoreAccountTokensRequestIdentityIndividualAdditionalAddressesList =
-  ReadonlyArray<PostV2CoreAccountTokensRequestIdentityIndividualAdditionalAddressesItem>;
+  Array<PostV2CoreAccountTokensRequestIdentityIndividualAdditionalAddressesItem>;
 export const PostV2CoreAccountTokensRequestIdentityIndividualAdditionalAddressesList =
   /*@__PURE__*/ S.Array(
     PostV2CoreAccountTokensRequestIdentityIndividualAdditionalAddressesItem,
@@ -194848,7 +194644,7 @@ export const PostV2CoreAccountTokensRequestIdentityIndividualAdditionalNamesItem
 
 /** Additional names (e.g. aliases) associated with the individual. */
 export type PostV2CoreAccountTokensRequestIdentityIndividualAdditionalNamesList =
-  ReadonlyArray<PostV2CoreAccountTokensRequestIdentityIndividualAdditionalNamesItem>;
+  Array<PostV2CoreAccountTokensRequestIdentityIndividualAdditionalNamesItem>;
 export const PostV2CoreAccountTokensRequestIdentityIndividualAdditionalNamesList =
   /*@__PURE__*/ S.Array(
     PostV2CoreAccountTokensRequestIdentityIndividualAdditionalNamesItem,
@@ -194908,7 +194704,7 @@ export const PostV2CoreAccountTokensRequestIdentityIndividualDateOfBirth =
 
 /** One or more document IDs returned by a [file upload](https://docs.stripe.com/api/persons/update#create_file) with a purpose value of `account_requirement`. */
 export type PostV2CoreAccountTokensRequestIdentityIndividualDocumentsCompanyAuthorizationFilesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostV2CoreAccountTokensRequestIdentityIndividualDocumentsCompanyAuthorizationFilesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -194943,7 +194739,7 @@ export const PostV2CoreAccountTokensRequestIdentityIndividualDocumentsCompanyAut
 
 /** One or more document IDs returned by a [file upload](https://docs.stripe.com/api/persons/update#create_file) with a purpose value of `account_requirement`. */
 export type PostV2CoreAccountTokensRequestIdentityIndividualDocumentsPassportFilesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostV2CoreAccountTokensRequestIdentityIndividualDocumentsPassportFilesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -195068,7 +194864,7 @@ export const PostV2CoreAccountTokensRequestIdentityIndividualDocumentsSecondaryV
 
 /** One or more document IDs returned by a [file upload](https://docs.stripe.com/api/persons/update#create_file) with a purpose value of `account_requirement`. */
 export type PostV2CoreAccountTokensRequestIdentityIndividualDocumentsVisaFilesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostV2CoreAccountTokensRequestIdentityIndividualDocumentsVisaFilesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -195238,7 +195034,7 @@ export const PostV2CoreAccountTokensRequestIdentityIndividualIdNumbersItem =
 
 /** The identification numbers (e.g., SSN) associated with the individual. */
 export type PostV2CoreAccountTokensRequestIdentityIndividualIdNumbersList =
-  ReadonlyArray<PostV2CoreAccountTokensRequestIdentityIndividualIdNumbersItem>;
+  Array<PostV2CoreAccountTokensRequestIdentityIndividualIdNumbersItem>;
 export const PostV2CoreAccountTokensRequestIdentityIndividualIdNumbersList =
   /*@__PURE__*/ S.Array(
     PostV2CoreAccountTokensRequestIdentityIndividualIdNumbersItem,
@@ -195263,7 +195059,7 @@ export const PostV2CoreAccountTokensRequestIdentityIndividualMetadataMap =
 
 /** The countries where the individual is a national. Two-letter country code ([ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)). */
 export type PostV2CoreAccountTokensRequestIdentityIndividualNationalitiesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostV2CoreAccountTokensRequestIdentityIndividualNationalitiesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -195629,8 +195425,7 @@ export const PostV2CoreEventDestinationsRequestAzureEventGrid =
   }) as any as S.Schema<PostV2CoreEventDestinationsRequestAzureEventGrid>;
 
 /** The list of events to enable for this endpoint. */
-export type PostV2CoreEventDestinationsRequestEnabledEventsList =
-  ReadonlyArray<string>;
+export type PostV2CoreEventDestinationsRequestEnabledEventsList = Array<string>;
 export const PostV2CoreEventDestinationsRequestEnabledEventsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -195644,8 +195439,7 @@ export const PostV2CoreEventDestinationsRequestEventPayload =
   /*@__PURE__*/ S.String;
 
 /** Specifies which accounts' events route to this destination. `@self`: Receive events from the account that owns the event destination. `@accounts`: Receive events emitted from other accounts you manage which includes your v1 and v2 accounts. `@organization_members`: Receive events from accounts directly linked to the organization. `@organization_members/@accounts`: Receive events from all accounts connected to any platform accounts in the organization. */
-export type PostV2CoreEventDestinationsRequestEventsFromList =
-  ReadonlyArray<string>;
+export type PostV2CoreEventDestinationsRequestEventsFromList = Array<string>;
 export const PostV2CoreEventDestinationsRequestEventsFromList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -195658,7 +195452,7 @@ export const PostV2CoreEventDestinationsRequestIncludeItem =
   /*@__PURE__*/ S.String;
 
 /** Additional fields to include in the response. */
-export type PostV2CoreEventDestinationsRequestIncludeList = ReadonlyArray<
+export type PostV2CoreEventDestinationsRequestIncludeList = Array<
   PostV2CoreEventDestinationsRequestIncludeItem | (string & {})
 >;
 export const PostV2CoreEventDestinationsRequestIncludeList =
@@ -195752,7 +195546,7 @@ export const PostV2CoreEventDestinationsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of events to enable for this endpoint. */
 export type PostV2CoreEventDestinationsIdRequestEnabledEventsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostV2CoreEventDestinationsIdRequestEnabledEventsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -195764,7 +195558,7 @@ export const PostV2CoreEventDestinationsIdRequestIncludeItem =
   /*@__PURE__*/ S.String;
 
 /** Additional fields to include in the response. Currently supports `webhook_endpoint.url`. */
-export type PostV2CoreEventDestinationsIdRequestIncludeList = ReadonlyArray<
+export type PostV2CoreEventDestinationsIdRequestIncludeList = Array<
   PostV2CoreEventDestinationsIdRequestIncludeItem | (string & {})
 >;
 export const PostV2CoreEventDestinationsIdRequestIncludeList =
@@ -196300,7 +196094,7 @@ export const PostWebhookEndpointsRequestEnabledEventsItem =
   /*@__PURE__*/ S.String;
 
 /** The list of events to enable for this endpoint. You may specify `['*']` to enable all events, except those that require explicit selection. */
-export type PostWebhookEndpointsRequestEnabledEventsList = ReadonlyArray<
+export type PostWebhookEndpointsRequestEnabledEventsList = Array<
   PostWebhookEndpointsRequestEnabledEventsItem | (string & {})
 >;
 export const PostWebhookEndpointsRequestEnabledEventsList =
@@ -196309,7 +196103,7 @@ export const PostWebhookEndpointsRequestEnabledEventsList =
   ) as any as S.Schema<PostWebhookEndpointsRequestEnabledEventsList>;
 
 /** Specifies which fields in the response should be expanded. */
-export type PostWebhookEndpointsRequestExpandList = ReadonlyArray<string>;
+export type PostWebhookEndpointsRequestExpandList = Array<string>;
 export const PostWebhookEndpointsRequestExpandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostWebhookEndpointsRequestExpandList>;
@@ -196647,10 +196441,9 @@ export const PostWebhookEndpointsWebhookEndpointRequestEnabledEventsItem =
   /*@__PURE__*/ S.String;
 
 /** The list of events to enable for this endpoint. You may specify `['*']` to enable all events, except those that require explicit selection. */
-export type PostWebhookEndpointsWebhookEndpointRequestEnabledEventsList =
-  ReadonlyArray<
-    PostWebhookEndpointsWebhookEndpointRequestEnabledEventsItem | (string & {})
-  >;
+export type PostWebhookEndpointsWebhookEndpointRequestEnabledEventsList = Array<
+  PostWebhookEndpointsWebhookEndpointRequestEnabledEventsItem | (string & {})
+>;
 export const PostWebhookEndpointsWebhookEndpointRequestEnabledEventsList =
   /*@__PURE__*/ S.Array(
     PostWebhookEndpointsWebhookEndpointRequestEnabledEventsItem,
@@ -196658,7 +196451,7 @@ export const PostWebhookEndpointsWebhookEndpointRequestEnabledEventsList =
 
 /** Specifies which fields in the response should be expanded. */
 export type PostWebhookEndpointsWebhookEndpointRequestExpandList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PostWebhookEndpointsWebhookEndpointRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,

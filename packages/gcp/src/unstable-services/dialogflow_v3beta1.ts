@@ -60,7 +60,7 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -154,7 +154,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -242,7 +242,7 @@ export const GoogleCloudDialogflowCxV3beta1IntentCoverageIntent =
   }) as any as S.Schema<GoogleCloudDialogflowCxV3beta1IntentCoverageIntent>;
 
 export type GoogleCloudDialogflowCxV3beta1IntentCoverageIntentList =
-  ReadonlyArray<GoogleCloudDialogflowCxV3beta1IntentCoverageIntent>;
+  Array<GoogleCloudDialogflowCxV3beta1IntentCoverageIntent>;
 export const GoogleCloudDialogflowCxV3beta1IntentCoverageIntentList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDialogflowCxV3beta1IntentCoverageIntent,
@@ -393,7 +393,7 @@ export const GoogleCloudDialogflowCxV3beta1ResponseMessageMixedAudioSegment =
   }) as any as S.Schema<GoogleCloudDialogflowCxV3beta1ResponseMessageMixedAudioSegment>;
 
 export type GoogleCloudDialogflowCxV3beta1ResponseMessageMixedAudioSegmentList =
-  ReadonlyArray<GoogleCloudDialogflowCxV3beta1ResponseMessageMixedAudioSegment>;
+  Array<GoogleCloudDialogflowCxV3beta1ResponseMessageMixedAudioSegment>;
 export const GoogleCloudDialogflowCxV3beta1ResponseMessageMixedAudioSegmentList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDialogflowCxV3beta1ResponseMessageMixedAudioSegment,
@@ -464,7 +464,7 @@ export const GoogleCloudDialogflowCxV3beta1ResponseMessage =
   }) as any as S.Schema<GoogleCloudDialogflowCxV3beta1ResponseMessage>;
 
 export type GoogleCloudDialogflowCxV3beta1ResponseMessageList =
-  ReadonlyArray<GoogleCloudDialogflowCxV3beta1ResponseMessage>;
+  Array<GoogleCloudDialogflowCxV3beta1ResponseMessage>;
 export const GoogleCloudDialogflowCxV3beta1ResponseMessageList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDialogflowCxV3beta1ResponseMessage,
@@ -490,7 +490,7 @@ export const GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesCaseCaseCo
   }) as any as S.Schema<GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesCaseCaseContent>;
 
 export type GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesCaseCaseContentList =
-  ReadonlyArray<GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesCaseCaseContent>;
+  Array<GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesCaseCaseContent>;
 export const GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesCaseCaseContentList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesCaseCaseContent,
@@ -513,7 +513,7 @@ export const GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesCase =
   }) as any as S.Schema<GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesCase>;
 
 export type GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesCaseList =
-  ReadonlyArray<GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesCase>;
+  Array<GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesCase>;
 export const GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesCaseList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesCase,
@@ -534,7 +534,7 @@ export const GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCases =
   }) as any as S.Schema<GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCases>;
 
 export type GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesList =
-  ReadonlyArray<GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCases>;
+  Array<GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCases>;
 export const GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCases,
@@ -555,7 +555,7 @@ export const GoogleCloudDialogflowCxV3beta1FulfillmentSetParameterAction =
   }) as any as S.Schema<GoogleCloudDialogflowCxV3beta1FulfillmentSetParameterAction>;
 
 export type GoogleCloudDialogflowCxV3beta1FulfillmentSetParameterActionList =
-  ReadonlyArray<GoogleCloudDialogflowCxV3beta1FulfillmentSetParameterAction>;
+  Array<GoogleCloudDialogflowCxV3beta1FulfillmentSetParameterAction>;
 export const GoogleCloudDialogflowCxV3beta1FulfillmentSetParameterActionList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDialogflowCxV3beta1FulfillmentSetParameterAction,
@@ -676,7 +676,7 @@ export const GoogleCloudDialogflowCxV3beta1FulfillmentGeneratorSettings =
   }) as any as S.Schema<GoogleCloudDialogflowCxV3beta1FulfillmentGeneratorSettings>;
 
 export type GoogleCloudDialogflowCxV3beta1FulfillmentGeneratorSettingsList =
-  ReadonlyArray<GoogleCloudDialogflowCxV3beta1FulfillmentGeneratorSettings>;
+  Array<GoogleCloudDialogflowCxV3beta1FulfillmentGeneratorSettings>;
 export const GoogleCloudDialogflowCxV3beta1FulfillmentGeneratorSettingsList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDialogflowCxV3beta1FulfillmentGeneratorSettings,
@@ -741,7 +741,7 @@ export const GoogleCloudDialogflowCxV3beta1EventHandler =
   }) as any as S.Schema<GoogleCloudDialogflowCxV3beta1EventHandler>;
 
 export type GoogleCloudDialogflowCxV3beta1EventHandlerList =
-  ReadonlyArray<GoogleCloudDialogflowCxV3beta1EventHandler>;
+  Array<GoogleCloudDialogflowCxV3beta1EventHandler>;
 export const GoogleCloudDialogflowCxV3beta1EventHandlerList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDialogflowCxV3beta1EventHandler,
@@ -772,7 +772,7 @@ export const GoogleCloudDialogflowCxV3beta1TransitionRoute =
   }) as any as S.Schema<GoogleCloudDialogflowCxV3beta1TransitionRoute>;
 
 export type GoogleCloudDialogflowCxV3beta1TransitionRouteList =
-  ReadonlyArray<GoogleCloudDialogflowCxV3beta1TransitionRoute>;
+  Array<GoogleCloudDialogflowCxV3beta1TransitionRoute>;
 export const GoogleCloudDialogflowCxV3beta1TransitionRouteList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDialogflowCxV3beta1TransitionRoute,
@@ -827,7 +827,7 @@ export const GoogleCloudDialogflowCxV3beta1FormParameter =
   }) as any as S.Schema<GoogleCloudDialogflowCxV3beta1FormParameter>;
 
 export type GoogleCloudDialogflowCxV3beta1FormParameterList =
-  ReadonlyArray<GoogleCloudDialogflowCxV3beta1FormParameter>;
+  Array<GoogleCloudDialogflowCxV3beta1FormParameter>;
 export const GoogleCloudDialogflowCxV3beta1FormParameterList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDialogflowCxV3beta1FormParameter,
@@ -856,8 +856,12 @@ export const GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreTypeEnum 
 
 export interface GoogleCloudDialogflowCxV3beta1DataStoreConnection {
   dataStore?: string;
-  documentProcessingMode?: GoogleCloudDialogflowCxV3beta1DataStoreConnectionDocumentProcessingModeEnum;
-  dataStoreType?: GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreTypeEnum;
+  documentProcessingMode?:
+    | GoogleCloudDialogflowCxV3beta1DataStoreConnectionDocumentProcessingModeEnum
+    | (string & {});
+  dataStoreType?:
+    | GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreTypeEnum
+    | (string & {});
 }
 export const GoogleCloudDialogflowCxV3beta1DataStoreConnection =
   /*@__PURE__*/ S.suspend(() =>
@@ -875,7 +879,7 @@ export const GoogleCloudDialogflowCxV3beta1DataStoreConnection =
   }) as any as S.Schema<GoogleCloudDialogflowCxV3beta1DataStoreConnection>;
 
 export type GoogleCloudDialogflowCxV3beta1DataStoreConnectionList =
-  ReadonlyArray<GoogleCloudDialogflowCxV3beta1DataStoreConnection>;
+  Array<GoogleCloudDialogflowCxV3beta1DataStoreConnection>;
 export const GoogleCloudDialogflowCxV3beta1DataStoreConnectionList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDialogflowCxV3beta1DataStoreConnection,
@@ -974,7 +978,7 @@ export const GoogleCloudDialogflowCxV3beta1InlineSchemaTypeEnum =
 
 export interface GoogleCloudDialogflowCxV3beta1InlineSchema {
   items?: GoogleCloudDialogflowCxV3beta1TypeSchema;
-  type?: GoogleCloudDialogflowCxV3beta1InlineSchemaTypeEnum;
+  type?: GoogleCloudDialogflowCxV3beta1InlineSchemaTypeEnum | (string & {});
 }
 export const GoogleCloudDialogflowCxV3beta1InlineSchema =
   /*@__PURE__*/ S.suspend(() =>
@@ -1007,7 +1011,9 @@ export const GoogleCloudDialogflowCxV3beta1TypeSchema = /*@__PURE__*/ S.suspend(
 export interface GoogleCloudDialogflowCxV3beta1ParameterDefinition {
   name?: string;
   description?: string;
-  type?: GoogleCloudDialogflowCxV3beta1ParameterDefinitionTypeEnum;
+  type?:
+    | GoogleCloudDialogflowCxV3beta1ParameterDefinitionTypeEnum
+    | (string & {});
   typeSchema?: GoogleCloudDialogflowCxV3beta1TypeSchema;
 }
 export const GoogleCloudDialogflowCxV3beta1ParameterDefinition =
@@ -1025,7 +1031,7 @@ export const GoogleCloudDialogflowCxV3beta1ParameterDefinition =
   }) as any as S.Schema<GoogleCloudDialogflowCxV3beta1ParameterDefinition>;
 
 export type GoogleCloudDialogflowCxV3beta1ParameterDefinitionList =
-  ReadonlyArray<GoogleCloudDialogflowCxV3beta1ParameterDefinition>;
+  Array<GoogleCloudDialogflowCxV3beta1ParameterDefinition>;
 export const GoogleCloudDialogflowCxV3beta1ParameterDefinitionList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDialogflowCxV3beta1ParameterDefinition,
@@ -1046,9 +1052,13 @@ export const GoogleCloudDialogflowCxV3beta1NluSettingsModelTypeEnum =
   /*@__PURE__*/ S.String;
 
 export interface GoogleCloudDialogflowCxV3beta1NluSettings {
-  modelTrainingMode?: GoogleCloudDialogflowCxV3beta1NluSettingsModelTrainingModeEnum;
+  modelTrainingMode?:
+    | GoogleCloudDialogflowCxV3beta1NluSettingsModelTrainingModeEnum
+    | (string & {});
   classificationThreshold?: number;
-  modelType?: GoogleCloudDialogflowCxV3beta1NluSettingsModelTypeEnum;
+  modelType?:
+    | GoogleCloudDialogflowCxV3beta1NluSettingsModelTypeEnum
+    | (string & {});
 }
 export const GoogleCloudDialogflowCxV3beta1NluSettings =
   /*@__PURE__*/ S.suspend(() =>
@@ -1170,7 +1180,7 @@ export const GoogleCloudDialogflowCxV3beta1TransitionCoverageTransition =
   }) as any as S.Schema<GoogleCloudDialogflowCxV3beta1TransitionCoverageTransition>;
 
 export type GoogleCloudDialogflowCxV3beta1TransitionCoverageTransitionList =
-  ReadonlyArray<GoogleCloudDialogflowCxV3beta1TransitionCoverageTransition>;
+  Array<GoogleCloudDialogflowCxV3beta1TransitionCoverageTransition>;
 export const GoogleCloudDialogflowCxV3beta1TransitionCoverageTransitionList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDialogflowCxV3beta1TransitionCoverageTransition,
@@ -1210,7 +1220,7 @@ export const GoogleCloudDialogflowCxV3beta1TransitionRouteGroupCoverageCoverageT
   }) as any as S.Schema<GoogleCloudDialogflowCxV3beta1TransitionRouteGroupCoverageCoverageTransition>;
 
 export type GoogleCloudDialogflowCxV3beta1TransitionRouteGroupCoverageCoverageTransitionList =
-  ReadonlyArray<GoogleCloudDialogflowCxV3beta1TransitionRouteGroupCoverageCoverageTransition>;
+  Array<GoogleCloudDialogflowCxV3beta1TransitionRouteGroupCoverageCoverageTransition>;
 export const GoogleCloudDialogflowCxV3beta1TransitionRouteGroupCoverageCoverageTransitionList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDialogflowCxV3beta1TransitionRouteGroupCoverageCoverageTransition,
@@ -1256,7 +1266,7 @@ export const GoogleCloudDialogflowCxV3beta1TransitionRouteGroupCoverageCoverage 
   }) as any as S.Schema<GoogleCloudDialogflowCxV3beta1TransitionRouteGroupCoverageCoverage>;
 
 export type GoogleCloudDialogflowCxV3beta1TransitionRouteGroupCoverageCoverageList =
-  ReadonlyArray<GoogleCloudDialogflowCxV3beta1TransitionRouteGroupCoverageCoverage>;
+  Array<GoogleCloudDialogflowCxV3beta1TransitionRouteGroupCoverageCoverage>;
 export const GoogleCloudDialogflowCxV3beta1TransitionRouteGroupCoverageCoverageList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDialogflowCxV3beta1TransitionRouteGroupCoverageCoverage,
@@ -1437,7 +1447,9 @@ export const GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGenderEnum =
   /*@__PURE__*/ S.String;
 
 export interface GoogleCloudDialogflowCxV3beta1VoiceSelectionParams {
-  ssmlGender?: GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGenderEnum;
+  ssmlGender?:
+    | GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGenderEnum
+    | (string & {});
   name?: string;
 }
 export const GoogleCloudDialogflowCxV3beta1VoiceSelectionParams =
@@ -1708,7 +1720,7 @@ export const GoogleCloudDialogflowCxV3beta1EntityTypeEntity =
   }) as any as S.Schema<GoogleCloudDialogflowCxV3beta1EntityTypeEntity>;
 
 export type GoogleCloudDialogflowCxV3beta1EntityTypeEntityList =
-  ReadonlyArray<GoogleCloudDialogflowCxV3beta1EntityTypeEntity>;
+  Array<GoogleCloudDialogflowCxV3beta1EntityTypeEntity>;
 export const GoogleCloudDialogflowCxV3beta1EntityTypeEntityList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDialogflowCxV3beta1EntityTypeEntity,
@@ -1727,7 +1739,7 @@ export const GoogleCloudDialogflowCxV3beta1EntityTypeExcludedPhrase =
   }) as any as S.Schema<GoogleCloudDialogflowCxV3beta1EntityTypeExcludedPhrase>;
 
 export type GoogleCloudDialogflowCxV3beta1EntityTypeExcludedPhraseList =
-  ReadonlyArray<GoogleCloudDialogflowCxV3beta1EntityTypeExcludedPhrase>;
+  Array<GoogleCloudDialogflowCxV3beta1EntityTypeExcludedPhrase>;
 export const GoogleCloudDialogflowCxV3beta1EntityTypeExcludedPhraseList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDialogflowCxV3beta1EntityTypeExcludedPhrase,
@@ -1752,10 +1764,12 @@ export interface GoogleCloudDialogflowCxV3beta1EntityType {
   entities?: GoogleCloudDialogflowCxV3beta1EntityTypeEntityList;
   excludedPhrases?: GoogleCloudDialogflowCxV3beta1EntityTypeExcludedPhraseList;
   redact?: boolean;
-  autoExpansionMode?: GoogleCloudDialogflowCxV3beta1EntityTypeAutoExpansionModeEnum;
+  autoExpansionMode?:
+    | GoogleCloudDialogflowCxV3beta1EntityTypeAutoExpansionModeEnum
+    | (string & {});
   enableFuzzyExtraction?: boolean;
   displayName?: string;
-  kind?: GoogleCloudDialogflowCxV3beta1EntityTypeKindEnum;
+  kind?: GoogleCloudDialogflowCxV3beta1EntityTypeKindEnum | (string & {});
 }
 export const GoogleCloudDialogflowCxV3beta1EntityType = /*@__PURE__*/ S.suspend(
   () =>
@@ -1890,14 +1904,20 @@ export interface GoogleCloudDialogflowCxV3beta1WebhookGenericWebService {
   parameterMapping?: StringMap;
   serviceAccountAuthConfig?: GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAccountAuthConfig;
   secretVersionsForRequestHeaders?: GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceSecretVersionHeaderValueMap;
-  httpMethod?: GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodEnum;
-  serviceAgentAuth?: GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuthEnum;
+  httpMethod?:
+    | GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodEnum
+    | (string & {});
+  serviceAgentAuth?:
+    | GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuthEnum
+    | (string & {});
   requestHeaders?: StringMap;
   allowedCaCerts?: StringList;
   password?: string;
   secretVersionForUsernamePassword?: string;
   username?: string;
-  webhookType?: GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypeEnum;
+  webhookType?:
+    | GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypeEnum
+    | (string & {});
 }
 export const GoogleCloudDialogflowCxV3beta1WebhookGenericWebService =
   /*@__PURE__*/ S.suspend(() =>
@@ -1976,7 +1996,7 @@ export const GoogleCloudDialogflowCxV3beta1Webhook = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudDialogflowCxV3beta1Webhook>;
 
 export type GoogleCloudDialogflowCxV3beta1WebhookList =
-  ReadonlyArray<GoogleCloudDialogflowCxV3beta1Webhook>;
+  Array<GoogleCloudDialogflowCxV3beta1Webhook>;
 export const GoogleCloudDialogflowCxV3beta1WebhookList = /*@__PURE__*/ S.Array(
   GoogleCloudDialogflowCxV3beta1Webhook,
 ) as any as S.Schema<GoogleCloudDialogflowCxV3beta1WebhookList>;
@@ -2022,7 +2042,7 @@ export const GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfig =
   }) as any as S.Schema<GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfig>;
 
 export type GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigList =
-  ReadonlyArray<GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfig>;
+  Array<GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfig>;
 export const GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfig,
@@ -2107,7 +2127,7 @@ export const GoogleCloudDialogflowCxV3beta1VersionVariantsVariant =
   }) as any as S.Schema<GoogleCloudDialogflowCxV3beta1VersionVariantsVariant>;
 
 export type GoogleCloudDialogflowCxV3beta1VersionVariantsVariantList =
-  ReadonlyArray<GoogleCloudDialogflowCxV3beta1VersionVariantsVariant>;
+  Array<GoogleCloudDialogflowCxV3beta1VersionVariantsVariant>;
 export const GoogleCloudDialogflowCxV3beta1VersionVariantsVariantList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDialogflowCxV3beta1VersionVariantsVariant,
@@ -2176,7 +2196,7 @@ export const GoogleCloudDialogflowCxV3beta1VariantsHistory =
   }) as any as S.Schema<GoogleCloudDialogflowCxV3beta1VariantsHistory>;
 
 export type GoogleCloudDialogflowCxV3beta1VariantsHistoryList =
-  ReadonlyArray<GoogleCloudDialogflowCxV3beta1VariantsHistory>;
+  Array<GoogleCloudDialogflowCxV3beta1VariantsHistory>;
 export const GoogleCloudDialogflowCxV3beta1VariantsHistoryList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDialogflowCxV3beta1VariantsHistory,
@@ -2220,8 +2240,12 @@ export const GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceInterval =
   }) as any as S.Schema<GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceInterval>;
 
 export interface GoogleCloudDialogflowCxV3beta1ExperimentResultMetric {
-  countType?: GoogleCloudDialogflowCxV3beta1ExperimentResultMetricCountTypeEnum;
-  type?: GoogleCloudDialogflowCxV3beta1ExperimentResultMetricTypeEnum;
+  countType?:
+    | GoogleCloudDialogflowCxV3beta1ExperimentResultMetricCountTypeEnum
+    | (string & {});
+  type?:
+    | GoogleCloudDialogflowCxV3beta1ExperimentResultMetricTypeEnum
+    | (string & {});
   ratio?: number;
   confidenceInterval?: GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceInterval;
   count?: number;
@@ -2246,7 +2270,7 @@ export const GoogleCloudDialogflowCxV3beta1ExperimentResultMetric =
   }) as any as S.Schema<GoogleCloudDialogflowCxV3beta1ExperimentResultMetric>;
 
 export type GoogleCloudDialogflowCxV3beta1ExperimentResultMetricList =
-  ReadonlyArray<GoogleCloudDialogflowCxV3beta1ExperimentResultMetric>;
+  Array<GoogleCloudDialogflowCxV3beta1ExperimentResultMetric>;
 export const GoogleCloudDialogflowCxV3beta1ExperimentResultMetricList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDialogflowCxV3beta1ExperimentResultMetric,
@@ -2271,7 +2295,7 @@ export const GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetrics =
   }) as any as S.Schema<GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetrics>;
 
 export type GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetricsList =
-  ReadonlyArray<GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetrics>;
+  Array<GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetrics>;
 export const GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetricsList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetrics,
@@ -2310,7 +2334,7 @@ export const GoogleCloudDialogflowCxV3beta1RolloutConfigRolloutStep =
   }) as any as S.Schema<GoogleCloudDialogflowCxV3beta1RolloutConfigRolloutStep>;
 
 export type GoogleCloudDialogflowCxV3beta1RolloutConfigRolloutStepList =
-  ReadonlyArray<GoogleCloudDialogflowCxV3beta1RolloutConfigRolloutStep>;
+  Array<GoogleCloudDialogflowCxV3beta1RolloutConfigRolloutStep>;
 export const GoogleCloudDialogflowCxV3beta1RolloutConfigRolloutStepList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDialogflowCxV3beta1RolloutConfigRolloutStep,
@@ -2335,7 +2359,7 @@ export const GoogleCloudDialogflowCxV3beta1RolloutConfig =
   }) as any as S.Schema<GoogleCloudDialogflowCxV3beta1RolloutConfig>;
 
 export interface GoogleCloudDialogflowCxV3beta1Experiment {
-  state?: GoogleCloudDialogflowCxV3beta1ExperimentStateEnum;
+  state?: GoogleCloudDialogflowCxV3beta1ExperimentStateEnum | (string & {});
   description?: string;
   definition?: GoogleCloudDialogflowCxV3beta1ExperimentDefinition;
   displayName?: string;
@@ -2409,7 +2433,9 @@ export const GoogleCloudDialogflowCxV3beta1SessionEntityTypeEntityOverrideModeEn
   /*@__PURE__*/ S.String;
 
 export interface GoogleCloudDialogflowCxV3beta1SessionEntityType {
-  entityOverrideMode?: GoogleCloudDialogflowCxV3beta1SessionEntityTypeEntityOverrideModeEnum;
+  entityOverrideMode?:
+    | GoogleCloudDialogflowCxV3beta1SessionEntityTypeEntityOverrideModeEnum
+    | (string & {});
   name?: string;
   entities?: GoogleCloudDialogflowCxV3beta1EntityTypeEntityList;
 }
@@ -2536,7 +2562,7 @@ export interface GoogleCloudDialogflowCxV3beta1Version {
   createTime?: string;
   nluSettings?: GoogleCloudDialogflowCxV3beta1NluSettings;
   name?: string;
-  state?: GoogleCloudDialogflowCxV3beta1VersionStateEnum;
+  state?: GoogleCloudDialogflowCxV3beta1VersionStateEnum | (string & {});
 }
 export const GoogleCloudDialogflowCxV3beta1Version = /*@__PURE__*/ S.suspend(
   () =>
@@ -2590,7 +2616,7 @@ export const GoogleCloudDialogflowCxV3beta1GeneratorPlaceholder =
   }) as any as S.Schema<GoogleCloudDialogflowCxV3beta1GeneratorPlaceholder>;
 
 export type GoogleCloudDialogflowCxV3beta1GeneratorPlaceholderList =
-  ReadonlyArray<GoogleCloudDialogflowCxV3beta1GeneratorPlaceholder>;
+  Array<GoogleCloudDialogflowCxV3beta1GeneratorPlaceholder>;
 export const GoogleCloudDialogflowCxV3beta1GeneratorPlaceholderList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDialogflowCxV3beta1GeneratorPlaceholder,
@@ -2644,8 +2670,12 @@ export const GoogleCloudDialogflowCxV3beta1LlmModelSettingsParametersInputTokenL
 
 export interface GoogleCloudDialogflowCxV3beta1LlmModelSettingsParameters {
   temperature?: number;
-  outputTokenLimit?: GoogleCloudDialogflowCxV3beta1LlmModelSettingsParametersOutputTokenLimitEnum;
-  inputTokenLimit?: GoogleCloudDialogflowCxV3beta1LlmModelSettingsParametersInputTokenLimitEnum;
+  outputTokenLimit?:
+    | GoogleCloudDialogflowCxV3beta1LlmModelSettingsParametersOutputTokenLimitEnum
+    | (string & {});
+  inputTokenLimit?:
+    | GoogleCloudDialogflowCxV3beta1LlmModelSettingsParametersInputTokenLimitEnum
+    | (string & {});
 }
 export const GoogleCloudDialogflowCxV3beta1LlmModelSettingsParameters =
   /*@__PURE__*/ S.suspend(() =>
@@ -2752,7 +2782,7 @@ export const GoogleCloudDialogflowCxV3beta1IntentParameter =
   }) as any as S.Schema<GoogleCloudDialogflowCxV3beta1IntentParameter>;
 
 export type GoogleCloudDialogflowCxV3beta1IntentParameterList =
-  ReadonlyArray<GoogleCloudDialogflowCxV3beta1IntentParameter>;
+  Array<GoogleCloudDialogflowCxV3beta1IntentParameter>;
 export const GoogleCloudDialogflowCxV3beta1IntentParameterList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDialogflowCxV3beta1IntentParameter,
@@ -2773,7 +2803,7 @@ export const GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePart =
   }) as any as S.Schema<GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePart>;
 
 export type GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePartList =
-  ReadonlyArray<GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePart>;
+  Array<GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePart>;
 export const GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePartList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePart,
@@ -2798,7 +2828,7 @@ export const GoogleCloudDialogflowCxV3beta1IntentTrainingPhrase =
   }) as any as S.Schema<GoogleCloudDialogflowCxV3beta1IntentTrainingPhrase>;
 
 export type GoogleCloudDialogflowCxV3beta1IntentTrainingPhraseList =
-  ReadonlyArray<GoogleCloudDialogflowCxV3beta1IntentTrainingPhrase>;
+  Array<GoogleCloudDialogflowCxV3beta1IntentTrainingPhrase>;
 export const GoogleCloudDialogflowCxV3beta1IntentTrainingPhraseList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDialogflowCxV3beta1IntentTrainingPhrase,
@@ -2908,7 +2938,7 @@ export const GoogleCloudDialogflowCxV3beta1Handler = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudDialogflowCxV3beta1Handler>;
 
 export type GoogleCloudDialogflowCxV3beta1HandlerList =
-  ReadonlyArray<GoogleCloudDialogflowCxV3beta1Handler>;
+  Array<GoogleCloudDialogflowCxV3beta1Handler>;
 export const GoogleCloudDialogflowCxV3beta1HandlerList = /*@__PURE__*/ S.Array(
   GoogleCloudDialogflowCxV3beta1Handler,
 ) as any as S.Schema<GoogleCloudDialogflowCxV3beta1HandlerList>;
@@ -2949,7 +2979,7 @@ export const GoogleCloudDialogflowCxV3beta1PlaybookStep =
   }) as any as S.Schema<GoogleCloudDialogflowCxV3beta1PlaybookStep>;
 
 export type GoogleCloudDialogflowCxV3beta1PlaybookStepList =
-  ReadonlyArray<GoogleCloudDialogflowCxV3beta1PlaybookStep>;
+  Array<GoogleCloudDialogflowCxV3beta1PlaybookStep>;
 export const GoogleCloudDialogflowCxV3beta1PlaybookStepList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDialogflowCxV3beta1PlaybookStep,
@@ -2980,7 +3010,9 @@ export interface GoogleCloudDialogflowCxV3beta1Playbook {
   inlineActions?: StringList;
   tokenCount?: string;
   goal?: string;
-  playbookType?: GoogleCloudDialogflowCxV3beta1PlaybookPlaybookTypeEnum;
+  playbookType?:
+    | GoogleCloudDialogflowCxV3beta1PlaybookPlaybookTypeEnum
+    | (string & {});
   referencedFlows?: StringList;
   displayName?: string;
   outputParameterDefinitions?: GoogleCloudDialogflowCxV3beta1ParameterDefinitionList;
@@ -3061,7 +3093,7 @@ export const GoogleCloudDialogflowCxV3beta1PlaybookOutputStateEnum =
 
 export interface GoogleCloudDialogflowCxV3beta1PlaybookOutput {
   executionSummary?: string;
-  state?: GoogleCloudDialogflowCxV3beta1PlaybookOutputStateEnum;
+  state?: GoogleCloudDialogflowCxV3beta1PlaybookOutputStateEnum | (string & {});
   actionParameters?: DocumentMap;
 }
 export const GoogleCloudDialogflowCxV3beta1PlaybookOutput =
@@ -3134,8 +3166,12 @@ export const GoogleCloudDialogflowCxV3beta1DataStoreConnectionSignalsGroundingSi
   /*@__PURE__*/ S.String;
 
 export interface GoogleCloudDialogflowCxV3beta1DataStoreConnectionSignalsGroundingSignals {
-  decision?: GoogleCloudDialogflowCxV3beta1DataStoreConnectionSignalsGroundingSignalsDecisionEnum;
-  score?: GoogleCloudDialogflowCxV3beta1DataStoreConnectionSignalsGroundingSignalsScoreEnum;
+  decision?:
+    | GoogleCloudDialogflowCxV3beta1DataStoreConnectionSignalsGroundingSignalsDecisionEnum
+    | (string & {});
+  score?:
+    | GoogleCloudDialogflowCxV3beta1DataStoreConnectionSignalsGroundingSignalsScoreEnum
+    | (string & {});
 }
 export const GoogleCloudDialogflowCxV3beta1DataStoreConnectionSignalsGroundingSignals =
   /*@__PURE__*/ S.suspend(() =>
@@ -3185,8 +3221,12 @@ export const GoogleCloudDialogflowCxV3beta1DataStoreConnectionSignalsSafetySigna
   /*@__PURE__*/ S.String;
 
 export interface GoogleCloudDialogflowCxV3beta1DataStoreConnectionSignalsSafetySignals {
-  decision?: GoogleCloudDialogflowCxV3beta1DataStoreConnectionSignalsSafetySignalsDecisionEnum;
-  bannedPhraseMatch?: GoogleCloudDialogflowCxV3beta1DataStoreConnectionSignalsSafetySignalsBannedPhraseMatchEnum;
+  decision?:
+    | GoogleCloudDialogflowCxV3beta1DataStoreConnectionSignalsSafetySignalsDecisionEnum
+    | (string & {});
+  bannedPhraseMatch?:
+    | GoogleCloudDialogflowCxV3beta1DataStoreConnectionSignalsSafetySignalsBannedPhraseMatchEnum
+    | (string & {});
   matchedBannedPhrase?: string;
 }
 export const GoogleCloudDialogflowCxV3beta1DataStoreConnectionSignalsSafetySignals =
@@ -3242,20 +3282,20 @@ export const GoogleCloudDialogflowCxV3beta1DataStoreConnectionSignalsCitedSnippe
   }) as any as S.Schema<GoogleCloudDialogflowCxV3beta1DataStoreConnectionSignalsCitedSnippet>;
 
 export type GoogleCloudDialogflowCxV3beta1DataStoreConnectionSignalsCitedSnippetList =
-  ReadonlyArray<GoogleCloudDialogflowCxV3beta1DataStoreConnectionSignalsCitedSnippet>;
+  Array<GoogleCloudDialogflowCxV3beta1DataStoreConnectionSignalsCitedSnippet>;
 export const GoogleCloudDialogflowCxV3beta1DataStoreConnectionSignalsCitedSnippetList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDialogflowCxV3beta1DataStoreConnectionSignalsCitedSnippet,
   ) as any as S.Schema<GoogleCloudDialogflowCxV3beta1DataStoreConnectionSignalsCitedSnippetList>;
 
 export type GoogleCloudDialogflowCxV3beta1DataStoreConnectionSignalsSearchSnippetList =
-  ReadonlyArray<GoogleCloudDialogflowCxV3beta1DataStoreConnectionSignalsSearchSnippet>;
+  Array<GoogleCloudDialogflowCxV3beta1DataStoreConnectionSignalsSearchSnippet>;
 export const GoogleCloudDialogflowCxV3beta1DataStoreConnectionSignalsSearchSnippetList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDialogflowCxV3beta1DataStoreConnectionSignalsSearchSnippet,
   ) as any as S.Schema<GoogleCloudDialogflowCxV3beta1DataStoreConnectionSignalsSearchSnippetList>;
 
-export type IntegerList = ReadonlyArray<number>;
+export type IntegerList = Array<number>;
 export const IntegerList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<IntegerList>;
@@ -3276,7 +3316,7 @@ export const GoogleCloudDialogflowCxV3beta1DataStoreConnectionSignalsAnswerPart 
   }) as any as S.Schema<GoogleCloudDialogflowCxV3beta1DataStoreConnectionSignalsAnswerPart>;
 
 export type GoogleCloudDialogflowCxV3beta1DataStoreConnectionSignalsAnswerPartList =
-  ReadonlyArray<GoogleCloudDialogflowCxV3beta1DataStoreConnectionSignalsAnswerPart>;
+  Array<GoogleCloudDialogflowCxV3beta1DataStoreConnectionSignalsAnswerPart>;
 export const GoogleCloudDialogflowCxV3beta1DataStoreConnectionSignalsAnswerPartList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDialogflowCxV3beta1DataStoreConnectionSignalsAnswerPart,
@@ -3457,7 +3497,9 @@ export interface GoogleCloudDialogflowCxV3beta1LlmCallRetrievedExample {
   exampleId?: string;
   exampleDisplayName?: string;
   matchedRetrievalLabel?: string;
-  retrievalStrategy?: GoogleCloudDialogflowCxV3beta1LlmCallRetrievedExampleRetrievalStrategyEnum;
+  retrievalStrategy?:
+    | GoogleCloudDialogflowCxV3beta1LlmCallRetrievedExampleRetrievalStrategyEnum
+    | (string & {});
 }
 export const GoogleCloudDialogflowCxV3beta1LlmCallRetrievedExample =
   /*@__PURE__*/ S.suspend(() =>
@@ -3474,7 +3516,7 @@ export const GoogleCloudDialogflowCxV3beta1LlmCallRetrievedExample =
   }) as any as S.Schema<GoogleCloudDialogflowCxV3beta1LlmCallRetrievedExample>;
 
 export type GoogleCloudDialogflowCxV3beta1LlmCallRetrievedExampleList =
-  ReadonlyArray<GoogleCloudDialogflowCxV3beta1LlmCallRetrievedExample>;
+  Array<GoogleCloudDialogflowCxV3beta1LlmCallRetrievedExample>;
 export const GoogleCloudDialogflowCxV3beta1LlmCallRetrievedExampleList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDialogflowCxV3beta1LlmCallRetrievedExample,
@@ -3542,7 +3584,7 @@ export const GoogleCloudDialogflowCxV3beta1NamedMetric =
   }) as any as S.Schema<GoogleCloudDialogflowCxV3beta1NamedMetric>;
 
 export type GoogleCloudDialogflowCxV3beta1NamedMetricList =
-  ReadonlyArray<GoogleCloudDialogflowCxV3beta1NamedMetric>;
+  Array<GoogleCloudDialogflowCxV3beta1NamedMetric>;
 export const GoogleCloudDialogflowCxV3beta1NamedMetricList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDialogflowCxV3beta1NamedMetric,
@@ -3568,7 +3610,7 @@ export const GoogleCloudDialogflowCxV3beta1Span = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudDialogflowCxV3beta1Span>;
 
 export type GoogleCloudDialogflowCxV3beta1SpanList =
-  ReadonlyArray<GoogleCloudDialogflowCxV3beta1Span>;
+  Array<GoogleCloudDialogflowCxV3beta1Span>;
 export const GoogleCloudDialogflowCxV3beta1SpanList = /*@__PURE__*/ S.Array(
   GoogleCloudDialogflowCxV3beta1Span,
 ) as any as S.Schema<GoogleCloudDialogflowCxV3beta1SpanList>;
@@ -3637,7 +3679,7 @@ export const GoogleCloudDialogflowCxV3beta1ActionIntentMatchMatchedIntent =
   }) as any as S.Schema<GoogleCloudDialogflowCxV3beta1ActionIntentMatchMatchedIntent>;
 
 export type GoogleCloudDialogflowCxV3beta1ActionIntentMatchMatchedIntentList =
-  ReadonlyArray<GoogleCloudDialogflowCxV3beta1ActionIntentMatchMatchedIntent>;
+  Array<GoogleCloudDialogflowCxV3beta1ActionIntentMatchMatchedIntent>;
 export const GoogleCloudDialogflowCxV3beta1ActionIntentMatchMatchedIntentList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDialogflowCxV3beta1ActionIntentMatchMatchedIntent,
@@ -3716,7 +3758,9 @@ export const GoogleCloudDialogflowCxV3beta1PlaybookInvocationPlaybookStateEnum =
 export interface GoogleCloudDialogflowCxV3beta1PlaybookInvocation {
   playbookInput?: GoogleCloudDialogflowCxV3beta1PlaybookInput;
   playbook?: string;
-  playbookState?: GoogleCloudDialogflowCxV3beta1PlaybookInvocationPlaybookStateEnum;
+  playbookState?:
+    | GoogleCloudDialogflowCxV3beta1PlaybookInvocationPlaybookStateEnum
+    | (string & {});
   displayName?: string;
   playbookOutput?: GoogleCloudDialogflowCxV3beta1PlaybookOutput;
 }
@@ -3749,7 +3793,9 @@ export interface GoogleCloudDialogflowCxV3beta1FlowInvocation {
   flow?: string;
   inputActionParameters?: DocumentMap;
   outputActionParameters?: DocumentMap;
-  flowState?: GoogleCloudDialogflowCxV3beta1FlowInvocationFlowStateEnum;
+  flowState?:
+    | GoogleCloudDialogflowCxV3beta1FlowInvocationFlowStateEnum
+    | (string & {});
   displayName?: string;
 }
 export const GoogleCloudDialogflowCxV3beta1FlowInvocation =
@@ -3820,7 +3866,7 @@ export const GoogleCloudDialogflowCxV3beta1Action = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudDialogflowCxV3beta1Action>;
 
 export type GoogleCloudDialogflowCxV3beta1ActionList =
-  ReadonlyArray<GoogleCloudDialogflowCxV3beta1Action>;
+  Array<GoogleCloudDialogflowCxV3beta1Action>;
 export const GoogleCloudDialogflowCxV3beta1ActionList = /*@__PURE__*/ S.Array(
   GoogleCloudDialogflowCxV3beta1Action,
 ) as any as S.Schema<GoogleCloudDialogflowCxV3beta1ActionList>;
@@ -3828,7 +3874,9 @@ export const GoogleCloudDialogflowCxV3beta1ActionList = /*@__PURE__*/ S.Array(
 export interface GoogleCloudDialogflowCxV3beta1Example {
   playbookOutput?: GoogleCloudDialogflowCxV3beta1PlaybookOutput;
   tokenCount?: string;
-  conversationState?: GoogleCloudDialogflowCxV3beta1ExampleConversationStateEnum;
+  conversationState?:
+    | GoogleCloudDialogflowCxV3beta1ExampleConversationStateEnum
+    | (string & {});
   name?: string;
   actions?: GoogleCloudDialogflowCxV3beta1ActionList;
   updateTime?: string;
@@ -3883,7 +3931,7 @@ export const CreateProjectsLocationsAgentsPlaybooksExamplesRequest =
   }) as any as S.Schema<CreateProjectsLocationsAgentsPlaybooksExamplesRequest>;
 
 export type GoogleCloudDialogflowCxV3beta1ExampleList =
-  ReadonlyArray<GoogleCloudDialogflowCxV3beta1Example>;
+  Array<GoogleCloudDialogflowCxV3beta1Example>;
 export const GoogleCloudDialogflowCxV3beta1ExampleList = /*@__PURE__*/ S.Array(
   GoogleCloudDialogflowCxV3beta1Example,
 ) as any as S.Schema<GoogleCloudDialogflowCxV3beta1ExampleList>;
@@ -4079,8 +4127,12 @@ export const GoogleCloudDialogflowCxV3beta1BargeInConfig =
 export interface GoogleCloudDialogflowCxV3beta1InputAudioConfig {
   enableWordInfo?: boolean;
   sampleRateHertz?: number;
-  audioEncoding?: GoogleCloudDialogflowCxV3beta1InputAudioConfigAudioEncodingEnum;
-  modelVariant?: GoogleCloudDialogflowCxV3beta1InputAudioConfigModelVariantEnum;
+  audioEncoding?:
+    | GoogleCloudDialogflowCxV3beta1InputAudioConfigAudioEncodingEnum
+    | (string & {});
+  modelVariant?:
+    | GoogleCloudDialogflowCxV3beta1InputAudioConfigModelVariantEnum
+    | (string & {});
   bargeInConfig?: GoogleCloudDialogflowCxV3beta1BargeInConfig;
   singleUtterance?: boolean;
   model?: string;
@@ -4175,7 +4227,9 @@ export const GoogleCloudDialogflowCxV3beta1TestRunDifferenceTypeEnum =
   /*@__PURE__*/ S.String;
 
 export interface GoogleCloudDialogflowCxV3beta1TestRunDifference {
-  type?: GoogleCloudDialogflowCxV3beta1TestRunDifferenceTypeEnum;
+  type?:
+    | GoogleCloudDialogflowCxV3beta1TestRunDifferenceTypeEnum
+    | (string & {});
   description?: string;
 }
 export const GoogleCloudDialogflowCxV3beta1TestRunDifference =
@@ -4189,14 +4243,14 @@ export const GoogleCloudDialogflowCxV3beta1TestRunDifference =
   }) as any as S.Schema<GoogleCloudDialogflowCxV3beta1TestRunDifference>;
 
 export type GoogleCloudDialogflowCxV3beta1TestRunDifferenceList =
-  ReadonlyArray<GoogleCloudDialogflowCxV3beta1TestRunDifference>;
+  Array<GoogleCloudDialogflowCxV3beta1TestRunDifference>;
 export const GoogleCloudDialogflowCxV3beta1TestRunDifferenceList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDialogflowCxV3beta1TestRunDifference,
   ) as any as S.Schema<GoogleCloudDialogflowCxV3beta1TestRunDifferenceList>;
 
 export type GoogleCloudDialogflowCxV3beta1ResponseMessageTextList =
-  ReadonlyArray<GoogleCloudDialogflowCxV3beta1ResponseMessageText>;
+  Array<GoogleCloudDialogflowCxV3beta1ResponseMessageText>;
 export const GoogleCloudDialogflowCxV3beta1ResponseMessageTextList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDialogflowCxV3beta1ResponseMessageText,
@@ -4250,7 +4304,7 @@ export const GoogleCloudDialogflowCxV3beta1ConversationTurn =
   }) as any as S.Schema<GoogleCloudDialogflowCxV3beta1ConversationTurn>;
 
 export type GoogleCloudDialogflowCxV3beta1ConversationTurnList =
-  ReadonlyArray<GoogleCloudDialogflowCxV3beta1ConversationTurn>;
+  Array<GoogleCloudDialogflowCxV3beta1ConversationTurn>;
 export const GoogleCloudDialogflowCxV3beta1ConversationTurnList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDialogflowCxV3beta1ConversationTurn,
@@ -4260,7 +4314,9 @@ export interface GoogleCloudDialogflowCxV3beta1TestCaseResult {
   environment?: string;
   testTime?: string;
   name?: string;
-  testResult?: GoogleCloudDialogflowCxV3beta1TestCaseResultTestResultEnum;
+  testResult?:
+    | GoogleCloudDialogflowCxV3beta1TestCaseResultTestResultEnum
+    | (string & {});
   conversationTurns?: GoogleCloudDialogflowCxV3beta1ConversationTurnList;
 }
 export const GoogleCloudDialogflowCxV3beta1TestCaseResult =
@@ -4353,7 +4409,9 @@ export const GoogleCloudDialogflowCxV3beta1ToolAuthenticationServiceAgentAuthCon
   /*@__PURE__*/ S.String;
 
 export interface GoogleCloudDialogflowCxV3beta1ToolAuthenticationServiceAgentAuthConfig {
-  serviceAgentAuth?: GoogleCloudDialogflowCxV3beta1ToolAuthenticationServiceAgentAuthConfigServiceAgentAuthEnum;
+  serviceAgentAuth?:
+    | GoogleCloudDialogflowCxV3beta1ToolAuthenticationServiceAgentAuthConfigServiceAgentAuthEnum
+    | (string & {});
 }
 export const GoogleCloudDialogflowCxV3beta1ToolAuthenticationServiceAgentAuthConfig =
   /*@__PURE__*/ S.suspend(() =>
@@ -4387,7 +4445,9 @@ export const GoogleCloudDialogflowCxV3beta1ToolAuthenticationApiKeyConfigRequest
 
 export interface GoogleCloudDialogflowCxV3beta1ToolAuthenticationApiKeyConfig {
   keyName?: string;
-  requestLocation?: GoogleCloudDialogflowCxV3beta1ToolAuthenticationApiKeyConfigRequestLocationEnum;
+  requestLocation?:
+    | GoogleCloudDialogflowCxV3beta1ToolAuthenticationApiKeyConfigRequestLocationEnum
+    | (string & {});
   secretVersionForApiKey?: string;
   apiKey?: string;
 }
@@ -4411,7 +4471,9 @@ export const GoogleCloudDialogflowCxV3beta1ToolAuthenticationOAuthConfigOauthGra
   /*@__PURE__*/ S.String;
 
 export interface GoogleCloudDialogflowCxV3beta1ToolAuthenticationOAuthConfig {
-  oauthGrantType?: GoogleCloudDialogflowCxV3beta1ToolAuthenticationOAuthConfigOauthGrantTypeEnum;
+  oauthGrantType?:
+    | GoogleCloudDialogflowCxV3beta1ToolAuthenticationOAuthConfigOauthGrantTypeEnum
+    | (string & {});
   clientId?: string;
   clientSecret?: string;
   secretVersionForClientSecret?: string;
@@ -4506,7 +4568,7 @@ export const GoogleCloudDialogflowCxV3beta1ToolTLSConfigCACert =
   }) as any as S.Schema<GoogleCloudDialogflowCxV3beta1ToolTLSConfigCACert>;
 
 export type GoogleCloudDialogflowCxV3beta1ToolTLSConfigCACertList =
-  ReadonlyArray<GoogleCloudDialogflowCxV3beta1ToolTLSConfigCACert>;
+  Array<GoogleCloudDialogflowCxV3beta1ToolTLSConfigCACert>;
 export const GoogleCloudDialogflowCxV3beta1ToolTLSConfigCACertList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDialogflowCxV3beta1ToolTLSConfigCACert,
@@ -4617,7 +4679,9 @@ export const GoogleCloudDialogflowCxV3beta1ToolConnectorToolActionEntityOperatio
 
 export interface GoogleCloudDialogflowCxV3beta1ToolConnectorToolActionEntityOperation {
   entityId?: string;
-  operation?: GoogleCloudDialogflowCxV3beta1ToolConnectorToolActionEntityOperationOperationEnum;
+  operation?:
+    | GoogleCloudDialogflowCxV3beta1ToolConnectorToolActionEntityOperationOperationEnum
+    | (string & {});
 }
 export const GoogleCloudDialogflowCxV3beta1ToolConnectorToolActionEntityOperation =
   /*@__PURE__*/ S.suspend(() =>
@@ -4653,7 +4717,7 @@ export const GoogleCloudDialogflowCxV3beta1ToolConnectorToolAction =
   }) as any as S.Schema<GoogleCloudDialogflowCxV3beta1ToolConnectorToolAction>;
 
 export type GoogleCloudDialogflowCxV3beta1ToolConnectorToolActionList =
-  ReadonlyArray<GoogleCloudDialogflowCxV3beta1ToolConnectorToolAction>;
+  Array<GoogleCloudDialogflowCxV3beta1ToolConnectorToolAction>;
 export const GoogleCloudDialogflowCxV3beta1ToolConnectorToolActionList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDialogflowCxV3beta1ToolConnectorToolAction,
@@ -4733,7 +4797,7 @@ export interface GoogleCloudDialogflowCxV3beta1Tool {
   description?: string;
   dataStoreSpec?: GoogleCloudDialogflowCxV3beta1ToolDataStoreTool;
   extensionSpec?: GoogleCloudDialogflowCxV3beta1ToolExtensionTool;
-  toolType?: GoogleCloudDialogflowCxV3beta1ToolToolTypeEnum;
+  toolType?: GoogleCloudDialogflowCxV3beta1ToolToolTypeEnum | (string & {});
   functionSpec?: GoogleCloudDialogflowCxV3beta1ToolFunctionTool;
   connectorSpec?: GoogleCloudDialogflowCxV3beta1ToolConnectorTool;
   name?: string;
@@ -4878,7 +4942,10 @@ export const GoogleCloudDialogflowCxV3beta1SecuritySettingsPurgeDataTypesItemEnu
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudDialogflowCxV3beta1SecuritySettingsPurgeDataTypesItemEnumList =
-  ReadonlyArray<GoogleCloudDialogflowCxV3beta1SecuritySettingsPurgeDataTypesItemEnum>;
+  Array<
+    | GoogleCloudDialogflowCxV3beta1SecuritySettingsPurgeDataTypesItemEnum
+    | (string & {})
+  >;
 export const GoogleCloudDialogflowCxV3beta1SecuritySettingsPurgeDataTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDialogflowCxV3beta1SecuritySettingsPurgeDataTypesItemEnum,
@@ -4917,7 +4984,9 @@ export interface GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettin
   gcsBucket?: string;
   audioExportPattern?: string;
   enableAudioRedaction?: boolean;
-  audioFormat?: GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormatEnum;
+  audioFormat?:
+    | GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormatEnum
+    | (string & {});
 }
 export const GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettings =
   /*@__PURE__*/ S.suspend(() =>
@@ -4937,13 +5006,19 @@ export const GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettings =
 
 export interface GoogleCloudDialogflowCxV3beta1SecuritySettings {
   displayName?: string;
-  redactionScope?: GoogleCloudDialogflowCxV3beta1SecuritySettingsRedactionScopeEnum;
+  redactionScope?:
+    | GoogleCloudDialogflowCxV3beta1SecuritySettingsRedactionScopeEnum
+    | (string & {});
   deidentifyTemplate?: string;
   purgeDataTypes?: GoogleCloudDialogflowCxV3beta1SecuritySettingsPurgeDataTypesItemEnumList;
-  redactionStrategy?: GoogleCloudDialogflowCxV3beta1SecuritySettingsRedactionStrategyEnum;
+  redactionStrategy?:
+    | GoogleCloudDialogflowCxV3beta1SecuritySettingsRedactionStrategyEnum
+    | (string & {});
   insightsExportSettings?: GoogleCloudDialogflowCxV3beta1SecuritySettingsInsightsExportSettings;
   retentionWindowDays?: number;
-  retentionStrategy?: GoogleCloudDialogflowCxV3beta1SecuritySettingsRetentionStrategyEnum;
+  retentionStrategy?:
+    | GoogleCloudDialogflowCxV3beta1SecuritySettingsRetentionStrategyEnum
+    | (string & {});
   name?: string;
   inspectTemplate?: string;
   audioExportSettings?: GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettings;
@@ -5436,7 +5511,7 @@ export const DeployFlowProjectsLocationsAgentsEnvironmentsRequest =
   }) as any as S.Schema<DeployFlowProjectsLocationsAgentsEnvironmentsRequest>;
 
 export type GoogleCloudDialogflowCxV3beta1SessionEntityTypeList =
-  ReadonlyArray<GoogleCloudDialogflowCxV3beta1SessionEntityType>;
+  Array<GoogleCloudDialogflowCxV3beta1SessionEntityType>;
 export const GoogleCloudDialogflowCxV3beta1SessionEntityTypeList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDialogflowCxV3beta1SessionEntityType,
@@ -5481,7 +5556,7 @@ export const GoogleCloudDialogflowCxV3beta1BoostSpecConditionBoostSpecBoostContr
   }) as any as S.Schema<GoogleCloudDialogflowCxV3beta1BoostSpecConditionBoostSpecBoostControlSpecControlPoint>;
 
 export type GoogleCloudDialogflowCxV3beta1BoostSpecConditionBoostSpecBoostControlSpecControlPointList =
-  ReadonlyArray<GoogleCloudDialogflowCxV3beta1BoostSpecConditionBoostSpecBoostControlSpecControlPoint>;
+  Array<GoogleCloudDialogflowCxV3beta1BoostSpecConditionBoostSpecBoostControlSpecControlPoint>;
 export const GoogleCloudDialogflowCxV3beta1BoostSpecConditionBoostSpecBoostControlSpecControlPointList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDialogflowCxV3beta1BoostSpecConditionBoostSpecBoostControlSpecControlPoint,
@@ -5489,8 +5564,12 @@ export const GoogleCloudDialogflowCxV3beta1BoostSpecConditionBoostSpecBoostContr
 
 export interface GoogleCloudDialogflowCxV3beta1BoostSpecConditionBoostSpecBoostControlSpec {
   fieldName?: string;
-  attributeType?: GoogleCloudDialogflowCxV3beta1BoostSpecConditionBoostSpecBoostControlSpecAttributeTypeEnum;
-  interpolationType?: GoogleCloudDialogflowCxV3beta1BoostSpecConditionBoostSpecBoostControlSpecInterpolationTypeEnum;
+  attributeType?:
+    | GoogleCloudDialogflowCxV3beta1BoostSpecConditionBoostSpecBoostControlSpecAttributeTypeEnum
+    | (string & {});
+  interpolationType?:
+    | GoogleCloudDialogflowCxV3beta1BoostSpecConditionBoostSpecBoostControlSpecInterpolationTypeEnum
+    | (string & {});
   controlPoints?: GoogleCloudDialogflowCxV3beta1BoostSpecConditionBoostSpecBoostControlSpecControlPointList;
 }
 export const GoogleCloudDialogflowCxV3beta1BoostSpecConditionBoostSpecBoostControlSpec =
@@ -5531,7 +5610,7 @@ export const GoogleCloudDialogflowCxV3beta1BoostSpecConditionBoostSpec =
   }) as any as S.Schema<GoogleCloudDialogflowCxV3beta1BoostSpecConditionBoostSpec>;
 
 export type GoogleCloudDialogflowCxV3beta1BoostSpecConditionBoostSpecList =
-  ReadonlyArray<GoogleCloudDialogflowCxV3beta1BoostSpecConditionBoostSpec>;
+  Array<GoogleCloudDialogflowCxV3beta1BoostSpecConditionBoostSpec>;
 export const GoogleCloudDialogflowCxV3beta1BoostSpecConditionBoostSpecList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDialogflowCxV3beta1BoostSpecConditionBoostSpec,
@@ -5552,7 +5631,7 @@ export const GoogleCloudDialogflowCxV3beta1BoostSpec = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudDialogflowCxV3beta1BoostSpec>;
 
 export type GoogleCloudDialogflowCxV3beta1BoostSpecList =
-  ReadonlyArray<GoogleCloudDialogflowCxV3beta1BoostSpec>;
+  Array<GoogleCloudDialogflowCxV3beta1BoostSpec>;
 export const GoogleCloudDialogflowCxV3beta1BoostSpecList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDialogflowCxV3beta1BoostSpec,
@@ -5573,7 +5652,7 @@ export const GoogleCloudDialogflowCxV3beta1BoostSpecs = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudDialogflowCxV3beta1BoostSpecs>;
 
 export type GoogleCloudDialogflowCxV3beta1BoostSpecsList =
-  ReadonlyArray<GoogleCloudDialogflowCxV3beta1BoostSpecs>;
+  Array<GoogleCloudDialogflowCxV3beta1BoostSpecs>;
 export const GoogleCloudDialogflowCxV3beta1BoostSpecsList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDialogflowCxV3beta1BoostSpecs,
@@ -5594,7 +5673,7 @@ export const GoogleCloudDialogflowCxV3beta1FilterSpecs =
   }) as any as S.Schema<GoogleCloudDialogflowCxV3beta1FilterSpecs>;
 
 export type GoogleCloudDialogflowCxV3beta1FilterSpecsList =
-  ReadonlyArray<GoogleCloudDialogflowCxV3beta1FilterSpecs>;
+  Array<GoogleCloudDialogflowCxV3beta1FilterSpecs>;
 export const GoogleCloudDialogflowCxV3beta1FilterSpecsList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDialogflowCxV3beta1FilterSpecs,
@@ -5678,7 +5757,9 @@ export const GoogleCloudDialogflowCxV3beta1OutputAudioConfigAudioEncodingEnum =
 export interface GoogleCloudDialogflowCxV3beta1OutputAudioConfig {
   sampleRateHertz?: number;
   synthesizeSpeechConfig?: GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfig;
-  audioEncoding?: GoogleCloudDialogflowCxV3beta1OutputAudioConfigAudioEncodingEnum;
+  audioEncoding?:
+    | GoogleCloudDialogflowCxV3beta1OutputAudioConfigAudioEncodingEnum
+    | (string & {});
 }
 export const GoogleCloudDialogflowCxV3beta1OutputAudioConfig =
   /*@__PURE__*/ S.suspend(() =>
@@ -5707,7 +5788,9 @@ export interface GoogleCloudDialogflowCxV3beta1DetectIntentRequest {
   queryParams?: GoogleCloudDialogflowCxV3beta1QueryParameters;
   queryInput?: GoogleCloudDialogflowCxV3beta1QueryInput;
   outputAudioConfig?: GoogleCloudDialogflowCxV3beta1OutputAudioConfig;
-  responseView?: GoogleCloudDialogflowCxV3beta1DetectIntentRequestResponseViewEnum;
+  responseView?:
+    | GoogleCloudDialogflowCxV3beta1DetectIntentRequestResponseViewEnum
+    | (string & {});
   session?: string;
 }
 export const GoogleCloudDialogflowCxV3beta1DetectIntentRequest =
@@ -5843,7 +5926,7 @@ export const GoogleCloudDialogflowCxV3beta1TraceBlock = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudDialogflowCxV3beta1TraceBlock>;
 
 export type GoogleCloudDialogflowCxV3beta1TraceBlockList =
-  ReadonlyArray<GoogleCloudDialogflowCxV3beta1TraceBlock>;
+  Array<GoogleCloudDialogflowCxV3beta1TraceBlock>;
 export const GoogleCloudDialogflowCxV3beta1TraceBlockList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDialogflowCxV3beta1TraceBlock,
@@ -5864,7 +5947,7 @@ export const GoogleCloudDialogflowCxV3beta1MatchMatchTypeEnum =
 
 export interface GoogleCloudDialogflowCxV3beta1Match {
   parameters?: DocumentMap;
-  matchType?: GoogleCloudDialogflowCxV3beta1MatchMatchTypeEnum;
+  matchType?: GoogleCloudDialogflowCxV3beta1MatchMatchTypeEnum | (string & {});
   event?: string;
   confidence?: number;
   intent?: GoogleCloudDialogflowCxV3beta1Intent;
@@ -5911,7 +5994,7 @@ export const GoogleCloudDialogflowCxV3beta1SentimentAnalysisResult =
     identifier: "GoogleCloudDialogflowCxV3beta1SentimentAnalysisResult",
   }) as any as S.Schema<GoogleCloudDialogflowCxV3beta1SentimentAnalysisResult>;
 
-export type GoogleRpcStatusList = ReadonlyArray<GoogleRpcStatus>;
+export type GoogleRpcStatusList = Array<GoogleRpcStatus>;
 export const GoogleRpcStatusList = /*@__PURE__*/ S.Array(
   GoogleRpcStatus,
 ) as any as S.Schema<GoogleRpcStatusList>;
@@ -6562,8 +6645,12 @@ export const GoogleCloudDialogflowCxV3beta1SafetySettingsRaiSettingsCategoryFilt
   /*@__PURE__*/ S.String;
 
 export interface GoogleCloudDialogflowCxV3beta1SafetySettingsRaiSettingsCategoryFilter {
-  category?: GoogleCloudDialogflowCxV3beta1SafetySettingsRaiSettingsCategoryFilterCategoryEnum;
-  filterLevel?: GoogleCloudDialogflowCxV3beta1SafetySettingsRaiSettingsCategoryFilterFilterLevelEnum;
+  category?:
+    | GoogleCloudDialogflowCxV3beta1SafetySettingsRaiSettingsCategoryFilterCategoryEnum
+    | (string & {});
+  filterLevel?:
+    | GoogleCloudDialogflowCxV3beta1SafetySettingsRaiSettingsCategoryFilterFilterLevelEnum
+    | (string & {});
 }
 export const GoogleCloudDialogflowCxV3beta1SafetySettingsRaiSettingsCategoryFilter =
   /*@__PURE__*/ S.suspend(() =>
@@ -6581,7 +6668,7 @@ export const GoogleCloudDialogflowCxV3beta1SafetySettingsRaiSettingsCategoryFilt
   }) as any as S.Schema<GoogleCloudDialogflowCxV3beta1SafetySettingsRaiSettingsCategoryFilter>;
 
 export type GoogleCloudDialogflowCxV3beta1SafetySettingsRaiSettingsCategoryFilterList =
-  ReadonlyArray<GoogleCloudDialogflowCxV3beta1SafetySettingsRaiSettingsCategoryFilter>;
+  Array<GoogleCloudDialogflowCxV3beta1SafetySettingsRaiSettingsCategoryFilter>;
 export const GoogleCloudDialogflowCxV3beta1SafetySettingsRaiSettingsCategoryFilterList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDialogflowCxV3beta1SafetySettingsRaiSettingsCategoryFilter,
@@ -6634,7 +6721,7 @@ export const GoogleCloudDialogflowCxV3beta1SafetySettingsPhrase =
   }) as any as S.Schema<GoogleCloudDialogflowCxV3beta1SafetySettingsPhrase>;
 
 export type GoogleCloudDialogflowCxV3beta1SafetySettingsPhraseList =
-  ReadonlyArray<GoogleCloudDialogflowCxV3beta1SafetySettingsPhrase>;
+  Array<GoogleCloudDialogflowCxV3beta1SafetySettingsPhrase>;
 export const GoogleCloudDialogflowCxV3beta1SafetySettingsPhraseList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDialogflowCxV3beta1SafetySettingsPhrase,
@@ -6644,7 +6731,9 @@ export interface GoogleCloudDialogflowCxV3beta1SafetySettings {
   raiSettings?: GoogleCloudDialogflowCxV3beta1SafetySettingsRaiSettings;
   promptSecuritySettings?: GoogleCloudDialogflowCxV3beta1SafetySettingsPromptSecuritySettings;
   defaultRaiSettings?: GoogleCloudDialogflowCxV3beta1SafetySettingsRaiSettings;
-  defaultBannedPhraseMatchStrategy?: GoogleCloudDialogflowCxV3beta1SafetySettingsDefaultBannedPhraseMatchStrategyEnum;
+  defaultBannedPhraseMatchStrategy?:
+    | GoogleCloudDialogflowCxV3beta1SafetySettingsDefaultBannedPhraseMatchStrategyEnum
+    | (string & {});
   bannedPhrases?: GoogleCloudDialogflowCxV3beta1SafetySettingsPhraseList;
 }
 export const GoogleCloudDialogflowCxV3beta1SafetySettings =
@@ -6688,7 +6777,7 @@ export const GoogleCloudDialogflowCxV3beta1GenerativeSettingsFallbackSettingsPro
   }) as any as S.Schema<GoogleCloudDialogflowCxV3beta1GenerativeSettingsFallbackSettingsPromptTemplate>;
 
 export type GoogleCloudDialogflowCxV3beta1GenerativeSettingsFallbackSettingsPromptTemplateList =
-  ReadonlyArray<GoogleCloudDialogflowCxV3beta1GenerativeSettingsFallbackSettingsPromptTemplate>;
+  Array<GoogleCloudDialogflowCxV3beta1GenerativeSettingsFallbackSettingsPromptTemplate>;
 export const GoogleCloudDialogflowCxV3beta1GenerativeSettingsFallbackSettingsPromptTemplateList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDialogflowCxV3beta1GenerativeSettingsFallbackSettingsPromptTemplate,
@@ -6865,19 +6954,19 @@ export const GoogleCloudDialogflowCxV3beta1ConversationTypeEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudDialogflowCxV3beta1FlowList =
-  ReadonlyArray<GoogleCloudDialogflowCxV3beta1Flow>;
+  Array<GoogleCloudDialogflowCxV3beta1Flow>;
 export const GoogleCloudDialogflowCxV3beta1FlowList = /*@__PURE__*/ S.Array(
   GoogleCloudDialogflowCxV3beta1Flow,
 ) as any as S.Schema<GoogleCloudDialogflowCxV3beta1FlowList>;
 
 export type GoogleCloudDialogflowCxV3beta1IntentList =
-  ReadonlyArray<GoogleCloudDialogflowCxV3beta1Intent>;
+  Array<GoogleCloudDialogflowCxV3beta1Intent>;
 export const GoogleCloudDialogflowCxV3beta1IntentList = /*@__PURE__*/ S.Array(
   GoogleCloudDialogflowCxV3beta1Intent,
 ) as any as S.Schema<GoogleCloudDialogflowCxV3beta1IntentList>;
 
 export type GoogleCloudDialogflowCxV3beta1PageList =
-  ReadonlyArray<GoogleCloudDialogflowCxV3beta1Page>;
+  Array<GoogleCloudDialogflowCxV3beta1Page>;
 export const GoogleCloudDialogflowCxV3beta1PageList = /*@__PURE__*/ S.Array(
   GoogleCloudDialogflowCxV3beta1Page,
 ) as any as S.Schema<GoogleCloudDialogflowCxV3beta1PageList>;
@@ -6983,7 +7072,9 @@ export const GoogleCloudDialogflowCxV3beta1AnswerFeedbackRatingReason =
 
 export interface GoogleCloudDialogflowCxV3beta1AnswerFeedback {
   customRating?: string;
-  rating?: GoogleCloudDialogflowCxV3beta1AnswerFeedbackRatingEnum;
+  rating?:
+    | GoogleCloudDialogflowCxV3beta1AnswerFeedbackRatingEnum
+    | (string & {});
   ratingReason?: GoogleCloudDialogflowCxV3beta1AnswerFeedbackRatingReason;
 }
 export const GoogleCloudDialogflowCxV3beta1AnswerFeedback =
@@ -7017,14 +7108,14 @@ export const GoogleCloudDialogflowCxV3beta1ConversationInteractionStepMetrics =
   }) as any as S.Schema<GoogleCloudDialogflowCxV3beta1ConversationInteractionStepMetrics>;
 
 export type GoogleCloudDialogflowCxV3beta1ConversationInteractionStepMetricsList =
-  ReadonlyArray<GoogleCloudDialogflowCxV3beta1ConversationInteractionStepMetrics>;
+  Array<GoogleCloudDialogflowCxV3beta1ConversationInteractionStepMetrics>;
 export const GoogleCloudDialogflowCxV3beta1ConversationInteractionStepMetricsList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDialogflowCxV3beta1ConversationInteractionStepMetrics,
   ) as any as S.Schema<GoogleCloudDialogflowCxV3beta1ConversationInteractionStepMetricsList>;
 
 export type GoogleCloudDialogflowCxV3beta1DetectIntentResponseList =
-  ReadonlyArray<GoogleCloudDialogflowCxV3beta1DetectIntentResponse>;
+  Array<GoogleCloudDialogflowCxV3beta1DetectIntentResponse>;
 export const GoogleCloudDialogflowCxV3beta1DetectIntentResponseList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDialogflowCxV3beta1DetectIntentResponse,
@@ -7080,7 +7171,7 @@ export const GoogleCloudDialogflowCxV3beta1ConversationInteraction =
   }) as any as S.Schema<GoogleCloudDialogflowCxV3beta1ConversationInteraction>;
 
 export type GoogleCloudDialogflowCxV3beta1ConversationInteractionList =
-  ReadonlyArray<GoogleCloudDialogflowCxV3beta1ConversationInteraction>;
+  Array<GoogleCloudDialogflowCxV3beta1ConversationInteraction>;
 export const GoogleCloudDialogflowCxV3beta1ConversationInteractionList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDialogflowCxV3beta1ConversationInteraction,
@@ -7674,7 +7765,7 @@ export const GoogleCloudDialogflowCxV3beta1ResourceName =
   }) as any as S.Schema<GoogleCloudDialogflowCxV3beta1ResourceName>;
 
 export type GoogleCloudDialogflowCxV3beta1ResourceNameList =
-  ReadonlyArray<GoogleCloudDialogflowCxV3beta1ResourceName>;
+  Array<GoogleCloudDialogflowCxV3beta1ResourceName>;
 export const GoogleCloudDialogflowCxV3beta1ResourceNameList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDialogflowCxV3beta1ResourceName,
@@ -7705,7 +7796,7 @@ export const GoogleCloudDialogflowCxV3beta1ValidationMessage =
   }) as any as S.Schema<GoogleCloudDialogflowCxV3beta1ValidationMessage>;
 
 export type GoogleCloudDialogflowCxV3beta1ValidationMessageList =
-  ReadonlyArray<GoogleCloudDialogflowCxV3beta1ValidationMessage>;
+  Array<GoogleCloudDialogflowCxV3beta1ValidationMessage>;
 export const GoogleCloudDialogflowCxV3beta1ValidationMessageList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDialogflowCxV3beta1ValidationMessage,
@@ -7730,7 +7821,7 @@ export const GoogleCloudDialogflowCxV3beta1FlowValidationResult =
   }) as any as S.Schema<GoogleCloudDialogflowCxV3beta1FlowValidationResult>;
 
 export type GoogleCloudDialogflowCxV3beta1FlowValidationResultList =
-  ReadonlyArray<GoogleCloudDialogflowCxV3beta1FlowValidationResult>;
+  Array<GoogleCloudDialogflowCxV3beta1FlowValidationResult>;
 export const GoogleCloudDialogflowCxV3beta1FlowValidationResultList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDialogflowCxV3beta1FlowValidationResult,
@@ -8139,7 +8230,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
 export type GoogleCloudLocationLocationList =
-  ReadonlyArray<GoogleCloudLocationLocation>;
+  Array<GoogleCloudLocationLocation>;
 export const GoogleCloudLocationLocationList = /*@__PURE__*/ S.Array(
   GoogleCloudLocationLocation,
 ) as any as S.Schema<GoogleCloudLocationLocationList>;
@@ -8180,7 +8271,7 @@ export const ListProjectsLocationsAgentsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsLocationsAgentsRequest>;
 
 export type GoogleCloudDialogflowCxV3beta1AgentList =
-  ReadonlyArray<GoogleCloudDialogflowCxV3beta1Agent>;
+  Array<GoogleCloudDialogflowCxV3beta1Agent>;
 export const GoogleCloudDialogflowCxV3beta1AgentList = /*@__PURE__*/ S.Array(
   GoogleCloudDialogflowCxV3beta1Agent,
 ) as any as S.Schema<GoogleCloudDialogflowCxV3beta1AgentList>;
@@ -8224,7 +8315,7 @@ export const ListProjectsLocationsAgentsChangelogsRequest =
   }) as any as S.Schema<ListProjectsLocationsAgentsChangelogsRequest>;
 
 export type GoogleCloudDialogflowCxV3beta1ChangelogList =
-  ReadonlyArray<GoogleCloudDialogflowCxV3beta1Changelog>;
+  Array<GoogleCloudDialogflowCxV3beta1Changelog>;
 export const GoogleCloudDialogflowCxV3beta1ChangelogList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDialogflowCxV3beta1Changelog,
@@ -8269,7 +8360,7 @@ export const ListProjectsLocationsAgentsConversationsRequest =
   }) as any as S.Schema<ListProjectsLocationsAgentsConversationsRequest>;
 
 export type GoogleCloudDialogflowCxV3beta1ConversationList =
-  ReadonlyArray<GoogleCloudDialogflowCxV3beta1Conversation>;
+  Array<GoogleCloudDialogflowCxV3beta1Conversation>;
 export const GoogleCloudDialogflowCxV3beta1ConversationList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDialogflowCxV3beta1Conversation,
@@ -8314,7 +8405,7 @@ export const ListProjectsLocationsAgentsEntityTypesRequest =
   }) as any as S.Schema<ListProjectsLocationsAgentsEntityTypesRequest>;
 
 export type GoogleCloudDialogflowCxV3beta1EntityTypeList =
-  ReadonlyArray<GoogleCloudDialogflowCxV3beta1EntityType>;
+  Array<GoogleCloudDialogflowCxV3beta1EntityType>;
 export const GoogleCloudDialogflowCxV3beta1EntityTypeList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDialogflowCxV3beta1EntityType,
@@ -8357,7 +8448,7 @@ export const ListProjectsLocationsAgentsEnvironmentsRequest =
   }) as any as S.Schema<ListProjectsLocationsAgentsEnvironmentsRequest>;
 
 export type GoogleCloudDialogflowCxV3beta1EnvironmentList =
-  ReadonlyArray<GoogleCloudDialogflowCxV3beta1Environment>;
+  Array<GoogleCloudDialogflowCxV3beta1Environment>;
 export const GoogleCloudDialogflowCxV3beta1EnvironmentList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDialogflowCxV3beta1Environment,
@@ -8428,7 +8519,7 @@ export const GoogleCloudDialogflowCxV3beta1ContinuousTestResult =
   }) as any as S.Schema<GoogleCloudDialogflowCxV3beta1ContinuousTestResult>;
 
 export type GoogleCloudDialogflowCxV3beta1ContinuousTestResultList =
-  ReadonlyArray<GoogleCloudDialogflowCxV3beta1ContinuousTestResult>;
+  Array<GoogleCloudDialogflowCxV3beta1ContinuousTestResult>;
 export const GoogleCloudDialogflowCxV3beta1ContinuousTestResultList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDialogflowCxV3beta1ContinuousTestResult,
@@ -8474,7 +8565,7 @@ export const ListProjectsLocationsAgentsEnvironmentsDeploymentsRequest =
   }) as any as S.Schema<ListProjectsLocationsAgentsEnvironmentsDeploymentsRequest>;
 
 export type GoogleCloudDialogflowCxV3beta1DeploymentList =
-  ReadonlyArray<GoogleCloudDialogflowCxV3beta1Deployment>;
+  Array<GoogleCloudDialogflowCxV3beta1Deployment>;
 export const GoogleCloudDialogflowCxV3beta1DeploymentList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDialogflowCxV3beta1Deployment,
@@ -8517,7 +8608,7 @@ export const ListProjectsLocationsAgentsEnvironmentsExperimentsRequest =
   }) as any as S.Schema<ListProjectsLocationsAgentsEnvironmentsExperimentsRequest>;
 
 export type GoogleCloudDialogflowCxV3beta1ExperimentList =
-  ReadonlyArray<GoogleCloudDialogflowCxV3beta1Experiment>;
+  Array<GoogleCloudDialogflowCxV3beta1Experiment>;
 export const GoogleCloudDialogflowCxV3beta1ExperimentList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDialogflowCxV3beta1Experiment,
@@ -8677,7 +8768,7 @@ export const ListProjectsLocationsAgentsFlowsTransitionRouteGroupsRequest =
   }) as any as S.Schema<ListProjectsLocationsAgentsFlowsTransitionRouteGroupsRequest>;
 
 export type GoogleCloudDialogflowCxV3beta1TransitionRouteGroupList =
-  ReadonlyArray<GoogleCloudDialogflowCxV3beta1TransitionRouteGroup>;
+  Array<GoogleCloudDialogflowCxV3beta1TransitionRouteGroup>;
 export const GoogleCloudDialogflowCxV3beta1TransitionRouteGroupList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDialogflowCxV3beta1TransitionRouteGroup,
@@ -8723,7 +8814,7 @@ export const ListProjectsLocationsAgentsFlowsVersionsRequest =
   }) as any as S.Schema<ListProjectsLocationsAgentsFlowsVersionsRequest>;
 
 export type GoogleCloudDialogflowCxV3beta1VersionList =
-  ReadonlyArray<GoogleCloudDialogflowCxV3beta1Version>;
+  Array<GoogleCloudDialogflowCxV3beta1Version>;
 export const GoogleCloudDialogflowCxV3beta1VersionList = /*@__PURE__*/ S.Array(
   GoogleCloudDialogflowCxV3beta1Version,
 ) as any as S.Schema<GoogleCloudDialogflowCxV3beta1VersionList>;
@@ -8767,7 +8858,7 @@ export const ListProjectsLocationsAgentsGeneratorsRequest =
   }) as any as S.Schema<ListProjectsLocationsAgentsGeneratorsRequest>;
 
 export type GoogleCloudDialogflowCxV3beta1GeneratorList =
-  ReadonlyArray<GoogleCloudDialogflowCxV3beta1Generator>;
+  Array<GoogleCloudDialogflowCxV3beta1Generator>;
 export const GoogleCloudDialogflowCxV3beta1GeneratorList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDialogflowCxV3beta1Generator,
@@ -8859,7 +8950,7 @@ export const ListProjectsLocationsAgentsPlaybooksRequest =
   }) as any as S.Schema<ListProjectsLocationsAgentsPlaybooksRequest>;
 
 export type GoogleCloudDialogflowCxV3beta1PlaybookList =
-  ReadonlyArray<GoogleCloudDialogflowCxV3beta1Playbook>;
+  Array<GoogleCloudDialogflowCxV3beta1Playbook>;
 export const GoogleCloudDialogflowCxV3beta1PlaybookList = /*@__PURE__*/ S.Array(
   GoogleCloudDialogflowCxV3beta1Playbook,
 ) as any as S.Schema<GoogleCloudDialogflowCxV3beta1PlaybookList>;
@@ -8939,7 +9030,7 @@ export const ListProjectsLocationsAgentsPlaybooksVersionsRequest =
   }) as any as S.Schema<ListProjectsLocationsAgentsPlaybooksVersionsRequest>;
 
 export type GoogleCloudDialogflowCxV3beta1PlaybookVersionList =
-  ReadonlyArray<GoogleCloudDialogflowCxV3beta1PlaybookVersion>;
+  Array<GoogleCloudDialogflowCxV3beta1PlaybookVersion>;
 export const GoogleCloudDialogflowCxV3beta1PlaybookVersionList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDialogflowCxV3beta1PlaybookVersion,
@@ -9017,7 +9108,7 @@ export const ListProjectsLocationsAgentsTestCasesRequest =
   }) as any as S.Schema<ListProjectsLocationsAgentsTestCasesRequest>;
 
 export type GoogleCloudDialogflowCxV3beta1TestCaseList =
-  ReadonlyArray<GoogleCloudDialogflowCxV3beta1TestCase>;
+  Array<GoogleCloudDialogflowCxV3beta1TestCase>;
 export const GoogleCloudDialogflowCxV3beta1TestCaseList = /*@__PURE__*/ S.Array(
   GoogleCloudDialogflowCxV3beta1TestCase,
 ) as any as S.Schema<GoogleCloudDialogflowCxV3beta1TestCaseList>;
@@ -9061,7 +9152,7 @@ export const ListProjectsLocationsAgentsTestCasesResultsRequest =
   }) as any as S.Schema<ListProjectsLocationsAgentsTestCasesResultsRequest>;
 
 export type GoogleCloudDialogflowCxV3beta1TestCaseResultList =
-  ReadonlyArray<GoogleCloudDialogflowCxV3beta1TestCaseResult>;
+  Array<GoogleCloudDialogflowCxV3beta1TestCaseResult>;
 export const GoogleCloudDialogflowCxV3beta1TestCaseResultList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDialogflowCxV3beta1TestCaseResult,
@@ -9106,7 +9197,7 @@ export const ListProjectsLocationsAgentsToolsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListProjectsLocationsAgentsToolsRequest>;
 
 export type GoogleCloudDialogflowCxV3beta1ToolList =
-  ReadonlyArray<GoogleCloudDialogflowCxV3beta1Tool>;
+  Array<GoogleCloudDialogflowCxV3beta1Tool>;
 export const GoogleCloudDialogflowCxV3beta1ToolList = /*@__PURE__*/ S.Array(
   GoogleCloudDialogflowCxV3beta1Tool,
 ) as any as S.Schema<GoogleCloudDialogflowCxV3beta1ToolList>;
@@ -9148,7 +9239,7 @@ export const ListProjectsLocationsAgentsToolsVersionsRequest =
   }) as any as S.Schema<ListProjectsLocationsAgentsToolsVersionsRequest>;
 
 export type GoogleCloudDialogflowCxV3beta1ToolVersionList =
-  ReadonlyArray<GoogleCloudDialogflowCxV3beta1ToolVersion>;
+  Array<GoogleCloudDialogflowCxV3beta1ToolVersion>;
 export const GoogleCloudDialogflowCxV3beta1ToolVersionList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDialogflowCxV3beta1ToolVersion,
@@ -9254,8 +9345,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type GoogleLongrunningOperationList =
-  ReadonlyArray<GoogleLongrunningOperation>;
+export type GoogleLongrunningOperationList = Array<GoogleLongrunningOperation>;
 export const GoogleLongrunningOperationList = /*@__PURE__*/ S.Array(
   GoogleLongrunningOperation,
 ) as any as S.Schema<GoogleLongrunningOperationList>;
@@ -9299,7 +9389,7 @@ export const ListProjectsLocationsSecuritySettingsRequest =
   }) as any as S.Schema<ListProjectsLocationsSecuritySettingsRequest>;
 
 export type GoogleCloudDialogflowCxV3beta1SecuritySettingsList =
-  ReadonlyArray<GoogleCloudDialogflowCxV3beta1SecuritySettings>;
+  Array<GoogleCloudDialogflowCxV3beta1SecuritySettings>;
 export const GoogleCloudDialogflowCxV3beta1SecuritySettingsList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDialogflowCxV3beta1SecuritySettings,
@@ -9443,7 +9533,7 @@ export const MatchIntentProjectsLocationsAgentsEnvironmentsSessionsRequest =
   }) as any as S.Schema<MatchIntentProjectsLocationsAgentsEnvironmentsSessionsRequest>;
 
 export type GoogleCloudDialogflowCxV3beta1MatchList =
-  ReadonlyArray<GoogleCloudDialogflowCxV3beta1Match>;
+  Array<GoogleCloudDialogflowCxV3beta1Match>;
 export const GoogleCloudDialogflowCxV3beta1MatchList = /*@__PURE__*/ S.Array(
   GoogleCloudDialogflowCxV3beta1Match,
 ) as any as S.Schema<GoogleCloudDialogflowCxV3beta1MatchList>;

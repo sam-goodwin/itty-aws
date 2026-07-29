@@ -133,7 +133,7 @@ export type ProvisioningState =
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** List of workspaces referring this Access Connector. */
-export type AccessConnectorPropertiesReferedByList = ReadonlyArray<string>;
+export type AccessConnectorPropertiesReferedByList = Array<string>;
 export const AccessConnectorPropertiesReferedByList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AccessConnectorPropertiesReferedByList>;
@@ -428,7 +428,7 @@ export const AccessConnector = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccessConnector>;
 
 /** The AccessConnector items on this page */
-export type AccessConnectorListResultValueList = ReadonlyArray<AccessConnector>;
+export type AccessConnectorListResultValueList = Array<AccessConnector>;
 export const AccessConnectorListResultValueList = /*@__PURE__*/ S.Array(
   AccessConnector,
 ) as any as S.Schema<AccessConnectorListResultValueList>;
@@ -635,7 +635,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of Resource Provider operations supported by the Resource Provider resource provider. */
-export type OperationListResultValueList = ReadonlyArray<Operation>;
+export type OperationListResultValueList = Array<Operation>;
 export const OperationListResultValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationListResultValueList>;
@@ -703,8 +703,7 @@ export const EndpointDetail = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EndpointDetail" }) as any as S.Schema<EndpointDetail>;
 
 /** The Ports used when connecting to domainName. */
-export type EndpointDependencyEndpointDetailsList =
-  ReadonlyArray<EndpointDetail>;
+export type EndpointDependencyEndpointDetailsList = Array<EndpointDetail>;
 export const EndpointDependencyEndpointDetailsList = /*@__PURE__*/ S.Array(
   EndpointDetail,
 ) as any as S.Schema<EndpointDependencyEndpointDetailsList>;
@@ -727,7 +726,7 @@ export const EndpointDependency = /*@__PURE__*/ S.suspend(() =>
 
 /** The endpoints that Workspace connect to */
 export type OutboundEnvironmentEndpointEndpointsList =
-  ReadonlyArray<EndpointDependency>;
+  Array<EndpointDependency>;
 export const OutboundEnvironmentEndpointEndpointsList = /*@__PURE__*/ S.Array(
   EndpointDependency,
 ) as any as S.Schema<OutboundEnvironmentEndpointEndpointsList>;
@@ -750,7 +749,7 @@ export const OutboundEnvironmentEndpoint = /*@__PURE__*/ S.suspend(() =>
 
 /** Collection of outbound network dependency endpoints */
 export type OutboundEnvironmentEndpointCollection =
-  ReadonlyArray<OutboundEnvironmentEndpoint>;
+  Array<OutboundEnvironmentEndpoint>;
 export const OutboundEnvironmentEndpointCollection = /*@__PURE__*/ S.Array(
   OutboundEnvironmentEndpoint,
 ) as any as S.Schema<OutboundEnvironmentEndpointCollection>;
@@ -774,7 +773,7 @@ export const PrivateEndpointInput = /*@__PURE__*/ S.suspend(() =>
 
 /** GroupIds from the private link service resource. */
 export type PrivateEndpointConnectionPropertiesInputGroupIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PrivateEndpointConnectionPropertiesInputGroupIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -791,7 +790,7 @@ export const PrivateLinkServiceConnectionStatus = /*@__PURE__*/ S.String;
 /** The current state of a private endpoint connection. */
 export interface PrivateLinkServiceConnectionState {
   /** The status of a private endpoint connection */
-  status: PrivateLinkServiceConnectionStatus;
+  status: PrivateLinkServiceConnectionStatus | (string & {});
   /** The description for the current state of a private endpoint connection */
   description?: string;
   /** Actions required for a private endpoint connection */
@@ -875,8 +874,7 @@ export const PrivateEndpoint = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateEndpoint>;
 
 /** GroupIds from the private link service resource. */
-export type PrivateEndpointConnectionPropertiesGroupIdsList =
-  ReadonlyArray<string>;
+export type PrivateEndpointConnectionPropertiesGroupIdsList = Array<string>;
 export const PrivateEndpointConnectionPropertiesGroupIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1073,7 +1071,7 @@ export const PrivateEndpointConnection = /*@__PURE__*/ S.suspend(() =>
 
 /** The PrivateEndpointConnection items on this page */
 export type PrivateEndpointConnectionsListValueList =
-  ReadonlyArray<PrivateEndpointConnection>;
+  Array<PrivateEndpointConnection>;
 export const PrivateEndpointConnectionsListValueList = /*@__PURE__*/ S.Array(
   PrivateEndpointConnection,
 ) as any as S.Schema<PrivateEndpointConnectionsListValueList>;
@@ -1123,16 +1121,14 @@ export const PrivateLinkResourcesGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateLinkResourcesGetRequest>;
 
 /** The required members for a specific group id */
-export type GroupIdInformationPropertiesRequiredMembersList =
-  ReadonlyArray<string>;
+export type GroupIdInformationPropertiesRequiredMembersList = Array<string>;
 export const GroupIdInformationPropertiesRequiredMembersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<GroupIdInformationPropertiesRequiredMembersList>;
 
 /** The required DNS zones for a specific group id */
-export type GroupIdInformationPropertiesRequiredZoneNamesList =
-  ReadonlyArray<string>;
+export type GroupIdInformationPropertiesRequiredZoneNamesList = Array<string>;
 export const GroupIdInformationPropertiesRequiredZoneNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1230,8 +1226,7 @@ export const GroupIdInformation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GroupIdInformation>;
 
 /** The GroupIdInformation items on this page */
-export type PrivateLinkResourcesListValueList =
-  ReadonlyArray<GroupIdInformation>;
+export type PrivateLinkResourcesListValueList = Array<GroupIdInformation>;
 export const PrivateLinkResourcesListValueList = /*@__PURE__*/ S.Array(
   GroupIdInformation,
 ) as any as S.Schema<PrivateLinkResourcesListValueList>;
@@ -1267,7 +1262,7 @@ export const VirtualNetworkPeeringPropertiesFormatDatabricksVirtualNetwork =
   }) as any as S.Schema<VirtualNetworkPeeringPropertiesFormatDatabricksVirtualNetwork>;
 
 /** A list of address blocks reserved for this virtual network in CIDR notation. */
-export type AddressSpaceAddressPrefixesList = ReadonlyArray<string>;
+export type AddressSpaceAddressPrefixesList = Array<string>;
 export const AddressSpaceAddressPrefixesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AddressSpaceAddressPrefixesList>;
@@ -1328,9 +1323,9 @@ export interface VirtualNetworkPeeringPropertiesFormat {
   /** The reference to the remote virtual network address space. */
   remoteAddressSpace?: AddressSpace;
   /** The status of the virtual network peering. */
-  peeringState?: PeeringState;
+  peeringState?: PeeringState | (string & {});
   /** The provisioning state of the virtual network peering resource. */
-  provisioningState?: PeeringProvisioningState;
+  provisioningState?: PeeringProvisioningState | (string & {});
 }
 export const VirtualNetworkPeeringPropertiesFormat = /*@__PURE__*/ S.suspend(
   () =>
@@ -1537,8 +1532,7 @@ export const VirtualNetworkPeering = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VirtualNetworkPeering>;
 
 /** The VirtualNetworkPeering items on this page */
-export type VirtualNetworkPeeringListValueList =
-  ReadonlyArray<VirtualNetworkPeering>;
+export type VirtualNetworkPeeringListValueList = Array<VirtualNetworkPeering>;
 export const VirtualNetworkPeeringListValueList = /*@__PURE__*/ S.Array(
   VirtualNetworkPeering,
 ) as any as S.Schema<VirtualNetworkPeeringListValueList>;
@@ -1579,7 +1573,7 @@ export const CustomParameterType = /*@__PURE__*/ S.String;
 /** The Value. */
 export interface WorkspaceCustomStringParameter {
   /** The type of variable that this is */
-  type?: CustomParameterType;
+  type?: CustomParameterType | (string & {});
   /** The value which should be used for this field. */
   value: string;
 }
@@ -1595,7 +1589,7 @@ export const WorkspaceCustomStringParameter = /*@__PURE__*/ S.suspend(() =>
 /** The value which should be used for this field. */
 export interface WorkspaceNoPublicIPBooleanParameter {
   /** The type of variable that this is */
-  type?: CustomParameterType;
+  type?: CustomParameterType | (string & {});
   /** The value which should be used for this field. */
   value: boolean;
 }
@@ -1611,7 +1605,7 @@ export const WorkspaceNoPublicIPBooleanParameter = /*@__PURE__*/ S.suspend(() =>
 /** The value which should be used for this field. */
 export interface WorkspaceCustomBooleanParameter {
   /** The type of variable that this is */
-  type?: CustomParameterType;
+  type?: CustomParameterType | (string & {});
   /** The value which should be used for this field. */
   value: boolean;
 }
@@ -1631,7 +1625,7 @@ export const EncryptionKeySource = /*@__PURE__*/ S.String;
 /** The object that contains details of encryption used on the workspace. */
 export interface Encryption {
   /** The encryption keySource (provider). Possible values (case-insensitive): Default, Microsoft.Keyvault */
-  keySource?: EncryptionKeySource;
+  keySource?: EncryptionKeySource | (string & {});
   /** The name of KeyVault key. */
   KeyName?: string;
   /** The version of KeyVault key. */
@@ -1651,7 +1645,7 @@ export const Encryption = /*@__PURE__*/ S.suspend(() =>
 /** The object that contains details of encryption used on the workspace. */
 export interface WorkspaceEncryptionParameter {
   /** The type of variable that this is */
-  type?: CustomParameterType;
+  type?: CustomParameterType | (string & {});
   /** The value which should be used for this field. */
   value?: Encryption;
 }
@@ -1667,7 +1661,7 @@ export const WorkspaceEncryptionParameter = /*@__PURE__*/ S.suspend(() =>
 /** The value which should be used for this field. */
 export interface WorkspaceCustomObjectParameter {
   /** The type of variable that this is */
-  type?: CustomParameterType;
+  type?: CustomParameterType | (string & {});
   /** The value which should be used for this field. */
   value: unknown;
 }
@@ -1758,7 +1752,7 @@ export const WorkspaceProviderAuthorization = /*@__PURE__*/ S.suspend(() =>
 
 /** The workspace provider authorizations. */
 export type WorkspacePropertiesInputAuthorizationsList =
-  ReadonlyArray<WorkspaceProviderAuthorization>;
+  Array<WorkspaceProviderAuthorization>;
 export const WorkspacePropertiesInputAuthorizationsList = /*@__PURE__*/ S.Array(
   WorkspaceProviderAuthorization,
 ) as any as S.Schema<WorkspacePropertiesInputAuthorizationsList>;
@@ -1803,7 +1797,7 @@ export const EncryptionV2KeyVaultProperties = /*@__PURE__*/ S.suspend(() =>
 /** The object that contains details of encryption used on the workspace. */
 export interface EncryptionV2 {
   /** The encryption keySource (provider). Possible values (case-insensitive): Microsoft.Keyvault */
-  keySource: EncryptionKeySource2;
+  keySource: EncryptionKeySource2 | (string & {});
   /** Key Vault input properties for encryption. */
   keyVaultProperties?: EncryptionV2KeyVaultProperties;
 }
@@ -1837,7 +1831,7 @@ export const ManagedDiskEncryptionKeyVaultProperties = /*@__PURE__*/ S.suspend(
 /** The object that contains details of encryption used on the workspace. */
 export interface ManagedDiskEncryption {
   /** The encryption keySource (provider). Possible values (case-insensitive): Microsoft.Keyvault. Not allowed in Serverless ComputeMode workspace. */
-  keySource: EncryptionKeySource2;
+  keySource: EncryptionKeySource2 | (string & {});
   /** Key Vault input properties for encryption. */
   keyVaultProperties: ManagedDiskEncryptionKeyVaultProperties;
   /** Indicate whether the latest key version should be automatically used for Managed Disk Encryption. */
@@ -1887,7 +1881,7 @@ export const AutomaticClusterUpdateValue = /*@__PURE__*/ S.String;
 
 /** Status of automated cluster updates feature. */
 export interface AutomaticClusterUpdateDefinition {
-  value?: AutomaticClusterUpdateValue;
+  value?: AutomaticClusterUpdateValue | (string & {});
 }
 export const AutomaticClusterUpdateDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1899,7 +1893,7 @@ export const AutomaticClusterUpdateDefinition = /*@__PURE__*/ S.suspend(() =>
 
 /** Compliance standards associated with the workspace. */
 export type ComplianceSecurityProfileDefinitionComplianceStandardsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ComplianceSecurityProfileDefinitionComplianceStandardsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1912,7 +1906,7 @@ export const ComplianceSecurityProfileValue = /*@__PURE__*/ S.String;
 export interface ComplianceSecurityProfileDefinition {
   /** Compliance standards associated with the workspace. */
   complianceStandards?: ComplianceSecurityProfileDefinitionComplianceStandardsList;
-  value?: ComplianceSecurityProfileValue;
+  value?: ComplianceSecurityProfileValue | (string & {});
 }
 export const ComplianceSecurityProfileDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1930,7 +1924,7 @@ export const EnhancedSecurityMonitoringValue = /*@__PURE__*/ S.String;
 
 /** Status of Enhanced Security Monitoring feature. */
 export interface EnhancedSecurityMonitoringDefinition {
-  value?: EnhancedSecurityMonitoringValue;
+  value?: EnhancedSecurityMonitoringValue | (string & {});
 }
 export const EnhancedSecurityMonitoringDefinition = /*@__PURE__*/ S.suspend(
   () =>
@@ -1985,7 +1979,7 @@ export const DefaultCatalogPropertiesInitialType = /*@__PURE__*/ S.String;
 /** These properties lets user specify default catalog properties during workspace creation. Not allowed in Serverless ComputeMode workspace. */
 export interface DefaultCatalogProperties {
   /** Defines the initial type of the default catalog. Possible values (case-insensitive): HiveMetastore, UnityCatalog */
-  initialType?: DefaultCatalogPropertiesInitialType;
+  initialType?: DefaultCatalogPropertiesInitialType | (string & {});
   /** Specifies the initial Name of default catalog. If not specified, the name of the workspace will be used. */
   initialName?: string;
 }
@@ -2007,7 +2001,7 @@ export interface WorkspacePropertiesAccessConnector {
   /** The resource ID of Azure Databricks Access Connector Resource. */
   id: string;
   /** The identity type of the Access Connector Resource. */
-  identityType: IdentityType;
+  identityType: IdentityType | (string & {});
   /** The resource ID of the User Assigned Identity associated with the Access Connector Resource. This is required for type 'UserAssigned' and not valid for type 'SystemAssigned'. */
   userAssignedIdentityId?: string;
 }
@@ -2147,7 +2141,7 @@ export const WorkspacesCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 
 /** The workspace provider authorizations. */
 export type WorkspacePropertiesAuthorizationsList =
-  ReadonlyArray<WorkspaceProviderAuthorization>;
+  Array<WorkspaceProviderAuthorization>;
 export const WorkspacePropertiesAuthorizationsList = /*@__PURE__*/ S.Array(
   WorkspaceProviderAuthorization,
 ) as any as S.Schema<WorkspacePropertiesAuthorizationsList>;
@@ -2190,7 +2184,7 @@ export const ManagedIdentityConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** Private endpoint connections created on the workspace. Supported in both Serverless and Hybrid ComputeMode workspace. */
 export type WorkspacePropertiesPrivateEndpointConnectionsList =
-  ReadonlyArray<PrivateEndpointConnection>;
+  Array<PrivateEndpointConnection>;
 export const WorkspacePropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection,
@@ -2468,7 +2462,7 @@ export const Workspace = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Workspace" }) as any as S.Schema<Workspace>;
 
 /** The Workspace items on this page */
-export type WorkspaceListResultValueList = ReadonlyArray<Workspace>;
+export type WorkspaceListResultValueList = Array<Workspace>;
 export const WorkspaceListResultValueList = /*@__PURE__*/ S.Array(
   Workspace,
 ) as any as S.Schema<WorkspaceListResultValueList>;

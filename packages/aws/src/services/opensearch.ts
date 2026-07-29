@@ -923,7 +923,7 @@ export const AppConfigType = /*@__PURE__*/ S.String;
 
 export type AppConfigValue = string;
 export interface AppConfig {
-  key?: AppConfigType;
+  key?: AppConfigType | (string & {});
   value?: string;
 }
 export const AppConfig = /*@__PURE__*/ S.suspend(() =>
@@ -1141,7 +1141,7 @@ export const NodeOptionsNodeType = /*@__PURE__*/ S.String;
 
 export interface NodeConfig {
   Enabled?: boolean;
-  Type?: OpenSearchPartitionInstanceType;
+  Type?: OpenSearchPartitionInstanceType | (string & {});
   Count?: number;
 }
 export const NodeConfig = /*@__PURE__*/ S.suspend(() =>
@@ -1152,7 +1152,7 @@ export const NodeConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "NodeConfig" }) as any as S.Schema<NodeConfig>;
 export interface NodeOption {
-  NodeType?: NodeOptionsNodeType;
+  NodeType?: NodeOptionsNodeType | (string & {});
   NodeConfig?: NodeConfig;
 }
 export const NodeOption = /*@__PURE__*/ S.suspend(() =>
@@ -1164,15 +1164,15 @@ export const NodeOption = /*@__PURE__*/ S.suspend(() =>
 export type NodeOptionsList = NodeOption[];
 export const NodeOptionsList = /*@__PURE__*/ S.Array(NodeOption);
 export interface ClusterConfig {
-  InstanceType?: OpenSearchPartitionInstanceType;
+  InstanceType?: OpenSearchPartitionInstanceType | (string & {});
   InstanceCount?: number;
   DedicatedMasterEnabled?: boolean;
   ZoneAwarenessEnabled?: boolean;
   ZoneAwarenessConfig?: ZoneAwarenessConfig;
-  DedicatedMasterType?: OpenSearchPartitionInstanceType;
+  DedicatedMasterType?: OpenSearchPartitionInstanceType | (string & {});
   DedicatedMasterCount?: number;
   WarmEnabled?: boolean;
-  WarmType?: OpenSearchWarmPartitionInstanceType;
+  WarmType?: OpenSearchWarmPartitionInstanceType | (string & {});
   WarmCount?: number;
   ColdStorageOptions?: ColdStorageOptions;
   MultiAZWithStandbyEnabled?: boolean;
@@ -1200,7 +1200,7 @@ export const VolumeType = /*@__PURE__*/ S.String;
 
 export interface EBSOptions {
   EBSEnabled?: boolean;
-  VolumeType?: VolumeType;
+  VolumeType?: VolumeType | (string & {});
   VolumeSize?: number;
   Iops?: number;
   Throughput?: number;
@@ -1298,7 +1298,9 @@ export const LogPublishingOption = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "LogPublishingOption",
 }) as any as S.Schema<LogPublishingOption>;
-export type LogPublishingOptions = { [key in LogType]?: LogPublishingOption };
+export type LogPublishingOptions = {
+  [key in LogType | (string & {})]?: LogPublishingOption;
+};
 export const LogPublishingOptions = /*@__PURE__*/ S.Record(
   LogType,
   LogPublishingOption.pipe(S.optional),
@@ -1313,7 +1315,7 @@ export const TLSSecurityPolicy = /*@__PURE__*/ S.String;
 export type DomainNameFqdn = string;
 export interface DomainEndpointOptions {
   EnforceHTTPS?: boolean;
-  TLSSecurityPolicy?: TLSSecurityPolicy;
+  TLSSecurityPolicy?: TLSSecurityPolicy | (string & {});
   CustomEndpointEnabled?: boolean;
   CustomEndpoint?: string;
   CustomEndpointCertificateArn?: string;
@@ -1471,7 +1473,7 @@ export const TimeUnit = /*@__PURE__*/ S.String;
 
 export interface Duration {
   Value?: number;
-  Unit?: TimeUnit;
+  Unit?: TimeUnit | (string & {});
 }
 export const Duration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Value: S.optional(S.Number), Unit: S.optional(TimeUnit) }),
@@ -1600,7 +1602,7 @@ export type DeploymentStrategy = "Default" | "CapacityOptimized";
 export const DeploymentStrategy = /*@__PURE__*/ S.String;
 
 export interface DeploymentStrategyOptions {
-  DeploymentStrategy: DeploymentStrategy;
+  DeploymentStrategy: DeploymentStrategy | (string & {});
 }
 export const DeploymentStrategyOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DeploymentStrategy: DeploymentStrategy }),
@@ -2098,7 +2100,7 @@ export type SkipUnavailableStatus = "ENABLED" | "DISABLED";
 export const SkipUnavailableStatus = /*@__PURE__*/ S.String;
 
 export interface CrossClusterSearchConnectionProperties {
-  SkipUnavailable?: SkipUnavailableStatus;
+  SkipUnavailable?: SkipUnavailableStatus | (string & {});
 }
 export const CrossClusterSearchConnectionProperties = /*@__PURE__*/ S.suspend(
   () => S.Struct({ SkipUnavailable: S.optional(SkipUnavailableStatus) }),
@@ -2210,9 +2212,9 @@ export const RequirementLevel = /*@__PURE__*/ S.String;
 
 export type LicenseFilepath = string;
 export interface PackageConfiguration {
-  LicenseRequirement: RequirementLevel;
+  LicenseRequirement: RequirementLevel | (string & {});
   LicenseFilepath?: string;
-  ConfigurationRequirement: RequirementLevel;
+  ConfigurationRequirement: RequirementLevel | (string & {});
   RequiresRestartForConfigurationUpdate?: boolean;
 }
 export const PackageConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -3214,8 +3216,8 @@ export type RollbackOnDisable = "NO_ROLLBACK" | "DEFAULT_ROLLBACK";
 export const RollbackOnDisable = /*@__PURE__*/ S.String;
 
 export interface AutoTuneOptions {
-  DesiredState?: AutoTuneDesiredState;
-  RollbackOnDisable?: RollbackOnDisable;
+  DesiredState?: AutoTuneDesiredState | (string & {});
+  RollbackOnDisable?: RollbackOnDisable | (string & {});
   MaintenanceSchedules?: AutoTuneMaintenanceSchedule[];
   UseOffPeakWindow?: boolean;
 }

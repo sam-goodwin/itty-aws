@@ -665,7 +665,7 @@ export type TablePreparationMode =
 export const TablePreparationMode = /*@__PURE__*/ S.String;
 
 export interface TargetDataSetting {
-  TablePreparationMode?: TablePreparationMode;
+  TablePreparationMode?: TablePreparationMode | (string & {});
 }
 export const TargetDataSetting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ TablePreparationMode: S.optional(TablePreparationMode) }),
@@ -838,7 +838,7 @@ export interface PostgreSqlDataProviderSettings {
   ServerName?: string;
   Port?: number;
   DatabaseName?: string;
-  SslMode?: DmsSslModeValue;
+  SslMode?: DmsSslModeValue | (string & {});
   CertificateArn?: string;
   S3Path?: string;
   S3AccessRoleArn?: string;
@@ -859,7 +859,7 @@ export const PostgreSqlDataProviderSettings = /*@__PURE__*/ S.suspend(() =>
 export interface MySqlDataProviderSettings {
   ServerName?: string;
   Port?: number;
-  SslMode?: DmsSslModeValue;
+  SslMode?: DmsSslModeValue | (string & {});
   CertificateArn?: string;
   S3Path?: string;
   S3AccessRoleArn?: string;
@@ -880,7 +880,7 @@ export interface OracleDataProviderSettings {
   ServerName?: string;
   Port?: number;
   DatabaseName?: string;
-  SslMode?: DmsSslModeValue;
+  SslMode?: DmsSslModeValue | (string & {});
   CertificateArn?: string;
   AsmServer?: string;
   SecretsManagerOracleAsmSecretId?: string;
@@ -912,7 +912,7 @@ export interface SybaseAseDataProviderSettings {
   ServerName?: string;
   Port?: number;
   DatabaseName?: string;
-  SslMode?: DmsSslModeValue;
+  SslMode?: DmsSslModeValue | (string & {});
   EncryptPassword?: boolean;
   CertificateArn?: string;
 }
@@ -932,7 +932,7 @@ export interface MicrosoftSqlServerDataProviderSettings {
   ServerName?: string;
   Port?: number;
   DatabaseName?: string;
-  SslMode?: DmsSslModeValue;
+  SslMode?: DmsSslModeValue | (string & {});
   CertificateArn?: string;
   S3Path?: string;
   S3AccessRoleArn?: string;
@@ -955,7 +955,7 @@ export interface DocDbDataProviderSettings {
   ServerName?: string;
   Port?: number;
   DatabaseName?: string;
-  SslMode?: DmsSslModeValue;
+  SslMode?: DmsSslModeValue | (string & {});
   CertificateArn?: string;
 }
 export const DocDbDataProviderSettings = /*@__PURE__*/ S.suspend(() =>
@@ -972,7 +972,7 @@ export const DocDbDataProviderSettings = /*@__PURE__*/ S.suspend(() =>
 export interface MariaDbDataProviderSettings {
   ServerName?: string;
   Port?: number;
-  SslMode?: DmsSslModeValue;
+  SslMode?: DmsSslModeValue | (string & {});
   CertificateArn?: string;
   S3Path?: string;
   S3AccessRoleArn?: string;
@@ -993,7 +993,7 @@ export interface IbmDb2LuwDataProviderSettings {
   ServerName?: string;
   Port?: number;
   DatabaseName?: string;
-  SslMode?: DmsSslModeValue;
+  SslMode?: DmsSslModeValue | (string & {});
   CertificateArn?: string;
   EncryptionAlgorithm?: number;
   SecurityMechanism?: number;
@@ -1019,7 +1019,7 @@ export interface IbmDb2zOsDataProviderSettings {
   ServerName?: string;
   Port?: number;
   DatabaseName?: string;
-  SslMode?: DmsSslModeValue;
+  SslMode?: DmsSslModeValue | (string & {});
   CertificateArn?: string;
   S3Path?: string;
   S3AccessRoleArn?: string;
@@ -1047,11 +1047,11 @@ export interface MongoDbDataProviderSettings {
   ServerName?: string;
   Port?: number;
   DatabaseName?: string;
-  SslMode?: DmsSslModeValue;
+  SslMode?: DmsSslModeValue | (string & {});
   CertificateArn?: string;
-  AuthType?: AuthTypeValue;
+  AuthType?: AuthTypeValue | (string & {});
   AuthSource?: string;
-  AuthMechanism?: AuthMechanismValue;
+  AuthMechanism?: AuthMechanismValue | (string & {});
 }
 export const MongoDbDataProviderSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1345,15 +1345,15 @@ export interface S3Settings {
   CsvDelimiter?: string;
   BucketFolder?: string;
   BucketName?: string;
-  CompressionType?: CompressionTypeValue;
-  EncryptionMode?: EncryptionModeValue;
+  CompressionType?: CompressionTypeValue | (string & {});
+  EncryptionMode?: EncryptionModeValue | (string & {});
   ServerSideEncryptionKmsKeyId?: string;
-  DataFormat?: DataFormatValue;
-  EncodingType?: EncodingTypeValue;
+  DataFormat?: DataFormatValue | (string & {});
+  EncodingType?: EncodingTypeValue | (string & {});
   DictPageSizeLimit?: number;
   RowGroupLength?: number;
   DataPageSize?: number;
-  ParquetVersion?: ParquetVersionValue;
+  ParquetVersion?: ParquetVersionValue | (string & {});
   EnableStatistics?: boolean;
   IncludeOpForFullLoad?: boolean;
   CdcInsertsOnly?: boolean;
@@ -1361,14 +1361,14 @@ export interface S3Settings {
   ParquetTimestampInMillisecond?: boolean;
   CdcInsertsAndUpdates?: boolean;
   DatePartitionEnabled?: boolean;
-  DatePartitionSequence?: DatePartitionSequenceValue;
-  DatePartitionDelimiter?: DatePartitionDelimiterValue;
+  DatePartitionSequence?: DatePartitionSequenceValue | (string & {});
+  DatePartitionDelimiter?: DatePartitionDelimiterValue | (string & {});
   UseCsvNoSupValue?: boolean;
   CsvNoSupValue?: string;
   PreserveTransactions?: boolean;
   CdcPath?: string;
   UseTaskStartTimeForFullLoadTimestamp?: boolean;
-  CannedAclForObjects?: CannedAclForObjectsValue;
+  CannedAclForObjects?: CannedAclForObjectsValue | (string & {});
   AddColumnName?: boolean;
   CdcMaxBatchInterval?: number;
   CdcMinFileSize?: number;
@@ -1447,9 +1447,9 @@ export interface MongoDbSettings {
   ServerName?: string;
   Port?: number;
   DatabaseName?: string;
-  AuthType?: AuthTypeValue;
-  AuthMechanism?: AuthMechanismValue;
-  NestingLevel?: NestingLevelValue;
+  AuthType?: AuthTypeValue | (string & {});
+  AuthMechanism?: AuthMechanismValue | (string & {});
+  NestingLevel?: NestingLevelValue | (string & {});
   ExtractDocId?: string;
   DocsToInvestigate?: string;
   AuthSource?: string;
@@ -1486,7 +1486,7 @@ export const MessageFormatValue = /*@__PURE__*/ S.String;
 
 export interface KinesisSettings {
   StreamArn?: string;
-  MessageFormat?: MessageFormatValue;
+  MessageFormat?: MessageFormatValue | (string & {});
   ServiceAccessRoleArn?: string;
   IncludeTransactionDetails?: boolean;
   IncludePartitionValue?: boolean;
@@ -1530,7 +1530,7 @@ export const KafkaSslEndpointIdentificationAlgorithm = /*@__PURE__*/ S.String;
 export interface KafkaSettings {
   Broker?: string;
   Topic?: string;
-  MessageFormat?: MessageFormatValue;
+  MessageFormat?: MessageFormatValue | (string & {});
   IncludeTransactionDetails?: boolean;
   IncludePartitionValue?: boolean;
   PartitionIncludeSchemaTable?: boolean;
@@ -1538,7 +1538,7 @@ export interface KafkaSettings {
   IncludeControlDetails?: boolean;
   MessageMaxBytes?: number;
   IncludeNullAndEmpty?: boolean;
-  SecurityProtocol?: KafkaSecurityProtocol;
+  SecurityProtocol?: KafkaSecurityProtocol | (string & {});
   SslClientCertificateArn?: string;
   SslClientKeyArn?: string;
   SslClientKeyPassword?: string | redacted.Redacted<string>;
@@ -1546,8 +1546,10 @@ export interface KafkaSettings {
   SaslUsername?: string;
   SaslPassword?: string | redacted.Redacted<string>;
   NoHexPrefix?: boolean;
-  SaslMechanism?: KafkaSaslMechanism;
-  SslEndpointIdentificationAlgorithm?: KafkaSslEndpointIdentificationAlgorithm;
+  SaslMechanism?: KafkaSaslMechanism | (string & {});
+  SslEndpointIdentificationAlgorithm?:
+    | KafkaSslEndpointIdentificationAlgorithm
+    | (string & {});
   UseLargeIntegerValue?: boolean;
 }
 export const KafkaSettings = /*@__PURE__*/ S.suspend(() =>
@@ -1628,7 +1630,7 @@ export interface RedshiftSettings {
   DatabaseName?: string;
   DateFormat?: string;
   EmptyAsNull?: boolean;
-  EncryptionMode?: EncryptionModeValue;
+  EncryptionMode?: EncryptionModeValue | (string & {});
   ExplicitIds?: boolean;
   FileTransferUploadStreams?: number;
   LoadTimeout?: number;
@@ -1715,18 +1717,18 @@ export interface PostgreSQLSettings {
   ServerName?: string;
   Username?: string;
   SlotName?: string;
-  PluginName?: PluginNameValue;
+  PluginName?: PluginNameValue | (string & {});
   SecretsManagerAccessRoleArn?: string;
   SecretsManagerSecretId?: string;
   TrimSpaceInChar?: boolean;
   MapBooleanAsBoolean?: boolean;
   MapJsonbAsClob?: boolean;
-  MapLongVarcharAs?: LongVarcharMappingType;
-  DatabaseMode?: DatabaseMode;
+  MapLongVarcharAs?: LongVarcharMappingType | (string & {});
+  DatabaseMode?: DatabaseMode | (string & {});
   BabelfishDatabaseName?: string;
   DisableUnicodeSourceFilter?: boolean;
   ServiceAccessRoleArn?: string;
-  AuthenticationMethod?: PostgreSQLAuthenticationMethod;
+  AuthenticationMethod?: PostgreSQLAuthenticationMethod | (string & {});
 }
 export const PostgreSQLSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1772,7 +1774,7 @@ export interface MySQLSettings {
   CleanSourceMetadataOnMismatch?: boolean;
   DatabaseName?: string;
   EventsPollInterval?: number;
-  TargetDbType?: TargetDbType;
+  TargetDbType?: TargetDbType | (string & {});
   MaxFileSize?: number;
   ParallelLoadThreads?: number;
   Password?: string | redacted.Redacted<string>;
@@ -1784,7 +1786,7 @@ export interface MySQLSettings {
   SecretsManagerSecretId?: string;
   ExecuteTimeout?: number;
   ServiceAccessRoleArn?: string;
-  AuthenticationMethod?: MySQLAuthenticationMethod;
+  AuthenticationMethod?: MySQLAuthenticationMethod | (string & {});
 }
 export const MySQLSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1834,7 +1836,7 @@ export interface OracleSettings {
   AsmPassword?: string | redacted.Redacted<string>;
   AsmServer?: string;
   AsmUser?: string;
-  CharLengthSemantics?: CharLengthSemantics;
+  CharLengthSemantics?: CharLengthSemantics | (string & {});
   DatabaseName?: string;
   DirectPathParallelLoad?: boolean;
   FailTasksOnLobTruncation?: boolean;
@@ -1859,7 +1861,7 @@ export interface OracleSettings {
   TrimSpaceInChar?: boolean;
   ConvertTimestampWithZoneToUTC?: boolean;
   OpenTransactionWindow?: number;
-  AuthenticationMethod?: OracleAuthenticationMethod;
+  AuthenticationMethod?: OracleAuthenticationMethod | (string & {});
 }
 export const OracleSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1953,7 +1955,7 @@ export interface MicrosoftSQLServerSettings {
   Password?: string | redacted.Redacted<string>;
   QuerySingleAlwaysOnNode?: boolean;
   ReadBackupOnly?: boolean;
-  SafeguardPolicy?: SafeguardPolicy;
+  SafeguardPolicy?: SafeguardPolicy | (string & {});
   ServerName?: string;
   Username?: string;
   UseBcpFullLoad?: boolean;
@@ -1961,9 +1963,9 @@ export interface MicrosoftSQLServerSettings {
   SecretsManagerAccessRoleArn?: string;
   SecretsManagerSecretId?: string;
   TrimSpaceInChar?: boolean;
-  TlogAccessMode?: TlogAccessMode;
+  TlogAccessMode?: TlogAccessMode | (string & {});
   ForceLobLookup?: boolean;
-  AuthenticationMethod?: SqlServerAuthenticationMethod;
+  AuthenticationMethod?: SqlServerAuthenticationMethod | (string & {});
 }
 export const MicrosoftSQLServerSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2029,7 +2031,7 @@ export interface DocDbSettings {
   ServerName?: string;
   Port?: number;
   DatabaseName?: string;
-  NestingLevel?: NestingLevelValue;
+  NestingLevel?: NestingLevelValue | (string & {});
   ExtractDocId?: boolean;
   DocsToInvestigate?: number;
   KmsKeyId?: string;
@@ -2064,8 +2066,8 @@ export const RedisAuthTypeValue = /*@__PURE__*/ S.String;
 export interface RedisSettings {
   ServerName: string;
   Port: number;
-  SslSecurityProtocol?: SslSecurityProtocolValue;
-  AuthType?: RedisAuthTypeValue;
+  SslSecurityProtocol?: SslSecurityProtocolValue | (string & {});
+  AuthType?: RedisAuthTypeValue | (string & {});
   AuthUserName?: string;
   AuthPassword?: string | redacted.Redacted<string>;
   SslCaCertificateArn?: string;
@@ -2086,7 +2088,7 @@ export interface GcpMySQLSettings {
   CleanSourceMetadataOnMismatch?: boolean;
   DatabaseName?: string;
   EventsPollInterval?: number;
-  TargetDbType?: TargetDbType;
+  TargetDbType?: TargetDbType | (string & {});
   MaxFileSize?: number;
   ParallelLoadThreads?: number;
   Password?: string | redacted.Redacted<string>;

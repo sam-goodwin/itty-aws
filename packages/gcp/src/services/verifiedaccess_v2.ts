@@ -151,7 +151,7 @@ export type VerifyChallengeResponseResultProfileKeyTrustLevelEnum =
 export const VerifyChallengeResponseResultProfileKeyTrustLevelEnum =
   /*@__PURE__*/ S.String;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;

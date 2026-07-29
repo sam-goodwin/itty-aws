@@ -94,7 +94,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -118,7 +118,7 @@ export const GoogleApiHttpBody = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleApiHttpBody",
 }) as any as S.Schema<GoogleApiHttpBody>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -139,7 +139,7 @@ export const GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy 
   }) as any as S.Schema<GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy>;
 
 export type GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyList =
-  ReadonlyArray<GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy>;
+  Array<GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy>;
 export const GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyList =
   /*@__PURE__*/ S.Array(
     GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy,
@@ -175,7 +175,7 @@ export const GoogleCloudRecommendationengineV1beta1Image =
   }) as any as S.Schema<GoogleCloudRecommendationengineV1beta1Image>;
 
 export type GoogleCloudRecommendationengineV1beta1ImageList =
-  ReadonlyArray<GoogleCloudRecommendationengineV1beta1Image>;
+  Array<GoogleCloudRecommendationengineV1beta1Image>;
 export const GoogleCloudRecommendationengineV1beta1ImageList =
   /*@__PURE__*/ S.Array(
     GoogleCloudRecommendationengineV1beta1Image,
@@ -226,7 +226,9 @@ export const GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRange 
 /** ProductCatalogItem captures item metadata specific to retail products. */
 export interface GoogleCloudRecommendationengineV1beta1ProductCatalogItem {
   /** Optional. Online stock state of the catalog item. Default is `IN_STOCK`. */
-  stockState?: GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockStateEnum;
+  stockState?:
+    | GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockStateEnum
+    | (string & {});
   /** Optional. Product images for the catalog item. */
   images?: GoogleCloudRecommendationengineV1beta1ImageList;
   /** Optional. A map to pass the costs associated with the product. For example: {"manufacturing": 45.5} The profit of selling this item is computed like so: * If 'exactPrice' is provided, profit = displayPrice - sum(costs) * If 'priceRange' is provided, profit = minPrice - sum(costs) */
@@ -289,7 +291,7 @@ export const GoogleCloudRecommendationengineV1beta1FeatureMapStringListMap =
     GoogleCloudRecommendationengineV1beta1FeatureMapStringList,
   ) as any as S.Schema<GoogleCloudRecommendationengineV1beta1FeatureMapStringListMap>;
 
-export type DoubleList = ReadonlyArray<number>;
+export type DoubleList = Array<number>;
 export const DoubleList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<DoubleList>;
@@ -696,7 +698,9 @@ export interface GoogleCloudRecommendationengineV1beta1ProductDetail {
   /** Required. Catalog item ID. UTF-8 encoded string with a length limit of 128 characters. */
   id?: string;
   /** Optional. Item stock state. If provided, this overrides the stock state in Catalog for items in this event. */
-  stockState?: GoogleCloudRecommendationengineV1beta1ProductDetailStockStateEnum;
+  stockState?:
+    | GoogleCloudRecommendationengineV1beta1ProductDetailStockStateEnum
+    | (string & {});
   /** Optional. Original price of the product. If provided, this will override the original price in Catalog for this product. */
   originalPrice?: number;
 }
@@ -721,7 +725,7 @@ export const GoogleCloudRecommendationengineV1beta1ProductDetail =
   }) as any as S.Schema<GoogleCloudRecommendationengineV1beta1ProductDetail>;
 
 export type GoogleCloudRecommendationengineV1beta1ProductDetailList =
-  ReadonlyArray<GoogleCloudRecommendationengineV1beta1ProductDetail>;
+  Array<GoogleCloudRecommendationengineV1beta1ProductDetail>;
 export const GoogleCloudRecommendationengineV1beta1ProductDetailList =
   /*@__PURE__*/ S.Array(
     GoogleCloudRecommendationengineV1beta1ProductDetail,
@@ -834,7 +838,9 @@ export interface GoogleCloudRecommendationengineV1beta1UserEvent {
   /** Required. User event type. Allowed values are: * `add-to-cart` Products being added to cart. * `add-to-list` Items being added to a list (shopping list, favorites etc). * `category-page-view` Special pages such as sale or promotion pages viewed. * `checkout-start` User starting a checkout process. * `detail-page-view` Products detail page viewed. * `home-page-view` Homepage viewed. * `page-visit` Generic page visits not included in the event types above. * `purchase-complete` User finishing a purchase. * `refund` Purchased items being refunded or returned. * `remove-from-cart` Products being removed from cart. * `remove-from-list` Items being removed from a list. * `search` Product search. * `shopping-cart-page-view` User viewing a shopping cart. * `impression` List of items displayed. Used by Google Tag Manager. */
   eventType?: string;
   /** Optional. This field should *not* be set when using JavaScript pixel or the Recommendations AI Tag. Defaults to `EVENT_SOURCE_UNSPECIFIED`. */
-  eventSource?: GoogleCloudRecommendationengineV1beta1UserEventEventSourceEnum;
+  eventSource?:
+    | GoogleCloudRecommendationengineV1beta1UserEventEventSourceEnum
+    | (string & {});
   /** Optional. User event detailed information common across different recommendation types. */
   eventDetail?: GoogleCloudRecommendationengineV1beta1EventDetail;
   /** Optional. Only required for ImportUserEvents method. Timestamp of user event created. */
@@ -863,7 +869,7 @@ export const GoogleCloudRecommendationengineV1beta1UserEvent =
   }) as any as S.Schema<GoogleCloudRecommendationengineV1beta1UserEvent>;
 
 export type GoogleCloudRecommendationengineV1beta1UserEventList =
-  ReadonlyArray<GoogleCloudRecommendationengineV1beta1UserEvent>;
+  Array<GoogleCloudRecommendationengineV1beta1UserEvent>;
 export const GoogleCloudRecommendationengineV1beta1UserEventList =
   /*@__PURE__*/ S.Array(
     GoogleCloudRecommendationengineV1beta1UserEvent,
@@ -886,7 +892,7 @@ export const GoogleCloudRecommendationengineV1beta1UserEventInlineSource =
   }) as any as S.Schema<GoogleCloudRecommendationengineV1beta1UserEventInlineSource>;
 
 export type GoogleCloudRecommendationengineV1beta1CatalogItemList =
-  ReadonlyArray<GoogleCloudRecommendationengineV1beta1CatalogItem>;
+  Array<GoogleCloudRecommendationengineV1beta1CatalogItem>;
 export const GoogleCloudRecommendationengineV1beta1CatalogItemList =
   /*@__PURE__*/ S.Array(
     GoogleCloudRecommendationengineV1beta1CatalogItem,
@@ -1105,9 +1111,13 @@ export const GoogleCloudRecommendationengineV1beta1CatalogItemLevelConfigEventIt
 /** Configures the catalog level that users send events to, and the level at which predictions are made. */
 export interface GoogleCloudRecommendationengineV1beta1CatalogItemLevelConfig {
   /** Optional. Level of the catalog at which predictions are made. See https://cloud.google.com/recommendations-ai/docs/catalog#catalog-levels for more details. */
-  predictItemLevel?: GoogleCloudRecommendationengineV1beta1CatalogItemLevelConfigPredictItemLevelEnum;
+  predictItemLevel?:
+    | GoogleCloudRecommendationengineV1beta1CatalogItemLevelConfigPredictItemLevelEnum
+    | (string & {});
   /** Optional. Level of the catalog at which events are uploaded. See https://cloud.google.com/recommendations-ai/docs/catalog#catalog-levels for more details. */
-  eventItemLevel?: GoogleCloudRecommendationengineV1beta1CatalogItemLevelConfigEventItemLevelEnum;
+  eventItemLevel?:
+    | GoogleCloudRecommendationengineV1beta1CatalogItemLevelConfigEventItemLevelEnum
+    | (string & {});
 }
 export const GoogleCloudRecommendationengineV1beta1CatalogItemLevelConfig =
   /*@__PURE__*/ S.suspend(() =>
@@ -1149,7 +1159,7 @@ export const GoogleCloudRecommendationengineV1beta1Catalog =
   }) as any as S.Schema<GoogleCloudRecommendationengineV1beta1Catalog>;
 
 export type GoogleCloudRecommendationengineV1beta1CatalogList =
-  ReadonlyArray<GoogleCloudRecommendationengineV1beta1Catalog>;
+  Array<GoogleCloudRecommendationengineV1beta1Catalog>;
 export const GoogleCloudRecommendationengineV1beta1CatalogList =
   /*@__PURE__*/ S.Array(
     GoogleCloudRecommendationengineV1beta1Catalog,
@@ -1251,8 +1261,7 @@ export const ListProjectsLocationsCatalogsEventStoresOperationsRequest =
     identifier: "ListProjectsLocationsCatalogsEventStoresOperationsRequest",
   }) as any as S.Schema<ListProjectsLocationsCatalogsEventStoresOperationsRequest>;
 
-export type GoogleLongrunningOperationList =
-  ReadonlyArray<GoogleLongrunningOperation>;
+export type GoogleLongrunningOperationList = Array<GoogleLongrunningOperation>;
 export const GoogleLongrunningOperationList = /*@__PURE__*/ S.Array(
   GoogleLongrunningOperation,
 ) as any as S.Schema<GoogleLongrunningOperationList>;
@@ -1304,7 +1313,7 @@ export const ListProjectsLocationsCatalogsEventStoresPredictionApiKeyRegistratio
   }) as any as S.Schema<ListProjectsLocationsCatalogsEventStoresPredictionApiKeyRegistrationsRequest>;
 
 export type GoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistrationList =
-  ReadonlyArray<GoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration>;
+  Array<GoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration>;
 export const GoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistrationList =
   /*@__PURE__*/ S.Array(
     GoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration,
@@ -1542,7 +1551,7 @@ export const GoogleCloudRecommendationengineV1beta1PredictResponsePredictionResu
   }) as any as S.Schema<GoogleCloudRecommendationengineV1beta1PredictResponsePredictionResult>;
 
 export type GoogleCloudRecommendationengineV1beta1PredictResponsePredictionResultList =
-  ReadonlyArray<GoogleCloudRecommendationengineV1beta1PredictResponsePredictionResult>;
+  Array<GoogleCloudRecommendationengineV1beta1PredictResponsePredictionResult>;
 export const GoogleCloudRecommendationengineV1beta1PredictResponsePredictionResultList =
   /*@__PURE__*/ S.Array(
     GoogleCloudRecommendationengineV1beta1PredictResponsePredictionResult,

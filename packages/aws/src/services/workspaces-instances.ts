@@ -755,7 +755,7 @@ export type BillingMode = "MONTHLY" | "HOURLY";
 export const BillingMode = /*@__PURE__*/ S.String;
 
 export interface BillingConfiguration {
-  BillingMode: BillingMode;
+  BillingMode: BillingMode | (string & {});
 }
 export const BillingConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ BillingMode: BillingMode }),

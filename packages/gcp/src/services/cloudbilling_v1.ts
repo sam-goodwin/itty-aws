@@ -237,7 +237,7 @@ export type AuditLogConfigLogTypeEnum =
   | "DATA_READ";
 export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -245,7 +245,7 @@ export const StringList = /*@__PURE__*/ S.Array(
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
 export interface AuditLogConfig {
   /** The log type that this config enables. */
-  logType?: AuditLogConfigLogTypeEnum;
+  logType?: AuditLogConfigLogTypeEnum | (string & {});
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
   exemptedMembers?: StringList;
 }
@@ -256,7 +256,7 @@ export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
-export type AuditLogConfigList = ReadonlyArray<AuditLogConfig>;
+export type AuditLogConfigList = Array<AuditLogConfig>;
 export const AuditLogConfigList = /*@__PURE__*/ S.Array(
   AuditLogConfig,
 ) as any as S.Schema<AuditLogConfigList>;
@@ -275,7 +275,7 @@ export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
-export type AuditConfigList = ReadonlyArray<AuditConfig>;
+export type AuditConfigList = Array<AuditConfig>;
 export const AuditConfigList = /*@__PURE__*/ S.Array(
   AuditConfig,
 ) as any as S.Schema<AuditConfigList>;
@@ -317,7 +317,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
-export type BindingList = ReadonlyArray<Binding>;
+export type BindingList = Array<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -369,7 +369,7 @@ export const ListBillingAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListBillingAccountsRequest",
 }) as any as S.Schema<ListBillingAccountsRequest>;
 
-export type BillingAccountList = ReadonlyArray<BillingAccount>;
+export type BillingAccountList = Array<BillingAccount>;
 export const BillingAccountList = /*@__PURE__*/ S.Array(
   BillingAccount,
 ) as any as S.Schema<BillingAccountList>;
@@ -414,7 +414,7 @@ export const ListBillingAccountsProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListBillingAccountsProjectsRequest",
 }) as any as S.Schema<ListBillingAccountsProjectsRequest>;
 
-export type ProjectBillingInfoList = ReadonlyArray<ProjectBillingInfo>;
+export type ProjectBillingInfoList = Array<ProjectBillingInfo>;
 export const ProjectBillingInfoList = /*@__PURE__*/ S.Array(
   ProjectBillingInfo,
 ) as any as S.Schema<ProjectBillingInfoList>;
@@ -532,7 +532,7 @@ export const Service = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Service" }) as any as S.Schema<Service>;
 
-export type ServiceList = ReadonlyArray<Service>;
+export type ServiceList = Array<Service>;
 export const ServiceList = /*@__PURE__*/ S.Array(
   Service,
 ) as any as S.Schema<ServiceList>;
@@ -667,7 +667,7 @@ export const TierRate = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TierRate" }) as any as S.Schema<TierRate>;
 
-export type TierRateList = ReadonlyArray<TierRate>;
+export type TierRateList = Array<TierRate>;
 export const TierRateList = /*@__PURE__*/ S.Array(
   TierRate,
 ) as any as S.Schema<TierRateList>;
@@ -726,7 +726,7 @@ export const PricingInfo = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PricingInfo" }) as any as S.Schema<PricingInfo>;
 
-export type PricingInfoList = ReadonlyArray<PricingInfo>;
+export type PricingInfoList = Array<PricingInfo>;
 export const PricingInfoList = /*@__PURE__*/ S.Array(
   PricingInfo,
 ) as any as S.Schema<PricingInfoList>;
@@ -783,7 +783,7 @@ export const Sku = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Sku" }) as any as S.Schema<Sku>;
 
-export type SkuList = ReadonlyArray<Sku>;
+export type SkuList = Array<Sku>;
 export const SkuList = /*@__PURE__*/ S.Array(Sku) as any as S.Schema<SkuList>;
 
 /** Response message for `ListSkus`. */

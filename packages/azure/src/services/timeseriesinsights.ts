@@ -17,8 +17,9 @@ export type AccessPolicyResourcePropertiesRolesItem = "Reader" | "Contributor";
 export const AccessPolicyResourcePropertiesRolesItem = /*@__PURE__*/ S.String;
 
 /** The list of roles the principal is assigned on the environment. */
-export type AccessPolicyResourcePropertiesRolesList =
-  ReadonlyArray<AccessPolicyResourcePropertiesRolesItem>;
+export type AccessPolicyResourcePropertiesRolesList = Array<
+  AccessPolicyResourcePropertiesRolesItem | (string & {})
+>;
 export const AccessPolicyResourcePropertiesRolesList = /*@__PURE__*/ S.Array(
   AccessPolicyResourcePropertiesRolesItem,
 ) as any as S.Schema<AccessPolicyResourcePropertiesRolesList>;
@@ -223,8 +224,7 @@ export const AccessPolicyResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccessPolicyResource>;
 
 /** Result of the List access policies operation. */
-export type AccessPolicyListResponseValueList =
-  ReadonlyArray<AccessPolicyResource>;
+export type AccessPolicyListResponseValueList = Array<AccessPolicyResource>;
 export const AccessPolicyListResponseValueList = /*@__PURE__*/ S.Array(
   AccessPolicyResource,
 ) as any as S.Schema<AccessPolicyListResponseValueList>;
@@ -247,7 +247,7 @@ export type AccessPolicyMutablePropertiesRolesItem = "Reader" | "Contributor";
 export const AccessPolicyMutablePropertiesRolesItem = /*@__PURE__*/ S.String;
 
 /** The list of roles the principal is assigned on the environment. */
-export type AccessPolicyMutablePropertiesRolesList = ReadonlyArray<
+export type AccessPolicyMutablePropertiesRolesList = Array<
   AccessPolicyMutablePropertiesRolesItem | (string & {})
 >;
 export const AccessPolicyMutablePropertiesRolesList = /*@__PURE__*/ S.Array(
@@ -340,7 +340,7 @@ export const SkuName = /*@__PURE__*/ S.String;
 /** The sku determines the type of environment, either Gen1 (S1 or S2) or Gen2 (L1). For Gen1 environments the sku determines the capacity of the environment, the ingress rate, and the billing rate. */
 export interface Sku {
   /** The name of this SKU. */
-  name: SkuName;
+  name: SkuName | (string & {});
   /** The capacity of the sku. For Gen1 environments, this value can be changed to support scale out of environments after they have been created. */
   capacity: number;
 }
@@ -600,8 +600,7 @@ export const EnvironmentResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EnvironmentResource>;
 
 /** Result of the List Environments operation. */
-export type EnvironmentListResponseValueList =
-  ReadonlyArray<EnvironmentResource>;
+export type EnvironmentListResponseValueList = Array<EnvironmentResource>;
 export const EnvironmentListResponseValueList = /*@__PURE__*/ S.Array(
   EnvironmentResource,
 ) as any as S.Schema<EnvironmentListResponseValueList>;
@@ -1025,8 +1024,7 @@ export const EventSourceResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EventSourceResource>;
 
 /** Result of the List EventSources operation. */
-export type EventSourceListResponseValueList =
-  ReadonlyArray<EventSourceResource>;
+export type EventSourceListResponseValueList = Array<EventSourceResource>;
 export const EventSourceListResponseValueList = /*@__PURE__*/ S.Array(
   EventSourceResource,
 ) as any as S.Schema<EventSourceListResponseValueList>;
@@ -1186,7 +1184,7 @@ export const Dimension = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Dimension" }) as any as S.Schema<Dimension>;
 
 /** Dimensions of blobs, including blob type and access tier. */
-export type MetricSpecificationDimensionsList = ReadonlyArray<Dimension>;
+export type MetricSpecificationDimensionsList = Array<Dimension>;
 export const MetricSpecificationDimensionsList = /*@__PURE__*/ S.Array(
   Dimension,
 ) as any as S.Schema<MetricSpecificationDimensionsList>;
@@ -1206,8 +1204,7 @@ export const MetricAvailability = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MetricAvailability>;
 
 /** Retention policies of a resource metric. */
-export type MetricSpecificationAvailabilitiesList =
-  ReadonlyArray<MetricAvailability>;
+export type MetricSpecificationAvailabilitiesList = Array<MetricAvailability>;
 export const MetricSpecificationAvailabilitiesList = /*@__PURE__*/ S.Array(
   MetricAvailability,
 ) as any as S.Schema<MetricSpecificationAvailabilitiesList>;
@@ -1251,7 +1248,7 @@ export const MetricSpecification = /*@__PURE__*/ S.suspend(() =>
 
 /** Metric specifications of operation. */
 export type ServiceSpecificationMetricSpecificationsList =
-  ReadonlyArray<MetricSpecification>;
+  Array<MetricSpecification>;
 export const ServiceSpecificationMetricSpecificationsList =
   /*@__PURE__*/ S.Array(
     MetricSpecification,
@@ -1274,8 +1271,7 @@ export const LogSpecification = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LogSpecification>;
 
 /** A list of Azure Monitoring log definitions. */
-export type ServiceSpecificationLogSpecificationsList =
-  ReadonlyArray<LogSpecification>;
+export type ServiceSpecificationLogSpecificationsList = Array<LogSpecification>;
 export const ServiceSpecificationLogSpecificationsList = /*@__PURE__*/ S.Array(
   LogSpecification,
 ) as any as S.Schema<ServiceSpecificationLogSpecificationsList>;
@@ -1330,7 +1326,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of Time Series Insights operations supported by the Microsoft.TimeSeriesInsights resource provider. */
-export type OperationListResultValueList = ReadonlyArray<Operation>;
+export type OperationListResultValueList = Array<Operation>;
 export const OperationListResultValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationListResultValueList>;
@@ -1374,7 +1370,7 @@ export interface ReferenceDataSetKeyProperty {
   /** The name of the key property. */
   name?: string;
   /** The type of the key property. */
-  type?: ReferenceDataSetKeyPropertyType;
+  type?: ReferenceDataSetKeyPropertyType | (string & {});
 }
 export const ReferenceDataSetKeyProperty = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1387,7 +1383,7 @@ export const ReferenceDataSetKeyProperty = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of key properties for the reference data set. */
 export type ReferenceDataSetCreationPropertiesKeyPropertiesList =
-  ReadonlyArray<ReferenceDataSetKeyProperty>;
+  Array<ReferenceDataSetKeyProperty>;
 export const ReferenceDataSetCreationPropertiesKeyPropertiesList =
   /*@__PURE__*/ S.Array(
     ReferenceDataSetKeyProperty,
@@ -1469,7 +1465,7 @@ export const ReferenceDataSetsCreateOrUpdateResponseTagsMap =
 
 /** The list of key properties for the reference data set. */
 export type ReferenceDataSetResourcePropertiesKeyPropertiesList =
-  ReadonlyArray<ReferenceDataSetKeyProperty>;
+  Array<ReferenceDataSetKeyProperty>;
 export const ReferenceDataSetResourcePropertiesKeyPropertiesList =
   /*@__PURE__*/ S.Array(
     ReferenceDataSetKeyProperty,
@@ -1705,7 +1701,7 @@ export const ReferenceDataSetResource = /*@__PURE__*/ S.suspend(() =>
 
 /** Result of the List Reference Data Sets operation. */
 export type ReferenceDataSetListResponseValueList =
-  ReadonlyArray<ReferenceDataSetResource>;
+  Array<ReferenceDataSetResource>;
 export const ReferenceDataSetListResponseValueList = /*@__PURE__*/ S.Array(
   ReferenceDataSetResource,
 ) as any as S.Schema<ReferenceDataSetListResponseValueList>;

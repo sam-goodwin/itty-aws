@@ -93,7 +93,7 @@ export const SchemaPropertyGroupProperty = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SchemaPropertyGroupProperty>;
 
 export type SchemaPropertyGroupPropertiesList =
-  ReadonlyArray<SchemaPropertyGroupProperty>;
+  Array<SchemaPropertyGroupProperty>;
 export const SchemaPropertyGroupPropertiesList = /*@__PURE__*/ S.Array(
   SchemaPropertyGroupProperty,
 ) as any as S.Schema<SchemaPropertyGroupPropertiesList>;
@@ -111,7 +111,7 @@ export const EventDefinitionBasic = /*@__PURE__*/ S.suspend(() =>
   identifier: "EventDefinitionBasic",
 }) as any as S.Schema<EventDefinitionBasic>;
 
-export type SchemaPropertyGroupEventsList = ReadonlyArray<EventDefinitionBasic>;
+export type SchemaPropertyGroupEventsList = Array<EventDefinitionBasic>;
 export const SchemaPropertyGroupEventsList = /*@__PURE__*/ S.Array(
   EventDefinitionBasic,
 ) as any as S.Schema<SchemaPropertyGroupEventsList>;
@@ -263,7 +263,7 @@ export const EventSchemasListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EventSchemasListRequest>;
 
 export type PaginatedEventSchemaListOutputResultsList =
-  ReadonlyArray<EventSchemaOutput>;
+  Array<EventSchemaOutput>;
 export const PaginatedEventSchemaListOutputResultsList = /*@__PURE__*/ S.Array(
   EventSchemaOutput,
 ) as any as S.Schema<PaginatedEventSchemaListOutputResultsList>;

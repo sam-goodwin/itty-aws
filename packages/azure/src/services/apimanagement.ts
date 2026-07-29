@@ -86,7 +86,7 @@ export const AllPoliciesContract = /*@__PURE__*/ S.suspend(() =>
 
 /** AllPolicies Contract value. */
 export type AllPoliciesListByServiceResponseValueList =
-  ReadonlyArray<AllPoliciesContract>;
+  Array<AllPoliciesContract>;
 export const AllPoliciesListByServiceResponseValueList = /*@__PURE__*/ S.Array(
   AllPoliciesContract,
 ) as any as S.Schema<AllPoliciesListByServiceResponseValueList>;
@@ -129,7 +129,7 @@ export const BearerTokenSendingMethodsContract = /*@__PURE__*/ S.String;
 
 /** How to send token to the server. */
 export type OpenIdAuthenticationSettingsContractBearerTokenSendingMethodsList =
-  ReadonlyArray<BearerTokenSendingMethodsContract>;
+  Array<BearerTokenSendingMethodsContract | (string & {})>;
 export const OpenIdAuthenticationSettingsContractBearerTokenSendingMethodsList =
   /*@__PURE__*/ S.Array(
     BearerTokenSendingMethodsContract,
@@ -156,7 +156,7 @@ export const OpenIdAuthenticationSettingsContract = /*@__PURE__*/ S.suspend(
 
 /** Collection of OAuth2 authentication settings included into this API. */
 export type AuthenticationSettingsContractOAuth2AuthenticationSettingsList =
-  ReadonlyArray<OAuth2AuthenticationSettingsContract>;
+  Array<OAuth2AuthenticationSettingsContract>;
 export const AuthenticationSettingsContractOAuth2AuthenticationSettingsList =
   /*@__PURE__*/ S.Array(
     OAuth2AuthenticationSettingsContract,
@@ -164,7 +164,7 @@ export const AuthenticationSettingsContractOAuth2AuthenticationSettingsList =
 
 /** Collection of Open ID Connect authentication settings included into this API. */
 export type AuthenticationSettingsContractOpenidAuthenticationSettingsList =
-  ReadonlyArray<OpenIdAuthenticationSettingsContract>;
+  Array<OpenIdAuthenticationSettingsContract>;
 export const AuthenticationSettingsContractOpenidAuthenticationSettingsList =
   /*@__PURE__*/ S.Array(
     OpenIdAuthenticationSettingsContract,
@@ -267,7 +267,7 @@ export const ApiCreateOrUpdatePropertiesInputProtocolsItem =
   /*@__PURE__*/ S.String;
 
 /** Describes on which protocols the operations in this API can be invoked. */
-export type ApiCreateOrUpdatePropertiesInputProtocolsList = ReadonlyArray<
+export type ApiCreateOrUpdatePropertiesInputProtocolsList = Array<
   ApiCreateOrUpdatePropertiesInputProtocolsItem | (string & {})
 >;
 export const ApiCreateOrUpdatePropertiesInputProtocolsList =
@@ -292,7 +292,9 @@ export interface ApiVersionSetContractDetails {
   /** Description of API Version Set. */
   description?: string;
   /** An value that determines where the API Version identifier will be located in a HTTP request. */
-  versioningScheme?: ApiVersionSetContractDetailsVersioningScheme;
+  versioningScheme?:
+    | ApiVersionSetContractDetailsVersioningScheme
+    | (string & {});
   /** Name of query parameter that indicates the API Version if versioningScheme is set to `query`. */
   versionQueryName?: string;
   /** Name of HTTP header parameter that indicates the API Version if versioningScheme is set to `header`. */
@@ -505,7 +507,7 @@ export const ApiContractPropertiesProtocolsItem = /*@__PURE__*/ S.String;
 
 /** Describes on which protocols the operations in this API can be invoked. */
 export type ApiContractPropertiesProtocolsList =
-  ReadonlyArray<ApiContractPropertiesProtocolsItem>;
+  Array<ApiContractPropertiesProtocolsItem>;
 export const ApiContractPropertiesProtocolsList = /*@__PURE__*/ S.Array(
   ApiContractPropertiesProtocolsItem,
 ) as any as S.Schema<ApiContractPropertiesProtocolsList>;
@@ -658,7 +660,7 @@ export const SamplingSettingsSamplingType = /*@__PURE__*/ S.String;
 /** Sampling settings for Diagnostic. */
 export interface SamplingSettings {
   /** Sampling type. */
-  samplingType?: SamplingSettingsSamplingType;
+  samplingType?: SamplingSettingsSamplingType | (string & {});
   /** Rate of sampling for fixed-rate sampling. */
   percentage?: number;
 }
@@ -672,7 +674,7 @@ export const SamplingSettings = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SamplingSettings>;
 
 /** Array of HTTP Headers to log. */
-export type HttpMessageDiagnosticHeadersList = ReadonlyArray<string>;
+export type HttpMessageDiagnosticHeadersList = Array<string>;
 export const HttpMessageDiagnosticHeadersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<HttpMessageDiagnosticHeadersList>;
@@ -698,7 +700,7 @@ export interface DataMaskingEntity {
   /** The name of an entity to mask (e.g. a name of a header or a query parameter). */
   value?: string;
   /** Data masking mode. */
-  mode?: DataMaskingEntityMode;
+  mode?: DataMaskingEntityMode | (string & {});
 }
 export const DataMaskingEntity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -710,13 +712,13 @@ export const DataMaskingEntity = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DataMaskingEntity>;
 
 /** Masking settings for Url query parameters */
-export type DataMaskingQueryParamsList = ReadonlyArray<DataMaskingEntity>;
+export type DataMaskingQueryParamsList = Array<DataMaskingEntity>;
 export const DataMaskingQueryParamsList = /*@__PURE__*/ S.Array(
   DataMaskingEntity,
 ) as any as S.Schema<DataMaskingQueryParamsList>;
 
 /** Masking settings for headers */
-export type DataMaskingHeadersList = ReadonlyArray<DataMaskingEntity>;
+export type DataMaskingHeadersList = Array<DataMaskingEntity>;
 export const DataMaskingHeadersList = /*@__PURE__*/ S.Array(
   DataMaskingEntity,
 ) as any as S.Schema<DataMaskingHeadersList>;
@@ -792,7 +794,7 @@ export const DiagnosticContractPropertiesOperationNameFormat =
 /** Diagnostic Entity Properties */
 export interface DiagnosticContractProperties {
   /** Specifies for what type of messages sampling settings should not apply. */
-  alwaysLog?: DiagnosticContractPropertiesAlwaysLog;
+  alwaysLog?: DiagnosticContractPropertiesAlwaysLog | (string & {});
   /** Resource Id of a target logger. */
   loggerId: string;
   /** Sampling settings for Diagnostic. */
@@ -804,11 +806,15 @@ export interface DiagnosticContractProperties {
   /** Log the ClientIP. Default is false. */
   logClientIp?: boolean;
   /** Sets correlation protocol to use for Application Insights diagnostics. */
-  httpCorrelationProtocol?: DiagnosticContractPropertiesHttpCorrelationProtocol;
+  httpCorrelationProtocol?:
+    | DiagnosticContractPropertiesHttpCorrelationProtocol
+    | (string & {});
   /** The verbosity level applied to traces emitted by trace policies. */
-  verbosity?: DiagnosticContractPropertiesVerbosity;
+  verbosity?: DiagnosticContractPropertiesVerbosity | (string & {});
   /** The format of the Operation Name for Application Insights telemetries. Default is Name. */
-  operationNameFormat?: DiagnosticContractPropertiesOperationNameFormat;
+  operationNameFormat?:
+    | DiagnosticContractPropertiesOperationNameFormat
+    | (string & {});
   /** Emit custom metrics via emit-metric policy. Applicable only to Application Insights diagnostic settings. */
   metrics?: boolean;
 }
@@ -1039,7 +1045,7 @@ export const DiagnosticContract = /*@__PURE__*/ S.suspend(() =>
 
 /** Page values. */
 export type ApiDiagnosticListByServiceResponseValueList =
-  ReadonlyArray<DiagnosticContract>;
+  Array<DiagnosticContract>;
 export const ApiDiagnosticListByServiceResponseValueList =
   /*@__PURE__*/ S.Array(
     DiagnosticContract,
@@ -1120,7 +1126,7 @@ export const ApiDiagnosticUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The hostnames of the data-plane gateway to which requests can be sent. */
 export type GatewayConfigConnectionBasePropertiesInputHostnamesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GatewayConfigConnectionBasePropertiesInputHostnamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1177,8 +1183,7 @@ export const ApiGatewayConfigConnectionCreateOrUpdateRequest =
   }) as any as S.Schema<ApiGatewayConfigConnectionCreateOrUpdateRequest>;
 
 /** The hostnames of the data-plane gateway to which requests can be sent. */
-export type GatewayConfigConnectionBasePropertiesHostnamesList =
-  ReadonlyArray<string>;
+export type GatewayConfigConnectionBasePropertiesHostnamesList = Array<string>;
 export const GatewayConfigConnectionBasePropertiesHostnamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1375,7 +1380,7 @@ export const ApiManagementGatewayConfigConnectionResource =
 
 /** Result of the List API Management gateway config connection operation. */
 export type ApiManagementGatewayConfigConnectionListResultValueList =
-  ReadonlyArray<ApiManagementGatewayConfigConnectionResource>;
+  Array<ApiManagementGatewayConfigConnectionResource>;
 export const ApiManagementGatewayConfigConnectionListResultValueList =
   /*@__PURE__*/ S.Array(
     ApiManagementGatewayConfigConnectionResource,
@@ -1493,7 +1498,7 @@ export const ApiManagementGatewaySkuPropertiesName = /*@__PURE__*/ S.String;
 /** API Management gateway resource SKU properties. */
 export interface ApiManagementGatewaySkuProperties {
   /** Name of the Sku. */
-  name: ApiManagementGatewaySkuPropertiesName;
+  name: ApiManagementGatewaySkuPropertiesName | (string & {});
   /** Capacity of the SKU (number of deployed units of the SKU) */
   capacity?: number;
 }
@@ -1974,7 +1979,7 @@ export const ApiManagementGatewayResource = /*@__PURE__*/ S.suspend(() =>
 
 /** Result of the List API Management gateway operation. */
 export type ApiManagementGatewayListResultValueList =
-  ReadonlyArray<ApiManagementGatewayResource>;
+  Array<ApiManagementGatewayResource>;
 export const ApiManagementGatewayListResultValueList = /*@__PURE__*/ S.Array(
   ApiManagementGatewayResource,
 ) as any as S.Schema<ApiManagementGatewayListResultValueList>;
@@ -2499,7 +2504,7 @@ export const IssueAttachmentContract = /*@__PURE__*/ S.suspend(() =>
 
 /** Issue Attachment values. */
 export type ApiIssueAttachmentListByServiceResponseValueList =
-  ReadonlyArray<IssueAttachmentContract>;
+  Array<IssueAttachmentContract>;
 export const ApiIssueAttachmentListByServiceResponseValueList =
   /*@__PURE__*/ S.Array(
     IssueAttachmentContract,
@@ -2763,7 +2768,7 @@ export const IssueCommentContract = /*@__PURE__*/ S.suspend(() =>
 
 /** Issue Comment values. */
 export type ApiIssueCommentListByServiceResponseValueList =
-  ReadonlyArray<IssueCommentContract>;
+  Array<IssueCommentContract>;
 export const ApiIssueCommentListByServiceResponseValueList =
   /*@__PURE__*/ S.Array(
     IssueCommentContract,
@@ -2802,7 +2807,7 @@ export interface IssueContractProperties {
   /** Date and time when the issue was created. */
   createdDate?: string;
   /** Status of the issue. */
-  state?: IssueContractPropertiesState;
+  state?: IssueContractPropertiesState | (string & {});
   /** A resource identifier for the API the issue was created for. */
   apiId?: string;
   /** The issue title. */
@@ -3034,8 +3039,7 @@ export const IssueContract = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IssueContract" }) as any as S.Schema<IssueContract>;
 
 /** Issue values. */
-export type ApiIssueListByServiceResponseValueList =
-  ReadonlyArray<IssueContract>;
+export type ApiIssueListByServiceResponseValueList = Array<IssueContract>;
 export const ApiIssueListByServiceResponseValueList = /*@__PURE__*/ S.Array(
   IssueContract,
 ) as any as S.Schema<ApiIssueListByServiceResponseValueList>;
@@ -3211,7 +3215,7 @@ export const ApiContract = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ApiContract" }) as any as S.Schema<ApiContract>;
 
 /** Page values. */
-export type ApiListByServiceResponseValueList = ReadonlyArray<ApiContract>;
+export type ApiListByServiceResponseValueList = Array<ApiContract>;
 export const ApiListByServiceResponseValueList = /*@__PURE__*/ S.Array(
   ApiContract,
 ) as any as S.Schema<ApiListByServiceResponseValueList>;
@@ -3307,7 +3311,7 @@ export const ApiTagResourceContractPropertiesProtocolsItem =
 
 /** Describes on which protocols the operations in this API can be invoked. */
 export type ApiTagResourceContractPropertiesProtocolsList =
-  ReadonlyArray<ApiTagResourceContractPropertiesProtocolsItem>;
+  Array<ApiTagResourceContractPropertiesProtocolsItem>;
 export const ApiTagResourceContractPropertiesProtocolsList =
   /*@__PURE__*/ S.Array(
     ApiTagResourceContractPropertiesProtocolsItem,
@@ -3484,7 +3488,7 @@ export const TagResourceContract = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TagResourceContract>;
 
 /** Page values. */
-export type ApiListByTagsResponseValueList = ReadonlyArray<TagResourceContract>;
+export type ApiListByTagsResponseValueList = Array<TagResourceContract>;
 export const ApiListByTagsResponseValueList = /*@__PURE__*/ S.Array(
   TagResourceContract,
 ) as any as S.Schema<ApiListByTagsResponseValueList>;
@@ -3598,7 +3602,7 @@ export const GatewayResourceSkuResult = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of skus available for the gateway. */
 export type GatewayResourceSkuResultsValueList =
-  ReadonlyArray<GatewayResourceSkuResult>;
+  Array<GatewayResourceSkuResult>;
 export const GatewayResourceSkuResultsValueList = /*@__PURE__*/ S.Array(
   GatewayResourceSkuResult,
 ) as any as S.Schema<GatewayResourceSkuResultsValueList>;
@@ -3676,7 +3680,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider. */
-export type OperationListResultValueList = ReadonlyArray<Operation>;
+export type OperationListResultValueList = Array<Operation>;
 export const OperationListResultValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationListResultValueList>;
@@ -3782,7 +3786,7 @@ export const HostnameConfigurationCertificateStatus = /*@__PURE__*/ S.String;
 /** Custom hostname configuration. */
 export interface HostnameConfiguration {
   /** Hostname type. */
-  type: HostnameConfigurationType;
+  type: HostnameConfigurationType | (string & {});
   /** Hostname to configure on the Api Management service. */
   hostName: string;
   /** Url to the KeyVault Secret containing the Ssl Certificate. If absolute Url containing version is provided, auto-update of ssl certificate will not work. This requires Api Management service to be configured with aka.ms/apimmsi. The secret should be of type *application/x-pkcs12* */
@@ -3800,9 +3804,9 @@ export interface HostnameConfiguration {
   /** Certificate information. */
   certificate?: CertificateInformation;
   /** Certificate Source. */
-  certificateSource?: HostnameConfigurationCertificateSource;
+  certificateSource?: HostnameConfigurationCertificateSource | (string & {});
   /** Certificate Status. */
-  certificateStatus?: HostnameConfigurationCertificateStatus;
+  certificateStatus?: HostnameConfigurationCertificateStatus | (string & {});
 }
 export const HostnameConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3824,15 +3828,14 @@ export const HostnameConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** Custom hostname configuration of the API Management service. */
 export type ApiManagementServicePropertiesHostnameConfigurationsList =
-  ReadonlyArray<HostnameConfiguration>;
+  Array<HostnameConfiguration>;
 export const ApiManagementServicePropertiesHostnameConfigurationsList =
   /*@__PURE__*/ S.Array(
     HostnameConfiguration,
   ) as any as S.Schema<ApiManagementServicePropertiesHostnameConfigurationsList>;
 
 /** Public Static Load Balanced IP addresses of the API Management service in Primary region. Available only for Basic, Standard, Premium and Isolated SKU. */
-export type ApiManagementServicePropertiesPublicIPAddressesList =
-  ReadonlyArray<string>;
+export type ApiManagementServicePropertiesPublicIPAddressesList = Array<string>;
 export const ApiManagementServicePropertiesPublicIPAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3840,7 +3843,7 @@ export const ApiManagementServicePropertiesPublicIPAddressesList =
 
 /** Private Static Load Balanced IP addresses of the API Management service in Primary region which is deployed in an Internal Virtual Network. Available only for Basic, Standard, Premium and Isolated SKU. */
 export type ApiManagementServicePropertiesPrivateIPAddressesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ApiManagementServicePropertiesPrivateIPAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3860,7 +3863,7 @@ export const ConfigurationApiLegacyApi = /*@__PURE__*/ S.String;
 /** Information regarding the Configuration API of the API Management service. */
 export interface ConfigurationApi {
   /** Indication whether or not the legacy Configuration API (v1) should be exposed on the API Management service. Value is optional but must be 'Enabled' or 'Disabled'. If 'Disabled', legacy Configuration API (v1) will not be available for self-hosted gateways. Default value is 'Enabled' */
-  legacyApi?: ConfigurationApiLegacyApi;
+  legacyApi?: ConfigurationApiLegacyApi | (string & {});
 }
 export const ConfigurationApi = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3904,7 +3907,7 @@ export const ApiManagementServiceSkuPropertiesName = /*@__PURE__*/ S.String;
 /** API Management service resource SKU properties. */
 export interface ApiManagementServiceSkuProperties {
   /** Name of the Sku. */
-  name: ApiManagementServiceSkuPropertiesName;
+  name: ApiManagementServiceSkuPropertiesName | (string & {});
   /** Capacity of the SKU (number of deployed units of the SKU). For Consumption SKU capacity must be specified as 0. */
   capacity: number;
 }
@@ -3918,19 +3921,19 @@ export const ApiManagementServiceSkuProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ApiManagementServiceSkuProperties>;
 
 /** A list of availability zones denoting where the resource needs to come from. */
-export type AdditionalLocationZonesList = ReadonlyArray<string>;
+export type AdditionalLocationZonesList = Array<string>;
 export const AdditionalLocationZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AdditionalLocationZonesList>;
 
 /** Public Static Load Balanced IP addresses of the API Management service in the additional location. Available only for Basic, Standard, Premium and Isolated SKU. */
-export type AdditionalLocationPublicIPAddressesList = ReadonlyArray<string>;
+export type AdditionalLocationPublicIPAddressesList = Array<string>;
 export const AdditionalLocationPublicIPAddressesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AdditionalLocationPublicIPAddressesList>;
 
 /** Private Static Load Balanced IP addresses of the API Management service which is deployed in an Internal Virtual Network in a particular additional location. Available only for Basic, Standard, Premium and Isolated SKU. */
-export type AdditionalLocationPrivateIPAddressesList = ReadonlyArray<string>;
+export type AdditionalLocationPrivateIPAddressesList = Array<string>;
 export const AdditionalLocationPrivateIPAddressesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AdditionalLocationPrivateIPAddressesList>;
@@ -3940,8 +3943,7 @@ export type AdditionalLocationNatGatewayState = "Enabled" | "Disabled";
 export const AdditionalLocationNatGatewayState = /*@__PURE__*/ S.String;
 
 /** Outbound public IPV4 address prefixes associated with NAT Gateway deployed service. Available only for Premium SKU on stv2 platform. */
-export type AdditionalLocationOutboundPublicIPAddressesList =
-  ReadonlyArray<string>;
+export type AdditionalLocationOutboundPublicIPAddressesList = Array<string>;
 export const AdditionalLocationOutboundPublicIPAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4006,7 +4008,7 @@ export const AdditionalLocation = /*@__PURE__*/ S.suspend(() =>
 
 /** Additional datacenter locations of the API Management service. */
 export type ApiManagementServicePropertiesAdditionalLocationsList =
-  ReadonlyArray<AdditionalLocation>;
+  Array<AdditionalLocation>;
 export const ApiManagementServicePropertiesAdditionalLocationsList =
   /*@__PURE__*/ S.Array(
     AdditionalLocation,
@@ -4033,7 +4035,7 @@ export interface CertificateConfiguration {
   /** Certificate Password. */
   certificatePassword?: string | Redacted.Redacted<string>;
   /** The System.Security.Cryptography.x509certificates.StoreName certificate store location. Only Root and CertificateAuthority are valid locations. */
-  storeName: CertificateConfigurationStoreName;
+  storeName: CertificateConfigurationStoreName | (string & {});
   /** Certificate information. */
   certificate?: CertificateInformation;
 }
@@ -4050,7 +4052,7 @@ export const CertificateConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Certificates that need to be installed in the API Management service. Max supported certificates that can be installed is 10. */
 export type ApiManagementServicePropertiesCertificatesList =
-  ReadonlyArray<CertificateConfiguration>;
+  Array<CertificateConfiguration>;
 export const ApiManagementServicePropertiesCertificatesList =
   /*@__PURE__*/ S.Array(
     CertificateConfiguration,
@@ -4065,7 +4067,7 @@ export const ApiManagementServicePropertiesNatGatewayState =
 
 /** Outbound public IPV4 address prefixes associated with NAT Gateway deployed service. Available only for Premium SKU on stv2 platform. */
 export type ApiManagementServicePropertiesOutboundPublicIPAddressesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ApiManagementServicePropertiesOutboundPublicIPAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4132,7 +4134,7 @@ export const PrivateEndpointConnectionWrapperPropertiesPrivateLinkServiceConnect
 
 /** All the Group ids. */
 export type PrivateEndpointConnectionWrapperPropertiesGroupIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PrivateEndpointConnectionWrapperPropertiesGroupIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4189,7 +4191,7 @@ export const ApiManagementServicePropertiesPrivateEndpointConnectionsItem =
 
 /** List of Private Endpoint Connections of this service. */
 export type ApiManagementServicePropertiesPrivateEndpointConnectionsList =
-  ReadonlyArray<ApiManagementServicePropertiesPrivateEndpointConnectionsItem>;
+  Array<ApiManagementServicePropertiesPrivateEndpointConnectionsItem>;
 export const ApiManagementServicePropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     ApiManagementServicePropertiesPrivateEndpointConnectionsItem,
@@ -4455,7 +4457,7 @@ export const ApiManagementServiceApplyNetworkConfigurationUpdatesResponseSystemD
 
 /** A list of availability zones denoting where the resource needs to come from. */
 export type ApiManagementServiceApplyNetworkConfigurationUpdatesResponseZonesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ApiManagementServiceApplyNetworkConfigurationUpdatesResponseZonesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4622,7 +4624,7 @@ export const ApiManagementServiceBackupResponseSystemData =
   }) as any as S.Schema<ApiManagementServiceBackupResponseSystemData>;
 
 /** A list of availability zones denoting where the resource needs to come from. */
-export type ApiManagementServiceBackupResponseZonesList = ReadonlyArray<string>;
+export type ApiManagementServiceBackupResponseZonesList = Array<string>;
 export const ApiManagementServiceBackupResponseZonesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4733,7 +4735,7 @@ export const ApiManagementServiceCreateOrUpdateRequestTagsMap =
 
 /** Custom hostname configuration of the API Management service. */
 export type ApiManagementServicePropertiesInputHostnameConfigurationsList =
-  ReadonlyArray<HostnameConfiguration>;
+  Array<HostnameConfiguration>;
 export const ApiManagementServicePropertiesInputHostnameConfigurationsList =
   /*@__PURE__*/ S.Array(
     HostnameConfiguration,
@@ -4760,7 +4762,7 @@ export const VirtualNetworkConfigurationInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VirtualNetworkConfigurationInput>;
 
 /** A list of availability zones denoting where the resource needs to come from. */
-export type AdditionalLocationInputZonesList = ReadonlyArray<string>;
+export type AdditionalLocationInputZonesList = Array<string>;
 export const AdditionalLocationInputZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AdditionalLocationInputZonesList>;
@@ -4802,7 +4804,7 @@ export const AdditionalLocationInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Additional datacenter locations of the API Management service. */
 export type ApiManagementServicePropertiesInputAdditionalLocationsList =
-  ReadonlyArray<AdditionalLocationInput>;
+  Array<AdditionalLocationInput>;
 export const ApiManagementServicePropertiesInputAdditionalLocationsList =
   /*@__PURE__*/ S.Array(
     AdditionalLocationInput,
@@ -4820,7 +4822,7 @@ export const ApiManagementServicePropertiesInputCustomPropertiesMap =
 
 /** List of Certificates that need to be installed in the API Management service. Max supported certificates that can be installed is 10. */
 export type ApiManagementServicePropertiesInputCertificatesList =
-  ReadonlyArray<CertificateConfiguration>;
+  Array<CertificateConfiguration>;
 export const ApiManagementServicePropertiesInputCertificatesList =
   /*@__PURE__*/ S.Array(
     CertificateConfiguration,
@@ -4914,7 +4916,7 @@ export const ApiManagementServicePropertiesInputPrivateEndpointConnectionsItem =
 
 /** List of Private Endpoint Connections of this service. */
 export type ApiManagementServicePropertiesInputPrivateEndpointConnectionsList =
-  ReadonlyArray<ApiManagementServicePropertiesInputPrivateEndpointConnectionsItem>;
+  Array<ApiManagementServicePropertiesInputPrivateEndpointConnectionsItem>;
 export const ApiManagementServicePropertiesInputPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     ApiManagementServicePropertiesInputPrivateEndpointConnectionsItem,
@@ -5071,8 +5073,7 @@ export const ApiManagementServiceIdentityInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ApiManagementServiceIdentityInput>;
 
 /** A list of availability zones denoting where the resource needs to come from. */
-export type ApiManagementServiceCreateOrUpdateRequestZonesList =
-  ReadonlyArray<string>;
+export type ApiManagementServiceCreateOrUpdateRequestZonesList = Array<string>;
 export const ApiManagementServiceCreateOrUpdateRequestZonesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5181,8 +5182,7 @@ export const ApiManagementServiceCreateOrUpdateResponseSystemData =
   }) as any as S.Schema<ApiManagementServiceCreateOrUpdateResponseSystemData>;
 
 /** A list of availability zones denoting where the resource needs to come from. */
-export type ApiManagementServiceCreateOrUpdateResponseZonesList =
-  ReadonlyArray<string>;
+export type ApiManagementServiceCreateOrUpdateResponseZonesList = Array<string>;
 export const ApiManagementServiceCreateOrUpdateResponseZonesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5351,7 +5351,7 @@ export const ApiManagementServiceGetResponseSystemData =
   }) as any as S.Schema<ApiManagementServiceGetResponseSystemData>;
 
 /** A list of availability zones denoting where the resource needs to come from. */
-export type ApiManagementServiceGetResponseZonesList = ReadonlyArray<string>;
+export type ApiManagementServiceGetResponseZonesList = Array<string>;
 export const ApiManagementServiceGetResponseZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ApiManagementServiceGetResponseZonesList>;
@@ -5552,7 +5552,7 @@ export const ApiManagementServiceResourceSystemData = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ApiManagementServiceResourceSystemData>;
 
 /** A list of availability zones denoting where the resource needs to come from. */
-export type ApiManagementServiceResourceZonesList = ReadonlyArray<string>;
+export type ApiManagementServiceResourceZonesList = Array<string>;
 export const ApiManagementServiceResourceZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ApiManagementServiceResourceZonesList>;
@@ -5602,7 +5602,7 @@ export const ApiManagementServiceResource = /*@__PURE__*/ S.suspend(() =>
 
 /** Result of the List API Management services operation. */
 export type ApiManagementServiceListResultValueList =
-  ReadonlyArray<ApiManagementServiceResource>;
+  Array<ApiManagementServiceResource>;
 export const ApiManagementServiceListResultValueList = /*@__PURE__*/ S.Array(
   ApiManagementServiceResource,
 ) as any as S.Schema<ApiManagementServiceListResultValueList>;
@@ -5741,8 +5741,7 @@ export const ApiManagementServiceMigrateToStv2ResponseSystemData =
   }) as any as S.Schema<ApiManagementServiceMigrateToStv2ResponseSystemData>;
 
 /** A list of availability zones denoting where the resource needs to come from. */
-export type ApiManagementServiceMigrateToStv2ResponseZonesList =
-  ReadonlyArray<string>;
+export type ApiManagementServiceMigrateToStv2ResponseZonesList = Array<string>;
 export const ApiManagementServiceMigrateToStv2ResponseZonesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5906,8 +5905,7 @@ export const ApiManagementServiceRestoreResponseSystemData =
   }) as any as S.Schema<ApiManagementServiceRestoreResponseSystemData>;
 
 /** A list of availability zones denoting where the resource needs to come from. */
-export type ApiManagementServiceRestoreResponseZonesList =
-  ReadonlyArray<string>;
+export type ApiManagementServiceRestoreResponseZonesList = Array<string>;
 export const ApiManagementServiceRestoreResponseZonesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6050,7 +6048,7 @@ export const ResourceSkuResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourceSkuResult>;
 
 /** The list of skus available for the service. */
-export type ResourceSkuResultsValueList = ReadonlyArray<ResourceSkuResult>;
+export type ResourceSkuResultsValueList = Array<ResourceSkuResult>;
 export const ResourceSkuResultsValueList = /*@__PURE__*/ S.Array(
   ResourceSkuResult,
 ) as any as S.Schema<ResourceSkuResultsValueList>;
@@ -6082,7 +6080,7 @@ export const ApiManagementServiceUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 
 /** Custom hostname configuration of the API Management service. */
 export type ApiManagementServiceUpdatePropertiesInputHostnameConfigurationsList =
-  ReadonlyArray<HostnameConfiguration>;
+  Array<HostnameConfiguration>;
 export const ApiManagementServiceUpdatePropertiesInputHostnameConfigurationsList =
   /*@__PURE__*/ S.Array(
     HostnameConfiguration,
@@ -6097,7 +6095,7 @@ export const ApiManagementServiceUpdatePropertiesInputPublicNetworkAccess =
 
 /** Additional datacenter locations of the API Management service. */
 export type ApiManagementServiceUpdatePropertiesInputAdditionalLocationsList =
-  ReadonlyArray<AdditionalLocationInput>;
+  Array<AdditionalLocationInput>;
 export const ApiManagementServiceUpdatePropertiesInputAdditionalLocationsList =
   /*@__PURE__*/ S.Array(
     AdditionalLocationInput,
@@ -6115,7 +6113,7 @@ export const ApiManagementServiceUpdatePropertiesInputCustomPropertiesMap =
 
 /** List of Certificates that need to be installed in the API Management service. Max supported certificates that can be installed is 10. */
 export type ApiManagementServiceUpdatePropertiesInputCertificatesList =
-  ReadonlyArray<CertificateConfiguration>;
+  Array<CertificateConfiguration>;
 export const ApiManagementServiceUpdatePropertiesInputCertificatesList =
   /*@__PURE__*/ S.Array(
     CertificateConfiguration,
@@ -6162,7 +6160,7 @@ export const ApiManagementServiceUpdatePropertiesInputPrivateEndpointConnections
 
 /** List of Private Endpoint Connections of this service. */
 export type ApiManagementServiceUpdatePropertiesInputPrivateEndpointConnectionsList =
-  ReadonlyArray<ApiManagementServiceUpdatePropertiesInputPrivateEndpointConnectionsItem>;
+  Array<ApiManagementServiceUpdatePropertiesInputPrivateEndpointConnectionsItem>;
 export const ApiManagementServiceUpdatePropertiesInputPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     ApiManagementServiceUpdatePropertiesInputPrivateEndpointConnectionsItem,
@@ -6284,7 +6282,7 @@ export const ApiManagementServiceUpdatePropertiesInput =
   }) as any as S.Schema<ApiManagementServiceUpdatePropertiesInput>;
 
 /** A list of availability zones denoting where the resource needs to come from. */
-export type ApiManagementServiceUpdateRequestZonesList = ReadonlyArray<string>;
+export type ApiManagementServiceUpdateRequestZonesList = Array<string>;
 export const ApiManagementServiceUpdateRequestZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ApiManagementServiceUpdateRequestZonesList>;
@@ -6390,7 +6388,7 @@ export const ApiManagementServiceUpdateResponseSystemData =
   }) as any as S.Schema<ApiManagementServiceUpdateResponseSystemData>;
 
 /** A list of availability zones denoting where the resource needs to come from. */
-export type ApiManagementServiceUpdateResponseZonesList = ReadonlyArray<string>;
+export type ApiManagementServiceUpdateResponseZonesList = Array<string>;
 export const ApiManagementServiceUpdateResponseZonesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6484,19 +6482,19 @@ export const ApiManagementSkuCapacity = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ApiManagementSkuCapacity>;
 
 /** The set of locations that the SKU is available. */
-export type ApiManagementSkuLocationsList = ReadonlyArray<string>;
+export type ApiManagementSkuLocationsList = Array<string>;
 export const ApiManagementSkuLocationsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ApiManagementSkuLocationsList>;
 
 /** List of availability zones where the SKU is supported. */
-export type ApiManagementSkuLocationInfoZonesList = ReadonlyArray<string>;
+export type ApiManagementSkuLocationInfoZonesList = Array<string>;
 export const ApiManagementSkuLocationInfoZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ApiManagementSkuLocationInfoZonesList>;
 
 /** The set of zones that the SKU is available in with the specified capabilities. */
-export type ApiManagementSkuZoneDetailsNameList = ReadonlyArray<string>;
+export type ApiManagementSkuZoneDetailsNameList = Array<string>;
 export const ApiManagementSkuZoneDetailsNameList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ApiManagementSkuZoneDetailsNameList>;
@@ -6519,7 +6517,7 @@ export const ApiManagementSkuCapabilities = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of capabilities that are available for the SKU in the specified list of zones. */
 export type ApiManagementSkuZoneDetailsCapabilitiesList =
-  ReadonlyArray<ApiManagementSkuCapabilities>;
+  Array<ApiManagementSkuCapabilities>;
 export const ApiManagementSkuZoneDetailsCapabilitiesList =
   /*@__PURE__*/ S.Array(
     ApiManagementSkuCapabilities,
@@ -6543,7 +6541,7 @@ export const ApiManagementSkuZoneDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** Details of capabilities available to a SKU in specific zones. */
 export type ApiManagementSkuLocationInfoZoneDetailsList =
-  ReadonlyArray<ApiManagementSkuZoneDetails>;
+  Array<ApiManagementSkuZoneDetails>;
 export const ApiManagementSkuLocationInfoZoneDetailsList =
   /*@__PURE__*/ S.Array(
     ApiManagementSkuZoneDetails,
@@ -6569,13 +6567,13 @@ export const ApiManagementSkuLocationInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of locations and availability zones in those locations where the SKU is available. */
 export type ApiManagementSkuLocationInfoList =
-  ReadonlyArray<ApiManagementSkuLocationInfo>;
+  Array<ApiManagementSkuLocationInfo>;
 export const ApiManagementSkuLocationInfoList = /*@__PURE__*/ S.Array(
   ApiManagementSkuLocationInfo,
 ) as any as S.Schema<ApiManagementSkuLocationInfoList>;
 
 /** The api versions that support this SKU. */
-export type ApiManagementSkuApiVersionsList = ReadonlyArray<string>;
+export type ApiManagementSkuApiVersionsList = Array<string>;
 export const ApiManagementSkuApiVersionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ApiManagementSkuApiVersionsList>;
@@ -6600,14 +6598,14 @@ export const ApiManagementSkuCosts = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ApiManagementSkuCosts>;
 
 /** Metadata for retrieving price info. */
-export type ApiManagementSkuCostsList = ReadonlyArray<ApiManagementSkuCosts>;
+export type ApiManagementSkuCostsList = Array<ApiManagementSkuCosts>;
 export const ApiManagementSkuCostsList = /*@__PURE__*/ S.Array(
   ApiManagementSkuCosts,
 ) as any as S.Schema<ApiManagementSkuCostsList>;
 
 /** A name value pair to describe the capability. */
 export type ApiManagementSkuCapabilitiesList =
-  ReadonlyArray<ApiManagementSkuCapabilities>;
+  Array<ApiManagementSkuCapabilities>;
 export const ApiManagementSkuCapabilitiesList = /*@__PURE__*/ S.Array(
   ApiManagementSkuCapabilities,
 ) as any as S.Schema<ApiManagementSkuCapabilitiesList>;
@@ -6617,21 +6615,20 @@ export type ApiManagementSkuRestrictionsType = "Location" | "Zone";
 export const ApiManagementSkuRestrictionsType = /*@__PURE__*/ S.String;
 
 /** The value of restrictions. If the restriction type is set to location. This would be different locations where the SKU is restricted. */
-export type ApiManagementSkuRestrictionsValuesList = ReadonlyArray<string>;
+export type ApiManagementSkuRestrictionsValuesList = Array<string>;
 export const ApiManagementSkuRestrictionsValuesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ApiManagementSkuRestrictionsValuesList>;
 
 /** Locations where the SKU is restricted */
-export type ApiManagementSkuRestrictionInfoLocationsList =
-  ReadonlyArray<string>;
+export type ApiManagementSkuRestrictionInfoLocationsList = Array<string>;
 export const ApiManagementSkuRestrictionInfoLocationsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ApiManagementSkuRestrictionInfoLocationsList>;
 
 /** List of availability zones where the SKU is restricted. */
-export type ApiManagementSkuRestrictionInfoZonesList = ReadonlyArray<string>;
+export type ApiManagementSkuRestrictionInfoZonesList = Array<string>;
 export const ApiManagementSkuRestrictionInfoZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ApiManagementSkuRestrictionInfoZonesList>;
@@ -6681,7 +6678,7 @@ export const ApiManagementSkuRestrictions = /*@__PURE__*/ S.suspend(() =>
 
 /** The restrictions because of which SKU cannot be used. This is empty if there are no restrictions. */
 export type ApiManagementSkuRestrictionsList =
-  ReadonlyArray<ApiManagementSkuRestrictions>;
+  Array<ApiManagementSkuRestrictions>;
 export const ApiManagementSkuRestrictionsList = /*@__PURE__*/ S.Array(
   ApiManagementSkuRestrictions,
 ) as any as S.Schema<ApiManagementSkuRestrictionsList>;
@@ -6736,7 +6733,7 @@ export const ApiManagementSku = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ApiManagementSku>;
 
 /** The list of skus available for the subscription. */
-export type ApiManagementSkusResultValueList = ReadonlyArray<ApiManagementSku>;
+export type ApiManagementSkusResultValueList = Array<ApiManagementSku>;
 export const ApiManagementSkusResultValueList = /*@__PURE__*/ S.Array(
   ApiManagementSku,
 ) as any as S.Schema<ApiManagementSkusResultValueList>;
@@ -6800,7 +6797,7 @@ export const WorkspaceLinksGateway = /*@__PURE__*/ S.suspend(() =>
 
 /** The array of linked gateways. */
 export type ApiManagementWorkspaceLinksPropertiesGatewaysList =
-  ReadonlyArray<WorkspaceLinksGateway>;
+  Array<WorkspaceLinksGateway>;
 export const ApiManagementWorkspaceLinksPropertiesGatewaysList =
   /*@__PURE__*/ S.Array(
     WorkspaceLinksGateway,
@@ -6901,7 +6898,7 @@ export const ApiManagementWorkspaceLinksResource = /*@__PURE__*/ S.suspend(() =>
 
 /** Result of the List API Management WorkspaceLinks operation. */
 export type ApiManagementWorkspaceLinksListByServiceResponseValueList =
-  ReadonlyArray<ApiManagementWorkspaceLinksResource>;
+  Array<ApiManagementWorkspaceLinksResource>;
 export const ApiManagementWorkspaceLinksListByServiceResponseValueList =
   /*@__PURE__*/ S.Array(
     ApiManagementWorkspaceLinksResource,
@@ -6924,7 +6921,7 @@ export const ApiManagementWorkspaceLinksListByServiceResponse =
   }) as any as S.Schema<ApiManagementWorkspaceLinksListByServiceResponse>;
 
 /** Parameter values. */
-export type ParameterContractValuesList = ReadonlyArray<string>;
+export type ParameterContractValuesList = Array<string>;
 export const ParameterContractValuesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ParameterContractValuesList>;
@@ -6999,28 +6996,26 @@ export const ParameterContract = /*@__PURE__*/ S.suspend(() =>
 
 /** Collection of URL template parameters. */
 export type OperationContractPropertiesTemplateParametersList =
-  ReadonlyArray<ParameterContract>;
+  Array<ParameterContract>;
 export const OperationContractPropertiesTemplateParametersList =
   /*@__PURE__*/ S.Array(
     ParameterContract,
   ) as any as S.Schema<OperationContractPropertiesTemplateParametersList>;
 
 /** Collection of operation request query parameters. */
-export type RequestContractQueryParametersList =
-  ReadonlyArray<ParameterContract>;
+export type RequestContractQueryParametersList = Array<ParameterContract>;
 export const RequestContractQueryParametersList = /*@__PURE__*/ S.Array(
   ParameterContract,
 ) as any as S.Schema<RequestContractQueryParametersList>;
 
 /** Collection of operation request headers. */
-export type RequestContractHeadersList = ReadonlyArray<ParameterContract>;
+export type RequestContractHeadersList = Array<ParameterContract>;
 export const RequestContractHeadersList = /*@__PURE__*/ S.Array(
   ParameterContract,
 ) as any as S.Schema<RequestContractHeadersList>;
 
 /** Collection of form parameters. Required if 'contentType' value is either 'application/x-www-form-urlencoded' or 'multipart/form-data'.. */
-export type RepresentationContractFormParametersList =
-  ReadonlyArray<ParameterContract>;
+export type RepresentationContractFormParametersList = Array<ParameterContract>;
 export const RepresentationContractFormParametersList = /*@__PURE__*/ S.Array(
   ParameterContract,
 ) as any as S.Schema<RepresentationContractFormParametersList>;
@@ -7051,8 +7046,7 @@ export const RepresentationContract = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RepresentationContract>;
 
 /** Collection of operation request representations. */
-export type RequestContractRepresentationsList =
-  ReadonlyArray<RepresentationContract>;
+export type RequestContractRepresentationsList = Array<RepresentationContract>;
 export const RequestContractRepresentationsList = /*@__PURE__*/ S.Array(
   RepresentationContract,
 ) as any as S.Schema<RequestContractRepresentationsList>;
@@ -7080,14 +7074,13 @@ export const RequestContract = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RequestContract>;
 
 /** Collection of operation response representations. */
-export type ResponseContractRepresentationsList =
-  ReadonlyArray<RepresentationContract>;
+export type ResponseContractRepresentationsList = Array<RepresentationContract>;
 export const ResponseContractRepresentationsList = /*@__PURE__*/ S.Array(
   RepresentationContract,
 ) as any as S.Schema<ResponseContractRepresentationsList>;
 
 /** Collection of operation response headers. */
-export type ResponseContractHeadersList = ReadonlyArray<ParameterContract>;
+export type ResponseContractHeadersList = Array<ParameterContract>;
 export const ResponseContractHeadersList = /*@__PURE__*/ S.Array(
   ParameterContract,
 ) as any as S.Schema<ResponseContractHeadersList>;
@@ -7115,8 +7108,7 @@ export const ResponseContract = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResponseContract>;
 
 /** Array of Operation responses. */
-export type OperationContractPropertiesResponsesList =
-  ReadonlyArray<ResponseContract>;
+export type OperationContractPropertiesResponsesList = Array<ResponseContract>;
 export const OperationContractPropertiesResponsesList = /*@__PURE__*/ S.Array(
   ResponseContract,
 ) as any as S.Schema<OperationContractPropertiesResponsesList>;
@@ -7365,8 +7357,7 @@ export const OperationContract = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationContract>;
 
 /** Page values. */
-export type ApiOperationListByApiResponseValueList =
-  ReadonlyArray<OperationContract>;
+export type ApiOperationListByApiResponseValueList = Array<OperationContract>;
 export const ApiOperationListByApiResponseValueList = /*@__PURE__*/ S.Array(
   OperationContract,
 ) as any as S.Schema<ApiOperationListByApiResponseValueList>;
@@ -7406,7 +7397,7 @@ export interface PolicyContractProperties {
   /** Contents of the Policy as defined by the format. */
   value: string;
   /** Format of the policyContent. */
-  format?: PolicyContractPropertiesFormat;
+  format?: PolicyContractPropertiesFormat | (string & {});
 }
 export const PolicyContractProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -7639,7 +7630,7 @@ export const PolicyContract = /*@__PURE__*/ S.suspend(() =>
 
 /** Policy Contract value. */
 export type ApiOperationPolicyListByOperationResponseValueList =
-  ReadonlyArray<PolicyContract>;
+  Array<PolicyContract>;
 export const ApiOperationPolicyListByOperationResponseValueList =
   /*@__PURE__*/ S.Array(
     PolicyContract,
@@ -7666,7 +7657,7 @@ export const ApiOperationPolicyListByOperationResponse =
 
 /** Collection of URL template parameters. */
 export type OperationUpdateContractPropertiesTemplateParametersList =
-  ReadonlyArray<ParameterContract>;
+  Array<ParameterContract>;
 export const OperationUpdateContractPropertiesTemplateParametersList =
   /*@__PURE__*/ S.Array(
     ParameterContract,
@@ -7674,7 +7665,7 @@ export const OperationUpdateContractPropertiesTemplateParametersList =
 
 /** Array of Operation responses. */
 export type OperationUpdateContractPropertiesResponsesList =
-  ReadonlyArray<ResponseContract>;
+  Array<ResponseContract>;
 export const OperationUpdateContractPropertiesResponsesList =
   /*@__PURE__*/ S.Array(
     ResponseContract,
@@ -7960,7 +7951,7 @@ export const ApiPolicyListByApiRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ApiPolicyListByApiRequest>;
 
 /** Policy Contract value. */
-export type ApiPolicyListByApiResponseValueList = ReadonlyArray<PolicyContract>;
+export type ApiPolicyListByApiResponseValueList = Array<PolicyContract>;
 export const ApiPolicyListByApiResponseValueList = /*@__PURE__*/ S.Array(
   PolicyContract,
 ) as any as S.Schema<ApiPolicyListByApiResponseValueList>;
@@ -8037,7 +8028,7 @@ export interface ProductContractProperties {
   /** Whether the number of subscriptions a user can have to this product at the same time. Set to null or omit to allow unlimited per user subscriptions. Can be present only if subscriptionRequired property is present and has a value of false. */
   subscriptionsLimit?: number;
   /** whether product is published or not. Published products are discoverable by users of developer portal. Non published products are visible only to administrators. Default state of Product is notPublished. */
-  state?: ProductContractPropertiesState;
+  state?: ProductContractPropertiesState | (string & {});
   /** Product name. */
   displayName: string;
 }
@@ -8078,8 +8069,7 @@ export const ProductContract = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProductContract>;
 
 /** Page values. */
-export type ApiProductListByApisResponseValueList =
-  ReadonlyArray<ProductContract>;
+export type ApiProductListByApisResponseValueList = Array<ProductContract>;
 export const ApiProductListByApisResponseValueList = /*@__PURE__*/ S.Array(
   ProductContract,
 ) as any as S.Schema<ApiProductListByApisResponseValueList>;
@@ -8346,7 +8336,7 @@ export const ApiReleaseContract = /*@__PURE__*/ S.suspend(() =>
 
 /** Page values. */
 export type ApiReleaseListByServiceResponseValueList =
-  ReadonlyArray<ApiReleaseContract>;
+  Array<ApiReleaseContract>;
 export const ApiReleaseListByServiceResponseValueList = /*@__PURE__*/ S.Array(
   ApiReleaseContract,
 ) as any as S.Schema<ApiReleaseListByServiceResponseValueList>;
@@ -8497,7 +8487,7 @@ export const ApiRevisionContract = /*@__PURE__*/ S.suspend(() =>
 
 /** Page values. */
 export type ApiRevisionListByServiceResponseValueList =
-  ReadonlyArray<ApiRevisionContract>;
+  Array<ApiRevisionContract>;
 export const ApiRevisionListByServiceResponseValueList = /*@__PURE__*/ S.Array(
   ApiRevisionContract,
 ) as any as S.Schema<ApiRevisionListByServiceResponseValueList>;
@@ -8780,7 +8770,7 @@ export const SchemaContract = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SchemaContract" }) as any as S.Schema<SchemaContract>;
 
 /** API Schema Contract value. */
-export type ApiSchemaListByApiResponseValueList = ReadonlyArray<SchemaContract>;
+export type ApiSchemaListByApiResponseValueList = Array<SchemaContract>;
 export const ApiSchemaListByApiResponseValueList = /*@__PURE__*/ S.Array(
   SchemaContract,
 ) as any as S.Schema<ApiSchemaListByApiResponseValueList>;
@@ -9056,7 +9046,7 @@ export const TagDescriptionContract = /*@__PURE__*/ S.suspend(() =>
 
 /** Page values. */
 export type ApiTagDescriptionListByServiceResponseValueList =
-  ReadonlyArray<TagDescriptionContract>;
+  Array<TagDescriptionContract>;
 export const ApiTagDescriptionListByServiceResponseValueList =
   /*@__PURE__*/ S.Array(
     TagDescriptionContract,
@@ -9100,7 +9090,7 @@ export const ApiContractUpdatePropertiesInputProtocolsItem =
   /*@__PURE__*/ S.String;
 
 /** Describes on which protocols the operations in this API can be invoked. */
-export type ApiContractUpdatePropertiesInputProtocolsList = ReadonlyArray<
+export type ApiContractUpdatePropertiesInputProtocolsList = Array<
   ApiContractUpdatePropertiesInputProtocolsItem | (string & {})
 >;
 export const ApiContractUpdatePropertiesInputProtocolsList =
@@ -9245,7 +9235,9 @@ export interface ApiVersionSetContractProperties {
   /** Name of API Version Set */
   displayName: string;
   /** An value that determines where the API Version identifier will be located in a HTTP request. */
-  versioningScheme: ApiVersionSetContractPropertiesVersioningScheme;
+  versioningScheme:
+    | ApiVersionSetContractPropertiesVersioningScheme
+    | (string & {});
 }
 export const ApiVersionSetContractProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -9453,7 +9445,7 @@ export const ApiVersionSetContract = /*@__PURE__*/ S.suspend(() =>
 
 /** Page values. */
 export type ApiVersionSetListByServiceResponseValueList =
-  ReadonlyArray<ApiVersionSetContract>;
+  Array<ApiVersionSetContract>;
 export const ApiVersionSetListByServiceResponseValueList =
   /*@__PURE__*/ S.Array(
     ApiVersionSetContract,
@@ -9582,7 +9574,7 @@ export const WikiDocumentationContract = /*@__PURE__*/ S.suspend(() =>
 
 /** Collection wiki documents included into this wiki. */
 export type WikiContractPropertiesDocumentsList =
-  ReadonlyArray<WikiDocumentationContract>;
+  Array<WikiDocumentationContract>;
 export const WikiContractPropertiesDocumentsList = /*@__PURE__*/ S.Array(
   WikiDocumentationContract,
 ) as any as S.Schema<WikiContractPropertiesDocumentsList>;
@@ -9794,7 +9786,7 @@ export const WikiContract = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "WikiContract" }) as any as S.Schema<WikiContract>;
 
 /** Page values. */
-export type ApiWikisListResponseValueList = ReadonlyArray<WikiContract>;
+export type ApiWikisListResponseValueList = Array<WikiContract>;
 export const ApiWikisListResponseValueList = /*@__PURE__*/ S.Array(
   WikiContract,
 ) as any as S.Schema<ApiWikisListResponseValueList>;
@@ -9868,7 +9860,7 @@ export const ApiWikiUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The allowed Azure Active Directory Application IDs */
 export type AuthorizationAccessPolicyContractPropertiesAppIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const AuthorizationAccessPolicyContractPropertiesAppIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -10117,7 +10109,7 @@ export const AuthorizationAccessPolicyContract = /*@__PURE__*/ S.suspend(() =>
 
 /** Page values. */
 export type AuthorizationAccessPolicyListByAuthorizationResponseValueList =
-  ReadonlyArray<AuthorizationAccessPolicyContract>;
+  Array<AuthorizationAccessPolicyContract>;
 export const AuthorizationAccessPolicyListByAuthorizationResponseValueList =
   /*@__PURE__*/ S.Array(
     AuthorizationAccessPolicyContract,
@@ -10227,9 +10219,13 @@ export const AuthorizationError = /*@__PURE__*/ S.suspend(() =>
 /** Authorization details. */
 export interface AuthorizationContractProperties {
   /** Authorization type options */
-  authorizationType?: AuthorizationContractPropertiesAuthorizationType;
+  authorizationType?:
+    | AuthorizationContractPropertiesAuthorizationType
+    | (string & {});
   /** OAuth2 grant type options */
-  oauth2grantType?: AuthorizationContractPropertiesOauth2grantType;
+  oauth2grantType?:
+    | AuthorizationContractPropertiesOauth2grantType
+    | (string & {});
   /** Authorization parameters */
   parameters?: AuthorizationContractPropertiesParametersMap;
   error?: AuthorizationError;
@@ -10457,7 +10453,7 @@ export const AuthorizationContract = /*@__PURE__*/ S.suspend(() =>
 
 /** Page values. */
 export type AuthorizationListByAuthorizationProviderResponseValueList =
-  ReadonlyArray<AuthorizationContract>;
+  Array<AuthorizationContract>;
 export const AuthorizationListByAuthorizationProviderResponseValueList =
   /*@__PURE__*/ S.Array(
     AuthorizationContract,
@@ -10804,7 +10800,7 @@ export const AuthorizationProviderContract = /*@__PURE__*/ S.suspend(() =>
 
 /** Page values. */
 export type AuthorizationProviderListByServiceResponseValueList =
-  ReadonlyArray<AuthorizationProviderContract>;
+  Array<AuthorizationProviderContract>;
 export const AuthorizationProviderListByServiceResponseValueList =
   /*@__PURE__*/ S.Array(
     AuthorizationProviderContract,
@@ -10840,7 +10836,10 @@ export const AuthorizationServerContractPropertiesAuthorizationMethodsItem =
 
 /** HTTP verbs supported by the authorization endpoint. GET must be always present. POST is optional. */
 export type AuthorizationServerContractPropertiesAuthorizationMethodsList =
-  ReadonlyArray<AuthorizationServerContractPropertiesAuthorizationMethodsItem>;
+  Array<
+    | AuthorizationServerContractPropertiesAuthorizationMethodsItem
+    | (string & {})
+  >;
 export const AuthorizationServerContractPropertiesAuthorizationMethodsList =
   /*@__PURE__*/ S.Array(
     AuthorizationServerContractPropertiesAuthorizationMethodsItem,
@@ -10853,7 +10852,10 @@ export const AuthorizationServerContractPropertiesClientAuthenticationMethodItem
 
 /** Method of authentication supported by the token endpoint of this authorization server. Possible values are Basic and/or Body. When Body is specified, client credentials and other parameters are passed within the request body in the application/x-www-form-urlencoded format. */
 export type AuthorizationServerContractPropertiesClientAuthenticationMethodList =
-  ReadonlyArray<AuthorizationServerContractPropertiesClientAuthenticationMethodItem>;
+  Array<
+    | AuthorizationServerContractPropertiesClientAuthenticationMethodItem
+    | (string & {})
+  >;
 export const AuthorizationServerContractPropertiesClientAuthenticationMethodList =
   /*@__PURE__*/ S.Array(
     AuthorizationServerContractPropertiesClientAuthenticationMethodItem,
@@ -10877,7 +10879,7 @@ export const TokenBodyParameterContract = /*@__PURE__*/ S.suspend(() =>
 
 /** Additional parameters required by the token endpoint of this authorization server represented as an array of JSON objects with name and value string properties, i.e. {"name" : "name value", "value": "a value"}. */
 export type AuthorizationServerContractPropertiesTokenBodyParametersList =
-  ReadonlyArray<TokenBodyParameterContract>;
+  Array<TokenBodyParameterContract>;
 export const AuthorizationServerContractPropertiesTokenBodyParametersList =
   /*@__PURE__*/ S.Array(
     TokenBodyParameterContract,
@@ -10890,7 +10892,10 @@ export const AuthorizationServerContractPropertiesBearerTokenSendingMethodsItem 
 
 /** Specifies the mechanism by which access token is passed to the API. */
 export type AuthorizationServerContractPropertiesBearerTokenSendingMethodsList =
-  ReadonlyArray<AuthorizationServerContractPropertiesBearerTokenSendingMethodsItem>;
+  Array<
+    | AuthorizationServerContractPropertiesBearerTokenSendingMethodsItem
+    | (string & {})
+  >;
 export const AuthorizationServerContractPropertiesBearerTokenSendingMethodsList =
   /*@__PURE__*/ S.Array(
     AuthorizationServerContractPropertiesBearerTokenSendingMethodsItem,
@@ -10905,8 +10910,9 @@ export const AuthorizationServerContractPropertiesGrantTypesItem =
   /*@__PURE__*/ S.String;
 
 /** Form of an authorization grant, which the client uses to request the access token. */
-export type AuthorizationServerContractPropertiesGrantTypesList =
-  ReadonlyArray<AuthorizationServerContractPropertiesGrantTypesItem>;
+export type AuthorizationServerContractPropertiesGrantTypesList = Array<
+  AuthorizationServerContractPropertiesGrantTypesItem | (string & {})
+>;
 export const AuthorizationServerContractPropertiesGrantTypesList =
   /*@__PURE__*/ S.Array(
     AuthorizationServerContractPropertiesGrantTypesItem,
@@ -11182,7 +11188,7 @@ export const AuthorizationServerContract = /*@__PURE__*/ S.suspend(() =>
 
 /** Page values. */
 export type AuthorizationServerListByServiceResponseValueList =
-  ReadonlyArray<AuthorizationServerContract>;
+  Array<AuthorizationServerContract>;
 export const AuthorizationServerListByServiceResponseValueList =
   /*@__PURE__*/ S.Array(
     AuthorizationServerContract,
@@ -11262,7 +11268,7 @@ export const AuthorizationServerUpdateContractPropertiesAuthorizationMethodsItem
 
 /** HTTP verbs supported by the authorization endpoint. GET must be always present. POST is optional. */
 export type AuthorizationServerUpdateContractPropertiesAuthorizationMethodsList =
-  ReadonlyArray<
+  Array<
     | AuthorizationServerUpdateContractPropertiesAuthorizationMethodsItem
     | (string & {})
   >;
@@ -11278,7 +11284,7 @@ export const AuthorizationServerUpdateContractPropertiesClientAuthenticationMeth
 
 /** Method of authentication supported by the token endpoint of this authorization server. Possible values are Basic and/or Body. When Body is specified, client credentials and other parameters are passed within the request body in the application/x-www-form-urlencoded format. */
 export type AuthorizationServerUpdateContractPropertiesClientAuthenticationMethodList =
-  ReadonlyArray<
+  Array<
     | AuthorizationServerUpdateContractPropertiesClientAuthenticationMethodItem
     | (string & {})
   >;
@@ -11289,7 +11295,7 @@ export const AuthorizationServerUpdateContractPropertiesClientAuthenticationMeth
 
 /** Additional parameters required by the token endpoint of this authorization server represented as an array of JSON objects with name and value string properties, i.e. {"name" : "name value", "value": "a value"}. */
 export type AuthorizationServerUpdateContractPropertiesTokenBodyParametersList =
-  ReadonlyArray<TokenBodyParameterContract>;
+  Array<TokenBodyParameterContract>;
 export const AuthorizationServerUpdateContractPropertiesTokenBodyParametersList =
   /*@__PURE__*/ S.Array(
     TokenBodyParameterContract,
@@ -11302,7 +11308,7 @@ export const AuthorizationServerUpdateContractPropertiesBearerTokenSendingMethod
 
 /** Specifies the mechanism by which access token is passed to the API. */
 export type AuthorizationServerUpdateContractPropertiesBearerTokenSendingMethodsList =
-  ReadonlyArray<
+  Array<
     | AuthorizationServerUpdateContractPropertiesBearerTokenSendingMethodsItem
     | (string & {})
   >;
@@ -11320,10 +11326,9 @@ export const AuthorizationServerUpdateContractPropertiesGrantTypesItem =
   /*@__PURE__*/ S.String;
 
 /** Form of an authorization grant, which the client uses to request the access token. */
-export type AuthorizationServerUpdateContractPropertiesGrantTypesList =
-  ReadonlyArray<
-    AuthorizationServerUpdateContractPropertiesGrantTypesItem | (string & {})
-  >;
+export type AuthorizationServerUpdateContractPropertiesGrantTypesList = Array<
+  AuthorizationServerUpdateContractPropertiesGrantTypesItem | (string & {})
+>;
 export const AuthorizationServerUpdateContractPropertiesGrantTypesList =
   /*@__PURE__*/ S.Array(
     AuthorizationServerUpdateContractPropertiesGrantTypesItem,
@@ -11458,7 +11463,7 @@ export const AuthorizationServerUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The cluster management endpoint. */
 export type BackendServiceFabricClusterPropertiesManagementEndpointsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const BackendServiceFabricClusterPropertiesManagementEndpointsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -11466,7 +11471,7 @@ export const BackendServiceFabricClusterPropertiesManagementEndpointsList =
 
 /** Thumbprints of certificates cluster management service uses for tls communication */
 export type BackendServiceFabricClusterPropertiesServerCertificateThumbprintsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const BackendServiceFabricClusterPropertiesServerCertificateThumbprintsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -11490,7 +11495,7 @@ export const X509CertificateName = /*@__PURE__*/ S.suspend(() =>
 
 /** Server X509 Certificate Names Collection */
 export type BackendServiceFabricClusterPropertiesServerX509NamesList =
-  ReadonlyArray<X509CertificateName>;
+  Array<X509CertificateName>;
 export const BackendServiceFabricClusterPropertiesServerX509NamesList =
   /*@__PURE__*/ S.Array(
     X509CertificateName,
@@ -11544,20 +11549,19 @@ export const BackendProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BackendProperties>;
 
 /** List of Client Certificate Ids. */
-export type BackendCredentialsContractCertificateIdsList =
-  ReadonlyArray<string>;
+export type BackendCredentialsContractCertificateIdsList = Array<string>;
 export const BackendCredentialsContractCertificateIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<BackendCredentialsContractCertificateIdsList>;
 
 /** List of Client Certificate Thumbprints. Will be ignored if certificatesIds are provided. */
-export type BackendCredentialsContractCertificateList = ReadonlyArray<string>;
+export type BackendCredentialsContractCertificateList = Array<string>;
 export const BackendCredentialsContractCertificateList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BackendCredentialsContractCertificateList>;
 
-export type BackendCredentialsContractQueryValueList = ReadonlyArray<string>;
+export type BackendCredentialsContractQueryValueList = Array<string>;
 export const BackendCredentialsContractQueryValueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BackendCredentialsContractQueryValueList>;
@@ -11571,7 +11575,7 @@ export const BackendCredentialsContractQueryMap = /*@__PURE__*/ S.Record(
   BackendCredentialsContractQueryValueList,
 ) as any as S.Schema<BackendCredentialsContractQueryMap>;
 
-export type BackendCredentialsContractHeaderValueList = ReadonlyArray<string>;
+export type BackendCredentialsContractHeaderValueList = Array<string>;
 export const BackendCredentialsContractHeaderValueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BackendCredentialsContractHeaderValueList>;
@@ -11680,15 +11684,14 @@ export const FailureStatusCodeRange = /*@__PURE__*/ S.suspend(() =>
 
 /** The status code ranges which are considered as failure. */
 export type CircuitBreakerFailureConditionStatusCodeRangesList =
-  ReadonlyArray<FailureStatusCodeRange>;
+  Array<FailureStatusCodeRange>;
 export const CircuitBreakerFailureConditionStatusCodeRangesList =
   /*@__PURE__*/ S.Array(
     FailureStatusCodeRange,
   ) as any as S.Schema<CircuitBreakerFailureConditionStatusCodeRangesList>;
 
 /** The error reasons which are considered as failure. */
-export type CircuitBreakerFailureConditionErrorReasonsList =
-  ReadonlyArray<string>;
+export type CircuitBreakerFailureConditionErrorReasonsList = Array<string>;
 export const CircuitBreakerFailureConditionErrorReasonsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -11744,7 +11747,7 @@ export const CircuitBreakerRule = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CircuitBreakerRule>;
 
 /** The rules for tripping the backend. */
-export type BackendCircuitBreakerRulesList = ReadonlyArray<CircuitBreakerRule>;
+export type BackendCircuitBreakerRulesList = Array<CircuitBreakerRule>;
 export const BackendCircuitBreakerRulesList = /*@__PURE__*/ S.Array(
   CircuitBreakerRule,
 ) as any as S.Schema<BackendCircuitBreakerRulesList>;
@@ -11782,8 +11785,7 @@ export const BackendPoolItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BackendPoolItem>;
 
 /** The list of backend entities belonging to a pool. */
-export type BackendContractPropertiesPoolServicesList =
-  ReadonlyArray<BackendPoolItem>;
+export type BackendContractPropertiesPoolServicesList = Array<BackendPoolItem>;
 export const BackendContractPropertiesPoolServicesList = /*@__PURE__*/ S.Array(
   BackendPoolItem,
 ) as any as S.Schema<BackendContractPropertiesPoolServicesList>;
@@ -11828,11 +11830,11 @@ export interface BackendContractProperties {
   circuitBreaker?: BackendCircuitBreaker;
   pool?: BackendContractPropertiesPool;
   /** Type of the backend. A backend can be either Single or Pool. */
-  type?: BackendContractPropertiesType;
+  type?: BackendContractPropertiesType | (string & {});
   /** Runtime Url of the Backend. Required when backend type is 'Single'. */
   url?: string;
   /** Backend communication protocol. Required when backend type is 'Single'. */
-  protocol?: BackendContractPropertiesProtocol;
+  protocol?: BackendContractPropertiesProtocol | (string & {});
 }
 export const BackendContractProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -12046,8 +12048,7 @@ export const BackendContract = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BackendContract>;
 
 /** Backend values. */
-export type BackendListByServiceResponseValueList =
-  ReadonlyArray<BackendContract>;
+export type BackendListByServiceResponseValueList = Array<BackendContract>;
 export const BackendListByServiceResponseValueList = /*@__PURE__*/ S.Array(
   BackendContract,
 ) as any as S.Schema<BackendListByServiceResponseValueList>;
@@ -12123,7 +12124,7 @@ export const BackendReconnectResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of backend entities belonging to a pool. */
 export type BackendUpdateParameterPropertiesPoolServicesList =
-  ReadonlyArray<BackendPoolItem>;
+  Array<BackendPoolItem>;
 export const BackendUpdateParameterPropertiesPoolServicesList =
   /*@__PURE__*/ S.Array(
     BackendPoolItem,
@@ -12457,7 +12458,7 @@ export const CacheContract = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CacheContract" }) as any as S.Schema<CacheContract>;
 
 /** Page values. */
-export type CacheListByServiceResponseValueList = ReadonlyArray<CacheContract>;
+export type CacheListByServiceResponseValueList = Array<CacheContract>;
 export const CacheListByServiceResponseValueList = /*@__PURE__*/ S.Array(
   CacheContract,
 ) as any as S.Schema<CacheListByServiceResponseValueList>;
@@ -12847,7 +12848,7 @@ export const CertificateContract = /*@__PURE__*/ S.suspend(() =>
 
 /** Page values. */
 export type CertificateListByServiceResponseValueList =
-  ReadonlyArray<CertificateContract>;
+  Array<CertificateContract>;
 export const CertificateListByServiceResponseValueList = /*@__PURE__*/ S.Array(
   CertificateContract,
 ) as any as S.Schema<CertificateListByServiceResponseValueList>;
@@ -13124,7 +13125,7 @@ export const ContentItemContract = /*@__PURE__*/ S.suspend(() =>
 
 /** Collection of content items. */
 export type ContentItemListByServiceResponseValueList =
-  ReadonlyArray<ContentItemContract>;
+  Array<ContentItemContract>;
 export const ContentItemListByServiceResponseValueList = /*@__PURE__*/ S.Array(
   ContentItemContract,
 ) as any as S.Schema<ContentItemListByServiceResponseValueList>;
@@ -13353,7 +13354,7 @@ export const ContentTypeContract = /*@__PURE__*/ S.suspend(() =>
 
 /** Collection of content types. */
 export type ContentTypeListByServiceResponseValueList =
-  ReadonlyArray<ContentTypeContract>;
+  Array<ContentTypeContract>;
 export const ContentTypeListByServiceResponseValueList = /*@__PURE__*/ S.Array(
   ContentTypeContract,
 ) as any as S.Schema<ContentTypeListByServiceResponseValueList>;
@@ -13487,7 +13488,7 @@ export const DeletedServiceContract = /*@__PURE__*/ S.suspend(() =>
 
 /** Page values. */
 export type DeletedServicesListBySubscriptionResponseValueList =
-  ReadonlyArray<DeletedServiceContract>;
+  Array<DeletedServiceContract>;
 export const DeletedServicesListBySubscriptionResponseValueList =
   /*@__PURE__*/ S.Array(
     DeletedServiceContract,
@@ -13713,7 +13714,7 @@ export const DiagnosticListByServiceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Page values. */
 export type DiagnosticListByServiceResponseValueList =
-  ReadonlyArray<DiagnosticContract>;
+  Array<DiagnosticContract>;
 export const DiagnosticListByServiceResponseValueList = /*@__PURE__*/ S.Array(
   DiagnosticContract,
 ) as any as S.Schema<DiagnosticListByServiceResponseValueList>;
@@ -13998,7 +13999,7 @@ export const DocumentationContract = /*@__PURE__*/ S.suspend(() =>
 
 /** Page values. */
 export type DocumentationListByServiceResponseValueList =
-  ReadonlyArray<DocumentationContract>;
+  Array<DocumentationContract>;
 export const DocumentationListByServiceResponseValueList =
   /*@__PURE__*/ S.Array(
     DocumentationContract,
@@ -14111,7 +14112,7 @@ export const EmailTemplateParametersContractProperties =
 
 /** Email Template Parameter values. */
 export type EmailTemplateUpdateParameterPropertiesParametersList =
-  ReadonlyArray<EmailTemplateParametersContractProperties>;
+  Array<EmailTemplateParametersContractProperties>;
 export const EmailTemplateUpdateParameterPropertiesParametersList =
   /*@__PURE__*/ S.Array(
     EmailTemplateParametersContractProperties,
@@ -14180,7 +14181,7 @@ export const EmailTemplateCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Email Template Parameter values. */
 export type EmailTemplateContractPropertiesParametersList =
-  ReadonlyArray<EmailTemplateParametersContractProperties>;
+  Array<EmailTemplateParametersContractProperties>;
 export const EmailTemplateContractPropertiesParametersList =
   /*@__PURE__*/ S.Array(
     EmailTemplateParametersContractProperties,
@@ -14411,7 +14412,7 @@ export const EmailTemplateContract = /*@__PURE__*/ S.suspend(() =>
 
 /** Page values. */
 export type EmailTemplateListByServiceResponseValueList =
-  ReadonlyArray<EmailTemplateContract>;
+  Array<EmailTemplateContract>;
 export const EmailTemplateListByServiceResponseValueList =
   /*@__PURE__*/ S.Array(
     EmailTemplateContract,
@@ -14659,8 +14660,7 @@ export const GatewayApiListByServiceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GatewayApiListByServiceRequest>;
 
 /** Page values. */
-export type GatewayApiListByServiceResponseValueList =
-  ReadonlyArray<ApiContract>;
+export type GatewayApiListByServiceResponseValueList = Array<ApiContract>;
 export const GatewayApiListByServiceResponseValueList = /*@__PURE__*/ S.Array(
   ApiContract,
 ) as any as S.Schema<GatewayApiListByServiceResponseValueList>;
@@ -14908,7 +14908,7 @@ export const GatewayCertificateAuthorityContract = /*@__PURE__*/ S.suspend(() =>
 
 /** Page values. */
 export type GatewayCertificateAuthorityListByServiceResponseValueList =
-  ReadonlyArray<GatewayCertificateAuthorityContract>;
+  Array<GatewayCertificateAuthorityContract>;
 export const GatewayCertificateAuthorityListByServiceResponseValueList =
   /*@__PURE__*/ S.Array(
     GatewayCertificateAuthorityContract,
@@ -15397,7 +15397,7 @@ export const GatewayHostnameConfigurationContract = /*@__PURE__*/ S.suspend(
 
 /** Page values. */
 export type GatewayHostnameConfigurationListByServiceResponseValueList =
-  ReadonlyArray<GatewayHostnameConfigurationContract>;
+  Array<GatewayHostnameConfigurationContract>;
 export const GatewayHostnameConfigurationListByServiceResponseValueList =
   /*@__PURE__*/ S.Array(
     GatewayHostnameConfigurationContract,
@@ -15513,8 +15513,7 @@ export const GatewayContract = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GatewayContract>;
 
 /** Page values. */
-export type GatewayListByServiceResponseValueList =
-  ReadonlyArray<GatewayContract>;
+export type GatewayListByServiceResponseValueList = Array<GatewayContract>;
 export const GatewayListByServiceResponseValueList = /*@__PURE__*/ S.Array(
   GatewayContract,
 ) as any as S.Schema<GatewayListByServiceResponseValueList>;
@@ -15543,7 +15542,7 @@ export const GatewayListDebugCredentialsRequestPurposesItem =
   /*@__PURE__*/ S.String;
 
 /** Purposes of debug credential. */
-export type GatewayListDebugCredentialsRequestPurposesList = ReadonlyArray<
+export type GatewayListDebugCredentialsRequestPurposesList = Array<
   GatewayListDebugCredentialsRequestPurposesItem | (string & {})
 >;
 export const GatewayListDebugCredentialsRequestPurposesList =
@@ -16034,7 +16033,7 @@ export const GlobalSchemaContract = /*@__PURE__*/ S.suspend(() =>
 
 /** Global Schema Contract value. */
 export type GlobalSchemaListByServiceResponseValueList =
-  ReadonlyArray<GlobalSchemaContract>;
+  Array<GlobalSchemaContract>;
 export const GlobalSchemaListByServiceResponseValueList = /*@__PURE__*/ S.Array(
   GlobalSchemaContract,
 ) as any as S.Schema<GlobalSchemaListByServiceResponseValueList>;
@@ -16284,7 +16283,7 @@ export const ResolverContract = /*@__PURE__*/ S.suspend(() =>
 
 /** Page values. */
 export type GraphQLApiResolverListByApiResponseValueList =
-  ReadonlyArray<ResolverContract>;
+  Array<ResolverContract>;
 export const GraphQLApiResolverListByApiResponseValueList =
   /*@__PURE__*/ S.Array(
     ResolverContract,
@@ -16523,7 +16522,7 @@ export const GraphQLApiResolverPolicyListByResolverRequest =
 
 /** Policy Contract value. */
 export type GraphQLApiResolverPolicyListByResolverResponseValueList =
-  ReadonlyArray<PolicyContract>;
+  Array<PolicyContract>;
 export const GraphQLApiResolverPolicyListByResolverResponseValueList =
   /*@__PURE__*/ S.Array(
     PolicyContract,
@@ -16873,7 +16872,7 @@ export const GroupContract = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GroupContract" }) as any as S.Schema<GroupContract>;
 
 /** Page values. */
-export type GroupListByServiceResponseValueList = ReadonlyArray<GroupContract>;
+export type GroupListByServiceResponseValueList = Array<GroupContract>;
 export const GroupListByServiceResponseValueList = /*@__PURE__*/ S.Array(
   GroupContract,
 ) as any as S.Schema<GroupListByServiceResponseValueList>;
@@ -17033,8 +17032,7 @@ export const UserIdentityContract = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UserIdentityContract>;
 
 /** Collection of user identities. */
-export type UserContractPropertiesIdentitiesList =
-  ReadonlyArray<UserIdentityContract>;
+export type UserContractPropertiesIdentitiesList = Array<UserIdentityContract>;
 export const UserContractPropertiesIdentitiesList = /*@__PURE__*/ S.Array(
   UserIdentityContract,
 ) as any as S.Schema<UserContractPropertiesIdentitiesList>;
@@ -17073,7 +17071,7 @@ export const UserContractPropertiesGroupsItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Collection of groups user is part of. */
 export type UserContractPropertiesGroupsList =
-  ReadonlyArray<UserContractPropertiesGroupsItem>;
+  Array<UserContractPropertiesGroupsItem>;
 export const UserContractPropertiesGroupsList = /*@__PURE__*/ S.Array(
   UserContractPropertiesGroupsItem,
 ) as any as S.Schema<UserContractPropertiesGroupsList>;
@@ -17229,7 +17227,7 @@ export const UserContract = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UserContract" }) as any as S.Schema<UserContract>;
 
 /** Page values. */
-export type GroupUserListResponseValueList = ReadonlyArray<UserContract>;
+export type GroupUserListResponseValueList = Array<UserContract>;
 export const GroupUserListResponseValueList = /*@__PURE__*/ S.Array(
   UserContract,
 ) as any as S.Schema<GroupUserListResponseValueList>;
@@ -17275,7 +17273,7 @@ export const IdentityProviderCreateContractPropertiesType =
 
 /** List of Allowed Tenants when configuring Azure Active Directory login. */
 export type IdentityProviderCreateContractPropertiesAllowedTenantsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const IdentityProviderCreateContractPropertiesAllowedTenantsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -17376,7 +17374,7 @@ export const IdentityProviderContractPropertiesType = /*@__PURE__*/ S.String;
 
 /** List of Allowed Tenants when configuring Azure Active Directory login. */
 export type IdentityProviderContractPropertiesAllowedTenantsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const IdentityProviderContractPropertiesAllowedTenantsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -17610,7 +17608,7 @@ export const IdentityProviderContract = /*@__PURE__*/ S.suspend(() =>
 
 /** Identity Provider configuration values. */
 export type IdentityProviderListByServiceResponseValueList =
-  ReadonlyArray<IdentityProviderContract>;
+  Array<IdentityProviderContract>;
 export const IdentityProviderListByServiceResponseValueList =
   /*@__PURE__*/ S.Array(
     IdentityProviderContract,
@@ -17709,8 +17707,7 @@ export type IdentityProviderUpdatePropertiesType =
 export const IdentityProviderUpdatePropertiesType = /*@__PURE__*/ S.String;
 
 /** List of Allowed Tenants when configuring Azure Active Directory login. */
-export type IdentityProviderUpdatePropertiesAllowedTenantsList =
-  ReadonlyArray<string>;
+export type IdentityProviderUpdatePropertiesAllowedTenantsList = Array<string>;
 export const IdentityProviderUpdatePropertiesAllowedTenantsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -17900,7 +17897,7 @@ export const IssueListByServiceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IssueListByServiceRequest>;
 
 /** Issue values. */
-export type IssueListByServiceResponseValueList = ReadonlyArray<IssueContract>;
+export type IssueListByServiceResponseValueList = Array<IssueContract>;
 export const IssueListByServiceResponseValueList = /*@__PURE__*/ S.Array(
   IssueContract,
 ) as any as S.Schema<IssueListByServiceResponseValueList>;
@@ -17942,7 +17939,7 @@ export const LoggerContractPropertiesCredentialsMap = /*@__PURE__*/ S.Record(
 /** The Logger entity in API Management represents an event sink that you can use to log API Management events. Currently the Logger entity supports logging API Management events to Azure Event Hubs. */
 export interface LoggerContractProperties {
   /** Logger type. */
-  loggerType: LoggerContractPropertiesLoggerType;
+  loggerType: LoggerContractPropertiesLoggerType | (string & {});
   /** Logger description. */
   description?: string;
   /** The name and SendRule connection string of the event hub for azureEventHub logger. Instrumentation key for applicationInsights logger. */
@@ -18155,8 +18152,7 @@ export const LoggerContract = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LoggerContract" }) as any as S.Schema<LoggerContract>;
 
 /** Logger values. */
-export type LoggerListByServiceResponseValueList =
-  ReadonlyArray<LoggerContract>;
+export type LoggerListByServiceResponseValueList = Array<LoggerContract>;
 export const LoggerListByServiceResponseValueList = /*@__PURE__*/ S.Array(
   LoggerContract,
 ) as any as S.Schema<LoggerListByServiceResponseValueList>;
@@ -18270,7 +18266,7 @@ export const LoggerUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LoggerUpdateResponse>;
 
 /** Optional tags that when provided can be used to filter the NamedValue list. */
-export type NamedValueCreateContractPropertiesTagsList = ReadonlyArray<string>;
+export type NamedValueCreateContractPropertiesTagsList = Array<string>;
 export const NamedValueCreateContractPropertiesTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<NamedValueCreateContractPropertiesTagsList>;
@@ -18332,7 +18328,7 @@ export const NamedValueCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NamedValueCreateOrUpdateRequest>;
 
 /** Optional tags that when provided can be used to filter the NamedValue list. */
-export type NamedValueContractPropertiesTagsList = ReadonlyArray<string>;
+export type NamedValueContractPropertiesTagsList = Array<string>;
 export const NamedValueContractPropertiesTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<NamedValueContractPropertiesTagsList>;
@@ -18531,7 +18527,7 @@ export const NamedValueContract = /*@__PURE__*/ S.suspend(() =>
 
 /** Page values. */
 export type NamedValueListByServiceResponseValueList =
-  ReadonlyArray<NamedValueContract>;
+  Array<NamedValueContract>;
 export const NamedValueListByServiceResponseValueList = /*@__PURE__*/ S.Array(
   NamedValueContract,
 ) as any as S.Schema<NamedValueListByServiceResponseValueList>;
@@ -18644,7 +18640,7 @@ export const NamedValueRefreshSecretResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NamedValueRefreshSecretResponse>;
 
 /** Optional tags that when provided can be used to filter the NamedValue list. */
-export type NamedValueUpdateParameterPropertiesTagsList = ReadonlyArray<string>;
+export type NamedValueUpdateParameterPropertiesTagsList = Array<string>;
 export const NamedValueUpdateParameterPropertiesTagsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -18756,7 +18752,7 @@ export const NetworkStatusListByLocationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NetworkStatusListByLocationRequest>;
 
 /** Gets the list of DNS servers IPV4 addresses. */
-export type NetworkStatusContractDnsServersList = ReadonlyArray<string>;
+export type NetworkStatusContractDnsServersList = Array<string>;
 export const NetworkStatusContractDnsServersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<NetworkStatusContractDnsServersList>;
@@ -18801,7 +18797,7 @@ export const ConnectivityStatusContract = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets the list of Connectivity Status to the Resources on which the service depends upon. */
 export type NetworkStatusContractConnectivityStatusList =
-  ReadonlyArray<ConnectivityStatusContract>;
+  Array<ConnectivityStatusContract>;
 export const NetworkStatusContractConnectivityStatusList =
   /*@__PURE__*/ S.Array(
     ConnectivityStatusContract,
@@ -18866,7 +18862,7 @@ export const NetworkStatusContractByLocation = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Network Status values. */
 export type NetworkStatusListByServiceResponseBodyList =
-  ReadonlyArray<NetworkStatusContractByLocation>;
+  Array<NetworkStatusContractByLocation>;
 export const NetworkStatusListByServiceResponseBodyList = /*@__PURE__*/ S.Array(
   NetworkStatusContractByLocation,
 ) as any as S.Schema<NetworkStatusListByServiceResponseBodyList>;
@@ -18923,13 +18919,13 @@ export const NotificationCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NotificationCreateOrUpdateRequest>;
 
 /** List of Emails subscribed for the notification. */
-export type RecipientsContractPropertiesEmailsList = ReadonlyArray<string>;
+export type RecipientsContractPropertiesEmailsList = Array<string>;
 export const RecipientsContractPropertiesEmailsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RecipientsContractPropertiesEmailsList>;
 
 /** List of Users subscribed for the notification. */
-export type RecipientsContractPropertiesUsersList = ReadonlyArray<string>;
+export type RecipientsContractPropertiesUsersList = Array<string>;
 export const RecipientsContractPropertiesUsersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RecipientsContractPropertiesUsersList>;
@@ -19104,7 +19100,7 @@ export const NotificationContract = /*@__PURE__*/ S.suspend(() =>
 
 /** Page values. */
 export type NotificationListByServiceResponseValueList =
-  ReadonlyArray<NotificationContract>;
+  Array<NotificationContract>;
 export const NotificationListByServiceResponseValueList = /*@__PURE__*/ S.Array(
   NotificationContract,
 ) as any as S.Schema<NotificationListByServiceResponseValueList>;
@@ -19332,7 +19328,7 @@ export const RecipientEmailContract = /*@__PURE__*/ S.suspend(() =>
 
 /** Page values. */
 export type NotificationRecipientEmailListByNotificationResponseValueList =
-  ReadonlyArray<RecipientEmailContract>;
+  Array<RecipientEmailContract>;
 export const NotificationRecipientEmailListByNotificationResponseValueList =
   /*@__PURE__*/ S.Array(
     RecipientEmailContract,
@@ -19564,7 +19560,7 @@ export const RecipientUserContract = /*@__PURE__*/ S.suspend(() =>
 
 /** Page values. */
 export type NotificationRecipientUserListByNotificationResponseValueList =
-  ReadonlyArray<RecipientUserContract>;
+  Array<RecipientUserContract>;
 export const NotificationRecipientUserListByNotificationResponseValueList =
   /*@__PURE__*/ S.Array(
     RecipientUserContract,
@@ -19820,7 +19816,7 @@ export const OpenidConnectProviderContract = /*@__PURE__*/ S.suspend(() =>
 
 /** Page values. */
 export type OpenIdConnectProviderListByServiceResponseValueList =
-  ReadonlyArray<OpenidConnectProviderContract>;
+  Array<OpenidConnectProviderContract>;
 export const OpenIdConnectProviderListByServiceResponseValueList =
   /*@__PURE__*/ S.Array(
     OpenidConnectProviderContract,
@@ -20012,8 +20008,7 @@ export const OperationListByTagsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationListByTagsRequest>;
 
 /** Page values. */
-export type OperationListByTagsResponseValueList =
-  ReadonlyArray<TagResourceContract>;
+export type OperationListByTagsResponseValueList = Array<TagResourceContract>;
 export const OperationListByTagsResponseValueList = /*@__PURE__*/ S.Array(
   TagResourceContract,
 ) as any as S.Schema<OperationListByTagsResponseValueList>;
@@ -20094,14 +20089,13 @@ export const OperationStatusGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationStatusGetRequest>;
 
 /** The operations list. */
-export type OperationStatusResultOperationsList =
-  ReadonlyArray<OperationStatusResult>;
+export type OperationStatusResultOperationsList = Array<OperationStatusResult>;
 export const OperationStatusResultOperationsList = /*@__PURE__*/ S.Array(
   S.suspend(() => OperationStatusResult),
 ) as any as S.Schema<OperationStatusResultOperationsList>;
 
 /** The error details. */
-export type ErrorDetailDetailsList = ReadonlyArray<ErrorDetail>;
+export type ErrorDetailDetailsList = Array<ErrorDetail>;
 export const ErrorDetailDetailsList = /*@__PURE__*/ S.Array(
   S.suspend(() => ErrorDetail),
 ) as any as S.Schema<ErrorDetailDetailsList>;
@@ -20123,7 +20117,7 @@ export const ErrorAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ErrorAdditionalInfo>;
 
 /** The error additional info. */
-export type ErrorDetailAdditionalInfoList = ReadonlyArray<ErrorAdditionalInfo>;
+export type ErrorDetailAdditionalInfoList = Array<ErrorAdditionalInfo>;
 export const ErrorDetailAdditionalInfoList = /*@__PURE__*/ S.Array(
   ErrorAdditionalInfo,
 ) as any as S.Schema<ErrorDetailAdditionalInfoList>;
@@ -20190,7 +20184,7 @@ export const OperationStatusResult = /*@__PURE__*/ S.suspend(() =>
 
 /** The operations list. */
 export type OperationStatusGetResponseOperationsList =
-  ReadonlyArray<OperationStatusResult>;
+  Array<OperationStatusResult>;
 export const OperationStatusGetResponseOperationsList = /*@__PURE__*/ S.Array(
   OperationStatusResult,
 ) as any as S.Schema<OperationStatusGetResponseOperationsList>;
@@ -20272,8 +20266,7 @@ export const EndpointDetail = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EndpointDetail" }) as any as S.Schema<EndpointDetail>;
 
 /** The Ports used when connecting to DomainName. */
-export type EndpointDependencyEndpointDetailsList =
-  ReadonlyArray<EndpointDetail>;
+export type EndpointDependencyEndpointDetailsList = Array<EndpointDetail>;
 export const EndpointDependencyEndpointDetailsList = /*@__PURE__*/ S.Array(
   EndpointDetail,
 ) as any as S.Schema<EndpointDependencyEndpointDetailsList>;
@@ -20296,7 +20289,7 @@ export const EndpointDependency = /*@__PURE__*/ S.suspend(() =>
 
 /** The endpoints that the Api Management Service reaches the service at. */
 export type OutboundEnvironmentEndpointEndpointsList =
-  ReadonlyArray<EndpointDependency>;
+  Array<EndpointDependency>;
 export const OutboundEnvironmentEndpointEndpointsList = /*@__PURE__*/ S.Array(
   EndpointDependency,
 ) as any as S.Schema<OutboundEnvironmentEndpointEndpointsList>;
@@ -20319,7 +20312,7 @@ export const OutboundEnvironmentEndpoint = /*@__PURE__*/ S.suspend(() =>
 
 /** Collection of resources. */
 export type OutboundEnvironmentEndpointListValueList =
-  ReadonlyArray<OutboundEnvironmentEndpoint>;
+  Array<OutboundEnvironmentEndpoint>;
 export const OutboundEnvironmentEndpointListValueList = /*@__PURE__*/ S.Array(
   OutboundEnvironmentEndpoint,
 ) as any as S.Schema<OutboundEnvironmentEndpointListValueList>;
@@ -20395,7 +20388,7 @@ export const PerformConnectivityCheckAsyncRequestProtocolConfigurationHTTPConfig
 
 /** List of HTTP status codes considered valid for the request response. */
 export type PerformConnectivityCheckAsyncRequestProtocolConfigurationHTTPConfigurationValidStatusCodesList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const PerformConnectivityCheckAsyncRequestProtocolConfigurationHTTPConfigurationValidStatusCodesList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -20417,7 +20410,7 @@ export const HTTPHeader = /*@__PURE__*/ S.suspend(() =>
 
 /** List of headers to be included in the request. */
 export type PerformConnectivityCheckAsyncRequestProtocolConfigurationHTTPConfigurationHeadersList =
-  ReadonlyArray<HTTPHeader>;
+  Array<HTTPHeader>;
 export const PerformConnectivityCheckAsyncRequestProtocolConfigurationHTTPConfigurationHeadersList =
   /*@__PURE__*/ S.Array(
     HTTPHeader,
@@ -20516,7 +20509,7 @@ export const PerformConnectivityCheckAsyncRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PerformConnectivityCheckAsyncRequest>;
 
 /** List of next hop identifiers. */
-export type ConnectivityHopNextHopIdsList = ReadonlyArray<string>;
+export type ConnectivityHopNextHopIdsList = Array<string>;
 export const ConnectivityHopNextHopIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ConnectivityHopNextHopIdsList>;
@@ -20550,7 +20543,7 @@ export const IssueContext = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<IssueContext>;
 
 /** Provides additional context on the issue. */
-export type ConnectivityIssueContextList = ReadonlyArray<IssueContext>;
+export type ConnectivityIssueContextList = Array<IssueContext>;
 export const ConnectivityIssueContextList = /*@__PURE__*/ S.Array(
   IssueContext,
 ) as any as S.Schema<ConnectivityIssueContextList>;
@@ -20578,7 +20571,7 @@ export const ConnectivityIssue = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConnectivityIssue>;
 
 /** List of issues. */
-export type ConnectivityHopIssuesList = ReadonlyArray<ConnectivityIssue>;
+export type ConnectivityHopIssuesList = Array<ConnectivityIssue>;
 export const ConnectivityHopIssuesList = /*@__PURE__*/ S.Array(
   ConnectivityIssue,
 ) as any as S.Schema<ConnectivityHopIssuesList>;
@@ -20613,7 +20606,7 @@ export const ConnectivityHop = /*@__PURE__*/ S.suspend(() =>
 
 /** List of hops between the source and the destination. */
 export type PerformConnectivityCheckAsyncResponseHopsList =
-  ReadonlyArray<ConnectivityHop>;
+  Array<ConnectivityHop>;
 export const PerformConnectivityCheckAsyncResponseHopsList =
   /*@__PURE__*/ S.Array(
     ConnectivityHop,
@@ -20834,7 +20827,7 @@ export const PolicyDescriptionContract = /*@__PURE__*/ S.suspend(() =>
 
 /** Descriptions of API Management policies. */
 export type PolicyDescriptionListByServiceResponseValueList =
-  ReadonlyArray<PolicyDescriptionContract>;
+  Array<PolicyDescriptionContract>;
 export const PolicyDescriptionListByServiceResponseValueList =
   /*@__PURE__*/ S.Array(
     PolicyDescriptionContract,
@@ -21111,7 +21104,7 @@ export const PolicyFragmentContract = /*@__PURE__*/ S.suspend(() =>
 
 /** Policy fragment contract value. */
 export type PolicyFragmentListByServiceResponseValueList =
-  ReadonlyArray<PolicyFragmentContract>;
+  Array<PolicyFragmentContract>;
 export const PolicyFragmentListByServiceResponseValueList =
   /*@__PURE__*/ S.Array(
     PolicyFragmentContract,
@@ -21187,8 +21180,7 @@ export const Resource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Resource" }) as any as S.Schema<Resource>;
 
 /** A collection of resources. */
-export type PolicyFragmentListReferencesResponseValueList =
-  ReadonlyArray<Resource>;
+export type PolicyFragmentListReferencesResponseValueList = Array<Resource>;
 export const PolicyFragmentListReferencesResponseValueList =
   /*@__PURE__*/ S.Array(
     Resource,
@@ -21297,8 +21289,7 @@ export const PolicyListByServiceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PolicyListByServiceRequest>;
 
 /** Policy Contract value. */
-export type PolicyListByServiceResponseValueList =
-  ReadonlyArray<PolicyContract>;
+export type PolicyListByServiceResponseValueList = Array<PolicyContract>;
 export const PolicyListByServiceResponseValueList = /*@__PURE__*/ S.Array(
   PolicyContract,
 ) as any as S.Schema<PolicyListByServiceResponseValueList>;
@@ -21331,7 +21322,7 @@ export interface PolicyRestrictionContractProperties {
   /** Path to the policy document. */
   scope?: string;
   /** Indicates if base policy should be enforced for the policy document. */
-  requireBase?: PolicyRestrictionContractPropertiesRequireBase;
+  requireBase?: PolicyRestrictionContractPropertiesRequireBase | (string & {});
 }
 export const PolicyRestrictionContractProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -21529,7 +21520,7 @@ export const PolicyRestrictionContract = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PolicyRestrictionContract>;
 
 export type PolicyRestrictionListByServiceResponseValueList =
-  ReadonlyArray<PolicyRestrictionContract>;
+  Array<PolicyRestrictionContract>;
 export const PolicyRestrictionListByServiceResponseValueList =
   /*@__PURE__*/ S.Array(
     PolicyRestrictionContract,
@@ -21657,7 +21648,7 @@ export const ErrorFieldContract = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of invalid fields send in request, in case of validation error. */
 export type OperationResultContractPropertiesErrorDetailsList =
-  ReadonlyArray<ErrorFieldContract>;
+  Array<ErrorFieldContract>;
 export const OperationResultContractPropertiesErrorDetailsList =
   /*@__PURE__*/ S.Array(
     ErrorFieldContract,
@@ -21704,7 +21695,7 @@ export const OperationResultLogItemContract = /*@__PURE__*/ S.suspend(() =>
 
 /** This property if only provided as part of the TenantConfiguration_Validate operation. It contains the log the entities which will be updated/created/deleted as part of the TenantConfiguration_Deploy operation. */
 export type OperationResultContractPropertiesActionLogList =
-  ReadonlyArray<OperationResultLogItemContract>;
+  Array<OperationResultLogItemContract>;
 export const OperationResultContractPropertiesActionLogList =
   /*@__PURE__*/ S.Array(
     OperationResultLogItemContract,
@@ -21826,8 +21817,7 @@ export const PortalConfigDelegationProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PortalConfigDelegationProperties>;
 
 /** Allowed origins, e.g. `https://trusted.com`. */
-export type PortalConfigCorsPropertiesAllowedOriginsList =
-  ReadonlyArray<string>;
+export type PortalConfigCorsPropertiesAllowedOriginsList = Array<string>;
 export const PortalConfigCorsPropertiesAllowedOriginsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -21854,13 +21844,13 @@ export type PortalConfigCspPropertiesMode =
 export const PortalConfigCspPropertiesMode = /*@__PURE__*/ S.String;
 
 /** The URLs used by the browser to report CSP violations. */
-export type PortalConfigCspPropertiesReportUriList = ReadonlyArray<string>;
+export type PortalConfigCspPropertiesReportUriList = Array<string>;
 export const PortalConfigCspPropertiesReportUriList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PortalConfigCspPropertiesReportUriList>;
 
 /** Allowed sources, e.g. `*.trusted.com`, `trusted.com`, `https://`. */
-export type PortalConfigCspPropertiesAllowedSourcesList = ReadonlyArray<string>;
+export type PortalConfigCspPropertiesAllowedSourcesList = Array<string>;
 export const PortalConfigCspPropertiesAllowedSourcesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -21869,7 +21859,7 @@ export const PortalConfigCspPropertiesAllowedSourcesList =
 /** The developer portal Content Security Policy (CSP) settings. */
 export interface PortalConfigCspProperties {
   /** The mode of the developer portal Content Security Policy (CSP). */
-  mode?: PortalConfigCspPropertiesMode;
+  mode?: PortalConfigCspPropertiesMode | (string & {});
   /** The URLs used by the browser to report CSP violations. */
   reportUri?: PortalConfigCspPropertiesReportUriList;
   /** Allowed sources, e.g. `*.trusted.com`, `trusted.com`, `https://`. */
@@ -22061,7 +22051,7 @@ export const PortalConfigContract = /*@__PURE__*/ S.suspend(() =>
 
 /** The developer portal configurations. */
 export type PortalConfigListByServiceResponseValueList =
-  ReadonlyArray<PortalConfigContract>;
+  Array<PortalConfigContract>;
 export const PortalConfigListByServiceResponseValueList = /*@__PURE__*/ S.Array(
   PortalConfigContract,
 ) as any as S.Schema<PortalConfigListByServiceResponseValueList>;
@@ -22347,7 +22337,7 @@ export const PortalRevisionContract = /*@__PURE__*/ S.suspend(() =>
 
 /** Collection of portal revisions. */
 export type PortalRevisionListByServiceResponseValueList =
-  ReadonlyArray<PortalRevisionContract>;
+  Array<PortalRevisionContract>;
 export const PortalRevisionListByServiceResponseValueList =
   /*@__PURE__*/ S.Array(
     PortalRevisionContract,
@@ -22693,16 +22683,14 @@ export const PrivateEndpointConnectionGetPrivateLinkResourceRequest =
   }) as any as S.Schema<PrivateEndpointConnectionGetPrivateLinkResourceRequest>;
 
 /** The private link resource required member names. */
-export type PrivateLinkResourcePropertiesRequiredMembersList =
-  ReadonlyArray<string>;
+export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
 export const PrivateLinkResourcePropertiesRequiredMembersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
 
 /** The private link resource Private link DNS zone name. */
-export type PrivateLinkResourcePropertiesRequiredZoneNamesList =
-  ReadonlyArray<string>;
+export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
 export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -22803,7 +22791,7 @@ export const PrivateEndpointConnection = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of private endpoint connections */
 export type PrivateEndpointConnectionListByServiceResponseValueList =
-  ReadonlyArray<PrivateEndpointConnection>;
+  Array<PrivateEndpointConnection>;
 export const PrivateEndpointConnectionListByServiceResponseValueList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection,
@@ -22874,7 +22862,7 @@ export const PrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of private link resources */
 export type PrivateEndpointConnectionListPrivateLinkResourcesResponseValueList =
-  ReadonlyArray<PrivateLinkResource>;
+  Array<PrivateLinkResource>;
 export const PrivateEndpointConnectionListPrivateLinkResourcesResponseValueList =
   /*@__PURE__*/ S.Array(
     PrivateLinkResource,
@@ -23205,7 +23193,7 @@ export const ProductApiLinkContract = /*@__PURE__*/ S.suspend(() =>
 
 /** Page values. */
 export type ProductApiLinkListByProductResponseValueList =
-  ReadonlyArray<ProductApiLinkContract>;
+  Array<ProductApiLinkContract>;
 export const ProductApiLinkListByProductResponseValueList =
   /*@__PURE__*/ S.Array(
     ProductApiLinkContract,
@@ -23267,8 +23255,7 @@ export const ProductApiListByProductRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProductApiListByProductRequest>;
 
 /** Page values. */
-export type ProductApiListByProductResponseValueList =
-  ReadonlyArray<ApiContract>;
+export type ProductApiListByProductResponseValueList = Array<ApiContract>;
 export const ProductApiListByProductResponseValueList = /*@__PURE__*/ S.Array(
   ApiContract,
 ) as any as S.Schema<ProductApiListByProductResponseValueList>;
@@ -23742,7 +23729,7 @@ export const ProductGroupLinkContract = /*@__PURE__*/ S.suspend(() =>
 
 /** Page values. */
 export type ProductGroupLinkListByProductResponseValueList =
-  ReadonlyArray<ProductGroupLinkContract>;
+  Array<ProductGroupLinkContract>;
 export const ProductGroupLinkListByProductResponseValueList =
   /*@__PURE__*/ S.Array(
     ProductGroupLinkContract,
@@ -23805,8 +23792,7 @@ export const ProductGroupListByProductRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProductGroupListByProductRequest>;
 
 /** Page values. */
-export type ProductGroupListByProductResponseValueList =
-  ReadonlyArray<GroupContract>;
+export type ProductGroupListByProductResponseValueList = Array<GroupContract>;
 export const ProductGroupListByProductResponseValueList = /*@__PURE__*/ S.Array(
   GroupContract,
 ) as any as S.Schema<ProductGroupListByProductResponseValueList>;
@@ -23870,8 +23856,7 @@ export const ProductListByServiceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProductListByServiceRequest>;
 
 /** Page values. */
-export type ProductListByServiceResponseValueList =
-  ReadonlyArray<ProductContract>;
+export type ProductListByServiceResponseValueList = Array<ProductContract>;
 export const ProductListByServiceResponseValueList = /*@__PURE__*/ S.Array(
   ProductContract,
 ) as any as S.Schema<ProductListByServiceResponseValueList>;
@@ -23932,8 +23917,7 @@ export const ProductListByTagsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProductListByTagsRequest>;
 
 /** Page values. */
-export type ProductListByTagsResponseValueList =
-  ReadonlyArray<TagResourceContract>;
+export type ProductListByTagsResponseValueList = Array<TagResourceContract>;
 export const ProductListByTagsResponseValueList = /*@__PURE__*/ S.Array(
   TagResourceContract,
 ) as any as S.Schema<ProductListByTagsResponseValueList>;
@@ -24146,8 +24130,7 @@ export const ProductPolicyListByProductRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProductPolicyListByProductRequest>;
 
 /** Policy Contract value. */
-export type ProductPolicyListByProductResponseValueList =
-  ReadonlyArray<PolicyContract>;
+export type ProductPolicyListByProductResponseValueList = Array<PolicyContract>;
 export const ProductPolicyListByProductResponseValueList =
   /*@__PURE__*/ S.Array(
     PolicyContract,
@@ -24291,7 +24274,7 @@ export const SubscriptionContract = /*@__PURE__*/ S.suspend(() =>
 
 /** Page values. */
 export type ProductSubscriptionsListResponseValueList =
-  ReadonlyArray<SubscriptionContract>;
+  Array<SubscriptionContract>;
 export const ProductSubscriptionsListResponseValueList = /*@__PURE__*/ S.Array(
   SubscriptionContract,
 ) as any as S.Schema<ProductSubscriptionsListResponseValueList>;
@@ -24575,7 +24558,7 @@ export const ProductWikisListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProductWikisListRequest>;
 
 /** Page values. */
-export type ProductWikisListResponseValueList = ReadonlyArray<WikiContract>;
+export type ProductWikisListResponseValueList = Array<WikiContract>;
 export const ProductWikisListResponseValueList = /*@__PURE__*/ S.Array(
   WikiContract,
 ) as any as S.Schema<ProductWikisListResponseValueList>;
@@ -24719,7 +24702,7 @@ export const QuotaCounterContract = /*@__PURE__*/ S.suspend(() =>
 
 /** Quota counter values. */
 export type QuotaByCounterKeysListByServiceResponseValueList =
-  ReadonlyArray<QuotaCounterContract>;
+  Array<QuotaCounterContract>;
 export const QuotaByCounterKeysListByServiceResponseValueList =
   /*@__PURE__*/ S.Array(
     QuotaCounterContract,
@@ -24777,7 +24760,7 @@ export const QuotaByCounterKeysUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Quota counter values. */
 export type QuotaByCounterKeysUpdateResponseValueList =
-  ReadonlyArray<QuotaCounterContract>;
+  Array<QuotaCounterContract>;
 export const QuotaByCounterKeysUpdateResponseValueList = /*@__PURE__*/ S.Array(
   QuotaCounterContract,
 ) as any as S.Schema<QuotaByCounterKeysUpdateResponseValueList>;
@@ -24956,8 +24939,7 @@ export const RegionContract = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RegionContract" }) as any as S.Schema<RegionContract>;
 
 /** Lists of Regions. */
-export type RegionListByServiceResponseValueList =
-  ReadonlyArray<RegionContract>;
+export type RegionListByServiceResponseValueList = Array<RegionContract>;
 export const RegionListByServiceResponseValueList = /*@__PURE__*/ S.Array(
   RegionContract,
 ) as any as S.Schema<RegionListByServiceResponseValueList>;
@@ -25106,8 +25088,7 @@ export const ReportRecordContract = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReportRecordContract>;
 
 /** Page values. */
-export type ReportsListByApiResponseValueList =
-  ReadonlyArray<ReportRecordContract>;
+export type ReportsListByApiResponseValueList = Array<ReportRecordContract>;
 export const ReportsListByApiResponseValueList = /*@__PURE__*/ S.Array(
   ReportRecordContract,
 ) as any as S.Schema<ReportsListByApiResponseValueList>;
@@ -25165,8 +25146,7 @@ export const ReportsListByGeoRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReportsListByGeoRequest>;
 
 /** Page values. */
-export type ReportsListByGeoResponseValueList =
-  ReadonlyArray<ReportRecordContract>;
+export type ReportsListByGeoResponseValueList = Array<ReportRecordContract>;
 export const ReportsListByGeoResponseValueList = /*@__PURE__*/ S.Array(
   ReportRecordContract,
 ) as any as S.Schema<ReportsListByGeoResponseValueList>;
@@ -25228,7 +25208,7 @@ export const ReportsListByOperationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Page values. */
 export type ReportsListByOperationResponseValueList =
-  ReadonlyArray<ReportRecordContract>;
+  Array<ReportRecordContract>;
 export const ReportsListByOperationResponseValueList = /*@__PURE__*/ S.Array(
   ReportRecordContract,
 ) as any as S.Schema<ReportsListByOperationResponseValueList>;
@@ -25289,8 +25269,7 @@ export const ReportsListByProductRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReportsListByProductRequest>;
 
 /** Page values. */
-export type ReportsListByProductResponseValueList =
-  ReadonlyArray<ReportRecordContract>;
+export type ReportsListByProductResponseValueList = Array<ReportRecordContract>;
 export const ReportsListByProductResponseValueList = /*@__PURE__*/ S.Array(
   ReportRecordContract,
 ) as any as S.Schema<ReportsListByProductResponseValueList>;
@@ -25413,7 +25392,7 @@ export const RequestReportRecordContract = /*@__PURE__*/ S.suspend(() =>
 
 /** Page values. */
 export type ReportsListByRequestResponseValueList =
-  ReadonlyArray<RequestReportRecordContract>;
+  Array<RequestReportRecordContract>;
 export const ReportsListByRequestResponseValueList = /*@__PURE__*/ S.Array(
   RequestReportRecordContract,
 ) as any as S.Schema<ReportsListByRequestResponseValueList>;
@@ -25472,7 +25451,7 @@ export const ReportsListBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Page values. */
 export type ReportsListBySubscriptionResponseValueList =
-  ReadonlyArray<ReportRecordContract>;
+  Array<ReportRecordContract>;
 export const ReportsListBySubscriptionResponseValueList = /*@__PURE__*/ S.Array(
   ReportRecordContract,
 ) as any as S.Schema<ReportsListBySubscriptionResponseValueList>;
@@ -25536,8 +25515,7 @@ export const ReportsListByTimeRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReportsListByTimeRequest>;
 
 /** Page values. */
-export type ReportsListByTimeResponseValueList =
-  ReadonlyArray<ReportRecordContract>;
+export type ReportsListByTimeResponseValueList = Array<ReportRecordContract>;
 export const ReportsListByTimeResponseValueList = /*@__PURE__*/ S.Array(
   ReportRecordContract,
 ) as any as S.Schema<ReportsListByTimeResponseValueList>;
@@ -25598,8 +25576,7 @@ export const ReportsListByUserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReportsListByUserRequest>;
 
 /** Page values. */
-export type ReportsListByUserResponseValueList =
-  ReadonlyArray<ReportRecordContract>;
+export type ReportsListByUserResponseValueList = Array<ReportRecordContract>;
 export const ReportsListByUserResponseValueList = /*@__PURE__*/ S.Array(
   ReportRecordContract,
 ) as any as S.Schema<ReportsListByUserResponseValueList>;
@@ -25849,8 +25826,7 @@ export const SubscriptionListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SubscriptionListRequest>;
 
 /** Page values. */
-export type SubscriptionListResponseValueList =
-  ReadonlyArray<SubscriptionContract>;
+export type SubscriptionListResponseValueList = Array<SubscriptionContract>;
 export const SubscriptionListResponseValueList = /*@__PURE__*/ S.Array(
   SubscriptionContract,
 ) as any as S.Schema<SubscriptionListResponseValueList>;
@@ -26316,7 +26292,7 @@ export const TagApiLinkContract = /*@__PURE__*/ S.suspend(() =>
 
 /** Page values. */
 export type TagApiLinkListByProductResponseValueList =
-  ReadonlyArray<TagApiLinkContract>;
+  Array<TagApiLinkContract>;
 export const TagApiLinkListByProductResponseValueList = /*@__PURE__*/ S.Array(
   TagApiLinkContract,
 ) as any as S.Schema<TagApiLinkListByProductResponseValueList>;
@@ -26977,7 +26953,7 @@ export const TagContract = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TagContract" }) as any as S.Schema<TagContract>;
 
 /** Page values. */
-export type TagListByApiResponseValueList = ReadonlyArray<TagContract>;
+export type TagListByApiResponseValueList = Array<TagContract>;
 export const TagListByApiResponseValueList = /*@__PURE__*/ S.Array(
   TagContract,
 ) as any as S.Schema<TagListByApiResponseValueList>;
@@ -27041,7 +27017,7 @@ export const TagListByOperationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TagListByOperationRequest>;
 
 /** Page values. */
-export type TagListByOperationResponseValueList = ReadonlyArray<TagContract>;
+export type TagListByOperationResponseValueList = Array<TagContract>;
 export const TagListByOperationResponseValueList = /*@__PURE__*/ S.Array(
   TagContract,
 ) as any as S.Schema<TagListByOperationResponseValueList>;
@@ -27102,7 +27078,7 @@ export const TagListByProductRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TagListByProductRequest>;
 
 /** Page values. */
-export type TagListByProductResponseValueList = ReadonlyArray<TagContract>;
+export type TagListByProductResponseValueList = Array<TagContract>;
 export const TagListByProductResponseValueList = /*@__PURE__*/ S.Array(
   TagContract,
 ) as any as S.Schema<TagListByProductResponseValueList>;
@@ -27163,7 +27139,7 @@ export const TagListByServiceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TagListByServiceRequest>;
 
 /** Page values. */
-export type TagListByServiceResponseValueList = ReadonlyArray<TagContract>;
+export type TagListByServiceResponseValueList = Array<TagContract>;
 export const TagListByServiceResponseValueList = /*@__PURE__*/ S.Array(
   TagContract,
 ) as any as S.Schema<TagListByServiceResponseValueList>;
@@ -27408,7 +27384,7 @@ export const TagOperationLinkContract = /*@__PURE__*/ S.suspend(() =>
 
 /** Page values. */
 export type TagOperationLinkListByProductResponseValueList =
-  ReadonlyArray<TagOperationLinkContract>;
+  Array<TagOperationLinkContract>;
 export const TagOperationLinkListByProductResponseValueList =
   /*@__PURE__*/ S.Array(
     TagOperationLinkContract,
@@ -27653,7 +27629,7 @@ export const TagProductLinkContract = /*@__PURE__*/ S.suspend(() =>
 
 /** Page values. */
 export type TagProductLinkListByProductResponseValueList =
-  ReadonlyArray<TagProductLinkContract>;
+  Array<TagProductLinkContract>;
 export const TagProductLinkListByProductResponseValueList =
   /*@__PURE__*/ S.Array(
     TagProductLinkContract,
@@ -27713,7 +27689,7 @@ export const TagResourceListByServiceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Page values. */
 export type TagResourceListByServiceResponseValueList =
-  ReadonlyArray<TagResourceContract>;
+  Array<TagResourceContract>;
 export const TagResourceListByServiceResponseValueList = /*@__PURE__*/ S.Array(
   TagResourceContract,
 ) as any as S.Schema<TagResourceListByServiceResponseValueList>;
@@ -28079,7 +28055,7 @@ export const AccessInformationContract = /*@__PURE__*/ S.suspend(() =>
 
 /** Page values. */
 export type TenantAccessListByServiceResponseValueList =
-  ReadonlyArray<AccessInformationContract>;
+  Array<AccessInformationContract>;
 export const TenantAccessListByServiceResponseValueList = /*@__PURE__*/ S.Array(
   AccessInformationContract,
 ) as any as S.Schema<TenantAccessListByServiceResponseValueList>;
@@ -28680,7 +28656,7 @@ export const UserCreateParameterPropertiesState = /*@__PURE__*/ S.String;
 
 /** Collection of user identities. */
 export type UserCreateParameterPropertiesIdentitiesList =
-  ReadonlyArray<UserIdentityContract>;
+  Array<UserIdentityContract>;
 export const UserCreateParameterPropertiesIdentitiesList =
   /*@__PURE__*/ S.Array(
     UserIdentityContract,
@@ -29021,7 +28997,7 @@ export const UserGroupListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UserGroupListRequest>;
 
 /** Page values. */
-export type UserGroupListResponseValueList = ReadonlyArray<GroupContract>;
+export type UserGroupListResponseValueList = Array<GroupContract>;
 export const UserGroupListResponseValueList = /*@__PURE__*/ S.Array(
   GroupContract,
 ) as any as S.Schema<UserGroupListResponseValueList>;
@@ -29073,8 +29049,7 @@ export const UserIdentitiesListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UserIdentitiesListRequest>;
 
 /** User Identity values. */
-export type UserIdentitiesListResponseValueList =
-  ReadonlyArray<UserIdentityContract>;
+export type UserIdentitiesListResponseValueList = Array<UserIdentityContract>;
 export const UserIdentitiesListResponseValueList = /*@__PURE__*/ S.Array(
   UserIdentityContract,
 ) as any as S.Schema<UserIdentitiesListResponseValueList>;
@@ -29135,7 +29110,7 @@ export const UserListByServiceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UserListByServiceRequest>;
 
 /** Page values. */
-export type UserListByServiceResponseValueList = ReadonlyArray<UserContract>;
+export type UserListByServiceResponseValueList = Array<UserContract>;
 export const UserListByServiceResponseValueList = /*@__PURE__*/ S.Array(
   UserContract,
 ) as any as S.Schema<UserListByServiceResponseValueList>;
@@ -29248,8 +29223,7 @@ export const UserSubscriptionListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UserSubscriptionListRequest>;
 
 /** Page values. */
-export type UserSubscriptionListResponseValueList =
-  ReadonlyArray<SubscriptionContract>;
+export type UserSubscriptionListResponseValueList = Array<SubscriptionContract>;
 export const UserSubscriptionListResponseValueList = /*@__PURE__*/ S.Array(
   SubscriptionContract,
 ) as any as S.Schema<UserSubscriptionListResponseValueList>;
@@ -29282,7 +29256,7 @@ export const UserUpdateParametersPropertiesState = /*@__PURE__*/ S.String;
 
 /** Collection of user identities. */
 export type UserUpdateParametersPropertiesIdentitiesList =
-  ReadonlyArray<UserIdentityContract>;
+  Array<UserIdentityContract>;
 export const UserUpdateParametersPropertiesIdentitiesList =
   /*@__PURE__*/ S.Array(
     UserIdentityContract,
@@ -29666,7 +29640,7 @@ export const WorkspaceApiDiagnosticListByWorkspaceRequest =
 
 /** Page values. */
 export type WorkspaceApiDiagnosticListByWorkspaceResponseValueList =
-  ReadonlyArray<DiagnosticContract>;
+  Array<DiagnosticContract>;
 export const WorkspaceApiDiagnosticListByWorkspaceResponseValueList =
   /*@__PURE__*/ S.Array(
     DiagnosticContract,
@@ -29922,8 +29896,7 @@ export const WorkspaceApiListByServiceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WorkspaceApiListByServiceRequest>;
 
 /** Page values. */
-export type WorkspaceApiListByServiceResponseValueList =
-  ReadonlyArray<ApiContract>;
+export type WorkspaceApiListByServiceResponseValueList = Array<ApiContract>;
 export const WorkspaceApiListByServiceResponseValueList = /*@__PURE__*/ S.Array(
   ApiContract,
 ) as any as S.Schema<WorkspaceApiListByServiceResponseValueList>;
@@ -30148,7 +30121,7 @@ export const WorkspaceApiOperationListByApiRequest = /*@__PURE__*/ S.suspend(
 
 /** Page values. */
 export type WorkspaceApiOperationListByApiResponseValueList =
-  ReadonlyArray<OperationContract>;
+  Array<OperationContract>;
 export const WorkspaceApiOperationListByApiResponseValueList =
   /*@__PURE__*/ S.Array(
     OperationContract,
@@ -30404,7 +30377,7 @@ export const WorkspaceApiOperationPolicyListByOperationRequest =
 
 /** Policy Contract value. */
 export type WorkspaceApiOperationPolicyListByOperationResponseValueList =
-  ReadonlyArray<PolicyContract>;
+  Array<PolicyContract>;
 export const WorkspaceApiOperationPolicyListByOperationResponseValueList =
   /*@__PURE__*/ S.Array(
     PolicyContract,
@@ -30694,7 +30667,7 @@ export const WorkspaceApiPolicyListByApiRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Policy Contract value. */
 export type WorkspaceApiPolicyListByApiResponseValueList =
-  ReadonlyArray<PolicyContract>;
+  Array<PolicyContract>;
 export const WorkspaceApiPolicyListByApiResponseValueList =
   /*@__PURE__*/ S.Array(
     PolicyContract,
@@ -30917,7 +30890,7 @@ export const WorkspaceApiReleaseListByServiceRequest = /*@__PURE__*/ S.suspend(
 
 /** Page values. */
 export type WorkspaceApiReleaseListByServiceResponseValueList =
-  ReadonlyArray<ApiReleaseContract>;
+  Array<ApiReleaseContract>;
 export const WorkspaceApiReleaseListByServiceResponseValueList =
   /*@__PURE__*/ S.Array(
     ApiReleaseContract,
@@ -31043,7 +31016,7 @@ export const WorkspaceApiRevisionListByServiceRequest = /*@__PURE__*/ S.suspend(
 
 /** Page values. */
 export type WorkspaceApiRevisionListByServiceResponseValueList =
-  ReadonlyArray<ApiRevisionContract>;
+  Array<ApiRevisionContract>;
 export const WorkspaceApiRevisionListByServiceResponseValueList =
   /*@__PURE__*/ S.Array(
     ApiRevisionContract,
@@ -31269,7 +31242,7 @@ export const WorkspaceApiSchemaListByApiRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** API Schema Contract value. */
 export type WorkspaceApiSchemaListByApiResponseValueList =
-  ReadonlyArray<SchemaContract>;
+  Array<SchemaContract>;
 export const WorkspaceApiSchemaListByApiResponseValueList =
   /*@__PURE__*/ S.Array(
     SchemaContract,
@@ -31535,7 +31508,7 @@ export const WorkspaceApiVersionSetListByServiceRequest =
 
 /** Page values. */
 export type WorkspaceApiVersionSetListByServiceResponseValueList =
-  ReadonlyArray<ApiVersionSetContract>;
+  Array<ApiVersionSetContract>;
 export const WorkspaceApiVersionSetListByServiceResponseValueList =
   /*@__PURE__*/ S.Array(
     ApiVersionSetContract,
@@ -31803,7 +31776,7 @@ export const WorkspaceBackendListByWorkspaceRequest = /*@__PURE__*/ S.suspend(
 
 /** Backend values. */
 export type WorkspaceBackendListByWorkspaceResponseValueList =
-  ReadonlyArray<BackendContract>;
+  Array<BackendContract>;
 export const WorkspaceBackendListByWorkspaceResponseValueList =
   /*@__PURE__*/ S.Array(
     BackendContract,
@@ -32073,7 +32046,7 @@ export const WorkspaceCertificateListByWorkspaceRequest =
 
 /** Page values. */
 export type WorkspaceCertificateListByWorkspaceResponseValueList =
-  ReadonlyArray<CertificateContract>;
+  Array<CertificateContract>;
 export const WorkspaceCertificateListByWorkspaceResponseValueList =
   /*@__PURE__*/ S.Array(
     CertificateContract,
@@ -32442,7 +32415,7 @@ export const WorkspaceDiagnosticListByWorkspaceRequest =
 
 /** Page values. */
 export type WorkspaceDiagnosticListByWorkspaceResponseValueList =
-  ReadonlyArray<DiagnosticContract>;
+  Array<DiagnosticContract>;
 export const WorkspaceDiagnosticListByWorkspaceResponseValueList =
   /*@__PURE__*/ S.Array(
     DiagnosticContract,
@@ -32758,7 +32731,7 @@ export const WorkspaceGlobalSchemaListByServiceRequest =
 
 /** Global Schema Contract value. */
 export type WorkspaceGlobalSchemaListByServiceResponseValueList =
-  ReadonlyArray<GlobalSchemaContract>;
+  Array<GlobalSchemaContract>;
 export const WorkspaceGlobalSchemaListByServiceResponseValueList =
   /*@__PURE__*/ S.Array(
     GlobalSchemaContract,
@@ -32967,8 +32940,7 @@ export const WorkspaceGroupListByServiceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WorkspaceGroupListByServiceRequest>;
 
 /** Page values. */
-export type WorkspaceGroupListByServiceResponseValueList =
-  ReadonlyArray<GroupContract>;
+export type WorkspaceGroupListByServiceResponseValueList = Array<GroupContract>;
 export const WorkspaceGroupListByServiceResponseValueList =
   /*@__PURE__*/ S.Array(
     GroupContract,
@@ -33184,8 +33156,7 @@ export const WorkspaceGroupUserListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WorkspaceGroupUserListRequest>;
 
 /** Page values. */
-export type WorkspaceGroupUserListResponseValueList =
-  ReadonlyArray<UserContract>;
+export type WorkspaceGroupUserListResponseValueList = Array<UserContract>;
 export const WorkspaceGroupUserListResponseValueList = /*@__PURE__*/ S.Array(
   UserContract,
 ) as any as S.Schema<WorkspaceGroupUserListResponseValueList>;
@@ -33265,8 +33236,7 @@ export const WorkspaceContract = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WorkspaceContract>;
 
 /** Page values. */
-export type WorkspaceListByServiceResponseValueList =
-  ReadonlyArray<WorkspaceContract>;
+export type WorkspaceListByServiceResponseValueList = Array<WorkspaceContract>;
 export const WorkspaceListByServiceResponseValueList = /*@__PURE__*/ S.Array(
   WorkspaceContract,
 ) as any as S.Schema<WorkspaceListByServiceResponseValueList>;
@@ -33476,7 +33446,7 @@ export const WorkspaceLoggerListByWorkspaceRequest = /*@__PURE__*/ S.suspend(
 
 /** Logger values. */
 export type WorkspaceLoggerListByWorkspaceResponseValueList =
-  ReadonlyArray<LoggerContract>;
+  Array<LoggerContract>;
 export const WorkspaceLoggerListByWorkspaceResponseValueList =
   /*@__PURE__*/ S.Array(
     LoggerContract,
@@ -33758,7 +33728,7 @@ export const WorkspaceNamedValueListByServiceRequest = /*@__PURE__*/ S.suspend(
 
 /** Page values. */
 export type WorkspaceNamedValueListByServiceResponseValueList =
-  ReadonlyArray<NamedValueContract>;
+  Array<NamedValueContract>;
 export const WorkspaceNamedValueListByServiceResponseValueList =
   /*@__PURE__*/ S.Array(
     NamedValueContract,
@@ -34110,7 +34080,7 @@ export const WorkspaceNotificationListByServiceRequest =
 
 /** Page values. */
 export type WorkspaceNotificationListByServiceResponseValueList =
-  ReadonlyArray<NotificationContract>;
+  Array<NotificationContract>;
 export const WorkspaceNotificationListByServiceResponseValueList =
   /*@__PURE__*/ S.Array(
     NotificationContract,
@@ -34315,7 +34285,7 @@ export const WorkspaceNotificationRecipientEmailListByNotificationRequest =
 
 /** Page values. */
 export type WorkspaceNotificationRecipientEmailListByNotificationResponseValueList =
-  ReadonlyArray<RecipientEmailContract>;
+  Array<RecipientEmailContract>;
 export const WorkspaceNotificationRecipientEmailListByNotificationResponseValueList =
   /*@__PURE__*/ S.Array(
     RecipientEmailContract,
@@ -34522,7 +34492,7 @@ export const WorkspaceNotificationRecipientUserListByNotificationRequest =
 
 /** Page values. */
 export type WorkspaceNotificationRecipientUserListByNotificationResponseValueList =
-  ReadonlyArray<RecipientUserContract>;
+  Array<RecipientUserContract>;
 export const WorkspaceNotificationRecipientUserListByNotificationResponseValueList =
   /*@__PURE__*/ S.Array(
     RecipientUserContract,
@@ -34848,7 +34818,7 @@ export const WorkspacePolicyFragmentListByServiceRequest =
 
 /** Policy fragment contract value. */
 export type WorkspacePolicyFragmentListByServiceResponseValueList =
-  ReadonlyArray<PolicyFragmentContract>;
+  Array<PolicyFragmentContract>;
 export const WorkspacePolicyFragmentListByServiceResponseValueList =
   /*@__PURE__*/ S.Array(
     PolicyFragmentContract,
@@ -34913,7 +34883,7 @@ export const WorkspacePolicyFragmentListReferencesRequest =
 
 /** A collection of resources. */
 export type WorkspacePolicyFragmentListReferencesResponseValueList =
-  ReadonlyArray<Resource>;
+  Array<Resource>;
 export const WorkspacePolicyFragmentListReferencesResponseValueList =
   /*@__PURE__*/ S.Array(
     Resource,
@@ -35028,8 +34998,7 @@ export const WorkspacePolicyListByApiRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WorkspacePolicyListByApiRequest>;
 
 /** Policy Contract value. */
-export type WorkspacePolicyListByApiResponseValueList =
-  ReadonlyArray<PolicyContract>;
+export type WorkspacePolicyListByApiResponseValueList = Array<PolicyContract>;
 export const WorkspacePolicyListByApiResponseValueList = /*@__PURE__*/ S.Array(
   PolicyContract,
 ) as any as S.Schema<WorkspacePolicyListByApiResponseValueList>;
@@ -35252,7 +35221,7 @@ export const WorkspaceProductApiLinkListByProductRequest =
 
 /** Page values. */
 export type WorkspaceProductApiLinkListByProductResponseValueList =
-  ReadonlyArray<ProductApiLinkContract>;
+  Array<ProductApiLinkContract>;
 export const WorkspaceProductApiLinkListByProductResponseValueList =
   /*@__PURE__*/ S.Array(
     ProductApiLinkContract,
@@ -35628,7 +35597,7 @@ export const WorkspaceProductGroupLinkListByProductRequest =
 
 /** Page values. */
 export type WorkspaceProductGroupLinkListByProductResponseValueList =
-  ReadonlyArray<ProductGroupLinkContract>;
+  Array<ProductGroupLinkContract>;
 export const WorkspaceProductGroupLinkListByProductResponseValueList =
   /*@__PURE__*/ S.Array(
     ProductGroupLinkContract,
@@ -35701,7 +35670,7 @@ export const WorkspaceProductListByServiceRequest = /*@__PURE__*/ S.suspend(
 
 /** Page values. */
 export type WorkspaceProductListByServiceResponseValueList =
-  ReadonlyArray<ProductContract>;
+  Array<ProductContract>;
 export const WorkspaceProductListByServiceResponseValueList =
   /*@__PURE__*/ S.Array(
     ProductContract,
@@ -35935,7 +35904,7 @@ export const WorkspaceProductPolicyListByProductRequest =
 
 /** Policy Contract value. */
 export type WorkspaceProductPolicyListByProductResponseValueList =
-  ReadonlyArray<PolicyContract>;
+  Array<PolicyContract>;
 export const WorkspaceProductPolicyListByProductResponseValueList =
   /*@__PURE__*/ S.Array(
     PolicyContract,
@@ -36215,7 +36184,7 @@ export const WorkspaceSubscriptionListRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Page values. */
 export type WorkspaceSubscriptionListResponseValueList =
-  ReadonlyArray<SubscriptionContract>;
+  Array<SubscriptionContract>;
 export const WorkspaceSubscriptionListResponseValueList = /*@__PURE__*/ S.Array(
   SubscriptionContract,
 ) as any as S.Schema<WorkspaceSubscriptionListResponseValueList>;
@@ -36629,7 +36598,7 @@ export const WorkspaceTagApiLinkListByProductRequest = /*@__PURE__*/ S.suspend(
 
 /** Page values. */
 export type WorkspaceTagApiLinkListByProductResponseValueList =
-  ReadonlyArray<TagApiLinkContract>;
+  Array<TagApiLinkContract>;
 export const WorkspaceTagApiLinkListByProductResponseValueList =
   /*@__PURE__*/ S.Array(
     TagApiLinkContract,
@@ -36840,8 +36809,7 @@ export const WorkspaceTagListByServiceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WorkspaceTagListByServiceRequest>;
 
 /** Page values. */
-export type WorkspaceTagListByServiceResponseValueList =
-  ReadonlyArray<TagContract>;
+export type WorkspaceTagListByServiceResponseValueList = Array<TagContract>;
 export const WorkspaceTagListByServiceResponseValueList = /*@__PURE__*/ S.Array(
   TagContract,
 ) as any as S.Schema<WorkspaceTagListByServiceResponseValueList>;
@@ -37065,7 +37033,7 @@ export const WorkspaceTagOperationLinkListByProductRequest =
 
 /** Page values. */
 export type WorkspaceTagOperationLinkListByProductResponseValueList =
-  ReadonlyArray<TagOperationLinkContract>;
+  Array<TagOperationLinkContract>;
 export const WorkspaceTagOperationLinkListByProductResponseValueList =
   /*@__PURE__*/ S.Array(
     TagOperationLinkContract,
@@ -37292,7 +37260,7 @@ export const WorkspaceTagProductLinkListByProductRequest =
 
 /** Page values. */
 export type WorkspaceTagProductLinkListByProductResponseValueList =
-  ReadonlyArray<TagProductLinkContract>;
+  Array<TagProductLinkContract>;
 export const WorkspaceTagProductLinkListByProductResponseValueList =
   /*@__PURE__*/ S.Array(
     TagProductLinkContract,

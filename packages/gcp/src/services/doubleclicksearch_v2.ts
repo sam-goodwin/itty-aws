@@ -145,8 +145,7 @@ export const ReportRequestOrderByItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "ReportRequestOrderByItem",
 }) as any as S.Schema<ReportRequestOrderByItem>;
 
-export type ReportRequestOrderByItemList =
-  ReadonlyArray<ReportRequestOrderByItem>;
+export type ReportRequestOrderByItemList = Array<ReportRequestOrderByItem>;
 export const ReportRequestOrderByItemList = /*@__PURE__*/ S.Array(
   ReportRequestOrderByItem,
 ) as any as S.Schema<ReportRequestOrderByItemList>;
@@ -172,12 +171,12 @@ export const ReportRequestTimeRange = /*@__PURE__*/ S.suspend(() =>
   identifier: "ReportRequestTimeRange",
 }) as any as S.Schema<ReportRequestTimeRange>;
 
-export type ReportApiColumnSpecList = ReadonlyArray<ReportApiColumnSpec>;
+export type ReportApiColumnSpecList = Array<ReportApiColumnSpec>;
 export const ReportApiColumnSpecList = /*@__PURE__*/ S.Array(
   ReportApiColumnSpec,
 ) as any as S.Schema<ReportApiColumnSpecList>;
 
-export type DocumentList = ReadonlyArray<unknown>;
+export type DocumentList = Array<unknown>;
 export const DocumentList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<DocumentList>;
@@ -200,8 +199,7 @@ export const ReportRequestFiltersItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "ReportRequestFiltersItem",
 }) as any as S.Schema<ReportRequestFiltersItem>;
 
-export type ReportRequestFiltersItemList =
-  ReadonlyArray<ReportRequestFiltersItem>;
+export type ReportRequestFiltersItemList = Array<ReportRequestFiltersItem>;
 export const ReportRequestFiltersItemList = /*@__PURE__*/ S.Array(
   ReportRequestFiltersItem,
 ) as any as S.Schema<ReportRequestFiltersItemList>;
@@ -281,7 +279,7 @@ export const ReportRow = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<ReportRow>;
 
-export type ReportRowList = ReadonlyArray<ReportRow>;
+export type ReportRowList = Array<ReportRow>;
 export const ReportRowList = /*@__PURE__*/ S.Array(
   ReportRow,
 ) as any as S.Schema<ReportRowList>;
@@ -301,7 +299,7 @@ export const ReportFilesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "ReportFilesItem",
 }) as any as S.Schema<ReportFilesItem>;
 
-export type ReportFilesItemList = ReadonlyArray<ReportFilesItem>;
+export type ReportFilesItemList = Array<ReportFilesItem>;
 export const ReportFilesItemList = /*@__PURE__*/ S.Array(
   ReportFilesItem,
 ) as any as S.Schema<ReportFilesItemList>;
@@ -411,7 +409,7 @@ export const CustomDimension = /*@__PURE__*/ S.suspend(() =>
   identifier: "CustomDimension",
 }) as any as S.Schema<CustomDimension>;
 
-export type CustomDimensionList = ReadonlyArray<CustomDimension>;
+export type CustomDimensionList = Array<CustomDimension>;
 export const CustomDimensionList = /*@__PURE__*/ S.Array(
   CustomDimension,
 ) as any as S.Schema<CustomDimensionList>;
@@ -430,7 +428,7 @@ export const CustomMetric = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CustomMetric" }) as any as S.Schema<CustomMetric>;
 
-export type CustomMetricList = ReadonlyArray<CustomMetric>;
+export type CustomMetricList = Array<CustomMetric>;
 export const CustomMetricList = /*@__PURE__*/ S.Array(
   CustomMetric,
 ) as any as S.Schema<CustomMetricList>;
@@ -476,7 +474,7 @@ export interface Conversion {
   /** Available to advertisers only after contacting DoubleClick Search customer support. */
   countMillis?: string;
   /** Represents consent for core platform services (CPS) preferences in settings. No default value. Acceptable values are: GRANTED: The desired consent status is to grant. Read the CPS preferences from GTE settings. DENIED: The desired consent status is to deny; CPS list is empty. */
-  adUserDataConsent?: ConversionAdUserDataConsentEnum;
+  adUserDataConsent?: ConversionAdUserDataConsentEnum | (string & {});
   /** The time at which the conversion took place, in epoch millis UTC. */
   conversionTimestamp?: string;
   /** The type of device on which the conversion occurred. */
@@ -548,7 +546,7 @@ export const Conversion = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Conversion" }) as any as S.Schema<Conversion>;
 
-export type ConversionList_ = ReadonlyArray<Conversion>;
+export type ConversionList_ = Array<Conversion>;
 export const ConversionList_ = /*@__PURE__*/ S.Array(
   Conversion,
 ) as any as S.Schema<ConversionList_>;
@@ -747,7 +745,7 @@ export const SavedColumn = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SavedColumn" }) as any as S.Schema<SavedColumn>;
 
-export type SavedColumnList_ = ReadonlyArray<SavedColumn>;
+export type SavedColumnList_ = Array<SavedColumn>;
 export const SavedColumnList_ = /*@__PURE__*/ S.Array(
   SavedColumn,
 ) as any as S.Schema<SavedColumnList_>;
@@ -815,7 +813,7 @@ export const Availability = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Availability" }) as any as S.Schema<Availability>;
 
-export type AvailabilityList = ReadonlyArray<Availability>;
+export type AvailabilityList = Array<Availability>;
 export const AvailabilityList = /*@__PURE__*/ S.Array(
   Availability,
 ) as any as S.Schema<AvailabilityList>;

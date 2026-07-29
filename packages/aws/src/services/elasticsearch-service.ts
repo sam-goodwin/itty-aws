@@ -633,15 +633,15 @@ export const ColdStorageOptions = /*@__PURE__*/ S.suspend(() =>
   identifier: "ColdStorageOptions",
 }) as any as S.Schema<ColdStorageOptions>;
 export interface ElasticsearchClusterConfig {
-  InstanceType?: ESPartitionInstanceType;
+  InstanceType?: ESPartitionInstanceType | (string & {});
   InstanceCount?: number;
   DedicatedMasterEnabled?: boolean;
   ZoneAwarenessEnabled?: boolean;
   ZoneAwarenessConfig?: ZoneAwarenessConfig;
-  DedicatedMasterType?: ESPartitionInstanceType;
+  DedicatedMasterType?: ESPartitionInstanceType | (string & {});
   DedicatedMasterCount?: number;
   WarmEnabled?: boolean;
-  WarmType?: ESWarmPartitionInstanceType;
+  WarmType?: ESWarmPartitionInstanceType | (string & {});
   WarmCount?: number;
   ColdStorageOptions?: ColdStorageOptions;
 }
@@ -667,7 +667,7 @@ export const VolumeType = /*@__PURE__*/ S.String;
 
 export interface EBSOptions {
   EBSEnabled?: boolean;
-  VolumeType?: VolumeType;
+  VolumeType?: VolumeType | (string & {});
   VolumeSize?: number;
   Iops?: number;
   Throughput?: number;
@@ -762,7 +762,9 @@ export const LogPublishingOption = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "LogPublishingOption",
 }) as any as S.Schema<LogPublishingOption>;
-export type LogPublishingOptions = { [key in LogType]?: LogPublishingOption };
+export type LogPublishingOptions = {
+  [key in LogType | (string & {})]?: LogPublishingOption;
+};
 export const LogPublishingOptions = /*@__PURE__*/ S.Record(
   LogType,
   LogPublishingOption.pipe(S.optional),
@@ -777,7 +779,7 @@ export const TLSSecurityPolicy = /*@__PURE__*/ S.String;
 export type DomainNameFqdn = string;
 export interface DomainEndpointOptions {
   EnforceHTTPS?: boolean;
-  TLSSecurityPolicy?: TLSSecurityPolicy;
+  TLSSecurityPolicy?: TLSSecurityPolicy | (string & {});
   CustomEndpointEnabled?: boolean;
   CustomEndpoint?: string;
   CustomEndpointCertificateArn?: string;
@@ -869,7 +871,7 @@ export const TimeUnit = /*@__PURE__*/ S.String;
 
 export interface Duration {
   Value?: number;
-  Unit?: TimeUnit;
+  Unit?: TimeUnit | (string & {});
 }
 export const Duration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Value: S.optional(S.Number), Unit: S.optional(TimeUnit) }),
@@ -908,7 +910,7 @@ export type DeploymentStrategy = "Default" | "CapacityOptimized";
 export const DeploymentStrategy = /*@__PURE__*/ S.String;
 
 export interface DeploymentStrategyOptions {
-  DeploymentStrategy: DeploymentStrategy;
+  DeploymentStrategy: DeploymentStrategy | (string & {});
 }
 export const DeploymentStrategyOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DeploymentStrategy: DeploymentStrategy }),
@@ -2045,8 +2047,8 @@ export type RollbackOnDisable = "NO_ROLLBACK" | "DEFAULT_ROLLBACK";
 export const RollbackOnDisable = /*@__PURE__*/ S.String;
 
 export interface AutoTuneOptions {
-  DesiredState?: AutoTuneDesiredState;
-  RollbackOnDisable?: RollbackOnDisable;
+  DesiredState?: AutoTuneDesiredState | (string & {});
+  RollbackOnDisable?: RollbackOnDisable | (string & {});
   MaintenanceSchedules?: AutoTuneMaintenanceSchedule[];
 }
 export const AutoTuneOptions = /*@__PURE__*/ S.suspend(() =>

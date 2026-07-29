@@ -101,7 +101,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -202,7 +202,7 @@ export const RuleConfigInfoLastBackupStateEnum = /*@__PURE__*/ S.String;
 /** Message for rules config info. */
 export interface RuleConfigInfo {
   /** Output only. The last backup state for rule. */
-  lastBackupState?: RuleConfigInfoLastBackupStateEnum;
+  lastBackupState?: RuleConfigInfoLastBackupStateEnum | (string & {});
   /** Output only. The point in time when the last successful backup was captured from the source. */
   lastSuccessfulBackupConsistencyTime?: string;
   /** Output only. Backup Rule id fetched from backup plan. */
@@ -219,7 +219,7 @@ export const RuleConfigInfo = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "RuleConfigInfo" }) as any as S.Schema<RuleConfigInfo>;
 
-export type RuleConfigInfoList = ReadonlyArray<RuleConfigInfo>;
+export type RuleConfigInfoList = Array<RuleConfigInfo>;
 export const RuleConfigInfoList = /*@__PURE__*/ S.Array(
   RuleConfigInfo,
 ) as any as S.Schema<RuleConfigInfoList>;
@@ -273,7 +273,7 @@ export interface BackupPlanAssociation {
   /** Output only. The time when the instance was updated. */
   updateTime?: string;
   /** Output only. The BackupPlanAssociation resource state. */
-  state?: BackupPlanAssociationStateEnum;
+  state?: BackupPlanAssociationStateEnum | (string & {});
   /** Output only. The config info related to backup rules. */
   rulesConfigInfo?: RuleConfigInfoList;
   /** Output only. Cloud SQL instance's backup plan association properties. */
@@ -395,8 +395,9 @@ export type StandardScheduleMonthsItemEnum =
   | "DECEMBER";
 export const StandardScheduleMonthsItemEnum = /*@__PURE__*/ S.String;
 
-export type StandardScheduleMonthsItemEnumList =
-  ReadonlyArray<StandardScheduleMonthsItemEnum>;
+export type StandardScheduleMonthsItemEnumList = Array<
+  StandardScheduleMonthsItemEnum | (string & {})
+>;
 export const StandardScheduleMonthsItemEnumList = /*@__PURE__*/ S.Array(
   StandardScheduleMonthsItemEnum,
 ) as any as S.Schema<StandardScheduleMonthsItemEnumList>;
@@ -412,8 +413,9 @@ export type StandardScheduleDaysOfWeekItemEnum =
   | "SUNDAY";
 export const StandardScheduleDaysOfWeekItemEnum = /*@__PURE__*/ S.String;
 
-export type StandardScheduleDaysOfWeekItemEnumList =
-  ReadonlyArray<StandardScheduleDaysOfWeekItemEnum>;
+export type StandardScheduleDaysOfWeekItemEnumList = Array<
+  StandardScheduleDaysOfWeekItemEnum | (string & {})
+>;
 export const StandardScheduleDaysOfWeekItemEnumList = /*@__PURE__*/ S.Array(
   StandardScheduleDaysOfWeekItemEnum,
 ) as any as S.Schema<StandardScheduleDaysOfWeekItemEnumList>;
@@ -441,9 +443,9 @@ export const WeekDayOfMonthDayOfWeekEnum = /*@__PURE__*/ S.String;
 /** `WeekDayOfMonth` defines the week day of the month on which the backups will run. The message combines a `WeekOfMonth` and `DayOfWeek` to produce values like `FIRST`/`MONDAY` or `LAST`/`FRIDAY`. */
 export interface WeekDayOfMonth {
   /** Required. Specifies the week of the month. */
-  weekOfMonth?: WeekDayOfMonthWeekOfMonthEnum;
+  weekOfMonth?: WeekDayOfMonthWeekOfMonthEnum | (string & {});
   /** Required. Specifies the day of the week. */
-  dayOfWeek?: WeekDayOfMonthDayOfWeekEnum;
+  dayOfWeek?: WeekDayOfMonthDayOfWeekEnum | (string & {});
 }
 export const WeekDayOfMonth = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -461,7 +463,7 @@ export type StandardScheduleRecurrenceTypeEnum =
   | "YEARLY";
 export const StandardScheduleRecurrenceTypeEnum = /*@__PURE__*/ S.String;
 
-export type IntegerList = ReadonlyArray<number>;
+export type IntegerList = Array<number>;
 export const IntegerList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<IntegerList>;
@@ -479,7 +481,7 @@ export interface StandardSchedule {
   /** Required. The time zone to be used when interpreting the schedule. The value of this field must be a time zone name from the IANA tz database. See https://en.wikipedia.org/wiki/List_of_tz_database_time_zones for the list of valid timezone names. For example, Europe/Paris. */
   timeZone?: string;
   /** Required. Specifies the `RecurrenceType` for the schedule. */
-  recurrenceType?: StandardScheduleRecurrenceTypeEnum;
+  recurrenceType?: StandardScheduleRecurrenceTypeEnum | (string & {});
   /** Optional. Specifies frequency for hourly backups. A hourly frequency of 1 means jobs will run every 1 hour from start time till end time defined. This is required for `recurrence_type`, `HOURLY` and is not applicable otherwise. A validation error will occur if a value is supplied and `recurrence_type` is not `HOURLY`. The supported values for each resource type are as follows: * `compute.googleapis.com/Instance`: 1-23 * `compute.googleapis.com/Disk`: 1-23 * `sqladmin.googleapis.com/Instance`: 6-23 * `alloydb.googleapis.com/Cluster`: 1-23 * `file.googleapis.com/Instance`: 1-23 Refer to link https://cloud.google.com/backup-disaster-recovery/docs/concepts/cloud_best_practices for more details. */
   hourlyFrequency?: number;
   /** Optional. Specifies days of months like 1, 5, or 14 on which jobs will run. Values for `days_of_month` are only applicable for `recurrence_type`, `MONTHLY` and `YEARLY`. A validation error will occur if other values are supplied. */
@@ -517,7 +519,7 @@ export const BackupRule = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "BackupRule" }) as any as S.Schema<BackupRule>;
 
-export type BackupRuleList = ReadonlyArray<BackupRule>;
+export type BackupRuleList = Array<BackupRule>;
 export const BackupRuleList = /*@__PURE__*/ S.Array(
   BackupRule,
 ) as any as S.Schema<BackupRuleList>;
@@ -535,7 +537,7 @@ export const DiskBackupPlanProperties = /*@__PURE__*/ S.suspend(() =>
   identifier: "DiskBackupPlanProperties",
 }) as any as S.Schema<DiskBackupPlanProperties>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -586,7 +588,7 @@ export interface BackupPlan {
   /** Output only. When the `BackupPlan` was last updated. */
   updateTime?: string;
   /** Output only. The `State` for the `BackupPlan`. */
-  state?: BackupPlanStateEnum;
+  state?: BackupPlanStateEnum | (string & {});
   /** Optional. Applicable only for Cloud SQL resource_type. Configures how long logs will be stored. It is defined in “days”. This value should be greater than or equal to minimum enforced log retention duration of the backup vault. */
   logRetentionDays?: string;
   /** Optional. This collection of key/value pairs allows for custom labels to be supplied by the user. Example, {"tag": "Weekly"}. */
@@ -690,9 +692,11 @@ export interface BackupVault {
   /** Required. The default and minimum enforced retention for each backup within the backup vault. The enforced retention for each backup can be extended. Note: Longer minimum enforced retention period impacts potential storage costs post introductory trial. We recommend starting with a short duration of 3 days or less. */
   backupMinimumEnforcedRetentionDuration?: string;
   /** Optional. Restricts access to certain sources and destinations for data being sent into, or restored from, the backup vault. Defaults to WITHIN_ORGANIZATION if not provided during creation. */
-  accessRestriction?: BackupVaultAccessRestrictionEnum;
+  accessRestriction?: BackupVaultAccessRestrictionEnum | (string & {});
   /** Optional. Setting for how a backup's enforced retention end time is inherited. */
-  backupRetentionInheritance?: BackupVaultBackupRetentionInheritanceEnum;
+  backupRetentionInheritance?:
+    | BackupVaultBackupRetentionInheritanceEnum
+    | (string & {});
   /** Optional. Server specified ETag for the backup vault resource to prevent simultaneous updates from overwiting each other. */
   etag?: string;
   /** Optional. Time after which the BackupVault resource is locked. */
@@ -708,7 +712,7 @@ export interface BackupVault {
   /** Output only. The time when the instance was updated. */
   updateTime?: string;
   /** Output only. The BackupVault resource instance state. */
-  state?: BackupVaultStateEnum;
+  state?: BackupVaultStateEnum | (string & {});
   /** Optional. The encryption config of the backup vault. */
   encryptionConfig?: EncryptionConfig;
   /** Output only. The time when the instance was created. */
@@ -802,7 +806,7 @@ export const NetworkConfigPeeringModeEnum = /*@__PURE__*/ S.String;
 /** Network configuration for ManagementServer instance. */
 export interface NetworkConfig {
   /** Optional. The network connect mode of the ManagementServer instance. For this version, only PRIVATE_SERVICE_ACCESS is supported. */
-  peeringMode?: NetworkConfigPeeringModeEnum;
+  peeringMode?: NetworkConfigPeeringModeEnum | (string & {});
   /** Optional. The resource name of the Google Compute Engine VPC network to which the ManagementServer instance is connected. */
   network?: string;
 }
@@ -813,7 +817,7 @@ export const NetworkConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "NetworkConfig" }) as any as S.Schema<NetworkConfig>;
 
-export type NetworkConfigList = ReadonlyArray<NetworkConfig>;
+export type NetworkConfigList = Array<NetworkConfig>;
 export const NetworkConfigList = /*@__PURE__*/ S.Array(
   NetworkConfig,
 ) as any as S.Schema<NetworkConfigList>;
@@ -868,7 +872,7 @@ export const ManagementURI = /*@__PURE__*/ S.suspend(() =>
 /** ManagementServer describes a single BackupDR ManagementServer instance. */
 export interface ManagementServer {
   /** Optional. The type of the ManagementServer resource. */
-  type?: ManagementServerTypeEnum;
+  type?: ManagementServerTypeEnum | (string & {});
   /** Output only. The time when the instance was created. */
   createTime?: string;
   /** Optional. The description of the ManagementServer instance (2048 characters or less). */
@@ -876,7 +880,7 @@ export interface ManagementServer {
   /** Output only. The time when the instance was updated. */
   updateTime?: string;
   /** Output only. The ManagementServer state. */
-  state?: ManagementServerStateEnum;
+  state?: ManagementServerStateEnum | (string & {});
   /** Output only. Reserved for future use. */
   satisfiesPzi?: boolean;
   /** Optional. VPC networks to which the ManagementServer instance is connected. For this version, only a single network is supported. This field is optional if MS is created without PSA */
@@ -1298,7 +1302,7 @@ export const BackupDrPlanRule = /*@__PURE__*/ S.suspend(() =>
   identifier: "BackupDrPlanRule",
 }) as any as S.Schema<BackupDrPlanRule>;
 
-export type BackupDrPlanRuleList = ReadonlyArray<BackupDrPlanRule>;
+export type BackupDrPlanRuleList = Array<BackupDrPlanRule>;
 export const BackupDrPlanRuleList = /*@__PURE__*/ S.Array(
   BackupDrPlanRule,
 ) as any as S.Schema<BackupDrPlanRuleList>;
@@ -1363,7 +1367,7 @@ export const BackupLocation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "BackupLocation" }) as any as S.Schema<BackupLocation>;
 
-export type BackupLocationList = ReadonlyArray<BackupLocation>;
+export type BackupLocationList = Array<BackupLocation>;
 export const BackupLocationList = /*@__PURE__*/ S.Array(
   BackupLocation,
 ) as any as S.Schema<BackupLocationList>;
@@ -1411,7 +1415,7 @@ export const BackupConfigDetails = /*@__PURE__*/ S.suspend(() =>
   identifier: "BackupConfigDetails",
 }) as any as S.Schema<BackupConfigDetails>;
 
-export type BackupConfigDetailsList = ReadonlyArray<BackupConfigDetails>;
+export type BackupConfigDetailsList = Array<BackupConfigDetails>;
 export const BackupConfigDetailsList = /*@__PURE__*/ S.Array(
   BackupConfigDetails,
 ) as any as S.Schema<BackupConfigDetailsList>;
@@ -1463,7 +1467,7 @@ export const ResourceBackupConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "ResourceBackupConfig",
 }) as any as S.Schema<ResourceBackupConfig>;
 
-export type ResourceBackupConfigList = ReadonlyArray<ResourceBackupConfig>;
+export type ResourceBackupConfigList = Array<ResourceBackupConfig>;
 export const ResourceBackupConfigList = /*@__PURE__*/ S.Array(
   ResourceBackupConfig,
 ) as any as S.Schema<ResourceBackupConfigList>;
@@ -1519,7 +1523,7 @@ export const FetchForResourceTypeProjectsLocationsBackupPlanAssociationsRequest 
       "FetchForResourceTypeProjectsLocationsBackupPlanAssociationsRequest",
   }) as any as S.Schema<FetchForResourceTypeProjectsLocationsBackupPlanAssociationsRequest>;
 
-export type BackupPlanAssociationList = ReadonlyArray<BackupPlanAssociation>;
+export type BackupPlanAssociationList = Array<BackupPlanAssociation>;
 export const BackupPlanAssociationList = /*@__PURE__*/ S.Array(
   BackupPlanAssociation,
 ) as any as S.Schema<BackupPlanAssociationList>;
@@ -1709,7 +1713,7 @@ export const BackupLock = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "BackupLock" }) as any as S.Schema<BackupLock>;
 
-export type BackupLockList = ReadonlyArray<BackupLock>;
+export type BackupLockList = Array<BackupLock>;
 export const BackupLockList = /*@__PURE__*/ S.Array(
   BackupLock,
 ) as any as S.Schema<BackupLockList>;
@@ -1735,7 +1739,7 @@ export const GuestOsFeatureTypeEnum = /*@__PURE__*/ S.String;
 /** Feature type of the Guest OS. */
 export interface GuestOsFeature {
   /** The ID of a supported feature. */
-  type?: GuestOsFeatureTypeEnum;
+  type?: GuestOsFeatureTypeEnum | (string & {});
 }
 export const GuestOsFeature = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1743,7 +1747,7 @@ export const GuestOsFeature = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "GuestOsFeature" }) as any as S.Schema<GuestOsFeature>;
 
-export type GuestOsFeatureList = ReadonlyArray<GuestOsFeature>;
+export type GuestOsFeatureList = Array<GuestOsFeature>;
 export const GuestOsFeatureList = /*@__PURE__*/ S.Array(
   GuestOsFeature,
 ) as any as S.Schema<GuestOsFeatureList>;
@@ -1785,7 +1789,7 @@ export interface DiskBackupProperties {
   /** The physical block size of the source disk. */
   physicalBlockSizeBytes?: string;
   /** The architecture of the source disk. Valid values are ARM64 or X86_64. */
-  architecture?: DiskBackupPropertiesArchitectureEnum;
+  architecture?: DiskBackupPropertiesArchitectureEnum | (string & {});
   /** Optional. Defines if the guest flush is enabled for the source disk. Default value is false. */
   guestFlush?: boolean;
   /** The number of throughput provisioned for the source disk. */
@@ -1854,7 +1858,7 @@ export interface NodeAffinity {
   /** Optional. Corresponds to the label key of Node resource. */
   key?: string;
   /** Optional. Defines the operation of node selection. */
-  operator?: NodeAffinityOperatorEnum;
+  operator?: NodeAffinityOperatorEnum | (string & {});
   /** Optional. Corresponds to the label values of Node resource. */
   values?: StringList;
 }
@@ -1866,7 +1870,7 @@ export const NodeAffinity = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "NodeAffinity" }) as any as S.Schema<NodeAffinity>;
 
-export type NodeAffinityList = ReadonlyArray<NodeAffinity>;
+export type NodeAffinityList = Array<NodeAffinity>;
 export const NodeAffinityList = /*@__PURE__*/ S.Array(
   NodeAffinity,
 ) as any as S.Schema<NodeAffinityList>;
@@ -1880,13 +1884,15 @@ export const SchedulingProvisioningModelEnum = /*@__PURE__*/ S.String;
 /** Sets the scheduling options for an Instance. */
 export interface Scheduling {
   /** Optional. Specifies the termination action for the instance. */
-  instanceTerminationAction?: SchedulingInstanceTerminationActionEnum;
+  instanceTerminationAction?:
+    | SchedulingInstanceTerminationActionEnum
+    | (string & {});
   /** Optional. Specifies whether the instance should be automatically restarted if it is terminated by Compute Engine (not terminated by a user). */
   automaticRestart?: boolean;
   /** Optional. The minimum number of virtual CPUs this instance will consume when running on a sole-tenant node. */
   minNodeCpus?: number;
   /** Optional. Defines the maintenance behavior for this instance. */
-  onHostMaintenance?: SchedulingOnHostMaintenanceEnum;
+  onHostMaintenance?: SchedulingOnHostMaintenanceEnum | (string & {});
   /** Optional. Specifies the maximum amount of time a Local Ssd Vm should wait while recovery of the Local Ssd state is attempted. Its value should be in between 0 and 168 hours with hour granularity and the default value being 1 hour. */
   localSsdRecoveryTimeout?: SchedulingDuration;
   /** Optional. Defines whether the instance is preemptible. */
@@ -1894,7 +1900,7 @@ export interface Scheduling {
   /** Optional. A set of node affinity and anti-affinity configurations. Overrides reservationAffinity. */
   nodeAffinities?: NodeAffinityList;
   /** Optional. Specifies the provisioning model of the instance. */
-  provisioningModel?: SchedulingProvisioningModelEnum;
+  provisioningModel?: SchedulingProvisioningModelEnum | (string & {});
 }
 export const Scheduling = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1925,7 +1931,7 @@ export const ServiceAccount = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ServiceAccount" }) as any as S.Schema<ServiceAccount>;
 
-export type ServiceAccountList = ReadonlyArray<ServiceAccount>;
+export type ServiceAccountList = Array<ServiceAccount>;
 export const ServiceAccountList = /*@__PURE__*/ S.Array(
   ServiceAccount,
 ) as any as S.Schema<ServiceAccountList>;
@@ -1944,7 +1950,7 @@ export const Entry = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Entry" }) as any as S.Schema<Entry>;
 
-export type EntryList = ReadonlyArray<Entry>;
+export type EntryList = Array<Entry>;
 export const EntryList = /*@__PURE__*/ S.Array(
   Entry,
 ) as any as S.Schema<EntryList>;
@@ -1976,7 +1982,7 @@ export const AcceleratorConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "AcceleratorConfig",
 }) as any as S.Schema<AcceleratorConfig>;
 
-export type AcceleratorConfigList = ReadonlyArray<AcceleratorConfig>;
+export type AcceleratorConfigList = Array<AcceleratorConfig>;
 export const AcceleratorConfigList = /*@__PURE__*/ S.Array(
   AcceleratorConfig,
 ) as any as S.Schema<AcceleratorConfigList>;
@@ -2006,7 +2012,7 @@ export interface AccessConfig {
   /** Optional. The prefix length of the external IPv6 range. */
   externalIpv6PrefixLength?: number;
   /** Optional. This signifies the networking tier used for configuring this access */
-  networkTier?: AccessConfigNetworkTierEnum;
+  networkTier?: AccessConfigNetworkTierEnum | (string & {});
   /** Optional. The name of this access configuration. */
   name?: string;
   /** Optional. The external IPv6 address of this access configuration. */
@@ -2016,7 +2022,7 @@ export interface AccessConfig {
   /** Optional. The external IP address of this access configuration. */
   natIP?: string;
   /** Optional. In accessConfigs (IPv4), the default and only option is ONE_TO_ONE_NAT. In ipv6AccessConfigs, the default and only option is DIRECT_IPV6. */
-  type?: AccessConfigTypeEnum;
+  type?: AccessConfigTypeEnum | (string & {});
 }
 export const AccessConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2031,7 +2037,7 @@ export const AccessConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AccessConfig" }) as any as S.Schema<AccessConfig>;
 
-export type AccessConfigList = ReadonlyArray<AccessConfig>;
+export type AccessConfigList = Array<AccessConfig>;
 export const AccessConfigList = /*@__PURE__*/ S.Array(
   AccessConfig,
 ) as any as S.Schema<AccessConfigList>;
@@ -2050,7 +2056,7 @@ export const AliasIpRange = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AliasIpRange" }) as any as S.Schema<AliasIpRange>;
 
-export type AliasIpRangeList = ReadonlyArray<AliasIpRange>;
+export type AliasIpRangeList = Array<AliasIpRange>;
 export const AliasIpRangeList = /*@__PURE__*/ S.Array(
   AliasIpRange,
 ) as any as S.Schema<AliasIpRangeList>;
@@ -2072,7 +2078,7 @@ export interface NetworkInterface {
   /** Optional. The prefix length of the primary internal IPv6 range. */
   internalIpv6PrefixLength?: number;
   /** The stack type for this network interface. */
-  stackType?: NetworkInterfaceStackTypeEnum;
+  stackType?: NetworkInterfaceStackTypeEnum | (string & {});
   /** Output only. [Output Only] The name of the network interface, which is generated by the server. */
   name?: string;
   /** Optional. An array of IPv6 access configurations for this interface. Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig specified, then this instance will have no external IPv6 Internet access. */
@@ -2088,7 +2094,7 @@ export interface NetworkInterface {
   /** Optional. The URL of the network attachment that this interface should connect to in the following format: projects/{project_number}/regions/{region_name}/networkAttachments/{network_attachment_name}. */
   networkAttachment?: string;
   /** Optional. The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet. */
-  nicType?: NetworkInterfaceNicTypeEnum;
+  nicType?: NetworkInterfaceNicTypeEnum | (string & {});
   /** Optional. An array of configurations for this interface. Currently, only one access config,ONE_TO_ONE_NAT is supported. If there are no accessConfigs specified, then this instance will have no external internet access. */
   accessConfigs?: AccessConfigList;
   /** Optional. An IPv4 internal IP address to assign to the instance for this network interface. If not specified by the user, an unused internal IP is assigned by the system. */
@@ -2096,7 +2102,7 @@ export interface NetworkInterface {
   /** Optional. The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It'll be empty if not specified by the users. */
   queueCount?: number;
   /** Optional. [Output Only] One of EXTERNAL, INTERNAL to indicate whether the IP can be accessed from the Internet. This field is always inherited from its subnetwork. */
-  ipv6AccessType?: NetworkInterfaceIpv6AccessTypeEnum;
+  ipv6AccessType?: NetworkInterfaceIpv6AccessTypeEnum | (string & {});
 }
 export const NetworkInterface = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2119,7 +2125,7 @@ export const NetworkInterface = /*@__PURE__*/ S.suspend(() =>
   identifier: "NetworkInterface",
 }) as any as S.Schema<NetworkInterface>;
 
-export type NetworkInterfaceList = ReadonlyArray<NetworkInterface>;
+export type NetworkInterfaceList = Array<NetworkInterface>;
 export const NetworkInterfaceList = /*@__PURE__*/ S.Array(
   NetworkInterface,
 ) as any as S.Schema<NetworkInterfaceList>;
@@ -2206,9 +2212,9 @@ export interface AttachedDisk {
   /** Optional. Encrypts or decrypts a disk using a customer-supplied encryption key. */
   diskEncryptionKey?: CustomerEncryptionKey;
   /** Optional. The mode in which to attach this disk. */
-  mode?: AttachedDiskModeEnum;
+  mode?: AttachedDiskModeEnum | (string & {});
   /** Specifies the type of the disk. */
-  diskTypeDeprecated?: AttachedDiskDiskTypeDeprecatedEnum;
+  diskTypeDeprecated?: AttachedDiskDiskTypeDeprecatedEnum | (string & {});
   /** Optional. Output only. The URI of the disk type resource. For example: projects/project/zones/zone/diskTypes/pd-standard or pd-ssd */
   diskType?: string;
   /** Optional. This is used as an identifier for the disks. This is the unique name has to provided to modify disk parameters like disk_name and replica_zones (in case of RePDs) */
@@ -2230,13 +2236,13 @@ export interface AttachedDisk {
   /** Optional. A list of features to enable on the guest operating system. Applicable only for bootable images. */
   guestOsFeature?: GuestOsFeatureList;
   /** Optional. Specifies the type of the disk. */
-  type?: AttachedDiskTypeEnum;
+  type?: AttachedDiskTypeEnum | (string & {});
   /** Optional. Specifies a valid partial or full URL to an existing Persistent Disk resource. */
   source?: string;
   /** Optional. Specifies the disk interface to use for attaching this disk. */
-  diskInterface?: AttachedDiskDiskInterfaceEnum;
+  diskInterface?: AttachedDiskDiskInterfaceEnum | (string & {});
   /** Optional. Output only. The state of the disk. */
-  savedState?: AttachedDiskSavedStateEnum;
+  savedState?: AttachedDiskSavedStateEnum | (string & {});
 }
 export const AttachedDisk = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2260,7 +2266,7 @@ export const AttachedDisk = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AttachedDisk" }) as any as S.Schema<AttachedDisk>;
 
-export type AttachedDiskList = ReadonlyArray<AttachedDisk>;
+export type AttachedDiskList = Array<AttachedDisk>;
 export const AttachedDiskList = /*@__PURE__*/ S.Array(
   AttachedDisk,
 ) as any as S.Schema<AttachedDiskList>;
@@ -2297,7 +2303,9 @@ export interface ComputeInstanceBackupProperties {
   /** Minimum cpu/platform to be used by instances. The instance may be scheduled on the specified or newer cpu/platform. Applicable values are the friendly names of CPU platforms, such as `minCpuPlatform: Intel Haswell` or `minCpuPlatform: Intel Sandy Bridge`. For more information, read https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform. */
   minCpuPlatform?: string;
   /** KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified. */
-  keyRevocationActionType?: ComputeInstanceBackupPropertiesKeyRevocationActionTypeEnum;
+  keyRevocationActionType?:
+    | ComputeInstanceBackupPropertiesKeyRevocationActionTypeEnum
+    | (string & {});
   /** Labels to apply to instances that are created from these properties. */
   labels?: StringMap;
   /** Optional. Indicates whether to perform a guest flush operation before taking a compute backup. When set to false, the system will create crash-consistent backups. Default value is false. */
@@ -2433,7 +2441,7 @@ export interface Backup {
   /** Output only. The time when the instance was created. */
   createTime?: string;
   /** Output only. Type of the backup, unspecified, scheduled or ondemand. */
-  backupType?: BackupBackupTypeEnum;
+  backupType?: BackupBackupTypeEnum | (string & {});
   /** Output only. Unique identifier of the GCP resource that is being backed up. */
   gcpResource?: BackupGcpResource;
   /** Optional. The backup can not be deleted before this time. */
@@ -2463,7 +2471,7 @@ export interface Backup {
   /** Output only. The time when the instance was updated. */
   updateTime?: string;
   /** Output only. The Backup resource instance state. */
-  state?: BackupStateEnum;
+  state?: BackupStateEnum | (string & {});
   /** Output only. Cloud SQL specific backup properties. */
   cloudSqlInstanceBackupProperties?: CloudSqlInstanceBackupProperties;
   /** Output only. The point in time when this backup was captured from the source. */
@@ -2473,7 +2481,9 @@ export interface Backup {
   /** Optional. The list of BackupLocks taken by the accessor Backup Appliance. */
   backupApplianceLocks?: BackupLockList;
   /** Output only. Setting for how the enforced retention end time is inherited. This value is copied from this backup's BackupVault. */
-  backupRetentionInheritance?: BackupBackupRetentionInheritanceEnum;
+  backupRetentionInheritance?:
+    | BackupBackupRetentionInheritanceEnum
+    | (string & {});
 }
 export const Backup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2516,7 +2526,7 @@ export const Backup = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Backup" }) as any as S.Schema<Backup>;
 
-export type BackupList = ReadonlyArray<Backup>;
+export type BackupList = Array<Backup>;
 export const BackupList = /*@__PURE__*/ S.Array(
   Backup,
 ) as any as S.Schema<BackupList>;
@@ -2728,7 +2738,7 @@ export const DataSourceReference = /*@__PURE__*/ S.suspend(() =>
   identifier: "DataSourceReference",
 }) as any as S.Schema<DataSourceReference>;
 
-export type DataSourceReferenceList = ReadonlyArray<DataSourceReference>;
+export type DataSourceReferenceList = Array<DataSourceReference>;
 export const DataSourceReferenceList = /*@__PURE__*/ S.Array(
   DataSourceReference,
 ) as any as S.Schema<DataSourceReferenceList>;
@@ -2843,7 +2853,7 @@ export const FetchUsableProjectsLocationsBackupVaultsRequest =
     identifier: "FetchUsableProjectsLocationsBackupVaultsRequest",
   }) as any as S.Schema<FetchUsableProjectsLocationsBackupVaultsRequest>;
 
-export type BackupVaultList = ReadonlyArray<BackupVault>;
+export type BackupVaultList = Array<BackupVault>;
 export const BackupVaultList = /*@__PURE__*/ S.Array(
   BackupVault,
 ) as any as S.Schema<BackupVaultList>;
@@ -2979,7 +2989,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
-export type BindingList = ReadonlyArray<Binding>;
+export type BindingList = Array<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -2994,7 +3004,7 @@ export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
 export interface AuditLogConfig {
   /** The log type that this config enables. */
-  logType?: AuditLogConfigLogTypeEnum;
+  logType?: AuditLogConfigLogTypeEnum | (string & {});
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
   exemptedMembers?: StringList;
 }
@@ -3005,7 +3015,7 @@ export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
-export type AuditLogConfigList = ReadonlyArray<AuditLogConfig>;
+export type AuditLogConfigList = Array<AuditLogConfig>;
 export const AuditLogConfigList = /*@__PURE__*/ S.Array(
   AuditLogConfig,
 ) as any as S.Schema<AuditLogConfigList>;
@@ -3024,7 +3034,7 @@ export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
-export type AuditConfigList = ReadonlyArray<AuditConfig>;
+export type AuditConfigList = Array<AuditConfig>;
 export const AuditConfigList = /*@__PURE__*/ S.Array(
   AuditConfig,
 ) as any as S.Schema<AuditConfigList>;
@@ -3333,7 +3343,7 @@ export const AlloyDbPitrWindow = /*@__PURE__*/ S.suspend(() =>
   identifier: "AlloyDbPitrWindow",
 }) as any as S.Schema<AlloyDbPitrWindow>;
 
-export type AlloyDbPitrWindowList = ReadonlyArray<AlloyDbPitrWindow>;
+export type AlloyDbPitrWindowList = Array<AlloyDbPitrWindow>;
 export const AlloyDbPitrWindowList = /*@__PURE__*/ S.Array(
   AlloyDbPitrWindow,
 ) as any as S.Schema<AlloyDbPitrWindowList>;
@@ -3511,7 +3521,7 @@ export interface BackupConfigInfo {
   /** Output only. If the last backup failed, this field has the error message. */
   lastBackupError?: Status;
   /** Output only. The status of the last backup to this BackupVault */
-  lastBackupState?: BackupConfigInfoLastBackupStateEnum;
+  lastBackupState?: BackupConfigInfoLastBackupStateEnum | (string & {});
   /** Configuration for a Google Cloud resource. */
   gcpBackupConfig?: GcpBackupConfig;
   /** Configuration for an application backed up by a Backup Appliance. */
@@ -3544,7 +3554,7 @@ export interface DataSource {
   /** Output only. This field is set to true if the backup is blocked by vault access restriction. */
   backupBlockedByVaultAccessRestriction?: boolean;
   /** Output only. The backup configuration state. */
-  configState?: DataSourceConfigStateEnum;
+  configState?: DataSourceConfigStateEnum | (string & {});
   /** The number of bytes (metadata and data) stored in this datasource. */
   totalStoredBytes?: string;
   /** The backed up resource is a backup appliance application. */
@@ -3560,7 +3570,7 @@ export interface DataSource {
   /** Output only. Details of how the resource is configured for backup. */
   backupConfigInfo?: BackupConfigInfo;
   /** Output only. The DataSource resource instance state. */
-  state?: DataSourceStateEnum;
+  state?: DataSourceStateEnum | (string & {});
   /** Output only. The time when the instance was updated. */
   updateTime?: string;
   /** Optional. Resource labels to represent user provided metadata. No labels currently defined: */
@@ -3855,7 +3865,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = ReadonlyArray<Location>;
+export type LocationList = Array<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -3954,7 +3964,7 @@ export const ListProjectsLocationsBackupPlansRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsBackupPlansRequest",
 }) as any as S.Schema<ListProjectsLocationsBackupPlansRequest>;
 
-export type BackupPlanList = ReadonlyArray<BackupPlan>;
+export type BackupPlanList = Array<BackupPlan>;
 export const BackupPlanList = /*@__PURE__*/ S.Array(
   BackupPlan,
 ) as any as S.Schema<BackupPlanList>;
@@ -4003,7 +4013,7 @@ export const ListProjectsLocationsBackupPlansRevisionsRequest =
     identifier: "ListProjectsLocationsBackupPlansRevisionsRequest",
   }) as any as S.Schema<ListProjectsLocationsBackupPlansRevisionsRequest>;
 
-export type BackupPlanRevisionList = ReadonlyArray<BackupPlanRevision>;
+export type BackupPlanRevisionList = Array<BackupPlanRevision>;
 export const BackupPlanRevisionList = /*@__PURE__*/ S.Array(
   BackupPlanRevision,
 ) as any as S.Schema<BackupPlanRevisionList>;
@@ -4119,7 +4129,7 @@ export const ListProjectsLocationsBackupVaultsDataSourcesRequest =
     identifier: "ListProjectsLocationsBackupVaultsDataSourcesRequest",
   }) as any as S.Schema<ListProjectsLocationsBackupVaultsDataSourcesRequest>;
 
-export type DataSourceList = ReadonlyArray<DataSource>;
+export type DataSourceList = Array<DataSource>;
 export const DataSourceList = /*@__PURE__*/ S.Array(
   DataSource,
 ) as any as S.Schema<DataSourceList>;
@@ -4290,7 +4300,7 @@ export const ListProjectsLocationsManagementServersRequest =
     identifier: "ListProjectsLocationsManagementServersRequest",
   }) as any as S.Schema<ListProjectsLocationsManagementServersRequest>;
 
-export type ManagementServerList = ReadonlyArray<ManagementServer>;
+export type ManagementServerList = Array<ManagementServer>;
 export const ManagementServerList = /*@__PURE__*/ S.Array(
   ManagementServer,
 ) as any as S.Schema<ManagementServerList>;
@@ -4345,7 +4355,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type OperationList = ReadonlyArray<Operation>;
+export type OperationList = Array<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;

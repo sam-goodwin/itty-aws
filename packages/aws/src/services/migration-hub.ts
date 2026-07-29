@@ -329,7 +329,7 @@ export const Status = /*@__PURE__*/ S.String;
 
 export type ProgressPercent = number;
 export interface Task {
-  Status: Status;
+  Status: Status | (string & {});
   StatusDetail?: string;
   ProgressPercent?: number;
 }
@@ -355,7 +355,7 @@ export const ResourceAttributeType = /*@__PURE__*/ S.String;
 
 export type ResourceAttributeValue = string;
 export interface ResourceAttribute {
-  Type: ResourceAttributeType;
+  Type: ResourceAttributeType | (string & {});
   Value: string;
 }
 export const ResourceAttribute = /*@__PURE__*/ S.suspend(() =>

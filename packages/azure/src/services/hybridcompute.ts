@@ -72,7 +72,7 @@ export const AgentVersionListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AgentVersionListRequest>;
 
 /** The list of available Agent Versions. */
-export type AgentVersionsListValueList = ReadonlyArray<AgentVersion>;
+export type AgentVersionsListValueList = Array<AgentVersion>;
 export const AgentVersionsListValueList = /*@__PURE__*/ S.Array(
   AgentVersion,
 ) as any as S.Schema<AgentVersionsListValueList>;
@@ -261,7 +261,7 @@ export const ExtensionValue = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ExtensionValue" }) as any as S.Schema<ExtensionValue>;
 
 /** The list of extension metadata */
-export type ExtensionValueListResultValueList = ReadonlyArray<ExtensionValue>;
+export type ExtensionValueListResultValueList = Array<ExtensionValue>;
 export const ExtensionValueListResultValueList = /*@__PURE__*/ S.Array(
   ExtensionValue,
 ) as any as S.Schema<ExtensionValueListResultValueList>;
@@ -308,14 +308,14 @@ export const ExtensionMetadataV2GetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExtensionMetadataV2GetRequest>;
 
 /** A list of locations where the extension packages can be found. */
-export type ExtensionValueV2PropertiesExtensionUrisList = ReadonlyArray<string>;
+export type ExtensionValueV2PropertiesExtensionUrisList = Array<string>;
 export const ExtensionValueV2PropertiesExtensionUrisList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ExtensionValueV2PropertiesExtensionUrisList>;
 
 /** Architectures (x64, arms64, etc.) that this extension supports. */
-export type ExtensionValueV2PropertiesArchitectureList = ReadonlyArray<string>;
+export type ExtensionValueV2PropertiesArchitectureList = Array<string>;
 export const ExtensionValueV2PropertiesArchitectureList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ExtensionValueV2PropertiesArchitectureList>;
@@ -426,8 +426,7 @@ export const ExtensionValueV2 = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExtensionValueV2>;
 
 /** The list of extension metadata. */
-export type ExtensionValueListResultV2ValueList =
-  ReadonlyArray<ExtensionValueV2>;
+export type ExtensionValueListResultV2ValueList = Array<ExtensionValueV2>;
 export const ExtensionValueListResultV2ValueList = /*@__PURE__*/ S.Array(
   ExtensionValueV2,
 ) as any as S.Schema<ExtensionValueListResultV2ValueList>;
@@ -484,8 +483,7 @@ export const ExtensionPublisher = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExtensionPublisher>;
 
 /** The list of extension publishers. */
-export type ExtensionPublisherListResultValueList =
-  ReadonlyArray<ExtensionPublisher>;
+export type ExtensionPublisherListResultValueList = Array<ExtensionPublisher>;
 export const ExtensionPublisherListResultValueList = /*@__PURE__*/ S.Array(
   ExtensionPublisher,
 ) as any as S.Schema<ExtensionPublisherListResultValueList>;
@@ -543,7 +541,7 @@ export const ExtensionType = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ExtensionType" }) as any as S.Schema<ExtensionType>;
 
 /** The list of extension types. */
-export type ExtensionTypeListResultValueList = ReadonlyArray<ExtensionType>;
+export type ExtensionTypeListResultValueList = Array<ExtensionType>;
 export const ExtensionTypeListResultValueList = /*@__PURE__*/ S.Array(
   ExtensionType,
 ) as any as S.Schema<ExtensionTypeListResultValueList>;
@@ -578,7 +576,7 @@ export type GatewayType = "Public";
 export const GatewayType = /*@__PURE__*/ S.String;
 
 /** Specifies the list of features that are enabled for this Gateway. */
-export type GatewayPropertiesInputAllowedFeaturesList = ReadonlyArray<string>;
+export type GatewayPropertiesInputAllowedFeaturesList = Array<string>;
 export const GatewayPropertiesInputAllowedFeaturesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GatewayPropertiesInputAllowedFeaturesList>;
@@ -655,7 +653,7 @@ export type ProvisioningState =
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** Specifies the list of features that are enabled for this Gateway. */
-export type GatewayPropertiesAllowedFeaturesList = ReadonlyArray<string>;
+export type GatewayPropertiesAllowedFeaturesList = Array<string>;
 export const GatewayPropertiesAllowedFeaturesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GatewayPropertiesAllowedFeaturesList>;
@@ -868,7 +866,7 @@ export const Gateway = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Gateway" }) as any as S.Schema<Gateway>;
 
 /** The list of Gateways. */
-export type GatewaysListResultValueList = ReadonlyArray<Gateway>;
+export type GatewaysListResultValueList = Array<Gateway>;
 export const GatewaysListResultValueList = /*@__PURE__*/ S.Array(
   Gateway,
 ) as any as S.Schema<GatewaysListResultValueList>;
@@ -918,7 +916,7 @@ export const GatewaysUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<GatewaysUpdateRequestTagsMap>;
 
 /** Specifies the list of features that are enabled for this Gateway. */
-export type GatewayUpdatePropertiesAllowedFeaturesList = ReadonlyArray<string>;
+export type GatewayUpdatePropertiesAllowedFeaturesList = Array<string>;
 export const GatewayUpdatePropertiesAllowedFeaturesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GatewayUpdatePropertiesAllowedFeaturesList>;
@@ -1154,8 +1152,7 @@ export const HybridIdentityMetadata = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HybridIdentityMetadata>;
 
 /** Array of HybridIdentityMetadata */
-export type HybridIdentityMetadataListValueList =
-  ReadonlyArray<HybridIdentityMetadata>;
+export type HybridIdentityMetadataListValueList = Array<HybridIdentityMetadata>;
 export const HybridIdentityMetadataListValueList = /*@__PURE__*/ S.Array(
   HybridIdentityMetadata,
 ) as any as S.Schema<HybridIdentityMetadataListValueList>;
@@ -1269,7 +1266,7 @@ export const ProductFeatureInput = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of product features. */
 export type LicenseProfileArmProductProfilePropertiesInputProductFeaturesList =
-  ReadonlyArray<ProductFeatureInput>;
+  Array<ProductFeatureInput>;
 export const LicenseProfileArmProductProfilePropertiesInputProductFeaturesList =
   /*@__PURE__*/ S.Array(
     ProductFeatureInput,
@@ -1403,7 +1400,7 @@ export const EsuKey = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EsuKey" }) as any as S.Schema<EsuKey>;
 
 /** The list of ESU keys. */
-export type LicenseProfileArmEsuPropertiesEsuKeysList = ReadonlyArray<EsuKey>;
+export type LicenseProfileArmEsuPropertiesEsuKeysList = Array<EsuKey>;
 export const LicenseProfileArmEsuPropertiesEsuKeysList = /*@__PURE__*/ S.Array(
   EsuKey,
 ) as any as S.Schema<LicenseProfileArmEsuPropertiesEsuKeysList>;
@@ -1449,7 +1446,7 @@ export const LicenseProfileArmEsuProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LicenseProfileArmEsuProperties>;
 
 /** The error details. */
-export type ErrorDetailDetailsList = ReadonlyArray<ErrorDetail>;
+export type ErrorDetailDetailsList = Array<ErrorDetail>;
 export const ErrorDetailDetailsList = /*@__PURE__*/ S.Array(
   S.suspend(() => ErrorDetail),
 ) as any as S.Schema<ErrorDetailDetailsList>;
@@ -1471,7 +1468,7 @@ export const ErrorAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ErrorAdditionalInfo>;
 
 /** The error additional info. */
-export type ErrorDetailAdditionalInfoList = ReadonlyArray<ErrorAdditionalInfo>;
+export type ErrorDetailAdditionalInfoList = Array<ErrorAdditionalInfo>;
 export const ErrorDetailAdditionalInfoList = /*@__PURE__*/ S.Array(
   ErrorAdditionalInfo,
 ) as any as S.Schema<ErrorDetailAdditionalInfoList>;
@@ -1501,7 +1498,7 @@ export const ErrorDetail = /*@__PURE__*/ S.suspend(() =>
 
 /** The error details. */
 export type LicenseProfileArmProductProfilePropertiesErrorDetailsList =
-  ReadonlyArray<ErrorDetail>;
+  Array<ErrorDetail>;
 export const LicenseProfileArmProductProfilePropertiesErrorDetailsList =
   /*@__PURE__*/ S.Array(
     ErrorDetail,
@@ -1509,7 +1506,7 @@ export const LicenseProfileArmProductProfilePropertiesErrorDetailsList =
 
 /** The error additional info. */
 export type LicenseProfileArmProductProfilePropertiesErrorAdditionalInfoList =
-  ReadonlyArray<ErrorAdditionalInfo>;
+  Array<ErrorAdditionalInfo>;
 export const LicenseProfileArmProductProfilePropertiesErrorAdditionalInfoList =
   /*@__PURE__*/ S.Array(
     ErrorAdditionalInfo,
@@ -1546,14 +1543,13 @@ export const LicenseProfileArmProductProfilePropertiesError =
   }) as any as S.Schema<LicenseProfileArmProductProfilePropertiesError>;
 
 /** The error details. */
-export type ProductFeatureErrorDetailsList = ReadonlyArray<ErrorDetail>;
+export type ProductFeatureErrorDetailsList = Array<ErrorDetail>;
 export const ProductFeatureErrorDetailsList = /*@__PURE__*/ S.Array(
   ErrorDetail,
 ) as any as S.Schema<ProductFeatureErrorDetailsList>;
 
 /** The error additional info. */
-export type ProductFeatureErrorAdditionalInfoList =
-  ReadonlyArray<ErrorAdditionalInfo>;
+export type ProductFeatureErrorAdditionalInfoList = Array<ErrorAdditionalInfo>;
 export const ProductFeatureErrorAdditionalInfoList = /*@__PURE__*/ S.Array(
   ErrorAdditionalInfo,
 ) as any as S.Schema<ProductFeatureErrorAdditionalInfoList>;
@@ -1614,7 +1610,7 @@ export const ProductFeature = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of product features. */
 export type LicenseProfileArmProductProfilePropertiesProductFeaturesList =
-  ReadonlyArray<ProductFeature>;
+  Array<ProductFeature>;
 export const LicenseProfileArmProductProfilePropertiesProductFeaturesList =
   /*@__PURE__*/ S.Array(
     ProductFeature,
@@ -1963,7 +1959,7 @@ export const LicenseProfile = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LicenseProfile" }) as any as S.Schema<LicenseProfile>;
 
 /** The list of license profiles. */
-export type LicenseProfilesListResultValueList = ReadonlyArray<LicenseProfile>;
+export type LicenseProfilesListResultValueList = Array<LicenseProfile>;
 export const LicenseProfilesListResultValueList = /*@__PURE__*/ S.Array(
   LicenseProfile,
 ) as any as S.Schema<LicenseProfilesListResultValueList>;
@@ -2045,7 +2041,7 @@ export const ProductFeatureUpdate = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of product feature updates. */
 export type ProductProfileUpdatePropertiesProductFeaturesList =
-  ReadonlyArray<ProductFeatureUpdate>;
+  Array<ProductFeatureUpdate>;
 export const ProductProfileUpdatePropertiesProductFeaturesList =
   /*@__PURE__*/ S.Array(
     ProductFeatureUpdate,
@@ -2242,7 +2238,7 @@ export const VolumeLicenseDetailsProgramYear = /*@__PURE__*/ S.String;
 
 export interface VolumeLicenseDetails {
   /** Describes the program year the volume license is for. */
-  programYear?: VolumeLicenseDetailsProgramYear;
+  programYear?: VolumeLicenseDetailsProgramYear | (string & {});
   /** The invoice id for the volume license. */
   invoiceId?: string;
 }
@@ -2257,7 +2253,7 @@ export const VolumeLicenseDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of volume license details. */
 export type LicenseDetailsInputVolumeLicenseDetailsList =
-  ReadonlyArray<VolumeLicenseDetails>;
+  Array<VolumeLicenseDetails>;
 export const LicenseDetailsInputVolumeLicenseDetailsList =
   /*@__PURE__*/ S.Array(
     VolumeLicenseDetails,
@@ -2353,7 +2349,7 @@ export const LicensesCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 
 /** A list of volume license details. */
 export type LicenseDetailsVolumeLicenseDetailsList =
-  ReadonlyArray<VolumeLicenseDetails>;
+  Array<VolumeLicenseDetails>;
 export const LicenseDetailsVolumeLicenseDetailsList = /*@__PURE__*/ S.Array(
   VolumeLicenseDetails,
 ) as any as S.Schema<LicenseDetailsVolumeLicenseDetailsList>;
@@ -2591,7 +2587,7 @@ export const License = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "License" }) as any as S.Schema<License>;
 
 /** The list of licenses. */
-export type LicensesListResultValueList = ReadonlyArray<License>;
+export type LicensesListResultValueList = Array<License>;
 export const LicensesListResultValueList = /*@__PURE__*/ S.Array(
   License,
 ) as any as S.Schema<LicensesListResultValueList>;
@@ -2864,7 +2860,7 @@ export interface MachineExtensionInstanceViewStatus {
   /** The status code. */
   code?: string;
   /** The level code. */
-  level?: MachineExtensionInstanceViewStatusLevel;
+  level?: MachineExtensionInstanceViewStatusLevel | (string & {});
   /** The short localizable label for the status. */
   displayStatus?: string;
   /** The detailed status message, including for alerts and error messages. */
@@ -3254,8 +3250,7 @@ export const MachineExtension = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MachineExtension>;
 
 /** The list of extensions */
-export type MachineExtensionsListResultValueList =
-  ReadonlyArray<MachineExtension>;
+export type MachineExtensionsListResultValueList = Array<MachineExtension>;
 export const MachineExtensionsListResultValueList = /*@__PURE__*/ S.Array(
   MachineExtension,
 ) as any as S.Schema<MachineExtensionsListResultValueList>;
@@ -3480,7 +3475,7 @@ export const RunCommandInputParameter = /*@__PURE__*/ S.suspend(() =>
 
 /** The parameters used by the script. */
 export type MachineRunCommandPropertiesInputParametersList =
-  ReadonlyArray<RunCommandInputParameter>;
+  Array<RunCommandInputParameter>;
 export const MachineRunCommandPropertiesInputParametersList =
   /*@__PURE__*/ S.Array(
     RunCommandInputParameter,
@@ -3488,7 +3483,7 @@ export const MachineRunCommandPropertiesInputParametersList =
 
 /** The parameters used by the script. */
 export type MachineRunCommandPropertiesInputProtectedParametersList =
-  ReadonlyArray<RunCommandInputParameter>;
+  Array<RunCommandInputParameter>;
 export const MachineRunCommandPropertiesInputProtectedParametersList =
   /*@__PURE__*/ S.Array(
     RunCommandInputParameter,
@@ -3589,14 +3584,14 @@ export const MachineRunCommandsCreateOrUpdateResponseTagsMap =
 
 /** The parameters used by the script. */
 export type MachineRunCommandPropertiesParametersList =
-  ReadonlyArray<RunCommandInputParameter>;
+  Array<RunCommandInputParameter>;
 export const MachineRunCommandPropertiesParametersList = /*@__PURE__*/ S.Array(
   RunCommandInputParameter,
 ) as any as S.Schema<MachineRunCommandPropertiesParametersList>;
 
 /** The parameters used by the script. */
 export type MachineRunCommandPropertiesProtectedParametersList =
-  ReadonlyArray<RunCommandInputParameter>;
+  Array<RunCommandInputParameter>;
 export const MachineRunCommandPropertiesProtectedParametersList =
   /*@__PURE__*/ S.Array(
     RunCommandInputParameter,
@@ -3645,7 +3640,7 @@ export const ExtensionsResourceStatus = /*@__PURE__*/ S.suspend(() =>
 
 /** The status information. */
 export type MachineRunCommandInstanceViewStatusesList =
-  ReadonlyArray<ExtensionsResourceStatus>;
+  Array<ExtensionsResourceStatus>;
 export const MachineRunCommandInstanceViewStatusesList = /*@__PURE__*/ S.Array(
   ExtensionsResourceStatus,
 ) as any as S.Schema<MachineRunCommandInstanceViewStatusesList>;
@@ -3935,8 +3930,7 @@ export const MachineRunCommand = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MachineRunCommand>;
 
 /** The list of run commands */
-export type MachineRunCommandsListResultValueList =
-  ReadonlyArray<MachineRunCommand>;
+export type MachineRunCommandsListResultValueList = Array<MachineRunCommand>;
 export const MachineRunCommandsListResultValueList = /*@__PURE__*/ S.Array(
   MachineRunCommand,
 ) as any as S.Schema<MachineRunCommandsListResultValueList>;
@@ -4128,7 +4122,7 @@ export const MachineAssessPatchesResultOsType = /*@__PURE__*/ S.String;
 
 /** The error details. */
 export type MachineAssessPatchesResultErrorDetailsDetailsList =
-  ReadonlyArray<ErrorDetail>;
+  Array<ErrorDetail>;
 export const MachineAssessPatchesResultErrorDetailsDetailsList =
   /*@__PURE__*/ S.Array(
     ErrorDetail,
@@ -4136,7 +4130,7 @@ export const MachineAssessPatchesResultErrorDetailsDetailsList =
 
 /** The error additional info. */
 export type MachineAssessPatchesResultErrorDetailsAdditionalInfoList =
-  ReadonlyArray<ErrorAdditionalInfo>;
+  Array<ErrorAdditionalInfo>;
 export const MachineAssessPatchesResultErrorDetailsAdditionalInfoList =
   /*@__PURE__*/ S.Array(
     ErrorAdditionalInfo,
@@ -4443,7 +4437,7 @@ export const MachinePropertiesInputIdentityKeyStore = /*@__PURE__*/ S.String;
 
 /** Machine Extensions information (deprecated field) */
 export type MachinePropertiesInputExtensionsList =
-  ReadonlyArray<MachineExtensionInstanceView>;
+  Array<MachineExtensionInstanceView>;
 export const MachinePropertiesInputExtensionsList = /*@__PURE__*/ S.Array(
   MachineExtensionInstanceView,
 ) as any as S.Schema<MachinePropertiesInputExtensionsList>;
@@ -4606,8 +4600,7 @@ export const MachinePropertiesLocationData = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MachinePropertiesLocationData>;
 
 /** Specifies the list of ports that the agent will be able to listen on. */
-export type AgentConfigurationIncomingConnectionsPortsList =
-  ReadonlyArray<string>;
+export type AgentConfigurationIncomingConnectionsPortsList = Array<string>;
 export const AgentConfigurationIncomingConnectionsPortsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4631,20 +4624,20 @@ export const ConfigurationExtension = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of extensions that are allowed to be installed or updated. */
 export type AgentConfigurationExtensionsAllowListList =
-  ReadonlyArray<ConfigurationExtension>;
+  Array<ConfigurationExtension>;
 export const AgentConfigurationExtensionsAllowListList = /*@__PURE__*/ S.Array(
   ConfigurationExtension,
 ) as any as S.Schema<AgentConfigurationExtensionsAllowListList>;
 
 /** Array of extensions that are blocked (cannot be installed or updated) */
 export type AgentConfigurationExtensionsBlockListList =
-  ReadonlyArray<ConfigurationExtension>;
+  Array<ConfigurationExtension>;
 export const AgentConfigurationExtensionsBlockListList = /*@__PURE__*/ S.Array(
   ConfigurationExtension,
 ) as any as S.Schema<AgentConfigurationExtensionsBlockListList>;
 
 /** List of service names which should not use the specified proxy server. */
-export type AgentConfigurationProxyBypassList = ReadonlyArray<string>;
+export type AgentConfigurationProxyBypassList = Array<string>;
 export const AgentConfigurationProxyBypassList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AgentConfigurationProxyBypassList>;
@@ -4704,7 +4697,7 @@ export const Processor = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Processor" }) as any as S.Schema<Processor>;
 
 /** The physical processors of the machine. */
-export type HardwareProfileProcessorsList = ReadonlyArray<Processor>;
+export type HardwareProfileProcessorsList = Array<Processor>;
 export const HardwareProfileProcessorsList = /*@__PURE__*/ S.Array(
   Processor,
 ) as any as S.Schema<HardwareProfileProcessorsList>;
@@ -4758,7 +4751,7 @@ export const Disk = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Disk" }) as any as S.Schema<Disk>;
 
 /** The disks on the machine. */
-export type StorageProfileDisksList = ReadonlyArray<Disk>;
+export type StorageProfileDisksList = Array<Disk>;
 export const StorageProfileDisksList = /*@__PURE__*/ S.Array(
   Disk,
 ) as any as S.Schema<StorageProfileDisksList>;
@@ -4858,14 +4851,14 @@ export type HotpatchEnablementStatus =
 export const HotpatchEnablementStatus = /*@__PURE__*/ S.String;
 
 /** The error details. */
-export type PatchSettingsStatusErrorDetailsList = ReadonlyArray<ErrorDetail>;
+export type PatchSettingsStatusErrorDetailsList = Array<ErrorDetail>;
 export const PatchSettingsStatusErrorDetailsList = /*@__PURE__*/ S.Array(
   ErrorDetail,
 ) as any as S.Schema<PatchSettingsStatusErrorDetailsList>;
 
 /** The error additional info. */
 export type PatchSettingsStatusErrorAdditionalInfoList =
-  ReadonlyArray<ErrorAdditionalInfo>;
+  Array<ErrorAdditionalInfo>;
 export const PatchSettingsStatusErrorAdditionalInfoList = /*@__PURE__*/ S.Array(
   ErrorAdditionalInfo,
 ) as any as S.Schema<PatchSettingsStatusErrorAdditionalInfoList>;
@@ -4998,7 +4991,7 @@ export const LicenseProfileMachineInstanceViewSoftwareAssurance =
 
 /** The list of ESU keys. */
 export type LicenseProfileMachineInstanceViewEsuPropertiesEsuKeysList =
-  ReadonlyArray<EsuKey>;
+  Array<EsuKey>;
 export const LicenseProfileMachineInstanceViewEsuPropertiesEsuKeysList =
   /*@__PURE__*/ S.Array(
     EsuKey,
@@ -5076,8 +5069,7 @@ export type MachinePropertiesStatus = "Connected" | "Disconnected" | "Error";
 export const MachinePropertiesStatus = /*@__PURE__*/ S.String;
 
 /** The error details. */
-export type MachinePropertiesErrorDetailsItemDetailsList =
-  ReadonlyArray<ErrorDetail>;
+export type MachinePropertiesErrorDetailsItemDetailsList = Array<ErrorDetail>;
 export const MachinePropertiesErrorDetailsItemDetailsList =
   /*@__PURE__*/ S.Array(
     ErrorDetail,
@@ -5085,7 +5077,7 @@ export const MachinePropertiesErrorDetailsItemDetailsList =
 
 /** The error additional info. */
 export type MachinePropertiesErrorDetailsItemAdditionalInfoList =
-  ReadonlyArray<ErrorAdditionalInfo>;
+  Array<ErrorAdditionalInfo>;
 export const MachinePropertiesErrorDetailsItemAdditionalInfoList =
   /*@__PURE__*/ S.Array(
     ErrorAdditionalInfo,
@@ -5120,7 +5112,7 @@ export const MachinePropertiesErrorDetailsItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Details about the error state. */
 export type MachinePropertiesErrorDetailsList =
-  ReadonlyArray<MachinePropertiesErrorDetailsItem>;
+  Array<MachinePropertiesErrorDetailsItem>;
 export const MachinePropertiesErrorDetailsList = /*@__PURE__*/ S.Array(
   MachinePropertiesErrorDetailsItem,
 ) as any as S.Schema<MachinePropertiesErrorDetailsList>;
@@ -5131,7 +5123,7 @@ export const MachinePropertiesIdentityKeyStore = /*@__PURE__*/ S.String;
 
 /** Machine Extensions information (deprecated field) */
 export type MachinePropertiesExtensionsList =
-  ReadonlyArray<MachineExtensionInstanceView>;
+  Array<MachineExtensionInstanceView>;
 export const MachinePropertiesExtensionsList = /*@__PURE__*/ S.Array(
   MachineExtensionInstanceView,
 ) as any as S.Schema<MachinePropertiesExtensionsList>;
@@ -5172,7 +5164,7 @@ export const IpAddress = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IpAddress" }) as any as S.Schema<IpAddress>;
 
 /** The list of IP addresses in this interface. */
-export type NetworkInterfaceIpAddressesList = ReadonlyArray<IpAddress>;
+export type NetworkInterfaceIpAddressesList = Array<IpAddress>;
 export const NetworkInterfaceIpAddressesList = /*@__PURE__*/ S.Array(
   IpAddress,
 ) as any as S.Schema<NetworkInterfaceIpAddressesList>;
@@ -5200,8 +5192,7 @@ export const NetworkInterface = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NetworkInterface>;
 
 /** The list of network interfaces. */
-export type NetworkProfileNetworkInterfacesList =
-  ReadonlyArray<NetworkInterface>;
+export type NetworkProfileNetworkInterfacesList = Array<NetworkInterface>;
 export const NetworkProfileNetworkInterfacesList = /*@__PURE__*/ S.Array(
   NetworkInterface,
 ) as any as S.Schema<NetworkProfileNetworkInterfacesList>;
@@ -5337,7 +5328,7 @@ export const MachineProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of extensions affiliated to the machine */
 export type MachinesCreateOrUpdateResponseResourcesList =
-  ReadonlyArray<MachineExtension>;
+  Array<MachineExtension>;
 export const MachinesCreateOrUpdateResponseResourcesList =
   /*@__PURE__*/ S.Array(
     MachineExtension,
@@ -5477,7 +5468,7 @@ export const MachinesGetResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<MachinesGetResponseTagsMap>;
 
 /** The list of extensions affiliated to the machine */
-export type MachinesGetResponseResourcesList = ReadonlyArray<MachineExtension>;
+export type MachinesGetResponseResourcesList = Array<MachineExtension>;
 export const MachinesGetResponseResourcesList = /*@__PURE__*/ S.Array(
   MachineExtension,
 ) as any as S.Schema<MachinesGetResponseResourcesList>;
@@ -5564,7 +5555,7 @@ export const WindowsParametersClassificationsToIncludeItem =
   /*@__PURE__*/ S.String;
 
 /** The update classifications to select when installing patches for Windows. */
-export type WindowsParametersClassificationsToIncludeList = ReadonlyArray<
+export type WindowsParametersClassificationsToIncludeList = Array<
   WindowsParametersClassificationsToIncludeItem | (string & {})
 >;
 export const WindowsParametersClassificationsToIncludeList =
@@ -5573,13 +5564,13 @@ export const WindowsParametersClassificationsToIncludeList =
   ) as any as S.Schema<WindowsParametersClassificationsToIncludeList>;
 
 /** Kbs to include in the patch operation */
-export type WindowsParametersKbNumbersToIncludeList = ReadonlyArray<string>;
+export type WindowsParametersKbNumbersToIncludeList = Array<string>;
 export const WindowsParametersKbNumbersToIncludeList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<WindowsParametersKbNumbersToIncludeList>;
 
 /** Kbs to exclude in the patch operation */
-export type WindowsParametersKbNumbersToExcludeList = ReadonlyArray<string>;
+export type WindowsParametersKbNumbersToExcludeList = Array<string>;
 export const WindowsParametersKbNumbersToExcludeList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<WindowsParametersKbNumbersToExcludeList>;
@@ -5619,7 +5610,7 @@ export const LinuxParametersClassificationsToIncludeItem =
   /*@__PURE__*/ S.String;
 
 /** The update classifications to select when installing patches for Linux. */
-export type LinuxParametersClassificationsToIncludeList = ReadonlyArray<
+export type LinuxParametersClassificationsToIncludeList = Array<
   LinuxParametersClassificationsToIncludeItem | (string & {})
 >;
 export const LinuxParametersClassificationsToIncludeList =
@@ -5628,16 +5619,14 @@ export const LinuxParametersClassificationsToIncludeList =
   ) as any as S.Schema<LinuxParametersClassificationsToIncludeList>;
 
 /** packages to include in the patch operation. Format: packageName_packageVersion */
-export type LinuxParametersPackageNameMasksToIncludeList =
-  ReadonlyArray<string>;
+export type LinuxParametersPackageNameMasksToIncludeList = Array<string>;
 export const LinuxParametersPackageNameMasksToIncludeList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<LinuxParametersPackageNameMasksToIncludeList>;
 
 /** packages to exclude in the patch operation. Format: packageName_packageVersion */
-export type LinuxParametersPackageNameMasksToExcludeList =
-  ReadonlyArray<string>;
+export type LinuxParametersPackageNameMasksToExcludeList = Array<string>;
 export const LinuxParametersPackageNameMasksToExcludeList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5745,7 +5734,7 @@ export const MachineInstallPatchesResultOsType = /*@__PURE__*/ S.String;
 
 /** The error details. */
 export type MachineInstallPatchesResultErrorDetailsDetailsList =
-  ReadonlyArray<ErrorDetail>;
+  Array<ErrorDetail>;
 export const MachineInstallPatchesResultErrorDetailsDetailsList =
   /*@__PURE__*/ S.Array(
     ErrorDetail,
@@ -5753,7 +5742,7 @@ export const MachineInstallPatchesResultErrorDetailsDetailsList =
 
 /** The error additional info. */
 export type MachineInstallPatchesResultErrorDetailsAdditionalInfoList =
-  ReadonlyArray<ErrorAdditionalInfo>;
+  Array<ErrorAdditionalInfo>;
 export const MachineInstallPatchesResultErrorDetailsAdditionalInfoList =
   /*@__PURE__*/ S.Array(
     ErrorAdditionalInfo,
@@ -5875,7 +5864,7 @@ export const MachineTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<MachineTagsMap>;
 
 /** The list of extensions affiliated to the machine */
-export type MachineResourcesList = ReadonlyArray<MachineExtension>;
+export type MachineResourcesList = Array<MachineExtension>;
 export const MachineResourcesList = /*@__PURE__*/ S.Array(
   MachineExtension,
 ) as any as S.Schema<MachineResourcesList>;
@@ -5941,7 +5930,7 @@ export const Machine = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Machine" }) as any as S.Schema<Machine>;
 
 /** The list of hybrid machines. */
-export type MachineListResultValueList = ReadonlyArray<Machine>;
+export type MachineListResultValueList = Array<Machine>;
 export const MachineListResultValueList = /*@__PURE__*/ S.Array(
   Machine,
 ) as any as S.Schema<MachineListResultValueList>;
@@ -6109,8 +6098,7 @@ export const MachinesUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<MachinesUpdateResponseTagsMap>;
 
 /** The list of extensions affiliated to the machine */
-export type MachinesUpdateResponseResourcesList =
-  ReadonlyArray<MachineExtension>;
+export type MachinesUpdateResponseResourcesList = Array<MachineExtension>;
 export const MachinesUpdateResponseResourcesList = /*@__PURE__*/ S.Array(
   MachineExtension,
 ) as any as S.Schema<MachinesUpdateResponseResourcesList>;
@@ -6469,8 +6457,7 @@ export type ProvisioningIssueSeverity = "Warning" | "Error";
 export const ProvisioningIssueSeverity = /*@__PURE__*/ S.String;
 
 /** ARM Ids of the resources that can be associated to the same perimeter to remediate the issue */
-export type ProvisioningIssuePropertiesSuggestedResourceIdsList =
-  ReadonlyArray<string>;
+export type ProvisioningIssuePropertiesSuggestedResourceIdsList = Array<string>;
 export const ProvisioningIssuePropertiesSuggestedResourceIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6481,7 +6468,7 @@ export type AccessRuleDirection = "Inbound" | "Outbound";
 export const AccessRuleDirection = /*@__PURE__*/ S.String;
 
 /** Address prefixes that are allowed access. */
-export type AccessRulePropertiesAddressPrefixesList = ReadonlyArray<string>;
+export type AccessRulePropertiesAddressPrefixesList = Array<string>;
 export const AccessRulePropertiesAddressPrefixesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AccessRulePropertiesAddressPrefixesList>;
@@ -6518,7 +6505,7 @@ export const AccessRule = /*@__PURE__*/ S.suspend(() =>
 
 /** Access rules that can be added to the perimeter to remediate the issue */
 export type ProvisioningIssuePropertiesSuggestedAccessRulesList =
-  ReadonlyArray<AccessRule>;
+  Array<AccessRule>;
 export const ProvisioningIssuePropertiesSuggestedAccessRulesList =
   /*@__PURE__*/ S.Array(
     AccessRule,
@@ -6571,7 +6558,7 @@ export const ProvisioningIssue = /*@__PURE__*/ S.suspend(() =>
 
 /** Provisioning issues. */
 export type NetworkSecurityPerimeterConfigurationPropertiesProvisioningIssuesList =
-  ReadonlyArray<ProvisioningIssue>;
+  Array<ProvisioningIssue>;
 export const NetworkSecurityPerimeterConfigurationPropertiesProvisioningIssuesList =
   /*@__PURE__*/ S.Array(
     ProvisioningIssue,
@@ -6617,8 +6604,7 @@ export const ResourceAssociation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourceAssociation>;
 
 /** Collection of access rules for the profile */
-export type NetworkSecurityPerimeterProfileAccessRulesList =
-  ReadonlyArray<AccessRule>;
+export type NetworkSecurityPerimeterProfileAccessRulesList = Array<AccessRule>;
 export const NetworkSecurityPerimeterProfileAccessRulesList =
   /*@__PURE__*/ S.Array(
     AccessRule,
@@ -6626,7 +6612,7 @@ export const NetworkSecurityPerimeterProfileAccessRulesList =
 
 /** Collection of enabled log categories for the profile */
 export type NetworkSecurityPerimeterProfileEnabledLogCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const NetworkSecurityPerimeterProfileEnabledLogCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6739,7 +6725,7 @@ export const NetworkSecurityPerimeterConfigurationsListByPrivateLinkScopeRequest
 
 /** Array of results. */
 export type NetworkSecurityPerimeterConfigurationListResultValueList =
-  ReadonlyArray<NetworkSecurityPerimeterConfiguration>;
+  Array<NetworkSecurityPerimeterConfiguration>;
 export const NetworkSecurityPerimeterConfigurationListResultValueList =
   /*@__PURE__*/ S.Array(
     NetworkSecurityPerimeterConfiguration,
@@ -6865,7 +6851,7 @@ export const OperationValue = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "OperationValue" }) as any as S.Schema<OperationValue>;
 
 /** The list of compute operations */
-export type OperationListResultValueList = ReadonlyArray<OperationValue>;
+export type OperationListResultValueList = Array<OperationValue>;
 export const OperationListResultValueList = /*@__PURE__*/ S.Array(
   OperationValue,
 ) as any as S.Schema<OperationListResultValueList>;
@@ -6985,8 +6971,7 @@ export const PrivateLinkServiceConnectionStateProperty =
   }) as any as S.Schema<PrivateLinkServiceConnectionStateProperty>;
 
 /** List of group IDs. */
-export type PrivateEndpointConnectionPropertiesGroupIdsList =
-  ReadonlyArray<string>;
+export type PrivateEndpointConnectionPropertiesGroupIdsList = Array<string>;
 export const PrivateEndpointConnectionPropertiesGroupIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -7184,7 +7169,7 @@ export const PrivateEndpointConnection = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of results. */
 export type PrivateEndpointConnectionListResultValueList =
-  ReadonlyArray<PrivateEndpointConnection>;
+  Array<PrivateEndpointConnection>;
 export const PrivateEndpointConnectionListResultValueList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection,
@@ -7235,16 +7220,14 @@ export const PrivateLinkResourcesGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateLinkResourcesGetRequest>;
 
 /** The private link resource required member names. */
-export type PrivateLinkResourcePropertiesRequiredMembersList =
-  ReadonlyArray<string>;
+export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
 export const PrivateLinkResourcePropertiesRequiredMembersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
 
 /** Required DNS zone names of the the private link resource. */
-export type PrivateLinkResourcePropertiesRequiredZoneNamesList =
-  ReadonlyArray<string>;
+export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
 export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -7349,8 +7332,7 @@ export const PrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateLinkResource>;
 
 /** Array of results. */
-export type PrivateLinkResourceListResultValueList =
-  ReadonlyArray<PrivateLinkResource>;
+export type PrivateLinkResourceListResultValueList = Array<PrivateLinkResource>;
 export const PrivateLinkResourceListResultValueList = /*@__PURE__*/ S.Array(
   PrivateLinkResource,
 ) as any as S.Schema<PrivateLinkResourceListResultValueList>;
@@ -7468,7 +7450,7 @@ export const PrivateEndpointConnectionDataModel = /*@__PURE__*/ S.suspend(() =>
 
 /** The collection of associated Private Endpoint Connections. */
 export type HybridComputePrivateLinkScopePropertiesPrivateEndpointConnectionsList =
-  ReadonlyArray<PrivateEndpointConnectionDataModel>;
+  Array<PrivateEndpointConnectionDataModel>;
 export const HybridComputePrivateLinkScopePropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnectionDataModel,
@@ -7777,7 +7759,7 @@ export const ConnectionDetail = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Private Endpoint Connection details. */
 export type PrivateLinkScopeValidationDetailsConnectionDetailsList =
-  ReadonlyArray<ConnectionDetail>;
+  Array<ConnectionDetail>;
 export const PrivateLinkScopeValidationDetailsConnectionDetailsList =
   /*@__PURE__*/ S.Array(
     ConnectionDetail,
@@ -7941,7 +7923,7 @@ export const HybridComputePrivateLinkScope = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Azure Arc PrivateLinkScope definitions. */
 export type HybridComputePrivateLinkScopeListResultValueList =
-  ReadonlyArray<HybridComputePrivateLinkScope>;
+  Array<HybridComputePrivateLinkScope>;
 export const HybridComputePrivateLinkScopeListResultValueList =
   /*@__PURE__*/ S.Array(
     HybridComputePrivateLinkScope,
@@ -8332,7 +8314,7 @@ export const SettingsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of extensions */
 export type SetupExtensionsRequestExtensionsList =
-  ReadonlyArray<MachineExtensionPropertiesInput>;
+  Array<MachineExtensionPropertiesInput>;
 export const SetupExtensionsRequestExtensionsList = /*@__PURE__*/ S.Array(
   MachineExtensionPropertiesInput,
 ) as any as S.Schema<SetupExtensionsRequestExtensionsList>;
@@ -8367,7 +8349,7 @@ export const SetupExtensionsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of extensions */
 export type SetupExtensionRequestExtensionsList =
-  ReadonlyArray<MachineExtensionProperties>;
+  Array<MachineExtensionProperties>;
 export const SetupExtensionRequestExtensionsList = /*@__PURE__*/ S.Array(
   MachineExtensionProperties,
 ) as any as S.Schema<SetupExtensionRequestExtensionsList>;

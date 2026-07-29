@@ -115,7 +115,7 @@ export interface Variable {
   /** Output only. The time of the last variable update. Timestamp will be UTC timestamp. */
   updateTime?: string;
   /** Output only. The current state of the variable. The variable state indicates the outcome of the `variables().watch` call and is visible through the `get` and `list` calls. */
-  state?: VariableStateEnum;
+  state?: VariableStateEnum | (string & {});
 }
 export const Variable = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -183,7 +183,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -386,7 +386,7 @@ export const Expr = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Expr" }) as any as S.Schema<Expr>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -408,7 +408,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
-export type BindingList = ReadonlyArray<Binding>;
+export type BindingList = Array<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -526,7 +526,7 @@ export const ListProjectsConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsConfigsRequest",
 }) as any as S.Schema<ListProjectsConfigsRequest>;
 
-export type RuntimeConfigList = ReadonlyArray<RuntimeConfig>;
+export type RuntimeConfigList = Array<RuntimeConfig>;
 export const RuntimeConfigList = /*@__PURE__*/ S.Array(
   RuntimeConfig,
 ) as any as S.Schema<RuntimeConfigList>;
@@ -577,7 +577,7 @@ export const ListProjectsConfigsVariablesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsConfigsVariablesRequest",
 }) as any as S.Schema<ListProjectsConfigsVariablesRequest>;
 
-export type VariableList = ReadonlyArray<Variable>;
+export type VariableList = Array<Variable>;
 export const VariableList = /*@__PURE__*/ S.Array(
   Variable,
 ) as any as S.Schema<VariableList>;
@@ -622,7 +622,7 @@ export const ListProjectsConfigsWaitersRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsConfigsWaitersRequest",
 }) as any as S.Schema<ListProjectsConfigsWaitersRequest>;
 
-export type WaiterList = ReadonlyArray<Waiter>;
+export type WaiterList = Array<Waiter>;
 export const WaiterList = /*@__PURE__*/ S.Array(
   Waiter,
 ) as any as S.Schema<WaiterList>;

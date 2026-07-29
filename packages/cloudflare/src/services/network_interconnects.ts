@@ -48,7 +48,7 @@ export const CnisCreateRequestMagic = /*@__PURE__*/ S.suspend(() =>
   identifier: "CnisCreateRequestMagic",
 }) as any as S.Schema<CnisCreateRequestMagic>;
 
-export type CnisCreateRequestBgpExtraPrefixesList = ReadonlyArray<string>;
+export type CnisCreateRequestBgpExtraPrefixesList = Array<string>;
 export const CnisCreateRequestBgpExtraPrefixesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CnisCreateRequestBgpExtraPrefixesList>;
@@ -117,7 +117,7 @@ export const CnisCreateResponseMagic = /*@__PURE__*/ S.suspend(() =>
   identifier: "CnisCreateResponseMagic",
 }) as any as S.Schema<CnisCreateResponseMagic>;
 
-export type CnisCreateResponseBgpExtraPrefixesList = ReadonlyArray<string>;
+export type CnisCreateResponseBgpExtraPrefixesList = Array<string>;
 export const CnisCreateResponseBgpExtraPrefixesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CnisCreateResponseBgpExtraPrefixesList>;
@@ -320,7 +320,7 @@ export const CnisGetResponseMagic = /*@__PURE__*/ S.suspend(() =>
   identifier: "CnisGetResponseMagic",
 }) as any as S.Schema<CnisGetResponseMagic>;
 
-export type CnisGetResponseBgpExtraPrefixesList = ReadonlyArray<string>;
+export type CnisGetResponseBgpExtraPrefixesList = Array<string>;
 export const CnisGetResponseBgpExtraPrefixesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CnisGetResponseBgpExtraPrefixesList>;
@@ -452,7 +452,7 @@ export const GetSlotRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "GetSlotRequest" }) as any as S.Schema<GetSlotRequest>;
 
-export type SlotsGetResponseFacilityAddressList = ReadonlyArray<string>;
+export type SlotsGetResponseFacilityAddressList = Array<string>;
 export const SlotsGetResponseFacilityAddressList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SlotsGetResponseFacilityAddressList>;
@@ -540,8 +540,7 @@ export const CnisListResponseItemsItemMagic = /*@__PURE__*/ S.suspend(() =>
   identifier: "CnisListResponseItemsItemMagic",
 }) as any as S.Schema<CnisListResponseItemsItemMagic>;
 
-export type CnisListResponseItemsItemBgpExtraPrefixesList =
-  ReadonlyArray<string>;
+export type CnisListResponseItemsItemBgpExtraPrefixesList = Array<string>;
 export const CnisListResponseItemsItemBgpExtraPrefixesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -594,8 +593,7 @@ export const CnisListResponseItemsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "CnisListResponseItemsItem",
 }) as any as S.Schema<CnisListResponseItemsItem>;
 
-export type CnisListResponseItemsList =
-  ReadonlyArray<CnisListResponseItemsItem>;
+export type CnisListResponseItemsList = Array<CnisListResponseItemsItem>;
 export const CnisListResponseItemsList = /*@__PURE__*/ S.Array(
   CnisListResponseItemsItem,
 ) as any as S.Schema<CnisListResponseItemsList>;
@@ -645,7 +643,7 @@ export const ListInterconnectsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListInterconnectsRequest>;
 
 export type InterconnectsListResponseItemsItemNscInterconnectPhysicalBodyFacilityAddressList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const InterconnectsListResponseItemsItemNscInterconnectPhysicalBodyFacilityAddressList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -776,7 +774,7 @@ export const InterconnectsListResponseItemsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InterconnectsListResponseItemsItem>;
 
 export type InterconnectsListResponseItemsList =
-  ReadonlyArray<InterconnectsListResponseItemsItem>;
+  Array<InterconnectsListResponseItemsItem>;
 export const InterconnectsListResponseItemsList = /*@__PURE__*/ S.Array(
   InterconnectsListResponseItemsItem,
 ) as any as S.Schema<InterconnectsListResponseItemsList>;
@@ -831,8 +829,7 @@ export const ListSlotsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListSlotsRequest",
 }) as any as S.Schema<ListSlotsRequest>;
 
-export type SlotsListResponseItemsItemFacilityAddressList =
-  ReadonlyArray<string>;
+export type SlotsListResponseItemsItemFacilityAddressList = Array<string>;
 export const SlotsListResponseItemsItemFacilityAddressList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -875,8 +872,7 @@ export const SlotsListResponseItemsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "SlotsListResponseItemsItem",
 }) as any as S.Schema<SlotsListResponseItemsItem>;
 
-export type SlotsListResponseItemsList =
-  ReadonlyArray<SlotsListResponseItemsItem>;
+export type SlotsListResponseItemsList = Array<SlotsListResponseItemsItem>;
 export const SlotsListResponseItemsList = /*@__PURE__*/ S.Array(
   SlotsListResponseItemsItem,
 ) as any as S.Schema<SlotsListResponseItemsList>;
@@ -1002,7 +998,7 @@ export const CnisUpdateRequestMagic = /*@__PURE__*/ S.suspend(() =>
   identifier: "CnisUpdateRequestMagic",
 }) as any as S.Schema<CnisUpdateRequestMagic>;
 
-export type CnisUpdateRequestBgpExtraPrefixesList = ReadonlyArray<string>;
+export type CnisUpdateRequestBgpExtraPrefixesList = Array<string>;
 export const CnisUpdateRequestBgpExtraPrefixesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CnisUpdateRequestBgpExtraPrefixesList>;
@@ -1082,7 +1078,7 @@ export const CnisUpdateResponseMagic = /*@__PURE__*/ S.suspend(() =>
   identifier: "CnisUpdateResponseMagic",
 }) as any as S.Schema<CnisUpdateResponseMagic>;
 
-export type CnisUpdateResponseBgpExtraPrefixesList = ReadonlyArray<string>;
+export type CnisUpdateResponseBgpExtraPrefixesList = Array<string>;
 export const CnisUpdateResponseBgpExtraPrefixesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CnisUpdateResponseBgpExtraPrefixesList>;

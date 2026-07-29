@@ -59,7 +59,7 @@ export const ActivityParameterValidationSet = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets the validation set of activity parameter. */
 export type ActivityParameterValidationSetList =
-  ReadonlyArray<ActivityParameterValidationSet>;
+  Array<ActivityParameterValidationSet>;
 export const ActivityParameterValidationSetList = /*@__PURE__*/ S.Array(
   ActivityParameterValidationSet,
 ) as any as S.Schema<ActivityParameterValidationSetList>;
@@ -105,8 +105,7 @@ export const ActivityParameter = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ActivityParameter>;
 
 /** Gets or sets the parameters of the activity parameter set. */
-export type ActivityParameterSetParametersList =
-  ReadonlyArray<ActivityParameter>;
+export type ActivityParameterSetParametersList = Array<ActivityParameter>;
 export const ActivityParameterSetParametersList = /*@__PURE__*/ S.Array(
   ActivityParameter,
 ) as any as S.Schema<ActivityParameterSetParametersList>;
@@ -128,8 +127,7 @@ export const ActivityParameterSet = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ActivityParameterSet>;
 
 /** Gets or sets the parameter sets of the activity. */
-export type ActivityPropertiesParameterSetsList =
-  ReadonlyArray<ActivityParameterSet>;
+export type ActivityPropertiesParameterSetsList = Array<ActivityParameterSet>;
 export const ActivityPropertiesParameterSetsList = /*@__PURE__*/ S.Array(
   ActivityParameterSet,
 ) as any as S.Schema<ActivityPropertiesParameterSetsList>;
@@ -151,8 +149,7 @@ export const ActivityOutputType = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ActivityOutputType>;
 
 /** Gets or sets the output types of the activity. */
-export type ActivityPropertiesOutputTypesList =
-  ReadonlyArray<ActivityOutputType>;
+export type ActivityPropertiesOutputTypesList = Array<ActivityOutputType>;
 export const ActivityPropertiesOutputTypesList = /*@__PURE__*/ S.Array(
   ActivityOutputType,
 ) as any as S.Schema<ActivityPropertiesOutputTypesList>;
@@ -231,7 +228,7 @@ export const ActivityListByModuleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ActivityListByModuleRequest>;
 
 /** The Activity items on this page */
-export type ActivityListResultValueList = ReadonlyArray<Activity>;
+export type ActivityListResultValueList = Array<Activity>;
 export const ActivityListResultValueList = /*@__PURE__*/ S.Array(
   Activity,
 ) as any as S.Schema<ActivityListResultValueList>;
@@ -356,7 +353,7 @@ export const SkuNameEnum = /*@__PURE__*/ S.String;
 /** The account SKU. */
 export interface Sku {
   /** Gets or sets the SKU name of the account. */
-  name: SkuNameEnum;
+  name: SkuNameEnum | (string & {});
   /** Gets or sets the SKU family. */
   family?: string;
   /** Gets or sets the SKU capacity. */
@@ -413,7 +410,7 @@ export interface EncryptionProperties {
   /** Key vault properties. */
   keyVaultProperties?: KeyVaultProperties;
   /** Encryption Key Source */
-  keySource?: EncryptionKeySourceType;
+  keySource?: EncryptionKeySourceType | (string & {});
   /** User identity used for CMK. */
   identity?: EncryptionPropertiesIdentity;
 }
@@ -609,8 +606,7 @@ export const PrivateEndpointProperty = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateEndpointProperty>;
 
 /** Gets the groupIds. */
-export type PrivateEndpointConnectionPropertiesGroupIdsList =
-  ReadonlyArray<string>;
+export type PrivateEndpointConnectionPropertiesGroupIdsList = Array<string>;
 export const PrivateEndpointConnectionPropertiesGroupIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -684,7 +680,7 @@ export const PrivateEndpointConnection = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Automation operations supported by the Automation resource provider. */
 export type AutomationAccountPropertiesPrivateEndpointConnectionsList =
-  ReadonlyArray<PrivateEndpointConnection>;
+  Array<PrivateEndpointConnection>;
 export const AutomationAccountPropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection,
@@ -982,8 +978,7 @@ export const AutomationAccount = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AutomationAccount>;
 
 /** The AutomationAccount items on this page */
-export type AutomationAccountListResultValueList =
-  ReadonlyArray<AutomationAccount>;
+export type AutomationAccountListResultValueList = Array<AutomationAccount>;
 export const AutomationAccountListResultValueList = /*@__PURE__*/ S.Array(
   AutomationAccount,
 ) as any as S.Schema<AutomationAccountListResultValueList>;
@@ -1102,7 +1097,7 @@ export const DeletedRunbook = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeletedRunbook" }) as any as S.Schema<DeletedRunbook>;
 
 /** The DeletedRunbook items on this page */
-export type DeletedRunbookListResultValueList = ReadonlyArray<DeletedRunbook>;
+export type DeletedRunbookListResultValueList = Array<DeletedRunbook>;
 export const DeletedRunbookListResultValueList = /*@__PURE__*/ S.Array(
   DeletedRunbook,
 ) as any as S.Schema<DeletedRunbookListResultValueList>;
@@ -1484,7 +1479,7 @@ export const Certificate = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Certificate" }) as any as S.Schema<Certificate>;
 
 /** The Certificate items on this page */
-export type CertificateListResultValueList = ReadonlyArray<Certificate>;
+export type CertificateListResultValueList = Array<Certificate>;
 export const CertificateListResultValueList = /*@__PURE__*/ S.Array(
   Certificate,
 ) as any as S.Schema<CertificateListResultValueList>;
@@ -1852,7 +1847,7 @@ export const Connection = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Connection" }) as any as S.Schema<Connection>;
 
 /** The Connection items on this page */
-export type ConnectionListResultValueList = ReadonlyArray<Connection>;
+export type ConnectionListResultValueList = Array<Connection>;
 export const ConnectionListResultValueList = /*@__PURE__*/ S.Array(
   Connection,
 ) as any as S.Schema<ConnectionListResultValueList>;
@@ -2151,7 +2146,7 @@ export const ConnectionType = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ConnectionType" }) as any as S.Schema<ConnectionType>;
 
 /** The ConnectionType items on this page */
-export type ConnectionTypeListResultValueList = ReadonlyArray<ConnectionType>;
+export type ConnectionTypeListResultValueList = Array<ConnectionType>;
 export const ConnectionTypeListResultValueList = /*@__PURE__*/ S.Array(
   ConnectionType,
 ) as any as S.Schema<ConnectionTypeListResultValueList>;
@@ -2269,7 +2264,7 @@ export interface RawGraphicalRunbookContent {
   /** Serialized Graphical runbook */
   runbookDefinition?: string;
   /** Runbook Type */
-  runbookType?: GraphRunbookType;
+  runbookType?: GraphRunbookType | (string & {});
 }
 export const RawGraphicalRunbookContent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2564,7 +2559,7 @@ export const Credential = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Credential" }) as any as S.Schema<Credential>;
 
 /** The Credential items on this page */
-export type CredentialListResultValueList = ReadonlyArray<Credential>;
+export type CredentialListResultValueList = Array<Credential>;
 export const CredentialListResultValueList = /*@__PURE__*/ S.Array(
   Credential,
 ) as any as S.Schema<CredentialListResultValueList>;
@@ -2731,7 +2726,7 @@ export const DeletedAutomationAccount = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets the list of deleted automation accounts. */
 export type DeletedAutomationAccountListResultValueList =
-  ReadonlyArray<DeletedAutomationAccount>;
+  Array<DeletedAutomationAccount>;
 export const DeletedAutomationAccountListResultValueList =
   /*@__PURE__*/ S.Array(
     DeletedAutomationAccount,
@@ -2773,7 +2768,7 @@ export interface ContentSource {
   /** Gets or sets the hash. */
   hash?: ContentHash;
   /** Gets or sets the content source type. */
-  type?: ContentSourceType;
+  type?: ContentSourceType | (string & {});
   /** Gets or sets the value of the content. This is based on the content source type. */
   value?: string;
   /** Gets or sets the version of the content. */
@@ -3221,8 +3216,7 @@ export const DscConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DscConfiguration>;
 
 /** Gets or sets a list of configurations. */
-export type DscConfigurationListResultValueList =
-  ReadonlyArray<DscConfiguration>;
+export type DscConfigurationListResultValueList = Array<DscConfiguration>;
 export const DscConfigurationListResultValueList = /*@__PURE__*/ S.Array(
   DscConfiguration,
 ) as any as S.Schema<DscConfigurationListResultValueList>;
@@ -3603,7 +3597,7 @@ export const DscNodeConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets a list of Dsc node configurations. */
 export type DscNodeConfigurationListResultValueList =
-  ReadonlyArray<DscNodeConfiguration>;
+  Array<DscNodeConfiguration>;
 export const DscNodeConfigurationListResultValueList = /*@__PURE__*/ S.Array(
   DscNodeConfiguration,
 ) as any as S.Schema<DscNodeConfigurationListResultValueList>;
@@ -3723,7 +3717,7 @@ export const DscNodeExtensionHandlerAssociationProperty =
 
 /** Gets or sets the list of extensionHandler properties for a Node. */
 export type DscNodePropertiesExtensionHandlerList =
-  ReadonlyArray<DscNodeExtensionHandlerAssociationProperty>;
+  Array<DscNodeExtensionHandlerAssociationProperty>;
 export const DscNodePropertiesExtensionHandlerList = /*@__PURE__*/ S.Array(
   DscNodeExtensionHandlerAssociationProperty,
 ) as any as S.Schema<DscNodePropertiesExtensionHandlerList>;
@@ -3856,7 +3850,7 @@ export const DscNode = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DscNode" }) as any as S.Schema<DscNode>;
 
 /** Gets or sets a list of dsc nodes. */
-export type DscNodeListResultValueList = ReadonlyArray<DscNode>;
+export type DscNodeListResultValueList = Array<DscNode>;
 export const DscNodeListResultValueList = /*@__PURE__*/ S.Array(
   DscNode,
 ) as any as S.Schema<DscNodeListResultValueList>;
@@ -3992,7 +3986,7 @@ export const TypeField = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TypeField" }) as any as S.Schema<TypeField>;
 
 /** Gets or sets a list of fields. */
-export type TypeFieldListResultValueList = ReadonlyArray<TypeField>;
+export type TypeFieldListResultValueList = Array<TypeField>;
 export const TypeFieldListResultValueList = /*@__PURE__*/ S.Array(
   TypeField,
 ) as any as S.Schema<TypeFieldListResultValueList>;
@@ -4310,7 +4304,7 @@ export const HybridRunbookWorkerGroup = /*@__PURE__*/ S.suspend(() =>
 
 /** The HybridRunbookWorkerGroup items on this page */
 export type HybridRunbookWorkerGroupsListResultValueList =
-  ReadonlyArray<HybridRunbookWorkerGroup>;
+  Array<HybridRunbookWorkerGroup>;
 export const HybridRunbookWorkerGroupsListResultValueList =
   /*@__PURE__*/ S.Array(
     HybridRunbookWorkerGroup,
@@ -4707,7 +4701,7 @@ export const HybridRunbookWorker = /*@__PURE__*/ S.suspend(() =>
 
 /** The HybridRunbookWorker items on this page */
 export type HybridRunbookWorkersListResultValueList =
-  ReadonlyArray<HybridRunbookWorker>;
+  Array<HybridRunbookWorker>;
 export const HybridRunbookWorkersListResultValueList = /*@__PURE__*/ S.Array(
   HybridRunbookWorker,
 ) as any as S.Schema<HybridRunbookWorkersListResultValueList>;
@@ -5247,7 +5241,7 @@ export const JobCollectionItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<JobCollectionItem>;
 
 /** The JobCollectionItem items on this page */
-export type JobListResultV2ValueList = ReadonlyArray<JobCollectionItem>;
+export type JobListResultV2ValueList = Array<JobCollectionItem>;
 export const JobListResultV2ValueList = /*@__PURE__*/ S.Array(
   JobCollectionItem,
 ) as any as S.Schema<JobListResultV2ValueList>;
@@ -5576,7 +5570,7 @@ export const JobSchedule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "JobSchedule" }) as any as S.Schema<JobSchedule>;
 
 /** The JobSchedule items on this page */
-export type JobScheduleListResultValueList = ReadonlyArray<JobSchedule>;
+export type JobScheduleListResultValueList = Array<JobSchedule>;
 export const JobScheduleListResultValueList = /*@__PURE__*/ S.Array(
   JobSchedule,
 ) as any as S.Schema<JobScheduleListResultValueList>;
@@ -5755,7 +5749,7 @@ export const JobStreamListByJobRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<JobStreamListByJobRequest>;
 
 /** The JobStream items on this page */
-export type JobStreamListResultValueList = ReadonlyArray<JobStream>;
+export type JobStreamListResultValueList = Array<JobStream>;
 export const JobStreamListResultValueList = /*@__PURE__*/ S.Array(
   JobStream,
 ) as any as S.Schema<JobStreamListResultValueList>;
@@ -5862,7 +5856,7 @@ export const Key = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Key" }) as any as S.Schema<Key>;
 
 /** Lists the automation keys. */
-export type KeyListResultKeysList = ReadonlyArray<Key>;
+export type KeyListResultKeysList = Array<Key>;
 export const KeyListResultKeysList = /*@__PURE__*/ S.Array(
   Key,
 ) as any as S.Schema<KeyListResultKeysList>;
@@ -6284,7 +6278,7 @@ export const Module = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Module" }) as any as S.Schema<Module>;
 
 /** The Module items on this page */
-export type ModuleListResultValueList = ReadonlyArray<Module>;
+export type ModuleListResultValueList = Array<Module>;
 export const ModuleListResultValueList = /*@__PURE__*/ S.Array(
   Module,
 ) as any as S.Schema<ModuleListResultValueList>;
@@ -6458,7 +6452,7 @@ export const NodeCount = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NodeCount" }) as any as S.Schema<NodeCount>;
 
 /** Gets an array of counts */
-export type NodeCountsValueList = ReadonlyArray<NodeCount>;
+export type NodeCountsValueList = Array<NodeCount>;
 export const NodeCountsValueList = /*@__PURE__*/ S.Array(
   NodeCount,
 ) as any as S.Schema<NodeCountsValueList>;
@@ -6535,7 +6529,7 @@ export const DscReportError = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DscReportError" }) as any as S.Schema<DscReportError>;
 
 /** Gets or sets the errors for the node report. */
-export type DscNodeReportErrorsList = ReadonlyArray<DscReportError>;
+export type DscNodeReportErrorsList = Array<DscReportError>;
 export const DscNodeReportErrorsList = /*@__PURE__*/ S.Array(
   DscReportError,
 ) as any as S.Schema<DscNodeReportErrorsList>;
@@ -6554,8 +6548,7 @@ export const DscReportResourceNavigation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DscReportResourceNavigation>;
 
 /** Gets or sets the Resource Navigation values for resources the resource depends on. */
-export type DscReportResourceDependsOnList =
-  ReadonlyArray<DscReportResourceNavigation>;
+export type DscReportResourceDependsOnList = Array<DscReportResourceNavigation>;
 export const DscReportResourceDependsOnList = /*@__PURE__*/ S.Array(
   DscReportResourceNavigation,
 ) as any as S.Schema<DscReportResourceDependsOnList>;
@@ -6601,7 +6594,7 @@ export const DscReportResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DscReportResource>;
 
 /** Gets or sets the resource for the node report. */
-export type DscNodeReportResourcesList = ReadonlyArray<DscReportResource>;
+export type DscNodeReportResourcesList = Array<DscReportResource>;
 export const DscNodeReportResourcesList = /*@__PURE__*/ S.Array(
   DscReportResource,
 ) as any as S.Schema<DscNodeReportResourcesList>;
@@ -6638,13 +6631,13 @@ export const DscMetaConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DscMetaConfiguration>;
 
 /** Gets or sets the IPv4 address of the node that sent the report. */
-export type DscNodeReportIPV4AddressesList = ReadonlyArray<string>;
+export type DscNodeReportIPV4AddressesList = Array<string>;
 export const DscNodeReportIPV4AddressesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DscNodeReportIPV4AddressesList>;
 
 /** Gets or sets the IPv6 address of the node that sent the report. */
-export type DscNodeReportIPV6AddressesList = ReadonlyArray<string>;
+export type DscNodeReportIPV6AddressesList = Array<string>;
 export const DscNodeReportIPV6AddressesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DscNodeReportIPV6AddressesList>;
@@ -6784,7 +6777,7 @@ export const NodeReportsListByNodeRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NodeReportsListByNodeRequest>;
 
 /** The DscNodeReport items on this page */
-export type DscNodeReportListResultValueList = ReadonlyArray<DscNodeReport>;
+export type DscNodeReportListResultValueList = Array<DscNodeReport>;
 export const DscNodeReportListResultValueList = /*@__PURE__*/ S.Array(
   DscNodeReport,
 ) as any as S.Schema<DscNodeReportListResultValueList>;
@@ -6917,7 +6910,7 @@ export const Dimension = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Dimension" }) as any as S.Schema<Dimension>;
 
 /** List of dimensions. */
-export type MetricSpecificationDimensionsList = ReadonlyArray<Dimension>;
+export type MetricSpecificationDimensionsList = Array<Dimension>;
 export const MetricSpecificationDimensionsList = /*@__PURE__*/ S.Array(
   Dimension,
 ) as any as S.Schema<MetricSpecificationDimensionsList>;
@@ -6952,7 +6945,7 @@ export const MetricSpecification = /*@__PURE__*/ S.suspend(() =>
 
 /** Operation service specification. */
 export type OperationPropertiesFormatServiceSpecificationMetricSpecificationsList =
-  ReadonlyArray<MetricSpecification>;
+  Array<MetricSpecification>;
 export const OperationPropertiesFormatServiceSpecificationMetricSpecificationsList =
   /*@__PURE__*/ S.Array(
     MetricSpecification,
@@ -6979,7 +6972,7 @@ export const LogSpecification = /*@__PURE__*/ S.suspend(() =>
 
 /** Operation log specification. */
 export type OperationPropertiesFormatServiceSpecificationLogSpecificationsList =
-  ReadonlyArray<LogSpecification>;
+  Array<LogSpecification>;
 export const OperationPropertiesFormatServiceSpecificationLogSpecificationsList =
   /*@__PURE__*/ S.Array(
     LogSpecification,
@@ -7042,7 +7035,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of Automation operations supported by the Automation resource provider. */
-export type OperationListResultValueList = ReadonlyArray<Operation>;
+export type OperationListResultValueList = Array<Operation>;
 export const OperationListResultValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationListResultValueList>;
@@ -7460,7 +7453,7 @@ export const Package = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Package" }) as any as S.Schema<Package>;
 
 /** The Package items on this page */
-export type PackageListResultValueList = ReadonlyArray<Package>;
+export type PackageListResultValueList = Array<Package>;
 export const PackageListResultValueList = /*@__PURE__*/ S.Array(
   Package,
 ) as any as S.Schema<PackageListResultValueList>;
@@ -7597,7 +7590,7 @@ export const PackageUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets the groupIds. */
 export type PrivateEndpointConnectionPropertiesInputGroupIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PrivateEndpointConnectionPropertiesInputGroupIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -7819,7 +7812,7 @@ export const PrivateEndpointConnectionsListByAutomationAccountRequest =
 
 /** Array of private endpoint connections */
 export type PrivateEndpointConnectionListResultValueList =
-  ReadonlyArray<PrivateEndpointConnection>;
+  Array<PrivateEndpointConnection>;
 export const PrivateEndpointConnectionListResultValueList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection,
@@ -7867,8 +7860,7 @@ export const PrivateLinkResourcesAutomationRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PrivateLinkResourcesAutomationRequest>;
 
 /** The private link resource required member names. */
-export type PrivateLinkResourcePropertiesRequiredMembersList =
-  ReadonlyArray<string>;
+export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
 export const PrivateLinkResourcePropertiesRequiredMembersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -7918,8 +7910,7 @@ export const PrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateLinkResource>;
 
 /** Array of private link resources */
-export type PrivateLinkResourceListResultValueList =
-  ReadonlyArray<PrivateLinkResource>;
+export type PrivateLinkResourceListResultValueList = Array<PrivateLinkResource>;
 export const PrivateLinkResourceListResultValueList = /*@__PURE__*/ S.Array(
   PrivateLinkResource,
 ) as any as S.Schema<PrivateLinkResourceListResultValueList>;
@@ -8600,7 +8591,7 @@ export const RunbookDraftParametersMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<RunbookDraftParametersMap>;
 
 /** Gets or sets the runbook output types. */
-export type RunbookDraftOutputTypesList = ReadonlyArray<string>;
+export type RunbookDraftOutputTypesList = Array<string>;
 export const RunbookDraftOutputTypesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RunbookDraftOutputTypesList>;
@@ -8736,7 +8727,7 @@ export const RunbookPropertiesParametersMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<RunbookPropertiesParametersMap>;
 
 /** Gets or sets the runbook output types. */
-export type RunbookPropertiesOutputTypesList = ReadonlyArray<string>;
+export type RunbookPropertiesOutputTypesList = Array<string>;
 export const RunbookPropertiesOutputTypesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RunbookPropertiesOutputTypesList>;
@@ -9232,7 +9223,7 @@ export const Runbook = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Runbook" }) as any as S.Schema<Runbook>;
 
 /** The Runbook items on this page */
-export type RunbookListResultValueList = ReadonlyArray<Runbook>;
+export type RunbookListResultValueList = Array<Runbook>;
 export const RunbookListResultValueList = /*@__PURE__*/ S.Array(
   Runbook,
 ) as any as S.Schema<RunbookListResultValueList>;
@@ -9696,8 +9687,7 @@ export const RuntimeEnvironment = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RuntimeEnvironment>;
 
 /** The RuntimeEnvironment items on this page */
-export type RuntimeEnvironmentListResultValueList =
-  ReadonlyArray<RuntimeEnvironment>;
+export type RuntimeEnvironmentListResultValueList = Array<RuntimeEnvironment>;
 export const RuntimeEnvironmentListResultValueList = /*@__PURE__*/ S.Array(
   RuntimeEnvironment,
 ) as any as S.Schema<RuntimeEnvironmentListResultValueList>;
@@ -9824,13 +9814,13 @@ export type ScheduleFrequency =
 export const ScheduleFrequency = /*@__PURE__*/ S.String;
 
 /** Days of the week that the job should execute on. */
-export type AdvancedScheduleWeekDaysList = ReadonlyArray<string>;
+export type AdvancedScheduleWeekDaysList = Array<string>;
 export const AdvancedScheduleWeekDaysList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AdvancedScheduleWeekDaysList>;
 
 /** Days of the month that the job should execute on. Must be between 1 and 31. */
-export type AdvancedScheduleMonthDaysList = ReadonlyArray<number>;
+export type AdvancedScheduleMonthDaysList = Array<number>;
 export const AdvancedScheduleMonthDaysList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<AdvancedScheduleMonthDaysList>;
@@ -9851,7 +9841,7 @@ export interface AdvancedScheduleMonthlyOccurrence {
   /** Occurrence of the week within the month. Must be between 1 and 5 */
   occurrence?: number;
   /** Day of the occurrence. Must be one of monday, tuesday, wednesday, thursday, friday, saturday, sunday. */
-  day?: ScheduleDay;
+  day?: ScheduleDay | (string & {});
 }
 export const AdvancedScheduleMonthlyOccurrence = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -9864,7 +9854,7 @@ export const AdvancedScheduleMonthlyOccurrence = /*@__PURE__*/ S.suspend(() =>
 
 /** Occurrences of days within a month. */
 export type AdvancedScheduleMonthlyOccurrencesList =
-  ReadonlyArray<AdvancedScheduleMonthlyOccurrence>;
+  Array<AdvancedScheduleMonthlyOccurrence>;
 export const AdvancedScheduleMonthlyOccurrencesList = /*@__PURE__*/ S.Array(
   AdvancedScheduleMonthlyOccurrence,
 ) as any as S.Schema<AdvancedScheduleMonthlyOccurrencesList>;
@@ -10166,7 +10156,7 @@ export const Schedule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Schedule" }) as any as S.Schema<Schedule>;
 
 /** The Schedule items on this page */
-export type ScheduleListResultValueList = ReadonlyArray<Schedule>;
+export type ScheduleListResultValueList = Array<Schedule>;
 export const ScheduleListResultValueList = /*@__PURE__*/ S.Array(
   Schedule,
 ) as any as S.Schema<ScheduleListResultValueList>;
@@ -10446,7 +10436,7 @@ export const SoftwareUpdateConfigurationMachineRunsListRequest =
 
 /** The softwareUpdateConfigurationMachineRun items on this page */
 export type SoftwareUpdateConfigurationMachineRunListResultValueList =
-  ReadonlyArray<SoftwareUpdateConfigurationMachineRun>;
+  Array<SoftwareUpdateConfigurationMachineRun>;
 export const SoftwareUpdateConfigurationMachineRunListResultValueList =
   /*@__PURE__*/ S.Array(
     SoftwareUpdateConfigurationMachineRun,
@@ -10640,7 +10630,7 @@ export const SoftwareUpdateConfigurationRunsListRequest =
 
 /** The softwareUpdateConfigurationRun items on this page */
 export type SoftwareUpdateConfigurationRunListResultValueList =
-  ReadonlyArray<SoftwareUpdateConfigurationRun>;
+  Array<SoftwareUpdateConfigurationRun>;
 export const SoftwareUpdateConfigurationRunListResultValueList =
   /*@__PURE__*/ S.Array(
     SoftwareUpdateConfigurationRun,
@@ -10681,13 +10671,13 @@ export type WindowsUpdateClasses =
 export const WindowsUpdateClasses = /*@__PURE__*/ S.String;
 
 /** KB numbers excluded from the software update configuration. */
-export type WindowsPropertiesExcludedKbNumbersList = ReadonlyArray<string>;
+export type WindowsPropertiesExcludedKbNumbersList = Array<string>;
 export const WindowsPropertiesExcludedKbNumbersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<WindowsPropertiesExcludedKbNumbersList>;
 
 /** KB numbers included from the software update configuration. */
-export type WindowsPropertiesIncludedKbNumbersList = ReadonlyArray<string>;
+export type WindowsPropertiesIncludedKbNumbersList = Array<string>;
 export const WindowsPropertiesIncludedKbNumbersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<WindowsPropertiesIncludedKbNumbersList>;
@@ -10695,7 +10685,7 @@ export const WindowsPropertiesIncludedKbNumbersList = /*@__PURE__*/ S.Array(
 /** Windows specific update configuration. */
 export interface WindowsProperties {
   /** Update classification included in the software update configuration. A comma separated string with required values */
-  includedUpdateClassifications?: WindowsUpdateClasses;
+  includedUpdateClassifications?: WindowsUpdateClasses | (string & {});
   /** KB numbers excluded from the software update configuration. */
   excludedKbNumbers?: WindowsPropertiesExcludedKbNumbersList;
   /** KB numbers included from the software update configuration. */
@@ -10723,14 +10713,14 @@ export type LinuxUpdateClasses =
 export const LinuxUpdateClasses = /*@__PURE__*/ S.String;
 
 /** packages excluded from the software update configuration. */
-export type LinuxPropertiesExcludedPackageNameMasksList = ReadonlyArray<string>;
+export type LinuxPropertiesExcludedPackageNameMasksList = Array<string>;
 export const LinuxPropertiesExcludedPackageNameMasksList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<LinuxPropertiesExcludedPackageNameMasksList>;
 
 /** packages included from the software update configuration. */
-export type LinuxPropertiesIncludedPackageNameMasksList = ReadonlyArray<string>;
+export type LinuxPropertiesIncludedPackageNameMasksList = Array<string>;
 export const LinuxPropertiesIncludedPackageNameMasksList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -10739,7 +10729,7 @@ export const LinuxPropertiesIncludedPackageNameMasksList =
 /** Linux specific update configuration. */
 export interface LinuxProperties {
   /** Update classifications included in the software update configuration. */
-  includedPackageClassifications?: LinuxUpdateClasses;
+  includedPackageClassifications?: LinuxUpdateClasses | (string & {});
   /** packages excluded from the software update configuration. */
   excludedPackageNameMasks?: LinuxPropertiesExcludedPackageNameMasksList;
   /** packages included from the software update configuration. */
@@ -10763,33 +10753,32 @@ export const LinuxProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LinuxProperties>;
 
 /** List of azure resource Ids for azure virtual machines targeted by the software update configuration. */
-export type UpdateConfigurationAzureVirtualMachinesList = ReadonlyArray<string>;
+export type UpdateConfigurationAzureVirtualMachinesList = Array<string>;
 export const UpdateConfigurationAzureVirtualMachinesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<UpdateConfigurationAzureVirtualMachinesList>;
 
 /** List of names of non-azure machines targeted by the software update configuration. */
-export type UpdateConfigurationNonAzureComputerNamesList =
-  ReadonlyArray<string>;
+export type UpdateConfigurationNonAzureComputerNamesList = Array<string>;
 export const UpdateConfigurationNonAzureComputerNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<UpdateConfigurationNonAzureComputerNamesList>;
 
 /** List of Subscription or Resource Group ARM Ids. */
-export type AzureQueryPropertiesScopeList = ReadonlyArray<string>;
+export type AzureQueryPropertiesScopeList = Array<string>;
 export const AzureQueryPropertiesScopeList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AzureQueryPropertiesScopeList>;
 
 /** List of locations to scope the query to. */
-export type AzureQueryPropertiesLocationsList = ReadonlyArray<string>;
+export type AzureQueryPropertiesLocationsList = Array<string>;
 export const AzureQueryPropertiesLocationsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AzureQueryPropertiesLocationsList>;
 
-export type TagSettingsPropertiesTagsValueList = ReadonlyArray<string>;
+export type TagSettingsPropertiesTagsValueList = Array<string>;
 export const TagSettingsPropertiesTagsValueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<TagSettingsPropertiesTagsValueList>;
@@ -10812,7 +10801,7 @@ export interface TagSettingsProperties {
   /** Dictionary of tags with its list of values. */
   tags?: TagSettingsPropertiesTagsMap;
   /** Filter VMs by Any or All specified tags. */
-  filterOperator?: TagOperators;
+  filterOperator?: TagOperators | (string & {});
 }
 export const TagSettingsProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -10843,8 +10832,7 @@ export const AzureQueryProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AzureQueryProperties>;
 
 /** List of Azure queries in the software update configuration. */
-export type TargetPropertiesAzureQueriesList =
-  ReadonlyArray<AzureQueryProperties>;
+export type TargetPropertiesAzureQueriesList = Array<AzureQueryProperties>;
 export const TargetPropertiesAzureQueriesList = /*@__PURE__*/ S.Array(
   AzureQueryProperties,
 ) as any as S.Schema<TargetPropertiesAzureQueriesList>;
@@ -10867,7 +10855,7 @@ export const NonAzureQueryProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** List of non Azure queries in the software update configuration. */
 export type TargetPropertiesNonAzureQueriesList =
-  ReadonlyArray<NonAzureQueryProperties>;
+  Array<NonAzureQueryProperties>;
 export const TargetPropertiesNonAzureQueriesList = /*@__PURE__*/ S.Array(
   NonAzureQueryProperties,
 ) as any as S.Schema<TargetPropertiesNonAzureQueriesList>;
@@ -10891,7 +10879,7 @@ export const TargetProperties = /*@__PURE__*/ S.suspend(() =>
 /** Update specific properties of the software update configuration. */
 export interface UpdateConfiguration {
   /** operating system of target machines */
-  operatingSystem: OperatingSystemType;
+  operatingSystem: OperatingSystemType | (string & {});
   /** Windows specific update configuration. */
   windows?: WindowsProperties;
   /** Linux specific update configuration. */
@@ -11354,7 +11342,7 @@ export const SoftwareUpdateConfigurationCollectionItem =
 
 /** outer object returned when listing all software update configurations */
 export type SoftwareUpdateConfigurationListResultValueList =
-  ReadonlyArray<SoftwareUpdateConfigurationCollectionItem>;
+  Array<SoftwareUpdateConfigurationCollectionItem>;
 export const SoftwareUpdateConfigurationListResultValueList =
   /*@__PURE__*/ S.Array(
     SoftwareUpdateConfigurationCollectionItem,
@@ -11668,7 +11656,7 @@ export const SourceControl = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SourceControl" }) as any as S.Schema<SourceControl>;
 
 /** The SourceControl items on this page */
-export type SourceControlListResultValueList = ReadonlyArray<SourceControl>;
+export type SourceControlListResultValueList = Array<SourceControl>;
 export const SourceControlListResultValueList = /*@__PURE__*/ S.Array(
   SourceControl,
 ) as any as S.Schema<SourceControlListResultValueList>;
@@ -11907,7 +11895,7 @@ export const SourceControlSyncJobListByAutomationAccountRequest =
 
 /** The SourceControlSyncJob items on this page */
 export type SourceControlSyncJobListResultValueList =
-  ReadonlyArray<SourceControlSyncJob>;
+  Array<SourceControlSyncJob>;
 export const SourceControlSyncJobListResultValueList = /*@__PURE__*/ S.Array(
   SourceControlSyncJob,
 ) as any as S.Schema<SourceControlSyncJobListResultValueList>;
@@ -12098,7 +12086,7 @@ export const SourceControlSyncJobStream = /*@__PURE__*/ S.suspend(() =>
 
 /** The SourceControlSyncJobStream items on this page */
 export type SourceControlSyncJobStreamsListBySyncJobValueList =
-  ReadonlyArray<SourceControlSyncJobStream>;
+  Array<SourceControlSyncJobStream>;
 export const SourceControlSyncJobStreamsListBySyncJobValueList =
   /*@__PURE__*/ S.Array(
     SourceControlSyncJobStream,
@@ -12257,7 +12245,7 @@ export const Statistics = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Statistics" }) as any as S.Schema<Statistics>;
 
 /** Gets or sets a list of statistics. */
-export type StatisticsListResultValueList = ReadonlyArray<Statistics>;
+export type StatisticsListResultValueList = Array<Statistics>;
 export const StatisticsListResultValueList = /*@__PURE__*/ S.Array(
   Statistics,
 ) as any as S.Schema<StatisticsListResultValueList>;
@@ -12635,7 +12623,7 @@ export const Usage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Usage" }) as any as S.Schema<Usage>;
 
 /** Gets or sets usage. */
-export type UsageListResultValueList = ReadonlyArray<Usage>;
+export type UsageListResultValueList = Array<Usage>;
 export const UsageListResultValueList = /*@__PURE__*/ S.Array(
   Usage,
 ) as any as S.Schema<UsageListResultValueList>;
@@ -12894,7 +12882,7 @@ export const Variable = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Variable" }) as any as S.Schema<Variable>;
 
 /** The Variable items on this page */
-export type VariableListResultValueList = ReadonlyArray<Variable>;
+export type VariableListResultValueList = Array<Variable>;
 export const VariableListResultValueList = /*@__PURE__*/ S.Array(
   Variable,
 ) as any as S.Schema<VariableListResultValueList>;
@@ -13332,7 +13320,7 @@ export const Watcher = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Watcher" }) as any as S.Schema<Watcher>;
 
 /** The Watcher items on this page */
-export type WatcherListResultValueList = ReadonlyArray<Watcher>;
+export type WatcherListResultValueList = Array<Watcher>;
 export const WatcherListResultValueList = /*@__PURE__*/ S.Array(
   Watcher,
 ) as any as S.Schema<WatcherListResultValueList>;
@@ -13832,7 +13820,7 @@ export const Webhook = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Webhook" }) as any as S.Schema<Webhook>;
 
 /** The Webhook items on this page */
-export type WebhookListResultValueList = ReadonlyArray<Webhook>;
+export type WebhookListResultValueList = Array<Webhook>;
 export const WebhookListResultValueList = /*@__PURE__*/ S.Array(
   Webhook,
 ) as any as S.Schema<WebhookListResultValueList>;

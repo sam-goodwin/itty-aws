@@ -152,7 +152,7 @@ export type EncryptionInfoEncryptionTypeEnum =
   | "CUSTOMER_MANAGED_ENCRYPTION";
 export const EncryptionInfoEncryptionTypeEnum = /*@__PURE__*/ S.String;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -160,7 +160,7 @@ export const StringList = /*@__PURE__*/ S.Array(
 /** EncryptionInfo describes the encryption information of a cluster or a backup. */
 export interface EncryptionInfo {
   /** Output only. Type of encryption. */
-  encryptionType?: EncryptionInfoEncryptionTypeEnum;
+  encryptionType?: EncryptionInfoEncryptionTypeEnum | (string & {});
   /** Output only. Cloud KMS key versions that are being used to protect the database or the backup. */
   kmsKeyVersions?: StringList;
 }
@@ -188,11 +188,11 @@ export interface Backup {
   /** Labels as key value pairs */
   labels?: StringMap;
   /** Output only. The current state of the backup. */
-  state?: BackupStateEnum;
+  state?: BackupStateEnum | (string & {});
   /** Output only. The time at which after the backup is eligible to be garbage collected. It is the duration specified by the backup's retention policy, added to the backup's create_time. */
   expiryTime?: string;
   /** The backup type, which suggests the trigger for the backup. */
-  type?: BackupTypeEnum;
+  type?: BackupTypeEnum | (string & {});
   /** Output only. The QuantityBasedExpiry of the backup, specified by the backup's retention policy. Once the expiry quantity is over retention, the backup is eligible to be garbage collected. */
   expiryQuantity?: QuantityBasedExpiry;
   /** User-settable and human-readable display name for the Backup. */
@@ -226,7 +226,7 @@ export interface Backup {
   /** Output only. The encryption information for the backup. */
   encryptionInfo?: EncryptionInfo;
   /** Output only. The database engine major version of the cluster this backup was created from. Any restored cluster created from this backup will have the same database version. */
-  databaseVersion?: BackupDatabaseVersionEnum;
+  databaseVersion?: BackupDatabaseVersionEnum | (string & {});
   /** Output only. The system-generated UID of the cluster which was used to create this resource. */
   clusterUid?: string;
   /** Output only. Reserved for future use. */
@@ -298,7 +298,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -400,7 +400,7 @@ export const GoogleTypeTimeOfDay = /*@__PURE__*/ S.suspend(() =>
 /** MaintenanceWindow specifies a preferred day and time for maintenance. */
 export interface MaintenanceWindow {
   /** Preferred day of the week for maintenance, e.g. MONDAY, TUESDAY, etc. */
-  day?: MaintenanceWindowDayEnum;
+  day?: MaintenanceWindowDayEnum | (string & {});
   /** Preferred time to start the maintenance operation on the specified day. Maintenance will start within 1 hour of this time. */
   startTime?: GoogleTypeTimeOfDay;
 }
@@ -413,7 +413,7 @@ export const MaintenanceWindow = /*@__PURE__*/ S.suspend(() =>
   identifier: "MaintenanceWindow",
 }) as any as S.Schema<MaintenanceWindow>;
 
-export type MaintenanceWindowList = ReadonlyArray<MaintenanceWindow>;
+export type MaintenanceWindowList = Array<MaintenanceWindow>;
 export const MaintenanceWindowList = /*@__PURE__*/ S.Array(
   MaintenanceWindow,
 ) as any as S.Schema<MaintenanceWindowList>;
@@ -454,7 +454,7 @@ export const DenyMaintenancePeriod = /*@__PURE__*/ S.suspend(() =>
   identifier: "DenyMaintenancePeriod",
 }) as any as S.Schema<DenyMaintenancePeriod>;
 
-export type DenyMaintenancePeriodList = ReadonlyArray<DenyMaintenancePeriod>;
+export type DenyMaintenancePeriodList = Array<DenyMaintenancePeriod>;
 export const DenyMaintenancePeriodList = /*@__PURE__*/ S.Array(
   DenyMaintenancePeriod,
 ) as any as S.Schema<DenyMaintenancePeriodList>;
@@ -515,7 +515,7 @@ export const QuantityBasedRetention = /*@__PURE__*/ S.suspend(() =>
   identifier: "QuantityBasedRetention",
 }) as any as S.Schema<QuantityBasedRetention>;
 
-export type GoogleTypeTimeOfDayList = ReadonlyArray<GoogleTypeTimeOfDay>;
+export type GoogleTypeTimeOfDayList = Array<GoogleTypeTimeOfDay>;
 export const GoogleTypeTimeOfDayList = /*@__PURE__*/ S.Array(
   GoogleTypeTimeOfDay,
 ) as any as S.Schema<GoogleTypeTimeOfDayList>;
@@ -531,8 +531,9 @@ export type WeeklyScheduleDaysOfWeekItemEnum =
   | "SUNDAY";
 export const WeeklyScheduleDaysOfWeekItemEnum = /*@__PURE__*/ S.String;
 
-export type WeeklyScheduleDaysOfWeekItemEnumList =
-  ReadonlyArray<WeeklyScheduleDaysOfWeekItemEnum>;
+export type WeeklyScheduleDaysOfWeekItemEnumList = Array<
+  WeeklyScheduleDaysOfWeekItemEnum | (string & {})
+>;
 export const WeeklyScheduleDaysOfWeekItemEnumList = /*@__PURE__*/ S.Array(
   WeeklyScheduleDaysOfWeekItemEnum,
 ) as any as S.Schema<WeeklyScheduleDaysOfWeekItemEnumList>;
@@ -692,9 +693,9 @@ export const SslConfigSslModeEnum = /*@__PURE__*/ S.String;
 /** SSL configuration. */
 export interface SslConfig {
   /** Optional. Certificate Authority (CA) source. Only CA_SOURCE_MANAGED is supported currently, and is the default value. */
-  caSource?: SslConfigCaSourceEnum;
+  caSource?: SslConfigCaSourceEnum | (string & {});
   /** Optional. SSL mode. Specifies client-server SSL/TLS connection behavior. */
-  sslMode?: SslConfigSslModeEnum;
+  sslMode?: SslConfigSslModeEnum | (string & {});
 }
 export const SslConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -754,7 +755,7 @@ export const BackupDrEnabledWindow = /*@__PURE__*/ S.suspend(() =>
   identifier: "BackupDrEnabledWindow",
 }) as any as S.Schema<BackupDrEnabledWindow>;
 
-export type BackupDrEnabledWindowList = ReadonlyArray<BackupDrEnabledWindow>;
+export type BackupDrEnabledWindowList = Array<BackupDrEnabledWindow>;
 export const BackupDrEnabledWindowList = /*@__PURE__*/ S.Array(
   BackupDrEnabledWindow,
 ) as any as S.Schema<BackupDrEnabledWindowList>;
@@ -784,8 +785,9 @@ export type ContinuousBackupInfoScheduleItemEnum =
   | "SUNDAY";
 export const ContinuousBackupInfoScheduleItemEnum = /*@__PURE__*/ S.String;
 
-export type ContinuousBackupInfoScheduleItemEnumList =
-  ReadonlyArray<ContinuousBackupInfoScheduleItemEnum>;
+export type ContinuousBackupInfoScheduleItemEnumList = Array<
+  ContinuousBackupInfoScheduleItemEnum | (string & {})
+>;
 export const ContinuousBackupInfoScheduleItemEnumList = /*@__PURE__*/ S.Array(
   ContinuousBackupInfoScheduleItemEnum,
 ) as any as S.Schema<ContinuousBackupInfoScheduleItemEnumList>;
@@ -901,7 +903,7 @@ export interface MigrationSource {
   /** Output only. The host and port of the on-premises instance in host:port format */
   hostPort?: string;
   /** Output only. Type of migration source. */
-  sourceType?: MigrationSourceSourceTypeEnum;
+  sourceType?: MigrationSourceSourceTypeEnum | (string & {});
   /** Output only. Place holder for the external source identifier(e.g DMS job name) that created the cluster. */
   referenceId?: string;
 }
@@ -918,7 +920,7 @@ export const MigrationSource = /*@__PURE__*/ S.suspend(() =>
 /** A cluster is a collection of regional AlloyDB resources. It can include a primary instance and one or more read pool instances. All cluster resources share a storage layer, which scales as needed. */
 export interface Cluster {
   /** Optional. The database engine major version. This is an optional field and it is populated at the Cluster creation time. If a database version is not supplied at cluster creation time, then a default database version will be used. */
-  databaseVersion?: ClusterDatabaseVersionEnum;
+  databaseVersion?: ClusterDatabaseVersionEnum | (string & {});
   /** Output only. Cross Region replication config specific to PRIMARY cluster. */
   primaryConfig?: PrimaryConfig;
   /** Optional. The maintenance update policy determines when to allow or deny updates. */
@@ -948,7 +950,7 @@ export interface Cluster {
   /** Output only. Cluster created from a BackupDR backup. */
   backupdrBackupSource?: BackupDrBackupSource;
   /** Output only. The current serving state of the cluster. */
-  state?: ClusterStateEnum;
+  state?: ClusterStateEnum | (string & {});
   /** SSL configuration for this AlloyDB cluster. */
   sslConfig?: SslConfig;
   /** Optional. The configuration for Private Service Connect (PSC) for the cluster. */
@@ -966,7 +968,9 @@ export interface Cluster {
   /** Output only. The system-generated UID of the resource. The UID is assigned when the resource is created, and it is retained until it is deleted. */
   uid?: string;
   /** Input only. Policy to use to automatically select the maintenance version to which to update the cluster's instances. */
-  maintenanceVersionSelectionPolicy?: ClusterMaintenanceVersionSelectionPolicyEnum;
+  maintenanceVersionSelectionPolicy?:
+    | ClusterMaintenanceVersionSelectionPolicyEnum
+    | (string & {});
   /** Output only. The name of the cluster resource with the format: * projects/{project}/locations/{region}/clusters/{cluster_id} where the cluster ID segment should satisfy the regex expression `[a-z0-9-]+`. For more details see https://google.aip.dev/122. The prefix of the cluster resource name is the name of the parent resource: * projects/{project}/locations/{region} */
   name?: string;
   /** Required. The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: `projects/{project}/global/networks/{network_id}`. This is required to create a cluster. Deprecated, use network_config.network instead. */
@@ -976,14 +980,14 @@ export interface Cluster {
   /** Output only. Cluster created from backup. */
   backupSource?: BackupSource;
   /** Output only. The type of the cluster. This is an output-only field and it's populated at the Cluster creation time or the Cluster promotion time. The cluster type is determined by which RPC was used to create the cluster (i.e. `CreateCluster` vs. `CreateSecondaryCluster` */
-  clusterType?: ClusterClusterTypeEnum;
+  clusterType?: ClusterClusterTypeEnum | (string & {});
   /** Cross Region replication config specific to SECONDARY cluster. */
   secondaryConfig?: SecondaryConfig;
   networkConfig?: NetworkConfig;
   /** Output only. Reconciling (https://google.aip.dev/128#reconciliation). Set to true if the current state of Cluster does not match the user's intended state, and the service is actively updating the resource to reconcile them. This can happen due to user-triggered updates or system actions like failover or maintenance. */
   reconciling?: boolean;
   /** Optional. Subscription type of the cluster. */
-  subscriptionType?: ClusterSubscriptionTypeEnum;
+  subscriptionType?: ClusterSubscriptionTypeEnum | (string & {});
   /** Optional. Continuous backup configuration for this cluster. */
   continuousBackupConfig?: ContinuousBackupConfig;
   /** Output only. Cluster created via DMS migration. */
@@ -1142,9 +1146,11 @@ export interface ConnectionPoolConfig {
   /** Output only. The number of running poolers per instance. */
   poolerCount?: number;
   /** Optional. The scaling type of the regular pooler. */
-  poolerScalingType?: ConnectionPoolConfigPoolerScalingTypeEnum;
+  poolerScalingType?: ConnectionPoolConfigPoolerScalingTypeEnum | (string & {});
   /** Optional. The scaling type of the AuthProxy pooler. */
-  authproxyPoolerScalingType?: ConnectionPoolConfigAuthproxyPoolerScalingTypeEnum;
+  authproxyPoolerScalingType?:
+    | ConnectionPoolConfigAuthproxyPoolerScalingTypeEnum
+    | (string & {});
   /** Output only. The number of running AuthProxy poolers per instance. */
   authproxyPoolerCount?: number;
 }
@@ -1169,7 +1175,7 @@ export type InstanceActivationPolicyEnum =
   | "NEVER";
 export const InstanceActivationPolicyEnum = /*@__PURE__*/ S.String;
 
-export type NodeList = ReadonlyArray<Node>;
+export type NodeList = Array<Node>;
 export const NodeList = /*@__PURE__*/ S.Array(
   Node,
 ) as any as S.Schema<NodeList>;
@@ -1200,7 +1206,7 @@ export const PscInterfaceConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "PscInterfaceConfig",
 }) as any as S.Schema<PscInterfaceConfig>;
 
-export type PscInterfaceConfigList = ReadonlyArray<PscInterfaceConfig>;
+export type PscInterfaceConfigList = Array<PscInterfaceConfig>;
 export const PscInterfaceConfigList = /*@__PURE__*/ S.Array(
   PscInterfaceConfig,
 ) as any as S.Schema<PscInterfaceConfigList>;
@@ -1230,8 +1236,7 @@ export const PscAutoConnectionConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "PscAutoConnectionConfig",
 }) as any as S.Schema<PscAutoConnectionConfig>;
 
-export type PscAutoConnectionConfigList =
-  ReadonlyArray<PscAutoConnectionConfig>;
+export type PscAutoConnectionConfigList = Array<PscAutoConnectionConfig>;
 export const PscAutoConnectionConfigList = /*@__PURE__*/ S.Array(
   PscAutoConnectionConfig,
 ) as any as S.Schema<PscAutoConnectionConfigList>;
@@ -1344,7 +1349,7 @@ export const AuthorizedNetwork = /*@__PURE__*/ S.suspend(() =>
   identifier: "AuthorizedNetwork",
 }) as any as S.Schema<AuthorizedNetwork>;
 
-export type AuthorizedNetworkList = ReadonlyArray<AuthorizedNetwork>;
+export type AuthorizedNetworkList = Array<AuthorizedNetwork>;
 export const AuthorizedNetworkList = /*@__PURE__*/ S.Array(
   AuthorizedNetwork,
 ) as any as S.Schema<AuthorizedNetworkList>;
@@ -1405,7 +1410,7 @@ export interface Instance {
   /** Output only. This is set for the read-write VM of the PRIMARY instance only. */
   writableNode?: Node;
   /** Output only. The current serving state of the instance. */
-  state?: InstanceStateEnum;
+  state?: InstanceStateEnum | (string & {});
   /** Output only. Create time stamp */
   createTime?: string;
   /** User-settable and human-readable display name for the Instance. */
@@ -1419,17 +1424,17 @@ export interface Instance {
   /** For Resource freshness validation (https://google.aip.dev/154) */
   etag?: string;
   /** Optional. Specifies whether an instance needs to spin up. Once the instance is active, the activation policy can be updated to the `NEVER` to stop the instance. Likewise, the activation policy can be updated to `ALWAYS` to start the instance. There are restrictions around when an instance can/cannot be activated (for example, a read pool instance should be stopped before stopping primary etc.). Please refer to the API documentation for more details. */
-  activationPolicy?: InstanceActivationPolicyEnum;
+  activationPolicy?: InstanceActivationPolicyEnum | (string & {});
   /** Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128 */
   annotations?: StringMap;
   /** Output only. List of available read-only VMs in this instance, including the standby for a PRIMARY instance. */
   nodes?: NodeList;
   /** Optional. Controls whether the Data API is enabled for this instance. When enabled, this allows authorized users to connect to the instance from the public internet using the `executeSql` API, even for private IP instances. If this is not specified, the data API is enabled by default for Google internal services like AlloyDB Studio. Disable it explicitly to disallow Google internal services as well. */
-  dataApiAccess?: InstanceDataApiAccessEnum;
+  dataApiAccess?: InstanceDataApiAccessEnum | (string & {});
   /** The Compute Engine zone that the instance should serve from, per https://cloud.google.com/compute/docs/regions-zones This can ONLY be specified for ZONAL instances. If present for a REGIONAL instance, an error will be thrown. If this is absent for a ZONAL instance, instance is created in a random zone with available capacity. */
   gceZone?: string;
   /** Required. The type of the instance. Specified at creation time. */
-  instanceType?: InstanceInstanceTypeEnum;
+  instanceType?: InstanceInstanceTypeEnum | (string & {});
   /** Optional. The configuration for Private Service Connect (PSC) for the instance. */
   pscInstanceConfig?: PscInstanceConfig;
   /** Output only. Update time stamp */
@@ -1459,7 +1464,7 @@ export interface Instance {
   /** Optional. Client connection specific configurations */
   clientConnectionConfig?: ClientConnectionConfig;
   /** Availability type of an Instance. If empty, defaults to REGIONAL for primary instances. For read pools, availability_type is always UNSPECIFIED. Instances in the read pools are evenly distributed across available zones within the region (i.e. read pools with more than one node will have a node in at least two zones). */
-  availabilityType?: InstanceAvailabilityTypeEnum;
+  availabilityType?: InstanceAvailabilityTypeEnum | (string & {});
   /** Output only. Reserved for future use. */
   satisfiesPzs?: boolean;
 }
@@ -1548,7 +1553,7 @@ export interface User {
   /** Input only. Password for the user. */
   password?: string;
   /** Optional. Type of this user. */
-  userType?: UserUserTypeEnum;
+  userType?: UserUserTypeEnum | (string & {});
 }
 export const User = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2286,7 +2291,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
 export type GoogleCloudLocationLocationList =
-  ReadonlyArray<GoogleCloudLocationLocation>;
+  Array<GoogleCloudLocationLocation>;
 export const GoogleCloudLocationLocationList = /*@__PURE__*/ S.Array(
   GoogleCloudLocationLocation,
 ) as any as S.Schema<GoogleCloudLocationLocationList>;
@@ -2347,7 +2352,7 @@ export const ListProjectsLocationsBackupsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsBackupsRequest",
 }) as any as S.Schema<ListProjectsLocationsBackupsRequest>;
 
-export type BackupList = ReadonlyArray<Backup>;
+export type BackupList = Array<Backup>;
 export const BackupList = /*@__PURE__*/ S.Array(
   Backup,
 ) as any as S.Schema<BackupList>;
@@ -2402,7 +2407,7 @@ export const ListProjectsLocationsClustersRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsClustersRequest",
 }) as any as S.Schema<ListProjectsLocationsClustersRequest>;
 
-export type ClusterList = ReadonlyArray<Cluster>;
+export type ClusterList = Array<Cluster>;
 export const ClusterList = /*@__PURE__*/ S.Array(
   Cluster,
 ) as any as S.Schema<ClusterList>;
@@ -2457,7 +2462,7 @@ export const ListProjectsLocationsClustersInstancesRequest =
     identifier: "ListProjectsLocationsClustersInstancesRequest",
   }) as any as S.Schema<ListProjectsLocationsClustersInstancesRequest>;
 
-export type InstanceList = ReadonlyArray<Instance>;
+export type InstanceList = Array<Instance>;
 export const InstanceList = /*@__PURE__*/ S.Array(
   Instance,
 ) as any as S.Schema<InstanceList>;
@@ -2512,7 +2517,7 @@ export const ListProjectsLocationsClustersUsersRequest =
     identifier: "ListProjectsLocationsClustersUsersRequest",
   }) as any as S.Schema<ListProjectsLocationsClustersUsersRequest>;
 
-export type UserList = ReadonlyArray<User>;
+export type UserList = Array<User>;
 export const UserList = /*@__PURE__*/ S.Array(
   User,
 ) as any as S.Schema<UserList>;
@@ -2567,7 +2572,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type OperationList = ReadonlyArray<Operation>;
+export type OperationList = Array<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -2653,7 +2658,7 @@ export const SupportedDatabaseFlagSupportedDbVersionsItemEnum =
   /*@__PURE__*/ S.String;
 
 export type SupportedDatabaseFlagSupportedDbVersionsItemEnumList =
-  ReadonlyArray<SupportedDatabaseFlagSupportedDbVersionsItemEnum>;
+  Array<SupportedDatabaseFlagSupportedDbVersionsItemEnum>;
 export const SupportedDatabaseFlagSupportedDbVersionsItemEnumList =
   /*@__PURE__*/ S.Array(
     SupportedDatabaseFlagSupportedDbVersionsItemEnum,
@@ -2733,7 +2738,7 @@ export const SupportedDatabaseFlag = /*@__PURE__*/ S.suspend(() =>
   identifier: "SupportedDatabaseFlag",
 }) as any as S.Schema<SupportedDatabaseFlag>;
 
-export type SupportedDatabaseFlagList = ReadonlyArray<SupportedDatabaseFlag>;
+export type SupportedDatabaseFlagList = Array<SupportedDatabaseFlag>;
 export const SupportedDatabaseFlagList = /*@__PURE__*/ S.Array(
   SupportedDatabaseFlag,
 ) as any as S.Schema<SupportedDatabaseFlagList>;

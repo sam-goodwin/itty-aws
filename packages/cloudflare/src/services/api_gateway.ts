@@ -138,7 +138,7 @@ export const LabelsUserBulkCreateRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LabelsUserBulkCreateRequestBodyItem>;
 
 export type LabelsUserBulkCreateRequestBodyList =
-  ReadonlyArray<LabelsUserBulkCreateRequestBodyItem>;
+  Array<LabelsUserBulkCreateRequestBodyItem>;
 export const LabelsUserBulkCreateRequestBodyList = /*@__PURE__*/ S.Array(
   LabelsUserBulkCreateRequestBodyItem,
 ) as any as S.Schema<LabelsUserBulkCreateRequestBodyList>;
@@ -194,7 +194,7 @@ export const LabelsUserBulkCreateResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LabelsUserBulkCreateResultItem>;
 
 export type LabelsUserBulkCreateResultList =
-  ReadonlyArray<LabelsUserBulkCreateResultItem>;
+  Array<LabelsUserBulkCreateResultItem>;
 export const LabelsUserBulkCreateResultList = /*@__PURE__*/ S.Array(
   LabelsUserBulkCreateResultItem,
 ) as any as S.Schema<LabelsUserBulkCreateResultList>;
@@ -215,7 +215,7 @@ export const BulkCreateLabelUsersResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BulkCreateLabelUsersResponse>;
 
 export type OperationsLabelsBulkCreateRequestSelectorIncludeOperationIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const OperationsLabelsBulkCreateRequestSelectorIncludeOperationIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -248,8 +248,7 @@ export const OperationsLabelsBulkCreateRequestSelector =
     identifier: "OperationsLabelsBulkCreateRequestSelector",
   }) as any as S.Schema<OperationsLabelsBulkCreateRequestSelector>;
 
-export type OperationsLabelsBulkCreateRequestManagedLabelsList =
-  ReadonlyArray<string>;
+export type OperationsLabelsBulkCreateRequestManagedLabelsList = Array<string>;
 export const OperationsLabelsBulkCreateRequestManagedLabelsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -268,8 +267,7 @@ export const OperationsLabelsBulkCreateRequestManaged = /*@__PURE__*/ S.suspend(
   identifier: "OperationsLabelsBulkCreateRequestManaged",
 }) as any as S.Schema<OperationsLabelsBulkCreateRequestManaged>;
 
-export type OperationsLabelsBulkCreateRequestUserLabelsList =
-  ReadonlyArray<string>;
+export type OperationsLabelsBulkCreateRequestUserLabelsList = Array<string>;
 export const OperationsLabelsBulkCreateRequestUserLabelsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -361,7 +359,7 @@ export const OperationsLabelsBulkCreateResultItemLabelsItem =
   }) as any as S.Schema<OperationsLabelsBulkCreateResultItemLabelsItem>;
 
 export type OperationsLabelsBulkCreateResultItemLabelsList =
-  ReadonlyArray<OperationsLabelsBulkCreateResultItemLabelsItem>;
+  Array<OperationsLabelsBulkCreateResultItemLabelsItem>;
 export const OperationsLabelsBulkCreateResultItemLabelsList =
   /*@__PURE__*/ S.Array(
     OperationsLabelsBulkCreateResultItemLabelsItem,
@@ -394,7 +392,7 @@ export const OperationsLabelsBulkCreateResultItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<OperationsLabelsBulkCreateResultItem>;
 
 export type OperationsLabelsBulkCreateResultList =
-  ReadonlyArray<OperationsLabelsBulkCreateResultItem>;
+  Array<OperationsLabelsBulkCreateResultItem>;
 export const OperationsLabelsBulkCreateResultList = /*@__PURE__*/ S.Array(
   OperationsLabelsBulkCreateResultItem,
 ) as any as S.Schema<OperationsLabelsBulkCreateResultList>;
@@ -445,7 +443,7 @@ export const OperationsBulkCreateRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationsBulkCreateRequestBodyItem>;
 
 export type OperationsBulkCreateRequestBodyList =
-  ReadonlyArray<OperationsBulkCreateRequestBodyItem>;
+  Array<OperationsBulkCreateRequestBodyItem>;
 export const OperationsBulkCreateRequestBodyList = /*@__PURE__*/ S.Array(
   OperationsBulkCreateRequestBodyItem,
 ) as any as S.Schema<OperationsBulkCreateRequestBodyList>;
@@ -539,7 +537,7 @@ export const OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureThre
   }) as any as S.Schema<OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureThresholds>;
 
 export type OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -904,7 +902,7 @@ export const OperationsBulkCreateResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationsBulkCreateResultItem>;
 
 export type OperationsBulkCreateResultList =
-  ReadonlyArray<OperationsBulkCreateResultItem>;
+  Array<OperationsBulkCreateResultItem>;
 export const OperationsBulkCreateResultList = /*@__PURE__*/ S.Array(
   OperationsBulkCreateResultItem,
 ) as any as S.Schema<OperationsBulkCreateResultList>;
@@ -973,7 +971,7 @@ export const LabelsUserBulkDeleteResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LabelsUserBulkDeleteResultItem>;
 
 export type LabelsUserBulkDeleteResultList =
-  ReadonlyArray<LabelsUserBulkDeleteResultItem>;
+  Array<LabelsUserBulkDeleteResultItem>;
 export const LabelsUserBulkDeleteResultList = /*@__PURE__*/ S.Array(
   LabelsUserBulkDeleteResultItem,
 ) as any as S.Schema<LabelsUserBulkDeleteResultList>;
@@ -1059,7 +1057,7 @@ export const OperationsLabelsBulkDeleteResultItemLabelsItem =
   }) as any as S.Schema<OperationsLabelsBulkDeleteResultItemLabelsItem>;
 
 export type OperationsLabelsBulkDeleteResultItemLabelsList =
-  ReadonlyArray<OperationsLabelsBulkDeleteResultItemLabelsItem>;
+  Array<OperationsLabelsBulkDeleteResultItemLabelsItem>;
 export const OperationsLabelsBulkDeleteResultItemLabelsList =
   /*@__PURE__*/ S.Array(
     OperationsLabelsBulkDeleteResultItemLabelsItem,
@@ -1092,7 +1090,7 @@ export const OperationsLabelsBulkDeleteResultItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<OperationsLabelsBulkDeleteResultItem>;
 
 export type OperationsLabelsBulkDeleteResultList =
-  ReadonlyArray<OperationsLabelsBulkDeleteResultItem>;
+  Array<OperationsLabelsBulkDeleteResultItem>;
 export const OperationsLabelsBulkDeleteResultList = /*@__PURE__*/ S.Array(
   OperationsLabelsBulkDeleteResultItem,
 ) as any as S.Schema<OperationsLabelsBulkDeleteResultList>;
@@ -1221,8 +1219,7 @@ export const BulkPatchDiscoveryOperationsResponse = /*@__PURE__*/ S.suspend(
   identifier: "BulkPatchDiscoveryOperationsResponse",
 }) as any as S.Schema<BulkPatchDiscoveryOperationsResponse>;
 
-export type OperationsLabelsBulkUpdateRequestManagedLabelsList =
-  ReadonlyArray<string>;
+export type OperationsLabelsBulkUpdateRequestManagedLabelsList = Array<string>;
 export const OperationsLabelsBulkUpdateRequestManagedLabelsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1242,7 +1239,7 @@ export const OperationsLabelsBulkUpdateRequestManaged = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<OperationsLabelsBulkUpdateRequestManaged>;
 
 export type OperationsLabelsBulkUpdateRequestSelectorIncludeOperationIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const OperationsLabelsBulkUpdateRequestSelectorIncludeOperationIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1275,8 +1272,7 @@ export const OperationsLabelsBulkUpdateRequestSelector =
     identifier: "OperationsLabelsBulkUpdateRequestSelector",
   }) as any as S.Schema<OperationsLabelsBulkUpdateRequestSelector>;
 
-export type OperationsLabelsBulkUpdateRequestUserLabelsList =
-  ReadonlyArray<string>;
+export type OperationsLabelsBulkUpdateRequestUserLabelsList = Array<string>;
 export const OperationsLabelsBulkUpdateRequestUserLabelsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1370,7 +1366,7 @@ export const OperationsLabelsBulkUpdateResultItemLabelsItem =
   }) as any as S.Schema<OperationsLabelsBulkUpdateResultItemLabelsItem>;
 
 export type OperationsLabelsBulkUpdateResultItemLabelsList =
-  ReadonlyArray<OperationsLabelsBulkUpdateResultItemLabelsItem>;
+  Array<OperationsLabelsBulkUpdateResultItemLabelsItem>;
 export const OperationsLabelsBulkUpdateResultItemLabelsList =
   /*@__PURE__*/ S.Array(
     OperationsLabelsBulkUpdateResultItemLabelsItem,
@@ -1403,7 +1399,7 @@ export const OperationsLabelsBulkUpdateResultItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<OperationsLabelsBulkUpdateResultItem>;
 
 export type OperationsLabelsBulkUpdateResultList =
-  ReadonlyArray<OperationsLabelsBulkUpdateResultItem>;
+  Array<OperationsLabelsBulkUpdateResultItem>;
 export const OperationsLabelsBulkUpdateResultList = /*@__PURE__*/ S.Array(
   OperationsLabelsBulkUpdateResultItem,
 ) as any as S.Schema<OperationsLabelsBulkUpdateResultList>;
@@ -1423,8 +1419,7 @@ export const BulkUpdateOperationLabelsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "BulkUpdateOperationLabelsResponse",
 }) as any as S.Schema<BulkUpdateOperationLabelsResponse>;
 
-export type ExpressionTemplateFallthroughCreateRequestHostsList =
-  ReadonlyArray<string>;
+export type ExpressionTemplateFallthroughCreateRequestHostsList = Array<string>;
 export const ExpressionTemplateFallthroughCreateRequestHostsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1579,7 +1574,7 @@ export const OperationsCreateResponseFeaturesAPIShieldOperationFeatureThresholds
   }) as any as S.Schema<OperationsCreateResponseFeaturesAPIShieldOperationFeatureThresholds>;
 
 export type OperationsCreateResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const OperationsCreateResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -1927,7 +1922,7 @@ export const OperationsCreateResponseSchemasLearnedParametersItemMap =
   ) as any as S.Schema<OperationsCreateResponseSchemasLearnedParametersItemMap>;
 
 export type OperationsCreateResponseSchemasLearnedParametersList =
-  ReadonlyArray<OperationsCreateResponseSchemasLearnedParametersItemMap>;
+  Array<OperationsCreateResponseSchemasLearnedParametersItemMap>;
 export const OperationsCreateResponseSchemasLearnedParametersList =
   /*@__PURE__*/ S.Array(
     OperationsCreateResponseSchemasLearnedParametersItemMap,
@@ -1972,7 +1967,7 @@ export const OperationsCreateResponseSchemasUploadedParametersItemMap =
   ) as any as S.Schema<OperationsCreateResponseSchemasUploadedParametersItemMap>;
 
 export type OperationsCreateResponseSchemasUploadedParametersList =
-  ReadonlyArray<OperationsCreateResponseSchemasUploadedParametersItemMap>;
+  Array<OperationsCreateResponseSchemasUploadedParametersItemMap>;
 export const OperationsCreateResponseSchemasUploadedParametersList =
   /*@__PURE__*/ S.Array(
     OperationsCreateResponseSchemasUploadedParametersItemMap,
@@ -2051,12 +2046,12 @@ export const CreateOperationResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateOperationResponse",
 }) as any as S.Schema<CreateOperationResponse>;
 
-export type OperationsLabelsCreateRequestManagedList = ReadonlyArray<string>;
+export type OperationsLabelsCreateRequestManagedList = Array<string>;
 export const OperationsLabelsCreateRequestManagedList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<OperationsLabelsCreateRequestManagedList>;
 
-export type OperationsLabelsCreateRequestUserList = ReadonlyArray<string>;
+export type OperationsLabelsCreateRequestUserList = Array<string>;
 export const OperationsLabelsCreateRequestUserList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<OperationsLabelsCreateRequestUserList>;
@@ -2133,7 +2128,7 @@ export const OperationsLabelsCreateResponseLabelsItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<OperationsLabelsCreateResponseLabelsItem>;
 
 export type OperationsLabelsCreateResponseLabelsList =
-  ReadonlyArray<OperationsLabelsCreateResponseLabelsItem>;
+  Array<OperationsLabelsCreateResponseLabelsItem>;
 export const OperationsLabelsCreateResponseLabelsList = /*@__PURE__*/ S.Array(
   OperationsLabelsCreateResponseLabelsItem,
 ) as any as S.Schema<OperationsLabelsCreateResponseLabelsList>;
@@ -2227,7 +2222,7 @@ export const UserSchemasCreateResponseSchema = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UserSchemasCreateResponseSchema>;
 
 export type UserSchemasCreateResponseUploadDetailsWarningsItemLocationsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const UserSchemasCreateResponseUploadDetailsWarningsItemLocationsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2255,7 +2250,7 @@ export const UserSchemasCreateResponseUploadDetailsWarningsItem =
   }) as any as S.Schema<UserSchemasCreateResponseUploadDetailsWarningsItem>;
 
 export type UserSchemasCreateResponseUploadDetailsWarningsList =
-  ReadonlyArray<UserSchemasCreateResponseUploadDetailsWarningsItem>;
+  Array<UserSchemasCreateResponseUploadDetailsWarningsItem>;
 export const UserSchemasCreateResponseUploadDetailsWarningsList =
   /*@__PURE__*/ S.Array(
     UserSchemasCreateResponseUploadDetailsWarningsItem,
@@ -2438,7 +2433,7 @@ export const OperationsLabelsDeleteResponseLabelsItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<OperationsLabelsDeleteResponseLabelsItem>;
 
 export type OperationsLabelsDeleteResponseLabelsList =
-  ReadonlyArray<OperationsLabelsDeleteResponseLabelsItem>;
+  Array<OperationsLabelsDeleteResponseLabelsItem>;
 export const OperationsLabelsDeleteResponseLabelsList = /*@__PURE__*/ S.Array(
   OperationsLabelsDeleteResponseLabelsItem,
 ) as any as S.Schema<OperationsLabelsDeleteResponseLabelsList>;
@@ -2587,7 +2582,7 @@ export const ConfigurationsGetResponseAuthIdCharacteristicsItem =
   }) as any as S.Schema<ConfigurationsGetResponseAuthIdCharacteristicsItem>;
 
 export type ConfigurationsGetResponseAuthIdCharacteristicsList =
-  ReadonlyArray<ConfigurationsGetResponseAuthIdCharacteristicsItem>;
+  Array<ConfigurationsGetResponseAuthIdCharacteristicsItem>;
 export const ConfigurationsGetResponseAuthIdCharacteristicsList =
   /*@__PURE__*/ S.Array(
     ConfigurationsGetResponseAuthIdCharacteristicsItem,
@@ -2628,7 +2623,7 @@ export const GetDiscoveryRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetDiscoveryRequest",
 }) as any as S.Schema<GetDiscoveryRequest>;
 
-export type DiscoveryGetResponseSchemasList = ReadonlyArray<unknown>;
+export type DiscoveryGetResponseSchemasList = Array<unknown>;
 export const DiscoveryGetResponseSchemasList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<DiscoveryGetResponseSchemasList>;
@@ -2773,7 +2768,7 @@ export type OperationsGetRequestFeature =
   | "schema_info";
 export const OperationsGetRequestFeature = /*@__PURE__*/ S.String;
 
-export type OperationsGetRequestFeatureList = ReadonlyArray<
+export type OperationsGetRequestFeatureList = Array<
   OperationsGetRequestFeature | (string & {})
 >;
 export const OperationsGetRequestFeatureList = /*@__PURE__*/ S.Array(
@@ -2876,7 +2871,7 @@ export const OperationsGetResponseFeaturesAPIShieldOperationFeatureThresholds =
   }) as any as S.Schema<OperationsGetResponseFeaturesAPIShieldOperationFeatureThresholds>;
 
 export type OperationsGetResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const OperationsGetResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -3224,7 +3219,7 @@ export const OperationsGetResponseSchemasLearnedParametersItemMap =
   ) as any as S.Schema<OperationsGetResponseSchemasLearnedParametersItemMap>;
 
 export type OperationsGetResponseSchemasLearnedParametersList =
-  ReadonlyArray<OperationsGetResponseSchemasLearnedParametersItemMap>;
+  Array<OperationsGetResponseSchemasLearnedParametersItemMap>;
 export const OperationsGetResponseSchemasLearnedParametersList =
   /*@__PURE__*/ S.Array(
     OperationsGetResponseSchemasLearnedParametersItemMap,
@@ -3264,7 +3259,7 @@ export const OperationsGetResponseSchemasUploadedParametersItemMap =
   ) as any as S.Schema<OperationsGetResponseSchemasUploadedParametersItemMap>;
 
 export type OperationsGetResponseSchemasUploadedParametersList =
-  ReadonlyArray<OperationsGetResponseSchemasUploadedParametersItemMap>;
+  Array<OperationsGetResponseSchemasUploadedParametersItemMap>;
 export const OperationsGetResponseSchemasUploadedParametersList =
   /*@__PURE__*/ S.Array(
     OperationsGetResponseSchemasUploadedParametersItemMap,
@@ -3480,12 +3475,12 @@ export const GetUserSchemaResponse = /*@__PURE__*/ S.suspend(() =>
 export type DiscoveryOperationsListRequestDirection = "asc" | "desc";
 export const DiscoveryOperationsListRequestDirection = /*@__PURE__*/ S.String;
 
-export type DiscoveryOperationsListRequestHostList = ReadonlyArray<string>;
+export type DiscoveryOperationsListRequestHostList = Array<string>;
 export const DiscoveryOperationsListRequestHostList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DiscoveryOperationsListRequestHostList>;
 
-export type DiscoveryOperationsListRequestMethodList = ReadonlyArray<string>;
+export type DiscoveryOperationsListRequestMethodList = Array<string>;
 export const DiscoveryOperationsListRequestMethodList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DiscoveryOperationsListRequestMethodList>;
@@ -3584,7 +3579,7 @@ export const DiscoveryOperationsListResultItemOriginItem =
   /*@__PURE__*/ S.String;
 
 export type DiscoveryOperationsListResultItemOriginList =
-  ReadonlyArray<DiscoveryOperationsListResultItemOriginItem>;
+  Array<DiscoveryOperationsListResultItemOriginItem>;
 export const DiscoveryOperationsListResultItemOriginList =
   /*@__PURE__*/ S.Array(
     DiscoveryOperationsListResultItemOriginItem,
@@ -3662,7 +3657,7 @@ export const DiscoveryOperationsListResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DiscoveryOperationsListResultItem>;
 
 export type DiscoveryOperationsListResultList =
-  ReadonlyArray<DiscoveryOperationsListResultItem>;
+  Array<DiscoveryOperationsListResultItem>;
 export const DiscoveryOperationsListResultList = /*@__PURE__*/ S.Array(
   DiscoveryOperationsListResultItem,
 ) as any as S.Schema<DiscoveryOperationsListResultList>;
@@ -3770,7 +3765,7 @@ export const LabelsListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "LabelsListResultItem",
 }) as any as S.Schema<LabelsListResultItem>;
 
-export type LabelsListResultList = ReadonlyArray<LabelsListResultItem>;
+export type LabelsListResultList = Array<LabelsListResultItem>;
 export const LabelsListResultList = /*@__PURE__*/ S.Array(
   LabelsListResultItem,
 ) as any as S.Schema<LabelsListResultList>;
@@ -3799,19 +3794,19 @@ export type OperationsListRequestFeature =
   | "schema_info";
 export const OperationsListRequestFeature = /*@__PURE__*/ S.String;
 
-export type OperationsListRequestFeatureList = ReadonlyArray<
+export type OperationsListRequestFeatureList = Array<
   OperationsListRequestFeature | (string & {})
 >;
 export const OperationsListRequestFeatureList = /*@__PURE__*/ S.Array(
   OperationsListRequestFeature,
 ) as any as S.Schema<OperationsListRequestFeatureList>;
 
-export type OperationsListRequestHostList = ReadonlyArray<string>;
+export type OperationsListRequestHostList = Array<string>;
 export const OperationsListRequestHostList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<OperationsListRequestHostList>;
 
-export type OperationsListRequestMethodList = ReadonlyArray<string>;
+export type OperationsListRequestMethodList = Array<string>;
 export const OperationsListRequestMethodList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<OperationsListRequestMethodList>;
@@ -3934,7 +3929,7 @@ export const OperationsListResultItemFeaturesAPIShieldOperationFeatureThresholds
   }) as any as S.Schema<OperationsListResultItemFeaturesAPIShieldOperationFeatureThresholds>;
 
 export type OperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const OperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -4297,7 +4292,7 @@ export const OperationsListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "OperationsListResultItem",
 }) as any as S.Schema<OperationsListResultItem>;
 
-export type OperationsListResultList = ReadonlyArray<OperationsListResultItem>;
+export type OperationsListResultList = Array<OperationsListResultItem>;
 export const OperationsListResultList = /*@__PURE__*/ S.Array(
   OperationsListResultItem,
 ) as any as S.Schema<OperationsListResultList>;
@@ -4323,14 +4318,14 @@ export type SchemasListRequestFeature =
   | "schema_info";
 export const SchemasListRequestFeature = /*@__PURE__*/ S.String;
 
-export type SchemasListRequestFeatureList = ReadonlyArray<
+export type SchemasListRequestFeatureList = Array<
   SchemasListRequestFeature | (string & {})
 >;
 export const SchemasListRequestFeatureList = /*@__PURE__*/ S.Array(
   SchemasListRequestFeature,
 ) as any as S.Schema<SchemasListRequestFeatureList>;
 
-export type SchemasListRequestHostList = ReadonlyArray<string>;
+export type SchemasListRequestHostList = Array<string>;
 export const SchemasListRequestHostList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SchemasListRequestHostList>;
@@ -4361,7 +4356,7 @@ export const ListSchemasRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListSchemasRequest",
 }) as any as S.Schema<ListSchemasRequest>;
 
-export type SchemasListResponseSchemasList = ReadonlyArray<unknown>;
+export type SchemasListResponseSchemasList = Array<unknown>;
 export const SchemasListResponseSchemasList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<SchemasListResponseSchemasList>;
@@ -4406,7 +4401,7 @@ export const ListUserSchemaHostsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListUserSchemaHostsRequest",
 }) as any as S.Schema<ListUserSchemaHostsRequest>;
 
-export type UserSchemasHostsListResultItemHostsList = ReadonlyArray<string>;
+export type UserSchemasHostsListResultItemHostsList = Array<string>;
 export const UserSchemasHostsListResultItemHostsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<UserSchemasHostsListResultItemHostsList>;
@@ -4432,7 +4427,7 @@ export const UserSchemasHostsListResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UserSchemasHostsListResultItem>;
 
 export type UserSchemasHostsListResultList =
-  ReadonlyArray<UserSchemasHostsListResultItem>;
+  Array<UserSchemasHostsListResultItem>;
 export const UserSchemasHostsListResultList = /*@__PURE__*/ S.Array(
   UserSchemasHostsListResultItem,
 ) as any as S.Schema<UserSchemasHostsListResultList>;
@@ -4458,7 +4453,7 @@ export type UserSchemasOperationsListRequestFeature =
   | "schema_info";
 export const UserSchemasOperationsListRequestFeature = /*@__PURE__*/ S.String;
 
-export type UserSchemasOperationsListRequestFeatureList = ReadonlyArray<
+export type UserSchemasOperationsListRequestFeatureList = Array<
   UserSchemasOperationsListRequestFeature | (string & {})
 >;
 export const UserSchemasOperationsListRequestFeatureList =
@@ -4466,12 +4461,12 @@ export const UserSchemasOperationsListRequestFeatureList =
     UserSchemasOperationsListRequestFeature,
   ) as any as S.Schema<UserSchemasOperationsListRequestFeatureList>;
 
-export type UserSchemasOperationsListRequestHostList = ReadonlyArray<string>;
+export type UserSchemasOperationsListRequestHostList = Array<string>;
 export const UserSchemasOperationsListRequestHostList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<UserSchemasOperationsListRequestHostList>;
 
-export type UserSchemasOperationsListRequestMethodList = ReadonlyArray<string>;
+export type UserSchemasOperationsListRequestMethodList = Array<string>;
 export const UserSchemasOperationsListRequestMethodList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<UserSchemasOperationsListRequestMethodList>;
@@ -4603,7 +4598,7 @@ export const UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShi
   }) as any as S.Schema<UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureThresholds>;
 
 export type UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -5035,7 +5030,7 @@ export const UserSchemasOperationsListResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UserSchemasOperationsListResultItem>;
 
 export type UserSchemasOperationsListResultList =
-  ReadonlyArray<UserSchemasOperationsListResultItem>;
+  Array<UserSchemasOperationsListResultItem>;
 export const UserSchemasOperationsListResultList = /*@__PURE__*/ S.Array(
   UserSchemasOperationsListResultItem,
 ) as any as S.Schema<UserSchemasOperationsListResultList>;
@@ -5118,8 +5113,7 @@ export const UserSchemasListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "UserSchemasListResultItem",
 }) as any as S.Schema<UserSchemasListResultItem>;
 
-export type UserSchemasListResultList =
-  ReadonlyArray<UserSchemasListResultItem>;
+export type UserSchemasListResultList = Array<UserSchemasListResultItem>;
 export const UserSchemasListResultList = /*@__PURE__*/ S.Array(
   UserSchemasListResultItem,
 ) as any as S.Schema<UserSchemasListResultList>;
@@ -5455,7 +5449,7 @@ export const ConfigurationsUpdateRequestAuthIdCharacteristicsItem =
   }) as any as S.Schema<ConfigurationsUpdateRequestAuthIdCharacteristicsItem>;
 
 export type ConfigurationsUpdateRequestAuthIdCharacteristicsList =
-  ReadonlyArray<ConfigurationsUpdateRequestAuthIdCharacteristicsItem>;
+  Array<ConfigurationsUpdateRequestAuthIdCharacteristicsItem>;
 export const ConfigurationsUpdateRequestAuthIdCharacteristicsList =
   /*@__PURE__*/ S.Array(
     ConfigurationsUpdateRequestAuthIdCharacteristicsItem,
@@ -5555,7 +5549,7 @@ export const ConfigurationsUpdateResponseAuthIdCharacteristicsItem =
   }) as any as S.Schema<ConfigurationsUpdateResponseAuthIdCharacteristicsItem>;
 
 export type ConfigurationsUpdateResponseAuthIdCharacteristicsList =
-  ReadonlyArray<ConfigurationsUpdateResponseAuthIdCharacteristicsItem>;
+  Array<ConfigurationsUpdateResponseAuthIdCharacteristicsItem>;
 export const ConfigurationsUpdateResponseAuthIdCharacteristicsList =
   /*@__PURE__*/ S.Array(
     ConfigurationsUpdateResponseAuthIdCharacteristicsItem,
@@ -5577,7 +5571,7 @@ export const PutConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutConfigurationResponse>;
 
 export type LabelsManagedResourcesOperationUpdateRequestSelectorIncludeOperationIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const LabelsManagedResourcesOperationUpdateRequestSelectorIncludeOperationIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5732,7 +5726,7 @@ export const PutLabelUserResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutLabelUserResponse>;
 
 export type LabelsUserResourcesOperationUpdateRequestSelectorIncludeOperationIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const LabelsUserResourcesOperationUpdateRequestSelectorIncludeOperationIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5950,12 +5944,12 @@ export const PutSettingSchemaValidationResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutSettingSchemaValidationResponse",
 }) as any as S.Schema<PutSettingSchemaValidationResponse>;
 
-export type OperationsLabelsUpdateRequestManagedList = ReadonlyArray<string>;
+export type OperationsLabelsUpdateRequestManagedList = Array<string>;
 export const OperationsLabelsUpdateRequestManagedList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<OperationsLabelsUpdateRequestManagedList>;
 
-export type OperationsLabelsUpdateRequestUserList = ReadonlyArray<string>;
+export type OperationsLabelsUpdateRequestUserList = Array<string>;
 export const OperationsLabelsUpdateRequestUserList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<OperationsLabelsUpdateRequestUserList>;
@@ -6032,7 +6026,7 @@ export const OperationsLabelsUpdateResponseLabelsItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<OperationsLabelsUpdateResponseLabelsItem>;
 
 export type OperationsLabelsUpdateResponseLabelsList =
-  ReadonlyArray<OperationsLabelsUpdateResponseLabelsItem>;
+  Array<OperationsLabelsUpdateResponseLabelsItem>;
 export const OperationsLabelsUpdateResponseLabelsList = /*@__PURE__*/ S.Array(
   OperationsLabelsUpdateResponseLabelsItem,
 ) as any as S.Schema<OperationsLabelsUpdateResponseLabelsList>;

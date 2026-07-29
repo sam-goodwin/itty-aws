@@ -20,13 +20,13 @@ export class Conflict extends T.applyErrorMatchers(
 ) {}
 
 /** IDs of the dashboards this brief is anchored on. */
-export type BriefAnchorsDashboardsList = ReadonlyArray<number>;
+export type BriefAnchorsDashboardsList = Array<number>;
 export const BriefAnchorsDashboardsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<BriefAnchorsDashboardsList>;
 
 /** Short IDs of the insights this brief is anchored on. */
-export type BriefAnchorsInsightsList = ReadonlyArray<string>;
+export type BriefAnchorsInsightsList = Array<string>;
 export const BriefAnchorsInsightsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BriefAnchorsInsightsList>;
@@ -244,7 +244,7 @@ export const PulseBriefConfigsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PulseBriefConfigsListRequest",
 }) as any as S.Schema<PulseBriefConfigsListRequest>;
 
-export type PaginatedBriefConfigListResultsList = ReadonlyArray<BriefConfig>;
+export type PaginatedBriefConfigListResultsList = Array<BriefConfig>;
 export const PaginatedBriefConfigListResultsList = /*@__PURE__*/ S.Array(
   BriefConfig,
 ) as any as S.Schema<PaginatedBriefConfigListResultsList>;
@@ -372,7 +372,7 @@ export const PeriodTypeEnum = /*@__PURE__*/ S.String;
 
 export interface Period {
   /** How the brief window is chosen: a fixed lookback (last_n_days) or since the last ready brief. * `last_n_days` - last_n_days * `since_last_run` - since_last_run */
-  period_type: PeriodTypeEnum;
+  period_type: PeriodTypeEnum | (string & {});
   /** Lookback length in days. Required and used only when period_type is last_n_days. */
   days?: number;
 }
@@ -441,7 +441,7 @@ export const BriefSectionCitation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BriefSectionCitation>;
 
 /** PostHog resources this section cites as evidence. */
-export type BriefSectionCitationsList = ReadonlyArray<BriefSectionCitation>;
+export type BriefSectionCitationsList = Array<BriefSectionCitation>;
 export const BriefSectionCitationsList = /*@__PURE__*/ S.Array(
   BriefSectionCitation,
 ) as any as S.Schema<BriefSectionCitationsList>;
@@ -469,13 +469,13 @@ export const BriefSection = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BriefSection" }) as any as S.Schema<BriefSection>;
 
 /** Generated brief sections, most important first. */
-export type ProductBriefSectionsList = ReadonlyArray<BriefSection>;
+export type ProductBriefSectionsList = Array<BriefSection>;
 export const ProductBriefSectionsList = /*@__PURE__*/ S.Array(
   BriefSection,
 ) as any as S.Schema<ProductBriefSectionsList>;
 
 /** Names of the brief sources that contributed items. */
-export type ProductBriefSourcesUsedList = ReadonlyArray<string>;
+export type ProductBriefSourcesUsedList = Array<string>;
 export const ProductBriefSourcesUsedList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ProductBriefSourcesUsedList>;
@@ -542,7 +542,7 @@ export const PulseBriefsListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PulseBriefsListRequest>;
 
 /** Names of the brief sources that contributed items. */
-export type ProductBriefListSourcesUsedList = ReadonlyArray<string>;
+export type ProductBriefListSourcesUsedList = Array<string>;
 export const ProductBriefListSourcesUsedList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ProductBriefListSourcesUsedList>;
@@ -583,8 +583,7 @@ export const ProductBriefList = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProductBriefList",
 }) as any as S.Schema<ProductBriefList>;
 
-export type PaginatedProductBriefListListResultsList =
-  ReadonlyArray<ProductBriefList>;
+export type PaginatedProductBriefListListResultsList = Array<ProductBriefList>;
 export const PaginatedProductBriefListListResultsList = /*@__PURE__*/ S.Array(
   ProductBriefList,
 ) as any as S.Schema<PaginatedProductBriefListListResultsList>;

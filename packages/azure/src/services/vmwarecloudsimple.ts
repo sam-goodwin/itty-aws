@@ -105,7 +105,7 @@ export const CustomizationIdentity = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CustomizationIdentity>;
 
 /** The list of gateways */
-export type CustomizationIPSettingsGatewayList = ReadonlyArray<string>;
+export type CustomizationIPSettingsGatewayList = Array<string>;
 export const CustomizationIPSettingsGatewayList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CustomizationIPSettingsGatewayList>;
@@ -171,7 +171,7 @@ export const CustomizationNicSetting = /*@__PURE__*/ S.suspend(() =>
 
 /** Network interface settings */
 export type CustomizationSpecificationNicSettingsList =
-  ReadonlyArray<CustomizationNicSetting>;
+  Array<CustomizationNicSetting>;
 export const CustomizationSpecificationNicSettingsList = /*@__PURE__*/ S.Array(
   CustomizationNicSetting,
 ) as any as S.Schema<CustomizationSpecificationNicSettingsList>;
@@ -275,7 +275,7 @@ export const CustomizationPoliciesListRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of the customization policies */
 export type CustomizationPoliciesListResponseValueList =
-  ReadonlyArray<CustomizationPolicy>;
+  Array<CustomizationPolicy>;
 export const CustomizationPoliciesListResponseValueList = /*@__PURE__*/ S.Array(
   CustomizationPolicy,
 ) as any as S.Schema<CustomizationPoliciesListResponseValueList>;
@@ -580,8 +580,7 @@ export const DedicatedCloudNodesListByResourceGroupRequest =
   }) as any as S.Schema<DedicatedCloudNodesListByResourceGroupRequest>;
 
 /** Results of the DedicatedCloudNode list */
-export type DedicatedCloudNodeListResponseValueList =
-  ReadonlyArray<DedicatedCloudNode>;
+export type DedicatedCloudNodeListResponseValueList = Array<DedicatedCloudNode>;
 export const DedicatedCloudNodeListResponseValueList = /*@__PURE__*/ S.Array(
   DedicatedCloudNode,
 ) as any as S.Schema<DedicatedCloudNodeListResponseValueList>;
@@ -860,7 +859,7 @@ export const DedicatedCloudServicesListByResourceGroupRequest =
 
 /** Results of the DedicatedCloudService list */
 export type DedicatedCloudServiceListResponseValueList =
-  ReadonlyArray<DedicatedCloudService>;
+  Array<DedicatedCloudService>;
 export const DedicatedCloudServiceListResponseValueList = /*@__PURE__*/ S.Array(
   DedicatedCloudService,
 ) as any as S.Schema<DedicatedCloudServiceListResponseValueList>;
@@ -1081,7 +1080,7 @@ export const AvailableOperationDisplayPropertyServiceSpecificationMetricsItem =
 
 /** Metric specifications of operation */
 export type AvailableOperationDisplayPropertyServiceSpecificationMetricsListMetricSpecificationsList =
-  ReadonlyArray<AvailableOperationDisplayPropertyServiceSpecificationMetricsItem>;
+  Array<AvailableOperationDisplayPropertyServiceSpecificationMetricsItem>;
 export const AvailableOperationDisplayPropertyServiceSpecificationMetricsListMetricSpecificationsList =
   /*@__PURE__*/ S.Array(
     AvailableOperationDisplayPropertyServiceSpecificationMetricsItem,
@@ -1149,7 +1148,7 @@ export const AvailableOperation = /*@__PURE__*/ S.suspend(() =>
 
 /** Returns a list of available operations */
 export type AvailableOperationsListResponseValueList =
-  ReadonlyArray<AvailableOperation>;
+  Array<AvailableOperation>;
 export const AvailableOperationsListResponseValueList = /*@__PURE__*/ S.Array(
   AvailableOperation,
 ) as any as S.Schema<AvailableOperationsListResponseValueList>;
@@ -1196,7 +1195,7 @@ export const PrivateCloudsGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateCloudsGetRequest>;
 
 /** Array of DNS servers */
-export type PrivateCloudPropertiesDnsServersList = ReadonlyArray<string>;
+export type PrivateCloudPropertiesDnsServersList = Array<string>;
 export const PrivateCloudPropertiesDnsServersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PrivateCloudPropertiesDnsServersList>;
@@ -1241,8 +1240,7 @@ export const ResourcePool = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResourcePool" }) as any as S.Schema<ResourcePool>;
 
 /** The list of Resource Pools */
-export type PrivateCloudPropertiesResourcePoolsList =
-  ReadonlyArray<ResourcePool>;
+export type PrivateCloudPropertiesResourcePoolsList = Array<ResourcePool>;
 export const PrivateCloudPropertiesResourcePoolsList = /*@__PURE__*/ S.Array(
   ResourcePool,
 ) as any as S.Schema<PrivateCloudPropertiesResourcePoolsList>;
@@ -1271,7 +1269,7 @@ export const VirtualDiskController = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of Virtual Disk Controllers */
 export type VirtualMachineTemplatePropertiesControllersList =
-  ReadonlyArray<VirtualDiskController>;
+  Array<VirtualDiskController>;
 export const VirtualMachineTemplatePropertiesControllersList =
   /*@__PURE__*/ S.Array(
     VirtualDiskController,
@@ -1308,8 +1306,7 @@ export const VirtualDisk = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VirtualDisk" }) as any as S.Schema<VirtualDisk>;
 
 /** The list of Virtual Disks */
-export type VirtualMachineTemplatePropertiesDisksList =
-  ReadonlyArray<VirtualDisk>;
+export type VirtualMachineTemplatePropertiesDisksList = Array<VirtualDisk>;
 export const VirtualMachineTemplatePropertiesDisksList = /*@__PURE__*/ S.Array(
   VirtualDisk,
 ) as any as S.Schema<VirtualMachineTemplatePropertiesDisksList>;
@@ -1319,13 +1316,13 @@ export type GuestOSNICCustomizationAllocation = "static" | "dynamic";
 export const GuestOSNICCustomizationAllocation = /*@__PURE__*/ S.String;
 
 /** List of dns servers to use */
-export type GuestOSNICCustomizationDnsServersList = ReadonlyArray<string>;
+export type GuestOSNICCustomizationDnsServersList = Array<string>;
 export const GuestOSNICCustomizationDnsServersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GuestOSNICCustomizationDnsServersList>;
 
 /** Gateway addresses assigned to nic */
-export type GuestOSNICCustomizationGatewayList = ReadonlyArray<string>;
+export type GuestOSNICCustomizationGatewayList = Array<string>;
 export const GuestOSNICCustomizationGatewayList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GuestOSNICCustomizationGatewayList>;
@@ -1333,7 +1330,7 @@ export const GuestOSNICCustomizationGatewayList = /*@__PURE__*/ S.Array(
 /** Guest OS nic customization */
 export interface GuestOSNICCustomization {
   /** IP address allocation method */
-  allocation?: GuestOSNICCustomizationAllocation;
+  allocation?: GuestOSNICCustomizationAllocation | (string & {});
   /** List of dns servers to use */
   dnsServers?: GuestOSNICCustomizationDnsServersList;
   /** Gateway addresses assigned to nic */
@@ -1362,7 +1359,7 @@ export const GuestOSNICCustomization = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GuestOSNICCustomization>;
 
 /** NIC ip address */
-export type VirtualNicIpAddressesList = ReadonlyArray<string>;
+export type VirtualNicIpAddressesList = Array<string>;
 export const VirtualNicIpAddressesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<VirtualNicIpAddressesList>;
@@ -1449,23 +1446,20 @@ export const VirtualNic = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VirtualNic" }) as any as S.Schema<VirtualNic>;
 
 /** The list of Virtual NICs */
-export type VirtualMachineTemplatePropertiesNicsList =
-  ReadonlyArray<VirtualNic>;
+export type VirtualMachineTemplatePropertiesNicsList = Array<VirtualNic>;
 export const VirtualMachineTemplatePropertiesNicsList = /*@__PURE__*/ S.Array(
   VirtualNic,
 ) as any as S.Schema<VirtualMachineTemplatePropertiesNicsList>;
 
 /** The list of VSphere networks */
-export type VirtualMachineTemplatePropertiesVSphereNetworksList =
-  ReadonlyArray<string>;
+export type VirtualMachineTemplatePropertiesVSphereNetworksList = Array<string>;
 export const VirtualMachineTemplatePropertiesVSphereNetworksList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<VirtualMachineTemplatePropertiesVSphereNetworksList>;
 
 /** The tags from VSphere */
-export type VirtualMachineTemplatePropertiesVSphereTagsList =
-  ReadonlyArray<string>;
+export type VirtualMachineTemplatePropertiesVSphereTagsList = Array<string>;
 export const VirtualMachineTemplatePropertiesVSphereTagsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1552,15 +1546,14 @@ export const VirtualMachineTemplate = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of Virtual Machine Templates */
 export type PrivateCloudPropertiesVirtualMachineTemplatesList =
-  ReadonlyArray<VirtualMachineTemplate>;
+  Array<VirtualMachineTemplate>;
 export const PrivateCloudPropertiesVirtualMachineTemplatesList =
   /*@__PURE__*/ S.Array(
     VirtualMachineTemplate,
   ) as any as S.Schema<PrivateCloudPropertiesVirtualMachineTemplatesList>;
 
 /** The list of Virtual Networks */
-export type PrivateCloudPropertiesVirtualNetworksList =
-  ReadonlyArray<VirtualNetwork>;
+export type PrivateCloudPropertiesVirtualNetworksList = Array<VirtualNetwork>;
 export const PrivateCloudPropertiesVirtualNetworksList = /*@__PURE__*/ S.Array(
   VirtualNetwork,
 ) as any as S.Schema<PrivateCloudPropertiesVirtualNetworksList>;
@@ -1699,7 +1692,7 @@ export const PrivateCloudsListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateCloudsListRequest>;
 
 /** the list of private clouds */
-export type PrivateCloudListValueList = ReadonlyArray<PrivateCloud>;
+export type PrivateCloudListValueList = Array<PrivateCloud>;
 export const PrivateCloudListValueList = /*@__PURE__*/ S.Array(
   PrivateCloud,
 ) as any as S.Schema<PrivateCloudListValueList>;
@@ -1774,7 +1767,7 @@ export const ResourcePoolsListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourcePoolsListRequest>;
 
 /** Results of the Resource pools list */
-export type ResourcePoolsListResponseValueList = ReadonlyArray<ResourcePool>;
+export type ResourcePoolsListResponseValueList = Array<ResourcePool>;
 export const ResourcePoolsListResponseValueList = /*@__PURE__*/ S.Array(
   ResourcePool,
 ) as any as S.Schema<ResourcePoolsListResponseValueList>;
@@ -1855,8 +1848,7 @@ export const SkuAvailability = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SkuAvailability>;
 
 /** Results of the DedicatedPlacementGroupSkuAvailability list */
-export type SkuAvailabilityListResponseValueList =
-  ReadonlyArray<SkuAvailability>;
+export type SkuAvailabilityListResponseValueList = Array<SkuAvailability>;
 export const SkuAvailabilityListResponseValueList = /*@__PURE__*/ S.Array(
   SkuAvailability,
 ) as any as S.Schema<SkuAvailabilityListResponseValueList>;
@@ -1947,7 +1939,7 @@ export const Usage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Usage" }) as any as S.Schema<Usage>;
 
 /** The list of usages */
-export type UsageListResponseValueList = ReadonlyArray<Usage>;
+export type UsageListResponseValueList = Array<Usage>;
 export const UsageListResponseValueList = /*@__PURE__*/ S.Array(
   Usage,
 ) as any as S.Schema<UsageListResponseValueList>;
@@ -1969,7 +1961,7 @@ export const UsageListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UsageListResponse>;
 
 /** List of dns servers to use */
-export type GuestOSCustomizationDnsServersList = ReadonlyArray<string>;
+export type GuestOSCustomizationDnsServersList = Array<string>;
 export const GuestOSCustomizationDnsServersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GuestOSCustomizationDnsServersList>;
@@ -2029,14 +2021,13 @@ export const VirtualDiskInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VirtualDiskInput>;
 
 /** The list of Virtual Disks */
-export type VirtualMachinePropertiesInputDisksList =
-  ReadonlyArray<VirtualDiskInput>;
+export type VirtualMachinePropertiesInputDisksList = Array<VirtualDiskInput>;
 export const VirtualMachinePropertiesInputDisksList = /*@__PURE__*/ S.Array(
   VirtualDiskInput,
 ) as any as S.Schema<VirtualMachinePropertiesInputDisksList>;
 
 /** NIC ip address */
-export type VirtualNicInputIpAddressesList = ReadonlyArray<string>;
+export type VirtualNicInputIpAddressesList = Array<string>;
 export const VirtualNicInputIpAddressesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<VirtualNicInputIpAddressesList>;
@@ -2107,8 +2098,7 @@ export const VirtualNicInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VirtualNicInput>;
 
 /** The list of Virtual NICs */
-export type VirtualMachinePropertiesInputNicsList =
-  ReadonlyArray<VirtualNicInput>;
+export type VirtualMachinePropertiesInputNicsList = Array<VirtualNicInput>;
 export const VirtualMachinePropertiesInputNicsList = /*@__PURE__*/ S.Array(
   VirtualNicInput,
 ) as any as S.Schema<VirtualMachinePropertiesInputNicsList>;
@@ -2138,8 +2128,7 @@ export const ResourcePoolInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourcePoolInput>;
 
 /** The list of Virtual VSphere Networks */
-export type VirtualMachinePropertiesInputVSphereNetworksList =
-  ReadonlyArray<string>;
+export type VirtualMachinePropertiesInputVSphereNetworksList = Array<string>;
 export const VirtualMachinePropertiesInputVSphereNetworksList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2230,13 +2219,13 @@ export const VirtualMachinesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
 
 /** The list of Virtual Disks' Controllers */
 export type VirtualMachinePropertiesControllersList =
-  ReadonlyArray<VirtualDiskController>;
+  Array<VirtualDiskController>;
 export const VirtualMachinePropertiesControllersList = /*@__PURE__*/ S.Array(
   VirtualDiskController,
 ) as any as S.Schema<VirtualMachinePropertiesControllersList>;
 
 /** The list of Virtual Disks */
-export type VirtualMachinePropertiesDisksList = ReadonlyArray<VirtualDisk>;
+export type VirtualMachinePropertiesDisksList = Array<VirtualDisk>;
 export const VirtualMachinePropertiesDisksList = /*@__PURE__*/ S.Array(
   VirtualDisk,
 ) as any as S.Schema<VirtualMachinePropertiesDisksList>;
@@ -2246,7 +2235,7 @@ export type VirtualMachinePropertiesGuestOSType = "linux" | "windows" | "other";
 export const VirtualMachinePropertiesGuestOSType = /*@__PURE__*/ S.String;
 
 /** The list of Virtual NICs */
-export type VirtualMachinePropertiesNicsList = ReadonlyArray<VirtualNic>;
+export type VirtualMachinePropertiesNicsList = Array<VirtualNic>;
 export const VirtualMachinePropertiesNicsList = /*@__PURE__*/ S.Array(
   VirtualNic,
 ) as any as S.Schema<VirtualMachinePropertiesNicsList>;
@@ -2262,7 +2251,7 @@ export type VirtualMachinePropertiesStatus =
 export const VirtualMachinePropertiesStatus = /*@__PURE__*/ S.String;
 
 /** The list of Virtual VSphere Networks */
-export type VirtualMachinePropertiesVSphereNetworksList = ReadonlyArray<string>;
+export type VirtualMachinePropertiesVSphereNetworksList = Array<string>;
 export const VirtualMachinePropertiesVSphereNetworksList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2460,7 +2449,7 @@ export const VirtualMachinesListByResourceGroupRequest =
   }) as any as S.Schema<VirtualMachinesListByResourceGroupRequest>;
 
 /** Results of the VirtualMachine list */
-export type VirtualMachineListResponseValueList = ReadonlyArray<VirtualMachine>;
+export type VirtualMachineListResponseValueList = Array<VirtualMachine>;
 export const VirtualMachineListResponseValueList = /*@__PURE__*/ S.Array(
   VirtualMachine,
 ) as any as S.Schema<VirtualMachineListResponseValueList>;
@@ -2670,7 +2659,7 @@ export const VirtualMachineTemplatesListRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Results of the VM template list */
 export type VirtualMachineTemplateListResponseValueList =
-  ReadonlyArray<VirtualMachineTemplate>;
+  Array<VirtualMachineTemplate>;
 export const VirtualMachineTemplateListResponseValueList =
   /*@__PURE__*/ S.Array(
     VirtualMachineTemplate,
@@ -2749,7 +2738,7 @@ export const VirtualNetworksListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VirtualNetworksListRequest>;
 
 /** Results of the VirtualNetwork list */
-export type VirtualNetworkListResponseValueList = ReadonlyArray<VirtualNetwork>;
+export type VirtualNetworkListResponseValueList = Array<VirtualNetwork>;
 export const VirtualNetworkListResponseValueList = /*@__PURE__*/ S.Array(
   VirtualNetwork,
 ) as any as S.Schema<VirtualNetworkListResponseValueList>;

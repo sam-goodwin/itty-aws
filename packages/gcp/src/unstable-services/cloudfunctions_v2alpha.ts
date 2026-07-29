@@ -96,7 +96,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -214,7 +214,9 @@ export interface GoogleCloudFunctionsV2alphaStateMessage {
   /** One-word CamelCase type of the state message. */
   type?: string;
   /** Severity of the state message. */
-  severity?: GoogleCloudFunctionsV2alphaStateMessageSeverityEnum;
+  severity?:
+    | GoogleCloudFunctionsV2alphaStateMessageSeverityEnum
+    | (string & {});
   /** The message. */
   message?: string;
 }
@@ -230,7 +232,7 @@ export const GoogleCloudFunctionsV2alphaStateMessage = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudFunctionsV2alphaStateMessage>;
 
 export type GoogleCloudFunctionsV2alphaStateMessageList =
-  ReadonlyArray<GoogleCloudFunctionsV2alphaStateMessage>;
+  Array<GoogleCloudFunctionsV2alphaStateMessage>;
 export const GoogleCloudFunctionsV2alphaStateMessageList =
   /*@__PURE__*/ S.Array(
     GoogleCloudFunctionsV2alphaStateMessage,
@@ -367,7 +369,7 @@ export interface BuildConfig {
   /** Name of the Cloud Build Custom Worker Pool that should be used to build the function. The format of this field is `projects/{project}/locations/{region}/workerPools/{workerPool}` where {project} and {region} are the project id and region respectively where the worker pool is defined and {workerPool} is the short name of the worker pool. If the project id is not the same as the function, then the Cloud Functions Service Agent (service-@gcf-admin-robot.iam.gserviceaccount.com) must be granted the role Cloud Build Custom Workers Builder (roles/cloudbuild.customworkers.builder) in the project. */
   workerPool?: string;
   /** Docker Registry to use for this deployment. This configuration is only applicable to 1st Gen functions, 2nd Gen functions can only use Artifact Registry. Deprecated: as of March 2025, `CONTAINER_REGISTRY` option is no longer available in response to Container Registry's deprecation: https://cloud.google.com/artifact-registry/docs/transition/transition-from-gcr Please use Artifact Registry instead, which is the default choice. If unspecified, it defaults to `ARTIFACT_REGISTRY`. If `docker_repository` field is specified, this field should either be left unspecified or set to `ARTIFACT_REGISTRY`. */
-  dockerRegistry?: BuildConfigDockerRegistryEnum;
+  dockerRegistry?: BuildConfigDockerRegistryEnum | (string & {});
   /** Output only. The Cloud Build name of the latest successful deployment of the function. */
   build?: string;
   /** Output only. A permanent fixed identifier for source. */
@@ -427,7 +429,7 @@ export const SecretEnvVar = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SecretEnvVar" }) as any as S.Schema<SecretEnvVar>;
 
-export type SecretEnvVarList = ReadonlyArray<SecretEnvVar>;
+export type SecretEnvVarList = Array<SecretEnvVar>;
 export const SecretEnvVarList = /*@__PURE__*/ S.Array(
   SecretEnvVar,
 ) as any as S.Schema<SecretEnvVarList>;
@@ -459,7 +461,7 @@ export const SecretVersion = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SecretVersion" }) as any as S.Schema<SecretVersion>;
 
-export type SecretVersionList = ReadonlyArray<SecretVersion>;
+export type SecretVersionList = Array<SecretVersion>;
 export const SecretVersionList = /*@__PURE__*/ S.Array(
   SecretVersion,
 ) as any as S.Schema<SecretVersionList>;
@@ -484,7 +486,7 @@ export const SecretVolume = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SecretVolume" }) as any as S.Schema<SecretVolume>;
 
-export type SecretVolumeList = ReadonlyArray<SecretVolume>;
+export type SecretVolumeList = Array<SecretVolume>;
 export const SecretVolumeList = /*@__PURE__*/ S.Array(
   SecretVolume,
 ) as any as S.Schema<SecretVolumeList>;
@@ -496,7 +498,7 @@ export type ServiceConfigIngressSettingsEnum =
   | "ALLOW_INTERNAL_AND_GCLB";
 export const ServiceConfigIngressSettingsEnum = /*@__PURE__*/ S.String;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -520,8 +522,7 @@ export const DirectVpcNetworkInterface = /*@__PURE__*/ S.suspend(() =>
   identifier: "DirectVpcNetworkInterface",
 }) as any as S.Schema<DirectVpcNetworkInterface>;
 
-export type DirectVpcNetworkInterfaceList =
-  ReadonlyArray<DirectVpcNetworkInterface>;
+export type DirectVpcNetworkInterfaceList = Array<DirectVpcNetworkInterface>;
 export const DirectVpcNetworkInterfaceList = /*@__PURE__*/ S.Array(
   DirectVpcNetworkInterface,
 ) as any as S.Schema<DirectVpcNetworkInterfaceList>;
@@ -543,9 +544,11 @@ export interface ServiceConfig {
   /** The amount of memory available for a function. Defaults to 256M. Supported units are k, M, G, Mi, Gi. If no unit is supplied the value is interpreted as bytes. See https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go a full description. */
   availableMemory?: string;
   /** Security level configure whether the function only accepts https. This configuration is only applicable to 1st Gen functions with Http trigger. By default https is optional for 1st Gen functions; 2nd Gen functions are https ONLY. */
-  securityLevel?: ServiceConfigSecurityLevelEnum;
+  securityLevel?: ServiceConfigSecurityLevelEnum | (string & {});
   /** The egress settings for the connector, controlling what traffic is diverted through it. */
-  vpcConnectorEgressSettings?: ServiceConfigVpcConnectorEgressSettingsEnum;
+  vpcConnectorEgressSettings?:
+    | ServiceConfigVpcConnectorEgressSettingsEnum
+    | (string & {});
   /** Sets the maximum number of concurrent requests that each instance can receive. Defaults to 1. */
   maxInstanceRequestConcurrency?: number;
   /** The limit on the maximum number of function instances that may coexist at a given time. In some cases, such as rapid traffic surges, Cloud Functions may, for a short period of time, create more instances than the specified max instances limit. If your function cannot tolerate this temporary behavior, you may want to factor in a safety margin and set a lower max instances value than your function can tolerate. See the [Max Instances](https://cloud.google.com/functions/docs/max-instances) Guide for more details. */
@@ -555,7 +558,7 @@ export interface ServiceConfig {
   /** Optional. The binary authorization policy to be checked when deploying the Cloud Run service. */
   binaryAuthorizationPolicy?: string;
   /** The ingress settings for the function, controlling what traffic can reach it. */
-  ingressSettings?: ServiceConfigIngressSettingsEnum;
+  ingressSettings?: ServiceConfigIngressSettingsEnum | (string & {});
   /** The email of the service's service account. If empty, defaults to `{project_number}-compute@developer.gserviceaccount.com`. */
   serviceAccountEmail?: string;
   /** Whether 100% of traffic is routed to the latest revision. On CreateFunction and UpdateFunction, when set to true, the revision being deployed will serve 100% of traffic, ignoring any traffic split settings, if any. On GetFunction, true will be returned if the latest revision is serving 100% of traffic. */
@@ -563,7 +566,7 @@ export interface ServiceConfig {
   /** Optional. The Direct VPC network interface for the Cloud Function. Currently only a single Direct VPC is supported. */
   directVpcNetworkInterface?: DirectVpcNetworkInterfaceList;
   /** Optional. Egress settings for direct VPC. If not provided, it defaults to VPC_EGRESS_PRIVATE_RANGES_ONLY. */
-  directVpcEgress?: ServiceConfigDirectVpcEgressEnum;
+  directVpcEgress?: ServiceConfigDirectVpcEgressEnum | (string & {});
   /** Output only. URI of the Service deployed. */
   uri?: string;
   /** Output only. The name of service revision. */
@@ -651,7 +654,7 @@ export const EventFilter = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "EventFilter" }) as any as S.Schema<EventFilter>;
 
-export type EventFilterList = ReadonlyArray<EventFilter>;
+export type EventFilterList = Array<EventFilter>;
 export const EventFilterList = /*@__PURE__*/ S.Array(
   EventFilter,
 ) as any as S.Schema<EventFilterList>;
@@ -665,7 +668,7 @@ export interface EventTrigger {
   /** Optional. The name of the channel associated with the trigger in `projects/{project}/locations/{location}/channels/{channel}` format. You must provide a channel to receive events from Eventarc SaaS partners. */
   channel?: string;
   /** Optional. If unset, then defaults to ignoring failures (i.e. not retrying them). */
-  retryPolicy?: EventTriggerRetryPolicyEnum;
+  retryPolicy?: EventTriggerRetryPolicyEnum | (string & {});
   /** Criteria used to filter events. */
   eventFilters?: EventFilterList;
   /** Optional. The name of a Pub/Sub topic in the same project that will be used as the transport topic for the event delivery. Format: `projects/{project}/topics/{topic}`. This is only valid for events of type `google.cloud.pubsub.topic.v1.messagePublished`. The topic provided here will not be deleted at function deletion. */
@@ -696,7 +699,7 @@ export interface UpgradeInfo {
   /** Describes the Build step of the function that builds a container to prepare for 2nd gen upgrade. */
   buildConfig?: BuildConfig;
   /** UpgradeState of the function */
-  upgradeState?: UpgradeInfoUpgradeStateEnum;
+  upgradeState?: UpgradeInfoUpgradeStateEnum | (string & {});
   /** Describes the Event trigger which has been setup to prepare for 2nd gen upgrade. */
   eventTrigger?: EventTrigger;
   /** Describes the Cloud Run service which has been setup to prepare for 2nd gen upgrade. */
@@ -730,7 +733,7 @@ export interface Cloudfunctions_Function {
   /** Labels associated with this Cloud Function. */
   labels?: StringMap;
   /** Output only. State of the function. */
-  state?: Cloudfunctions_FunctionStateEnum;
+  state?: Cloudfunctions_FunctionStateEnum | (string & {});
   /** Output only. The create timestamp of a Cloud Function. This is only applicable to 2nd Gen functions. */
   createTime?: string;
   /** Describes the Service being deployed. Currently deploys services to Cloud Run (fully managed). */
@@ -740,7 +743,7 @@ export interface Cloudfunctions_Function {
   /** Output only. The last update timestamp of a Cloud Function. */
   updateTime?: string;
   /** Describe whether the function is 1st Gen or 2nd Gen. */
-  environment?: Cloudfunctions_FunctionEnvironmentEnum;
+  environment?: Cloudfunctions_FunctionEnvironmentEnum | (string & {});
   /** Output only. UpgradeInfo for this Cloud Function */
   upgradeInfo?: UpgradeInfo;
   /** An Eventarc trigger managed by Google Cloud Functions that fires events in response to a condition in another service. */
@@ -1005,7 +1008,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
-export type BindingList = ReadonlyArray<Binding>;
+export type BindingList = Array<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -1022,7 +1025,7 @@ export interface AuditLogConfig {
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
   exemptedMembers?: StringList;
   /** The log type that this config enables. */
-  logType?: AuditLogConfigLogTypeEnum;
+  logType?: AuditLogConfigLogTypeEnum | (string & {});
 }
 export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1031,7 +1034,7 @@ export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
-export type AuditLogConfigList = ReadonlyArray<AuditLogConfig>;
+export type AuditLogConfigList = Array<AuditLogConfig>;
 export const AuditLogConfigList = /*@__PURE__*/ S.Array(
   AuditLogConfig,
 ) as any as S.Schema<AuditLogConfigList>;
@@ -1050,7 +1053,7 @@ export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
-export type AuditConfigList = ReadonlyArray<AuditConfig>;
+export type AuditConfigList = Array<AuditConfig>;
 export const AuditConfigList = /*@__PURE__*/ S.Array(
   AuditConfig,
 ) as any as S.Schema<AuditConfigList>;
@@ -1169,7 +1172,7 @@ export const Location = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Location" }) as any as S.Schema<Location>;
 
-export type LocationList = ReadonlyArray<Location>;
+export type LocationList = Array<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -1221,8 +1224,7 @@ export const ListProjectsLocationsFunctionsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsFunctionsRequest",
 }) as any as S.Schema<ListProjectsLocationsFunctionsRequest>;
 
-export type Cloudfunctions_FunctionList =
-  ReadonlyArray<Cloudfunctions_Function>;
+export type Cloudfunctions_FunctionList = Array<Cloudfunctions_Function>;
 export const Cloudfunctions_FunctionList = /*@__PURE__*/ S.Array(
   Cloudfunctions_Function,
 ) as any as S.Schema<Cloudfunctions_FunctionList>;
@@ -1277,7 +1279,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type OperationList = ReadonlyArray<Operation>;
+export type OperationList = Array<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -1387,7 +1389,7 @@ export const Runtime = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Runtime" }) as any as S.Schema<Runtime>;
 
-export type RuntimeList = ReadonlyArray<Runtime>;
+export type RuntimeList = Array<Runtime>;
 export const RuntimeList = /*@__PURE__*/ S.Array(
   Runtime,
 ) as any as S.Schema<RuntimeList>;

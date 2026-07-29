@@ -105,7 +105,7 @@ export const GoogleCloudBillingBudgetsV1beta1BudgetAmount =
     identifier: "GoogleCloudBillingBudgetsV1beta1BudgetAmount",
   }) as any as S.Schema<GoogleCloudBillingBudgetsV1beta1BudgetAmount>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -186,7 +186,7 @@ export const GoogleCloudBillingBudgetsV1beta1CustomPeriod =
     identifier: "GoogleCloudBillingBudgetsV1beta1CustomPeriod",
   }) as any as S.Schema<GoogleCloudBillingBudgetsV1beta1CustomPeriod>;
 
-export type DocumentList = ReadonlyArray<unknown>;
+export type DocumentList = Array<unknown>;
 export const DocumentList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<DocumentList>;
@@ -200,11 +200,15 @@ export const DocumentListMap = /*@__PURE__*/ S.Record(
 /** A filter for a budget, limiting the scope of the cost to calculate. */
 export interface GoogleCloudBillingBudgetsV1beta1Filter {
   /** Optional. If not set, default behavior is `INCLUDE_ALL_CREDITS`. */
-  creditTypesTreatment?: GoogleCloudBillingBudgetsV1beta1FilterCreditTypesTreatmentEnum;
+  creditTypesTreatment?:
+    | GoogleCloudBillingBudgetsV1beta1FilterCreditTypesTreatmentEnum
+    | (string & {});
   /** Optional. A set of subaccounts of the form `billingAccounts/{account_id}`, specifying that usage from only this set of subaccounts should be included in the budget. If a subaccount is set to the name of the parent account, usage from the parent account will be included. If omitted, the report will include usage from the parent account and all subaccounts, if they exist. */
   subaccounts?: StringList;
   /** Optional. Specifies to track usage for recurring calendar period. For example, assume that CalendarPeriod.QUARTER is set. The budget will track usage from April 1 to June 30, when the current calendar month is April, May, June. After that, it will track usage from July 1 to September 30 when the current calendar month is July, August, September, so on. */
-  calendarPeriod?: GoogleCloudBillingBudgetsV1beta1FilterCalendarPeriodEnum;
+  calendarPeriod?:
+    | GoogleCloudBillingBudgetsV1beta1FilterCalendarPeriodEnum
+    | (string & {});
   /** Optional. Specifies to track usage from any start date (required) to any end date (optional). This time period is static, it does not recur. */
   customPeriod?: GoogleCloudBillingBudgetsV1beta1CustomPeriod;
   /** Optional. A set of folder and organization names of the form `folders/{folderId}` or `organizations/{organizationId}`, specifying that usage from only this set of folders and organizations should be included in the budget. If omitted, the budget includes all usage that the billing account pays for. If the folder or organization contains projects that are paid for by a different Cloud Billing account, the budget *doesn't* apply to those projects. */
@@ -258,7 +262,9 @@ export interface GoogleCloudBillingBudgetsV1beta1ThresholdRule {
   /** Required. Send an alert when this threshold is exceeded. This is a 1.0-based percentage, so 0.5 = 50%. Validation: non-negative number. */
   thresholdPercent?: number;
   /** Optional. The type of basis used to determine if spend has passed the threshold. Behavior defaults to CURRENT_SPEND if not set. */
-  spendBasis?: GoogleCloudBillingBudgetsV1beta1ThresholdRuleSpendBasisEnum;
+  spendBasis?:
+    | GoogleCloudBillingBudgetsV1beta1ThresholdRuleSpendBasisEnum
+    | (string & {});
 }
 export const GoogleCloudBillingBudgetsV1beta1ThresholdRule =
   /*@__PURE__*/ S.suspend(() =>
@@ -273,7 +279,7 @@ export const GoogleCloudBillingBudgetsV1beta1ThresholdRule =
   }) as any as S.Schema<GoogleCloudBillingBudgetsV1beta1ThresholdRule>;
 
 export type GoogleCloudBillingBudgetsV1beta1ThresholdRuleList =
-  ReadonlyArray<GoogleCloudBillingBudgetsV1beta1ThresholdRule>;
+  Array<GoogleCloudBillingBudgetsV1beta1ThresholdRule>;
 export const GoogleCloudBillingBudgetsV1beta1ThresholdRuleList =
   /*@__PURE__*/ S.Array(
     GoogleCloudBillingBudgetsV1beta1ThresholdRule,
@@ -289,7 +295,9 @@ export interface GoogleCloudBillingBudgetsV1beta1Budget {
   budgetFilter?: GoogleCloudBillingBudgetsV1beta1Filter;
   /** Optional. Etag to validate that the object is unchanged for a read-modify-write operation. An empty etag will cause an update to overwrite other changes. */
   etag?: string;
-  ownershipScope?: GoogleCloudBillingBudgetsV1beta1BudgetOwnershipScopeEnum;
+  ownershipScope?:
+    | GoogleCloudBillingBudgetsV1beta1BudgetOwnershipScopeEnum
+    | (string & {});
   /** Output only. Resource name of the budget. The resource name implies the scope of a budget. Values are of the form `billingAccounts/{billingAccountId}/budgets/{budgetId}`. */
   name?: string;
   /** User data for display name in UI. Validation: <= 60 chars. */
@@ -428,7 +436,7 @@ export const ListBillingAccountsBudgetsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListBillingAccountsBudgetsRequest>;
 
 export type GoogleCloudBillingBudgetsV1beta1BudgetList =
-  ReadonlyArray<GoogleCloudBillingBudgetsV1beta1Budget>;
+  Array<GoogleCloudBillingBudgetsV1beta1Budget>;
 export const GoogleCloudBillingBudgetsV1beta1BudgetList = /*@__PURE__*/ S.Array(
   GoogleCloudBillingBudgetsV1beta1Budget,
 ) as any as S.Schema<GoogleCloudBillingBudgetsV1beta1BudgetList>;

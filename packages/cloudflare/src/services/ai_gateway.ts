@@ -329,7 +329,7 @@ export const CreateAiGatewayRequest = /*@__PURE__*/ S.suspend(() =>
 export type CreateResponseDlpCase0Action = "BLOCK" | "FLAG";
 export const CreateResponseDlpCase0Action = /*@__PURE__*/ S.String;
 
-export type CreateResponseDlpCase0ProfilesList = ReadonlyArray<string>;
+export type CreateResponseDlpCase0ProfilesList = Array<string>;
 export const CreateResponseDlpCase0ProfilesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateResponseDlpCase0ProfilesList>;
@@ -359,14 +359,13 @@ export const CreateResponseDlpCase1PoliciesItemCheckItem =
   /*@__PURE__*/ S.String;
 
 export type CreateResponseDlpCase1PoliciesItemCheckList =
-  ReadonlyArray<CreateResponseDlpCase1PoliciesItemCheckItem>;
+  Array<CreateResponseDlpCase1PoliciesItemCheckItem>;
 export const CreateResponseDlpCase1PoliciesItemCheckList =
   /*@__PURE__*/ S.Array(
     CreateResponseDlpCase1PoliciesItemCheckItem,
   ) as any as S.Schema<CreateResponseDlpCase1PoliciesItemCheckList>;
 
-export type CreateResponseDlpCase1PoliciesItemProfilesList =
-  ReadonlyArray<string>;
+export type CreateResponseDlpCase1PoliciesItemProfilesList = Array<string>;
 export const CreateResponseDlpCase1PoliciesItemProfilesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -392,7 +391,7 @@ export const CreateResponseDlpCase1PoliciesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateResponseDlpCase1PoliciesItem>;
 
 export type CreateResponseDlpCase1PoliciesList =
-  ReadonlyArray<CreateResponseDlpCase1PoliciesItem>;
+  Array<CreateResponseDlpCase1PoliciesItem>;
 export const CreateResponseDlpCase1PoliciesList = /*@__PURE__*/ S.Array(
   CreateResponseDlpCase1PoliciesItem,
 ) as any as S.Schema<CreateResponseDlpCase1PoliciesList>;
@@ -633,7 +632,7 @@ export const CreateResponseOtelItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateResponseOtelItem",
 }) as any as S.Schema<CreateResponseOtelItem>;
 
-export type CreateResponseOtelList = ReadonlyArray<CreateResponseOtelItem>;
+export type CreateResponseOtelList = Array<CreateResponseOtelItem>;
 export const CreateResponseOtelList = /*@__PURE__*/ S.Array(
   CreateResponseOtelItem,
 ) as any as S.Schema<CreateResponseOtelList>;
@@ -669,7 +668,7 @@ export const CreateResponseSpendLimitsRulesItemMetadataCase1Mode =
   /*@__PURE__*/ S.String;
 
 export type CreateResponseSpendLimitsRulesItemMetadataCase1ValuesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CreateResponseSpendLimitsRulesItemMetadataCase1ValuesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -714,8 +713,7 @@ export type CreateResponseSpendLimitsRulesItemModelMode = "filter";
 export const CreateResponseSpendLimitsRulesItemModelMode =
   /*@__PURE__*/ S.String;
 
-export type CreateResponseSpendLimitsRulesItemModelValuesList =
-  ReadonlyArray<string>;
+export type CreateResponseSpendLimitsRulesItemModelValuesList = Array<string>;
 export const CreateResponseSpendLimitsRulesItemModelValuesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -740,7 +738,7 @@ export const CreateResponseSpendLimitsRulesItemProviderMode =
   /*@__PURE__*/ S.String;
 
 export type CreateResponseSpendLimitsRulesItemProviderValuesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CreateResponseSpendLimitsRulesItemProviderValuesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -792,7 +790,7 @@ export const CreateResponseSpendLimitsRulesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateResponseSpendLimitsRulesItem>;
 
 export type CreateResponseSpendLimitsRulesList =
-  ReadonlyArray<CreateResponseSpendLimitsRulesItem>;
+  Array<CreateResponseSpendLimitsRulesItem>;
 export const CreateResponseSpendLimitsRulesList = /*@__PURE__*/ S.Array(
   CreateResponseSpendLimitsRulesItem,
 ) as any as S.Schema<CreateResponseSpendLimitsRulesList>;
@@ -822,7 +820,7 @@ export const CreateResponseStripeUsageEventsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateResponseStripeUsageEventsItem>;
 
 export type CreateResponseStripeUsageEventsList =
-  ReadonlyArray<CreateResponseStripeUsageEventsItem>;
+  Array<CreateResponseStripeUsageEventsItem>;
 export const CreateResponseStripeUsageEventsList = /*@__PURE__*/ S.Array(
   CreateResponseStripeUsageEventsItem,
 ) as any as S.Schema<CreateResponseStripeUsageEventsList>;
@@ -1172,7 +1170,7 @@ export const DatasetsCreateRequestFiltersItemValueItem =
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], []]));
 
 export type DatasetsCreateRequestFiltersItemValueList =
-  ReadonlyArray<DatasetsCreateRequestFiltersItemValueItem>;
+  Array<DatasetsCreateRequestFiltersItemValueItem>;
 export const DatasetsCreateRequestFiltersItemValueList = /*@__PURE__*/ S.Array(
   DatasetsCreateRequestFiltersItemValueItem,
 ) as any as S.Schema<DatasetsCreateRequestFiltersItemValueList>;
@@ -1193,7 +1191,7 @@ export const DatasetsCreateRequestFiltersItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DatasetsCreateRequestFiltersItem>;
 
 export type DatasetsCreateRequestFiltersList =
-  ReadonlyArray<DatasetsCreateRequestFiltersItem>;
+  Array<DatasetsCreateRequestFiltersItem>;
 export const DatasetsCreateRequestFiltersList = /*@__PURE__*/ S.Array(
   DatasetsCreateRequestFiltersItem,
 ) as any as S.Schema<DatasetsCreateRequestFiltersList>;
@@ -1257,7 +1255,7 @@ export const DatasetsCreateResponseFiltersItemValueItem =
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], []]));
 
 export type DatasetsCreateResponseFiltersItemValueList =
-  ReadonlyArray<DatasetsCreateResponseFiltersItemValueItem>;
+  Array<DatasetsCreateResponseFiltersItemValueItem>;
 export const DatasetsCreateResponseFiltersItemValueList = /*@__PURE__*/ S.Array(
   DatasetsCreateResponseFiltersItemValueItem,
 ) as any as S.Schema<DatasetsCreateResponseFiltersItemValueList>;
@@ -1278,7 +1276,7 @@ export const DatasetsCreateResponseFiltersItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DatasetsCreateResponseFiltersItem>;
 
 export type DatasetsCreateResponseFiltersList =
-  ReadonlyArray<DatasetsCreateResponseFiltersItem>;
+  Array<DatasetsCreateResponseFiltersItem>;
 export const DatasetsCreateResponseFiltersList = /*@__PURE__*/ S.Array(
   DatasetsCreateResponseFiltersItem,
 ) as any as S.Schema<DatasetsCreateResponseFiltersList>;
@@ -1785,7 +1783,7 @@ export const DynamicRoutingCreateDeploymentResponseElementsItem =
   }) as any as S.Schema<DynamicRoutingCreateDeploymentResponseElementsItem>;
 
 export type DynamicRoutingCreateDeploymentResponseElementsList =
-  ReadonlyArray<DynamicRoutingCreateDeploymentResponseElementsItem>;
+  Array<DynamicRoutingCreateDeploymentResponseElementsItem>;
 export const DynamicRoutingCreateDeploymentResponseElementsList =
   /*@__PURE__*/ S.Array(
     DynamicRoutingCreateDeploymentResponseElementsItem,
@@ -1845,7 +1843,7 @@ export const DynamicRoutingCreateRequestElementsItemCase0Type =
 export interface DynamicRoutingCreateRequestElementsItemCase0 {
   id: string;
   outputs: DynamicRoutingCreateRequestElementsItemCase0Outputs;
-  type: DynamicRoutingCreateRequestElementsItemCase0Type;
+  type: DynamicRoutingCreateRequestElementsItemCase0Type | (string & {});
 }
 export const DynamicRoutingCreateRequestElementsItemCase0 =
   /*@__PURE__*/ S.suspend(() =>
@@ -1916,7 +1914,7 @@ export interface DynamicRoutingCreateRequestElementsItemCase1 {
   id: string;
   outputs: DynamicRoutingCreateRequestElementsItemCase1Outputs;
   properties: DynamicRoutingCreateRequestElementsItemCase1Properties;
-  type: DynamicRoutingCreateRequestElementsItemCase1Type;
+  type: DynamicRoutingCreateRequestElementsItemCase1Type | (string & {});
 }
 export const DynamicRoutingCreateRequestElementsItemCase1 =
   /*@__PURE__*/ S.suspend(() =>
@@ -1960,7 +1958,7 @@ export const DynamicRoutingCreateRequestElementsItemCase2Type =
 export interface DynamicRoutingCreateRequestElementsItemCase2 {
   id: string;
   outputs: DynamicRoutingCreateRequestElementsItemCase2OutputsMap;
-  type: DynamicRoutingCreateRequestElementsItemCase2Type;
+  type: DynamicRoutingCreateRequestElementsItemCase2Type | (string & {});
 }
 export const DynamicRoutingCreateRequestElementsItemCase2 =
   /*@__PURE__*/ S.suspend(() =>
@@ -2020,7 +2018,9 @@ export const DynamicRoutingCreateRequestElementsItemCase3PropertiesLimitType =
 export interface DynamicRoutingCreateRequestElementsItemCase3Properties {
   key: string;
   limit: number;
-  limitType: DynamicRoutingCreateRequestElementsItemCase3PropertiesLimitType;
+  limitType:
+    | DynamicRoutingCreateRequestElementsItemCase3PropertiesLimitType
+    | (string & {});
   window: number;
 }
 export const DynamicRoutingCreateRequestElementsItemCase3Properties =
@@ -2044,7 +2044,7 @@ export interface DynamicRoutingCreateRequestElementsItemCase3 {
   id: string;
   outputs: DynamicRoutingCreateRequestElementsItemCase3Outputs;
   properties: DynamicRoutingCreateRequestElementsItemCase3Properties;
-  type: DynamicRoutingCreateRequestElementsItemCase3Type;
+  type: DynamicRoutingCreateRequestElementsItemCase3Type | (string & {});
 }
 export const DynamicRoutingCreateRequestElementsItemCase3 =
   /*@__PURE__*/ S.suspend(() =>
@@ -2122,7 +2122,7 @@ export interface DynamicRoutingCreateRequestElementsItemCase4 {
   id: string;
   outputs: DynamicRoutingCreateRequestElementsItemCase4Outputs;
   properties: DynamicRoutingCreateRequestElementsItemCase4Properties;
-  type: DynamicRoutingCreateRequestElementsItemCase4Type;
+  type: DynamicRoutingCreateRequestElementsItemCase4Type | (string & {});
 }
 export const DynamicRoutingCreateRequestElementsItemCase4 =
   /*@__PURE__*/ S.suspend(() =>
@@ -2166,7 +2166,7 @@ export const DynamicRoutingCreateRequestElementsItemCase5Type =
 export interface DynamicRoutingCreateRequestElementsItemCase5 {
   id: string;
   outputs: DynamicRoutingCreateRequestElementsItemCase5OutputsMap;
-  type: DynamicRoutingCreateRequestElementsItemCase5Type;
+  type: DynamicRoutingCreateRequestElementsItemCase5Type | (string & {});
 }
 export const DynamicRoutingCreateRequestElementsItemCase5 =
   /*@__PURE__*/ S.suspend(() =>
@@ -2190,11 +2190,17 @@ export interface DynamicRoutingCreateRequestElementsItem {
     | DynamicRoutingCreateRequestElementsItemCase5OutputsMap;
   type:
     | DynamicRoutingCreateRequestElementsItemCase0Type
+    | (string & {})
     | DynamicRoutingCreateRequestElementsItemCase1Type
+    | (string & {})
     | DynamicRoutingCreateRequestElementsItemCase2Type
+    | (string & {})
     | DynamicRoutingCreateRequestElementsItemCase3Type
+    | (string & {})
     | DynamicRoutingCreateRequestElementsItemCase4Type
-    | DynamicRoutingCreateRequestElementsItemCase5Type;
+    | (string & {})
+    | DynamicRoutingCreateRequestElementsItemCase5Type
+    | (string & {});
   properties?:
     | DynamicRoutingCreateRequestElementsItemCase1Properties
     | DynamicRoutingCreateRequestElementsItemCase3Properties
@@ -2233,7 +2239,7 @@ export const DynamicRoutingCreateRequestElementsItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DynamicRoutingCreateRequestElementsItem>;
 
 export type DynamicRoutingCreateRequestElementsList =
-  ReadonlyArray<DynamicRoutingCreateRequestElementsItem>;
+  Array<DynamicRoutingCreateRequestElementsItem>;
 export const DynamicRoutingCreateRequestElementsList = /*@__PURE__*/ S.Array(
   DynamicRoutingCreateRequestElementsItem,
 ) as any as S.Schema<DynamicRoutingCreateRequestElementsList>;
@@ -2698,7 +2704,7 @@ export const DynamicRoutingCreateResponseElementsItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DynamicRoutingCreateResponseElementsItem>;
 
 export type DynamicRoutingCreateResponseElementsList =
-  ReadonlyArray<DynamicRoutingCreateResponseElementsItem>;
+  Array<DynamicRoutingCreateResponseElementsItem>;
 export const DynamicRoutingCreateResponseElementsList = /*@__PURE__*/ S.Array(
   DynamicRoutingCreateResponseElementsItem,
 ) as any as S.Schema<DynamicRoutingCreateResponseElementsList>;
@@ -2751,13 +2757,12 @@ export const CreateDynamicRoutingResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateDynamicRoutingResponse",
 }) as any as S.Schema<CreateDynamicRoutingResponse>;
 
-export type EvaluationsCreateRequestDatasetIdsList = ReadonlyArray<string>;
+export type EvaluationsCreateRequestDatasetIdsList = Array<string>;
 export const EvaluationsCreateRequestDatasetIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EvaluationsCreateRequestDatasetIdsList>;
 
-export type EvaluationsCreateRequestEvaluationTypeIdsList =
-  ReadonlyArray<string>;
+export type EvaluationsCreateRequestEvaluationTypeIdsList = Array<string>;
 export const EvaluationsCreateRequestEvaluationTypeIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2828,7 +2833,7 @@ export const EvaluationsCreateResponseDatasetsItemFiltersItemValueItem =
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], []]));
 
 export type EvaluationsCreateResponseDatasetsItemFiltersItemValueList =
-  ReadonlyArray<EvaluationsCreateResponseDatasetsItemFiltersItemValueItem>;
+  Array<EvaluationsCreateResponseDatasetsItemFiltersItemValueItem>;
 export const EvaluationsCreateResponseDatasetsItemFiltersItemValueList =
   /*@__PURE__*/ S.Array(
     EvaluationsCreateResponseDatasetsItemFiltersItemValueItem,
@@ -2851,7 +2856,7 @@ export const EvaluationsCreateResponseDatasetsItemFiltersItem =
   }) as any as S.Schema<EvaluationsCreateResponseDatasetsItemFiltersItem>;
 
 export type EvaluationsCreateResponseDatasetsItemFiltersList =
-  ReadonlyArray<EvaluationsCreateResponseDatasetsItemFiltersItem>;
+  Array<EvaluationsCreateResponseDatasetsItemFiltersItem>;
 export const EvaluationsCreateResponseDatasetsItemFiltersList =
   /*@__PURE__*/ S.Array(
     EvaluationsCreateResponseDatasetsItemFiltersItem,
@@ -2887,7 +2892,7 @@ export const EvaluationsCreateResponseDatasetsItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<EvaluationsCreateResponseDatasetsItem>;
 
 export type EvaluationsCreateResponseDatasetsList =
-  ReadonlyArray<EvaluationsCreateResponseDatasetsItem>;
+  Array<EvaluationsCreateResponseDatasetsItem>;
 export const EvaluationsCreateResponseDatasetsList = /*@__PURE__*/ S.Array(
   EvaluationsCreateResponseDatasetsItem,
 ) as any as S.Schema<EvaluationsCreateResponseDatasetsList>;
@@ -2921,7 +2926,7 @@ export const EvaluationsCreateResponseResultsItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<EvaluationsCreateResponseResultsItem>;
 
 export type EvaluationsCreateResponseResultsList =
-  ReadonlyArray<EvaluationsCreateResponseResultsItem>;
+  Array<EvaluationsCreateResponseResultsItem>;
 export const EvaluationsCreateResponseResultsList = /*@__PURE__*/ S.Array(
   EvaluationsCreateResponseResultsItem,
 ) as any as S.Schema<EvaluationsCreateResponseResultsList>;
@@ -3463,7 +3468,7 @@ export const DynamicRoutingCreateVersionRequestElementsItem =
   }) as any as S.Schema<DynamicRoutingCreateVersionRequestElementsItem>;
 
 export type DynamicRoutingCreateVersionRequestElementsList =
-  ReadonlyArray<DynamicRoutingCreateVersionRequestElementsItem>;
+  Array<DynamicRoutingCreateVersionRequestElementsItem>;
 export const DynamicRoutingCreateVersionRequestElementsList =
   /*@__PURE__*/ S.Array(
     DynamicRoutingCreateVersionRequestElementsItem,
@@ -3933,7 +3938,7 @@ export const DynamicRoutingCreateVersionResponseElementsItem =
   }) as any as S.Schema<DynamicRoutingCreateVersionResponseElementsItem>;
 
 export type DynamicRoutingCreateVersionResponseElementsList =
-  ReadonlyArray<DynamicRoutingCreateVersionResponseElementsItem>;
+  Array<DynamicRoutingCreateVersionResponseElementsItem>;
 export const DynamicRoutingCreateVersionResponseElementsList =
   /*@__PURE__*/ S.Array(
     DynamicRoutingCreateVersionResponseElementsItem,
@@ -4070,7 +4075,7 @@ export const DeleteAiGatewayRequest = /*@__PURE__*/ S.suspend(() =>
 export type DeleteResponseDlpCase0Action = "BLOCK" | "FLAG";
 export const DeleteResponseDlpCase0Action = /*@__PURE__*/ S.String;
 
-export type DeleteResponseDlpCase0ProfilesList = ReadonlyArray<string>;
+export type DeleteResponseDlpCase0ProfilesList = Array<string>;
 export const DeleteResponseDlpCase0ProfilesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DeleteResponseDlpCase0ProfilesList>;
@@ -4100,14 +4105,13 @@ export const DeleteResponseDlpCase1PoliciesItemCheckItem =
   /*@__PURE__*/ S.String;
 
 export type DeleteResponseDlpCase1PoliciesItemCheckList =
-  ReadonlyArray<DeleteResponseDlpCase1PoliciesItemCheckItem>;
+  Array<DeleteResponseDlpCase1PoliciesItemCheckItem>;
 export const DeleteResponseDlpCase1PoliciesItemCheckList =
   /*@__PURE__*/ S.Array(
     DeleteResponseDlpCase1PoliciesItemCheckItem,
   ) as any as S.Schema<DeleteResponseDlpCase1PoliciesItemCheckList>;
 
-export type DeleteResponseDlpCase1PoliciesItemProfilesList =
-  ReadonlyArray<string>;
+export type DeleteResponseDlpCase1PoliciesItemProfilesList = Array<string>;
 export const DeleteResponseDlpCase1PoliciesItemProfilesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4133,7 +4137,7 @@ export const DeleteResponseDlpCase1PoliciesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteResponseDlpCase1PoliciesItem>;
 
 export type DeleteResponseDlpCase1PoliciesList =
-  ReadonlyArray<DeleteResponseDlpCase1PoliciesItem>;
+  Array<DeleteResponseDlpCase1PoliciesItem>;
 export const DeleteResponseDlpCase1PoliciesList = /*@__PURE__*/ S.Array(
   DeleteResponseDlpCase1PoliciesItem,
 ) as any as S.Schema<DeleteResponseDlpCase1PoliciesList>;
@@ -4374,7 +4378,7 @@ export const DeleteResponseOtelItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteResponseOtelItem",
 }) as any as S.Schema<DeleteResponseOtelItem>;
 
-export type DeleteResponseOtelList = ReadonlyArray<DeleteResponseOtelItem>;
+export type DeleteResponseOtelList = Array<DeleteResponseOtelItem>;
 export const DeleteResponseOtelList = /*@__PURE__*/ S.Array(
   DeleteResponseOtelItem,
 ) as any as S.Schema<DeleteResponseOtelList>;
@@ -4410,7 +4414,7 @@ export const DeleteResponseSpendLimitsRulesItemMetadataCase1Mode =
   /*@__PURE__*/ S.String;
 
 export type DeleteResponseSpendLimitsRulesItemMetadataCase1ValuesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const DeleteResponseSpendLimitsRulesItemMetadataCase1ValuesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4455,8 +4459,7 @@ export type DeleteResponseSpendLimitsRulesItemModelMode = "filter";
 export const DeleteResponseSpendLimitsRulesItemModelMode =
   /*@__PURE__*/ S.String;
 
-export type DeleteResponseSpendLimitsRulesItemModelValuesList =
-  ReadonlyArray<string>;
+export type DeleteResponseSpendLimitsRulesItemModelValuesList = Array<string>;
 export const DeleteResponseSpendLimitsRulesItemModelValuesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4481,7 +4484,7 @@ export const DeleteResponseSpendLimitsRulesItemProviderMode =
   /*@__PURE__*/ S.String;
 
 export type DeleteResponseSpendLimitsRulesItemProviderValuesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const DeleteResponseSpendLimitsRulesItemProviderValuesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4533,7 +4536,7 @@ export const DeleteResponseSpendLimitsRulesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteResponseSpendLimitsRulesItem>;
 
 export type DeleteResponseSpendLimitsRulesList =
-  ReadonlyArray<DeleteResponseSpendLimitsRulesItem>;
+  Array<DeleteResponseSpendLimitsRulesItem>;
 export const DeleteResponseSpendLimitsRulesList = /*@__PURE__*/ S.Array(
   DeleteResponseSpendLimitsRulesItem,
 ) as any as S.Schema<DeleteResponseSpendLimitsRulesList>;
@@ -4563,7 +4566,7 @@ export const DeleteResponseStripeUsageEventsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteResponseStripeUsageEventsItem>;
 
 export type DeleteResponseStripeUsageEventsList =
-  ReadonlyArray<DeleteResponseStripeUsageEventsItem>;
+  Array<DeleteResponseStripeUsageEventsItem>;
 export const DeleteResponseStripeUsageEventsList = /*@__PURE__*/ S.Array(
   DeleteResponseStripeUsageEventsItem,
 ) as any as S.Schema<DeleteResponseStripeUsageEventsList>;
@@ -4839,7 +4842,7 @@ export const DatasetsDeleteResponseFiltersItemValueItem =
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], []]));
 
 export type DatasetsDeleteResponseFiltersItemValueList =
-  ReadonlyArray<DatasetsDeleteResponseFiltersItemValueItem>;
+  Array<DatasetsDeleteResponseFiltersItemValueItem>;
 export const DatasetsDeleteResponseFiltersItemValueList = /*@__PURE__*/ S.Array(
   DatasetsDeleteResponseFiltersItemValueItem,
 ) as any as S.Schema<DatasetsDeleteResponseFiltersItemValueList>;
@@ -4860,7 +4863,7 @@ export const DatasetsDeleteResponseFiltersItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DatasetsDeleteResponseFiltersItem>;
 
 export type DatasetsDeleteResponseFiltersList =
-  ReadonlyArray<DatasetsDeleteResponseFiltersItem>;
+  Array<DatasetsDeleteResponseFiltersItem>;
 export const DatasetsDeleteResponseFiltersList = /*@__PURE__*/ S.Array(
   DatasetsDeleteResponseFiltersItem,
 ) as any as S.Schema<DatasetsDeleteResponseFiltersList>;
@@ -5332,7 +5335,7 @@ export const DynamicRoutingDeleteResponseElementsItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DynamicRoutingDeleteResponseElementsItem>;
 
 export type DynamicRoutingDeleteResponseElementsList =
-  ReadonlyArray<DynamicRoutingDeleteResponseElementsItem>;
+  Array<DynamicRoutingDeleteResponseElementsItem>;
 export const DynamicRoutingDeleteResponseElementsList = /*@__PURE__*/ S.Array(
   DynamicRoutingDeleteResponseElementsItem,
 ) as any as S.Schema<DynamicRoutingDeleteResponseElementsList>;
@@ -5416,7 +5419,7 @@ export const EvaluationsDeleteResponseDatasetsItemFiltersItemValueItem =
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], []]));
 
 export type EvaluationsDeleteResponseDatasetsItemFiltersItemValueList =
-  ReadonlyArray<EvaluationsDeleteResponseDatasetsItemFiltersItemValueItem>;
+  Array<EvaluationsDeleteResponseDatasetsItemFiltersItemValueItem>;
 export const EvaluationsDeleteResponseDatasetsItemFiltersItemValueList =
   /*@__PURE__*/ S.Array(
     EvaluationsDeleteResponseDatasetsItemFiltersItemValueItem,
@@ -5439,7 +5442,7 @@ export const EvaluationsDeleteResponseDatasetsItemFiltersItem =
   }) as any as S.Schema<EvaluationsDeleteResponseDatasetsItemFiltersItem>;
 
 export type EvaluationsDeleteResponseDatasetsItemFiltersList =
-  ReadonlyArray<EvaluationsDeleteResponseDatasetsItemFiltersItem>;
+  Array<EvaluationsDeleteResponseDatasetsItemFiltersItem>;
 export const EvaluationsDeleteResponseDatasetsItemFiltersList =
   /*@__PURE__*/ S.Array(
     EvaluationsDeleteResponseDatasetsItemFiltersItem,
@@ -5475,7 +5478,7 @@ export const EvaluationsDeleteResponseDatasetsItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<EvaluationsDeleteResponseDatasetsItem>;
 
 export type EvaluationsDeleteResponseDatasetsList =
-  ReadonlyArray<EvaluationsDeleteResponseDatasetsItem>;
+  Array<EvaluationsDeleteResponseDatasetsItem>;
 export const EvaluationsDeleteResponseDatasetsList = /*@__PURE__*/ S.Array(
   EvaluationsDeleteResponseDatasetsItem,
 ) as any as S.Schema<EvaluationsDeleteResponseDatasetsList>;
@@ -5509,7 +5512,7 @@ export const EvaluationsDeleteResponseResultsItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<EvaluationsDeleteResponseResultsItem>;
 
 export type EvaluationsDeleteResponseResultsList =
-  ReadonlyArray<EvaluationsDeleteResponseResultsItem>;
+  Array<EvaluationsDeleteResponseResultsItem>;
 export const EvaluationsDeleteResponseResultsList = /*@__PURE__*/ S.Array(
   EvaluationsDeleteResponseResultsItem,
 ) as any as S.Schema<EvaluationsDeleteResponseResultsList>;
@@ -5543,7 +5546,7 @@ export const DeleteEvaluationResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteEvaluationResponse",
 }) as any as S.Schema<DeleteEvaluationResponse>;
 
-export type LogsDeleteRequestFiltersList = ReadonlyArray<string>;
+export type LogsDeleteRequestFiltersList = Array<string>;
 export const LogsDeleteRequestFiltersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LogsDeleteRequestFiltersList>;
@@ -5660,7 +5663,7 @@ export const GetAiGatewayRequest = /*@__PURE__*/ S.suspend(() =>
 export type GetResponseDlpCase0Action = "BLOCK" | "FLAG";
 export const GetResponseDlpCase0Action = /*@__PURE__*/ S.String;
 
-export type GetResponseDlpCase0ProfilesList = ReadonlyArray<string>;
+export type GetResponseDlpCase0ProfilesList = Array<string>;
 export const GetResponseDlpCase0ProfilesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetResponseDlpCase0ProfilesList>;
@@ -5687,12 +5690,12 @@ export type GetResponseDlpCase1PoliciesItemCheckItem = "REQUEST" | "RESPONSE";
 export const GetResponseDlpCase1PoliciesItemCheckItem = /*@__PURE__*/ S.String;
 
 export type GetResponseDlpCase1PoliciesItemCheckList =
-  ReadonlyArray<GetResponseDlpCase1PoliciesItemCheckItem>;
+  Array<GetResponseDlpCase1PoliciesItemCheckItem>;
 export const GetResponseDlpCase1PoliciesItemCheckList = /*@__PURE__*/ S.Array(
   GetResponseDlpCase1PoliciesItemCheckItem,
 ) as any as S.Schema<GetResponseDlpCase1PoliciesItemCheckList>;
 
-export type GetResponseDlpCase1PoliciesItemProfilesList = ReadonlyArray<string>;
+export type GetResponseDlpCase1PoliciesItemProfilesList = Array<string>;
 export const GetResponseDlpCase1PoliciesItemProfilesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5718,7 +5721,7 @@ export const GetResponseDlpCase1PoliciesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetResponseDlpCase1PoliciesItem>;
 
 export type GetResponseDlpCase1PoliciesList =
-  ReadonlyArray<GetResponseDlpCase1PoliciesItem>;
+  Array<GetResponseDlpCase1PoliciesItem>;
 export const GetResponseDlpCase1PoliciesList = /*@__PURE__*/ S.Array(
   GetResponseDlpCase1PoliciesItem,
 ) as any as S.Schema<GetResponseDlpCase1PoliciesList>;
@@ -5957,7 +5960,7 @@ export const GetResponseOtelItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetResponseOtelItem",
 }) as any as S.Schema<GetResponseOtelItem>;
 
-export type GetResponseOtelList = ReadonlyArray<GetResponseOtelItem>;
+export type GetResponseOtelList = Array<GetResponseOtelItem>;
 export const GetResponseOtelList = /*@__PURE__*/ S.Array(
   GetResponseOtelItem,
 ) as any as S.Schema<GetResponseOtelList>;
@@ -5992,7 +5995,7 @@ export const GetResponseSpendLimitsRulesItemMetadataCase1Mode =
   /*@__PURE__*/ S.String;
 
 export type GetResponseSpendLimitsRulesItemMetadataCase1ValuesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GetResponseSpendLimitsRulesItemMetadataCase1ValuesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6036,8 +6039,7 @@ export const GetResponseSpendLimitsRulesItemMetadata = /*@__PURE__*/ S.suspend(
 export type GetResponseSpendLimitsRulesItemModelMode = "filter";
 export const GetResponseSpendLimitsRulesItemModelMode = /*@__PURE__*/ S.String;
 
-export type GetResponseSpendLimitsRulesItemModelValuesList =
-  ReadonlyArray<string>;
+export type GetResponseSpendLimitsRulesItemModelValuesList = Array<string>;
 export const GetResponseSpendLimitsRulesItemModelValuesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6061,8 +6063,7 @@ export type GetResponseSpendLimitsRulesItemProviderMode = "filter";
 export const GetResponseSpendLimitsRulesItemProviderMode =
   /*@__PURE__*/ S.String;
 
-export type GetResponseSpendLimitsRulesItemProviderValuesList =
-  ReadonlyArray<string>;
+export type GetResponseSpendLimitsRulesItemProviderValuesList = Array<string>;
 export const GetResponseSpendLimitsRulesItemProviderValuesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6113,7 +6114,7 @@ export const GetResponseSpendLimitsRulesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetResponseSpendLimitsRulesItem>;
 
 export type GetResponseSpendLimitsRulesList =
-  ReadonlyArray<GetResponseSpendLimitsRulesItem>;
+  Array<GetResponseSpendLimitsRulesItem>;
 export const GetResponseSpendLimitsRulesList = /*@__PURE__*/ S.Array(
   GetResponseSpendLimitsRulesItem,
 ) as any as S.Schema<GetResponseSpendLimitsRulesList>;
@@ -6143,7 +6144,7 @@ export const GetResponseStripeUsageEventsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetResponseStripeUsageEventsItem>;
 
 export type GetResponseStripeUsageEventsList =
-  ReadonlyArray<GetResponseStripeUsageEventsItem>;
+  Array<GetResponseStripeUsageEventsItem>;
 export const GetResponseStripeUsageEventsList = /*@__PURE__*/ S.Array(
   GetResponseStripeUsageEventsItem,
 ) as any as S.Schema<GetResponseStripeUsageEventsList>;
@@ -6444,7 +6445,7 @@ export const DatasetsGetResponseFiltersItemValueItem =
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], []]));
 
 export type DatasetsGetResponseFiltersItemValueList =
-  ReadonlyArray<DatasetsGetResponseFiltersItemValueItem>;
+  Array<DatasetsGetResponseFiltersItemValueItem>;
 export const DatasetsGetResponseFiltersItemValueList = /*@__PURE__*/ S.Array(
   DatasetsGetResponseFiltersItemValueItem,
 ) as any as S.Schema<DatasetsGetResponseFiltersItemValueList>;
@@ -6465,7 +6466,7 @@ export const DatasetsGetResponseFiltersItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DatasetsGetResponseFiltersItem>;
 
 export type DatasetsGetResponseFiltersList =
-  ReadonlyArray<DatasetsGetResponseFiltersItem>;
+  Array<DatasetsGetResponseFiltersItem>;
 export const DatasetsGetResponseFiltersList = /*@__PURE__*/ S.Array(
   DatasetsGetResponseFiltersItem,
 ) as any as S.Schema<DatasetsGetResponseFiltersList>;
@@ -6951,7 +6952,7 @@ export const DynamicRoutingGetResponseElementsItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DynamicRoutingGetResponseElementsItem>;
 
 export type DynamicRoutingGetResponseElementsList =
-  ReadonlyArray<DynamicRoutingGetResponseElementsItem>;
+  Array<DynamicRoutingGetResponseElementsItem>;
 export const DynamicRoutingGetResponseElementsList = /*@__PURE__*/ S.Array(
   DynamicRoutingGetResponseElementsItem,
 ) as any as S.Schema<DynamicRoutingGetResponseElementsList>;
@@ -7061,7 +7062,7 @@ export const EvaluationsGetResponseDatasetsItemFiltersItemValueItem =
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], []]));
 
 export type EvaluationsGetResponseDatasetsItemFiltersItemValueList =
-  ReadonlyArray<EvaluationsGetResponseDatasetsItemFiltersItemValueItem>;
+  Array<EvaluationsGetResponseDatasetsItemFiltersItemValueItem>;
 export const EvaluationsGetResponseDatasetsItemFiltersItemValueList =
   /*@__PURE__*/ S.Array(
     EvaluationsGetResponseDatasetsItemFiltersItemValueItem,
@@ -7084,7 +7085,7 @@ export const EvaluationsGetResponseDatasetsItemFiltersItem =
   }) as any as S.Schema<EvaluationsGetResponseDatasetsItemFiltersItem>;
 
 export type EvaluationsGetResponseDatasetsItemFiltersList =
-  ReadonlyArray<EvaluationsGetResponseDatasetsItemFiltersItem>;
+  Array<EvaluationsGetResponseDatasetsItemFiltersItem>;
 export const EvaluationsGetResponseDatasetsItemFiltersList =
   /*@__PURE__*/ S.Array(
     EvaluationsGetResponseDatasetsItemFiltersItem,
@@ -7119,7 +7120,7 @@ export const EvaluationsGetResponseDatasetsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EvaluationsGetResponseDatasetsItem>;
 
 export type EvaluationsGetResponseDatasetsList =
-  ReadonlyArray<EvaluationsGetResponseDatasetsItem>;
+  Array<EvaluationsGetResponseDatasetsItem>;
 export const EvaluationsGetResponseDatasetsList = /*@__PURE__*/ S.Array(
   EvaluationsGetResponseDatasetsItem,
 ) as any as S.Schema<EvaluationsGetResponseDatasetsList>;
@@ -7152,7 +7153,7 @@ export const EvaluationsGetResponseResultsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EvaluationsGetResponseResultsItem>;
 
 export type EvaluationsGetResponseResultsList =
-  ReadonlyArray<EvaluationsGetResponseResultsItem>;
+  Array<EvaluationsGetResponseResultsItem>;
 export const EvaluationsGetResponseResultsList = /*@__PURE__*/ S.Array(
   EvaluationsGetResponseResultsItem,
 ) as any as S.Schema<EvaluationsGetResponseResultsList>;
@@ -7755,7 +7756,7 @@ export const DynamicRoutingGetVersionResponseElementsItem =
   }) as any as S.Schema<DynamicRoutingGetVersionResponseElementsItem>;
 
 export type DynamicRoutingGetVersionResponseElementsList =
-  ReadonlyArray<DynamicRoutingGetVersionResponseElementsItem>;
+  Array<DynamicRoutingGetVersionResponseElementsItem>;
 export const DynamicRoutingGetVersionResponseElementsList =
   /*@__PURE__*/ S.Array(
     DynamicRoutingGetVersionResponseElementsItem,
@@ -7855,7 +7856,7 @@ export const BillingInvoiceHistoryResponseInvoicesItem =
   }) as any as S.Schema<BillingInvoiceHistoryResponseInvoicesItem>;
 
 export type BillingInvoiceHistoryResponseInvoicesList =
-  ReadonlyArray<BillingInvoiceHistoryResponseInvoicesItem>;
+  Array<BillingInvoiceHistoryResponseInvoicesItem>;
 export const BillingInvoiceHistoryResponseInvoicesList = /*@__PURE__*/ S.Array(
   BillingInvoiceHistoryResponseInvoicesItem,
 ) as any as S.Schema<BillingInvoiceHistoryResponseInvoicesList>;
@@ -7959,7 +7960,7 @@ export const BillingInvoicePreviewResponseInvoiceLinesItemPretaxCreditAmountsIte
   }) as any as S.Schema<BillingInvoicePreviewResponseInvoiceLinesItemPretaxCreditAmountsItem>;
 
 export type BillingInvoicePreviewResponseInvoiceLinesItemPretaxCreditAmountsList =
-  ReadonlyArray<BillingInvoicePreviewResponseInvoiceLinesItemPretaxCreditAmountsItem>;
+  Array<BillingInvoicePreviewResponseInvoiceLinesItemPretaxCreditAmountsItem>;
 export const BillingInvoicePreviewResponseInvoiceLinesItemPretaxCreditAmountsList =
   /*@__PURE__*/ S.Array(
     BillingInvoicePreviewResponseInvoiceLinesItemPretaxCreditAmountsItem,
@@ -7994,7 +7995,7 @@ export const BillingInvoicePreviewResponseInvoiceLinesItem =
   }) as any as S.Schema<BillingInvoicePreviewResponseInvoiceLinesItem>;
 
 export type BillingInvoicePreviewResponseInvoiceLinesList =
-  ReadonlyArray<BillingInvoicePreviewResponseInvoiceLinesItem>;
+  Array<BillingInvoicePreviewResponseInvoiceLinesItem>;
 export const BillingInvoicePreviewResponseInvoiceLinesList =
   /*@__PURE__*/ S.Array(
     BillingInvoicePreviewResponseInvoiceLinesItem,
@@ -8067,7 +8068,7 @@ export const ListAiGatewaysRequest = /*@__PURE__*/ S.suspend(() =>
 export type ListResultItemDlpCase0Action = "BLOCK" | "FLAG";
 export const ListResultItemDlpCase0Action = /*@__PURE__*/ S.String;
 
-export type ListResultItemDlpCase0ProfilesList = ReadonlyArray<string>;
+export type ListResultItemDlpCase0ProfilesList = Array<string>;
 export const ListResultItemDlpCase0ProfilesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ListResultItemDlpCase0ProfilesList>;
@@ -8097,14 +8098,13 @@ export const ListResultItemDlpCase1PoliciesItemCheckItem =
   /*@__PURE__*/ S.String;
 
 export type ListResultItemDlpCase1PoliciesItemCheckList =
-  ReadonlyArray<ListResultItemDlpCase1PoliciesItemCheckItem>;
+  Array<ListResultItemDlpCase1PoliciesItemCheckItem>;
 export const ListResultItemDlpCase1PoliciesItemCheckList =
   /*@__PURE__*/ S.Array(
     ListResultItemDlpCase1PoliciesItemCheckItem,
   ) as any as S.Schema<ListResultItemDlpCase1PoliciesItemCheckList>;
 
-export type ListResultItemDlpCase1PoliciesItemProfilesList =
-  ReadonlyArray<string>;
+export type ListResultItemDlpCase1PoliciesItemProfilesList = Array<string>;
 export const ListResultItemDlpCase1PoliciesItemProfilesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -8130,7 +8130,7 @@ export const ListResultItemDlpCase1PoliciesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListResultItemDlpCase1PoliciesItem>;
 
 export type ListResultItemDlpCase1PoliciesList =
-  ReadonlyArray<ListResultItemDlpCase1PoliciesItem>;
+  Array<ListResultItemDlpCase1PoliciesItem>;
 export const ListResultItemDlpCase1PoliciesList = /*@__PURE__*/ S.Array(
   ListResultItemDlpCase1PoliciesItem,
 ) as any as S.Schema<ListResultItemDlpCase1PoliciesList>;
@@ -8371,7 +8371,7 @@ export const ListResultItemOtelItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListResultItemOtelItem",
 }) as any as S.Schema<ListResultItemOtelItem>;
 
-export type ListResultItemOtelList = ReadonlyArray<ListResultItemOtelItem>;
+export type ListResultItemOtelList = Array<ListResultItemOtelItem>;
 export const ListResultItemOtelList = /*@__PURE__*/ S.Array(
   ListResultItemOtelItem,
 ) as any as S.Schema<ListResultItemOtelList>;
@@ -8407,7 +8407,7 @@ export const ListResultItemSpendLimitsRulesItemMetadataCase1Mode =
   /*@__PURE__*/ S.String;
 
 export type ListResultItemSpendLimitsRulesItemMetadataCase1ValuesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ListResultItemSpendLimitsRulesItemMetadataCase1ValuesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -8452,8 +8452,7 @@ export type ListResultItemSpendLimitsRulesItemModelMode = "filter";
 export const ListResultItemSpendLimitsRulesItemModelMode =
   /*@__PURE__*/ S.String;
 
-export type ListResultItemSpendLimitsRulesItemModelValuesList =
-  ReadonlyArray<string>;
+export type ListResultItemSpendLimitsRulesItemModelValuesList = Array<string>;
 export const ListResultItemSpendLimitsRulesItemModelValuesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -8478,7 +8477,7 @@ export const ListResultItemSpendLimitsRulesItemProviderMode =
   /*@__PURE__*/ S.String;
 
 export type ListResultItemSpendLimitsRulesItemProviderValuesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ListResultItemSpendLimitsRulesItemProviderValuesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -8530,7 +8529,7 @@ export const ListResultItemSpendLimitsRulesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListResultItemSpendLimitsRulesItem>;
 
 export type ListResultItemSpendLimitsRulesList =
-  ReadonlyArray<ListResultItemSpendLimitsRulesItem>;
+  Array<ListResultItemSpendLimitsRulesItem>;
 export const ListResultItemSpendLimitsRulesList = /*@__PURE__*/ S.Array(
   ListResultItemSpendLimitsRulesItem,
 ) as any as S.Schema<ListResultItemSpendLimitsRulesList>;
@@ -8560,7 +8559,7 @@ export const ListResultItemStripeUsageEventsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListResultItemStripeUsageEventsItem>;
 
 export type ListResultItemStripeUsageEventsList =
-  ReadonlyArray<ListResultItemStripeUsageEventsItem>;
+  Array<ListResultItemStripeUsageEventsItem>;
 export const ListResultItemStripeUsageEventsList = /*@__PURE__*/ S.Array(
   ListResultItemStripeUsageEventsItem,
 ) as any as S.Schema<ListResultItemStripeUsageEventsList>;
@@ -8665,7 +8664,7 @@ export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ListResultItem" }) as any as S.Schema<ListResultItem>;
 
-export type ListResultList = ReadonlyArray<ListResultItem>;
+export type ListResultList = Array<ListResultItem>;
 export const ListResultList = /*@__PURE__*/ S.Array(
   ListResultItem,
 ) as any as S.Schema<ListResultList>;
@@ -8755,7 +8754,7 @@ export const CustomProvidersListResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CustomProvidersListResultItem>;
 
 export type CustomProvidersListResultList =
-  ReadonlyArray<CustomProvidersListResultItem>;
+  Array<CustomProvidersListResultItem>;
 export const CustomProvidersListResultList = /*@__PURE__*/ S.Array(
   CustomProvidersListResultItem,
 ) as any as S.Schema<CustomProvidersListResultList>;
@@ -8839,7 +8838,7 @@ export const DatasetsListResultItemFiltersItemValueItem =
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], []]));
 
 export type DatasetsListResultItemFiltersItemValueList =
-  ReadonlyArray<DatasetsListResultItemFiltersItemValueItem>;
+  Array<DatasetsListResultItemFiltersItemValueItem>;
 export const DatasetsListResultItemFiltersItemValueList = /*@__PURE__*/ S.Array(
   DatasetsListResultItemFiltersItemValueItem,
 ) as any as S.Schema<DatasetsListResultItemFiltersItemValueList>;
@@ -8860,7 +8859,7 @@ export const DatasetsListResultItemFiltersItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DatasetsListResultItemFiltersItem>;
 
 export type DatasetsListResultItemFiltersList =
-  ReadonlyArray<DatasetsListResultItemFiltersItem>;
+  Array<DatasetsListResultItemFiltersItem>;
 export const DatasetsListResultItemFiltersList = /*@__PURE__*/ S.Array(
   DatasetsListResultItemFiltersItem,
 ) as any as S.Schema<DatasetsListResultItemFiltersList>;
@@ -8889,7 +8888,7 @@ export const DatasetsListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "DatasetsListResultItem",
 }) as any as S.Schema<DatasetsListResultItem>;
 
-export type DatasetsListResultList = ReadonlyArray<DatasetsListResultItem>;
+export type DatasetsListResultList = Array<DatasetsListResultItem>;
 export const DatasetsListResultList = /*@__PURE__*/ S.Array(
   DatasetsListResultItem,
 ) as any as S.Schema<DatasetsListResultList>;
@@ -8950,7 +8949,7 @@ export const DynamicRoutingListDeploymentsResponseDataDeploymentsItem =
   }) as any as S.Schema<DynamicRoutingListDeploymentsResponseDataDeploymentsItem>;
 
 export type DynamicRoutingListDeploymentsResponseDataDeploymentsList =
-  ReadonlyArray<DynamicRoutingListDeploymentsResponseDataDeploymentsItem>;
+  Array<DynamicRoutingListDeploymentsResponseDataDeploymentsItem>;
 export const DynamicRoutingListDeploymentsResponseDataDeploymentsList =
   /*@__PURE__*/ S.Array(
     DynamicRoutingListDeploymentsResponseDataDeploymentsItem,
@@ -9484,7 +9483,7 @@ export const DynamicRoutingListResponseDataRoutesItemElementsItem =
   }) as any as S.Schema<DynamicRoutingListResponseDataRoutesItemElementsItem>;
 
 export type DynamicRoutingListResponseDataRoutesItemElementsList =
-  ReadonlyArray<DynamicRoutingListResponseDataRoutesItemElementsItem>;
+  Array<DynamicRoutingListResponseDataRoutesItemElementsItem>;
 export const DynamicRoutingListResponseDataRoutesItemElementsList =
   /*@__PURE__*/ S.Array(
     DynamicRoutingListResponseDataRoutesItemElementsItem,
@@ -9545,7 +9544,7 @@ export const DynamicRoutingListResponseDataRoutesItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DynamicRoutingListResponseDataRoutesItem>;
 
 export type DynamicRoutingListResponseDataRoutesList =
-  ReadonlyArray<DynamicRoutingListResponseDataRoutesItem>;
+  Array<DynamicRoutingListResponseDataRoutesItem>;
 export const DynamicRoutingListResponseDataRoutesList = /*@__PURE__*/ S.Array(
   DynamicRoutingListResponseDataRoutesItem,
 ) as any as S.Schema<DynamicRoutingListResponseDataRoutesList>;
@@ -9647,7 +9646,7 @@ export const EvaluationsListResultItemDatasetsItemFiltersItemValueItem =
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], []]));
 
 export type EvaluationsListResultItemDatasetsItemFiltersItemValueList =
-  ReadonlyArray<EvaluationsListResultItemDatasetsItemFiltersItemValueItem>;
+  Array<EvaluationsListResultItemDatasetsItemFiltersItemValueItem>;
 export const EvaluationsListResultItemDatasetsItemFiltersItemValueList =
   /*@__PURE__*/ S.Array(
     EvaluationsListResultItemDatasetsItemFiltersItemValueItem,
@@ -9670,7 +9669,7 @@ export const EvaluationsListResultItemDatasetsItemFiltersItem =
   }) as any as S.Schema<EvaluationsListResultItemDatasetsItemFiltersItem>;
 
 export type EvaluationsListResultItemDatasetsItemFiltersList =
-  ReadonlyArray<EvaluationsListResultItemDatasetsItemFiltersItem>;
+  Array<EvaluationsListResultItemDatasetsItemFiltersItem>;
 export const EvaluationsListResultItemDatasetsItemFiltersList =
   /*@__PURE__*/ S.Array(
     EvaluationsListResultItemDatasetsItemFiltersItem,
@@ -9706,7 +9705,7 @@ export const EvaluationsListResultItemDatasetsItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<EvaluationsListResultItemDatasetsItem>;
 
 export type EvaluationsListResultItemDatasetsList =
-  ReadonlyArray<EvaluationsListResultItemDatasetsItem>;
+  Array<EvaluationsListResultItemDatasetsItem>;
 export const EvaluationsListResultItemDatasetsList = /*@__PURE__*/ S.Array(
   EvaluationsListResultItemDatasetsItem,
 ) as any as S.Schema<EvaluationsListResultItemDatasetsList>;
@@ -9740,7 +9739,7 @@ export const EvaluationsListResultItemResultsItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<EvaluationsListResultItemResultsItem>;
 
 export type EvaluationsListResultItemResultsList =
-  ReadonlyArray<EvaluationsListResultItemResultsItem>;
+  Array<EvaluationsListResultItemResultsItem>;
 export const EvaluationsListResultItemResultsList = /*@__PURE__*/ S.Array(
   EvaluationsListResultItemResultsItem,
 ) as any as S.Schema<EvaluationsListResultItemResultsList>;
@@ -9773,8 +9772,7 @@ export const EvaluationsListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "EvaluationsListResultItem",
 }) as any as S.Schema<EvaluationsListResultItem>;
 
-export type EvaluationsListResultList =
-  ReadonlyArray<EvaluationsListResultItem>;
+export type EvaluationsListResultList = Array<EvaluationsListResultItem>;
 export const EvaluationsListResultList = /*@__PURE__*/ S.Array(
   EvaluationsListResultItem,
 ) as any as S.Schema<EvaluationsListResultList>;
@@ -9855,7 +9853,7 @@ export const EvaluationTypesListResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EvaluationTypesListResultItem>;
 
 export type EvaluationTypesListResultList =
-  ReadonlyArray<EvaluationTypesListResultItem>;
+  Array<EvaluationTypesListResultItem>;
 export const EvaluationTypesListResultList = /*@__PURE__*/ S.Array(
   EvaluationTypesListResultItem,
 ) as any as S.Schema<EvaluationTypesListResultList>;
@@ -9878,7 +9876,7 @@ export const ListEvaluationTypesResponse = /*@__PURE__*/ S.suspend(() =>
 export type LogsListRequestDirection = "asc" | "desc";
 export const LogsListRequestDirection = /*@__PURE__*/ S.String;
 
-export type LogsListRequestFiltersList = ReadonlyArray<string>;
+export type LogsListRequestFiltersList = Array<string>;
 export const LogsListRequestFiltersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LogsListRequestFiltersList>;
@@ -10030,7 +10028,7 @@ export const LogsListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "LogsListResultItem",
 }) as any as S.Schema<LogsListResultItem>;
 
-export type LogsListResultList = ReadonlyArray<LogsListResultItem>;
+export type LogsListResultList = Array<LogsListResultItem>;
 export const LogsListResultList = /*@__PURE__*/ S.Array(
   LogsListResultItem,
 ) as any as S.Schema<LogsListResultList>;
@@ -10107,7 +10105,7 @@ export const ProviderConfigsListResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProviderConfigsListResultItem>;
 
 export type ProviderConfigsListResultList =
-  ReadonlyArray<ProviderConfigsListResultItem>;
+  Array<ProviderConfigsListResultItem>;
 export const ProviderConfigsListResultList = /*@__PURE__*/ S.Array(
   ProviderConfigsListResultItem,
 ) as any as S.Schema<ProviderConfigsListResultList>;
@@ -10177,7 +10175,7 @@ export const DynamicRoutingListVersionsResponseDataVersionsItem =
   }) as any as S.Schema<DynamicRoutingListVersionsResponseDataVersionsItem>;
 
 export type DynamicRoutingListVersionsResponseDataVersionsList =
-  ReadonlyArray<DynamicRoutingListVersionsResponseDataVersionsItem>;
+  Array<DynamicRoutingListVersionsResponseDataVersionsItem>;
 export const DynamicRoutingListVersionsResponseDataVersionsList =
   /*@__PURE__*/ S.Array(
     DynamicRoutingListVersionsResponseDataVersionsItem,
@@ -10685,7 +10683,7 @@ export const DynamicRoutingUpdateResponseRouteElementsItem =
   }) as any as S.Schema<DynamicRoutingUpdateResponseRouteElementsItem>;
 
 export type DynamicRoutingUpdateResponseRouteElementsList =
-  ReadonlyArray<DynamicRoutingUpdateResponseRouteElementsItem>;
+  Array<DynamicRoutingUpdateResponseRouteElementsItem>;
 export const DynamicRoutingUpdateResponseRouteElementsList =
   /*@__PURE__*/ S.Array(
     DynamicRoutingUpdateResponseRouteElementsItem,
@@ -10900,7 +10898,7 @@ export const StatusBillingTopupResponse = /*@__PURE__*/ S.suspend(() =>
 export type UpdateRequestDlpCase0Action = "BLOCK" | "FLAG";
 export const UpdateRequestDlpCase0Action = /*@__PURE__*/ S.String;
 
-export type UpdateRequestDlpCase0ProfilesList = ReadonlyArray<string>;
+export type UpdateRequestDlpCase0ProfilesList = Array<string>;
 export const UpdateRequestDlpCase0ProfilesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<UpdateRequestDlpCase0ProfilesList>;
@@ -10927,15 +10925,14 @@ export type UpdateRequestDlpCase1PoliciesItemCheckItem = "REQUEST" | "RESPONSE";
 export const UpdateRequestDlpCase1PoliciesItemCheckItem =
   /*@__PURE__*/ S.String;
 
-export type UpdateRequestDlpCase1PoliciesItemCheckList = ReadonlyArray<
+export type UpdateRequestDlpCase1PoliciesItemCheckList = Array<
   UpdateRequestDlpCase1PoliciesItemCheckItem | (string & {})
 >;
 export const UpdateRequestDlpCase1PoliciesItemCheckList = /*@__PURE__*/ S.Array(
   UpdateRequestDlpCase1PoliciesItemCheckItem,
 ) as any as S.Schema<UpdateRequestDlpCase1PoliciesItemCheckList>;
 
-export type UpdateRequestDlpCase1PoliciesItemProfilesList =
-  ReadonlyArray<string>;
+export type UpdateRequestDlpCase1PoliciesItemProfilesList = Array<string>;
 export const UpdateRequestDlpCase1PoliciesItemProfilesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -10961,7 +10958,7 @@ export const UpdateRequestDlpCase1PoliciesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateRequestDlpCase1PoliciesItem>;
 
 export type UpdateRequestDlpCase1PoliciesList =
-  ReadonlyArray<UpdateRequestDlpCase1PoliciesItem>;
+  Array<UpdateRequestDlpCase1PoliciesItem>;
 export const UpdateRequestDlpCase1PoliciesList = /*@__PURE__*/ S.Array(
   UpdateRequestDlpCase1PoliciesItem,
 ) as any as S.Schema<UpdateRequestDlpCase1PoliciesList>;
@@ -11202,7 +11199,7 @@ export const UpdateRequestOtelItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateRequestOtelItem",
 }) as any as S.Schema<UpdateRequestOtelItem>;
 
-export type UpdateRequestOtelList = ReadonlyArray<UpdateRequestOtelItem>;
+export type UpdateRequestOtelList = Array<UpdateRequestOtelItem>;
 export const UpdateRequestOtelList = /*@__PURE__*/ S.Array(
   UpdateRequestOtelItem,
 ) as any as S.Schema<UpdateRequestOtelList>;
@@ -11238,7 +11235,7 @@ export const UpdateRequestSpendLimitsRulesItemMetadataCase1Mode =
   /*@__PURE__*/ S.String;
 
 export type UpdateRequestSpendLimitsRulesItemMetadataCase1ValuesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const UpdateRequestSpendLimitsRulesItemMetadataCase1ValuesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -11285,8 +11282,7 @@ export type UpdateRequestSpendLimitsRulesItemModelMode = "filter";
 export const UpdateRequestSpendLimitsRulesItemModelMode =
   /*@__PURE__*/ S.String;
 
-export type UpdateRequestSpendLimitsRulesItemModelValuesList =
-  ReadonlyArray<string>;
+export type UpdateRequestSpendLimitsRulesItemModelValuesList = Array<string>;
 export const UpdateRequestSpendLimitsRulesItemModelValuesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -11310,8 +11306,7 @@ export type UpdateRequestSpendLimitsRulesItemProviderMode = "filter";
 export const UpdateRequestSpendLimitsRulesItemProviderMode =
   /*@__PURE__*/ S.String;
 
-export type UpdateRequestSpendLimitsRulesItemProviderValuesList =
-  ReadonlyArray<string>;
+export type UpdateRequestSpendLimitsRulesItemProviderValuesList = Array<string>;
 export const UpdateRequestSpendLimitsRulesItemProviderValuesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -11363,7 +11358,7 @@ export const UpdateRequestSpendLimitsRulesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateRequestSpendLimitsRulesItem>;
 
 export type UpdateRequestSpendLimitsRulesList =
-  ReadonlyArray<UpdateRequestSpendLimitsRulesItem>;
+  Array<UpdateRequestSpendLimitsRulesItem>;
 export const UpdateRequestSpendLimitsRulesList = /*@__PURE__*/ S.Array(
   UpdateRequestSpendLimitsRulesItem,
 ) as any as S.Schema<UpdateRequestSpendLimitsRulesList>;
@@ -11393,7 +11388,7 @@ export const UpdateRequestStripeUsageEventsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateRequestStripeUsageEventsItem>;
 
 export type UpdateRequestStripeUsageEventsList =
-  ReadonlyArray<UpdateRequestStripeUsageEventsItem>;
+  Array<UpdateRequestStripeUsageEventsItem>;
 export const UpdateRequestStripeUsageEventsList = /*@__PURE__*/ S.Array(
   UpdateRequestStripeUsageEventsItem,
 ) as any as S.Schema<UpdateRequestStripeUsageEventsList>;
@@ -11507,7 +11502,7 @@ export const UpdateAiGatewayRequest = /*@__PURE__*/ S.suspend(() =>
 export type UpdateResponseDlpCase0Action = "BLOCK" | "FLAG";
 export const UpdateResponseDlpCase0Action = /*@__PURE__*/ S.String;
 
-export type UpdateResponseDlpCase0ProfilesList = ReadonlyArray<string>;
+export type UpdateResponseDlpCase0ProfilesList = Array<string>;
 export const UpdateResponseDlpCase0ProfilesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<UpdateResponseDlpCase0ProfilesList>;
@@ -11537,14 +11532,13 @@ export const UpdateResponseDlpCase1PoliciesItemCheckItem =
   /*@__PURE__*/ S.String;
 
 export type UpdateResponseDlpCase1PoliciesItemCheckList =
-  ReadonlyArray<UpdateResponseDlpCase1PoliciesItemCheckItem>;
+  Array<UpdateResponseDlpCase1PoliciesItemCheckItem>;
 export const UpdateResponseDlpCase1PoliciesItemCheckList =
   /*@__PURE__*/ S.Array(
     UpdateResponseDlpCase1PoliciesItemCheckItem,
   ) as any as S.Schema<UpdateResponseDlpCase1PoliciesItemCheckList>;
 
-export type UpdateResponseDlpCase1PoliciesItemProfilesList =
-  ReadonlyArray<string>;
+export type UpdateResponseDlpCase1PoliciesItemProfilesList = Array<string>;
 export const UpdateResponseDlpCase1PoliciesItemProfilesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -11570,7 +11564,7 @@ export const UpdateResponseDlpCase1PoliciesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateResponseDlpCase1PoliciesItem>;
 
 export type UpdateResponseDlpCase1PoliciesList =
-  ReadonlyArray<UpdateResponseDlpCase1PoliciesItem>;
+  Array<UpdateResponseDlpCase1PoliciesItem>;
 export const UpdateResponseDlpCase1PoliciesList = /*@__PURE__*/ S.Array(
   UpdateResponseDlpCase1PoliciesItem,
 ) as any as S.Schema<UpdateResponseDlpCase1PoliciesList>;
@@ -11811,7 +11805,7 @@ export const UpdateResponseOtelItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateResponseOtelItem",
 }) as any as S.Schema<UpdateResponseOtelItem>;
 
-export type UpdateResponseOtelList = ReadonlyArray<UpdateResponseOtelItem>;
+export type UpdateResponseOtelList = Array<UpdateResponseOtelItem>;
 export const UpdateResponseOtelList = /*@__PURE__*/ S.Array(
   UpdateResponseOtelItem,
 ) as any as S.Schema<UpdateResponseOtelList>;
@@ -11847,7 +11841,7 @@ export const UpdateResponseSpendLimitsRulesItemMetadataCase1Mode =
   /*@__PURE__*/ S.String;
 
 export type UpdateResponseSpendLimitsRulesItemMetadataCase1ValuesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const UpdateResponseSpendLimitsRulesItemMetadataCase1ValuesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -11892,8 +11886,7 @@ export type UpdateResponseSpendLimitsRulesItemModelMode = "filter";
 export const UpdateResponseSpendLimitsRulesItemModelMode =
   /*@__PURE__*/ S.String;
 
-export type UpdateResponseSpendLimitsRulesItemModelValuesList =
-  ReadonlyArray<string>;
+export type UpdateResponseSpendLimitsRulesItemModelValuesList = Array<string>;
 export const UpdateResponseSpendLimitsRulesItemModelValuesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -11918,7 +11911,7 @@ export const UpdateResponseSpendLimitsRulesItemProviderMode =
   /*@__PURE__*/ S.String;
 
 export type UpdateResponseSpendLimitsRulesItemProviderValuesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const UpdateResponseSpendLimitsRulesItemProviderValuesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -11970,7 +11963,7 @@ export const UpdateResponseSpendLimitsRulesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateResponseSpendLimitsRulesItem>;
 
 export type UpdateResponseSpendLimitsRulesList =
-  ReadonlyArray<UpdateResponseSpendLimitsRulesItem>;
+  Array<UpdateResponseSpendLimitsRulesItem>;
 export const UpdateResponseSpendLimitsRulesList = /*@__PURE__*/ S.Array(
   UpdateResponseSpendLimitsRulesItem,
 ) as any as S.Schema<UpdateResponseSpendLimitsRulesList>;
@@ -12000,7 +11993,7 @@ export const UpdateResponseStripeUsageEventsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateResponseStripeUsageEventsItem>;
 
 export type UpdateResponseStripeUsageEventsList =
-  ReadonlyArray<UpdateResponseStripeUsageEventsItem>;
+  Array<UpdateResponseStripeUsageEventsItem>;
 export const UpdateResponseStripeUsageEventsList = /*@__PURE__*/ S.Array(
   UpdateResponseStripeUsageEventsItem,
 ) as any as S.Schema<UpdateResponseStripeUsageEventsList>;
@@ -12139,7 +12132,7 @@ export const DatasetsUpdateRequestFiltersItemValueItem =
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], []]));
 
 export type DatasetsUpdateRequestFiltersItemValueList =
-  ReadonlyArray<DatasetsUpdateRequestFiltersItemValueItem>;
+  Array<DatasetsUpdateRequestFiltersItemValueItem>;
 export const DatasetsUpdateRequestFiltersItemValueList = /*@__PURE__*/ S.Array(
   DatasetsUpdateRequestFiltersItemValueItem,
 ) as any as S.Schema<DatasetsUpdateRequestFiltersItemValueList>;
@@ -12160,7 +12153,7 @@ export const DatasetsUpdateRequestFiltersItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DatasetsUpdateRequestFiltersItem>;
 
 export type DatasetsUpdateRequestFiltersList =
-  ReadonlyArray<DatasetsUpdateRequestFiltersItem>;
+  Array<DatasetsUpdateRequestFiltersItem>;
 export const DatasetsUpdateRequestFiltersList = /*@__PURE__*/ S.Array(
   DatasetsUpdateRequestFiltersItem,
 ) as any as S.Schema<DatasetsUpdateRequestFiltersList>;
@@ -12226,7 +12219,7 @@ export const DatasetsUpdateResponseFiltersItemValueItem =
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], []]));
 
 export type DatasetsUpdateResponseFiltersItemValueList =
-  ReadonlyArray<DatasetsUpdateResponseFiltersItemValueItem>;
+  Array<DatasetsUpdateResponseFiltersItemValueItem>;
 export const DatasetsUpdateResponseFiltersItemValueList = /*@__PURE__*/ S.Array(
   DatasetsUpdateResponseFiltersItemValueItem,
 ) as any as S.Schema<DatasetsUpdateResponseFiltersItemValueList>;
@@ -12247,7 +12240,7 @@ export const DatasetsUpdateResponseFiltersItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DatasetsUpdateResponseFiltersItem>;
 
 export type DatasetsUpdateResponseFiltersList =
-  ReadonlyArray<DatasetsUpdateResponseFiltersItem>;
+  Array<DatasetsUpdateResponseFiltersItem>;
 export const DatasetsUpdateResponseFiltersList = /*@__PURE__*/ S.Array(
   DatasetsUpdateResponseFiltersItem,
 ) as any as S.Schema<DatasetsUpdateResponseFiltersList>;
@@ -12332,7 +12325,7 @@ export const BillingUsageHistoryResponseHistoryItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<BillingUsageHistoryResponseHistoryItem>;
 
 export type BillingUsageHistoryResponseHistoryList =
-  ReadonlyArray<BillingUsageHistoryResponseHistoryItem>;
+  Array<BillingUsageHistoryResponseHistoryItem>;
 export const BillingUsageHistoryResponseHistoryList = /*@__PURE__*/ S.Array(
   BillingUsageHistoryResponseHistoryItem,
 ) as any as S.Schema<BillingUsageHistoryResponseHistoryList>;

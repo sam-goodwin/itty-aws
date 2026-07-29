@@ -73,8 +73,7 @@ export const SharePassword = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SharePassword" }) as any as S.Schema<SharePassword>;
 
-export type SharingConfigurationSharePasswordsList =
-  ReadonlyArray<SharePassword>;
+export type SharingConfigurationSharePasswordsList = Array<SharePassword>;
 export const SharingConfigurationSharePasswordsList = /*@__PURE__*/ S.Array(
   SharePassword,
 ) as any as S.Schema<SharingConfigurationSharePasswordsList>;
@@ -105,7 +104,7 @@ export const SharingConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SharingConfiguration>;
 
 export type SessionRecordingsSharingListResponseBodyList =
-  ReadonlyArray<SharingConfiguration>;
+  Array<SharingConfiguration>;
 export const SessionRecordingsSharingListResponseBodyList =
   /*@__PURE__*/ S.Array(
     SharingConfiguration,

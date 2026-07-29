@@ -128,7 +128,7 @@ export const IndexInfo = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "IndexInfo" }) as any as S.Schema<IndexInfo>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -156,7 +156,7 @@ export const PollenTypeInfo = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PollenTypeInfo" }) as any as S.Schema<PollenTypeInfo>;
 
-export type PollenTypeInfoList = ReadonlyArray<PollenTypeInfo>;
+export type PollenTypeInfoList = Array<PollenTypeInfo>;
 export const PollenTypeInfoList = /*@__PURE__*/ S.Array(
   PollenTypeInfo,
 ) as any as S.Schema<PollenTypeInfoList>;
@@ -246,7 +246,7 @@ export const PlantInfo = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PlantInfo" }) as any as S.Schema<PlantInfo>;
 
-export type PlantInfoList = ReadonlyArray<PlantInfo>;
+export type PlantInfoList = Array<PlantInfo>;
 export const PlantInfoList = /*@__PURE__*/ S.Array(
   PlantInfo,
 ) as any as S.Schema<PlantInfoList>;
@@ -285,7 +285,7 @@ export const DayInfo = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DayInfo" }) as any as S.Schema<DayInfo>;
 
-export type DayInfoList = ReadonlyArray<DayInfo>;
+export type DayInfoList = Array<DayInfo>;
 export const DayInfoList = /*@__PURE__*/ S.Array(
   DayInfo,
 ) as any as S.Schema<DayInfoList>;
@@ -350,7 +350,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;

@@ -115,7 +115,7 @@ export const AssignmentReportResourceComplianceReason = /*@__PURE__*/ S.suspend(
 
 /** Compliance reason and reason code for a resource. */
 export type AssignmentReportResourceReasonsList =
-  ReadonlyArray<AssignmentReportResourceComplianceReason>;
+  Array<AssignmentReportResourceComplianceReason>;
 export const AssignmentReportResourceReasonsList = /*@__PURE__*/ S.Array(
   AssignmentReportResourceComplianceReason,
 ) as any as S.Schema<AssignmentReportResourceReasonsList>;
@@ -144,7 +144,7 @@ export const AssignmentReportResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of resources for which guest configuration assignment compliance is checked. */
 export type AssignmentReportDetailsResourcesList =
-  ReadonlyArray<AssignmentReportResource>;
+  Array<AssignmentReportResource>;
 export const AssignmentReportDetailsResourcesList = /*@__PURE__*/ S.Array(
   AssignmentReportResource,
 ) as any as S.Schema<AssignmentReportDetailsResourcesList>;
@@ -262,7 +262,7 @@ export const GuestConfigurationAssignmentReportsListRequest =
 
 /** List of reports for the guest configuration. Report contains information such as compliance status, reason and more. */
 export type GuestConfigurationAssignmentReportListValueList =
-  ReadonlyArray<GuestConfigurationAssignmentReport>;
+  Array<GuestConfigurationAssignmentReport>;
 export const GuestConfigurationAssignmentReportListValueList =
   /*@__PURE__*/ S.Array(
     GuestConfigurationAssignmentReport,
@@ -375,7 +375,7 @@ export const ConfigurationParameter = /*@__PURE__*/ S.suspend(() =>
 
 /** The configuration parameters for the guest configuration. */
 export type GuestConfigurationNavigationInputConfigurationParameterList =
-  ReadonlyArray<ConfigurationParameter>;
+  Array<ConfigurationParameter>;
 export const GuestConfigurationNavigationInputConfigurationParameterList =
   /*@__PURE__*/ S.Array(
     ConfigurationParameter,
@@ -383,7 +383,7 @@ export const GuestConfigurationNavigationInputConfigurationParameterList =
 
 /** The protected configuration parameters for the guest configuration. */
 export type GuestConfigurationNavigationInputConfigurationProtectedParameterList =
-  ReadonlyArray<ConfigurationParameter>;
+  Array<ConfigurationParameter>;
 export const GuestConfigurationNavigationInputConfigurationProtectedParameterList =
   /*@__PURE__*/ S.Array(
     ConfigurationParameter,
@@ -466,7 +466,7 @@ export const AssignmentReportResourceComplianceReasonInput =
 
 /** Compliance reason and reason code for a resource. */
 export type AssignmentReportResourceInputReasonsList =
-  ReadonlyArray<AssignmentReportResourceComplianceReasonInput>;
+  Array<AssignmentReportResourceComplianceReasonInput>;
 export const AssignmentReportResourceInputReasonsList = /*@__PURE__*/ S.Array(
   AssignmentReportResourceComplianceReasonInput,
 ) as any as S.Schema<AssignmentReportResourceInputReasonsList>;
@@ -486,7 +486,7 @@ export const AssignmentReportResourceInput = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of resources for which guest configuration assignment compliance is checked. */
 export type AssignmentReportInputResourcesList =
-  ReadonlyArray<AssignmentReportResourceInput>;
+  Array<AssignmentReportResourceInput>;
 export const AssignmentReportInputResourcesList = /*@__PURE__*/ S.Array(
   AssignmentReportResourceInput,
 ) as any as S.Schema<AssignmentReportInputResourcesList>;
@@ -519,7 +519,7 @@ export const VMSSVMInfoInput = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of VM Compliance data for VMSS */
 export type GuestConfigurationAssignmentPropertiesInputVmssVMListList =
-  ReadonlyArray<VMSSVMInfoInput>;
+  Array<VMSSVMInfoInput>;
 export const GuestConfigurationAssignmentPropertiesInputVmssVMListList =
   /*@__PURE__*/ S.Array(
     VMSSVMInfoInput,
@@ -590,7 +590,7 @@ export const GuestConfigurationAssignmentsCreateOrUpdateRequest =
 
 /** The configuration parameters for the guest configuration. */
 export type GuestConfigurationNavigationConfigurationParameterList =
-  ReadonlyArray<ConfigurationParameter>;
+  Array<ConfigurationParameter>;
 export const GuestConfigurationNavigationConfigurationParameterList =
   /*@__PURE__*/ S.Array(
     ConfigurationParameter,
@@ -598,7 +598,7 @@ export const GuestConfigurationNavigationConfigurationParameterList =
 
 /** The protected configuration parameters for the guest configuration. */
 export type GuestConfigurationNavigationConfigurationProtectedParameterList =
-  ReadonlyArray<ConfigurationParameter>;
+  Array<ConfigurationParameter>;
 export const GuestConfigurationNavigationConfigurationProtectedParameterList =
   /*@__PURE__*/ S.Array(
     ConfigurationParameter,
@@ -694,8 +694,7 @@ export const GuestConfigurationNavigation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GuestConfigurationNavigation>;
 
 /** The list of resources for which guest configuration assignment compliance is checked. */
-export type AssignmentReportResourcesList =
-  ReadonlyArray<AssignmentReportResource>;
+export type AssignmentReportResourcesList = Array<AssignmentReportResource>;
 export const AssignmentReportResourcesList = /*@__PURE__*/ S.Array(
   AssignmentReportResource,
 ) as any as S.Schema<AssignmentReportResourcesList>;
@@ -765,7 +764,7 @@ export const VMSSVMInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of VM Compliance data for VMSS */
 export type GuestConfigurationAssignmentPropertiesVmssVMListList =
-  ReadonlyArray<VMSSVMInfo>;
+  Array<VMSSVMInfo>;
 export const GuestConfigurationAssignmentPropertiesVmssVMListList =
   /*@__PURE__*/ S.Array(
     VMSSVMInfo,
@@ -1144,7 +1143,7 @@ export const GuestConfigurationAssignment = /*@__PURE__*/ S.suspend(() =>
 
 /** Result of the list guest configuration assignment operation. */
 export type GuestConfigurationAssignmentListValueList =
-  ReadonlyArray<GuestConfigurationAssignment>;
+  Array<GuestConfigurationAssignment>;
 export const GuestConfigurationAssignmentListValueList = /*@__PURE__*/ S.Array(
   GuestConfigurationAssignment,
 ) as any as S.Schema<GuestConfigurationAssignmentListValueList>;
@@ -2308,7 +2307,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of Automation operations supported by the Automation resource provider. */
-export type OperationListValueList = ReadonlyArray<Operation>;
+export type OperationListValueList = Array<Operation>;
 export const OperationListValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationListValueList>;

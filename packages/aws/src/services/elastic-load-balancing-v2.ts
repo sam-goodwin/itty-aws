@@ -813,7 +813,9 @@ export interface AuthenticateOidcActionConfig {
   Scope?: string;
   SessionTimeout?: number;
   AuthenticationRequestExtraParams?: { [key: string]: string | undefined };
-  OnUnauthenticatedRequest?: AuthenticateOidcActionConditionalBehaviorEnum;
+  OnUnauthenticatedRequest?:
+    | AuthenticateOidcActionConditionalBehaviorEnum
+    | (string & {});
   UseExistingClientSecret?: boolean;
 }
 export const AuthenticateOidcActionConfig = /*@__PURE__*/ S.suspend(() =>
@@ -866,7 +868,9 @@ export interface AuthenticateCognitoActionConfig {
   Scope?: string;
   SessionTimeout?: number;
   AuthenticationRequestExtraParams?: { [key: string]: string | undefined };
-  OnUnauthenticatedRequest?: AuthenticateCognitoActionConditionalBehaviorEnum;
+  OnUnauthenticatedRequest?:
+    | AuthenticateCognitoActionConditionalBehaviorEnum
+    | (string & {});
 }
 export const AuthenticateCognitoActionConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -901,7 +905,7 @@ export interface RedirectActionConfig {
   Host?: string;
   Path?: string;
   Query?: string;
-  StatusCode?: RedirectActionStatusCodeEnum;
+  StatusCode?: RedirectActionStatusCodeEnum | (string & {});
 }
 export const RedirectActionConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -989,7 +993,7 @@ export const JwtValidationActionAdditionalClaimValues = /*@__PURE__*/ S.Array(
   S.String,
 );
 export interface JwtValidationActionAdditionalClaim {
-  Format?: JwtValidationActionAdditionalClaimFormatEnum;
+  Format?: JwtValidationActionAdditionalClaimFormatEnum | (string & {});
   Name?: string;
   Values?: string[];
 }
@@ -1022,7 +1026,7 @@ export const JwtValidationActionConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "JwtValidationActionConfig",
 }) as any as S.Schema<JwtValidationActionConfig>;
 export interface Action {
-  Type?: ActionTypeEnum;
+  Type?: ActionTypeEnum | (string & {});
   TargetGroupArn?: string;
   AuthenticateOidcConfig?: AuthenticateOidcActionConfig;
   AuthenticateCognitoConfig?: AuthenticateCognitoActionConfig;
@@ -1062,8 +1066,8 @@ export interface MutualAuthenticationAttributes {
   Mode?: string;
   TrustStoreArn?: string;
   IgnoreClientCertificateExpiry?: boolean;
-  TrustStoreAssociationStatus?: TrustStoreAssociationStatusEnum;
-  AdvertiseTrustStoreCaNames?: AdvertiseTrustStoreCaNamesEnum;
+  TrustStoreAssociationStatus?: TrustStoreAssociationStatusEnum | (string & {});
+  AdvertiseTrustStoreCaNames?: AdvertiseTrustStoreCaNamesEnum | (string & {});
 }
 export const MutualAuthenticationAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1525,7 +1529,7 @@ export const UrlRewriteConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "UrlRewriteConfig",
 }) as any as S.Schema<UrlRewriteConfig>;
 export interface RuleTransform {
-  Type?: TransformTypeEnum;
+  Type?: TransformTypeEnum | (string & {});
   HostHeaderRewriteConfig?: HostHeaderRewriteConfig;
   UrlRewriteConfig?: UrlRewriteConfig;
 }

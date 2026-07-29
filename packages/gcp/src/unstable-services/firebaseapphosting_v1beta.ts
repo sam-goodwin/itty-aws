@@ -105,8 +105,9 @@ export type EnvironmentVariableAvailabilityItemEnum =
   | "RUNTIME";
 export const EnvironmentVariableAvailabilityItemEnum = /*@__PURE__*/ S.String;
 
-export type EnvironmentVariableAvailabilityItemEnumList =
-  ReadonlyArray<EnvironmentVariableAvailabilityItemEnum>;
+export type EnvironmentVariableAvailabilityItemEnumList = Array<
+  EnvironmentVariableAvailabilityItemEnum | (string & {})
+>;
 export const EnvironmentVariableAvailabilityItemEnumList =
   /*@__PURE__*/ S.Array(
     EnvironmentVariableAvailabilityItemEnum,
@@ -117,7 +118,7 @@ export interface EnvironmentVariable {
   /** A plaintext value. This value is encrypted at rest, but all project readers can view the value when reading your backend configuration. */
   value?: string;
   /** Output only. The high-level origin category of the environment variable. */
-  origin?: EnvironmentVariableOriginEnum;
+  origin?: EnvironmentVariableOriginEnum | (string & {});
   /** Output only. Specific detail about the source. For APPHOSTING_YAML origins, this will contain the exact filename, such as "apphosting.yaml" or "apphosting.staging.yaml". */
   originFileName?: string;
   /** Required. The name of the environment variable. The environment variables reserved by [Cloud Run](https://docs.cloud.google.com/run/docs/configuring/services/environment-variables#reserved) should not be set. Additionally, variable names cannot start with "X_FIREBASE_". */
@@ -140,7 +141,7 @@ export const EnvironmentVariable = /*@__PURE__*/ S.suspend(() =>
   identifier: "EnvironmentVariable",
 }) as any as S.Schema<EnvironmentVariable>;
 
-export type EnvironmentVariableList = ReadonlyArray<EnvironmentVariable>;
+export type EnvironmentVariableList = Array<EnvironmentVariable>;
 export const EnvironmentVariableList = /*@__PURE__*/ S.Array(
   EnvironmentVariable,
 ) as any as S.Schema<EnvironmentVariableList>;
@@ -169,7 +170,7 @@ export const ManagedResource = /*@__PURE__*/ S.suspend(() =>
   identifier: "ManagedResource",
 }) as any as S.Schema<ManagedResource>;
 
-export type ManagedResourceList = ReadonlyArray<ManagedResource>;
+export type ManagedResourceList = Array<ManagedResource>;
 export const ManagedResourceList = /*@__PURE__*/ S.Array(
   ManagedResource,
 ) as any as S.Schema<ManagedResourceList>;
@@ -208,7 +209,7 @@ export const StringMap = /*@__PURE__*/ S.Record(
 /** A backend is the primary resource of App Hosting. */
 export interface Backend {
   /** Required. Immutable. Specifies how App Hosting will serve the content for this backend. It will either be contained to a single region (REGIONAL_STRICT) or allowed to use App Hosting's global-replicated serving infrastructure (GLOBAL_ACCESS). */
-  servingLocality?: BackendServingLocalityEnum;
+  servingLocality?: BackendServingLocalityEnum | (string & {});
   /** Optional. The environment name of the backend, used to load environment variables from environment specific configuration. */
   environment?: string;
   /** Output only. Server-computed checksum based on other values; may be sent on update or delete to ensure operation is done on expected resource. */
@@ -316,7 +317,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -578,7 +579,7 @@ export interface Firebaseapphosting_Error {
   /** Output only. A status and (human readable) error message for the build, if in a `FAILED` state. */
   error?: Status;
   /** Output only. The source of the error for the build, if in a `FAILED` state. */
-  errorSource?: Firebaseapphosting_ErrorErrorSourceEnum;
+  errorSource?: Firebaseapphosting_ErrorErrorSourceEnum | (string & {});
   /** Output only. Resource link */
   cloudResource?: string;
 }
@@ -592,8 +593,7 @@ export const Firebaseapphosting_Error = /*@__PURE__*/ S.suspend(() =>
   identifier: "Firebaseapphosting_Error",
 }) as any as S.Schema<Firebaseapphosting_Error>;
 
-export type Firebaseapphosting_ErrorList =
-  ReadonlyArray<Firebaseapphosting_Error>;
+export type Firebaseapphosting_ErrorList = Array<Firebaseapphosting_Error>;
 export const Firebaseapphosting_ErrorList = /*@__PURE__*/ S.Array(
   Firebaseapphosting_Error,
 ) as any as S.Schema<Firebaseapphosting_ErrorList>;
@@ -625,7 +625,7 @@ export interface Build {
   /** Output only. The Artifact Registry [container image](https://cloud.google.com/artifact-registry/docs/reference/rest/v1/projects.locations.repositories.dockerImages) URI, used by the Cloud Run [`revision`](https://cloud.google.com/run/docs/reference/rest/v2/projects.locations.services.revisions) for this build. */
   image?: string;
   /** Output only. The state of the build. */
-  state?: BuildStateEnum;
+  state?: BuildStateEnum | (string & {});
   /** Optional. Additional configuration of the service. */
   config?: Config;
   /** Output only. Server-computed checksum based on other values; may be sent on update or delete to ensure operation is done on expected resource. */
@@ -637,7 +637,7 @@ export interface Build {
   /** Output only. A list of all errors that occurred during an App Hosting build. */
   errors?: Firebaseapphosting_ErrorList;
   /** Output only. Deprecated: Use `errors` instead. The source of the error for the build, if in a `FAILED` state. */
-  errorSource?: BuildErrorSourceEnum;
+  errorSource?: BuildErrorSourceEnum | (string & {});
   /** Output only. Time at which the build was created. */
   createTime?: string;
   /** Output only. Time at which the build was deleted. */
@@ -720,8 +720,9 @@ export type DnsRecordRelevantStateItemEnum =
   | "CERT_STATE";
 export const DnsRecordRelevantStateItemEnum = /*@__PURE__*/ S.String;
 
-export type DnsRecordRelevantStateItemEnumList =
-  ReadonlyArray<DnsRecordRelevantStateItemEnum>;
+export type DnsRecordRelevantStateItemEnumList = Array<
+  DnsRecordRelevantStateItemEnum | (string & {})
+>;
 export const DnsRecordRelevantStateItemEnumList = /*@__PURE__*/ S.Array(
   DnsRecordRelevantStateItemEnum,
 ) as any as S.Schema<DnsRecordRelevantStateItemEnumList>;
@@ -745,11 +746,11 @@ export interface DnsRecord {
   /** Output only. An enum that indicates which state(s) this DNS record applies to. Populated for all records with an `ADD` or `REMOVE` required action. */
   relevantState?: DnsRecordRelevantStateItemEnumList;
   /** Output only. An enum that indicates the a required action for this record. Populated when the record is part of a required change in a `DnsUpdates` `discovered` or `desired` record set. */
-  requiredAction?: DnsRecordRequiredActionEnum;
+  requiredAction?: DnsRecordRequiredActionEnum | (string & {});
   /** Output only. The domain the record pertains to, e.g. `foo.bar.com.`. */
   domainName?: string;
   /** Output only. The record's type, which determines what data the record contains. */
-  type?: DnsRecordTypeEnum;
+  type?: DnsRecordTypeEnum | (string & {});
 }
 export const DnsRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -761,7 +762,7 @@ export const DnsRecord = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DnsRecord" }) as any as S.Schema<DnsRecord>;
 
-export type DnsRecordList = ReadonlyArray<DnsRecord>;
+export type DnsRecordList = Array<DnsRecord>;
 export const DnsRecordList = /*@__PURE__*/ S.Array(
   DnsRecord,
 ) as any as S.Schema<DnsRecordList>;
@@ -783,7 +784,7 @@ export const DnsRecordSet = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DnsRecordSet" }) as any as S.Schema<DnsRecordSet>;
 
-export type DnsRecordSetList = ReadonlyArray<DnsRecordSet>;
+export type DnsRecordSetList = Array<DnsRecordSet>;
 export const DnsRecordSetList = /*@__PURE__*/ S.Array(
   DnsRecordSet,
 ) as any as S.Schema<DnsRecordSetList>;
@@ -808,7 +809,7 @@ export const DnsUpdates = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DnsUpdates" }) as any as S.Schema<DnsUpdates>;
 
-export type DnsUpdatesList = ReadonlyArray<DnsUpdates>;
+export type DnsUpdatesList = Array<DnsUpdates>;
 export const DnsUpdatesList = /*@__PURE__*/ S.Array(
   DnsUpdates,
 ) as any as S.Schema<DnsUpdatesList>;
@@ -833,7 +834,7 @@ export type CustomDomainStatusOwnershipStateEnum =
   | "OWNERSHIP_ACTIVE";
 export const CustomDomainStatusOwnershipStateEnum = /*@__PURE__*/ S.String;
 
-export type StatusList = ReadonlyArray<Status>;
+export type StatusList = Array<Status>;
 export const StatusList = /*@__PURE__*/ S.Array(
   Status,
 ) as any as S.Schema<StatusList>;
@@ -841,13 +842,13 @@ export const StatusList = /*@__PURE__*/ S.Array(
 /** The status of a custom domain's linkage to a backend. */
 export interface CustomDomainStatus {
   /** Output only. Tracks whether a custom domain is detected as appropriately directing traffic to App Hosting. */
-  hostState?: CustomDomainStatusHostStateEnum;
+  hostState?: CustomDomainStatusHostStateEnum | (string & {});
   /** Output only. Lists the records that must added or removed to a custom domain's DNS in order to finish setup and start serving content. Field is present during onboarding. Also present after onboarding if one or more of the above states is not *_ACTIVE, indicating the domain's DNS records are in a bad state. */
   requiredDnsUpdates?: DnsUpdatesList;
   /** Output only. Tracks SSL certificate status for the domain. */
-  certState?: CustomDomainStatusCertStateEnum;
+  certState?: CustomDomainStatusCertStateEnum | (string & {});
   /** Output only. Tracks whether the backend is permitted to serve content on the domain, based off the domain's DNS records. */
-  ownershipState?: CustomDomainStatusOwnershipStateEnum;
+  ownershipState?: CustomDomainStatusOwnershipStateEnum | (string & {});
   /** Output only. A list of issues with domain configuration. Allows users to self-correct problems with DNS records. */
   issues?: StatusList;
 }
@@ -905,7 +906,7 @@ export interface Domain {
   /** Optional. Mutable human-readable name for the domain. 63 character limit. e.g. `prod domain`. */
   displayName?: string;
   /** Output only. The type of the domain. */
-  type?: DomainTypeEnum;
+  type?: DomainTypeEnum | (string & {});
   /** Output only. Time at which the domain was created. */
   createTime?: string;
   /** Output only. Time at which the domain was deleted. */
@@ -1011,7 +1012,7 @@ export interface Rollout {
   /** Output only. System-assigned, unique identifier. */
   uid?: string;
   /** Output only. The state of the rollout. */
-  state?: RolloutStateEnum;
+  state?: RolloutStateEnum | (string & {});
   /** Output only. Server-computed checksum based on other values; may be sent on update or delete to ensure operation is done on expected resource. */
   etag?: string;
 }
@@ -1319,7 +1320,7 @@ export const TrafficSplit = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TrafficSplit" }) as any as S.Schema<TrafficSplit>;
 
-export type TrafficSplitList = ReadonlyArray<TrafficSplit>;
+export type TrafficSplitList = Array<TrafficSplit>;
 export const TrafficSplitList = /*@__PURE__*/ S.Array(
   TrafficSplit,
 ) as any as S.Schema<TrafficSplitList>;
@@ -1345,7 +1346,7 @@ export const PathTypeEnum = /*@__PURE__*/ S.String;
 /** A file path pattern to match against. */
 export interface Path {
   /** Optional. The type of pattern to match against. */
-  type?: PathTypeEnum;
+  type?: PathTypeEnum | (string & {});
   /** Optional. The pattern to match against. */
   pattern?: string;
 }
@@ -1356,7 +1357,7 @@ export const Path = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Path" }) as any as S.Schema<Path>;
 
-export type PathList = ReadonlyArray<Path>;
+export type PathList = Array<Path>;
 export const PathList = /*@__PURE__*/ S.Array(
   Path,
 ) as any as S.Schema<PathList>;
@@ -1444,7 +1445,7 @@ export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "GetProjectsLocationsOperationsRequest",
 }) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -1479,7 +1480,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = ReadonlyArray<Location>;
+export type LocationList = Array<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -1534,7 +1535,7 @@ export const ListProjectsLocationsBackendsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsBackendsRequest",
 }) as any as S.Schema<ListProjectsLocationsBackendsRequest>;
 
-export type BackendList = ReadonlyArray<Backend>;
+export type BackendList = Array<Backend>;
 export const BackendList = /*@__PURE__*/ S.Array(
   Backend,
 ) as any as S.Schema<BackendList>;
@@ -1592,7 +1593,7 @@ export const ListProjectsLocationsBackendsBuildsRequest =
     identifier: "ListProjectsLocationsBackendsBuildsRequest",
   }) as any as S.Schema<ListProjectsLocationsBackendsBuildsRequest>;
 
-export type BuildList = ReadonlyArray<Build>;
+export type BuildList = Array<Build>;
 export const BuildList = /*@__PURE__*/ S.Array(
   Build,
 ) as any as S.Schema<BuildList>;
@@ -1650,7 +1651,7 @@ export const ListProjectsLocationsBackendsDomainsRequest =
     identifier: "ListProjectsLocationsBackendsDomainsRequest",
   }) as any as S.Schema<ListProjectsLocationsBackendsDomainsRequest>;
 
-export type DomainList = ReadonlyArray<Domain>;
+export type DomainList = Array<Domain>;
 export const DomainList = /*@__PURE__*/ S.Array(
   Domain,
 ) as any as S.Schema<DomainList>;
@@ -1708,7 +1709,7 @@ export const ListProjectsLocationsBackendsRolloutsRequest =
     identifier: "ListProjectsLocationsBackendsRolloutsRequest",
   }) as any as S.Schema<ListProjectsLocationsBackendsRolloutsRequest>;
 
-export type RolloutList = ReadonlyArray<Rollout>;
+export type RolloutList = Array<Rollout>;
 export const RolloutList = /*@__PURE__*/ S.Array(
   Rollout,
 ) as any as S.Schema<RolloutList>;
@@ -1763,7 +1764,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type OperationList = ReadonlyArray<Operation>;
+export type OperationList = Array<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -1834,7 +1835,7 @@ export const SupportedRuntime = /*@__PURE__*/ S.suspend(() =>
   identifier: "SupportedRuntime",
 }) as any as S.Schema<SupportedRuntime>;
 
-export type SupportedRuntimeList = ReadonlyArray<SupportedRuntime>;
+export type SupportedRuntimeList = Array<SupportedRuntime>;
 export const SupportedRuntimeList = /*@__PURE__*/ S.Array(
   SupportedRuntime,
 ) as any as S.Schema<SupportedRuntimeList>;

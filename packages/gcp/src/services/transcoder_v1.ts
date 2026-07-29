@@ -66,7 +66,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -285,7 +285,7 @@ export const PreprocessingConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "PreprocessingConfig",
 }) as any as S.Schema<PreprocessingConfig>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -312,7 +312,7 @@ export const TrackDefinition = /*@__PURE__*/ S.suspend(() =>
   identifier: "TrackDefinition",
 }) as any as S.Schema<TrackDefinition>;
 
-export type TrackDefinitionList = ReadonlyArray<TrackDefinition>;
+export type TrackDefinitionList = Array<TrackDefinition>;
 export const TrackDefinitionList = /*@__PURE__*/ S.Array(
   TrackDefinition,
 ) as any as S.Schema<TrackDefinitionList>;
@@ -350,7 +350,7 @@ export const Input = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Input" }) as any as S.Schema<Input>;
 
-export type InputList = ReadonlyArray<Input>;
+export type InputList = Array<Input>;
 export const InputList = /*@__PURE__*/ S.Array(
   Input,
 ) as any as S.Schema<InputList>;
@@ -467,7 +467,7 @@ export const Encryption = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Encryption" }) as any as S.Schema<Encryption>;
 
-export type EncryptionList = ReadonlyArray<Encryption>;
+export type EncryptionList = Array<Encryption>;
 export const EncryptionList = /*@__PURE__*/ S.Array(
   Encryption,
 ) as any as S.Schema<EncryptionList>;
@@ -539,7 +539,7 @@ export const MuxStream = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MuxStream" }) as any as S.Schema<MuxStream>;
 
-export type MuxStreamList = ReadonlyArray<MuxStream>;
+export type MuxStreamList = Array<MuxStream>;
 export const MuxStreamList = /*@__PURE__*/ S.Array(
   MuxStream,
 ) as any as S.Schema<MuxStreamList>;
@@ -570,7 +570,7 @@ export const AudioMapping = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AudioMapping" }) as any as S.Schema<AudioMapping>;
 
-export type AudioMappingList = ReadonlyArray<AudioMapping>;
+export type AudioMappingList = Array<AudioMapping>;
 export const AudioMappingList = /*@__PURE__*/ S.Array(
   AudioMapping,
 ) as any as S.Schema<AudioMappingList>;
@@ -641,7 +641,9 @@ export const H265ColorFormatHDR10 = /*@__PURE__*/ S.suspend(() =>
 /** H265 codec settings. */
 export interface H265CodecSettings {
   /** Optional. Frame rate conversion strategy for desired frame rate. The default is `DOWNSAMPLE`. */
-  frameRateConversionStrategy?: H265CodecSettingsFrameRateConversionStrategyEnum;
+  frameRateConversionStrategy?:
+    | H265CodecSettingsFrameRateConversionStrategyEnum
+    | (string & {});
   /** Specify the mode. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate - `crf` - constant rate factor */
   rateControlMode?: string;
   /** Specify the intensity of the adaptive quantizer (AQ). Must be between 0 and 1, where 0 disables the quantizer and 1 maximizes the quantizer. A higher value equals a lower bitrate but smoother image. The default is 0. */
@@ -755,7 +757,9 @@ export interface Vp9CodecSettings {
   /** Specify the mode. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate */
   rateControlMode?: string;
   /** Optional. Frame rate conversion strategy for desired frame rate. The default is `DOWNSAMPLE`. */
-  frameRateConversionStrategy?: Vp9CodecSettingsFrameRateConversionStrategyEnum;
+  frameRateConversionStrategy?:
+    | Vp9CodecSettingsFrameRateConversionStrategyEnum
+    | (string & {});
   /** Target CRF level. Must be between 10 and 36, where 10 is the highest quality and 36 is the most efficient compression. The default is 21. **Note:** This field is not supported. */
   crfLevel?: number;
   /** Required. The target video frame rate in frames per second (FPS). Must be less than or equal to 120. */
@@ -831,7 +835,9 @@ export interface H264CodecSettings {
   /** Specify the mode. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate - `crf` - constant rate factor */
   rateControlMode?: string;
   /** Optional. Frame rate conversion strategy for desired frame rate. The default is `DOWNSAMPLE`. */
-  frameRateConversionStrategy?: H264CodecSettingsFrameRateConversionStrategyEnum;
+  frameRateConversionStrategy?:
+    | H264CodecSettingsFrameRateConversionStrategyEnum
+    | (string & {});
   /** Pixel format to use. The default is `yuv420p`. Supported pixel formats: - `yuv420p` pixel format - `yuv422p` pixel format - `yuv444p` pixel format - `yuv420p10` 10-bit HDR pixel format - `yuv422p10` 10-bit HDR pixel format - `yuv444p10` 10-bit HDR pixel format - `yuv420p12` 12-bit HDR pixel format - `yuv422p12` 12-bit HDR pixel format - `yuv444p12` 12-bit HDR pixel format */
   pixelFormat?: string;
   /** Specify the intensity of the adaptive quantizer (AQ). Must be between 0 and 1, where 0 disables the quantizer and 1 maximizes the quantizer. A higher value equals a lower bitrate but smoother image. The default is 0. */
@@ -931,7 +937,7 @@ export const TextMapping = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TextMapping" }) as any as S.Schema<TextMapping>;
 
-export type TextMappingList = ReadonlyArray<TextMapping>;
+export type TextMappingList = Array<TextMapping>;
 export const TextMappingList = /*@__PURE__*/ S.Array(
   TextMapping,
 ) as any as S.Schema<TextMappingList>;
@@ -978,7 +984,7 @@ export const ElementaryStream = /*@__PURE__*/ S.suspend(() =>
   identifier: "ElementaryStream",
 }) as any as S.Schema<ElementaryStream>;
 
-export type ElementaryStreamList = ReadonlyArray<ElementaryStream>;
+export type ElementaryStreamList = Array<ElementaryStream>;
 export const ElementaryStreamList = /*@__PURE__*/ S.Array(
   ElementaryStream,
 ) as any as S.Schema<ElementaryStreamList>;
@@ -1003,7 +1009,7 @@ export const EditAtom = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "EditAtom" }) as any as S.Schema<EditAtom>;
 
-export type EditAtomList = ReadonlyArray<EditAtom>;
+export type EditAtomList = Array<EditAtom>;
 export const EditAtomList = /*@__PURE__*/ S.Array(
   EditAtom,
 ) as any as S.Schema<EditAtomList>;
@@ -1049,7 +1055,7 @@ export const SpriteSheet = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SpriteSheet" }) as any as S.Schema<SpriteSheet>;
 
-export type SpriteSheetList = ReadonlyArray<SpriteSheet>;
+export type SpriteSheetList = Array<SpriteSheet>;
 export const SpriteSheetList = /*@__PURE__*/ S.Array(
   SpriteSheet,
 ) as any as S.Schema<SpriteSheetList>;
@@ -1063,7 +1069,7 @@ export const DashConfigSegmentReferenceSchemeEnum = /*@__PURE__*/ S.String;
 /** `DASH` manifest configuration. */
 export interface DashConfig {
   /** The segment reference scheme for a `DASH` manifest. The default is `SEGMENT_LIST`. */
-  segmentReferenceScheme?: DashConfigSegmentReferenceSchemeEnum;
+  segmentReferenceScheme?: DashConfigSegmentReferenceSchemeEnum | (string & {});
 }
 export const DashConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1083,7 +1089,7 @@ export interface Manifest {
   /** The name of the generated file. The default is `manifest` with the extension suffix corresponding to the Manifest.type. */
   fileName?: string;
   /** Required. Type of the manifest. */
-  type?: ManifestTypeEnum;
+  type?: ManifestTypeEnum | (string & {});
 }
 export const Manifest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1094,7 +1100,7 @@ export const Manifest = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Manifest" }) as any as S.Schema<Manifest>;
 
-export type ManifestList = ReadonlyArray<Manifest>;
+export type ManifestList = Array<Manifest>;
 export const ManifestList = /*@__PURE__*/ S.Array(
   Manifest,
 ) as any as S.Schema<ManifestList>;
@@ -1110,7 +1116,7 @@ export const AdBreak = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AdBreak" }) as any as S.Schema<AdBreak>;
 
-export type AdBreakList = ReadonlyArray<AdBreak>;
+export type AdBreakList = Array<AdBreak>;
 export const AdBreakList = /*@__PURE__*/ S.Array(
   AdBreak,
 ) as any as S.Schema<AdBreakList>;
@@ -1163,7 +1169,7 @@ export interface AnimationFade {
   /** Normalized coordinates based on output video resolution. Valid values: `0.0`–`1.0`. `xy` is the upper-left coordinate of the overlay object. For example, use the x and y coordinates {0,0} to position the top-left corner of the overlay animation in the top-left corner of the output video. */
   xy?: NormalizedCoordinate;
   /** Required. Type of fade animation: `FADE_IN` or `FADE_OUT`. */
-  fadeType?: AnimationFadeFadeTypeEnum;
+  fadeType?: AnimationFadeFadeTypeEnum | (string & {});
 }
 export const AnimationFade = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1218,7 +1224,7 @@ export const Animation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Animation" }) as any as S.Schema<Animation>;
 
-export type AnimationList = ReadonlyArray<Animation>;
+export type AnimationList = Array<Animation>;
 export const AnimationList = /*@__PURE__*/ S.Array(
   Animation,
 ) as any as S.Schema<AnimationList>;
@@ -1237,7 +1243,7 @@ export const Overlay = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Overlay" }) as any as S.Schema<Overlay>;
 
-export type OverlayList = ReadonlyArray<Overlay>;
+export type OverlayList = Array<Overlay>;
 export const OverlayList = /*@__PURE__*/ S.Array(
   Overlay,
 ) as any as S.Schema<OverlayList>;
@@ -1320,15 +1326,15 @@ export interface Job {
   /** The configuration for this job. */
   config?: JobConfig;
   /** The processing mode of the job. The default is `PROCESSING_MODE_INTERACTIVE`. */
-  mode?: JobModeEnum;
+  mode?: JobModeEnum | (string & {});
   /** The labels associated with this job. You can use these to organize and group your jobs. */
   labels?: StringMap;
   /** Output only. The time the transcoding started. */
   startTime?: string;
   /** Output only. The current state of the job. */
-  state?: JobStateEnum;
+  state?: JobStateEnum | (string & {});
   /** Optional. The optimization strategy of the job. The default is `AUTODETECT`. */
-  optimization?: JobOptimizationEnum;
+  optimization?: JobOptimizationEnum | (string & {});
   /** Input only. Specify the `output_uri` to populate an empty `Job.config.output.uri` or `JobTemplate.config.output.uri` when using template. URI for the output file(s). For example, `gs://my-bucket/outputs/`. See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats). */
   outputUri?: string;
   /** The resource name of the job. Format: `projects/{project_number}/locations/{location}/jobs/{job}` */
@@ -1544,7 +1550,7 @@ export const ListProjectsLocationsJobsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsJobsRequest",
 }) as any as S.Schema<ListProjectsLocationsJobsRequest>;
 
-export type JobList = ReadonlyArray<Job>;
+export type JobList = Array<Job>;
 export const JobList = /*@__PURE__*/ S.Array(Job) as any as S.Schema<JobList>;
 
 /** Response message for `TranscoderService.ListJobs`. */
@@ -1597,7 +1603,7 @@ export const ListProjectsLocationsJobTemplatesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsJobTemplatesRequest",
 }) as any as S.Schema<ListProjectsLocationsJobTemplatesRequest>;
 
-export type JobTemplateList = ReadonlyArray<JobTemplate>;
+export type JobTemplateList = Array<JobTemplate>;
 export const JobTemplateList = /*@__PURE__*/ S.Array(
   JobTemplate,
 ) as any as S.Schema<JobTemplateList>;

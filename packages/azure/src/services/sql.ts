@@ -30,7 +30,9 @@ export interface BackupShortTermRetentionPolicyProperties {
   /** The backup retention period in days. This is how many days Point-in-Time Restore will be supported. */
   retentionDays?: number;
   /** The differential backup interval in hours. This is how many interval hours between each differential backup will be supported. This is only applicable to live databases but not dropped databases. */
-  diffBackupIntervalInHours?: BackupShortTermRetentionPolicyPropertiesDiffBackupIntervalInHours;
+  diffBackupIntervalInHours?:
+    | BackupShortTermRetentionPolicyPropertiesDiffBackupIntervalInHours
+    | (number & {});
 }
 export const BackupShortTermRetentionPolicyProperties = /*@__PURE__*/ S.suspend(
   () =>
@@ -272,7 +274,7 @@ export const BackupShortTermRetentionPolicy = /*@__PURE__*/ S.suspend(() =>
 
 /** The BackupShortTermRetentionPolicy items on this page */
 export type BackupShortTermRetentionPolicyListResultValueList =
-  ReadonlyArray<BackupShortTermRetentionPolicy>;
+  Array<BackupShortTermRetentionPolicy>;
 export const BackupShortTermRetentionPolicyListResultValueList =
   /*@__PURE__*/ S.Array(
     BackupShortTermRetentionPolicy,
@@ -486,7 +488,7 @@ export const MaxSizeRangeCapability = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of supported maximum database sizes. */
 export type ServiceObjectiveCapabilitySupportedMaxSizesList =
-  ReadonlyArray<MaxSizeRangeCapability>;
+  Array<MaxSizeRangeCapability>;
 export const ServiceObjectiveCapabilitySupportedMaxSizesList =
   /*@__PURE__*/ S.Array(
     MaxSizeRangeCapability,
@@ -566,7 +568,7 @@ export const LicenseTypeCapability = /*@__PURE__*/ S.suspend(() =>
 
 /** List of supported license types. */
 export type ServiceObjectiveCapabilitySupportedLicenseTypesList =
-  ReadonlyArray<LicenseTypeCapability>;
+  Array<LicenseTypeCapability>;
 export const ServiceObjectiveCapabilitySupportedLicenseTypesList =
   /*@__PURE__*/ S.Array(
     LicenseTypeCapability,
@@ -633,7 +635,7 @@ export const MinCapacityCapability = /*@__PURE__*/ S.suspend(() =>
 
 /** List of supported min capacities */
 export type ServiceObjectiveCapabilitySupportedMinCapacitiesList =
-  ReadonlyArray<MinCapacityCapability>;
+  Array<MinCapacityCapability>;
 export const ServiceObjectiveCapabilitySupportedMinCapacitiesList =
   /*@__PURE__*/ S.Array(
     MinCapacityCapability,
@@ -671,7 +673,7 @@ export const MaintenanceConfigurationCapability = /*@__PURE__*/ S.suspend(() =>
 
 /** List of supported maintenance configurations */
 export type ServiceObjectiveCapabilitySupportedMaintenanceConfigurationsList =
-  ReadonlyArray<MaintenanceConfigurationCapability>;
+  Array<MaintenanceConfigurationCapability>;
 export const ServiceObjectiveCapabilitySupportedMaintenanceConfigurationsList =
   /*@__PURE__*/ S.Array(
     MaintenanceConfigurationCapability,
@@ -706,7 +708,7 @@ export const ZonePinningCapability = /*@__PURE__*/ S.suspend(() =>
 
 /** List of supported availability zones */
 export type ServiceObjectiveCapabilitySupportedZonesList =
-  ReadonlyArray<ZonePinningCapability>;
+  Array<ZonePinningCapability>;
 export const ServiceObjectiveCapabilitySupportedZonesList =
   /*@__PURE__*/ S.Array(
     ZonePinningCapability,
@@ -749,7 +751,7 @@ export const FreeLimitExhaustionBehaviorCapability = /*@__PURE__*/ S.suspend(
 
 /** List of supported free limit exhaustion behaviors */
 export type ServiceObjectiveCapabilitySupportedFreeLimitExhaustionBehaviorsList =
-  ReadonlyArray<FreeLimitExhaustionBehaviorCapability>;
+  Array<FreeLimitExhaustionBehaviorCapability>;
 export const ServiceObjectiveCapabilitySupportedFreeLimitExhaustionBehaviorsList =
   /*@__PURE__*/ S.Array(
     FreeLimitExhaustionBehaviorCapability,
@@ -836,7 +838,7 @@ export const ServiceObjectiveCapability = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of supported service objectives for the edition. */
 export type EditionCapabilitySupportedServiceLevelObjectivesList =
-  ReadonlyArray<ServiceObjectiveCapability>;
+  Array<ServiceObjectiveCapability>;
 export const EditionCapabilitySupportedServiceLevelObjectivesList =
   /*@__PURE__*/ S.Array(
     ServiceObjectiveCapability,
@@ -906,7 +908,7 @@ export const StorageCapability = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of supported storage capabilities for this edition */
 export type EditionCapabilitySupportedStorageCapabilitiesList =
-  ReadonlyArray<StorageCapability>;
+  Array<StorageCapability>;
 export const EditionCapabilitySupportedStorageCapabilitiesList =
   /*@__PURE__*/ S.Array(
     StorageCapability,
@@ -960,7 +962,7 @@ export const EditionCapability = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of supported database editions. */
 export type ServerVersionCapabilitySupportedEditionsList =
-  ReadonlyArray<EditionCapability>;
+  Array<EditionCapability>;
 export const ServerVersionCapabilitySupportedEditionsList =
   /*@__PURE__*/ S.Array(
     EditionCapability,
@@ -994,7 +996,7 @@ export const ElasticPoolPerformanceLevelCapabilitySku = /*@__PURE__*/ S.suspend(
 
 /** List of supported license types. */
 export type ElasticPoolPerformanceLevelCapabilitySupportedLicenseTypesList =
-  ReadonlyArray<LicenseTypeCapability>;
+  Array<LicenseTypeCapability>;
 export const ElasticPoolPerformanceLevelCapabilitySupportedLicenseTypesList =
   /*@__PURE__*/ S.Array(
     LicenseTypeCapability,
@@ -1002,7 +1004,7 @@ export const ElasticPoolPerformanceLevelCapabilitySupportedLicenseTypesList =
 
 /** The list of supported max sizes. */
 export type ElasticPoolPerformanceLevelCapabilitySupportedMaxSizesList =
-  ReadonlyArray<MaxSizeRangeCapability>;
+  Array<MaxSizeRangeCapability>;
 export const ElasticPoolPerformanceLevelCapabilitySupportedMaxSizesList =
   /*@__PURE__*/ S.Array(
     MaxSizeRangeCapability,
@@ -1010,7 +1012,7 @@ export const ElasticPoolPerformanceLevelCapabilitySupportedMaxSizesList =
 
 /** The list of supported per database max sizes. */
 export type ElasticPoolPerformanceLevelCapabilitySupportedPerDatabaseMaxSizesList =
-  ReadonlyArray<MaxSizeRangeCapability>;
+  Array<MaxSizeRangeCapability>;
 export const ElasticPoolPerformanceLevelCapabilitySupportedPerDatabaseMaxSizesList =
   /*@__PURE__*/ S.Array(
     MaxSizeRangeCapability,
@@ -1066,7 +1068,7 @@ export const ElasticPoolPerDatabaseMinPerformanceLevelCapability =
 
 /** The list of supported min database performance levels. */
 export type ElasticPoolPerDatabaseMaxPerformanceLevelCapabilitySupportedPerDatabaseMinPerformanceLevelsList =
-  ReadonlyArray<ElasticPoolPerDatabaseMinPerformanceLevelCapability>;
+  Array<ElasticPoolPerDatabaseMinPerformanceLevelCapability>;
 export const ElasticPoolPerDatabaseMaxPerformanceLevelCapabilitySupportedPerDatabaseMinPerformanceLevelsList =
   /*@__PURE__*/ S.Array(
     ElasticPoolPerDatabaseMinPerformanceLevelCapability,
@@ -1113,7 +1115,7 @@ export const ElasticPoolPerDatabaseMaxPerformanceLevelCapability =
 
 /** The list of supported per database max performance levels. */
 export type ElasticPoolPerformanceLevelCapabilitySupportedPerDatabaseMaxPerformanceLevelsList =
-  ReadonlyArray<ElasticPoolPerDatabaseMaxPerformanceLevelCapability>;
+  Array<ElasticPoolPerDatabaseMaxPerformanceLevelCapability>;
 export const ElasticPoolPerformanceLevelCapabilitySupportedPerDatabaseMaxPerformanceLevelsList =
   /*@__PURE__*/ S.Array(
     ElasticPoolPerDatabaseMaxPerformanceLevelCapability,
@@ -1121,7 +1123,7 @@ export const ElasticPoolPerformanceLevelCapabilitySupportedPerDatabaseMaxPerform
 
 /** List of supported maintenance configurations */
 export type ElasticPoolPerformanceLevelCapabilitySupportedMaintenanceConfigurationsList =
-  ReadonlyArray<MaintenanceConfigurationCapability>;
+  Array<MaintenanceConfigurationCapability>;
 export const ElasticPoolPerformanceLevelCapabilitySupportedMaintenanceConfigurationsList =
   /*@__PURE__*/ S.Array(
     MaintenanceConfigurationCapability,
@@ -1129,7 +1131,7 @@ export const ElasticPoolPerformanceLevelCapabilitySupportedMaintenanceConfigurat
 
 /** List of supported min capacities */
 export type ElasticPoolPerformanceLevelCapabilitySupportedMinCapacitiesList =
-  ReadonlyArray<MinCapacityCapability>;
+  Array<MinCapacityCapability>;
 export const ElasticPoolPerformanceLevelCapabilitySupportedMinCapacitiesList =
   /*@__PURE__*/ S.Array(
     MinCapacityCapability,
@@ -1169,7 +1171,7 @@ export const PerDatabaseAutoPauseDelayTimeRange = /*@__PURE__*/ S.suspend(() =>
 
 /** List of supported availability zones */
 export type ElasticPoolPerformanceLevelCapabilitySupportedZonesList =
-  ReadonlyArray<ZonePinningCapability>;
+  Array<ZonePinningCapability>;
 export const ElasticPoolPerformanceLevelCapabilitySupportedZonesList =
   /*@__PURE__*/ S.Array(
     ZonePinningCapability,
@@ -1261,7 +1263,7 @@ export const ElasticPoolPerformanceLevelCapability = /*@__PURE__*/ S.suspend(
 
 /** The list of supported elastic pool DTU levels for the edition. */
 export type ElasticPoolEditionCapabilitySupportedElasticPoolPerformanceLevelsList =
-  ReadonlyArray<ElasticPoolPerformanceLevelCapability>;
+  Array<ElasticPoolPerformanceLevelCapability>;
 export const ElasticPoolEditionCapabilitySupportedElasticPoolPerformanceLevelsList =
   /*@__PURE__*/ S.Array(
     ElasticPoolPerformanceLevelCapability,
@@ -1307,7 +1309,7 @@ export const ElasticPoolEditionCapability = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of supported elastic pool editions. */
 export type ServerVersionCapabilitySupportedElasticPoolEditionsList =
-  ReadonlyArray<ElasticPoolEditionCapability>;
+  Array<ElasticPoolEditionCapability>;
 export const ServerVersionCapabilitySupportedElasticPoolEditionsList =
   /*@__PURE__*/ S.Array(
     ElasticPoolEditionCapability,
@@ -1350,7 +1352,7 @@ export const ServerVersionCapability = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of supported server versions. */
 export type LocationCapabilitiesSupportedServerVersionsList =
-  ReadonlyArray<ServerVersionCapability>;
+  Array<ServerVersionCapability>;
 export const LocationCapabilitiesSupportedServerVersionsList =
   /*@__PURE__*/ S.Array(
     ServerVersionCapability,
@@ -1358,7 +1360,7 @@ export const LocationCapabilitiesSupportedServerVersionsList =
 
 /** List of supported license types. */
 export type ManagedInstanceFamilyCapabilitySupportedLicenseTypesList =
-  ReadonlyArray<LicenseTypeCapability>;
+  Array<LicenseTypeCapability>;
 export const ManagedInstanceFamilyCapabilitySupportedLicenseTypesList =
   /*@__PURE__*/ S.Array(
     LicenseTypeCapability,
@@ -1399,7 +1401,7 @@ export const MaxLimitRangeCapability = /*@__PURE__*/ S.suspend(() =>
 
 /** Storage size ranges. */
 export type ManagedInstanceVcoresCapabilitySupportedStorageSizesList =
-  ReadonlyArray<MaxSizeRangeCapability>;
+  Array<MaxSizeRangeCapability>;
 export const ManagedInstanceVcoresCapabilitySupportedStorageSizesList =
   /*@__PURE__*/ S.Array(
     MaxSizeRangeCapability,
@@ -1438,7 +1440,7 @@ export const ManagedInstanceMaintenanceConfigurationCapability =
 
 /** List of supported maintenance configurations */
 export type ManagedInstanceVcoresCapabilitySupportedMaintenanceConfigurationsList =
-  ReadonlyArray<ManagedInstanceMaintenanceConfigurationCapability>;
+  Array<ManagedInstanceMaintenanceConfigurationCapability>;
 export const ManagedInstanceVcoresCapabilitySupportedMaintenanceConfigurationsList =
   /*@__PURE__*/ S.Array(
     ManagedInstanceMaintenanceConfigurationCapability,
@@ -1529,7 +1531,7 @@ export const ManagedInstanceVcoresCapability = /*@__PURE__*/ S.suspend(() =>
 
 /** List of supported virtual cores values. */
 export type ManagedInstanceFamilyCapabilitySupportedVcoresValuesList =
-  ReadonlyArray<ManagedInstanceVcoresCapability>;
+  Array<ManagedInstanceVcoresCapability>;
 export const ManagedInstanceFamilyCapabilitySupportedVcoresValuesList =
   /*@__PURE__*/ S.Array(
     ManagedInstanceVcoresCapability,
@@ -1580,7 +1582,7 @@ export const ManagedInstanceFamilyCapability = /*@__PURE__*/ S.suspend(() =>
 
 /** The supported families. */
 export type ManagedInstanceEditionCapabilitySupportedFamiliesList =
-  ReadonlyArray<ManagedInstanceFamilyCapability>;
+  Array<ManagedInstanceFamilyCapability>;
 export const ManagedInstanceEditionCapabilitySupportedFamiliesList =
   /*@__PURE__*/ S.Array(
     ManagedInstanceFamilyCapability,
@@ -1588,7 +1590,7 @@ export const ManagedInstanceEditionCapabilitySupportedFamiliesList =
 
 /** The list of supported storage capabilities for this edition */
 export type ManagedInstanceEditionCapabilitySupportedStorageCapabilitiesList =
-  ReadonlyArray<StorageCapability>;
+  Array<StorageCapability>;
 export const ManagedInstanceEditionCapabilitySupportedStorageCapabilitiesList =
   /*@__PURE__*/ S.Array(
     StorageCapability,
@@ -1636,7 +1638,7 @@ export const ManagedInstanceEditionCapability = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of supported managed instance editions. */
 export type ManagedInstanceVersionCapabilitySupportedEditionsList =
-  ReadonlyArray<ManagedInstanceEditionCapability>;
+  Array<ManagedInstanceEditionCapability>;
 export const ManagedInstanceVersionCapabilitySupportedEditionsList =
   /*@__PURE__*/ S.Array(
     ManagedInstanceEditionCapability,
@@ -1644,7 +1646,7 @@ export const ManagedInstanceVersionCapabilitySupportedEditionsList =
 
 /** List of supported license types. */
 export type InstancePoolFamilyCapabilitySupportedLicenseTypesList =
-  ReadonlyArray<LicenseTypeCapability>;
+  Array<LicenseTypeCapability>;
 export const InstancePoolFamilyCapabilitySupportedLicenseTypesList =
   /*@__PURE__*/ S.Array(
     LicenseTypeCapability,
@@ -1685,7 +1687,7 @@ export const InstancePoolVcoresCapability = /*@__PURE__*/ S.suspend(() =>
 
 /** List of supported virtual cores values. */
 export type InstancePoolFamilyCapabilitySupportedVcoresValuesList =
-  ReadonlyArray<InstancePoolVcoresCapability>;
+  Array<InstancePoolVcoresCapability>;
 export const InstancePoolFamilyCapabilitySupportedVcoresValuesList =
   /*@__PURE__*/ S.Array(
     InstancePoolVcoresCapability,
@@ -1730,7 +1732,7 @@ export const InstancePoolFamilyCapability = /*@__PURE__*/ S.suspend(() =>
 
 /** The supported families. */
 export type InstancePoolEditionCapabilitySupportedFamiliesList =
-  ReadonlyArray<InstancePoolFamilyCapability>;
+  Array<InstancePoolFamilyCapability>;
 export const InstancePoolEditionCapabilitySupportedFamiliesList =
   /*@__PURE__*/ S.Array(
     InstancePoolFamilyCapability,
@@ -1770,7 +1772,7 @@ export const InstancePoolEditionCapability = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of supported instance pool editions. */
 export type ManagedInstanceVersionCapabilitySupportedInstancePoolEditionsList =
-  ReadonlyArray<InstancePoolEditionCapability>;
+  Array<InstancePoolEditionCapability>;
 export const ManagedInstanceVersionCapabilitySupportedInstancePoolEditionsList =
   /*@__PURE__*/ S.Array(
     InstancePoolEditionCapability,
@@ -1815,7 +1817,7 @@ export const ManagedInstanceVersionCapability = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of supported managed instance versions. */
 export type LocationCapabilitiesSupportedManagedInstanceVersionsList =
-  ReadonlyArray<ManagedInstanceVersionCapability>;
+  Array<ManagedInstanceVersionCapability>;
 export const LocationCapabilitiesSupportedManagedInstanceVersionsList =
   /*@__PURE__*/ S.Array(
     ManagedInstanceVersionCapability,
@@ -1881,7 +1883,7 @@ export const JobAgentServiceLevelObjectiveCapability = /*@__PURE__*/ S.suspend(
 
 /** The list of supported service level objectives for the edition. */
 export type JobAgentEditionCapabilitySupportedServiceLevelObjectivesList =
-  ReadonlyArray<JobAgentServiceLevelObjectiveCapability>;
+  Array<JobAgentServiceLevelObjectiveCapability>;
 export const JobAgentEditionCapabilitySupportedServiceLevelObjectivesList =
   /*@__PURE__*/ S.Array(
     JobAgentServiceLevelObjectiveCapability,
@@ -1921,7 +1923,7 @@ export const JobAgentEditionCapability = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of supported editions. */
 export type JobAgentVersionCapabilitySupportedEditionsList =
-  ReadonlyArray<JobAgentEditionCapability>;
+  Array<JobAgentEditionCapability>;
 export const JobAgentVersionCapabilitySupportedEditionsList =
   /*@__PURE__*/ S.Array(
     JobAgentEditionCapability,
@@ -1961,7 +1963,7 @@ export const JobAgentVersionCapability = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of supported job agent versions. */
 export type LocationCapabilitiesSupportedJobAgentVersionsList =
-  ReadonlyArray<JobAgentVersionCapability>;
+  Array<JobAgentVersionCapability>;
 export const LocationCapabilitiesSupportedJobAgentVersionsList =
   /*@__PURE__*/ S.Array(
     JobAgentVersionCapability,
@@ -2283,7 +2285,7 @@ export const DatabaseAdvancedThreatProtection = /*@__PURE__*/ S.suspend(() =>
 
 /** The DatabaseAdvancedThreatProtection items on this page */
 export type DatabaseAdvancedThreatProtectionListResultValueList =
-  ReadonlyArray<DatabaseAdvancedThreatProtection>;
+  Array<DatabaseAdvancedThreatProtection>;
 export const DatabaseAdvancedThreatProtectionListResultValueList =
   /*@__PURE__*/ S.Array(
     DatabaseAdvancedThreatProtection,
@@ -2466,7 +2468,7 @@ export const RecommendedActionImpactRecord = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets the estimated impact info for this recommended action e.g., Estimated CPU gain, Estimated Disk Space change */
 export type RecommendedActionPropertiesEstimatedImpactList =
-  ReadonlyArray<RecommendedActionImpactRecord>;
+  Array<RecommendedActionImpactRecord>;
 export const RecommendedActionPropertiesEstimatedImpactList =
   /*@__PURE__*/ S.Array(
     RecommendedActionImpactRecord,
@@ -2474,7 +2476,7 @@ export const RecommendedActionPropertiesEstimatedImpactList =
 
 /** Gets the observed/actual impact info for this recommended action e.g., Actual CPU gain, Actual Disk Space change */
 export type RecommendedActionPropertiesObservedImpactList =
-  ReadonlyArray<RecommendedActionImpactRecord>;
+  Array<RecommendedActionImpactRecord>;
 export const RecommendedActionPropertiesObservedImpactList =
   /*@__PURE__*/ S.Array(
     RecommendedActionImpactRecord,
@@ -2507,14 +2509,13 @@ export const RecommendedActionMetricInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets the time series info of metrics for this recommended action e.g., CPU consumption time series */
 export type RecommendedActionPropertiesTimeSeriesList =
-  ReadonlyArray<RecommendedActionMetricInfo>;
+  Array<RecommendedActionMetricInfo>;
 export const RecommendedActionPropertiesTimeSeriesList = /*@__PURE__*/ S.Array(
   RecommendedActionMetricInfo,
 ) as any as S.Schema<RecommendedActionPropertiesTimeSeriesList>;
 
 /** Gets the linked objects, if any. */
-export type RecommendedActionPropertiesLinkedObjectsList =
-  ReadonlyArray<string>;
+export type RecommendedActionPropertiesLinkedObjectsList = Array<string>;
 export const RecommendedActionPropertiesLinkedObjectsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2640,8 +2641,7 @@ export const RecommendedAction = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RecommendedAction>;
 
 /** Gets the recommended actions for this advisor. */
-export type AdvisorPropertiesRecommendedActionsList =
-  ReadonlyArray<RecommendedAction>;
+export type AdvisorPropertiesRecommendedActionsList = Array<RecommendedAction>;
 export const AdvisorPropertiesRecommendedActionsList = /*@__PURE__*/ S.Array(
   RecommendedAction,
 ) as any as S.Schema<AdvisorPropertiesRecommendedActionsList>;
@@ -2769,7 +2769,7 @@ export const DatabaseAdvisorsListByDatabaseResponseBodyItem =
   }) as any as S.Schema<DatabaseAdvisorsListByDatabaseResponseBodyItem>;
 
 export type DatabaseAdvisorsListByDatabaseResponseBodyList =
-  ReadonlyArray<DatabaseAdvisorsListByDatabaseResponseBodyItem>;
+  Array<DatabaseAdvisorsListByDatabaseResponseBodyItem>;
 export const DatabaseAdvisorsListByDatabaseResponseBodyList =
   /*@__PURE__*/ S.Array(
     DatabaseAdvisorsListByDatabaseResponseBodyItem,
@@ -3159,7 +3159,7 @@ export const DatabaseBlobAuditingPoliciesCreateOrUpdateRequestBlobAuditingPolicy
 
 /** Specifies the Actions-Groups and Actions to audit. The recommended set of action groups to use is the following combination - this will audit all the queries and stored procedures executed against the database, as well as successful and failed logins: BATCH_COMPLETED_GROUP, SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP, FAILED_DATABASE_AUTHENTICATION_GROUP. This above combination is also the set that is configured by default when enabling auditing from the Azure portal. The supported action groups to audit are (note: choose only specific groups that cover your auditing needs. Using unnecessary groups could lead to very large quantities of audit records): APPLICATION_ROLE_CHANGE_PASSWORD_GROUP BACKUP_RESTORE_GROUP DATABASE_LOGOUT_GROUP DATABASE_OBJECT_CHANGE_GROUP DATABASE_OBJECT_OWNERSHIP_CHANGE_GROUP DATABASE_OBJECT_PERMISSION_CHANGE_GROUP DATABASE_OPERATION_GROUP DATABASE_PERMISSION_CHANGE_GROUP DATABASE_PRINCIPAL_CHANGE_GROUP DATABASE_PRINCIPAL_IMPERSONATION_GROUP DATABASE_ROLE_MEMBER_CHANGE_GROUP FAILED_DATABASE_AUTHENTICATION_GROUP SCHEMA_OBJECT_ACCESS_GROUP SCHEMA_OBJECT_CHANGE_GROUP SCHEMA_OBJECT_OWNERSHIP_CHANGE_GROUP SCHEMA_OBJECT_PERMISSION_CHANGE_GROUP SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP USER_CHANGE_PASSWORD_GROUP BATCH_STARTED_GROUP BATCH_COMPLETED_GROUP DBCC_GROUP DATABASE_OWNERSHIP_CHANGE_GROUP DATABASE_CHANGE_GROUP LEDGER_OPERATION_GROUP These are groups that cover all sql statements and stored procedures executed against the database, and should not be used in combination with other groups as this will result in duplicate audit logs. For more information, see [Database-Level Audit Action Groups](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-action-groups). For Database auditing policy, specific Actions can also be specified (note that Actions cannot be specified for Server auditing policy). The supported actions to audit are: SELECT UPDATE INSERT DELETE EXECUTE RECEIVE REFERENCES The general form for defining an action to be audited is: {action} ON {object} BY {principal} Note that <object> in the above format can refer to an object like a table, view, or stored procedure, or an entire database or schema. For the latter cases, the forms DATABASE::{db_name} and SCHEMA::{schema_name} are used, respectively. For example: SELECT on dbo.myTable by public SELECT on DATABASE::myDatabase by public SELECT on SCHEMA::mySchema by public For more information, see [Database-Level Audit Actions](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-actions) */
 export type DatabaseBlobAuditingPolicyPropertiesAuditActionsAndGroupsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const DatabaseBlobAuditingPolicyPropertiesAuditActionsAndGroupsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3184,7 +3184,7 @@ export interface DatabaseBlobAuditingPolicyProperties {
   /** Specifies whether Managed Identity is used to access blob storage */
   isManagedIdentityInUse?: boolean;
   /** Specifies the state of the audit. If state is Enabled, storageEndpoint or isAzureMonitorTargetEnabled are required. */
-  state: DatabaseBlobAuditingPolicyPropertiesState;
+  state: DatabaseBlobAuditingPolicyPropertiesState | (string & {});
   /** Specifies the blob storage endpoint (e.g. https://MyAccount.blob.core.windows.net). If state is Enabled, storageEndpoint or isAzureMonitorTargetEnabled is required. */
   storageEndpoint?: string;
   /** Specifies the identifier key of the auditing storage account. If state is Enabled and storageEndpoint is specified, not specifying the storageAccountAccessKey will use SQL server system-assigned managed identity to access the storage. Prerequisites for using managed identity authentication: 1. Assign SQL Server a system-assigned managed identity in Azure Active Directory (AAD). 2. Grant SQL Server identity access to the storage account by adding 'Storage Blob Data Contributor' RBAC role to the server identity. For more information, see [Auditing to storage using Managed Identity authentication](https://go.microsoft.com/fwlink/?linkid=2114355) */
@@ -3409,7 +3409,7 @@ export const DatabaseBlobAuditingPolicy = /*@__PURE__*/ S.suspend(() =>
 
 /** The DatabaseBlobAuditingPolicy items on this page */
 export type DatabaseBlobAuditingPolicyListResultValueList =
-  ReadonlyArray<DatabaseBlobAuditingPolicy>;
+  Array<DatabaseBlobAuditingPolicy>;
 export const DatabaseBlobAuditingPolicyListResultValueList =
   /*@__PURE__*/ S.Array(
     DatabaseBlobAuditingPolicy,
@@ -3560,29 +3560,25 @@ export const DatabaseColumnsGetResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DatabaseColumnsGetResponse",
 }) as any as S.Schema<DatabaseColumnsGetResponse>;
 
-export type DatabaseColumnsListByDatabaseRequestSchemaList =
-  ReadonlyArray<string>;
+export type DatabaseColumnsListByDatabaseRequestSchemaList = Array<string>;
 export const DatabaseColumnsListByDatabaseRequestSchemaList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<DatabaseColumnsListByDatabaseRequestSchemaList>;
 
-export type DatabaseColumnsListByDatabaseRequestTableList =
-  ReadonlyArray<string>;
+export type DatabaseColumnsListByDatabaseRequestTableList = Array<string>;
 export const DatabaseColumnsListByDatabaseRequestTableList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<DatabaseColumnsListByDatabaseRequestTableList>;
 
-export type DatabaseColumnsListByDatabaseRequestColumnList =
-  ReadonlyArray<string>;
+export type DatabaseColumnsListByDatabaseRequestColumnList = Array<string>;
 export const DatabaseColumnsListByDatabaseRequestColumnList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<DatabaseColumnsListByDatabaseRequestColumnList>;
 
-export type DatabaseColumnsListByDatabaseRequestOrderByList =
-  ReadonlyArray<string>;
+export type DatabaseColumnsListByDatabaseRequestOrderByList = Array<string>;
 export const DatabaseColumnsListByDatabaseRequestOrderByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3661,7 +3657,7 @@ export const DatabaseColumn = /*@__PURE__*/ S.suspend(() =>
 
 /** The DatabaseColumn items on this page */
 export type DatabaseColumnsListByDatabaseResponseValueList =
-  ReadonlyArray<DatabaseColumn>;
+  Array<DatabaseColumn>;
 export const DatabaseColumnsListByDatabaseResponseValueList =
   /*@__PURE__*/ S.Array(
     DatabaseColumn,
@@ -3721,8 +3717,7 @@ export const DatabaseColumnsListByTableRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DatabaseColumnsListByTableRequest>;
 
 /** The DatabaseColumn items on this page */
-export type DatabaseColumnsListByTableResponseValueList =
-  ReadonlyArray<DatabaseColumn>;
+export type DatabaseColumnsListByTableResponseValueList = Array<DatabaseColumn>;
 export const DatabaseColumnsListByTableResponseValueList =
   /*@__PURE__*/ S.Array(
     DatabaseColumn,
@@ -3971,7 +3966,7 @@ export const ImportExportExtensionsOperationResultPropertiesPrivateEndpointConne
 
 /** Gets the status of private endpoints associated with this request. */
 export type ImportExportExtensionsOperationResultPropertiesPrivateEndpointConnectionsList =
-  ReadonlyArray<ImportExportExtensionsOperationResultPropertiesPrivateEndpointConnectionsItem>;
+  Array<ImportExportExtensionsOperationResultPropertiesPrivateEndpointConnectionsItem>;
 export const ImportExportExtensionsOperationResultPropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     ImportExportExtensionsOperationResultPropertiesPrivateEndpointConnectionsItem,
@@ -4139,7 +4134,7 @@ export const ImportExportExtensionsOperationResult = /*@__PURE__*/ S.suspend(
 
 /** Array of results. */
 export type ImportExportExtensionsOperationListResultValueList =
-  ReadonlyArray<ImportExportExtensionsOperationResult>;
+  Array<ImportExportExtensionsOperationResult>;
 export const ImportExportExtensionsOperationListResultValueList =
   /*@__PURE__*/ S.Array(
     ImportExportExtensionsOperationResult,
@@ -4353,8 +4348,7 @@ export const DatabaseOperation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DatabaseOperation>;
 
 /** The DatabaseOperation items on this page */
-export type DatabaseOperationListResultValueList =
-  ReadonlyArray<DatabaseOperation>;
+export type DatabaseOperationListResultValueList = Array<DatabaseOperation>;
 export const DatabaseOperationListResultValueList = /*@__PURE__*/ S.Array(
   DatabaseOperation,
 ) as any as S.Schema<DatabaseOperationListResultValueList>;
@@ -4507,7 +4501,7 @@ export const DatabaseRecommendedActionsListByDatabaseAdvisorResponseBodyItem =
   }) as any as S.Schema<DatabaseRecommendedActionsListByDatabaseAdvisorResponseBodyItem>;
 
 export type DatabaseRecommendedActionsListByDatabaseAdvisorResponseBodyList =
-  ReadonlyArray<DatabaseRecommendedActionsListByDatabaseAdvisorResponseBodyItem>;
+  Array<DatabaseRecommendedActionsListByDatabaseAdvisorResponseBodyItem>;
 export const DatabaseRecommendedActionsListByDatabaseAdvisorResponseBodyList =
   /*@__PURE__*/ S.Array(
     DatabaseRecommendedActionsListByDatabaseAdvisorResponseBodyItem,
@@ -4724,8 +4718,7 @@ export const Resource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Resource" }) as any as S.Schema<Resource>;
 
 /** The DatabaseSchema items on this page */
-export type DatabaseSchemasListByDatabaseResponseValueList =
-  ReadonlyArray<Resource>;
+export type DatabaseSchemasListByDatabaseResponseValueList = Array<Resource>;
 export const DatabaseSchemasListByDatabaseResponseValueList =
   /*@__PURE__*/ S.Array(
     Resource,
@@ -5102,7 +5095,7 @@ export const DatabaseIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
 /** Azure Active Directory identity configuration for a resource. */
 export interface DatabaseIdentity {
   /** The identity type */
-  type?: DatabaseIdentityType;
+  type?: DatabaseIdentityType | (string & {});
   /** Universally Unique Identifier */
   tenantId?: string;
   /** The resource ids of the user assigned identities to use */
@@ -5612,7 +5605,7 @@ export const SecurityAlertsPolicyState = /*@__PURE__*/ S.String;
 
 /** Specifies an array of alerts that are disabled. Allowed values are: Sql_Injection, Sql_Injection_Vulnerability, Access_Anomaly, Data_Exfiltration, Unsafe_Action, Brute_Force */
 export type DatabaseSecurityAlertPoliciesCreateOrUpdateRequestPropertiesDisabledAlertsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const DatabaseSecurityAlertPoliciesCreateOrUpdateRequestPropertiesDisabledAlertsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5620,7 +5613,7 @@ export const DatabaseSecurityAlertPoliciesCreateOrUpdateRequestPropertiesDisable
 
 /** Specifies an array of e-mail addresses to which the alert is sent. */
 export type DatabaseSecurityAlertPoliciesCreateOrUpdateRequestPropertiesEmailAddressesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const DatabaseSecurityAlertPoliciesCreateOrUpdateRequestPropertiesEmailAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5706,7 +5699,7 @@ export const DatabaseSecurityAlertPoliciesCreateOrUpdateRequest =
 
 /** Specifies an array of alerts that are disabled. Allowed values are: Sql_Injection, Sql_Injection_Vulnerability, Access_Anomaly, Data_Exfiltration, Unsafe_Action, Brute_Force */
 export type DatabaseSecurityAlertPoliciesCreateOrUpdateResponsePropertiesDisabledAlertsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const DatabaseSecurityAlertPoliciesCreateOrUpdateResponsePropertiesDisabledAlertsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5714,7 +5707,7 @@ export const DatabaseSecurityAlertPoliciesCreateOrUpdateResponsePropertiesDisabl
 
 /** Specifies an array of e-mail addresses to which the alert is sent. */
 export type DatabaseSecurityAlertPoliciesCreateOrUpdateResponsePropertiesEmailAddressesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const DatabaseSecurityAlertPoliciesCreateOrUpdateResponsePropertiesEmailAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5830,7 +5823,7 @@ export const DatabaseSecurityAlertPoliciesGetRequest = /*@__PURE__*/ S.suspend(
 
 /** Specifies an array of alerts that are disabled. Allowed values are: Sql_Injection, Sql_Injection_Vulnerability, Access_Anomaly, Data_Exfiltration, Unsafe_Action, Brute_Force */
 export type DatabaseSecurityAlertPoliciesGetResponsePropertiesDisabledAlertsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const DatabaseSecurityAlertPoliciesGetResponsePropertiesDisabledAlertsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5838,7 +5831,7 @@ export const DatabaseSecurityAlertPoliciesGetResponsePropertiesDisabledAlertsLis
 
 /** Specifies an array of e-mail addresses to which the alert is sent. */
 export type DatabaseSecurityAlertPoliciesGetResponsePropertiesEmailAddressesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const DatabaseSecurityAlertPoliciesGetResponsePropertiesEmailAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5941,7 +5934,7 @@ export const DatabaseSecurityAlertPoliciesListByDatabaseRequest =
 
 /** Specifies an array of alerts that are disabled. Allowed values are: Sql_Injection, Sql_Injection_Vulnerability, Access_Anomaly, Data_Exfiltration, Unsafe_Action, Brute_Force */
 export type DatabaseSecurityAlertPolicyPropertiesDisabledAlertsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const DatabaseSecurityAlertPolicyPropertiesDisabledAlertsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5949,7 +5942,7 @@ export const DatabaseSecurityAlertPolicyPropertiesDisabledAlertsList =
 
 /** Specifies an array of e-mail addresses to which the alert is sent. */
 export type DatabaseSecurityAlertPolicyPropertiesEmailAddressesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const DatabaseSecurityAlertPolicyPropertiesEmailAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6021,7 +6014,7 @@ export const DatabaseSecurityAlertPolicy = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of results. */
 export type DatabaseSecurityAlertListResultValueList =
-  ReadonlyArray<DatabaseSecurityAlertPolicy>;
+  Array<DatabaseSecurityAlertPolicy>;
 export const DatabaseSecurityAlertListResultValueList = /*@__PURE__*/ S.Array(
   DatabaseSecurityAlertPolicy,
 ) as any as S.Schema<DatabaseSecurityAlertListResultValueList>;
@@ -6137,7 +6130,7 @@ export const PrivateEndpointConnectionRequestStatus = /*@__PURE__*/ S.suspend(
 
 /** Gets the status of private endpoints associated with this request. */
 export type ImportExportOperationResultPropertiesPrivateEndpointConnectionsList =
-  ReadonlyArray<PrivateEndpointConnectionRequestStatus>;
+  Array<PrivateEndpointConnectionRequestStatus>;
 export const ImportExportOperationResultPropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnectionRequestStatus,
@@ -6560,7 +6553,7 @@ export const Database = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Database" }) as any as S.Schema<Database>;
 
 /** The Database items on this page */
-export type DatabaseListResultValueList = ReadonlyArray<Database>;
+export type DatabaseListResultValueList = Array<Database>;
 export const DatabaseListResultValueList = /*@__PURE__*/ S.Array(
   Database,
 ) as any as S.Schema<DatabaseListResultValueList>;
@@ -6749,14 +6742,14 @@ export const DatabaseSqlVulnerabilityAssessmentBaselinesCreateOrUpdateRequestBas
   /*@__PURE__*/ S.String;
 
 export type DatabaseSqlVulnerabilityAssessmentRuleBaselineListInputPropertiesResultsValueItemList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const DatabaseSqlVulnerabilityAssessmentRuleBaselineListInputPropertiesResultsValueItemList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<DatabaseSqlVulnerabilityAssessmentRuleBaselineListInputPropertiesResultsValueItemList>;
 
 export type DatabaseSqlVulnerabilityAssessmentRuleBaselineListInputPropertiesResultsValueList =
-  ReadonlyArray<DatabaseSqlVulnerabilityAssessmentRuleBaselineListInputPropertiesResultsValueItemList>;
+  Array<DatabaseSqlVulnerabilityAssessmentRuleBaselineListInputPropertiesResultsValueItemList>;
 export const DatabaseSqlVulnerabilityAssessmentRuleBaselineListInputPropertiesResultsValueList =
   /*@__PURE__*/ S.Array(
     DatabaseSqlVulnerabilityAssessmentRuleBaselineListInputPropertiesResultsValueItemList,
@@ -6845,14 +6838,14 @@ export const DatabaseSqlVulnerabilityAssessmentBaselinesCreateOrUpdateRequest =
   }) as any as S.Schema<DatabaseSqlVulnerabilityAssessmentBaselinesCreateOrUpdateRequest>;
 
 export type DatabaseSqlVulnerabilityAssessmentBaselineSetPropertiesResultsValueItemList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const DatabaseSqlVulnerabilityAssessmentBaselineSetPropertiesResultsValueItemList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<DatabaseSqlVulnerabilityAssessmentBaselineSetPropertiesResultsValueItemList>;
 
 export type DatabaseSqlVulnerabilityAssessmentBaselineSetPropertiesResultsValueList =
-  ReadonlyArray<DatabaseSqlVulnerabilityAssessmentBaselineSetPropertiesResultsValueItemList>;
+  Array<DatabaseSqlVulnerabilityAssessmentBaselineSetPropertiesResultsValueItemList>;
 export const DatabaseSqlVulnerabilityAssessmentBaselineSetPropertiesResultsValueList =
   /*@__PURE__*/ S.Array(
     DatabaseSqlVulnerabilityAssessmentBaselineSetPropertiesResultsValueItemList,
@@ -7068,7 +7061,7 @@ export const DatabaseSqlVulnerabilityAssessmentBaselineSet =
 
 /** The DatabaseSqlVulnerabilityAssessmentBaselineSet items on this page */
 export type DatabaseSqlVulnerabilityAssessmentBaselinesListBySqlVulnerabilityAssessmentResponseValueList =
-  ReadonlyArray<DatabaseSqlVulnerabilityAssessmentBaselineSet>;
+  Array<DatabaseSqlVulnerabilityAssessmentBaselineSet>;
 export const DatabaseSqlVulnerabilityAssessmentBaselinesListBySqlVulnerabilityAssessmentResponseValueList =
   /*@__PURE__*/ S.Array(
     DatabaseSqlVulnerabilityAssessmentBaselineSet,
@@ -7151,7 +7144,7 @@ export const DatabaseSqlVulnerabilityAssessmentRuleBaselinesCreateOrUpdateReques
   /*@__PURE__*/ S.String;
 
 export type DatabaseSqlVulnerabilityAssessmentRuleBaselineInputPropertiesResultsItemList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const DatabaseSqlVulnerabilityAssessmentRuleBaselineInputPropertiesResultsItemList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -7159,7 +7152,7 @@ export const DatabaseSqlVulnerabilityAssessmentRuleBaselineInputPropertiesResult
 
 /** The rule baseline result */
 export type DatabaseSqlVulnerabilityAssessmentRuleBaselineInputPropertiesResultsList =
-  ReadonlyArray<DatabaseSqlVulnerabilityAssessmentRuleBaselineInputPropertiesResultsItemList>;
+  Array<DatabaseSqlVulnerabilityAssessmentRuleBaselineInputPropertiesResultsItemList>;
 export const DatabaseSqlVulnerabilityAssessmentRuleBaselineInputPropertiesResultsList =
   /*@__PURE__*/ S.Array(
     DatabaseSqlVulnerabilityAssessmentRuleBaselineInputPropertiesResultsItemList,
@@ -7237,7 +7230,7 @@ export const DatabaseSqlVulnerabilityAssessmentRuleBaselinesCreateOrUpdateReques
   }) as any as S.Schema<DatabaseSqlVulnerabilityAssessmentRuleBaselinesCreateOrUpdateRequest>;
 
 export type DatabaseSqlVulnerabilityAssessmentRuleBaselinePropertiesResultsItemList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const DatabaseSqlVulnerabilityAssessmentRuleBaselinePropertiesResultsItemList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -7245,7 +7238,7 @@ export const DatabaseSqlVulnerabilityAssessmentRuleBaselinePropertiesResultsItem
 
 /** The rule baseline result */
 export type DatabaseSqlVulnerabilityAssessmentRuleBaselinePropertiesResultsList =
-  ReadonlyArray<DatabaseSqlVulnerabilityAssessmentRuleBaselinePropertiesResultsItemList>;
+  Array<DatabaseSqlVulnerabilityAssessmentRuleBaselinePropertiesResultsItemList>;
 export const DatabaseSqlVulnerabilityAssessmentRuleBaselinePropertiesResultsList =
   /*@__PURE__*/ S.Array(
     DatabaseSqlVulnerabilityAssessmentRuleBaselinePropertiesResultsItemList,
@@ -7526,7 +7519,7 @@ export const DatabaseSqlVulnerabilityAssessmentRuleBaseline =
 
 /** The DatabaseSqlVulnerabilityAssessmentRuleBaseline items on this page */
 export type DatabaseSqlVulnerabilityAssessmentRuleBaselinesListByBaselineResponseValueList =
-  ReadonlyArray<DatabaseSqlVulnerabilityAssessmentRuleBaseline>;
+  Array<DatabaseSqlVulnerabilityAssessmentRuleBaseline>;
 export const DatabaseSqlVulnerabilityAssessmentRuleBaselinesListByBaselineResponseValueList =
   /*@__PURE__*/ S.Array(
     DatabaseSqlVulnerabilityAssessmentRuleBaseline,
@@ -7603,7 +7596,7 @@ export type RuleStatus = "NonFinding" | "Finding" | "InternalError";
 export const RuleStatus = /*@__PURE__*/ S.String;
 
 export type SqlVulnerabilityAssessmentScanResultPropertiesQueryResultsItemList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const SqlVulnerabilityAssessmentScanResultPropertiesQueryResultsItemList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -7611,14 +7604,14 @@ export const SqlVulnerabilityAssessmentScanResultPropertiesQueryResultsItemList 
 
 /** SQL Vulnerability Assessment query results that was run. */
 export type SqlVulnerabilityAssessmentScanResultPropertiesQueryResultsList =
-  ReadonlyArray<SqlVulnerabilityAssessmentScanResultPropertiesQueryResultsItemList>;
+  Array<SqlVulnerabilityAssessmentScanResultPropertiesQueryResultsItemList>;
 export const SqlVulnerabilityAssessmentScanResultPropertiesQueryResultsList =
   /*@__PURE__*/ S.Array(
     SqlVulnerabilityAssessmentScanResultPropertiesQueryResultsItemList,
   ) as any as S.Schema<SqlVulnerabilityAssessmentScanResultPropertiesQueryResultsList>;
 
 /** SQL Vulnerability Assessment remediation script. */
-export type RemediationScriptsList = ReadonlyArray<string>;
+export type RemediationScriptsList = Array<string>;
 export const RemediationScriptsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RemediationScriptsList>;
@@ -7643,14 +7636,14 @@ export const Remediation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Remediation" }) as any as S.Schema<Remediation>;
 
-export type BaselineExpectedResultsItemList = ReadonlyArray<string>;
+export type BaselineExpectedResultsItemList = Array<string>;
 export const BaselineExpectedResultsItemList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BaselineExpectedResultsItemList>;
 
 /** SQL Vulnerability Assessment baseline expected results */
 export type BaselineExpectedResultsList =
-  ReadonlyArray<BaselineExpectedResultsItemList>;
+  Array<BaselineExpectedResultsItemList>;
 export const BaselineExpectedResultsList = /*@__PURE__*/ S.Array(
   BaselineExpectedResultsItemList,
 ) as any as S.Schema<BaselineExpectedResultsList>;
@@ -7669,8 +7662,7 @@ export const Baseline = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Baseline" }) as any as S.Schema<Baseline>;
 
-export type BaselineAdjustedResultResultsNotInBaselineItemList =
-  ReadonlyArray<string>;
+export type BaselineAdjustedResultResultsNotInBaselineItemList = Array<string>;
 export const BaselineAdjustedResultResultsNotInBaselineItemList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -7678,14 +7670,13 @@ export const BaselineAdjustedResultResultsNotInBaselineItemList =
 
 /** SQL Vulnerability Assessment results that are not in baseline */
 export type BaselineAdjustedResultResultsNotInBaselineList =
-  ReadonlyArray<BaselineAdjustedResultResultsNotInBaselineItemList>;
+  Array<BaselineAdjustedResultResultsNotInBaselineItemList>;
 export const BaselineAdjustedResultResultsNotInBaselineList =
   /*@__PURE__*/ S.Array(
     BaselineAdjustedResultResultsNotInBaselineItemList,
   ) as any as S.Schema<BaselineAdjustedResultResultsNotInBaselineList>;
 
-export type BaselineAdjustedResultResultsOnlyInBaselineItemList =
-  ReadonlyArray<string>;
+export type BaselineAdjustedResultResultsOnlyInBaselineItemList = Array<string>;
 export const BaselineAdjustedResultResultsOnlyInBaselineItemList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -7693,7 +7684,7 @@ export const BaselineAdjustedResultResultsOnlyInBaselineItemList =
 
 /** SQL Vulnerability Assessment results that are in baseline. */
 export type BaselineAdjustedResultResultsOnlyInBaselineList =
-  ReadonlyArray<BaselineAdjustedResultResultsOnlyInBaselineItemList>;
+  Array<BaselineAdjustedResultResultsOnlyInBaselineItemList>;
 export const BaselineAdjustedResultResultsOnlyInBaselineList =
   /*@__PURE__*/ S.Array(
     BaselineAdjustedResultResultsOnlyInBaselineItemList,
@@ -7742,20 +7733,20 @@ export type RuleType =
   | "NegativeList";
 export const RuleType = /*@__PURE__*/ S.String;
 
-export type QueryCheckExpectedResultItemList = ReadonlyArray<string>;
+export type QueryCheckExpectedResultItemList = Array<string>;
 export const QueryCheckExpectedResultItemList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<QueryCheckExpectedResultItemList>;
 
 /** SQL Vulnerability Assessment query expected result. */
 export type QueryCheckExpectedResultList =
-  ReadonlyArray<QueryCheckExpectedResultItemList>;
+  Array<QueryCheckExpectedResultItemList>;
 export const QueryCheckExpectedResultList = /*@__PURE__*/ S.Array(
   QueryCheckExpectedResultItemList,
 ) as any as S.Schema<QueryCheckExpectedResultList>;
 
 /** SQL Vulnerability Assessment column names of query expected result. */
-export type QueryCheckColumnNamesList = ReadonlyArray<string>;
+export type QueryCheckColumnNamesList = Array<string>;
 export const QueryCheckColumnNamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<QueryCheckColumnNamesList>;
@@ -7794,7 +7785,7 @@ export const BenchmarkReference = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BenchmarkReference>;
 
 /** SQL Vulnerability Assessment benchmark references. */
-export type VaRuleBenchmarkReferencesList = ReadonlyArray<BenchmarkReference>;
+export type VaRuleBenchmarkReferencesList = Array<BenchmarkReference>;
 export const VaRuleBenchmarkReferencesList = /*@__PURE__*/ S.Array(
   BenchmarkReference,
 ) as any as S.Schema<VaRuleBenchmarkReferencesList>;
@@ -7969,7 +7960,7 @@ export const SqlVulnerabilityAssessmentScanResults = /*@__PURE__*/ S.suspend(
 
 /** Array of results. */
 export type DatabaseSqlVulnerabilityAssessmentScanResultListByScanResponseValueList =
-  ReadonlyArray<SqlVulnerabilityAssessmentScanResults>;
+  Array<SqlVulnerabilityAssessmentScanResults>;
 export const DatabaseSqlVulnerabilityAssessmentScanResultListByScanResponseValueList =
   /*@__PURE__*/ S.Array(
     SqlVulnerabilityAssessmentScanResults,
@@ -8069,7 +8060,7 @@ export const SqlVulnerabilityAssessmentScanError = /*@__PURE__*/ S.suspend(() =>
 
 /** The scan errors. */
 export type SqlVulnerabilityAssessmentScanRecordPropertiesErrorsList =
-  ReadonlyArray<SqlVulnerabilityAssessmentScanError>;
+  Array<SqlVulnerabilityAssessmentScanError>;
 export const SqlVulnerabilityAssessmentScanRecordPropertiesErrorsList =
   /*@__PURE__*/ S.Array(
     SqlVulnerabilityAssessmentScanError,
@@ -8235,7 +8226,7 @@ export const SqlVulnerabilityAssessmentScanRecord = /*@__PURE__*/ S.suspend(
 
 /** The SqlVulnerabilityAssessmentScanRecord items on this page */
 export type DatabaseSqlVulnerabilityAssessmentScansListBySqlVulnerabilityAssessmentsResponseValueList =
-  ReadonlyArray<SqlVulnerabilityAssessmentScanRecord>;
+  Array<SqlVulnerabilityAssessmentScanRecord>;
 export const DatabaseSqlVulnerabilityAssessmentScansListBySqlVulnerabilityAssessmentsResponseValueList =
   /*@__PURE__*/ S.Array(
     SqlVulnerabilityAssessmentScanRecord,
@@ -8307,7 +8298,7 @@ export const SqlVulnerabilityAssessmentState = /*@__PURE__*/ S.String;
 
 export interface SqlVulnerabilityAssessmentPolicyProperties {
   /** Specifies the state of the SQL Vulnerability Assessment, whether it is enabled or disabled or a state has not been applied yet on the specific database or server. */
-  state?: SqlVulnerabilityAssessmentState;
+  state?: SqlVulnerabilityAssessmentState | (string & {});
 }
 export const SqlVulnerabilityAssessmentPolicyProperties =
   /*@__PURE__*/ S.suspend(() =>
@@ -8400,7 +8391,7 @@ export const SqlVulnerabilityAssessment = /*@__PURE__*/ S.suspend(() =>
 
 /** The SqlVulnerabilityAssessment items on this page */
 export type DatabaseSqlVulnerabilityAssessmentsSettingsListByDatabaseResponseValueList =
-  ReadonlyArray<SqlVulnerabilityAssessment>;
+  Array<SqlVulnerabilityAssessment>;
 export const DatabaseSqlVulnerabilityAssessmentsSettingsListByDatabaseResponseValueList =
   /*@__PURE__*/ S.Array(
     SqlVulnerabilityAssessment,
@@ -9169,8 +9160,7 @@ export const DatabaseTable = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DatabaseTable" }) as any as S.Schema<DatabaseTable>;
 
 /** The DatabaseTable items on this page */
-export type DatabaseTablesListBySchemaResponseValueList =
-  ReadonlyArray<DatabaseTable>;
+export type DatabaseTablesListBySchemaResponseValueList = Array<DatabaseTable>;
 export const DatabaseTablesListBySchemaResponseValueList =
   /*@__PURE__*/ S.Array(
     DatabaseTable,
@@ -9265,7 +9255,7 @@ export const DatabaseUsage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DatabaseUsage" }) as any as S.Schema<DatabaseUsage>;
 
 /** The DatabaseUsage items on this page */
-export type DatabaseUsageListResultValueList = ReadonlyArray<DatabaseUsage>;
+export type DatabaseUsageListResultValueList = Array<DatabaseUsage>;
 export const DatabaseUsageListResultValueList = /*@__PURE__*/ S.Array(
   DatabaseUsage,
 ) as any as S.Schema<DatabaseUsageListResultValueList>;
@@ -9298,7 +9288,7 @@ export const DatabaseVulnerabilityAssessmentRuleBaselinesCreateOrUpdateRequestBa
 
 /** The rule baseline result */
 export type DatabaseVulnerabilityAssessmentRuleBaselineItemResultList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const DatabaseVulnerabilityAssessmentRuleBaselineItemResultList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -9320,7 +9310,7 @@ export const DatabaseVulnerabilityAssessmentRuleBaselineItem =
 
 /** The rule baseline result */
 export type DatabaseVulnerabilityAssessmentRuleBaselinePropertiesBaselineResultsList =
-  ReadonlyArray<DatabaseVulnerabilityAssessmentRuleBaselineItem>;
+  Array<DatabaseVulnerabilityAssessmentRuleBaselineItem>;
 export const DatabaseVulnerabilityAssessmentRuleBaselinePropertiesBaselineResultsList =
   /*@__PURE__*/ S.Array(
     DatabaseVulnerabilityAssessmentRuleBaselineItem,
@@ -9721,7 +9711,7 @@ export const VulnerabilityAssessmentScanError = /*@__PURE__*/ S.suspend(() =>
 
 /** The scan errors. */
 export type VulnerabilityAssessmentScanRecordPropertiesErrorsList =
-  ReadonlyArray<VulnerabilityAssessmentScanError>;
+  Array<VulnerabilityAssessmentScanError>;
 export const VulnerabilityAssessmentScanRecordPropertiesErrorsList =
   /*@__PURE__*/ S.Array(
     VulnerabilityAssessmentScanError,
@@ -9907,7 +9897,7 @@ export const VulnerabilityAssessmentScanRecord = /*@__PURE__*/ S.suspend(() =>
 
 /** The VulnerabilityAssessmentScanRecord items on this page */
 export type DatabaseVulnerabilityAssessmentScansListByDatabaseResponseValueList =
-  ReadonlyArray<VulnerabilityAssessmentScanRecord>;
+  Array<VulnerabilityAssessmentScanRecord>;
 export const DatabaseVulnerabilityAssessmentScansListByDatabaseResponseValueList =
   /*@__PURE__*/ S.Array(
     VulnerabilityAssessmentScanRecord,
@@ -9937,7 +9927,7 @@ export const DatabaseVulnerabilityAssessmentsCreateOrUpdateRequestVulnerabilityA
 
 /** Specifies an array of e-mail addresses to which the scan notification is sent. */
 export type VulnerabilityAssessmentRecurringScansPropertiesEmailsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const VulnerabilityAssessmentRecurringScansPropertiesEmailsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -10226,7 +10216,7 @@ export const DatabaseVulnerabilityAssessment = /*@__PURE__*/ S.suspend(() =>
 
 /** The DatabaseVulnerabilityAssessment items on this page */
 export type DatabaseVulnerabilityAssessmentsListByDatabaseResponseValueList =
-  ReadonlyArray<DatabaseVulnerabilityAssessment>;
+  Array<DatabaseVulnerabilityAssessment>;
 export const DatabaseVulnerabilityAssessmentsListByDatabaseResponseValueList =
   /*@__PURE__*/ S.Array(
     DatabaseVulnerabilityAssessment,
@@ -10719,7 +10709,7 @@ export const DataMaskingRule = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DataMaskingRule>;
 
 /** The DataMaskingRule items on this page */
-export type DataMaskingRuleListResultValueList = ReadonlyArray<DataMaskingRule>;
+export type DataMaskingRuleListResultValueList = Array<DataMaskingRule>;
 export const DataMaskingRuleListResultValueList = /*@__PURE__*/ S.Array(
   DataMaskingRule,
 ) as any as S.Schema<DataMaskingRuleListResultValueList>;
@@ -10877,7 +10867,7 @@ export const DataWarehouseUserActivities = /*@__PURE__*/ S.suspend(() =>
 
 /** The DataWarehouseUserActivities items on this page */
 export type DataWarehouseUserActivitiesListResultValueList =
-  ReadonlyArray<DataWarehouseUserActivities>;
+  Array<DataWarehouseUserActivities>;
 export const DataWarehouseUserActivitiesListResultValueList =
   /*@__PURE__*/ S.Array(
     DataWarehouseUserActivities,
@@ -11014,7 +11004,7 @@ export const DeletedServer = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeletedServer" }) as any as S.Schema<DeletedServer>;
 
 /** The DeletedServer items on this page */
-export type DeletedServerListResultValueList = ReadonlyArray<DeletedServer>;
+export type DeletedServerListResultValueList = Array<DeletedServer>;
 export const DeletedServerListResultValueList = /*@__PURE__*/ S.Array(
   DeletedServer,
 ) as any as S.Schema<DeletedServerListResultValueList>;
@@ -11192,7 +11182,7 @@ export const DistributedAvailabilityGroupDatabaseInput =
 
 /** Databases in the distributed availability group */
 export type DistributedAvailabilityGroupPropertiesInputDatabasesList =
-  ReadonlyArray<DistributedAvailabilityGroupDatabaseInput>;
+  Array<DistributedAvailabilityGroupDatabaseInput>;
 export const DistributedAvailabilityGroupPropertiesInputDatabasesList =
   /*@__PURE__*/ S.Array(
     DistributedAvailabilityGroupDatabaseInput,
@@ -11439,7 +11429,7 @@ export const DistributedAvailabilityGroupDatabase = /*@__PURE__*/ S.suspend(
 
 /** Databases in the distributed availability group */
 export type DistributedAvailabilityGroupPropertiesDatabasesList =
-  ReadonlyArray<DistributedAvailabilityGroupDatabase>;
+  Array<DistributedAvailabilityGroupDatabase>;
 export const DistributedAvailabilityGroupPropertiesDatabasesList =
   /*@__PURE__*/ S.Array(
     DistributedAvailabilityGroupDatabase,
@@ -11734,7 +11724,7 @@ export const DistributedAvailabilityGroup = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of results. */
 export type DistributedAvailabilityGroupsListResultValueList =
-  ReadonlyArray<DistributedAvailabilityGroup>;
+  Array<DistributedAvailabilityGroup>;
 export const DistributedAvailabilityGroupsListResultValueList =
   /*@__PURE__*/ S.Array(
     DistributedAvailabilityGroup,
@@ -12017,8 +12007,7 @@ export const ElasticPoolActivity = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ElasticPoolActivity>;
 
 /** The list of elastic pool activities. */
-export type ElasticPoolActivityListResultValueList =
-  ReadonlyArray<ElasticPoolActivity>;
+export type ElasticPoolActivityListResultValueList = Array<ElasticPoolActivity>;
 export const ElasticPoolActivityListResultValueList = /*@__PURE__*/ S.Array(
   ElasticPoolActivity,
 ) as any as S.Schema<ElasticPoolActivityListResultValueList>;
@@ -12148,7 +12137,7 @@ export const ElasticPoolDatabaseActivity = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of elastic pool database activities. */
 export type ElasticPoolDatabaseActivityListResultValueList =
-  ReadonlyArray<ElasticPoolDatabaseActivity>;
+  Array<ElasticPoolDatabaseActivity>;
 export const ElasticPoolDatabaseActivityListResultValueList =
   /*@__PURE__*/ S.Array(
     ElasticPoolDatabaseActivity,
@@ -12314,7 +12303,7 @@ export const ElasticPoolOperation = /*@__PURE__*/ S.suspend(() =>
 
 /** The ElasticPoolOperation items on this page */
 export type ElasticPoolOperationListResultValueList =
-  ReadonlyArray<ElasticPoolOperation>;
+  Array<ElasticPoolOperation>;
 export const ElasticPoolOperationListResultValueList = /*@__PURE__*/ S.Array(
   ElasticPoolOperation,
 ) as any as S.Schema<ElasticPoolOperationListResultValueList>;
@@ -12899,7 +12888,7 @@ export const ElasticPool = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ElasticPool" }) as any as S.Schema<ElasticPool>;
 
 /** The ElasticPool items on this page */
-export type ElasticPoolListResultValueList = ReadonlyArray<ElasticPool>;
+export type ElasticPoolListResultValueList = Array<ElasticPool>;
 export const ElasticPoolListResultValueList = /*@__PURE__*/ S.Array(
   ElasticPool,
 ) as any as S.Schema<ElasticPoolListResultValueList>;
@@ -13389,8 +13378,7 @@ export const EncryptionProtector = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EncryptionProtector>;
 
 /** The EncryptionProtector items on this page */
-export type EncryptionProtectorListResultValueList =
-  ReadonlyArray<EncryptionProtector>;
+export type EncryptionProtectorListResultValueList = Array<EncryptionProtector>;
 export const EncryptionProtectorListResultValueList = /*@__PURE__*/ S.Array(
   EncryptionProtector,
 ) as any as S.Schema<EncryptionProtectorListResultValueList>;
@@ -13574,8 +13562,7 @@ export const EndpointCertificate = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EndpointCertificate>;
 
 /** The EndpointCertificate items on this page */
-export type EndpointCertificateListResultValueList =
-  ReadonlyArray<EndpointCertificate>;
+export type EndpointCertificateListResultValueList = Array<EndpointCertificate>;
 export const EndpointCertificateListResultValueList = /*@__PURE__*/ S.Array(
   EndpointCertificate,
 ) as any as S.Schema<EndpointCertificateListResultValueList>;
@@ -13603,7 +13590,7 @@ export const ExtendedDatabaseBlobAuditingPoliciesCreateOrUpdateRequestBlobAuditi
 
 /** Specifies the Actions-Groups and Actions to audit. The recommended set of action groups to use is the following combination - this will audit all the queries and stored procedures executed against the database, as well as successful and failed logins: BATCH_COMPLETED_GROUP, SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP, FAILED_DATABASE_AUTHENTICATION_GROUP. This above combination is also the set that is configured by default when enabling auditing from the Azure portal. The supported action groups to audit are (note: choose only specific groups that cover your auditing needs. Using unnecessary groups could lead to very large quantities of audit records): APPLICATION_ROLE_CHANGE_PASSWORD_GROUP BACKUP_RESTORE_GROUP DATABASE_LOGOUT_GROUP DATABASE_OBJECT_CHANGE_GROUP DATABASE_OBJECT_OWNERSHIP_CHANGE_GROUP DATABASE_OBJECT_PERMISSION_CHANGE_GROUP DATABASE_OPERATION_GROUP DATABASE_PERMISSION_CHANGE_GROUP DATABASE_PRINCIPAL_CHANGE_GROUP DATABASE_PRINCIPAL_IMPERSONATION_GROUP DATABASE_ROLE_MEMBER_CHANGE_GROUP FAILED_DATABASE_AUTHENTICATION_GROUP SCHEMA_OBJECT_ACCESS_GROUP SCHEMA_OBJECT_CHANGE_GROUP SCHEMA_OBJECT_OWNERSHIP_CHANGE_GROUP SCHEMA_OBJECT_PERMISSION_CHANGE_GROUP SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP USER_CHANGE_PASSWORD_GROUP BATCH_STARTED_GROUP BATCH_COMPLETED_GROUP DBCC_GROUP DATABASE_OWNERSHIP_CHANGE_GROUP DATABASE_CHANGE_GROUP LEDGER_OPERATION_GROUP These are groups that cover all sql statements and stored procedures executed against the database, and should not be used in combination with other groups as this will result in duplicate audit logs. For more information, see [Database-Level Audit Action Groups](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-action-groups). For Database auditing policy, specific Actions can also be specified (note that Actions cannot be specified for Server auditing policy). The supported actions to audit are: SELECT UPDATE INSERT DELETE EXECUTE RECEIVE REFERENCES The general form for defining an action to be audited is: {action} ON {object} BY {principal} Note that <object> in the above format can refer to an object like a table, view, or stored procedure, or an entire database or schema. For the latter cases, the forms DATABASE::{db_name} and SCHEMA::{schema_name} are used, respectively. For example: SELECT on dbo.myTable by public SELECT on DATABASE::myDatabase by public SELECT on SCHEMA::mySchema by public For more information, see [Database-Level Audit Actions](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-actions) */
 export type ExtendedDatabaseBlobAuditingPolicyPropertiesAuditActionsAndGroupsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ExtendedDatabaseBlobAuditingPolicyPropertiesAuditActionsAndGroupsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -13633,7 +13620,7 @@ export interface ExtendedDatabaseBlobAuditingPolicyProperties {
   /** Specifies whether Managed Identity is used to access blob storage */
   isManagedIdentityInUse?: boolean;
   /** Specifies the state of the audit. If state is Enabled, storageEndpoint or isAzureMonitorTargetEnabled are required. */
-  state: ExtendedDatabaseBlobAuditingPolicyPropertiesState;
+  state: ExtendedDatabaseBlobAuditingPolicyPropertiesState | (string & {});
   /** Specifies the blob storage endpoint (e.g. https://MyAccount.blob.core.windows.net). If state is Enabled, storageEndpoint or isAzureMonitorTargetEnabled is required. */
   storageEndpoint?: string;
   /** Specifies the identifier key of the auditing storage account. If state is Enabled and storageEndpoint is specified, not specifying the storageAccountAccessKey will use SQL server system-assigned managed identity to access the storage. Prerequisites for using managed identity authentication: 1. Assign SQL Server a system-assigned managed identity in Azure Active Directory (AAD). 2. Grant SQL Server identity access to the storage account by adding 'Storage Blob Data Contributor' RBAC role to the server identity. For more information, see [Auditing to storage using Managed Identity authentication](https://go.microsoft.com/fwlink/?linkid=2114355) */
@@ -13850,7 +13837,7 @@ export const ExtendedDatabaseBlobAuditingPolicy = /*@__PURE__*/ S.suspend(() =>
 
 /** The ExtendedDatabaseBlobAuditingPolicy items on this page */
 export type ExtendedDatabaseBlobAuditingPolicyListResultValueList =
-  ReadonlyArray<ExtendedDatabaseBlobAuditingPolicy>;
+  Array<ExtendedDatabaseBlobAuditingPolicy>;
 export const ExtendedDatabaseBlobAuditingPolicyListResultValueList =
   /*@__PURE__*/ S.Array(
     ExtendedDatabaseBlobAuditingPolicy,
@@ -13880,7 +13867,7 @@ export const ExtendedServerBlobAuditingPoliciesCreateOrUpdateRequestBlobAuditing
 
 /** Specifies the Actions-Groups and Actions to audit. The recommended set of action groups to use is the following combination - this will audit all the queries and stored procedures executed against the database, as well as successful and failed logins: BATCH_COMPLETED_GROUP, SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP, FAILED_DATABASE_AUTHENTICATION_GROUP. This above combination is also the set that is configured by default when enabling auditing from the Azure portal. The supported action groups to audit are (note: choose only specific groups that cover your auditing needs. Using unnecessary groups could lead to very large quantities of audit records): APPLICATION_ROLE_CHANGE_PASSWORD_GROUP BACKUP_RESTORE_GROUP DATABASE_LOGOUT_GROUP DATABASE_OBJECT_CHANGE_GROUP DATABASE_OBJECT_OWNERSHIP_CHANGE_GROUP DATABASE_OBJECT_PERMISSION_CHANGE_GROUP DATABASE_OPERATION_GROUP DATABASE_PERMISSION_CHANGE_GROUP DATABASE_PRINCIPAL_CHANGE_GROUP DATABASE_PRINCIPAL_IMPERSONATION_GROUP DATABASE_ROLE_MEMBER_CHANGE_GROUP FAILED_DATABASE_AUTHENTICATION_GROUP SCHEMA_OBJECT_ACCESS_GROUP SCHEMA_OBJECT_CHANGE_GROUP SCHEMA_OBJECT_OWNERSHIP_CHANGE_GROUP SCHEMA_OBJECT_PERMISSION_CHANGE_GROUP SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP USER_CHANGE_PASSWORD_GROUP BATCH_STARTED_GROUP BATCH_COMPLETED_GROUP DBCC_GROUP DATABASE_OWNERSHIP_CHANGE_GROUP DATABASE_CHANGE_GROUP LEDGER_OPERATION_GROUP These are groups that cover all sql statements and stored procedures executed against the database, and should not be used in combination with other groups as this will result in duplicate audit logs. For more information, see [Database-Level Audit Action Groups](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-action-groups). For Database auditing policy, specific Actions can also be specified (note that Actions cannot be specified for Server auditing policy). The supported actions to audit are: SELECT UPDATE INSERT DELETE EXECUTE RECEIVE REFERENCES The general form for defining an action to be audited is: {action} ON {object} BY {principal} Note that <object> in the above format can refer to an object like a table, view, or stored procedure, or an entire database or schema. For the latter cases, the forms DATABASE::{db_name} and SCHEMA::{schema_name} are used, respectively. For example: SELECT on dbo.myTable by public SELECT on DATABASE::myDatabase by public SELECT on SCHEMA::mySchema by public For more information, see [Database-Level Audit Actions](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-actions) */
 export type ExtendedServerBlobAuditingPolicyPropertiesAuditActionsAndGroupsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ExtendedServerBlobAuditingPolicyPropertiesAuditActionsAndGroupsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -13912,7 +13899,7 @@ export interface ExtendedServerBlobAuditingPolicyProperties {
   /** Specifies whether Managed Identity is used to access blob storage */
   isManagedIdentityInUse?: boolean;
   /** Specifies the state of the audit. If state is Enabled, storageEndpoint or isAzureMonitorTargetEnabled are required. */
-  state: ExtendedServerBlobAuditingPolicyPropertiesState;
+  state: ExtendedServerBlobAuditingPolicyPropertiesState | (string & {});
   /** Specifies the blob storage endpoint (e.g. https://MyAccount.blob.core.windows.net). If state is Enabled, storageEndpoint or isAzureMonitorTargetEnabled is required. */
   storageEndpoint?: string;
   /** Specifies the identifier key of the auditing storage account. If state is Enabled and storageEndpoint is specified, not specifying the storageAccountAccessKey will use SQL server system-assigned managed identity to access the storage. Prerequisites for using managed identity authentication: 1. Assign SQL Server a system-assigned managed identity in Azure Active Directory (AAD). 2. Grant SQL Server identity access to the storage account by adding 'Storage Blob Data Contributor' RBAC role to the server identity. For more information, see [Auditing to storage using Managed Identity authentication](https://go.microsoft.com/fwlink/?linkid=2114355) */
@@ -14121,7 +14108,7 @@ export const ExtendedServerBlobAuditingPolicy = /*@__PURE__*/ S.suspend(() =>
 
 /** The ExtendedServerBlobAuditingPolicy items on this page */
 export type ExtendedServerBlobAuditingPolicyListResultValueList =
-  ReadonlyArray<ExtendedServerBlobAuditingPolicy>;
+  Array<ExtendedServerBlobAuditingPolicy>;
 export const ExtendedServerBlobAuditingPolicyListResultValueList =
   /*@__PURE__*/ S.Array(
     ExtendedServerBlobAuditingPolicy,
@@ -14154,7 +14141,7 @@ export const FailoverGroupReadWriteEndpointFailoverPolicy =
 /** Read-write endpoint of the failover group instance. */
 export interface FailoverGroupReadWriteEndpoint {
   /** Failover policy of the read-write endpoint for the failover group. If failoverPolicy is Automatic then failoverWithDataLossGracePeriodMinutes is required. */
-  failoverPolicy: FailoverGroupReadWriteEndpointFailoverPolicy;
+  failoverPolicy: FailoverGroupReadWriteEndpointFailoverPolicy | (string & {});
   /** Grace period before failover with data loss is attempted for the read-write endpoint. If failoverPolicy is Automatic then failoverWithDataLossGracePeriodMinutes is required. */
   failoverWithDataLossGracePeriodMinutes?: number;
 }
@@ -14177,7 +14164,7 @@ export const FailoverGroupReadOnlyEndpointFailoverPolicy =
 /** Read-only endpoint of the failover group instance. */
 export interface FailoverGroupReadOnlyEndpoint {
   /** Failover policy of the read-only endpoint for the failover group. */
-  failoverPolicy?: FailoverGroupReadOnlyEndpointFailoverPolicy;
+  failoverPolicy?: FailoverGroupReadOnlyEndpointFailoverPolicy | (string & {});
   /** The target partner server where the read-only endpoint points to. */
   targetServer?: string;
 }
@@ -14219,14 +14206,14 @@ export const PartnerInfoInput = /*@__PURE__*/ S.suspend(() =>
 
 /** List of partner server information for the failover group. */
 export type FailoverGroupPropertiesInputPartnerServersList =
-  ReadonlyArray<PartnerInfoInput>;
+  Array<PartnerInfoInput>;
 export const FailoverGroupPropertiesInputPartnerServersList =
   /*@__PURE__*/ S.Array(
     PartnerInfoInput,
   ) as any as S.Schema<FailoverGroupPropertiesInputPartnerServersList>;
 
 /** List of databases in the failover group. */
-export type FailoverGroupPropertiesInputDatabasesList = ReadonlyArray<string>;
+export type FailoverGroupPropertiesInputDatabasesList = Array<string>;
 export const FailoverGroupPropertiesInputDatabasesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<FailoverGroupPropertiesInputDatabasesList>;
@@ -14333,14 +14320,13 @@ export const PartnerInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PartnerInfo" }) as any as S.Schema<PartnerInfo>;
 
 /** List of partner server information for the failover group. */
-export type FailoverGroupPropertiesPartnerServersList =
-  ReadonlyArray<PartnerInfo>;
+export type FailoverGroupPropertiesPartnerServersList = Array<PartnerInfo>;
 export const FailoverGroupPropertiesPartnerServersList = /*@__PURE__*/ S.Array(
   PartnerInfo,
 ) as any as S.Schema<FailoverGroupPropertiesPartnerServersList>;
 
 /** List of databases in the failover group. */
-export type FailoverGroupPropertiesDatabasesList = ReadonlyArray<string>;
+export type FailoverGroupPropertiesDatabasesList = Array<string>;
 export const FailoverGroupPropertiesDatabasesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<FailoverGroupPropertiesDatabasesList>;
@@ -14722,7 +14708,7 @@ export const FailoverGroup = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FailoverGroup" }) as any as S.Schema<FailoverGroup>;
 
 /** The FailoverGroup items on this page */
-export type FailoverGroupListResultValueList = ReadonlyArray<FailoverGroup>;
+export type FailoverGroupListResultValueList = Array<FailoverGroup>;
 export const FailoverGroupListResultValueList = /*@__PURE__*/ S.Array(
   FailoverGroup,
 ) as any as S.Schema<FailoverGroupListResultValueList>;
@@ -14816,8 +14802,7 @@ export const FailoverGroupsTryPlannedBeforeForcedFailoverResponse =
   }) as any as S.Schema<FailoverGroupsTryPlannedBeforeForcedFailoverResponse>;
 
 /** List of databases in the failover group. */
-export type FailoverGroupUpdatePropertiesInputDatabasesList =
-  ReadonlyArray<string>;
+export type FailoverGroupUpdatePropertiesInputDatabasesList = Array<string>;
 export const FailoverGroupUpdatePropertiesInputDatabasesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -14825,7 +14810,7 @@ export const FailoverGroupUpdatePropertiesInputDatabasesList =
 
 /** List of partner server information for the failover group. */
 export type FailoverGroupUpdatePropertiesInputPartnerServersList =
-  ReadonlyArray<PartnerInfoInput>;
+  Array<PartnerInfoInput>;
 export const FailoverGroupUpdatePropertiesInputPartnerServersList =
   /*@__PURE__*/ S.Array(
     PartnerInfoInput,
@@ -15148,7 +15133,7 @@ export const FirewallRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FirewallRule" }) as any as S.Schema<FirewallRule>;
 
 /** The FirewallRule items on this page */
-export type FirewallRuleListResultValueList = ReadonlyArray<FirewallRule>;
+export type FirewallRuleListResultValueList = Array<FirewallRule>;
 export const FirewallRuleListResultValueList = /*@__PURE__*/ S.Array(
   FirewallRule,
 ) as any as S.Schema<FirewallRuleListResultValueList>;
@@ -15185,8 +15170,7 @@ export const FirewallRuleInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "FirewallRuleInput",
 }) as any as S.Schema<FirewallRuleInput>;
 
-export type FirewallRulesReplaceRequestValuesList =
-  ReadonlyArray<FirewallRuleInput>;
+export type FirewallRulesReplaceRequestValuesList = Array<FirewallRuleInput>;
 export const FirewallRulesReplaceRequestValuesList = /*@__PURE__*/ S.Array(
   FirewallRuleInput,
 ) as any as S.Schema<FirewallRulesReplaceRequestValuesList>;
@@ -15481,7 +15465,7 @@ export const GeoBackupPolicy = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GeoBackupPolicy>;
 
 /** The GeoBackupPolicy items on this page */
-export type GeoBackupPolicyListResultValueList = ReadonlyArray<GeoBackupPolicy>;
+export type GeoBackupPolicyListResultValueList = Array<GeoBackupPolicy>;
 export const GeoBackupPolicyListResultValueList = /*@__PURE__*/ S.Array(
   GeoBackupPolicy,
 ) as any as S.Schema<GeoBackupPolicyListResultValueList>;
@@ -15519,7 +15503,9 @@ export const InstanceFailoverGroupReadWriteEndpointFailoverPolicy =
 /** Read-write endpoint of the failover group instance. */
 export interface InstanceFailoverGroupReadWriteEndpoint {
   /** Failover policy of the read-write endpoint for the failover group. If failoverPolicy is Automatic then failoverWithDataLossGracePeriodMinutes is required. */
-  failoverPolicy: InstanceFailoverGroupReadWriteEndpointFailoverPolicy;
+  failoverPolicy:
+    | InstanceFailoverGroupReadWriteEndpointFailoverPolicy
+    | (string & {});
   /** Grace period before failover with data loss is attempted for the read-write endpoint. If failoverPolicy is Automatic then failoverWithDataLossGracePeriodMinutes is required. */
   failoverWithDataLossGracePeriodMinutes?: number;
 }
@@ -15543,7 +15529,9 @@ export const InstanceFailoverGroupReadOnlyEndpointFailoverPolicy =
 /** Read-only endpoint of the failover group instance. */
 export interface InstanceFailoverGroupReadOnlyEndpoint {
   /** Failover policy of the read-only endpoint for the failover group. */
-  failoverPolicy?: InstanceFailoverGroupReadOnlyEndpointFailoverPolicy;
+  failoverPolicy?:
+    | InstanceFailoverGroupReadOnlyEndpointFailoverPolicy
+    | (string & {});
 }
 export const InstanceFailoverGroupReadOnlyEndpoint = /*@__PURE__*/ S.suspend(
   () =>
@@ -15572,7 +15560,7 @@ export interface PartnerRegionInfo {
   /** Geo location of the partner managed instances. */
   location?: string;
   /** Local replication role of the failover group instance. */
-  replicationRole?: PartnerRegionInfoReplicationRole;
+  replicationRole?: PartnerRegionInfoReplicationRole | (string & {});
 }
 export const PartnerRegionInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -15585,7 +15573,7 @@ export const PartnerRegionInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** Partner region information for the failover group. */
 export type InstanceFailoverGroupPropertiesInputPartnerRegionsList =
-  ReadonlyArray<PartnerRegionInfo>;
+  Array<PartnerRegionInfo>;
 export const InstanceFailoverGroupPropertiesInputPartnerRegionsList =
   /*@__PURE__*/ S.Array(
     PartnerRegionInfo,
@@ -15609,7 +15597,7 @@ export const ManagedInstancePairInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** List of managed instance pairs in the failover group. */
 export type InstanceFailoverGroupPropertiesInputManagedInstancePairsList =
-  ReadonlyArray<ManagedInstancePairInfo>;
+  Array<ManagedInstancePairInfo>;
 export const InstanceFailoverGroupPropertiesInputManagedInstancePairsList =
   /*@__PURE__*/ S.Array(
     ManagedInstancePairInfo,
@@ -15699,7 +15687,7 @@ export const InstanceFailoverGroupPropertiesReplicationRole =
 
 /** Partner region information for the failover group. */
 export type InstanceFailoverGroupPropertiesPartnerRegionsList =
-  ReadonlyArray<PartnerRegionInfo>;
+  Array<PartnerRegionInfo>;
 export const InstanceFailoverGroupPropertiesPartnerRegionsList =
   /*@__PURE__*/ S.Array(
     PartnerRegionInfo,
@@ -15707,7 +15695,7 @@ export const InstanceFailoverGroupPropertiesPartnerRegionsList =
 
 /** List of managed instance pairs in the failover group. */
 export type InstanceFailoverGroupPropertiesManagedInstancePairsList =
-  ReadonlyArray<ManagedInstancePairInfo>;
+  Array<ManagedInstancePairInfo>;
 export const InstanceFailoverGroupPropertiesManagedInstancePairsList =
   /*@__PURE__*/ S.Array(
     ManagedInstancePairInfo,
@@ -16018,7 +16006,7 @@ export const InstanceFailoverGroup = /*@__PURE__*/ S.suspend(() =>
 
 /** The InstanceFailoverGroup items on this page */
 export type InstanceFailoverGroupListResultValueList =
-  ReadonlyArray<InstanceFailoverGroup>;
+  Array<InstanceFailoverGroup>;
 export const InstanceFailoverGroupListResultValueList = /*@__PURE__*/ S.Array(
   InstanceFailoverGroup,
 ) as any as S.Schema<InstanceFailoverGroupListResultValueList>;
@@ -16206,7 +16194,7 @@ export const InstancePoolOperation = /*@__PURE__*/ S.suspend(() =>
 
 /** The InstancePoolOperation items on this page */
 export type InstancePoolOperationListResultValueList =
-  ReadonlyArray<InstancePoolOperation>;
+  Array<InstancePoolOperation>;
 export const InstancePoolOperationListResultValueList = /*@__PURE__*/ S.Array(
   InstancePoolOperation,
 ) as any as S.Schema<InstancePoolOperationListResultValueList>;
@@ -16633,7 +16621,7 @@ export const InstancePool = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "InstancePool" }) as any as S.Schema<InstancePool>;
 
 /** The InstancePool items on this page */
-export type InstancePoolListResultValueList = ReadonlyArray<InstancePool>;
+export type InstancePoolListResultValueList = Array<InstancePool>;
 export const InstancePoolListResultValueList = /*@__PURE__*/ S.Array(
   InstancePool,
 ) as any as S.Schema<InstancePoolListResultValueList>;
@@ -17018,8 +17006,7 @@ export const IPv6FirewallRule = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IPv6FirewallRule>;
 
 /** The IPv6FirewallRule items on this page */
-export type IPv6FirewallRuleListResultValueList =
-  ReadonlyArray<IPv6FirewallRule>;
+export type IPv6FirewallRuleListResultValueList = Array<IPv6FirewallRule>;
 export const IPv6FirewallRuleListResultValueList = /*@__PURE__*/ S.Array(
   IPv6FirewallRule,
 ) as any as S.Schema<IPv6FirewallRuleListResultValueList>;
@@ -17063,7 +17050,7 @@ export interface JobAgentProperties {
   /** Resource ID of the database to store job metadata in. */
   databaseId: string;
   /** The state of the job agent. */
-  state?: JobAgentPropertiesState;
+  state?: JobAgentPropertiesState | (string & {});
 }
 export const JobAgentProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -17137,7 +17124,7 @@ export interface JobAgentIdentity {
   /** Universally Unique Identifier */
   tenantId?: string;
   /** The job agent identity type */
-  type: JobAgentIdentityType;
+  type: JobAgentIdentityType | (string & {});
   /** The resource ids of the user assigned identities to use */
   userAssignedIdentities?: JobAgentIdentityUserAssignedIdentitiesMap;
 }
@@ -17488,7 +17475,7 @@ export const JobAgent = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "JobAgent" }) as any as S.Schema<JobAgent>;
 
 /** The JobAgent items on this page */
-export type JobAgentListResultValueList = ReadonlyArray<JobAgent>;
+export type JobAgentListResultValueList = Array<JobAgent>;
 export const JobAgentListResultValueList = /*@__PURE__*/ S.Array(
   JobAgent,
 ) as any as S.Schema<JobAgentListResultValueList>;
@@ -17870,7 +17857,7 @@ export const JobCredential = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "JobCredential" }) as any as S.Schema<JobCredential>;
 
 /** The JobCredential items on this page */
-export type JobCredentialListResultValueList = ReadonlyArray<JobCredential>;
+export type JobCredentialListResultValueList = Array<JobCredential>;
 export const JobCredentialListResultValueList = /*@__PURE__*/ S.Array(
   JobCredential,
 ) as any as S.Schema<JobCredentialListResultValueList>;
@@ -18276,8 +18263,7 @@ export const JobExecution = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "JobExecution" }) as any as S.Schema<JobExecution>;
 
 /** The JobExecution items on this page */
-export type JobExecutionsListByAgentResponseValueList =
-  ReadonlyArray<JobExecution>;
+export type JobExecutionsListByAgentResponseValueList = Array<JobExecution>;
 export const JobExecutionsListByAgentResponseValueList = /*@__PURE__*/ S.Array(
   JobExecution,
 ) as any as S.Schema<JobExecutionsListByAgentResponseValueList>;
@@ -18350,8 +18336,7 @@ export const JobExecutionsListByJobRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<JobExecutionsListByJobRequest>;
 
 /** The JobExecution items on this page */
-export type JobExecutionsListByJobResponseValueList =
-  ReadonlyArray<JobExecution>;
+export type JobExecutionsListByJobResponseValueList = Array<JobExecution>;
 export const JobExecutionsListByJobResponseValueList = /*@__PURE__*/ S.Array(
   JobExecution,
 ) as any as S.Schema<JobExecutionsListByJobResponseValueList>;
@@ -18608,8 +18593,7 @@ export const JobPrivateEndpoint = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<JobPrivateEndpoint>;
 
 /** The JobPrivateEndpoint items on this page */
-export type JobPrivateEndpointListResultValueList =
-  ReadonlyArray<JobPrivateEndpoint>;
+export type JobPrivateEndpointListResultValueList = Array<JobPrivateEndpoint>;
 export const JobPrivateEndpointListResultValueList = /*@__PURE__*/ S.Array(
   JobPrivateEndpoint,
 ) as any as S.Schema<JobPrivateEndpointListResultValueList>;
@@ -18641,7 +18625,7 @@ export interface JobSchedule {
   /** Schedule end time. */
   endTime?: string;
   /** Schedule interval type */
-  type?: JobScheduleType;
+  type?: JobScheduleType | (string & {});
   /** Whether or not the schedule is enabled. */
   enabled?: boolean;
   /** Value of the schedule's recurring interval, if the ScheduleType is recurring. ISO8601 duration format. */
@@ -18891,7 +18875,7 @@ export const Job = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Job" }) as any as S.Schema<Job>;
 
 /** The Job items on this page */
-export type JobListResultValueList = ReadonlyArray<Job>;
+export type JobListResultValueList = Array<Job>;
 export const JobListResultValueList = /*@__PURE__*/ S.Array(
   Job,
 ) as any as S.Schema<JobListResultValueList>;
@@ -19029,7 +19013,7 @@ export const JobStepExecutionsListByJobExecutionRequest =
 
 /** The JobExecution items on this page */
 export type JobStepExecutionsListByJobExecutionResponseValueList =
-  ReadonlyArray<JobExecution>;
+  Array<JobExecution>;
 export const JobStepExecutionsListByJobExecutionResponseValueList =
   /*@__PURE__*/ S.Array(
     JobExecution,
@@ -19062,9 +19046,9 @@ export const JobStepActionSource = /*@__PURE__*/ S.String;
 /** The action to be executed by a job step. */
 export interface JobStepAction {
   /** Type of action being executed by the job step. */
-  type?: JobStepActionType;
+  type?: JobStepActionType | (string & {});
   /** The source of the action to execute. */
-  source?: JobStepActionSource;
+  source?: JobStepActionSource | (string & {});
   /** The action value, for example the text of the T-SQL script to execute. */
   value: string;
 }
@@ -19083,7 +19067,7 @@ export const JobStepOutputType = /*@__PURE__*/ S.String;
 /** The output configuration of a job step. */
 export interface JobStepOutput {
   /** The output destination type. */
-  type?: JobStepOutputType;
+  type?: JobStepOutputType | (string & {});
   /** Universally Unique Identifier */
   subscriptionId?: string;
   /** The output destination resource group. */
@@ -19441,7 +19425,7 @@ export const JobStep = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "JobStep" }) as any as S.Schema<JobStep>;
 
 /** The JobStep items on this page */
-export type JobStepListResultValueList = ReadonlyArray<JobStep>;
+export type JobStepListResultValueList = Array<JobStep>;
 export const JobStepListResultValueList = /*@__PURE__*/ S.Array(
   JobStep,
 ) as any as S.Schema<JobStepListResultValueList>;
@@ -19618,7 +19602,7 @@ export const JobTargetExecutionsListByJobExecutionRequest =
 
 /** The JobExecution items on this page */
 export type JobTargetExecutionsListByJobExecutionResponseValueList =
-  ReadonlyArray<JobExecution>;
+  Array<JobExecution>;
 export const JobTargetExecutionsListByJobExecutionResponseValueList =
   /*@__PURE__*/ S.Array(
     JobExecution,
@@ -19701,7 +19685,7 @@ export const JobTargetExecutionsListByStepRequest = /*@__PURE__*/ S.suspend(
 
 /** The JobExecution items on this page */
 export type JobTargetExecutionsListByStepResponseValueList =
-  ReadonlyArray<JobExecution>;
+  Array<JobExecution>;
 export const JobTargetExecutionsListByStepResponseValueList =
   /*@__PURE__*/ S.Array(
     JobExecution,
@@ -19730,9 +19714,9 @@ export const JobTargetMembershipType = /*@__PURE__*/ S.String;
 /** A job target, for example a specific database or a container of databases that is evaluated during job execution. */
 export interface JobTarget {
   /** Whether the target is included or excluded from the group. */
-  membershipType?: JobTargetMembershipType;
+  membershipType?: JobTargetMembershipType | (string & {});
   /** The type of the target. */
-  type: JobTargetType;
+  type: JobTargetType | (string & {});
   /** The target server name. */
   serverName?: string;
   /** The target database name. */
@@ -19757,7 +19741,7 @@ export const JobTarget = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "JobTarget" }) as any as S.Schema<JobTarget>;
 
 /** Members of the target group. */
-export type JobTargetGroupPropertiesMembersList = ReadonlyArray<JobTarget>;
+export type JobTargetGroupPropertiesMembersList = Array<JobTarget>;
 export const JobTargetGroupPropertiesMembersList = /*@__PURE__*/ S.Array(
   JobTarget,
 ) as any as S.Schema<JobTargetGroupPropertiesMembersList>;
@@ -19980,7 +19964,7 @@ export const JobTargetGroup = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "JobTargetGroup" }) as any as S.Schema<JobTargetGroup>;
 
 /** The JobTargetGroup items on this page */
-export type JobTargetGroupListResultValueList = ReadonlyArray<JobTargetGroup>;
+export type JobTargetGroupListResultValueList = Array<JobTargetGroup>;
 export const JobTargetGroupListResultValueList = /*@__PURE__*/ S.Array(
   JobTargetGroup,
 ) as any as S.Schema<JobTargetGroupListResultValueList>;
@@ -20088,7 +20072,7 @@ export const JobVersionsListByJobRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<JobVersionsListByJobRequest>;
 
 /** The JobVersion items on this page */
-export type JobVersionListResultValueList = ReadonlyArray<Resource>;
+export type JobVersionListResultValueList = Array<Resource>;
 export const JobVersionListResultValueList = /*@__PURE__*/ S.Array(
   Resource,
 ) as any as S.Schema<JobVersionListResultValueList>;
@@ -20123,7 +20107,7 @@ export interface LedgerDigestUploadsProperties {
   /** The digest storage endpoint, which must be either an Azure blob storage endpoint or an URI for Azure Confidential Ledger. */
   digestStorageEndpoint?: string;
   /** Specifies the state of ledger digest upload. */
-  state?: LedgerDigestUploadsPropertiesState;
+  state?: LedgerDigestUploadsPropertiesState | (string & {});
 }
 export const LedgerDigestUploadsProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -20376,8 +20360,7 @@ export const LedgerDigestUploads = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LedgerDigestUploads>;
 
 /** The LedgerDigestUploads items on this page */
-export type LedgerDigestUploadsListResultValueList =
-  ReadonlyArray<LedgerDigestUploads>;
+export type LedgerDigestUploadsListResultValueList = Array<LedgerDigestUploads>;
 export const LedgerDigestUploadsListResultValueList = /*@__PURE__*/ S.Array(
   LedgerDigestUploads,
 ) as any as S.Schema<LedgerDigestUploadsListResultValueList>;
@@ -21107,7 +21090,7 @@ export const LongTermRetentionBackup = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of results. */
 export type LongTermRetentionBackupListResultValueList =
-  ReadonlyArray<LongTermRetentionBackup>;
+  Array<LongTermRetentionBackup>;
 export const LongTermRetentionBackupListResultValueList = /*@__PURE__*/ S.Array(
   LongTermRetentionBackup,
 ) as any as S.Schema<LongTermRetentionBackupListResultValueList>;
@@ -22301,7 +22284,7 @@ export const ManagedInstanceLongTermRetentionBackup = /*@__PURE__*/ S.suspend(
 
 /** The ManagedInstanceLongTermRetentionBackup items on this page */
 export type ManagedInstanceLongTermRetentionBackupListResultValueList =
-  ReadonlyArray<ManagedInstanceLongTermRetentionBackup>;
+  Array<ManagedInstanceLongTermRetentionBackup>;
 export const ManagedInstanceLongTermRetentionBackupListResultValueList =
   /*@__PURE__*/ S.Array(
     ManagedInstanceLongTermRetentionBackup,
@@ -22588,9 +22571,13 @@ export const LongTermRetentionPolicyPropertiesTimeBasedImmutabilityMode =
 /** Properties of a long term retention policy */
 export interface LongTermRetentionPolicyProperties {
   /** The setting for whether or not time-based immutability is enabled for the LTR backup. When time-based immutability is enabled and locked, the backup cannot be deleted until BackupExpirationTime. */
-  timeBasedImmutability?: LongTermRetentionPolicyPropertiesTimeBasedImmutability;
+  timeBasedImmutability?:
+    | LongTermRetentionPolicyPropertiesTimeBasedImmutability
+    | (string & {});
   /** The time-based immutability mode. Only applicable if time-based immutability is enabled. */
-  timeBasedImmutabilityMode?: LongTermRetentionPolicyPropertiesTimeBasedImmutabilityMode;
+  timeBasedImmutabilityMode?:
+    | LongTermRetentionPolicyPropertiesTimeBasedImmutabilityMode
+    | (string & {});
   /** The weekly retention policy for an LTR backup in an ISO 8601 format. */
   weeklyRetention?: string;
   /** The monthly retention policy for an LTR backup in an ISO 8601 format. */
@@ -22797,7 +22784,7 @@ export const LongTermRetentionPolicy = /*@__PURE__*/ S.suspend(() =>
 
 /** The LongTermRetentionPolicy items on this page */
 export type LongTermRetentionPolicyListResultValueList =
-  ReadonlyArray<LongTermRetentionPolicy>;
+  Array<LongTermRetentionPolicy>;
 export const LongTermRetentionPolicyListResultValueList = /*@__PURE__*/ S.Array(
   LongTermRetentionPolicy,
 ) as any as S.Schema<LongTermRetentionPolicyListResultValueList>;
@@ -22882,7 +22869,7 @@ export const MaintenanceWindowOptionsPropertiesMaintenanceWindowCyclesItem =
 
 /** Available maintenance cycles e.g. {Saturday, 0, 48*60}, {Wednesday, 0, 24*60}. */
 export type MaintenanceWindowOptionsPropertiesMaintenanceWindowCyclesList =
-  ReadonlyArray<MaintenanceWindowOptionsPropertiesMaintenanceWindowCyclesItem>;
+  Array<MaintenanceWindowOptionsPropertiesMaintenanceWindowCyclesItem>;
 export const MaintenanceWindowOptionsPropertiesMaintenanceWindowCyclesList =
   /*@__PURE__*/ S.Array(
     MaintenanceWindowOptionsPropertiesMaintenanceWindowCyclesItem,
@@ -22948,7 +22935,7 @@ export const MaintenanceWindowOptionsGetResponse = /*@__PURE__*/ S.suspend(() =>
 /** Maintenance window time range. */
 export interface MaintenanceWindowsPropertiesTimeRangesItem {
   /** Day of maintenance window. */
-  dayOfWeek?: DayOfWeek;
+  dayOfWeek?: DayOfWeek | (string & {});
   /** Start time minutes offset from 12am. */
   startTime?: string;
   /** Duration of maintenance window in minutes. */
@@ -22966,7 +22953,7 @@ export const MaintenanceWindowsPropertiesTimeRangesItem =
   }) as any as S.Schema<MaintenanceWindowsPropertiesTimeRangesItem>;
 
 export type MaintenanceWindowsPropertiesTimeRangesList =
-  ReadonlyArray<MaintenanceWindowsPropertiesTimeRangesItem>;
+  Array<MaintenanceWindowsPropertiesTimeRangesItem>;
 export const MaintenanceWindowsPropertiesTimeRangesList = /*@__PURE__*/ S.Array(
   MaintenanceWindowsPropertiesTimeRangesItem,
 ) as any as S.Schema<MaintenanceWindowsPropertiesTimeRangesList>;
@@ -23288,7 +23275,7 @@ export const ManagedBackupShortTermRetentionPolicy = /*@__PURE__*/ S.suspend(
 
 /** The ManagedBackupShortTermRetentionPolicy items on this page */
 export type ManagedBackupShortTermRetentionPoliciesListByDatabaseResponseValueList =
-  ReadonlyArray<ManagedBackupShortTermRetentionPolicy>;
+  Array<ManagedBackupShortTermRetentionPolicy>;
 export const ManagedBackupShortTermRetentionPoliciesListByDatabaseResponseValueList =
   /*@__PURE__*/ S.Array(
     ManagedBackupShortTermRetentionPolicy,
@@ -23652,7 +23639,7 @@ export const ManagedDatabaseAdvancedThreatProtection = /*@__PURE__*/ S.suspend(
 
 /** The ManagedDatabaseAdvancedThreatProtection items on this page */
 export type ManagedDatabaseAdvancedThreatProtectionListResultValueList =
-  ReadonlyArray<ManagedDatabaseAdvancedThreatProtection>;
+  Array<ManagedDatabaseAdvancedThreatProtection>;
 export const ManagedDatabaseAdvancedThreatProtectionListResultValueList =
   /*@__PURE__*/ S.Array(
     ManagedDatabaseAdvancedThreatProtection,
@@ -23737,28 +23724,28 @@ export const ManagedDatabaseColumnsGetResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ManagedDatabaseColumnsGetResponse>;
 
 export type ManagedDatabaseColumnsListByDatabaseRequestSchemaList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ManagedDatabaseColumnsListByDatabaseRequestSchemaList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ManagedDatabaseColumnsListByDatabaseRequestSchemaList>;
 
 export type ManagedDatabaseColumnsListByDatabaseRequestTableList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ManagedDatabaseColumnsListByDatabaseRequestTableList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ManagedDatabaseColumnsListByDatabaseRequestTableList>;
 
 export type ManagedDatabaseColumnsListByDatabaseRequestColumnList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ManagedDatabaseColumnsListByDatabaseRequestColumnList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ManagedDatabaseColumnsListByDatabaseRequestColumnList>;
 
 export type ManagedDatabaseColumnsListByDatabaseRequestOrderByList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ManagedDatabaseColumnsListByDatabaseRequestOrderByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -23814,7 +23801,7 @@ export const ManagedDatabaseColumnsListByDatabaseRequest =
 
 /** The DatabaseColumn items on this page */
 export type ManagedDatabaseColumnsListByDatabaseResponseValueList =
-  ReadonlyArray<DatabaseColumn>;
+  Array<DatabaseColumn>;
 export const ManagedDatabaseColumnsListByDatabaseResponseValueList =
   /*@__PURE__*/ S.Array(
     DatabaseColumn,
@@ -23876,7 +23863,7 @@ export const ManagedDatabaseColumnsListByTableRequest = /*@__PURE__*/ S.suspend(
 
 /** The DatabaseColumn items on this page */
 export type ManagedDatabaseColumnsListByTableResponseValueList =
-  ReadonlyArray<DatabaseColumn>;
+  Array<DatabaseColumn>;
 export const ManagedDatabaseColumnsListByTableResponseValueList =
   /*@__PURE__*/ S.Array(
     DatabaseColumn,
@@ -24090,7 +24077,7 @@ export const ManagedDatabaseMoveOperationResult = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of results. */
 export type ManagedDatabaseMoveOperationListResultValueList =
-  ReadonlyArray<ManagedDatabaseMoveOperationResult>;
+  Array<ManagedDatabaseMoveOperationResult>;
 export const ManagedDatabaseMoveOperationListResultValueList =
   /*@__PURE__*/ S.Array(
     ManagedDatabaseMoveOperationResult,
@@ -24276,8 +24263,7 @@ export const QueryMetricProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<QueryMetricProperties>;
 
 /** List of metric objects for this interval */
-export type QueryMetricIntervalMetricsList =
-  ReadonlyArray<QueryMetricProperties>;
+export type QueryMetricIntervalMetricsList = Array<QueryMetricProperties>;
 export const QueryMetricIntervalMetricsList = /*@__PURE__*/ S.Array(
   QueryMetricProperties,
 ) as any as S.Schema<QueryMetricIntervalMetricsList>;
@@ -24305,8 +24291,7 @@ export const QueryMetricInterval = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<QueryMetricInterval>;
 
 /** List of intervals with appropriate metric data */
-export type QueryStatisticsPropertiesIntervalsList =
-  ReadonlyArray<QueryMetricInterval>;
+export type QueryStatisticsPropertiesIntervalsList = Array<QueryMetricInterval>;
 export const QueryStatisticsPropertiesIntervalsList = /*@__PURE__*/ S.Array(
   QueryMetricInterval,
 ) as any as S.Schema<QueryStatisticsPropertiesIntervalsList>;
@@ -24361,8 +24346,7 @@ export const QueryStatistics = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<QueryStatistics>;
 
 /** The QueryStatistics items on this page */
-export type ManagedInstanceQueryStatisticsValueList =
-  ReadonlyArray<QueryStatistics>;
+export type ManagedInstanceQueryStatisticsValueList = Array<QueryStatistics>;
 export const ManagedInstanceQueryStatisticsValueList = /*@__PURE__*/ S.Array(
   QueryStatistics,
 ) as any as S.Schema<ManagedInstanceQueryStatisticsValueList>;
@@ -24423,7 +24407,7 @@ export const RecommendedSensitivityLabelUpdateInput = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<RecommendedSensitivityLabelUpdateInput>;
 
 export type ManagedDatabaseRecommendedSensitivityLabelsUpdateRequestOperationsList =
-  ReadonlyArray<RecommendedSensitivityLabelUpdateInput>;
+  Array<RecommendedSensitivityLabelUpdateInput>;
 export const ManagedDatabaseRecommendedSensitivityLabelsUpdateRequestOperationsList =
   /*@__PURE__*/ S.Array(
     RecommendedSensitivityLabelUpdateInput,
@@ -24541,7 +24525,7 @@ export const ManagedDatabaseRestoreDetailsBackupSetProperties =
 
 /** Full backup sets. */
 export type ManagedDatabaseRestoreDetailsPropertiesFullBackupSetsList =
-  ReadonlyArray<ManagedDatabaseRestoreDetailsBackupSetProperties>;
+  Array<ManagedDatabaseRestoreDetailsBackupSetProperties>;
 export const ManagedDatabaseRestoreDetailsPropertiesFullBackupSetsList =
   /*@__PURE__*/ S.Array(
     ManagedDatabaseRestoreDetailsBackupSetProperties,
@@ -24549,7 +24533,7 @@ export const ManagedDatabaseRestoreDetailsPropertiesFullBackupSetsList =
 
 /** Diff backup sets. */
 export type ManagedDatabaseRestoreDetailsPropertiesDiffBackupSetsList =
-  ReadonlyArray<ManagedDatabaseRestoreDetailsBackupSetProperties>;
+  Array<ManagedDatabaseRestoreDetailsBackupSetProperties>;
 export const ManagedDatabaseRestoreDetailsPropertiesDiffBackupSetsList =
   /*@__PURE__*/ S.Array(
     ManagedDatabaseRestoreDetailsBackupSetProperties,
@@ -24557,7 +24541,7 @@ export const ManagedDatabaseRestoreDetailsPropertiesDiffBackupSetsList =
 
 /** Log backup sets. */
 export type ManagedDatabaseRestoreDetailsPropertiesLogBackupSetsList =
-  ReadonlyArray<ManagedDatabaseRestoreDetailsBackupSetProperties>;
+  Array<ManagedDatabaseRestoreDetailsBackupSetProperties>;
 export const ManagedDatabaseRestoreDetailsPropertiesLogBackupSetsList =
   /*@__PURE__*/ S.Array(
     ManagedDatabaseRestoreDetailsBackupSetProperties,
@@ -24579,7 +24563,7 @@ export const ManagedDatabaseRestoreDetailsUnrestorableFileProperties =
 
 /** Unrestorable files. */
 export type ManagedDatabaseRestoreDetailsPropertiesUnrestorableFilesList =
-  ReadonlyArray<ManagedDatabaseRestoreDetailsUnrestorableFileProperties>;
+  Array<ManagedDatabaseRestoreDetailsUnrestorableFileProperties>;
 export const ManagedDatabaseRestoreDetailsPropertiesUnrestorableFilesList =
   /*@__PURE__*/ S.Array(
     ManagedDatabaseRestoreDetailsUnrestorableFileProperties,
@@ -24819,7 +24803,7 @@ export const ManagedDatabaseSchemasListByDatabaseRequest =
 
 /** The DatabaseSchema items on this page */
 export type ManagedDatabaseSchemasListByDatabaseResponseValueList =
-  ReadonlyArray<Resource>;
+  Array<Resource>;
 export const ManagedDatabaseSchemasListByDatabaseResponseValueList =
   /*@__PURE__*/ S.Array(
     Resource,
@@ -25300,7 +25284,7 @@ export const SecurityAlertPolicyPropertiesInputState = /*@__PURE__*/ S.String;
 
 /** Specifies an array of alerts that are disabled. Allowed values are: Sql_Injection, Sql_Injection_Vulnerability, Access_Anomaly, Data_Exfiltration, Unsafe_Action, Brute_Force */
 export type SecurityAlertPolicyPropertiesInputDisabledAlertsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const SecurityAlertPolicyPropertiesInputDisabledAlertsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -25308,7 +25292,7 @@ export const SecurityAlertPolicyPropertiesInputDisabledAlertsList =
 
 /** Specifies an array of e-mail addresses to which the alert is sent. */
 export type SecurityAlertPolicyPropertiesInputEmailAddressesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const SecurityAlertPolicyPropertiesInputEmailAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -25394,16 +25378,14 @@ export type SecurityAlertPolicyPropertiesState = "New" | "Enabled" | "Disabled";
 export const SecurityAlertPolicyPropertiesState = /*@__PURE__*/ S.String;
 
 /** Specifies an array of alerts that are disabled. Allowed values are: Sql_Injection, Sql_Injection_Vulnerability, Access_Anomaly, Data_Exfiltration, Unsafe_Action, Brute_Force */
-export type SecurityAlertPolicyPropertiesDisabledAlertsList =
-  ReadonlyArray<string>;
+export type SecurityAlertPolicyPropertiesDisabledAlertsList = Array<string>;
 export const SecurityAlertPolicyPropertiesDisabledAlertsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<SecurityAlertPolicyPropertiesDisabledAlertsList>;
 
 /** Specifies an array of e-mail addresses to which the alert is sent. */
-export type SecurityAlertPolicyPropertiesEmailAddressesList =
-  ReadonlyArray<string>;
+export type SecurityAlertPolicyPropertiesEmailAddressesList = Array<string>;
 export const SecurityAlertPolicyPropertiesEmailAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -25591,7 +25573,7 @@ export const ManagedDatabaseSecurityAlertPolicy = /*@__PURE__*/ S.suspend(() =>
 
 /** The ManagedDatabaseSecurityAlertPolicy items on this page */
 export type ManagedDatabaseSecurityAlertPolicyListResultValueList =
-  ReadonlyArray<ManagedDatabaseSecurityAlertPolicy>;
+  Array<ManagedDatabaseSecurityAlertPolicy>;
 export const ManagedDatabaseSecurityAlertPolicyListResultValueList =
   /*@__PURE__*/ S.Array(
     ManagedDatabaseSecurityAlertPolicy,
@@ -25757,7 +25739,7 @@ export const SecurityEvent = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SecurityEvent" }) as any as S.Schema<SecurityEvent>;
 
 /** The SecurityEvent items on this page */
-export type SecurityEventCollectionValueList = ReadonlyArray<SecurityEvent>;
+export type SecurityEventCollectionValueList = Array<SecurityEvent>;
 export const SecurityEventCollectionValueList = /*@__PURE__*/ S.Array(
   SecurityEvent,
 ) as any as S.Schema<SecurityEventCollectionValueList>;
@@ -26252,7 +26234,7 @@ export const SensitivityLabel = /*@__PURE__*/ S.suspend(() =>
 
 /** The SensitivityLabel items on this page */
 export type ManagedDatabaseSensitivityLabelsListByDatabaseResponseValueList =
-  ReadonlyArray<SensitivityLabel>;
+  Array<SensitivityLabel>;
 export const ManagedDatabaseSensitivityLabelsListByDatabaseResponseValueList =
   /*@__PURE__*/ S.Array(
     SensitivityLabel,
@@ -26312,7 +26294,7 @@ export const ManagedDatabaseSensitivityLabelsListCurrentByDatabaseRequest =
 
 /** The SensitivityLabel items on this page */
 export type ManagedDatabaseSensitivityLabelsListCurrentByDatabaseResponseValueList =
-  ReadonlyArray<SensitivityLabel>;
+  Array<SensitivityLabel>;
 export const ManagedDatabaseSensitivityLabelsListCurrentByDatabaseResponseValueList =
   /*@__PURE__*/ S.Array(
     SensitivityLabel,
@@ -26375,7 +26357,7 @@ export const ManagedDatabaseSensitivityLabelsListRecommendedByDatabaseRequest =
 
 /** The SensitivityLabel items on this page */
 export type ManagedDatabaseSensitivityLabelsListRecommendedByDatabaseResponseValueList =
-  ReadonlyArray<SensitivityLabel>;
+  Array<SensitivityLabel>;
 export const ManagedDatabaseSensitivityLabelsListRecommendedByDatabaseResponseValueList =
   /*@__PURE__*/ S.Array(
     SensitivityLabel,
@@ -26454,7 +26436,7 @@ export const SensitivityLabelUpdateInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SensitivityLabelUpdateInput>;
 
 export type ManagedDatabaseSensitivityLabelsUpdateRequestOperationsList =
-  ReadonlyArray<SensitivityLabelUpdateInput>;
+  Array<SensitivityLabelUpdateInput>;
 export const ManagedDatabaseSensitivityLabelsUpdateRequestOperationsList =
   /*@__PURE__*/ S.Array(
     SensitivityLabelUpdateInput,
@@ -26631,7 +26613,7 @@ export const ManagedDatabase = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ManagedDatabase>;
 
 /** The ManagedDatabase items on this page */
-export type ManagedDatabaseListResultValueList = ReadonlyArray<ManagedDatabase>;
+export type ManagedDatabaseListResultValueList = Array<ManagedDatabase>;
 export const ManagedDatabaseListResultValueList = /*@__PURE__*/ S.Array(
   ManagedDatabase,
 ) as any as S.Schema<ManagedDatabaseListResultValueList>;
@@ -26972,7 +26954,7 @@ export const ManagedDatabaseTablesListBySchemaRequest = /*@__PURE__*/ S.suspend(
 
 /** The DatabaseTable items on this page */
 export type ManagedDatabaseTablesListBySchemaResponseValueList =
-  ReadonlyArray<DatabaseTable>;
+  Array<DatabaseTable>;
 export const ManagedDatabaseTablesListBySchemaResponseValueList =
   /*@__PURE__*/ S.Array(
     DatabaseTable,
@@ -27009,7 +26991,7 @@ export const ManagedTransparentDataEncryptionPropertiesState =
 /** Properties of a transparent data encryption. */
 export interface ManagedTransparentDataEncryptionProperties {
   /** Specifies the state of the transparent data encryption. */
-  state: ManagedTransparentDataEncryptionPropertiesState;
+  state: ManagedTransparentDataEncryptionPropertiesState | (string & {});
 }
 export const ManagedTransparentDataEncryptionProperties =
   /*@__PURE__*/ S.suspend(() =>
@@ -27208,7 +27190,7 @@ export const ManagedTransparentDataEncryption = /*@__PURE__*/ S.suspend(() =>
 
 /** The ManagedTransparentDataEncryption items on this page */
 export type ManagedTransparentDataEncryptionListResultValueList =
-  ReadonlyArray<ManagedTransparentDataEncryption>;
+  Array<ManagedTransparentDataEncryption>;
 export const ManagedTransparentDataEncryptionListResultValueList =
   /*@__PURE__*/ S.Array(
     ManagedTransparentDataEncryption,
@@ -27715,7 +27697,7 @@ export const ManagedDatabaseVulnerabilityAssessmentScansListByDatabaseRequest =
 
 /** The VulnerabilityAssessmentScanRecord items on this page */
 export type ManagedDatabaseVulnerabilityAssessmentScansListByDatabaseResponseValueList =
-  ReadonlyArray<VulnerabilityAssessmentScanRecord>;
+  Array<VulnerabilityAssessmentScanRecord>;
 export const ManagedDatabaseVulnerabilityAssessmentScansListByDatabaseResponseValueList =
   /*@__PURE__*/ S.Array(
     VulnerabilityAssessmentScanRecord,
@@ -27955,7 +27937,7 @@ export const ManagedDatabaseVulnerabilityAssessmentsListByDatabaseRequest =
 
 /** The DatabaseVulnerabilityAssessment items on this page */
 export type ManagedDatabaseVulnerabilityAssessmentsListByDatabaseResponseValueList =
-  ReadonlyArray<DatabaseVulnerabilityAssessment>;
+  Array<DatabaseVulnerabilityAssessment>;
 export const ManagedDatabaseVulnerabilityAssessmentsListByDatabaseResponseValueList =
   /*@__PURE__*/ S.Array(
     DatabaseVulnerabilityAssessment,
@@ -27992,7 +27974,9 @@ export const ManagedInstanceAdministratorPropertiesAdministratorType =
 /** The properties of a managed instance administrator. */
 export interface ManagedInstanceAdministratorProperties {
   /** Type of the managed instance administrator. */
-  administratorType: ManagedInstanceAdministratorPropertiesAdministratorType;
+  administratorType:
+    | ManagedInstanceAdministratorPropertiesAdministratorType
+    | (string & {});
   /** Login name of the managed instance administrator. */
   login: string;
   /** Universally Unique Identifier */
@@ -28234,7 +28218,7 @@ export const ManagedInstanceAdministrator = /*@__PURE__*/ S.suspend(() =>
 
 /** The ManagedInstanceAdministrator items on this page */
 export type ManagedInstanceAdministratorListResultValueList =
-  ReadonlyArray<ManagedInstanceAdministrator>;
+  Array<ManagedInstanceAdministrator>;
 export const ManagedInstanceAdministratorListResultValueList =
   /*@__PURE__*/ S.Array(
     ManagedInstanceAdministrator,
@@ -28519,7 +28503,7 @@ export const ManagedInstanceAdvancedThreatProtection = /*@__PURE__*/ S.suspend(
 
 /** The ManagedInstanceAdvancedThreatProtection items on this page */
 export type ManagedInstanceAdvancedThreatProtectionListResultValueList =
-  ReadonlyArray<ManagedInstanceAdvancedThreatProtection>;
+  Array<ManagedInstanceAdvancedThreatProtection>;
 export const ManagedInstanceAdvancedThreatProtectionListResultValueList =
   /*@__PURE__*/ S.Array(
     ManagedInstanceAdvancedThreatProtection,
@@ -28789,7 +28773,7 @@ export const ManagedInstanceAzureADOnlyAuthentication = /*@__PURE__*/ S.suspend(
 
 /** Array of results. */
 export type ManagedInstanceAzureADOnlyAuthListResultValueList =
-  ReadonlyArray<ManagedInstanceAzureADOnlyAuthentication>;
+  Array<ManagedInstanceAzureADOnlyAuthentication>;
 export const ManagedInstanceAzureADOnlyAuthListResultValueList =
   /*@__PURE__*/ S.Array(
     ManagedInstanceAzureADOnlyAuthentication,
@@ -28865,7 +28849,7 @@ export const ManagedInstanceDtcSecuritySettings = /*@__PURE__*/ S.suspend(() =>
 
 /** External dns suffix search list of managed instance DTC. */
 export type ManagedInstanceDtcPropertiesInputExternalDnsSuffixSearchListList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ManagedInstanceDtcPropertiesInputExternalDnsSuffixSearchListList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -28943,7 +28927,7 @@ export const ManagedInstanceDtcsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
 
 /** External dns suffix search list of managed instance DTC. */
 export type ManagedInstanceDtcPropertiesExternalDnsSuffixSearchListList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ManagedInstanceDtcPropertiesExternalDnsSuffixSearchListList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -29120,8 +29104,7 @@ export const ManagedInstanceDtc = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ManagedInstanceDtc>;
 
 /** The ManagedInstanceDtc items on this page */
-export type ManagedInstanceDtcListResultValueList =
-  ReadonlyArray<ManagedInstanceDtc>;
+export type ManagedInstanceDtcListResultValueList = Array<ManagedInstanceDtc>;
 export const ManagedInstanceDtcListResultValueList = /*@__PURE__*/ S.Array(
   ManagedInstanceDtc,
 ) as any as S.Schema<ManagedInstanceDtcListResultValueList>;
@@ -29398,7 +29381,7 @@ export const ManagedInstanceEncryptionProtector = /*@__PURE__*/ S.suspend(() =>
 
 /** The ManagedInstanceEncryptionProtector items on this page */
 export type ManagedInstanceEncryptionProtectorListResultValueList =
-  ReadonlyArray<ManagedInstanceEncryptionProtector>;
+  Array<ManagedInstanceEncryptionProtector>;
 export const ManagedInstanceEncryptionProtectorListResultValueList =
   /*@__PURE__*/ S.Array(
     ManagedInstanceEncryptionProtector,
@@ -29728,8 +29711,7 @@ export const ManagedInstanceKey = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ManagedInstanceKey>;
 
 /** The ManagedInstanceKey items on this page */
-export type ManagedInstanceKeyListResultValueList =
-  ReadonlyArray<ManagedInstanceKey>;
+export type ManagedInstanceKeyListResultValueList = Array<ManagedInstanceKey>;
 export const ManagedInstanceKeyListResultValueList = /*@__PURE__*/ S.Array(
   ManagedInstanceKey,
 ) as any as S.Schema<ManagedInstanceKeyListResultValueList>;
@@ -29764,7 +29746,9 @@ export const ManagedInstanceLongTermRetentionPolicyPropertiesBackupStorageAccess
 /** Properties of a long term retention policy */
 export interface ManagedInstanceLongTermRetentionPolicyProperties {
   /** The BackupStorageAccessTier for the LTR backup */
-  backupStorageAccessTier?: ManagedInstanceLongTermRetentionPolicyPropertiesBackupStorageAccessTier;
+  backupStorageAccessTier?:
+    | ManagedInstanceLongTermRetentionPolicyPropertiesBackupStorageAccessTier
+    | (string & {});
   /** The weekly retention policy for an LTR backup in an ISO 8601 format. */
   weeklyRetention?: string;
   /** The monthly retention policy for an LTR backup in an ISO 8601 format. */
@@ -30046,7 +30030,7 @@ export const ManagedInstanceLongTermRetentionPolicy = /*@__PURE__*/ S.suspend(
 
 /** The ManagedInstanceLongTermRetentionPolicy items on this page */
 export type ManagedInstanceLongTermRetentionPolicyListResultValueList =
-  ReadonlyArray<ManagedInstanceLongTermRetentionPolicy>;
+  Array<ManagedInstanceLongTermRetentionPolicy>;
 export const ManagedInstanceLongTermRetentionPolicyListResultValueList =
   /*@__PURE__*/ S.Array(
     ManagedInstanceLongTermRetentionPolicy,
@@ -30212,7 +30196,7 @@ export const UpsertManagedServerOperationStepWithEstimatesAndDuration =
 
 /** The operation steps list. */
 export type ManagedInstanceOperationStepsStepsListList =
-  ReadonlyArray<UpsertManagedServerOperationStepWithEstimatesAndDuration>;
+  Array<UpsertManagedServerOperationStepWithEstimatesAndDuration>;
 export const ManagedInstanceOperationStepsStepsListList = /*@__PURE__*/ S.Array(
   UpsertManagedServerOperationStepWithEstimatesAndDuration,
 ) as any as S.Schema<ManagedInstanceOperationStepsStepsListList>;
@@ -30369,7 +30353,7 @@ export const ManagedInstanceOperation = /*@__PURE__*/ S.suspend(() =>
 
 /** The ManagedInstanceOperation items on this page */
 export type ManagedInstanceOperationListResultValueList =
-  ReadonlyArray<ManagedInstanceOperation>;
+  Array<ManagedInstanceOperation>;
 export const ManagedInstanceOperationListResultValueList =
   /*@__PURE__*/ S.Array(
     ManagedInstanceOperation,
@@ -30738,7 +30722,7 @@ export const ManagedInstancePrivateEndpointConnection = /*@__PURE__*/ S.suspend(
 
 /** The ManagedInstancePrivateEndpointConnection items on this page */
 export type ManagedInstancePrivateEndpointConnectionListResultValueList =
-  ReadonlyArray<ManagedInstancePrivateEndpointConnection>;
+  Array<ManagedInstancePrivateEndpointConnection>;
 export const ManagedInstancePrivateEndpointConnectionListResultValueList =
   /*@__PURE__*/ S.Array(
     ManagedInstancePrivateEndpointConnection,
@@ -30792,7 +30776,7 @@ export const ManagedInstancePrivateLinkResourcesGetRequest =
 
 /** The private link resource required member names. */
 export type ManagedInstancePrivateLinkPropertiesRequiredMembersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ManagedInstancePrivateLinkPropertiesRequiredMembersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -30800,7 +30784,7 @@ export const ManagedInstancePrivateLinkPropertiesRequiredMembersList =
 
 /** The private link resource required zone names. */
 export type ManagedInstancePrivateLinkPropertiesRequiredZoneNamesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ManagedInstancePrivateLinkPropertiesRequiredZoneNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -30909,7 +30893,7 @@ export const ManagedInstancePrivateLink = /*@__PURE__*/ S.suspend(() =>
 
 /** The ManagedInstancePrivateLink items on this page */
 export type ManagedInstancePrivateLinkListResultValueList =
-  ReadonlyArray<ManagedInstancePrivateLink>;
+  Array<ManagedInstancePrivateLink>;
 export const ManagedInstancePrivateLinkListResultValueList =
   /*@__PURE__*/ S.Array(
     ManagedInstancePrivateLink,
@@ -31022,9 +31006,13 @@ export const ManagedInstanceExternalAdministratorPrincipalType =
 /** Properties of a active directory administrator. */
 export interface ManagedInstanceExternalAdministrator {
   /** Type of the sever administrator. */
-  administratorType?: ManagedInstanceExternalAdministratorAdministratorType;
+  administratorType?:
+    | ManagedInstanceExternalAdministratorAdministratorType
+    | (string & {});
   /** Principal Type of the sever administrator. */
-  principalType?: ManagedInstanceExternalAdministratorPrincipalType;
+  principalType?:
+    | ManagedInstanceExternalAdministratorPrincipalType
+    | (string & {});
   /** Login name of the server administrator. */
   login?: string;
   /** Universally Unique Identifier */
@@ -31471,7 +31459,7 @@ export const ManagedInstancePecProperty = /*@__PURE__*/ S.suspend(() =>
 
 /** List of private endpoint connections on a managed instance. */
 export type ManagedInstancePropertiesPrivateEndpointConnectionsList =
-  ReadonlyArray<ManagedInstancePecProperty>;
+  Array<ManagedInstancePecProperty>;
 export const ManagedInstancePropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     ManagedInstancePecProperty,
@@ -32140,7 +32128,7 @@ export const ManagedInstance = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ManagedInstance>;
 
 /** The ManagedInstance items on this page */
-export type ManagedInstanceListResultValueList = ReadonlyArray<ManagedInstance>;
+export type ManagedInstanceListResultValueList = Array<ManagedInstance>;
 export const ManagedInstanceListResultValueList = /*@__PURE__*/ S.Array(
   ManagedInstance,
 ) as any as S.Schema<ManagedInstanceListResultValueList>;
@@ -32282,8 +32270,7 @@ export type TopQueriesIntervalType = "PT1H" | "P1D";
 export const TopQueriesIntervalType = /*@__PURE__*/ S.String;
 
 /** List of intervals with appropriate metric data */
-export type TopQueriesQueriesItemIntervalsList =
-  ReadonlyArray<QueryMetricInterval>;
+export type TopQueriesQueriesItemIntervalsList = Array<QueryMetricInterval>;
 export const TopQueriesQueriesItemIntervalsList = /*@__PURE__*/ S.Array(
   QueryMetricInterval,
 ) as any as S.Schema<TopQueriesQueriesItemIntervalsList>;
@@ -32314,7 +32301,7 @@ export const TopQueriesQueriesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TopQueriesQueriesItem>;
 
 /** List of top resource consuming queries with appropriate metric data */
-export type TopQueriesQueriesList = ReadonlyArray<TopQueriesQueriesItem>;
+export type TopQueriesQueriesList = Array<TopQueriesQueriesItem>;
 export const TopQueriesQueriesList = /*@__PURE__*/ S.Array(
   TopQueriesQueriesItem,
 ) as any as S.Schema<TopQueriesQueriesList>;
@@ -32348,7 +32335,7 @@ export const TopQueries = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TopQueries" }) as any as S.Schema<TopQueries>;
 
 /** The TopQueries items on this page */
-export type TopQueriesListResultValueList = ReadonlyArray<TopQueries>;
+export type TopQueriesListResultValueList = Array<TopQueries>;
 export const TopQueriesListResultValueList = /*@__PURE__*/ S.Array(
   TopQueries,
 ) as any as S.Schema<TopQueriesListResultValueList>;
@@ -32434,8 +32421,7 @@ export const EndpointDetail = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EndpointDetail" }) as any as S.Schema<EndpointDetail>;
 
 /** The IP Addresses and Ports used when connecting to DomainName. */
-export type EndpointDependencyEndpointDetailsList =
-  ReadonlyArray<EndpointDetail>;
+export type EndpointDependencyEndpointDetailsList = Array<EndpointDetail>;
 export const EndpointDependencyEndpointDetailsList = /*@__PURE__*/ S.Array(
   EndpointDetail,
 ) as any as S.Schema<EndpointDependencyEndpointDetailsList>;
@@ -32458,7 +32444,7 @@ export const EndpointDependency = /*@__PURE__*/ S.suspend(() =>
 
 /** The endpoints that the managed instance service communicates with in order to function correctly. */
 export type OutboundEnvironmentEndpointEndpointsList =
-  ReadonlyArray<EndpointDependency>;
+  Array<EndpointDependency>;
 export const OutboundEnvironmentEndpointEndpointsList = /*@__PURE__*/ S.Array(
   EndpointDependency,
 ) as any as S.Schema<OutboundEnvironmentEndpointEndpointsList>;
@@ -32481,7 +32467,7 @@ export const OutboundEnvironmentEndpoint = /*@__PURE__*/ S.suspend(() =>
 
 /** The OutboundEnvironmentEndpoint items on this page */
 export type OutboundEnvironmentEndpointCollectionValueList =
-  ReadonlyArray<OutboundEnvironmentEndpoint>;
+  Array<OutboundEnvironmentEndpoint>;
 export const OutboundEnvironmentEndpointCollectionValueList =
   /*@__PURE__*/ S.Array(
     OutboundEnvironmentEndpoint,
@@ -33176,7 +33162,7 @@ export const ManagedInstanceVulnerabilityAssessmentsCreateOrUpdateRequestVulnera
 
 /** Specifies an array of e-mail addresses to which the scan notification is sent. */
 export type ManagedInstanceVulnerabilityAssessmentPropertiesRecurringScansEmailsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ManagedInstanceVulnerabilityAssessmentPropertiesRecurringScansEmailsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -33455,7 +33441,7 @@ export const ManagedInstanceVulnerabilityAssessment = /*@__PURE__*/ S.suspend(
 
 /** The ManagedInstanceVulnerabilityAssessment items on this page */
 export type ManagedInstanceVulnerabilityAssessmentListResultValueList =
-  ReadonlyArray<ManagedInstanceVulnerabilityAssessment>;
+  Array<ManagedInstanceVulnerabilityAssessment>;
 export const ManagedInstanceVulnerabilityAssessmentListResultValueList =
   /*@__PURE__*/ S.Array(
     ManagedInstanceVulnerabilityAssessment,
@@ -33492,7 +33478,7 @@ export interface ManagedLedgerDigestUploadsProperties {
   /** The digest storage endpoint, which must be either an Azure blob storage endpoint or an URI for Azure Confidential Ledger. */
   digestStorageEndpoint?: string;
   /** Specifies the state of ledger digest upload. */
-  state?: ManagedLedgerDigestUploadsPropertiesState;
+  state?: ManagedLedgerDigestUploadsPropertiesState | (string & {});
 }
 export const ManagedLedgerDigestUploadsProperties = /*@__PURE__*/ S.suspend(
   () =>
@@ -33753,7 +33739,7 @@ export const ManagedLedgerDigestUploads = /*@__PURE__*/ S.suspend(() =>
 
 /** The ManagedLedgerDigestUploads items on this page */
 export type ManagedLedgerDigestUploadsListResultValueList =
-  ReadonlyArray<ManagedLedgerDigestUploads>;
+  Array<ManagedLedgerDigestUploads>;
 export const ManagedLedgerDigestUploadsListResultValueList =
   /*@__PURE__*/ S.Array(
     ManagedLedgerDigestUploads,
@@ -33946,7 +33932,7 @@ export const ManagedRestorableDroppedDatabaseBackupShortTermRetentionPoliciesLis
 
 /** The ManagedBackupShortTermRetentionPolicy items on this page */
 export type ManagedRestorableDroppedDatabaseBackupShortTermRetentionPoliciesListByRestorableDroppedDatabaseResponseValueList =
-  ReadonlyArray<ManagedBackupShortTermRetentionPolicy>;
+  Array<ManagedBackupShortTermRetentionPolicy>;
 export const ManagedRestorableDroppedDatabaseBackupShortTermRetentionPoliciesListByRestorableDroppedDatabaseResponseValueList =
   /*@__PURE__*/ S.Array(
     ManagedBackupShortTermRetentionPolicy,
@@ -34308,7 +34294,7 @@ export const ManagedServerDnsAlias = /*@__PURE__*/ S.suspend(() =>
 
 /** The ManagedServerDnsAlias items on this page */
 export type ManagedServerDnsAliasListResultValueList =
-  ReadonlyArray<ManagedServerDnsAlias>;
+  Array<ManagedServerDnsAlias>;
 export const ManagedServerDnsAliasListResultValueList = /*@__PURE__*/ S.Array(
   ManagedServerDnsAlias,
 ) as any as S.Schema<ManagedServerDnsAliasListResultValueList>;
@@ -34336,7 +34322,7 @@ export const ManagedServerSecurityAlertPoliciesCreateOrUpdateRequestSecurityAler
 
 /** Specifies an array of alerts that are disabled. Allowed values are: Sql_Injection, Sql_Injection_Vulnerability, Access_Anomaly, Data_Exfiltration, Unsafe_Action, Brute_Force */
 export type ManagedServerSecurityAlertPoliciesCreateOrUpdateRequestPropertiesDisabledAlertsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ManagedServerSecurityAlertPoliciesCreateOrUpdateRequestPropertiesDisabledAlertsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -34344,7 +34330,7 @@ export const ManagedServerSecurityAlertPoliciesCreateOrUpdateRequestPropertiesDi
 
 /** Specifies an array of e-mail addresses to which the alert is sent. */
 export type ManagedServerSecurityAlertPoliciesCreateOrUpdateRequestPropertiesEmailAddressesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ManagedServerSecurityAlertPoliciesCreateOrUpdateRequestPropertiesEmailAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -34428,7 +34414,7 @@ export const ManagedServerSecurityAlertPoliciesCreateOrUpdateRequest =
 
 /** Specifies an array of alerts that are disabled. Allowed values are: Sql_Injection, Sql_Injection_Vulnerability, Access_Anomaly, Data_Exfiltration, Unsafe_Action, Brute_Force */
 export type ManagedServerSecurityAlertPoliciesCreateOrUpdateResponsePropertiesDisabledAlertsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ManagedServerSecurityAlertPoliciesCreateOrUpdateResponsePropertiesDisabledAlertsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -34436,7 +34422,7 @@ export const ManagedServerSecurityAlertPoliciesCreateOrUpdateResponsePropertiesD
 
 /** Specifies an array of e-mail addresses to which the alert is sent. */
 export type ManagedServerSecurityAlertPoliciesCreateOrUpdateResponsePropertiesEmailAddressesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ManagedServerSecurityAlertPoliciesCreateOrUpdateResponsePropertiesEmailAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -34550,7 +34536,7 @@ export const ManagedServerSecurityAlertPoliciesGetRequest =
 
 /** Specifies an array of alerts that are disabled. Allowed values are: Sql_Injection, Sql_Injection_Vulnerability, Access_Anomaly, Data_Exfiltration, Unsafe_Action, Brute_Force */
 export type ManagedServerSecurityAlertPoliciesGetResponsePropertiesDisabledAlertsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ManagedServerSecurityAlertPoliciesGetResponsePropertiesDisabledAlertsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -34558,7 +34544,7 @@ export const ManagedServerSecurityAlertPoliciesGetResponsePropertiesDisabledAler
 
 /** Specifies an array of e-mail addresses to which the alert is sent. */
 export type ManagedServerSecurityAlertPoliciesGetResponsePropertiesEmailAddressesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ManagedServerSecurityAlertPoliciesGetResponsePropertiesEmailAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -34658,7 +34644,7 @@ export const ManagedServerSecurityAlertPoliciesListByInstanceRequest =
 
 /** Specifies an array of alerts that are disabled. Allowed values are: Sql_Injection, Sql_Injection_Vulnerability, Access_Anomaly, Data_Exfiltration, Unsafe_Action, Brute_Force */
 export type ManagedServerSecurityAlertPolicyPropertiesDisabledAlertsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ManagedServerSecurityAlertPolicyPropertiesDisabledAlertsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -34666,7 +34652,7 @@ export const ManagedServerSecurityAlertPolicyPropertiesDisabledAlertsList =
 
 /** Specifies an array of e-mail addresses to which the alert is sent. */
 export type ManagedServerSecurityAlertPolicyPropertiesEmailAddressesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ManagedServerSecurityAlertPolicyPropertiesEmailAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -34738,7 +34724,7 @@ export const ManagedServerSecurityAlertPolicy = /*@__PURE__*/ S.suspend(() =>
 
 /** The ManagedServerSecurityAlertPolicy items on this page */
 export type ManagedServerSecurityAlertPolicyListResultValueList =
-  ReadonlyArray<ManagedServerSecurityAlertPolicy>;
+  Array<ManagedServerSecurityAlertPolicy>;
 export const ManagedServerSecurityAlertPolicyListResultValueList =
   /*@__PURE__*/ S.Array(
     ManagedServerSecurityAlertPolicy,
@@ -34817,22 +34803,20 @@ export const NSPConfigAssociation = /*@__PURE__*/ S.suspend(() =>
   identifier: "NSPConfigAssociation",
 }) as any as S.Schema<NSPConfigAssociation>;
 
-export type NSPConfigAccessRulePropertiesAddressPrefixesList =
-  ReadonlyArray<string>;
+export type NSPConfigAccessRulePropertiesAddressPrefixesList = Array<string>;
 export const NSPConfigAccessRulePropertiesAddressPrefixesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<NSPConfigAccessRulePropertiesAddressPrefixesList>;
 
 export type NSPConfigAccessRulePropertiesFullyQualifiedDomainNamesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const NSPConfigAccessRulePropertiesFullyQualifiedDomainNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<NSPConfigAccessRulePropertiesFullyQualifiedDomainNamesList>;
 
-export type NSPConfigAccessRulePropertiesSubscriptionsList =
-  ReadonlyArray<string>;
+export type NSPConfigAccessRulePropertiesSubscriptionsList = Array<string>;
 export const NSPConfigAccessRulePropertiesSubscriptionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -34855,14 +34839,13 @@ export const NSPConfigNetworkSecurityPerimeterRule = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<NSPConfigNetworkSecurityPerimeterRule>;
 
 export type NSPConfigAccessRulePropertiesNetworkSecurityPerimetersList =
-  ReadonlyArray<NSPConfigNetworkSecurityPerimeterRule>;
+  Array<NSPConfigNetworkSecurityPerimeterRule>;
 export const NSPConfigAccessRulePropertiesNetworkSecurityPerimetersList =
   /*@__PURE__*/ S.Array(
     NSPConfigNetworkSecurityPerimeterRule,
   ) as any as S.Schema<NSPConfigAccessRulePropertiesNetworkSecurityPerimetersList>;
 
-export type NSPConfigAccessRulePropertiesServiceTagsList =
-  ReadonlyArray<string>;
+export type NSPConfigAccessRulePropertiesServiceTagsList = Array<string>;
 export const NSPConfigAccessRulePropertiesServiceTagsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -34908,8 +34891,7 @@ export const NSPConfigAccessRule = /*@__PURE__*/ S.suspend(() =>
   identifier: "NSPConfigAccessRule",
 }) as any as S.Schema<NSPConfigAccessRule>;
 
-export type NSPConfigProfileAccessRulesList =
-  ReadonlyArray<NSPConfigAccessRule>;
+export type NSPConfigProfileAccessRulesList = Array<NSPConfigAccessRule>;
 export const NSPConfigProfileAccessRulesList = /*@__PURE__*/ S.Array(
   NSPConfigAccessRule,
 ) as any as S.Schema<NSPConfigProfileAccessRulesList>;
@@ -34930,14 +34912,14 @@ export const NSPConfigProfile = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NSPConfigProfile>;
 
 export type NSPProvisioningIssuePropertiesSuggestedResourceIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const NSPProvisioningIssuePropertiesSuggestedResourceIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<NSPProvisioningIssuePropertiesSuggestedResourceIdsList>;
 
 export type NSPProvisioningIssuePropertiesSuggestedAccessRulesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const NSPProvisioningIssuePropertiesSuggestedAccessRulesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -34980,7 +34962,7 @@ export const NSPProvisioningIssue = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NSPProvisioningIssue>;
 
 export type NetworkSecurityPerimeterConfigurationPropertiesProvisioningIssuesList =
-  ReadonlyArray<NSPProvisioningIssue>;
+  Array<NSPProvisioningIssue>;
 export const NetworkSecurityPerimeterConfigurationPropertiesProvisioningIssuesList =
   /*@__PURE__*/ S.Array(
     NSPProvisioningIssue,
@@ -35088,7 +35070,7 @@ export const NetworkSecurityPerimeterConfiguration = /*@__PURE__*/ S.suspend(
 
 /** The NetworkSecurityPerimeterConfiguration items on this page */
 export type NetworkSecurityPerimeterConfigurationListResultValueList =
-  ReadonlyArray<NetworkSecurityPerimeterConfiguration>;
+  Array<NetworkSecurityPerimeterConfiguration>;
 export const NetworkSecurityPerimeterConfigurationListResultValueList =
   /*@__PURE__*/ S.Array(
     NetworkSecurityPerimeterConfiguration,
@@ -35232,7 +35214,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** Array of results. */
-export type OperationListResultValueList = ReadonlyArray<Operation>;
+export type OperationListResultValueList = Array<Operation>;
 export const OperationListResultValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationListResultValueList>;
@@ -35457,7 +35439,7 @@ export const OutboundFirewallRule = /*@__PURE__*/ S.suspend(() =>
 
 /** The OutboundFirewallRule items on this page */
 export type OutboundFirewallRuleListResultValueList =
-  ReadonlyArray<OutboundFirewallRule>;
+  Array<OutboundFirewallRule>;
 export const OutboundFirewallRuleListResultValueList = /*@__PURE__*/ S.Array(
   OutboundFirewallRule,
 ) as any as S.Schema<OutboundFirewallRuleListResultValueList>;
@@ -35505,11 +35487,13 @@ export const PrivateLinkServiceConnectionStateActionsRequire =
 
 export interface PrivateLinkServiceConnectionStateProperty {
   /** The private link service connection status. */
-  status: PrivateLinkServiceConnectionStateStatus;
+  status: PrivateLinkServiceConnectionStateStatus | (string & {});
   /** The private link service connection description. */
   description: string;
   /** The actions required for private link service connection. */
-  actionsRequired?: PrivateLinkServiceConnectionStateActionsRequire;
+  actionsRequired?:
+    | PrivateLinkServiceConnectionStateActionsRequire
+    | (string & {});
 }
 export const PrivateLinkServiceConnectionStateProperty =
   /*@__PURE__*/ S.suspend(() =>
@@ -35579,7 +35563,7 @@ export const PrivateEndpointConnectionsCreateOrUpdateRequest =
 
 /** Group IDs. */
 export type PrivateEndpointConnectionsCreateOrUpdateResponsePropertiesGroupIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PrivateEndpointConnectionsCreateOrUpdateResponsePropertiesGroupIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -35715,7 +35699,7 @@ export const PrivateEndpointConnectionsGetRequest = /*@__PURE__*/ S.suspend(
 
 /** Group IDs. */
 export type PrivateEndpointConnectionsGetResponsePropertiesGroupIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PrivateEndpointConnectionsGetResponsePropertiesGroupIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -35800,8 +35784,7 @@ export const PrivateEndpointConnectionsListByServerRequest =
   }) as any as S.Schema<PrivateEndpointConnectionsListByServerRequest>;
 
 /** Group IDs. */
-export type PrivateEndpointConnectionPropertiesGroupIdsList =
-  ReadonlyArray<string>;
+export type PrivateEndpointConnectionPropertiesGroupIdsList = Array<string>;
 export const PrivateEndpointConnectionPropertiesGroupIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -35858,7 +35841,7 @@ export const PrivateEndpointConnection = /*@__PURE__*/ S.suspend(() =>
 
 /** The PrivateEndpointConnection items on this page */
 export type PrivateEndpointConnectionListResultValueList =
-  ReadonlyArray<PrivateEndpointConnection>;
+  Array<PrivateEndpointConnection>;
 export const PrivateEndpointConnectionListResultValueList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection,
@@ -35909,16 +35892,14 @@ export const PrivateLinkResourcesGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateLinkResourcesGetRequest>;
 
 /** The private link resource required member names. */
-export type PrivateLinkResourcePropertiesRequiredMembersList =
-  ReadonlyArray<string>;
+export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
 export const PrivateLinkResourcePropertiesRequiredMembersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
 
 /** The private link resource required zone names. */
-export type PrivateLinkResourcePropertiesRequiredZoneNamesList =
-  ReadonlyArray<string>;
+export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
 export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -36023,8 +36004,7 @@ export const PrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateLinkResource>;
 
 /** The PrivateLinkResource items on this page */
-export type PrivateLinkResourceListResultValueList =
-  ReadonlyArray<PrivateLinkResource>;
+export type PrivateLinkResourceListResultValueList = Array<PrivateLinkResource>;
 export const PrivateLinkResourceListResultValueList = /*@__PURE__*/ S.Array(
   PrivateLinkResource,
 ) as any as S.Schema<PrivateLinkResourceListResultValueList>;
@@ -36046,7 +36026,7 @@ export const PrivateLinkResourceListResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateLinkResourceListResult>;
 
 export type RecommendedSensitivityLabelsUpdateRequestOperationsList =
-  ReadonlyArray<RecommendedSensitivityLabelUpdateInput>;
+  Array<RecommendedSensitivityLabelUpdateInput>;
 export const RecommendedSensitivityLabelsUpdateRequestOperationsList =
   /*@__PURE__*/ S.Array(
     RecommendedSensitivityLabelUpdateInput,
@@ -36211,8 +36191,7 @@ export const RecoverableDatabase = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RecoverableDatabase>;
 
 /** A list of recoverable databases */
-export type RecoverableDatabaseListResultValueList =
-  ReadonlyArray<RecoverableDatabase>;
+export type RecoverableDatabaseListResultValueList = Array<RecoverableDatabase>;
 export const RecoverableDatabaseListResultValueList = /*@__PURE__*/ S.Array(
   RecoverableDatabase,
 ) as any as S.Schema<RecoverableDatabaseListResultValueList>;
@@ -36350,7 +36329,7 @@ export const RecoverableManagedDatabase = /*@__PURE__*/ S.suspend(() =>
 
 /** The RecoverableManagedDatabase items on this page */
 export type RecoverableManagedDatabaseListResultValueList =
-  ReadonlyArray<RecoverableManagedDatabase>;
+  Array<RecoverableManagedDatabase>;
 export const RecoverableManagedDatabaseListResultValueList =
   /*@__PURE__*/ S.Array(
     RecoverableManagedDatabase,
@@ -36793,7 +36772,7 @@ export const ReplicationLink = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReplicationLink>;
 
 /** The ReplicationLink items on this page */
-export type ReplicationLinkListResultValueList = ReadonlyArray<ReplicationLink>;
+export type ReplicationLinkListResultValueList = Array<ReplicationLink>;
 export const ReplicationLinkListResultValueList = /*@__PURE__*/ S.Array(
   ReplicationLink,
 ) as any as S.Schema<ReplicationLinkListResultValueList>;
@@ -37236,7 +37215,7 @@ export const RestorableDroppedDatabase = /*@__PURE__*/ S.suspend(() =>
 
 /** The RestorableDroppedDatabase items on this page */
 export type RestorableDroppedDatabaseListResultValueList =
-  ReadonlyArray<RestorableDroppedDatabase>;
+  Array<RestorableDroppedDatabase>;
 export const RestorableDroppedDatabaseListResultValueList =
   /*@__PURE__*/ S.Array(
     RestorableDroppedDatabase,
@@ -37418,7 +37397,7 @@ export const RestorableDroppedManagedDatabase = /*@__PURE__*/ S.suspend(() =>
 
 /** The RestorableDroppedManagedDatabase items on this page */
 export type RestorableDroppedManagedDatabaseListResultValueList =
-  ReadonlyArray<RestorableDroppedManagedDatabase>;
+  Array<RestorableDroppedManagedDatabase>;
 export const RestorableDroppedManagedDatabaseListResultValueList =
   /*@__PURE__*/ S.Array(
     RestorableDroppedManagedDatabase,
@@ -37676,7 +37655,7 @@ export const RestorePoint = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RestorePoint" }) as any as S.Schema<RestorePoint>;
 
 /** The RestorePoint items on this page */
-export type RestorePointListResultValueList = ReadonlyArray<RestorePoint>;
+export type RestorePointListResultValueList = Array<RestorePoint>;
 export const RestorePointListResultValueList = /*@__PURE__*/ S.Array(
   RestorePoint,
 ) as any as S.Schema<RestorePointListResultValueList>;
@@ -38057,7 +38036,7 @@ export const SensitivityLabelsListByDatabaseRequest = /*@__PURE__*/ S.suspend(
 
 /** The SensitivityLabel items on this page */
 export type SensitivityLabelsListByDatabaseResponseValueList =
-  ReadonlyArray<SensitivityLabel>;
+  Array<SensitivityLabel>;
 export const SensitivityLabelsListByDatabaseResponseValueList =
   /*@__PURE__*/ S.Array(
     SensitivityLabel,
@@ -38117,7 +38096,7 @@ export const SensitivityLabelsListCurrentByDatabaseRequest =
 
 /** The SensitivityLabel items on this page */
 export type SensitivityLabelsListCurrentByDatabaseResponseValueList =
-  ReadonlyArray<SensitivityLabel>;
+  Array<SensitivityLabel>;
 export const SensitivityLabelsListCurrentByDatabaseResponseValueList =
   /*@__PURE__*/ S.Array(
     SensitivityLabel,
@@ -38178,7 +38157,7 @@ export const SensitivityLabelsListRecommendedByDatabaseRequest =
 
 /** The SensitivityLabel items on this page */
 export type SensitivityLabelsListRecommendedByDatabaseResponseValueList =
-  ReadonlyArray<SensitivityLabel>;
+  Array<SensitivityLabel>;
 export const SensitivityLabelsListRecommendedByDatabaseResponseValueList =
   /*@__PURE__*/ S.Array(
     SensitivityLabel,
@@ -38201,7 +38180,7 @@ export const SensitivityLabelsListRecommendedByDatabaseResponse =
   }) as any as S.Schema<SensitivityLabelsListRecommendedByDatabaseResponse>;
 
 export type SensitivityLabelsUpdateRequestOperationsList =
-  ReadonlyArray<SensitivityLabelUpdateInput>;
+  Array<SensitivityLabelUpdateInput>;
 export const SensitivityLabelsUpdateRequestOperationsList =
   /*@__PURE__*/ S.Array(
     SensitivityLabelUpdateInput,
@@ -38501,7 +38480,7 @@ export const ServerAdvancedThreatProtection = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of results. */
 export type LogicalServerAdvancedThreatProtectionListResultValueList =
-  ReadonlyArray<ServerAdvancedThreatProtection>;
+  Array<ServerAdvancedThreatProtection>;
 export const LogicalServerAdvancedThreatProtectionListResultValueList =
   /*@__PURE__*/ S.Array(
     ServerAdvancedThreatProtection,
@@ -38645,7 +38624,7 @@ export const ServerAdvisorsListByServerResponseBodyItem =
   }) as any as S.Schema<ServerAdvisorsListByServerResponseBodyItem>;
 
 export type ServerAdvisorsListByServerResponseBodyList =
-  ReadonlyArray<ServerAdvisorsListByServerResponseBodyItem>;
+  Array<ServerAdvisorsListByServerResponseBodyItem>;
 export const ServerAdvisorsListByServerResponseBodyList = /*@__PURE__*/ S.Array(
   ServerAdvisorsListByServerResponseBodyItem,
 ) as any as S.Schema<ServerAdvisorsListByServerResponseBodyList>;
@@ -39278,7 +39257,7 @@ export const ServerAzureADAdministrator = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of results. */
 export type AdministratorListResultValueList =
-  ReadonlyArray<ServerAzureADAdministrator>;
+  Array<ServerAzureADAdministrator>;
 export const AdministratorListResultValueList = /*@__PURE__*/ S.Array(
   ServerAzureADAdministrator,
 ) as any as S.Schema<AdministratorListResultValueList>;
@@ -39541,7 +39520,7 @@ export const ServerAzureADOnlyAuthentication = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of results. */
 export type AzureADOnlyAuthListResultValueList =
-  ReadonlyArray<ServerAzureADOnlyAuthentication>;
+  Array<ServerAzureADOnlyAuthentication>;
 export const AzureADOnlyAuthListResultValueList = /*@__PURE__*/ S.Array(
   ServerAzureADOnlyAuthentication,
 ) as any as S.Schema<AzureADOnlyAuthListResultValueList>;
@@ -39569,7 +39548,7 @@ export const ServerBlobAuditingPoliciesCreateOrUpdateRequestBlobAuditingPolicyNa
 
 /** Specifies the Actions-Groups and Actions to audit. The recommended set of action groups to use is the following combination - this will audit all the queries and stored procedures executed against the database, as well as successful and failed logins: BATCH_COMPLETED_GROUP, SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP, FAILED_DATABASE_AUTHENTICATION_GROUP. This above combination is also the set that is configured by default when enabling auditing from the Azure portal. The supported action groups to audit are (note: choose only specific groups that cover your auditing needs. Using unnecessary groups could lead to very large quantities of audit records): APPLICATION_ROLE_CHANGE_PASSWORD_GROUP BACKUP_RESTORE_GROUP DATABASE_LOGOUT_GROUP DATABASE_OBJECT_CHANGE_GROUP DATABASE_OBJECT_OWNERSHIP_CHANGE_GROUP DATABASE_OBJECT_PERMISSION_CHANGE_GROUP DATABASE_OPERATION_GROUP DATABASE_PERMISSION_CHANGE_GROUP DATABASE_PRINCIPAL_CHANGE_GROUP DATABASE_PRINCIPAL_IMPERSONATION_GROUP DATABASE_ROLE_MEMBER_CHANGE_GROUP FAILED_DATABASE_AUTHENTICATION_GROUP SCHEMA_OBJECT_ACCESS_GROUP SCHEMA_OBJECT_CHANGE_GROUP SCHEMA_OBJECT_OWNERSHIP_CHANGE_GROUP SCHEMA_OBJECT_PERMISSION_CHANGE_GROUP SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP USER_CHANGE_PASSWORD_GROUP BATCH_STARTED_GROUP BATCH_COMPLETED_GROUP DBCC_GROUP DATABASE_OWNERSHIP_CHANGE_GROUP DATABASE_CHANGE_GROUP LEDGER_OPERATION_GROUP These are groups that cover all sql statements and stored procedures executed against the database, and should not be used in combination with other groups as this will result in duplicate audit logs. For more information, see [Database-Level Audit Action Groups](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-action-groups). For Database auditing policy, specific Actions can also be specified (note that Actions cannot be specified for Server auditing policy). The supported actions to audit are: SELECT UPDATE INSERT DELETE EXECUTE RECEIVE REFERENCES The general form for defining an action to be audited is: {action} ON {object} BY {principal} Note that <object> in the above format can refer to an object like a table, view, or stored procedure, or an entire database or schema. For the latter cases, the forms DATABASE::{db_name} and SCHEMA::{schema_name} are used, respectively. For example: SELECT on dbo.myTable by public SELECT on DATABASE::myDatabase by public SELECT on SCHEMA::mySchema by public For more information, see [Database-Level Audit Actions](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-actions) */
 export type ServerBlobAuditingPolicyPropertiesAuditActionsAndGroupsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ServerBlobAuditingPolicyPropertiesAuditActionsAndGroupsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -39596,7 +39575,7 @@ export interface ServerBlobAuditingPolicyProperties {
   /** Specifies whether Managed Identity is used to access blob storage */
   isManagedIdentityInUse?: boolean;
   /** Specifies the state of the audit. If state is Enabled, storageEndpoint or isAzureMonitorTargetEnabled are required. */
-  state: ServerBlobAuditingPolicyPropertiesState;
+  state: ServerBlobAuditingPolicyPropertiesState | (string & {});
   /** Specifies the blob storage endpoint (e.g. https://MyAccount.blob.core.windows.net). If state is Enabled, storageEndpoint or isAzureMonitorTargetEnabled is required. */
   storageEndpoint?: string;
   /** Specifies the identifier key of the auditing storage account. If state is Enabled and storageEndpoint is specified, not specifying the storageAccountAccessKey will use SQL server system-assigned managed identity to access the storage. Prerequisites for using managed identity authentication: 1. Assign SQL Server a system-assigned managed identity in Azure Active Directory (AAD). 2. Grant SQL Server identity access to the storage account by adding 'Storage Blob Data Contributor' RBAC role to the server identity. For more information, see [Auditing to storage using Managed Identity authentication](https://go.microsoft.com/fwlink/?linkid=2114355) */
@@ -39803,7 +39782,7 @@ export const ServerBlobAuditingPolicy = /*@__PURE__*/ S.suspend(() =>
 
 /** The ServerBlobAuditingPolicy items on this page */
 export type ServerBlobAuditingPolicyListResultValueList =
-  ReadonlyArray<ServerBlobAuditingPolicy>;
+  Array<ServerBlobAuditingPolicy>;
 export const ServerBlobAuditingPolicyListResultValueList =
   /*@__PURE__*/ S.Array(
     ServerBlobAuditingPolicy,
@@ -39845,7 +39824,9 @@ export interface ServerConfigurationOptionProperties {
   /** Value of the server configuration option. */
   serverConfigurationOptionValue: number;
   /** The ARM provisioning state of the job execution. */
-  provisioningState?: ServerConfigurationOptionPropertiesProvisioningState;
+  provisioningState?:
+    | ServerConfigurationOptionPropertiesProvisioningState
+    | (string & {});
 }
 export const ServerConfigurationOptionProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -40037,7 +40018,7 @@ export const ServerConfigurationOption = /*@__PURE__*/ S.suspend(() =>
 
 /** The ServerConfigurationOption items on this page */
 export type ServerConfigurationOptionListResultValueList =
-  ReadonlyArray<ServerConfigurationOption>;
+  Array<ServerConfigurationOption>;
 export const ServerConfigurationOptionListResultValueList =
   /*@__PURE__*/ S.Array(
     ServerConfigurationOption,
@@ -40075,7 +40056,9 @@ export const ServerConnectionPolicyPropertiesConnectionType =
 /** The properties of a server connection policy. */
 export interface ServerConnectionPolicyProperties {
   /** The server connection type. */
-  connectionType: ServerConnectionPolicyPropertiesConnectionType;
+  connectionType:
+    | ServerConnectionPolicyPropertiesConnectionType
+    | (string & {});
 }
 export const ServerConnectionPolicyProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -40277,7 +40260,7 @@ export const ServerConnectionPolicy = /*@__PURE__*/ S.suspend(() =>
 
 /** The ServerConnectionPolicy items on this page */
 export type ServerConnectionPolicyListResultValueList =
-  ReadonlyArray<ServerConnectionPolicy>;
+  Array<ServerConnectionPolicy>;
 export const ServerConnectionPolicyListResultValueList = /*@__PURE__*/ S.Array(
   ServerConnectionPolicy,
 ) as any as S.Schema<ServerConnectionPolicyListResultValueList>;
@@ -40314,7 +40297,7 @@ export interface ServerDevOpsAuditSettingsProperties {
   /** Specifies whether Managed Identity is used to access blob storage */
   isManagedIdentityInUse?: boolean;
   /** Specifies the state of the audit. If state is Enabled, storageEndpoint or isAzureMonitorTargetEnabled are required. */
-  state: ServerDevOpsAuditSettingsPropertiesState;
+  state: ServerDevOpsAuditSettingsPropertiesState | (string & {});
   /** Specifies the blob storage endpoint (e.g. https://MyAccount.blob.core.windows.net). If state is Enabled, storageEndpoint or isAzureMonitorTargetEnabled is required. */
   storageEndpoint?: string;
   /** Specifies the identifier key of the auditing storage account. If state is Enabled and storageEndpoint is specified, not specifying the storageAccountAccessKey will use SQL server system-assigned managed identity to access the storage. Prerequisites for using managed identity authentication: 1. Assign SQL Server a system-assigned managed identity in Azure Active Directory (AAD). 2. Grant SQL Server identity access to the storage account by adding 'Storage Blob Data Contributor' RBAC role to the server identity. For more information, see [Auditing to storage using Managed Identity authentication](https://go.microsoft.com/fwlink/?linkid=2114355) */
@@ -40511,7 +40494,7 @@ export const ServerDevOpsAuditingSettings = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of results. */
 export type ServerDevOpsAuditSettingsListResultValueList =
-  ReadonlyArray<ServerDevOpsAuditingSettings>;
+  Array<ServerDevOpsAuditingSettings>;
 export const ServerDevOpsAuditSettingsListResultValueList =
   /*@__PURE__*/ S.Array(
     ServerDevOpsAuditingSettings,
@@ -40791,7 +40774,7 @@ export const ServerDnsAlias = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ServerDnsAlias" }) as any as S.Schema<ServerDnsAlias>;
 
 /** The ServerDnsAlias items on this page */
-export type ServerDnsAliasListResultValueList = ReadonlyArray<ServerDnsAlias>;
+export type ServerDnsAliasListResultValueList = Array<ServerDnsAlias>;
 export const ServerDnsAliasListResultValueList = /*@__PURE__*/ S.Array(
   ServerDnsAlias,
 ) as any as S.Schema<ServerDnsAliasListResultValueList>;
@@ -41080,7 +41063,7 @@ export const ServerKey = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ServerKey" }) as any as S.Schema<ServerKey>;
 
 /** The ServerKey items on this page */
-export type ServerKeyListResultValueList = ReadonlyArray<ServerKey>;
+export type ServerKeyListResultValueList = Array<ServerKey>;
 export const ServerKeyListResultValueList = /*@__PURE__*/ S.Array(
   ServerKey,
 ) as any as S.Schema<ServerKeyListResultValueList>;
@@ -41211,7 +41194,7 @@ export const ServerOperation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServerOperation>;
 
 /** The ServerOperation items on this page */
-export type ServerOperationListResultValueList = ReadonlyArray<ServerOperation>;
+export type ServerOperationListResultValueList = Array<ServerOperation>;
 export const ServerOperationListResultValueList = /*@__PURE__*/ S.Array(
   ServerOperation,
 ) as any as S.Schema<ServerOperationListResultValueList>;
@@ -41330,9 +41313,11 @@ export const ServerExternalAdministratorPrincipalType = /*@__PURE__*/ S.String;
 /** Properties of a active directory administrator. */
 export interface ServerExternalAdministrator {
   /** Type of the sever administrator. */
-  administratorType?: ServerExternalAdministratorAdministratorType;
+  administratorType?:
+    | ServerExternalAdministratorAdministratorType
+    | (string & {});
   /** Principal Type of the sever administrator. */
-  principalType?: ServerExternalAdministratorPrincipalType;
+  principalType?: ServerExternalAdministratorPrincipalType | (string & {});
   /** Login name of the server administrator. */
   login?: string;
   /** Universally Unique Identifier */
@@ -41523,7 +41508,7 @@ export const ServersCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 
 /** Group IDs. */
 export type ServerPrivateEndpointConnectionPropertiesGroupIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ServerPrivateEndpointConnectionPropertiesGroupIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -41574,7 +41559,7 @@ export const ServerPrivateEndpointConnection = /*@__PURE__*/ S.suspend(() =>
 
 /** List of private endpoint connections on a server */
 export type ServerPropertiesPrivateEndpointConnectionsList =
-  ReadonlyArray<ServerPrivateEndpointConnection>;
+  Array<ServerPrivateEndpointConnection>;
 export const ServerPropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     ServerPrivateEndpointConnection,
@@ -41803,7 +41788,7 @@ export const ServerSecurityAlertPoliciesCreateOrUpdateRequestSecurityAlertPolicy
 
 /** Specifies an array of alerts that are disabled. Allowed values are: Sql_Injection, Sql_Injection_Vulnerability, Access_Anomaly, Data_Exfiltration, Unsafe_Action, Brute_Force */
 export type ServerSecurityAlertPoliciesCreateOrUpdateRequestPropertiesDisabledAlertsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ServerSecurityAlertPoliciesCreateOrUpdateRequestPropertiesDisabledAlertsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -41811,7 +41796,7 @@ export const ServerSecurityAlertPoliciesCreateOrUpdateRequestPropertiesDisabledA
 
 /** Specifies an array of e-mail addresses to which the alert is sent. */
 export type ServerSecurityAlertPoliciesCreateOrUpdateRequestPropertiesEmailAddressesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ServerSecurityAlertPoliciesCreateOrUpdateRequestPropertiesEmailAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -41894,7 +41879,7 @@ export const ServerSecurityAlertPoliciesCreateOrUpdateRequest =
 
 /** Specifies an array of alerts that are disabled. Allowed values are: Sql_Injection, Sql_Injection_Vulnerability, Access_Anomaly, Data_Exfiltration, Unsafe_Action, Brute_Force */
 export type ServerSecurityAlertPoliciesCreateOrUpdateResponsePropertiesDisabledAlertsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ServerSecurityAlertPoliciesCreateOrUpdateResponsePropertiesDisabledAlertsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -41902,7 +41887,7 @@ export const ServerSecurityAlertPoliciesCreateOrUpdateResponsePropertiesDisabled
 
 /** Specifies an array of e-mail addresses to which the alert is sent. */
 export type ServerSecurityAlertPoliciesCreateOrUpdateResponsePropertiesEmailAddressesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ServerSecurityAlertPoliciesCreateOrUpdateResponsePropertiesEmailAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -42015,7 +42000,7 @@ export const ServerSecurityAlertPoliciesGetRequest = /*@__PURE__*/ S.suspend(
 
 /** Specifies an array of alerts that are disabled. Allowed values are: Sql_Injection, Sql_Injection_Vulnerability, Access_Anomaly, Data_Exfiltration, Unsafe_Action, Brute_Force */
 export type ServerSecurityAlertPoliciesGetResponsePropertiesDisabledAlertsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ServerSecurityAlertPoliciesGetResponsePropertiesDisabledAlertsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -42023,7 +42008,7 @@ export const ServerSecurityAlertPoliciesGetResponsePropertiesDisabledAlertsList 
 
 /** Specifies an array of e-mail addresses to which the alert is sent. */
 export type ServerSecurityAlertPoliciesGetResponsePropertiesEmailAddressesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ServerSecurityAlertPoliciesGetResponsePropertiesEmailAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -42121,7 +42106,7 @@ export const ServerSecurityAlertPoliciesListByServerRequest =
 
 /** Specifies an array of alerts that are disabled. Allowed values are: Sql_Injection, Sql_Injection_Vulnerability, Access_Anomaly, Data_Exfiltration, Unsafe_Action, Brute_Force */
 export type ServerSecurityAlertPolicyPropertiesDisabledAlertsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ServerSecurityAlertPolicyPropertiesDisabledAlertsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -42129,7 +42114,7 @@ export const ServerSecurityAlertPolicyPropertiesDisabledAlertsList =
 
 /** Specifies an array of e-mail addresses to which the alert is sent. */
 export type ServerSecurityAlertPolicyPropertiesEmailAddressesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ServerSecurityAlertPolicyPropertiesEmailAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -42200,7 +42185,7 @@ export const ServerSecurityAlertPolicy = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of results. */
 export type LogicalServerSecurityAlertPolicyListResultValueList =
-  ReadonlyArray<ServerSecurityAlertPolicy>;
+  Array<ServerSecurityAlertPolicy>;
 export const LogicalServerSecurityAlertPolicyListResultValueList =
   /*@__PURE__*/ S.Array(
     ServerSecurityAlertPolicy,
@@ -42529,7 +42514,7 @@ export const Server = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Server" }) as any as S.Schema<Server>;
 
 /** The Server items on this page */
-export type ServerListResultValueList = ReadonlyArray<Server>;
+export type ServerListResultValueList = Array<Server>;
 export const ServerListResultValueList = /*@__PURE__*/ S.Array(
   Server,
 ) as any as S.Schema<ServerListResultValueList>;
@@ -43034,7 +43019,7 @@ export const ServerTrustCertificate = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of results. */
 export type ServerTrustCertificatesListResultValueList =
-  ReadonlyArray<ServerTrustCertificate>;
+  Array<ServerTrustCertificate>;
 export const ServerTrustCertificatesListResultValueList = /*@__PURE__*/ S.Array(
   ServerTrustCertificate,
 ) as any as S.Schema<ServerTrustCertificatesListResultValueList>;
@@ -43067,8 +43052,7 @@ export const ServerInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ServerInfo" }) as any as S.Schema<ServerInfo>;
 
 /** Group members information for the server trust group. */
-export type ServerTrustGroupPropertiesGroupMembersList =
-  ReadonlyArray<ServerInfo>;
+export type ServerTrustGroupPropertiesGroupMembersList = Array<ServerInfo>;
 export const ServerTrustGroupPropertiesGroupMembersList = /*@__PURE__*/ S.Array(
   ServerInfo,
 ) as any as S.Schema<ServerTrustGroupPropertiesGroupMembersList>;
@@ -43079,8 +43063,9 @@ export type ServerTrustGroupPropertiesTrustScopesItem =
 export const ServerTrustGroupPropertiesTrustScopesItem = /*@__PURE__*/ S.String;
 
 /** Trust scope of the server trust group. */
-export type ServerTrustGroupPropertiesTrustScopesList =
-  ReadonlyArray<ServerTrustGroupPropertiesTrustScopesItem>;
+export type ServerTrustGroupPropertiesTrustScopesList = Array<
+  ServerTrustGroupPropertiesTrustScopesItem | (string & {})
+>;
 export const ServerTrustGroupPropertiesTrustScopesList = /*@__PURE__*/ S.Array(
   ServerTrustGroupPropertiesTrustScopesItem,
 ) as any as S.Schema<ServerTrustGroupPropertiesTrustScopesList>;
@@ -43297,8 +43282,7 @@ export const ServerTrustGroup = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServerTrustGroup>;
 
 /** The ServerTrustGroup items on this page */
-export type ServerTrustGroupListResultValueList =
-  ReadonlyArray<ServerTrustGroup>;
+export type ServerTrustGroupListResultValueList = Array<ServerTrustGroup>;
 export const ServerTrustGroupListResultValueList = /*@__PURE__*/ S.Array(
   ServerTrustGroup,
 ) as any as S.Schema<ServerTrustGroupListResultValueList>;
@@ -43400,7 +43384,7 @@ export const ServerUsage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ServerUsage" }) as any as S.Schema<ServerUsage>;
 
 /** The list of server metrics for the server. */
-export type ServerUsageListResultValueList = ReadonlyArray<ServerUsage>;
+export type ServerUsageListResultValueList = Array<ServerUsage>;
 export const ServerUsageListResultValueList = /*@__PURE__*/ S.Array(
   ServerUsage,
 ) as any as S.Schema<ServerUsageListResultValueList>;
@@ -43425,7 +43409,7 @@ export const ServerVulnerabilityAssessmentsCreateOrUpdateRequestVulnerabilityAss
 
 /** Specifies an array of e-mail addresses to which the scan notification is sent. */
 export type ServerVulnerabilityAssessmentPropertiesRecurringScansEmailsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ServerVulnerabilityAssessmentPropertiesRecurringScansEmailsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -43702,7 +43686,7 @@ export const ServerVulnerabilityAssessment = /*@__PURE__*/ S.suspend(() =>
 
 /** The ServerVulnerabilityAssessment items on this page */
 export type ServerVulnerabilityAssessmentListResultValueList =
-  ReadonlyArray<ServerVulnerabilityAssessment>;
+  Array<ServerVulnerabilityAssessment>;
 export const ServerVulnerabilityAssessmentListResultValueList =
   /*@__PURE__*/ S.Array(
     ServerVulnerabilityAssessment,
@@ -43732,7 +43716,7 @@ export const SqlAgentConfigurationPropertiesState = /*@__PURE__*/ S.String;
 /** Sql agent configuration properties. */
 export interface SqlAgentConfigurationProperties {
   /** The state of Sql Agent. */
-  state?: SqlAgentConfigurationPropertiesState;
+  state?: SqlAgentConfigurationPropertiesState | (string & {});
 }
 export const SqlAgentConfigurationProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -43989,7 +43973,7 @@ export const SqlVulnerabilityAssessmentBaselineListBySqlVulnerabilityAssessmentR
 
 /** The DatabaseSqlVulnerabilityAssessmentBaselineSet items on this page */
 export type SqlVulnerabilityAssessmentBaselineListBySqlVulnerabilityAssessmentResponseValueList =
-  ReadonlyArray<DatabaseSqlVulnerabilityAssessmentBaselineSet>;
+  Array<DatabaseSqlVulnerabilityAssessmentBaselineSet>;
 export const SqlVulnerabilityAssessmentBaselineListBySqlVulnerabilityAssessmentResponseValueList =
   /*@__PURE__*/ S.Array(
     DatabaseSqlVulnerabilityAssessmentBaselineSet,
@@ -44426,7 +44410,7 @@ export const SqlVulnerabilityAssessmentRuleBaselineListByBaselineRequest =
 
 /** The DatabaseSqlVulnerabilityAssessmentRuleBaseline items on this page */
 export type SqlVulnerabilityAssessmentRuleBaselineListByBaselineResponseValueList =
-  ReadonlyArray<DatabaseSqlVulnerabilityAssessmentRuleBaseline>;
+  Array<DatabaseSqlVulnerabilityAssessmentRuleBaseline>;
 export const SqlVulnerabilityAssessmentRuleBaselineListByBaselineResponseValueList =
   /*@__PURE__*/ S.Array(
     DatabaseSqlVulnerabilityAssessmentRuleBaseline,
@@ -44662,7 +44646,7 @@ export const SqlVulnerabilityAssessmentScanResultListByScanRequest =
 
 /** Array of results. */
 export type SqlVulnerabilityAssessmentScanResultListByScanResponseValueList =
-  ReadonlyArray<SqlVulnerabilityAssessmentScanResults>;
+  Array<SqlVulnerabilityAssessmentScanResults>;
 export const SqlVulnerabilityAssessmentScanResultListByScanResponseValueList =
   /*@__PURE__*/ S.Array(
     SqlVulnerabilityAssessmentScanResults,
@@ -44820,7 +44804,7 @@ export const SqlVulnerabilityAssessmentScansListBySqlVulnerabilityAssessmentsReq
 
 /** The SqlVulnerabilityAssessmentScanRecord items on this page */
 export type SqlVulnerabilityAssessmentScansListBySqlVulnerabilityAssessmentsResponseValueList =
-  ReadonlyArray<SqlVulnerabilityAssessmentScanRecord>;
+  Array<SqlVulnerabilityAssessmentScanRecord>;
 export const SqlVulnerabilityAssessmentScansListBySqlVulnerabilityAssessmentsResponseValueList =
   /*@__PURE__*/ S.Array(
     SqlVulnerabilityAssessmentScanRecord,
@@ -45048,7 +45032,7 @@ export const SqlVulnerabilityAssessmentsSettingsListByServerRequest =
 
 /** The SqlVulnerabilityAssessment items on this page */
 export type SqlVulnerabilityAssessmentsSettingsListByServerResponseValueList =
-  ReadonlyArray<SqlVulnerabilityAssessment>;
+  Array<SqlVulnerabilityAssessment>;
 export const SqlVulnerabilityAssessmentsSettingsListByServerResponseValueList =
   /*@__PURE__*/ S.Array(
     SqlVulnerabilityAssessment,
@@ -45100,11 +45084,11 @@ export const ScheduleItemStopDay = /*@__PURE__*/ S.String;
 /** Schedule info describing when the server should be started or stopped. */
 export interface ScheduleItem {
   /** Day of maintenance window. */
-  startDay: ScheduleItemStartDay;
+  startDay: ScheduleItemStartDay | (string & {});
   /** Start time. */
   startTime: string;
   /** Day of maintenance window. */
-  stopDay: ScheduleItemStopDay;
+  stopDay: ScheduleItemStopDay | (string & {});
   /** Stop time. */
   stopTime: string;
 }
@@ -45119,7 +45103,7 @@ export const ScheduleItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Schedule list. */
 export type StartStopManagedInstanceSchedulePropertiesInputScheduleListList =
-  ReadonlyArray<ScheduleItem>;
+  Array<ScheduleItem>;
 export const StartStopManagedInstanceSchedulePropertiesInputScheduleListList =
   /*@__PURE__*/ S.Array(
     ScheduleItem,
@@ -45185,7 +45169,7 @@ export const StartStopManagedInstanceSchedulesCreateOrUpdateRequest =
 
 /** Schedule list. */
 export type StartStopManagedInstanceSchedulePropertiesScheduleListList =
-  ReadonlyArray<ScheduleItem>;
+  Array<ScheduleItem>;
 export const StartStopManagedInstanceSchedulePropertiesScheduleListList =
   /*@__PURE__*/ S.Array(
     ScheduleItem,
@@ -45404,7 +45388,7 @@ export const StartStopManagedInstanceSchedule = /*@__PURE__*/ S.suspend(() =>
 
 /** The StartStopManagedInstanceSchedule items on this page */
 export type StartStopManagedInstanceScheduleListResultValueList =
-  ReadonlyArray<StartStopManagedInstanceSchedule>;
+  Array<StartStopManagedInstanceSchedule>;
 export const StartStopManagedInstanceScheduleListResultValueList =
   /*@__PURE__*/ S.Array(
     StartStopManagedInstanceSchedule,
@@ -45547,8 +45531,7 @@ export const SubscriptionUsage = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SubscriptionUsage>;
 
 /** The SubscriptionUsage items on this page */
-export type SubscriptionUsageListResultValueList =
-  ReadonlyArray<SubscriptionUsage>;
+export type SubscriptionUsageListResultValueList = Array<SubscriptionUsage>;
 export const SubscriptionUsageListResultValueList = /*@__PURE__*/ S.Array(
   SubscriptionUsage,
 ) as any as S.Schema<SubscriptionUsageListResultValueList>;
@@ -45616,7 +45599,7 @@ export const SynapseLinkWorkspaceInfoProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** List of all synapselink workspaces */
 export type SynapseLinkWorkspacePropertiesWorkspacesList =
-  ReadonlyArray<SynapseLinkWorkspaceInfoProperties>;
+  Array<SynapseLinkWorkspaceInfoProperties>;
 export const SynapseLinkWorkspacePropertiesWorkspacesList =
   /*@__PURE__*/ S.Array(
     SynapseLinkWorkspaceInfoProperties,
@@ -45662,7 +45645,7 @@ export const SynapseLinkWorkspace = /*@__PURE__*/ S.suspend(() =>
 
 /** The SynapseLinkWorkspace items on this page */
 export type SynapseLinkWorkspaceListResultValueList =
-  ReadonlyArray<SynapseLinkWorkspace>;
+  Array<SynapseLinkWorkspace>;
 export const SynapseLinkWorkspaceListResultValueList = /*@__PURE__*/ S.Array(
   SynapseLinkWorkspace,
 ) as any as S.Schema<SynapseLinkWorkspaceListResultValueList>;
@@ -45973,7 +45956,7 @@ export const SyncAgent = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SyncAgent" }) as any as S.Schema<SyncAgent>;
 
 /** The SyncAgent items on this page */
-export type SyncAgentListResultValueList = ReadonlyArray<SyncAgent>;
+export type SyncAgentListResultValueList = Array<SyncAgent>;
 export const SyncAgentListResultValueList = /*@__PURE__*/ S.Array(
   SyncAgent,
 ) as any as S.Schema<SyncAgentListResultValueList>;
@@ -46085,7 +46068,7 @@ export const SyncAgentLinkedDatabase = /*@__PURE__*/ S.suspend(() =>
 
 /** The SyncAgentLinkedDatabase items on this page */
 export type SyncAgentLinkedDatabaseListResultValueList =
-  ReadonlyArray<SyncAgentLinkedDatabase>;
+  Array<SyncAgentLinkedDatabase>;
 export const SyncAgentLinkedDatabaseListResultValueList = /*@__PURE__*/ S.Array(
   SyncAgentLinkedDatabase,
 ) as any as S.Schema<SyncAgentLinkedDatabaseListResultValueList>;
@@ -46180,8 +46163,7 @@ export const SyncGroupSchemaTableColumn = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SyncGroupSchemaTableColumn>;
 
 /** List of columns in sync group schema. */
-export type SyncGroupSchemaTableColumnsList =
-  ReadonlyArray<SyncGroupSchemaTableColumn>;
+export type SyncGroupSchemaTableColumnsList = Array<SyncGroupSchemaTableColumn>;
 export const SyncGroupSchemaTableColumnsList = /*@__PURE__*/ S.Array(
   SyncGroupSchemaTableColumn,
 ) as any as S.Schema<SyncGroupSchemaTableColumnsList>;
@@ -46203,7 +46185,7 @@ export const SyncGroupSchemaTable = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SyncGroupSchemaTable>;
 
 /** List of tables in sync group schema. */
-export type SyncGroupSchemaTablesList = ReadonlyArray<SyncGroupSchemaTable>;
+export type SyncGroupSchemaTablesList = Array<SyncGroupSchemaTable>;
 export const SyncGroupSchemaTablesList = /*@__PURE__*/ S.Array(
   SyncGroupSchemaTable,
 ) as any as S.Schema<SyncGroupSchemaTablesList>;
@@ -46645,7 +46627,7 @@ export const SyncGroup = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SyncGroup" }) as any as S.Schema<SyncGroup>;
 
 /** The SyncGroup items on this page */
-export type SyncGroupListResultValueList = ReadonlyArray<SyncGroup>;
+export type SyncGroupListResultValueList = Array<SyncGroup>;
 export const SyncGroupListResultValueList = /*@__PURE__*/ S.Array(
   SyncGroup,
 ) as any as S.Schema<SyncGroupListResultValueList>;
@@ -46729,8 +46711,7 @@ export const SyncFullSchemaTableColumn = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SyncFullSchemaTableColumn>;
 
 /** List of columns in the table of database full schema. */
-export type SyncFullSchemaTableColumnsList =
-  ReadonlyArray<SyncFullSchemaTableColumn>;
+export type SyncFullSchemaTableColumnsList = Array<SyncFullSchemaTableColumn>;
 export const SyncFullSchemaTableColumnsList = /*@__PURE__*/ S.Array(
   SyncFullSchemaTableColumn,
 ) as any as S.Schema<SyncFullSchemaTableColumnsList>;
@@ -46761,8 +46742,7 @@ export const SyncFullSchemaTable = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SyncFullSchemaTable>;
 
 /** List of tables in the database full schema. */
-export type SyncFullSchemaPropertiesTablesList =
-  ReadonlyArray<SyncFullSchemaTable>;
+export type SyncFullSchemaPropertiesTablesList = Array<SyncFullSchemaTable>;
 export const SyncFullSchemaPropertiesTablesList = /*@__PURE__*/ S.Array(
   SyncFullSchemaTable,
 ) as any as S.Schema<SyncFullSchemaPropertiesTablesList>;
@@ -46785,7 +46765,7 @@ export const SyncFullSchemaProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** The SyncFullSchemaProperties items on this page */
 export type SyncGroupsListHubSchemasResponseValueList =
-  ReadonlyArray<SyncFullSchemaProperties>;
+  Array<SyncFullSchemaProperties>;
 export const SyncGroupsListHubSchemasResponseValueList = /*@__PURE__*/ S.Array(
   SyncFullSchemaProperties,
 ) as any as S.Schema<SyncGroupsListHubSchemasResponseValueList>;
@@ -46892,8 +46872,7 @@ export const SyncGroupLogProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SyncGroupLogProperties>;
 
 /** The SyncGroupLogProperties items on this page */
-export type SyncGroupLogListResultValueList =
-  ReadonlyArray<SyncGroupLogProperties>;
+export type SyncGroupLogListResultValueList = Array<SyncGroupLogProperties>;
 export const SyncGroupLogListResultValueList = /*@__PURE__*/ S.Array(
   SyncGroupLogProperties,
 ) as any as S.Schema<SyncGroupLogListResultValueList>;
@@ -46951,8 +46930,7 @@ export const SyncDatabaseIdProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SyncDatabaseIdProperties>;
 
 /** The SyncDatabaseIdProperties items on this page */
-export type SyncDatabaseIdListResultValueList =
-  ReadonlyArray<SyncDatabaseIdProperties>;
+export type SyncDatabaseIdListResultValueList = Array<SyncDatabaseIdProperties>;
 export const SyncDatabaseIdListResultValueList = /*@__PURE__*/ S.Array(
   SyncDatabaseIdProperties,
 ) as any as S.Schema<SyncDatabaseIdListResultValueList>;
@@ -47537,7 +47515,7 @@ export const SyncMember = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SyncMember" }) as any as S.Schema<SyncMember>;
 
 /** The SyncMember items on this page */
-export type SyncMemberListResultValueList = ReadonlyArray<SyncMember>;
+export type SyncMemberListResultValueList = Array<SyncMember>;
 export const SyncMemberListResultValueList = /*@__PURE__*/ S.Array(
   SyncMember,
 ) as any as S.Schema<SyncMemberListResultValueList>;
@@ -47594,7 +47572,7 @@ export const SyncMembersListMemberSchemasRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The SyncFullSchemaProperties items on this page */
 export type SyncMembersListMemberSchemasResponseValueList =
-  ReadonlyArray<SyncFullSchemaProperties>;
+  Array<SyncFullSchemaProperties>;
 export const SyncMembersListMemberSchemasResponseValueList =
   /*@__PURE__*/ S.Array(
     SyncFullSchemaProperties,
@@ -47865,7 +47843,7 @@ export const TimeZone = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TimeZone" }) as any as S.Schema<TimeZone>;
 
 /** The TimeZone items on this page */
-export type TimeZoneListResultValueList = ReadonlyArray<TimeZone>;
+export type TimeZoneListResultValueList = Array<TimeZone>;
 export const TimeZoneListResultValueList = /*@__PURE__*/ S.Array(
   TimeZone,
 ) as any as S.Schema<TimeZoneListResultValueList>;
@@ -47908,9 +47886,9 @@ export const TransparentDataEncryptionPropertiesScanState =
 /** Properties of a transparent data encryption scan. */
 export interface TransparentDataEncryptionProperties {
   /** Specifies the state of the transparent data encryption. */
-  state: TransparentDataEncryptionPropertiesState;
+  state: TransparentDataEncryptionPropertiesState | (string & {});
   /** Specifies the encryption scan state of the transparent data encryption. */
-  scanState?: TransparentDataEncryptionPropertiesScanState;
+  scanState?: TransparentDataEncryptionPropertiesScanState | (string & {});
 }
 export const TransparentDataEncryptionProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -48103,7 +48081,7 @@ export const LogicalDatabaseTransparentDataEncryption = /*@__PURE__*/ S.suspend(
 
 /** The LogicalDatabaseTransparentDataEncryption items on this page */
 export type LogicalDatabaseTransparentDataEncryptionListResultValueList =
-  ReadonlyArray<LogicalDatabaseTransparentDataEncryption>;
+  Array<LogicalDatabaseTransparentDataEncryption>;
 export const LogicalDatabaseTransparentDataEncryptionListResultValueList =
   /*@__PURE__*/ S.Array(
     LogicalDatabaseTransparentDataEncryption,
@@ -48320,7 +48298,7 @@ export const Usage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Usage" }) as any as S.Schema<Usage>;
 
 /** The Usage items on this page */
-export type UsageListResultValueList = ReadonlyArray<Usage>;
+export type UsageListResultValueList = Array<Usage>;
 export const UsageListResultValueList = /*@__PURE__*/ S.Array(
   Usage,
 ) as any as S.Schema<UsageListResultValueList>;
@@ -48410,7 +48388,7 @@ export const VirtualClustersCreateOrUpdateResponseTagsMap =
   ) as any as S.Schema<VirtualClustersCreateOrUpdateResponseTagsMap>;
 
 /** List of resources in this virtual cluster. */
-export type VirtualClusterPropertiesChildResourcesList = ReadonlyArray<string>;
+export type VirtualClusterPropertiesChildResourcesList = Array<string>;
 export const VirtualClusterPropertiesChildResourcesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<VirtualClusterPropertiesChildResourcesList>;
@@ -48617,7 +48595,7 @@ export const VirtualCluster = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VirtualCluster" }) as any as S.Schema<VirtualCluster>;
 
 /** The VirtualCluster items on this page */
-export type VirtualClusterListResultValueList = ReadonlyArray<VirtualCluster>;
+export type VirtualClusterListResultValueList = Array<VirtualCluster>;
 export const VirtualClusterListResultValueList = /*@__PURE__*/ S.Array(
   VirtualCluster,
 ) as any as S.Schema<VirtualClusterListResultValueList>;
@@ -48828,7 +48806,7 @@ export interface VirtualNetworkRuleProperties {
   /** Create firewall rule before the virtual network has vnet service endpoint enabled. */
   ignoreMissingVnetServiceEndpoint?: boolean;
   /** Virtual Network Rule State */
-  state?: VirtualNetworkRulePropertiesState;
+  state?: VirtualNetworkRulePropertiesState | (string & {});
 }
 export const VirtualNetworkRuleProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -49036,8 +49014,7 @@ export const VirtualNetworkRule = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VirtualNetworkRule>;
 
 /** The VirtualNetworkRule items on this page */
-export type VirtualNetworkRuleListResultValueList =
-  ReadonlyArray<VirtualNetworkRule>;
+export type VirtualNetworkRuleListResultValueList = Array<VirtualNetworkRule>;
 export const VirtualNetworkRuleListResultValueList = /*@__PURE__*/ S.Array(
   VirtualNetworkRule,
 ) as any as S.Schema<VirtualNetworkRuleListResultValueList>;
@@ -49306,8 +49283,7 @@ export const WorkloadClassifier = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WorkloadClassifier>;
 
 /** The WorkloadClassifier items on this page */
-export type WorkloadClassifierListResultValueList =
-  ReadonlyArray<WorkloadClassifier>;
+export type WorkloadClassifierListResultValueList = Array<WorkloadClassifier>;
 export const WorkloadClassifierListResultValueList = /*@__PURE__*/ S.Array(
   WorkloadClassifier,
 ) as any as S.Schema<WorkloadClassifierListResultValueList>;
@@ -49560,7 +49536,7 @@ export const WorkloadGroup = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "WorkloadGroup" }) as any as S.Schema<WorkloadGroup>;
 
 /** The WorkloadGroup items on this page */
-export type WorkloadGroupListResultValueList = ReadonlyArray<WorkloadGroup>;
+export type WorkloadGroupListResultValueList = Array<WorkloadGroup>;
 export const WorkloadGroupListResultValueList = /*@__PURE__*/ S.Array(
   WorkloadGroup,
 ) as any as S.Schema<WorkloadGroupListResultValueList>;

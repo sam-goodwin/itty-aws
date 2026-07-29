@@ -128,7 +128,7 @@ export const AllocatedToSubscription = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Group Quota Limit allocated to subscriptions. */
 export type AllocatedQuotaToSubscriptionListValueList =
-  ReadonlyArray<AllocatedToSubscription>;
+  Array<AllocatedToSubscription>;
 export const AllocatedQuotaToSubscriptionListValueList = /*@__PURE__*/ S.Array(
   AllocatedToSubscription,
 ) as any as S.Schema<AllocatedQuotaToSubscriptionListValueList>;
@@ -191,8 +191,7 @@ export const GroupQuotaLimit = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GroupQuotaLimit>;
 
 /** List of Group Quota Limit details. */
-export type GroupQuotaLimitListPropertiesValueList =
-  ReadonlyArray<GroupQuotaLimit>;
+export type GroupQuotaLimitListPropertiesValueList = Array<GroupQuotaLimit>;
 export const GroupQuotaLimitListPropertiesValueList = /*@__PURE__*/ S.Array(
   GroupQuotaLimit,
 ) as any as S.Schema<GroupQuotaLimitListPropertiesValueList>;
@@ -411,7 +410,7 @@ export const SubmittedResourceRequestStatus = /*@__PURE__*/ S.suspend(() =>
 
 /** The SubmittedResourceRequestStatus items on this page */
 export type SubmittedResourceRequestStatusListValueList =
-  ReadonlyArray<SubmittedResourceRequestStatus>;
+  Array<SubmittedResourceRequestStatus>;
 export const SubmittedResourceRequestStatusListValueList =
   /*@__PURE__*/ S.Array(
     SubmittedResourceRequestStatus,
@@ -467,7 +466,7 @@ export const GroupQuotaLimitInput = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Group Quota Limit details. */
 export type GroupQuotaLimitListPropertiesInputValueList =
-  ReadonlyArray<GroupQuotaLimitInput>;
+  Array<GroupQuotaLimitInput>;
 export const GroupQuotaLimitListPropertiesInputValueList =
   /*@__PURE__*/ S.Array(
     GroupQuotaLimitInput,
@@ -947,7 +946,7 @@ export const GroupQuotasEntity = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GroupQuotasEntity>;
 
 /** The GroupQuotasEntity items on this page */
-export type GroupQuotaListValueList = ReadonlyArray<GroupQuotasEntity>;
+export type GroupQuotaListValueList = Array<GroupQuotasEntity>;
 export const GroupQuotaListValueList = /*@__PURE__*/ S.Array(
   GroupQuotasEntity,
 ) as any as S.Schema<GroupQuotaListValueList>;
@@ -1051,7 +1050,7 @@ export const SubscriptionQuotaAllocations = /*@__PURE__*/ S.suspend(() =>
 
 /** Subscription quota list. */
 export type SubscriptionQuotaAllocationsListPropertiesValueList =
-  ReadonlyArray<SubscriptionQuotaAllocations>;
+  Array<SubscriptionQuotaAllocations>;
 export const SubscriptionQuotaAllocationsListPropertiesValueList =
   /*@__PURE__*/ S.Array(
     SubscriptionQuotaAllocations,
@@ -1284,7 +1283,7 @@ export const QuotaAllocationRequestStatus = /*@__PURE__*/ S.suspend(() =>
 
 /** The QuotaAllocationRequestStatus items on this page */
 export type QuotaAllocationRequestStatusListValueList =
-  ReadonlyArray<QuotaAllocationRequestStatus>;
+  Array<QuotaAllocationRequestStatus>;
 export const QuotaAllocationRequestStatusListValueList = /*@__PURE__*/ S.Array(
   QuotaAllocationRequestStatus,
 ) as any as S.Schema<QuotaAllocationRequestStatusListValueList>;
@@ -1336,7 +1335,7 @@ export const SubscriptionQuotaAllocationsInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Subscription quota list. */
 export type SubscriptionQuotaAllocationsListPropertiesInputValueList =
-  ReadonlyArray<SubscriptionQuotaAllocationsInput>;
+  Array<SubscriptionQuotaAllocationsInput>;
 export const SubscriptionQuotaAllocationsListPropertiesInputValueList =
   /*@__PURE__*/ S.Array(
     SubscriptionQuotaAllocationsInput,
@@ -1533,7 +1532,7 @@ export const GroupQuotaSubscriptionRequestStatus = /*@__PURE__*/ S.suspend(() =>
 
 /** The GroupQuotaSubscriptionRequestStatus items on this page */
 export type GroupQuotaSubscriptionRequestStatusListValueList =
-  ReadonlyArray<GroupQuotaSubscriptionRequestStatus>;
+  Array<GroupQuotaSubscriptionRequestStatus>;
 export const GroupQuotaSubscriptionRequestStatusListValueList =
   /*@__PURE__*/ S.Array(
     GroupQuotaSubscriptionRequestStatus,
@@ -1750,7 +1749,7 @@ export const GroupQuotaSubscriptionId = /*@__PURE__*/ S.suspend(() =>
 
 /** The GroupQuotaSubscriptionId items on this page */
 export type GroupQuotaSubscriptionIdListValueList =
-  ReadonlyArray<GroupQuotaSubscriptionId>;
+  Array<GroupQuotaSubscriptionId>;
 export const GroupQuotaSubscriptionIdListValueList = /*@__PURE__*/ S.Array(
   GroupQuotaSubscriptionId,
 ) as any as S.Schema<GroupQuotaSubscriptionIdListValueList>;
@@ -1973,7 +1972,7 @@ export const ResourceUsages = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResourceUsages" }) as any as S.Schema<ResourceUsages>;
 
 /** The ResourceUsages items on this page */
-export type ResourceUsageListValueList = ReadonlyArray<ResourceUsages>;
+export type ResourceUsageListValueList = Array<ResourceUsages>;
 export const ResourceUsageListValueList = /*@__PURE__*/ S.Array(
   ResourceUsages,
 ) as any as S.Schema<ResourceUsageListValueList>;
@@ -2001,7 +2000,7 @@ export const LimitType = /*@__PURE__*/ S.String;
 /** LimitJson abstract class. */
 export interface LimitJsonObject {
   /** The limit object type. */
-  limitObjectType: LimitType;
+  limitObjectType: LimitType | (string & {});
 }
 export const LimitJsonObject = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2231,7 +2230,7 @@ export const CurrentQuotaLimitBase = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CurrentQuotaLimitBase>;
 
 /** The CurrentQuotaLimitBase items on this page */
-export type QuotaLimitsValueList = ReadonlyArray<CurrentQuotaLimitBase>;
+export type QuotaLimitsValueList = Array<CurrentQuotaLimitBase>;
 export const QuotaLimitsValueList = /*@__PURE__*/ S.Array(
   CurrentQuotaLimitBase,
 ) as any as S.Schema<QuotaLimitsValueList>;
@@ -2301,7 +2300,7 @@ export const OperationResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationResponse>;
 
 /** The list of connected cluster API operations. */
-export type OperationListValueList = ReadonlyArray<OperationResponse>;
+export type OperationListValueList = Array<OperationResponse>;
 export const OperationListValueList = /*@__PURE__*/ S.Array(
   OperationResponse,
 ) as any as S.Schema<OperationListValueList>;
@@ -2397,7 +2396,7 @@ export const SubRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SubRequest" }) as any as S.Schema<SubRequest>;
 
 /** Quota request details. */
-export type QuotaRequestPropertiesValueList = ReadonlyArray<SubRequest>;
+export type QuotaRequestPropertiesValueList = Array<SubRequest>;
 export const QuotaRequestPropertiesValueList = /*@__PURE__*/ S.Array(
   SubRequest,
 ) as any as S.Schema<QuotaRequestPropertiesValueList>;
@@ -2505,8 +2504,7 @@ export const QuotaRequestDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<QuotaRequestDetails>;
 
 /** The QuotaRequestDetails items on this page */
-export type QuotaRequestDetailsListValueList =
-  ReadonlyArray<QuotaRequestDetails>;
+export type QuotaRequestDetailsListValueList = Array<QuotaRequestDetails>;
 export const QuotaRequestDetailsListValueList = /*@__PURE__*/ S.Array(
   QuotaRequestDetails,
 ) as any as S.Schema<QuotaRequestDetailsListValueList>;
@@ -2716,7 +2714,7 @@ export const CurrentUsagesBase = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CurrentUsagesBase>;
 
 /** The CurrentUsagesBase items on this page */
-export type UsagesLimitsValueList = ReadonlyArray<CurrentUsagesBase>;
+export type UsagesLimitsValueList = Array<CurrentUsagesBase>;
 export const UsagesLimitsValueList = /*@__PURE__*/ S.Array(
   CurrentUsagesBase,
 ) as any as S.Schema<UsagesLimitsValueList>;

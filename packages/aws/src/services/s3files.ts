@@ -650,7 +650,7 @@ export const ImportTrigger = /*@__PURE__*/ S.String;
 
 export interface ImportDataRule {
   prefix: string;
-  trigger: ImportTrigger;
+  trigger: ImportTrigger | (string & {});
   sizeLessThan: number;
 }
 export const ImportDataRule = /*@__PURE__*/ S.suspend(() =>

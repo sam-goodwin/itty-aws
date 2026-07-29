@@ -552,7 +552,7 @@ export const DiskIopsConfigurationMode = /*@__PURE__*/ S.String;
 
 export type Iops = number;
 export interface DiskIopsConfiguration {
-  Mode?: DiskIopsConfigurationMode;
+  Mode?: DiskIopsConfigurationMode | (string & {});
   Iops?: number;
 }
 export const DiskIopsConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -742,7 +742,7 @@ export type LustreReadCacheSizingMode =
 export const LustreReadCacheSizingMode = /*@__PURE__*/ S.String;
 
 export interface LustreReadCacheConfiguration {
-  SizingMode?: LustreReadCacheSizingMode;
+  SizingMode?: LustreReadCacheSizingMode | (string & {});
   SizeGiB?: number;
 }
 export const LustreReadCacheConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -857,7 +857,7 @@ export const TieringPolicyName = /*@__PURE__*/ S.String;
 
 export interface TieringPolicy {
   CoolingPeriod?: number;
-  Name?: TieringPolicyName;
+  Name?: TieringPolicyName | (string & {});
 }
 export const TieringPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -881,7 +881,7 @@ export const AutocommitPeriodType = /*@__PURE__*/ S.String;
 
 export type AutocommitPeriodValue = number;
 export interface AutocommitPeriod {
-  Type?: AutocommitPeriodType;
+  Type?: AutocommitPeriodType | (string & {});
   Value?: number;
 }
 export const AutocommitPeriod = /*@__PURE__*/ S.suspend(() =>
@@ -908,7 +908,7 @@ export const RetentionPeriodType = /*@__PURE__*/ S.String;
 
 export type RetentionPeriodValue = number;
 export interface RetentionPeriod {
-  Type?: RetentionPeriodType;
+  Type?: RetentionPeriodType | (string & {});
   Value?: number;
 }
 export const RetentionPeriod = /*@__PURE__*/ S.suspend(() =>
@@ -1084,7 +1084,7 @@ export type OpenZFSQuotaType = "USER" | "GROUP";
 export const OpenZFSQuotaType = /*@__PURE__*/ S.String;
 
 export interface OpenZFSUserOrGroupQuota {
-  Type?: OpenZFSQuotaType;
+  Type?: OpenZFSQuotaType | (string & {});
   Id?: number;
   StorageCapacityQuotaGiB?: number;
 }
@@ -1361,7 +1361,7 @@ export type OpenZFSReadCacheSizingMode =
 export const OpenZFSReadCacheSizingMode = /*@__PURE__*/ S.String;
 
 export interface OpenZFSReadCacheConfiguration {
-  SizingMode?: OpenZFSReadCacheSizingMode;
+  SizingMode?: OpenZFSReadCacheSizingMode | (string & {});
   SizeGiB?: number;
 }
 export const OpenZFSReadCacheConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -1774,7 +1774,7 @@ export const OpenZFSPosixFileSystemUser = /*@__PURE__*/ S.suspend(() =>
   identifier: "OpenZFSPosixFileSystemUser",
 }) as any as S.Schema<OpenZFSPosixFileSystemUser>;
 export interface OpenZFSFileSystemIdentity {
-  Type?: OpenZFSFileSystemUserType;
+  Type?: OpenZFSFileSystemUserType | (string & {});
   PosixUser?: OpenZFSPosixFileSystemUser;
 }
 export const OpenZFSFileSystemIdentity = /*@__PURE__*/ S.suspend(() =>
@@ -1819,7 +1819,7 @@ export const OntapWindowsFileSystemUser = /*@__PURE__*/ S.suspend(() =>
   identifier: "OntapWindowsFileSystemUser",
 }) as any as S.Schema<OntapWindowsFileSystemUser>;
 export interface OntapFileSystemIdentity {
-  Type?: OntapFileSystemUserType;
+  Type?: OntapFileSystemUserType | (string & {});
   UnixUser?: OntapUnixFileSystemUser;
   WindowsUser?: OntapWindowsFileSystemUser;
 }
@@ -2138,7 +2138,7 @@ export type BatchImportMetaDataOnCreate = boolean;
 export type EventType = "NEW" | "CHANGED" | "DELETED";
 export const EventType = /*@__PURE__*/ S.String;
 
-export type EventTypes = EventType[];
+export type EventTypes = (EventType | (string & {}))[];
 export const EventTypes = /*@__PURE__*/ S.Array(EventType);
 export interface AutoImportPolicy {
   Events?: EventType[];
@@ -2288,8 +2288,8 @@ export const ReportScope = /*@__PURE__*/ S.String;
 export interface CompletionReport {
   Enabled?: boolean;
   Path?: string;
-  Format?: ReportFormat;
-  Scope?: ReportScope;
+  Format?: ReportFormat | (string & {});
+  Scope?: ReportScope | (string & {});
 }
 export const CompletionReport = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2307,7 +2307,7 @@ export const Unit = /*@__PURE__*/ S.String;
 
 export type Value = number;
 export interface DurationSinceLastAccess {
-  Unit?: Unit;
+  Unit?: Unit | (string & {});
   Value?: number;
 }
 export const DurationSinceLastAccess = /*@__PURE__*/ S.suspend(() =>

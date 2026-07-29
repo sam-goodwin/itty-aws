@@ -148,7 +148,7 @@ export const CompleteVerificationResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CompleteVerificationResponse",
 }) as any as S.Schema<CompleteVerificationResponse>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -318,7 +318,7 @@ export const VerificationOption = /*@__PURE__*/ S.suspend(() =>
   identifier: "VerificationOption",
 }) as any as S.Schema<VerificationOption>;
 
-export type VerificationOptionList = ReadonlyArray<VerificationOption>;
+export type VerificationOptionList = Array<VerificationOption>;
 export const VerificationOptionList = /*@__PURE__*/ S.Array(
   VerificationOption,
 ) as any as S.Schema<VerificationOptionList>;
@@ -514,7 +514,7 @@ export const ListLocationsVerificationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListLocationsVerificationsRequest",
 }) as any as S.Schema<ListLocationsVerificationsRequest>;
 
-export type VerificationList = ReadonlyArray<Verification>;
+export type VerificationList = Array<Verification>;
 export const VerificationList = /*@__PURE__*/ S.Array(
   Verification,
 ) as any as S.Schema<VerificationList>;

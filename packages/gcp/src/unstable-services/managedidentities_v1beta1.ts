@@ -76,7 +76,7 @@ export type TrustTrustDirectionEnum =
   | "BIDIRECTIONAL";
 export const TrustTrustDirectionEnum = /*@__PURE__*/ S.String;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -92,11 +92,11 @@ export interface Trust {
   /** Input only. The trust secret used for the handshake with the target domain. It will not be stored. */
   trustHandshakeSecret?: string;
   /** Output only. The current state of the trust. */
-  state?: TrustStateEnum;
+  state?: TrustStateEnum | (string & {});
   /** The fully qualified target domain name which will be in trust with the current domain. */
   targetDomainName?: string;
   /** The trust direction, which decides if the current domain is trusted, trusting, or both. */
-  trustDirection?: TrustTrustDirectionEnum;
+  trustDirection?: TrustTrustDirectionEnum | (string & {});
   /** The target DNS server IP addresses which can resolve the remote domain involved in the trust. */
   targetDnsIpAddresses?: StringList;
   /** Output only. Additional information about the current state of the trust, if available. */
@@ -106,7 +106,7 @@ export interface Trust {
   /** Output only. The time the instance was created. */
   createTime?: string;
   /** The type of trust represented by the trust resource. */
-  trustType?: TrustTrustTypeEnum;
+  trustType?: TrustTrustTypeEnum | (string & {});
   /** The trust authentication type, which decides whether the trusted side has forest/domain wide access or selective access to an approved set of resources. */
   selectiveAuthentication?: boolean;
   /** Output only. The last update time. */
@@ -169,7 +169,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -303,7 +303,7 @@ export const OnPremDomainSIDDetails = /*@__PURE__*/ S.suspend(() =>
   identifier: "OnPremDomainSIDDetails",
 }) as any as S.Schema<OnPremDomainSIDDetails>;
 
-export type OnPremDomainSIDDetailsList = ReadonlyArray<OnPremDomainSIDDetails>;
+export type OnPremDomainSIDDetailsList = Array<OnPremDomainSIDDetails>;
 export const OnPremDomainSIDDetailsList = /*@__PURE__*/ S.Array(
   OnPremDomainSIDDetails,
 ) as any as S.Schema<OnPremDomainSIDDetailsList>;
@@ -348,7 +348,7 @@ export const StringMap = /*@__PURE__*/ S.Record(
   S.String,
 ) as any as S.Schema<StringMap>;
 
-export type TrustList = ReadonlyArray<Trust>;
+export type TrustList = Array<Trust>;
 export const TrustList = /*@__PURE__*/ S.Array(
   Trust,
 ) as any as S.Schema<TrustList>;
@@ -362,7 +362,7 @@ export interface Domain {
   /** Output only. The last update time. */
   updateTime?: string;
   /** Output only. The current state of this domain. */
-  state?: DomainStateEnum;
+  state?: DomainStateEnum | (string & {});
   /** Optional. The name of delegated administrator account used to perform Active Directory operations. If not specified, `setupadmin` will be used. */
   admin?: string;
   /** Optional. Resource labels that can contain user-provided metadata. */
@@ -453,11 +453,11 @@ export interface Backup {
   /** Optional. Resource labels to represent user provided metadata. */
   labels?: StringMap;
   /** Output only. Indicates whether it’s an on-demand backup or scheduled. */
-  type?: BackupTypeEnum;
+  type?: BackupTypeEnum | (string & {});
   /** Output only. The time the backups was created. */
   createTime?: string;
   /** Output only. The current state of the backup. */
-  state?: BackupStateEnum;
+  state?: BackupStateEnum | (string & {});
 }
 export const Backup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -522,7 +522,7 @@ export interface Peering {
   /** Required. Full domain resource path for the Managed AD Domain involved in peering. The resource path should be in the form: `projects/{project_id}/locations/global/domains/{domain_name}` */
   domainResource?: string;
   /** Output only. The current state of this Peering. */
-  state?: PeeringStateEnum;
+  state?: PeeringStateEnum | (string & {});
 }
 export const Peering = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -773,7 +773,7 @@ export const OnPremDomainDetails = /*@__PURE__*/ S.suspend(() =>
   identifier: "OnPremDomainDetails",
 }) as any as S.Schema<OnPremDomainDetails>;
 
-export type OnPremDomainDetailsList = ReadonlyArray<OnPremDomainDetails>;
+export type OnPremDomainDetailsList = Array<OnPremDomainDetails>;
 export const OnPremDomainDetailsList = /*@__PURE__*/ S.Array(
   OnPremDomainDetails,
 ) as any as S.Schema<OnPremDomainDetailsList>;
@@ -916,7 +916,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
-export type BindingList = ReadonlyArray<Binding>;
+export type BindingList = Array<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -1044,7 +1044,7 @@ export interface LDAPSSettings {
   /** Input only. The password used to encrypt the uploaded pfx certificate. */
   certificatePassword?: string;
   /** Output only. The current state of this LDAPS settings. */
-  state?: LDAPSSettingsStateEnum;
+  state?: LDAPSSettingsStateEnum | (string & {});
 }
 export const LDAPSSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1253,7 +1253,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = ReadonlyArray<Location>;
+export type LocationList = Array<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -1305,7 +1305,7 @@ export const ListProjectsLocationsGlobalDomainsRequest =
     identifier: "ListProjectsLocationsGlobalDomainsRequest",
   }) as any as S.Schema<ListProjectsLocationsGlobalDomainsRequest>;
 
-export type DomainList = ReadonlyArray<Domain>;
+export type DomainList = Array<Domain>;
 export const DomainList = /*@__PURE__*/ S.Array(
   Domain,
 ) as any as S.Schema<DomainList>;
@@ -1360,7 +1360,7 @@ export const ListProjectsLocationsGlobalDomainsBackupsRequest =
     identifier: "ListProjectsLocationsGlobalDomainsBackupsRequest",
   }) as any as S.Schema<ListProjectsLocationsGlobalDomainsBackupsRequest>;
 
-export type BackupList = ReadonlyArray<Backup>;
+export type BackupList = Array<Backup>;
 export const BackupList = /*@__PURE__*/ S.Array(
   Backup,
 ) as any as S.Schema<BackupList>;
@@ -1415,7 +1415,7 @@ export const ListProjectsLocationsGlobalDomainsSqlIntegrationsRequest =
     identifier: "ListProjectsLocationsGlobalDomainsSqlIntegrationsRequest",
   }) as any as S.Schema<ListProjectsLocationsGlobalDomainsSqlIntegrationsRequest>;
 
-export type SqlIntegrationList = ReadonlyArray<SqlIntegration>;
+export type SqlIntegrationList = Array<SqlIntegration>;
 export const SqlIntegrationList = /*@__PURE__*/ S.Array(
   SqlIntegration,
 ) as any as S.Schema<SqlIntegrationList>;
@@ -1470,7 +1470,7 @@ export const ListProjectsLocationsGlobalOperationsRequest =
     identifier: "ListProjectsLocationsGlobalOperationsRequest",
   }) as any as S.Schema<ListProjectsLocationsGlobalOperationsRequest>;
 
-export type OperationList = ReadonlyArray<Operation>;
+export type OperationList = Array<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -1525,7 +1525,7 @@ export const ListProjectsLocationsGlobalPeeringsRequest =
     identifier: "ListProjectsLocationsGlobalPeeringsRequest",
   }) as any as S.Schema<ListProjectsLocationsGlobalPeeringsRequest>;
 
-export type PeeringList = ReadonlyArray<Peering>;
+export type PeeringList = Array<Peering>;
 export const PeeringList = /*@__PURE__*/ S.Array(
   Peering,
 ) as any as S.Schema<PeeringList>;

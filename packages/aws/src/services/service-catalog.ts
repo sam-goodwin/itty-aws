@@ -582,7 +582,7 @@ export const OrganizationNodeType = /*@__PURE__*/ S.String;
 
 export type OrganizationNodeValue = string;
 export interface OrganizationNode {
-  Type?: OrganizationNodeType;
+  Type?: OrganizationNodeType | (string & {});
   Value?: string;
 }
 export const OrganizationNode = /*@__PURE__*/ S.suspend(() =>
@@ -1008,7 +1008,7 @@ export const ServiceActionDefinitionKey = /*@__PURE__*/ S.String;
 
 export type ServiceActionDefinitionValue = string;
 export type ServiceActionDefinitionMap = {
-  [key in ServiceActionDefinitionKey]?: string;
+  [key in ServiceActionDefinitionKey | (string & {})]?: string;
 };
 export const ServiceActionDefinitionMap = /*@__PURE__*/ S.Record(
   ServiceActionDefinitionKey,
@@ -4042,7 +4042,9 @@ export type PropertyKey = "OWNER" | "LAUNCH_ROLE";
 export const PropertyKey = /*@__PURE__*/ S.String;
 
 export type PropertyValue = string;
-export type ProvisionedProductProperties = { [key in PropertyKey]?: string };
+export type ProvisionedProductProperties = {
+  [key in PropertyKey | (string & {})]?: string;
+};
 export const ProvisionedProductProperties = /*@__PURE__*/ S.Record(
   PropertyKey,
   S.String.pipe(S.optional),

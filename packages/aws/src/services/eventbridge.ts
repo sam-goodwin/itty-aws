@@ -686,7 +686,7 @@ export type ReplicationState = "ENABLED" | "DISABLED";
 export const ReplicationState = /*@__PURE__*/ S.String;
 
 export interface ReplicationConfig {
-  State?: ReplicationState;
+  State?: ReplicationState | (string & {});
 }
 export const ReplicationConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ State: S.optional(ReplicationState) }),
@@ -786,8 +786,8 @@ export type Level = "OFF" | "ERROR" | "INFO" | "TRACE";
 export const Level = /*@__PURE__*/ S.String;
 
 export interface LogConfig {
-  IncludeDetail?: IncludeDetail;
-  Level?: Level;
+  IncludeDetail?: IncludeDetail | (string & {});
+  Level?: Level | (string & {});
 }
 export const LogConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2516,7 +2516,7 @@ export const AssignPublicIp = /*@__PURE__*/ S.String;
 export interface AwsVpcConfiguration {
   Subnets: string[];
   SecurityGroups?: string[];
-  AssignPublicIp?: AssignPublicIp;
+  AssignPublicIp?: AssignPublicIp | (string & {});
 }
 export const AwsVpcConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2561,7 +2561,7 @@ export const PlacementConstraintType = /*@__PURE__*/ S.String;
 
 export type PlacementConstraintExpression = string;
 export interface PlacementConstraint {
-  type?: PlacementConstraintType;
+  type?: PlacementConstraintType | (string & {});
   expression?: string;
 }
 export const PlacementConstraint = /*@__PURE__*/ S.suspend(() =>
@@ -2579,7 +2579,7 @@ export const PlacementStrategyType = /*@__PURE__*/ S.String;
 
 export type PlacementStrategyField = string;
 export interface PlacementStrategy {
-  type?: PlacementStrategyType;
+  type?: PlacementStrategyType | (string & {});
   field?: string;
 }
 export const PlacementStrategy = /*@__PURE__*/ S.suspend(() =>
@@ -2599,7 +2599,7 @@ export type ReferenceId = string;
 export interface EcsParameters {
   TaskDefinitionArn: string;
   TaskCount?: number;
-  LaunchType?: LaunchType;
+  LaunchType?: LaunchType | (string & {});
   NetworkConfiguration?: NetworkConfiguration;
   PlatformVersion?: string;
   Group?: string;
@@ -2608,7 +2608,7 @@ export interface EcsParameters {
   EnableExecuteCommand?: boolean;
   PlacementConstraints?: PlacementConstraint[];
   PlacementStrategy?: PlacementStrategy[];
-  PropagateTags?: PropagateTags;
+  PropagateTags?: PropagateTags | (string & {});
   ReferenceId?: string;
   Tags?: Tag[];
 }

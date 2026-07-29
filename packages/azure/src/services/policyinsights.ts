@@ -33,8 +33,7 @@ export const AttestationEvidence = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AttestationEvidence>;
 
 /** The evidence supporting the compliance state set in this attestation. */
-export type AttestationPropertiesInputEvidenceList =
-  ReadonlyArray<AttestationEvidence>;
+export type AttestationPropertiesInputEvidenceList = Array<AttestationEvidence>;
 export const AttestationPropertiesInputEvidenceList = /*@__PURE__*/ S.Array(
   AttestationEvidence,
 ) as any as S.Schema<AttestationPropertiesInputEvidenceList>;
@@ -145,8 +144,7 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SystemData" }) as any as S.Schema<SystemData>;
 
 /** The evidence supporting the compliance state set in this attestation. */
-export type AttestationPropertiesEvidenceList =
-  ReadonlyArray<AttestationEvidence>;
+export type AttestationPropertiesEvidenceList = Array<AttestationEvidence>;
 export const AttestationPropertiesEvidenceList = /*@__PURE__*/ S.Array(
   AttestationEvidence,
 ) as any as S.Schema<AttestationPropertiesEvidenceList>;
@@ -609,7 +607,7 @@ export const Attestation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Attestation" }) as any as S.Schema<Attestation>;
 
 /** The Attestation items on this page */
-export type AttestationListResultValueList = ReadonlyArray<Attestation>;
+export type AttestationListResultValueList = Array<Attestation>;
 export const AttestationListResultValueList = /*@__PURE__*/ S.Array(
   Attestation,
 ) as any as S.Schema<AttestationListResultValueList>;
@@ -790,7 +788,7 @@ export const ComponentExpressionEvaluationDetails = /*@__PURE__*/ S.suspend(
 
 /** Details of the evaluated expressions. */
 export type ComponentPolicyEvaluationDetailsEvaluatedExpressionsList =
-  ReadonlyArray<ComponentExpressionEvaluationDetails>;
+  Array<ComponentExpressionEvaluationDetails>;
 export const ComponentPolicyEvaluationDetailsEvaluatedExpressionsList =
   /*@__PURE__*/ S.Array(
     ComponentExpressionEvaluationDetails,
@@ -815,8 +813,7 @@ export const ComponentPolicyEvaluationDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ComponentPolicyEvaluationDetails>;
 
 /** Policy definition group names. */
-export type ComponentPolicyStatePolicyDefinitionGroupNamesList =
-  ReadonlyArray<string>;
+export type ComponentPolicyStatePolicyDefinitionGroupNamesList = Array<string>;
 export const ComponentPolicyStatePolicyDefinitionGroupNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -932,7 +929,7 @@ export const ComponentPolicyState = /*@__PURE__*/ S.suspend(() =>
 
 /** Query results. */
 export type ComponentPolicyStatesQueryResultsValueList =
-  ReadonlyArray<ComponentPolicyState>;
+  Array<ComponentPolicyState>;
 export const ComponentPolicyStatesQueryResultsValueList = /*@__PURE__*/ S.Array(
   ComponentPolicyState,
 ) as any as S.Schema<ComponentPolicyStatesQueryResultsValueList>;
@@ -1323,7 +1320,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of available operations. */
-export type OperationsListResultsValueList = ReadonlyArray<Operation>;
+export type OperationsListResultsValueList = Array<Operation>;
 export const OperationsListResultsValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResultsValueList>;
@@ -1446,7 +1443,7 @@ export const ComponentEventDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ComponentEventDetails>;
 
 /** Components events records populated only when URL contains $expand=components clause. */
-export type PolicyEventComponentsList = ReadonlyArray<ComponentEventDetails>;
+export type PolicyEventComponentsList = Array<ComponentEventDetails>;
 export const PolicyEventComponentsList = /*@__PURE__*/ S.Array(
   ComponentEventDetails,
 ) as any as S.Schema<PolicyEventComponentsList>;
@@ -1553,7 +1550,7 @@ export const PolicyEvent = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PolicyEvent" }) as any as S.Schema<PolicyEvent>;
 
 /** Query results. */
-export type PolicyEventsQueryResultsValueList = ReadonlyArray<PolicyEvent>;
+export type PolicyEventsQueryResultsValueList = Array<PolicyEvent>;
 export const PolicyEventsQueryResultsValueList = /*@__PURE__*/ S.Array(
   PolicyEvent,
 ) as any as S.Schema<PolicyEventsQueryResultsValueList>;
@@ -2201,8 +2198,7 @@ export const SlimPolicyMetadata = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SlimPolicyMetadata>;
 
 /** The SlimPolicyMetadata items on this page */
-export type PolicyMetadataCollectionValueList =
-  ReadonlyArray<SlimPolicyMetadata>;
+export type PolicyMetadataCollectionValueList = Array<SlimPolicyMetadata>;
 export const PolicyMetadataCollectionValueList = /*@__PURE__*/ S.Array(
   SlimPolicyMetadata,
 ) as any as S.Schema<PolicyMetadataCollectionValueList>;
@@ -2248,7 +2244,7 @@ export const CheckRestrictionsResourceDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CheckRestrictionsResourceDetails>;
 
 /** The list of potential values for the field that should be evaluated against Azure Policy. */
-export type PendingFieldValuesList = ReadonlyArray<string>;
+export type PendingFieldValuesList = Array<string>;
 export const PendingFieldValuesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PendingFieldValuesList>;
@@ -2269,7 +2265,7 @@ export const PendingField = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of fields and values that should be evaluated for potential restrictions. */
 export type PolicyRestrictionsCheckAtManagementGroupScopeRequestPendingFieldsList =
-  ReadonlyArray<PendingField>;
+  Array<PendingField>;
 export const PolicyRestrictionsCheckAtManagementGroupScopeRequestPendingFieldsList =
   /*@__PURE__*/ S.Array(
     PendingField,
@@ -2316,7 +2312,7 @@ export type FieldRestrictionResult = "Required" | "Removed" | "Deny" | "Audit";
 export const FieldRestrictionResult = /*@__PURE__*/ S.String;
 
 /** The values that policy either requires or denies for the field. */
-export type FieldRestrictionValuesList = ReadonlyArray<string>;
+export type FieldRestrictionValuesList = Array<string>;
 export const FieldRestrictionValuesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<FieldRestrictionValuesList>;
@@ -2372,7 +2368,7 @@ export const FieldRestriction = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FieldRestriction>;
 
 /** The restrictions placed on that field by policy. */
-export type FieldRestrictionsRestrictionsList = ReadonlyArray<FieldRestriction>;
+export type FieldRestrictionsRestrictionsList = Array<FieldRestriction>;
 export const FieldRestrictionsRestrictionsList = /*@__PURE__*/ S.Array(
   FieldRestriction,
 ) as any as S.Schema<FieldRestrictionsRestrictionsList>;
@@ -2395,7 +2391,7 @@ export const FieldRestrictions = /*@__PURE__*/ S.suspend(() =>
 
 /** The restrictions that will be placed on various fields in the resource by policy. */
 export type CheckRestrictionsResultFieldRestrictionsList =
-  ReadonlyArray<FieldRestrictions>;
+  Array<FieldRestrictions>;
 export const CheckRestrictionsResultFieldRestrictionsList =
   /*@__PURE__*/ S.Array(
     FieldRestrictions,
@@ -2434,7 +2430,7 @@ export const ExpressionEvaluationDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** Details of the evaluated expressions. */
 export type CheckRestrictionEvaluationDetailsEvaluatedExpressionsList =
-  ReadonlyArray<ExpressionEvaluationDetails>;
+  Array<ExpressionEvaluationDetails>;
 export const CheckRestrictionEvaluationDetailsEvaluatedExpressionsList =
   /*@__PURE__*/ S.Array(
     ExpressionEvaluationDetails,
@@ -2514,7 +2510,7 @@ export const PolicyEvaluationResult = /*@__PURE__*/ S.suspend(() =>
 
 /** Policy evaluation results against the given resource content. This will indicate if the partial content that was provided will be denied as-is. */
 export type CheckRestrictionsResultContentEvaluationResultPolicyEvaluationsList =
-  ReadonlyArray<PolicyEvaluationResult>;
+  Array<PolicyEvaluationResult>;
 export const CheckRestrictionsResultContentEvaluationResultPolicyEvaluationsList =
   /*@__PURE__*/ S.Array(
     PolicyEvaluationResult,
@@ -2556,7 +2552,7 @@ export const CheckRestrictionsResult = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of fields and values that should be evaluated for potential restrictions. */
 export type PolicyRestrictionsCheckAtResourceGroupScopeRequestPendingFieldsList =
-  ReadonlyArray<PendingField>;
+  Array<PendingField>;
 export const PolicyRestrictionsCheckAtResourceGroupScopeRequestPendingFieldsList =
   /*@__PURE__*/ S.Array(
     PendingField,
@@ -2598,7 +2594,7 @@ export const PolicyRestrictionsCheckAtResourceGroupScopeRequest =
 
 /** The list of fields and values that should be evaluated for potential restrictions. */
 export type PolicyRestrictionsCheckAtSubscriptionScopeRequestPendingFieldsList =
-  ReadonlyArray<PendingField>;
+  Array<PendingField>;
 export const PolicyRestrictionsCheckAtSubscriptionScopeRequestPendingFieldsList =
   /*@__PURE__*/ S.Array(
     PendingField,
@@ -2707,7 +2703,7 @@ export const PolicyStatesListQueryResultsForManagementGroupRequest =
 
 /** Details of the evaluated expressions. */
 export type PolicyEvaluationDetailsEvaluatedExpressionsList =
-  ReadonlyArray<ExpressionEvaluationDetails>;
+  Array<ExpressionEvaluationDetails>;
 export const PolicyEvaluationDetailsEvaluatedExpressionsList =
   /*@__PURE__*/ S.Array(
     ExpressionEvaluationDetails,
@@ -2732,7 +2728,7 @@ export const PolicyEvaluationDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PolicyEvaluationDetails>;
 
 /** Policy definition group names. */
-export type PolicyStatePolicyDefinitionGroupNamesList = ReadonlyArray<string>;
+export type PolicyStatePolicyDefinitionGroupNamesList = Array<string>;
 export const PolicyStatePolicyDefinitionGroupNamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PolicyStatePolicyDefinitionGroupNamesList>;
@@ -2763,7 +2759,7 @@ export const ComponentStateDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ComponentStateDetails>;
 
 /** Components state compliance records populated only when URL contains $expand=components clause. */
-export type PolicyStateComponentsList = ReadonlyArray<ComponentStateDetails>;
+export type PolicyStateComponentsList = Array<ComponentStateDetails>;
 export const PolicyStateComponentsList = /*@__PURE__*/ S.Array(
   ComponentStateDetails,
 ) as any as S.Schema<PolicyStateComponentsList>;
@@ -2881,7 +2877,7 @@ export const PolicyState = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PolicyState" }) as any as S.Schema<PolicyState>;
 
 /** Query results. */
-export type PolicyStatesQueryResultsValueList = ReadonlyArray<PolicyState>;
+export type PolicyStatesQueryResultsValueList = Array<PolicyState>;
 export const PolicyStatesQueryResultsValueList = /*@__PURE__*/ S.Array(
   PolicyState,
 ) as any as S.Schema<PolicyStatesQueryResultsValueList>;
@@ -3457,20 +3453,19 @@ export const ComplianceDetail = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ComplianceDetail>;
 
 /** The resources summary at this level. */
-export type SummaryResultsResourceDetailsList = ReadonlyArray<ComplianceDetail>;
+export type SummaryResultsResourceDetailsList = Array<ComplianceDetail>;
 export const SummaryResultsResourceDetailsList = /*@__PURE__*/ S.Array(
   ComplianceDetail,
 ) as any as S.Schema<SummaryResultsResourceDetailsList>;
 
 /** The policy artifact summary at this level. For query scope level, it represents policy assignment summary. For policy assignment level, it represents policy definitions summary. */
-export type SummaryResultsPolicyDetailsList = ReadonlyArray<ComplianceDetail>;
+export type SummaryResultsPolicyDetailsList = Array<ComplianceDetail>;
 export const SummaryResultsPolicyDetailsList = /*@__PURE__*/ S.Array(
   ComplianceDetail,
 ) as any as S.Schema<SummaryResultsPolicyDetailsList>;
 
 /** The policy definition group summary at this level. */
-export type SummaryResultsPolicyGroupDetailsList =
-  ReadonlyArray<ComplianceDetail>;
+export type SummaryResultsPolicyGroupDetailsList = Array<ComplianceDetail>;
 export const SummaryResultsPolicyGroupDetailsList = /*@__PURE__*/ S.Array(
   ComplianceDetail,
 ) as any as S.Schema<SummaryResultsPolicyGroupDetailsList>;
@@ -3503,7 +3498,7 @@ export const SummaryResults = /*@__PURE__*/ S.suspend(() =>
 
 /** Policy definition group names. */
 export type PolicyDefinitionSummaryPolicyDefinitionGroupNamesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PolicyDefinitionSummaryPolicyDefinitionGroupNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3538,7 +3533,7 @@ export const PolicyDefinitionSummary = /*@__PURE__*/ S.suspend(() =>
 
 /** Policy definitions summary. */
 export type PolicyAssignmentSummaryPolicyDefinitionsList =
-  ReadonlyArray<PolicyDefinitionSummary>;
+  Array<PolicyDefinitionSummary>;
 export const PolicyAssignmentSummaryPolicyDefinitionsList =
   /*@__PURE__*/ S.Array(
     PolicyDefinitionSummary,
@@ -3561,8 +3556,7 @@ export const PolicyGroupSummary = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PolicyGroupSummary>;
 
 /** Policy definition group summary. */
-export type PolicyAssignmentSummaryPolicyGroupsList =
-  ReadonlyArray<PolicyGroupSummary>;
+export type PolicyAssignmentSummaryPolicyGroupsList = Array<PolicyGroupSummary>;
 export const PolicyAssignmentSummaryPolicyGroupsList = /*@__PURE__*/ S.Array(
   PolicyGroupSummary,
 ) as any as S.Schema<PolicyAssignmentSummaryPolicyGroupsList>;
@@ -3593,8 +3587,7 @@ export const PolicyAssignmentSummary = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PolicyAssignmentSummary>;
 
 /** Policy assignments summary. */
-export type SummaryPolicyAssignmentsList =
-  ReadonlyArray<PolicyAssignmentSummary>;
+export type SummaryPolicyAssignmentsList = Array<PolicyAssignmentSummary>;
 export const SummaryPolicyAssignmentsList = /*@__PURE__*/ S.Array(
   PolicyAssignmentSummary,
 ) as any as S.Schema<SummaryPolicyAssignmentsList>;
@@ -3620,7 +3613,7 @@ export const Summary = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Summary" }) as any as S.Schema<Summary>;
 
 /** Summarize action results. */
-export type SummarizeResultsValueList = ReadonlyArray<Summary>;
+export type SummarizeResultsValueList = Array<Summary>;
 export const SummarizeResultsValueList = /*@__PURE__*/ S.Array(
   Summary,
 ) as any as S.Schema<SummarizeResultsValueList>;
@@ -4129,13 +4122,13 @@ export type ResourceDiscoveryMode =
 export const ResourceDiscoveryMode = /*@__PURE__*/ S.String;
 
 /** The resource locations that will be remediated. */
-export type RemediationFiltersLocationsList = ReadonlyArray<string>;
+export type RemediationFiltersLocationsList = Array<string>;
 export const RemediationFiltersLocationsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RemediationFiltersLocationsList>;
 
 /** The IDs of the resources that will be remediated. Can specify at most 100 IDs. This filter cannot be used when ReEvaluateCompliance is set to ReEvaluateCompliance, and cannot be empty if provided. */
-export type RemediationFiltersResourceIdsList = ReadonlyArray<string>;
+export type RemediationFiltersResourceIdsList = Array<string>;
 export const RemediationFiltersResourceIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RemediationFiltersResourceIdsList>;
@@ -5113,7 +5106,7 @@ export const RemediationsListDeploymentsAtManagementGroupRequest =
   }) as any as S.Schema<RemediationsListDeploymentsAtManagementGroupRequest>;
 
 /** Internal error details. */
-export type ErrorDefinitionDetailsList = ReadonlyArray<ErrorDefinition>;
+export type ErrorDefinitionDetailsList = Array<ErrorDefinition>;
 export const ErrorDefinitionDetailsList = /*@__PURE__*/ S.Array(
   S.suspend(() => ErrorDefinition),
 ) as any as S.Schema<ErrorDefinitionDetailsList>;
@@ -5133,7 +5126,7 @@ export const TypedErrorInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TypedErrorInfo" }) as any as S.Schema<TypedErrorInfo>;
 
 /** Additional scenario specific error details. */
-export type ErrorDefinitionAdditionalInfoList = ReadonlyArray<TypedErrorInfo>;
+export type ErrorDefinitionAdditionalInfoList = Array<TypedErrorInfo>;
 export const ErrorDefinitionAdditionalInfoList = /*@__PURE__*/ S.Array(
   TypedErrorInfo,
 ) as any as S.Schema<ErrorDefinitionAdditionalInfoList>;
@@ -5196,7 +5189,7 @@ export const RemediationDeployment = /*@__PURE__*/ S.suspend(() =>
 
 /** The RemediationDeployment items on this page */
 export type RemediationDeploymentsListResultValueList =
-  ReadonlyArray<RemediationDeployment>;
+  Array<RemediationDeployment>;
 export const RemediationDeploymentsListResultValueList = /*@__PURE__*/ S.Array(
   RemediationDeployment,
 ) as any as S.Schema<RemediationDeploymentsListResultValueList>;
@@ -5361,7 +5354,7 @@ export const Remediation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Remediation" }) as any as S.Schema<Remediation>;
 
 /** The Remediation items on this page */
-export type RemediationListResultValueList = ReadonlyArray<Remediation>;
+export type RemediationListResultValueList = Array<Remediation>;
 export const RemediationListResultValueList = /*@__PURE__*/ S.Array(
   Remediation,
 ) as any as S.Schema<RemediationListResultValueList>;

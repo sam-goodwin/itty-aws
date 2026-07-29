@@ -30,12 +30,12 @@ export const QueryAplRequestDefaultOrderItem = /*@__PURE__*/ S.suspend(() =>
 
 /** The default order to use when no order is specified in the query. */
 export type QueryAplRequestDefaultOrderList =
-  ReadonlyArray<QueryAplRequestDefaultOrderItem>;
+  Array<QueryAplRequestDefaultOrderItem>;
 export const QueryAplRequestDefaultOrderList = /*@__PURE__*/ S.Array(
   QueryAplRequestDefaultOrderItem,
 ) as any as S.Schema<QueryAplRequestDefaultOrderList>;
 
-export type QueryAplRequestLibrariesList = ReadonlyArray<string>;
+export type QueryAplRequestLibrariesList = Array<string>;
 export const QueryAplRequestLibrariesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<QueryAplRequestLibrariesList>;

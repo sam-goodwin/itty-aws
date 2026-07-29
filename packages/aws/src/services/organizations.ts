@@ -524,7 +524,7 @@ export const HandshakePartyType = /*@__PURE__*/ S.String;
 
 export interface HandshakeParty {
   Id: string | redacted.Redacted<string>;
-  Type: HandshakePartyType;
+  Type: HandshakePartyType | (string & {});
 }
 export const HandshakeParty = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Id: SensitiveString, Type: HandshakePartyType }),

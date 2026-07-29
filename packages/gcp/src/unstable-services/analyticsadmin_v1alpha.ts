@@ -294,7 +294,7 @@ export const ArchivePropertiesCustomMetricsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ArchivePropertiesCustomMetricsRequest",
 }) as any as S.Schema<ArchivePropertiesCustomMetricsRequest>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -337,7 +337,7 @@ export const GoogleAnalyticsAdminV1alphaCreateAccessBindingRequest =
   }) as any as S.Schema<GoogleAnalyticsAdminV1alphaCreateAccessBindingRequest>;
 
 export type GoogleAnalyticsAdminV1alphaCreateAccessBindingRequestList =
-  ReadonlyArray<GoogleAnalyticsAdminV1alphaCreateAccessBindingRequest>;
+  Array<GoogleAnalyticsAdminV1alphaCreateAccessBindingRequest>;
 export const GoogleAnalyticsAdminV1alphaCreateAccessBindingRequestList =
   /*@__PURE__*/ S.Array(
     GoogleAnalyticsAdminV1alphaCreateAccessBindingRequest,
@@ -386,7 +386,7 @@ export const BatchCreateAccountsAccessBindingsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<BatchCreateAccountsAccessBindingsRequest>;
 
 export type GoogleAnalyticsAdminV1alphaAccessBindingList =
-  ReadonlyArray<GoogleAnalyticsAdminV1alphaAccessBinding>;
+  Array<GoogleAnalyticsAdminV1alphaAccessBinding>;
 export const GoogleAnalyticsAdminV1alphaAccessBindingList =
   /*@__PURE__*/ S.Array(
     GoogleAnalyticsAdminV1alphaAccessBinding,
@@ -447,7 +447,7 @@ export const GoogleAnalyticsAdminV1alphaDeleteAccessBindingRequest =
   }) as any as S.Schema<GoogleAnalyticsAdminV1alphaDeleteAccessBindingRequest>;
 
 export type GoogleAnalyticsAdminV1alphaDeleteAccessBindingRequestList =
-  ReadonlyArray<GoogleAnalyticsAdminV1alphaDeleteAccessBindingRequest>;
+  Array<GoogleAnalyticsAdminV1alphaDeleteAccessBindingRequest>;
 export const GoogleAnalyticsAdminV1alphaDeleteAccessBindingRequestList =
   /*@__PURE__*/ S.Array(
     GoogleAnalyticsAdminV1alphaDeleteAccessBindingRequest,
@@ -594,7 +594,7 @@ export const GoogleAnalyticsAdminV1alphaUpdateAccessBindingRequest =
   }) as any as S.Schema<GoogleAnalyticsAdminV1alphaUpdateAccessBindingRequest>;
 
 export type GoogleAnalyticsAdminV1alphaUpdateAccessBindingRequestList =
-  ReadonlyArray<GoogleAnalyticsAdminV1alphaUpdateAccessBindingRequest>;
+  Array<GoogleAnalyticsAdminV1alphaUpdateAccessBindingRequest>;
 export const GoogleAnalyticsAdminV1alphaUpdateAccessBindingRequestList =
   /*@__PURE__*/ S.Array(
     GoogleAnalyticsAdminV1alphaUpdateAccessBindingRequest,
@@ -739,9 +739,13 @@ export interface GoogleAnalyticsAdminV1alphaLinkProposalStatusDetails {
   /** Output only. The email address of the user that proposed this linkage. */
   requestorEmail?: string;
   /** Output only. The source of this proposal. */
-  linkProposalInitiatingProduct?: GoogleAnalyticsAdminV1alphaLinkProposalStatusDetailsLinkProposalInitiatingProductEnum;
+  linkProposalInitiatingProduct?:
+    | GoogleAnalyticsAdminV1alphaLinkProposalStatusDetailsLinkProposalInitiatingProductEnum
+    | (string & {});
   /** Output only. The state of this proposal. */
-  linkProposalState?: GoogleAnalyticsAdminV1alphaLinkProposalStatusDetailsLinkProposalStateEnum;
+  linkProposalState?:
+    | GoogleAnalyticsAdminV1alphaLinkProposalStatusDetailsLinkProposalStateEnum
+    | (string & {});
 }
 export const GoogleAnalyticsAdminV1alphaLinkProposalStatusDetails =
   /*@__PURE__*/ S.suspend(() =>
@@ -868,13 +872,19 @@ export const GoogleAnalyticsAdminV1alphaPropertyServiceLevelEnum =
 /** A resource message representing a Google Analytics property. */
 export interface GoogleAnalyticsAdminV1alphaProperty {
   /** Immutable. The property type for this Property resource. When creating a property, if the type is "PROPERTY_TYPE_UNSPECIFIED", then "ORDINARY_PROPERTY" will be implied. */
-  propertyType?: GoogleAnalyticsAdminV1alphaPropertyPropertyTypeEnum;
+  propertyType?:
+    | GoogleAnalyticsAdminV1alphaPropertyPropertyTypeEnum
+    | (string & {});
   /** Output only. Time when entity payload fields were last updated. */
   updateTime?: string;
   /** Industry associated with this property Example: AUTOMOTIVE, FOOD_AND_DRINK */
-  industryCategory?: GoogleAnalyticsAdminV1alphaPropertyIndustryCategoryEnum;
+  industryCategory?:
+    | GoogleAnalyticsAdminV1alphaPropertyIndustryCategoryEnum
+    | (string & {});
   /** Output only. The Google Analytics service level that applies to this property. */
-  serviceLevel?: GoogleAnalyticsAdminV1alphaPropertyServiceLevelEnum;
+  serviceLevel?:
+    | GoogleAnalyticsAdminV1alphaPropertyServiceLevelEnum
+    | (string & {});
   /** Output only. If set, the time at which this trashed property will be permanently deleted. If not set, then this property is not currently in the trash can and is not slated to be deleted. */
   expireTime?: string;
   /** Required. Human-readable display name for this property. The max allowed display name length is 100 UTF-16 code units. */
@@ -1012,7 +1022,9 @@ export interface GoogleAnalyticsAdminV1alphaAudienceEventTrigger {
   /** Required. The event name that will be logged. */
   eventName?: string;
   /** Required. When to log the event. */
-  logCondition?: GoogleAnalyticsAdminV1alphaAudienceEventTriggerLogConditionEnum;
+  logCondition?:
+    | GoogleAnalyticsAdminV1alphaAudienceEventTriggerLogConditionEnum
+    | (string & {});
 }
 export const GoogleAnalyticsAdminV1alphaAudienceEventTrigger =
   /*@__PURE__*/ S.suspend(() =>
@@ -1086,7 +1098,9 @@ export const GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterNumericVa
 /** A filter for numeric or date values on a dimension or metric. */
 export interface GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterNumericFilter {
   /** Required. The operation applied to a numeric filter. */
-  operation?: GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterNumericFilterOperationEnum;
+  operation?:
+    | GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterNumericFilterOperationEnum
+    | (string & {});
   /** Required. The numeric or date value to match against. */
   value?: GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterNumericValue;
 }
@@ -1122,7 +1136,9 @@ export interface GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterStrin
   /** Optional. If true, the match is case-sensitive. If false, the match is case-insensitive. */
   caseSensitive?: boolean;
   /** Required. The match type for the string filter. */
-  matchType?: GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterStringFilterMatchTypeEnum;
+  matchType?:
+    | GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterStringFilterMatchTypeEnum
+    | (string & {});
 }
 export const GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterStringFilter =
   /*@__PURE__*/ S.suspend(() =>
@@ -1219,7 +1235,7 @@ export const GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilter =
   }) as any as S.Schema<GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilter>;
 
 export type GoogleAnalyticsAdminV1alphaAudienceFilterExpressionList_ =
-  ReadonlyArray<GoogleAnalyticsAdminV1alphaAudienceFilterExpression>;
+  Array<GoogleAnalyticsAdminV1alphaAudienceFilterExpression>;
 export const GoogleAnalyticsAdminV1alphaAudienceFilterExpressionList_ =
   /*@__PURE__*/ S.Array(
     S.suspend(() => GoogleAnalyticsAdminV1alphaAudienceFilterExpression),
@@ -1292,7 +1308,9 @@ export interface GoogleAnalyticsAdminV1alphaAudienceSequenceFilterAudienceSequen
   /** Required. Immutable. A logical expression of Audience dimension, metric, or event filters in each step. */
   filterExpression?: GoogleAnalyticsAdminV1alphaAudienceFilterExpression;
   /** Required. Immutable. Specifies the scope for this step. */
-  scope?: GoogleAnalyticsAdminV1alphaAudienceSequenceFilterAudienceSequenceStepScopeEnum;
+  scope?:
+    | GoogleAnalyticsAdminV1alphaAudienceSequenceFilterAudienceSequenceStepScopeEnum
+    | (string & {});
 }
 export const GoogleAnalyticsAdminV1alphaAudienceSequenceFilterAudienceSequenceStep =
   /*@__PURE__*/ S.suspend(() =>
@@ -1312,7 +1330,7 @@ export const GoogleAnalyticsAdminV1alphaAudienceSequenceFilterAudienceSequenceSt
   }) as any as S.Schema<GoogleAnalyticsAdminV1alphaAudienceSequenceFilterAudienceSequenceStep>;
 
 export type GoogleAnalyticsAdminV1alphaAudienceSequenceFilterAudienceSequenceStepList =
-  ReadonlyArray<GoogleAnalyticsAdminV1alphaAudienceSequenceFilterAudienceSequenceStep>;
+  Array<GoogleAnalyticsAdminV1alphaAudienceSequenceFilterAudienceSequenceStep>;
 export const GoogleAnalyticsAdminV1alphaAudienceSequenceFilterAudienceSequenceStepList =
   /*@__PURE__*/ S.Array(
     GoogleAnalyticsAdminV1alphaAudienceSequenceFilterAudienceSequenceStep,
@@ -1321,7 +1339,9 @@ export const GoogleAnalyticsAdminV1alphaAudienceSequenceFilterAudienceSequenceSt
 /** Defines filters that must occur in a specific order for the user to be a member of the Audience. */
 export interface GoogleAnalyticsAdminV1alphaAudienceSequenceFilter {
   /** Required. Immutable. Specifies the scope for this filter. */
-  scope?: GoogleAnalyticsAdminV1alphaAudienceSequenceFilterScopeEnum;
+  scope?:
+    | GoogleAnalyticsAdminV1alphaAudienceSequenceFilterScopeEnum
+    | (string & {});
   /** Optional. Defines the time period in which the whole sequence must occur. */
   sequenceMaximumDuration?: string;
   /** Required. An ordered sequence of steps. A user must complete each step in order to join the sequence filter. */
@@ -1360,7 +1380,9 @@ export const GoogleAnalyticsAdminV1alphaAudienceSimpleFilterScopeEnum =
 /** Defines a simple filter that a user must satisfy to be a member of the Audience. */
 export interface GoogleAnalyticsAdminV1alphaAudienceSimpleFilter {
   /** Required. Immutable. Specifies the scope for this filter. */
-  scope?: GoogleAnalyticsAdminV1alphaAudienceSimpleFilterScopeEnum;
+  scope?:
+    | GoogleAnalyticsAdminV1alphaAudienceSimpleFilterScopeEnum
+    | (string & {});
   /** Required. Immutable. A logical expression of Audience dimension, metric, or event filters. */
   filterExpression?: GoogleAnalyticsAdminV1alphaAudienceFilterExpression;
 }
@@ -1383,7 +1405,9 @@ export interface GoogleAnalyticsAdminV1alphaAudienceFilterClause {
   /** Filters that must occur in a specific order for the user to be a member of the Audience. */
   sequenceFilter?: GoogleAnalyticsAdminV1alphaAudienceSequenceFilter;
   /** Required. Specifies whether this is an include or exclude filter clause. */
-  clauseType?: GoogleAnalyticsAdminV1alphaAudienceFilterClauseClauseTypeEnum;
+  clauseType?:
+    | GoogleAnalyticsAdminV1alphaAudienceFilterClauseClauseTypeEnum
+    | (string & {});
   /** A simple filter that a user must satisfy to be a member of the Audience. */
   simpleFilter?: GoogleAnalyticsAdminV1alphaAudienceSimpleFilter;
 }
@@ -1403,7 +1427,7 @@ export const GoogleAnalyticsAdminV1alphaAudienceFilterClause =
   }) as any as S.Schema<GoogleAnalyticsAdminV1alphaAudienceFilterClause>;
 
 export type GoogleAnalyticsAdminV1alphaAudienceFilterClauseList =
-  ReadonlyArray<GoogleAnalyticsAdminV1alphaAudienceFilterClause>;
+  Array<GoogleAnalyticsAdminV1alphaAudienceFilterClause>;
 export const GoogleAnalyticsAdminV1alphaAudienceFilterClauseList =
   /*@__PURE__*/ S.Array(
     GoogleAnalyticsAdminV1alphaAudienceFilterClause,
@@ -1418,7 +1442,9 @@ export interface GoogleAnalyticsAdminV1alphaAudience {
   /** Optional. Specifies an event to log when a user joins the Audience. If not set, no event is logged when a user joins the Audience. */
   eventTrigger?: GoogleAnalyticsAdminV1alphaAudienceEventTrigger;
   /** Immutable. Specifies how long an exclusion lasts for users that meet the exclusion filter. It is applied to all EXCLUDE filter clauses and is ignored when there is no EXCLUDE filter clause in the Audience. */
-  exclusionDurationMode?: GoogleAnalyticsAdminV1alphaAudienceExclusionDurationModeEnum;
+  exclusionDurationMode?:
+    | GoogleAnalyticsAdminV1alphaAudienceExclusionDurationModeEnum
+    | (string & {});
   /** Required. Immutable. Unordered list. Filter clauses that define the Audience. All clauses will be AND’ed together. */
   filterClauses?: GoogleAnalyticsAdminV1alphaAudienceFilterClauseList;
   /** Required. The display name of the Audience. */
@@ -1557,7 +1583,10 @@ export const GoogleAnalyticsAdminV1alphaCalculatedMetricRestrictedMetricTypeItem
   /*@__PURE__*/ S.String;
 
 export type GoogleAnalyticsAdminV1alphaCalculatedMetricRestrictedMetricTypeItemEnumList =
-  ReadonlyArray<GoogleAnalyticsAdminV1alphaCalculatedMetricRestrictedMetricTypeItemEnum>;
+  Array<
+    | GoogleAnalyticsAdminV1alphaCalculatedMetricRestrictedMetricTypeItemEnum
+    | (string & {})
+  >;
 export const GoogleAnalyticsAdminV1alphaCalculatedMetricRestrictedMetricTypeItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleAnalyticsAdminV1alphaCalculatedMetricRestrictedMetricTypeItemEnum,
@@ -1566,7 +1595,9 @@ export const GoogleAnalyticsAdminV1alphaCalculatedMetricRestrictedMetricTypeItem
 /** A definition for a calculated metric. */
 export interface GoogleAnalyticsAdminV1alphaCalculatedMetric {
   /** Required. The type for the calculated metric's value. */
-  metricUnit?: GoogleAnalyticsAdminV1alphaCalculatedMetricMetricUnitEnum;
+  metricUnit?:
+    | GoogleAnalyticsAdminV1alphaCalculatedMetricMetricUnitEnum
+    | (string & {});
   /** Required. Display name for this calculated metric as shown in the Google Analytics UI. Max length 82 characters. */
   displayName?: string;
   /** Output only. The ID to use for the calculated metric. In the UI, this is referred to as the "API name." The calculated_metric_id is used when referencing this calculated metric from external APIs. For example, "calcMetric:{calculated_metric_id}". */
@@ -1630,7 +1661,7 @@ export const CreatePropertiesCalculatedMetricsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CreatePropertiesCalculatedMetricsRequest>;
 
 export type GoogleAnalyticsAdminV1alphaChannelGroupFilterExpressionList_ =
-  ReadonlyArray<GoogleAnalyticsAdminV1alphaChannelGroupFilterExpression>;
+  Array<GoogleAnalyticsAdminV1alphaChannelGroupFilterExpression>;
 export const GoogleAnalyticsAdminV1alphaChannelGroupFilterExpressionList_ =
   /*@__PURE__*/ S.Array(
     S.suspend(() => GoogleAnalyticsAdminV1alphaChannelGroupFilterExpression),
@@ -1680,7 +1711,9 @@ export const GoogleAnalyticsAdminV1alphaChannelGroupFilterStringFilterMatchTypeE
 /** Filter where the field value is a String. The match is case insensitive. */
 export interface GoogleAnalyticsAdminV1alphaChannelGroupFilterStringFilter {
   /** Required. The match type for the string filter. */
-  matchType?: GoogleAnalyticsAdminV1alphaChannelGroupFilterStringFilterMatchTypeEnum;
+  matchType?:
+    | GoogleAnalyticsAdminV1alphaChannelGroupFilterStringFilterMatchTypeEnum
+    | (string & {});
   /** Required. The string value to be matched against. */
   value?: string;
 }
@@ -1769,7 +1802,7 @@ export const GoogleAnalyticsAdminV1alphaGroupingRule = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleAnalyticsAdminV1alphaGroupingRule>;
 
 export type GoogleAnalyticsAdminV1alphaGroupingRuleList =
-  ReadonlyArray<GoogleAnalyticsAdminV1alphaGroupingRule>;
+  Array<GoogleAnalyticsAdminV1alphaGroupingRule>;
 export const GoogleAnalyticsAdminV1alphaGroupingRuleList =
   /*@__PURE__*/ S.Array(
     GoogleAnalyticsAdminV1alphaGroupingRule,
@@ -1866,7 +1899,9 @@ export interface GoogleAnalyticsAdminV1alphaConversionEvent {
   /** Immutable. The event name for this conversion event. Examples: 'click', 'purchase' */
   eventName?: string;
   /** Optional. The method by which conversions will be counted across multiple events within a session. If this value is not provided, it will be set to `ONCE_PER_EVENT`. */
-  countingMethod?: GoogleAnalyticsAdminV1alphaConversionEventCountingMethodEnum;
+  countingMethod?:
+    | GoogleAnalyticsAdminV1alphaConversionEventCountingMethodEnum
+    | (string & {});
   /** Optional. Defines a default value/currency for a conversion event. */
   defaultConversionValue?: GoogleAnalyticsAdminV1alphaConversionEventDefaultConversionValue;
 }
@@ -1924,7 +1959,7 @@ export const GoogleAnalyticsAdminV1alphaCustomDimensionScopeEnum =
 /** A definition for a CustomDimension. */
 export interface GoogleAnalyticsAdminV1alphaCustomDimension {
   /** Required. Immutable. The scope of this dimension. */
-  scope?: GoogleAnalyticsAdminV1alphaCustomDimensionScopeEnum;
+  scope?: GoogleAnalyticsAdminV1alphaCustomDimensionScopeEnum | (string & {});
   /** Required. Display name for this custom dimension as shown in the Analytics UI. Max length of 82 characters, alphanumeric plus space and underscore starting with a letter. Legacy system-generated display names may contain square brackets, but updates to this field will never permit square brackets. */
   displayName?: string;
   /** Identifier. Resource name for this CustomDimension resource. Format: properties/{property}/customDimensions/{customDimension} */
@@ -2001,7 +2036,10 @@ export const GoogleAnalyticsAdminV1alphaCustomMetricRestrictedMetricTypeItemEnum
   /*@__PURE__*/ S.String;
 
 export type GoogleAnalyticsAdminV1alphaCustomMetricRestrictedMetricTypeItemEnumList =
-  ReadonlyArray<GoogleAnalyticsAdminV1alphaCustomMetricRestrictedMetricTypeItemEnum>;
+  Array<
+    | GoogleAnalyticsAdminV1alphaCustomMetricRestrictedMetricTypeItemEnum
+    | (string & {})
+  >;
 export const GoogleAnalyticsAdminV1alphaCustomMetricRestrictedMetricTypeItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleAnalyticsAdminV1alphaCustomMetricRestrictedMetricTypeItemEnum,
@@ -2012,13 +2050,15 @@ export interface GoogleAnalyticsAdminV1alphaCustomMetric {
   /** Required. Display name for this custom metric as shown in the Analytics UI. Max length of 82 characters, alphanumeric plus space and underscore starting with a letter. Legacy system-generated display names may contain square brackets, but updates to this field will never permit square brackets. */
   displayName?: string;
   /** Required. Immutable. The scope of this custom metric. */
-  scope?: GoogleAnalyticsAdminV1alphaCustomMetricScopeEnum;
+  scope?: GoogleAnalyticsAdminV1alphaCustomMetricScopeEnum | (string & {});
   /** Required. Immutable. Tagging name for this custom metric. If this is an event-scoped metric, then this is the event parameter name. May only contain alphanumeric and underscore charactes, starting with a letter. Max length of 40 characters for event-scoped metrics. */
   parameterName?: string;
   /** Identifier. Resource name for this CustomMetric resource. Format: properties/{property}/customMetrics/{customMetric} */
   name?: string;
   /** Required. The type for the custom metric's value. */
-  measurementUnit?: GoogleAnalyticsAdminV1alphaCustomMetricMeasurementUnitEnum;
+  measurementUnit?:
+    | GoogleAnalyticsAdminV1alphaCustomMetricMeasurementUnitEnum
+    | (string & {});
   /** Optional. Types of restricted data that this metric may contain. Required for metrics with CURRENCY measurement unit. Must be empty for metrics with a non-CURRENCY measurement unit. */
   restrictedMetricType?: GoogleAnalyticsAdminV1alphaCustomMetricRestrictedMetricTypeItemEnumList;
   /** Optional. Description for this custom dimension. Max length of 150 characters. */
@@ -2136,7 +2176,7 @@ export interface GoogleAnalyticsAdminV1alphaDataStream {
   /** Data specific to iOS app streams. Must be populated if type is IOS_APP_DATA_STREAM. */
   iosAppStreamData?: GoogleAnalyticsAdminV1alphaDataStreamIosAppStreamData;
   /** Required. Immutable. The type of this DataStream resource. */
-  type?: GoogleAnalyticsAdminV1alphaDataStreamTypeEnum;
+  type?: GoogleAnalyticsAdminV1alphaDataStreamTypeEnum | (string & {});
   /** Output only. Time when this stream was originally created. */
   createTime?: string;
   /** Data specific to web streams. Must be populated if type is WEB_DATA_STREAM. */
@@ -2219,7 +2259,9 @@ export interface GoogleAnalyticsAdminV1alphaMatchingCondition {
   /** Required. The name of the field that is compared against for the condition. If 'event_name' is specified this condition will apply to the name of the event. Otherwise the condition will apply to a parameter with the specified name. This value cannot contain spaces. */
   field?: string;
   /** Required. The type of comparison to be applied to the value. */
-  comparisonType?: GoogleAnalyticsAdminV1alphaMatchingConditionComparisonTypeEnum;
+  comparisonType?:
+    | GoogleAnalyticsAdminV1alphaMatchingConditionComparisonTypeEnum
+    | (string & {});
 }
 export const GoogleAnalyticsAdminV1alphaMatchingCondition =
   /*@__PURE__*/ S.suspend(() =>
@@ -2236,7 +2278,7 @@ export const GoogleAnalyticsAdminV1alphaMatchingCondition =
   }) as any as S.Schema<GoogleAnalyticsAdminV1alphaMatchingCondition>;
 
 export type GoogleAnalyticsAdminV1alphaMatchingConditionList =
-  ReadonlyArray<GoogleAnalyticsAdminV1alphaMatchingCondition>;
+  Array<GoogleAnalyticsAdminV1alphaMatchingCondition>;
 export const GoogleAnalyticsAdminV1alphaMatchingConditionList =
   /*@__PURE__*/ S.Array(
     GoogleAnalyticsAdminV1alphaMatchingCondition,
@@ -2260,7 +2302,7 @@ export const GoogleAnalyticsAdminV1alphaParameterMutation =
   }) as any as S.Schema<GoogleAnalyticsAdminV1alphaParameterMutation>;
 
 export type GoogleAnalyticsAdminV1alphaParameterMutationList =
-  ReadonlyArray<GoogleAnalyticsAdminV1alphaParameterMutation>;
+  Array<GoogleAnalyticsAdminV1alphaParameterMutation>;
 export const GoogleAnalyticsAdminV1alphaParameterMutationList =
   /*@__PURE__*/ S.Array(
     GoogleAnalyticsAdminV1alphaParameterMutation,
@@ -2453,7 +2495,7 @@ export const GoogleAnalyticsAdminV1alphaEventMapping = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleAnalyticsAdminV1alphaEventMapping>;
 
 export type GoogleAnalyticsAdminV1alphaEventMappingList =
-  ReadonlyArray<GoogleAnalyticsAdminV1alphaEventMapping>;
+  Array<GoogleAnalyticsAdminV1alphaEventMapping>;
 export const GoogleAnalyticsAdminV1alphaEventMappingList =
   /*@__PURE__*/ S.Array(
     GoogleAnalyticsAdminV1alphaEventMapping,
@@ -2464,7 +2506,9 @@ export interface GoogleAnalyticsAdminV1alphaConversionValues {
   /** Display name of the SKAdNetwork conversion value. The max allowed display name length is 50 UTF-16 code units. */
   displayName?: string;
   /** Required. A coarse grained conversion value. This value is not guaranteed to be unique. */
-  coarseValue?: GoogleAnalyticsAdminV1alphaConversionValuesCoarseValueEnum;
+  coarseValue?:
+    | GoogleAnalyticsAdminV1alphaConversionValuesCoarseValueEnum
+    | (string & {});
   /** Event conditions that must be met for this Conversion Value to be achieved. The conditions in this list are ANDed together. It must have minimum of 1 entry and maximum of 3 entries, if the postback window is enabled. */
   eventMappings?: GoogleAnalyticsAdminV1alphaEventMappingList;
   /** If true, the SDK should lock to this conversion value for the current postback window. */
@@ -2488,7 +2532,7 @@ export const GoogleAnalyticsAdminV1alphaConversionValues =
   }) as any as S.Schema<GoogleAnalyticsAdminV1alphaConversionValues>;
 
 export type GoogleAnalyticsAdminV1alphaConversionValuesList =
-  ReadonlyArray<GoogleAnalyticsAdminV1alphaConversionValues>;
+  Array<GoogleAnalyticsAdminV1alphaConversionValues>;
 export const GoogleAnalyticsAdminV1alphaConversionValuesList =
   /*@__PURE__*/ S.Array(
     GoogleAnalyticsAdminV1alphaConversionValues,
@@ -2628,7 +2672,9 @@ export const GoogleAnalyticsAdminV1alphaExpandedDataSetFilterStringFilterMatchTy
 /** A filter for a string-type dimension that matches a particular pattern. */
 export interface GoogleAnalyticsAdminV1alphaExpandedDataSetFilterStringFilter {
   /** Required. The match type for the string filter. */
-  matchType?: GoogleAnalyticsAdminV1alphaExpandedDataSetFilterStringFilterMatchTypeEnum;
+  matchType?:
+    | GoogleAnalyticsAdminV1alphaExpandedDataSetFilterStringFilterMatchTypeEnum
+    | (string & {});
   /** Required. The string value to be matched against. */
   value?: string;
   /** Optional. If true, the match is case-sensitive. If false, the match is case-insensitive. Must be true when match_type is EXACT. Must be false when match_type is CONTAINS. */
@@ -2689,7 +2735,7 @@ export const GoogleAnalyticsAdminV1alphaExpandedDataSetFilter =
   }) as any as S.Schema<GoogleAnalyticsAdminV1alphaExpandedDataSetFilter>;
 
 export type GoogleAnalyticsAdminV1alphaExpandedDataSetFilterExpressionList_ =
-  ReadonlyArray<GoogleAnalyticsAdminV1alphaExpandedDataSetFilterExpression>;
+  Array<GoogleAnalyticsAdminV1alphaExpandedDataSetFilterExpression>;
 export const GoogleAnalyticsAdminV1alphaExpandedDataSetFilterExpressionList_ =
   /*@__PURE__*/ S.Array(
     S.suspend(() => GoogleAnalyticsAdminV1alphaExpandedDataSetFilterExpression),
@@ -2933,7 +2979,9 @@ export interface GoogleAnalyticsAdminV1alphaKeyEvent {
   /** Immutable. The event name for this key event. Examples: 'click', 'purchase' */
   eventName?: string;
   /** Required. The method by which Key Events will be counted across multiple events within a session. */
-  countingMethod?: GoogleAnalyticsAdminV1alphaKeyEventCountingMethodEnum;
+  countingMethod?:
+    | GoogleAnalyticsAdminV1alphaKeyEventCountingMethodEnum
+    | (string & {});
 }
 export const GoogleAnalyticsAdminV1alphaKeyEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3023,7 +3071,9 @@ export interface GoogleAnalyticsAdminV1alphaReportingDataAnnotation {
   /** Optional. Description for this Reporting Data Annotation. */
   description?: string;
   /** Required. The color used for display of this Reporting Data Annotation. */
-  color?: GoogleAnalyticsAdminV1alphaReportingDataAnnotationColorEnum;
+  color?:
+    | GoogleAnalyticsAdminV1alphaReportingDataAnnotationColorEnum
+    | (string & {});
   /** If set, the Reporting Data Annotation is for a specific date represented by this field. The date must be a valid date with year, month and day set. The date may be in the past, present, or future. */
   annotationDate?: GoogleTypeDate;
   /** Required. Human-readable title for this Reporting Data Annotation. */
@@ -3181,7 +3231,7 @@ export const GoogleAnalyticsAdminV1alphaSubpropertyEventFilterClauseFilterClause
   /*@__PURE__*/ S.String;
 
 export type GoogleAnalyticsAdminV1alphaSubpropertyEventFilterExpressionList_ =
-  ReadonlyArray<GoogleAnalyticsAdminV1alphaSubpropertyEventFilterExpression>;
+  Array<GoogleAnalyticsAdminV1alphaSubpropertyEventFilterExpression>;
 export const GoogleAnalyticsAdminV1alphaSubpropertyEventFilterExpressionList_ =
   /*@__PURE__*/ S.Array(
     S.suspend(
@@ -3224,7 +3274,9 @@ export interface GoogleAnalyticsAdminV1alphaSubpropertyEventFilterConditionStrin
   /** Optional. If true, the string value is case sensitive. If false, the match is case-insensitive. */
   caseSensitive?: boolean;
   /** Required. The match type for the string filter. */
-  matchType?: GoogleAnalyticsAdminV1alphaSubpropertyEventFilterConditionStringFilterMatchTypeEnum;
+  matchType?:
+    | GoogleAnalyticsAdminV1alphaSubpropertyEventFilterConditionStringFilterMatchTypeEnum
+    | (string & {});
 }
 export const GoogleAnalyticsAdminV1alphaSubpropertyEventFilterConditionStringFilter =
   /*@__PURE__*/ S.suspend(() =>
@@ -3291,7 +3343,9 @@ export const GoogleAnalyticsAdminV1alphaSubpropertyEventFilterExpression =
 /** A clause for defining a filter. A filter may be inclusive (events satisfying the filter clause are included in the subproperty's data) or exclusive (events satisfying the filter clause are excluded from the subproperty's data). */
 export interface GoogleAnalyticsAdminV1alphaSubpropertyEventFilterClause {
   /** Required. The type for the filter clause. */
-  filterClauseType?: GoogleAnalyticsAdminV1alphaSubpropertyEventFilterClauseFilterClauseTypeEnum;
+  filterClauseType?:
+    | GoogleAnalyticsAdminV1alphaSubpropertyEventFilterClauseFilterClauseTypeEnum
+    | (string & {});
   /** Required. The logical expression for what events are sent to the subproperty. */
   filterExpression?: GoogleAnalyticsAdminV1alphaSubpropertyEventFilterExpression;
 }
@@ -3310,7 +3364,7 @@ export const GoogleAnalyticsAdminV1alphaSubpropertyEventFilterClause =
   }) as any as S.Schema<GoogleAnalyticsAdminV1alphaSubpropertyEventFilterClause>;
 
 export type GoogleAnalyticsAdminV1alphaSubpropertyEventFilterClauseList =
-  ReadonlyArray<GoogleAnalyticsAdminV1alphaSubpropertyEventFilterClause>;
+  Array<GoogleAnalyticsAdminV1alphaSubpropertyEventFilterClause>;
 export const GoogleAnalyticsAdminV1alphaSubpropertyEventFilterClauseList =
   /*@__PURE__*/ S.Array(
     GoogleAnalyticsAdminV1alphaSubpropertyEventFilterClause,
@@ -3403,7 +3457,7 @@ export const CreateRollupPropertyPropertiesRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CreateRollupPropertyPropertiesRequest>;
 
 export type GoogleAnalyticsAdminV1alphaRollupPropertySourceLinkList =
-  ReadonlyArray<GoogleAnalyticsAdminV1alphaRollupPropertySourceLink>;
+  Array<GoogleAnalyticsAdminV1alphaRollupPropertySourceLink>;
 export const GoogleAnalyticsAdminV1alphaRollupPropertySourceLinkList =
   /*@__PURE__*/ S.Array(
     GoogleAnalyticsAdminV1alphaRollupPropertySourceLink,
@@ -3999,15 +4053,23 @@ export const GoogleAnalyticsAdminV1alphaAttributionSettingsOtherConversionEventL
 /** The attribution settings used for a given property. This is a singleton resource. */
 export interface GoogleAnalyticsAdminV1alphaAttributionSettings {
   /** Required. The lookback window configuration for acquisition conversion events. The default window size is 30 days. */
-  acquisitionConversionEventLookbackWindow?: GoogleAnalyticsAdminV1alphaAttributionSettingsAcquisitionConversionEventLookbackWindowEnum;
+  acquisitionConversionEventLookbackWindow?:
+    | GoogleAnalyticsAdminV1alphaAttributionSettingsAcquisitionConversionEventLookbackWindowEnum
+    | (string & {});
   /** Required. The reporting attribution model used to calculate conversion credit in this property's reports. Changing the attribution model will apply to both historical and future data. These changes will be reflected in reports with conversion and revenue data. User and session data will be unaffected. */
-  reportingAttributionModel?: GoogleAnalyticsAdminV1alphaAttributionSettingsReportingAttributionModelEnum;
+  reportingAttributionModel?:
+    | GoogleAnalyticsAdminV1alphaAttributionSettingsReportingAttributionModelEnum
+    | (string & {});
   /** Required. The Conversion Export Scope for data exported to linked Ads Accounts. */
-  adsWebConversionDataExportScope?: GoogleAnalyticsAdminV1alphaAttributionSettingsAdsWebConversionDataExportScopeEnum;
+  adsWebConversionDataExportScope?:
+    | GoogleAnalyticsAdminV1alphaAttributionSettingsAdsWebConversionDataExportScopeEnum
+    | (string & {});
   /** Output only. Resource name of this attribution settings resource. Format: properties/{property_id}/attributionSettings Example: "properties/1000/attributionSettings" */
   name?: string;
   /** Required. The lookback window for all other, non-acquisition conversion events. The default window size is 90 days. */
-  otherConversionEventLookbackWindow?: GoogleAnalyticsAdminV1alphaAttributionSettingsOtherConversionEventLookbackWindowEnum;
+  otherConversionEventLookbackWindow?:
+    | GoogleAnalyticsAdminV1alphaAttributionSettingsOtherConversionEventLookbackWindowEnum
+    | (string & {});
 }
 export const GoogleAnalyticsAdminV1alphaAttributionSettings =
   /*@__PURE__*/ S.suspend(() =>
@@ -4116,9 +4178,13 @@ export interface GoogleAnalyticsAdminV1alphaDataRetentionSettings {
   /** Identifier. Resource name for this DataRetentionSetting resource. Format: properties/{property}/dataRetentionSettings */
   name?: string;
   /** Required. The length of time that event-level data is retained. */
-  eventDataRetention?: GoogleAnalyticsAdminV1alphaDataRetentionSettingsEventDataRetentionEnum;
+  eventDataRetention?:
+    | GoogleAnalyticsAdminV1alphaDataRetentionSettingsEventDataRetentionEnum
+    | (string & {});
   /** Required. The length of time that user-level data is retained. */
-  userDataRetention?: GoogleAnalyticsAdminV1alphaDataRetentionSettingsUserDataRetentionEnum;
+  userDataRetention?:
+    | GoogleAnalyticsAdminV1alphaDataRetentionSettingsUserDataRetentionEnum
+    | (string & {});
   /** If true, reset the retention period for the user identifier with every event from that user. */
   resetUserDataOnNewActivity?: boolean;
 }
@@ -4321,11 +4387,15 @@ export const GoogleAnalyticsAdminV1alphaGoogleSignalsSettingsConsentEnum =
 /** Settings values for Google Signals. This is a singleton resource. */
 export interface GoogleAnalyticsAdminV1alphaGoogleSignalsSettings {
   /** Status of this setting. */
-  state?: GoogleAnalyticsAdminV1alphaGoogleSignalsSettingsStateEnum;
+  state?:
+    | GoogleAnalyticsAdminV1alphaGoogleSignalsSettingsStateEnum
+    | (string & {});
   /** Output only. Resource name of this setting. Format: properties/{property_id}/googleSignalsSettings Example: "properties/1000/googleSignalsSettings" */
   name?: string;
   /** Output only. Terms of Service acceptance. */
-  consent?: GoogleAnalyticsAdminV1alphaGoogleSignalsSettingsConsentEnum;
+  consent?:
+    | GoogleAnalyticsAdminV1alphaGoogleSignalsSettingsConsentEnum
+    | (string & {});
 }
 export const GoogleAnalyticsAdminV1alphaGoogleSignalsSettings =
   /*@__PURE__*/ S.suspend(() =>
@@ -4802,7 +4872,9 @@ export interface GoogleAnalyticsAdminV1alphaSubpropertySyncConfig {
   /** Output only. Immutable. Resource name of the subproperty that these settings apply to. */
   applyToProperty?: string;
   /** Required. Specifies the Custom Dimension / Metric synchronization mode for the subproperty. If set to ALL, Custom Dimension / Metric synchronization will be immediately enabled. Local configuration of Custom Dimensions / Metrics will not be allowed on the subproperty so long as the synchronization mode is set to ALL. If set to NONE, Custom Dimensions / Metric synchronization is disabled. Custom Dimensions / Metrics must be configured explicitly on the Subproperty. */
-  customDimensionAndMetricSyncMode?: GoogleAnalyticsAdminV1alphaSubpropertySyncConfigCustomDimensionAndMetricSyncModeEnum;
+  customDimensionAndMetricSyncMode?:
+    | GoogleAnalyticsAdminV1alphaSubpropertySyncConfigCustomDimensionAndMetricSyncModeEnum
+    | (string & {});
 }
 export const GoogleAnalyticsAdminV1alphaSubpropertySyncConfig =
   /*@__PURE__*/ S.suspend(() =>
@@ -4847,7 +4919,9 @@ export const GoogleAnalyticsAdminV1alphaReportingIdentitySettingsReportingIdenti
 /** A resource containing settings related to reporting identity. */
 export interface GoogleAnalyticsAdminV1alphaReportingIdentitySettings {
   /** The strategy used for identifying user identities in reports. */
-  reportingIdentity?: GoogleAnalyticsAdminV1alphaReportingIdentitySettingsReportingIdentityEnum;
+  reportingIdentity?:
+    | GoogleAnalyticsAdminV1alphaReportingIdentitySettingsReportingIdentityEnum
+    | (string & {});
   /** Output only. Identifier. Resource name for this reporting identity settings singleton resource. Format: properties/{property_id}/reportingIdentitySettings Example: "properties/1234/reportingIdentitySettings" */
   name?: string;
 }
@@ -4927,7 +5001,7 @@ export const ListAccountsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAccountsRequest>;
 
 export type GoogleAnalyticsAdminV1alphaAccountList =
-  ReadonlyArray<GoogleAnalyticsAdminV1alphaAccount>;
+  Array<GoogleAnalyticsAdminV1alphaAccount>;
 export const GoogleAnalyticsAdminV1alphaAccountList = /*@__PURE__*/ S.Array(
   GoogleAnalyticsAdminV1alphaAccount,
 ) as any as S.Schema<GoogleAnalyticsAdminV1alphaAccountList>;
@@ -5048,7 +5122,7 @@ export const GoogleAnalyticsAdminV1alphaPropertySummary =
   }) as any as S.Schema<GoogleAnalyticsAdminV1alphaPropertySummary>;
 
 export type GoogleAnalyticsAdminV1alphaPropertySummaryList =
-  ReadonlyArray<GoogleAnalyticsAdminV1alphaPropertySummary>;
+  Array<GoogleAnalyticsAdminV1alphaPropertySummary>;
 export const GoogleAnalyticsAdminV1alphaPropertySummaryList =
   /*@__PURE__*/ S.Array(
     GoogleAnalyticsAdminV1alphaPropertySummary,
@@ -5080,7 +5154,7 @@ export const GoogleAnalyticsAdminV1alphaAccountSummary =
   }) as any as S.Schema<GoogleAnalyticsAdminV1alphaAccountSummary>;
 
 export type GoogleAnalyticsAdminV1alphaAccountSummaryList =
-  ReadonlyArray<GoogleAnalyticsAdminV1alphaAccountSummary>;
+  Array<GoogleAnalyticsAdminV1alphaAccountSummary>;
 export const GoogleAnalyticsAdminV1alphaAccountSummaryList =
   /*@__PURE__*/ S.Array(
     GoogleAnalyticsAdminV1alphaAccountSummary,
@@ -5133,7 +5207,7 @@ export const ListPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListPropertiesRequest>;
 
 export type GoogleAnalyticsAdminV1alphaPropertyList =
-  ReadonlyArray<GoogleAnalyticsAdminV1alphaProperty>;
+  Array<GoogleAnalyticsAdminV1alphaProperty>;
 export const GoogleAnalyticsAdminV1alphaPropertyList = /*@__PURE__*/ S.Array(
   GoogleAnalyticsAdminV1alphaProperty,
 ) as any as S.Schema<GoogleAnalyticsAdminV1alphaPropertyList>;
@@ -5204,7 +5278,7 @@ export const ListPropertiesAdSenseLinksRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListPropertiesAdSenseLinksRequest>;
 
 export type GoogleAnalyticsAdminV1alphaAdSenseLinkList =
-  ReadonlyArray<GoogleAnalyticsAdminV1alphaAdSenseLink>;
+  Array<GoogleAnalyticsAdminV1alphaAdSenseLink>;
 export const GoogleAnalyticsAdminV1alphaAdSenseLinkList = /*@__PURE__*/ S.Array(
   GoogleAnalyticsAdminV1alphaAdSenseLink,
 ) as any as S.Schema<GoogleAnalyticsAdminV1alphaAdSenseLinkList>;
@@ -5251,7 +5325,7 @@ export const ListPropertiesAudiencesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListPropertiesAudiencesRequest>;
 
 export type GoogleAnalyticsAdminV1alphaAudienceList =
-  ReadonlyArray<GoogleAnalyticsAdminV1alphaAudience>;
+  Array<GoogleAnalyticsAdminV1alphaAudience>;
 export const GoogleAnalyticsAdminV1alphaAudienceList = /*@__PURE__*/ S.Array(
   GoogleAnalyticsAdminV1alphaAudience,
 ) as any as S.Schema<GoogleAnalyticsAdminV1alphaAudienceList>;
@@ -5298,7 +5372,7 @@ export const ListPropertiesBigQueryLinksRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListPropertiesBigQueryLinksRequest>;
 
 export type GoogleAnalyticsAdminV1alphaBigQueryLinkList =
-  ReadonlyArray<GoogleAnalyticsAdminV1alphaBigQueryLink>;
+  Array<GoogleAnalyticsAdminV1alphaBigQueryLink>;
 export const GoogleAnalyticsAdminV1alphaBigQueryLinkList =
   /*@__PURE__*/ S.Array(
     GoogleAnalyticsAdminV1alphaBigQueryLink,
@@ -5347,7 +5421,7 @@ export const ListPropertiesCalculatedMetricsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListPropertiesCalculatedMetricsRequest>;
 
 export type GoogleAnalyticsAdminV1alphaCalculatedMetricList =
-  ReadonlyArray<GoogleAnalyticsAdminV1alphaCalculatedMetric>;
+  Array<GoogleAnalyticsAdminV1alphaCalculatedMetric>;
 export const GoogleAnalyticsAdminV1alphaCalculatedMetricList =
   /*@__PURE__*/ S.Array(
     GoogleAnalyticsAdminV1alphaCalculatedMetric,
@@ -5397,7 +5471,7 @@ export const ListPropertiesChannelGroupsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListPropertiesChannelGroupsRequest>;
 
 export type GoogleAnalyticsAdminV1alphaChannelGroupList =
-  ReadonlyArray<GoogleAnalyticsAdminV1alphaChannelGroup>;
+  Array<GoogleAnalyticsAdminV1alphaChannelGroup>;
 export const GoogleAnalyticsAdminV1alphaChannelGroupList =
   /*@__PURE__*/ S.Array(
     GoogleAnalyticsAdminV1alphaChannelGroup,
@@ -5446,7 +5520,7 @@ export const ListPropertiesConversionEventsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListPropertiesConversionEventsRequest>;
 
 export type GoogleAnalyticsAdminV1alphaConversionEventList =
-  ReadonlyArray<GoogleAnalyticsAdminV1alphaConversionEvent>;
+  Array<GoogleAnalyticsAdminV1alphaConversionEvent>;
 export const GoogleAnalyticsAdminV1alphaConversionEventList =
   /*@__PURE__*/ S.Array(
     GoogleAnalyticsAdminV1alphaConversionEvent,
@@ -5497,7 +5571,7 @@ export const ListPropertiesCustomDimensionsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListPropertiesCustomDimensionsRequest>;
 
 export type GoogleAnalyticsAdminV1alphaCustomDimensionList =
-  ReadonlyArray<GoogleAnalyticsAdminV1alphaCustomDimension>;
+  Array<GoogleAnalyticsAdminV1alphaCustomDimension>;
 export const GoogleAnalyticsAdminV1alphaCustomDimensionList =
   /*@__PURE__*/ S.Array(
     GoogleAnalyticsAdminV1alphaCustomDimension,
@@ -5547,7 +5621,7 @@ export const ListPropertiesCustomMetricsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListPropertiesCustomMetricsRequest>;
 
 export type GoogleAnalyticsAdminV1alphaCustomMetricList =
-  ReadonlyArray<GoogleAnalyticsAdminV1alphaCustomMetric>;
+  Array<GoogleAnalyticsAdminV1alphaCustomMetric>;
 export const GoogleAnalyticsAdminV1alphaCustomMetricList =
   /*@__PURE__*/ S.Array(
     GoogleAnalyticsAdminV1alphaCustomMetric,
@@ -5595,7 +5669,7 @@ export const ListPropertiesDataStreamsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListPropertiesDataStreamsRequest>;
 
 export type GoogleAnalyticsAdminV1alphaDataStreamList =
-  ReadonlyArray<GoogleAnalyticsAdminV1alphaDataStream>;
+  Array<GoogleAnalyticsAdminV1alphaDataStream>;
 export const GoogleAnalyticsAdminV1alphaDataStreamList = /*@__PURE__*/ S.Array(
   GoogleAnalyticsAdminV1alphaDataStream,
 ) as any as S.Schema<GoogleAnalyticsAdminV1alphaDataStreamList>;
@@ -5643,7 +5717,7 @@ export const ListPropertiesDataStreamsEventCreateRulesRequest =
   }) as any as S.Schema<ListPropertiesDataStreamsEventCreateRulesRequest>;
 
 export type GoogleAnalyticsAdminV1alphaEventCreateRuleList =
-  ReadonlyArray<GoogleAnalyticsAdminV1alphaEventCreateRule>;
+  Array<GoogleAnalyticsAdminV1alphaEventCreateRule>;
 export const GoogleAnalyticsAdminV1alphaEventCreateRuleList =
   /*@__PURE__*/ S.Array(
     GoogleAnalyticsAdminV1alphaEventCreateRule,
@@ -5694,7 +5768,7 @@ export const ListPropertiesDataStreamsEventEditRulesRequest =
   }) as any as S.Schema<ListPropertiesDataStreamsEventEditRulesRequest>;
 
 export type GoogleAnalyticsAdminV1alphaEventEditRuleList =
-  ReadonlyArray<GoogleAnalyticsAdminV1alphaEventEditRule>;
+  Array<GoogleAnalyticsAdminV1alphaEventEditRule>;
 export const GoogleAnalyticsAdminV1alphaEventEditRuleList =
   /*@__PURE__*/ S.Array(
     GoogleAnalyticsAdminV1alphaEventEditRule,
@@ -5743,7 +5817,7 @@ export const ListPropertiesDataStreamsMeasurementProtocolSecretsRequest =
   }) as any as S.Schema<ListPropertiesDataStreamsMeasurementProtocolSecretsRequest>;
 
 export type GoogleAnalyticsAdminV1alphaMeasurementProtocolSecretList =
-  ReadonlyArray<GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret>;
+  Array<GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret>;
 export const GoogleAnalyticsAdminV1alphaMeasurementProtocolSecretList =
   /*@__PURE__*/ S.Array(
     GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret,
@@ -5796,7 +5870,7 @@ export const ListPropertiesDataStreamsSKAdNetworkConversionValueSchemaRequest =
   }) as any as S.Schema<ListPropertiesDataStreamsSKAdNetworkConversionValueSchemaRequest>;
 
 export type GoogleAnalyticsAdminV1alphaSKAdNetworkConversionValueSchemaList =
-  ReadonlyArray<GoogleAnalyticsAdminV1alphaSKAdNetworkConversionValueSchema>;
+  Array<GoogleAnalyticsAdminV1alphaSKAdNetworkConversionValueSchema>;
 export const GoogleAnalyticsAdminV1alphaSKAdNetworkConversionValueSchemaList =
   /*@__PURE__*/ S.Array(
     GoogleAnalyticsAdminV1alphaSKAdNetworkConversionValueSchema,
@@ -5848,7 +5922,7 @@ export const ListPropertiesDisplayVideo360AdvertiserLinkProposalsRequest =
   }) as any as S.Schema<ListPropertiesDisplayVideo360AdvertiserLinkProposalsRequest>;
 
 export type GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposalList =
-  ReadonlyArray<GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal>;
+  Array<GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal>;
 export const GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposalList =
   /*@__PURE__*/ S.Array(
     GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal,
@@ -5900,7 +5974,7 @@ export const ListPropertiesDisplayVideo360AdvertiserLinksRequest =
   }) as any as S.Schema<ListPropertiesDisplayVideo360AdvertiserLinksRequest>;
 
 export type GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkList =
-  ReadonlyArray<GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink>;
+  Array<GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink>;
 export const GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkList =
   /*@__PURE__*/ S.Array(
     GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink,
@@ -5952,7 +6026,7 @@ export const ListPropertiesExpandedDataSetsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListPropertiesExpandedDataSetsRequest>;
 
 export type GoogleAnalyticsAdminV1alphaExpandedDataSetList =
-  ReadonlyArray<GoogleAnalyticsAdminV1alphaExpandedDataSet>;
+  Array<GoogleAnalyticsAdminV1alphaExpandedDataSet>;
 export const GoogleAnalyticsAdminV1alphaExpandedDataSetList =
   /*@__PURE__*/ S.Array(
     GoogleAnalyticsAdminV1alphaExpandedDataSet,
@@ -6002,7 +6076,7 @@ export const ListPropertiesFirebaseLinksRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListPropertiesFirebaseLinksRequest>;
 
 export type GoogleAnalyticsAdminV1alphaFirebaseLinkList =
-  ReadonlyArray<GoogleAnalyticsAdminV1alphaFirebaseLink>;
+  Array<GoogleAnalyticsAdminV1alphaFirebaseLink>;
 export const GoogleAnalyticsAdminV1alphaFirebaseLinkList =
   /*@__PURE__*/ S.Array(
     GoogleAnalyticsAdminV1alphaFirebaseLink,
@@ -6050,7 +6124,7 @@ export const ListPropertiesGoogleAdsLinksRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListPropertiesGoogleAdsLinksRequest>;
 
 export type GoogleAnalyticsAdminV1alphaGoogleAdsLinkList =
-  ReadonlyArray<GoogleAnalyticsAdminV1alphaGoogleAdsLink>;
+  Array<GoogleAnalyticsAdminV1alphaGoogleAdsLink>;
 export const GoogleAnalyticsAdminV1alphaGoogleAdsLinkList =
   /*@__PURE__*/ S.Array(
     GoogleAnalyticsAdminV1alphaGoogleAdsLink,
@@ -6098,7 +6172,7 @@ export const ListPropertiesKeyEventsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListPropertiesKeyEventsRequest>;
 
 export type GoogleAnalyticsAdminV1alphaKeyEventList =
-  ReadonlyArray<GoogleAnalyticsAdminV1alphaKeyEvent>;
+  Array<GoogleAnalyticsAdminV1alphaKeyEvent>;
 export const GoogleAnalyticsAdminV1alphaKeyEventList = /*@__PURE__*/ S.Array(
   GoogleAnalyticsAdminV1alphaKeyEvent,
 ) as any as S.Schema<GoogleAnalyticsAdminV1alphaKeyEventList>;
@@ -6149,7 +6223,7 @@ export const ListPropertiesReportingDataAnnotationsRequest =
   }) as any as S.Schema<ListPropertiesReportingDataAnnotationsRequest>;
 
 export type GoogleAnalyticsAdminV1alphaReportingDataAnnotationList =
-  ReadonlyArray<GoogleAnalyticsAdminV1alphaReportingDataAnnotation>;
+  Array<GoogleAnalyticsAdminV1alphaReportingDataAnnotation>;
 export const GoogleAnalyticsAdminV1alphaReportingDataAnnotationList =
   /*@__PURE__*/ S.Array(
     GoogleAnalyticsAdminV1alphaReportingDataAnnotation,
@@ -6246,7 +6320,7 @@ export const ListPropertiesSearchAds360LinksRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListPropertiesSearchAds360LinksRequest>;
 
 export type GoogleAnalyticsAdminV1alphaSearchAds360LinkList =
-  ReadonlyArray<GoogleAnalyticsAdminV1alphaSearchAds360Link>;
+  Array<GoogleAnalyticsAdminV1alphaSearchAds360Link>;
 export const GoogleAnalyticsAdminV1alphaSearchAds360LinkList =
   /*@__PURE__*/ S.Array(
     GoogleAnalyticsAdminV1alphaSearchAds360Link,
@@ -6297,7 +6371,7 @@ export const ListPropertiesSubpropertyEventFiltersRequest =
   }) as any as S.Schema<ListPropertiesSubpropertyEventFiltersRequest>;
 
 export type GoogleAnalyticsAdminV1alphaSubpropertyEventFilterList =
-  ReadonlyArray<GoogleAnalyticsAdminV1alphaSubpropertyEventFilter>;
+  Array<GoogleAnalyticsAdminV1alphaSubpropertyEventFilter>;
 export const GoogleAnalyticsAdminV1alphaSubpropertyEventFilterList =
   /*@__PURE__*/ S.Array(
     GoogleAnalyticsAdminV1alphaSubpropertyEventFilter,
@@ -6349,7 +6423,7 @@ export const ListPropertiesSubpropertySyncConfigsRequest =
   }) as any as S.Schema<ListPropertiesSubpropertySyncConfigsRequest>;
 
 export type GoogleAnalyticsAdminV1alphaSubpropertySyncConfigList =
-  ReadonlyArray<GoogleAnalyticsAdminV1alphaSubpropertySyncConfig>;
+  Array<GoogleAnalyticsAdminV1alphaSubpropertySyncConfig>;
 export const GoogleAnalyticsAdminV1alphaSubpropertySyncConfigList =
   /*@__PURE__*/ S.Array(
     GoogleAnalyticsAdminV1alphaSubpropertySyncConfig,
@@ -7184,14 +7258,14 @@ export const GoogleAnalyticsAdminV1alphaAccessDimension =
   }) as any as S.Schema<GoogleAnalyticsAdminV1alphaAccessDimension>;
 
 export type GoogleAnalyticsAdminV1alphaAccessDimensionList =
-  ReadonlyArray<GoogleAnalyticsAdminV1alphaAccessDimension>;
+  Array<GoogleAnalyticsAdminV1alphaAccessDimension>;
 export const GoogleAnalyticsAdminV1alphaAccessDimensionList =
   /*@__PURE__*/ S.Array(
     GoogleAnalyticsAdminV1alphaAccessDimension,
   ) as any as S.Schema<GoogleAnalyticsAdminV1alphaAccessDimensionList>;
 
 export type GoogleAnalyticsAdminV1alphaAccessFilterExpressionList_ =
-  ReadonlyArray<GoogleAnalyticsAdminV1alphaAccessFilterExpression>;
+  Array<GoogleAnalyticsAdminV1alphaAccessFilterExpression>;
 export const GoogleAnalyticsAdminV1alphaAccessFilterExpressionList_ =
   /*@__PURE__*/ S.Array(
     S.suspend(() => GoogleAnalyticsAdminV1alphaAccessFilterExpression),
@@ -7451,7 +7525,7 @@ export const GoogleAnalyticsAdminV1alphaAccessOrderBy = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleAnalyticsAdminV1alphaAccessOrderBy>;
 
 export type GoogleAnalyticsAdminV1alphaAccessOrderByList =
-  ReadonlyArray<GoogleAnalyticsAdminV1alphaAccessOrderBy>;
+  Array<GoogleAnalyticsAdminV1alphaAccessOrderBy>;
 export const GoogleAnalyticsAdminV1alphaAccessOrderByList =
   /*@__PURE__*/ S.Array(
     GoogleAnalyticsAdminV1alphaAccessOrderBy,
@@ -7472,7 +7546,7 @@ export const GoogleAnalyticsAdminV1alphaAccessMetric = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleAnalyticsAdminV1alphaAccessMetric>;
 
 export type GoogleAnalyticsAdminV1alphaAccessMetricList =
-  ReadonlyArray<GoogleAnalyticsAdminV1alphaAccessMetric>;
+  Array<GoogleAnalyticsAdminV1alphaAccessMetric>;
 export const GoogleAnalyticsAdminV1alphaAccessMetricList =
   /*@__PURE__*/ S.Array(
     GoogleAnalyticsAdminV1alphaAccessMetric,
@@ -7496,7 +7570,7 @@ export const GoogleAnalyticsAdminV1alphaAccessDateRange =
   }) as any as S.Schema<GoogleAnalyticsAdminV1alphaAccessDateRange>;
 
 export type GoogleAnalyticsAdminV1alphaAccessDateRangeList =
-  ReadonlyArray<GoogleAnalyticsAdminV1alphaAccessDateRange>;
+  Array<GoogleAnalyticsAdminV1alphaAccessDateRange>;
 export const GoogleAnalyticsAdminV1alphaAccessDateRangeList =
   /*@__PURE__*/ S.Array(
     GoogleAnalyticsAdminV1alphaAccessDateRange,
@@ -7591,7 +7665,7 @@ export const GoogleAnalyticsAdminV1alphaAccessMetricHeader =
   }) as any as S.Schema<GoogleAnalyticsAdminV1alphaAccessMetricHeader>;
 
 export type GoogleAnalyticsAdminV1alphaAccessMetricHeaderList =
-  ReadonlyArray<GoogleAnalyticsAdminV1alphaAccessMetricHeader>;
+  Array<GoogleAnalyticsAdminV1alphaAccessMetricHeader>;
 export const GoogleAnalyticsAdminV1alphaAccessMetricHeaderList =
   /*@__PURE__*/ S.Array(
     GoogleAnalyticsAdminV1alphaAccessMetricHeader,
@@ -7661,7 +7735,7 @@ export const GoogleAnalyticsAdminV1alphaAccessDimensionHeader =
   }) as any as S.Schema<GoogleAnalyticsAdminV1alphaAccessDimensionHeader>;
 
 export type GoogleAnalyticsAdminV1alphaAccessDimensionHeaderList =
-  ReadonlyArray<GoogleAnalyticsAdminV1alphaAccessDimensionHeader>;
+  Array<GoogleAnalyticsAdminV1alphaAccessDimensionHeader>;
 export const GoogleAnalyticsAdminV1alphaAccessDimensionHeaderList =
   /*@__PURE__*/ S.Array(
     GoogleAnalyticsAdminV1alphaAccessDimensionHeader,
@@ -7682,7 +7756,7 @@ export const GoogleAnalyticsAdminV1alphaAccessDimensionValue =
   }) as any as S.Schema<GoogleAnalyticsAdminV1alphaAccessDimensionValue>;
 
 export type GoogleAnalyticsAdminV1alphaAccessDimensionValueList =
-  ReadonlyArray<GoogleAnalyticsAdminV1alphaAccessDimensionValue>;
+  Array<GoogleAnalyticsAdminV1alphaAccessDimensionValue>;
 export const GoogleAnalyticsAdminV1alphaAccessDimensionValueList =
   /*@__PURE__*/ S.Array(
     GoogleAnalyticsAdminV1alphaAccessDimensionValue,
@@ -7703,7 +7777,7 @@ export const GoogleAnalyticsAdminV1alphaAccessMetricValue =
   }) as any as S.Schema<GoogleAnalyticsAdminV1alphaAccessMetricValue>;
 
 export type GoogleAnalyticsAdminV1alphaAccessMetricValueList =
-  ReadonlyArray<GoogleAnalyticsAdminV1alphaAccessMetricValue>;
+  Array<GoogleAnalyticsAdminV1alphaAccessMetricValue>;
 export const GoogleAnalyticsAdminV1alphaAccessMetricValueList =
   /*@__PURE__*/ S.Array(
     GoogleAnalyticsAdminV1alphaAccessMetricValue,
@@ -7731,7 +7805,7 @@ export const GoogleAnalyticsAdminV1alphaAccessRow = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleAnalyticsAdminV1alphaAccessRow>;
 
 export type GoogleAnalyticsAdminV1alphaAccessRowList =
-  ReadonlyArray<GoogleAnalyticsAdminV1alphaAccessRow>;
+  Array<GoogleAnalyticsAdminV1alphaAccessRow>;
 export const GoogleAnalyticsAdminV1alphaAccessRowList = /*@__PURE__*/ S.Array(
   GoogleAnalyticsAdminV1alphaAccessRow,
 ) as any as S.Schema<GoogleAnalyticsAdminV1alphaAccessRowList>;
@@ -7825,7 +7899,7 @@ export const GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequestResource
   /*@__PURE__*/ S.String;
 
 export type GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequestResourceTypeItemEnumList =
-  ReadonlyArray<
+  Array<
     | GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequestResourceTypeItemEnum
     | (string & {})
   >;
@@ -7840,7 +7914,7 @@ export const GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequestActionIt
   /*@__PURE__*/ S.String;
 
 export type GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequestActionItemEnumList =
-  ReadonlyArray<
+  Array<
     | GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequestActionItemEnum
     | (string & {})
   >;
@@ -8080,7 +8154,7 @@ export const GoogleAnalyticsAdminV1alphaChangeHistoryChange =
   }) as any as S.Schema<GoogleAnalyticsAdminV1alphaChangeHistoryChange>;
 
 export type GoogleAnalyticsAdminV1alphaChangeHistoryChangeList =
-  ReadonlyArray<GoogleAnalyticsAdminV1alphaChangeHistoryChange>;
+  Array<GoogleAnalyticsAdminV1alphaChangeHistoryChange>;
 export const GoogleAnalyticsAdminV1alphaChangeHistoryChangeList =
   /*@__PURE__*/ S.Array(
     GoogleAnalyticsAdminV1alphaChangeHistoryChange,
@@ -8126,7 +8200,7 @@ export const GoogleAnalyticsAdminV1alphaChangeHistoryEvent =
   }) as any as S.Schema<GoogleAnalyticsAdminV1alphaChangeHistoryEvent>;
 
 export type GoogleAnalyticsAdminV1alphaChangeHistoryEventList =
-  ReadonlyArray<GoogleAnalyticsAdminV1alphaChangeHistoryEvent>;
+  Array<GoogleAnalyticsAdminV1alphaChangeHistoryEvent>;
 export const GoogleAnalyticsAdminV1alphaChangeHistoryEventList =
   /*@__PURE__*/ S.Array(
     GoogleAnalyticsAdminV1alphaChangeHistoryEvent,

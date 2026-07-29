@@ -80,7 +80,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = ReadonlyArray<Operation>;
+export type OperationsListResponseValueList = Array<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;
@@ -193,7 +193,7 @@ export const PoolContainerGroupStateCount = /*@__PURE__*/ S.suspend(() =>
 
 /** The count of pooled container groups in each state for the given zone. */
 export type ContainerGroupInstanceCountSummaryInstanceCountsByStateList =
-  ReadonlyArray<PoolContainerGroupStateCount>;
+  Array<PoolContainerGroupStateCount>;
 export const ContainerGroupInstanceCountSummaryInstanceCountsByStateList =
   /*@__PURE__*/ S.Array(
     PoolContainerGroupStateCount,
@@ -218,7 +218,7 @@ export const ContainerGroupInstanceCountSummary = /*@__PURE__*/ S.suspend(() =>
 
 /** A list containing the counts of container groups in each possible state, as known by the StandbyPool resource provider. */
 export type StandbyContainerGroupPoolRuntimeViewResourcePropertiesInstanceCountSummaryList =
-  ReadonlyArray<ContainerGroupInstanceCountSummary>;
+  Array<ContainerGroupInstanceCountSummary>;
 export const StandbyContainerGroupPoolRuntimeViewResourcePropertiesInstanceCountSummaryList =
   /*@__PURE__*/ S.Array(
     ContainerGroupInstanceCountSummary,
@@ -252,7 +252,7 @@ export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** Displays the predicted count of instances to be requested from the standby pool. */
 export type StandbyContainerGroupPoolForecastValuesInstancesRequestedCountList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const StandbyContainerGroupPoolForecastValuesInstancesRequestedCountList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -399,7 +399,7 @@ export const StandbyContainerGroupPoolRuntimeViewResource =
 
 /** The StandbyContainerGroupPoolRuntimeViewResource items on this page */
 export type StandbyContainerGroupPoolRuntimeViewResourceListResultValueList =
-  ReadonlyArray<StandbyContainerGroupPoolRuntimeViewResource>;
+  Array<StandbyContainerGroupPoolRuntimeViewResource>;
 export const StandbyContainerGroupPoolRuntimeViewResourceListResultValueList =
   /*@__PURE__*/ S.Array(
     StandbyContainerGroupPoolRuntimeViewResource,
@@ -452,7 +452,7 @@ export interface StandbyContainerGroupPoolElasticityProfile {
   /** Specifies maximum number of standby container groups in the standby pool. */
   maxReadyCapacity: number;
   /** Specifies refill policy of the pool. */
-  refillPolicy?: RefillPolicy;
+  refillPolicy?: RefillPolicy | (string & {});
   /** Specifies the dynamic sizing configuration. */
   dynamicSizing?: DynamicSizing;
 }
@@ -495,7 +495,7 @@ export const Subnet = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Subnet" }) as any as S.Schema<Subnet>;
 
 /** Specifies subnet Ids for container group. */
-export type ContainerGroupPropertiesSubnetIdsList = ReadonlyArray<Subnet>;
+export type ContainerGroupPropertiesSubnetIdsList = Array<Subnet>;
 export const ContainerGroupPropertiesSubnetIdsList = /*@__PURE__*/ S.Array(
   Subnet,
 ) as any as S.Schema<ContainerGroupPropertiesSubnetIdsList>;
@@ -518,7 +518,7 @@ export const ContainerGroupProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Specifies zones of standby container group pools. */
 export type StandbyContainerGroupPoolResourcePropertiesInputZonesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const StandbyContainerGroupPoolResourcePropertiesInputZonesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -593,7 +593,7 @@ export const StandbyContainerGroupPoolsCreateOrUpdateResponseTagsMap =
 
 /** Specifies zones of standby container group pools. */
 export type StandbyContainerGroupPoolResourcePropertiesZonesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const StandbyContainerGroupPoolResourcePropertiesZonesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -818,7 +818,7 @@ export const StandbyContainerGroupPoolResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The StandbyContainerGroupPoolResource items on this page */
 export type StandbyContainerGroupPoolResourceListResultValueList =
-  ReadonlyArray<StandbyContainerGroupPoolResource>;
+  Array<StandbyContainerGroupPoolResource>;
 export const StandbyContainerGroupPoolResourceListResultValueList =
   /*@__PURE__*/ S.Array(
     StandbyContainerGroupPoolResource,
@@ -873,7 +873,7 @@ export const StandbyContainerGroupPoolsUpdateRequestTagsMap =
 
 /** Specifies zones of standby container group pools. */
 export type StandbyContainerGroupPoolResourceUpdatePropertiesZonesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const StandbyContainerGroupPoolResourceUpdatePropertiesZonesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1033,7 +1033,7 @@ export const PoolVirtualMachineStateCount = /*@__PURE__*/ S.suspend(() =>
 
 /** The count of pooled virtual machines in each state for the given zone. */
 export type VirtualMachineInstanceCountSummaryInstanceCountsByStateList =
-  ReadonlyArray<PoolVirtualMachineStateCount>;
+  Array<PoolVirtualMachineStateCount>;
 export const VirtualMachineInstanceCountSummaryInstanceCountsByStateList =
   /*@__PURE__*/ S.Array(
     PoolVirtualMachineStateCount,
@@ -1058,7 +1058,7 @@ export const VirtualMachineInstanceCountSummary = /*@__PURE__*/ S.suspend(() =>
 
 /** A list containing the counts of virtual machines in each possible power state for each zone if enabled, as known by the StandbyPool resource provider. If zones are not enabled on the attached VMSS, the list will contain a single entry without zone values. Note: any resources in the Running state may still be installing extensions / not fully provisioned. */
 export type StandbyVirtualMachinePoolRuntimeViewResourcePropertiesInstanceCountSummaryList =
-  ReadonlyArray<VirtualMachineInstanceCountSummary>;
+  Array<VirtualMachineInstanceCountSummary>;
 export const StandbyVirtualMachinePoolRuntimeViewResourcePropertiesInstanceCountSummaryList =
   /*@__PURE__*/ S.Array(
     VirtualMachineInstanceCountSummary,
@@ -1066,7 +1066,7 @@ export const StandbyVirtualMachinePoolRuntimeViewResourcePropertiesInstanceCount
 
 /** Displays the predicted count of instances to be requested from the standby pool. */
 export type StandbyVirtualMachinePoolForecastValuesInstancesRequestedCountList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const StandbyVirtualMachinePoolForecastValuesInstancesRequestedCountList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -1213,7 +1213,7 @@ export const StandbyVirtualMachinePoolRuntimeViewResource =
 
 /** The StandbyVirtualMachinePoolRuntimeViewResource items on this page */
 export type StandbyVirtualMachinePoolRuntimeViewResourceListResultValueList =
-  ReadonlyArray<StandbyVirtualMachinePoolRuntimeViewResource>;
+  Array<StandbyVirtualMachinePoolRuntimeViewResource>;
 export const StandbyVirtualMachinePoolRuntimeViewResourceListResultValueList =
   /*@__PURE__*/ S.Array(
     StandbyVirtualMachinePoolRuntimeViewResource,
@@ -1586,7 +1586,7 @@ export const StandbyVirtualMachinePoolResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The StandbyVirtualMachinePoolResource items on this page */
 export type StandbyVirtualMachinePoolResourceListResultValueList =
-  ReadonlyArray<StandbyVirtualMachinePoolResource>;
+  Array<StandbyVirtualMachinePoolResource>;
 export const StandbyVirtualMachinePoolResourceListResultValueList =
   /*@__PURE__*/ S.Array(
     StandbyVirtualMachinePoolResource,
@@ -1858,7 +1858,7 @@ export const StandbyVirtualMachineResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The StandbyVirtualMachineResource items on this page */
 export type StandbyVirtualMachineResourceListResultValueList =
-  ReadonlyArray<StandbyVirtualMachineResource>;
+  Array<StandbyVirtualMachineResource>;
 export const StandbyVirtualMachineResourceListResultValueList =
   /*@__PURE__*/ S.Array(
     StandbyVirtualMachineResource,

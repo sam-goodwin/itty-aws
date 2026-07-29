@@ -48,7 +48,7 @@ export const IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap =
 
 /** Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. Finalizers may be processed and removed in any order. Order is NOT enforced because it introduces significant risk of stuck finalizers. finalizers is a shared field, any actor with permission can reorder it. If the finalizer list is processed in order, then this can lead to a situation in which the component responsible for the first finalizer in the list is waiting for a signal (field value, external system, or other) produced by a component responsible for a finalizer later in the list, resulting in a deadlock. Without enforced ordering finalizers are free to order amongst themselves and are not vulnerable to ordering changes in the list. */
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -98,7 +98,7 @@ export const IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry =
 
 /** ManagedFields maps workflow-id and version to the set of fields that are managed by that workflow. This is mostly for internal housekeeping, and users typically shouldn't need to set or understand this field. A workflow can be the user's name, a controller's name, or the name of a specific apply path like "ci-cd". The set of fields is always in the version that the workflow used when modifying the object. */
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaManagedFieldsList =
-  ReadonlyArray<IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry>;
+  Array<IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry>;
 export const IoK8sApimachineryPkgApisMetaV1ObjectMetaManagedFieldsList =
   /*@__PURE__*/ S.Array(
     IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry,
@@ -135,7 +135,7 @@ export const IoK8sApimachineryPkgApisMetaV1OwnerReference =
 
 /** List of objects depended by this object. If ALL objects in the list have been deleted, this object will be garbage collected. If this object is managed by a controller, then an entry in this list will point to this controller, with the controller field set to true. There cannot be more than one managing controller. */
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaOwnerReferencesList =
-  ReadonlyArray<IoK8sApimachineryPkgApisMetaV1OwnerReference>;
+  Array<IoK8sApimachineryPkgApisMetaV1OwnerReference>;
 export const IoK8sApimachineryPkgApisMetaV1ObjectMetaOwnerReferencesList =
   /*@__PURE__*/ S.Array(
     IoK8sApimachineryPkgApisMetaV1OwnerReference,
@@ -236,7 +236,7 @@ export const IoK8sApiApiserverinternalV1alpha1StorageVersionCondition =
 
 /** conditions lists the latest available observations of the storageVersion's state. */
 export type IoK8sApiApiserverinternalV1alpha1StorageVersionStatusConditionsList =
-  ReadonlyArray<IoK8sApiApiserverinternalV1alpha1StorageVersionCondition>;
+  Array<IoK8sApiApiserverinternalV1alpha1StorageVersionCondition>;
 export const IoK8sApiApiserverinternalV1alpha1StorageVersionStatusConditionsList =
   /*@__PURE__*/ S.Array(
     IoK8sApiApiserverinternalV1alpha1StorageVersionCondition,
@@ -244,7 +244,7 @@ export const IoK8sApiApiserverinternalV1alpha1StorageVersionStatusConditionsList
 
 /** decodableVersions are the encoding versions the API server can handle to decode. The API server can decode objects encoded in these versions. The encodingVersion must be included in the decodableVersions. */
 export type IoK8sApiApiserverinternalV1alpha1ServerStorageVersionDecodableVersionsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const IoK8sApiApiserverinternalV1alpha1ServerStorageVersionDecodableVersionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -252,7 +252,7 @@ export const IoK8sApiApiserverinternalV1alpha1ServerStorageVersionDecodableVersi
 
 /** servedVersions lists all versions the API server can serve. DecodableVersions must include all ServedVersions. */
 export type IoK8sApiApiserverinternalV1alpha1ServerStorageVersionServedVersionsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const IoK8sApiApiserverinternalV1alpha1ServerStorageVersionServedVersionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -286,7 +286,7 @@ export const IoK8sApiApiserverinternalV1alpha1ServerStorageVersion =
 
 /** storageVersions lists the reported versions per API server instance. */
 export type IoK8sApiApiserverinternalV1alpha1StorageVersionStatusStorageVersionsList =
-  ReadonlyArray<IoK8sApiApiserverinternalV1alpha1ServerStorageVersion>;
+  Array<IoK8sApiApiserverinternalV1alpha1ServerStorageVersion>;
 export const IoK8sApiApiserverinternalV1alpha1StorageVersionStatusStorageVersionsList =
   /*@__PURE__*/ S.Array(
     IoK8sApiApiserverinternalV1alpha1ServerStorageVersion,
@@ -497,7 +497,7 @@ export const IoK8sApimachineryPkgApisMetaV1StatusCause =
 
 /** The Causes array includes more details associated with the StatusReason failure. Not all StatusReasons may provide detailed causes. */
 export type IoK8sApimachineryPkgApisMetaV1StatusDetailsCausesList =
-  ReadonlyArray<IoK8sApimachineryPkgApisMetaV1StatusCause>;
+  Array<IoK8sApimachineryPkgApisMetaV1StatusCause>;
 export const IoK8sApimachineryPkgApisMetaV1StatusDetailsCausesList =
   /*@__PURE__*/ S.Array(
     IoK8sApimachineryPkgApisMetaV1StatusCause,
@@ -704,7 +704,7 @@ export const IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR =
 
 /** a map of client CIDR to server address that is serving this group. This is to help clients reach servers in the most network-efficient way possible. Clients can use the appropriate server address as per the CIDR that they match. In case of multiple matches, clients should use the longest matching CIDR. The server returns only those CIDRs that it thinks that the client can match. For example: the master will return an internal IP CIDR only, if the client reaches the server using an internal IP. Server looks at X-Forwarded-For header or X-Real-Ip header or request.RemoteAddr (in that order) to get the client IP. */
 export type IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList =
-  ReadonlyArray<IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR>;
+  Array<IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR>;
 export const IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList =
   /*@__PURE__*/ S.Array(
     IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR,
@@ -712,7 +712,7 @@ export const IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsLis
 
 /** versions are the versions supported in this group. */
 export type IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList =
-  ReadonlyArray<IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery>;
+  Array<IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery>;
 export const IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList =
   /*@__PURE__*/ S.Array(
     IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery,
@@ -767,7 +767,7 @@ export const GetInternalApiserverV1alpha1APIResourcesRequest =
 
 /** categories is a list of the grouped resources this resource belongs to (e.g. 'all') */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -775,15 +775,14 @@ export const IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList =
 
 /** shortNames is a list of suggested short names of the resource. */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList>;
 
 /** verbs is a list of supported kube verbs (this includes get, list, watch, create, update, patch, delete, deletecollection, and proxy) */
-export type IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList =
-  ReadonlyArray<string>;
+export type IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList = Array<string>;
 export const IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -836,7 +835,7 @@ export const IoK8sApimachineryPkgApisMetaV1APIResource =
 
 /** resources contains the name of the resources and if they are namespaced. */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList =
-  ReadonlyArray<IoK8sApimachineryPkgApisMetaV1APIResource>;
+  Array<IoK8sApimachineryPkgApisMetaV1APIResource>;
 export const IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList =
   /*@__PURE__*/ S.Array(
     IoK8sApimachineryPkgApisMetaV1APIResource,
@@ -919,7 +918,7 @@ export const ListInternalApiserverV1alpha1StorageVersionRequest =
 
 /** Items holds a list of StorageVersion */
 export type IoK8sApiApiserverinternalV1alpha1StorageVersionListItemsList =
-  ReadonlyArray<IoK8sApiApiserverinternalV1alpha1StorageVersion>;
+  Array<IoK8sApiApiserverinternalV1alpha1StorageVersion>;
 export const IoK8sApiApiserverinternalV1alpha1StorageVersionListItemsList =
   /*@__PURE__*/ S.Array(
     IoK8sApiApiserverinternalV1alpha1StorageVersion,

@@ -62,7 +62,7 @@ export interface LiftrBaseMarketplaceDetails {
   /** Azure subscription id for the the marketplace offer is purchased from */
   subscriptionId?: string;
   /** Marketplace subscription status */
-  subscriptionStatus?: LiftrBaseMarketplaceSubscriptionStatus;
+  subscriptionStatus?: LiftrBaseMarketplaceSubscriptionStatus | (string & {});
   /** Offer details for the marketplace that is selected by the user */
   offerDetails: LiftrBaseOfferDetails;
 }
@@ -114,7 +114,7 @@ export const Region = /*@__PURE__*/ S.String;
 /** Partner's specific Properties */
 export interface PartnerProperties {
   /** The region of the instance */
-  region: Region;
+  region: Region | (string & {});
   /** The subdomain of the instance */
   subdomain: string;
 }
@@ -136,8 +136,7 @@ export type LiftrBaseSingleSignOnStates = "Initial" | "Enable" | "Disable";
 export const LiftrBaseSingleSignOnStates = /*@__PURE__*/ S.String;
 
 /** List of AAD domains fetched from Microsoft Graph for user. */
-export type LiftrBaseSingleSignOnPropertiesV2AadDomainsList =
-  ReadonlyArray<string>;
+export type LiftrBaseSingleSignOnPropertiesV2AadDomainsList = Array<string>;
 export const LiftrBaseSingleSignOnPropertiesV2AadDomainsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -146,9 +145,9 @@ export const LiftrBaseSingleSignOnPropertiesV2AadDomainsList =
 /** Properties specific to Single Sign On Resource */
 export interface LiftrBaseSingleSignOnPropertiesV2 {
   /** Type of Single Sign-On mechanism being used */
-  type: LiftrBaseSingleSignOnType;
+  type: LiftrBaseSingleSignOnType | (string & {});
   /** State of the Single Sign On for the resource */
-  state?: LiftrBaseSingleSignOnStates;
+  state?: LiftrBaseSingleSignOnStates | (string & {});
   /** AAD enterprise application Id used to setup SSO */
   enterpriseAppId?: string;
   /** URL for SSO to be used by the partner to redirect the user to their system */
@@ -633,8 +632,7 @@ export const InstanceResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InstanceResource>;
 
 /** The InstanceResource items on this page */
-export type InstanceResourceListResultValueList =
-  ReadonlyArray<InstanceResource>;
+export type InstanceResourceListResultValueList = Array<InstanceResource>;
 export const InstanceResourceListResultValueList = /*@__PURE__*/ S.Array(
   InstanceResource,
 ) as any as S.Schema<InstanceResourceListResultValueList>;
@@ -897,7 +895,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = ReadonlyArray<Operation>;
+export type OperationsListResponseValueList = Array<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;

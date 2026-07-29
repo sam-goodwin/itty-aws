@@ -328,7 +328,7 @@ export const SearchQueriesPreviousPageItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SearchQueriesPreviousPageItem>;
 
 export type SearchQueriesPreviousPageItemList =
-  ReadonlyArray<SearchQueriesPreviousPageItem>;
+  Array<SearchQueriesPreviousPageItem>;
 export const SearchQueriesPreviousPageItemList = /*@__PURE__*/ S.Array(
   SearchQueriesPreviousPageItem,
 ) as any as S.Schema<SearchQueriesPreviousPageItemList>;
@@ -450,8 +450,7 @@ export const SearchQueriesNextPageItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "SearchQueriesNextPageItem",
 }) as any as S.Schema<SearchQueriesNextPageItem>;
 
-export type SearchQueriesNextPageItemList =
-  ReadonlyArray<SearchQueriesNextPageItem>;
+export type SearchQueriesNextPageItemList = Array<SearchQueriesNextPageItem>;
 export const SearchQueriesNextPageItemList = /*@__PURE__*/ S.Array(
   SearchQueriesNextPageItem,
 ) as any as S.Schema<SearchQueriesNextPageItemList>;
@@ -573,8 +572,7 @@ export const SearchQueriesRequestItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "SearchQueriesRequestItem",
 }) as any as S.Schema<SearchQueriesRequestItem>;
 
-export type SearchQueriesRequestItemList =
-  ReadonlyArray<SearchQueriesRequestItem>;
+export type SearchQueriesRequestItemList = Array<SearchQueriesRequestItem>;
 export const SearchQueriesRequestItemList = /*@__PURE__*/ S.Array(
   SearchQueriesRequestItem,
 ) as any as S.Schema<SearchQueriesRequestItemList>;
@@ -632,7 +630,7 @@ export const PromotionBodyLinesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "PromotionBodyLinesItem",
 }) as any as S.Schema<PromotionBodyLinesItem>;
 
-export type PromotionBodyLinesItemList = ReadonlyArray<PromotionBodyLinesItem>;
+export type PromotionBodyLinesItemList = Array<PromotionBodyLinesItem>;
 export const PromotionBodyLinesItemList = /*@__PURE__*/ S.Array(
   PromotionBodyLinesItem,
 ) as any as S.Schema<PromotionBodyLinesItemList>;
@@ -663,7 +661,7 @@ export const Promotion = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Promotion" }) as any as S.Schema<Promotion>;
 
-export type PromotionList = ReadonlyArray<Promotion>;
+export type PromotionList = Array<Promotion>;
 export const PromotionList = /*@__PURE__*/ S.Array(
   Promotion,
 ) as any as S.Schema<PromotionList>;
@@ -746,7 +744,7 @@ export const ResultLabelsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "ResultLabelsItem",
 }) as any as S.Schema<ResultLabelsItem>;
 
-export type ResultLabelsItemList = ReadonlyArray<ResultLabelsItem>;
+export type ResultLabelsItemList = Array<ResultLabelsItem>;
 export const ResultLabelsItemList = /*@__PURE__*/ S.Array(
   ResultLabelsItem,
 ) as any as S.Schema<ResultLabelsItemList>;
@@ -804,7 +802,7 @@ export const Result = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Result" }) as any as S.Schema<Result>;
 
-export type ResultList = ReadonlyArray<Result>;
+export type ResultList = Array<Result>;
 export const ResultList = /*@__PURE__*/ S.Array(
   Result,
 ) as any as S.Schema<ResultList>;

@@ -87,7 +87,7 @@ export interface CommunityTrainingProperties {
   /** To indicate whether the Community Training instance has Disaster Recovery enabled */
   disasterRecoveryEnabled: boolean;
   /** The status of the last operation. */
-  provisioningState?: ProvisioningState;
+  provisioningState?: ProvisioningState | (string & {});
 }
 export const CommunityTrainingProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -489,8 +489,7 @@ export const CommunityTraining = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CommunityTraining>;
 
 /** The CommunityTraining items on this page */
-export type CommunityTrainingListResultValueList =
-  ReadonlyArray<CommunityTraining>;
+export type CommunityTrainingListResultValueList = Array<CommunityTraining>;
 export const CommunityTrainingListResultValueList = /*@__PURE__*/ S.Array(
   CommunityTraining,
 ) as any as S.Schema<CommunityTrainingListResultValueList>;
@@ -783,7 +782,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = ReadonlyArray<Operation>;
+export type OperationsListResponseValueList = Array<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;

@@ -94,7 +94,7 @@ export const RecommendedAction = /*@__PURE__*/ S.suspend(() =>
 
 /** Lists actions the user can take based on the current availabilityState of the resource. */
 export type AvailabilityStatusPropertiesRecommendedActionsList =
-  ReadonlyArray<RecommendedAction>;
+  Array<RecommendedAction>;
 export const AvailabilityStatusPropertiesRecommendedActionsList =
   /*@__PURE__*/ S.Array(
     RecommendedAction,
@@ -163,7 +163,7 @@ export const ServiceImpactingEvent = /*@__PURE__*/ S.suspend(() =>
 
 /** Lists the service impacting events that may be affecting the health of the resource. */
 export type AvailabilityStatusPropertiesServiceImpactingEventsList =
-  ReadonlyArray<ServiceImpactingEvent>;
+  Array<ServiceImpactingEvent>;
 export const AvailabilityStatusPropertiesServiceImpactingEventsList =
   /*@__PURE__*/ S.Array(
     ServiceImpactingEvent,
@@ -317,8 +317,7 @@ export const AvailabilityStatus = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AvailabilityStatus>;
 
 /** The list of availabilityStatuses. */
-export type AvailabilityStatusListResultValueList =
-  ReadonlyArray<AvailabilityStatus>;
+export type AvailabilityStatusListResultValueList = Array<AvailabilityStatus>;
 export const AvailabilityStatusListResultValueList = /*@__PURE__*/ S.Array(
   AvailabilityStatus,
 ) as any as S.Schema<AvailabilityStatusListResultValueList>;
@@ -580,7 +579,7 @@ export const StatusBanner = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StatusBanner" }) as any as S.Schema<StatusBanner>;
 
 /** The list of emerging issues of banner type. */
-export type EmergingIssueStatusBannersList = ReadonlyArray<StatusBanner>;
+export type EmergingIssueStatusBannersList = Array<StatusBanner>;
 export const EmergingIssueStatusBannersList = /*@__PURE__*/ S.Array(
   StatusBanner,
 ) as any as S.Schema<EmergingIssueStatusBannersList>;
@@ -608,7 +607,7 @@ export const ImpactedRegion = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ImpactedRegion" }) as any as S.Schema<ImpactedRegion>;
 
 /** The list of impacted regions for corresponding emerging issues. */
-export type EmergingIssueImpactRegionsList = ReadonlyArray<ImpactedRegion>;
+export type EmergingIssueImpactRegionsList = Array<ImpactedRegion>;
 export const EmergingIssueImpactRegionsList = /*@__PURE__*/ S.Array(
   ImpactedRegion,
 ) as any as S.Schema<EmergingIssueImpactRegionsList>;
@@ -633,7 +632,7 @@ export const EmergingIssueImpact = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EmergingIssueImpact>;
 
 /** The list of emerging issues impacts. */
-export type StatusActiveEventImpactsList = ReadonlyArray<EmergingIssueImpact>;
+export type StatusActiveEventImpactsList = Array<EmergingIssueImpact>;
 export const StatusActiveEventImpactsList = /*@__PURE__*/ S.Array(
   EmergingIssueImpact,
 ) as any as S.Schema<StatusActiveEventImpactsList>;
@@ -679,8 +678,7 @@ export const StatusActiveEvent = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StatusActiveEvent>;
 
 /** The list of emerging issues of active event type. */
-export type EmergingIssueStatusActiveEventsList =
-  ReadonlyArray<StatusActiveEvent>;
+export type EmergingIssueStatusActiveEventsList = Array<StatusActiveEvent>;
 export const EmergingIssueStatusActiveEventsList = /*@__PURE__*/ S.Array(
   StatusActiveEvent,
 ) as any as S.Schema<EmergingIssueStatusActiveEventsList>;
@@ -766,8 +764,7 @@ export const EmergingIssuesGetResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EmergingIssuesGetResult>;
 
 /** The list of emerging issues. */
-export type EmergingIssueListResultValueList =
-  ReadonlyArray<EmergingIssuesGetResult>;
+export type EmergingIssueListResultValueList = Array<EmergingIssuesGetResult>;
 export const EmergingIssueListResultValueList = /*@__PURE__*/ S.Array(
   EmergingIssuesGetResult,
 ) as any as S.Schema<EmergingIssueListResultValueList>;
@@ -918,27 +915,26 @@ export const Link = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Link" }) as any as S.Schema<Link>;
 
 /** Useful links of event. */
-export type EventPropertiesLinksList = ReadonlyArray<Link>;
+export type EventPropertiesLinksList = Array<Link>;
 export const EventPropertiesLinksList = /*@__PURE__*/ S.Array(
   Link,
 ) as any as S.Schema<EventPropertiesLinksList>;
 
 /** List subscription impacted by the service health event. */
-export type ImpactedServiceRegionImpactedSubscriptionsList =
-  ReadonlyArray<string>;
+export type ImpactedServiceRegionImpactedSubscriptionsList = Array<string>;
 export const ImpactedServiceRegionImpactedSubscriptionsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ImpactedServiceRegionImpactedSubscriptionsList>;
 
 /** List tenant impacted by the service health event. */
-export type ImpactedServiceRegionImpactedTenantsList = ReadonlyArray<string>;
+export type ImpactedServiceRegionImpactedTenantsList = Array<string>;
 export const ImpactedServiceRegionImpactedTenantsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ImpactedServiceRegionImpactedTenantsList>;
 
 /** A list of metadata tags associated with the event. Possible values include: -Action Recommended: Action may be required by you to avoid possible disruptions or mitigate risks for your services. It is recommended to evaluate these actions and the potential impact on your services. - False Positive: After investigation, we've determined your service is healthy and service issues did not impact your services as originally communicated. - Preliminary PIR: For our largest, most impactful service issues a Preliminary Post Incident Review (PIR) is published generally within 72 hours of mitigation, to summarize what we have learned so far from the still-in-progress investigation. - Final PIR: For service issues, a Final Post Incident Review (PIR) may be published to provide additional details or learnings. Sometimes this requires us to complete an internal retrospective, generally within 14 days of mitigation. */
-export type UpdateEventTagsList = ReadonlyArray<string>;
+export type UpdateEventTagsList = Array<string>;
 export const UpdateEventTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<UpdateEventTagsList>;
@@ -961,7 +957,7 @@ export const Update = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Update" }) as any as S.Schema<Update>;
 
 /** List of updates for given service health event. Use fetchEventDetails endpoint to get updates of sensitive events. */
-export type ImpactedServiceRegionUpdatesList = ReadonlyArray<Update>;
+export type ImpactedServiceRegionUpdatesList = Array<Update>;
 export const ImpactedServiceRegionUpdatesList = /*@__PURE__*/ S.Array(
   Update,
 ) as any as S.Schema<ImpactedServiceRegionUpdatesList>;
@@ -997,7 +993,7 @@ export const ImpactedServiceRegion = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ImpactedServiceRegion>;
 
 /** List regions impacted by the service health event. */
-export type ImpactImpactedRegionsList = ReadonlyArray<ImpactedServiceRegion>;
+export type ImpactImpactedRegionsList = Array<ImpactedServiceRegion>;
 export const ImpactImpactedRegionsList = /*@__PURE__*/ S.Array(
   ImpactedServiceRegion,
 ) as any as S.Schema<ImpactImpactedRegionsList>;
@@ -1020,7 +1016,7 @@ export const Impact = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Impact" }) as any as S.Schema<Impact>;
 
 /** List services impacted by the service health event. */
-export type EventPropertiesImpactList = ReadonlyArray<Impact>;
+export type EventPropertiesImpactList = Array<Impact>;
 export const EventPropertiesImpactList = /*@__PURE__*/ S.Array(
   Impact,
 ) as any as S.Schema<EventPropertiesImpactList>;
@@ -1044,7 +1040,7 @@ export const EventPropertiesRecommendedActionsActionsItem =
 
 /** Recommended actions for the service health event. */
 export type EventPropertiesRecommendedActionsActionsList =
-  ReadonlyArray<EventPropertiesRecommendedActionsActionsItem>;
+  Array<EventPropertiesRecommendedActionsActionsItem>;
 export const EventPropertiesRecommendedActionsActionsList =
   /*@__PURE__*/ S.Array(
     EventPropertiesRecommendedActionsActionsItem,
@@ -1087,7 +1083,7 @@ export const Faq = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Faq" }) as any as S.Schema<Faq>;
 
 /** Frequently asked questions for the service health event. */
-export type EventPropertiesFaqsList = ReadonlyArray<Faq>;
+export type EventPropertiesFaqsList = Array<Faq>;
 export const EventPropertiesFaqsList = /*@__PURE__*/ S.Array(
   Faq,
 ) as any as S.Schema<EventPropertiesFaqsList>;
@@ -1107,7 +1103,7 @@ export const EventPropertiesAdditionalInformation = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<EventPropertiesAdditionalInformation>;
 
 /** A list of metadata tags associated with the event. Possible values include: -Action Recommended: Action may be required by you to avoid possible disruptions or mitigate risks for your services. It is recommended to evaluate these actions and the potential impact on your services. - False Positive: After investigation, we've determined your service is healthy and service issues did not impact your services as originally communicated. - Preliminary PIR: For our largest, most impactful service issues a Preliminary Post Incident Review (PIR) is published generally within 72 hours of mitigation, to summarize what we have learned so far from the still-in-progress investigation. - Final PIR: For service issues, a Final Post Incident Review (PIR) may be published to provide additional details or learnings. Sometimes this requires us to complete an internal retrospective, generally within 14 days of mitigation. */
-export type EventPropertiesEventTagsList = ReadonlyArray<string>;
+export type EventPropertiesEventTagsList = Array<string>;
 export const EventPropertiesEventTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EventPropertiesEventTagsList>;
@@ -1497,7 +1493,7 @@ export const Event = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Event" }) as any as S.Schema<Event>;
 
 /** The Event items on this page */
-export type EventsValueList = ReadonlyArray<Event>;
+export type EventsValueList = Array<Event>;
 export const EventsValueList = /*@__PURE__*/ S.Array(
   Event,
 ) as any as S.Schema<EventsValueList>;
@@ -1603,8 +1599,7 @@ export const KeyValueItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "KeyValueItem" }) as any as S.Schema<KeyValueItem>;
 
 /** Additional information. */
-export type EventImpactedResourcePropertiesInfoList =
-  ReadonlyArray<KeyValueItem>;
+export type EventImpactedResourcePropertiesInfoList = Array<KeyValueItem>;
 export const EventImpactedResourcePropertiesInfoList = /*@__PURE__*/ S.Array(
   KeyValueItem,
 ) as any as S.Schema<EventImpactedResourcePropertiesInfoList>;
@@ -1756,7 +1751,7 @@ export const EventImpactedResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of eventImpactedResources. */
 export type EventImpactedResourceListResultValueList =
-  ReadonlyArray<EventImpactedResource>;
+  Array<EventImpactedResource>;
 export const EventImpactedResourceListResultValueList = /*@__PURE__*/ S.Array(
   EventImpactedResource,
 ) as any as S.Schema<EventImpactedResourceListResultValueList>;
@@ -1820,7 +1815,7 @@ export const MetadataGetEntityRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MetadataGetEntityRequest>;
 
 /** The list of keys on which this entity depends on. */
-export type MetadataEntityPropertiesDependsOnList = ReadonlyArray<string>;
+export type MetadataEntityPropertiesDependsOnList = Array<string>;
 export const MetadataEntityPropertiesDependsOnList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<MetadataEntityPropertiesDependsOnList>;
@@ -1829,16 +1824,14 @@ export type Scenario = "Alerts";
 export const Scenario = /*@__PURE__*/ S.String;
 
 /** The list of scenarios applicable to this metadata entity. */
-export type MetadataEntityPropertiesApplicableScenariosList =
-  ReadonlyArray<Scenario>;
+export type MetadataEntityPropertiesApplicableScenariosList = Array<Scenario>;
 export const MetadataEntityPropertiesApplicableScenariosList =
   /*@__PURE__*/ S.Array(
     Scenario,
   ) as any as S.Schema<MetadataEntityPropertiesApplicableScenariosList>;
 
 /** The list of associated resource types. */
-export type MetadataSupportedValueDetailResourceTypesList =
-  ReadonlyArray<string>;
+export type MetadataSupportedValueDetailResourceTypesList = Array<string>;
 export const MetadataSupportedValueDetailResourceTypesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1874,7 +1867,7 @@ export const MetadataSupportedValueDetail = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of supported values. */
 export type MetadataEntityPropertiesSupportedValuesList =
-  ReadonlyArray<MetadataSupportedValueDetail>;
+  Array<MetadataSupportedValueDetail>;
 export const MetadataEntityPropertiesSupportedValuesList =
   /*@__PURE__*/ S.Array(
     MetadataSupportedValueDetail,
@@ -1966,7 +1959,7 @@ export const MetadataEntity = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MetadataEntity" }) as any as S.Schema<MetadataEntity>;
 
 /** The list of metadata entities. */
-export type MetadataEntityListResultValueList = ReadonlyArray<MetadataEntity>;
+export type MetadataEntityListResultValueList = Array<MetadataEntity>;
 export const MetadataEntityListResultValueList = /*@__PURE__*/ S.Array(
   MetadataEntity,
 ) as any as S.Schema<MetadataEntityListResultValueList>;
@@ -2038,7 +2031,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations available in the Microsoft.ResourceHealth resource provider. */
-export type OperationListResultValueList = ReadonlyArray<Operation>;
+export type OperationListResultValueList = Array<Operation>;
 export const OperationListResultValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationListResultValueList>;

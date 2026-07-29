@@ -311,8 +311,7 @@ export const GitHubOAuthResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GitHubOAuthResponse>;
 
 /** Singleton list response containing one GitHubOAuthResponse response */
-export type GitHubOAuthListResponseValueList =
-  ReadonlyArray<GitHubOAuthResponse>;
+export type GitHubOAuthListResponseValueList = Array<GitHubOAuthResponse>;
 export const GitHubOAuthListResponseValueList = /*@__PURE__*/ S.Array(
   GitHubOAuthResponse,
 ) as any as S.Schema<GitHubOAuthListResponseValueList>;
@@ -398,7 +397,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = ReadonlyArray<Operation>;
+export type OperationsListResponseValueList = Array<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;
@@ -431,8 +430,7 @@ export const WorkflowCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 export type ManifestType = "helm" | "kube" | "kustomize";
 export const ManifestType = /*@__PURE__*/ S.String;
 
-export type DeploymentPropertiesKubeManifestLocationsList =
-  ReadonlyArray<string>;
+export type DeploymentPropertiesKubeManifestLocationsList = Array<string>;
 export const DeploymentPropertiesKubeManifestLocationsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -448,7 +446,7 @@ export const DeploymentPropertiesOverridesMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<DeploymentPropertiesOverridesMap>;
 
 export interface DeploymentProperties {
-  manifestType?: ManifestType;
+  manifestType?: ManifestType | (string & {});
   kubeManifestLocations?: DeploymentPropertiesKubeManifestLocationsList;
   /** Helm chart directory path in repository. */
   helmChartPath?: string;
@@ -565,7 +563,7 @@ export const GitHubWorkflowProfileInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Properties used for generating artifacts such as Dockerfiles and manifests. */
 export interface ArtifactGenerationProperties {
-  generationLanguage?: GenerationLanguage;
+  generationLanguage?: GenerationLanguage | (string & {});
   /** The version of the language image used for execution in the generated dockerfile. */
   languageVersion?: string;
   /** The version of the language image used for building the code in the generated dockerfile. */
@@ -578,9 +576,9 @@ export interface ArtifactGenerationProperties {
   dockerfileOutputDirectory?: string;
   /** The directory to output the generated manifests to. */
   manifestOutputDirectory?: string;
-  dockerfileGenerationMode?: DockerfileGenerationMode;
-  manifestGenerationMode?: ManifestGenerationMode;
-  manifestType?: GenerationManifestType;
+  dockerfileGenerationMode?: DockerfileGenerationMode | (string & {});
+  manifestGenerationMode?: ManifestGenerationMode | (string & {});
+  manifestType?: GenerationManifestType | (string & {});
   /** The name of the image to be generated. */
   imageName?: string;
   /** The namespace to deploy the application to. */
@@ -962,7 +960,7 @@ export const Workflow = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Workflow" }) as any as S.Schema<Workflow>;
 
 /** The list of workflows. */
-export type WorkflowListResultValueList = ReadonlyArray<Workflow>;
+export type WorkflowListResultValueList = Array<Workflow>;
 export const WorkflowListResultValueList = /*@__PURE__*/ S.Array(
   Workflow,
 ) as any as S.Schema<WorkflowListResultValueList>;

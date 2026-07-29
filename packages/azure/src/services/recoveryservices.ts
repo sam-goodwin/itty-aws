@@ -167,13 +167,13 @@ export const ErrorAdditionalInfoItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ErrorAdditionalInfoItem>;
 
 /** The error additional info. */
-export type ErrorAdditionalInfoList = ReadonlyArray<ErrorAdditionalInfoItem>;
+export type ErrorAdditionalInfoList = Array<ErrorAdditionalInfoItem>;
 export const ErrorAdditionalInfoList = /*@__PURE__*/ S.Array(
   ErrorAdditionalInfoItem,
 ) as any as S.Schema<ErrorAdditionalInfoList>;
 
 /** The error details. */
-export type ErrorDetailsList = ReadonlyArray<Error>;
+export type ErrorDetailsList = Array<Error>;
 export const ErrorDetailsList = /*@__PURE__*/ S.Array(
   S.suspend(() => Error),
 ) as any as S.Schema<ErrorDetailsList>;
@@ -276,7 +276,7 @@ export const DeletedVault = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeletedVault" }) as any as S.Schema<DeletedVault>;
 
 /** The DeletedVault items on this page */
-export type DeletedVaultListValueList = ReadonlyArray<DeletedVault>;
+export type DeletedVaultListValueList = Array<DeletedVault>;
 export const DeletedVaultListValueList = /*@__PURE__*/ S.Array(
   DeletedVault,
 ) as any as S.Schema<DeletedVaultListValueList>;
@@ -498,8 +498,7 @@ export type VaultSubResourceType =
 export const VaultSubResourceType = /*@__PURE__*/ S.String;
 
 /** Group Ids for the Private Endpoint */
-export type PrivateEndpointConnectionGroupIdsList =
-  ReadonlyArray<VaultSubResourceType>;
+export type PrivateEndpointConnectionGroupIdsList = Array<VaultSubResourceType>;
 export const PrivateEndpointConnectionGroupIdsList = /*@__PURE__*/ S.Array(
   VaultSubResourceType,
 ) as any as S.Schema<PrivateEndpointConnectionGroupIdsList>;
@@ -556,7 +555,7 @@ export const PrivateEndpointConnectionVaultProperties = /*@__PURE__*/ S.suspend(
 
 /** List of private endpoint connection. */
 export type VaultPropertiesPrivateEndpointConnectionsList =
-  ReadonlyArray<PrivateEndpointConnectionVaultProperties>;
+  Array<PrivateEndpointConnectionVaultProperties>;
 export const VaultPropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnectionVaultProperties,
@@ -604,7 +603,7 @@ export interface VaultPropertiesEncryption {
   /** The details of the identity used for CMK */
   kekIdentity?: CmkKekIdentity;
   /** Enabling/Disabling the Double Encryption state */
-  infrastructureEncryption?: InfrastructureEncryptionState;
+  infrastructureEncryption?: InfrastructureEncryptionState | (string & {});
 }
 export const VaultPropertiesEncryption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -668,9 +667,9 @@ export const AlertsState = /*@__PURE__*/ S.String;
 
 /** Settings for Azure Monitor based alerts */
 export interface AzureMonitorAlertSettings {
-  alertsForAllJobFailures?: AlertsState;
-  alertsForAllReplicationIssues?: AlertsState;
-  alertsForAllFailoverIssues?: AlertsState;
+  alertsForAllJobFailures?: AlertsState | (string & {});
+  alertsForAllReplicationIssues?: AlertsState | (string & {});
+  alertsForAllFailoverIssues?: AlertsState | (string & {});
 }
 export const AzureMonitorAlertSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -684,8 +683,8 @@ export const AzureMonitorAlertSettings = /*@__PURE__*/ S.suspend(() =>
 
 /** Settings for classic alerts */
 export interface ClassicAlertSettings {
-  alertsForCriticalOperations?: AlertsState;
-  emailNotificationsForSiteRecovery?: AlertsState;
+  alertsForCriticalOperations?: AlertsState | (string & {});
+  emailNotificationsForSiteRecovery?: AlertsState | (string & {});
 }
 export const ClassicAlertSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -721,7 +720,7 @@ export const GranularityLevel = /*@__PURE__*/ S.String;
 /** Cost Management Settings of the vault */
 export interface CostManagementSettings {
   /** Settings for granularity level */
-  granularityLevel?: GranularityLevel;
+  granularityLevel?: GranularityLevel | (string & {});
 }
 export const CostManagementSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -739,7 +738,7 @@ export const CrossSubscriptionRestoreState = /*@__PURE__*/ S.String;
 
 /** Settings for Cross Subscription Restore Settings */
 export interface CrossSubscriptionRestoreSettings {
-  crossSubscriptionRestoreState?: CrossSubscriptionRestoreState;
+  crossSubscriptionRestoreState?: CrossSubscriptionRestoreState | (string & {});
 }
 export const CrossSubscriptionRestoreSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -779,9 +778,9 @@ export const CrossRegionRestore = /*@__PURE__*/ S.String;
 /** The redundancy Settings of a Vault */
 export interface VaultPropertiesRedundancySettings {
   /** The storage redundancy setting of a vault */
-  standardTierStorageRedundancy?: StandardTierStorageRedundancy;
+  standardTierStorageRedundancy?: StandardTierStorageRedundancy | (string & {});
   /** Flag to show if Cross Region Restore is enabled on the Vault or not */
-  crossRegionRestore?: CrossRegionRestore;
+  crossRegionRestore?: CrossRegionRestore | (string & {});
 }
 export const VaultPropertiesRedundancySettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -802,7 +801,7 @@ export const ImmutabilityType = /*@__PURE__*/ S.String;
 /** Immutability configuration of vault. */
 export interface ImmutabilityConfiguration {
   /** Immutability type. 'AsPerPolicy' inherits duration from backup policy; 'TimeBased' requires explicit durationInDays. */
-  type?: ImmutabilityType;
+  type?: ImmutabilityType | (string & {});
   /** Duration in days. Required when type is TimeBased, omitted when AsPerPolicy. */
   durationInDays?: number;
 }
@@ -817,7 +816,7 @@ export const ImmutabilityConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** Immutability Settings of vault */
 export interface ImmutabilitySettings {
-  state?: ImmutabilityState;
+  state?: ImmutabilityState | (string & {});
   /** Immutability configuration of the vault — selects whether immutability is inherited from the backup policy (AsPerPolicy) or fixed for a specific duration (TimeBased). */
   configuration?: ImmutabilityConfiguration;
 }
@@ -842,10 +841,10 @@ export const EnhancedSecurityState = /*@__PURE__*/ S.String;
 
 /** Soft delete Settings of vault */
 export interface SoftDeleteSettings {
-  softDeleteState?: SoftDeleteState;
+  softDeleteState?: SoftDeleteState | (string & {});
   /** Soft delete retention period in days */
   softDeleteRetentionPeriodInDays?: number;
-  enhancedSecurityState?: EnhancedSecurityState;
+  enhancedSecurityState?: EnhancedSecurityState | (string & {});
 }
 export const SoftDeleteSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -871,7 +870,7 @@ export const IdentityType = /*@__PURE__*/ S.String;
 /** Identity details to be used for an operation */
 export interface AssociatedIdentity {
   /** Identity type that should be used for an operation. */
-  operationIdentityType?: IdentityType;
+  operationIdentityType?: IdentityType | (string & {});
   /** User assigned identity to be used for an operation if operationIdentityType is UserAssigned. */
   userAssignedIdentity?: string;
 }
@@ -886,7 +885,7 @@ export const AssociatedIdentity = /*@__PURE__*/ S.suspend(() =>
 
 /** Source scan configuration of vault */
 export interface SourceScanConfiguration {
-  state?: State;
+  state?: State | (string & {});
   /** Identity details to be used for an operation */
   sourceScanIdentity?: AssociatedIdentity;
 }
@@ -906,7 +905,7 @@ export interface SecuritySettings {
   /** Soft delete Settings of a vault */
   softDeleteSettings?: SoftDeleteSettings;
   /** MUA Settings of a vault */
-  multiUserAuthorization?: MultiUserAuthorization;
+  multiUserAuthorization?: MultiUserAuthorization | (string & {});
   /** Source scan configuration of vault */
   sourceScanConfiguration?: SourceScanConfiguration;
 }
@@ -930,8 +929,7 @@ export type BCDRSecurityLevel = "Poor" | "Fair" | "Good" | "Excellent";
 export const BCDRSecurityLevel = /*@__PURE__*/ S.String;
 
 /** ResourceGuardOperationRequests on which LAC check will be performed */
-export type VaultPropertiesResourceGuardOperationRequestsList =
-  ReadonlyArray<string>;
+export type VaultPropertiesResourceGuardOperationRequestsList = Array<string>;
 export const VaultPropertiesResourceGuardOperationRequestsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1063,7 +1061,7 @@ export const SkuName = /*@__PURE__*/ S.String;
 /** Identifies the unique system identifier for each Azure resource. */
 export interface Sku {
   /** Name of SKU is RS0 (Recovery Services 0th version) and the tier is standard tier. They do not have affect on backend storage redundancy or any other vault settings. To manage storage redundancy, use the backupstorageconfig */
-  name: SkuName;
+  name: SkuName | (string & {});
   /** The Sku tier. */
   tier?: string;
   /** The sku family */
@@ -1206,7 +1204,7 @@ export const ClientDiscoveryForLogSpecification = /*@__PURE__*/ S.suspend(() =>
 
 /** List of log specifications of this operation. */
 export type ClientDiscoveryForServiceSpecificationLogSpecificationsList =
-  ReadonlyArray<ClientDiscoveryForLogSpecification>;
+  Array<ClientDiscoveryForLogSpecification>;
 export const ClientDiscoveryForServiceSpecificationLogSpecificationsList =
   /*@__PURE__*/ S.Array(
     ClientDiscoveryForLogSpecification,
@@ -1265,7 +1263,7 @@ export const ClientDiscoveryValueForSingleApi = /*@__PURE__*/ S.suspend(() =>
 
 /** The ClientDiscoveryValueForSingleApi items on this page */
 export type ClientDiscoveryResponseValueList =
-  ReadonlyArray<ClientDiscoveryValueForSingleApi>;
+  Array<ClientDiscoveryValueForSingleApi>;
 export const ClientDiscoveryResponseValueList = /*@__PURE__*/ S.Array(
   ClientDiscoveryValueForSingleApi,
 ) as any as S.Schema<ClientDiscoveryResponseValueList>;
@@ -1314,16 +1312,14 @@ export const PrivateLinkResourcesGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateLinkResourcesGetRequest>;
 
 /** [backup-ecs1, backup-prot1, backup-prot1b, backup-prot1c, backup-id1] */
-export type PrivateLinkResourcePropertiesRequiredMembersList =
-  ReadonlyArray<string>;
+export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
 export const PrivateLinkResourcePropertiesRequiredMembersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
 
 /** The private link resource Private link DNS zone name. */
-export type PrivateLinkResourcePropertiesRequiredZoneNamesList =
-  ReadonlyArray<string>;
+export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
 export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1427,7 +1423,7 @@ export const PrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateLinkResource>;
 
 /** The PrivateLinkResource items on this page */
-export type PrivateLinkResourcesValueList = ReadonlyArray<PrivateLinkResource>;
+export type PrivateLinkResourcesValueList = Array<PrivateLinkResource>;
 export const PrivateLinkResourcesValueList = /*@__PURE__*/ S.Array(
   PrivateLinkResource,
 ) as any as S.Schema<PrivateLinkResourcesValueList>;
@@ -1459,7 +1455,7 @@ export const DNSZone = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DNSZone" }) as any as S.Schema<DNSZone>;
 
-export type CapabilitiesPropertiesDnsZonesList = ReadonlyArray<DNSZone>;
+export type CapabilitiesPropertiesDnsZonesList = Array<DNSZone>;
 export const CapabilitiesPropertiesDnsZonesList = /*@__PURE__*/ S.Array(
   DNSZone,
 ) as any as S.Schema<CapabilitiesPropertiesDnsZonesList>;
@@ -1505,7 +1501,7 @@ export const RecoveryServicesCapabilitiesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RecoveryServicesCapabilitiesRequest>;
 
 /** The private link resource Private link DNS zone names. */
-export type DNSZoneResponseRequiredZoneNamesList = ReadonlyArray<string>;
+export type DNSZoneResponseRequiredZoneNamesList = Array<string>;
 export const DNSZoneResponseRequiredZoneNamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DNSZoneResponseRequiredZoneNamesList>;
@@ -1526,8 +1522,7 @@ export const DNSZoneResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DNSZoneResponse",
 }) as any as S.Schema<DNSZoneResponse>;
 
-export type CapabilitiesResponsePropertiesDnsZonesList =
-  ReadonlyArray<DNSZoneResponse>;
+export type CapabilitiesResponsePropertiesDnsZonesList = Array<DNSZoneResponse>;
 export const CapabilitiesResponsePropertiesDnsZonesList = /*@__PURE__*/ S.Array(
   DNSZoneResponse,
 ) as any as S.Schema<CapabilitiesResponsePropertiesDnsZonesList>;
@@ -1742,7 +1737,7 @@ export const ReplicationUsage = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReplicationUsage>;
 
 /** The list of replication usages for the given vault. */
-export type ReplicationUsageListValueList = ReadonlyArray<ReplicationUsage>;
+export type ReplicationUsageListValueList = Array<ReplicationUsage>;
 export const ReplicationUsageListValueList = /*@__PURE__*/ S.Array(
   ReplicationUsage,
 ) as any as S.Schema<ReplicationUsageListValueList>;
@@ -1838,7 +1833,7 @@ export const VaultUsage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VaultUsage" }) as any as S.Schema<VaultUsage>;
 
 /** The list of usages for the given vault. */
-export type VaultUsageListValueList = ReadonlyArray<VaultUsage>;
+export type VaultUsageListValueList = Array<VaultUsage>;
 export const VaultUsageListValueList = /*@__PURE__*/ S.Array(
   VaultUsage,
 ) as any as S.Schema<VaultUsageListValueList>;
@@ -2190,7 +2185,7 @@ export const VaultPropertiesMoveDetailsInput = /*@__PURE__*/ S.suspend(() =>
 
 /** ResourceGuardOperationRequests on which LAC check will be performed */
 export type VaultPropertiesInputResourceGuardOperationRequestsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const VaultPropertiesInputResourceGuardOperationRequestsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2536,7 +2531,7 @@ export const Vault = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Vault" }) as any as S.Schema<Vault>;
 
 /** The Vault items on this page */
-export type VaultListValueList = ReadonlyArray<Vault>;
+export type VaultListValueList = Array<Vault>;
 export const VaultListValueList = /*@__PURE__*/ S.Array(
   Vault,
 ) as any as S.Schema<VaultListValueList>;

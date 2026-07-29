@@ -500,7 +500,7 @@ export type BestSellersProductClusterViewBrandInventoryStatusEnum =
 export const BestSellersProductClusterViewBrandInventoryStatusEnum =
   /*@__PURE__*/ S.String;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -840,8 +840,7 @@ export const StatusPerReportingContext = /*@__PURE__*/ S.suspend(() =>
   identifier: "StatusPerReportingContext",
 }) as any as S.Schema<StatusPerReportingContext>;
 
-export type StatusPerReportingContextList =
-  ReadonlyArray<StatusPerReportingContext>;
+export type StatusPerReportingContextList = Array<StatusPerReportingContext>;
 export const StatusPerReportingContextList = /*@__PURE__*/ S.Array(
   StatusPerReportingContext,
 ) as any as S.Schema<StatusPerReportingContextList>;
@@ -912,7 +911,7 @@ export const IssueSeverityPerReportingContext = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IssueSeverityPerReportingContext>;
 
 export type IssueSeverityPerReportingContextList =
-  ReadonlyArray<IssueSeverityPerReportingContext>;
+  Array<IssueSeverityPerReportingContext>;
 export const IssueSeverityPerReportingContextList = /*@__PURE__*/ S.Array(
   IssueSeverityPerReportingContext,
 ) as any as S.Schema<IssueSeverityPerReportingContextList>;
@@ -959,7 +958,7 @@ export const ItemIssue = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ItemIssue" }) as any as S.Schema<ItemIssue>;
 
-export type ItemIssueList = ReadonlyArray<ItemIssue>;
+export type ItemIssueList = Array<ItemIssue>;
 export const ItemIssueList = /*@__PURE__*/ S.Array(
   ItemIssue,
 ) as any as S.Schema<ItemIssueList>;
@@ -1122,7 +1121,7 @@ export const ReportRow = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ReportRow" }) as any as S.Schema<ReportRow>;
 
-export type ReportRowList = ReadonlyArray<ReportRow>;
+export type ReportRowList = Array<ReportRow>;
 export const ReportRowList = /*@__PURE__*/ S.Array(
   ReportRow,
 ) as any as S.Schema<ReportRowList>;

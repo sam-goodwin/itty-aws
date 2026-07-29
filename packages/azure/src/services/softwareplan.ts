@@ -238,8 +238,7 @@ export const HybridUseBenefitModel = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HybridUseBenefitModel>;
 
 /** List of hybrid use benefits */
-export type HybridUseBenefitListResultValueList =
-  ReadonlyArray<HybridUseBenefitModel>;
+export type HybridUseBenefitListResultValueList = Array<HybridUseBenefitModel>;
 export const HybridUseBenefitListResultValueList = /*@__PURE__*/ S.Array(
   HybridUseBenefitModel,
 ) as any as S.Schema<HybridUseBenefitListResultValueList>;
@@ -398,7 +397,7 @@ export const OperationResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationResponse>;
 
 /** List of all operations */
-export type OperationListValueList = ReadonlyArray<OperationResponse>;
+export type OperationListValueList = Array<OperationResponse>;
 export const OperationListValueList = /*@__PURE__*/ S.Array(
   OperationResponse,
 ) as any as S.Schema<OperationListValueList>;

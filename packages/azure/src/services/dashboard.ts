@@ -205,8 +205,7 @@ export const ManagedDashboard = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ManagedDashboard>;
 
 /** The ManagedDashboard items on this page */
-export type ManagedDashboardListResponseValueList =
-  ReadonlyArray<ManagedDashboard>;
+export type ManagedDashboardListResponseValueList = Array<ManagedDashboard>;
 export const ManagedDashboardListResponseValueList = /*@__PURE__*/ S.Array(
   ManagedDashboard,
 ) as any as S.Schema<ManagedDashboardListResponseValueList>;
@@ -402,7 +401,7 @@ export const AzureMonitorWorkspaceIntegration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AzureMonitorWorkspaceIntegration>;
 
 export type GrafanaIntegrationsAzureMonitorWorkspaceIntegrationsList =
-  ReadonlyArray<AzureMonitorWorkspaceIntegration>;
+  Array<AzureMonitorWorkspaceIntegration>;
 export const GrafanaIntegrationsAzureMonitorWorkspaceIntegrationsList =
   /*@__PURE__*/ S.Array(
     AzureMonitorWorkspaceIntegration,
@@ -431,7 +430,7 @@ export interface EnterpriseConfigurations {
   /** The Plan Id of the Azure Marketplace subscription for the Enterprise plugins */
   marketplacePlanId?: string;
   /** The AutoRenew setting of the Enterprise subscription */
-  marketplaceAutoRenew?: MarketplaceAutoRenew;
+  marketplaceAutoRenew?: MarketplaceAutoRenew | (string & {});
 }
 export const EnterpriseConfigurations = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -464,7 +463,7 @@ export interface Smtp {
   /** Name to be used when sending out emails. Default is "Azure Managed Grafana Notification" https://pkg.go.dev/net/mail#Address */
   fromName?: string;
   /** The StartTLSPolicy setting of the SMTP configuration https://pkg.go.dev/github.com/go-mail/mail#StartTLSPolicy */
-  startTLSPolicy?: StartTLSPolicy;
+  startTLSPolicy?: StartTLSPolicy | (string & {});
   /** Verify SSL for SMTP server. Default is false https://pkg.go.dev/crypto/tls#Config */
   skipVerify?: boolean;
 }
@@ -637,7 +636,7 @@ export interface ResourceSku {
   /** The name of the SKU. */
   name: string;
   /** Specifies the capacity tier of the Grafana instance. */
-  size?: Size;
+  size?: Size | (string & {});
 }
 export const ResourceSku = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -755,7 +754,7 @@ export const ManagedGrafanaPropertiesDeterministicOutboundIP =
   /*@__PURE__*/ S.String;
 
 /** List of outbound IPs if deterministicOutboundIP is enabled. */
-export type ManagedGrafanaPropertiesOutboundIPsList = ReadonlyArray<string>;
+export type ManagedGrafanaPropertiesOutboundIPsList = Array<string>;
 export const ManagedGrafanaPropertiesOutboundIPsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ManagedGrafanaPropertiesOutboundIPsList>;
@@ -803,8 +802,7 @@ export const PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionStat
   }) as any as S.Schema<PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionState>;
 
 /** The private endpoint connection group ids. */
-export type PrivateEndpointConnectionPropertiesGroupIdsList =
-  ReadonlyArray<string>;
+export type PrivateEndpointConnectionPropertiesGroupIdsList = Array<string>;
 export const PrivateEndpointConnectionPropertiesGroupIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -873,7 +871,7 @@ export const PrivateEndpointConnection = /*@__PURE__*/ S.suspend(() =>
 
 /** The private endpoint connections of the Grafana instance. */
 export type ManagedGrafanaPropertiesPrivateEndpointConnectionsList =
-  ReadonlyArray<PrivateEndpointConnection>;
+  Array<PrivateEndpointConnection>;
 export const ManagedGrafanaPropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection,
@@ -1135,7 +1133,7 @@ export const GrafanaAvailablePlugin = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GrafanaAvailablePlugin>;
 
 export type GrafanaAvailablePluginListResponseValueList =
-  ReadonlyArray<GrafanaAvailablePlugin>;
+  Array<GrafanaAvailablePlugin>;
 export const GrafanaAvailablePluginListResponseValueList =
   /*@__PURE__*/ S.Array(
     GrafanaAvailablePlugin,
@@ -1324,7 +1322,7 @@ export const ManagedGrafana = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ManagedGrafana" }) as any as S.Schema<ManagedGrafana>;
 
 /** The ManagedGrafana items on this page */
-export type ManagedGrafanaListResponseValueList = ReadonlyArray<ManagedGrafana>;
+export type ManagedGrafanaListResponseValueList = Array<ManagedGrafana>;
 export const ManagedGrafanaListResponseValueList = /*@__PURE__*/ S.Array(
   ManagedGrafana,
 ) as any as S.Schema<ManagedGrafanaListResponseValueList>;
@@ -1591,8 +1589,7 @@ export const IntegrationFabricsCreateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<IntegrationFabricsCreateRequestTagsMap>;
 
 /** A list of integration scenarios covered by this integration fabric */
-export type IntegrationFabricPropertiesInputScenariosList =
-  ReadonlyArray<string>;
+export type IntegrationFabricPropertiesInputScenariosList = Array<string>;
 export const IntegrationFabricPropertiesInputScenariosList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1662,7 +1659,7 @@ export const IntegrationFabricsCreateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<IntegrationFabricsCreateResponseTagsMap>;
 
 /** A list of integration scenarios covered by this integration fabric */
-export type IntegrationFabricPropertiesScenariosList = ReadonlyArray<string>;
+export type IntegrationFabricPropertiesScenariosList = Array<string>;
 export const IntegrationFabricPropertiesScenariosList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<IntegrationFabricPropertiesScenariosList>;
@@ -1881,8 +1878,7 @@ export const IntegrationFabric = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IntegrationFabric>;
 
 /** The IntegrationFabric items on this page */
-export type IntegrationFabricListResponseValueList =
-  ReadonlyArray<IntegrationFabric>;
+export type IntegrationFabricListResponseValueList = Array<IntegrationFabric>;
 export const IntegrationFabricListResponseValueList = /*@__PURE__*/ S.Array(
   IntegrationFabric,
 ) as any as S.Schema<IntegrationFabricListResponseValueList>;
@@ -1914,7 +1910,7 @@ export const IntegrationFabricsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 
 /** The new integration scenarios covered by this integration fabric. */
 export type IntegrationFabricPropertiesUpdateParametersScenariosList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const IntegrationFabricPropertiesUpdateParametersScenariosList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2217,7 +2213,7 @@ export const ManagedPrivateEndpointsCreateRequestTagsMap =
 
 /** The group Ids of the managed private endpoint. */
 export type ManagedPrivateEndpointModelPropertiesInputGroupIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ManagedPrivateEndpointModelPropertiesInputGroupIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2300,8 +2296,7 @@ export const ManagedPrivateEndpointsCreateResponseTagsMap =
   ) as any as S.Schema<ManagedPrivateEndpointsCreateResponseTagsMap>;
 
 /** The group Ids of the managed private endpoint. */
-export type ManagedPrivateEndpointModelPropertiesGroupIdsList =
-  ReadonlyArray<string>;
+export type ManagedPrivateEndpointModelPropertiesGroupIdsList = Array<string>;
 export const ManagedPrivateEndpointModelPropertiesGroupIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2568,7 +2563,7 @@ export const ManagedPrivateEndpointModel = /*@__PURE__*/ S.suspend(() =>
 
 /** The ManagedPrivateEndpointModel items on this page */
 export type ManagedPrivateEndpointModelListResponseValueList =
-  ReadonlyArray<ManagedPrivateEndpointModel>;
+  Array<ManagedPrivateEndpointModel>;
 export const ManagedPrivateEndpointModelListResponseValueList =
   /*@__PURE__*/ S.Array(
     ManagedPrivateEndpointModel,
@@ -2775,7 +2770,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = ReadonlyArray<Operation>;
+export type OperationsListResponseValueList = Array<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;
@@ -2825,7 +2820,7 @@ export const PrivateEndpointConnectionPropertiesInputPrivateLinkServiceConnectio
 
 /** The private endpoint connection group ids. */
 export type PrivateEndpointConnectionPropertiesInputGroupIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PrivateEndpointConnectionPropertiesInputGroupIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3031,7 +3026,7 @@ export const PrivateEndpointConnectionsListRequest = /*@__PURE__*/ S.suspend(
 
 /** The PrivateEndpointConnection items on this page */
 export type PrivateEndpointConnectionListResultValueList =
-  ReadonlyArray<PrivateEndpointConnection>;
+  Array<PrivateEndpointConnection>;
 export const PrivateEndpointConnectionListResultValueList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection,
@@ -3081,16 +3076,14 @@ export const PrivateLinkResourcesGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateLinkResourcesGetRequest>;
 
 /** The private link resource required member names. */
-export type PrivateLinkResourcePropertiesRequiredMembersList =
-  ReadonlyArray<string>;
+export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
 export const PrivateLinkResourcePropertiesRequiredMembersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
 
 /** The private link resource Private link DNS zone name. */
-export type PrivateLinkResourcePropertiesRequiredZoneNamesList =
-  ReadonlyArray<string>;
+export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
 export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3197,8 +3190,7 @@ export const PrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateLinkResource>;
 
 /** The PrivateLinkResource items on this page */
-export type PrivateLinkResourceListResultValueList =
-  ReadonlyArray<PrivateLinkResource>;
+export type PrivateLinkResourceListResultValueList = Array<PrivateLinkResource>;
 export const PrivateLinkResourceListResultValueList = /*@__PURE__*/ S.Array(
   PrivateLinkResource,
 ) as any as S.Schema<PrivateLinkResourceListResultValueList>;

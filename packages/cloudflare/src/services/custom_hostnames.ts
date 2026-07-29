@@ -124,7 +124,7 @@ export const CreateRequestSslCustomCertBundleItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CreateRequestSslCustomCertBundleItem>;
 
 export type CreateRequestSslCustomCertBundleList =
-  ReadonlyArray<CreateRequestSslCustomCertBundleItem>;
+  Array<CreateRequestSslCustomCertBundleItem>;
 export const CreateRequestSslCustomCertBundleList = /*@__PURE__*/ S.Array(
   CreateRequestSslCustomCertBundleItem,
 ) as any as S.Schema<CreateRequestSslCustomCertBundleList>;
@@ -132,7 +132,7 @@ export const CreateRequestSslCustomCertBundleList = /*@__PURE__*/ S.Array(
 export type CreateRequestSslMethod = "http" | "txt" | "email";
 export const CreateRequestSslMethod = /*@__PURE__*/ S.String;
 
-export type CreateRequestSslSettingsCiphersList = ReadonlyArray<string>;
+export type CreateRequestSslSettingsCiphersList = Array<string>;
 export const CreateRequestSslSettingsCiphersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateRequestSslSettingsCiphersList>;
@@ -322,8 +322,7 @@ export type CreateResponseSslCertificateAuthority =
   | "ssl_com";
 export const CreateResponseSslCertificateAuthority = /*@__PURE__*/ S.String;
 
-export type CreateResponseSslDcvDelegationRecordsItemEmailsList =
-  ReadonlyArray<string>;
+export type CreateResponseSslDcvDelegationRecordsItemEmailsList = Array<string>;
 export const CreateResponseSslDcvDelegationRecordsItemEmailsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -364,12 +363,12 @@ export const CreateResponseSslDcvDelegationRecordsItem =
   }) as any as S.Schema<CreateResponseSslDcvDelegationRecordsItem>;
 
 export type CreateResponseSslDcvDelegationRecordsList =
-  ReadonlyArray<CreateResponseSslDcvDelegationRecordsItem>;
+  Array<CreateResponseSslDcvDelegationRecordsItem>;
 export const CreateResponseSslDcvDelegationRecordsList = /*@__PURE__*/ S.Array(
   CreateResponseSslDcvDelegationRecordsItem,
 ) as any as S.Schema<CreateResponseSslDcvDelegationRecordsList>;
 
-export type CreateResponseSslHostsList = ReadonlyArray<string>;
+export type CreateResponseSslHostsList = Array<string>;
 export const CreateResponseSslHostsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateResponseSslHostsList>;
@@ -377,7 +376,7 @@ export const CreateResponseSslHostsList = /*@__PURE__*/ S.Array(
 export type CreateResponseSslMethod = "http" | "txt" | "email";
 export const CreateResponseSslMethod = /*@__PURE__*/ S.String;
 
-export type CreateResponseSslSettingsCiphersList = ReadonlyArray<string>;
+export type CreateResponseSslSettingsCiphersList = Array<string>;
 export const CreateResponseSslSettingsCiphersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateResponseSslSettingsCiphersList>;
@@ -467,13 +466,12 @@ export const CreateResponseSslValidationErrorsItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CreateResponseSslValidationErrorsItem>;
 
 export type CreateResponseSslValidationErrorsList =
-  ReadonlyArray<CreateResponseSslValidationErrorsItem>;
+  Array<CreateResponseSslValidationErrorsItem>;
 export const CreateResponseSslValidationErrorsList = /*@__PURE__*/ S.Array(
   CreateResponseSslValidationErrorsItem,
 ) as any as S.Schema<CreateResponseSslValidationErrorsList>;
 
-export type CreateResponseSslValidationRecordsItemEmailsList =
-  ReadonlyArray<string>;
+export type CreateResponseSslValidationRecordsItemEmailsList = Array<string>;
 export const CreateResponseSslValidationRecordsItemEmailsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -514,7 +512,7 @@ export const CreateResponseSslValidationRecordsItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CreateResponseSslValidationRecordsItem>;
 
 export type CreateResponseSslValidationRecordsList =
-  ReadonlyArray<CreateResponseSslValidationRecordsItem>;
+  Array<CreateResponseSslValidationRecordsItem>;
 export const CreateResponseSslValidationRecordsList = /*@__PURE__*/ S.Array(
   CreateResponseSslValidationRecordsItem,
 ) as any as S.Schema<CreateResponseSslValidationRecordsList>;
@@ -619,7 +617,7 @@ export type CreateResponseStatus =
   | "blocked";
 export const CreateResponseStatus = /*@__PURE__*/ S.String;
 
-export type CreateResponseVerificationErrorsList = ReadonlyArray<string>;
+export type CreateResponseVerificationErrorsList = Array<string>;
 export const CreateResponseVerificationErrorsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateResponseVerificationErrorsList>;
@@ -780,7 +778,7 @@ export const DeleteFallbackOriginRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteFallbackOriginRequest",
 }) as any as S.Schema<DeleteFallbackOriginRequest>;
 
-export type FallbackOriginDeleteResponseErrorsList = ReadonlyArray<string>;
+export type FallbackOriginDeleteResponseErrorsList = Array<string>;
 export const FallbackOriginDeleteResponseErrorsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<FallbackOriginDeleteResponseErrorsList>;
@@ -897,8 +895,7 @@ export type GetResponseSslCertificateAuthority =
   | "ssl_com";
 export const GetResponseSslCertificateAuthority = /*@__PURE__*/ S.String;
 
-export type GetResponseSslDcvDelegationRecordsItemEmailsList =
-  ReadonlyArray<string>;
+export type GetResponseSslDcvDelegationRecordsItemEmailsList = Array<string>;
 export const GetResponseSslDcvDelegationRecordsItemEmailsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -939,12 +936,12 @@ export const GetResponseSslDcvDelegationRecordsItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GetResponseSslDcvDelegationRecordsItem>;
 
 export type GetResponseSslDcvDelegationRecordsList =
-  ReadonlyArray<GetResponseSslDcvDelegationRecordsItem>;
+  Array<GetResponseSslDcvDelegationRecordsItem>;
 export const GetResponseSslDcvDelegationRecordsList = /*@__PURE__*/ S.Array(
   GetResponseSslDcvDelegationRecordsItem,
 ) as any as S.Schema<GetResponseSslDcvDelegationRecordsList>;
 
-export type GetResponseSslHostsList = ReadonlyArray<string>;
+export type GetResponseSslHostsList = Array<string>;
 export const GetResponseSslHostsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetResponseSslHostsList>;
@@ -952,7 +949,7 @@ export const GetResponseSslHostsList = /*@__PURE__*/ S.Array(
 export type GetResponseSslMethod = "http" | "txt" | "email";
 export const GetResponseSslMethod = /*@__PURE__*/ S.String;
 
-export type GetResponseSslSettingsCiphersList = ReadonlyArray<string>;
+export type GetResponseSslSettingsCiphersList = Array<string>;
 export const GetResponseSslSettingsCiphersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetResponseSslSettingsCiphersList>;
@@ -1037,13 +1034,12 @@ export const GetResponseSslValidationErrorsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetResponseSslValidationErrorsItem>;
 
 export type GetResponseSslValidationErrorsList =
-  ReadonlyArray<GetResponseSslValidationErrorsItem>;
+  Array<GetResponseSslValidationErrorsItem>;
 export const GetResponseSslValidationErrorsList = /*@__PURE__*/ S.Array(
   GetResponseSslValidationErrorsItem,
 ) as any as S.Schema<GetResponseSslValidationErrorsList>;
 
-export type GetResponseSslValidationRecordsItemEmailsList =
-  ReadonlyArray<string>;
+export type GetResponseSslValidationRecordsItemEmailsList = Array<string>;
 export const GetResponseSslValidationRecordsItemEmailsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1083,7 +1079,7 @@ export const GetResponseSslValidationRecordsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetResponseSslValidationRecordsItem>;
 
 export type GetResponseSslValidationRecordsList =
-  ReadonlyArray<GetResponseSslValidationRecordsItem>;
+  Array<GetResponseSslValidationRecordsItem>;
 export const GetResponseSslValidationRecordsList = /*@__PURE__*/ S.Array(
   GetResponseSslValidationRecordsItem,
 ) as any as S.Schema<GetResponseSslValidationRecordsList>;
@@ -1184,7 +1180,7 @@ export type GetResponseStatus =
   | "blocked";
 export const GetResponseStatus = /*@__PURE__*/ S.String;
 
-export type GetResponseVerificationErrorsList = ReadonlyArray<string>;
+export type GetResponseVerificationErrorsList = Array<string>;
 export const GetResponseVerificationErrorsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetResponseVerificationErrorsList>;
@@ -1263,7 +1259,7 @@ export const GetFallbackOriginRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetFallbackOriginRequest",
 }) as any as S.Schema<GetFallbackOriginRequest>;
 
-export type FallbackOriginGetResponseErrorsList = ReadonlyArray<string>;
+export type FallbackOriginGetResponseErrorsList = Array<string>;
 export const FallbackOriginGetResponseErrorsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<FallbackOriginGetResponseErrorsList>;
@@ -1491,8 +1487,7 @@ export type ListResultItemSslCertificateAuthority =
   | "ssl_com";
 export const ListResultItemSslCertificateAuthority = /*@__PURE__*/ S.String;
 
-export type ListResultItemSslDcvDelegationRecordsItemEmailsList =
-  ReadonlyArray<string>;
+export type ListResultItemSslDcvDelegationRecordsItemEmailsList = Array<string>;
 export const ListResultItemSslDcvDelegationRecordsItemEmailsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1533,12 +1528,12 @@ export const ListResultItemSslDcvDelegationRecordsItem =
   }) as any as S.Schema<ListResultItemSslDcvDelegationRecordsItem>;
 
 export type ListResultItemSslDcvDelegationRecordsList =
-  ReadonlyArray<ListResultItemSslDcvDelegationRecordsItem>;
+  Array<ListResultItemSslDcvDelegationRecordsItem>;
 export const ListResultItemSslDcvDelegationRecordsList = /*@__PURE__*/ S.Array(
   ListResultItemSslDcvDelegationRecordsItem,
 ) as any as S.Schema<ListResultItemSslDcvDelegationRecordsList>;
 
-export type ListResultItemSslHostsList = ReadonlyArray<string>;
+export type ListResultItemSslHostsList = Array<string>;
 export const ListResultItemSslHostsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ListResultItemSslHostsList>;
@@ -1546,7 +1541,7 @@ export const ListResultItemSslHostsList = /*@__PURE__*/ S.Array(
 export type ListResultItemSslMethod = "http" | "txt" | "email";
 export const ListResultItemSslMethod = /*@__PURE__*/ S.String;
 
-export type ListResultItemSslSettingsCiphersList = ReadonlyArray<string>;
+export type ListResultItemSslSettingsCiphersList = Array<string>;
 export const ListResultItemSslSettingsCiphersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ListResultItemSslSettingsCiphersList>;
@@ -1636,13 +1631,12 @@ export const ListResultItemSslValidationErrorsItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListResultItemSslValidationErrorsItem>;
 
 export type ListResultItemSslValidationErrorsList =
-  ReadonlyArray<ListResultItemSslValidationErrorsItem>;
+  Array<ListResultItemSslValidationErrorsItem>;
 export const ListResultItemSslValidationErrorsList = /*@__PURE__*/ S.Array(
   ListResultItemSslValidationErrorsItem,
 ) as any as S.Schema<ListResultItemSslValidationErrorsList>;
 
-export type ListResultItemSslValidationRecordsItemEmailsList =
-  ReadonlyArray<string>;
+export type ListResultItemSslValidationRecordsItemEmailsList = Array<string>;
 export const ListResultItemSslValidationRecordsItemEmailsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1683,7 +1677,7 @@ export const ListResultItemSslValidationRecordsItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListResultItemSslValidationRecordsItem>;
 
 export type ListResultItemSslValidationRecordsList =
-  ReadonlyArray<ListResultItemSslValidationRecordsItem>;
+  Array<ListResultItemSslValidationRecordsItem>;
 export const ListResultItemSslValidationRecordsList = /*@__PURE__*/ S.Array(
   ListResultItemSslValidationRecordsItem,
 ) as any as S.Schema<ListResultItemSslValidationRecordsList>;
@@ -1788,7 +1782,7 @@ export type ListResultItemStatus =
   | "blocked";
 export const ListResultItemStatus = /*@__PURE__*/ S.String;
 
-export type ListResultItemVerificationErrorsList = ReadonlyArray<string>;
+export type ListResultItemVerificationErrorsList = Array<string>;
 export const ListResultItemVerificationErrorsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ListResultItemVerificationErrorsList>;
@@ -1846,7 +1840,7 @@ export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ListResultItem" }) as any as S.Schema<ListResultItem>;
 
-export type ListResultList = ReadonlyArray<ListResultItem>;
+export type ListResultList = Array<ListResultItem>;
 export const ListResultList = /*@__PURE__*/ S.Array(
   ListResultItem,
 ) as any as S.Schema<ListResultList>;
@@ -1900,7 +1894,7 @@ export const EditRequestSslCustomCertBundleItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EditRequestSslCustomCertBundleItem>;
 
 export type EditRequestSslCustomCertBundleList =
-  ReadonlyArray<EditRequestSslCustomCertBundleItem>;
+  Array<EditRequestSslCustomCertBundleItem>;
 export const EditRequestSslCustomCertBundleList = /*@__PURE__*/ S.Array(
   EditRequestSslCustomCertBundleItem,
 ) as any as S.Schema<EditRequestSslCustomCertBundleList>;
@@ -1908,7 +1902,7 @@ export const EditRequestSslCustomCertBundleList = /*@__PURE__*/ S.Array(
 export type EditRequestSslMethod = "http" | "txt" | "email";
 export const EditRequestSslMethod = /*@__PURE__*/ S.String;
 
-export type EditRequestSslSettingsCiphersList = ReadonlyArray<string>;
+export type EditRequestSslSettingsCiphersList = Array<string>;
 export const EditRequestSslSettingsCiphersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EditRequestSslSettingsCiphersList>;
@@ -2098,8 +2092,7 @@ export type EditResponseSslCertificateAuthority =
   | "ssl_com";
 export const EditResponseSslCertificateAuthority = /*@__PURE__*/ S.String;
 
-export type EditResponseSslDcvDelegationRecordsItemEmailsList =
-  ReadonlyArray<string>;
+export type EditResponseSslDcvDelegationRecordsItemEmailsList = Array<string>;
 export const EditResponseSslDcvDelegationRecordsItemEmailsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2140,12 +2133,12 @@ export const EditResponseSslDcvDelegationRecordsItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<EditResponseSslDcvDelegationRecordsItem>;
 
 export type EditResponseSslDcvDelegationRecordsList =
-  ReadonlyArray<EditResponseSslDcvDelegationRecordsItem>;
+  Array<EditResponseSslDcvDelegationRecordsItem>;
 export const EditResponseSslDcvDelegationRecordsList = /*@__PURE__*/ S.Array(
   EditResponseSslDcvDelegationRecordsItem,
 ) as any as S.Schema<EditResponseSslDcvDelegationRecordsList>;
 
-export type EditResponseSslHostsList = ReadonlyArray<string>;
+export type EditResponseSslHostsList = Array<string>;
 export const EditResponseSslHostsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EditResponseSslHostsList>;
@@ -2153,7 +2146,7 @@ export const EditResponseSslHostsList = /*@__PURE__*/ S.Array(
 export type EditResponseSslMethod = "http" | "txt" | "email";
 export const EditResponseSslMethod = /*@__PURE__*/ S.String;
 
-export type EditResponseSslSettingsCiphersList = ReadonlyArray<string>;
+export type EditResponseSslSettingsCiphersList = Array<string>;
 export const EditResponseSslSettingsCiphersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EditResponseSslSettingsCiphersList>;
@@ -2242,13 +2235,12 @@ export const EditResponseSslValidationErrorsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EditResponseSslValidationErrorsItem>;
 
 export type EditResponseSslValidationErrorsList =
-  ReadonlyArray<EditResponseSslValidationErrorsItem>;
+  Array<EditResponseSslValidationErrorsItem>;
 export const EditResponseSslValidationErrorsList = /*@__PURE__*/ S.Array(
   EditResponseSslValidationErrorsItem,
 ) as any as S.Schema<EditResponseSslValidationErrorsList>;
 
-export type EditResponseSslValidationRecordsItemEmailsList =
-  ReadonlyArray<string>;
+export type EditResponseSslValidationRecordsItemEmailsList = Array<string>;
 export const EditResponseSslValidationRecordsItemEmailsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2289,7 +2281,7 @@ export const EditResponseSslValidationRecordsItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<EditResponseSslValidationRecordsItem>;
 
 export type EditResponseSslValidationRecordsList =
-  ReadonlyArray<EditResponseSslValidationRecordsItem>;
+  Array<EditResponseSslValidationRecordsItem>;
 export const EditResponseSslValidationRecordsList = /*@__PURE__*/ S.Array(
   EditResponseSslValidationRecordsItem,
 ) as any as S.Schema<EditResponseSslValidationRecordsList>;
@@ -2392,7 +2384,7 @@ export type EditResponseStatus =
   | "blocked";
 export const EditResponseStatus = /*@__PURE__*/ S.String;
 
-export type EditResponseVerificationErrorsList = ReadonlyArray<string>;
+export type EditResponseVerificationErrorsList = Array<string>;
 export const EditResponseVerificationErrorsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EditResponseVerificationErrorsList>;
@@ -2556,7 +2548,7 @@ export const CertificatePackCertificatesUpdateResponseSslCertificateAuthority =
   /*@__PURE__*/ S.String;
 
 export type CertificatePackCertificatesUpdateResponseSslDcvDelegationRecordsItemEmailsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CertificatePackCertificatesUpdateResponseSslDcvDelegationRecordsItemEmailsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2600,14 +2592,14 @@ export const CertificatePackCertificatesUpdateResponseSslDcvDelegationRecordsIte
   }) as any as S.Schema<CertificatePackCertificatesUpdateResponseSslDcvDelegationRecordsItem>;
 
 export type CertificatePackCertificatesUpdateResponseSslDcvDelegationRecordsList =
-  ReadonlyArray<CertificatePackCertificatesUpdateResponseSslDcvDelegationRecordsItem>;
+  Array<CertificatePackCertificatesUpdateResponseSslDcvDelegationRecordsItem>;
 export const CertificatePackCertificatesUpdateResponseSslDcvDelegationRecordsList =
   /*@__PURE__*/ S.Array(
     CertificatePackCertificatesUpdateResponseSslDcvDelegationRecordsItem,
   ) as any as S.Schema<CertificatePackCertificatesUpdateResponseSslDcvDelegationRecordsList>;
 
 export type CertificatePackCertificatesUpdateResponseSslHostsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CertificatePackCertificatesUpdateResponseSslHostsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2621,7 +2613,7 @@ export const CertificatePackCertificatesUpdateResponseSslMethod =
   /*@__PURE__*/ S.String;
 
 export type CertificatePackCertificatesUpdateResponseSslSettingsCiphersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CertificatePackCertificatesUpdateResponseSslSettingsCiphersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2738,14 +2730,14 @@ export const CertificatePackCertificatesUpdateResponseSslValidationErrorsItem =
   }) as any as S.Schema<CertificatePackCertificatesUpdateResponseSslValidationErrorsItem>;
 
 export type CertificatePackCertificatesUpdateResponseSslValidationErrorsList =
-  ReadonlyArray<CertificatePackCertificatesUpdateResponseSslValidationErrorsItem>;
+  Array<CertificatePackCertificatesUpdateResponseSslValidationErrorsItem>;
 export const CertificatePackCertificatesUpdateResponseSslValidationErrorsList =
   /*@__PURE__*/ S.Array(
     CertificatePackCertificatesUpdateResponseSslValidationErrorsItem,
   ) as any as S.Schema<CertificatePackCertificatesUpdateResponseSslValidationErrorsList>;
 
 export type CertificatePackCertificatesUpdateResponseSslValidationRecordsItemEmailsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CertificatePackCertificatesUpdateResponseSslValidationRecordsItemEmailsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2789,7 +2781,7 @@ export const CertificatePackCertificatesUpdateResponseSslValidationRecordsItem =
   }) as any as S.Schema<CertificatePackCertificatesUpdateResponseSslValidationRecordsItem>;
 
 export type CertificatePackCertificatesUpdateResponseSslValidationRecordsList =
-  ReadonlyArray<CertificatePackCertificatesUpdateResponseSslValidationRecordsItem>;
+  Array<CertificatePackCertificatesUpdateResponseSslValidationRecordsItem>;
 export const CertificatePackCertificatesUpdateResponseSslValidationRecordsList =
   /*@__PURE__*/ S.Array(
     CertificatePackCertificatesUpdateResponseSslValidationRecordsItem,
@@ -2908,7 +2900,7 @@ export const CertificatePackCertificatesUpdateResponseStatus =
   /*@__PURE__*/ S.String;
 
 export type CertificatePackCertificatesUpdateResponseVerificationErrorsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CertificatePackCertificatesUpdateResponseVerificationErrorsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2998,7 +2990,7 @@ export const PutFallbackOriginRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutFallbackOriginRequest",
 }) as any as S.Schema<PutFallbackOriginRequest>;
 
-export type FallbackOriginUpdateResponseErrorsList = ReadonlyArray<string>;
+export type FallbackOriginUpdateResponseErrorsList = Array<string>;
 export const FallbackOriginUpdateResponseErrorsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<FallbackOriginUpdateResponseErrorsList>;

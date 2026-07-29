@@ -201,7 +201,7 @@ export const SlackChannel = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SlackChannel" }) as any as S.Schema<SlackChannel>;
 
 /** Slack channels visible to the PostHog Slack app. */
-export type SlackChannelsResponseChannelsList = ReadonlyArray<SlackChannel>;
+export type SlackChannelsResponseChannelsList = Array<SlackChannel>;
 export const SlackChannelsResponseChannelsList = /*@__PURE__*/ S.Array(
   SlackChannel,
 ) as any as S.Schema<SlackChannelsResponseChannelsList>;
@@ -626,7 +626,7 @@ export const IntegrationsGithubBranchesRetrieveRequest =
   }) as any as S.Schema<IntegrationsGithubBranchesRetrieveRequest>;
 
 /** List of branch names */
-export type GitHubBranchesResponseBranchesList = ReadonlyArray<string>;
+export type GitHubBranchesResponseBranchesList = Array<string>;
 export const GitHubBranchesResponseBranchesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GitHubBranchesResponseBranchesList>;
@@ -806,8 +806,7 @@ export const GitHubRepo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GitHubRepo" }) as any as S.Schema<GitHubRepo>;
 
 /** The refreshed repository cache. */
-export type GitHubReposRefreshResponseRepositoriesList =
-  ReadonlyArray<GitHubRepo>;
+export type GitHubReposRefreshResponseRepositoriesList = Array<GitHubRepo>;
 export const GitHubReposRefreshResponseRepositoriesList = /*@__PURE__*/ S.Array(
   GitHubRepo,
 ) as any as S.Schema<GitHubReposRefreshResponseRepositoriesList>;
@@ -855,7 +854,7 @@ export const IntegrationsGithubReposRetrieveRequest = /*@__PURE__*/ S.suspend(
   identifier: "IntegrationsGithubReposRetrieveRequest",
 }) as any as S.Schema<IntegrationsGithubReposRetrieveRequest>;
 
-export type GitHubReposResponseRepositoriesList = ReadonlyArray<GitHubRepo>;
+export type GitHubReposResponseRepositoriesList = Array<GitHubRepo>;
 export const GitHubReposResponseRepositoriesList = /*@__PURE__*/ S.Array(
   GitHubRepo,
 ) as any as S.Schema<GitHubReposResponseRepositoriesList>;
@@ -922,7 +921,7 @@ export const GitHubTeam = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GitHubTeam" }) as any as S.Schema<GitHubTeam>;
 
 /** List of GitHub teams available to the installation organization. */
-export type GitHubTeamsResponseTeamsList = ReadonlyArray<GitHubTeam>;
+export type GitHubTeamsResponseTeamsList = Array<GitHubTeam>;
 export const GitHubTeamsResponseTeamsList = /*@__PURE__*/ S.Array(
   GitHubTeam,
 ) as any as S.Schema<GitHubTeamsResponseTeamsList>;
@@ -1037,7 +1036,7 @@ export const JiraProject = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "JiraProject" }) as any as S.Schema<JiraProject>;
 
 /** Jira projects available to this integration. */
-export type JiraProjectsResponseProjectsList = ReadonlyArray<JiraProject>;
+export type JiraProjectsResponseProjectsList = Array<JiraProject>;
 export const JiraProjectsResponseProjectsList = /*@__PURE__*/ S.Array(
   JiraProject,
 ) as any as S.Schema<JiraProjectsResponseProjectsList>;
@@ -1090,7 +1089,7 @@ export const LinearTeam = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LinearTeam" }) as any as S.Schema<LinearTeam>;
 
 /** Linear teams available to this integration. */
-export type LinearTeamsResponseTeamsList = ReadonlyArray<LinearTeam>;
+export type LinearTeamsResponseTeamsList = Array<LinearTeam>;
 export const LinearTeamsResponseTeamsList = /*@__PURE__*/ S.Array(
   LinearTeam,
 ) as any as S.Schema<LinearTeamsResponseTeamsList>;
@@ -1235,7 +1234,7 @@ export const IntegrationsListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IntegrationsListRequest>;
 
 export type PaginatedIntegrationConfigListResultsList =
-  ReadonlyArray<IntegrationConfig>;
+  Array<IntegrationConfig>;
 export const PaginatedIntegrationConfigListResultsList = /*@__PURE__*/ S.Array(
   IntegrationConfig,
 ) as any as S.Schema<PaginatedIntegrationConfigListResultsList>;

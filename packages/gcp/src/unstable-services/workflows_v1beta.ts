@@ -76,7 +76,7 @@ export interface Workflow {
   /** Description of the workflow provided by the user. Must be at most 1000 unicode characters long. */
   description?: string;
   /** Output only. State of the workflow deployment. */
-  state?: WorkflowStateEnum;
+  state?: WorkflowStateEnum | (string & {});
   /** Labels associated with this workflow. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores and dashes. Label keys must start with a letter. International characters are allowed. */
   labels?: StringMap;
   /** Output only. The revision of the workflow. A new revision of a workflow is created as a result of updating the following properties of a workflow: - Service account - Workflow code to be executed The format is "000001-a4d", where the first 6 characters define the zero-padded revision ordinal number. They are followed by a hyphen and 3 hexadecimal random characters. */
@@ -138,7 +138,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -306,7 +306,7 @@ export const GetProjectsLocationsWorkflowsRequest = /*@__PURE__*/ S.suspend(
   identifier: "GetProjectsLocationsWorkflowsRequest",
 }) as any as S.Schema<GetProjectsLocationsWorkflowsRequest>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -341,7 +341,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = ReadonlyArray<Location>;
+export type LocationList = Array<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -393,7 +393,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type OperationList = ReadonlyArray<Operation>;
+export type OperationList = Array<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -448,7 +448,7 @@ export const ListProjectsLocationsWorkflowsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsWorkflowsRequest",
 }) as any as S.Schema<ListProjectsLocationsWorkflowsRequest>;
 
-export type WorkflowList = ReadonlyArray<Workflow>;
+export type WorkflowList = Array<Workflow>;
 export const WorkflowList = /*@__PURE__*/ S.Array(
   Workflow,
 ) as any as S.Schema<WorkflowList>;

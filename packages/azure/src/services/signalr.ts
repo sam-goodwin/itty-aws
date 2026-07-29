@@ -69,7 +69,7 @@ export const Dimension = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Dimension" }) as any as S.Schema<Dimension>;
 
 /** The dimensions of the metrics. */
-export type MetricSpecificationDimensionsList = ReadonlyArray<Dimension>;
+export type MetricSpecificationDimensionsList = Array<Dimension>;
 export const MetricSpecificationDimensionsList = /*@__PURE__*/ S.Array(
   Dimension,
 ) as any as S.Schema<MetricSpecificationDimensionsList>;
@@ -110,7 +110,7 @@ export const MetricSpecification = /*@__PURE__*/ S.suspend(() =>
 
 /** Specifications of the Metrics for Azure Monitoring. */
 export type ServiceSpecificationMetricSpecificationsList =
-  ReadonlyArray<MetricSpecification>;
+  Array<MetricSpecification>;
 export const ServiceSpecificationMetricSpecificationsList =
   /*@__PURE__*/ S.Array(
     MetricSpecification,
@@ -133,8 +133,7 @@ export const LogSpecification = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LogSpecification>;
 
 /** Specifications of the Logs for Azure Monitoring. */
-export type ServiceSpecificationLogSpecificationsList =
-  ReadonlyArray<LogSpecification>;
+export type ServiceSpecificationLogSpecificationsList = Array<LogSpecification>;
 export const ServiceSpecificationLogSpecificationsList = /*@__PURE__*/ S.Array(
   LogSpecification,
 ) as any as S.Schema<ServiceSpecificationLogSpecificationsList>;
@@ -191,7 +190,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider. */
-export type OperationListValueList = ReadonlyArray<Operation>;
+export type OperationListValueList = Array<Operation>;
 export const OperationListValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationListValueList>;
@@ -318,7 +317,7 @@ export const SignalRFeaturePropertiesMap = /*@__PURE__*/ S.Record(
 
 /** Feature of a resource, which controls the runtime behavior. */
 export interface SignalRFeature {
-  flag: FeatureFlags;
+  flag: FeatureFlags | (string & {});
   /** Value of the feature flag. See Azure SignalR service document https://docs.microsoft.com/azure/azure-signalr/ for allowed values. */
   value: string;
   /** Optional properties related to this feature. */
@@ -333,7 +332,7 @@ export const SignalRFeature = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SignalRFeature" }) as any as S.Schema<SignalRFeature>;
 
 /** List of the featureFlags. FeatureFlags that are not included in the parameters for the update operation will not be modified. And the response will only include featureFlags that are explicitly set. When a featureFlag is not explicitly set, its globally default value will be used But keep in mind, the default value doesn't mean "false". It varies in terms of different FeatureFlags. */
-export type SignalRPropertiesInputFeaturesList = ReadonlyArray<SignalRFeature>;
+export type SignalRPropertiesInputFeaturesList = Array<SignalRFeature>;
 export const SignalRPropertiesInputFeaturesList = /*@__PURE__*/ S.Array(
   SignalRFeature,
 ) as any as S.Schema<SignalRPropertiesInputFeaturesList>;
@@ -355,8 +354,7 @@ export const LiveTraceCategory = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LiveTraceCategory>;
 
 /** Gets or sets the list of category configurations. */
-export type LiveTraceConfigurationCategoriesList =
-  ReadonlyArray<LiveTraceCategory>;
+export type LiveTraceConfigurationCategoriesList = Array<LiveTraceCategory>;
 export const LiveTraceConfigurationCategoriesList = /*@__PURE__*/ S.Array(
   LiveTraceCategory,
 ) as any as S.Schema<LiveTraceConfigurationCategoriesList>;
@@ -394,8 +392,7 @@ export const ResourceLogCategory = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourceLogCategory>;
 
 /** Gets or sets the list of category configurations. */
-export type ResourceLogConfigurationCategoriesList =
-  ReadonlyArray<ResourceLogCategory>;
+export type ResourceLogConfigurationCategoriesList = Array<ResourceLogCategory>;
 export const ResourceLogConfigurationCategoriesList = /*@__PURE__*/ S.Array(
   ResourceLogCategory,
 ) as any as S.Schema<ResourceLogConfigurationCategoriesList>;
@@ -414,7 +411,7 @@ export const ResourceLogConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourceLogConfiguration>;
 
 /** Gets or sets the list of origins that should be allowed to make cross-origin calls (for example: http://example.com:12345). Use "*" to allow all. If omitted, allow all by default. */
-export type SignalRCorsSettingsAllowedOriginsList = ReadonlyArray<string>;
+export type SignalRCorsSettingsAllowedOriginsList = Array<string>;
 export const SignalRCorsSettingsAllowedOriginsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SignalRCorsSettingsAllowedOriginsList>;
@@ -464,7 +461,7 @@ export const ManagedIdentitySettings = /*@__PURE__*/ S.suspend(() =>
 
 /** Upstream auth settings. If not set, no auth is used for upstream messages. */
 export interface UpstreamAuthSettings {
-  type?: UpstreamAuthType;
+  type?: UpstreamAuthType | (string & {});
   managedIdentity?: ManagedIdentitySettings;
 }
 export const UpstreamAuthSettings = /*@__PURE__*/ S.suspend(() =>
@@ -501,8 +498,7 @@ export const UpstreamTemplate = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpstreamTemplate>;
 
 /** Gets or sets the list of Upstream URL templates. Order matters, and the first matching template takes effects. */
-export type ServerlessUpstreamSettingsTemplatesList =
-  ReadonlyArray<UpstreamTemplate>;
+export type ServerlessUpstreamSettingsTemplatesList = Array<UpstreamTemplate>;
 export const ServerlessUpstreamSettingsTemplatesList = /*@__PURE__*/ S.Array(
   UpstreamTemplate,
 ) as any as S.Schema<ServerlessUpstreamSettingsTemplatesList>;
@@ -533,13 +529,13 @@ export type SignalRRequestType =
 export const SignalRRequestType = /*@__PURE__*/ S.String;
 
 /** Allowed request types. The value can be one or more of: ClientConnection, ServerConnection, RESTAPI. */
-export type NetworkACLAllowList = ReadonlyArray<SignalRRequestType>;
+export type NetworkACLAllowList = Array<SignalRRequestType | (string & {})>;
 export const NetworkACLAllowList = /*@__PURE__*/ S.Array(
   SignalRRequestType,
 ) as any as S.Schema<NetworkACLAllowList>;
 
 /** Denied request types. The value can be one or more of: ClientConnection, ServerConnection, RESTAPI. */
-export type NetworkACLDenyList = ReadonlyArray<SignalRRequestType>;
+export type NetworkACLDenyList = Array<SignalRRequestType | (string & {})>;
 export const NetworkACLDenyList = /*@__PURE__*/ S.Array(
   SignalRRequestType,
 ) as any as S.Schema<NetworkACLDenyList>;
@@ -559,13 +555,17 @@ export const NetworkACL = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NetworkACL" }) as any as S.Schema<NetworkACL>;
 
 /** Allowed request types. The value can be one or more of: ClientConnection, ServerConnection, RESTAPI. */
-export type PrivateEndpointACLAllowList = ReadonlyArray<SignalRRequestType>;
+export type PrivateEndpointACLAllowList = Array<
+  SignalRRequestType | (string & {})
+>;
 export const PrivateEndpointACLAllowList = /*@__PURE__*/ S.Array(
   SignalRRequestType,
 ) as any as S.Schema<PrivateEndpointACLAllowList>;
 
 /** Denied request types. The value can be one or more of: ClientConnection, ServerConnection, RESTAPI. */
-export type PrivateEndpointACLDenyList = ReadonlyArray<SignalRRequestType>;
+export type PrivateEndpointACLDenyList = Array<
+  SignalRRequestType | (string & {})
+>;
 export const PrivateEndpointACLDenyList = /*@__PURE__*/ S.Array(
   SignalRRequestType,
 ) as any as S.Schema<PrivateEndpointACLDenyList>;
@@ -590,8 +590,7 @@ export const PrivateEndpointACL = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateEndpointACL>;
 
 /** ACLs for requests from private endpoints */
-export type SignalRNetworkACLsPrivateEndpointsList =
-  ReadonlyArray<PrivateEndpointACL>;
+export type SignalRNetworkACLsPrivateEndpointsList = Array<PrivateEndpointACL>;
 export const SignalRNetworkACLsPrivateEndpointsList = /*@__PURE__*/ S.Array(
   PrivateEndpointACL,
 ) as any as S.Schema<SignalRNetworkACLsPrivateEndpointsList>;
@@ -600,7 +599,7 @@ export const SignalRNetworkACLsPrivateEndpointsList = /*@__PURE__*/ S.Array(
 export interface IPRule {
   /** An IP or CIDR or ServiceTag */
   value?: string;
-  action?: ACLAction;
+  action?: ACLAction | (string & {});
 }
 export const IPRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -610,14 +609,14 @@ export const IPRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IPRule" }) as any as S.Schema<IPRule>;
 
 /** IP rules for filtering public traffic */
-export type SignalRNetworkACLsIpRulesList = ReadonlyArray<IPRule>;
+export type SignalRNetworkACLsIpRulesList = Array<IPRule>;
 export const SignalRNetworkACLsIpRulesList = /*@__PURE__*/ S.Array(
   IPRule,
 ) as any as S.Schema<SignalRNetworkACLsIpRulesList>;
 
 /** Network ACLs for the resource */
 export interface SignalRNetworkACLs {
-  defaultAction?: ACLAction;
+  defaultAction?: ACLAction | (string & {});
   publicNetwork?: NetworkACL;
   /** ACLs for requests from private endpoints */
   privateEndpoints?: SignalRNetworkACLsPrivateEndpointsList;
@@ -859,8 +858,7 @@ export const PrivateEndpoint = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateEndpoint>;
 
 /** Group IDs */
-export type PrivateEndpointConnectionPropertiesGroupIdsList =
-  ReadonlyArray<string>;
+export type PrivateEndpointConnectionPropertiesGroupIdsList = Array<string>;
 export const PrivateEndpointConnectionPropertiesGroupIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -876,7 +874,7 @@ export const PrivateLinkServiceConnectionStatus = /*@__PURE__*/ S.String;
 
 /** Connection state of the private endpoint connection */
 export interface PrivateLinkServiceConnectionState {
-  status?: PrivateLinkServiceConnectionStatus;
+  status?: PrivateLinkServiceConnectionStatus | (string & {});
   /** The reason for approval/rejection of the connection. */
   description?: string;
   /** A message indicating if changes on the service provider require any updates on the consumer. */
@@ -939,7 +937,7 @@ export const PrivateEndpointConnection = /*@__PURE__*/ S.suspend(() =>
 
 /** Private endpoint connections to the resource. */
 export type SignalRPropertiesPrivateEndpointConnectionsList =
-  ReadonlyArray<PrivateEndpointConnection>;
+  Array<PrivateEndpointConnection>;
 export const SignalRPropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection,
@@ -1003,14 +1001,14 @@ export const SharedPrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of shared private link resources. */
 export type SignalRPropertiesSharedPrivateLinkResourcesList =
-  ReadonlyArray<SharedPrivateLinkResource>;
+  Array<SharedPrivateLinkResource>;
 export const SignalRPropertiesSharedPrivateLinkResourcesList =
   /*@__PURE__*/ S.Array(
     SharedPrivateLinkResource,
   ) as any as S.Schema<SignalRPropertiesSharedPrivateLinkResourcesList>;
 
 /** List of the featureFlags. FeatureFlags that are not included in the parameters for the update operation will not be modified. And the response will only include featureFlags that are explicitly set. When a featureFlag is not explicitly set, its globally default value will be used But keep in mind, the default value doesn't mean "false". It varies in terms of different FeatureFlags. */
-export type SignalRPropertiesFeaturesList = ReadonlyArray<SignalRFeature>;
+export type SignalRPropertiesFeaturesList = Array<SignalRFeature>;
 export const SignalRPropertiesFeaturesList = /*@__PURE__*/ S.Array(
   SignalRFeature,
 ) as any as S.Schema<SignalRPropertiesFeaturesList>;
@@ -1404,7 +1402,7 @@ export const CustomCertificate = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CustomCertificate>;
 
 /** List of custom certificates of this resource. */
-export type CustomCertificateListValueList = ReadonlyArray<CustomCertificate>;
+export type CustomCertificateListValueList = Array<CustomCertificate>;
 export const CustomCertificateListValueList = /*@__PURE__*/ S.Array(
   CustomCertificate,
 ) as any as S.Schema<CustomCertificateListValueList>;
@@ -1659,7 +1657,7 @@ export const CustomDomain = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CustomDomain" }) as any as S.Schema<CustomDomain>;
 
 /** List of custom domains that bind to this resource. */
-export type CustomDomainListValueList = ReadonlyArray<CustomDomain>;
+export type CustomDomainListValueList = Array<CustomDomain>;
 export const CustomDomainListValueList = /*@__PURE__*/ S.Array(
   CustomDomain,
 ) as any as S.Schema<CustomDomainListValueList>;
@@ -1845,7 +1843,7 @@ export const SignalRResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SignalRResource>;
 
 /** List of the resources */
-export type SignalRResourceListValueList = ReadonlyArray<SignalRResource>;
+export type SignalRResourceListValueList = Array<SignalRResource>;
 export const SignalRResourceListValueList = /*@__PURE__*/ S.Array(
   SignalRResource,
 ) as any as S.Schema<SignalRResourceListValueList>;
@@ -1959,7 +1957,7 @@ export const SignalRListReplicaSkusRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SignalRListReplicaSkusRequest>;
 
 /** Allows capacity value list. */
-export type SkuCapacityAllowedValuesList = ReadonlyArray<number>;
+export type SkuCapacityAllowedValuesList = Array<number>;
 export const SkuCapacityAllowedValuesList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<SkuCapacityAllowedValuesList>;
@@ -2006,7 +2004,7 @@ export const Sku = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Sku" }) as any as S.Schema<Sku>;
 
 /** The list of skus available for the resource. */
-export type SkuListValueList = ReadonlyArray<Sku>;
+export type SkuListValueList = Array<Sku>;
 export const SkuListValueList = /*@__PURE__*/ S.Array(
   Sku,
 ) as any as S.Schema<SkuListValueList>;
@@ -2166,7 +2164,7 @@ export const SignalRPrivateEndpointConnectionsListRequest =
 
 /** The list of the private endpoint connections */
 export type PrivateEndpointConnectionListValueList =
-  ReadonlyArray<PrivateEndpointConnection>;
+  Array<PrivateEndpointConnection>;
 export const PrivateEndpointConnectionListValueList = /*@__PURE__*/ S.Array(
   PrivateEndpointConnection,
 ) as any as S.Schema<PrivateEndpointConnectionListValueList>;
@@ -2286,16 +2284,14 @@ export const SignalRPrivateLinkResourcesListRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<SignalRPrivateLinkResourcesListRequest>;
 
 /** Required members of the private link resource */
-export type PrivateLinkResourcePropertiesRequiredMembersList =
-  ReadonlyArray<string>;
+export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
 export const PrivateLinkResourcePropertiesRequiredMembersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
 
 /** Required private DNS zone names */
-export type PrivateLinkResourcePropertiesRequiredZoneNamesList =
-  ReadonlyArray<string>;
+export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
 export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2338,7 +2334,7 @@ export const ShareablePrivateLinkResourceType = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of resources that are onboarded to private link service */
 export type PrivateLinkResourcePropertiesShareablePrivateLinkResourceTypesList =
-  ReadonlyArray<ShareablePrivateLinkResourceType>;
+  Array<ShareablePrivateLinkResourceType>;
 export const PrivateLinkResourcePropertiesShareablePrivateLinkResourceTypesList =
   /*@__PURE__*/ S.Array(
     ShareablePrivateLinkResourceType,
@@ -2397,8 +2393,7 @@ export const PrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateLinkResource>;
 
 /** List of PrivateLinkResource */
-export type PrivateLinkResourceListValueList =
-  ReadonlyArray<PrivateLinkResource>;
+export type PrivateLinkResourceListValueList = Array<PrivateLinkResource>;
 export const PrivateLinkResourceListValueList = /*@__PURE__*/ S.Array(
   PrivateLinkResource,
 ) as any as S.Schema<PrivateLinkResourceListValueList>;
@@ -2842,7 +2837,7 @@ export const SignalRReplicaSharedPrivateLinkResourcesListRequest =
 
 /** The list of the shared private link resources */
 export type SharedPrivateLinkResourceListValueList =
-  ReadonlyArray<SharedPrivateLinkResource>;
+  Array<SharedPrivateLinkResource>;
 export const SharedPrivateLinkResourceListValueList = /*@__PURE__*/ S.Array(
   SharedPrivateLinkResource,
 ) as any as S.Schema<SharedPrivateLinkResourceListValueList>;
@@ -2926,7 +2921,7 @@ export const Replica = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Replica" }) as any as S.Schema<Replica>;
 
 /** List of the replica */
-export type ReplicaListValueList = ReadonlyArray<Replica>;
+export type ReplicaListValueList = Array<Replica>;
 export const ReplicaListValueList = /*@__PURE__*/ S.Array(
   Replica,
 ) as any as S.Schema<ReplicaListValueList>;
@@ -3418,7 +3413,7 @@ export const SignalRUsage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SignalRUsage" }) as any as S.Schema<SignalRUsage>;
 
 /** List of the resource usages */
-export type SignalRUsageListValueList = ReadonlyArray<SignalRUsage>;
+export type SignalRUsageListValueList = Array<SignalRUsage>;
 export const SignalRUsageListValueList = /*@__PURE__*/ S.Array(
   SignalRUsage,
 ) as any as S.Schema<SignalRUsageListValueList>;

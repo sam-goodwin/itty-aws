@@ -462,7 +462,7 @@ export type QuoteCapacityType = "EC2" | "EBS" | "S3";
 export const QuoteCapacityType = /*@__PURE__*/ S.String;
 
 export interface QuoteCapacity {
-  QuoteCapacityType?: QuoteCapacityType;
+  QuoteCapacityType?: QuoteCapacityType | (string & {});
   Unit?: string;
   Quantity?: number;
 }
@@ -483,7 +483,7 @@ export const QuoteConstraintType = /*@__PURE__*/ S.String;
 
 export type ConstraintValue = string;
 export interface QuoteConstraint {
-  QuoteConstraintType?: QuoteConstraintType;
+  QuoteConstraintType?: QuoteConstraintType | (string & {});
   Value?: string;
 }
 export const QuoteConstraint = /*@__PURE__*/ S.suspend(() =>
@@ -496,9 +496,9 @@ export const QuoteConstraint = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<QuoteConstraint>;
 export type QuoteConstraintList = QuoteConstraint[];
 export const QuoteConstraintList = /*@__PURE__*/ S.Array(QuoteConstraint);
-export type PaymentOptionList = PaymentOption[];
+export type PaymentOptionList = (PaymentOption | (string & {}))[];
 export const PaymentOptionList = /*@__PURE__*/ S.Array(PaymentOption);
-export type PaymentTermList = PaymentTerm[];
+export type PaymentTermList = (PaymentTerm | (string & {}))[];
 export const PaymentTermList = /*@__PURE__*/ S.Array(PaymentTerm);
 export type QuoteDescription = string | redacted.Redacted<string>;
 export interface CreateQuoteInput {
@@ -946,15 +946,15 @@ export type MaximumSupportedWeightLbs =
 export const MaximumSupportedWeightLbs = /*@__PURE__*/ S.String;
 
 export interface RackPhysicalProperties {
-  PowerDrawKva?: PowerDrawKva;
-  PowerPhase?: PowerPhase;
-  PowerConnector?: PowerConnector;
-  PowerFeedDrop?: PowerFeedDrop;
-  UplinkGbps?: UplinkGbps;
-  UplinkCount?: UplinkCount;
-  FiberOpticCableType?: FiberOpticCableType;
-  OpticalStandard?: OpticalStandard;
-  MaximumSupportedWeightLbs?: MaximumSupportedWeightLbs;
+  PowerDrawKva?: PowerDrawKva | (string & {});
+  PowerPhase?: PowerPhase | (string & {});
+  PowerConnector?: PowerConnector | (string & {});
+  PowerFeedDrop?: PowerFeedDrop | (string & {});
+  UplinkGbps?: UplinkGbps | (string & {});
+  UplinkCount?: UplinkCount | (string & {});
+  FiberOpticCableType?: FiberOpticCableType | (string & {});
+  OpticalStandard?: OpticalStandard | (string & {});
+  MaximumSupportedWeightLbs?: MaximumSupportedWeightLbs | (string & {});
 }
 export const RackPhysicalProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1161,7 +1161,7 @@ export type AWSServiceName =
   | "ROUTE53";
 export const AWSServiceName = /*@__PURE__*/ S.String;
 
-export type AWSServiceNameList = AWSServiceName[];
+export type AWSServiceNameList = (AWSServiceName | (string & {}))[];
 export const AWSServiceNameList = /*@__PURE__*/ S.Array(AWSServiceName);
 export interface InstancesToExclude {
   Instances?: string[];
@@ -1275,7 +1275,7 @@ export const SupportedUplinkGbpsListDefinition = /*@__PURE__*/ S.Array(
 export type SupportedStorageEnum = "EBS" | "S3";
 export const SupportedStorageEnum = /*@__PURE__*/ S.String;
 
-export type SupportedStorageList = SupportedStorageEnum[];
+export type SupportedStorageList = (SupportedStorageEnum | (string & {}))[];
 export const SupportedStorageList = /*@__PURE__*/ S.Array(SupportedStorageEnum);
 export interface CatalogItem {
   CatalogItemId?: string;

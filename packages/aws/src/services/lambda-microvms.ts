@@ -264,7 +264,7 @@ export type Architecture = "ARM_64";
 export const Architecture = /*@__PURE__*/ S.String;
 
 export interface CpuConfiguration {
-  architecture: Architecture;
+  architecture: Architecture | (string & {});
 }
 export const CpuConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ architecture: Architecture }),
@@ -284,19 +284,19 @@ export const ResourcesList = /*@__PURE__*/ S.Array(Resources);
 export type Capability = "ALL";
 export const Capability = /*@__PURE__*/ S.String;
 
-export type CapabilityList = Capability[];
+export type CapabilityList = (Capability | (string & {}))[];
 export const CapabilityList = /*@__PURE__*/ S.Array(Capability);
 export type HookState = "DISABLED" | "ENABLED";
 export const HookState = /*@__PURE__*/ S.String;
 
 export interface MicrovmHooks {
-  run?: HookState;
+  run?: HookState | (string & {});
   runTimeoutInSeconds?: number;
-  resume?: HookState;
+  resume?: HookState | (string & {});
   resumeTimeoutInSeconds?: number;
-  suspend?: HookState;
+  suspend?: HookState | (string & {});
   suspendTimeoutInSeconds?: number;
-  terminate?: HookState;
+  terminate?: HookState | (string & {});
   terminateTimeoutInSeconds?: number;
 }
 export const MicrovmHooks = /*@__PURE__*/ S.suspend(() =>
@@ -312,9 +312,9 @@ export const MicrovmHooks = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MicrovmHooks" }) as any as S.Schema<MicrovmHooks>;
 export interface MicrovmImageHooks {
-  ready?: HookState;
+  ready?: HookState | (string & {});
   readyTimeoutInSeconds?: number;
-  validate?: HookState;
+  validate?: HookState | (string & {});
   validateTimeoutInSeconds?: number;
 }
 export const MicrovmImageHooks = /*@__PURE__*/ S.suspend(() =>

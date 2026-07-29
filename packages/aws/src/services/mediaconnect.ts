@@ -774,10 +774,10 @@ export type KeyType = "speke" | "static-key" | "srt-password";
 export const KeyType = /*@__PURE__*/ S.String;
 
 export interface Encryption {
-  Algorithm?: Algorithm;
+  Algorithm?: Algorithm | (string & {});
   ConstantInitializationVector?: string;
   DeviceId?: string;
-  KeyType?: KeyType;
+  KeyType?: KeyType | (string & {});
   Region?: string;
   ResourceId?: string;
   RoleArn?: string;
@@ -935,7 +935,7 @@ export const FlowTransitEncryptionKeyConfiguration = /*@__PURE__*/ S.Union([
   S.Struct({ Automatic: AutomaticEncryptionKeyConfiguration }),
 ]);
 export interface FlowTransitEncryption {
-  EncryptionKeyType?: FlowTransitEncryptionKeyType;
+  EncryptionKeyType?: FlowTransitEncryptionKeyType | (string & {});
   EncryptionKeyConfiguration: FlowTransitEncryptionKeyConfiguration;
 }
 export const FlowTransitEncryption = /*@__PURE__*/ S.suspend(() =>
@@ -1862,7 +1862,7 @@ export const ForwardErrorCorrectionState = /*@__PURE__*/ S.String;
 
 export interface RtpRouterInputConfiguration {
   Port: number;
-  ForwardErrorCorrection?: ForwardErrorCorrectionState;
+  ForwardErrorCorrection?: ForwardErrorCorrectionState | (string & {});
 }
 export const RtpRouterInputConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1918,7 +1918,7 @@ export const RouterInputProtocol = /*@__PURE__*/ S.String;
 export interface StandardRouterInputConfiguration {
   NetworkInterfaceArn: string;
   ProtocolConfiguration: RouterInputProtocolConfiguration;
-  Protocol?: RouterInputProtocol;
+  Protocol?: RouterInputProtocol | (string & {});
 }
 export const StandardRouterInputConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1955,7 +1955,7 @@ export const MediaLiveTransitEncryptionKeyConfiguration = /*@__PURE__*/ S.Union(
   ],
 );
 export interface MediaLiveTransitEncryption {
-  EncryptionKeyType?: MediaLiveTransitEncryptionKeyType;
+  EncryptionKeyType?: MediaLiveTransitEncryptionKeyType | (string & {});
   EncryptionKeyConfiguration: MediaLiveTransitEncryptionKeyConfiguration;
 }
 export const MediaLiveTransitEncryption = /*@__PURE__*/ S.suspend(() =>
@@ -1973,7 +1973,7 @@ export const MediaLiveTransitEncryption = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MediaLiveTransitEncryption>;
 export interface MediaLiveChannelRouterInputConfiguration {
   MediaLiveChannelArn?: string;
-  MediaLivePipelineId?: MediaLiveChannelPipelineId;
+  MediaLivePipelineId?: MediaLiveChannelPipelineId | (string & {});
   MediaLiveChannelOutputName?: string;
   SourceTransitDecryption: MediaLiveTransitEncryption;
 }
@@ -2038,7 +2038,7 @@ export const FailoverInputSourcePriorityMode = /*@__PURE__*/ S.String;
 export interface FailoverRouterInputConfiguration {
   NetworkInterfaceArn: string;
   ProtocolConfigurations: FailoverRouterInputProtocolConfiguration[];
-  SourcePriorityMode: FailoverInputSourcePriorityMode;
+  SourcePriorityMode: FailoverInputSourcePriorityMode | (string & {});
   PrimarySourceIndex?: number;
 }
 export const FailoverRouterInputConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -2191,7 +2191,7 @@ export const RouterInputTransitEncryptionKeyConfiguration =
     S.Struct({ Automatic: AutomaticEncryptionKeyConfiguration }),
   ]);
 export interface RouterInputTransitEncryption {
-  EncryptionKeyType?: RouterInputTransitEncryptionKeyType;
+  EncryptionKeyType?: RouterInputTransitEncryptionKeyType | (string & {});
   EncryptionKeyConfiguration: RouterInputTransitEncryptionKeyConfiguration;
 }
 export const RouterInputTransitEncryption = /*@__PURE__*/ S.suspend(() =>
@@ -2356,7 +2356,7 @@ export type Day =
 export const Day = /*@__PURE__*/ S.String;
 
 export interface PreferredDayTimeMaintenanceConfiguration {
-  Day: Day;
+  Day: Day | (string & {});
   Time: string;
 }
 export const PreferredDayTimeMaintenanceConfiguration = /*@__PURE__*/ S.suspend(
@@ -2418,7 +2418,7 @@ export const ContentQualityAnalysisState = /*@__PURE__*/ S.String;
 
 export type RouterCqaThresholdSeconds = number;
 export interface BlackFramesConfiguration {
-  State: ContentQualityAnalysisState;
+  State: ContentQualityAnalysisState | (string & {});
   ThresholdSeconds: number;
 }
 export const BlackFramesConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -2432,7 +2432,7 @@ export const BlackFramesConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "BlackFramesConfiguration",
 }) as any as S.Schema<BlackFramesConfiguration>;
 export interface FrozenFramesConfiguration {
-  State: ContentQualityAnalysisState;
+  State: ContentQualityAnalysisState | (string & {});
   ThresholdSeconds: number;
 }
 export const FrozenFramesConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -2446,7 +2446,7 @@ export const FrozenFramesConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "FrozenFramesConfiguration",
 }) as any as S.Schema<FrozenFramesConfiguration>;
 export interface SilentAudioConfiguration {
-  State: ContentQualityAnalysisState;
+  State: ContentQualityAnalysisState | (string & {});
   ThresholdSeconds: number;
 }
 export const SilentAudioConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -2893,7 +2893,7 @@ export const SrtCallerRouterOutputConfiguration = /*@__PURE__*/ S.suspend(() =>
 export interface RtpRouterOutputConfiguration {
   DestinationAddress: string;
   DestinationPort: number;
-  ForwardErrorCorrection?: ForwardErrorCorrectionState;
+  ForwardErrorCorrection?: ForwardErrorCorrectionState | (string & {});
 }
 export const RtpRouterOutputConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2951,7 +2951,7 @@ export const RouterOutputProtocol = /*@__PURE__*/ S.String;
 export interface StandardRouterOutputConfiguration {
   NetworkInterfaceArn: string;
   ProtocolConfiguration: RouterOutputProtocolConfiguration;
-  Protocol?: RouterOutputProtocol;
+  Protocol?: RouterOutputProtocol | (string & {});
 }
 export const StandardRouterOutputConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2996,7 +2996,7 @@ export const MediaLiveInputPipelineId = /*@__PURE__*/ S.String;
 
 export interface MediaLiveInputRouterOutputConfiguration {
   MediaLiveInputArn?: string;
-  MediaLivePipelineId?: MediaLiveInputPipelineId;
+  MediaLivePipelineId?: MediaLiveInputPipelineId | (string & {});
   DestinationTransitEncryption: MediaLiveTransitEncryption;
 }
 export const MediaLiveInputRouterOutputConfiguration = /*@__PURE__*/ S.suspend(
@@ -3239,10 +3239,10 @@ export const SourcePriority = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "SourcePriority" }) as any as S.Schema<SourcePriority>;
 export interface FailoverConfig {
-  FailoverMode?: FailoverMode;
+  FailoverMode?: FailoverMode | (string & {});
   RecoveryWindow?: number;
   SourcePriority?: SourcePriority;
-  State?: State;
+  State?: State | (string & {});
 }
 export const FailoverConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3522,7 +3522,7 @@ export type ThumbnailState = "ENABLED" | "DISABLED";
 export const ThumbnailState = /*@__PURE__*/ S.String;
 
 export interface SilentAudio {
-  State?: State;
+  State?: State | (string & {});
   ThresholdSeconds?: number;
 }
 export const SilentAudio = /*@__PURE__*/ S.suspend(() =>
@@ -3548,7 +3548,7 @@ export const __listOfAudioMonitoringSetting = /*@__PURE__*/ S.Array(
   AudioMonitoringSetting,
 );
 export interface BlackFrames {
-  State?: State;
+  State?: State | (string & {});
   ThresholdSeconds?: number;
 }
 export const BlackFrames = /*@__PURE__*/ S.suspend(() =>
@@ -3560,7 +3560,7 @@ export const BlackFrames = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "BlackFrames" }) as any as S.Schema<BlackFrames>;
 export interface FrozenFrames {
-  State?: State;
+  State?: State | (string & {});
   ThresholdSeconds?: number;
 }
 export const FrozenFrames = /*@__PURE__*/ S.suspend(() =>
@@ -3590,9 +3590,9 @@ export const __listOfVideoMonitoringSetting = /*@__PURE__*/ S.Array(
   VideoMonitoringSetting,
 );
 export interface MonitoringConfig {
-  ThumbnailState?: ThumbnailState;
+  ThumbnailState?: ThumbnailState | (string & {});
   AudioMonitoringSettings?: AudioMonitoringSetting[];
-  ContentQualityAnalysisState?: ContentQualityAnalysisState;
+  ContentQualityAnalysisState?: ContentQualityAnalysisState | (string & {});
   VideoMonitoringSettings?: VideoMonitoringSetting[];
 }
 export const MonitoringConfig = /*@__PURE__*/ S.suspend(() =>
@@ -3643,7 +3643,7 @@ export const __listOfNdiDiscoveryServerConfig = /*@__PURE__*/ S.Array(
   NdiDiscoveryServerConfig,
 );
 export interface NdiConfig {
-  NdiState?: NdiState;
+  NdiState?: NdiState | (string & {});
   MachineName?: string;
   NdiDiscoveryServers?: NdiDiscoveryServerConfig[];
 }
@@ -3666,7 +3666,7 @@ export type EncodingProfile =
 export const EncodingProfile = /*@__PURE__*/ S.String;
 
 export interface EncodingConfig {
-  EncodingProfile?: EncodingProfile;
+  EncodingProfile?: EncodingProfile | (string & {});
   VideoMaxBitrate?: number;
 }
 export const EncodingConfig = /*@__PURE__*/ S.suspend(() =>

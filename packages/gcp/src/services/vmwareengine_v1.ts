@@ -76,7 +76,7 @@ export const GoogleFileService = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleFileService",
 }) as any as S.Schema<GoogleFileService>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -142,7 +142,7 @@ export interface Datastore {
   /** Output only. Identifier. The resource name of this datastore. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/us-central1/datastores/datastore` */
   name?: string;
   /** Output only. The state of the Datastore. */
-  state?: DatastoreStateEnum;
+  state?: DatastoreStateEnum | (string & {});
   /** Optional. User-provided description for this datastore */
   description?: string;
   /** Optional. Checksum that may be sent on update and delete requests to ensure that the user-provided value is up to date before the server processes a request. The server computes checksums based on the value of other fields in the request. */
@@ -202,7 +202,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -272,7 +272,7 @@ export interface NetworkPeering {
   /** Optional. True if full mesh connectivity is created and managed automatically between peered networks; false otherwise. Currently this field is always true because Google Compute Engine automatically creates and manages subnetwork routes between two VPC networks when peering state is 'ACTIVE'. */
   exchangeSubnetRoutes?: boolean;
   /** Required. The type of the network to peer with the VMware Engine network. */
-  peerNetworkType?: NetworkPeeringPeerNetworkTypeEnum;
+  peerNetworkType?: NetworkPeeringPeerNetworkTypeEnum | (string & {});
   /** Optional. User-provided description for this network peering. */
   description?: string;
   /** Optional. True if custom routes are exported to the peered network; false otherwise. The default value is true. */
@@ -282,7 +282,7 @@ export interface NetworkPeering {
   /** Required. The relative resource name of the network to peer with a standard VMware Engine network. The provided network can be a consumer VPC network or another standard VMware Engine network. If the `peer_network_type` is VMWARE_ENGINE_NETWORK, specify the name in the form: `projects/{project}/locations/global/vmwareEngineNetworks/{vmware_engine_network_id}`. Otherwise specify the name in the form: `projects/{project}/global/networks/{network_id}`, where `{project}` can either be a project number or a project ID. */
   peerNetwork?: string;
   /** Output only. State of the network peering. This field has a value of 'ACTIVE' when there's a matching configuration in the peer network. New values may be added to this enum when appropriate. */
-  state?: NetworkPeeringStateEnum;
+  state?: NetworkPeeringStateEnum | (string & {});
   /** Optional. True if all subnet routes with a public IP address range are exported; false otherwise. The default value is true. IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always exported to peers and are not controlled by this field. */
   exportCustomRoutesWithPublicIp?: boolean;
   /** Optional. True if custom routes are imported from the peered network; false otherwise. The default value is true. */
@@ -366,7 +366,7 @@ export interface NetworkService {
   /** True if the service is enabled; false otherwise. */
   enabled?: boolean;
   /** Output only. State of the service. New values may be added to this enum when appropriate. */
-  state?: NetworkServiceStateEnum;
+  state?: NetworkServiceStateEnum | (string & {});
 }
 export const NetworkService = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -475,7 +475,7 @@ export const IpRange = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "IpRange" }) as any as S.Schema<IpRange>;
 
-export type IpRangeList = ReadonlyArray<IpRange>;
+export type IpRangeList = Array<IpRange>;
 export const IpRangeList = /*@__PURE__*/ S.Array(
   IpRange,
 ) as any as S.Schema<IpRangeList>;
@@ -485,13 +485,13 @@ export interface ExternalAccessRule {
   /** Output only. The resource name of this external access rule. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/us-central1/networkPolicies/my-policy/externalAccessRules/my-rule` */
   name?: string;
   /** Output only. The state of the resource. */
-  state?: ExternalAccessRuleStateEnum;
+  state?: ExternalAccessRuleStateEnum | (string & {});
   /** A list of source ports to which the external access rule applies. This field is only applicable for the UDP or TCP protocol. Each entry must be either an integer or a range. For example: `["22"]`, `["80","443"]`, or `["12345-12349"]`. To match all source ports, specify `["0-65535"]`. */
   sourcePorts?: StringList;
   /** User-provided description for this external access rule. */
   description?: string;
   /** The action that the external access rule performs. */
-  action?: ExternalAccessRuleActionEnum;
+  action?: ExternalAccessRuleActionEnum | (string & {});
   /** The IP protocol to which the external access rule applies. This value can be one of the following three protocol strings (not case-sensitive): `tcp`, `udp`, or `icmp`. */
   ipProtocol?: string;
   /** External access rule priority, which determines the external access rule to use when multiple rules apply. If multiple rules have the same priority, their ordering is non-deterministic. If specific ordering is required, assign unique priorities to enforce such ordering. The external access rule priority is an integer from 100 to 4096, both inclusive. Lower integers indicate higher precedence. For example, a rule with priority `100` has higher precedence than a rule with priority `101`. */
@@ -575,7 +575,7 @@ export interface Hcx {
   /** Fully qualified domain name of the appliance. */
   fqdn?: string;
   /** Output only. The state of the appliance. */
-  state?: HcxStateEnum;
+  state?: HcxStateEnum | (string & {});
   /** Version of the appliance. */
   version?: string;
 }
@@ -596,7 +596,7 @@ export interface Nsx {
   /** Version of the appliance. */
   version?: string;
   /** Output only. The state of the appliance. */
-  state?: NsxStateEnum;
+  state?: NsxStateEnum | (string & {});
   /** Internal IP address of the appliance. */
   internalIp?: string;
   /** Fully qualified domain name of the appliance. */
@@ -678,7 +678,7 @@ export interface EncryptionConfig {
   /** Optional. The resource name of the Cloud KMS key to be used for CMEK encryption. The format of this field is `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`. The key must be in the same region as the private cloud. This key is used for wrapping the key-encrypting key of vSAN clusters. This field must be provided when `type` is `CMEK` or `LEGACY_CMEK`, and must not be set when `type` is `OTHER`. */
   cryptoKeyName?: string;
   /** Required. The encryption type of the private cloud. */
-  type?: EncryptionConfigTypeEnum;
+  type?: EncryptionConfigTypeEnum | (string & {});
 }
 export const EncryptionConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -731,7 +731,7 @@ export const VcenterStateEnum = /*@__PURE__*/ S.String;
 /** Details about a vCenter Server management appliance. */
 export interface Vcenter {
   /** Output only. The state of the appliance. */
-  state?: VcenterStateEnum;
+  state?: VcenterStateEnum | (string & {});
   /** Version of the appliance. */
   version?: string;
   /** Internal IP address of the appliance. */
@@ -771,9 +771,9 @@ export interface PrivateCloud {
   /** Output only. Identifier. The resource name of this private cloud. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/us-central1-a/privateClouds/my-cloud` */
   name?: string;
   /** Output only. State of the resource. New values may be added to this enum when appropriate. */
-  state?: PrivateCloudStateEnum;
+  state?: PrivateCloudStateEnum | (string & {});
   /** Optional. Type of the private cloud. Defaults to STANDARD. */
-  type?: PrivateCloudTypeEnum;
+  type?: PrivateCloudTypeEnum | (string & {});
   /** Required. Network configuration of the private cloud. */
   networkConfig?: NetworkConfig;
   /** Output only. Time when the resource will be irreversibly deleted. */
@@ -951,9 +951,9 @@ export interface DatastoreMountConfig {
   /** Output only. File share name. */
   fileShare?: string;
   /** Optional. The access mode of the NFS volume. Optional. Default value used will be READ_WRITE */
-  accessMode?: DatastoreMountConfigAccessModeEnum;
+  accessMode?: DatastoreMountConfigAccessModeEnum | (string & {});
   /** Optional. The NFS protocol supported by the NFS volume. Default value used will be NFS_V3 */
-  nfsVersion?: DatastoreMountConfigNfsVersionEnum;
+  nfsVersion?: DatastoreMountConfigNfsVersionEnum | (string & {});
   /** Required. The resource name of the datastore to mount. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/us-central1/datastores/my-datastore` */
   datastore?: string;
   /** Output only. Server IP addresses of the NFS volume. For NFS 3, you can only provide a single server IP address or DNS names. */
@@ -974,7 +974,7 @@ export const DatastoreMountConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "DatastoreMountConfig",
 }) as any as S.Schema<DatastoreMountConfig>;
 
-export type DatastoreMountConfigList = ReadonlyArray<DatastoreMountConfig>;
+export type DatastoreMountConfigList = Array<DatastoreMountConfig>;
 export const DatastoreMountConfigList = /*@__PURE__*/ S.Array(
   DatastoreMountConfig,
 ) as any as S.Schema<DatastoreMountConfigList>;
@@ -994,7 +994,7 @@ export interface Cluster {
   /** Output only. Identifier. The resource name of this cluster. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/us-central1-a/privateClouds/my-cloud/clusters/my-cluster` */
   name?: string;
   /** Output only. State of the resource. */
-  state?: ClusterStateEnum;
+  state?: ClusterStateEnum | (string & {});
   /** Required. The map of cluster node types in this cluster, where the key is canonical identifier of the node type (corresponds to the `NodeType`). */
   nodeTypeConfigs?: NodeTypeConfigMap;
   /** Output only. Creation time of this resource. */
@@ -1063,7 +1063,7 @@ export interface ExternalAddress {
   /** Output only. Last update time of this resource. */
   updateTime?: string;
   /** Output only. The state of the resource. */
-  state?: ExternalAddressStateEnum;
+  state?: ExternalAddressStateEnum | (string & {});
   /** User-provided description for this resource. */
   description?: string;
   /** The internal IP address of a workload VM. */
@@ -1139,7 +1139,7 @@ export interface HcxActivationKey {
   /** Output only. The resource name of this HcxActivationKey. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/us-central1/privateClouds/my-cloud/hcxActivationKeys/my-key` */
   name?: string;
   /** Output only. State of HCX activation key. */
-  state?: HcxActivationKeyStateEnum;
+  state?: HcxActivationKeyStateEnum | (string & {});
 }
 export const HcxActivationKey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1211,9 +1211,9 @@ export interface LoggingServer {
   /** Output only. Last update time of this resource. */
   updateTime?: string;
   /** Required. Protocol used by vCenter to send logs to a logging server. */
-  protocol?: LoggingServerProtocolEnum;
+  protocol?: LoggingServerProtocolEnum | (string & {});
   /** Required. The type of component that produces logs that will be forwarded to this logging server. */
-  sourceType?: LoggingServerSourceTypeEnum;
+  sourceType?: LoggingServerSourceTypeEnum | (string & {});
 }
 export const LoggingServer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1276,7 +1276,7 @@ export interface ManagementDnsZoneBinding {
   /** Output only. Last update time of this resource. */
   updateTime?: string;
   /** Output only. The state of the resource. */
-  state?: ManagementDnsZoneBindingStateEnum;
+  state?: ManagementDnsZoneBindingStateEnum | (string & {});
   /** Network to bind is a standard consumer VPC. Specify the name in the following form for consumer VPC network: `projects/{project}/global/networks/{network_id}`. `{project}` can either be a project number or a project ID. */
   vpcNetwork?: string;
   /** Network to bind is a VMware Engine network. Specify the name in the following form for VMware engine network: `projects/{project}/locations/global/vmwareEngineNetworks/{vmware_engine_network_id}`. `{project}` can either be a project number or a project ID. */
@@ -1367,7 +1367,7 @@ export interface PrivateConnection {
   /** Output only. System-generated unique identifier for the resource. */
   uid?: string;
   /** Output only. Peering state between service network and VMware Engine network. */
-  peeringState?: PrivateConnectionPeeringStateEnum;
+  peeringState?: PrivateConnectionPeeringStateEnum | (string & {});
   /** Output only. Creation time of this resource. */
   createTime?: string;
   /** Optional. User-provided description for this private connection. */
@@ -1379,11 +1379,11 @@ export interface PrivateConnection {
   /** Output only. The resource name of the private connection. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/us-central1/privateConnections/my-connection` */
   name?: string;
   /** Output only. State of the private connection. */
-  state?: PrivateConnectionStateEnum;
+  state?: PrivateConnectionStateEnum | (string & {});
   /** Required. Private connection type. */
-  type?: PrivateConnectionTypeEnum;
+  type?: PrivateConnectionTypeEnum | (string & {});
   /** Optional. Routing Mode. Default value is set to GLOBAL. For type = PRIVATE_SERVICE_ACCESS, this field can be set to GLOBAL or REGIONAL, for other types only GLOBAL is supported. */
-  routingMode?: PrivateConnectionRoutingModeEnum;
+  routingMode?: PrivateConnectionRoutingModeEnum | (string & {});
   /** Required. Service network to create private connection. Specify the name in the following form: `projects/{project}/global/networks/{network_id}` For type = PRIVATE_SERVICE_ACCESS, this field represents servicenetworking VPC, e.g. projects/project-tp/global/networks/servicenetworking. For type = NETAPP_CLOUD_VOLUME, this field represents NetApp service VPC, e.g. projects/project-tp/global/networks/netapp-tenant-vpc. For type = DELL_POWERSCALE, this field represent Dell service VPC, e.g. projects/project-tp/global/networks/dell-tenant-vpc. For type= THIRD_PARTY_SERVICE, this field could represent a consumer VPC or any other producer VPC to which the VMware Engine Network needs to be connected, e.g. projects/project/global/networks/vpc. */
   serviceNetwork?: string;
 }
@@ -1462,7 +1462,7 @@ export const VpcNetworkTypeEnum = /*@__PURE__*/ S.String;
 /** Represents a VMware Engine VPC network that is managed by a VMware Engine network resource. */
 export interface VpcNetwork {
   /** Output only. Type of VPC network (INTRANET, INTERNET, or GOOGLE_CLOUD) */
-  type?: VpcNetworkTypeEnum;
+  type?: VpcNetworkTypeEnum | (string & {});
   /** Output only. The relative resource name of the service VPC network this VMware Engine network is attached to. For example: `projects/123123/global/networks/my-network` */
   network?: string;
 }
@@ -1473,7 +1473,7 @@ export const VpcNetwork = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "VpcNetwork" }) as any as S.Schema<VpcNetwork>;
 
-export type VpcNetworkList = ReadonlyArray<VpcNetwork>;
+export type VpcNetworkList = Array<VpcNetwork>;
 export const VpcNetworkList = /*@__PURE__*/ S.Array(
   VpcNetwork,
 ) as any as S.Schema<VpcNetworkList>;
@@ -1485,9 +1485,9 @@ export interface VmwareEngineNetwork {
   /** Output only. Identifier. The resource name of the VMware Engine network. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/global/vmwareEngineNetworks/my-network` */
   name?: string;
   /** Output only. State of the VMware Engine network. */
-  state?: VmwareEngineNetworkStateEnum;
+  state?: VmwareEngineNetworkStateEnum | (string & {});
   /** Required. VMware Engine network type. */
-  type?: VmwareEngineNetworkTypeEnum;
+  type?: VmwareEngineNetworkTypeEnum | (string & {});
   /** Output only. VMware Engine service VPC networks that provide connectivity from a private cloud to customer projects, the internet, and other Google Cloud services. */
   vpcNetworks?: VpcNetworkList;
   /** User-provided description for this VMware Engine network. */
@@ -1852,7 +1852,7 @@ export const FetchExternalAddressesProjectsLocationsNetworkPoliciesRequest =
     identifier: "FetchExternalAddressesProjectsLocationsNetworkPoliciesRequest",
   }) as any as S.Schema<FetchExternalAddressesProjectsLocationsNetworkPoliciesRequest>;
 
-export type ExternalAddressList = ReadonlyArray<ExternalAddress>;
+export type ExternalAddressList = Array<ExternalAddress>;
 export const ExternalAddressList = /*@__PURE__*/ S.Array(
   ExternalAddress,
 ) as any as S.Schema<ExternalAddressList>;
@@ -1907,7 +1907,7 @@ export const Principal = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Principal" }) as any as S.Schema<Principal>;
 
-export type PrincipalList = ReadonlyArray<Principal>;
+export type PrincipalList = Array<Principal>;
 export const PrincipalList = /*@__PURE__*/ S.Array(
   Principal,
 ) as any as S.Schema<PrincipalList>;
@@ -1961,7 +1961,7 @@ export const ForwardingRule = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ForwardingRule" }) as any as S.Schema<ForwardingRule>;
 
-export type ForwardingRuleList = ReadonlyArray<ForwardingRule>;
+export type ForwardingRuleList = Array<ForwardingRule>;
 export const ForwardingRuleList = /*@__PURE__*/ S.Array(
   ForwardingRule,
 ) as any as S.Schema<ForwardingRuleList>;
@@ -2045,7 +2045,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
-export type BindingList = ReadonlyArray<Binding>;
+export type BindingList = Array<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -2062,7 +2062,7 @@ export interface AuditLogConfig {
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
   exemptedMembers?: StringList;
   /** The log type that this config enables. */
-  logType?: AuditLogConfigLogTypeEnum;
+  logType?: AuditLogConfigLogTypeEnum | (string & {});
 }
 export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2071,7 +2071,7 @@ export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
-export type AuditLogConfigList = ReadonlyArray<AuditLogConfig>;
+export type AuditLogConfigList = Array<AuditLogConfig>;
 export const AuditLogConfigList = /*@__PURE__*/ S.Array(
   AuditLogConfig,
 ) as any as S.Schema<AuditLogConfigList>;
@@ -2090,7 +2090,7 @@ export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
-export type AuditConfigList = ReadonlyArray<AuditConfig>;
+export type AuditConfigList = Array<AuditConfig>;
 export const AuditConfigList = /*@__PURE__*/ S.Array(
   AuditConfig,
 ) as any as S.Schema<AuditConfigList>;
@@ -2376,7 +2376,7 @@ export type NodeTypeCapabilitiesItemEnum =
 export const NodeTypeCapabilitiesItemEnum = /*@__PURE__*/ S.String;
 
 export type NodeTypeCapabilitiesItemEnumList =
-  ReadonlyArray<NodeTypeCapabilitiesItemEnum>;
+  Array<NodeTypeCapabilitiesItemEnum>;
 export const NodeTypeCapabilitiesItemEnumList = /*@__PURE__*/ S.Array(
   NodeTypeCapabilitiesItemEnum,
 ) as any as S.Schema<NodeTypeCapabilitiesItemEnumList>;
@@ -2384,7 +2384,7 @@ export const NodeTypeCapabilitiesItemEnumList = /*@__PURE__*/ S.Array(
 export type NodeTypeKindEnum = "KIND_UNSPECIFIED" | "STANDARD" | "STORAGE_ONLY";
 export const NodeTypeKindEnum = /*@__PURE__*/ S.String;
 
-export type IntegerList = ReadonlyArray<number>;
+export type IntegerList = Array<number>;
 export const IntegerList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<IntegerList>;
@@ -2656,7 +2656,7 @@ export interface Subnet {
   /** Output only. Identifier. The resource name of this subnet. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/us-central1-a/privateClouds/my-cloud/subnets/my-subnet` */
   name?: string;
   /** Output only. The state of the resource. */
-  state?: SubnetStateEnum;
+  state?: SubnetStateEnum | (string & {});
   /** Output only. The type of the subnet. For example "management" or "userDefined". */
   type?: string;
   /** The IP address range of the subnet in CIDR format '10.0.0.0/24'. */
@@ -2742,7 +2742,7 @@ export const TimeOfDay = /*@__PURE__*/ S.suspend(() =>
 /** Represents the time window to perform upgrade activities. */
 export interface TimeWindow {
   /** Required. Day of the week for this window. */
-  dayOfWeek?: TimeWindowDayOfWeekEnum;
+  dayOfWeek?: TimeWindowDayOfWeekEnum | (string & {});
   /** Required. Time in UTC when the window starts. */
   startTime?: TimeOfDay;
   /** Required. The duration of the window. The max allowed duration for any window is 24 hours. */
@@ -2756,7 +2756,7 @@ export const TimeWindow = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TimeWindow" }) as any as S.Schema<TimeWindow>;
 
-export type TimeWindowList = ReadonlyArray<TimeWindow>;
+export type TimeWindowList = Array<TimeWindow>;
 export const TimeWindowList = /*@__PURE__*/ S.Array(
   TimeWindow,
 ) as any as S.Schema<TimeWindowList>;
@@ -2789,9 +2789,9 @@ export const WeeklyTimeIntervalEndDayEnum = /*@__PURE__*/ S.String;
 /** Represents a time interval, spanning across days of the week. Until local timezones are supported, this interval is in UTC. */
 export interface WeeklyTimeInterval {
   /** Output only. The day on which the interval starts. */
-  startDay?: WeeklyTimeIntervalStartDayEnum;
+  startDay?: WeeklyTimeIntervalStartDayEnum | (string & {});
   /** Output only. The day on which the interval ends. Can be same as start day. */
-  endDay?: WeeklyTimeIntervalEndDayEnum;
+  endDay?: WeeklyTimeIntervalEndDayEnum | (string & {});
   /** Output only. The time on the end day at which the interval ends. */
   endTime?: TimeOfDay;
   /** Output only. The time on the start day at which the interval starts. */
@@ -2808,7 +2808,7 @@ export const WeeklyTimeInterval = /*@__PURE__*/ S.suspend(() =>
   identifier: "WeeklyTimeInterval",
 }) as any as S.Schema<WeeklyTimeInterval>;
 
-export type WeeklyTimeIntervalList = ReadonlyArray<WeeklyTimeInterval>;
+export type WeeklyTimeIntervalList = Array<WeeklyTimeInterval>;
 export const WeeklyTimeIntervalList = /*@__PURE__*/ S.Array(
   WeeklyTimeInterval,
 ) as any as S.Schema<WeeklyTimeIntervalList>;
@@ -2840,7 +2840,7 @@ export interface Schedule {
   /** Required. Weekly time windows for upgrade activities. The server performs upgrade activities during these time windows to minimize disruptions. */
   weeklyWindows?: TimeWindowList;
   /** Output only. Output Only. Indicates who most recently edited the upgrade schedule. The value is updated whenever the upgrade is rescheduled. */
-  lastEditor?: ScheduleLastEditorEnum;
+  lastEditor?: ScheduleLastEditorEnum | (string & {});
   /** Required. The scheduled start time for the upgrade. */
   startTime?: string;
   /** Output only. Output Only. Constraints applied to the schedule. These constraints should be applicable at the time of any rescheduling. */
@@ -2910,9 +2910,9 @@ export const VmwareUpgradeComponentStateEnum = /*@__PURE__*/ S.String;
 /** Per component upgrade resource */
 export interface VmwareUpgradeComponent {
   /** Output only. Type of component */
-  componentType?: VmwareUpgradeComponentComponentTypeEnum;
+  componentType?: VmwareUpgradeComponentComponentTypeEnum | (string & {});
   /** Output only. Component's upgrade state. */
-  state?: VmwareUpgradeComponentStateEnum;
+  state?: VmwareUpgradeComponentStateEnum | (string & {});
 }
 export const VmwareUpgradeComponent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2923,7 +2923,7 @@ export const VmwareUpgradeComponent = /*@__PURE__*/ S.suspend(() =>
   identifier: "VmwareUpgradeComponent",
 }) as any as S.Schema<VmwareUpgradeComponent>;
 
-export type VmwareUpgradeComponentList = ReadonlyArray<VmwareUpgradeComponent>;
+export type VmwareUpgradeComponentList = Array<VmwareUpgradeComponent>;
 export const VmwareUpgradeComponentList = /*@__PURE__*/ S.Array(
   VmwareUpgradeComponent,
 ) as any as S.Schema<VmwareUpgradeComponentList>;
@@ -2947,11 +2947,11 @@ export interface Upgrade {
   /** Output only. Output Only. The estimated total duration of the upgrade. This information can be used to plan or schedule upgrades to minimize disruptions. Please note that the estimated duration is only an estimate. The actual upgrade duration may vary. */
   estimatedDuration?: string;
   /** Output only. Output Only. The type of upgrade. */
-  type?: UpgradeTypeEnum;
+  type?: UpgradeTypeEnum | (string & {});
   /** Output only. Identifier. The resource name of the private cloud `Upgrade`. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/us-west1-a/privateClouds/my-cloud/upgrades/my-upgrade` */
   name?: string;
   /** Output only. The current state of the upgrade. */
-  state?: UpgradeStateEnum;
+  state?: UpgradeStateEnum | (string & {});
   /** Output only. Output Only. The description of the upgrade. This is used to provide additional information about the private cloud upgrade, such as the upgrade's purpose, the changes included in the upgrade, or any other relevant information about the upgrade. */
   description?: string;
   /** The etag for the upgrade resource. If this is provided on update, it must match the server's etag. */
@@ -3087,7 +3087,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = ReadonlyArray<Location>;
+export type LocationList = Array<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -3139,7 +3139,7 @@ export const ListProjectsLocationsAnnouncementsRequest =
     identifier: "ListProjectsLocationsAnnouncementsRequest",
   }) as any as S.Schema<ListProjectsLocationsAnnouncementsRequest>;
 
-export type AnnouncementList = ReadonlyArray<Announcement>;
+export type AnnouncementList = Array<Announcement>;
 export const AnnouncementList = /*@__PURE__*/ S.Array(
   Announcement,
 ) as any as S.Schema<AnnouncementList>;
@@ -3197,7 +3197,7 @@ export const ListProjectsLocationsDatastoresRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsDatastoresRequest",
 }) as any as S.Schema<ListProjectsLocationsDatastoresRequest>;
 
-export type DatastoreList = ReadonlyArray<Datastore>;
+export type DatastoreList = Array<Datastore>;
 export const DatastoreList = /*@__PURE__*/ S.Array(
   Datastore,
 ) as any as S.Schema<DatastoreList>;
@@ -3252,7 +3252,7 @@ export const ListProjectsLocationsNetworkPeeringsRequest =
     identifier: "ListProjectsLocationsNetworkPeeringsRequest",
   }) as any as S.Schema<ListProjectsLocationsNetworkPeeringsRequest>;
 
-export type NetworkPeeringList = ReadonlyArray<NetworkPeering>;
+export type NetworkPeeringList = Array<NetworkPeering>;
 export const NetworkPeeringList = /*@__PURE__*/ S.Array(
   NetworkPeering,
 ) as any as S.Schema<NetworkPeeringList>;
@@ -3343,7 +3343,7 @@ export const PeeringRoute = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PeeringRoute" }) as any as S.Schema<PeeringRoute>;
 
-export type PeeringRouteList = ReadonlyArray<PeeringRoute>;
+export type PeeringRouteList = Array<PeeringRoute>;
 export const PeeringRouteList = /*@__PURE__*/ S.Array(
   PeeringRoute,
 ) as any as S.Schema<PeeringRouteList>;
@@ -3395,7 +3395,7 @@ export const ListProjectsLocationsNetworkPoliciesRequest =
     identifier: "ListProjectsLocationsNetworkPoliciesRequest",
   }) as any as S.Schema<ListProjectsLocationsNetworkPoliciesRequest>;
 
-export type NetworkPolicyList = ReadonlyArray<NetworkPolicy>;
+export type NetworkPolicyList = Array<NetworkPolicy>;
 export const NetworkPolicyList = /*@__PURE__*/ S.Array(
   NetworkPolicy,
 ) as any as S.Schema<NetworkPolicyList>;
@@ -3451,7 +3451,7 @@ export const ListProjectsLocationsNetworkPoliciesExternalAccessRulesRequest =
       "ListProjectsLocationsNetworkPoliciesExternalAccessRulesRequest",
   }) as any as S.Schema<ListProjectsLocationsNetworkPoliciesExternalAccessRulesRequest>;
 
-export type ExternalAccessRuleList = ReadonlyArray<ExternalAccessRule>;
+export type ExternalAccessRuleList = Array<ExternalAccessRule>;
 export const ExternalAccessRuleList = /*@__PURE__*/ S.Array(
   ExternalAccessRule,
 ) as any as S.Schema<ExternalAccessRuleList>;
@@ -3503,7 +3503,7 @@ export const ListProjectsLocationsNodeTypesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsNodeTypesRequest",
 }) as any as S.Schema<ListProjectsLocationsNodeTypesRequest>;
 
-export type NodeTypeList = ReadonlyArray<NodeType>;
+export type NodeTypeList = Array<NodeType>;
 export const NodeTypeList = /*@__PURE__*/ S.Array(
   NodeType,
 ) as any as S.Schema<NodeTypeList>;
@@ -3558,7 +3558,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type OperationList = ReadonlyArray<Operation>;
+export type OperationList = Array<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -3613,7 +3613,7 @@ export const ListProjectsLocationsPrivateCloudsRequest =
     identifier: "ListProjectsLocationsPrivateCloudsRequest",
   }) as any as S.Schema<ListProjectsLocationsPrivateCloudsRequest>;
 
-export type PrivateCloudList = ReadonlyArray<PrivateCloud>;
+export type PrivateCloudList = Array<PrivateCloud>;
 export const PrivateCloudList = /*@__PURE__*/ S.Array(
   PrivateCloud,
 ) as any as S.Schema<PrivateCloudList>;
@@ -3668,7 +3668,7 @@ export const ListProjectsLocationsPrivateCloudsClustersRequest =
     identifier: "ListProjectsLocationsPrivateCloudsClustersRequest",
   }) as any as S.Schema<ListProjectsLocationsPrivateCloudsClustersRequest>;
 
-export type ClusterList = ReadonlyArray<Cluster>;
+export type ClusterList = Array<Cluster>;
 export const ClusterList = /*@__PURE__*/ S.Array(
   Cluster,
 ) as any as S.Schema<ClusterList>;
@@ -3717,7 +3717,7 @@ export const ListProjectsLocationsPrivateCloudsClustersNodesRequest =
     identifier: "ListProjectsLocationsPrivateCloudsClustersNodesRequest",
   }) as any as S.Schema<ListProjectsLocationsPrivateCloudsClustersNodesRequest>;
 
-export type NodeList = ReadonlyArray<Node>;
+export type NodeList = Array<Node>;
 export const NodeList = /*@__PURE__*/ S.Array(
   Node,
 ) as any as S.Schema<NodeList>;
@@ -3813,7 +3813,7 @@ export const ListProjectsLocationsPrivateCloudsHcxActivationKeysRequest =
     identifier: "ListProjectsLocationsPrivateCloudsHcxActivationKeysRequest",
   }) as any as S.Schema<ListProjectsLocationsPrivateCloudsHcxActivationKeysRequest>;
 
-export type HcxActivationKeyList = ReadonlyArray<HcxActivationKey>;
+export type HcxActivationKeyList = Array<HcxActivationKey>;
 export const HcxActivationKeyList = /*@__PURE__*/ S.Array(
   HcxActivationKey,
 ) as any as S.Schema<HcxActivationKeyList>;
@@ -3868,7 +3868,7 @@ export const ListProjectsLocationsPrivateCloudsLoggingServersRequest =
     identifier: "ListProjectsLocationsPrivateCloudsLoggingServersRequest",
   }) as any as S.Schema<ListProjectsLocationsPrivateCloudsLoggingServersRequest>;
 
-export type LoggingServerList = ReadonlyArray<LoggingServer>;
+export type LoggingServerList = Array<LoggingServer>;
 export const LoggingServerList = /*@__PURE__*/ S.Array(
   LoggingServer,
 ) as any as S.Schema<LoggingServerList>;
@@ -3924,8 +3924,7 @@ export const ListProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRequest 
       "ListProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRequest",
   }) as any as S.Schema<ListProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRequest>;
 
-export type ManagementDnsZoneBindingList =
-  ReadonlyArray<ManagementDnsZoneBinding>;
+export type ManagementDnsZoneBindingList = Array<ManagementDnsZoneBinding>;
 export const ManagementDnsZoneBindingList = /*@__PURE__*/ S.Array(
   ManagementDnsZoneBinding,
 ) as any as S.Schema<ManagementDnsZoneBindingList>;
@@ -3975,7 +3974,7 @@ export const ListProjectsLocationsPrivateCloudsSubnetsRequest =
     identifier: "ListProjectsLocationsPrivateCloudsSubnetsRequest",
   }) as any as S.Schema<ListProjectsLocationsPrivateCloudsSubnetsRequest>;
 
-export type SubnetList = ReadonlyArray<Subnet>;
+export type SubnetList = Array<Subnet>;
 export const SubnetList = /*@__PURE__*/ S.Array(
   Subnet,
 ) as any as S.Schema<SubnetList>;
@@ -4030,7 +4029,7 @@ export const ListProjectsLocationsPrivateCloudsUpgradesRequest =
     identifier: "ListProjectsLocationsPrivateCloudsUpgradesRequest",
   }) as any as S.Schema<ListProjectsLocationsPrivateCloudsUpgradesRequest>;
 
-export type UpgradeList = ReadonlyArray<Upgrade>;
+export type UpgradeList = Array<Upgrade>;
 export const UpgradeList = /*@__PURE__*/ S.Array(
   Upgrade,
 ) as any as S.Schema<UpgradeList>;
@@ -4085,7 +4084,7 @@ export const ListProjectsLocationsPrivateConnectionsRequest =
     identifier: "ListProjectsLocationsPrivateConnectionsRequest",
   }) as any as S.Schema<ListProjectsLocationsPrivateConnectionsRequest>;
 
-export type PrivateConnectionList = ReadonlyArray<PrivateConnection>;
+export type PrivateConnectionList = Array<PrivateConnection>;
 export const PrivateConnectionList = /*@__PURE__*/ S.Array(
   PrivateConnection,
 ) as any as S.Schema<PrivateConnectionList>;
@@ -4182,7 +4181,7 @@ export const ListProjectsLocationsVmwareEngineNetworksRequest =
     identifier: "ListProjectsLocationsVmwareEngineNetworksRequest",
   }) as any as S.Schema<ListProjectsLocationsVmwareEngineNetworksRequest>;
 
-export type VmwareEngineNetworkList = ReadonlyArray<VmwareEngineNetwork>;
+export type VmwareEngineNetworkList = Array<VmwareEngineNetwork>;
 export const VmwareEngineNetworkList = /*@__PURE__*/ S.Array(
   VmwareEngineNetwork,
 ) as any as S.Schema<VmwareEngineNetworkList>;

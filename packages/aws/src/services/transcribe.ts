@@ -178,7 +178,7 @@ export const ParticipantRole = /*@__PURE__*/ S.String;
 
 export interface InterruptionFilter {
   Threshold?: number;
-  ParticipantRole?: ParticipantRole;
+  ParticipantRole?: ParticipantRole | (string & {});
   AbsoluteTimeRange?: AbsoluteTimeRange;
   RelativeTimeRange?: RelativeTimeRange;
   Negate?: boolean;
@@ -201,10 +201,10 @@ export type NonEmptyString = string;
 export type StringTargetList = string[];
 export const StringTargetList = /*@__PURE__*/ S.Array(S.String);
 export interface TranscriptFilter {
-  TranscriptFilterType: TranscriptFilterType;
+  TranscriptFilterType: TranscriptFilterType | (string & {});
   AbsoluteTimeRange?: AbsoluteTimeRange;
   RelativeTimeRange?: RelativeTimeRange;
-  ParticipantRole?: ParticipantRole;
+  ParticipantRole?: ParticipantRole | (string & {});
   Negate?: boolean;
   Targets: string[];
 }
@@ -223,13 +223,13 @@ export const TranscriptFilter = /*@__PURE__*/ S.suspend(() =>
 export type SentimentValue = "POSITIVE" | "NEGATIVE" | "NEUTRAL" | "MIXED";
 export const SentimentValue = /*@__PURE__*/ S.String;
 
-export type SentimentValueList = SentimentValue[];
+export type SentimentValueList = (SentimentValue | (string & {}))[];
 export const SentimentValueList = /*@__PURE__*/ S.Array(SentimentValue);
 export interface SentimentFilter {
   Sentiments: SentimentValue[];
   AbsoluteTimeRange?: AbsoluteTimeRange;
   RelativeTimeRange?: RelativeTimeRange;
-  ParticipantRole?: ParticipantRole;
+  ParticipantRole?: ParticipantRole | (string & {});
   Negate?: boolean;
 }
 export const SentimentFilter = /*@__PURE__*/ S.suspend(() =>
@@ -1138,11 +1138,11 @@ export type PiiEntityType =
   | "ALL";
 export const PiiEntityType = /*@__PURE__*/ S.String;
 
-export type PiiEntityTypes = PiiEntityType[];
+export type PiiEntityTypes = (PiiEntityType | (string & {}))[];
 export const PiiEntityTypes = /*@__PURE__*/ S.Array(PiiEntityType);
 export interface ContentRedaction {
-  RedactionType: RedactionType;
-  RedactionOutput: RedactionOutput;
+  RedactionType: RedactionType | (string & {});
+  RedactionOutput: RedactionOutput | (string & {});
   PiiEntityTypes?: PiiEntityType[];
 }
 export const ContentRedaction = /*@__PURE__*/ S.suspend(() =>
@@ -1154,7 +1154,7 @@ export const ContentRedaction = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ContentRedaction",
 }) as any as S.Schema<ContentRedaction>;
-export type LanguageOptions = LanguageCode[];
+export type LanguageOptions = (LanguageCode | (string & {}))[];
 export const LanguageOptions = /*@__PURE__*/ S.Array(LanguageCode);
 export interface LanguageIdSettings {
   VocabularyName?: string;
@@ -1171,7 +1171,7 @@ export const LanguageIdSettings = /*@__PURE__*/ S.suspend(() =>
   identifier: "LanguageIdSettings",
 }) as any as S.Schema<LanguageIdSettings>;
 export type LanguageIdSettingsMap = {
-  [key in LanguageCode]?: LanguageIdSettings;
+  [key in LanguageCode | (string & {})]?: LanguageIdSettings;
 };
 export const LanguageIdSettingsMap = /*@__PURE__*/ S.Record(
   LanguageCode,
@@ -1186,7 +1186,7 @@ export const Summarization = /*@__PURE__*/ S.suspend(() =>
 export interface CallAnalyticsJobSettings {
   VocabularyName?: string;
   VocabularyFilterName?: string;
-  VocabularyFilterMethod?: VocabularyFilterMethod;
+  VocabularyFilterMethod?: VocabularyFilterMethod | (string & {});
   LanguageModelName?: string;
   ContentRedaction?: ContentRedaction;
   LanguageOptions?: LanguageCode[];
@@ -1210,7 +1210,7 @@ export const CallAnalyticsJobSettings = /*@__PURE__*/ S.suspend(() =>
 export type ChannelId = number;
 export interface ChannelDefinition {
   ChannelId?: number;
-  ParticipantRole?: ParticipantRole;
+  ParticipantRole?: ParticipantRole | (string & {});
 }
 export const ChannelDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1325,7 +1325,7 @@ export type MedicalScribeNoteTemplate =
 export const MedicalScribeNoteTemplate = /*@__PURE__*/ S.String;
 
 export interface ClinicalNoteGenerationSettings {
-  NoteTemplate?: MedicalScribeNoteTemplate;
+  NoteTemplate?: MedicalScribeNoteTemplate | (string & {});
 }
 export const ClinicalNoteGenerationSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ NoteTemplate: S.optional(MedicalScribeNoteTemplate) }),
@@ -1338,7 +1338,7 @@ export interface MedicalScribeSettings {
   ChannelIdentification?: boolean;
   VocabularyName?: string;
   VocabularyFilterName?: string;
-  VocabularyFilterMethod?: VocabularyFilterMethod;
+  VocabularyFilterMethod?: VocabularyFilterMethod | (string & {});
   ClinicalNoteGenerationSettings?: ClinicalNoteGenerationSettings;
 }
 export const MedicalScribeSettings = /*@__PURE__*/ S.suspend(() =>
@@ -1360,7 +1360,7 @@ export const MedicalScribeParticipantRole = /*@__PURE__*/ S.String;
 
 export interface MedicalScribeChannelDefinition {
   ChannelId: number;
-  ParticipantRole: MedicalScribeParticipantRole;
+  ParticipantRole: MedicalScribeParticipantRole | (string & {});
 }
 export const MedicalScribeChannelDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1607,7 +1607,7 @@ export interface Settings {
   ShowAlternatives?: boolean;
   MaxAlternatives?: number;
   VocabularyFilterName?: string;
-  VocabularyFilterMethod?: VocabularyFilterMethod;
+  VocabularyFilterMethod?: VocabularyFilterMethod | (string & {});
 }
 export const Settings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1657,7 +1657,7 @@ export const LanguageCodeList = /*@__PURE__*/ S.Array(LanguageCodeItem);
 export type SubtitleFormat = "vtt" | "srt";
 export const SubtitleFormat = /*@__PURE__*/ S.String;
 
-export type SubtitleFormats = SubtitleFormat[];
+export type SubtitleFormats = (SubtitleFormat | (string & {}))[];
 export const SubtitleFormats = /*@__PURE__*/ S.Array(SubtitleFormat);
 export type SubtitleFileUris = string[];
 export const SubtitleFileUris = /*@__PURE__*/ S.Array(S.String);
@@ -1679,7 +1679,7 @@ export const SubtitlesOutput = /*@__PURE__*/ S.suspend(() =>
 export type ToxicityCategory = "ALL";
 export const ToxicityCategory = /*@__PURE__*/ S.String;
 
-export type ToxicityCategories = ToxicityCategory[];
+export type ToxicityCategories = (ToxicityCategory | (string & {}))[];
 export const ToxicityCategories = /*@__PURE__*/ S.Array(ToxicityCategory);
 export interface ToxicityDetectionSettings {
   ToxicityCategories: ToxicityCategory[];

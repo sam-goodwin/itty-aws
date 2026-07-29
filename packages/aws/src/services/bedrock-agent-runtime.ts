@@ -1712,7 +1712,7 @@ export const ImageSource = /*@__PURE__*/ S.Union([
   S.Struct({ s3Location: S3Location }),
 ]);
 export interface ImageBlock {
-  format: ImageFormat;
+  format: ImageFormat | (string & {});
   source: ImageSource;
 }
 export const ImageBlock = /*@__PURE__*/ S.suspend(() =>
@@ -1825,7 +1825,7 @@ export const ImageInputSource = /*@__PURE__*/ S.Union([
   S.Struct({ bytes: T.Blob }),
 ]);
 export interface ImageInput {
-  format: ImageInputFormat;
+  format: ImageInputFormat | (string & {});
   source: ImageInputSource;
 }
 export const ImageInput = /*@__PURE__*/ S.suspend(() =>
@@ -1849,8 +1849,8 @@ export interface ApiResult {
   actionGroup: string;
   httpMethod?: string;
   apiPath?: string | redacted.Redacted<string>;
-  confirmationState?: ConfirmationState;
-  responseState?: ResponseState;
+  confirmationState?: ConfirmationState | (string & {});
+  responseState?: ResponseState | (string & {});
   httpStatusCode?: number;
   responseBody?: { [key: string]: ContentBody | undefined };
   agentId?: string;
@@ -1869,10 +1869,10 @@ export const ApiResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ApiResult" }) as any as S.Schema<ApiResult>;
 export interface FunctionResult {
   actionGroup: string;
-  confirmationState?: ConfirmationState;
+  confirmationState?: ConfirmationState | (string & {});
   function?: string;
   responseBody?: { [key: string]: ContentBody | undefined };
-  responseState?: ResponseState;
+  responseState?: ResponseState | (string & {});
   agentId?: string;
 }
 export const FunctionResult = /*@__PURE__*/ S.suspend(() =>
@@ -6253,7 +6253,7 @@ export type RerankDocumentType = "TEXT" | "JSON";
 export const RerankDocumentType = /*@__PURE__*/ S.String;
 
 export interface RerankDocument {
-  type: RerankDocumentType;
+  type: RerankDocumentType | (string & {});
   textDocument?: RerankTextDocument;
   jsonDocument?: any;
 }

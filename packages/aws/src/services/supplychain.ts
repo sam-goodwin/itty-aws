@@ -171,7 +171,7 @@ export type DataIntegrationFlowFileType = "CSV" | "PARQUET" | "JSON";
 export const DataIntegrationFlowFileType = /*@__PURE__*/ S.String;
 
 export interface DataIntegrationFlowS3Options {
-  fileType?: DataIntegrationFlowFileType;
+  fileType?: DataIntegrationFlowFileType | (string & {});
 }
 export const DataIntegrationFlowS3Options = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ fileType: S.optional(DataIntegrationFlowFileType) }),
@@ -207,7 +207,7 @@ export const DataIntegrationFlowFieldPriorityDedupeSortOrder =
 
 export interface DataIntegrationFlowFieldPriorityDedupeField {
   name: string;
-  sortOrder: DataIntegrationFlowFieldPriorityDedupeSortOrder;
+  sortOrder: DataIntegrationFlowFieldPriorityDedupeSortOrder | (string & {});
 }
 export const DataIntegrationFlowFieldPriorityDedupeField =
   /*@__PURE__*/ S.suspend(() =>
@@ -232,7 +232,7 @@ export const DataIntegrationFlowFieldPriorityDedupeStrategyConfiguration =
     identifier: "DataIntegrationFlowFieldPriorityDedupeStrategyConfiguration",
   }) as any as S.Schema<DataIntegrationFlowFieldPriorityDedupeStrategyConfiguration>;
 export interface DataIntegrationFlowDedupeStrategy {
-  type: DataIntegrationFlowDedupeStrategyType;
+  type: DataIntegrationFlowDedupeStrategyType | (string & {});
   fieldPriority?: DataIntegrationFlowFieldPriorityDedupeStrategyConfiguration;
 }
 export const DataIntegrationFlowDedupeStrategy = /*@__PURE__*/ S.suspend(() =>
@@ -246,7 +246,7 @@ export const DataIntegrationFlowDedupeStrategy = /*@__PURE__*/ S.suspend(() =>
   identifier: "DataIntegrationFlowDedupeStrategy",
 }) as any as S.Schema<DataIntegrationFlowDedupeStrategy>;
 export interface DataIntegrationFlowDatasetOptions {
-  loadType?: DataIntegrationFlowLoadType;
+  loadType?: DataIntegrationFlowLoadType | (string & {});
   dedupeRecords?: boolean;
   dedupeStrategy?: DataIntegrationFlowDedupeStrategy;
 }
@@ -273,7 +273,7 @@ export const DataIntegrationFlowDatasetSourceConfiguration =
     identifier: "DataIntegrationFlowDatasetSourceConfiguration",
   }) as any as S.Schema<DataIntegrationFlowDatasetSourceConfiguration>;
 export interface DataIntegrationFlowSource {
-  sourceType: DataIntegrationFlowSourceType;
+  sourceType: DataIntegrationFlowSourceType | (string & {});
   sourceName: string;
   s3Source?: DataIntegrationFlowS3SourceConfiguration;
   datasetSource?: DataIntegrationFlowDatasetSourceConfiguration;
@@ -304,7 +304,7 @@ export const DataIntegrationFlowSQLTransformationConfiguration =
     identifier: "DataIntegrationFlowSQLTransformationConfiguration",
   }) as any as S.Schema<DataIntegrationFlowSQLTransformationConfiguration>;
 export interface DataIntegrationFlowTransformation {
-  transformationType: DataIntegrationFlowTransformationType;
+  transformationType: DataIntegrationFlowTransformationType | (string & {});
   sqlTransformation?: DataIntegrationFlowSQLTransformationConfiguration;
 }
 export const DataIntegrationFlowTransformation = /*@__PURE__*/ S.suspend(() =>
@@ -349,7 +349,7 @@ export const DataIntegrationFlowDatasetTargetConfiguration =
     identifier: "DataIntegrationFlowDatasetTargetConfiguration",
   }) as any as S.Schema<DataIntegrationFlowDatasetTargetConfiguration>;
 export interface DataIntegrationFlowTarget {
-  targetType: DataIntegrationFlowTargetType;
+  targetType: DataIntegrationFlowTargetType | (string & {});
   s3Target?: DataIntegrationFlowS3TargetConfiguration;
   datasetTarget?: DataIntegrationFlowDatasetTargetConfiguration;
 }
@@ -424,7 +424,7 @@ export const DataLakeDatasetSchemaFieldType = /*@__PURE__*/ S.String;
 
 export interface DataLakeDatasetSchemaField {
   name: string;
-  type: DataLakeDatasetSchemaFieldType;
+  type: DataLakeDatasetSchemaFieldType | (string & {});
   isRequired: boolean;
 }
 export const DataLakeDatasetSchemaField = /*@__PURE__*/ S.suspend(() =>
@@ -477,7 +477,7 @@ export type DataLakeDatasetPartitionTransformType =
 export const DataLakeDatasetPartitionTransformType = /*@__PURE__*/ S.String;
 
 export interface DataLakeDatasetPartitionFieldTransform {
-  type: DataLakeDatasetPartitionTransformType;
+  type: DataLakeDatasetPartitionTransformType | (string & {});
 }
 export const DataLakeDatasetPartitionFieldTransform = /*@__PURE__*/ S.suspend(
   () => S.Struct({ type: DataLakeDatasetPartitionTransformType }),

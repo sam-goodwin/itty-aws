@@ -75,7 +75,7 @@ export const IngestFailure = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "IngestFailure" }) as any as S.Schema<IngestFailure>;
 
-export type IngestStatusFailuresList = ReadonlyArray<IngestFailure>;
+export type IngestStatusFailuresList = Array<IngestFailure>;
 export const IngestStatusFailuresList = /*@__PURE__*/ S.Array(
   IngestFailure,
 ) as any as S.Schema<IngestStatusFailuresList>;

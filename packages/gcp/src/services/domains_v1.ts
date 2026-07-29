@@ -60,7 +60,7 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -142,7 +142,7 @@ export interface ContactSettings {
   /** Required. The technical contact for the `Registration`. */
   technicalContact?: Contact;
   /** Required. Privacy setting for the contacts associated with the `Registration`. */
-  privacy?: ContactSettingsPrivacyEnum;
+  privacy?: ContactSettingsPrivacyEnum | (string & {});
 }
 export const ContactSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -161,10 +161,9 @@ export type ConfigureContactSettingsRequestContactNoticesItemEnum =
 export const ConfigureContactSettingsRequestContactNoticesItemEnum =
   /*@__PURE__*/ S.String;
 
-export type ConfigureContactSettingsRequestContactNoticesItemEnumList =
-  ReadonlyArray<
-    ConfigureContactSettingsRequestContactNoticesItemEnum | (string & {})
-  >;
+export type ConfigureContactSettingsRequestContactNoticesItemEnumList = Array<
+  ConfigureContactSettingsRequestContactNoticesItemEnum | (string & {})
+>;
 export const ConfigureContactSettingsRequestContactNoticesItemEnumList =
   /*@__PURE__*/ S.Array(
     ConfigureContactSettingsRequestContactNoticesItemEnum,
@@ -222,7 +221,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -305,9 +304,9 @@ export const DsRecordDigestTypeEnum = /*@__PURE__*/ S.String;
 /** Defines a Delegation Signer (DS) record, which is needed to enable DNSSEC for a domain. It contains a digest (hash) of a DNSKEY record that must be present in the domain's DNS zone. */
 export interface DsRecord {
   /** The algorithm used to generate the referenced DNSKEY. */
-  algorithm?: DsRecordAlgorithmEnum;
+  algorithm?: DsRecordAlgorithmEnum | (string & {});
   /** The hash function used to generate the digest of the referenced DNSKEY. */
-  digestType?: DsRecordDigestTypeEnum;
+  digestType?: DsRecordDigestTypeEnum | (string & {});
   /** The key tag of the record. Must be set in range 0 -- 65535. */
   keyTag?: number;
   /** The digest generated from the referenced DNSKEY. */
@@ -322,7 +321,7 @@ export const DsRecord = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DsRecord" }) as any as S.Schema<DsRecord>;
 
-export type DsRecordList = ReadonlyArray<DsRecord>;
+export type DsRecordList = Array<DsRecord>;
 export const DsRecordList = /*@__PURE__*/ S.Array(
   DsRecord,
 ) as any as S.Schema<DsRecordList>;
@@ -332,7 +331,7 @@ export interface GoogleDomainsDns {
   /** Output only. A list of name servers that store the DNS zone for this domain. Each name server is a domain name, with Unicode domain names expressed in Punycode format. This field is automatically populated with the name servers assigned to the Google Domains DNS zone. */
   nameServers?: StringList;
   /** Required. The state of DS records for this domain. Used to enable or disable automatic DNSSEC. */
-  dsState?: GoogleDomainsDnsDsStateEnum;
+  dsState?: GoogleDomainsDnsDsStateEnum | (string & {});
   /** Output only. The list of DS records published for this domain. The list is automatically populated when `ds_state` is `DS_RECORDS_PUBLISHED`, otherwise it remains empty. */
   dsRecords?: DsRecordList;
 }
@@ -363,7 +362,7 @@ export const GlueRecord = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "GlueRecord" }) as any as S.Schema<GlueRecord>;
 
-export type GlueRecordList = ReadonlyArray<GlueRecord>;
+export type GlueRecordList = Array<GlueRecord>;
 export const GlueRecordList = /*@__PURE__*/ S.Array(
   GlueRecord,
 ) as any as S.Schema<GlueRecordList>;
@@ -474,13 +473,17 @@ export const ManagementSettingsTransferLockStateEnum = /*@__PURE__*/ S.String;
 /** Defines renewal, billing, and transfer settings for a `Registration`. */
 export interface ManagementSettings {
   /** Output only. The actual renewal method for this `Registration`. When `preferred_renewal_method` is set to `AUTOMATIC_RENEWAL`, the actual `renewal_method` can be equal to `RENEWAL_DISABLED`—for example, when there are problems with the billing account or reported domain abuse. In such cases, check the `issues` field on the `Registration`. After the problem is resolved, the `renewal_method` is automatically updated to `preferred_renewal_method` in a few hours. */
-  renewalMethod?: ManagementSettingsRenewalMethodEnum;
+  renewalMethod?: ManagementSettingsRenewalMethodEnum | (string & {});
   /** Optional. The desired renewal method for this `Registration`. The actual `renewal_method` is automatically updated to reflect this choice. If unset or equal to `RENEWAL_METHOD_UNSPECIFIED`, the actual `renewalMethod` is treated as if it were set to `AUTOMATIC_RENEWAL`. You cannot use `RENEWAL_DISABLED` during resource creation, and you can update the renewal status only when the `Registration` resource has state `ACTIVE` or `SUSPENDED`. When `preferred_renewal_method` is set to `AUTOMATIC_RENEWAL`, the actual `renewal_method` can be set to `RENEWAL_DISABLED` in case of problems with the billing account or reported domain abuse. In such cases, check the `issues` field on the `Registration`. After the problem is resolved, the `renewal_method` is automatically updated to `preferred_renewal_method` in a few hours. */
-  preferredRenewalMethod?: ManagementSettingsPreferredRenewalMethodEnum;
+  preferredRenewalMethod?:
+    | ManagementSettingsPreferredRenewalMethodEnum
+    | (string & {});
   /** Output only. The actual transfer lock state for this `Registration`. */
-  effectiveTransferLockState?: ManagementSettingsEffectiveTransferLockStateEnum;
+  effectiveTransferLockState?:
+    | ManagementSettingsEffectiveTransferLockStateEnum
+    | (string & {});
   /** This is the desired transfer lock state for this `Registration`. A transfer lock controls whether the domain can be transferred to another registrar. The transfer lock state of the domain is returned in the `effective_transfer_lock_state` property. The transfer lock state values might be different for the following reasons: * `transfer_lock_state` was updated only a short time ago. * Domains with the `TRANSFER_LOCK_UNSUPPORTED_BY_REGISTRY` state are in the list of `domain_properties`. These domains are always in the `UNLOCKED` state. */
-  transferLockState?: ManagementSettingsTransferLockStateEnum;
+  transferLockState?: ManagementSettingsTransferLockStateEnum | (string & {});
 }
 export const ManagementSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -647,7 +650,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
-export type BindingList = ReadonlyArray<Binding>;
+export type BindingList = Array<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -664,7 +667,7 @@ export interface AuditLogConfig {
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
   exemptedMembers?: StringList;
   /** The log type that this config enables. */
-  logType?: AuditLogConfigLogTypeEnum;
+  logType?: AuditLogConfigLogTypeEnum | (string & {});
 }
 export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -673,7 +676,7 @@ export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
-export type AuditLogConfigList = ReadonlyArray<AuditLogConfig>;
+export type AuditLogConfigList = Array<AuditLogConfig>;
 export const AuditLogConfigList = /*@__PURE__*/ S.Array(
   AuditLogConfig,
 ) as any as S.Schema<AuditLogConfigList>;
@@ -692,7 +695,7 @@ export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
-export type AuditConfigList = ReadonlyArray<AuditConfig>;
+export type AuditConfigList = Array<AuditConfig>;
 export const AuditConfigList = /*@__PURE__*/ S.Array(
   AuditConfig,
 ) as any as S.Schema<AuditConfigList>;
@@ -828,8 +831,9 @@ export type RegistrationDomainPropertiesItemEnum =
   | "REQUIRE_PUSH_TRANSFER";
 export const RegistrationDomainPropertiesItemEnum = /*@__PURE__*/ S.String;
 
-export type RegistrationDomainPropertiesItemEnumList =
-  ReadonlyArray<RegistrationDomainPropertiesItemEnum>;
+export type RegistrationDomainPropertiesItemEnumList = Array<
+  RegistrationDomainPropertiesItemEnum | (string & {})
+>;
 export const RegistrationDomainPropertiesItemEnumList = /*@__PURE__*/ S.Array(
   RegistrationDomainPropertiesItemEnum,
 ) as any as S.Schema<RegistrationDomainPropertiesItemEnumList>;
@@ -841,8 +845,9 @@ export type RegistrationSupportedPrivacyItemEnum =
   | "REDACTED_CONTACT_DATA";
 export const RegistrationSupportedPrivacyItemEnum = /*@__PURE__*/ S.String;
 
-export type RegistrationSupportedPrivacyItemEnumList =
-  ReadonlyArray<RegistrationSupportedPrivacyItemEnum>;
+export type RegistrationSupportedPrivacyItemEnumList = Array<
+  RegistrationSupportedPrivacyItemEnum | (string & {})
+>;
 export const RegistrationSupportedPrivacyItemEnumList = /*@__PURE__*/ S.Array(
   RegistrationSupportedPrivacyItemEnum,
 ) as any as S.Schema<RegistrationSupportedPrivacyItemEnumList>;
@@ -856,8 +861,9 @@ export type RegistrationIssuesItemEnum =
   | "AUTO_RENEWAL_UPDATE_NOT_EFFECTIVE";
 export const RegistrationIssuesItemEnum = /*@__PURE__*/ S.String;
 
-export type RegistrationIssuesItemEnumList =
-  ReadonlyArray<RegistrationIssuesItemEnum>;
+export type RegistrationIssuesItemEnumList = Array<
+  RegistrationIssuesItemEnum | (string & {})
+>;
 export const RegistrationIssuesItemEnumList = /*@__PURE__*/ S.Array(
   RegistrationIssuesItemEnum,
 ) as any as S.Schema<RegistrationIssuesItemEnumList>;
@@ -887,11 +893,11 @@ export interface Registration {
   /** Output only. The creation timestamp of the `Registration` resource. */
   createTime?: string;
   /** Output only. The state of the `Registration` */
-  state?: RegistrationStateEnum;
+  state?: RegistrationStateEnum | (string & {});
   /** Set of labels associated with the `Registration`. */
   labels?: StringMap;
   /** Output only. The reason the domain registration failed. Only set for domains in REGISTRATION_FAILED state. */
-  registerFailureReason?: RegistrationRegisterFailureReasonEnum;
+  registerFailureReason?: RegistrationRegisterFailureReasonEnum | (string & {});
   /** Output only. Special properties of the domain. */
   domainProperties?: RegistrationDomainPropertiesItemEnumList;
   /** Output only. Pending contact settings for the `Registration`. Updates to the `contact_settings` field that change its `registrant_contact` or `privacy` fields require email confirmation by the `registrant_contact` before taking effect. This field is set only if there are pending updates to the `contact_settings` that have not been confirmed. To confirm the changes, the `registrant_contact` must follow the instructions in the email they receive. */
@@ -901,7 +907,7 @@ export interface Registration {
   /** Output only. The set of issues with the `Registration` that require attention. */
   issues?: RegistrationIssuesItemEnumList;
   /** Output only. Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations). The reason the domain transfer failed. Only set for domains in TRANSFER_FAILED state. */
-  transferFailureReason?: RegistrationTransferFailureReasonEnum;
+  transferFailureReason?: RegistrationTransferFailureReasonEnum | (string & {});
   /** Required. Settings for contact information linked to the `Registration`. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureContactSettings` method. */
   contactSettings?: ContactSettings;
   /** Settings for management of the `Registration`, including renewal, billing, and transfer. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureManagementSettings` method. */
@@ -1035,7 +1041,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = ReadonlyArray<Location>;
+export type LocationList = Array<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -1087,7 +1093,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type OperationList = ReadonlyArray<Operation>;
+export type OperationList = Array<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -1139,7 +1145,7 @@ export const ListProjectsLocationsRegistrationsRequest =
     identifier: "ListProjectsLocationsRegistrationsRequest",
   }) as any as S.Schema<ListProjectsLocationsRegistrationsRequest>;
 
-export type RegistrationList = ReadonlyArray<Registration>;
+export type RegistrationList = Array<Registration>;
 export const RegistrationList = /*@__PURE__*/ S.Array(
   Registration,
 ) as any as S.Schema<RegistrationList>;
@@ -1194,7 +1200,7 @@ export type RegisterDomainRequestDomainNoticesItemEnum =
 export const RegisterDomainRequestDomainNoticesItemEnum =
   /*@__PURE__*/ S.String;
 
-export type RegisterDomainRequestDomainNoticesItemEnumList = ReadonlyArray<
+export type RegisterDomainRequestDomainNoticesItemEnumList = Array<
   RegisterDomainRequestDomainNoticesItemEnum | (string & {})
 >;
 export const RegisterDomainRequestDomainNoticesItemEnumList =
@@ -1225,7 +1231,7 @@ export type RegisterDomainRequestContactNoticesItemEnum =
 export const RegisterDomainRequestContactNoticesItemEnum =
   /*@__PURE__*/ S.String;
 
-export type RegisterDomainRequestContactNoticesItemEnumList = ReadonlyArray<
+export type RegisterDomainRequestContactNoticesItemEnumList = Array<
   RegisterDomainRequestContactNoticesItemEnum | (string & {})
 >;
 export const RegisterDomainRequestContactNoticesItemEnumList =
@@ -1448,7 +1454,7 @@ export const LoadBalancerTarget = /*@__PURE__*/ S.suspend(() =>
   identifier: "LoadBalancerTarget",
 }) as any as S.Schema<LoadBalancerTarget>;
 
-export type LoadBalancerTargetList = ReadonlyArray<LoadBalancerTarget>;
+export type LoadBalancerTargetList = Array<LoadBalancerTarget>;
 export const LoadBalancerTargetList = /*@__PURE__*/ S.Array(
   LoadBalancerTarget,
 ) as any as S.Schema<LoadBalancerTargetList>;
@@ -1488,7 +1494,7 @@ export const GeoPolicyItem = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "GeoPolicyItem" }) as any as S.Schema<GeoPolicyItem>;
 
-export type GeoPolicyItemList = ReadonlyArray<GeoPolicyItem>;
+export type GeoPolicyItemList = Array<GeoPolicyItem>;
 export const GeoPolicyItemList = /*@__PURE__*/ S.Array(
   GeoPolicyItem,
 ) as any as S.Schema<GeoPolicyItemList>;
@@ -1526,7 +1532,7 @@ export const WrrPolicyItem = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "WrrPolicyItem" }) as any as S.Schema<WrrPolicyItem>;
 
-export type WrrPolicyItemList = ReadonlyArray<WrrPolicyItem>;
+export type WrrPolicyItemList = Array<WrrPolicyItem>;
 export const WrrPolicyItemList = /*@__PURE__*/ S.Array(
   WrrPolicyItem,
 ) as any as S.Schema<WrrPolicyItemList>;
@@ -1611,7 +1617,7 @@ export const ResourceRecordSet = /*@__PURE__*/ S.suspend(() =>
   identifier: "ResourceRecordSet",
 }) as any as S.Schema<ResourceRecordSet>;
 
-export type ResourceRecordSetList = ReadonlyArray<ResourceRecordSet>;
+export type ResourceRecordSetList = Array<ResourceRecordSet>;
 export const ResourceRecordSetList = /*@__PURE__*/ S.Array(
   ResourceRecordSet,
 ) as any as S.Schema<ResourceRecordSetList>;
@@ -1687,7 +1693,7 @@ export const DomainForwarding = /*@__PURE__*/ S.suspend(() =>
   identifier: "DomainForwarding",
 }) as any as S.Schema<DomainForwarding>;
 
-export type DomainForwardingList = ReadonlyArray<DomainForwarding>;
+export type DomainForwardingList = Array<DomainForwarding>;
 export const DomainForwardingList = /*@__PURE__*/ S.Array(
   DomainForwarding,
 ) as any as S.Schema<DomainForwardingList>;
@@ -1708,7 +1714,7 @@ export const EmailForwarding = /*@__PURE__*/ S.suspend(() =>
   identifier: "EmailForwarding",
 }) as any as S.Schema<EmailForwarding>;
 
-export type EmailForwardingList = ReadonlyArray<EmailForwarding>;
+export type EmailForwardingList = Array<EmailForwarding>;
 export const EmailForwardingList = /*@__PURE__*/ S.Array(
   EmailForwarding,
 ) as any as S.Schema<EmailForwardingList>;
@@ -1782,7 +1788,7 @@ export const Domain = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Domain" }) as any as S.Schema<Domain>;
 
-export type DomainList = ReadonlyArray<Domain>;
+export type DomainList = Array<Domain>;
 export const DomainList = /*@__PURE__*/ S.Array(
   Domain,
 ) as any as S.Schema<DomainList>;
@@ -1843,7 +1849,7 @@ export const RegisterParametersSupportedPrivacyItemEnum =
   /*@__PURE__*/ S.String;
 
 export type RegisterParametersSupportedPrivacyItemEnumList =
-  ReadonlyArray<RegisterParametersSupportedPrivacyItemEnum>;
+  Array<RegisterParametersSupportedPrivacyItemEnum>;
 export const RegisterParametersSupportedPrivacyItemEnumList =
   /*@__PURE__*/ S.Array(
     RegisterParametersSupportedPrivacyItemEnum,
@@ -1855,7 +1861,7 @@ export type RegisterParametersDomainNoticesItemEnum =
 export const RegisterParametersDomainNoticesItemEnum = /*@__PURE__*/ S.String;
 
 export type RegisterParametersDomainNoticesItemEnumList =
-  ReadonlyArray<RegisterParametersDomainNoticesItemEnum>;
+  Array<RegisterParametersDomainNoticesItemEnum>;
 export const RegisterParametersDomainNoticesItemEnumList =
   /*@__PURE__*/ S.Array(
     RegisterParametersDomainNoticesItemEnum,
@@ -1939,7 +1945,7 @@ export const TransferParametersSupportedPrivacyItemEnum =
   /*@__PURE__*/ S.String;
 
 export type TransferParametersSupportedPrivacyItemEnumList =
-  ReadonlyArray<TransferParametersSupportedPrivacyItemEnum>;
+  Array<TransferParametersSupportedPrivacyItemEnum>;
 export const TransferParametersSupportedPrivacyItemEnumList =
   /*@__PURE__*/ S.Array(
     TransferParametersSupportedPrivacyItemEnum,
@@ -2013,7 +2019,7 @@ export const SearchDomainsProjectsLocationsRegistrationsRequest =
     identifier: "SearchDomainsProjectsLocationsRegistrationsRequest",
   }) as any as S.Schema<SearchDomainsProjectsLocationsRegistrationsRequest>;
 
-export type RegisterParametersList = ReadonlyArray<RegisterParameters>;
+export type RegisterParametersList = Array<RegisterParameters>;
 export const RegisterParametersList = /*@__PURE__*/ S.Array(
   RegisterParameters,
 ) as any as S.Schema<RegisterParametersList>;
@@ -2123,7 +2129,7 @@ export type TransferDomainRequestContactNoticesItemEnum =
 export const TransferDomainRequestContactNoticesItemEnum =
   /*@__PURE__*/ S.String;
 
-export type TransferDomainRequestContactNoticesItemEnumList = ReadonlyArray<
+export type TransferDomainRequestContactNoticesItemEnumList = Array<
   TransferDomainRequestContactNoticesItemEnum | (string & {})
 >;
 export const TransferDomainRequestContactNoticesItemEnumList =

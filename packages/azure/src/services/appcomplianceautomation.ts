@@ -374,8 +374,7 @@ export const EvidenceResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EvidenceResource>;
 
 /** The EvidenceResource items on this page */
-export type EvidenceResourceListResultValueList =
-  ReadonlyArray<EvidenceResource>;
+export type EvidenceResourceListResultValueList = Array<EvidenceResource>;
 export const EvidenceResourceListResultValueList = /*@__PURE__*/ S.Array(
   EvidenceResource,
 ) as any as S.Schema<EvidenceResourceListResultValueList>;
@@ -464,7 +463,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = ReadonlyArray<Operation>;
+export type OperationsListResponseValueList = Array<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;
@@ -601,7 +600,7 @@ export const StatusItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StatusItem" }) as any as S.Schema<StatusItem>;
 
 /** List of different status items. */
-export type GetOverviewStatusResponseStatusListList = ReadonlyArray<StatusItem>;
+export type GetOverviewStatusResponseStatusListList = Array<StatusItem>;
 export const GetOverviewStatusResponseStatusListList = /*@__PURE__*/ S.Array(
   StatusItem,
 ) as any as S.Schema<GetOverviewStatusResponseStatusListList>;
@@ -621,7 +620,7 @@ export const GetOverviewStatusResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** List of subscription ids to be query. If the list is null or empty, the API will query all the subscriptions of the user. */
 export type ProviderActionsListInUseStorageAccountsRequestSubscriptionIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ProviderActionsListInUseStorageAccountsRequestSubscriptionIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -671,7 +670,7 @@ export const StorageInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** The storage account list which in use in related reports. */
 export type ListInUseStorageAccountsResponseStorageAccountListList =
-  ReadonlyArray<StorageInfo>;
+  Array<StorageInfo>;
 export const ListInUseStorageAccountsResponseStorageAccountListList =
   /*@__PURE__*/ S.Array(
     StorageInfo,
@@ -693,8 +692,7 @@ export const ListInUseStorageAccountsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListInUseStorageAccountsResponse>;
 
 /** List of subscription ids to be onboarded */
-export type ProviderActionsOnboardRequestSubscriptionIdsList =
-  ReadonlyArray<string>;
+export type ProviderActionsOnboardRequestSubscriptionIdsList = Array<string>;
 export const ProviderActionsOnboardRequestSubscriptionIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -720,7 +718,7 @@ export const ProviderActionsOnboardRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProviderActionsOnboardRequest>;
 
 /** List of subscription ids that are onboarded */
-export type OnboardResponseSubscriptionIdsList = ReadonlyArray<string>;
+export type OnboardResponseSubscriptionIdsList = Array<string>;
 export const OnboardResponseSubscriptionIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<OnboardResponseSubscriptionIdsList>;
@@ -740,7 +738,7 @@ export const OnboardResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** List of resource ids to be evaluated */
 export type ProviderActionsTriggerEvaluationRequestResourceIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ProviderActionsTriggerEvaluationRequestResourceIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -767,7 +765,7 @@ export const ProviderActionsTriggerEvaluationRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ProviderActionsTriggerEvaluationRequest>;
 
 /** List of resource ids to be evaluated */
-export type TriggerEvaluationPropertyResourceIdsList = ReadonlyArray<string>;
+export type TriggerEvaluationPropertyResourceIdsList = Array<string>;
 export const TriggerEvaluationPropertyResourceIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<TriggerEvaluationPropertyResourceIdsList>;
@@ -809,7 +807,7 @@ export const QuickAssessment = /*@__PURE__*/ S.suspend(() =>
 
 /** List of quick assessments */
 export type TriggerEvaluationPropertyQuickAssessmentsList =
-  ReadonlyArray<QuickAssessment>;
+  Array<QuickAssessment>;
 export const TriggerEvaluationPropertyQuickAssessmentsList =
   /*@__PURE__*/ S.Array(
     QuickAssessment,
@@ -863,7 +861,7 @@ export interface ResourceMetadata {
   /** Resource kind. */
   resourceKind?: string;
   /** Resource Origin. */
-  resourceOrigin?: ResourceOrigin;
+  resourceOrigin?: ResourceOrigin | (string & {});
   /** Account Id. For example - the AWS account id. */
   accountId?: string;
 }
@@ -880,8 +878,7 @@ export const ResourceMetadata = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourceMetadata>;
 
 /** List of resource data. */
-export type ReportPropertiesInputResourcesList =
-  ReadonlyArray<ResourceMetadata>;
+export type ReportPropertiesInputResourcesList = Array<ResourceMetadata>;
 export const ReportPropertiesInputResourcesList = /*@__PURE__*/ S.Array(
   ResourceMetadata,
 ) as any as S.Schema<ReportPropertiesInputResourcesList>;
@@ -934,7 +931,7 @@ export const ReportCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReportCreateOrUpdateRequest>;
 
 /** List of resource data. */
-export type ReportPropertiesResourcesList = ReadonlyArray<ResourceMetadata>;
+export type ReportPropertiesResourcesList = Array<ResourceMetadata>;
 export const ReportPropertiesResourcesList = /*@__PURE__*/ S.Array(
   ResourceMetadata,
 ) as any as S.Schema<ReportPropertiesResourcesList>;
@@ -944,13 +941,13 @@ export type ReportStatus = "Active" | "Failed" | "Reviewing" | "Disabled";
 export const ReportStatus = /*@__PURE__*/ S.String;
 
 /** List of report error codes. */
-export type ReportPropertiesErrorsList = ReadonlyArray<string>;
+export type ReportPropertiesErrorsList = Array<string>;
 export const ReportPropertiesErrorsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ReportPropertiesErrorsList>;
 
 /** List of subscription Ids. */
-export type ReportPropertiesSubscriptionsList = ReadonlyArray<string>;
+export type ReportPropertiesSubscriptionsList = Array<string>;
 export const ReportPropertiesSubscriptionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ReportPropertiesSubscriptionsList>;
@@ -1008,7 +1005,7 @@ export const ControlSyncRecord = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ControlSyncRecord>;
 
 /** The control records list to be synchronized. */
-export type CertSyncRecordControlsList = ReadonlyArray<ControlSyncRecord>;
+export type CertSyncRecordControlsList = Array<ControlSyncRecord>;
 export const CertSyncRecordControlsList = /*@__PURE__*/ S.Array(
   ControlSyncRecord,
 ) as any as S.Schema<CertSyncRecordControlsList>;
@@ -1034,7 +1031,7 @@ export const CertSyncRecord = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CertSyncRecord" }) as any as S.Schema<CertSyncRecord>;
 
 /** List of synchronized certification records. */
-export type ReportPropertiesCertRecordsList = ReadonlyArray<CertSyncRecord>;
+export type ReportPropertiesCertRecordsList = Array<CertSyncRecord>;
 export const ReportPropertiesCertRecordsList = /*@__PURE__*/ S.Array(
   CertSyncRecord,
 ) as any as S.Schema<ReportPropertiesCertRecordsList>;
@@ -1265,7 +1262,7 @@ export type InputType =
 export const InputType = /*@__PURE__*/ S.String;
 
 /** Option id list. */
-export type ScopingQuestionOptionIdsList = ReadonlyArray<string>;
+export type ScopingQuestionOptionIdsList = Array<string>;
 export const ScopingQuestionOptionIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ScopingQuestionOptionIdsList>;
@@ -1289,7 +1286,7 @@ export type Rule =
 export const Rule = /*@__PURE__*/ S.String;
 
 /** The rule of the question. */
-export type ScopingQuestionRulesList = ReadonlyArray<Rule>;
+export type ScopingQuestionRulesList = Array<Rule>;
 export const ScopingQuestionRulesList = /*@__PURE__*/ S.Array(
   Rule,
 ) as any as S.Schema<ScopingQuestionRulesList>;
@@ -1323,7 +1320,7 @@ export const ScopingQuestion = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScopingQuestion>;
 
 /** List of scoping questions. */
-export type ScopingQuestionsQuestionsList = ReadonlyArray<ScopingQuestion>;
+export type ScopingQuestionsQuestionsList = Array<ScopingQuestion>;
 export const ScopingQuestionsQuestionsList = /*@__PURE__*/ S.Array(
   ScopingQuestion,
 ) as any as S.Schema<ScopingQuestionsQuestionsList>;
@@ -1402,7 +1399,7 @@ export const ReportResource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ReportResource" }) as any as S.Schema<ReportResource>;
 
 /** The ReportResource items on this page */
-export type ReportResourceListResultValueList = ReadonlyArray<ReportResource>;
+export type ReportResourceListResultValueList = Array<ReportResource>;
 export const ReportResourceListResultValueList = /*@__PURE__*/ S.Array(
   ReportResource,
 ) as any as S.Schema<ReportResourceListResultValueList>;
@@ -1513,8 +1510,7 @@ export const SyncCertRecordResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SyncCertRecordResponse>;
 
 /** List of resource data. */
-export type ReportPatchPropertiesInputResourcesList =
-  ReadonlyArray<ResourceMetadata>;
+export type ReportPatchPropertiesInputResourcesList = Array<ResourceMetadata>;
 export const ReportPatchPropertiesInputResourcesList = /*@__PURE__*/ S.Array(
   ResourceMetadata,
 ) as any as S.Schema<ReportPatchPropertiesInputResourcesList>;
@@ -1626,7 +1622,7 @@ export const ReportVerificationResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReportVerificationResult>;
 
 /** Question answer value list. */
-export type ScopingAnswerAnswersList = ReadonlyArray<string>;
+export type ScopingAnswerAnswersList = Array<string>;
 export const ScopingAnswerAnswersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ScopingAnswerAnswersList>;
@@ -1647,7 +1643,7 @@ export const ScopingAnswer = /*@__PURE__*/ S.suspend(() =>
 
 /** List of scoping question answers. */
 export type ScopingConfigurationPropertiesInputAnswersList =
-  ReadonlyArray<ScopingAnswer>;
+  Array<ScopingAnswer>;
 export const ScopingConfigurationPropertiesInputAnswersList =
   /*@__PURE__*/ S.Array(
     ScopingAnswer,
@@ -1693,8 +1689,7 @@ export const ScopingConfigurationCreateOrUpdateRequest =
   }) as any as S.Schema<ScopingConfigurationCreateOrUpdateRequest>;
 
 /** List of scoping question answers. */
-export type ScopingConfigurationPropertiesAnswersList =
-  ReadonlyArray<ScopingAnswer>;
+export type ScopingConfigurationPropertiesAnswersList = Array<ScopingAnswer>;
 export const ScopingConfigurationPropertiesAnswersList = /*@__PURE__*/ S.Array(
   ScopingAnswer,
 ) as any as S.Schema<ScopingConfigurationPropertiesAnswersList>;
@@ -1861,7 +1856,7 @@ export const ScopingConfigurationResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The ScopingConfigurationResource items on this page */
 export type ScopingConfigurationResourceListResultValueList =
-  ReadonlyArray<ScopingConfigurationResource>;
+  Array<ScopingConfigurationResource>;
 export const ScopingConfigurationResourceListResultValueList =
   /*@__PURE__*/ S.Array(
     ScopingConfigurationResource,
@@ -1944,7 +1939,7 @@ export const ResourceItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResourceItem" }) as any as S.Schema<ResourceItem>;
 
 /** Resource list of the report */
-export type DownloadResponseResourceListList = ReadonlyArray<ResourceItem>;
+export type DownloadResponseResourceListList = Array<ResourceItem>;
 export const DownloadResponseResourceListList = /*@__PURE__*/ S.Array(
   ResourceItem,
 ) as any as S.Schema<DownloadResponseResourceListList>;
@@ -2004,8 +1999,7 @@ export const ComplianceReportItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ComplianceReportItem>;
 
 /** List of the compliance result */
-export type DownloadResponseComplianceReportList =
-  ReadonlyArray<ComplianceReportItem>;
+export type DownloadResponseComplianceReportList = Array<ComplianceReportItem>;
 export const DownloadResponseComplianceReportList = /*@__PURE__*/ S.Array(
   ComplianceReportItem,
 ) as any as S.Schema<DownloadResponseComplianceReportList>;
@@ -2168,7 +2162,7 @@ export type ResponsibilityEnvironment = "Azure" | "AWS" | "GCP" | "General";
 export const ResponsibilityEnvironment = /*@__PURE__*/ S.String;
 
 /** List of recommendation id. */
-export type ResponsibilityResourceRecommendationIdsList = ReadonlyArray<string>;
+export type ResponsibilityResourceRecommendationIdsList = Array<string>;
 export const ResponsibilityResourceRecommendationIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2206,8 +2200,7 @@ export const ResponsibilityResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResponsibilityResource>;
 
 /** List of resource. */
-export type ResponsibilityResourceListList =
-  ReadonlyArray<ResponsibilityResource>;
+export type ResponsibilityResourceListList = Array<ResponsibilityResource>;
 export const ResponsibilityResourceListList = /*@__PURE__*/ S.Array(
   ResponsibilityResource,
 ) as any as S.Schema<ResponsibilityResourceListList>;
@@ -2237,7 +2230,7 @@ export const RecommendationSolution = /*@__PURE__*/ S.suspend(() =>
 
 /** List of recommendation solutions. */
 export type RecommendationRecommendationSolutionsList =
-  ReadonlyArray<RecommendationSolution>;
+  Array<RecommendationSolution>;
 export const RecommendationRecommendationSolutionsList = /*@__PURE__*/ S.Array(
   RecommendationSolution,
 ) as any as S.Schema<RecommendationRecommendationSolutionsList>;
@@ -2262,14 +2255,13 @@ export const Recommendation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Recommendation" }) as any as S.Schema<Recommendation>;
 
 /** List of recommendation. */
-export type ResponsibilityRecommendationListList =
-  ReadonlyArray<Recommendation>;
+export type ResponsibilityRecommendationListList = Array<Recommendation>;
 export const ResponsibilityRecommendationListList = /*@__PURE__*/ S.Array(
   Recommendation,
 ) as any as S.Schema<ResponsibilityRecommendationListList>;
 
 /** List of evidence file url. */
-export type ResponsibilityEvidenceFilesList = ReadonlyArray<string>;
+export type ResponsibilityEvidenceFilesList = Array<string>;
 export const ResponsibilityEvidenceFilesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ResponsibilityEvidenceFilesList>;
@@ -2325,7 +2317,7 @@ export const Responsibility = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Responsibility" }) as any as S.Schema<Responsibility>;
 
 /** List of customer responsibility. */
-export type ControlResponsibilitiesList = ReadonlyArray<Responsibility>;
+export type ControlResponsibilitiesList = Array<Responsibility>;
 export const ControlResponsibilitiesList = /*@__PURE__*/ S.Array(
   Responsibility,
 ) as any as S.Schema<ControlResponsibilitiesList>;
@@ -2360,7 +2352,7 @@ export const Control = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Control" }) as any as S.Schema<Control>;
 
 /** List of controls. */
-export type ControlFamilyControlsList = ReadonlyArray<Control>;
+export type ControlFamilyControlsList = Array<Control>;
 export const ControlFamilyControlsList = /*@__PURE__*/ S.Array(
   Control,
 ) as any as S.Schema<ControlFamilyControlsList>;
@@ -2383,7 +2375,7 @@ export const ControlFamily = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ControlFamily" }) as any as S.Schema<ControlFamily>;
 
 /** List of control families. */
-export type CategoryControlFamiliesList = ReadonlyArray<ControlFamily>;
+export type CategoryControlFamiliesList = Array<ControlFamily>;
 export const CategoryControlFamiliesList = /*@__PURE__*/ S.Array(
   ControlFamily,
 ) as any as S.Schema<CategoryControlFamiliesList>;
@@ -2406,7 +2398,7 @@ export const Category = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Category" }) as any as S.Schema<Category>;
 
 /** List of categories. */
-export type ComplianceResultCategoriesList = ReadonlyArray<Category>;
+export type ComplianceResultCategoriesList = Array<Category>;
 export const ComplianceResultCategoriesList = /*@__PURE__*/ S.Array(
   Category,
 ) as any as S.Schema<ComplianceResultCategoriesList>;
@@ -2428,8 +2420,7 @@ export const ComplianceResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ComplianceResult>;
 
 /** List of compliance results. */
-export type SnapshotPropertiesComplianceResultsList =
-  ReadonlyArray<ComplianceResult>;
+export type SnapshotPropertiesComplianceResultsList = Array<ComplianceResult>;
 export const SnapshotPropertiesComplianceResultsList = /*@__PURE__*/ S.Array(
   ComplianceResult,
 ) as any as S.Schema<SnapshotPropertiesComplianceResultsList>;
@@ -2552,8 +2543,7 @@ export const SnapshotResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SnapshotResource>;
 
 /** The SnapshotResource items on this page */
-export type SnapshotResourceListResultValueList =
-  ReadonlyArray<SnapshotResource>;
+export type SnapshotResourceListResultValueList = Array<SnapshotResource>;
 export const SnapshotResourceListResultValueList = /*@__PURE__*/ S.Array(
   SnapshotResource,
 ) as any as S.Schema<SnapshotResourceListResultValueList>;
@@ -2592,7 +2582,7 @@ export type NotificationEvent =
 export const NotificationEvent = /*@__PURE__*/ S.String;
 
 /** under which event notification should be sent. */
-export type WebhookPropertiesInputEventsList = ReadonlyArray<
+export type WebhookPropertiesInputEventsList = Array<
   NotificationEvent | (string & {})
 >;
 export const WebhookPropertiesInputEventsList = /*@__PURE__*/ S.Array(
@@ -2671,7 +2661,7 @@ export const WebhookCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WebhookCreateOrUpdateRequest>;
 
 /** under which event notification should be sent. */
-export type WebhookPropertiesEventsList = ReadonlyArray<NotificationEvent>;
+export type WebhookPropertiesEventsList = Array<NotificationEvent>;
 export const WebhookPropertiesEventsList = /*@__PURE__*/ S.Array(
   NotificationEvent,
 ) as any as S.Schema<WebhookPropertiesEventsList>;
@@ -2898,7 +2888,7 @@ export const WebhookResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WebhookResource>;
 
 /** The WebhookResource items on this page */
-export type WebhookResourceListResultValueList = ReadonlyArray<WebhookResource>;
+export type WebhookResourceListResultValueList = Array<WebhookResource>;
 export const WebhookResourceListResultValueList = /*@__PURE__*/ S.Array(
   WebhookResource,
 ) as any as S.Schema<WebhookResourceListResultValueList>;

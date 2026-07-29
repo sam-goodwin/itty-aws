@@ -178,8 +178,7 @@ export const DataColorThemesListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DataColorThemesListRequest",
 }) as any as S.Schema<DataColorThemesListRequest>;
 
-export type PaginatedDataColorThemeListResultsList =
-  ReadonlyArray<DataColorTheme>;
+export type PaginatedDataColorThemeListResultsList = Array<DataColorTheme>;
 export const PaginatedDataColorThemeListResultsList = /*@__PURE__*/ S.Array(
   DataColorTheme,
 ) as any as S.Schema<PaginatedDataColorThemeListResultsList>;

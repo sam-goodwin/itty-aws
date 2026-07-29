@@ -136,7 +136,7 @@ export type GoogleCloudRecommenderV1beta1InsightCategoryEnum =
 export const GoogleCloudRecommenderV1beta1InsightCategoryEnum =
   /*@__PURE__*/ S.String;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -156,7 +156,7 @@ export const GoogleCloudRecommenderV1beta1InsightRecommendationReference =
   }) as any as S.Schema<GoogleCloudRecommenderV1beta1InsightRecommendationReference>;
 
 export type GoogleCloudRecommenderV1beta1InsightRecommendationReferenceList =
-  ReadonlyArray<GoogleCloudRecommenderV1beta1InsightRecommendationReference>;
+  Array<GoogleCloudRecommenderV1beta1InsightRecommendationReference>;
 export const GoogleCloudRecommenderV1beta1InsightRecommendationReferenceList =
   /*@__PURE__*/ S.Array(
     GoogleCloudRecommenderV1beta1InsightRecommendationReference,
@@ -264,7 +264,7 @@ export const GoogleCloudRecommenderV1beta1ReliabilityProjectionRisksItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudRecommenderV1beta1ReliabilityProjectionRisksItemEnumList =
-  ReadonlyArray<GoogleCloudRecommenderV1beta1ReliabilityProjectionRisksItemEnum>;
+  Array<GoogleCloudRecommenderV1beta1ReliabilityProjectionRisksItemEnum>;
 export const GoogleCloudRecommenderV1beta1ReliabilityProjectionRisksItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleCloudRecommenderV1beta1ReliabilityProjectionRisksItemEnum,
@@ -458,7 +458,7 @@ export const GoogleCloudRecommenderV1beta1Operation = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudRecommenderV1beta1Operation>;
 
 export type GoogleCloudRecommenderV1beta1OperationList =
-  ReadonlyArray<GoogleCloudRecommenderV1beta1Operation>;
+  Array<GoogleCloudRecommenderV1beta1Operation>;
 export const GoogleCloudRecommenderV1beta1OperationList = /*@__PURE__*/ S.Array(
   GoogleCloudRecommenderV1beta1Operation,
 ) as any as S.Schema<GoogleCloudRecommenderV1beta1OperationList>;
@@ -478,7 +478,7 @@ export const GoogleCloudRecommenderV1beta1OperationGroup =
   }) as any as S.Schema<GoogleCloudRecommenderV1beta1OperationGroup>;
 
 export type GoogleCloudRecommenderV1beta1OperationGroupList =
-  ReadonlyArray<GoogleCloudRecommenderV1beta1OperationGroup>;
+  Array<GoogleCloudRecommenderV1beta1OperationGroup>;
 export const GoogleCloudRecommenderV1beta1OperationGroupList =
   /*@__PURE__*/ S.Array(
     GoogleCloudRecommenderV1beta1OperationGroup,
@@ -513,7 +513,7 @@ export const GoogleCloudRecommenderV1beta1RecommendationPriorityEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudRecommenderV1beta1ImpactList =
-  ReadonlyArray<GoogleCloudRecommenderV1beta1Impact>;
+  Array<GoogleCloudRecommenderV1beta1Impact>;
 export const GoogleCloudRecommenderV1beta1ImpactList = /*@__PURE__*/ S.Array(
   GoogleCloudRecommenderV1beta1Impact,
 ) as any as S.Schema<GoogleCloudRecommenderV1beta1ImpactList>;
@@ -562,7 +562,7 @@ export const GoogleCloudRecommenderV1beta1RecommendationInsightReference =
   }) as any as S.Schema<GoogleCloudRecommenderV1beta1RecommendationInsightReference>;
 
 export type GoogleCloudRecommenderV1beta1RecommendationInsightReferenceList =
-  ReadonlyArray<GoogleCloudRecommenderV1beta1RecommendationInsightReference>;
+  Array<GoogleCloudRecommenderV1beta1RecommendationInsightReference>;
 export const GoogleCloudRecommenderV1beta1RecommendationInsightReferenceList =
   /*@__PURE__*/ S.Array(
     GoogleCloudRecommenderV1beta1RecommendationInsightReference,
@@ -1004,7 +1004,7 @@ export const GoogleCloudLocationLocation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudLocationLocation>;
 
 export type GoogleCloudLocationLocationList =
-  ReadonlyArray<GoogleCloudLocationLocation>;
+  Array<GoogleCloudLocationLocation>;
 export const GoogleCloudLocationLocationList = /*@__PURE__*/ S.Array(
   GoogleCloudLocationLocation,
 ) as any as S.Schema<GoogleCloudLocationLocationList>;
@@ -1055,7 +1055,7 @@ export const ListBillingAccountsLocationsInsightTypesInsightsRequest =
   }) as any as S.Schema<ListBillingAccountsLocationsInsightTypesInsightsRequest>;
 
 export type GoogleCloudRecommenderV1beta1InsightList =
-  ReadonlyArray<GoogleCloudRecommenderV1beta1Insight>;
+  Array<GoogleCloudRecommenderV1beta1Insight>;
 export const GoogleCloudRecommenderV1beta1InsightList = /*@__PURE__*/ S.Array(
   GoogleCloudRecommenderV1beta1Insight,
 ) as any as S.Schema<GoogleCloudRecommenderV1beta1InsightList>;
@@ -1107,7 +1107,7 @@ export const ListBillingAccountsLocationsRecommendersRecommendationsRequest =
   }) as any as S.Schema<ListBillingAccountsLocationsRecommendersRecommendationsRequest>;
 
 export type GoogleCloudRecommenderV1beta1RecommendationList =
-  ReadonlyArray<GoogleCloudRecommenderV1beta1Recommendation>;
+  Array<GoogleCloudRecommenderV1beta1Recommendation>;
 export const GoogleCloudRecommenderV1beta1RecommendationList =
   /*@__PURE__*/ S.Array(
     GoogleCloudRecommenderV1beta1Recommendation,
@@ -1254,7 +1254,7 @@ export const GoogleCloudRecommenderV1beta1InsightType = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudRecommenderV1beta1InsightType>;
 
 export type GoogleCloudRecommenderV1beta1InsightTypeList =
-  ReadonlyArray<GoogleCloudRecommenderV1beta1InsightType>;
+  Array<GoogleCloudRecommenderV1beta1InsightType>;
 export const GoogleCloudRecommenderV1beta1InsightTypeList =
   /*@__PURE__*/ S.Array(
     GoogleCloudRecommenderV1beta1InsightType,
@@ -1485,7 +1485,7 @@ export const GoogleCloudRecommenderV1beta1RecommenderType =
   }) as any as S.Schema<GoogleCloudRecommenderV1beta1RecommenderType>;
 
 export type GoogleCloudRecommenderV1beta1RecommenderTypeList =
-  ReadonlyArray<GoogleCloudRecommenderV1beta1RecommenderType>;
+  Array<GoogleCloudRecommenderV1beta1RecommenderType>;
 export const GoogleCloudRecommenderV1beta1RecommenderTypeList =
   /*@__PURE__*/ S.Array(
     GoogleCloudRecommenderV1beta1RecommenderType,

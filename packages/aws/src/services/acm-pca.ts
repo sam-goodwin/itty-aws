@@ -279,7 +279,7 @@ export const AccessMethodType = /*@__PURE__*/ S.String;
 
 export interface AccessMethod {
   CustomObjectIdentifier?: string;
-  AccessMethodType?: AccessMethodType;
+  AccessMethodType?: AccessMethodType | (string & {});
 }
 export const AccessMethod = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -348,8 +348,8 @@ export const CsrExtensions = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CsrExtensions" }) as any as S.Schema<CsrExtensions>;
 export interface CertificateAuthorityConfiguration {
-  KeyAlgorithm: KeyAlgorithm;
-  SigningAlgorithm: SigningAlgorithm;
+  KeyAlgorithm: KeyAlgorithm | (string & {});
+  SigningAlgorithm: SigningAlgorithm | (string & {});
   Subject: ASN1Subject;
   CsrExtensions?: CsrExtensions;
 }
@@ -387,9 +387,9 @@ export interface CrlConfiguration {
   ExpirationInDays?: number;
   CustomCname?: string;
   S3BucketName?: string;
-  S3ObjectAcl?: S3ObjectAcl;
+  S3ObjectAcl?: S3ObjectAcl | (string & {});
   CrlDistributionPointExtensionConfiguration?: CrlDistributionPointExtensionConfiguration;
-  CrlType?: CrlType;
+  CrlType?: CrlType | (string & {});
   CustomPath?: string;
 }
 export const CrlConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -532,7 +532,7 @@ export type ActionType =
   | "ListPermissions";
 export const ActionType = /*@__PURE__*/ S.String;
 
-export type ActionList = ActionType[];
+export type ActionList = (ActionType | (string & {}))[];
 export const ActionList = /*@__PURE__*/ S.Array(ActionType);
 export interface CreatePermissionRequest {
   CertificateAuthorityArn: string;

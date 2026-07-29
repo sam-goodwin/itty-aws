@@ -103,13 +103,13 @@ export const LLMPromptOutlineEntry = /*@__PURE__*/ S.suspend(() =>
   identifier: "LLMPromptOutlineEntry",
 }) as any as S.Schema<LLMPromptOutlineEntry>;
 
-export type LLMPromptOutlineList = ReadonlyArray<LLMPromptOutlineEntry>;
+export type LLMPromptOutlineList = Array<LLMPromptOutlineEntry>;
 export const LLMPromptOutlineList = /*@__PURE__*/ S.Array(
   LLMPromptOutlineEntry,
 ) as any as S.Schema<LLMPromptOutlineList>;
 
 /** Names of the labels currently pointing at this version. */
-export type LLMPromptLabelsList = ReadonlyArray<string>;
+export type LLMPromptLabelsList = Array<string>;
 export const LLMPromptLabelsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LLMPromptLabelsList>;
@@ -194,13 +194,13 @@ export const LlmPromptsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "LlmPromptsListRequest",
 }) as any as S.Schema<LlmPromptsListRequest>;
 
-export type LLMPromptListOutlineList = ReadonlyArray<LLMPromptOutlineEntry>;
+export type LLMPromptListOutlineList = Array<LLMPromptOutlineEntry>;
 export const LLMPromptListOutlineList = /*@__PURE__*/ S.Array(
   LLMPromptOutlineEntry,
 ) as any as S.Schema<LLMPromptListOutlineList>;
 
 /** Names of the labels currently pointing at this version. */
-export type LLMPromptListLabelsList = ReadonlyArray<string>;
+export type LLMPromptListLabelsList = Array<string>;
 export const LLMPromptListLabelsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LLMPromptListLabelsList>;
@@ -220,7 +220,7 @@ export const LLMPromptLabelSummary = /*@__PURE__*/ S.suspend(() =>
   identifier: "LLMPromptLabelSummary",
 }) as any as S.Schema<LLMPromptLabelSummary>;
 
-export type LLMPromptListAllLabelsList = ReadonlyArray<LLMPromptLabelSummary>;
+export type LLMPromptListAllLabelsList = Array<LLMPromptLabelSummary>;
 export const LLMPromptListAllLabelsList = /*@__PURE__*/ S.Array(
   LLMPromptLabelSummary,
 ) as any as S.Schema<LLMPromptListAllLabelsList>;
@@ -275,8 +275,7 @@ export const LLMPromptList = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "LLMPromptList" }) as any as S.Schema<LLMPromptList>;
 
-export type PaginatedLLMPromptListListResultsList =
-  ReadonlyArray<LLMPromptList>;
+export type PaginatedLLMPromptListListResultsList = Array<LLMPromptList>;
 export const PaginatedLLMPromptListListResultsList = /*@__PURE__*/ S.Array(
   LLMPromptList,
 ) as any as S.Schema<PaginatedLLMPromptListListResultsList>;
@@ -445,7 +444,7 @@ export const LLMPromptEditOperation = /*@__PURE__*/ S.suspend(() =>
 
 /** List of find/replace operations to apply to the current prompt version. Each edit's 'old' text must match exactly once. Edits are applied sequentially. Mutually exclusive with prompt. */
 export type LlmPromptsNamePartialUpdateRequestEditsList =
-  ReadonlyArray<LLMPromptEditOperation>;
+  Array<LLMPromptEditOperation>;
 export const LlmPromptsNamePartialUpdateRequestEditsList =
   /*@__PURE__*/ S.Array(
     LLMPromptEditOperation,
@@ -516,7 +515,7 @@ export const LlmPromptsNameRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LlmPromptsNameRetrieveRequest>;
 
 /** Flat list of markdown headings parsed from the prompt. Useful as a lightweight table of contents. */
-export type LLMPromptPublicOutlineList = ReadonlyArray<LLMPromptOutlineEntry>;
+export type LLMPromptPublicOutlineList = Array<LLMPromptOutlineEntry>;
 export const LLMPromptPublicOutlineList = /*@__PURE__*/ S.Array(
   LLMPromptOutlineEntry,
 ) as any as S.Schema<LLMPromptPublicOutlineList>;
@@ -599,7 +598,7 @@ export const LlmPromptsResolveNameRetrieveRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<LlmPromptsResolveNameRetrieveRequest>;
 
 /** Names of the labels currently pointing at this version. */
-export type LLMPromptVersionSummaryLabelsList = ReadonlyArray<string>;
+export type LLMPromptVersionSummaryLabelsList = Array<string>;
 export const LLMPromptVersionSummaryLabelsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LLMPromptVersionSummaryLabelsList>;
@@ -629,13 +628,13 @@ export const LLMPromptVersionSummary = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LLMPromptVersionSummary>;
 
 export type LLMPromptResolveResponseVersionsList =
-  ReadonlyArray<LLMPromptVersionSummary>;
+  Array<LLMPromptVersionSummary>;
 export const LLMPromptResolveResponseVersionsList = /*@__PURE__*/ S.Array(
   LLMPromptVersionSummary,
 ) as any as S.Schema<LLMPromptResolveResponseVersionsList>;
 
 /** All labels on this prompt with the version each one currently points to, across all versions (not just the returned page). */
-export type LLMPromptResolveResponseLabelsList = ReadonlyArray<LLMPromptLabel>;
+export type LLMPromptResolveResponseLabelsList = Array<LLMPromptLabel>;
 export const LLMPromptResolveResponseLabelsList = /*@__PURE__*/ S.Array(
   LLMPromptLabel,
 ) as any as S.Schema<LLMPromptResolveResponseLabelsList>;

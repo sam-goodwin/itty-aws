@@ -171,8 +171,7 @@ export const InventoryLoyaltyProgram = /*@__PURE__*/ S.suspend(() =>
   identifier: "InventoryLoyaltyProgram",
 }) as any as S.Schema<InventoryLoyaltyProgram>;
 
-export type InventoryLoyaltyProgramList =
-  ReadonlyArray<InventoryLoyaltyProgram>;
+export type InventoryLoyaltyProgramList = Array<InventoryLoyaltyProgram>;
 export const InventoryLoyaltyProgramList = /*@__PURE__*/ S.Array(
   InventoryLoyaltyProgram,
 ) as any as S.Schema<InventoryLoyaltyProgramList>;
@@ -196,7 +195,7 @@ export const CustomAttribute = /*@__PURE__*/ S.suspend(() =>
   identifier: "CustomAttribute",
 }) as any as S.Schema<CustomAttribute>;
 
-export type CustomAttributeList = ReadonlyArray<CustomAttribute>;
+export type CustomAttributeList = Array<CustomAttribute>;
 export const CustomAttributeList = /*@__PURE__*/ S.Array(
   CustomAttribute,
 ) as any as S.Schema<CustomAttributeList>;
@@ -225,7 +224,7 @@ export const LocalInventoryAttributesPickupMethodEnum = /*@__PURE__*/ S.String;
 /** Local inventory attributes. */
 export interface LocalInventoryAttributes {
   /** [Availability](https://support.google.com/merchants/answer/3061342) of the product at this store. */
-  availability?: LocalInventoryAttributesAvailabilityEnum;
+  availability?: LocalInventoryAttributesAvailabilityEnum | (string & {});
   /** Optional. Quantity of the product available at this store. Must be greater than or equal to zero. */
   quantity?: string;
   /** Optional. Location of the product inside the store. Maximum length is 20 bytes. */
@@ -241,11 +240,11 @@ export interface LocalInventoryAttributes {
   /** Optional. Specifies a label associated with the shipping for the `LocalInventory` resource. Can be used to group local shipping services to this particular inventory item. For accepted field format, see the [Local delivery](https://support.google.com/merchants/answer/14819809#localdelivery) */
   localShippingLabel?: string;
   /** Optional. Relative time period from the order date for an order for this product, from this store, to be ready for pickup. Must be submitted with `pickupMethod`. See more details [here](https://support.google.com/merchants/answer/3061342). */
-  pickupSla?: LocalInventoryAttributesPickupSlaEnum;
+  pickupSla?: LocalInventoryAttributesPickupSlaEnum | (string & {});
   /** Optional. The `TimePeriod` of the sale at this store. */
   salePriceEffectiveDate?: Interval;
   /** Optional. Supported [pickup method](https://support.google.com/merchants/answer/3061342) for this product. Unless the value is `"not supported"`, this field must be submitted together with `pickupSla`. */
-  pickupMethod?: LocalInventoryAttributesPickupMethodEnum;
+  pickupMethod?: LocalInventoryAttributesPickupMethodEnum | (string & {});
 }
 export const LocalInventoryAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -324,7 +323,7 @@ export interface RegionalInventoryAttributes {
   /** Optional. Sale price of the product in this region. Mandatory if `salePriceEffectiveDate` is defined. */
   salePrice?: Price;
   /** Optional. [Availability](https://support.google.com/merchants/answer/14644124) of the product in this region. */
-  availability?: RegionalInventoryAttributesAvailabilityEnum;
+  availability?: RegionalInventoryAttributesAvailabilityEnum | (string & {});
   /** Optional. The `TimePeriod` of the sale price in this region. */
   salePriceEffectiveDate?: Interval;
   /** Optional. An optional list of loyalty programs containing applicable loyalty member prices for this product in this region. This field is used to show region-specific member prices on Product Listing Ads (PLA). To use this, the loyalty program must be configured in Google Merchant Center, and the merchant must be using the Regional Availability and Pricing (RAAP) feature. The benefits provided must match the merchant's website and be clear to members. This is only applicable for merchants in supported countries. See [Loyalty program](https://support.google.com/merchants/answer/12922446) for details on supported countries and loyalty program configuration. Also see [Regional availability and pricing](https://support.google.com/merchants/answer/14644124) and [How to set up regional member pricing](https://support.google.com/merchants/answer/16388178) for more information. */
@@ -414,7 +413,7 @@ export const ListAccountsProductsLocalInventoriesRequest =
     identifier: "ListAccountsProductsLocalInventoriesRequest",
   }) as any as S.Schema<ListAccountsProductsLocalInventoriesRequest>;
 
-export type LocalInventoryList = ReadonlyArray<LocalInventory>;
+export type LocalInventoryList = Array<LocalInventory>;
 export const LocalInventoryList = /*@__PURE__*/ S.Array(
   LocalInventory,
 ) as any as S.Schema<LocalInventoryList>;
@@ -460,7 +459,7 @@ export const ListAccountsProductsRegionalInventoriesRequest =
     identifier: "ListAccountsProductsRegionalInventoriesRequest",
   }) as any as S.Schema<ListAccountsProductsRegionalInventoriesRequest>;
 
-export type RegionalInventoryList = ReadonlyArray<RegionalInventory>;
+export type RegionalInventoryList = Array<RegionalInventory>;
 export const RegionalInventoryList = /*@__PURE__*/ S.Array(
   RegionalInventory,
 ) as any as S.Schema<RegionalInventoryList>;

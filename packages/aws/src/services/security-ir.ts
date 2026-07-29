@@ -308,7 +308,7 @@ export type AwsRegion =
 export const AwsRegion = /*@__PURE__*/ S.String;
 
 export interface ImpactedAwsRegion {
-  region: AwsRegion;
+  region: AwsRegion | (string & {});
 }
 export const ImpactedAwsRegion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ region: AwsRegion }),
@@ -427,7 +427,7 @@ export type CommunicationType =
   | "Disable AWS Service Access";
 export const CommunicationType = /*@__PURE__*/ S.String;
 
-export type CommunicationPreferences = CommunicationType[];
+export type CommunicationPreferences = (CommunicationType | (string & {}))[];
 export const CommunicationPreferences =
   /*@__PURE__*/ S.Array(CommunicationType);
 export interface IncidentResponder {
@@ -452,7 +452,7 @@ export type OptInFeatureName = "Triage";
 export const OptInFeatureName = /*@__PURE__*/ S.String;
 
 export interface OptInFeature {
-  featureName: OptInFeatureName;
+  featureName: OptInFeatureName | (string & {});
   isEnabled: boolean;
 }
 export const OptInFeature = /*@__PURE__*/ S.suspend(() =>

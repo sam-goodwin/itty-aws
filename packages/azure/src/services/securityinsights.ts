@@ -301,7 +301,7 @@ export const ActionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ActionResponse" }) as any as S.Schema<ActionResponse>;
 
 /** The ActionResponse items on this page */
-export type ActionsListValueList = ReadonlyArray<ActionResponse>;
+export type ActionsListValueList = Array<ActionResponse>;
 export const ActionsListValueList = /*@__PURE__*/ S.Array(
   ActionResponse,
 ) as any as S.Schema<ActionsListValueList>;
@@ -530,7 +530,7 @@ export const AlertRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AlertRule" }) as any as S.Schema<AlertRule>;
 
 /** The AlertRule items on this page */
-export type AlertRulesListValueList = ReadonlyArray<AlertRule>;
+export type AlertRulesListValueList = Array<AlertRule>;
 export const AlertRulesListValueList = /*@__PURE__*/ S.Array(
   AlertRule,
 ) as any as S.Schema<AlertRulesListValueList>;
@@ -652,7 +652,7 @@ export const AlertRuleTemplate = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AlertRuleTemplate>;
 
 /** The AlertRuleTemplate items on this page */
-export type AlertRuleTemplatesListValueList = ReadonlyArray<AlertRuleTemplate>;
+export type AlertRuleTemplatesListValueList = Array<AlertRuleTemplate>;
 export const AlertRuleTemplatesListValueList = /*@__PURE__*/ S.Array(
   AlertRuleTemplate,
 ) as any as S.Schema<AlertRuleTemplatesListValueList>;
@@ -689,7 +689,7 @@ export const ConditionType = /*@__PURE__*/ S.String;
 
 /** Describes an automation rule condition. */
 export interface AutomationRuleCondition {
-  conditionType: ConditionType;
+  conditionType: ConditionType | (string & {});
 }
 export const AutomationRuleCondition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -701,7 +701,7 @@ export const AutomationRuleCondition = /*@__PURE__*/ S.suspend(() =>
 
 /** The conditions to evaluate to determine if the automation rule should be triggered on a given object. */
 export type AutomationRuleTriggeringLogicConditionsList =
-  ReadonlyArray<AutomationRuleCondition>;
+  Array<AutomationRuleCondition>;
 export const AutomationRuleTriggeringLogicConditionsList =
   /*@__PURE__*/ S.Array(
     AutomationRuleCondition,
@@ -713,8 +713,8 @@ export interface AutomationRuleTriggeringLogic {
   isEnabled: boolean;
   /** Determines when the automation rule should automatically expire and be disabled. */
   expirationTimeUtc?: string;
-  triggersOn: TriggersOn;
-  triggersWhen: TriggersWhen;
+  triggersOn: TriggersOn | (string & {});
+  triggersWhen: TriggersWhen | (string & {});
   /** The conditions to evaluate to determine if the automation rule should be triggered on a given object. */
   conditions?: AutomationRuleTriggeringLogicConditionsList;
 }
@@ -738,7 +738,7 @@ export const ActionType = /*@__PURE__*/ S.String;
 export interface AutomationRuleAction {
   order: number;
   /** The type of the automation rule action. */
-  actionType: ActionType;
+  actionType: ActionType | (string & {});
 }
 export const AutomationRuleAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -751,7 +751,7 @@ export const AutomationRuleAction = /*@__PURE__*/ S.suspend(() =>
 
 /** The actions to execute when the automation rule is triggered. */
 export type AutomationRulePropertiesInputActionsList =
-  ReadonlyArray<AutomationRuleAction>;
+  Array<AutomationRuleAction>;
 export const AutomationRulePropertiesInputActionsList = /*@__PURE__*/ S.Array(
   AutomationRuleAction,
 ) as any as S.Schema<AutomationRulePropertiesInputActionsList>;
@@ -814,8 +814,7 @@ export const AutomationRulesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<AutomationRulesCreateOrUpdateRequest>;
 
 /** The actions to execute when the automation rule is triggered. */
-export type AutomationRulePropertiesActionsList =
-  ReadonlyArray<AutomationRuleAction>;
+export type AutomationRulePropertiesActionsList = Array<AutomationRuleAction>;
 export const AutomationRulePropertiesActionsList = /*@__PURE__*/ S.Array(
   AutomationRuleAction,
 ) as any as S.Schema<AutomationRulePropertiesActionsList>;
@@ -1044,7 +1043,7 @@ export const AutomationRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AutomationRule" }) as any as S.Schema<AutomationRule>;
 
 /** List of automation rules. */
-export type AutomationRulesListValueList = ReadonlyArray<AutomationRule>;
+export type AutomationRulesListValueList = Array<AutomationRule>;
 export const AutomationRulesListValueList = /*@__PURE__*/ S.Array(
   AutomationRule,
 ) as any as S.Schema<AutomationRulesListValueList>;
@@ -1076,7 +1075,7 @@ export const UserInfoInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UserInfoInput" }) as any as S.Schema<UserInfoInput>;
 
 /** List of labels relevant to this bookmark */
-export type BookmarkPropertiesInputLabelsList = ReadonlyArray<string>;
+export type BookmarkPropertiesInputLabelsList = Array<string>;
 export const BookmarkPropertiesInputLabelsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BookmarkPropertiesInputLabelsList>;
@@ -1090,7 +1089,7 @@ export interface IncidentInfo {
   /** Incident Id */
   incidentId?: string;
   /** The severity of the incident */
-  severity?: IncidentSeverity;
+  severity?: IncidentSeverity | (string & {});
   /** The title of the incident */
   title?: string;
   /** Relation Name */
@@ -1206,7 +1205,7 @@ export const UserInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UserInfo" }) as any as S.Schema<UserInfo>;
 
 /** List of labels relevant to this bookmark */
-export type BookmarkPropertiesLabelsList = ReadonlyArray<string>;
+export type BookmarkPropertiesLabelsList = Array<string>;
 export const BookmarkPropertiesLabelsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BookmarkPropertiesLabelsList>;
@@ -1429,7 +1428,7 @@ export const Bookmark = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Bookmark" }) as any as S.Schema<Bookmark>;
 
 /** The Bookmark items on this page */
-export type BookmarkListValueList = ReadonlyArray<Bookmark>;
+export type BookmarkListValueList = Array<Bookmark>;
 export const BookmarkListValueList = /*@__PURE__*/ S.Array(
   Bookmark,
 ) as any as S.Schema<BookmarkListValueList>;
@@ -1467,7 +1466,7 @@ export const SourceKind = /*@__PURE__*/ S.String;
 /** The original source of the content item, where it comes from. */
 export interface MetadataSource {
   /** Source type of the content */
-  kind: SourceKind;
+  kind: SourceKind | (string & {});
   /** Name of the content source. The repo name, solution name, LA workspace name etc. */
   name?: string;
   /** ID of the content source. The solution ID, workspace ID, etc */
@@ -1505,7 +1504,7 @@ export const SupportTier = /*@__PURE__*/ S.String;
 /** Support information for the content item. */
 export interface MetadataSupport {
   /** Type of support for content item */
-  tier: SupportTier;
+  tier: SupportTier | (string & {});
   /** Name of the support contact. Company or person. */
   name?: string;
   /** Email of support contact */
@@ -1554,8 +1553,7 @@ export type MetadataDependencyOperator = "AND" | "OR";
 export const MetadataDependencyOperator = /*@__PURE__*/ S.String;
 
 /** This is the list of dependencies we must fulfill, according to the AND/OR operator */
-export type MetadataDependenciesCriteriaList =
-  ReadonlyArray<MetadataDependencies>;
+export type MetadataDependenciesCriteriaList = Array<MetadataDependencies>;
 export const MetadataDependenciesCriteriaList = /*@__PURE__*/ S.Array(
   S.suspend(() => MetadataDependencies),
 ) as any as S.Schema<MetadataDependenciesCriteriaList>;
@@ -1565,13 +1563,13 @@ export interface MetadataDependencies {
   /** Id of the content item we depend on */
   contentId?: string;
   /** Type of the content item we depend on */
-  kind?: Kind;
+  kind?: Kind | (string & {});
   /** Version of the the content item we depend on. Can be blank, * or missing to indicate any version fulfills the dependency. If version does not match our defined numeric format then an exact match is required. */
   version?: string;
   /** Name of the content item */
   name?: string;
   /** Operator used for list of dependencies in criteria array. */
-  operator?: MetadataDependencyOperator;
+  operator?: MetadataDependencyOperator | (string & {});
   /** This is the list of dependencies we must fulfill, according to the AND/OR operator */
   criteria?: MetadataDependenciesCriteriaList;
 }
@@ -1589,19 +1587,19 @@ export const MetadataDependencies = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MetadataDependencies>;
 
 /** Providers for the package item */
-export type PackageBasePropertiesProvidersList = ReadonlyArray<string>;
+export type PackageBasePropertiesProvidersList = Array<string>;
 export const PackageBasePropertiesProvidersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PackageBasePropertiesProvidersList>;
 
 /** domain for the solution content item */
-export type MetadataCategoriesDomainsList = ReadonlyArray<string>;
+export type MetadataCategoriesDomainsList = Array<string>;
 export const MetadataCategoriesDomainsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<MetadataCategoriesDomainsList>;
 
 /** Industry verticals for the solution content item */
-export type MetadataCategoriesVerticalsList = ReadonlyArray<string>;
+export type MetadataCategoriesVerticalsList = Array<string>;
 export const MetadataCategoriesVerticalsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<MetadataCategoriesVerticalsList>;
@@ -1623,16 +1621,14 @@ export const MetadataCategories = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MetadataCategories>;
 
 /** the tactics the resource covers */
-export type PackageBasePropertiesThreatAnalysisTacticsList =
-  ReadonlyArray<string>;
+export type PackageBasePropertiesThreatAnalysisTacticsList = Array<string>;
 export const PackageBasePropertiesThreatAnalysisTacticsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PackageBasePropertiesThreatAnalysisTacticsList>;
 
 /** the techniques the resource covers, these have to be aligned with the tactics being used */
-export type PackageBasePropertiesThreatAnalysisTechniquesList =
-  ReadonlyArray<string>;
+export type PackageBasePropertiesThreatAnalysisTechniquesList = Array<string>;
 export const PackageBasePropertiesThreatAnalysisTechniquesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1645,17 +1641,17 @@ export interface PackageBaseProperties {
   /** Unique ID for the content. It should be generated based on the contentId, contentKind and the contentVersion of the package */
   contentProductId?: string;
   /** The package kind */
-  contentKind?: PackageKind;
+  contentKind?: PackageKind | (string & {});
   /** The version of the content schema. */
   contentSchemaVersion?: string;
   /** Flag indicates if this is a newly published package. */
-  isNew?: Flag;
+  isNew?: Flag | (string & {});
   /** Flag indicates if this package is in preview. */
-  isPreview?: Flag;
+  isPreview?: Flag | (string & {});
   /** Flag indicates if this package is among the featured list. */
-  isFeatured?: Flag;
+  isFeatured?: Flag | (string & {});
   /** Flag indicates if this template is deprecated */
-  isDeprecated?: Flag;
+  isDeprecated?: Flag | (string & {});
   /** the latest version number of the package */
   version?: string;
   /** The display name of the package */
@@ -1910,7 +1906,7 @@ export const PackageModel = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PackageModel" }) as any as S.Schema<PackageModel>;
 
 /** The PackageModel items on this page */
-export type PackageListValueList = ReadonlyArray<PackageModel>;
+export type PackageListValueList = Array<PackageModel>;
 export const PackageListValueList = /*@__PURE__*/ S.Array(
   PackageModel,
 ) as any as S.Schema<PackageListValueList>;
@@ -2028,41 +2024,40 @@ export const ContentTemplateGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ContentTemplateGetRequest>;
 
 /** Providers for the content item */
-export type TemplatePropertiesProvidersList = ReadonlyArray<string>;
+export type TemplatePropertiesProvidersList = Array<string>;
 export const TemplatePropertiesProvidersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<TemplatePropertiesProvidersList>;
 
 /** the tactics the resource covers */
-export type TemplatePropertiesThreatAnalysisTacticsList = ReadonlyArray<string>;
+export type TemplatePropertiesThreatAnalysisTacticsList = Array<string>;
 export const TemplatePropertiesThreatAnalysisTacticsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<TemplatePropertiesThreatAnalysisTacticsList>;
 
 /** the techniques the resource covers, these have to be aligned with the tactics being used */
-export type TemplatePropertiesThreatAnalysisTechniquesList =
-  ReadonlyArray<string>;
+export type TemplatePropertiesThreatAnalysisTechniquesList = Array<string>;
 export const TemplatePropertiesThreatAnalysisTechniquesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<TemplatePropertiesThreatAnalysisTechniquesList>;
 
 /** preview image file names. These will be taken from the solution artifacts */
-export type TemplatePropertiesPreviewImagesList = ReadonlyArray<string>;
+export type TemplatePropertiesPreviewImagesList = Array<string>;
 export const TemplatePropertiesPreviewImagesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<TemplatePropertiesPreviewImagesList>;
 
 /** preview image file names. These will be taken from the solution artifacts. used for dark theme support */
-export type TemplatePropertiesPreviewImagesDarkList = ReadonlyArray<string>;
+export type TemplatePropertiesPreviewImagesDarkList = Array<string>;
 export const TemplatePropertiesPreviewImagesDarkList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<TemplatePropertiesPreviewImagesDarkList>;
 
 /** Dependant templates. Expandable. */
 export type TemplatePropertiesDependantTemplatesList =
-  ReadonlyArray<TemplateProperties>;
+  Array<TemplateProperties>;
 export const TemplatePropertiesDependantTemplatesList = /*@__PURE__*/ S.Array(
   S.suspend(() => TemplateProperties),
 ) as any as S.Schema<TemplatePropertiesDependantTemplatesList>;
@@ -2190,36 +2185,33 @@ export const ContentTemplateGetResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ContentTemplateGetResponse>;
 
 /** Providers for the content item */
-export type TemplatePropertiesInputProvidersList = ReadonlyArray<string>;
+export type TemplatePropertiesInputProvidersList = Array<string>;
 export const TemplatePropertiesInputProvidersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<TemplatePropertiesInputProvidersList>;
 
 /** the tactics the resource covers */
-export type TemplatePropertiesInputThreatAnalysisTacticsList =
-  ReadonlyArray<string>;
+export type TemplatePropertiesInputThreatAnalysisTacticsList = Array<string>;
 export const TemplatePropertiesInputThreatAnalysisTacticsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<TemplatePropertiesInputThreatAnalysisTacticsList>;
 
 /** the techniques the resource covers, these have to be aligned with the tactics being used */
-export type TemplatePropertiesInputThreatAnalysisTechniquesList =
-  ReadonlyArray<string>;
+export type TemplatePropertiesInputThreatAnalysisTechniquesList = Array<string>;
 export const TemplatePropertiesInputThreatAnalysisTechniquesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<TemplatePropertiesInputThreatAnalysisTechniquesList>;
 
 /** preview image file names. These will be taken from the solution artifacts */
-export type TemplatePropertiesInputPreviewImagesList = ReadonlyArray<string>;
+export type TemplatePropertiesInputPreviewImagesList = Array<string>;
 export const TemplatePropertiesInputPreviewImagesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<TemplatePropertiesInputPreviewImagesList>;
 
 /** preview image file names. These will be taken from the solution artifacts. used for dark theme support */
-export type TemplatePropertiesInputPreviewImagesDarkList =
-  ReadonlyArray<string>;
+export type TemplatePropertiesInputPreviewImagesDarkList = Array<string>;
 export const TemplatePropertiesInputPreviewImagesDarkList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2451,7 +2443,7 @@ export const TemplateModel = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TemplateModel" }) as any as S.Schema<TemplateModel>;
 
 /** The TemplateModel items on this page */
-export type TemplateListValueList = ReadonlyArray<TemplateModel>;
+export type TemplateListValueList = Array<TemplateModel>;
 export const TemplateListValueList = /*@__PURE__*/ S.Array(
   TemplateModel,
 ) as any as S.Schema<TemplateListValueList>;
@@ -2683,7 +2675,7 @@ export const DataConnectorDefinition = /*@__PURE__*/ S.suspend(() =>
 
 /** List of data connector definitions. */
 export type DataConnectorDefinitionArmCollectionWrapperValueList =
-  ReadonlyArray<DataConnectorDefinition>;
+  Array<DataConnectorDefinition>;
 export const DataConnectorDefinitionArmCollectionWrapperValueList =
   /*@__PURE__*/ S.Array(
     DataConnectorDefinition,
@@ -2925,7 +2917,7 @@ export const DataConnector = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DataConnector" }) as any as S.Schema<DataConnector>;
 
 /** The DataConnector items on this page */
-export type DataConnectorListValueList = ReadonlyArray<DataConnector>;
+export type DataConnectorListValueList = Array<DataConnector>;
 export const DataConnectorListValueList = /*@__PURE__*/ S.Array(
   DataConnector,
 ) as any as S.Schema<DataConnectorListValueList>;
@@ -3256,7 +3248,7 @@ export const IncidentComment = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IncidentComment>;
 
 /** The IncidentComment items on this page */
-export type IncidentCommentListValueList = ReadonlyArray<IncidentComment>;
+export type IncidentCommentListValueList = Array<IncidentComment>;
 export const IncidentCommentListValueList = /*@__PURE__*/ S.Array(
   IncidentComment,
 ) as any as S.Schema<IncidentCommentListValueList>;
@@ -3541,7 +3533,7 @@ export const Relation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Relation" }) as any as S.Schema<Relation>;
 
 /** The Relation items on this page */
-export type RelationListValueList = ReadonlyArray<Relation>;
+export type RelationListValueList = Array<Relation>;
 export const RelationListValueList = /*@__PURE__*/ S.Array(
   Relation,
 ) as any as S.Schema<RelationListValueList>;
@@ -3595,7 +3587,7 @@ export interface IncidentOwnerInfo {
   /** The user principal name of the user the incident is assigned to. */
   userPrincipalName?: string;
   /** The type of the owner the incident is assigned to. */
-  ownerType?: OwnerType;
+  ownerType?: OwnerType | (string & {});
 }
 export const IncidentOwnerInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3618,7 +3610,7 @@ export interface IncidentLabel {
   /** The name of the label */
   labelName: string;
   /** The type of the label */
-  labelType?: IncidentLabelType;
+  labelType?: IncidentLabelType | (string & {});
 }
 export const IncidentLabel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3628,7 +3620,7 @@ export const IncidentLabel = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IncidentLabel" }) as any as S.Schema<IncidentLabel>;
 
 /** List of labels relevant to this incident */
-export type IncidentPropertiesInputLabelsList = ReadonlyArray<IncidentLabel>;
+export type IncidentPropertiesInputLabelsList = Array<IncidentLabel>;
 export const IncidentPropertiesInputLabelsList = /*@__PURE__*/ S.Array(
   IncidentLabel,
 ) as any as S.Schema<IncidentPropertiesInputLabelsList>;
@@ -3711,13 +3703,13 @@ export const IncidentsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IncidentsCreateOrUpdateRequest>;
 
 /** List of labels relevant to this incident */
-export type IncidentPropertiesLabelsList = ReadonlyArray<IncidentLabel>;
+export type IncidentPropertiesLabelsList = Array<IncidentLabel>;
 export const IncidentPropertiesLabelsList = /*@__PURE__*/ S.Array(
   IncidentLabel,
 ) as any as S.Schema<IncidentPropertiesLabelsList>;
 
 /** List of product names of alerts in the incident */
-export type IncidentAdditionalDataAlertProductNamesList = ReadonlyArray<string>;
+export type IncidentAdditionalDataAlertProductNamesList = Array<string>;
 export const IncidentAdditionalDataAlertProductNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3745,7 +3737,7 @@ export type AttackTactic =
 export const AttackTactic = /*@__PURE__*/ S.String;
 
 /** The tactics associated with incident */
-export type IncidentAdditionalDataTacticsList = ReadonlyArray<AttackTactic>;
+export type IncidentAdditionalDataTacticsList = Array<AttackTactic>;
 export const IncidentAdditionalDataTacticsList = /*@__PURE__*/ S.Array(
   AttackTactic,
 ) as any as S.Schema<IncidentAdditionalDataTacticsList>;
@@ -3779,8 +3771,7 @@ export const IncidentAdditionalData = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IncidentAdditionalData>;
 
 /** List of resource ids of Analytic rules related to the incident */
-export type IncidentPropertiesRelatedAnalyticRuleIdsList =
-  ReadonlyArray<string>;
+export type IncidentPropertiesRelatedAnalyticRuleIdsList = Array<string>;
 export const IncidentPropertiesRelatedAnalyticRuleIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4036,7 +4027,7 @@ export const Incident = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Incident" }) as any as S.Schema<Incident>;
 
 /** The Incident items on this page */
-export type IncidentListValueList = ReadonlyArray<Incident>;
+export type IncidentListValueList = Array<Incident>;
 export const IncidentListValueList = /*@__PURE__*/ S.Array(
   Incident,
 ) as any as S.Schema<IncidentListValueList>;
@@ -4140,7 +4131,7 @@ export const SecurityAlertPropertiesConfidenceReasonsItem =
 
 /** The confidence reasons */
 export type SecurityAlertPropertiesConfidenceReasonsList =
-  ReadonlyArray<SecurityAlertPropertiesConfidenceReasonsItem>;
+  Array<SecurityAlertPropertiesConfidenceReasonsItem>;
 export const SecurityAlertPropertiesConfidenceReasonsList =
   /*@__PURE__*/ S.Array(
     SecurityAlertPropertiesConfidenceReasonsItem,
@@ -4173,7 +4164,7 @@ export type KillChainIntent =
 export const KillChainIntent = /*@__PURE__*/ S.String;
 
 /** Manual action items to take to remediate the alert. */
-export type SecurityAlertPropertiesRemediationStepsList = ReadonlyArray<string>;
+export type SecurityAlertPropertiesRemediationStepsList = Array<string>;
 export const SecurityAlertPropertiesRemediationStepsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4193,14 +4184,13 @@ export type AlertStatus =
 export const AlertStatus = /*@__PURE__*/ S.String;
 
 /** The tactics of the alert */
-export type SecurityAlertPropertiesTacticsList = ReadonlyArray<AttackTactic>;
+export type SecurityAlertPropertiesTacticsList = Array<AttackTactic>;
 export const SecurityAlertPropertiesTacticsList = /*@__PURE__*/ S.Array(
   AttackTactic,
 ) as any as S.Schema<SecurityAlertPropertiesTacticsList>;
 
 /** The list of resource identifiers of the alert. */
-export type SecurityAlertPropertiesResourceIdentifiersList =
-  ReadonlyArray<unknown>;
+export type SecurityAlertPropertiesResourceIdentifiersList = Array<unknown>;
 export const SecurityAlertPropertiesResourceIdentifiersList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -4326,7 +4316,7 @@ export const SecurityAlert = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SecurityAlert" }) as any as S.Schema<SecurityAlert>;
 
 /** Array of incident alerts. */
-export type IncidentAlertListValueList = ReadonlyArray<SecurityAlert>;
+export type IncidentAlertListValueList = Array<SecurityAlert>;
 export const IncidentAlertListValueList = /*@__PURE__*/ S.Array(
   SecurityAlert,
 ) as any as S.Schema<IncidentAlertListValueList>;
@@ -4383,7 +4373,7 @@ export const HuntingBookmarkPropertiesAdditionalDataMap =
   ) as any as S.Schema<HuntingBookmarkPropertiesAdditionalDataMap>;
 
 /** List of labels relevant to this bookmark */
-export type HuntingBookmarkPropertiesLabelsList = ReadonlyArray<string>;
+export type HuntingBookmarkPropertiesLabelsList = Array<string>;
 export const HuntingBookmarkPropertiesLabelsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<HuntingBookmarkPropertiesLabelsList>;
@@ -4466,7 +4456,7 @@ export const HuntingBookmark = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HuntingBookmark>;
 
 /** Array of incident bookmarks. */
-export type IncidentBookmarkListValueList = ReadonlyArray<HuntingBookmark>;
+export type IncidentBookmarkListValueList = Array<HuntingBookmark>;
 export const IncidentBookmarkListValueList = /*@__PURE__*/ S.Array(
   HuntingBookmark,
 ) as any as S.Schema<IncidentBookmarkListValueList>;
@@ -4536,7 +4526,7 @@ export const Entity = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Entity" }) as any as S.Schema<Entity>;
 
 /** Array of the incident related entities. */
-export type IncidentEntitiesResponseEntitiesList = ReadonlyArray<Entity>;
+export type IncidentEntitiesResponseEntitiesList = Array<Entity>;
 export const IncidentEntitiesResponseEntitiesList = /*@__PURE__*/ S.Array(
   Entity,
 ) as any as S.Schema<IncidentEntitiesResponseEntitiesList>;
@@ -4559,7 +4549,7 @@ export const IncidentEntitiesResultsMetadata = /*@__PURE__*/ S.suspend(() =>
 
 /** The metadata from the incident related entities results. */
 export type IncidentEntitiesResponseMetaDataList =
-  ReadonlyArray<IncidentEntitiesResultsMetadata>;
+  Array<IncidentEntitiesResultsMetadata>;
 export const IncidentEntitiesResponseMetaDataList = /*@__PURE__*/ S.Array(
   IncidentEntitiesResultsMetadata,
 ) as any as S.Schema<IncidentEntitiesResponseMetaDataList>;
@@ -4895,7 +4885,7 @@ export const IncidentTask = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IncidentTask" }) as any as S.Schema<IncidentTask>;
 
 /** List of incident tasks. */
-export type IncidentTaskListValueList = ReadonlyArray<IncidentTask>;
+export type IncidentTaskListValueList = Array<IncidentTask>;
 export const IncidentTaskListValueList = /*@__PURE__*/ S.Array(
   IncidentTask,
 ) as any as S.Schema<IncidentTaskListValueList>;
@@ -4917,34 +4907,33 @@ export const IncidentTaskList = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IncidentTaskList>;
 
 /** Providers for the solution content item */
-export type MetadataPropertiesProvidersList = ReadonlyArray<string>;
+export type MetadataPropertiesProvidersList = Array<string>;
 export const MetadataPropertiesProvidersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<MetadataPropertiesProvidersList>;
 
 /** the tactics the resource covers */
-export type MetadataPropertiesThreatAnalysisTacticsList = ReadonlyArray<string>;
+export type MetadataPropertiesThreatAnalysisTacticsList = Array<string>;
 export const MetadataPropertiesThreatAnalysisTacticsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<MetadataPropertiesThreatAnalysisTacticsList>;
 
 /** the techniques the resource covers, these have to be aligned with the tactics being used */
-export type MetadataPropertiesThreatAnalysisTechniquesList =
-  ReadonlyArray<string>;
+export type MetadataPropertiesThreatAnalysisTechniquesList = Array<string>;
 export const MetadataPropertiesThreatAnalysisTechniquesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<MetadataPropertiesThreatAnalysisTechniquesList>;
 
 /** preview image file names. These will be taken from the solution artifacts */
-export type MetadataPropertiesPreviewImagesList = ReadonlyArray<string>;
+export type MetadataPropertiesPreviewImagesList = Array<string>;
 export const MetadataPropertiesPreviewImagesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<MetadataPropertiesPreviewImagesList>;
 
 /** preview image file names. These will be taken from the solution artifacts. used for dark theme support */
-export type MetadataPropertiesPreviewImagesDarkList = ReadonlyArray<string>;
+export type MetadataPropertiesPreviewImagesDarkList = Array<string>;
 export const MetadataPropertiesPreviewImagesDarkList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<MetadataPropertiesPreviewImagesDarkList>;
@@ -5235,7 +5224,7 @@ export const MetadataModel = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MetadataModel" }) as any as S.Schema<MetadataModel>;
 
 /** The MetadataModel items on this page */
-export type MetadataListValueList = ReadonlyArray<MetadataModel>;
+export type MetadataListValueList = Array<MetadataModel>;
 export const MetadataListValueList = /*@__PURE__*/ S.Array(
   MetadataModel,
 ) as any as S.Schema<MetadataListValueList>;
@@ -5255,36 +5244,33 @@ export const MetadataList = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MetadataList" }) as any as S.Schema<MetadataList>;
 
 /** Providers for the solution content item */
-export type MetadataPropertiesPatchProvidersList = ReadonlyArray<string>;
+export type MetadataPropertiesPatchProvidersList = Array<string>;
 export const MetadataPropertiesPatchProvidersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<MetadataPropertiesPatchProvidersList>;
 
 /** the tactics the resource covers */
-export type MetadataPropertiesPatchThreatAnalysisTacticsList =
-  ReadonlyArray<string>;
+export type MetadataPropertiesPatchThreatAnalysisTacticsList = Array<string>;
 export const MetadataPropertiesPatchThreatAnalysisTacticsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<MetadataPropertiesPatchThreatAnalysisTacticsList>;
 
 /** the techniques the resource covers, these have to be aligned with the tactics being used */
-export type MetadataPropertiesPatchThreatAnalysisTechniquesList =
-  ReadonlyArray<string>;
+export type MetadataPropertiesPatchThreatAnalysisTechniquesList = Array<string>;
 export const MetadataPropertiesPatchThreatAnalysisTechniquesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<MetadataPropertiesPatchThreatAnalysisTechniquesList>;
 
 /** preview image file names. These will be taken from the solution artifacts */
-export type MetadataPropertiesPatchPreviewImagesList = ReadonlyArray<string>;
+export type MetadataPropertiesPatchPreviewImagesList = Array<string>;
 export const MetadataPropertiesPatchPreviewImagesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<MetadataPropertiesPatchPreviewImagesList>;
 
 /** preview image file names. These will be taken from the solution artifacts. used for dark theme support */
-export type MetadataPropertiesPatchPreviewImagesDarkList =
-  ReadonlyArray<string>;
+export type MetadataPropertiesPatchPreviewImagesDarkList = Array<string>;
 export const MetadataPropertiesPatchPreviewImagesDarkList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5479,7 +5465,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** Array of operations */
-export type OperationsListValueList = ReadonlyArray<Operation>;
+export type OperationsListValueList = Array<Operation>;
 export const OperationsListValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListValueList>;
@@ -5527,14 +5513,13 @@ export const ProductPackageGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProductPackageGetRequest>;
 
 /** Providers for the package item */
-export type ProductPackagePropertiesProvidersList = ReadonlyArray<string>;
+export type ProductPackagePropertiesProvidersList = Array<string>;
 export const ProductPackagePropertiesProvidersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ProductPackagePropertiesProvidersList>;
 
 /** the tactics the resource covers */
-export type ProductPackagePropertiesThreatAnalysisTacticsList =
-  ReadonlyArray<string>;
+export type ProductPackagePropertiesThreatAnalysisTacticsList = Array<string>;
 export const ProductPackagePropertiesThreatAnalysisTacticsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5542,7 +5527,7 @@ export const ProductPackagePropertiesThreatAnalysisTacticsList =
 
 /** the techniques the resource covers, these have to be aligned with the tactics being used */
 export type ProductPackagePropertiesThreatAnalysisTechniquesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ProductPackagePropertiesThreatAnalysisTechniquesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5736,7 +5721,7 @@ export const ProductPackageModel = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProductPackageModel>;
 
 /** The ProductPackageModel items on this page */
-export type ProductPackageListValueList = ReadonlyArray<ProductPackageModel>;
+export type ProductPackageListValueList = Array<ProductPackageModel>;
 export const ProductPackageListValueList = /*@__PURE__*/ S.Array(
   ProductPackageModel,
 ) as any as S.Schema<ProductPackageListValueList>;
@@ -5786,14 +5771,13 @@ export const ProductTemplateGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProductTemplateGetRequest>;
 
 /** Providers for the content item */
-export type ProductTemplatePropertiesProvidersList = ReadonlyArray<string>;
+export type ProductTemplatePropertiesProvidersList = Array<string>;
 export const ProductTemplatePropertiesProvidersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ProductTemplatePropertiesProvidersList>;
 
 /** the tactics the resource covers */
-export type ProductTemplatePropertiesThreatAnalysisTacticsList =
-  ReadonlyArray<string>;
+export type ProductTemplatePropertiesThreatAnalysisTacticsList = Array<string>;
 export const ProductTemplatePropertiesThreatAnalysisTacticsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5801,21 +5785,20 @@ export const ProductTemplatePropertiesThreatAnalysisTacticsList =
 
 /** the techniques the resource covers, these have to be aligned with the tactics being used */
 export type ProductTemplatePropertiesThreatAnalysisTechniquesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ProductTemplatePropertiesThreatAnalysisTechniquesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ProductTemplatePropertiesThreatAnalysisTechniquesList>;
 
 /** preview image file names. These will be taken from the solution artifacts */
-export type ProductTemplatePropertiesPreviewImagesList = ReadonlyArray<string>;
+export type ProductTemplatePropertiesPreviewImagesList = Array<string>;
 export const ProductTemplatePropertiesPreviewImagesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ProductTemplatePropertiesPreviewImagesList>;
 
 /** preview image file names. These will be taken from the solution artifacts. used for dark theme support */
-export type ProductTemplatePropertiesPreviewImagesDarkList =
-  ReadonlyArray<string>;
+export type ProductTemplatePropertiesPreviewImagesDarkList = Array<string>;
 export const ProductTemplatePropertiesPreviewImagesDarkList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6017,7 +6000,7 @@ export const ProductTemplateModel = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProductTemplateModel>;
 
 /** The ProductTemplateModel items on this page */
-export type ProductTemplateListValueList = ReadonlyArray<ProductTemplateModel>;
+export type ProductTemplateListValueList = Array<ProductTemplateModel>;
 export const ProductTemplateListValueList = /*@__PURE__*/ S.Array(
   ProductTemplateModel,
 ) as any as S.Schema<ProductTemplateListValueList>;
@@ -6253,7 +6236,7 @@ export const SecurityMLAnalyticsSetting = /*@__PURE__*/ S.suspend(() =>
 
 /** The SecurityMLAnalyticsSetting items on this page */
 export type SecurityMLAnalyticsSettingsListValueList =
-  ReadonlyArray<SecurityMLAnalyticsSetting>;
+  Array<SecurityMLAnalyticsSetting>;
 export const SecurityMLAnalyticsSettingsListValueList = /*@__PURE__*/ S.Array(
   SecurityMLAnalyticsSetting,
 ) as any as S.Schema<SecurityMLAnalyticsSettingsListValueList>;
@@ -6496,7 +6479,7 @@ export const SentinelOnboardingState = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of Sentinel onboarding states */
 export type SentinelOnboardingStatesListValueList =
-  ReadonlyArray<SentinelOnboardingState>;
+  Array<SentinelOnboardingState>;
 export const SentinelOnboardingStatesListValueList = /*@__PURE__*/ S.Array(
   SentinelOnboardingState,
 ) as any as S.Schema<SentinelOnboardingStatesListValueList>;
@@ -6521,7 +6504,7 @@ export const RepositoryAccessKind = /*@__PURE__*/ S.String;
 /** Credentials to access repository. */
 export interface RepositoryAccess {
   /** The kind of repository access credentials */
-  kind: RepositoryAccessKind;
+  kind: RepositoryAccessKind | (string & {});
   /** OAuth Code. Required when `kind` is `OAuth` */
   code?: string;
   /** OAuth State. Required when `kind` is `OAuth` */
@@ -6589,7 +6572,7 @@ export const SourceControlListRepositoriesRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<SourceControlListRepositoriesRequest>;
 
 /** Array of branches. */
-export type RepoBranchesList = ReadonlyArray<string>;
+export type RepoBranchesList = Array<string>;
 export const RepoBranchesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RepoBranchesList>;
@@ -6615,7 +6598,7 @@ export const Repo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Repo" }) as any as S.Schema<Repo>;
 
 /** The Repo items on this page */
-export type RepoListValueList = ReadonlyArray<Repo>;
+export type RepoListValueList = Array<Repo>;
 export const RepoListValueList = /*@__PURE__*/ S.Array(
   Repo,
 ) as any as S.Schema<RepoListValueList>;
@@ -6649,7 +6632,7 @@ export type ContentType =
 export const ContentType = /*@__PURE__*/ S.String;
 
 /** Array of source control content types. */
-export type SourceControlPropertiesInputContentTypesList = ReadonlyArray<
+export type SourceControlPropertiesInputContentTypesList = Array<
   ContentType | (string & {})
 >;
 export const SourceControlPropertiesInputContentTypesList =
@@ -6786,8 +6769,7 @@ export type Version = "V1" | "V2";
 export const Version = /*@__PURE__*/ S.String;
 
 /** Array of source control content types. */
-export type SourceControlPropertiesContentTypesList =
-  ReadonlyArray<ContentType>;
+export type SourceControlPropertiesContentTypesList = Array<ContentType>;
 export const SourceControlPropertiesContentTypesList = /*@__PURE__*/ S.Array(
   ContentType,
 ) as any as S.Schema<SourceControlPropertiesContentTypesList>;
@@ -7117,7 +7099,7 @@ export type WarningCode =
   | "SourceControl_DeletedWithWarnings";
 export const WarningCode = /*@__PURE__*/ S.String;
 
-export type WarningBodyDetailsList = ReadonlyArray<WarningBody>;
+export type WarningBodyDetailsList = Array<WarningBody>;
 export const WarningBodyDetailsList = /*@__PURE__*/ S.Array(
   S.suspend(() => WarningBody),
 ) as any as S.Schema<WarningBodyDetailsList>;
@@ -7256,7 +7238,7 @@ export const SourceControl = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SourceControl" }) as any as S.Schema<SourceControl>;
 
 /** The SourceControl items on this page */
-export type SourceControlListValueList = ReadonlyArray<SourceControl>;
+export type SourceControlListValueList = Array<SourceControl>;
 export const SourceControlListValueList = /*@__PURE__*/ S.Array(
   SourceControl,
 ) as any as S.Schema<SourceControlListValueList>;
@@ -7279,7 +7261,7 @@ export const SourceControlList = /*@__PURE__*/ S.suspend(() =>
 
 /** List of tags to be appended. */
 export type ThreatIntelligenceIndicatorAppendTagsRequestThreatIntelligenceTagsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ThreatIntelligenceIndicatorAppendTagsRequestThreatIntelligenceTagsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -7331,7 +7313,7 @@ export const ThreatIntelligenceResourceInnerKind = /*@__PURE__*/ S.String;
 
 /** List of tags */
 export type ThreatIntelligenceIndicatorPropertiesInputThreatIntelligenceTagsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ThreatIntelligenceIndicatorPropertiesInputThreatIntelligenceTagsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -7339,7 +7321,7 @@ export const ThreatIntelligenceIndicatorPropertiesInputThreatIntelligenceTagsLis
 
 /** Indicator types of threat intelligence entities */
 export type ThreatIntelligenceIndicatorPropertiesInputIndicatorTypesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ThreatIntelligenceIndicatorPropertiesInputIndicatorTypesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -7363,7 +7345,7 @@ export const ThreatIntelligenceKillChainPhase = /*@__PURE__*/ S.suspend(() =>
 
 /** Kill chain phases */
 export type ThreatIntelligenceIndicatorPropertiesInputKillChainPhasesList =
-  ReadonlyArray<ThreatIntelligenceKillChainPhase>;
+  Array<ThreatIntelligenceKillChainPhase>;
 export const ThreatIntelligenceIndicatorPropertiesInputKillChainPhasesList =
   /*@__PURE__*/ S.Array(
     ThreatIntelligenceKillChainPhase,
@@ -7388,7 +7370,7 @@ export const ThreatIntelligenceParsedPatternTypeValue = /*@__PURE__*/ S.suspend(
 
 /** Pattern type keys */
 export type ThreatIntelligenceParsedPatternPatternTypeValuesList =
-  ReadonlyArray<ThreatIntelligenceParsedPatternTypeValue>;
+  Array<ThreatIntelligenceParsedPatternTypeValue>;
 export const ThreatIntelligenceParsedPatternPatternTypeValuesList =
   /*@__PURE__*/ S.Array(
     ThreatIntelligenceParsedPatternTypeValue,
@@ -7414,7 +7396,7 @@ export const ThreatIntelligenceParsedPattern = /*@__PURE__*/ S.suspend(() =>
 
 /** Parsed patterns */
 export type ThreatIntelligenceIndicatorPropertiesInputParsedPatternList =
-  ReadonlyArray<ThreatIntelligenceParsedPattern>;
+  Array<ThreatIntelligenceParsedPattern>;
 export const ThreatIntelligenceIndicatorPropertiesInputParsedPatternList =
   /*@__PURE__*/ S.Array(
     ThreatIntelligenceParsedPattern,
@@ -7457,15 +7439,14 @@ export const ThreatIntelligenceExternalReference = /*@__PURE__*/ S.suspend(() =>
 
 /** External References */
 export type ThreatIntelligenceIndicatorPropertiesInputExternalReferencesList =
-  ReadonlyArray<ThreatIntelligenceExternalReference>;
+  Array<ThreatIntelligenceExternalReference>;
 export const ThreatIntelligenceIndicatorPropertiesInputExternalReferencesList =
   /*@__PURE__*/ S.Array(
     ThreatIntelligenceExternalReference,
   ) as any as S.Schema<ThreatIntelligenceIndicatorPropertiesInputExternalReferencesList>;
 
 /** granular marking model selectors */
-export type ThreatIntelligenceGranularMarkingModelSelectorsList =
-  ReadonlyArray<string>;
+export type ThreatIntelligenceGranularMarkingModelSelectorsList = Array<string>;
 export const ThreatIntelligenceGranularMarkingModelSelectorsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -7495,7 +7476,7 @@ export const ThreatIntelligenceGranularMarkingModel = /*@__PURE__*/ S.suspend(
 
 /** Granular Markings */
 export type ThreatIntelligenceIndicatorPropertiesInputGranularMarkingsList =
-  ReadonlyArray<ThreatIntelligenceGranularMarkingModel>;
+  Array<ThreatIntelligenceGranularMarkingModel>;
 export const ThreatIntelligenceIndicatorPropertiesInputGranularMarkingsList =
   /*@__PURE__*/ S.Array(
     ThreatIntelligenceGranularMarkingModel,
@@ -7503,7 +7484,7 @@ export const ThreatIntelligenceIndicatorPropertiesInputGranularMarkingsList =
 
 /** Labels of threat intelligence entity */
 export type ThreatIntelligenceIndicatorPropertiesInputLabelsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ThreatIntelligenceIndicatorPropertiesInputLabelsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -7511,7 +7492,7 @@ export const ThreatIntelligenceIndicatorPropertiesInputLabelsList =
 
 /** Threat intelligence entity object marking references */
 export type ThreatIntelligenceIndicatorPropertiesInputObjectMarkingRefsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ThreatIntelligenceIndicatorPropertiesInputObjectMarkingRefsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -7519,7 +7500,7 @@ export const ThreatIntelligenceIndicatorPropertiesInputObjectMarkingRefsList =
 
 /** Threat types */
 export type ThreatIntelligenceIndicatorPropertiesInputThreatTypesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ThreatIntelligenceIndicatorPropertiesInputThreatTypesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -7913,7 +7894,7 @@ export const ThreatIntelligenceMetricEntity = /*@__PURE__*/ S.suspend(() =>
 
 /** Threat type metrics */
 export type ThreatIntelligenceMetricThreatTypeMetricsList =
-  ReadonlyArray<ThreatIntelligenceMetricEntity>;
+  Array<ThreatIntelligenceMetricEntity>;
 export const ThreatIntelligenceMetricThreatTypeMetricsList =
   /*@__PURE__*/ S.Array(
     ThreatIntelligenceMetricEntity,
@@ -7921,7 +7902,7 @@ export const ThreatIntelligenceMetricThreatTypeMetricsList =
 
 /** Pattern type metrics */
 export type ThreatIntelligenceMetricPatternTypeMetricsList =
-  ReadonlyArray<ThreatIntelligenceMetricEntity>;
+  Array<ThreatIntelligenceMetricEntity>;
 export const ThreatIntelligenceMetricPatternTypeMetricsList =
   /*@__PURE__*/ S.Array(
     ThreatIntelligenceMetricEntity,
@@ -7929,7 +7910,7 @@ export const ThreatIntelligenceMetricPatternTypeMetricsList =
 
 /** Source metrics */
 export type ThreatIntelligenceMetricSourceMetricsList =
-  ReadonlyArray<ThreatIntelligenceMetricEntity>;
+  Array<ThreatIntelligenceMetricEntity>;
 export const ThreatIntelligenceMetricSourceMetricsList = /*@__PURE__*/ S.Array(
   ThreatIntelligenceMetricEntity,
 ) as any as S.Schema<ThreatIntelligenceMetricSourceMetricsList>;
@@ -7975,7 +7956,7 @@ export const ThreatIntelligenceMetrics = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of threat intelligence metric fields (type/threat type/source). */
 export type ThreatIntelligenceMetricsListValueList =
-  ReadonlyArray<ThreatIntelligenceMetrics>;
+  Array<ThreatIntelligenceMetrics>;
 export const ThreatIntelligenceMetricsListValueList = /*@__PURE__*/ S.Array(
   ThreatIntelligenceMetrics,
 ) as any as S.Schema<ThreatIntelligenceMetricsListValueList>;
@@ -8018,7 +7999,7 @@ export const ThreatIntelligenceSortingCriteria = /*@__PURE__*/ S.suspend(() =>
 
 /** Columns to sort by and sorting order */
 export type ThreatIntelligenceIndicatorQueryIndicatorsRequestSortByList =
-  ReadonlyArray<ThreatIntelligenceSortingCriteria>;
+  Array<ThreatIntelligenceSortingCriteria>;
 export const ThreatIntelligenceIndicatorQueryIndicatorsRequestSortByList =
   /*@__PURE__*/ S.Array(
     ThreatIntelligenceSortingCriteria,
@@ -8026,7 +8007,7 @@ export const ThreatIntelligenceIndicatorQueryIndicatorsRequestSortByList =
 
 /** Sources of threat intelligence indicators */
 export type ThreatIntelligenceIndicatorQueryIndicatorsRequestSourcesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ThreatIntelligenceIndicatorQueryIndicatorsRequestSourcesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -8034,7 +8015,7 @@ export const ThreatIntelligenceIndicatorQueryIndicatorsRequestSourcesList =
 
 /** Pattern types */
 export type ThreatIntelligenceIndicatorQueryIndicatorsRequestPatternTypesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ThreatIntelligenceIndicatorQueryIndicatorsRequestPatternTypesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -8042,7 +8023,7 @@ export const ThreatIntelligenceIndicatorQueryIndicatorsRequestPatternTypesList =
 
 /** Threat types of threat intelligence indicators */
 export type ThreatIntelligenceIndicatorQueryIndicatorsRequestThreatTypesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ThreatIntelligenceIndicatorQueryIndicatorsRequestThreatTypesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -8050,7 +8031,7 @@ export const ThreatIntelligenceIndicatorQueryIndicatorsRequestThreatTypesList =
 
 /** Ids of threat intelligence indicators */
 export type ThreatIntelligenceIndicatorQueryIndicatorsRequestIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ThreatIntelligenceIndicatorQueryIndicatorsRequestIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -8058,7 +8039,7 @@ export const ThreatIntelligenceIndicatorQueryIndicatorsRequestIdsList =
 
 /** Keywords for searching threat intelligence indicators */
 export type ThreatIntelligenceIndicatorQueryIndicatorsRequestKeywordsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ThreatIntelligenceIndicatorQueryIndicatorsRequestKeywordsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -8169,7 +8150,7 @@ export const ThreatIntelligenceInformation = /*@__PURE__*/ S.suspend(() =>
 
 /** The ThreatIntelligenceInformation items on this page */
 export type ThreatIntelligenceInformationListValueList =
-  ReadonlyArray<ThreatIntelligenceInformation>;
+  Array<ThreatIntelligenceInformation>;
 export const ThreatIntelligenceInformationListValueList = /*@__PURE__*/ S.Array(
   ThreatIntelligenceInformation,
 ) as any as S.Schema<ThreatIntelligenceInformationListValueList>;
@@ -8593,7 +8574,7 @@ export const WatchlistItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "WatchlistItem" }) as any as S.Schema<WatchlistItem>;
 
 /** The WatchlistItem items on this page */
-export type WatchlistItemListValueList = ReadonlyArray<WatchlistItem>;
+export type WatchlistItemListValueList = Array<WatchlistItem>;
 export const WatchlistItemListValueList = /*@__PURE__*/ S.Array(
   WatchlistItem,
 ) as any as S.Schema<WatchlistItemListValueList>;
@@ -8619,7 +8600,7 @@ export type SourceType = "Local" | "AzureStorage";
 export const SourceType = /*@__PURE__*/ S.String;
 
 /** List of labels relevant to this watchlist */
-export type WatchlistPropertiesInputLabelsList = ReadonlyArray<string>;
+export type WatchlistPropertiesInputLabelsList = Array<string>;
 export const WatchlistPropertiesInputLabelsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<WatchlistPropertiesInputLabelsList>;
@@ -8732,7 +8713,7 @@ export const WatchlistsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WatchlistsCreateOrUpdateRequest>;
 
 /** List of labels relevant to this watchlist */
-export type WatchlistPropertiesLabelsList = ReadonlyArray<string>;
+export type WatchlistPropertiesLabelsList = Array<string>;
 export const WatchlistPropertiesLabelsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<WatchlistPropertiesLabelsList>;
@@ -8996,7 +8977,7 @@ export const Watchlist = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Watchlist" }) as any as S.Schema<Watchlist>;
 
 /** The Watchlist items on this page */
-export type WatchlistListValueList = ReadonlyArray<Watchlist>;
+export type WatchlistListValueList = Array<Watchlist>;
 export const WatchlistListValueList = /*@__PURE__*/ S.Array(
   Watchlist,
 ) as any as S.Schema<WatchlistListValueList>;

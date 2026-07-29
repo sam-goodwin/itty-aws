@@ -193,7 +193,7 @@ export const RecordsBatchRequestDeletesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RecordsBatchRequestDeletesItem>;
 
 export type RecordsBatchRequestDeletesList =
-  ReadonlyArray<RecordsBatchRequestDeletesItem>;
+  Array<RecordsBatchRequestDeletesItem>;
 export const RecordsBatchRequestDeletesList = /*@__PURE__*/ S.Array(
   RecordsBatchRequestDeletesItem,
 ) as any as S.Schema<RecordsBatchRequestDeletesList>;
@@ -284,7 +284,7 @@ export const RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings =
   }) as any as S.Schema<RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings>;
 
 export type RecordsBatchRequestPatchesItemOpenpgpkeyRecordTagsList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const RecordsBatchRequestPatchesItemOpenpgpkeyRecordTagsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -563,7 +563,7 @@ export const RecordsBatchRequestPatchesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RecordsBatchRequestPatchesItem>;
 
 export type RecordsBatchRequestPatchesList =
-  ReadonlyArray<RecordsBatchRequestPatchesItem>;
+  Array<RecordsBatchRequestPatchesItem>;
 export const RecordsBatchRequestPatchesList = /*@__PURE__*/ S.Array(
   RecordsBatchRequestPatchesItem,
 ) as any as S.Schema<RecordsBatchRequestPatchesList>;
@@ -587,8 +587,7 @@ export const RecordsBatchRequestPostsItemARecordSettings =
     identifier: "RecordsBatchRequestPostsItemARecordSettings",
   }) as any as S.Schema<RecordsBatchRequestPostsItemARecordSettings>;
 
-export type RecordsBatchRequestPostsItemARecordTagsList =
-  ReadonlyArray<unknown>;
+export type RecordsBatchRequestPostsItemARecordTagsList = Array<unknown>;
 export const RecordsBatchRequestPostsItemARecordTagsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -650,8 +649,7 @@ export const RecordsBatchRequestPostsItemAAAARecordSettings =
     identifier: "RecordsBatchRequestPostsItemAAAARecordSettings",
   }) as any as S.Schema<RecordsBatchRequestPostsItemAAAARecordSettings>;
 
-export type RecordsBatchRequestPostsItemAAAARecordTagsList =
-  ReadonlyArray<unknown>;
+export type RecordsBatchRequestPostsItemAAAARecordTagsList = Array<unknown>;
 export const RecordsBatchRequestPostsItemAAAARecordTagsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -717,8 +715,7 @@ export const RecordsBatchRequestPostsItemCNAMERecordSettings =
     identifier: "RecordsBatchRequestPostsItemCNAMERecordSettings",
   }) as any as S.Schema<RecordsBatchRequestPostsItemCNAMERecordSettings>;
 
-export type RecordsBatchRequestPostsItemCNAMERecordTagsList =
-  ReadonlyArray<unknown>;
+export type RecordsBatchRequestPostsItemCNAMERecordTagsList = Array<unknown>;
 export const RecordsBatchRequestPostsItemCNAMERecordTagsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -777,8 +774,7 @@ export const RecordsBatchRequestPostsItemMXRecordSettings =
     identifier: "RecordsBatchRequestPostsItemMXRecordSettings",
   }) as any as S.Schema<RecordsBatchRequestPostsItemMXRecordSettings>;
 
-export type RecordsBatchRequestPostsItemMXRecordTagsList =
-  ReadonlyArray<unknown>;
+export type RecordsBatchRequestPostsItemMXRecordTagsList = Array<unknown>;
 export const RecordsBatchRequestPostsItemMXRecordTagsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -840,8 +836,7 @@ export const RecordsBatchRequestPostsItemNSRecordSettings =
     identifier: "RecordsBatchRequestPostsItemNSRecordSettings",
   }) as any as S.Schema<RecordsBatchRequestPostsItemNSRecordSettings>;
 
-export type RecordsBatchRequestPostsItemNSRecordTagsList =
-  ReadonlyArray<unknown>;
+export type RecordsBatchRequestPostsItemNSRecordTagsList = Array<unknown>;
 export const RecordsBatchRequestPostsItemNSRecordTagsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -904,7 +899,7 @@ export const RecordsBatchRequestPostsItemDNSRecordsOpenpgpkeyRecordSettings =
   }) as any as S.Schema<RecordsBatchRequestPostsItemDNSRecordsOpenpgpkeyRecordSettings>;
 
 export type RecordsBatchRequestPostsItemDNSRecordsOpenpgpkeyRecordTagsList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const RecordsBatchRequestPostsItemDNSRecordsOpenpgpkeyRecordTagsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -969,8 +964,7 @@ export const RecordsBatchRequestPostsItemPTRRecordSettings =
     identifier: "RecordsBatchRequestPostsItemPTRRecordSettings",
   }) as any as S.Schema<RecordsBatchRequestPostsItemPTRRecordSettings>;
 
-export type RecordsBatchRequestPostsItemPTRRecordTagsList =
-  ReadonlyArray<unknown>;
+export type RecordsBatchRequestPostsItemPTRRecordTagsList = Array<unknown>;
 export const RecordsBatchRequestPostsItemPTRRecordTagsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -1029,8 +1023,7 @@ export const RecordsBatchRequestPostsItemTXTRecordSettings =
     identifier: "RecordsBatchRequestPostsItemTXTRecordSettings",
   }) as any as S.Schema<RecordsBatchRequestPostsItemTXTRecordSettings>;
 
-export type RecordsBatchRequestPostsItemTXTRecordTagsList =
-  ReadonlyArray<unknown>;
+export type RecordsBatchRequestPostsItemTXTRecordTagsList = Array<unknown>;
 export const RecordsBatchRequestPostsItemTXTRecordTagsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -1108,8 +1101,7 @@ export const RecordsBatchRequestPostsItemCAARecordSettings =
     identifier: "RecordsBatchRequestPostsItemCAARecordSettings",
   }) as any as S.Schema<RecordsBatchRequestPostsItemCAARecordSettings>;
 
-export type RecordsBatchRequestPostsItemCAARecordTagsList =
-  ReadonlyArray<unknown>;
+export type RecordsBatchRequestPostsItemCAARecordTagsList = Array<unknown>;
 export const RecordsBatchRequestPostsItemCAARecordTagsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -1194,8 +1186,7 @@ export const RecordsBatchRequestPostsItemCERTRecordSettings =
     identifier: "RecordsBatchRequestPostsItemCERTRecordSettings",
   }) as any as S.Schema<RecordsBatchRequestPostsItemCERTRecordSettings>;
 
-export type RecordsBatchRequestPostsItemCERTRecordTagsList =
-  ReadonlyArray<unknown>;
+export type RecordsBatchRequestPostsItemCERTRecordTagsList = Array<unknown>;
 export const RecordsBatchRequestPostsItemCERTRecordTagsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -1280,8 +1271,7 @@ export const RecordsBatchRequestPostsItemDNSKEYRecordSettings =
     identifier: "RecordsBatchRequestPostsItemDNSKEYRecordSettings",
   }) as any as S.Schema<RecordsBatchRequestPostsItemDNSKEYRecordSettings>;
 
-export type RecordsBatchRequestPostsItemDNSKEYRecordTagsList =
-  ReadonlyArray<unknown>;
+export type RecordsBatchRequestPostsItemDNSKEYRecordTagsList = Array<unknown>;
 export const RecordsBatchRequestPostsItemDNSKEYRecordTagsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -1365,8 +1355,7 @@ export const RecordsBatchRequestPostsItemDSRecordSettings =
     identifier: "RecordsBatchRequestPostsItemDSRecordSettings",
   }) as any as S.Schema<RecordsBatchRequestPostsItemDSRecordSettings>;
 
-export type RecordsBatchRequestPostsItemDSRecordTagsList =
-  ReadonlyArray<unknown>;
+export type RecordsBatchRequestPostsItemDSRecordTagsList = Array<unknown>;
 export const RecordsBatchRequestPostsItemDSRecordTagsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -1448,8 +1437,7 @@ export const RecordsBatchRequestPostsItemHTTPSRecordSettings =
     identifier: "RecordsBatchRequestPostsItemHTTPSRecordSettings",
   }) as any as S.Schema<RecordsBatchRequestPostsItemHTTPSRecordSettings>;
 
-export type RecordsBatchRequestPostsItemHTTPSRecordTagsList =
-  ReadonlyArray<unknown>;
+export type RecordsBatchRequestPostsItemHTTPSRecordTagsList = Array<unknown>;
 export const RecordsBatchRequestPostsItemHTTPSRecordTagsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -1577,8 +1565,7 @@ export const RecordsBatchRequestPostsItemLOCRecordSettings =
     identifier: "RecordsBatchRequestPostsItemLOCRecordSettings",
   }) as any as S.Schema<RecordsBatchRequestPostsItemLOCRecordSettings>;
 
-export type RecordsBatchRequestPostsItemLOCRecordTagsList =
-  ReadonlyArray<unknown>;
+export type RecordsBatchRequestPostsItemLOCRecordTagsList = Array<unknown>;
 export const RecordsBatchRequestPostsItemLOCRecordTagsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -1669,8 +1656,7 @@ export const RecordsBatchRequestPostsItemNAPTRRecordSettings =
     identifier: "RecordsBatchRequestPostsItemNAPTRRecordSettings",
   }) as any as S.Schema<RecordsBatchRequestPostsItemNAPTRRecordSettings>;
 
-export type RecordsBatchRequestPostsItemNAPTRRecordTagsList =
-  ReadonlyArray<unknown>;
+export type RecordsBatchRequestPostsItemNAPTRRecordTagsList = Array<unknown>;
 export const RecordsBatchRequestPostsItemNAPTRRecordTagsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -1755,8 +1741,7 @@ export const RecordsBatchRequestPostsItemSMIMEARecordSettings =
     identifier: "RecordsBatchRequestPostsItemSMIMEARecordSettings",
   }) as any as S.Schema<RecordsBatchRequestPostsItemSMIMEARecordSettings>;
 
-export type RecordsBatchRequestPostsItemSMIMEARecordTagsList =
-  ReadonlyArray<unknown>;
+export type RecordsBatchRequestPostsItemSMIMEARecordTagsList = Array<unknown>;
 export const RecordsBatchRequestPostsItemSMIMEARecordTagsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -1840,8 +1825,7 @@ export const RecordsBatchRequestPostsItemSRVRecordSettings =
     identifier: "RecordsBatchRequestPostsItemSRVRecordSettings",
   }) as any as S.Schema<RecordsBatchRequestPostsItemSRVRecordSettings>;
 
-export type RecordsBatchRequestPostsItemSRVRecordTagsList =
-  ReadonlyArray<unknown>;
+export type RecordsBatchRequestPostsItemSRVRecordTagsList = Array<unknown>;
 export const RecordsBatchRequestPostsItemSRVRecordTagsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -1923,8 +1907,7 @@ export const RecordsBatchRequestPostsItemSSHFPRecordSettings =
     identifier: "RecordsBatchRequestPostsItemSSHFPRecordSettings",
   }) as any as S.Schema<RecordsBatchRequestPostsItemSSHFPRecordSettings>;
 
-export type RecordsBatchRequestPostsItemSSHFPRecordTagsList =
-  ReadonlyArray<unknown>;
+export type RecordsBatchRequestPostsItemSSHFPRecordTagsList = Array<unknown>;
 export const RecordsBatchRequestPostsItemSSHFPRecordTagsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -2006,8 +1989,7 @@ export const RecordsBatchRequestPostsItemSVCBRecordSettings =
     identifier: "RecordsBatchRequestPostsItemSVCBRecordSettings",
   }) as any as S.Schema<RecordsBatchRequestPostsItemSVCBRecordSettings>;
 
-export type RecordsBatchRequestPostsItemSVCBRecordTagsList =
-  ReadonlyArray<unknown>;
+export type RecordsBatchRequestPostsItemSVCBRecordTagsList = Array<unknown>;
 export const RecordsBatchRequestPostsItemSVCBRecordTagsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -2092,8 +2074,7 @@ export const RecordsBatchRequestPostsItemTLSARecordSettings =
     identifier: "RecordsBatchRequestPostsItemTLSARecordSettings",
   }) as any as S.Schema<RecordsBatchRequestPostsItemTLSARecordSettings>;
 
-export type RecordsBatchRequestPostsItemTLSARecordTagsList =
-  ReadonlyArray<unknown>;
+export type RecordsBatchRequestPostsItemTLSARecordTagsList = Array<unknown>;
 export const RecordsBatchRequestPostsItemTLSARecordTagsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -2171,8 +2152,7 @@ export const RecordsBatchRequestPostsItemURIRecordSettings =
     identifier: "RecordsBatchRequestPostsItemURIRecordSettings",
   }) as any as S.Schema<RecordsBatchRequestPostsItemURIRecordSettings>;
 
-export type RecordsBatchRequestPostsItemURIRecordTagsList =
-  ReadonlyArray<unknown>;
+export type RecordsBatchRequestPostsItemURIRecordTagsList = Array<unknown>;
 export const RecordsBatchRequestPostsItemURIRecordTagsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -2443,8 +2423,7 @@ export const RecordsBatchRequestPostsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsBatchRequestPostsItem",
 }) as any as S.Schema<RecordsBatchRequestPostsItem>;
 
-export type RecordsBatchRequestPostsList =
-  ReadonlyArray<RecordsBatchRequestPostsItem>;
+export type RecordsBatchRequestPostsList = Array<RecordsBatchRequestPostsItem>;
 export const RecordsBatchRequestPostsList = /*@__PURE__*/ S.Array(
   RecordsBatchRequestPostsItem,
 ) as any as S.Schema<RecordsBatchRequestPostsList>;
@@ -2532,7 +2511,7 @@ export const RecordsBatchRequestPutsItemOpenpgpkeyRecordSettings =
   }) as any as S.Schema<RecordsBatchRequestPutsItemOpenpgpkeyRecordSettings>;
 
 export type RecordsBatchRequestPutsItemOpenpgpkeyRecordTagsList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const RecordsBatchRequestPutsItemOpenpgpkeyRecordTagsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -2805,8 +2784,7 @@ export const RecordsBatchRequestPutsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsBatchRequestPutsItem",
 }) as any as S.Schema<RecordsBatchRequestPutsItem>;
 
-export type RecordsBatchRequestPutsList =
-  ReadonlyArray<RecordsBatchRequestPutsItem>;
+export type RecordsBatchRequestPutsList = Array<RecordsBatchRequestPutsItem>;
 export const RecordsBatchRequestPutsList = /*@__PURE__*/ S.Array(
   RecordsBatchRequestPutsItem,
 ) as any as S.Schema<RecordsBatchRequestPutsList>;
@@ -2845,7 +2823,7 @@ export const BatchRecordRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BatchRecordRequest>;
 
 export type RecordsBatchResponseDeletesItemARecordMetaShadowedByList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RecordsBatchResponseDeletesItemARecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2913,7 +2891,7 @@ export const RecordsBatchResponseDeletesItemARecord = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<RecordsBatchResponseDeletesItemARecord>;
 
 export type RecordsBatchResponseDeletesItemAAAARecordMetaShadowedByList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RecordsBatchResponseDeletesItemAAAARecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2981,7 +2959,7 @@ export const RecordsBatchResponseDeletesItemAAAARecord =
   }) as any as S.Schema<RecordsBatchResponseDeletesItemAAAARecord>;
 
 export type RecordsBatchResponseDeletesItemCNAMERecordMetaShadowedByList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RecordsBatchResponseDeletesItemCNAMERecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3049,7 +3027,7 @@ export const RecordsBatchResponseDeletesItemCNAMERecord =
   }) as any as S.Schema<RecordsBatchResponseDeletesItemCNAMERecord>;
 
 export type RecordsBatchResponseDeletesItemMXRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RecordsBatchResponseDeletesItemMXRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3117,7 +3095,7 @@ export const RecordsBatchResponseDeletesItemMXRecord = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<RecordsBatchResponseDeletesItemMXRecord>;
 
 export type RecordsBatchResponseDeletesItemNSRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RecordsBatchResponseDeletesItemNSRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3185,7 +3163,7 @@ export const RecordsBatchResponseDeletesItemNSRecord = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<RecordsBatchResponseDeletesItemNSRecord>;
 
 export type RecordsBatchResponseDeletesItemOpenpgpkeyRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RecordsBatchResponseDeletesItemOpenpgpkeyRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3236,7 +3214,7 @@ export const RecordsBatchResponseDeletesItemOpenpgpkeyRecordSettings =
   }) as any as S.Schema<RecordsBatchResponseDeletesItemOpenpgpkeyRecordSettings>;
 
 export type RecordsBatchResponseDeletesItemOpenpgpkeyRecordTagsList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const RecordsBatchResponseDeletesItemOpenpgpkeyRecordTagsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -3304,7 +3282,7 @@ export const RecordsBatchResponseDeletesItemOpenpgpkeyRecord =
   }) as any as S.Schema<RecordsBatchResponseDeletesItemOpenpgpkeyRecord>;
 
 export type RecordsBatchResponseDeletesItemPTRRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RecordsBatchResponseDeletesItemPTRRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3372,7 +3350,7 @@ export const RecordsBatchResponseDeletesItemPTRRecord = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<RecordsBatchResponseDeletesItemPTRRecord>;
 
 export type RecordsBatchResponseDeletesItemTXTRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RecordsBatchResponseDeletesItemTXTRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3440,7 +3418,7 @@ export const RecordsBatchResponseDeletesItemTXTRecord = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<RecordsBatchResponseDeletesItemTXTRecord>;
 
 export type RecordsBatchResponseDeletesItemCAARecordMetaShadowedByList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RecordsBatchResponseDeletesItemCAARecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3508,7 +3486,7 @@ export const RecordsBatchResponseDeletesItemCAARecord = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<RecordsBatchResponseDeletesItemCAARecord>;
 
 export type RecordsBatchResponseDeletesItemCERTRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RecordsBatchResponseDeletesItemCERTRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3576,7 +3554,7 @@ export const RecordsBatchResponseDeletesItemCERTRecord =
   }) as any as S.Schema<RecordsBatchResponseDeletesItemCERTRecord>;
 
 export type RecordsBatchResponseDeletesItemDNSKEYRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RecordsBatchResponseDeletesItemDNSKEYRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3644,7 +3622,7 @@ export const RecordsBatchResponseDeletesItemDNSKEYRecord =
   }) as any as S.Schema<RecordsBatchResponseDeletesItemDNSKEYRecord>;
 
 export type RecordsBatchResponseDeletesItemDSRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RecordsBatchResponseDeletesItemDSRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3712,7 +3690,7 @@ export const RecordsBatchResponseDeletesItemDSRecord = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<RecordsBatchResponseDeletesItemDSRecord>;
 
 export type RecordsBatchResponseDeletesItemHTTPSRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RecordsBatchResponseDeletesItemHTTPSRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3780,7 +3758,7 @@ export const RecordsBatchResponseDeletesItemHTTPSRecord =
   }) as any as S.Schema<RecordsBatchResponseDeletesItemHTTPSRecord>;
 
 export type RecordsBatchResponseDeletesItemLOCRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RecordsBatchResponseDeletesItemLOCRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3848,7 +3826,7 @@ export const RecordsBatchResponseDeletesItemLOCRecord = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<RecordsBatchResponseDeletesItemLOCRecord>;
 
 export type RecordsBatchResponseDeletesItemNAPTRRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RecordsBatchResponseDeletesItemNAPTRRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3916,7 +3894,7 @@ export const RecordsBatchResponseDeletesItemNAPTRRecord =
   }) as any as S.Schema<RecordsBatchResponseDeletesItemNAPTRRecord>;
 
 export type RecordsBatchResponseDeletesItemSMIMEARecordMetaShadowedByList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RecordsBatchResponseDeletesItemSMIMEARecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3984,7 +3962,7 @@ export const RecordsBatchResponseDeletesItemSMIMEARecord =
   }) as any as S.Schema<RecordsBatchResponseDeletesItemSMIMEARecord>;
 
 export type RecordsBatchResponseDeletesItemSRVRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RecordsBatchResponseDeletesItemSRVRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4052,7 +4030,7 @@ export const RecordsBatchResponseDeletesItemSRVRecord = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<RecordsBatchResponseDeletesItemSRVRecord>;
 
 export type RecordsBatchResponseDeletesItemSSHFPRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RecordsBatchResponseDeletesItemSSHFPRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4120,7 +4098,7 @@ export const RecordsBatchResponseDeletesItemSSHFPRecord =
   }) as any as S.Schema<RecordsBatchResponseDeletesItemSSHFPRecord>;
 
 export type RecordsBatchResponseDeletesItemSVCBRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RecordsBatchResponseDeletesItemSVCBRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4188,7 +4166,7 @@ export const RecordsBatchResponseDeletesItemSVCBRecord =
   }) as any as S.Schema<RecordsBatchResponseDeletesItemSVCBRecord>;
 
 export type RecordsBatchResponseDeletesItemTLSARecordMetaShadowedByList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RecordsBatchResponseDeletesItemTLSARecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4256,7 +4234,7 @@ export const RecordsBatchResponseDeletesItemTLSARecord =
   }) as any as S.Schema<RecordsBatchResponseDeletesItemTLSARecord>;
 
 export type RecordsBatchResponseDeletesItemURIRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RecordsBatchResponseDeletesItemURIRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4423,7 +4401,7 @@ export const RecordsBatchResponseDeletesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RecordsBatchResponseDeletesItem>;
 
 export type RecordsBatchResponseDeletesList =
-  ReadonlyArray<RecordsBatchResponseDeletesItem>;
+  Array<RecordsBatchResponseDeletesItem>;
 export const RecordsBatchResponseDeletesList = /*@__PURE__*/ S.Array(
   RecordsBatchResponseDeletesItem,
 ) as any as S.Schema<RecordsBatchResponseDeletesList>;
@@ -4508,7 +4486,7 @@ export const RecordsBatchResponsePatchesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RecordsBatchResponsePatchesItem>;
 
 export type RecordsBatchResponsePatchesList =
-  ReadonlyArray<RecordsBatchResponsePatchesItem>;
+  Array<RecordsBatchResponsePatchesItem>;
 export const RecordsBatchResponsePatchesList = /*@__PURE__*/ S.Array(
   RecordsBatchResponsePatchesItem,
 ) as any as S.Schema<RecordsBatchResponsePatchesList>;
@@ -4593,7 +4571,7 @@ export const RecordsBatchResponsePostsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RecordsBatchResponsePostsItem>;
 
 export type RecordsBatchResponsePostsList =
-  ReadonlyArray<RecordsBatchResponsePostsItem>;
+  Array<RecordsBatchResponsePostsItem>;
 export const RecordsBatchResponsePostsList = /*@__PURE__*/ S.Array(
   RecordsBatchResponsePostsItem,
 ) as any as S.Schema<RecordsBatchResponsePostsList>;
@@ -4677,8 +4655,7 @@ export const RecordsBatchResponsePutsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsBatchResponsePutsItem",
 }) as any as S.Schema<RecordsBatchResponsePutsItem>;
 
-export type RecordsBatchResponsePutsList =
-  ReadonlyArray<RecordsBatchResponsePutsItem>;
+export type RecordsBatchResponsePutsList = Array<RecordsBatchResponsePutsItem>;
 export const RecordsBatchResponsePutsList = /*@__PURE__*/ S.Array(
   RecordsBatchResponsePutsItem,
 ) as any as S.Schema<RecordsBatchResponsePutsList>;
@@ -4777,7 +4754,7 @@ export const RecordsCreateRequestSettings = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsCreateRequestSettings",
 }) as any as S.Schema<RecordsCreateRequestSettings>;
 
-export type RecordsCreateRequestTagsList = ReadonlyArray<unknown>;
+export type RecordsCreateRequestTagsList = Array<unknown>;
 export const RecordsCreateRequestTagsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<RecordsCreateRequestTagsList>;
@@ -5233,8 +5210,7 @@ export const CreateRecordRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateRecordRequest",
 }) as any as S.Schema<CreateRecordRequest>;
 
-export type RecordsCreateResultARecordMetaShadowedByList =
-  ReadonlyArray<string>;
+export type RecordsCreateResultARecordMetaShadowedByList = Array<string>;
 export const RecordsCreateResultARecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5295,8 +5271,7 @@ export const RecordsCreateResultARecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsCreateResultARecord",
 }) as any as S.Schema<RecordsCreateResultARecord>;
 
-export type RecordsCreateResultAAAARecordMetaShadowedByList =
-  ReadonlyArray<string>;
+export type RecordsCreateResultAAAARecordMetaShadowedByList = Array<string>;
 export const RecordsCreateResultAAAARecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5359,8 +5334,7 @@ export const RecordsCreateResultAAAARecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsCreateResultAAAARecord",
 }) as any as S.Schema<RecordsCreateResultAAAARecord>;
 
-export type RecordsCreateResultCNAMERecordMetaShadowedByList =
-  ReadonlyArray<string>;
+export type RecordsCreateResultCNAMERecordMetaShadowedByList = Array<string>;
 export const RecordsCreateResultCNAMERecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5423,8 +5397,7 @@ export const RecordsCreateResultCNAMERecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsCreateResultCNAMERecord",
 }) as any as S.Schema<RecordsCreateResultCNAMERecord>;
 
-export type RecordsCreateResultMXRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+export type RecordsCreateResultMXRecordMetaShadowedByList = Array<string>;
 export const RecordsCreateResultMXRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5485,8 +5458,7 @@ export const RecordsCreateResultMXRecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsCreateResultMXRecord",
 }) as any as S.Schema<RecordsCreateResultMXRecord>;
 
-export type RecordsCreateResultNSRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+export type RecordsCreateResultNSRecordMetaShadowedByList = Array<string>;
 export const RecordsCreateResultNSRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5548,7 +5520,7 @@ export const RecordsCreateResultNSRecord = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RecordsCreateResultNSRecord>;
 
 export type RecordsCreateResultOpenpgpkeyRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RecordsCreateResultOpenpgpkeyRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5598,8 +5570,7 @@ export const RecordsCreateResultOpenpgpkeyRecordSettings =
     identifier: "RecordsCreateResultOpenpgpkeyRecordSettings",
   }) as any as S.Schema<RecordsCreateResultOpenpgpkeyRecordSettings>;
 
-export type RecordsCreateResultOpenpgpkeyRecordTagsList =
-  ReadonlyArray<unknown>;
+export type RecordsCreateResultOpenpgpkeyRecordTagsList = Array<unknown>;
 export const RecordsCreateResultOpenpgpkeyRecordTagsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -5662,8 +5633,7 @@ export const RecordsCreateResultOpenpgpkeyRecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsCreateResultOpenpgpkeyRecord",
 }) as any as S.Schema<RecordsCreateResultOpenpgpkeyRecord>;
 
-export type RecordsCreateResultPTRRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+export type RecordsCreateResultPTRRecordMetaShadowedByList = Array<string>;
 export const RecordsCreateResultPTRRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5726,8 +5696,7 @@ export const RecordsCreateResultPTRRecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsCreateResultPTRRecord",
 }) as any as S.Schema<RecordsCreateResultPTRRecord>;
 
-export type RecordsCreateResultTXTRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+export type RecordsCreateResultTXTRecordMetaShadowedByList = Array<string>;
 export const RecordsCreateResultTXTRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5790,8 +5759,7 @@ export const RecordsCreateResultTXTRecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsCreateResultTXTRecord",
 }) as any as S.Schema<RecordsCreateResultTXTRecord>;
 
-export type RecordsCreateResultCAARecordMetaShadowedByList =
-  ReadonlyArray<string>;
+export type RecordsCreateResultCAARecordMetaShadowedByList = Array<string>;
 export const RecordsCreateResultCAARecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5854,8 +5822,7 @@ export const RecordsCreateResultCAARecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsCreateResultCAARecord",
 }) as any as S.Schema<RecordsCreateResultCAARecord>;
 
-export type RecordsCreateResultCERTRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+export type RecordsCreateResultCERTRecordMetaShadowedByList = Array<string>;
 export const RecordsCreateResultCERTRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5918,8 +5885,7 @@ export const RecordsCreateResultCERTRecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsCreateResultCERTRecord",
 }) as any as S.Schema<RecordsCreateResultCERTRecord>;
 
-export type RecordsCreateResultDNSKEYRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+export type RecordsCreateResultDNSKEYRecordMetaShadowedByList = Array<string>;
 export const RecordsCreateResultDNSKEYRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5982,8 +5948,7 @@ export const RecordsCreateResultDNSKEYRecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsCreateResultDNSKEYRecord",
 }) as any as S.Schema<RecordsCreateResultDNSKEYRecord>;
 
-export type RecordsCreateResultDSRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+export type RecordsCreateResultDSRecordMetaShadowedByList = Array<string>;
 export const RecordsCreateResultDSRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6044,8 +6009,7 @@ export const RecordsCreateResultDSRecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsCreateResultDSRecord",
 }) as any as S.Schema<RecordsCreateResultDSRecord>;
 
-export type RecordsCreateResultHTTPSRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+export type RecordsCreateResultHTTPSRecordMetaShadowedByList = Array<string>;
 export const RecordsCreateResultHTTPSRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6108,8 +6072,7 @@ export const RecordsCreateResultHTTPSRecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsCreateResultHTTPSRecord",
 }) as any as S.Schema<RecordsCreateResultHTTPSRecord>;
 
-export type RecordsCreateResultLOCRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+export type RecordsCreateResultLOCRecordMetaShadowedByList = Array<string>;
 export const RecordsCreateResultLOCRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6172,8 +6135,7 @@ export const RecordsCreateResultLOCRecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsCreateResultLOCRecord",
 }) as any as S.Schema<RecordsCreateResultLOCRecord>;
 
-export type RecordsCreateResultNAPTRRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+export type RecordsCreateResultNAPTRRecordMetaShadowedByList = Array<string>;
 export const RecordsCreateResultNAPTRRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6236,8 +6198,7 @@ export const RecordsCreateResultNAPTRRecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsCreateResultNAPTRRecord",
 }) as any as S.Schema<RecordsCreateResultNAPTRRecord>;
 
-export type RecordsCreateResultSMIMEARecordMetaShadowedByList =
-  ReadonlyArray<string>;
+export type RecordsCreateResultSMIMEARecordMetaShadowedByList = Array<string>;
 export const RecordsCreateResultSMIMEARecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6300,8 +6261,7 @@ export const RecordsCreateResultSMIMEARecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsCreateResultSMIMEARecord",
 }) as any as S.Schema<RecordsCreateResultSMIMEARecord>;
 
-export type RecordsCreateResultSRVRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+export type RecordsCreateResultSRVRecordMetaShadowedByList = Array<string>;
 export const RecordsCreateResultSRVRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6364,8 +6324,7 @@ export const RecordsCreateResultSRVRecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsCreateResultSRVRecord",
 }) as any as S.Schema<RecordsCreateResultSRVRecord>;
 
-export type RecordsCreateResultSSHFPRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+export type RecordsCreateResultSSHFPRecordMetaShadowedByList = Array<string>;
 export const RecordsCreateResultSSHFPRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6428,8 +6387,7 @@ export const RecordsCreateResultSSHFPRecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsCreateResultSSHFPRecord",
 }) as any as S.Schema<RecordsCreateResultSSHFPRecord>;
 
-export type RecordsCreateResultSVCBRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+export type RecordsCreateResultSVCBRecordMetaShadowedByList = Array<string>;
 export const RecordsCreateResultSVCBRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6492,8 +6450,7 @@ export const RecordsCreateResultSVCBRecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsCreateResultSVCBRecord",
 }) as any as S.Schema<RecordsCreateResultSVCBRecord>;
 
-export type RecordsCreateResultTLSARecordMetaShadowedByList =
-  ReadonlyArray<string>;
+export type RecordsCreateResultTLSARecordMetaShadowedByList = Array<string>;
 export const RecordsCreateResultTLSARecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6556,8 +6513,7 @@ export const RecordsCreateResultTLSARecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsCreateResultTLSARecord",
 }) as any as S.Schema<RecordsCreateResultTLSARecord>;
 
-export type RecordsCreateResultURIRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+export type RecordsCreateResultURIRecordMetaShadowedByList = Array<string>;
 export const RecordsCreateResultURIRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6724,7 +6680,7 @@ export const CreateRecordResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateRecordResponse",
 }) as any as S.Schema<CreateRecordResponse>;
 
-export type SettingsAccountViewsCreateRequestZonesList = ReadonlyArray<string>;
+export type SettingsAccountViewsCreateRequestZonesList = Array<string>;
 export const SettingsAccountViewsCreateRequestZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SettingsAccountViewsCreateRequestZonesList>;
@@ -6755,7 +6711,7 @@ export const CreateSettingAccountViewRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateSettingAccountViewRequest",
 }) as any as S.Schema<CreateSettingAccountViewRequest>;
 
-export type SettingsAccountViewsCreateResponseZonesList = ReadonlyArray<string>;
+export type SettingsAccountViewsCreateResponseZonesList = Array<string>;
 export const SettingsAccountViewsCreateResponseZonesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6855,7 +6811,7 @@ export const CreateZoneTransferForceAxfrResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateZoneTransferForceAxfrResponse",
 }) as any as S.Schema<CreateZoneTransferForceAxfrResponse>;
 
-export type ZoneTransfersIncomingCreateRequestPeersList = ReadonlyArray<string>;
+export type ZoneTransfersIncomingCreateRequestPeersList = Array<string>;
 export const ZoneTransfersIncomingCreateRequestPeersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6889,8 +6845,7 @@ export const CreateZoneTransferIncomingRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateZoneTransferIncomingRequest",
 }) as any as S.Schema<CreateZoneTransferIncomingRequest>;
 
-export type ZoneTransfersIncomingCreateResponsePeersList =
-  ReadonlyArray<string>;
+export type ZoneTransfersIncomingCreateResponsePeersList = Array<string>;
 export const ZoneTransfersIncomingCreateResponsePeersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6931,7 +6886,7 @@ export const CreateZoneTransferIncomingResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateZoneTransferIncomingResponse",
 }) as any as S.Schema<CreateZoneTransferIncomingResponse>;
 
-export type ZoneTransfersOutgoingCreateRequestPeersList = ReadonlyArray<string>;
+export type ZoneTransfersOutgoingCreateRequestPeersList = Array<string>;
 export const ZoneTransfersOutgoingCreateRequestPeersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6962,8 +6917,7 @@ export const CreateZoneTransferOutgoingRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateZoneTransferOutgoingRequest",
 }) as any as S.Schema<CreateZoneTransferOutgoingRequest>;
 
-export type ZoneTransfersOutgoingCreateResponsePeersList =
-  ReadonlyArray<string>;
+export type ZoneTransfersOutgoingCreateResponsePeersList = Array<string>;
 export const ZoneTransfersOutgoingCreateResponsePeersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -7502,15 +7456,13 @@ export const GetAnalyticReportRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetAnalyticReportRequest",
 }) as any as S.Schema<GetAnalyticReportRequest>;
 
-export type AnalyticsReportsGetResponseDataItemDimensionsList =
-  ReadonlyArray<string>;
+export type AnalyticsReportsGetResponseDataItemDimensionsList = Array<string>;
 export const AnalyticsReportsGetResponseDataItemDimensionsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AnalyticsReportsGetResponseDataItemDimensionsList>;
 
-export type AnalyticsReportsGetResponseDataItemMetricsList =
-  ReadonlyArray<number>;
+export type AnalyticsReportsGetResponseDataItemMetricsList = Array<number>;
 export const AnalyticsReportsGetResponseDataItemMetricsList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -7532,25 +7484,24 @@ export const AnalyticsReportsGetResponseDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AnalyticsReportsGetResponseDataItem>;
 
 export type AnalyticsReportsGetResponseDataList =
-  ReadonlyArray<AnalyticsReportsGetResponseDataItem>;
+  Array<AnalyticsReportsGetResponseDataItem>;
 export const AnalyticsReportsGetResponseDataList = /*@__PURE__*/ S.Array(
   AnalyticsReportsGetResponseDataItem,
 ) as any as S.Schema<AnalyticsReportsGetResponseDataList>;
 
-export type AnalyticsReportsGetResponseQueryDimensionsList =
-  ReadonlyArray<string>;
+export type AnalyticsReportsGetResponseQueryDimensionsList = Array<string>;
 export const AnalyticsReportsGetResponseQueryDimensionsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AnalyticsReportsGetResponseQueryDimensionsList>;
 
-export type AnalyticsReportsGetResponseQueryMetricsList = ReadonlyArray<string>;
+export type AnalyticsReportsGetResponseQueryMetricsList = Array<string>;
 export const AnalyticsReportsGetResponseQueryMetricsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AnalyticsReportsGetResponseQueryMetricsList>;
 
-export type AnalyticsReportsGetResponseQuerySortList = ReadonlyArray<string>;
+export type AnalyticsReportsGetResponseQuerySortList = Array<string>;
 export const AnalyticsReportsGetResponseQuerySortList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AnalyticsReportsGetResponseQuerySortList>;
@@ -7676,21 +7627,21 @@ export const GetAnalyticReportBytimeRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetAnalyticReportBytimeRequest>;
 
 export type AnalyticsReportsBytimesGetResponseDataItemDimensionsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const AnalyticsReportsBytimesGetResponseDataItemDimensionsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AnalyticsReportsBytimesGetResponseDataItemDimensionsList>;
 
 export type AnalyticsReportsBytimesGetResponseDataItemMetricsItemList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const AnalyticsReportsBytimesGetResponseDataItemMetricsItemList =
   /*@__PURE__*/ S.Array(
     S.Number,
   ) as any as S.Schema<AnalyticsReportsBytimesGetResponseDataItemMetricsItemList>;
 
 export type AnalyticsReportsBytimesGetResponseDataItemMetricsList =
-  ReadonlyArray<AnalyticsReportsBytimesGetResponseDataItemMetricsItemList>;
+  Array<AnalyticsReportsBytimesGetResponseDataItemMetricsItemList>;
 export const AnalyticsReportsBytimesGetResponseDataItemMetricsList =
   /*@__PURE__*/ S.Array(
     AnalyticsReportsBytimesGetResponseDataItemMetricsItemList,
@@ -7713,20 +7664,19 @@ export const AnalyticsReportsBytimesGetResponseDataItem =
   }) as any as S.Schema<AnalyticsReportsBytimesGetResponseDataItem>;
 
 export type AnalyticsReportsBytimesGetResponseDataList =
-  ReadonlyArray<AnalyticsReportsBytimesGetResponseDataItem>;
+  Array<AnalyticsReportsBytimesGetResponseDataItem>;
 export const AnalyticsReportsBytimesGetResponseDataList = /*@__PURE__*/ S.Array(
   AnalyticsReportsBytimesGetResponseDataItem,
 ) as any as S.Schema<AnalyticsReportsBytimesGetResponseDataList>;
 
 export type AnalyticsReportsBytimesGetResponseQueryDimensionsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const AnalyticsReportsBytimesGetResponseQueryDimensionsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AnalyticsReportsBytimesGetResponseQueryDimensionsList>;
 
-export type AnalyticsReportsBytimesGetResponseQueryMetricsList =
-  ReadonlyArray<string>;
+export type AnalyticsReportsBytimesGetResponseQueryMetricsList = Array<string>;
 export const AnalyticsReportsBytimesGetResponseQueryMetricsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -7746,8 +7696,7 @@ export type AnalyticsReportsBytimesGetResponseQueryTimeDelta =
 export const AnalyticsReportsBytimesGetResponseQueryTimeDelta =
   /*@__PURE__*/ S.String;
 
-export type AnalyticsReportsBytimesGetResponseQuerySortList =
-  ReadonlyArray<string>;
+export type AnalyticsReportsBytimesGetResponseQuerySortList = Array<string>;
 export const AnalyticsReportsBytimesGetResponseQuerySortList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -7790,14 +7739,14 @@ export const AnalyticsReportsBytimesGetResponseQuery = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<AnalyticsReportsBytimesGetResponseQuery>;
 
 export type AnalyticsReportsBytimesGetResponseTimeIntervalsItemList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const AnalyticsReportsBytimesGetResponseTimeIntervalsItemList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AnalyticsReportsBytimesGetResponseTimeIntervalsItemList>;
 
 export type AnalyticsReportsBytimesGetResponseTimeIntervalsList =
-  ReadonlyArray<AnalyticsReportsBytimesGetResponseTimeIntervalsItemList>;
+  Array<AnalyticsReportsBytimesGetResponseTimeIntervalsItemList>;
 export const AnalyticsReportsBytimesGetResponseTimeIntervalsList =
   /*@__PURE__*/ S.Array(
     AnalyticsReportsBytimesGetResponseTimeIntervalsItemList,
@@ -7942,7 +7891,7 @@ export const GetRecordRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetRecordRequest",
 }) as any as S.Schema<GetRecordRequest>;
 
-export type RecordsGetResultARecordMetaShadowedByList = ReadonlyArray<string>;
+export type RecordsGetResultARecordMetaShadowedByList = Array<string>;
 export const RecordsGetResultARecordMetaShadowedByList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RecordsGetResultARecordMetaShadowedByList>;
@@ -8002,8 +7951,7 @@ export const RecordsGetResultARecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsGetResultARecord",
 }) as any as S.Schema<RecordsGetResultARecord>;
 
-export type RecordsGetResultAAAARecordMetaShadowedByList =
-  ReadonlyArray<string>;
+export type RecordsGetResultAAAARecordMetaShadowedByList = Array<string>;
 export const RecordsGetResultAAAARecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -8064,8 +8012,7 @@ export const RecordsGetResultAAAARecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsGetResultAAAARecord",
 }) as any as S.Schema<RecordsGetResultAAAARecord>;
 
-export type RecordsGetResultCNAMERecordMetaShadowedByList =
-  ReadonlyArray<string>;
+export type RecordsGetResultCNAMERecordMetaShadowedByList = Array<string>;
 export const RecordsGetResultCNAMERecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -8126,7 +8073,7 @@ export const RecordsGetResultCNAMERecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsGetResultCNAMERecord",
 }) as any as S.Schema<RecordsGetResultCNAMERecord>;
 
-export type RecordsGetResultMXRecordMetaShadowedByList = ReadonlyArray<string>;
+export type RecordsGetResultMXRecordMetaShadowedByList = Array<string>;
 export const RecordsGetResultMXRecordMetaShadowedByList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RecordsGetResultMXRecordMetaShadowedByList>;
@@ -8186,7 +8133,7 @@ export const RecordsGetResultMXRecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsGetResultMXRecord",
 }) as any as S.Schema<RecordsGetResultMXRecord>;
 
-export type RecordsGetResultNSRecordMetaShadowedByList = ReadonlyArray<string>;
+export type RecordsGetResultNSRecordMetaShadowedByList = Array<string>;
 export const RecordsGetResultNSRecordMetaShadowedByList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RecordsGetResultNSRecordMetaShadowedByList>;
@@ -8246,8 +8193,7 @@ export const RecordsGetResultNSRecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsGetResultNSRecord",
 }) as any as S.Schema<RecordsGetResultNSRecord>;
 
-export type RecordsGetResultOpenpgpkeyRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+export type RecordsGetResultOpenpgpkeyRecordMetaShadowedByList = Array<string>;
 export const RecordsGetResultOpenpgpkeyRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -8297,7 +8243,7 @@ export const RecordsGetResultOpenpgpkeyRecordSettings = /*@__PURE__*/ S.suspend(
   identifier: "RecordsGetResultOpenpgpkeyRecordSettings",
 }) as any as S.Schema<RecordsGetResultOpenpgpkeyRecordSettings>;
 
-export type RecordsGetResultOpenpgpkeyRecordTagsList = ReadonlyArray<unknown>;
+export type RecordsGetResultOpenpgpkeyRecordTagsList = Array<unknown>;
 export const RecordsGetResultOpenpgpkeyRecordTagsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<RecordsGetResultOpenpgpkeyRecordTagsList>;
@@ -8359,7 +8305,7 @@ export const RecordsGetResultOpenpgpkeyRecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsGetResultOpenpgpkeyRecord",
 }) as any as S.Schema<RecordsGetResultOpenpgpkeyRecord>;
 
-export type RecordsGetResultPTRRecordMetaShadowedByList = ReadonlyArray<string>;
+export type RecordsGetResultPTRRecordMetaShadowedByList = Array<string>;
 export const RecordsGetResultPTRRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -8420,7 +8366,7 @@ export const RecordsGetResultPTRRecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsGetResultPTRRecord",
 }) as any as S.Schema<RecordsGetResultPTRRecord>;
 
-export type RecordsGetResultTXTRecordMetaShadowedByList = ReadonlyArray<string>;
+export type RecordsGetResultTXTRecordMetaShadowedByList = Array<string>;
 export const RecordsGetResultTXTRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -8481,7 +8427,7 @@ export const RecordsGetResultTXTRecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsGetResultTXTRecord",
 }) as any as S.Schema<RecordsGetResultTXTRecord>;
 
-export type RecordsGetResultCAARecordMetaShadowedByList = ReadonlyArray<string>;
+export type RecordsGetResultCAARecordMetaShadowedByList = Array<string>;
 export const RecordsGetResultCAARecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -8542,8 +8488,7 @@ export const RecordsGetResultCAARecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsGetResultCAARecord",
 }) as any as S.Schema<RecordsGetResultCAARecord>;
 
-export type RecordsGetResultCERTRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+export type RecordsGetResultCERTRecordMetaShadowedByList = Array<string>;
 export const RecordsGetResultCERTRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -8604,8 +8549,7 @@ export const RecordsGetResultCERTRecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsGetResultCERTRecord",
 }) as any as S.Schema<RecordsGetResultCERTRecord>;
 
-export type RecordsGetResultDNSKEYRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+export type RecordsGetResultDNSKEYRecordMetaShadowedByList = Array<string>;
 export const RecordsGetResultDNSKEYRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -8668,7 +8612,7 @@ export const RecordsGetResultDNSKEYRecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsGetResultDNSKEYRecord",
 }) as any as S.Schema<RecordsGetResultDNSKEYRecord>;
 
-export type RecordsGetResultDSRecordMetaShadowedByList = ReadonlyArray<string>;
+export type RecordsGetResultDSRecordMetaShadowedByList = Array<string>;
 export const RecordsGetResultDSRecordMetaShadowedByList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RecordsGetResultDSRecordMetaShadowedByList>;
@@ -8728,8 +8672,7 @@ export const RecordsGetResultDSRecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsGetResultDSRecord",
 }) as any as S.Schema<RecordsGetResultDSRecord>;
 
-export type RecordsGetResultHTTPSRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+export type RecordsGetResultHTTPSRecordMetaShadowedByList = Array<string>;
 export const RecordsGetResultHTTPSRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -8790,7 +8733,7 @@ export const RecordsGetResultHTTPSRecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsGetResultHTTPSRecord",
 }) as any as S.Schema<RecordsGetResultHTTPSRecord>;
 
-export type RecordsGetResultLOCRecordMetaShadowedByList = ReadonlyArray<string>;
+export type RecordsGetResultLOCRecordMetaShadowedByList = Array<string>;
 export const RecordsGetResultLOCRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -8851,8 +8794,7 @@ export const RecordsGetResultLOCRecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsGetResultLOCRecord",
 }) as any as S.Schema<RecordsGetResultLOCRecord>;
 
-export type RecordsGetResultNAPTRRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+export type RecordsGetResultNAPTRRecordMetaShadowedByList = Array<string>;
 export const RecordsGetResultNAPTRRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -8913,8 +8855,7 @@ export const RecordsGetResultNAPTRRecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsGetResultNAPTRRecord",
 }) as any as S.Schema<RecordsGetResultNAPTRRecord>;
 
-export type RecordsGetResultSMIMEARecordMetaShadowedByList =
-  ReadonlyArray<string>;
+export type RecordsGetResultSMIMEARecordMetaShadowedByList = Array<string>;
 export const RecordsGetResultSMIMEARecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -8977,7 +8918,7 @@ export const RecordsGetResultSMIMEARecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsGetResultSMIMEARecord",
 }) as any as S.Schema<RecordsGetResultSMIMEARecord>;
 
-export type RecordsGetResultSRVRecordMetaShadowedByList = ReadonlyArray<string>;
+export type RecordsGetResultSRVRecordMetaShadowedByList = Array<string>;
 export const RecordsGetResultSRVRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -9038,8 +8979,7 @@ export const RecordsGetResultSRVRecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsGetResultSRVRecord",
 }) as any as S.Schema<RecordsGetResultSRVRecord>;
 
-export type RecordsGetResultSSHFPRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+export type RecordsGetResultSSHFPRecordMetaShadowedByList = Array<string>;
 export const RecordsGetResultSSHFPRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -9100,8 +9040,7 @@ export const RecordsGetResultSSHFPRecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsGetResultSSHFPRecord",
 }) as any as S.Schema<RecordsGetResultSSHFPRecord>;
 
-export type RecordsGetResultSVCBRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+export type RecordsGetResultSVCBRecordMetaShadowedByList = Array<string>;
 export const RecordsGetResultSVCBRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -9162,8 +9101,7 @@ export const RecordsGetResultSVCBRecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsGetResultSVCBRecord",
 }) as any as S.Schema<RecordsGetResultSVCBRecord>;
 
-export type RecordsGetResultTLSARecordMetaShadowedByList =
-  ReadonlyArray<string>;
+export type RecordsGetResultTLSARecordMetaShadowedByList = Array<string>;
 export const RecordsGetResultTLSARecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -9224,7 +9162,7 @@ export const RecordsGetResultTLSARecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsGetResultTLSARecord",
 }) as any as S.Schema<RecordsGetResultTLSARecord>;
 
-export type RecordsGetResultURIRecordMetaShadowedByList = ReadonlyArray<string>;
+export type RecordsGetResultURIRecordMetaShadowedByList = Array<string>;
 export const RecordsGetResultURIRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -9562,7 +9500,7 @@ export const GetSettingAccountViewRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetSettingAccountViewRequest",
 }) as any as S.Schema<GetSettingAccountViewRequest>;
 
-export type SettingsAccountViewsGetResponseZonesList = ReadonlyArray<string>;
+export type SettingsAccountViewsGetResponseZonesList = Array<string>;
 export const SettingsAccountViewsGetResponseZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SettingsAccountViewsGetResponseZonesList>;
@@ -9861,7 +9799,7 @@ export const GetZoneTransferIncomingRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetZoneTransferIncomingRequest",
 }) as any as S.Schema<GetZoneTransferIncomingRequest>;
 
-export type ZoneTransfersIncomingGetResponsePeersList = ReadonlyArray<string>;
+export type ZoneTransfersIncomingGetResponsePeersList = Array<string>;
 export const ZoneTransfersIncomingGetResponsePeersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ZoneTransfersIncomingGetResponsePeersList>;
@@ -9920,7 +9858,7 @@ export const GetZoneTransferOutgoingRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetZoneTransferOutgoingRequest",
 }) as any as S.Schema<GetZoneTransferOutgoingRequest>;
 
-export type ZoneTransfersOutgoingGetResponsePeersList = ReadonlyArray<string>;
+export type ZoneTransfersOutgoingGetResponsePeersList = Array<string>;
 export const ZoneTransfersOutgoingGetResponsePeersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ZoneTransfersOutgoingGetResponsePeersList>;
@@ -10308,8 +10246,7 @@ export const ListRecordsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListRecordsRequest",
 }) as any as S.Schema<ListRecordsRequest>;
 
-export type RecordsListResultItemARecordMetaShadowedByList =
-  ReadonlyArray<string>;
+export type RecordsListResultItemARecordMetaShadowedByList = Array<string>;
 export const RecordsListResultItemARecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -10381,8 +10318,7 @@ export const RecordsListResultItemARecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsListResultItemARecord",
 }) as any as S.Schema<RecordsListResultItemARecord>;
 
-export type RecordsListResultItemAAAARecordMetaShadowedByList =
-  ReadonlyArray<string>;
+export type RecordsListResultItemAAAARecordMetaShadowedByList = Array<string>;
 export const RecordsListResultItemAAAARecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -10454,8 +10390,7 @@ export const RecordsListResultItemAAAARecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsListResultItemAAAARecord",
 }) as any as S.Schema<RecordsListResultItemAAAARecord>;
 
-export type RecordsListResultItemCNAMERecordMetaShadowedByList =
-  ReadonlyArray<string>;
+export type RecordsListResultItemCNAMERecordMetaShadowedByList = Array<string>;
 export const RecordsListResultItemCNAMERecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -10528,8 +10463,7 @@ export const RecordsListResultItemCNAMERecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsListResultItemCNAMERecord",
 }) as any as S.Schema<RecordsListResultItemCNAMERecord>;
 
-export type RecordsListResultItemMXRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+export type RecordsListResultItemMXRecordMetaShadowedByList = Array<string>;
 export const RecordsListResultItemMXRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -10601,8 +10535,7 @@ export const RecordsListResultItemMXRecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsListResultItemMXRecord",
 }) as any as S.Schema<RecordsListResultItemMXRecord>;
 
-export type RecordsListResultItemNSRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+export type RecordsListResultItemNSRecordMetaShadowedByList = Array<string>;
 export const RecordsListResultItemNSRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -10675,7 +10608,7 @@ export const RecordsListResultItemNSRecord = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RecordsListResultItemNSRecord>;
 
 export type RecordsListResultItemOpenpgpkeyRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RecordsListResultItemOpenpgpkeyRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -10725,8 +10658,7 @@ export const RecordsListResultItemOpenpgpkeyRecordSettings =
     identifier: "RecordsListResultItemOpenpgpkeyRecordSettings",
   }) as any as S.Schema<RecordsListResultItemOpenpgpkeyRecordSettings>;
 
-export type RecordsListResultItemOpenpgpkeyRecordTagsList =
-  ReadonlyArray<unknown>;
+export type RecordsListResultItemOpenpgpkeyRecordTagsList = Array<unknown>;
 export const RecordsListResultItemOpenpgpkeyRecordTagsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -10792,8 +10724,7 @@ export const RecordsListResultItemOpenpgpkeyRecord = /*@__PURE__*/ S.suspend(
   identifier: "RecordsListResultItemOpenpgpkeyRecord",
 }) as any as S.Schema<RecordsListResultItemOpenpgpkeyRecord>;
 
-export type RecordsListResultItemPTRRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+export type RecordsListResultItemPTRRecordMetaShadowedByList = Array<string>;
 export const RecordsListResultItemPTRRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -10865,8 +10796,7 @@ export const RecordsListResultItemPTRRecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsListResultItemPTRRecord",
 }) as any as S.Schema<RecordsListResultItemPTRRecord>;
 
-export type RecordsListResultItemTXTRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+export type RecordsListResultItemTXTRecordMetaShadowedByList = Array<string>;
 export const RecordsListResultItemTXTRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -10938,8 +10868,7 @@ export const RecordsListResultItemTXTRecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsListResultItemTXTRecord",
 }) as any as S.Schema<RecordsListResultItemTXTRecord>;
 
-export type RecordsListResultItemCAARecordMetaShadowedByList =
-  ReadonlyArray<string>;
+export type RecordsListResultItemCAARecordMetaShadowedByList = Array<string>;
 export const RecordsListResultItemCAARecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -11011,8 +10940,7 @@ export const RecordsListResultItemCAARecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsListResultItemCAARecord",
 }) as any as S.Schema<RecordsListResultItemCAARecord>;
 
-export type RecordsListResultItemCERTRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+export type RecordsListResultItemCERTRecordMetaShadowedByList = Array<string>;
 export const RecordsListResultItemCERTRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -11084,8 +11012,7 @@ export const RecordsListResultItemCERTRecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsListResultItemCERTRecord",
 }) as any as S.Schema<RecordsListResultItemCERTRecord>;
 
-export type RecordsListResultItemDNSKEYRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+export type RecordsListResultItemDNSKEYRecordMetaShadowedByList = Array<string>;
 export const RecordsListResultItemDNSKEYRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -11158,8 +11085,7 @@ export const RecordsListResultItemDNSKEYRecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsListResultItemDNSKEYRecord",
 }) as any as S.Schema<RecordsListResultItemDNSKEYRecord>;
 
-export type RecordsListResultItemDSRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+export type RecordsListResultItemDSRecordMetaShadowedByList = Array<string>;
 export const RecordsListResultItemDSRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -11231,8 +11157,7 @@ export const RecordsListResultItemDSRecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsListResultItemDSRecord",
 }) as any as S.Schema<RecordsListResultItemDSRecord>;
 
-export type RecordsListResultItemHTTPSRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+export type RecordsListResultItemHTTPSRecordMetaShadowedByList = Array<string>;
 export const RecordsListResultItemHTTPSRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -11305,8 +11230,7 @@ export const RecordsListResultItemHTTPSRecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsListResultItemHTTPSRecord",
 }) as any as S.Schema<RecordsListResultItemHTTPSRecord>;
 
-export type RecordsListResultItemLOCRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+export type RecordsListResultItemLOCRecordMetaShadowedByList = Array<string>;
 export const RecordsListResultItemLOCRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -11378,8 +11302,7 @@ export const RecordsListResultItemLOCRecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsListResultItemLOCRecord",
 }) as any as S.Schema<RecordsListResultItemLOCRecord>;
 
-export type RecordsListResultItemNAPTRRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+export type RecordsListResultItemNAPTRRecordMetaShadowedByList = Array<string>;
 export const RecordsListResultItemNAPTRRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -11452,8 +11375,7 @@ export const RecordsListResultItemNAPTRRecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsListResultItemNAPTRRecord",
 }) as any as S.Schema<RecordsListResultItemNAPTRRecord>;
 
-export type RecordsListResultItemSMIMEARecordMetaShadowedByList =
-  ReadonlyArray<string>;
+export type RecordsListResultItemSMIMEARecordMetaShadowedByList = Array<string>;
 export const RecordsListResultItemSMIMEARecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -11526,8 +11448,7 @@ export const RecordsListResultItemSMIMEARecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsListResultItemSMIMEARecord",
 }) as any as S.Schema<RecordsListResultItemSMIMEARecord>;
 
-export type RecordsListResultItemSRVRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+export type RecordsListResultItemSRVRecordMetaShadowedByList = Array<string>;
 export const RecordsListResultItemSRVRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -11599,8 +11520,7 @@ export const RecordsListResultItemSRVRecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsListResultItemSRVRecord",
 }) as any as S.Schema<RecordsListResultItemSRVRecord>;
 
-export type RecordsListResultItemSSHFPRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+export type RecordsListResultItemSSHFPRecordMetaShadowedByList = Array<string>;
 export const RecordsListResultItemSSHFPRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -11673,8 +11593,7 @@ export const RecordsListResultItemSSHFPRecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsListResultItemSSHFPRecord",
 }) as any as S.Schema<RecordsListResultItemSSHFPRecord>;
 
-export type RecordsListResultItemSVCBRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+export type RecordsListResultItemSVCBRecordMetaShadowedByList = Array<string>;
 export const RecordsListResultItemSVCBRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -11746,8 +11665,7 @@ export const RecordsListResultItemSVCBRecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsListResultItemSVCBRecord",
 }) as any as S.Schema<RecordsListResultItemSVCBRecord>;
 
-export type RecordsListResultItemTLSARecordMetaShadowedByList =
-  ReadonlyArray<string>;
+export type RecordsListResultItemTLSARecordMetaShadowedByList = Array<string>;
 export const RecordsListResultItemTLSARecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -11819,8 +11737,7 @@ export const RecordsListResultItemTLSARecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsListResultItemTLSARecord",
 }) as any as S.Schema<RecordsListResultItemTLSARecord>;
 
-export type RecordsListResultItemURIRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+export type RecordsListResultItemURIRecordMetaShadowedByList = Array<string>;
 export const RecordsListResultItemURIRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -12032,7 +11949,7 @@ export const RecordsListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsListResultItem",
 }) as any as S.Schema<RecordsListResultItem>;
 
-export type RecordsListResultList = ReadonlyArray<RecordsListResultItem>;
+export type RecordsListResultList = Array<RecordsListResultItem>;
 export const RecordsListResultList = /*@__PURE__*/ S.Array(
   RecordsListResultItem,
 ) as any as S.Schema<RecordsListResultList>;
@@ -12132,7 +12049,7 @@ export const ListSettingAccountViewsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListSettingAccountViewsRequest",
 }) as any as S.Schema<ListSettingAccountViewsRequest>;
 
-export type SettingsAccountViewsListResultItemZonesList = ReadonlyArray<string>;
+export type SettingsAccountViewsListResultItemZonesList = Array<string>;
 export const SettingsAccountViewsListResultItemZonesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -12163,7 +12080,7 @@ export const SettingsAccountViewsListResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SettingsAccountViewsListResultItem>;
 
 export type SettingsAccountViewsListResultList =
-  ReadonlyArray<SettingsAccountViewsListResultItem>;
+  Array<SettingsAccountViewsListResultItem>;
 export const SettingsAccountViewsListResultList = /*@__PURE__*/ S.Array(
   SettingsAccountViewsListResultItem,
 ) as any as S.Schema<SettingsAccountViewsListResultList>;
@@ -12220,7 +12137,7 @@ export const ZoneTransfersAclsListResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ZoneTransfersAclsListResultItem>;
 
 export type ZoneTransfersAclsListResultList =
-  ReadonlyArray<ZoneTransfersAclsListResultItem>;
+  Array<ZoneTransfersAclsListResultItem>;
 export const ZoneTransfersAclsListResultList = /*@__PURE__*/ S.Array(
   ZoneTransfersAclsListResultItem,
 ) as any as S.Schema<ZoneTransfersAclsListResultList>;
@@ -12286,7 +12203,7 @@ export const ZoneTransfersPeersListResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ZoneTransfersPeersListResultItem>;
 
 export type ZoneTransfersPeersListResultList =
-  ReadonlyArray<ZoneTransfersPeersListResultItem>;
+  Array<ZoneTransfersPeersListResultItem>;
 export const ZoneTransfersPeersListResultList = /*@__PURE__*/ S.Array(
   ZoneTransfersPeersListResultItem,
 ) as any as S.Schema<ZoneTransfersPeersListResultList>;
@@ -12346,7 +12263,7 @@ export const ZoneTransfersTsigsListResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ZoneTransfersTsigsListResultItem>;
 
 export type ZoneTransfersTsigsListResultList =
-  ReadonlyArray<ZoneTransfersTsigsListResultItem>;
+  Array<ZoneTransfersTsigsListResultItem>;
 export const ZoneTransfersTsigsListResultList = /*@__PURE__*/ S.Array(
   ZoneTransfersTsigsListResultItem,
 ) as any as S.Schema<ZoneTransfersTsigsListResultList>;
@@ -12537,7 +12454,7 @@ export const RecordsEditRequestSettings = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsEditRequestSettings",
 }) as any as S.Schema<RecordsEditRequestSettings>;
 
-export type RecordsEditRequestTagsList = ReadonlyArray<unknown>;
+export type RecordsEditRequestTagsList = Array<unknown>;
 export const RecordsEditRequestTagsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<RecordsEditRequestTagsList>;
@@ -12986,7 +12903,7 @@ export const PatchRecordRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchRecordRequest",
 }) as any as S.Schema<PatchRecordRequest>;
 
-export type RecordsEditResultARecordMetaShadowedByList = ReadonlyArray<string>;
+export type RecordsEditResultARecordMetaShadowedByList = Array<string>;
 export const RecordsEditResultARecordMetaShadowedByList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RecordsEditResultARecordMetaShadowedByList>;
@@ -13046,8 +12963,7 @@ export const RecordsEditResultARecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsEditResultARecord",
 }) as any as S.Schema<RecordsEditResultARecord>;
 
-export type RecordsEditResultAAAARecordMetaShadowedByList =
-  ReadonlyArray<string>;
+export type RecordsEditResultAAAARecordMetaShadowedByList = Array<string>;
 export const RecordsEditResultAAAARecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -13108,8 +13024,7 @@ export const RecordsEditResultAAAARecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsEditResultAAAARecord",
 }) as any as S.Schema<RecordsEditResultAAAARecord>;
 
-export type RecordsEditResultCNAMERecordMetaShadowedByList =
-  ReadonlyArray<string>;
+export type RecordsEditResultCNAMERecordMetaShadowedByList = Array<string>;
 export const RecordsEditResultCNAMERecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -13172,7 +13087,7 @@ export const RecordsEditResultCNAMERecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsEditResultCNAMERecord",
 }) as any as S.Schema<RecordsEditResultCNAMERecord>;
 
-export type RecordsEditResultMXRecordMetaShadowedByList = ReadonlyArray<string>;
+export type RecordsEditResultMXRecordMetaShadowedByList = Array<string>;
 export const RecordsEditResultMXRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -13233,7 +13148,7 @@ export const RecordsEditResultMXRecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsEditResultMXRecord",
 }) as any as S.Schema<RecordsEditResultMXRecord>;
 
-export type RecordsEditResultNSRecordMetaShadowedByList = ReadonlyArray<string>;
+export type RecordsEditResultNSRecordMetaShadowedByList = Array<string>;
 export const RecordsEditResultNSRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -13294,8 +13209,7 @@ export const RecordsEditResultNSRecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsEditResultNSRecord",
 }) as any as S.Schema<RecordsEditResultNSRecord>;
 
-export type RecordsEditResultOpenpgpkeyRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+export type RecordsEditResultOpenpgpkeyRecordMetaShadowedByList = Array<string>;
 export const RecordsEditResultOpenpgpkeyRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -13345,7 +13259,7 @@ export const RecordsEditResultOpenpgpkeyRecordSettings =
     identifier: "RecordsEditResultOpenpgpkeyRecordSettings",
   }) as any as S.Schema<RecordsEditResultOpenpgpkeyRecordSettings>;
 
-export type RecordsEditResultOpenpgpkeyRecordTagsList = ReadonlyArray<unknown>;
+export type RecordsEditResultOpenpgpkeyRecordTagsList = Array<unknown>;
 export const RecordsEditResultOpenpgpkeyRecordTagsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<RecordsEditResultOpenpgpkeyRecordTagsList>;
@@ -13407,8 +13321,7 @@ export const RecordsEditResultOpenpgpkeyRecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsEditResultOpenpgpkeyRecord",
 }) as any as S.Schema<RecordsEditResultOpenpgpkeyRecord>;
 
-export type RecordsEditResultPTRRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+export type RecordsEditResultPTRRecordMetaShadowedByList = Array<string>;
 export const RecordsEditResultPTRRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -13469,8 +13382,7 @@ export const RecordsEditResultPTRRecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsEditResultPTRRecord",
 }) as any as S.Schema<RecordsEditResultPTRRecord>;
 
-export type RecordsEditResultTXTRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+export type RecordsEditResultTXTRecordMetaShadowedByList = Array<string>;
 export const RecordsEditResultTXTRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -13531,8 +13443,7 @@ export const RecordsEditResultTXTRecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsEditResultTXTRecord",
 }) as any as S.Schema<RecordsEditResultTXTRecord>;
 
-export type RecordsEditResultCAARecordMetaShadowedByList =
-  ReadonlyArray<string>;
+export type RecordsEditResultCAARecordMetaShadowedByList = Array<string>;
 export const RecordsEditResultCAARecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -13593,8 +13504,7 @@ export const RecordsEditResultCAARecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsEditResultCAARecord",
 }) as any as S.Schema<RecordsEditResultCAARecord>;
 
-export type RecordsEditResultCERTRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+export type RecordsEditResultCERTRecordMetaShadowedByList = Array<string>;
 export const RecordsEditResultCERTRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -13655,8 +13565,7 @@ export const RecordsEditResultCERTRecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsEditResultCERTRecord",
 }) as any as S.Schema<RecordsEditResultCERTRecord>;
 
-export type RecordsEditResultDNSKEYRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+export type RecordsEditResultDNSKEYRecordMetaShadowedByList = Array<string>;
 export const RecordsEditResultDNSKEYRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -13719,7 +13628,7 @@ export const RecordsEditResultDNSKEYRecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsEditResultDNSKEYRecord",
 }) as any as S.Schema<RecordsEditResultDNSKEYRecord>;
 
-export type RecordsEditResultDSRecordMetaShadowedByList = ReadonlyArray<string>;
+export type RecordsEditResultDSRecordMetaShadowedByList = Array<string>;
 export const RecordsEditResultDSRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -13780,8 +13689,7 @@ export const RecordsEditResultDSRecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsEditResultDSRecord",
 }) as any as S.Schema<RecordsEditResultDSRecord>;
 
-export type RecordsEditResultHTTPSRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+export type RecordsEditResultHTTPSRecordMetaShadowedByList = Array<string>;
 export const RecordsEditResultHTTPSRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -13844,8 +13752,7 @@ export const RecordsEditResultHTTPSRecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsEditResultHTTPSRecord",
 }) as any as S.Schema<RecordsEditResultHTTPSRecord>;
 
-export type RecordsEditResultLOCRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+export type RecordsEditResultLOCRecordMetaShadowedByList = Array<string>;
 export const RecordsEditResultLOCRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -13906,8 +13813,7 @@ export const RecordsEditResultLOCRecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsEditResultLOCRecord",
 }) as any as S.Schema<RecordsEditResultLOCRecord>;
 
-export type RecordsEditResultNAPTRRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+export type RecordsEditResultNAPTRRecordMetaShadowedByList = Array<string>;
 export const RecordsEditResultNAPTRRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -13970,8 +13876,7 @@ export const RecordsEditResultNAPTRRecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsEditResultNAPTRRecord",
 }) as any as S.Schema<RecordsEditResultNAPTRRecord>;
 
-export type RecordsEditResultSMIMEARecordMetaShadowedByList =
-  ReadonlyArray<string>;
+export type RecordsEditResultSMIMEARecordMetaShadowedByList = Array<string>;
 export const RecordsEditResultSMIMEARecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -14034,8 +13939,7 @@ export const RecordsEditResultSMIMEARecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsEditResultSMIMEARecord",
 }) as any as S.Schema<RecordsEditResultSMIMEARecord>;
 
-export type RecordsEditResultSRVRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+export type RecordsEditResultSRVRecordMetaShadowedByList = Array<string>;
 export const RecordsEditResultSRVRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -14096,8 +14000,7 @@ export const RecordsEditResultSRVRecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsEditResultSRVRecord",
 }) as any as S.Schema<RecordsEditResultSRVRecord>;
 
-export type RecordsEditResultSSHFPRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+export type RecordsEditResultSSHFPRecordMetaShadowedByList = Array<string>;
 export const RecordsEditResultSSHFPRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -14160,8 +14063,7 @@ export const RecordsEditResultSSHFPRecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsEditResultSSHFPRecord",
 }) as any as S.Schema<RecordsEditResultSSHFPRecord>;
 
-export type RecordsEditResultSVCBRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+export type RecordsEditResultSVCBRecordMetaShadowedByList = Array<string>;
 export const RecordsEditResultSVCBRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -14222,8 +14124,7 @@ export const RecordsEditResultSVCBRecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsEditResultSVCBRecord",
 }) as any as S.Schema<RecordsEditResultSVCBRecord>;
 
-export type RecordsEditResultTLSARecordMetaShadowedByList =
-  ReadonlyArray<string>;
+export type RecordsEditResultTLSARecordMetaShadowedByList = Array<string>;
 export const RecordsEditResultTLSARecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -14284,8 +14185,7 @@ export const RecordsEditResultTLSARecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsEditResultTLSARecord",
 }) as any as S.Schema<RecordsEditResultTLSARecord>;
 
-export type RecordsEditResultURIRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+export type RecordsEditResultURIRecordMetaShadowedByList = Array<string>;
 export const RecordsEditResultURIRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -14730,7 +14630,7 @@ export const PatchSettingAccountResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchSettingAccountResponse",
 }) as any as S.Schema<PatchSettingAccountResponse>;
 
-export type SettingsAccountViewsEditRequestZonesList = ReadonlyArray<string>;
+export type SettingsAccountViewsEditRequestZonesList = Array<string>;
 export const SettingsAccountViewsEditRequestZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SettingsAccountViewsEditRequestZonesList>;
@@ -14764,7 +14664,7 @@ export const PatchSettingAccountViewRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchSettingAccountViewRequest",
 }) as any as S.Schema<PatchSettingAccountViewRequest>;
 
-export type SettingsAccountViewsEditResponseZonesList = ReadonlyArray<string>;
+export type SettingsAccountViewsEditResponseZonesList = Array<string>;
 export const SettingsAccountViewsEditResponseZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SettingsAccountViewsEditResponseZonesList>;
@@ -15046,8 +14946,7 @@ export const ScanListRecordRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ScanListRecordRequest",
 }) as any as S.Schema<ScanListRecordRequest>;
 
-export type RecordsScanListResultItemARecordMetaShadowedByList =
-  ReadonlyArray<string>;
+export type RecordsScanListResultItemARecordMetaShadowedByList = Array<string>;
 export const RecordsScanListResultItemARecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -15112,7 +15011,7 @@ export const RecordsScanListResultItemARecord = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RecordsScanListResultItemARecord>;
 
 export type RecordsScanListResultItemAAAARecordMetaShadowedByList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RecordsScanListResultItemAAAARecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -15177,7 +15076,7 @@ export const RecordsScanListResultItemAAAARecord = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RecordsScanListResultItemAAAARecord>;
 
 export type RecordsScanListResultItemCNAMERecordMetaShadowedByList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RecordsScanListResultItemCNAMERecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -15244,8 +15143,7 @@ export const RecordsScanListResultItemCNAMERecord = /*@__PURE__*/ S.suspend(
   identifier: "RecordsScanListResultItemCNAMERecord",
 }) as any as S.Schema<RecordsScanListResultItemCNAMERecord>;
 
-export type RecordsScanListResultItemMXRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+export type RecordsScanListResultItemMXRecordMetaShadowedByList = Array<string>;
 export const RecordsScanListResultItemMXRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -15309,8 +15207,7 @@ export const RecordsScanListResultItemMXRecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsScanListResultItemMXRecord",
 }) as any as S.Schema<RecordsScanListResultItemMXRecord>;
 
-export type RecordsScanListResultItemNSRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+export type RecordsScanListResultItemNSRecordMetaShadowedByList = Array<string>;
 export const RecordsScanListResultItemNSRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -15375,7 +15272,7 @@ export const RecordsScanListResultItemNSRecord = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RecordsScanListResultItemNSRecord>;
 
 export type RecordsScanListResultItemOpenpgpkeyRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RecordsScanListResultItemOpenpgpkeyRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -15425,8 +15322,7 @@ export const RecordsScanListResultItemOpenpgpkeyRecordSettings =
     identifier: "RecordsScanListResultItemOpenpgpkeyRecordSettings",
   }) as any as S.Schema<RecordsScanListResultItemOpenpgpkeyRecordSettings>;
 
-export type RecordsScanListResultItemOpenpgpkeyRecordTagsList =
-  ReadonlyArray<unknown>;
+export type RecordsScanListResultItemOpenpgpkeyRecordTagsList = Array<unknown>;
 export const RecordsScanListResultItemOpenpgpkeyRecordTagsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -15494,7 +15390,7 @@ export const RecordsScanListResultItemOpenpgpkeyRecord =
   }) as any as S.Schema<RecordsScanListResultItemOpenpgpkeyRecord>;
 
 export type RecordsScanListResultItemPTRRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RecordsScanListResultItemPTRRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -15559,7 +15455,7 @@ export const RecordsScanListResultItemPTRRecord = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RecordsScanListResultItemPTRRecord>;
 
 export type RecordsScanListResultItemTXTRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RecordsScanListResultItemTXTRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -15624,7 +15520,7 @@ export const RecordsScanListResultItemTXTRecord = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RecordsScanListResultItemTXTRecord>;
 
 export type RecordsScanListResultItemCAARecordMetaShadowedByList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RecordsScanListResultItemCAARecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -15689,7 +15585,7 @@ export const RecordsScanListResultItemCAARecord = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RecordsScanListResultItemCAARecord>;
 
 export type RecordsScanListResultItemCERTRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RecordsScanListResultItemCERTRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -15754,7 +15650,7 @@ export const RecordsScanListResultItemCERTRecord = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RecordsScanListResultItemCERTRecord>;
 
 export type RecordsScanListResultItemDNSKEYRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RecordsScanListResultItemDNSKEYRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -15821,8 +15717,7 @@ export const RecordsScanListResultItemDNSKEYRecord = /*@__PURE__*/ S.suspend(
   identifier: "RecordsScanListResultItemDNSKEYRecord",
 }) as any as S.Schema<RecordsScanListResultItemDNSKEYRecord>;
 
-export type RecordsScanListResultItemDSRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+export type RecordsScanListResultItemDSRecordMetaShadowedByList = Array<string>;
 export const RecordsScanListResultItemDSRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -15887,7 +15782,7 @@ export const RecordsScanListResultItemDSRecord = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RecordsScanListResultItemDSRecord>;
 
 export type RecordsScanListResultItemHTTPSRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RecordsScanListResultItemHTTPSRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -15955,7 +15850,7 @@ export const RecordsScanListResultItemHTTPSRecord = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<RecordsScanListResultItemHTTPSRecord>;
 
 export type RecordsScanListResultItemLOCRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RecordsScanListResultItemLOCRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -16020,7 +15915,7 @@ export const RecordsScanListResultItemLOCRecord = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RecordsScanListResultItemLOCRecord>;
 
 export type RecordsScanListResultItemNAPTRRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RecordsScanListResultItemNAPTRRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -16088,7 +15983,7 @@ export const RecordsScanListResultItemNAPTRRecord = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<RecordsScanListResultItemNAPTRRecord>;
 
 export type RecordsScanListResultItemSMIMEARecordMetaShadowedByList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RecordsScanListResultItemSMIMEARecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -16156,7 +16051,7 @@ export const RecordsScanListResultItemSMIMEARecord = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<RecordsScanListResultItemSMIMEARecord>;
 
 export type RecordsScanListResultItemSRVRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RecordsScanListResultItemSRVRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -16221,7 +16116,7 @@ export const RecordsScanListResultItemSRVRecord = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RecordsScanListResultItemSRVRecord>;
 
 export type RecordsScanListResultItemSSHFPRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RecordsScanListResultItemSSHFPRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -16289,7 +16184,7 @@ export const RecordsScanListResultItemSSHFPRecord = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<RecordsScanListResultItemSSHFPRecord>;
 
 export type RecordsScanListResultItemSVCBRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RecordsScanListResultItemSVCBRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -16354,7 +16249,7 @@ export const RecordsScanListResultItemSVCBRecord = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RecordsScanListResultItemSVCBRecord>;
 
 export type RecordsScanListResultItemTLSARecordMetaShadowedByList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RecordsScanListResultItemTLSARecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -16419,7 +16314,7 @@ export const RecordsScanListResultItemTLSARecord = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RecordsScanListResultItemTLSARecord>;
 
 export type RecordsScanListResultItemURIRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RecordsScanListResultItemURIRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -16580,8 +16475,7 @@ export const RecordsScanListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsScanListResultItem",
 }) as any as S.Schema<RecordsScanListResultItem>;
 
-export type RecordsScanListResultList =
-  ReadonlyArray<RecordsScanListResultItem>;
+export type RecordsScanListResultList = Array<RecordsScanListResultItem>;
 export const RecordsScanListResultList = /*@__PURE__*/ S.Array(
   RecordsScanListResultItem,
 ) as any as S.Schema<RecordsScanListResultList>;
@@ -16659,8 +16553,7 @@ export const RecordsScanReviewRequestAcceptsItemARecordSettings =
     identifier: "RecordsScanReviewRequestAcceptsItemARecordSettings",
   }) as any as S.Schema<RecordsScanReviewRequestAcceptsItemARecordSettings>;
 
-export type RecordsScanReviewRequestAcceptsItemARecordTagsList =
-  ReadonlyArray<unknown>;
+export type RecordsScanReviewRequestAcceptsItemARecordTagsList = Array<unknown>;
 export const RecordsScanReviewRequestAcceptsItemARecordTagsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -16724,7 +16617,7 @@ export const RecordsScanReviewRequestAcceptsItemAAAARecordSettings =
   }) as any as S.Schema<RecordsScanReviewRequestAcceptsItemAAAARecordSettings>;
 
 export type RecordsScanReviewRequestAcceptsItemAAAARecordTagsList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const RecordsScanReviewRequestAcceptsItemAAAARecordTagsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -16793,7 +16686,7 @@ export const RecordsScanReviewRequestAcceptsItemCNAMERecordSettings =
   }) as any as S.Schema<RecordsScanReviewRequestAcceptsItemCNAMERecordSettings>;
 
 export type RecordsScanReviewRequestAcceptsItemCNAMERecordTagsList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const RecordsScanReviewRequestAcceptsItemCNAMERecordTagsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -16856,7 +16749,7 @@ export const RecordsScanReviewRequestAcceptsItemMXRecordSettings =
   }) as any as S.Schema<RecordsScanReviewRequestAcceptsItemMXRecordSettings>;
 
 export type RecordsScanReviewRequestAcceptsItemMXRecordTagsList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const RecordsScanReviewRequestAcceptsItemMXRecordTagsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -16920,7 +16813,7 @@ export const RecordsScanReviewRequestAcceptsItemNSRecordSettings =
   }) as any as S.Schema<RecordsScanReviewRequestAcceptsItemNSRecordSettings>;
 
 export type RecordsScanReviewRequestAcceptsItemNSRecordTagsList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const RecordsScanReviewRequestAcceptsItemNSRecordTagsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -16983,7 +16876,7 @@ export const RecordsScanReviewRequestAcceptsItemDNSRecordsOpenpgpkeyRecordSettin
   }) as any as S.Schema<RecordsScanReviewRequestAcceptsItemDNSRecordsOpenpgpkeyRecordSettings>;
 
 export type RecordsScanReviewRequestAcceptsItemDNSRecordsOpenpgpkeyRecordTagsList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const RecordsScanReviewRequestAcceptsItemDNSRecordsOpenpgpkeyRecordTagsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -17050,7 +16943,7 @@ export const RecordsScanReviewRequestAcceptsItemPTRRecordSettings =
   }) as any as S.Schema<RecordsScanReviewRequestAcceptsItemPTRRecordSettings>;
 
 export type RecordsScanReviewRequestAcceptsItemPTRRecordTagsList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const RecordsScanReviewRequestAcceptsItemPTRRecordTagsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -17113,7 +17006,7 @@ export const RecordsScanReviewRequestAcceptsItemTXTRecordSettings =
   }) as any as S.Schema<RecordsScanReviewRequestAcceptsItemTXTRecordSettings>;
 
 export type RecordsScanReviewRequestAcceptsItemTXTRecordTagsList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const RecordsScanReviewRequestAcceptsItemTXTRecordTagsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -17195,7 +17088,7 @@ export const RecordsScanReviewRequestAcceptsItemCAARecordSettings =
   }) as any as S.Schema<RecordsScanReviewRequestAcceptsItemCAARecordSettings>;
 
 export type RecordsScanReviewRequestAcceptsItemCAARecordTagsList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const RecordsScanReviewRequestAcceptsItemCAARecordTagsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -17283,7 +17176,7 @@ export const RecordsScanReviewRequestAcceptsItemCERTRecordSettings =
   }) as any as S.Schema<RecordsScanReviewRequestAcceptsItemCERTRecordSettings>;
 
 export type RecordsScanReviewRequestAcceptsItemCERTRecordTagsList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const RecordsScanReviewRequestAcceptsItemCERTRecordTagsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -17371,7 +17264,7 @@ export const RecordsScanReviewRequestAcceptsItemDNSKEYRecordSettings =
   }) as any as S.Schema<RecordsScanReviewRequestAcceptsItemDNSKEYRecordSettings>;
 
 export type RecordsScanReviewRequestAcceptsItemDNSKEYRecordTagsList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const RecordsScanReviewRequestAcceptsItemDNSKEYRecordTagsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -17459,7 +17352,7 @@ export const RecordsScanReviewRequestAcceptsItemDSRecordSettings =
   }) as any as S.Schema<RecordsScanReviewRequestAcceptsItemDSRecordSettings>;
 
 export type RecordsScanReviewRequestAcceptsItemDSRecordTagsList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const RecordsScanReviewRequestAcceptsItemDSRecordTagsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -17542,7 +17435,7 @@ export const RecordsScanReviewRequestAcceptsItemHTTPSRecordSettings =
   }) as any as S.Schema<RecordsScanReviewRequestAcceptsItemHTTPSRecordSettings>;
 
 export type RecordsScanReviewRequestAcceptsItemHTTPSRecordTagsList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const RecordsScanReviewRequestAcceptsItemHTTPSRecordTagsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -17678,7 +17571,7 @@ export const RecordsScanReviewRequestAcceptsItemLOCRecordSettings =
   }) as any as S.Schema<RecordsScanReviewRequestAcceptsItemLOCRecordSettings>;
 
 export type RecordsScanReviewRequestAcceptsItemLOCRecordTagsList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const RecordsScanReviewRequestAcceptsItemLOCRecordTagsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -17772,7 +17665,7 @@ export const RecordsScanReviewRequestAcceptsItemNAPTRRecordSettings =
   }) as any as S.Schema<RecordsScanReviewRequestAcceptsItemNAPTRRecordSettings>;
 
 export type RecordsScanReviewRequestAcceptsItemNAPTRRecordTagsList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const RecordsScanReviewRequestAcceptsItemNAPTRRecordTagsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -17860,7 +17753,7 @@ export const RecordsScanReviewRequestAcceptsItemSMIMEARecordSettings =
   }) as any as S.Schema<RecordsScanReviewRequestAcceptsItemSMIMEARecordSettings>;
 
 export type RecordsScanReviewRequestAcceptsItemSMIMEARecordTagsList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const RecordsScanReviewRequestAcceptsItemSMIMEARecordTagsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -17948,7 +17841,7 @@ export const RecordsScanReviewRequestAcceptsItemSRVRecordSettings =
   }) as any as S.Schema<RecordsScanReviewRequestAcceptsItemSRVRecordSettings>;
 
 export type RecordsScanReviewRequestAcceptsItemSRVRecordTagsList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const RecordsScanReviewRequestAcceptsItemSRVRecordTagsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -18033,7 +17926,7 @@ export const RecordsScanReviewRequestAcceptsItemSSHFPRecordSettings =
   }) as any as S.Schema<RecordsScanReviewRequestAcceptsItemSSHFPRecordSettings>;
 
 export type RecordsScanReviewRequestAcceptsItemSSHFPRecordTagsList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const RecordsScanReviewRequestAcceptsItemSSHFPRecordTagsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -18118,7 +18011,7 @@ export const RecordsScanReviewRequestAcceptsItemSVCBRecordSettings =
   }) as any as S.Schema<RecordsScanReviewRequestAcceptsItemSVCBRecordSettings>;
 
 export type RecordsScanReviewRequestAcceptsItemSVCBRecordTagsList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const RecordsScanReviewRequestAcceptsItemSVCBRecordTagsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -18206,7 +18099,7 @@ export const RecordsScanReviewRequestAcceptsItemTLSARecordSettings =
   }) as any as S.Schema<RecordsScanReviewRequestAcceptsItemTLSARecordSettings>;
 
 export type RecordsScanReviewRequestAcceptsItemTLSARecordTagsList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const RecordsScanReviewRequestAcceptsItemTLSARecordTagsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -18288,7 +18181,7 @@ export const RecordsScanReviewRequestAcceptsItemURIRecordSettings =
   }) as any as S.Schema<RecordsScanReviewRequestAcceptsItemURIRecordSettings>;
 
 export type RecordsScanReviewRequestAcceptsItemURIRecordTagsList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const RecordsScanReviewRequestAcceptsItemURIRecordTagsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -18562,7 +18455,7 @@ export const RecordsScanReviewRequestAcceptsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RecordsScanReviewRequestAcceptsItem>;
 
 export type RecordsScanReviewRequestAcceptsList =
-  ReadonlyArray<RecordsScanReviewRequestAcceptsItem>;
+  Array<RecordsScanReviewRequestAcceptsItem>;
 export const RecordsScanReviewRequestAcceptsList = /*@__PURE__*/ S.Array(
   RecordsScanReviewRequestAcceptsItem,
 ) as any as S.Schema<RecordsScanReviewRequestAcceptsList>;
@@ -18580,7 +18473,7 @@ export const RecordsScanReviewRequestRejectsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RecordsScanReviewRequestRejectsItem>;
 
 export type RecordsScanReviewRequestRejectsList =
-  ReadonlyArray<RecordsScanReviewRequestRejectsItem>;
+  Array<RecordsScanReviewRequestRejectsItem>;
 export const RecordsScanReviewRequestRejectsList = /*@__PURE__*/ S.Array(
   RecordsScanReviewRequestRejectsItem,
 ) as any as S.Schema<RecordsScanReviewRequestRejectsList>;
@@ -18610,7 +18503,7 @@ export const ScanReviewRecordRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScanReviewRecordRequest>;
 
 export type RecordsScanReviewResponseAcceptsItemARecordMetaShadowedByList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RecordsScanReviewResponseAcceptsItemARecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -18678,7 +18571,7 @@ export const RecordsScanReviewResponseAcceptsItemARecord =
   }) as any as S.Schema<RecordsScanReviewResponseAcceptsItemARecord>;
 
 export type RecordsScanReviewResponseAcceptsItemAAAARecordMetaShadowedByList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RecordsScanReviewResponseAcceptsItemAAAARecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -18746,7 +18639,7 @@ export const RecordsScanReviewResponseAcceptsItemAAAARecord =
   }) as any as S.Schema<RecordsScanReviewResponseAcceptsItemAAAARecord>;
 
 export type RecordsScanReviewResponseAcceptsItemCNAMERecordMetaShadowedByList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RecordsScanReviewResponseAcceptsItemCNAMERecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -18814,7 +18707,7 @@ export const RecordsScanReviewResponseAcceptsItemCNAMERecord =
   }) as any as S.Schema<RecordsScanReviewResponseAcceptsItemCNAMERecord>;
 
 export type RecordsScanReviewResponseAcceptsItemMXRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RecordsScanReviewResponseAcceptsItemMXRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -18882,7 +18775,7 @@ export const RecordsScanReviewResponseAcceptsItemMXRecord =
   }) as any as S.Schema<RecordsScanReviewResponseAcceptsItemMXRecord>;
 
 export type RecordsScanReviewResponseAcceptsItemNSRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RecordsScanReviewResponseAcceptsItemNSRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -18950,7 +18843,7 @@ export const RecordsScanReviewResponseAcceptsItemNSRecord =
   }) as any as S.Schema<RecordsScanReviewResponseAcceptsItemNSRecord>;
 
 export type RecordsScanReviewResponseAcceptsItemOpenpgpkeyRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RecordsScanReviewResponseAcceptsItemOpenpgpkeyRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -19001,7 +18894,7 @@ export const RecordsScanReviewResponseAcceptsItemOpenpgpkeyRecordSettings =
   }) as any as S.Schema<RecordsScanReviewResponseAcceptsItemOpenpgpkeyRecordSettings>;
 
 export type RecordsScanReviewResponseAcceptsItemOpenpgpkeyRecordTagsList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const RecordsScanReviewResponseAcceptsItemOpenpgpkeyRecordTagsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -19070,7 +18963,7 @@ export const RecordsScanReviewResponseAcceptsItemOpenpgpkeyRecord =
   }) as any as S.Schema<RecordsScanReviewResponseAcceptsItemOpenpgpkeyRecord>;
 
 export type RecordsScanReviewResponseAcceptsItemPTRRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RecordsScanReviewResponseAcceptsItemPTRRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -19138,7 +19031,7 @@ export const RecordsScanReviewResponseAcceptsItemPTRRecord =
   }) as any as S.Schema<RecordsScanReviewResponseAcceptsItemPTRRecord>;
 
 export type RecordsScanReviewResponseAcceptsItemTXTRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RecordsScanReviewResponseAcceptsItemTXTRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -19206,7 +19099,7 @@ export const RecordsScanReviewResponseAcceptsItemTXTRecord =
   }) as any as S.Schema<RecordsScanReviewResponseAcceptsItemTXTRecord>;
 
 export type RecordsScanReviewResponseAcceptsItemCAARecordMetaShadowedByList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RecordsScanReviewResponseAcceptsItemCAARecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -19274,7 +19167,7 @@ export const RecordsScanReviewResponseAcceptsItemCAARecord =
   }) as any as S.Schema<RecordsScanReviewResponseAcceptsItemCAARecord>;
 
 export type RecordsScanReviewResponseAcceptsItemCERTRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RecordsScanReviewResponseAcceptsItemCERTRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -19342,7 +19235,7 @@ export const RecordsScanReviewResponseAcceptsItemCERTRecord =
   }) as any as S.Schema<RecordsScanReviewResponseAcceptsItemCERTRecord>;
 
 export type RecordsScanReviewResponseAcceptsItemDNSKEYRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RecordsScanReviewResponseAcceptsItemDNSKEYRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -19410,7 +19303,7 @@ export const RecordsScanReviewResponseAcceptsItemDNSKEYRecord =
   }) as any as S.Schema<RecordsScanReviewResponseAcceptsItemDNSKEYRecord>;
 
 export type RecordsScanReviewResponseAcceptsItemDSRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RecordsScanReviewResponseAcceptsItemDSRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -19478,7 +19371,7 @@ export const RecordsScanReviewResponseAcceptsItemDSRecord =
   }) as any as S.Schema<RecordsScanReviewResponseAcceptsItemDSRecord>;
 
 export type RecordsScanReviewResponseAcceptsItemHTTPSRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RecordsScanReviewResponseAcceptsItemHTTPSRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -19546,7 +19439,7 @@ export const RecordsScanReviewResponseAcceptsItemHTTPSRecord =
   }) as any as S.Schema<RecordsScanReviewResponseAcceptsItemHTTPSRecord>;
 
 export type RecordsScanReviewResponseAcceptsItemLOCRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RecordsScanReviewResponseAcceptsItemLOCRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -19614,7 +19507,7 @@ export const RecordsScanReviewResponseAcceptsItemLOCRecord =
   }) as any as S.Schema<RecordsScanReviewResponseAcceptsItemLOCRecord>;
 
 export type RecordsScanReviewResponseAcceptsItemNAPTRRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RecordsScanReviewResponseAcceptsItemNAPTRRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -19682,7 +19575,7 @@ export const RecordsScanReviewResponseAcceptsItemNAPTRRecord =
   }) as any as S.Schema<RecordsScanReviewResponseAcceptsItemNAPTRRecord>;
 
 export type RecordsScanReviewResponseAcceptsItemSMIMEARecordMetaShadowedByList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RecordsScanReviewResponseAcceptsItemSMIMEARecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -19750,7 +19643,7 @@ export const RecordsScanReviewResponseAcceptsItemSMIMEARecord =
   }) as any as S.Schema<RecordsScanReviewResponseAcceptsItemSMIMEARecord>;
 
 export type RecordsScanReviewResponseAcceptsItemSRVRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RecordsScanReviewResponseAcceptsItemSRVRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -19818,7 +19711,7 @@ export const RecordsScanReviewResponseAcceptsItemSRVRecord =
   }) as any as S.Schema<RecordsScanReviewResponseAcceptsItemSRVRecord>;
 
 export type RecordsScanReviewResponseAcceptsItemSSHFPRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RecordsScanReviewResponseAcceptsItemSSHFPRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -19886,7 +19779,7 @@ export const RecordsScanReviewResponseAcceptsItemSSHFPRecord =
   }) as any as S.Schema<RecordsScanReviewResponseAcceptsItemSSHFPRecord>;
 
 export type RecordsScanReviewResponseAcceptsItemSVCBRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RecordsScanReviewResponseAcceptsItemSVCBRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -19954,7 +19847,7 @@ export const RecordsScanReviewResponseAcceptsItemSVCBRecord =
   }) as any as S.Schema<RecordsScanReviewResponseAcceptsItemSVCBRecord>;
 
 export type RecordsScanReviewResponseAcceptsItemTLSARecordMetaShadowedByList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RecordsScanReviewResponseAcceptsItemTLSARecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -20022,7 +19915,7 @@ export const RecordsScanReviewResponseAcceptsItemTLSARecord =
   }) as any as S.Schema<RecordsScanReviewResponseAcceptsItemTLSARecord>;
 
 export type RecordsScanReviewResponseAcceptsItemURIRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RecordsScanReviewResponseAcceptsItemURIRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -20196,12 +20089,12 @@ export const RecordsScanReviewResponseAcceptsItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<RecordsScanReviewResponseAcceptsItem>;
 
 export type RecordsScanReviewResponseAcceptsList =
-  ReadonlyArray<RecordsScanReviewResponseAcceptsItem>;
+  Array<RecordsScanReviewResponseAcceptsItem>;
 export const RecordsScanReviewResponseAcceptsList = /*@__PURE__*/ S.Array(
   RecordsScanReviewResponseAcceptsItem,
 ) as any as S.Schema<RecordsScanReviewResponseAcceptsList>;
 
-export type RecordsScanReviewResponseRejectsList = ReadonlyArray<string>;
+export type RecordsScanReviewResponseRejectsList = Array<string>;
 export const RecordsScanReviewResponseRejectsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RecordsScanReviewResponseRejectsList>;
@@ -20323,7 +20216,7 @@ export const RecordsUpdateRequestSettings = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsUpdateRequestSettings",
 }) as any as S.Schema<RecordsUpdateRequestSettings>;
 
-export type RecordsUpdateRequestTagsList = ReadonlyArray<unknown>;
+export type RecordsUpdateRequestTagsList = Array<unknown>;
 export const RecordsUpdateRequestTagsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<RecordsUpdateRequestTagsList>;
@@ -20782,8 +20675,7 @@ export const UpdateRecordRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateRecordRequest",
 }) as any as S.Schema<UpdateRecordRequest>;
 
-export type RecordsUpdateResultARecordMetaShadowedByList =
-  ReadonlyArray<string>;
+export type RecordsUpdateResultARecordMetaShadowedByList = Array<string>;
 export const RecordsUpdateResultARecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -20844,8 +20736,7 @@ export const RecordsUpdateResultARecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsUpdateResultARecord",
 }) as any as S.Schema<RecordsUpdateResultARecord>;
 
-export type RecordsUpdateResultAAAARecordMetaShadowedByList =
-  ReadonlyArray<string>;
+export type RecordsUpdateResultAAAARecordMetaShadowedByList = Array<string>;
 export const RecordsUpdateResultAAAARecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -20908,8 +20799,7 @@ export const RecordsUpdateResultAAAARecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsUpdateResultAAAARecord",
 }) as any as S.Schema<RecordsUpdateResultAAAARecord>;
 
-export type RecordsUpdateResultCNAMERecordMetaShadowedByList =
-  ReadonlyArray<string>;
+export type RecordsUpdateResultCNAMERecordMetaShadowedByList = Array<string>;
 export const RecordsUpdateResultCNAMERecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -20972,8 +20862,7 @@ export const RecordsUpdateResultCNAMERecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsUpdateResultCNAMERecord",
 }) as any as S.Schema<RecordsUpdateResultCNAMERecord>;
 
-export type RecordsUpdateResultMXRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+export type RecordsUpdateResultMXRecordMetaShadowedByList = Array<string>;
 export const RecordsUpdateResultMXRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -21034,8 +20923,7 @@ export const RecordsUpdateResultMXRecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsUpdateResultMXRecord",
 }) as any as S.Schema<RecordsUpdateResultMXRecord>;
 
-export type RecordsUpdateResultNSRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+export type RecordsUpdateResultNSRecordMetaShadowedByList = Array<string>;
 export const RecordsUpdateResultNSRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -21097,7 +20985,7 @@ export const RecordsUpdateResultNSRecord = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RecordsUpdateResultNSRecord>;
 
 export type RecordsUpdateResultOpenpgpkeyRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RecordsUpdateResultOpenpgpkeyRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -21147,8 +21035,7 @@ export const RecordsUpdateResultOpenpgpkeyRecordSettings =
     identifier: "RecordsUpdateResultOpenpgpkeyRecordSettings",
   }) as any as S.Schema<RecordsUpdateResultOpenpgpkeyRecordSettings>;
 
-export type RecordsUpdateResultOpenpgpkeyRecordTagsList =
-  ReadonlyArray<unknown>;
+export type RecordsUpdateResultOpenpgpkeyRecordTagsList = Array<unknown>;
 export const RecordsUpdateResultOpenpgpkeyRecordTagsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -21211,8 +21098,7 @@ export const RecordsUpdateResultOpenpgpkeyRecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsUpdateResultOpenpgpkeyRecord",
 }) as any as S.Schema<RecordsUpdateResultOpenpgpkeyRecord>;
 
-export type RecordsUpdateResultPTRRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+export type RecordsUpdateResultPTRRecordMetaShadowedByList = Array<string>;
 export const RecordsUpdateResultPTRRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -21275,8 +21161,7 @@ export const RecordsUpdateResultPTRRecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsUpdateResultPTRRecord",
 }) as any as S.Schema<RecordsUpdateResultPTRRecord>;
 
-export type RecordsUpdateResultTXTRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+export type RecordsUpdateResultTXTRecordMetaShadowedByList = Array<string>;
 export const RecordsUpdateResultTXTRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -21339,8 +21224,7 @@ export const RecordsUpdateResultTXTRecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsUpdateResultTXTRecord",
 }) as any as S.Schema<RecordsUpdateResultTXTRecord>;
 
-export type RecordsUpdateResultCAARecordMetaShadowedByList =
-  ReadonlyArray<string>;
+export type RecordsUpdateResultCAARecordMetaShadowedByList = Array<string>;
 export const RecordsUpdateResultCAARecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -21403,8 +21287,7 @@ export const RecordsUpdateResultCAARecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsUpdateResultCAARecord",
 }) as any as S.Schema<RecordsUpdateResultCAARecord>;
 
-export type RecordsUpdateResultCERTRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+export type RecordsUpdateResultCERTRecordMetaShadowedByList = Array<string>;
 export const RecordsUpdateResultCERTRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -21467,8 +21350,7 @@ export const RecordsUpdateResultCERTRecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsUpdateResultCERTRecord",
 }) as any as S.Schema<RecordsUpdateResultCERTRecord>;
 
-export type RecordsUpdateResultDNSKEYRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+export type RecordsUpdateResultDNSKEYRecordMetaShadowedByList = Array<string>;
 export const RecordsUpdateResultDNSKEYRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -21531,8 +21413,7 @@ export const RecordsUpdateResultDNSKEYRecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsUpdateResultDNSKEYRecord",
 }) as any as S.Schema<RecordsUpdateResultDNSKEYRecord>;
 
-export type RecordsUpdateResultDSRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+export type RecordsUpdateResultDSRecordMetaShadowedByList = Array<string>;
 export const RecordsUpdateResultDSRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -21593,8 +21474,7 @@ export const RecordsUpdateResultDSRecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsUpdateResultDSRecord",
 }) as any as S.Schema<RecordsUpdateResultDSRecord>;
 
-export type RecordsUpdateResultHTTPSRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+export type RecordsUpdateResultHTTPSRecordMetaShadowedByList = Array<string>;
 export const RecordsUpdateResultHTTPSRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -21657,8 +21537,7 @@ export const RecordsUpdateResultHTTPSRecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsUpdateResultHTTPSRecord",
 }) as any as S.Schema<RecordsUpdateResultHTTPSRecord>;
 
-export type RecordsUpdateResultLOCRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+export type RecordsUpdateResultLOCRecordMetaShadowedByList = Array<string>;
 export const RecordsUpdateResultLOCRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -21721,8 +21600,7 @@ export const RecordsUpdateResultLOCRecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsUpdateResultLOCRecord",
 }) as any as S.Schema<RecordsUpdateResultLOCRecord>;
 
-export type RecordsUpdateResultNAPTRRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+export type RecordsUpdateResultNAPTRRecordMetaShadowedByList = Array<string>;
 export const RecordsUpdateResultNAPTRRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -21785,8 +21663,7 @@ export const RecordsUpdateResultNAPTRRecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsUpdateResultNAPTRRecord",
 }) as any as S.Schema<RecordsUpdateResultNAPTRRecord>;
 
-export type RecordsUpdateResultSMIMEARecordMetaShadowedByList =
-  ReadonlyArray<string>;
+export type RecordsUpdateResultSMIMEARecordMetaShadowedByList = Array<string>;
 export const RecordsUpdateResultSMIMEARecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -21849,8 +21726,7 @@ export const RecordsUpdateResultSMIMEARecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsUpdateResultSMIMEARecord",
 }) as any as S.Schema<RecordsUpdateResultSMIMEARecord>;
 
-export type RecordsUpdateResultSRVRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+export type RecordsUpdateResultSRVRecordMetaShadowedByList = Array<string>;
 export const RecordsUpdateResultSRVRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -21913,8 +21789,7 @@ export const RecordsUpdateResultSRVRecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsUpdateResultSRVRecord",
 }) as any as S.Schema<RecordsUpdateResultSRVRecord>;
 
-export type RecordsUpdateResultSSHFPRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+export type RecordsUpdateResultSSHFPRecordMetaShadowedByList = Array<string>;
 export const RecordsUpdateResultSSHFPRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -21977,8 +21852,7 @@ export const RecordsUpdateResultSSHFPRecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsUpdateResultSSHFPRecord",
 }) as any as S.Schema<RecordsUpdateResultSSHFPRecord>;
 
-export type RecordsUpdateResultSVCBRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+export type RecordsUpdateResultSVCBRecordMetaShadowedByList = Array<string>;
 export const RecordsUpdateResultSVCBRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -22041,8 +21915,7 @@ export const RecordsUpdateResultSVCBRecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsUpdateResultSVCBRecord",
 }) as any as S.Schema<RecordsUpdateResultSVCBRecord>;
 
-export type RecordsUpdateResultTLSARecordMetaShadowedByList =
-  ReadonlyArray<string>;
+export type RecordsUpdateResultTLSARecordMetaShadowedByList = Array<string>;
 export const RecordsUpdateResultTLSARecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -22105,8 +21978,7 @@ export const RecordsUpdateResultTLSARecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsUpdateResultTLSARecord",
 }) as any as S.Schema<RecordsUpdateResultTLSARecord>;
 
-export type RecordsUpdateResultURIRecordMetaShadowedByList =
-  ReadonlyArray<string>;
+export type RecordsUpdateResultURIRecordMetaShadowedByList = Array<string>;
 export const RecordsUpdateResultURIRecordMetaShadowedByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -22318,7 +22190,7 @@ export const UpdateZoneTransferAclResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateZoneTransferAclResponse",
 }) as any as S.Schema<UpdateZoneTransferAclResponse>;
 
-export type ZoneTransfersIncomingUpdateRequestPeersList = ReadonlyArray<string>;
+export type ZoneTransfersIncomingUpdateRequestPeersList = Array<string>;
 export const ZoneTransfersIncomingUpdateRequestPeersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -22352,8 +22224,7 @@ export const UpdateZoneTransferIncomingRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateZoneTransferIncomingRequest",
 }) as any as S.Schema<UpdateZoneTransferIncomingRequest>;
 
-export type ZoneTransfersIncomingUpdateResponsePeersList =
-  ReadonlyArray<string>;
+export type ZoneTransfersIncomingUpdateResponsePeersList = Array<string>;
 export const ZoneTransfersIncomingUpdateResponsePeersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -22394,7 +22265,7 @@ export const UpdateZoneTransferIncomingResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateZoneTransferIncomingResponse",
 }) as any as S.Schema<UpdateZoneTransferIncomingResponse>;
 
-export type ZoneTransfersOutgoingUpdateRequestPeersList = ReadonlyArray<string>;
+export type ZoneTransfersOutgoingUpdateRequestPeersList = Array<string>;
 export const ZoneTransfersOutgoingUpdateRequestPeersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -22425,8 +22296,7 @@ export const UpdateZoneTransferOutgoingRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateZoneTransferOutgoingRequest",
 }) as any as S.Schema<UpdateZoneTransferOutgoingRequest>;
 
-export type ZoneTransfersOutgoingUpdateResponsePeersList =
-  ReadonlyArray<string>;
+export type ZoneTransfersOutgoingUpdateResponsePeersList = Array<string>;
 export const ZoneTransfersOutgoingUpdateResponsePeersList =
   /*@__PURE__*/ S.Array(
     S.String,

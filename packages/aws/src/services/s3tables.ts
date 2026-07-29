@@ -327,7 +327,7 @@ export type SSEAlgorithm = "AES256" | "aws:kms";
 export const SSEAlgorithm = /*@__PURE__*/ S.String;
 
 export interface EncryptionConfiguration {
-  sseAlgorithm: SSEAlgorithm;
+  sseAlgorithm: SSEAlgorithm | (string & {});
   kmsKeyArn?: string;
 }
 export const EncryptionConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -339,7 +339,7 @@ export type StorageClass = "STANDARD" | "INTELLIGENT_TIERING";
 export const StorageClass = /*@__PURE__*/ S.String;
 
 export interface StorageClassConfiguration {
-  storageClass: StorageClass;
+  storageClass: StorageClass | (string & {});
 }
 export const StorageClassConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ storageClass: StorageClass }),
@@ -931,7 +931,7 @@ export const TableBucketMaintenanceSettings = /*@__PURE__*/ S.Union([
   }),
 ]);
 export interface TableBucketMaintenanceConfigurationValue {
-  status?: MaintenanceStatus;
+  status?: MaintenanceStatus | (string & {});
   settings?: TableBucketMaintenanceSettings;
 }
 export const TableBucketMaintenanceConfigurationValue = /*@__PURE__*/ S.suspend(
@@ -1186,7 +1186,7 @@ export const IcebergCompactionStrategy = /*@__PURE__*/ S.String;
 
 export interface IcebergCompactionSettings {
   targetFileSizeMB?: number;
-  strategy?: IcebergCompactionStrategy;
+  strategy?: IcebergCompactionStrategy | (string & {});
 }
 export const IcebergCompactionSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1222,7 +1222,7 @@ export const TableMaintenanceSettings = /*@__PURE__*/ S.Union([
   S.Struct({ icebergSnapshotManagement: IcebergSnapshotManagementSettings }),
 ]);
 export interface TableMaintenanceConfigurationValue {
-  status?: MaintenanceStatus;
+  status?: MaintenanceStatus | (string & {});
   settings?: TableMaintenanceSettings;
 }
 export const TableMaintenanceConfigurationValue = /*@__PURE__*/ S.suspend(() =>
@@ -1426,7 +1426,7 @@ export const TableRecordExpirationSettings = /*@__PURE__*/ S.suspend(() =>
   identifier: "TableRecordExpirationSettings",
 }) as any as S.Schema<TableRecordExpirationSettings>;
 export interface TableRecordExpirationConfigurationValue {
-  status?: TableRecordExpirationStatus;
+  status?: TableRecordExpirationStatus | (string & {});
   settings?: TableRecordExpirationSettings;
 }
 export const TableRecordExpirationConfigurationValue = /*@__PURE__*/ S.suspend(

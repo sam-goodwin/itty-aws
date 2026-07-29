@@ -1071,7 +1071,7 @@ export type ValidationMode = "OFF" | "STRICT";
 export const ValidationMode = /*@__PURE__*/ S.String;
 
 export interface ValidationSettings {
-  mode: ValidationMode;
+  mode: ValidationMode | (string & {});
 }
 export const ValidationSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ mode: ValidationMode }),

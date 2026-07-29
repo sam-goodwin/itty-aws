@@ -228,7 +228,7 @@ export const AzureADOnlyAuthentication = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of results. */
 export type AzureADOnlyAuthenticationListResultValueList =
-  ReadonlyArray<AzureADOnlyAuthentication>;
+  Array<AzureADOnlyAuthentication>;
 export const AzureADOnlyAuthenticationListResultValueList =
   /*@__PURE__*/ S.Array(
     AzureADOnlyAuthentication,
@@ -354,7 +354,7 @@ export const BigDataPoolResourcePropertiesInputCustomLibrariesItem =
 
 /** List of custom libraries/packages associated with the spark pool. */
 export type BigDataPoolResourcePropertiesInputCustomLibrariesList =
-  ReadonlyArray<BigDataPoolResourcePropertiesInputCustomLibrariesItem>;
+  Array<BigDataPoolResourcePropertiesInputCustomLibrariesItem>;
 export const BigDataPoolResourcePropertiesInputCustomLibrariesList =
   /*@__PURE__*/ S.Array(
     BigDataPoolResourcePropertiesInputCustomLibrariesItem,
@@ -576,7 +576,7 @@ export const BigDataPoolResourcePropertiesCustomLibrariesItem =
 
 /** List of custom libraries/packages associated with the spark pool. */
 export type BigDataPoolResourcePropertiesCustomLibrariesList =
-  ReadonlyArray<BigDataPoolResourcePropertiesCustomLibrariesItem>;
+  Array<BigDataPoolResourcePropertiesCustomLibrariesItem>;
 export const BigDataPoolResourcePropertiesCustomLibrariesList =
   /*@__PURE__*/ S.Array(
     BigDataPoolResourcePropertiesCustomLibrariesItem,
@@ -916,7 +916,7 @@ export const BigDataPoolResourceInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Big Data pools */
 export type BigDataPoolResourceInfoListResultValueList =
-  ReadonlyArray<BigDataPoolResourceInfo>;
+  Array<BigDataPoolResourceInfo>;
 export const BigDataPoolResourceInfoListResultValueList = /*@__PURE__*/ S.Array(
   BigDataPoolResourceInfo,
 ) as any as S.Schema<BigDataPoolResourceInfoListResultValueList>;
@@ -1547,7 +1547,7 @@ export const DataMaskingRule = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DataMaskingRule>;
 
 /** The list of Sql pool data masking rules. */
-export type DataMaskingRuleListResultValueList = ReadonlyArray<DataMaskingRule>;
+export type DataMaskingRuleListResultValueList = Array<DataMaskingRule>;
 export const DataMaskingRuleListResultValueList = /*@__PURE__*/ S.Array(
   DataMaskingRule,
 ) as any as S.Schema<DataMaskingRuleListResultValueList>;
@@ -1579,7 +1579,7 @@ export const ExtendedSqlPoolBlobAuditingPolicyPropertiesState =
 
 /** Specifies the Actions-Groups and Actions to audit. The recommended set of action groups to use is the following combination - this will audit all the queries and stored procedures executed against the database, as well as successful and failed logins: BATCH_COMPLETED_GROUP, SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP, FAILED_DATABASE_AUTHENTICATION_GROUP. This above combination is also the set that is configured by default when enabling auditing from the Azure portal. The supported action groups to audit are (note: choose only specific groups that cover your auditing needs. Using unnecessary groups could lead to very large quantities of audit records): APPLICATION_ROLE_CHANGE_PASSWORD_GROUP BACKUP_RESTORE_GROUP DATABASE_LOGOUT_GROUP DATABASE_OBJECT_CHANGE_GROUP DATABASE_OBJECT_OWNERSHIP_CHANGE_GROUP DATABASE_OBJECT_PERMISSION_CHANGE_GROUP DATABASE_OPERATION_GROUP DATABASE_PERMISSION_CHANGE_GROUP DATABASE_PRINCIPAL_CHANGE_GROUP DATABASE_PRINCIPAL_IMPERSONATION_GROUP DATABASE_ROLE_MEMBER_CHANGE_GROUP FAILED_DATABASE_AUTHENTICATION_GROUP SCHEMA_OBJECT_ACCESS_GROUP SCHEMA_OBJECT_CHANGE_GROUP SCHEMA_OBJECT_OWNERSHIP_CHANGE_GROUP SCHEMA_OBJECT_PERMISSION_CHANGE_GROUP SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP USER_CHANGE_PASSWORD_GROUP BATCH_STARTED_GROUP BATCH_COMPLETED_GROUP These are groups that cover all sql statements and stored procedures executed against the database, and should not be used in combination with other groups as this will result in duplicate audit logs. For more information, see [Database-Level Audit Action Groups](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-action-groups). For Database auditing policy, specific Actions can also be specified (note that Actions cannot be specified for Server auditing policy). The supported actions to audit are: SELECT UPDATE INSERT DELETE EXECUTE RECEIVE REFERENCES The general form for defining an action to be audited is: {action} ON {object} BY {principal} Note that <object> in the above format can refer to an object like a table, view, or stored procedure, or an entire database or schema. For the latter cases, the forms DATABASE::{db_name} and SCHEMA::{schema_name} are used, respectively. For example: SELECT on dbo.myTable by public SELECT on DATABASE::myDatabase by public SELECT on SCHEMA::mySchema by public For more information, see [Database-Level Audit Actions](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-actions) */
 export type ExtendedSqlPoolBlobAuditingPolicyPropertiesAuditActionsAndGroupsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ExtendedSqlPoolBlobAuditingPolicyPropertiesAuditActionsAndGroupsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1590,7 +1590,7 @@ export interface ExtendedSqlPoolBlobAuditingPolicyProperties {
   /** Specifies condition of where clause when creating an audit. */
   predicateExpression?: string;
   /** Specifies the state of the policy. If state is Enabled, storageEndpoint or isAzureMonitorTargetEnabled are required. */
-  state: ExtendedSqlPoolBlobAuditingPolicyPropertiesState;
+  state: ExtendedSqlPoolBlobAuditingPolicyPropertiesState | (string & {});
   /** Specifies the blob storage endpoint (e.g. https://MyAccount.blob.core.windows.net). If state is Enabled, storageEndpoint or isAzureMonitorTargetEnabled is required. */
   storageEndpoint?: string;
   /** Specifies the identifier key of the auditing storage account. If state is Enabled and storageEndpoint is specified, not specifying the storageAccountAccessKey will use SQL server system-assigned managed identity to access the storage. Prerequisites for using managed identity authentication: 1. Assign SQL Server a system-assigned managed identity in Azure Active Directory (AAD). 2. Grant SQL Server identity access to the storage account by adding 'Storage Blob Data Contributor' RBAC role to the server identity. For more information, see [Auditing to storage using Managed Identity authentication](https://go.microsoft.com/fwlink/?linkid=2114355) */
@@ -1807,7 +1807,7 @@ export const ExtendedSqlPoolBlobAuditingPolicy = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of results. */
 export type ExtendedSqlPoolBlobAuditingPolicyListResultValueList =
-  ReadonlyArray<ExtendedSqlPoolBlobAuditingPolicy>;
+  Array<ExtendedSqlPoolBlobAuditingPolicy>;
 export const ExtendedSqlPoolBlobAuditingPolicyListResultValueList =
   /*@__PURE__*/ S.Array(
     ExtendedSqlPoolBlobAuditingPolicy,
@@ -2072,7 +2072,7 @@ export const IntegrationRuntimeNodeMonitoringData = /*@__PURE__*/ S.suspend(
 
 /** Integration runtime node monitoring data. */
 export type IntegrationRuntimeMonitoringDataNodesList =
-  ReadonlyArray<IntegrationRuntimeNodeMonitoringData>;
+  Array<IntegrationRuntimeNodeMonitoringData>;
 export const IntegrationRuntimeMonitoringDataNodesList = /*@__PURE__*/ S.Array(
   IntegrationRuntimeNodeMonitoringData,
 ) as any as S.Schema<IntegrationRuntimeMonitoringDataNodesList>;
@@ -2401,8 +2401,7 @@ export const SsisObjectMetadata = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SsisObjectMetadata>;
 
 /** List of SSIS object metadata. */
-export type SsisObjectMetadataListResponseValueList =
-  ReadonlyArray<SsisObjectMetadata>;
+export type SsisObjectMetadataListResponseValueList = Array<SsisObjectMetadata>;
 export const SsisObjectMetadataListResponseValueList = /*@__PURE__*/ S.Array(
   SsisObjectMetadata,
 ) as any as S.Schema<SsisObjectMetadataListResponseValueList>;
@@ -2481,7 +2480,7 @@ export const IntegrationRuntimeType = /*@__PURE__*/ S.String;
 /** Azure Synapse nested object which serves as a compute resource for activities. */
 export interface IntegrationRuntime {
   /** Type of integration runtime. */
-  type: IntegrationRuntimeType;
+  type: IntegrationRuntimeType | (string & {});
   /** Integration runtime description. */
   description?: string;
 }
@@ -2759,7 +2758,7 @@ export const IntegrationRuntimeResource = /*@__PURE__*/ S.suspend(() =>
 
 /** List of integration runtimes. */
 export type IntegrationRuntimeListResponseValueList =
-  ReadonlyArray<IntegrationRuntimeResource>;
+  Array<IntegrationRuntimeResource>;
 export const IntegrationRuntimeListResponseValueList = /*@__PURE__*/ S.Array(
   IntegrationRuntimeResource,
 ) as any as S.Schema<IntegrationRuntimeListResponseValueList>;
@@ -2826,7 +2825,7 @@ export const IntegrationRuntimeOutboundNetworkDependenciesEndpointDetails =
 
 /** The details of endpoint. */
 export type IntegrationRuntimeOutboundNetworkDependenciesEndpointEndpointDetailsList =
-  ReadonlyArray<IntegrationRuntimeOutboundNetworkDependenciesEndpointDetails>;
+  Array<IntegrationRuntimeOutboundNetworkDependenciesEndpointDetails>;
 export const IntegrationRuntimeOutboundNetworkDependenciesEndpointEndpointDetailsList =
   /*@__PURE__*/ S.Array(
     IntegrationRuntimeOutboundNetworkDependenciesEndpointDetails,
@@ -2853,7 +2852,7 @@ export const IntegrationRuntimeOutboundNetworkDependenciesEndpoint =
 
 /** The endpoints for outbound network dependency. */
 export type IntegrationRuntimeOutboundNetworkDependenciesCategoryEndpointEndpointsList =
-  ReadonlyArray<IntegrationRuntimeOutboundNetworkDependenciesEndpoint>;
+  Array<IntegrationRuntimeOutboundNetworkDependenciesEndpoint>;
 export const IntegrationRuntimeOutboundNetworkDependenciesCategoryEndpointEndpointsList =
   /*@__PURE__*/ S.Array(
     IntegrationRuntimeOutboundNetworkDependenciesEndpoint,
@@ -2880,7 +2879,7 @@ export const IntegrationRuntimeOutboundNetworkDependenciesCategoryEndpoint =
 
 /** The list of outbound network dependency endpoints. */
 export type IntegrationRuntimeOutboundNetworkDependenciesEndpointsResponseValueList =
-  ReadonlyArray<IntegrationRuntimeOutboundNetworkDependenciesCategoryEndpoint>;
+  Array<IntegrationRuntimeOutboundNetworkDependenciesCategoryEndpoint>;
 export const IntegrationRuntimeOutboundNetworkDependenciesEndpointsResponseValueList =
   /*@__PURE__*/ S.Array(
     IntegrationRuntimeOutboundNetworkDependenciesCategoryEndpoint,
@@ -3385,8 +3384,7 @@ export const IpFirewallRuleInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IpFirewallRuleInfo>;
 
 /** List of IP firewall rules */
-export type IpFirewallRuleInfoListResultValueList =
-  ReadonlyArray<IpFirewallRuleInfo>;
+export type IpFirewallRuleInfoListResultValueList = Array<IpFirewallRuleInfo>;
 export const IpFirewallRuleInfoListResultValueList = /*@__PURE__*/ S.Array(
   IpFirewallRuleInfo,
 ) as any as S.Schema<IpFirewallRuleInfoListResultValueList>;
@@ -3669,7 +3667,7 @@ export const Key = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Key" }) as any as S.Schema<Key>;
 
 /** List of keys */
-export type KeyInfoListResultValueList = ReadonlyArray<Key>;
+export type KeyInfoListResultValueList = Array<Key>;
 export const KeyInfoListResultValueList = /*@__PURE__*/ S.Array(
   Key,
 ) as any as S.Schema<KeyInfoListResultValueList>;
@@ -3772,7 +3770,7 @@ export const LibraryResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LibraryResource>;
 
 /** List of Library. */
-export type LibraryListResponseValueList = ReadonlyArray<LibraryResource>;
+export type LibraryListResponseValueList = Array<LibraryResource>;
 export const LibraryListResponseValueList = /*@__PURE__*/ S.Array(
   LibraryResource,
 ) as any as S.Schema<LibraryListResponseValueList>;
@@ -3963,7 +3961,7 @@ export const OperationsGetAzureAsyncHeaderResultResponseStatus =
   /*@__PURE__*/ S.String;
 
 /** The error details. */
-export type ErrorDetailDetailsList = ReadonlyArray<ErrorDetail>;
+export type ErrorDetailDetailsList = Array<ErrorDetail>;
 export const ErrorDetailDetailsList = /*@__PURE__*/ S.Array(
   S.suspend(() => ErrorDetail),
 ) as any as S.Schema<ErrorDetailDetailsList>;
@@ -3985,7 +3983,7 @@ export const ErrorAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ErrorAdditionalInfo>;
 
 /** The error additional info. */
-export type ErrorDetailAdditionalInfoList = ReadonlyArray<ErrorAdditionalInfo>;
+export type ErrorDetailAdditionalInfoList = Array<ErrorAdditionalInfo>;
 export const ErrorDetailAdditionalInfoList = /*@__PURE__*/ S.Array(
   ErrorAdditionalInfo,
 ) as any as S.Schema<ErrorDetailAdditionalInfoList>;
@@ -4015,7 +4013,7 @@ export const ErrorDetail = /*@__PURE__*/ S.suspend(() =>
 
 /** The error details. */
 export type OperationsGetAzureAsyncHeaderResultResponseErrorDetailsList =
-  ReadonlyArray<ErrorDetail>;
+  Array<ErrorDetail>;
 export const OperationsGetAzureAsyncHeaderResultResponseErrorDetailsList =
   /*@__PURE__*/ S.Array(
     ErrorDetail,
@@ -4023,7 +4021,7 @@ export const OperationsGetAzureAsyncHeaderResultResponseErrorDetailsList =
 
 /** The error additional info. */
 export type OperationsGetAzureAsyncHeaderResultResponseErrorAdditionalInfoList =
-  ReadonlyArray<ErrorAdditionalInfo>;
+  Array<ErrorAdditionalInfo>;
 export const OperationsGetAzureAsyncHeaderResultResponseErrorAdditionalInfoList =
   /*@__PURE__*/ S.Array(
     ErrorAdditionalInfo,
@@ -4186,7 +4184,7 @@ export const OperationMetaMetricDimensionSpecification =
 
 /** Metric dimensions */
 export type OperationMetaMetricSpecificationDimensionsList =
-  ReadonlyArray<OperationMetaMetricDimensionSpecification>;
+  Array<OperationMetaMetricDimensionSpecification>;
 export const OperationMetaMetricSpecificationDimensionsList =
   /*@__PURE__*/ S.Array(
     OperationMetaMetricDimensionSpecification,
@@ -4237,7 +4235,7 @@ export const OperationMetaMetricSpecification = /*@__PURE__*/ S.suspend(() =>
 
 /** Service metric specifications */
 export type OperationMetaServiceSpecificationMetricSpecificationsList =
-  ReadonlyArray<OperationMetaMetricSpecification>;
+  Array<OperationMetaMetricSpecification>;
 export const OperationMetaServiceSpecificationMetricSpecificationsList =
   /*@__PURE__*/ S.Array(
     OperationMetaMetricSpecification,
@@ -4264,7 +4262,7 @@ export const OperationMetaLogSpecification = /*@__PURE__*/ S.suspend(() =>
 
 /** Service log specifications */
 export type OperationMetaServiceSpecificationLogSpecificationsList =
-  ReadonlyArray<OperationMetaLogSpecification>;
+  Array<OperationMetaLogSpecification>;
 export const OperationMetaServiceSpecificationLogSpecificationsList =
   /*@__PURE__*/ S.Array(
     OperationMetaLogSpecification,
@@ -4328,8 +4326,7 @@ export const AvailableRpOperation = /*@__PURE__*/ S.suspend(() =>
   identifier: "AvailableRpOperation",
 }) as any as S.Schema<AvailableRpOperation>;
 
-export type OperationsListResponseBodyList =
-  ReadonlyArray<AvailableRpOperation>;
+export type OperationsListResponseBodyList = Array<AvailableRpOperation>;
 export const OperationsListResponseBodyList = /*@__PURE__*/ S.Array(
   AvailableRpOperation,
 ) as any as S.Schema<OperationsListResponseBodyList>;
@@ -4629,7 +4626,7 @@ export const PrivateEndpointConnection = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of results. */
 export type PrivateEndpointConnectionsListResponseValueList =
-  ReadonlyArray<PrivateEndpointConnection>;
+  Array<PrivateEndpointConnection>;
 export const PrivateEndpointConnectionsListResponseValueList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection,
@@ -4795,7 +4792,7 @@ export const PrivateEndpointConnectionForPrivateLinkHub =
   }) as any as S.Schema<PrivateEndpointConnectionForPrivateLinkHub>;
 
 export type PrivateEndpointConnectionsPrivateLinkHubListResponseValueList =
-  ReadonlyArray<PrivateEndpointConnectionForPrivateLinkHub>;
+  Array<PrivateEndpointConnectionForPrivateLinkHub>;
 export const PrivateEndpointConnectionsPrivateLinkHubListResponseValueList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnectionForPrivateLinkHub,
@@ -4847,16 +4844,14 @@ export const PrivateLinkHubPrivateLinkResourcesGetRequest =
   }) as any as S.Schema<PrivateLinkHubPrivateLinkResourcesGetRequest>;
 
 /** The private link resource required member names. */
-export type PrivateLinkResourcePropertiesRequiredMembersList =
-  ReadonlyArray<string>;
+export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
 export const PrivateLinkResourcePropertiesRequiredMembersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
 
 /** Required DNS zone names of the the private link resource. */
-export type PrivateLinkResourcePropertiesRequiredZoneNamesList =
-  ReadonlyArray<string>;
+export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
 export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4956,8 +4951,7 @@ export const PrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateLinkResource>;
 
 /** Array of results. */
-export type PrivateLinkResourceListResultValueList =
-  ReadonlyArray<PrivateLinkResource>;
+export type PrivateLinkResourceListResultValueList = Array<PrivateLinkResource>;
 export const PrivateLinkResourceListResultValueList = /*@__PURE__*/ S.Array(
   PrivateLinkResource,
 ) as any as S.Schema<PrivateLinkResourceListResultValueList>;
@@ -5089,7 +5083,7 @@ export const PrivateEndpointConnectionForPrivateLinkHubBasic =
 
 /** List of private endpoint connections */
 export type PrivateLinkHubPropertiesPrivateEndpointConnectionsList =
-  ReadonlyArray<PrivateEndpointConnectionForPrivateLinkHubBasic>;
+  Array<PrivateEndpointConnectionForPrivateLinkHubBasic>;
 export const PrivateLinkHubPropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnectionForPrivateLinkHubBasic,
@@ -5287,8 +5281,7 @@ export const PrivateLinkHub = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PrivateLinkHub" }) as any as S.Schema<PrivateLinkHub>;
 
 /** List of privateLinkHubs */
-export type PrivateLinkHubInfoListResultValueList =
-  ReadonlyArray<PrivateLinkHub>;
+export type PrivateLinkHubInfoListResultValueList = Array<PrivateLinkHub>;
 export const PrivateLinkHubInfoListResultValueList = /*@__PURE__*/ S.Array(
   PrivateLinkHub,
 ) as any as S.Schema<PrivateLinkHubInfoListResultValueList>;
@@ -5619,7 +5612,7 @@ export const RestorableDroppedSqlPool = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of restorable dropped Sql pools */
 export type RestorableDroppedSqlPoolListResultValueList =
-  ReadonlyArray<RestorableDroppedSqlPool>;
+  Array<RestorableDroppedSqlPool>;
 export const RestorableDroppedSqlPoolListResultValueList =
   /*@__PURE__*/ S.Array(
     RestorableDroppedSqlPool,
@@ -5649,7 +5642,7 @@ export const SqlPoolBlobAuditingPolicyPropertiesState = /*@__PURE__*/ S.String;
 
 /** Specifies the Actions-Groups and Actions to audit. The recommended set of action groups to use is the following combination - this will audit all the queries and stored procedures executed against the database, as well as successful and failed logins: BATCH_COMPLETED_GROUP, SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP, FAILED_DATABASE_AUTHENTICATION_GROUP. This above combination is also the set that is configured by default when enabling auditing from the Azure portal. The supported action groups to audit are (note: choose only specific groups that cover your auditing needs. Using unnecessary groups could lead to very large quantities of audit records): APPLICATION_ROLE_CHANGE_PASSWORD_GROUP BACKUP_RESTORE_GROUP DATABASE_LOGOUT_GROUP DATABASE_OBJECT_CHANGE_GROUP DATABASE_OBJECT_OWNERSHIP_CHANGE_GROUP DATABASE_OBJECT_PERMISSION_CHANGE_GROUP DATABASE_OPERATION_GROUP DATABASE_PERMISSION_CHANGE_GROUP DATABASE_PRINCIPAL_CHANGE_GROUP DATABASE_PRINCIPAL_IMPERSONATION_GROUP DATABASE_ROLE_MEMBER_CHANGE_GROUP FAILED_DATABASE_AUTHENTICATION_GROUP SCHEMA_OBJECT_ACCESS_GROUP SCHEMA_OBJECT_CHANGE_GROUP SCHEMA_OBJECT_OWNERSHIP_CHANGE_GROUP SCHEMA_OBJECT_PERMISSION_CHANGE_GROUP SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP USER_CHANGE_PASSWORD_GROUP BATCH_STARTED_GROUP BATCH_COMPLETED_GROUP These are groups that cover all sql statements and stored procedures executed against the database, and should not be used in combination with other groups as this will result in duplicate audit logs. For more information, see [Database-Level Audit Action Groups](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-action-groups). For Database auditing policy, specific Actions can also be specified (note that Actions cannot be specified for Server auditing policy). The supported actions to audit are: SELECT UPDATE INSERT DELETE EXECUTE RECEIVE REFERENCES The general form for defining an action to be audited is: {action} ON {object} BY {principal} Note that <object> in the above format can refer to an object like a table, view, or stored procedure, or an entire database or schema. For the latter cases, the forms DATABASE::{db_name} and SCHEMA::{schema_name} are used, respectively. For example: SELECT on dbo.myTable by public SELECT on DATABASE::myDatabase by public SELECT on SCHEMA::mySchema by public For more information, see [Database-Level Audit Actions](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-actions) */
 export type SqlPoolBlobAuditingPolicyPropertiesAuditActionsAndGroupsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const SqlPoolBlobAuditingPolicyPropertiesAuditActionsAndGroupsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5658,7 +5651,7 @@ export const SqlPoolBlobAuditingPolicyPropertiesAuditActionsAndGroupsList =
 /** Properties of a Sql pool blob auditing policy. */
 export interface SqlPoolBlobAuditingPolicyProperties {
   /** Specifies the state of the policy. If state is Enabled, storageEndpoint or isAzureMonitorTargetEnabled are required. */
-  state: SqlPoolBlobAuditingPolicyPropertiesState;
+  state: SqlPoolBlobAuditingPolicyPropertiesState | (string & {});
   /** Specifies the blob storage endpoint (e.g. https://MyAccount.blob.core.windows.net). If state is Enabled, storageEndpoint is required. */
   storageEndpoint?: string;
   /** Specifies the identifier key of the auditing storage account. If state is Enabled and storageEndpoint is specified, storageAccountAccessKey is required. */
@@ -5879,7 +5872,7 @@ export const SqlPoolBlobAuditingPolicy = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of results. */
 export type SqlPoolBlobAuditingPolicyListResultValueList =
-  ReadonlyArray<SqlPoolBlobAuditingPolicy>;
+  Array<SqlPoolBlobAuditingPolicy>;
 export const SqlPoolBlobAuditingPolicyListResultValueList =
   /*@__PURE__*/ S.Array(
     SqlPoolBlobAuditingPolicy,
@@ -6323,7 +6316,7 @@ export const GeoBackupPolicy = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GeoBackupPolicy>;
 
 /** The list of geo backup policies. */
-export type GeoBackupPolicyListResultValueList = ReadonlyArray<GeoBackupPolicy>;
+export type GeoBackupPolicyListResultValueList = Array<GeoBackupPolicy>;
 export const GeoBackupPolicyListResultValueList = /*@__PURE__*/ S.Array(
   GeoBackupPolicy,
 ) as any as S.Schema<GeoBackupPolicyListResultValueList>;
@@ -6387,7 +6380,7 @@ export const MaintenanceWindowTimeRangeDayOfWeek = /*@__PURE__*/ S.String;
 /** Maintenance window time range. */
 export interface MaintenanceWindowTimeRange {
   /** Day of maintenance window. */
-  dayOfWeek?: MaintenanceWindowTimeRangeDayOfWeek;
+  dayOfWeek?: MaintenanceWindowTimeRangeDayOfWeek | (string & {});
   /** Start time minutes offset from 12am. */
   startTime?: string;
   /** Duration of maintenance window in minutes. */
@@ -6405,7 +6398,7 @@ export const MaintenanceWindowTimeRange = /*@__PURE__*/ S.suspend(() =>
 
 /** Available maintenance cycles e.g. {Saturday, 0, 48*60}, {Wednesday, 0, 24*60}. */
 export type MaintenanceWindowOptionsPropertiesMaintenanceWindowCyclesList =
-  ReadonlyArray<MaintenanceWindowTimeRange>;
+  Array<MaintenanceWindowTimeRange>;
 export const MaintenanceWindowOptionsPropertiesMaintenanceWindowCyclesList =
   /*@__PURE__*/ S.Array(
     MaintenanceWindowTimeRange,
@@ -6467,7 +6460,7 @@ export const SqlPoolMaintenanceWindowOptionsGetResponse =
   }) as any as S.Schema<SqlPoolMaintenanceWindowOptionsGetResponse>;
 
 export type MaintenanceWindowsPropertiesTimeRangesList =
-  ReadonlyArray<MaintenanceWindowTimeRange>;
+  Array<MaintenanceWindowTimeRange>;
 export const MaintenanceWindowsPropertiesTimeRangesList = /*@__PURE__*/ S.Array(
   MaintenanceWindowTimeRange,
 ) as any as S.Schema<MaintenanceWindowsPropertiesTimeRangesList>;
@@ -6840,7 +6833,7 @@ export const SqlPoolOperation = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of results. */
 export type SqlPoolBlobAuditingPolicySqlPoolOperationListResultValueList =
-  ReadonlyArray<SqlPoolOperation>;
+  Array<SqlPoolOperation>;
 export const SqlPoolBlobAuditingPolicySqlPoolOperationListResultValueList =
   /*@__PURE__*/ S.Array(
     SqlPoolOperation,
@@ -6908,7 +6901,7 @@ export const RecommendedSensitivityLabelUpdateInput = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<RecommendedSensitivityLabelUpdateInput>;
 
 export type SqlPoolRecommendedSensitivityLabelsUpdateRequestOperationsList =
-  ReadonlyArray<RecommendedSensitivityLabelUpdateInput>;
+  Array<RecommendedSensitivityLabelUpdateInput>;
 export const SqlPoolRecommendedSensitivityLabelsUpdateRequestOperationsList =
   /*@__PURE__*/ S.Array(
     RecommendedSensitivityLabelUpdateInput,
@@ -7130,7 +7123,7 @@ export const ReplicationLink = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReplicationLink>;
 
 /** The list of Sql pool replication links housed in the Sql pool. */
-export type ReplicationLinkListResultValueList = ReadonlyArray<ReplicationLink>;
+export type ReplicationLinkListResultValueList = Array<ReplicationLink>;
 export const ReplicationLinkListResultValueList = /*@__PURE__*/ S.Array(
   ReplicationLink,
 ) as any as S.Schema<ReplicationLinkListResultValueList>;
@@ -7377,7 +7370,7 @@ export const RestorePoint = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RestorePoint" }) as any as S.Schema<RestorePoint>;
 
 /** Array of results. */
-export type RestorePointListResultValueList = ReadonlyArray<RestorePoint>;
+export type RestorePointListResultValueList = Array<RestorePoint>;
 export const RestorePointListResultValueList = /*@__PURE__*/ S.Array(
   RestorePoint,
 ) as any as S.Schema<RestorePointListResultValueList>;
@@ -7496,7 +7489,7 @@ export const Resource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Resource" }) as any as S.Schema<Resource>;
 
 /** Array of results. */
-export type SqlPoolSchemaListResultValueList = ReadonlyArray<Resource>;
+export type SqlPoolSchemaListResultValueList = Array<Resource>;
 export const SqlPoolSchemaListResultValueList = /*@__PURE__*/ S.Array(
   Resource,
 ) as any as S.Schema<SqlPoolSchemaListResultValueList>;
@@ -7740,7 +7733,7 @@ export const SecurityAlertPolicyPropertiesInputState = /*@__PURE__*/ S.String;
 
 /** Specifies an array of alerts that are disabled. Allowed values are: Sql_Injection, Sql_Injection_Vulnerability, Access_Anomaly, Data_Exfiltration, Unsafe_Action */
 export type SecurityAlertPolicyPropertiesInputDisabledAlertsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const SecurityAlertPolicyPropertiesInputDisabledAlertsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -7748,7 +7741,7 @@ export const SecurityAlertPolicyPropertiesInputDisabledAlertsList =
 
 /** Specifies an array of e-mail addresses to which the alert is sent. */
 export type SecurityAlertPolicyPropertiesInputEmailAddressesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const SecurityAlertPolicyPropertiesInputEmailAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -7834,16 +7827,14 @@ export type SecurityAlertPolicyPropertiesState = "New" | "Enabled" | "Disabled";
 export const SecurityAlertPolicyPropertiesState = /*@__PURE__*/ S.String;
 
 /** Specifies an array of alerts that are disabled. Allowed values are: Sql_Injection, Sql_Injection_Vulnerability, Access_Anomaly, Data_Exfiltration, Unsafe_Action */
-export type SecurityAlertPolicyPropertiesDisabledAlertsList =
-  ReadonlyArray<string>;
+export type SecurityAlertPolicyPropertiesDisabledAlertsList = Array<string>;
 export const SecurityAlertPolicyPropertiesDisabledAlertsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<SecurityAlertPolicyPropertiesDisabledAlertsList>;
 
 /** Specifies an array of e-mail addresses to which the alert is sent. */
-export type SecurityAlertPolicyPropertiesEmailAddressesList =
-  ReadonlyArray<string>;
+export type SecurityAlertPolicyPropertiesEmailAddressesList = Array<string>;
 export const SecurityAlertPolicyPropertiesEmailAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -8022,7 +8013,7 @@ export const SqlPoolSecurityAlertPolicy = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of results. */
 export type ListSqlPoolSecurityAlertPoliciesValueList =
-  ReadonlyArray<SqlPoolSecurityAlertPolicy>;
+  Array<SqlPoolSecurityAlertPolicy>;
 export const ListSqlPoolSecurityAlertPoliciesValueList = /*@__PURE__*/ S.Array(
   SqlPoolSecurityAlertPolicy,
 ) as any as S.Schema<ListSqlPoolSecurityAlertPoliciesValueList>;
@@ -8501,8 +8492,7 @@ export const SensitivityLabel = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SensitivityLabel>;
 
 /** Array of results. */
-export type SensitivityLabelListResultValueList =
-  ReadonlyArray<SensitivityLabel>;
+export type SensitivityLabelListResultValueList = Array<SensitivityLabel>;
 export const SensitivityLabelListResultValueList = /*@__PURE__*/ S.Array(
   SensitivityLabel,
 ) as any as S.Schema<SensitivityLabelListResultValueList>;
@@ -8616,7 +8606,7 @@ export const SensitivityLabelUpdateInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SensitivityLabelUpdateInput>;
 
 export type SqlPoolSensitivityLabelsUpdateRequestOperationsList =
-  ReadonlyArray<SensitivityLabelUpdateInput>;
+  Array<SensitivityLabelUpdateInput>;
 export const SqlPoolSensitivityLabelsUpdateRequestOperationsList =
   /*@__PURE__*/ S.Array(
     SensitivityLabelUpdateInput,
@@ -8789,7 +8779,7 @@ export const SqlPool = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SqlPool" }) as any as S.Schema<SqlPool>;
 
 /** List of SQL pools */
-export type SqlPoolInfoListResultValueList = ReadonlyArray<SqlPool>;
+export type SqlPoolInfoListResultValueList = Array<SqlPool>;
 export const SqlPoolInfoListResultValueList = /*@__PURE__*/ S.Array(
   SqlPool,
 ) as any as S.Schema<SqlPoolInfoListResultValueList>;
@@ -9091,7 +9081,7 @@ export const SqlPoolColumn = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SqlPoolColumn" }) as any as S.Schema<SqlPoolColumn>;
 
 /** Array of results. */
-export type SqlPoolColumnListResultValueList = ReadonlyArray<SqlPoolColumn>;
+export type SqlPoolColumnListResultValueList = Array<SqlPoolColumn>;
 export const SqlPoolColumnListResultValueList = /*@__PURE__*/ S.Array(
   SqlPoolColumn,
 ) as any as S.Schema<SqlPoolColumnListResultValueList>;
@@ -9199,7 +9189,7 @@ export const SqlPoolTablesListBySchemaRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SqlPoolTablesListBySchemaRequest>;
 
 /** Array of results. */
-export type SqlPoolTableListResultValueList = ReadonlyArray<Resource>;
+export type SqlPoolTableListResultValueList = Array<Resource>;
 export const SqlPoolTableListResultValueList = /*@__PURE__*/ S.Array(
   Resource,
 ) as any as S.Schema<SqlPoolTableListResultValueList>;
@@ -9232,7 +9222,7 @@ export const TransparentDataEncryptionPropertiesStatus = /*@__PURE__*/ S.String;
 /** Represents the properties of a database transparent data encryption. */
 export interface TransparentDataEncryptionProperties {
   /** The status of the database transparent data encryption. */
-  status?: TransparentDataEncryptionPropertiesStatus;
+  status?: TransparentDataEncryptionPropertiesStatus | (string & {});
 }
 export const TransparentDataEncryptionProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -9430,7 +9420,7 @@ export const TransparentDataEncryption = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of results. */
 export type TransparentDataEncryptionListResultValueList =
-  ReadonlyArray<TransparentDataEncryption>;
+  Array<TransparentDataEncryption>;
 export const TransparentDataEncryptionListResultValueList =
   /*@__PURE__*/ S.Array(
     TransparentDataEncryption,
@@ -9510,7 +9500,7 @@ export const SqlPoolUsage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SqlPoolUsage" }) as any as S.Schema<SqlPoolUsage>;
 
 /** The list of usages for the Sql pool. */
-export type SqlPoolUsageListResultValueList = ReadonlyArray<SqlPoolUsage>;
+export type SqlPoolUsageListResultValueList = Array<SqlPoolUsage>;
 export const SqlPoolUsageListResultValueList = /*@__PURE__*/ S.Array(
   SqlPoolUsage,
 ) as any as S.Schema<SqlPoolUsageListResultValueList>;
@@ -9543,7 +9533,7 @@ export const SqlPoolVulnerabilityAssessmentRuleBaselinesCreateOrUpdateRequestBas
 
 /** The rule baseline result */
 export type SqlPoolVulnerabilityAssessmentRuleBaselineItemResultList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const SqlPoolVulnerabilityAssessmentRuleBaselineItemResultList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -9565,7 +9555,7 @@ export const SqlPoolVulnerabilityAssessmentRuleBaselineItem =
 
 /** The rule baseline result */
 export type SqlPoolVulnerabilityAssessmentRuleBaselinePropertiesBaselineResultsList =
-  ReadonlyArray<SqlPoolVulnerabilityAssessmentRuleBaselineItem>;
+  Array<SqlPoolVulnerabilityAssessmentRuleBaselineItem>;
 export const SqlPoolVulnerabilityAssessmentRuleBaselinePropertiesBaselineResultsList =
   /*@__PURE__*/ S.Array(
     SqlPoolVulnerabilityAssessmentRuleBaselineItem,
@@ -9974,7 +9964,7 @@ export const VulnerabilityAssessmentScanError = /*@__PURE__*/ S.suspend(() =>
 
 /** The scan errors. */
 export type VulnerabilityAssessmentScanRecordPropertiesErrorsList =
-  ReadonlyArray<VulnerabilityAssessmentScanError>;
+  Array<VulnerabilityAssessmentScanError>;
 export const VulnerabilityAssessmentScanRecordPropertiesErrorsList =
   /*@__PURE__*/ S.Array(
     VulnerabilityAssessmentScanError,
@@ -10156,7 +10146,7 @@ export const VulnerabilityAssessmentScanRecord = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of results. */
 export type VulnerabilityAssessmentScanRecordListResultValueList =
-  ReadonlyArray<VulnerabilityAssessmentScanRecord>;
+  Array<VulnerabilityAssessmentScanRecord>;
 export const VulnerabilityAssessmentScanRecordListResultValueList =
   /*@__PURE__*/ S.Array(
     VulnerabilityAssessmentScanRecord,
@@ -10186,7 +10176,7 @@ export const SqlPoolVulnerabilityAssessmentsCreateOrUpdateRequestVulnerabilityAs
 
 /** Specifies an array of e-mail addresses to which the scan notification is sent. */
 export type VulnerabilityAssessmentRecurringScansPropertiesEmailsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const VulnerabilityAssessmentRecurringScansPropertiesEmailsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -10466,7 +10456,7 @@ export const SqlPoolVulnerabilityAssessment = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of results. */
 export type SqlPoolVulnerabilityAssessmentListResultValueList =
-  ReadonlyArray<SqlPoolVulnerabilityAssessment>;
+  Array<SqlPoolVulnerabilityAssessment>;
 export const SqlPoolVulnerabilityAssessmentListResultValueList =
   /*@__PURE__*/ S.Array(
     SqlPoolVulnerabilityAssessment,
@@ -10730,8 +10720,7 @@ export const WorkloadClassifier = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WorkloadClassifier>;
 
 /** Array of results. */
-export type WorkloadClassifierListResultValueList =
-  ReadonlyArray<WorkloadClassifier>;
+export type WorkloadClassifierListResultValueList = Array<WorkloadClassifier>;
 export const WorkloadClassifierListResultValueList = /*@__PURE__*/ S.Array(
   WorkloadClassifier,
 ) as any as S.Schema<WorkloadClassifierListResultValueList>;
@@ -10976,7 +10965,7 @@ export const WorkloadGroup = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "WorkloadGroup" }) as any as S.Schema<WorkloadGroup>;
 
 /** Array of results. */
-export type WorkloadGroupListResultValueList = ReadonlyArray<WorkloadGroup>;
+export type WorkloadGroupListResultValueList = Array<WorkloadGroup>;
 export const WorkloadGroupListResultValueList = /*@__PURE__*/ S.Array(
   WorkloadGroup,
 ) as any as S.Schema<WorkloadGroupListResultValueList>;
@@ -11410,7 +11399,7 @@ export const ServerBlobAuditingPolicyPropertiesState = /*@__PURE__*/ S.String;
 
 /** Specifies the Actions-Groups and Actions to audit. The recommended set of action groups to use is the following combination - this will audit all the queries and stored procedures executed against the database, as well as successful and failed logins: BATCH_COMPLETED_GROUP, SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP, FAILED_DATABASE_AUTHENTICATION_GROUP. This above combination is also the set that is configured by default when enabling auditing from the Azure portal. The supported action groups to audit are (note: choose only specific groups that cover your auditing needs. Using unnecessary groups could lead to very large quantities of audit records): APPLICATION_ROLE_CHANGE_PASSWORD_GROUP BACKUP_RESTORE_GROUP DATABASE_LOGOUT_GROUP DATABASE_OBJECT_CHANGE_GROUP DATABASE_OBJECT_OWNERSHIP_CHANGE_GROUP DATABASE_OBJECT_PERMISSION_CHANGE_GROUP DATABASE_OPERATION_GROUP DATABASE_PERMISSION_CHANGE_GROUP DATABASE_PRINCIPAL_CHANGE_GROUP DATABASE_PRINCIPAL_IMPERSONATION_GROUP DATABASE_ROLE_MEMBER_CHANGE_GROUP FAILED_DATABASE_AUTHENTICATION_GROUP SCHEMA_OBJECT_ACCESS_GROUP SCHEMA_OBJECT_CHANGE_GROUP SCHEMA_OBJECT_OWNERSHIP_CHANGE_GROUP SCHEMA_OBJECT_PERMISSION_CHANGE_GROUP SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP USER_CHANGE_PASSWORD_GROUP BATCH_STARTED_GROUP BATCH_COMPLETED_GROUP These are groups that cover all sql statements and stored procedures executed against the database, and should not be used in combination with other groups as this will result in duplicate audit logs. For more information, see [Database-Level Audit Action Groups](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-action-groups). For Database auditing policy, specific Actions can also be specified (note that Actions cannot be specified for Server auditing policy). The supported actions to audit are: SELECT UPDATE INSERT DELETE EXECUTE RECEIVE REFERENCES The general form for defining an action to be audited is: {action} ON {object} BY {principal} Note that <object> in the above format can refer to an object like a table, view, or stored procedure, or an entire database or schema. For the latter cases, the forms DATABASE::{db_name} and SCHEMA::{schema_name} are used, respectively. For example: SELECT on dbo.myTable by public SELECT on DATABASE::myDatabase by public SELECT on SCHEMA::mySchema by public For more information, see [Database-Level Audit Actions](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-actions) */
 export type ServerBlobAuditingPolicyPropertiesAuditActionsAndGroupsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ServerBlobAuditingPolicyPropertiesAuditActionsAndGroupsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -11419,7 +11408,7 @@ export const ServerBlobAuditingPolicyPropertiesAuditActionsAndGroupsList =
 /** Properties of a server blob auditing policy. */
 export interface ServerBlobAuditingPolicyProperties {
   /** Specifies the state of the policy. If state is Enabled, storageEndpoint or isAzureMonitorTargetEnabled are required. */
-  state: ServerBlobAuditingPolicyPropertiesState;
+  state: ServerBlobAuditingPolicyPropertiesState | (string & {});
   /** Specifies the blob storage endpoint (e.g. https://MyAccount.blob.core.windows.net). If state is Enabled, storageEndpoint or isAzureMonitorTargetEnabled is required. */
   storageEndpoint?: string;
   /** Specifies the identifier key of the auditing storage account. If state is Enabled and storageEndpoint is specified, not specifying the storageAccountAccessKey will use SQL server system-assigned managed identity to access the storage. Prerequisites for using managed identity authentication: 1. Assign SQL Server a system-assigned managed identity in Azure Active Directory (AAD). 2. Grant SQL Server identity access to the storage account by adding 'Storage Blob Data Contributor' RBAC role to the server identity. For more information, see [Auditing to storage using Managed Identity authentication](https://go.microsoft.com/fwlink/?linkid=2114355) */
@@ -11631,7 +11620,7 @@ export const ServerBlobAuditingPolicy = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of results. */
 export type ServerBlobAuditingPolicyListResultValueList =
-  ReadonlyArray<ServerBlobAuditingPolicy>;
+  Array<ServerBlobAuditingPolicy>;
 export const ServerBlobAuditingPolicyListResultValueList =
   /*@__PURE__*/ S.Array(
     ServerBlobAuditingPolicy,
@@ -11777,7 +11766,7 @@ export const DedicatedSQLminimalTlsSettings = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of results. */
 export type DedicatedSQLminimalTlsSettingsListResultValueList =
-  ReadonlyArray<DedicatedSQLminimalTlsSettings>;
+  Array<DedicatedSQLminimalTlsSettings>;
 export const DedicatedSQLminimalTlsSettingsListResultValueList =
   /*@__PURE__*/ S.Array(
     DedicatedSQLminimalTlsSettings,
@@ -12120,8 +12109,7 @@ export const EncryptionProtector = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EncryptionProtector>;
 
 /** Array of results. */
-export type EncryptionProtectorListResultValueList =
-  ReadonlyArray<EncryptionProtector>;
+export type EncryptionProtectorListResultValueList = Array<EncryptionProtector>;
 export const EncryptionProtectorListResultValueList = /*@__PURE__*/ S.Array(
   EncryptionProtector,
 ) as any as S.Schema<EncryptionProtectorListResultValueList>;
@@ -12202,7 +12190,7 @@ export const ExtendedServerBlobAuditingPolicyPropertiesState =
 
 /** Specifies the Actions-Groups and Actions to audit. The recommended set of action groups to use is the following combination - this will audit all the queries and stored procedures executed against the database, as well as successful and failed logins: BATCH_COMPLETED_GROUP, SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP, FAILED_DATABASE_AUTHENTICATION_GROUP. This above combination is also the set that is configured by default when enabling auditing from the Azure portal. The supported action groups to audit are (note: choose only specific groups that cover your auditing needs. Using unnecessary groups could lead to very large quantities of audit records): APPLICATION_ROLE_CHANGE_PASSWORD_GROUP BACKUP_RESTORE_GROUP DATABASE_LOGOUT_GROUP DATABASE_OBJECT_CHANGE_GROUP DATABASE_OBJECT_OWNERSHIP_CHANGE_GROUP DATABASE_OBJECT_PERMISSION_CHANGE_GROUP DATABASE_OPERATION_GROUP DATABASE_PERMISSION_CHANGE_GROUP DATABASE_PRINCIPAL_CHANGE_GROUP DATABASE_PRINCIPAL_IMPERSONATION_GROUP DATABASE_ROLE_MEMBER_CHANGE_GROUP FAILED_DATABASE_AUTHENTICATION_GROUP SCHEMA_OBJECT_ACCESS_GROUP SCHEMA_OBJECT_CHANGE_GROUP SCHEMA_OBJECT_OWNERSHIP_CHANGE_GROUP SCHEMA_OBJECT_PERMISSION_CHANGE_GROUP SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP USER_CHANGE_PASSWORD_GROUP BATCH_STARTED_GROUP BATCH_COMPLETED_GROUP These are groups that cover all sql statements and stored procedures executed against the database, and should not be used in combination with other groups as this will result in duplicate audit logs. For more information, see [Database-Level Audit Action Groups](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-action-groups). For Database auditing policy, specific Actions can also be specified (note that Actions cannot be specified for Server auditing policy). The supported actions to audit are: SELECT UPDATE INSERT DELETE EXECUTE RECEIVE REFERENCES The general form for defining an action to be audited is: {action} ON {object} BY {principal} Note that <object> in the above format can refer to an object like a table, view, or stored procedure, or an entire database or schema. For the latter cases, the forms DATABASE::{db_name} and SCHEMA::{schema_name} are used, respectively. For example: SELECT on dbo.myTable by public SELECT on DATABASE::myDatabase by public SELECT on SCHEMA::mySchema by public For more information, see [Database-Level Audit Actions](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-actions) */
 export type ExtendedServerBlobAuditingPolicyPropertiesAuditActionsAndGroupsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ExtendedServerBlobAuditingPolicyPropertiesAuditActionsAndGroupsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -12213,7 +12201,7 @@ export interface ExtendedServerBlobAuditingPolicyProperties {
   /** Specifies condition of where clause when creating an audit. */
   predicateExpression?: string;
   /** Specifies the state of the policy. If state is Enabled, storageEndpoint or isAzureMonitorTargetEnabled are required. */
-  state: ExtendedServerBlobAuditingPolicyPropertiesState;
+  state: ExtendedServerBlobAuditingPolicyPropertiesState | (string & {});
   /** Specifies the blob storage endpoint (e.g. https://MyAccount.blob.core.windows.net). If state is Enabled, storageEndpoint or isAzureMonitorTargetEnabled is required. */
   storageEndpoint?: string;
   /** Specifies the identifier key of the auditing storage account. If state is Enabled and storageEndpoint is specified, not specifying the storageAccountAccessKey will use SQL server system-assigned managed identity to access the storage. Prerequisites for using managed identity authentication: 1. Assign SQL Server a system-assigned managed identity in Azure Active Directory (AAD). 2. Grant SQL Server identity access to the storage account by adding 'Storage Blob Data Contributor' RBAC role to the server identity. For more information, see [Auditing to storage using Managed Identity authentication](https://go.microsoft.com/fwlink/?linkid=2114355) */
@@ -12429,7 +12417,7 @@ export const ExtendedServerBlobAuditingPolicy = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of results. */
 export type ExtendedServerBlobAuditingPolicyListResultValueList =
-  ReadonlyArray<ExtendedServerBlobAuditingPolicy>;
+  Array<ExtendedServerBlobAuditingPolicy>;
 export const ExtendedServerBlobAuditingPolicyListResultValueList =
   /*@__PURE__*/ S.Array(
     ExtendedServerBlobAuditingPolicy,
@@ -12574,8 +12562,7 @@ export const RecoverableSqlPool = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RecoverableSqlPool>;
 
 /** A list of recoverable sql pool */
-export type RecoverableSqlPoolListResultValueList =
-  ReadonlyArray<RecoverableSqlPool>;
+export type RecoverableSqlPoolListResultValueList = Array<RecoverableSqlPool>;
 export const RecoverableSqlPoolListResultValueList = /*@__PURE__*/ S.Array(
   RecoverableSqlPool,
 ) as any as S.Schema<RecoverableSqlPoolListResultValueList>;
@@ -12611,7 +12598,7 @@ export const ServerSecurityAlertPolicyPropertiesInputState =
 
 /** Specifies an array of alerts that are disabled. Allowed values are: Sql_Injection, Sql_Injection_Vulnerability, Access_Anomaly, Data_Exfiltration, Unsafe_Action */
 export type ServerSecurityAlertPolicyPropertiesInputDisabledAlertsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ServerSecurityAlertPolicyPropertiesInputDisabledAlertsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -12619,7 +12606,7 @@ export const ServerSecurityAlertPolicyPropertiesInputDisabledAlertsList =
 
 /** Specifies an array of e-mail addresses to which the alert is sent. */
 export type ServerSecurityAlertPolicyPropertiesInputEmailAddressesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ServerSecurityAlertPolicyPropertiesInputEmailAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -12708,7 +12695,7 @@ export const ServerSecurityAlertPolicyPropertiesState = /*@__PURE__*/ S.String;
 
 /** Specifies an array of alerts that are disabled. Allowed values are: Sql_Injection, Sql_Injection_Vulnerability, Access_Anomaly, Data_Exfiltration, Unsafe_Action */
 export type ServerSecurityAlertPolicyPropertiesDisabledAlertsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ServerSecurityAlertPolicyPropertiesDisabledAlertsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -12716,7 +12703,7 @@ export const ServerSecurityAlertPolicyPropertiesDisabledAlertsList =
 
 /** Specifies an array of e-mail addresses to which the alert is sent. */
 export type ServerSecurityAlertPolicyPropertiesEmailAddressesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ServerSecurityAlertPolicyPropertiesEmailAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -12894,7 +12881,7 @@ export const ServerSecurityAlertPolicy = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of results. */
 export type ServerSecurityAlertPolicyListResultValueList =
-  ReadonlyArray<ServerSecurityAlertPolicy>;
+  Array<ServerSecurityAlertPolicy>;
 export const ServerSecurityAlertPolicyListResultValueList =
   /*@__PURE__*/ S.Array(
     ServerSecurityAlertPolicy,
@@ -12972,7 +12959,7 @@ export const ServerUsage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ServerUsage" }) as any as S.Schema<ServerUsage>;
 
 /** The list of server metrics for the server. */
-export type ServerUsageListResultValueList = ReadonlyArray<ServerUsage>;
+export type ServerUsageListResultValueList = Array<ServerUsage>;
 export const ServerUsageListResultValueList = /*@__PURE__*/ S.Array(
   ServerUsage,
 ) as any as S.Schema<ServerUsageListResultValueList>;
@@ -13242,7 +13229,7 @@ export const ServerVulnerabilityAssessment = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of results. */
 export type ServerVulnerabilityAssessmentListResultValueList =
-  ReadonlyArray<ServerVulnerabilityAssessment>;
+  Array<ServerVulnerabilityAssessment>;
 export const ServerVulnerabilityAssessmentListResultValueList =
   /*@__PURE__*/ S.Array(
     ServerVulnerabilityAssessment,
@@ -13325,7 +13312,7 @@ export const WorkspacePropertiesInputPrivateEndpointConnectionsItem =
 
 /** Private endpoint connections to the workspace */
 export type WorkspacePropertiesInputPrivateEndpointConnectionsList =
-  ReadonlyArray<WorkspacePropertiesInputPrivateEndpointConnectionsItem>;
+  Array<WorkspacePropertiesInputPrivateEndpointConnectionsItem>;
 export const WorkspacePropertiesInputPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     WorkspacePropertiesInputPrivateEndpointConnectionsItem,
@@ -13394,7 +13381,7 @@ export const EncryptionDetailsInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Allowed Aad Tenant Ids For Linking */
 export type ManagedVirtualNetworkSettingsAllowedAadTenantIdsForLinkingList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ManagedVirtualNetworkSettingsAllowedAadTenantIdsForLinkingList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -13677,7 +13664,7 @@ export const WorkspacePropertiesPrivateEndpointConnectionsItem =
 
 /** Private endpoint connections to the workspace */
 export type WorkspacePropertiesPrivateEndpointConnectionsList =
-  ReadonlyArray<WorkspacePropertiesPrivateEndpointConnectionsItem>;
+  Array<WorkspacePropertiesPrivateEndpointConnectionsItem>;
 export const WorkspacePropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     WorkspacePropertiesPrivateEndpointConnectionsItem,
@@ -14080,7 +14067,7 @@ export const Workspace = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Workspace" }) as any as S.Schema<Workspace>;
 
 /** List of workspaces */
-export type WorkspaceInfoListResultValueList = ReadonlyArray<Workspace>;
+export type WorkspaceInfoListResultValueList = Array<Workspace>;
 export const WorkspaceInfoListResultValueList = /*@__PURE__*/ S.Array(
   Workspace,
 ) as any as S.Schema<WorkspaceInfoListResultValueList>;

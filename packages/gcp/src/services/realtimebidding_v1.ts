@@ -90,7 +90,7 @@ export const ActivateBiddersPretargetingConfigsRequest =
     identifier: "ActivateBiddersPretargetingConfigsRequest",
   }) as any as S.Schema<ActivateBiddersPretargetingConfigsRequest>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -104,7 +104,7 @@ export const StringTargetingDimensionTargetingModeEnum = /*@__PURE__*/ S.String;
 /** Generic targeting with string values used in app, website and publisher targeting. */
 export interface StringTargetingDimension {
   /** How the items in this list should be targeted. */
-  targetingMode?: StringTargetingDimensionTargetingModeEnum;
+  targetingMode?: StringTargetingDimensionTargetingModeEnum | (string & {});
   /** The values specified. */
   values?: StringList;
 }
@@ -124,8 +124,9 @@ export type PretargetingConfigAllowedUserTargetingModesItemEnum =
 export const PretargetingConfigAllowedUserTargetingModesItemEnum =
   /*@__PURE__*/ S.String;
 
-export type PretargetingConfigAllowedUserTargetingModesItemEnumList =
-  ReadonlyArray<PretargetingConfigAllowedUserTargetingModesItemEnum>;
+export type PretargetingConfigAllowedUserTargetingModesItemEnumList = Array<
+  PretargetingConfigAllowedUserTargetingModesItemEnum | (string & {})
+>;
 export const PretargetingConfigAllowedUserTargetingModesItemEnumList =
   /*@__PURE__*/ S.Array(
     PretargetingConfigAllowedUserTargetingModesItemEnum,
@@ -147,8 +148,9 @@ export type PretargetingConfigIncludedUserIdTypesItemEnum =
 export const PretargetingConfigIncludedUserIdTypesItemEnum =
   /*@__PURE__*/ S.String;
 
-export type PretargetingConfigIncludedUserIdTypesItemEnumList =
-  ReadonlyArray<PretargetingConfigIncludedUserIdTypesItemEnum>;
+export type PretargetingConfigIncludedUserIdTypesItemEnumList = Array<
+  PretargetingConfigIncludedUserIdTypesItemEnum | (string & {})
+>;
 export const PretargetingConfigIncludedUserIdTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     PretargetingConfigIncludedUserIdTypesItemEnum,
@@ -161,8 +163,9 @@ export type PretargetingConfigIncludedFormatsItemEnum =
   | "NATIVE";
 export const PretargetingConfigIncludedFormatsItemEnum = /*@__PURE__*/ S.String;
 
-export type PretargetingConfigIncludedFormatsItemEnumList =
-  ReadonlyArray<PretargetingConfigIncludedFormatsItemEnum>;
+export type PretargetingConfigIncludedFormatsItemEnumList = Array<
+  PretargetingConfigIncludedFormatsItemEnum | (string & {})
+>;
 export const PretargetingConfigIncludedFormatsItemEnumList =
   /*@__PURE__*/ S.Array(
     PretargetingConfigIncludedFormatsItemEnum,
@@ -175,8 +178,9 @@ export type PretargetingConfigIncludedEnvironmentsItemEnum =
 export const PretargetingConfigIncludedEnvironmentsItemEnum =
   /*@__PURE__*/ S.String;
 
-export type PretargetingConfigIncludedEnvironmentsItemEnumList =
-  ReadonlyArray<PretargetingConfigIncludedEnvironmentsItemEnum>;
+export type PretargetingConfigIncludedEnvironmentsItemEnumList = Array<
+  PretargetingConfigIncludedEnvironmentsItemEnum | (string & {})
+>;
 export const PretargetingConfigIncludedEnvironmentsItemEnumList =
   /*@__PURE__*/ S.Array(
     PretargetingConfigIncludedEnvironmentsItemEnum,
@@ -205,7 +209,7 @@ export const CreativeDimensions = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreativeDimensions",
 }) as any as S.Schema<CreativeDimensions>;
 
-export type CreativeDimensionsList = ReadonlyArray<CreativeDimensions>;
+export type CreativeDimensionsList = Array<CreativeDimensions>;
 export const CreativeDimensionsList = /*@__PURE__*/ S.Array(
   CreativeDimensions,
 ) as any as S.Schema<CreativeDimensionsList>;
@@ -235,8 +239,9 @@ export type PretargetingConfigIncludedPlatformsItemEnum =
 export const PretargetingConfigIncludedPlatformsItemEnum =
   /*@__PURE__*/ S.String;
 
-export type PretargetingConfigIncludedPlatformsItemEnumList =
-  ReadonlyArray<PretargetingConfigIncludedPlatformsItemEnum>;
+export type PretargetingConfigIncludedPlatformsItemEnumList = Array<
+  PretargetingConfigIncludedPlatformsItemEnum | (string & {})
+>;
 export const PretargetingConfigIncludedPlatformsItemEnumList =
   /*@__PURE__*/ S.Array(
     PretargetingConfigIncludedPlatformsItemEnum,
@@ -267,7 +272,7 @@ export interface PretargetingConfig {
   /** The targeted minimum viewability decile, ranging in values [0, 10]. A value of 5 means that the config will only match adslots for which we predict at least 50% viewability. Values > 10 will be rounded down to 10. An unset value or a value of 0 indicates that bid requests will be sent regardless of viewability. */
   minimumViewabilityDecile?: number;
   /** Output only. The state of this pretargeting config. */
-  state?: PretargetingConfigStateEnum;
+  state?: PretargetingConfigStateEnum | (string & {});
   /** The languages included in this config, represented by their language code. See https://developers.google.com/adwords/api/docs/appendix/languagecodes. */
   includedLanguages?: StringList;
   /** User identifier types included in this config. At least one of the user identifier types specified in this list must be available for the bid request to be sent. */
@@ -281,7 +286,9 @@ export interface PretargetingConfig {
   /** The maximum QPS threshold for this config. The bidder should receive no more than this number of bid requests matching this config per second across all their bidding endpoints among all trading locations. Further information available at https://developers.google.com/authorized-buyers/rtb/peer-guide */
   maximumQps?: string;
   /** The interstitial targeting specified for this config. The unset value will allow bid requests to be sent regardless of whether they are for interstitials or not. */
-  interstitialTargeting?: PretargetingConfigInterstitialTargetingEnum;
+  interstitialTargeting?:
+    | PretargetingConfigInterstitialTargetingEnum
+    | (string & {});
   /** Creative dimensions included by this config. Only bid requests eligible for at least one of the specified creative dimensions will be sent. An unset value allows all bid requests to be sent, regardless of creative dimension. */
   includedCreativeDimensions?: CreativeDimensionsList;
   /** Output only. The identifier that corresponds to this pretargeting config that helps buyers track and attribute their spend across their own arbitrary divisions. If a bid request matches more than one config, the buyer chooses which billing_id to attribute each of their bids. */
@@ -554,7 +561,7 @@ export const PublisherConnection = /*@__PURE__*/ S.suspend(() =>
   identifier: "PublisherConnection",
 }) as any as S.Schema<PublisherConnection>;
 
-export type PublisherConnectionList = ReadonlyArray<PublisherConnection>;
+export type PublisherConnectionList = Array<PublisherConnection>;
 export const PublisherConnectionList = /*@__PURE__*/ S.Array(
   PublisherConnection,
 ) as any as S.Schema<PublisherConnectionList>;
@@ -695,7 +702,7 @@ export interface UrlRestriction {
   /** Required. The URL to use for applying the restriction on the user list. */
   url?: string;
   /** The restriction type for the specified URL. */
-  restrictionType?: UrlRestrictionRestrictionTypeEnum;
+  restrictionType?: UrlRestrictionRestrictionTypeEnum | (string & {});
   /** Start date (if specified) of the URL restriction. */
   startDate?: Realtimebidding_Date;
 }
@@ -719,7 +726,7 @@ export interface UserList {
   /** Required. The number of days a user's cookie stays on the user list. The field must be between 0 and 540 inclusive. */
   membershipDurationDays?: string;
   /** Output only. The status of the user list. A new user list starts out as open. */
-  status?: UserListStatusEnum;
+  status?: UserListStatusEnum | (string & {});
   /** Required. Deprecated. This will be removed in October 2023. For more information, see the release notes: https://developers.google.com/authorized-buyers/apis/relnotes#real-time-bidding-api The URL restriction for the user list. */
   urlRestriction?: UrlRestriction;
 }
@@ -788,7 +795,7 @@ export const MediaFileMimeTypeEnum = /*@__PURE__*/ S.String;
 /** Information about each media file in the VAST. */
 export interface MediaFile {
   /** The MIME type of this media file. Can be used to filter the response of the creatives.list method. */
-  mimeType?: MediaFileMimeTypeEnum;
+  mimeType?: MediaFileMimeTypeEnum | (string & {});
   /** Bitrate of the video file, in Kbps. Can be used to filter the response of the creatives.list method. */
   bitrate?: string;
 }
@@ -799,7 +806,7 @@ export const MediaFile = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MediaFile" }) as any as S.Schema<MediaFile>;
 
-export type MediaFileList = ReadonlyArray<MediaFile>;
+export type MediaFileList = Array<MediaFile>;
 export const MediaFileList = /*@__PURE__*/ S.Array(
   MediaFile,
 ) as any as S.Schema<MediaFileList>;
@@ -813,7 +820,7 @@ export interface VideoMetadata {
   /** The duration of the ad. Can be used to filter the response of the creatives.list method. */
   duration?: string;
   /** The maximum VAST version across all wrapped VAST documents. Can be used to filter the response of the creatives.list method. */
-  vastVersion?: VideoMetadataVastVersionEnum;
+  vastVersion?: VideoMetadataVastVersionEnum | (string & {});
   /** Is this a VPAID ad? Can be used to filter the response of the creatives.list method. */
   isVpaid?: boolean;
   /** The list of all media files declared in the VAST. If there are multiple VASTs in a wrapper chain, this includes the media files from the deepest one in the chain. */
@@ -860,14 +867,15 @@ export type CreativeDeclaredRestrictedCategoriesItemEnum =
 export const CreativeDeclaredRestrictedCategoriesItemEnum =
   /*@__PURE__*/ S.String;
 
-export type CreativeDeclaredRestrictedCategoriesItemEnumList =
-  ReadonlyArray<CreativeDeclaredRestrictedCategoriesItemEnum>;
+export type CreativeDeclaredRestrictedCategoriesItemEnumList = Array<
+  CreativeDeclaredRestrictedCategoriesItemEnum | (string & {})
+>;
 export const CreativeDeclaredRestrictedCategoriesItemEnumList =
   /*@__PURE__*/ S.Array(
     CreativeDeclaredRestrictedCategoriesItemEnum,
   ) as any as S.Schema<CreativeDeclaredRestrictedCategoriesItemEnumList>;
 
-export type IntegerList = ReadonlyArray<number>;
+export type IntegerList = Array<number>;
 export const IntegerList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<IntegerList>;
@@ -886,7 +894,7 @@ export const DomainCalls = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DomainCalls" }) as any as S.Schema<DomainCalls>;
 
-export type DomainCallsList = ReadonlyArray<DomainCalls>;
+export type DomainCallsList = Array<DomainCalls>;
 export const DomainCallsList = /*@__PURE__*/ S.Array(
   DomainCalls,
 ) as any as S.Schema<DomainCallsList>;
@@ -959,19 +967,21 @@ export const DestinationNotWorkingEvidenceInvalidPageEnum =
 /** Evidence of the creative's destination URL not functioning properly or having been incorrectly set up. */
 export interface DestinationNotWorkingEvidence {
   /** HTTP redirect chain error. */
-  redirectionError?: DestinationNotWorkingEvidenceRedirectionErrorEnum;
+  redirectionError?:
+    | DestinationNotWorkingEvidenceRedirectionErrorEnum
+    | (string & {});
   /** The full non-working URL. */
   expandedUrl?: string;
   /** DNS lookup errors. */
-  dnsError?: DestinationNotWorkingEvidenceDnsErrorEnum;
+  dnsError?: DestinationNotWorkingEvidenceDnsErrorEnum | (string & {});
   /** HTTP error code (for example, 404 or 5xx) */
   httpError?: number;
   /** Rejected because of malformed URLs or invalid requests. */
-  urlRejected?: DestinationNotWorkingEvidenceUrlRejectedEnum;
+  urlRejected?: DestinationNotWorkingEvidenceUrlRejectedEnum | (string & {});
   /** Platform of the non-working URL. */
-  platform?: DestinationNotWorkingEvidencePlatformEnum;
+  platform?: DestinationNotWorkingEvidencePlatformEnum | (string & {});
   /** Page was crawled successfully, but was detected as either a page with no content or an error page. */
-  invalidPage?: DestinationNotWorkingEvidenceInvalidPageEnum;
+  invalidPage?: DestinationNotWorkingEvidenceInvalidPageEnum | (string & {});
   /** Approximate time when the ad destination was last checked. */
   lastCheckTime?: string;
 }
@@ -1021,7 +1031,7 @@ export interface DestinationNotCrawlableEvidence {
   /** Destination URL that was attempted to be crawled. */
   crawledUrl?: string;
   /** Reason of destination not crawlable. */
-  reason?: DestinationNotCrawlableEvidenceReasonEnum;
+  reason?: DestinationNotCrawlableEvidenceReasonEnum | (string & {});
   /** Approximate time of the crawl. */
   crawlTime?: string;
 }
@@ -1064,7 +1074,7 @@ export const UrlDownloadSize = /*@__PURE__*/ S.suspend(() =>
   identifier: "UrlDownloadSize",
 }) as any as S.Schema<UrlDownloadSize>;
 
-export type UrlDownloadSizeList = ReadonlyArray<UrlDownloadSize>;
+export type UrlDownloadSizeList = Array<UrlDownloadSize>;
 export const UrlDownloadSizeList = /*@__PURE__*/ S.Array(
   UrlDownloadSize,
 ) as any as S.Schema<UrlDownloadSizeList>;
@@ -1116,7 +1126,7 @@ export const PolicyTopicEvidence = /*@__PURE__*/ S.suspend(() =>
   identifier: "PolicyTopicEvidence",
 }) as any as S.Schema<PolicyTopicEvidence>;
 
-export type PolicyTopicEvidenceList = ReadonlyArray<PolicyTopicEvidence>;
+export type PolicyTopicEvidenceList = Array<PolicyTopicEvidence>;
 export const PolicyTopicEvidenceList = /*@__PURE__*/ S.Array(
   PolicyTopicEvidence,
 ) as any as S.Schema<PolicyTopicEvidenceList>;
@@ -1143,7 +1153,7 @@ export const PolicyTopicEntry = /*@__PURE__*/ S.suspend(() =>
   identifier: "PolicyTopicEntry",
 }) as any as S.Schema<PolicyTopicEntry>;
 
-export type PolicyTopicEntryList = ReadonlyArray<PolicyTopicEntry>;
+export type PolicyTopicEntryList = Array<PolicyTopicEntry>;
 export const PolicyTopicEntryList = /*@__PURE__*/ S.Array(
   PolicyTopicEntry,
 ) as any as S.Schema<PolicyTopicEntryList>;
@@ -1161,7 +1171,7 @@ export interface PolicyCompliance {
   /** Topics related to the policy compliance for this transaction type (for example, open auction, deals) or region (for example, China, Russia). Topics may be present only if status is DISAPPROVED. */
   topics?: PolicyTopicEntryList;
   /** Serving status for the given transaction type (for example, open auction, deals) or region (for example, China, Russia). Can be used to filter the response of the creatives.list method. */
-  status?: PolicyComplianceStatusEnum;
+  status?: PolicyComplianceStatusEnum | (string & {});
 }
 export const PolicyCompliance = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1215,8 +1225,9 @@ export type CreativeServingDecisionDetectedAttributesItemEnum =
 export const CreativeServingDecisionDetectedAttributesItemEnum =
   /*@__PURE__*/ S.String;
 
-export type CreativeServingDecisionDetectedAttributesItemEnumList =
-  ReadonlyArray<CreativeServingDecisionDetectedAttributesItemEnum>;
+export type CreativeServingDecisionDetectedAttributesItemEnumList = Array<
+  CreativeServingDecisionDetectedAttributesItemEnum | (string & {})
+>;
 export const CreativeServingDecisionDetectedAttributesItemEnumList =
   /*@__PURE__*/ S.Array(
     CreativeServingDecisionDetectedAttributesItemEnum,
@@ -1244,7 +1255,7 @@ export const AdvertiserAndBrand = /*@__PURE__*/ S.suspend(() =>
   identifier: "AdvertiserAndBrand",
 }) as any as S.Schema<AdvertiserAndBrand>;
 
-export type AdvertiserAndBrandList = ReadonlyArray<AdvertiserAndBrand>;
+export type AdvertiserAndBrandList = Array<AdvertiserAndBrand>;
 export const AdvertiserAndBrandList = /*@__PURE__*/ S.Array(
   AdvertiserAndBrand,
 ) as any as S.Schema<AdvertiserAndBrandList>;
@@ -1310,7 +1321,9 @@ export interface CreativeServingDecision {
   /** The detected languages for this creative. The order is arbitrary. The codes are 2 or 5 characters and are documented at https://developers.google.com/adwords/api/docs/appendix/languagecodes. Can be used to filter the response of the creatives.list method. */
   detectedLanguages?: StringList;
   /** Output only. The taxonomy in which the detected_categories field is expressed. */
-  detectedCategoriesTaxonomy?: CreativeServingDecisionDetectedCategoriesTaxonomyEnum;
+  detectedCategoriesTaxonomy?:
+    | CreativeServingDecisionDetectedCategoriesTaxonomyEnum
+    | (string & {});
 }
 export const CreativeServingDecision = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1382,8 +1395,9 @@ export type CreativeDeclaredAttributesItemEnum =
   | "RENDERING_PLAYABLE";
 export const CreativeDeclaredAttributesItemEnum = /*@__PURE__*/ S.String;
 
-export type CreativeDeclaredAttributesItemEnumList =
-  ReadonlyArray<CreativeDeclaredAttributesItemEnum>;
+export type CreativeDeclaredAttributesItemEnumList = Array<
+  CreativeDeclaredAttributesItemEnum | (string & {})
+>;
 export const CreativeDeclaredAttributesItemEnumList = /*@__PURE__*/ S.Array(
   CreativeDeclaredAttributesItemEnum,
 ) as any as S.Schema<CreativeDeclaredAttributesItemEnumList>;
@@ -1393,8 +1407,9 @@ export type CreativeRestrictedCategoriesItemEnum =
   | "ALCOHOL";
 export const CreativeRestrictedCategoriesItemEnum = /*@__PURE__*/ S.String;
 
-export type CreativeRestrictedCategoriesItemEnumList =
-  ReadonlyArray<CreativeRestrictedCategoriesItemEnum>;
+export type CreativeRestrictedCategoriesItemEnumList = Array<
+  CreativeRestrictedCategoriesItemEnum | (string & {})
+>;
 export const CreativeRestrictedCategoriesItemEnumList = /*@__PURE__*/ S.Array(
   CreativeRestrictedCategoriesItemEnum,
 ) as any as S.Schema<CreativeRestrictedCategoriesItemEnumList>;
@@ -1487,7 +1502,7 @@ export interface Creative {
   /** A video creative. */
   video?: VideoContent;
   /** Output only. The format of this creative. Can be used to filter the response of the creatives.list method. */
-  creativeFormat?: CreativeCreativeFormatEnum;
+  creativeFormat?: CreativeCreativeFormatEnum | (string & {});
   /** The set of URLs to be called to record an impression. */
   impressionTrackingUrls?: StringList;
   /** Output only. The last update timestamp of the creative through the API. */
@@ -1701,11 +1716,11 @@ export interface Endpoint {
   /** Output only. Name of the endpoint resource that must follow the pattern `bidders/{bidderAccountId}/endpoints/{endpointId}`, where {bidderAccountId} is the account ID of the bidder who operates this endpoint, and {endpointId} is a unique ID assigned by the server. */
   name?: string;
   /** The protocol that the bidder endpoint is using. */
-  bidProtocol?: EndpointBidProtocolEnum;
+  bidProtocol?: EndpointBidProtocolEnum | (string & {});
   /** Output only. The URL that bid requests should be sent to. */
   url?: string;
   /** The trading location that bid requests should be sent from. See https://developers.google.com/authorized-buyers/rtb/peer-guide#trading-locations for further information. */
-  tradingLocation?: EndpointTradingLocationEnum;
+  tradingLocation?: EndpointTradingLocationEnum | (string & {});
 }
 export const Endpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1915,7 +1930,7 @@ export const ListBiddersRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListBiddersRequest",
 }) as any as S.Schema<ListBiddersRequest>;
 
-export type BidderList = ReadonlyArray<Bidder>;
+export type BidderList = Array<Bidder>;
 export const BidderList = /*@__PURE__*/ S.Array(
   Bidder,
 ) as any as S.Schema<BidderList>;
@@ -1972,7 +1987,7 @@ export const ListBiddersCreativesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListBiddersCreativesRequest",
 }) as any as S.Schema<ListBiddersCreativesRequest>;
 
-export type CreativeList = ReadonlyArray<Creative>;
+export type CreativeList = Array<Creative>;
 export const CreativeList = /*@__PURE__*/ S.Array(
   Creative,
 ) as any as S.Schema<CreativeList>;
@@ -2017,7 +2032,7 @@ export const ListBiddersEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListBiddersEndpointsRequest",
 }) as any as S.Schema<ListBiddersEndpointsRequest>;
 
-export type EndpointList = ReadonlyArray<Endpoint>;
+export type EndpointList = Array<Endpoint>;
 export const EndpointList = /*@__PURE__*/ S.Array(
   Endpoint,
 ) as any as S.Schema<EndpointList>;
@@ -2063,7 +2078,7 @@ export const ListBiddersPretargetingConfigsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListBiddersPretargetingConfigsRequest",
 }) as any as S.Schema<ListBiddersPretargetingConfigsRequest>;
 
-export type PretargetingConfigList = ReadonlyArray<PretargetingConfig>;
+export type PretargetingConfigList = Array<PretargetingConfig>;
 export const PretargetingConfigList = /*@__PURE__*/ S.Array(
   PretargetingConfig,
 ) as any as S.Schema<PretargetingConfigList>;
@@ -2152,7 +2167,7 @@ export const ListBuyersRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListBuyersRequest",
 }) as any as S.Schema<ListBuyersRequest>;
 
-export type BuyerList = ReadonlyArray<Buyer>;
+export type BuyerList = Array<Buyer>;
 export const BuyerList = /*@__PURE__*/ S.Array(
   Buyer,
 ) as any as S.Schema<BuyerList>;
@@ -2233,7 +2248,7 @@ export const ListBuyersUserListsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListBuyersUserListsRequest",
 }) as any as S.Schema<ListBuyersUserListsRequest>;
 
-export type UserListList = ReadonlyArray<UserList>;
+export type UserListList = Array<UserList>;
 export const UserListList = /*@__PURE__*/ S.Array(
   UserList,
 ) as any as S.Schema<UserListList>;

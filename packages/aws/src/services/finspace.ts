@@ -257,7 +257,7 @@ export const ChangeType = /*@__PURE__*/ S.String;
 export type S3Path = string;
 export type DbPath = string;
 export interface ChangeRequest {
-  changeType: ChangeType;
+  changeType: ChangeType | (string & {});
   s3Path?: string;
   dbPath: string;
 }
@@ -476,7 +476,7 @@ export type CooldownTime = number;
 export interface AutoScalingConfiguration {
   minNodeCount?: number;
   maxNodeCount?: number;
-  autoScalingMetric?: AutoScalingMetric;
+  autoScalingMetric?: AutoScalingMetric | (string & {});
   metricTarget?: number;
   scaleInCooldownSeconds?: number;
   scaleOutCooldownSeconds?: number;
@@ -519,7 +519,7 @@ export interface VpcConfiguration {
   vpcId?: string;
   securityGroupIds?: string[];
   subnetIds?: string[];
-  ipAddressType?: IPAddressType;
+  ipAddressType?: IPAddressType | (string & {});
 }
 export const VpcConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -570,7 +570,7 @@ export const KxSavedownStorageType = /*@__PURE__*/ S.String;
 
 export type KxSavedownStorageSize = number;
 export interface KxSavedownStorageConfiguration {
-  type?: KxSavedownStorageType;
+  type?: KxSavedownStorageType | (string & {});
   size?: number;
   volumeName?: string;
 }
@@ -1094,7 +1094,7 @@ export const KxNAS1Type = /*@__PURE__*/ S.String;
 
 export type KxNAS1Size = number;
 export interface KxNAS1Configuration {
-  type?: KxNAS1Type;
+  type?: KxNAS1Type | (string & {});
   size?: number;
 }
 export const KxNAS1Configuration = /*@__PURE__*/ S.suspend(() =>
@@ -1932,7 +1932,7 @@ export type ValidCIDRBlock = string;
 export interface NetworkACLEntry {
   ruleNumber: number;
   protocol: string;
-  ruleAction: RuleAction;
+  ruleAction: RuleAction | (string & {});
   portRange?: PortRange;
   icmpTypeCode?: IcmpTypeCode;
   cidrBlock: string;

@@ -226,7 +226,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -300,7 +300,7 @@ export type LogBucketLifecycleStateEnum =
   | "FAILED";
 export const LogBucketLifecycleStateEnum = /*@__PURE__*/ S.String;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -314,7 +314,7 @@ export const IndexConfigTypeEnum = /*@__PURE__*/ S.String;
 /** Configuration for an indexed field. */
 export interface IndexConfig {
   /** Required. The type of data in this index. */
-  type?: IndexConfigTypeEnum;
+  type?: IndexConfigTypeEnum | (string & {});
   /** Output only. The timestamp when the index was last modified.This is used to return the timestamp, and will be ignored if supplied during update. */
   createTime?: string;
   /** Required. The LogEntry field path to index.Note that some paths are automatically indexed, and other paths are not eligible for indexing. See indexing documentation( https://docs.cloud.google.com/logging/docs/analyze/custom-index) for details.For example: jsonPayload.request.status */
@@ -328,7 +328,7 @@ export const IndexConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "IndexConfig" }) as any as S.Schema<IndexConfig>;
 
-export type IndexConfigList = ReadonlyArray<IndexConfig>;
+export type IndexConfigList = Array<IndexConfig>;
 export const IndexConfigList = /*@__PURE__*/ S.Array(
   IndexConfig,
 ) as any as S.Schema<IndexConfigList>;
@@ -348,7 +348,7 @@ export interface LogBucket {
   /** Optional. Whether log analytics is enabled for this bucket.Once enabled, log analytics features cannot be disabled. */
   analyticsEnabled?: boolean;
   /** Output only. The bucket lifecycle state. */
-  lifecycleState?: LogBucketLifecycleStateEnum;
+  lifecycleState?: LogBucketLifecycleStateEnum | (string & {});
   /** Optional. Log entry field paths that are denied access in this bucket.The following fields and their children are eligible: textPayload, jsonPayload, protoPayload, httpRequest, labels, sourceLocation.Restricting a repeated field will restrict all values. Adding a parent will block all child fields. (e.g. foo.bar will block foo.bar.baz) */
   restrictedFields?: StringList;
   /** Optional. Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used. */
@@ -600,7 +600,7 @@ export interface Link {
   /** Optional. Describes this link.The maximum length of the description is 8000 characters. */
   description?: string;
   /** Output only. The resource lifecycle state. */
-  lifecycleState?: LinkLifecycleStateEnum;
+  lifecycleState?: LinkLifecycleStateEnum | (string & {});
   /** Output only. The creation timestamp of the link. */
   createTime?: string;
   /** Optional. The information of a BigQuery Dataset. When a link is created, a BigQuery dataset is created along with it, in the same project as the LogBucket it's linked to. This dataset will also have BigQuery Views corresponding to the LogViews in the bucket. */
@@ -695,7 +695,7 @@ export type SavedQueryVisibilityEnum =
   | "SHARED";
 export const SavedQueryVisibilityEnum = /*@__PURE__*/ S.String;
 
-export type DocumentList = ReadonlyArray<unknown>;
+export type DocumentList = Array<unknown>;
 export const DocumentList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<DocumentList>;
@@ -724,7 +724,7 @@ export const VirtualFieldVirtualFieldTypeEnum = /*@__PURE__*/ S.String;
 /** A virtual field is a field that is not physically present in the underlying data schema, but is created through specific operations within the query builder model based on other fields in the schema. */
 export interface VirtualField {
   /** Required. The type of the virtual field. */
-  virtualFieldType?: VirtualFieldVirtualFieldTypeEnum;
+  virtualFieldType?: VirtualFieldVirtualFieldTypeEnum | (string & {});
   /** The field sources that will be used to create the virtual field, based on the semantics of the virtual field type.The field sources must follow these rules, based on the virtual field type: - For VIRTUAL_FIELD_TYPE_UNSPECIFIED, this field must be empty. - For COALESCE, this field must be non-empty and include a minimum of two field sources. The underlying field sources must be actual projected fields that represent actual schema fields and that must not be transformed and aggregated in any way, except for casting. The type of all the underlying field sources must be equivalent so that picking one of them would result in the same value type. */
   underlyingFieldSources?: FieldSourceList;
 }
@@ -757,7 +757,7 @@ export interface ProjectedField {
   /** Optional. A virtual field definition, used in place of field to define a field that is computed from other fields rather than being directly present in the data schema.For example, a virtual field can be defined using COALESCE to select the first non-null value from a list of fields.If virtual_field is set, field must not be set. */
   virtualField?: VirtualField;
   /** Specifies the role of this field (direct selection, grouping, or aggregation). */
-  operation?: ProjectedFieldOperationEnum;
+  operation?: ProjectedFieldOperationEnum | (string & {});
   /** The re2 extraction for the field. This will be used to extract the value from the field using REGEXP_EXTRACT. More information on re2 can be found here: https://github.com/google/re2/wiki/Syntax. Meta characters like +?()| will need to be escaped. Examples: - ".(autoscaler.*)$" will be converted to REGEXP_EXTRACT(JSON_VALUE(field),"request(.*(autoscaler.*)$)")in SQL. - "\(test_value\)$" will be converted to REGEXP_EXTRACT(JSON_VALUE(field),"request(\(test_value\)$)") in SQL. */
   regexExtraction?: string;
 }
@@ -800,7 +800,7 @@ export const FieldSource = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "FieldSource" }) as any as S.Schema<FieldSource>;
 
-export type FieldSourceList = ReadonlyArray<FieldSource>;
+export type FieldSourceList = Array<FieldSource>;
 export const FieldSourceList = /*@__PURE__*/ S.Array(
   FieldSource,
 ) as any as S.Schema<FieldSourceList>;
@@ -817,7 +817,7 @@ export interface SortOrderParameter {
   /** The field to sort on. Can be one of the FieldSource types: field name, alias ref, variable ref, or a literal value. */
   fieldSource?: FieldSource;
   /** The sort order to use for the query. */
-  sortOrderDirection?: SortOrderParameterSortOrderDirectionEnum;
+  sortOrderDirection?: SortOrderParameterSortOrderDirectionEnum | (string & {});
 }
 export const SortOrderParameter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -828,7 +828,7 @@ export const SortOrderParameter = /*@__PURE__*/ S.suspend(() =>
   identifier: "SortOrderParameter",
 }) as any as S.Schema<SortOrderParameter>;
 
-export type SortOrderParameterList = ReadonlyArray<SortOrderParameter>;
+export type SortOrderParameterList = Array<SortOrderParameter>;
 export const SortOrderParameterList = /*@__PURE__*/ S.Array(
   SortOrderParameter,
 ) as any as S.Schema<SortOrderParameterList>;
@@ -855,7 +855,7 @@ export interface FilterExpression {
   /** The field. This will be the field that is set as the Right Hand Side of the filter. */
   fieldSourceValue?: FieldSource;
   /** The comparison type to use for the filter. */
-  comparator?: FilterExpressionComparatorEnum;
+  comparator?: FilterExpressionComparatorEnum | (string & {});
   /** Determines if the NOT flag should be added to the comparator. */
   isNegation?: boolean;
 }
@@ -871,7 +871,7 @@ export const FilterExpression = /*@__PURE__*/ S.suspend(() =>
   identifier: "FilterExpression",
 }) as any as S.Schema<FilterExpression>;
 
-export type FilterPredicateList = ReadonlyArray<FilterPredicate>;
+export type FilterPredicateList = Array<FilterPredicate>;
 export const FilterPredicateList = /*@__PURE__*/ S.Array(
   S.suspend(() => FilterPredicate),
 ) as any as S.Schema<FilterPredicateList>;
@@ -890,7 +890,7 @@ export interface FilterPredicate {
   /** The children of the filter predicate. This equates to the branches of the filter predicate that could contain further nested leaves. */
   childPredicates?: FilterPredicateList;
   /** The operator type for the filter. Currently there is no support for multiple levels of nesting, so this will be a single value with no joining of different operator types */
-  operatorType?: FilterPredicateOperatorTypeEnum;
+  operatorType?: FilterPredicateOperatorTypeEnum | (string & {});
 }
 export const FilterPredicate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -957,7 +957,7 @@ export const SummaryField = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SummaryField" }) as any as S.Schema<SummaryField>;
 
-export type SummaryFieldList = ReadonlyArray<SummaryField>;
+export type SummaryFieldList = Array<SummaryField>;
 export const SummaryFieldList = /*@__PURE__*/ S.Array(
   SummaryField,
 ) as any as S.Schema<SummaryFieldList>;
@@ -989,7 +989,7 @@ export interface SavedQuery {
   /** Optional. A human readable description of the saved query. */
   description?: string;
   /** Required. The visibility status of this query, which determines its ownership. */
-  visibility?: SavedQueryVisibilityEnum;
+  visibility?: SavedQueryVisibilityEnum | (string & {});
   /** Analytics query that can be executed in Log Analytics. */
   opsAnalyticsQuery?: OpsAnalyticsQuery;
   /** Output only. The timestamp when the saved query was last updated. */
@@ -1061,7 +1061,7 @@ export const BigQueryOptions = /*@__PURE__*/ S.suspend(() =>
   identifier: "BigQueryOptions",
 }) as any as S.Schema<BigQueryOptions>;
 
-export type LogExclusionList = ReadonlyArray<LogExclusion>;
+export type LogExclusionList = Array<LogExclusion>;
 export const LogExclusionList = /*@__PURE__*/ S.Array(
   LogExclusion,
 ) as any as S.Schema<LogExclusionList>;
@@ -1071,7 +1071,7 @@ export interface LogSink {
   /** Output only. The creation timestamp of the sink.This field may not be present for older sinks. */
   createTime?: string;
   /** Deprecated. This field is unused. */
-  outputVersionFormat?: LogSinkOutputVersionFormatEnum;
+  outputVersionFormat?: LogSinkOutputVersionFormatEnum | (string & {});
   /** Optional. If set to true, then this sink is disabled and it does not export any log entries. */
   disabled?: boolean;
   /** Required. The export destination: "storage.googleapis.com/[GCS_BUCKET]" "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]" "pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]" "logging.googleapis.com/projects/[PROJECT_ID]" "logging.googleapis.com/projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" The sink's writer_identity, set when the sink is created, must have permission to write to the destination or else the log entries are not exported. For more information, see Route logs to supported destinations (https://docs.cloud.google.com/logging/docs/export/configure_export_v2). */
@@ -1769,7 +1769,7 @@ export const Exponential = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Exponential" }) as any as S.Schema<Exponential>;
 
-export type DoubleList = ReadonlyArray<number>;
+export type DoubleList = Array<number>;
 export const DoubleList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<DoubleList>;
@@ -1861,7 +1861,7 @@ export interface LabelDescriptor {
   /** A human-readable description for the label. */
   description?: string;
   /** The type of data that can be assigned to the label. */
-  valueType?: LabelDescriptorValueTypeEnum;
+  valueType?: LabelDescriptorValueTypeEnum | (string & {});
   /** The label key. */
   key?: string;
 }
@@ -1875,7 +1875,7 @@ export const LabelDescriptor = /*@__PURE__*/ S.suspend(() =>
   identifier: "LabelDescriptor",
 }) as any as S.Schema<LabelDescriptor>;
 
-export type LabelDescriptorList = ReadonlyArray<LabelDescriptor>;
+export type LabelDescriptorList = Array<LabelDescriptor>;
 export const LabelDescriptorList = /*@__PURE__*/ S.Array(
   LabelDescriptor,
 ) as any as S.Schema<LabelDescriptorList>;
@@ -1900,7 +1900,10 @@ export const MetricDescriptorMetadataTimeSeriesResourceHierarchyLevelItemEnum =
   /*@__PURE__*/ S.String;
 
 export type MetricDescriptorMetadataTimeSeriesResourceHierarchyLevelItemEnumList =
-  ReadonlyArray<MetricDescriptorMetadataTimeSeriesResourceHierarchyLevelItemEnum>;
+  Array<
+    | MetricDescriptorMetadataTimeSeriesResourceHierarchyLevelItemEnum
+    | (string & {})
+  >;
 export const MetricDescriptorMetadataTimeSeriesResourceHierarchyLevelItemEnumList =
   /*@__PURE__*/ S.Array(
     MetricDescriptorMetadataTimeSeriesResourceHierarchyLevelItemEnum,
@@ -1909,7 +1912,7 @@ export const MetricDescriptorMetadataTimeSeriesResourceHierarchyLevelItemEnumLis
 /** Additional annotations that can be used to guide the usage of a metric. */
 export interface MetricDescriptorMetadata {
   /** Deprecated. Must use the MetricDescriptor.launch_stage instead. */
-  launchStage?: MetricDescriptorMetadataLaunchStageEnum;
+  launchStage?: MetricDescriptorMetadataLaunchStageEnum | (string & {});
   /** The sampling period of metric data points. For metrics which are written periodically, consecutive data points are stored at this time interval, excluding data loss due to errors. Metrics with a higher granularity have a smaller sampling period. */
   samplePeriod?: string;
   /** The delay of data points caused by ingestion. Data points older than this age are guaranteed to be ingested and available to be read, excluding data loss due to errors. */
@@ -1933,11 +1936,11 @@ export const MetricDescriptorMetadata = /*@__PURE__*/ S.suspend(() =>
 /** Defines a metric type and its schema. Once a metric descriptor is created, deleting or altering it stops data collection and makes the metric type's existing data unusable. */
 export interface MetricDescriptor {
   /** Optional. The launch stage of the metric definition. */
-  launchStage?: MetricDescriptorLaunchStageEnum;
+  launchStage?: MetricDescriptorLaunchStageEnum | (string & {});
   /** Whether the metric records instantaneous values, changes to a value, etc. Some combinations of metric_kind and value_type might not be supported. */
-  metricKind?: MetricDescriptorMetricKindEnum;
+  metricKind?: MetricDescriptorMetricKindEnum | (string & {});
   /** Whether the measurement is an integer, a floating-point number, etc. Some combinations of metric_kind and value_type might not be supported. */
-  valueType?: MetricDescriptorValueTypeEnum;
+  valueType?: MetricDescriptorValueTypeEnum | (string & {});
   /** The set of labels that can be used to describe a specific instance of this metric type. For example, the appengine.googleapis.com/http/server/response_latencies metric type has a label for the HTTP response code, response_code, so you can look at latencies for successful responses or just for responses that failed. */
   labels?: LabelDescriptorList;
   /** A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example "Request count". This field is optional but it is recommended to be set for any metrics associated with user-visible concepts, such as Quota. */
@@ -1999,7 +2002,7 @@ export interface LogMetric {
   /** Optional. The metric descriptor associated with the logs-based metric. If unspecified, it uses a default metric descriptor with a DELTA metric kind, INT64 value type, with no labels and a unit of "1". Such a metric counts the number of log entries matching the filter expression.The name, type, and description fields in the metric_descriptor are output only, and is constructed using the name and description field in the LogMetric.To create a logs-based metric that records a distribution of log values, a DELTA metric kind with a DISTRIBUTION value type must be used along with a value_extractor expression in the LogMetric.Each label in the metric descriptor must have a matching label name as the key and an extractor expression as the value in the label_extractors map.The metric_kind and value_type fields in the metric_descriptor cannot be updated once initially configured. New labels can be added in the metric_descriptor, but existing labels cannot be modified except for their description. */
   metricDescriptor?: MetricDescriptor;
   /** Deprecated. The API version that created or updated this metric. The v2 format is used by default and cannot be changed. */
-  version?: LogMetricVersionEnum;
+  version?: LogMetricVersionEnum | (string & {});
   /** Optional. A description of this metric, which is used in documentation. The maximum length of the description is 8000 characters. */
   description?: string;
   /** Optional. The resource name of the Log Bucket that owns the Log Metric. Only Log Buckets in projects are supported. The bucket has to be in the same project as the metric.For example:projects/my-project/locations/global/buckets/my-bucketIf empty, then the Log Metric is considered a non-Bucket Log Metric. */
@@ -3335,7 +3338,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
-export type BindingList = ReadonlyArray<Binding>;
+export type BindingList = Array<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -3897,7 +3900,7 @@ export interface DefaultSinkConfig {
   /** Optional. An advanced logs filter (https://docs.cloud.google.com/logging/docs/view/building-queries#queries-by-expression). The only exported log entries are those that are in the resource owning the sink and that match the filter.For example:logName="projects/[PROJECT_ID]/logs/[LOG_ID]" AND severity>=ERRORTo match all logs, don't add exclusions and use the following line as the value of filter:logName:*Cannot be empty or unset when the value of mode is OVERWRITE. */
   filter?: string;
   /** Required. Determines the behavior to apply to the built-in _Default sink inclusion filter.Exclusions are always appended, as built-in _Default sinks have no exclusions. */
-  mode?: DefaultSinkConfigModeEnum;
+  mode?: DefaultSinkConfigModeEnum | (string & {});
 }
 export const DefaultSinkConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4099,7 +4102,7 @@ export const ListBillingAccountsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListBillingAccountsLocationsRequest",
 }) as any as S.Schema<ListBillingAccountsLocationsRequest>;
 
-export type LocationList = ReadonlyArray<Location>;
+export type LocationList = Array<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -4145,7 +4148,7 @@ export const ListBillingAccountsLocationsBucketsRequest =
     identifier: "ListBillingAccountsLocationsBucketsRequest",
   }) as any as S.Schema<ListBillingAccountsLocationsBucketsRequest>;
 
-export type LogBucketList = ReadonlyArray<LogBucket>;
+export type LogBucketList = Array<LogBucket>;
 export const LogBucketList = /*@__PURE__*/ S.Array(
   LogBucket,
 ) as any as S.Schema<LogBucketList>;
@@ -4191,7 +4194,7 @@ export const ListBillingAccountsLocationsBucketsLinksRequest =
     identifier: "ListBillingAccountsLocationsBucketsLinksRequest",
   }) as any as S.Schema<ListBillingAccountsLocationsBucketsLinksRequest>;
 
-export type LinkList = ReadonlyArray<Link>;
+export type LinkList = Array<Link>;
 export const LinkList = /*@__PURE__*/ S.Array(
   Link,
 ) as any as S.Schema<LinkList>;
@@ -4237,7 +4240,7 @@ export const ListBillingAccountsLocationsBucketsViewsRequest =
     identifier: "ListBillingAccountsLocationsBucketsViewsRequest",
   }) as any as S.Schema<ListBillingAccountsLocationsBucketsViewsRequest>;
 
-export type LogViewList = ReadonlyArray<LogView>;
+export type LogViewList = Array<LogView>;
 export const LogViewList = /*@__PURE__*/ S.Array(
   LogView,
 ) as any as S.Schema<LogViewList>;
@@ -4333,7 +4336,7 @@ export const ListBillingAccountsLocationsOperationsRequest =
     identifier: "ListBillingAccountsLocationsOperationsRequest",
   }) as any as S.Schema<ListBillingAccountsLocationsOperationsRequest>;
 
-export type OperationList = ReadonlyArray<Operation>;
+export type OperationList = Array<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -4405,7 +4408,7 @@ export const RecentQuery = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "RecentQuery" }) as any as S.Schema<RecentQuery>;
 
-export type RecentQueryList = ReadonlyArray<RecentQuery>;
+export type RecentQueryList = Array<RecentQuery>;
 export const RecentQueryList = /*@__PURE__*/ S.Array(
   RecentQuery,
 ) as any as S.Schema<RecentQueryList>;
@@ -4457,7 +4460,7 @@ export const ListBillingAccountsLocationsSavedQueriesRequest =
     identifier: "ListBillingAccountsLocationsSavedQueriesRequest",
   }) as any as S.Schema<ListBillingAccountsLocationsSavedQueriesRequest>;
 
-export type SavedQueryList = ReadonlyArray<SavedQuery>;
+export type SavedQueryList = Array<SavedQuery>;
 export const SavedQueryList = /*@__PURE__*/ S.Array(
   SavedQuery,
 ) as any as S.Schema<SavedQueryList>;
@@ -4535,7 +4538,7 @@ export const ListBillingAccountsSinksRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListBillingAccountsSinksRequest",
 }) as any as S.Schema<ListBillingAccountsSinksRequest>;
 
-export type LogSinkList = ReadonlyArray<LogSink>;
+export type LogSinkList = Array<LogSink>;
 export const LogSinkList = /*@__PURE__*/ S.Array(
   LogSink,
 ) as any as S.Schema<LogSinkList>;
@@ -4822,7 +4825,7 @@ export const LogErrorGroup = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "LogErrorGroup" }) as any as S.Schema<LogErrorGroup>;
 
-export type LogErrorGroupList = ReadonlyArray<LogErrorGroup>;
+export type LogErrorGroupList = Array<LogErrorGroup>;
 export const LogErrorGroupList = /*@__PURE__*/ S.Array(
   LogErrorGroup,
 ) as any as S.Schema<LogErrorGroupList>;
@@ -4852,7 +4855,7 @@ export interface LogEntry {
   /** Optional. The trace ID being written to Cloud Trace (https://docs.cloud.google.com/trace/docs) in association with this log entry. For example, if your trace data is stored in the Cloud project "my-trace-project" and if the service that is creating the log entry receives a trace header that includes the trace ID "12345", then the service should use "12345".The REST resource name of the trace is also supported, but using this format is not recommended. An example trace REST resource name is similar to "projects/my-trace-project/traces/12345".The trace field provides the link between logs and traces. By using this field, you can navigate from a log entry to a trace. */
   trace?: string;
   /** Optional. The severity of the log entry. The default value is LogSeverity.DEFAULT. */
-  severity?: LogEntrySeverityEnum;
+  severity?: LogEntrySeverityEnum | (string & {});
   /** Optional. Source code location information associated with the log entry, if any. */
   sourceLocation?: LogEntrySourceLocation;
   /** Optional. The ID of the Cloud Trace (https://docs.cloud.google.com/trace/docs) span associated with the current operation in which the log is being written.A Span (https://docs.cloud.google.com/trace/docs/reference/v2/rest/v2/projects.traces/batchWrite#Span) represents a single operation within a trace. Whereas a trace may involve multiple different microservices running on multiple different machines, a span generally corresponds to a single logical operation being performed in a single instance of a microservice on one specific machine. Spans are the nodes within the tree that is a trace.Applications that are instrumented for tracing (https://docs.cloud.google.com/trace/docs/setup) will generally assign a new, unique span ID on each incoming request. It is also common to create and record additional spans corresponding to internal processing elements as well as issuing requests to dependencies.The span ID is expected to be a 16-character, hexadecimal encoding of an 8-byte array and should not be zero. It should be unique within the trace and should, ideally, be generated in a manner that is uniformly random.Example values: 000000000000004a 7a2190356c3fc94b 0000f00300090021 d39223e101960076 */
@@ -4920,7 +4923,7 @@ export const LogEntry = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "LogEntry" }) as any as S.Schema<LogEntry>;
 
-export type LogEntryList = ReadonlyArray<LogEntry>;
+export type LogEntryList = Array<LogEntry>;
 export const LogEntryList = /*@__PURE__*/ S.Array(
   LogEntry,
 ) as any as S.Schema<LogEntryList>;
@@ -5146,7 +5149,7 @@ export const ListFoldersLocationsLogScopesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListFoldersLocationsLogScopesRequest",
 }) as any as S.Schema<ListFoldersLocationsLogScopesRequest>;
 
-export type LogScopeList = ReadonlyArray<LogScope>;
+export type LogScopeList = Array<LogScope>;
 export const LogScopeList = /*@__PURE__*/ S.Array(
   LogScope,
 ) as any as S.Schema<LogScopeList>;
@@ -5530,7 +5533,7 @@ export const MonitoredResourceDescriptor = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MonitoredResourceDescriptor>;
 
 export type MonitoredResourceDescriptorList =
-  ReadonlyArray<MonitoredResourceDescriptor>;
+  Array<MonitoredResourceDescriptor>;
 export const MonitoredResourceDescriptorList = /*@__PURE__*/ S.Array(
   MonitoredResourceDescriptor,
 ) as any as S.Schema<MonitoredResourceDescriptorList>;
@@ -6194,7 +6197,7 @@ export const ListProjectsMetricsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsMetricsRequest",
 }) as any as S.Schema<ListProjectsMetricsRequest>;
 
-export type LogMetricList = ReadonlyArray<LogMetric>;
+export type LogMetricList = Array<LogMetric>;
 export const LogMetricList = /*@__PURE__*/ S.Array(
   LogMetric,
 ) as any as S.Schema<LogMetricList>;
@@ -7095,7 +7098,7 @@ export const SuppressionInfo = /*@__PURE__*/ S.suspend(() =>
   identifier: "SuppressionInfo",
 }) as any as S.Schema<SuppressionInfo>;
 
-export type SuppressionInfoList = ReadonlyArray<SuppressionInfo>;
+export type SuppressionInfoList = Array<SuppressionInfo>;
 export const SuppressionInfoList = /*@__PURE__*/ S.Array(
   SuppressionInfo,
 ) as any as S.Schema<SuppressionInfoList>;

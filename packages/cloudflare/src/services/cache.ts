@@ -113,7 +113,7 @@ export const OriginCloudRegionsBulkDeleteResponseFailedItem =
   }) as any as S.Schema<OriginCloudRegionsBulkDeleteResponseFailedItem>;
 
 export type OriginCloudRegionsBulkDeleteResponseFailedList =
-  ReadonlyArray<OriginCloudRegionsBulkDeleteResponseFailedItem>;
+  Array<OriginCloudRegionsBulkDeleteResponseFailedItem>;
 export const OriginCloudRegionsBulkDeleteResponseFailedList =
   /*@__PURE__*/ S.Array(
     OriginCloudRegionsBulkDeleteResponseFailedItem,
@@ -142,7 +142,7 @@ export const OriginCloudRegionsBulkDeleteResponseSucceededItem =
   }) as any as S.Schema<OriginCloudRegionsBulkDeleteResponseSucceededItem>;
 
 export type OriginCloudRegionsBulkDeleteResponseSucceededList =
-  ReadonlyArray<OriginCloudRegionsBulkDeleteResponseSucceededItem>;
+  Array<OriginCloudRegionsBulkDeleteResponseSucceededItem>;
 export const OriginCloudRegionsBulkDeleteResponseSucceededList =
   /*@__PURE__*/ S.Array(
     OriginCloudRegionsBulkDeleteResponseSucceededItem,
@@ -193,7 +193,7 @@ export const OriginCloudRegionsBulkUpdateRequestBodyItem =
   }) as any as S.Schema<OriginCloudRegionsBulkUpdateRequestBodyItem>;
 
 export type OriginCloudRegionsBulkUpdateRequestBodyList =
-  ReadonlyArray<OriginCloudRegionsBulkUpdateRequestBodyItem>;
+  Array<OriginCloudRegionsBulkUpdateRequestBodyItem>;
 export const OriginCloudRegionsBulkUpdateRequestBodyList =
   /*@__PURE__*/ S.Array(
     OriginCloudRegionsBulkUpdateRequestBodyItem,
@@ -244,7 +244,7 @@ export const OriginCloudRegionsBulkUpdateResponseFailedItem =
   }) as any as S.Schema<OriginCloudRegionsBulkUpdateResponseFailedItem>;
 
 export type OriginCloudRegionsBulkUpdateResponseFailedList =
-  ReadonlyArray<OriginCloudRegionsBulkUpdateResponseFailedItem>;
+  Array<OriginCloudRegionsBulkUpdateResponseFailedItem>;
 export const OriginCloudRegionsBulkUpdateResponseFailedList =
   /*@__PURE__*/ S.Array(
     OriginCloudRegionsBulkUpdateResponseFailedItem,
@@ -273,7 +273,7 @@ export const OriginCloudRegionsBulkUpdateResponseSucceededItem =
   }) as any as S.Schema<OriginCloudRegionsBulkUpdateResponseSucceededItem>;
 
 export type OriginCloudRegionsBulkUpdateResponseSucceededList =
-  ReadonlyArray<OriginCloudRegionsBulkUpdateResponseSucceededItem>;
+  Array<OriginCloudRegionsBulkUpdateResponseSucceededItem>;
 export const OriginCloudRegionsBulkUpdateResponseSucceededList =
   /*@__PURE__*/ S.Array(
     OriginCloudRegionsBulkUpdateResponseSucceededItem,
@@ -740,57 +740,57 @@ export const GetVariantRequest = /*@__PURE__*/ S.suspend(() =>
 export type VariantsGetResponseId = "variants";
 export const VariantsGetResponseId = /*@__PURE__*/ S.String;
 
-export type VariantsGetResponseValueAvifList = ReadonlyArray<string>;
+export type VariantsGetResponseValueAvifList = Array<string>;
 export const VariantsGetResponseValueAvifList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<VariantsGetResponseValueAvifList>;
 
-export type VariantsGetResponseValueBmpList = ReadonlyArray<string>;
+export type VariantsGetResponseValueBmpList = Array<string>;
 export const VariantsGetResponseValueBmpList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<VariantsGetResponseValueBmpList>;
 
-export type VariantsGetResponseValueGifList = ReadonlyArray<string>;
+export type VariantsGetResponseValueGifList = Array<string>;
 export const VariantsGetResponseValueGifList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<VariantsGetResponseValueGifList>;
 
-export type VariantsGetResponseValueJp2List = ReadonlyArray<string>;
+export type VariantsGetResponseValueJp2List = Array<string>;
 export const VariantsGetResponseValueJp2List = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<VariantsGetResponseValueJp2List>;
 
-export type VariantsGetResponseValueJpegList = ReadonlyArray<string>;
+export type VariantsGetResponseValueJpegList = Array<string>;
 export const VariantsGetResponseValueJpegList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<VariantsGetResponseValueJpegList>;
 
-export type VariantsGetResponseValueJpgList = ReadonlyArray<string>;
+export type VariantsGetResponseValueJpgList = Array<string>;
 export const VariantsGetResponseValueJpgList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<VariantsGetResponseValueJpgList>;
 
-export type VariantsGetResponseValueJpg2List = ReadonlyArray<string>;
+export type VariantsGetResponseValueJpg2List = Array<string>;
 export const VariantsGetResponseValueJpg2List = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<VariantsGetResponseValueJpg2List>;
 
-export type VariantsGetResponseValuePngList = ReadonlyArray<string>;
+export type VariantsGetResponseValuePngList = Array<string>;
 export const VariantsGetResponseValuePngList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<VariantsGetResponseValuePngList>;
 
-export type VariantsGetResponseValueTifList = ReadonlyArray<string>;
+export type VariantsGetResponseValueTifList = Array<string>;
 export const VariantsGetResponseValueTifList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<VariantsGetResponseValueTifList>;
 
-export type VariantsGetResponseValueTiffList = ReadonlyArray<string>;
+export type VariantsGetResponseValueTiffList = Array<string>;
 export const VariantsGetResponseValueTiffList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<VariantsGetResponseValueTiffList>;
 
-export type VariantsGetResponseValueWebpList = ReadonlyArray<string>;
+export type VariantsGetResponseValueWebpList = Array<string>;
 export const VariantsGetResponseValueWebpList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<VariantsGetResponseValueWebpList>;
@@ -914,7 +914,7 @@ export const OriginCloudRegionsListResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OriginCloudRegionsListResultItem>;
 
 export type OriginCloudRegionsListResultList =
-  ReadonlyArray<OriginCloudRegionsListResultItem>;
+  Array<OriginCloudRegionsListResultItem>;
 export const OriginCloudRegionsListResultList = /*@__PURE__*/ S.Array(
   OriginCloudRegionsListResultItem,
 ) as any as S.Schema<OriginCloudRegionsListResultList>;
@@ -982,7 +982,7 @@ export const OriginCloudRegionsBulkDeleteV1ResponseValueFailedItem =
   }) as any as S.Schema<OriginCloudRegionsBulkDeleteV1ResponseValueFailedItem>;
 
 export type OriginCloudRegionsBulkDeleteV1ResponseValueFailedList =
-  ReadonlyArray<OriginCloudRegionsBulkDeleteV1ResponseValueFailedItem>;
+  Array<OriginCloudRegionsBulkDeleteV1ResponseValueFailedItem>;
 export const OriginCloudRegionsBulkDeleteV1ResponseValueFailedList =
   /*@__PURE__*/ S.Array(
     OriginCloudRegionsBulkDeleteV1ResponseValueFailedItem,
@@ -1011,7 +1011,7 @@ export const OriginCloudRegionsBulkDeleteV1ResponseValueSucceededItem =
   }) as any as S.Schema<OriginCloudRegionsBulkDeleteV1ResponseValueSucceededItem>;
 
 export type OriginCloudRegionsBulkDeleteV1ResponseValueSucceededList =
-  ReadonlyArray<OriginCloudRegionsBulkDeleteV1ResponseValueSucceededItem>;
+  Array<OriginCloudRegionsBulkDeleteV1ResponseValueSucceededItem>;
 export const OriginCloudRegionsBulkDeleteV1ResponseValueSucceededList =
   /*@__PURE__*/ S.Array(
     OriginCloudRegionsBulkDeleteV1ResponseValueSucceededItem,
@@ -1082,7 +1082,7 @@ export const OriginCloudRegionsBulkEditV1RequestBodyItem =
   }) as any as S.Schema<OriginCloudRegionsBulkEditV1RequestBodyItem>;
 
 export type OriginCloudRegionsBulkEditV1RequestBodyList =
-  ReadonlyArray<OriginCloudRegionsBulkEditV1RequestBodyItem>;
+  Array<OriginCloudRegionsBulkEditV1RequestBodyItem>;
 export const OriginCloudRegionsBulkEditV1RequestBodyList =
   /*@__PURE__*/ S.Array(
     OriginCloudRegionsBulkEditV1RequestBodyItem,
@@ -1137,7 +1137,7 @@ export const OriginCloudRegionsBulkEditV1ResponseValueFailedItem =
   }) as any as S.Schema<OriginCloudRegionsBulkEditV1ResponseValueFailedItem>;
 
 export type OriginCloudRegionsBulkEditV1ResponseValueFailedList =
-  ReadonlyArray<OriginCloudRegionsBulkEditV1ResponseValueFailedItem>;
+  Array<OriginCloudRegionsBulkEditV1ResponseValueFailedItem>;
 export const OriginCloudRegionsBulkEditV1ResponseValueFailedList =
   /*@__PURE__*/ S.Array(
     OriginCloudRegionsBulkEditV1ResponseValueFailedItem,
@@ -1166,7 +1166,7 @@ export const OriginCloudRegionsBulkEditV1ResponseValueSucceededItem =
   }) as any as S.Schema<OriginCloudRegionsBulkEditV1ResponseValueSucceededItem>;
 
 export type OriginCloudRegionsBulkEditV1ResponseValueSucceededList =
-  ReadonlyArray<OriginCloudRegionsBulkEditV1ResponseValueSucceededItem>;
+  Array<OriginCloudRegionsBulkEditV1ResponseValueSucceededItem>;
 export const OriginCloudRegionsBulkEditV1ResponseValueSucceededList =
   /*@__PURE__*/ S.Array(
     OriginCloudRegionsBulkEditV1ResponseValueSucceededItem,
@@ -1445,7 +1445,7 @@ export const OriginCloudRegionsEditV1ResponseValueItem =
   }) as any as S.Schema<OriginCloudRegionsEditV1ResponseValueItem>;
 
 export type OriginCloudRegionsEditV1ResponseValueList =
-  ReadonlyArray<OriginCloudRegionsEditV1ResponseValueItem>;
+  Array<OriginCloudRegionsEditV1ResponseValueItem>;
 export const OriginCloudRegionsEditV1ResponseValueList = /*@__PURE__*/ S.Array(
   OriginCloudRegionsEditV1ResponseValueItem,
 ) as any as S.Schema<OriginCloudRegionsEditV1ResponseValueList>;
@@ -1600,7 +1600,7 @@ export const OriginCloudRegionsListV1ResponseValueItem =
   }) as any as S.Schema<OriginCloudRegionsListV1ResponseValueItem>;
 
 export type OriginCloudRegionsListV1ResponseValueList =
-  ReadonlyArray<OriginCloudRegionsListV1ResponseValueItem>;
+  Array<OriginCloudRegionsListV1ResponseValueItem>;
 export const OriginCloudRegionsListV1ResponseValueList = /*@__PURE__*/ S.Array(
   OriginCloudRegionsListV1ResponseValueItem,
 ) as any as S.Schema<OriginCloudRegionsListV1ResponseValueList>;
@@ -1647,7 +1647,7 @@ export const OriginCloudRegionsSupportedRegionsV1Request =
   }) as any as S.Schema<OriginCloudRegionsSupportedRegionsV1Request>;
 
 export type OriginCloudRegionsSupportedRegionsV1ResponseVendorsValueItemUpperTierColosList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const OriginCloudRegionsSupportedRegionsV1ResponseVendorsValueItemUpperTierColosList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1673,7 +1673,7 @@ export const OriginCloudRegionsSupportedRegionsV1ResponseVendorsValueItem =
   }) as any as S.Schema<OriginCloudRegionsSupportedRegionsV1ResponseVendorsValueItem>;
 
 export type OriginCloudRegionsSupportedRegionsV1ResponseVendorsValueList =
-  ReadonlyArray<OriginCloudRegionsSupportedRegionsV1ResponseVendorsValueItem>;
+  Array<OriginCloudRegionsSupportedRegionsV1ResponseVendorsValueItem>;
 export const OriginCloudRegionsSupportedRegionsV1ResponseVendorsValueList =
   /*@__PURE__*/ S.Array(
     OriginCloudRegionsSupportedRegionsV1ResponseVendorsValueItem,
@@ -1870,57 +1870,57 @@ export const PatchSmartTieredCacheResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchSmartTieredCacheResponse",
 }) as any as S.Schema<PatchSmartTieredCacheResponse>;
 
-export type VariantsEditRequestValueAvifList = ReadonlyArray<string>;
+export type VariantsEditRequestValueAvifList = Array<string>;
 export const VariantsEditRequestValueAvifList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<VariantsEditRequestValueAvifList>;
 
-export type VariantsEditRequestValueBmpList = ReadonlyArray<string>;
+export type VariantsEditRequestValueBmpList = Array<string>;
 export const VariantsEditRequestValueBmpList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<VariantsEditRequestValueBmpList>;
 
-export type VariantsEditRequestValueGifList = ReadonlyArray<string>;
+export type VariantsEditRequestValueGifList = Array<string>;
 export const VariantsEditRequestValueGifList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<VariantsEditRequestValueGifList>;
 
-export type VariantsEditRequestValueJp2List = ReadonlyArray<string>;
+export type VariantsEditRequestValueJp2List = Array<string>;
 export const VariantsEditRequestValueJp2List = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<VariantsEditRequestValueJp2List>;
 
-export type VariantsEditRequestValueJpegList = ReadonlyArray<string>;
+export type VariantsEditRequestValueJpegList = Array<string>;
 export const VariantsEditRequestValueJpegList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<VariantsEditRequestValueJpegList>;
 
-export type VariantsEditRequestValueJpgList = ReadonlyArray<string>;
+export type VariantsEditRequestValueJpgList = Array<string>;
 export const VariantsEditRequestValueJpgList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<VariantsEditRequestValueJpgList>;
 
-export type VariantsEditRequestValueJpg2List = ReadonlyArray<string>;
+export type VariantsEditRequestValueJpg2List = Array<string>;
 export const VariantsEditRequestValueJpg2List = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<VariantsEditRequestValueJpg2List>;
 
-export type VariantsEditRequestValuePngList = ReadonlyArray<string>;
+export type VariantsEditRequestValuePngList = Array<string>;
 export const VariantsEditRequestValuePngList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<VariantsEditRequestValuePngList>;
 
-export type VariantsEditRequestValueTifList = ReadonlyArray<string>;
+export type VariantsEditRequestValueTifList = Array<string>;
 export const VariantsEditRequestValueTifList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<VariantsEditRequestValueTifList>;
 
-export type VariantsEditRequestValueTiffList = ReadonlyArray<string>;
+export type VariantsEditRequestValueTiffList = Array<string>;
 export const VariantsEditRequestValueTiffList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<VariantsEditRequestValueTiffList>;
 
-export type VariantsEditRequestValueWebpList = ReadonlyArray<string>;
+export type VariantsEditRequestValueWebpList = Array<string>;
 export const VariantsEditRequestValueWebpList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<VariantsEditRequestValueWebpList>;
@@ -1993,57 +1993,57 @@ export const PatchVariantRequest = /*@__PURE__*/ S.suspend(() =>
 export type VariantsEditResponseId = "variants";
 export const VariantsEditResponseId = /*@__PURE__*/ S.String;
 
-export type VariantsEditResponseValueAvifList = ReadonlyArray<string>;
+export type VariantsEditResponseValueAvifList = Array<string>;
 export const VariantsEditResponseValueAvifList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<VariantsEditResponseValueAvifList>;
 
-export type VariantsEditResponseValueBmpList = ReadonlyArray<string>;
+export type VariantsEditResponseValueBmpList = Array<string>;
 export const VariantsEditResponseValueBmpList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<VariantsEditResponseValueBmpList>;
 
-export type VariantsEditResponseValueGifList = ReadonlyArray<string>;
+export type VariantsEditResponseValueGifList = Array<string>;
 export const VariantsEditResponseValueGifList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<VariantsEditResponseValueGifList>;
 
-export type VariantsEditResponseValueJp2List = ReadonlyArray<string>;
+export type VariantsEditResponseValueJp2List = Array<string>;
 export const VariantsEditResponseValueJp2List = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<VariantsEditResponseValueJp2List>;
 
-export type VariantsEditResponseValueJpegList = ReadonlyArray<string>;
+export type VariantsEditResponseValueJpegList = Array<string>;
 export const VariantsEditResponseValueJpegList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<VariantsEditResponseValueJpegList>;
 
-export type VariantsEditResponseValueJpgList = ReadonlyArray<string>;
+export type VariantsEditResponseValueJpgList = Array<string>;
 export const VariantsEditResponseValueJpgList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<VariantsEditResponseValueJpgList>;
 
-export type VariantsEditResponseValueJpg2List = ReadonlyArray<string>;
+export type VariantsEditResponseValueJpg2List = Array<string>;
 export const VariantsEditResponseValueJpg2List = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<VariantsEditResponseValueJpg2List>;
 
-export type VariantsEditResponseValuePngList = ReadonlyArray<string>;
+export type VariantsEditResponseValuePngList = Array<string>;
 export const VariantsEditResponseValuePngList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<VariantsEditResponseValuePngList>;
 
-export type VariantsEditResponseValueTifList = ReadonlyArray<string>;
+export type VariantsEditResponseValueTifList = Array<string>;
 export const VariantsEditResponseValueTifList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<VariantsEditResponseValueTifList>;
 
-export type VariantsEditResponseValueTiffList = ReadonlyArray<string>;
+export type VariantsEditResponseValueTiffList = Array<string>;
 export const VariantsEditResponseValueTiffList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<VariantsEditResponseValueTiffList>;
 
-export type VariantsEditResponseValueWebpList = ReadonlyArray<string>;
+export type VariantsEditResponseValueWebpList = Array<string>;
 export const VariantsEditResponseValueWebpList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<VariantsEditResponseValueWebpList>;
@@ -2112,22 +2112,22 @@ export const PatchVariantResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchVariantResponse",
 }) as any as S.Schema<PatchVariantResponse>;
 
-export type PurgeRequestTagsList = ReadonlyArray<string>;
+export type PurgeRequestTagsList = Array<string>;
 export const PurgeRequestTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PurgeRequestTagsList>;
 
-export type PurgeRequestHostsList = ReadonlyArray<string>;
+export type PurgeRequestHostsList = Array<string>;
 export const PurgeRequestHostsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PurgeRequestHostsList>;
 
-export type PurgeRequestPrefixesList = ReadonlyArray<string>;
+export type PurgeRequestPrefixesList = Array<string>;
 export const PurgeRequestPrefixesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PurgeRequestPrefixesList>;
 
-export type PurgeRequestFilesCachePurgeSingleFileList = ReadonlyArray<string>;
+export type PurgeRequestFilesCachePurgeSingleFileList = Array<string>;
 export const PurgeRequestFilesCachePurgeSingleFileList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PurgeRequestFilesCachePurgeSingleFileList>;
@@ -2157,7 +2157,7 @@ export const PurgeRequestFilesCachePurgeSingleFileWithURLAndHeadersItem =
   }) as any as S.Schema<PurgeRequestFilesCachePurgeSingleFileWithURLAndHeadersItem>;
 
 export type PurgeRequestFilesCachePurgeSingleFileWithURLAndHeadersList =
-  ReadonlyArray<PurgeRequestFilesCachePurgeSingleFileWithURLAndHeadersItem>;
+  Array<PurgeRequestFilesCachePurgeSingleFileWithURLAndHeadersItem>;
 export const PurgeRequestFilesCachePurgeSingleFileWithURLAndHeadersList =
   /*@__PURE__*/ S.Array(
     PurgeRequestFilesCachePurgeSingleFileWithURLAndHeadersItem,
@@ -2216,23 +2216,23 @@ export const PurgeCacheResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PurgeCacheResponse",
 }) as any as S.Schema<PurgeCacheResponse>;
 
-export type PurgeEnvironmentRequestTagsList = ReadonlyArray<string>;
+export type PurgeEnvironmentRequestTagsList = Array<string>;
 export const PurgeEnvironmentRequestTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PurgeEnvironmentRequestTagsList>;
 
-export type PurgeEnvironmentRequestHostsList = ReadonlyArray<string>;
+export type PurgeEnvironmentRequestHostsList = Array<string>;
 export const PurgeEnvironmentRequestHostsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PurgeEnvironmentRequestHostsList>;
 
-export type PurgeEnvironmentRequestPrefixesList = ReadonlyArray<string>;
+export type PurgeEnvironmentRequestPrefixesList = Array<string>;
 export const PurgeEnvironmentRequestPrefixesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PurgeEnvironmentRequestPrefixesList>;
 
 export type PurgeEnvironmentRequestFilesCachePurgeSingleFileList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PurgeEnvironmentRequestFilesCachePurgeSingleFileList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2264,7 +2264,7 @@ export const PurgeEnvironmentRequestFilesCachePurgeSingleFileWithURLAndHeadersIt
   }) as any as S.Schema<PurgeEnvironmentRequestFilesCachePurgeSingleFileWithURLAndHeadersItem>;
 
 export type PurgeEnvironmentRequestFilesCachePurgeSingleFileWithURLAndHeadersList =
-  ReadonlyArray<PurgeEnvironmentRequestFilesCachePurgeSingleFileWithURLAndHeadersItem>;
+  Array<PurgeEnvironmentRequestFilesCachePurgeSingleFileWithURLAndHeadersItem>;
 export const PurgeEnvironmentRequestFilesCachePurgeSingleFileWithURLAndHeadersList =
   /*@__PURE__*/ S.Array(
     PurgeEnvironmentRequestFilesCachePurgeSingleFileWithURLAndHeadersItem,
@@ -2465,7 +2465,7 @@ export const SupportedRegionsOriginCloudRegionRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<SupportedRegionsOriginCloudRegionRequest>;
 
 export type OriginCloudRegionsSupportedRegionsResponseVendorsValueItemUpperTierColosList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const OriginCloudRegionsSupportedRegionsResponseVendorsValueItemUpperTierColosList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2491,7 +2491,7 @@ export const OriginCloudRegionsSupportedRegionsResponseVendorsValueItem =
   }) as any as S.Schema<OriginCloudRegionsSupportedRegionsResponseVendorsValueItem>;
 
 export type OriginCloudRegionsSupportedRegionsResponseVendorsValueList =
-  ReadonlyArray<OriginCloudRegionsSupportedRegionsResponseVendorsValueItem>;
+  Array<OriginCloudRegionsSupportedRegionsResponseVendorsValueItem>;
 export const OriginCloudRegionsSupportedRegionsResponseVendorsValueList =
   /*@__PURE__*/ S.Array(
     OriginCloudRegionsSupportedRegionsResponseVendorsValueItem,

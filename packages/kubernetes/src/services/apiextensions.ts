@@ -48,7 +48,7 @@ export const IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap =
 
 /** Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. Finalizers may be processed and removed in any order. Order is NOT enforced because it introduces significant risk of stuck finalizers. finalizers is a shared field, any actor with permission can reorder it. If the finalizer list is processed in order, then this can lead to a situation in which the component responsible for the first finalizer in the list is waiting for a signal (field value, external system, or other) produced by a component responsible for a finalizer later in the list, resulting in a deadlock. Without enforced ordering finalizers are free to order amongst themselves and are not vulnerable to ordering changes in the list. */
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -98,7 +98,7 @@ export const IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry =
 
 /** ManagedFields maps workflow-id and version to the set of fields that are managed by that workflow. This is mostly for internal housekeeping, and users typically shouldn't need to set or understand this field. A workflow can be the user's name, a controller's name, or the name of a specific apply path like "ci-cd". The set of fields is always in the version that the workflow used when modifying the object. */
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaManagedFieldsList =
-  ReadonlyArray<IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry>;
+  Array<IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry>;
 export const IoK8sApimachineryPkgApisMetaV1ObjectMetaManagedFieldsList =
   /*@__PURE__*/ S.Array(
     IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry,
@@ -135,7 +135,7 @@ export const IoK8sApimachineryPkgApisMetaV1OwnerReference =
 
 /** List of objects depended by this object. If ALL objects in the list have been deleted, this object will be garbage collected. If this object is managed by a controller, then an entry in this list will point to this controller, with the controller field set to true. There cannot be more than one managing controller. */
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaOwnerReferencesList =
-  ReadonlyArray<IoK8sApimachineryPkgApisMetaV1OwnerReference>;
+  Array<IoK8sApimachineryPkgApisMetaV1OwnerReference>;
 export const IoK8sApimachineryPkgApisMetaV1ObjectMetaOwnerReferencesList =
   /*@__PURE__*/ S.Array(
     IoK8sApimachineryPkgApisMetaV1OwnerReference,
@@ -254,7 +254,7 @@ export const IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfi
 
 /** conversionReviewVersions is an ordered list of preferred `ConversionReview` versions the Webhook expects. The API server will use the first version in the list which it supports. If none of the versions specified in this list are supported by API server, conversion will fail for the custom resource. If a persisted Webhook configuration specifies allowed versions and does not include any versions known to the API Server, calls to the webhook will fail. */
 export type IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversionConversionReviewVersionsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversionConversionReviewVersionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -303,7 +303,7 @@ export const IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConv
 
 /** categories is a list of grouped resources this custom resource belongs to (e.g. 'all'). This is published in API discovery documents, and used by clients to support invocations like `kubectl get all`. */
 export type IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNamesCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNamesCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -311,7 +311,7 @@ export const IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefi
 
 /** shortNames are short names for the resource, exposed in API discovery documents, and used by clients to support invocations like `kubectl get <shortname>`. It must be all lowercase. */
 export type IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNamesShortNamesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNamesShortNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -383,14 +383,14 @@ export const IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceColu
 
 /** additionalPrinterColumns specifies additional columns returned in Table output. See https://kubernetes.io/docs/reference/using-api/api-concepts/#receiving-resources-as-tables for details. If no columns are specified, a single column displaying the age of the custom resource is used. */
 export type IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionVersionAdditionalPrinterColumnsList =
-  ReadonlyArray<IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceColumnDefinition>;
+  Array<IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceColumnDefinition>;
 export const IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionVersionAdditionalPrinterColumnsList =
   /*@__PURE__*/ S.Array(
     IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceColumnDefinition,
   ) as any as S.Schema<IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionVersionAdditionalPrinterColumnsList>;
 
 export type IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsAllOfList =
-  ReadonlyArray<IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps>;
+  Array<IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps>;
 export const IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsAllOfList =
   /*@__PURE__*/ S.Array(
     S.suspend(
@@ -399,7 +399,7 @@ export const IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsAll
   ) as any as S.Schema<IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsAllOfList>;
 
 export type IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsAnyOfList =
-  ReadonlyArray<IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps>;
+  Array<IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps>;
 export const IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsAnyOfList =
   /*@__PURE__*/ S.Array(
     S.suspend(
@@ -430,7 +430,7 @@ export const IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDep
   ) as any as S.Schema<IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependenciesMap>;
 
 export type IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsEnumList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsEnumList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -453,7 +453,7 @@ export const IoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentat
   }) as any as S.Schema<IoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation>;
 
 export type IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOneOfList =
-  ReadonlyArray<IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps>;
+  Array<IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps>;
 export const IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOneOfList =
   /*@__PURE__*/ S.Array(
     S.suspend(
@@ -490,7 +490,7 @@ export const IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPro
   ) as any as S.Schema<IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPropertiesMap>;
 
 export type IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsRequiredList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsRequiredList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -498,7 +498,7 @@ export const IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsReq
 
 /** x-kubernetes-list-map-keys annotates an array with the x-kubernetes-list-type `map` by specifying the keys used as the index of the map. This tag MUST only be used on lists that have the "x-kubernetes-list-type" extension set to "map". Also, the values specified for this attribute must be a scalar typed field of the child structure (no nesting is supported). The properties specified must either be required or have a default value, to ensure those properties are present for all list items. */
 export type IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsXKubernetesListMapKeysList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsXKubernetesListMapKeysList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -536,7 +536,7 @@ export const IoK8sApiextensionsApiserverPkgApisApiextensionsV1ValidationRule =
 
 /** x-kubernetes-validations describes a list of validation rules written in the CEL expression language. */
 export type IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsXKubernetesValidationsList =
-  ReadonlyArray<IoK8sApiextensionsApiserverPkgApisApiextensionsV1ValidationRule>;
+  Array<IoK8sApiextensionsApiserverPkgApisApiextensionsV1ValidationRule>;
 export const IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsXKubernetesValidationsList =
   /*@__PURE__*/ S.Array(
     IoK8sApiextensionsApiserverPkgApisApiextensionsV1ValidationRule,
@@ -725,7 +725,7 @@ export const IoK8sApiextensionsApiserverPkgApisApiextensionsV1SelectableField =
 
 /** selectableFields specifies paths to fields that may be used as field selectors. A maximum of 8 selectable fields are allowed. See https://kubernetes.io/docs/concepts/overview/working-with-objects/field-selectors */
 export type IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionVersionSelectableFieldsList =
-  ReadonlyArray<IoK8sApiextensionsApiserverPkgApisApiextensionsV1SelectableField>;
+  Array<IoK8sApiextensionsApiserverPkgApisApiextensionsV1SelectableField>;
 export const IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionVersionSelectableFieldsList =
   /*@__PURE__*/ S.Array(
     IoK8sApiextensionsApiserverPkgApisApiextensionsV1SelectableField,
@@ -821,7 +821,7 @@ export const IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefi
 
 /** versions is the list of all API versions of the defined custom resource. Version names are used to compute the order in which served versions are listed in API discovery. If the version string is "kube-like", it will sort above non "kube-like" version strings, which are ordered lexicographically. "Kube-like" versions start with a "v", then are followed by a number (the major version), then optionally the string "alpha" or "beta" and another number (the minor version). These are sorted first by GA > beta > alpha (where GA is a version with no suffix such as beta or alpha), and then by comparing major version, then minor version. An example sorted list of versions: v10, v2, v1, v11beta2, v10beta3, v3beta1, v12alpha1, v11alpha2, foo1, foo10. */
 export type IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionSpecVersionsList =
-  ReadonlyArray<IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionVersion>;
+  Array<IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionVersion>;
 export const IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionSpecVersionsList =
   /*@__PURE__*/ S.Array(
     IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionVersion,
@@ -893,7 +893,7 @@ export const IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefi
 
 /** conditions indicate state for particular aspects of a CustomResourceDefinition */
 export type IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatusConditionsList =
-  ReadonlyArray<IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionCondition>;
+  Array<IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionCondition>;
 export const IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatusConditionsList =
   /*@__PURE__*/ S.Array(
     IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionCondition,
@@ -901,7 +901,7 @@ export const IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefi
 
 /** storedVersions lists all versions of CustomResources that were ever persisted. Tracking these versions allows a migration path for stored versions in etcd. The field is mutable so a migration controller can finish a migration to another version (ensuring no old objects are left in storage), and then remove the rest of the versions from this list. Versions may not be removed from `spec.versions` while they exist in this list. */
 export type IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatusStoredVersionsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatusStoredVersionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1123,7 +1123,7 @@ export const IoK8sApimachineryPkgApisMetaV1StatusCause =
 
 /** The Causes array includes more details associated with the StatusReason failure. Not all StatusReasons may provide detailed causes. */
 export type IoK8sApimachineryPkgApisMetaV1StatusDetailsCausesList =
-  ReadonlyArray<IoK8sApimachineryPkgApisMetaV1StatusCause>;
+  Array<IoK8sApimachineryPkgApisMetaV1StatusCause>;
 export const IoK8sApimachineryPkgApisMetaV1StatusDetailsCausesList =
   /*@__PURE__*/ S.Array(
     IoK8sApimachineryPkgApisMetaV1StatusCause,
@@ -1326,7 +1326,7 @@ export const IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR =
 
 /** a map of client CIDR to server address that is serving this group. This is to help clients reach servers in the most network-efficient way possible. Clients can use the appropriate server address as per the CIDR that they match. In case of multiple matches, clients should use the longest matching CIDR. The server returns only those CIDRs that it thinks that the client can match. For example: the master will return an internal IP CIDR only, if the client reaches the server using an internal IP. Server looks at X-Forwarded-For header or X-Real-Ip header or request.RemoteAddr (in that order) to get the client IP. */
 export type IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList =
-  ReadonlyArray<IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR>;
+  Array<IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR>;
 export const IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList =
   /*@__PURE__*/ S.Array(
     IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR,
@@ -1334,7 +1334,7 @@ export const IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsLis
 
 /** versions are the versions supported in this group. */
 export type IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList =
-  ReadonlyArray<IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery>;
+  Array<IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery>;
 export const IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList =
   /*@__PURE__*/ S.Array(
     IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery,
@@ -1389,7 +1389,7 @@ export const GetApiextensionsV1APIResourcesRequest = /*@__PURE__*/ S.suspend(
 
 /** categories is a list of the grouped resources this resource belongs to (e.g. 'all') */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1397,15 +1397,14 @@ export const IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList =
 
 /** shortNames is a list of suggested short names of the resource. */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList>;
 
 /** verbs is a list of supported kube verbs (this includes get, list, watch, create, update, patch, delete, deletecollection, and proxy) */
-export type IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList =
-  ReadonlyArray<string>;
+export type IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList = Array<string>;
 export const IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1458,7 +1457,7 @@ export const IoK8sApimachineryPkgApisMetaV1APIResource =
 
 /** resources contains the name of the resources and if they are namespaced. */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList =
-  ReadonlyArray<IoK8sApimachineryPkgApisMetaV1APIResource>;
+  Array<IoK8sApimachineryPkgApisMetaV1APIResource>;
 export const IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList =
   /*@__PURE__*/ S.Array(
     IoK8sApimachineryPkgApisMetaV1APIResource,
@@ -1541,7 +1540,7 @@ export const ListApiextensionsV1CustomResourceDefinitionRequest =
 
 /** items list individual CustomResourceDefinition objects */
 export type IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionListItemsList =
-  ReadonlyArray<IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition>;
+  Array<IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition>;
 export const IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionListItemsList =
   /*@__PURE__*/ S.Array(
     IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition,

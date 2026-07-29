@@ -98,7 +98,7 @@ export const AgentDeviceId = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AgentDeviceId" }) as any as S.Schema<AgentDeviceId>;
 
-export type AgentDeviceIdList = ReadonlyArray<AgentDeviceId>;
+export type AgentDeviceIdList = Array<AgentDeviceId>;
 export const AgentDeviceIdList = /*@__PURE__*/ S.Array(
   AgentDeviceId,
 ) as any as S.Schema<AgentDeviceIdList>;
@@ -129,7 +129,7 @@ export const QueryRequestInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "QueryRequestInput",
 }) as any as S.Schema<QueryRequestInput>;
 
-export type QueryRequestInputList = ReadonlyArray<QueryRequestInput>;
+export type QueryRequestInputList = Array<QueryRequestInput>;
 export const QueryRequestInputList = /*@__PURE__*/ S.Array(
   QueryRequestInput,
 ) as any as S.Schema<QueryRequestInputList>;
@@ -228,17 +228,17 @@ export const TraitData = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TraitData" }) as any as S.Schema<TraitData>;
 
-export type TraitDataList = ReadonlyArray<TraitData>;
+export type TraitDataList = Array<TraitData>;
 export const TraitDataList = /*@__PURE__*/ S.Array(
   TraitData,
 ) as any as S.Schema<TraitDataList>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
 
-export type ComponentList = ReadonlyArray<Component>;
+export type ComponentList = Array<Component>;
 export const ComponentList = /*@__PURE__*/ S.Array(
   S.suspend(() => Component),
 ) as any as S.Schema<ComponentList>;
@@ -340,7 +340,7 @@ export const EventData = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "EventData" }) as any as S.Schema<EventData>;
 
-export type EventDataList = ReadonlyArray<EventData>;
+export type EventDataList = Array<EventData>;
 export const EventDataList = /*@__PURE__*/ S.Array(
   EventData,
 ) as any as S.Schema<EventDataList>;
@@ -359,7 +359,7 @@ export const Events = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Events" }) as any as S.Schema<Events>;
 
-export type EventsList = ReadonlyArray<Events>;
+export type EventsList = Array<Events>;
 export const EventsList = /*@__PURE__*/ S.Array(
   Events,
 ) as any as S.Schema<EventsList>;
@@ -378,7 +378,7 @@ export const HomeEvents = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "HomeEvents" }) as any as S.Schema<HomeEvents>;
 
-export type HomeEventsList = ReadonlyArray<HomeEvents>;
+export type HomeEventsList = Array<HomeEvents>;
 export const HomeEventsList = /*@__PURE__*/ S.Array(
   HomeEvents,
 ) as any as S.Schema<HomeEventsList>;
@@ -399,7 +399,7 @@ export const ComponentTraitUpdates = /*@__PURE__*/ S.suspend(() =>
   identifier: "ComponentTraitUpdates",
 }) as any as S.Schema<ComponentTraitUpdates>;
 
-export type ComponentTraitUpdatesList = ReadonlyArray<ComponentTraitUpdates>;
+export type ComponentTraitUpdatesList = Array<ComponentTraitUpdates>;
 export const ComponentTraitUpdatesList = /*@__PURE__*/ S.Array(
   ComponentTraitUpdates,
 ) as any as S.Schema<ComponentTraitUpdatesList>;
@@ -420,7 +420,7 @@ export const HomeTraitUpdates = /*@__PURE__*/ S.suspend(() =>
   identifier: "HomeTraitUpdates",
 }) as any as S.Schema<HomeTraitUpdates>;
 
-export type HomeTraitUpdatesList = ReadonlyArray<HomeTraitUpdates>;
+export type HomeTraitUpdatesList = Array<HomeTraitUpdates>;
 export const HomeTraitUpdatesList = /*@__PURE__*/ S.Array(
   HomeTraitUpdates,
 ) as any as S.Schema<HomeTraitUpdatesList>;
@@ -607,7 +607,7 @@ export const AgentOtherDeviceId = /*@__PURE__*/ S.suspend(() =>
   identifier: "AgentOtherDeviceId",
 }) as any as S.Schema<AgentOtherDeviceId>;
 
-export type AgentOtherDeviceIdList = ReadonlyArray<AgentOtherDeviceId>;
+export type AgentOtherDeviceIdList = Array<AgentOtherDeviceId>;
 export const AgentOtherDeviceIdList = /*@__PURE__*/ S.Array(
   AgentOtherDeviceId,
 ) as any as S.Schema<AgentOtherDeviceIdList>;
@@ -693,7 +693,7 @@ export const Device = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Device" }) as any as S.Schema<Device>;
 
-export type DeviceList = ReadonlyArray<Device>;
+export type DeviceList = Array<Device>;
 export const DeviceList = /*@__PURE__*/ S.Array(
   Device,
 ) as any as S.Schema<DeviceList>;

@@ -138,8 +138,7 @@ export const StamphogDigestChannelsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "StamphogDigestChannelsListRequest",
 }) as any as S.Schema<StamphogDigestChannelsListRequest>;
 
-export type PaginatedDigestChannelListResultsList =
-  ReadonlyArray<DigestChannel>;
+export type PaginatedDigestChannelListResultsList = Array<DigestChannel>;
 export const PaginatedDigestChannelListResultsList = /*@__PURE__*/ S.Array(
   DigestChannel,
 ) as any as S.Schema<PaginatedDigestChannelListResultsList>;
@@ -317,7 +316,7 @@ export const DigestRun = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DigestRun" }) as any as S.Schema<DigestRun>;
 
-export type PaginatedDigestRunListResultsList = ReadonlyArray<DigestRun>;
+export type PaginatedDigestRunListResultsList = Array<DigestRun>;
 export const PaginatedDigestRunListResultsList = /*@__PURE__*/ S.Array(
   DigestRun,
 ) as any as S.Schema<PaginatedDigestRunListResultsList>;
@@ -450,7 +449,7 @@ export const StamphogPullRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StamphogPullRequest>;
 
 export type PaginatedStamphogPullRequestListResultsList =
-  ReadonlyArray<StamphogPullRequest>;
+  Array<StamphogPullRequest>;
 export const PaginatedStamphogPullRequestListResultsList =
   /*@__PURE__*/ S.Array(
     StamphogPullRequest,
@@ -661,7 +660,7 @@ export const StamphogRepoConfigsListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StamphogRepoConfigsListRequest>;
 
 export type PaginatedStamphogRepoConfigListResultsList =
-  ReadonlyArray<StamphogRepoConfig>;
+  Array<StamphogRepoConfig>;
 export const PaginatedStamphogRepoConfigListResultsList = /*@__PURE__*/ S.Array(
   StamphogRepoConfig,
 ) as any as S.Schema<PaginatedStamphogRepoConfigListResultsList>;
@@ -774,13 +773,13 @@ export const StamphogRepoConfigsSyncInstallationCreateRequest =
 
 /** Repo configs now bound to this team for the installation (created this call or already present). */
 export type StamphogSyncInstallationResponseSyncedList =
-  ReadonlyArray<StamphogRepoConfig>;
+  Array<StamphogRepoConfig>;
 export const StamphogSyncInstallationResponseSyncedList = /*@__PURE__*/ S.Array(
   StamphogRepoConfig,
 ) as any as S.Schema<StamphogSyncInstallationResponseSyncedList>;
 
 /** Repository full names skipped because another team already owns them under this installation. */
-export type StamphogSyncInstallationResponseSkippedList = ReadonlyArray<string>;
+export type StamphogSyncInstallationResponseSkippedList = Array<string>;
 export const StamphogSyncInstallationResponseSkippedList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -804,7 +803,7 @@ export const StamphogDiscoveredInstallation = /*@__PURE__*/ S.suspend(() =>
 
 /** Populated only on the discovery path when the caller can reach MORE than one installation of this App: nothing was bound, and the user must pick which installation to connect. The frontend re-runs the authorize flow and calls back with the chosen installation_id, which the explicit path verifies. Empty whenever a bind happened (or nothing was found). */
 export type StamphogSyncInstallationResponseInstallationsList =
-  ReadonlyArray<StamphogDiscoveredInstallation>;
+  Array<StamphogDiscoveredInstallation>;
 export const StamphogSyncInstallationResponseInstallationsList =
   /*@__PURE__*/ S.Array(
     StamphogDiscoveredInstallation,
@@ -1010,7 +1009,7 @@ export const ReviewRun = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ReviewRun" }) as any as S.Schema<ReviewRun>;
 
-export type PaginatedReviewRunListResultsList = ReadonlyArray<ReviewRun>;
+export type PaginatedReviewRunListResultsList = Array<ReviewRun>;
 export const PaginatedReviewRunListResultsList = /*@__PURE__*/ S.Array(
   ReviewRun,
 ) as any as S.Schema<PaginatedReviewRunListResultsList>;

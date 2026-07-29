@@ -325,7 +325,7 @@ export const RulesCreateResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "RulesCreateResultItem",
 }) as any as S.Schema<RulesCreateResultItem>;
 
-export type RulesCreateResultList = ReadonlyArray<RulesCreateResultItem>;
+export type RulesCreateResultList = Array<RulesCreateResultItem>;
 export const RulesCreateResultList = /*@__PURE__*/ S.Array(
   RulesCreateResultItem,
 ) as any as S.Schema<RulesCreateResultList>;
@@ -361,7 +361,7 @@ export const CreateRequestAdditionalRoutesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateRequestAdditionalRoutesItem>;
 
 export type CreateRequestAdditionalRoutesList =
-  ReadonlyArray<CreateRequestAdditionalRoutesItem>;
+  Array<CreateRequestAdditionalRoutesItem>;
 export const CreateRequestAdditionalRoutesList = /*@__PURE__*/ S.Array(
   CreateRequestAdditionalRoutesItem,
 ) as any as S.Schema<CreateRequestAdditionalRoutesList>;
@@ -435,7 +435,7 @@ export const CreateRequestDefaultTemplateLanguage = /*@__PURE__*/ S.String;
 export type CreateRequestEnabledOriginCommandsItem = "revoke";
 export const CreateRequestEnabledOriginCommandsItem = /*@__PURE__*/ S.String;
 
-export type CreateRequestEnabledOriginCommandsList = ReadonlyArray<
+export type CreateRequestEnabledOriginCommandsList = Array<
   CreateRequestEnabledOriginCommandsItem | (string & {})
 >;
 export const CreateRequestEnabledOriginCommandsList = /*@__PURE__*/ S.Array(
@@ -587,7 +587,7 @@ export const CreateResponseAdditionalRoutesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateResponseAdditionalRoutesItem>;
 
 export type CreateResponseAdditionalRoutesList =
-  ReadonlyArray<CreateResponseAdditionalRoutesItem>;
+  Array<CreateResponseAdditionalRoutesItem>;
 export const CreateResponseAdditionalRoutesList = /*@__PURE__*/ S.Array(
   CreateResponseAdditionalRoutesItem,
 ) as any as S.Schema<CreateResponseAdditionalRoutesList>;
@@ -662,7 +662,7 @@ export type CreateResponseEnabledOriginCommandsItem = "revoke";
 export const CreateResponseEnabledOriginCommandsItem = /*@__PURE__*/ S.String;
 
 export type CreateResponseEnabledOriginCommandsList =
-  ReadonlyArray<CreateResponseEnabledOriginCommandsItem>;
+  Array<CreateResponseEnabledOriginCommandsItem>;
 export const CreateResponseEnabledOriginCommandsList = /*@__PURE__*/ S.Array(
   CreateResponseEnabledOriginCommandsItem,
 ) as any as S.Schema<CreateResponseEnabledOriginCommandsList>;
@@ -895,7 +895,7 @@ export const RulesDeleteResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "RulesDeleteResultItem",
 }) as any as S.Schema<RulesDeleteResultItem>;
 
-export type RulesDeleteResultList = ReadonlyArray<RulesDeleteResultItem>;
+export type RulesDeleteResultList = Array<RulesDeleteResultItem>;
 export const RulesDeleteResultList = /*@__PURE__*/ S.Array(
   RulesDeleteResultItem,
 ) as any as S.Schema<RulesDeleteResultList>;
@@ -1185,7 +1185,7 @@ export const RulesGetResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "RulesGetResultItem",
 }) as any as S.Schema<RulesGetResultItem>;
 
-export type RulesGetResultList = ReadonlyArray<RulesGetResultItem>;
+export type RulesGetResultList = Array<RulesGetResultItem>;
 export const RulesGetResultList = /*@__PURE__*/ S.Array(
   RulesGetResultItem,
 ) as any as S.Schema<RulesGetResultList>;
@@ -1333,7 +1333,7 @@ export const GetResponseAdditionalRoutesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetResponseAdditionalRoutesItem>;
 
 export type GetResponseAdditionalRoutesList =
-  ReadonlyArray<GetResponseAdditionalRoutesItem>;
+  Array<GetResponseAdditionalRoutesItem>;
 export const GetResponseAdditionalRoutesList = /*@__PURE__*/ S.Array(
   GetResponseAdditionalRoutesItem,
 ) as any as S.Schema<GetResponseAdditionalRoutesList>;
@@ -1408,7 +1408,7 @@ export type GetResponseEnabledOriginCommandsItem = "revoke";
 export const GetResponseEnabledOriginCommandsItem = /*@__PURE__*/ S.String;
 
 export type GetResponseEnabledOriginCommandsList =
-  ReadonlyArray<GetResponseEnabledOriginCommandsItem>;
+  Array<GetResponseEnabledOriginCommandsItem>;
 export const GetResponseEnabledOriginCommandsList = /*@__PURE__*/ S.Array(
   GetResponseEnabledOriginCommandsItem,
 ) as any as S.Schema<GetResponseEnabledOriginCommandsList>;
@@ -1656,7 +1656,7 @@ export const EventsListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "EventsListResultItem",
 }) as any as S.Schema<EventsListResultItem>;
 
-export type EventsListResultList = ReadonlyArray<EventsListResultItem>;
+export type EventsListResultList = Array<EventsListResultItem>;
 export const EventsListResultList = /*@__PURE__*/ S.Array(
   EventsListResultItem,
 ) as any as S.Schema<EventsListResultList>;
@@ -1718,7 +1718,7 @@ export const ListResultItemAdditionalRoutesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListResultItemAdditionalRoutesItem>;
 
 export type ListResultItemAdditionalRoutesList =
-  ReadonlyArray<ListResultItemAdditionalRoutesItem>;
+  Array<ListResultItemAdditionalRoutesItem>;
 export const ListResultItemAdditionalRoutesList = /*@__PURE__*/ S.Array(
   ListResultItemAdditionalRoutesItem,
 ) as any as S.Schema<ListResultItemAdditionalRoutesList>;
@@ -1793,7 +1793,7 @@ export type ListResultItemEnabledOriginCommandsItem = "revoke";
 export const ListResultItemEnabledOriginCommandsItem = /*@__PURE__*/ S.String;
 
 export type ListResultItemEnabledOriginCommandsList =
-  ReadonlyArray<ListResultItemEnabledOriginCommandsItem>;
+  Array<ListResultItemEnabledOriginCommandsItem>;
 export const ListResultItemEnabledOriginCommandsList = /*@__PURE__*/ S.Array(
   ListResultItemEnabledOriginCommandsItem,
 ) as any as S.Schema<ListResultItemEnabledOriginCommandsList>;
@@ -1930,7 +1930,7 @@ export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ListResultItem" }) as any as S.Schema<ListResultItem>;
 
-export type ListResultList = ReadonlyArray<ListResultItem>;
+export type ListResultList = Array<ListResultItem>;
 export const ListResultList = /*@__PURE__*/ S.Array(
   ListResultItem,
 ) as any as S.Schema<ListResultList>;
@@ -2275,7 +2275,7 @@ export const RulesEditResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "RulesEditResultItem",
 }) as any as S.Schema<RulesEditResultItem>;
 
-export type RulesEditResultList = ReadonlyArray<RulesEditResultItem>;
+export type RulesEditResultList = Array<RulesEditResultItem>;
 export const RulesEditResultList = /*@__PURE__*/ S.Array(
   RulesEditResultItem,
 ) as any as S.Schema<RulesEditResultList>;
@@ -2351,7 +2351,7 @@ export const EditRequestAdditionalRoutesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EditRequestAdditionalRoutesItem>;
 
 export type EditRequestAdditionalRoutesList =
-  ReadonlyArray<EditRequestAdditionalRoutesItem>;
+  Array<EditRequestAdditionalRoutesItem>;
 export const EditRequestAdditionalRoutesList = /*@__PURE__*/ S.Array(
   EditRequestAdditionalRoutesItem,
 ) as any as S.Schema<EditRequestAdditionalRoutesList>;
@@ -2425,7 +2425,7 @@ export const EditRequestDefaultTemplateLanguage = /*@__PURE__*/ S.String;
 export type EditRequestEnabledOriginCommandsItem = "revoke";
 export const EditRequestEnabledOriginCommandsItem = /*@__PURE__*/ S.String;
 
-export type EditRequestEnabledOriginCommandsList = ReadonlyArray<
+export type EditRequestEnabledOriginCommandsList = Array<
   EditRequestEnabledOriginCommandsItem | (string & {})
 >;
 export const EditRequestEnabledOriginCommandsList = /*@__PURE__*/ S.Array(
@@ -2577,7 +2577,7 @@ export const EditResponseAdditionalRoutesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EditResponseAdditionalRoutesItem>;
 
 export type EditResponseAdditionalRoutesList =
-  ReadonlyArray<EditResponseAdditionalRoutesItem>;
+  Array<EditResponseAdditionalRoutesItem>;
 export const EditResponseAdditionalRoutesList = /*@__PURE__*/ S.Array(
   EditResponseAdditionalRoutesItem,
 ) as any as S.Schema<EditResponseAdditionalRoutesList>;
@@ -2652,7 +2652,7 @@ export type EditResponseEnabledOriginCommandsItem = "revoke";
 export const EditResponseEnabledOriginCommandsItem = /*@__PURE__*/ S.String;
 
 export type EditResponseEnabledOriginCommandsList =
-  ReadonlyArray<EditResponseEnabledOriginCommandsItem>;
+  Array<EditResponseEnabledOriginCommandsItem>;
 export const EditResponseEnabledOriginCommandsList = /*@__PURE__*/ S.Array(
   EditResponseEnabledOriginCommandsItem,
 ) as any as S.Schema<EditResponseEnabledOriginCommandsList>;
@@ -3062,8 +3062,7 @@ export const RulesUpdateRequestRulesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "RulesUpdateRequestRulesItem",
 }) as any as S.Schema<RulesUpdateRequestRulesItem>;
 
-export type RulesUpdateRequestRulesList =
-  ReadonlyArray<RulesUpdateRequestRulesItem>;
+export type RulesUpdateRequestRulesList = Array<RulesUpdateRequestRulesItem>;
 export const RulesUpdateRequestRulesList = /*@__PURE__*/ S.Array(
   RulesUpdateRequestRulesItem,
 ) as any as S.Schema<RulesUpdateRequestRulesList>;
@@ -3124,7 +3123,7 @@ export const RulesUpdateResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "RulesUpdateResultItem",
 }) as any as S.Schema<RulesUpdateResultItem>;
 
-export type RulesUpdateResultList = ReadonlyArray<RulesUpdateResultItem>;
+export type RulesUpdateResultList = Array<RulesUpdateResultItem>;
 export const RulesUpdateResultList = /*@__PURE__*/ S.Array(
   RulesUpdateResultItem,
 ) as any as S.Schema<RulesUpdateResultList>;
@@ -3160,7 +3159,7 @@ export const UpdateRequestAdditionalRoutesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateRequestAdditionalRoutesItem>;
 
 export type UpdateRequestAdditionalRoutesList =
-  ReadonlyArray<UpdateRequestAdditionalRoutesItem>;
+  Array<UpdateRequestAdditionalRoutesItem>;
 export const UpdateRequestAdditionalRoutesList = /*@__PURE__*/ S.Array(
   UpdateRequestAdditionalRoutesItem,
 ) as any as S.Schema<UpdateRequestAdditionalRoutesList>;
@@ -3234,7 +3233,7 @@ export const UpdateRequestDefaultTemplateLanguage = /*@__PURE__*/ S.String;
 export type UpdateRequestEnabledOriginCommandsItem = "revoke";
 export const UpdateRequestEnabledOriginCommandsItem = /*@__PURE__*/ S.String;
 
-export type UpdateRequestEnabledOriginCommandsList = ReadonlyArray<
+export type UpdateRequestEnabledOriginCommandsList = Array<
   UpdateRequestEnabledOriginCommandsItem | (string & {})
 >;
 export const UpdateRequestEnabledOriginCommandsList = /*@__PURE__*/ S.Array(
@@ -3388,7 +3387,7 @@ export const UpdateResponseAdditionalRoutesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateResponseAdditionalRoutesItem>;
 
 export type UpdateResponseAdditionalRoutesList =
-  ReadonlyArray<UpdateResponseAdditionalRoutesItem>;
+  Array<UpdateResponseAdditionalRoutesItem>;
 export const UpdateResponseAdditionalRoutesList = /*@__PURE__*/ S.Array(
   UpdateResponseAdditionalRoutesItem,
 ) as any as S.Schema<UpdateResponseAdditionalRoutesList>;
@@ -3463,7 +3462,7 @@ export type UpdateResponseEnabledOriginCommandsItem = "revoke";
 export const UpdateResponseEnabledOriginCommandsItem = /*@__PURE__*/ S.String;
 
 export type UpdateResponseEnabledOriginCommandsList =
-  ReadonlyArray<UpdateResponseEnabledOriginCommandsItem>;
+  Array<UpdateResponseEnabledOriginCommandsItem>;
 export const UpdateResponseEnabledOriginCommandsList = /*@__PURE__*/ S.Array(
   UpdateResponseEnabledOriginCommandsItem,
 ) as any as S.Schema<UpdateResponseEnabledOriginCommandsList>;

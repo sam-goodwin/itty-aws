@@ -118,7 +118,7 @@ export const SourceAccountType = /*@__PURE__*/ S.String;
 export type RoleArn = string;
 export interface SourceAwsConfiguration {
   accountId: string;
-  accountType: SourceAccountType;
+  accountType: SourceAccountType | (string & {});
   assumableRoleArn: string;
   externalId?: string;
 }
@@ -138,7 +138,7 @@ export const MonitorAccountType = /*@__PURE__*/ S.String;
 export interface AWSConfiguration {
   assumableRoleArn: string;
   accountId: string;
-  accountType: MonitorAccountType;
+  accountType: MonitorAccountType | (string & {});
 }
 export const AWSConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -156,7 +156,7 @@ export interface GitHubConfiguration {
   repoName: string;
   repoId: string;
   owner: string;
-  ownerType: GithubRepoOwnerType;
+  ownerType: GithubRepoOwnerType | (string & {});
   instanceIdentifier?: string;
   runtimeRoleArn?: string;
 }
@@ -788,7 +788,7 @@ export const CapabilityConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "CapabilityConfiguration",
 }) as any as S.Schema<CapabilityConfiguration>;
 export type AssociationCapabilities = {
-  [key in CapabilityType]?: CapabilityConfiguration;
+  [key in CapabilityType | (string & {})]?: CapabilityConfiguration;
 };
 export const AssociationCapabilities = /*@__PURE__*/ S.Record(
   CapabilityType,

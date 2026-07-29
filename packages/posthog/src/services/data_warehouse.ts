@@ -346,7 +346,7 @@ export const ManagedWarehouseSourceSummary = /*@__PURE__*/ S.suspend(() =>
 
 /** Per-source rollup of schema backfill and live import application statuses. Reflects only warehouse source imports with sync enabled — manage sources at /data-management/sources. */
 export type ManagedWarehouseSourcesStatusSourcesList =
-  ReadonlyArray<ManagedWarehouseSourceSummary>;
+  Array<ManagedWarehouseSourceSummary>;
 export const ManagedWarehouseSourcesStatusSourcesList = /*@__PURE__*/ S.Array(
   ManagedWarehouseSourceSummary,
 ) as any as S.Schema<ManagedWarehouseSourcesStatusSourcesList>;
@@ -462,7 +462,7 @@ export const ManagedWarehouseSourceTableStatus = /*@__PURE__*/ S.suspend(() =>
 
 /** Per-schema backfill and live import application status for the requested source. */
 export type ManagedWarehouseSourceSchemasResponseSchemasList =
-  ReadonlyArray<ManagedWarehouseSourceTableStatus>;
+  Array<ManagedWarehouseSourceTableStatus>;
 export const ManagedWarehouseSourceSchemasResponseSchemasList =
   /*@__PURE__*/ S.Array(
     ManagedWarehouseSourceTableStatus,

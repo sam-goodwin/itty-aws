@@ -261,8 +261,8 @@ export type HashAlgorithm = "SHA1" | "SHA256";
 export const HashAlgorithm = /*@__PURE__*/ S.String;
 
 export interface SigningConfigurationOverrides {
-  encryptionAlgorithm?: EncryptionAlgorithm;
-  hashAlgorithm?: HashAlgorithm;
+  encryptionAlgorithm?: EncryptionAlgorithm | (string & {});
+  hashAlgorithm?: HashAlgorithm | (string & {});
 }
 export const SigningConfigurationOverrides = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -277,7 +277,7 @@ export const ImageFormat = /*@__PURE__*/ S.String;
 
 export interface SigningPlatformOverrides {
   signingConfiguration?: SigningConfigurationOverrides;
-  signingImageFormat?: ImageFormat;
+  signingImageFormat?: ImageFormat | (string & {});
 }
 export const SigningPlatformOverrides = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -554,7 +554,7 @@ export const ValidityType = /*@__PURE__*/ S.String;
 
 export interface SignatureValidityPeriod {
   value?: number;
-  type?: ValidityType;
+  type?: ValidityType | (string & {});
 }
 export const SignatureValidityPeriod = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ value: S.optional(S.Number), type: S.optional(ValidityType) }),

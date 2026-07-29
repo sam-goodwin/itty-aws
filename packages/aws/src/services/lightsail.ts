@@ -665,7 +665,7 @@ export type AccessType = "public" | "private";
 export const AccessType = /*@__PURE__*/ S.String;
 
 export interface AccessRules {
-  getObject?: AccessType;
+  getObject?: AccessType | (string & {});
   allowPublicOverrides?: boolean;
 }
 export const AccessRules = /*@__PURE__*/ S.suspend(() =>
@@ -1181,7 +1181,9 @@ export const Environment = /*@__PURE__*/ S.Record(
 export type ContainerServiceProtocol = "HTTP" | "HTTPS" | "TCP" | "UDP";
 export const ContainerServiceProtocol = /*@__PURE__*/ S.String;
 
-export type PortMap = { [key: string]: ContainerServiceProtocol | undefined };
+export type PortMap = {
+  [key: string]: ContainerServiceProtocol | (string & {}) | undefined;
+};
 export const PortMap = /*@__PURE__*/ S.Record(
   S.String,
   ContainerServiceProtocol.pipe(S.optional),
@@ -1704,7 +1706,7 @@ export type BehaviorEnum = "dont-cache" | "cache";
 export const BehaviorEnum = /*@__PURE__*/ S.String;
 
 export interface CacheBehavior {
-  behavior?: BehaviorEnum;
+  behavior?: BehaviorEnum | (string & {});
 }
 export const CacheBehavior = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ behavior: S.optional(BehaviorEnum) }),
@@ -1713,7 +1715,7 @@ export type ForwardValues = "none" | "allow-list" | "all";
 export const ForwardValues = /*@__PURE__*/ S.String;
 
 export interface CookieObject {
-  option?: ForwardValues;
+  option?: ForwardValues | (string & {});
   cookiesAllowList?: string[];
 }
 export const CookieObject = /*@__PURE__*/ S.suspend(() =>
@@ -1740,10 +1742,10 @@ export type HeaderEnum =
   | "Referer";
 export const HeaderEnum = /*@__PURE__*/ S.String;
 
-export type HeaderForwardList = HeaderEnum[];
+export type HeaderForwardList = (HeaderEnum | (string & {}))[];
 export const HeaderForwardList = /*@__PURE__*/ S.Array(HeaderEnum);
 export interface HeaderObject {
-  option?: ForwardValues;
+  option?: ForwardValues | (string & {});
   headersAllowList?: HeaderEnum[];
 }
 export const HeaderObject = /*@__PURE__*/ S.suspend(() =>
@@ -1788,7 +1790,7 @@ export const CacheSettings = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CacheSettings" }) as any as S.Schema<CacheSettings>;
 export interface CacheBehaviorPerPath {
   path?: string;
-  behavior?: BehaviorEnum;
+  behavior?: BehaviorEnum | (string & {});
 }
 export const CacheBehaviorPerPath = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ path: S.optional(S.String), behavior: S.optional(BehaviorEnum) }),
@@ -3451,9 +3453,9 @@ export type MetricUnit =
   | "None";
 export const MetricUnit = /*@__PURE__*/ S.String;
 
-export type ContactProtocolsList = ContactProtocol[];
+export type ContactProtocolsList = (ContactProtocol | (string & {}))[];
 export const ContactProtocolsList = /*@__PURE__*/ S.Array(ContactProtocol);
-export type NotificationTriggerList = AlarmState[];
+export type NotificationTriggerList = (AlarmState | (string & {}))[];
 export const NotificationTriggerList = /*@__PURE__*/ S.Array(AlarmState);
 export interface Alarm {
   name?: string;

@@ -169,7 +169,7 @@ export const CommentsCountRetrieveResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CommentsCountRetrieveResponse",
 }) as any as S.Schema<CommentsCountRetrieveResponse>;
 
-export type CommentsCreateRequestMentionsList = ReadonlyArray<number>;
+export type CommentsCreateRequestMentionsList = Array<number>;
 export const CommentsCreateRequestMentionsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<CommentsCreateRequestMentionsList>;
@@ -286,8 +286,7 @@ export const CommentsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CommentsListRequest",
 }) as any as S.Schema<CommentsListRequest>;
 
-export type PaginatedCommentListOutputResultsList =
-  ReadonlyArray<CommentOutput>;
+export type PaginatedCommentListOutputResultsList = Array<CommentOutput>;
 export const PaginatedCommentListOutputResultsList = /*@__PURE__*/ S.Array(
   CommentOutput,
 ) as any as S.Schema<PaginatedCommentListOutputResultsList>;
@@ -307,7 +306,7 @@ export const PaginatedCommentListOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "PaginatedCommentListOutput",
 }) as any as S.Schema<PaginatedCommentListOutput>;
 
-export type CommentsPartialUpdateRequestMentionsList = ReadonlyArray<number>;
+export type CommentsPartialUpdateRequestMentionsList = Array<number>;
 export const CommentsPartialUpdateRequestMentionsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<CommentsPartialUpdateRequestMentionsList>;
@@ -424,7 +423,7 @@ export const CommentsThreadRetrieveResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CommentsThreadRetrieveResponse",
 }) as any as S.Schema<CommentsThreadRetrieveResponse>;
 
-export type CommentsUpdateRequestMentionsList = ReadonlyArray<number>;
+export type CommentsUpdateRequestMentionsList = Array<number>;
 export const CommentsUpdateRequestMentionsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<CommentsUpdateRequestMentionsList>;

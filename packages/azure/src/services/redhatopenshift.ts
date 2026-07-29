@@ -198,7 +198,7 @@ export interface MasterProfile {
   /** The Azure resource ID of the master subnet. */
   subnetId?: string;
   /** Whether master virtual machines are encrypted at host. */
-  encryptionAtHost?: EncryptionAtHost;
+  encryptionAtHost?: EncryptionAtHost | (string & {});
   /** The resource ID of an associated DiskEncryptionSet, if applicable. */
   diskEncryptionSetId?: string;
 }
@@ -224,7 +224,7 @@ export interface WorkerProfile {
   /** The number of worker VMs. */
   count?: number;
   /** Whether master virtual machines are encrypted at host. */
-  encryptionAtHost?: EncryptionAtHost;
+  encryptionAtHost?: EncryptionAtHost | (string & {});
   /** The resource ID of an associated DiskEncryptionSet, if applicable. */
   diskEncryptionSetId?: string;
 }
@@ -242,7 +242,7 @@ export const WorkerProfile = /*@__PURE__*/ S.suspend(() =>
 
 /** The cluster worker profiles. */
 export type OpenShiftClusterPropertiesInputWorkerProfilesList =
-  ReadonlyArray<WorkerProfile>;
+  Array<WorkerProfile>;
 export const OpenShiftClusterPropertiesInputWorkerProfilesList =
   /*@__PURE__*/ S.Array(
     WorkerProfile,
@@ -283,7 +283,7 @@ export const IngressProfileInput = /*@__PURE__*/ S.suspend(() =>
 
 /** The cluster ingress profiles. */
 export type OpenShiftClusterPropertiesInputIngressProfilesList =
-  ReadonlyArray<IngressProfileInput>;
+  Array<IngressProfileInput>;
 export const OpenShiftClusterPropertiesInputIngressProfilesList =
   /*@__PURE__*/ S.Array(
     IngressProfileInput,
@@ -567,7 +567,7 @@ export const EffectiveOutboundIP = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of effective outbound IP addresses of the public load balancer. */
 export type LoadBalancerProfileEffectiveOutboundIpsList =
-  ReadonlyArray<EffectiveOutboundIP>;
+  Array<EffectiveOutboundIP>;
 export const LoadBalancerProfileEffectiveOutboundIpsList =
   /*@__PURE__*/ S.Array(
     EffectiveOutboundIP,
@@ -615,8 +615,7 @@ export const NetworkProfile = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NetworkProfile" }) as any as S.Schema<NetworkProfile>;
 
 /** The cluster worker profiles. */
-export type OpenShiftClusterPropertiesWorkerProfilesList =
-  ReadonlyArray<WorkerProfile>;
+export type OpenShiftClusterPropertiesWorkerProfilesList = Array<WorkerProfile>;
 export const OpenShiftClusterPropertiesWorkerProfilesList =
   /*@__PURE__*/ S.Array(
     WorkerProfile,
@@ -624,7 +623,7 @@ export const OpenShiftClusterPropertiesWorkerProfilesList =
 
 /** The cluster worker profiles status. */
 export type OpenShiftClusterPropertiesWorkerProfilesStatusList =
-  ReadonlyArray<WorkerProfile>;
+  Array<WorkerProfile>;
 export const OpenShiftClusterPropertiesWorkerProfilesStatusList =
   /*@__PURE__*/ S.Array(
     WorkerProfile,
@@ -668,7 +667,7 @@ export const IngressProfile = /*@__PURE__*/ S.suspend(() =>
 
 /** The cluster ingress profiles. */
 export type OpenShiftClusterPropertiesIngressProfilesList =
-  ReadonlyArray<IngressProfile>;
+  Array<IngressProfile>;
 export const OpenShiftClusterPropertiesIngressProfilesList =
   /*@__PURE__*/ S.Array(
     IngressProfile,
@@ -1031,7 +1030,7 @@ export const OpenShiftCluster = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OpenShiftCluster>;
 
 /** The OpenShiftCluster items on this page */
-export type OpenShiftClusterListValueList = ReadonlyArray<OpenShiftCluster>;
+export type OpenShiftClusterListValueList = Array<OpenShiftCluster>;
 export const OpenShiftClusterListValueList = /*@__PURE__*/ S.Array(
   OpenShiftCluster,
 ) as any as S.Schema<OpenShiftClusterListValueList>;
@@ -1413,7 +1412,7 @@ export const OpenShiftVersion = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OpenShiftVersion>;
 
 /** The OpenShiftVersion items on this page */
-export type OpenShiftVersionListValueList = ReadonlyArray<OpenShiftVersion>;
+export type OpenShiftVersionListValueList = Array<OpenShiftVersion>;
 export const OpenShiftVersionListValueList = /*@__PURE__*/ S.Array(
   OpenShiftVersion,
 ) as any as S.Schema<OpenShiftVersionListValueList>;
@@ -1486,7 +1485,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** The Operation items on this page */
-export type OperationListValueList = ReadonlyArray<Operation>;
+export type OperationListValueList = Array<Operation>;
 export const OperationListValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationListValueList>;
@@ -1552,7 +1551,7 @@ export const PlatformWorkloadIdentityRole = /*@__PURE__*/ S.suspend(() =>
 
 /** PlatformWorkloadIdentityRoles represents the set of roles associated with this version. */
 export type PlatformWorkloadIdentityRoleSetPropertiesPlatformWorkloadIdentityRolesList =
-  ReadonlyArray<PlatformWorkloadIdentityRole>;
+  Array<PlatformWorkloadIdentityRole>;
 export const PlatformWorkloadIdentityRoleSetPropertiesPlatformWorkloadIdentityRolesList =
   /*@__PURE__*/ S.Array(
     PlatformWorkloadIdentityRole,
@@ -1652,7 +1651,7 @@ export const PlatformWorkloadIdentityRoleSet = /*@__PURE__*/ S.suspend(() =>
 
 /** The PlatformWorkloadIdentityRoleSet items on this page */
 export type PlatformWorkloadIdentityRoleSetListValueList =
-  ReadonlyArray<PlatformWorkloadIdentityRoleSet>;
+  Array<PlatformWorkloadIdentityRoleSet>;
 export const PlatformWorkloadIdentityRoleSetListValueList =
   /*@__PURE__*/ S.Array(
     PlatformWorkloadIdentityRoleSet,

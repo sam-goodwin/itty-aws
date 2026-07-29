@@ -204,9 +204,9 @@ export type MediaCapabilities = "SendReceive" | "Send" | "Receive" | "None";
 export const MediaCapabilities = /*@__PURE__*/ S.String;
 
 export interface AttendeeCapabilities {
-  Audio: MediaCapabilities;
-  Video: MediaCapabilities;
-  Content: MediaCapabilities;
+  Audio: MediaCapabilities | (string & {});
+  Video: MediaCapabilities | (string & {});
+  Content: MediaCapabilities | (string & {});
 }
 export const AttendeeCapabilities = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -396,7 +396,7 @@ export type MeetingFeatureStatus = "AVAILABLE" | "UNAVAILABLE";
 export const MeetingFeatureStatus = /*@__PURE__*/ S.String;
 
 export interface AudioFeatures {
-  EchoReduction?: MeetingFeatureStatus;
+  EchoReduction?: MeetingFeatureStatus | (string & {});
 }
 export const AudioFeatures = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ EchoReduction: S.optional(MeetingFeatureStatus) }),
@@ -405,7 +405,7 @@ export type VideoResolution = "None" | "HD" | "FHD";
 export const VideoResolution = /*@__PURE__*/ S.String;
 
 export interface VideoFeatures {
-  MaxResolution?: VideoResolution;
+  MaxResolution?: VideoResolution | (string & {});
 }
 export const VideoFeatures = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ MaxResolution: S.optional(VideoResolution) }),
@@ -414,7 +414,7 @@ export type ContentResolution = "None" | "FHD" | "UHD";
 export const ContentResolution = /*@__PURE__*/ S.String;
 
 export interface ContentFeatures {
-  MaxResolution?: ContentResolution;
+  MaxResolution?: ContentResolution | (string & {});
 }
 export const ContentFeatures = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ MaxResolution: S.optional(ContentResolution) }),

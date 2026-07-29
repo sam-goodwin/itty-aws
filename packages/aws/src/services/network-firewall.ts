@@ -259,7 +259,7 @@ export const IPAddressType = /*@__PURE__*/ S.String;
 
 export interface SubnetMapping {
   SubnetId: string;
-  IPAddressType?: IPAddressType;
+  IPAddressType?: IPAddressType | (string & {});
 }
 export const SubnetMapping = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ SubnetId: S.String, IPAddressType: S.optional(IPAddressType) }),
@@ -364,9 +364,9 @@ export type ProxyRulePhaseAction = "ALLOW" | "DENY" | "ALERT";
 export const ProxyRulePhaseAction = /*@__PURE__*/ S.String;
 
 export interface ProxyConfigDefaultRulePhaseActionsRequest {
-  PreDNS?: ProxyRulePhaseAction;
-  PreREQUEST?: ProxyRulePhaseAction;
-  PostRESPONSE?: ProxyRulePhaseAction;
+  PreDNS?: ProxyRulePhaseAction | (string & {});
+  PreREQUEST?: ProxyRulePhaseAction | (string & {});
+  PostRESPONSE?: ProxyRulePhaseAction | (string & {});
 }
 export const ProxyConfigDefaultRulePhaseActionsRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -435,7 +435,7 @@ export const EncryptionType = /*@__PURE__*/ S.String;
 
 export interface EncryptionConfiguration {
   KeyId?: string;
-  Type: EncryptionType;
+  Type: EncryptionType | (string & {});
 }
 export const EncryptionConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ KeyId: S.optional(S.String), Type: EncryptionType }),
@@ -445,7 +445,7 @@ export const EncryptionConfiguration = /*@__PURE__*/ S.suspend(() =>
 export type EnabledAnalysisType = "TLS_SNI" | "HTTP_HOST";
 export const EnabledAnalysisType = /*@__PURE__*/ S.String;
 
-export type EnabledAnalysisTypes = EnabledAnalysisType[];
+export type EnabledAnalysisTypes = (EnabledAnalysisType | (string & {}))[];
 export const EnabledAnalysisTypes = /*@__PURE__*/ S.Array(EnabledAnalysisType);
 export type TransitGatewayId = string;
 export interface CreateFirewallRequest {
@@ -741,7 +741,7 @@ export type OverrideAction = "DROP_TO_ALERT";
 export const OverrideAction = /*@__PURE__*/ S.String;
 
 export interface StatefulRuleGroupOverride {
-  Action?: OverrideAction;
+  Action?: OverrideAction | (string & {});
 }
 export const StatefulRuleGroupOverride = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Action: S.optional(OverrideAction) }),
@@ -785,8 +785,8 @@ export const FlowTimeouts = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ TcpIdleTimeoutSeconds: S.optional(S.Number) }),
 ).annotate({ identifier: "FlowTimeouts" }) as any as S.Schema<FlowTimeouts>;
 export interface StatefulEngineOptions {
-  RuleOrder?: RuleOrder;
-  StreamExceptionPolicy?: StreamExceptionPolicy;
+  RuleOrder?: RuleOrder | (string & {});
+  StreamExceptionPolicy?: StreamExceptionPolicy | (string & {});
   FlowTimeouts?: FlowTimeouts;
 }
 export const StatefulEngineOptions = /*@__PURE__*/ S.suspend(() =>
@@ -1123,7 +1123,7 @@ export const ProxyRuleConditionList = /*@__PURE__*/ S.Array(ProxyRuleCondition);
 export interface ProxyRule {
   ProxyRuleName?: string;
   Description?: string;
-  Action?: ProxyRulePhaseAction;
+  Action?: ProxyRulePhaseAction | (string & {});
   Conditions?: ProxyRuleCondition[];
 }
 export const ProxyRule = /*@__PURE__*/ S.suspend(() =>
@@ -1304,7 +1304,7 @@ export const RuleTargets = /*@__PURE__*/ S.Array(S.String);
 export type TargetType = "TLS_SNI" | "HTTP_HOST";
 export const TargetType = /*@__PURE__*/ S.String;
 
-export type TargetTypes = TargetType[];
+export type TargetTypes = (TargetType | (string & {}))[];
 export const TargetTypes = /*@__PURE__*/ S.Array(TargetType);
 export type GeneratedRulesType =
   | "ALLOWLIST"
@@ -1316,7 +1316,7 @@ export const GeneratedRulesType = /*@__PURE__*/ S.String;
 export interface RulesSourceList {
   Targets: string[];
   TargetTypes: TargetType[];
-  GeneratedRulesType: GeneratedRulesType;
+  GeneratedRulesType: GeneratedRulesType | (string & {});
 }
 export const RulesSourceList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1361,10 +1361,10 @@ export const StatefulRuleDirection = /*@__PURE__*/ S.String;
 
 export type Destination = string;
 export interface Header {
-  Protocol: StatefulRuleProtocol;
+  Protocol: StatefulRuleProtocol | (string & {});
   Source: string;
   SourcePort: string;
-  Direction: StatefulRuleDirection;
+  Direction: StatefulRuleDirection | (string & {});
   Destination: string;
   DestinationPort: string;
 }
@@ -1392,7 +1392,7 @@ export const RuleOption = /*@__PURE__*/ S.suspend(() =>
 export type RuleOptions = RuleOption[];
 export const RuleOptions = /*@__PURE__*/ S.Array(RuleOption);
 export interface StatefulRule {
-  Action: StatefulAction;
+  Action: StatefulAction | (string & {});
   Header: Header;
   RuleOptions: RuleOption[];
 }
@@ -1438,7 +1438,7 @@ export type TCPFlag =
   | "CWR";
 export const TCPFlag = /*@__PURE__*/ S.String;
 
-export type Flags = TCPFlag[];
+export type Flags = (TCPFlag | (string & {}))[];
 export const Flags = /*@__PURE__*/ S.Array(TCPFlag);
 export interface TCPFlagField {
   Flags: TCPFlag[];
@@ -1512,7 +1512,7 @@ export const RulesSource = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "RulesSource" }) as any as S.Schema<RulesSource>;
 export interface StatefulRuleOptions {
-  RuleOrder?: RuleOrder;
+  RuleOrder?: RuleOrder | (string & {});
 }
 export const StatefulRuleOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ RuleOrder: S.optional(RuleOrder) }),
@@ -1549,7 +1549,7 @@ export const SourceMetadata = /*@__PURE__*/ S.suspend(() =>
 export type SummaryRuleOption = "SID" | "MSG" | "METADATA";
 export const SummaryRuleOption = /*@__PURE__*/ S.String;
 
-export type SummaryRuleOptions = SummaryRuleOption[];
+export type SummaryRuleOptions = (SummaryRuleOption | (string & {}))[];
 export const SummaryRuleOptions = /*@__PURE__*/ S.Array(SummaryRuleOption);
 export interface SummaryConfiguration {
   RuleOptions?: SummaryRuleOption[];
@@ -1701,8 +1701,8 @@ export type RevocationCheckAction = "PASS" | "DROP" | "REJECT";
 export const RevocationCheckAction = /*@__PURE__*/ S.String;
 
 export interface CheckCertificateRevocationStatusActions {
-  RevokedStatusAction?: RevocationCheckAction;
-  UnknownStatusAction?: RevocationCheckAction;
+  RevokedStatusAction?: RevocationCheckAction | (string & {});
+  UnknownStatusAction?: RevocationCheckAction | (string & {});
 }
 export const CheckCertificateRevocationStatusActions = /*@__PURE__*/ S.suspend(
   () =>
@@ -2406,8 +2406,8 @@ export const LogDestinationMap = /*@__PURE__*/ S.Record(
   S.String.pipe(S.optional),
 );
 export interface LogDestinationConfig {
-  LogType: LogType;
-  LogDestinationType: LogDestinationType;
+  LogType: LogType | (string & {});
+  LogDestinationType: LogDestinationType | (string & {});
   LogDestination: { [key: string]: string | undefined };
 }
 export const LogDestinationConfig = /*@__PURE__*/ S.suspend(() =>

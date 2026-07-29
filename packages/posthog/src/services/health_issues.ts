@@ -96,7 +96,7 @@ export const HealthIssue = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "HealthIssue" }) as any as S.Schema<HealthIssue>;
 
-export type PaginatedHealthIssueListResultsList = ReadonlyArray<HealthIssue>;
+export type PaginatedHealthIssueListResultsList = Array<HealthIssue>;
 export const PaginatedHealthIssueListResultsList = /*@__PURE__*/ S.Array(
   HealthIssue,
 ) as any as S.Schema<PaginatedHealthIssueListResultsList>;

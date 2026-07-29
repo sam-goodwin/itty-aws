@@ -184,7 +184,7 @@ export interface Address {
   PostalCode?: string;
   PhoneNumber?: string;
   IsRestricted?: boolean;
-  Type?: AddressType;
+  Type?: AddressType | (string & {});
 }
 export const Address = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -246,8 +246,8 @@ export type TransferOption = "IMPORT" | "EXPORT" | "LOCAL_USE";
 export const TransferOption = /*@__PURE__*/ S.String;
 
 export interface TargetOnDeviceService {
-  ServiceName?: DeviceServiceName;
-  TransferOption?: TransferOption;
+  ServiceName?: DeviceServiceName | (string & {});
+  TransferOption?: TransferOption | (string & {});
 }
 export const TargetOnDeviceService = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -327,7 +327,7 @@ export const StorageUnit = /*@__PURE__*/ S.String;
 
 export interface NFSOnDeviceServiceConfiguration {
   StorageLimit?: number;
-  StorageUnit?: StorageUnit;
+  StorageUnit?: StorageUnit | (string & {});
 }
 export const NFSOnDeviceServiceConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -339,7 +339,7 @@ export const NFSOnDeviceServiceConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NFSOnDeviceServiceConfiguration>;
 export interface TGWOnDeviceServiceConfiguration {
   StorageLimit?: number;
-  StorageUnit?: StorageUnit;
+  StorageUnit?: StorageUnit | (string & {});
 }
 export const TGWOnDeviceServiceConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -366,7 +366,7 @@ export type ServiceSize = number;
 export type NodeFaultTolerance = number;
 export interface S3OnDeviceServiceConfiguration {
   StorageLimit?: number;
-  StorageUnit?: StorageUnit;
+  StorageUnit?: StorageUnit | (string & {});
   ServiceSize?: number;
   FaultTolerance?: number;
 }
@@ -431,7 +431,7 @@ export type JobState =
   | "Pending";
 export const JobState = /*@__PURE__*/ S.String;
 
-export type JobStateList = JobState[];
+export type JobStateList = (JobState | (string & {}))[];
 export const JobStateList = /*@__PURE__*/ S.Array(JobState);
 export interface Notification {
   SnsTopicARN?: string;
@@ -1305,7 +1305,7 @@ export const ServiceVersion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Version: S.optional(S.String) }),
 ).annotate({ identifier: "ServiceVersion" }) as any as S.Schema<ServiceVersion>;
 export interface DependentService {
-  ServiceName?: ServiceName;
+  ServiceName?: ServiceName | (string & {});
   ServiceVersion?: ServiceVersion;
 }
 export const DependentService = /*@__PURE__*/ S.suspend(() =>

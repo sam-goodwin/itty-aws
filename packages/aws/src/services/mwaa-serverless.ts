@@ -138,7 +138,7 @@ export type EncryptionType = "AWS_MANAGED_KEY" | "CUSTOMER_MANAGED_KEY";
 export const EncryptionType = /*@__PURE__*/ S.String;
 
 export interface EncryptionConfiguration {
-  Type: EncryptionType;
+  Type: EncryptionType | (string & {});
   KmsKeyId?: string;
 }
 export const EncryptionConfiguration = /*@__PURE__*/ S.suspend(() =>

@@ -149,7 +149,7 @@ export const CommentAuthor = /*@__PURE__*/ S.suspend(() =>
 
 export interface Comment {
   /** The status of the comment (only populated for admin users). */
-  status?: CommentStatusEnum;
+  status?: CommentStatusEnum | (string & {});
   /** Data about the comment this is in reply to. */
   inReplyTo?: CommentInReplyTo;
   /** RFC 3339 date-time when this comment was last updated. */
@@ -327,7 +327,7 @@ export const PostImagesItem = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PostImagesItem" }) as any as S.Schema<PostImagesItem>;
 
-export type PostImagesItemList = ReadonlyArray<PostImagesItem>;
+export type PostImagesItemList = Array<PostImagesItem>;
 export const PostImagesItemList = /*@__PURE__*/ S.Array(
   PostImagesItem,
 ) as any as S.Schema<PostImagesItemList>;
@@ -363,7 +363,7 @@ export const PostAuthor = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PostAuthor" }) as any as S.Schema<PostAuthor>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -378,7 +378,7 @@ export const PostBlog = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PostBlog" }) as any as S.Schema<PostBlog>;
 
-export type CommentList_ = ReadonlyArray<Comment>;
+export type CommentList_ = Array<Comment>;
 export const CommentList_ = /*@__PURE__*/ S.Array(
   Comment,
 ) as any as S.Schema<CommentList_>;
@@ -426,7 +426,7 @@ export const PostReaderCommentsEnum = /*@__PURE__*/ S.String;
 
 export interface Post {
   /** Status of the post. Only set for admin-level requests. */
-  status?: PostStatusEnum;
+  status?: PostStatusEnum | (string & {});
   /** The title link URL, similar to atom's related link. */
   titleLink?: string;
   /** Display image for the Post. */
@@ -456,7 +456,7 @@ export interface Post {
   /** The location for geotagged posts. */
   location?: PostLocation;
   /** Comment control and display setting for readers of this post. */
-  readerComments?: PostReaderCommentsEnum;
+  readerComments?: PostReaderCommentsEnum | (string & {});
   /** The identifier of this Post. */
   id?: string;
   /** The title of the Post. */
@@ -491,7 +491,7 @@ export const Post = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Post" }) as any as S.Schema<Post>;
 
-export type PostList_ = ReadonlyArray<Post>;
+export type PostList_ = Array<Post>;
 export const PostList_ = /*@__PURE__*/ S.Array(
   Post,
 ) as any as S.Schema<PostList_>;
@@ -825,7 +825,7 @@ export interface Page {
   /** The body content of this Page, in HTML. */
   content?: string;
   /** The status of the page for admin resources (either LIVE or DRAFT). */
-  status?: PageStatusEnum;
+  status?: PageStatusEnum | (string & {});
   /** The kind of this entity. Always blogger#page. */
   kind?: string;
   /** RFC 3339 date-time when this Page was published. */
@@ -856,7 +856,7 @@ export const Page = /*@__PURE__*/ S.suspend(() =>
 export type GetPageViewsRangeEnum = "all" | "30DAYS" | "7DAYS";
 export const GetPageViewsRangeEnum = /*@__PURE__*/ S.String;
 
-export type GetPageViewsRangeEnumList = ReadonlyArray<
+export type GetPageViewsRangeEnumList = Array<
   GetPageViewsRangeEnum | (string & {})
 >;
 export const GetPageViewsRangeEnumList = /*@__PURE__*/ S.Array(
@@ -903,7 +903,7 @@ export const PageviewsCountsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "PageviewsCountsItem",
 }) as any as S.Schema<PageviewsCountsItem>;
 
-export type PageviewsCountsItemList = ReadonlyArray<PageviewsCountsItem>;
+export type PageviewsCountsItemList = Array<PageviewsCountsItem>;
 export const PageviewsCountsItemList = /*@__PURE__*/ S.Array(
   PageviewsCountsItem,
 ) as any as S.Schema<PageviewsCountsItemList>;
@@ -1153,7 +1153,7 @@ export type ListByBlogCommentsStatusEnum =
   | "SPAM";
 export const ListByBlogCommentsStatusEnum = /*@__PURE__*/ S.String;
 
-export type ListByBlogCommentsStatusEnumList = ReadonlyArray<
+export type ListByBlogCommentsStatusEnumList = Array<
   ListByBlogCommentsStatusEnum | (string & {})
 >;
 export const ListByBlogCommentsStatusEnumList = /*@__PURE__*/ S.Array(
@@ -1221,7 +1221,7 @@ export const ListByUserBlogsViewEnum = /*@__PURE__*/ S.String;
 export type ListByUserBlogsStatusEnum = "LIVE" | "DELETED";
 export const ListByUserBlogsStatusEnum = /*@__PURE__*/ S.String;
 
-export type ListByUserBlogsStatusEnumList = ReadonlyArray<
+export type ListByUserBlogsStatusEnumList = Array<
   ListByUserBlogsStatusEnum | (string & {})
 >;
 export const ListByUserBlogsStatusEnumList = /*@__PURE__*/ S.Array(
@@ -1235,7 +1235,7 @@ export type ListByUserBlogsRoleEnum =
   | "ADMIN";
 export const ListByUserBlogsRoleEnum = /*@__PURE__*/ S.String;
 
-export type ListByUserBlogsRoleEnumList = ReadonlyArray<
+export type ListByUserBlogsRoleEnumList = Array<
   ListByUserBlogsRoleEnum | (string & {})
 >;
 export const ListByUserBlogsRoleEnumList = /*@__PURE__*/ S.Array(
@@ -1269,12 +1269,12 @@ export const ListByUserBlogsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListByUserBlogsRequest",
 }) as any as S.Schema<ListByUserBlogsRequest>;
 
-export type BlogUserInfoList = ReadonlyArray<BlogUserInfo>;
+export type BlogUserInfoList = Array<BlogUserInfo>;
 export const BlogUserInfoList = /*@__PURE__*/ S.Array(
   BlogUserInfo,
 ) as any as S.Schema<BlogUserInfoList>;
 
-export type BlogList_ = ReadonlyArray<Blog>;
+export type BlogList_ = Array<Blog>;
 export const BlogList_ = /*@__PURE__*/ S.Array(
   Blog,
 ) as any as S.Schema<BlogList_>;
@@ -1341,7 +1341,7 @@ export const ListCommentsRequest = /*@__PURE__*/ S.suspend(() =>
 export type ListPagesStatusEnum = "LIVE" | "DRAFT" | "SOFT_TRASHED";
 export const ListPagesStatusEnum = /*@__PURE__*/ S.String;
 
-export type ListPagesStatusEnumList = ReadonlyArray<
+export type ListPagesStatusEnumList = Array<
   ListPagesStatusEnum | (string & {})
 >;
 export const ListPagesStatusEnumList = /*@__PURE__*/ S.Array(
@@ -1382,7 +1382,7 @@ export const ListPagesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListPagesRequest",
 }) as any as S.Schema<ListPagesRequest>;
 
-export type PageList_ = ReadonlyArray<Page>;
+export type PageList_ = Array<Page>;
 export const PageList_ = /*@__PURE__*/ S.Array(
   Page,
 ) as any as S.Schema<PageList_>;
@@ -1413,7 +1413,7 @@ export type ListPostsStatusEnum =
   | "SOFT_TRASHED";
 export const ListPostsStatusEnum = /*@__PURE__*/ S.String;
 
-export type ListPostsStatusEnumList = ReadonlyArray<
+export type ListPostsStatusEnumList = Array<
   ListPostsStatusEnum | (string & {})
 >;
 export const ListPostsStatusEnumList = /*@__PURE__*/ S.Array(
@@ -1521,7 +1521,7 @@ export type ListPostUserInfosStatusEnum =
   | "SOFT_TRASHED";
 export const ListPostUserInfosStatusEnum = /*@__PURE__*/ S.String;
 
-export type ListPostUserInfosStatusEnumList = ReadonlyArray<
+export type ListPostUserInfosStatusEnumList = Array<
   ListPostUserInfosStatusEnum | (string & {})
 >;
 export const ListPostUserInfosStatusEnumList = /*@__PURE__*/ S.Array(
@@ -1565,7 +1565,7 @@ export const ListPostUserInfosRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListPostUserInfosRequest",
 }) as any as S.Schema<ListPostUserInfosRequest>;
 
-export type PostUserInfoList = ReadonlyArray<PostUserInfo>;
+export type PostUserInfoList = Array<PostUserInfo>;
 export const PostUserInfoList = /*@__PURE__*/ S.Array(
   PostUserInfo,
 ) as any as S.Schema<PostUserInfoList>;

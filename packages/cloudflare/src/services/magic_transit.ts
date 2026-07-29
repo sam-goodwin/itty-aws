@@ -593,7 +593,7 @@ export const CfInterconnectsBulkUpdateResponseModifiedInterconnectsItem =
   }) as any as S.Schema<CfInterconnectsBulkUpdateResponseModifiedInterconnectsItem>;
 
 export type CfInterconnectsBulkUpdateResponseModifiedInterconnectsList =
-  ReadonlyArray<CfInterconnectsBulkUpdateResponseModifiedInterconnectsItem>;
+  Array<CfInterconnectsBulkUpdateResponseModifiedInterconnectsItem>;
 export const CfInterconnectsBulkUpdateResponseModifiedInterconnectsList =
   /*@__PURE__*/ S.Array(
     CfInterconnectsBulkUpdateResponseModifiedInterconnectsItem,
@@ -642,7 +642,7 @@ export const BulkPutGreTunnelsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BulkPutGreTunnelsRequest>;
 
 export type GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgpExtraPrefixesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgpExtraPrefixesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -853,7 +853,7 @@ export const GreTunnelsBulkUpdateResponseModifiedGreTunnelsItem =
   }) as any as S.Schema<GreTunnelsBulkUpdateResponseModifiedGreTunnelsItem>;
 
 export type GreTunnelsBulkUpdateResponseModifiedGreTunnelsList =
-  ReadonlyArray<GreTunnelsBulkUpdateResponseModifiedGreTunnelsItem>;
+  Array<GreTunnelsBulkUpdateResponseModifiedGreTunnelsItem>;
 export const GreTunnelsBulkUpdateResponseModifiedGreTunnelsList =
   /*@__PURE__*/ S.Array(
     GreTunnelsBulkUpdateResponseModifiedGreTunnelsItem,
@@ -902,7 +902,7 @@ export const BulkPutIpsecTunnelsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BulkPutIpsecTunnelsRequest>;
 
 export type IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpExtraPrefixesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpExtraPrefixesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1154,7 +1154,7 @@ export const IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItem =
   }) as any as S.Schema<IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItem>;
 
 export type IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsList =
-  ReadonlyArray<IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItem>;
+  Array<IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItem>;
 export const IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsList =
   /*@__PURE__*/ S.Array(
     IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItem,
@@ -1178,15 +1178,14 @@ export const BulkPutIpsecTunnelsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "BulkPutIpsecTunnelsResponse",
 }) as any as S.Schema<BulkPutIpsecTunnelsResponse>;
 
-export type RoutesBulkUpdateRequestRoutesItemScopeColoNamesList =
-  ReadonlyArray<string>;
+export type RoutesBulkUpdateRequestRoutesItemScopeColoNamesList = Array<string>;
 export const RoutesBulkUpdateRequestRoutesItemScopeColoNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<RoutesBulkUpdateRequestRoutesItemScopeColoNamesList>;
 
 export type RoutesBulkUpdateRequestRoutesItemScopeColoRegionsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RoutesBulkUpdateRequestRoutesItemScopeColoRegionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1247,7 +1246,7 @@ export const RoutesBulkUpdateRequestRoutesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RoutesBulkUpdateRequestRoutesItem>;
 
 export type RoutesBulkUpdateRequestRoutesList =
-  ReadonlyArray<RoutesBulkUpdateRequestRoutesItem>;
+  Array<RoutesBulkUpdateRequestRoutesItem>;
 export const RoutesBulkUpdateRequestRoutesList = /*@__PURE__*/ S.Array(
   RoutesBulkUpdateRequestRoutesItem,
 ) as any as S.Schema<RoutesBulkUpdateRequestRoutesList>;
@@ -1275,14 +1274,14 @@ export const BulkPutRoutesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BulkPutRoutesRequest>;
 
 export type RoutesBulkUpdateResponseModifiedRoutesItemScopeColoNamesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RoutesBulkUpdateResponseModifiedRoutesItemScopeColoNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<RoutesBulkUpdateResponseModifiedRoutesItemScopeColoNamesList>;
 
 export type RoutesBulkUpdateResponseModifiedRoutesItemScopeColoRegionsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RoutesBulkUpdateResponseModifiedRoutesItemScopeColoRegionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1350,7 +1349,7 @@ export const RoutesBulkUpdateResponseModifiedRoutesItem =
   }) as any as S.Schema<RoutesBulkUpdateResponseModifiedRoutesItem>;
 
 export type RoutesBulkUpdateResponseModifiedRoutesList =
-  ReadonlyArray<RoutesBulkUpdateResponseModifiedRoutesItem>;
+  Array<RoutesBulkUpdateResponseModifiedRoutesItem>;
 export const RoutesBulkUpdateResponseModifiedRoutesList = /*@__PURE__*/ S.Array(
   RoutesBulkUpdateResponseModifiedRoutesItem,
 ) as any as S.Schema<RoutesBulkUpdateResponseModifiedRoutesList>;
@@ -1373,17 +1372,17 @@ export const BulkPutRoutesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "BulkPutRoutesResponse",
 }) as any as S.Schema<BulkPutRoutesResponse>;
 
-export type AppsCreateRequestHostnamesList = ReadonlyArray<string>;
+export type AppsCreateRequestHostnamesList = Array<string>;
 export const AppsCreateRequestHostnamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AppsCreateRequestHostnamesList>;
 
-export type AppsCreateRequestIpSubnetsList = ReadonlyArray<string>;
+export type AppsCreateRequestIpSubnetsList = Array<string>;
 export const AppsCreateRequestIpSubnetsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AppsCreateRequestIpSubnetsList>;
 
-export type AppsCreateRequestSourceSubnetsList = ReadonlyArray<string>;
+export type AppsCreateRequestSourceSubnetsList = Array<string>;
 export const AppsCreateRequestSourceSubnetsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AppsCreateRequestSourceSubnetsList>;
@@ -1427,17 +1426,17 @@ export const CreateAppRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateAppRequest",
 }) as any as S.Schema<CreateAppRequest>;
 
-export type AppsCreateResponseHostnamesList = ReadonlyArray<string>;
+export type AppsCreateResponseHostnamesList = Array<string>;
 export const AppsCreateResponseHostnamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AppsCreateResponseHostnamesList>;
 
-export type AppsCreateResponseIpSubnetsList = ReadonlyArray<string>;
+export type AppsCreateResponseIpSubnetsList = Array<string>;
 export const AppsCreateResponseIpSubnetsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AppsCreateResponseIpSubnetsList>;
 
-export type AppsCreateResponseSourceSubnetsList = ReadonlyArray<string>;
+export type AppsCreateResponseSourceSubnetsList = Array<string>;
 export const AppsCreateResponseSourceSubnetsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AppsCreateResponseSourceSubnetsList>;
@@ -1518,7 +1517,7 @@ export const Cf1SitesCreateRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<Cf1SitesCreateRequestBodyItem>;
 
 export type Cf1SitesCreateRequestBodyList =
-  ReadonlyArray<Cf1SitesCreateRequestBodyItem>;
+  Array<Cf1SitesCreateRequestBodyItem>;
 export const Cf1SitesCreateRequestBodyList = /*@__PURE__*/ S.Array(
   Cf1SitesCreateRequestBodyItem,
 ) as any as S.Schema<Cf1SitesCreateRequestBodyList>;
@@ -1587,7 +1586,7 @@ export const Cf1SitesCreateResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "Cf1SitesCreateResultItem",
 }) as any as S.Schema<Cf1SitesCreateResultItem>;
 
-export type Cf1SitesCreateResultList = ReadonlyArray<Cf1SitesCreateResultItem>;
+export type Cf1SitesCreateResultList = Array<Cf1SitesCreateResultItem>;
 export const Cf1SitesCreateResultList = /*@__PURE__*/ S.Array(
   Cf1SitesCreateResultItem,
 ) as any as S.Schema<Cf1SitesCreateResultList>;
@@ -1631,7 +1630,7 @@ export const Cf1SitesRampsCreateRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<Cf1SitesRampsCreateRequestBodyItem>;
 
 export type Cf1SitesRampsCreateRequestBodyList =
-  ReadonlyArray<Cf1SitesRampsCreateRequestBodyItem>;
+  Array<Cf1SitesRampsCreateRequestBodyItem>;
 export const Cf1SitesRampsCreateRequestBodyList = /*@__PURE__*/ S.Array(
   Cf1SitesRampsCreateRequestBodyItem,
 ) as any as S.Schema<Cf1SitesRampsCreateRequestBodyList>;
@@ -1775,7 +1774,7 @@ export const Cf1SitesRampsCreateResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<Cf1SitesRampsCreateResultItem>;
 
 export type Cf1SitesRampsCreateResultList =
-  ReadonlyArray<Cf1SitesRampsCreateResultItem>;
+  Array<Cf1SitesRampsCreateResultItem>;
 export const Cf1SitesRampsCreateResultList = /*@__PURE__*/ S.Array(
   Cf1SitesRampsCreateResultItem,
 ) as any as S.Schema<Cf1SitesRampsCreateResultList>;
@@ -1822,17 +1821,16 @@ export type ConnectorsCreateRequestInterruptWindowDaysOfWeekItem =
 export const ConnectorsCreateRequestInterruptWindowDaysOfWeekItem =
   /*@__PURE__*/ S.String;
 
-export type ConnectorsCreateRequestInterruptWindowDaysOfWeekList =
-  ReadonlyArray<
-    ConnectorsCreateRequestInterruptWindowDaysOfWeekItem | (string & {})
-  >;
+export type ConnectorsCreateRequestInterruptWindowDaysOfWeekList = Array<
+  ConnectorsCreateRequestInterruptWindowDaysOfWeekItem | (string & {})
+>;
 export const ConnectorsCreateRequestInterruptWindowDaysOfWeekList =
   /*@__PURE__*/ S.Array(
     ConnectorsCreateRequestInterruptWindowDaysOfWeekItem,
   ) as any as S.Schema<ConnectorsCreateRequestInterruptWindowDaysOfWeekList>;
 
 export type ConnectorsCreateRequestInterruptWindowEmbargoDatesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ConnectorsCreateRequestInterruptWindowEmbargoDatesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1905,14 +1903,14 @@ export const ConnectorsCreateResponseInterruptWindowDaysOfWeekItem =
   /*@__PURE__*/ S.String;
 
 export type ConnectorsCreateResponseInterruptWindowDaysOfWeekList =
-  ReadonlyArray<ConnectorsCreateResponseInterruptWindowDaysOfWeekItem>;
+  Array<ConnectorsCreateResponseInterruptWindowDaysOfWeekItem>;
 export const ConnectorsCreateResponseInterruptWindowDaysOfWeekList =
   /*@__PURE__*/ S.Array(
     ConnectorsCreateResponseInterruptWindowDaysOfWeekItem,
   ) as any as S.Schema<ConnectorsCreateResponseInterruptWindowDaysOfWeekList>;
 
 export type ConnectorsCreateResponseInterruptWindowEmbargoDatesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ConnectorsCreateResponseInterruptWindowEmbargoDatesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1988,7 +1986,7 @@ export const CreateConnectorResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateConnectorResponse",
 }) as any as S.Schema<CreateConnectorResponse>;
 
-export type GreTunnelsCreateRequestBgpExtraPrefixesList = ReadonlyArray<string>;
+export type GreTunnelsCreateRequestBgpExtraPrefixesList = Array<string>;
 export const GreTunnelsCreateRequestBgpExtraPrefixesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2140,8 +2138,7 @@ export const CreateGreTunnelRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateGreTunnelRequest",
 }) as any as S.Schema<CreateGreTunnelRequest>;
 
-export type GreTunnelsCreateResponseBgpExtraPrefixesList =
-  ReadonlyArray<string>;
+export type GreTunnelsCreateResponseBgpExtraPrefixesList = Array<string>;
 export const GreTunnelsCreateResponseBgpExtraPrefixesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2325,8 +2322,7 @@ export const CreateGreTunnelResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateGreTunnelResponse",
 }) as any as S.Schema<CreateGreTunnelResponse>;
 
-export type IpsecTunnelsCreateRequestBgpExtraPrefixesList =
-  ReadonlyArray<string>;
+export type IpsecTunnelsCreateRequestBgpExtraPrefixesList = Array<string>;
 export const IpsecTunnelsCreateRequestBgpExtraPrefixesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2498,8 +2494,7 @@ export const CreateIpsecTunnelRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateIpsecTunnelRequest",
 }) as any as S.Schema<CreateIpsecTunnelRequest>;
 
-export type IpsecTunnelsCreateResponseBgpExtraPrefixesList =
-  ReadonlyArray<string>;
+export type IpsecTunnelsCreateResponseBgpExtraPrefixesList = Array<string>;
 export const IpsecTunnelsCreateResponseBgpExtraPrefixesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3102,12 +3097,12 @@ export const CreatePcapOwnershipResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreatePcapOwnershipResponse",
 }) as any as S.Schema<CreatePcapOwnershipResponse>;
 
-export type RoutesCreateRequestScopeColoNamesList = ReadonlyArray<string>;
+export type RoutesCreateRequestScopeColoNamesList = Array<string>;
 export const RoutesCreateRequestScopeColoNamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RoutesCreateRequestScopeColoNamesList>;
 
-export type RoutesCreateRequestScopeColoRegionsList = ReadonlyArray<string>;
+export type RoutesCreateRequestScopeColoRegionsList = Array<string>;
 export const RoutesCreateRequestScopeColoRegionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RoutesCreateRequestScopeColoRegionsList>;
@@ -3169,12 +3164,12 @@ export const CreateRouteRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateRouteRequest",
 }) as any as S.Schema<CreateRouteRequest>;
 
-export type RoutesCreateResponseScopeColoNamesList = ReadonlyArray<string>;
+export type RoutesCreateResponseScopeColoNamesList = Array<string>;
 export const RoutesCreateResponseScopeColoNamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RoutesCreateResponseScopeColoNamesList>;
 
-export type RoutesCreateResponseScopeColoRegionsList = ReadonlyArray<string>;
+export type RoutesCreateResponseScopeColoRegionsList = Array<string>;
 export const RoutesCreateResponseScopeColoRegionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RoutesCreateResponseScopeColoRegionsList>;
@@ -3336,17 +3331,17 @@ export const CreateSiteResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateSiteResponse",
 }) as any as S.Schema<CreateSiteResponse>;
 
-export type SitesAclsCreateRequestLan1PortRangesList = ReadonlyArray<string>;
+export type SitesAclsCreateRequestLan1PortRangesList = Array<string>;
 export const SitesAclsCreateRequestLan1PortRangesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SitesAclsCreateRequestLan1PortRangesList>;
 
-export type SitesAclsCreateRequestLan1PortsList = ReadonlyArray<number>;
+export type SitesAclsCreateRequestLan1PortsList = Array<number>;
 export const SitesAclsCreateRequestLan1PortsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<SitesAclsCreateRequestLan1PortsList>;
 
-export type SitesAclsCreateRequestLan1SubnetsList = ReadonlyArray<string>;
+export type SitesAclsCreateRequestLan1SubnetsList = Array<string>;
 export const SitesAclsCreateRequestLan1SubnetsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SitesAclsCreateRequestLan1SubnetsList>;
@@ -3380,7 +3375,7 @@ export const SitesAclsCreateRequestLan1 = /*@__PURE__*/ S.suspend(() =>
 export type SitesAclsCreateRequestProtocolsItem = "tcp" | "udp" | "icmp";
 export const SitesAclsCreateRequestProtocolsItem = /*@__PURE__*/ S.String;
 
-export type SitesAclsCreateRequestProtocolsList = ReadonlyArray<
+export type SitesAclsCreateRequestProtocolsList = Array<
   SitesAclsCreateRequestProtocolsItem | (string & {})
 >;
 export const SitesAclsCreateRequestProtocolsList = /*@__PURE__*/ S.Array(
@@ -3428,17 +3423,17 @@ export const CreateSiteAclRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateSiteAclRequest",
 }) as any as S.Schema<CreateSiteAclRequest>;
 
-export type SitesAclsCreateResponseLan1PortRangesList = ReadonlyArray<string>;
+export type SitesAclsCreateResponseLan1PortRangesList = Array<string>;
 export const SitesAclsCreateResponseLan1PortRangesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SitesAclsCreateResponseLan1PortRangesList>;
 
-export type SitesAclsCreateResponseLan1PortsList = ReadonlyArray<number>;
+export type SitesAclsCreateResponseLan1PortsList = Array<number>;
 export const SitesAclsCreateResponseLan1PortsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<SitesAclsCreateResponseLan1PortsList>;
 
-export type SitesAclsCreateResponseLan1SubnetsList = ReadonlyArray<string>;
+export type SitesAclsCreateResponseLan1SubnetsList = Array<string>;
 export const SitesAclsCreateResponseLan1SubnetsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SitesAclsCreateResponseLan1SubnetsList>;
@@ -3473,7 +3468,7 @@ export type SitesAclsCreateResponseProtocolsItem = "tcp" | "udp" | "icmp";
 export const SitesAclsCreateResponseProtocolsItem = /*@__PURE__*/ S.String;
 
 export type SitesAclsCreateResponseProtocolsList =
-  ReadonlyArray<SitesAclsCreateResponseProtocolsItem>;
+  Array<SitesAclsCreateResponseProtocolsItem>;
 export const SitesAclsCreateResponseProtocolsList = /*@__PURE__*/ S.Array(
   SitesAclsCreateResponseProtocolsItem,
 ) as any as S.Schema<SitesAclsCreateResponseProtocolsList>;
@@ -3540,13 +3535,13 @@ export const SitesLansCreateRequestRoutedSubnetsItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<SitesLansCreateRequestRoutedSubnetsItem>;
 
 export type SitesLansCreateRequestRoutedSubnetsList =
-  ReadonlyArray<SitesLansCreateRequestRoutedSubnetsItem>;
+  Array<SitesLansCreateRequestRoutedSubnetsItem>;
 export const SitesLansCreateRequestRoutedSubnetsList = /*@__PURE__*/ S.Array(
   SitesLansCreateRequestRoutedSubnetsItem,
 ) as any as S.Schema<SitesLansCreateRequestRoutedSubnetsList>;
 
 export type SitesLansCreateRequestStaticAddressingDhcpRelayServerAddressesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const SitesLansCreateRequestStaticAddressingDhcpRelayServerAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3597,14 +3592,14 @@ export const SitesLansCreateRequestStaticAddressingDhcpServerDhcpOptionsItem =
   }) as any as S.Schema<SitesLansCreateRequestStaticAddressingDhcpServerDhcpOptionsItem>;
 
 export type SitesLansCreateRequestStaticAddressingDhcpServerDhcpOptionsList =
-  ReadonlyArray<SitesLansCreateRequestStaticAddressingDhcpServerDhcpOptionsItem>;
+  Array<SitesLansCreateRequestStaticAddressingDhcpServerDhcpOptionsItem>;
 export const SitesLansCreateRequestStaticAddressingDhcpServerDhcpOptionsList =
   /*@__PURE__*/ S.Array(
     SitesLansCreateRequestStaticAddressingDhcpServerDhcpOptionsItem,
   ) as any as S.Schema<SitesLansCreateRequestStaticAddressingDhcpServerDhcpOptionsList>;
 
 export type SitesLansCreateRequestStaticAddressingDhcpServerDnsServersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const SitesLansCreateRequestStaticAddressingDhcpServerDnsServersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3770,13 +3765,13 @@ export const SitesLansCreateResultItemRoutedSubnetsItem =
   }) as any as S.Schema<SitesLansCreateResultItemRoutedSubnetsItem>;
 
 export type SitesLansCreateResultItemRoutedSubnetsList =
-  ReadonlyArray<SitesLansCreateResultItemRoutedSubnetsItem>;
+  Array<SitesLansCreateResultItemRoutedSubnetsItem>;
 export const SitesLansCreateResultItemRoutedSubnetsList = /*@__PURE__*/ S.Array(
   SitesLansCreateResultItemRoutedSubnetsItem,
 ) as any as S.Schema<SitesLansCreateResultItemRoutedSubnetsList>;
 
 export type SitesLansCreateResultItemStaticAddressingDhcpRelayServerAddressesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const SitesLansCreateResultItemStaticAddressingDhcpRelayServerAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3825,14 +3820,14 @@ export const SitesLansCreateResultItemStaticAddressingDhcpServerDhcpOptionsItem 
   }) as any as S.Schema<SitesLansCreateResultItemStaticAddressingDhcpServerDhcpOptionsItem>;
 
 export type SitesLansCreateResultItemStaticAddressingDhcpServerDhcpOptionsList =
-  ReadonlyArray<SitesLansCreateResultItemStaticAddressingDhcpServerDhcpOptionsItem>;
+  Array<SitesLansCreateResultItemStaticAddressingDhcpServerDhcpOptionsItem>;
 export const SitesLansCreateResultItemStaticAddressingDhcpServerDhcpOptionsList =
   /*@__PURE__*/ S.Array(
     SitesLansCreateResultItemStaticAddressingDhcpServerDhcpOptionsItem,
   ) as any as S.Schema<SitesLansCreateResultItemStaticAddressingDhcpServerDhcpOptionsList>;
 
 export type SitesLansCreateResultItemStaticAddressingDhcpServerDnsServersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const SitesLansCreateResultItemStaticAddressingDhcpServerDnsServersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3960,8 +3955,7 @@ export const SitesLansCreateResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "SitesLansCreateResultItem",
 }) as any as S.Schema<SitesLansCreateResultItem>;
 
-export type SitesLansCreateResultList =
-  ReadonlyArray<SitesLansCreateResultItem>;
+export type SitesLansCreateResultList = Array<SitesLansCreateResultItem>;
 export const SitesLansCreateResultList = /*@__PURE__*/ S.Array(
   SitesLansCreateResultItem,
 ) as any as S.Schema<SitesLansCreateResultList>;
@@ -4098,8 +4092,7 @@ export const SitesWansCreateResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "SitesWansCreateResultItem",
 }) as any as S.Schema<SitesWansCreateResultItem>;
 
-export type SitesWansCreateResultList =
-  ReadonlyArray<SitesWansCreateResultItem>;
+export type SitesWansCreateResultList = Array<SitesWansCreateResultItem>;
 export const SitesWansCreateResultList = /*@__PURE__*/ S.Array(
   SitesWansCreateResultItem,
 ) as any as S.Schema<SitesWansCreateResultList>;
@@ -4142,17 +4135,17 @@ export const DeleteAppRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteAppRequest",
 }) as any as S.Schema<DeleteAppRequest>;
 
-export type AppsDeleteResponseHostnamesList = ReadonlyArray<string>;
+export type AppsDeleteResponseHostnamesList = Array<string>;
 export const AppsDeleteResponseHostnamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AppsDeleteResponseHostnamesList>;
 
-export type AppsDeleteResponseIpSubnetsList = ReadonlyArray<string>;
+export type AppsDeleteResponseIpSubnetsList = Array<string>;
 export const AppsDeleteResponseIpSubnetsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AppsDeleteResponseIpSubnetsList>;
 
-export type AppsDeleteResponseSourceSubnetsList = ReadonlyArray<string>;
+export type AppsDeleteResponseSourceSubnetsList = Array<string>;
 export const AppsDeleteResponseSourceSubnetsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AppsDeleteResponseSourceSubnetsList>;
@@ -4429,14 +4422,14 @@ export const ConnectorsDeleteResponseInterruptWindowDaysOfWeekItem =
   /*@__PURE__*/ S.String;
 
 export type ConnectorsDeleteResponseInterruptWindowDaysOfWeekList =
-  ReadonlyArray<ConnectorsDeleteResponseInterruptWindowDaysOfWeekItem>;
+  Array<ConnectorsDeleteResponseInterruptWindowDaysOfWeekItem>;
 export const ConnectorsDeleteResponseInterruptWindowDaysOfWeekList =
   /*@__PURE__*/ S.Array(
     ConnectorsDeleteResponseInterruptWindowDaysOfWeekItem,
   ) as any as S.Schema<ConnectorsDeleteResponseInterruptWindowDaysOfWeekList>;
 
 export type ConnectorsDeleteResponseInterruptWindowEmbargoDatesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ConnectorsDeleteResponseInterruptWindowEmbargoDatesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4540,7 +4533,7 @@ export const DeleteGreTunnelRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteGreTunnelRequest>;
 
 export type GreTunnelsDeleteResponseDeletedGreTunnelBgpExtraPrefixesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GreTunnelsDeleteResponseDeletedGreTunnelBgpExtraPrefixesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4793,7 +4786,7 @@ export const DeleteIpsecTunnelRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteIpsecTunnelRequest>;
 
 export type IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgpExtraPrefixesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgpExtraPrefixesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5115,15 +5108,14 @@ export const DeleteRouteRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteRouteRequest",
 }) as any as S.Schema<DeleteRouteRequest>;
 
-export type RoutesDeleteResponseDeletedRouteScopeColoNamesList =
-  ReadonlyArray<string>;
+export type RoutesDeleteResponseDeletedRouteScopeColoNamesList = Array<string>;
 export const RoutesDeleteResponseDeletedRouteScopeColoNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<RoutesDeleteResponseDeletedRouteScopeColoNamesList>;
 
 export type RoutesDeleteResponseDeletedRouteScopeColoRegionsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RoutesDeleteResponseDeletedRouteScopeColoRegionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5301,17 +5293,17 @@ export const DeleteSiteAclRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteSiteAclRequest",
 }) as any as S.Schema<DeleteSiteAclRequest>;
 
-export type SitesAclsDeleteResponseLan1PortRangesList = ReadonlyArray<string>;
+export type SitesAclsDeleteResponseLan1PortRangesList = Array<string>;
 export const SitesAclsDeleteResponseLan1PortRangesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SitesAclsDeleteResponseLan1PortRangesList>;
 
-export type SitesAclsDeleteResponseLan1PortsList = ReadonlyArray<number>;
+export type SitesAclsDeleteResponseLan1PortsList = Array<number>;
 export const SitesAclsDeleteResponseLan1PortsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<SitesAclsDeleteResponseLan1PortsList>;
 
-export type SitesAclsDeleteResponseLan1SubnetsList = ReadonlyArray<string>;
+export type SitesAclsDeleteResponseLan1SubnetsList = Array<string>;
 export const SitesAclsDeleteResponseLan1SubnetsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SitesAclsDeleteResponseLan1SubnetsList>;
@@ -5346,7 +5338,7 @@ export type SitesAclsDeleteResponseProtocolsItem = "tcp" | "udp" | "icmp";
 export const SitesAclsDeleteResponseProtocolsItem = /*@__PURE__*/ S.String;
 
 export type SitesAclsDeleteResponseProtocolsList =
-  ReadonlyArray<SitesAclsDeleteResponseProtocolsItem>;
+  Array<SitesAclsDeleteResponseProtocolsItem>;
 export const SitesAclsDeleteResponseProtocolsList = /*@__PURE__*/ S.Array(
   SitesAclsDeleteResponseProtocolsItem,
 ) as any as S.Schema<SitesAclsDeleteResponseProtocolsList>;
@@ -5439,13 +5431,13 @@ export const SitesLansDeleteResponseRoutedSubnetsItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<SitesLansDeleteResponseRoutedSubnetsItem>;
 
 export type SitesLansDeleteResponseRoutedSubnetsList =
-  ReadonlyArray<SitesLansDeleteResponseRoutedSubnetsItem>;
+  Array<SitesLansDeleteResponseRoutedSubnetsItem>;
 export const SitesLansDeleteResponseRoutedSubnetsList = /*@__PURE__*/ S.Array(
   SitesLansDeleteResponseRoutedSubnetsItem,
 ) as any as S.Schema<SitesLansDeleteResponseRoutedSubnetsList>;
 
 export type SitesLansDeleteResponseStaticAddressingDhcpRelayServerAddressesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const SitesLansDeleteResponseStaticAddressingDhcpRelayServerAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5494,14 +5486,14 @@ export const SitesLansDeleteResponseStaticAddressingDhcpServerDhcpOptionsItem =
   }) as any as S.Schema<SitesLansDeleteResponseStaticAddressingDhcpServerDhcpOptionsItem>;
 
 export type SitesLansDeleteResponseStaticAddressingDhcpServerDhcpOptionsList =
-  ReadonlyArray<SitesLansDeleteResponseStaticAddressingDhcpServerDhcpOptionsItem>;
+  Array<SitesLansDeleteResponseStaticAddressingDhcpServerDhcpOptionsItem>;
 export const SitesLansDeleteResponseStaticAddressingDhcpServerDhcpOptionsList =
   /*@__PURE__*/ S.Array(
     SitesLansDeleteResponseStaticAddressingDhcpServerDhcpOptionsItem,
   ) as any as S.Schema<SitesLansDeleteResponseStaticAddressingDhcpServerDhcpOptionsList>;
 
 export type SitesLansDeleteResponseStaticAddressingDhcpServerDnsServersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const SitesLansDeleteResponseStaticAddressingDhcpServerDnsServersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5734,14 +5726,14 @@ export const EmptyRouteRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EmptyRouteRequest>;
 
 export type RoutesEmptyResponseDeletedRoutesItemScopeColoNamesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RoutesEmptyResponseDeletedRoutesItemScopeColoNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<RoutesEmptyResponseDeletedRoutesItemScopeColoNamesList>;
 
 export type RoutesEmptyResponseDeletedRoutesItemScopeColoRegionsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RoutesEmptyResponseDeletedRoutesItemScopeColoRegionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5809,7 +5801,7 @@ export const RoutesEmptyResponseDeletedRoutesItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<RoutesEmptyResponseDeletedRoutesItem>;
 
 export type RoutesEmptyResponseDeletedRoutesList =
-  ReadonlyArray<RoutesEmptyResponseDeletedRoutesItem>;
+  Array<RoutesEmptyResponseDeletedRoutesItem>;
 export const RoutesEmptyResponseDeletedRoutesList = /*@__PURE__*/ S.Array(
   RoutesEmptyResponseDeletedRoutesItem,
 ) as any as S.Schema<RoutesEmptyResponseDeletedRoutesList>;
@@ -6240,14 +6232,14 @@ export const ConnectorsGetResponseInterruptWindowDaysOfWeekItem =
   /*@__PURE__*/ S.String;
 
 export type ConnectorsGetResponseInterruptWindowDaysOfWeekList =
-  ReadonlyArray<ConnectorsGetResponseInterruptWindowDaysOfWeekItem>;
+  Array<ConnectorsGetResponseInterruptWindowDaysOfWeekItem>;
 export const ConnectorsGetResponseInterruptWindowDaysOfWeekList =
   /*@__PURE__*/ S.Array(
     ConnectorsGetResponseInterruptWindowDaysOfWeekItem,
   ) as any as S.Schema<ConnectorsGetResponseInterruptWindowDaysOfWeekList>;
 
 export type ConnectorsGetResponseInterruptWindowEmbargoDatesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ConnectorsGetResponseInterruptWindowEmbargoDatesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6848,7 +6840,7 @@ export const ConnectorsSnapshotsGetResponseBondsItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ConnectorsSnapshotsGetResponseBondsItem>;
 
 export type ConnectorsSnapshotsGetResponseBondsList =
-  ReadonlyArray<ConnectorsSnapshotsGetResponseBondsItem>;
+  Array<ConnectorsSnapshotsGetResponseBondsItem>;
 export const ConnectorsSnapshotsGetResponseBondsList = /*@__PURE__*/ S.Array(
   ConnectorsSnapshotsGetResponseBondsItem,
 ) as any as S.Schema<ConnectorsSnapshotsGetResponseBondsList>;
@@ -6882,7 +6874,7 @@ export const ConnectorsSnapshotsGetResponseDhcpLeasesItem =
   }) as any as S.Schema<ConnectorsSnapshotsGetResponseDhcpLeasesItem>;
 
 export type ConnectorsSnapshotsGetResponseDhcpLeasesList =
-  ReadonlyArray<ConnectorsSnapshotsGetResponseDhcpLeasesItem>;
+  Array<ConnectorsSnapshotsGetResponseDhcpLeasesItem>;
 export const ConnectorsSnapshotsGetResponseDhcpLeasesList =
   /*@__PURE__*/ S.Array(
     ConnectorsSnapshotsGetResponseDhcpLeasesItem,
@@ -6961,7 +6953,7 @@ export const ConnectorsSnapshotsGetResponseDisksItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ConnectorsSnapshotsGetResponseDisksItem>;
 
 export type ConnectorsSnapshotsGetResponseDisksList =
-  ReadonlyArray<ConnectorsSnapshotsGetResponseDisksItem>;
+  Array<ConnectorsSnapshotsGetResponseDisksItem>;
 export const ConnectorsSnapshotsGetResponseDisksList = /*@__PURE__*/ S.Array(
   ConnectorsSnapshotsGetResponseDisksItem,
 ) as any as S.Schema<ConnectorsSnapshotsGetResponseDisksList>;
@@ -6983,7 +6975,7 @@ export const ConnectorsSnapshotsGetResponseInterfacesItemIpAddressesItem =
   }) as any as S.Schema<ConnectorsSnapshotsGetResponseInterfacesItemIpAddressesItem>;
 
 export type ConnectorsSnapshotsGetResponseInterfacesItemIpAddressesList =
-  ReadonlyArray<ConnectorsSnapshotsGetResponseInterfacesItemIpAddressesItem>;
+  Array<ConnectorsSnapshotsGetResponseInterfacesItemIpAddressesItem>;
 export const ConnectorsSnapshotsGetResponseInterfacesItemIpAddressesList =
   /*@__PURE__*/ S.Array(
     ConnectorsSnapshotsGetResponseInterfacesItemIpAddressesItem,
@@ -7015,7 +7007,7 @@ export const ConnectorsSnapshotsGetResponseInterfacesItem =
   }) as any as S.Schema<ConnectorsSnapshotsGetResponseInterfacesItem>;
 
 export type ConnectorsSnapshotsGetResponseInterfacesList =
-  ReadonlyArray<ConnectorsSnapshotsGetResponseInterfacesItem>;
+  Array<ConnectorsSnapshotsGetResponseInterfacesItem>;
 export const ConnectorsSnapshotsGetResponseInterfacesList =
   /*@__PURE__*/ S.Array(
     ConnectorsSnapshotsGetResponseInterfacesItem,
@@ -7062,7 +7054,7 @@ export const ConnectorsSnapshotsGetResponseMountsItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ConnectorsSnapshotsGetResponseMountsItem>;
 
 export type ConnectorsSnapshotsGetResponseMountsList =
-  ReadonlyArray<ConnectorsSnapshotsGetResponseMountsItem>;
+  Array<ConnectorsSnapshotsGetResponseMountsItem>;
 export const ConnectorsSnapshotsGetResponseMountsList = /*@__PURE__*/ S.Array(
   ConnectorsSnapshotsGetResponseMountsItem,
 ) as any as S.Schema<ConnectorsSnapshotsGetResponseMountsList>;
@@ -7129,7 +7121,7 @@ export const ConnectorsSnapshotsGetResponseNetdevsItem =
   }) as any as S.Schema<ConnectorsSnapshotsGetResponseNetdevsItem>;
 
 export type ConnectorsSnapshotsGetResponseNetdevsList =
-  ReadonlyArray<ConnectorsSnapshotsGetResponseNetdevsItem>;
+  Array<ConnectorsSnapshotsGetResponseNetdevsItem>;
 export const ConnectorsSnapshotsGetResponseNetdevsList = /*@__PURE__*/ S.Array(
   ConnectorsSnapshotsGetResponseNetdevsItem,
 ) as any as S.Schema<ConnectorsSnapshotsGetResponseNetdevsList>;
@@ -7157,7 +7149,7 @@ export const ConnectorsSnapshotsGetResponseThermalsItem =
   }) as any as S.Schema<ConnectorsSnapshotsGetResponseThermalsItem>;
 
 export type ConnectorsSnapshotsGetResponseThermalsList =
-  ReadonlyArray<ConnectorsSnapshotsGetResponseThermalsItem>;
+  Array<ConnectorsSnapshotsGetResponseThermalsItem>;
 export const ConnectorsSnapshotsGetResponseThermalsList = /*@__PURE__*/ S.Array(
   ConnectorsSnapshotsGetResponseThermalsItem,
 ) as any as S.Schema<ConnectorsSnapshotsGetResponseThermalsList>;
@@ -7207,7 +7199,7 @@ export const ConnectorsSnapshotsGetResponseTunnelsItem =
   }) as any as S.Schema<ConnectorsSnapshotsGetResponseTunnelsItem>;
 
 export type ConnectorsSnapshotsGetResponseTunnelsList =
-  ReadonlyArray<ConnectorsSnapshotsGetResponseTunnelsItem>;
+  Array<ConnectorsSnapshotsGetResponseTunnelsItem>;
 export const ConnectorsSnapshotsGetResponseTunnelsList = /*@__PURE__*/ S.Array(
   ConnectorsSnapshotsGetResponseTunnelsItem,
 ) as any as S.Schema<ConnectorsSnapshotsGetResponseTunnelsList>;
@@ -7954,8 +7946,7 @@ export const GetGreTunnelRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetGreTunnelRequest",
 }) as any as S.Schema<GetGreTunnelRequest>;
 
-export type GreTunnelsGetResponseGreTunnelBgpExtraPrefixesList =
-  ReadonlyArray<string>;
+export type GreTunnelsGetResponseGreTunnelBgpExtraPrefixesList = Array<string>;
 export const GreTunnelsGetResponseGreTunnelBgpExtraPrefixesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -8190,7 +8181,7 @@ export const GetIpsecTunnelRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetIpsecTunnelRequest>;
 
 export type IpsecTunnelsGetResponseIpsecTunnelBgpExtraPrefixesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const IpsecTunnelsGetResponseIpsecTunnelBgpExtraPrefixesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -8778,8 +8769,7 @@ export const PcapsOwnershipGetResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "PcapsOwnershipGetResultItem",
 }) as any as S.Schema<PcapsOwnershipGetResultItem>;
 
-export type PcapsOwnershipGetResultList =
-  ReadonlyArray<PcapsOwnershipGetResultItem>;
+export type PcapsOwnershipGetResultList = Array<PcapsOwnershipGetResultItem>;
 export const PcapsOwnershipGetResultList = /*@__PURE__*/ S.Array(
   PcapsOwnershipGetResultItem,
 ) as any as S.Schema<PcapsOwnershipGetResultList>;
@@ -8822,12 +8812,12 @@ export const GetRouteRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetRouteRequest",
 }) as any as S.Schema<GetRouteRequest>;
 
-export type RoutesGetResponseRouteScopeColoNamesList = ReadonlyArray<string>;
+export type RoutesGetResponseRouteScopeColoNamesList = Array<string>;
 export const RoutesGetResponseRouteScopeColoNamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RoutesGetResponseRouteScopeColoNamesList>;
 
-export type RoutesGetResponseRouteScopeColoRegionsList = ReadonlyArray<string>;
+export type RoutesGetResponseRouteScopeColoRegionsList = Array<string>;
 export const RoutesGetResponseRouteScopeColoRegionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RoutesGetResponseRouteScopeColoRegionsList>;
@@ -8997,17 +8987,17 @@ export const GetSiteAclRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetSiteAclRequest",
 }) as any as S.Schema<GetSiteAclRequest>;
 
-export type SitesAclsGetResponseLan1PortRangesList = ReadonlyArray<string>;
+export type SitesAclsGetResponseLan1PortRangesList = Array<string>;
 export const SitesAclsGetResponseLan1PortRangesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SitesAclsGetResponseLan1PortRangesList>;
 
-export type SitesAclsGetResponseLan1PortsList = ReadonlyArray<number>;
+export type SitesAclsGetResponseLan1PortsList = Array<number>;
 export const SitesAclsGetResponseLan1PortsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<SitesAclsGetResponseLan1PortsList>;
 
-export type SitesAclsGetResponseLan1SubnetsList = ReadonlyArray<string>;
+export type SitesAclsGetResponseLan1SubnetsList = Array<string>;
 export const SitesAclsGetResponseLan1SubnetsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SitesAclsGetResponseLan1SubnetsList>;
@@ -9042,7 +9032,7 @@ export type SitesAclsGetResponseProtocolsItem = "tcp" | "udp" | "icmp";
 export const SitesAclsGetResponseProtocolsItem = /*@__PURE__*/ S.String;
 
 export type SitesAclsGetResponseProtocolsList =
-  ReadonlyArray<SitesAclsGetResponseProtocolsItem>;
+  Array<SitesAclsGetResponseProtocolsItem>;
 export const SitesAclsGetResponseProtocolsList = /*@__PURE__*/ S.Array(
   SitesAclsGetResponseProtocolsItem,
 ) as any as S.Schema<SitesAclsGetResponseProtocolsList>;
@@ -9135,13 +9125,13 @@ export const SitesLansGetResponseRoutedSubnetsItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<SitesLansGetResponseRoutedSubnetsItem>;
 
 export type SitesLansGetResponseRoutedSubnetsList =
-  ReadonlyArray<SitesLansGetResponseRoutedSubnetsItem>;
+  Array<SitesLansGetResponseRoutedSubnetsItem>;
 export const SitesLansGetResponseRoutedSubnetsList = /*@__PURE__*/ S.Array(
   SitesLansGetResponseRoutedSubnetsItem,
 ) as any as S.Schema<SitesLansGetResponseRoutedSubnetsList>;
 
 export type SitesLansGetResponseStaticAddressingDhcpRelayServerAddressesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const SitesLansGetResponseStaticAddressingDhcpRelayServerAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -9194,14 +9184,14 @@ export const SitesLansGetResponseStaticAddressingDhcpServerDhcpOptionsItem =
   }) as any as S.Schema<SitesLansGetResponseStaticAddressingDhcpServerDhcpOptionsItem>;
 
 export type SitesLansGetResponseStaticAddressingDhcpServerDhcpOptionsList =
-  ReadonlyArray<SitesLansGetResponseStaticAddressingDhcpServerDhcpOptionsItem>;
+  Array<SitesLansGetResponseStaticAddressingDhcpServerDhcpOptionsItem>;
 export const SitesLansGetResponseStaticAddressingDhcpServerDhcpOptionsList =
   /*@__PURE__*/ S.Array(
     SitesLansGetResponseStaticAddressingDhcpServerDhcpOptionsItem,
   ) as any as S.Schema<SitesLansGetResponseStaticAddressingDhcpServerDhcpOptionsList>;
 
 export type SitesLansGetResponseStaticAddressingDhcpServerDnsServersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const SitesLansGetResponseStaticAddressingDhcpServerDnsServersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -9433,22 +9423,19 @@ export const ListAppsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAppsRequest",
 }) as any as S.Schema<ListAppsRequest>;
 
-export type AppsListResultItemMagicAccountAppHostnamesList =
-  ReadonlyArray<string>;
+export type AppsListResultItemMagicAccountAppHostnamesList = Array<string>;
 export const AppsListResultItemMagicAccountAppHostnamesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AppsListResultItemMagicAccountAppHostnamesList>;
 
-export type AppsListResultItemMagicAccountAppIpSubnetsList =
-  ReadonlyArray<string>;
+export type AppsListResultItemMagicAccountAppIpSubnetsList = Array<string>;
 export const AppsListResultItemMagicAccountAppIpSubnetsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AppsListResultItemMagicAccountAppIpSubnetsList>;
 
-export type AppsListResultItemMagicAccountAppSourceSubnetsList =
-  ReadonlyArray<string>;
+export type AppsListResultItemMagicAccountAppSourceSubnetsList = Array<string>;
 export const AppsListResultItemMagicAccountAppSourceSubnetsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -9487,22 +9474,19 @@ export const AppsListResultItemMagicAccountApp = /*@__PURE__*/ S.suspend(() =>
   identifier: "AppsListResultItemMagicAccountApp",
 }) as any as S.Schema<AppsListResultItemMagicAccountApp>;
 
-export type AppsListResultItemMagicManagedAppHostnamesList =
-  ReadonlyArray<string>;
+export type AppsListResultItemMagicManagedAppHostnamesList = Array<string>;
 export const AppsListResultItemMagicManagedAppHostnamesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AppsListResultItemMagicManagedAppHostnamesList>;
 
-export type AppsListResultItemMagicManagedAppIpSubnetsList =
-  ReadonlyArray<string>;
+export type AppsListResultItemMagicManagedAppIpSubnetsList = Array<string>;
 export const AppsListResultItemMagicManagedAppIpSubnetsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AppsListResultItemMagicManagedAppIpSubnetsList>;
 
-export type AppsListResultItemMagicManagedAppSourceSubnetsList =
-  ReadonlyArray<string>;
+export type AppsListResultItemMagicManagedAppSourceSubnetsList = Array<string>;
 export const AppsListResultItemMagicManagedAppSourceSubnetsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -9592,7 +9576,7 @@ export const AppsListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "AppsListResultItem",
 }) as any as S.Schema<AppsListResultItem>;
 
-export type AppsListResultList = ReadonlyArray<AppsListResultItem>;
+export type AppsListResultList = Array<AppsListResultItem>;
 export const AppsListResultList = /*@__PURE__*/ S.Array(
   AppsListResultItem,
 ) as any as S.Schema<AppsListResultList>;
@@ -9748,8 +9732,7 @@ export const Cf1SitesRampsListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "Cf1SitesRampsListResultItem",
 }) as any as S.Schema<Cf1SitesRampsListResultItem>;
 
-export type Cf1SitesRampsListResultList =
-  ReadonlyArray<Cf1SitesRampsListResultItem>;
+export type Cf1SitesRampsListResultList = Array<Cf1SitesRampsListResultItem>;
 export const Cf1SitesRampsListResultList = /*@__PURE__*/ S.Array(
   Cf1SitesRampsListResultItem,
 ) as any as S.Schema<Cf1SitesRampsListResultList>;
@@ -9831,7 +9814,7 @@ export const Cf1SitesListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "Cf1SitesListResultItem",
 }) as any as S.Schema<Cf1SitesListResultItem>;
 
-export type Cf1SitesListResultList = ReadonlyArray<Cf1SitesListResultItem>;
+export type Cf1SitesListResultList = Array<Cf1SitesListResultItem>;
 export const Cf1SitesListResultList = /*@__PURE__*/ S.Array(
   Cf1SitesListResultItem,
 ) as any as S.Schema<Cf1SitesListResultList>;
@@ -10013,7 +9996,7 @@ export const CfInterconnectsListResponseInterconnectsItem =
   }) as any as S.Schema<CfInterconnectsListResponseInterconnectsItem>;
 
 export type CfInterconnectsListResponseInterconnectsList =
-  ReadonlyArray<CfInterconnectsListResponseInterconnectsItem>;
+  Array<CfInterconnectsListResponseInterconnectsItem>;
 export const CfInterconnectsListResponseInterconnectsList =
   /*@__PURE__*/ S.Array(
     CfInterconnectsListResponseInterconnectsItem,
@@ -10541,7 +10524,7 @@ export const ConnectorsEventsLatestListResponseItemsItem =
   }) as any as S.Schema<ConnectorsEventsLatestListResponseItemsItem>;
 
 export type ConnectorsEventsLatestListResponseItemsList =
-  ReadonlyArray<ConnectorsEventsLatestListResponseItemsItem>;
+  Array<ConnectorsEventsLatestListResponseItemsItem>;
 export const ConnectorsEventsLatestListResponseItemsList =
   /*@__PURE__*/ S.Array(
     ConnectorsEventsLatestListResponseItemsItem,
@@ -10617,7 +10600,7 @@ export const ConnectorsEventsListResponseItemsItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ConnectorsEventsListResponseItemsItem>;
 
 export type ConnectorsEventsListResponseItemsList =
-  ReadonlyArray<ConnectorsEventsListResponseItemsItem>;
+  Array<ConnectorsEventsListResponseItemsItem>;
 export const ConnectorsEventsListResponseItemsList = /*@__PURE__*/ S.Array(
   ConnectorsEventsListResponseItemsItem,
 ) as any as S.Schema<ConnectorsEventsListResponseItemsList>;
@@ -10678,14 +10661,14 @@ export const ConnectorsListResultItemInterruptWindowDaysOfWeekItem =
   /*@__PURE__*/ S.String;
 
 export type ConnectorsListResultItemInterruptWindowDaysOfWeekList =
-  ReadonlyArray<ConnectorsListResultItemInterruptWindowDaysOfWeekItem>;
+  Array<ConnectorsListResultItemInterruptWindowDaysOfWeekItem>;
 export const ConnectorsListResultItemInterruptWindowDaysOfWeekList =
   /*@__PURE__*/ S.Array(
     ConnectorsListResultItemInterruptWindowDaysOfWeekItem,
   ) as any as S.Schema<ConnectorsListResultItemInterruptWindowDaysOfWeekList>;
 
 export type ConnectorsListResultItemInterruptWindowEmbargoDatesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ConnectorsListResultItemInterruptWindowEmbargoDatesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -10760,7 +10743,7 @@ export const ConnectorsListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConnectorsListResultItem",
 }) as any as S.Schema<ConnectorsListResultItem>;
 
-export type ConnectorsListResultList = ReadonlyArray<ConnectorsListResultItem>;
+export type ConnectorsListResultList = Array<ConnectorsListResultItem>;
 export const ConnectorsListResultList = /*@__PURE__*/ S.Array(
   ConnectorsListResultItem,
 ) as any as S.Schema<ConnectorsListResultList>;
@@ -10819,7 +10802,7 @@ export const ConnectorsSnapshotsLatestListResponseItemsItemBondsItem =
   }) as any as S.Schema<ConnectorsSnapshotsLatestListResponseItemsItemBondsItem>;
 
 export type ConnectorsSnapshotsLatestListResponseItemsItemBondsList =
-  ReadonlyArray<ConnectorsSnapshotsLatestListResponseItemsItemBondsItem>;
+  Array<ConnectorsSnapshotsLatestListResponseItemsItemBondsItem>;
 export const ConnectorsSnapshotsLatestListResponseItemsItemBondsList =
   /*@__PURE__*/ S.Array(
     ConnectorsSnapshotsLatestListResponseItemsItemBondsItem,
@@ -10854,7 +10837,7 @@ export const ConnectorsSnapshotsLatestListResponseItemsItemDhcpLeasesItem =
   }) as any as S.Schema<ConnectorsSnapshotsLatestListResponseItemsItemDhcpLeasesItem>;
 
 export type ConnectorsSnapshotsLatestListResponseItemsItemDhcpLeasesList =
-  ReadonlyArray<ConnectorsSnapshotsLatestListResponseItemsItemDhcpLeasesItem>;
+  Array<ConnectorsSnapshotsLatestListResponseItemsItemDhcpLeasesItem>;
 export const ConnectorsSnapshotsLatestListResponseItemsItemDhcpLeasesList =
   /*@__PURE__*/ S.Array(
     ConnectorsSnapshotsLatestListResponseItemsItemDhcpLeasesItem,
@@ -10933,7 +10916,7 @@ export const ConnectorsSnapshotsLatestListResponseItemsItemDisksItem =
   }) as any as S.Schema<ConnectorsSnapshotsLatestListResponseItemsItemDisksItem>;
 
 export type ConnectorsSnapshotsLatestListResponseItemsItemDisksList =
-  ReadonlyArray<ConnectorsSnapshotsLatestListResponseItemsItemDisksItem>;
+  Array<ConnectorsSnapshotsLatestListResponseItemsItemDisksItem>;
 export const ConnectorsSnapshotsLatestListResponseItemsItemDisksList =
   /*@__PURE__*/ S.Array(
     ConnectorsSnapshotsLatestListResponseItemsItemDisksItem,
@@ -10957,7 +10940,7 @@ export const ConnectorsSnapshotsLatestListResponseItemsItemInterfacesItemIpAddre
   }) as any as S.Schema<ConnectorsSnapshotsLatestListResponseItemsItemInterfacesItemIpAddressesItem>;
 
 export type ConnectorsSnapshotsLatestListResponseItemsItemInterfacesItemIpAddressesList =
-  ReadonlyArray<ConnectorsSnapshotsLatestListResponseItemsItemInterfacesItemIpAddressesItem>;
+  Array<ConnectorsSnapshotsLatestListResponseItemsItemInterfacesItemIpAddressesItem>;
 export const ConnectorsSnapshotsLatestListResponseItemsItemInterfacesItemIpAddressesList =
   /*@__PURE__*/ S.Array(
     ConnectorsSnapshotsLatestListResponseItemsItemInterfacesItemIpAddressesItem,
@@ -10989,7 +10972,7 @@ export const ConnectorsSnapshotsLatestListResponseItemsItemInterfacesItem =
   }) as any as S.Schema<ConnectorsSnapshotsLatestListResponseItemsItemInterfacesItem>;
 
 export type ConnectorsSnapshotsLatestListResponseItemsItemInterfacesList =
-  ReadonlyArray<ConnectorsSnapshotsLatestListResponseItemsItemInterfacesItem>;
+  Array<ConnectorsSnapshotsLatestListResponseItemsItemInterfacesItem>;
 export const ConnectorsSnapshotsLatestListResponseItemsItemInterfacesList =
   /*@__PURE__*/ S.Array(
     ConnectorsSnapshotsLatestListResponseItemsItemInterfacesItem,
@@ -11036,7 +11019,7 @@ export const ConnectorsSnapshotsLatestListResponseItemsItemMountsItem =
   }) as any as S.Schema<ConnectorsSnapshotsLatestListResponseItemsItemMountsItem>;
 
 export type ConnectorsSnapshotsLatestListResponseItemsItemMountsList =
-  ReadonlyArray<ConnectorsSnapshotsLatestListResponseItemsItemMountsItem>;
+  Array<ConnectorsSnapshotsLatestListResponseItemsItemMountsItem>;
 export const ConnectorsSnapshotsLatestListResponseItemsItemMountsList =
   /*@__PURE__*/ S.Array(
     ConnectorsSnapshotsLatestListResponseItemsItemMountsItem,
@@ -11104,7 +11087,7 @@ export const ConnectorsSnapshotsLatestListResponseItemsItemNetdevsItem =
   }) as any as S.Schema<ConnectorsSnapshotsLatestListResponseItemsItemNetdevsItem>;
 
 export type ConnectorsSnapshotsLatestListResponseItemsItemNetdevsList =
-  ReadonlyArray<ConnectorsSnapshotsLatestListResponseItemsItemNetdevsItem>;
+  Array<ConnectorsSnapshotsLatestListResponseItemsItemNetdevsItem>;
 export const ConnectorsSnapshotsLatestListResponseItemsItemNetdevsList =
   /*@__PURE__*/ S.Array(
     ConnectorsSnapshotsLatestListResponseItemsItemNetdevsItem,
@@ -11133,7 +11116,7 @@ export const ConnectorsSnapshotsLatestListResponseItemsItemThermalsItem =
   }) as any as S.Schema<ConnectorsSnapshotsLatestListResponseItemsItemThermalsItem>;
 
 export type ConnectorsSnapshotsLatestListResponseItemsItemThermalsList =
-  ReadonlyArray<ConnectorsSnapshotsLatestListResponseItemsItemThermalsItem>;
+  Array<ConnectorsSnapshotsLatestListResponseItemsItemThermalsItem>;
 export const ConnectorsSnapshotsLatestListResponseItemsItemThermalsList =
   /*@__PURE__*/ S.Array(
     ConnectorsSnapshotsLatestListResponseItemsItemThermalsItem,
@@ -11184,7 +11167,7 @@ export const ConnectorsSnapshotsLatestListResponseItemsItemTunnelsItem =
   }) as any as S.Schema<ConnectorsSnapshotsLatestListResponseItemsItemTunnelsItem>;
 
 export type ConnectorsSnapshotsLatestListResponseItemsItemTunnelsList =
-  ReadonlyArray<ConnectorsSnapshotsLatestListResponseItemsItemTunnelsItem>;
+  Array<ConnectorsSnapshotsLatestListResponseItemsItemTunnelsItem>;
 export const ConnectorsSnapshotsLatestListResponseItemsItemTunnelsList =
   /*@__PURE__*/ S.Array(
     ConnectorsSnapshotsLatestListResponseItemsItemTunnelsItem,
@@ -11952,7 +11935,7 @@ export const ConnectorsSnapshotsLatestListResponseItemsItem =
   }) as any as S.Schema<ConnectorsSnapshotsLatestListResponseItemsItem>;
 
 export type ConnectorsSnapshotsLatestListResponseItemsList =
-  ReadonlyArray<ConnectorsSnapshotsLatestListResponseItemsItem>;
+  Array<ConnectorsSnapshotsLatestListResponseItemsItem>;
 export const ConnectorsSnapshotsLatestListResponseItemsList =
   /*@__PURE__*/ S.Array(
     ConnectorsSnapshotsLatestListResponseItemsItem,
@@ -12020,7 +12003,7 @@ export const ConnectorsSnapshotsListResponseItemsItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ConnectorsSnapshotsListResponseItemsItem>;
 
 export type ConnectorsSnapshotsListResponseItemsList =
-  ReadonlyArray<ConnectorsSnapshotsListResponseItemsItem>;
+  Array<ConnectorsSnapshotsListResponseItemsItem>;
 export const ConnectorsSnapshotsListResponseItemsList = /*@__PURE__*/ S.Array(
   ConnectorsSnapshotsListResponseItemsItem,
 ) as any as S.Schema<ConnectorsSnapshotsListResponseItemsList>;
@@ -12066,7 +12049,7 @@ export const ListGreTunnelsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListGreTunnelsRequest>;
 
 export type GreTunnelsListResponseGreTunnelsItemBgpExtraPrefixesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GreTunnelsListResponseGreTunnelsItemBgpExtraPrefixesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -12272,7 +12255,7 @@ export const GreTunnelsListResponseGreTunnelsItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GreTunnelsListResponseGreTunnelsItem>;
 
 export type GreTunnelsListResponseGreTunnelsList =
-  ReadonlyArray<GreTunnelsListResponseGreTunnelsItem>;
+  Array<GreTunnelsListResponseGreTunnelsItem>;
 export const GreTunnelsListResponseGreTunnelsList = /*@__PURE__*/ S.Array(
   GreTunnelsListResponseGreTunnelsItem,
 ) as any as S.Schema<GreTunnelsListResponseGreTunnelsList>;
@@ -12316,7 +12299,7 @@ export const ListIpsecTunnelsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListIpsecTunnelsRequest>;
 
 export type IpsecTunnelsListResponseIpsecTunnelsItemBgpExtraPrefixesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const IpsecTunnelsListResponseIpsecTunnelsItemBgpExtraPrefixesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -12564,7 +12547,7 @@ export const IpsecTunnelsListResponseIpsecTunnelsItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<IpsecTunnelsListResponseIpsecTunnelsItem>;
 
 export type IpsecTunnelsListResponseIpsecTunnelsList =
-  ReadonlyArray<IpsecTunnelsListResponseIpsecTunnelsItem>;
+  Array<IpsecTunnelsListResponseIpsecTunnelsItem>;
 export const IpsecTunnelsListResponseIpsecTunnelsList = /*@__PURE__*/ S.Array(
   IpsecTunnelsListResponseIpsecTunnelsItem,
 ) as any as S.Schema<IpsecTunnelsListResponseIpsecTunnelsList>;
@@ -12831,7 +12814,7 @@ export const PcapsListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "PcapsListResultItem",
 }) as any as S.Schema<PcapsListResultItem>;
 
-export type PcapsListResultList = ReadonlyArray<PcapsListResultItem>;
+export type PcapsListResultList = Array<PcapsListResultItem>;
 export const PcapsListResultList = /*@__PURE__*/ S.Array(
   PcapsListResultItem,
 ) as any as S.Schema<PcapsListResultList>;
@@ -12871,15 +12854,13 @@ export const ListRoutesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListRoutesRequest",
 }) as any as S.Schema<ListRoutesRequest>;
 
-export type RoutesListResponseRoutesItemScopeColoNamesList =
-  ReadonlyArray<string>;
+export type RoutesListResponseRoutesItemScopeColoNamesList = Array<string>;
 export const RoutesListResponseRoutesItemScopeColoNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<RoutesListResponseRoutesItemScopeColoNamesList>;
 
-export type RoutesListResponseRoutesItemScopeColoRegionsList =
-  ReadonlyArray<string>;
+export type RoutesListResponseRoutesItemScopeColoRegionsList = Array<string>;
 export const RoutesListResponseRoutesItemScopeColoRegionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -12942,8 +12923,7 @@ export const RoutesListResponseRoutesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "RoutesListResponseRoutesItem",
 }) as any as S.Schema<RoutesListResponseRoutesItem>;
 
-export type RoutesListResponseRoutesList =
-  ReadonlyArray<RoutesListResponseRoutesItem>;
+export type RoutesListResponseRoutesList = Array<RoutesListResponseRoutesItem>;
 export const RoutesListResponseRoutesList = /*@__PURE__*/ S.Array(
   RoutesListResponseRoutesItem,
 ) as any as S.Schema<RoutesListResponseRoutesList>;
@@ -12983,17 +12963,17 @@ export const ListSiteAclsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListSiteAclsRequest",
 }) as any as S.Schema<ListSiteAclsRequest>;
 
-export type SitesAclsListResultItemLan1PortRangesList = ReadonlyArray<string>;
+export type SitesAclsListResultItemLan1PortRangesList = Array<string>;
 export const SitesAclsListResultItemLan1PortRangesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SitesAclsListResultItemLan1PortRangesList>;
 
-export type SitesAclsListResultItemLan1PortsList = ReadonlyArray<number>;
+export type SitesAclsListResultItemLan1PortsList = Array<number>;
 export const SitesAclsListResultItemLan1PortsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<SitesAclsListResultItemLan1PortsList>;
 
-export type SitesAclsListResultItemLan1SubnetsList = ReadonlyArray<string>;
+export type SitesAclsListResultItemLan1SubnetsList = Array<string>;
 export const SitesAclsListResultItemLan1SubnetsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SitesAclsListResultItemLan1SubnetsList>;
@@ -13028,7 +13008,7 @@ export type SitesAclsListResultItemProtocolsItem = "tcp" | "udp" | "icmp";
 export const SitesAclsListResultItemProtocolsItem = /*@__PURE__*/ S.String;
 
 export type SitesAclsListResultItemProtocolsList =
-  ReadonlyArray<SitesAclsListResultItemProtocolsItem>;
+  Array<SitesAclsListResultItemProtocolsItem>;
 export const SitesAclsListResultItemProtocolsList = /*@__PURE__*/ S.Array(
   SitesAclsListResultItemProtocolsItem,
 ) as any as S.Schema<SitesAclsListResultItemProtocolsList>;
@@ -13063,7 +13043,7 @@ export const SitesAclsListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "SitesAclsListResultItem",
 }) as any as S.Schema<SitesAclsListResultItem>;
 
-export type SitesAclsListResultList = ReadonlyArray<SitesAclsListResultItem>;
+export type SitesAclsListResultList = Array<SitesAclsListResultItem>;
 export const SitesAclsListResultList = /*@__PURE__*/ S.Array(
   SitesAclsListResultItem,
 ) as any as S.Schema<SitesAclsListResultList>;
@@ -13137,13 +13117,13 @@ export const SitesLansListResultItemRoutedSubnetsItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<SitesLansListResultItemRoutedSubnetsItem>;
 
 export type SitesLansListResultItemRoutedSubnetsList =
-  ReadonlyArray<SitesLansListResultItemRoutedSubnetsItem>;
+  Array<SitesLansListResultItemRoutedSubnetsItem>;
 export const SitesLansListResultItemRoutedSubnetsList = /*@__PURE__*/ S.Array(
   SitesLansListResultItemRoutedSubnetsItem,
 ) as any as S.Schema<SitesLansListResultItemRoutedSubnetsList>;
 
 export type SitesLansListResultItemStaticAddressingDhcpRelayServerAddressesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const SitesLansListResultItemStaticAddressingDhcpRelayServerAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -13192,14 +13172,14 @@ export const SitesLansListResultItemStaticAddressingDhcpServerDhcpOptionsItem =
   }) as any as S.Schema<SitesLansListResultItemStaticAddressingDhcpServerDhcpOptionsItem>;
 
 export type SitesLansListResultItemStaticAddressingDhcpServerDhcpOptionsList =
-  ReadonlyArray<SitesLansListResultItemStaticAddressingDhcpServerDhcpOptionsItem>;
+  Array<SitesLansListResultItemStaticAddressingDhcpServerDhcpOptionsItem>;
 export const SitesLansListResultItemStaticAddressingDhcpServerDhcpOptionsList =
   /*@__PURE__*/ S.Array(
     SitesLansListResultItemStaticAddressingDhcpServerDhcpOptionsItem,
   ) as any as S.Schema<SitesLansListResultItemStaticAddressingDhcpServerDhcpOptionsList>;
 
 export type SitesLansListResultItemStaticAddressingDhcpServerDnsServersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const SitesLansListResultItemStaticAddressingDhcpServerDnsServersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -13326,7 +13306,7 @@ export const SitesLansListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "SitesLansListResultItem",
 }) as any as S.Schema<SitesLansListResultItem>;
 
-export type SitesLansListResultList = ReadonlyArray<SitesLansListResultItem>;
+export type SitesLansListResultList = Array<SitesLansListResultItem>;
 export const SitesLansListResultList = /*@__PURE__*/ S.Array(
   SitesLansListResultItem,
 ) as any as S.Schema<SitesLansListResultList>;
@@ -13415,7 +13395,7 @@ export const SitesListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "SitesListResultItem",
 }) as any as S.Schema<SitesListResultItem>;
 
-export type SitesListResultList = ReadonlyArray<SitesListResultItem>;
+export type SitesListResultList = Array<SitesListResultItem>;
 export const SitesListResultList = /*@__PURE__*/ S.Array(
   SitesListResultItem,
 ) as any as S.Schema<SitesListResultList>;
@@ -13515,7 +13495,7 @@ export const SitesWansListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "SitesWansListResultItem",
 }) as any as S.Schema<SitesWansListResultItem>;
 
-export type SitesWansListResultList = ReadonlyArray<SitesWansListResultItem>;
+export type SitesWansListResultList = Array<SitesWansListResultItem>;
 export const SitesWansListResultList = /*@__PURE__*/ S.Array(
   SitesWansListResultItem,
 ) as any as S.Schema<SitesWansListResultList>;
@@ -13535,17 +13515,17 @@ export const ListSiteWansResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListSiteWansResponse",
 }) as any as S.Schema<ListSiteWansResponse>;
 
-export type AppsEditRequestHostnamesList = ReadonlyArray<string>;
+export type AppsEditRequestHostnamesList = Array<string>;
 export const AppsEditRequestHostnamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AppsEditRequestHostnamesList>;
 
-export type AppsEditRequestIpSubnetsList = ReadonlyArray<string>;
+export type AppsEditRequestIpSubnetsList = Array<string>;
 export const AppsEditRequestIpSubnetsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AppsEditRequestIpSubnetsList>;
 
-export type AppsEditRequestSourceSubnetsList = ReadonlyArray<string>;
+export type AppsEditRequestSourceSubnetsList = Array<string>;
 export const AppsEditRequestSourceSubnetsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AppsEditRequestSourceSubnetsList>;
@@ -13592,17 +13572,17 @@ export const PatchAppRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchAppRequest",
 }) as any as S.Schema<PatchAppRequest>;
 
-export type AppsEditResponseHostnamesList = ReadonlyArray<string>;
+export type AppsEditResponseHostnamesList = Array<string>;
 export const AppsEditResponseHostnamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AppsEditResponseHostnamesList>;
 
-export type AppsEditResponseIpSubnetsList = ReadonlyArray<string>;
+export type AppsEditResponseIpSubnetsList = Array<string>;
 export const AppsEditResponseIpSubnetsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AppsEditResponseIpSubnetsList>;
 
-export type AppsEditResponseSourceSubnetsList = ReadonlyArray<string>;
+export type AppsEditResponseSourceSubnetsList = Array<string>;
 export const AppsEditResponseSourceSubnetsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AppsEditResponseSourceSubnetsList>;
@@ -13742,7 +13722,7 @@ export type ConnectorsEditRequestInterruptWindowDaysOfWeekItem =
 export const ConnectorsEditRequestInterruptWindowDaysOfWeekItem =
   /*@__PURE__*/ S.String;
 
-export type ConnectorsEditRequestInterruptWindowDaysOfWeekList = ReadonlyArray<
+export type ConnectorsEditRequestInterruptWindowDaysOfWeekList = Array<
   ConnectorsEditRequestInterruptWindowDaysOfWeekItem | (string & {})
 >;
 export const ConnectorsEditRequestInterruptWindowDaysOfWeekList =
@@ -13751,7 +13731,7 @@ export const ConnectorsEditRequestInterruptWindowDaysOfWeekList =
   ) as any as S.Schema<ConnectorsEditRequestInterruptWindowDaysOfWeekList>;
 
 export type ConnectorsEditRequestInterruptWindowEmbargoDatesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ConnectorsEditRequestInterruptWindowEmbargoDatesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -13826,14 +13806,14 @@ export const ConnectorsEditResponseInterruptWindowDaysOfWeekItem =
   /*@__PURE__*/ S.String;
 
 export type ConnectorsEditResponseInterruptWindowDaysOfWeekList =
-  ReadonlyArray<ConnectorsEditResponseInterruptWindowDaysOfWeekItem>;
+  Array<ConnectorsEditResponseInterruptWindowDaysOfWeekItem>;
 export const ConnectorsEditResponseInterruptWindowDaysOfWeekList =
   /*@__PURE__*/ S.Array(
     ConnectorsEditResponseInterruptWindowDaysOfWeekItem,
   ) as any as S.Schema<ConnectorsEditResponseInterruptWindowDaysOfWeekList>;
 
 export type ConnectorsEditResponseInterruptWindowEmbargoDatesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ConnectorsEditResponseInterruptWindowEmbargoDatesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -14010,17 +13990,17 @@ export const PatchSiteResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchSiteResponse",
 }) as any as S.Schema<PatchSiteResponse>;
 
-export type SitesAclsEditRequestLan1PortRangesList = ReadonlyArray<string>;
+export type SitesAclsEditRequestLan1PortRangesList = Array<string>;
 export const SitesAclsEditRequestLan1PortRangesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SitesAclsEditRequestLan1PortRangesList>;
 
-export type SitesAclsEditRequestLan1PortsList = ReadonlyArray<number>;
+export type SitesAclsEditRequestLan1PortsList = Array<number>;
 export const SitesAclsEditRequestLan1PortsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<SitesAclsEditRequestLan1PortsList>;
 
-export type SitesAclsEditRequestLan1SubnetsList = ReadonlyArray<string>;
+export type SitesAclsEditRequestLan1SubnetsList = Array<string>;
 export const SitesAclsEditRequestLan1SubnetsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SitesAclsEditRequestLan1SubnetsList>;
@@ -14054,7 +14034,7 @@ export const SitesAclsEditRequestLan1 = /*@__PURE__*/ S.suspend(() =>
 export type SitesAclsEditRequestProtocolsItem = "tcp" | "udp" | "icmp";
 export const SitesAclsEditRequestProtocolsItem = /*@__PURE__*/ S.String;
 
-export type SitesAclsEditRequestProtocolsList = ReadonlyArray<
+export type SitesAclsEditRequestProtocolsList = Array<
   SitesAclsEditRequestProtocolsItem | (string & {})
 >;
 export const SitesAclsEditRequestProtocolsList = /*@__PURE__*/ S.Array(
@@ -14105,17 +14085,17 @@ export const PatchSiteAclRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchSiteAclRequest",
 }) as any as S.Schema<PatchSiteAclRequest>;
 
-export type SitesAclsEditResponseLan1PortRangesList = ReadonlyArray<string>;
+export type SitesAclsEditResponseLan1PortRangesList = Array<string>;
 export const SitesAclsEditResponseLan1PortRangesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SitesAclsEditResponseLan1PortRangesList>;
 
-export type SitesAclsEditResponseLan1PortsList = ReadonlyArray<number>;
+export type SitesAclsEditResponseLan1PortsList = Array<number>;
 export const SitesAclsEditResponseLan1PortsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<SitesAclsEditResponseLan1PortsList>;
 
-export type SitesAclsEditResponseLan1SubnetsList = ReadonlyArray<string>;
+export type SitesAclsEditResponseLan1SubnetsList = Array<string>;
 export const SitesAclsEditResponseLan1SubnetsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SitesAclsEditResponseLan1SubnetsList>;
@@ -14150,7 +14130,7 @@ export type SitesAclsEditResponseProtocolsItem = "tcp" | "udp" | "icmp";
 export const SitesAclsEditResponseProtocolsItem = /*@__PURE__*/ S.String;
 
 export type SitesAclsEditResponseProtocolsList =
-  ReadonlyArray<SitesAclsEditResponseProtocolsItem>;
+  Array<SitesAclsEditResponseProtocolsItem>;
 export const SitesAclsEditResponseProtocolsList = /*@__PURE__*/ S.Array(
   SitesAclsEditResponseProtocolsItem,
 ) as any as S.Schema<SitesAclsEditResponseProtocolsList>;
@@ -14217,13 +14197,13 @@ export const SitesLansEditRequestRoutedSubnetsItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<SitesLansEditRequestRoutedSubnetsItem>;
 
 export type SitesLansEditRequestRoutedSubnetsList =
-  ReadonlyArray<SitesLansEditRequestRoutedSubnetsItem>;
+  Array<SitesLansEditRequestRoutedSubnetsItem>;
 export const SitesLansEditRequestRoutedSubnetsList = /*@__PURE__*/ S.Array(
   SitesLansEditRequestRoutedSubnetsItem,
 ) as any as S.Schema<SitesLansEditRequestRoutedSubnetsList>;
 
 export type SitesLansEditRequestStaticAddressingDhcpRelayServerAddressesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const SitesLansEditRequestStaticAddressingDhcpRelayServerAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -14278,14 +14258,14 @@ export const SitesLansEditRequestStaticAddressingDhcpServerDhcpOptionsItem =
   }) as any as S.Schema<SitesLansEditRequestStaticAddressingDhcpServerDhcpOptionsItem>;
 
 export type SitesLansEditRequestStaticAddressingDhcpServerDhcpOptionsList =
-  ReadonlyArray<SitesLansEditRequestStaticAddressingDhcpServerDhcpOptionsItem>;
+  Array<SitesLansEditRequestStaticAddressingDhcpServerDhcpOptionsItem>;
 export const SitesLansEditRequestStaticAddressingDhcpServerDhcpOptionsList =
   /*@__PURE__*/ S.Array(
     SitesLansEditRequestStaticAddressingDhcpServerDhcpOptionsItem,
   ) as any as S.Schema<SitesLansEditRequestStaticAddressingDhcpServerDhcpOptionsList>;
 
 export type SitesLansEditRequestStaticAddressingDhcpServerDnsServersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const SitesLansEditRequestStaticAddressingDhcpServerDnsServersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -14451,13 +14431,13 @@ export const SitesLansEditResponseRoutedSubnetsItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<SitesLansEditResponseRoutedSubnetsItem>;
 
 export type SitesLansEditResponseRoutedSubnetsList =
-  ReadonlyArray<SitesLansEditResponseRoutedSubnetsItem>;
+  Array<SitesLansEditResponseRoutedSubnetsItem>;
 export const SitesLansEditResponseRoutedSubnetsList = /*@__PURE__*/ S.Array(
   SitesLansEditResponseRoutedSubnetsItem,
 ) as any as S.Schema<SitesLansEditResponseRoutedSubnetsList>;
 
 export type SitesLansEditResponseStaticAddressingDhcpRelayServerAddressesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const SitesLansEditResponseStaticAddressingDhcpRelayServerAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -14506,14 +14486,14 @@ export const SitesLansEditResponseStaticAddressingDhcpServerDhcpOptionsItem =
   }) as any as S.Schema<SitesLansEditResponseStaticAddressingDhcpServerDhcpOptionsItem>;
 
 export type SitesLansEditResponseStaticAddressingDhcpServerDhcpOptionsList =
-  ReadonlyArray<SitesLansEditResponseStaticAddressingDhcpServerDhcpOptionsItem>;
+  Array<SitesLansEditResponseStaticAddressingDhcpServerDhcpOptionsItem>;
 export const SitesLansEditResponseStaticAddressingDhcpServerDhcpOptionsList =
   /*@__PURE__*/ S.Array(
     SitesLansEditResponseStaticAddressingDhcpServerDhcpOptionsItem,
   ) as any as S.Schema<SitesLansEditResponseStaticAddressingDhcpServerDhcpOptionsList>;
 
 export type SitesLansEditResponseStaticAddressingDhcpServerDnsServersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const SitesLansEditResponseStaticAddressingDhcpServerDnsServersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -14831,7 +14811,7 @@ export const IpsecTunnelsPskSetRequestPsksItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IpsecTunnelsPskSetRequestPsksItem>;
 
 export type IpsecTunnelsPskSetRequestPsksList =
-  ReadonlyArray<IpsecTunnelsPskSetRequestPsksItem>;
+  Array<IpsecTunnelsPskSetRequestPsksItem>;
 export const IpsecTunnelsPskSetRequestPsksList = /*@__PURE__*/ S.Array(
   IpsecTunnelsPskSetRequestPsksItem,
 ) as any as S.Schema<IpsecTunnelsPskSetRequestPsksList>;
@@ -15222,8 +15202,7 @@ export const PutCfInterconnectResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutCfInterconnectResponse",
 }) as any as S.Schema<PutCfInterconnectResponse>;
 
-export type SitesAppConfigurationCreateRequestPreferredWansList =
-  ReadonlyArray<string>;
+export type SitesAppConfigurationCreateRequestPreferredWansList = Array<string>;
 export const SitesAppConfigurationCreateRequestPreferredWansList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -15272,7 +15251,7 @@ export const SitesAppConfigurationCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SitesAppConfigurationCreateRequest>;
 
 export type SitesAppConfigurationCreateResultAccountAppPreferredWansList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const SitesAppConfigurationCreateResultAccountAppPreferredWansList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -15311,7 +15290,7 @@ export const SitesAppConfigurationCreateResultAccountApp =
   }) as any as S.Schema<SitesAppConfigurationCreateResultAccountApp>;
 
 export type SitesAppConfigurationCreateResultManagedAppPreferredWansList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const SitesAppConfigurationCreateResultManagedAppPreferredWansList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -15421,7 +15400,7 @@ export const SitesAppConfigurationDeleteRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SitesAppConfigurationDeleteRequest>;
 
 export type SitesAppConfigurationDeleteResultAccountAppPreferredWansList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const SitesAppConfigurationDeleteResultAccountAppPreferredWansList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -15460,7 +15439,7 @@ export const SitesAppConfigurationDeleteResultAccountApp =
   }) as any as S.Schema<SitesAppConfigurationDeleteResultAccountApp>;
 
 export type SitesAppConfigurationDeleteResultManagedAppPreferredWansList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const SitesAppConfigurationDeleteResultManagedAppPreferredWansList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -15543,8 +15522,7 @@ export const SitesAppConfigurationDeleteResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "SitesAppConfigurationDeleteResponse",
 }) as any as S.Schema<SitesAppConfigurationDeleteResponse>;
 
-export type SitesAppConfigurationEditRequestPreferredWansList =
-  ReadonlyArray<string>;
+export type SitesAppConfigurationEditRequestPreferredWansList = Array<string>;
 export const SitesAppConfigurationEditRequestPreferredWansList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -15596,7 +15574,7 @@ export const SitesAppConfigurationEditRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SitesAppConfigurationEditRequest>;
 
 export type SitesAppConfigurationEditResultAccountAppPreferredWansList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const SitesAppConfigurationEditResultAccountAppPreferredWansList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -15635,7 +15613,7 @@ export const SitesAppConfigurationEditResultAccountApp =
   }) as any as S.Schema<SitesAppConfigurationEditResultAccountApp>;
 
 export type SitesAppConfigurationEditResultManagedAppPreferredWansList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const SitesAppConfigurationEditResultManagedAppPreferredWansList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -15741,7 +15719,7 @@ export const SitesAppConfigurationListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SitesAppConfigurationListRequest>;
 
 export type SitesAppConfigurationListResultItemAccountAppPreferredWansList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const SitesAppConfigurationListResultItemAccountAppPreferredWansList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -15780,7 +15758,7 @@ export const SitesAppConfigurationListResultItemAccountApp =
   }) as any as S.Schema<SitesAppConfigurationListResultItemAccountApp>;
 
 export type SitesAppConfigurationListResultItemManagedAppPreferredWansList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const SitesAppConfigurationListResultItemManagedAppPreferredWansList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -15856,7 +15834,7 @@ export const SitesAppConfigurationListResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SitesAppConfigurationListResultItem>;
 
 export type SitesAppConfigurationListResultList =
-  ReadonlyArray<SitesAppConfigurationListResultItem>;
+  Array<SitesAppConfigurationListResultItem>;
 export const SitesAppConfigurationListResultList = /*@__PURE__*/ S.Array(
   SitesAppConfigurationListResultItem,
 ) as any as S.Schema<SitesAppConfigurationListResultList>;
@@ -15869,8 +15847,7 @@ export const SitesAppConfigurationListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "SitesAppConfigurationListResponse",
 }) as any as S.Schema<SitesAppConfigurationListResponse>;
 
-export type SitesAppConfigurationUpdateRequestPreferredWansList =
-  ReadonlyArray<string>;
+export type SitesAppConfigurationUpdateRequestPreferredWansList = Array<string>;
 export const SitesAppConfigurationUpdateRequestPreferredWansList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -15922,7 +15899,7 @@ export const SitesAppConfigurationUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SitesAppConfigurationUpdateRequest>;
 
 export type SitesAppConfigurationUpdateResultAccountAppPreferredWansList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const SitesAppConfigurationUpdateResultAccountAppPreferredWansList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -15961,7 +15938,7 @@ export const SitesAppConfigurationUpdateResultAccountApp =
   }) as any as S.Schema<SitesAppConfigurationUpdateResultAccountApp>;
 
 export type SitesAppConfigurationUpdateResultManagedAppPreferredWansList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const SitesAppConfigurationUpdateResultManagedAppPreferredWansList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -16074,17 +16051,17 @@ export const StopPcapResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "StopPcapResponse",
 }) as any as S.Schema<StopPcapResponse>;
 
-export type AppsUpdateRequestHostnamesList = ReadonlyArray<string>;
+export type AppsUpdateRequestHostnamesList = Array<string>;
 export const AppsUpdateRequestHostnamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AppsUpdateRequestHostnamesList>;
 
-export type AppsUpdateRequestIpSubnetsList = ReadonlyArray<string>;
+export type AppsUpdateRequestIpSubnetsList = Array<string>;
 export const AppsUpdateRequestIpSubnetsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AppsUpdateRequestIpSubnetsList>;
 
-export type AppsUpdateRequestSourceSubnetsList = ReadonlyArray<string>;
+export type AppsUpdateRequestSourceSubnetsList = Array<string>;
 export const AppsUpdateRequestSourceSubnetsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AppsUpdateRequestSourceSubnetsList>;
@@ -16131,17 +16108,17 @@ export const UpdateAppRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateAppRequest",
 }) as any as S.Schema<UpdateAppRequest>;
 
-export type AppsUpdateResponseHostnamesList = ReadonlyArray<string>;
+export type AppsUpdateResponseHostnamesList = Array<string>;
 export const AppsUpdateResponseHostnamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AppsUpdateResponseHostnamesList>;
 
-export type AppsUpdateResponseIpSubnetsList = ReadonlyArray<string>;
+export type AppsUpdateResponseIpSubnetsList = Array<string>;
 export const AppsUpdateResponseIpSubnetsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AppsUpdateResponseIpSubnetsList>;
 
-export type AppsUpdateResponseSourceSubnetsList = ReadonlyArray<string>;
+export type AppsUpdateResponseSourceSubnetsList = Array<string>;
 export const AppsUpdateResponseSourceSubnetsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AppsUpdateResponseSourceSubnetsList>;
@@ -16189,17 +16166,16 @@ export type ConnectorsUpdateRequestInterruptWindowDaysOfWeekItem =
 export const ConnectorsUpdateRequestInterruptWindowDaysOfWeekItem =
   /*@__PURE__*/ S.String;
 
-export type ConnectorsUpdateRequestInterruptWindowDaysOfWeekList =
-  ReadonlyArray<
-    ConnectorsUpdateRequestInterruptWindowDaysOfWeekItem | (string & {})
-  >;
+export type ConnectorsUpdateRequestInterruptWindowDaysOfWeekList = Array<
+  ConnectorsUpdateRequestInterruptWindowDaysOfWeekItem | (string & {})
+>;
 export const ConnectorsUpdateRequestInterruptWindowDaysOfWeekList =
   /*@__PURE__*/ S.Array(
     ConnectorsUpdateRequestInterruptWindowDaysOfWeekItem,
   ) as any as S.Schema<ConnectorsUpdateRequestInterruptWindowDaysOfWeekList>;
 
 export type ConnectorsUpdateRequestInterruptWindowEmbargoDatesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ConnectorsUpdateRequestInterruptWindowEmbargoDatesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -16274,14 +16250,14 @@ export const ConnectorsUpdateResponseInterruptWindowDaysOfWeekItem =
   /*@__PURE__*/ S.String;
 
 export type ConnectorsUpdateResponseInterruptWindowDaysOfWeekList =
-  ReadonlyArray<ConnectorsUpdateResponseInterruptWindowDaysOfWeekItem>;
+  Array<ConnectorsUpdateResponseInterruptWindowDaysOfWeekItem>;
 export const ConnectorsUpdateResponseInterruptWindowDaysOfWeekList =
   /*@__PURE__*/ S.Array(
     ConnectorsUpdateResponseInterruptWindowDaysOfWeekItem,
   ) as any as S.Schema<ConnectorsUpdateResponseInterruptWindowDaysOfWeekList>;
 
 export type ConnectorsUpdateResponseInterruptWindowEmbargoDatesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ConnectorsUpdateResponseInterruptWindowEmbargoDatesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -16477,7 +16453,7 @@ export const UpdateGreTunnelRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateGreTunnelRequest>;
 
 export type GreTunnelsUpdateResponseModifiedGreTunnelBgpExtraPrefixesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GreTunnelsUpdateResponseModifiedGreTunnelBgpExtraPrefixesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -16706,8 +16682,7 @@ export const UpdateGreTunnelResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateGreTunnelResponse",
 }) as any as S.Schema<UpdateGreTunnelResponse>;
 
-export type IpsecTunnelsUpdateRequestBgpExtraPrefixesList =
-  ReadonlyArray<string>;
+export type IpsecTunnelsUpdateRequestBgpExtraPrefixesList = Array<string>;
 export const IpsecTunnelsUpdateRequestBgpExtraPrefixesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -16883,7 +16858,7 @@ export const UpdateIpsecTunnelRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateIpsecTunnelRequest>;
 
 export type IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgpExtraPrefixesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgpExtraPrefixesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -17152,12 +17127,12 @@ export const UpdateIpsecTunnelResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateIpsecTunnelResponse",
 }) as any as S.Schema<UpdateIpsecTunnelResponse>;
 
-export type RoutesUpdateRequestScopeColoNamesList = ReadonlyArray<string>;
+export type RoutesUpdateRequestScopeColoNamesList = Array<string>;
 export const RoutesUpdateRequestScopeColoNamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RoutesUpdateRequestScopeColoNamesList>;
 
-export type RoutesUpdateRequestScopeColoRegionsList = ReadonlyArray<string>;
+export type RoutesUpdateRequestScopeColoRegionsList = Array<string>;
 export const RoutesUpdateRequestScopeColoRegionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RoutesUpdateRequestScopeColoRegionsList>;
@@ -17222,15 +17197,14 @@ export const UpdateRouteRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateRouteRequest",
 }) as any as S.Schema<UpdateRouteRequest>;
 
-export type RoutesUpdateResponseModifiedRouteScopeColoNamesList =
-  ReadonlyArray<string>;
+export type RoutesUpdateResponseModifiedRouteScopeColoNamesList = Array<string>;
 export const RoutesUpdateResponseModifiedRouteScopeColoNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<RoutesUpdateResponseModifiedRouteScopeColoNamesList>;
 
 export type RoutesUpdateResponseModifiedRouteScopeColoRegionsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RoutesUpdateResponseModifiedRouteScopeColoRegionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -17413,17 +17387,17 @@ export const UpdateSiteResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateSiteResponse",
 }) as any as S.Schema<UpdateSiteResponse>;
 
-export type SitesAclsUpdateRequestLan1PortRangesList = ReadonlyArray<string>;
+export type SitesAclsUpdateRequestLan1PortRangesList = Array<string>;
 export const SitesAclsUpdateRequestLan1PortRangesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SitesAclsUpdateRequestLan1PortRangesList>;
 
-export type SitesAclsUpdateRequestLan1PortsList = ReadonlyArray<number>;
+export type SitesAclsUpdateRequestLan1PortsList = Array<number>;
 export const SitesAclsUpdateRequestLan1PortsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<SitesAclsUpdateRequestLan1PortsList>;
 
-export type SitesAclsUpdateRequestLan1SubnetsList = ReadonlyArray<string>;
+export type SitesAclsUpdateRequestLan1SubnetsList = Array<string>;
 export const SitesAclsUpdateRequestLan1SubnetsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SitesAclsUpdateRequestLan1SubnetsList>;
@@ -17457,7 +17431,7 @@ export const SitesAclsUpdateRequestLan1 = /*@__PURE__*/ S.suspend(() =>
 export type SitesAclsUpdateRequestProtocolsItem = "tcp" | "udp" | "icmp";
 export const SitesAclsUpdateRequestProtocolsItem = /*@__PURE__*/ S.String;
 
-export type SitesAclsUpdateRequestProtocolsList = ReadonlyArray<
+export type SitesAclsUpdateRequestProtocolsList = Array<
   SitesAclsUpdateRequestProtocolsItem | (string & {})
 >;
 export const SitesAclsUpdateRequestProtocolsList = /*@__PURE__*/ S.Array(
@@ -17508,17 +17482,17 @@ export const UpdateSiteAclRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateSiteAclRequest",
 }) as any as S.Schema<UpdateSiteAclRequest>;
 
-export type SitesAclsUpdateResponseLan1PortRangesList = ReadonlyArray<string>;
+export type SitesAclsUpdateResponseLan1PortRangesList = Array<string>;
 export const SitesAclsUpdateResponseLan1PortRangesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SitesAclsUpdateResponseLan1PortRangesList>;
 
-export type SitesAclsUpdateResponseLan1PortsList = ReadonlyArray<number>;
+export type SitesAclsUpdateResponseLan1PortsList = Array<number>;
 export const SitesAclsUpdateResponseLan1PortsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<SitesAclsUpdateResponseLan1PortsList>;
 
-export type SitesAclsUpdateResponseLan1SubnetsList = ReadonlyArray<string>;
+export type SitesAclsUpdateResponseLan1SubnetsList = Array<string>;
 export const SitesAclsUpdateResponseLan1SubnetsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SitesAclsUpdateResponseLan1SubnetsList>;
@@ -17553,7 +17527,7 @@ export type SitesAclsUpdateResponseProtocolsItem = "tcp" | "udp" | "icmp";
 export const SitesAclsUpdateResponseProtocolsItem = /*@__PURE__*/ S.String;
 
 export type SitesAclsUpdateResponseProtocolsList =
-  ReadonlyArray<SitesAclsUpdateResponseProtocolsItem>;
+  Array<SitesAclsUpdateResponseProtocolsItem>;
 export const SitesAclsUpdateResponseProtocolsList = /*@__PURE__*/ S.Array(
   SitesAclsUpdateResponseProtocolsItem,
 ) as any as S.Schema<SitesAclsUpdateResponseProtocolsList>;
@@ -17620,13 +17594,13 @@ export const SitesLansUpdateRequestRoutedSubnetsItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<SitesLansUpdateRequestRoutedSubnetsItem>;
 
 export type SitesLansUpdateRequestRoutedSubnetsList =
-  ReadonlyArray<SitesLansUpdateRequestRoutedSubnetsItem>;
+  Array<SitesLansUpdateRequestRoutedSubnetsItem>;
 export const SitesLansUpdateRequestRoutedSubnetsList = /*@__PURE__*/ S.Array(
   SitesLansUpdateRequestRoutedSubnetsItem,
 ) as any as S.Schema<SitesLansUpdateRequestRoutedSubnetsList>;
 
 export type SitesLansUpdateRequestStaticAddressingDhcpRelayServerAddressesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const SitesLansUpdateRequestStaticAddressingDhcpRelayServerAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -17677,14 +17651,14 @@ export const SitesLansUpdateRequestStaticAddressingDhcpServerDhcpOptionsItem =
   }) as any as S.Schema<SitesLansUpdateRequestStaticAddressingDhcpServerDhcpOptionsItem>;
 
 export type SitesLansUpdateRequestStaticAddressingDhcpServerDhcpOptionsList =
-  ReadonlyArray<SitesLansUpdateRequestStaticAddressingDhcpServerDhcpOptionsItem>;
+  Array<SitesLansUpdateRequestStaticAddressingDhcpServerDhcpOptionsItem>;
 export const SitesLansUpdateRequestStaticAddressingDhcpServerDhcpOptionsList =
   /*@__PURE__*/ S.Array(
     SitesLansUpdateRequestStaticAddressingDhcpServerDhcpOptionsItem,
   ) as any as S.Schema<SitesLansUpdateRequestStaticAddressingDhcpServerDhcpOptionsList>;
 
 export type SitesLansUpdateRequestStaticAddressingDhcpServerDnsServersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const SitesLansUpdateRequestStaticAddressingDhcpServerDnsServersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -17850,13 +17824,13 @@ export const SitesLansUpdateResponseRoutedSubnetsItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<SitesLansUpdateResponseRoutedSubnetsItem>;
 
 export type SitesLansUpdateResponseRoutedSubnetsList =
-  ReadonlyArray<SitesLansUpdateResponseRoutedSubnetsItem>;
+  Array<SitesLansUpdateResponseRoutedSubnetsItem>;
 export const SitesLansUpdateResponseRoutedSubnetsList = /*@__PURE__*/ S.Array(
   SitesLansUpdateResponseRoutedSubnetsItem,
 ) as any as S.Schema<SitesLansUpdateResponseRoutedSubnetsList>;
 
 export type SitesLansUpdateResponseStaticAddressingDhcpRelayServerAddressesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const SitesLansUpdateResponseStaticAddressingDhcpRelayServerAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -17905,14 +17879,14 @@ export const SitesLansUpdateResponseStaticAddressingDhcpServerDhcpOptionsItem =
   }) as any as S.Schema<SitesLansUpdateResponseStaticAddressingDhcpServerDhcpOptionsItem>;
 
 export type SitesLansUpdateResponseStaticAddressingDhcpServerDhcpOptionsList =
-  ReadonlyArray<SitesLansUpdateResponseStaticAddressingDhcpServerDhcpOptionsItem>;
+  Array<SitesLansUpdateResponseStaticAddressingDhcpServerDhcpOptionsItem>;
 export const SitesLansUpdateResponseStaticAddressingDhcpServerDhcpOptionsList =
   /*@__PURE__*/ S.Array(
     SitesLansUpdateResponseStaticAddressingDhcpServerDhcpOptionsItem,
   ) as any as S.Schema<SitesLansUpdateResponseStaticAddressingDhcpServerDhcpOptionsList>;
 
 export type SitesLansUpdateResponseStaticAddressingDhcpServerDnsServersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const SitesLansUpdateResponseStaticAddressingDhcpServerDnsServersList =
   /*@__PURE__*/ S.Array(
     S.String,

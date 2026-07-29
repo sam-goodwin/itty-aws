@@ -60,7 +60,7 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -105,7 +105,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -219,7 +219,7 @@ export interface AlertFeedback {
   /** Output only. The time this feedback was created. */
   createTime?: string;
   /** Required. The type of the feedback. */
-  type?: AlertFeedbackTypeEnum;
+  type?: AlertFeedbackTypeEnum | (string & {});
 }
 export const AlertFeedback = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -429,7 +429,7 @@ export interface CloudPubsubTopic {
   /** The `name` field of a Cloud Pubsub [Topic] (https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.topics#Topic). */
   topicName?: string;
   /** Optional. The format of the payload that would be sent. If not specified the format will be JSON. */
-  payloadFormat?: CloudPubsubTopicPayloadFormatEnum;
+  payloadFormat?: CloudPubsubTopicPayloadFormatEnum | (string & {});
 }
 export const CloudPubsubTopic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -451,7 +451,7 @@ export const Notification = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Notification" }) as any as S.Schema<Notification>;
 
-export type NotificationList = ReadonlyArray<Notification>;
+export type NotificationList = Array<Notification>;
 export const NotificationList = /*@__PURE__*/ S.Array(
   Notification,
 ) as any as S.Schema<NotificationList>;
@@ -497,7 +497,7 @@ export const ListAlertsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAlertsRequest",
 }) as any as S.Schema<ListAlertsRequest>;
 
-export type AlertList = ReadonlyArray<Alert>;
+export type AlertList = Array<Alert>;
 export const AlertList = /*@__PURE__*/ S.Array(
   Alert,
 ) as any as S.Schema<AlertList>;
@@ -542,7 +542,7 @@ export const ListAlertsFeedbackRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAlertsFeedbackRequest",
 }) as any as S.Schema<ListAlertsFeedbackRequest>;
 
-export type AlertFeedbackList = ReadonlyArray<AlertFeedback>;
+export type AlertFeedbackList = Array<AlertFeedback>;
 export const AlertFeedbackList = /*@__PURE__*/ S.Array(
   AlertFeedback,
 ) as any as S.Schema<AlertFeedbackList>;

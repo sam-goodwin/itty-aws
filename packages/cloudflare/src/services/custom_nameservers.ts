@@ -104,8 +104,7 @@ export const CreateResponseDnsRecordsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateResponseDnsRecordsItem",
 }) as any as S.Schema<CreateResponseDnsRecordsItem>;
 
-export type CreateResponseDnsRecordsList =
-  ReadonlyArray<CreateResponseDnsRecordsItem>;
+export type CreateResponseDnsRecordsList = Array<CreateResponseDnsRecordsItem>;
 export const CreateResponseDnsRecordsList = /*@__PURE__*/ S.Array(
   CreateResponseDnsRecordsItem,
 ) as any as S.Schema<CreateResponseDnsRecordsList>;
@@ -161,7 +160,7 @@ export const DeleteCustomNameserverRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteCustomNameserverRequest",
 }) as any as S.Schema<DeleteCustomNameserverRequest>;
 
-export type DeleteResultList = ReadonlyArray<string>;
+export type DeleteResultList = Array<string>;
 export const DeleteResultList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DeleteResultList>;
@@ -219,8 +218,7 @@ export const GetResultItemDnsRecordsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetResultItemDnsRecordsItem",
 }) as any as S.Schema<GetResultItemDnsRecordsItem>;
 
-export type GetResultItemDnsRecordsList =
-  ReadonlyArray<GetResultItemDnsRecordsItem>;
+export type GetResultItemDnsRecordsList = Array<GetResultItemDnsRecordsItem>;
 export const GetResultItemDnsRecordsList = /*@__PURE__*/ S.Array(
   GetResultItemDnsRecordsItem,
 ) as any as S.Schema<GetResultItemDnsRecordsList>;
@@ -250,7 +248,7 @@ export const GetResultItem = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "GetResultItem" }) as any as S.Schema<GetResultItem>;
 
-export type GetResultList = ReadonlyArray<GetResultItem>;
+export type GetResultList = Array<GetResultItem>;
 export const GetResultList = /*@__PURE__*/ S.Array(
   GetResultItem,
 ) as any as S.Schema<GetResultList>;

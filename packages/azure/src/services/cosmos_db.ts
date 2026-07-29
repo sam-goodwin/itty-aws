@@ -53,7 +53,7 @@ export const Certificate = /*@__PURE__*/ S.suspend(() =>
 
 /** List of TLS certificates used to authorize clients connecting to the cluster. All connections are TLS encrypted whether clientCertificates is set or not, but if clientCertificates is set, the managed Cassandra cluster will reject all connections not bearing a TLS client certificate that can be validated from one or more of the public certificates in this property. */
 export type ClusterResourcePropertiesInputClientCertificatesList =
-  ReadonlyArray<Certificate>;
+  Array<Certificate>;
 export const ClusterResourcePropertiesInputClientCertificatesList =
   /*@__PURE__*/ S.Array(
     Certificate,
@@ -61,7 +61,7 @@ export const ClusterResourcePropertiesInputClientCertificatesList =
 
 /** List of TLS certificates used to authorize gossip from unmanaged data centers. The TLS certificates of all nodes in unmanaged data centers must be verifiable using one of the certificates provided in this property. */
 export type ClusterResourcePropertiesInputExternalGossipCertificatesList =
-  ReadonlyArray<Certificate>;
+  Array<Certificate>;
 export const ClusterResourcePropertiesInputExternalGossipCertificatesList =
   /*@__PURE__*/ S.Array(
     Certificate,
@@ -69,7 +69,7 @@ export const ClusterResourcePropertiesInputExternalGossipCertificatesList =
 
 /** List of IP addresses of seed nodes in unmanaged data centers. These will be added to the seed node lists of all managed nodes. */
 export type ClusterResourcePropertiesInputExternalSeedNodesList =
-  ReadonlyArray<SeedNode>;
+  Array<SeedNode>;
 export const ClusterResourcePropertiesInputExternalSeedNodesList =
   /*@__PURE__*/ S.Array(
     SeedNode,
@@ -77,7 +77,7 @@ export const ClusterResourcePropertiesInputExternalSeedNodesList =
 
 /** List of the data center names for unmanaged data centers in this cluster to be included in auto-replication. */
 export type ClusterResourcePropertiesInputExternalDataCentersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ClusterResourcePropertiesInputExternalDataCentersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -103,8 +103,7 @@ export const CassandraError = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CassandraError" }) as any as S.Schema<CassandraError>;
 
 /** Extensions to be added or updated on cluster. */
-export type ClusterResourcePropertiesInputExtensionsList =
-  ReadonlyArray<string>;
+export type ClusterResourcePropertiesInputExtensionsList = Array<string>;
 export const ClusterResourcePropertiesInputExtensionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -128,7 +127,7 @@ export const BackupSchedule = /*@__PURE__*/ S.suspend(() =>
 
 /** List of backup schedules that define when you want to back up your data. */
 export type ClusterResourcePropertiesInputBackupSchedulesList =
-  ReadonlyArray<BackupSchedule>;
+  Array<BackupSchedule>;
 export const ClusterResourcePropertiesInputBackupSchedulesList =
   /*@__PURE__*/ S.Array(
     BackupSchedule,
@@ -340,7 +339,7 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 
 /** List of TLS certificates used to authorize clients connecting to the cluster. All connections are TLS encrypted whether clientCertificates is set or not, but if clientCertificates is set, the managed Cassandra cluster will reject all connections not bearing a TLS client certificate that can be validated from one or more of the public certificates in this property. */
 export type ClusterResourcePropertiesClientCertificatesList =
-  ReadonlyArray<Certificate>;
+  Array<Certificate>;
 export const ClusterResourcePropertiesClientCertificatesList =
   /*@__PURE__*/ S.Array(
     Certificate,
@@ -348,7 +347,7 @@ export const ClusterResourcePropertiesClientCertificatesList =
 
 /** List of TLS certificates used to authorize gossip from unmanaged data centers. The TLS certificates of all nodes in unmanaged data centers must be verifiable using one of the certificates provided in this property. */
 export type ClusterResourcePropertiesExternalGossipCertificatesList =
-  ReadonlyArray<Certificate>;
+  Array<Certificate>;
 export const ClusterResourcePropertiesExternalGossipCertificatesList =
   /*@__PURE__*/ S.Array(
     Certificate,
@@ -356,43 +355,41 @@ export const ClusterResourcePropertiesExternalGossipCertificatesList =
 
 /** List of TLS certificates that unmanaged nodes must trust for gossip with managed nodes. All managed nodes will present TLS client certificates that are verifiable using one of the certificates provided in this property. */
 export type ClusterResourcePropertiesGossipCertificatesList =
-  ReadonlyArray<Certificate>;
+  Array<Certificate>;
 export const ClusterResourcePropertiesGossipCertificatesList =
   /*@__PURE__*/ S.Array(
     Certificate,
   ) as any as S.Schema<ClusterResourcePropertiesGossipCertificatesList>;
 
 /** List of IP addresses of seed nodes in unmanaged data centers. These will be added to the seed node lists of all managed nodes. */
-export type ClusterResourcePropertiesExternalSeedNodesList =
-  ReadonlyArray<SeedNode>;
+export type ClusterResourcePropertiesExternalSeedNodesList = Array<SeedNode>;
 export const ClusterResourcePropertiesExternalSeedNodesList =
   /*@__PURE__*/ S.Array(
     SeedNode,
   ) as any as S.Schema<ClusterResourcePropertiesExternalSeedNodesList>;
 
 /** List of IP addresses of seed nodes in the managed data centers. These should be added to the seed node lists of all unmanaged nodes. */
-export type ClusterResourcePropertiesSeedNodesList = ReadonlyArray<SeedNode>;
+export type ClusterResourcePropertiesSeedNodesList = Array<SeedNode>;
 export const ClusterResourcePropertiesSeedNodesList = /*@__PURE__*/ S.Array(
   SeedNode,
 ) as any as S.Schema<ClusterResourcePropertiesSeedNodesList>;
 
 /** List of the data center names for unmanaged data centers in this cluster to be included in auto-replication. */
-export type ClusterResourcePropertiesExternalDataCentersList =
-  ReadonlyArray<string>;
+export type ClusterResourcePropertiesExternalDataCentersList = Array<string>;
 export const ClusterResourcePropertiesExternalDataCentersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ClusterResourcePropertiesExternalDataCentersList>;
 
 /** Extensions to be added or updated on cluster. */
-export type ClusterResourcePropertiesExtensionsList = ReadonlyArray<string>;
+export type ClusterResourcePropertiesExtensionsList = Array<string>;
 export const ClusterResourcePropertiesExtensionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ClusterResourcePropertiesExtensionsList>;
 
 /** List of backup schedules that define when you want to back up your data. */
 export type ClusterResourcePropertiesBackupSchedulesList =
-  ReadonlyArray<BackupSchedule>;
+  Array<BackupSchedule>;
 export const ClusterResourcePropertiesBackupSchedulesList =
   /*@__PURE__*/ S.Array(
     BackupSchedule,
@@ -815,7 +812,7 @@ export const ClusterResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ClusterResource>;
 
 /** Container for the array of clusters. */
-export type ListClustersValueList = ReadonlyArray<ClusterResource>;
+export type ListClustersValueList = Array<ClusterResource>;
 export const ListClustersValueList = /*@__PURE__*/ S.Array(
   ClusterResource,
 ) as any as S.Schema<ListClustersValueList>;
@@ -983,22 +980,21 @@ export const ConnectionError = /*@__PURE__*/ S.suspend(() =>
 
 /** List relevant information about any connection errors to the Datacenters. */
 export type CassandraClusterPublicStatusConnectionErrorsList =
-  ReadonlyArray<ConnectionError>;
+  Array<ConnectionError>;
 export const CassandraClusterPublicStatusConnectionErrorsList =
   /*@__PURE__*/ S.Array(
     ConnectionError,
   ) as any as S.Schema<CassandraClusterPublicStatusConnectionErrorsList>;
 
 /** List relevant information about any errors about cluster, data center and connection error. */
-export type CassandraClusterPublicStatusErrorsList =
-  ReadonlyArray<CassandraError>;
+export type CassandraClusterPublicStatusErrorsList = Array<CassandraError>;
 export const CassandraClusterPublicStatusErrorsList = /*@__PURE__*/ S.Array(
   CassandraError,
 ) as any as S.Schema<CassandraClusterPublicStatusErrorsList>;
 
 /** A list of all seed nodes in the cluster, managed and unmanaged. */
 export type CassandraClusterPublicStatusDataCentersItemSeedNodesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CassandraClusterPublicStatusDataCentersItemSeedNodesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1010,7 +1006,7 @@ export const NodeState = /*@__PURE__*/ S.String;
 
 /** List of tokens this node covers. */
 export type ComponentsM9L909SchemasCassandraclusterpublicstatusPropertiesDatacentersItemsPropertiesNodesItemsTokensList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ComponentsM9L909SchemasCassandraclusterpublicstatusPropertiesDatacentersItemsPropertiesNodesItemsTokensList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1082,7 +1078,7 @@ export const ComponentsM9L909SchemasCassandraclusterpublicstatusPropertiesDatace
   }) as any as S.Schema<ComponentsM9L909SchemasCassandraclusterpublicstatusPropertiesDatacentersItemsPropertiesNodesItems>;
 
 export type CassandraClusterPublicStatusDataCentersItemNodesList =
-  ReadonlyArray<ComponentsM9L909SchemasCassandraclusterpublicstatusPropertiesDatacentersItemsPropertiesNodesItems>;
+  Array<ComponentsM9L909SchemasCassandraclusterpublicstatusPropertiesDatacentersItemsPropertiesNodesItems>;
 export const CassandraClusterPublicStatusDataCentersItemNodesList =
   /*@__PURE__*/ S.Array(
     ComponentsM9L909SchemasCassandraclusterpublicstatusPropertiesDatacentersItemsPropertiesNodesItems,
@@ -1110,7 +1106,7 @@ export const CassandraClusterPublicStatusDataCentersItem =
 
 /** List of the status of each datacenter in this cluster. */
 export type CassandraClusterPublicStatusDataCentersList =
-  ReadonlyArray<CassandraClusterPublicStatusDataCentersItem>;
+  Array<CassandraClusterPublicStatusDataCentersItem>;
 export const CassandraClusterPublicStatusDataCentersList =
   /*@__PURE__*/ S.Array(
     CassandraClusterPublicStatusDataCentersItem,
@@ -1230,7 +1226,7 @@ export const CassandraClustersUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CassandraClustersUpdateResponse>;
 
 export type AuthenticationMethodLdapPropertiesServerCertificatesList =
-  ReadonlyArray<Certificate>;
+  Array<Certificate>;
 export const AuthenticationMethodLdapPropertiesServerCertificatesList =
   /*@__PURE__*/ S.Array(
     Certificate,
@@ -1361,7 +1357,7 @@ export const CassandraDataCentersCreateUpdateRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CassandraDataCentersCreateUpdateRequest>;
 
 /** IP addresses for seed nodes in this data center. This is for reference. Generally you will want to use the seedNodes property on the cluster, which aggregates the seed nodes from all data centers in the cluster. */
-export type DataCenterResourcePropertiesSeedNodesList = ReadonlyArray<SeedNode>;
+export type DataCenterResourcePropertiesSeedNodesList = Array<SeedNode>;
 export const DataCenterResourcePropertiesSeedNodesList = /*@__PURE__*/ S.Array(
   SeedNode,
 ) as any as S.Schema<DataCenterResourcePropertiesSeedNodesList>;
@@ -1589,7 +1585,7 @@ export const DataCenterResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DataCenterResource>;
 
 /** Container for array of data centers. */
-export type ListDataCentersValueList = ReadonlyArray<DataCenterResource>;
+export type ListDataCentersValueList = Array<DataCenterResource>;
 export const ListDataCentersValueList = /*@__PURE__*/ S.Array(
   DataCenterResource,
 ) as any as S.Schema<ListDataCentersValueList>;
@@ -2071,20 +2067,20 @@ export const RoleDefinitionType = /*@__PURE__*/ S.String;
 
 /** A set of fully qualified Scopes at or below which Cassandra Role Assignments may be created using this Role Definition. This will allow application of this Role Definition on the entire database account or any underlying Database / Collection. Must have at least one element. Scopes higher than Database account are not enforceable as assignable Scopes. Note that resources referenced in assignable Scopes need not exist. */
 export type CassandraRoleDefinitionResourcePropertiesAssignableScopesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CassandraRoleDefinitionResourcePropertiesAssignableScopesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<CassandraRoleDefinitionResourcePropertiesAssignableScopesList>;
 
 /** An array of data actions that are allowed. */
-export type PermissionDataActionsList = ReadonlyArray<string>;
+export type PermissionDataActionsList = Array<string>;
 export const PermissionDataActionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PermissionDataActionsList>;
 
 /** An array of data actions that are denied. */
-export type PermissionNotDataActionsList = ReadonlyArray<string>;
+export type PermissionNotDataActionsList = Array<string>;
 export const PermissionNotDataActionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PermissionNotDataActionsList>;
@@ -2108,7 +2104,7 @@ export const Permission = /*@__PURE__*/ S.suspend(() =>
 
 /** The set of operations allowed through this Role Definition. */
 export type CassandraRoleDefinitionResourcePropertiesPermissionsList =
-  ReadonlyArray<Permission>;
+  Array<Permission>;
 export const CassandraRoleDefinitionResourcePropertiesPermissionsList =
   /*@__PURE__*/ S.Array(
     Permission,
@@ -2121,7 +2117,7 @@ export interface CassandraRoleDefinitionResourceProperties {
   /** A user-friendly name for the Role Definition. Must be unique for the database account. */
   roleName?: string;
   /** Indicates whether the Role Definition was built-in or user created. */
-  type?: RoleDefinitionType;
+  type?: RoleDefinitionType | (string & {});
   /** A set of fully qualified Scopes at or below which Cassandra Role Assignments may be created using this Role Definition. This will allow application of this Role Definition on the entire database account or any underlying Database / Collection. Must have at least one element. Scopes higher than Database account are not enforceable as assignable Scopes. Note that resources referenced in assignable Scopes need not exist. */
   assignableScopes?: CassandraRoleDefinitionResourcePropertiesAssignableScopesList;
   /** The set of operations allowed through this Role Definition. */
@@ -2226,7 +2222,7 @@ export const Column = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Column" }) as any as S.Schema<Column>;
 
 /** List of Cassandra table columns. */
-export type CassandraSchemaColumnsList = ReadonlyArray<Column>;
+export type CassandraSchemaColumnsList = Array<Column>;
 export const CassandraSchemaColumnsList = /*@__PURE__*/ S.Array(
   Column,
 ) as any as S.Schema<CassandraSchemaColumnsList>;
@@ -2245,8 +2241,7 @@ export const CassandraPartitionKey = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CassandraPartitionKey>;
 
 /** List of partition key. */
-export type CassandraSchemaPartitionKeysList =
-  ReadonlyArray<CassandraPartitionKey>;
+export type CassandraSchemaPartitionKeysList = Array<CassandraPartitionKey>;
 export const CassandraSchemaPartitionKeysList = /*@__PURE__*/ S.Array(
   CassandraPartitionKey,
 ) as any as S.Schema<CassandraSchemaPartitionKeysList>;
@@ -2266,7 +2261,7 @@ export const ClusterKey = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ClusterKey" }) as any as S.Schema<ClusterKey>;
 
 /** List of cluster key. */
-export type CassandraSchemaClusterKeysList = ReadonlyArray<ClusterKey>;
+export type CassandraSchemaClusterKeysList = Array<ClusterKey>;
 export const CassandraSchemaClusterKeysList = /*@__PURE__*/ S.Array(
   ClusterKey,
 ) as any as S.Schema<CassandraSchemaClusterKeysList>;
@@ -3186,7 +3181,7 @@ export const CassandraKeyspaceGetResults = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Cassandra keyspaces and their properties. */
 export type CassandraKeyspaceListResultValueList =
-  ReadonlyArray<CassandraKeyspaceGetResults>;
+  Array<CassandraKeyspaceGetResults>;
 export const CassandraKeyspaceListResultValueList = /*@__PURE__*/ S.Array(
   CassandraKeyspaceGetResults,
 ) as any as S.Schema<CassandraKeyspaceListResultValueList>;
@@ -3259,7 +3254,7 @@ export const CassandraRoleAssignmentResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The CassandraRoleAssignmentResource items on this page */
 export type CassandraRoleAssignmentListResultValueList =
-  ReadonlyArray<CassandraRoleAssignmentResource>;
+  Array<CassandraRoleAssignmentResource>;
 export const CassandraRoleAssignmentListResultValueList = /*@__PURE__*/ S.Array(
   CassandraRoleAssignmentResource,
 ) as any as S.Schema<CassandraRoleAssignmentListResultValueList>;
@@ -3333,7 +3328,7 @@ export const CassandraRoleDefinitionResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The CassandraRoleDefinitionResource items on this page */
 export type CassandraRoleDefinitionListResultValueList =
-  ReadonlyArray<CassandraRoleDefinitionResource>;
+  Array<CassandraRoleDefinitionResource>;
 export const CassandraRoleDefinitionListResultValueList = /*@__PURE__*/ S.Array(
   CassandraRoleDefinitionResource,
 ) as any as S.Schema<CassandraRoleDefinitionListResultValueList>;
@@ -3427,8 +3422,7 @@ export const CassandraTableGetResults = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CassandraTableGetResults>;
 
 /** List of Cassandra tables and their properties. */
-export type CassandraTableListResultValueList =
-  ReadonlyArray<CassandraTableGetResults>;
+export type CassandraTableListResultValueList = Array<CassandraTableGetResults>;
 export const CassandraTableListResultValueList = /*@__PURE__*/ S.Array(
   CassandraTableGetResults,
 ) as any as S.Schema<CassandraTableListResultValueList>;
@@ -4049,7 +4043,7 @@ export const MetricAvailability = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of metric availabilities for the account. */
 export type MetricDefinitionMetricAvailabilitiesList =
-  ReadonlyArray<MetricAvailability>;
+  Array<MetricAvailability>;
 export const MetricDefinitionMetricAvailabilitiesList = /*@__PURE__*/ S.Array(
   MetricAvailability,
 ) as any as S.Schema<MetricDefinitionMetricAvailabilitiesList>;
@@ -4115,8 +4109,7 @@ export const MetricDefinition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MetricDefinition>;
 
 /** The list of metric definitions for the account. */
-export type MetricDefinitionsListResultValueList =
-  ReadonlyArray<MetricDefinition>;
+export type MetricDefinitionsListResultValueList = Array<MetricDefinition>;
 export const MetricDefinitionsListResultValueList = /*@__PURE__*/ S.Array(
   MetricDefinition,
 ) as any as S.Schema<MetricDefinitionsListResultValueList>;
@@ -4197,7 +4190,7 @@ export const MetricValue = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MetricValue" }) as any as S.Schema<MetricValue>;
 
 /** The metric values for the specified time window and timestep. */
-export type MetricMetricValuesList = ReadonlyArray<MetricValue>;
+export type MetricMetricValuesList = Array<MetricValue>;
 export const MetricMetricValuesList = /*@__PURE__*/ S.Array(
   MetricValue,
 ) as any as S.Schema<MetricMetricValuesList>;
@@ -4229,7 +4222,7 @@ export const Metric = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Metric" }) as any as S.Schema<Metric>;
 
 /** The list of metrics for the account. */
-export type MetricListResultValueList = ReadonlyArray<Metric>;
+export type MetricListResultValueList = Array<Metric>;
 export const MetricListResultValueList = /*@__PURE__*/ S.Array(
   Metric,
 ) as any as S.Schema<MetricListResultValueList>;
@@ -4307,7 +4300,7 @@ export const Usage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Usage" }) as any as S.Schema<Usage>;
 
 /** The list of usages for the database. A usage is a point in time metric */
-export type UsagesResultValueList = ReadonlyArray<Usage>;
+export type UsagesResultValueList = Array<Usage>;
 export const UsagesResultValueList = /*@__PURE__*/ S.Array(
   Usage,
 ) as any as S.Schema<UsagesResultValueList>;
@@ -4361,7 +4354,7 @@ export const CollectionPartitionListMetricsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CollectionPartitionListMetricsRequest>;
 
 /** The metric values for the specified time window and timestep. */
-export type PartitionMetricMetricValuesList = ReadonlyArray<MetricValue>;
+export type PartitionMetricMetricValuesList = Array<MetricValue>;
 export const PartitionMetricMetricValuesList = /*@__PURE__*/ S.Array(
   MetricValue,
 ) as any as S.Schema<PartitionMetricMetricValuesList>;
@@ -4401,7 +4394,7 @@ export const PartitionMetric = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PartitionMetric>;
 
 /** The list of partition-level metrics for the account. */
-export type PartitionMetricListResultValueList = ReadonlyArray<PartitionMetric>;
+export type PartitionMetricListResultValueList = Array<PartitionMetric>;
 export const PartitionMetricListResultValueList = /*@__PURE__*/ S.Array(
   PartitionMetric,
 ) as any as S.Schema<PartitionMetricListResultValueList>;
@@ -4486,7 +4479,7 @@ export const PartitionUsage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PartitionUsage" }) as any as S.Schema<PartitionUsage>;
 
 /** The list of partition-level usages for the database. A usage is a point in time metric */
-export type PartitionUsagesResultValueList = ReadonlyArray<PartitionUsage>;
+export type PartitionUsagesResultValueList = Array<PartitionUsage>;
 export const PartitionUsagesResultValueList = /*@__PURE__*/ S.Array(
   PartitionUsage,
 ) as any as S.Schema<PartitionUsagesResultValueList>;
@@ -4642,7 +4635,7 @@ export const DefaultConsistencyLevel = /*@__PURE__*/ S.String;
 /** The consistency policy for the Cosmos DB database account. */
 export interface ConsistencyPolicy {
   /** The default consistency level and configuration settings of the Cosmos DB account. */
-  defaultConsistencyLevel: DefaultConsistencyLevel;
+  defaultConsistencyLevel: DefaultConsistencyLevel | (string & {});
   /** When used with the Bounded Staleness consistency level, this value represents the number of stale requests tolerated. Accepted range for this value is 1 – 2,147,483,647. Required when defaultConsistencyPolicy is set to 'BoundedStaleness'. */
   maxStalenessPrefix?: number;
   /** When used with the Bounded Staleness consistency level, this value represents the time amount of staleness (in seconds) tolerated. Accepted range for this value is 5 - 86400. Required when defaultConsistencyPolicy is set to 'BoundedStaleness'. */
@@ -4677,7 +4670,7 @@ export const LocationInput = /*@__PURE__*/ S.suspend(() =>
 
 /** An array that contains the georeplication locations enabled for the Cosmos DB account. */
 export type DatabaseAccountCreateUpdatePropertiesInputLocationsList =
-  ReadonlyArray<LocationInput>;
+  Array<LocationInput>;
 export const DatabaseAccountCreateUpdatePropertiesInputLocationsList =
   /*@__PURE__*/ S.Array(
     LocationInput,
@@ -4704,7 +4697,7 @@ export const IpAddressOrRange = /*@__PURE__*/ S.suspend(() =>
 
 /** List of IpRules. */
 export type DatabaseAccountCreateUpdatePropertiesInputIpRulesList =
-  ReadonlyArray<IpAddressOrRange>;
+  Array<IpAddressOrRange>;
 export const DatabaseAccountCreateUpdatePropertiesInputIpRulesList =
   /*@__PURE__*/ S.Array(
     IpAddressOrRange,
@@ -4723,7 +4716,7 @@ export const Capability = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Cosmos DB capabilities for the account */
 export type DatabaseAccountCreateUpdatePropertiesInputCapabilitiesList =
-  ReadonlyArray<Capability>;
+  Array<Capability>;
 export const DatabaseAccountCreateUpdatePropertiesInputCapabilitiesList =
   /*@__PURE__*/ S.Array(
     Capability,
@@ -4747,7 +4740,7 @@ export const VirtualNetworkRule = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Virtual Network ACL rules configured for the Cosmos DB account. */
 export type DatabaseAccountCreateUpdatePropertiesInputVirtualNetworkRulesList =
-  ReadonlyArray<VirtualNetworkRule>;
+  Array<VirtualNetworkRule>;
 export const DatabaseAccountCreateUpdatePropertiesInputVirtualNetworkRulesList =
   /*@__PURE__*/ S.Array(
     VirtualNetworkRule,
@@ -4774,7 +4767,7 @@ export const ServerVersion = /*@__PURE__*/ S.String;
 
 export interface ApiProperties {
   /** Describes the version of the MongoDB account. */
-  serverVersion?: ServerVersion;
+  serverVersion?: ServerVersion | (string & {});
 }
 export const ApiProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4789,7 +4782,7 @@ export const AnalyticalStorageSchemaType = /*@__PURE__*/ S.String;
 /** Analytical storage specific properties. */
 export interface AnalyticalStorageConfiguration {
   /** Describes the types of schema for analytical storage. */
-  schemaType?: AnalyticalStorageSchemaType;
+  schemaType?: AnalyticalStorageSchemaType | (string & {});
 }
 export const AnalyticalStorageConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4821,9 +4814,9 @@ export const BackupPolicyMigrationStatus = /*@__PURE__*/ S.String;
 /** The object representing the state of the migration between the backup policies. */
 export interface BackupPolicyMigrationState {
   /** Describes the status of migration between backup policy types. */
-  status?: BackupPolicyMigrationStatus;
+  status?: BackupPolicyMigrationStatus | (string & {});
   /** Describes the target backup policy type of the backup policy migration. */
-  targetType?: BackupPolicyType;
+  targetType?: BackupPolicyType | (string & {});
   /** Time at which the backup policy migration started (ISO-8601 format). */
   startTime?: string;
 }
@@ -4840,7 +4833,7 @@ export const BackupPolicyMigrationState = /*@__PURE__*/ S.suspend(() =>
 /** The object representing the policy for taking backups on an account. */
 export interface BackupPolicy {
   /** Describes the mode of backups. */
-  type: BackupPolicyType;
+  type: BackupPolicyType | (string & {});
   /** The object representing the state of the migration between the backup policies. */
   migrationState?: BackupPolicyMigrationState;
 }
@@ -4876,7 +4869,7 @@ export const CorsPolicy = /*@__PURE__*/ S.suspend(() =>
 
 /** The CORS policy for the Cosmos DB database account. */
 export type DatabaseAccountCreateUpdatePropertiesInputCorsList =
-  ReadonlyArray<CorsPolicy>;
+  Array<CorsPolicy>;
 export const DatabaseAccountCreateUpdatePropertiesInputCorsList =
   /*@__PURE__*/ S.Array(
     CorsPolicy,
@@ -4888,7 +4881,7 @@ export const NetworkAclBypass = /*@__PURE__*/ S.String;
 
 /** An array that contains the Resource Ids for Network Acl Bypass for the Cosmos DB account. */
 export type DatabaseAccountCreateUpdatePropertiesInputNetworkAclBypassResourceIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const DatabaseAccountCreateUpdatePropertiesInputNetworkAclBypassResourceIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4899,7 +4892,7 @@ export type RestoreMode = "PointInTime";
 export const RestoreMode = /*@__PURE__*/ S.String;
 
 /** The names of the collections available for restore. */
-export type DatabaseRestoreResourceCollectionNamesList = ReadonlyArray<string>;
+export type DatabaseRestoreResourceCollectionNamesList = Array<string>;
 export const DatabaseRestoreResourceCollectionNamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DatabaseRestoreResourceCollectionNamesList>;
@@ -4922,14 +4915,13 @@ export const DatabaseRestoreResource = /*@__PURE__*/ S.suspend(() =>
 
 /** List of specific databases available for restore. */
 export type RestoreParametersDatabasesToRestoreList =
-  ReadonlyArray<DatabaseRestoreResource>;
+  Array<DatabaseRestoreResource>;
 export const RestoreParametersDatabasesToRestoreList = /*@__PURE__*/ S.Array(
   DatabaseRestoreResource,
 ) as any as S.Schema<RestoreParametersDatabasesToRestoreList>;
 
 /** The names of the graphs available for restore. */
-export type GremlinDatabaseRestoreResourceGraphNamesList =
-  ReadonlyArray<string>;
+export type GremlinDatabaseRestoreResourceGraphNamesList = Array<string>;
 export const GremlinDatabaseRestoreResourceGraphNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4953,14 +4945,14 @@ export const GremlinDatabaseRestoreResource = /*@__PURE__*/ S.suspend(() =>
 
 /** List of specific gremlin databases available for restore. */
 export type RestoreParametersGremlinDatabasesToRestoreList =
-  ReadonlyArray<GremlinDatabaseRestoreResource>;
+  Array<GremlinDatabaseRestoreResource>;
 export const RestoreParametersGremlinDatabasesToRestoreList =
   /*@__PURE__*/ S.Array(
     GremlinDatabaseRestoreResource,
   ) as any as S.Schema<RestoreParametersGremlinDatabasesToRestoreList>;
 
 /** List of specific tables available for restore. */
-export type RestoreParametersTablesToRestoreList = ReadonlyArray<string>;
+export type RestoreParametersTablesToRestoreList = Array<string>;
 export const RestoreParametersTablesToRestoreList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RestoreParametersTablesToRestoreList>;
@@ -4974,7 +4966,7 @@ export interface RestoreParameters {
   /** Specifies whether the restored account will have Time-To-Live disabled upon the successful restore. */
   restoreWithTtlDisabled?: boolean;
   /** Describes the mode of the restore. */
-  restoreMode?: RestoreMode;
+  restoreMode?: RestoreMode | (string & {});
   /** List of specific databases available for restore. */
   databasesToRestore?: RestoreParametersDatabasesToRestoreList;
   /** List of specific gremlin databases available for restore. */
@@ -5200,15 +5192,13 @@ export const DatabaseAccountGetPropertiesDatabaseAccountOfferType =
   /*@__PURE__*/ S.String;
 
 /** List of IpRules. */
-export type DatabaseAccountGetPropertiesIpRulesList =
-  ReadonlyArray<IpAddressOrRange>;
+export type DatabaseAccountGetPropertiesIpRulesList = Array<IpAddressOrRange>;
 export const DatabaseAccountGetPropertiesIpRulesList = /*@__PURE__*/ S.Array(
   IpAddressOrRange,
 ) as any as S.Schema<DatabaseAccountGetPropertiesIpRulesList>;
 
 /** List of Cosmos DB capabilities for the account */
-export type DatabaseAccountGetPropertiesCapabilitiesList =
-  ReadonlyArray<Capability>;
+export type DatabaseAccountGetPropertiesCapabilitiesList = Array<Capability>;
 export const DatabaseAccountGetPropertiesCapabilitiesList =
   /*@__PURE__*/ S.Array(
     Capability,
@@ -5241,23 +5231,21 @@ export const Location = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Location" }) as any as S.Schema<Location>;
 
 /** An array that contains the write location for the Cosmos DB account. */
-export type DatabaseAccountGetPropertiesWriteLocationsList =
-  ReadonlyArray<Location>;
+export type DatabaseAccountGetPropertiesWriteLocationsList = Array<Location>;
 export const DatabaseAccountGetPropertiesWriteLocationsList =
   /*@__PURE__*/ S.Array(
     Location,
   ) as any as S.Schema<DatabaseAccountGetPropertiesWriteLocationsList>;
 
 /** An array that contains of the read locations enabled for the Cosmos DB account. */
-export type DatabaseAccountGetPropertiesReadLocationsList =
-  ReadonlyArray<Location>;
+export type DatabaseAccountGetPropertiesReadLocationsList = Array<Location>;
 export const DatabaseAccountGetPropertiesReadLocationsList =
   /*@__PURE__*/ S.Array(
     Location,
   ) as any as S.Schema<DatabaseAccountGetPropertiesReadLocationsList>;
 
 /** An array that contains all of the locations enabled for the Cosmos DB account. */
-export type DatabaseAccountGetPropertiesLocationsList = ReadonlyArray<Location>;
+export type DatabaseAccountGetPropertiesLocationsList = Array<Location>;
 export const DatabaseAccountGetPropertiesLocationsList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<DatabaseAccountGetPropertiesLocationsList>;
@@ -5281,7 +5269,7 @@ export const FailoverPolicy = /*@__PURE__*/ S.suspend(() =>
 
 /** An array that contains the regions ordered by their failover priorities. */
 export type DatabaseAccountGetPropertiesFailoverPoliciesList =
-  ReadonlyArray<FailoverPolicy>;
+  Array<FailoverPolicy>;
 export const DatabaseAccountGetPropertiesFailoverPoliciesList =
   /*@__PURE__*/ S.Array(
     FailoverPolicy,
@@ -5289,7 +5277,7 @@ export const DatabaseAccountGetPropertiesFailoverPoliciesList =
 
 /** List of Virtual Network ACL rules configured for the Cosmos DB account. */
 export type DatabaseAccountGetPropertiesVirtualNetworkRulesList =
-  ReadonlyArray<VirtualNetworkRule>;
+  Array<VirtualNetworkRule>;
 export const DatabaseAccountGetPropertiesVirtualNetworkRulesList =
   /*@__PURE__*/ S.Array(
     VirtualNetworkRule,
@@ -5379,7 +5367,7 @@ export const PrivateEndpointConnection = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Private Endpoint Connections configured for the Cosmos DB account. */
 export type DatabaseAccountGetPropertiesPrivateEndpointConnectionsList =
-  ReadonlyArray<PrivateEndpointConnection>;
+  Array<PrivateEndpointConnection>;
 export const DatabaseAccountGetPropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection,
@@ -5390,14 +5378,14 @@ export type DatabaseAccountGetPropertiesCreateMode = "Default" | "Restore";
 export const DatabaseAccountGetPropertiesCreateMode = /*@__PURE__*/ S.String;
 
 /** The CORS policy for the Cosmos DB database account. */
-export type DatabaseAccountGetPropertiesCorsList = ReadonlyArray<CorsPolicy>;
+export type DatabaseAccountGetPropertiesCorsList = Array<CorsPolicy>;
 export const DatabaseAccountGetPropertiesCorsList = /*@__PURE__*/ S.Array(
   CorsPolicy,
 ) as any as S.Schema<DatabaseAccountGetPropertiesCorsList>;
 
 /** An array that contains the Resource Ids for Network Acl Bypass for the Cosmos DB account. */
 export type DatabaseAccountGetPropertiesNetworkAclBypassResourceIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const DatabaseAccountGetPropertiesNetworkAclBypassResourceIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5695,7 +5683,7 @@ export const FailoverPolicyInput = /*@__PURE__*/ S.suspend(() =>
 
 /** List of failover policies. */
 export type DatabaseAccountsFailoverPriorityChangeRequestFailoverPoliciesList =
-  ReadonlyArray<FailoverPolicyInput>;
+  Array<FailoverPolicyInput>;
 export const DatabaseAccountsFailoverPriorityChangeRequestFailoverPoliciesList =
   /*@__PURE__*/ S.Array(
     FailoverPolicyInput,
@@ -5931,7 +5919,7 @@ export const DatabaseAccountGetResults = /*@__PURE__*/ S.suspend(() =>
 
 /** List of database account and their properties. */
 export type DatabaseAccountsListResultValueList =
-  ReadonlyArray<DatabaseAccountGetResults>;
+  Array<DatabaseAccountGetResults>;
 export const DatabaseAccountsListResultValueList = /*@__PURE__*/ S.Array(
   DatabaseAccountGetResults,
 ) as any as S.Schema<DatabaseAccountsListResultValueList>;
@@ -6045,7 +6033,7 @@ export const DatabaseAccountConnectionString = /*@__PURE__*/ S.suspend(() =>
 
 /** An array that contains the connection strings for the Cosmos DB account. */
 export type DatabaseAccountListConnectionStringsResultConnectionStringsList =
-  ReadonlyArray<DatabaseAccountConnectionString>;
+  Array<DatabaseAccountConnectionString>;
 export const DatabaseAccountListConnectionStringsResultConnectionStringsList =
   /*@__PURE__*/ S.Array(
     DatabaseAccountConnectionString,
@@ -6347,7 +6335,7 @@ export const DatabaseAccountsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 
 /** An array that contains the georeplication locations enabled for the Cosmos DB account. */
 export type DatabaseAccountUpdatePropertiesInputLocationsList =
-  ReadonlyArray<LocationInput>;
+  Array<LocationInput>;
 export const DatabaseAccountUpdatePropertiesInputLocationsList =
   /*@__PURE__*/ S.Array(
     LocationInput,
@@ -6355,7 +6343,7 @@ export const DatabaseAccountUpdatePropertiesInputLocationsList =
 
 /** List of IpRules. */
 export type DatabaseAccountUpdatePropertiesInputIpRulesList =
-  ReadonlyArray<IpAddressOrRange>;
+  Array<IpAddressOrRange>;
 export const DatabaseAccountUpdatePropertiesInputIpRulesList =
   /*@__PURE__*/ S.Array(
     IpAddressOrRange,
@@ -6363,7 +6351,7 @@ export const DatabaseAccountUpdatePropertiesInputIpRulesList =
 
 /** List of Cosmos DB capabilities for the account */
 export type DatabaseAccountUpdatePropertiesInputCapabilitiesList =
-  ReadonlyArray<Capability>;
+  Array<Capability>;
 export const DatabaseAccountUpdatePropertiesInputCapabilitiesList =
   /*@__PURE__*/ S.Array(
     Capability,
@@ -6371,15 +6359,14 @@ export const DatabaseAccountUpdatePropertiesInputCapabilitiesList =
 
 /** List of Virtual Network ACL rules configured for the Cosmos DB account. */
 export type DatabaseAccountUpdatePropertiesInputVirtualNetworkRulesList =
-  ReadonlyArray<VirtualNetworkRule>;
+  Array<VirtualNetworkRule>;
 export const DatabaseAccountUpdatePropertiesInputVirtualNetworkRulesList =
   /*@__PURE__*/ S.Array(
     VirtualNetworkRule,
   ) as any as S.Schema<DatabaseAccountUpdatePropertiesInputVirtualNetworkRulesList>;
 
 /** The CORS policy for the Cosmos DB database account. */
-export type DatabaseAccountUpdatePropertiesInputCorsList =
-  ReadonlyArray<CorsPolicy>;
+export type DatabaseAccountUpdatePropertiesInputCorsList = Array<CorsPolicy>;
 export const DatabaseAccountUpdatePropertiesInputCorsList =
   /*@__PURE__*/ S.Array(
     CorsPolicy,
@@ -6387,7 +6374,7 @@ export const DatabaseAccountUpdatePropertiesInputCorsList =
 
 /** An array that contains the Resource Ids for Network Acl Bypass for the Cosmos DB account. */
 export type DatabaseAccountUpdatePropertiesInputNetworkAclBypassResourceIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const DatabaseAccountUpdatePropertiesInputNetworkAclBypassResourceIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6712,7 +6699,7 @@ export const Status = /*@__PURE__*/ S.String;
 /** Properties to update Azure Cosmos DB fleet resource. */
 export interface FleetResourceProperties {
   /** A provisioning state of the Fleet. */
-  provisioningState?: Status;
+  provisioningState?: Status | (string & {});
 }
 export const FleetResourceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6943,7 +6930,7 @@ export const FleetResource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FleetResource" }) as any as S.Schema<FleetResource>;
 
 /** The FleetResource items on this page */
-export type FleetListResultValueList = ReadonlyArray<FleetResource>;
+export type FleetListResultValueList = Array<FleetResource>;
 export const FleetListResultValueList = /*@__PURE__*/ S.Array(
   FleetResource,
 ) as any as S.Schema<FleetListResultValueList>;
@@ -7006,7 +6993,7 @@ export const FleetspaceAccountPropertiesGlobalDatabaseAccountProperties =
 /** An Azure Cosmos DB Global Database Account which is part of a Fleetspace Account. */
 export interface FleetspaceAccountProperties {
   /** A provisioning state of the Fleetspace Account. */
-  provisioningState?: Status;
+  provisioningState?: Status | (string & {});
   /** Configuration for fleetspace Account in the fleetspace. */
   globalDatabaseAccountProperties?: FleetspaceAccountPropertiesGlobalDatabaseAccountProperties;
 }
@@ -7227,7 +7214,7 @@ export const FleetspaceAccountResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The FleetspaceAccountResource items on this page */
 export type FleetspaceAccountListResultValueList =
-  ReadonlyArray<FleetspaceAccountResource>;
+  Array<FleetspaceAccountResource>;
 export const FleetspaceAccountListResultValueList = /*@__PURE__*/ S.Array(
   FleetspaceAccountResource,
 ) as any as S.Schema<FleetspaceAccountListResultValueList>;
@@ -7259,7 +7246,7 @@ export type FleetspacePropertiesServiceTier =
 export const FleetspacePropertiesServiceTier = /*@__PURE__*/ S.String;
 
 /** List of data regions assigned to the fleetspace. Eg [westus2] */
-export type FleetspacePropertiesDataRegionsList = ReadonlyArray<string>;
+export type FleetspacePropertiesDataRegionsList = Array<string>;
 export const FleetspacePropertiesDataRegionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<FleetspacePropertiesDataRegionsList>;
@@ -7290,11 +7277,11 @@ export const FleetspacePropertiesThroughputPoolConfiguration =
 /** Properties to update Azure Cosmos DB Fleetspace. */
 export interface FleetspaceProperties {
   /** A provisioning state of the Fleetspace. */
-  provisioningState?: Status;
+  provisioningState?: Status | (string & {});
   /** The kind of API this fleetspace belongs to. Acceptable values: 'NoSQL' */
-  fleetspaceApiKind?: FleetspacePropertiesFleetspaceApiKind;
+  fleetspaceApiKind?: FleetspacePropertiesFleetspaceApiKind | (string & {});
   /** Service Tier for the fleetspace. GeneralPurpose types refers to single write region accounts that can be added to this fleetspace, whereas BusinessCritical refers to multi write region. */
-  serviceTier?: FleetspacePropertiesServiceTier;
+  serviceTier?: FleetspacePropertiesServiceTier | (string & {});
   /** List of data regions assigned to the fleetspace. Eg [westus2] */
   dataRegions?: FleetspacePropertiesDataRegionsList;
   /** Configuration for throughput pool in the fleetspace. */
@@ -7507,7 +7494,7 @@ export const FleetspaceResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FleetspaceResource>;
 
 /** The FleetspaceResource items on this page */
-export type FleetspaceListResultValueList = ReadonlyArray<FleetspaceResource>;
+export type FleetspaceListResultValueList = Array<FleetspaceResource>;
 export const FleetspaceListResultValueList = /*@__PURE__*/ S.Array(
   FleetspaceResource,
 ) as any as S.Schema<FleetspaceListResultValueList>;
@@ -7896,11 +7883,11 @@ export const IndexesKind = /*@__PURE__*/ S.String;
 /** The indexes for the path. */
 export interface Indexes {
   /** The datatype for which the indexing behavior is applied to. */
-  dataType?: IndexesDataType;
+  dataType?: IndexesDataType | (string & {});
   /** The precision of the index. -1 is maximum precision. */
   precision?: number;
   /** Indicates the type of index. */
-  kind?: IndexesKind;
+  kind?: IndexesKind | (string & {});
 }
 export const Indexes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -7911,7 +7898,7 @@ export const Indexes = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Indexes" }) as any as S.Schema<Indexes>;
 
 /** List of indexes for this path */
-export type IncludedPathIndexesList = ReadonlyArray<Indexes>;
+export type IncludedPathIndexesList = Array<Indexes>;
 export const IncludedPathIndexesList = /*@__PURE__*/ S.Array(
   Indexes,
 ) as any as S.Schema<IncludedPathIndexesList>;
@@ -7931,7 +7918,7 @@ export const IncludedPath = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IncludedPath" }) as any as S.Schema<IncludedPath>;
 
 /** List of paths to include in the indexing */
-export type IndexingPolicyIncludedPathsList = ReadonlyArray<IncludedPath>;
+export type IndexingPolicyIncludedPathsList = Array<IncludedPath>;
 export const IndexingPolicyIncludedPathsList = /*@__PURE__*/ S.Array(
   IncludedPath,
 ) as any as S.Schema<IndexingPolicyIncludedPathsList>;
@@ -7947,7 +7934,7 @@ export const ExcludedPath = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ExcludedPath" }) as any as S.Schema<ExcludedPath>;
 
 /** List of paths to exclude from indexing */
-export type IndexingPolicyExcludedPathsList = ReadonlyArray<ExcludedPath>;
+export type IndexingPolicyExcludedPathsList = Array<ExcludedPath>;
 export const IndexingPolicyExcludedPathsList = /*@__PURE__*/ S.Array(
   ExcludedPath,
 ) as any as S.Schema<IndexingPolicyExcludedPathsList>;
@@ -7960,7 +7947,7 @@ export interface CompositePath {
   /** The path for which the indexing behavior applies to. Index paths typically start with root and end with wildcard (/path/*) */
   path?: string;
   /** Sort order for composite paths. */
-  order?: CompositePathSortOrder;
+  order?: CompositePathSortOrder | (string & {});
 }
 export const CompositePath = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -7969,15 +7956,14 @@ export const CompositePath = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CompositePath" }) as any as S.Schema<CompositePath>;
 
-export type IndexingPolicyCompositeIndexesItemList =
-  ReadonlyArray<CompositePath>;
+export type IndexingPolicyCompositeIndexesItemList = Array<CompositePath>;
 export const IndexingPolicyCompositeIndexesItemList = /*@__PURE__*/ S.Array(
   CompositePath,
 ) as any as S.Schema<IndexingPolicyCompositeIndexesItemList>;
 
 /** List of composite path list */
 export type IndexingPolicyCompositeIndexesList =
-  ReadonlyArray<IndexingPolicyCompositeIndexesItemList>;
+  Array<IndexingPolicyCompositeIndexesItemList>;
 export const IndexingPolicyCompositeIndexesList = /*@__PURE__*/ S.Array(
   IndexingPolicyCompositeIndexesItemList,
 ) as any as S.Schema<IndexingPolicyCompositeIndexesList>;
@@ -7987,7 +7973,7 @@ export type SpatialType = "Point" | "LineString" | "Polygon" | "MultiPolygon";
 export const SpatialType = /*@__PURE__*/ S.String;
 
 /** List of path's spatial type */
-export type SpatialSpecTypesList = ReadonlyArray<SpatialType>;
+export type SpatialSpecTypesList = Array<SpatialType | (string & {})>;
 export const SpatialSpecTypesList = /*@__PURE__*/ S.Array(
   SpatialType,
 ) as any as S.Schema<SpatialSpecTypesList>;
@@ -8006,7 +7992,7 @@ export const SpatialSpec = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SpatialSpec" }) as any as S.Schema<SpatialSpec>;
 
 /** List of spatial specifics */
-export type IndexingPolicySpatialIndexesList = ReadonlyArray<SpatialSpec>;
+export type IndexingPolicySpatialIndexesList = Array<SpatialSpec>;
 export const IndexingPolicySpatialIndexesList = /*@__PURE__*/ S.Array(
   SpatialSpec,
 ) as any as S.Schema<IndexingPolicySpatialIndexesList>;
@@ -8016,7 +8002,7 @@ export type VectorIndexType = "flat" | "diskANN" | "quantizedFlat";
 export const VectorIndexType = /*@__PURE__*/ S.String;
 
 /** Array of shard keys for the vector index. This is only applicable for the quantizedFlat and diskANN vector index types. */
-export type VectorIndexVectorIndexShardKeyList = ReadonlyArray<string>;
+export type VectorIndexVectorIndexShardKeyList = Array<string>;
 export const VectorIndexVectorIndexShardKeyList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<VectorIndexVectorIndexShardKeyList>;
@@ -8025,7 +8011,7 @@ export interface VectorIndex {
   /** The path to the vector field in the document. */
   path: string;
   /** The index type of the vector. Currently, flat, diskANN, and quantizedFlat are supported. */
-  type: VectorIndexType;
+  type: VectorIndexType | (string & {});
   /** The number of bytes used in product quantization of the vectors. A larger value may result in better recall for vector searches at the expense of latency. This is only applicable for the quantizedFlat and diskANN vector index types. */
   quantizationByteSize?: number;
   /** This is the size of the candidate list of approximate neighbors stored while building the DiskANN index as part of the optimization processes. Large values may improve recall at the expense of latency. This is only applicable for the diskANN vector index type. */
@@ -8044,7 +8030,7 @@ export const VectorIndex = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VectorIndex" }) as any as S.Schema<VectorIndex>;
 
 /** List of paths to include in the vector indexing */
-export type IndexingPolicyVectorIndexesList = ReadonlyArray<VectorIndex>;
+export type IndexingPolicyVectorIndexesList = Array<VectorIndex>;
 export const IndexingPolicyVectorIndexesList = /*@__PURE__*/ S.Array(
   VectorIndex,
 ) as any as S.Schema<IndexingPolicyVectorIndexesList>;
@@ -8063,8 +8049,7 @@ export const FullTextIndexPath = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FullTextIndexPath>;
 
 /** List of paths to include in the full text indexing */
-export type IndexingPolicyFullTextIndexesList =
-  ReadonlyArray<FullTextIndexPath>;
+export type IndexingPolicyFullTextIndexesList = Array<FullTextIndexPath>;
 export const IndexingPolicyFullTextIndexesList = /*@__PURE__*/ S.Array(
   FullTextIndexPath,
 ) as any as S.Schema<IndexingPolicyFullTextIndexesList>;
@@ -8074,7 +8059,7 @@ export interface IndexingPolicy {
   /** Indicates if the indexing policy is automatic */
   automatic?: boolean;
   /** Indicates the indexing mode. */
-  indexingMode?: IndexingPolicyIndexingMode;
+  indexingMode?: IndexingPolicyIndexingMode | (string & {});
   /** List of paths to include in the indexing */
   includedPaths?: IndexingPolicyIncludedPathsList;
   /** List of paths to exclude from indexing */
@@ -8102,7 +8087,7 @@ export const IndexingPolicy = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IndexingPolicy" }) as any as S.Schema<IndexingPolicy>;
 
 /** List of paths using which data within the container can be partitioned */
-export type ContainerPartitionKeyInputPathsList = ReadonlyArray<string>;
+export type ContainerPartitionKeyInputPathsList = Array<string>;
 export const ContainerPartitionKeyInputPathsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ContainerPartitionKeyInputPathsList>;
@@ -8131,7 +8116,7 @@ export const ContainerPartitionKeyInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ContainerPartitionKeyInput>;
 
 /** List of paths must be unique for each document in the Azure Cosmos DB service */
-export type UniqueKeyPathsList = ReadonlyArray<string>;
+export type UniqueKeyPathsList = Array<string>;
 export const UniqueKeyPathsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<UniqueKeyPathsList>;
@@ -8148,7 +8133,7 @@ export const UniqueKey = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UniqueKey" }) as any as S.Schema<UniqueKey>;
 
 /** List of unique keys on that enforces uniqueness constraint on documents in the collection in the Azure Cosmos DB service. */
-export type UniqueKeyPolicyUniqueKeysList = ReadonlyArray<UniqueKey>;
+export type UniqueKeyPolicyUniqueKeysList = Array<UniqueKey>;
 export const UniqueKeyPolicyUniqueKeysList = /*@__PURE__*/ S.Array(
   UniqueKey,
 ) as any as S.Schema<UniqueKeyPolicyUniqueKeysList>;
@@ -8173,7 +8158,7 @@ export const ConflictResolutionPolicyMode = /*@__PURE__*/ S.String;
 /** The conflict resolution policy for the container. */
 export interface ConflictResolutionPolicy {
   /** Indicates the conflict resolution mode. */
-  mode?: ConflictResolutionPolicyMode;
+  mode?: ConflictResolutionPolicyMode | (string & {});
   /** The conflict resolution path in the case of LastWriterWins mode. */
   conflictResolutionPath?: string;
   /** The procedure to resolve conflicts in the case of custom mode. */
@@ -8292,7 +8277,7 @@ export const GremlinResourcesCreateUpdateGremlinGraphRequest =
   }) as any as S.Schema<GremlinResourcesCreateUpdateGremlinGraphRequest>;
 
 /** List of paths using which data within the container can be partitioned */
-export type ContainerPartitionKeyPathsList = ReadonlyArray<string>;
+export type ContainerPartitionKeyPathsList = Array<string>;
 export const ContainerPartitionKeyPathsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ContainerPartitionKeyPathsList>;
@@ -8533,7 +8518,7 @@ export const GremlinResourcesCreateUpdateGremlinRoleAssignmentResponse =
 
 /** A set of fully qualified Scopes at or below which Gremlin Role Assignments may be created using this Role Definition. This will allow application of this Role Definition on the entire database account or any underlying Database / Collection. Must have at least one element. Scopes higher than Database account are not enforceable as assignable Scopes. Note that resources referenced in assignable Scopes need not exist. */
 export type GremlinRoleDefinitionResourcePropertiesAssignableScopesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GremlinRoleDefinitionResourcePropertiesAssignableScopesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -8541,7 +8526,7 @@ export const GremlinRoleDefinitionResourcePropertiesAssignableScopesList =
 
 /** The set of operations allowed through this Role Definition. */
 export type GremlinRoleDefinitionResourcePropertiesPermissionsList =
-  ReadonlyArray<Permission>;
+  Array<Permission>;
 export const GremlinRoleDefinitionResourcePropertiesPermissionsList =
   /*@__PURE__*/ S.Array(
     Permission,
@@ -8554,7 +8539,7 @@ export interface GremlinRoleDefinitionResourceProperties {
   /** A user-friendly name for the Role Definition. Must be unique for the database account. */
   roleName?: string;
   /** Indicates whether the Role Definition was built-in or user created. */
-  type?: RoleDefinitionType;
+  type?: RoleDefinitionType | (string & {});
   /** A set of fully qualified Scopes at or below which Gremlin Role Assignments may be created using this Role Definition. This will allow application of this Role Definition on the entire database account or any underlying Database / Collection. Must have at least one element. Scopes higher than Database account are not enforceable as assignable Scopes. Note that resources referenced in assignable Scopes need not exist. */
   assignableScopes?: GremlinRoleDefinitionResourcePropertiesAssignableScopesList;
   /** The set of operations allowed through this Role Definition. */
@@ -9258,7 +9243,7 @@ export const GremlinDatabaseGetResults = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Gremlin databases and their properties. */
 export type GremlinDatabaseListResultValueList =
-  ReadonlyArray<GremlinDatabaseGetResults>;
+  Array<GremlinDatabaseGetResults>;
 export const GremlinDatabaseListResultValueList = /*@__PURE__*/ S.Array(
   GremlinDatabaseGetResults,
 ) as any as S.Schema<GremlinDatabaseListResultValueList>;
@@ -9351,8 +9336,7 @@ export const GremlinGraphGetResults = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GremlinGraphGetResults>;
 
 /** List of graphs and their properties. */
-export type GremlinGraphListResultValueList =
-  ReadonlyArray<GremlinGraphGetResults>;
+export type GremlinGraphListResultValueList = Array<GremlinGraphGetResults>;
 export const GremlinGraphListResultValueList = /*@__PURE__*/ S.Array(
   GremlinGraphGetResults,
 ) as any as S.Schema<GremlinGraphListResultValueList>;
@@ -9425,7 +9409,7 @@ export const GremlinRoleAssignmentResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The GremlinRoleAssignmentResource items on this page */
 export type GremlinRoleAssignmentListResultValueList =
-  ReadonlyArray<GremlinRoleAssignmentResource>;
+  Array<GremlinRoleAssignmentResource>;
 export const GremlinRoleAssignmentListResultValueList = /*@__PURE__*/ S.Array(
   GremlinRoleAssignmentResource,
 ) as any as S.Schema<GremlinRoleAssignmentListResultValueList>;
@@ -9499,7 +9483,7 @@ export const GremlinRoleDefinitionResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The GremlinRoleDefinitionResource items on this page */
 export type GremlinRoleDefinitionListResultValueList =
-  ReadonlyArray<GremlinRoleDefinitionResource>;
+  Array<GremlinRoleDefinitionResource>;
 export const GremlinRoleDefinitionListResultValueList = /*@__PURE__*/ S.Array(
   GremlinRoleDefinitionResource,
 ) as any as S.Schema<GremlinRoleDefinitionListResultValueList>;
@@ -10116,7 +10100,7 @@ export const BackupStorageRedundancy = /*@__PURE__*/ S.String;
 
 /** The properties of available backup storage redundancies. */
 export type LocationPropertiesBackupStorageRedundanciesList =
-  ReadonlyArray<BackupStorageRedundancy>;
+  Array<BackupStorageRedundancy>;
 export const LocationPropertiesBackupStorageRedundanciesList =
   /*@__PURE__*/ S.Array(
     BackupStorageRedundancy,
@@ -10221,7 +10205,7 @@ export const LocationGetResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LocationGetResult>;
 
 /** List of Cosmos DB locations and their properties. */
-export type LocationListResultValueList = ReadonlyArray<LocationGetResult>;
+export type LocationListResultValueList = Array<LocationGetResult>;
 export const LocationListResultValueList = /*@__PURE__*/ S.Array(
   LocationGetResult,
 ) as any as S.Schema<LocationListResultValueList>;
@@ -10261,7 +10245,7 @@ export const MongoDBCollectionResourceShardKeyMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<MongoDBCollectionResourceShardKeyMap>;
 
 /** List of keys for each MongoDB collection in the Azure Cosmos DB service */
-export type MongoIndexKeysKeysList = ReadonlyArray<string>;
+export type MongoIndexKeysKeysList = Array<string>;
 export const MongoIndexKeysKeysList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<MongoIndexKeysKeysList>;
@@ -10308,7 +10292,7 @@ export const MongoIndex = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MongoIndex" }) as any as S.Schema<MongoIndex>;
 
 /** List of index keys */
-export type MongoDBCollectionResourceIndexesList = ReadonlyArray<MongoIndex>;
+export type MongoDBCollectionResourceIndexesList = Array<MongoIndex>;
 export const MongoDBCollectionResourceIndexesList = /*@__PURE__*/ S.Array(
   MongoIndex,
 ) as any as S.Schema<MongoDBCollectionResourceIndexesList>;
@@ -10420,7 +10404,7 @@ export const MongoDBCollectionGetPropertiesResourceShardKeyMap =
 
 /** List of index keys */
 export type MongoDBCollectionGetPropertiesResourceIndexesList =
-  ReadonlyArray<MongoIndex>;
+  Array<MongoIndex>;
 export const MongoDBCollectionGetPropertiesResourceIndexesList =
   /*@__PURE__*/ S.Array(
     MongoIndex,
@@ -10739,7 +10723,7 @@ export const PrivilegeResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivilegeResource>;
 
 /** An array of actions that are allowed. */
-export type PrivilegeActionsList = ReadonlyArray<string>;
+export type PrivilegeActionsList = Array<string>;
 export const PrivilegeActionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PrivilegeActionsList>;
@@ -10759,8 +10743,7 @@ export const Privilege = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Privilege" }) as any as S.Schema<Privilege>;
 
 /** A set of privileges contained by the Role Definition. This will allow application of this Role Definition on the entire database account or any underlying Database / Collection. Scopes higher than Database are not enforceable as privilege. */
-export type MongoRoleDefinitionResourcePrivilegesList =
-  ReadonlyArray<Privilege>;
+export type MongoRoleDefinitionResourcePrivilegesList = Array<Privilege>;
 export const MongoRoleDefinitionResourcePrivilegesList = /*@__PURE__*/ S.Array(
   Privilege,
 ) as any as S.Schema<MongoRoleDefinitionResourcePrivilegesList>;
@@ -10780,7 +10763,7 @@ export const Role = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Role" }) as any as S.Schema<Role>;
 
 /** The set of roles inherited by this Role Definition. */
-export type MongoRoleDefinitionResourceRolesList = ReadonlyArray<Role>;
+export type MongoRoleDefinitionResourceRolesList = Array<Role>;
 export const MongoRoleDefinitionResourceRolesList = /*@__PURE__*/ S.Array(
   Role,
 ) as any as S.Schema<MongoRoleDefinitionResourceRolesList>;
@@ -10790,7 +10773,7 @@ export interface MongoRoleDefinitionResource {
   /** A user-friendly name for the Role Definition. Must be unique for the database account. */
   roleName?: string;
   /** Indicates whether the Role Definition was built-in or user created. */
-  type?: MongoRoleDefinitionType;
+  type?: MongoRoleDefinitionType | (string & {});
   /** The database name for which access is being granted for this Role Definition. */
   databaseName?: string;
   /** A set of privileges contained by the Role Definition. This will allow application of this Role Definition on the entire database account or any underlying Database / Collection. Scopes higher than Database are not enforceable as privilege. */
@@ -10868,7 +10851,7 @@ export const MongoDBResourcesCreateUpdateMongoRoleDefinitionResponse =
   }) as any as S.Schema<MongoDBResourcesCreateUpdateMongoRoleDefinitionResponse>;
 
 /** The set of roles inherited by the User Definition. */
-export type MongoUserDefinitionResourceRolesList = ReadonlyArray<Role>;
+export type MongoUserDefinitionResourceRolesList = Array<Role>;
 export const MongoUserDefinitionResourceRolesList = /*@__PURE__*/ S.Array(
   Role,
 ) as any as S.Schema<MongoUserDefinitionResourceRolesList>;
@@ -11585,7 +11568,7 @@ export const MongoDBCollectionGetResults = /*@__PURE__*/ S.suspend(() =>
 
 /** List of MongoDB collections and their properties. */
 export type MongoDBCollectionListResultValueList =
-  ReadonlyArray<MongoDBCollectionGetResults>;
+  Array<MongoDBCollectionGetResults>;
 export const MongoDBCollectionListResultValueList = /*@__PURE__*/ S.Array(
   MongoDBCollectionGetResults,
 ) as any as S.Schema<MongoDBCollectionListResultValueList>;
@@ -11676,7 +11659,7 @@ export const MongoDBDatabaseGetResults = /*@__PURE__*/ S.suspend(() =>
 
 /** List of MongoDB databases and their properties. */
 export type MongoDBDatabaseListResultValueList =
-  ReadonlyArray<MongoDBDatabaseGetResults>;
+  Array<MongoDBDatabaseGetResults>;
 export const MongoDBDatabaseListResultValueList = /*@__PURE__*/ S.Array(
   MongoDBDatabaseGetResults,
 ) as any as S.Schema<MongoDBDatabaseListResultValueList>;
@@ -11749,7 +11732,7 @@ export const MongoRoleDefinitionGetResults = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Mongo Role Definitions and their properties. */
 export type MongoRoleDefinitionListResultValueList =
-  ReadonlyArray<MongoRoleDefinitionGetResults>;
+  Array<MongoRoleDefinitionGetResults>;
 export const MongoRoleDefinitionListResultValueList = /*@__PURE__*/ S.Array(
   MongoRoleDefinitionGetResults,
 ) as any as S.Schema<MongoRoleDefinitionListResultValueList>;
@@ -11822,7 +11805,7 @@ export const MongoUserDefinitionGetResults = /*@__PURE__*/ S.suspend(() =>
 
 /** List of User Definition and their properties */
 export type MongoUserDefinitionListResultValueList =
-  ReadonlyArray<MongoUserDefinitionGetResults>;
+  Array<MongoUserDefinitionGetResults>;
 export const MongoUserDefinitionListResultValueList = /*@__PURE__*/ S.Array(
   MongoUserDefinitionGetResults,
 ) as any as S.Schema<MongoUserDefinitionListResultValueList>;
@@ -12487,7 +12470,7 @@ export const MongoMIResourcesCreateUpdateMongoMIRoleAssignmentResponse =
 
 /** A set of fully qualified Scopes at or below which MongoMI Role Assignments may be created using this Role Definition. This will allow application of this Role Definition on the entire database account or any underlying Database / Collection. Must have at least one element. Scopes higher than Database account are not enforceable as assignable Scopes. Note that resources referenced in assignable Scopes need not exist. */
 export type MongoMIRoleDefinitionResourcePropertiesAssignableScopesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const MongoMIRoleDefinitionResourcePropertiesAssignableScopesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -12495,7 +12478,7 @@ export const MongoMIRoleDefinitionResourcePropertiesAssignableScopesList =
 
 /** The set of operations allowed through this Role Definition. */
 export type MongoMIRoleDefinitionResourcePropertiesPermissionsList =
-  ReadonlyArray<Permission>;
+  Array<Permission>;
 export const MongoMIRoleDefinitionResourcePropertiesPermissionsList =
   /*@__PURE__*/ S.Array(
     Permission,
@@ -12508,7 +12491,7 @@ export interface MongoMIRoleDefinitionResourceProperties {
   /** A user-friendly name for the Role Definition. Must be unique for the database account. */
   roleName?: string;
   /** Indicates whether the Role Definition was built-in or user created. */
-  type?: RoleDefinitionType;
+  type?: RoleDefinitionType | (string & {});
   /** A set of fully qualified Scopes at or below which MongoMI Role Assignments may be created using this Role Definition. This will allow application of this Role Definition on the entire database account or any underlying Database / Collection. Must have at least one element. Scopes higher than Database account are not enforceable as assignable Scopes. Note that resources referenced in assignable Scopes need not exist. */
   assignableScopes?: MongoMIRoleDefinitionResourcePropertiesAssignableScopesList;
   /** The set of operations allowed through this Role Definition. */
@@ -12819,7 +12802,7 @@ export const MongoMIRoleAssignmentResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The MongoMIRoleAssignmentResource items on this page */
 export type MongoMIRoleAssignmentListResultValueList =
-  ReadonlyArray<MongoMIRoleAssignmentResource>;
+  Array<MongoMIRoleAssignmentResource>;
 export const MongoMIRoleAssignmentListResultValueList = /*@__PURE__*/ S.Array(
   MongoMIRoleAssignmentResource,
 ) as any as S.Schema<MongoMIRoleAssignmentListResultValueList>;
@@ -12893,7 +12876,7 @@ export const MongoMIRoleDefinitionResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The MongoMIRoleDefinitionResource items on this page */
 export type MongoMIRoleDefinitionListResultValueList =
-  ReadonlyArray<MongoMIRoleDefinitionResource>;
+  Array<MongoMIRoleDefinitionResource>;
 export const MongoMIRoleDefinitionListResultValueList = /*@__PURE__*/ S.Array(
   MongoMIRoleDefinitionResource,
 ) as any as S.Schema<MongoMIRoleDefinitionListResultValueList>;
@@ -13147,8 +13130,7 @@ export const NotebookWorkspace = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NotebookWorkspace>;
 
 /** Array of notebook workspace resources */
-export type NotebookWorkspaceListResultValueList =
-  ReadonlyArray<NotebookWorkspace>;
+export type NotebookWorkspaceListResultValueList = Array<NotebookWorkspace>;
 export const NotebookWorkspaceListResultValueList = /*@__PURE__*/ S.Array(
   NotebookWorkspace,
 ) as any as S.Schema<NotebookWorkspaceListResultValueList>;
@@ -13362,7 +13344,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the Resource Provider. */
-export type OperationListResultValueList = ReadonlyArray<Operation>;
+export type OperationListResultValueList = Array<Operation>;
 export const OperationListResultValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationListResultValueList>;
@@ -13540,8 +13522,7 @@ export const PercentileMetricValue = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PercentileMetricValue>;
 
 /** The percentile metric values for the specified time window and timestep. */
-export type PercentileMetricMetricValuesList =
-  ReadonlyArray<PercentileMetricValue>;
+export type PercentileMetricMetricValuesList = Array<PercentileMetricValue>;
 export const PercentileMetricMetricValuesList = /*@__PURE__*/ S.Array(
   PercentileMetricValue,
 ) as any as S.Schema<PercentileMetricMetricValuesList>;
@@ -13575,8 +13556,7 @@ export const PercentileMetric = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PercentileMetric>;
 
 /** The list of percentile metrics for the account. */
-export type PercentileMetricListResultValueList =
-  ReadonlyArray<PercentileMetric>;
+export type PercentileMetricListResultValueList = Array<PercentileMetric>;
 export const PercentileMetricListResultValueList = /*@__PURE__*/ S.Array(
   PercentileMetric,
 ) as any as S.Schema<PercentileMetricListResultValueList>;
@@ -13879,7 +13859,7 @@ export const PrivateEndpointConnectionsListByDatabaseAccountRequest =
 
 /** Array of private endpoint connections */
 export type PrivateEndpointConnectionListResultValueList =
-  ReadonlyArray<PrivateEndpointConnection>;
+  Array<PrivateEndpointConnection>;
 export const PrivateEndpointConnectionListResultValueList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection,
@@ -13929,16 +13909,14 @@ export const PrivateLinkResourcesGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateLinkResourcesGetRequest>;
 
 /** The private link resource required member names. */
-export type PrivateLinkResourcePropertiesRequiredMembersList =
-  ReadonlyArray<string>;
+export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
 export const PrivateLinkResourcePropertiesRequiredMembersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
 
 /** The private link resource required zone names. */
-export type PrivateLinkResourcePropertiesRequiredZoneNamesList =
-  ReadonlyArray<string>;
+export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
 export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -14043,8 +14021,7 @@ export const PrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateLinkResource>;
 
 /** Array of private link resources */
-export type PrivateLinkResourceListResultValueList =
-  ReadonlyArray<PrivateLinkResource>;
+export type PrivateLinkResourceListResultValueList = Array<PrivateLinkResource>;
 export const PrivateLinkResourceListResultValueList = /*@__PURE__*/ S.Array(
   PrivateLinkResource,
 ) as any as S.Schema<PrivateLinkResourceListResultValueList>;
@@ -14124,7 +14101,7 @@ export const RestorableLocationResource = /*@__PURE__*/ S.suspend(() =>
 
 /** List of regions where the of the database account can be restored from. */
 export type RestorableDatabaseAccountPropertiesRestorableLocationsList =
-  ReadonlyArray<RestorableLocationResource>;
+  Array<RestorableLocationResource>;
 export const RestorableDatabaseAccountPropertiesRestorableLocationsList =
   /*@__PURE__*/ S.Array(
     RestorableLocationResource,
@@ -14238,7 +14215,7 @@ export const RestorableDatabaseAccountGetResult = /*@__PURE__*/ S.suspend(() =>
 
 /** List of restorable database accounts and their properties. */
 export type RestorableDatabaseAccountsListResultValueList =
-  ReadonlyArray<RestorableDatabaseAccountGetResult>;
+  Array<RestorableDatabaseAccountGetResult>;
 export const RestorableDatabaseAccountsListResultValueList =
   /*@__PURE__*/ S.Array(
     RestorableDatabaseAccountGetResult,
@@ -14387,7 +14364,7 @@ export const RestorableGremlinDatabaseGetResult = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Gremlin database events and their properties. */
 export type RestorableGremlinDatabasesListResultValueList =
-  ReadonlyArray<RestorableGremlinDatabaseGetResult>;
+  Array<RestorableGremlinDatabaseGetResult>;
 export const RestorableGremlinDatabasesListResultValueList =
   /*@__PURE__*/ S.Array(
     RestorableGremlinDatabaseGetResult,
@@ -14512,7 +14489,7 @@ export const RestorableGremlinGraphGetResult = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Gremlin graph events and their properties. */
 export type RestorableGremlinGraphsListResultValueList =
-  ReadonlyArray<RestorableGremlinGraphGetResult>;
+  Array<RestorableGremlinGraphGetResult>;
 export const RestorableGremlinGraphsListResultValueList = /*@__PURE__*/ S.Array(
   RestorableGremlinGraphGetResult,
 ) as any as S.Schema<RestorableGremlinGraphsListResultValueList>;
@@ -14565,8 +14542,7 @@ export const RestorableGremlinResourcesListRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<RestorableGremlinResourcesListRequest>;
 
 /** The names of the graphs available for restore. */
-export type RestorableGremlinResourcesGetResultGraphNamesList =
-  ReadonlyArray<string>;
+export type RestorableGremlinResourcesGetResultGraphNamesList = Array<string>;
 export const RestorableGremlinResourcesGetResultGraphNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -14599,7 +14575,7 @@ export const RestorableGremlinResourcesGetResult = /*@__PURE__*/ S.suspend(() =>
 
 /** List of restorable Gremlin resources, including the gremlin database and graph names. */
 export type RestorableGremlinResourcesListResultValueList =
-  ReadonlyArray<RestorableGremlinResourcesGetResult>;
+  Array<RestorableGremlinResourcesGetResult>;
 export const RestorableGremlinResourcesListResultValueList =
   /*@__PURE__*/ S.Array(
     RestorableGremlinResourcesGetResult,
@@ -14727,7 +14703,7 @@ export const RestorableMongodbCollectionGetResult = /*@__PURE__*/ S.suspend(
 
 /** List of MongoDB collection events and their properties. */
 export type RestorableMongodbCollectionsListResultValueList =
-  ReadonlyArray<RestorableMongodbCollectionGetResult>;
+  Array<RestorableMongodbCollectionGetResult>;
 export const RestorableMongodbCollectionsListResultValueList =
   /*@__PURE__*/ S.Array(
     RestorableMongodbCollectionGetResult,
@@ -14844,7 +14820,7 @@ export const RestorableMongodbDatabaseGetResult = /*@__PURE__*/ S.suspend(() =>
 
 /** List of MongoDB database events and their properties. */
 export type RestorableMongodbDatabasesListResultValueList =
-  ReadonlyArray<RestorableMongodbDatabaseGetResult>;
+  Array<RestorableMongodbDatabaseGetResult>;
 export const RestorableMongodbDatabasesListResultValueList =
   /*@__PURE__*/ S.Array(
     RestorableMongodbDatabaseGetResult,
@@ -14900,7 +14876,7 @@ export const RestorableMongodbResourcesListRequest = /*@__PURE__*/ S.suspend(
 
 /** The names of the collections available for restore. */
 export type RestorableMongodbResourcesGetResultCollectionNamesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RestorableMongodbResourcesGetResultCollectionNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -14935,7 +14911,7 @@ export const RestorableMongodbResourcesGetResult = /*@__PURE__*/ S.suspend(() =>
 
 /** List of restorable MongoDB resources, including the database and collection names. */
 export type RestorableMongodbResourcesListResultValueList =
-  ReadonlyArray<RestorableMongodbResourcesGetResult>;
+  Array<RestorableMongodbResourcesGetResult>;
 export const RestorableMongodbResourcesListResultValueList =
   /*@__PURE__*/ S.Array(
     RestorableMongodbResourcesGetResult,
@@ -15015,7 +14991,7 @@ export const ClientEncryptionIncludedPath = /*@__PURE__*/ S.suspend(() =>
 
 /** Paths of the item that need encryption along with path-specific settings. */
 export type ClientEncryptionPolicyIncludedPathsList =
-  ReadonlyArray<ClientEncryptionIncludedPath>;
+  Array<ClientEncryptionIncludedPath>;
 export const ClientEncryptionPolicyIncludedPathsList = /*@__PURE__*/ S.Array(
   ClientEncryptionIncludedPath,
 ) as any as S.Schema<ClientEncryptionPolicyIncludedPathsList>;
@@ -15061,7 +15037,7 @@ export const ComputedProperty = /*@__PURE__*/ S.suspend(() =>
 
 /** List of computed properties */
 export type RestorableSqlContainerPropertiesResourceContainerComputedPropertiesList =
-  ReadonlyArray<ComputedProperty>;
+  Array<ComputedProperty>;
 export const RestorableSqlContainerPropertiesResourceContainerComputedPropertiesList =
   /*@__PURE__*/ S.Array(
     ComputedProperty,
@@ -15080,9 +15056,9 @@ export interface VectorEmbedding {
   /** The path to the vector field in the document. */
   path: string;
   /** Indicates the data type of vector. */
-  dataType: VectorDataType;
+  dataType: VectorDataType | (string & {});
   /** The distance function to use for distance calculation in between vectors. */
-  distanceFunction: DistanceFunction;
+  distanceFunction: DistanceFunction | (string & {});
   /** The number of dimensions in the vector. */
   dimensions: number;
 }
@@ -15098,8 +15074,7 @@ export const VectorEmbedding = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VectorEmbedding>;
 
 /** List of vector embeddings */
-export type VectorEmbeddingPolicyVectorEmbeddingsList =
-  ReadonlyArray<VectorEmbedding>;
+export type VectorEmbeddingPolicyVectorEmbeddingsList = Array<VectorEmbedding>;
 export const VectorEmbeddingPolicyVectorEmbeddingsList = /*@__PURE__*/ S.Array(
   VectorEmbedding,
 ) as any as S.Schema<VectorEmbeddingPolicyVectorEmbeddingsList>;
@@ -15132,7 +15107,7 @@ export const FullTextPath = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FullTextPath" }) as any as S.Schema<FullTextPath>;
 
 /** List of FullText Paths */
-export type FullTextPolicyFullTextPathsList = ReadonlyArray<FullTextPath>;
+export type FullTextPolicyFullTextPathsList = Array<FullTextPath>;
 export const FullTextPolicyFullTextPathsList = /*@__PURE__*/ S.Array(
   FullTextPath,
 ) as any as S.Schema<FullTextPolicyFullTextPathsList>;
@@ -15289,7 +15264,7 @@ export const RestorableSqlContainerGetResult = /*@__PURE__*/ S.suspend(() =>
 
 /** List of SQL container events and their properties. */
 export type RestorableSqlContainersListResultValueList =
-  ReadonlyArray<RestorableSqlContainerGetResult>;
+  Array<RestorableSqlContainerGetResult>;
 export const RestorableSqlContainersListResultValueList = /*@__PURE__*/ S.Array(
   RestorableSqlContainerGetResult,
 ) as any as S.Schema<RestorableSqlContainersListResultValueList>;
@@ -15453,7 +15428,7 @@ export const RestorableSqlDatabaseGetResult = /*@__PURE__*/ S.suspend(() =>
 
 /** List of SQL database events and their properties. */
 export type RestorableSqlDatabasesListResultValueList =
-  ReadonlyArray<RestorableSqlDatabaseGetResult>;
+  Array<RestorableSqlDatabaseGetResult>;
 export const RestorableSqlDatabasesListResultValueList = /*@__PURE__*/ S.Array(
   RestorableSqlDatabaseGetResult,
 ) as any as S.Schema<RestorableSqlDatabasesListResultValueList>;
@@ -15505,8 +15480,7 @@ export const RestorableSqlResourcesListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RestorableSqlResourcesListRequest>;
 
 /** The names of the collections available for restore. */
-export type RestorableSqlResourcesGetResultCollectionNamesList =
-  ReadonlyArray<string>;
+export type RestorableSqlResourcesGetResultCollectionNamesList = Array<string>;
 export const RestorableSqlResourcesGetResultCollectionNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -15541,7 +15515,7 @@ export const RestorableSqlResourcesGetResult = /*@__PURE__*/ S.suspend(() =>
 
 /** List of restorable SQL resources, including the database and collection names. */
 export type RestorableSqlResourcesListResultValueList =
-  ReadonlyArray<RestorableSqlResourcesGetResult>;
+  Array<RestorableSqlResourcesGetResult>;
 export const RestorableSqlResourcesListResultValueList = /*@__PURE__*/ S.Array(
   RestorableSqlResourcesGetResult,
 ) as any as S.Schema<RestorableSqlResourcesListResultValueList>;
@@ -15613,7 +15587,7 @@ export const RestorableTableResourcesGetResult = /*@__PURE__*/ S.suspend(() =>
 
 /** List of restorable table names. */
 export type RestorableTableResourcesListResultValueList =
-  ReadonlyArray<RestorableTableResourcesGetResult>;
+  Array<RestorableTableResourcesGetResult>;
 export const RestorableTableResourcesListResultValueList =
   /*@__PURE__*/ S.Array(
     RestorableTableResourcesGetResult,
@@ -15733,7 +15707,7 @@ export const RestorableTableGetResult = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Table events and their properties. */
 export type RestorableTablesListResultValueList =
-  ReadonlyArray<RestorableTableGetResult>;
+  Array<RestorableTableGetResult>;
 export const RestorableTablesListResultValueList = /*@__PURE__*/ S.Array(
   RestorableTableGetResult,
 ) as any as S.Schema<RestorableTablesListResultValueList>;
@@ -16013,7 +15987,7 @@ export const ServiceResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServiceResource>;
 
 /** List of Service Resource and their properties. */
-export type ServiceResourceListResultValueList = ReadonlyArray<ServiceResource>;
+export type ServiceResourceListResultValueList = Array<ServiceResource>;
 export const ServiceResourceListResultValueList = /*@__PURE__*/ S.Array(
   ServiceResource,
 ) as any as S.Schema<ServiceResourceListResultValueList>;
@@ -16210,7 +16184,7 @@ export const SqlContainerResourceInputCreateMode = /*@__PURE__*/ S.String;
 
 /** List of computed properties */
 export type SqlContainerResourceInputComputedPropertiesList =
-  ReadonlyArray<ComputedProperty>;
+  Array<ComputedProperty>;
 export const SqlContainerResourceInputComputedPropertiesList =
   /*@__PURE__*/ S.Array(
     ComputedProperty,
@@ -16335,7 +16309,7 @@ export const SqlContainerGetPropertiesResourceCreateMode =
 
 /** List of computed properties */
 export type SqlContainerGetPropertiesResourceComputedPropertiesList =
-  ReadonlyArray<ComputedProperty>;
+  Array<ComputedProperty>;
 export const SqlContainerGetPropertiesResourceComputedPropertiesList =
   /*@__PURE__*/ S.Array(
     ComputedProperty,
@@ -16721,16 +16695,14 @@ export const SqlResourcesCreateUpdateSqlRoleAssignmentResponse =
   }) as any as S.Schema<SqlResourcesCreateUpdateSqlRoleAssignmentResponse>;
 
 /** A set of fully qualified Scopes at or below which Role Assignments may be created using this Role Definition. This will allow application of this Role Definition on the entire database account or any underlying Database / Collection. Must have at least one element. Scopes higher than Database account are not enforceable as assignable Scopes. Note that resources referenced in assignable Scopes need not exist. */
-export type SqlRoleDefinitionResourceAssignableScopesList =
-  ReadonlyArray<string>;
+export type SqlRoleDefinitionResourceAssignableScopesList = Array<string>;
 export const SqlRoleDefinitionResourceAssignableScopesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<SqlRoleDefinitionResourceAssignableScopesList>;
 
 /** The set of operations allowed through this Role Definition. */
-export type SqlRoleDefinitionResourcePermissionsList =
-  ReadonlyArray<Permission>;
+export type SqlRoleDefinitionResourcePermissionsList = Array<Permission>;
 export const SqlRoleDefinitionResourcePermissionsList = /*@__PURE__*/ S.Array(
   Permission,
 ) as any as S.Schema<SqlRoleDefinitionResourcePermissionsList>;
@@ -16740,7 +16712,7 @@ export interface SqlRoleDefinitionResource {
   /** A user-friendly name for the Role Definition. Must be unique for the database account. */
   roleName?: string;
   /** Indicates whether the Role Definition was built-in or user created. */
-  type?: RoleDefinitionType;
+  type?: RoleDefinitionType | (string & {});
   /** A set of fully qualified Scopes at or below which Role Assignments may be created using this Role Definition. This will allow application of this Role Definition on the entire database account or any underlying Database / Collection. Must have at least one element. Scopes higher than Database account are not enforceable as assignable Scopes. Note that resources referenced in assignable Scopes need not exist. */
   assignableScopes?: SqlRoleDefinitionResourceAssignableScopesList;
   /** The set of operations allowed through this Role Definition. */
@@ -18374,7 +18346,7 @@ export const ClientEncryptionKeyGetResults = /*@__PURE__*/ S.suspend(() =>
 
 /** List of client encryption keys and their properties. */
 export type ClientEncryptionKeysListResultValueList =
-  ReadonlyArray<ClientEncryptionKeyGetResults>;
+  Array<ClientEncryptionKeyGetResults>;
 export const ClientEncryptionKeysListResultValueList = /*@__PURE__*/ S.Array(
   ClientEncryptionKeyGetResults,
 ) as any as S.Schema<ClientEncryptionKeysListResultValueList>;
@@ -18467,8 +18439,7 @@ export const SqlContainerGetResults = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SqlContainerGetResults>;
 
 /** List of containers and their properties. */
-export type SqlContainerListResultValueList =
-  ReadonlyArray<SqlContainerGetResults>;
+export type SqlContainerListResultValueList = Array<SqlContainerGetResults>;
 export const SqlContainerListResultValueList = /*@__PURE__*/ S.Array(
   SqlContainerGetResults,
 ) as any as S.Schema<SqlContainerListResultValueList>;
@@ -18557,8 +18528,7 @@ export const SqlDatabaseGetResults = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SqlDatabaseGetResults>;
 
 /** List of SQL databases and their properties. */
-export type SqlDatabaseListResultValueList =
-  ReadonlyArray<SqlDatabaseGetResults>;
+export type SqlDatabaseListResultValueList = Array<SqlDatabaseGetResults>;
 export const SqlDatabaseListResultValueList = /*@__PURE__*/ S.Array(
   SqlDatabaseGetResults,
 ) as any as S.Schema<SqlDatabaseListResultValueList>;
@@ -18631,7 +18601,7 @@ export const SqlRoleAssignmentGetResults = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Role Assignments and their properties */
 export type SqlRoleAssignmentListResultValueList =
-  ReadonlyArray<SqlRoleAssignmentGetResults>;
+  Array<SqlRoleAssignmentGetResults>;
 export const SqlRoleAssignmentListResultValueList = /*@__PURE__*/ S.Array(
   SqlRoleAssignmentGetResults,
 ) as any as S.Schema<SqlRoleAssignmentListResultValueList>;
@@ -18704,7 +18674,7 @@ export const SqlRoleDefinitionGetResults = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Role Definitions and their properties. */
 export type SqlRoleDefinitionListResultValueList =
-  ReadonlyArray<SqlRoleDefinitionGetResults>;
+  Array<SqlRoleDefinitionGetResults>;
 export const SqlRoleDefinitionListResultValueList = /*@__PURE__*/ S.Array(
   SqlRoleDefinitionGetResults,
 ) as any as S.Schema<SqlRoleDefinitionListResultValueList>;
@@ -18801,7 +18771,7 @@ export const SqlStoredProcedureGetResults = /*@__PURE__*/ S.suspend(() =>
 
 /** List of storedProcedures and their properties. */
 export type SqlStoredProcedureListResultValueList =
-  ReadonlyArray<SqlStoredProcedureGetResults>;
+  Array<SqlStoredProcedureGetResults>;
 export const SqlStoredProcedureListResultValueList = /*@__PURE__*/ S.Array(
   SqlStoredProcedureGetResults,
 ) as any as S.Schema<SqlStoredProcedureListResultValueList>;
@@ -18894,7 +18864,7 @@ export const SqlTriggerGetResults = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SqlTriggerGetResults>;
 
 /** List of triggers and their properties. */
-export type SqlTriggerListResultValueList = ReadonlyArray<SqlTriggerGetResults>;
+export type SqlTriggerListResultValueList = Array<SqlTriggerGetResults>;
 export const SqlTriggerListResultValueList = /*@__PURE__*/ S.Array(
   SqlTriggerGetResults,
 ) as any as S.Schema<SqlTriggerListResultValueList>;
@@ -18991,7 +18961,7 @@ export const SqlUserDefinedFunctionGetResults = /*@__PURE__*/ S.suspend(() =>
 
 /** List of userDefinedFunctions and their properties. */
 export type SqlUserDefinedFunctionListResultValueList =
-  ReadonlyArray<SqlUserDefinedFunctionGetResults>;
+  Array<SqlUserDefinedFunctionGetResults>;
 export const SqlUserDefinedFunctionListResultValueList = /*@__PURE__*/ S.Array(
   SqlUserDefinedFunctionGetResults,
 ) as any as S.Schema<SqlUserDefinedFunctionListResultValueList>;
@@ -19824,7 +19794,7 @@ export const TableResourcesCreateUpdateTableRoleAssignmentResponse =
 
 /** A set of fully qualified Scopes at or below which Table Role Assignments may be created using this Role Definition. This will allow application of this Role Definition on the entire database account or any underlying Database / Collection. Must have at least one element. Scopes higher than Database account are not enforceable as assignable Scopes. Note that resources referenced in assignable Scopes need not exist. */
 export type TableRoleDefinitionResourcePropertiesAssignableScopesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const TableRoleDefinitionResourcePropertiesAssignableScopesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -19832,7 +19802,7 @@ export const TableRoleDefinitionResourcePropertiesAssignableScopesList =
 
 /** The set of operations allowed through this Role Definition. */
 export type TableRoleDefinitionResourcePropertiesPermissionsList =
-  ReadonlyArray<Permission>;
+  Array<Permission>;
 export const TableRoleDefinitionResourcePropertiesPermissionsList =
   /*@__PURE__*/ S.Array(
     Permission,
@@ -19845,7 +19815,7 @@ export interface TableRoleDefinitionResourceProperties {
   /** A user-friendly name for the Role Definition. Must be unique for the database account. */
   roleName?: string;
   /** Indicates whether the Role Definition was built-in or user created. */
-  type?: RoleDefinitionType;
+  type?: RoleDefinitionType | (string & {});
   /** A set of fully qualified Scopes at or below which Table Role Assignments may be created using this Role Definition. This will allow application of this Role Definition on the entire database account or any underlying Database / Collection. Must have at least one element. Scopes higher than Database account are not enforceable as assignable Scopes. Note that resources referenced in assignable Scopes need not exist. */
   assignableScopes?: TableRoleDefinitionResourcePropertiesAssignableScopesList;
   /** The set of operations allowed through this Role Definition. */
@@ -20334,7 +20304,7 @@ export const TableRoleAssignmentResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The TableRoleAssignmentResource items on this page */
 export type TableRoleAssignmentListResultValueList =
-  ReadonlyArray<TableRoleAssignmentResource>;
+  Array<TableRoleAssignmentResource>;
 export const TableRoleAssignmentListResultValueList = /*@__PURE__*/ S.Array(
   TableRoleAssignmentResource,
 ) as any as S.Schema<TableRoleAssignmentListResultValueList>;
@@ -20408,7 +20378,7 @@ export const TableRoleDefinitionResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The TableRoleDefinitionResource items on this page */
 export type TableRoleDefinitionListResultValueList =
-  ReadonlyArray<TableRoleDefinitionResource>;
+  Array<TableRoleDefinitionResource>;
 export const TableRoleDefinitionListResultValueList = /*@__PURE__*/ S.Array(
   TableRoleDefinitionResource,
 ) as any as S.Schema<TableRoleDefinitionListResultValueList>;
@@ -20496,7 +20466,7 @@ export const TableGetResults = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TableGetResults>;
 
 /** List of Table and their properties. */
-export type TableListResultValueList = ReadonlyArray<TableGetResults>;
+export type TableListResultValueList = Array<TableGetResults>;
 export const TableListResultValueList = /*@__PURE__*/ S.Array(
   TableGetResults,
 ) as any as S.Schema<TableListResultValueList>;

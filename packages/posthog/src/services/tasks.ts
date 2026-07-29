@@ -106,8 +106,7 @@ export type ReasoningEffortEnum = "low" | "medium" | "high" | "xhigh" | "max";
 export const ReasoningEffortEnum = /*@__PURE__*/ S.String;
 
 /** Run artifact ids (already uploaded to the pre-warmed Run) to attach to the forwarded first message when creation reuses that warm Run, e.g. skill bundles or file attachments. If any id is missing from the warm Run's manifest, warm reuse is skipped and the task is created cold. Ignored when no warm Run is matched. */
-export type TasksCreateRequestPendingUserArtifactIdsList =
-  ReadonlyArray<string>;
+export type TasksCreateRequestPendingUserArtifactIdsList = Array<string>;
 export const TasksCreateRequestPendingUserArtifactIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -243,11 +242,11 @@ export interface TaskRunArtifactMetadata {
   /** Name of the local skill included in a skill_bundle artifact. */
   skill_name: string;
   /** Local source for the uploaded skill bundle, such as user or repo. * `user` - user * `repo` - repo * `marketplace` - marketplace * `codex` - codex */
-  skill_source: SkillSourceEnum;
+  skill_source: SkillSourceEnum | (string & {});
   /** SHA-256 hex digest of the uploaded skill bundle bytes. */
   content_sha256: string;
   /** Archive format used for the local skill bundle. * `zip` - zip */
-  bundle_format: BundleFormatEnum;
+  bundle_format: BundleFormatEnum | (string & {});
   /** Version of the local skill bundle metadata schema. */
   schema_version: number;
 }
@@ -299,8 +298,7 @@ export const TaskRunArtifactResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "TaskRunArtifactResponse",
 }) as any as S.Schema<TaskRunArtifactResponse>;
 
-export type TaskRunDetailDTOArtifactsList =
-  ReadonlyArray<TaskRunArtifactResponse>;
+export type TaskRunDetailDTOArtifactsList = Array<TaskRunArtifactResponse>;
 export const TaskRunDetailDTOArtifactsList = /*@__PURE__*/ S.Array(
   TaskRunArtifactResponse,
 ) as any as S.Schema<TaskRunDetailDTOArtifactsList>;
@@ -546,8 +544,7 @@ export const TasksListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "TasksListRequest",
 }) as any as S.Schema<TasksListRequest>;
 
-export type PaginatedTaskDetailDTOListResultsList =
-  ReadonlyArray<TaskDetailDTO>;
+export type PaginatedTaskDetailDTOListResultsList = Array<TaskDetailDTO>;
 export const PaginatedTaskDetailDTOListResultsList = /*@__PURE__*/ S.Array(
   TaskDetailDTO,
 ) as any as S.Schema<PaginatedTaskDetailDTOListResultsList>;
@@ -570,8 +567,7 @@ export const PaginatedTaskDetailDTOList = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PaginatedTaskDetailDTOList>;
 
 /** Run artifact ids (already uploaded to the pre-warmed Run) to attach to the forwarded first message when creation reuses that warm Run, e.g. skill bundles or file attachments. If any id is missing from the warm Run's manifest, warm reuse is skipped and the task is created cold. Ignored when no warm Run is matched. */
-export type TasksPartialUpdateRequestPendingUserArtifactIdsList =
-  ReadonlyArray<string>;
+export type TasksPartialUpdateRequestPendingUserArtifactIdsList = Array<string>;
 export const TasksPartialUpdateRequestPendingUserArtifactIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -738,7 +734,7 @@ export const TasksRepositoriesRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TasksRepositoriesRetrieveRequest>;
 
 /** Distinct repositories in use by non-deleted, non-internal tasks for the current team. */
-export type TaskRepositoriesResponseRepositoriesList = ReadonlyArray<string>;
+export type TaskRepositoriesResponseRepositoriesList = Array<string>;
 export const TaskRepositoriesResponseRepositoriesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<TaskRepositoriesResponseRepositoriesList>;
@@ -926,8 +922,7 @@ export const ImportedMcpServerHeader = /*@__PURE__*/ S.suspend(() =>
   identifier: "ImportedMcpServerHeader",
 }) as any as S.Schema<ImportedMcpServerHeader>;
 
-export type ImportedMcpServerHeadersList =
-  ReadonlyArray<ImportedMcpServerHeader>;
+export type ImportedMcpServerHeadersList = Array<ImportedMcpServerHeader>;
 export const ImportedMcpServerHeadersList = /*@__PURE__*/ S.Array(
   ImportedMcpServerHeader,
 ) as any as S.Schema<ImportedMcpServerHeadersList>;
@@ -952,7 +947,7 @@ export const ImportedMcpServer = /*@__PURE__*/ S.suspend(() =>
 
 /** Local url-based MCP servers from the creating client (PostHog Code) to make available inside the cloud sandbox. Header values are treated as credentials: stored encrypted and never returned by the API. */
 export type ClaudeTaskRunCreateSchemaImportedMcpServersList =
-  ReadonlyArray<ImportedMcpServer>;
+  Array<ImportedMcpServer>;
 export const ClaudeTaskRunCreateSchemaImportedMcpServersList =
   /*@__PURE__*/ S.Array(
     ImportedMcpServer,
@@ -972,7 +967,7 @@ export const RelayedMcpServer = /*@__PURE__*/ S.suspend(() =>
 
 /** Names of desktop-only MCP servers the creating client (PostHog Code) relays into the cloud sandbox over the durable event/command channel. Names only — the server configuration (command, env, URL, headers) never crosses the wire. */
 export type ClaudeTaskRunCreateSchemaRelayedMcpServersList =
-  ReadonlyArray<RelayedMcpServer>;
+  Array<RelayedMcpServer>;
 export const ClaudeTaskRunCreateSchemaRelayedMcpServersList =
   /*@__PURE__*/ S.Array(
     RelayedMcpServer,
@@ -983,8 +978,7 @@ export type TaskExecutionModeEnum = "interactive" | "background";
 export const TaskExecutionModeEnum = /*@__PURE__*/ S.String;
 
 /** Identifiers for staged task artifacts that should be attached to the initial run prompt. */
-export type ClaudeTaskRunCreateSchemaPendingUserArtifactIdsList =
-  ReadonlyArray<string>;
+export type ClaudeTaskRunCreateSchemaPendingUserArtifactIdsList = Array<string>;
 export const ClaudeTaskRunCreateSchemaPendingUserArtifactIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1086,7 +1080,7 @@ export const ClaudeTaskRunCreateSchema = /*@__PURE__*/ S.suspend(() =>
 
 /** Local url-based MCP servers from the creating client (PostHog Code) to make available inside the cloud sandbox. Header values are treated as credentials: stored encrypted and never returned by the API. */
 export type CodexTaskRunCreateSchemaImportedMcpServersList =
-  ReadonlyArray<ImportedMcpServer>;
+  Array<ImportedMcpServer>;
 export const CodexTaskRunCreateSchemaImportedMcpServersList =
   /*@__PURE__*/ S.Array(
     ImportedMcpServer,
@@ -1094,15 +1088,14 @@ export const CodexTaskRunCreateSchemaImportedMcpServersList =
 
 /** Names of desktop-only MCP servers the creating client (PostHog Code) relays into the cloud sandbox over the durable event/command channel. Names only — the server configuration (command, env, URL, headers) never crosses the wire. */
 export type CodexTaskRunCreateSchemaRelayedMcpServersList =
-  ReadonlyArray<RelayedMcpServer>;
+  Array<RelayedMcpServer>;
 export const CodexTaskRunCreateSchemaRelayedMcpServersList =
   /*@__PURE__*/ S.Array(
     RelayedMcpServer,
   ) as any as S.Schema<CodexTaskRunCreateSchemaRelayedMcpServersList>;
 
 /** Identifiers for staged task artifacts that should be attached to the initial run prompt. */
-export type CodexTaskRunCreateSchemaPendingUserArtifactIdsList =
-  ReadonlyArray<string>;
+export type CodexTaskRunCreateSchemaPendingUserArtifactIdsList = Array<string>;
 export const CodexTaskRunCreateSchemaPendingUserArtifactIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1462,7 +1455,7 @@ export const TaskRunLivingArtifactResponseVersionsItemMap =
 
 /** Chronological version records for this artifact. */
 export type TaskRunLivingArtifactResponseVersionsList =
-  ReadonlyArray<TaskRunLivingArtifactResponseVersionsItemMap>;
+  Array<TaskRunLivingArtifactResponseVersionsItemMap>;
 export const TaskRunLivingArtifactResponseVersionsList = /*@__PURE__*/ S.Array(
   TaskRunLivingArtifactResponseVersionsItemMap,
 ) as any as S.Schema<TaskRunLivingArtifactResponseVersionsList>;
@@ -1597,7 +1590,7 @@ export const TasksRunsLivingArtifactsListRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Living artifacts for this task run. */
 export type TaskRunLivingArtifactsResponseArtifactsList =
-  ReadonlyArray<TaskRunLivingArtifactResponse>;
+  Array<TaskRunLivingArtifactResponse>;
 export const TaskRunLivingArtifactsResponseArtifactsList =
   /*@__PURE__*/ S.Array(
     TaskRunLivingArtifactResponse,
@@ -1616,7 +1609,7 @@ export const TaskRunLivingArtifactsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TaskRunLivingArtifactsResponse>;
 
 export type TasksRunsLivingArtifactsListResponseBodyList =
-  ReadonlyArray<TaskRunLivingArtifactsResponse>;
+  Array<TaskRunLivingArtifactsResponse>;
 export const TasksRunsLivingArtifactsListResponseBodyList =
   /*@__PURE__*/ S.Array(
     TaskRunLivingArtifactsResponse,
@@ -1665,7 +1658,7 @@ export const TaskRunLivingArtifactOpenResponseVersionsItemMap =
 
 /** Chronological version records for this artifact. */
 export type TaskRunLivingArtifactOpenResponseVersionsList =
-  ReadonlyArray<TaskRunLivingArtifactOpenResponseVersionsItemMap>;
+  Array<TaskRunLivingArtifactOpenResponseVersionsItemMap>;
 export const TaskRunLivingArtifactOpenResponseVersionsList =
   /*@__PURE__*/ S.Array(
     TaskRunLivingArtifactOpenResponseVersionsItemMap,
@@ -1890,8 +1883,7 @@ export const SlackThreadContextRun = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SlackThreadContextRun>;
 
 /** All runs on the task, oldest first. Empty when no mapping was found. */
-export type SlackThreadContextResponseRunsList =
-  ReadonlyArray<SlackThreadContextRun>;
+export type SlackThreadContextResponseRunsList = Array<SlackThreadContextRun>;
 export const SlackThreadContextResponseRunsList = /*@__PURE__*/ S.Array(
   SlackThreadContextRun,
 ) as any as S.Schema<SlackThreadContextResponseRunsList>;
@@ -1959,7 +1951,7 @@ export const TaskStagedArtifactFinalizeUpload = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of staged artifacts to finalize after upload */
 export type TasksStagedArtifactsFinalizeUploadCreateRequestArtifactsList =
-  ReadonlyArray<TaskStagedArtifactFinalizeUpload>;
+  Array<TaskStagedArtifactFinalizeUpload>;
 export const TasksStagedArtifactsFinalizeUploadCreateRequestArtifactsList =
   /*@__PURE__*/ S.Array(
     TaskStagedArtifactFinalizeUpload,
@@ -1993,7 +1985,7 @@ export const TasksStagedArtifactsFinalizeUploadCreateRequest =
 
 /** Finalized staged artifacts available for attachment to a new run */
 export type TaskStagedArtifactsFinalizeUploadResponseArtifactsList =
-  ReadonlyArray<TaskRunArtifactResponse>;
+  Array<TaskRunArtifactResponse>;
 export const TaskStagedArtifactsFinalizeUploadResponseArtifactsList =
   /*@__PURE__*/ S.Array(
     TaskRunArtifactResponse,
@@ -2043,7 +2035,7 @@ export const TaskStagedArtifactPrepareUpload = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of staged artifacts to prepare before creating a run */
 export type TasksStagedArtifactsPrepareUploadCreateRequestArtifactsList =
-  ReadonlyArray<TaskStagedArtifactPrepareUpload>;
+  Array<TaskStagedArtifactPrepareUpload>;
 export const TasksStagedArtifactsPrepareUploadCreateRequestArtifactsList =
   /*@__PURE__*/ S.Array(
     TaskStagedArtifactPrepareUpload,
@@ -2139,7 +2131,7 @@ export const TaskStagedArtifactPrepareUploadResponse = /*@__PURE__*/ S.suspend(
 
 /** Prepared staged uploads for the requested artifacts */
 export type TaskStagedArtifactsPrepareUploadResponseArtifactsList =
-  ReadonlyArray<TaskStagedArtifactPrepareUploadResponse>;
+  Array<TaskStagedArtifactPrepareUploadResponse>;
 export const TaskStagedArtifactsPrepareUploadResponseArtifactsList =
   /*@__PURE__*/ S.Array(
     TaskStagedArtifactPrepareUploadResponse,
@@ -2161,7 +2153,7 @@ export const TaskStagedArtifactsPrepareUploadResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<TaskStagedArtifactsPrepareUploadResponse>;
 
 /** Task IDs to fetch summaries for (max 5000). Response is paginated; follow the `next` cursor to retrieve all results. */
-export type TasksSummariesCreateRequestIdsList = ReadonlyArray<string>;
+export type TasksSummariesCreateRequestIdsList = Array<string>;
 export const TasksSummariesCreateRequestIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<TasksSummariesCreateRequestIdsList>;
@@ -2240,8 +2232,7 @@ export const TaskSummaryDTO = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TaskSummaryDTO" }) as any as S.Schema<TaskSummaryDTO>;
 
-export type PaginatedTaskSummaryDTOListResultsList =
-  ReadonlyArray<TaskSummaryDTO>;
+export type PaginatedTaskSummaryDTOListResultsList = Array<TaskSummaryDTO>;
 export const PaginatedTaskSummaryDTOListResultsList = /*@__PURE__*/ S.Array(
   TaskSummaryDTO,
 ) as any as S.Schema<PaginatedTaskSummaryDTOListResultsList>;
@@ -2380,7 +2371,7 @@ export const TasksThreadMessagesListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TasksThreadMessagesListRequest>;
 
 export type PaginatedTaskThreadMessageDTOListResultsList =
-  ReadonlyArray<TaskThreadMessageDTO>;
+  Array<TaskThreadMessageDTO>;
 export const PaginatedTaskThreadMessageDTOListResultsList =
   /*@__PURE__*/ S.Array(
     TaskThreadMessageDTO,
@@ -2454,8 +2445,7 @@ export const TasksThreadMessagesSendToAgentCreateRequest =
   }) as any as S.Schema<TasksThreadMessagesSendToAgentCreateRequest>;
 
 /** Run artifact ids (already uploaded to the pre-warmed Run) to attach to the forwarded first message when creation reuses that warm Run, e.g. skill bundles or file attachments. If any id is missing from the warm Run's manifest, warm reuse is skipped and the task is created cold. Ignored when no warm Run is matched. */
-export type TasksUpdateRequestPendingUserArtifactIdsList =
-  ReadonlyArray<string>;
+export type TasksUpdateRequestPendingUserArtifactIdsList = Array<string>;
 export const TasksUpdateRequestPendingUserArtifactIdsList =
   /*@__PURE__*/ S.Array(
     S.String,

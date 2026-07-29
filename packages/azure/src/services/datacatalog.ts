@@ -40,13 +40,13 @@ export const Principals = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Principals" }) as any as S.Schema<Principals>;
 
 /** Azure data catalog admin list. */
-export type ADCCatalogPropertiesAdminsList = ReadonlyArray<Principals>;
+export type ADCCatalogPropertiesAdminsList = Array<Principals>;
 export const ADCCatalogPropertiesAdminsList = /*@__PURE__*/ S.Array(
   Principals,
 ) as any as S.Schema<ADCCatalogPropertiesAdminsList>;
 
 /** Azure data catalog user list. */
-export type ADCCatalogPropertiesUsersList = ReadonlyArray<Principals>;
+export type ADCCatalogPropertiesUsersList = Array<Principals>;
 export const ADCCatalogPropertiesUsersList = /*@__PURE__*/ S.Array(
   Principals,
 ) as any as S.Schema<ADCCatalogPropertiesUsersList>;
@@ -54,7 +54,7 @@ export const ADCCatalogPropertiesUsersList = /*@__PURE__*/ S.Array(
 /** Properties of the data catalog. */
 export interface ADCCatalogProperties {
   /** Azure data catalog SKU. */
-  sku?: ADCCatalogPropertiesSku;
+  sku?: ADCCatalogPropertiesSku | (string & {});
   /** Azure data catalog units. */
   units?: number;
   /** Azure data catalog admin list. */
@@ -311,7 +311,7 @@ export const ADCCatalog = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ADCCatalog" }) as any as S.Schema<ADCCatalog>;
 
 /** the list of Azure Data Catalogs. */
-export type ADCCatalogsListResultValueList = ReadonlyArray<ADCCatalog>;
+export type ADCCatalogsListResultValueList = Array<ADCCatalog>;
 export const ADCCatalogsListResultValueList = /*@__PURE__*/ S.Array(
   ADCCatalog,
 ) as any as S.Schema<ADCCatalogsListResultValueList>;
@@ -467,7 +467,7 @@ export const OperationEntity = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationEntity>;
 
 /** The list of operations. */
-export type OperationEntityListResultValueList = ReadonlyArray<OperationEntity>;
+export type OperationEntityListResultValueList = Array<OperationEntity>;
 export const OperationEntityListResultValueList = /*@__PURE__*/ S.Array(
   OperationEntity,
 ) as any as S.Schema<OperationEntityListResultValueList>;

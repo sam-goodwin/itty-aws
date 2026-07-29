@@ -437,7 +437,7 @@ export type SecurityServiceType =
   | "NETWORK_ACL_COMMON";
 export const SecurityServiceType = /*@__PURE__*/ S.String;
 
-export type SecurityServiceTypeList = SecurityServiceType[];
+export type SecurityServiceTypeList = (SecurityServiceType | (string & {}))[];
 export const SecurityServiceTypeList =
   /*@__PURE__*/ S.Array(SecurityServiceType);
 export interface PolicyTypeScope {
@@ -698,7 +698,7 @@ export type FirewallDeploymentModel = "CENTRALIZED" | "DISTRIBUTED";
 export const FirewallDeploymentModel = /*@__PURE__*/ S.String;
 
 export interface NetworkFirewallPolicy {
-  FirewallDeploymentModel?: FirewallDeploymentModel;
+  FirewallDeploymentModel?: FirewallDeploymentModel | (string & {});
 }
 export const NetworkFirewallPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ FirewallDeploymentModel: S.optional(FirewallDeploymentModel) }),
@@ -706,7 +706,7 @@ export const NetworkFirewallPolicy = /*@__PURE__*/ S.suspend(() =>
   identifier: "NetworkFirewallPolicy",
 }) as any as S.Schema<NetworkFirewallPolicy>;
 export interface ThirdPartyFirewallPolicy {
-  FirewallDeploymentModel?: FirewallDeploymentModel;
+  FirewallDeploymentModel?: FirewallDeploymentModel | (string & {});
 }
 export const ThirdPartyFirewallPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ FirewallDeploymentModel: S.optional(FirewallDeploymentModel) }),
@@ -743,7 +743,7 @@ export interface NetworkAclEntry {
   PortRange?: NetworkAclPortRange;
   CidrBlock?: string;
   Ipv6CidrBlock?: string;
-  RuleAction: NetworkAclRuleAction;
+  RuleAction: NetworkAclRuleAction | (string & {});
   Egress: boolean;
 }
 export const NetworkAclEntry = /*@__PURE__*/ S.suspend(() =>
@@ -798,7 +798,7 @@ export const PolicyOption = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PolicyOption" }) as any as S.Schema<PolicyOption>;
 export interface SecurityServicePolicyData {
-  Type: SecurityServiceType;
+  Type: SecurityServiceType | (string & {});
   ManagedServiceData?: string;
   PolicyOption?: PolicyOption;
 }
@@ -831,7 +831,7 @@ export type CustomerPolicyScopeId = string;
 export type CustomerPolicyScopeIdList = string[];
 export const CustomerPolicyScopeIdList = /*@__PURE__*/ S.Array(S.String);
 export type CustomerPolicyScopeMap = {
-  [key in CustomerPolicyScopeIdType]?: string[];
+  [key in CustomerPolicyScopeIdType | (string & {})]?: string[];
 };
 export const CustomerPolicyScopeMap = /*@__PURE__*/ S.Record(
   CustomerPolicyScopeIdType,
@@ -861,8 +861,8 @@ export interface Policy {
   ExcludeMap?: { [key: string]: string[] | undefined };
   ResourceSetIds?: string[];
   PolicyDescription?: string;
-  PolicyStatus?: CustomerPolicyStatus;
-  ResourceTagLogicalOperator?: ResourceTagLogicalOperator;
+  PolicyStatus?: CustomerPolicyStatus | (string & {});
+  ResourceTagLogicalOperator?: ResourceTagLogicalOperator | (string & {});
 }
 export const Policy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1008,7 +1008,7 @@ export interface ResourceSet {
   UpdateToken?: string;
   ResourceTypeList: string[];
   LastUpdateTime?: Date;
-  ResourceSetStatus?: ResourceSetStatus;
+  ResourceSetStatus?: ResourceSetStatus | (string & {});
 }
 export const ResourceSet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

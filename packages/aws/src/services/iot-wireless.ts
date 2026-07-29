@@ -708,9 +708,9 @@ export type MulticastFrameInfo = "ENABLED" | "DISABLED";
 export const MulticastFrameInfo = /*@__PURE__*/ S.String;
 
 export interface TraceContent {
-  WirelessDeviceFrameInfo?: WirelessDeviceFrameInfo;
-  LogLevel?: LogLevel;
-  MulticastFrameInfo?: MulticastFrameInfo;
+  WirelessDeviceFrameInfo?: WirelessDeviceFrameInfo | (string & {});
+  LogLevel?: LogLevel | (string & {});
+  MulticastFrameInfo?: MulticastFrameInfo | (string & {});
 }
 export const TraceContent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -957,7 +957,7 @@ export const ApplicationConfigType = /*@__PURE__*/ S.String;
 
 export interface ApplicationConfig {
   FPort?: number;
-  Type?: ApplicationConfigType;
+  Type?: ApplicationConfigType | (string & {});
   DestinationName?: string;
 }
 export const ApplicationConfig = /*@__PURE__*/ S.suspend(() =>
@@ -1957,7 +1957,7 @@ export type EventNotificationTopicStatus = "Enabled" | "Disabled";
 export const EventNotificationTopicStatus = /*@__PURE__*/ S.String;
 
 export interface SidewalkResourceTypeEventConfiguration {
-  WirelessDeviceEventTopic?: EventNotificationTopicStatus;
+  WirelessDeviceEventTopic?: EventNotificationTopicStatus | (string & {});
 }
 export const SidewalkResourceTypeEventConfiguration = /*@__PURE__*/ S.suspend(
   () =>
@@ -1986,7 +1986,7 @@ export const ProximityResourceTypeEventConfiguration = /*@__PURE__*/ S.suspend(
   identifier: "ProximityResourceTypeEventConfiguration",
 }) as any as S.Schema<ProximityResourceTypeEventConfiguration>;
 export interface LoRaWANJoinResourceTypeEventConfiguration {
-  WirelessDeviceEventTopic?: EventNotificationTopicStatus;
+  WirelessDeviceEventTopic?: EventNotificationTopicStatus | (string & {});
 }
 export const LoRaWANJoinResourceTypeEventConfiguration =
   /*@__PURE__*/ S.suspend(() =>
@@ -2005,7 +2005,7 @@ export const JoinResourceTypeEventConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "JoinResourceTypeEventConfiguration",
 }) as any as S.Schema<JoinResourceTypeEventConfiguration>;
 export interface LoRaWANConnectionStatusResourceTypeEventConfiguration {
-  WirelessGatewayEventTopic?: EventNotificationTopicStatus;
+  WirelessGatewayEventTopic?: EventNotificationTopicStatus | (string & {});
 }
 export const LoRaWANConnectionStatusResourceTypeEventConfiguration =
   /*@__PURE__*/ S.suspend(() =>
@@ -2159,8 +2159,8 @@ export type WirelessGatewayEvent = "CUPS_Request" | "Certificate";
 export const WirelessGatewayEvent = /*@__PURE__*/ S.String;
 
 export interface WirelessGatewayEventLogOption {
-  Event: WirelessGatewayEvent;
-  LogLevel: LogLevel;
+  Event: WirelessGatewayEvent | (string & {});
+  LogLevel: LogLevel | (string & {});
 }
 export const WirelessGatewayEventLogOption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Event: WirelessGatewayEvent, LogLevel: LogLevel }),
@@ -2172,8 +2172,8 @@ export const WirelessGatewayEventLogOptionList = /*@__PURE__*/ S.Array(
   WirelessGatewayEventLogOption,
 );
 export interface WirelessGatewayLogOption {
-  Type: WirelessGatewayType;
-  LogLevel: LogLevel;
+  Type: WirelessGatewayType | (string & {});
+  LogLevel: LogLevel | (string & {});
   Events?: WirelessGatewayEventLogOption[];
 }
 export const WirelessGatewayLogOption = /*@__PURE__*/ S.suspend(() =>
@@ -2198,8 +2198,8 @@ export type WirelessDeviceEvent =
 export const WirelessDeviceEvent = /*@__PURE__*/ S.String;
 
 export interface WirelessDeviceEventLogOption {
-  Event: WirelessDeviceEvent;
-  LogLevel: LogLevel;
+  Event: WirelessDeviceEvent | (string & {});
+  LogLevel: LogLevel | (string & {});
 }
 export const WirelessDeviceEventLogOption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Event: WirelessDeviceEvent, LogLevel: LogLevel }),
@@ -2211,8 +2211,8 @@ export const WirelessDeviceEventLogOptionList = /*@__PURE__*/ S.Array(
   WirelessDeviceEventLogOption,
 );
 export interface WirelessDeviceLogOption {
-  Type: WirelessDeviceType;
-  LogLevel: LogLevel;
+  Type: WirelessDeviceType | (string & {});
+  LogLevel: LogLevel | (string & {});
   Events?: WirelessDeviceEventLogOption[];
 }
 export const WirelessDeviceLogOption = /*@__PURE__*/ S.suspend(() =>
@@ -2235,8 +2235,8 @@ export type FuotaTaskEvent = "Fuota";
 export const FuotaTaskEvent = /*@__PURE__*/ S.String;
 
 export interface FuotaTaskEventLogOption {
-  Event: FuotaTaskEvent;
-  LogLevel: LogLevel;
+  Event: FuotaTaskEvent | (string & {});
+  LogLevel: LogLevel | (string & {});
 }
 export const FuotaTaskEventLogOption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Event: FuotaTaskEvent, LogLevel: LogLevel }),
@@ -2248,8 +2248,8 @@ export const FuotaTaskEventLogOptionList = /*@__PURE__*/ S.Array(
   FuotaTaskEventLogOption,
 );
 export interface FuotaTaskLogOption {
-  Type: FuotaTaskType;
-  LogLevel: LogLevel;
+  Type: FuotaTaskType | (string & {});
+  LogLevel: LogLevel | (string & {});
   Events?: FuotaTaskEventLogOption[];
 }
 export const FuotaTaskLogOption = /*@__PURE__*/ S.suspend(() =>
@@ -2298,7 +2298,7 @@ export type SummaryMetricConfigurationStatus = "Enabled" | "Disabled";
 export const SummaryMetricConfigurationStatus = /*@__PURE__*/ S.String;
 
 export interface SummaryMetricConfiguration {
-  Status?: SummaryMetricConfigurationStatus;
+  Status?: SummaryMetricConfigurationStatus | (string & {});
 }
 export const SummaryMetricConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Status: S.optional(SummaryMetricConfigurationStatus) }),
@@ -2354,7 +2354,7 @@ export const DimensionName = /*@__PURE__*/ S.String;
 
 export type DimensionValue = string;
 export interface Dimension {
-  name?: DimensionName;
+  name?: DimensionName | (string & {});
   value?: string;
 }
 export const Dimension = /*@__PURE__*/ S.suspend(() =>
@@ -3269,7 +3269,7 @@ export const GetResourceEventConfigurationRequest = /*@__PURE__*/ S.suspend(
   identifier: "GetResourceEventConfigurationRequest",
 }) as any as S.Schema<GetResourceEventConfigurationRequest>;
 export interface SidewalkEventNotificationConfigurations {
-  AmazonIdEventTopic?: EventNotificationTopicStatus;
+  AmazonIdEventTopic?: EventNotificationTopicStatus | (string & {});
 }
 export const SidewalkEventNotificationConfigurations = /*@__PURE__*/ S.suspend(
   () =>
@@ -3279,7 +3279,7 @@ export const SidewalkEventNotificationConfigurations = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<SidewalkEventNotificationConfigurations>;
 export interface DeviceRegistrationStateEventConfiguration {
   Sidewalk?: SidewalkEventNotificationConfigurations;
-  WirelessDeviceIdEventTopic?: EventNotificationTopicStatus;
+  WirelessDeviceIdEventTopic?: EventNotificationTopicStatus | (string & {});
 }
 export const DeviceRegistrationStateEventConfiguration =
   /*@__PURE__*/ S.suspend(() =>
@@ -3292,7 +3292,7 @@ export const DeviceRegistrationStateEventConfiguration =
   }) as any as S.Schema<DeviceRegistrationStateEventConfiguration>;
 export interface ProximityEventConfiguration {
   Sidewalk?: SidewalkEventNotificationConfigurations;
-  WirelessDeviceIdEventTopic?: EventNotificationTopicStatus;
+  WirelessDeviceIdEventTopic?: EventNotificationTopicStatus | (string & {});
 }
 export const ProximityEventConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3303,7 +3303,7 @@ export const ProximityEventConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProximityEventConfiguration",
 }) as any as S.Schema<ProximityEventConfiguration>;
 export interface LoRaWANJoinEventNotificationConfigurations {
-  DevEuiEventTopic?: EventNotificationTopicStatus;
+  DevEuiEventTopic?: EventNotificationTopicStatus | (string & {});
 }
 export const LoRaWANJoinEventNotificationConfigurations =
   /*@__PURE__*/ S.suspend(() =>
@@ -3313,7 +3313,7 @@ export const LoRaWANJoinEventNotificationConfigurations =
   }) as any as S.Schema<LoRaWANJoinEventNotificationConfigurations>;
 export interface JoinEventConfiguration {
   LoRaWAN?: LoRaWANJoinEventNotificationConfigurations;
-  WirelessDeviceIdEventTopic?: EventNotificationTopicStatus;
+  WirelessDeviceIdEventTopic?: EventNotificationTopicStatus | (string & {});
 }
 export const JoinEventConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3324,7 +3324,7 @@ export const JoinEventConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "JoinEventConfiguration",
 }) as any as S.Schema<JoinEventConfiguration>;
 export interface LoRaWANConnectionStatusEventNotificationConfigurations {
-  GatewayEuiEventTopic?: EventNotificationTopicStatus;
+  GatewayEuiEventTopic?: EventNotificationTopicStatus | (string & {});
 }
 export const LoRaWANConnectionStatusEventNotificationConfigurations =
   /*@__PURE__*/ S.suspend(() =>
@@ -3336,7 +3336,7 @@ export const LoRaWANConnectionStatusEventNotificationConfigurations =
   }) as any as S.Schema<LoRaWANConnectionStatusEventNotificationConfigurations>;
 export interface ConnectionStatusEventConfiguration {
   LoRaWAN?: LoRaWANConnectionStatusEventNotificationConfigurations;
-  WirelessGatewayIdEventTopic?: EventNotificationTopicStatus;
+  WirelessGatewayIdEventTopic?: EventNotificationTopicStatus | (string & {});
 }
 export const ConnectionStatusEventConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3348,7 +3348,7 @@ export const ConnectionStatusEventConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConnectionStatusEventConfiguration>;
 export interface MessageDeliveryStatusEventConfiguration {
   Sidewalk?: SidewalkEventNotificationConfigurations;
-  WirelessDeviceIdEventTopic?: EventNotificationTopicStatus;
+  WirelessDeviceIdEventTopic?: EventNotificationTopicStatus | (string & {});
 }
 export const MessageDeliveryStatusEventConfiguration = /*@__PURE__*/ S.suspend(
   () =>
@@ -4757,7 +4757,7 @@ export type GatewayList = GatewayListItem[];
 export const GatewayList = /*@__PURE__*/ S.Array(GatewayListItem);
 export type TransmissionInterval = number;
 export interface ParticipatingGateways {
-  DownlinkMode: DownlinkMode;
+  DownlinkMode: DownlinkMode | (string & {});
   GatewayList: GatewayListItem[];
   TransmissionInterval: number;
 }

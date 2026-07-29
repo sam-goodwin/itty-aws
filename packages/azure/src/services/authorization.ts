@@ -35,25 +35,25 @@ export const DenyAssignmentsGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DenyAssignmentsGetRequest>;
 
 /** Actions to which the deny assignment does not grant access. */
-export type DenyAssignmentPermissionActionsList = ReadonlyArray<string>;
+export type DenyAssignmentPermissionActionsList = Array<string>;
 export const DenyAssignmentPermissionActionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DenyAssignmentPermissionActionsList>;
 
 /** Actions to exclude from that the deny assignment does not grant access. */
-export type DenyAssignmentPermissionNotActionsList = ReadonlyArray<string>;
+export type DenyAssignmentPermissionNotActionsList = Array<string>;
 export const DenyAssignmentPermissionNotActionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DenyAssignmentPermissionNotActionsList>;
 
 /** Data actions to which the deny assignment does not grant access. */
-export type DenyAssignmentPermissionDataActionsList = ReadonlyArray<string>;
+export type DenyAssignmentPermissionDataActionsList = Array<string>;
 export const DenyAssignmentPermissionDataActionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DenyAssignmentPermissionDataActionsList>;
 
 /** Data actions to exclude from that the deny assignment does not grant access. */
-export type DenyAssignmentPermissionNotDataActionsList = ReadonlyArray<string>;
+export type DenyAssignmentPermissionNotDataActionsList = Array<string>;
 export const DenyAssignmentPermissionNotDataActionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DenyAssignmentPermissionNotDataActionsList>;
@@ -88,7 +88,7 @@ export const DenyAssignmentPermission = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of permissions that are denied by the deny assignment. */
 export type DenyAssignmentPropertiesPermissionsList =
-  ReadonlyArray<DenyAssignmentPermission>;
+  Array<DenyAssignmentPermission>;
 export const DenyAssignmentPropertiesPermissionsList = /*@__PURE__*/ S.Array(
   DenyAssignmentPermission,
 ) as any as S.Schema<DenyAssignmentPropertiesPermissionsList>;
@@ -118,7 +118,7 @@ export const DenyAssignmentPropertiesPrincipalsItem = /*@__PURE__*/ S.suspend(
 
 /** Array of principals to which the deny assignment applies. */
 export type DenyAssignmentPropertiesPrincipalsList =
-  ReadonlyArray<DenyAssignmentPropertiesPrincipalsItem>;
+  Array<DenyAssignmentPropertiesPrincipalsItem>;
 export const DenyAssignmentPropertiesPrincipalsList = /*@__PURE__*/ S.Array(
   DenyAssignmentPropertiesPrincipalsItem,
 ) as any as S.Schema<DenyAssignmentPropertiesPrincipalsList>;
@@ -148,7 +148,7 @@ export const DenyAssignmentPropertiesExcludePrincipalsItem =
 
 /** Array of principals to which the deny assignment does not apply. */
 export type DenyAssignmentPropertiesExcludePrincipalsList =
-  ReadonlyArray<DenyAssignmentPropertiesExcludePrincipalsItem>;
+  Array<DenyAssignmentPropertiesExcludePrincipalsItem>;
 export const DenyAssignmentPropertiesExcludePrincipalsList =
   /*@__PURE__*/ S.Array(
     DenyAssignmentPropertiesExcludePrincipalsItem,
@@ -270,7 +270,7 @@ export const DenyAssignmentsListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DenyAssignmentsListRequest>;
 
 /** Deny assignment list. */
-export type DenyAssignmentListResultValueList = ReadonlyArray<DenyAssignment>;
+export type DenyAssignmentListResultValueList = Array<DenyAssignment>;
 export const DenyAssignmentListResultValueList = /*@__PURE__*/ S.Array(
   DenyAssignment,
 ) as any as S.Schema<DenyAssignmentListResultValueList>;
@@ -412,25 +412,25 @@ export const PermissionsListForResourceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PermissionsListForResourceRequest>;
 
 /** Allowed actions. */
-export type PermissionActionsList = ReadonlyArray<string>;
+export type PermissionActionsList = Array<string>;
 export const PermissionActionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PermissionActionsList>;
 
 /** Denied actions. */
-export type PermissionNotActionsList = ReadonlyArray<string>;
+export type PermissionNotActionsList = Array<string>;
 export const PermissionNotActionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PermissionNotActionsList>;
 
 /** Allowed Data actions. */
-export type PermissionDataActionsList = ReadonlyArray<string>;
+export type PermissionDataActionsList = Array<string>;
 export const PermissionDataActionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PermissionDataActionsList>;
 
 /** Denied Data actions. */
-export type PermissionNotDataActionsList = ReadonlyArray<string>;
+export type PermissionNotDataActionsList = Array<string>;
 export const PermissionNotDataActionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PermissionNotDataActionsList>;
@@ -456,7 +456,7 @@ export const Permission = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Permission" }) as any as S.Schema<Permission>;
 
 /** An array of permissions. */
-export type PermissionGetResultValueList = ReadonlyArray<Permission>;
+export type PermissionGetResultValueList = Array<Permission>;
 export const PermissionGetResultValueList = /*@__PURE__*/ S.Array(
   Permission,
 ) as any as S.Schema<PermissionGetResultValueList>;
@@ -552,7 +552,7 @@ export const ProviderOperation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProviderOperation>;
 
 /** The resource type operations. */
-export type ResourceTypeOperationsList = ReadonlyArray<ProviderOperation>;
+export type ResourceTypeOperationsList = Array<ProviderOperation>;
 export const ResourceTypeOperationsList = /*@__PURE__*/ S.Array(
   ProviderOperation,
 ) as any as S.Schema<ResourceTypeOperationsList>;
@@ -576,7 +576,7 @@ export const ResourceType = /*@__PURE__*/ S.suspend(() =>
 
 /** The provider resource types */
 export type ProviderOperationsMetadataGetResponseResourceTypesList =
-  ReadonlyArray<ResourceType>;
+  Array<ResourceType>;
 export const ProviderOperationsMetadataGetResponseResourceTypesList =
   /*@__PURE__*/ S.Array(
     ResourceType,
@@ -584,7 +584,7 @@ export const ProviderOperationsMetadataGetResponseResourceTypesList =
 
 /** The provider operations. */
 export type ProviderOperationsMetadataGetResponseOperationsList =
-  ReadonlyArray<ProviderOperation>;
+  Array<ProviderOperation>;
 export const ProviderOperationsMetadataGetResponseOperationsList =
   /*@__PURE__*/ S.Array(
     ProviderOperation,
@@ -643,16 +643,14 @@ export const ProviderOperationsMetadataListRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ProviderOperationsMetadataListRequest>;
 
 /** The provider resource types */
-export type ProviderOperationsMetadataResourceTypesList =
-  ReadonlyArray<ResourceType>;
+export type ProviderOperationsMetadataResourceTypesList = Array<ResourceType>;
 export const ProviderOperationsMetadataResourceTypesList =
   /*@__PURE__*/ S.Array(
     ResourceType,
   ) as any as S.Schema<ProviderOperationsMetadataResourceTypesList>;
 
 /** The provider operations. */
-export type ProviderOperationsMetadataOperationsList =
-  ReadonlyArray<ProviderOperation>;
+export type ProviderOperationsMetadataOperationsList = Array<ProviderOperation>;
 export const ProviderOperationsMetadataOperationsList = /*@__PURE__*/ S.Array(
   ProviderOperation,
 ) as any as S.Schema<ProviderOperationsMetadataOperationsList>;
@@ -687,7 +685,7 @@ export const ProviderOperationsMetadata = /*@__PURE__*/ S.suspend(() =>
 
 /** The ProviderOperationsMetadata items on this page */
 export type ProviderOperationsMetadataListResultValueList =
-  ReadonlyArray<ProviderOperationsMetadata>;
+  Array<ProviderOperationsMetadata>;
 export const ProviderOperationsMetadataListResultValueList =
   /*@__PURE__*/ S.Array(
     ProviderOperationsMetadata,
@@ -1199,7 +1197,7 @@ export const RoleAssignment = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RoleAssignment" }) as any as S.Schema<RoleAssignment>;
 
 /** The RoleAssignment items on this page */
-export type RoleAssignmentListResultValueList = ReadonlyArray<RoleAssignment>;
+export type RoleAssignmentListResultValueList = Array<RoleAssignment>;
 export const RoleAssignmentListResultValueList = /*@__PURE__*/ S.Array(
   RoleAssignment,
 ) as any as S.Schema<RoleAssignmentListResultValueList>;
@@ -1304,16 +1302,14 @@ export const RoleAssignmentsListForSubscriptionRequest =
   }) as any as S.Schema<RoleAssignmentsListForSubscriptionRequest>;
 
 /** Role definition permissions. */
-export type RoleDefinitionPropertiesInputPermissionsList =
-  ReadonlyArray<Permission>;
+export type RoleDefinitionPropertiesInputPermissionsList = Array<Permission>;
 export const RoleDefinitionPropertiesInputPermissionsList =
   /*@__PURE__*/ S.Array(
     Permission,
   ) as any as S.Schema<RoleDefinitionPropertiesInputPermissionsList>;
 
 /** Role definition assignable scopes. */
-export type RoleDefinitionPropertiesInputAssignableScopesList =
-  ReadonlyArray<string>;
+export type RoleDefinitionPropertiesInputAssignableScopesList = Array<string>;
 export const RoleDefinitionPropertiesInputAssignableScopesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1373,14 +1369,13 @@ export const RoleDefinitionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<RoleDefinitionsCreateOrUpdateRequest>;
 
 /** Role definition permissions. */
-export type RoleDefinitionPropertiesPermissionsList = ReadonlyArray<Permission>;
+export type RoleDefinitionPropertiesPermissionsList = Array<Permission>;
 export const RoleDefinitionPropertiesPermissionsList = /*@__PURE__*/ S.Array(
   Permission,
 ) as any as S.Schema<RoleDefinitionPropertiesPermissionsList>;
 
 /** Role definition assignable scopes. */
-export type RoleDefinitionPropertiesAssignableScopesList =
-  ReadonlyArray<string>;
+export type RoleDefinitionPropertiesAssignableScopesList = Array<string>;
 export const RoleDefinitionPropertiesAssignableScopesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1510,7 +1505,7 @@ export const RoleDefinitionsListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RoleDefinitionsListRequest>;
 
 /** Role definition list. */
-export type RoleDefinitionListResultValueList = ReadonlyArray<RoleDefinition>;
+export type RoleDefinitionListResultValueList = Array<RoleDefinition>;
 export const RoleDefinitionListResultValueList = /*@__PURE__*/ S.Array(
   RoleDefinition,
 ) as any as S.Schema<RoleDefinitionListResultValueList>;

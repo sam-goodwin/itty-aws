@@ -254,7 +254,7 @@ export const RegionalServicesPrefixBindingsListResultItem =
   }) as any as S.Schema<RegionalServicesPrefixBindingsListResultItem>;
 
 export type RegionalServicesPrefixBindingsListResultList =
-  ReadonlyArray<RegionalServicesPrefixBindingsListResultItem>;
+  Array<RegionalServicesPrefixBindingsListResultItem>;
 export const RegionalServicesPrefixBindingsListResultList =
   /*@__PURE__*/ S.Array(
     RegionalServicesPrefixBindingsListResultItem,
@@ -332,7 +332,7 @@ export const RegionsListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "RegionsListResultItem",
 }) as any as S.Schema<RegionsListResultItem>;
 
-export type RegionsListResultList = ReadonlyArray<RegionsListResultItem>;
+export type RegionsListResultList = Array<RegionsListResultItem>;
 export const RegionsListResultList = /*@__PURE__*/ S.Array(
   RegionsListResultItem,
 ) as any as S.Schema<RegionsListResultList>;

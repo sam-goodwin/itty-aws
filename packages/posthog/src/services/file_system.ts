@@ -150,7 +150,7 @@ export const FileSystemListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "FileSystemListRequest",
 }) as any as S.Schema<FileSystemListRequest>;
 
-export type PaginatedFileSystemListResultsList = ReadonlyArray<FileSystem2>;
+export type PaginatedFileSystemListResultsList = Array<FileSystem2>;
 export const PaginatedFileSystemListResultsList = /*@__PURE__*/ S.Array(
   FileSystem2,
 ) as any as S.Schema<PaginatedFileSystemListResultsList>;

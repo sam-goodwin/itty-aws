@@ -1816,7 +1816,7 @@ export const RuleParameterMap = /*@__PURE__*/ S.Record(
   S.String.pipe(S.optional),
 );
 export interface Rule {
-  Type?: RuleType;
+  Type?: RuleType | (string & {});
   Parameters?: { [key: string]: string | undefined };
 }
 export const Rule = /*@__PURE__*/ S.suspend(() =>
@@ -1828,7 +1828,7 @@ export const Rule = /*@__PURE__*/ S.suspend(() =>
 export type RuleMap = { [key: string]: Rule | undefined };
 export const RuleMap = /*@__PURE__*/ S.Record(S.String, Rule.pipe(S.optional));
 export interface FacetAttributeDefinition {
-  Type: FacetAttributeType;
+  Type: FacetAttributeType | (string & {});
   DefaultValue?: TypedAttributeValue;
   IsImmutable?: boolean;
   Rules?: { [key: string]: Rule | undefined };
@@ -1859,7 +1859,7 @@ export interface FacetAttribute {
   Name: string;
   AttributeDefinition?: FacetAttributeDefinition;
   AttributeReference?: FacetAttributeReference;
-  RequiredBehavior?: RequiredAttributeBehavior;
+  RequiredBehavior?: RequiredAttributeBehavior | (string & {});
 }
 export const FacetAttribute = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2014,11 +2014,11 @@ export const CreateSchemaResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateSchemaResponse>;
 export interface TypedLinkAttributeDefinition {
   Name: string;
-  Type: FacetAttributeType;
+  Type: FacetAttributeType | (string & {});
   DefaultValue?: TypedAttributeValue;
   IsImmutable?: boolean;
   Rules?: { [key: string]: Rule | undefined };
-  RequiredBehavior: RequiredAttributeBehavior;
+  RequiredBehavior: RequiredAttributeBehavior | (string & {});
 }
 export const TypedLinkAttributeDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

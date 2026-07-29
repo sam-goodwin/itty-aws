@@ -79,7 +79,7 @@ export const MCPServerTemplate = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MCPServerTemplate>;
 
 export type PaginatedMCPServerTemplateListResultsList =
-  ReadonlyArray<MCPServerTemplate>;
+  Array<MCPServerTemplate>;
 export const PaginatedMCPServerTemplateListResultsList = /*@__PURE__*/ S.Array(
   MCPServerTemplate,
 ) as any as S.Schema<PaginatedMCPServerTemplateListResultsList>;

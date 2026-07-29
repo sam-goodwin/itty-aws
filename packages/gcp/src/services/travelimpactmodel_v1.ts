@@ -102,7 +102,7 @@ export const Flight = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Flight" }) as any as S.Schema<Flight>;
 
-export type FlightList = ReadonlyArray<Flight>;
+export type FlightList = Array<Flight>;
 export const FlightList = /*@__PURE__*/ S.Array(
   Flight,
 ) as any as S.Schema<FlightList>;
@@ -359,8 +359,7 @@ export const EmissionsProvenanceEntry = /*@__PURE__*/ S.suspend(() =>
   identifier: "EmissionsProvenanceEntry",
 }) as any as S.Schema<EmissionsProvenanceEntry>;
 
-export type EmissionsProvenanceEntryList =
-  ReadonlyArray<EmissionsProvenanceEntry>;
+export type EmissionsProvenanceEntryList = Array<EmissionsProvenanceEntry>;
 export const EmissionsProvenanceEntryList = /*@__PURE__*/ S.Array(
   EmissionsProvenanceEntry,
 ) as any as S.Schema<EmissionsProvenanceEntryList>;
@@ -439,7 +438,7 @@ export const FlightWithDetailedEmissions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FlightWithDetailedEmissions>;
 
 export type FlightWithDetailedEmissionsList =
-  ReadonlyArray<FlightWithDetailedEmissions>;
+  Array<FlightWithDetailedEmissions>;
 export const FlightWithDetailedEmissionsList = /*@__PURE__*/ S.Array(
   FlightWithDetailedEmissions,
 ) as any as S.Schema<FlightWithDetailedEmissionsList>;
@@ -554,7 +553,7 @@ export const FlightWithEmissions = /*@__PURE__*/ S.suspend(() =>
   identifier: "FlightWithEmissions",
 }) as any as S.Schema<FlightWithEmissions>;
 
-export type FlightWithEmissionsList = ReadonlyArray<FlightWithEmissions>;
+export type FlightWithEmissionsList = Array<FlightWithEmissions>;
 export const FlightWithEmissionsList = /*@__PURE__*/ S.Array(
   FlightWithEmissions,
 ) as any as S.Schema<FlightWithEmissionsList>;
@@ -590,7 +589,7 @@ export interface Scope3FlightSegment {
   /** Optional. 3-character [IATA airport code](https://www.iata.org/en/publications/directories/code-search/) for flight destination, e.g. `ICN`. This is used to match specific flight if provided alongside origin, carrier, and flight number. If there is no match, we will first try to match the flight to a typical flight between the provided origin and destination airports. Otherwise, we will use the distance-based emissions model if the flight distance is provided. */
   destination?: string;
   /** Required. The cabin class of the flight. */
-  cabinClass?: Scope3FlightSegmentCabinClassEnum;
+  cabinClass?: Scope3FlightSegmentCabinClassEnum | (string & {});
   /** Optional. 3-character [IATA airport code](https://www.iata.org/en/publications/directories/code-search/) for flight origin, e.g. `YVR`. This is used to match specific flight if provided alongside destination, carrier, and flight number. If there is no match, we will first try to match the flight to a typical flight between the provided origin and destination airports. Otherwise, we will use the distance-based emissions model if the flight distance is provided. */
   origin?: string;
   /** Optional. 2-character [IATA carrier code](https://www.iata.org/en/publications/directories/code-search/), e.g. `KE`. This is required if specific flight matching is desired. Otherwise, this is unused for typical flight and distance-based emissions models. This could be both operating and marketing carrier code (i.e. codeshare is covered). */
@@ -614,7 +613,7 @@ export const Scope3FlightSegment = /*@__PURE__*/ S.suspend(() =>
   identifier: "Scope3FlightSegment",
 }) as any as S.Schema<Scope3FlightSegment>;
 
-export type Scope3FlightSegmentList = ReadonlyArray<Scope3FlightSegment>;
+export type Scope3FlightSegmentList = Array<Scope3FlightSegment>;
 export const Scope3FlightSegmentList = /*@__PURE__*/ S.Array(
   Scope3FlightSegment,
 ) as any as S.Schema<Scope3FlightSegmentList>;
@@ -686,7 +685,7 @@ export const Scope3FlightEmissions = /*@__PURE__*/ S.suspend(() =>
   identifier: "Scope3FlightEmissions",
 }) as any as S.Schema<Scope3FlightEmissions>;
 
-export type Scope3FlightEmissionsList = ReadonlyArray<Scope3FlightEmissions>;
+export type Scope3FlightEmissionsList = Array<Scope3FlightEmissions>;
 export const Scope3FlightEmissionsList = /*@__PURE__*/ S.Array(
   Scope3FlightEmissions,
 ) as any as S.Schema<Scope3FlightEmissionsList>;
@@ -722,7 +721,7 @@ export const Market = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Market" }) as any as S.Schema<Market>;
 
-export type MarketList = ReadonlyArray<Market>;
+export type MarketList = Array<Market>;
 export const MarketList = /*@__PURE__*/ S.Array(
   Market,
 ) as any as S.Schema<MarketList>;
@@ -776,7 +775,7 @@ export const TypicalFlightEmissions = /*@__PURE__*/ S.suspend(() =>
   identifier: "TypicalFlightEmissions",
 }) as any as S.Schema<TypicalFlightEmissions>;
 
-export type TypicalFlightEmissionsList = ReadonlyArray<TypicalFlightEmissions>;
+export type TypicalFlightEmissionsList = Array<TypicalFlightEmissions>;
 export const TypicalFlightEmissionsList = /*@__PURE__*/ S.Array(
   TypicalFlightEmissions,
 ) as any as S.Schema<TypicalFlightEmissionsList>;

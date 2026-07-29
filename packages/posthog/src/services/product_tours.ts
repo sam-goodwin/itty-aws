@@ -118,7 +118,7 @@ export type MinimalFeatureFlagBucketingIdentifier =
 export const MinimalFeatureFlagBucketingIdentifier =
   /*@__PURE__*/ S.Unknown as any as S.Schema<MinimalFeatureFlagBucketingIdentifier>;
 
-export type MinimalFeatureFlagEvaluationContextsList = ReadonlyArray<string>;
+export type MinimalFeatureFlagEvaluationContextsList = Array<string>;
 export const MinimalFeatureFlagEvaluationContextsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<MinimalFeatureFlagEvaluationContextsList>;
@@ -446,7 +446,7 @@ export const ProductToursGenerateCreateRequestStepsItemMap =
   ) as any as S.Schema<ProductToursGenerateCreateRequestStepsItemMap>;
 
 export type ProductToursGenerateCreateRequestStepsList =
-  ReadonlyArray<ProductToursGenerateCreateRequestStepsItemMap>;
+  Array<ProductToursGenerateCreateRequestStepsItemMap>;
 export const ProductToursGenerateCreateRequestStepsList = /*@__PURE__*/ S.Array(
   ProductToursGenerateCreateRequestStepsItemMap,
 ) as any as S.Schema<ProductToursGenerateCreateRequestStepsList>;
@@ -493,7 +493,7 @@ export const GenerateStepResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GenerateStepResponse",
 }) as any as S.Schema<GenerateStepResponse>;
 
-export type GenerateResponseStepsList = ReadonlyArray<GenerateStepResponse>;
+export type GenerateResponseStepsList = Array<GenerateStepResponse>;
 export const GenerateResponseStepsList = /*@__PURE__*/ S.Array(
   GenerateStepResponse,
 ) as any as S.Schema<GenerateResponseStepsList>;
@@ -536,7 +536,7 @@ export const ProductToursListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProductToursListRequest",
 }) as any as S.Schema<ProductToursListRequest>;
 
-export type PaginatedProductTourListResultsList = ReadonlyArray<ProductTour>;
+export type PaginatedProductTourListResultsList = Array<ProductTour>;
 export const PaginatedProductTourListResultsList = /*@__PURE__*/ S.Array(
   ProductTour,
 ) as any as S.Schema<PaginatedProductTourListResultsList>;

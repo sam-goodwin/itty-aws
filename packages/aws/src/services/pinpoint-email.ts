@@ -150,7 +150,7 @@ export const TlsPolicy = /*@__PURE__*/ S.String;
 
 export type PoolName = string;
 export interface DeliveryOptions {
-  TlsPolicy?: TlsPolicy;
+  TlsPolicy?: TlsPolicy | (string & {});
   SendingPoolName?: string;
 }
 export const DeliveryOptions = /*@__PURE__*/ S.suspend(() =>
@@ -239,7 +239,7 @@ export type EventType =
   | "RENDERING_FAILURE";
 export const EventType = /*@__PURE__*/ S.String;
 
-export type EventTypes = EventType[];
+export type EventTypes = (EventType | (string & {}))[];
 export const EventTypes = /*@__PURE__*/ S.Array(EventType);
 export type AmazonResourceName = string;
 export interface KinesisFirehoseDestination {
@@ -258,7 +258,7 @@ export const DimensionValueSource = /*@__PURE__*/ S.String;
 export type DefaultDimensionValue = string;
 export interface CloudWatchDimensionConfiguration {
   DimensionName: string;
-  DimensionValueSource: DimensionValueSource;
+  DimensionValueSource: DimensionValueSource | (string & {});
   DefaultDimensionValue: string;
 }
 export const CloudWatchDimensionConfiguration = /*@__PURE__*/ S.suspend(() =>

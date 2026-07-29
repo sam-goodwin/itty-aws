@@ -114,7 +114,7 @@ export interface AffineTransform {
   /** The X coordinate translation element. */
   translateX?: number;
   /** The units for translate elements. */
-  unit?: AffineTransformUnitEnum;
+  unit?: AffineTransformUnitEnum | (string & {});
   /** The X coordinate shearing element. */
   shearX?: number;
   /** The Y coordinate shearing element. */
@@ -161,7 +161,7 @@ export interface Dimension {
   /** The magnitude. */
   magnitude?: number;
   /** The units for magnitude. */
-  unit?: DimensionUnitEnum;
+  unit?: DimensionUnitEnum | (string & {});
 }
 export const Dimension = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -279,7 +279,7 @@ export const RgbColor = /*@__PURE__*/ S.suspend(() =>
 /** A themeable solid color value. */
 export interface OpaqueColor {
   /** An opaque theme color. */
-  themeColor?: OpaqueColorThemeColorEnum;
+  themeColor?: OpaqueColorThemeColorEnum | (string & {});
   /** An opaque RGB color. */
   rgbColor?: RgbColor;
 }
@@ -307,7 +307,7 @@ export const SolidFill = /*@__PURE__*/ S.suspend(() =>
 /** The table cell background fill. */
 export interface TableCellBackgroundFill {
   /** The background fill property state. Updating the fill on a table cell will implicitly update this field to `RENDERED`, unless another value is specified in the same request. To have no fill on a table cell, set this field to `NOT_RENDERED`. In this case, any other fill fields set in the same request will be ignored. */
-  propertyState?: TableCellBackgroundFillPropertyStateEnum;
+  propertyState?: TableCellBackgroundFillPropertyStateEnum | (string & {});
   /** Solid color fill. */
   solidFill?: SolidFill;
 }
@@ -333,7 +333,7 @@ export interface TableCellProperties {
   /** The background fill of the table cell. The default fill matches the fill for newly created table cells in the Slides editor. */
   tableCellBackgroundFill?: TableCellBackgroundFill;
   /** The alignment of the content in the table cell. The default alignment matches the alignment for newly created table cells in the Slides editor. */
-  contentAlignment?: TableCellPropertiesContentAlignmentEnum;
+  contentAlignment?: TableCellPropertiesContentAlignmentEnum | (string & {});
 }
 export const TableCellProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -426,7 +426,7 @@ export const ReplaceImageRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ReplaceImageRequest",
 }) as any as S.Schema<ReplaceImageRequest>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -464,7 +464,7 @@ export const ColorStop = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ColorStop" }) as any as S.Schema<ColorStop>;
 
-export type ColorStopList = ReadonlyArray<ColorStop>;
+export type ColorStopList = Array<ColorStop>;
 export const ColorStopList = /*@__PURE__*/ S.Array(
   ColorStop,
 ) as any as S.Schema<ColorStopList>;
@@ -502,7 +502,7 @@ export interface Recolor {
   /** The recolor effect is represented by a gradient, which is a list of color stops. The colors in the gradient will replace the corresponding colors at the same position in the color palette and apply to the image. This property is read-only. */
   recolorStops?: ColorStopList;
   /** The name of the recolor effect. The name is determined from the `recolor_stops` by matching the gradient against the colors in the page's current color scheme. This property is read-only. */
-  name?: RecolorNameEnum;
+  name?: RecolorNameEnum | (string & {});
 }
 export const Recolor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -535,7 +535,7 @@ export interface Shadow {
   /** The alpha of the shadow's color, from 0.0 to 1.0. */
   alpha?: number;
   /** The type of the shadow. This property is read-only. */
-  type?: ShadowTypeEnum;
+  type?: ShadowTypeEnum | (string & {});
   /** Transform that encodes the translate, scale, and skew of the shadow, relative to the alignment position. */
   transform?: AffineTransform;
   /** The shadow color value. */
@@ -543,11 +543,11 @@ export interface Shadow {
   /** Whether the shadow should rotate with the shape. This property is read-only. */
   rotateWithShape?: boolean;
   /** The alignment point of the shadow, that sets the origin for translate, scale and skew of the shadow. This property is read-only. */
-  alignment?: ShadowAlignmentEnum;
+  alignment?: ShadowAlignmentEnum | (string & {});
   /** The radius of the shadow blur. The larger the radius, the more diffuse the shadow becomes. */
   blurRadius?: Dimension;
   /** The shadow property state. Updating the shadow on a page element will implicitly update this field to `RENDERED`, unless another value is specified in the same request. To have no shadow on a page element, set this field to `NOT_RENDERED`. In this case, any other shadow fields set in the same request will be ignored. */
-  propertyState?: ShadowPropertyStateEnum;
+  propertyState?: ShadowPropertyStateEnum | (string & {});
 }
 export const Shadow = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -614,11 +614,11 @@ export interface Outline {
   /** The fill of the outline. */
   outlineFill?: OutlineFill;
   /** The dash style of the outline. */
-  dashStyle?: OutlineDashStyleEnum;
+  dashStyle?: OutlineDashStyleEnum | (string & {});
   /** The thickness of the outline. */
   weight?: Dimension;
   /** The outline property state. Updating the outline on a page element will implicitly update this field to `RENDERED`, unless another value is specified in the same request. To have no outline on a page element, set this field to `NOT_RENDERED`. In this case, any other outline fields set in the same request will be ignored. */
-  propertyState?: OutlinePropertyStateEnum;
+  propertyState?: OutlinePropertyStateEnum | (string & {});
 }
 export const Outline = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -644,7 +644,7 @@ export interface Link {
   /** If set, indicates this is a link to the external web page at this URL. */
   url?: string;
   /** If set, indicates this is a link to a slide in this presentation, addressed by its position. */
-  relativeLink?: LinkRelativeLinkEnum;
+  relativeLink?: LinkRelativeLinkEnum | (string & {});
   /** If set, indicates this is a link to the specific page in this presentation with this ID. A page with this ID may not exist. */
   pageObjectId?: string;
 }
@@ -910,7 +910,7 @@ export interface TextStyle {
   /** Whether or not the text is rendered as bold. */
   bold?: boolean;
   /** The text's vertical offset from its normal position. Text with `SUPERSCRIPT` or `SUBSCRIPT` baseline offsets is automatically rendered in a smaller font size, computed based on the `font_size` field. The `font_size` itself is not affected by changes in this field. */
-  baselineOffset?: TextStyleBaselineOffsetEnum;
+  baselineOffset?: TextStyleBaselineOffsetEnum | (string & {});
   /** Whether or not the text is italicized. */
   italic?: boolean;
   /** The size of the text's font. When read, the `font_size` will specified in points. */
@@ -997,7 +997,7 @@ export interface PageBackgroundFill {
   /** Solid color fill. */
   solidFill?: SolidFill;
   /** The background fill property state. Updating the fill on a page will implicitly update this field to `RENDERED`, unless another value is specified in the same request. To have no fill on a page, set this field to `NOT_RENDERED`. In this case, any other fill fields set in the same request will be ignored. */
-  propertyState?: PageBackgroundFillPropertyStateEnum;
+  propertyState?: PageBackgroundFillPropertyStateEnum | (string & {});
   /** Stretched picture fill. */
   stretchedPictureFill?: StretchedPictureFill;
 }
@@ -1036,7 +1036,7 @@ export interface ThemeColorPair {
   /** The concrete color corresponding to the theme color type above. */
   color?: RgbColor;
   /** The type of the theme color. */
-  type?: ThemeColorPairTypeEnum;
+  type?: ThemeColorPairTypeEnum | (string & {});
 }
 export const ThemeColorPair = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1045,7 +1045,7 @@ export const ThemeColorPair = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ThemeColorPair" }) as any as S.Schema<ThemeColorPair>;
 
-export type ThemeColorPairList = ReadonlyArray<ThemeColorPair>;
+export type ThemeColorPairList = Array<ThemeColorPair>;
 export const ThemeColorPairList = /*@__PURE__*/ S.Array(
   ThemeColorPair,
 ) as any as S.Schema<ThemeColorPairList>;
@@ -1191,11 +1191,11 @@ export const ParagraphStyleSpacingModeEnum = /*@__PURE__*/ S.String;
 /** Styles that apply to a whole paragraph. If this text is contained in a shape with a parent placeholder, then these paragraph styles may be inherited from the parent. Which paragraph styles are inherited depend on the nesting level of lists: * A paragraph not in a list will inherit its paragraph style from the paragraph at the 0 nesting level of the list inside the parent placeholder. * A paragraph in a list will inherit its paragraph style from the paragraph at its corresponding nesting level of the list inside the parent placeholder. Inherited paragraph styles are represented as unset fields in this message. */
 export interface ParagraphStyle {
   /** The text direction of this paragraph. If unset, the value defaults to LEFT_TO_RIGHT since text direction is not inherited. */
-  direction?: ParagraphStyleDirectionEnum;
+  direction?: ParagraphStyleDirectionEnum | (string & {});
   /** The amount of indentation for the start of the first line of the paragraph. If unset, the value is inherited from the parent. */
   indentFirstLine?: Dimension;
   /** The text alignment for this paragraph. */
-  alignment?: ParagraphStyleAlignmentEnum;
+  alignment?: ParagraphStyleAlignmentEnum | (string & {});
   /** The amount indentation for the paragraph on the side that corresponds to the end of the text, based on the current text direction. If unset, the value is inherited from the parent. */
   indentEnd?: Dimension;
   /** The amount of extra space below the paragraph. If unset, the value is inherited from the parent. */
@@ -1207,7 +1207,7 @@ export interface ParagraphStyle {
   /** The amount of extra space above the paragraph. If unset, the value is inherited from the parent. */
   spaceAbove?: Dimension;
   /** The spacing mode for the paragraph. */
-  spacingMode?: ParagraphStyleSpacingModeEnum;
+  spacingMode?: ParagraphStyleSpacingModeEnum | (string & {});
 }
 export const ParagraphStyle = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1356,7 +1356,7 @@ export interface ShapeBackgroundFill {
   /** Solid color fill. */
   solidFill?: SolidFill;
   /** The background fill property state. Updating the fill on a shape will implicitly update this field to `RENDERED`, unless another value is specified in the same request. To have no fill on a shape, set this field to `NOT_RENDERED`. In this case, any other fill fields set in the same request will be ignored. */
-  propertyState?: ShapeBackgroundFillPropertyStateEnum;
+  propertyState?: ShapeBackgroundFillPropertyStateEnum | (string & {});
 }
 export const ShapeBackgroundFill = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1377,7 +1377,7 @@ export const AutofitAutofitTypeEnum = /*@__PURE__*/ S.String;
 /** The autofit properties of a Shape. This property is only set for shapes that allow text. */
 export interface Autofit {
   /** The autofit type of the shape. If the autofit type is AUTOFIT_TYPE_UNSPECIFIED, the autofit type is inherited from a parent placeholder if it exists. The field is automatically set to NONE if a request is made that might affect text fitting within its bounding text box. In this case, the font_scale is applied to the font_size and the line_spacing_reduction is applied to the line_spacing. Both properties are also reset to default values. */
-  autofitType?: AutofitAutofitTypeEnum;
+  autofitType?: AutofitAutofitTypeEnum | (string & {});
   /** The font scale applied to the shape. For shapes with autofit_type NONE or SHAPE_AUTOFIT, this value is the default value of 1. For TEXT_AUTOFIT, this value multiplied by the font_size gives the font size that's rendered in the editor. This property is read-only. */
   fontScale?: number;
   /** The line spacing reduction applied to the shape. For shapes with autofit_type NONE or SHAPE_AUTOFIT, this value is the default value of 0. For TEXT_AUTOFIT, this value subtracted from the line_spacing gives the line spacing that's rendered in the editor. This property is read-only. */
@@ -1396,7 +1396,7 @@ export interface ShapeProperties {
   /** The hyperlink destination of the shape. If unset, there is no link. Links are not inherited from parent placeholders. */
   link?: Link;
   /** The alignment of the content in the shape. If unspecified, the alignment is inherited from a parent placeholder if it exists. If the shape has no parent, the default alignment matches the alignment for new shapes created in the Slides editor. */
-  contentAlignment?: ShapePropertiesContentAlignmentEnum;
+  contentAlignment?: ShapePropertiesContentAlignmentEnum | (string & {});
   /** The background fill of the shape. If unset, the background fill is inherited from a parent placeholder if it exists. If the shape has no parent, then the default background fill depends on the shape type, matching the defaults for new shapes created in the Slides editor. */
   shapeBackgroundFill?: ShapeBackgroundFill;
   /** The shadow properties of the shape. If unset, the shadow is inherited from a parent placeholder if it exists. If the shape has no parent, then the default shadow matches the defaults for new shapes created in the Slides editor. This property is read-only. */
@@ -1457,7 +1457,7 @@ export const CreateImageRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateImageRequest",
 }) as any as S.Schema<CreateImageRequest>;
 
-export type IntegerList = ReadonlyArray<number>;
+export type IntegerList = Array<number>;
 export const IntegerList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<IntegerList>;
@@ -1617,7 +1617,7 @@ export const LineFill = /*@__PURE__*/ S.suspend(() =>
 /** The properties of the Line. When unset, these fields default to values that match the appearance of new lines created in the Slides editor. */
 export interface LineProperties {
   /** The dash style of the line. */
-  dashStyle?: LinePropertiesDashStyleEnum;
+  dashStyle?: LinePropertiesDashStyleEnum | (string & {});
   /** The connection at the end of the line. If unset, there is no connection. Only lines with a Type indicating it is a "connector" can have an `end_connection`. */
   endConnection?: LineConnection;
   /** The hyperlink destination of the line. If unset, there is no link. */
@@ -1625,11 +1625,11 @@ export interface LineProperties {
   /** The connection at the beginning of the line. If unset, there is no connection. Only lines with a Type indicating it is a "connector" can have a `start_connection`. */
   startConnection?: LineConnection;
   /** The style of the arrow at the beginning of the line. */
-  startArrow?: LinePropertiesStartArrowEnum;
+  startArrow?: LinePropertiesStartArrowEnum | (string & {});
   /** The thickness of the line. */
   weight?: Dimension;
   /** The style of the arrow at the end of the line. */
-  endArrow?: LinePropertiesEndArrowEnum;
+  endArrow?: LinePropertiesEndArrowEnum | (string & {});
   /** The fill of the line. The default line fill matches the defaults for new lines created in the Slides editor. */
   lineFill?: LineFill;
 }
@@ -1704,7 +1704,7 @@ export const TableBorderFill = /*@__PURE__*/ S.suspend(() =>
 /** The border styling properties of the TableBorderCell. */
 export interface TableBorderProperties {
   /** The dash style of the border. */
-  dashStyle?: TableBorderPropertiesDashStyleEnum;
+  dashStyle?: TableBorderPropertiesDashStyleEnum | (string & {});
   /** The thickness of the border. */
   weight?: Dimension;
   /** The fill of the table border. */
@@ -1810,7 +1810,7 @@ export interface Video {
   /** An URL to a video. The URL is valid as long as the source video exists and sharing settings do not change. */
   url?: string;
   /** The video source. */
-  source?: VideoSourceEnum;
+  source?: VideoSourceEnum | (string & {});
   /** The video source's unique identifier for this video. */
   id?: string;
   /** The properties of the video. */
@@ -1849,9 +1849,9 @@ export const LineLineCategoryEnum = /*@__PURE__*/ S.String;
 /** A PageElement kind representing a non-connector line, straight connector, curved connector, or bent connector. */
 export interface Line {
   /** The type of the line. */
-  lineType?: LineLineTypeEnum;
+  lineType?: LineLineTypeEnum | (string & {});
   /** The category of the line. It matches the `category` specified in CreateLineRequest, and can be updated with UpdateLineCategoryRequest. */
-  lineCategory?: LineLineCategoryEnum;
+  lineCategory?: LineLineCategoryEnum | (string & {});
   /** The properties of the line. */
   lineProperties?: LineProperties;
 }
@@ -1890,7 +1890,7 @@ export interface Placeholder {
   /** The object ID of this shape's parent placeholder. If unset, the parent placeholder shape does not exist, so the shape does not inherit properties from any other shape. */
   parentObjectId?: string;
   /** The type of the placeholder. */
-  type?: PlaceholderTypeEnum;
+  type?: PlaceholderTypeEnum | (string & {});
 }
 export const Placeholder = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1926,7 +1926,7 @@ export const AutoTextTypeEnum = /*@__PURE__*/ S.String;
 /** A TextElement kind that represents auto text. */
 export interface AutoText {
   /** The type of this auto text. */
-  type?: AutoTextTypeEnum;
+  type?: AutoTextTypeEnum | (string & {});
   /** The rendered content of this auto text, if available. */
   content?: string;
   /** The styling applied to this auto text. */
@@ -2013,7 +2013,7 @@ export const TextElement = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TextElement" }) as any as S.Schema<TextElement>;
 
-export type TextElementList = ReadonlyArray<TextElement>;
+export type TextElementList = Array<TextElement>;
 export const TextElementList = /*@__PURE__*/ S.Array(
   TextElement,
 ) as any as S.Schema<TextElementList>;
@@ -2224,7 +2224,7 @@ export interface Shape {
   /** The text content of the shape. */
   text?: TextContent;
   /** The type of the shape. */
-  shapeType?: ShapeShapeTypeEnum;
+  shapeType?: ShapeShapeTypeEnum | (string & {});
 }
 export const Shape = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2332,7 +2332,7 @@ export const TableColumnProperties = /*@__PURE__*/ S.suspend(() =>
   identifier: "TableColumnProperties",
 }) as any as S.Schema<TableColumnProperties>;
 
-export type TableColumnPropertiesList = ReadonlyArray<TableColumnProperties>;
+export type TableColumnPropertiesList = Array<TableColumnProperties>;
 export const TableColumnPropertiesList = /*@__PURE__*/ S.Array(
   TableColumnProperties,
 ) as any as S.Schema<TableColumnPropertiesList>;
@@ -2353,7 +2353,7 @@ export const TableBorderCell = /*@__PURE__*/ S.suspend(() =>
   identifier: "TableBorderCell",
 }) as any as S.Schema<TableBorderCell>;
 
-export type TableBorderCellList = ReadonlyArray<TableBorderCell>;
+export type TableBorderCellList = Array<TableBorderCell>;
 export const TableBorderCellList = /*@__PURE__*/ S.Array(
   TableBorderCell,
 ) as any as S.Schema<TableBorderCellList>;
@@ -2369,7 +2369,7 @@ export const TableBorderRow = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TableBorderRow" }) as any as S.Schema<TableBorderRow>;
 
-export type TableBorderRowList = ReadonlyArray<TableBorderRow>;
+export type TableBorderRowList = Array<TableBorderRow>;
 export const TableBorderRowList = /*@__PURE__*/ S.Array(
   TableBorderRow,
 ) as any as S.Schema<TableBorderRowList>;
@@ -2397,7 +2397,7 @@ export const TableCell = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TableCell" }) as any as S.Schema<TableCell>;
 
-export type TableCellList = ReadonlyArray<TableCell>;
+export type TableCellList = Array<TableCell>;
 export const TableCellList = /*@__PURE__*/ S.Array(
   TableCell,
 ) as any as S.Schema<TableCellList>;
@@ -2419,7 +2419,7 @@ export const TableRow = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TableRow" }) as any as S.Schema<TableRow>;
 
-export type TableRowList = ReadonlyArray<TableRow>;
+export type TableRowList = Array<TableRow>;
 export const TableRowList = /*@__PURE__*/ S.Array(
   TableRow,
 ) as any as S.Schema<TableRowList>;
@@ -2500,7 +2500,7 @@ export const PageElement = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PageElement" }) as any as S.Schema<PageElement>;
 
-export type PageElementList = ReadonlyArray<PageElement>;
+export type PageElementList = Array<PageElement>;
 export const PageElementList = /*@__PURE__*/ S.Array(
   PageElement,
 ) as any as S.Schema<PageElementList>;
@@ -2510,7 +2510,7 @@ export interface Page {
   /** The properties of the page. */
   pageProperties?: PageProperties;
   /** The type of the page. */
-  pageType?: PagePageTypeEnum;
+  pageType?: PagePageTypeEnum | (string & {});
   /** Layout specific properties. Only set if page_type = LAYOUT. */
   layoutProperties?: LayoutProperties;
   /** The object ID for this page. Object IDs used by Page and PageElement share the same namespace. */
@@ -2764,8 +2764,7 @@ export const LayoutPlaceholderIdMapping = /*@__PURE__*/ S.suspend(() =>
   identifier: "LayoutPlaceholderIdMapping",
 }) as any as S.Schema<LayoutPlaceholderIdMapping>;
 
-export type LayoutPlaceholderIdMappingList =
-  ReadonlyArray<LayoutPlaceholderIdMapping>;
+export type LayoutPlaceholderIdMappingList = Array<LayoutPlaceholderIdMapping>;
 export const LayoutPlaceholderIdMappingList = /*@__PURE__*/ S.Array(
   LayoutPlaceholderIdMapping,
 ) as any as S.Schema<LayoutPlaceholderIdMappingList>;
@@ -3228,7 +3227,7 @@ export const Request = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Request" }) as any as S.Schema<Request>;
 
-export type RequestList = ReadonlyArray<Request>;
+export type RequestList = Array<Request>;
 export const RequestList = /*@__PURE__*/ S.Array(
   Request,
 ) as any as S.Schema<RequestList>;
@@ -3473,7 +3472,7 @@ export const Response = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Response" }) as any as S.Schema<Response>;
 
-export type ResponseList = ReadonlyArray<Response>;
+export type ResponseList = Array<Response>;
 export const ResponseList = /*@__PURE__*/ S.Array(
   Response,
 ) as any as S.Schema<ResponseList>;
@@ -3497,7 +3496,7 @@ export const BatchUpdatePresentationResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "BatchUpdatePresentationResponse",
 }) as any as S.Schema<BatchUpdatePresentationResponse>;
 
-export type PageList = ReadonlyArray<Page>;
+export type PageList = Array<Page>;
 export const PageList = /*@__PURE__*/ S.Array(
   Page,
 ) as any as S.Schema<PageList>;

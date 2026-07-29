@@ -28,7 +28,7 @@ export const SkuName = /*@__PURE__*/ S.String;
 
 /** The Sku description for a namespace */
 export interface Sku {
-  name: SkuName;
+  name: SkuName | (string & {});
   /** Gets or sets the tier of particular sku */
   tier?: string;
   /** Gets or sets the Sku size */
@@ -214,7 +214,7 @@ export type AccessRights = "Manage" | "Send" | "Listen";
 export const AccessRights = /*@__PURE__*/ S.String;
 
 /** List of access rights. */
-export type IpRuleRightsList = ReadonlyArray<AccessRights>;
+export type IpRuleRightsList = Array<AccessRights | (string & {})>;
 export const IpRuleRightsList = /*@__PURE__*/ S.Array(
   AccessRights,
 ) as any as S.Schema<IpRuleRightsList>;
@@ -234,14 +234,15 @@ export const IpRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IpRule" }) as any as S.Schema<IpRule>;
 
 /** List of IP rules. */
-export type NetworkAclsIpRulesList = ReadonlyArray<IpRule>;
+export type NetworkAclsIpRulesList = Array<IpRule>;
 export const NetworkAclsIpRulesList = /*@__PURE__*/ S.Array(
   IpRule,
 ) as any as S.Schema<NetworkAclsIpRulesList>;
 
 /** List of access rights. */
-export type PublicInternetAuthorizationRuleRightsList =
-  ReadonlyArray<AccessRights>;
+export type PublicInternetAuthorizationRuleRightsList = Array<
+  AccessRights | (string & {})
+>;
 export const PublicInternetAuthorizationRuleRightsList = /*@__PURE__*/ S.Array(
   AccessRights,
 ) as any as S.Schema<PublicInternetAuthorizationRuleRightsList>;
@@ -656,8 +657,7 @@ export const RemotePrivateEndpointConnection = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RemotePrivateEndpointConnection>;
 
 /** List of group ids. For Notification Hubs, it always contains a single "namespace" element. */
-export type PrivateEndpointConnectionPropertiesGroupIdsList =
-  ReadonlyArray<string>;
+export type PrivateEndpointConnectionPropertiesGroupIdsList = Array<string>;
 export const PrivateEndpointConnectionPropertiesGroupIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -737,7 +737,7 @@ export const PrivateEndpointConnectionResource = /*@__PURE__*/ S.suspend(() =>
 
 /** Private Endpoint Connections for namespace */
 export type NamespacePropertiesPrivateEndpointConnectionsList =
-  ReadonlyArray<PrivateEndpointConnectionResource>;
+  Array<PrivateEndpointConnectionResource>;
 export const NamespacePropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnectionResource,
@@ -839,8 +839,9 @@ export const NamespacesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NamespacesCreateOrUpdateResponse>;
 
 /** Gets or sets the rights associated with the rule. */
-export type SharedAccessAuthorizationRulePropertiesInputRightsList =
-  ReadonlyArray<AccessRights | (string & {})>;
+export type SharedAccessAuthorizationRulePropertiesInputRightsList = Array<
+  AccessRights | (string & {})
+>;
 export const SharedAccessAuthorizationRulePropertiesInputRightsList =
   /*@__PURE__*/ S.Array(
     AccessRights,
@@ -915,7 +916,7 @@ export const NamespacesCreateOrUpdateAuthorizationRuleRequest =
 
 /** Gets or sets the rights associated with the rule. */
 export type SharedAccessAuthorizationRulePropertiesRightsList =
-  ReadonlyArray<AccessRights>;
+  Array<AccessRights>;
 export const SharedAccessAuthorizationRulePropertiesRightsList =
   /*@__PURE__*/ S.Array(
     AccessRights,
@@ -1334,7 +1335,7 @@ export const NamespaceResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NamespaceResource>;
 
 /** Gets or sets result of the List AuthorizationRules operation. */
-export type NamespaceListResultValueList = ReadonlyArray<NamespaceResource>;
+export type NamespaceListResultValueList = Array<NamespaceResource>;
 export const NamespaceListResultValueList = /*@__PURE__*/ S.Array(
   NamespaceResource,
 ) as any as S.Schema<NamespaceListResultValueList>;
@@ -1449,7 +1450,7 @@ export const SharedAccessAuthorizationRuleResource = /*@__PURE__*/ S.suspend(
 
 /** Gets or sets result of the List AuthorizationRules operation. */
 export type SharedAccessAuthorizationRuleListResultValueList =
-  ReadonlyArray<SharedAccessAuthorizationRuleResource>;
+  Array<SharedAccessAuthorizationRuleResource>;
 export const SharedAccessAuthorizationRuleListResultValueList =
   /*@__PURE__*/ S.Array(
     SharedAccessAuthorizationRuleResource,
@@ -1828,7 +1829,7 @@ export const NotificationHubsCreateOrUpdateResponseTagsMap =
 
 /** Gets or sets the AuthorizationRules of the created NotificationHub */
 export type NotificationHubPropertiesAuthorizationRulesList =
-  ReadonlyArray<SharedAccessAuthorizationRuleProperties>;
+  Array<SharedAccessAuthorizationRuleProperties>;
 export const NotificationHubPropertiesAuthorizationRulesList =
   /*@__PURE__*/ S.Array(
     SharedAccessAuthorizationRuleProperties,
@@ -2050,7 +2051,7 @@ export const RegistrationResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RegistrationResult>;
 
 /** Gets or sets actual failure description */
-export type DebugSendResultResultsList = ReadonlyArray<RegistrationResult>;
+export type DebugSendResultResultsList = Array<RegistrationResult>;
 export const DebugSendResultResultsList = /*@__PURE__*/ S.Array(
   RegistrationResult,
 ) as any as S.Schema<DebugSendResultResultsList>;
@@ -2467,8 +2468,7 @@ export const NotificationHubResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NotificationHubResource>;
 
 /** Gets or sets result of the List AuthorizationRules operation. */
-export type NotificationHubListResultValueList =
-  ReadonlyArray<NotificationHubResource>;
+export type NotificationHubListResultValueList = Array<NotificationHubResource>;
 export const NotificationHubListResultValueList = /*@__PURE__*/ S.Array(
   NotificationHubResource,
 ) as any as S.Schema<NotificationHubListResultValueList>;
@@ -2721,8 +2721,7 @@ export const LogSpecification = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LogSpecification>;
 
 /** Log specifications. */
-export type ServiceSpecificationLogSpecificationsList =
-  ReadonlyArray<LogSpecification>;
+export type ServiceSpecificationLogSpecificationsList = Array<LogSpecification>;
 export const ServiceSpecificationLogSpecificationsList = /*@__PURE__*/ S.Array(
   LogSpecification,
 ) as any as S.Schema<ServiceSpecificationLogSpecificationsList>;
@@ -2742,7 +2741,7 @@ export const Availability = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Availability" }) as any as S.Schema<Availability>;
 
 /** List of availabilities. */
-export type MetricSpecificationAvailabilitiesList = ReadonlyArray<Availability>;
+export type MetricSpecificationAvailabilitiesList = Array<Availability>;
 export const MetricSpecificationAvailabilitiesList = /*@__PURE__*/ S.Array(
   Availability,
 ) as any as S.Schema<MetricSpecificationAvailabilitiesList>;
@@ -2783,7 +2782,7 @@ export const MetricSpecification = /*@__PURE__*/ S.suspend(() =>
 
 /** Metric specification. */
 export type ServiceSpecificationMetricSpecificationsList =
-  ReadonlyArray<MetricSpecification>;
+  Array<MetricSpecification>;
 export const ServiceSpecificationMetricSpecificationsList =
   /*@__PURE__*/ S.Array(
     MetricSpecification,
@@ -2838,7 +2837,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** Gets list of NotificationHubs operations supported by the Microsoft.NotificationHubs resource provider. */
-export type OperationListResultValueList = ReadonlyArray<Operation>;
+export type OperationListResultValueList = Array<Operation>;
 export const OperationListResultValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationListResultValueList>;
@@ -2978,16 +2977,14 @@ export const PrivateEndpointConnectionsGetGroupIdRequest =
   }) as any as S.Schema<PrivateEndpointConnectionsGetGroupIdRequest>;
 
 /** Required members. For Notification Hubs, it's always a collection with a single "namespace" item. */
-export type PrivateLinkResourcePropertiesRequiredMembersList =
-  ReadonlyArray<string>;
+export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
 export const PrivateLinkResourcePropertiesRequiredMembersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
 
 /** Required DNS zone names. For Notification Hubs, it contains two CNames for Service Bus and Notification Hubs zones. */
-export type PrivateLinkResourcePropertiesRequiredZoneNamesList =
-  ReadonlyArray<string>;
+export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
 export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3068,7 +3065,7 @@ export const PrivateEndpointConnectionsListRequest = /*@__PURE__*/ S.suspend(
 
 /** Gets or sets result of the List AuthorizationRules operation. */
 export type PrivateEndpointConnectionResourceListResultValueList =
-  ReadonlyArray<PrivateEndpointConnectionResource>;
+  Array<PrivateEndpointConnectionResource>;
 export const PrivateEndpointConnectionResourceListResultValueList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnectionResource,
@@ -3142,8 +3139,7 @@ export const PrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateLinkResource>;
 
 /** Gets or sets result of the List AuthorizationRules operation. */
-export type PrivateLinkResourceListResultValueList =
-  ReadonlyArray<PrivateLinkResource>;
+export type PrivateLinkResourceListResultValueList = Array<PrivateLinkResource>;
 export const PrivateLinkResourceListResultValueList = /*@__PURE__*/ S.Array(
   PrivateLinkResource,
 ) as any as S.Schema<PrivateLinkResourceListResultValueList>;

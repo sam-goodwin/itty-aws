@@ -298,7 +298,7 @@ export type TemplateParameterDataType = "NUMBER" | "STRING";
 export const TemplateParameterDataType = /*@__PURE__*/ S.String;
 
 export interface TemplateParameterConfiguration {
-  type?: TemplateParameterDataType;
+  type?: TemplateParameterDataType | (string & {});
   defaultValue?: string;
 }
 export const TemplateParameterConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -400,7 +400,7 @@ export type AllowAWSToRetainLogs = "ENABLED" | "DISABLED";
 export const AllowAWSToRetainLogs = /*@__PURE__*/ S.String;
 
 export interface ManagedLogs {
-  allowAWSToRetainLogs?: AllowAWSToRetainLogs;
+  allowAWSToRetainLogs?: AllowAWSToRetainLogs | (string & {});
   encryptionKeyArn?: string;
 }
 export const ManagedLogs = /*@__PURE__*/ S.suspend(() =>
@@ -446,7 +446,7 @@ export const ContainerLogRotationConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ContainerLogRotationConfiguration>;
 export interface MonitoringConfiguration {
   managedLogs?: ManagedLogs;
-  persistentAppUI?: PersistentAppUI;
+  persistentAppUI?: PersistentAppUI | (string & {});
   cloudWatchMonitoringConfiguration?: CloudWatchMonitoringConfiguration;
   s3MonitoringConfiguration?: S3MonitoringConfiguration;
   containerLogRotationConfiguration?: ContainerLogRotationConfiguration;
@@ -553,7 +553,7 @@ export const ContainerInfo = /*@__PURE__*/ S.Union([
   S.Struct({ eksInfo: EksInfo }),
 ]);
 export interface ContainerProvider {
-  type: ContainerProviderType;
+  type: ContainerProviderType | (string & {});
   id: string;
   info?: ContainerInfo;
 }
@@ -598,7 +598,7 @@ export const CertificateProviderType = /*@__PURE__*/ S.String;
 
 export type SecretsManagerArn = string;
 export interface TLSCertificateConfiguration {
-  certificateProviderType?: CertificateProviderType;
+  certificateProviderType?: CertificateProviderType | (string & {});
   publicCertificateSecretArn?: string;
   privateCertificateSecretArn?: string;
 }

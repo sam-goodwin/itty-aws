@@ -83,12 +83,12 @@ export const ResourceInfo = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ResourceInfo" }) as any as S.Schema<ResourceInfo>;
 
-export type ResourceInfoList = ReadonlyArray<ResourceInfo>;
+export type ResourceInfoList = Array<ResourceInfo>;
 export const ResourceInfoList = /*@__PURE__*/ S.Array(
   ResourceInfo,
 ) as any as S.Schema<ResourceInfoList>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -302,7 +302,7 @@ export const Resource = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Resource" }) as any as S.Schema<Resource>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -416,7 +416,7 @@ export const CheckResponse = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CheckResponse" }) as any as S.Schema<CheckResponse>;
 
-export type AttributeContextList = ReadonlyArray<AttributeContext>;
+export type AttributeContextList = Array<AttributeContext>;
 export const AttributeContextList = /*@__PURE__*/ S.Array(
   AttributeContext,
 ) as any as S.Schema<AttributeContextList>;

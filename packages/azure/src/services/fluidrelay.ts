@@ -285,8 +285,7 @@ export const FluidRelayContainer = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FluidRelayContainer>;
 
 /** A sequence of FluidRelay containers. */
-export type FluidRelayContainerListValueList =
-  ReadonlyArray<FluidRelayContainer>;
+export type FluidRelayContainerListValueList = Array<FluidRelayContainer>;
 export const FluidRelayContainerListValueList = /*@__PURE__*/ S.Array(
   FluidRelayContainer,
 ) as any as S.Schema<FluidRelayContainerListValueList>;
@@ -363,7 +362,7 @@ export const OperationResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationResult>;
 
 /** List of FluidRelay operations supported by the Microsoft.FluidRelay provider. */
-export type OperationListResultValueList = ReadonlyArray<OperationResult>;
+export type OperationListResultValueList = Array<OperationResult>;
 export const OperationListResultValueList = /*@__PURE__*/ S.Array(
   OperationResult,
 ) as any as S.Schema<OperationListResultValueList>;
@@ -411,7 +410,9 @@ export const CustomerManagedKeyEncryptionPropertiesKeyEncryptionKeyIdentityIdent
 /** All identity configuration for Customer-managed key settings defining which identity should be used to auth to Key Vault. */
 export interface CustomerManagedKeyEncryptionPropertiesKeyEncryptionKeyIdentity {
   /** Values can be SystemAssigned or UserAssigned */
-  identityType?: CustomerManagedKeyEncryptionPropertiesKeyEncryptionKeyIdentityIdentityType;
+  identityType?:
+    | CustomerManagedKeyEncryptionPropertiesKeyEncryptionKeyIdentityIdentityType
+    | (string & {});
   /** user assigned identity to use for accessing key encryption key Url. Ex: /subscriptions/fa5fc227-a624-475e-b696-cdd604c735bc/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId. Mutually exclusive with identityType systemAssignedIdentity. */
   userAssignedIdentityResourceId?: string;
 }
@@ -576,19 +577,19 @@ export const FluidRelayServersCreateOrUpdateResponseTagsMap =
   ) as any as S.Schema<FluidRelayServersCreateOrUpdateResponseTagsMap>;
 
 /** The Fluid Relay Orderer endpoints. */
-export type FluidRelayEndpointsOrdererEndpointsList = ReadonlyArray<string>;
+export type FluidRelayEndpointsOrdererEndpointsList = Array<string>;
 export const FluidRelayEndpointsOrdererEndpointsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<FluidRelayEndpointsOrdererEndpointsList>;
 
 /** The Fluid Relay storage endpoints. */
-export type FluidRelayEndpointsStorageEndpointsList = ReadonlyArray<string>;
+export type FluidRelayEndpointsStorageEndpointsList = Array<string>;
 export const FluidRelayEndpointsStorageEndpointsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<FluidRelayEndpointsStorageEndpointsList>;
 
 /** The Fluid Relay service endpoints. */
-export type FluidRelayEndpointsServiceEndpointsList = ReadonlyArray<string>;
+export type FluidRelayEndpointsServiceEndpointsList = Array<string>;
 export const FluidRelayEndpointsServiceEndpointsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<FluidRelayEndpointsServiceEndpointsList>;
@@ -1045,7 +1046,7 @@ export const FluidRelayServer = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FluidRelayServer>;
 
 /** A sequence of FluidRelay servers. */
-export type FluidRelayServerListValueList = ReadonlyArray<FluidRelayServer>;
+export type FluidRelayServerListValueList = Array<FluidRelayServer>;
 export const FluidRelayServerListValueList = /*@__PURE__*/ S.Array(
   FluidRelayServer,
 ) as any as S.Schema<FluidRelayServerListValueList>;

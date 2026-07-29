@@ -356,7 +356,10 @@ export type MalaysiaServiceTaxCode =
   | "Training Or Coaching";
 export const MalaysiaServiceTaxCode = /*@__PURE__*/ S.String;
 
-export type MalaysiaServiceTaxCodesList = MalaysiaServiceTaxCode[];
+export type MalaysiaServiceTaxCodesList = (
+  | MalaysiaServiceTaxCode
+  | (string & {})
+)[];
 export const MalaysiaServiceTaxCodesList = /*@__PURE__*/ S.Array(
   MalaysiaServiceTaxCode,
 );
@@ -383,8 +386,8 @@ export type IsraelCustomerType = "Business" | "Individual";
 export const IsraelCustomerType = /*@__PURE__*/ S.String;
 
 export interface IsraelAdditionalInfo {
-  dealerType: IsraelDealerType;
-  customerType: IsraelCustomerType;
+  dealerType: IsraelDealerType | (string & {});
+  customerType: IsraelCustomerType | (string & {});
 }
 export const IsraelAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ dealerType: IsraelDealerType, customerType: IsraelCustomerType }),
@@ -423,7 +426,7 @@ export type RegistrationType = "Intra-EU" | "Local";
 export const RegistrationType = /*@__PURE__*/ S.String;
 
 export interface SpainAdditionalInfo {
-  registrationType: RegistrationType;
+  registrationType: RegistrationType | (string & {});
 }
 export const SpainAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ registrationType: RegistrationType }),
@@ -434,7 +437,7 @@ export type PersonType = "Legal Person" | "Physical Person" | "Business";
 export const PersonType = /*@__PURE__*/ S.String;
 
 export interface KenyaAdditionalInfo {
-  personType: PersonType;
+  personType: PersonType | (string & {});
 }
 export const KenyaAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ personType: PersonType }),
@@ -474,7 +477,7 @@ export interface TurkeyAdditionalInfo {
   taxOffice?: string;
   kepEmailId?: string;
   secondaryTaxId?: string;
-  industries?: Industries;
+  industries?: Industries | (string & {});
 }
 export const TurkeyAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -487,7 +490,7 @@ export const TurkeyAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
   identifier: "TurkeyAdditionalInfo",
 }) as any as S.Schema<TurkeyAdditionalInfo>;
 export interface GeorgiaAdditionalInfo {
-  personType: PersonType;
+  personType: PersonType | (string & {});
 }
 export const GeorgiaAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ personType: PersonType }),
@@ -506,7 +509,7 @@ export interface ItalyAdditionalInfo {
   cigNumber?: string;
   cupNumber?: string;
   taxCode?: string;
-  customerType?: CustomerType;
+  customerType?: CustomerType | (string & {});
 }
 export const ItalyAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -525,7 +528,7 @@ export type TaxRegistrationNumberType =
 export const TaxRegistrationNumberType = /*@__PURE__*/ S.String;
 
 export interface RomaniaAdditionalInfo {
-  taxRegistrationNumberType: TaxRegistrationNumberType;
+  taxRegistrationNumberType: TaxRegistrationNumberType | (string & {});
 }
 export const RomaniaAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ taxRegistrationNumberType: TaxRegistrationNumberType }),
@@ -536,7 +539,7 @@ export type UkraineTrnType = "Business" | "Individual";
 export const UkraineTrnType = /*@__PURE__*/ S.String;
 
 export interface UkraineAdditionalInfo {
-  ukraineTrnType: UkraineTrnType;
+  ukraineTrnType: UkraineTrnType | (string & {});
 }
 export const UkraineAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ukraineTrnType: UkraineTrnType }),
@@ -553,7 +556,7 @@ export const PolandTaxRegistrationNumberType = /*@__PURE__*/ S.String;
 export interface PolandAdditionalInfo {
   individualRegistrationNumber?: string;
   isGroupVatEnabled?: boolean;
-  taxRegistrationNumberType?: PolandTaxRegistrationNumberType;
+  taxRegistrationNumberType?: PolandTaxRegistrationNumberType | (string & {});
 }
 export const PolandAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -571,7 +574,9 @@ export type SaudiArabiaTaxRegistrationNumberType =
 export const SaudiArabiaTaxRegistrationNumberType = /*@__PURE__*/ S.String;
 
 export interface SaudiArabiaAdditionalInfo {
-  taxRegistrationNumberType?: SaudiArabiaTaxRegistrationNumberType;
+  taxRegistrationNumberType?:
+    | SaudiArabiaTaxRegistrationNumberType
+    | (string & {});
 }
 export const SaudiArabiaAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -590,7 +595,9 @@ export const IndonesiaTaxRegistrationNumberType = /*@__PURE__*/ S.String;
 export type PpnExceptionDesignationCode = string;
 export type DecisionNumber = string;
 export interface IndonesiaAdditionalInfo {
-  taxRegistrationNumberType?: IndonesiaTaxRegistrationNumberType;
+  taxRegistrationNumberType?:
+    | IndonesiaTaxRegistrationNumberType
+    | (string & {});
   ppnExceptionDesignationCode?: string;
   decisionNumber?: string;
 }
@@ -650,7 +657,9 @@ export const UzbekistanTaxRegistrationNumberType = /*@__PURE__*/ S.String;
 
 export type VatRegistrationNumber = string;
 export interface UzbekistanAdditionalInfo {
-  taxRegistrationNumberType?: UzbekistanTaxRegistrationNumberType;
+  taxRegistrationNumberType?:
+    | UzbekistanTaxRegistrationNumberType
+    | (string & {});
   vatRegistrationNumber?: string;
 }
 export const UzbekistanAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
@@ -686,7 +695,7 @@ export type ChileDocumentType = "Invoice" | "Receipt";
 export const ChileDocumentType = /*@__PURE__*/ S.String;
 
 export interface ChileAdditionalInfo {
-  documentType?: ChileDocumentType;
+  documentType?: ChileDocumentType | (string & {});
   businessActivity?: string;
 }
 export const ChileAdditionalInfo = /*@__PURE__*/ S.suspend(() =>

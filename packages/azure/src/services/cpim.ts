@@ -96,9 +96,9 @@ export const B2CResourceSKUTier = /*@__PURE__*/ S.String;
 /** SKU properties of the Azure AD B2C tenant. Learn more about Azure AD B2C billing at [aka.ms/b2cBilling](https://aka.ms/b2cBilling). */
 export interface B2CResourceSKU {
   /** The name of the SKU for the tenant. */
-  name?: B2CResourceSKUName;
+  name?: B2CResourceSKUName | (string & {});
   /** The tier of the tenant. */
-  tier?: B2CResourceSKUTier;
+  tier?: B2CResourceSKUTier | (string & {});
 }
 export const B2CResourceSKU = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -365,7 +365,7 @@ export const B2CTenantsListByResourceGroupRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<B2CTenantsListByResourceGroupRequest>;
 
 /** List of Azure AD B2C tenant resources */
-export type B2CTenantResourceListValueList = ReadonlyArray<B2CTenantResource>;
+export type B2CTenantResourceListValueList = Array<B2CTenantResource>;
 export const B2CTenantResourceListValueList = /*@__PURE__*/ S.Array(
   B2CTenantResource,
 ) as any as S.Schema<B2CTenantResourceListValueList>;
@@ -708,8 +708,7 @@ export const GuestUsagesListByResourceGroupRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GuestUsagesListByResourceGroupRequest>;
 
 /** List of guest usages resources */
-export type GuestUsagesResourceListValueList =
-  ReadonlyArray<GuestUsagesResource>;
+export type GuestUsagesResourceListValueList = Array<GuestUsagesResource>;
 export const GuestUsagesResourceListValueList = /*@__PURE__*/ S.Array(
   GuestUsagesResource,
 ) as any as S.Schema<GuestUsagesResourceListValueList>;
@@ -843,7 +842,7 @@ export const OperationDetail = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDetail>;
 
 /** Collection of available operation details */
-export type AvailableOperationsValueList = ReadonlyArray<OperationDetail>;
+export type AvailableOperationsValueList = Array<OperationDetail>;
 export const AvailableOperationsValueList = /*@__PURE__*/ S.Array(
   OperationDetail,
 ) as any as S.Schema<AvailableOperationsValueList>;

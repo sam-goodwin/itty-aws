@@ -159,7 +159,7 @@ export const AdaptMessageResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "AdaptMessageResponse",
 }) as any as S.Schema<AdaptMessageResponse>;
 
-export type DocumentList = ReadonlyArray<unknown>;
+export type DocumentList = Array<unknown>;
 export const DocumentList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<DocumentList>;
@@ -175,7 +175,7 @@ export const Key = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Key" }) as any as S.Schema<Key>;
 
-export type KeyList = ReadonlyArray<Key>;
+export type KeyList = Array<Key>;
 export const KeyList = /*@__PURE__*/ S.Array(Key) as any as S.Schema<KeyList>;
 
 /** The split points of a table or an index. */
@@ -198,7 +198,7 @@ export const SplitPoints = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SplitPoints" }) as any as S.Schema<SplitPoints>;
 
-export type SplitPointsList = ReadonlyArray<SplitPoints>;
+export type SplitPointsList = Array<SplitPoints>;
 export const SplitPointsList = /*@__PURE__*/ S.Array(
   SplitPoints,
 ) as any as S.Schema<SplitPointsList>;
@@ -313,7 +313,7 @@ export const BatchCreateProjectsInstancesDatabasesSessionsRequest =
     identifier: "BatchCreateProjectsInstancesDatabasesSessionsRequest",
   }) as any as S.Schema<BatchCreateProjectsInstancesDatabasesSessionsRequest>;
 
-export type SessionList = ReadonlyArray<Session>;
+export type SessionList = Array<Session>;
 export const SessionList = /*@__PURE__*/ S.Array(
   Session,
 ) as any as S.Schema<SessionList>;
@@ -375,12 +375,12 @@ export const RequestOptions = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "RequestOptions" }) as any as S.Schema<RequestOptions>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
 
-export type DocumentListList = ReadonlyArray<DocumentList>;
+export type DocumentListList = Array<DocumentList>;
 export const DocumentListList = /*@__PURE__*/ S.Array(
   DocumentList,
 ) as any as S.Schema<DocumentListList>;
@@ -422,7 +422,7 @@ export const KeyRange = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "KeyRange" }) as any as S.Schema<KeyRange>;
 
-export type KeyRangeList = ReadonlyArray<KeyRange>;
+export type KeyRangeList = Array<KeyRange>;
 export const KeyRangeList = /*@__PURE__*/ S.Array(
   KeyRange,
 ) as any as S.Schema<KeyRangeList>;
@@ -524,7 +524,7 @@ export const Mutation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Mutation" }) as any as S.Schema<Mutation>;
 
-export type MutationList = ReadonlyArray<Mutation>;
+export type MutationList = Array<Mutation>;
 export const MutationList = /*@__PURE__*/ S.Array(
   Mutation,
 ) as any as S.Schema<MutationList>;
@@ -540,7 +540,7 @@ export const MutationGroup = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MutationGroup" }) as any as S.Schema<MutationGroup>;
 
-export type MutationGroupList = ReadonlyArray<MutationGroup>;
+export type MutationGroupList = Array<MutationGroup>;
 export const MutationGroupList = /*@__PURE__*/ S.Array(
   MutationGroup,
 ) as any as S.Schema<MutationGroupList>;
@@ -586,12 +586,12 @@ export const BatchWriteProjectsInstancesDatabasesSessionsRequest =
     identifier: "BatchWriteProjectsInstancesDatabasesSessionsRequest",
   }) as any as S.Schema<BatchWriteProjectsInstancesDatabasesSessionsRequest>;
 
-export type IntegerList = ReadonlyArray<number>;
+export type IntegerList = Array<number>;
 export const IntegerList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<IntegerList>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -1195,7 +1195,7 @@ export interface ReplicaInfo {
   /** The location of the serving resources, e.g., "us-central1". */
   location?: string;
   /** The type of replica. */
-  type?: ReplicaInfoTypeEnum;
+  type?: ReplicaInfoTypeEnum | (string & {});
   /** If true, this location is designated as the default leader location where leader replicas are placed. See the [region types documentation](https://cloud.google.com/spanner/docs/instances#region_types) for more details. */
   defaultLeaderLocation?: boolean;
 }
@@ -1207,7 +1207,7 @@ export const ReplicaInfo = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ReplicaInfo" }) as any as S.Schema<ReplicaInfo>;
 
-export type ReplicaInfoList = ReadonlyArray<ReplicaInfo>;
+export type ReplicaInfoList = Array<ReplicaInfo>;
 export const ReplicaInfoList = /*@__PURE__*/ S.Array(
   ReplicaInfo,
 ) as any as S.Schema<ReplicaInfoList>;
@@ -1241,7 +1241,7 @@ export interface InstanceConfig {
   /** The name of this instance configuration as it appears in UIs. */
   displayName?: string;
   /** Output only. Whether this instance configuration is a Google-managed or user-managed configuration. */
-  configType?: InstanceConfigConfigTypeEnum;
+  configType?: InstanceConfigConfigTypeEnum | (string & {});
   /** The geographic placement of nodes in this instance configuration and their replication properties. To create user-managed configurations, input `replicas` must include all replicas in `replicas` of the `base_config` and include one or more replicas in the `optional_replicas` of the `base_config`. */
   replicas?: ReplicaInfoList;
   /** Output only. The available optional replicas to choose from for user-managed configurations. Populated for Google-managed configurations. */
@@ -1257,11 +1257,13 @@ export interface InstanceConfig {
   /** Output only. If true, the instance configuration is being created or updated. If false, there are no ongoing operations for the instance configuration. */
   reconciling?: boolean;
   /** Output only. The current instance configuration state. Applicable only for `USER_MANAGED` configurations. */
-  state?: InstanceConfigStateEnum;
+  state?: InstanceConfigStateEnum | (string & {});
   /** Output only. Describes whether free instances are available to be created in this instance configuration. */
-  freeInstanceAvailability?: InstanceConfigFreeInstanceAvailabilityEnum;
+  freeInstanceAvailability?:
+    | InstanceConfigFreeInstanceAvailabilityEnum
+    | (string & {});
   /** Output only. The `QuorumType` of the instance configuration. */
-  quorumType?: InstanceConfigQuorumTypeEnum;
+  quorumType?: InstanceConfigQuorumTypeEnum | (string & {});
   /** Output only. The storage limit in bytes per processing unit. */
   storageLimitPerProcessingUnit?: string;
 }
@@ -1359,7 +1361,7 @@ export const ReplicaComputeCapacity = /*@__PURE__*/ S.suspend(() =>
   identifier: "ReplicaComputeCapacity",
 }) as any as S.Schema<ReplicaComputeCapacity>;
 
-export type ReplicaComputeCapacityList = ReadonlyArray<ReplicaComputeCapacity>;
+export type ReplicaComputeCapacityList = Array<ReplicaComputeCapacity>;
 export const ReplicaComputeCapacityList = /*@__PURE__*/ S.Array(
   ReplicaComputeCapacity,
 ) as any as S.Schema<ReplicaComputeCapacityList>;
@@ -1447,7 +1449,7 @@ export const AsymmetricAutoscalingOption = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AsymmetricAutoscalingOption>;
 
 export type AsymmetricAutoscalingOptionList =
-  ReadonlyArray<AsymmetricAutoscalingOption>;
+  Array<AsymmetricAutoscalingOption>;
 export const AsymmetricAutoscalingOptionList = /*@__PURE__*/ S.Array(
   AsymmetricAutoscalingOption,
 ) as any as S.Schema<AsymmetricAutoscalingOptionList>;
@@ -1493,7 +1495,7 @@ export interface FreeInstanceMetadata {
   /** Output only. If present, the timestamp at which the free instance was upgraded to a provisioned instance. */
   upgradeTime?: string;
   /** Specifies the expiration behavior of a free instance. The default of ExpireBehavior is `REMOVE_AFTER_GRACE_PERIOD`. This can be modified during or after creation, and before expiration. */
-  expireBehavior?: FreeInstanceMetadataExpireBehaviorEnum;
+  expireBehavior?: FreeInstanceMetadataExpireBehaviorEnum | (string & {});
 }
 export const FreeInstanceMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1535,11 +1537,11 @@ export interface Instance {
   /** Optional. The autoscaling configuration. Autoscaling is enabled if this field is set. When autoscaling is enabled, node_count and processing_units are treated as OUTPUT_ONLY fields and reflect the current compute capacity allocated to the instance. */
   autoscalingConfig?: AutoscalingConfig;
   /** Output only. The current instance state. For CreateInstance, the state must be either omitted or set to `CREATING`. For UpdateInstance, the state must be either omitted or set to `READY`. */
-  state?: InstanceStateEnum;
+  state?: InstanceStateEnum | (string & {});
   /** Cloud Labels are a flexible and lightweight mechanism for organizing cloud resources into groups that reflect a customer's organizational needs and deployment strategies. Cloud Labels can be used to filter collections of resources. They can be used to control how resource metrics are aggregated. And they can be used as arguments to policy management rules (e.g. route, firewall, load balancing, etc.). * Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `a-z{0,62}`. * Label values must be between 0 and 63 characters long and must conform to the regular expression `[a-z0-9_-]{0,63}`. * No more than 64 labels can be associated with a given resource. See https://goo.gl/xmQnxf for more information on and examples of labels. If you plan to use labels in your own code, please note that additional characters may be allowed in the future. And so you are advised to use an internal label representation, such as JSON, which doesn't rely upon specific characters being disallowed. For example, representing labels as the string: name + "_" + value would prove problematic if we were to allow "_" in a future release. */
   labels?: StringMap;
   /** The `InstanceType` of the current instance. */
-  instanceType?: InstanceInstanceTypeEnum;
+  instanceType?: InstanceInstanceTypeEnum | (string & {});
   /** Deprecated. This field is not populated. */
   endpointUris?: StringList;
   /** Output only. The time at which the instance was created. */
@@ -1549,9 +1551,11 @@ export interface Instance {
   /** Free instance metadata. Only populated for free instances. */
   freeInstanceMetadata?: FreeInstanceMetadata;
   /** Optional. The `Edition` of the current instance. */
-  edition?: InstanceEditionEnum;
+  edition?: InstanceEditionEnum | (string & {});
   /** Optional. Controls the default backup schedule behavior for new databases within the instance. By default, a backup schedule is created automatically when a new database is created in a new instance. Note that the `AUTOMATIC` value isn't permitted for free instances, as backups and backup schedules aren't supported for free instances. In the `GetInstance` or `ListInstances` response, if the value of `default_backup_schedule_type` isn't set, or set to `NONE`, Spanner doesn't create a default backup schedule for new databases in the instance. */
-  defaultBackupScheduleType?: InstanceDefaultBackupScheduleTypeEnum;
+  defaultBackupScheduleType?:
+    | InstanceDefaultBackupScheduleTypeEnum
+    | (string & {});
 }
 export const Instance = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1633,7 +1637,7 @@ export const EncryptionInfoEncryptionTypeEnum = /*@__PURE__*/ S.String;
 /** Encryption information for a Cloud Spanner database or backup. */
 export interface EncryptionInfo {
   /** Output only. The type of encryption. */
-  encryptionType?: EncryptionInfoEncryptionTypeEnum;
+  encryptionType?: EncryptionInfoEncryptionTypeEnum | (string & {});
   /** Output only. If present, the status of a recent encrypt/decrypt call on underlying data for this database or backup. Regardless of status, data is always encrypted at rest. */
   encryptionStatus?: Status;
   /** Output only. A Cloud KMS key version that is being used to protect the database or backup. */
@@ -1647,7 +1651,7 @@ export const EncryptionInfo = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "EncryptionInfo" }) as any as S.Schema<EncryptionInfo>;
 
-export type EncryptionInfoList = ReadonlyArray<EncryptionInfo>;
+export type EncryptionInfoList = Array<EncryptionInfo>;
 export const EncryptionInfoList = /*@__PURE__*/ S.Array(
   EncryptionInfo,
 ) as any as S.Schema<EncryptionInfoList>;
@@ -1671,8 +1675,7 @@ export const BackupInstancePartition = /*@__PURE__*/ S.suspend(() =>
   identifier: "BackupInstancePartition",
 }) as any as S.Schema<BackupInstancePartition>;
 
-export type BackupInstancePartitionList =
-  ReadonlyArray<BackupInstancePartition>;
+export type BackupInstancePartitionList = Array<BackupInstancePartition>;
 export const BackupInstancePartitionList = /*@__PURE__*/ S.Array(
   BackupInstancePartition,
 ) as any as S.Schema<BackupInstancePartitionList>;
@@ -1703,7 +1706,7 @@ export interface Backup {
   /** Output only. For a backup in an incremental backup chain, this is the storage space needed to keep the data that has changed since the previous backup. For all other backups, this is always the size of the backup. This value may change if backups on the same chain get deleted or expired. This field can be used to calculate the total storage space used by a set of backups. For example, the total space used by all backups of a database can be computed by summing up this field. */
   exclusiveSizeBytes?: string;
   /** Output only. The current state of the backup. */
-  state?: BackupStateEnum;
+  state?: BackupStateEnum | (string & {});
   /** Output only. The names of the restored databases that reference the backup. The database names are of the form `projects/{project}/instances/{instance}/databases/{database}`. Referencing databases may exist in different instances. The existence of any referencing database prevents the backup from being deleted. When a restored database from the backup enters the `READY` state, the reference to the backup is removed. */
   referencingDatabases?: StringList;
   /** Output only. The encryption information for the backup. */
@@ -1711,7 +1714,7 @@ export interface Backup {
   /** Output only. The encryption information for the backup, whether it is protected by one or more KMS keys. The information includes all Cloud KMS key versions used to encrypt the backup. The `encryption_status` field inside of each `EncryptionInfo` is not populated. At least one of the key versions must be available for the backup to be restored. If a key version is revoked in the middle of a restore, the restore behavior is undefined. */
   encryptionInformation?: EncryptionInfoList;
   /** Output only. The database dialect information for the backup. */
-  databaseDialect?: BackupDatabaseDialectEnum;
+  databaseDialect?: BackupDatabaseDialectEnum | (string & {});
   /** Output only. The names of the destination backups being created by copying this source backup. The backup names are of the form `projects/{project}/instances/{instance}/backups/{backup}`. Referencing backups may exist in different instances. The existence of any referencing backup prevents the backup from being deleted. When the copy operation is done (either successfully completed or cancelled or the destination backup is deleted), the reference to the backup is removed. */
   referencingBackups?: StringList;
   /** Output only. The max allowed expiration time of the backup, with microseconds granularity. A backup's expiration time can be configured in multiple APIs: CreateBackup, UpdateBackup, CopyBackup. When updating or copying an existing backup, the expiration time specified must be less than `Backup.max_expire_time`. */
@@ -1725,7 +1728,7 @@ export interface Backup {
   /** Output only. The instance partition storing the backup. This is the same as the list of the instance partitions that the database recorded at the backup's `version_time`. */
   instancePartitions?: BackupInstancePartitionList;
   /** Output only. The minimum edition required to successfully restore the backup. Populated only if the edition is Enterprise or Enterprise Plus. */
-  minimumRestorableEdition?: BackupMinimumRestorableEditionEnum;
+  minimumRestorableEdition?: BackupMinimumRestorableEditionEnum | (string & {});
 }
 export const Backup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1902,7 +1905,9 @@ export const CreateBackupEncryptionConfigEncryptionTypeEnum =
 /** Encryption configuration for the backup to create. */
 export interface CreateBackupEncryptionConfig {
   /** Required. The encryption type of the backup. */
-  encryptionType?: CreateBackupEncryptionConfigEncryptionTypeEnum;
+  encryptionType?:
+    | CreateBackupEncryptionConfigEncryptionTypeEnum
+    | (string & {});
   /** Optional. This field is maintained for backwards compatibility. For new callers, we recommend using `kms_key_names` to specify the KMS key. Only use `kms_key_name` if the location of the KMS key matches the database instance's configuration (location) exactly. For example, if the KMS location is in `us-central1` or `nam3`, then the database instance must also be in `us-central1` or `nam3`. The Cloud KMS key that is used to encrypt and decrypt the restored database. Set this field only when encryption_type is `CUSTOMER_MANAGED_ENCRYPTION`. Values are of the form `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{kms_key_name}`. */
   kmsKeyName?: string;
   /** Optional. Specifies the KMS configuration for the one or more keys used to protect the backup. Values are of the form `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{kms_key_name}`. The keys referenced by `kms_key_names` must fully cover all regions of the backup's instance configuration. Some examples: * For regional (single-region) instance configurations, specify a regional location KMS key. * For multi-region instance configurations of type `GOOGLE_MANAGED`, either specify a multi-region location KMS key or multiple regional location KMS keys that cover all regions in the instance configuration. * For an instance configuration of type `USER_MANAGED`, specify only regional location KMS keys to cover each region in the instance configuration. Multi-region location KMS keys aren't supported for `USER_MANAGED` type instance configurations. */
@@ -2042,7 +2047,7 @@ export interface InstancePartition {
   /** Optional. The autoscaling configuration. Autoscaling is enabled if this field is set. When autoscaling is enabled, fields in compute_capacity are treated as OUTPUT_ONLY fields and reflect the current compute capacity allocated to the instance partition. */
   autoscalingConfig?: AutoscalingConfig;
   /** Output only. The current instance partition state. */
-  state?: InstancePartitionStateEnum;
+  state?: InstancePartitionStateEnum | (string & {});
   /** Output only. The time at which the instance partition was created. */
   createTime?: string;
   /** Output only. The time at which the instance partition was most recently updated. */
@@ -2419,7 +2424,7 @@ export const Field = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Field" }) as any as S.Schema<Field>;
 
-export type FieldList = ReadonlyArray<Field>;
+export type FieldList = Array<Field>;
 export const FieldList = /*@__PURE__*/ S.Array(
   Field,
 ) as any as S.Schema<FieldList>;
@@ -2445,13 +2450,13 @@ export const TypeTypeAnnotationEnum = /*@__PURE__*/ S.String;
 /** `Type` indicates the type of a Cloud Spanner value, as might be stored in a table cell or returned from an SQL query. */
 export interface Type {
   /** Required. The TypeCode for this type. */
-  code?: TypeCodeEnum;
+  code?: TypeCodeEnum | (string & {});
   /** If code == ARRAY, then `array_element_type` is the type of the array elements. */
   arrayElementType?: Type;
   /** If code == STRUCT, then `struct_type` provides type information for the struct's fields. */
   structType?: StructType;
   /** The TypeAnnotationCode that disambiguates SQL type that Spanner will use to represent values of this type during query processing. This is necessary for some type codes because a single TypeCode can be mapped to different SQL types depending on the SQL dialect. type_annotation typically is not needed to process the content of a value (it doesn't affect serialization) and clients can ignore it on the read path. */
-  typeAnnotation?: TypeTypeAnnotationEnum;
+  typeAnnotation?: TypeTypeAnnotationEnum | (string & {});
   /** If code == PROTO or code == ENUM, then `proto_type_fqn` is the fully qualified name of the proto type representing the proto/enum definition. */
   protoTypeFqn?: string;
 }
@@ -2488,7 +2493,7 @@ export const Statement = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Statement" }) as any as S.Schema<Statement>;
 
-export type StatementList = ReadonlyArray<Statement>;
+export type StatementList = Array<Statement>;
 export const StatementList = /*@__PURE__*/ S.Array(
   Statement,
 ) as any as S.Schema<StatementList>;
@@ -2579,7 +2584,7 @@ export const ChildLink = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ChildLink" }) as any as S.Schema<ChildLink>;
 
-export type ChildLinkList = ReadonlyArray<ChildLink>;
+export type ChildLinkList = Array<ChildLink>;
 export const ChildLinkList = /*@__PURE__*/ S.Array(
   ChildLink,
 ) as any as S.Schema<ChildLinkList>;
@@ -2635,7 +2640,7 @@ export const PlanNode = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PlanNode" }) as any as S.Schema<PlanNode>;
 
-export type PlanNodeList = ReadonlyArray<PlanNode>;
+export type PlanNodeList = Array<PlanNode>;
 export const PlanNodeList = /*@__PURE__*/ S.Array(
   PlanNode,
 ) as any as S.Schema<PlanNodeList>;
@@ -2654,7 +2659,7 @@ export const IndexAdvice = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "IndexAdvice" }) as any as S.Schema<IndexAdvice>;
 
-export type IndexAdviceList = ReadonlyArray<IndexAdvice>;
+export type IndexAdviceList = Array<IndexAdvice>;
 export const IndexAdviceList = /*@__PURE__*/ S.Array(
   IndexAdvice,
 ) as any as S.Schema<IndexAdviceList>;
@@ -2726,7 +2731,7 @@ export const ResultSet = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ResultSet" }) as any as S.Schema<ResultSet>;
 
-export type ResultSetList = ReadonlyArray<ResultSet>;
+export type ResultSetList = Array<ResultSet>;
 export const ResultSetList = /*@__PURE__*/ S.Array(
   ResultSet,
 ) as any as S.Schema<ResultSetList>;
@@ -2794,7 +2799,7 @@ export const ReplicaSelection = /*@__PURE__*/ S.suspend(() =>
   identifier: "ReplicaSelection",
 }) as any as S.Schema<ReplicaSelection>;
 
-export type ReplicaSelectionList = ReadonlyArray<ReplicaSelection>;
+export type ReplicaSelectionList = Array<ReplicaSelection>;
 export const ReplicaSelectionList = /*@__PURE__*/ S.Array(
   ReplicaSelection,
 ) as any as S.Schema<ReplicaSelectionList>;
@@ -3088,7 +3093,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
-export type BindingList = ReadonlyArray<Binding>;
+export type BindingList = Array<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -3342,7 +3347,7 @@ export const BackupInfo = /*@__PURE__*/ S.suspend(() =>
 /** Information about the database restore. */
 export interface RestoreInfo {
   /** The type of the restore source. */
-  sourceType?: RestoreInfoSourceTypeEnum;
+  sourceType?: RestoreInfoSourceTypeEnum | (string & {});
   /** Information about the backup used to restore the database. The backup may no longer exist. */
   backupInfo?: BackupInfo;
 }
@@ -3370,7 +3375,7 @@ export interface QuorumInfo {
   /** Output only. The type of this quorum. See QuorumType for more information about quorum type specifications. */
   quorumType?: QuorumType;
   /** Output only. Whether this `ChangeQuorum` is Google or User initiated. */
-  initiator?: QuorumInfoInitiatorEnum;
+  initiator?: QuorumInfoInitiatorEnum | (string & {});
   /** Output only. The timestamp when the request was triggered. */
   startTime?: string;
   /** Output only. The etag is used for optimistic concurrency control as a way to help prevent simultaneous `ChangeQuorum` requests that might create a race condition. */
@@ -3390,7 +3395,7 @@ export interface Database {
   /** Required. The name of the database. Values are of the form `projects//instances//databases/`, where `` is as specified in the `CREATE DATABASE` statement. This name can be passed to other API methods to identify the database. */
   name?: string;
   /** Output only. The current database state. */
-  state?: DatabaseStateEnum;
+  state?: DatabaseStateEnum | (string & {});
   /** Output only. If exists, the time at which the database creation started. */
   createTime?: string;
   /** Output only. Applicable only for restored databases. Contains information about the restore source. */
@@ -3406,7 +3411,7 @@ export interface Database {
   /** Output only. The read-write region which contains the database's leader replicas. This is the same as the value of default_leader database option set using DatabaseAdmin.CreateDatabase or DatabaseAdmin.UpdateDatabaseDdl. If not explicitly set, this is empty. */
   defaultLeader?: string;
   /** Output only. The dialect of the Cloud Spanner Database. */
-  databaseDialect?: DatabaseDatabaseDialectEnum;
+  databaseDialect?: DatabaseDatabaseDialectEnum | (string & {});
   /** Optional. Whether drop protection is enabled for this database. Defaults to false, if not set. For more details, please see how to [prevent accidental database deletion](https://cloud.google.com/spanner/docs/prevent-database-deletion). */
   enableDropProtection?: boolean;
   /** Output only. If true, the database is being updated. If false, there are no ongoing update operations for the database. */
@@ -3606,7 +3611,7 @@ export const PrefixNode = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PrefixNode" }) as any as S.Schema<PrefixNode>;
 
-export type PrefixNodeList = ReadonlyArray<PrefixNode>;
+export type PrefixNodeList = Array<PrefixNode>;
 export const PrefixNodeList = /*@__PURE__*/ S.Array(
   PrefixNode,
 ) as any as S.Schema<PrefixNodeList>;
@@ -3633,7 +3638,7 @@ export const LocalizedString = /*@__PURE__*/ S.suspend(() =>
 export type MetricAggregationEnum = "AGGREGATION_UNSPECIFIED" | "MAX" | "SUM";
 export const MetricAggregationEnum = /*@__PURE__*/ S.String;
 
-export type DoubleList = ReadonlyArray<number>;
+export type DoubleList = Array<number>;
 export const DoubleList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<DoubleList>;
@@ -3651,7 +3656,7 @@ export const MetricMatrixRow = /*@__PURE__*/ S.suspend(() =>
   identifier: "MetricMatrixRow",
 }) as any as S.Schema<MetricMatrixRow>;
 
-export type MetricMatrixRowList = ReadonlyArray<MetricMatrixRow>;
+export type MetricMatrixRowList = Array<MetricMatrixRow>;
 export const MetricMatrixRowList = /*@__PURE__*/ S.Array(
   MetricMatrixRow,
 ) as any as S.Schema<MetricMatrixRowList>;
@@ -3726,7 +3731,7 @@ export const ContextValue = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ContextValue" }) as any as S.Schema<ContextValue>;
 
-export type ContextValueList = ReadonlyArray<ContextValue>;
+export type ContextValueList = Array<ContextValue>;
 export const ContextValueList = /*@__PURE__*/ S.Array(
   ContextValue,
 ) as any as S.Schema<ContextValueList>;
@@ -3766,7 +3771,7 @@ export const KeyRangeInfo = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "KeyRangeInfo" }) as any as S.Schema<KeyRangeInfo>;
 
-export type KeyRangeInfoList = ReadonlyArray<KeyRangeInfo>;
+export type KeyRangeInfoList = Array<KeyRangeInfo>;
 export const KeyRangeInfoList = /*@__PURE__*/ S.Array(
   KeyRangeInfo,
 ) as any as S.Schema<KeyRangeInfoList>;
@@ -3856,7 +3861,7 @@ export const Metric = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Metric" }) as any as S.Schema<Metric>;
 
-export type MetricList = ReadonlyArray<Metric>;
+export type MetricList = Array<Metric>;
 export const MetricList = /*@__PURE__*/ S.Array(
   Metric,
 ) as any as S.Schema<MetricList>;
@@ -3894,7 +3899,7 @@ export const DiagnosticMessage = /*@__PURE__*/ S.suspend(() =>
   identifier: "DiagnosticMessage",
 }) as any as S.Schema<DiagnosticMessage>;
 
-export type DiagnosticMessageList = ReadonlyArray<DiagnosticMessage>;
+export type DiagnosticMessageList = Array<DiagnosticMessage>;
 export const DiagnosticMessageList = /*@__PURE__*/ S.Array(
   DiagnosticMessage,
 ) as any as S.Schema<DiagnosticMessageList>;
@@ -4012,7 +4017,7 @@ export const ListProjectsInstanceConfigOperationsRequest =
     identifier: "ListProjectsInstanceConfigOperationsRequest",
   }) as any as S.Schema<ListProjectsInstanceConfigOperationsRequest>;
 
-export type OperationList = ReadonlyArray<Operation>;
+export type OperationList = Array<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -4058,7 +4063,7 @@ export const ListProjectsInstanceConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsInstanceConfigsRequest",
 }) as any as S.Schema<ListProjectsInstanceConfigsRequest>;
 
-export type InstanceConfigList = ReadonlyArray<InstanceConfig>;
+export type InstanceConfigList = Array<InstanceConfig>;
 export const InstanceConfigList = /*@__PURE__*/ S.Array(
   InstanceConfig,
 ) as any as S.Schema<InstanceConfigList>;
@@ -4190,7 +4195,7 @@ export const ListProjectsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsInstancesRequest",
 }) as any as S.Schema<ListProjectsInstancesRequest>;
 
-export type InstanceList = ReadonlyArray<Instance>;
+export type InstanceList = Array<Instance>;
 export const InstanceList = /*@__PURE__*/ S.Array(
   Instance,
 ) as any as S.Schema<InstanceList>;
@@ -4285,7 +4290,7 @@ export const ListProjectsInstancesBackupsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsInstancesBackupsRequest",
 }) as any as S.Schema<ListProjectsInstancesBackupsRequest>;
 
-export type BackupList = ReadonlyArray<Backup>;
+export type BackupList = Array<Backup>;
 export const BackupList = /*@__PURE__*/ S.Array(
   Backup,
 ) as any as S.Schema<BackupList>;
@@ -4406,7 +4411,7 @@ export const ListProjectsInstancesDatabasesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsInstancesDatabasesRequest",
 }) as any as S.Schema<ListProjectsInstancesDatabasesRequest>;
 
-export type DatabaseList = ReadonlyArray<Database>;
+export type DatabaseList = Array<Database>;
 export const DatabaseList = /*@__PURE__*/ S.Array(
   Database,
 ) as any as S.Schema<DatabaseList>;
@@ -4452,7 +4457,7 @@ export const ListProjectsInstancesDatabasesBackupSchedulesRequest =
     identifier: "ListProjectsInstancesDatabasesBackupSchedulesRequest",
   }) as any as S.Schema<ListProjectsInstancesDatabasesBackupSchedulesRequest>;
 
-export type BackupScheduleList = ReadonlyArray<BackupSchedule>;
+export type BackupScheduleList = Array<BackupSchedule>;
 export const BackupScheduleList = /*@__PURE__*/ S.Array(
   BackupSchedule,
 ) as any as S.Schema<BackupScheduleList>;
@@ -4509,7 +4514,7 @@ export const DatabaseRole = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DatabaseRole" }) as any as S.Schema<DatabaseRole>;
 
-export type DatabaseRoleList = ReadonlyArray<DatabaseRole>;
+export type DatabaseRoleList = Array<DatabaseRole>;
 export const DatabaseRoleList = /*@__PURE__*/ S.Array(
   DatabaseRole,
 ) as any as S.Schema<DatabaseRoleList>;
@@ -4684,7 +4689,7 @@ export const ListProjectsInstancesInstancePartitionsRequest =
     identifier: "ListProjectsInstancesInstancePartitionsRequest",
   }) as any as S.Schema<ListProjectsInstancesInstancePartitionsRequest>;
 
-export type InstancePartitionList = ReadonlyArray<InstancePartition>;
+export type InstancePartitionList = Array<InstancePartition>;
 export const InstancePartitionList = /*@__PURE__*/ S.Array(
   InstancePartition,
 ) as any as S.Schema<InstancePartitionList>;
@@ -4803,7 +4808,7 @@ export const ListScansRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListScansRequest",
 }) as any as S.Schema<ListScansRequest>;
 
-export type ScanList = ReadonlyArray<Scan>;
+export type ScanList = Array<Scan>;
 export const ScanList = /*@__PURE__*/ S.Array(
   Scan,
 ) as any as S.Schema<ScanList>;
@@ -4856,7 +4861,7 @@ export const DatabaseMoveConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "DatabaseMoveConfig",
 }) as any as S.Schema<DatabaseMoveConfig>;
 
-export type DatabaseMoveConfigList = ReadonlyArray<DatabaseMoveConfig>;
+export type DatabaseMoveConfigList = Array<DatabaseMoveConfig>;
 export const DatabaseMoveConfigList = /*@__PURE__*/ S.Array(
   DatabaseMoveConfig,
 ) as any as S.Schema<DatabaseMoveConfigList>;
@@ -4972,7 +4977,7 @@ export const Partition = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Partition" }) as any as S.Schema<Partition>;
 
-export type PartitionList = ReadonlyArray<Partition>;
+export type PartitionList = Array<Partition>;
 export const PartitionList = /*@__PURE__*/ S.Array(
   Partition,
 ) as any as S.Schema<PartitionList>;

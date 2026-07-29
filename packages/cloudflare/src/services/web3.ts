@@ -525,7 +525,7 @@ export const HostnamesIpfsUniversalPathsContentListsEntriesListResponseEntriesIt
   }) as any as S.Schema<HostnamesIpfsUniversalPathsContentListsEntriesListResponseEntriesItem>;
 
 export type HostnamesIpfsUniversalPathsContentListsEntriesListResponseEntriesList =
-  ReadonlyArray<HostnamesIpfsUniversalPathsContentListsEntriesListResponseEntriesItem>;
+  Array<HostnamesIpfsUniversalPathsContentListsEntriesListResponseEntriesItem>;
 export const HostnamesIpfsUniversalPathsContentListsEntriesListResponseEntriesList =
   /*@__PURE__*/ S.Array(
     HostnamesIpfsUniversalPathsContentListsEntriesListResponseEntriesItem,
@@ -611,7 +611,7 @@ export const HostnamesListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "HostnamesListResultItem",
 }) as any as S.Schema<HostnamesListResultItem>;
 
-export type HostnamesListResultList = ReadonlyArray<HostnamesListResultItem>;
+export type HostnamesListResultList = Array<HostnamesListResultItem>;
 export const HostnamesListResultList = /*@__PURE__*/ S.Array(
   HostnamesListResultItem,
 ) as any as S.Schema<HostnamesListResultList>;
@@ -747,7 +747,7 @@ export const HostnamesIpfsUniversalPathsContentListsUpdateRequestEntriesItem =
   }) as any as S.Schema<HostnamesIpfsUniversalPathsContentListsUpdateRequestEntriesItem>;
 
 export type HostnamesIpfsUniversalPathsContentListsUpdateRequestEntriesList =
-  ReadonlyArray<HostnamesIpfsUniversalPathsContentListsUpdateRequestEntriesItem>;
+  Array<HostnamesIpfsUniversalPathsContentListsUpdateRequestEntriesItem>;
 export const HostnamesIpfsUniversalPathsContentListsUpdateRequestEntriesList =
   /*@__PURE__*/ S.Array(
     HostnamesIpfsUniversalPathsContentListsUpdateRequestEntriesItem,

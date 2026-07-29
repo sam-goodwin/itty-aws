@@ -36,7 +36,7 @@ export const PrivateEndpointServiceConnectionStatus = /*@__PURE__*/ S.String;
 /** An object that represents the approval state of the private link connection. */
 export interface PrivateLinkServiceConnectionState {
   /** Indicates whether the connection has been approved, rejected or removed by the given policy owner. */
-  status?: PrivateEndpointServiceConnectionStatus;
+  status?: PrivateEndpointServiceConnectionStatus | (string & {});
   /** The reason for approval or rejection. */
   description?: string;
   /** A message indicating if changes on the service provider require any updates on the consumer. */
@@ -315,7 +315,7 @@ export const PrivateEndpointConnection = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of private link resources */
 export type PrivateEndpointConnectionListResultValueList =
-  ReadonlyArray<PrivateEndpointConnection>;
+  Array<PrivateEndpointConnection>;
 export const PrivateEndpointConnectionListResultValueList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection,
@@ -338,8 +338,7 @@ export const PrivateEndpointConnectionListResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateEndpointConnectionListResult>;
 
 /** The list of tenantIds. */
-export type PrivateLinkForAzureAdCreateRequestTenantsList =
-  ReadonlyArray<string>;
+export type PrivateLinkForAzureAdCreateRequestTenantsList = Array<string>;
 export const PrivateLinkForAzureAdCreateRequestTenantsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -401,8 +400,7 @@ export const PrivateLinkForAzureAdCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateLinkForAzureAdCreateRequest>;
 
 /** The list of tenantIds. */
-export type PrivateLinkForAzureAdCreateResponseTenantsList =
-  ReadonlyArray<string>;
+export type PrivateLinkForAzureAdCreateResponseTenantsList = Array<string>;
 export const PrivateLinkForAzureAdCreateResponseTenantsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -515,7 +513,7 @@ export const PrivateLinkForAzureAdGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateLinkForAzureAdGetRequest>;
 
 /** The list of tenantIds. */
-export type PrivateLinkForAzureAdGetResponseTenantsList = ReadonlyArray<string>;
+export type PrivateLinkForAzureAdGetResponseTenantsList = Array<string>;
 export const PrivateLinkForAzureAdGetResponseTenantsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -592,7 +590,7 @@ export const PrivateLinkForAzureAdListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateLinkForAzureAdListRequest>;
 
 /** The list of tenantIds. */
-export type PrivateLinkPolicyTenantsList = ReadonlyArray<string>;
+export type PrivateLinkPolicyTenantsList = Array<string>;
 export const PrivateLinkPolicyTenantsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PrivateLinkPolicyTenantsList>;
@@ -645,8 +643,7 @@ export const PrivateLinkPolicy = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateLinkPolicy>;
 
 /** Array of private link policies */
-export type PrivateLinkPolicyListResultValueList =
-  ReadonlyArray<PrivateLinkPolicy>;
+export type PrivateLinkPolicyListResultValueList = Array<PrivateLinkPolicy>;
 export const PrivateLinkPolicyListResultValueList = /*@__PURE__*/ S.Array(
   PrivateLinkPolicy,
 ) as any as S.Schema<PrivateLinkPolicyListResultValueList>;
@@ -725,8 +722,7 @@ export const PrivateLinkForAzureAdUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateLinkForAzureAdUpdateRequest>;
 
 /** The list of tenantIds. */
-export type PrivateLinkForAzureAdUpdateResponseTenantsList =
-  ReadonlyArray<string>;
+export type PrivateLinkForAzureAdUpdateResponseTenantsList = Array<string>;
 export const PrivateLinkForAzureAdUpdateResponseTenantsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -810,8 +806,7 @@ export const PrivateLinkResourcesGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateLinkResourcesGetRequest>;
 
 /** The private link resource required member names. */
-export type PrivateLinkResourcePropertiesRequiredMembersList =
-  ReadonlyArray<string>;
+export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
 export const PrivateLinkResourcePropertiesRequiredMembersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -905,8 +900,7 @@ export const PrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateLinkResource>;
 
 /** Array of private link resources */
-export type PrivateLinkResourceListResultValueList =
-  ReadonlyArray<PrivateLinkResource>;
+export type PrivateLinkResourceListResultValueList = Array<PrivateLinkResource>;
 export const PrivateLinkResourceListResultValueList = /*@__PURE__*/ S.Array(
   PrivateLinkResource,
 ) as any as S.Schema<PrivateLinkResourceListResultValueList>;

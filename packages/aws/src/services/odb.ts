@@ -245,7 +245,7 @@ export type DayOfWeekName =
 export const DayOfWeekName = /*@__PURE__*/ S.String;
 
 export interface DayOfWeek {
-  name?: DayOfWeekName;
+  name?: DayOfWeekName | (string & {});
 }
 export const DayOfWeek = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ name: S.optional(DayOfWeekName) }),
@@ -737,7 +737,7 @@ export type MonthName =
 export const MonthName = /*@__PURE__*/ S.String;
 
 export interface Month {
-  name?: MonthName;
+  name?: MonthName | (string & {});
 }
 export const Month = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ name: S.optional(MonthName) }),
@@ -759,8 +759,8 @@ export interface MaintenanceWindow {
   isCustomActionTimeoutEnabled?: boolean;
   leadTimeInWeeks?: number;
   months?: Month[];
-  patchingMode?: PatchingModeType;
-  preference?: PreferenceType;
+  patchingMode?: PatchingModeType | (string & {});
+  preference?: PreferenceType | (string & {});
   skipRu?: boolean;
   weeksOfMonth?: number[];
 }
@@ -1491,7 +1491,7 @@ export const RepeatCadence = /*@__PURE__*/ S.String;
 
 export interface LongTermBackupSchedule {
   isDisabled?: boolean;
-  repeatCadence?: RepeatCadence;
+  repeatCadence?: RepeatCadence | (string & {});
   retentionPeriodInDays?: number;
   timeOfBackup?: Date;
 }

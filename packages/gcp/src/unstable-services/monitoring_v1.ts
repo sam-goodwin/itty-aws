@@ -107,7 +107,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -152,7 +152,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -198,7 +198,7 @@ export interface EventAnnotation {
   /** string filtering the events - event dependant. Example values: "resource.labels.pod_name = 'pod-1'" "protoPayload.authenticationInfo.principalEmail='user@example.com'" */
   filter?: string;
   /** The type of event to display. */
-  eventType?: EventAnnotationEventTypeEnum;
+  eventType?: EventAnnotationEventTypeEnum | (string & {});
   /** Per annotation level override for the names of logging resources to search for events. Currently only projects are supported. If both this field and the per annotation field is empty, it will default to the host project. Limit: 50 projects. For example: “projects/another-project-id” */
   resourceNames?: StringList;
 }
@@ -214,7 +214,7 @@ export const EventAnnotation = /*@__PURE__*/ S.suspend(() =>
   identifier: "EventAnnotation",
 }) as any as S.Schema<EventAnnotation>;
 
-export type EventAnnotationList = ReadonlyArray<EventAnnotation>;
+export type EventAnnotationList = Array<EventAnnotation>;
 export const EventAnnotationList = /*@__PURE__*/ S.Array(
   EventAnnotation,
 ) as any as S.Schema<EventAnnotationList>;
@@ -244,7 +244,7 @@ export const StatisticalTimeSeriesFilterRankingMethodEnum =
 /** A filter that ranks streams based on their statistical relation to other streams in a request. Note: This field is deprecated and completely ignored by the API. */
 export interface StatisticalTimeSeriesFilter {
   /** rankingMethod is applied to a set of time series, and then the produced value for each individual time series is used to compare a given time series to others. These are methods that cannot be applied stream-by-stream, but rather require the full context of a request to evaluate time series. */
-  rankingMethod?: StatisticalTimeSeriesFilterRankingMethodEnum;
+  rankingMethod?: StatisticalTimeSeriesFilterRankingMethodEnum | (string & {});
   /** How many time series to output. */
   numTimeSeries?: number;
 }
@@ -303,9 +303,9 @@ export interface Aggregation {
   /** The set of fields to preserve when cross_series_reducer is specified. The group_by_fields determine how the time series are partitioned into subsets prior to applying the aggregation operation. Each subset contains time series that have the same value for each of the grouping fields. Each individual time series is a member of exactly one subset. The cross_series_reducer is applied to each subset of time series. It is not possible to reduce across different resource types, so this field implicitly contains resource.type. Fields not specified in group_by_fields are aggregated away. If group_by_fields is not specified and all the time series have the same resource type, then the time series are aggregated into a single output time series. If cross_series_reducer is not defined, this field is ignored. */
   groupByFields?: StringList;
   /** The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.Not all reducer operations can be applied to all time series. The valid choices depend on the metric_kind and the value_type of the original time series. Reduction can yield a time series with a different metric_kind or value_type than the input time series.Time series data must first be aligned (see per_series_aligner) in order to perform cross-time series reduction. If cross_series_reducer is specified, then per_series_aligner must be specified, and must not be ALIGN_NONE. An alignment_period must also be specified; otherwise, an error is returned. */
-  crossSeriesReducer?: AggregationCrossSeriesReducerEnum;
+  crossSeriesReducer?: AggregationCrossSeriesReducerEnum | (string & {});
   /** An Aligner describes how to bring the data points in a single time series into temporal alignment. Except for ALIGN_NONE, all alignments cause all the data points in an alignment_period to be mathematically grouped together, resulting in a single data point for each alignment_period with end timestamp at the end of the period.Not all alignment operations may be applied to all time series. The valid choices depend on the metric_kind and value_type of the original time series. Alignment can change the metric_kind or the value_type of the time series.Time series data must be aligned in order to perform cross-time series reduction. If cross_series_reducer is specified, then per_series_aligner must be specified and not equal to ALIGN_NONE and alignment_period must be specified; otherwise, an error is returned. */
-  perSeriesAligner?: AggregationPerSeriesAlignerEnum;
+  perSeriesAligner?: AggregationPerSeriesAlignerEnum | (string & {});
 }
 export const Aggregation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -348,9 +348,9 @@ export const Interval = /*@__PURE__*/ S.suspend(() =>
 /** Describes a ranking-based time series filter. Each input time series is ranked with an aligner. The filter will allow up to num_time_series time series to pass through it, selecting them based on the relative ranking.For example, if ranking_method is METHOD_MEAN,direction is BOTTOM, and num_time_series is 3, then the 3 times series with the lowest mean values will pass through the filter. */
 export interface PickTimeSeriesFilter {
   /** ranking_method is applied to each time series independently to produce the value which will be used to compare the time series to other time series. */
-  rankingMethod?: PickTimeSeriesFilterRankingMethodEnum;
+  rankingMethod?: PickTimeSeriesFilterRankingMethodEnum | (string & {});
   /** How to use the ranking to select time series that pass through the filter. */
-  direction?: PickTimeSeriesFilterDirectionEnum;
+  direction?: PickTimeSeriesFilterDirectionEnum | (string & {});
   /** Select the top N streams/time series within this time interval */
   interval?: Interval;
   /** How many time series to allow to pass through the filter. */
@@ -415,7 +415,7 @@ export const SpanAttributeFilter = /*@__PURE__*/ S.suspend(() =>
   identifier: "SpanAttributeFilter",
 }) as any as S.Schema<SpanAttributeFilter>;
 
-export type SpanAttributeFilterList = ReadonlyArray<SpanAttributeFilter>;
+export type SpanAttributeFilterList = Array<SpanAttributeFilter>;
 export const SpanAttributeFilterList = /*@__PURE__*/ S.Array(
   SpanAttributeFilter,
 ) as any as S.Schema<SpanAttributeFilterList>;
@@ -464,7 +464,7 @@ export const SpanFilters = /*@__PURE__*/ S.suspend(() =>
 /** LINT.IfChange Preview: Query for traces. This is a preview feature and may be subject to change before final release. */
 export interface TraceQuery {
   /** The type of span data value to be displayed on the chart. Required. */
-  spanDataValue?: TraceQuerySpanDataValueEnum;
+  spanDataValue?: TraceQuerySpanDataValueEnum | (string & {});
   /** First version of span filtering that we will support. Required. */
   spanFilters?: SpanFilters;
   /** Optional. The resource name of the project or Trace scope to fetch data from. If empty, the widget will default to the project's default Trace scope. If scope cannot be determined, then we fallback to the current project. Optional. */
@@ -574,7 +574,7 @@ export const DimensionSortOrderEnum = /*@__PURE__*/ S.String;
 /** A chart dimension. Dimensions are a structured label, class, or category for a set of measurements in your data. */
 export interface Dimension {
   /** The sort order applied to the sort column. */
-  sortOrder?: DimensionSortOrderEnum;
+  sortOrder?: DimensionSortOrderEnum | (string & {});
   /** The column name to sort on for binning. This column can be the same column as this dimension or any other column used as a measure in the results. If sort_order is set to NONE, then this value is not used. */
   sortColumn?: string;
   /** Optional. float_bin_size is used when the column type used for a dimension is a floating point numeric column. */
@@ -609,7 +609,7 @@ export const Dimension = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Dimension" }) as any as S.Schema<Dimension>;
 
-export type DimensionList = ReadonlyArray<Dimension>;
+export type DimensionList = Array<Dimension>;
 export const DimensionList = /*@__PURE__*/ S.Array(
   Dimension,
 ) as any as S.Schema<DimensionList>;
@@ -628,7 +628,7 @@ export const Parameter = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Parameter" }) as any as S.Schema<Parameter>;
 
-export type ParameterList = ReadonlyArray<Parameter>;
+export type ParameterList = Array<Parameter>;
 export const ParameterList = /*@__PURE__*/ S.Array(
   Parameter,
 ) as any as S.Schema<ParameterList>;
@@ -663,7 +663,7 @@ export const Measure = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Measure" }) as any as S.Schema<Measure>;
 
-export type MeasureList = ReadonlyArray<Measure>;
+export type MeasureList = Array<Measure>;
 export const MeasureList = /*@__PURE__*/ S.Array(
   Measure,
 ) as any as S.Schema<MeasureList>;
@@ -677,7 +677,7 @@ export const SparkChartViewSparkChartTypeEnum = /*@__PURE__*/ S.String;
 /** A sparkChart is a small chart suitable for inclusion in a table-cell or inline in text. This message contains the configuration for a sparkChart to show up on a Scorecard, showing recent trends of the scorecard's timeseries. */
 export interface SparkChartView {
   /** Required. The type of sparkchart to show in this chartView. */
-  sparkChartType?: SparkChartViewSparkChartTypeEnum;
+  sparkChartType?: SparkChartViewSparkChartTypeEnum | (string & {});
   /** The lower bound on data point frequency in the chart implemented by specifying the minimum alignment period to use in a time series query. For example, if the data is published once every 10 minutes it would not make sense to fetch and align data at one minute intervals. This field is optional and exists only as a hint.For PromQL queries, this field is used to set the minimum interval for the query step, controlling data granularity. Larger values can improve performance on long time ranges. See Querying Basics and Range Queries for more details on the PromQL step. */
   minAlignmentPeriod?: string;
 }
@@ -703,13 +703,13 @@ export const ThresholdColorEnum = /*@__PURE__*/ S.String;
 /** Defines a threshold for categorizing time series values. */
 export interface Threshold {
   /** The direction for the current threshold. Direction is not allowed in a XyChart. */
-  direction?: ThresholdDirectionEnum;
+  direction?: ThresholdDirectionEnum | (string & {});
   /** The value of the threshold. The value should be defined in the native scale of the metric. */
   value?: number;
   /** The target axis to use for plotting the threshold. Target axis is not allowed in a Scorecard. */
-  targetAxis?: ThresholdTargetAxisEnum;
+  targetAxis?: ThresholdTargetAxisEnum | (string & {});
   /** The state color for this threshold. Color is not allowed in a XyChart. */
-  color?: ThresholdColorEnum;
+  color?: ThresholdColorEnum | (string & {});
   /** A label for the threshold. */
   label?: string;
 }
@@ -723,7 +723,7 @@ export const Threshold = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Threshold" }) as any as S.Schema<Threshold>;
 
-export type ThresholdList = ReadonlyArray<Threshold>;
+export type ThresholdList = Array<Threshold>;
 export const ThresholdList = /*@__PURE__*/ S.Array(
   Threshold,
 ) as any as S.Schema<ThresholdList>;
@@ -758,7 +758,7 @@ export const BreakdownSortOrderEnum = /*@__PURE__*/ S.String;
 /** Preview: A breakdown is an aggregation applied to the measures over a specified column. A breakdown can result in multiple series across a category for the provided measure. This is a preview feature and may be subject to change before final release. */
 export interface Breakdown {
   /** Required. The sort order is applied to the values of the breakdown column. */
-  sortOrder?: BreakdownSortOrderEnum;
+  sortOrder?: BreakdownSortOrderEnum | (string & {});
   /** Required. The name of the column in the dataset containing the breakdown values. */
   column?: string;
   /** Required. A limit to the number of breakdowns. If set to zero then all possible breakdowns are applied. The list of breakdowns is dependent on the value of the sort_order field. */
@@ -775,7 +775,7 @@ export const Breakdown = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Breakdown" }) as any as S.Schema<Breakdown>;
 
-export type BreakdownList = ReadonlyArray<Breakdown>;
+export type BreakdownList = Array<Breakdown>;
 export const BreakdownList = /*@__PURE__*/ S.Array(
   Breakdown,
 ) as any as S.Schema<BreakdownList>;
@@ -857,7 +857,7 @@ export const PieChartDataSet = /*@__PURE__*/ S.suspend(() =>
   identifier: "PieChartDataSet",
 }) as any as S.Schema<PieChartDataSet>;
 
-export type PieChartDataSetList = ReadonlyArray<PieChartDataSet>;
+export type PieChartDataSetList = Array<PieChartDataSet>;
 export const PieChartDataSetList = /*@__PURE__*/ S.Array(
   PieChartDataSet,
 ) as any as S.Schema<PieChartDataSetList>;
@@ -865,7 +865,7 @@ export const PieChartDataSetList = /*@__PURE__*/ S.Array(
 /** A widget that displays timeseries data as a pie or a donut. */
 export interface PieChart {
   /** Required. Indicates the visualization type for the PieChart. */
-  chartType?: PieChartChartTypeEnum;
+  chartType?: PieChartChartTypeEnum | (string & {});
   /** Optional. Indicates whether or not the pie chart should show slices' labels */
   showLabels?: boolean;
   /** Required. The queries for the chart's data. */
@@ -887,7 +887,7 @@ export interface Axis {
   /** The label of the axis. */
   label?: string;
   /** The axis scale. By default, a linear scale is used. */
-  scale?: AxisScaleEnum;
+  scale?: AxisScaleEnum | (string & {});
 }
 export const Axis = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -908,7 +908,7 @@ export interface ColumnSortingOptions {
   /** Optional. Column name to sort data by */
   column?: string;
   /** Optional. A sorting direction that determines ascending or descending order. This is a legacy field kept for backwards compatibility with table. */
-  direction?: ColumnSortingOptionsDirectionEnum;
+  direction?: ColumnSortingOptionsDirectionEnum | (string & {});
 }
 export const ColumnSortingOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -919,7 +919,7 @@ export const ColumnSortingOptions = /*@__PURE__*/ S.suspend(() =>
   identifier: "ColumnSortingOptions",
 }) as any as S.Schema<ColumnSortingOptions>;
 
-export type ColumnSortingOptionsList = ReadonlyArray<ColumnSortingOptions>;
+export type ColumnSortingOptionsList = Array<ColumnSortingOptions>;
 export const ColumnSortingOptionsList = /*@__PURE__*/ S.Array(
   ColumnSortingOptions,
 ) as any as S.Schema<ColumnSortingOptionsList>;
@@ -950,11 +950,11 @@ export interface DataSet {
   /** Optional. A collection of dimension columns. */
   dimensions?: DimensionList;
   /** How this data should be plotted on the chart. */
-  plotType?: DataSetPlotTypeEnum;
+  plotType?: DataSetPlotTypeEnum | (string & {});
   /** Optional. The lower bound on data point frequency for this data set, implemented by specifying the minimum alignment period to use in a time series query. For example, if the data is published once every 10 minutes, the min_alignment_period should be at least 10 minutes. It would not make sense to fetch and align data at one minute intervals.For PromQL queries, this field is used to set the minimum interval for the query step, controlling data granularity. Larger values can improve performance on long time ranges. See Querying Basics and Range Queries for more details on the PromQL step. */
   minAlignmentPeriod?: string;
   /** Optional. The target axis to use for plotting the metric. */
-  targetAxis?: DataSetTargetAxisEnum;
+  targetAxis?: DataSetTargetAxisEnum | (string & {});
 }
 export const DataSet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -970,7 +970,7 @@ export const DataSet = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DataSet" }) as any as S.Schema<DataSet>;
 
-export type DataSetList = ReadonlyArray<DataSet>;
+export type DataSetList = Array<DataSet>;
 export const DataSetList = /*@__PURE__*/ S.Array(
   DataSet,
 ) as any as S.Schema<DataSetList>;
@@ -985,7 +985,7 @@ export const ChartOptionsModeEnum = /*@__PURE__*/ S.String;
 /** Options to control visual rendering of a chart. */
 export interface ChartOptions {
   /** The chart mode. */
-  mode?: ChartOptionsModeEnum;
+  mode?: ChartOptionsModeEnum | (string & {});
   /** Preview: Configures whether the charted values are shown on the horizontal or vertical axis. By default, values are represented the vertical axis. This is a preview feature and may be subject to change before final release. */
   displayHorizontal?: boolean;
 }
@@ -1064,7 +1064,7 @@ export const SingleViewGroupDisplayTypeEnum = /*@__PURE__*/ S.String;
 /** A widget that groups the other widgets by using a dropdown menu. All widgets that are within the area spanned by the grouping widget are considered member widgets. */
 export interface SingleViewGroup {
   /** Optional. Determines how the widget selector will be displayed. */
-  displayType?: SingleViewGroupDisplayTypeEnum;
+  displayType?: SingleViewGroupDisplayTypeEnum | (string & {});
 }
 export const SingleViewGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1121,7 +1121,7 @@ export const TableDataSet = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TableDataSet" }) as any as S.Schema<TableDataSet>;
 
-export type TableDataSetList = ReadonlyArray<TableDataSet>;
+export type TableDataSetList = Array<TableDataSet>;
 export const TableDataSetList = /*@__PURE__*/ S.Array(
   TableDataSet,
 ) as any as S.Schema<TableDataSetList>;
@@ -1142,7 +1142,7 @@ export const ColumnSettingsAlignmentEnum = /*@__PURE__*/ S.String;
 /** The persistent settings for a table's columns. */
 export interface ColumnSettings {
   /** Optional. Whether the column should be left / middle / right aligned */
-  alignment?: ColumnSettingsAlignmentEnum;
+  alignment?: ColumnSettingsAlignmentEnum | (string & {});
   /** Optional. Display name of the column */
   displayName?: string;
   /** Optional. The thresholds used to determine how the table cell should be rendered given the time series' current value. */
@@ -1162,7 +1162,7 @@ export const ColumnSettings = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ColumnSettings" }) as any as S.Schema<ColumnSettings>;
 
-export type ColumnSettingsList = ReadonlyArray<ColumnSettings>;
+export type ColumnSettingsList = Array<ColumnSettings>;
 export const ColumnSettingsList = /*@__PURE__*/ S.Array(
   ColumnSettings,
 ) as any as S.Schema<ColumnSettingsList>;
@@ -1172,7 +1172,7 @@ export interface TimeSeriesTable {
   /** Required. The data displayed in this table. */
   dataSets?: TableDataSetList;
   /** Optional. Store rendering strategy */
-  metricVisualization?: TimeSeriesTableMetricVisualizationEnum;
+  metricVisualization?: TimeSeriesTableMetricVisualizationEnum | (string & {});
   /** Optional. The list of the persistent column settings for the table. */
   columnSettings?: ColumnSettingsList;
 }
@@ -1214,7 +1214,7 @@ export const TreemapDataSet = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TreemapDataSet" }) as any as S.Schema<TreemapDataSet>;
 
-export type TreemapDataSetList = ReadonlyArray<TreemapDataSet>;
+export type TreemapDataSetList = Array<TreemapDataSet>;
 export const TreemapDataSetList = /*@__PURE__*/ S.Array(
   TreemapDataSet,
 ) as any as S.Schema<TreemapDataSetList>;
@@ -1255,7 +1255,7 @@ export const MonitoredResource = /*@__PURE__*/ S.suspend(() =>
   identifier: "MonitoredResource",
 }) as any as S.Schema<MonitoredResource>;
 
-export type MonitoredResourceList = ReadonlyArray<MonitoredResource>;
+export type MonitoredResourceList = Array<MonitoredResource>;
 export const MonitoredResourceList = /*@__PURE__*/ S.Array(
   MonitoredResource,
 ) as any as S.Schema<MonitoredResourceList>;
@@ -1330,17 +1330,17 @@ export interface TextStyle {
   /** The text color as a hex string. "#RRGGBB" or "#RGB" */
   textColor?: string;
   /** The pointer location for this widget (also sometimes called a "tail") */
-  pointerLocation?: TextStylePointerLocationEnum;
+  pointerLocation?: TextStylePointerLocationEnum | (string & {});
   /** The amount of padding around the widget */
-  padding?: TextStylePaddingEnum;
+  padding?: TextStylePaddingEnum | (string & {});
   /** The horizontal alignment of both the title and content */
-  horizontalAlignment?: TextStyleHorizontalAlignmentEnum;
+  horizontalAlignment?: TextStyleHorizontalAlignmentEnum | (string & {});
   /** Font sizes for both the title and content. The title will still be larger relative to the content. */
-  fontSize?: TextStyleFontSizeEnum;
+  fontSize?: TextStyleFontSizeEnum | (string & {});
   /** The background color as a hex string. "#RRGGBB" or "#RGB" */
   backgroundColor?: string;
   /** The vertical alignment of both the title and content */
-  verticalAlignment?: TextStyleVerticalAlignmentEnum;
+  verticalAlignment?: TextStyleVerticalAlignmentEnum | (string & {});
 }
 export const TextStyle = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1359,7 +1359,7 @@ export interface Text {
   /** The text content to be displayed. */
   content?: string;
   /** How the text content is formatted. */
-  format?: TextFormatEnum;
+  format?: TextFormatEnum | (string & {});
   /** How the text is styled */
   style?: TextStyle;
 }
@@ -1383,7 +1383,7 @@ export interface TemplateVariableCondition {
   /** The template variable whose value is evaluated. */
   templateVariable?: string;
   /** Comparator to use to evaluate whether the value of the template variable matches the template_variable_value. For example, if the comparator is REGEX_FULL_MATCH, template_variable_value would contain a regex that is matched against the value of the template variable. */
-  comparator?: TemplateVariableConditionComparatorEnum;
+  comparator?: TemplateVariableConditionComparatorEnum | (string & {});
 }
 export const TemplateVariableCondition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1483,7 +1483,7 @@ export const Widget = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Widget" }) as any as S.Schema<Widget>;
 
-export type WidgetList = ReadonlyArray<Widget>;
+export type WidgetList = Array<Widget>;
 export const WidgetList = /*@__PURE__*/ S.Array(
   Widget,
 ) as any as S.Schema<WidgetList>;
@@ -1516,7 +1516,7 @@ export const Row = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Row" }) as any as S.Schema<Row>;
 
-export type RowList = ReadonlyArray<Row>;
+export type RowList = Array<Row>;
 export const RowList = /*@__PURE__*/ S.Array(Row) as any as S.Schema<RowList>;
 
 /** A simplified layout that divides the available space into rows and arranges a set of widgets horizontally in each row. */
@@ -1560,9 +1560,9 @@ export const StringArray = /*@__PURE__*/ S.suspend(() =>
 /** A filter to reduce the amount of data charted in relevant widgets. */
 export interface DashboardFilter {
   /** The type of the filter value. If value_type is not provided, it will be inferred from the default_value. If neither value_type nor default_value is provided, value_type will be set to STRING by default. */
-  valueType?: DashboardFilterValueTypeEnum;
+  valueType?: DashboardFilterValueTypeEnum | (string & {});
   /** The specified filter type */
-  filterType?: DashboardFilterFilterTypeEnum;
+  filterType?: DashboardFilterFilterTypeEnum | (string & {});
   /** A list of possible string values for the filter */
   stringArray?: StringArray;
   /** An array of variable-length string values. If this field is set, value_type must be set to STRING_ARRAY or VALUE_TYPE_UNSPECIFIED */
@@ -1591,7 +1591,7 @@ export const DashboardFilter = /*@__PURE__*/ S.suspend(() =>
   identifier: "DashboardFilter",
 }) as any as S.Schema<DashboardFilter>;
 
-export type DashboardFilterList = ReadonlyArray<DashboardFilter>;
+export type DashboardFilterList = Array<DashboardFilter>;
 export const DashboardFilterList = /*@__PURE__*/ S.Array(
   DashboardFilter,
 ) as any as S.Schema<DashboardFilterList>;
@@ -1610,7 +1610,7 @@ export const Column = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Column" }) as any as S.Schema<Column>;
 
-export type ColumnList = ReadonlyArray<Column>;
+export type ColumnList = Array<Column>;
 export const ColumnList = /*@__PURE__*/ S.Array(
   Column,
 ) as any as S.Schema<ColumnList>;
@@ -1649,7 +1649,7 @@ export const Tile = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Tile" }) as any as S.Schema<Tile>;
 
-export type TileList = ReadonlyArray<Tile>;
+export type TileList = Array<Tile>;
 export const TileList = /*@__PURE__*/ S.Array(
   Tile,
 ) as any as S.Schema<TileList>;
@@ -1786,7 +1786,7 @@ export const GetLocationsGlobalMetricsScopesRequest = /*@__PURE__*/ S.suspend(
   identifier: "GetLocationsGlobalMetricsScopesRequest",
 }) as any as S.Schema<GetLocationsGlobalMetricsScopesRequest>;
 
-export type MonitoredProjectList = ReadonlyArray<MonitoredProject>;
+export type MonitoredProjectList = Array<MonitoredProject>;
 export const MonitoredProjectList = /*@__PURE__*/ S.Array(
   MonitoredProject,
 ) as any as S.Schema<MonitoredProjectList>;
@@ -1928,7 +1928,7 @@ export const ListMetricsScopesByMonitoredProjectLocationsGlobalMetricsScopesRequ
       "ListMetricsScopesByMonitoredProjectLocationsGlobalMetricsScopesRequest",
   }) as any as S.Schema<ListMetricsScopesByMonitoredProjectLocationsGlobalMetricsScopesRequest>;
 
-export type MetricsScopeList = ReadonlyArray<MetricsScope>;
+export type MetricsScopeList = Array<MetricsScope>;
 export const MetricsScopeList = /*@__PURE__*/ S.Array(
   MetricsScope,
 ) as any as S.Schema<MetricsScopeList>;
@@ -1971,7 +1971,7 @@ export const ListProjectsDashboardsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsDashboardsRequest",
 }) as any as S.Schema<ListProjectsDashboardsRequest>;
 
-export type DashboardList = ReadonlyArray<Dashboard>;
+export type DashboardList = Array<Dashboard>;
 export const DashboardList = /*@__PURE__*/ S.Array(
   Dashboard,
 ) as any as S.Schema<DashboardList>;

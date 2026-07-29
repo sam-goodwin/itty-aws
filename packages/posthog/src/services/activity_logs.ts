@@ -188,7 +188,7 @@ export type ActivityLogListRequestScopesItem =
   | "Loop";
 export const ActivityLogListRequestScopesItem = /*@__PURE__*/ S.String;
 
-export type ActivityLogListRequestScopesList = ReadonlyArray<
+export type ActivityLogListRequestScopesList = Array<
   ActivityLogListRequestScopesItem | (string & {})
 >;
 export const ActivityLogListRequestScopesList = /*@__PURE__*/ S.Array(
@@ -317,7 +317,7 @@ export const ActivityLog = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ActivityLog" }) as any as S.Schema<ActivityLog>;
 
-export type PaginatedActivityLogListResultsList = ReadonlyArray<ActivityLog>;
+export type PaginatedActivityLogListResultsList = Array<ActivityLog>;
 export const PaginatedActivityLogListResultsList = /*@__PURE__*/ S.Array(
   ActivityLog,
 ) as any as S.Schema<PaginatedActivityLogListResultsList>;

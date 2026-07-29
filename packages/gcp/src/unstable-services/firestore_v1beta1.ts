@@ -60,7 +60,7 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -170,7 +170,7 @@ export const BatchGetProjectsDatabasesDocumentsRequest =
     identifier: "BatchGetProjectsDatabasesDocumentsRequest",
   }) as any as S.Schema<BatchGetProjectsDatabasesDocumentsRequest>;
 
-export type ValueList = ReadonlyArray<Value>;
+export type ValueList = Array<Value>;
 export const ValueList = /*@__PURE__*/ S.Array(
   S.suspend(() => Value),
 ) as any as S.Schema<ValueList>;
@@ -217,7 +217,7 @@ export const Stage = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Stage" }) as any as S.Schema<Stage>;
 
-export type StageList = ReadonlyArray<Stage>;
+export type StageList = Array<Stage>;
 export const StageList = /*@__PURE__*/ S.Array(
   Stage,
 ) as any as S.Schema<StageList>;
@@ -289,7 +289,7 @@ export interface Value {
   /** Value which references a field. This is considered relative (vs absolute) since it only refers to a field and not a field within a particular document. **Requires:** * Must follow field reference limitations. * Not allowed to be used when writing documents. */
   fieldReferenceValue?: string;
   /** A null value. */
-  nullValue?: ValueNullValueEnum;
+  nullValue?: ValueNullValueEnum | (string & {});
   /** A boolean value. */
   booleanValue?: boolean;
   /** Pointer to a variable defined elsewhere in a pipeline. Unlike `field_reference_value` which references a field within a document, this refers to a variable, defined in a separate namespace than the fields of a document. */
@@ -415,7 +415,7 @@ export const FieldTransform = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "FieldTransform" }) as any as S.Schema<FieldTransform>;
 
-export type FieldTransformList = ReadonlyArray<FieldTransform>;
+export type FieldTransformList = Array<FieldTransform>;
 export const FieldTransformList = /*@__PURE__*/ S.Array(
   FieldTransform,
 ) as any as S.Schema<FieldTransformList>;
@@ -462,7 +462,7 @@ export const Write = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Write" }) as any as S.Schema<Write>;
 
-export type WriteList = ReadonlyArray<Write>;
+export type WriteList = Array<Write>;
 export const WriteList = /*@__PURE__*/ S.Array(
   Write,
 ) as any as S.Schema<WriteList>;
@@ -525,7 +525,7 @@ export const WriteResult = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "WriteResult" }) as any as S.Schema<WriteResult>;
 
-export type WriteResultList = ReadonlyArray<WriteResult>;
+export type WriteResultList = Array<WriteResult>;
 export const WriteResultList = /*@__PURE__*/ S.Array(
   WriteResult,
 ) as any as S.Schema<WriteResultList>;
@@ -536,7 +536,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -558,7 +558,7 @@ export const Status = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
-export type StatusList = ReadonlyArray<Status>;
+export type StatusList = Array<Status>;
 export const StatusList = /*@__PURE__*/ S.Array(
   Status,
 ) as any as S.Schema<StatusList>;
@@ -721,7 +721,7 @@ export interface GoogleFirestoreAdminV1beta1IndexField {
   /** The path of the field. Must match the field path specification described by google.firestore.v1beta1.Document.fields. Special field path `__name__` may be used by itself or at the end of a path. `__type__` may be used only at the end of path. */
   fieldPath?: string;
   /** The field's mode. */
-  mode?: GoogleFirestoreAdminV1beta1IndexFieldModeEnum;
+  mode?: GoogleFirestoreAdminV1beta1IndexFieldModeEnum | (string & {});
 }
 export const GoogleFirestoreAdminV1beta1IndexField = /*@__PURE__*/ S.suspend(
   () =>
@@ -734,7 +734,7 @@ export const GoogleFirestoreAdminV1beta1IndexField = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleFirestoreAdminV1beta1IndexField>;
 
 export type GoogleFirestoreAdminV1beta1IndexFieldList =
-  ReadonlyArray<GoogleFirestoreAdminV1beta1IndexField>;
+  Array<GoogleFirestoreAdminV1beta1IndexField>;
 export const GoogleFirestoreAdminV1beta1IndexFieldList = /*@__PURE__*/ S.Array(
   GoogleFirestoreAdminV1beta1IndexField,
 ) as any as S.Schema<GoogleFirestoreAdminV1beta1IndexFieldList>;
@@ -755,7 +755,7 @@ export interface GoogleFirestoreAdminV1beta1Index {
   /** The fields to index. */
   fields?: GoogleFirestoreAdminV1beta1IndexFieldList;
   /** The state of the index. Output only. */
-  state?: GoogleFirestoreAdminV1beta1IndexStateEnum;
+  state?: GoogleFirestoreAdminV1beta1IndexStateEnum | (string & {});
 }
 export const GoogleFirestoreAdminV1beta1Index = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -939,7 +939,7 @@ export const ExplainStats = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ExplainStats" }) as any as S.Schema<ExplainStats>;
 
-export type DocumentList = ReadonlyArray<Document>;
+export type DocumentList = Array<Document>;
 export const DocumentList = /*@__PURE__*/ S.Array(
   Document,
 ) as any as S.Schema<DocumentList>;
@@ -1300,12 +1300,12 @@ export const CollectionSelector = /*@__PURE__*/ S.suspend(() =>
   identifier: "CollectionSelector",
 }) as any as S.Schema<CollectionSelector>;
 
-export type CollectionSelectorList = ReadonlyArray<CollectionSelector>;
+export type CollectionSelectorList = Array<CollectionSelector>;
 export const CollectionSelectorList = /*@__PURE__*/ S.Array(
   CollectionSelector,
 ) as any as S.Schema<CollectionSelectorList>;
 
-export type FieldReferenceList = ReadonlyArray<FieldReference>;
+export type FieldReferenceList = Array<FieldReference>;
 export const FieldReferenceList = /*@__PURE__*/ S.Array(
   FieldReference,
 ) as any as S.Schema<FieldReferenceList>;
@@ -1324,7 +1324,7 @@ export const Projection = /*@__PURE__*/ S.suspend(() =>
 export type CompositeFilterOpEnum = "OPERATOR_UNSPECIFIED" | "AND" | "OR";
 export const CompositeFilterOpEnum = /*@__PURE__*/ S.String;
 
-export type FilterList = ReadonlyArray<Filter>;
+export type FilterList = Array<Filter>;
 export const FilterList = /*@__PURE__*/ S.Array(
   S.suspend(() => Filter),
 ) as any as S.Schema<FilterList>;
@@ -1435,7 +1435,7 @@ export const Order = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Order" }) as any as S.Schema<Order>;
 
-export type OrderList = ReadonlyArray<Order>;
+export type OrderList = Array<Order>;
 export const OrderList = /*@__PURE__*/ S.Array(
   Order,
 ) as any as S.Schema<OrderList>;
@@ -1559,7 +1559,7 @@ export const ListenProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListenProjectsDatabasesDocumentsRequest",
 }) as any as S.Schema<ListenProjectsDatabasesDocumentsRequest>;
 
-export type IntegerList = ReadonlyArray<number>;
+export type IntegerList = Array<number>;
 export const IntegerList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<IntegerList>;
@@ -1789,7 +1789,7 @@ export const ListProjectsDatabasesIndexesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsDatabasesIndexesRequest>;
 
 export type GoogleFirestoreAdminV1beta1IndexList =
-  ReadonlyArray<GoogleFirestoreAdminV1beta1Index>;
+  Array<GoogleFirestoreAdminV1beta1Index>;
 export const GoogleFirestoreAdminV1beta1IndexList = /*@__PURE__*/ S.Array(
   GoogleFirestoreAdminV1beta1Index,
 ) as any as S.Schema<GoogleFirestoreAdminV1beta1IndexList>;
@@ -1858,7 +1858,7 @@ export const PartitionQueryProjectsDatabasesDocumentsRequest =
     identifier: "PartitionQueryProjectsDatabasesDocumentsRequest",
   }) as any as S.Schema<PartitionQueryProjectsDatabasesDocumentsRequest>;
 
-export type CursorList = ReadonlyArray<Cursor>;
+export type CursorList = Array<Cursor>;
 export const CursorList = /*@__PURE__*/ S.Array(
   Cursor,
 ) as any as S.Schema<CursorList>;
@@ -2001,7 +2001,7 @@ export const Aggregation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Aggregation" }) as any as S.Schema<Aggregation>;
 
-export type AggregationList = ReadonlyArray<Aggregation>;
+export type AggregationList = Array<Aggregation>;
 export const AggregationList = /*@__PURE__*/ S.Array(
   Aggregation,
 ) as any as S.Schema<AggregationList>;

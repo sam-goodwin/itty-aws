@@ -80,7 +80,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = ReadonlyArray<Operation>;
+export type OperationsListResponseValueList = Array<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;
@@ -113,7 +113,7 @@ export interface RetentionPolicyDetails {
   /** The retention period in days after which the orchestration will be purged automatically */
   retentionPeriodInDays: number;
   /** The orchestration state to which this policy applies. If omitted, the policy applies to all purgeable orchestration states. */
-  orchestrationState?: PurgeableOrchestrationState;
+  orchestrationState?: PurgeableOrchestrationState | (string & {});
 }
 export const RetentionPolicyDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -126,7 +126,7 @@ export const RetentionPolicyDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** The orchestration retention policies */
 export type RetentionPolicyPropertiesInputRetentionPoliciesList =
-  ReadonlyArray<RetentionPolicyDetails>;
+  Array<RetentionPolicyDetails>;
 export const RetentionPolicyPropertiesInputRetentionPoliciesList =
   /*@__PURE__*/ S.Array(
     RetentionPolicyDetails,
@@ -231,7 +231,7 @@ export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** The orchestration retention policies */
 export type RetentionPolicyPropertiesRetentionPoliciesList =
-  ReadonlyArray<RetentionPolicyDetails>;
+  Array<RetentionPolicyDetails>;
 export const RetentionPolicyPropertiesRetentionPoliciesList =
   /*@__PURE__*/ S.Array(
     RetentionPolicyDetails,
@@ -413,7 +413,7 @@ export const RetentionPolicy = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RetentionPolicy>;
 
 /** The RetentionPolicy items on this page */
-export type RetentionPolicyListResultValueList = ReadonlyArray<RetentionPolicy>;
+export type RetentionPolicyListResultValueList = Array<RetentionPolicy>;
 export const RetentionPolicyListResultValueList = /*@__PURE__*/ S.Array(
   RetentionPolicy,
 ) as any as S.Schema<RetentionPolicyListResultValueList>;
@@ -496,7 +496,7 @@ export const SchedulersCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<SchedulersCreateOrUpdateRequestTagsMap>;
 
 /** IP allow list for durable task scheduler. Values can be IPv4, IPv6 or CIDR */
-export type SchedulerPropertiesInputIpAllowlistList = ReadonlyArray<string>;
+export type SchedulerPropertiesInputIpAllowlistList = Array<string>;
 export const SchedulerPropertiesInputIpAllowlistList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SchedulerPropertiesInputIpAllowlistList>;
@@ -512,11 +512,11 @@ export const RedundancyState = /*@__PURE__*/ S.String;
 /** The SKU (Stock Keeping Unit) assigned to this durable task scheduler */
 export interface SchedulerSku {
   /** The name of the SKU */
-  name: SchedulerSkuName;
+  name: SchedulerSkuName | (string & {});
   /** The SKU capacity. This allows scale out/in for the resource and impacts zone redundancy */
   capacity?: number;
   /** Indicates whether the current SKU configuration is zone redundant */
-  redundancyState?: RedundancyState;
+  redundancyState?: RedundancyState | (string & {});
 }
 export const SchedulerSku = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -593,14 +593,13 @@ export const SchedulersCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<SchedulersCreateOrUpdateResponseTagsMap>;
 
 /** IP allow list for durable task scheduler. Values can be IPv4, IPv6 or CIDR */
-export type SchedulerPropertiesIpAllowlistList = ReadonlyArray<string>;
+export type SchedulerPropertiesIpAllowlistList = Array<string>;
 export const SchedulerPropertiesIpAllowlistList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SchedulerPropertiesIpAllowlistList>;
 
 /** The group ids for the private endpoint resource. */
-export type PrivateEndpointConnectionPropertiesGroupIdsList =
-  ReadonlyArray<string>;
+export type PrivateEndpointConnectionPropertiesGroupIdsList = Array<string>;
 export const PrivateEndpointConnectionPropertiesGroupIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -629,7 +628,7 @@ export const PrivateEndpointServiceConnectionStatus = /*@__PURE__*/ S.String;
 /** A collection of information about the state of the connection between service consumer and provider. */
 export interface PrivateLinkServiceConnectionState {
   /** Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service. */
-  status?: PrivateEndpointServiceConnectionStatus;
+  status?: PrivateEndpointServiceConnectionStatus | (string & {});
   /** The reason for approval/rejection of the connection. */
   description?: string;
   /** A message indicating if changes on the service provider require any updates on the consumer. */
@@ -704,7 +703,7 @@ export const SchedulerPropertiesPrivateEndpointConnectionsItem =
 
 /** The private endpoints exposed by this resource */
 export type SchedulerPropertiesPrivateEndpointConnectionsList =
-  ReadonlyArray<SchedulerPropertiesPrivateEndpointConnectionsItem>;
+  Array<SchedulerPropertiesPrivateEndpointConnectionsItem>;
 export const SchedulerPropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     SchedulerPropertiesPrivateEndpointConnectionsItem,
@@ -1066,16 +1065,14 @@ export const SchedulersGetPrivateLinkRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SchedulersGetPrivateLinkRequest>;
 
 /** The private link resource required member names. */
-export type PrivateLinkResourcePropertiesRequiredMembersList =
-  ReadonlyArray<string>;
+export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
 export const PrivateLinkResourcePropertiesRequiredMembersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
 
 /** The private link resource private link DNS zone name. */
-export type PrivateLinkResourcePropertiesRequiredZoneNamesList =
-  ReadonlyArray<string>;
+export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
 export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1188,7 +1185,7 @@ export const Scheduler = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Scheduler" }) as any as S.Schema<Scheduler>;
 
 /** The Scheduler items on this page */
-export type SchedulerListResultValueList = ReadonlyArray<Scheduler>;
+export type SchedulerListResultValueList = Array<Scheduler>;
 export const SchedulerListResultValueList = /*@__PURE__*/ S.Array(
   Scheduler,
 ) as any as S.Schema<SchedulerListResultValueList>;
@@ -1282,7 +1279,7 @@ export const PrivateEndpointConnectionListResultValueItem =
 
 /** The PrivateEndpointConnection items on this page */
 export type PrivateEndpointConnectionListResultValueList =
-  ReadonlyArray<PrivateEndpointConnectionListResultValueItem>;
+  Array<PrivateEndpointConnectionListResultValueItem>;
 export const PrivateEndpointConnectionListResultValueList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnectionListResultValueItem,
@@ -1357,7 +1354,7 @@ export const SchedulerPrivateLinkResourceListResultValueItem =
 
 /** The SchedulerPrivateLinkResource items on this page */
 export type SchedulerPrivateLinkResourceListResultValueList =
-  ReadonlyArray<SchedulerPrivateLinkResourceListResultValueItem>;
+  Array<SchedulerPrivateLinkResourceListResultValueItem>;
 export const SchedulerPrivateLinkResourceListResultValueList =
   /*@__PURE__*/ S.Array(
     SchedulerPrivateLinkResourceListResultValueItem,
@@ -1381,8 +1378,7 @@ export const SchedulerPrivateLinkResourceListResult = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<SchedulerPrivateLinkResourceListResult>;
 
 /** IP allow list for durable task scheduler. Values can be IPv4, IPv6 or CIDR */
-export type SchedulerPropertiesUpdateInputIpAllowlistList =
-  ReadonlyArray<string>;
+export type SchedulerPropertiesUpdateInputIpAllowlistList = Array<string>;
 export const SchedulerPropertiesUpdateInputIpAllowlistList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1826,7 +1822,7 @@ export const TaskHub = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TaskHub" }) as any as S.Schema<TaskHub>;
 
 /** The TaskHub items on this page */
-export type TaskHubListResultValueList = ReadonlyArray<TaskHub>;
+export type TaskHubListResultValueList = Array<TaskHub>;
 export const TaskHubListResultValueList = /*@__PURE__*/ S.Array(
   TaskHub,
 ) as any as S.Schema<TaskHubListResultValueList>;

@@ -873,7 +873,7 @@ export type EvaluationMetricName = string | redacted.Redacted<string>;
 export type EvaluationMetricNames = (string | redacted.Redacted<string>)[];
 export const EvaluationMetricNames = /*@__PURE__*/ S.Array(SensitiveString);
 export interface EvaluationDatasetMetricConfig {
-  taskType: EvaluationTaskType;
+  taskType: EvaluationTaskType | (string & {});
   dataset: EvaluationDataset;
   metricNames: (string | redacted.Redacted<string>)[];
 }
@@ -1064,7 +1064,7 @@ export type PerformanceConfigLatency = "standard" | "optimized";
 export const PerformanceConfigLatency = /*@__PURE__*/ S.String;
 
 export interface PerformanceConfiguration {
-  latency?: PerformanceConfigLatency;
+  latency?: PerformanceConfigLatency | (string & {});
 }
 export const PerformanceConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ latency: S.optional(PerformanceConfigLatency) }),
@@ -1353,7 +1353,7 @@ export const AttributeType = /*@__PURE__*/ S.String;
 
 export interface MetadataAttributeSchema {
   key: string;
-  type: AttributeType;
+  type: AttributeType | (string & {});
   description: string;
 }
 export const MetadataAttributeSchema = /*@__PURE__*/ S.suspend(() =>
@@ -1417,7 +1417,7 @@ export const RerankingMetadataSelectiveModeConfiguration =
     S.Struct({ fieldsToExclude: FieldsForReranking }),
   ]);
 export interface MetadataConfigurationForReranking {
-  selectionMode: RerankingMetadataSelectionMode;
+  selectionMode: RerankingMetadataSelectionMode | (string & {});
   selectiveModeConfiguration?: RerankingMetadataSelectiveModeConfiguration;
 }
 export const MetadataConfigurationForReranking = /*@__PURE__*/ S.suspend(() =>
@@ -1446,7 +1446,7 @@ export const VectorSearchBedrockRerankingConfiguration =
     identifier: "VectorSearchBedrockRerankingConfiguration",
   }) as any as S.Schema<VectorSearchBedrockRerankingConfiguration>;
 export interface VectorSearchRerankingConfiguration {
-  type: VectorSearchRerankingConfigurationType;
+  type: VectorSearchRerankingConfigurationType | (string & {});
   bedrockRerankingConfiguration?: VectorSearchBedrockRerankingConfiguration;
 }
 export const VectorSearchRerankingConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -1461,7 +1461,7 @@ export const VectorSearchRerankingConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VectorSearchRerankingConfiguration>;
 export interface KnowledgeBaseVectorSearchConfiguration {
   numberOfResults?: number;
-  overrideSearchType?: SearchType;
+  overrideSearchType?: SearchType | (string & {});
   filter?: RetrievalFilter;
   implicitFilterConfiguration?: ImplicitFilterConfiguration;
   rerankingConfiguration?: VectorSearchRerankingConfiguration;
@@ -1566,7 +1566,7 @@ export type QueryTransformationType = "QUERY_DECOMPOSITION";
 export const QueryTransformationType = /*@__PURE__*/ S.String;
 
 export interface QueryTransformationConfiguration {
-  type: QueryTransformationType;
+  type: QueryTransformationType | (string & {});
 }
 export const QueryTransformationConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ type: QueryTransformationType }),
@@ -1628,7 +1628,7 @@ export const ByteContentDoc = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ByteContentDoc" }) as any as S.Schema<ByteContentDoc>;
 export interface ExternalSource {
-  sourceType: ExternalSourceType;
+  sourceType: ExternalSourceType | (string & {});
   s3Location?: S3ObjectDoc;
   byteContent?: ByteContentDoc;
 }
@@ -1676,7 +1676,7 @@ export const ExternalSourcesRetrieveAndGenerateConfiguration =
     identifier: "ExternalSourcesRetrieveAndGenerateConfiguration",
   }) as any as S.Schema<ExternalSourcesRetrieveAndGenerateConfiguration>;
 export interface RetrieveAndGenerateConfiguration {
-  type: RetrieveAndGenerateType;
+  type: RetrieveAndGenerateType | (string & {});
   knowledgeBaseConfiguration?: KnowledgeBaseRetrieveAndGenerateConfiguration;
   externalSourcesConfiguration?: ExternalSourcesRetrieveAndGenerateConfiguration;
 }
@@ -1922,7 +1922,7 @@ export const GuardrailFilterStrength = /*@__PURE__*/ S.String;
 export type GuardrailModality = "TEXT" | "IMAGE";
 export const GuardrailModality = /*@__PURE__*/ S.String;
 
-export type GuardrailModalities = GuardrailModality[];
+export type GuardrailModalities = (GuardrailModality | (string & {}))[];
 export const GuardrailModalities = /*@__PURE__*/ S.Array(GuardrailModality);
 export type GuardrailContentFilterAction = "BLOCK" | "NONE";
 export const GuardrailContentFilterAction = /*@__PURE__*/ S.String;
@@ -2679,7 +2679,7 @@ export interface RFTHyperParameters {
   maxPromptLength?: number;
   trainingSamplePerPrompt?: number;
   inferenceMaxTokens?: number;
-  reasoningEffort?: ReasoningEffort;
+  reasoningEffort?: ReasoningEffort | (string & {});
   evalInterval?: number;
 }
 export const RFTHyperParameters = /*@__PURE__*/ S.suspend(() =>
@@ -2822,7 +2822,7 @@ export const S3InputFormat = /*@__PURE__*/ S.String;
 
 export type AccountId = string;
 export interface ModelInvocationJobS3InputDataConfig {
-  s3InputFormat?: S3InputFormat;
+  s3InputFormat?: S3InputFormat | (string & {});
   s3Uri: string;
   s3BucketOwner?: string;
 }
@@ -7523,8 +7523,8 @@ export type SelectiveGuardingMode = "SELECTIVE" | "COMPREHENSIVE";
 export const SelectiveGuardingMode = /*@__PURE__*/ S.String;
 
 export interface SelectiveContentGuarding {
-  system?: SelectiveGuardingMode;
-  messages?: SelectiveGuardingMode;
+  system?: SelectiveGuardingMode | (string & {});
+  messages?: SelectiveGuardingMode | (string & {});
 }
 export const SelectiveContentGuarding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

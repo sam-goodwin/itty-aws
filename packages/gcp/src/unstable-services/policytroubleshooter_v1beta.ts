@@ -264,7 +264,7 @@ export const GoogleCloudPolicytroubleshooterV1betaBindingExplanation =
   }) as any as S.Schema<GoogleCloudPolicytroubleshooterV1betaBindingExplanation>;
 
 export type GoogleCloudPolicytroubleshooterV1betaBindingExplanationList =
-  ReadonlyArray<GoogleCloudPolicytroubleshooterV1betaBindingExplanation>;
+  Array<GoogleCloudPolicytroubleshooterV1betaBindingExplanation>;
 export const GoogleCloudPolicytroubleshooterV1betaBindingExplanationList =
   /*@__PURE__*/ S.Array(
     GoogleCloudPolicytroubleshooterV1betaBindingExplanation,
@@ -293,7 +293,7 @@ export type GoogleIamV1AuditLogConfigLogTypeEnum =
   | "DATA_READ";
 export const GoogleIamV1AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -314,8 +314,7 @@ export const GoogleIamV1AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleIamV1AuditLogConfig",
 }) as any as S.Schema<GoogleIamV1AuditLogConfig>;
 
-export type GoogleIamV1AuditLogConfigList =
-  ReadonlyArray<GoogleIamV1AuditLogConfig>;
+export type GoogleIamV1AuditLogConfigList = Array<GoogleIamV1AuditLogConfig>;
 export const GoogleIamV1AuditLogConfigList = /*@__PURE__*/ S.Array(
   GoogleIamV1AuditLogConfig,
 ) as any as S.Schema<GoogleIamV1AuditLogConfigList>;
@@ -336,7 +335,7 @@ export const GoogleIamV1AuditConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleIamV1AuditConfig",
 }) as any as S.Schema<GoogleIamV1AuditConfig>;
 
-export type GoogleIamV1AuditConfigList = ReadonlyArray<GoogleIamV1AuditConfig>;
+export type GoogleIamV1AuditConfigList = Array<GoogleIamV1AuditConfig>;
 export const GoogleIamV1AuditConfigList = /*@__PURE__*/ S.Array(
   GoogleIamV1AuditConfig,
 ) as any as S.Schema<GoogleIamV1AuditConfigList>;
@@ -360,7 +359,7 @@ export const GoogleIamV1Binding = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleIamV1Binding",
 }) as any as S.Schema<GoogleIamV1Binding>;
 
-export type GoogleIamV1BindingList = ReadonlyArray<GoogleIamV1Binding>;
+export type GoogleIamV1BindingList = Array<GoogleIamV1Binding>;
 export const GoogleIamV1BindingList = /*@__PURE__*/ S.Array(
   GoogleIamV1Binding,
 ) as any as S.Schema<GoogleIamV1BindingList>;
@@ -420,7 +419,7 @@ export const GoogleCloudPolicytroubleshooterV1betaExplainedPolicy =
   }) as any as S.Schema<GoogleCloudPolicytroubleshooterV1betaExplainedPolicy>;
 
 export type GoogleCloudPolicytroubleshooterV1betaExplainedPolicyList =
-  ReadonlyArray<GoogleCloudPolicytroubleshooterV1betaExplainedPolicy>;
+  Array<GoogleCloudPolicytroubleshooterV1betaExplainedPolicy>;
 export const GoogleCloudPolicytroubleshooterV1betaExplainedPolicyList =
   /*@__PURE__*/ S.Array(
     GoogleCloudPolicytroubleshooterV1betaExplainedPolicy,

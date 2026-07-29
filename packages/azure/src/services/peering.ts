@@ -127,8 +127,7 @@ export const CdnPeeringPrefix = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CdnPeeringPrefix>;
 
 /** The CdnPeeringPrefix items on this page */
-export type CdnPeeringPrefixListResultValueList =
-  ReadonlyArray<CdnPeeringPrefix>;
+export type CdnPeeringPrefixListResultValueList = Array<CdnPeeringPrefix>;
 export const CdnPeeringPrefixListResultValueList = /*@__PURE__*/ S.Array(
   CdnPeeringPrefix,
 ) as any as S.Schema<CdnPeeringPrefixListResultValueList>;
@@ -246,7 +245,7 @@ export const ConnectionMonitorTestsCreateOrUpdateRequest =
   }) as any as S.Schema<ConnectionMonitorTestsCreateOrUpdateRequest>;
 
 /** The path representing the Connection Monitor test. */
-export type ConnectionMonitorTestPropertiesPathList = ReadonlyArray<string>;
+export type ConnectionMonitorTestPropertiesPathList = Array<string>;
 export const ConnectionMonitorTestPropertiesPathList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ConnectionMonitorTestPropertiesPathList>;
@@ -456,7 +455,7 @@ export const ConnectionMonitorTest = /*@__PURE__*/ S.suspend(() =>
 
 /** The ConnectionMonitorTest items on this page */
 export type ConnectionMonitorTestListResultValueList =
-  ReadonlyArray<ConnectionMonitorTest>;
+  Array<ConnectionMonitorTest>;
 export const ConnectionMonitorTestListResultValueList = /*@__PURE__*/ S.Array(
   ConnectionMonitorTest,
 ) as any as S.Schema<ConnectionMonitorTestListResultValueList>;
@@ -599,9 +598,9 @@ export interface BgpSession {
   /** The IPv6 session address on peer's end. */
   peerSessionIPv6Address?: string;
   /** The state of the IPv4 session. */
-  sessionStateV4?: SessionStateV4;
+  sessionStateV4?: SessionStateV4 | (string & {});
   /** The state of the IPv6 session. */
-  sessionStateV6?: SessionStateV6;
+  sessionStateV6?: SessionStateV6 | (string & {});
   /** The maximum number of prefixes advertised over the IPv4 session. */
   maxPrefixesAdvertisedV4?: number;
   /** The maximum number of prefixes advertised over the IPv6 session. */
@@ -666,8 +665,7 @@ export const DirectConnection = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DirectConnection>;
 
 /** The set of connections that constitute a direct peering. */
-export type PeeringPropertiesDirectConnectionsList =
-  ReadonlyArray<DirectConnection>;
+export type PeeringPropertiesDirectConnectionsList = Array<DirectConnection>;
 export const PeeringPropertiesDirectConnectionsList = /*@__PURE__*/ S.Array(
   DirectConnection,
 ) as any as S.Schema<PeeringPropertiesDirectConnectionsList>;
@@ -745,7 +743,7 @@ export const ExchangeConnection = /*@__PURE__*/ S.suspend(() =>
 
 /** The set of connections that constitute an exchange peering. */
 export type PeeringPropertiesExchangeConnectionsList =
-  ReadonlyArray<ExchangeConnection>;
+  Array<ExchangeConnection>;
 export const PeeringPropertiesExchangeConnectionsList = /*@__PURE__*/ S.Array(
   ExchangeConnection,
 ) as any as S.Schema<PeeringPropertiesExchangeConnectionsList>;
@@ -771,7 +769,7 @@ export type Protocol = "None" | "ICMP" | "TCP";
 export const Protocol = /*@__PURE__*/ S.String;
 
 /** Set to contain the prefixes that agents in Azure will send traffic from. For peers to allow into their network the connectivity probe traffic can reach their endpoint for the connectivity probe. */
-export type ConnectivityProbePrefixesToAccesslistList = ReadonlyArray<string>;
+export type ConnectivityProbePrefixesToAccesslistList = Array<string>;
 export const ConnectivityProbePrefixesToAccesslistList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ConnectivityProbePrefixesToAccesslistList>;
@@ -799,8 +797,7 @@ export const ConnectivityProbe = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConnectivityProbe>;
 
 /** The connectivity probes associated with the peering. */
-export type PeeringPropertiesConnectivityProbesList =
-  ReadonlyArray<ConnectivityProbe>;
+export type PeeringPropertiesConnectivityProbesList = Array<ConnectivityProbe>;
 export const PeeringPropertiesConnectivityProbesList = /*@__PURE__*/ S.Array(
   ConnectivityProbe,
 ) as any as S.Schema<PeeringPropertiesConnectivityProbesList>;
@@ -847,11 +844,11 @@ export interface PeeringSku {
   /** The name of the peering SKU. */
   name?: string;
   /** The tier of the peering SKU. */
-  tier?: Tier;
+  tier?: Tier | (string & {});
   /** The family of the peering SKU. */
-  family?: Family;
+  family?: Family | (string & {});
   /** The size of the peering SKU. */
-  size?: Size;
+  size?: Size | (string & {});
 }
 export const PeeringSku = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -902,7 +899,7 @@ export const Peering2 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Peering2" }) as any as S.Schema<Peering2>;
 
 /** The Peering items on this page */
-export type PeeringListResultValueList = ReadonlyArray<Peering2>;
+export type PeeringListResultValueList = Array<Peering2>;
 export const PeeringListResultValueList = /*@__PURE__*/ S.Array(
   Peering2,
 ) as any as S.Schema<PeeringListResultValueList>;
@@ -1020,8 +1017,7 @@ export const OperationDisplayInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplayInfo>;
 
 /** Supported time grain types for the metric. */
-export type MetricSpecificationSupportedTimeGrainTypesList =
-  ReadonlyArray<string>;
+export type MetricSpecificationSupportedTimeGrainTypesList = Array<string>;
 export const MetricSpecificationSupportedTimeGrainTypesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1044,7 +1040,7 @@ export const MetricDimension = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MetricDimension>;
 
 /** Dimensions of the metric. */
-export type MetricSpecificationDimensionsList = ReadonlyArray<MetricDimension>;
+export type MetricSpecificationDimensionsList = Array<MetricDimension>;
 export const MetricSpecificationDimensionsList = /*@__PURE__*/ S.Array(
   MetricDimension,
 ) as any as S.Schema<MetricSpecificationDimensionsList>;
@@ -1084,7 +1080,7 @@ export const MetricSpecification = /*@__PURE__*/ S.suspend(() =>
 
 /** Specifications of the Metrics for Azure Monitoring. */
 export type ServiceSpecificationMetricSpecificationsList =
-  ReadonlyArray<MetricSpecification>;
+  Array<MetricSpecification>;
 export const ServiceSpecificationMetricSpecificationsList =
   /*@__PURE__*/ S.Array(
     MetricSpecification,
@@ -1139,7 +1135,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** The list of peering API operations. */
-export type OperationListResultValueList = ReadonlyArray<Operation>;
+export type OperationListResultValueList = Array<Operation>;
 export const OperationListResultValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationListResultValueList>;
@@ -1173,7 +1169,7 @@ export const Role = /*@__PURE__*/ S.String;
 /** The contact detail class. */
 export interface ContactDetail {
   /** The role of the contact. */
-  role?: Role;
+  role?: Role | (string & {});
   /** The e-mail address of the contact. */
   email?: string;
   /** The phone number of the contact. */
@@ -1188,8 +1184,7 @@ export const ContactDetail = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ContactDetail" }) as any as S.Schema<ContactDetail>;
 
 /** The contact details of the peer. */
-export type PeerAsnPropertiesInputPeerContactDetailList =
-  ReadonlyArray<ContactDetail>;
+export type PeerAsnPropertiesInputPeerContactDetailList = Array<ContactDetail>;
 export const PeerAsnPropertiesInputPeerContactDetailList =
   /*@__PURE__*/ S.Array(
     ContactDetail,
@@ -1240,8 +1235,7 @@ export const PeerAsnsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PeerAsnsCreateOrUpdateRequest>;
 
 /** The contact details of the peer. */
-export type PeerAsnPropertiesPeerContactDetailList =
-  ReadonlyArray<ContactDetail>;
+export type PeerAsnPropertiesPeerContactDetailList = Array<ContactDetail>;
 export const PeerAsnPropertiesPeerContactDetailList = /*@__PURE__*/ S.Array(
   ContactDetail,
 ) as any as S.Schema<PeerAsnPropertiesPeerContactDetailList>;
@@ -1417,7 +1411,7 @@ export const PeerAsn = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PeerAsn" }) as any as S.Schema<PeerAsn>;
 
 /** The PeerAsn items on this page */
-export type PeerAsnListResultValueList = ReadonlyArray<PeerAsn>;
+export type PeerAsnListResultValueList = Array<PeerAsn>;
 export const PeerAsnListResultValueList = /*@__PURE__*/ S.Array(
   PeerAsn,
 ) as any as S.Schema<PeerAsnListResultValueList>;
@@ -1507,7 +1501,7 @@ export const DirectPeeringFacility = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of direct peering facilities at the peering location. */
 export type PeeringLocationPropertiesDirectPeeringFacilitiesList =
-  ReadonlyArray<DirectPeeringFacility>;
+  Array<DirectPeeringFacility>;
 export const PeeringLocationPropertiesDirectPeeringFacilitiesList =
   /*@__PURE__*/ S.Array(
     DirectPeeringFacility,
@@ -1531,7 +1525,7 @@ export const PeeringBandwidthOffer = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of bandwidth offers available at the peering location. */
 export type PeeringLocationPropertiesDirectBandwidthOffersList =
-  ReadonlyArray<PeeringBandwidthOffer>;
+  Array<PeeringBandwidthOffer>;
 export const PeeringLocationPropertiesDirectBandwidthOffersList =
   /*@__PURE__*/ S.Array(
     PeeringBandwidthOffer,
@@ -1593,7 +1587,7 @@ export const ExchangePeeringFacility = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of exchange peering facilities at the peering location. */
 export type PeeringLocationPropertiesExchangePeeringFacilitiesList =
-  ReadonlyArray<ExchangePeeringFacility>;
+  Array<ExchangePeeringFacility>;
 export const PeeringLocationPropertiesExchangePeeringFacilitiesList =
   /*@__PURE__*/ S.Array(
     ExchangePeeringFacility,
@@ -1668,7 +1662,7 @@ export const PeeringLocation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PeeringLocation>;
 
 /** The PeeringLocation items on this page */
-export type PeeringLocationListResultValueList = ReadonlyArray<PeeringLocation>;
+export type PeeringLocationListResultValueList = Array<PeeringLocation>;
 export const PeeringLocationListResultValueList = /*@__PURE__*/ S.Array(
   PeeringLocation,
 ) as any as S.Schema<PeeringLocationListResultValueList>;
@@ -1728,7 +1722,7 @@ export const DirectConnectionInput = /*@__PURE__*/ S.suspend(() =>
 
 /** The set of connections that constitute a direct peering. */
 export type PeeringPropertiesDirectInputConnectionsList =
-  ReadonlyArray<DirectConnectionInput>;
+  Array<DirectConnectionInput>;
 export const PeeringPropertiesDirectInputConnectionsList =
   /*@__PURE__*/ S.Array(
     DirectConnectionInput,
@@ -1774,7 +1768,7 @@ export const ExchangeConnectionInput = /*@__PURE__*/ S.suspend(() =>
 
 /** The set of connections that constitute an exchange peering. */
 export type PeeringPropertiesExchangeInputConnectionsList =
-  ReadonlyArray<ExchangeConnectionInput>;
+  Array<ExchangeConnectionInput>;
 export const PeeringPropertiesExchangeInputConnectionsList =
   /*@__PURE__*/ S.Array(
     ExchangeConnectionInput,
@@ -1817,7 +1811,7 @@ export const ConnectivityProbeInput = /*@__PURE__*/ S.suspend(() =>
 
 /** The connectivity probes associated with the peering. */
 export type PeeringPropertiesInputConnectivityProbesList =
-  ReadonlyArray<ConnectivityProbeInput>;
+  Array<ConnectivityProbeInput>;
 export const PeeringPropertiesInputConnectivityProbesList =
   /*@__PURE__*/ S.Array(
     ConnectivityProbeInput,
@@ -2007,7 +2001,7 @@ export const PeeringServiceCountry = /*@__PURE__*/ S.suspend(() =>
 
 /** The PeeringServiceCountry items on this page */
 export type PeeringServiceCountryListResultValueList =
-  ReadonlyArray<PeeringServiceCountry>;
+  Array<PeeringServiceCountry>;
 export const PeeringServiceCountryListResultValueList = /*@__PURE__*/ S.Array(
   PeeringServiceCountry,
 ) as any as S.Schema<PeeringServiceCountryListResultValueList>;
@@ -2096,7 +2090,7 @@ export const PeeringServiceLocation = /*@__PURE__*/ S.suspend(() =>
 
 /** The PeeringServiceLocation items on this page */
 export type PeeringServiceLocationListResultValueList =
-  ReadonlyArray<PeeringServiceLocation>;
+  Array<PeeringServiceLocation>;
 export const PeeringServiceLocationListResultValueList = /*@__PURE__*/ S.Array(
   PeeringServiceLocation,
 ) as any as S.Schema<PeeringServiceLocationListResultValueList>;
@@ -2138,7 +2132,7 @@ export const PeeringServiceProvidersListRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of locations at which the service provider peers with Microsoft. */
 export type PeeringServiceProviderPropertiesPeeringLocationsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PeeringServiceProviderPropertiesPeeringLocationsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2189,7 +2183,7 @@ export const PeeringServiceProvider = /*@__PURE__*/ S.suspend(() =>
 
 /** The PeeringServiceProvider items on this page */
 export type PeeringServiceProviderListResultValueList =
-  ReadonlyArray<PeeringServiceProvider>;
+  Array<PeeringServiceProvider>;
 export const PeeringServiceProviderListResultValueList = /*@__PURE__*/ S.Array(
   PeeringServiceProvider,
 ) as any as S.Schema<PeeringServiceProviderListResultValueList>;
@@ -2317,8 +2311,7 @@ export const PeeringServicesCreateOrUpdateResponseTagsMap =
   ) as any as S.Schema<PeeringServicesCreateOrUpdateResponseTagsMap>;
 
 /** The list of connected agents. */
-export type LogAnalyticsWorkspacePropertiesConnectedAgentsList =
-  ReadonlyArray<string>;
+export type LogAnalyticsWorkspacePropertiesConnectedAgentsList = Array<string>;
 export const LogAnalyticsWorkspacePropertiesConnectedAgentsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2597,7 +2590,7 @@ export const PeeringService = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PeeringService" }) as any as S.Schema<PeeringService>;
 
 /** The PeeringService items on this page */
-export type PeeringServiceListResultValueList = ReadonlyArray<PeeringService>;
+export type PeeringServiceListResultValueList = Array<PeeringService>;
 export const PeeringServiceListResultValueList = /*@__PURE__*/ S.Array(
   PeeringService,
 ) as any as S.Schema<PeeringServiceListResultValueList>;
@@ -2997,7 +2990,7 @@ export const PeeringServicePrefixEvent = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of events for peering service prefix */
 export type PeeringServicePrefixPropertiesEventsList =
-  ReadonlyArray<PeeringServicePrefixEvent>;
+  Array<PeeringServicePrefixEvent>;
 export const PeeringServicePrefixPropertiesEventsList = /*@__PURE__*/ S.Array(
   PeeringServicePrefixEvent,
 ) as any as S.Schema<PeeringServicePrefixPropertiesEventsList>;
@@ -3202,7 +3195,7 @@ export const PeeringServicePrefix = /*@__PURE__*/ S.suspend(() =>
 
 /** The PeeringServicePrefix items on this page */
 export type PeeringServicePrefixListResultValueList =
-  ReadonlyArray<PeeringServicePrefix>;
+  Array<PeeringServicePrefix>;
 export const PeeringServicePrefixListResultValueList = /*@__PURE__*/ S.Array(
   PeeringServicePrefix,
 ) as any as S.Schema<PeeringServicePrefixListResultValueList>;
@@ -3296,7 +3289,7 @@ export const PeeringReceivedRoute = /*@__PURE__*/ S.suspend(() =>
 
 /** The PeeringReceivedRoute items on this page */
 export type PeeringReceivedRouteListResultValueList =
-  ReadonlyArray<PeeringReceivedRoute>;
+  Array<PeeringReceivedRoute>;
 export const PeeringReceivedRouteListResultValueList = /*@__PURE__*/ S.Array(
   PeeringReceivedRoute,
 ) as any as S.Schema<PeeringReceivedRouteListResultValueList>;
@@ -3544,7 +3537,7 @@ export const PeeringRegisteredAsn = /*@__PURE__*/ S.suspend(() =>
 
 /** The PeeringRegisteredAsn items on this page */
 export type PeeringRegisteredAsnListResultValueList =
-  ReadonlyArray<PeeringRegisteredAsn>;
+  Array<PeeringRegisteredAsn>;
 export const PeeringRegisteredAsnListResultValueList = /*@__PURE__*/ S.Array(
   PeeringRegisteredAsn,
 ) as any as S.Schema<PeeringRegisteredAsnListResultValueList>;
@@ -3801,7 +3794,7 @@ export const PeeringRegisteredPrefix = /*@__PURE__*/ S.suspend(() =>
 
 /** The PeeringRegisteredPrefix items on this page */
 export type PeeringRegisteredPrefixListResultValueList =
-  ReadonlyArray<PeeringRegisteredPrefix>;
+  Array<PeeringRegisteredPrefix>;
 export const PeeringRegisteredPrefixListResultValueList = /*@__PURE__*/ S.Array(
   PeeringRegisteredPrefix,
 ) as any as S.Schema<PeeringRegisteredPrefixListResultValueList>;
@@ -3922,8 +3915,7 @@ export const RpUnbilledPrefix = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RpUnbilledPrefix>;
 
 /** The RpUnbilledPrefix items on this page */
-export type RpUnbilledPrefixListResultValueList =
-  ReadonlyArray<RpUnbilledPrefix>;
+export type RpUnbilledPrefixListResultValueList = Array<RpUnbilledPrefix>;
 export const RpUnbilledPrefixListResultValueList = /*@__PURE__*/ S.Array(
   RpUnbilledPrefix,
 ) as any as S.Schema<RpUnbilledPrefixListResultValueList>;

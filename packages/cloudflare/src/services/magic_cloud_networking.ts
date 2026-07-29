@@ -616,8 +616,7 @@ export type CloudIntegrationsCreateResponseStatusLastDiscoveryStatusV2 =
 export const CloudIntegrationsCreateResponseStatusLastDiscoveryStatusV2 =
   /*@__PURE__*/ S.String;
 
-export type CloudIntegrationsCreateResponseStatusRegionsList =
-  ReadonlyArray<string>;
+export type CloudIntegrationsCreateResponseStatusRegionsList = Array<string>;
 export const CloudIntegrationsCreateResponseStatusRegionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -648,7 +647,7 @@ export const CloudIntegrationsCreateResponseStatusInUseByItem =
   }) as any as S.Schema<CloudIntegrationsCreateResponseStatusInUseByItem>;
 
 export type CloudIntegrationsCreateResponseStatusInUseByList =
-  ReadonlyArray<CloudIntegrationsCreateResponseStatusInUseByItem>;
+  Array<CloudIntegrationsCreateResponseStatusInUseByItem>;
 export const CloudIntegrationsCreateResponseStatusInUseByList =
   /*@__PURE__*/ S.Array(
     CloudIntegrationsCreateResponseStatusInUseByItem,
@@ -780,12 +779,12 @@ export const OnRampsCreateRequestCloudType = /*@__PURE__*/ S.String;
 export type OnRampsCreateRequestType = "OnrampTypeSingle" | "OnrampTypeHub";
 export const OnRampsCreateRequestType = /*@__PURE__*/ S.String;
 
-export type OnRampsCreateRequestAttachedHubsList = ReadonlyArray<string>;
+export type OnRampsCreateRequestAttachedHubsList = Array<string>;
 export const OnRampsCreateRequestAttachedHubsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<OnRampsCreateRequestAttachedHubsList>;
 
-export type OnRampsCreateRequestAttachedVpcsList = ReadonlyArray<string>;
+export type OnRampsCreateRequestAttachedVpcsList = Array<string>;
 export const OnRampsCreateRequestAttachedVpcsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<OnRampsCreateRequestAttachedVpcsList>;
@@ -861,12 +860,12 @@ export const OnRampsCreateResponseCloudType = /*@__PURE__*/ S.String;
 export type OnRampsCreateResponseType = "OnrampTypeSingle" | "OnrampTypeHub";
 export const OnRampsCreateResponseType = /*@__PURE__*/ S.String;
 
-export type OnRampsCreateResponseAttachedHubsList = ReadonlyArray<string>;
+export type OnRampsCreateResponseAttachedHubsList = Array<string>;
 export const OnRampsCreateResponseAttachedHubsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<OnRampsCreateResponseAttachedHubsList>;
 
-export type OnRampsCreateResponseAttachedVpcsList = ReadonlyArray<string>;
+export type OnRampsCreateResponseAttachedVpcsList = Array<string>;
 export const OnRampsCreateResponseAttachedVpcsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<OnRampsCreateResponseAttachedVpcsList>;
@@ -910,7 +909,7 @@ export const OnRampsCreateResponsePlannedResourcesItemDiff =
   }) as any as S.Schema<OnRampsCreateResponsePlannedResourcesItemDiff>;
 
 export type OnRampsCreateResponsePlannedResourcesItemKeysRequireReplaceList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const OnRampsCreateResponsePlannedResourcesItemKeysRequireReplaceList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1071,7 +1070,7 @@ export const OnRampsCreateResponsePlannedResourcesItem =
   }) as any as S.Schema<OnRampsCreateResponsePlannedResourcesItem>;
 
 export type OnRampsCreateResponsePlannedResourcesList =
-  ReadonlyArray<OnRampsCreateResponsePlannedResourcesItem>;
+  Array<OnRampsCreateResponsePlannedResourcesItem>;
 export const OnRampsCreateResponsePlannedResourcesList = /*@__PURE__*/ S.Array(
   OnRampsCreateResponsePlannedResourcesItem,
 ) as any as S.Schema<OnRampsCreateResponsePlannedResourcesList>;
@@ -1152,7 +1151,7 @@ export const OnRampsCreateResponsePostApplyResourcesValueObservationsMap =
   ) as any as S.Schema<OnRampsCreateResponsePostApplyResourcesValueObservationsMap>;
 
 export type OnRampsCreateResponsePostApplyResourcesValueProviderIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const OnRampsCreateResponsePostApplyResourcesValueProviderIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1560,7 +1559,7 @@ export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItems
   }) as any as S.Schema<OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItem>;
 
 export type OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListList =
-  ReadonlyArray<OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItem>;
+  Array<OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItem>;
 export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListList =
   /*@__PURE__*/ S.Array(
     OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItem,
@@ -1634,7 +1633,7 @@ export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItems
   }) as any as S.Schema<OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItem>;
 
 export type OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsList =
-  ReadonlyArray<OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItem>;
+  Array<OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItem>;
 export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsList =
   /*@__PURE__*/ S.Array(
     OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItem,
@@ -1972,7 +1971,7 @@ export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItem
   }) as any as S.Schema<OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItem>;
 
 export type OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListList =
-  ReadonlyArray<OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItem>;
+  Array<OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItem>;
 export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListList =
   /*@__PURE__*/ S.Array(
     OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItem,
@@ -2046,7 +2045,7 @@ export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItem
   }) as any as S.Schema<OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItem>;
 
 export type OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsList =
-  ReadonlyArray<OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItem>;
+  Array<OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItem>;
 export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsList =
   /*@__PURE__*/ S.Array(
     OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItem,
@@ -2077,7 +2076,7 @@ export const OnRampsCreateResponsePostApplyResourcesValueSectionsItem =
   }) as any as S.Schema<OnRampsCreateResponsePostApplyResourcesValueSectionsItem>;
 
 export type OnRampsCreateResponsePostApplyResourcesValueSectionsList =
-  ReadonlyArray<OnRampsCreateResponsePostApplyResourcesValueSectionsItem>;
+  Array<OnRampsCreateResponsePostApplyResourcesValueSectionsItem>;
 export const OnRampsCreateResponsePostApplyResourcesValueSectionsList =
   /*@__PURE__*/ S.Array(
     OnRampsCreateResponsePostApplyResourcesValueSectionsItem,
@@ -2126,7 +2125,7 @@ export const OnRampsCreateResponsePostApplyResourcesValueManagedByItem =
   }) as any as S.Schema<OnRampsCreateResponsePostApplyResourcesValueManagedByItem>;
 
 export type OnRampsCreateResponsePostApplyResourcesValueManagedByList =
-  ReadonlyArray<OnRampsCreateResponsePostApplyResourcesValueManagedByItem>;
+  Array<OnRampsCreateResponsePostApplyResourcesValueManagedByItem>;
 export const OnRampsCreateResponsePostApplyResourcesValueManagedByList =
   /*@__PURE__*/ S.Array(
     OnRampsCreateResponsePostApplyResourcesValueManagedByItem,
@@ -2254,12 +2253,12 @@ export const OnRampsCreateResponseStatusPlanProgress = /*@__PURE__*/ S.suspend(
   identifier: "OnRampsCreateResponseStatusPlanProgress",
 }) as any as S.Schema<OnRampsCreateResponseStatusPlanProgress>;
 
-export type OnRampsCreateResponseStatusRoutesList = ReadonlyArray<string>;
+export type OnRampsCreateResponseStatusRoutesList = Array<string>;
 export const OnRampsCreateResponseStatusRoutesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<OnRampsCreateResponseStatusRoutesList>;
 
-export type OnRampsCreateResponseStatusTunnelsList = ReadonlyArray<string>;
+export type OnRampsCreateResponseStatusTunnelsList = Array<string>;
 export const OnRampsCreateResponseStatusTunnelsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<OnRampsCreateResponseStatusTunnelsList>;
@@ -2579,8 +2578,7 @@ export const OnRampsCreateResponseVpcsByIdValueObservationsMap =
     OnRampsCreateResponseVpcsByIdValueObservationsValue,
   ) as any as S.Schema<OnRampsCreateResponseVpcsByIdValueObservationsMap>;
 
-export type OnRampsCreateResponseVpcsByIdValueProviderIdsList =
-  ReadonlyArray<string>;
+export type OnRampsCreateResponseVpcsByIdValueProviderIdsList = Array<string>;
 export const OnRampsCreateResponseVpcsByIdValueProviderIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2988,7 +2986,7 @@ export const OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueM
   }) as any as S.Schema<OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItem>;
 
 export type OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListList =
-  ReadonlyArray<OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItem>;
+  Array<OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItem>;
 export const OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListList =
   /*@__PURE__*/ S.Array(
     OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItem,
@@ -3061,7 +3059,7 @@ export const OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItem =
   }) as any as S.Schema<OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItem>;
 
 export type OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsList =
-  ReadonlyArray<OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItem>;
+  Array<OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItem>;
 export const OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsList =
   /*@__PURE__*/ S.Array(
     OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItem,
@@ -3399,7 +3397,7 @@ export const OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValue
   }) as any as S.Schema<OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItem>;
 
 export type OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListList =
-  ReadonlyArray<OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItem>;
+  Array<OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItem>;
 export const OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListList =
   /*@__PURE__*/ S.Array(
     OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItem,
@@ -3473,7 +3471,7 @@ export const OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItem =
   }) as any as S.Schema<OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItem>;
 
 export type OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsList =
-  ReadonlyArray<OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItem>;
+  Array<OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItem>;
 export const OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsList =
   /*@__PURE__*/ S.Array(
     OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItem,
@@ -3504,7 +3502,7 @@ export const OnRampsCreateResponseVpcsByIdValueSectionsItem =
   }) as any as S.Schema<OnRampsCreateResponseVpcsByIdValueSectionsItem>;
 
 export type OnRampsCreateResponseVpcsByIdValueSectionsList =
-  ReadonlyArray<OnRampsCreateResponseVpcsByIdValueSectionsItem>;
+  Array<OnRampsCreateResponseVpcsByIdValueSectionsItem>;
 export const OnRampsCreateResponseVpcsByIdValueSectionsList =
   /*@__PURE__*/ S.Array(
     OnRampsCreateResponseVpcsByIdValueSectionsItem,
@@ -3552,7 +3550,7 @@ export const OnRampsCreateResponseVpcsByIdValueManagedByItem =
   }) as any as S.Schema<OnRampsCreateResponseVpcsByIdValueManagedByItem>;
 
 export type OnRampsCreateResponseVpcsByIdValueManagedByList =
-  ReadonlyArray<OnRampsCreateResponseVpcsByIdValueManagedByItem>;
+  Array<OnRampsCreateResponseVpcsByIdValueManagedByItem>;
 export const OnRampsCreateResponseVpcsByIdValueManagedByList =
   /*@__PURE__*/ S.Array(
     OnRampsCreateResponseVpcsByIdValueManagedByItem,
@@ -3633,8 +3631,7 @@ export const OnRampsCreateResponseVpcsByIdMap = /*@__PURE__*/ S.Record(
   OnRampsCreateResponseVpcsByIdValue,
 ) as any as S.Schema<OnRampsCreateResponseVpcsByIdMap>;
 
-export type OnRampsCreateResponseVpcsByIdUnavailableList =
-  ReadonlyArray<string>;
+export type OnRampsCreateResponseVpcsByIdUnavailableList = Array<string>;
 export const OnRampsCreateResponseVpcsByIdUnavailableList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3936,7 +3933,7 @@ export const ExportOnRampResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ExportOnRampResponse",
 }) as any as S.Schema<ExportOnRampResponse>;
 
-export type ResourcesExportRequestResourceIdList = ReadonlyArray<string>;
+export type ResourcesExportRequestResourceIdList = Array<string>;
 export const ResourcesExportRequestResourceIdList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ResourcesExportRequestResourceIdList>;
@@ -4001,14 +3998,14 @@ export type ResourcesExportRequestResourceType =
   | "cloudflare_ipsec_tunnel";
 export const ResourcesExportRequestResourceType = /*@__PURE__*/ S.String;
 
-export type ResourcesExportRequestResourceTypeList = ReadonlyArray<
+export type ResourcesExportRequestResourceTypeList = Array<
   ResourcesExportRequestResourceType | (string & {})
 >;
 export const ResourcesExportRequestResourceTypeList = /*@__PURE__*/ S.Array(
   ResourcesExportRequestResourceType,
 ) as any as S.Schema<ResourcesExportRequestResourceTypeList>;
 
-export type ResourcesExportRequestSearchList = ReadonlyArray<string>;
+export type ResourcesExportRequestSearchList = Array<string>;
 export const ResourcesExportRequestSearchList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ResourcesExportRequestSearchList>;
@@ -4455,8 +4452,7 @@ export type CloudIntegrationsGetResponseStatusLastDiscoveryStatusV2 =
 export const CloudIntegrationsGetResponseStatusLastDiscoveryStatusV2 =
   /*@__PURE__*/ S.String;
 
-export type CloudIntegrationsGetResponseStatusRegionsList =
-  ReadonlyArray<string>;
+export type CloudIntegrationsGetResponseStatusRegionsList = Array<string>;
 export const CloudIntegrationsGetResponseStatusRegionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4486,7 +4482,7 @@ export const CloudIntegrationsGetResponseStatusInUseByItem =
   }) as any as S.Schema<CloudIntegrationsGetResponseStatusInUseByItem>;
 
 export type CloudIntegrationsGetResponseStatusInUseByList =
-  ReadonlyArray<CloudIntegrationsGetResponseStatusInUseByItem>;
+  Array<CloudIntegrationsGetResponseStatusInUseByItem>;
 export const CloudIntegrationsGetResponseStatusInUseByList =
   /*@__PURE__*/ S.Array(
     CloudIntegrationsGetResponseStatusInUseByItem,
@@ -4643,12 +4639,12 @@ export const OnRampsGetResponseCloudType = /*@__PURE__*/ S.String;
 export type OnRampsGetResponseType = "OnrampTypeSingle" | "OnrampTypeHub";
 export const OnRampsGetResponseType = /*@__PURE__*/ S.String;
 
-export type OnRampsGetResponseAttachedHubsList = ReadonlyArray<string>;
+export type OnRampsGetResponseAttachedHubsList = Array<string>;
 export const OnRampsGetResponseAttachedHubsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<OnRampsGetResponseAttachedHubsList>;
 
-export type OnRampsGetResponseAttachedVpcsList = ReadonlyArray<string>;
+export type OnRampsGetResponseAttachedVpcsList = Array<string>;
 export const OnRampsGetResponseAttachedVpcsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<OnRampsGetResponseAttachedVpcsList>;
@@ -4692,7 +4688,7 @@ export const OnRampsGetResponsePlannedResourcesItemDiff =
   }) as any as S.Schema<OnRampsGetResponsePlannedResourcesItemDiff>;
 
 export type OnRampsGetResponsePlannedResourcesItemKeysRequireReplaceList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const OnRampsGetResponsePlannedResourcesItemKeysRequireReplaceList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4850,7 +4846,7 @@ export const OnRampsGetResponsePlannedResourcesItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<OnRampsGetResponsePlannedResourcesItem>;
 
 export type OnRampsGetResponsePlannedResourcesList =
-  ReadonlyArray<OnRampsGetResponsePlannedResourcesItem>;
+  Array<OnRampsGetResponsePlannedResourcesItem>;
 export const OnRampsGetResponsePlannedResourcesList = /*@__PURE__*/ S.Array(
   OnRampsGetResponsePlannedResourcesItem,
 ) as any as S.Schema<OnRampsGetResponsePlannedResourcesList>;
@@ -4930,7 +4926,7 @@ export const OnRampsGetResponsePostApplyResourcesValueObservationsMap =
   ) as any as S.Schema<OnRampsGetResponsePostApplyResourcesValueObservationsMap>;
 
 export type OnRampsGetResponsePostApplyResourcesValueProviderIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const OnRampsGetResponsePostApplyResourcesValueProviderIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5338,7 +5334,7 @@ export const OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsIte
   }) as any as S.Schema<OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItem>;
 
 export type OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListList =
-  ReadonlyArray<OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItem>;
+  Array<OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItem>;
 export const OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListList =
   /*@__PURE__*/ S.Array(
     OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItem,
@@ -5412,7 +5408,7 @@ export const OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsIte
   }) as any as S.Schema<OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItem>;
 
 export type OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsList =
-  ReadonlyArray<OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItem>;
+  Array<OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItem>;
 export const OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsList =
   /*@__PURE__*/ S.Array(
     OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItem,
@@ -5750,7 +5746,7 @@ export const OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsIt
   }) as any as S.Schema<OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItem>;
 
 export type OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListList =
-  ReadonlyArray<OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItem>;
+  Array<OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItem>;
 export const OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListList =
   /*@__PURE__*/ S.Array(
     OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItem,
@@ -5824,7 +5820,7 @@ export const OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsIt
   }) as any as S.Schema<OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItem>;
 
 export type OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsList =
-  ReadonlyArray<OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItem>;
+  Array<OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItem>;
 export const OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsList =
   /*@__PURE__*/ S.Array(
     OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItem,
@@ -5855,7 +5851,7 @@ export const OnRampsGetResponsePostApplyResourcesValueSectionsItem =
   }) as any as S.Schema<OnRampsGetResponsePostApplyResourcesValueSectionsItem>;
 
 export type OnRampsGetResponsePostApplyResourcesValueSectionsList =
-  ReadonlyArray<OnRampsGetResponsePostApplyResourcesValueSectionsItem>;
+  Array<OnRampsGetResponsePostApplyResourcesValueSectionsItem>;
 export const OnRampsGetResponsePostApplyResourcesValueSectionsList =
   /*@__PURE__*/ S.Array(
     OnRampsGetResponsePostApplyResourcesValueSectionsItem,
@@ -5904,7 +5900,7 @@ export const OnRampsGetResponsePostApplyResourcesValueManagedByItem =
   }) as any as S.Schema<OnRampsGetResponsePostApplyResourcesValueManagedByItem>;
 
 export type OnRampsGetResponsePostApplyResourcesValueManagedByList =
-  ReadonlyArray<OnRampsGetResponsePostApplyResourcesValueManagedByItem>;
+  Array<OnRampsGetResponsePostApplyResourcesValueManagedByItem>;
 export const OnRampsGetResponsePostApplyResourcesValueManagedByList =
   /*@__PURE__*/ S.Array(
     OnRampsGetResponsePostApplyResourcesValueManagedByItem,
@@ -6030,12 +6026,12 @@ export const OnRampsGetResponseStatusPlanProgress = /*@__PURE__*/ S.suspend(
   identifier: "OnRampsGetResponseStatusPlanProgress",
 }) as any as S.Schema<OnRampsGetResponseStatusPlanProgress>;
 
-export type OnRampsGetResponseStatusRoutesList = ReadonlyArray<string>;
+export type OnRampsGetResponseStatusRoutesList = Array<string>;
 export const OnRampsGetResponseStatusRoutesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<OnRampsGetResponseStatusRoutesList>;
 
-export type OnRampsGetResponseStatusTunnelsList = ReadonlyArray<string>;
+export type OnRampsGetResponseStatusTunnelsList = Array<string>;
 export const OnRampsGetResponseStatusTunnelsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<OnRampsGetResponseStatusTunnelsList>;
@@ -6351,8 +6347,7 @@ export const OnRampsGetResponseVpcsByIdValueObservationsMap =
     OnRampsGetResponseVpcsByIdValueObservationsValue,
   ) as any as S.Schema<OnRampsGetResponseVpcsByIdValueObservationsMap>;
 
-export type OnRampsGetResponseVpcsByIdValueProviderIdsList =
-  ReadonlyArray<string>;
+export type OnRampsGetResponseVpcsByIdValueProviderIdsList = Array<string>;
 export const OnRampsGetResponseVpcsByIdValueProviderIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6760,7 +6755,7 @@ export const OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnL
   }) as any as S.Schema<OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItem>;
 
 export type OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListList =
-  ReadonlyArray<OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItem>;
+  Array<OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItem>;
 export const OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListList =
   /*@__PURE__*/ S.Array(
     OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItem,
@@ -6833,7 +6828,7 @@ export const OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItem =
   }) as any as S.Schema<OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItem>;
 
 export type OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsList =
-  ReadonlyArray<OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItem>;
+  Array<OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItem>;
 export const OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsList =
   /*@__PURE__*/ S.Array(
     OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItem,
@@ -7171,7 +7166,7 @@ export const OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcn
   }) as any as S.Schema<OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItem>;
 
 export type OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListList =
-  ReadonlyArray<OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItem>;
+  Array<OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItem>;
 export const OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListList =
   /*@__PURE__*/ S.Array(
     OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItem,
@@ -7244,7 +7239,7 @@ export const OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItem =
   }) as any as S.Schema<OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItem>;
 
 export type OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsList =
-  ReadonlyArray<OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItem>;
+  Array<OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItem>;
 export const OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsList =
   /*@__PURE__*/ S.Array(
     OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItem,
@@ -7275,7 +7270,7 @@ export const OnRampsGetResponseVpcsByIdValueSectionsItem =
   }) as any as S.Schema<OnRampsGetResponseVpcsByIdValueSectionsItem>;
 
 export type OnRampsGetResponseVpcsByIdValueSectionsList =
-  ReadonlyArray<OnRampsGetResponseVpcsByIdValueSectionsItem>;
+  Array<OnRampsGetResponseVpcsByIdValueSectionsItem>;
 export const OnRampsGetResponseVpcsByIdValueSectionsList =
   /*@__PURE__*/ S.Array(
     OnRampsGetResponseVpcsByIdValueSectionsItem,
@@ -7321,7 +7316,7 @@ export const OnRampsGetResponseVpcsByIdValueManagedByItem =
   }) as any as S.Schema<OnRampsGetResponseVpcsByIdValueManagedByItem>;
 
 export type OnRampsGetResponseVpcsByIdValueManagedByList =
-  ReadonlyArray<OnRampsGetResponseVpcsByIdValueManagedByItem>;
+  Array<OnRampsGetResponseVpcsByIdValueManagedByItem>;
 export const OnRampsGetResponseVpcsByIdValueManagedByList =
   /*@__PURE__*/ S.Array(
     OnRampsGetResponseVpcsByIdValueManagedByItem,
@@ -7399,7 +7394,7 @@ export const OnRampsGetResponseVpcsByIdMap = /*@__PURE__*/ S.Record(
   OnRampsGetResponseVpcsByIdValue,
 ) as any as S.Schema<OnRampsGetResponseVpcsByIdMap>;
 
-export type OnRampsGetResponseVpcsByIdUnavailableList = ReadonlyArray<string>;
+export type OnRampsGetResponseVpcsByIdUnavailableList = Array<string>;
 export const OnRampsGetResponseVpcsByIdUnavailableList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<OnRampsGetResponseVpcsByIdUnavailableList>;
@@ -7585,7 +7580,7 @@ export const ResourcesGetResponseObservationsMap = /*@__PURE__*/ S.Record(
   ResourcesGetResponseObservationsValue,
 ) as any as S.Schema<ResourcesGetResponseObservationsMap>;
 
-export type ResourcesGetResponseProviderIdsList = ReadonlyArray<string>;
+export type ResourcesGetResponseProviderIdsList = Array<string>;
 export const ResourcesGetResponseProviderIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ResourcesGetResponseProviderIdsList>;
@@ -7990,7 +7985,7 @@ export const ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemList
   }) as any as S.Schema<ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListItem>;
 
 export type ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListList =
-  ReadonlyArray<ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListItem>;
+  Array<ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListItem>;
 export const ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListList =
   /*@__PURE__*/ S.Array(
     ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListItem,
@@ -8060,7 +8055,7 @@ export const ResourcesGetResponseSectionsItemHiddenItemsItem =
   }) as any as S.Schema<ResourcesGetResponseSectionsItemHiddenItemsItem>;
 
 export type ResourcesGetResponseSectionsItemHiddenItemsList =
-  ReadonlyArray<ResourcesGetResponseSectionsItemHiddenItemsItem>;
+  Array<ResourcesGetResponseSectionsItemHiddenItemsItem>;
 export const ResourcesGetResponseSectionsItemHiddenItemsList =
   /*@__PURE__*/ S.Array(
     ResourcesGetResponseSectionsItemHiddenItemsItem,
@@ -8398,7 +8393,7 @@ export const ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemLis
   }) as any as S.Schema<ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemListItem>;
 
 export type ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemListList =
-  ReadonlyArray<ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemListItem>;
+  Array<ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemListItem>;
 export const ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemListList =
   /*@__PURE__*/ S.Array(
     ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemListItem,
@@ -8468,7 +8463,7 @@ export const ResourcesGetResponseSectionsItemVisibleItemsItem =
   }) as any as S.Schema<ResourcesGetResponseSectionsItemVisibleItemsItem>;
 
 export type ResourcesGetResponseSectionsItemVisibleItemsList =
-  ReadonlyArray<ResourcesGetResponseSectionsItemVisibleItemsItem>;
+  Array<ResourcesGetResponseSectionsItemVisibleItemsItem>;
 export const ResourcesGetResponseSectionsItemVisibleItemsList =
   /*@__PURE__*/ S.Array(
     ResourcesGetResponseSectionsItemVisibleItemsItem,
@@ -8496,7 +8491,7 @@ export const ResourcesGetResponseSectionsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourcesGetResponseSectionsItem>;
 
 export type ResourcesGetResponseSectionsList =
-  ReadonlyArray<ResourcesGetResponseSectionsItem>;
+  Array<ResourcesGetResponseSectionsItem>;
 export const ResourcesGetResponseSectionsList = /*@__PURE__*/ S.Array(
   ResourcesGetResponseSectionsItem,
 ) as any as S.Schema<ResourcesGetResponseSectionsList>;
@@ -8538,7 +8533,7 @@ export const ResourcesGetResponseManagedByItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourcesGetResponseManagedByItem>;
 
 export type ResourcesGetResponseManagedByList =
-  ReadonlyArray<ResourcesGetResponseManagedByItem>;
+  Array<ResourcesGetResponseManagedByItem>;
 export const ResourcesGetResponseManagedByList = /*@__PURE__*/ S.Array(
   ResourcesGetResponseManagedByItem,
 ) as any as S.Schema<ResourcesGetResponseManagedByList>;
@@ -8744,7 +8739,7 @@ export const CatalogSyncsPrebuiltPoliciesListResultItemApplicableDestinationsIte
   /*@__PURE__*/ S.String;
 
 export type CatalogSyncsPrebuiltPoliciesListResultItemApplicableDestinationsList =
-  ReadonlyArray<CatalogSyncsPrebuiltPoliciesListResultItemApplicableDestinationsItem>;
+  Array<CatalogSyncsPrebuiltPoliciesListResultItemApplicableDestinationsItem>;
 export const CatalogSyncsPrebuiltPoliciesListResultItemApplicableDestinationsList =
   /*@__PURE__*/ S.Array(
     CatalogSyncsPrebuiltPoliciesListResultItemApplicableDestinationsItem,
@@ -8772,7 +8767,7 @@ export const CatalogSyncsPrebuiltPoliciesListResultItem =
   }) as any as S.Schema<CatalogSyncsPrebuiltPoliciesListResultItem>;
 
 export type CatalogSyncsPrebuiltPoliciesListResultList =
-  ReadonlyArray<CatalogSyncsPrebuiltPoliciesListResultItem>;
+  Array<CatalogSyncsPrebuiltPoliciesListResultItem>;
 export const CatalogSyncsPrebuiltPoliciesListResultList = /*@__PURE__*/ S.Array(
   CatalogSyncsPrebuiltPoliciesListResultItem,
 ) as any as S.Schema<CatalogSyncsPrebuiltPoliciesListResultList>;
@@ -9087,8 +9082,7 @@ export const CatalogSyncsListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "CatalogSyncsListResultItem",
 }) as any as S.Schema<CatalogSyncsListResultItem>;
 
-export type CatalogSyncsListResultList =
-  ReadonlyArray<CatalogSyncsListResultItem>;
+export type CatalogSyncsListResultList = Array<CatalogSyncsListResultItem>;
 export const CatalogSyncsListResultList = /*@__PURE__*/ S.Array(
   CatalogSyncsListResultItem,
 ) as any as S.Schema<CatalogSyncsListResultList>;
@@ -9216,8 +9210,7 @@ export type CloudIntegrationsListResultItemStatusLastDiscoveryStatusV2 =
 export const CloudIntegrationsListResultItemStatusLastDiscoveryStatusV2 =
   /*@__PURE__*/ S.String;
 
-export type CloudIntegrationsListResultItemStatusRegionsList =
-  ReadonlyArray<string>;
+export type CloudIntegrationsListResultItemStatusRegionsList = Array<string>;
 export const CloudIntegrationsListResultItemStatusRegionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -9248,7 +9241,7 @@ export const CloudIntegrationsListResultItemStatusInUseByItem =
   }) as any as S.Schema<CloudIntegrationsListResultItemStatusInUseByItem>;
 
 export type CloudIntegrationsListResultItemStatusInUseByList =
-  ReadonlyArray<CloudIntegrationsListResultItemStatusInUseByItem>;
+  Array<CloudIntegrationsListResultItemStatusInUseByItem>;
 export const CloudIntegrationsListResultItemStatusInUseByList =
   /*@__PURE__*/ S.Array(
     CloudIntegrationsListResultItemStatusInUseByItem,
@@ -9374,7 +9367,7 @@ export const CloudIntegrationsListResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CloudIntegrationsListResultItem>;
 
 export type CloudIntegrationsListResultList =
-  ReadonlyArray<CloudIntegrationsListResultItem>;
+  Array<CloudIntegrationsListResultItem>;
 export const CloudIntegrationsListResultList = /*@__PURE__*/ S.Array(
   CloudIntegrationsListResultItem,
 ) as any as S.Schema<CloudIntegrationsListResultList>;
@@ -9413,8 +9406,7 @@ export const ListOnRampAddressSpacesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListOnRampAddressSpacesRequest",
 }) as any as S.Schema<ListOnRampAddressSpacesRequest>;
 
-export type OnRampsAddressSpacesListResponsePrefixesList =
-  ReadonlyArray<string>;
+export type OnRampsAddressSpacesListResponsePrefixesList = Array<string>;
 export const OnRampsAddressSpacesListResponsePrefixesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -9466,12 +9458,12 @@ export const OnRampsListResultItemCloudType = /*@__PURE__*/ S.String;
 export type OnRampsListResultItemType = "OnrampTypeSingle" | "OnrampTypeHub";
 export const OnRampsListResultItemType = /*@__PURE__*/ S.String;
 
-export type OnRampsListResultItemAttachedHubsList = ReadonlyArray<string>;
+export type OnRampsListResultItemAttachedHubsList = Array<string>;
 export const OnRampsListResultItemAttachedHubsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<OnRampsListResultItemAttachedHubsList>;
 
-export type OnRampsListResultItemAttachedVpcsList = ReadonlyArray<string>;
+export type OnRampsListResultItemAttachedVpcsList = Array<string>;
 export const OnRampsListResultItemAttachedVpcsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<OnRampsListResultItemAttachedVpcsList>;
@@ -9515,7 +9507,7 @@ export const OnRampsListResultItemPlannedResourcesItemDiff =
   }) as any as S.Schema<OnRampsListResultItemPlannedResourcesItemDiff>;
 
 export type OnRampsListResultItemPlannedResourcesItemKeysRequireReplaceList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const OnRampsListResultItemPlannedResourcesItemKeysRequireReplaceList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -9676,7 +9668,7 @@ export const OnRampsListResultItemPlannedResourcesItem =
   }) as any as S.Schema<OnRampsListResultItemPlannedResourcesItem>;
 
 export type OnRampsListResultItemPlannedResourcesList =
-  ReadonlyArray<OnRampsListResultItemPlannedResourcesItem>;
+  Array<OnRampsListResultItemPlannedResourcesItem>;
 export const OnRampsListResultItemPlannedResourcesList = /*@__PURE__*/ S.Array(
   OnRampsListResultItemPlannedResourcesItem,
 ) as any as S.Schema<OnRampsListResultItemPlannedResourcesList>;
@@ -9757,7 +9749,7 @@ export const OnRampsListResultItemPostApplyResourcesValueObservationsMap =
   ) as any as S.Schema<OnRampsListResultItemPostApplyResourcesValueObservationsMap>;
 
 export type OnRampsListResultItemPostApplyResourcesValueProviderIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const OnRampsListResultItemPostApplyResourcesValueProviderIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -10165,7 +10157,7 @@ export const OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItems
   }) as any as S.Schema<OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItem>;
 
 export type OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListList =
-  ReadonlyArray<OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItem>;
+  Array<OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItem>;
 export const OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListList =
   /*@__PURE__*/ S.Array(
     OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItem,
@@ -10239,7 +10231,7 @@ export const OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItems
   }) as any as S.Schema<OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItem>;
 
 export type OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsList =
-  ReadonlyArray<OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItem>;
+  Array<OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItem>;
 export const OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsList =
   /*@__PURE__*/ S.Array(
     OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItem,
@@ -10577,7 +10569,7 @@ export const OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItem
   }) as any as S.Schema<OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItem>;
 
 export type OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListList =
-  ReadonlyArray<OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItem>;
+  Array<OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItem>;
 export const OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListList =
   /*@__PURE__*/ S.Array(
     OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItem,
@@ -10651,7 +10643,7 @@ export const OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItem
   }) as any as S.Schema<OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItem>;
 
 export type OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsList =
-  ReadonlyArray<OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItem>;
+  Array<OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItem>;
 export const OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsList =
   /*@__PURE__*/ S.Array(
     OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItem,
@@ -10682,7 +10674,7 @@ export const OnRampsListResultItemPostApplyResourcesValueSectionsItem =
   }) as any as S.Schema<OnRampsListResultItemPostApplyResourcesValueSectionsItem>;
 
 export type OnRampsListResultItemPostApplyResourcesValueSectionsList =
-  ReadonlyArray<OnRampsListResultItemPostApplyResourcesValueSectionsItem>;
+  Array<OnRampsListResultItemPostApplyResourcesValueSectionsItem>;
 export const OnRampsListResultItemPostApplyResourcesValueSectionsList =
   /*@__PURE__*/ S.Array(
     OnRampsListResultItemPostApplyResourcesValueSectionsItem,
@@ -10731,7 +10723,7 @@ export const OnRampsListResultItemPostApplyResourcesValueManagedByItem =
   }) as any as S.Schema<OnRampsListResultItemPostApplyResourcesValueManagedByItem>;
 
 export type OnRampsListResultItemPostApplyResourcesValueManagedByList =
-  ReadonlyArray<OnRampsListResultItemPostApplyResourcesValueManagedByItem>;
+  Array<OnRampsListResultItemPostApplyResourcesValueManagedByItem>;
 export const OnRampsListResultItemPostApplyResourcesValueManagedByList =
   /*@__PURE__*/ S.Array(
     OnRampsListResultItemPostApplyResourcesValueManagedByItem,
@@ -10859,12 +10851,12 @@ export const OnRampsListResultItemStatusPlanProgress = /*@__PURE__*/ S.suspend(
   identifier: "OnRampsListResultItemStatusPlanProgress",
 }) as any as S.Schema<OnRampsListResultItemStatusPlanProgress>;
 
-export type OnRampsListResultItemStatusRoutesList = ReadonlyArray<string>;
+export type OnRampsListResultItemStatusRoutesList = Array<string>;
 export const OnRampsListResultItemStatusRoutesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<OnRampsListResultItemStatusRoutesList>;
 
-export type OnRampsListResultItemStatusTunnelsList = ReadonlyArray<string>;
+export type OnRampsListResultItemStatusTunnelsList = Array<string>;
 export const OnRampsListResultItemStatusTunnelsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<OnRampsListResultItemStatusTunnelsList>;
@@ -11184,8 +11176,7 @@ export const OnRampsListResultItemVpcsByIdValueObservationsMap =
     OnRampsListResultItemVpcsByIdValueObservationsValue,
   ) as any as S.Schema<OnRampsListResultItemVpcsByIdValueObservationsMap>;
 
-export type OnRampsListResultItemVpcsByIdValueProviderIdsList =
-  ReadonlyArray<string>;
+export type OnRampsListResultItemVpcsByIdValueProviderIdsList = Array<string>;
 export const OnRampsListResultItemVpcsByIdValueProviderIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -11593,7 +11584,7 @@ export const OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueM
   }) as any as S.Schema<OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItem>;
 
 export type OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListList =
-  ReadonlyArray<OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItem>;
+  Array<OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItem>;
 export const OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListList =
   /*@__PURE__*/ S.Array(
     OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItem,
@@ -11666,7 +11657,7 @@ export const OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItem =
   }) as any as S.Schema<OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItem>;
 
 export type OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsList =
-  ReadonlyArray<OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItem>;
+  Array<OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItem>;
 export const OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsList =
   /*@__PURE__*/ S.Array(
     OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItem,
@@ -12004,7 +11995,7 @@ export const OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValue
   }) as any as S.Schema<OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItem>;
 
 export type OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListList =
-  ReadonlyArray<OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItem>;
+  Array<OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItem>;
 export const OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListList =
   /*@__PURE__*/ S.Array(
     OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItem,
@@ -12078,7 +12069,7 @@ export const OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItem =
   }) as any as S.Schema<OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItem>;
 
 export type OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsList =
-  ReadonlyArray<OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItem>;
+  Array<OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItem>;
 export const OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsList =
   /*@__PURE__*/ S.Array(
     OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItem,
@@ -12109,7 +12100,7 @@ export const OnRampsListResultItemVpcsByIdValueSectionsItem =
   }) as any as S.Schema<OnRampsListResultItemVpcsByIdValueSectionsItem>;
 
 export type OnRampsListResultItemVpcsByIdValueSectionsList =
-  ReadonlyArray<OnRampsListResultItemVpcsByIdValueSectionsItem>;
+  Array<OnRampsListResultItemVpcsByIdValueSectionsItem>;
 export const OnRampsListResultItemVpcsByIdValueSectionsList =
   /*@__PURE__*/ S.Array(
     OnRampsListResultItemVpcsByIdValueSectionsItem,
@@ -12157,7 +12148,7 @@ export const OnRampsListResultItemVpcsByIdValueManagedByItem =
   }) as any as S.Schema<OnRampsListResultItemVpcsByIdValueManagedByItem>;
 
 export type OnRampsListResultItemVpcsByIdValueManagedByList =
-  ReadonlyArray<OnRampsListResultItemVpcsByIdValueManagedByItem>;
+  Array<OnRampsListResultItemVpcsByIdValueManagedByItem>;
 export const OnRampsListResultItemVpcsByIdValueManagedByList =
   /*@__PURE__*/ S.Array(
     OnRampsListResultItemVpcsByIdValueManagedByItem,
@@ -12238,8 +12229,7 @@ export const OnRampsListResultItemVpcsByIdMap = /*@__PURE__*/ S.Record(
   OnRampsListResultItemVpcsByIdValue,
 ) as any as S.Schema<OnRampsListResultItemVpcsByIdMap>;
 
-export type OnRampsListResultItemVpcsByIdUnavailableList =
-  ReadonlyArray<string>;
+export type OnRampsListResultItemVpcsByIdUnavailableList = Array<string>;
 export const OnRampsListResultItemVpcsByIdUnavailableList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -12349,7 +12339,7 @@ export const OnRampsListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "OnRampsListResultItem",
 }) as any as S.Schema<OnRampsListResultItem>;
 
-export type OnRampsListResultList = ReadonlyArray<OnRampsListResultItem>;
+export type OnRampsListResultList = Array<OnRampsListResultItem>;
 export const OnRampsListResultList = /*@__PURE__*/ S.Array(
   OnRampsListResultItem,
 ) as any as S.Schema<OnRampsListResultList>;
@@ -12369,7 +12359,7 @@ export const ListOnRampsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListOnRampsResponse",
 }) as any as S.Schema<ListOnRampsResponse>;
 
-export type ResourcesListRequestResourceIdList = ReadonlyArray<string>;
+export type ResourcesListRequestResourceIdList = Array<string>;
 export const ResourcesListRequestResourceIdList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ResourcesListRequestResourceIdList>;
@@ -12434,14 +12424,14 @@ export type ResourcesListRequestResourceType =
   | "cloudflare_ipsec_tunnel";
 export const ResourcesListRequestResourceType = /*@__PURE__*/ S.String;
 
-export type ResourcesListRequestResourceTypeList = ReadonlyArray<
+export type ResourcesListRequestResourceTypeList = Array<
   ResourcesListRequestResourceType | (string & {})
 >;
 export const ResourcesListRequestResourceTypeList = /*@__PURE__*/ S.Array(
   ResourcesListRequestResourceType,
 ) as any as S.Schema<ResourcesListRequestResourceTypeList>;
 
-export type ResourcesListRequestSearchList = ReadonlyArray<string>;
+export type ResourcesListRequestSearchList = Array<string>;
 export const ResourcesListRequestSearchList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ResourcesListRequestSearchList>;
@@ -12551,7 +12541,7 @@ export const ResourcesListResultItemObservationsMap = /*@__PURE__*/ S.Record(
   ResourcesListResultItemObservationsValue,
 ) as any as S.Schema<ResourcesListResultItemObservationsMap>;
 
-export type ResourcesListResultItemProviderIdsList = ReadonlyArray<string>;
+export type ResourcesListResultItemProviderIdsList = Array<string>;
 export const ResourcesListResultItemProviderIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ResourcesListResultItemProviderIdsList>;
@@ -12957,7 +12947,7 @@ export const ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemL
   }) as any as S.Schema<ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemListItem>;
 
 export type ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemListList =
-  ReadonlyArray<ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemListItem>;
+  Array<ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemListItem>;
 export const ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemListList =
   /*@__PURE__*/ S.Array(
     ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemListItem,
@@ -13029,7 +13019,7 @@ export const ResourcesListResultItemSectionsItemHiddenItemsItem =
   }) as any as S.Schema<ResourcesListResultItemSectionsItemHiddenItemsItem>;
 
 export type ResourcesListResultItemSectionsItemHiddenItemsList =
-  ReadonlyArray<ResourcesListResultItemSectionsItemHiddenItemsItem>;
+  Array<ResourcesListResultItemSectionsItemHiddenItemsItem>;
 export const ResourcesListResultItemSectionsItemHiddenItemsList =
   /*@__PURE__*/ S.Array(
     ResourcesListResultItemSectionsItemHiddenItemsItem,
@@ -13367,7 +13357,7 @@ export const ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItem
   }) as any as S.Schema<ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemListItem>;
 
 export type ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemListList =
-  ReadonlyArray<ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemListItem>;
+  Array<ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemListItem>;
 export const ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemListList =
   /*@__PURE__*/ S.Array(
     ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemListItem,
@@ -13439,7 +13429,7 @@ export const ResourcesListResultItemSectionsItemVisibleItemsItem =
   }) as any as S.Schema<ResourcesListResultItemSectionsItemVisibleItemsItem>;
 
 export type ResourcesListResultItemSectionsItemVisibleItemsList =
-  ReadonlyArray<ResourcesListResultItemSectionsItemVisibleItemsItem>;
+  Array<ResourcesListResultItemSectionsItemVisibleItemsItem>;
 export const ResourcesListResultItemSectionsItemVisibleItemsList =
   /*@__PURE__*/ S.Array(
     ResourcesListResultItemSectionsItemVisibleItemsItem,
@@ -13467,7 +13457,7 @@ export const ResourcesListResultItemSectionsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourcesListResultItemSectionsItem>;
 
 export type ResourcesListResultItemSectionsList =
-  ReadonlyArray<ResourcesListResultItemSectionsItem>;
+  Array<ResourcesListResultItemSectionsItem>;
 export const ResourcesListResultItemSectionsList = /*@__PURE__*/ S.Array(
   ResourcesListResultItemSectionsItem,
 ) as any as S.Schema<ResourcesListResultItemSectionsList>;
@@ -13512,7 +13502,7 @@ export const ResourcesListResultItemManagedByItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ResourcesListResultItemManagedByItem>;
 
 export type ResourcesListResultItemManagedByList =
-  ReadonlyArray<ResourcesListResultItemManagedByItem>;
+  Array<ResourcesListResultItemManagedByItem>;
 export const ResourcesListResultItemManagedByList = /*@__PURE__*/ S.Array(
   ResourcesListResultItemManagedByItem,
 ) as any as S.Schema<ResourcesListResultItemManagedByList>;
@@ -13578,7 +13568,7 @@ export const ResourcesListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "ResourcesListResultItem",
 }) as any as S.Schema<ResourcesListResultItem>;
 
-export type ResourcesListResultList = ReadonlyArray<ResourcesListResultItem>;
+export type ResourcesListResultList = Array<ResourcesListResultItem>;
 export const ResourcesListResultList = /*@__PURE__*/ S.Array(
   ResourcesListResultItem,
 ) as any as S.Schema<ResourcesListResultList>;
@@ -14022,8 +14012,7 @@ export type CloudIntegrationsEditResponseStatusLastDiscoveryStatusV2 =
 export const CloudIntegrationsEditResponseStatusLastDiscoveryStatusV2 =
   /*@__PURE__*/ S.String;
 
-export type CloudIntegrationsEditResponseStatusRegionsList =
-  ReadonlyArray<string>;
+export type CloudIntegrationsEditResponseStatusRegionsList = Array<string>;
 export const CloudIntegrationsEditResponseStatusRegionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -14053,7 +14042,7 @@ export const CloudIntegrationsEditResponseStatusInUseByItem =
   }) as any as S.Schema<CloudIntegrationsEditResponseStatusInUseByItem>;
 
 export type CloudIntegrationsEditResponseStatusInUseByList =
-  ReadonlyArray<CloudIntegrationsEditResponseStatusInUseByItem>;
+  Array<CloudIntegrationsEditResponseStatusInUseByItem>;
 export const CloudIntegrationsEditResponseStatusInUseByList =
   /*@__PURE__*/ S.Array(
     CloudIntegrationsEditResponseStatusInUseByItem,
@@ -14176,12 +14165,12 @@ export const PatchCloudIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchCloudIntegrationResponse",
 }) as any as S.Schema<PatchCloudIntegrationResponse>;
 
-export type OnRampsEditRequestAttachedHubsList = ReadonlyArray<string>;
+export type OnRampsEditRequestAttachedHubsList = Array<string>;
 export const OnRampsEditRequestAttachedHubsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<OnRampsEditRequestAttachedHubsList>;
 
-export type OnRampsEditRequestAttachedVpcsList = ReadonlyArray<string>;
+export type OnRampsEditRequestAttachedVpcsList = Array<string>;
 export const OnRampsEditRequestAttachedVpcsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<OnRampsEditRequestAttachedVpcsList>;
@@ -14243,12 +14232,12 @@ export const OnRampsEditResponseCloudType = /*@__PURE__*/ S.String;
 export type OnRampsEditResponseType = "OnrampTypeSingle" | "OnrampTypeHub";
 export const OnRampsEditResponseType = /*@__PURE__*/ S.String;
 
-export type OnRampsEditResponseAttachedHubsList = ReadonlyArray<string>;
+export type OnRampsEditResponseAttachedHubsList = Array<string>;
 export const OnRampsEditResponseAttachedHubsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<OnRampsEditResponseAttachedHubsList>;
 
-export type OnRampsEditResponseAttachedVpcsList = ReadonlyArray<string>;
+export type OnRampsEditResponseAttachedVpcsList = Array<string>;
 export const OnRampsEditResponseAttachedVpcsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<OnRampsEditResponseAttachedVpcsList>;
@@ -14292,7 +14281,7 @@ export const OnRampsEditResponsePlannedResourcesItemDiff =
   }) as any as S.Schema<OnRampsEditResponsePlannedResourcesItemDiff>;
 
 export type OnRampsEditResponsePlannedResourcesItemKeysRequireReplaceList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const OnRampsEditResponsePlannedResourcesItemKeysRequireReplaceList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -14451,7 +14440,7 @@ export const OnRampsEditResponsePlannedResourcesItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<OnRampsEditResponsePlannedResourcesItem>;
 
 export type OnRampsEditResponsePlannedResourcesList =
-  ReadonlyArray<OnRampsEditResponsePlannedResourcesItem>;
+  Array<OnRampsEditResponsePlannedResourcesItem>;
 export const OnRampsEditResponsePlannedResourcesList = /*@__PURE__*/ S.Array(
   OnRampsEditResponsePlannedResourcesItem,
 ) as any as S.Schema<OnRampsEditResponsePlannedResourcesList>;
@@ -14531,7 +14520,7 @@ export const OnRampsEditResponsePostApplyResourcesValueObservationsMap =
   ) as any as S.Schema<OnRampsEditResponsePostApplyResourcesValueObservationsMap>;
 
 export type OnRampsEditResponsePostApplyResourcesValueProviderIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const OnRampsEditResponsePostApplyResourcesValueProviderIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -14939,7 +14928,7 @@ export const OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsIt
   }) as any as S.Schema<OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItem>;
 
 export type OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListList =
-  ReadonlyArray<OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItem>;
+  Array<OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItem>;
 export const OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListList =
   /*@__PURE__*/ S.Array(
     OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItem,
@@ -15013,7 +15002,7 @@ export const OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsIt
   }) as any as S.Schema<OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItem>;
 
 export type OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsList =
-  ReadonlyArray<OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItem>;
+  Array<OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItem>;
 export const OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsList =
   /*@__PURE__*/ S.Array(
     OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItem,
@@ -15351,7 +15340,7 @@ export const OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsI
   }) as any as S.Schema<OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItem>;
 
 export type OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListList =
-  ReadonlyArray<OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItem>;
+  Array<OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItem>;
 export const OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListList =
   /*@__PURE__*/ S.Array(
     OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItem,
@@ -15425,7 +15414,7 @@ export const OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsI
   }) as any as S.Schema<OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItem>;
 
 export type OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsList =
-  ReadonlyArray<OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItem>;
+  Array<OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItem>;
 export const OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsList =
   /*@__PURE__*/ S.Array(
     OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItem,
@@ -15456,7 +15445,7 @@ export const OnRampsEditResponsePostApplyResourcesValueSectionsItem =
   }) as any as S.Schema<OnRampsEditResponsePostApplyResourcesValueSectionsItem>;
 
 export type OnRampsEditResponsePostApplyResourcesValueSectionsList =
-  ReadonlyArray<OnRampsEditResponsePostApplyResourcesValueSectionsItem>;
+  Array<OnRampsEditResponsePostApplyResourcesValueSectionsItem>;
 export const OnRampsEditResponsePostApplyResourcesValueSectionsList =
   /*@__PURE__*/ S.Array(
     OnRampsEditResponsePostApplyResourcesValueSectionsItem,
@@ -15505,7 +15494,7 @@ export const OnRampsEditResponsePostApplyResourcesValueManagedByItem =
   }) as any as S.Schema<OnRampsEditResponsePostApplyResourcesValueManagedByItem>;
 
 export type OnRampsEditResponsePostApplyResourcesValueManagedByList =
-  ReadonlyArray<OnRampsEditResponsePostApplyResourcesValueManagedByItem>;
+  Array<OnRampsEditResponsePostApplyResourcesValueManagedByItem>;
 export const OnRampsEditResponsePostApplyResourcesValueManagedByList =
   /*@__PURE__*/ S.Array(
     OnRampsEditResponsePostApplyResourcesValueManagedByItem,
@@ -15631,12 +15620,12 @@ export const OnRampsEditResponseStatusPlanProgress = /*@__PURE__*/ S.suspend(
   identifier: "OnRampsEditResponseStatusPlanProgress",
 }) as any as S.Schema<OnRampsEditResponseStatusPlanProgress>;
 
-export type OnRampsEditResponseStatusRoutesList = ReadonlyArray<string>;
+export type OnRampsEditResponseStatusRoutesList = Array<string>;
 export const OnRampsEditResponseStatusRoutesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<OnRampsEditResponseStatusRoutesList>;
 
-export type OnRampsEditResponseStatusTunnelsList = ReadonlyArray<string>;
+export type OnRampsEditResponseStatusTunnelsList = Array<string>;
 export const OnRampsEditResponseStatusTunnelsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<OnRampsEditResponseStatusTunnelsList>;
@@ -15952,8 +15941,7 @@ export const OnRampsEditResponseVpcsByIdValueObservationsMap =
     OnRampsEditResponseVpcsByIdValueObservationsValue,
   ) as any as S.Schema<OnRampsEditResponseVpcsByIdValueObservationsMap>;
 
-export type OnRampsEditResponseVpcsByIdValueProviderIdsList =
-  ReadonlyArray<string>;
+export type OnRampsEditResponseVpcsByIdValueProviderIdsList = Array<string>;
 export const OnRampsEditResponseVpcsByIdValueProviderIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -16361,7 +16349,7 @@ export const OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcn
   }) as any as S.Schema<OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItem>;
 
 export type OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListList =
-  ReadonlyArray<OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItem>;
+  Array<OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItem>;
 export const OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListList =
   /*@__PURE__*/ S.Array(
     OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItem,
@@ -16434,7 +16422,7 @@ export const OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItem =
   }) as any as S.Schema<OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItem>;
 
 export type OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsList =
-  ReadonlyArray<OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItem>;
+  Array<OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItem>;
 export const OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsList =
   /*@__PURE__*/ S.Array(
     OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItem,
@@ -16772,7 +16760,7 @@ export const OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMc
   }) as any as S.Schema<OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItem>;
 
 export type OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListList =
-  ReadonlyArray<OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItem>;
+  Array<OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItem>;
 export const OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListList =
   /*@__PURE__*/ S.Array(
     OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItem,
@@ -16845,7 +16833,7 @@ export const OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItem =
   }) as any as S.Schema<OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItem>;
 
 export type OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsList =
-  ReadonlyArray<OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItem>;
+  Array<OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItem>;
 export const OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsList =
   /*@__PURE__*/ S.Array(
     OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItem,
@@ -16876,7 +16864,7 @@ export const OnRampsEditResponseVpcsByIdValueSectionsItem =
   }) as any as S.Schema<OnRampsEditResponseVpcsByIdValueSectionsItem>;
 
 export type OnRampsEditResponseVpcsByIdValueSectionsList =
-  ReadonlyArray<OnRampsEditResponseVpcsByIdValueSectionsItem>;
+  Array<OnRampsEditResponseVpcsByIdValueSectionsItem>;
 export const OnRampsEditResponseVpcsByIdValueSectionsList =
   /*@__PURE__*/ S.Array(
     OnRampsEditResponseVpcsByIdValueSectionsItem,
@@ -16922,7 +16910,7 @@ export const OnRampsEditResponseVpcsByIdValueManagedByItem =
   }) as any as S.Schema<OnRampsEditResponseVpcsByIdValueManagedByItem>;
 
 export type OnRampsEditResponseVpcsByIdValueManagedByList =
-  ReadonlyArray<OnRampsEditResponseVpcsByIdValueManagedByItem>;
+  Array<OnRampsEditResponseVpcsByIdValueManagedByItem>;
 export const OnRampsEditResponseVpcsByIdValueManagedByList =
   /*@__PURE__*/ S.Array(
     OnRampsEditResponseVpcsByIdValueManagedByItem,
@@ -17001,7 +16989,7 @@ export const OnRampsEditResponseVpcsByIdMap = /*@__PURE__*/ S.Record(
   OnRampsEditResponseVpcsByIdValue,
 ) as any as S.Schema<OnRampsEditResponseVpcsByIdMap>;
 
-export type OnRampsEditResponseVpcsByIdUnavailableList = ReadonlyArray<string>;
+export type OnRampsEditResponseVpcsByIdUnavailableList = Array<string>;
 export const OnRampsEditResponseVpcsByIdUnavailableList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<OnRampsEditResponseVpcsByIdUnavailableList>;
@@ -17109,7 +17097,7 @@ export const PatchOnRampResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchOnRampResponse",
 }) as any as S.Schema<PatchOnRampResponse>;
 
-export type OnRampsAddressSpacesEditRequestPrefixesList = ReadonlyArray<string>;
+export type OnRampsAddressSpacesEditRequestPrefixesList = Array<string>;
 export const OnRampsAddressSpacesEditRequestPrefixesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -17136,8 +17124,7 @@ export const PatchOnRampAddressSpaceRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchOnRampAddressSpaceRequest",
 }) as any as S.Schema<PatchOnRampAddressSpaceRequest>;
 
-export type OnRampsAddressSpacesEditResponsePrefixesList =
-  ReadonlyArray<string>;
+export type OnRampsAddressSpacesEditResponsePrefixesList = Array<string>;
 export const OnRampsAddressSpacesEditResponsePrefixesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -17211,8 +17198,7 @@ export const PolicyPreviewResourceResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PolicyPreviewResourceResponse",
 }) as any as S.Schema<PolicyPreviewResourceResponse>;
 
-export type OnRampsAddressSpacesUpdateRequestPrefixesList =
-  ReadonlyArray<string>;
+export type OnRampsAddressSpacesUpdateRequestPrefixesList = Array<string>;
 export const OnRampsAddressSpacesUpdateRequestPrefixesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -17239,8 +17225,7 @@ export const PutOnRampAddressSpaceRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutOnRampAddressSpaceRequest",
 }) as any as S.Schema<PutOnRampAddressSpaceRequest>;
 
-export type OnRampsAddressSpacesUpdateResponsePrefixesList =
-  ReadonlyArray<string>;
+export type OnRampsAddressSpacesUpdateResponsePrefixesList = Array<string>;
 export const OnRampsAddressSpacesUpdateResponsePrefixesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -17713,8 +17698,7 @@ export type CloudIntegrationsUpdateResponseStatusLastDiscoveryStatusV2 =
 export const CloudIntegrationsUpdateResponseStatusLastDiscoveryStatusV2 =
   /*@__PURE__*/ S.String;
 
-export type CloudIntegrationsUpdateResponseStatusRegionsList =
-  ReadonlyArray<string>;
+export type CloudIntegrationsUpdateResponseStatusRegionsList = Array<string>;
 export const CloudIntegrationsUpdateResponseStatusRegionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -17745,7 +17729,7 @@ export const CloudIntegrationsUpdateResponseStatusInUseByItem =
   }) as any as S.Schema<CloudIntegrationsUpdateResponseStatusInUseByItem>;
 
 export type CloudIntegrationsUpdateResponseStatusInUseByList =
-  ReadonlyArray<CloudIntegrationsUpdateResponseStatusInUseByItem>;
+  Array<CloudIntegrationsUpdateResponseStatusInUseByItem>;
 export const CloudIntegrationsUpdateResponseStatusInUseByList =
   /*@__PURE__*/ S.Array(
     CloudIntegrationsUpdateResponseStatusInUseByItem,
@@ -17871,12 +17855,12 @@ export const UpdateCloudIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateCloudIntegrationResponse",
 }) as any as S.Schema<UpdateCloudIntegrationResponse>;
 
-export type OnRampsUpdateRequestAttachedHubsList = ReadonlyArray<string>;
+export type OnRampsUpdateRequestAttachedHubsList = Array<string>;
 export const OnRampsUpdateRequestAttachedHubsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<OnRampsUpdateRequestAttachedHubsList>;
 
-export type OnRampsUpdateRequestAttachedVpcsList = ReadonlyArray<string>;
+export type OnRampsUpdateRequestAttachedVpcsList = Array<string>;
 export const OnRampsUpdateRequestAttachedVpcsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<OnRampsUpdateRequestAttachedVpcsList>;
@@ -17938,12 +17922,12 @@ export const OnRampsUpdateResponseCloudType = /*@__PURE__*/ S.String;
 export type OnRampsUpdateResponseType = "OnrampTypeSingle" | "OnrampTypeHub";
 export const OnRampsUpdateResponseType = /*@__PURE__*/ S.String;
 
-export type OnRampsUpdateResponseAttachedHubsList = ReadonlyArray<string>;
+export type OnRampsUpdateResponseAttachedHubsList = Array<string>;
 export const OnRampsUpdateResponseAttachedHubsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<OnRampsUpdateResponseAttachedHubsList>;
 
-export type OnRampsUpdateResponseAttachedVpcsList = ReadonlyArray<string>;
+export type OnRampsUpdateResponseAttachedVpcsList = Array<string>;
 export const OnRampsUpdateResponseAttachedVpcsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<OnRampsUpdateResponseAttachedVpcsList>;
@@ -17987,7 +17971,7 @@ export const OnRampsUpdateResponsePlannedResourcesItemDiff =
   }) as any as S.Schema<OnRampsUpdateResponsePlannedResourcesItemDiff>;
 
 export type OnRampsUpdateResponsePlannedResourcesItemKeysRequireReplaceList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const OnRampsUpdateResponsePlannedResourcesItemKeysRequireReplaceList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -18148,7 +18132,7 @@ export const OnRampsUpdateResponsePlannedResourcesItem =
   }) as any as S.Schema<OnRampsUpdateResponsePlannedResourcesItem>;
 
 export type OnRampsUpdateResponsePlannedResourcesList =
-  ReadonlyArray<OnRampsUpdateResponsePlannedResourcesItem>;
+  Array<OnRampsUpdateResponsePlannedResourcesItem>;
 export const OnRampsUpdateResponsePlannedResourcesList = /*@__PURE__*/ S.Array(
   OnRampsUpdateResponsePlannedResourcesItem,
 ) as any as S.Schema<OnRampsUpdateResponsePlannedResourcesList>;
@@ -18229,7 +18213,7 @@ export const OnRampsUpdateResponsePostApplyResourcesValueObservationsMap =
   ) as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesValueObservationsMap>;
 
 export type OnRampsUpdateResponsePostApplyResourcesValueProviderIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const OnRampsUpdateResponsePostApplyResourcesValueProviderIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -18637,7 +18621,7 @@ export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItems
   }) as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItem>;
 
 export type OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListList =
-  ReadonlyArray<OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItem>;
+  Array<OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItem>;
 export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListList =
   /*@__PURE__*/ S.Array(
     OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItem,
@@ -18711,7 +18695,7 @@ export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItems
   }) as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItem>;
 
 export type OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsList =
-  ReadonlyArray<OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItem>;
+  Array<OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItem>;
 export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsList =
   /*@__PURE__*/ S.Array(
     OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItem,
@@ -19049,7 +19033,7 @@ export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItem
   }) as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItem>;
 
 export type OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListList =
-  ReadonlyArray<OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItem>;
+  Array<OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItem>;
 export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListList =
   /*@__PURE__*/ S.Array(
     OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItem,
@@ -19123,7 +19107,7 @@ export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItem
   }) as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItem>;
 
 export type OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsList =
-  ReadonlyArray<OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItem>;
+  Array<OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItem>;
 export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsList =
   /*@__PURE__*/ S.Array(
     OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItem,
@@ -19154,7 +19138,7 @@ export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItem =
   }) as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesValueSectionsItem>;
 
 export type OnRampsUpdateResponsePostApplyResourcesValueSectionsList =
-  ReadonlyArray<OnRampsUpdateResponsePostApplyResourcesValueSectionsItem>;
+  Array<OnRampsUpdateResponsePostApplyResourcesValueSectionsItem>;
 export const OnRampsUpdateResponsePostApplyResourcesValueSectionsList =
   /*@__PURE__*/ S.Array(
     OnRampsUpdateResponsePostApplyResourcesValueSectionsItem,
@@ -19203,7 +19187,7 @@ export const OnRampsUpdateResponsePostApplyResourcesValueManagedByItem =
   }) as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesValueManagedByItem>;
 
 export type OnRampsUpdateResponsePostApplyResourcesValueManagedByList =
-  ReadonlyArray<OnRampsUpdateResponsePostApplyResourcesValueManagedByItem>;
+  Array<OnRampsUpdateResponsePostApplyResourcesValueManagedByItem>;
 export const OnRampsUpdateResponsePostApplyResourcesValueManagedByList =
   /*@__PURE__*/ S.Array(
     OnRampsUpdateResponsePostApplyResourcesValueManagedByItem,
@@ -19331,12 +19315,12 @@ export const OnRampsUpdateResponseStatusPlanProgress = /*@__PURE__*/ S.suspend(
   identifier: "OnRampsUpdateResponseStatusPlanProgress",
 }) as any as S.Schema<OnRampsUpdateResponseStatusPlanProgress>;
 
-export type OnRampsUpdateResponseStatusRoutesList = ReadonlyArray<string>;
+export type OnRampsUpdateResponseStatusRoutesList = Array<string>;
 export const OnRampsUpdateResponseStatusRoutesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<OnRampsUpdateResponseStatusRoutesList>;
 
-export type OnRampsUpdateResponseStatusTunnelsList = ReadonlyArray<string>;
+export type OnRampsUpdateResponseStatusTunnelsList = Array<string>;
 export const OnRampsUpdateResponseStatusTunnelsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<OnRampsUpdateResponseStatusTunnelsList>;
@@ -19656,8 +19640,7 @@ export const OnRampsUpdateResponseVpcsByIdValueObservationsMap =
     OnRampsUpdateResponseVpcsByIdValueObservationsValue,
   ) as any as S.Schema<OnRampsUpdateResponseVpcsByIdValueObservationsMap>;
 
-export type OnRampsUpdateResponseVpcsByIdValueProviderIdsList =
-  ReadonlyArray<string>;
+export type OnRampsUpdateResponseVpcsByIdValueProviderIdsList = Array<string>;
 export const OnRampsUpdateResponseVpcsByIdValueProviderIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -20065,7 +20048,7 @@ export const OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueM
   }) as any as S.Schema<OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItem>;
 
 export type OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListList =
-  ReadonlyArray<OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItem>;
+  Array<OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItem>;
 export const OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListList =
   /*@__PURE__*/ S.Array(
     OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItem,
@@ -20138,7 +20121,7 @@ export const OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItem =
   }) as any as S.Schema<OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItem>;
 
 export type OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsList =
-  ReadonlyArray<OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItem>;
+  Array<OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItem>;
 export const OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsList =
   /*@__PURE__*/ S.Array(
     OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItem,
@@ -20476,7 +20459,7 @@ export const OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValue
   }) as any as S.Schema<OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItem>;
 
 export type OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListList =
-  ReadonlyArray<OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItem>;
+  Array<OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItem>;
 export const OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListList =
   /*@__PURE__*/ S.Array(
     OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItem,
@@ -20550,7 +20533,7 @@ export const OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItem =
   }) as any as S.Schema<OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItem>;
 
 export type OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsList =
-  ReadonlyArray<OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItem>;
+  Array<OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItem>;
 export const OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsList =
   /*@__PURE__*/ S.Array(
     OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItem,
@@ -20581,7 +20564,7 @@ export const OnRampsUpdateResponseVpcsByIdValueSectionsItem =
   }) as any as S.Schema<OnRampsUpdateResponseVpcsByIdValueSectionsItem>;
 
 export type OnRampsUpdateResponseVpcsByIdValueSectionsList =
-  ReadonlyArray<OnRampsUpdateResponseVpcsByIdValueSectionsItem>;
+  Array<OnRampsUpdateResponseVpcsByIdValueSectionsItem>;
 export const OnRampsUpdateResponseVpcsByIdValueSectionsList =
   /*@__PURE__*/ S.Array(
     OnRampsUpdateResponseVpcsByIdValueSectionsItem,
@@ -20629,7 +20612,7 @@ export const OnRampsUpdateResponseVpcsByIdValueManagedByItem =
   }) as any as S.Schema<OnRampsUpdateResponseVpcsByIdValueManagedByItem>;
 
 export type OnRampsUpdateResponseVpcsByIdValueManagedByList =
-  ReadonlyArray<OnRampsUpdateResponseVpcsByIdValueManagedByItem>;
+  Array<OnRampsUpdateResponseVpcsByIdValueManagedByItem>;
 export const OnRampsUpdateResponseVpcsByIdValueManagedByList =
   /*@__PURE__*/ S.Array(
     OnRampsUpdateResponseVpcsByIdValueManagedByItem,
@@ -20710,8 +20693,7 @@ export const OnRampsUpdateResponseVpcsByIdMap = /*@__PURE__*/ S.Record(
   OnRampsUpdateResponseVpcsByIdValue,
 ) as any as S.Schema<OnRampsUpdateResponseVpcsByIdMap>;
 
-export type OnRampsUpdateResponseVpcsByIdUnavailableList =
-  ReadonlyArray<string>;
+export type OnRampsUpdateResponseVpcsByIdUnavailableList = Array<string>;
 export const OnRampsUpdateResponseVpcsByIdUnavailableList =
   /*@__PURE__*/ S.Array(
     S.String,

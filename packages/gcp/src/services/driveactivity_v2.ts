@@ -415,7 +415,7 @@ export const Permission = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Permission" }) as any as S.Schema<Permission>;
 
-export type PermissionList = ReadonlyArray<Permission>;
+export type PermissionList = Array<Permission>;
 export const PermissionList = /*@__PURE__*/ S.Array(
   Permission,
 ) as any as S.Schema<PermissionList>;
@@ -494,7 +494,7 @@ export const Assignment = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Assignment" }) as any as S.Schema<Assignment>;
 
-export type UserList_ = ReadonlyArray<User>;
+export type UserList_ = Array<User>;
 export const UserList_ = /*@__PURE__*/ S.Array(
   User,
 ) as any as S.Schema<UserList_>;
@@ -563,7 +563,7 @@ export const Comment = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Comment" }) as any as S.Schema<Comment>;
 
-export type TargetReferenceList = ReadonlyArray<TargetReference>;
+export type TargetReferenceList = Array<TargetReference>;
 export const TargetReferenceList = /*@__PURE__*/ S.Array(
   TargetReference,
 ) as any as S.Schema<TargetReferenceList>;
@@ -643,7 +643,7 @@ export const RestrictionChange = /*@__PURE__*/ S.suspend(() =>
   identifier: "RestrictionChange",
 }) as any as S.Schema<RestrictionChange>;
 
-export type RestrictionChangeList = ReadonlyArray<RestrictionChange>;
+export type RestrictionChangeList = Array<RestrictionChange>;
 export const RestrictionChangeList = /*@__PURE__*/ S.Array(
   RestrictionChange,
 ) as any as S.Schema<RestrictionChangeList>;
@@ -687,7 +687,7 @@ export type AppliedLabelChangeDetailTypesItemEnum =
 export const AppliedLabelChangeDetailTypesItemEnum = /*@__PURE__*/ S.String;
 
 export type AppliedLabelChangeDetailTypesItemEnumList =
-  ReadonlyArray<AppliedLabelChangeDetailTypesItemEnum>;
+  Array<AppliedLabelChangeDetailTypesItemEnum>;
 export const AppliedLabelChangeDetailTypesItemEnumList = /*@__PURE__*/ S.Array(
   AppliedLabelChangeDetailTypesItemEnum,
 ) as any as S.Schema<AppliedLabelChangeDetailTypesItemEnumList>;
@@ -703,7 +703,7 @@ export const Text = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Text" }) as any as S.Schema<Text>;
 
-export type TextList_ = ReadonlyArray<Text>;
+export type TextList_ = Array<Text>;
 export const TextList_ = /*@__PURE__*/ S.Array(
   Text,
 ) as any as S.Schema<TextList_>;
@@ -730,7 +730,7 @@ export const SingleUser = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SingleUser" }) as any as S.Schema<SingleUser>;
 
-export type SingleUserList = ReadonlyArray<SingleUser>;
+export type SingleUserList = Array<SingleUser>;
 export const SingleUserList = /*@__PURE__*/ S.Array(
   SingleUser,
 ) as any as S.Schema<SingleUserList>;
@@ -773,7 +773,7 @@ export const Driveactivity_Date = /*@__PURE__*/ S.suspend(() =>
   identifier: "Driveactivity_Date",
 }) as any as S.Schema<Driveactivity_Date>;
 
-export type SelectionList_ = ReadonlyArray<Selection>;
+export type SelectionList_ = Array<Selection>;
 export const SelectionList_ = /*@__PURE__*/ S.Array(
   Selection,
 ) as any as S.Schema<SelectionList_>;
@@ -854,7 +854,7 @@ export const FieldValueChange = /*@__PURE__*/ S.suspend(() =>
   identifier: "FieldValueChange",
 }) as any as S.Schema<FieldValueChange>;
 
-export type FieldValueChangeList = ReadonlyArray<FieldValueChange>;
+export type FieldValueChangeList = Array<FieldValueChange>;
 export const FieldValueChangeList = /*@__PURE__*/ S.Array(
   FieldValueChange,
 ) as any as S.Schema<FieldValueChangeList>;
@@ -881,8 +881,7 @@ export const AppliedLabelChangeDetail = /*@__PURE__*/ S.suspend(() =>
   identifier: "AppliedLabelChangeDetail",
 }) as any as S.Schema<AppliedLabelChangeDetail>;
 
-export type AppliedLabelChangeDetailList =
-  ReadonlyArray<AppliedLabelChangeDetail>;
+export type AppliedLabelChangeDetailList = Array<AppliedLabelChangeDetail>;
 export const AppliedLabelChangeDetailList = /*@__PURE__*/ S.Array(
   AppliedLabelChangeDetail,
 ) as any as S.Schema<AppliedLabelChangeDetailList>;
@@ -1076,7 +1075,7 @@ export const Target = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Target" }) as any as S.Schema<Target>;
 
-export type TargetList = ReadonlyArray<Target>;
+export type TargetList = Array<Target>;
 export const TargetList = /*@__PURE__*/ S.Array(
   Target,
 ) as any as S.Schema<TargetList>;
@@ -1144,7 +1143,7 @@ export const Actor = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Actor" }) as any as S.Schema<Actor>;
 
-export type ActorList = ReadonlyArray<Actor>;
+export type ActorList = Array<Actor>;
 export const ActorList = /*@__PURE__*/ S.Array(
   Actor,
 ) as any as S.Schema<ActorList>;
@@ -1186,7 +1185,7 @@ export const Action = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Action" }) as any as S.Schema<Action>;
 
-export type ActionList = ReadonlyArray<Action>;
+export type ActionList = Array<Action>;
 export const ActionList = /*@__PURE__*/ S.Array(
   Action,
 ) as any as S.Schema<ActionList>;
@@ -1217,7 +1216,7 @@ export const DriveActivity = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DriveActivity" }) as any as S.Schema<DriveActivity>;
 
-export type DriveActivityList = ReadonlyArray<DriveActivity>;
+export type DriveActivityList = Array<DriveActivity>;
 export const DriveActivityList = /*@__PURE__*/ S.Array(
   DriveActivity,
 ) as any as S.Schema<DriveActivityList>;

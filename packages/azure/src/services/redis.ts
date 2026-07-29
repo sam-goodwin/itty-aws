@@ -25,7 +25,7 @@ export const AccessPolicyAssignmentProvisioningState = /*@__PURE__*/ S.String;
 /** Properties for an access policy assignment */
 export interface RedisCacheAccessPolicyAssignmentProperties {
   /** Provisioning state of an access policy assignment set */
-  provisioningState?: AccessPolicyAssignmentProvisioningState;
+  provisioningState?: AccessPolicyAssignmentProvisioningState | (string & {});
   /** Object Id to assign access policy to */
   objectId: string;
   /** User friendly name for object id. Also represents username for token based authentication */
@@ -283,7 +283,7 @@ export const RedisCacheAccessPolicyAssignment = /*@__PURE__*/ S.suspend(() =>
 
 /** The RedisCacheAccessPolicyAssignment items on this page */
 export type RedisCacheAccessPolicyAssignmentListValueList =
-  ReadonlyArray<RedisCacheAccessPolicyAssignment>;
+  Array<RedisCacheAccessPolicyAssignment>;
 export const RedisCacheAccessPolicyAssignmentListValueList =
   /*@__PURE__*/ S.Array(
     RedisCacheAccessPolicyAssignment,
@@ -323,9 +323,9 @@ export const AccessPolicyType = /*@__PURE__*/ S.String;
 /** All properties of an access policy. */
 export interface RedisCacheAccessPolicyProperties {
   /** Provisioning state of access policy */
-  provisioningState?: AccessPolicyProvisioningState;
+  provisioningState?: AccessPolicyProvisioningState | (string & {});
   /** Built-In or Custom access policy */
-  type?: AccessPolicyType;
+  type?: AccessPolicyType | (string & {});
   /** Permissions for the access policy. Learn how to configure permissions at https://aka.ms/redis/AADPreRequisites */
   permissions: string;
 }
@@ -532,8 +532,7 @@ export const RedisCacheAccessPolicy = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RedisCacheAccessPolicy>;
 
 /** The RedisCacheAccessPolicy items on this page */
-export type RedisCacheAccessPolicyListValueList =
-  ReadonlyArray<RedisCacheAccessPolicy>;
+export type RedisCacheAccessPolicyListValueList = Array<RedisCacheAccessPolicy>;
 export const RedisCacheAccessPolicyListValueList = /*@__PURE__*/ S.Array(
   RedisCacheAccessPolicy,
 ) as any as S.Schema<RedisCacheAccessPolicyListValueList>;
@@ -580,14 +579,13 @@ export const AsyncOperationStatusGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AsyncOperationStatusGetRequest>;
 
 /** The operations list. */
-export type OperationStatusResultOperationsList =
-  ReadonlyArray<OperationStatusResult>;
+export type OperationStatusResultOperationsList = Array<OperationStatusResult>;
 export const OperationStatusResultOperationsList = /*@__PURE__*/ S.Array(
   S.suspend(() => OperationStatusResult),
 ) as any as S.Schema<OperationStatusResultOperationsList>;
 
 /** The error details. */
-export type ErrorDetailDetailsList = ReadonlyArray<ErrorDetail>;
+export type ErrorDetailDetailsList = Array<ErrorDetail>;
 export const ErrorDetailDetailsList = /*@__PURE__*/ S.Array(
   S.suspend(() => ErrorDetail),
 ) as any as S.Schema<ErrorDetailDetailsList>;
@@ -609,7 +607,7 @@ export const ErrorAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ErrorAdditionalInfo>;
 
 /** The error additional info. */
-export type ErrorDetailAdditionalInfoList = ReadonlyArray<ErrorAdditionalInfo>;
+export type ErrorDetailAdditionalInfoList = Array<ErrorAdditionalInfo>;
 export const ErrorDetailAdditionalInfoList = /*@__PURE__*/ S.Array(
   ErrorAdditionalInfo,
 ) as any as S.Schema<ErrorDetailAdditionalInfoList>;
@@ -673,7 +671,7 @@ export const OperationStatusResult = /*@__PURE__*/ S.suspend(() =>
 
 /** The operations list. */
 export type AsyncOperationStatusGetResponseOperationsList =
-  ReadonlyArray<OperationStatusResult>;
+  Array<OperationStatusResult>;
 export const AsyncOperationStatusGetResponseOperationsList =
   /*@__PURE__*/ S.Array(
     OperationStatusResult,
@@ -934,8 +932,7 @@ export const RedisFirewallRule = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RedisFirewallRule>;
 
 /** The RedisFirewallRule items on this page */
-export type RedisFirewallRuleListResultValueList =
-  ReadonlyArray<RedisFirewallRule>;
+export type RedisFirewallRuleListResultValueList = Array<RedisFirewallRule>;
 export const RedisFirewallRuleListResultValueList = /*@__PURE__*/ S.Array(
   RedisFirewallRule,
 ) as any as S.Schema<RedisFirewallRuleListResultValueList>;
@@ -1202,7 +1199,7 @@ export const RedisLinkedServerWithProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** The RedisLinkedServerWithProperties items on this page */
 export type RedisLinkedServerWithPropertiesListValueList =
-  ReadonlyArray<RedisLinkedServerWithProperties>;
+  Array<RedisLinkedServerWithProperties>;
 export const RedisLinkedServerWithPropertiesListValueList =
   /*@__PURE__*/ S.Array(
     RedisLinkedServerWithProperties,
@@ -1275,7 +1272,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider. */
-export type OperationListResultValueList = ReadonlyArray<Operation>;
+export type OperationListResultValueList = Array<Operation>;
 export const OperationListResultValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationListResultValueList>;
@@ -1316,7 +1313,7 @@ export const DayOfWeek = /*@__PURE__*/ S.String;
 /** Patch schedule entry for a Premium Redis Cache. */
 export interface ScheduleEntry {
   /** Day of the week when a cache can be patched. */
-  dayOfWeek: DayOfWeek;
+  dayOfWeek: DayOfWeek | (string & {});
   /** Start hour after which cache patching can start. */
   startHourUtc: number;
   /** ISO8601 timespan specifying how much time cache patching can take. */
@@ -1331,7 +1328,7 @@ export const ScheduleEntry = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ScheduleEntry" }) as any as S.Schema<ScheduleEntry>;
 
 /** List of patch schedules for a Redis cache. */
-export type ScheduleEntriesScheduleEntriesList = ReadonlyArray<ScheduleEntry>;
+export type ScheduleEntriesScheduleEntriesList = Array<ScheduleEntry>;
 export const ScheduleEntriesScheduleEntriesList = /*@__PURE__*/ S.Array(
   ScheduleEntry,
 ) as any as S.Schema<ScheduleEntriesScheduleEntriesList>;
@@ -1559,8 +1556,7 @@ export const RedisPatchSchedule = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RedisPatchSchedule>;
 
 /** The RedisPatchSchedule items on this page */
-export type RedisPatchScheduleListResultValueList =
-  ReadonlyArray<RedisPatchSchedule>;
+export type RedisPatchScheduleListResultValueList = Array<RedisPatchSchedule>;
 export const RedisPatchScheduleListResultValueList = /*@__PURE__*/ S.Array(
   RedisPatchSchedule,
 ) as any as S.Schema<RedisPatchScheduleListResultValueList>;
@@ -1647,8 +1643,7 @@ export const PrivateEndpointConnectionsGetRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PrivateEndpointConnectionsGetRequest>;
 
 /** The group ids for the private endpoint resource. */
-export type PrivateEndpointConnectionPropertiesGroupIdsList =
-  ReadonlyArray<string>;
+export type PrivateEndpointConnectionPropertiesGroupIdsList = Array<string>;
 export const PrivateEndpointConnectionPropertiesGroupIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1677,7 +1672,7 @@ export const PrivateEndpointServiceConnectionStatus = /*@__PURE__*/ S.String;
 /** A collection of information about the state of the connection between service consumer and provider. */
 export interface PrivateLinkServiceConnectionState {
   /** Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service. */
-  status?: PrivateEndpointServiceConnectionStatus;
+  status?: PrivateEndpointServiceConnectionStatus | (string & {});
   /** The reason for approval/rejection of the connection. */
   description?: string;
   /** A message indicating if changes on the service provider require any updates on the consumer. */
@@ -1803,7 +1798,7 @@ export const PrivateEndpointConnectionListResultValueItem =
 
 /** The PrivateEndpointConnection items on this page */
 export type PrivateEndpointConnectionListResultValueList =
-  ReadonlyArray<PrivateEndpointConnectionListResultValueItem>;
+  Array<PrivateEndpointConnectionListResultValueItem>;
 export const PrivateEndpointConnectionListResultValueList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnectionListResultValueItem,
@@ -1934,16 +1929,14 @@ export const PrivateLinkResourcesListByRedisCacheRequest =
   }) as any as S.Schema<PrivateLinkResourcesListByRedisCacheRequest>;
 
 /** The private link resource required member names. */
-export type PrivateLinkResourcePropertiesRequiredMembersList =
-  ReadonlyArray<string>;
+export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
 export const PrivateLinkResourcePropertiesRequiredMembersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
 
 /** The private link resource private link DNS zone name. */
-export type PrivateLinkResourcePropertiesRequiredZoneNamesList =
-  ReadonlyArray<string>;
+export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
 export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2000,7 +1993,7 @@ export const PrivateLinkResourceListResultValueItem = /*@__PURE__*/ S.suspend(
 
 /** The PrivateLinkResource items on this page */
 export type PrivateLinkResourceListResultValueList =
-  ReadonlyArray<PrivateLinkResourceListResultValueItem>;
+  Array<PrivateLinkResourceListResultValueItem>;
 export const PrivateLinkResourceListResultValueList = /*@__PURE__*/ S.Array(
   PrivateLinkResourceListResultValueItem,
 ) as any as S.Schema<PrivateLinkResourceListResultValueList>;
@@ -2173,9 +2166,9 @@ export const SkuFamily = /*@__PURE__*/ S.String;
 /** SKU parameters supplied to the create Redis operation. */
 export interface Sku {
   /** The type of Redis cache to deploy. Valid values: (Basic, Standard, Premium) */
-  name: SkuName;
+  name: SkuName | (string & {});
   /** The SKU family to use. Valid values: (C, P). (C = Basic/Standard, P = Premium). */
-  family: SkuFamily;
+  family: SkuFamily | (string & {});
   /** The size of the Redis cache to deploy. Valid values: for C (Basic/Standard) family (0, 1, 2, 3, 4, 5, 6), for P (Premium) family (1, 2, 3, 4). */
   capacity: number;
 }
@@ -2245,7 +2238,7 @@ export const RedisCreatePropertiesInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RedisCreatePropertiesInput>;
 
 /** A list of availability zones denoting where the resource needs to come from. */
-export type RedisCreateRequestZonesList = ReadonlyArray<string>;
+export type RedisCreateRequestZonesList = Array<string>;
 export const RedisCreateRequestZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RedisCreateRequestZonesList>;
@@ -2495,7 +2488,7 @@ export const RedisLinkedServer = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RedisLinkedServer>;
 
 /** List of the linked servers associated with the cache */
-export type RedisPropertiesLinkedServersList = ReadonlyArray<RedisLinkedServer>;
+export type RedisPropertiesLinkedServersList = Array<RedisLinkedServer>;
 export const RedisPropertiesLinkedServersList = /*@__PURE__*/ S.Array(
   RedisLinkedServer,
 ) as any as S.Schema<RedisPropertiesLinkedServersList>;
@@ -2529,7 +2522,7 @@ export const RedisInstanceDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RedisInstanceDetails>;
 
 /** List of the Redis instances associated with the cache */
-export type RedisPropertiesInstancesList = ReadonlyArray<RedisInstanceDetails>;
+export type RedisPropertiesInstancesList = Array<RedisInstanceDetails>;
 export const RedisPropertiesInstancesList = /*@__PURE__*/ S.Array(
   RedisInstanceDetails,
 ) as any as S.Schema<RedisPropertiesInstancesList>;
@@ -2562,7 +2555,7 @@ export const RedisPropertiesPrivateEndpointConnectionsItem =
 
 /** List of private endpoint connection associated with the specified redis cache */
 export type RedisPropertiesPrivateEndpointConnectionsList =
-  ReadonlyArray<RedisPropertiesPrivateEndpointConnectionsItem>;
+  Array<RedisPropertiesPrivateEndpointConnectionsItem>;
 export const RedisPropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     RedisPropertiesPrivateEndpointConnectionsItem,
@@ -2650,7 +2643,7 @@ export const RedisProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RedisProperties>;
 
 /** The availability zones. */
-export type RedisCreateResponseZonesList = ReadonlyArray<string>;
+export type RedisCreateResponseZonesList = Array<string>;
 export const RedisCreateResponseZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RedisCreateResponseZonesList>;
@@ -2846,7 +2839,7 @@ export const RedisFlushCacheRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The operations list. */
 export type RedisFlushCacheResponseOperationsList =
-  ReadonlyArray<OperationStatusResult>;
+  Array<OperationStatusResult>;
 export const RedisFlushCacheResponseOperationsList = /*@__PURE__*/ S.Array(
   OperationStatusResult,
 ) as any as S.Schema<RedisFlushCacheResponseOperationsList>;
@@ -2889,7 +2882,7 @@ export type RebootType = "PrimaryNode" | "SecondaryNode" | "AllNodes";
 export const RebootType = /*@__PURE__*/ S.String;
 
 /** A list of redis instances to reboot, specified by per-instance SSL ports or non-SSL ports. */
-export type RedisForceRebootRequestPortsList = ReadonlyArray<number>;
+export type RedisForceRebootRequestPortsList = Array<number>;
 export const RedisForceRebootRequestPortsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<RedisForceRebootRequestPortsList>;
@@ -2974,7 +2967,7 @@ export const RedisGetResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<RedisGetResponseTagsMap>;
 
 /** The availability zones. */
-export type RedisGetResponseZonesList = ReadonlyArray<string>;
+export type RedisGetResponseZonesList = Array<string>;
 export const RedisGetResponseZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RedisGetResponseZonesList>;
@@ -3036,7 +3029,7 @@ export const RedisGetResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RedisGetResponse>;
 
 /** files to import. */
-export type RedisImportDataRequestFilesList = ReadonlyArray<string>;
+export type RedisImportDataRequestFilesList = Array<string>;
 export const RedisImportDataRequestFilesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RedisImportDataRequestFilesList>;
@@ -3119,7 +3112,7 @@ export const RedisResourceTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<RedisResourceTagsMap>;
 
 /** The availability zones. */
-export type RedisResourceZonesList = ReadonlyArray<string>;
+export type RedisResourceZonesList = Array<string>;
 export const RedisResourceZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RedisResourceZonesList>;
@@ -3180,7 +3173,7 @@ export const RedisResource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RedisResource" }) as any as S.Schema<RedisResource>;
 
 /** The RedisResource items on this page */
-export type RedisListResultValueList = ReadonlyArray<RedisResource>;
+export type RedisListResultValueList = Array<RedisResource>;
 export const RedisListResultValueList = /*@__PURE__*/ S.Array(
   RedisResource,
 ) as any as S.Schema<RedisListResultValueList>;
@@ -3303,8 +3296,7 @@ export const UpgradeNotification = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpgradeNotification>;
 
 /** The UpgradeNotification items on this page */
-export type NotificationListResponseValueList =
-  ReadonlyArray<UpgradeNotification>;
+export type NotificationListResponseValueList = Array<UpgradeNotification>;
 export const NotificationListResponseValueList = /*@__PURE__*/ S.Array(
   UpgradeNotification,
 ) as any as S.Schema<NotificationListResponseValueList>;
@@ -3481,7 +3473,7 @@ export const RedisUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<RedisUpdateResponseTagsMap>;
 
 /** The availability zones. */
-export type RedisUpdateResponseZonesList = ReadonlyArray<string>;
+export type RedisUpdateResponseZonesList = Array<string>;
 export const RedisUpdateResponseZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RedisUpdateResponseZonesList>;

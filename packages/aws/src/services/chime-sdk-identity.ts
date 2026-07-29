@@ -276,8 +276,8 @@ export type TargetedMessages = "ALL" | "NONE";
 export const TargetedMessages = /*@__PURE__*/ S.String;
 
 export interface InvokedBy {
-  StandardMessages: StandardMessages;
-  TargetedMessages: TargetedMessages;
+  StandardMessages: StandardMessages | (string & {});
+  TargetedMessages: TargetedMessages | (string & {});
 }
 export const InvokedBy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -288,7 +288,7 @@ export const InvokedBy = /*@__PURE__*/ S.suspend(() =>
 export type LexBotAliasArn = string;
 export type LexIntentName = string;
 export interface LexConfiguration {
-  RespondsTo?: RespondsTo;
+  RespondsTo?: RespondsTo | (string & {});
   InvokedBy?: InvokedBy;
   LexBotAliasArn: string;
   LocaleId: string;
@@ -356,7 +356,7 @@ export const ExpirationCriterion = /*@__PURE__*/ S.String;
 
 export interface ExpirationSettings {
   ExpirationDays: number;
-  ExpirationCriterion: ExpirationCriterion;
+  ExpirationCriterion: ExpirationCriterion | (string & {});
 }
 export const ExpirationSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

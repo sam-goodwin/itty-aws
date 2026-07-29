@@ -272,7 +272,7 @@ export const GetCalendarListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetCalendarListRequest",
 }) as any as S.Schema<GetCalendarListRequest>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -302,7 +302,7 @@ export const EventReminder = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "EventReminder" }) as any as S.Schema<EventReminder>;
 
-export type EventReminderList = ReadonlyArray<EventReminder>;
+export type EventReminderList = Array<EventReminder>;
 export const EventReminderList = /*@__PURE__*/ S.Array(
   EventReminder,
 ) as any as S.Schema<EventReminderList>;
@@ -322,7 +322,7 @@ export const CalendarNotification = /*@__PURE__*/ S.suspend(() =>
   identifier: "CalendarNotification",
 }) as any as S.Schema<CalendarNotification>;
 
-export type CalendarNotificationList = ReadonlyArray<CalendarNotification>;
+export type CalendarNotificationList = Array<CalendarNotification>;
 export const CalendarNotificationList = /*@__PURE__*/ S.Array(
   CalendarNotification,
 ) as any as S.Schema<CalendarNotificationList>;
@@ -446,7 +446,7 @@ export const EventLabel = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "EventLabel" }) as any as S.Schema<EventLabel>;
 
-export type EventLabelList = ReadonlyArray<EventLabel>;
+export type EventLabelList = Array<EventLabel>;
 export const EventLabelList = /*@__PURE__*/ S.Array(
   EventLabel,
 ) as any as S.Schema<EventLabelList>;
@@ -610,7 +610,7 @@ export const EventAttachment = /*@__PURE__*/ S.suspend(() =>
   identifier: "EventAttachment",
 }) as any as S.Schema<EventAttachment>;
 
-export type EventAttachmentList = ReadonlyArray<EventAttachment>;
+export type EventAttachmentList = Array<EventAttachment>;
 export const EventAttachmentList = /*@__PURE__*/ S.Array(
   EventAttachment,
 ) as any as S.Schema<EventAttachmentList>;
@@ -795,7 +795,7 @@ export const EntryPoint = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "EntryPoint" }) as any as S.Schema<EntryPoint>;
 
-export type EntryPointList = ReadonlyArray<EntryPoint>;
+export type EntryPointList = Array<EntryPoint>;
 export const EntryPointList = /*@__PURE__*/ S.Array(
   EntryPoint,
 ) as any as S.Schema<EntryPointList>;
@@ -998,7 +998,7 @@ export const EventAttendee = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "EventAttendee" }) as any as S.Schema<EventAttendee>;
 
-export type EventAttendeeList = ReadonlyArray<EventAttendee>;
+export type EventAttendeeList = Array<EventAttendee>;
 export const EventAttendeeList = /*@__PURE__*/ S.Array(
   EventAttendee,
 ) as any as S.Schema<EventAttendeeList>;
@@ -1414,7 +1414,7 @@ export const InstancesEventsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "InstancesEventsRequest",
 }) as any as S.Schema<InstancesEventsRequest>;
 
-export type EventList = ReadonlyArray<Event>;
+export type EventList = Array<Event>;
 export const EventList = /*@__PURE__*/ S.Array(
   Event,
 ) as any as S.Schema<EventList>;
@@ -1487,7 +1487,7 @@ export const ListAclRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "ListAclRequest" }) as any as S.Schema<ListAclRequest>;
 
-export type AclRuleList = ReadonlyArray<AclRule>;
+export type AclRuleList = Array<AclRule>;
 export const AclRuleList = /*@__PURE__*/ S.Array(
   AclRule,
 ) as any as S.Schema<AclRuleList>;
@@ -1560,7 +1560,7 @@ export const ListCalendarListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListCalendarListRequest",
 }) as any as S.Schema<ListCalendarListRequest>;
 
-export type CalendarListEntryList = ReadonlyArray<CalendarListEntry>;
+export type CalendarListEntryList = Array<CalendarListEntry>;
 export const CalendarListEntryList = /*@__PURE__*/ S.Array(
   CalendarListEntry,
 ) as any as S.Schema<CalendarListEntryList>;
@@ -1596,7 +1596,7 @@ export type ListEventsEventTypesEnum =
   | "workingLocation";
 export const ListEventsEventTypesEnum = /*@__PURE__*/ S.String;
 
-export type ListEventsEventTypesEnumList = ReadonlyArray<
+export type ListEventsEventTypesEnumList = Array<
   ListEventsEventTypesEnum | (string & {})
 >;
 export const ListEventsEventTypesEnumList = /*@__PURE__*/ S.Array(
@@ -1702,7 +1702,7 @@ export const ListSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListSettingsRequest",
 }) as any as S.Schema<ListSettingsRequest>;
 
-export type SettingList = ReadonlyArray<Setting>;
+export type SettingList = Array<Setting>;
 export const SettingList = /*@__PURE__*/ S.Array(
   Setting,
 ) as any as S.Schema<SettingList>;
@@ -1894,7 +1894,7 @@ export const FreeBusyRequestItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "FreeBusyRequestItem",
 }) as any as S.Schema<FreeBusyRequestItem>;
 
-export type FreeBusyRequestItemList = ReadonlyArray<FreeBusyRequestItem>;
+export type FreeBusyRequestItemList = Array<FreeBusyRequestItem>;
 export const FreeBusyRequestItemList = /*@__PURE__*/ S.Array(
   FreeBusyRequestItem,
 ) as any as S.Schema<FreeBusyRequestItemList>;
@@ -1957,7 +1957,7 @@ export const Calendar_Error = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Calendar_Error" }) as any as S.Schema<Calendar_Error>;
 
-export type Calendar_ErrorList = ReadonlyArray<Calendar_Error>;
+export type Calendar_ErrorList = Array<Calendar_Error>;
 export const Calendar_ErrorList = /*@__PURE__*/ S.Array(
   Calendar_Error,
 ) as any as S.Schema<Calendar_ErrorList>;
@@ -1994,7 +1994,7 @@ export const TimePeriod = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TimePeriod" }) as any as S.Schema<TimePeriod>;
 
-export type TimePeriodList = ReadonlyArray<TimePeriod>;
+export type TimePeriodList = Array<TimePeriod>;
 export const TimePeriodList = /*@__PURE__*/ S.Array(
   TimePeriod,
 ) as any as S.Schema<TimePeriodList>;
@@ -2383,7 +2383,7 @@ export type WatchEventsEventTypesEnum =
   | "workingLocation";
 export const WatchEventsEventTypesEnum = /*@__PURE__*/ S.String;
 
-export type WatchEventsEventTypesEnumList = ReadonlyArray<
+export type WatchEventsEventTypesEnumList = Array<
   WatchEventsEventTypesEnum | (string & {})
 >;
 export const WatchEventsEventTypesEnumList = /*@__PURE__*/ S.Array(

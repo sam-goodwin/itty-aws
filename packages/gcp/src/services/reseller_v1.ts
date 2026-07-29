@@ -97,7 +97,7 @@ export const RenewalSettings = /*@__PURE__*/ S.suspend(() =>
   identifier: "RenewalSettings",
 }) as any as S.Schema<RenewalSettings>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -465,7 +465,7 @@ export interface Customer {
   /** Like the "Customer email" in the reseller tools, this email is the secondary contact used if something happens to the customer's service such as service outage or a security issue. This property is required when creating a new "domain" customer and should not use the same domain as `customerDomain`. The `alternateEmail` field is not necessary to create a "team" customer. */
   alternateEmail?: string;
   /** Identifies the type of the customer. Acceptable values include: * `domain`: Implies a domain-verified customer (default). * `team`: Implies an email-verified customer. For more information, see [managed teams](https://support.google.com/a/users/answer/9939479). */
-  customerType?: CustomerCustomerTypeEnum;
+  customerType?: CustomerCustomerTypeEnum | (string & {});
   /** The first admin details of the customer, present in case of TEAM customer. */
   primaryAdmin?: PrimaryAdmin;
   /** The customer's primary domain name string. `customerDomain` is required when creating a new customer. Do not include the `www` prefix in the domain when adding a customer. */
@@ -635,7 +635,7 @@ export const ListSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListSubscriptionsRequest",
 }) as any as S.Schema<ListSubscriptionsRequest>;
 
-export type SubscriptionList = ReadonlyArray<Subscription>;
+export type SubscriptionList = Array<Subscription>;
 export const SubscriptionList = /*@__PURE__*/ S.Array(
   Subscription,
 ) as any as S.Schema<SubscriptionList>;

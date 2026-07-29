@@ -187,7 +187,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -259,7 +259,7 @@ export const SchedulerAcceleratorConfigTypeEnum = /*@__PURE__*/ S.String;
 /** Definition of a hardware accelerator. Note that not all combinations of `type` and `core_count` are valid. See [GPUs on Compute Engine](https://cloud.google.com/compute/docs/gpus) to find a valid combination. TPUs are not supported. */
 export interface SchedulerAcceleratorConfig {
   /** Type of this accelerator. */
-  type?: SchedulerAcceleratorConfigTypeEnum;
+  type?: SchedulerAcceleratorConfigTypeEnum | (string & {});
   /** Count of cores of this accelerator. */
   coreCount?: string;
 }
@@ -324,13 +324,13 @@ export interface ExecutionTemplate {
   /** Labels for execution. If execution is scheduled, a field included will be 'nbs-scheduled'. Otherwise, it is an immediate execution, and an included field will be 'nbs-immediate'. Use fields to efficiently index between various types of executions. */
   labels?: StringMap;
   /** The type of Job to be used on this execution. */
-  jobType?: ExecutionTemplateJobTypeEnum;
+  jobType?: ExecutionTemplateJobTypeEnum | (string & {});
   /** Specifies the type of virtual machine to use for your training job's master worker. You must specify this field when `scaleTier` is set to `CUSTOM`. You can use certain Compute Engine machine types directly in this field. The following types are supported: - `n1-standard-4` - `n1-standard-8` - `n1-standard-16` - `n1-standard-32` - `n1-standard-64` - `n1-standard-96` - `n1-highmem-2` - `n1-highmem-4` - `n1-highmem-8` - `n1-highmem-16` - `n1-highmem-32` - `n1-highmem-64` - `n1-highmem-96` - `n1-highcpu-16` - `n1-highcpu-32` - `n1-highcpu-64` - `n1-highcpu-96` Alternatively, you can use the following legacy machine types: - `standard` - `large_model` - `complex_model_s` - `complex_model_m` - `complex_model_l` - `standard_gpu` - `complex_model_m_gpu` - `complex_model_l_gpu` - `standard_p100` - `complex_model_m_p100` - `standard_v100` - `large_model_v100` - `complex_model_m_v100` - `complex_model_l_v100` Finally, if you want to use a TPU for training, specify `cloud_tpu` in this field. Learn more about the [special configuration options for training with TPU](https://cloud.google.com/ai-platform/training/docs/using-tpus#configuring_a_custom_tpu_machine). */
   masterType?: string;
   /** Configuration (count and accelerator type) for hardware running notebook execution. */
   acceleratorConfig?: SchedulerAcceleratorConfig;
   /** Required. Scale tier of the hardware used for notebook execution. DEPRECATED Will be discontinued. As right now only CUSTOM is supported. */
-  scaleTier?: ExecutionTemplateScaleTierEnum;
+  scaleTier?: ExecutionTemplateScaleTierEnum | (string & {});
   /** Parameters to be overridden in the notebook during execution. Ref https://papermill.readthedocs.io/en/latest/usage-parameterize.html on how to specifying parameters in the input notebook and pass them here in an YAML file. Ex: `gs://notebook_user/scheduled_notebooks/sentiment_notebook_params.yaml` */
   paramsYamlFile?: string;
   /** Path to the notebook file to execute. Must be in a Google Cloud Storage bucket. Format: `gs://{bucket_name}/{folder}/{notebook_file_name}` Ex: `gs://notebook_user/scheduled_notebooks/sentiment_notebook.ipynb` */
@@ -396,7 +396,7 @@ export interface Execution {
   /** Output only. Time the Execution was instantiated. */
   createTime?: string;
   /** Output only. State of the underlying AI Platform job. */
-  state?: ExecutionStateEnum;
+  state?: ExecutionStateEnum | (string & {});
   /** Output only. Name used for UI purposes. Name can only contain alphanumeric characters and underscores '_'. */
   displayName?: string;
 }
@@ -464,7 +464,7 @@ export const ShieldedInstanceConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "ShieldedInstanceConfig",
 }) as any as S.Schema<ShieldedInstanceConfig>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -491,7 +491,7 @@ export const AcceleratorConfigTypeEnum = /*@__PURE__*/ S.String;
 /** Definition of a hardware accelerator. Note that not all combinations of `type` and `core_count` are valid. See [GPUs on Compute Engine](https://cloud.google.com/compute/docs/gpus/#gpus-list) to find a valid combination. TPUs are not supported. */
 export interface AcceleratorConfig {
   /** Type of this accelerator. */
-  type?: AcceleratorConfigTypeEnum;
+  type?: AcceleratorConfigTypeEnum | (string & {});
   /** Count of cores of this accelerator. */
   coreCount?: string;
 }
@@ -544,9 +544,9 @@ export interface UpgradeHistoryEntry {
   /** The time that this instance upgrade history entry is created. */
   createTime?: string;
   /** The state of this instance upgrade history entry. */
-  state?: UpgradeHistoryEntryStateEnum;
+  state?: UpgradeHistoryEntryStateEnum | (string & {});
   /** Action. Rolloback or Upgrade. */
-  action?: UpgradeHistoryEntryActionEnum;
+  action?: UpgradeHistoryEntryActionEnum | (string & {});
 }
 export const UpgradeHistoryEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -565,7 +565,7 @@ export const UpgradeHistoryEntry = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpgradeHistoryEntry",
 }) as any as S.Schema<UpgradeHistoryEntry>;
 
-export type UpgradeHistoryEntryList = ReadonlyArray<UpgradeHistoryEntry>;
+export type UpgradeHistoryEntryList = Array<UpgradeHistoryEntry>;
 export const UpgradeHistoryEntryList = /*@__PURE__*/ S.Array(
   UpgradeHistoryEntry,
 ) as any as S.Schema<UpgradeHistoryEntryList>;
@@ -610,7 +610,7 @@ export const GuestOsFeature = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "GuestOsFeature" }) as any as S.Schema<GuestOsFeature>;
 
-export type GuestOsFeatureList = ReadonlyArray<GuestOsFeature>;
+export type GuestOsFeatureList = Array<GuestOsFeature>;
 export const GuestOsFeatureList = /*@__PURE__*/ S.Array(
   GuestOsFeature,
 ) as any as S.Schema<GuestOsFeatureList>;
@@ -659,7 +659,7 @@ export const Disk = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Disk" }) as any as S.Schema<Disk>;
 
-export type DiskList = ReadonlyArray<Disk>;
+export type DiskList = Array<Disk>;
 export const DiskList = /*@__PURE__*/ S.Array(
   Disk,
 ) as any as S.Schema<DiskList>;
@@ -675,7 +675,9 @@ export const ReservationAffinityConsumeReservationTypeEnum =
 /** Reservation Affinity for consuming Zonal reservation. */
 export interface ReservationAffinity {
   /** Optional. Type of reservation to consume */
-  consumeReservationType?: ReservationAffinityConsumeReservationTypeEnum;
+  consumeReservationType?:
+    | ReservationAffinityConsumeReservationTypeEnum
+    | (string & {});
   /** Optional. Corresponds to the label key of reservation resource. */
   key?: string;
   /** Optional. Corresponds to the label values of reservation resource. */
@@ -699,8 +701,9 @@ export type InstanceMigrationEligibilityErrorsItemEnum =
 export const InstanceMigrationEligibilityErrorsItemEnum =
   /*@__PURE__*/ S.String;
 
-export type InstanceMigrationEligibilityErrorsItemEnumList =
-  ReadonlyArray<InstanceMigrationEligibilityErrorsItemEnum>;
+export type InstanceMigrationEligibilityErrorsItemEnumList = Array<
+  InstanceMigrationEligibilityErrorsItemEnum | (string & {})
+>;
 export const InstanceMigrationEligibilityErrorsItemEnumList =
   /*@__PURE__*/ S.Array(
     InstanceMigrationEligibilityErrorsItemEnum,
@@ -717,8 +720,9 @@ export type InstanceMigrationEligibilityWarningsItemEnum =
 export const InstanceMigrationEligibilityWarningsItemEnum =
   /*@__PURE__*/ S.String;
 
-export type InstanceMigrationEligibilityWarningsItemEnumList =
-  ReadonlyArray<InstanceMigrationEligibilityWarningsItemEnum>;
+export type InstanceMigrationEligibilityWarningsItemEnumList = Array<
+  InstanceMigrationEligibilityWarningsItemEnum | (string & {})
+>;
 export const InstanceMigrationEligibilityWarningsItemEnumList =
   /*@__PURE__*/ S.Array(
     InstanceMigrationEligibilityWarningsItemEnum,
@@ -759,7 +763,7 @@ export interface Instance {
   /** Input only. The KMS key used to encrypt the disks, only applicable if disk_encryption is CMEK. Format: `projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}` Learn more about [using your own encryption keys](/kms/docs/quickstart). */
   kmsKey?: string;
   /** Optional. The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet. */
-  nicType?: InstanceNicTypeEnum;
+  nicType?: InstanceNicTypeEnum | (string & {});
   /** Optional. Shielded VM configuration. [Images using supported Shielded VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm). */
   shieldedInstanceConfig?: ShieldedInstanceConfig;
   /** The name of the subnet that this instance is in. Format: `projects/{project_id}/regions/{region}/subnetworks/{subnetwork_id}` */
@@ -775,7 +779,7 @@ export interface Instance {
   /** Use a Compute Engine VM image to start the notebook instance. */
   vmImage?: VmImage;
   /** Input only. The type of the data disk attached to this instance, defaults to standard persistent disk (`PD_STANDARD`). */
-  dataDiskType?: InstanceDataDiskTypeEnum;
+  dataDiskType?: InstanceDataDiskTypeEnum | (string & {});
   /** Output only. Instance update time. */
   updateTime?: string;
   /** Output only. Bool indicating whether this notebook has been migrated to a Workbench Instance */
@@ -787,15 +791,15 @@ export interface Instance {
   /** The upgrade history of this instance. */
   upgradeHistory?: UpgradeHistoryEntryList;
   /** Output only. The state of this instance. */
-  state?: InstanceStateEnum;
+  state?: InstanceStateEnum | (string & {});
   /** If true, the notebook instance will not register with the proxy. */
   noProxyAccess?: boolean;
   /** Output only. Instance creation time. */
   createTime?: string;
   /** Input only. The type of the boot disk attached to this instance, defaults to standard persistent disk (`PD_STANDARD`). */
-  bootDiskType?: InstanceBootDiskTypeEnum;
+  bootDiskType?: InstanceBootDiskTypeEnum | (string & {});
   /** Input only. Disk encryption method used on the boot and data disks, defaults to GMEK. */
-  diskEncryption?: InstanceDiskEncryptionEnum;
+  diskEncryption?: InstanceDiskEncryptionEnum | (string & {});
   /** Optional. The Compute Engine network tags to add to runtime (see [Add network tags](https://cloud.google.com/vpc/docs/add-remove-network-tags)). */
   tags?: StringList;
   /** Optional. The URIs of service account scopes to be included in Compute Engine instances. If not specified, the following [scopes](https://cloud.google.com/compute/docs/access/service-accounts#accesscopesiam) are defined: - https://www.googleapis.com/auth/cloud-platform - https://www.googleapis.com/auth/userinfo.email If not using default scopes, you need at least: https://www.googleapis.com/auth/compute */
@@ -908,7 +912,7 @@ export const RuntimeAccessConfigAccessTypeEnum = /*@__PURE__*/ S.String;
 /** Specifies the login configuration for Runtime */
 export interface RuntimeAccessConfig {
   /** The type of access mode this instance. */
-  accessType?: RuntimeAccessConfigAccessTypeEnum;
+  accessType?: RuntimeAccessConfigAccessTypeEnum | (string & {});
   /** Output only. The proxy endpoint that is used to access the runtime. */
   proxyUri?: string;
   /** The owner of this runtime after creation. Format: `alias@example.com` Currently supports one owner only. */
@@ -956,7 +960,7 @@ export const RuntimeGuestOsFeature = /*@__PURE__*/ S.suspend(() =>
   identifier: "RuntimeGuestOsFeature",
 }) as any as S.Schema<RuntimeGuestOsFeature>;
 
-export type RuntimeGuestOsFeatureList = ReadonlyArray<RuntimeGuestOsFeature>;
+export type RuntimeGuestOsFeatureList = Array<RuntimeGuestOsFeature>;
 export const RuntimeGuestOsFeatureList = /*@__PURE__*/ S.Array(
   RuntimeGuestOsFeature,
 ) as any as S.Schema<RuntimeGuestOsFeatureList>;
@@ -980,7 +984,7 @@ export interface LocalDiskInitializeParams {
   /** Optional. Provide this property when creating the disk. */
   description?: string;
   /** Input only. The type of the boot disk attached to this instance, defaults to standard persistent disk (`PD_STANDARD`). */
-  diskType?: LocalDiskInitializeParamsDiskTypeEnum;
+  diskType?: LocalDiskInitializeParamsDiskTypeEnum | (string & {});
 }
 export const LocalDiskInitializeParams = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1038,7 +1042,7 @@ export const LocalDisk = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "LocalDisk" }) as any as S.Schema<LocalDisk>;
 
-export type ContainerImageList = ReadonlyArray<ContainerImage>;
+export type ContainerImageList = Array<ContainerImage>;
 export const ContainerImageList = /*@__PURE__*/ S.Array(
   ContainerImage,
 ) as any as S.Schema<ContainerImageList>;
@@ -1087,7 +1091,7 @@ export const RuntimeAcceleratorConfigTypeEnum = /*@__PURE__*/ S.String;
 /** Definition of the types of hardware accelerators that can be used. See [Compute Engine AcceleratorTypes](https://cloud.google.com/compute/docs/reference/beta/acceleratorTypes). Examples: * `nvidia-tesla-k80` * `nvidia-tesla-p100` * `nvidia-tesla-v100` * `nvidia-tesla-p4` * `nvidia-tesla-t4` * `nvidia-tesla-a100` */
 export interface RuntimeAcceleratorConfig {
   /** Accelerator model. */
-  type?: RuntimeAcceleratorConfigTypeEnum;
+  type?: RuntimeAcceleratorConfigTypeEnum | (string & {});
   /** Count of cores of this accelerator. */
   coreCount?: string;
 }
@@ -1123,7 +1127,7 @@ export interface VirtualMachineConfig {
   /** Optional. The Compute Engine metadata entries to add to virtual machine. (see [Project and instance metadata](https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata)). */
   metadata?: StringMap;
   /** Optional. The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet. */
-  nicType?: VirtualMachineConfigNicTypeEnum;
+  nicType?: VirtualMachineConfigNicTypeEnum | (string & {});
   /** Optional. Shielded VM Instance configuration settings. */
   shieldedInstanceConfig?: RuntimeShieldedInstanceConfig;
   /** Optional. The Compute Engine subnetwork to be used for machine communications. Cannot be specified with network. A full URL or partial URI are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/[project_id]/regions/us-east1/subnetworks/sub0` * `projects/[project_id]/regions/us-east1/subnetworks/sub0` */
@@ -1183,8 +1187,9 @@ export type RuntimeMigrationEligibilityErrorsItemEnum =
   | "CUSTOM_CONTAINER";
 export const RuntimeMigrationEligibilityErrorsItemEnum = /*@__PURE__*/ S.String;
 
-export type RuntimeMigrationEligibilityErrorsItemEnumList =
-  ReadonlyArray<RuntimeMigrationEligibilityErrorsItemEnum>;
+export type RuntimeMigrationEligibilityErrorsItemEnumList = Array<
+  RuntimeMigrationEligibilityErrorsItemEnum | (string & {})
+>;
 export const RuntimeMigrationEligibilityErrorsItemEnumList =
   /*@__PURE__*/ S.Array(
     RuntimeMigrationEligibilityErrorsItemEnum,
@@ -1201,8 +1206,9 @@ export type RuntimeMigrationEligibilityWarningsItemEnum =
 export const RuntimeMigrationEligibilityWarningsItemEnum =
   /*@__PURE__*/ S.String;
 
-export type RuntimeMigrationEligibilityWarningsItemEnumList =
-  ReadonlyArray<RuntimeMigrationEligibilityWarningsItemEnum>;
+export type RuntimeMigrationEligibilityWarningsItemEnumList = Array<
+  RuntimeMigrationEligibilityWarningsItemEnum | (string & {})
+>;
 export const RuntimeMigrationEligibilityWarningsItemEnumList =
   /*@__PURE__*/ S.Array(
     RuntimeMigrationEligibilityWarningsItemEnum,
@@ -1244,7 +1250,9 @@ export interface RuntimeSoftwareConfig {
   /** Install Nvidia Driver automatically. Default: True */
   installGpuDriver?: boolean;
   /** Behavior for the post startup script. */
-  postStartupScriptBehavior?: RuntimeSoftwareConfigPostStartupScriptBehaviorEnum;
+  postStartupScriptBehavior?:
+    | RuntimeSoftwareConfigPostStartupScriptBehaviorEnum
+    | (string & {});
   /** Time in minutes to wait before shutting down runtime. Default: 180 minutes */
   idleShutdownTimeout?: number;
   /** Bool indicating whether mixer client should be disabled. Default: False */
@@ -1312,7 +1320,7 @@ export interface Runtime {
   /** Output only. The resource name of the runtime. Format: `projects/{project}/locations/{location}/runtimes/{runtimeId}` */
   name?: string;
   /** Output only. Runtime state. */
-  state?: RuntimeStateEnum;
+  state?: RuntimeStateEnum | (string & {});
   /** The config settings for accessing runtime. */
   accessConfig?: RuntimeAccessConfig;
   /** Use a Compute Engine VM image to start the managed notebook instance. */
@@ -1322,7 +1330,7 @@ export interface Runtime {
   /** Output only. Checks how feasible a migration from GmN to WbI is. */
   runtimeMigrationEligibility?: RuntimeMigrationEligibility;
   /** Output only. Runtime health_state. */
-  healthState?: RuntimeHealthStateEnum;
+  healthState?: RuntimeHealthStateEnum | (string & {});
   /** The config settings for software inside the runtime. */
   softwareConfig?: RuntimeSoftwareConfig;
   /** Output only. Contains Runtime daemon metrics such as Service status and JupyterLab stats. */
@@ -1383,7 +1391,7 @@ export type ScheduleStateEnum =
   | "DELETING";
 export const ScheduleStateEnum = /*@__PURE__*/ S.String;
 
-export type ExecutionList = ReadonlyArray<Execution>;
+export type ExecutionList = Array<Execution>;
 export const ExecutionList = /*@__PURE__*/ S.Array(
   Execution,
 ) as any as S.Schema<ExecutionList>;
@@ -1400,7 +1408,7 @@ export interface Schedule {
   timeZone?: string;
   /** Output only. Time the schedule was created. */
   createTime?: string;
-  state?: ScheduleStateEnum;
+  state?: ScheduleStateEnum | (string & {});
   /** Output only. The most recent execution names triggered from this schedule and their corresponding states. */
   recentExecutions?: ExecutionList;
   /** Cron-tab formatted schedule by which the job will execute. Format: minute, hour, day of month, month, day of week, e.g. `0 0 * * WED` = every Wednesday More examples: https://crontab.guru/examples.html */
@@ -1727,7 +1735,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
-export type BindingList = ReadonlyArray<Binding>;
+export type BindingList = Array<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -2053,7 +2061,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = ReadonlyArray<Location>;
+export type LocationList = Array<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -2099,7 +2107,7 @@ export const ListProjectsLocationsEnvironmentsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsEnvironmentsRequest",
 }) as any as S.Schema<ListProjectsLocationsEnvironmentsRequest>;
 
-export type EnvironmentList = ReadonlyArray<Environment>;
+export type EnvironmentList = Array<Environment>;
 export const EnvironmentList = /*@__PURE__*/ S.Array(
   Environment,
 ) as any as S.Schema<EnvironmentList>;
@@ -2204,7 +2212,7 @@ export const ListProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsInstancesRequest",
 }) as any as S.Schema<ListProjectsLocationsInstancesRequest>;
 
-export type InstanceList = ReadonlyArray<Instance>;
+export type InstanceList = Array<Instance>;
 export const InstanceList = /*@__PURE__*/ S.Array(
   Instance,
 ) as any as S.Schema<InstanceList>;
@@ -2259,7 +2267,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type OperationList = ReadonlyArray<Operation>;
+export type OperationList = Array<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -2314,7 +2322,7 @@ export const ListProjectsLocationsRuntimesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsRuntimesRequest",
 }) as any as S.Schema<ListProjectsLocationsRuntimesRequest>;
 
-export type RuntimeList = ReadonlyArray<Runtime>;
+export type RuntimeList = Array<Runtime>;
 export const RuntimeList = /*@__PURE__*/ S.Array(
   Runtime,
 ) as any as S.Schema<RuntimeList>;
@@ -2369,7 +2377,7 @@ export const ListProjectsLocationsSchedulesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsSchedulesRequest",
 }) as any as S.Schema<ListProjectsLocationsSchedulesRequest>;
 
-export type ScheduleList = ReadonlyArray<Schedule>;
+export type ScheduleList = Array<Schedule>;
 export const ScheduleList = /*@__PURE__*/ S.Array(
   Schedule,
 ) as any as S.Schema<ScheduleList>;

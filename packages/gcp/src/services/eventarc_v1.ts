@@ -166,7 +166,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -237,7 +237,7 @@ export interface Channel {
   /** Optional. Resource labels. */
   labels?: StringMap;
   /** Output only. The state of a Channel. */
-  state?: ChannelStateEnum;
+  state?: ChannelStateEnum | (string & {});
   /** Output only. Whether or not this Channel satisfies the requirements of physical zone separation */
   satisfiesPzs?: boolean;
   /** Output only. The last-modified time. */
@@ -376,7 +376,7 @@ export const LoggingConfigLogSeverityEnum = /*@__PURE__*/ S.String;
 /** The configuration for Platform Telemetry logging for Eventarc Advanced resources. */
 export interface LoggingConfig {
   /** Optional. The minimum severity of logs that will be sent to Stackdriver/Platform Telemetry. Logs at severitiy ≥ this value will be sent, unless it is NONE. */
-  logSeverity?: LoggingConfigLogSeverityEnum;
+  logSeverity?: LoggingConfigLogSeverityEnum | (string & {});
 }
 export const LoggingConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -397,7 +397,7 @@ export const OrganizationSubscription = /*@__PURE__*/ S.suspend(() =>
   identifier: "OrganizationSubscription",
 }) as any as S.Schema<OrganizationSubscription>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -651,7 +651,7 @@ export const GoogleCloudEventarcV1PipelineMediation = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudEventarcV1PipelineMediation>;
 
 export type GoogleCloudEventarcV1PipelineMediationList =
-  ReadonlyArray<GoogleCloudEventarcV1PipelineMediation>;
+  Array<GoogleCloudEventarcV1PipelineMediation>;
 export const GoogleCloudEventarcV1PipelineMediationList = /*@__PURE__*/ S.Array(
   GoogleCloudEventarcV1PipelineMediation,
 ) as any as S.Schema<GoogleCloudEventarcV1PipelineMediationList>;
@@ -785,7 +785,7 @@ export const GoogleCloudEventarcV1PipelineDestination = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudEventarcV1PipelineDestination>;
 
 export type GoogleCloudEventarcV1PipelineDestinationList =
-  ReadonlyArray<GoogleCloudEventarcV1PipelineDestination>;
+  Array<GoogleCloudEventarcV1PipelineDestination>;
 export const GoogleCloudEventarcV1PipelineDestinationList =
   /*@__PURE__*/ S.Array(
     GoogleCloudEventarcV1PipelineDestination,
@@ -928,7 +928,7 @@ export const StateConditionCodeEnum = /*@__PURE__*/ S.String;
 /** A condition that is part of the trigger state computation. */
 export interface StateCondition {
   /** The canonical code of the condition. */
-  code?: StateConditionCodeEnum;
+  code?: StateConditionCodeEnum | (string & {});
   /** Human-readable message. */
   message?: string;
 }
@@ -1075,7 +1075,7 @@ export const EventFilter = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "EventFilter" }) as any as S.Schema<EventFilter>;
 
-export type EventFilterList = ReadonlyArray<EventFilter>;
+export type EventFilterList = Array<EventFilter>;
 export const EventFilterList = /*@__PURE__*/ S.Array(
   EventFilter,
 ) as any as S.Schema<EventFilterList>;
@@ -1461,7 +1461,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
-export type BindingList = ReadonlyArray<Binding>;
+export type BindingList = Array<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -1476,7 +1476,7 @@ export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
 export interface AuditLogConfig {
   /** The log type that this config enables. */
-  logType?: AuditLogConfigLogTypeEnum;
+  logType?: AuditLogConfigLogTypeEnum | (string & {});
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
   exemptedMembers?: StringList;
 }
@@ -1487,7 +1487,7 @@ export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
-export type AuditLogConfigList = ReadonlyArray<AuditLogConfig>;
+export type AuditLogConfigList = Array<AuditLogConfig>;
 export const AuditLogConfigList = /*@__PURE__*/ S.Array(
   AuditLogConfig,
 ) as any as S.Schema<AuditLogConfigList>;
@@ -1506,7 +1506,7 @@ export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
-export type AuditConfigList = ReadonlyArray<AuditConfig>;
+export type AuditConfigList = Array<AuditConfig>;
 export const AuditConfigList = /*@__PURE__*/ S.Array(
   AuditConfig,
 ) as any as S.Schema<AuditConfigList>;
@@ -1877,7 +1877,7 @@ export const FilteringAttribute = /*@__PURE__*/ S.suspend(() =>
   identifier: "FilteringAttribute",
 }) as any as S.Schema<FilteringAttribute>;
 
-export type FilteringAttributeList = ReadonlyArray<FilteringAttribute>;
+export type FilteringAttributeList = Array<FilteringAttribute>;
 export const FilteringAttributeList = /*@__PURE__*/ S.Array(
   FilteringAttribute,
 ) as any as S.Schema<FilteringAttributeList>;
@@ -1902,7 +1902,7 @@ export const EventType = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "EventType" }) as any as S.Schema<EventType>;
 
-export type EventTypeList = ReadonlyArray<EventType>;
+export type EventTypeList = Array<EventType>;
 export const EventTypeList = /*@__PURE__*/ S.Array(
   EventType,
 ) as any as S.Schema<EventTypeList>;
@@ -2016,7 +2016,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = ReadonlyArray<Location>;
+export type LocationList = Array<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -2062,7 +2062,7 @@ export const ListProjectsLocationsChannelConnectionsRequest =
     identifier: "ListProjectsLocationsChannelConnectionsRequest",
   }) as any as S.Schema<ListProjectsLocationsChannelConnectionsRequest>;
 
-export type ChannelConnectionList = ReadonlyArray<ChannelConnection>;
+export type ChannelConnectionList = Array<ChannelConnection>;
 export const ChannelConnectionList = /*@__PURE__*/ S.Array(
   ChannelConnection,
 ) as any as S.Schema<ChannelConnectionList>;
@@ -2114,7 +2114,7 @@ export const ListProjectsLocationsChannelsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsChannelsRequest",
 }) as any as S.Schema<ListProjectsLocationsChannelsRequest>;
 
-export type ChannelList = ReadonlyArray<Channel>;
+export type ChannelList = Array<Channel>;
 export const ChannelList = /*@__PURE__*/ S.Array(
   Channel,
 ) as any as S.Schema<ChannelList>;
@@ -2169,7 +2169,7 @@ export const ListProjectsLocationsEnrollmentsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsEnrollmentsRequest",
 }) as any as S.Schema<ListProjectsLocationsEnrollmentsRequest>;
 
-export type EnrollmentList = ReadonlyArray<Enrollment>;
+export type EnrollmentList = Array<Enrollment>;
 export const EnrollmentList = /*@__PURE__*/ S.Array(
   Enrollment,
 ) as any as S.Schema<EnrollmentList>;
@@ -2224,7 +2224,7 @@ export const ListProjectsLocationsGoogleApiSourcesRequest =
     identifier: "ListProjectsLocationsGoogleApiSourcesRequest",
   }) as any as S.Schema<ListProjectsLocationsGoogleApiSourcesRequest>;
 
-export type GoogleApiSourceList = ReadonlyArray<GoogleApiSource>;
+export type GoogleApiSourceList = Array<GoogleApiSource>;
 export const GoogleApiSourceList = /*@__PURE__*/ S.Array(
   GoogleApiSource,
 ) as any as S.Schema<GoogleApiSourceList>;
@@ -2279,7 +2279,7 @@ export const ListProjectsLocationsMessageBusesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsMessageBusesRequest",
 }) as any as S.Schema<ListProjectsLocationsMessageBusesRequest>;
 
-export type MessageBusList = ReadonlyArray<MessageBus>;
+export type MessageBusList = Array<MessageBus>;
 export const MessageBusList = /*@__PURE__*/ S.Array(
   MessageBus,
 ) as any as S.Schema<MessageBusList>;
@@ -2334,8 +2334,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type GoogleLongrunningOperationList =
-  ReadonlyArray<GoogleLongrunningOperation>;
+export type GoogleLongrunningOperationList = Array<GoogleLongrunningOperation>;
 export const GoogleLongrunningOperationList = /*@__PURE__*/ S.Array(
   GoogleLongrunningOperation,
 ) as any as S.Schema<GoogleLongrunningOperationList>;
@@ -2391,7 +2390,7 @@ export const ListProjectsLocationsPipelinesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsPipelinesRequest",
 }) as any as S.Schema<ListProjectsLocationsPipelinesRequest>;
 
-export type PipelineList = ReadonlyArray<Pipeline>;
+export type PipelineList = Array<Pipeline>;
 export const PipelineList = /*@__PURE__*/ S.Array(
   Pipeline,
 ) as any as S.Schema<PipelineList>;
@@ -2446,7 +2445,7 @@ export const ListProjectsLocationsProvidersRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsProvidersRequest",
 }) as any as S.Schema<ListProjectsLocationsProvidersRequest>;
 
-export type ProviderList = ReadonlyArray<Provider>;
+export type ProviderList = Array<Provider>;
 export const ProviderList = /*@__PURE__*/ S.Array(
   Provider,
 ) as any as S.Schema<ProviderList>;
@@ -2501,7 +2500,7 @@ export const ListProjectsLocationsTriggersRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsTriggersRequest",
 }) as any as S.Schema<ListProjectsLocationsTriggersRequest>;
 
-export type TriggerList = ReadonlyArray<Trigger>;
+export type TriggerList = Array<Trigger>;
 export const TriggerList = /*@__PURE__*/ S.Array(
   Trigger,
 ) as any as S.Schema<TriggerList>;

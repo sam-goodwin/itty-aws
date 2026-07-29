@@ -96,7 +96,7 @@ export const StringMap = /*@__PURE__*/ S.Record(
 /** A span represents a single timed event within a trace. Spans can be nested and form a trace tree. Often, a trace contains a root span that describes the end-to-end latency of an operation and, optionally, one or more subspans for its suboperations. Spans do not need to be contiguous. There may be gaps between spans in a trace. */
 export interface TraceSpan {
   /** Distinguishes between spans generated in a particular context. For example, two spans with the same name may be distinguished using `RPC_CLIENT` and `RPC_SERVER` to identify queueing latency associated with the span. */
-  kind?: TraceSpanKindEnum;
+  kind?: TraceSpanKindEnum | (string & {});
   /** Optional. ID of the parent span, if any. */
   parentSpanId?: string;
   /** Name of the span. Must be less than 128 bytes. The span name is sanitized and displayed in the Trace tool in the Google Cloud Platform Console. The name may be a method name or some other per-call site name. For the same executable and the same call point, a best practice is to use a consistent name, which makes it easier to correlate cross-trace spans. */
@@ -122,7 +122,7 @@ export const TraceSpan = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TraceSpan" }) as any as S.Schema<TraceSpan>;
 
-export type TraceSpanList = ReadonlyArray<TraceSpan>;
+export type TraceSpanList = Array<TraceSpan>;
 export const TraceSpanList = /*@__PURE__*/ S.Array(
   TraceSpan,
 ) as any as S.Schema<TraceSpanList>;
@@ -190,7 +190,7 @@ export const ListProjectsTracesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsTracesRequest",
 }) as any as S.Schema<ListProjectsTracesRequest>;
 
-export type TraceList = ReadonlyArray<Trace>;
+export type TraceList = Array<Trace>;
 export const TraceList = /*@__PURE__*/ S.Array(
   Trace,
 ) as any as S.Schema<TraceList>;

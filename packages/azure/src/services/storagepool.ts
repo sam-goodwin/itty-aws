@@ -27,8 +27,7 @@ export const Sku = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Sku" }) as any as S.Schema<Sku>;
 
 /** Logical zone for Disk Pool resource; example: ["1"]. */
-export type DiskPoolCreatePropertiesAvailabilityZonesList =
-  ReadonlyArray<string>;
+export type DiskPoolCreatePropertiesAvailabilityZonesList = Array<string>;
 export const DiskPoolCreatePropertiesAvailabilityZonesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -46,14 +45,13 @@ export const Disk = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Disk" }) as any as S.Schema<Disk>;
 
 /** List of Azure Managed Disks to attach to a Disk Pool. */
-export type DiskPoolCreatePropertiesDisksList = ReadonlyArray<Disk>;
+export type DiskPoolCreatePropertiesDisksList = Array<Disk>;
 export const DiskPoolCreatePropertiesDisksList = /*@__PURE__*/ S.Array(
   Disk,
 ) as any as S.Schema<DiskPoolCreatePropertiesDisksList>;
 
 /** List of additional capabilities for a Disk Pool. */
-export type DiskPoolCreatePropertiesAdditionalCapabilitiesList =
-  ReadonlyArray<string>;
+export type DiskPoolCreatePropertiesAdditionalCapabilitiesList = Array<string>;
 export const DiskPoolCreatePropertiesAdditionalCapabilitiesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -95,7 +93,7 @@ export const DiskPoolsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<DiskPoolsCreateOrUpdateRequestTagsMap>;
 
 /** List of Azure resource ids that manage this resource. */
-export type ManagedByExtended = ReadonlyArray<string>;
+export type ManagedByExtended = Array<string>;
 export const ManagedByExtended = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ManagedByExtended>;
@@ -165,7 +163,7 @@ export type ProvisioningState =
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** Logical zone for Disk Pool resource; example: ["1"]. */
-export type DiskPoolPropertiesAvailabilityZonesList = ReadonlyArray<string>;
+export type DiskPoolPropertiesAvailabilityZonesList = Array<string>;
 export const DiskPoolPropertiesAvailabilityZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DiskPoolPropertiesAvailabilityZonesList>;
@@ -183,14 +181,13 @@ export type OperationalStatus =
 export const OperationalStatus = /*@__PURE__*/ S.String;
 
 /** List of Azure Managed Disks to attach to a Disk Pool. */
-export type DiskPoolPropertiesDisksList = ReadonlyArray<Disk>;
+export type DiskPoolPropertiesDisksList = Array<Disk>;
 export const DiskPoolPropertiesDisksList = /*@__PURE__*/ S.Array(
   Disk,
 ) as any as S.Schema<DiskPoolPropertiesDisksList>;
 
 /** List of additional capabilities for Disk Pool. */
-export type DiskPoolPropertiesAdditionalCapabilitiesList =
-  ReadonlyArray<string>;
+export type DiskPoolPropertiesAdditionalCapabilitiesList = Array<string>;
 export const DiskPoolPropertiesAdditionalCapabilitiesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -510,7 +507,7 @@ export const DiskPool = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DiskPool" }) as any as S.Schema<DiskPool>;
 
 /** An array of Disk pool objects. */
-export type DiskPoolListResultValueList = ReadonlyArray<DiskPool>;
+export type DiskPoolListResultValueList = Array<DiskPool>;
 export const DiskPoolListResultValueList = /*@__PURE__*/ S.Array(
   DiskPool,
 ) as any as S.Schema<DiskPoolListResultValueList>;
@@ -597,8 +594,7 @@ export const EndpointDetail = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EndpointDetail" }) as any as S.Schema<EndpointDetail>;
 
 /** The IP Addresses and Ports used when connecting to DomainName. */
-export type EndpointDependencyEndpointDetailsList =
-  ReadonlyArray<EndpointDetail>;
+export type EndpointDependencyEndpointDetailsList = Array<EndpointDetail>;
 export const EndpointDependencyEndpointDetailsList = /*@__PURE__*/ S.Array(
   EndpointDetail,
 ) as any as S.Schema<EndpointDependencyEndpointDetailsList>;
@@ -621,7 +617,7 @@ export const EndpointDependency = /*@__PURE__*/ S.suspend(() =>
 
 /** The endpoints that the App Service Environment reaches the service at. */
 export type OutboundEnvironmentEndpointEndpointsList =
-  ReadonlyArray<EndpointDependency>;
+  Array<EndpointDependency>;
 export const OutboundEnvironmentEndpointEndpointsList = /*@__PURE__*/ S.Array(
   EndpointDependency,
 ) as any as S.Schema<OutboundEnvironmentEndpointEndpointsList>;
@@ -644,7 +640,7 @@ export const OutboundEnvironmentEndpoint = /*@__PURE__*/ S.suspend(() =>
 
 /** Collection of resources. */
 export type OutboundEnvironmentEndpointListValueList =
-  ReadonlyArray<OutboundEnvironmentEndpoint>;
+  Array<OutboundEnvironmentEndpoint>;
 export const OutboundEnvironmentEndpointListValueList = /*@__PURE__*/ S.Array(
   OutboundEnvironmentEndpoint,
 ) as any as S.Schema<OutboundEnvironmentEndpointListValueList>;
@@ -698,7 +694,7 @@ export const DiskPoolsStartResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DiskPoolsStartResponse>;
 
 /** List of Azure Managed Disks to attach to a Disk Pool. */
-export type DiskPoolUpdatePropertiesDisksList = ReadonlyArray<Disk>;
+export type DiskPoolUpdatePropertiesDisksList = Array<Disk>;
 export const DiskPoolUpdatePropertiesDisksList = /*@__PURE__*/ S.Array(
   Disk,
 ) as any as S.Schema<DiskPoolUpdatePropertiesDisksList>;
@@ -868,13 +864,13 @@ export const DiskPoolZonesListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DiskPoolZonesListRequest>;
 
 /** Logical zone for Disk Pool resource; example: ["1"]. */
-export type DiskPoolZoneInfoAvailabilityZonesList = ReadonlyArray<string>;
+export type DiskPoolZoneInfoAvailabilityZonesList = Array<string>;
 export const DiskPoolZoneInfoAvailabilityZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DiskPoolZoneInfoAvailabilityZonesList>;
 
 /** List of additional capabilities for Disk Pool. */
-export type DiskPoolZoneInfoAdditionalCapabilitiesList = ReadonlyArray<string>;
+export type DiskPoolZoneInfoAdditionalCapabilitiesList = Array<string>;
 export const DiskPoolZoneInfoAdditionalCapabilitiesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DiskPoolZoneInfoAdditionalCapabilitiesList>;
@@ -901,7 +897,7 @@ export const DiskPoolZoneInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DiskPoolZoneInfo>;
 
 /** The list of Disk Pool Skus. */
-export type DiskPoolZoneListResultValueList = ReadonlyArray<DiskPoolZoneInfo>;
+export type DiskPoolZoneListResultValueList = Array<DiskPoolZoneInfo>;
 export const DiskPoolZoneListResultValueList = /*@__PURE__*/ S.Array(
   DiskPoolZoneInfo,
 ) as any as S.Schema<DiskPoolZoneListResultValueList>;
@@ -927,7 +923,7 @@ export type AclMode = "Dynamic" | "Static";
 export const AclMode = /*@__PURE__*/ S.String;
 
 /** List of LUN names mapped to the ACL. */
-export type AclMappedLunsList = ReadonlyArray<string>;
+export type AclMappedLunsList = Array<string>;
 export const AclMappedLunsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AclMappedLunsList>;
@@ -947,7 +943,7 @@ export const Acl = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Acl" }) as any as S.Schema<Acl>;
 
 /** Access Control List (ACL) for an iSCSI Target; defines LUN masking policy */
-export type IscsiTargetCreatePropertiesInputStaticAclsList = ReadonlyArray<Acl>;
+export type IscsiTargetCreatePropertiesInputStaticAclsList = Array<Acl>;
 export const IscsiTargetCreatePropertiesInputStaticAclsList =
   /*@__PURE__*/ S.Array(
     Acl,
@@ -968,8 +964,7 @@ export const IscsiLunInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IscsiLunInput" }) as any as S.Schema<IscsiLunInput>;
 
 /** List of LUNs to be exposed through iSCSI Target. */
-export type IscsiTargetCreatePropertiesInputLunsList =
-  ReadonlyArray<IscsiLunInput>;
+export type IscsiTargetCreatePropertiesInputLunsList = Array<IscsiLunInput>;
 export const IscsiTargetCreatePropertiesInputLunsList = /*@__PURE__*/ S.Array(
   IscsiLunInput,
 ) as any as S.Schema<IscsiTargetCreatePropertiesInputLunsList>;
@@ -1034,7 +1029,7 @@ export const IscsiTargetsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IscsiTargetsCreateOrUpdateRequest>;
 
 /** Access Control List (ACL) for an iSCSI Target; defines LUN masking policy */
-export type IscsiTargetPropertiesStaticAclsList = ReadonlyArray<Acl>;
+export type IscsiTargetPropertiesStaticAclsList = Array<Acl>;
 export const IscsiTargetPropertiesStaticAclsList = /*@__PURE__*/ S.Array(
   Acl,
 ) as any as S.Schema<IscsiTargetPropertiesStaticAclsList>;
@@ -1057,19 +1052,19 @@ export const IscsiLun = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IscsiLun" }) as any as S.Schema<IscsiLun>;
 
 /** List of LUNs to be exposed through iSCSI Target. */
-export type IscsiTargetPropertiesLunsList = ReadonlyArray<IscsiLun>;
+export type IscsiTargetPropertiesLunsList = Array<IscsiLun>;
 export const IscsiTargetPropertiesLunsList = /*@__PURE__*/ S.Array(
   IscsiLun,
 ) as any as S.Schema<IscsiTargetPropertiesLunsList>;
 
 /** List of private IPv4 addresses to connect to the iSCSI Target. */
-export type IscsiTargetPropertiesEndpointsList = ReadonlyArray<string>;
+export type IscsiTargetPropertiesEndpointsList = Array<string>;
 export const IscsiTargetPropertiesEndpointsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<IscsiTargetPropertiesEndpointsList>;
 
 /** List of identifiers for active sessions on the iSCSI target */
-export type IscsiTargetPropertiesSessionsList = ReadonlyArray<string>;
+export type IscsiTargetPropertiesSessionsList = Array<string>;
 export const IscsiTargetPropertiesSessionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<IscsiTargetPropertiesSessionsList>;
@@ -1289,7 +1284,7 @@ export const IscsiTarget = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IscsiTarget" }) as any as S.Schema<IscsiTarget>;
 
 /** An array of iSCSI Targets in a Disk Pool. */
-export type IscsiTargetListValueList = ReadonlyArray<IscsiTarget>;
+export type IscsiTargetListValueList = Array<IscsiTarget>;
 export const IscsiTargetListValueList = /*@__PURE__*/ S.Array(
   IscsiTarget,
 ) as any as S.Schema<IscsiTargetListValueList>;
@@ -1311,15 +1306,14 @@ export const IscsiTargetList = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IscsiTargetList>;
 
 /** Access Control List (ACL) for an iSCSI Target; defines LUN masking policy */
-export type IscsiTargetUpdatePropertiesInputStaticAclsList = ReadonlyArray<Acl>;
+export type IscsiTargetUpdatePropertiesInputStaticAclsList = Array<Acl>;
 export const IscsiTargetUpdatePropertiesInputStaticAclsList =
   /*@__PURE__*/ S.Array(
     Acl,
   ) as any as S.Schema<IscsiTargetUpdatePropertiesInputStaticAclsList>;
 
 /** List of LUNs to be exposed through iSCSI Target. */
-export type IscsiTargetUpdatePropertiesInputLunsList =
-  ReadonlyArray<IscsiLunInput>;
+export type IscsiTargetUpdatePropertiesInputLunsList = Array<IscsiLunInput>;
 export const IscsiTargetUpdatePropertiesInputLunsList = /*@__PURE__*/ S.Array(
   IscsiLunInput,
 ) as any as S.Schema<IscsiTargetUpdatePropertiesInputLunsList>;
@@ -1470,7 +1464,7 @@ export const StoragePoolRPOperation = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of operations supported by the StoragePool RP. */
 export type StoragePoolOperationListResultValueList =
-  ReadonlyArray<StoragePoolRPOperation>;
+  Array<StoragePoolRPOperation>;
 export const StoragePoolOperationListResultValueList = /*@__PURE__*/ S.Array(
   StoragePoolRPOperation,
 ) as any as S.Schema<StoragePoolOperationListResultValueList>;
@@ -1530,27 +1524,26 @@ export const ResourceSkuCapability = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourceSkuCapability>;
 
 /** List of additional capabilities for StoragePool resource. */
-export type ResourceSkuInfoCapabilitiesList =
-  ReadonlyArray<ResourceSkuCapability>;
+export type ResourceSkuInfoCapabilitiesList = Array<ResourceSkuCapability>;
 export const ResourceSkuInfoCapabilitiesList = /*@__PURE__*/ S.Array(
   ResourceSkuCapability,
 ) as any as S.Schema<ResourceSkuInfoCapabilitiesList>;
 
 /** List of availability zones where the SKU is supported. */
-export type ResourceSkuLocationInfoZonesList = ReadonlyArray<string>;
+export type ResourceSkuLocationInfoZonesList = Array<string>;
 export const ResourceSkuLocationInfoZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ResourceSkuLocationInfoZonesList>;
 
 /** The set of zones that the SKU is available in with the specified capabilities. */
-export type ResourceSkuZoneDetailsNameList = ReadonlyArray<string>;
+export type ResourceSkuZoneDetailsNameList = Array<string>;
 export const ResourceSkuZoneDetailsNameList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ResourceSkuZoneDetailsNameList>;
 
 /** A list of capabilities that are available for the SKU in the specified list of zones. */
 export type ResourceSkuZoneDetailsCapabilitiesList =
-  ReadonlyArray<ResourceSkuCapability>;
+  Array<ResourceSkuCapability>;
 export const ResourceSkuZoneDetailsCapabilitiesList = /*@__PURE__*/ S.Array(
   ResourceSkuCapability,
 ) as any as S.Schema<ResourceSkuZoneDetailsCapabilitiesList>;
@@ -1573,7 +1566,7 @@ export const ResourceSkuZoneDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** Details of capabilities available to a SKU in specific zones. */
 export type ResourceSkuLocationInfoZoneDetailsList =
-  ReadonlyArray<ResourceSkuZoneDetails>;
+  Array<ResourceSkuZoneDetails>;
 export const ResourceSkuLocationInfoZoneDetailsList = /*@__PURE__*/ S.Array(
   ResourceSkuZoneDetails,
 ) as any as S.Schema<ResourceSkuLocationInfoZoneDetailsList>;
@@ -1602,19 +1595,19 @@ export type ResourceSkuRestrictionsType = "Location" | "Zone";
 export const ResourceSkuRestrictionsType = /*@__PURE__*/ S.String;
 
 /** The value of restrictions. If the restriction type is set to location. This would be different locations where the SKU is restricted. */
-export type ResourceSkuRestrictionsValuesList = ReadonlyArray<string>;
+export type ResourceSkuRestrictionsValuesList = Array<string>;
 export const ResourceSkuRestrictionsValuesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ResourceSkuRestrictionsValuesList>;
 
 /** Locations where the SKU is restricted */
-export type ResourceSkuRestrictionInfoLocationsList = ReadonlyArray<string>;
+export type ResourceSkuRestrictionInfoLocationsList = Array<string>;
 export const ResourceSkuRestrictionInfoLocationsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ResourceSkuRestrictionInfoLocationsList>;
 
 /** List of availability zones where the SKU is restricted. */
-export type ResourceSkuRestrictionInfoZonesList = ReadonlyArray<string>;
+export type ResourceSkuRestrictionInfoZonesList = Array<string>;
 export const ResourceSkuRestrictionInfoZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ResourceSkuRestrictionInfoZonesList>;
@@ -1664,8 +1657,7 @@ export const ResourceSkuRestrictions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourceSkuRestrictions>;
 
 /** The restrictions because of which SKU cannot be used. This is empty if there are no restrictions. */
-export type ResourceSkuInfoRestrictionsList =
-  ReadonlyArray<ResourceSkuRestrictions>;
+export type ResourceSkuInfoRestrictionsList = Array<ResourceSkuRestrictions>;
 export const ResourceSkuInfoRestrictionsList = /*@__PURE__*/ S.Array(
   ResourceSkuRestrictions,
 ) as any as S.Schema<ResourceSkuInfoRestrictionsList>;
@@ -1702,7 +1694,7 @@ export const ResourceSkuInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourceSkuInfo>;
 
 /** The list of StoragePool resource skus. */
-export type ResourceSkuListResultValueList = ReadonlyArray<ResourceSkuInfo>;
+export type ResourceSkuListResultValueList = Array<ResourceSkuInfo>;
 export const ResourceSkuListResultValueList = /*@__PURE__*/ S.Array(
   ResourceSkuInfo,
 ) as any as S.Schema<ResourceSkuListResultValueList>;

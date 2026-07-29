@@ -274,7 +274,7 @@ export const BgpPeer = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BgpPeer" }) as any as S.Schema<BgpPeer>;
 
 /** The BgpPeer items on this page */
-export type BgpPeerListResultValueList = ReadonlyArray<BgpPeer>;
+export type BgpPeerListResultValueList = Array<BgpPeer>;
 export const BgpPeerListResultValueList = /*@__PURE__*/ S.Array(
   BgpPeer,
 ) as any as S.Schema<BgpPeerListResultValueList>;
@@ -296,7 +296,7 @@ export const BgpPeerListResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BgpPeerListResult>;
 
 /** IP Range */
-export type LoadBalancerPropertiesInputAddressesList = ReadonlyArray<string>;
+export type LoadBalancerPropertiesInputAddressesList = Array<string>;
 export const LoadBalancerPropertiesInputAddressesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LoadBalancerPropertiesInputAddressesList>;
@@ -316,7 +316,7 @@ export type AdvertiseMode = "ARP" | "BGP" | "Both";
 export const AdvertiseMode = /*@__PURE__*/ S.String;
 
 /** The list of BGP peers it should advertise to. Null or empty means to advertise to all peers. */
-export type LoadBalancerPropertiesInputBgpPeersList = ReadonlyArray<string>;
+export type LoadBalancerPropertiesInputBgpPeersList = Array<string>;
 export const LoadBalancerPropertiesInputBgpPeersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LoadBalancerPropertiesInputBgpPeersList>;
@@ -369,7 +369,7 @@ export const LoadBalancersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LoadBalancersCreateOrUpdateRequest>;
 
 /** IP Range */
-export type LoadBalancerPropertiesAddressesList = ReadonlyArray<string>;
+export type LoadBalancerPropertiesAddressesList = Array<string>;
 export const LoadBalancerPropertiesAddressesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LoadBalancerPropertiesAddressesList>;
@@ -384,7 +384,7 @@ export const LoadBalancerPropertiesServiceSelectorMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<LoadBalancerPropertiesServiceSelectorMap>;
 
 /** The list of BGP peers it should advertise to. Null or empty means to advertise to all peers. */
-export type LoadBalancerPropertiesBgpPeersList = ReadonlyArray<string>;
+export type LoadBalancerPropertiesBgpPeersList = Array<string>;
 export const LoadBalancerPropertiesBgpPeersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LoadBalancerPropertiesBgpPeersList>;
@@ -556,7 +556,7 @@ export const LoadBalancer = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LoadBalancer" }) as any as S.Schema<LoadBalancer>;
 
 /** The LoadBalancer items on this page */
-export type LoadBalancerListResultValueList = ReadonlyArray<LoadBalancer>;
+export type LoadBalancerListResultValueList = Array<LoadBalancer>;
 export const LoadBalancerListResultValueList = /*@__PURE__*/ S.Array(
   LoadBalancer,
 ) as any as S.Schema<LoadBalancerListResultValueList>;
@@ -645,7 +645,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = ReadonlyArray<Operation>;
+export type OperationsListResponseValueList = Array<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;
@@ -858,7 +858,7 @@ export const ServiceResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServiceResource>;
 
 /** The ServiceResource items on this page */
-export type ServiceResourceListResultValueList = ReadonlyArray<ServiceResource>;
+export type ServiceResourceListResultValueList = Array<ServiceResource>;
 export const ServiceResourceListResultValueList = /*@__PURE__*/ S.Array(
   ServiceResource,
 ) as any as S.Schema<ServiceResourceListResultValueList>;
@@ -884,7 +884,7 @@ export type VolumeExpansion = "Allow" | "Disallow";
 export const VolumeExpansion = /*@__PURE__*/ S.String;
 
 /** Additional mount options */
-export type StorageClassPropertiesInputMountOptionsList = ReadonlyArray<string>;
+export type StorageClassPropertiesInputMountOptionsList = Array<string>;
 export const StorageClassPropertiesInputMountOptionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -899,7 +899,7 @@ export type AccessMode = "ReadWriteOnce" | "ReadWriteMany";
 export const AccessMode = /*@__PURE__*/ S.String;
 
 /** The access mode: [ReadWriteOnce, ReadWriteMany] or [ReadWriteOnce] */
-export type StorageClassPropertiesInputAccessModesList = ReadonlyArray<
+export type StorageClassPropertiesInputAccessModesList = Array<
   AccessMode | (string & {})
 >;
 export const StorageClassPropertiesInputAccessModesList = /*@__PURE__*/ S.Array(
@@ -915,7 +915,7 @@ export type FailoverTier = "NotAvailable" | "Slow" | "Fast" | "Super";
 export const FailoverTier = /*@__PURE__*/ S.String;
 
 /** Limitations of the storage class */
-export type StorageClassPropertiesInputLimitationsList = ReadonlyArray<string>;
+export type StorageClassPropertiesInputLimitationsList = Array<string>;
 export const StorageClassPropertiesInputLimitationsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StorageClassPropertiesInputLimitationsList>;
@@ -936,7 +936,7 @@ export const SCType = /*@__PURE__*/ S.String;
 /** The properties of storage class of the StorageClass */
 export interface StorageClassTypeProperties {
   /** Type of the storage class. */
-  type: SCType;
+  type: SCType | (string & {});
 }
 export const StorageClassTypeProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1015,19 +1015,19 @@ export const StorageClassCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StorageClassCreateOrUpdateRequest>;
 
 /** Additional mount options */
-export type StorageClassPropertiesMountOptionsList = ReadonlyArray<string>;
+export type StorageClassPropertiesMountOptionsList = Array<string>;
 export const StorageClassPropertiesMountOptionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StorageClassPropertiesMountOptionsList>;
 
 /** The access mode: [ReadWriteOnce, ReadWriteMany] or [ReadWriteOnce] */
-export type StorageClassPropertiesAccessModesList = ReadonlyArray<AccessMode>;
+export type StorageClassPropertiesAccessModesList = Array<AccessMode>;
 export const StorageClassPropertiesAccessModesList = /*@__PURE__*/ S.Array(
   AccessMode,
 ) as any as S.Schema<StorageClassPropertiesAccessModesList>;
 
 /** Limitations of the storage class */
-export type StorageClassPropertiesLimitationsList = ReadonlyArray<string>;
+export type StorageClassPropertiesLimitationsList = Array<string>;
 export const StorageClassPropertiesLimitationsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StorageClassPropertiesLimitationsList>;
@@ -1223,7 +1223,7 @@ export const StorageClassResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The StorageClassResource items on this page */
 export type StorageClassResourceListResultValueList =
-  ReadonlyArray<StorageClassResource>;
+  Array<StorageClassResource>;
 export const StorageClassResourceListResultValueList = /*@__PURE__*/ S.Array(
   StorageClassResource,
 ) as any as S.Schema<StorageClassResourceListResultValueList>;
@@ -1245,15 +1245,14 @@ export const StorageClassResourceListResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StorageClassResourceListResult>;
 
 /** Additional mount options */
-export type StorageClassPropertiesUpdateMountOptionsList =
-  ReadonlyArray<string>;
+export type StorageClassPropertiesUpdateMountOptionsList = Array<string>;
 export const StorageClassPropertiesUpdateMountOptionsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<StorageClassPropertiesUpdateMountOptionsList>;
 
 /** The access mode: [ReadWriteOnce, ReadWriteMany] or [ReadWriteOnce] */
-export type StorageClassPropertiesUpdateAccessModesList = ReadonlyArray<
+export type StorageClassPropertiesUpdateAccessModesList = Array<
   AccessMode | (string & {})
 >;
 export const StorageClassPropertiesUpdateAccessModesList =
@@ -1262,7 +1261,7 @@ export const StorageClassPropertiesUpdateAccessModesList =
   ) as any as S.Schema<StorageClassPropertiesUpdateAccessModesList>;
 
 /** Limitations of the storage class */
-export type StorageClassPropertiesUpdateLimitationsList = ReadonlyArray<string>;
+export type StorageClassPropertiesUpdateLimitationsList = Array<string>;
 export const StorageClassPropertiesUpdateLimitationsList =
   /*@__PURE__*/ S.Array(
     S.String,

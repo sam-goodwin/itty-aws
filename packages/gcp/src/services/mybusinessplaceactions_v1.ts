@@ -81,11 +81,11 @@ export const PlaceActionLinkPlaceActionTypeEnum = /*@__PURE__*/ S.String;
 /** Represents a place action link and its attributes. */
 export interface PlaceActionLink {
   /** Output only. Specifies the provider type. */
-  providerType?: PlaceActionLinkProviderTypeEnum;
+  providerType?: PlaceActionLinkProviderTypeEnum | (string & {});
   /** Required. The link uri. The same uri can be reused for different action types across different locations. However, only one place action link is allowed for each unique combination of (uri, place action type, location). */
   uri?: string;
   /** Required. The type of place action that can be performed using this link. */
-  placeActionType?: PlaceActionLinkPlaceActionTypeEnum;
+  placeActionType?: PlaceActionLinkPlaceActionTypeEnum | (string & {});
   /** Optional. The resource name, in the format `locations/{location_id}/placeActionLinks/{place_action_link_id}`. The name field will only be considered in UpdatePlaceActionLink and DeletePlaceActionLink requests for updating and deleting links respectively. However, it will be ignored in CreatePlaceActionLink request, where `place_action_link_id` will be assigned by the server on successful creation of a new link and returned as part of the response. */
   name?: string;
   /** Output only. Indicates whether this link can be edited by the client. */
@@ -205,7 +205,7 @@ export const ListLocationsPlaceActionLinksRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListLocationsPlaceActionLinksRequest",
 }) as any as S.Schema<ListLocationsPlaceActionLinksRequest>;
 
-export type PlaceActionLinkList = ReadonlyArray<PlaceActionLink>;
+export type PlaceActionLinkList = Array<PlaceActionLink>;
 export const PlaceActionLinkList = /*@__PURE__*/ S.Array(
   PlaceActionLink,
 ) as any as S.Schema<PlaceActionLinkList>;
@@ -282,8 +282,7 @@ export const PlaceActionTypeMetadata = /*@__PURE__*/ S.suspend(() =>
   identifier: "PlaceActionTypeMetadata",
 }) as any as S.Schema<PlaceActionTypeMetadata>;
 
-export type PlaceActionTypeMetadataList =
-  ReadonlyArray<PlaceActionTypeMetadata>;
+export type PlaceActionTypeMetadataList = Array<PlaceActionTypeMetadata>;
 export const PlaceActionTypeMetadataList = /*@__PURE__*/ S.Array(
   PlaceActionTypeMetadata,
 ) as any as S.Schema<PlaceActionTypeMetadataList>;

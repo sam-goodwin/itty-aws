@@ -452,7 +452,7 @@ export const ApiDefinition = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ApiDefinition" }) as any as S.Schema<ApiDefinition>;
 
 /** The ApiDefinition items on this page */
-export type ApiDefinitionListResultValueList = ReadonlyArray<ApiDefinition>;
+export type ApiDefinitionListResultValueList = Array<ApiDefinition>;
 export const ApiDefinitionListResultValueList = /*@__PURE__*/ S.Array(
   ApiDefinition,
 ) as any as S.Schema<ApiDefinitionListResultValueList>;
@@ -526,7 +526,7 @@ export const ExternalDocumentation = /*@__PURE__*/ S.suspend(() =>
 
 /** The set of external documentation */
 export type ApiPropertiesExternalDocumentationList =
-  ReadonlyArray<ExternalDocumentation>;
+  Array<ExternalDocumentation>;
 export const ApiPropertiesExternalDocumentationList = /*@__PURE__*/ S.Array(
   ExternalDocumentation,
 ) as any as S.Schema<ApiPropertiesExternalDocumentationList>;
@@ -549,7 +549,7 @@ export const Contact = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Contact" }) as any as S.Schema<Contact>;
 
 /** The set of contacts */
-export type ApiPropertiesContactsList = ReadonlyArray<Contact>;
+export type ApiPropertiesContactsList = Array<Contact>;
 export const ApiPropertiesContactsList = /*@__PURE__*/ S.Array(
   Contact,
 ) as any as S.Schema<ApiPropertiesContactsList>;
@@ -576,13 +576,13 @@ export interface ApiProperties {
   /** API title. */
   title: string;
   /** Kind of API. For example, REST or GraphQL. */
-  kind: ApiKind;
+  kind: ApiKind | (string & {});
   /** Description of the API. */
   description?: string;
   /** Short description of the API. */
   summary?: string;
   /** Current lifecycle stage of the API. */
-  lifecycleStage?: LifecycleStage;
+  lifecycleStage?: LifecycleStage | (string & {});
   /** Terms of service for the API. */
   termsOfService?: TermsOfService;
   /** The set of external documentation */
@@ -813,7 +813,7 @@ export const Api = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Api" }) as any as S.Schema<Api>;
 
 /** The Api items on this page */
-export type ApiListResultValueList = ReadonlyArray<Api>;
+export type ApiListResultValueList = Array<Api>;
 export const ApiListResultValueList = /*@__PURE__*/ S.Array(
   Api,
 ) as any as S.Schema<ApiListResultValueList>;
@@ -837,7 +837,7 @@ export interface ApiVersionProperties {
   /** API version title. */
   title: string;
   /** Current lifecycle stage of the API. */
-  lifecycleStage: LifecycleStage;
+  lifecycleStage: LifecycleStage | (string & {});
 }
 export const ApiVersionProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1066,7 +1066,7 @@ export const ApiVersion = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ApiVersion" }) as any as S.Schema<ApiVersion>;
 
 /** The ApiVersion items on this page */
-export type ApiVersionListResultValueList = ReadonlyArray<ApiVersion>;
+export type ApiVersionListResultValueList = Array<ApiVersion>;
 export const ApiVersionListResultValueList = /*@__PURE__*/ S.Array(
   ApiVersion,
 ) as any as S.Schema<ApiVersionListResultValueList>;
@@ -1092,7 +1092,7 @@ export type DeploymentState = "active" | "inactive";
 export const DeploymentState = /*@__PURE__*/ S.String;
 
 /** Base runtime URLs for this deployment. */
-export type DeploymentServerRuntimeUriList = ReadonlyArray<string>;
+export type DeploymentServerRuntimeUriList = Array<string>;
 export const DeploymentServerRuntimeUriList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DeploymentServerRuntimeUriList>;
@@ -1121,7 +1121,7 @@ export interface DeploymentProperties {
   /** API center-scoped definition resource ID. */
   definitionId?: string;
   /** State of API deployment. */
-  state?: DeploymentState;
+  state?: DeploymentState | (string & {});
   /** The deployment server */
   server?: DeploymentServer;
   /** The custom metadata defined for API catalog entities. */
@@ -1359,7 +1359,7 @@ export const Deployment = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Deployment" }) as any as S.Schema<Deployment>;
 
 /** The Deployment items on this page */
-export type DeploymentListResultValueList = ReadonlyArray<Deployment>;
+export type DeploymentListResultValueList = Array<Deployment>;
 export const DeploymentListResultValueList = /*@__PURE__*/ S.Array(
   Deployment,
 ) as any as S.Schema<DeploymentListResultValueList>;
@@ -1400,7 +1400,7 @@ export type EnvironmentServerType =
 export const EnvironmentServerType = /*@__PURE__*/ S.String;
 
 /** The location of the management portal */
-export type EnvironmentServerManagementPortalUriList = ReadonlyArray<string>;
+export type EnvironmentServerManagementPortalUriList = Array<string>;
 export const EnvironmentServerManagementPortalUriList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EnvironmentServerManagementPortalUriList>;
@@ -1408,7 +1408,7 @@ export const EnvironmentServerManagementPortalUriList = /*@__PURE__*/ S.Array(
 /** Server information of the environment. */
 export interface EnvironmentServer {
   /** Type of the server that represents the environment. */
-  type?: EnvironmentServerType;
+  type?: EnvironmentServerType | (string & {});
   /** The location of the management portal */
   managementPortalUri?: EnvironmentServerManagementPortalUriList;
 }
@@ -1422,7 +1422,7 @@ export const EnvironmentServer = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EnvironmentServer>;
 
 /** The location of the development portal */
-export type OnboardingDeveloperPortalUriList = ReadonlyArray<string>;
+export type OnboardingDeveloperPortalUriList = Array<string>;
 export const OnboardingDeveloperPortalUriList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<OnboardingDeveloperPortalUriList>;
@@ -1448,7 +1448,7 @@ export interface EnvironmentProperties {
   /** The environment description. */
   description?: string;
   /** Environment kind. */
-  kind: EnvironmentKind;
+  kind: EnvironmentKind | (string & {});
   /** Server information of the environment. */
   server?: EnvironmentServer;
   /** Environment onboarding information */
@@ -1675,7 +1675,7 @@ export const Environment = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Environment" }) as any as S.Schema<Environment>;
 
 /** The Environment items on this page */
-export type EnvironmentListResultValueList = ReadonlyArray<Environment>;
+export type EnvironmentListResultValueList = Array<Environment>;
 export const EnvironmentListResultValueList = /*@__PURE__*/ S.Array(
   Environment,
 ) as any as S.Schema<EnvironmentListResultValueList>;
@@ -1703,7 +1703,7 @@ export const MetadataAssignmentEntity = /*@__PURE__*/ S.String;
 /** Assignment metadata */
 export interface MetadataAssignment {
   /** The entities this metadata schema component gets applied to. */
-  entity?: MetadataAssignmentEntity;
+  entity?: MetadataAssignmentEntity | (string & {});
   /** Required assignment */
   required?: boolean;
   /** Deprecated assignment */
@@ -1720,8 +1720,7 @@ export const MetadataAssignment = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MetadataAssignment>;
 
 /** The assignees */
-export type MetadataSchemaPropertiesAssignedToList =
-  ReadonlyArray<MetadataAssignment>;
+export type MetadataSchemaPropertiesAssignedToList = Array<MetadataAssignment>;
 export const MetadataSchemaPropertiesAssignedToList = /*@__PURE__*/ S.Array(
   MetadataAssignment,
 ) as any as S.Schema<MetadataSchemaPropertiesAssignedToList>;
@@ -1938,7 +1937,7 @@ export const MetadataSchema = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MetadataSchema" }) as any as S.Schema<MetadataSchema>;
 
 /** The MetadataSchema items on this page */
-export type MetadataSchemaListResultValueList = ReadonlyArray<MetadataSchema>;
+export type MetadataSchemaListResultValueList = Array<MetadataSchema>;
 export const MetadataSchemaListResultValueList = /*@__PURE__*/ S.Array(
   MetadataSchema,
 ) as any as S.Schema<MetadataSchemaListResultValueList>;
@@ -2027,7 +2026,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = ReadonlyArray<Operation>;
+export type OperationsListResponseValueList = Array<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;
@@ -2493,7 +2492,7 @@ export const Service = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Service" }) as any as S.Schema<Service>;
 
 /** The Service items on this page */
-export type ServiceListResultValueList = ReadonlyArray<Service>;
+export type ServiceListResultValueList = Array<Service>;
 export const ServiceListResultValueList = /*@__PURE__*/ S.Array(
   Service,
 ) as any as S.Schema<ServiceListResultValueList>;
@@ -2859,7 +2858,7 @@ export const Workspace = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Workspace" }) as any as S.Schema<Workspace>;
 
 /** The Workspace items on this page */
-export type WorkspaceListResultValueList = ReadonlyArray<Workspace>;
+export type WorkspaceListResultValueList = Array<Workspace>;
 export const WorkspaceListResultValueList = /*@__PURE__*/ S.Array(
   Workspace,
 ) as any as S.Schema<WorkspaceListResultValueList>;

@@ -440,7 +440,7 @@ export const TokenUrlCustomProperties = /*@__PURE__*/ S.Record(
 );
 export interface OAuth2Properties {
   tokenUrl: string;
-  oAuth2GrantType: OAuth2GrantType;
+  oAuth2GrantType: OAuth2GrantType | (string & {});
   tokenUrlCustomProperties?: { [key: string]: string | undefined };
 }
 export const OAuth2Properties = /*@__PURE__*/ S.suspend(() =>
@@ -1003,7 +1003,7 @@ export type ScheduleOffset = number;
 export type FlowErrorDeactivationThreshold = number;
 export interface ScheduledTriggerProperties {
   scheduleExpression: string;
-  dataPullMode?: DataPullMode;
+  dataPullMode?: DataPullMode | (string & {});
   scheduleStartTime?: Date;
   scheduleEndTime?: Date;
   timezone?: string;
@@ -1040,7 +1040,7 @@ export const TriggerProperties = /*@__PURE__*/ S.suspend(() =>
   identifier: "TriggerProperties",
 }) as any as S.Schema<TriggerProperties>;
 export interface TriggerConfig {
-  triggerType: TriggerType;
+  triggerType: TriggerType | (string & {});
   triggerProperties?: TriggerProperties;
 }
 export const TriggerConfig = /*@__PURE__*/ S.suspend(() =>
@@ -1102,7 +1102,7 @@ export type S3InputFileType = "CSV" | "JSON";
 export const S3InputFileType = /*@__PURE__*/ S.String;
 
 export interface S3InputFormatConfig {
-  s3InputFileType?: S3InputFileType;
+  s3InputFileType?: S3InputFileType | (string & {});
 }
 export const S3InputFormatConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ s3InputFileType: S.optional(S3InputFileType) }),
@@ -1130,7 +1130,7 @@ export interface SalesforceSourceProperties {
   object: string;
   enableDynamicFieldUpdate?: boolean;
   includeDeletedRecords?: boolean;
-  dataTransferApi?: SalesforceDataTransferApi;
+  dataTransferApi?: SalesforceDataTransferApi | (string & {});
 }
 export const SalesforceSourceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1245,7 +1245,7 @@ export const DataTransferApiType = /*@__PURE__*/ S.String;
 
 export interface DataTransferApi {
   Name?: string;
-  Type?: DataTransferApiType;
+  Type?: DataTransferApiType | (string & {});
 }
 export const DataTransferApi = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1329,7 +1329,7 @@ export const IncrementalPullConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "IncrementalPullConfig",
 }) as any as S.Schema<IncrementalPullConfig>;
 export interface SourceFlowConfig {
-  connectorType: ConnectorType;
+  connectorType: ConnectorType | (string & {});
   apiVersion?: string;
   connectorProfileName?: string;
   sourceConnectorProperties: SourceConnectorProperties;
@@ -1388,11 +1388,11 @@ export const PrefixFormat = /*@__PURE__*/ S.String;
 export type PathPrefix = "EXECUTION_ID" | "SCHEMA_VERSION";
 export const PathPrefix = /*@__PURE__*/ S.String;
 
-export type PathPrefixHierarchy = PathPrefix[];
+export type PathPrefixHierarchy = (PathPrefix | (string & {}))[];
 export const PathPrefixHierarchy = /*@__PURE__*/ S.Array(PathPrefix);
 export interface PrefixConfig {
-  prefixType?: PrefixType;
-  prefixFormat?: PrefixFormat;
+  prefixType?: PrefixType | (string & {});
+  prefixFormat?: PrefixFormat | (string & {});
   pathPrefixHierarchy?: PathPrefix[];
 }
 export const PrefixConfig = /*@__PURE__*/ S.suspend(() =>
@@ -1406,7 +1406,7 @@ export type AggregationType = "None" | "SingleFile";
 export const AggregationType = /*@__PURE__*/ S.String;
 
 export interface AggregationConfig {
-  aggregationType?: AggregationType;
+  aggregationType?: AggregationType | (string & {});
   targetFileSize?: number;
 }
 export const AggregationConfig = /*@__PURE__*/ S.suspend(() =>
@@ -1419,7 +1419,7 @@ export const AggregationConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AggregationConfig>;
 export type JavaBoolean = boolean;
 export interface S3OutputFormatConfig {
-  fileType?: FileType;
+  fileType?: FileType | (string & {});
   prefixConfig?: PrefixConfig;
   aggregationConfig?: AggregationConfig;
   preserveSourceDataTyping?: boolean;
@@ -1458,8 +1458,8 @@ export interface SalesforceDestinationProperties {
   object: string;
   idFieldNames?: string[];
   errorHandlingConfig?: ErrorHandlingConfig;
-  writeOperationType?: WriteOperationType;
-  dataTransferApi?: SalesforceDataTransferApi;
+  writeOperationType?: WriteOperationType | (string & {});
+  dataTransferApi?: SalesforceDataTransferApi | (string & {});
 }
 export const SalesforceDestinationProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1508,7 +1508,7 @@ export const LookoutMetricsDestinationProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LookoutMetricsDestinationProperties>;
 export type UpsolverBucketName = string;
 export interface UpsolverS3OutputFormatConfig {
-  fileType?: FileType;
+  fileType?: FileType | (string & {});
   prefixConfig: PrefixConfig;
   aggregationConfig?: AggregationConfig;
 }
@@ -1563,7 +1563,7 @@ export interface ZendeskDestinationProperties {
   object: string;
   idFieldNames?: string[];
   errorHandlingConfig?: ErrorHandlingConfig;
-  writeOperationType?: WriteOperationType;
+  writeOperationType?: WriteOperationType | (string & {});
 }
 export const ZendeskDestinationProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1590,7 +1590,7 @@ export const MarketoDestinationProperties = /*@__PURE__*/ S.suspend(() =>
 export interface CustomConnectorDestinationProperties {
   entityName: string;
   errorHandlingConfig?: ErrorHandlingConfig;
-  writeOperationType?: WriteOperationType;
+  writeOperationType?: WriteOperationType | (string & {});
   idFieldNames?: string[];
   customProperties?: { [key: string]: string | undefined };
 }
@@ -1623,7 +1623,7 @@ export interface SAPODataDestinationProperties {
   successResponseHandlingConfig?: SuccessResponseHandlingConfig;
   idFieldNames?: string[];
   errorHandlingConfig?: ErrorHandlingConfig;
-  writeOperationType?: WriteOperationType;
+  writeOperationType?: WriteOperationType | (string & {});
 }
 export const SAPODataDestinationProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1671,7 +1671,7 @@ export const DestinationConnectorProperties = /*@__PURE__*/ S.suspend(() =>
   identifier: "DestinationConnectorProperties",
 }) as any as S.Schema<DestinationConnectorProperties>;
 export interface DestinationFlowConfig {
-  connectorType: ConnectorType;
+  connectorType: ConnectorType | (string & {});
   apiVersion?: string;
   connectorProfileName?: string;
   destinationConnectorProperties: DestinationConnectorProperties;
@@ -2005,23 +2005,23 @@ export type PardotConnectorOperator =
 export const PardotConnectorOperator = /*@__PURE__*/ S.String;
 
 export interface ConnectorOperator {
-  Amplitude?: AmplitudeConnectorOperator;
-  Datadog?: DatadogConnectorOperator;
-  Dynatrace?: DynatraceConnectorOperator;
-  GoogleAnalytics?: GoogleAnalyticsConnectorOperator;
-  InforNexus?: InforNexusConnectorOperator;
-  Marketo?: MarketoConnectorOperator;
-  S3?: S3ConnectorOperator;
-  Salesforce?: SalesforceConnectorOperator;
-  ServiceNow?: ServiceNowConnectorOperator;
-  Singular?: SingularConnectorOperator;
-  Slack?: SlackConnectorOperator;
-  Trendmicro?: TrendmicroConnectorOperator;
-  Veeva?: VeevaConnectorOperator;
-  Zendesk?: ZendeskConnectorOperator;
-  SAPOData?: SAPODataConnectorOperator;
-  CustomConnector?: Operator;
-  Pardot?: PardotConnectorOperator;
+  Amplitude?: AmplitudeConnectorOperator | (string & {});
+  Datadog?: DatadogConnectorOperator | (string & {});
+  Dynatrace?: DynatraceConnectorOperator | (string & {});
+  GoogleAnalytics?: GoogleAnalyticsConnectorOperator | (string & {});
+  InforNexus?: InforNexusConnectorOperator | (string & {});
+  Marketo?: MarketoConnectorOperator | (string & {});
+  S3?: S3ConnectorOperator | (string & {});
+  Salesforce?: SalesforceConnectorOperator | (string & {});
+  ServiceNow?: ServiceNowConnectorOperator | (string & {});
+  Singular?: SingularConnectorOperator | (string & {});
+  Slack?: SlackConnectorOperator | (string & {});
+  Trendmicro?: TrendmicroConnectorOperator | (string & {});
+  Veeva?: VeevaConnectorOperator | (string & {});
+  Zendesk?: ZendeskConnectorOperator | (string & {});
+  SAPOData?: SAPODataConnectorOperator | (string & {});
+  CustomConnector?: Operator | (string & {});
+  Pardot?: PardotConnectorOperator | (string & {});
 }
 export const ConnectorOperator = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2081,7 +2081,9 @@ export type OperatorPropertiesKeys =
 export const OperatorPropertiesKeys = /*@__PURE__*/ S.String;
 
 export type Property = string;
-export type TaskPropertiesMap = { [key in OperatorPropertiesKeys]?: string };
+export type TaskPropertiesMap = {
+  [key in OperatorPropertiesKeys | (string & {})]?: string;
+};
 export const TaskPropertiesMap = /*@__PURE__*/ S.Record(
   OperatorPropertiesKeys,
   S.String.pipe(S.optional),
@@ -2090,7 +2092,7 @@ export interface Task {
   sourceFields: string[];
   connectorOperator?: ConnectorOperator;
   destinationField?: string;
-  taskType: TaskType;
+  taskType: TaskType | (string & {});
   taskProperties?: { [key: string]: string | undefined };
 }
 export const Task = /*@__PURE__*/ S.suspend(() =>
@@ -2267,7 +2269,7 @@ export const DescribeConnectorRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeConnectorRequest",
 }) as any as S.Schema<DescribeConnectorRequest>;
-export type ConnectorTypeList = ConnectorType[];
+export type ConnectorTypeList = (ConnectorType | (string & {}))[];
 export const ConnectorTypeList = /*@__PURE__*/ S.Array(ConnectorType);
 export type ScheduleFrequencyType =
   | "BYMINUTE"

@@ -13,8 +13,7 @@ import * as Retry from "../retry.ts";
 export type { AzureOpError, AzureOpContext };
 
 /** Gets or sets the list of resource Id's, by default it accepts move resource id's unless the input type is switched via moveResourceInputType property. */
-export type MoveCollectionsBulkRemoveRequestMoveResourcesList =
-  ReadonlyArray<string>;
+export type MoveCollectionsBulkRemoveRequestMoveResourcesList = Array<string>;
 export const MoveCollectionsBulkRemoveRequestMoveResourcesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -58,15 +57,13 @@ export const MoveCollectionsBulkRemoveRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MoveCollectionsBulkRemoveRequest>;
 
 /** The error details. */
-export type OperationStatusErrorDetailsList =
-  ReadonlyArray<OperationStatusError>;
+export type OperationStatusErrorDetailsList = Array<OperationStatusError>;
 export const OperationStatusErrorDetailsList = /*@__PURE__*/ S.Array(
   S.suspend(() => OperationStatusError),
 ) as any as S.Schema<OperationStatusErrorDetailsList>;
 
 /** The affected move resources. */
-export type AffectedMoveResourceMoveResourcesList =
-  ReadonlyArray<AffectedMoveResource>;
+export type AffectedMoveResourceMoveResourcesList = Array<AffectedMoveResource>;
 export const AffectedMoveResourceMoveResourcesList = /*@__PURE__*/ S.Array(
   S.suspend(() => AffectedMoveResource),
 ) as any as S.Schema<AffectedMoveResourceMoveResourcesList>;
@@ -91,8 +88,7 @@ export const AffectedMoveResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AffectedMoveResource>;
 
 /** The affected move resources. */
-export type MoveErrorInfoMoveResourcesList =
-  ReadonlyArray<AffectedMoveResource>;
+export type MoveErrorInfoMoveResourcesList = Array<AffectedMoveResource>;
 export const MoveErrorInfoMoveResourcesList = /*@__PURE__*/ S.Array(
   AffectedMoveResource,
 ) as any as S.Schema<MoveErrorInfoMoveResourcesList>;
@@ -126,7 +122,7 @@ export const OperationErrorAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** The additional info. */
 export type OperationStatusErrorAdditionalInfoList =
-  ReadonlyArray<OperationErrorAdditionalInfo>;
+  Array<OperationErrorAdditionalInfo>;
 export const OperationStatusErrorAdditionalInfoList = /*@__PURE__*/ S.Array(
   OperationErrorAdditionalInfo,
 ) as any as S.Schema<OperationStatusErrorAdditionalInfoList>;
@@ -185,8 +181,7 @@ export const OperationStatus = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationStatus>;
 
 /** Gets or sets the list of resource Id's, by default it accepts move resource id's unless the input type is switched via moveResourceInputType property. */
-export type MoveCollectionsCommitRequestMoveResourcesList =
-  ReadonlyArray<string>;
+export type MoveCollectionsCommitRequestMoveResourcesList = Array<string>;
 export const MoveCollectionsCommitRequestMoveResourcesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -240,7 +235,7 @@ export const ResourceIdentityType = /*@__PURE__*/ S.String;
 
 /** Defines the MSI properties of the Move Collection. */
 export interface Identity {
-  type?: ResourceIdentityType;
+  type?: ResourceIdentityType | (string & {});
   /** Gets or sets the principal id. */
   principalId?: string;
   /** Gets or sets the tenant id. */
@@ -333,8 +328,7 @@ export type ProvisioningState =
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** A list of additional details about the error. */
-export type MoveResourceErrorBodyDetailsList =
-  ReadonlyArray<MoveResourceErrorBody>;
+export type MoveResourceErrorBodyDetailsList = Array<MoveResourceErrorBody>;
 export const MoveResourceErrorBodyDetailsList = /*@__PURE__*/ S.Array(
   S.suspend(() => MoveResourceErrorBody),
 ) as any as S.Schema<MoveResourceErrorBodyDetailsList>;
@@ -507,8 +501,7 @@ export const MoveCollectionsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MoveCollectionsDeleteRequest>;
 
 /** Gets or sets the list of resource Id's, by default it accepts move resource id's unless the input type is switched via moveResourceInputType property. */
-export type MoveCollectionsDiscardRequestMoveResourcesList =
-  ReadonlyArray<string>;
+export type MoveCollectionsDiscardRequestMoveResourcesList = Array<string>;
 export const MoveCollectionsDiscardRequestMoveResourcesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -573,8 +566,7 @@ export const MoveCollectionsGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MoveCollectionsGetRequest>;
 
 /** Gets or sets the list of resource Id's, by default it accepts move resource id's unless the input type is switched via moveResourceInputType property. */
-export type MoveCollectionsInitiateMoveRequestMoveResourcesList =
-  ReadonlyArray<string>;
+export type MoveCollectionsInitiateMoveRequestMoveResourcesList = Array<string>;
 export const MoveCollectionsInitiateMoveRequestMoveResourcesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -637,7 +629,7 @@ export const MoveCollectionsListMoveCollectionsByResourceGroupRequest =
   }) as any as S.Schema<MoveCollectionsListMoveCollectionsByResourceGroupRequest>;
 
 /** Gets the list of move collections. */
-export type MoveCollectionResultListValueList = ReadonlyArray<MoveCollection>;
+export type MoveCollectionResultListValueList = Array<MoveCollection>;
 export const MoveCollectionResultListValueList = /*@__PURE__*/ S.Array(
   MoveCollection,
 ) as any as S.Schema<MoveCollectionResultListValueList>;
@@ -708,7 +700,7 @@ export const MoveCollectionsListRequiredForRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<MoveCollectionsListRequiredForRequest>;
 
 /** Gets or sets the list of source Ids for which the input resource is required. */
-export type RequiredForResourcesCollectionSourceIdsList = ReadonlyArray<string>;
+export type RequiredForResourcesCollectionSourceIdsList = Array<string>;
 export const RequiredForResourcesCollectionSourceIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -728,8 +720,7 @@ export const RequiredForResourcesCollection = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RequiredForResourcesCollection>;
 
 /** Gets or sets the list of resource Id's, by default it accepts move resource id's unless the input type is switched via moveResourceInputType property. */
-export type MoveCollectionsPrepareRequestMoveResourcesList =
-  ReadonlyArray<string>;
+export type MoveCollectionsPrepareRequestMoveResourcesList = Array<string>;
 export const MoveCollectionsPrepareRequestMoveResourcesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -870,7 +861,7 @@ export const MoveResourceDependencyOverride = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets the move resource dependencies overrides. */
 export type MoveResourcePropertiesInputDependsOnOverridesList =
-  ReadonlyArray<MoveResourceDependencyOverride>;
+  Array<MoveResourceDependencyOverride>;
 export const MoveResourcePropertiesInputDependsOnOverridesList =
   /*@__PURE__*/ S.Array(
     MoveResourceDependencyOverride,
@@ -1044,15 +1035,14 @@ export const MoveResourceDependency = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MoveResourceDependency>;
 
 /** Gets or sets the move resource dependencies. */
-export type MoveResourcePropertiesDependsOnList =
-  ReadonlyArray<MoveResourceDependency>;
+export type MoveResourcePropertiesDependsOnList = Array<MoveResourceDependency>;
 export const MoveResourcePropertiesDependsOnList = /*@__PURE__*/ S.Array(
   MoveResourceDependency,
 ) as any as S.Schema<MoveResourcePropertiesDependsOnList>;
 
 /** Gets or sets the move resource dependencies overrides. */
 export type MoveResourcePropertiesDependsOnOverridesList =
-  ReadonlyArray<MoveResourceDependencyOverride>;
+  Array<MoveResourceDependencyOverride>;
 export const MoveResourcePropertiesDependsOnOverridesList =
   /*@__PURE__*/ S.Array(
     MoveResourceDependencyOverride,
@@ -1253,7 +1243,7 @@ export const MoveResourcesListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MoveResourcesListRequest>;
 
 /** Gets the list of move resources. */
-export type MoveResourceCollectionValueList = ReadonlyArray<MoveResource>;
+export type MoveResourceCollectionValueList = Array<MoveResource>;
 export const MoveResourceCollectionValueList = /*@__PURE__*/ S.Array(
   MoveResource,
 ) as any as S.Schema<MoveResourceCollectionValueList>;
@@ -1273,7 +1263,7 @@ export const Summary = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Summary" }) as any as S.Schema<Summary>;
 
 /** Gets or sets the list of summary items. */
-export type SummaryCollectionSummaryList = ReadonlyArray<Summary>;
+export type SummaryCollectionSummaryList = Array<Summary>;
 export const SummaryCollectionSummaryList = /*@__PURE__*/ S.Array(
   Summary,
 ) as any as S.Schema<SummaryCollectionSummaryList>;
@@ -1374,8 +1364,7 @@ export const OperationsDiscovery = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationsDiscovery>;
 
 /** Gets or sets the ClientDiscovery details. */
-export type OperationsDiscoveryCollectionValueList =
-  ReadonlyArray<OperationsDiscovery>;
+export type OperationsDiscoveryCollectionValueList = Array<OperationsDiscovery>;
 export const OperationsDiscoveryCollectionValueList = /*@__PURE__*/ S.Array(
   OperationsDiscovery,
 ) as any as S.Schema<OperationsDiscoveryCollectionValueList>;
@@ -1458,7 +1447,7 @@ export const UnresolvedDependency = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets the list of unresolved dependencies. */
 export type UnresolvedDependencyCollectionValueList =
-  ReadonlyArray<UnresolvedDependency>;
+  Array<UnresolvedDependency>;
 export const UnresolvedDependencyCollectionValueList = /*@__PURE__*/ S.Array(
   UnresolvedDependency,
 ) as any as S.Schema<UnresolvedDependencyCollectionValueList>;

@@ -96,8 +96,9 @@ export type EnterpriseEnabledNotificationTypesItemEnum =
 export const EnterpriseEnabledNotificationTypesItemEnum =
   /*@__PURE__*/ S.String;
 
-export type EnterpriseEnabledNotificationTypesItemEnumList =
-  ReadonlyArray<EnterpriseEnabledNotificationTypesItemEnum>;
+export type EnterpriseEnabledNotificationTypesItemEnumList = Array<
+  EnterpriseEnabledNotificationTypesItemEnum | (string & {})
+>;
 export const EnterpriseEnabledNotificationTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     EnterpriseEnabledNotificationTypesItemEnum,
@@ -127,7 +128,9 @@ export const GoogleAuthenticationSettingsGoogleAuthenticationRequiredEnum =
 /** Contains settings for Google-provided user authentication. */
 export interface GoogleAuthenticationSettings {
   /** Output only. Whether users need to be authenticated by Google during the enrollment process. IT admin can specify if Google authentication is enabled for the enterprise for knowledge worker devices. This value can be set only via the Google Admin Console. Google authentication can be used with signin_url In the case where Google authentication is required and a signin_url is specified, Google authentication will be launched before signin_url. This value is overridden by EnrollmentToken.googleAuthenticationOptions and SigninDetail.googleAuthenticationOptions, if they are set. */
-  googleAuthenticationRequired?: GoogleAuthenticationSettingsGoogleAuthenticationRequiredEnum;
+  googleAuthenticationRequired?:
+    | GoogleAuthenticationSettingsGoogleAuthenticationRequiredEnum
+    | (string & {});
 }
 export const GoogleAuthenticationSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -177,7 +180,7 @@ export const TermsAndConditions = /*@__PURE__*/ S.suspend(() =>
   identifier: "TermsAndConditions",
 }) as any as S.Schema<TermsAndConditions>;
 
-export type TermsAndConditionsList = ReadonlyArray<TermsAndConditions>;
+export type TermsAndConditionsList = Array<TermsAndConditions>;
 export const TermsAndConditionsList = /*@__PURE__*/ S.Array(
   TermsAndConditions,
 ) as any as S.Schema<TermsAndConditionsList>;
@@ -245,7 +248,9 @@ export const SigninDetailGoogleAuthenticationOptionsAuthenticationRequirementEnu
 /** Options for Google authentication during the enrollment.These options control whether the Google authentication screen is shown, and whether it can be skipped, at the start of the sign-in flow. More requirements can be enforced by EnrollmentToken.googleAuthenticationOptions on the EnrollmentToken that is created later. */
 export interface SigninDetailGoogleAuthenticationOptions {
   /** Optional. Specifies whether user should authenticate with Google during enrollment. If this is set to any value other than AUTHENTICATION_REQUIREMENT_UNSPECIFIED, the enterprise-level setting googleAuthenticationSettings is ignored for devices enrolled with this sign-in detail. */
-  authenticationRequirement?: SigninDetailGoogleAuthenticationOptionsAuthenticationRequirementEnum;
+  authenticationRequirement?:
+    | SigninDetailGoogleAuthenticationOptionsAuthenticationRequirementEnum
+    | (string & {});
 }
 export const SigninDetailGoogleAuthenticationOptions = /*@__PURE__*/ S.suspend(
   () =>
@@ -267,7 +272,7 @@ export const SigninDetailDefaultStatusEnum = /*@__PURE__*/ S.String;
 /** A resource containing sign in details for an enterprise. Use enterprises to manage SigninDetails for a given enterprise.For an enterprise, we can have any number of SigninDetails that is uniquely identified by combination of the following three fields (signin_url, allow_personal_usage, token_tag). One cannot create two SigninDetails with the same (signin_url, allow_personal_usage, token_tag). (token_tag is an optional field).Patch: The operation updates the current list of SigninDetails with the new list of SigninDetails. If the stored SigninDetail configuration is passed, it returns the same signin_enrollment_token and qr_code. If we pass multiple identical SigninDetail configurations that are not stored, it will store the first one amongst those SigninDetail configurations. if the configuration already exists we cannot request it more than once in a particular patch API call, otherwise it will give a duplicate key error and the whole operation will fail. If we remove certain SigninDetail configuration from the request then it will get removed from the storage. We can then request another signin_enrollment_token and qr_code for the same SigninDetail configuration. */
 export interface SigninDetail {
   /** Controls whether personal usage is allowed on a device provisioned with this enrollment token.For company-owned devices: Enabling personal usage allows the user to set up a work profile on the device. Disabling personal usage requires the user provision the device as a fully managed device.For personally-owned devices: Enabling personal usage allows the user to set up a work profile on the device. Disabling personal usage will prevent the device from provisioning. Personal usage cannot be disabled on personally-owned device. */
-  allowPersonalUsage?: SigninDetailAllowPersonalUsageEnum;
+  allowPersonalUsage?: SigninDetailAllowPersonalUsageEnum | (string & {});
   /** An enterprise wide enrollment token used to trigger custom sign-in flow. This is a read-only field generated by the server. */
   signinEnrollmentToken?: string;
   /** A JSON string whose UTF-8 representation can be used to generate a QR code to enroll a device with this enrollment token. To enroll a device using NFC, the NFC record must contain a serialized java.util.Properties representation of the properties in the JSON. This is a read-only field generated by the server. */
@@ -275,7 +280,7 @@ export interface SigninDetail {
   /** Optional. Options related to Google authentication during the enrollment. */
   googleAuthenticationOptions?: SigninDetailGoogleAuthenticationOptions;
   /** Optional. Whether the sign-in URL should be used by default for the enterprise. The SigninDetail with defaultStatus set to SIGNIN_DETAIL_IS_DEFAULT is used for Google account enrollment method. Only one of an enterprise's signinDetails can have defaultStatus set to SIGNIN_DETAIL_IS_DEFAULT. If an Enterprise has at least one signinDetails and none of them have defaultStatus set to SIGNIN_DETAIL_IS_DEFAULT then the first one from the list is selected and has set defaultStatus to SIGNIN_DETAIL_IS_DEFAULT. If no signinDetails specified for the Enterprise then the Google Account device enrollment will fail. */
-  defaultStatus?: SigninDetailDefaultStatusEnum;
+  defaultStatus?: SigninDetailDefaultStatusEnum | (string & {});
   /** Sign-in URL for authentication when device is provisioned with a sign-in enrollment token. The sign-in endpoint should finish authentication flow with a URL in the form of https://enterprise.google.com/android/enroll?et= for a successful login, or https://enterprise.google.com/android/enroll/invalid for a failed login. */
   signinUrl?: string;
   /** An EMM-specified metadata to distinguish between instances of SigninDetail. */
@@ -295,7 +300,7 @@ export const SigninDetail = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SigninDetail" }) as any as S.Schema<SigninDetail>;
 
-export type SigninDetailList = ReadonlyArray<SigninDetail>;
+export type SigninDetailList = Array<SigninDetail>;
 export const SigninDetailList = /*@__PURE__*/ S.Array(
   SigninDetail,
 ) as any as S.Schema<SigninDetailList>;
@@ -315,15 +320,19 @@ export interface Enterprise {
   /** Terms and conditions that must be accepted when provisioning a device for this enterprise. A page of terms is generated for each value in this list. */
   termsAndConditions?: TermsAndConditionsList;
   /** Output only. The type of the enterprise. */
-  enterpriseType?: EnterpriseEnterpriseTypeEnum;
+  enterpriseType?: EnterpriseEnterpriseTypeEnum | (string & {});
   /** Output only. The type of a managed Google Play Accounts enterprise. */
-  managedGooglePlayAccountsEnterpriseType?: EnterpriseManagedGooglePlayAccountsEnterpriseTypeEnum;
+  managedGooglePlayAccountsEnterpriseType?:
+    | EnterpriseManagedGooglePlayAccountsEnterpriseTypeEnum
+    | (string & {});
   /** The name of the enterprise displayed to users. This field has a maximum length of 100 characters. */
   enterpriseDisplayName?: string;
   /** The enterprise contact info of an EMM-managed enterprise. */
   contactInfo?: ContactInfo;
   /** Output only. The type of managed Google domain. */
-  managedGoogleDomainType?: EnterpriseManagedGoogleDomainTypeEnum;
+  managedGoogleDomainType?:
+    | EnterpriseManagedGoogleDomainTypeEnum
+    | (string & {});
   /** The topic which Pub/Sub notifications are published to, in the form projects/{project}/topics/{topic}. This field is only required if Pub/Sub notifications are enabled. */
   pubsubTopic?: string;
   /** Sign-in details of the enterprise. */
@@ -412,7 +421,9 @@ export const GoogleAuthenticationOptionsAuthenticationRequirementEnum =
 /** Options for Google authentication during the enrollment.When triggering the enrollment with a SigninDetail, these options are enforced after the user completes third-party sign-in and an EnrollmentToken is created. If this token's authentication_requirement is set to REQUIRED, these options interact with the SigninDetail.googleAuthenticationOptions that initiated the flow in the following ways: - If the user skipped Google sign-in earlier (permitted by SigninDetail.googleAuthenticationOptions), an error will occur and the user will be prompted to sign in again. - If required_account_email is set on this token and the user signed in with a different email earlier, an error will occur and the user will be asked to sign in again with the correct account. */
 export interface GoogleAuthenticationOptions {
   /** Optional. Specifies whether user should authenticate with Google during enrollment. If this is set to any value other than AUTHENTICATION_REQUIREMENT_UNSPECIFIED, the enterprise-level setting googleAuthenticationSettings is ignored for devices enrolled with this token. */
-  authenticationRequirement?: GoogleAuthenticationOptionsAuthenticationRequirementEnum;
+  authenticationRequirement?:
+    | GoogleAuthenticationOptionsAuthenticationRequirementEnum
+    | (string & {});
   /** Optional. Specifies the managed Google account that the user must use during enrollment. This field can only be set if AuthenticationRequirement is set to REQUIRED. */
   requiredAccountEmail?: string;
 }
@@ -432,7 +443,7 @@ export interface EnrollmentToken {
   /** This field is deprecated and the value is ignored. */
   user?: User;
   /** Controls whether personal usage is allowed on a device provisioned with this enrollment token.For company-owned devices: Enabling personal usage allows the user to set up a work profile on the device. Disabling personal usage requires the user provision the device as a fully managed device.For personally-owned devices: Enabling personal usage allows the user to set up a work profile on the device. Disabling personal usage will prevent the device from provisioning. Personal usage cannot be disabled on personally-owned device. */
-  allowPersonalUsage?: EnrollmentTokenAllowPersonalUsageEnum;
+  allowPersonalUsage?: EnrollmentTokenAllowPersonalUsageEnum | (string & {});
   /** A JSON string whose UTF-8 representation can be used to generate a QR code to enroll a device with this enrollment token. To enroll a device using NFC, the NFC record must contain a serialized java.util.Properties representation of the properties in the JSON. */
   qrCode?: string;
   /** Whether the enrollment token is for one time use only. If the flag is set to true, only one device can use it for registration. */
@@ -506,7 +517,7 @@ export interface MigrationToken {
   /** Required. Immutable. The user id of the Managed Google Play account on the device, as in the Play EMM API. This corresponds to the userId parameter in Play EMM API's Devices.get (https://developers.google.com/android/work/play/emm-api/v1/devices/get#parameters) call. */
   userId?: string;
   /** Required. Immutable. The management mode of the device or profile being migrated. */
-  managementMode?: MigrationTokenManagementModeEnum;
+  managementMode?: MigrationTokenManagementModeEnum | (string & {});
   /** Immutable. Optional EMM-specified additional data. Once the device is migrated this will be populated in the migrationAdditionalData field of the Device resource. This must be at most 1024 characters. */
   additionalData?: string;
   /** Output only. The value of the migration token. */
@@ -573,7 +584,7 @@ export const WebAppIcon = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "WebAppIcon" }) as any as S.Schema<WebAppIcon>;
 
-export type WebAppIconList = ReadonlyArray<WebAppIcon>;
+export type WebAppIconList = Array<WebAppIcon>;
 export const WebAppIconList = /*@__PURE__*/ S.Array(
   WebAppIcon,
 ) as any as S.Schema<WebAppIconList>;
@@ -598,7 +609,7 @@ export interface WebApp {
   /** A list of icons for the web app. Must have at least one element. */
   icons?: WebAppIconList;
   /** The display mode of the web app. */
-  displayMode?: WebAppDisplayModeEnum;
+  displayMode?: WebAppDisplayModeEnum | (string & {});
 }
 export const WebApp = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -637,8 +648,9 @@ export type WebTokenPermissionsItemEnum =
   | "APPROVE_APPS";
 export const WebTokenPermissionsItemEnum = /*@__PURE__*/ S.String;
 
-export type WebTokenPermissionsItemEnumList =
-  ReadonlyArray<WebTokenPermissionsItemEnum>;
+export type WebTokenPermissionsItemEnumList = Array<
+  WebTokenPermissionsItemEnum | (string & {})
+>;
 export const WebTokenPermissionsItemEnumList = /*@__PURE__*/ S.Array(
   WebTokenPermissionsItemEnum,
 ) as any as S.Schema<WebTokenPermissionsItemEnumList>;
@@ -653,8 +665,9 @@ export type WebTokenEnabledFeaturesItemEnum =
   | "ZERO_TOUCH_CUSTOMER_MANAGEMENT";
 export const WebTokenEnabledFeaturesItemEnum = /*@__PURE__*/ S.String;
 
-export type WebTokenEnabledFeaturesItemEnumList =
-  ReadonlyArray<WebTokenEnabledFeaturesItemEnum>;
+export type WebTokenEnabledFeaturesItemEnumList = Array<
+  WebTokenEnabledFeaturesItemEnum | (string & {})
+>;
 export const WebTokenEnabledFeaturesItemEnumList = /*@__PURE__*/ S.Array(
   WebTokenEnabledFeaturesItemEnum,
 ) as any as S.Schema<WebTokenEnabledFeaturesItemEnumList>;
@@ -703,7 +716,7 @@ export const CreateEnterprisesWebTokensRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateEnterprisesWebTokensRequest",
 }) as any as S.Schema<CreateEnterprisesWebTokensRequest>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -774,7 +787,7 @@ export type DeleteEnterprisesDevicesWipeDataFlagsEnum =
   | "WIPE_ESIMS";
 export const DeleteEnterprisesDevicesWipeDataFlagsEnum = /*@__PURE__*/ S.String;
 
-export type DeleteEnterprisesDevicesWipeDataFlagsEnumList = ReadonlyArray<
+export type DeleteEnterprisesDevicesWipeDataFlagsEnumList = Array<
   DeleteEnterprisesDevicesWipeDataFlagsEnum | (string & {})
 >;
 export const DeleteEnterprisesDevicesWipeDataFlagsEnumList =
@@ -998,7 +1011,7 @@ export const ManagedPropertyEntry = /*@__PURE__*/ S.suspend(() =>
   identifier: "ManagedPropertyEntry",
 }) as any as S.Schema<ManagedPropertyEntry>;
 
-export type ManagedPropertyEntryList = ReadonlyArray<ManagedPropertyEntry>;
+export type ManagedPropertyEntryList = Array<ManagedPropertyEntry>;
 export const ManagedPropertyEntryList = /*@__PURE__*/ S.Array(
   ManagedPropertyEntry,
 ) as any as S.Schema<ManagedPropertyEntryList>;
@@ -1034,7 +1047,7 @@ export const ManagedProperty = /*@__PURE__*/ S.suspend(() =>
   identifier: "ManagedProperty",
 }) as any as S.Schema<ManagedProperty>;
 
-export type ManagedPropertyList = ReadonlyArray<ManagedProperty>;
+export type ManagedPropertyList = Array<ManagedProperty>;
 export const ManagedPropertyList = /*@__PURE__*/ S.Array(
   ManagedProperty,
 ) as any as S.Schema<ManagedPropertyList>;
@@ -1053,7 +1066,7 @@ export const AppTrackInfo = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AppTrackInfo" }) as any as S.Schema<AppTrackInfo>;
 
-export type AppTrackInfoList = ReadonlyArray<AppTrackInfo>;
+export type AppTrackInfoList = Array<AppTrackInfo>;
 export const AppTrackInfoList = /*@__PURE__*/ S.Array(
   AppTrackInfo,
 ) as any as S.Schema<AppTrackInfoList>;
@@ -1077,7 +1090,7 @@ export const ApplicationPermission = /*@__PURE__*/ S.suspend(() =>
   identifier: "ApplicationPermission",
 }) as any as S.Schema<ApplicationPermission>;
 
-export type ApplicationPermissionList = ReadonlyArray<ApplicationPermission>;
+export type ApplicationPermissionList = Array<ApplicationPermission>;
 export const ApplicationPermissionList = /*@__PURE__*/ S.Array(
   ApplicationPermission,
 ) as any as S.Schema<ApplicationPermissionList>;
@@ -1102,7 +1115,7 @@ export const AppVersion = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AppVersion" }) as any as S.Schema<AppVersion>;
 
-export type AppVersionList = ReadonlyArray<AppVersion>;
+export type AppVersionList = Array<AppVersion>;
 export const AppVersionList = /*@__PURE__*/ S.Array(
   AppVersion,
 ) as any as S.Schema<AppVersionList>;
@@ -1111,7 +1124,7 @@ export type ApplicationFeaturesItemEnum = "APP_FEATURE_UNSPECIFIED" | "VPN_APP";
 export const ApplicationFeaturesItemEnum = /*@__PURE__*/ S.String;
 
 export type ApplicationFeaturesItemEnumList =
-  ReadonlyArray<ApplicationFeaturesItemEnum>;
+  Array<ApplicationFeaturesItemEnum>;
 export const ApplicationFeaturesItemEnumList = /*@__PURE__*/ S.Array(
   ApplicationFeaturesItemEnum,
 ) as any as S.Schema<ApplicationFeaturesItemEnumList>;
@@ -1243,7 +1256,9 @@ export const PasswordPoliciesContextPasswordPolicyScopeEnum =
 /** Additional context for non-compliance related to password policies. */
 export interface PasswordPoliciesContext {
   /** The scope of non-compliant password. */
-  passwordPolicyScope?: PasswordPoliciesContextPasswordPolicyScopeEnum;
+  passwordPolicyScope?:
+    | PasswordPoliciesContextPasswordPolicyScopeEnum
+    | (string & {});
 }
 export const PasswordPoliciesContext = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1266,7 +1281,9 @@ export const DefaultApplicationContextDefaultApplicationScopeEnum =
 /** Additional context for non-compliance related to default application settings. */
 export interface DefaultApplicationContext {
   /** Output only. The scope of non-compliant default application setting. */
-  defaultApplicationScope?: DefaultApplicationContextDefaultApplicationScopeEnum;
+  defaultApplicationScope?:
+    | DefaultApplicationContextDefaultApplicationScopeEnum
+    | (string & {});
 }
 export const DefaultApplicationContext = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1349,17 +1366,23 @@ export interface NonComplianceDetail {
   /** For settings with nested fields, if a particular nested field is out of compliance, this specifies the full path to the offending field. The path is formatted in the same way the policy JSON field would be referenced in JavaScript, that is: 1) For object-typed fields, the field name is followed by a dot then by a subfield name. 2) For array-typed fields, the field name is followed by the array index enclosed in brackets. For example, to indicate a problem with the url field in the externalData field in the 3rd application, the path would be applications[2].externalData.url */
   fieldPath?: string;
   /** The reason the device is not in compliance with the setting. */
-  nonComplianceReason?: NonComplianceDetailNonComplianceReasonEnum;
+  nonComplianceReason?:
+    | NonComplianceDetailNonComplianceReasonEnum
+    | (string & {});
   /** If the policy setting could not be applied, the current value of the setting on the device. */
   currentValue?: unknown;
   /** Additional context for specific_non_compliance_reason. */
   specificNonComplianceContext?: SpecificNonComplianceContext;
   /** The policy-specific reason the device is not in compliance with the setting. */
-  specificNonComplianceReason?: NonComplianceDetailSpecificNonComplianceReasonEnum;
+  specificNonComplianceReason?:
+    | NonComplianceDetailSpecificNonComplianceReasonEnum
+    | (string & {});
   /** The name of the policy setting. This is the JSON field name of a top-level Policy field. */
   settingName?: string;
   /** If package_name is set and the non-compliance reason is APP_NOT_INSTALLED or APP_NOT_UPDATED, the detailed reason the app can't be installed or updated. */
-  installationFailureReason?: NonComplianceDetailInstallationFailureReasonEnum;
+  installationFailureReason?:
+    | NonComplianceDetailInstallationFailureReasonEnum
+    | (string & {});
   /** The package name indicating which app is out of compliance, if applicable. */
   packageName?: string;
 }
@@ -1382,7 +1405,7 @@ export const NonComplianceDetail = /*@__PURE__*/ S.suspend(() =>
   identifier: "NonComplianceDetail",
 }) as any as S.Schema<NonComplianceDetail>;
 
-export type NonComplianceDetailList = ReadonlyArray<NonComplianceDetail>;
+export type NonComplianceDetailList = Array<NonComplianceDetail>;
 export const NonComplianceDetailList = /*@__PURE__*/ S.Array(
   NonComplianceDetail,
 ) as any as S.Schema<NonComplianceDetailList>;
@@ -1410,13 +1433,13 @@ export interface TelephonyInfo {
   /** Output only. The ICCID associated with this SIM card. */
   iccId?: string;
   /** Output only. The configuration mode of the SIM card on the device. This is applicable for eSIMs only. This is supported on all devices for Android 15 and above. This is always CONFIG_MODE_UNSPECIFIED for physical SIMs and for devices below Android 15. */
-  configMode?: TelephonyInfoConfigModeEnum;
+  configMode?: TelephonyInfoConfigModeEnum | (string & {});
   /** The phone number associated with this SIM card. */
   phoneNumber?: string;
   /** The carrier name associated with this SIM card. */
   carrierName?: string;
   /** Output only. Activation state of the SIM card on the device. This is applicable for eSIMs only. This is supported on all devices for Android 15 and above. This is always ACTIVATION_STATE_UNSPECIFIED for physical SIMs and for devices below Android 15. */
-  activationState?: TelephonyInfoActivationStateEnum;
+  activationState?: TelephonyInfoActivationStateEnum | (string & {});
 }
 export const TelephonyInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1428,7 +1451,7 @@ export const TelephonyInfo = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TelephonyInfo" }) as any as S.Schema<TelephonyInfo>;
 
-export type TelephonyInfoList = ReadonlyArray<TelephonyInfo>;
+export type TelephonyInfoList = Array<TelephonyInfo>;
 export const TelephonyInfoList = /*@__PURE__*/ S.Array(
   TelephonyInfo,
 ) as any as S.Schema<TelephonyInfoList>;
@@ -1467,7 +1490,7 @@ export const SystemUpdateInfoUpdateStatusEnum = /*@__PURE__*/ S.String;
 /** Information about a potential pending system update. */
 export interface SystemUpdateInfo {
   /** The status of an update: whether an update exists and what type it is. */
-  updateStatus?: SystemUpdateInfoUpdateStatusEnum;
+  updateStatus?: SystemUpdateInfoUpdateStatusEnum | (string & {});
   /** The time when the update was first available. A zero value indicates that this field is not set. This field is set only if an update is available (that is, updateStatus is neither UPDATE_STATUS_UNKNOWN nor UP_TO_DATE). */
   updateReceivedTime?: string;
 }
@@ -1537,7 +1560,7 @@ export interface PowerManagementEvent {
   /** For BATTERY_LEVEL_COLLECTED events, the battery level as a percentage. */
   batteryLevel?: number;
   /** Event type. */
-  eventType?: PowerManagementEventEventTypeEnum;
+  eventType?: PowerManagementEventEventTypeEnum | (string & {});
   /** The creation time of the event. */
   createTime?: string;
 }
@@ -1551,7 +1574,7 @@ export const PowerManagementEvent = /*@__PURE__*/ S.suspend(() =>
   identifier: "PowerManagementEvent",
 }) as any as S.Schema<PowerManagementEvent>;
 
-export type PowerManagementEventList = ReadonlyArray<PowerManagementEvent>;
+export type PowerManagementEventList = Array<PowerManagementEvent>;
 export const PowerManagementEventList = /*@__PURE__*/ S.Array(
   PowerManagementEvent,
 ) as any as S.Schema<PowerManagementEventList>;
@@ -1597,7 +1620,9 @@ export const DefaultApplicationSettingAttemptAttemptOutcomeEnum =
 /** Details on a default application setting attempt. */
 export interface DefaultApplicationSettingAttempt {
   /** Output only. The outcome of setting the app as the default. */
-  attemptOutcome?: DefaultApplicationSettingAttemptAttemptOutcomeEnum;
+  attemptOutcome?:
+    | DefaultApplicationSettingAttemptAttemptOutcomeEnum
+    | (string & {});
   /** Output only. The package name of the attempted application. */
   packageName?: string;
 }
@@ -1613,7 +1638,7 @@ export const DefaultApplicationSettingAttempt = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DefaultApplicationSettingAttempt>;
 
 export type DefaultApplicationSettingAttemptList =
-  ReadonlyArray<DefaultApplicationSettingAttempt>;
+  Array<DefaultApplicationSettingAttempt>;
 export const DefaultApplicationSettingAttemptList = /*@__PURE__*/ S.Array(
   DefaultApplicationSettingAttempt,
 ) as any as S.Schema<DefaultApplicationSettingAttemptList>;
@@ -1623,7 +1648,9 @@ export interface DefaultApplicationInfo {
   /** Output only. The package name of the current default application. */
   packageName?: string;
   /** Output only. The default application type. */
-  defaultApplicationType?: DefaultApplicationInfoDefaultApplicationTypeEnum;
+  defaultApplicationType?:
+    | DefaultApplicationInfoDefaultApplicationTypeEnum
+    | (string & {});
   /** Output only. Details on the default application setting attempts, in the same order as listed in defaultApplications. */
   defaultApplicationSettingAttempts?: DefaultApplicationSettingAttemptList;
 }
@@ -1641,7 +1668,7 @@ export const DefaultApplicationInfo = /*@__PURE__*/ S.suspend(() =>
   identifier: "DefaultApplicationInfo",
 }) as any as S.Schema<DefaultApplicationInfo>;
 
-export type DefaultApplicationInfoList = ReadonlyArray<DefaultApplicationInfo>;
+export type DefaultApplicationInfoList = Array<DefaultApplicationInfo>;
 export const DefaultApplicationInfoList = /*@__PURE__*/ S.Array(
   DefaultApplicationInfo,
 ) as any as S.Schema<DefaultApplicationInfoList>;
@@ -1663,7 +1690,7 @@ export interface ApplicationEvent {
   /** The creation time of the event. */
   createTime?: string;
   /** App event type. */
-  eventType?: ApplicationEventEventTypeEnum;
+  eventType?: ApplicationEventEventTypeEnum | (string & {});
 }
 export const ApplicationEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1674,7 +1701,7 @@ export const ApplicationEvent = /*@__PURE__*/ S.suspend(() =>
   identifier: "ApplicationEvent",
 }) as any as S.Schema<ApplicationEvent>;
 
-export type ApplicationEventList = ReadonlyArray<ApplicationEvent>;
+export type ApplicationEventList = Array<ApplicationEvent>;
 export const ApplicationEventList = /*@__PURE__*/ S.Array(
   ApplicationEvent,
 ) as any as S.Schema<ApplicationEventList>;
@@ -1702,7 +1729,7 @@ export const KeyedAppStateSeverityEnum = /*@__PURE__*/ S.String;
 /** Keyed app state reported by the app. */
 export interface KeyedAppState {
   /** The severity of the app state. */
-  severity?: KeyedAppStateSeverityEnum;
+  severity?: KeyedAppStateSeverityEnum | (string & {});
   /** Optionally, a free-form message string to explain the app state. If the state was triggered by a particular value (e.g. a managed configuration value), it should be included in the message. */
   message?: string;
   /** Optionally, a machine-readable value to be read by the EMM. For example, setting values that the admin can choose to query against in the EMM console (e.g. “notify me if the battery_warning data < 10”). */
@@ -1725,7 +1752,7 @@ export const KeyedAppState = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "KeyedAppState" }) as any as S.Schema<KeyedAppState>;
 
-export type KeyedAppStateList = ReadonlyArray<KeyedAppState>;
+export type KeyedAppStateList = Array<KeyedAppState>;
 export const KeyedAppStateList = /*@__PURE__*/ S.Array(
   KeyedAppState,
 ) as any as S.Schema<KeyedAppStateList>;
@@ -1749,8 +1776,7 @@ export const ApplicationSigningKeyCert = /*@__PURE__*/ S.suspend(() =>
   identifier: "ApplicationSigningKeyCert",
 }) as any as S.Schema<ApplicationSigningKeyCert>;
 
-export type ApplicationSigningKeyCertList =
-  ReadonlyArray<ApplicationSigningKeyCert>;
+export type ApplicationSigningKeyCertList = Array<ApplicationSigningKeyCert>;
 export const ApplicationSigningKeyCertList = /*@__PURE__*/ S.Array(
   ApplicationSigningKeyCert,
 ) as any as S.Schema<ApplicationSigningKeyCertList>;
@@ -1772,15 +1798,15 @@ export interface ApplicationReport {
   /** The list of app events which have occurred in the last 30 hours. */
   events?: ApplicationEventList;
   /** The source of the package. */
-  applicationSource?: ApplicationReportApplicationSourceEnum;
+  applicationSource?: ApplicationReportApplicationSourceEnum | (string & {});
   /** Deprecated. Use signingKeyCerts instead. The SHA-1 hash of each android.content.pm.Signature (https://developer.android.com/reference/android/content/pm/Signature.html) associated with the app package. Each byte of each hash value is represented as a two-digit hexadecimal number. */
   signingKeyCertFingerprints?: StringList;
   /** Application state. */
-  state?: ApplicationReportStateEnum;
+  state?: ApplicationReportStateEnum | (string & {});
   /** List of keyed app states reported by the app. */
   keyedAppStates?: KeyedAppStateList;
   /** Whether the app is user facing. */
-  userFacingType?: ApplicationReportUserFacingTypeEnum;
+  userFacingType?: ApplicationReportUserFacingTypeEnum | (string & {});
   /** Output only. Signing key certificates of the app. */
   signingKeyCerts?: ApplicationSigningKeyCertList;
 }
@@ -1804,7 +1830,7 @@ export const ApplicationReport = /*@__PURE__*/ S.suspend(() =>
   identifier: "ApplicationReport",
 }) as any as S.Schema<ApplicationReport>;
 
-export type ApplicationReportList = ReadonlyArray<ApplicationReport>;
+export type ApplicationReportList = Array<ApplicationReport>;
 export const ApplicationReportList = /*@__PURE__*/ S.Array(
   ApplicationReport,
 ) as any as S.Schema<ApplicationReportList>;
@@ -1816,7 +1842,7 @@ export type PostureDetailSecurityRiskEnum =
   | "HARDWARE_BACKED_EVALUATION_FAILED";
 export const PostureDetailSecurityRiskEnum = /*@__PURE__*/ S.String;
 
-export type UserFacingMessageList = ReadonlyArray<UserFacingMessage>;
+export type UserFacingMessageList = Array<UserFacingMessage>;
 export const UserFacingMessageList = /*@__PURE__*/ S.Array(
   UserFacingMessage,
 ) as any as S.Schema<UserFacingMessageList>;
@@ -1824,7 +1850,7 @@ export const UserFacingMessageList = /*@__PURE__*/ S.Array(
 /** Additional details regarding the security posture of the device. */
 export interface PostureDetail {
   /** A specific security risk that negatively affects the security posture of the device. */
-  securityRisk?: PostureDetailSecurityRiskEnum;
+  securityRisk?: PostureDetailSecurityRiskEnum | (string & {});
   /** Corresponding admin-facing advice to mitigate this security risk and improve the security posture of the device. */
   advice?: UserFacingMessageList;
 }
@@ -1835,7 +1861,7 @@ export const PostureDetail = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PostureDetail" }) as any as S.Schema<PostureDetail>;
 
-export type PostureDetailList = ReadonlyArray<PostureDetail>;
+export type PostureDetailList = Array<PostureDetail>;
 export const PostureDetailList = /*@__PURE__*/ S.Array(
   PostureDetail,
 ) as any as S.Schema<PostureDetailList>;
@@ -1852,7 +1878,7 @@ export interface SecurityPosture {
   /** Additional details regarding the security posture of the device. */
   postureDetails?: PostureDetailList;
   /** Device's security posture value. */
-  devicePosture?: SecurityPostureDevicePostureEnum;
+  devicePosture?: SecurityPostureDevicePostureEnum | (string & {});
 }
 export const SecurityPosture = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1887,7 +1913,7 @@ export interface Display {
   /** Display width in pixels. */
   width?: number;
   /** State of the display. */
-  state?: DisplayStateEnum;
+  state?: DisplayStateEnum | (string & {});
   /** Name of the display. */
   name?: string;
   /** Display height in pixels. */
@@ -1911,7 +1937,7 @@ export const Display = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Display" }) as any as S.Schema<Display>;
 
-export type DisplayList = ReadonlyArray<Display>;
+export type DisplayList = Array<Display>;
 export const DisplayList = /*@__PURE__*/ S.Array(
   Display,
 ) as any as S.Schema<DisplayList>;
@@ -1922,7 +1948,7 @@ export type DeviceOwnershipEnum =
   | "PERSONALLY_OWNED";
 export const DeviceOwnershipEnum = /*@__PURE__*/ S.String;
 
-export type DoubleList = ReadonlyArray<number>;
+export type DoubleList = Array<number>;
 export const DoubleList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<DoubleList>;
@@ -1938,7 +1964,7 @@ export const EuiccChipInfo = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "EuiccChipInfo" }) as any as S.Schema<EuiccChipInfo>;
 
-export type EuiccChipInfoList = ReadonlyArray<EuiccChipInfo>;
+export type EuiccChipInfoList = Array<EuiccChipInfo>;
 export const EuiccChipInfoList = /*@__PURE__*/ S.Array(
   EuiccChipInfo,
 ) as any as S.Schema<EuiccChipInfoList>;
@@ -2028,7 +2054,7 @@ export const HardwareStatus = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "HardwareStatus" }) as any as S.Schema<HardwareStatus>;
 
-export type HardwareStatusList = ReadonlyArray<HardwareStatus>;
+export type HardwareStatusList = Array<HardwareStatus>;
 export const HardwareStatusList = /*@__PURE__*/ S.Array(
   HardwareStatus,
 ) as any as S.Schema<HardwareStatusList>;
@@ -2048,7 +2074,7 @@ export interface DeviceSettings {
   /** Whether the device is secured with PIN/password. */
   isDeviceSecure?: boolean;
   /** Encryption status from DevicePolicyManager. */
-  encryptionStatus?: DeviceSettingsEncryptionStatusEnum;
+  encryptionStatus?: DeviceSettingsEncryptionStatusEnum | (string & {});
   /** Whether Google Play Protect verification (https://support.google.com/accounts/answer/2812853) is enforced on the device. */
   verifyAppsEnabled?: boolean;
   /** Whether installing apps from unknown sources is enabled. */
@@ -2095,7 +2121,7 @@ export const MemoryEventEventTypeEnum = /*@__PURE__*/ S.String;
 /** An event related to memory and storage measurements.To distinguish between new and old events, we recommend using the createTime field. */
 export interface MemoryEvent {
   /** Event type. */
-  eventType?: MemoryEventEventTypeEnum;
+  eventType?: MemoryEventEventTypeEnum | (string & {});
   /** The creation time of the event. */
   createTime?: string;
   /** The number of free bytes in the medium, or for EXTERNAL_STORAGE_DETECTED, the total capacity in bytes of the storage medium. */
@@ -2109,7 +2135,7 @@ export const MemoryEvent = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MemoryEvent" }) as any as S.Schema<MemoryEvent>;
 
-export type MemoryEventList = ReadonlyArray<MemoryEvent>;
+export type MemoryEventList = Array<MemoryEvent>;
 export const MemoryEventList = /*@__PURE__*/ S.Array(
   MemoryEvent,
 ) as any as S.Schema<MemoryEventList>;
@@ -2147,9 +2173,13 @@ export const CommonCriteriaModeInfoPolicySignatureVerificationStatusEnum =
 /** Information about Common Criteria Mode—security standards defined in the Common Criteria for Information Technology Security Evaluation (https://www.commoncriteriaportal.org/) (CC).This information is only available if statusReportingSettings.commonCriteriaModeEnabled is true in the device's policy. */
 export interface CommonCriteriaModeInfo {
   /** Whether Common Criteria Mode is enabled. */
-  commonCriteriaModeStatus?: CommonCriteriaModeInfoCommonCriteriaModeStatusEnum;
+  commonCriteriaModeStatus?:
+    | CommonCriteriaModeInfoCommonCriteriaModeStatusEnum
+    | (string & {});
   /** Output only. The status of policy signature verification. */
-  policySignatureVerificationStatus?: CommonCriteriaModeInfoPolicySignatureVerificationStatusEnum;
+  policySignatureVerificationStatus?:
+    | CommonCriteriaModeInfoPolicySignatureVerificationStatusEnum
+    | (string & {});
 }
 export const CommonCriteriaModeInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2205,7 +2235,7 @@ export interface PasswordRequirements {
   /** Password expiration timeout. */
   passwordExpirationTimeout?: string;
   /** The required password quality. */
-  passwordQuality?: PasswordRequirementsPasswordQualityEnum;
+  passwordQuality?: PasswordRequirementsPasswordQualityEnum | (string & {});
   /** Minimum number of letters required in the password. Only enforced when password_quality is COMPLEX. */
   passwordMinimumLetters?: number;
   /** Minimum number of upper case letters required in the password. Only enforced when password_quality is COMPLEX. */
@@ -2213,15 +2243,19 @@ export interface PasswordRequirements {
   /** Minimum number of numerical digits required in the password. Only enforced when password_quality is COMPLEX. */
   passwordMinimumNumeric?: number;
   /** The scope that the password requirement applies to. */
-  passwordScope?: PasswordRequirementsPasswordScopeEnum;
+  passwordScope?: PasswordRequirementsPasswordScopeEnum | (string & {});
   /** The length of the password history. After setting this field, the user won't be able to enter a new password that is the same as any password in the history. A value of 0 means there is no restriction. */
   passwordHistoryLength?: number;
   /** The minimum allowed password length. A value of 0 means there is no restriction. Only enforced when password_quality is NUMERIC, NUMERIC_COMPLEX, ALPHABETIC, ALPHANUMERIC, or COMPLEX. */
   passwordMinimumLength?: number;
   /** The length of time after a device or work profile is unlocked using a strong form of authentication (password, PIN, pattern) that it can be unlocked using any other authentication method (e.g. fingerprint, trust agents, face). After the specified time period elapses, only strong forms of authentication can be used to unlock the device or work profile. */
-  requirePasswordUnlock?: PasswordRequirementsRequirePasswordUnlockEnum;
+  requirePasswordUnlock?:
+    | PasswordRequirementsRequirePasswordUnlockEnum
+    | (string & {});
   /** Controls whether a unified lock is allowed for the device and the work profile, on devices running Android 9 and above with a work profile. This can be set only if password_scope is set to SCOPE_PROFILE, the policy will be rejected otherwise. If user has not set a separate work lock and this field is set to REQUIRE_SEPARATE_WORK_LOCK, a NonComplianceDetail is reported with nonComplianceReason set to USER_ACTION. */
-  unifiedLockSettings?: PasswordRequirementsUnifiedLockSettingsEnum;
+  unifiedLockSettings?:
+    | PasswordRequirementsUnifiedLockSettingsEnum
+    | (string & {});
   /** Number of incorrect device-unlock passwords that can be entered before a device is wiped. A value of 0 means there is no restriction. */
   maximumFailedPasswordsForWipe?: number;
   /** Minimum number of symbols required in the password. Only enforced when password_quality is COMPLEX. */
@@ -2254,7 +2288,7 @@ export const PasswordRequirements = /*@__PURE__*/ S.suspend(() =>
   identifier: "PasswordRequirements",
 }) as any as S.Schema<PasswordRequirements>;
 
-export type PasswordRequirementsList = ReadonlyArray<PasswordRequirements>;
+export type PasswordRequirementsList = Array<PasswordRequirements>;
 export const PasswordRequirementsList = /*@__PURE__*/ S.Array(
   PasswordRequirements,
 ) as any as S.Schema<PasswordRequirementsList>;
@@ -2264,7 +2298,7 @@ export interface Device {
   /** Details about policy settings that the device is not compliant with. */
   nonComplianceDetails?: NonComplianceDetailList;
   /** The type of management mode Android Device Policy takes on the device. This influences which policy settings are supported. */
-  managementMode?: DeviceManagementModeEnum;
+  managementMode?: DeviceManagementModeEnum | (string & {});
   /** Device network information. This information is only available if networkInfoEnabled is true in the device's policy. */
   networkInfo?: NetworkInfo;
   /** If the device was enrolled with an enrollment token, this field contains the name of the token. */
@@ -2294,7 +2328,7 @@ export interface Device {
   /** Device's security posture value that reflects how secure the device is. */
   securityPosture?: SecurityPosture;
   /** The state to be applied to the device. This field can be modified by a patch request. Note that when calling enterprises.devices.patch, ACTIVE and DISABLED are the only allowable values. To enter the device into a DELETED state, call enterprises.devices.delete. */
-  state?: DeviceStateEnum;
+  state?: DeviceStateEnum | (string & {});
   /** Whether the device is compliant with its policy. */
   policyCompliant?: boolean;
   /** The name of the device in the form enterprises/{enterpriseId}/devices/{deviceId}. */
@@ -2306,7 +2340,7 @@ export interface Device {
   /** Map of selected system properties name and value related to the device. This information is only available if systemPropertiesEnabled is true in the device's policy. */
   systemProperties?: StringMap;
   /** Ownership of the managed device. */
-  ownership?: DeviceOwnershipEnum;
+  ownership?: DeviceOwnershipEnum | (string & {});
   /** Detailed information about the device hardware. */
   hardwareInfo?: HardwareInfo;
   /** If the device state is DISABLED, an optional message that is displayed on the device indicating the reason the device is disabled. This field can be modified by a patch request. */
@@ -2318,7 +2352,7 @@ export interface Device {
   /** Device settings information. This information is only available if deviceSettingsEnabled is true in the device's policy. */
   deviceSettings?: DeviceSettings;
   /** The state currently applied to the device. */
-  appliedState?: DeviceAppliedStateEnum;
+  appliedState?: DeviceAppliedStateEnum | (string & {});
   /** The name of the policy applied to the device, in the form enterprises/{enterpriseId}/policies/{policyId}. If not specified, the policy_name for the device's user is applied. This field can be modified by a patch request. You can specify only the policyId when calling enterprises.devices.patch, as long as the policyId doesn’t contain any slashes. The rest of the policy name is inferred. */
   policyName?: string;
   /** Events related to memory and storage measurements in chronological order. This information is only available if memoryInfoEnabled is true in the device's policy.Events are retained for a certain period of time and old events are deleted. */
@@ -2403,7 +2437,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -2539,7 +2573,7 @@ export const OncCertificateProvider = /*@__PURE__*/ S.suspend(() =>
   identifier: "OncCertificateProvider",
 }) as any as S.Schema<OncCertificateProvider>;
 
-export type OncCertificateProviderList = ReadonlyArray<OncCertificateProvider>;
+export type OncCertificateProviderList = Array<OncCertificateProvider>;
 export const OncCertificateProviderList = /*@__PURE__*/ S.Array(
   OncCertificateProvider,
 ) as any as S.Schema<OncCertificateProviderList>;
@@ -2605,15 +2639,17 @@ export const KioskCustomizationDeviceSettingsEnum = /*@__PURE__*/ S.String;
 /** Settings controlling the behavior of a device in kiosk mode. To enable kiosk mode, set kioskCustomLauncherEnabled to true or specify an app in the policy with installType KIOSK. */
 export interface KioskCustomization {
   /** Specifies whether system error dialogs for crashed or unresponsive apps are blocked in kiosk mode. When blocked, the system will force-stop the app as if the user chooses the "close app" option on the UI. */
-  systemErrorWarnings?: KioskCustomizationSystemErrorWarningsEnum;
+  systemErrorWarnings?:
+    | KioskCustomizationSystemErrorWarningsEnum
+    | (string & {});
   /** Specifies which navigation features are enabled (e.g. Home, Overview buttons) in kiosk mode. */
-  systemNavigation?: KioskCustomizationSystemNavigationEnum;
+  systemNavigation?: KioskCustomizationSystemNavigationEnum | (string & {});
   /** Specifies whether system info and notifications are disabled in kiosk mode. */
-  statusBar?: KioskCustomizationStatusBarEnum;
+  statusBar?: KioskCustomizationStatusBarEnum | (string & {});
   /** Sets the behavior of a device in kiosk mode when a user presses and holds (long-presses) the Power button. */
-  powerButtonActions?: KioskCustomizationPowerButtonActionsEnum;
+  powerButtonActions?: KioskCustomizationPowerButtonActionsEnum | (string & {});
   /** Specifies whether the Settings app is allowed in kiosk mode. */
-  deviceSettings?: KioskCustomizationDeviceSettingsEnum;
+  deviceSettings?: KioskCustomizationDeviceSettingsEnum | (string & {});
 }
 export const KioskCustomization = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2645,7 +2681,7 @@ export interface PersonalApplicationPolicy {
   /** The package name of the application. */
   packageName?: string;
   /** The type of installation to perform. */
-  installType?: PersonalApplicationPolicyInstallTypeEnum;
+  installType?: PersonalApplicationPolicyInstallTypeEnum | (string & {});
 }
 export const PersonalApplicationPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2656,8 +2692,7 @@ export const PersonalApplicationPolicy = /*@__PURE__*/ S.suspend(() =>
   identifier: "PersonalApplicationPolicy",
 }) as any as S.Schema<PersonalApplicationPolicy>;
 
-export type PersonalApplicationPolicyList =
-  ReadonlyArray<PersonalApplicationPolicy>;
+export type PersonalApplicationPolicyList = Array<PersonalApplicationPolicy>;
 export const PersonalApplicationPolicyList = /*@__PURE__*/ S.Array(
   PersonalApplicationPolicy,
 ) as any as S.Schema<PersonalApplicationPolicyList>;
@@ -2679,13 +2714,17 @@ export const PersonalUsagePoliciesPersonalPlayStoreModeEnum =
 /** Policies controlling personal usage on a company-owned device with a work profile. */
 export interface PersonalUsagePolicies {
   /** Optional. Controls whether a private space is allowed on the device. */
-  privateSpacePolicy?: PersonalUsagePoliciesPrivateSpacePolicyEnum;
+  privateSpacePolicy?:
+    | PersonalUsagePoliciesPrivateSpacePolicyEnum
+    | (string & {});
   /** Policy applied to applications in the personal profile. */
   personalApplications?: PersonalApplicationPolicyList;
   /** Optional. Whether bluetooth sharing is allowed. */
-  bluetoothSharing?: PersonalUsagePoliciesBluetoothSharingEnum;
+  bluetoothSharing?: PersonalUsagePoliciesBluetoothSharingEnum | (string & {});
   /** Used together with personalApplications to control how apps in the personal profile are allowed or blocked. */
-  personalPlayStoreMode?: PersonalUsagePoliciesPersonalPlayStoreModeEnum;
+  personalPlayStoreMode?:
+    | PersonalUsagePoliciesPersonalPlayStoreModeEnum
+    | (string & {});
   /** If true, screen capture is disabled for all users. This also blocks Circle to Search (https://support.google.com/android/answer/14508957). */
   screenCaptureDisabled?: boolean;
   /** Account types that can't be managed by the user. */
@@ -2723,7 +2762,7 @@ export interface BlockAction {
   /** Number of days the policy is non-compliant before the device or work profile is blocked. To block access immediately, set to 0. blockAfterDays must be less than wipeAfterDays. */
   blockAfterDays?: number;
   /** Specifies the scope of this BlockAction. Only applicable to devices that are company-owned. */
-  blockScope?: BlockActionBlockScopeEnum;
+  blockScope?: BlockActionBlockScopeEnum | (string & {});
 }
 export const BlockAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2765,7 +2804,7 @@ export const PolicyEnforcementRule = /*@__PURE__*/ S.suspend(() =>
   identifier: "PolicyEnforcementRule",
 }) as any as S.Schema<PolicyEnforcementRule>;
 
-export type PolicyEnforcementRuleList = ReadonlyArray<PolicyEnforcementRule>;
+export type PolicyEnforcementRuleList = Array<PolicyEnforcementRule>;
 export const PolicyEnforcementRuleList = /*@__PURE__*/ S.Array(
   PolicyEnforcementRule,
 ) as any as S.Schema<PolicyEnforcementRuleList>;
@@ -2790,7 +2829,7 @@ export const PersistentPreferredActivity = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PersistentPreferredActivity>;
 
 export type PersistentPreferredActivityList =
-  ReadonlyArray<PersistentPreferredActivity>;
+  Array<PersistentPreferredActivity>;
 export const PersistentPreferredActivityList = /*@__PURE__*/ S.Array(
   PersistentPreferredActivity,
 ) as any as S.Schema<PersistentPreferredActivityList>;
@@ -2829,7 +2868,9 @@ export const NonComplianceDetailConditionNonComplianceReasonEnum =
 /** A compliance rule condition which is satisfied if there exists any matching NonComplianceDetail for the device. A NonComplianceDetail matches a NonComplianceDetailCondition if all the fields which are set within the NonComplianceDetailCondition match the corresponding NonComplianceDetail fields. */
 export interface NonComplianceDetailCondition {
   /** The reason the device is not in compliance with the setting. If not set, then this condition matches any reason. */
-  nonComplianceReason?: NonComplianceDetailConditionNonComplianceReasonEnum;
+  nonComplianceReason?:
+    | NonComplianceDetailConditionNonComplianceReasonEnum
+    | (string & {});
   /** The name of the policy setting. This is the JSON field name of a top-level Policy field. If not set, then this condition matches any setting name. */
   settingName?: string;
   /** The package name of the app that's out of compliance. If not set, then this condition matches any package name. */
@@ -2867,7 +2908,7 @@ export const ComplianceRule = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ComplianceRule" }) as any as S.Schema<ComplianceRule>;
 
-export type ComplianceRuleList = ReadonlyArray<ComplianceRule>;
+export type ComplianceRuleList = Array<ComplianceRule>;
 export const ComplianceRuleList = /*@__PURE__*/ S.Array(
   ComplianceRule,
 ) as any as S.Schema<ComplianceRuleList>;
@@ -2891,7 +2932,7 @@ export const ChoosePrivateKeyRule = /*@__PURE__*/ S.suspend(() =>
   identifier: "ChoosePrivateKeyRule",
 }) as any as S.Schema<ChoosePrivateKeyRule>;
 
-export type ChoosePrivateKeyRuleList = ReadonlyArray<ChoosePrivateKeyRule>;
+export type ChoosePrivateKeyRuleList = Array<ChoosePrivateKeyRule>;
 export const ChoosePrivateKeyRuleList = /*@__PURE__*/ S.Array(
   ChoosePrivateKeyRule,
 ) as any as S.Schema<ChoosePrivateKeyRuleList>;
@@ -2908,7 +2949,9 @@ export interface ScreenTimeoutSettings {
   /** Optional. Controls the screen timeout duration. The screen timeout duration must be greater than 0, otherwise it is rejected. Additionally, it should not be greater than maximumTimeToLock, otherwise the screen timeout is set to maximumTimeToLock and a NonComplianceDetail with INVALID_VALUE reason and SCREEN_TIMEOUT_GREATER_THAN_MAXIMUM_TIME_TO_LOCK specific reason is reported. If the screen timeout is less than a certain lower bound, it is set to the lower bound. The lower bound may vary across devices. If this is set, screenTimeoutMode must be SCREEN_TIMEOUT_ENFORCED. Supported on Android 9 and above on fully managed devices. A NonComplianceDetail with API_LEVEL is reported if the Android version is less than 9. Supported on work profiles on company-owned devices on Android 15 and above. */
   screenTimeout?: string;
   /** Optional. Controls whether the user is allowed to configure the screen timeout. */
-  screenTimeoutMode?: ScreenTimeoutSettingsScreenTimeoutModeEnum;
+  screenTimeoutMode?:
+    | ScreenTimeoutSettingsScreenTimeoutModeEnum
+    | (string & {});
 }
 export const ScreenTimeoutSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2930,7 +2973,9 @@ export const ScreenBrightnessSettingsScreenBrightnessModeEnum =
 /** Controls for the screen brightness settings. */
 export interface ScreenBrightnessSettings {
   /** Optional. Controls the screen brightness mode. */
-  screenBrightnessMode?: ScreenBrightnessSettingsScreenBrightnessModeEnum;
+  screenBrightnessMode?:
+    | ScreenBrightnessSettingsScreenBrightnessModeEnum
+    | (string & {});
   /** Optional. The screen brightness between 1 and 255 where 1 is the lowest and 255 is the highest brightness. A value of 0 (default) means no screen brightness set. Any other value is rejected. screenBrightnessMode must be either BRIGHTNESS_AUTOMATIC or BRIGHTNESS_FIXED to set this. Supported on Android 9 and above on fully managed devices. A NonComplianceDetail with API_LEVEL is reported if the Android version is less than 9. Supported on work profiles on company-owned devices on Android 15 and above. */
   screenBrightness?: number;
 }
@@ -3011,17 +3056,21 @@ export const DeviceRadioStateUserInitiatedAddEsimSettingsEnum =
 /** Controls for device radio settings. */
 export interface DeviceRadioState {
   /** Controls the state of the ultra wideband setting and whether the user can toggle it on or off. */
-  ultraWidebandState?: DeviceRadioStateUltraWidebandStateEnum;
+  ultraWidebandState?: DeviceRadioStateUltraWidebandStateEnum | (string & {});
   /** The minimum required security level of Wi-Fi networks that the device can connect to. */
-  minimumWifiSecurityLevel?: DeviceRadioStateMinimumWifiSecurityLevelEnum;
+  minimumWifiSecurityLevel?:
+    | DeviceRadioStateMinimumWifiSecurityLevelEnum
+    | (string & {});
   /** Controls whether cellular 2G setting can be toggled by the user or not. */
-  cellularTwoGState?: DeviceRadioStateCellularTwoGStateEnum;
+  cellularTwoGState?: DeviceRadioStateCellularTwoGStateEnum | (string & {});
   /** Controls current state of Wi-Fi and if user can change its state. */
-  wifiState?: DeviceRadioStateWifiStateEnum;
+  wifiState?: DeviceRadioStateWifiStateEnum | (string & {});
   /** Controls whether airplane mode can be toggled by the user or not. */
-  airplaneModeState?: DeviceRadioStateAirplaneModeStateEnum;
+  airplaneModeState?: DeviceRadioStateAirplaneModeStateEnum | (string & {});
   /** Optional. Controls whether the user is allowed to add eSIM profiles. */
-  userInitiatedAddEsimSettings?: DeviceRadioStateUserInitiatedAddEsimSettingsEnum;
+  userInitiatedAddEsimSettings?:
+    | DeviceRadioStateUserInitiatedAddEsimSettingsEnum
+    | (string & {});
 }
 export const DeviceRadioState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3046,8 +3095,9 @@ export type PolicyAndroidDevicePolicyTracksItemEnum =
   | "BETA";
 export const PolicyAndroidDevicePolicyTracksItemEnum = /*@__PURE__*/ S.String;
 
-export type PolicyAndroidDevicePolicyTracksItemEnumList =
-  ReadonlyArray<PolicyAndroidDevicePolicyTracksItemEnum>;
+export type PolicyAndroidDevicePolicyTracksItemEnumList = Array<
+  PolicyAndroidDevicePolicyTracksItemEnum | (string & {})
+>;
 export const PolicyAndroidDevicePolicyTracksItemEnumList =
   /*@__PURE__*/ S.Array(
     PolicyAndroidDevicePolicyTracksItemEnum,
@@ -3107,19 +3157,29 @@ export const AdvancedSecurityOverridesDeveloperSettingsEnum =
 /** Advanced security settings. In most cases, setting these is not needed. */
 export interface AdvancedSecurityOverrides {
   /** Optional. Controls whether content protection, which scans for deceptive apps, is enabled. This is supported on Android 15 and above. */
-  contentProtectionPolicy?: AdvancedSecurityOverridesContentProtectionPolicyEnum;
+  contentProtectionPolicy?:
+    | AdvancedSecurityOverridesContentProtectionPolicyEnum
+    | (string & {});
   /** Whether Google Play Protect verification (https://support.google.com/accounts/answer/2812853) is enforced. Replaces ensureVerifyAppsEnabled (deprecated). */
-  googlePlayProtectVerifyApps?: AdvancedSecurityOverridesGooglePlayProtectVerifyAppsEnum;
+  googlePlayProtectVerifyApps?:
+    | AdvancedSecurityOverridesGooglePlayProtectVerifyAppsEnum
+    | (string & {});
   /** Optional. Controls Memory Tagging Extension (MTE) (https://source.android.com/docs/security/test/memory-safety/arm-mte) on the device. The device needs to be rebooted to apply changes to the MTE policy. On Android 15 and above, a NonComplianceDetail with PENDING is reported if the policy change is pending a device reboot. */
-  mtePolicy?: AdvancedSecurityOverridesMtePolicyEnum;
+  mtePolicy?: AdvancedSecurityOverridesMtePolicyEnum | (string & {});
   /** Controls Common Criteria Mode—security standards defined in the Common Criteria for Information Technology Security Evaluation (https://www.commoncriteriaportal.org/) (CC). Enabling Common Criteria Mode increases certain security components on a device, see CommonCriteriaMode for details.Warning: Common Criteria Mode enforces a strict security model typically only required for IT products used in national security systems and other highly sensitive organizations. Standard device use may be affected. Only enabled if required. If Common Criteria Mode is turned off after being enabled previously, all user-configured Wi-Fi networks may be lost and any enterprise-configured Wi-Fi networks that require user input may need to be reconfigured. */
-  commonCriteriaMode?: AdvancedSecurityOverridesCommonCriteriaModeEnum;
+  commonCriteriaMode?:
+    | AdvancedSecurityOverridesCommonCriteriaModeEnum
+    | (string & {});
   /** Personal apps that can read work profile notifications using a NotificationListenerService (https://developer.android.com/reference/android/service/notification/NotificationListenerService). By default, no personal apps (aside from system apps) can read work notifications. Each value in the list must be a package name. */
   personalAppsThatCanReadWorkNotifications?: StringList;
   /** The policy for untrusted apps (apps from unknown sources) enforced on the device. Replaces install_unknown_sources_allowed (deprecated). */
-  untrustedAppsPolicy?: AdvancedSecurityOverridesUntrustedAppsPolicyEnum;
+  untrustedAppsPolicy?:
+    | AdvancedSecurityOverridesUntrustedAppsPolicyEnum
+    | (string & {});
   /** Controls access to developer settings: developer options and safe boot. Replaces safeBootDisabled (deprecated) and debuggingFeaturesAllowed (deprecated). On personally-owned devices with a work profile, setting this policy will not disable safe boot. In this case, a NonComplianceDetail with MANAGEMENT_MODE is reported. */
-  developerSettings?: AdvancedSecurityOverridesDeveloperSettingsEnum;
+  developerSettings?:
+    | AdvancedSecurityOverridesDeveloperSettingsEnum
+    | (string & {});
 }
 export const AdvancedSecurityOverrides = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3160,8 +3220,9 @@ export type PolicyKeyguardDisabledFeaturesItemEnum =
   | "ALL_FEATURES";
 export const PolicyKeyguardDisabledFeaturesItemEnum = /*@__PURE__*/ S.String;
 
-export type PolicyKeyguardDisabledFeaturesItemEnumList =
-  ReadonlyArray<PolicyKeyguardDisabledFeaturesItemEnum>;
+export type PolicyKeyguardDisabledFeaturesItemEnumList = Array<
+  PolicyKeyguardDisabledFeaturesItemEnum | (string & {})
+>;
 export const PolicyKeyguardDisabledFeaturesItemEnumList = /*@__PURE__*/ S.Array(
   PolicyKeyguardDisabledFeaturesItemEnum,
 ) as any as S.Schema<PolicyKeyguardDisabledFeaturesItemEnumList>;
@@ -3177,7 +3238,7 @@ export const WifiSsid = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "WifiSsid" }) as any as S.Schema<WifiSsid>;
 
-export type WifiSsidList = ReadonlyArray<WifiSsid>;
+export type WifiSsidList = Array<WifiSsid>;
 export const WifiSsidList = /*@__PURE__*/ S.Array(
   WifiSsid,
 ) as any as S.Schema<WifiSsidList>;
@@ -3193,7 +3254,7 @@ export interface WifiSsidPolicy {
   /** Optional. List of Wi-Fi SSIDs that should be applied in the policy. This field must be non-empty when WifiSsidPolicyType is set to WIFI_SSID_ALLOWLIST. If this is set to a non-empty list, then a NonComplianceDetail detail with API_LEVEL is reported if the Android version is less than 13 and a NonComplianceDetail with MANAGEMENT_MODE is reported for non-company-owned devices. */
   wifiSsids?: WifiSsidList;
   /** Type of the Wi-Fi SSID policy to be applied. */
-  wifiSsidPolicyType?: WifiSsidPolicyWifiSsidPolicyTypeEnum;
+  wifiSsidPolicyType?: WifiSsidPolicyWifiSsidPolicyTypeEnum | (string & {});
 }
 export const WifiSsidPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3240,8 +3301,9 @@ export type ApnSettingNetworkTypesItemEnum =
   | "UMTS";
 export const ApnSettingNetworkTypesItemEnum = /*@__PURE__*/ S.String;
 
-export type ApnSettingNetworkTypesItemEnumList =
-  ReadonlyArray<ApnSettingNetworkTypesItemEnum>;
+export type ApnSettingNetworkTypesItemEnumList = Array<
+  ApnSettingNetworkTypesItemEnum | (string & {})
+>;
 export const ApnSettingNetworkTypesItemEnumList = /*@__PURE__*/ S.Array(
   ApnSettingNetworkTypesItemEnum,
 ) as any as S.Schema<ApnSettingNetworkTypesItemEnumList>;
@@ -3300,8 +3362,9 @@ export type ApnSettingApnTypesItemEnum =
   | "XCAP";
 export const ApnSettingApnTypesItemEnum = /*@__PURE__*/ S.String;
 
-export type ApnSettingApnTypesItemEnumList =
-  ReadonlyArray<ApnSettingApnTypesItemEnum>;
+export type ApnSettingApnTypesItemEnumList = Array<
+  ApnSettingApnTypesItemEnum | (string & {})
+>;
 export const ApnSettingApnTypesItemEnumList = /*@__PURE__*/ S.Array(
   ApnSettingApnTypesItemEnum,
 ) as any as S.Schema<ApnSettingApnTypesItemEnumList>;
@@ -3315,23 +3378,23 @@ export interface ApnSetting {
   /** Optional. MMS (Multimedia Messaging Service) proxy port of the APN. A value of 0 (default) means not set and negative values are rejected. */
   mmsProxyPort?: number;
   /** Optional. MVNO match type for the APN. */
-  mvnoType?: ApnSettingMvnoTypeEnum;
+  mvnoType?: ApnSettingMvnoTypeEnum | (string & {});
   /** Optional. Radio technologies (network types) the APN may use. Policy will be rejected if this field contains NETWORK_TYPE_UNSPECIFIED or duplicates. */
   networkTypes?: ApnSettingNetworkTypesItemEnumList;
   /** Optional. The numeric operator ID of the APN. Numeric operator ID is defined as MCC (Mobile Country Code) + MNC (Mobile Network Code). */
   numericOperatorId?: string;
   /** Optional. The protocol to use to connect to this APN while the device is roaming. */
-  roamingProtocol?: ApnSettingRoamingProtocolEnum;
+  roamingProtocol?: ApnSettingRoamingProtocolEnum | (string & {});
   /** Optional. MMSC (Multimedia Messaging Service Center) URI of the APN. */
   mmsc?: string;
   /** Required. Human-readable name that describes the APN. Policy will be rejected if this field is empty. */
   displayName?: string;
   /** Optional. Authentication type of the APN. */
-  authType?: ApnSettingAuthTypeEnum;
+  authType?: ApnSettingAuthTypeEnum | (string & {});
   /** Optional. The protocol to use to connect to this APN. */
-  protocol?: ApnSettingProtocolEnum;
+  protocol?: ApnSettingProtocolEnum | (string & {});
   /** Optional. Whether User Plane resources have to be activated during every transition from CM-IDLE mode to CM-CONNECTED state for this APN. See 3GPP TS 23.501 section 5.6.13. */
-  alwaysOnSetting?: ApnSettingAlwaysOnSettingEnum;
+  alwaysOnSetting?: ApnSettingAlwaysOnSettingEnum | (string & {});
   /** Optional. The MTU (Maximum Transmission Unit) size of the IPv6 mobile interface to which the APN connected. A value of 0 (default) means not set and negative values are rejected. Supported on Android 13 and above. A NonComplianceDetail with API_LEVEL is reported if the Android version is less than 13. */
   mtuV6?: number;
   /** Optional. The proxy port of the APN. A value of 0 (default) means not set and negative values are rejected. */
@@ -3374,7 +3437,7 @@ export const ApnSetting = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ApnSetting" }) as any as S.Schema<ApnSetting>;
 
-export type ApnSettingList = ReadonlyArray<ApnSetting>;
+export type ApnSettingList = Array<ApnSetting>;
 export const ApnSettingList = /*@__PURE__*/ S.Array(
   ApnSetting,
 ) as any as S.Schema<ApnSettingList>;
@@ -3382,7 +3445,7 @@ export const ApnSettingList = /*@__PURE__*/ S.Array(
 /** Access Point Name (APN) policy. Configuration for Access Point Names (APNs) which may override any other APNs on the device. See OVERRIDE_APNS_ENABLED and overrideApns for details. */
 export interface ApnPolicy {
   /** Optional. Whether override APNs are disabled or enabled. See DevicePolicyManager.setOverrideApnsEnabled (https://developer.android.com/reference/android/app/admin/DevicePolicyManager#setOverrideApnsEnabled) for more details. */
-  overrideApns?: ApnPolicyOverrideApnsEnum;
+  overrideApns?: ApnPolicyOverrideApnsEnum | (string & {});
   /** Optional. APN settings for override APNs. There must not be any conflict between any of APN settings provided, otherwise the policy will be rejected. Two ApnSettings are considered to conflict when all of the following fields match on both: numericOperatorId, apn, proxyAddress, proxyPort, mmsProxyAddress, mmsProxyPort, mmsc, mvnoType, protocol, roamingProtocol. If some of the APN settings result in non-compliance of INVALID_VALUE , they will be ignored. This can be set on fully managed devices on Android 10 and above. This can also be set on work profiles on Android 13 and above and only with ApnSetting's with ENTERPRISE APN type. A NonComplianceDetail with API_LEVEL is reported if the Android version is less than 10. A NonComplianceDetail with MANAGEMENT_MODE is reported for work profiles on Android versions less than 13. */
   apnSettings?: ApnSettingList;
 }
@@ -3418,7 +3481,7 @@ export const PrivateDnsSettingsPrivateDnsModeEnum = /*@__PURE__*/ S.String;
 /** Controls the device's private DNS settings. */
 export interface PrivateDnsSettings {
   /** Optional. The configuration mode for device's global private DNS settings. If this is set to PRIVATE_DNS_SPECIFIED_HOST, then private_dns_host must be set. */
-  privateDnsMode?: PrivateDnsSettingsPrivateDnsModeEnum;
+  privateDnsMode?: PrivateDnsSettingsPrivateDnsModeEnum | (string & {});
   /** Optional. The hostname of the DNS server. This must be set if and only if private_dns_mode is set to PRIVATE_DNS_SPECIFIED_HOST. Supported on Android 10 and above on fully managed devices. A NonComplianceDetail with MANAGEMENT_MODE is reported on other management modes. A NonComplianceDetail with API_LEVEL is reported if the Android version is less than 10. A NonComplianceDetail with PENDING is reported if the device is not connected to a network. A NonComplianceDetail with nonComplianceReason INVALID_VALUE and specificNonComplianceReason PRIVATE_DNS_HOST_NOT_SERVING is reported if the specified host is not a DNS server or not supported on Android. A NonComplianceDetail with INVALID_VALUE is reported if applying this setting fails for any other reason. */
   privateDnsHost?: string;
 }
@@ -3451,7 +3514,7 @@ export interface WifiRoamingSetting {
   /** Required. SSID of the Wi-Fi network. */
   wifiSsid?: string;
   /** Required. Wi-Fi roaming mode for the specified SSID. */
-  wifiRoamingMode?: WifiRoamingSettingWifiRoamingModeEnum;
+  wifiRoamingMode?: WifiRoamingSettingWifiRoamingModeEnum | (string & {});
 }
 export const WifiRoamingSetting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3462,7 +3525,7 @@ export const WifiRoamingSetting = /*@__PURE__*/ S.suspend(() =>
   identifier: "WifiRoamingSetting",
 }) as any as S.Schema<WifiRoamingSetting>;
 
-export type WifiRoamingSettingList = ReadonlyArray<WifiRoamingSetting>;
+export type WifiRoamingSettingList = Array<WifiRoamingSetting>;
 export const WifiRoamingSettingList = /*@__PURE__*/ S.Array(
   WifiRoamingSetting,
 ) as any as S.Schema<WifiRoamingSettingList>;
@@ -3519,11 +3582,17 @@ export const PreferentialNetworkServiceConfigPreferentialNetworkIdEnum =
 /** Individual preferential network service configuration. */
 export interface PreferentialNetworkServiceConfig {
   /** Optional. Whether fallback to the device-wide default network is allowed. If this is set to FALLBACK_TO_DEFAULT_CONNECTION_ALLOWED, then nonMatchingNetworks must not be set to NON_MATCHING_NETWORKS_DISALLOWED, the policy will be rejected otherwise. Note: If this is set to FALLBACK_TO_DEFAULT_CONNECTION_DISALLOWED, applications are not able to access the internet if the 5G slice is not available. */
-  fallbackToDefaultConnection?: PreferentialNetworkServiceConfigFallbackToDefaultConnectionEnum;
+  fallbackToDefaultConnection?:
+    | PreferentialNetworkServiceConfigFallbackToDefaultConnectionEnum
+    | (string & {});
   /** Optional. Whether apps this configuration applies to are blocked from using networks other than the preferential service. If this is set to NON_MATCHING_NETWORKS_DISALLOWED, then fallbackToDefaultConnection must be set to FALLBACK_TO_DEFAULT_CONNECTION_DISALLOWED. */
-  nonMatchingNetworks?: PreferentialNetworkServiceConfigNonMatchingNetworksEnum;
+  nonMatchingNetworks?:
+    | PreferentialNetworkServiceConfigNonMatchingNetworksEnum
+    | (string & {});
   /** Required. Preferential network identifier. This must not be set to NO_PREFERENTIAL_NETWORK or PREFERENTIAL_NETWORK_ID_UNSPECIFIED, the policy will be rejected otherwise. */
-  preferentialNetworkId?: PreferentialNetworkServiceConfigPreferentialNetworkIdEnum;
+  preferentialNetworkId?:
+    | PreferentialNetworkServiceConfigPreferentialNetworkIdEnum
+    | (string & {});
 }
 export const PreferentialNetworkServiceConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3542,7 +3611,7 @@ export const PreferentialNetworkServiceConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PreferentialNetworkServiceConfig>;
 
 export type PreferentialNetworkServiceConfigList =
-  ReadonlyArray<PreferentialNetworkServiceConfig>;
+  Array<PreferentialNetworkServiceConfig>;
 export const PreferentialNetworkServiceConfigList = /*@__PURE__*/ S.Array(
   PreferentialNetworkServiceConfig,
 ) as any as S.Schema<PreferentialNetworkServiceConfigList>;
@@ -3550,7 +3619,9 @@ export const PreferentialNetworkServiceConfigList = /*@__PURE__*/ S.Array(
 /** Preferential network service settings. */
 export interface PreferentialNetworkServiceSettings {
   /** Required. Default preferential network ID for the applications that are not in applications or if ApplicationPolicy.preferentialNetworkId is set to PREFERENTIAL_NETWORK_ID_UNSPECIFIED. There must be a configuration for the specified network ID in preferentialNetworkServiceConfigs, unless this is set to NO_PREFERENTIAL_NETWORK. If set to PREFERENTIAL_NETWORK_ID_UNSPECIFIED or unset, this defaults to NO_PREFERENTIAL_NETWORK. Note: If the default preferential network is misconfigured, applications with no ApplicationPolicy.preferentialNetworkId set are not able to access the internet. This setting does not apply to the following critical apps: com.google.android.apps.work.clouddpc com.google.android.gmsApplicationPolicy.preferentialNetworkId can still be used to configure the preferential network for them. */
-  defaultPreferentialNetworkId?: PreferentialNetworkServiceSettingsDefaultPreferentialNetworkIdEnum;
+  defaultPreferentialNetworkId?:
+    | PreferentialNetworkServiceSettingsDefaultPreferentialNetworkIdEnum
+    | (string & {});
   /** Required. Preferential network service configurations which enables having multiple enterprise slices. There must not be multiple configurations with the same preferentialNetworkId. If a configuration is not referenced by any application by setting ApplicationPolicy.preferentialNetworkId or by setting defaultPreferentialNetworkId, it will be ignored. For devices on 4G networks, enterprise APN needs to be configured additionally to set up data call for preferential network service. These APNs can be added using apnPolicy. */
   preferentialNetworkServiceConfigs?: PreferentialNetworkServiceConfigList;
 }
@@ -3579,23 +3650,29 @@ export interface DeviceConnectivityManagement {
   /** Restrictions on which Wi-Fi SSIDs the device can connect to. Note that this does not affect which networks can be configured on the device. Supported on company-owned devices running Android 13 and above. */
   wifiSsidPolicy?: WifiSsidPolicy;
   /** Controls Wi-Fi configuring privileges. Based on the option set, user will have either full or limited or no control in configuring Wi-Fi networks. */
-  configureWifi?: DeviceConnectivityManagementConfigureWifiEnum;
+  configureWifi?: DeviceConnectivityManagementConfigureWifiEnum | (string & {});
   /** Optional. Access Point Name (APN) policy. Configuration for Access Point Names (APNs) which may override any other APNs on the device. See OVERRIDE_APNS_ENABLED and overrideApns for details. */
   apnPolicy?: ApnPolicy;
   /** Optional. Controls whether Bluetooth sharing is allowed. */
-  bluetoothSharing?: DeviceConnectivityManagementBluetoothSharingEnum;
+  bluetoothSharing?:
+    | DeviceConnectivityManagementBluetoothSharingEnum
+    | (string & {});
   /** Controls what files and/or data can be transferred via USB. Supported only on company-owned devices. */
-  usbDataAccess?: DeviceConnectivityManagementUsbDataAccessEnum;
+  usbDataAccess?: DeviceConnectivityManagementUsbDataAccessEnum | (string & {});
   /** Optional. The global private DNS settings. */
   privateDnsSettings?: PrivateDnsSettings;
   /** Controls tethering settings. Based on the value set, the user is partially or fully disallowed from using different forms of tethering. */
-  tetheringSettings?: DeviceConnectivityManagementTetheringSettingsEnum;
+  tetheringSettings?:
+    | DeviceConnectivityManagementTetheringSettingsEnum
+    | (string & {});
   /** Optional. Wi-Fi roaming policy. */
   wifiRoamingPolicy?: WifiRoamingPolicy;
   /** Optional. Preferential network service configuration. Setting this field will override preferentialNetworkService. This can be set on both work profiles and fully managed devices on Android 13 and above. See 5G network slicing (https://developers.google.com/android/management/5g-network-slicing) guide for more details. */
   preferentialNetworkServiceSettings?: PreferentialNetworkServiceSettings;
   /** Controls configuring and using Wi-Fi direct settings. Supported on company-owned devices running Android 13 and above. */
-  wifiDirectSettings?: DeviceConnectivityManagementWifiDirectSettingsEnum;
+  wifiDirectSettings?:
+    | DeviceConnectivityManagementWifiDirectSettingsEnum
+    | (string & {});
 }
 export const DeviceConnectivityManagement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3648,7 +3725,7 @@ export const DefaultApplication = /*@__PURE__*/ S.suspend(() =>
   identifier: "DefaultApplication",
 }) as any as S.Schema<DefaultApplication>;
 
-export type DefaultApplicationList = ReadonlyArray<DefaultApplication>;
+export type DefaultApplicationList = Array<DefaultApplication>;
 export const DefaultApplicationList = /*@__PURE__*/ S.Array(
   DefaultApplication,
 ) as any as S.Schema<DefaultApplicationList>;
@@ -3662,7 +3739,9 @@ export const DefaultApplicationSettingDefaultApplicationScopesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type DefaultApplicationSettingDefaultApplicationScopesItemEnumList =
-  ReadonlyArray<DefaultApplicationSettingDefaultApplicationScopesItemEnum>;
+  Array<
+    DefaultApplicationSettingDefaultApplicationScopesItemEnum | (string & {})
+  >;
 export const DefaultApplicationSettingDefaultApplicationScopesItemEnumList =
   /*@__PURE__*/ S.Array(
     DefaultApplicationSettingDefaultApplicationScopesItemEnum,
@@ -3671,7 +3750,9 @@ export const DefaultApplicationSettingDefaultApplicationScopesItemEnumList =
 /** The default application setting for a DefaultApplicationType. */
 export interface DefaultApplicationSetting {
   /** Required. The app type to set the default application. */
-  defaultApplicationType?: DefaultApplicationSettingDefaultApplicationTypeEnum;
+  defaultApplicationType?:
+    | DefaultApplicationSettingDefaultApplicationTypeEnum
+    | (string & {});
   /** Required. The list of applications that can be set as the default app for a given type. This list must not be empty or contain duplicates. The first app in the list that is installed and qualified for the defaultApplicationType (e.g. SMS app for DEFAULT_SMS) is set as the default app. The signing key certificate fingerprint of the app on the device must also match one of the signing key certificate fingerprints obtained from Play Store or one of the entries in ApplicationPolicy.signingKeyCerts in order to be set as the default.If the defaultApplicationScopes contains SCOPE_FULLY_MANAGED or SCOPE_WORK_PROFILE, the app must have an entry in applications with installType set to a value other than BLOCKED.A NonComplianceDetail with APP_NOT_INSTALLED reason and DEFAULT_APPLICATION_SETTING_FAILED_FOR_SCOPE specific reason is reported if none of the apps in the list are installed. A NonComplianceDetail with INVALID_VALUE reason and DEFAULT_APPLICATION_SETTING_FAILED_FOR_SCOPE specific reason is reported if at least one app is installed but the policy fails to apply due to other reasons (e.g. the app is not of the right type).When applying to SCOPE_PERSONAL_PROFILE on a company-owned device with a work profile, only pre-installed system apps can be set as the default. A NonComplianceDetail with INVALID_VALUE reason and DEFAULT_APPLICATION_SETTING_FAILED_FOR_SCOPE specific reason is reported if the policy fails to apply to the personal profile. */
   defaultApplications?: DefaultApplicationList;
   /** Required. The scopes to which the policy should be applied. This list must not be empty or contain duplicates.A NonComplianceDetail with MANAGEMENT_MODE reason and DEFAULT_APPLICATION_SETTING_UNSUPPORTED_SCOPES specific reason is reported if none of the specified scopes can be applied to the management mode (e.g. a fully managed device receives a policy with only SCOPE_PERSONAL_PROFILE in the list). */
@@ -3691,8 +3772,7 @@ export const DefaultApplicationSetting = /*@__PURE__*/ S.suspend(() =>
   identifier: "DefaultApplicationSetting",
 }) as any as S.Schema<DefaultApplicationSetting>;
 
-export type DefaultApplicationSettingList =
-  ReadonlyArray<DefaultApplicationSetting>;
+export type DefaultApplicationSettingList = Array<DefaultApplicationSetting>;
 export const DefaultApplicationSettingList = /*@__PURE__*/ S.Array(
   DefaultApplicationSetting,
 ) as any as S.Schema<DefaultApplicationSettingList>;
@@ -3727,7 +3807,7 @@ export const SetupAction = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SetupAction" }) as any as S.Schema<SetupAction>;
 
-export type SetupActionList = ReadonlyArray<SetupAction>;
+export type SetupActionList = Array<SetupAction>;
 export const SetupActionList = /*@__PURE__*/ S.Array(
   SetupAction,
 ) as any as S.Schema<SetupActionList>;
@@ -3753,8 +3833,9 @@ export type PolicyWipeDataFlagsItemEnum =
   | "WIPE_ESIMS";
 export const PolicyWipeDataFlagsItemEnum = /*@__PURE__*/ S.String;
 
-export type PolicyWipeDataFlagsItemEnumList =
-  ReadonlyArray<PolicyWipeDataFlagsItemEnum>;
+export type PolicyWipeDataFlagsItemEnumList = Array<
+  PolicyWipeDataFlagsItemEnum | (string & {})
+>;
 export const PolicyWipeDataFlagsItemEnumList = /*@__PURE__*/ S.Array(
   PolicyWipeDataFlagsItemEnum,
 ) as any as S.Schema<PolicyWipeDataFlagsItemEnumList>;
@@ -3781,7 +3862,9 @@ export const WorkAccountSetupConfigAuthenticationTypeEnum =
 /** Controls the work account setup configuration, such as details of whether a Google authenticated account is required. */
 export interface WorkAccountSetupConfig {
   /** Optional. The authentication type of the user on the device. */
-  authenticationType?: WorkAccountSetupConfigAuthenticationTypeEnum;
+  authenticationType?:
+    | WorkAccountSetupConfigAuthenticationTypeEnum
+    | (string & {});
   /** Optional. The specific google work account email address to be added. This field is only relevant if authenticationType is GOOGLE_AUTHENTICATED. This must be an enterprise account and not a consumer account. Once set and a Google authenticated account is added to the device, changing this field will have no effect, and thus recommended to be set only once. */
   requiredAccountEmail?: string;
 }
@@ -3856,17 +3939,27 @@ export const CrossProfilePoliciesShowWorkContactsInPersonalProfileEnum =
 /** Controls the data from the work profile that can be accessed from the personal profile and vice versa. A NonComplianceDetail with MANAGEMENT_MODE is reported if the device does not have a work profile. */
 export interface CrossProfilePolicies {
   /** Whether text copied from one profile (personal or work) can be pasted in the other profile. */
-  crossProfileCopyPaste?: CrossProfilePoliciesCrossProfileCopyPasteEnum;
+  crossProfileCopyPaste?:
+    | CrossProfilePoliciesCrossProfileCopyPasteEnum
+    | (string & {});
   /** Whether data from one profile (personal or work) can be shared with apps in the other profile. Specifically controls simple data sharing via intents. Management of other cross-profile communication channels, such as contact search, copy/paste, or connected work & personal apps, are configured separately. */
-  crossProfileDataSharing?: CrossProfilePoliciesCrossProfileDataSharingEnum;
+  crossProfileDataSharing?:
+    | CrossProfilePoliciesCrossProfileDataSharingEnum
+    | (string & {});
   /** Optional. Controls whether personal profile apps can invoke app functions exposed by apps in the work profile. */
-  crossProfileAppFunctions?: CrossProfilePoliciesCrossProfileAppFunctionsEnum;
+  crossProfileAppFunctions?:
+    | CrossProfilePoliciesCrossProfileAppFunctionsEnum
+    | (string & {});
   /** Specifies the default behaviour for work profile widgets. If the policy does not specify work_profile_widgets for a specific application, it will behave according to the value specified here. */
-  workProfileWidgetsDefault?: CrossProfilePoliciesWorkProfileWidgetsDefaultEnum;
+  workProfileWidgetsDefault?:
+    | CrossProfilePoliciesWorkProfileWidgetsDefaultEnum
+    | (string & {});
   /** List of apps which are excluded from the ShowWorkContactsInPersonalProfile setting. For this to be set, ShowWorkContactsInPersonalProfile must be set to one of the following values: SHOW_WORK_CONTACTS_IN_PERSONAL_PROFILE_ALLOWED. In this case, these exemptions act as a blocklist. SHOW_WORK_CONTACTS_IN_PERSONAL_PROFILE_DISALLOWED. In this case, these exemptions act as an allowlist. SHOW_WORK_CONTACTS_IN_PERSONAL_PROFILE_DISALLOWED_EXCEPT_SYSTEM. In this case, these exemptions act as an allowlist, in addition to the already allowlisted system apps.Supported on Android 14 and above. A NonComplianceDetail with API_LEVEL is reported if the Android version is less than 14. */
   exemptionsToShowWorkContactsInPersonalProfile?: PackageNameList;
   /** Whether personal apps can access contacts stored in the work profile.See also exemptions_to_show_work_contacts_in_personal_profile. */
-  showWorkContactsInPersonalProfile?: CrossProfilePoliciesShowWorkContactsInPersonalProfileEnum;
+  showWorkContactsInPersonalProfile?:
+    | CrossProfilePoliciesShowWorkContactsInPersonalProfileEnum
+    | (string & {});
 }
 export const CrossProfilePolicies = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3968,8 +4061,9 @@ export type UsageLogEnabledLogTypesItemEnum =
   | "NETWORK_ACTIVITY_LOGS";
 export const UsageLogEnabledLogTypesItemEnum = /*@__PURE__*/ S.String;
 
-export type UsageLogEnabledLogTypesItemEnumList =
-  ReadonlyArray<UsageLogEnabledLogTypesItemEnum>;
+export type UsageLogEnabledLogTypesItemEnumList = Array<
+  UsageLogEnabledLogTypesItemEnum | (string & {})
+>;
 export const UsageLogEnabledLogTypesItemEnumList = /*@__PURE__*/ S.Array(
   UsageLogEnabledLogTypesItemEnum,
 ) as any as S.Schema<UsageLogEnabledLogTypesItemEnumList>;
@@ -3980,8 +4074,9 @@ export type UsageLogUploadOnCellularAllowedItemEnum =
   | "NETWORK_ACTIVITY_LOGS";
 export const UsageLogUploadOnCellularAllowedItemEnum = /*@__PURE__*/ S.String;
 
-export type UsageLogUploadOnCellularAllowedItemEnumList =
-  ReadonlyArray<UsageLogUploadOnCellularAllowedItemEnum>;
+export type UsageLogUploadOnCellularAllowedItemEnumList = Array<
+  UsageLogUploadOnCellularAllowedItemEnum | (string & {})
+>;
 export const UsageLogUploadOnCellularAllowedItemEnumList =
   /*@__PURE__*/ S.Array(
     UsageLogUploadOnCellularAllowedItemEnum,
@@ -4037,8 +4132,9 @@ export type PolicyStayOnPluggedModesItemEnum =
   | "WIRELESS";
 export const PolicyStayOnPluggedModesItemEnum = /*@__PURE__*/ S.String;
 
-export type PolicyStayOnPluggedModesItemEnumList =
-  ReadonlyArray<PolicyStayOnPluggedModesItemEnum>;
+export type PolicyStayOnPluggedModesItemEnumList = Array<
+  PolicyStayOnPluggedModesItemEnum | (string & {})
+>;
 export const PolicyStayOnPluggedModesItemEnumList = /*@__PURE__*/ S.Array(
   PolicyStayOnPluggedModesItemEnum,
 ) as any as S.Schema<PolicyStayOnPluggedModesItemEnumList>;
@@ -4100,7 +4196,7 @@ export const FreezePeriod = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "FreezePeriod" }) as any as S.Schema<FreezePeriod>;
 
-export type FreezePeriodList = ReadonlyArray<FreezePeriod>;
+export type FreezePeriodList = Array<FreezePeriod>;
 export const FreezePeriodList = /*@__PURE__*/ S.Array(
   FreezePeriod,
 ) as any as S.Schema<FreezePeriodList>;
@@ -4112,7 +4208,7 @@ export interface SystemUpdate {
   /** If the type is WINDOWED, the end of the maintenance window, measured as the number of minutes after midnight in device's local time. This value must be between 0 and 1439, inclusive. If this value is less than start_minutes, then the maintenance window spans midnight. If the maintenance window specified is smaller than 30 minutes, the actual window is extended to 30 minutes beyond the start time. */
   endMinutes?: number;
   /** The type of system update to configure. */
-  type?: SystemUpdateTypeEnum;
+  type?: SystemUpdateTypeEnum | (string & {});
   /** An annually repeating time period in which over-the-air (OTA) system updates are postponed to freeze the OS version running on a device. To prevent freezing the device indefinitely, each freeze period must be separated by at least 60 days. */
   freezePeriods?: FreezePeriodList;
 }
@@ -4137,7 +4233,7 @@ export interface PermissionGrant {
   /** The Android permission or group, e.g. android.permission.READ_CALENDAR or android.permission_group.CALENDAR. */
   permission?: string;
   /** The policy for granting the permission. */
-  policy?: PermissionGrantPolicyEnum;
+  policy?: PermissionGrantPolicyEnum | (string & {});
 }
 export const PermissionGrant = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4148,7 +4244,7 @@ export const PermissionGrant = /*@__PURE__*/ S.suspend(() =>
   identifier: "PermissionGrant",
 }) as any as S.Schema<PermissionGrant>;
 
-export type PermissionGrantList = ReadonlyArray<PermissionGrant>;
+export type PermissionGrantList = Array<PermissionGrant>;
 export const PermissionGrantList = /*@__PURE__*/ S.Array(
   PermissionGrant,
 ) as any as S.Schema<PermissionGrantList>;
@@ -4197,8 +4293,9 @@ export type ApplicationPolicyDelegatedScopesItemEnum =
   | "CERT_SELECTION";
 export const ApplicationPolicyDelegatedScopesItemEnum = /*@__PURE__*/ S.String;
 
-export type ApplicationPolicyDelegatedScopesItemEnumList =
-  ReadonlyArray<ApplicationPolicyDelegatedScopesItemEnum>;
+export type ApplicationPolicyDelegatedScopesItemEnumList = Array<
+  ApplicationPolicyDelegatedScopesItemEnum | (string & {})
+>;
 export const ApplicationPolicyDelegatedScopesItemEnumList =
   /*@__PURE__*/ S.Array(
     ApplicationPolicyDelegatedScopesItemEnum,
@@ -4226,11 +4323,15 @@ export const InstallConstraintNetworkTypeConstraintEnum =
 /** Amongst apps with InstallType set to: FORCE_INSTALLED PREINSTALLEDthis defines a set of restrictions for the app installation. At least one of the fields must be set. When multiple fields are set, then all the constraints need to be satisfied for the app to be installed. */
 export interface InstallConstraint {
   /** Optional. Charging constraint. */
-  chargingConstraint?: InstallConstraintChargingConstraintEnum;
+  chargingConstraint?: InstallConstraintChargingConstraintEnum | (string & {});
   /** Optional. Device idle constraint. */
-  deviceIdleConstraint?: InstallConstraintDeviceIdleConstraintEnum;
+  deviceIdleConstraint?:
+    | InstallConstraintDeviceIdleConstraintEnum
+    | (string & {});
   /** Optional. Network type constraint. */
-  networkTypeConstraint?: InstallConstraintNetworkTypeConstraintEnum;
+  networkTypeConstraint?:
+    | InstallConstraintNetworkTypeConstraintEnum
+    | (string & {});
 }
 export const InstallConstraint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4244,7 +4345,7 @@ export const InstallConstraint = /*@__PURE__*/ S.suspend(() =>
   identifier: "InstallConstraint",
 }) as any as S.Schema<InstallConstraint>;
 
-export type InstallConstraintList = ReadonlyArray<InstallConstraint>;
+export type InstallConstraintList = Array<InstallConstraint>;
 export const InstallConstraintList = /*@__PURE__*/ S.Array(
   InstallConstraint,
 ) as any as S.Schema<InstallConstraintList>;
@@ -4277,7 +4378,7 @@ export const RoleRoleTypeEnum = /*@__PURE__*/ S.String;
 /** Role an app can have. */
 export interface Role {
   /** Required. The type of the role an app can have. */
-  roleType?: RoleRoleTypeEnum;
+  roleType?: RoleRoleTypeEnum | (string & {});
 }
 export const Role = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4285,7 +4386,7 @@ export const Role = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Role" }) as any as S.Schema<Role>;
 
-export type RoleList = ReadonlyArray<Role>;
+export type RoleList = Array<Role>;
 export const RoleList = /*@__PURE__*/ S.Array(
   Role,
 ) as any as S.Schema<RoleList>;
@@ -4305,7 +4406,9 @@ export const CustomAppConfigUserUninstallSettingsEnum = /*@__PURE__*/ S.String;
 /** Configuration for a custom app. */
 export interface CustomAppConfig {
   /** Optional. User uninstall settings of the custom app. */
-  userUninstallSettings?: CustomAppConfigUserUninstallSettingsEnum;
+  userUninstallSettings?:
+    | CustomAppConfigUserUninstallSettingsEnum
+    | (string & {});
 }
 export const CustomAppConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4369,9 +4472,13 @@ export interface ApplicationPolicy {
   /** Optional. Amongst apps with installType set to: FORCE_INSTALLED PREINSTALLEDthis controls the relative priority of installation. A value of 0 (default) means this app has no priority over other apps. For values between 1 and 10,000, a lower value means a higher priority. Values outside of the range 0 to 10,000 inclusive are rejected. */
   installPriority?: number;
   /** The default policy for all permissions requested by the app. If specified, this overrides the policy-level default_permission_policy which applies to all apps. It does not override the permission_grants which applies to all apps. */
-  defaultPermissionPolicy?: ApplicationPolicyDefaultPermissionPolicyEnum;
+  defaultPermissionPolicy?:
+    | ApplicationPolicyDefaultPermissionPolicyEnum
+    | (string & {});
   /** Specifies whether the app is allowed networking when the VPN is not connected and alwaysOnVpnPackage.lockdownEnabled is enabled. If set to VPN_LOCKDOWN_ENFORCED, the app is not allowed networking, and if set to VPN_LOCKDOWN_EXEMPTION, the app is allowed networking. Only supported on devices running Android 10 and above. If this is not supported by the device, the device will contain a NonComplianceDetail with non_compliance_reason set to API_LEVEL and a fieldPath. If this is not applicable to the app, the device will contain a NonComplianceDetail with non_compliance_reason set to UNSUPPORTED and a fieldPath. The fieldPath is set to applications[i].alwaysOnVpnLockdownExemption, where i is the index of the package in the applications policy. */
-  alwaysOnVpnLockdownExemption?: ApplicationPolicyAlwaysOnVpnLockdownExemptionEnum;
+  alwaysOnVpnLockdownExemption?:
+    | ApplicationPolicyAlwaysOnVpnLockdownExemptionEnum
+    | (string & {});
   /** Managed configuration applied to the app. The format for the configuration is dictated by the ManagedProperty values supported by the app. Each field name in the managed configuration must match the key field of the ManagedProperty. The field value must be compatible with the type of the ManagedProperty: *type* *JSON value* BOOL true or false STRING string INTEGER number CHOICE string MULTISELECT array of strings HIDDEN string BUNDLE_ARRAY array of objects Note: string values cannot be longer than 65535 characters. */
   managedConfiguration?: DocumentMap;
   /** The package name of the app. For example, com.google.android.youtube for the YouTube app. */
@@ -4385,9 +4492,11 @@ export interface ApplicationPolicy {
   /** Optional. The constraints for installing the app. You can specify a maximum of one InstallConstraint. Multiple constraints are rejected. */
   installConstraint?: InstallConstraintList;
   /** Specifies whether the app installed in the work profile is allowed to add widgets to the home screen. */
-  workProfileWidgets?: ApplicationPolicyWorkProfileWidgetsEnum;
+  workProfileWidgets?: ApplicationPolicyWorkProfileWidgetsEnum | (string & {});
   /** Optional. ID of the preferential network the application uses. There must be a configuration for the specified network ID in preferentialNetworkServiceConfigs. If set to PREFERENTIAL_NETWORK_ID_UNSPECIFIED, the application will use the default network ID specified in defaultPreferentialNetworkId. See the documentation of defaultPreferentialNetworkId for the list of apps excluded from this defaulting. This applies on both work profiles and fully managed devices on Android 13 and above. */
-  preferentialNetworkId?: ApplicationPolicyPreferentialNetworkIdEnum;
+  preferentialNetworkId?:
+    | ApplicationPolicyPreferentialNetworkIdEnum
+    | (string & {});
   /** Whether the app is allowed to lock itself in full-screen mode. DEPRECATED. Use InstallType KIOSK or kioskCustomLauncherEnabled to configure a dedicated device. */
   lockTaskAllowed?: boolean;
   /** Explicit permission grants or denials for the app. These values override the default_permission_policy and permission_grants which apply to all apps. */
@@ -4395,21 +4504,27 @@ export interface ApplicationPolicy {
   /** Optional. Roles the app has.Apps having certain roles can be exempted from power and background execution restrictions, suspension and hibernation on Android 14 and above. The user control can also be disallowed for apps with certain roles on Android 11 and above. Refer to the documentation of each RoleType for more details.The app is notified about the roles that are set for it if the app has a notification receiver service with . The app is notified whenever its roles are updated or after the app is installed when it has nonempty list of roles. The app can use this notification to bootstrap itself after the installation. See Integrate with the AMAPI SDK (https://developers.google.com/android/management/sdk-integration) and Manage app roles (https://developers.google.com/android/management/app-roles) guides for more details on the requirements for the service.For the exemptions to be applied and the app to be notified about the roles, the signing key certificate fingerprint of the app on the device must match one of the signing key certificate fingerprints obtained from Play Store or one of the entries in ApplicationPolicy.signingKeyCerts. Otherwise, a NonComplianceDetail with APP_SIGNING_CERT_MISMATCH is reported.There must not be duplicate roles with the same roleType. Multiple apps cannot hold a role with the same roleType. A role with type ROLE_TYPE_UNSPECIFIED is not allowed. */
   roles?: RoleList;
   /** Optional. Specifies whether user control is permitted for the app. User control includes user actions like force-stopping and clearing app data. Certain types of apps have special treatment, see USER_CONTROL_SETTINGS_UNSPECIFIED and USER_CONTROL_ALLOWED for more details. */
-  userControlSettings?: ApplicationPolicyUserControlSettingsEnum;
+  userControlSettings?:
+    | ApplicationPolicyUserControlSettingsEnum
+    | (string & {});
   /** Optional. Configuration for this custom app.install_type must be set to CUSTOM for this to be set. */
   customAppConfig?: CustomAppConfig;
   /** The type of installation to perform. */
-  installType?: ApplicationPolicyInstallTypeEnum;
+  installType?: ApplicationPolicyInstallTypeEnum | (string & {});
   /** The managed configurations template for the app, saved from the managed configurations iframe. This field is ignored if managed_configuration is set. */
   managedConfigurationTemplate?: ManagedConfigurationTemplate;
   /** Optional. Whether the app is allowed to act as a credential provider on Android 14 and above. */
-  credentialProviderPolicy?: ApplicationPolicyCredentialProviderPolicyEnum;
+  credentialProviderPolicy?:
+    | ApplicationPolicyCredentialProviderPolicyEnum
+    | (string & {});
   /** The minimum version of the app that runs on the device. If set, the device attempts to update the app to at least this version code. If the app is not up-to-date, the device will contain a NonComplianceDetail with non_compliance_reason set to APP_NOT_UPDATED. The app must already be published to Google Play with a version code greater than or equal to this value. At most 20 apps may specify a minimum version code per policy. */
   minimumVersionCode?: number;
   /** Controls whether the app can communicate with itself across a device’s work and personal profiles, subject to user consent. */
-  connectedWorkAndPersonalApp?: ApplicationPolicyConnectedWorkAndPersonalAppEnum;
+  connectedWorkAndPersonalApp?:
+    | ApplicationPolicyConnectedWorkAndPersonalAppEnum
+    | (string & {});
   /** Controls the auto-update mode for the app. */
-  autoUpdateMode?: ApplicationPolicyAutoUpdateModeEnum;
+  autoUpdateMode?: ApplicationPolicyAutoUpdateModeEnum | (string & {});
   /** List of the app’s track IDs that a device belonging to the enterprise can access. If the list contains multiple track IDs, devices receive the latest version among all accessible tracks. If the list contains no track IDs, devices only have access to the app’s production track. More details about each track are available in AppTrackInfo. */
   accessibleTrackIds?: StringList;
 }
@@ -4454,7 +4569,7 @@ export const ApplicationPolicy = /*@__PURE__*/ S.suspend(() =>
   identifier: "ApplicationPolicy",
 }) as any as S.Schema<ApplicationPolicy>;
 
-export type ApplicationPolicyList = ReadonlyArray<ApplicationPolicy>;
+export type ApplicationPolicyList = Array<ApplicationPolicy>;
 export const ApplicationPolicyList = /*@__PURE__*/ S.Array(
   ApplicationPolicy,
 ) as any as S.Schema<ApplicationPolicyList>;
@@ -4478,7 +4593,7 @@ export interface Policy {
   /** If camera_access is set to any value other than CAMERA_ACCESS_UNSPECIFIED, this has no effect. Otherwise this field controls whether cameras are disabled: If true, all cameras are disabled, otherwise they are available. For fully managed devices this field applies for all apps on the device. For work profiles, this field applies only to apps in the work profile, and the camera access of apps outside the work profile is unaffected. */
   cameraDisabled?: boolean;
   /** This mode controls which apps are available to the user in the Play Store and the behavior on the device when apps are removed from the policy. */
-  playStoreMode?: PolicyPlayStoreModeEnum;
+  playStoreMode?: PolicyPlayStoreModeEnum | (string & {});
   /** Whether adding new users and profiles is disabled. For devices where managementMode is DEVICE_OWNER this field is ignored and the user is never allowed to add or remove users. */
   addUserDisabled?: boolean;
   /** Whether factory resetting from settings is disabled. */
@@ -4488,7 +4603,7 @@ export interface Policy {
   /** If present, only the input methods provided by packages in this list are permitted. If this field is present, but the list is empty, then only system input methods are permitted. */
   permittedInputMethods?: PackageNameList;
   /** Controls the use of the camera and whether the user has access to the camera access toggle. */
-  cameraAccess?: PolicyCameraAccessEnum;
+  cameraAccess?: PolicyCameraAccessEnum | (string & {});
   /** Specifies permitted accessibility services. If the field is not set, any accessibility service can be used. If the field is set, only the accessibility services in this list and the system's built-in accessibility service can be used. In particular, if the field is set to empty, only the system's built-in accessibility servicess can be used. This can be set on fully managed devices and on work profiles. When applied to a work profile, this affects both the personal profile and the work profile. */
   permittedAccessibilityServices?: PackageNameList;
   /** If true, this disables the Lock Screen (https://source.android.com/docs/core/display/multi_display/lock-screen) for primary and/or secondary displays. This policy is supported only in dedicated device management mode. */
@@ -4526,7 +4641,7 @@ export interface Policy {
   /** The device owner information to be shown on the lock screen. */
   deviceOwnerLockScreenInfo?: UserFacingMessage;
   /** Optional. Controls whether AssistContent (https://developer.android.com/reference/android/app/assist/AssistContent) is allowed to be sent to a privileged app such as an assistant app. AssistContent includes screenshots and information about an app, such as package name. This is supported on Android 15 and above. */
-  assistContentPolicy?: PolicyAssistContentPolicyEnum;
+  assistContentPolicy?: PolicyAssistContentPolicyEnum | (string & {});
   /** Covers controls for radio state such as Wi-Fi, bluetooth, and more. */
   deviceRadioState?: DeviceRadioState;
   /** Whether rebooting the device into safe boot is disabled. */
@@ -4534,7 +4649,7 @@ export interface Policy {
   /** This setting is not supported. Any value is ignored. */
   androidDevicePolicyTracks?: PolicyAndroidDevicePolicyTracksItemEnumList;
   /** The default permission policy for runtime permission requests. */
-  defaultPermissionPolicy?: PolicyDefaultPermissionPolicyEnum;
+  defaultPermissionPolicy?: PolicyDefaultPermissionPolicyEnum | (string & {});
   /** Advanced security settings. In most cases, setting these is not needed. */
   advancedSecurityOverrides?: AdvancedSecurityOverrides;
   /** Whether using NFC to beam data from apps is disabled. */
@@ -4572,11 +4687,11 @@ export interface Policy {
   /** Whether configuring bluetooth is disabled. */
   bluetoothConfigDisabled?: boolean;
   /** Whether auto date, time, and time zone are enabled on a company-owned device. If this is set, then autoTimeRequired is ignored. */
-  autoDateAndTimeZone?: PolicyAutoDateAndTimeZoneEnum;
+  autoDateAndTimeZone?: PolicyAutoDateAndTimeZoneEnum | (string & {});
   /** Whether auto time is required, which prevents the user from manually setting the date and time. If autoDateAndTimeZone is set, this field is ignored. */
   autoTimeRequired?: boolean;
   /** Whether encryption is enabled */
-  encryptionPolicy?: PolicyEncryptionPolicyEnum;
+  encryptionPolicy?: PolicyEncryptionPolicyEnum | (string & {});
   /** Whether configuring tethering and portable hotspots is disabled. If tetheringSettings is set to anything other than TETHERING_SETTINGS_UNSPECIFIED, this setting is ignored. */
   tetheringConfigDisabled?: boolean;
   /** Optional. Controls the work account setup configuration, such as details of whether a Google authenticated account is required. */
@@ -4586,13 +4701,13 @@ export interface Policy {
   /** Email addresses of device administrators for factory reset protection. When the device is factory reset, it will require one of these admins to log in with the Google account email and password to unlock the device. If no admins are specified, the device won't provide factory reset protection. */
   frpAdminEmails?: StringList;
   /** Recommended alternative: autoUpdateMode which is set per app, provides greater flexibility around update frequency.When autoUpdateMode is set to AUTO_UPDATE_POSTPONED or AUTO_UPDATE_HIGH_PRIORITY, this field has no effect.The app auto update policy, which controls when automatic app updates can be applied. */
-  appAutoUpdatePolicy?: PolicyAppAutoUpdatePolicyEnum;
+  appAutoUpdatePolicy?: PolicyAppAutoUpdatePolicyEnum | (string & {});
   /** Optional. Controls whether apps on the device for fully managed devices or in the work profile for devices with work profiles are allowed to expose app functions. */
-  appFunctions?: PolicyAppFunctionsEnum;
+  appFunctions?: PolicyAppFunctionsEnum | (string & {});
   /** Whether user uninstallation of applications is disabled. This prevents apps from being uninstalled, even those removed using applications */
   uninstallAppsDisabled?: boolean;
   /** Optional. The policy for the autofill service. */
-  autofillPolicy?: PolicyAutofillPolicyEnum;
+  autofillPolicy?: PolicyAutofillPolicyEnum | (string & {});
   /** Whether transferring files over USB is disabled. This is supported only on company-owned devices. */
   usbFileTransferDisabled?: boolean;
   /** Password requirements. The field password_requirements.require_password_unlock must not be set. DEPRECATED - Use passwordPolicies.Note:Complexity-based values of PasswordQuality, that is, COMPLEXITY_LOW, COMPLEXITY_MEDIUM, and COMPLEXITY_HIGH, cannot be used here. unified_lock_settings cannot be used here. */
@@ -4600,7 +4715,9 @@ export interface Policy {
   /** Cross-profile policies applied on the device. */
   crossProfilePolicies?: CrossProfilePolicies;
   /** Optional. Controls which apps are allowed to act as credential providers on Android 14 and above. These apps store credentials, see this (https://developer.android.com/training/sign-in/passkeys) and this (https://developer.android.com/reference/androidx/credentials/CredentialManager) for details. See also credentialProviderPolicy. */
-  credentialProviderPolicyDefault?: PolicyCredentialProviderPolicyDefaultEnum;
+  credentialProviderPolicyDefault?:
+    | PolicyCredentialProviderPolicyDefaultEnum
+    | (string & {});
   /** Whether configuring user credentials is disabled. */
   credentialsConfigDisabled?: boolean;
   /** Whether configuring mobile networks is disabled. */
@@ -4608,7 +4725,9 @@ export interface Policy {
   /** This field has no effect. */
   blockApplicationsEnabled?: boolean;
   /** Controls whether preferential network service is enabled on the work profile or on fully managed devices. For example, an organization may have an agreement with a carrier that all of the work data from its employees' devices will be sent via a network service dedicated for enterprise use. An example of a supported preferential network service is the enterprise slice on 5G networks. This policy has no effect if preferentialNetworkServiceSettings or ApplicationPolicy.preferentialNetworkId is set on devices running Android 13 or above. */
-  preferentialNetworkService?: PolicyPreferentialNetworkServiceEnum;
+  preferentialNetworkService?:
+    | PolicyPreferentialNetworkServiceEnum
+    | (string & {});
   /** Account types that can't be managed by the user. */
   accountTypesWithManagementDisabled?: StringList;
   /** Status reporting settings */
@@ -4622,15 +4741,15 @@ export interface Policy {
   /** The network-independent global HTTP proxy. Typically proxies should be configured per-network in open_network_configuration. However for unusual configurations like general internal filtering a global HTTP proxy may be useful. If the proxy is not accessible, network access may break. The global proxy is only a recommendation and some apps may ignore it. */
   recommendedGlobalProxy?: ProxyInfo;
   /** Controls the use of the microphone and whether the user has access to the microphone access toggle. This applies only on fully managed devices. */
-  microphoneAccess?: PolicyMicrophoneAccessEnum;
+  microphoneAccess?: PolicyMicrophoneAccessEnum | (string & {});
   /** Whether adding or removing accounts is disabled. */
   modifyAccountsDisabled?: boolean;
   /** The battery plugged in modes for which the device stays on. When using this setting, it is recommended to clear maximum_time_to_lock so that the device doesn't lock itself while it stays on. */
   stayOnPluggedModes?: PolicyStayOnPluggedModesItemEnumList;
   /** The degree of location detection enabled. */
-  locationMode?: PolicyLocationModeEnum;
+  locationMode?: PolicyLocationModeEnum | (string & {});
   /** Optional. Controls whether printing is allowed. This is supported on devices running Android 9 and above. . */
-  printingPolicy?: PolicyPrintingPolicyEnum;
+  printingPolicy?: PolicyPrintingPolicyEnum | (string & {});
   /** Whether creating windows besides app windows is disabled. */
   createWindowsDisabled?: boolean;
   /** Whether the user mounting physical external media is disabled. */
@@ -4666,7 +4785,9 @@ export interface Policy {
   /** Whether the network escape hatch is enabled. If a network connection can't be made at boot time, the escape hatch prompts the user to temporarily connect to a network in order to refresh the device policy. After applying policy, the temporary network will be forgotten and the device will continue booting. This prevents being unable to connect to a network if there is no suitable network in the last policy and the device boots into an app in lock task mode, or the user is otherwise unable to reach device settings.Note: Setting wifiConfigDisabled to true will override this setting under specific circumstances. Please see wifiConfigDisabled for further details. Setting configureWifi to DISALLOW_CONFIGURING_WIFI will override this setting under specific circumstances. Please see DISALLOW_CONFIGURING_WIFI for further details. */
   networkEscapeHatchEnabled?: boolean;
   /** Optional. Controls whether the enterpriseDisplayName is visible on the device (e.g. lock screen message on company-owned devices). */
-  enterpriseDisplayNameVisibility?: PolicyEnterpriseDisplayNameVisibilityEnum;
+  enterpriseDisplayNameVisibility?:
+    | PolicyEnterpriseDisplayNameVisibilityEnum
+    | (string & {});
 }
 export const Policy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4893,7 +5014,7 @@ export const Eid = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Eid" }) as any as S.Schema<Eid>;
 
-export type EidList = ReadonlyArray<Eid>;
+export type EidList = Array<Eid>;
 export const EidList = /*@__PURE__*/ S.Array(Eid) as any as S.Schema<EidList>;
 
 /** Information related to the EIDs of the device. */
@@ -5039,7 +5160,7 @@ export type WipeParamsWipeDataFlagsItemEnum =
   | "WIPE_ESIMS";
 export const WipeParamsWipeDataFlagsItemEnum = /*@__PURE__*/ S.String;
 
-export type WipeParamsWipeDataFlagsItemEnumList = ReadonlyArray<
+export type WipeParamsWipeDataFlagsItemEnumList = Array<
   WipeParamsWipeDataFlagsItemEnum | (string & {})
 >;
 export const WipeParamsWipeDataFlagsItemEnumList = /*@__PURE__*/ S.Array(
@@ -5095,7 +5216,7 @@ export type CommandResetPasswordFlagsItemEnum =
   | "LOCK_NOW";
 export const CommandResetPasswordFlagsItemEnum = /*@__PURE__*/ S.String;
 
-export type CommandResetPasswordFlagsItemEnumList = ReadonlyArray<
+export type CommandResetPasswordFlagsItemEnumList = Array<
   CommandResetPasswordFlagsItemEnum | (string & {})
 >;
 export const CommandResetPasswordFlagsItemEnumList = /*@__PURE__*/ S.Array(
@@ -5387,7 +5508,7 @@ export const ListEnterprisesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListEnterprisesRequest",
 }) as any as S.Schema<ListEnterprisesRequest>;
 
-export type EnterpriseList = ReadonlyArray<Enterprise>;
+export type EnterpriseList = Array<Enterprise>;
 export const EnterpriseList = /*@__PURE__*/ S.Array(
   Enterprise,
 ) as any as S.Schema<EnterpriseList>;
@@ -5432,7 +5553,7 @@ export const ListEnterprisesDevicesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListEnterprisesDevicesRequest",
 }) as any as S.Schema<ListEnterprisesDevicesRequest>;
 
-export type DeviceList = ReadonlyArray<Device>;
+export type DeviceList = Array<Device>;
 export const DeviceList = /*@__PURE__*/ S.Array(
   Device,
 ) as any as S.Schema<DeviceList>;
@@ -5484,7 +5605,7 @@ export const ListEnterprisesDevicesOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListEnterprisesDevicesOperationsRequest",
 }) as any as S.Schema<ListEnterprisesDevicesOperationsRequest>;
 
-export type OperationList = ReadonlyArray<Operation>;
+export type OperationList = Array<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -5533,7 +5654,7 @@ export const ListEnterprisesEnrollmentTokensRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListEnterprisesEnrollmentTokensRequest",
 }) as any as S.Schema<ListEnterprisesEnrollmentTokensRequest>;
 
-export type EnrollmentTokenList = ReadonlyArray<EnrollmentToken>;
+export type EnrollmentTokenList = Array<EnrollmentToken>;
 export const EnrollmentTokenList = /*@__PURE__*/ S.Array(
   EnrollmentToken,
 ) as any as S.Schema<EnrollmentTokenList>;
@@ -5579,7 +5700,7 @@ export const ListEnterprisesMigrationTokensRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListEnterprisesMigrationTokensRequest",
 }) as any as S.Schema<ListEnterprisesMigrationTokensRequest>;
 
-export type MigrationTokenList = ReadonlyArray<MigrationToken>;
+export type MigrationTokenList = Array<MigrationToken>;
 export const MigrationTokenList = /*@__PURE__*/ S.Array(
   MigrationToken,
 ) as any as S.Schema<MigrationTokenList>;
@@ -5624,7 +5745,7 @@ export const ListEnterprisesPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListEnterprisesPoliciesRequest",
 }) as any as S.Schema<ListEnterprisesPoliciesRequest>;
 
-export type PolicyList = ReadonlyArray<Policy>;
+export type PolicyList = Array<Policy>;
 export const PolicyList = /*@__PURE__*/ S.Array(
   Policy,
 ) as any as S.Schema<PolicyList>;
@@ -5669,7 +5790,7 @@ export const ListEnterprisesWebAppsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListEnterprisesWebAppsRequest",
 }) as any as S.Schema<ListEnterprisesWebAppsRequest>;
 
-export type WebAppList = ReadonlyArray<WebApp>;
+export type WebAppList = Array<WebApp>;
 export const WebAppList = /*@__PURE__*/ S.Array(
   WebApp,
 ) as any as S.Schema<WebAppList>;
@@ -5706,8 +5827,7 @@ export const ApplicationPolicyChange = /*@__PURE__*/ S.suspend(() =>
   identifier: "ApplicationPolicyChange",
 }) as any as S.Schema<ApplicationPolicyChange>;
 
-export type ApplicationPolicyChangeList =
-  ReadonlyArray<ApplicationPolicyChange>;
+export type ApplicationPolicyChangeList = Array<ApplicationPolicyChange>;
 export const ApplicationPolicyChangeList = /*@__PURE__*/ S.Array(
   ApplicationPolicyChange,
 ) as any as S.Schema<ApplicationPolicyChangeList>;

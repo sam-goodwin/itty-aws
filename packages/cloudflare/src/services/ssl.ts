@@ -221,7 +221,7 @@ export type CertificatePacksCreateRequestCertificateAuthority =
 export const CertificatePacksCreateRequestCertificateAuthority =
   /*@__PURE__*/ S.String;
 
-export type CertificatePacksCreateRequestHostsList = ReadonlyArray<string>;
+export type CertificatePacksCreateRequestHostsList = Array<string>;
 export const CertificatePacksCreateRequestHostsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CertificatePacksCreateRequestHostsList>;
@@ -291,7 +291,7 @@ export const CreateCertificatePackRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateCertificatePackRequest>;
 
 export type CertificatePacksCreateResponseCertificatesItemHostsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CertificatePacksCreateResponseCertificatesItemHostsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -367,13 +367,13 @@ export const CertificatePacksCreateResponseCertificatesItem =
   }) as any as S.Schema<CertificatePacksCreateResponseCertificatesItem>;
 
 export type CertificatePacksCreateResponseCertificatesList =
-  ReadonlyArray<CertificatePacksCreateResponseCertificatesItem>;
+  Array<CertificatePacksCreateResponseCertificatesItem>;
 export const CertificatePacksCreateResponseCertificatesList =
   /*@__PURE__*/ S.Array(
     CertificatePacksCreateResponseCertificatesItem,
   ) as any as S.Schema<CertificatePacksCreateResponseCertificatesList>;
 
-export type CertificatePacksCreateResponseHostsList = ReadonlyArray<string>;
+export type CertificatePacksCreateResponseHostsList = Array<string>;
 export const CertificatePacksCreateResponseHostsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CertificatePacksCreateResponseHostsList>;
@@ -421,7 +421,7 @@ export const CertificatePacksCreateResponseCertificateAuthority =
   /*@__PURE__*/ S.String;
 
 export type CertificatePacksCreateResponseDcvDelegationRecordsItemEmailsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CertificatePacksCreateResponseDcvDelegationRecordsItemEmailsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -464,7 +464,7 @@ export const CertificatePacksCreateResponseDcvDelegationRecordsItem =
   }) as any as S.Schema<CertificatePacksCreateResponseDcvDelegationRecordsItem>;
 
 export type CertificatePacksCreateResponseDcvDelegationRecordsList =
-  ReadonlyArray<CertificatePacksCreateResponseDcvDelegationRecordsItem>;
+  Array<CertificatePacksCreateResponseDcvDelegationRecordsItem>;
 export const CertificatePacksCreateResponseDcvDelegationRecordsList =
   /*@__PURE__*/ S.Array(
     CertificatePacksCreateResponseDcvDelegationRecordsItem,
@@ -484,7 +484,7 @@ export const CertificatePacksCreateResponseValidationErrorsItem =
   }) as any as S.Schema<CertificatePacksCreateResponseValidationErrorsItem>;
 
 export type CertificatePacksCreateResponseValidationErrorsList =
-  ReadonlyArray<CertificatePacksCreateResponseValidationErrorsItem>;
+  Array<CertificatePacksCreateResponseValidationErrorsItem>;
 export const CertificatePacksCreateResponseValidationErrorsList =
   /*@__PURE__*/ S.Array(
     CertificatePacksCreateResponseValidationErrorsItem,
@@ -498,7 +498,7 @@ export const CertificatePacksCreateResponseValidationMethod =
   /*@__PURE__*/ S.String;
 
 export type CertificatePacksCreateResponseValidationRecordsItemEmailsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CertificatePacksCreateResponseValidationRecordsItemEmailsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -541,7 +541,7 @@ export const CertificatePacksCreateResponseValidationRecordsItem =
   }) as any as S.Schema<CertificatePacksCreateResponseValidationRecordsItem>;
 
 export type CertificatePacksCreateResponseValidationRecordsList =
-  ReadonlyArray<CertificatePacksCreateResponseValidationRecordsItem>;
+  Array<CertificatePacksCreateResponseValidationRecordsItem>;
 export const CertificatePacksCreateResponseValidationRecordsList =
   /*@__PURE__*/ S.Array(
     CertificatePacksCreateResponseValidationRecordsItem,
@@ -723,7 +723,7 @@ export const GetCertificatePackRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetCertificatePackRequest>;
 
 export type CertificatePacksGetResponseCertificatesItemHostsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CertificatePacksGetResponseCertificatesItemHostsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -801,13 +801,13 @@ export const CertificatePacksGetResponseCertificatesItem =
   }) as any as S.Schema<CertificatePacksGetResponseCertificatesItem>;
 
 export type CertificatePacksGetResponseCertificatesList =
-  ReadonlyArray<CertificatePacksGetResponseCertificatesItem>;
+  Array<CertificatePacksGetResponseCertificatesItem>;
 export const CertificatePacksGetResponseCertificatesList =
   /*@__PURE__*/ S.Array(
     CertificatePacksGetResponseCertificatesItem,
   ) as any as S.Schema<CertificatePacksGetResponseCertificatesList>;
 
-export type CertificatePacksGetResponseHostsList = ReadonlyArray<string>;
+export type CertificatePacksGetResponseHostsList = Array<string>;
 export const CertificatePacksGetResponseHostsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CertificatePacksGetResponseHostsList>;
@@ -855,7 +855,7 @@ export const CertificatePacksGetResponseCertificateAuthority =
   /*@__PURE__*/ S.String;
 
 export type CertificatePacksGetResponseDcvDelegationRecordsItemEmailsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CertificatePacksGetResponseDcvDelegationRecordsItemEmailsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -898,7 +898,7 @@ export const CertificatePacksGetResponseDcvDelegationRecordsItem =
   }) as any as S.Schema<CertificatePacksGetResponseDcvDelegationRecordsItem>;
 
 export type CertificatePacksGetResponseDcvDelegationRecordsList =
-  ReadonlyArray<CertificatePacksGetResponseDcvDelegationRecordsItem>;
+  Array<CertificatePacksGetResponseDcvDelegationRecordsItem>;
 export const CertificatePacksGetResponseDcvDelegationRecordsList =
   /*@__PURE__*/ S.Array(
     CertificatePacksGetResponseDcvDelegationRecordsItem,
@@ -918,7 +918,7 @@ export const CertificatePacksGetResponseValidationErrorsItem =
   }) as any as S.Schema<CertificatePacksGetResponseValidationErrorsItem>;
 
 export type CertificatePacksGetResponseValidationErrorsList =
-  ReadonlyArray<CertificatePacksGetResponseValidationErrorsItem>;
+  Array<CertificatePacksGetResponseValidationErrorsItem>;
 export const CertificatePacksGetResponseValidationErrorsList =
   /*@__PURE__*/ S.Array(
     CertificatePacksGetResponseValidationErrorsItem,
@@ -932,7 +932,7 @@ export const CertificatePacksGetResponseValidationMethod =
   /*@__PURE__*/ S.String;
 
 export type CertificatePacksGetResponseValidationRecordsItemEmailsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CertificatePacksGetResponseValidationRecordsItemEmailsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -975,7 +975,7 @@ export const CertificatePacksGetResponseValidationRecordsItem =
   }) as any as S.Schema<CertificatePacksGetResponseValidationRecordsItem>;
 
 export type CertificatePacksGetResponseValidationRecordsList =
-  ReadonlyArray<CertificatePacksGetResponseValidationRecordsItem>;
+  Array<CertificatePacksGetResponseValidationRecordsItem>;
 export const CertificatePacksGetResponseValidationRecordsList =
   /*@__PURE__*/ S.Array(
     CertificatePacksGetResponseValidationRecordsItem,
@@ -1278,8 +1278,7 @@ export const VerificationGetResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "VerificationGetResultItem",
 }) as any as S.Schema<VerificationGetResultItem>;
 
-export type VerificationGetResultList =
-  ReadonlyArray<VerificationGetResultItem>;
+export type VerificationGetResultList = Array<VerificationGetResultItem>;
 export const VerificationGetResultList = /*@__PURE__*/ S.Array(
   VerificationGetResultItem,
 ) as any as S.Schema<VerificationGetResultList>;
@@ -1330,7 +1329,7 @@ export const ListCertificatePacksRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListCertificatePacksRequest>;
 
 export type CertificatePacksListResultItemCertificatesItemHostsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CertificatePacksListResultItemCertificatesItemHostsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1406,13 +1405,13 @@ export const CertificatePacksListResultItemCertificatesItem =
   }) as any as S.Schema<CertificatePacksListResultItemCertificatesItem>;
 
 export type CertificatePacksListResultItemCertificatesList =
-  ReadonlyArray<CertificatePacksListResultItemCertificatesItem>;
+  Array<CertificatePacksListResultItemCertificatesItem>;
 export const CertificatePacksListResultItemCertificatesList =
   /*@__PURE__*/ S.Array(
     CertificatePacksListResultItemCertificatesItem,
   ) as any as S.Schema<CertificatePacksListResultItemCertificatesList>;
 
-export type CertificatePacksListResultItemHostsList = ReadonlyArray<string>;
+export type CertificatePacksListResultItemHostsList = Array<string>;
 export const CertificatePacksListResultItemHostsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CertificatePacksListResultItemHostsList>;
@@ -1460,7 +1459,7 @@ export const CertificatePacksListResultItemCertificateAuthority =
   /*@__PURE__*/ S.String;
 
 export type CertificatePacksListResultItemDcvDelegationRecordsItemEmailsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CertificatePacksListResultItemDcvDelegationRecordsItemEmailsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1503,7 +1502,7 @@ export const CertificatePacksListResultItemDcvDelegationRecordsItem =
   }) as any as S.Schema<CertificatePacksListResultItemDcvDelegationRecordsItem>;
 
 export type CertificatePacksListResultItemDcvDelegationRecordsList =
-  ReadonlyArray<CertificatePacksListResultItemDcvDelegationRecordsItem>;
+  Array<CertificatePacksListResultItemDcvDelegationRecordsItem>;
 export const CertificatePacksListResultItemDcvDelegationRecordsList =
   /*@__PURE__*/ S.Array(
     CertificatePacksListResultItemDcvDelegationRecordsItem,
@@ -1523,7 +1522,7 @@ export const CertificatePacksListResultItemValidationErrorsItem =
   }) as any as S.Schema<CertificatePacksListResultItemValidationErrorsItem>;
 
 export type CertificatePacksListResultItemValidationErrorsList =
-  ReadonlyArray<CertificatePacksListResultItemValidationErrorsItem>;
+  Array<CertificatePacksListResultItemValidationErrorsItem>;
 export const CertificatePacksListResultItemValidationErrorsList =
   /*@__PURE__*/ S.Array(
     CertificatePacksListResultItemValidationErrorsItem,
@@ -1537,7 +1536,7 @@ export const CertificatePacksListResultItemValidationMethod =
   /*@__PURE__*/ S.String;
 
 export type CertificatePacksListResultItemValidationRecordsItemEmailsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CertificatePacksListResultItemValidationRecordsItemEmailsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1580,7 +1579,7 @@ export const CertificatePacksListResultItemValidationRecordsItem =
   }) as any as S.Schema<CertificatePacksListResultItemValidationRecordsItem>;
 
 export type CertificatePacksListResultItemValidationRecordsList =
-  ReadonlyArray<CertificatePacksListResultItemValidationRecordsItem>;
+  Array<CertificatePacksListResultItemValidationRecordsItem>;
 export const CertificatePacksListResultItemValidationRecordsList =
   /*@__PURE__*/ S.Array(
     CertificatePacksListResultItemValidationRecordsItem,
@@ -1665,7 +1664,7 @@ export const CertificatePacksListResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CertificatePacksListResultItem>;
 
 export type CertificatePacksListResultList =
-  ReadonlyArray<CertificatePacksListResultItem>;
+  Array<CertificatePacksListResultItem>;
 export const CertificatePacksListResultList = /*@__PURE__*/ S.Array(
   CertificatePacksListResultItem,
 ) as any as S.Schema<CertificatePacksListResultList>;
@@ -1754,7 +1753,7 @@ export const PatchCertificatePackRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PatchCertificatePackRequest>;
 
 export type CertificatePacksEditResponseCertificatesItemHostsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CertificatePacksEditResponseCertificatesItemHostsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1832,13 +1831,13 @@ export const CertificatePacksEditResponseCertificatesItem =
   }) as any as S.Schema<CertificatePacksEditResponseCertificatesItem>;
 
 export type CertificatePacksEditResponseCertificatesList =
-  ReadonlyArray<CertificatePacksEditResponseCertificatesItem>;
+  Array<CertificatePacksEditResponseCertificatesItem>;
 export const CertificatePacksEditResponseCertificatesList =
   /*@__PURE__*/ S.Array(
     CertificatePacksEditResponseCertificatesItem,
   ) as any as S.Schema<CertificatePacksEditResponseCertificatesList>;
 
-export type CertificatePacksEditResponseHostsList = ReadonlyArray<string>;
+export type CertificatePacksEditResponseHostsList = Array<string>;
 export const CertificatePacksEditResponseHostsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CertificatePacksEditResponseHostsList>;
@@ -1886,7 +1885,7 @@ export const CertificatePacksEditResponseCertificateAuthority =
   /*@__PURE__*/ S.String;
 
 export type CertificatePacksEditResponseDcvDelegationRecordsItemEmailsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CertificatePacksEditResponseDcvDelegationRecordsItemEmailsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1929,7 +1928,7 @@ export const CertificatePacksEditResponseDcvDelegationRecordsItem =
   }) as any as S.Schema<CertificatePacksEditResponseDcvDelegationRecordsItem>;
 
 export type CertificatePacksEditResponseDcvDelegationRecordsList =
-  ReadonlyArray<CertificatePacksEditResponseDcvDelegationRecordsItem>;
+  Array<CertificatePacksEditResponseDcvDelegationRecordsItem>;
 export const CertificatePacksEditResponseDcvDelegationRecordsList =
   /*@__PURE__*/ S.Array(
     CertificatePacksEditResponseDcvDelegationRecordsItem,
@@ -1949,7 +1948,7 @@ export const CertificatePacksEditResponseValidationErrorsItem =
   }) as any as S.Schema<CertificatePacksEditResponseValidationErrorsItem>;
 
 export type CertificatePacksEditResponseValidationErrorsList =
-  ReadonlyArray<CertificatePacksEditResponseValidationErrorsItem>;
+  Array<CertificatePacksEditResponseValidationErrorsItem>;
 export const CertificatePacksEditResponseValidationErrorsList =
   /*@__PURE__*/ S.Array(
     CertificatePacksEditResponseValidationErrorsItem,
@@ -1963,7 +1962,7 @@ export const CertificatePacksEditResponseValidationMethod =
   /*@__PURE__*/ S.String;
 
 export type CertificatePacksEditResponseValidationRecordsItemEmailsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CertificatePacksEditResponseValidationRecordsItemEmailsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2006,7 +2005,7 @@ export const CertificatePacksEditResponseValidationRecordsItem =
   }) as any as S.Schema<CertificatePacksEditResponseValidationRecordsItem>;
 
 export type CertificatePacksEditResponseValidationRecordsList =
-  ReadonlyArray<CertificatePacksEditResponseValidationRecordsItem>;
+  Array<CertificatePacksEditResponseValidationRecordsItem>;
 export const CertificatePacksEditResponseValidationRecordsList =
   /*@__PURE__*/ S.Array(
     CertificatePacksEditResponseValidationRecordsItem,

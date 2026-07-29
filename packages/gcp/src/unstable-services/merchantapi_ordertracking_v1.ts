@@ -144,7 +144,7 @@ export interface ShippingInfo {
   /** Optional. The latest delivery promised time. Include the year and timezone string, if available. This field is required, if one of the following fields is absent: tracking_id or carrier_name. */
   latestDeliveryPromiseTime?: DateTime;
   /** Required. The status of the shipment. */
-  shippingStatus?: ShippingInfoShippingStatusEnum;
+  shippingStatus?: ShippingInfoShippingStatusEnum | (string & {});
   /** Optional. The tracking ID of the shipment. This field is required if one of the following fields is absent: earliest_delivery_promise_time, latest_delivery_promise_time, and actual_delivery_time. */
   trackingId?: string;
   /** Optional. The time when the shipment was actually delivered. Include the year and timezone string, if available. This field is required, if one of the following fields is absent: tracking_id or carrier_name. */
@@ -170,12 +170,12 @@ export const ShippingInfo = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ShippingInfo" }) as any as S.Schema<ShippingInfo>;
 
-export type ShippingInfoList = ReadonlyArray<ShippingInfo>;
+export type ShippingInfoList = Array<ShippingInfo>;
 export const ShippingInfoList = /*@__PURE__*/ S.Array(
   ShippingInfo,
 ) as any as S.Schema<ShippingInfoList>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -211,7 +211,7 @@ export const LineItemDetails = /*@__PURE__*/ S.suspend(() =>
   identifier: "LineItemDetails",
 }) as any as S.Schema<LineItemDetails>;
 
-export type LineItemDetailsList = ReadonlyArray<LineItemDetails>;
+export type LineItemDetailsList = Array<LineItemDetails>;
 export const LineItemDetailsList = /*@__PURE__*/ S.Array(
   LineItemDetails,
 ) as any as S.Schema<LineItemDetailsList>;
@@ -235,8 +235,7 @@ export const ShipmentLineItemMapping = /*@__PURE__*/ S.suspend(() =>
   identifier: "ShipmentLineItemMapping",
 }) as any as S.Schema<ShipmentLineItemMapping>;
 
-export type ShipmentLineItemMappingList =
-  ReadonlyArray<ShipmentLineItemMapping>;
+export type ShipmentLineItemMappingList = Array<ShipmentLineItemMapping>;
 export const ShipmentLineItemMappingList = /*@__PURE__*/ S.Array(
   ShipmentLineItemMapping,
 ) as any as S.Schema<ShipmentLineItemMappingList>;

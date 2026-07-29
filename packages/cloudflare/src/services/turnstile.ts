@@ -54,7 +54,7 @@ export type WidgetsCreateRequestOrder =
   | "modified_on";
 export const WidgetsCreateRequestOrder = /*@__PURE__*/ S.String;
 
-export type WidgetsCreateRequestDomainsList = ReadonlyArray<string>;
+export type WidgetsCreateRequestDomainsList = Array<string>;
 export const WidgetsCreateRequestDomainsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<WidgetsCreateRequestDomainsList>;
@@ -142,7 +142,7 @@ export type WidgetsCreateResponseClearanceLevel =
   | "interactive";
 export const WidgetsCreateResponseClearanceLevel = /*@__PURE__*/ S.String;
 
-export type WidgetsCreateResponseDomainsList = ReadonlyArray<string>;
+export type WidgetsCreateResponseDomainsList = Array<string>;
 export const WidgetsCreateResponseDomainsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<WidgetsCreateResponseDomainsList>;
@@ -233,7 +233,7 @@ export type WidgetsDeleteResponseClearanceLevel =
   | "interactive";
 export const WidgetsDeleteResponseClearanceLevel = /*@__PURE__*/ S.String;
 
-export type WidgetsDeleteResponseDomainsList = ReadonlyArray<string>;
+export type WidgetsDeleteResponseDomainsList = Array<string>;
 export const WidgetsDeleteResponseDomainsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<WidgetsDeleteResponseDomainsList>;
@@ -324,7 +324,7 @@ export type WidgetsGetResponseClearanceLevel =
   | "interactive";
 export const WidgetsGetResponseClearanceLevel = /*@__PURE__*/ S.String;
 
-export type WidgetsGetResponseDomainsList = ReadonlyArray<string>;
+export type WidgetsGetResponseDomainsList = Array<string>;
 export const WidgetsGetResponseDomainsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<WidgetsGetResponseDomainsList>;
@@ -438,7 +438,7 @@ export type WidgetsListResultItemClearanceLevel =
   | "interactive";
 export const WidgetsListResultItemClearanceLevel = /*@__PURE__*/ S.String;
 
-export type WidgetsListResultItemDomainsList = ReadonlyArray<string>;
+export type WidgetsListResultItemDomainsList = Array<string>;
 export const WidgetsListResultItemDomainsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<WidgetsListResultItemDomainsList>;
@@ -495,7 +495,7 @@ export const WidgetsListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "WidgetsListResultItem",
 }) as any as S.Schema<WidgetsListResultItem>;
 
-export type WidgetsListResultList = ReadonlyArray<WidgetsListResultItem>;
+export type WidgetsListResultList = Array<WidgetsListResultItem>;
 export const WidgetsListResultList = /*@__PURE__*/ S.Array(
   WidgetsListResultItem,
 ) as any as S.Schema<WidgetsListResultList>;
@@ -550,7 +550,7 @@ export type WidgetsRotateSecretResponseClearanceLevel =
   | "interactive";
 export const WidgetsRotateSecretResponseClearanceLevel = /*@__PURE__*/ S.String;
 
-export type WidgetsRotateSecretResponseDomainsList = ReadonlyArray<string>;
+export type WidgetsRotateSecretResponseDomainsList = Array<string>;
 export const WidgetsRotateSecretResponseDomainsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<WidgetsRotateSecretResponseDomainsList>;
@@ -611,7 +611,7 @@ export const RotateSecretWidgetResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "RotateSecretWidgetResponse",
 }) as any as S.Schema<RotateSecretWidgetResponse>;
 
-export type WidgetsUpdateRequestDomainsList = ReadonlyArray<string>;
+export type WidgetsUpdateRequestDomainsList = Array<string>;
 export const WidgetsUpdateRequestDomainsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<WidgetsUpdateRequestDomainsList>;
@@ -687,7 +687,7 @@ export type WidgetsUpdateResponseClearanceLevel =
   | "interactive";
 export const WidgetsUpdateResponseClearanceLevel = /*@__PURE__*/ S.String;
 
-export type WidgetsUpdateResponseDomainsList = ReadonlyArray<string>;
+export type WidgetsUpdateResponseDomainsList = Array<string>;
 export const WidgetsUpdateResponseDomainsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<WidgetsUpdateResponseDomainsList>;

@@ -207,7 +207,7 @@ export const TaskChannelsFeedListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TaskChannelsFeedListRequest>;
 
 export type PaginatedChannelFeedMessageDTOListResultsList =
-  ReadonlyArray<ChannelFeedMessageDTO>;
+  Array<ChannelFeedMessageDTO>;
 export const PaginatedChannelFeedMessageDTOListResultsList =
   /*@__PURE__*/ S.Array(
     ChannelFeedMessageDTO,
@@ -254,7 +254,7 @@ export const TaskChannelsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "TaskChannelsListRequest",
 }) as any as S.Schema<TaskChannelsListRequest>;
 
-export type PaginatedChannelDTOListResultsList = ReadonlyArray<ChannelDTO>;
+export type PaginatedChannelDTOListResultsList = Array<ChannelDTO>;
 export const PaginatedChannelDTOListResultsList = /*@__PURE__*/ S.Array(
   ChannelDTO,
 ) as any as S.Schema<PaginatedChannelDTOListResultsList>;

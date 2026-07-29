@@ -560,7 +560,7 @@ export type FileHeaderInfo = "USE" | "IGNORE" | "NONE";
 export const FileHeaderInfo = /*@__PURE__*/ S.String;
 
 export interface CSVInput {
-  FileHeaderInfo?: FileHeaderInfo;
+  FileHeaderInfo?: FileHeaderInfo | (string & {});
   Comments?: string;
   QuoteEscapeCharacter?: string;
   RecordDelimiter?: string;
@@ -592,7 +592,7 @@ export type QuoteFields = "ALWAYS" | "ASNEEDED";
 export const QuoteFields = /*@__PURE__*/ S.String;
 
 export interface CSVOutput {
-  QuoteFields?: QuoteFields;
+  QuoteFields?: QuoteFields | (string & {});
   QuoteEscapeCharacter?: string;
   RecordDelimiter?: string;
   FieldDelimiter?: string;
@@ -617,7 +617,7 @@ export const OutputSerialization = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OutputSerialization>;
 export interface SelectParameters {
   InputSerialization?: InputSerialization;
-  ExpressionType?: ExpressionType;
+  ExpressionType?: ExpressionType | (string & {});
   Expression?: string;
   OutputSerialization?: OutputSerialization;
 }
@@ -635,7 +635,7 @@ export type EncryptionType = "aws:kms" | "AES256";
 export const EncryptionType = /*@__PURE__*/ S.String;
 
 export interface Encryption {
-  EncryptionType?: EncryptionType;
+  EncryptionType?: EncryptionType | (string & {});
   KMSKeyId?: string;
   KMSContext?: string;
 }
@@ -660,7 +660,7 @@ export type Type = "AmazonCustomerByEmail" | "CanonicalUser" | "Group";
 export const Type = /*@__PURE__*/ S.String;
 
 export interface Grantee {
-  Type: Type;
+  Type: Type | (string & {});
   DisplayName?: string;
   URI?: string;
   ID?: string;
@@ -685,7 +685,7 @@ export const Permission = /*@__PURE__*/ S.String;
 
 export interface Grant {
   Grantee?: Grantee;
-  Permission?: Permission;
+  Permission?: Permission | (string & {});
 }
 export const Grant = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -707,11 +707,11 @@ export interface S3Location {
   BucketName?: string;
   Prefix?: string;
   Encryption?: Encryption;
-  CannedACL?: CannedACL;
+  CannedACL?: CannedACL | (string & {});
   AccessControlList?: Grant[];
   Tagging?: { [key: string]: string | undefined };
   UserMetadata?: { [key: string]: string | undefined };
-  StorageClass?: StorageClass;
+  StorageClass?: StorageClass | (string & {});
 }
 export const S3Location = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

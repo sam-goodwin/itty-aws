@@ -126,7 +126,7 @@ export const BestPracticesListByTenantRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BestPracticesListByTenantRequest>;
 
 /** Result of the list best practice operation. */
-export type BestPracticeListValueList = ReadonlyArray<BestPractice>;
+export type BestPracticeListValueList = Array<BestPractice>;
 export const BestPracticeListValueList = /*@__PURE__*/ S.Array(
   BestPractice,
 ) as any as S.Schema<BestPracticeListValueList>;
@@ -574,7 +574,7 @@ export const ConfigurationProfileAssignment = /*@__PURE__*/ S.suspend(() =>
 
 /** Result of the list configuration profile assignment operation. */
 export type ConfigurationProfileAssignmentListValueList =
-  ReadonlyArray<ConfigurationProfileAssignment>;
+  Array<ConfigurationProfileAssignment>;
 export const ConfigurationProfileAssignmentListValueList =
   /*@__PURE__*/ S.Array(
     ConfigurationProfileAssignment,
@@ -1575,8 +1575,7 @@ export const ConfigurationProfile = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConfigurationProfile>;
 
 /** Result of the list ConfigurationProfile operation. */
-export type ConfigurationProfileListValueList =
-  ReadonlyArray<ConfigurationProfile>;
+export type ConfigurationProfileListValueList = Array<ConfigurationProfile>;
 export const ConfigurationProfileListValueList = /*@__PURE__*/ S.Array(
   ConfigurationProfile,
 ) as any as S.Schema<ConfigurationProfileListValueList>;
@@ -2098,7 +2097,7 @@ export const HCIReportsGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HCIReportsGetRequest>;
 
 /** The error details. */
-export type ErrorDetailDetailsList = ReadonlyArray<ErrorDetail>;
+export type ErrorDetailDetailsList = Array<ErrorDetail>;
 export const ErrorDetailDetailsList = /*@__PURE__*/ S.Array(
   S.suspend(() => ErrorDetail),
 ) as any as S.Schema<ErrorDetailDetailsList>;
@@ -2120,7 +2119,7 @@ export const ErrorAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ErrorAdditionalInfo>;
 
 /** The error additional info. */
-export type ErrorDetailAdditionalInfoList = ReadonlyArray<ErrorAdditionalInfo>;
+export type ErrorDetailAdditionalInfoList = Array<ErrorAdditionalInfo>;
 export const ErrorDetailAdditionalInfoList = /*@__PURE__*/ S.Array(
   ErrorAdditionalInfo,
 ) as any as S.Schema<ErrorDetailAdditionalInfoList>;
@@ -2149,14 +2148,13 @@ export const ErrorDetail = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ErrorDetail" }) as any as S.Schema<ErrorDetail>;
 
 /** The error details. */
-export type ReportResourceErrorDetailsList = ReadonlyArray<ErrorDetail>;
+export type ReportResourceErrorDetailsList = Array<ErrorDetail>;
 export const ReportResourceErrorDetailsList = /*@__PURE__*/ S.Array(
   ErrorDetail,
 ) as any as S.Schema<ReportResourceErrorDetailsList>;
 
 /** The error additional info. */
-export type ReportResourceErrorAdditionalInfoList =
-  ReadonlyArray<ErrorAdditionalInfo>;
+export type ReportResourceErrorAdditionalInfoList = Array<ErrorAdditionalInfo>;
 export const ReportResourceErrorAdditionalInfoList = /*@__PURE__*/ S.Array(
   ErrorAdditionalInfo,
 ) as any as S.Schema<ReportResourceErrorAdditionalInfoList>;
@@ -2210,22 +2208,20 @@ export const ReportResource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ReportResource" }) as any as S.Schema<ReportResource>;
 
 /** List of resources processed by the configuration profile assignment. */
-export type AssignmentReportPropertiesResourcesList =
-  ReadonlyArray<ReportResource>;
+export type AssignmentReportPropertiesResourcesList = Array<ReportResource>;
 export const AssignmentReportPropertiesResourcesList = /*@__PURE__*/ S.Array(
   ReportResource,
 ) as any as S.Schema<AssignmentReportPropertiesResourcesList>;
 
 /** The error details. */
-export type AssignmentReportPropertiesErrorDetailsList =
-  ReadonlyArray<ErrorDetail>;
+export type AssignmentReportPropertiesErrorDetailsList = Array<ErrorDetail>;
 export const AssignmentReportPropertiesErrorDetailsList = /*@__PURE__*/ S.Array(
   ErrorDetail,
 ) as any as S.Schema<AssignmentReportPropertiesErrorDetailsList>;
 
 /** The error additional info. */
 export type AssignmentReportPropertiesErrorAdditionalInfoList =
-  ReadonlyArray<ErrorAdditionalInfo>;
+  Array<ErrorAdditionalInfo>;
 export const AssignmentReportPropertiesErrorAdditionalInfoList =
   /*@__PURE__*/ S.Array(
     ErrorAdditionalInfo,
@@ -2467,7 +2463,7 @@ export const Report = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Report" }) as any as S.Schema<Report>;
 
 /** Result of the list report operation. */
-export type ReportListValueList = ReadonlyArray<Report>;
+export type ReportListValueList = Array<Report>;
 export const ReportListValueList = /*@__PURE__*/ S.Array(
   Report,
 ) as any as S.Schema<ReportListValueList>;
@@ -2683,7 +2679,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = ReadonlyArray<Operation>;
+export type OperationsListResponseValueList = Array<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;
@@ -3037,8 +3033,7 @@ export const ServicePrincipal = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServicePrincipal>;
 
 /** The list of servicePrincipals. */
-export type ServicePrincipalListResultValueList =
-  ReadonlyArray<ServicePrincipal>;
+export type ServicePrincipalListResultValueList = Array<ServicePrincipal>;
 export const ServicePrincipalListResultValueList = /*@__PURE__*/ S.Array(
   ServicePrincipal,
 ) as any as S.Schema<ServicePrincipalListResultValueList>;

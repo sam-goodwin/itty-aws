@@ -168,12 +168,12 @@ export const Feature = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Feature" }) as any as S.Schema<Feature>;
 
-export type FeatureList = ReadonlyArray<Feature>;
+export type FeatureList = Array<Feature>;
 export const FeatureList = /*@__PURE__*/ S.Array(
   Feature,
 ) as any as S.Schema<FeatureList>;
 
-export type IntegerList = ReadonlyArray<number>;
+export type IntegerList = Array<number>;
 export const IntegerList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<IntegerList>;
@@ -192,7 +192,7 @@ export const Vertex = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Vertex" }) as any as S.Schema<Vertex>;
 
-export type VertexList = ReadonlyArray<Vertex>;
+export type VertexList = Array<Vertex>;
 export const VertexList = /*@__PURE__*/ S.Array(
   Vertex,
 ) as any as S.Schema<VertexList>;
@@ -213,7 +213,7 @@ export const NormalizedVertex = /*@__PURE__*/ S.suspend(() =>
   identifier: "NormalizedVertex",
 }) as any as S.Schema<NormalizedVertex>;
 
-export type NormalizedVertexList = ReadonlyArray<NormalizedVertex>;
+export type NormalizedVertexList = Array<NormalizedVertex>;
 export const NormalizedVertexList = /*@__PURE__*/ S.Array(
   NormalizedVertex,
 ) as any as S.Schema<NormalizedVertexList>;
@@ -232,7 +232,7 @@ export const BoundingPoly = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "BoundingPoly" }) as any as S.Schema<BoundingPoly>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -288,7 +288,7 @@ export const TextDetectionParams = /*@__PURE__*/ S.suspend(() =>
   identifier: "TextDetectionParams",
 }) as any as S.Schema<TextDetectionParams>;
 
-export type DoubleList = ReadonlyArray<number>;
+export type DoubleList = Array<number>;
 export const DoubleList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<DoubleList>;
@@ -382,7 +382,7 @@ export const AnnotateFileRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "AnnotateFileRequest",
 }) as any as S.Schema<AnnotateFileRequest>;
 
-export type AnnotateFileRequestList = ReadonlyArray<AnnotateFileRequest>;
+export type AnnotateFileRequestList = Array<AnnotateFileRequest>;
 export const AnnotateFileRequestList = /*@__PURE__*/ S.Array(
   AnnotateFileRequest,
 ) as any as S.Schema<AnnotateFileRequestList>;
@@ -461,7 +461,7 @@ export const ColorInfo = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ColorInfo" }) as any as S.Schema<ColorInfo>;
 
-export type ColorInfoList = ReadonlyArray<ColorInfo>;
+export type ColorInfoList = Array<ColorInfo>;
 export const ColorInfoList = /*@__PURE__*/ S.Array(
   ColorInfo,
 ) as any as S.Schema<ColorInfoList>;
@@ -506,7 +506,7 @@ export const KeyValue = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "KeyValue" }) as any as S.Schema<KeyValue>;
 
-export type KeyValueList = ReadonlyArray<KeyValue>;
+export type KeyValueList = Array<KeyValue>;
 export const KeyValueList = /*@__PURE__*/ S.Array(
   KeyValue,
 ) as any as S.Schema<KeyValueList>;
@@ -551,7 +551,7 @@ export const Result = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Result" }) as any as S.Schema<Result>;
 
-export type ResultList = ReadonlyArray<Result>;
+export type ResultList = Array<Result>;
 export const ResultList = /*@__PURE__*/ S.Array(
   Result,
 ) as any as S.Schema<ResultList>;
@@ -578,7 +578,7 @@ export const ObjectAnnotation = /*@__PURE__*/ S.suspend(() =>
   identifier: "ObjectAnnotation",
 }) as any as S.Schema<ObjectAnnotation>;
 
-export type ObjectAnnotationList = ReadonlyArray<ObjectAnnotation>;
+export type ObjectAnnotationList = Array<ObjectAnnotation>;
 export const ObjectAnnotationList = /*@__PURE__*/ S.Array(
   ObjectAnnotation,
 ) as any as S.Schema<ObjectAnnotationList>;
@@ -600,7 +600,7 @@ export const GroupedResult = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "GroupedResult" }) as any as S.Schema<GroupedResult>;
 
-export type GroupedResultList = ReadonlyArray<GroupedResult>;
+export type GroupedResultList = Array<GroupedResult>;
 export const GroupedResultList = /*@__PURE__*/ S.Array(
   GroupedResult,
 ) as any as S.Schema<GroupedResultList>;
@@ -758,7 +758,7 @@ export const Landmark = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Landmark" }) as any as S.Schema<Landmark>;
 
-export type LandmarkList = ReadonlyArray<Landmark>;
+export type LandmarkList = Array<Landmark>;
 export const LandmarkList = /*@__PURE__*/ S.Array(
   Landmark,
 ) as any as S.Schema<LandmarkList>;
@@ -818,7 +818,7 @@ export const FaceAnnotation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "FaceAnnotation" }) as any as S.Schema<FaceAnnotation>;
 
-export type FaceAnnotationList = ReadonlyArray<FaceAnnotation>;
+export type FaceAnnotationList = Array<FaceAnnotation>;
 export const FaceAnnotationList = /*@__PURE__*/ S.Array(
   FaceAnnotation,
 ) as any as S.Schema<FaceAnnotationList>;
@@ -840,7 +840,7 @@ export const Property = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Property" }) as any as S.Schema<Property>;
 
-export type PropertyList = ReadonlyArray<Property>;
+export type PropertyList = Array<Property>;
 export const PropertyList = /*@__PURE__*/ S.Array(
   Property,
 ) as any as S.Schema<PropertyList>;
@@ -856,7 +856,7 @@ export const LocationInfo = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "LocationInfo" }) as any as S.Schema<LocationInfo>;
 
-export type LocationInfoList = ReadonlyArray<LocationInfo>;
+export type LocationInfoList = Array<LocationInfo>;
 export const LocationInfoList = /*@__PURE__*/ S.Array(
   LocationInfo,
 ) as any as S.Schema<LocationInfoList>;
@@ -898,7 +898,7 @@ export const EntityAnnotation = /*@__PURE__*/ S.suspend(() =>
   identifier: "EntityAnnotation",
 }) as any as S.Schema<EntityAnnotation>;
 
-export type EntityAnnotationList = ReadonlyArray<EntityAnnotation>;
+export type EntityAnnotationList = Array<EntityAnnotation>;
 export const EntityAnnotationList = /*@__PURE__*/ S.Array(
   EntityAnnotation,
 ) as any as S.Schema<EntityAnnotationList>;
@@ -928,8 +928,7 @@ export const LocalizedObjectAnnotation = /*@__PURE__*/ S.suspend(() =>
   identifier: "LocalizedObjectAnnotation",
 }) as any as S.Schema<LocalizedObjectAnnotation>;
 
-export type LocalizedObjectAnnotationList =
-  ReadonlyArray<LocalizedObjectAnnotation>;
+export type LocalizedObjectAnnotationList = Array<LocalizedObjectAnnotation>;
 export const LocalizedObjectAnnotationList = /*@__PURE__*/ S.Array(
   LocalizedObjectAnnotation,
 ) as any as S.Schema<LocalizedObjectAnnotationList>;
@@ -948,7 +947,7 @@ export const WebImage = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "WebImage" }) as any as S.Schema<WebImage>;
 
-export type WebImageList = ReadonlyArray<WebImage>;
+export type WebImageList = Array<WebImage>;
 export const WebImageList = /*@__PURE__*/ S.Array(
   WebImage,
 ) as any as S.Schema<WebImageList>;
@@ -967,7 +966,7 @@ export const WebLabel = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "WebLabel" }) as any as S.Schema<WebLabel>;
 
-export type WebLabelList = ReadonlyArray<WebLabel>;
+export type WebLabelList = Array<WebLabel>;
 export const WebLabelList = /*@__PURE__*/ S.Array(
   WebLabel,
 ) as any as S.Schema<WebLabelList>;
@@ -989,7 +988,7 @@ export const WebEntity = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "WebEntity" }) as any as S.Schema<WebEntity>;
 
-export type WebEntityList = ReadonlyArray<WebEntity>;
+export type WebEntityList = Array<WebEntity>;
 export const WebEntityList = /*@__PURE__*/ S.Array(
   WebEntity,
 ) as any as S.Schema<WebEntityList>;
@@ -1017,7 +1016,7 @@ export const WebPage = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "WebPage" }) as any as S.Schema<WebPage>;
 
-export type WebPageList = ReadonlyArray<WebPage>;
+export type WebPageList = Array<WebPage>;
 export const WebPageList = /*@__PURE__*/ S.Array(
   WebPage,
 ) as any as S.Schema<WebPageList>;
@@ -1064,7 +1063,7 @@ export const DetectedLanguage = /*@__PURE__*/ S.suspend(() =>
   identifier: "DetectedLanguage",
 }) as any as S.Schema<DetectedLanguage>;
 
-export type DetectedLanguageList = ReadonlyArray<DetectedLanguage>;
+export type DetectedLanguageList = Array<DetectedLanguage>;
 export const DetectedLanguageList = /*@__PURE__*/ S.Array(
   DetectedLanguage,
 ) as any as S.Schema<DetectedLanguageList>;
@@ -1126,7 +1125,7 @@ export const Vision_Symbol = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Vision_Symbol" }) as any as S.Schema<Vision_Symbol>;
 
-export type Vision_SymbolList = ReadonlyArray<Vision_Symbol>;
+export type Vision_SymbolList = Array<Vision_Symbol>;
 export const Vision_SymbolList = /*@__PURE__*/ S.Array(
   Vision_Symbol,
 ) as any as S.Schema<Vision_SymbolList>;
@@ -1151,7 +1150,7 @@ export const Word = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Word" }) as any as S.Schema<Word>;
 
-export type WordList = ReadonlyArray<Word>;
+export type WordList = Array<Word>;
 export const WordList = /*@__PURE__*/ S.Array(
   Word,
 ) as any as S.Schema<WordList>;
@@ -1176,7 +1175,7 @@ export const Paragraph = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Paragraph" }) as any as S.Schema<Paragraph>;
 
-export type ParagraphList = ReadonlyArray<Paragraph>;
+export type ParagraphList = Array<Paragraph>;
 export const ParagraphList = /*@__PURE__*/ S.Array(
   Paragraph,
 ) as any as S.Schema<ParagraphList>;
@@ -1213,7 +1212,7 @@ export const Block = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Block" }) as any as S.Schema<Block>;
 
-export type BlockList = ReadonlyArray<Block>;
+export type BlockList = Array<Block>;
 export const BlockList = /*@__PURE__*/ S.Array(
   Block,
 ) as any as S.Schema<BlockList>;
@@ -1241,7 +1240,7 @@ export const Page = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Page" }) as any as S.Schema<Page>;
 
-export type PageList = ReadonlyArray<Page>;
+export type PageList = Array<Page>;
 export const PageList = /*@__PURE__*/ S.Array(
   Page,
 ) as any as S.Schema<PageList>;
@@ -1347,7 +1346,7 @@ export const CropHint = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CropHint" }) as any as S.Schema<CropHint>;
 
-export type CropHintList = ReadonlyArray<CropHint>;
+export type CropHintList = Array<CropHint>;
 export const CropHintList = /*@__PURE__*/ S.Array(
   CropHint,
 ) as any as S.Schema<CropHintList>;
@@ -1371,7 +1370,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -1461,7 +1460,7 @@ export const AnnotateImageResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "AnnotateImageResponse",
 }) as any as S.Schema<AnnotateImageResponse>;
 
-export type AnnotateImageResponseList = ReadonlyArray<AnnotateImageResponse>;
+export type AnnotateImageResponseList = Array<AnnotateImageResponse>;
 export const AnnotateImageResponseList = /*@__PURE__*/ S.Array(
   AnnotateImageResponse,
 ) as any as S.Schema<AnnotateImageResponseList>;
@@ -1488,7 +1487,7 @@ export const AnnotateFileResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "AnnotateFileResponse",
 }) as any as S.Schema<AnnotateFileResponse>;
 
-export type AnnotateFileResponseList = ReadonlyArray<AnnotateFileResponse>;
+export type AnnotateFileResponseList = Array<AnnotateFileResponse>;
 export const AnnotateFileResponseList = /*@__PURE__*/ S.Array(
   AnnotateFileResponse,
 ) as any as S.Schema<AnnotateFileResponseList>;
@@ -1553,7 +1552,7 @@ export const AnnotateImageRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "AnnotateImageRequest",
 }) as any as S.Schema<AnnotateImageRequest>;
 
-export type AnnotateImageRequestList = ReadonlyArray<AnnotateImageRequest>;
+export type AnnotateImageRequestList = Array<AnnotateImageRequest>;
 export const AnnotateImageRequestList = /*@__PURE__*/ S.Array(
   AnnotateImageRequest,
 ) as any as S.Schema<AnnotateImageRequestList>;
@@ -1741,8 +1740,7 @@ export const AsyncAnnotateFileRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "AsyncAnnotateFileRequest",
 }) as any as S.Schema<AsyncAnnotateFileRequest>;
 
-export type AsyncAnnotateFileRequestList =
-  ReadonlyArray<AsyncAnnotateFileRequest>;
+export type AsyncAnnotateFileRequestList = Array<AsyncAnnotateFileRequest>;
 export const AsyncAnnotateFileRequestList = /*@__PURE__*/ S.Array(
   AsyncAnnotateFileRequest,
 ) as any as S.Schema<AsyncAnnotateFileRequestList>;
@@ -2034,7 +2032,7 @@ export const CreateProjectsLocationsProductSetsRequest =
     identifier: "CreateProjectsLocationsProductSetsRequest",
   }) as any as S.Schema<CreateProjectsLocationsProductSetsRequest>;
 
-export type BoundingPolyList = ReadonlyArray<BoundingPoly>;
+export type BoundingPolyList = Array<BoundingPoly>;
 export const BoundingPolyList = /*@__PURE__*/ S.Array(
   BoundingPoly,
 ) as any as S.Schema<BoundingPolyList>;
@@ -2376,7 +2374,7 @@ export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListOperationsRequest",
 }) as any as S.Schema<ListOperationsRequest>;
 
-export type OperationList = ReadonlyArray<Operation>;
+export type OperationList = Array<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -2425,7 +2423,7 @@ export const ListProjectsLocationsProductsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsProductsRequest",
 }) as any as S.Schema<ListProjectsLocationsProductsRequest>;
 
-export type ProductList = ReadonlyArray<Product>;
+export type ProductList = Array<Product>;
 export const ProductList = /*@__PURE__*/ S.Array(
   Product,
 ) as any as S.Schema<ProductList>;
@@ -2471,7 +2469,7 @@ export const ListProjectsLocationsProductSetsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsProductSetsRequest",
 }) as any as S.Schema<ListProjectsLocationsProductSetsRequest>;
 
-export type ProductSetList = ReadonlyArray<ProductSet>;
+export type ProductSetList = Array<ProductSet>;
 export const ProductSetList = /*@__PURE__*/ S.Array(
   ProductSet,
 ) as any as S.Schema<ProductSetList>;
@@ -2558,7 +2556,7 @@ export const ListProjectsLocationsProductsReferenceImagesRequest =
     identifier: "ListProjectsLocationsProductsReferenceImagesRequest",
   }) as any as S.Schema<ListProjectsLocationsProductsReferenceImagesRequest>;
 
-export type ReferenceImageList = ReadonlyArray<ReferenceImage>;
+export type ReferenceImageList = Array<ReferenceImage>;
 export const ReferenceImageList = /*@__PURE__*/ S.Array(
   ReferenceImage,
 ) as any as S.Schema<ReferenceImageList>;

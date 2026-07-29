@@ -359,7 +359,7 @@ export type AccountStatusAccountProvisioningState =
 export const AccountStatusAccountProvisioningState = /*@__PURE__*/ S.String;
 
 /** Gets or sets the details. */
-export type ErrorModelDetailsList = ReadonlyArray<ErrorModel>;
+export type ErrorModelDetailsList = Array<ErrorModel>;
 export const ErrorModelDetailsList = /*@__PURE__*/ S.Array(
   S.suspend(() => ErrorModel),
 ) as any as S.Schema<ErrorModelDetailsList>;
@@ -493,7 +493,7 @@ export interface PrivateLinkServiceConnectionState {
   /** The description. */
   description?: string;
   /** The status. */
-  status?: PrivateLinkServiceConnectionStateStatus;
+  status?: PrivateLinkServiceConnectionStateStatus | (string & {});
 }
 export const PrivateLinkServiceConnectionState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -553,7 +553,7 @@ export const PrivateEndpointConnection = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets the private endpoint connections information. */
 export type AccountPropertiesPrivateEndpointConnectionsList =
-  ReadonlyArray<PrivateEndpointConnection>;
+  Array<PrivateEndpointConnection>;
 export const AccountPropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection,
@@ -857,7 +857,7 @@ export const Account = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Account" }) as any as S.Schema<Account>;
 
 /** Collection of items of type results. */
-export type AccountListValueList = ReadonlyArray<Account>;
+export type AccountListValueList = Array<Account>;
 export const AccountListValueList = /*@__PURE__*/ S.Array(
   Account,
 ) as any as S.Schema<AccountListValueList>;
@@ -1162,7 +1162,7 @@ export const DefaultAccountsSetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DefaultAccountsSetRequest>;
 
 /** Set of features */
-export type FeaturesAccountGetRequestFeaturesList = ReadonlyArray<string>;
+export type FeaturesAccountGetRequestFeaturesList = Array<string>;
 export const FeaturesAccountGetRequestFeaturesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<FeaturesAccountGetRequestFeaturesList>;
@@ -1218,7 +1218,7 @@ export const BatchFeatureStatus = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BatchFeatureStatus>;
 
 /** Set of features */
-export type FeaturesSubscriptionGetRequestFeaturesList = ReadonlyArray<string>;
+export type FeaturesSubscriptionGetRequestFeaturesList = Array<string>;
 export const FeaturesSubscriptionGetRequestFeaturesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<FeaturesSubscriptionGetRequestFeaturesList>;
@@ -1257,7 +1257,7 @@ export interface Credentials {
   /** Identity identifier for UserAssign type. */
   identityId?: string;
   /** Identity Type. */
-  type?: CredentialsType;
+  type?: CredentialsType | (string & {});
 }
 export const Credentials = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1293,11 +1293,15 @@ export interface KafkaConfigurationProperties {
   credentials?: Credentials;
   eventHubResourceId?: string;
   /** The event hub type. */
-  eventHubType?: KafkaConfigurationPropertiesEventHubType;
+  eventHubType?: KafkaConfigurationPropertiesEventHubType | (string & {});
   /** The state of the event streaming service */
-  eventStreamingState?: KafkaConfigurationPropertiesEventStreamingState;
+  eventStreamingState?:
+    | KafkaConfigurationPropertiesEventStreamingState
+    | (string & {});
   /** The event streaming service type */
-  eventStreamingType?: KafkaConfigurationPropertiesEventStreamingType;
+  eventStreamingType?:
+    | KafkaConfigurationPropertiesEventStreamingType
+    | (string & {});
   /** Optional partition Id for notification event hub. If not set, all partitions will be leveraged. */
   eventHubPartitionId?: string;
 }
@@ -1518,7 +1522,7 @@ export const KafkaConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<KafkaConfiguration>;
 
 /** Collection of items of type results. */
-export type KafkaConfigurationListValueList = ReadonlyArray<KafkaConfiguration>;
+export type KafkaConfigurationListValueList = Array<KafkaConfiguration>;
 export const KafkaConfigurationListValueList = /*@__PURE__*/ S.Array(
   KafkaConfiguration,
 ) as any as S.Schema<KafkaConfigurationListValueList>;
@@ -1596,7 +1600,7 @@ export const OperationMetaLogSpecification = /*@__PURE__*/ S.suspend(() =>
 
 /** log specifications for the operation */
 export type OperationMetaServiceSpecificationLogSpecificationsList =
-  ReadonlyArray<OperationMetaLogSpecification>;
+  Array<OperationMetaLogSpecification>;
 export const OperationMetaServiceSpecificationLogSpecificationsList =
   /*@__PURE__*/ S.Array(
     OperationMetaLogSpecification,
@@ -1623,7 +1627,7 @@ export const DimensionProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** properties for dimension */
 export type OperationMetaMetricSpecificationDimensionsList =
-  ReadonlyArray<DimensionProperties>;
+  Array<DimensionProperties>;
 export const OperationMetaMetricSpecificationDimensionsList =
   /*@__PURE__*/ S.Array(
     DimensionProperties,
@@ -1631,7 +1635,7 @@ export const OperationMetaMetricSpecificationDimensionsList =
 
 /** supported aggregation types */
 export type OperationMetaMetricSpecificationSupportedAggregationTypesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const OperationMetaMetricSpecificationSupportedAggregationTypesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1639,7 +1643,7 @@ export const OperationMetaMetricSpecificationSupportedAggregationTypesList =
 
 /** supported time grain types */
 export type OperationMetaMetricSpecificationSupportedTimeGrainTypesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const OperationMetaMetricSpecificationSupportedTimeGrainTypesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1697,7 +1701,7 @@ export const OperationMetaMetricSpecification = /*@__PURE__*/ S.suspend(() =>
 
 /** metric specifications for the operation */
 export type OperationMetaServiceSpecificationMetricSpecificationsList =
-  ReadonlyArray<OperationMetaMetricSpecification>;
+  Array<OperationMetaMetricSpecification>;
 export const OperationMetaServiceSpecificationMetricSpecificationsList =
   /*@__PURE__*/ S.Array(
     OperationMetaMetricSpecification,
@@ -1760,7 +1764,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** Collection of items of type results. */
-export type OperationListValueList = ReadonlyArray<Operation>;
+export type OperationListValueList = Array<Operation>;
 export const OperationListValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationListValueList>;
@@ -1976,7 +1980,7 @@ export const PrivateEndpointConnectionsListByAccountRequest =
 
 /** Collection of items of type results. */
 export type PrivateEndpointConnectionListValueList =
-  ReadonlyArray<PrivateEndpointConnection>;
+  Array<PrivateEndpointConnection>;
 export const PrivateEndpointConnectionListValueList = /*@__PURE__*/ S.Array(
   PrivateEndpointConnection,
 ) as any as S.Schema<PrivateEndpointConnectionListValueList>;
@@ -2027,16 +2031,14 @@ export const PrivateLinkResourcesGetByGroupIdRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PrivateLinkResourcesGetByGroupIdRequest>;
 
 /** This translates to how many Private IPs should be created for each privately linkable resource. */
-export type PrivateLinkResourcePropertiesRequiredMembersList =
-  ReadonlyArray<string>;
+export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
 export const PrivateLinkResourcePropertiesRequiredMembersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
 
 /** The required zone names for private link resource. */
-export type PrivateLinkResourcePropertiesRequiredZoneNamesList =
-  ReadonlyArray<string>;
+export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
 export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2114,8 +2116,7 @@ export const PrivateLinkResourcesListByAccountRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PrivateLinkResourcesListByAccountRequest>;
 
 /** Collection of items of type results. */
-export type PrivateLinkResourceListValueList =
-  ReadonlyArray<PrivateLinkResource>;
+export type PrivateLinkResourceListValueList = Array<PrivateLinkResource>;
 export const PrivateLinkResourceListValueList = /*@__PURE__*/ S.Array(
   PrivateLinkResource,
 ) as any as S.Schema<PrivateLinkResourceListValueList>;
@@ -2198,7 +2199,7 @@ export const Usage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Usage" }) as any as S.Schema<Usage>;
 
 /** Collection of usage values. */
-export type UsageListValueList = ReadonlyArray<Usage>;
+export type UsageListValueList = Array<Usage>;
 export const UsageListValueList = /*@__PURE__*/ S.Array(
   Usage,
 ) as any as S.Schema<UsageListValueList>;

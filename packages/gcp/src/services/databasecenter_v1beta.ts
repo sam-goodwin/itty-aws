@@ -102,7 +102,7 @@ export const AggregateFleetV1betaRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "AggregateFleetV1betaRequest",
 }) as any as S.Schema<AggregateFleetV1betaRequest>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -146,9 +146,9 @@ export interface Product {
   /** Optional. Version of the underlying database engine. Example values: For MySQL, it could be "8.0", "5.7" etc. For Postgres, it could be "14", "15" etc. */
   version?: string;
   /** Optional. Type of specific database product. It could be CloudSQL, AlloyDB etc.. */
-  type?: ProductTypeEnum;
+  type?: ProductTypeEnum | (string & {});
   /** Optional. The specific engine that the underlying database is running. */
-  engine?: ProductEngineEnum;
+  engine?: ProductEngineEnum | (string & {});
 }
 export const Product = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -181,7 +181,7 @@ export const ResourceDetails = /*@__PURE__*/ S.suspend(() =>
   identifier: "ResourceDetails",
 }) as any as S.Schema<ResourceDetails>;
 
-export type ResourceDetailsList = ReadonlyArray<ResourceDetails>;
+export type ResourceDetailsList = Array<ResourceDetails>;
 export const ResourceDetailsList = /*@__PURE__*/ S.Array(
   ResourceDetails,
 ) as any as S.Schema<ResourceDetailsList>;
@@ -331,7 +331,7 @@ export const Dimension = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Dimension" }) as any as S.Schema<Dimension>;
 
-export type DimensionList = ReadonlyArray<Dimension>;
+export type DimensionList = Array<Dimension>;
 export const DimensionList = /*@__PURE__*/ S.Array(
   Dimension,
 ) as any as S.Schema<DimensionList>;
@@ -358,7 +358,7 @@ export const AggregateFleetRow = /*@__PURE__*/ S.suspend(() =>
   identifier: "AggregateFleetRow",
 }) as any as S.Schema<AggregateFleetRow>;
 
-export type AggregateFleetRowList = ReadonlyArray<AggregateFleetRow>;
+export type AggregateFleetRowList = Array<AggregateFleetRow>;
 export const AggregateFleetRowList = /*@__PURE__*/ S.Array(
   AggregateFleetRow,
 ) as any as S.Schema<AggregateFleetRowList>;
@@ -497,7 +497,7 @@ export type SignalTypeGroupSignalTypesItemEnum =
   | "SIGNAL_TYPE_MISSING_ENHANCED_PROTECTION";
 export const SignalTypeGroupSignalTypesItemEnum = /*@__PURE__*/ S.String;
 
-export type SignalTypeGroupSignalTypesItemEnumList = ReadonlyArray<
+export type SignalTypeGroupSignalTypesItemEnumList = Array<
   SignalTypeGroupSignalTypesItemEnum | (string & {})
 >;
 export const SignalTypeGroupSignalTypesItemEnumList = /*@__PURE__*/ S.Array(
@@ -520,7 +520,7 @@ export const SignalTypeGroup = /*@__PURE__*/ S.suspend(() =>
   identifier: "SignalTypeGroup",
 }) as any as S.Schema<SignalTypeGroup>;
 
-export type SignalTypeGroupList = ReadonlyArray<SignalTypeGroup>;
+export type SignalTypeGroupList = Array<SignalTypeGroup>;
 export const SignalTypeGroupList = /*@__PURE__*/ S.Array(
   SignalTypeGroup,
 ) as any as S.Schema<SignalTypeGroupList>;
@@ -719,7 +719,7 @@ export const IssueStats = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "IssueStats" }) as any as S.Schema<IssueStats>;
 
-export type IssueStatsList = ReadonlyArray<IssueStats>;
+export type IssueStatsList = Array<IssueStats>;
 export const IssueStatsList = /*@__PURE__*/ S.Array(
   IssueStats,
 ) as any as S.Schema<IssueStatsList>;
@@ -752,7 +752,7 @@ export const IssueGroupStats = /*@__PURE__*/ S.suspend(() =>
   identifier: "IssueGroupStats",
 }) as any as S.Schema<IssueGroupStats>;
 
-export type IssueGroupStatsList = ReadonlyArray<IssueGroupStats>;
+export type IssueGroupStatsList = Array<IssueGroupStats>;
 export const IssueGroupStatsList = /*@__PURE__*/ S.Array(
   IssueGroupStats,
 ) as any as S.Schema<IssueGroupStatsList>;
@@ -839,7 +839,7 @@ export const ResourceId = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ResourceId" }) as any as S.Schema<ResourceId>;
 
-export type ResourceIdList = ReadonlyArray<ResourceId>;
+export type ResourceIdList = Array<ResourceId>;
 export const ResourceIdList = /*@__PURE__*/ S.Array(
   ResourceId,
 ) as any as S.Schema<ResourceIdList>;
@@ -925,7 +925,7 @@ export const QueryStats = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "QueryStats" }) as any as S.Schema<QueryStats>;
 
-export type QueryStatsList = ReadonlyArray<QueryStats>;
+export type QueryStatsList = Array<QueryStats>;
 export const QueryStatsList = /*@__PURE__*/ S.Array(
   QueryStats,
 ) as any as S.Schema<QueryStatsList>;
@@ -944,7 +944,7 @@ export const QueryStatsInfo = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "QueryStatsInfo" }) as any as S.Schema<QueryStatsInfo>;
 
-export type QueryStatsInfoList = ReadonlyArray<QueryStatsInfo>;
+export type QueryStatsInfoList = Array<QueryStatsInfo>;
 export const QueryStatsInfoList = /*@__PURE__*/ S.Array(
   QueryStatsInfo,
 ) as any as S.Schema<QueryStatsInfoList>;
@@ -1011,7 +1011,7 @@ export const AggregateQueryStatsProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "AggregateQueryStatsProjectsRequest",
 }) as any as S.Schema<AggregateQueryStatsProjectsRequest>;
 
-export type ProductList = ReadonlyArray<Product>;
+export type ProductList = Array<Product>;
 export const ProductList = /*@__PURE__*/ S.Array(
   Product,
 ) as any as S.Schema<ProductList>;
@@ -1138,7 +1138,7 @@ export const SignalProductsFilters = /*@__PURE__*/ S.suspend(() =>
   identifier: "SignalProductsFilters",
 }) as any as S.Schema<SignalProductsFilters>;
 
-export type SignalProductsFiltersList = ReadonlyArray<SignalProductsFilters>;
+export type SignalProductsFiltersList = Array<SignalProductsFilters>;
 export const SignalProductsFiltersList = /*@__PURE__*/ S.Array(
   SignalProductsFilters,
 ) as any as S.Schema<SignalProductsFiltersList>;
@@ -1271,7 +1271,7 @@ export const SignalFilter = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SignalFilter" }) as any as S.Schema<SignalFilter>;
 
-export type SignalFilterList = ReadonlyArray<SignalFilter>;
+export type SignalFilterList = Array<SignalFilter>;
 export const SignalFilterList = /*@__PURE__*/ S.Array(
   SignalFilter,
 ) as any as S.Schema<SignalFilterList>;
@@ -1343,7 +1343,7 @@ export const IssueCount = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "IssueCount" }) as any as S.Schema<IssueCount>;
 
-export type IssueCountList = ReadonlyArray<IssueCount>;
+export type IssueCountList = Array<IssueCount>;
 export const IssueCountList = /*@__PURE__*/ S.Array(
   IssueCount,
 ) as any as S.Schema<IssueCountList>;
@@ -1378,7 +1378,7 @@ export const Lineage = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Lineage" }) as any as S.Schema<Lineage>;
 
-export type LineageList = ReadonlyArray<Lineage>;
+export type LineageList = Array<Lineage>;
 export const LineageList = /*@__PURE__*/ S.Array(
   Lineage,
 ) as any as S.Schema<LineageList>;
@@ -1400,7 +1400,7 @@ export const Affiliation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Affiliation" }) as any as S.Schema<Affiliation>;
 
-export type AffiliationList = ReadonlyArray<Affiliation>;
+export type AffiliationList = Array<Affiliation>;
 export const AffiliationList = /*@__PURE__*/ S.Array(
   Affiliation,
 ) as any as S.Schema<AffiliationList>;
@@ -1506,7 +1506,7 @@ export const MaintenanceInfoPossibleFailureReasonsItemEnum =
   /*@__PURE__*/ S.String;
 
 export type MaintenanceInfoPossibleFailureReasonsItemEnumList =
-  ReadonlyArray<MaintenanceInfoPossibleFailureReasonsItemEnum>;
+  Array<MaintenanceInfoPossibleFailureReasonsItemEnum>;
 export const MaintenanceInfoPossibleFailureReasonsItemEnumList =
   /*@__PURE__*/ S.Array(
     MaintenanceInfoPossibleFailureReasonsItemEnum,
@@ -1532,7 +1532,7 @@ export const ResourceMaintenanceDenySchedule = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourceMaintenanceDenySchedule>;
 
 export type ResourceMaintenanceDenyScheduleList =
-  ReadonlyArray<ResourceMaintenanceDenySchedule>;
+  Array<ResourceMaintenanceDenySchedule>;
 export const ResourceMaintenanceDenyScheduleList = /*@__PURE__*/ S.Array(
   ResourceMaintenanceDenySchedule,
 ) as any as S.Schema<ResourceMaintenanceDenyScheduleList>;
@@ -1590,7 +1590,7 @@ export const Label = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Label" }) as any as S.Schema<Label>;
 
-export type LabelList = ReadonlyArray<Label>;
+export type LabelList = Array<Label>;
 export const LabelList = /*@__PURE__*/ S.Array(
   Label,
 ) as any as S.Schema<LabelList>;
@@ -1782,7 +1782,7 @@ export type SignalSignalStatusEnum =
 export const SignalSignalStatusEnum = /*@__PURE__*/ S.String;
 
 export type ResourceMaintenanceScheduleList =
-  ReadonlyArray<ResourceMaintenanceSchedule>;
+  Array<ResourceMaintenanceSchedule>;
 export const ResourceMaintenanceScheduleList = /*@__PURE__*/ S.Array(
   ResourceMaintenanceSchedule,
 ) as any as S.Schema<ResourceMaintenanceScheduleList>;
@@ -1991,7 +1991,7 @@ export const RegulatoryStandard = /*@__PURE__*/ S.suspend(() =>
   identifier: "RegulatoryStandard",
 }) as any as S.Schema<RegulatoryStandard>;
 
-export type RegulatoryStandardList = ReadonlyArray<RegulatoryStandard>;
+export type RegulatoryStandardList = Array<RegulatoryStandard>;
 export const RegulatoryStandardList = /*@__PURE__*/ S.Array(
   RegulatoryStandard,
 ) as any as S.Schema<RegulatoryStandardList>;
@@ -2179,7 +2179,7 @@ export const AdditionalDetail = /*@__PURE__*/ S.suspend(() =>
   identifier: "AdditionalDetail",
 }) as any as S.Schema<AdditionalDetail>;
 
-export type AdditionalDetailList = ReadonlyArray<AdditionalDetail>;
+export type AdditionalDetailList = Array<AdditionalDetail>;
 export const AdditionalDetailList = /*@__PURE__*/ S.Array(
   AdditionalDetail,
 ) as any as S.Schema<AdditionalDetailList>;
@@ -2216,7 +2216,7 @@ export const Signal = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Signal" }) as any as S.Schema<Signal>;
 
-export type SignalList = ReadonlyArray<Signal>;
+export type SignalList = Array<Signal>;
 export const SignalList = /*@__PURE__*/ S.Array(
   Signal,
 ) as any as S.Schema<SignalList>;
@@ -2238,7 +2238,7 @@ export const SignalGroup = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SignalGroup" }) as any as S.Schema<SignalGroup>;
 
-export type SignalGroupList = ReadonlyArray<SignalGroup>;
+export type SignalGroupList = Array<SignalGroup>;
 export const SignalGroupList = /*@__PURE__*/ S.Array(
   SignalGroup,
 ) as any as S.Schema<SignalGroupList>;
@@ -2281,7 +2281,7 @@ export const Tag = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
 
-export type TagList = ReadonlyArray<Tag>;
+export type TagList = Array<Tag>;
 export const TagList = /*@__PURE__*/ S.Array(Tag) as any as S.Schema<TagList>;
 
 /** MachineConfig describes the configuration of a machine specific to a Database Resource. */
@@ -2371,7 +2371,7 @@ export const DatabaseResource = /*@__PURE__*/ S.suspend(() =>
   identifier: "DatabaseResource",
 }) as any as S.Schema<DatabaseResource>;
 
-export type DatabaseResourceList = ReadonlyArray<DatabaseResource>;
+export type DatabaseResourceList = Array<DatabaseResource>;
 export const DatabaseResourceList = /*@__PURE__*/ S.Array(
   DatabaseResource,
 ) as any as S.Schema<DatabaseResourceList>;
@@ -2392,7 +2392,7 @@ export const DatabaseResourceGroup = /*@__PURE__*/ S.suspend(() =>
   identifier: "DatabaseResourceGroup",
 }) as any as S.Schema<DatabaseResourceGroup>;
 
-export type DatabaseResourceGroupList = ReadonlyArray<DatabaseResourceGroup>;
+export type DatabaseResourceGroupList = Array<DatabaseResourceGroup>;
 export const DatabaseResourceGroupList = /*@__PURE__*/ S.Array(
   DatabaseResourceGroup,
 ) as any as S.Schema<DatabaseResourceGroupList>;
@@ -2481,7 +2481,7 @@ export const DatabaseResourceIssue = /*@__PURE__*/ S.suspend(() =>
   identifier: "DatabaseResourceIssue",
 }) as any as S.Schema<DatabaseResourceIssue>;
 
-export type DatabaseResourceIssueList = ReadonlyArray<DatabaseResourceIssue>;
+export type DatabaseResourceIssueList = Array<DatabaseResourceIssue>;
 export const DatabaseResourceIssueList = /*@__PURE__*/ S.Array(
   DatabaseResourceIssue,
 ) as any as S.Schema<DatabaseResourceIssueList>;

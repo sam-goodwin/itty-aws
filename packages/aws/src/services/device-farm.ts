@@ -172,8 +172,8 @@ export type RuleOperator =
 export const RuleOperator = /*@__PURE__*/ S.String;
 
 export interface Rule {
-  attribute?: DeviceAttribute;
-  operator?: RuleOperator;
+  attribute?: DeviceAttribute | (string & {});
+  operator?: RuleOperator | (string & {});
   value?: string;
 }
 export const Rule = /*@__PURE__*/ S.suspend(() =>
@@ -1901,8 +1901,8 @@ export const DeviceFilterAttribute = /*@__PURE__*/ S.String;
 export type DeviceFilterValues = string[];
 export const DeviceFilterValues = /*@__PURE__*/ S.Array(S.String);
 export interface DeviceFilter {
-  attribute: DeviceFilterAttribute;
-  operator: RuleOperator;
+  attribute: DeviceFilterAttribute | (string & {});
+  operator: RuleOperator | (string & {});
   values: string[];
 }
 export const DeviceFilter = /*@__PURE__*/ S.suspend(() =>

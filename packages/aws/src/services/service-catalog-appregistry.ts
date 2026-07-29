@@ -169,7 +169,7 @@ export type AssociationOption =
   | "SKIP_APPLICATION_TAG";
 export const AssociationOption = /*@__PURE__*/ S.String;
 
-export type Options = AssociationOption[];
+export type Options = (AssociationOption | (string & {}))[];
 export const Options = /*@__PURE__*/ S.Array(AssociationOption);
 export interface AssociateResourceRequest {
   application: string;

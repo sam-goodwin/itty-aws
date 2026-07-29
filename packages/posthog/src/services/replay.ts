@@ -37,7 +37,7 @@ export class NotFound extends T.applyErrorMatchers(
 
 /** List of session IDs to summarize (max 300) */
 export type CreateSessionSummariesIndividuallyRequestSessionIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CreateSessionSummariesIndividuallyRequestSessionIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -71,7 +71,7 @@ export const CreateSessionSummariesIndividuallyRequest =
   }) as any as S.Schema<CreateSessionSummariesIndividuallyRequest>;
 
 /** List of session IDs to summarize (max 300) */
-export type SessionSummariesSessionIdsList = ReadonlyArray<string>;
+export type SessionSummariesSessionIdsList = Array<string>;
 export const SessionSummariesSessionIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SessionSummariesSessionIdsList>;
@@ -320,7 +320,7 @@ export const SessionRecordingPlaylistsListRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<SessionRecordingPlaylistsListRequest>;
 
 export type PaginatedSessionRecordingPlaylistListOutputResultsList =
-  ReadonlyArray<SessionRecordingPlaylistOutput>;
+  Array<SessionRecordingPlaylistOutput>;
 export const PaginatedSessionRecordingPlaylistListOutputResultsList =
   /*@__PURE__*/ S.Array(
     SessionRecordingPlaylistOutput,
@@ -562,7 +562,7 @@ export const SessionRecordingPlaylistsUpdateRequest = /*@__PURE__*/ S.suspend(
 
 /** Session IDs of the recordings to delete (max 100 per call). */
 export type SessionRecordingsBulkDeleteCreateRequestSessionRecordingIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const SessionRecordingsBulkDeleteCreateRequestSessionRecordingIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -595,8 +595,7 @@ export const SessionRecordingsBulkDeleteCreateRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<SessionRecordingsBulkDeleteCreateRequest>;
 
 /** Session IDs that were found but could not be deleted. These can be retried. */
-export type SessionRecordingBulkDeleteResponseFailedIdsList =
-  ReadonlyArray<string>;
+export type SessionRecordingBulkDeleteResponseFailedIdsList = Array<string>;
 export const SessionRecordingBulkDeleteResponseFailedIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -675,12 +674,12 @@ export const SessionRecordingsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "SessionRecordingsListRequest",
 }) as any as S.Schema<SessionRecordingsListRequest>;
 
-export type SessionRecordingViewersList = ReadonlyArray<string>;
+export type SessionRecordingViewersList = Array<string>;
 export const SessionRecordingViewersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SessionRecordingViewersList>;
 
-export type MinimalPersonDistinctIdsList = ReadonlyArray<string>;
+export type MinimalPersonDistinctIdsList = Array<string>;
 export const MinimalPersonDistinctIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<MinimalPersonDistinctIdsList>;
@@ -734,7 +733,7 @@ export const SessionRecordingExternalReferencesItemMap = /*@__PURE__*/ S.Record(
 
 /** Load external references (linked issues) for this recording */
 export type SessionRecordingExternalReferencesList =
-  ReadonlyArray<SessionRecordingExternalReferencesItemMap>;
+  Array<SessionRecordingExternalReferencesItemMap>;
 export const SessionRecordingExternalReferencesList = /*@__PURE__*/ S.Array(
   SessionRecordingExternalReferencesItemMap,
 ) as any as S.Schema<SessionRecordingExternalReferencesList>;
@@ -806,8 +805,7 @@ export const SessionRecording = /*@__PURE__*/ S.suspend(() =>
   identifier: "SessionRecording",
 }) as any as S.Schema<SessionRecording>;
 
-export type PaginatedSessionRecordingListResultsList =
-  ReadonlyArray<SessionRecording>;
+export type PaginatedSessionRecordingListResultsList = Array<SessionRecording>;
 export const PaginatedSessionRecordingListResultsList = /*@__PURE__*/ S.Array(
   SessionRecording,
 ) as any as S.Schema<PaginatedSessionRecordingListResultsList>;

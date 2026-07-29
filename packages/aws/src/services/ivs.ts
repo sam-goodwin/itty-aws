@@ -423,8 +423,8 @@ export const MultitrackMaximumResolution = /*@__PURE__*/ S.String;
 
 export interface MultitrackInputConfiguration {
   enabled?: boolean;
-  policy?: MultitrackPolicy;
-  maximumResolution?: MultitrackMaximumResolution;
+  policy?: MultitrackPolicy | (string & {});
+  maximumResolution?: MultitrackMaximumResolution | (string & {});
 }
 export const MultitrackInputConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -920,7 +920,7 @@ export const ThumbnailConfigurationStorageList = /*@__PURE__*/ S.Array(
 export interface ThumbnailConfiguration {
   recordingMode?: string;
   targetIntervalSeconds?: number;
-  resolution?: ThumbnailConfigurationResolution;
+  resolution?: ThumbnailConfigurationResolution | (string & {});
   storage?: string[];
 }
 export const ThumbnailConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -942,8 +942,10 @@ export type RenditionConfigurationRendition =
   | "LOWEST_RESOLUTION";
 export const RenditionConfigurationRendition = /*@__PURE__*/ S.String;
 
-export type RenditionConfigurationRenditionList =
-  RenditionConfigurationRendition[];
+export type RenditionConfigurationRenditionList = (
+  | RenditionConfigurationRendition
+  | (string & {})
+)[];
 export const RenditionConfigurationRenditionList = /*@__PURE__*/ S.Array(
   RenditionConfigurationRendition,
 );

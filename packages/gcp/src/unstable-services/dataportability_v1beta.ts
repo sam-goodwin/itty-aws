@@ -123,7 +123,7 @@ export const CheckAccessTypeRequest_ = /*@__PURE__*/ S.suspend(() =>
   identifier: "CheckAccessTypeRequest_",
 }) as any as S.Schema<CheckAccessTypeRequest_>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;

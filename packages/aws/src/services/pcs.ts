@@ -499,7 +499,7 @@ export type SpotAllocationStrategy =
 export const SpotAllocationStrategy = /*@__PURE__*/ S.String;
 
 export interface SpotOptions {
-  allocationStrategy?: SpotAllocationStrategy;
+  allocationStrategy?: SpotAllocationStrategy | (string & {});
 }
 export const SpotOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ allocationStrategy: S.optional(SpotAllocationStrategy) }),

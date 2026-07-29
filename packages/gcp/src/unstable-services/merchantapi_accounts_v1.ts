@@ -280,9 +280,9 @@ export const HandshakeActorEnum = /*@__PURE__*/ S.String;
 /** The current status of establishing of the service. (for example, pending approval, approved, established). */
 export interface Handshake {
   /** Output only. The approval state of this handshake. */
-  approvalState?: HandshakeApprovalStateEnum;
+  approvalState?: HandshakeApprovalStateEnum | (string & {});
   /** Output only. The most recent account to modify the account service's `approval_status`. */
-  actor?: HandshakeActorEnum;
+  actor?: HandshakeActorEnum | (string & {});
 }
 export const Handshake = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -302,7 +302,7 @@ export const ProductsManagement = /*@__PURE__*/ S.suspend(() =>
 /** The `AccountService` message represents a specific service that a provider account offers to a Merchant Center account. `AccountService` defines the permissions and capabilities granted to the provider, allowing for operations such as product management or campaign management. The lifecycle of an `AccountService` involves a proposal phase, where one party suggests the service, and an approval phase, where the other party accepts or rejects it. This handshake mechanism ensures mutual consent before any access is granted. This mechanism safeguards both parties by ensuring that access rights are granted appropriately and that both the business and provider are aware of the services enabled. In scenarios where a user is an admin of both accounts, the approval can happen automatically. The mutability of a service is also managed through `AccountService`. Some services might be immutable, for example, if they were established through other systems or APIs, and you cannot alter them through this API. */
 export interface AccountService {
   /** Output only. Whether the service is mutable (e.g. through Approve / Reject RPCs). A service that was created through another system or API might be immutable. */
-  mutability?: AccountServiceMutabilityEnum;
+  mutability?: AccountServiceMutabilityEnum | (string & {});
   /** Output only. The human-readable display name of the provider account. */
   providerDisplayName?: string;
   /** Service type for UCP Checkout Management. The provider is managing the UCP Checkout capability integration for the merchant. */
@@ -362,7 +362,7 @@ export const PostalCodeRange = /*@__PURE__*/ S.suspend(() =>
   identifier: "PostalCodeRange",
 }) as any as S.Schema<PostalCodeRange>;
 
-export type PostalCodeRangeList = ReadonlyArray<PostalCodeRange>;
+export type PostalCodeRangeList = Array<PostalCodeRange>;
 export const PostalCodeRangeList = /*@__PURE__*/ S.Array(
   PostalCodeRange,
 ) as any as S.Schema<PostalCodeRangeList>;
@@ -381,7 +381,7 @@ export const PostalCodeArea = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PostalCodeArea" }) as any as S.Schema<PostalCodeArea>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -426,7 +426,7 @@ export interface RadiusArea {
   /** Required. [CLDR territory code](http://www.unicode.org/repos/cldr/tags/latest/common/main/en.xml) or the country the radius area applies to. */
   regionCode?: string;
   /** Optional. The unit of the radius. */
-  radiusUnits?: RadiusAreaRadiusUnitsEnum;
+  radiusUnits?: RadiusAreaRadiusUnitsEnum | (string & {});
 }
 export const RadiusArea = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -485,7 +485,7 @@ export const CreateRegionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateRegionRequest",
 }) as any as S.Schema<CreateRegionRequest>;
 
-export type CreateRegionRequestList = ReadonlyArray<CreateRegionRequest>;
+export type CreateRegionRequestList = Array<CreateRegionRequest>;
 export const CreateRegionRequestList = /*@__PURE__*/ S.Array(
   CreateRegionRequest,
 ) as any as S.Schema<CreateRegionRequestList>;
@@ -524,7 +524,7 @@ export const BatchCreateAccountsRegionsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "BatchCreateAccountsRegionsRequest",
 }) as any as S.Schema<BatchCreateAccountsRegionsRequest>;
 
-export type RegionList = ReadonlyArray<Region>;
+export type RegionList = Array<Region>;
 export const RegionList = /*@__PURE__*/ S.Array(
   Region,
 ) as any as S.Schema<RegionList>;
@@ -555,7 +555,7 @@ export const DeleteRegionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteRegionRequest",
 }) as any as S.Schema<DeleteRegionRequest>;
 
-export type DeleteRegionRequestList = ReadonlyArray<DeleteRegionRequest>;
+export type DeleteRegionRequestList = Array<DeleteRegionRequest>;
 export const DeleteRegionRequestList = /*@__PURE__*/ S.Array(
   DeleteRegionRequest,
 ) as any as S.Schema<DeleteRegionRequestList>;
@@ -616,7 +616,7 @@ export const UpdateRegionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateRegionRequest",
 }) as any as S.Schema<UpdateRegionRequest>;
 
-export type UpdateRegionRequestList = ReadonlyArray<UpdateRegionRequest>;
+export type UpdateRegionRequestList = Array<UpdateRegionRequest>;
 export const UpdateRegionRequestList = /*@__PURE__*/ S.Array(
   UpdateRegionRequest,
 ) as any as S.Schema<UpdateRegionRequestList>;
@@ -732,7 +732,7 @@ export interface InStock {
   /** Optional. Product landing page URI. It is only used for the review of MHLSF in-stock serving. This URI domain should match with the business's homepage. Required to be empty if the lsf_type is GHLSF, and required when the lsf_type is MHLSF_FULL or MHLSF_BASIC. */
   uri?: string;
   /** Output only. The state of the in-stock serving. */
-  state?: InStockStateEnum;
+  state?: InStockStateEnum | (string & {});
 }
 export const InStock = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -754,7 +754,7 @@ export interface LfpLink {
   /** Required. The resource name of the LFP provider. Format: `lfpProviders/{lfp_provider}` */
   lfpProvider?: string;
   /** Output only. The state of the LFP link. */
-  state?: LfpLinkStateEnum;
+  state?: LfpLinkStateEnum | (string & {});
   /** Required. The account ID by which this merchant is known to the LFP provider. */
   externalAccountId?: string;
 }
@@ -786,11 +786,11 @@ export const InventoryVerificationContactStateEnum = /*@__PURE__*/ S.String;
 /** Collection of information related to [inventory verification](https://support.google.com/merchants/answer/14684499?ref_topic=15145634&sjid=6892280366904591178-NC). */
 export interface InventoryVerification {
   /** Output only. The state of the inventory verification process. */
-  state?: InventoryVerificationStateEnum;
+  state?: InventoryVerificationStateEnum | (string & {});
   /** Required. The name of the contact for the inventory verification process. */
   contact?: string;
   /** Output only. The state of the contact verification. */
-  contactState?: InventoryVerificationContactStateEnum;
+  contactState?: InventoryVerificationContactStateEnum | (string & {});
   /** Required. The email address of the contact for the inventory verification process. */
   contactEmail?: string;
 }
@@ -818,7 +818,7 @@ export interface Pickup {
   /** Required. Pickup product page URI. It is only used for the review of pickup serving. This URI domain should match with the business's homepage. */
   uri?: string;
   /** Output only. The state of the pickup serving. */
-  state?: PickupStateEnum;
+  state?: PickupStateEnum | (string & {});
 }
 export const Pickup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -840,7 +840,7 @@ export interface OnDisplayToOrder {
   /** Required. The on display to order (ODO) policy URI. */
   uri?: string;
   /** Output only. The state of the URI. */
-  state?: OnDisplayToOrderStateEnum;
+  state?: OnDisplayToOrderStateEnum | (string & {});
 }
 export const OnDisplayToOrder = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -871,7 +871,7 @@ export interface About {
   /** Required. The about page URI. */
   uri?: string;
   /** Output only. The state of the URI. */
-  state?: AboutStateEnum;
+  state?: AboutStateEnum | (string & {});
 }
 export const About = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -897,7 +897,7 @@ export interface OmnichannelSetting {
   /** Identifier. The resource name of the omnichannel setting. Format: `accounts/{account}/omnichannelSettings/{omnichannel_setting}` */
   name?: string;
   /** Required. The Local Store Front type for this country. */
-  lsfType?: OmnichannelSettingLsfTypeEnum;
+  lsfType?: OmnichannelSettingLsfTypeEnum | (string & {});
   /** Optional. The about page URI and state for this country. */
   about?: About;
 }
@@ -991,7 +991,7 @@ export const SeasonalOverride = /*@__PURE__*/ S.suspend(() =>
   identifier: "SeasonalOverride",
 }) as any as S.Schema<SeasonalOverride>;
 
-export type SeasonalOverrideList = ReadonlyArray<SeasonalOverride>;
+export type SeasonalOverrideList = Array<SeasonalOverride>;
 export const SeasonalOverrideList = /*@__PURE__*/ S.Array(
   SeasonalOverride,
 ) as any as S.Schema<SeasonalOverrideList>;
@@ -1008,7 +1008,7 @@ export interface Policy {
   /** The number of days items can be returned after delivery, where one day is defined as 24 hours after the delivery timestamp. Required for `NUMBER_OF_DAYS_AFTER_DELIVERY` returns. */
   days?: string;
   /** Policy type. */
-  type?: PolicyTypeEnum;
+  type?: PolicyTypeEnum | (string & {});
 }
 export const Policy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1031,8 +1031,9 @@ export type OnlineReturnPolicyReturnMethodsItemEnum =
   | "AT_A_KIOSK";
 export const OnlineReturnPolicyReturnMethodsItemEnum = /*@__PURE__*/ S.String;
 
-export type OnlineReturnPolicyReturnMethodsItemEnumList =
-  ReadonlyArray<OnlineReturnPolicyReturnMethodsItemEnum>;
+export type OnlineReturnPolicyReturnMethodsItemEnumList = Array<
+  OnlineReturnPolicyReturnMethodsItemEnum | (string & {})
+>;
 export const OnlineReturnPolicyReturnMethodsItemEnumList =
   /*@__PURE__*/ S.Array(
     OnlineReturnPolicyReturnMethodsItemEnum,
@@ -1044,8 +1045,9 @@ export type OnlineReturnPolicyItemConditionsItemEnum =
   | "USED";
 export const OnlineReturnPolicyItemConditionsItemEnum = /*@__PURE__*/ S.String;
 
-export type OnlineReturnPolicyItemConditionsItemEnumList =
-  ReadonlyArray<OnlineReturnPolicyItemConditionsItemEnum>;
+export type OnlineReturnPolicyItemConditionsItemEnumList = Array<
+  OnlineReturnPolicyItemConditionsItemEnum | (string & {})
+>;
 export const OnlineReturnPolicyItemConditionsItemEnumList =
   /*@__PURE__*/ S.Array(
     OnlineReturnPolicyItemConditionsItemEnum,
@@ -1060,7 +1062,7 @@ export const ReturnShippingFeeTypeEnum = /*@__PURE__*/ S.String;
 /** The return shipping fee. This can either be a fixed fee or a boolean to indicate that the customer pays the actual shipping cost. */
 export interface ReturnShippingFee {
   /** Required. Type of return shipping fee. */
-  type?: ReturnShippingFeeTypeEnum;
+  type?: ReturnShippingFeeTypeEnum | (string & {});
   /** Fixed return shipping fee amount. This value is only applicable when type is `FIXED`. We will treat the return shipping fee as free if type is `FIXED` and this value is not set. */
   fixedFee?: Price;
 }
@@ -1092,7 +1094,7 @@ export interface OnlineReturnPolicy {
   /** Identifier. The name of the `OnlineReturnPolicy` resource. Format: `accounts/{account}/onlineReturnPolicies/{return_policy}` */
   name?: string;
   /** Optional. The field specifies the return label source. */
-  returnLabelSource?: OnlineReturnPolicyReturnLabelSourceEnum;
+  returnLabelSource?: OnlineReturnPolicyReturnLabelSourceEnum | (string & {});
   /** Optional. The return methods of how customers can return an item. This value is required to not be empty unless the type of return policy is noReturns. */
   returnMethods?: OnlineReturnPolicyReturnMethodsItemEnumList;
   /** Optional. The item conditions accepted for returns must not be empty unless the type of return policy is 'noReturns'. */
@@ -1188,8 +1190,9 @@ export type CheckoutSettingsEligibleDestinationsItemEnum =
 export const CheckoutSettingsEligibleDestinationsItemEnum =
   /*@__PURE__*/ S.String;
 
-export type CheckoutSettingsEligibleDestinationsItemEnumList =
-  ReadonlyArray<CheckoutSettingsEligibleDestinationsItemEnum>;
+export type CheckoutSettingsEligibleDestinationsItemEnumList = Array<
+  CheckoutSettingsEligibleDestinationsItemEnum | (string & {})
+>;
 export const CheckoutSettingsEligibleDestinationsItemEnumList =
   /*@__PURE__*/ S.Array(
     CheckoutSettingsEligibleDestinationsItemEnum,
@@ -1224,17 +1227,21 @@ export interface CheckoutSettings {
   /** URI settings for cart or checkout URL. */
   uriSettings?: UriSettings;
   /** Output only. Reflects the merchant enrollment state in `Checkout` program. */
-  enrollmentState?: CheckoutSettingsEnrollmentStateEnum;
+  enrollmentState?: CheckoutSettingsEnrollmentStateEnum | (string & {});
   /** Optional. Required for the create operation. The destinations (also known as [Marketing methods](https://support.google.com/merchants/answer/15130232)) to which the checkout program applies. Valid destination values are `SHOPPING_ADS` and `FREE_LISTINGS`. */
   eligibleDestinations?: CheckoutSettingsEligibleDestinationsItemEnumList;
   /** Identifier. The resource name of the program configuration settings. Format: `accounts/{account}/programs/{program}/checkoutSettings` */
   name?: string;
   /** Output only. Reflects the merchant review state in `Checkout` program. This is set based on the data quality reviews of the URL provided by the merchant. A merchant with enrollment state as `ENROLLED` can be in the following review states: `IN_REVIEW`, `APPROVED` or `DISAPPROVED`. A merchant must be in an `enrollment_state` of `ENROLLED` before a review can begin for the merchant.For more details, check the help center doc. */
-  reviewState?: CheckoutSettingsReviewStateEnum;
+  reviewState?: CheckoutSettingsReviewStateEnum | (string & {});
   /** Output only. The effective value of enrollment_state for a given merchant ID. If account level settings are present then this value will be a copy of the account level settings. Otherwise, it will have the value of the parent account (for only marketplace sellers). */
-  effectiveEnrollmentState?: CheckoutSettingsEffectiveEnrollmentStateEnum;
+  effectiveEnrollmentState?:
+    | CheckoutSettingsEffectiveEnrollmentStateEnum
+    | (string & {});
   /** Output only. The effective value of `review_state` for a given merchant ID. If account level settings are present then this value will be a copy of the account level settings. Otherwise, it will have the value of the parent account (for only marketplace sellers). */
-  effectiveReviewState?: CheckoutSettingsEffectiveReviewStateEnum;
+  effectiveReviewState?:
+    | CheckoutSettingsEffectiveReviewStateEnum
+    | (string & {});
 }
 export const CheckoutSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1310,8 +1317,9 @@ export type UserAccessRightsItemEnum =
   | "API_DEVELOPER";
 export const UserAccessRightsItemEnum = /*@__PURE__*/ S.String;
 
-export type UserAccessRightsItemEnumList =
-  ReadonlyArray<UserAccessRightsItemEnum>;
+export type UserAccessRightsItemEnumList = Array<
+  UserAccessRightsItemEnum | (string & {})
+>;
 export const UserAccessRightsItemEnumList = /*@__PURE__*/ S.Array(
   UserAccessRightsItemEnum,
 ) as any as S.Schema<UserAccessRightsItemEnumList>;
@@ -1326,7 +1334,7 @@ export interface User {
   /** Required. The [access rights](https://support.google.com/merchants/answer/12160472?sjid=6789834943175119429-EU#accesstypes) the user has. */
   accessRights?: UserAccessRightsItemEnumList;
   /** Output only. The state of the user. */
-  state?: UserStateEnum;
+  state?: UserStateEnum | (string & {});
 }
 export const User = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1444,7 +1452,7 @@ export const AddUser = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AddUser" }) as any as S.Schema<AddUser>;
 
-export type AddUserList = ReadonlyArray<AddUser>;
+export type AddUserList = Array<AddUser>;
 export const AddUserList = /*@__PURE__*/ S.Array(
   AddUser,
 ) as any as S.Schema<AddUserList>;
@@ -1480,7 +1488,7 @@ export const AddAccountService = /*@__PURE__*/ S.suspend(() =>
   identifier: "AddAccountService",
 }) as any as S.Schema<AddAccountService>;
 
-export type AddAccountServiceList = ReadonlyArray<AddAccountService>;
+export type AddAccountServiceList = Array<AddAccountService>;
 export const AddAccountServiceList = /*@__PURE__*/ S.Array(
   AddAccountService,
 ) as any as S.Schema<AddAccountServiceList>;
@@ -1501,8 +1509,7 @@ export const SetAliasForRelationship = /*@__PURE__*/ S.suspend(() =>
   identifier: "SetAliasForRelationship",
 }) as any as S.Schema<SetAliasForRelationship>;
 
-export type SetAliasForRelationshipList =
-  ReadonlyArray<SetAliasForRelationship>;
+export type SetAliasForRelationshipList = Array<SetAliasForRelationship>;
 export const SetAliasForRelationshipList = /*@__PURE__*/ S.Array(
   SetAliasForRelationship,
 ) as any as S.Schema<SetAliasForRelationshipList>;
@@ -1716,7 +1723,7 @@ export const Requirement = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Requirement" }) as any as S.Schema<Requirement>;
 
-export type RequirementList = ReadonlyArray<Requirement>;
+export type RequirementList = Array<Requirement>;
 export const RequirementList = /*@__PURE__*/ S.Array(
   Requirement,
 ) as any as S.Schema<RequirementList>;
@@ -1815,7 +1822,7 @@ export const LfpProvider = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "LfpProvider" }) as any as S.Schema<LfpProvider>;
 
-export type LfpProviderList = ReadonlyArray<LfpProvider>;
+export type LfpProviderList = Array<LfpProvider>;
 export const LfpProviderList = /*@__PURE__*/ S.Array(
   LfpProvider,
 ) as any as S.Schema<LfpProviderList>;
@@ -2257,7 +2264,9 @@ export const IdentityAttributeIdentityDeclarationEnum = /*@__PURE__*/ S.String;
 /** All information related to an identity attribute. */
 export interface IdentityAttribute {
   /** Required. The declaration of identity for this attribute. */
-  identityDeclaration?: IdentityAttributeIdentityDeclarationEnum;
+  identityDeclaration?:
+    | IdentityAttributeIdentityDeclarationEnum
+    | (string & {});
 }
 export const IdentityAttribute = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2272,7 +2281,7 @@ export interface BusinessIdentity {
   /** Identifier. The resource name of the business identity. Format: `accounts/{account}/businessIdentity` */
   name?: string;
   /** Required. Whether the identity attributes may be used for promotions. */
-  promotionsConsent?: BusinessIdentityPromotionsConsentEnum;
+  promotionsConsent?: BusinessIdentityPromotionsConsentEnum | (string & {});
   /** Optional. Specifies whether the business identifies itself as being veteran-owned. This optional field will only be available for businesses with a business country set to `US`. It is also not applicable for marketplaces or marketplace sellers. */
   veteranOwned?: IdentityAttribute;
   /** Optional. Specifies whether the business identifies itself as a small business. This optional field will only be available for businesses with a business country set to `US`. It is also not applicable for marketplaces. */
@@ -2417,7 +2426,9 @@ export const PostalAddress = /*@__PURE__*/ S.suspend(() =>
 /** The `BusinessInfo` message contains essential information about a business. This message captures key business details such as physical address, customer service contacts, and region-specific identifiers. */
 export interface BusinessInfo {
   /** Output only. The phone verification state of the business. */
-  phoneVerificationState?: BusinessInfoPhoneVerificationStateEnum;
+  phoneVerificationState?:
+    | BusinessInfoPhoneVerificationStateEnum
+    | (string & {});
   /** Optional. The 10-digit [Korean business registration number](https://support.google.com/merchants/answer/9037766) separated with dashes in the format: XXX-XX-XXXXX. */
   koreanBusinessRegistrationNumber?: string;
   /** Optional. The customer service of the business. */
@@ -2525,7 +2536,7 @@ export interface EmailPreferences {
   /** Identifier. The name of the EmailPreferences. The endpoint is only supported for the authenticated user. */
   name?: string;
   /** Optional. Updates on new features, tips and best practices. */
-  newsAndTips?: EmailPreferencesNewsAndTipsEnum;
+  newsAndTips?: EmailPreferencesNewsAndTipsEnum | (string & {});
 }
 export const EmailPreferences = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2584,8 +2595,9 @@ export type BusinessDayConfigBusinessDaysItemEnum =
   | "SUNDAY";
 export const BusinessDayConfigBusinessDaysItemEnum = /*@__PURE__*/ S.String;
 
-export type BusinessDayConfigBusinessDaysItemEnumList =
-  ReadonlyArray<BusinessDayConfigBusinessDaysItemEnum>;
+export type BusinessDayConfigBusinessDaysItemEnumList = Array<
+  BusinessDayConfigBusinessDaysItemEnum | (string & {})
+>;
 export const BusinessDayConfigBusinessDaysItemEnumList = /*@__PURE__*/ S.Array(
   BusinessDayConfigBusinessDaysItemEnum,
 ) as any as S.Schema<BusinessDayConfigBusinessDaysItemEnumList>;
@@ -2665,7 +2677,7 @@ export const Warehouse = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Warehouse" }) as any as S.Schema<Warehouse>;
 
-export type WarehouseList = ReadonlyArray<Warehouse>;
+export type WarehouseList = Array<Warehouse>;
 export const WarehouseList = /*@__PURE__*/ S.Array(
   Warehouse,
 ) as any as S.Schema<WarehouseList>;
@@ -2686,7 +2698,7 @@ export const StoreCodeSetWithMov = /*@__PURE__*/ S.suspend(() =>
   identifier: "StoreCodeSetWithMov",
 }) as any as S.Schema<StoreCodeSetWithMov>;
 
-export type StoreCodeSetWithMovList = ReadonlyArray<StoreCodeSetWithMov>;
+export type StoreCodeSetWithMovList = Array<StoreCodeSetWithMov>;
 export const StoreCodeSetWithMovList = /*@__PURE__*/ S.Array(
   StoreCodeSetWithMov,
 ) as any as S.Schema<StoreCodeSetWithMovList>;
@@ -2720,7 +2732,7 @@ export const TransitTimeValue = /*@__PURE__*/ S.suspend(() =>
   identifier: "TransitTimeValue",
 }) as any as S.Schema<TransitTimeValue>;
 
-export type TransitTimeValueList = ReadonlyArray<TransitTimeValue>;
+export type TransitTimeValueList = Array<TransitTimeValue>;
 export const TransitTimeValueList = /*@__PURE__*/ S.Array(
   TransitTimeValue,
 ) as any as S.Schema<TransitTimeValueList>;
@@ -2736,7 +2748,7 @@ export const TransitTimeRow = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TransitTimeRow" }) as any as S.Schema<TransitTimeRow>;
 
-export type TransitTimeRowList = ReadonlyArray<TransitTimeRow>;
+export type TransitTimeRowList = Array<TransitTimeRow>;
 export const TransitTimeRowList = /*@__PURE__*/ S.Array(
   TransitTimeRow,
 ) as any as S.Schema<TransitTimeRowList>;
@@ -2777,8 +2789,7 @@ export const WarehouseBasedDeliveryTime = /*@__PURE__*/ S.suspend(() =>
   identifier: "WarehouseBasedDeliveryTime",
 }) as any as S.Schema<WarehouseBasedDeliveryTime>;
 
-export type WarehouseBasedDeliveryTimeList =
-  ReadonlyArray<WarehouseBasedDeliveryTime>;
+export type WarehouseBasedDeliveryTimeList = Array<WarehouseBasedDeliveryTime>;
 export const WarehouseBasedDeliveryTimeList = /*@__PURE__*/ S.Array(
   WarehouseBasedDeliveryTime,
 ) as any as S.Schema<WarehouseBasedDeliveryTimeList>;
@@ -2848,7 +2859,7 @@ export const LoyaltyProgramTiers = /*@__PURE__*/ S.suspend(() =>
   identifier: "LoyaltyProgramTiers",
 }) as any as S.Schema<LoyaltyProgramTiers>;
 
-export type LoyaltyProgramTiersList = ReadonlyArray<LoyaltyProgramTiers>;
+export type LoyaltyProgramTiersList = Array<LoyaltyProgramTiers>;
 export const LoyaltyProgramTiersList = /*@__PURE__*/ S.Array(
   LoyaltyProgramTiers,
 ) as any as S.Schema<LoyaltyProgramTiersList>;
@@ -2867,7 +2878,7 @@ export const LoyaltyProgram = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "LoyaltyProgram" }) as any as S.Schema<LoyaltyProgram>;
 
-export type LoyaltyProgramList = ReadonlyArray<LoyaltyProgram>;
+export type LoyaltyProgramList = Array<LoyaltyProgram>;
 export const LoyaltyProgramList = /*@__PURE__*/ S.Array(
   LoyaltyProgram,
 ) as any as S.Schema<LoyaltyProgramList>;
@@ -2906,12 +2917,12 @@ export const LocationIdSet = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "LocationIdSet" }) as any as S.Schema<LocationIdSet>;
 
-export type LocationIdSetList = ReadonlyArray<LocationIdSet>;
+export type LocationIdSetList = Array<LocationIdSet>;
 export const LocationIdSetList = /*@__PURE__*/ S.Array(
   LocationIdSet,
 ) as any as S.Schema<LocationIdSetList>;
 
-export type PriceList = ReadonlyArray<Price>;
+export type PriceList = Array<Price>;
 export const PriceList = /*@__PURE__*/ S.Array(
   Price,
 ) as any as S.Schema<PriceList>;
@@ -2924,7 +2935,7 @@ export interface Weight {
   /** Required. The weight represented as a number in micros (1 million micros is an equivalent to one's currency standard unit, for example, 1 kg = 1000000 micros). This field can also be set as infinity by setting to -1. This field only support -1 and positive value. */
   amountMicros?: string;
   /** Required. The weight unit. Acceptable values are: kg and lb */
-  unit?: WeightUnitEnum;
+  unit?: WeightUnitEnum | (string & {});
 }
 export const Weight = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2933,7 +2944,7 @@ export const Weight = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Weight" }) as any as S.Schema<Weight>;
 
-export type WeightList = ReadonlyArray<Weight>;
+export type WeightList = Array<Weight>;
 export const WeightList = /*@__PURE__*/ S.Array(
   Weight,
 ) as any as S.Schema<WeightList>;
@@ -2961,7 +2972,7 @@ export const Headers = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Headers" }) as any as S.Schema<Headers>;
 
-export type ValueList = ReadonlyArray<Value>;
+export type ValueList = Array<Value>;
 export const ValueList = /*@__PURE__*/ S.Array(
   Value,
 ) as any as S.Schema<ValueList>;
@@ -2977,7 +2988,7 @@ export const Row = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Row" }) as any as S.Schema<Row>;
 
-export type RowList = ReadonlyArray<Row>;
+export type RowList = Array<Row>;
 export const RowList = /*@__PURE__*/ S.Array(Row) as any as S.Schema<RowList>;
 
 /** A table defining the rate group, when `single_value` is not expressive enough. */
@@ -3000,7 +3011,7 @@ export const Table = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Table" }) as any as S.Schema<Table>;
 
-export type TableList = ReadonlyArray<Table>;
+export type TableList = Array<Table>;
 export const TableList = /*@__PURE__*/ S.Array(
   Table,
 ) as any as S.Schema<TableList>;
@@ -3031,7 +3042,7 @@ export const CarrierRate = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CarrierRate" }) as any as S.Schema<CarrierRate>;
 
-export type CarrierRateList = ReadonlyArray<CarrierRate>;
+export type CarrierRateList = Array<CarrierRate>;
 export const CarrierRateList = /*@__PURE__*/ S.Array(
   CarrierRate,
 ) as any as S.Schema<CarrierRateList>;
@@ -3062,7 +3073,7 @@ export const RateGroup = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "RateGroup" }) as any as S.Schema<RateGroup>;
 
-export type RateGroupList = ReadonlyArray<RateGroup>;
+export type RateGroupList = Array<RateGroup>;
 export const RateGroupList = /*@__PURE__*/ S.Array(
   RateGroup,
 ) as any as S.Schema<RateGroupList>;
@@ -3114,7 +3125,7 @@ export interface Distance {
   /** Integer value of distance. */
   value?: string;
   /** Unit can differ based on country, it is parameterized to include miles and kilometers. */
-  unit?: DistanceUnitEnum;
+  unit?: DistanceUnitEnum | (string & {});
 }
 export const Distance = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3130,7 +3141,7 @@ export interface StoreConfig {
   /** Configs related to local delivery ends for the day. */
   cutoffConfig?: CutoffConfig;
   /** Indicates whether all stores, or selected stores, listed by this business provide local delivery. */
-  storeServiceType?: StoreConfigStoreServiceTypeEnum;
+  storeServiceType?: StoreConfigStoreServiceTypeEnum | (string & {});
   /** Maximum delivery radius. This is only required for the local delivery shipment type. */
   serviceRadius?: Distance;
 }
@@ -3171,7 +3182,7 @@ export interface Service {
   /** Required. The CLDR code of the currency to which this service applies. Must match that of the prices in rate groups. */
   currencyCode?: string;
   /** Optional. Type of locations this service ships orders to. */
-  shipmentType?: ServiceShipmentTypeEnum;
+  shipmentType?: ServiceShipmentTypeEnum | (string & {});
   /** Optional. Minimum order value for this service. If set, indicates that customers will have to spend at least this amount. All prices within a service must have the same currency. Cannot be set together with `minimum_order_value_table`. */
   minimumOrderValue?: Price;
 }
@@ -3191,7 +3202,7 @@ export const Service = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Service" }) as any as S.Schema<Service>;
 
-export type ServiceList = ReadonlyArray<Service>;
+export type ServiceList = Array<Service>;
 export const ServiceList = /*@__PURE__*/ S.Array(
   Service,
 ) as any as S.Schema<ServiceList>;
@@ -3406,7 +3417,7 @@ export const ListAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAccountsRequest",
 }) as any as S.Schema<ListAccountsRequest>;
 
-export type AccountList = ReadonlyArray<Account>;
+export type AccountList = Array<Account>;
 export const AccountList = /*@__PURE__*/ S.Array(
   Account,
 ) as any as S.Schema<AccountList>;
@@ -3480,7 +3491,7 @@ export const GbpAccount = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "GbpAccount" }) as any as S.Schema<GbpAccount>;
 
-export type GbpAccountList = ReadonlyArray<GbpAccount>;
+export type GbpAccountList = Array<GbpAccount>;
 export const GbpAccountList = /*@__PURE__*/ S.Array(
   GbpAccount,
 ) as any as S.Schema<GbpAccountList>;
@@ -3575,7 +3586,7 @@ export const Impact = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Impact" }) as any as S.Schema<Impact>;
 
-export type ImpactList = ReadonlyArray<Impact>;
+export type ImpactList = Array<Impact>;
 export const ImpactList = /*@__PURE__*/ S.Array(
   Impact,
 ) as any as S.Schema<ImpactList>;
@@ -3596,7 +3607,7 @@ export const ImpactedDestination = /*@__PURE__*/ S.suspend(() =>
   identifier: "ImpactedDestination",
 }) as any as S.Schema<ImpactedDestination>;
 
-export type ImpactedDestinationList = ReadonlyArray<ImpactedDestination>;
+export type ImpactedDestinationList = Array<ImpactedDestination>;
 export const ImpactedDestinationList = /*@__PURE__*/ S.Array(
   ImpactedDestination,
 ) as any as S.Schema<ImpactedDestinationList>;
@@ -3634,7 +3645,7 @@ export const AccountIssue = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AccountIssue" }) as any as S.Schema<AccountIssue>;
 
-export type AccountIssueList = ReadonlyArray<AccountIssue>;
+export type AccountIssueList = Array<AccountIssue>;
 export const AccountIssueList = /*@__PURE__*/ S.Array(
   AccountIssue,
 ) as any as S.Schema<AccountIssueList>;
@@ -3680,7 +3691,7 @@ export const ListAccountsOmnichannelSettingsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListAccountsOmnichannelSettingsRequest",
 }) as any as S.Schema<ListAccountsOmnichannelSettingsRequest>;
 
-export type OmnichannelSettingList = ReadonlyArray<OmnichannelSetting>;
+export type OmnichannelSettingList = Array<OmnichannelSetting>;
 export const OmnichannelSettingList = /*@__PURE__*/ S.Array(
   OmnichannelSetting,
 ) as any as S.Schema<OmnichannelSettingList>;
@@ -3726,7 +3737,7 @@ export const ListAccountsOnlineReturnPoliciesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListAccountsOnlineReturnPoliciesRequest",
 }) as any as S.Schema<ListAccountsOnlineReturnPoliciesRequest>;
 
-export type OnlineReturnPolicyList = ReadonlyArray<OnlineReturnPolicy>;
+export type OnlineReturnPolicyList = Array<OnlineReturnPolicy>;
 export const OnlineReturnPolicyList = /*@__PURE__*/ S.Array(
   OnlineReturnPolicy,
 ) as any as S.Schema<OnlineReturnPolicyList>;
@@ -3771,7 +3782,7 @@ export const ListAccountsProgramsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAccountsProgramsRequest",
 }) as any as S.Schema<ListAccountsProgramsRequest>;
 
-export type ProgramList = ReadonlyArray<Program>;
+export type ProgramList = Array<Program>;
 export const ProgramList = /*@__PURE__*/ S.Array(
   Program,
 ) as any as S.Schema<ProgramList>;
@@ -3856,7 +3867,7 @@ export const ListAccountsRelationshipsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAccountsRelationshipsRequest",
 }) as any as S.Schema<ListAccountsRelationshipsRequest>;
 
-export type AccountRelationshipList = ReadonlyArray<AccountRelationship>;
+export type AccountRelationshipList = Array<AccountRelationship>;
 export const AccountRelationshipList = /*@__PURE__*/ S.Array(
   AccountRelationship,
 ) as any as S.Schema<AccountRelationshipList>;
@@ -3901,7 +3912,7 @@ export const ListAccountsServicesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAccountsServicesRequest",
 }) as any as S.Schema<ListAccountsServicesRequest>;
 
-export type AccountServiceList = ReadonlyArray<AccountService>;
+export type AccountServiceList = Array<AccountService>;
 export const AccountServiceList = /*@__PURE__*/ S.Array(
   AccountService,
 ) as any as S.Schema<AccountServiceList>;
@@ -3946,7 +3957,7 @@ export const ListAccountsUsersRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAccountsUsersRequest",
 }) as any as S.Schema<ListAccountsUsersRequest>;
 
-export type UserList = ReadonlyArray<User>;
+export type UserList = Array<User>;
 export const UserList = /*@__PURE__*/ S.Array(
   User,
 ) as any as S.Schema<UserList>;

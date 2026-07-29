@@ -133,7 +133,7 @@ export const Disk = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Disk" }) as any as S.Schema<Disk>;
 
 /** Specifies information about the operating system disk used by baremetal instance. */
-export type StorageProfileOsDisksList = ReadonlyArray<Disk>;
+export type StorageProfileOsDisksList = Array<Disk>;
 export const StorageProfileOsDisksList = /*@__PURE__*/ S.Array(
   Disk,
 ) as any as S.Schema<StorageProfileOsDisksList>;
@@ -184,7 +184,7 @@ export const IpAddress = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IpAddress" }) as any as S.Schema<IpAddress>;
 
 /** Specifies the network interfaces for the AzureBareMetal instance. */
-export type NetworkProfileNetworkInterfacesList = ReadonlyArray<IpAddress>;
+export type NetworkProfileNetworkInterfacesList = Array<IpAddress>;
 export const NetworkProfileNetworkInterfacesList = /*@__PURE__*/ S.Array(
   IpAddress,
 ) as any as S.Schema<NetworkProfileNetworkInterfacesList>;
@@ -462,7 +462,7 @@ export const AzureBareMetalInstance = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of Azure BareMetal instances. */
 export type AzureBareMetalInstancesListResultValueList =
-  ReadonlyArray<AzureBareMetalInstance>;
+  Array<AzureBareMetalInstance>;
 export const AzureBareMetalInstancesListResultValueList = /*@__PURE__*/ S.Array(
   AzureBareMetalInstance,
 ) as any as S.Schema<AzureBareMetalInstancesListResultValueList>;
@@ -675,7 +675,7 @@ export const StorageBillingProperties = /*@__PURE__*/ S.suspend(() =>
 /** described the storage properties of the azure baremetalstorage instance */
 export interface StorageProperties {
   /** State of provisioning of the AzureBareMetalStorageInstance */
-  provisioningState?: StoragePropertiesProvisioningState;
+  provisioningState?: StoragePropertiesProvisioningState | (string & {});
   /** the offering type for which the resource is getting provisioned */
   offeringType?: string;
   /** the storage protocol for which the resource is getting provisioned */
@@ -1108,7 +1108,7 @@ export const AzureBareMetalStorageInstance = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of AzureBareMetalStorage instances. */
 export type AzureBareMetalStorageInstancesListResultValueList =
-  ReadonlyArray<AzureBareMetalStorageInstance>;
+  Array<AzureBareMetalStorageInstance>;
 export const AzureBareMetalStorageInstancesListResultValueList =
   /*@__PURE__*/ S.Array(
     AzureBareMetalStorageInstance,
@@ -1330,7 +1330,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of AzureBareMetal operations */
-export type OperationListValueList = ReadonlyArray<Operation>;
+export type OperationListValueList = Array<Operation>;
 export const OperationListValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationListValueList>;

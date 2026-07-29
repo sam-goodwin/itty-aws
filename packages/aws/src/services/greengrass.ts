@@ -621,7 +621,7 @@ export const FunctionRunAsConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "FunctionRunAsConfig",
 }) as any as S.Schema<FunctionRunAsConfig>;
 export interface FunctionDefaultExecutionConfig {
-  IsolationMode?: FunctionIsolationMode;
+  IsolationMode?: FunctionIsolationMode | (string & {});
   RunAs?: FunctionRunAsConfig;
 }
 export const FunctionDefaultExecutionConfig = /*@__PURE__*/ S.suspend(() =>
@@ -644,7 +644,7 @@ export type EncodingType = "binary" | "json";
 export const EncodingType = /*@__PURE__*/ S.String;
 
 export interface FunctionExecutionConfig {
-  IsolationMode?: FunctionIsolationMode;
+  IsolationMode?: FunctionIsolationMode | (string & {});
   RunAs?: FunctionRunAsConfig;
 }
 export const FunctionExecutionConfig = /*@__PURE__*/ S.suspend(() =>
@@ -659,7 +659,7 @@ export type Permission = "ro" | "rw";
 export const Permission = /*@__PURE__*/ S.String;
 
 export interface ResourceAccessPolicy {
-  Permission?: Permission;
+  Permission?: Permission | (string & {});
   ResourceId?: string;
 }
 export const ResourceAccessPolicy = /*@__PURE__*/ S.suspend(() =>
@@ -690,7 +690,7 @@ export const FunctionConfigurationEnvironment = /*@__PURE__*/ S.suspend(() =>
   identifier: "FunctionConfigurationEnvironment",
 }) as any as S.Schema<FunctionConfigurationEnvironment>;
 export interface FunctionConfiguration {
-  EncodingType?: EncodingType;
+  EncodingType?: EncodingType | (string & {});
   Environment?: FunctionConfigurationEnvironment;
   ExecArgs?: string;
   Executable?: string;
@@ -1003,11 +1003,11 @@ export type LoggerType = "FileSystem" | "AWSCloudWatch";
 export const LoggerType = /*@__PURE__*/ S.String;
 
 export interface Logger {
-  Component?: LoggerComponent;
+  Component?: LoggerComponent | (string & {});
   Id?: string;
-  Level?: LoggerLevel;
+  Level?: LoggerLevel | (string & {});
   Space?: number;
-  Type?: LoggerType;
+  Type?: LoggerType | (string & {});
 }
 export const Logger = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1163,7 +1163,7 @@ export const LocalVolumeResourceData = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LocalVolumeResourceData>;
 export interface ResourceDownloadOwnerSetting {
   GroupOwner?: string;
-  GroupPermission?: Permission;
+  GroupPermission?: Permission | (string & {});
 }
 export const ResourceDownloadOwnerSetting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

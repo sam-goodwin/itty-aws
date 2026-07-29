@@ -76,7 +76,7 @@ export const DatabaseInstanceStateEnum = /*@__PURE__*/ S.String;
 /** Representation of a Realtime Database instance. Details on interacting with contents of a DatabaseInstance can be found at: https://firebase.google.com/docs/database/rest/start. */
 export interface DatabaseInstance {
   /** Immutable. The database instance type. On creation only USER_DATABASE is allowed, which is also the default when omitted. */
-  type?: DatabaseInstanceTypeEnum;
+  type?: DatabaseInstanceTypeEnum | (string & {});
   /** The fully qualified resource name of the database instance, in the form: `projects/{project-number}/locations/{location-id}/instances/{database-id}`. */
   name?: string;
   /** Output only. The resource name of the project this instance belongs to. For example: `projects/{project-number}`. */
@@ -84,7 +84,7 @@ export interface DatabaseInstance {
   /** Output only. Output Only. The globally unique hostname of the database. */
   databaseUrl?: string;
   /** Output only. The database's lifecycle state. Read-only. */
-  state?: DatabaseInstanceStateEnum;
+  state?: DatabaseInstanceStateEnum | (string & {});
 }
 export const DatabaseInstance = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -222,7 +222,7 @@ export const ListProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsInstancesRequest",
 }) as any as S.Schema<ListProjectsLocationsInstancesRequest>;
 
-export type DatabaseInstanceList = ReadonlyArray<DatabaseInstance>;
+export type DatabaseInstanceList = Array<DatabaseInstance>;
 export const DatabaseInstanceList = /*@__PURE__*/ S.Array(
   DatabaseInstance,
 ) as any as S.Schema<DatabaseInstanceList>;

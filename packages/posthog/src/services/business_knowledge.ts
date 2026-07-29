@@ -77,7 +77,7 @@ export const KnowledgeSearchResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<KnowledgeSearchResult>;
 
 export type BusinessKnowledgeDocumentsSearchListResponseBodyList =
-  ReadonlyArray<KnowledgeSearchResult>;
+  Array<KnowledgeSearchResult>;
 export const BusinessKnowledgeDocumentsSearchListResponseBodyList =
   /*@__PURE__*/ S.Array(
     KnowledgeSearchResult,
@@ -151,7 +151,7 @@ export const KnowledgeDocumentWindow = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<KnowledgeDocumentWindow>;
 
 export type BusinessKnowledgeDocumentsWindowListResponseBodyList =
-  ReadonlyArray<KnowledgeDocumentWindow>;
+  Array<KnowledgeDocumentWindow>;
 export const BusinessKnowledgeDocumentsWindowListResponseBodyList =
   /*@__PURE__*/ S.Array(
     KnowledgeDocumentWindow,
@@ -345,7 +345,7 @@ export const BusinessKnowledgeGapSuggestionsListRequest =
   }) as any as S.Schema<BusinessKnowledgeGapSuggestionsListRequest>;
 
 export type PaginatedKnowledgeGapSuggestionListResultsList =
-  ReadonlyArray<KnowledgeGapSuggestion>;
+  Array<KnowledgeGapSuggestion>;
 export const PaginatedKnowledgeGapSuggestionListResultsList =
   /*@__PURE__*/ S.Array(
     KnowledgeGapSuggestion,
@@ -542,8 +542,7 @@ export const BusinessKnowledgeSourcesListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "BusinessKnowledgeSourcesListRequest",
 }) as any as S.Schema<BusinessKnowledgeSourcesListRequest>;
 
-export type PaginatedKnowledgeSourceListResultsList =
-  ReadonlyArray<KnowledgeSource>;
+export type PaginatedKnowledgeSourceListResultsList = Array<KnowledgeSource>;
 export const PaginatedKnowledgeSourceListResultsList = /*@__PURE__*/ S.Array(
   KnowledgeSource,
 ) as any as S.Schema<PaginatedKnowledgeSourceListResultsList>;

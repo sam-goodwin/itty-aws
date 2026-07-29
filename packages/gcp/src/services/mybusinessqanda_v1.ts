@@ -74,7 +74,7 @@ export interface Author {
   /** The profile photo URI of the user. */
   profilePhotoUri?: string;
   /** The type of user the author is. */
-  type?: AuthorTypeEnum;
+  type?: AuthorTypeEnum | (string & {});
 }
 export const Author = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -110,7 +110,7 @@ export const Answer = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Answer" }) as any as S.Schema<Answer>;
 
-export type AnswerList = ReadonlyArray<Answer>;
+export type AnswerList = Array<Answer>;
 export const AnswerList = /*@__PURE__*/ S.Array(
   Answer,
 ) as any as S.Schema<AnswerList>;
@@ -244,7 +244,7 @@ export const ListLocationsQuestionsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListLocationsQuestionsRequest",
 }) as any as S.Schema<ListLocationsQuestionsRequest>;
 
-export type QuestionList = ReadonlyArray<Question>;
+export type QuestionList = Array<Question>;
 export const QuestionList = /*@__PURE__*/ S.Array(
   Question,
 ) as any as S.Schema<QuestionList>;

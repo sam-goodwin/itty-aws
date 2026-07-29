@@ -38,7 +38,7 @@ export class NotFound extends T.applyErrorMatchers(
 export type ActionsCreateRequestFormat = "csv" | "json";
 export const ActionsCreateRequestFormat = /*@__PURE__*/ S.String;
 
-export type ActionsCreateRequestTagsList = ReadonlyArray<unknown>;
+export type ActionsCreateRequestTagsList = Array<unknown>;
 export const ActionsCreateRequestTagsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<ActionsCreateRequestTagsList>;
@@ -92,11 +92,11 @@ export interface StringPropertyFilter {
   /** Key of the property you're filtering on. For example `email` or `$current_url`. */
   key?: string;
   /** Property type (event, person, session, etc.). * `event` - event * `event_metadata` - event_metadata * `feature` - feature * `person` - person * `person_metadata` - person_metadata * `cohort` - cohort * `element` - element * `static-cohort` - static-cohort * `dynamic-cohort` - dynamic-cohort * `precalculated-cohort` - precalculated-cohort * `group` - group * `recording` - recording * `log_entry` - log_entry * `behavioral` - behavioral * `session` - session * `hogql` - hogql * `data_warehouse` - data_warehouse * `data_warehouse_person_property` - data_warehouse_person_property * `error_tracking_issue` - error_tracking_issue * `log` - log * `log_attribute` - log_attribute * `log_resource_attribute` - log_resource_attribute * `metric_attribute` - metric_attribute * `span` - span * `span_attribute` - span_attribute * `span_resource_attribute` - span_resource_attribute * `revenue_analytics` - revenue_analytics * `account_custom_property` - account_custom_property * `flag` - flag * `workflow_variable` - workflow_variable */
-  type?: PropertyFilterTypeEnum;
+  type?: PropertyFilterTypeEnum | (string & {});
   /** String value to match against. */
   value?: string;
   /** String comparison operator. * `exact` - exact * `is_not` - is_not * `icontains` - icontains * `not_icontains` - not_icontains * `regex` - regex * `not_regex` - not_regex */
-  operator?: StringMatchOperatorEnum;
+  operator?: StringMatchOperatorEnum | (string & {});
 }
 export const StringPropertyFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -124,11 +124,11 @@ export interface NumericPropertyFilter {
   /** Key of the property you're filtering on. For example `email` or `$current_url`. */
   key?: string;
   /** Property type (event, person, session, etc.). * `event` - event * `event_metadata` - event_metadata * `feature` - feature * `person` - person * `person_metadata` - person_metadata * `cohort` - cohort * `element` - element * `static-cohort` - static-cohort * `dynamic-cohort` - dynamic-cohort * `precalculated-cohort` - precalculated-cohort * `group` - group * `recording` - recording * `log_entry` - log_entry * `behavioral` - behavioral * `session` - session * `hogql` - hogql * `data_warehouse` - data_warehouse * `data_warehouse_person_property` - data_warehouse_person_property * `error_tracking_issue` - error_tracking_issue * `log` - log * `log_attribute` - log_attribute * `log_resource_attribute` - log_resource_attribute * `metric_attribute` - metric_attribute * `span` - span * `span_attribute` - span_attribute * `span_resource_attribute` - span_resource_attribute * `revenue_analytics` - revenue_analytics * `account_custom_property` - account_custom_property * `flag` - flag * `workflow_variable` - workflow_variable */
-  type?: PropertyFilterTypeEnum;
+  type?: PropertyFilterTypeEnum | (string & {});
   /** Numeric value to compare against. */
   value?: number;
   /** Numeric comparison operator. * `exact` - exact * `is_not` - is_not * `gt` - gt * `lt` - lt * `gte` - gte * `lte` - lte */
-  operator?: NumericPropertyFilterOperatorEnum;
+  operator?: NumericPropertyFilterOperatorEnum | (string & {});
 }
 export const NumericPropertyFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -142,7 +142,7 @@ export const NumericPropertyFilter = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NumericPropertyFilter>;
 
 /** List of values to match. For example `["test@example.com", "ok@example.com"]`. */
-export type ArrayPropertyFilterValueList = ReadonlyArray<string>;
+export type ArrayPropertyFilterValueList = Array<string>;
 export const ArrayPropertyFilterValueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ArrayPropertyFilterValueList>;
@@ -160,11 +160,11 @@ export interface ArrayPropertyFilter {
   /** Key of the property you're filtering on. For example `email` or `$current_url`. */
   key?: string;
   /** Property type (event, person, session, etc.). * `event` - event * `event_metadata` - event_metadata * `feature` - feature * `person` - person * `person_metadata` - person_metadata * `cohort` - cohort * `element` - element * `static-cohort` - static-cohort * `dynamic-cohort` - dynamic-cohort * `precalculated-cohort` - precalculated-cohort * `group` - group * `recording` - recording * `log_entry` - log_entry * `behavioral` - behavioral * `session` - session * `hogql` - hogql * `data_warehouse` - data_warehouse * `data_warehouse_person_property` - data_warehouse_person_property * `error_tracking_issue` - error_tracking_issue * `log` - log * `log_attribute` - log_attribute * `log_resource_attribute` - log_resource_attribute * `metric_attribute` - metric_attribute * `span` - span * `span_attribute` - span_attribute * `span_resource_attribute` - span_resource_attribute * `revenue_analytics` - revenue_analytics * `account_custom_property` - account_custom_property * `flag` - flag * `workflow_variable` - workflow_variable */
-  type?: PropertyFilterTypeEnum;
+  type?: PropertyFilterTypeEnum | (string & {});
   /** List of values to match. For example `["test@example.com", "ok@example.com"]`. */
   value?: ArrayPropertyFilterValueList;
   /** Array comparison operator. * `exact` - exact * `is_not` - is_not * `in` - in * `not_in` - not_in */
-  operator?: ArrayPropertyFilterOperatorEnum;
+  operator?: ArrayPropertyFilterOperatorEnum | (string & {});
 }
 export const ArrayPropertyFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -189,11 +189,11 @@ export interface DatePropertyFilter {
   /** Key of the property you're filtering on. For example `email` or `$current_url`. */
   key?: string;
   /** Property type (event, person, session, etc.). * `event` - event * `event_metadata` - event_metadata * `feature` - feature * `person` - person * `person_metadata` - person_metadata * `cohort` - cohort * `element` - element * `static-cohort` - static-cohort * `dynamic-cohort` - dynamic-cohort * `precalculated-cohort` - precalculated-cohort * `group` - group * `recording` - recording * `log_entry` - log_entry * `behavioral` - behavioral * `session` - session * `hogql` - hogql * `data_warehouse` - data_warehouse * `data_warehouse_person_property` - data_warehouse_person_property * `error_tracking_issue` - error_tracking_issue * `log` - log * `log_attribute` - log_attribute * `log_resource_attribute` - log_resource_attribute * `metric_attribute` - metric_attribute * `span` - span * `span_attribute` - span_attribute * `span_resource_attribute` - span_resource_attribute * `revenue_analytics` - revenue_analytics * `account_custom_property` - account_custom_property * `flag` - flag * `workflow_variable` - workflow_variable */
-  type?: PropertyFilterTypeEnum;
+  type?: PropertyFilterTypeEnum | (string & {});
   /** Date or datetime string in ISO 8601 format (e.g. '2024-01-15' or '2024-01-15T10:30:00Z'). */
   value?: string;
   /** Date comparison operator. * `is_date_exact` - is_date_exact * `is_date_before` - is_date_before * `is_date_after` - is_date_after */
-  operator?: DateOperatorEnum;
+  operator?: DateOperatorEnum | (string & {});
 }
 export const DatePropertyFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -215,9 +215,9 @@ export interface ExistencePropertyFilter {
   /** Key of the property you're filtering on. For example `email` or `$current_url`. */
   key?: string;
   /** Property type (event, person, session, etc.). * `event` - event * `event_metadata` - event_metadata * `feature` - feature * `person` - person * `person_metadata` - person_metadata * `cohort` - cohort * `element` - element * `static-cohort` - static-cohort * `dynamic-cohort` - dynamic-cohort * `precalculated-cohort` - precalculated-cohort * `group` - group * `recording` - recording * `log_entry` - log_entry * `behavioral` - behavioral * `session` - session * `hogql` - hogql * `data_warehouse` - data_warehouse * `data_warehouse_person_property` - data_warehouse_person_property * `error_tracking_issue` - error_tracking_issue * `log` - log * `log_attribute` - log_attribute * `log_resource_attribute` - log_resource_attribute * `metric_attribute` - metric_attribute * `span` - span * `span_attribute` - span_attribute * `span_resource_attribute` - span_resource_attribute * `revenue_analytics` - revenue_analytics * `account_custom_property` - account_custom_property * `flag` - flag * `workflow_variable` - workflow_variable */
-  type?: PropertyFilterTypeEnum;
+  type?: PropertyFilterTypeEnum | (string & {});
   /** Existence check operator. * `is_set` - is_set * `is_not_set` - is_not_set */
-  operator?: ExistenceOperatorEnum;
+  operator?: ExistenceOperatorEnum | (string & {});
 }
 export const ExistencePropertyFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -233,16 +233,21 @@ export interface ActionStepPropertyFilter {
   /** Key of the property you're filtering on. For example `email` or `$current_url`. */
   key?: string;
   /** Property type (event, person, session, etc.). * `event` - event * `event_metadata` - event_metadata * `feature` - feature * `person` - person * `person_metadata` - person_metadata * `cohort` - cohort * `element` - element * `static-cohort` - static-cohort * `dynamic-cohort` - dynamic-cohort * `precalculated-cohort` - precalculated-cohort * `group` - group * `recording` - recording * `log_entry` - log_entry * `behavioral` - behavioral * `session` - session * `hogql` - hogql * `data_warehouse` - data_warehouse * `data_warehouse_person_property` - data_warehouse_person_property * `error_tracking_issue` - error_tracking_issue * `log` - log * `log_attribute` - log_attribute * `log_resource_attribute` - log_resource_attribute * `metric_attribute` - metric_attribute * `span` - span * `span_attribute` - span_attribute * `span_resource_attribute` - span_resource_attribute * `revenue_analytics` - revenue_analytics * `account_custom_property` - account_custom_property * `flag` - flag * `workflow_variable` - workflow_variable */
-  type?: PropertyFilterTypeEnum;
+  type?: PropertyFilterTypeEnum | (string & {});
   /** String value to match against. */
   value?: string | number | ArrayPropertyFilterValueList;
   /** String comparison operator. * `exact` - exact * `is_not` - is_not * `icontains` - icontains * `not_icontains` - not_icontains * `regex` - regex * `not_regex` - not_regex */
   operator?:
     | StringMatchOperatorEnum
+    | (string & {})
     | NumericPropertyFilterOperatorEnum
+    | (string & {})
     | ArrayPropertyFilterOperatorEnum
+    | (string & {})
     | DateOperatorEnum
-    | ExistenceOperatorEnum;
+    | (string & {})
+    | ExistenceOperatorEnum
+    | (string & {});
 }
 export const ActionStepPropertyFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -266,8 +271,7 @@ export const ActionStepPropertyFilter = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ActionStepPropertyFilter>;
 
 /** Event or person property filters. Each item should have 'key' (string), 'value' (string, number, boolean, or array), optional 'operator' (exact, is_not, is_set, is_not_set, icontains, not_icontains, regex, not_regex, gt, gte, lt, lte), and optional 'type' (event, person). */
-export type ActionStepJSONInputPropertiesList =
-  ReadonlyArray<ActionStepPropertyFilter>;
+export type ActionStepJSONInputPropertiesList = Array<ActionStepPropertyFilter>;
 export const ActionStepJSONInputPropertiesList = /*@__PURE__*/ S.Array(
   ActionStepPropertyFilter,
 ) as any as S.Schema<ActionStepJSONInputPropertiesList>;
@@ -316,7 +320,7 @@ export const ActionStepJSONInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ActionStepJSONInput>;
 
 /** Action steps defining trigger conditions. Each step matches events by name, properties, URL, or element attributes. Multiple steps are OR-ed together. */
-export type ActionsCreateRequestStepsList = ReadonlyArray<ActionStepJSONInput>;
+export type ActionsCreateRequestStepsList = Array<ActionStepJSONInput>;
 export const ActionsCreateRequestStepsList = /*@__PURE__*/ S.Array(
   ActionStepJSONInput,
 ) as any as S.Schema<ActionsCreateRequestStepsList>;
@@ -367,14 +371,13 @@ export const ActionsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ActionsCreateRequest",
 }) as any as S.Schema<ActionsCreateRequest>;
 
-export type ActionOutputTagsList = ReadonlyArray<unknown>;
+export type ActionOutputTagsList = Array<unknown>;
 export const ActionOutputTagsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<ActionOutputTagsList>;
 
 /** Event or person property filters. Each item should have 'key' (string), 'value' (string, number, boolean, or array), optional 'operator' (exact, is_not, is_set, is_not_set, icontains, not_icontains, regex, not_regex, gt, gte, lt, lte), and optional 'type' (event, person). */
-export type ActionStepJSONPropertiesList =
-  ReadonlyArray<ActionStepPropertyFilter>;
+export type ActionStepJSONPropertiesList = Array<ActionStepPropertyFilter>;
 export const ActionStepJSONPropertiesList = /*@__PURE__*/ S.Array(
   ActionStepPropertyFilter,
 ) as any as S.Schema<ActionStepJSONPropertiesList>;
@@ -419,7 +422,7 @@ export const ActionStepJSON = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ActionStepJSON" }) as any as S.Schema<ActionStepJSON>;
 
 /** Action steps defining trigger conditions. Each step matches events by name, properties, URL, or element attributes. Multiple steps are OR-ed together. */
-export type ActionOutputStepsList = ReadonlyArray<ActionStepJSON>;
+export type ActionOutputStepsList = Array<ActionStepJSON>;
 export const ActionOutputStepsList = /*@__PURE__*/ S.Array(
   ActionStepJSON,
 ) as any as S.Schema<ActionOutputStepsList>;
@@ -599,7 +602,7 @@ export const ActionsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ActionsListRequest",
 }) as any as S.Schema<ActionsListRequest>;
 
-export type PaginatedActionListOutputResultsList = ReadonlyArray<ActionOutput>;
+export type PaginatedActionListOutputResultsList = Array<ActionOutput>;
 export const PaginatedActionListOutputResultsList = /*@__PURE__*/ S.Array(
   ActionOutput,
 ) as any as S.Schema<PaginatedActionListOutputResultsList>;
@@ -624,14 +627,13 @@ export const PaginatedActionListOutput = /*@__PURE__*/ S.suspend(() =>
 export type ActionsPartialUpdateRequestFormat = "csv" | "json";
 export const ActionsPartialUpdateRequestFormat = /*@__PURE__*/ S.String;
 
-export type ActionsPartialUpdateRequestTagsList = ReadonlyArray<unknown>;
+export type ActionsPartialUpdateRequestTagsList = Array<unknown>;
 export const ActionsPartialUpdateRequestTagsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<ActionsPartialUpdateRequestTagsList>;
 
 /** Action steps defining trigger conditions. Each step matches events by name, properties, URL, or element attributes. Multiple steps are OR-ed together. */
-export type ActionsPartialUpdateRequestStepsList =
-  ReadonlyArray<ActionStepJSONInput>;
+export type ActionsPartialUpdateRequestStepsList = Array<ActionStepJSONInput>;
 export const ActionsPartialUpdateRequestStepsList = /*@__PURE__*/ S.Array(
   ActionStepJSONInput,
 ) as any as S.Schema<ActionsPartialUpdateRequestStepsList>;
@@ -738,8 +740,7 @@ export const ActionReference = /*@__PURE__*/ S.suspend(() =>
   identifier: "ActionReference",
 }) as any as S.Schema<ActionReference>;
 
-export type ActionsReferencesListResponseBodyList =
-  ReadonlyArray<ActionReference>;
+export type ActionsReferencesListResponseBodyList = Array<ActionReference>;
 export const ActionsReferencesListResponseBodyList = /*@__PURE__*/ S.Array(
   ActionReference,
 ) as any as S.Schema<ActionsReferencesListResponseBodyList>;
@@ -781,13 +782,13 @@ export const ActionsRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
 export type ActionsUpdateRequestFormat = "csv" | "json";
 export const ActionsUpdateRequestFormat = /*@__PURE__*/ S.String;
 
-export type ActionsUpdateRequestTagsList = ReadonlyArray<unknown>;
+export type ActionsUpdateRequestTagsList = Array<unknown>;
 export const ActionsUpdateRequestTagsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<ActionsUpdateRequestTagsList>;
 
 /** Action steps defining trigger conditions. Each step matches events by name, properties, URL, or element attributes. Multiple steps are OR-ed together. */
-export type ActionsUpdateRequestStepsList = ReadonlyArray<ActionStepJSONInput>;
+export type ActionsUpdateRequestStepsList = Array<ActionStepJSONInput>;
 export const ActionsUpdateRequestStepsList = /*@__PURE__*/ S.Array(
   ActionStepJSONInput,
 ) as any as S.Schema<ActionsUpdateRequestStepsList>;

@@ -133,7 +133,7 @@ export const SearchJobState = /*@__PURE__*/ S.String;
 export type ResourceType = "S3" | "EBS";
 export const ResourceType = /*@__PURE__*/ S.String;
 
-export type ResourceTypeList = ResourceType[];
+export type ResourceTypeList = (ResourceType | (string & {}))[];
 export const ResourceTypeList = /*@__PURE__*/ S.Array(ResourceType);
 export interface BackupCreationTimeFilter {
   CreatedAfter?: Date;
@@ -186,7 +186,7 @@ export const StringConditionOperator = /*@__PURE__*/ S.String;
 
 export interface StringCondition {
   Value: string;
-  Operator?: StringConditionOperator;
+  Operator?: StringConditionOperator | (string & {});
 }
 export const StringCondition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Value: S.String, Operator: S.optional(StringConditionOperator) }),
@@ -204,7 +204,7 @@ export const LongConditionOperator = /*@__PURE__*/ S.String;
 
 export interface LongCondition {
   Value: number;
-  Operator?: LongConditionOperator;
+  Operator?: LongConditionOperator | (string & {});
 }
 export const LongCondition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Value: S.Number, Operator: S.optional(LongConditionOperator) }),
@@ -220,7 +220,7 @@ export const TimeConditionOperator = /*@__PURE__*/ S.String;
 
 export interface TimeCondition {
   Value: Date;
-  Operator?: TimeConditionOperator;
+  Operator?: TimeConditionOperator | (string & {});
 }
 export const TimeCondition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

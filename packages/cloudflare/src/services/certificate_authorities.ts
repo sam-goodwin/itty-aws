@@ -50,8 +50,7 @@ export const GetHostnameAssociationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetHostnameAssociationRequest",
 }) as any as S.Schema<GetHostnameAssociationRequest>;
 
-export type HostnameAssociationsGetResponseHostnamesList =
-  ReadonlyArray<string>;
+export type HostnameAssociationsGetResponseHostnamesList = Array<string>;
 export const HostnameAssociationsGetResponseHostnamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -69,8 +68,7 @@ export const GetHostnameAssociationResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetHostnameAssociationResponse",
 }) as any as S.Schema<GetHostnameAssociationResponse>;
 
-export type HostnameAssociationsUpdateRequestHostnamesList =
-  ReadonlyArray<string>;
+export type HostnameAssociationsUpdateRequestHostnamesList = Array<string>;
 export const HostnameAssociationsUpdateRequestHostnamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -101,8 +99,7 @@ export const PutHostnameAssociationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutHostnameAssociationRequest",
 }) as any as S.Schema<PutHostnameAssociationRequest>;
 
-export type HostnameAssociationsUpdateResponseHostnamesList =
-  ReadonlyArray<string>;
+export type HostnameAssociationsUpdateResponseHostnamesList = Array<string>;
 export const HostnameAssociationsUpdateResponseHostnamesList =
   /*@__PURE__*/ S.Array(
     S.String,

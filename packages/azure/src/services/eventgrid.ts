@@ -406,7 +406,7 @@ export const CaCertificate = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CaCertificate" }) as any as S.Schema<CaCertificate>;
 
 /** A collection of CA Certificate. */
-export type CaCertificatesListResultValueList = ReadonlyArray<CaCertificate>;
+export type CaCertificatesListResultValueList = Array<CaCertificate>;
 export const CaCertificatesListResultValueList = /*@__PURE__*/ S.Array(
   CaCertificate,
 ) as any as S.Schema<CaCertificatesListResultValueList>;
@@ -469,7 +469,7 @@ export const EventTypeInfoInlineEventTypesMap = /*@__PURE__*/ S.Record(
 /** The event type information for Channels. */
 export interface EventTypeInfo {
   /** The kind of event type used. */
-  kind?: EventTypeInfoKind;
+  kind?: EventTypeInfoKind | (string & {});
   /** A collection of inline event types for the resource. The inline event type keys are of type string which represents the name of the event. An example of a valid inline event name is "Contoso.OrderCreated". The inline event type values are of type InlineEventProperties and will contain additional information for every inline event type. */
   inlineEventTypes?: EventTypeInfoInlineEventTypesMap;
 }
@@ -523,15 +523,15 @@ export const ChannelPropertiesReadinessState = /*@__PURE__*/ S.String;
 /** Properties of the Channel. */
 export interface ChannelProperties {
   /** The type of the event channel which represents the direction flow of events. */
-  channelType?: ChannelPropertiesChannelType;
+  channelType?: ChannelPropertiesChannelType | (string & {});
   /** This property should be populated when channelType is PartnerTopic and represents information about the partner topic resource corresponding to the channel. */
   partnerTopicInfo?: PartnerTopicInfo;
   /** Context or helpful message that can be used during the approval process by the subscriber. */
   messageForActivation?: string;
   /** Provisioning state of the channel. */
-  provisioningState?: ChannelPropertiesProvisioningState;
+  provisioningState?: ChannelPropertiesProvisioningState | (string & {});
   /** The readiness state of the corresponding partner topic. */
-  readinessState?: ChannelPropertiesReadinessState;
+  readinessState?: ChannelPropertiesReadinessState | (string & {});
   /** Expiration time of the channel. If this timer expires while the corresponding partner topic is never activated, the channel and corresponding partner topic are deleted. */
   expirationTimeIfNotActivatedUtc?: string;
 }
@@ -930,7 +930,7 @@ export const Channel = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Channel" }) as any as S.Schema<Channel>;
 
 /** A collection of Channels. */
-export type ChannelsListResultValueList = ReadonlyArray<Channel>;
+export type ChannelsListResultValueList = Array<Channel>;
 export const ChannelsListResultValueList = /*@__PURE__*/ S.Array(
   Channel,
 ) as any as S.Schema<ChannelsListResultValueList>;
@@ -1403,7 +1403,7 @@ export const ClientGroup = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ClientGroup" }) as any as S.Schema<ClientGroup>;
 
 /** A collection of Client Group. */
-export type ClientGroupsListResultValueList = ReadonlyArray<ClientGroup>;
+export type ClientGroupsListResultValueList = Array<ClientGroup>;
 export const ClientGroupsListResultValueList = /*@__PURE__*/ S.Array(
   ClientGroup,
 ) as any as S.Schema<ClientGroupsListResultValueList>;
@@ -1437,7 +1437,7 @@ export const ClientCertificateAuthenticationValidationScheme =
 
 /** The list of thumbprints that are allowed during client authentication. This property is required only if the validationScheme is 'ThumbprintMatch'. */
 export type ClientCertificateAuthenticationAllowedThumbprintsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ClientCertificateAuthenticationAllowedThumbprintsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1446,7 +1446,9 @@ export const ClientCertificateAuthenticationAllowedThumbprintsList =
 /** The certificate authentication properties for the client. */
 export interface ClientCertificateAuthentication {
   /** The validation scheme used to authenticate the client. Default value is SubjectMatchesAuthenticationName. */
-  validationScheme?: ClientCertificateAuthenticationValidationScheme;
+  validationScheme?:
+    | ClientCertificateAuthenticationValidationScheme
+    | (string & {});
   /** The list of thumbprints that are allowed during client authentication. This property is required only if the validationScheme is 'ThumbprintMatch'. */
   allowedThumbprints?: ClientCertificateAuthenticationAllowedThumbprintsList;
 }
@@ -1896,7 +1898,7 @@ export const Client = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Client" }) as any as S.Schema<Client>;
 
 /** A collection of Client. */
-export type ClientsListResultValueList = ReadonlyArray<Client>;
+export type ClientsListResultValueList = Array<Client>;
 export const ClientsListResultValueList = /*@__PURE__*/ S.Array(
   Client,
 ) as any as S.Schema<ClientsListResultValueList>;
@@ -1933,7 +1935,7 @@ export const EventSubscriptionDestinationEndpointType = /*@__PURE__*/ S.String;
 /** Information about the destination for an event subscription. */
 export interface EventSubscriptionDestination {
   /** Type of the endpoint for the event subscription destination. */
-  endpointType: EventSubscriptionDestinationEndpointType;
+  endpointType: EventSubscriptionDestinationEndpointType | (string & {});
 }
 export const EventSubscriptionDestination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1950,7 +1952,7 @@ export const EventSubscriptionIdentityType = /*@__PURE__*/ S.String;
 /** The identity information with the event subscription. */
 export interface EventSubscriptionIdentity {
   /** The type of managed identity used. Can be either 'SystemAssigned' or 'UserAssigned'. */
-  type?: EventSubscriptionIdentityType;
+  type?: EventSubscriptionIdentityType | (string & {});
   /** The user identity associated with the resource. */
   userAssignedIdentity?: string;
 }
@@ -1980,8 +1982,7 @@ export const DeliveryWithResourceIdentity = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeliveryWithResourceIdentity>;
 
 /** A list of applicable event types that need to be part of the event subscription. If it is desired to subscribe to all default event types, set the IncludedEventTypes to null. */
-export type EventSubscriptionFilterIncludedEventTypesList =
-  ReadonlyArray<string>;
+export type EventSubscriptionFilterIncludedEventTypesList = Array<string>;
 export const EventSubscriptionFilterIncludedEventTypesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2013,7 +2014,7 @@ export const AdvancedFilterOperatorType = /*@__PURE__*/ S.String;
 /** This is the base type that represents an advanced filter. To configure an advanced filter, do not directly instantiate an object of this class. Instead, instantiate an object of a derived class such as BoolEqualsAdvancedFilter, NumberInAdvancedFilter, StringEqualsAdvancedFilter etc. depending on the type of the key based on which you want to filter. */
 export interface AdvancedFilter {
   /** The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others. */
-  operatorType: AdvancedFilterOperatorType;
+  operatorType: AdvancedFilterOperatorType | (string & {});
   /** The field/property in the event based on which you want to filter. */
   key?: string;
 }
@@ -2025,8 +2026,7 @@ export const AdvancedFilter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AdvancedFilter" }) as any as S.Schema<AdvancedFilter>;
 
 /** An array of advanced filters that are used for filtering event subscriptions. */
-export type EventSubscriptionFilterAdvancedFiltersList =
-  ReadonlyArray<AdvancedFilter>;
+export type EventSubscriptionFilterAdvancedFiltersList = Array<AdvancedFilter>;
 export const EventSubscriptionFilterAdvancedFiltersList = /*@__PURE__*/ S.Array(
   AdvancedFilter,
 ) as any as S.Schema<EventSubscriptionFilterAdvancedFiltersList>;
@@ -2062,7 +2062,7 @@ export const EventSubscriptionFilter = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EventSubscriptionFilter>;
 
 /** List of user defined labels. */
-export type EventSubscriptionPropertiesInputLabelsList = ReadonlyArray<string>;
+export type EventSubscriptionPropertiesInputLabelsList = Array<string>;
 export const EventSubscriptionPropertiesInputLabelsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EventSubscriptionPropertiesInputLabelsList>;
@@ -2096,7 +2096,7 @@ export const DeadLetterDestinationEndpointType = /*@__PURE__*/ S.String;
 /** Information about the dead letter destination for an event subscription. To configure a deadletter destination, do not directly instantiate an object of this class. Instead, instantiate an object of a derived class. Currently, StorageBlobDeadLetterDestination is the only class that derives from this class. */
 export interface DeadLetterDestination {
   /** Type of the endpoint for the dead letter destination */
-  endpointType: DeadLetterDestinationEndpointType;
+  endpointType: DeadLetterDestinationEndpointType | (string & {});
 }
 export const DeadLetterDestination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2208,7 +2208,7 @@ export const EventSubscriptionPropertiesProvisioningState =
   /*@__PURE__*/ S.String;
 
 /** List of user defined labels. */
-export type EventSubscriptionPropertiesLabelsList = ReadonlyArray<string>;
+export type EventSubscriptionPropertiesLabelsList = Array<string>;
 export const EventSubscriptionPropertiesLabelsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EventSubscriptionPropertiesLabelsList>;
@@ -2528,7 +2528,7 @@ export const DeliveryAttributeMapping = /*@__PURE__*/ S.suspend(() =>
 
 /** A collection of DeliveryAttributeMapping */
 export type DeliveryAttributeListResultValueList =
-  ReadonlyArray<DeliveryAttributeMapping>;
+  Array<DeliveryAttributeMapping>;
 export const DeliveryAttributeListResultValueList = /*@__PURE__*/ S.Array(
   DeliveryAttributeMapping,
 ) as any as S.Schema<DeliveryAttributeListResultValueList>;
@@ -2679,8 +2679,7 @@ export const EventSubscription = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EventSubscription>;
 
 /** A collection of EventSubscriptions */
-export type EventSubscriptionsListResultValueList =
-  ReadonlyArray<EventSubscription>;
+export type EventSubscriptionsListResultValueList = Array<EventSubscription>;
 export const EventSubscriptionsListResultValueList = /*@__PURE__*/ S.Array(
   EventSubscription,
 ) as any as S.Schema<EventSubscriptionsListResultValueList>;
@@ -2702,8 +2701,7 @@ export const EventSubscriptionsListResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EventSubscriptionsListResult>;
 
 /** List of user defined labels. */
-export type DomainEventSubscriptionsUpdateRequestLabelsList =
-  ReadonlyArray<string>;
+export type DomainEventSubscriptionsUpdateRequestLabelsList = Array<string>;
 export const DomainEventSubscriptionsUpdateRequestLabelsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2883,7 +2881,9 @@ export const InputSchemaMappingInputSchemaMappingType = /*@__PURE__*/ S.String;
 /** By default, Event Grid expects events to be in the Event Grid event schema. Specifying an input schema mapping enables publishing to Event Grid using a custom input schema. Currently, the only supported type of InputSchemaMapping is 'JsonInputSchemaMapping'. */
 export interface InputSchemaMapping {
   /** Type of the custom mapping */
-  inputSchemaMappingType: InputSchemaMappingInputSchemaMappingType;
+  inputSchemaMappingType:
+    | InputSchemaMappingInputSchemaMappingType
+    | (string & {});
 }
 export const InputSchemaMapping = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2905,7 +2905,7 @@ export interface InboundIpRule {
   /** IP Address in CIDR notation e.g., 10.0.0.0/8. */
   ipMask?: string;
   /** Action to perform based on the match or no match of the IpMask. */
-  action?: InboundIpRuleAction;
+  action?: InboundIpRuleAction | (string & {});
 }
 export const InboundIpRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2915,8 +2915,7 @@ export const InboundIpRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "InboundIpRule" }) as any as S.Schema<InboundIpRule>;
 
 /** This can be used to restrict traffic from specific IPs instead of all IPs. Note: These are considered only if PublicNetworkAccess is enabled. */
-export type DomainPropertiesInputInboundIpRulesList =
-  ReadonlyArray<InboundIpRule>;
+export type DomainPropertiesInputInboundIpRulesList = Array<InboundIpRule>;
 export const DomainPropertiesInputInboundIpRulesList = /*@__PURE__*/ S.Array(
   InboundIpRule,
 ) as any as S.Schema<DomainPropertiesInputInboundIpRulesList>;
@@ -3014,7 +3013,7 @@ export const IdentityInfoUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
 /** The identity information for the resource. */
 export interface IdentityInfo {
   /** The type of managed identity used. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user-assigned identities. The type 'None' will remove any identity. */
-  type?: IdentityInfoType;
+  type?: IdentityInfoType | (string & {});
   /** The principal ID of resource identity. */
   principalId?: string;
   /** The tenant ID of resource. */
@@ -3091,8 +3090,7 @@ export const PrivateEndpoint = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateEndpoint>;
 
 /** GroupIds from the private link service resource. */
-export type PrivateEndpointConnectionPropertiesGroupIdsList =
-  ReadonlyArray<string>;
+export type PrivateEndpointConnectionPropertiesGroupIdsList = Array<string>;
 export const PrivateEndpointConnectionPropertiesGroupIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3109,7 +3107,7 @@ export const ConnectionStateStatus = /*@__PURE__*/ S.String;
 /** ConnectionState information. */
 export interface ConnectionState {
   /** Status of the connection. */
-  status?: ConnectionStateStatus;
+  status?: ConnectionStateStatus | (string & {});
   /** Description of the connection state. */
   description?: string;
   /** Actions required (if any). */
@@ -3145,7 +3143,9 @@ export interface PrivateEndpointConnectionProperties {
   /** Details about the state of the connection. */
   privateLinkServiceConnectionState?: ConnectionState;
   /** Provisioning state of the Private Endpoint Connection. */
-  provisioningState?: PrivateEndpointConnectionPropertiesProvisioningState;
+  provisioningState?:
+    | PrivateEndpointConnectionPropertiesProvisioningState
+    | (string & {});
 }
 export const PrivateEndpointConnectionProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3183,7 +3183,7 @@ export const PrivateEndpointConnection = /*@__PURE__*/ S.suspend(() =>
 
 /** List of private endpoint connections. */
 export type DomainPropertiesPrivateEndpointConnectionsList =
-  ReadonlyArray<PrivateEndpointConnection>;
+  Array<PrivateEndpointConnection>;
 export const DomainPropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection,
@@ -3215,7 +3215,7 @@ export type DomainPropertiesPublicNetworkAccess = "Enabled" | "Disabled";
 export const DomainPropertiesPublicNetworkAccess = /*@__PURE__*/ S.String;
 
 /** This can be used to restrict traffic from specific IPs instead of all IPs. Note: These are considered only if PublicNetworkAccess is enabled. */
-export type DomainPropertiesInboundIpRulesList = ReadonlyArray<InboundIpRule>;
+export type DomainPropertiesInboundIpRulesList = Array<InboundIpRule>;
 export const DomainPropertiesInboundIpRulesList = /*@__PURE__*/ S.Array(
   InboundIpRule,
 ) as any as S.Schema<DomainPropertiesInboundIpRulesList>;
@@ -3622,7 +3622,7 @@ export const Domain = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Domain" }) as any as S.Schema<Domain>;
 
 /** A collection of Domains. */
-export type DomainsListResultValueList = ReadonlyArray<Domain>;
+export type DomainsListResultValueList = Array<Domain>;
 export const DomainsListResultValueList = /*@__PURE__*/ S.Array(
   Domain,
 ) as any as S.Schema<DomainsListResultValueList>;
@@ -3753,7 +3753,7 @@ export const DomainUpdateParameterPropertiesPublicNetworkAccess =
 
 /** This can be used to restrict traffic from specific IPs instead of all IPs. Note: These are considered only if PublicNetworkAccess is enabled. */
 export type DomainUpdateParameterPropertiesInboundIpRulesList =
-  ReadonlyArray<InboundIpRule>;
+  Array<InboundIpRule>;
 export const DomainUpdateParameterPropertiesInboundIpRulesList =
   /*@__PURE__*/ S.Array(
     InboundIpRule,
@@ -4216,7 +4216,7 @@ export const DomainTopicEventSubscriptionsListRequest = /*@__PURE__*/ S.suspend(
 
 /** List of user defined labels. */
 export type DomainTopicEventSubscriptionsUpdateRequestLabelsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const DomainTopicEventSubscriptionsUpdateRequestLabelsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4727,7 +4727,7 @@ export const DomainTopic = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DomainTopic" }) as any as S.Schema<DomainTopic>;
 
 /** A collection of Domain Topics. */
-export type DomainTopicsListResultValueList = ReadonlyArray<DomainTopic>;
+export type DomainTopicsListResultValueList = Array<DomainTopic>;
 export const DomainTopicsListResultValueList = /*@__PURE__*/ S.Array(
   DomainTopic,
 ) as any as S.Schema<DomainTopicsListResultValueList>;
@@ -5341,7 +5341,7 @@ export const EventSubscriptionsListRegionalBySubscriptionForTopicTypeRequest =
   }) as any as S.Schema<EventSubscriptionsListRegionalBySubscriptionForTopicTypeRequest>;
 
 /** List of user defined labels. */
-export type EventSubscriptionsUpdateRequestLabelsList = ReadonlyArray<string>;
+export type EventSubscriptionsUpdateRequestLabelsList = Array<string>;
 export const EventSubscriptionsUpdateRequestLabelsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EventSubscriptionsUpdateRequestLabelsList>;
@@ -5615,7 +5615,7 @@ export const PrivateEndpointConnectionInput = /*@__PURE__*/ S.suspend(() =>
 
 /** List of private endpoint connections. */
 export type NamespacePropertiesInputPrivateEndpointConnectionsList =
-  ReadonlyArray<PrivateEndpointConnectionInput>;
+  Array<PrivateEndpointConnectionInput>;
 export const NamespacePropertiesInputPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnectionInput,
@@ -5635,7 +5635,7 @@ export const CustomDomainIdentityType = /*@__PURE__*/ S.String;
 /** The identity information for retrieving the certificate for the custom domain. */
 export interface CustomDomainIdentity {
   /** The type of managed identity used. Can be either 'SystemAssigned' or 'UserAssigned'. */
-  type?: CustomDomainIdentityType;
+  type?: CustomDomainIdentityType | (string & {});
   /** The user identity associated with the resource. */
   userAssignedIdentity?: string;
 }
@@ -5653,7 +5653,7 @@ export interface CustomDomainConfiguration {
   /** Fully Qualified Domain Name (FQDN) for the custom domain. */
   fullyQualifiedDomainName: string;
   /** Validation state for the custom domain. This is a read only property and is initially set to 'Pending' and will be updated to 'Approved' by Event Grid only after ownership of the domain name has been successfully validated. */
-  validationState?: CustomDomainConfigurationValidationState;
+  validationState?: CustomDomainConfigurationValidationState | (string & {});
   /** Identity info for accessing the certificate for the custom domain. This identity info must match an identity that has been set on the namespace. */
   identity?: CustomDomainIdentity;
   /** The URL for the certificate that is used for publishing to the custom domain. We currently support certificates stored in Azure Key Vault only. While certificate URL can be either versioned URL of the following format https://{key-vault-name}.vault.azure.net/certificates/{certificate-name}/{version-id}, or unversioned URL of the following format (e.g., https://contosovault.vault.azure.net/certificates/contosocert, we support unversioned certificate URL only (e.g., https://contosovault.vault.azure.net/certificates/contosocert) */
@@ -5678,7 +5678,7 @@ export const CustomDomainConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** List of custom domain configurations for the namespace. */
 export type TopicsConfigurationInputCustomDomainsList =
-  ReadonlyArray<CustomDomainConfiguration>;
+  Array<CustomDomainConfiguration>;
 export const TopicsConfigurationInputCustomDomainsList = /*@__PURE__*/ S.Array(
   CustomDomainConfiguration,
 ) as any as S.Schema<TopicsConfigurationInputCustomDomainsList>;
@@ -5709,7 +5709,7 @@ export interface StaticRoutingEnrichment {
   /** Static routing enrichment key. */
   key?: string;
   /** Static routing enrichment value type. For e.g. this property value can be 'String'. */
-  valueType: StaticRoutingEnrichmentValueType;
+  valueType: StaticRoutingEnrichmentValueType | (string & {});
 }
 export const StaticRoutingEnrichment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5720,8 +5720,7 @@ export const StaticRoutingEnrichment = /*@__PURE__*/ S.suspend(() =>
   identifier: "StaticRoutingEnrichment",
 }) as any as S.Schema<StaticRoutingEnrichment>;
 
-export type RoutingEnrichmentsStaticList =
-  ReadonlyArray<StaticRoutingEnrichment>;
+export type RoutingEnrichmentsStaticList = Array<StaticRoutingEnrichment>;
 export const RoutingEnrichmentsStaticList = /*@__PURE__*/ S.Array(
   StaticRoutingEnrichment,
 ) as any as S.Schema<RoutingEnrichmentsStaticList>;
@@ -5741,8 +5740,7 @@ export const DynamicRoutingEnrichment = /*@__PURE__*/ S.suspend(() =>
   identifier: "DynamicRoutingEnrichment",
 }) as any as S.Schema<DynamicRoutingEnrichment>;
 
-export type RoutingEnrichmentsDynamicList =
-  ReadonlyArray<DynamicRoutingEnrichment>;
+export type RoutingEnrichmentsDynamicList = Array<DynamicRoutingEnrichment>;
 export const RoutingEnrichmentsDynamicList = /*@__PURE__*/ S.Array(
   DynamicRoutingEnrichment,
 ) as any as S.Schema<RoutingEnrichmentsDynamicList>;
@@ -5770,7 +5768,7 @@ export const RoutingIdentityInfoType = /*@__PURE__*/ S.String;
 /** Routing identity info for topic spaces configuration. */
 export interface RoutingIdentityInfo {
   /** Routing identity type for topic spaces configuration. */
-  type?: RoutingIdentityInfoType;
+  type?: RoutingIdentityInfoType | (string & {});
   userAssignedIdentity?: string;
 }
 export const RoutingIdentityInfo = /*@__PURE__*/ S.suspend(() =>
@@ -5784,7 +5782,7 @@ export const RoutingIdentityInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** List of custom domain configurations for the namespace. */
 export type TopicSpacesConfigurationInputCustomDomainsList =
-  ReadonlyArray<CustomDomainConfiguration>;
+  Array<CustomDomainConfiguration>;
 export const TopicSpacesConfigurationInputCustomDomainsList =
   /*@__PURE__*/ S.Array(
     CustomDomainConfiguration,
@@ -5829,8 +5827,7 @@ export const NamespacePropertiesInputPublicNetworkAccess =
   /*@__PURE__*/ S.String;
 
 /** This can be used to restrict traffic from specific IPs instead of all IPs. Note: These are considered only if PublicNetworkAccess is enabled. */
-export type NamespacePropertiesInputInboundIpRulesList =
-  ReadonlyArray<InboundIpRule>;
+export type NamespacePropertiesInputInboundIpRulesList = Array<InboundIpRule>;
 export const NamespacePropertiesInputInboundIpRulesList = /*@__PURE__*/ S.Array(
   InboundIpRule,
 ) as any as S.Schema<NamespacePropertiesInputInboundIpRulesList>;
@@ -5891,7 +5888,7 @@ export const NamespaceSkuName = /*@__PURE__*/ S.String;
 /** Represents available Sku pricing tiers. */
 export interface NamespaceSku {
   /** The name of the SKU. */
-  name?: NamespaceSkuName;
+  name?: NamespaceSkuName | (string & {});
   /** Specifies the number of Throughput Units that defines the capacity for the namespace. The property default value is 1 which signifies 1 Throughput Unit = 1MB/s ingress and 2MB/s egress per namespace. Min capacity is 1 and max allowed capacity is 20. */
   capacity?: number;
 }
@@ -5953,7 +5950,7 @@ export const NamespacesCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 
 /** List of private endpoint connections. */
 export type NamespacePropertiesPrivateEndpointConnectionsList =
-  ReadonlyArray<PrivateEndpointConnection>;
+  Array<PrivateEndpointConnection>;
 export const NamespacePropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection,
@@ -5975,7 +5972,7 @@ export const NamespacePropertiesProvisioningState = /*@__PURE__*/ S.String;
 
 /** List of custom domain configurations for the namespace. */
 export type TopicsConfigurationCustomDomainsList =
-  ReadonlyArray<CustomDomainConfiguration>;
+  Array<CustomDomainConfiguration>;
 export const TopicsConfigurationCustomDomainsList = /*@__PURE__*/ S.Array(
   CustomDomainConfiguration,
 ) as any as S.Schema<TopicsConfigurationCustomDomainsList>;
@@ -6002,7 +5999,7 @@ export const TopicSpacesConfigurationState = /*@__PURE__*/ S.String;
 
 /** List of custom domain configurations for the namespace. */
 export type TopicSpacesConfigurationCustomDomainsList =
-  ReadonlyArray<CustomDomainConfiguration>;
+  Array<CustomDomainConfiguration>;
 export const TopicSpacesConfigurationCustomDomainsList = /*@__PURE__*/ S.Array(
   CustomDomainConfiguration,
 ) as any as S.Schema<TopicSpacesConfigurationCustomDomainsList>;
@@ -6046,8 +6043,7 @@ export type NamespacePropertiesPublicNetworkAccess = "Enabled" | "Disabled";
 export const NamespacePropertiesPublicNetworkAccess = /*@__PURE__*/ S.String;
 
 /** This can be used to restrict traffic from specific IPs instead of all IPs. Note: These are considered only if PublicNetworkAccess is enabled. */
-export type NamespacePropertiesInboundIpRulesList =
-  ReadonlyArray<InboundIpRule>;
+export type NamespacePropertiesInboundIpRulesList = Array<InboundIpRule>;
 export const NamespacePropertiesInboundIpRulesList = /*@__PURE__*/ S.Array(
   InboundIpRule,
 ) as any as S.Schema<NamespacePropertiesInboundIpRulesList>;
@@ -6448,7 +6444,7 @@ export const Namespace = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Namespace" }) as any as S.Schema<Namespace>;
 
 /** A collection of namespaces. */
-export type NamespacesListResultValueList = ReadonlyArray<Namespace>;
+export type NamespacesListResultValueList = Array<Namespace>;
 export const NamespacesListResultValueList = /*@__PURE__*/ S.Array(
   Namespace,
 ) as any as S.Schema<NamespacesListResultValueList>;
@@ -6579,7 +6575,7 @@ export const UpdateTopicSpacesConfigurationInfoState = /*@__PURE__*/ S.String;
 
 /** Custom domain info for topic spaces configuration. */
 export type UpdateTopicSpacesConfigurationInfoCustomDomainsList =
-  ReadonlyArray<CustomDomainConfiguration>;
+  Array<CustomDomainConfiguration>;
 export const UpdateTopicSpacesConfigurationInfoCustomDomainsList =
   /*@__PURE__*/ S.Array(
     CustomDomainConfiguration,
@@ -6620,7 +6616,7 @@ export const UpdateTopicSpacesConfigurationInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** Custom domain info for topics configuration. */
 export type UpdateTopicsConfigurationInfoCustomDomainsList =
-  ReadonlyArray<CustomDomainConfiguration>;
+  Array<CustomDomainConfiguration>;
 export const UpdateTopicsConfigurationInfoCustomDomainsList =
   /*@__PURE__*/ S.Array(
     CustomDomainConfiguration,
@@ -6648,7 +6644,7 @@ export const NamespaceUpdateParameterPropertiesPublicNetworkAccess =
 
 /** This can be used to restrict traffic from specific IPs instead of all IPs. Note: These are considered only if PublicNetworkAccess is enabled. */
 export type NamespaceUpdateParameterPropertiesInboundIpRulesList =
-  ReadonlyArray<InboundIpRule>;
+  Array<InboundIpRule>;
 export const NamespaceUpdateParameterPropertiesInboundIpRulesList =
   /*@__PURE__*/ S.Array(
     InboundIpRule,
@@ -6840,7 +6836,7 @@ export const NamespacesValidateCustomDomainOwnershipRequest =
 
 /** List of custom domain configurations for the namespace under topics configuration. */
 export type CustomDomainOwnershipValidationResultCustomDomainsForTopicsConfigurationList =
-  ReadonlyArray<CustomDomainConfiguration>;
+  Array<CustomDomainConfiguration>;
 export const CustomDomainOwnershipValidationResultCustomDomainsForTopicsConfigurationList =
   /*@__PURE__*/ S.Array(
     CustomDomainConfiguration,
@@ -6848,7 +6844,7 @@ export const CustomDomainOwnershipValidationResultCustomDomainsForTopicsConfigur
 
 /** List of custom domain configurations for the namespace under topic spaces configuration. */
 export type CustomDomainOwnershipValidationResultCustomDomainsForTopicSpacesConfigurationList =
-  ReadonlyArray<CustomDomainConfiguration>;
+  Array<CustomDomainConfiguration>;
 export const CustomDomainOwnershipValidationResultCustomDomainsForTopicSpacesConfigurationList =
   /*@__PURE__*/ S.Array(
     CustomDomainConfiguration,
@@ -6929,7 +6925,7 @@ export const PushInfo = /*@__PURE__*/ S.suspend(() =>
 /** Properties of the delivery configuration information of the event subscription. */
 export interface DeliveryConfiguration {
   /** Delivery mode of the event subscription. */
-  deliveryMode?: DeliveryConfigurationDeliveryMode;
+  deliveryMode?: DeliveryConfigurationDeliveryMode | (string & {});
   /** This property should be populated when deliveryMode is queue and represents information about the queue subscription. */
   queue?: QueueInfo;
   /** This property should be populated when deliveryMode is push and represents information about the push subscription. */
@@ -6952,7 +6948,7 @@ export const SubscriptionPropertiesInputEventDeliverySchema =
   /*@__PURE__*/ S.String;
 
 /** A list of applicable event types that need to be part of the event subscription. If it is desired to subscribe to all default event types, set the IncludedEventTypes to null. */
-export type FiltersConfigurationIncludedEventTypesList = ReadonlyArray<string>;
+export type FiltersConfigurationIncludedEventTypesList = Array<string>;
 export const FiltersConfigurationIncludedEventTypesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<FiltersConfigurationIncludedEventTypesList>;
@@ -6983,7 +6979,7 @@ export const FilterOperatorType = /*@__PURE__*/ S.String;
 /** This is the base type that represents a filter. To configure a filter, do not directly instantiate an object of this class. Instead, instantiate an object of a derived class such as BoolEqualsFilter, NumberInFilter etc depending on the type of the key based on which you want to filter. */
 export interface Filter {
   /** The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others. */
-  operatorType: FilterOperatorType;
+  operatorType: FilterOperatorType | (string & {});
   /** The field/property in the event based on which you want to filter. */
   key?: string;
 }
@@ -6995,7 +6991,7 @@ export const Filter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Filter" }) as any as S.Schema<Filter>;
 
 /** An array of filters that are used for filtering event subscriptions. */
-export type FiltersConfigurationFiltersList = ReadonlyArray<Filter>;
+export type FiltersConfigurationFiltersList = Array<Filter>;
 export const FiltersConfigurationFiltersList = /*@__PURE__*/ S.Array(
   Filter,
 ) as any as S.Schema<FiltersConfigurationFiltersList>;
@@ -7516,7 +7512,7 @@ export const Subscription = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Subscription" }) as any as S.Schema<Subscription>;
 
 /** A collection of Subscriptions. */
-export type SubscriptionsListResultValueList = ReadonlyArray<Subscription>;
+export type SubscriptionsListResultValueList = Array<Subscription>;
 export const SubscriptionsListResultValueList = /*@__PURE__*/ S.Array(
   Subscription,
 ) as any as S.Schema<SubscriptionsListResultValueList>;
@@ -8095,7 +8091,7 @@ export const NamespaceTopic = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NamespaceTopic" }) as any as S.Schema<NamespaceTopic>;
 
 /** A collection of namespace topics. */
-export type NamespaceTopicsListResultValueList = ReadonlyArray<NamespaceTopic>;
+export type NamespaceTopicsListResultValueList = Array<NamespaceTopic>;
 export const NamespaceTopicsListResultValueList = /*@__PURE__*/ S.Array(
   NamespaceTopic,
 ) as any as S.Schema<NamespaceTopicsListResultValueList>;
@@ -8370,7 +8366,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** A collection of operations */
-export type OperationsListResultValueList = ReadonlyArray<Operation>;
+export type OperationsListResultValueList = Array<Operation>;
 export const OperationsListResultValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResultValueList>;
@@ -8438,8 +8434,7 @@ export const Partner = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Partner" }) as any as S.Schema<Partner>;
 
 /** The list of authorized partners. */
-export type PartnerAuthorizationAuthorizedPartnersListList =
-  ReadonlyArray<Partner>;
+export type PartnerAuthorizationAuthorizedPartnersListList = Array<Partner>;
 export const PartnerAuthorizationAuthorizedPartnersListList =
   /*@__PURE__*/ S.Array(
     Partner,
@@ -8479,7 +8474,9 @@ export interface PartnerConfigurationProperties {
   /** The details of authorized partners. */
   partnerAuthorization?: PartnerAuthorization;
   /** Provisioning state of the partner configuration. */
-  provisioningState?: PartnerConfigurationPropertiesProvisioningState;
+  provisioningState?:
+    | PartnerConfigurationPropertiesProvisioningState
+    | (string & {});
 }
 export const PartnerConfigurationProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -8962,7 +8959,7 @@ export const PartnerConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** A collection of partner configurations. */
 export type PartnerConfigurationsListResultValueList =
-  ReadonlyArray<PartnerConfiguration>;
+  Array<PartnerConfiguration>;
 export const PartnerConfigurationsListResultValueList = /*@__PURE__*/ S.Array(
   PartnerConfiguration,
 ) as any as S.Schema<PartnerConfigurationsListResultValueList>;
@@ -9298,7 +9295,7 @@ export const PartnerNamespacePropertiesInputPublicNetworkAccess =
 
 /** This can be used to restrict traffic from specific IPs instead of all IPs. Note: These are considered only if PublicNetworkAccess is enabled. */
 export type PartnerNamespacePropertiesInputInboundIpRulesList =
-  ReadonlyArray<InboundIpRule>;
+  Array<InboundIpRule>;
 export const PartnerNamespacePropertiesInputInboundIpRulesList =
   /*@__PURE__*/ S.Array(
     InboundIpRule,
@@ -9400,7 +9397,7 @@ export const PartnerNamespacesCreateOrUpdateResponseTagsMap =
 
 /** List of private endpoint connections. */
 export type PartnerNamespacePropertiesPrivateEndpointConnectionsList =
-  ReadonlyArray<PrivateEndpointConnection>;
+  Array<PrivateEndpointConnection>;
 export const PartnerNamespacePropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection,
@@ -9433,8 +9430,7 @@ export const PartnerNamespacePropertiesPublicNetworkAccess =
   /*@__PURE__*/ S.String;
 
 /** This can be used to restrict traffic from specific IPs instead of all IPs. Note: These are considered only if PublicNetworkAccess is enabled. */
-export type PartnerNamespacePropertiesInboundIpRulesList =
-  ReadonlyArray<InboundIpRule>;
+export type PartnerNamespacePropertiesInboundIpRulesList = Array<InboundIpRule>;
 export const PartnerNamespacePropertiesInboundIpRulesList =
   /*@__PURE__*/ S.Array(
     InboundIpRule,
@@ -9833,8 +9829,7 @@ export const PartnerNamespace = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PartnerNamespace>;
 
 /** A collection of partner namespaces. */
-export type PartnerNamespacesListResultValueList =
-  ReadonlyArray<PartnerNamespace>;
+export type PartnerNamespacesListResultValueList = Array<PartnerNamespace>;
 export const PartnerNamespacesListResultValueList = /*@__PURE__*/ S.Array(
   PartnerNamespace,
 ) as any as S.Schema<PartnerNamespacesListResultValueList>;
@@ -9970,7 +9965,7 @@ export const PartnerNamespaceUpdateParameterPropertiesPublicNetworkAccess =
 
 /** This can be used to restrict traffic from specific IPs instead of all IPs. Note: These are considered only if PublicNetworkAccess is enabled. */
 export type PartnerNamespaceUpdateParameterPropertiesInboundIpRulesList =
-  ReadonlyArray<InboundIpRule>;
+  Array<InboundIpRule>;
 export const PartnerNamespaceUpdateParameterPropertiesInboundIpRulesList =
   /*@__PURE__*/ S.Array(
     InboundIpRule,
@@ -10497,7 +10492,7 @@ export const PartnerRegistration = /*@__PURE__*/ S.suspend(() =>
 
 /** A collection of partner registrations. */
 export type PartnerRegistrationsListResultValueList =
-  ReadonlyArray<PartnerRegistration>;
+  Array<PartnerRegistration>;
 export const PartnerRegistrationsListResultValueList = /*@__PURE__*/ S.Array(
   PartnerRegistration,
 ) as any as S.Schema<PartnerRegistrationsListResultValueList>;
@@ -10924,7 +10919,7 @@ export const PartnerTopicEventSubscriptionsListByPartnerTopicRequest =
 
 /** List of user defined labels. */
 export type PartnerTopicEventSubscriptionsUpdateRequestLabelsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PartnerTopicEventSubscriptionsUpdateRequestLabelsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -11799,7 +11794,7 @@ export const PartnerTopic = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PartnerTopic" }) as any as S.Schema<PartnerTopic>;
 
 /** A collection of partner topics. */
-export type PartnerTopicsListResultValueList = ReadonlyArray<PartnerTopic>;
+export type PartnerTopicsListResultValueList = Array<PartnerTopic>;
 export const PartnerTopicsListResultValueList = /*@__PURE__*/ S.Array(
   PartnerTopic,
 ) as any as S.Schema<PartnerTopicsListResultValueList>;
@@ -12313,8 +12308,7 @@ export const PermissionBinding = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PermissionBinding>;
 
 /** A collection of Permission Binding. */
-export type PermissionBindingsListResultValueList =
-  ReadonlyArray<PermissionBinding>;
+export type PermissionBindingsListResultValueList = Array<PermissionBinding>;
 export const PermissionBindingsListResultValueList = /*@__PURE__*/ S.Array(
   PermissionBinding,
 ) as any as S.Schema<PermissionBindingsListResultValueList>;
@@ -12498,7 +12492,7 @@ export const PrivateEndpointConnectionsListByResourceRequest =
 
 /** A collection of private endpoint connection resources. */
 export type PrivateEndpointConnectionListResultValueList =
-  ReadonlyArray<PrivateEndpointConnection>;
+  Array<PrivateEndpointConnection>;
 export const PrivateEndpointConnectionListResultValueList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection,
@@ -12618,15 +12612,13 @@ export const PrivateLinkResourcesGetRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PrivateLinkResourcesGetRequest",
 }) as any as S.Schema<PrivateLinkResourcesGetRequest>;
 
-export type PrivateLinkResourcePropertiesRequiredMembersList =
-  ReadonlyArray<string>;
+export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
 export const PrivateLinkResourcePropertiesRequiredMembersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
 
-export type PrivateLinkResourcePropertiesRequiredZoneNamesList =
-  ReadonlyArray<string>;
+export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
 export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -12712,7 +12704,7 @@ export const PrivateLinkResourcesListByResourceRequest =
 
 /** A collection of private link resources */
 export type PrivateLinkResourcesListResultValueList =
-  ReadonlyArray<PrivateLinkResource>;
+  Array<PrivateLinkResource>;
 export const PrivateLinkResourcesListResultValueList = /*@__PURE__*/ S.Array(
   PrivateLinkResource,
 ) as any as S.Schema<PrivateLinkResourcesListResultValueList>;
@@ -13068,7 +13060,7 @@ export const SystemTopicEventSubscriptionsListBySystemTopicRequest =
 
 /** List of user defined labels. */
 export type SystemTopicEventSubscriptionsUpdateRequestLabelsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const SystemTopicEventSubscriptionsUpdateRequestLabelsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -13663,7 +13655,7 @@ export const SystemTopic = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SystemTopic" }) as any as S.Schema<SystemTopic>;
 
 /** A collection of system Topics. */
-export type SystemTopicsListResultValueList = ReadonlyArray<SystemTopic>;
+export type SystemTopicsListResultValueList = Array<SystemTopic>;
 export const SystemTopicsListResultValueList = /*@__PURE__*/ S.Array(
   SystemTopic,
 ) as any as S.Schema<SystemTopicsListResultValueList>;
@@ -14176,8 +14168,7 @@ export const TopicEventSubscriptionsListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TopicEventSubscriptionsListRequest>;
 
 /** List of user defined labels. */
-export type TopicEventSubscriptionsUpdateRequestLabelsList =
-  ReadonlyArray<string>;
+export type TopicEventSubscriptionsUpdateRequestLabelsList = Array<string>;
 export const TopicEventSubscriptionsUpdateRequestLabelsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -14358,8 +14349,7 @@ export type TopicPropertiesInputPublicNetworkAccess = "Enabled" | "Disabled";
 export const TopicPropertiesInputPublicNetworkAccess = /*@__PURE__*/ S.String;
 
 /** This can be used to restrict traffic from specific IPs instead of all IPs. Note: These are considered only if PublicNetworkAccess is enabled. */
-export type TopicPropertiesInputInboundIpRulesList =
-  ReadonlyArray<InboundIpRule>;
+export type TopicPropertiesInputInboundIpRulesList = Array<InboundIpRule>;
 export const TopicPropertiesInputInboundIpRulesList = /*@__PURE__*/ S.Array(
   InboundIpRule,
 ) as any as S.Schema<TopicPropertiesInputInboundIpRulesList>;
@@ -14460,7 +14450,7 @@ export const TopicsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 
 /** List of private endpoint connections. */
 export type TopicPropertiesPrivateEndpointConnectionsList =
-  ReadonlyArray<PrivateEndpointConnection>;
+  Array<PrivateEndpointConnection>;
 export const TopicPropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection,
@@ -14492,7 +14482,7 @@ export type TopicPropertiesPublicNetworkAccess = "Enabled" | "Disabled";
 export const TopicPropertiesPublicNetworkAccess = /*@__PURE__*/ S.String;
 
 /** This can be used to restrict traffic from specific IPs instead of all IPs. Note: These are considered only if PublicNetworkAccess is enabled. */
-export type TopicPropertiesInboundIpRulesList = ReadonlyArray<InboundIpRule>;
+export type TopicPropertiesInboundIpRulesList = Array<InboundIpRule>;
 export const TopicPropertiesInboundIpRulesList = /*@__PURE__*/ S.Array(
   InboundIpRule,
 ) as any as S.Schema<TopicPropertiesInboundIpRulesList>;
@@ -14893,7 +14883,7 @@ export const Topic = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Topic" }) as any as S.Schema<Topic>;
 
 /** A collection of Topics */
-export type TopicsListResultValueList = ReadonlyArray<Topic>;
+export type TopicsListResultValueList = Array<Topic>;
 export const TopicsListResultValueList = /*@__PURE__*/ S.Array(
   Topic,
 ) as any as S.Schema<TopicsListResultValueList>;
@@ -15013,7 +15003,7 @@ export const EventType = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EventType" }) as any as S.Schema<EventType>;
 
 /** A collection of event types */
-export type EventTypesListResultValueList = ReadonlyArray<EventType>;
+export type EventTypesListResultValueList = Array<EventType>;
 export const EventTypesListResultValueList = /*@__PURE__*/ S.Array(
   EventType,
 ) as any as S.Schema<EventTypesListResultValueList>;
@@ -15057,7 +15047,7 @@ export const TopicsListSharedAccessKeysRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TopicsListSharedAccessKeysRequest>;
 
 /** The topic filters in the topic space. Example: "topicTemplates": [ "devices/foo/bar", "devices/topic1/+", "devices/${principal.name}/${principal.attributes.keyName}" ]. */
-export type TopicSpacePropertiesInputTopicTemplatesList = ReadonlyArray<string>;
+export type TopicSpacePropertiesInputTopicTemplatesList = Array<string>;
 export const TopicSpacePropertiesInputTopicTemplatesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -15111,7 +15101,7 @@ export const TopicSpacesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TopicSpacesCreateOrUpdateRequest>;
 
 /** The topic filters in the topic space. Example: "topicTemplates": [ "devices/foo/bar", "devices/topic1/+", "devices/${principal.name}/${principal.attributes.keyName}" ]. */
-export type TopicSpacePropertiesTopicTemplatesList = ReadonlyArray<string>;
+export type TopicSpacePropertiesTopicTemplatesList = Array<string>;
 export const TopicSpacePropertiesTopicTemplatesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<TopicSpacePropertiesTopicTemplatesList>;
@@ -15455,7 +15445,7 @@ export const TopicSpace = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TopicSpace" }) as any as S.Schema<TopicSpace>;
 
 /** A collection of Topic Space. */
-export type TopicSpacesListResultValueList = ReadonlyArray<TopicSpace>;
+export type TopicSpacesListResultValueList = Array<TopicSpace>;
 export const TopicSpacesListResultValueList = /*@__PURE__*/ S.Array(
   TopicSpace,
 ) as any as S.Schema<TopicSpacesListResultValueList>;
@@ -15520,7 +15510,7 @@ export const TopicUpdateParameterPropertiesPublicNetworkAccess =
 
 /** This can be used to restrict traffic from specific IPs instead of all IPs. Note: These are considered only if PublicNetworkAccess is enabled. */
 export type TopicUpdateParameterPropertiesInboundIpRulesList =
-  ReadonlyArray<InboundIpRule>;
+  Array<InboundIpRule>;
 export const TopicUpdateParameterPropertiesInboundIpRulesList =
   /*@__PURE__*/ S.Array(
     InboundIpRule,
@@ -15660,7 +15650,7 @@ export type TopicTypePropertiesProvisioningState =
 export const TopicTypePropertiesProvisioningState = /*@__PURE__*/ S.String;
 
 /** List of locations supported by this topic type. */
-export type TopicTypePropertiesSupportedLocationsList = ReadonlyArray<string>;
+export type TopicTypePropertiesSupportedLocationsList = Array<string>;
 export const TopicTypePropertiesSupportedLocationsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<TopicTypePropertiesSupportedLocationsList>;
@@ -15675,7 +15665,7 @@ export const TopicTypePropertiesSupportedScopesForSourceItem =
 
 /** Supported source scopes. */
 export type TopicTypePropertiesSupportedScopesForSourceList =
-  ReadonlyArray<TopicTypePropertiesSupportedScopesForSourceItem>;
+  Array<TopicTypePropertiesSupportedScopesForSourceItem>;
 export const TopicTypePropertiesSupportedScopesForSourceList =
   /*@__PURE__*/ S.Array(
     TopicTypePropertiesSupportedScopesForSourceItem,
@@ -15697,7 +15687,7 @@ export const TopicTypeAdditionalEnforcedPermission = /*@__PURE__*/ S.suspend(
 
 /** Permissions which are enforced for creating and updating system topics of this this topic type. */
 export type TopicTypePropertiesAdditionalEnforcedPermissionsList =
-  ReadonlyArray<TopicTypeAdditionalEnforcedPermission>;
+  Array<TopicTypeAdditionalEnforcedPermission>;
 export const TopicTypePropertiesAdditionalEnforcedPermissionsList =
   /*@__PURE__*/ S.Array(
     TopicTypeAdditionalEnforcedPermission,
@@ -15803,7 +15793,7 @@ export const TopicTypeInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TopicTypeInfo" }) as any as S.Schema<TopicTypeInfo>;
 
 /** A collection of topic types */
-export type TopicTypesListResultValueList = ReadonlyArray<TopicTypeInfo>;
+export type TopicTypesListResultValueList = Array<TopicTypeInfo>;
 export const TopicTypesListResultValueList = /*@__PURE__*/ S.Array(
   TopicTypeInfo,
 ) as any as S.Schema<TopicTypesListResultValueList>;
@@ -16080,8 +16070,7 @@ export const VerifiedPartner = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VerifiedPartner>;
 
 /** A collection of verified partners. */
-export type VerifiedPartnersListResultValueList =
-  ReadonlyArray<VerifiedPartner>;
+export type VerifiedPartnersListResultValueList = Array<VerifiedPartner>;
 export const VerifiedPartnersListResultValueList = /*@__PURE__*/ S.Array(
   VerifiedPartner,
 ) as any as S.Schema<VerifiedPartnersListResultValueList>;

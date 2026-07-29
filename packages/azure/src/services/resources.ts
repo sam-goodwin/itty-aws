@@ -70,7 +70,7 @@ export const ApplicationAuthorization = /*@__PURE__*/ S.suspend(() =>
 
 /** The managed application provider authorizations. */
 export type ApplicationDefinitionPropertiesAuthorizationsList =
-  ReadonlyArray<ApplicationAuthorization>;
+  Array<ApplicationAuthorization>;
 export const ApplicationDefinitionPropertiesAuthorizationsList =
   /*@__PURE__*/ S.Array(
     ApplicationAuthorization,
@@ -91,11 +91,11 @@ export const ApplicationArtifactType = /*@__PURE__*/ S.String;
 /** Application definition artifact. */
 export interface ApplicationDefinitionArtifact {
   /** The managed application definition artifact name. */
-  name: ApplicationDefinitionArtifactName;
+  name: ApplicationDefinitionArtifactName | (string & {});
   /** The managed application definition artifact blob uri. */
   uri: string;
   /** The managed application definition artifact type. */
-  type: ApplicationArtifactType;
+  type: ApplicationArtifactType | (string & {});
 }
 export const ApplicationDefinitionArtifact = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -109,7 +109,7 @@ export const ApplicationDefinitionArtifact = /*@__PURE__*/ S.suspend(() =>
 
 /** The collection of managed application artifacts. The portal will use the files specified as artifacts to construct the user experience of creating a managed application from a managed application definition. */
 export type ApplicationDefinitionPropertiesArtifactsList =
-  ReadonlyArray<ApplicationDefinitionArtifact>;
+  Array<ApplicationDefinitionArtifact>;
 export const ApplicationDefinitionPropertiesArtifactsList =
   /*@__PURE__*/ S.Array(
     ApplicationDefinitionArtifact,
@@ -130,7 +130,7 @@ export const ApplicationNotificationEndpoint = /*@__PURE__*/ S.suspend(() =>
 
 /** The managed application notification endpoint. */
 export type ApplicationNotificationPolicyNotificationEndpointsList =
-  ReadonlyArray<ApplicationNotificationEndpoint>;
+  Array<ApplicationNotificationEndpoint>;
 export const ApplicationNotificationPolicyNotificationEndpointsList =
   /*@__PURE__*/ S.Array(
     ApplicationNotificationEndpoint,
@@ -152,7 +152,7 @@ export const ApplicationNotificationPolicy = /*@__PURE__*/ S.suspend(() =>
 
 /** The deny assignment excluded actions. */
 export type ApplicationPackageLockingPolicyDefinitionAllowedActionsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ApplicationPackageLockingPolicyDefinitionAllowedActionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -160,7 +160,7 @@ export const ApplicationPackageLockingPolicyDefinitionAllowedActionsList =
 
 /** The deny assignment excluded data actions. */
 export type ApplicationPackageLockingPolicyDefinitionAllowedDataActionsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ApplicationPackageLockingPolicyDefinitionAllowedDataActionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -194,7 +194,7 @@ export const DeploymentMode_2 = /*@__PURE__*/ S.String;
 /** Managed application deployment policy. */
 export interface ApplicationDeploymentPolicy {
   /** The managed application deployment mode. */
-  deploymentMode: DeploymentMode_2;
+  deploymentMode: DeploymentMode_2 | (string & {});
 }
 export const ApplicationDeploymentPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -214,7 +214,7 @@ export const ApplicationManagementMode = /*@__PURE__*/ S.String;
 /** Managed application management policy. */
 export interface ApplicationManagementPolicy {
   /** The managed application management mode. */
-  mode?: ApplicationManagementMode;
+  mode?: ApplicationManagementMode | (string & {});
 }
 export const ApplicationManagementPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -245,7 +245,7 @@ export const ApplicationPolicy = /*@__PURE__*/ S.suspend(() =>
 
 /** The managed application provider policies. */
 export type ApplicationDefinitionPropertiesPoliciesList =
-  ReadonlyArray<ApplicationPolicy>;
+  Array<ApplicationPolicy>;
 export const ApplicationDefinitionPropertiesPoliciesList =
   /*@__PURE__*/ S.Array(
     ApplicationPolicy,
@@ -254,7 +254,7 @@ export const ApplicationDefinitionPropertiesPoliciesList =
 /** The managed application definition properties. */
 export interface ApplicationDefinitionProperties {
   /** The managed application lock level. */
-  lockLevel: ApplicationLockLevel;
+  lockLevel: ApplicationLockLevel | (string & {});
   /** The managed application definition display name. */
   displayName?: string;
   /** A value indicating whether the package is enabled or not. */
@@ -557,7 +557,7 @@ export const ApplicationDefinition = /*@__PURE__*/ S.suspend(() =>
 
 /** The array of managed application definitions. */
 export type ApplicationDefinitionListResultValueList =
-  ReadonlyArray<ApplicationDefinition>;
+  Array<ApplicationDefinition>;
 export const ApplicationDefinitionListResultValueList = /*@__PURE__*/ S.Array(
   ApplicationDefinition,
 ) as any as S.Schema<ApplicationDefinitionListResultValueList>;
@@ -600,7 +600,7 @@ export interface JitApproverDefinition {
   /** The approver service principal Id. */
   id: string;
   /** The approver type. */
-  type?: JitApproverDefinitionType;
+  type?: JitApproverDefinitionType | (string & {});
   /** The approver display name. */
   displayName?: string;
 }
@@ -616,7 +616,7 @@ export const JitApproverDefinition = /*@__PURE__*/ S.suspend(() =>
 
 /** The JIT approvers */
 export type ApplicationJitAccessPolicyJitApproversList =
-  ReadonlyArray<JitApproverDefinition>;
+  Array<JitApproverDefinition>;
 export const ApplicationJitAccessPolicyJitApproversList = /*@__PURE__*/ S.Array(
   JitApproverDefinition,
 ) as any as S.Schema<ApplicationJitAccessPolicyJitApproversList>;
@@ -626,7 +626,7 @@ export interface ApplicationJitAccessPolicy {
   /** Whether the JIT access is enabled. */
   jitAccessEnabled: boolean;
   /** JIT approval mode. */
-  jitApprovalMode?: JitApprovalMode;
+  jitApprovalMode?: JitApprovalMode | (string & {});
   /** The JIT approvers */
   jitApprovers?: ApplicationJitAccessPolicyJitApproversList;
   /** The maximum duration JIT access is granted. This is an ISO8601 time period value. */
@@ -820,7 +820,7 @@ export const ApplicationBillingDetailsDefinition = /*@__PURE__*/ S.suspend(() =>
 
 /** The read-only authorizations property that is retrieved from the application package. */
 export type ApplicationPropertiesAuthorizationsList =
-  ReadonlyArray<ApplicationAuthorization>;
+  Array<ApplicationAuthorization>;
 export const ApplicationPropertiesAuthorizationsList = /*@__PURE__*/ S.Array(
   ApplicationAuthorization,
 ) as any as S.Schema<ApplicationPropertiesAuthorizationsList>;
@@ -888,8 +888,7 @@ export const ApplicationArtifact = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ApplicationArtifact>;
 
 /** The collection of managed application artifacts. */
-export type ApplicationPropertiesArtifactsList =
-  ReadonlyArray<ApplicationArtifact>;
+export type ApplicationPropertiesArtifactsList = Array<ApplicationArtifact>;
 export const ApplicationPropertiesArtifactsList = /*@__PURE__*/ S.Array(
   ApplicationArtifact,
 ) as any as S.Schema<ApplicationPropertiesArtifactsList>;
@@ -1446,7 +1445,7 @@ export const Application = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Application" }) as any as S.Schema<Application>;
 
 /** The array of managed applications. */
-export type ApplicationListResultValueList = ReadonlyArray<Application>;
+export type ApplicationListResultValueList = Array<Application>;
 export const ApplicationListResultValueList = /*@__PURE__*/ S.Array(
   Application,
 ) as any as S.Schema<ApplicationListResultValueList>;
@@ -1803,7 +1802,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of Microsoft.Authorization operations. */
-export type OperationListResultValueList = ReadonlyArray<Operation>;
+export type OperationListResultValueList = Array<Operation>;
 export const OperationListResultValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationListResultValueList>;
@@ -2024,8 +2023,7 @@ export const ChangeResourceResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ChangeResourceResult>;
 
 /** The list of resources */
-export type ChangeResourceListResultValueList =
-  ReadonlyArray<ChangeResourceResult>;
+export type ChangeResourceListResultValueList = Array<ChangeResourceResult>;
 export const ChangeResourceListResultValueList = /*@__PURE__*/ S.Array(
   ChangeResourceResult,
 ) as any as S.Schema<ChangeResourceListResultValueList>;
@@ -2176,9 +2174,9 @@ export const ProvisioningState = /*@__PURE__*/ S.String;
 /** Data boundary properties */
 export interface DataBoundaryProperties {
   /** The data boundary definition. */
-  dataBoundary?: DataBoundary;
+  dataBoundary?: DataBoundary | (string & {});
   /** Denotes the state of provisioning. */
-  provisioningState?: ProvisioningState;
+  provisioningState?: ProvisioningState | (string & {});
 }
 export const DataBoundaryProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2329,13 +2327,13 @@ export const DataPolicyManifestsGetByPolicyModeRequest =
   }) as any as S.Schema<DataPolicyManifestsGetByPolicyModeRequest>;
 
 /** The list of namespaces for the data policy manifest. */
-export type DataPolicyManifestPropertiesNamespacesList = ReadonlyArray<string>;
+export type DataPolicyManifestPropertiesNamespacesList = Array<string>;
 export const DataPolicyManifestPropertiesNamespacesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DataPolicyManifestPropertiesNamespacesList>;
 
 /** The API versions. */
-export type AliasPathApiVersionsList = ReadonlyArray<string>;
+export type AliasPathApiVersionsList = Array<string>;
 export const AliasPathApiVersionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AliasPathApiVersionsList>;
@@ -2414,7 +2412,7 @@ export const AliasPath = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AliasPath" }) as any as S.Schema<AliasPath>;
 
 /** The paths for an alias. */
-export type AliasPathsList = ReadonlyArray<AliasPath>;
+export type AliasPathsList = Array<AliasPath>;
 export const AliasPathsList = /*@__PURE__*/ S.Array(
   AliasPath,
 ) as any as S.Schema<AliasPathsList>;
@@ -2450,7 +2448,7 @@ export const Alias = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Alias" }) as any as S.Schema<Alias>;
 
 /** The aliases for property names. */
-export type ResourceTypeAliasesAliasesList = ReadonlyArray<Alias>;
+export type ResourceTypeAliasesAliasesList = Array<Alias>;
 export const ResourceTypeAliasesAliasesList = /*@__PURE__*/ S.Array(
   Alias,
 ) as any as S.Schema<ResourceTypeAliasesAliasesList>;
@@ -2473,7 +2471,7 @@ export const ResourceTypeAliases = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of resource type aliases. */
 export type DataPolicyManifestPropertiesResourceTypeAliasesList =
-  ReadonlyArray<ResourceTypeAliases>;
+  Array<ResourceTypeAliases>;
 export const DataPolicyManifestPropertiesResourceTypeAliasesList =
   /*@__PURE__*/ S.Array(
     ResourceTypeAliases,
@@ -2494,21 +2492,20 @@ export const DataEffect = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DataEffect" }) as any as S.Schema<DataEffect>;
 
 /** The effect definition. */
-export type DataPolicyManifestPropertiesEffectsList = ReadonlyArray<DataEffect>;
+export type DataPolicyManifestPropertiesEffectsList = Array<DataEffect>;
 export const DataPolicyManifestPropertiesEffectsList = /*@__PURE__*/ S.Array(
   DataEffect,
 ) as any as S.Schema<DataPolicyManifestPropertiesEffectsList>;
 
 /** The non-alias field accessor values that can be used in the policy rule. */
-export type DataPolicyManifestPropertiesFieldValuesList = ReadonlyArray<string>;
+export type DataPolicyManifestPropertiesFieldValuesList = Array<string>;
 export const DataPolicyManifestPropertiesFieldValuesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<DataPolicyManifestPropertiesFieldValuesList>;
 
 /** The standard resource functions (subscription and/or resourceGroup). */
-export type DataManifestResourceFunctionsDefinitionStandardList =
-  ReadonlyArray<string>;
+export type DataManifestResourceFunctionsDefinitionStandardList = Array<string>;
 export const DataManifestResourceFunctionsDefinitionStandardList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2516,7 +2513,7 @@ export const DataManifestResourceFunctionsDefinitionStandardList =
 
 /** The top-level properties that can be selected on the function's output. eg - [ \"name\", \"location\" ] if vault().name and vault().location are supported. */
 export type DataManifestCustomResourceFunctionDefinitionDefaultPropertiesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const DataManifestCustomResourceFunctionDefinitionDefaultPropertiesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2549,7 +2546,7 @@ export const DataManifestCustomResourceFunctionDefinition =
 
 /** An array of data manifest custom resource definitions. */
 export type DataManifestResourceFunctionsDefinitionCustomList =
-  ReadonlyArray<DataManifestCustomResourceFunctionDefinition>;
+  Array<DataManifestCustomResourceFunctionDefinition>;
 export const DataManifestResourceFunctionsDefinitionCustomList =
   /*@__PURE__*/ S.Array(
     DataManifestCustomResourceFunctionDefinition,
@@ -2675,8 +2672,7 @@ export const DataPolicyManifest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DataPolicyManifest>;
 
 /** The DataPolicyManifest items on this page */
-export type DataPolicyManifestListResultValueList =
-  ReadonlyArray<DataPolicyManifest>;
+export type DataPolicyManifestListResultValueList = Array<DataPolicyManifest>;
 export const DataPolicyManifestListResultValueList = /*@__PURE__*/ S.Array(
   DataPolicyManifest,
 ) as any as S.Schema<DataPolicyManifestListResultValueList>;
@@ -2734,8 +2730,7 @@ export const FileDefinition = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FileDefinition" }) as any as S.Schema<FileDefinition>;
 
 /** An array of key-value pairs containing the entryPoint string as the key for the Bicep file decompiled from the ARM json template */
-export type DecompileOperationSuccessResponseFilesList =
-  ReadonlyArray<FileDefinition>;
+export type DecompileOperationSuccessResponseFilesList = Array<FileDefinition>;
 export const DecompileOperationSuccessResponseFilesList = /*@__PURE__*/ S.Array(
   FileDefinition,
 ) as any as S.Schema<DecompileOperationSuccessResponseFilesList>;
@@ -2799,7 +2794,7 @@ export type ProvisioningOperation =
 export const ProvisioningOperation = /*@__PURE__*/ S.String;
 
 /** The error details. */
-export type ErrorResponseDetailsList = ReadonlyArray<ErrorResponse>;
+export type ErrorResponseDetailsList = Array<ErrorResponse>;
 export const ErrorResponseDetailsList = /*@__PURE__*/ S.Array(
   S.suspend(() => ErrorResponse),
 ) as any as S.Schema<ErrorResponseDetailsList>;
@@ -2822,7 +2817,7 @@ export const ErrorResponseAdditionalInfoItem = /*@__PURE__*/ S.suspend(() =>
 
 /** The error additional info. */
 export type ErrorResponseAdditionalInfoList =
-  ReadonlyArray<ErrorResponseAdditionalInfoItem>;
+  Array<ErrorResponseAdditionalInfoItem>;
 export const ErrorResponseAdditionalInfoList = /*@__PURE__*/ S.Array(
   ErrorResponseAdditionalInfoItem,
 ) as any as S.Schema<ErrorResponseAdditionalInfoList>;
@@ -2908,7 +2903,7 @@ export const KeyVaultParameterReference_2 = /*@__PURE__*/ S.suspend(() =>
 
 export interface DeploymentExtensionConfigItem_2 {
   /** The value type of the extension config property. */
-  type?: ExtensionConfigPropertyType;
+  type?: ExtensionConfigPropertyType | (string & {});
   /** The value of the extension config property. */
   value?: unknown;
   /** The Azure Key Vault reference used to retrieve the secret value of the extension config property. */
@@ -3187,7 +3182,7 @@ export const DeploymentOperationsListRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The DeploymentOperation items on this page */
 export type DeploymentOperationsListResultValueList =
-  ReadonlyArray<DeploymentOperation>;
+  Array<DeploymentOperation>;
 export const DeploymentOperationsListResultValueList = /*@__PURE__*/ S.Array(
   DeploymentOperation,
 ) as any as S.Schema<DeploymentOperationsListResultValueList>;
@@ -3826,14 +3821,13 @@ export type ProvisioningState_2 =
 export const ProvisioningState_2 = /*@__PURE__*/ S.String;
 
 /** The collection of locations where this resource type can be created. */
-export type ProviderResourceTypeLocationsList = ReadonlyArray<string>;
+export type ProviderResourceTypeLocationsList = Array<string>;
 export const ProviderResourceTypeLocationsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ProviderResourceTypeLocationsList>;
 
 /** The extended locations for the azure location. */
-export type ProviderExtendedLocationExtendedLocationsList =
-  ReadonlyArray<string>;
+export type ProviderExtendedLocationExtendedLocationsList = Array<string>;
 export const ProviderExtendedLocationExtendedLocationsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3862,7 +3856,7 @@ export const ProviderExtendedLocation = /*@__PURE__*/ S.suspend(() =>
 
 /** The location mappings that are supported by this resource type. */
 export type ProviderResourceTypeLocationMappingsList =
-  ReadonlyArray<ProviderExtendedLocation>;
+  Array<ProviderExtendedLocation>;
 export const ProviderResourceTypeLocationMappingsList = /*@__PURE__*/ S.Array(
   ProviderExtendedLocation,
 ) as any as S.Schema<ProviderResourceTypeLocationMappingsList>;
@@ -3924,7 +3918,7 @@ export const AliasPath_2 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AliasPath_2" }) as any as S.Schema<AliasPath_2>;
 
 /** The paths for an alias. */
-export type AliasPathsList_2 = ReadonlyArray<AliasPath_2>;
+export type AliasPathsList_2 = Array<AliasPath_2>;
 export const AliasPathsList_2 = /*@__PURE__*/ S.Array(
   AliasPath_2,
 ) as any as S.Schema<AliasPathsList_2>;
@@ -3956,18 +3950,18 @@ export const Alias_2 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Alias_2" }) as any as S.Schema<Alias_2>;
 
 /** The aliases that are supported by this resource type. */
-export type ProviderResourceTypeAliasesList = ReadonlyArray<Alias_2>;
+export type ProviderResourceTypeAliasesList = Array<Alias_2>;
 export const ProviderResourceTypeAliasesList = /*@__PURE__*/ S.Array(
   Alias_2,
 ) as any as S.Schema<ProviderResourceTypeAliasesList>;
 
 /** The API version. */
-export type ProviderResourceTypeApiVersionsList = ReadonlyArray<string>;
+export type ProviderResourceTypeApiVersionsList = Array<string>;
 export const ProviderResourceTypeApiVersionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ProviderResourceTypeApiVersionsList>;
 
-export type ZoneMappingZonesList = ReadonlyArray<string>;
+export type ZoneMappingZonesList = Array<string>;
 export const ZoneMappingZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ZoneMappingZonesList>;
@@ -3984,7 +3978,7 @@ export const ZoneMapping = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ZoneMapping" }) as any as S.Schema<ZoneMapping>;
 
-export type ProviderResourceTypeZoneMappingsList = ReadonlyArray<ZoneMapping>;
+export type ProviderResourceTypeZoneMappingsList = Array<ZoneMapping>;
 export const ProviderResourceTypeZoneMappingsList = /*@__PURE__*/ S.Array(
   ZoneMapping,
 ) as any as S.Schema<ProviderResourceTypeZoneMappingsList>;
@@ -4003,7 +3997,7 @@ export const ApiProfile = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ApiProfile" }) as any as S.Schema<ApiProfile>;
 
 /** The API profiles for the resource provider. */
-export type ProviderResourceTypeApiProfilesList = ReadonlyArray<ApiProfile>;
+export type ProviderResourceTypeApiProfilesList = Array<ApiProfile>;
 export const ProviderResourceTypeApiProfilesList = /*@__PURE__*/ S.Array(
   ApiProfile,
 ) as any as S.Schema<ProviderResourceTypeApiProfilesList>;
@@ -4057,7 +4051,7 @@ export const ProviderResourceType = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProviderResourceType>;
 
 /** The collection of provider resource types. */
-export type ProviderResourceTypesList = ReadonlyArray<ProviderResourceType>;
+export type ProviderResourceTypesList = Array<ProviderResourceType>;
 export const ProviderResourceTypesList = /*@__PURE__*/ S.Array(
   ProviderResourceType,
 ) as any as S.Schema<ProviderResourceTypesList>;
@@ -4099,7 +4093,7 @@ export const Provider = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Provider" }) as any as S.Schema<Provider>;
 
 /** The list of resource providers needed for the deployment. */
-export type DeploymentPropertiesExtendedProvidersList = ReadonlyArray<Provider>;
+export type DeploymentPropertiesExtendedProvidersList = Array<Provider>;
 export const DeploymentPropertiesExtendedProvidersList = /*@__PURE__*/ S.Array(
   Provider,
 ) as any as S.Schema<DeploymentPropertiesExtendedProvidersList>;
@@ -4124,7 +4118,7 @@ export const BasicDependency = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BasicDependency>;
 
 /** The list of dependencies. */
-export type DependencyDependsOnList = ReadonlyArray<BasicDependency>;
+export type DependencyDependsOnList = Array<BasicDependency>;
 export const DependencyDependsOnList = /*@__PURE__*/ S.Array(
   BasicDependency,
 ) as any as S.Schema<DependencyDependsOnList>;
@@ -4150,8 +4144,7 @@ export const Dependency = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Dependency" }) as any as S.Schema<Dependency>;
 
 /** The list of deployment dependencies. */
-export type DeploymentPropertiesExtendedDependenciesList =
-  ReadonlyArray<Dependency>;
+export type DeploymentPropertiesExtendedDependenciesList = Array<Dependency>;
 export const DeploymentPropertiesExtendedDependenciesList =
   /*@__PURE__*/ S.Array(
     Dependency,
@@ -4159,7 +4152,7 @@ export const DeploymentPropertiesExtendedDependenciesList =
 
 /** The extensions used in this deployment. */
 export type DeploymentPropertiesExtendedExtensionsList =
-  ReadonlyArray<DeploymentExtensionDefinition>;
+  Array<DeploymentExtensionDefinition>;
 export const DeploymentPropertiesExtendedExtensionsList = /*@__PURE__*/ S.Array(
   DeploymentExtensionDefinition,
 ) as any as S.Schema<DeploymentPropertiesExtendedExtensionsList>;
@@ -4210,7 +4203,7 @@ export const ResourceReference_2 = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of provisioned resources. */
 export type DeploymentPropertiesExtendedOutputResourcesList =
-  ReadonlyArray<ResourceReference_2>;
+  Array<ResourceReference_2>;
 export const DeploymentPropertiesExtendedOutputResourcesList =
   /*@__PURE__*/ S.Array(
     ResourceReference_2,
@@ -4218,7 +4211,7 @@ export const DeploymentPropertiesExtendedOutputResourcesList =
 
 /** Array of validated resources. */
 export type DeploymentPropertiesExtendedValidatedResourcesList =
-  ReadonlyArray<ResourceReference_2>;
+  Array<ResourceReference_2>;
 export const DeploymentPropertiesExtendedValidatedResourcesList =
   /*@__PURE__*/ S.Array(
     ResourceReference_2,
@@ -4247,7 +4240,7 @@ export const DeploymentDiagnosticsDefinitionAdditionalInfoItem =
 
 /** The error additional info. */
 export type DeploymentDiagnosticsDefinitionAdditionalInfoList =
-  ReadonlyArray<DeploymentDiagnosticsDefinitionAdditionalInfoItem>;
+  Array<DeploymentDiagnosticsDefinitionAdditionalInfoItem>;
 export const DeploymentDiagnosticsDefinitionAdditionalInfoList =
   /*@__PURE__*/ S.Array(
     DeploymentDiagnosticsDefinitionAdditionalInfoItem,
@@ -4281,7 +4274,7 @@ export const DeploymentDiagnosticsDefinition = /*@__PURE__*/ S.suspend(() =>
 
 /** Contains diagnostic information collected during validation process. */
 export type DeploymentPropertiesExtendedDiagnosticsList =
-  ReadonlyArray<DeploymentDiagnosticsDefinition>;
+  Array<DeploymentDiagnosticsDefinition>;
 export const DeploymentPropertiesExtendedDiagnosticsList =
   /*@__PURE__*/ S.Array(
     DeploymentDiagnosticsDefinition,
@@ -5081,7 +5074,7 @@ export const ScriptLog = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ScriptLog" }) as any as S.Schema<ScriptLog>;
 
 /** Deployment scripts logs. */
-export type ScriptLogsListValueList = ReadonlyArray<ScriptLog>;
+export type ScriptLogsListValueList = Array<ScriptLog>;
 export const ScriptLogsListValueList = /*@__PURE__*/ S.Array(
   ScriptLog,
 ) as any as S.Schema<ScriptLogsListValueList>;
@@ -5216,8 +5209,7 @@ export const DeploymentScript = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeploymentScript>;
 
 /** An array of deployment scripts. */
-export type DeploymentScriptListResultValueList =
-  ReadonlyArray<DeploymentScript>;
+export type DeploymentScriptListResultValueList = Array<DeploymentScript>;
 export const DeploymentScriptListResultValueList = /*@__PURE__*/ S.Array(
   DeploymentScript,
 ) as any as S.Schema<DeploymentScriptListResultValueList>;
@@ -5987,7 +5979,7 @@ export const DeploymentExtended = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeploymentExtended>;
 
 /** The DeploymentExtended items on this page */
-export type DeploymentListResultValueList = ReadonlyArray<DeploymentExtended>;
+export type DeploymentListResultValueList = Array<DeploymentExtended>;
 export const DeploymentListResultValueList = /*@__PURE__*/ S.Array(
   DeploymentExtended,
 ) as any as S.Schema<DeploymentListResultValueList>;
@@ -6306,13 +6298,15 @@ export const ResourcesWithoutDeleteSupportAction = /*@__PURE__*/ S.String;
 /** Defines the behavior of resources that are no longer managed after the stack is updated or deleted. */
 export interface ActionOnUnmanage {
   /** Specifies an action for a newly unmanaged resource. */
-  resources: UnmanageActionResourceMode;
+  resources: UnmanageActionResourceMode | (string & {});
   /** Specifies an action for a newly unmanaged resource group. */
-  resourceGroups?: UnmanageActionResourceGroupMode;
+  resourceGroups?: UnmanageActionResourceGroupMode | (string & {});
   /** Specifies an action for a newly unmanaged resource management group. */
-  managementGroups?: UnmanageActionManagementGroupMode;
+  managementGroups?: UnmanageActionManagementGroupMode | (string & {});
   /** Some resources do not support deletion. This flag will denote how the stack should handle those resources. */
-  resourcesWithoutDeleteSupport?: ResourcesWithoutDeleteSupportAction;
+  resourcesWithoutDeleteSupport?:
+    | ResourcesWithoutDeleteSupportAction
+    | (string & {});
 }
 export const ActionOnUnmanage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6345,13 +6339,13 @@ export type DenySettingsMode = "denyDelete" | "denyWriteAndDelete" | "none";
 export const DenySettingsMode = /*@__PURE__*/ S.String;
 
 /** List of AAD principal IDs excluded from the lock. Up to 5 principals are permitted. */
-export type DenySettingsExcludedPrincipalsList = ReadonlyArray<string>;
+export type DenySettingsExcludedPrincipalsList = Array<string>;
 export const DenySettingsExcludedPrincipalsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DenySettingsExcludedPrincipalsList>;
 
 /** List of role-based management operations that are excluded from the denySettings. Up to 200 actions are permitted. If the denySetting mode is set to 'denyWriteAndDelete', then the following actions are automatically appended to 'excludedActions': '*\/read' and 'Microsoft.Authorization/locks/delete'. If the denySetting mode is set to 'denyDelete', then the following actions are automatically appended to 'excludedActions': 'Microsoft.Authorization/locks/delete'. Duplicate actions will be removed. */
-export type DenySettingsExcludedActionsList = ReadonlyArray<string>;
+export type DenySettingsExcludedActionsList = Array<string>;
 export const DenySettingsExcludedActionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DenySettingsExcludedActionsList>;
@@ -6359,7 +6353,7 @@ export const DenySettingsExcludedActionsList = /*@__PURE__*/ S.Array(
 /** Defines how resources deployed by the Deployment stack are locked. */
 export interface DenySettings {
   /** denySettings Mode that defines denied actions. */
-  mode: DenySettingsMode;
+  mode: DenySettingsMode | (string & {});
   /** List of AAD principal IDs excluded from the lock. Up to 5 principals are permitted. */
   excludedPrincipals?: DenySettingsExcludedPrincipalsList;
   /** List of role-based management operations that are excluded from the denySettings. Up to 200 actions are permitted. If the denySetting mode is set to 'denyWriteAndDelete', then the following actions are automatically appended to 'excludedActions': '*\/read' and 'Microsoft.Authorization/locks/delete'. If the denySetting mode is set to 'denyDelete', then the following actions are automatically appended to 'excludedActions': 'Microsoft.Authorization/locks/delete'. Duplicate actions will be removed. */
@@ -6480,7 +6474,7 @@ export const DeploymentStacksCreateOrUpdateAtManagementGroupRequest =
   }) as any as S.Schema<DeploymentStacksCreateOrUpdateAtManagementGroupRequest>;
 
 /** The error details. */
-export type ErrorDetailDetailsList = ReadonlyArray<ErrorDetail>;
+export type ErrorDetailDetailsList = Array<ErrorDetail>;
 export const ErrorDetailDetailsList = /*@__PURE__*/ S.Array(
   S.suspend(() => ErrorDetail),
 ) as any as S.Schema<ErrorDetailDetailsList>;
@@ -6502,7 +6496,7 @@ export const ErrorAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ErrorAdditionalInfo>;
 
 /** The error additional info. */
-export type ErrorDetailAdditionalInfoList = ReadonlyArray<ErrorAdditionalInfo>;
+export type ErrorDetailAdditionalInfoList = Array<ErrorAdditionalInfo>;
 export const ErrorDetailAdditionalInfoList = /*@__PURE__*/ S.Array(
   ErrorAdditionalInfo,
 ) as any as S.Schema<ErrorDetailAdditionalInfoList>;
@@ -6531,15 +6525,14 @@ export const ErrorDetail = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ErrorDetail" }) as any as S.Schema<ErrorDetail>;
 
 /** The error details. */
-export type DeploymentStackPropertiesErrorDetailsList =
-  ReadonlyArray<ErrorDetail>;
+export type DeploymentStackPropertiesErrorDetailsList = Array<ErrorDetail>;
 export const DeploymentStackPropertiesErrorDetailsList = /*@__PURE__*/ S.Array(
   ErrorDetail,
 ) as any as S.Schema<DeploymentStackPropertiesErrorDetailsList>;
 
 /** The error additional info. */
 export type DeploymentStackPropertiesErrorAdditionalInfoList =
-  ReadonlyArray<ErrorAdditionalInfo>;
+  Array<ErrorAdditionalInfo>;
 export const DeploymentStackPropertiesErrorAdditionalInfoList =
   /*@__PURE__*/ S.Array(
     ErrorAdditionalInfo,
@@ -6723,7 +6716,7 @@ export const ResourceReference = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of resources that were detached during the most recent Deployment stack update. Detached means that the resource was removed from the template, but no relevant deletion operations were specified. So, the resource still exists while no longer being associated with the stack. */
 export type DeploymentStackPropertiesDetachedResourcesList =
-  ReadonlyArray<ResourceReference>;
+  Array<ResourceReference>;
 export const DeploymentStackPropertiesDetachedResourcesList =
   /*@__PURE__*/ S.Array(
     ResourceReference,
@@ -6731,7 +6724,7 @@ export const DeploymentStackPropertiesDetachedResourcesList =
 
 /** An array of resources that were deleted during the most recent Deployment stack update. Deleted means that the resource was removed from the template and relevant deletion operations were specified. */
 export type DeploymentStackPropertiesDeletedResourcesList =
-  ReadonlyArray<ResourceReference>;
+  Array<ResourceReference>;
 export const DeploymentStackPropertiesDeletedResourcesList =
   /*@__PURE__*/ S.Array(
     ResourceReference,
@@ -6747,15 +6740,14 @@ export const ResourceReferenceExtendedIdentifiersMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ResourceReferenceExtendedIdentifiersMap>;
 
 /** The error details. */
-export type ResourceReferenceExtendedErrorDetailsList =
-  ReadonlyArray<ErrorDetail>;
+export type ResourceReferenceExtendedErrorDetailsList = Array<ErrorDetail>;
 export const ResourceReferenceExtendedErrorDetailsList = /*@__PURE__*/ S.Array(
   ErrorDetail,
 ) as any as S.Schema<ResourceReferenceExtendedErrorDetailsList>;
 
 /** The error additional info. */
 export type ResourceReferenceExtendedErrorAdditionalInfoList =
-  ReadonlyArray<ErrorAdditionalInfo>;
+  Array<ErrorAdditionalInfo>;
 export const ResourceReferenceExtendedErrorAdditionalInfoList =
   /*@__PURE__*/ S.Array(
     ErrorAdditionalInfo,
@@ -6818,7 +6810,7 @@ export const ResourceReferenceExtended = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of resources that failed to reach goal state during the most recent update. Each resourceId is accompanied by an error message. */
 export type DeploymentStackPropertiesFailedResourcesList =
-  ReadonlyArray<ResourceReferenceExtended>;
+  Array<ResourceReferenceExtended>;
 export const DeploymentStackPropertiesFailedResourcesList =
   /*@__PURE__*/ S.Array(
     ResourceReferenceExtended,
@@ -6884,14 +6876,14 @@ export const ManagedResourceReference = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of resources currently managed by the deployment stack. */
 export type DeploymentStackPropertiesResourcesList =
-  ReadonlyArray<ManagedResourceReference>;
+  Array<ManagedResourceReference>;
 export const DeploymentStackPropertiesResourcesList = /*@__PURE__*/ S.Array(
   ManagedResourceReference,
 ) as any as S.Schema<DeploymentStackPropertiesResourcesList>;
 
 /** The extensions used during deployment. Contains extension data for all extensible resources managed by the stack. */
 export type DeploymentStackPropertiesDeploymentExtensionsList =
-  ReadonlyArray<DeploymentExtension>;
+  Array<DeploymentExtension>;
 export const DeploymentStackPropertiesDeploymentExtensionsList =
   /*@__PURE__*/ S.Array(
     DeploymentExtension,
@@ -7836,7 +7828,7 @@ export const DeploymentStack = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeploymentStack>;
 
 /** The DeploymentStack items on this page */
-export type DeploymentStackListResultValueList = ReadonlyArray<DeploymentStack>;
+export type DeploymentStackListResultValueList = Array<DeploymentStack>;
 export const DeploymentStackListResultValueList = /*@__PURE__*/ S.Array(
   DeploymentStack,
 ) as any as S.Schema<DeploymentStackListResultValueList>;
@@ -7996,8 +7988,7 @@ export const DeploymentStackValidateResultSystemData = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DeploymentStackValidateResultSystemData>;
 
 /** The error details. */
-export type DeploymentStackValidateResultErrorDetailsList =
-  ReadonlyArray<ErrorDetail>;
+export type DeploymentStackValidateResultErrorDetailsList = Array<ErrorDetail>;
 export const DeploymentStackValidateResultErrorDetailsList =
   /*@__PURE__*/ S.Array(
     ErrorDetail,
@@ -8005,7 +7996,7 @@ export const DeploymentStackValidateResultErrorDetailsList =
 
 /** The error additional info. */
 export type DeploymentStackValidateResultErrorAdditionalInfoList =
-  ReadonlyArray<ErrorAdditionalInfo>;
+  Array<ErrorAdditionalInfo>;
 export const DeploymentStackValidateResultErrorAdditionalInfoList =
   /*@__PURE__*/ S.Array(
     ErrorAdditionalInfo,
@@ -8050,7 +8041,7 @@ export const DeploymentStackValidatePropertiesParametersMap =
 
 /** The array of resources that were validated. */
 export type DeploymentStackValidatePropertiesValidatedResourcesList =
-  ReadonlyArray<ResourceReference>;
+  Array<ResourceReference>;
 export const DeploymentStackValidatePropertiesValidatedResourcesList =
   /*@__PURE__*/ S.Array(
     ResourceReference,
@@ -8058,7 +8049,7 @@ export const DeploymentStackValidatePropertiesValidatedResourcesList =
 
 /** The deployment extensions. */
 export type DeploymentStackValidatePropertiesDeploymentExtensionsList =
-  ReadonlyArray<DeploymentExtension>;
+  Array<DeploymentExtension>;
 export const DeploymentStackValidatePropertiesDeploymentExtensionsList =
   /*@__PURE__*/ S.Array(
     DeploymentExtension,
@@ -8398,7 +8389,7 @@ export const DeploymentStacksWhatIfResultsAtManagementGroupCreateOrUpdateRequest
 
 /** The error details. */
 export type DeploymentStacksWhatIfResultPropertiesErrorDetailsList =
-  ReadonlyArray<ErrorDetail>;
+  Array<ErrorDetail>;
 export const DeploymentStacksWhatIfResultPropertiesErrorDetailsList =
   /*@__PURE__*/ S.Array(
     ErrorDetail,
@@ -8406,7 +8397,7 @@ export const DeploymentStacksWhatIfResultPropertiesErrorDetailsList =
 
 /** The error additional info. */
 export type DeploymentStacksWhatIfResultPropertiesErrorAdditionalInfoList =
-  ReadonlyArray<ErrorAdditionalInfo>;
+  Array<ErrorAdditionalInfo>;
 export const DeploymentStacksWhatIfResultPropertiesErrorAdditionalInfoList =
   /*@__PURE__*/ S.Array(
     ErrorAdditionalInfo,
@@ -8596,7 +8587,7 @@ export const DeploymentStacksWhatIfPropertyChangeType = /*@__PURE__*/ S.String;
 
 /** Nested property changes. */
 export type DeploymentStacksWhatIfPropertyChangeChildrenList =
-  ReadonlyArray<DeploymentStacksWhatIfPropertyChange>;
+  Array<DeploymentStacksWhatIfPropertyChange>;
 export const DeploymentStacksWhatIfPropertyChangeChildrenList =
   /*@__PURE__*/ S.Array(
     S.suspend(() => DeploymentStacksWhatIfPropertyChange),
@@ -8630,7 +8621,7 @@ export const DeploymentStacksWhatIfPropertyChange = /*@__PURE__*/ S.suspend(
 
 /** The predicted changes to the properties." */
 export type DeploymentStacksWhatIfResourceChangeResourceConfigurationChangesDeltaList =
-  ReadonlyArray<DeploymentStacksWhatIfPropertyChange>;
+  Array<DeploymentStacksWhatIfPropertyChange>;
 export const DeploymentStacksWhatIfResourceChangeResourceConfigurationChangesDeltaList =
   /*@__PURE__*/ S.Array(
     DeploymentStacksWhatIfPropertyChange,
@@ -8723,7 +8714,7 @@ export const DeploymentStacksWhatIfResourceChange = /*@__PURE__*/ S.suspend(
 
 /** List of resource changes predicted by What-If operation. */
 export type DeploymentStacksWhatIfChangeResourceChangesList =
-  ReadonlyArray<DeploymentStacksWhatIfResourceChange>;
+  Array<DeploymentStacksWhatIfResourceChange>;
 export const DeploymentStacksWhatIfChangeResourceChangesList =
   /*@__PURE__*/ S.Array(
     DeploymentStacksWhatIfResourceChange,
@@ -8731,7 +8722,7 @@ export const DeploymentStacksWhatIfChangeResourceChangesList =
 
 /** The predicted changes to the properties." */
 export type DeploymentStacksWhatIfChangeDenySettingsChangeDeltaList =
-  ReadonlyArray<DeploymentStacksWhatIfPropertyChange>;
+  Array<DeploymentStacksWhatIfPropertyChange>;
 export const DeploymentStacksWhatIfChangeDenySettingsChangeDeltaList =
   /*@__PURE__*/ S.Array(
     DeploymentStacksWhatIfPropertyChange,
@@ -8820,7 +8811,7 @@ export const DeploymentStacksDiagnosticAdditionalInfoItem =
 
 /** Additional error information. */
 export type DeploymentStacksDiagnosticAdditionalInfoList =
-  ReadonlyArray<DeploymentStacksDiagnosticAdditionalInfoItem>;
+  Array<DeploymentStacksDiagnosticAdditionalInfoItem>;
 export const DeploymentStacksDiagnosticAdditionalInfoList =
   /*@__PURE__*/ S.Array(
     DeploymentStacksDiagnosticAdditionalInfoItem,
@@ -8853,7 +8844,7 @@ export const DeploymentStacksDiagnostic = /*@__PURE__*/ S.suspend(() =>
 
 /** List of resource diagnostics detected by What-If operation. */
 export type DeploymentStacksWhatIfResultPropertiesDiagnosticsList =
-  ReadonlyArray<DeploymentStacksDiagnostic>;
+  Array<DeploymentStacksDiagnostic>;
 export const DeploymentStacksWhatIfResultPropertiesDiagnosticsList =
   /*@__PURE__*/ S.Array(
     DeploymentStacksDiagnostic,
@@ -9202,7 +9193,7 @@ export const DeploymentStacksWhatIfResult = /*@__PURE__*/ S.suspend(() =>
 
 /** The DeploymentStacksWhatIfResult items on this page */
 export type DeploymentStacksWhatIfResultListResultValueList =
-  ReadonlyArray<DeploymentStacksWhatIfResult>;
+  Array<DeploymentStacksWhatIfResult>;
 export const DeploymentStacksWhatIfResultListResultValueList =
   /*@__PURE__*/ S.Array(
     DeploymentStacksWhatIfResult,
@@ -10366,8 +10357,7 @@ export type PropertyChangeType =
 export const PropertyChangeType = /*@__PURE__*/ S.String;
 
 /** Nested property changes. */
-export type WhatIfPropertyChangeChildrenList =
-  ReadonlyArray<WhatIfPropertyChange>;
+export type WhatIfPropertyChangeChildrenList = Array<WhatIfPropertyChange>;
 export const WhatIfPropertyChangeChildrenList = /*@__PURE__*/ S.Array(
   S.suspend(() => WhatIfPropertyChange),
 ) as any as S.Schema<WhatIfPropertyChangeChildrenList>;
@@ -10398,7 +10388,7 @@ export const WhatIfPropertyChange = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WhatIfPropertyChange>;
 
 /** The predicted changes to resource properties. */
-export type WhatIfChangeDeltaList = ReadonlyArray<WhatIfPropertyChange>;
+export type WhatIfChangeDeltaList = Array<WhatIfPropertyChange>;
 export const WhatIfChangeDeltaList = /*@__PURE__*/ S.Array(
   WhatIfPropertyChange,
 ) as any as S.Schema<WhatIfChangeDeltaList>;
@@ -10442,14 +10432,13 @@ export const WhatIfChange = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "WhatIfChange" }) as any as S.Schema<WhatIfChange>;
 
 /** List of resource changes predicted by What-If operation. */
-export type WhatIfOperationPropertiesChangesList = ReadonlyArray<WhatIfChange>;
+export type WhatIfOperationPropertiesChangesList = Array<WhatIfChange>;
 export const WhatIfOperationPropertiesChangesList = /*@__PURE__*/ S.Array(
   WhatIfChange,
 ) as any as S.Schema<WhatIfOperationPropertiesChangesList>;
 
 /** List of resource changes predicted by What-If operation. */
-export type WhatIfOperationPropertiesPotentialChangesList =
-  ReadonlyArray<WhatIfChange>;
+export type WhatIfOperationPropertiesPotentialChangesList = Array<WhatIfChange>;
 export const WhatIfOperationPropertiesPotentialChangesList =
   /*@__PURE__*/ S.Array(
     WhatIfChange,
@@ -10457,7 +10446,7 @@ export const WhatIfOperationPropertiesPotentialChangesList =
 
 /** List of resource diagnostics detected by What-If operation. */
 export type WhatIfOperationPropertiesDiagnosticsList =
-  ReadonlyArray<DeploymentDiagnosticsDefinition>;
+  Array<DeploymentDiagnosticsDefinition>;
 export const WhatIfOperationPropertiesDiagnosticsList = /*@__PURE__*/ S.Array(
   DeploymentDiagnosticsDefinition,
 ) as any as S.Schema<WhatIfOperationPropertiesDiagnosticsList>;
@@ -10665,7 +10654,7 @@ export const FeaturesListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FeaturesListRequest>;
 
 /** The array of features. */
-export type FeatureOperationsListResultValueList = ReadonlyArray<FeatureResult>;
+export type FeatureOperationsListResultValueList = Array<FeatureResult>;
 export const FeatureOperationsListResultValueList = /*@__PURE__*/ S.Array(
   FeatureResult,
 ) as any as S.Schema<FeatureOperationsListResultValueList>;
@@ -10782,7 +10771,7 @@ export const JitAuthorizationPolicies = /*@__PURE__*/ S.suspend(() =>
 
 /** The JIT authorization policies. */
 export type JitRequestPropertiesInputJitAuthorizationPoliciesList =
-  ReadonlyArray<JitAuthorizationPolicies>;
+  Array<JitAuthorizationPolicies>;
 export const JitRequestPropertiesInputJitAuthorizationPoliciesList =
   /*@__PURE__*/ S.Array(
     JitAuthorizationPolicies,
@@ -10868,7 +10857,7 @@ export const JitRequestsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 
 /** The JIT authorization policies. */
 export type JitRequestPropertiesJitAuthorizationPoliciesList =
-  ReadonlyArray<JitAuthorizationPolicies>;
+  Array<JitAuthorizationPolicies>;
 export const JitRequestPropertiesJitAuthorizationPoliciesList =
   /*@__PURE__*/ S.Array(
     JitAuthorizationPolicies,
@@ -11122,7 +11111,7 @@ export const JitRequestDefinition = /*@__PURE__*/ S.suspend(() =>
 
 /** The array of Jit request definition. */
 export type JitRequestDefinitionListResultValueList =
-  ReadonlyArray<JitRequestDefinition>;
+  Array<JitRequestDefinition>;
 export const JitRequestDefinitionListResultValueList = /*@__PURE__*/ S.Array(
   JitRequestDefinition,
 ) as any as S.Schema<JitRequestDefinitionListResultValueList>;
@@ -11284,7 +11273,7 @@ export const Operation_2 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation_2" }) as any as S.Schema<Operation_2>;
 
 /** List of Microsoft.Features operations. */
-export type OperationListResultValueList_2 = ReadonlyArray<Operation_2>;
+export type OperationListResultValueList_2 = Array<Operation_2>;
 export const OperationListResultValueList_2 = /*@__PURE__*/ S.Array(
   Operation_2,
 ) as any as S.Schema<OperationListResultValueList_2>;
@@ -11326,8 +11315,7 @@ export const ManagementLockOwner = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ManagementLockOwner>;
 
 /** The owners of the lock. */
-export type ManagementLockPropertiesOwnersList =
-  ReadonlyArray<ManagementLockOwner>;
+export type ManagementLockPropertiesOwnersList = Array<ManagementLockOwner>;
 export const ManagementLockPropertiesOwnersList = /*@__PURE__*/ S.Array(
   ManagementLockOwner,
 ) as any as S.Schema<ManagementLockPropertiesOwnersList>;
@@ -11335,7 +11323,7 @@ export const ManagementLockPropertiesOwnersList = /*@__PURE__*/ S.Array(
 /** The lock properties. */
 export interface ManagementLockProperties {
   /** The level of the lock. Possible values are: NotSpecified, CanNotDelete, ReadOnly. CanNotDelete means authorized users are able to read and modify the resources, but not delete. ReadOnly means authorized users can only read from a resource, but they can't modify or delete it. */
-  level: ManagementLockPropertiesLevel;
+  level: ManagementLockPropertiesLevel | (string & {});
   /** Notes about the lock. Maximum of 512 characters. */
   notes?: string;
   /** The owners of the lock. */
@@ -11816,8 +11804,7 @@ export const ManagementLocksListAtResourceGroupLevelRequest =
   }) as any as S.Schema<ManagementLocksListAtResourceGroupLevelRequest>;
 
 /** The list of locks. */
-export type ManagementLockListResultValueList =
-  ReadonlyArray<ManagementLockObject>;
+export type ManagementLockListResultValueList = Array<ManagementLockObject>;
 export const ManagementLockListResultValueList = /*@__PURE__*/ S.Array(
   ManagementLockObject,
 ) as any as S.Schema<ManagementLockListResultValueList>;
@@ -11989,7 +11976,7 @@ export const Operation_3 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation_3" }) as any as S.Schema<Operation_3>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = ReadonlyArray<Operation_3>;
+export type OperationsListResponseValueList = Array<Operation_3>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation_3,
 ) as any as S.Schema<OperationsListResponseValueList>;
@@ -12010,8 +11997,7 @@ export const OperationsListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationsListResponse>;
 
 /** The policy's excluded scopes. */
-export type PolicyAssignmentPropertiesInputNotScopesList =
-  ReadonlyArray<string>;
+export type PolicyAssignmentPropertiesInputNotScopesList = Array<string>;
 export const PolicyAssignmentPropertiesInputNotScopesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -12066,7 +12052,7 @@ export const NonComplianceMessage = /*@__PURE__*/ S.suspend(() =>
 
 /** The messages that describe why a resource is non-compliant with the policy. */
 export type PolicyAssignmentPropertiesInputNonComplianceMessagesList =
-  ReadonlyArray<NonComplianceMessage>;
+  Array<NonComplianceMessage>;
 export const PolicyAssignmentPropertiesInputNonComplianceMessagesList =
   /*@__PURE__*/ S.Array(
     NonComplianceMessage,
@@ -12084,13 +12070,13 @@ export type SelectorKind =
 export const SelectorKind = /*@__PURE__*/ S.String;
 
 /** The list of values to filter in. */
-export type SelectorInList = ReadonlyArray<string>;
+export type SelectorInList = Array<string>;
 export const SelectorInList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SelectorInList>;
 
 /** The list of values to filter out. */
-export type SelectorNotInList = ReadonlyArray<string>;
+export type SelectorNotInList = Array<string>;
 export const SelectorNotInList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SelectorNotInList>;
@@ -12098,7 +12084,7 @@ export const SelectorNotInList = /*@__PURE__*/ S.Array(
 /** The selector expression. */
 export interface Selector {
   /** The selector kind. */
-  kind?: SelectorKind;
+  kind?: SelectorKind | (string & {});
   /** The list of values to filter in. */
   in?: SelectorInList;
   /** The list of values to filter out. */
@@ -12116,7 +12102,7 @@ export const Selector = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Selector" }) as any as S.Schema<Selector>;
 
 /** The list of the selector expressions. */
-export type ResourceSelectorSelectorsList = ReadonlyArray<Selector>;
+export type ResourceSelectorSelectorsList = Array<Selector>;
 export const ResourceSelectorSelectorsList = /*@__PURE__*/ S.Array(
   Selector,
 ) as any as S.Schema<ResourceSelectorSelectorsList>;
@@ -12139,7 +12125,7 @@ export const ResourceSelector = /*@__PURE__*/ S.suspend(() =>
 
 /** The resource selector list to filter policies by resource properties. */
 export type PolicyAssignmentPropertiesInputResourceSelectorsList =
-  ReadonlyArray<ResourceSelector>;
+  Array<ResourceSelector>;
 export const PolicyAssignmentPropertiesInputResourceSelectorsList =
   /*@__PURE__*/ S.Array(
     ResourceSelector,
@@ -12150,7 +12136,7 @@ export type OverrideKind = "policyEffect" | "definitionVersion";
 export const OverrideKind = /*@__PURE__*/ S.String;
 
 /** The list of the selector expressions. */
-export type OverrideSelectorsList = ReadonlyArray<Selector>;
+export type OverrideSelectorsList = Array<Selector>;
 export const OverrideSelectorsList = /*@__PURE__*/ S.Array(
   Selector,
 ) as any as S.Schema<OverrideSelectorsList>;
@@ -12158,7 +12144,7 @@ export const OverrideSelectorsList = /*@__PURE__*/ S.Array(
 /** The policy property value override. */
 export interface Override {
   /** The override kind. */
-  kind?: OverrideKind;
+  kind?: OverrideKind | (string & {});
   /** The value to override the policy property. */
   value?: string;
   /** The list of the selector expressions. */
@@ -12173,8 +12159,7 @@ export const Override = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Override" }) as any as S.Schema<Override>;
 
 /** The policy property value override. */
-export type PolicyAssignmentPropertiesInputOverridesList =
-  ReadonlyArray<Override>;
+export type PolicyAssignmentPropertiesInputOverridesList = Array<Override>;
 export const PolicyAssignmentPropertiesInputOverridesList =
   /*@__PURE__*/ S.Array(
     Override,
@@ -12190,7 +12175,7 @@ export const AssignmentType = /*@__PURE__*/ S.String;
 
 /** The policy definition reference IDs for self-serve exemption. */
 export type SelfServeExemptionSettingsPolicyDefinitionReferenceIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const SelfServeExemptionSettingsPolicyDefinitionReferenceIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -12335,7 +12320,7 @@ export const PolicyAssignmentsCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PolicyAssignmentsCreateRequest>;
 
 /** The policy's excluded scopes. */
-export type PolicyAssignmentPropertiesNotScopesList = ReadonlyArray<string>;
+export type PolicyAssignmentPropertiesNotScopesList = Array<string>;
 export const PolicyAssignmentPropertiesNotScopesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PolicyAssignmentPropertiesNotScopesList>;
@@ -12358,7 +12343,7 @@ export const PolicyAssignmentPropertiesEnforcementMode = /*@__PURE__*/ S.String;
 
 /** The messages that describe why a resource is non-compliant with the policy. */
 export type PolicyAssignmentPropertiesNonComplianceMessagesList =
-  ReadonlyArray<NonComplianceMessage>;
+  Array<NonComplianceMessage>;
 export const PolicyAssignmentPropertiesNonComplianceMessagesList =
   /*@__PURE__*/ S.Array(
     NonComplianceMessage,
@@ -12366,14 +12351,14 @@ export const PolicyAssignmentPropertiesNonComplianceMessagesList =
 
 /** The resource selector list to filter policies by resource properties. */
 export type PolicyAssignmentPropertiesResourceSelectorsList =
-  ReadonlyArray<ResourceSelector>;
+  Array<ResourceSelector>;
 export const PolicyAssignmentPropertiesResourceSelectorsList =
   /*@__PURE__*/ S.Array(
     ResourceSelector,
   ) as any as S.Schema<PolicyAssignmentPropertiesResourceSelectorsList>;
 
 /** The policy property value override. */
-export type PolicyAssignmentPropertiesOverridesList = ReadonlyArray<Override>;
+export type PolicyAssignmentPropertiesOverridesList = Array<Override>;
 export const PolicyAssignmentPropertiesOverridesList = /*@__PURE__*/ S.Array(
   Override,
 ) as any as S.Schema<PolicyAssignmentPropertiesOverridesList>;
@@ -12684,8 +12669,7 @@ export const PolicyAssignment = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PolicyAssignment>;
 
 /** The PolicyAssignment items on this page */
-export type PolicyAssignmentListResultValueList =
-  ReadonlyArray<PolicyAssignment>;
+export type PolicyAssignmentListResultValueList = Array<PolicyAssignment>;
 export const PolicyAssignmentListResultValueList = /*@__PURE__*/ S.Array(
   PolicyAssignment,
 ) as any as S.Schema<PolicyAssignmentListResultValueList>;
@@ -12813,15 +12797,14 @@ export const PolicyAssignmentsListForResourceGroupRequest =
 
 /** The resource selector list to filter policies by resource properties. */
 export type PolicyAssignmentUpdatePropertiesResourceSelectorsList =
-  ReadonlyArray<ResourceSelector>;
+  Array<ResourceSelector>;
 export const PolicyAssignmentUpdatePropertiesResourceSelectorsList =
   /*@__PURE__*/ S.Array(
     ResourceSelector,
   ) as any as S.Schema<PolicyAssignmentUpdatePropertiesResourceSelectorsList>;
 
 /** The policy property value override. */
-export type PolicyAssignmentUpdatePropertiesOverridesList =
-  ReadonlyArray<Override>;
+export type PolicyAssignmentUpdatePropertiesOverridesList = Array<Override>;
 export const PolicyAssignmentUpdatePropertiesOverridesList =
   /*@__PURE__*/ S.Array(
     Override,
@@ -12925,7 +12908,7 @@ export type ParameterType =
 export const ParameterType = /*@__PURE__*/ S.String;
 
 /** The allowed values for the parameter. */
-export type ParameterDefinitionsValueAllowedValuesList = ReadonlyArray<unknown>;
+export type ParameterDefinitionsValueAllowedValuesList = Array<unknown>;
 export const ParameterDefinitionsValueAllowedValuesList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<ParameterDefinitionsValueAllowedValuesList>;
@@ -12955,7 +12938,7 @@ export const ParameterDefinitionsValueMetadata = /*@__PURE__*/ S.suspend(() =>
 /** The definition of a parameter that can be provided to the policy. */
 export interface ParameterDefinitionsValue {
   /** The data type of the parameter. */
-  type?: ParameterType;
+  type?: ParameterType | (string & {});
   /** The allowed values for the parameter. */
   allowedValues?: ParameterDefinitionsValueAllowedValuesList;
   /** The default value for the parameter if no value is provided. */
@@ -12987,7 +12970,7 @@ export const PolicyDefinitionPropertiesParametersMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<PolicyDefinitionPropertiesParametersMap>;
 
 /** A list of available versions for this policy definition. */
-export type PolicyDefinitionPropertiesVersionsList = ReadonlyArray<string>;
+export type PolicyDefinitionPropertiesVersionsList = Array<string>;
 export const PolicyDefinitionPropertiesVersionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PolicyDefinitionPropertiesVersionsList>;
@@ -13010,7 +12993,7 @@ export const ExternalEvaluationEndpointSettings = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of the role definition Ids the assignment's MSI will need in order to invoke the endpoint. */
 export type ExternalEvaluationEnforcementSettingsRoleDefinitionIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ExternalEvaluationEnforcementSettingsRoleDefinitionIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -13044,7 +13027,7 @@ export const ExternalEvaluationEnforcementSettings = /*@__PURE__*/ S.suspend(
 /** The policy definition properties. */
 export interface PolicyDefinitionProperties {
   /** The type of policy definition. Possible values are NotSpecified, BuiltIn, Custom, and Static. */
-  policyType?: PolicyType;
+  policyType?: PolicyType | (string & {});
   /** The policy definition mode. Some examples are All, Indexed, Microsoft.KeyVault.Data. */
   mode?: string;
   /** The display name of the policy definition. */
@@ -13431,8 +13414,7 @@ export const PolicyDefinition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PolicyDefinition>;
 
 /** The PolicyDefinition items on this page */
-export type PolicyDefinitionListResultValueList =
-  ReadonlyArray<PolicyDefinition>;
+export type PolicyDefinitionListResultValueList = Array<PolicyDefinition>;
 export const PolicyDefinitionListResultValueList = /*@__PURE__*/ S.Array(
   PolicyDefinition,
 ) as any as S.Schema<PolicyDefinitionListResultValueList>;
@@ -13514,7 +13496,7 @@ export const PolicyDefinitionVersionPropertiesParametersMap =
 /** The policy definition properties. */
 export interface PolicyDefinitionVersionProperties {
   /** The type of policy definition. Possible values are NotSpecified, BuiltIn, Custom, and Static. */
-  policyType?: PolicyType;
+  policyType?: PolicyType | (string & {});
   /** The policy definition mode. Some examples are All, Indexed, Microsoft.KeyVault.Data. */
   mode?: string;
   /** The display name of the policy definition. */
@@ -13925,7 +13907,7 @@ export const PolicyDefinitionVersion = /*@__PURE__*/ S.suspend(() =>
 
 /** The PolicyDefinitionVersion items on this page */
 export type PolicyDefinitionVersionListResultValueList =
-  ReadonlyArray<PolicyDefinitionVersion>;
+  Array<PolicyDefinitionVersion>;
 export const PolicyDefinitionVersionListResultValueList = /*@__PURE__*/ S.Array(
   PolicyDefinitionVersion,
 ) as any as S.Schema<PolicyDefinitionVersionListResultValueList>;
@@ -14071,8 +14053,7 @@ export const PolicyDefinitionReferenceInputParametersMap =
   ) as any as S.Schema<PolicyDefinitionReferenceInputParametersMap>;
 
 /** The name of the groups that this policy definition reference belongs to. */
-export type PolicyDefinitionReferenceInputGroupNamesList =
-  ReadonlyArray<string>;
+export type PolicyDefinitionReferenceInputGroupNamesList = Array<string>;
 export const PolicyDefinitionReferenceInputGroupNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -14105,7 +14086,7 @@ export const PolicyDefinitionReferenceInput = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of policy definition references. */
 export type PolicySetDefinitionPropertiesInputPolicyDefinitionsList =
-  ReadonlyArray<PolicyDefinitionReferenceInput>;
+  Array<PolicyDefinitionReferenceInput>;
 export const PolicySetDefinitionPropertiesInputPolicyDefinitionsList =
   /*@__PURE__*/ S.Array(
     PolicyDefinitionReferenceInput,
@@ -14138,15 +14119,14 @@ export const PolicyDefinitionGroup = /*@__PURE__*/ S.suspend(() =>
 
 /** The metadata describing groups of policy definition references within the policy set definition. */
 export type PolicySetDefinitionPropertiesInputPolicyDefinitionGroupsList =
-  ReadonlyArray<PolicyDefinitionGroup>;
+  Array<PolicyDefinitionGroup>;
 export const PolicySetDefinitionPropertiesInputPolicyDefinitionGroupsList =
   /*@__PURE__*/ S.Array(
     PolicyDefinitionGroup,
   ) as any as S.Schema<PolicySetDefinitionPropertiesInputPolicyDefinitionGroupsList>;
 
 /** A list of available versions for this policy set definition. */
-export type PolicySetDefinitionPropertiesInputVersionsList =
-  ReadonlyArray<string>;
+export type PolicySetDefinitionPropertiesInputVersionsList = Array<string>;
 export const PolicySetDefinitionPropertiesInputVersionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -14237,7 +14217,7 @@ export const PolicyDefinitionReferenceParametersMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<PolicyDefinitionReferenceParametersMap>;
 
 /** The name of the groups that this policy definition reference belongs to. */
-export type PolicyDefinitionReferenceGroupNamesList = ReadonlyArray<string>;
+export type PolicyDefinitionReferenceGroupNamesList = Array<string>;
 export const PolicyDefinitionReferenceGroupNamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PolicyDefinitionReferenceGroupNamesList>;
@@ -14275,7 +14255,7 @@ export const PolicyDefinitionReference = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of policy definition references. */
 export type PolicySetDefinitionPropertiesPolicyDefinitionsList =
-  ReadonlyArray<PolicyDefinitionReference>;
+  Array<PolicyDefinitionReference>;
 export const PolicySetDefinitionPropertiesPolicyDefinitionsList =
   /*@__PURE__*/ S.Array(
     PolicyDefinitionReference,
@@ -14283,14 +14263,14 @@ export const PolicySetDefinitionPropertiesPolicyDefinitionsList =
 
 /** The metadata describing groups of policy definition references within the policy set definition. */
 export type PolicySetDefinitionPropertiesPolicyDefinitionGroupsList =
-  ReadonlyArray<PolicyDefinitionGroup>;
+  Array<PolicyDefinitionGroup>;
 export const PolicySetDefinitionPropertiesPolicyDefinitionGroupsList =
   /*@__PURE__*/ S.Array(
     PolicyDefinitionGroup,
   ) as any as S.Schema<PolicySetDefinitionPropertiesPolicyDefinitionGroupsList>;
 
 /** A list of available versions for this policy set definition. */
-export type PolicySetDefinitionPropertiesVersionsList = ReadonlyArray<string>;
+export type PolicySetDefinitionPropertiesVersionsList = Array<string>;
 export const PolicySetDefinitionPropertiesVersionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PolicySetDefinitionPropertiesVersionsList>;
@@ -14670,8 +14650,7 @@ export const PolicySetDefinition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PolicySetDefinition>;
 
 /** The PolicySetDefinition items on this page */
-export type PolicySetDefinitionListResultValueList =
-  ReadonlyArray<PolicySetDefinition>;
+export type PolicySetDefinitionListResultValueList = Array<PolicySetDefinition>;
 export const PolicySetDefinitionListResultValueList = /*@__PURE__*/ S.Array(
   PolicySetDefinition,
 ) as any as S.Schema<PolicySetDefinitionListResultValueList>;
@@ -14759,7 +14738,7 @@ export const PolicySetDefinitionVersionPropertiesInputParametersMap =
 
 /** An array of policy definition references. */
 export type PolicySetDefinitionVersionPropertiesInputPolicyDefinitionsList =
-  ReadonlyArray<PolicyDefinitionReferenceInput>;
+  Array<PolicyDefinitionReferenceInput>;
 export const PolicySetDefinitionVersionPropertiesInputPolicyDefinitionsList =
   /*@__PURE__*/ S.Array(
     PolicyDefinitionReferenceInput,
@@ -14767,7 +14746,7 @@ export const PolicySetDefinitionVersionPropertiesInputPolicyDefinitionsList =
 
 /** The metadata describing groups of policy definition references within the policy set definition. */
 export type PolicySetDefinitionVersionPropertiesInputPolicyDefinitionGroupsList =
-  ReadonlyArray<PolicyDefinitionGroup>;
+  Array<PolicyDefinitionGroup>;
 export const PolicySetDefinitionVersionPropertiesInputPolicyDefinitionGroupsList =
   /*@__PURE__*/ S.Array(
     PolicyDefinitionGroup,
@@ -14854,7 +14833,7 @@ export const PolicySetDefinitionVersionPropertiesParametersMap =
 
 /** An array of policy definition references. */
 export type PolicySetDefinitionVersionPropertiesPolicyDefinitionsList =
-  ReadonlyArray<PolicyDefinitionReference>;
+  Array<PolicyDefinitionReference>;
 export const PolicySetDefinitionVersionPropertiesPolicyDefinitionsList =
   /*@__PURE__*/ S.Array(
     PolicyDefinitionReference,
@@ -14862,7 +14841,7 @@ export const PolicySetDefinitionVersionPropertiesPolicyDefinitionsList =
 
 /** The metadata describing groups of policy definition references within the policy set definition. */
 export type PolicySetDefinitionVersionPropertiesPolicyDefinitionGroupsList =
-  ReadonlyArray<PolicyDefinitionGroup>;
+  Array<PolicyDefinitionGroup>;
 export const PolicySetDefinitionVersionPropertiesPolicyDefinitionGroupsList =
   /*@__PURE__*/ S.Array(
     PolicyDefinitionGroup,
@@ -15266,7 +15245,7 @@ export const PolicySetDefinitionVersion = /*@__PURE__*/ S.suspend(() =>
 
 /** The PolicySetDefinitionVersion items on this page */
 export type PolicySetDefinitionVersionListResultValueList =
-  ReadonlyArray<PolicySetDefinitionVersion>;
+  Array<PolicySetDefinitionVersion>;
 export const PolicySetDefinitionVersionListResultValueList =
   /*@__PURE__*/ S.Array(
     PolicySetDefinitionVersion,
@@ -15587,7 +15566,7 @@ export const ExternalEvaluationEndpointInvocationResult =
 
 /** An array of external evaluation endpoint invocation results. */
 export type PolicyTokenResponseResultsList =
-  ReadonlyArray<ExternalEvaluationEndpointInvocationResult>;
+  Array<ExternalEvaluationEndpointInvocationResult>;
 export const PolicyTokenResponseResultsList = /*@__PURE__*/ S.Array(
   ExternalEvaluationEndpointInvocationResult,
 ) as any as S.Schema<PolicyTokenResponseResultsList>;
@@ -15807,7 +15786,7 @@ export const PrivateLinkAssociationListRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** private link association information. */
 export type PrivateLinkAssociationGetResultValueList =
-  ReadonlyArray<PrivateLinkAssociation>;
+  Array<PrivateLinkAssociation>;
 export const PrivateLinkAssociationGetResultValueList = /*@__PURE__*/ S.Array(
   PrivateLinkAssociation,
 ) as any as S.Schema<PrivateLinkAssociationGetResultValueList>;
@@ -15901,7 +15880,7 @@ export const ProviderResourceTypesListRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The ProviderResourceType items on this page */
 export type ProviderResourceTypeListResultValueList =
-  ReadonlyArray<ProviderResourceType>;
+  Array<ProviderResourceType>;
 export const ProviderResourceTypeListResultValueList = /*@__PURE__*/ S.Array(
   ProviderResourceType,
 ) as any as S.Schema<ProviderResourceTypeListResultValueList>;
@@ -15992,7 +15971,7 @@ export const ProvidersListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProvidersListRequest>;
 
 /** The Provider items on this page */
-export type ProviderListResultValueList = ReadonlyArray<Provider>;
+export type ProviderListResultValueList = Array<Provider>;
 export const ProviderListResultValueList = /*@__PURE__*/ S.Array(
   Provider,
 ) as any as S.Schema<ProviderListResultValueList>;
@@ -16055,25 +16034,25 @@ export const ProvidersProviderPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProvidersProviderPermissionsRequest>;
 
 /** Allowed actions. */
-export type PermissionActionsList = ReadonlyArray<string>;
+export type PermissionActionsList = Array<string>;
 export const PermissionActionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PermissionActionsList>;
 
 /** Denied actions. */
-export type PermissionNotActionsList = ReadonlyArray<string>;
+export type PermissionNotActionsList = Array<string>;
 export const PermissionNotActionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PermissionNotActionsList>;
 
 /** Allowed Data actions. */
-export type PermissionDataActionsList = ReadonlyArray<string>;
+export type PermissionDataActionsList = Array<string>;
 export const PermissionDataActionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PermissionDataActionsList>;
 
 /** Denied Data actions. */
-export type PermissionNotDataActionsList = ReadonlyArray<string>;
+export type PermissionNotDataActionsList = Array<string>;
 export const PermissionNotDataActionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PermissionNotDataActionsList>;
@@ -16099,13 +16078,13 @@ export const Permission = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Permission" }) as any as S.Schema<Permission>;
 
 /** Role definition permissions. */
-export type RoleDefinitionPermissionsList = ReadonlyArray<Permission>;
+export type RoleDefinitionPermissionsList = Array<Permission>;
 export const RoleDefinitionPermissionsList = /*@__PURE__*/ S.Array(
   Permission,
 ) as any as S.Schema<RoleDefinitionPermissionsList>;
 
 /** Role definition assignable scopes. */
-export type RoleDefinitionScopesList = ReadonlyArray<string>;
+export type RoleDefinitionScopesList = Array<string>;
 export const RoleDefinitionScopesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RoleDefinitionScopesList>;
@@ -16158,8 +16137,7 @@ export const ProviderPermission = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProviderPermission>;
 
 /** The ProviderPermission items on this page */
-export type ProviderPermissionListResultValueList =
-  ReadonlyArray<ProviderPermission>;
+export type ProviderPermissionListResultValueList = Array<ProviderPermission>;
 export const ProviderPermissionListResultValueList = /*@__PURE__*/ S.Array(
   ProviderPermission,
 ) as any as S.Schema<ProviderPermissionListResultValueList>;
@@ -16410,8 +16388,7 @@ export const ResourceGroupsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourceGroupsDeleteResponse>;
 
 /** The IDs of the resources to filter the export by. To export all resources, supply an array with single entry '*'. */
-export type ResourceGroupsExportTemplateRequestResourcesList =
-  ReadonlyArray<string>;
+export type ResourceGroupsExportTemplateRequestResourcesList = Array<string>;
 export const ResourceGroupsExportTemplateRequestResourcesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -16453,15 +16430,14 @@ export const ResourceGroupsExportTemplateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourceGroupsExportTemplateRequest>;
 
 /** The error details. */
-export type ResourceGroupExportResultErrorDetailsList =
-  ReadonlyArray<ErrorDetail>;
+export type ResourceGroupExportResultErrorDetailsList = Array<ErrorDetail>;
 export const ResourceGroupExportResultErrorDetailsList = /*@__PURE__*/ S.Array(
   ErrorDetail,
 ) as any as S.Schema<ResourceGroupExportResultErrorDetailsList>;
 
 /** The error additional info. */
 export type ResourceGroupExportResultErrorAdditionalInfoList =
-  ReadonlyArray<ErrorAdditionalInfo>;
+  Array<ErrorAdditionalInfo>;
 export const ResourceGroupExportResultErrorAdditionalInfoList =
   /*@__PURE__*/ S.Array(
     ErrorAdditionalInfo,
@@ -16642,7 +16618,7 @@ export const ResourceGroup = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResourceGroup" }) as any as S.Schema<ResourceGroup>;
 
 /** The ResourceGroup items on this page */
-export type ResourceGroupListResultValueList = ReadonlyArray<ResourceGroup>;
+export type ResourceGroupListResultValueList = Array<ResourceGroup>;
 export const ResourceGroupListResultValueList = /*@__PURE__*/ S.Array(
   ResourceGroup,
 ) as any as S.Schema<ResourceGroupListResultValueList>;
@@ -16900,7 +16876,7 @@ export const ResourceLinksListAtSourceScopeRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ResourceLinksListAtSourceScopeRequest>;
 
 /** An array of resource links. */
-export type ResourceLinkResultValueList = ReadonlyArray<ResourceLink>;
+export type ResourceLinkResultValueList = Array<ResourceLink>;
 export const ResourceLinkResultValueList = /*@__PURE__*/ S.Array(
   ResourceLink,
 ) as any as S.Schema<ResourceLinkResultValueList>;
@@ -17004,7 +16980,7 @@ export const ResourceManagementPrivateLinkGetRequest = /*@__PURE__*/ S.suspend(
 
 /** The private endpoint connections. */
 export type ResourceManagementPrivateLinkEndpointConnectionsPrivateEndpointConnectionsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ResourceManagementPrivateLinkEndpointConnectionsPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -17070,7 +17046,7 @@ export const ResourceManagementPrivateLinkListRequest = /*@__PURE__*/ S.suspend(
 
 /** An array of resource management private links. */
 export type ResourceManagementPrivateLinkListResultValueList =
-  ReadonlyArray<ResourceManagementPrivateLink>;
+  Array<ResourceManagementPrivateLink>;
 export const ResourceManagementPrivateLinkListResultValueList =
   /*@__PURE__*/ S.Array(
     ResourceManagementPrivateLink,
@@ -17239,7 +17215,7 @@ export const ExtendedLocationType = /*@__PURE__*/ S.String;
 /** Resource extended location. */
 export interface ExtendedLocation {
   /** The extended location type. */
-  type?: ExtendedLocationType;
+  type?: ExtendedLocationType | (string & {});
   /** The extended location name. */
   name?: string;
 }
@@ -17861,8 +17837,7 @@ export const GenericResourceExpanded = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GenericResourceExpanded>;
 
 /** The GenericResourceExpanded items on this page */
-export type ResourceListResultValueList =
-  ReadonlyArray<GenericResourceExpanded>;
+export type ResourceListResultValueList = Array<GenericResourceExpanded>;
 export const ResourceListResultValueList = /*@__PURE__*/ S.Array(
   GenericResourceExpanded,
 ) as any as S.Schema<ResourceListResultValueList>;
@@ -17915,7 +17890,7 @@ export const ResourcesListByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourcesListByResourceGroupRequest>;
 
 /** The IDs of the resources. */
-export type ResourcesMoveResourcesRequestResourcesList = ReadonlyArray<string>;
+export type ResourcesMoveResourcesRequestResourcesList = Array<string>;
 export const ResourcesMoveResourcesRequestResourcesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ResourcesMoveResourcesRequestResourcesList>;
@@ -18194,8 +18169,7 @@ export const ResourcesUpdateByIdResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourcesUpdateByIdResponse>;
 
 /** The IDs of the resources. */
-export type ResourcesValidateMoveResourcesRequestResourcesList =
-  ReadonlyArray<string>;
+export type ResourcesValidateMoveResourcesRequestResourcesList = Array<string>;
 export const ResourcesValidateMoveResourcesRequestResourcesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -18255,7 +18229,7 @@ export const ResourceValidationRequestResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of resources to validate. Each resource in the list must have the same namespace, type, and location. The namespace and type on each resource must match the corresponding values in the top-level request. The location on each resource must match the top-level location in the request if specified. */
 export type ResourceValidatorValidateResourcesRequestResourcesList =
-  ReadonlyArray<ResourceValidationRequestResource>;
+  Array<ResourceValidationRequestResource>;
 export const ResourceValidatorValidateResourcesRequestResourcesList =
   /*@__PURE__*/ S.Array(
     ResourceValidationRequestResource,
@@ -18305,7 +18279,7 @@ export const ResourceValidatorValidateResourcesRequest =
 
 /** List of ARM resource IDs corresponding to the resources that were successfully validated */
 export type ResourceValidationResponsePropertiesValidatedResourcesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ResourceValidationResponsePropertiesValidatedResourcesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -18858,7 +18832,7 @@ export const SubscriptionFeatureRegistration = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of subscription feature registrations. */
 export type SubscriptionFeatureRegistrationListValueList =
-  ReadonlyArray<SubscriptionFeatureRegistration>;
+  Array<SubscriptionFeatureRegistration>;
 export const SubscriptionFeatureRegistrationListValueList =
   /*@__PURE__*/ S.Array(
     SubscriptionFeatureRegistration,
@@ -18905,7 +18879,7 @@ export const SubscriptionFeatureRegistrationsListBySubscriptionRequest =
 
 /** The peer Microsoft Azure subscription ID. */
 export type SubscriptionsCheckZonePeersRequestSubscriptionIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const SubscriptionsCheckZonePeersRequestSubscriptionIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -18953,7 +18927,7 @@ export const Peers = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Peers" }) as any as S.Schema<Peers>;
 
 /** Details of shared availability zone. */
-export type AvailabilityZonePeersPeersList = ReadonlyArray<Peers>;
+export type AvailabilityZonePeersPeersList = Array<Peers>;
 export const AvailabilityZonePeersPeersList = /*@__PURE__*/ S.Array(
   Peers,
 ) as any as S.Schema<AvailabilityZonePeersPeersList>;
@@ -18976,7 +18950,7 @@ export const AvailabilityZonePeers = /*@__PURE__*/ S.suspend(() =>
 
 /** The Availability Zones shared by the subscriptions. */
 export type CheckZonePeersResultAvailabilityZonePeersList =
-  ReadonlyArray<AvailabilityZonePeers>;
+  Array<AvailabilityZonePeers>;
 export const CheckZonePeersResultAvailabilityZonePeersList =
   /*@__PURE__*/ S.Array(
     AvailabilityZonePeers,
@@ -19068,7 +19042,7 @@ export const ManagedByTenant = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ManagedByTenant>;
 
 /** An array containing the tenants managing the subscription. */
-export type SubscriptionManagedByTenantsList = ReadonlyArray<ManagedByTenant>;
+export type SubscriptionManagedByTenantsList = Array<ManagedByTenant>;
 export const SubscriptionManagedByTenantsList = /*@__PURE__*/ S.Array(
   ManagedByTenant,
 ) as any as S.Schema<SubscriptionManagedByTenantsList>;
@@ -19130,7 +19104,7 @@ export const SubscriptionsListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SubscriptionsListRequest>;
 
 /** The Subscription items on this page */
-export type SubscriptionListResultValueList = ReadonlyArray<Subscription>;
+export type SubscriptionListResultValueList = Array<Subscription>;
 export const SubscriptionListResultValueList = /*@__PURE__*/ S.Array(
   Subscription,
 ) as any as S.Schema<SubscriptionListResultValueList>;
@@ -19203,7 +19177,7 @@ export const PairedRegion = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PairedRegion" }) as any as S.Schema<PairedRegion>;
 
 /** The regions paired to this region. */
-export type LocationMetadataPairedRegionList = ReadonlyArray<PairedRegion>;
+export type LocationMetadataPairedRegionList = Array<PairedRegion>;
 export const LocationMetadataPairedRegionList = /*@__PURE__*/ S.Array(
   PairedRegion,
 ) as any as S.Schema<LocationMetadataPairedRegionList>;
@@ -19263,7 +19237,7 @@ export const AvailabilityZoneMappings = /*@__PURE__*/ S.suspend(() =>
 
 /** The availability zone mappings for this region. */
 export type LocationAvailabilityZoneMappingsList =
-  ReadonlyArray<AvailabilityZoneMappings>;
+  Array<AvailabilityZoneMappings>;
 export const LocationAvailabilityZoneMappingsList = /*@__PURE__*/ S.Array(
   AvailabilityZoneMappings,
 ) as any as S.Schema<LocationAvailabilityZoneMappingsList>;
@@ -19301,7 +19275,7 @@ export const Location = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Location" }) as any as S.Schema<Location>;
 
 /** An array of locations. */
-export type LocationListResultValueList = ReadonlyArray<Location>;
+export type LocationListResultValueList = Array<Location>;
 export const LocationListResultValueList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationListResultValueList>;
@@ -19376,7 +19350,7 @@ export const TagValue = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TagValue" }) as any as S.Schema<TagValue>;
 
 /** The list of tag values. */
-export type TagDetailsValuesList = ReadonlyArray<TagValue>;
+export type TagDetailsValuesList = Array<TagValue>;
 export const TagDetailsValuesList = /*@__PURE__*/ S.Array(
   TagValue,
 ) as any as S.Schema<TagDetailsValuesList>;
@@ -19640,7 +19614,7 @@ export const TagsListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TagsListRequest>;
 
 /** The TagDetails items on this page */
-export type TagsListResultValueList = ReadonlyArray<TagDetails>;
+export type TagsListResultValueList = Array<TagDetails>;
 export const TagsListResultValueList = /*@__PURE__*/ S.Array(
   TagDetails,
 ) as any as S.Schema<TagsListResultValueList>;
@@ -20287,7 +20261,7 @@ export const TemplateSpec = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TemplateSpec" }) as any as S.Schema<TemplateSpec>;
 
 /** An array of Template Specs. */
-export type TemplateSpecsListResultValueList = ReadonlyArray<TemplateSpec>;
+export type TemplateSpecsListResultValueList = Array<TemplateSpec>;
 export const TemplateSpecsListResultValueList = /*@__PURE__*/ S.Array(
   TemplateSpec,
 ) as any as S.Schema<TemplateSpecsListResultValueList>;
@@ -20514,7 +20488,7 @@ export const LinkedTemplateArtifact = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of linked template artifacts. */
 export type TemplateSpecVersionPropertiesLinkedTemplatesList =
-  ReadonlyArray<LinkedTemplateArtifact>;
+  Array<LinkedTemplateArtifact>;
 export const TemplateSpecVersionPropertiesLinkedTemplatesList =
   /*@__PURE__*/ S.Array(
     LinkedTemplateArtifact,
@@ -21064,7 +21038,7 @@ export const TemplateSpecVersion = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of Template Spec versions. */
 export type TemplateSpecVersionsListResultValueList =
-  ReadonlyArray<TemplateSpecVersion>;
+  Array<TemplateSpecVersion>;
 export const TemplateSpecVersionsListResultValueList = /*@__PURE__*/ S.Array(
   TemplateSpecVersion,
 ) as any as S.Schema<TemplateSpecVersionsListResultValueList>;
@@ -21254,7 +21228,7 @@ export type TenantCategory = "Home" | "ProjectedBy" | "ManagedBy";
 export const TenantCategory = /*@__PURE__*/ S.String;
 
 /** The list of domains for the tenant. */
-export type TenantIdDescriptionDomainsList = ReadonlyArray<string>;
+export type TenantIdDescriptionDomainsList = Array<string>;
 export const TenantIdDescriptionDomainsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<TenantIdDescriptionDomainsList>;
@@ -21300,7 +21274,7 @@ export const TenantIdDescription = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TenantIdDescription>;
 
 /** The TenantIdDescription items on this page */
-export type TenantListResultValueList = ReadonlyArray<TenantIdDescription>;
+export type TenantListResultValueList = Array<TenantIdDescription>;
 export const TenantListResultValueList = /*@__PURE__*/ S.Array(
   TenantIdDescription,
 ) as any as S.Schema<TenantListResultValueList>;

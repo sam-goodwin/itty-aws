@@ -46,7 +46,7 @@ export type RunpagespeedPagespeedapiCategoryEnum =
   | "AGENTIC_BROWSING";
 export const RunpagespeedPagespeedapiCategoryEnum = /*@__PURE__*/ S.String;
 
-export type RunpagespeedPagespeedapiCategoryEnumList = ReadonlyArray<
+export type RunpagespeedPagespeedapiCategoryEnumList = Array<
   RunpagespeedPagespeedapiCategoryEnum | (string & {})
 >;
 export const RunpagespeedPagespeedapiCategoryEnumList = /*@__PURE__*/ S.Array(
@@ -374,12 +374,12 @@ export const Environment = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Environment" }) as any as S.Schema<Environment>;
 
-export type DocumentList = ReadonlyArray<unknown>;
+export type DocumentList = Array<unknown>;
 export const DocumentList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<DocumentList>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -410,7 +410,7 @@ export const LhrEntity = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "LhrEntity" }) as any as S.Schema<LhrEntity>;
 
-export type LhrEntityList = ReadonlyArray<LhrEntity>;
+export type LhrEntityList = Array<LhrEntity>;
 export const LhrEntityList = /*@__PURE__*/ S.Array(
   LhrEntity,
 ) as any as S.Schema<LhrEntityList>;
@@ -435,7 +435,7 @@ export const StackPack = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "StackPack" }) as any as S.Schema<StackPack>;
 
-export type StackPackList = ReadonlyArray<StackPack>;
+export type StackPackList = Array<StackPack>;
 export const StackPackList = /*@__PURE__*/ S.Array(
   StackPack,
 ) as any as S.Schema<StackPackList>;
@@ -499,7 +499,7 @@ export const AuditRefs = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditRefs" }) as any as S.Schema<AuditRefs>;
 
-export type AuditRefsList = ReadonlyArray<AuditRefs>;
+export type AuditRefsList = Array<AuditRefs>;
 export const AuditRefsList = /*@__PURE__*/ S.Array(
   AuditRefs,
 ) as any as S.Schema<AuditRefsList>;
@@ -688,7 +688,7 @@ export const Bucket = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Bucket" }) as any as S.Schema<Bucket>;
 
-export type BucketList = ReadonlyArray<Bucket>;
+export type BucketList = Array<Bucket>;
 export const BucketList = /*@__PURE__*/ S.Array(
   Bucket,
 ) as any as S.Schema<BucketList>;

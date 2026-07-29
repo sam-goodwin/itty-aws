@@ -163,12 +163,12 @@ export const CreateResponseGeoRestrictions = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateResponseGeoRestrictions",
 }) as any as S.Schema<CreateResponseGeoRestrictions>;
 
-export type CreateResponseHostsList = ReadonlyArray<string>;
+export type CreateResponseHostsList = Array<string>;
 export const CreateResponseHostsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateResponseHostsList>;
 
-export type CreateResponseKeylessServerPermissionsList = ReadonlyArray<string>;
+export type CreateResponseKeylessServerPermissionsList = Array<string>;
 export const CreateResponseKeylessServerPermissionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateResponseKeylessServerPermissionsList>;
@@ -375,12 +375,12 @@ export const GetResponseGeoRestrictions = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetResponseGeoRestrictions",
 }) as any as S.Schema<GetResponseGeoRestrictions>;
 
-export type GetResponseHostsList = ReadonlyArray<string>;
+export type GetResponseHostsList = Array<string>;
 export const GetResponseHostsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetResponseHostsList>;
 
-export type GetResponseKeylessServerPermissionsList = ReadonlyArray<string>;
+export type GetResponseKeylessServerPermissionsList = Array<string>;
 export const GetResponseKeylessServerPermissionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetResponseKeylessServerPermissionsList>;
@@ -574,12 +574,12 @@ export const ListResultItemGeoRestrictions = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListResultItemGeoRestrictions",
 }) as any as S.Schema<ListResultItemGeoRestrictions>;
 
-export type ListResultItemHostsList = ReadonlyArray<string>;
+export type ListResultItemHostsList = Array<string>;
 export const ListResultItemHostsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ListResultItemHostsList>;
 
-export type ListResultItemKeylessServerPermissionsList = ReadonlyArray<string>;
+export type ListResultItemKeylessServerPermissionsList = Array<string>;
 export const ListResultItemKeylessServerPermissionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ListResultItemKeylessServerPermissionsList>;
@@ -707,7 +707,7 @@ export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ListResultItem" }) as any as S.Schema<ListResultItem>;
 
-export type ListResultList = ReadonlyArray<ListResultItem>;
+export type ListResultList = Array<ListResultItem>;
 export const ListResultList = /*@__PURE__*/ S.Array(
   ListResultItem,
 ) as any as S.Schema<ListResultList>;
@@ -812,12 +812,12 @@ export const EditResponseGeoRestrictions = /*@__PURE__*/ S.suspend(() =>
   identifier: "EditResponseGeoRestrictions",
 }) as any as S.Schema<EditResponseGeoRestrictions>;
 
-export type EditResponseHostsList = ReadonlyArray<string>;
+export type EditResponseHostsList = Array<string>;
 export const EditResponseHostsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EditResponseHostsList>;
 
-export type EditResponseKeylessServerPermissionsList = ReadonlyArray<string>;
+export type EditResponseKeylessServerPermissionsList = Array<string>;
 export const EditResponseKeylessServerPermissionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EditResponseKeylessServerPermissionsList>;
@@ -965,7 +965,7 @@ export const PrioritizeUpdateRequestCertificatesItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PrioritizeUpdateRequestCertificatesItem>;
 
 export type PrioritizeUpdateRequestCertificatesList =
-  ReadonlyArray<PrioritizeUpdateRequestCertificatesItem>;
+  Array<PrioritizeUpdateRequestCertificatesItem>;
 export const PrioritizeUpdateRequestCertificatesList = /*@__PURE__*/ S.Array(
   PrioritizeUpdateRequestCertificatesItem,
 ) as any as S.Schema<PrioritizeUpdateRequestCertificatesList>;
@@ -1018,13 +1018,13 @@ export const PrioritizeUpdateResultItemGeoRestrictions =
     identifier: "PrioritizeUpdateResultItemGeoRestrictions",
   }) as any as S.Schema<PrioritizeUpdateResultItemGeoRestrictions>;
 
-export type PrioritizeUpdateResultItemHostsList = ReadonlyArray<string>;
+export type PrioritizeUpdateResultItemHostsList = Array<string>;
 export const PrioritizeUpdateResultItemHostsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PrioritizeUpdateResultItemHostsList>;
 
 export type PrioritizeUpdateResultItemKeylessServerPermissionsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PrioritizeUpdateResultItemKeylessServerPermissionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1162,8 +1162,7 @@ export const PrioritizeUpdateResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "PrioritizeUpdateResultItem",
 }) as any as S.Schema<PrioritizeUpdateResultItem>;
 
-export type PrioritizeUpdateResultList =
-  ReadonlyArray<PrioritizeUpdateResultItem>;
+export type PrioritizeUpdateResultList = Array<PrioritizeUpdateResultItem>;
 export const PrioritizeUpdateResultList = /*@__PURE__*/ S.Array(
   PrioritizeUpdateResultItem,
 ) as any as S.Schema<PrioritizeUpdateResultList>;

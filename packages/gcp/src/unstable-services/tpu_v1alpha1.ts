@@ -116,7 +116,7 @@ export interface Symptom {
   /** Timestamp when the Symptom is created. */
   createTime?: string;
   /** Type of the Symptom. */
-  symptomType?: SymptomSymptomTypeEnum;
+  symptomType?: SymptomSymptomTypeEnum | (string & {});
   /** Detailed information of the current Symptom. */
   details?: string;
   /** A string used to uniquely distinguish a worker within a TPU node. */
@@ -131,7 +131,7 @@ export const Symptom = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Symptom" }) as any as S.Schema<Symptom>;
 
-export type SymptomList = ReadonlyArray<Symptom>;
+export type SymptomList = Array<Symptom>;
 export const SymptomList = /*@__PURE__*/ S.Array(
   Symptom,
 ) as any as S.Schema<SymptomList>;
@@ -152,7 +152,7 @@ export const NetworkEndpoint = /*@__PURE__*/ S.suspend(() =>
   identifier: "NetworkEndpoint",
 }) as any as S.Schema<NetworkEndpoint>;
 
-export type NetworkEndpointList = ReadonlyArray<NetworkEndpoint>;
+export type NetworkEndpointList = Array<NetworkEndpoint>;
 export const NetworkEndpointList = /*@__PURE__*/ S.Array(
   NetworkEndpoint,
 ) as any as S.Schema<NetworkEndpointList>;
@@ -229,11 +229,11 @@ export interface Node {
   /** Resource labels to represent user-provided metadata. */
   labels?: StringMap;
   /** Output only. The API version that created this Node. */
-  apiVersion?: NodeApiVersionEnum;
+  apiVersion?: NodeApiVersionEnum | (string & {});
   /** Output only. The current state for the TPU Node. */
-  state?: NodeStateEnum;
+  state?: NodeStateEnum | (string & {});
   /** The health status of the TPU node. */
-  health?: NodeHealthEnum;
+  health?: NodeHealthEnum | (string & {});
   /** Whether the VPC peering for the node is set up through Service Networking API. The VPC Peering should be set up before provisioning the node. If this field is set, cidr_block field should not be specified. If the network, that you want to peer the TPU Node to, is Shared VPC networks, the node must be created with this this field enabled. */
   useServiceNetworking?: boolean;
   /** Required. The type of hardware accelerators associated with this node. */
@@ -296,7 +296,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -529,7 +529,7 @@ export const TensorFlowVersion = /*@__PURE__*/ S.suspend(() =>
   identifier: "TensorFlowVersion",
 }) as any as S.Schema<TensorFlowVersion>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -564,7 +564,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = ReadonlyArray<Location>;
+export type LocationList = Array<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -616,7 +616,7 @@ export const ListProjectsLocationsAcceleratorTypesRequest =
     identifier: "ListProjectsLocationsAcceleratorTypesRequest",
   }) as any as S.Schema<ListProjectsLocationsAcceleratorTypesRequest>;
 
-export type AcceleratorTypeList = ReadonlyArray<AcceleratorType>;
+export type AcceleratorTypeList = Array<AcceleratorType>;
 export const AcceleratorTypeList = /*@__PURE__*/ S.Array(
   AcceleratorType,
 ) as any as S.Schema<AcceleratorTypeList>;
@@ -664,7 +664,7 @@ export const ListProjectsLocationsNodesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsNodesRequest",
 }) as any as S.Schema<ListProjectsLocationsNodesRequest>;
 
-export type NodeList = ReadonlyArray<Node>;
+export type NodeList = Array<Node>;
 export const NodeList = /*@__PURE__*/ S.Array(
   Node,
 ) as any as S.Schema<NodeList>;
@@ -719,7 +719,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type OperationList = ReadonlyArray<Operation>;
+export type OperationList = Array<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -774,7 +774,7 @@ export const ListProjectsLocationsTensorflowVersionsRequest =
     identifier: "ListProjectsLocationsTensorflowVersionsRequest",
   }) as any as S.Schema<ListProjectsLocationsTensorflowVersionsRequest>;
 
-export type TensorFlowVersionList = ReadonlyArray<TensorFlowVersion>;
+export type TensorFlowVersionList = Array<TensorFlowVersion>;
 export const TensorFlowVersionList = /*@__PURE__*/ S.Array(
   TensorFlowVersion,
 ) as any as S.Schema<TensorFlowVersionList>;

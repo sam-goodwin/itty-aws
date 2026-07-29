@@ -60,7 +60,7 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -126,7 +126,7 @@ export const GoogleIamV2PolicyRule = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleIamV2PolicyRule",
 }) as any as S.Schema<GoogleIamV2PolicyRule>;
 
-export type GoogleIamV2PolicyRuleList = ReadonlyArray<GoogleIamV2PolicyRule>;
+export type GoogleIamV2PolicyRuleList = Array<GoogleIamV2PolicyRule>;
 export const GoogleIamV2PolicyRuleList = /*@__PURE__*/ S.Array(
   GoogleIamV2PolicyRule,
 ) as any as S.Schema<GoogleIamV2PolicyRuleList>;
@@ -207,7 +207,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -337,7 +337,7 @@ export const ListPoliciesPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListPoliciesPoliciesRequest",
 }) as any as S.Schema<ListPoliciesPoliciesRequest>;
 
-export type GoogleIamV2PolicyList = ReadonlyArray<GoogleIamV2Policy>;
+export type GoogleIamV2PolicyList = Array<GoogleIamV2Policy>;
 export const GoogleIamV2PolicyList = /*@__PURE__*/ S.Array(
   GoogleIamV2Policy,
 ) as any as S.Schema<GoogleIamV2PolicyList>;

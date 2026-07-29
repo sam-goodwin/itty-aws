@@ -320,8 +320,8 @@ export type PresetSpeke20Video =
 export const PresetSpeke20Video = /*@__PURE__*/ S.String;
 
 export interface EncryptionContractConfiguration {
-  PresetSpeke20Audio?: PresetSpeke20Audio;
-  PresetSpeke20Video?: PresetSpeke20Video;
+  PresetSpeke20Audio?: PresetSpeke20Audio | (string & {});
+  PresetSpeke20Video?: PresetSpeke20Video | (string & {});
 }
 export const EncryptionContractConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -390,7 +390,7 @@ export const StreamOrder = /*@__PURE__*/ S.String;
 export interface StreamSelection {
   MaxVideoBitsPerSecond?: number;
   MinVideoBitsPerSecond?: number;
-  StreamOrder?: StreamOrder;
+  StreamOrder?: StreamOrder | (string & {});
 }
 export const StreamSelection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -408,7 +408,7 @@ export const StreamSelection = /*@__PURE__*/ S.suspend(() =>
   identifier: "StreamSelection",
 }) as any as S.Schema<StreamSelection>;
 export interface HlsManifest {
-  AdMarkers?: AdMarkers;
+  AdMarkers?: AdMarkers | (string & {});
   IncludeIframeOnlyStream?: boolean;
   ManifestName?: string;
   ProgramDateTimeIntervalSeconds?: number;
@@ -468,11 +468,11 @@ export type ScteMarkersSource = "SEGMENTS" | "MANIFEST";
 export const ScteMarkersSource = /*@__PURE__*/ S.String;
 
 export interface DashManifest {
-  ManifestLayout?: ManifestLayout;
+  ManifestLayout?: ManifestLayout | (string & {});
   ManifestName?: string;
   MinBufferTimeSeconds?: number;
-  Profile?: Profile;
-  ScteMarkersSource?: ScteMarkersSource;
+  Profile?: Profile | (string & {});
+  ScteMarkersSource?: ScteMarkersSource | (string & {});
   StreamSelection?: StreamSelection;
 }
 export const DashManifest = /*@__PURE__*/ S.suspend(() =>
@@ -507,7 +507,10 @@ export const DashEncryption = /*@__PURE__*/ S.suspend(() =>
 export type __PeriodTriggersElement = "ADS";
 export const __PeriodTriggersElement = /*@__PURE__*/ S.String;
 
-export type __listOf__PeriodTriggersElement = __PeriodTriggersElement[];
+export type __listOf__PeriodTriggersElement = (
+  | __PeriodTriggersElement
+  | (string & {})
+)[];
 export const __listOf__PeriodTriggersElement = /*@__PURE__*/ S.Array(
   __PeriodTriggersElement,
 );
@@ -524,7 +527,7 @@ export interface DashPackage {
   IncludeIframeOnlyStream?: boolean;
   PeriodTriggers?: __PeriodTriggersElement[];
   SegmentDurationSeconds?: number;
-  SegmentTemplateFormat?: SegmentTemplateFormat;
+  SegmentTemplateFormat?: SegmentTemplateFormat | (string & {});
 }
 export const DashPackage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -553,7 +556,7 @@ export const EncryptionMethod = /*@__PURE__*/ S.String;
 
 export interface HlsEncryption {
   ConstantInitializationVector?: string;
-  EncryptionMethod?: EncryptionMethod;
+  EncryptionMethod?: EncryptionMethod | (string & {});
   SpekeKeyProvider?: SpekeKeyProvider;
 }
 export const HlsEncryption = /*@__PURE__*/ S.suspend(() =>

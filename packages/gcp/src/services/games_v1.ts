@@ -103,7 +103,7 @@ export const RevisionCheckResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "RevisionCheckResponse",
 }) as any as S.Schema<RevisionCheckResponse>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -162,7 +162,7 @@ export const GamePlayerToken = /*@__PURE__*/ S.suspend(() =>
   identifier: "GamePlayerToken",
 }) as any as S.Schema<GamePlayerToken>;
 
-export type GamePlayerTokenList = ReadonlyArray<GamePlayerToken>;
+export type GamePlayerTokenList = Array<GamePlayerToken>;
 export const GamePlayerTokenList = /*@__PURE__*/ S.Array(
   GamePlayerToken,
 ) as any as S.Schema<GamePlayerTokenList>;
@@ -318,7 +318,7 @@ export const ImageAsset = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ImageAsset" }) as any as S.Schema<ImageAsset>;
 
-export type ImageAssetList = ReadonlyArray<ImageAsset>;
+export type ImageAssetList = Array<ImageAsset>;
 export const ImageAssetList = /*@__PURE__*/ S.Array(
   ImageAsset,
 ) as any as S.Schema<ImageAssetList>;
@@ -452,7 +452,7 @@ export const Instance = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Instance" }) as any as S.Schema<Instance>;
 
-export type InstanceList = ReadonlyArray<Instance>;
+export type InstanceList = Array<Instance>;
 export const InstanceList = /*@__PURE__*/ S.Array(
   Instance,
 ) as any as S.Schema<InstanceList>;
@@ -461,7 +461,7 @@ export type ApplicationEnabledFeaturesItemEnum = "SNAPSHOTS";
 export const ApplicationEnabledFeaturesItemEnum = /*@__PURE__*/ S.String;
 
 export type ApplicationEnabledFeaturesItemEnumList =
-  ReadonlyArray<ApplicationEnabledFeaturesItemEnum>;
+  Array<ApplicationEnabledFeaturesItemEnum>;
 export const ApplicationEnabledFeaturesItemEnumList = /*@__PURE__*/ S.Array(
   ApplicationEnabledFeaturesItemEnum,
 ) as any as S.Schema<ApplicationEnabledFeaturesItemEnumList>;
@@ -635,7 +635,7 @@ export const PlayerLevel = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PlayerLevel" }) as any as S.Schema<PlayerLevel>;
 
-export type PlayerLevelList = ReadonlyArray<PlayerLevel>;
+export type PlayerLevelList = Array<PlayerLevel>;
 export const PlayerLevelList = /*@__PURE__*/ S.Array(
   PlayerLevel,
 ) as any as S.Schema<PlayerLevelList>;
@@ -692,7 +692,7 @@ export const ApplicationPlayerId = /*@__PURE__*/ S.suspend(() =>
   identifier: "ApplicationPlayerId",
 }) as any as S.Schema<ApplicationPlayerId>;
 
-export type ApplicationPlayerIdList = ReadonlyArray<ApplicationPlayerId>;
+export type ApplicationPlayerIdList = Array<ApplicationPlayerId>;
 export const ApplicationPlayerIdList = /*@__PURE__*/ S.Array(
   ApplicationPlayerId,
 ) as any as S.Schema<ApplicationPlayerIdList>;
@@ -993,7 +993,7 @@ export const PlayerLeaderboardScore = /*@__PURE__*/ S.suspend(() =>
   identifier: "PlayerLeaderboardScore",
 }) as any as S.Schema<PlayerLeaderboardScore>;
 
-export type PlayerLeaderboardScoreList = ReadonlyArray<PlayerLeaderboardScore>;
+export type PlayerLeaderboardScoreList = Array<PlayerLeaderboardScore>;
 export const PlayerLeaderboardScoreList = /*@__PURE__*/ S.Array(
   PlayerLeaderboardScore,
 ) as any as S.Schema<PlayerLeaderboardScoreList>;
@@ -1420,7 +1420,7 @@ export const AchievementDefinition = /*@__PURE__*/ S.suspend(() =>
   identifier: "AchievementDefinition",
 }) as any as S.Schema<AchievementDefinition>;
 
-export type AchievementDefinitionList = ReadonlyArray<AchievementDefinition>;
+export type AchievementDefinitionList = Array<AchievementDefinition>;
 export const AchievementDefinitionList = /*@__PURE__*/ S.Array(
   AchievementDefinition,
 ) as any as S.Schema<AchievementDefinitionList>;
@@ -1518,7 +1518,7 @@ export const PlayerAchievement = /*@__PURE__*/ S.suspend(() =>
   identifier: "PlayerAchievement",
 }) as any as S.Schema<PlayerAchievement>;
 
-export type PlayerAchievementList = ReadonlyArray<PlayerAchievement>;
+export type PlayerAchievementList = Array<PlayerAchievement>;
 export const PlayerAchievementList = /*@__PURE__*/ S.Array(
   PlayerAchievement,
 ) as any as S.Schema<PlayerAchievementList>;
@@ -1589,7 +1589,7 @@ export const PlayerEvent = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PlayerEvent" }) as any as S.Schema<PlayerEvent>;
 
-export type PlayerEventList = ReadonlyArray<PlayerEvent>;
+export type PlayerEventList = Array<PlayerEvent>;
 export const PlayerEventList = /*@__PURE__*/ S.Array(
   PlayerEvent,
 ) as any as S.Schema<PlayerEventList>;
@@ -1665,7 +1665,7 @@ export const Category = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Category" }) as any as S.Schema<Category>;
 
-export type CategoryList = ReadonlyArray<Category>;
+export type CategoryList = Array<Category>;
 export const CategoryList = /*@__PURE__*/ S.Array(
   Category,
 ) as any as S.Schema<CategoryList>;
@@ -1730,7 +1730,7 @@ export const EventChild = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "EventChild" }) as any as S.Schema<EventChild>;
 
-export type EventChildList = ReadonlyArray<EventChild>;
+export type EventChildList = Array<EventChild>;
 export const EventChildList = /*@__PURE__*/ S.Array(
   EventChild,
 ) as any as S.Schema<EventChildList>;
@@ -1769,7 +1769,7 @@ export const EventDefinition = /*@__PURE__*/ S.suspend(() =>
   identifier: "EventDefinition",
 }) as any as S.Schema<EventDefinition>;
 
-export type EventDefinitionList = ReadonlyArray<EventDefinition>;
+export type EventDefinitionList = Array<EventDefinition>;
 export const EventDefinitionList = /*@__PURE__*/ S.Array(
   EventDefinition,
 ) as any as S.Schema<EventDefinitionList>;
@@ -1817,7 +1817,7 @@ export const ListLeaderboardsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListLeaderboardsRequest",
 }) as any as S.Schema<ListLeaderboardsRequest>;
 
-export type LeaderboardList = ReadonlyArray<Leaderboard>;
+export type LeaderboardList = Array<Leaderboard>;
 export const LeaderboardList = /*@__PURE__*/ S.Array(
   Leaderboard,
 ) as any as S.Schema<LeaderboardList>;
@@ -1871,7 +1871,7 @@ export const ListPlayersRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListPlayersRequest",
 }) as any as S.Schema<ListPlayersRequest>;
 
-export type PlayerList = ReadonlyArray<Player>;
+export type PlayerList = Array<Player>;
 export const PlayerList = /*@__PURE__*/ S.Array(
   Player,
 ) as any as S.Schema<PlayerList>;
@@ -1974,7 +1974,7 @@ export const LeaderboardEntry = /*@__PURE__*/ S.suspend(() =>
   identifier: "LeaderboardEntry",
 }) as any as S.Schema<LeaderboardEntry>;
 
-export type LeaderboardEntryList = ReadonlyArray<LeaderboardEntry>;
+export type LeaderboardEntryList = Array<LeaderboardEntry>;
 export const LeaderboardEntryList = /*@__PURE__*/ S.Array(
   LeaderboardEntry,
 ) as any as S.Schema<LeaderboardEntryList>;
@@ -2034,7 +2034,7 @@ export const ListSnapshotsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListSnapshotsRequest",
 }) as any as S.Schema<ListSnapshotsRequest>;
 
-export type SnapshotList = ReadonlyArray<Snapshot>;
+export type SnapshotList = Array<Snapshot>;
 export const SnapshotList = /*@__PURE__*/ S.Array(
   Snapshot,
 ) as any as S.Schema<SnapshotList>;
@@ -2142,7 +2142,7 @@ export const EventUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "EventUpdateRequest",
 }) as any as S.Schema<EventUpdateRequest>;
 
-export type EventUpdateRequestList = ReadonlyArray<EventUpdateRequest>;
+export type EventUpdateRequestList = Array<EventUpdateRequest>;
 export const EventUpdateRequestList = /*@__PURE__*/ S.Array(
   EventUpdateRequest,
 ) as any as S.Schema<EventUpdateRequestList>;
@@ -2185,7 +2185,7 @@ export const EventPeriodUpdate = /*@__PURE__*/ S.suspend(() =>
   identifier: "EventPeriodUpdate",
 }) as any as S.Schema<EventPeriodUpdate>;
 
-export type EventPeriodUpdateList = ReadonlyArray<EventPeriodUpdate>;
+export type EventPeriodUpdateList = Array<EventPeriodUpdate>;
 export const EventPeriodUpdateList = /*@__PURE__*/ S.Array(
   EventPeriodUpdate,
 ) as any as S.Schema<EventPeriodUpdateList>;
@@ -2257,7 +2257,7 @@ export const EventRecordFailure = /*@__PURE__*/ S.suspend(() =>
   identifier: "EventRecordFailure",
 }) as any as S.Schema<EventRecordFailure>;
 
-export type EventRecordFailureList = ReadonlyArray<EventRecordFailure>;
+export type EventRecordFailureList = Array<EventRecordFailure>;
 export const EventRecordFailureList = /*@__PURE__*/ S.Array(
   EventRecordFailure,
 ) as any as S.Schema<EventRecordFailureList>;
@@ -2290,8 +2290,7 @@ export const EventBatchRecordFailure = /*@__PURE__*/ S.suspend(() =>
   identifier: "EventBatchRecordFailure",
 }) as any as S.Schema<EventBatchRecordFailure>;
 
-export type EventBatchRecordFailureList =
-  ReadonlyArray<EventBatchRecordFailure>;
+export type EventBatchRecordFailureList = Array<EventBatchRecordFailure>;
 export const EventBatchRecordFailureList = /*@__PURE__*/ S.Array(
   EventBatchRecordFailure,
 ) as any as S.Schema<EventBatchRecordFailureList>;
@@ -2380,7 +2379,7 @@ export const RetrieveTokensRecallRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "RetrieveTokensRecallRequest",
 }) as any as S.Schema<RetrieveTokensRecallRequest>;
 
-export type RecallTokenList = ReadonlyArray<RecallToken>;
+export type RecallTokenList = Array<RecallToken>;
 export const RecallTokenList = /*@__PURE__*/ S.Array(
   RecallToken,
 ) as any as S.Schema<RecallTokenList>;
@@ -2500,7 +2499,7 @@ export const ScoreSubmission = /*@__PURE__*/ S.suspend(() =>
   identifier: "ScoreSubmission",
 }) as any as S.Schema<ScoreSubmission>;
 
-export type ScoreSubmissionList = ReadonlyArray<ScoreSubmission>;
+export type ScoreSubmissionList = Array<ScoreSubmission>;
 export const ScoreSubmissionList = /*@__PURE__*/ S.Array(
   ScoreSubmission,
 ) as any as S.Schema<ScoreSubmissionList>;
@@ -2568,7 +2567,7 @@ export const PlayerScore = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PlayerScore" }) as any as S.Schema<PlayerScore>;
 
-export type PlayerScoreList = ReadonlyArray<PlayerScore>;
+export type PlayerScoreList = Array<PlayerScore>;
 export const PlayerScoreList = /*@__PURE__*/ S.Array(
   PlayerScore,
 ) as any as S.Schema<PlayerScoreList>;
@@ -2581,7 +2580,7 @@ export const PlayerScoreResponseBeatenScoreTimeSpansItemEnum =
   /*@__PURE__*/ S.String;
 
 export type PlayerScoreResponseBeatenScoreTimeSpansItemEnumList =
-  ReadonlyArray<PlayerScoreResponseBeatenScoreTimeSpansItemEnum>;
+  Array<PlayerScoreResponseBeatenScoreTimeSpansItemEnum>;
 export const PlayerScoreResponseBeatenScoreTimeSpansItemEnumList =
   /*@__PURE__*/ S.Array(
     PlayerScoreResponseBeatenScoreTimeSpansItemEnum,
@@ -2617,7 +2616,7 @@ export const PlayerScoreResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PlayerScoreResponse",
 }) as any as S.Schema<PlayerScoreResponse>;
 
-export type PlayerScoreResponseList = ReadonlyArray<PlayerScoreResponse>;
+export type PlayerScoreResponseList = Array<PlayerScoreResponse>;
 export const PlayerScoreResponseList = /*@__PURE__*/ S.Array(
   PlayerScoreResponse,
 ) as any as S.Schema<PlayerScoreResponseList>;
@@ -2816,8 +2815,7 @@ export const AchievementUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "AchievementUpdateRequest",
 }) as any as S.Schema<AchievementUpdateRequest>;
 
-export type AchievementUpdateRequestList =
-  ReadonlyArray<AchievementUpdateRequest>;
+export type AchievementUpdateRequestList = Array<AchievementUpdateRequest>;
 export const AchievementUpdateRequestList = /*@__PURE__*/ S.Array(
   AchievementUpdateRequest,
 ) as any as S.Schema<AchievementUpdateRequestList>;
@@ -2890,8 +2888,7 @@ export const AchievementUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "AchievementUpdateResponse",
 }) as any as S.Schema<AchievementUpdateResponse>;
 
-export type AchievementUpdateResponseList =
-  ReadonlyArray<AchievementUpdateResponse>;
+export type AchievementUpdateResponseList = Array<AchievementUpdateResponse>;
 export const AchievementUpdateResponseList = /*@__PURE__*/ S.Array(
   AchievementUpdateResponse,
 ) as any as S.Schema<AchievementUpdateResponseList>;

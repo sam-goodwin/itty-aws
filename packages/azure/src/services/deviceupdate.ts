@@ -47,7 +47,7 @@ export const PrivateEndpointServiceConnectionStatus = /*@__PURE__*/ S.String;
 /** A collection of information about the state of the connection between service consumer and provider. */
 export interface PrivateLinkServiceConnectionState {
   /** Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service. */
-  status?: PrivateEndpointServiceConnectionStatus;
+  status?: PrivateEndpointServiceConnectionStatus | (string & {});
   /** The reason for approval/rejection of the connection. */
   description?: string;
   /** A message indicating if changes on the service provider require any updates on the consumer. */
@@ -65,7 +65,7 @@ export const PrivateLinkServiceConnectionState = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of group IDs. */
 export type PrivateEndpointConnectionPropertiesInputGroupIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PrivateEndpointConnectionPropertiesInputGroupIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -109,7 +109,7 @@ export const AccountsCreateRequestPropertiesPrivateEndpointConnectionsItem =
 
 /** List of private endpoint connections associated with the account. */
 export type AccountsCreateRequestPropertiesPrivateEndpointConnectionsList =
-  ReadonlyArray<AccountsCreateRequestPropertiesPrivateEndpointConnectionsItem>;
+  Array<AccountsCreateRequestPropertiesPrivateEndpointConnectionsItem>;
 export const AccountsCreateRequestPropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     AccountsCreateRequestPropertiesPrivateEndpointConnectionsItem,
@@ -320,8 +320,7 @@ export const PrivateEndpoint = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateEndpoint>;
 
 /** Array of group IDs. */
-export type PrivateEndpointConnectionPropertiesGroupIdsList =
-  ReadonlyArray<string>;
+export type PrivateEndpointConnectionPropertiesGroupIdsList = Array<string>;
 export const PrivateEndpointConnectionPropertiesGroupIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -387,7 +386,7 @@ export const AccountsCreateResponsePropertiesPrivateEndpointConnectionsItem =
 
 /** List of private endpoint connections associated with the account. */
 export type AccountsCreateResponsePropertiesPrivateEndpointConnectionsList =
-  ReadonlyArray<AccountsCreateResponsePropertiesPrivateEndpointConnectionsItem>;
+  Array<AccountsCreateResponsePropertiesPrivateEndpointConnectionsItem>;
 export const AccountsCreateResponsePropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     AccountsCreateResponsePropertiesPrivateEndpointConnectionsItem,
@@ -414,8 +413,7 @@ export const Location = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Location" }) as any as S.Schema<Location>;
 
 /** Device Update account primary and failover location details */
-export type AccountsCreateResponsePropertiesLocationsList =
-  ReadonlyArray<Location>;
+export type AccountsCreateResponsePropertiesLocationsList = Array<Location>;
 export const AccountsCreateResponsePropertiesLocationsList =
   /*@__PURE__*/ S.Array(
     Location,
@@ -646,7 +644,7 @@ export const AccountsGetResponsePropertiesPrivateEndpointConnectionsItem =
 
 /** List of private endpoint connections associated with the account. */
 export type AccountsGetResponsePropertiesPrivateEndpointConnectionsList =
-  ReadonlyArray<AccountsGetResponsePropertiesPrivateEndpointConnectionsItem>;
+  Array<AccountsGetResponsePropertiesPrivateEndpointConnectionsItem>;
 export const AccountsGetResponsePropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     AccountsGetResponsePropertiesPrivateEndpointConnectionsItem,
@@ -657,8 +655,7 @@ export type AccountsGetResponsePropertiesSku = "Free" | "Standard";
 export const AccountsGetResponsePropertiesSku = /*@__PURE__*/ S.String;
 
 /** Device Update account primary and failover location details */
-export type AccountsGetResponsePropertiesLocationsList =
-  ReadonlyArray<Location>;
+export type AccountsGetResponsePropertiesLocationsList = Array<Location>;
 export const AccountsGetResponsePropertiesLocationsList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<AccountsGetResponsePropertiesLocationsList>;
@@ -824,7 +821,7 @@ export const AccountPropertiesPrivateEndpointConnectionsItem =
 
 /** List of private endpoint connections associated with the account. */
 export type AccountPropertiesPrivateEndpointConnectionsList =
-  ReadonlyArray<AccountPropertiesPrivateEndpointConnectionsItem>;
+  Array<AccountPropertiesPrivateEndpointConnectionsItem>;
 export const AccountPropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     AccountPropertiesPrivateEndpointConnectionsItem,
@@ -835,7 +832,7 @@ export type AccountPropertiesSku = "Free" | "Standard";
 export const AccountPropertiesSku = /*@__PURE__*/ S.String;
 
 /** Device Update account primary and failover location details */
-export type AccountPropertiesLocationsList = ReadonlyArray<Location>;
+export type AccountPropertiesLocationsList = Array<Location>;
 export const AccountPropertiesLocationsList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<AccountPropertiesLocationsList>;
@@ -926,7 +923,7 @@ export const Account = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Account" }) as any as S.Schema<Account>;
 
 /** List of Accounts. */
-export type AccountListValueList = ReadonlyArray<Account>;
+export type AccountListValueList = Array<Account>;
 export const AccountListValueList = /*@__PURE__*/ S.Array(
   Account,
 ) as any as S.Schema<AccountListValueList>;
@@ -1077,7 +1074,7 @@ export const AccountsUpdateResponsePropertiesPrivateEndpointConnectionsItem =
 
 /** List of private endpoint connections associated with the account. */
 export type AccountsUpdateResponsePropertiesPrivateEndpointConnectionsList =
-  ReadonlyArray<AccountsUpdateResponsePropertiesPrivateEndpointConnectionsItem>;
+  Array<AccountsUpdateResponsePropertiesPrivateEndpointConnectionsItem>;
 export const AccountsUpdateResponsePropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     AccountsUpdateResponsePropertiesPrivateEndpointConnectionsItem,
@@ -1088,8 +1085,7 @@ export type AccountsUpdateResponsePropertiesSku = "Free" | "Standard";
 export const AccountsUpdateResponsePropertiesSku = /*@__PURE__*/ S.String;
 
 /** Device Update account primary and failover location details */
-export type AccountsUpdateResponsePropertiesLocationsList =
-  ReadonlyArray<Location>;
+export type AccountsUpdateResponsePropertiesLocationsList = Array<Location>;
 export const AccountsUpdateResponsePropertiesLocationsList =
   /*@__PURE__*/ S.Array(
     Location,
@@ -1253,8 +1249,7 @@ export const IotHubSettings = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IotHubSettings" }) as any as S.Schema<IotHubSettings>;
 
 /** List of IoT Hubs associated with the account. */
-export type InstancesCreateRequestPropertiesIotHubsList =
-  ReadonlyArray<IotHubSettings>;
+export type InstancesCreateRequestPropertiesIotHubsList = Array<IotHubSettings>;
 export const InstancesCreateRequestPropertiesIotHubsList =
   /*@__PURE__*/ S.Array(
     IotHubSettings,
@@ -1268,7 +1263,9 @@ export const DiagnosticStoragePropertiesAuthenticationType =
 /** Customer-initiated diagnostic log collection storage properties */
 export interface DiagnosticStorageProperties {
   /** Authentication Type */
-  authenticationType: DiagnosticStoragePropertiesAuthenticationType;
+  authenticationType:
+    | DiagnosticStoragePropertiesAuthenticationType
+    | (string & {});
   /** ConnectionString of the diagnostic storage account */
   connectionString?: string | Redacted.Redacted<string>;
   /** ResourceId of the diagnostic storage account */
@@ -1361,7 +1358,7 @@ export const InstancesCreateResponsePropertiesProvisioningState =
 
 /** List of IoT Hubs associated with the account. */
 export type InstancesCreateResponsePropertiesIotHubsList =
-  ReadonlyArray<IotHubSettings>;
+  Array<IotHubSettings>;
 export const InstancesCreateResponsePropertiesIotHubsList =
   /*@__PURE__*/ S.Array(
     IotHubSettings,
@@ -1505,8 +1502,7 @@ export const InstancesGetResponsePropertiesProvisioningState =
   /*@__PURE__*/ S.String;
 
 /** List of IoT Hubs associated with the account. */
-export type InstancesGetResponsePropertiesIotHubsList =
-  ReadonlyArray<IotHubSettings>;
+export type InstancesGetResponsePropertiesIotHubsList = Array<IotHubSettings>;
 export const InstancesGetResponsePropertiesIotHubsList = /*@__PURE__*/ S.Array(
   IotHubSettings,
 ) as any as S.Schema<InstancesGetResponsePropertiesIotHubsList>;
@@ -1610,7 +1606,7 @@ export type InstancePropertiesProvisioningState =
 export const InstancePropertiesProvisioningState = /*@__PURE__*/ S.String;
 
 /** List of IoT Hubs associated with the account. */
-export type InstancePropertiesIotHubsList = ReadonlyArray<IotHubSettings>;
+export type InstancePropertiesIotHubsList = Array<IotHubSettings>;
 export const InstancePropertiesIotHubsList = /*@__PURE__*/ S.Array(
   IotHubSettings,
 ) as any as S.Schema<InstancePropertiesIotHubsList>;
@@ -1669,7 +1665,7 @@ export const Instance = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Instance" }) as any as S.Schema<Instance>;
 
 /** List of Instances. */
-export type InstanceListValueList = ReadonlyArray<Instance>;
+export type InstanceListValueList = Array<Instance>;
 export const InstanceListValueList = /*@__PURE__*/ S.Array(
   Instance,
 ) as any as S.Schema<InstanceListValueList>;
@@ -1750,7 +1746,7 @@ export const InstancesUpdateResponsePropertiesProvisioningState =
 
 /** List of IoT Hubs associated with the account. */
 export type InstancesUpdateResponsePropertiesIotHubsList =
-  ReadonlyArray<IotHubSettings>;
+  Array<IotHubSettings>;
 export const InstancesUpdateResponsePropertiesIotHubsList =
   /*@__PURE__*/ S.Array(
     IotHubSettings,
@@ -1880,7 +1876,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = ReadonlyArray<Operation>;
+export type OperationsListResponseValueList = Array<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;
@@ -1901,7 +1897,7 @@ export const OperationsListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationsListResponse>;
 
 /** List of group IDs. */
-export type PrivateLinkServiceConnectionGroupIdsList = ReadonlyArray<string>;
+export type PrivateLinkServiceConnectionGroupIdsList = Array<string>;
 export const PrivateLinkServiceConnectionGroupIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PrivateLinkServiceConnectionGroupIdsList>;
@@ -1927,7 +1923,7 @@ export const PrivateLinkServiceConnection = /*@__PURE__*/ S.suspend(() =>
 
 /** List of private link service connections that need manual approval. */
 export type RemotePrivateEndpointInputManualPrivateLinkServiceConnectionsList =
-  ReadonlyArray<PrivateLinkServiceConnection>;
+  Array<PrivateLinkServiceConnection>;
 export const RemotePrivateEndpointInputManualPrivateLinkServiceConnectionsList =
   /*@__PURE__*/ S.Array(
     PrivateLinkServiceConnection,
@@ -1935,7 +1931,7 @@ export const RemotePrivateEndpointInputManualPrivateLinkServiceConnectionsList =
 
 /** List of automatically approved private link service connections. */
 export type RemotePrivateEndpointInputPrivateLinkServiceConnectionsList =
-  ReadonlyArray<PrivateLinkServiceConnection>;
+  Array<PrivateLinkServiceConnection>;
 export const RemotePrivateEndpointInputPrivateLinkServiceConnectionsList =
   /*@__PURE__*/ S.Array(
     PrivateLinkServiceConnection,
@@ -1972,7 +1968,7 @@ export const RemotePrivateEndpointConnectionInput = /*@__PURE__*/ S.suspend(
 
 /** List of customer visible FQDNs. */
 export type GroupConnectivityInformationInputCustomerVisibleFqdnsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GroupConnectivityInformationInputCustomerVisibleFqdnsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2001,7 +1997,7 @@ export const GroupConnectivityInformationInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Group connectivity information. */
 export type PrivateLinkServiceProxyInputGroupConnectivityInformationList =
-  ReadonlyArray<GroupConnectivityInformationInput>;
+  Array<GroupConnectivityInformationInput>;
 export const PrivateLinkServiceProxyInputGroupConnectivityInformationList =
   /*@__PURE__*/ S.Array(
     GroupConnectivityInformationInput,
@@ -2037,7 +2033,7 @@ export const PrivateLinkServiceProxyInput = /*@__PURE__*/ S.suspend(() =>
 
 /** List of private link service proxies. */
 export type RemotePrivateEndpointInputPrivateLinkServiceProxiesList =
-  ReadonlyArray<PrivateLinkServiceProxyInput>;
+  Array<PrivateLinkServiceProxyInput>;
 export const RemotePrivateEndpointInputPrivateLinkServiceProxiesList =
   /*@__PURE__*/ S.Array(
     PrivateLinkServiceProxyInput,
@@ -2053,7 +2049,7 @@ export const ConnectionDetailsInput = /*@__PURE__*/ S.suspend(() =>
 
 /** List of connection details. */
 export type RemotePrivateEndpointInputConnectionDetailsList =
-  ReadonlyArray<ConnectionDetailsInput>;
+  Array<ConnectionDetailsInput>;
 export const RemotePrivateEndpointInputConnectionDetailsList =
   /*@__PURE__*/ S.Array(
     ConnectionDetailsInput,
@@ -2154,7 +2150,7 @@ export const PrivateEndpointConnectionProxiesCreateOrUpdateRequest =
 
 /** List of private link service connections that need manual approval. */
 export type RemotePrivateEndpointManualPrivateLinkServiceConnectionsList =
-  ReadonlyArray<PrivateLinkServiceConnection>;
+  Array<PrivateLinkServiceConnection>;
 export const RemotePrivateEndpointManualPrivateLinkServiceConnectionsList =
   /*@__PURE__*/ S.Array(
     PrivateLinkServiceConnection,
@@ -2162,7 +2158,7 @@ export const RemotePrivateEndpointManualPrivateLinkServiceConnectionsList =
 
 /** List of automatically approved private link service connections. */
 export type RemotePrivateEndpointPrivateLinkServiceConnectionsList =
-  ReadonlyArray<PrivateLinkServiceConnection>;
+  Array<PrivateLinkServiceConnection>;
 export const RemotePrivateEndpointPrivateLinkServiceConnectionsList =
   /*@__PURE__*/ S.Array(
     PrivateLinkServiceConnection,
@@ -2204,7 +2200,7 @@ export const RemotePrivateEndpointConnection = /*@__PURE__*/ S.suspend(() =>
 
 /** List of customer visible FQDNs. */
 export type GroupConnectivityInformationCustomerVisibleFqdnsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GroupConnectivityInformationCustomerVisibleFqdnsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2242,7 +2238,7 @@ export const GroupConnectivityInformation = /*@__PURE__*/ S.suspend(() =>
 
 /** Group connectivity information. */
 export type PrivateLinkServiceProxyGroupConnectivityInformationList =
-  ReadonlyArray<GroupConnectivityInformation>;
+  Array<GroupConnectivityInformation>;
 export const PrivateLinkServiceProxyGroupConnectivityInformationList =
   /*@__PURE__*/ S.Array(
     GroupConnectivityInformation,
@@ -2278,7 +2274,7 @@ export const PrivateLinkServiceProxy = /*@__PURE__*/ S.suspend(() =>
 
 /** List of private link service proxies. */
 export type RemotePrivateEndpointPrivateLinkServiceProxiesList =
-  ReadonlyArray<PrivateLinkServiceProxy>;
+  Array<PrivateLinkServiceProxy>;
 export const RemotePrivateEndpointPrivateLinkServiceProxiesList =
   /*@__PURE__*/ S.Array(
     PrivateLinkServiceProxy,
@@ -2311,7 +2307,7 @@ export const ConnectionDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** List of connection details. */
 export type RemotePrivateEndpointConnectionDetailsList =
-  ReadonlyArray<ConnectionDetails>;
+  Array<ConnectionDetails>;
 export const RemotePrivateEndpointConnectionDetailsList = /*@__PURE__*/ S.Array(
   ConnectionDetails,
 ) as any as S.Schema<RemotePrivateEndpointConnectionDetailsList>;
@@ -2615,7 +2611,7 @@ export const PrivateEndpointConnectionProxy = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of available private endpoint connection proxies for an Account */
 export type PrivateEndpointConnectionProxyListResultValueList =
-  ReadonlyArray<PrivateEndpointConnectionProxy>;
+  Array<PrivateEndpointConnectionProxy>;
 export const PrivateEndpointConnectionProxyListResultValueList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnectionProxy,
@@ -2943,7 +2939,7 @@ export const PrivateEndpointConnection = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of private endpoint connections */
 export type PrivateEndpointConnectionsListByAccountResponseValueList =
-  ReadonlyArray<PrivateEndpointConnection>;
+  Array<PrivateEndpointConnection>;
 export const PrivateEndpointConnectionsListByAccountResponseValueList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection,
@@ -2993,16 +2989,14 @@ export const PrivateLinkResourcesGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateLinkResourcesGetRequest>;
 
 /** The private link resource required member names. */
-export type GroupInformationPropertiesRequiredMembersList =
-  ReadonlyArray<string>;
+export type GroupInformationPropertiesRequiredMembersList = Array<string>;
 export const GroupInformationPropertiesRequiredMembersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<GroupInformationPropertiesRequiredMembersList>;
 
 /** The private link resource Private link DNS zone name. */
-export type GroupInformationPropertiesRequiredZoneNamesList =
-  ReadonlyArray<string>;
+export type GroupInformationPropertiesRequiredZoneNamesList = Array<string>;
 export const GroupInformationPropertiesRequiredZoneNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3116,8 +3110,7 @@ export const GroupInformation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GroupInformation>;
 
 /** The list of available private link resources for an Account */
-export type PrivateLinkResourceListResultValueList =
-  ReadonlyArray<GroupInformation>;
+export type PrivateLinkResourceListResultValueList = Array<GroupInformation>;
 export const PrivateLinkResourceListResultValueList = /*@__PURE__*/ S.Array(
   GroupInformation,
 ) as any as S.Schema<PrivateLinkResourceListResultValueList>;

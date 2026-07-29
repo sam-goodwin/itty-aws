@@ -46,7 +46,7 @@ export const TasksRunsAppendLogCreateRequestEntriesItemMap =
 
 /** Array of log entry dictionaries to append */
 export type TasksRunsAppendLogCreateRequestEntriesList =
-  ReadonlyArray<TasksRunsAppendLogCreateRequestEntriesItemMap>;
+  Array<TasksRunsAppendLogCreateRequestEntriesItemMap>;
 export const TasksRunsAppendLogCreateRequestEntriesList = /*@__PURE__*/ S.Array(
   TasksRunsAppendLogCreateRequestEntriesItemMap,
 ) as any as S.Schema<TasksRunsAppendLogCreateRequestEntriesList>;
@@ -112,11 +112,11 @@ export interface TaskRunArtifactMetadata {
   /** Name of the local skill included in a skill_bundle artifact. */
   skill_name: string;
   /** Local source for the uploaded skill bundle, such as user or repo. * `user` - user * `repo` - repo * `marketplace` - marketplace * `codex` - codex */
-  skill_source: SkillSourceEnum;
+  skill_source: SkillSourceEnum | (string & {});
   /** SHA-256 hex digest of the uploaded skill bundle bytes. */
   content_sha256: string;
   /** Archive format used for the local skill bundle. * `zip` - zip */
-  bundle_format: BundleFormatEnum;
+  bundle_format: BundleFormatEnum | (string & {});
   /** Version of the local skill bundle metadata schema. */
   schema_version: number;
 }
@@ -168,8 +168,7 @@ export const TaskRunArtifactResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "TaskRunArtifactResponse",
 }) as any as S.Schema<TaskRunArtifactResponse>;
 
-export type TaskRunDetailDTOArtifactsList =
-  ReadonlyArray<TaskRunArtifactResponse>;
+export type TaskRunDetailDTOArtifactsList = Array<TaskRunArtifactResponse>;
 export const TaskRunDetailDTOArtifactsList = /*@__PURE__*/ S.Array(
   TaskRunArtifactResponse,
 ) as any as S.Schema<TaskRunDetailDTOArtifactsList>;
@@ -274,7 +273,7 @@ export const TaskRunArtifactUpload = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of artifacts to upload */
 export type TasksRunsArtifactsCreateRequestArtifactsList =
-  ReadonlyArray<TaskRunArtifactUpload>;
+  Array<TaskRunArtifactUpload>;
 export const TasksRunsArtifactsCreateRequestArtifactsList =
   /*@__PURE__*/ S.Array(
     TaskRunArtifactUpload,
@@ -307,7 +306,7 @@ export const TasksRunsArtifactsCreateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Updated list of artifacts on the run */
 export type TaskRunArtifactsUploadResponseArtifactsList =
-  ReadonlyArray<TaskRunArtifactResponse>;
+  Array<TaskRunArtifactResponse>;
 export const TaskRunArtifactsUploadResponseArtifactsList =
   /*@__PURE__*/ S.Array(
     TaskRunArtifactResponse,
@@ -390,7 +389,7 @@ export const TaskRunArtifactFinalizeUpload = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of uploaded artifacts to finalize */
 export type TasksRunsArtifactsFinalizeUploadCreateRequestArtifactsList =
-  ReadonlyArray<TaskRunArtifactFinalizeUpload>;
+  Array<TaskRunArtifactFinalizeUpload>;
 export const TasksRunsArtifactsFinalizeUploadCreateRequestArtifactsList =
   /*@__PURE__*/ S.Array(
     TaskRunArtifactFinalizeUpload,
@@ -426,7 +425,7 @@ export const TasksRunsArtifactsFinalizeUploadCreateRequest =
 
 /** Updated list of artifacts on the run */
 export type TaskRunArtifactsFinalizeUploadResponseArtifactsList =
-  ReadonlyArray<TaskRunArtifactResponse>;
+  Array<TaskRunArtifactResponse>;
 export const TaskRunArtifactsFinalizeUploadResponseArtifactsList =
   /*@__PURE__*/ S.Array(
     TaskRunArtifactResponse,
@@ -476,7 +475,7 @@ export const TaskRunArtifactPrepareUpload = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of artifacts to prepare */
 export type TasksRunsArtifactsPrepareUploadCreateRequestArtifactsList =
-  ReadonlyArray<TaskRunArtifactPrepareUpload>;
+  Array<TaskRunArtifactPrepareUpload>;
 export const TasksRunsArtifactsPrepareUploadCreateRequestArtifactsList =
   /*@__PURE__*/ S.Array(
     TaskRunArtifactPrepareUpload,
@@ -574,7 +573,7 @@ export const TaskRunArtifactPrepareUploadResponse = /*@__PURE__*/ S.suspend(
 
 /** Prepared uploads for the requested artifacts */
 export type TaskRunArtifactsPrepareUploadResponseArtifactsList =
-  ReadonlyArray<TaskRunArtifactPrepareUploadResponse>;
+  Array<TaskRunArtifactPrepareUploadResponse>;
 export const TaskRunArtifactsPrepareUploadResponseArtifactsList =
   /*@__PURE__*/ S.Array(
     TaskRunArtifactPrepareUploadResponse,
@@ -806,8 +805,7 @@ export const ImportedMcpServerHeader = /*@__PURE__*/ S.suspend(() =>
   identifier: "ImportedMcpServerHeader",
 }) as any as S.Schema<ImportedMcpServerHeader>;
 
-export type ImportedMcpServerHeadersList =
-  ReadonlyArray<ImportedMcpServerHeader>;
+export type ImportedMcpServerHeadersList = Array<ImportedMcpServerHeader>;
 export const ImportedMcpServerHeadersList = /*@__PURE__*/ S.Array(
   ImportedMcpServerHeader,
 ) as any as S.Schema<ImportedMcpServerHeadersList>;
@@ -832,7 +830,7 @@ export const ImportedMcpServer = /*@__PURE__*/ S.suspend(() =>
 
 /** Local url-based MCP servers from the creating client (PostHog Code) to make available inside the cloud sandbox. Header values are treated as credentials: stored encrypted and never returned by the API. */
 export type TasksRunsCreateRequestImportedMcpServersList =
-  ReadonlyArray<ImportedMcpServer>;
+  Array<ImportedMcpServer>;
 export const TasksRunsCreateRequestImportedMcpServersList =
   /*@__PURE__*/ S.Array(
     ImportedMcpServer,
@@ -852,7 +850,7 @@ export const RelayedMcpServer = /*@__PURE__*/ S.suspend(() =>
 
 /** Names of desktop-only MCP servers the creating client (PostHog Code) relays into the cloud sandbox over the durable event/command channel. Names only — the server configuration (command, env, URL, headers) never crosses the wire. */
 export type TasksRunsCreateRequestRelayedMcpServersList =
-  ReadonlyArray<RelayedMcpServer>;
+  Array<RelayedMcpServer>;
 export const TasksRunsCreateRequestRelayedMcpServersList =
   /*@__PURE__*/ S.Array(
     RelayedMcpServer,
@@ -992,8 +990,7 @@ export const TasksRunsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "TasksRunsListRequest",
 }) as any as S.Schema<TasksRunsListRequest>;
 
-export type PaginatedTaskRunDetailDTOListResultsList =
-  ReadonlyArray<TaskRunDetailDTO>;
+export type PaginatedTaskRunDetailDTOListResultsList = Array<TaskRunDetailDTO>;
 export const PaginatedTaskRunDetailDTOListResultsList = /*@__PURE__*/ S.Array(
   TaskRunDetailDTO,
 ) as any as S.Schema<PaginatedTaskRunDetailDTOListResultsList>;
@@ -1055,8 +1052,7 @@ export type RunStatusEnum =
 export const RunStatusEnum = /*@__PURE__*/ S.String;
 
 /** State keys to remove atomically before applying any state updates. */
-export type TasksRunsPartialUpdateRequestStateRemoveKeysList =
-  ReadonlyArray<string>;
+export type TasksRunsPartialUpdateRequestStateRemoveKeysList = Array<string>;
 export const TasksRunsPartialUpdateRequestStateRemoveKeysList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1115,8 +1111,7 @@ export const TasksRunsPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TasksRunsPartialUpdateRequest>;
 
 /** Ordered assistant text blocks. When present, the last non-empty entry is posted instead of text. */
-export type TasksRunsRelayMessageCreateRequestTextPartsList =
-  ReadonlyArray<string>;
+export type TasksRunsRelayMessageCreateRequestTextPartsList = Array<string>;
 export const TasksRunsRelayMessageCreateRequestTextPartsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1284,7 +1279,7 @@ export const TasksRunsSetOutputPartialUpdateRequest = /*@__PURE__*/ S.suspend(
 
 /** Identifiers for run artifacts that should be attached to the next user message delivered to the sandbox. */
 export type TasksRunsStartCreateRequestPendingUserArtifactIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const TasksRunsStartCreateRequestPendingUserArtifactIdsList =
   /*@__PURE__*/ S.Array(
     S.String,

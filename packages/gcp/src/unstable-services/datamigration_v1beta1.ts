@@ -111,7 +111,7 @@ export interface SslConfig {
   /** Required. Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate. The replica will use this certificate to verify it's connecting to the right host. */
   caCertificate?: string;
   /** Output only. The ssl config type according to 'client_key', 'client_certificate' and 'ca_certificate'. */
-  type?: SslConfigTypeEnum;
+  type?: SslConfigTypeEnum | (string & {});
 }
 export const SslConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -190,7 +190,7 @@ export const SqlAclEntry = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SqlAclEntry" }) as any as S.Schema<SqlAclEntry>;
 
-export type SqlAclEntryList = ReadonlyArray<SqlAclEntry>;
+export type SqlAclEntryList = Array<SqlAclEntry>;
 export const SqlAclEntryList = /*@__PURE__*/ S.Array(
   SqlAclEntry,
 ) as any as S.Schema<SqlAclEntryList>;
@@ -237,7 +237,7 @@ export const CloudSqlSettingsDatabaseVersionEnum = /*@__PURE__*/ S.String;
 /** Settings for creating a Cloud SQL database instance. */
 export interface CloudSqlSettings {
   /** The type of storage: `PD_SSD` (default) or `PD_HDD`. */
-  dataDiskType?: CloudSqlSettingsDataDiskTypeEnum;
+  dataDiskType?: CloudSqlSettingsDataDiskTypeEnum | (string & {});
   /** Input only. Initial root password. */
   rootPassword?: string;
   /** Output only. Indicates If this connection profile root password is stored. */
@@ -259,9 +259,9 @@ export interface CloudSqlSettings {
   /** The tier (or machine type) for this instance, for example: `db-n1-standard-1` (MySQL instances). For more information, see [Cloud SQL Instance Settings](https://cloud.google.com/sql/docs/mysql/instance-settings). */
   tier?: string;
   /** The activation policy specifies when the instance is activated; it is applicable only when the instance state is 'RUNNABLE'. Valid values: 'ALWAYS': The instance is on, and remains so even in the absence of connection requests. `NEVER`: The instance is off; it is not activated, even if a connection request arrives. */
-  activationPolicy?: CloudSqlSettingsActivationPolicyEnum;
+  activationPolicy?: CloudSqlSettingsActivationPolicyEnum | (string & {});
   /** The database engine type and version. */
-  databaseVersion?: CloudSqlSettingsDatabaseVersionEnum;
+  databaseVersion?: CloudSqlSettingsDatabaseVersionEnum | (string & {});
   /** The database flags passed to the Cloud SQL instance at startup. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }. */
   databaseFlags?: StringMap;
 }
@@ -320,7 +320,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -349,11 +349,11 @@ export interface ConnectionProfile {
   /** A MySQL database connection profile. */
   mysql?: MySqlConnectionProfile;
   /** The current connection profile state (e.g. DRAFT, READY, or FAILED). */
-  state?: ConnectionProfileStateEnum;
+  state?: ConnectionProfileStateEnum | (string & {});
   /** A CloudSQL database connection profile. */
   cloudsql?: CloudSqlConnectionProfile;
   /** The database provider. */
-  provider?: ConnectionProfileProviderEnum;
+  provider?: ConnectionProfileProviderEnum | (string & {});
   /** The resource labels for connection profile to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`. */
   labels?: StringMap;
   /** Output only. The error details in case of state FAILED. */
@@ -491,9 +491,9 @@ export const DatabaseTypeEngineEnum = /*@__PURE__*/ S.String;
 /** A message defining the database engine and provider. */
 export interface DatabaseType {
   /** The database provider. */
-  provider?: DatabaseTypeProviderEnum;
+  provider?: DatabaseTypeProviderEnum | (string & {});
   /** The database engine. */
-  engine?: DatabaseTypeEngineEnum;
+  engine?: DatabaseTypeEngineEnum | (string & {});
 }
 export const DatabaseType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -550,9 +550,9 @@ export interface MigrationJob {
   /** The details of the VPC network that the source database is located in. */
   vpcPeeringConnectivity?: VpcPeeringConnectivity;
   /** The current migration job state. */
-  state?: MigrationJobStateEnum;
+  state?: MigrationJobStateEnum | (string & {});
   /** Required. The migration job type. */
-  type?: MigrationJobTypeEnum;
+  type?: MigrationJobTypeEnum | (string & {});
   /** Required. The resource name (URI) of the destination connection profile. */
   destination?: string;
   /** The path to the dump file in Google Cloud Storage, in the format: (gs://[BUCKET_NAME]/[OBJECT_NAME]). */
@@ -562,7 +562,7 @@ export interface MigrationJob {
   /** The database engine type and provider of the destination. */
   destinationDatabase?: DatabaseType;
   /** Output only. The current migration job phase. */
-  phase?: MigrationJobPhaseEnum;
+  phase?: MigrationJobPhaseEnum | (string & {});
   /** Output only. The timestamp when the migration job resource was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z". */
   createTime?: string;
   /** The details needed to communicate to the source over Reverse SSH tunnel connectivity. */
@@ -811,7 +811,7 @@ export type AuditLogConfigLogTypeEnum =
   | "DATA_READ";
 export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -819,7 +819,7 @@ export const StringList = /*@__PURE__*/ S.Array(
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
 export interface AuditLogConfig {
   /** The log type that this config enables. */
-  logType?: AuditLogConfigLogTypeEnum;
+  logType?: AuditLogConfigLogTypeEnum | (string & {});
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
   exemptedMembers?: StringList;
 }
@@ -830,7 +830,7 @@ export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
-export type AuditLogConfigList = ReadonlyArray<AuditLogConfig>;
+export type AuditLogConfigList = Array<AuditLogConfig>;
 export const AuditLogConfigList = /*@__PURE__*/ S.Array(
   AuditLogConfig,
 ) as any as S.Schema<AuditLogConfigList>;
@@ -849,7 +849,7 @@ export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
-export type AuditConfigList = ReadonlyArray<AuditConfig>;
+export type AuditConfigList = Array<AuditConfig>;
 export const AuditConfigList = /*@__PURE__*/ S.Array(
   AuditConfig,
 ) as any as S.Schema<AuditConfigList>;
@@ -891,7 +891,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
-export type BindingList = ReadonlyArray<Binding>;
+export type BindingList = Array<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -1066,7 +1066,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = ReadonlyArray<Location>;
+export type LocationList = Array<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -1118,7 +1118,7 @@ export const ListProjectsLocationsConnectionProfilesRequest =
     identifier: "ListProjectsLocationsConnectionProfilesRequest",
   }) as any as S.Schema<ListProjectsLocationsConnectionProfilesRequest>;
 
-export type ConnectionProfileList = ReadonlyArray<ConnectionProfile>;
+export type ConnectionProfileList = Array<ConnectionProfile>;
 export const ConnectionProfileList = /*@__PURE__*/ S.Array(
   ConnectionProfile,
 ) as any as S.Schema<ConnectionProfileList>;
@@ -1173,7 +1173,7 @@ export const ListProjectsLocationsMigrationJobsRequest =
     identifier: "ListProjectsLocationsMigrationJobsRequest",
   }) as any as S.Schema<ListProjectsLocationsMigrationJobsRequest>;
 
-export type MigrationJobList = ReadonlyArray<MigrationJob>;
+export type MigrationJobList = Array<MigrationJob>;
 export const MigrationJobList = /*@__PURE__*/ S.Array(
   MigrationJob,
 ) as any as S.Schema<MigrationJobList>;
@@ -1228,7 +1228,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type OperationList = ReadonlyArray<Operation>;
+export type OperationList = Array<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;

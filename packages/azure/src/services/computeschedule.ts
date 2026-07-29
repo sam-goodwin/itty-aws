@@ -80,7 +80,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = ReadonlyArray<Operation>;
+export type OperationsListResponseValueList = Array<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;
@@ -102,7 +102,7 @@ export const OperationsListResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of operation ids to cancel operations on */
 export type ScheduledActionsVirtualMachinesCancelOperationsRequestOperationIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ScheduledActionsVirtualMachinesCancelOperationsRequestOperationIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -265,8 +265,7 @@ export const ResourceOperation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourceOperation>;
 
 /** An array of resource operations that were successfully cancelled */
-export type CancelOperationsResponseResultsList =
-  ReadonlyArray<ResourceOperation>;
+export type CancelOperationsResponseResultsList = Array<ResourceOperation>;
 export const CancelOperationsResponseResultsList = /*@__PURE__*/ S.Array(
   ResourceOperation,
 ) as any as S.Schema<CancelOperationsResponseResultsList>;
@@ -304,7 +303,7 @@ export const ResourceProvisionPayloadResourceOverridesItemMap =
 
 /** Virtual machine profile array that contains VM properties that needs to be overridden for each VM in the batch (if you want to create 100 VMs, they all need a distinct computerName property, you pass computerNames for each VM in batch in this array), service will merge baseProfile with VM specific overrides and create a merged VMProfile. */
 export type ResourceProvisionPayloadResourceOverridesList =
-  ReadonlyArray<ResourceProvisionPayloadResourceOverridesItemMap>;
+  Array<ResourceProvisionPayloadResourceOverridesItemMap>;
 export const ResourceProvisionPayloadResourceOverridesList =
   /*@__PURE__*/ S.Array(
     ResourceProvisionPayloadResourceOverridesItemMap,
@@ -391,7 +390,7 @@ export const ScheduledActionsVirtualMachinesExecuteCreateRequest =
 
 /** The results from the start request if no errors exist */
 export type CreateResourceOperationResponseResultsList =
-  ReadonlyArray<ResourceOperation>;
+  Array<ResourceOperation>;
 export const CreateResourceOperationResponseResultsList = /*@__PURE__*/ S.Array(
   ResourceOperation,
 ) as any as S.Schema<CreateResourceOperationResponseResultsList>;
@@ -419,7 +418,7 @@ export const CreateResourceOperationResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateResourceOperationResponse>;
 
 /** The resource ids used for the request */
-export type ResourcesIdsList = ReadonlyArray<string>;
+export type ResourcesIdsList = Array<string>;
 export const ResourcesIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ResourcesIdsList>;
@@ -469,7 +468,7 @@ export const ScheduledActionsVirtualMachinesExecuteDeallocateRequest =
 
 /** The results from the deallocate request if no errors exist */
 export type DeallocateResourceOperationResponseResultsList =
-  ReadonlyArray<ResourceOperation>;
+  Array<ResourceOperation>;
 export const DeallocateResourceOperationResponseResultsList =
   /*@__PURE__*/ S.Array(
     ResourceOperation,
@@ -534,7 +533,7 @@ export const ScheduledActionsVirtualMachinesExecuteDeleteRequest =
 
 /** The results from the start request if no errors exist */
 export type DeleteResourceOperationResponseResultsList =
-  ReadonlyArray<ResourceOperation>;
+  Array<ResourceOperation>;
 export const DeleteResourceOperationResponseResultsList = /*@__PURE__*/ S.Array(
   ResourceOperation,
 ) as any as S.Schema<DeleteResourceOperationResponseResultsList>;
@@ -595,7 +594,7 @@ export const ScheduledActionsVirtualMachinesExecuteHibernateRequest =
 
 /** The results from the Hibernate request if no errors exist */
 export type HibernateResourceOperationResponseResultsList =
-  ReadonlyArray<ResourceOperation>;
+  Array<ResourceOperation>;
 export const HibernateResourceOperationResponseResultsList =
   /*@__PURE__*/ S.Array(
     ResourceOperation,
@@ -657,7 +656,7 @@ export const ScheduledActionsVirtualMachinesExecuteStartRequest =
 
 /** The results from the start request if no errors exist */
 export type StartResourceOperationResponseResultsList =
-  ReadonlyArray<ResourceOperation>;
+  Array<ResourceOperation>;
 export const StartResourceOperationResponseResultsList = /*@__PURE__*/ S.Array(
   ResourceOperation,
 ) as any as S.Schema<StartResourceOperationResponseResultsList>;
@@ -686,7 +685,7 @@ export const StartResourceOperationResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of operation ids to query errors of */
 export type ScheduledActionsVirtualMachinesGetOperationErrorsRequestOperationIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ScheduledActionsVirtualMachinesGetOperationErrorsRequestOperationIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -749,7 +748,7 @@ export const OperationErrorDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of errors associated with the operationid */
 export type OperationErrorsResultOperationErrorsList =
-  ReadonlyArray<OperationErrorDetails>;
+  Array<OperationErrorDetails>;
 export const OperationErrorsResultOperationErrorsList = /*@__PURE__*/ S.Array(
   OperationErrorDetails,
 ) as any as S.Schema<OperationErrorsResultOperationErrorsList>;
@@ -787,7 +786,7 @@ export const OperationErrorsResult = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of operationids and their corresponding errors if any */
 export type GetOperationErrorsResponseResultsList =
-  ReadonlyArray<OperationErrorsResult>;
+  Array<OperationErrorsResult>;
 export const GetOperationErrorsResponseResultsList = /*@__PURE__*/ S.Array(
   OperationErrorsResult,
 ) as any as S.Schema<GetOperationErrorsResponseResultsList>;
@@ -807,7 +806,7 @@ export const GetOperationErrorsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of operation ids to get the status of */
 export type ScheduledActionsVirtualMachinesGetOperationStatusRequestOperationIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ScheduledActionsVirtualMachinesGetOperationStatusRequestOperationIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -844,8 +843,7 @@ export const ScheduledActionsVirtualMachinesGetOperationStatusRequest =
   }) as any as S.Schema<ScheduledActionsVirtualMachinesGetOperationStatusRequest>;
 
 /** An array of resource operations based on their operation ids */
-export type GetOperationStatusResponseResultsList =
-  ReadonlyArray<ResourceOperation>;
+export type GetOperationStatusResponseResultsList = Array<ResourceOperation>;
 export const GetOperationStatusResponseResultsList = /*@__PURE__*/ S.Array(
   ResourceOperation,
 ) as any as S.Schema<GetOperationStatusResponseResultsList>;

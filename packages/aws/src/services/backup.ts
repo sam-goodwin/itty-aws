@@ -260,7 +260,7 @@ export interface Lifecycle {
   MoveToColdStorageAfterDays?: number;
   DeleteAfterDays?: number;
   OptInToArchiveForSupportedResources?: boolean;
-  DeleteAfterEvent?: LifecycleDeleteAfterEvent;
+  DeleteAfterEvent?: LifecycleDeleteAfterEvent | (string & {});
 }
 export const Lifecycle = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -305,8 +305,8 @@ export type ScanMode = "FULL_SCAN" | "INCREMENTAL_SCAN";
 export const ScanMode = /*@__PURE__*/ S.String;
 
 export interface ScanAction {
-  MalwareScanner?: MalwareScanner;
-  ScanMode?: ScanMode;
+  MalwareScanner?: MalwareScanner | (string & {});
+  ScanMode?: ScanMode | (string & {});
 }
 export const ScanAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -377,7 +377,7 @@ export const AdvancedBackupSettings = /*@__PURE__*/ S.Array(
 );
 export type IAMRoleArn = string;
 export interface ScanSetting {
-  MalwareScanner?: MalwareScanner;
+  MalwareScanner?: MalwareScanner | (string & {});
   ResourceTypes?: string[];
   ScannerRoleArn?: string;
 }
@@ -456,7 +456,7 @@ export const ConditionType = /*@__PURE__*/ S.String;
 export type ConditionKey = string;
 export type ConditionValue = string;
 export interface Condition {
-  ConditionType: ConditionType;
+  ConditionType: ConditionType | (string & {});
   ConditionKey: string;
   ConditionValue: string;
 }
@@ -957,13 +957,15 @@ export const RestoreTestingRecoveryPointSelectionAlgorithm =
 export type RestoreTestingRecoveryPointType = "CONTINUOUS" | "SNAPSHOT";
 export const RestoreTestingRecoveryPointType = /*@__PURE__*/ S.String;
 
-export type RestoreTestingRecoveryPointTypeList =
-  RestoreTestingRecoveryPointType[];
+export type RestoreTestingRecoveryPointTypeList = (
+  | RestoreTestingRecoveryPointType
+  | (string & {})
+)[];
 export const RestoreTestingRecoveryPointTypeList = /*@__PURE__*/ S.Array(
   RestoreTestingRecoveryPointType,
 );
 export interface RestoreTestingRecoveryPointSelection {
-  Algorithm?: RestoreTestingRecoveryPointSelectionAlgorithm;
+  Algorithm?: RestoreTestingRecoveryPointSelectionAlgorithm | (string & {});
   ExcludeVaults?: string[];
   IncludeVaults?: string[];
   RecoveryPointTypes?: RestoreTestingRecoveryPointType[];
@@ -2945,7 +2947,7 @@ export type BackupVaultEvent =
   | "EKS_BACKUP_OBJECT_FAILED";
 export const BackupVaultEvent = /*@__PURE__*/ S.String;
 
-export type BackupVaultEvents = BackupVaultEvent[];
+export type BackupVaultEvents = (BackupVaultEvent | (string & {}))[];
 export const BackupVaultEvents = /*@__PURE__*/ S.Array(BackupVaultEvent);
 export interface GetBackupVaultNotificationsOutput {
   BackupVaultName?: string;

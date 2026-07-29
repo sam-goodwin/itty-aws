@@ -73,10 +73,9 @@ export type ComputeFoldersContactsNotificationCategoriesEnum =
 export const ComputeFoldersContactsNotificationCategoriesEnum =
   /*@__PURE__*/ S.String;
 
-export type ComputeFoldersContactsNotificationCategoriesEnumList =
-  ReadonlyArray<
-    ComputeFoldersContactsNotificationCategoriesEnum | (string & {})
-  >;
+export type ComputeFoldersContactsNotificationCategoriesEnumList = Array<
+  ComputeFoldersContactsNotificationCategoriesEnum | (string & {})
+>;
 export const ComputeFoldersContactsNotificationCategoriesEnumList =
   /*@__PURE__*/ S.Array(
     ComputeFoldersContactsNotificationCategoriesEnum,
@@ -125,7 +124,10 @@ export const GoogleCloudEssentialcontactsV1ContactNotificationCategorySubscripti
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudEssentialcontactsV1ContactNotificationCategorySubscriptionsItemEnumList =
-  ReadonlyArray<GoogleCloudEssentialcontactsV1ContactNotificationCategorySubscriptionsItemEnum>;
+  Array<
+    | GoogleCloudEssentialcontactsV1ContactNotificationCategorySubscriptionsItemEnum
+    | (string & {})
+  >;
 export const GoogleCloudEssentialcontactsV1ContactNotificationCategorySubscriptionsItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleCloudEssentialcontactsV1ContactNotificationCategorySubscriptionsItemEnum,
@@ -149,7 +151,9 @@ export interface GoogleCloudEssentialcontactsV1Contact {
   /** Required. The preferred language for notifications, as a ISO 639-1 language code. See [Supported languages](https://cloud.google.com/resource-manager/docs/managing-notification-contacts#supported-languages) for a list of supported languages. */
   languageTag?: string;
   /** Output only. The validity of the contact. A contact is considered valid if it is the correct recipient for notifications for a particular resource. */
-  validationState?: GoogleCloudEssentialcontactsV1ContactValidationStateEnum;
+  validationState?:
+    | GoogleCloudEssentialcontactsV1ContactValidationStateEnum
+    | (string & {});
   /** Output only. The last time the validation_state was updated, either manually or automatically. A contact is considered stale if its validation state was updated more than 1 year ago. */
   validateTime?: string;
 }
@@ -172,7 +176,7 @@ export const GoogleCloudEssentialcontactsV1Contact = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudEssentialcontactsV1Contact>;
 
 export type GoogleCloudEssentialcontactsV1ContactList =
-  ReadonlyArray<GoogleCloudEssentialcontactsV1Contact>;
+  Array<GoogleCloudEssentialcontactsV1Contact>;
 export const GoogleCloudEssentialcontactsV1ContactList = /*@__PURE__*/ S.Array(
   GoogleCloudEssentialcontactsV1Contact,
 ) as any as S.Schema<GoogleCloudEssentialcontactsV1ContactList>;
@@ -207,10 +211,9 @@ export type ComputeOrganizationsContactsNotificationCategoriesEnum =
 export const ComputeOrganizationsContactsNotificationCategoriesEnum =
   /*@__PURE__*/ S.String;
 
-export type ComputeOrganizationsContactsNotificationCategoriesEnumList =
-  ReadonlyArray<
-    ComputeOrganizationsContactsNotificationCategoriesEnum | (string & {})
-  >;
+export type ComputeOrganizationsContactsNotificationCategoriesEnumList = Array<
+  ComputeOrganizationsContactsNotificationCategoriesEnum | (string & {})
+>;
 export const ComputeOrganizationsContactsNotificationCategoriesEnumList =
   /*@__PURE__*/ S.Array(
     ComputeOrganizationsContactsNotificationCategoriesEnum,
@@ -260,10 +263,9 @@ export type ComputeProjectsContactsNotificationCategoriesEnum =
 export const ComputeProjectsContactsNotificationCategoriesEnum =
   /*@__PURE__*/ S.String;
 
-export type ComputeProjectsContactsNotificationCategoriesEnumList =
-  ReadonlyArray<
-    ComputeProjectsContactsNotificationCategoriesEnum | (string & {})
-  >;
+export type ComputeProjectsContactsNotificationCategoriesEnumList = Array<
+  ComputeProjectsContactsNotificationCategoriesEnum | (string & {})
+>;
 export const ComputeProjectsContactsNotificationCategoriesEnumList =
   /*@__PURE__*/ S.Array(
     ComputeProjectsContactsNotificationCategoriesEnum,
@@ -638,7 +640,7 @@ export const PatchProjectsContactsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchProjectsContactsRequest",
 }) as any as S.Schema<PatchProjectsContactsRequest>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;

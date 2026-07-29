@@ -236,7 +236,7 @@ export type LambdaUngracefulBehavior = "skip";
 export const LambdaUngracefulBehavior = /*@__PURE__*/ S.String;
 
 export interface LambdaUngraceful {
-  behavior?: LambdaUngracefulBehavior;
+  behavior?: LambdaUngracefulBehavior | (string & {});
 }
 export const LambdaUngraceful = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ behavior: S.optional(LambdaUngracefulBehavior) }),
@@ -247,7 +247,7 @@ export interface CustomActionLambdaConfiguration {
   timeoutMinutes?: number;
   lambdas: Lambdas[];
   retryIntervalMinutes: number;
-  regionToRun: RegionToRunIn;
+  regionToRun: RegionToRunIn | (string & {});
   ungraceful?: LambdaUngraceful;
 }
 export const CustomActionLambdaConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -292,7 +292,7 @@ export interface Ec2AsgCapacityIncreaseConfiguration {
   asgs: Asg[];
   ungraceful?: Ec2Ungraceful;
   targetPercent?: number;
-  capacityMonitoringApproach?: Ec2AsgCapacityMonitoringApproach;
+  capacityMonitoringApproach?: Ec2AsgCapacityMonitoringApproach | (string & {});
 }
 export const Ec2AsgCapacityIncreaseConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -321,7 +321,7 @@ export const RoutingControlStateChange = /*@__PURE__*/ S.String;
 
 export interface ArcRoutingControlState {
   routingControlArn: string;
-  state: RoutingControlStateChange;
+  state: RoutingControlStateChange | (string & {});
 }
 export const ArcRoutingControlState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ routingControlArn: S.String, state: RoutingControlStateChange }),
@@ -364,7 +364,7 @@ export type GlobalAuroraUngracefulBehavior = "failover";
 export const GlobalAuroraUngracefulBehavior = /*@__PURE__*/ S.String;
 
 export interface GlobalAuroraUngraceful {
-  ungraceful?: GlobalAuroraUngracefulBehavior;
+  ungraceful?: GlobalAuroraUngracefulBehavior | (string & {});
 }
 export const GlobalAuroraUngraceful = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ungraceful: S.optional(GlobalAuroraUngracefulBehavior) }),
@@ -379,7 +379,7 @@ export interface GlobalAuroraConfiguration {
   timeoutMinutes?: number;
   crossAccountRole?: string;
   externalId?: string;
-  behavior: GlobalAuroraDefaultBehavior;
+  behavior: GlobalAuroraDefaultBehavior | (string & {});
   ungraceful?: GlobalAuroraUngraceful;
   globalClusterIdentifier: string;
   databaseClusterArns: string[];
@@ -453,7 +453,7 @@ export interface EcsCapacityIncreaseConfiguration {
   services: Service[];
   ungraceful?: EcsUngraceful;
   targetPercent?: number;
-  capacityMonitoringApproach?: EcsCapacityMonitoringApproach;
+  capacityMonitoringApproach?: EcsCapacityMonitoringApproach | (string & {});
 }
 export const EcsCapacityIncreaseConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -552,7 +552,7 @@ export interface EksResourceScalingConfiguration {
   eksClusters?: EksCluster[];
   ungraceful?: EksResourceScalingUngraceful;
   targetPercent?: number;
-  capacityMonitoringApproach?: EksCapacityMonitoringApproach;
+  capacityMonitoringApproach?: EksCapacityMonitoringApproach | (string & {});
 }
 export const EksResourceScalingConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -613,7 +613,7 @@ export type DocumentDbUngracefulBehavior = "failover";
 export const DocumentDbUngracefulBehavior = /*@__PURE__*/ S.String;
 
 export interface DocumentDbUngraceful {
-  ungraceful?: DocumentDbUngracefulBehavior;
+  ungraceful?: DocumentDbUngracefulBehavior | (string & {});
 }
 export const DocumentDbUngraceful = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ungraceful: S.optional(DocumentDbUngracefulBehavior) }),
@@ -628,7 +628,7 @@ export interface DocumentDbConfiguration {
   timeoutMinutes?: number;
   crossAccountRole?: string;
   externalId?: string;
-  behavior: DocumentDbDefaultBehavior;
+  behavior: DocumentDbDefaultBehavior | (string & {});
   ungraceful?: DocumentDbUngraceful;
   globalClusterIdentifier: string;
   databaseClusterArns: string[];
@@ -715,7 +715,7 @@ export const LambdaEventSourceMappingUngracefulBehavior =
   /*@__PURE__*/ S.String;
 
 export interface LambdaEventSourceMappingUngraceful {
-  behavior?: LambdaEventSourceMappingUngracefulBehavior;
+  behavior?: LambdaEventSourceMappingUngracefulBehavior | (string & {});
 }
 export const LambdaEventSourceMappingUngraceful = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -726,7 +726,7 @@ export const LambdaEventSourceMappingUngraceful = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LambdaEventSourceMappingUngraceful>;
 export interface LambdaEventSourceMappingConfiguration {
   timeoutMinutes?: number;
-  action: EventSourceMappingAction;
+  action: EventSourceMappingAction | (string & {});
   regionEventSourceMappings: { [key: string]: EventSourceMapping | undefined };
   ungraceful?: LambdaEventSourceMappingUngraceful;
 }
@@ -801,7 +801,7 @@ export type NeptuneUngracefulBehavior = "failover";
 export const NeptuneUngracefulBehavior = /*@__PURE__*/ S.String;
 
 export interface NeptuneUngraceful {
-  ungraceful?: NeptuneUngracefulBehavior;
+  ungraceful?: NeptuneUngracefulBehavior | (string & {});
 }
 export const NeptuneUngraceful = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ungraceful: S.optional(NeptuneUngracefulBehavior) }),
@@ -819,7 +819,7 @@ export interface NeptuneGlobalDatabaseConfiguration {
   timeoutMinutes?: number;
   crossAccountRole?: string;
   externalId?: string;
-  behavior: NeptuneDefaultBehavior;
+  behavior: NeptuneDefaultBehavior | (string & {});
   ungraceful?: NeptuneUngraceful;
   globalClusterIdentifier: string;
   regionDatabaseClusterArns: { [key: string]: string | undefined };
@@ -1220,7 +1220,7 @@ export interface Step {
   name: string;
   description?: string;
   executionBlockConfiguration: ExecutionBlockConfiguration;
-  executionBlockType: ExecutionBlockType;
+  executionBlockType: ExecutionBlockType | (string & {});
 }
 export const Step = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1241,7 +1241,7 @@ export const WorkflowTargetAction = /*@__PURE__*/ S.String;
 
 export interface Workflow {
   steps?: Step[];
-  workflowTargetAction: WorkflowTargetAction;
+  workflowTargetAction: WorkflowTargetAction | (string & {});
   workflowTargetRegion?: string;
   workflowDescription?: string;
 }
@@ -1262,7 +1262,7 @@ export interface AssociatedAlarm {
   crossAccountRole?: string;
   externalId?: string;
   resourceIdentifier: string;
-  alarmType: AlarmType;
+  alarmType: AlarmType | (string & {});
 }
 export const AssociatedAlarm = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1284,7 +1284,7 @@ export const AlarmCondition = /*@__PURE__*/ S.String;
 
 export interface TriggerCondition {
   associatedAlarmName: string;
-  condition: AlarmCondition;
+  condition: AlarmCondition | (string & {});
 }
 export const TriggerCondition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ associatedAlarmName: S.String, condition: AlarmCondition }),
@@ -1296,7 +1296,7 @@ export const TriggerConditionList = /*@__PURE__*/ S.Array(TriggerCondition);
 export interface Trigger {
   description?: string;
   targetRegion: string;
-  action: WorkflowTargetAction;
+  action: WorkflowTargetAction | (string & {});
   conditions: TriggerCondition[];
   minDelayMinutesBetweenExecutions: number;
 }

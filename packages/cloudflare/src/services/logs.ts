@@ -148,7 +148,7 @@ export const LogExplorerDatasetsCreateRequestFieldsItem =
   }) as any as S.Schema<LogExplorerDatasetsCreateRequestFieldsItem>;
 
 export type LogExplorerDatasetsCreateRequestFieldsList =
-  ReadonlyArray<LogExplorerDatasetsCreateRequestFieldsItem>;
+  Array<LogExplorerDatasetsCreateRequestFieldsItem>;
 export const LogExplorerDatasetsCreateRequestFieldsList = /*@__PURE__*/ S.Array(
   LogExplorerDatasetsCreateRequestFieldsItem,
 ) as any as S.Schema<LogExplorerDatasetsCreateRequestFieldsList>;
@@ -201,7 +201,7 @@ export const LogExplorerDatasetsCreateResponseFieldsItem =
   }) as any as S.Schema<LogExplorerDatasetsCreateResponseFieldsItem>;
 
 export type LogExplorerDatasetsCreateResponseFieldsList =
-  ReadonlyArray<LogExplorerDatasetsCreateResponseFieldsItem>;
+  Array<LogExplorerDatasetsCreateResponseFieldsItem>;
 export const LogExplorerDatasetsCreateResponseFieldsList =
   /*@__PURE__*/ S.Array(
     LogExplorerDatasetsCreateResponseFieldsItem,
@@ -411,7 +411,7 @@ export const LogExplorerDatasetsGetResponseFieldsItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<LogExplorerDatasetsGetResponseFieldsItem>;
 
 export type LogExplorerDatasetsGetResponseFieldsList =
-  ReadonlyArray<LogExplorerDatasetsGetResponseFieldsItem>;
+  Array<LogExplorerDatasetsGetResponseFieldsItem>;
 export const LogExplorerDatasetsGetResponseFieldsList = /*@__PURE__*/ S.Array(
   LogExplorerDatasetsGetResponseFieldsItem,
 ) as any as S.Schema<LogExplorerDatasetsGetResponseFieldsList>;
@@ -706,7 +706,7 @@ export const LogExplorerDatasetsListResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LogExplorerDatasetsListResultItem>;
 
 export type LogExplorerDatasetsListResultList =
-  ReadonlyArray<LogExplorerDatasetsListResultItem>;
+  Array<LogExplorerDatasetsListResultItem>;
 export const LogExplorerDatasetsListResultList = /*@__PURE__*/ S.Array(
   LogExplorerDatasetsListResultItem,
 ) as any as S.Schema<LogExplorerDatasetsListResultList>;
@@ -780,7 +780,7 @@ export const LogExplorerQuerySqlResultItemMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<LogExplorerQuerySqlResultItemMap>;
 
 export type LogExplorerQuerySqlResultList =
-  ReadonlyArray<LogExplorerQuerySqlResultItemMap>;
+  Array<LogExplorerQuerySqlResultItemMap>;
 export const LogExplorerQuerySqlResultList = /*@__PURE__*/ S.Array(
   LogExplorerQuerySqlResultItemMap,
 ) as any as S.Schema<LogExplorerQuerySqlResultList>;
@@ -837,7 +837,7 @@ export const LogExplorerDatasetsUpdateRequestFieldsItem =
   }) as any as S.Schema<LogExplorerDatasetsUpdateRequestFieldsItem>;
 
 export type LogExplorerDatasetsUpdateRequestFieldsList =
-  ReadonlyArray<LogExplorerDatasetsUpdateRequestFieldsItem>;
+  Array<LogExplorerDatasetsUpdateRequestFieldsItem>;
 export const LogExplorerDatasetsUpdateRequestFieldsList = /*@__PURE__*/ S.Array(
   LogExplorerDatasetsUpdateRequestFieldsItem,
 ) as any as S.Schema<LogExplorerDatasetsUpdateRequestFieldsList>;
@@ -892,7 +892,7 @@ export const LogExplorerDatasetsUpdateResponseFieldsItem =
   }) as any as S.Schema<LogExplorerDatasetsUpdateResponseFieldsItem>;
 
 export type LogExplorerDatasetsUpdateResponseFieldsList =
-  ReadonlyArray<LogExplorerDatasetsUpdateResponseFieldsItem>;
+  Array<LogExplorerDatasetsUpdateResponseFieldsItem>;
 export const LogExplorerDatasetsUpdateResponseFieldsList =
   /*@__PURE__*/ S.Array(
     LogExplorerDatasetsUpdateResponseFieldsItem,

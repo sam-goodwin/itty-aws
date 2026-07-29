@@ -162,7 +162,7 @@ export const ComparisonOperator = /*@__PURE__*/ S.String;
 export type Threshold = string;
 export interface SimpleRule {
   inputProperty: string;
-  comparisonOperator: ComparisonOperator;
+  comparisonOperator: ComparisonOperator | (string & {});
   threshold: string;
 }
 export const SimpleRule = /*@__PURE__*/ S.suspend(() =>
@@ -184,7 +184,7 @@ export const PayloadType = /*@__PURE__*/ S.String;
 
 export interface Payload {
   contentExpression: string;
-  type: PayloadType;
+  type: PayloadType | (string & {});
 }
 export const Payload = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ contentExpression: S.String, type: PayloadType }),
@@ -1190,7 +1190,7 @@ export type DetectorDebugOptions = DetectorDebugOption[];
 export const DetectorDebugOptions = /*@__PURE__*/ S.Array(DetectorDebugOption);
 export interface LoggingOptions {
   roleArn: string;
-  level: LoggingLevel;
+  level: LoggingLevel | (string & {});
   enabled: boolean;
   detectorDebugOptions?: DetectorDebugOption[];
 }

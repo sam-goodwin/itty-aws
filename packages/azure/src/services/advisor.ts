@@ -107,7 +107,7 @@ export type TimeSeriesEntityItemAggregationLevel = "week" | "day" | "month";
 export const TimeSeriesEntityItemAggregationLevel = /*@__PURE__*/ S.String;
 
 /** The past score data */
-export type TimeSeriesEntityItemScoreHistoryList = ReadonlyArray<ScoreEntity>;
+export type TimeSeriesEntityItemScoreHistoryList = Array<ScoreEntity>;
 export const TimeSeriesEntityItemScoreHistoryList = /*@__PURE__*/ S.Array(
   ScoreEntity,
 ) as any as S.Schema<TimeSeriesEntityItemScoreHistoryList>;
@@ -129,7 +129,7 @@ export const TimeSeriesEntityItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TimeSeriesEntityItem>;
 
 /** The historic data at different aggregation levels. */
-export type TimeSeriesEntity = ReadonlyArray<TimeSeriesEntityItem>;
+export type TimeSeriesEntity = Array<TimeSeriesEntityItem>;
 export const TimeSeriesEntity = /*@__PURE__*/ S.Array(
   TimeSeriesEntityItem,
 ) as any as S.Schema<TimeSeriesEntity>;
@@ -235,7 +235,7 @@ export const AdvisorScoreEntity = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AdvisorScoreEntity>;
 
 /** The list of operations. */
-export type AdvisorScoreResponseValueList = ReadonlyArray<AdvisorScoreEntity>;
+export type AdvisorScoreResponseValueList = Array<AdvisorScoreEntity>;
 export const AdvisorScoreResponseValueList = /*@__PURE__*/ S.Array(
   AdvisorScoreEntity,
 ) as any as S.Schema<AdvisorScoreResponseValueList>;
@@ -280,8 +280,9 @@ export type DigestConfigCategoriesItem =
 export const DigestConfigCategoriesItem = /*@__PURE__*/ S.String;
 
 /** Categories to send digest for. If categories are not provided, then digest will be sent for all categories. */
-export type DigestConfigCategoriesList =
-  ReadonlyArray<DigestConfigCategoriesItem>;
+export type DigestConfigCategoriesList = Array<
+  DigestConfigCategoriesItem | (string & {})
+>;
 export const DigestConfigCategoriesList = /*@__PURE__*/ S.Array(
   DigestConfigCategoriesItem,
 ) as any as S.Schema<DigestConfigCategoriesList>;
@@ -303,7 +304,7 @@ export interface DigestConfig {
   /** Language for digest content body. Value must be ISO 639-1 code for one of Azure portal supported languages. Otherwise, it will be converted into one. Default value is English (en). */
   language?: string;
   /** State of digest configuration. */
-  state?: DigestConfigState;
+  state?: DigestConfigState | (string & {});
 }
 export const DigestConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -317,7 +318,7 @@ export const DigestConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DigestConfig" }) as any as S.Schema<DigestConfig>;
 
 /** Advisor digest configuration. Valid only for subscriptions */
-export type ConfigDataPropertiesDigestsList = ReadonlyArray<DigestConfig>;
+export type ConfigDataPropertiesDigestsList = Array<DigestConfig>;
 export const ConfigDataPropertiesDigestsList = /*@__PURE__*/ S.Array(
   DigestConfig,
 ) as any as S.Schema<ConfigDataPropertiesDigestsList>;
@@ -327,9 +328,9 @@ export interface ConfigDataProperties {
   /** Exclude the resource from Advisor evaluations. Valid values: False (default) or True. */
   exclude?: boolean;
   /** Minimum percentage threshold for Advisor low CPU utilization evaluation. Valid only for subscriptions. Valid values: 5 (default), 10, 15 or 20. */
-  lowCpuThreshold?: ConfigDataPropertiesLowCpuThreshold;
+  lowCpuThreshold?: ConfigDataPropertiesLowCpuThreshold | (string & {});
   /** Minimum duration for Advisor low CPU utilization evaluation. Valid only for subscriptions. Valid values: 7 (default), 14, 21, 30, 60 or 90. */
-  duration?: ConfigDataPropertiesDuration;
+  duration?: ConfigDataPropertiesDuration | (string & {});
   /** Advisor digest configuration. Valid only for subscriptions */
   digests?: ConfigDataPropertiesDigestsList;
 }
@@ -511,7 +512,7 @@ export const ConfigData = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ConfigData" }) as any as S.Schema<ConfigData>;
 
 /** The list of configurations. */
-export type ConfigurationListResultValueList = ReadonlyArray<ConfigData>;
+export type ConfigurationListResultValueList = Array<ConfigData>;
 export const ConfigurationListResultValueList = /*@__PURE__*/ S.Array(
   ConfigData,
 ) as any as S.Schema<ConfigurationListResultValueList>;
@@ -605,7 +606,7 @@ export const OperationEntity = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationEntity>;
 
 /** The list of operations. */
-export type OperationEntityListResultValueList = ReadonlyArray<OperationEntity>;
+export type OperationEntityListResultValueList = Array<OperationEntity>;
 export const OperationEntityListResultValueList = /*@__PURE__*/ S.Array(
   OperationEntity,
 ) as any as S.Schema<OperationEntityListResultValueList>;
@@ -765,7 +766,7 @@ export const RecommendationMetadataGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RecommendationMetadataGetRequest>;
 
 /** The list of keys on which this entity depends on. */
-export type MetadataEntityPropertiesDependsOnList = ReadonlyArray<string>;
+export type MetadataEntityPropertiesDependsOnList = Array<string>;
 export const MetadataEntityPropertiesDependsOnList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<MetadataEntityPropertiesDependsOnList>;
@@ -776,7 +777,7 @@ export const MetadataEntityPropertiesApplicableScenariosItem =
 
 /** The list of scenarios applicable to this metadata entity. */
 export type MetadataEntityPropertiesApplicableScenariosList =
-  ReadonlyArray<MetadataEntityPropertiesApplicableScenariosItem>;
+  Array<MetadataEntityPropertiesApplicableScenariosItem>;
 export const MetadataEntityPropertiesApplicableScenariosList =
   /*@__PURE__*/ S.Array(
     MetadataEntityPropertiesApplicableScenariosItem,
@@ -800,7 +801,7 @@ export const MetadataSupportedValueDetail = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of supported values. */
 export type MetadataEntityPropertiesSupportedValuesList =
-  ReadonlyArray<MetadataSupportedValueDetail>;
+  Array<MetadataSupportedValueDetail>;
 export const MetadataEntityPropertiesSupportedValuesList =
   /*@__PURE__*/ S.Array(
     MetadataSupportedValueDetail,
@@ -870,7 +871,7 @@ export const RecommendationMetadataListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RecommendationMetadataListRequest>;
 
 /** The list of metadata entities. */
-export type MetadataEntityListResultValueList = ReadonlyArray<MetadataEntity>;
+export type MetadataEntityListResultValueList = Array<MetadataEntity>;
 export const MetadataEntityListResultValueList = /*@__PURE__*/ S.Array(
   MetadataEntity,
 ) as any as S.Schema<MetadataEntityListResultValueList>;
@@ -979,7 +980,7 @@ export type RecommendationPropertiesRisk = "Error" | "Warning" | "None";
 export const RecommendationPropertiesRisk = /*@__PURE__*/ S.String;
 
 /** The list of snoozed and dismissed rules for the recommendation. */
-export type RecommendationPropertiesSuppressionIdsList = ReadonlyArray<string>;
+export type RecommendationPropertiesSuppressionIdsList = Array<string>;
 export const RecommendationPropertiesSuppressionIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RecommendationPropertiesSuppressionIdsList>;
@@ -1036,7 +1037,7 @@ export const RecommendationPropertiesActionsItemMap = /*@__PURE__*/ S.Record(
 
 /** The list of recommended actions to implement recommendation. */
 export type RecommendationPropertiesActionsList =
-  ReadonlyArray<RecommendationPropertiesActionsItemMap>;
+  Array<RecommendationPropertiesActionsItemMap>;
 export const RecommendationPropertiesActionsList = /*@__PURE__*/ S.Array(
   RecommendationPropertiesActionsItemMap,
 ) as any as S.Schema<RecommendationPropertiesActionsList>;
@@ -1243,7 +1244,7 @@ export const ResourceRecommendationBase = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of recommendations. */
 export type ResourceRecommendationBaseListResultValueList =
-  ReadonlyArray<ResourceRecommendationBase>;
+  Array<ResourceRecommendationBase>;
 export const ResourceRecommendationBaseListResultValueList =
   /*@__PURE__*/ S.Array(
     ResourceRecommendationBase,
@@ -1485,8 +1486,7 @@ export const SuppressionContract = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SuppressionContract>;
 
 /** The list of suppressions. */
-export type SuppressionContractListResultValueList =
-  ReadonlyArray<SuppressionContract>;
+export type SuppressionContractListResultValueList = Array<SuppressionContract>;
 export const SuppressionContractListResultValueList = /*@__PURE__*/ S.Array(
   SuppressionContract,
 ) as any as S.Schema<SuppressionContractListResultValueList>;

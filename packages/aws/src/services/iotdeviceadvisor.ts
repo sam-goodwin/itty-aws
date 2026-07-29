@@ -140,7 +140,7 @@ export interface SuiteDefinitionConfiguration {
   isLongDurationTest?: boolean;
   rootGroup?: string;
   devicePermissionRoleArn?: string;
-  protocol?: Protocol;
+  protocol?: Protocol | (string & {});
 }
 export const SuiteDefinitionConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

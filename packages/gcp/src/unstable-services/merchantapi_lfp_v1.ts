@@ -125,7 +125,7 @@ export const LfpStoreState = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "LfpStoreState" }) as any as S.Schema<LfpStoreState>;
 
-export type LfpStoreStateList = ReadonlyArray<LfpStoreState>;
+export type LfpStoreStateList = Array<LfpStoreState>;
 export const LfpStoreStateList = /*@__PURE__*/ S.Array(
   LfpStoreState,
 ) as any as S.Schema<LfpStoreStateList>;
@@ -198,7 +198,7 @@ export const CountrySettings = /*@__PURE__*/ S.suspend(() =>
   identifier: "CountrySettings",
 }) as any as S.Schema<CountrySettings>;
 
-export type CountrySettingsList = ReadonlyArray<CountrySettings>;
+export type CountrySettingsList = Array<CountrySettings>;
 export const CountrySettingsList = /*@__PURE__*/ S.Array(
   CountrySettings,
 ) as any as S.Schema<CountrySettingsList>;
@@ -266,7 +266,7 @@ export const GetAccountsLfpStoresRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetAccountsLfpStoresRequest",
 }) as any as S.Schema<GetAccountsLfpStoresRequest>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -300,7 +300,7 @@ export interface LfpStore {
   /** Optional. The website URL for the store or merchant. */
   websiteUri?: string;
   /** Optional. Output only. The state of matching to a Google Business Profile. See matchingStateHint for further details if no match is found. */
-  matchingState?: LfpStoreMatchingStateEnum;
+  matchingState?: LfpStoreMatchingStateEnum | (string & {});
 }
 export const LfpStore = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -516,7 +516,7 @@ export const ListAccountsLfpStoresRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAccountsLfpStoresRequest",
 }) as any as S.Schema<ListAccountsLfpStoresRequest>;
 
-export type LfpStoreList = ReadonlyArray<LfpStore>;
+export type LfpStoreList = Array<LfpStore>;
 export const LfpStoreList = /*@__PURE__*/ S.Array(
   LfpStore,
 ) as any as S.Schema<LfpStoreList>;

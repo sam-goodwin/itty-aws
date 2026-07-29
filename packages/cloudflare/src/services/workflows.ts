@@ -163,8 +163,7 @@ export const InstancesBulkRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "InstancesBulkRequestBodyItem",
 }) as any as S.Schema<InstancesBulkRequestBodyItem>;
 
-export type InstancesBulkRequestBodyList =
-  ReadonlyArray<InstancesBulkRequestBodyItem>;
+export type InstancesBulkRequestBodyList = Array<InstancesBulkRequestBodyItem>;
 export const InstancesBulkRequestBodyList = /*@__PURE__*/ S.Array(
   InstancesBulkRequestBodyItem,
 ) as any as S.Schema<InstancesBulkRequestBodyList>;
@@ -233,7 +232,7 @@ export const InstancesBulkResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "InstancesBulkResultItem",
 }) as any as S.Schema<InstancesBulkResultItem>;
 
-export type InstancesBulkResultList = ReadonlyArray<InstancesBulkResultItem>;
+export type InstancesBulkResultList = Array<InstancesBulkResultItem>;
 export const InstancesBulkResultList = /*@__PURE__*/ S.Array(
   InstancesBulkResultItem,
 ) as any as S.Schema<InstancesBulkResultList>;
@@ -561,7 +560,7 @@ export const InstancesGetResponseStepsItemCase0AttemptsItem =
   }) as any as S.Schema<InstancesGetResponseStepsItemCase0AttemptsItem>;
 
 export type InstancesGetResponseStepsItemCase0AttemptsList =
-  ReadonlyArray<InstancesGetResponseStepsItemCase0AttemptsItem>;
+  Array<InstancesGetResponseStepsItemCase0AttemptsItem>;
 export const InstancesGetResponseStepsItemCase0AttemptsList =
   /*@__PURE__*/ S.Array(
     InstancesGetResponseStepsItemCase0AttemptsItem,
@@ -807,7 +806,7 @@ export const InstancesGetResponseStepsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InstancesGetResponseStepsItem>;
 
 export type InstancesGetResponseStepsList =
-  ReadonlyArray<InstancesGetResponseStepsItem>;
+  Array<InstancesGetResponseStepsItem>;
 export const InstancesGetResponseStepsList = /*@__PURE__*/ S.Array(
   InstancesGetResponseStepsItem,
 ) as any as S.Schema<InstancesGetResponseStepsList>;
@@ -1007,7 +1006,7 @@ export const GetResponseSchedulesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetResponseSchedulesItem",
 }) as any as S.Schema<GetResponseSchedulesItem>;
 
-export type GetResponseSchedulesList = ReadonlyArray<GetResponseSchedulesItem>;
+export type GetResponseSchedulesList = Array<GetResponseSchedulesItem>;
 export const GetResponseSchedulesList = /*@__PURE__*/ S.Array(
   GetResponseSchedulesItem,
 ) as any as S.Schema<GetResponseSchedulesList>;
@@ -1064,7 +1063,7 @@ export const GraphVersionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GraphVersionRequest>;
 
 export type VersionsGraphResponseGraphWorkflowFunctionsValueNodesList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const VersionsGraphResponseGraphWorkflowFunctionsValueNodesList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -1184,7 +1183,7 @@ export const VersionsGraphResponseGraphWorkflowNodesItemCase1Config =
   }) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase1Config>;
 
 export type VersionsGraphResponseGraphWorkflowNodesItemCase1NodesList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const VersionsGraphResponseGraphWorkflowNodesItemCase1NodesList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -1364,7 +1363,7 @@ export const VersionsGraphResponseGraphWorkflowNodesItemCase3 =
   }) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase3>;
 
 export type VersionsGraphResponseGraphWorkflowNodesItemCase4NodesList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const VersionsGraphResponseGraphWorkflowNodesItemCase4NodesList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -1398,7 +1397,7 @@ export const VersionsGraphResponseGraphWorkflowNodesItemCase5Kind =
   /*@__PURE__*/ S.String;
 
 export type VersionsGraphResponseGraphWorkflowNodesItemCase5NodesList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const VersionsGraphResponseGraphWorkflowNodesItemCase5NodesList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -1427,7 +1426,7 @@ export const VersionsGraphResponseGraphWorkflowNodesItemCase5 =
   }) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase5>;
 
 export type VersionsGraphResponseGraphWorkflowNodesItemCase6CatchBlockNodesList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const VersionsGraphResponseGraphWorkflowNodesItemCase6CatchBlockNodesList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -1455,7 +1454,7 @@ export const VersionsGraphResponseGraphWorkflowNodesItemCase6CatchBlock =
   }) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase6CatchBlock>;
 
 export type VersionsGraphResponseGraphWorkflowNodesItemCase6FinallyBlockNodesList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const VersionsGraphResponseGraphWorkflowNodesItemCase6FinallyBlockNodesList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -1483,7 +1482,7 @@ export const VersionsGraphResponseGraphWorkflowNodesItemCase6FinallyBlock =
   }) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase6FinallyBlock>;
 
 export type VersionsGraphResponseGraphWorkflowNodesItemCase6TryBlockNodesList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const VersionsGraphResponseGraphWorkflowNodesItemCase6TryBlockNodesList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -1540,7 +1539,7 @@ export const VersionsGraphResponseGraphWorkflowNodesItemCase6 =
   }) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase6>;
 
 export type VersionsGraphResponseGraphWorkflowNodesItemCase7NodesList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const VersionsGraphResponseGraphWorkflowNodesItemCase7NodesList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -1566,7 +1565,7 @@ export const VersionsGraphResponseGraphWorkflowNodesItemCase7 =
   }) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase7>;
 
 export type VersionsGraphResponseGraphWorkflowNodesItemCase8BranchesItemNodesList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const VersionsGraphResponseGraphWorkflowNodesItemCase8BranchesItemNodesList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -1589,7 +1588,7 @@ export const VersionsGraphResponseGraphWorkflowNodesItemCase8BranchesItem =
   }) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase8BranchesItem>;
 
 export type VersionsGraphResponseGraphWorkflowNodesItemCase8BranchesList =
-  ReadonlyArray<VersionsGraphResponseGraphWorkflowNodesItemCase8BranchesItem>;
+  Array<VersionsGraphResponseGraphWorkflowNodesItemCase8BranchesItem>;
 export const VersionsGraphResponseGraphWorkflowNodesItemCase8BranchesList =
   /*@__PURE__*/ S.Array(
     VersionsGraphResponseGraphWorkflowNodesItemCase8BranchesItem,
@@ -1614,7 +1613,7 @@ export const VersionsGraphResponseGraphWorkflowNodesItemCase8 =
   }) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase8>;
 
 export type VersionsGraphResponseGraphWorkflowNodesItemCase9BranchesItemNodesList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const VersionsGraphResponseGraphWorkflowNodesItemCase9BranchesItemNodesList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -1637,7 +1636,7 @@ export const VersionsGraphResponseGraphWorkflowNodesItemCase9BranchesItem =
   }) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase9BranchesItem>;
 
 export type VersionsGraphResponseGraphWorkflowNodesItemCase9BranchesList =
-  ReadonlyArray<VersionsGraphResponseGraphWorkflowNodesItemCase9BranchesItem>;
+  Array<VersionsGraphResponseGraphWorkflowNodesItemCase9BranchesItem>;
 export const VersionsGraphResponseGraphWorkflowNodesItemCase9BranchesList =
   /*@__PURE__*/ S.Array(
     VersionsGraphResponseGraphWorkflowNodesItemCase9BranchesItem,
@@ -1664,7 +1663,7 @@ export const VersionsGraphResponseGraphWorkflowNodesItemCase9 =
   }) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase9>;
 
 export type VersionsGraphResponseGraphWorkflowNodesItemCase10FunctionsValueNodesList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const VersionsGraphResponseGraphWorkflowNodesItemCase10FunctionsValueNodesList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -1706,7 +1705,7 @@ export const VersionsGraphResponseGraphWorkflowNodesItemCase10FunctionsMap =
   ) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase10FunctionsMap>;
 
 export type VersionsGraphResponseGraphWorkflowNodesItemCase10NodesList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const VersionsGraphResponseGraphWorkflowNodesItemCase10NodesList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -1832,7 +1831,7 @@ export const VersionsGraphResponseGraphWorkflowNodesItemCase11 =
   }) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase11>;
 
 export type VersionsGraphResponseGraphWorkflowNodesItemCase12NodesList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const VersionsGraphResponseGraphWorkflowNodesItemCase12NodesList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -2023,7 +2022,7 @@ export const VersionsGraphResponseGraphWorkflowNodesItem =
   }) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItem>;
 
 export type VersionsGraphResponseGraphWorkflowNodesList =
-  ReadonlyArray<VersionsGraphResponseGraphWorkflowNodesItem>;
+  Array<VersionsGraphResponseGraphWorkflowNodesItem>;
 export const VersionsGraphResponseGraphWorkflowNodesList =
   /*@__PURE__*/ S.Array(
     VersionsGraphResponseGraphWorkflowNodesItem,
@@ -2254,7 +2253,7 @@ export const InstancesListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "InstancesListResultItem",
 }) as any as S.Schema<InstancesListResultItem>;
 
-export type InstancesListResultList = ReadonlyArray<InstancesListResultItem>;
+export type InstancesListResultList = Array<InstancesListResultItem>;
 export const InstancesListResultList = /*@__PURE__*/ S.Array(
   InstancesListResultItem,
 ) as any as S.Schema<InstancesListResultList>;
@@ -2339,7 +2338,7 @@ export const VersionsListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "VersionsListResultItem",
 }) as any as S.Schema<VersionsListResultItem>;
 
-export type VersionsListResultList = ReadonlyArray<VersionsListResultItem>;
+export type VersionsListResultList = Array<VersionsListResultItem>;
 export const VersionsListResultList = /*@__PURE__*/ S.Array(
   VersionsListResultItem,
 ) as any as S.Schema<VersionsListResultList>;
@@ -2425,8 +2424,7 @@ export const ListResultItemSchedulesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListResultItemSchedulesItem",
 }) as any as S.Schema<ListResultItemSchedulesItem>;
 
-export type ListResultItemSchedulesList =
-  ReadonlyArray<ListResultItemSchedulesItem>;
+export type ListResultItemSchedulesList = Array<ListResultItemSchedulesItem>;
 export const ListResultItemSchedulesList = /*@__PURE__*/ S.Array(
   ListResultItemSchedulesItem,
 ) as any as S.Schema<ListResultItemSchedulesList>;
@@ -2456,7 +2454,7 @@ export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ListResultItem" }) as any as S.Schema<ListResultItem>;
 
-export type ListResultList = ReadonlyArray<ListResultItem>;
+export type ListResultList = Array<ListResultItem>;
 export const ListResultList = /*@__PURE__*/ S.Array(
   ListResultItem,
 ) as any as S.Schema<ListResultList>;
@@ -2585,8 +2583,7 @@ export const UpdateRequestSchedulesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateRequestSchedulesItem",
 }) as any as S.Schema<UpdateRequestSchedulesItem>;
 
-export type UpdateRequestSchedulesList =
-  ReadonlyArray<UpdateRequestSchedulesItem>;
+export type UpdateRequestSchedulesList = Array<UpdateRequestSchedulesItem>;
 export const UpdateRequestSchedulesList = /*@__PURE__*/ S.Array(
   UpdateRequestSchedulesItem,
 ) as any as S.Schema<UpdateRequestSchedulesList>;

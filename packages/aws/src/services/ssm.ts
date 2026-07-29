@@ -1435,7 +1435,7 @@ export type StatusMessage = string;
 export type StatusAdditionalInfo = string;
 export interface AssociationStatus {
   Date: Date;
-  Name: AssociationStatusName;
+  Name: AssociationStatusName | (string & {});
   Message: string;
   AdditionalInfo?: string;
 }
@@ -1587,8 +1587,8 @@ export interface CreateAssociationBatchRequestEntry {
   AssociationName?: string;
   MaxErrors?: string;
   MaxConcurrency?: string;
-  ComplianceSeverity?: AssociationComplianceSeverity;
-  SyncCompliance?: AssociationSyncCompliance;
+  ComplianceSeverity?: AssociationComplianceSeverity | (string & {});
+  SyncCompliance?: AssociationSyncCompliance | (string & {});
   ApplyOnlyAtCronInterval?: boolean;
   CalendarNames?: string[];
   TargetLocations?: TargetLocation[];
@@ -2048,7 +2048,7 @@ export const OpsItemDataType = /*@__PURE__*/ S.String;
 
 export interface OpsItemDataValue {
   Value?: string;
-  Type?: OpsItemDataType;
+  Type?: OpsItemDataType | (string & {});
 }
 export const OpsItemDataValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Value: S.optional(S.String), Type: S.optional(OpsItemDataType) }),
@@ -2245,7 +2245,7 @@ export type PatchFilterValue = string;
 export type PatchFilterValueList = string[];
 export const PatchFilterValueList = /*@__PURE__*/ S.Array(S.String);
 export interface PatchFilter {
-  Key: PatchFilterKey;
+  Key: PatchFilterKey | (string & {});
   Values: string[];
 }
 export const PatchFilter = /*@__PURE__*/ S.suspend(() =>
@@ -2274,7 +2274,7 @@ export type ApproveAfterDays = number;
 export type PatchStringDateTime = string;
 export interface PatchRule {
   PatchFilterGroup: PatchFilterGroup;
-  ComplianceLevel?: PatchComplianceLevel;
+  ComplianceLevel?: PatchComplianceLevel | (string & {});
   ApproveAfterDays?: number;
   ApproveUntilDate?: string;
   EnableNonSecurity?: boolean;
@@ -2402,7 +2402,7 @@ export const ResourceDataSyncDestinationDataSharing = /*@__PURE__*/ S.suspend(
 export interface ResourceDataSyncS3Destination {
   BucketName: string;
   Prefix?: string;
-  SyncFormat: ResourceDataSyncS3Format;
+  SyncFormat: ResourceDataSyncS3Format | (string & {});
   Region: string;
   AWSKMSKeyARN?: string;
   DestinationDataSharing?: ResourceDataSyncDestinationDataSharing;
@@ -7446,7 +7446,7 @@ export type NotificationEvent =
   | "Failed";
 export const NotificationEvent = /*@__PURE__*/ S.String;
 
-export type NotificationEventList = NotificationEvent[];
+export type NotificationEventList = (NotificationEvent | (string & {}))[];
 export const NotificationEventList = /*@__PURE__*/ S.Array(NotificationEvent);
 export type NotificationType = "Command" | "Invocation";
 export const NotificationType = /*@__PURE__*/ S.String;
@@ -7454,7 +7454,7 @@ export const NotificationType = /*@__PURE__*/ S.String;
 export interface NotificationConfig {
   NotificationArn?: string;
   NotificationEvents?: NotificationEvent[];
-  NotificationType?: NotificationType;
+  NotificationType?: NotificationType | (string & {});
 }
 export const NotificationConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -7470,7 +7470,7 @@ export interface MaintenanceWindowRunCommandParameters {
   Comment?: string;
   CloudWatchOutputConfig?: CloudWatchOutputConfig;
   DocumentHash?: string;
-  DocumentHashType?: DocumentHashType;
+  DocumentHashType?: DocumentHashType | (string & {});
   DocumentVersion?: string;
   NotificationConfig?: NotificationConfig;
   OutputS3BucketName?: string;
@@ -9087,7 +9087,7 @@ export const DocumentReviewCommentType = /*@__PURE__*/ S.String;
 
 export type DocumentReviewComment = string;
 export interface DocumentReviewCommentSource {
-  Type?: DocumentReviewCommentType;
+  Type?: DocumentReviewCommentType | (string & {});
   Content?: string;
 }
 export const DocumentReviewCommentSource = /*@__PURE__*/ S.suspend(() =>

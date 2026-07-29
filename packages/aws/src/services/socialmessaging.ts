@@ -344,7 +344,7 @@ export type MetaFlowCategory =
   | "OTHER";
 export const MetaFlowCategory = /*@__PURE__*/ S.String;
 
-export type MetaFlowCategoryList = MetaFlowCategory[];
+export type MetaFlowCategoryList = (MetaFlowCategory | (string & {}))[];
 export const MetaFlowCategoryList = /*@__PURE__*/ S.Array(MetaFlowCategory);
 export type MetaFlowJsonBlob = Uint8Array;
 export type MetaFlowId = string;

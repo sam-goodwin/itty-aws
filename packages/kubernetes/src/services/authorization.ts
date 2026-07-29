@@ -40,7 +40,7 @@ export const IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap =
 
 /** Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. Finalizers may be processed and removed in any order. Order is NOT enforced because it introduces significant risk of stuck finalizers. finalizers is a shared field, any actor with permission can reorder it. If the finalizer list is processed in order, then this can lead to a situation in which the component responsible for the first finalizer in the list is waiting for a signal (field value, external system, or other) produced by a component responsible for a finalizer later in the list, resulting in a deadlock. Without enforced ordering finalizers are free to order amongst themselves and are not vulnerable to ordering changes in the list. */
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -90,7 +90,7 @@ export const IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry =
 
 /** ManagedFields maps workflow-id and version to the set of fields that are managed by that workflow. This is mostly for internal housekeeping, and users typically shouldn't need to set or understand this field. A workflow can be the user's name, a controller's name, or the name of a specific apply path like "ci-cd". The set of fields is always in the version that the workflow used when modifying the object. */
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaManagedFieldsList =
-  ReadonlyArray<IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry>;
+  Array<IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry>;
 export const IoK8sApimachineryPkgApisMetaV1ObjectMetaManagedFieldsList =
   /*@__PURE__*/ S.Array(
     IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry,
@@ -127,7 +127,7 @@ export const IoK8sApimachineryPkgApisMetaV1OwnerReference =
 
 /** List of objects depended by this object. If ALL objects in the list have been deleted, this object will be garbage collected. If this object is managed by a controller, then an entry in this list will point to this controller, with the controller field set to true. There cannot be more than one managing controller. */
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaOwnerReferencesList =
-  ReadonlyArray<IoK8sApimachineryPkgApisMetaV1OwnerReference>;
+  Array<IoK8sApimachineryPkgApisMetaV1OwnerReference>;
 export const IoK8sApimachineryPkgApisMetaV1ObjectMetaOwnerReferencesList =
   /*@__PURE__*/ S.Array(
     IoK8sApimachineryPkgApisMetaV1OwnerReference,
@@ -198,7 +198,7 @@ export const IoK8sApimachineryPkgApisMetaV1ObjectMeta = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMeta>;
 
 export type IoK8sApiAuthorizationV1SubjectAccessReviewSpecExtraValueList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const IoK8sApiAuthorizationV1SubjectAccessReviewSpecExtraValueList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -218,7 +218,7 @@ export const IoK8sApiAuthorizationV1SubjectAccessReviewSpecExtraMap =
 
 /** groups is the groups you're testing for. */
 export type IoK8sApiAuthorizationV1SubjectAccessReviewSpecGroupsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const IoK8sApiAuthorizationV1SubjectAccessReviewSpecGroupsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -243,7 +243,7 @@ export const IoK8sApiAuthorizationV1NonResourceAttributes =
 
 /** values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. */
 export type IoK8sApimachineryPkgApisMetaV1FieldSelectorRequirementValuesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const IoK8sApimachineryPkgApisMetaV1FieldSelectorRequirementValuesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -273,7 +273,7 @@ export const IoK8sApimachineryPkgApisMetaV1FieldSelectorRequirement =
 
 /** requirements is the parsed interpretation of a field selector. All requirements must be met for a resource instance to match the selector. Webhook implementations should handle requirements, but how to handle them is up to the webhook. Since requirements can only limit the request, it is safe to authorize as unlimited request if the requirements are not understood. */
 export type IoK8sApiAuthorizationV1FieldSelectorAttributesRequirementsList =
-  ReadonlyArray<IoK8sApimachineryPkgApisMetaV1FieldSelectorRequirement>;
+  Array<IoK8sApimachineryPkgApisMetaV1FieldSelectorRequirement>;
 export const IoK8sApiAuthorizationV1FieldSelectorAttributesRequirementsList =
   /*@__PURE__*/ S.Array(
     IoK8sApimachineryPkgApisMetaV1FieldSelectorRequirement,
@@ -300,7 +300,7 @@ export const IoK8sApiAuthorizationV1FieldSelectorAttributes =
 
 /** values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch. */
 export type IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirementValuesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirementValuesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -330,7 +330,7 @@ export const IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement =
 
 /** requirements is the parsed interpretation of a label selector. All requirements must be met for a resource instance to match the selector. Webhook implementations should handle requirements, but how to handle them is up to the webhook. Since requirements can only limit the request, it is safe to authorize as unlimited request if the requirements are not understood. */
 export type IoK8sApiAuthorizationV1LabelSelectorAttributesRequirementsList =
-  ReadonlyArray<IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement>;
+  Array<IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement>;
 export const IoK8sApiAuthorizationV1LabelSelectorAttributesRequirementsList =
   /*@__PURE__*/ S.Array(
     IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement,
@@ -626,15 +626,14 @@ export const IoK8sApiAuthorizationV1SelfSubjectRulesReviewSpec =
 
 /** nonResourceURLs is a set of partial urls that a user should have access to. *s are allowed, but only as the full, final step in the path. "*" means all. */
 export type IoK8sApiAuthorizationV1NonResourceRuleNonResourceURLsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const IoK8sApiAuthorizationV1NonResourceRuleNonResourceURLsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<IoK8sApiAuthorizationV1NonResourceRuleNonResourceURLsList>;
 
 /** verbs is a list of kubernetes non-resource API verbs, like: get, post, put, delete, patch, head, options. "*" means all. */
-export type IoK8sApiAuthorizationV1NonResourceRuleVerbsList =
-  ReadonlyArray<string>;
+export type IoK8sApiAuthorizationV1NonResourceRuleVerbsList = Array<string>;
 export const IoK8sApiAuthorizationV1NonResourceRuleVerbsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -661,15 +660,14 @@ export const IoK8sApiAuthorizationV1NonResourceRule = /*@__PURE__*/ S.suspend(
 
 /** nonResourceRules is the list of actions the subject is allowed to perform on non-resources. The list ordering isn't significant, may contain duplicates, and possibly be incomplete. */
 export type IoK8sApiAuthorizationV1SubjectRulesReviewStatusNonResourceRulesList =
-  ReadonlyArray<IoK8sApiAuthorizationV1NonResourceRule>;
+  Array<IoK8sApiAuthorizationV1NonResourceRule>;
 export const IoK8sApiAuthorizationV1SubjectRulesReviewStatusNonResourceRulesList =
   /*@__PURE__*/ S.Array(
     IoK8sApiAuthorizationV1NonResourceRule,
   ) as any as S.Schema<IoK8sApiAuthorizationV1SubjectRulesReviewStatusNonResourceRulesList>;
 
 /** apiGroups is the name of the APIGroup that contains the resources. If multiple API groups are specified, any action requested against one of the enumerated resources in any API group will be allowed. "*" means all. */
-export type IoK8sApiAuthorizationV1ResourceRuleApiGroupsList =
-  ReadonlyArray<string>;
+export type IoK8sApiAuthorizationV1ResourceRuleApiGroupsList = Array<string>;
 export const IoK8sApiAuthorizationV1ResourceRuleApiGroupsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -677,23 +675,21 @@ export const IoK8sApiAuthorizationV1ResourceRuleApiGroupsList =
 
 /** resourceNames is an optional white list of names that the rule applies to. An empty set means that everything is allowed. "*" means all. */
 export type IoK8sApiAuthorizationV1ResourceRuleResourceNamesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const IoK8sApiAuthorizationV1ResourceRuleResourceNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<IoK8sApiAuthorizationV1ResourceRuleResourceNamesList>;
 
 /** resources is a list of resources this rule applies to. "*" means all in the specified apiGroups. "*\/foo" represents the subresource 'foo' for all resources in the specified apiGroups. */
-export type IoK8sApiAuthorizationV1ResourceRuleResourcesList =
-  ReadonlyArray<string>;
+export type IoK8sApiAuthorizationV1ResourceRuleResourcesList = Array<string>;
 export const IoK8sApiAuthorizationV1ResourceRuleResourcesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<IoK8sApiAuthorizationV1ResourceRuleResourcesList>;
 
 /** verbs is a list of kubernetes resource API verbs, like: get, list, watch, create, update, delete, proxy. "*" means all. */
-export type IoK8sApiAuthorizationV1ResourceRuleVerbsList =
-  ReadonlyArray<string>;
+export type IoK8sApiAuthorizationV1ResourceRuleVerbsList = Array<string>;
 export const IoK8sApiAuthorizationV1ResourceRuleVerbsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -725,7 +721,7 @@ export const IoK8sApiAuthorizationV1ResourceRule = /*@__PURE__*/ S.suspend(() =>
 
 /** resourceRules is the list of actions the subject is allowed to perform on resources. The list ordering isn't significant, may contain duplicates, and possibly be incomplete. */
 export type IoK8sApiAuthorizationV1SubjectRulesReviewStatusResourceRulesList =
-  ReadonlyArray<IoK8sApiAuthorizationV1ResourceRule>;
+  Array<IoK8sApiAuthorizationV1ResourceRule>;
 export const IoK8sApiAuthorizationV1SubjectRulesReviewStatusResourceRulesList =
   /*@__PURE__*/ S.Array(
     IoK8sApiAuthorizationV1ResourceRule,
@@ -939,7 +935,7 @@ export const IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR =
 
 /** a map of client CIDR to server address that is serving this group. This is to help clients reach servers in the most network-efficient way possible. Clients can use the appropriate server address as per the CIDR that they match. In case of multiple matches, clients should use the longest matching CIDR. The server returns only those CIDRs that it thinks that the client can match. For example: the master will return an internal IP CIDR only, if the client reaches the server using an internal IP. Server looks at X-Forwarded-For header or X-Real-Ip header or request.RemoteAddr (in that order) to get the client IP. */
 export type IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList =
-  ReadonlyArray<IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR>;
+  Array<IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR>;
 export const IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList =
   /*@__PURE__*/ S.Array(
     IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR,
@@ -947,7 +943,7 @@ export const IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsLis
 
 /** versions are the versions supported in this group. */
 export type IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList =
-  ReadonlyArray<IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery>;
+  Array<IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery>;
 export const IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList =
   /*@__PURE__*/ S.Array(
     IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery,
@@ -1002,7 +998,7 @@ export const GetAuthorizationV1APIResourcesRequest = /*@__PURE__*/ S.suspend(
 
 /** categories is a list of the grouped resources this resource belongs to (e.g. 'all') */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1010,15 +1006,14 @@ export const IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList =
 
 /** shortNames is a list of suggested short names of the resource. */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList>;
 
 /** verbs is a list of supported kube verbs (this includes get, list, watch, create, update, patch, delete, deletecollection, and proxy) */
-export type IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList =
-  ReadonlyArray<string>;
+export type IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList = Array<string>;
 export const IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1071,7 +1066,7 @@ export const IoK8sApimachineryPkgApisMetaV1APIResource =
 
 /** resources contains the name of the resources and if they are namespaced. */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList =
-  ReadonlyArray<IoK8sApimachineryPkgApisMetaV1APIResource>;
+  Array<IoK8sApimachineryPkgApisMetaV1APIResource>;
 export const IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList =
   /*@__PURE__*/ S.Array(
     IoK8sApimachineryPkgApisMetaV1APIResource,

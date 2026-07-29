@@ -506,7 +506,7 @@ export type PositiveInteger = number;
 export type Capability = "Voice" | "SMS";
 export const Capability = /*@__PURE__*/ S.String;
 
-export type CapabilityList = Capability[];
+export type CapabilityList = (Capability | (string & {}))[];
 export const CapabilityList = /*@__PURE__*/ S.Array(Capability);
 export type NumberSelectionBehavior = "PreferSticky" | "AvoidSticky";
 export const NumberSelectionBehavior = /*@__PURE__*/ S.String;
@@ -1946,7 +1946,7 @@ export type AlexaSkillId = string | redacted.Redacted<string>;
 export type AlexaSkillIdList = (string | redacted.Redacted<string>)[];
 export const AlexaSkillIdList = /*@__PURE__*/ S.Array(SensitiveString);
 export interface SipMediaApplicationAlexaSkillConfiguration {
-  AlexaSkillStatus: AlexaSkillStatus;
+  AlexaSkillStatus: AlexaSkillStatus | (string & {});
   AlexaSkillIds: (string | redacted.Redacted<string>)[];
 }
 export const SipMediaApplicationAlexaSkillConfiguration =
@@ -2264,7 +2264,10 @@ export type SessionBorderControllerType =
   | "AUDIOCODES_MEDIANT_SBC";
 export const SessionBorderControllerType = /*@__PURE__*/ S.String;
 
-export type SessionBorderControllerTypeList = SessionBorderControllerType[];
+export type SessionBorderControllerTypeList = (
+  | SessionBorderControllerType
+  | (string & {})
+)[];
 export const SessionBorderControllerTypeList = /*@__PURE__*/ S.Array(
   SessionBorderControllerType,
 );
@@ -2275,7 +2278,10 @@ export type ContactCenterSystemType =
   | "CISCO_UNIFIED_CONTACT_CENTER_ENTERPRISE";
 export const ContactCenterSystemType = /*@__PURE__*/ S.String;
 
-export type ContactCenterSystemTypeList = ContactCenterSystemType[];
+export type ContactCenterSystemTypeList = (
+  | ContactCenterSystemType
+  | (string & {})
+)[];
 export const ContactCenterSystemTypeList = /*@__PURE__*/ S.Array(
   ContactCenterSystemType,
 );
@@ -2407,7 +2413,7 @@ export type OriginationRouteWeight = number;
 export interface OriginationRoute {
   Host?: string;
   Port?: number;
-  Protocol?: OriginationRouteProtocol;
+  Protocol?: OriginationRouteProtocol | (string & {});
   Priority?: number;
   Weight?: number;
 }
@@ -2516,7 +2522,7 @@ export type NotificationTarget = "EventBridge" | "SNS" | "SQS";
 export const NotificationTarget = /*@__PURE__*/ S.String;
 
 export interface StreamingNotificationTarget {
-  NotificationTarget?: NotificationTarget;
+  NotificationTarget?: NotificationTarget | (string & {});
 }
 export const StreamingNotificationTarget = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ NotificationTarget: S.optional(NotificationTarget) }),

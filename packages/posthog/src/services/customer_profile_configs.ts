@@ -119,7 +119,7 @@ export const CustomerProfileConfigsListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CustomerProfileConfigsListRequest>;
 
 export type PaginatedCustomerProfileConfigListResultsList =
-  ReadonlyArray<CustomerProfileConfig>;
+  Array<CustomerProfileConfig>;
 export const PaginatedCustomerProfileConfigListResultsList =
   /*@__PURE__*/ S.Array(
     CustomerProfileConfig,

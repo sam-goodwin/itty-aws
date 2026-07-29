@@ -76,7 +76,9 @@ export interface AnalyticsAccountLink {
   /** Identifier. Resource name of this AnalyticsAccountLink. Note the resource ID is the same as the ID of the Analtyics account. Format: organizations/{org_id}/analyticsAccountLinks/{analytics_account_link_id} Example: "organizations/xyz/analyticsAccountLinks/1234" */
   name?: string;
   /** Output only. The verification state of the link between the Analytics account and the parent organization. */
-  linkVerificationState?: AnalyticsAccountLinkLinkVerificationStateEnum;
+  linkVerificationState?:
+    | AnalyticsAccountLinkLinkVerificationStateEnum
+    | (string & {});
 }
 export const AnalyticsAccountLink = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -226,7 +228,7 @@ export const ClientData = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ClientData" }) as any as S.Schema<ClientData>;
 
-export type ClientDataList = ReadonlyArray<ClientData>;
+export type ClientDataList = Array<ClientData>;
 export const ClientDataList = /*@__PURE__*/ S.Array(
   ClientData,
 ) as any as S.Schema<ClientDataList>;
@@ -284,7 +286,7 @@ export const ListOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListOrganizationsRequest",
 }) as any as S.Schema<ListOrganizationsRequest>;
 
-export type OrganizationList = ReadonlyArray<Organization>;
+export type OrganizationList = Array<Organization>;
 export const OrganizationList = /*@__PURE__*/ S.Array(
   Organization,
 ) as any as S.Schema<OrganizationList>;
@@ -330,7 +332,7 @@ export const ListOrganizationsAnalyticsAccountLinksRequest =
     identifier: "ListOrganizationsAnalyticsAccountLinksRequest",
   }) as any as S.Schema<ListOrganizationsAnalyticsAccountLinksRequest>;
 
-export type AnalyticsAccountLinkList = ReadonlyArray<AnalyticsAccountLink>;
+export type AnalyticsAccountLinkList = Array<AnalyticsAccountLink>;
 export const AnalyticsAccountLinkList = /*@__PURE__*/ S.Array(
   AnalyticsAccountLink,
 ) as any as S.Schema<AnalyticsAccountLinkList>;
@@ -428,7 +430,7 @@ export const PropertyUsage = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PropertyUsage" }) as any as S.Schema<PropertyUsage>;
 
-export type PropertyUsageList = ReadonlyArray<PropertyUsage>;
+export type PropertyUsageList = Array<PropertyUsage>;
 export const PropertyUsageList = /*@__PURE__*/ S.Array(
   PropertyUsage,
 ) as any as S.Schema<PropertyUsageList>;

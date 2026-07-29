@@ -440,7 +440,7 @@ export type Default = string;
 export interface TextInputCardInput {
   title: string;
   id: string;
-  type: CardType;
+  type: CardType | (string & {});
   placeholder?: string;
   defaultValue?: string;
 }
@@ -553,9 +553,9 @@ export const AttributeFilter = /*@__PURE__*/ S.suspend(() =>
 export interface QQueryCardInput {
   title: string;
   id: string;
-  type: CardType;
+  type: CardType | (string & {});
   prompt: string;
-  outputSource?: CardOutputSource;
+  outputSource?: CardOutputSource | (string & {});
   attributeFilter?: AttributeFilter;
 }
 export const QQueryCardInput = /*@__PURE__*/ S.suspend(() =>
@@ -575,7 +575,7 @@ export type ActionIdentifier = string;
 export interface QPluginCardInput {
   title: string;
   id: string;
-  type: CardType;
+  type: CardType | (string & {});
   prompt: string;
   pluginId: string;
   actionIdentifier?: string;
@@ -595,7 +595,7 @@ export const QPluginCardInput = /*@__PURE__*/ S.suspend(() =>
 export interface FileUploadCardInput {
   title: string;
   id: string;
-  type: CardType;
+  type: CardType | (string & {});
   filename?: string;
   fileId?: string;
   allowOverride?: boolean;
@@ -627,9 +627,9 @@ export const InputCardComputeMode = /*@__PURE__*/ S.String;
 export interface FormInputCardInput {
   title: string;
   id: string;
-  type: CardType;
+  type: CardType | (string & {});
   metadata: FormInputCardMetadata;
-  computeMode?: InputCardComputeMode;
+  computeMode?: InputCardComputeMode | (string & {});
 }
 export const FormInputCardInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

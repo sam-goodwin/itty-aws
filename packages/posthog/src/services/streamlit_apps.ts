@@ -249,7 +249,7 @@ export const StreamlitAppsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "StreamlitAppsListRequest",
 }) as any as S.Schema<StreamlitAppsListRequest>;
 
-export type PaginatedAppContractListResultsList = ReadonlyArray<AppContract>;
+export type PaginatedAppContractListResultsList = Array<AppContract>;
 export const PaginatedAppContractListResultsList = /*@__PURE__*/ S.Array(
   AppContract,
 ) as any as S.Schema<PaginatedAppContractListResultsList>;
@@ -515,8 +515,7 @@ export const StreamlitAppsVersionsRetrieveRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<StreamlitAppsVersionsRetrieveRequest>;
 
 /** Most recent versions of the app, newest first (capped at 50). */
-export type StreamlitAppVersionListResultsList =
-  ReadonlyArray<AppVersionContract>;
+export type StreamlitAppVersionListResultsList = Array<AppVersionContract>;
 export const StreamlitAppVersionListResultsList = /*@__PURE__*/ S.Array(
   AppVersionContract,
 ) as any as S.Schema<StreamlitAppVersionListResultsList>;

@@ -898,7 +898,7 @@ export const CapacityProviderPermissionsConfig = /*@__PURE__*/ S.suspend(() =>
 export type Architecture = "x86_64" | "arm64";
 export const Architecture = /*@__PURE__*/ S.String;
 
-export type ArchitecturesList = Architecture[];
+export type ArchitecturesList = (Architecture | (string & {}))[];
 export const ArchitecturesList = /*@__PURE__*/ S.Array(Architecture);
 export type InstanceType = string;
 export type InstanceTypeSet = string[];
@@ -927,7 +927,7 @@ export const CapacityProviderPredefinedMetricType = /*@__PURE__*/ S.String;
 
 export type MetricTargetValue = number;
 export interface TargetTrackingScalingPolicy {
-  PredefinedMetricType: CapacityProviderPredefinedMetricType;
+  PredefinedMetricType: CapacityProviderPredefinedMetricType | (string & {});
   TargetValue: number;
 }
 export const TargetTrackingScalingPolicy = /*@__PURE__*/ S.suspend(() =>
@@ -944,7 +944,7 @@ export const CapacityProviderScalingPoliciesList = /*@__PURE__*/ S.Array(
 );
 export interface CapacityProviderScalingConfig {
   MaxVCpuCount?: number;
-  ScalingMode?: CapacityProviderScalingMode;
+  ScalingMode?: CapacityProviderScalingMode | (string & {});
   ScalingPolicies?: TargetTrackingScalingPolicy[];
 }
 export const CapacityProviderScalingConfig = /*@__PURE__*/ S.suspend(() =>
@@ -965,7 +965,7 @@ export type PropagateTagsMode = "None" | "Explicit";
 export const PropagateTagsMode = /*@__PURE__*/ S.String;
 
 export interface PropagateTags {
-  Mode?: PropagateTagsMode;
+  Mode?: PropagateTagsMode | (string & {});
   ExplicitTags?: { [key: string]: string | undefined };
 }
 export const PropagateTags = /*@__PURE__*/ S.suspend(() =>
@@ -1064,7 +1064,7 @@ export type CodeSigningPolicy = "Warn" | "Enforce";
 export const CodeSigningPolicy = /*@__PURE__*/ S.String;
 
 export interface CodeSigningPolicies {
-  UntrustedArtifactOnDeployment?: CodeSigningPolicy;
+  UntrustedArtifactOnDeployment?: CodeSigningPolicy | (string & {});
 }
 export const CodeSigningPolicies = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ UntrustedArtifactOnDeployment: S.optional(CodeSigningPolicy) }),
@@ -1149,7 +1149,10 @@ export type EventSourceMappingMetric =
   | "KafkaMetrics";
 export const EventSourceMappingMetric = /*@__PURE__*/ S.String;
 
-export type EventSourceMappingMetricList = EventSourceMappingMetric[];
+export type EventSourceMappingMetricList = (
+  | EventSourceMappingMetric
+  | (string & {})
+)[];
 export const EventSourceMappingMetricList = /*@__PURE__*/ S.Array(
   EventSourceMappingMetric,
 );
@@ -1165,7 +1168,7 @@ export type EventSourceMappingSystemLogLevel = "DEBUG" | "INFO" | "WARN";
 export const EventSourceMappingSystemLogLevel = /*@__PURE__*/ S.String;
 
 export interface EventSourceMappingLoggingConfig {
-  SystemLogLevel?: EventSourceMappingSystemLogLevel;
+  SystemLogLevel?: EventSourceMappingSystemLogLevel | (string & {});
 }
 export const EventSourceMappingLoggingConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ SystemLogLevel: S.optional(EventSourceMappingSystemLogLevel) }),
@@ -1232,7 +1235,7 @@ export const SourceAccessType = /*@__PURE__*/ S.String;
 
 export type URI = string;
 export interface SourceAccessConfiguration {
-  Type?: SourceAccessType;
+  Type?: SourceAccessType | (string & {});
   URI?: string;
 }
 export const SourceAccessConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -1250,7 +1253,7 @@ export const EndPointType = /*@__PURE__*/ S.String;
 export type Endpoint = string;
 export type EndpointLists = string[];
 export const EndpointLists = /*@__PURE__*/ S.Array(S.String);
-export type Endpoints = { [key in EndPointType]?: string[] };
+export type Endpoints = { [key in EndPointType | (string & {})]?: string[] };
 export const Endpoints = /*@__PURE__*/ S.Record(
   EndPointType,
   EndpointLists.pipe(S.optional),
@@ -1266,7 +1269,7 @@ export const SelfManagedEventSource = /*@__PURE__*/ S.suspend(() =>
 export type FunctionResponseType = "ReportBatchItemFailures";
 export const FunctionResponseType = /*@__PURE__*/ S.String;
 
-export type FunctionResponseTypeList = FunctionResponseType[];
+export type FunctionResponseTypeList = (FunctionResponseType | (string & {}))[];
 export const FunctionResponseTypeList =
   /*@__PURE__*/ S.Array(FunctionResponseType);
 export type SchemaRegistryUri = string;
@@ -1280,7 +1283,7 @@ export type KafkaSchemaRegistryAuthType =
 export const KafkaSchemaRegistryAuthType = /*@__PURE__*/ S.String;
 
 export interface KafkaSchemaRegistryAccessConfig {
-  Type?: KafkaSchemaRegistryAuthType;
+  Type?: KafkaSchemaRegistryAuthType | (string & {});
   URI?: string;
 }
 export const KafkaSchemaRegistryAccessConfig = /*@__PURE__*/ S.suspend(() =>
@@ -1300,7 +1303,7 @@ export type KafkaSchemaValidationAttribute = "KEY" | "VALUE";
 export const KafkaSchemaValidationAttribute = /*@__PURE__*/ S.String;
 
 export interface KafkaSchemaValidationConfig {
-  Attribute?: KafkaSchemaValidationAttribute;
+  Attribute?: KafkaSchemaValidationAttribute | (string & {});
 }
 export const KafkaSchemaValidationConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Attribute: S.optional(KafkaSchemaValidationAttribute) }),
@@ -1313,7 +1316,7 @@ export const KafkaSchemaValidationConfigList = /*@__PURE__*/ S.Array(
 );
 export interface KafkaSchemaRegistryConfig {
   SchemaRegistryURI?: string;
-  EventRecordFormat?: SchemaRegistryEventRecordFormat;
+  EventRecordFormat?: SchemaRegistryEventRecordFormat | (string & {});
   AccessConfigs?: KafkaSchemaRegistryAccessConfig[];
   SchemaValidationConfigs?: KafkaSchemaValidationConfig[];
 }
@@ -1359,7 +1362,7 @@ export const FullDocument = /*@__PURE__*/ S.String;
 export interface DocumentDBEventSourceConfig {
   DatabaseName?: string;
   CollectionName?: string;
-  FullDocument?: FullDocument;
+  FullDocument?: FullDocument | (string & {});
 }
 export const DocumentDBEventSourceConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1758,9 +1761,9 @@ export const SystemLogLevel = /*@__PURE__*/ S.String;
 
 export type LogGroup = string;
 export interface LoggingConfig {
-  LogFormat?: LogFormat;
-  ApplicationLogLevel?: ApplicationLogLevel;
-  SystemLogLevel?: SystemLogLevel;
+  LogFormat?: LogFormat | (string & {});
+  ApplicationLogLevel?: ApplicationLogLevel | (string & {});
+  SystemLogLevel?: SystemLogLevel | (string & {});
   LogGroup?: string;
 }
 export const LoggingConfig = /*@__PURE__*/ S.suspend(() =>
@@ -1775,7 +1778,7 @@ export type TenantIsolationMode = "PER_TENANT";
 export const TenantIsolationMode = /*@__PURE__*/ S.String;
 
 export interface TenancyConfig {
-  TenantIsolationMode: TenantIsolationMode;
+  TenantIsolationMode: TenantIsolationMode | (string & {});
 }
 export const TenancyConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ TenantIsolationMode: TenantIsolationMode }),
@@ -3677,9 +3680,9 @@ export const LayerVersionContentOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "LayerVersionContentOutput",
 }) as any as S.Schema<LayerVersionContentOutput>;
 export type LayerArn = string;
-export type CompatibleArchitectures = Architecture[];
+export type CompatibleArchitectures = (Architecture | (string & {}))[];
 export const CompatibleArchitectures = /*@__PURE__*/ S.Array(Architecture);
-export type CompatibleRuntimes = Runtime[];
+export type CompatibleRuntimes = (Runtime | (string & {}))[];
 export const CompatibleRuntimes = /*@__PURE__*/ S.Array(Runtime);
 export type LicenseInfo = string;
 export interface GetLayerVersionResponse {

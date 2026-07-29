@@ -728,8 +728,8 @@ export type AllowUpstream = "ALLOW" | "BLOCK";
 export const AllowUpstream = /*@__PURE__*/ S.String;
 
 export interface PackageOriginRestrictions {
-  publish: AllowPublish;
-  upstream: AllowUpstream;
+  publish: AllowPublish | (string & {});
+  upstream: AllowUpstream | (string & {});
 }
 export const PackageOriginRestrictions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ publish: AllowPublish, upstream: AllowUpstream }),

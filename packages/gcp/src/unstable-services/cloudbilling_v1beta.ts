@@ -76,7 +76,7 @@ export const BillingDataResource = /*@__PURE__*/ S.suspend(() =>
   identifier: "BillingDataResource",
 }) as any as S.Schema<BillingDataResource>;
 
-export type BillingDataResourceList = ReadonlyArray<BillingDataResource>;
+export type BillingDataResourceList = Array<BillingDataResource>;
 export const BillingDataResourceList = /*@__PURE__*/ S.Array(
   BillingDataResource,
 ) as any as S.Schema<BillingDataResourceList>;
@@ -200,7 +200,7 @@ export const SuggestedChart = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SuggestedChart" }) as any as S.Schema<SuggestedChart>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -247,7 +247,7 @@ export const ColumnInfo = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ColumnInfo" }) as any as S.Schema<ColumnInfo>;
 
-export type ColumnInfoList = ReadonlyArray<ColumnInfo>;
+export type ColumnInfoList = Array<ColumnInfo>;
 export const ColumnInfoList = /*@__PURE__*/ S.Array(
   ColumnInfo,
 ) as any as S.Schema<ColumnInfoList>;
@@ -318,7 +318,7 @@ export const MapEntry = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MapEntry" }) as any as S.Schema<MapEntry>;
 
-export type MapEntryList = ReadonlyArray<MapEntry>;
+export type MapEntryList = Array<MapEntry>;
 export const MapEntryList = /*@__PURE__*/ S.Array(
   MapEntry,
 ) as any as S.Schema<MapEntryList>;
@@ -428,7 +428,7 @@ export const ValueProto = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ValueProto" }) as any as S.Schema<ValueProto>;
 
-export type ValueProtoList = ReadonlyArray<ValueProto>;
+export type ValueProtoList = Array<ValueProto>;
 export const ValueProtoList = /*@__PURE__*/ S.Array(
   ValueProto,
 ) as any as S.Schema<ValueProtoList>;
@@ -444,7 +444,7 @@ export const Row = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Row" }) as any as S.Schema<Row>;
 
-export type RowList = ReadonlyArray<Row>;
+export type RowList = Array<Row>;
 export const RowList = /*@__PURE__*/ S.Array(Row) as any as S.Schema<RowList>;
 
 /** Encapsulates billing data. */
@@ -478,7 +478,7 @@ export const DataSet = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DataSet" }) as any as S.Schema<DataSet>;
 
-export type DataSetList = ReadonlyArray<DataSet>;
+export type DataSetList = Array<DataSet>;
 export const DataSetList = /*@__PURE__*/ S.Array(
   DataSet,
 ) as any as S.Schema<DataSetList>;
@@ -507,7 +507,7 @@ export const InteropLink = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "InteropLink" }) as any as S.Schema<InteropLink>;
 
-export type InteropLinkList = ReadonlyArray<InteropLink>;
+export type InteropLinkList = Array<InteropLink>;
 export const InteropLinkList = /*@__PURE__*/ S.Array(
   InteropLink,
 ) as any as S.Schema<InteropLinkList>;
@@ -536,7 +536,7 @@ export const Insight = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Insight" }) as any as S.Schema<Insight>;
 
-export type InsightList = ReadonlyArray<Insight>;
+export type InsightList = Array<Insight>;
 export const InsightList = /*@__PURE__*/ S.Array(
   Insight,
 ) as any as S.Schema<InsightList>;
@@ -552,7 +552,7 @@ export const SuggestedQuery = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SuggestedQuery" }) as any as S.Schema<SuggestedQuery>;
 
-export type SuggestedQueryList = ReadonlyArray<SuggestedQuery>;
+export type SuggestedQueryList = Array<SuggestedQuery>;
 export const SuggestedQueryList = /*@__PURE__*/ S.Array(
   SuggestedQuery,
 ) as any as S.Schema<SuggestedQueryList>;
@@ -723,7 +723,7 @@ export const GoogleCloudBillingBillingaccountskugroupskusV1betaGeoTaxonomyRegion
   }) as any as S.Schema<GoogleCloudBillingBillingaccountskugroupskusV1betaGeoTaxonomyRegion>;
 
 export type GoogleCloudBillingBillingaccountskugroupskusV1betaGeoTaxonomyRegionList =
-  ReadonlyArray<GoogleCloudBillingBillingaccountskugroupskusV1betaGeoTaxonomyRegion>;
+  Array<GoogleCloudBillingBillingaccountskugroupskusV1betaGeoTaxonomyRegion>;
 export const GoogleCloudBillingBillingaccountskugroupskusV1betaGeoTaxonomyRegionList =
   /*@__PURE__*/ S.Array(
     GoogleCloudBillingBillingaccountskugroupskusV1betaGeoTaxonomyRegion,
@@ -815,7 +815,7 @@ export const GoogleCloudBillingBillingaccountskugroupskusV1betaTaxonomyCategory 
   }) as any as S.Schema<GoogleCloudBillingBillingaccountskugroupskusV1betaTaxonomyCategory>;
 
 export type GoogleCloudBillingBillingaccountskugroupskusV1betaTaxonomyCategoryList =
-  ReadonlyArray<GoogleCloudBillingBillingaccountskugroupskusV1betaTaxonomyCategory>;
+  Array<GoogleCloudBillingBillingaccountskugroupskusV1betaTaxonomyCategory>;
 export const GoogleCloudBillingBillingaccountskugroupskusV1betaTaxonomyCategoryList =
   /*@__PURE__*/ S.Array(
     GoogleCloudBillingBillingaccountskugroupskusV1betaTaxonomyCategory,
@@ -928,7 +928,7 @@ export const GoogleCloudBillingBillingaccountskusV1betaGeoTaxonomyGlobal =
   }) as any as S.Schema<GoogleCloudBillingBillingaccountskusV1betaGeoTaxonomyGlobal>;
 
 export type GoogleCloudBillingBillingaccountskusV1betaGeoTaxonomyRegionList =
-  ReadonlyArray<GoogleCloudBillingBillingaccountskusV1betaGeoTaxonomyRegion>;
+  Array<GoogleCloudBillingBillingaccountskusV1betaGeoTaxonomyRegion>;
 export const GoogleCloudBillingBillingaccountskusV1betaGeoTaxonomyRegionList =
   /*@__PURE__*/ S.Array(
     GoogleCloudBillingBillingaccountskusV1betaGeoTaxonomyRegion,
@@ -1005,7 +1005,7 @@ export const GoogleCloudBillingBillingaccountskusV1betaTaxonomyCategory =
   }) as any as S.Schema<GoogleCloudBillingBillingaccountskusV1betaTaxonomyCategory>;
 
 export type GoogleCloudBillingBillingaccountskusV1betaTaxonomyCategoryList =
-  ReadonlyArray<GoogleCloudBillingBillingaccountskusV1betaTaxonomyCategory>;
+  Array<GoogleCloudBillingBillingaccountskusV1betaTaxonomyCategory>;
 export const GoogleCloudBillingBillingaccountskusV1betaTaxonomyCategoryList =
   /*@__PURE__*/ S.Array(
     GoogleCloudBillingBillingaccountskusV1betaTaxonomyCategory,
@@ -1184,7 +1184,7 @@ export const GoogleCloudBillingBillingaccountpricesV1betaRateTier =
   }) as any as S.Schema<GoogleCloudBillingBillingaccountpricesV1betaRateTier>;
 
 export type GoogleCloudBillingBillingaccountpricesV1betaRateTierList =
-  ReadonlyArray<GoogleCloudBillingBillingaccountpricesV1betaRateTier>;
+  Array<GoogleCloudBillingBillingaccountpricesV1betaRateTier>;
 export const GoogleCloudBillingBillingaccountpricesV1betaRateTierList =
   /*@__PURE__*/ S.Array(
     GoogleCloudBillingBillingaccountpricesV1betaRateTier,
@@ -1455,7 +1455,7 @@ export const GoogleCloudBillingSkugroupskusV1betaGeoTaxonomyRegion =
   }) as any as S.Schema<GoogleCloudBillingSkugroupskusV1betaGeoTaxonomyRegion>;
 
 export type GoogleCloudBillingSkugroupskusV1betaGeoTaxonomyRegionList =
-  ReadonlyArray<GoogleCloudBillingSkugroupskusV1betaGeoTaxonomyRegion>;
+  Array<GoogleCloudBillingSkugroupskusV1betaGeoTaxonomyRegion>;
 export const GoogleCloudBillingSkugroupskusV1betaGeoTaxonomyRegionList =
   /*@__PURE__*/ S.Array(
     GoogleCloudBillingSkugroupskusV1betaGeoTaxonomyRegion,
@@ -1543,7 +1543,7 @@ export const GoogleCloudBillingSkugroupskusV1betaTaxonomyCategory =
   }) as any as S.Schema<GoogleCloudBillingSkugroupskusV1betaTaxonomyCategory>;
 
 export type GoogleCloudBillingSkugroupskusV1betaTaxonomyCategoryList =
-  ReadonlyArray<GoogleCloudBillingSkugroupskusV1betaTaxonomyCategory>;
+  Array<GoogleCloudBillingSkugroupskusV1betaTaxonomyCategory>;
 export const GoogleCloudBillingSkugroupskusV1betaTaxonomyCategoryList =
   /*@__PURE__*/ S.Array(
     GoogleCloudBillingSkugroupskusV1betaTaxonomyCategory,
@@ -1635,7 +1635,7 @@ export const GoogleCloudBillingPricesV1betaRateTier = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudBillingPricesV1betaRateTier>;
 
 export type GoogleCloudBillingPricesV1betaRateTierList =
-  ReadonlyArray<GoogleCloudBillingPricesV1betaRateTier>;
+  Array<GoogleCloudBillingPricesV1betaRateTier>;
 export const GoogleCloudBillingPricesV1betaRateTierList = /*@__PURE__*/ S.Array(
   GoogleCloudBillingPricesV1betaRateTier,
 ) as any as S.Schema<GoogleCloudBillingPricesV1betaRateTierList>;
@@ -1759,7 +1759,7 @@ export const ListBillingAccountsServicesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListBillingAccountsServicesRequest>;
 
 export type GoogleCloudBillingBillingaccountservicesV1betaBillingAccountServiceList =
-  ReadonlyArray<GoogleCloudBillingBillingaccountservicesV1betaBillingAccountService>;
+  Array<GoogleCloudBillingBillingaccountservicesV1betaBillingAccountService>;
 export const GoogleCloudBillingBillingaccountservicesV1betaBillingAccountServiceList =
   /*@__PURE__*/ S.Array(
     GoogleCloudBillingBillingaccountservicesV1betaBillingAccountService,
@@ -1810,7 +1810,7 @@ export const ListBillingAccountsSkuGroupsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListBillingAccountsSkuGroupsRequest>;
 
 export type GoogleCloudBillingBillingaccountskugroupsV1betaBillingAccountSkuGroupList =
-  ReadonlyArray<GoogleCloudBillingBillingaccountskugroupsV1betaBillingAccountSkuGroup>;
+  Array<GoogleCloudBillingBillingaccountskugroupsV1betaBillingAccountSkuGroup>;
 export const GoogleCloudBillingBillingaccountskugroupsV1betaBillingAccountSkuGroupList =
   /*@__PURE__*/ S.Array(
     GoogleCloudBillingBillingaccountskugroupsV1betaBillingAccountSkuGroup,
@@ -1862,7 +1862,7 @@ export const ListBillingAccountsSkuGroupsSkusRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListBillingAccountsSkuGroupsSkusRequest>;
 
 export type GoogleCloudBillingBillingaccountskugroupskusV1betaBillingAccountSkuGroupSkuList =
-  ReadonlyArray<GoogleCloudBillingBillingaccountskugroupskusV1betaBillingAccountSkuGroupSku>;
+  Array<GoogleCloudBillingBillingaccountskugroupskusV1betaBillingAccountSkuGroupSku>;
 export const GoogleCloudBillingBillingaccountskugroupskusV1betaBillingAccountSkuGroupSkuList =
   /*@__PURE__*/ S.Array(
     GoogleCloudBillingBillingaccountskugroupskusV1betaBillingAccountSkuGroupSku,
@@ -1916,7 +1916,7 @@ export const ListBillingAccountsSkusRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListBillingAccountsSkusRequest>;
 
 export type GoogleCloudBillingBillingaccountskusV1betaBillingAccountSkuList =
-  ReadonlyArray<GoogleCloudBillingBillingaccountskusV1betaBillingAccountSku>;
+  Array<GoogleCloudBillingBillingaccountskusV1betaBillingAccountSku>;
 export const GoogleCloudBillingBillingaccountskusV1betaBillingAccountSkuList =
   /*@__PURE__*/ S.Array(
     GoogleCloudBillingBillingaccountskusV1betaBillingAccountSku,
@@ -1971,7 +1971,7 @@ export const ListBillingAccountsSkusPricesRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListBillingAccountsSkusPricesRequest>;
 
 export type GoogleCloudBillingBillingaccountpricesV1betaBillingAccountPriceList =
-  ReadonlyArray<GoogleCloudBillingBillingaccountpricesV1betaBillingAccountPrice>;
+  Array<GoogleCloudBillingBillingaccountpricesV1betaBillingAccountPrice>;
 export const GoogleCloudBillingBillingaccountpricesV1betaBillingAccountPriceList =
   /*@__PURE__*/ S.Array(
     GoogleCloudBillingBillingaccountpricesV1betaBillingAccountPrice,
@@ -2019,7 +2019,7 @@ export const ListSkuGroupsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListSkuGroupsRequest>;
 
 export type GoogleCloudBillingSkugroupsV1betaSkuGroupList =
-  ReadonlyArray<GoogleCloudBillingSkugroupsV1betaSkuGroup>;
+  Array<GoogleCloudBillingSkugroupsV1betaSkuGroup>;
 export const GoogleCloudBillingSkugroupsV1betaSkuGroupList =
   /*@__PURE__*/ S.Array(
     GoogleCloudBillingSkugroupsV1betaSkuGroup,
@@ -2067,7 +2067,7 @@ export const ListSkuGroupsSkusRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListSkuGroupsSkusRequest>;
 
 export type GoogleCloudBillingSkugroupskusV1betaSkuGroupSkuList =
-  ReadonlyArray<GoogleCloudBillingSkugroupskusV1betaSkuGroupSku>;
+  Array<GoogleCloudBillingSkugroupskusV1betaSkuGroupSku>;
 export const GoogleCloudBillingSkugroupskusV1betaSkuGroupSkuList =
   /*@__PURE__*/ S.Array(
     GoogleCloudBillingSkugroupskusV1betaSkuGroupSku,
@@ -2120,7 +2120,7 @@ export const ListSkusPricesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListSkusPricesRequest>;
 
 export type GoogleCloudBillingPricesV1betaPriceList =
-  ReadonlyArray<GoogleCloudBillingPricesV1betaPrice>;
+  Array<GoogleCloudBillingPricesV1betaPrice>;
 export const GoogleCloudBillingPricesV1betaPriceList = /*@__PURE__*/ S.Array(
   GoogleCloudBillingPricesV1betaPrice,
 ) as any as S.Schema<GoogleCloudBillingPricesV1betaPriceList>;

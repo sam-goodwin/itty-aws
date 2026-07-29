@@ -45,8 +45,7 @@ export type PropertyItemValueCase3Item = string | number;
 export const PropertyItemValueCase3Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<PropertyItemValueCase3Item>;
 
-export type PropertyItemValueCase3List =
-  ReadonlyArray<PropertyItemValueCase3Item>;
+export type PropertyItemValueCase3List = Array<PropertyItemValueCase3Item>;
 export const PropertyItemValueCase3List = /*@__PURE__*/ S.Array(
   PropertyItemValueCase3Item,
 ) as any as S.Schema<PropertyItemValueCase3List>;
@@ -143,7 +142,7 @@ export const PropertyItem = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PropertyItem" }) as any as S.Schema<PropertyItem>;
 
-export type PropertyValuesList = ReadonlyArray<PropertyItem>;
+export type PropertyValuesList = Array<PropertyItem>;
 export const PropertyValuesList = /*@__PURE__*/ S.Array(
   PropertyItem,
 ) as any as S.Schema<PropertyValuesList>;
@@ -160,17 +159,17 @@ export const Property = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Property" }) as any as S.Schema<Property>;
 
-export type EventsListRequestPropertiesList = ReadonlyArray<Property>;
+export type EventsListRequestPropertiesList = Array<Property>;
 export const EventsListRequestPropertiesList = /*@__PURE__*/ S.Array(
   Property,
 ) as any as S.Schema<EventsListRequestPropertiesList>;
 
-export type EventsListRequestSelectList = ReadonlyArray<string>;
+export type EventsListRequestSelectList = Array<string>;
 export const EventsListRequestSelectList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EventsListRequestSelectList>;
 
-export type EventsListRequestWhereList = ReadonlyArray<string>;
+export type EventsListRequestWhereList = Array<string>;
 export const EventsListRequestWhereList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EventsListRequestWhereList>;
@@ -242,7 +241,7 @@ export const ClickhouseEventPersonMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<ClickhouseEventPersonMap>;
 
-export type EventElementAttrClassList = ReadonlyArray<string>;
+export type EventElementAttrClassList = Array<string>;
 export const EventElementAttrClassList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EventElementAttrClassList>;
@@ -274,7 +273,7 @@ export const EventElement = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "EventElement" }) as any as S.Schema<EventElement>;
 
-export type ClickhouseEventElementsList = ReadonlyArray<EventElement>;
+export type ClickhouseEventElementsList = Array<EventElement>;
 export const ClickhouseEventElementsList = /*@__PURE__*/ S.Array(
   EventElement,
 ) as any as S.Schema<ClickhouseEventElementsList>;
@@ -304,8 +303,7 @@ export const ClickhouseEvent = /*@__PURE__*/ S.suspend(() =>
   identifier: "ClickhouseEvent",
 }) as any as S.Schema<ClickhouseEvent>;
 
-export type PaginatedClickhouseEventListResultsList =
-  ReadonlyArray<ClickhouseEvent>;
+export type PaginatedClickhouseEventListResultsList = Array<ClickhouseEvent>;
 export const PaginatedClickhouseEventListResultsList = /*@__PURE__*/ S.Array(
   ClickhouseEvent,
 ) as any as S.Schema<PaginatedClickhouseEventListResultsList>;

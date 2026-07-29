@@ -23,7 +23,7 @@ export const EnterpriseMccCacheNodesOperationsCreateOrUpdateRequestTagsMap =
   ) as any as S.Schema<EnterpriseMccCacheNodesOperationsCreateOrUpdateRequestTagsMap>;
 
 /** Cache node resource comma separated values of Cidrs. */
-export type CacheNodeEntityInputCidrCsvList = ReadonlyArray<string>;
+export type CacheNodeEntityInputCidrCsvList = Array<string>;
 export const CacheNodeEntityInputCidrCsvList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CacheNodeEntityInputCidrCsvList>;
@@ -121,7 +121,7 @@ export const CacheNodeEntityInput = /*@__PURE__*/ S.suspend(() =>
 
 /** issues list to return the issues as part of the additional cache node properties */
 export type AdditionalCacheNodePropertiesInputCacheNodePropertiesDetailsIssuesListList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const AdditionalCacheNodePropertiesInputCacheNodePropertiesDetailsIssuesListList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -151,7 +151,7 @@ export const CacheNodeDriveConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** Cache node resource drive configurations. */
 export type AdditionalCacheNodePropertiesInputDriveConfigurationList =
-  ReadonlyArray<CacheNodeDriveConfiguration>;
+  Array<CacheNodeDriveConfiguration>;
 export const AdditionalCacheNodePropertiesInputDriveConfigurationList =
   /*@__PURE__*/ S.Array(
     CacheNodeDriveConfiguration,
@@ -392,7 +392,7 @@ export type ProvisioningState =
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** Cache node resource comma separated values of Cidrs. */
-export type CacheNodeEntityCidrCsvList = ReadonlyArray<string>;
+export type CacheNodeEntityCidrCsvList = Array<string>;
 export const CacheNodeEntityCidrCsvList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CacheNodeEntityCidrCsvList>;
@@ -595,14 +595,14 @@ export const CacheNodeEntity = /*@__PURE__*/ S.suspend(() =>
 
 /** issues list to return the issues as part of the additional cache node properties */
 export type AdditionalCacheNodePropertiesCacheNodePropertiesDetailsIssuesListList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const AdditionalCacheNodePropertiesCacheNodePropertiesDetailsIssuesListList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AdditionalCacheNodePropertiesCacheNodePropertiesDetailsIssuesListList>;
 
 /** current cache node issue list. */
-export type AdditionalCacheNodePropertiesIssuesListList = ReadonlyArray<string>;
+export type AdditionalCacheNodePropertiesIssuesListList = Array<string>;
 export const AdditionalCacheNodePropertiesIssuesListList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -705,7 +705,7 @@ export const MccCacheNodeAutoUpdateInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** Cache node resource drive configurations. */
 export type AdditionalCacheNodePropertiesDriveConfigurationList =
-  ReadonlyArray<CacheNodeDriveConfiguration>;
+  Array<CacheNodeDriveConfiguration>;
 export const AdditionalCacheNodePropertiesDriveConfigurationList =
   /*@__PURE__*/ S.Array(
     CacheNodeDriveConfiguration,
@@ -867,7 +867,7 @@ export const AdditionalCacheNodeProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AdditionalCacheNodeProperties>;
 
 /** The error details. */
-export type ErrorDetailDetailsList = ReadonlyArray<ErrorDetail>;
+export type ErrorDetailDetailsList = Array<ErrorDetail>;
 export const ErrorDetailDetailsList = /*@__PURE__*/ S.Array(
   S.suspend(() => ErrorDetail),
 ) as any as S.Schema<ErrorDetailDetailsList>;
@@ -889,7 +889,7 @@ export const ErrorAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ErrorAdditionalInfo>;
 
 /** The error additional info. */
-export type ErrorDetailAdditionalInfoList = ReadonlyArray<ErrorAdditionalInfo>;
+export type ErrorDetailAdditionalInfoList = Array<ErrorAdditionalInfo>;
 export const ErrorDetailAdditionalInfoList = /*@__PURE__*/ S.Array(
   ErrorAdditionalInfo,
 ) as any as S.Schema<ErrorDetailAdditionalInfoList>;
@@ -918,14 +918,14 @@ export const ErrorDetail = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ErrorDetail" }) as any as S.Schema<ErrorDetail>;
 
 /** The error details. */
-export type CacheNodePropertyErrorDetailsList = ReadonlyArray<ErrorDetail>;
+export type CacheNodePropertyErrorDetailsList = Array<ErrorDetail>;
 export const CacheNodePropertyErrorDetailsList = /*@__PURE__*/ S.Array(
   ErrorDetail,
 ) as any as S.Schema<CacheNodePropertyErrorDetailsList>;
 
 /** The error additional info. */
 export type CacheNodePropertyErrorAdditionalInfoList =
-  ReadonlyArray<ErrorAdditionalInfo>;
+  Array<ErrorAdditionalInfo>;
 export const CacheNodePropertyErrorAdditionalInfoList = /*@__PURE__*/ S.Array(
   ErrorAdditionalInfo,
 ) as any as S.Schema<CacheNodePropertyErrorAdditionalInfoList>;
@@ -1168,7 +1168,7 @@ export const EnterpriseMccCacheNodesOperationsGetCacheNodeAutoUpdateHistoryRespo
 
 /** Cache node resource auto update history information. */
 export type MccCacheNodeAutoUpdateHistoryPropertiesAutoUpdateHistoryList =
-  ReadonlyArray<MccCacheNodeAutoUpdateInfo>;
+  Array<MccCacheNodeAutoUpdateInfo>;
 export const MccCacheNodeAutoUpdateHistoryPropertiesAutoUpdateHistoryList =
   /*@__PURE__*/ S.Array(
     MccCacheNodeAutoUpdateInfo,
@@ -1271,7 +1271,7 @@ export const EnterpriseMccCacheNodesOperationsGetCacheNodeInstallDetailsResponse
 
 /** Cache node resource drive configurations. */
 export type CacheNodeInstallPropertiesDriveConfigurationList =
-  ReadonlyArray<CacheNodeDriveConfiguration>;
+  Array<CacheNodeDriveConfiguration>;
 export const CacheNodeInstallPropertiesDriveConfigurationList =
   /*@__PURE__*/ S.Array(
     CacheNodeDriveConfiguration,
@@ -1414,7 +1414,7 @@ export const MccIssue = /*@__PURE__*/ S.suspend(() =>
 
 /** Cache node resource issue details history. */
 export type MccCacheNodeIssueHistoryPropertiesMccIssueHistoryList =
-  ReadonlyArray<MccIssue>;
+  Array<MccIssue>;
 export const MccCacheNodeIssueHistoryPropertiesMccIssueHistoryList =
   /*@__PURE__*/ S.Array(
     MccIssue,
@@ -1516,7 +1516,7 @@ export const EnterpriseMccCacheNodesOperationsGetCacheNodeTlsCertificateHistoryR
 
 /** Cache node resource tls certificate history details. */
 export type MccCacheNodeTlsCertificatePropertiesTlsCertificateHistoryList =
-  ReadonlyArray<MccCacheNodeTlsCertificate>;
+  Array<MccCacheNodeTlsCertificate>;
 export const MccCacheNodeTlsCertificatePropertiesTlsCertificateHistoryList =
   /*@__PURE__*/ S.Array(
     MccCacheNodeTlsCertificate,
@@ -1647,7 +1647,7 @@ export const EnterpriseMccCacheNodeResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The EnterpriseMccCacheNodeResource items on this page */
 export type EnterpriseMccCacheNodeResourceListResultValueList =
-  ReadonlyArray<EnterpriseMccCacheNodeResource>;
+  Array<EnterpriseMccCacheNodeResource>;
 export const EnterpriseMccCacheNodeResourceListResultValueList =
   /*@__PURE__*/ S.Array(
     EnterpriseMccCacheNodeResource,
@@ -2103,14 +2103,14 @@ export const AdditionalCustomerProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AdditionalCustomerProperties>;
 
 /** The error details. */
-export type CustomerPropertyErrorDetailsList = ReadonlyArray<ErrorDetail>;
+export type CustomerPropertyErrorDetailsList = Array<ErrorDetail>;
 export const CustomerPropertyErrorDetailsList = /*@__PURE__*/ S.Array(
   ErrorDetail,
 ) as any as S.Schema<CustomerPropertyErrorDetailsList>;
 
 /** The error additional info. */
 export type CustomerPropertyErrorAdditionalInfoList =
-  ReadonlyArray<ErrorAdditionalInfo>;
+  Array<ErrorAdditionalInfo>;
 export const CustomerPropertyErrorAdditionalInfoList = /*@__PURE__*/ S.Array(
   ErrorAdditionalInfo,
 ) as any as S.Schema<CustomerPropertyErrorAdditionalInfoList>;
@@ -2366,7 +2366,7 @@ export const EnterpriseMccCustomerResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The EnterpriseMccCustomerResource items on this page */
 export type EnterpriseMccCustomerResourceListResultValueList =
-  ReadonlyArray<EnterpriseMccCustomerResource>;
+  Array<EnterpriseMccCustomerResource>;
 export const EnterpriseMccCustomerResourceListResultValueList =
   /*@__PURE__*/ S.Array(
     EnterpriseMccCustomerResource,
@@ -2720,7 +2720,7 @@ export const IspCacheNodesOperationsGetBgpCidrsResponseTagsMap =
   ) as any as S.Schema<IspCacheNodesOperationsGetBgpCidrsResponseTagsMap>;
 
 /** Mcc cache node Bgp Cidr details. */
-export type BgpCidrsConfigurationBgpCidrsList = ReadonlyArray<string>;
+export type BgpCidrsConfigurationBgpCidrsList = Array<string>;
 export const BgpCidrsConfigurationBgpCidrsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BgpCidrsConfigurationBgpCidrsList>;
@@ -3051,7 +3051,7 @@ export const IspCacheNodeResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The IspCacheNodeResource items on this page */
 export type IspCacheNodeResourceListResultValueList =
-  ReadonlyArray<IspCacheNodeResource>;
+  Array<IspCacheNodeResource>;
 export const IspCacheNodeResourceListResultValueList = /*@__PURE__*/ S.Array(
   IspCacheNodeResource,
 ) as any as S.Schema<IspCacheNodeResourceListResultValueList>;
@@ -3395,8 +3395,7 @@ export const IspCustomerResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IspCustomerResource>;
 
 /** The IspCustomerResource items on this page */
-export type IspCustomerResourceListResultValueList =
-  ReadonlyArray<IspCustomerResource>;
+export type IspCustomerResourceListResultValueList = Array<IspCustomerResource>;
 export const IspCustomerResourceListResultValueList = /*@__PURE__*/ S.Array(
   IspCustomerResource,
 ) as any as S.Schema<IspCustomerResourceListResultValueList>;
@@ -3581,7 +3580,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = ReadonlyArray<Operation>;
+export type OperationsListResponseValueList = Array<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;

@@ -90,7 +90,7 @@ export const ActivateCuratorsCuratedPackagesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ActivateCuratorsCuratedPackagesRequest",
 }) as any as S.Schema<ActivateCuratorsCuratedPackagesRequest>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -146,8 +146,9 @@ export type PackageTargetingIncludedDeviceTypesItemEnum =
 export const PackageTargetingIncludedDeviceTypesItemEnum =
   /*@__PURE__*/ S.String;
 
-export type PackageTargetingIncludedDeviceTypesItemEnumList =
-  ReadonlyArray<PackageTargetingIncludedDeviceTypesItemEnum>;
+export type PackageTargetingIncludedDeviceTypesItemEnumList = Array<
+  PackageTargetingIncludedDeviceTypesItemEnum | (string & {})
+>;
 export const PackageTargetingIncludedDeviceTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     PackageTargetingIncludedDeviceTypesItemEnum,
@@ -162,7 +163,7 @@ export const StringTargetingDimensionSelectionTypeEnum = /*@__PURE__*/ S.String;
 /** Generic targeting with string values. */
 export interface StringTargetingDimension {
   /** Required. How the items in this list should be targeted. */
-  selectionType?: StringTargetingDimensionSelectionTypeEnum;
+  selectionType?: StringTargetingDimensionSelectionTypeEnum | (string & {});
   /** Required. The values specified. */
   values?: StringList;
 }
@@ -226,8 +227,9 @@ export type VideoPlcmtTargetingVideoPlcmtTypesItemEnum =
 export const VideoPlcmtTargetingVideoPlcmtTypesItemEnum =
   /*@__PURE__*/ S.String;
 
-export type VideoPlcmtTargetingVideoPlcmtTypesItemEnumList =
-  ReadonlyArray<VideoPlcmtTargetingVideoPlcmtTypesItemEnum>;
+export type VideoPlcmtTargetingVideoPlcmtTypesItemEnumList = Array<
+  VideoPlcmtTargetingVideoPlcmtTypesItemEnum | (string & {})
+>;
 export const VideoPlcmtTargetingVideoPlcmtTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     VideoPlcmtTargetingVideoPlcmtTypesItemEnum,
@@ -236,7 +238,7 @@ export const VideoPlcmtTargetingVideoPlcmtTypesItemEnumList =
 /** Defines targeting criteria based on the video placement type, often corresponding to the IAB OpenRTB 'plcmt' field. */
 export interface VideoPlcmtTargeting {
   /** Required. The selection type for the list of video plcmts. */
-  selectionType?: VideoPlcmtTargetingSelectionTypeEnum;
+  selectionType?: VideoPlcmtTargetingSelectionTypeEnum | (string & {});
   /** Required. The list of targeted video plcmts types. If empty, inventory will be targeted regardless of video plcmt type. */
   videoPlcmtTypes?: VideoPlcmtTargetingVideoPlcmtTypesItemEnumList;
 }
@@ -284,8 +286,9 @@ export type PackageVideoTargetingIncludedPositionTypesItemEnum =
 export const PackageVideoTargetingIncludedPositionTypesItemEnum =
   /*@__PURE__*/ S.String;
 
-export type PackageVideoTargetingIncludedPositionTypesItemEnumList =
-  ReadonlyArray<PackageVideoTargetingIncludedPositionTypesItemEnum>;
+export type PackageVideoTargetingIncludedPositionTypesItemEnumList = Array<
+  PackageVideoTargetingIncludedPositionTypesItemEnum | (string & {})
+>;
 export const PackageVideoTargetingIncludedPositionTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     PackageVideoTargetingIncludedPositionTypesItemEnum,
@@ -299,8 +302,9 @@ export type PackageVideoTargetingIncludedPlaybackMethodsItemEnum =
 export const PackageVideoTargetingIncludedPlaybackMethodsItemEnum =
   /*@__PURE__*/ S.String;
 
-export type PackageVideoTargetingIncludedPlaybackMethodsItemEnumList =
-  ReadonlyArray<PackageVideoTargetingIncludedPlaybackMethodsItemEnum>;
+export type PackageVideoTargetingIncludedPlaybackMethodsItemEnumList = Array<
+  PackageVideoTargetingIncludedPlaybackMethodsItemEnum | (string & {})
+>;
 export const PackageVideoTargetingIncludedPlaybackMethodsItemEnumList =
   /*@__PURE__*/ S.Array(
     PackageVideoTargetingIncludedPlaybackMethodsItemEnum,
@@ -317,8 +321,9 @@ export type PackageVideoTargetingIncludedMimeTypesItemEnum =
 export const PackageVideoTargetingIncludedMimeTypesItemEnum =
   /*@__PURE__*/ S.String;
 
-export type PackageVideoTargetingIncludedMimeTypesItemEnumList =
-  ReadonlyArray<PackageVideoTargetingIncludedMimeTypesItemEnum>;
+export type PackageVideoTargetingIncludedMimeTypesItemEnumList = Array<
+  PackageVideoTargetingIncludedMimeTypesItemEnum | (string & {})
+>;
 export const PackageVideoTargetingIncludedMimeTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     PackageVideoTargetingIncludedMimeTypesItemEnum,
@@ -338,7 +343,9 @@ export interface PackageVideoTargeting {
   /** Optional. The targeted video player size. If unset, inventory will be targeted regardless of video player size. */
   includedPlayerSizeTargeting?: VideoPlayerSizeTargeting;
   /** Optional. The targeted maximum video ad duration. If unset, inventory will be targeted regardless of maximum video ad duration. */
-  includedMaximumAdDurationTargeting?: PackageVideoTargetingIncludedMaximumAdDurationTargetingEnum;
+  includedMaximumAdDurationTargeting?:
+    | PackageVideoTargetingIncludedMaximumAdDurationTargetingEnum
+    | (string & {});
   /** Optional. The targeted video ad position types. If empty, inventory will be targeted regardless of video ad position type. */
   includedPositionTypes?: PackageVideoTargetingIncludedPositionTypesItemEnumList;
   /** Optional. The list of targeted video playback methods. If empty, inventory will be targeted regardless of video playback method. */
@@ -346,7 +353,9 @@ export interface PackageVideoTargeting {
   /** Optional. The list of targeted video mime types using the IANA published MIME type strings (https://www.iana.org/assignments/media-types/media-types.xhtml). If empty, inventory will be targeted regardless of video mime type. */
   includedMimeTypes?: PackageVideoTargetingIncludedMimeTypesItemEnumList;
   /** Optional. The targeted video delivery method. If unset, inventory will be targeted regardless of video delivery method. */
-  includedContentDeliveryMethod?: PackageVideoTargetingIncludedContentDeliveryMethodEnum;
+  includedContentDeliveryMethod?:
+    | PackageVideoTargetingIncludedContentDeliveryMethodEnum
+    | (string & {});
   /** Optional. The targeted minimum predicted completion rate percentage. This value must be a multiple of 10 between 10 and 90 (inclusive). For example, 10 is valid, but 0, 15, and 100 are not. A value of 10 means that the configuration will only match adslots for which we predict at least 10% completion rate. An unset value indicates inventory will be targeted regardless of predicted completion rate. */
   minimumPredictedCompletionRatePercentage?: string;
 }
@@ -423,8 +432,9 @@ export type PackageTargetingIncludedNativeInventoryTypesItemEnum =
 export const PackageTargetingIncludedNativeInventoryTypesItemEnum =
   /*@__PURE__*/ S.String;
 
-export type PackageTargetingIncludedNativeInventoryTypesItemEnumList =
-  ReadonlyArray<PackageTargetingIncludedNativeInventoryTypesItemEnum>;
+export type PackageTargetingIncludedNativeInventoryTypesItemEnumList = Array<
+  PackageTargetingIncludedNativeInventoryTypesItemEnum | (string & {})
+>;
 export const PackageTargetingIncludedNativeInventoryTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     PackageTargetingIncludedNativeInventoryTypesItemEnum,
@@ -445,8 +455,9 @@ export type PackageTargetingIncludedRestrictedCategoriesItemEnum =
 export const PackageTargetingIncludedRestrictedCategoriesItemEnum =
   /*@__PURE__*/ S.String;
 
-export type PackageTargetingIncludedRestrictedCategoriesItemEnumList =
-  ReadonlyArray<PackageTargetingIncludedRestrictedCategoriesItemEnum>;
+export type PackageTargetingIncludedRestrictedCategoriesItemEnumList = Array<
+  PackageTargetingIncludedRestrictedCategoriesItemEnum | (string & {})
+>;
 export const PackageTargetingIncludedRestrictedCategoriesItemEnumList =
   /*@__PURE__*/ S.Array(
     PackageTargetingIncludedRestrictedCategoriesItemEnum,
@@ -466,8 +477,9 @@ export type PackageTargetingIncludedOpenMeasurementTypesItemEnum =
 export const PackageTargetingIncludedOpenMeasurementTypesItemEnum =
   /*@__PURE__*/ S.String;
 
-export type PackageTargetingIncludedOpenMeasurementTypesItemEnumList =
-  ReadonlyArray<PackageTargetingIncludedOpenMeasurementTypesItemEnum>;
+export type PackageTargetingIncludedOpenMeasurementTypesItemEnumList = Array<
+  PackageTargetingIncludedOpenMeasurementTypesItemEnum | (string & {})
+>;
 export const PackageTargetingIncludedOpenMeasurementTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     PackageTargetingIncludedOpenMeasurementTypesItemEnum,
@@ -486,7 +498,7 @@ export interface AdSize {
   /** The height of the ad slot in pixels. This field will be present only when size type is `PIXEL`. */
   height?: string;
   /** The type of the ad slot size. */
-  type?: AdSizeTypeEnum;
+  type?: AdSizeTypeEnum | (string & {});
   /** The width of the ad slot in pixels. This field will be present only when size type is `PIXEL`. */
   width?: string;
 }
@@ -498,7 +510,7 @@ export const AdSize = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AdSize" }) as any as S.Schema<AdSize>;
 
-export type AdSizeList = ReadonlyArray<AdSize>;
+export type AdSizeList = Array<AdSize>;
 export const AdSizeList = /*@__PURE__*/ S.Array(
   AdSize,
 ) as any as S.Schema<AdSizeList>;
@@ -511,7 +523,9 @@ export const PackageTargetingIncludedAuthorizedSellerStatusesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type PackageTargetingIncludedAuthorizedSellerStatusesItemEnumList =
-  ReadonlyArray<PackageTargetingIncludedAuthorizedSellerStatusesItemEnum>;
+  Array<
+    PackageTargetingIncludedAuthorizedSellerStatusesItemEnum | (string & {})
+  >;
 export const PackageTargetingIncludedAuthorizedSellerStatusesItemEnumList =
   /*@__PURE__*/ S.Array(
     PackageTargetingIncludedAuthorizedSellerStatusesItemEnum,
@@ -544,17 +558,21 @@ export interface PackageTargeting {
   /** Optional. The verticals included or excluded as defined in https://developers.google.com/authorized-buyers/rtb/downloads/publisher-verticals. If unset, inventory will be targeted regardless of vertical. */
   verticalTargeting?: CriteriaTargeting;
   /** Optional. The environment to target. If unspecified, all environments are targeted. */
-  includedEnvironment?: PackageTargetingIncludedEnvironmentEnum;
+  includedEnvironment?: PackageTargetingIncludedEnvironmentEnum | (string & {});
   /** Optional. The targeted native inventory types. If empty, inventory will be targeted regardless of native inventory type. */
   includedNativeInventoryTypes?: PackageTargetingIncludedNativeInventoryTypesItemEnumList;
   /** Optional. The geo criteria IDs to be included or excluded as defined in https://storage.googleapis.com/adx-rtb-dictionaries/geo-table.csv. If unset, inventory will be targeted regardless of geo. */
   geoTargeting?: CriteriaTargeting;
   /** Optional. The creative format to target. If unset, all creative markup types are targeted. */
-  includedCreativeFormat?: PackageTargetingIncludedCreativeFormatEnum;
+  includedCreativeFormat?:
+    | PackageTargetingIncludedCreativeFormatEnum
+    | (string & {});
   /** Optional. The list of targeted restricted categories. If empty, inventory will be targeted regardless of restricted categories. */
   includedRestrictedCategories?: PackageTargetingIncludedRestrictedCategoriesItemEnumList;
   /** Optional. The targeted accelerated mobile page type. If unset, inventory will be targeted regardless of AMP status. */
-  includedAcceleratedMobilePageType?: PackageTargetingIncludedAcceleratedMobilePageTypeEnum;
+  includedAcceleratedMobilePageType?:
+    | PackageTargetingIncludedAcceleratedMobilePageTypeEnum
+    | (string & {});
   /** Optional. The list of targeted open measurement types. If empty, inventory will be targeted regardless of Open Measurement support. */
   includedOpenMeasurementTypes?: PackageTargetingIncludedOpenMeasurementTypesItemEnumList;
   /** Optional. The list of ad sizes to target. If unset, inventory will be targeted regardless of ad size. Curated packages supports `PIXEL` and `INTERSTITIAL` ad sizes. */
@@ -564,7 +582,9 @@ export interface PackageTargeting {
   /** Optional. The active data segments to be targeted. If unset, inventory will be targeted regardless of data segments. Format: `curators/{account_id}/dataSegments/{data_segment_id}` */
   includedDataSegments?: StringList;
   /** Optional. The targeted rewarded type. If unset, inventory will be targeted regardless of rewarded type. */
-  includedRewardedType?: PackageTargetingIncludedRewardedTypeEnum;
+  includedRewardedType?:
+    | PackageTargetingIncludedRewardedTypeEnum
+    | (string & {});
 }
 export const PackageTargeting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -624,9 +644,11 @@ export interface CuratedPackage {
   /** Optional. The minimum CPM a buyer has to bid to participate in auctions for inventory in this curated package. Can be used to filter the response of the curatedPackages.list method. */
   floorPriceCpm?: Money;
   /** Output only. The state of the curated package. Can be used to filter the response of the curatedPackages.list method. */
-  state?: CuratedPackageStateEnum;
+  state?: CuratedPackageStateEnum | (string & {});
   /** Optional. Immutable. The visibility of the combined curation package fee and data segment fees (the total curation fee). */
-  curationFeeVisibility?: CuratedPackageCurationFeeVisibilityEnum;
+  curationFeeVisibility?:
+    | CuratedPackageCurationFeeVisibilityEnum
+    | (string & {});
   /** Output only. The timestamp when the curated package was last updated. Can be used to filter the response of the curatedPackages.list method. */
   updateTime?: string;
   /** Identifier. The unique resource name for the curated package. Format: `curators/{accountId}/curatedPackages/{curatedPackageId}` */
@@ -694,7 +716,7 @@ export interface DataSegment {
   /** Immutable. Identifier. The unique identifier for the data segment. Account ID corresponds to the account ID that created the segment. v1alpha format: `buyers/{accountId}/dataSegments/{curatorDataSegmentId}` v1beta format: `curators/{curatorAccountId}/dataSegments/{curatorDataSegmentId}` */
   name?: string;
   /** Output only. The state of the data segment. */
-  state?: DataSegmentStateEnum;
+  state?: DataSegmentStateEnum | (string & {});
   /** Output only. Time the data segment was created. */
   createTime?: string;
   /** Optional. A fixed fee charged per thousand impressions. Once set, the currency code cannot be changed. */
@@ -881,7 +903,7 @@ export const ListCuratorsCuratedPackagesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListCuratorsCuratedPackagesRequest",
 }) as any as S.Schema<ListCuratorsCuratedPackagesRequest>;
 
-export type CuratedPackageList = ReadonlyArray<CuratedPackage>;
+export type CuratedPackageList = Array<CuratedPackage>;
 export const CuratedPackageList = /*@__PURE__*/ S.Array(
   CuratedPackage,
 ) as any as S.Schema<CuratedPackageList>;
@@ -926,7 +948,7 @@ export const ListCuratorsDataSegmentsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListCuratorsDataSegmentsRequest",
 }) as any as S.Schema<ListCuratorsDataSegmentsRequest>;
 
-export type DataSegmentList = ReadonlyArray<DataSegment>;
+export type DataSegmentList = Array<DataSegment>;
 export const DataSegmentList = /*@__PURE__*/ S.Array(
   DataSegment,
 ) as any as S.Schema<DataSegmentList>;
@@ -991,7 +1013,7 @@ export const MediaPlanner = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MediaPlanner" }) as any as S.Schema<MediaPlanner>;
 
-export type MediaPlannerList = ReadonlyArray<MediaPlanner>;
+export type MediaPlannerList = Array<MediaPlanner>;
 export const MediaPlannerList = /*@__PURE__*/ S.Array(
   MediaPlanner,
 ) as any as S.Schema<MediaPlannerList>;

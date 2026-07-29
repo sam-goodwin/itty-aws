@@ -138,7 +138,7 @@ export const EncryptionConfigurationType = /*@__PURE__*/ S.String;
 
 export type KmsKeyId = string;
 export interface EncryptionConfiguration {
-  type?: EncryptionConfigurationType;
+  type?: EncryptionConfigurationType | (string & {});
   kmsKeyId?: string;
 }
 export const EncryptionConfiguration = /*@__PURE__*/ S.suspend(() =>

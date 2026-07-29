@@ -153,7 +153,7 @@ export const ItemLevelIssue = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ItemLevelIssue" }) as any as S.Schema<ItemLevelIssue>;
 
-export type ItemLevelIssueList = ReadonlyArray<ItemLevelIssue>;
+export type ItemLevelIssueList = Array<ItemLevelIssue>;
 export const ItemLevelIssueList = /*@__PURE__*/ S.Array(
   ItemLevelIssue,
 ) as any as S.Schema<ItemLevelIssueList>;
@@ -207,7 +207,7 @@ export const AggregateProductStatus = /*@__PURE__*/ S.suspend(() =>
   identifier: "AggregateProductStatus",
 }) as any as S.Schema<AggregateProductStatus>;
 
-export type AggregateProductStatusList = ReadonlyArray<AggregateProductStatus>;
+export type AggregateProductStatusList = Array<AggregateProductStatus>;
 export const AggregateProductStatusList = /*@__PURE__*/ S.Array(
   AggregateProductStatus,
 ) as any as S.Schema<AggregateProductStatusList>;
@@ -311,12 +311,12 @@ export const Region = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Region" }) as any as S.Schema<Region>;
 
-export type RegionList = ReadonlyArray<Region>;
+export type RegionList = Array<Region>;
 export const RegionList = /*@__PURE__*/ S.Array(
   Region,
 ) as any as S.Schema<RegionList>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -335,7 +335,7 @@ export const Breakdown = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Breakdown" }) as any as S.Schema<Breakdown>;
 
-export type BreakdownList = ReadonlyArray<Breakdown>;
+export type BreakdownList = Array<Breakdown>;
 export const BreakdownList = /*@__PURE__*/ S.Array(
   Breakdown,
 ) as any as S.Schema<BreakdownList>;
@@ -525,7 +525,7 @@ export const ChoiceInputOption = /*@__PURE__*/ S.suspend(() =>
   identifier: "ChoiceInputOption",
 }) as any as S.Schema<ChoiceInputOption>;
 
-export type ChoiceInputOptionList = ReadonlyArray<ChoiceInputOption>;
+export type ChoiceInputOptionList = Array<ChoiceInputOption>;
 export const ChoiceInputOptionList = /*@__PURE__*/ S.Array(
   ChoiceInputOption,
 ) as any as S.Schema<ChoiceInputOptionList>;
@@ -567,7 +567,7 @@ export const InputField = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "InputField" }) as any as S.Schema<InputField>;
 
-export type InputFieldList = ReadonlyArray<InputField>;
+export type InputFieldList = Array<InputField>;
 export const InputFieldList = /*@__PURE__*/ S.Array(
   InputField,
 ) as any as S.Schema<InputFieldList>;
@@ -601,7 +601,7 @@ export const ActionFlow = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ActionFlow" }) as any as S.Schema<ActionFlow>;
 
-export type ActionFlowList = ReadonlyArray<ActionFlow>;
+export type ActionFlowList = Array<ActionFlow>;
 export const ActionFlowList = /*@__PURE__*/ S.Array(
   ActionFlow,
 ) as any as S.Schema<ActionFlowList>;
@@ -639,7 +639,7 @@ export const Reason = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Reason" }) as any as S.Schema<Reason>;
 
-export type ReasonList = ReadonlyArray<Reason>;
+export type ReasonList = Array<Reason>;
 export const ReasonList = /*@__PURE__*/ S.Array(
   Reason,
 ) as any as S.Schema<ReasonList>;
@@ -670,7 +670,7 @@ export const Action = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Action" }) as any as S.Schema<Action>;
 
-export type ActionList = ReadonlyArray<Action>;
+export type ActionList = Array<Action>;
 export const ActionList = /*@__PURE__*/ S.Array(
   Action,
 ) as any as S.Schema<ActionList>;
@@ -698,7 +698,7 @@ export const RenderedIssue = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "RenderedIssue" }) as any as S.Schema<RenderedIssue>;
 
-export type RenderedIssueList = ReadonlyArray<RenderedIssue>;
+export type RenderedIssueList = Array<RenderedIssue>;
 export const RenderedIssueList = /*@__PURE__*/ S.Array(
   RenderedIssue,
 ) as any as S.Schema<RenderedIssueList>;
@@ -814,7 +814,7 @@ export const InputValue = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "InputValue" }) as any as S.Schema<InputValue>;
 
-export type InputValueList = ReadonlyArray<InputValue>;
+export type InputValueList = Array<InputValue>;
 export const InputValueList = /*@__PURE__*/ S.Array(
   InputValue,
 ) as any as S.Schema<InputValueList>;

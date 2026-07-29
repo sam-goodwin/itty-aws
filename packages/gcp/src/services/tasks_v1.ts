@@ -241,7 +241,7 @@ export interface AssignmentInfo {
   /** Output only. An absolute link to the original task in the surface of assignment (Docs, Chat spaces, etc.). */
   linkToTask?: string;
   /** Output only. The type of surface this assigned task originates from. Currently limited to DOCUMENT or SPACE. */
-  surfaceType?: AssignmentInfoSurfaceTypeEnum;
+  surfaceType?: AssignmentInfoSurfaceTypeEnum | (string & {});
   /** Output only. Information about the Drive file where this task originates from. Currently, the Drive file can only be a document. This field is read-only. */
   driveResourceInfo?: DriveResourceInfo;
   /** Output only. Information about the Chat Space where this task originates from. This field is read-only. */
@@ -272,7 +272,7 @@ export const TaskLinksItem = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TaskLinksItem" }) as any as S.Schema<TaskLinksItem>;
 
-export type TaskLinksItemList = ReadonlyArray<TaskLinksItem>;
+export type TaskLinksItemList = Array<TaskLinksItem>;
 export const TaskLinksItemList = /*@__PURE__*/ S.Array(
   TaskLinksItem,
 ) as any as S.Schema<TaskLinksItemList>;
@@ -401,7 +401,7 @@ export const ListTasklistsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListTasklistsRequest",
 }) as any as S.Schema<ListTasklistsRequest>;
 
-export type TaskListList = ReadonlyArray<TaskList>;
+export type TaskListList = Array<TaskList>;
 export const TaskListList = /*@__PURE__*/ S.Array(
   TaskList,
 ) as any as S.Schema<TaskListList>;
@@ -476,7 +476,7 @@ export const ListTasksRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListTasksRequest",
 }) as any as S.Schema<ListTasksRequest>;
 
-export type TaskList_ = ReadonlyArray<Task>;
+export type TaskList_ = Array<Task>;
 export const TaskList_ = /*@__PURE__*/ S.Array(
   Task,
 ) as any as S.Schema<TaskList_>;

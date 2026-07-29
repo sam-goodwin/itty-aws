@@ -720,7 +720,7 @@ export const HostnameCertificatesListResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HostnameCertificatesListResultItem>;
 
 export type HostnameCertificatesListResultList =
-  ReadonlyArray<HostnameCertificatesListResultItem>;
+  Array<HostnameCertificatesListResultItem>;
 export const HostnameCertificatesListResultList = /*@__PURE__*/ S.Array(
   HostnameCertificatesListResultItem,
 ) as any as S.Schema<HostnameCertificatesListResultList>;
@@ -789,7 +789,7 @@ export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ListResultItem" }) as any as S.Schema<ListResultItem>;
 
-export type ListResultList = ReadonlyArray<ListResultItem>;
+export type ListResultList = Array<ListResultItem>;
 export const ListResultList = /*@__PURE__*/ S.Array(
   ListResultItem,
 ) as any as S.Schema<ListResultList>;
@@ -828,7 +828,7 @@ export const HostnamesUpdateRequestConfigItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HostnamesUpdateRequestConfigItem>;
 
 export type HostnamesUpdateRequestConfigList =
-  ReadonlyArray<HostnamesUpdateRequestConfigItem>;
+  Array<HostnamesUpdateRequestConfigItem>;
 export const HostnamesUpdateRequestConfigList = /*@__PURE__*/ S.Array(
   HostnamesUpdateRequestConfigItem,
 ) as any as S.Schema<HostnamesUpdateRequestConfigList>;
@@ -882,8 +882,7 @@ export const HostnamesUpdateResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "HostnamesUpdateResultItem",
 }) as any as S.Schema<HostnamesUpdateResultItem>;
 
-export type HostnamesUpdateResultList =
-  ReadonlyArray<HostnamesUpdateResultItem>;
+export type HostnamesUpdateResultList = Array<HostnamesUpdateResultItem>;
 export const HostnamesUpdateResultList = /*@__PURE__*/ S.Array(
   HostnamesUpdateResultItem,
 ) as any as S.Schema<HostnamesUpdateResultList>;
@@ -1119,7 +1118,7 @@ export const ZoneCertificatesListResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ZoneCertificatesListResultItem>;
 
 export type ZoneCertificatesListResultList =
-  ReadonlyArray<ZoneCertificatesListResultItem>;
+  Array<ZoneCertificatesListResultItem>;
 export const ZoneCertificatesListResultList = /*@__PURE__*/ S.Array(
   ZoneCertificatesListResultItem,
 ) as any as S.Schema<ZoneCertificatesListResultList>;

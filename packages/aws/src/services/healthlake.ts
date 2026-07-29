@@ -124,7 +124,7 @@ export const CmkType = /*@__PURE__*/ S.String;
 
 export type EncryptionKeyID = string;
 export interface KmsEncryptionConfig {
-  CmkType: CmkType;
+  CmkType: CmkType | (string & {});
   KmsKeyId?: string;
 }
 export const KmsEncryptionConfig = /*@__PURE__*/ S.suspend(() =>
@@ -144,7 +144,7 @@ export type PreloadDataType = "SYNTHEA";
 export const PreloadDataType = /*@__PURE__*/ S.String;
 
 export interface PreloadDataConfig {
-  PreloadDataType: PreloadDataType;
+  PreloadDataType: PreloadDataType | (string & {});
 }
 export const PreloadDataConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ PreloadDataType: PreloadDataType }),
@@ -172,7 +172,7 @@ export const AuthorizationStrategy = /*@__PURE__*/ S.String;
 export type ConfigurationMetadata = string;
 export type LambdaArn = string;
 export interface IdentityProviderConfiguration {
-  AuthorizationStrategy: AuthorizationStrategy;
+  AuthorizationStrategy: AuthorizationStrategy | (string & {});
   FineGrainedAuthorizationEnabled?: boolean;
   Metadata?: string;
   IdpLambdaArn?: string;
@@ -197,7 +197,7 @@ export type AnalyticsStatus =
 export const AnalyticsStatus = /*@__PURE__*/ S.String;
 
 export interface AnalyticsConfiguration {
-  Status?: AnalyticsStatus;
+  Status?: AnalyticsStatus | (string & {});
 }
 export const AnalyticsConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Status: S.optional(AnalyticsStatus) }),
@@ -208,7 +208,7 @@ export type NlpStatus = "ENABLED" | "DISABLED" | "ENABLING" | "DISABLING";
 export const NlpStatus = /*@__PURE__*/ S.String;
 
 export interface NlpConfiguration {
-  Status?: NlpStatus;
+  Status?: NlpStatus | (string & {});
 }
 export const NlpConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Status: S.optional(NlpStatus) }),

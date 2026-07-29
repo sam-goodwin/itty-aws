@@ -71,7 +71,7 @@ export type GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentIpConfigurat
 export const GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentIpConfigurationEnum =
   /*@__PURE__*/ S.String;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -92,7 +92,9 @@ export interface GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironment {
   /** The machine type to use for the job. Defaults to the value from the template if not specified. */
   machineType?: string;
   /** Configuration for VM IPs. */
-  ipConfiguration?: GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentIpConfigurationEnum;
+  ipConfiguration?:
+    | GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentIpConfigurationEnum
+    | (string & {});
   /** Additional user labels to be specified for the job. Keys and values must follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions). An object containing a list of key/value pairs. Example: `{ "name": "wrench", "mass": "1kg", "count": "3" }`. */
   additionalUserLabels?: StringMap;
   /** Whether to enable Streaming Engine for the job. */
@@ -108,7 +110,9 @@ export interface GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironment {
   /** Network to which VMs will be assigned. If empty or unspecified, the service will use the network "default". */
   network?: string;
   /** Set FlexRS goal for the job. https://cloud.google.com/dataflow/docs/guides/flexrs */
-  flexrsGoal?: GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentFlexrsGoalEnum;
+  flexrsGoal?:
+    | GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentFlexrsGoalEnum
+    | (string & {});
   /** The email address of the service account to run the job as. */
   serviceAccountEmail?: string;
   /** Subnetwork to which VMs will be assigned, if desired. You can specify a subnetwork using either a complete URL or an abbreviated path. Expected to be of the form "https://www.googleapis.com/compute/v1/projects/HOST_PROJECT_ID/regions/REGION/subnetworks/SUBNETWORK" or "regions/REGION/subnetworks/SUBNETWORK". If the subnetwork is located in a Shared VPC network, you must use the complete URL. */
@@ -219,7 +223,9 @@ export interface GoogleCloudDatapipelinesV1RuntimeEnvironment {
   /** The Compute Engine [availability zone](https://cloud.google.com/compute/docs/regions-zones/regions-zones) for launching worker instances to run your pipeline. In the future, worker_zone will take precedence. */
   zone?: string;
   /** Configuration for VM IPs. */
-  ipConfiguration?: GoogleCloudDatapipelinesV1RuntimeEnvironmentIpConfigurationEnum;
+  ipConfiguration?:
+    | GoogleCloudDatapipelinesV1RuntimeEnvironmentIpConfigurationEnum
+    | (string & {});
   /** The machine type to use for the job. Defaults to the value from the template if not specified. */
   machineType?: string;
   /** Additional user labels to be specified for the job. Keys and values should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page. An object containing a list of key/value pairs. Example: { "name": "wrench", "mass": "1kg", "count": "3" }. */
@@ -401,11 +407,11 @@ export interface GoogleCloudDatapipelinesV1Pipeline {
   /** Output only. Number of jobs. */
   jobCount?: number;
   /** Required. The state of the pipeline. When the pipeline is created, the state is set to 'PIPELINE_STATE_ACTIVE' by default. State changes can be requested by setting the state to stopping, paused, or resuming. State cannot be changed through UpdatePipeline requests. */
-  state?: GoogleCloudDatapipelinesV1PipelineStateEnum;
+  state?: GoogleCloudDatapipelinesV1PipelineStateEnum | (string & {});
   /** Output only. Immutable. The timestamp when the pipeline was last modified. Set by the Data Pipelines service. */
   lastUpdateTime?: string;
   /** Required. The type of the pipeline. This field affects the scheduling of the pipeline and the type of metrics to show for the pipeline. */
-  type?: GoogleCloudDatapipelinesV1PipelineTypeEnum;
+  type?: GoogleCloudDatapipelinesV1PipelineTypeEnum | (string & {});
 }
 export const GoogleCloudDatapipelinesV1Pipeline = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -522,7 +528,7 @@ export const ListProjectsLocationsPipelinesRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListProjectsLocationsPipelinesRequest>;
 
 export type GoogleCloudDatapipelinesV1PipelineList =
-  ReadonlyArray<GoogleCloudDatapipelinesV1Pipeline>;
+  Array<GoogleCloudDatapipelinesV1Pipeline>;
 export const GoogleCloudDatapipelinesV1PipelineList = /*@__PURE__*/ S.Array(
   GoogleCloudDatapipelinesV1Pipeline,
 ) as any as S.Schema<GoogleCloudDatapipelinesV1PipelineList>;
@@ -575,7 +581,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -699,7 +705,7 @@ export const GoogleCloudDatapipelinesV1Job = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudDatapipelinesV1Job>;
 
 export type GoogleCloudDatapipelinesV1JobList =
-  ReadonlyArray<GoogleCloudDatapipelinesV1Job>;
+  Array<GoogleCloudDatapipelinesV1Job>;
 export const GoogleCloudDatapipelinesV1JobList = /*@__PURE__*/ S.Array(
   GoogleCloudDatapipelinesV1Job,
 ) as any as S.Schema<GoogleCloudDatapipelinesV1JobList>;

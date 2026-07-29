@@ -137,13 +137,16 @@ export const NetworkProtocol = /*@__PURE__*/ S.String;
 export type ComputeResourceType = "MicroVm";
 export const ComputeResourceType = /*@__PURE__*/ S.String;
 
-export type AssociatedComputeResourceTypesList = ComputeResourceType[];
+export type AssociatedComputeResourceTypesList = (
+  | ComputeResourceType
+  | (string & {})
+)[];
 export const AssociatedComputeResourceTypesList =
   /*@__PURE__*/ S.Array(ComputeResourceType);
 export interface NetworkConnectorVpcEgressConfiguration {
   SubnetIds?: string[];
   SecurityGroupIds?: string[];
-  NetworkProtocol?: NetworkProtocol;
+  NetworkProtocol?: NetworkProtocol | (string & {});
   AssociatedComputeResourceTypes?: ComputeResourceType[];
 }
 export const NetworkConnectorVpcEgressConfiguration = /*@__PURE__*/ S.suspend(

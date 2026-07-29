@@ -150,7 +150,7 @@ export const MapType = /*@__PURE__*/ S.String;
 export interface HomeDirectoryMapEntry {
   Entry: string;
   Target: string;
-  Type?: MapType;
+  Type?: MapType | (string & {});
 }
 export const HomeDirectoryMapEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Entry: S.String, Target: S.String, Type: S.optional(MapType) }),
@@ -346,13 +346,13 @@ export interface As2ConnectorConfig {
   LocalProfileId?: string;
   PartnerProfileId?: string;
   MessageSubject?: string | redacted.Redacted<string>;
-  Compression?: CompressionEnum;
-  EncryptionAlgorithm?: EncryptionAlg;
-  SigningAlgorithm?: SigningAlg;
-  MdnSigningAlgorithm?: MdnSigningAlg;
-  MdnResponse?: MdnResponse;
+  Compression?: CompressionEnum | (string & {});
+  EncryptionAlgorithm?: EncryptionAlg | (string & {});
+  SigningAlgorithm?: SigningAlg | (string & {});
+  MdnSigningAlgorithm?: MdnSigningAlg | (string & {});
+  MdnResponse?: MdnResponse | (string & {});
   BasicAuthSecretId?: string;
-  PreserveContentType?: PreserveContentType;
+  PreserveContentType?: PreserveContentType | (string & {});
   AsyncMdnConfig?: As2AsyncMdnConnectorConfig;
 }
 export const As2ConnectorConfig = /*@__PURE__*/ S.suspend(() =>
@@ -535,7 +535,7 @@ export interface IdentityProviderDetails {
   InvocationRole?: string;
   DirectoryId?: string;
   Function?: string;
-  SftpAuthenticationMethods?: SftpAuthenticationMethods;
+  SftpAuthenticationMethods?: SftpAuthenticationMethods | (string & {});
 }
 export const IdentityProviderDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -561,7 +561,7 @@ export type PreAuthenticationLoginBanner = string;
 export type Protocol = "SFTP" | "FTP" | "FTPS" | "AS2";
 export const Protocol = /*@__PURE__*/ S.String;
 
-export type Protocols = Protocol[];
+export type Protocols = (Protocol | (string & {}))[];
 export const Protocols = /*@__PURE__*/ S.Array(Protocol);
 export type PassiveIp = string;
 export type TlsSessionResumptionMode = "DISABLED" | "ENABLED" | "ENFORCED";
@@ -573,12 +573,12 @@ export const SetStatOption = /*@__PURE__*/ S.String;
 export type As2Transport = "HTTP";
 export const As2Transport = /*@__PURE__*/ S.String;
 
-export type As2Transports = As2Transport[];
+export type As2Transports = (As2Transport | (string & {}))[];
 export const As2Transports = /*@__PURE__*/ S.Array(As2Transport);
 export interface ProtocolDetails {
   PassiveIp?: string;
-  TlsSessionResumptionMode?: TlsSessionResumptionMode;
-  SetStatOption?: SetStatOption;
+  TlsSessionResumptionMode?: TlsSessionResumptionMode | (string & {});
+  SetStatOption?: SetStatOption | (string & {});
   As2Transports?: As2Transport[];
 }
 export const ProtocolDetails = /*@__PURE__*/ S.suspend(() =>
@@ -624,7 +624,7 @@ export type DirectoryListingOptimization = "ENABLED" | "DISABLED";
 export const DirectoryListingOptimization = /*@__PURE__*/ S.String;
 
 export interface S3StorageOptions {
-  DirectoryListingOptimization?: DirectoryListingOptimization;
+  DirectoryListingOptimization?: DirectoryListingOptimization | (string & {});
 }
 export const S3StorageOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -863,7 +863,7 @@ export type SourceFileLocation = string;
 export interface CopyStepDetails {
   Name?: string;
   DestinationFileLocation?: InputFileLocation;
-  OverwriteExisting?: OverwriteExisting;
+  OverwriteExisting?: OverwriteExisting | (string & {});
   SourceFileLocation?: string;
 }
 export const CopyStepDetails = /*@__PURE__*/ S.suspend(() =>
@@ -934,9 +934,9 @@ export const EncryptionType = /*@__PURE__*/ S.String;
 
 export interface DecryptStepDetails {
   Name?: string;
-  Type: EncryptionType;
+  Type: EncryptionType | (string & {});
   SourceFileLocation?: string;
-  OverwriteExisting?: OverwriteExisting;
+  OverwriteExisting?: OverwriteExisting | (string & {});
   DestinationFileLocation: InputFileLocation;
 }
 export const DecryptStepDetails = /*@__PURE__*/ S.suspend(() =>
@@ -951,7 +951,7 @@ export const DecryptStepDetails = /*@__PURE__*/ S.suspend(() =>
   identifier: "DecryptStepDetails",
 }) as any as S.Schema<DecryptStepDetails>;
 export interface WorkflowStep {
-  Type?: WorkflowStepType;
+  Type?: WorkflowStepType | (string & {});
   CopyStepDetails?: CopyStepDetails;
   CustomStepDetails?: CustomStepDetails;
   DeleteStepDetails?: DeleteStepDetails;

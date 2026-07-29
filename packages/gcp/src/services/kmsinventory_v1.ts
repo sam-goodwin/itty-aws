@@ -101,7 +101,7 @@ export const GoogleCloudKmsInventoryV1Warning = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudKmsInventoryV1Warning>;
 
 export type GoogleCloudKmsInventoryV1WarningList =
-  ReadonlyArray<GoogleCloudKmsInventoryV1Warning>;
+  Array<GoogleCloudKmsInventoryV1Warning>;
 export const GoogleCloudKmsInventoryV1WarningList = /*@__PURE__*/ S.Array(
   GoogleCloudKmsInventoryV1Warning,
 ) as any as S.Schema<GoogleCloudKmsInventoryV1WarningList>;
@@ -179,7 +179,7 @@ export const GoogleCloudKmsV1KeyAccessJustificationsPolicyAllowedAccessReasonsIt
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudKmsV1KeyAccessJustificationsPolicyAllowedAccessReasonsItemEnumList =
-  ReadonlyArray<GoogleCloudKmsV1KeyAccessJustificationsPolicyAllowedAccessReasonsItemEnum>;
+  Array<GoogleCloudKmsV1KeyAccessJustificationsPolicyAllowedAccessReasonsItemEnum>;
 export const GoogleCloudKmsV1KeyAccessJustificationsPolicyAllowedAccessReasonsItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleCloudKmsV1KeyAccessJustificationsPolicyAllowedAccessReasonsItemEnum,
@@ -201,7 +201,7 @@ export const GoogleCloudKmsV1KeyAccessJustificationsPolicy =
     identifier: "GoogleCloudKmsV1KeyAccessJustificationsPolicy",
   }) as any as S.Schema<GoogleCloudKmsV1KeyAccessJustificationsPolicy>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -561,8 +561,7 @@ export const GoogleCloudKmsV1CryptoKey = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleCloudKmsV1CryptoKey",
 }) as any as S.Schema<GoogleCloudKmsV1CryptoKey>;
 
-export type GoogleCloudKmsV1CryptoKeyList =
-  ReadonlyArray<GoogleCloudKmsV1CryptoKey>;
+export type GoogleCloudKmsV1CryptoKeyList = Array<GoogleCloudKmsV1CryptoKey>;
 export const GoogleCloudKmsV1CryptoKeyList = /*@__PURE__*/ S.Array(
   GoogleCloudKmsV1CryptoKey,
 ) as any as S.Schema<GoogleCloudKmsV1CryptoKeyList>;
@@ -657,7 +656,7 @@ export const GoogleCloudKmsInventoryV1ProtectedResource =
   }) as any as S.Schema<GoogleCloudKmsInventoryV1ProtectedResource>;
 
 export type GoogleCloudKmsInventoryV1ProtectedResourceList =
-  ReadonlyArray<GoogleCloudKmsInventoryV1ProtectedResource>;
+  Array<GoogleCloudKmsInventoryV1ProtectedResource>;
 export const GoogleCloudKmsInventoryV1ProtectedResourceList =
   /*@__PURE__*/ S.Array(
     GoogleCloudKmsInventoryV1ProtectedResource,

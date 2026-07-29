@@ -86,7 +86,7 @@ export const PkixPublicKeySignatureAlgorithmEnum = /*@__PURE__*/ S.String;
 /** A public key in the PkixPublicKey [format](https://tools.ietf.org/html/rfc5280#section-4.1.2.7). Public keys of this type are typically textually encoded using the PEM format. */
 export interface PkixPublicKey {
   /** The signature algorithm used to verify a message against a signature using this key. These signature algorithm must match the structure and any object identifiers encoded in `public_key_pem` (i.e. this algorithm must match that of the public key). */
-  signatureAlgorithm?: PkixPublicKeySignatureAlgorithmEnum;
+  signatureAlgorithm?: PkixPublicKeySignatureAlgorithmEnum | (string & {});
   /** Optional. The ID of this public key. Signatures verified by Binary Authorization must include the ID of the public key that can be used to verify them. The ID must match exactly contents of the `key_id` field exactly. The ID may be explicitly provided by the caller, but it MUST be a valid RFC3986 URI. If `key_id` is left blank and this `PkixPublicKey` is not used in the context of a wrapper (see next paragraph), a default key ID will be computed based on the digest of the DER encoding of the public key. If this `PkixPublicKey` is used in the context of a wrapper that has its own notion of key ID (e.g. `AttestorPublicKey`), then this field can either match that value exactly, or be left blank, in which case it behaves exactly as though it is equal to that wrapper value. */
   keyId?: string;
   /** A PEM-encoded public key, as described in https://tools.ietf.org/html/rfc7468#section-13 */
@@ -122,7 +122,7 @@ export const AttestorPublicKey = /*@__PURE__*/ S.suspend(() =>
   identifier: "AttestorPublicKey",
 }) as any as S.Schema<AttestorPublicKey>;
 
-export type AttestorPublicKeyList = ReadonlyArray<AttestorPublicKey>;
+export type AttestorPublicKeyList = Array<AttestorPublicKey>;
 export const AttestorPublicKeyList = /*@__PURE__*/ S.Array(
   AttestorPublicKey,
 ) as any as S.Schema<AttestorPublicKeyList>;
@@ -193,7 +193,7 @@ export const CreateProjectsAttestorsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateProjectsAttestorsRequest",
 }) as any as S.Schema<CreateProjectsAttestorsRequest>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -236,7 +236,7 @@ export const SigstorePublicKey = /*@__PURE__*/ S.suspend(() =>
   identifier: "SigstorePublicKey",
 }) as any as S.Schema<SigstorePublicKey>;
 
-export type SigstorePublicKeyList = ReadonlyArray<SigstorePublicKey>;
+export type SigstorePublicKeyList = Array<SigstorePublicKey>;
 export const SigstorePublicKeyList = /*@__PURE__*/ S.Array(
   SigstorePublicKey,
 ) as any as S.Schema<SigstorePublicKeyList>;
@@ -270,7 +270,7 @@ export const SigstoreAuthority = /*@__PURE__*/ S.suspend(() =>
   identifier: "SigstoreAuthority",
 }) as any as S.Schema<SigstoreAuthority>;
 
-export type SigstoreAuthorityList = ReadonlyArray<SigstoreAuthority>;
+export type SigstoreAuthorityList = Array<SigstoreAuthority>;
 export const SigstoreAuthorityList = /*@__PURE__*/ S.Array(
   SigstoreAuthority,
 ) as any as S.Schema<SigstoreAuthorityList>;
@@ -288,7 +288,7 @@ export const SigstoreSignatureCheck = /*@__PURE__*/ S.suspend(() =>
   identifier: "SigstoreSignatureCheck",
 }) as any as S.Schema<SigstoreSignatureCheck>;
 
-export type PkixPublicKeyList = ReadonlyArray<PkixPublicKey>;
+export type PkixPublicKeyList = Array<PkixPublicKey>;
 export const PkixPublicKeyList = /*@__PURE__*/ S.Array(
   PkixPublicKey,
 ) as any as S.Schema<PkixPublicKeyList>;
@@ -322,8 +322,7 @@ export const AttestationAuthenticator = /*@__PURE__*/ S.suspend(() =>
   identifier: "AttestationAuthenticator",
 }) as any as S.Schema<AttestationAuthenticator>;
 
-export type AttestationAuthenticatorList =
-  ReadonlyArray<AttestationAuthenticator>;
+export type AttestationAuthenticatorList = Array<AttestationAuthenticator>;
 export const AttestationAuthenticatorList = /*@__PURE__*/ S.Array(
   AttestationAuthenticator,
 ) as any as S.Schema<AttestationAuthenticatorList>;
@@ -380,7 +379,7 @@ export interface VerificationRule {
   /** List of trusted source code repository URL patterns. These patterns match the full repository URL without its scheme (e.g. `https://`). The patterns must not include schemes. For example, the pattern `source.cloud.google.com/my-project/my-repo-name` matches the following URLs: - `source.cloud.google.com/my-project/my-repo-name` - `git+ssh://source.cloud.google.com/my-project/my-repo-name` - `https://source.cloud.google.com/my-project/my-repo-name` A pattern matches a URL either exactly or with `*` wildcards. `*` can be used in only two ways: 1. trailing `*` after hosturi/ to match varying endings; 2. trailing `**` after hosturi/ to match `/` as well. `*` and `**` can only be used as wildcards and can only occur at the end of the pattern after a `/`. (So it's not possible to match a URL that contains literal `*`.) For example: - `github.com/my-project/my-repo` is valid to match a single repo - `github.com/my-project/*` will match all direct repos in `my-project` - `github.com/**` matches all repos in GitHub */
   trustedSourceRepoPatterns?: StringList;
   /** Each verification rule is used for evaluation against provenances generated by a specific builder (group). For some of the builders, such as the Google Cloud Build, users don't need to explicitly specify their roots of trust in the policy since the evaluation service can automatically fetch them based on the builder (group). */
-  trustedBuilder?: VerificationRuleTrustedBuilderEnum;
+  trustedBuilder?: VerificationRuleTrustedBuilderEnum | (string & {});
   /** Specifies where to fetch the provenances attestations generated by the builder (group). */
   attestationSource?: AttestationSource;
   /** Optional. A CEL expression for specifying custom constraints on the provenance payload. This can be used when users want to specify expectations on provenance fields that are not covered by the general check. For example, users can use this field to require that certain parameters should never be used during the build process. */
@@ -400,7 +399,7 @@ export const VerificationRule = /*@__PURE__*/ S.suspend(() =>
   identifier: "VerificationRule",
 }) as any as S.Schema<VerificationRule>;
 
-export type VerificationRuleList = ReadonlyArray<VerificationRule>;
+export type VerificationRuleList = Array<VerificationRule>;
 export const VerificationRuleList = /*@__PURE__*/ S.Array(
   VerificationRule,
 ) as any as S.Schema<VerificationRuleList>;
@@ -456,11 +455,15 @@ export const VulnerabilityCheckMaximumFixableSeverityEnum =
 /** An image vulnerability check, which rejects images that violate the configured vulnerability rules. */
 export interface VulnerabilityCheck {
   /** Required. The threshold for severity for which a fix isn't currently available. This field is required and must be set. */
-  maximumUnfixableSeverity?: VulnerabilityCheckMaximumUnfixableSeverityEnum;
+  maximumUnfixableSeverity?:
+    | VulnerabilityCheckMaximumUnfixableSeverityEnum
+    | (string & {});
   /** Optional. A list of specific CVEs to ignore even if the vulnerability level violates `maximumUnfixableSeverity` or `maximumFixableSeverity`. CVEs are listed in the format of Container Analysis note id. For example: - CVE-2021-20305 - CVE-2020-10543 The CVEs are applicable regardless of note provider project, e.g., an entry of `CVE-2021-20305` will allow vulnerabilities with a note name of either `projects/goog-vulnz/notes/CVE-2021-20305` or `projects/CUSTOM-PROJECT/notes/CVE-2021-20305`. */
   allowedCves?: StringList;
   /** Required. The threshold for severity for which a fix is currently available. This field is required and must be set. */
-  maximumFixableSeverity?: VulnerabilityCheckMaximumFixableSeverityEnum;
+  maximumFixableSeverity?:
+    | VulnerabilityCheckMaximumFixableSeverityEnum
+    | (string & {});
   /** Optional. A list of specific CVEs to always raise warnings about even if the vulnerability level meets `maximumUnfixableSeverity` or `maximumFixableSeverity`. CVEs are listed in the format of Container Analysis note id. For example: - CVE-2021-20305 - CVE-2020-10543 The CVEs are applicable regardless of note provider project, e.g., an entry of `CVE-2021-20305` will block vulnerabilities with a note name of either `projects/goog-vulnz/notes/CVE-2021-20305` or `projects/CUSTOM-PROJECT/notes/CVE-2021-20305`. */
   blockedCves?: StringList;
   /** Optional. The projects where vulnerabilities are stored as Container Analysis Occurrences. Each project is expressed in the resource format of `projects/[PROJECT_ID]`, e.g., `projects/my-gcp-project`. An attempt will be made for each project to fetch vulnerabilities, and all valid vulnerabilities will be used to check against the vulnerability policy. If no valid scan is found in all projects configured here, an error will be returned for the check. Maximum number of `container_analysis_vulnerability_projects` allowed in each `VulnerabilityCheck` is 10. */
@@ -517,7 +520,7 @@ export const Check = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Check" }) as any as S.Schema<Check>;
 
-export type CheckList = ReadonlyArray<Check>;
+export type CheckList = Array<Check>;
 export const CheckList = /*@__PURE__*/ S.Array(
   Check,
 ) as any as S.Schema<CheckList>;
@@ -542,7 +545,7 @@ export const CheckSet = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CheckSet" }) as any as S.Schema<CheckSet>;
 
-export type CheckSetList = ReadonlyArray<CheckSet>;
+export type CheckSetList = Array<CheckSet>;
 export const CheckSetList = /*@__PURE__*/ S.Array(
   CheckSet,
 ) as any as S.Schema<CheckSetList>;
@@ -769,7 +772,7 @@ export const CheckResult = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CheckResult" }) as any as S.Schema<CheckResult>;
 
-export type CheckResultList = ReadonlyArray<CheckResult>;
+export type CheckResultList = Array<CheckResult>;
 export const CheckResultList = /*@__PURE__*/ S.Array(
   CheckResult,
 ) as any as S.Schema<CheckResultList>;
@@ -841,7 +844,7 @@ export const ImageResult = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ImageResult" }) as any as S.Schema<ImageResult>;
 
-export type ImageResultList = ReadonlyArray<ImageResult>;
+export type ImageResultList = Array<ImageResult>;
 export const ImageResultList = /*@__PURE__*/ S.Array(
   ImageResult,
 ) as any as S.Schema<ImageResultList>;
@@ -869,7 +872,7 @@ export const PodResult = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PodResult" }) as any as S.Schema<PodResult>;
 
-export type PodResultList = ReadonlyArray<PodResult>;
+export type PodResultList = Array<PodResult>;
 export const PodResultList = /*@__PURE__*/ S.Array(
   PodResult,
 ) as any as S.Schema<PodResultList>;
@@ -949,7 +952,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
-export type BindingList = ReadonlyArray<Binding>;
+export type BindingList = Array<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -1032,9 +1035,9 @@ export const AdmissionRuleEnforcementModeEnum = /*@__PURE__*/ S.String;
 /** An admission rule specifies either that all container images used in a pod creation request must be attested to by one or more attestors, that all pod creations will be allowed, or that all pod creations will be denied. Images matching an admission allowlist pattern are exempted from admission rules and will never block a pod creation. */
 export interface AdmissionRule {
   /** Required. How this admission rule will be evaluated. */
-  evaluationMode?: AdmissionRuleEvaluationModeEnum;
+  evaluationMode?: AdmissionRuleEvaluationModeEnum | (string & {});
   /** Required. The action when a pod creation is denied by the admission rule. */
-  enforcementMode?: AdmissionRuleEnforcementModeEnum;
+  enforcementMode?: AdmissionRuleEnforcementModeEnum | (string & {});
   /** Optional. The resource names of the attestors that must attest to a container image, in the format `projects/*\/attestors/*`. Each attestor must exist before a policy can reference it. To add an attestor to a policy the principal issuing the policy change request must be able to read the attestor resource. Note: this field must be non-empty when the `evaluation_mode` field specifies `REQUIRE_ATTESTATION`, otherwise it must be empty. */
   requireAttestationsBy?: StringList;
 }
@@ -1065,8 +1068,7 @@ export const AdmissionWhitelistPattern = /*@__PURE__*/ S.suspend(() =>
   identifier: "AdmissionWhitelistPattern",
 }) as any as S.Schema<AdmissionWhitelistPattern>;
 
-export type AdmissionWhitelistPatternList =
-  ReadonlyArray<AdmissionWhitelistPattern>;
+export type AdmissionWhitelistPatternList = Array<AdmissionWhitelistPattern>;
 export const AdmissionWhitelistPatternList = /*@__PURE__*/ S.Array(
   AdmissionWhitelistPattern,
 ) as any as S.Schema<AdmissionWhitelistPatternList>;
@@ -1074,7 +1076,9 @@ export const AdmissionWhitelistPatternList = /*@__PURE__*/ S.Array(
 /** A policy for container image binary authorization. */
 export interface Policy {
   /** Optional. Controls the evaluation of a Google-maintained global admission policy for common system-level images. Images not covered by the global policy will be subject to the project admission policy. This setting has no effect when specified inside a global admission policy. */
-  globalPolicyEvaluationMode?: PolicyGlobalPolicyEvaluationModeEnum;
+  globalPolicyEvaluationMode?:
+    | PolicyGlobalPolicyEvaluationModeEnum
+    | (string & {});
   /** Optional. A valid policy has only one of the following rule maps non-empty, i.e. only one of `cluster_admission_rules`, `kubernetes_namespace_admission_rules`, `kubernetes_service_account_admission_rules`, or `istio_service_identity_admission_rules` can be non-empty. Per-cluster admission rules. Cluster spec format: `location.clusterId`. There can be at most one admission rule per cluster spec. A `location` is either a compute zone (e.g. us-central1-a) or a region (e.g. us-central1). For `clusterId` syntax restrictions see https://cloud.google.com/container-engine/reference/rest/v1/projects.zones.clusters. */
   clusterAdmissionRules?: AdmissionRuleMap;
   /** Optional. Per-kubernetes-service-account admission rules. Service account spec format: `namespace:serviceaccount`. e.g. `test-ns:default` */
@@ -1192,7 +1196,7 @@ export const ListProjectsAttestorsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsAttestorsRequest",
 }) as any as S.Schema<ListProjectsAttestorsRequest>;
 
-export type AttestorList = ReadonlyArray<Attestor>;
+export type AttestorList = Array<Attestor>;
 export const AttestorList = /*@__PURE__*/ S.Array(
   Attestor,
 ) as any as S.Schema<AttestorList>;
@@ -1238,7 +1242,7 @@ export const ListProjectsPlatformsPoliciesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsPlatformsPoliciesRequest",
 }) as any as S.Schema<ListProjectsPlatformsPoliciesRequest>;
 
-export type PlatformPolicyList = ReadonlyArray<PlatformPolicy>;
+export type PlatformPolicyList = Array<PlatformPolicy>;
 export const PlatformPolicyList = /*@__PURE__*/ S.Array(
   PlatformPolicy,
 ) as any as S.Schema<PlatformPolicyList>;
@@ -1459,7 +1463,7 @@ export const Jwt = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Jwt" }) as any as S.Schema<Jwt>;
 
-export type JwtList = ReadonlyArray<Jwt>;
+export type JwtList = Array<Jwt>;
 export const JwtList = /*@__PURE__*/ S.Array(Jwt) as any as S.Schema<JwtList>;
 
 /** Verifiers (e.g. Kritis implementations) MUST verify signatures with respect to the trust anchors defined in policy (e.g. a Kritis policy). Typically this means that the verifier has been configured with a map from `public_key_id` to public key material (and any required parameters, e.g. signing algorithm). In particular, verification implementations MUST NOT treat the signature `public_key_id` as anything more than a key lookup hint. The `public_key_id` DOES NOT validate or authenticate a public key; it only provides a mechanism for quickly selecting a public key ALREADY CONFIGURED on the verifier through a trusted channel. Verification implementations MUST reject signatures in any of the following circumstances: * The `public_key_id` is not recognized by the verifier. * The public key that `public_key_id` refers to does not verify the signature with respect to the payload. The `signature` contents SHOULD NOT be "attached" (where the payload is included with the serialized `signature` bytes). Verifiers MUST ignore any "attached" payload and only verify signatures with respect to explicitly provided payload (e.g. a `payload` field on the proto message that holds this Signature, or the canonical serialization of the proto message that holds this signature). */
@@ -1476,7 +1480,7 @@ export const Signature = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Signature" }) as any as S.Schema<Signature>;
 
-export type SignatureList = ReadonlyArray<Signature>;
+export type SignatureList = Array<Signature>;
 export const SignatureList = /*@__PURE__*/ S.Array(
   Signature,
 ) as any as S.Schema<SignatureList>;

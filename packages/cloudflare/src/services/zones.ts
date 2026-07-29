@@ -202,7 +202,7 @@ export const EnvironmentsCreateRequestEnvironmentsItem =
   }) as any as S.Schema<EnvironmentsCreateRequestEnvironmentsItem>;
 
 export type EnvironmentsCreateRequestEnvironmentsList =
-  ReadonlyArray<EnvironmentsCreateRequestEnvironmentsItem>;
+  Array<EnvironmentsCreateRequestEnvironmentsItem>;
 export const EnvironmentsCreateRequestEnvironmentsList = /*@__PURE__*/ S.Array(
   EnvironmentsCreateRequestEnvironmentsItem,
 ) as any as S.Schema<EnvironmentsCreateRequestEnvironmentsList>;
@@ -269,7 +269,7 @@ export const EnvironmentsCreateResponseEnvironmentsItem =
   }) as any as S.Schema<EnvironmentsCreateResponseEnvironmentsItem>;
 
 export type EnvironmentsCreateResponseEnvironmentsList =
-  ReadonlyArray<EnvironmentsCreateResponseEnvironmentsItem>;
+  Array<EnvironmentsCreateResponseEnvironmentsItem>;
 export const EnvironmentsCreateResponseEnvironmentsList = /*@__PURE__*/ S.Array(
   EnvironmentsCreateResponseEnvironmentsItem,
 ) as any as S.Schema<EnvironmentsCreateResponseEnvironmentsList>;
@@ -309,13 +309,13 @@ export const CreateHoldRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CreateHoldResponse {
   hold?: boolean;
   holdAfter?: string;
-  includeSubdomains?: boolean;
+  includeSubdomains?: unknown;
 }
 export const CreateHoldResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hold: S.optional(S.Boolean),
     holdAfter: S.optional(S.String.pipe(T.Body("hold_after"))),
-    includeSubdomains: S.optional(S.Boolean.pipe(T.Body("include_subdomains"))),
+    includeSubdomains: S.optional(S.Unknown.pipe(T.Body("include_subdomains"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateHoldResponse",
@@ -341,7 +341,7 @@ export type SubscriptionsCreateRequestRatePlanId =
   | "partners_enterprise";
 export const SubscriptionsCreateRequestRatePlanId = /*@__PURE__*/ S.String;
 
-export type SubscriptionsCreateRequestRatePlanSetsList = ReadonlyArray<string>;
+export type SubscriptionsCreateRequestRatePlanSetsList = Array<string>;
 export const SubscriptionsCreateRequestRatePlanSetsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SubscriptionsCreateRequestRatePlanSetsList>;
@@ -425,7 +425,7 @@ export type SubscriptionsCreateResponseRatePlanId =
   | "partners_enterprise";
 export const SubscriptionsCreateResponseRatePlanId = /*@__PURE__*/ S.String;
 
-export type SubscriptionsCreateResponseRatePlanSetsList = ReadonlyArray<string>;
+export type SubscriptionsCreateResponseRatePlanSetsList = Array<string>;
 export const SubscriptionsCreateResponseRatePlanSetsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -589,12 +589,12 @@ export const CreateResponseMeta = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateResponseMeta",
 }) as any as S.Schema<CreateResponseMeta>;
 
-export type CreateResponseNameServersList = ReadonlyArray<string>;
+export type CreateResponseNameServersList = Array<string>;
 export const CreateResponseNameServersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateResponseNameServersList>;
 
-export type CreateResponseOriginalNameServersList = ReadonlyArray<string>;
+export type CreateResponseOriginalNameServersList = Array<string>;
 export const CreateResponseOriginalNameServersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateResponseOriginalNameServersList>;
@@ -656,7 +656,7 @@ export const CreateResponsePlan = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateResponsePlan",
 }) as any as S.Schema<CreateResponsePlan>;
 
-export type CreateResponsePermissionsList = ReadonlyArray<string>;
+export type CreateResponsePermissionsList = Array<string>;
 export const CreateResponsePermissionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateResponsePermissionsList>;
@@ -698,7 +698,7 @@ export const CreateResponseTenantUnit = /*@__PURE__*/ S.suspend(() =>
 export type CreateResponseType = "full" | "partial" | "secondary" | "internal";
 export const CreateResponseType = /*@__PURE__*/ S.String;
 
-export type CreateResponseVanityNameServersList = ReadonlyArray<string>;
+export type CreateResponseVanityNameServersList = Array<string>;
 export const CreateResponseVanityNameServersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateResponseVanityNameServersList>;
@@ -850,7 +850,7 @@ export const EnvironmentsDeleteResponseEnvironmentsItem =
   }) as any as S.Schema<EnvironmentsDeleteResponseEnvironmentsItem>;
 
 export type EnvironmentsDeleteResponseEnvironmentsList =
-  ReadonlyArray<EnvironmentsDeleteResponseEnvironmentsItem>;
+  Array<EnvironmentsDeleteResponseEnvironmentsItem>;
 export const EnvironmentsDeleteResponseEnvironmentsList = /*@__PURE__*/ S.Array(
   EnvironmentsDeleteResponseEnvironmentsItem,
 ) as any as S.Schema<EnvironmentsDeleteResponseEnvironmentsList>;
@@ -888,13 +888,13 @@ export const DeleteHoldRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteHoldResponse {
   hold?: boolean;
   holdAfter?: string;
-  includeSubdomains?: boolean;
+  includeSubdomains?: unknown;
 }
 export const DeleteHoldResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hold: S.optional(S.Boolean),
     holdAfter: S.optional(S.String.pipe(T.Body("hold_after"))),
-    includeSubdomains: S.optional(S.Boolean.pipe(T.Body("include_subdomains"))),
+    includeSubdomains: S.optional(S.Unknown.pipe(T.Body("include_subdomains"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteHoldResponse",
@@ -943,7 +943,7 @@ export const GetCtAlertingRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetCtAlertingRequest",
 }) as any as S.Schema<GetCtAlertingRequest>;
 
-export type CtAlertingGetResponseEmailsList = ReadonlyArray<string>;
+export type CtAlertingGetResponseEmailsList = Array<string>;
 export const CtAlertingGetResponseEmailsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CtAlertingGetResponseEmailsList>;
@@ -1012,13 +1012,13 @@ export const GetHoldRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetHoldResponse {
   hold?: boolean;
   holdAfter?: string;
-  includeSubdomains?: boolean;
+  includeSubdomains?: unknown;
 }
 export const GetHoldResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hold: S.optional(S.Boolean),
     holdAfter: S.optional(S.String.pipe(T.Body("hold_after"))),
-    includeSubdomains: S.optional(S.Boolean.pipe(T.Body("include_subdomains"))),
+    includeSubdomains: S.optional(S.Unknown.pipe(T.Body("include_subdomains"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetHoldResponse",
@@ -1139,7 +1139,7 @@ export const RatePlansGetResultItemComponentsItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<RatePlansGetResultItemComponentsItem>;
 
 export type RatePlansGetResultItemComponentsList =
-  ReadonlyArray<RatePlansGetResultItemComponentsItem>;
+  Array<RatePlansGetResultItemComponentsItem>;
 export const RatePlansGetResultItemComponentsList = /*@__PURE__*/ S.Array(
   RatePlansGetResultItemComponentsItem,
 ) as any as S.Schema<RatePlansGetResultItemComponentsList>;
@@ -1178,7 +1178,7 @@ export const RatePlansGetResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "RatePlansGetResultItem",
 }) as any as S.Schema<RatePlansGetResultItem>;
 
-export type RatePlansGetResultList = ReadonlyArray<RatePlansGetResultItem>;
+export type RatePlansGetResultList = Array<RatePlansGetResultItem>;
 export const RatePlansGetResultList = /*@__PURE__*/ S.Array(
   RatePlansGetResultItem,
 ) as any as S.Schema<RatePlansGetResultList>;
@@ -1623,7 +1623,7 @@ export const SettingsGetResultZonesContentConverter = /*@__PURE__*/ S.suspend(
 export type SettingsGetResultCiphersId = "ciphers";
 export const SettingsGetResultCiphersId = /*@__PURE__*/ S.String;
 
-export type SettingsGetResultCiphersValueList = ReadonlyArray<string>;
+export type SettingsGetResultCiphersValueList = Array<string>;
 export const SettingsGetResultCiphersValueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SettingsGetResultCiphersValueList>;
@@ -2586,7 +2586,7 @@ export const SettingsGetResultZonesSchemasAutomaticPlatformOptimizationId =
   /*@__PURE__*/ S.String;
 
 export type SettingsGetResultZonesSchemasAutomaticPlatformOptimizationValueHostnamesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const SettingsGetResultZonesSchemasAutomaticPlatformOptimizationValueHostnamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3489,7 +3489,7 @@ export type SubscriptionsGetResponseRatePlanId =
   | "partners_enterprise";
 export const SubscriptionsGetResponseRatePlanId = /*@__PURE__*/ S.String;
 
-export type SubscriptionsGetResponseRatePlanSetsList = ReadonlyArray<string>;
+export type SubscriptionsGetResponseRatePlanSetsList = Array<string>;
 export const SubscriptionsGetResponseRatePlanSetsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SubscriptionsGetResponseRatePlanSetsList>;
@@ -3630,12 +3630,12 @@ export const GetResponseMeta = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetResponseMeta",
 }) as any as S.Schema<GetResponseMeta>;
 
-export type GetResponseNameServersList = ReadonlyArray<string>;
+export type GetResponseNameServersList = Array<string>;
 export const GetResponseNameServersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetResponseNameServersList>;
 
-export type GetResponseOriginalNameServersList = ReadonlyArray<string>;
+export type GetResponseOriginalNameServersList = Array<string>;
 export const GetResponseOriginalNameServersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetResponseOriginalNameServersList>;
@@ -3697,7 +3697,7 @@ export const GetResponsePlan = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetResponsePlan",
 }) as any as S.Schema<GetResponsePlan>;
 
-export type GetResponsePermissionsList = ReadonlyArray<string>;
+export type GetResponsePermissionsList = Array<string>;
 export const GetResponsePermissionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetResponsePermissionsList>;
@@ -3735,7 +3735,7 @@ export const GetResponseTenantUnit = /*@__PURE__*/ S.suspend(() =>
 export type GetResponseType = "full" | "partial" | "secondary" | "internal";
 export const GetResponseType = /*@__PURE__*/ S.String;
 
-export type GetResponseVanityNameServersList = ReadonlyArray<string>;
+export type GetResponseVanityNameServersList = Array<string>;
 export const GetResponseVanityNameServersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetResponseVanityNameServersList>;
@@ -3883,7 +3883,7 @@ export const EnvironmentsListResponseEnvironmentsItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<EnvironmentsListResponseEnvironmentsItem>;
 
 export type EnvironmentsListResponseEnvironmentsList =
-  ReadonlyArray<EnvironmentsListResponseEnvironmentsItem>;
+  Array<EnvironmentsListResponseEnvironmentsItem>;
 export const EnvironmentsListResponseEnvironmentsList = /*@__PURE__*/ S.Array(
   EnvironmentsListResponseEnvironmentsItem,
 ) as any as S.Schema<EnvironmentsListResponseEnvironmentsList>;
@@ -3966,7 +3966,7 @@ export const PlansListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "PlansListResultItem",
 }) as any as S.Schema<PlansListResultItem>;
 
-export type PlansListResultList = ReadonlyArray<PlansListResultItem>;
+export type PlansListResultList = Array<PlansListResultItem>;
 export const PlansListResultList = /*@__PURE__*/ S.Array(
   PlansListResultItem,
 ) as any as S.Schema<PlansListResultList>;
@@ -4021,9 +4021,7 @@ export const ListRequestStatus = /*@__PURE__*/ S.String;
 export type ListRequestType = "full" | "partial" | "secondary" | "internal";
 export const ListRequestType = /*@__PURE__*/ S.String;
 
-export type ListRequestTypeList = ReadonlyArray<
-  ListRequestType | (string & {})
->;
+export type ListRequestTypeList = Array<ListRequestType | (string & {})>;
 export const ListRequestTypeList = /*@__PURE__*/ S.Array(
   ListRequestType,
 ) as any as S.Schema<ListRequestTypeList>;
@@ -4111,12 +4109,12 @@ export const ListResultItemMeta = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListResultItemMeta",
 }) as any as S.Schema<ListResultItemMeta>;
 
-export type ListResultItemNameServersList = ReadonlyArray<string>;
+export type ListResultItemNameServersList = Array<string>;
 export const ListResultItemNameServersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ListResultItemNameServersList>;
 
-export type ListResultItemOriginalNameServersList = ReadonlyArray<string>;
+export type ListResultItemOriginalNameServersList = Array<string>;
 export const ListResultItemOriginalNameServersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ListResultItemOriginalNameServersList>;
@@ -4178,7 +4176,7 @@ export const ListResultItemPlan = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListResultItemPlan",
 }) as any as S.Schema<ListResultItemPlan>;
 
-export type ListResultItemPermissionsList = ReadonlyArray<string>;
+export type ListResultItemPermissionsList = Array<string>;
 export const ListResultItemPermissionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ListResultItemPermissionsList>;
@@ -4220,7 +4218,7 @@ export const ListResultItemTenantUnit = /*@__PURE__*/ S.suspend(() =>
 export type ListResultItemType = "full" | "partial" | "secondary" | "internal";
 export const ListResultItemType = /*@__PURE__*/ S.String;
 
-export type ListResultItemVanityNameServersList = ReadonlyArray<string>;
+export type ListResultItemVanityNameServersList = Array<string>;
 export const ListResultItemVanityNameServersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ListResultItemVanityNameServersList>;
@@ -4307,7 +4305,7 @@ export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ListResultItem" }) as any as S.Schema<ListResultItem>;
 
-export type ListResultList = ReadonlyArray<ListResultItem>;
+export type ListResultList = Array<ListResultItem>;
 export const ListResultList = /*@__PURE__*/ S.Array(
   ListResultItem,
 ) as any as S.Schema<ListResultList>;
@@ -4327,7 +4325,7 @@ export const ListZonesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListZonesResponse",
 }) as any as S.Schema<ListZonesResponse>;
 
-export type CtAlertingEditRequestEmailsList = ReadonlyArray<string>;
+export type CtAlertingEditRequestEmailsList = Array<string>;
 export const CtAlertingEditRequestEmailsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CtAlertingEditRequestEmailsList>;
@@ -4358,7 +4356,7 @@ export const PatchCtAlertingRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchCtAlertingRequest",
 }) as any as S.Schema<PatchCtAlertingRequest>;
 
-export type CtAlertingEditResponseEmailsList = ReadonlyArray<string>;
+export type CtAlertingEditResponseEmailsList = Array<string>;
 export const CtAlertingEditResponseEmailsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CtAlertingEditResponseEmailsList>;
@@ -4420,7 +4418,7 @@ export const EnvironmentsEditRequestEnvironmentsItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<EnvironmentsEditRequestEnvironmentsItem>;
 
 export type EnvironmentsEditRequestEnvironmentsList =
-  ReadonlyArray<EnvironmentsEditRequestEnvironmentsItem>;
+  Array<EnvironmentsEditRequestEnvironmentsItem>;
 export const EnvironmentsEditRequestEnvironmentsList = /*@__PURE__*/ S.Array(
   EnvironmentsEditRequestEnvironmentsItem,
 ) as any as S.Schema<EnvironmentsEditRequestEnvironmentsList>;
@@ -4487,7 +4485,7 @@ export const EnvironmentsEditResponseEnvironmentsItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<EnvironmentsEditResponseEnvironmentsItem>;
 
 export type EnvironmentsEditResponseEnvironmentsList =
-  ReadonlyArray<EnvironmentsEditResponseEnvironmentsItem>;
+  Array<EnvironmentsEditResponseEnvironmentsItem>;
 export const EnvironmentsEditResponseEnvironmentsList = /*@__PURE__*/ S.Array(
   EnvironmentsEditResponseEnvironmentsItem,
 ) as any as S.Schema<EnvironmentsEditResponseEnvironmentsList>;
@@ -4528,13 +4526,13 @@ export const PatchHoldRequest = /*@__PURE__*/ S.suspend(() =>
 export interface PatchHoldResponse {
   hold?: boolean;
   holdAfter?: string;
-  includeSubdomains?: boolean;
+  includeSubdomains?: unknown;
 }
 export const PatchHoldResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hold: S.optional(S.Boolean),
     holdAfter: S.optional(S.String.pipe(T.Body("hold_after"))),
-    includeSubdomains: S.optional(S.Boolean.pipe(T.Body("include_subdomains"))),
+    includeSubdomains: S.optional(S.Unknown.pipe(T.Body("include_subdomains"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchHoldResponse",
@@ -4972,7 +4970,7 @@ export const SettingsEditResultZonesContentConverter = /*@__PURE__*/ S.suspend(
 export type SettingsEditResultCiphersId = "ciphers";
 export const SettingsEditResultCiphersId = /*@__PURE__*/ S.String;
 
-export type SettingsEditResultCiphersValueList = ReadonlyArray<string>;
+export type SettingsEditResultCiphersValueList = Array<string>;
 export const SettingsEditResultCiphersValueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SettingsEditResultCiphersValueList>;
@@ -5943,7 +5941,7 @@ export const SettingsEditResultZonesSchemasAutomaticPlatformOptimizationId =
   /*@__PURE__*/ S.String;
 
 export type SettingsEditResultZonesSchemasAutomaticPlatformOptimizationValueHostnamesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const SettingsEditResultZonesSchemasAutomaticPlatformOptimizationValueHostnamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6811,7 +6809,7 @@ export const PatchSettingResponse = /*@__PURE__*/ S.suspend(() =>
 export type EditRequestType = "full" | "partial" | "secondary" | "internal";
 export const EditRequestType = /*@__PURE__*/ S.String;
 
-export type EditRequestVanityNameServersList = ReadonlyArray<string>;
+export type EditRequestVanityNameServersList = Array<string>;
 export const EditRequestVanityNameServersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EditRequestVanityNameServersList>;
@@ -6887,12 +6885,12 @@ export const EditResponseMeta = /*@__PURE__*/ S.suspend(() =>
   identifier: "EditResponseMeta",
 }) as any as S.Schema<EditResponseMeta>;
 
-export type EditResponseNameServersList = ReadonlyArray<string>;
+export type EditResponseNameServersList = Array<string>;
 export const EditResponseNameServersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EditResponseNameServersList>;
 
-export type EditResponseOriginalNameServersList = ReadonlyArray<string>;
+export type EditResponseOriginalNameServersList = Array<string>;
 export const EditResponseOriginalNameServersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EditResponseOriginalNameServersList>;
@@ -6954,7 +6952,7 @@ export const EditResponsePlan = /*@__PURE__*/ S.suspend(() =>
   identifier: "EditResponsePlan",
 }) as any as S.Schema<EditResponsePlan>;
 
-export type EditResponsePermissionsList = ReadonlyArray<string>;
+export type EditResponsePermissionsList = Array<string>;
 export const EditResponsePermissionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EditResponsePermissionsList>;
@@ -6996,7 +6994,7 @@ export const EditResponseTenantUnit = /*@__PURE__*/ S.suspend(() =>
 export type EditResponseType = "full" | "partial" | "secondary" | "internal";
 export const EditResponseType = /*@__PURE__*/ S.String;
 
-export type EditResponseVanityNameServersList = ReadonlyArray<string>;
+export type EditResponseVanityNameServersList = Array<string>;
 export const EditResponseVanityNameServersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EditResponseVanityNameServersList>;
@@ -7106,7 +7104,7 @@ export const PutCustomNameserverRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutCustomNameserverRequest",
 }) as any as S.Schema<PutCustomNameserverRequest>;
 
-export type CustomNameserversUpdateResultList = ReadonlyArray<string>;
+export type CustomNameserversUpdateResultList = Array<string>;
 export const CustomNameserversUpdateResultList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CustomNameserversUpdateResultList>;
@@ -7188,7 +7186,7 @@ export const EnvironmentsRollbackResponseEnvironmentsItem =
   }) as any as S.Schema<EnvironmentsRollbackResponseEnvironmentsItem>;
 
 export type EnvironmentsRollbackResponseEnvironmentsList =
-  ReadonlyArray<EnvironmentsRollbackResponseEnvironmentsItem>;
+  Array<EnvironmentsRollbackResponseEnvironmentsItem>;
 export const EnvironmentsRollbackResponseEnvironmentsList =
   /*@__PURE__*/ S.Array(
     EnvironmentsRollbackResponseEnvironmentsItem,
@@ -7657,8 +7655,7 @@ export const SettingsBulkEditRequestBodyItemZonesContentConverter =
 export type SettingsBulkEditRequestBodyItemCiphersId = "ciphers";
 export const SettingsBulkEditRequestBodyItemCiphersId = /*@__PURE__*/ S.String;
 
-export type SettingsBulkEditRequestBodyItemCiphersValueList =
-  ReadonlyArray<string>;
+export type SettingsBulkEditRequestBodyItemCiphersValueList = Array<string>;
 export const SettingsBulkEditRequestBodyItemCiphersValueList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -8720,7 +8717,7 @@ export const SettingsBulkEditRequestBodyItemZonesSchemasAutomaticPlatformOptimiz
   /*@__PURE__*/ S.String;
 
 export type SettingsBulkEditRequestBodyItemZonesSchemasAutomaticPlatformOptimizationValueHostnamesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const SettingsBulkEditRequestBodyItemZonesSchemasAutomaticPlatformOptimizationValueHostnamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -9675,7 +9672,7 @@ export const SettingsBulkEditRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SettingsBulkEditRequestBodyItem>;
 
 export type SettingsBulkEditRequestBodyList =
-  ReadonlyArray<SettingsBulkEditRequestBodyItem>;
+  Array<SettingsBulkEditRequestBodyItem>;
 export const SettingsBulkEditRequestBodyList = /*@__PURE__*/ S.Array(
   SettingsBulkEditRequestBodyItem,
 ) as any as S.Schema<SettingsBulkEditRequestBodyList>;
@@ -10054,7 +10051,7 @@ export const SettingsBulkEditResultItemChallengeTTL = /*@__PURE__*/ S.suspend(
 export type SettingsBulkEditResultItemCiphersId = "ciphers";
 export const SettingsBulkEditResultItemCiphersId = /*@__PURE__*/ S.String;
 
-export type SettingsBulkEditResultItemCiphersValueList = ReadonlyArray<string>;
+export type SettingsBulkEditResultItemCiphersValueList = Array<string>;
 export const SettingsBulkEditResultItemCiphersValueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SettingsBulkEditResultItemCiphersValueList>;
@@ -11114,7 +11111,7 @@ export const SettingsBulkEditResultItemZonesSchemasAutomaticPlatformOptimization
   /*@__PURE__*/ S.String;
 
 export type SettingsBulkEditResultItemZonesSchemasAutomaticPlatformOptimizationValueHostnamesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const SettingsBulkEditResultItemZonesSchemasAutomaticPlatformOptimizationValueHostnamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -11999,8 +11996,7 @@ export const SettingsBulkEditResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "SettingsBulkEditResultItem",
 }) as any as S.Schema<SettingsBulkEditResultItem>;
 
-export type SettingsBulkEditResultList =
-  ReadonlyArray<SettingsBulkEditResultItem>;
+export type SettingsBulkEditResultList = Array<SettingsBulkEditResultItem>;
 export const SettingsBulkEditResultList = /*@__PURE__*/ S.Array(
   SettingsBulkEditResultItem,
 ) as any as S.Schema<SettingsBulkEditResultList>;
@@ -12375,7 +12371,7 @@ export const SettingsListResultItemChallengeTTL = /*@__PURE__*/ S.suspend(() =>
 export type SettingsListResultItemCiphersId = "ciphers";
 export const SettingsListResultItemCiphersId = /*@__PURE__*/ S.String;
 
-export type SettingsListResultItemCiphersValueList = ReadonlyArray<string>;
+export type SettingsListResultItemCiphersValueList = Array<string>;
 export const SettingsListResultItemCiphersValueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SettingsListResultItemCiphersValueList>;
@@ -13407,7 +13403,7 @@ export const SettingsListResultItemZonesSchemasAutomaticPlatformOptimizationId =
   /*@__PURE__*/ S.String;
 
 export type SettingsListResultItemZonesSchemasAutomaticPlatformOptimizationValueHostnamesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const SettingsListResultItemZonesSchemasAutomaticPlatformOptimizationValueHostnamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -14281,7 +14277,7 @@ export const SettingsListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "SettingsListResultItem",
 }) as any as S.Schema<SettingsListResultItem>;
 
-export type SettingsListResultList = ReadonlyArray<SettingsListResultItem>;
+export type SettingsListResultList = Array<SettingsListResultItem>;
 export const SettingsListResultList = /*@__PURE__*/ S.Array(
   SettingsListResultItem,
 ) as any as S.Schema<SettingsListResultList>;
@@ -14367,7 +14363,7 @@ export const EnvironmentsUpdateRequestEnvironmentsItem =
   }) as any as S.Schema<EnvironmentsUpdateRequestEnvironmentsItem>;
 
 export type EnvironmentsUpdateRequestEnvironmentsList =
-  ReadonlyArray<EnvironmentsUpdateRequestEnvironmentsItem>;
+  Array<EnvironmentsUpdateRequestEnvironmentsItem>;
 export const EnvironmentsUpdateRequestEnvironmentsList = /*@__PURE__*/ S.Array(
   EnvironmentsUpdateRequestEnvironmentsItem,
 ) as any as S.Schema<EnvironmentsUpdateRequestEnvironmentsList>;
@@ -14434,7 +14430,7 @@ export const EnvironmentsUpdateResponseEnvironmentsItem =
   }) as any as S.Schema<EnvironmentsUpdateResponseEnvironmentsItem>;
 
 export type EnvironmentsUpdateResponseEnvironmentsList =
-  ReadonlyArray<EnvironmentsUpdateResponseEnvironmentsItem>;
+  Array<EnvironmentsUpdateResponseEnvironmentsItem>;
 export const EnvironmentsUpdateResponseEnvironmentsList = /*@__PURE__*/ S.Array(
   EnvironmentsUpdateResponseEnvironmentsItem,
 ) as any as S.Schema<EnvironmentsUpdateResponseEnvironmentsList>;
@@ -14471,7 +14467,7 @@ export type SubscriptionsUpdateRequestRatePlanId =
   | "partners_enterprise";
 export const SubscriptionsUpdateRequestRatePlanId = /*@__PURE__*/ S.String;
 
-export type SubscriptionsUpdateRequestRatePlanSetsList = ReadonlyArray<string>;
+export type SubscriptionsUpdateRequestRatePlanSetsList = Array<string>;
 export const SubscriptionsUpdateRequestRatePlanSetsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SubscriptionsUpdateRequestRatePlanSetsList>;
@@ -14555,7 +14551,7 @@ export type SubscriptionsUpdateResponseRatePlanId =
   | "partners_enterprise";
 export const SubscriptionsUpdateResponseRatePlanId = /*@__PURE__*/ S.String;
 
-export type SubscriptionsUpdateResponseRatePlanSetsList = ReadonlyArray<string>;
+export type SubscriptionsUpdateResponseRatePlanSetsList = Array<string>;
 export const SubscriptionsUpdateResponseRatePlanSetsList =
   /*@__PURE__*/ S.Array(
     S.String,

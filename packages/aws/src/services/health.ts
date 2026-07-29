@@ -555,7 +555,7 @@ export const EventStatusCodeList = /*@__PURE__*/ S.Array(EventStatusCode);
 export type EventPersona = "OPERATIONS" | "SECURITY" | "BILLING";
 export const EventPersona = /*@__PURE__*/ S.String;
 
-export type EventPersonaList = EventPersona[];
+export type EventPersonaList = (EventPersona | (string & {}))[];
 export const EventPersonaList = /*@__PURE__*/ S.Array(EventPersona);
 export interface EventFilter {
   actionabilities?: EventActionability[];
@@ -972,7 +972,7 @@ export const EventTypeActionabilityList = /*@__PURE__*/ S.Array(
 export type EventTypePersona = "OPERATIONS" | "SECURITY" | "BILLING";
 export const EventTypePersona = /*@__PURE__*/ S.String;
 
-export type EventTypePersonaList = EventTypePersona[];
+export type EventTypePersonaList = (EventTypePersona | (string & {}))[];
 export const EventTypePersonaList = /*@__PURE__*/ S.Array(EventTypePersona);
 export interface EventTypeFilter {
   eventTypeCodes?: string[];

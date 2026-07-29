@@ -337,7 +337,7 @@ export const ThresholdComparator = /*@__PURE__*/ S.String;
 export interface ApprovalThresholdPolicy {
   ThresholdPercentage?: number;
   ProposalDurationInHours?: number;
-  ThresholdComparator?: ThresholdComparator;
+  ThresholdComparator?: ThresholdComparator | (string & {});
 }
 export const ApprovalThresholdPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

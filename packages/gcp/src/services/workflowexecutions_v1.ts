@@ -104,7 +104,7 @@ export const Step = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Step" }) as any as S.Schema<Step>;
 
-export type StepList = ReadonlyArray<Step>;
+export type StepList = Array<Step>;
 export const StepList = /*@__PURE__*/ S.Array(
   Step,
 ) as any as S.Schema<StepList>;
@@ -169,7 +169,7 @@ export const StackTraceElement = /*@__PURE__*/ S.suspend(() =>
   identifier: "StackTraceElement",
 }) as any as S.Schema<StackTraceElement>;
 
-export type StackTraceElementList = ReadonlyArray<StackTraceElement>;
+export type StackTraceElementList = Array<StackTraceElement>;
 export const StackTraceElementList = /*@__PURE__*/ S.Array(
   StackTraceElement,
 ) as any as S.Schema<StackTraceElementList>;
@@ -226,7 +226,7 @@ export const StateErrorTypeEnum = /*@__PURE__*/ S.String;
 /** Describes an error related to the current state of the Execution resource. */
 export interface StateError {
   /** The type of this state error. */
-  type?: StateErrorTypeEnum;
+  type?: StateErrorTypeEnum | (string & {});
   /** Provides specifics about the error. */
   details?: string;
 }
@@ -244,7 +244,7 @@ export interface Execution {
   /** Output only. Output of the execution represented as a JSON string. The value can only be present if the execution's state is `SUCCEEDED`. */
   result?: string;
   /** The call logging level associated to this execution. */
-  callLogLevel?: ExecutionCallLogLevelEnum;
+  callLogLevel?: ExecutionCallLogLevelEnum | (string & {});
   /** Output only. Marks the beginning of execution. Note that this will be the same as `createTime` for executions that start immediately. */
   startTime?: string;
   /** Output only. Measures the duration of the execution. */
@@ -260,13 +260,13 @@ export interface Execution {
   /** Output only. The error which caused the execution to finish prematurely. The value is only present if the execution's state is `FAILED` or `CANCELLED`. */
   error?: Workflowexecutions_Error;
   /** Output only. Current state of the execution. */
-  state?: ExecutionStateEnum;
+  state?: ExecutionStateEnum | (string & {});
   /** Output only. The resource name of the execution. Format: projects/{project}/locations/{location}/workflows/{workflow}/executions/{execution} */
   name?: string;
   /** Input parameters of the execution represented as a JSON string. The size limit is 32KB. *Note*: If you are using the REST API directly to run your workflow, you must escape any JSON string value of `argument`. Example: `'{"argument":"{\"firstName\":\"FIRST\",\"lastName\":\"LAST\"}"}'` */
   argument?: string;
   /** Optional. Describes the execution history level to apply to this execution. If not specified, the execution history level is determined by its workflow's execution history level. If the levels are different, the executionHistoryLevel overrides the workflow's execution history level for this execution. */
-  executionHistoryLevel?: ExecutionExecutionHistoryLevelEnum;
+  executionHistoryLevel?: ExecutionExecutionHistoryLevelEnum | (string & {});
   /** Optional. If set to true, the execution will not be backlogged when the concurrency quota is exhausted. The backlog execution starts when the concurrency quota becomes available. */
   disableConcurrencyQuotaOverflowBuffering?: boolean;
   /** Output only. Error regarding the state of the Execution resource. For example, this field will have error details if the execution data is unavailable due to revoked KMS key permissions. */
@@ -540,7 +540,7 @@ export type StepEntryStateEnum =
   | "STATE_CANCELLED";
 export const StepEntryStateEnum = /*@__PURE__*/ S.String;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -652,7 +652,7 @@ export const ListProjectsLocationsWorkflowsExecutionsRequest =
     identifier: "ListProjectsLocationsWorkflowsExecutionsRequest",
   }) as any as S.Schema<ListProjectsLocationsWorkflowsExecutionsRequest>;
 
-export type ExecutionList = ReadonlyArray<Execution>;
+export type ExecutionList = Array<Execution>;
 export const ExecutionList = /*@__PURE__*/ S.Array(
   Execution,
 ) as any as S.Schema<ExecutionList>;
@@ -718,7 +718,7 @@ export const Callback = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Callback" }) as any as S.Schema<Callback>;
 
-export type CallbackList = ReadonlyArray<Callback>;
+export type CallbackList = Array<Callback>;
 export const CallbackList = /*@__PURE__*/ S.Array(
   Callback,
 ) as any as S.Schema<CallbackList>;
@@ -789,7 +789,7 @@ export const ListProjectsLocationsWorkflowsExecutionsStepEntriesRequest =
     identifier: "ListProjectsLocationsWorkflowsExecutionsStepEntriesRequest",
   }) as any as S.Schema<ListProjectsLocationsWorkflowsExecutionsStepEntriesRequest>;
 
-export type StepEntryList = ReadonlyArray<StepEntry>;
+export type StepEntryList = Array<StepEntry>;
 export const StepEntryList = /*@__PURE__*/ S.Array(
   StepEntry,
 ) as any as S.Schema<StepEntryList>;

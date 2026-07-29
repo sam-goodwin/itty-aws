@@ -116,7 +116,7 @@ export interface AgentPoolUpgradeSettings {
   /** The soak duration for a node. The amount of time (in minutes) to wait after draining a node and before reimaging it and moving on to next node. If not specified, the default is 0 minutes. */
   nodeSoakDurationInMinutes?: number;
   /** Defines the behavior for undrainable nodes during upgrade. The most common cause of undrainable nodes is Pod Disruption Budgets (PDBs), but other issues, such as pod termination grace period is exceeding the remaining per-node drain timeout or pod is still being in a running state, can also cause undrainable nodes. */
-  undrainableNodeBehavior?: UndrainableNodeBehavior;
+  undrainableNodeBehavior?: UndrainableNodeBehavior | (string & {});
 }
 export const AgentPoolUpgradeSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -137,7 +137,7 @@ export const Code = /*@__PURE__*/ S.String;
 /** Describes the Power State of the cluster */
 export interface PowerState {
   /** Tells whether the cluster is Running or Stopped */
-  code?: Code;
+  code?: Code | (string & {});
 }
 export const PowerState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -147,7 +147,7 @@ export const PowerState = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of Availability zones to use for nodes. This can only be specified if the AgentPoolType property is 'VirtualMachineScaleSets'. */
 export type ManagedClusterAgentPoolProfilePropertiesInputAvailabilityZonesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ManagedClusterAgentPoolProfilePropertiesInputAvailabilityZonesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -188,14 +188,14 @@ export const ManagedClusterAgentPoolProfilePropertiesInputNodeLabelsMap =
 
 /** The taints added to new nodes during node pool create and scale. For example, key=value:NoSchedule. */
 export type ManagedClusterAgentPoolProfilePropertiesInputNodeTaintsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ManagedClusterAgentPoolProfilePropertiesInputNodeTaintsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ManagedClusterAgentPoolProfilePropertiesInputNodeTaintsList>;
 
 /** Allowed list of unsafe sysctls or unsafe sysctl patterns (ending in `*`). */
-export type KubeletConfigAllowedUnsafeSysctlsList = ReadonlyArray<string>;
+export type KubeletConfigAllowedUnsafeSysctlsList = Array<string>;
 export const KubeletConfigAllowedUnsafeSysctlsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<KubeletConfigAllowedUnsafeSysctlsList>;
@@ -388,7 +388,7 @@ export const IPTag = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IPTag" }) as any as S.Schema<IPTag>;
 
 /** IPTags of instance-level public IPs. */
-export type AgentPoolNetworkProfileNodePublicIPTagsList = ReadonlyArray<IPTag>;
+export type AgentPoolNetworkProfileNodePublicIPTagsList = Array<IPTag>;
 export const AgentPoolNetworkProfileNodePublicIPTagsList =
   /*@__PURE__*/ S.Array(
     IPTag,
@@ -405,7 +405,7 @@ export interface PortRange {
   /** The maximum port that is included in the range. It should be ranged from 1 to 65535, and be greater than or equal to portStart. */
   portEnd?: number;
   /** The network protocol of the port. */
-  protocol?: Protocol;
+  protocol?: Protocol | (string & {});
 }
 export const PortRange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -416,8 +416,7 @@ export const PortRange = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PortRange" }) as any as S.Schema<PortRange>;
 
 /** The port ranges that are allowed to access. The specified ranges are allowed to overlap. */
-export type AgentPoolNetworkProfileAllowedHostPortsList =
-  ReadonlyArray<PortRange>;
+export type AgentPoolNetworkProfileAllowedHostPortsList = Array<PortRange>;
 export const AgentPoolNetworkProfileAllowedHostPortsList =
   /*@__PURE__*/ S.Array(
     PortRange,
@@ -425,7 +424,7 @@ export const AgentPoolNetworkProfileAllowedHostPortsList =
 
 /** The IDs of the application security groups which agent pool will associate when created. */
 export type AgentPoolNetworkProfileApplicationSecurityGroupsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const AgentPoolNetworkProfileApplicationSecurityGroupsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -476,7 +475,7 @@ export interface AgentPoolSecurityProfile {
   /** Secure Boot is a feature of Trusted Launch which ensures that only signed operating systems and drivers can boot. For more details, see aka.ms/aks/trustedlaunch. If not specified, the default is false. */
   enableSecureBoot?: boolean;
   /** SSH access method of an agent pool. */
-  sshAccess?: AgentPoolSSHAccess;
+  sshAccess?: AgentPoolSSHAccess | (string & {});
 }
 export const AgentPoolSecurityProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -495,7 +494,7 @@ export const GPUDriver = /*@__PURE__*/ S.String;
 /** GPU settings for the Agent Pool. */
 export interface GPUProfile {
   /** Whether to install GPU drivers. When it's not specified, default is Install. */
-  driver?: GPUDriver;
+  driver?: GPUDriver | (string & {});
 }
 export const GPUProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -546,7 +545,7 @@ export const ManualScaleProfile = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ManualScaleProfile>;
 
 /** Specifications on how to scale the VirtualMachines agent pool to a fixed size. */
-export type ScaleProfileManualList = ReadonlyArray<ManualScaleProfile>;
+export type ScaleProfileManualList = Array<ManualScaleProfile>;
 export const ScaleProfileManualList = /*@__PURE__*/ S.Array(
   ManualScaleProfile,
 ) as any as S.Schema<ScaleProfileManualList>;
@@ -571,7 +570,7 @@ export const AutoScaleProfile = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AutoScaleProfile>;
 
 /** Specifications on how to auto-scale the VirtualMachines agent pool within a predefined size range. Each profile targets a specific VM SKU and is evaluated independently. Scaling decisions across profiles are governed by the cluster autoscaler expander, configurable via `ManagedCluster.properties.autoScalerProfile.expander`. */
-export type ScaleProfileAutoscaleList = ReadonlyArray<AutoScaleProfile>;
+export type ScaleProfileAutoscaleList = Array<AutoScaleProfile>;
 export const ScaleProfileAutoscaleList = /*@__PURE__*/ S.Array(
   AutoScaleProfile,
 ) as any as S.Schema<ScaleProfileAutoscaleList>;
@@ -621,7 +620,7 @@ export const VirtualMachineNodes = /*@__PURE__*/ S.suspend(() =>
 
 /** The status of nodes in a VirtualMachines agent pool. */
 export type ManagedClusterAgentPoolProfilePropertiesInputVirtualMachineNodesStatusList =
-  ReadonlyArray<VirtualMachineNodes>;
+  Array<VirtualMachineNodes>;
 export const ManagedClusterAgentPoolProfilePropertiesInputVirtualMachineNodesStatusList =
   /*@__PURE__*/ S.Array(
     VirtualMachineNodes,
@@ -682,13 +681,13 @@ export const LocalDNSOverrideServeStale = /*@__PURE__*/ S.String;
 /** Overrides for localDNS profile. */
 export interface LocalDNSOverride {
   /** Log level for DNS queries in localDNS. */
-  queryLogging?: LocalDNSOverrideQueryLogging;
+  queryLogging?: LocalDNSOverrideQueryLogging | (string & {});
   /** Enforce TCP or prefer UDP protocol for connections from localDNS to upstream DNS server. */
-  protocol?: LocalDNSOverrideProtocol;
+  protocol?: LocalDNSOverrideProtocol | (string & {});
   /** Destination server for DNS queries to be forwarded from localDNS. */
-  forwardDestination?: LocalDNSOverrideForwardDestination;
+  forwardDestination?: LocalDNSOverrideForwardDestination | (string & {});
   /** Forward policy for selecting upstream DNS server. See [forward plugin](https://coredns.io/plugins/forward) for more information. */
-  forwardPolicy?: LocalDNSOverrideForwardPolicy;
+  forwardPolicy?: LocalDNSOverrideForwardPolicy | (string & {});
   /** Maximum number of concurrent queries. See [forward plugin](https://coredns.io/plugins/forward) for more information. */
   maxConcurrent?: number;
   /** Cache max TTL in seconds. See [cache plugin](https://coredns.io/plugins/cache) for more information. */
@@ -696,7 +695,7 @@ export interface LocalDNSOverride {
   /** Serve stale duration in seconds. See [cache plugin](https://coredns.io/plugins/cache) for more information. */
   serveStaleDurationInSeconds?: number;
   /** Policy for serving stale data. See [cache plugin](https://coredns.io/plugins/cache) for more information. */
-  serveStale?: LocalDNSOverrideServeStale;
+  serveStale?: LocalDNSOverrideServeStale | (string & {});
 }
 export const LocalDNSOverride = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -734,9 +733,9 @@ export const LocalDNSProfileKubeDNSOverridesMap = /*@__PURE__*/ S.Record(
 /** Configures the per-node local DNS, with VnetDNS and KubeDNS overrides. LocalDNS helps improve performance and reliability of DNS resolution in an AKS cluster. For more details see aka.ms/aks/localdns. */
 export interface LocalDNSProfile {
   /** Mode of enablement for localDNS. */
-  mode?: LocalDNSProfileMode;
+  mode?: LocalDNSProfileMode | (string & {});
   /** System-generated state of localDNS. */
-  state?: LocalDNSState;
+  state?: LocalDNSState | (string & {});
   /** VnetDNS overrides apply to DNS traffic from pods with dnsPolicy:default or kubelet (referred to as VnetDNS traffic). */
   vnetDNSOverrides?: LocalDNSProfileVnetDNSOverridesMap;
   /** KubeDNS overrides apply to DNS traffic from pods with dnsPolicy:ClusterFirst (referred to as KubeDNS traffic). */
@@ -1018,7 +1017,7 @@ export const ManagedClusterAgentPoolProfilePropertiesOsType =
 
 /** The list of Availability zones to use for nodes. This can only be specified if the AgentPoolType property is 'VirtualMachineScaleSets'. */
 export type ManagedClusterAgentPoolProfilePropertiesAvailabilityZonesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ManagedClusterAgentPoolProfilePropertiesAvailabilityZonesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1060,7 +1059,7 @@ export const ManagedClusterAgentPoolProfilePropertiesNodeLabelsMap =
 
 /** The taints added to new nodes during node pool create and scale. For example, key=value:NoSchedule. */
 export type ManagedClusterAgentPoolProfilePropertiesNodeTaintsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ManagedClusterAgentPoolProfilePropertiesNodeTaintsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1068,14 +1067,14 @@ export const ManagedClusterAgentPoolProfilePropertiesNodeTaintsList =
 
 /** The status of nodes in a VirtualMachines agent pool. */
 export type ManagedClusterAgentPoolProfilePropertiesVirtualMachineNodesStatusList =
-  ReadonlyArray<VirtualMachineNodes>;
+  Array<VirtualMachineNodes>;
 export const ManagedClusterAgentPoolProfilePropertiesVirtualMachineNodesStatusList =
   /*@__PURE__*/ S.Array(
     VirtualMachineNodes,
   ) as any as S.Schema<ManagedClusterAgentPoolProfilePropertiesVirtualMachineNodesStatusList>;
 
 /** The error details. */
-export type ErrorDetailDetailsList = ReadonlyArray<ErrorDetail>;
+export type ErrorDetailDetailsList = Array<ErrorDetail>;
 export const ErrorDetailDetailsList = /*@__PURE__*/ S.Array(
   S.suspend(() => ErrorDetail),
 ) as any as S.Schema<ErrorDetailDetailsList>;
@@ -1097,7 +1096,7 @@ export const ErrorAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ErrorAdditionalInfo>;
 
 /** The error additional info. */
-export type ErrorDetailAdditionalInfoList = ReadonlyArray<ErrorAdditionalInfo>;
+export type ErrorDetailAdditionalInfoList = Array<ErrorAdditionalInfo>;
 export const ErrorDetailAdditionalInfoList = /*@__PURE__*/ S.Array(
   ErrorAdditionalInfo,
 ) as any as S.Schema<ErrorDetailAdditionalInfoList>;
@@ -1126,8 +1125,7 @@ export const ErrorDetail = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ErrorDetail" }) as any as S.Schema<ErrorDetail>;
 
 /** The error details. */
-export type AgentPoolStatusProvisioningErrorDetailsList =
-  ReadonlyArray<ErrorDetail>;
+export type AgentPoolStatusProvisioningErrorDetailsList = Array<ErrorDetail>;
 export const AgentPoolStatusProvisioningErrorDetailsList =
   /*@__PURE__*/ S.Array(
     ErrorDetail,
@@ -1135,7 +1133,7 @@ export const AgentPoolStatusProvisioningErrorDetailsList =
 
 /** The error additional info. */
 export type AgentPoolStatusProvisioningErrorAdditionalInfoList =
-  ReadonlyArray<ErrorAdditionalInfo>;
+  Array<ErrorAdditionalInfo>;
 export const AgentPoolStatusProvisioningErrorAdditionalInfoList =
   /*@__PURE__*/ S.Array(
     ErrorAdditionalInfo,
@@ -1434,8 +1432,7 @@ export const AgentPoolsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AgentPoolsDeleteResponse>;
 
 /** The agent pool machine names. */
-export type AgentPoolsDeleteMachinesRequestMachineNamesList =
-  ReadonlyArray<string>;
+export type AgentPoolsDeleteMachinesRequestMachineNamesList = Array<string>;
 export const AgentPoolsDeleteMachinesRequestMachineNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1579,7 +1576,7 @@ export const AgentPoolAvailableVersionsPropertiesAgentPoolVersionsItem =
 
 /** List of versions available for agent pool. */
 export type AgentPoolAvailableVersionsPropertiesAgentPoolVersionsList =
-  ReadonlyArray<AgentPoolAvailableVersionsPropertiesAgentPoolVersionsItem>;
+  Array<AgentPoolAvailableVersionsPropertiesAgentPoolVersionsItem>;
 export const AgentPoolAvailableVersionsPropertiesAgentPoolVersionsList =
   /*@__PURE__*/ S.Array(
     AgentPoolAvailableVersionsPropertiesAgentPoolVersionsItem,
@@ -1674,7 +1671,7 @@ export const AgentPoolUpgradeProfilePropertiesUpgradesItem =
 
 /** List of orchestrator types and versions available for upgrade. */
 export type AgentPoolUpgradeProfilePropertiesUpgradesList =
-  ReadonlyArray<AgentPoolUpgradeProfilePropertiesUpgradesItem>;
+  Array<AgentPoolUpgradeProfilePropertiesUpgradesItem>;
 export const AgentPoolUpgradeProfilePropertiesUpgradesList =
   /*@__PURE__*/ S.Array(
     AgentPoolUpgradeProfilePropertiesUpgradesItem,
@@ -1701,7 +1698,7 @@ export const AgentPoolRecentlyUsedVersion = /*@__PURE__*/ S.suspend(() =>
 
 /** List of historical good versions for rollback operations. */
 export type AgentPoolUpgradeProfilePropertiesRecentlyUsedVersionsList =
-  ReadonlyArray<AgentPoolRecentlyUsedVersion>;
+  Array<AgentPoolRecentlyUsedVersion>;
 export const AgentPoolUpgradeProfilePropertiesRecentlyUsedVersionsList =
   /*@__PURE__*/ S.Array(
     AgentPoolRecentlyUsedVersion,
@@ -1807,7 +1804,7 @@ export const AgentPool = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AgentPool" }) as any as S.Schema<AgentPool>;
 
 /** The AgentPool items on this page */
-export type AgentPoolListResultValueList = ReadonlyArray<AgentPool>;
+export type AgentPoolListResultValueList = Array<AgentPool>;
 export const AgentPoolListResultValueList = /*@__PURE__*/ S.Array(
   AgentPool,
 ) as any as S.Schema<AgentPoolListResultValueList>;
@@ -1916,7 +1913,7 @@ export const AutoUpgradeNodeImageSelectionType = /*@__PURE__*/ S.String;
 /** The node image upgrade to be applied to the target clusters in auto upgrade. */
 export interface AutoUpgradeNodeImageSelection {
   /** The node image upgrade type. */
-  type: AutoUpgradeNodeImageSelectionType;
+  type: AutoUpgradeNodeImageSelectionType | (string & {});
 }
 export const AutoUpgradeNodeImageSelection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2016,7 +2013,7 @@ export const AutoUpgradeLastTriggerStatus = /*@__PURE__*/ S.String;
 
 /** The error details. */
 export type AutoUpgradeProfileStatusLastTriggerErrorDetailsList =
-  ReadonlyArray<ErrorDetail>;
+  Array<ErrorDetail>;
 export const AutoUpgradeProfileStatusLastTriggerErrorDetailsList =
   /*@__PURE__*/ S.Array(
     ErrorDetail,
@@ -2024,7 +2021,7 @@ export const AutoUpgradeProfileStatusLastTriggerErrorDetailsList =
 
 /** The error additional info. */
 export type AutoUpgradeProfileStatusLastTriggerErrorAdditionalInfoList =
-  ReadonlyArray<ErrorAdditionalInfo>;
+  Array<ErrorAdditionalInfo>;
 export const AutoUpgradeProfileStatusLastTriggerErrorAdditionalInfoList =
   /*@__PURE__*/ S.Array(
     ErrorAdditionalInfo,
@@ -2060,7 +2057,7 @@ export const AutoUpgradeProfileStatusLastTriggerError = /*@__PURE__*/ S.suspend(
 
 /** The target Kubernetes version or node image versions of the last trigger. */
 export type AutoUpgradeProfileStatusLastTriggerUpgradeVersionsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const AutoUpgradeProfileStatusLastTriggerUpgradeVersionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2297,8 +2294,7 @@ export const AutoUpgradeProfile = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AutoUpgradeProfile>;
 
 /** The AutoUpgradeProfile items on this page */
-export type AutoUpgradeProfileListResultValueList =
-  ReadonlyArray<AutoUpgradeProfile>;
+export type AutoUpgradeProfileListResultValueList = Array<AutoUpgradeProfile>;
 export const AutoUpgradeProfileListResultValueList = /*@__PURE__*/ S.Array(
   AutoUpgradeProfile,
 ) as any as S.Schema<AutoUpgradeProfileListResultValueList>;
@@ -2325,7 +2321,7 @@ export const DeploymentSafeguardsLevel = /*@__PURE__*/ S.String;
 
 /** User defined list of namespaces to exclude from Deployment Safeguards. Deployments in these namespaces will not be checked against any safeguards */
 export type DeploymentSafeguardsPropertiesInputExcludedNamespacesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const DeploymentSafeguardsPropertiesInputExcludedNamespacesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2393,7 +2389,7 @@ export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** User defined list of namespaces to exclude from Deployment Safeguards. Deployments in these namespaces will not be checked against any safeguards */
 export type DeploymentSafeguardsPropertiesExcludedNamespacesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const DeploymentSafeguardsPropertiesExcludedNamespacesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2401,7 +2397,7 @@ export const DeploymentSafeguardsPropertiesExcludedNamespacesList =
 
 /** System defined list of namespaces excluded from Deployment Safeguards. These are determined by the underlying provider (such as AKS), and cannot be changed. Deployments in these namespaces will not be checked */
 export type DeploymentSafeguardsPropertiesSystemExcludedNamespacesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const DeploymentSafeguardsPropertiesSystemExcludedNamespacesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2582,8 +2578,7 @@ export const DeploymentSafeguard = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeploymentSafeguard>;
 
 /** The DeploymentSafeguard items on this page */
-export type DeploymentSafeguardListResultValueList =
-  ReadonlyArray<DeploymentSafeguard>;
+export type DeploymentSafeguardListResultValueList = Array<DeploymentSafeguard>;
 export const DeploymentSafeguardListResultValueList = /*@__PURE__*/ S.Array(
   DeploymentSafeguard,
 ) as any as S.Schema<DeploymentSafeguardListResultValueList>;
@@ -2662,8 +2657,7 @@ export type FleetMemberProvisioningState =
 export const FleetMemberProvisioningState = /*@__PURE__*/ S.String;
 
 /** The error details. */
-export type FleetMemberStatusLastOperationErrorDetailsList =
-  ReadonlyArray<ErrorDetail>;
+export type FleetMemberStatusLastOperationErrorDetailsList = Array<ErrorDetail>;
 export const FleetMemberStatusLastOperationErrorDetailsList =
   /*@__PURE__*/ S.Array(
     ErrorDetail,
@@ -2671,7 +2665,7 @@ export const FleetMemberStatusLastOperationErrorDetailsList =
 
 /** The error additional info. */
 export type FleetMemberStatusLastOperationErrorAdditionalInfoList =
-  ReadonlyArray<ErrorAdditionalInfo>;
+  Array<ErrorAdditionalInfo>;
 export const FleetMemberStatusLastOperationErrorAdditionalInfoList =
   /*@__PURE__*/ S.Array(
     ErrorAdditionalInfo,
@@ -2920,7 +2914,7 @@ export const FleetMember = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FleetMember" }) as any as S.Schema<FleetMember>;
 
 /** The FleetMember items on this page */
-export type FleetMemberListResultValueList = ReadonlyArray<FleetMember>;
+export type FleetMemberListResultValueList = Array<FleetMember>;
 export const FleetMemberListResultValueList = /*@__PURE__*/ S.Array(
   FleetMember,
 ) as any as S.Schema<FleetMemberListResultValueList>;
@@ -3210,15 +3204,14 @@ export const FleetHubProfile = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FleetHubProfile>;
 
 /** The error details. */
-export type FleetStatusLastOperationErrorDetailsList =
-  ReadonlyArray<ErrorDetail>;
+export type FleetStatusLastOperationErrorDetailsList = Array<ErrorDetail>;
 export const FleetStatusLastOperationErrorDetailsList = /*@__PURE__*/ S.Array(
   ErrorDetail,
 ) as any as S.Schema<FleetStatusLastOperationErrorDetailsList>;
 
 /** The error additional info. */
 export type FleetStatusLastOperationErrorAdditionalInfoList =
-  ReadonlyArray<ErrorAdditionalInfo>;
+  Array<ErrorAdditionalInfo>;
 export const FleetStatusLastOperationErrorAdditionalInfoList =
   /*@__PURE__*/ S.Array(
     ErrorAdditionalInfo,
@@ -3567,7 +3560,7 @@ export const Fleet = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Fleet" }) as any as S.Schema<Fleet>;
 
 /** The Fleet items on this page */
-export type FleetListResultValueList = ReadonlyArray<Fleet>;
+export type FleetListResultValueList = Array<Fleet>;
 export const FleetListResultValueList = /*@__PURE__*/ S.Array(
   Fleet,
 ) as any as S.Schema<FleetListResultValueList>;
@@ -3656,7 +3649,7 @@ export const FleetCredentialResult = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of base64-encoded Kubernetes configuration files. */
 export type FleetCredentialResultsKubeconfigsList =
-  ReadonlyArray<FleetCredentialResult>;
+  Array<FleetCredentialResult>;
 export const FleetCredentialResultsKubeconfigsList = /*@__PURE__*/ S.Array(
   FleetCredentialResult,
 ) as any as S.Schema<FleetCredentialResultsKubeconfigsList>;
@@ -3801,7 +3794,7 @@ export const UpdateGroup = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateGroup" }) as any as S.Schema<UpdateGroup>;
 
 /** Defines the groups to be executed in parallel in this stage. Duplicate groups are not allowed. Min size: 1. */
-export type UpdateStageGroupsList = ReadonlyArray<UpdateGroup>;
+export type UpdateStageGroupsList = Array<UpdateGroup>;
 export const UpdateStageGroupsList = /*@__PURE__*/ S.Array(
   UpdateGroup,
 ) as any as S.Schema<UpdateStageGroupsList>;
@@ -3824,7 +3817,7 @@ export const UpdateStage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateStage" }) as any as S.Schema<UpdateStage>;
 
 /** The list of stages that compose this update run. Min size: 1. */
-export type UpdateRunStrategyStagesList = ReadonlyArray<UpdateStage>;
+export type UpdateRunStrategyStagesList = Array<UpdateStage>;
 export const UpdateRunStrategyStagesList = /*@__PURE__*/ S.Array(
   UpdateStage,
 ) as any as S.Schema<UpdateRunStrategyStagesList>;
@@ -4089,8 +4082,7 @@ export const FleetUpdateStrategy = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FleetUpdateStrategy>;
 
 /** The FleetUpdateStrategy items on this page */
-export type FleetUpdateStrategyListResultValueList =
-  ReadonlyArray<FleetUpdateStrategy>;
+export type FleetUpdateStrategyListResultValueList = Array<FleetUpdateStrategy>;
 export const FleetUpdateStrategyListResultValueList = /*@__PURE__*/ S.Array(
   FleetUpdateStrategy,
 ) as any as S.Schema<FleetUpdateStrategyListResultValueList>;
@@ -4408,7 +4400,7 @@ export const IdentityBinding = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IdentityBinding>;
 
 /** The IdentityBinding items on this page */
-export type IdentityBindingListResultValueList = ReadonlyArray<IdentityBinding>;
+export type IdentityBindingListResultValueList = Array<IdentityBinding>;
 export const IdentityBindingListResultValueList = /*@__PURE__*/ S.Array(
   IdentityBinding,
 ) as any as S.Schema<IdentityBindingListResultValueList>;
@@ -4481,8 +4473,7 @@ export const MachineIpAddress = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MachineIpAddress>;
 
 /** IPv4, IPv6 addresses of the machine */
-export type MachineNetworkPropertiesIpAddressesList =
-  ReadonlyArray<MachineIpAddress>;
+export type MachineNetworkPropertiesIpAddressesList = Array<MachineIpAddress>;
 export const MachineNetworkPropertiesIpAddressesList = /*@__PURE__*/ S.Array(
   MachineIpAddress,
 ) as any as S.Schema<MachineNetworkPropertiesIpAddressesList>;
@@ -4517,7 +4508,7 @@ export const MachineProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MachineProperties>;
 
 /** The Availability zone in which machine is located. */
-export type MachinesGetResponseZonesList = ReadonlyArray<string>;
+export type MachinesGetResponseZonesList = Array<string>;
 export const MachinesGetResponseZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<MachinesGetResponseZonesList>;
@@ -4578,7 +4569,7 @@ export const MachinesListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MachinesListRequest>;
 
 /** The Availability zone in which machine is located. */
-export type MachineZonesList = ReadonlyArray<string>;
+export type MachineZonesList = Array<string>;
 export const MachineZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<MachineZonesList>;
@@ -4610,7 +4601,7 @@ export const Machine = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Machine" }) as any as S.Schema<Machine>;
 
 /** The Machine items on this page */
-export type MachineListResultValueList = ReadonlyArray<Machine>;
+export type MachineListResultValueList = Array<Machine>;
 export const MachineListResultValueList = /*@__PURE__*/ S.Array(
   Machine,
 ) as any as S.Schema<MachineListResultValueList>;
@@ -4643,7 +4634,7 @@ export type WeekDay =
 export const WeekDay = /*@__PURE__*/ S.String;
 
 /** A list of hours in the day used to identify a time range. Each integer hour represents a time range beginning at 0m after the hour ending at the next hour (non-inclusive). 0 corresponds to 00:00 UTC, 23 corresponds to 23:00 UTC. Specifying [0, 1] means the 00:00 - 02:00 UTC time range. */
-export type TimeInWeekHourSlotsList = ReadonlyArray<number>;
+export type TimeInWeekHourSlotsList = Array<number>;
 export const TimeInWeekHourSlotsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<TimeInWeekHourSlotsList>;
@@ -4651,7 +4642,7 @@ export const TimeInWeekHourSlotsList = /*@__PURE__*/ S.Array(
 /** Time in a week. */
 export interface TimeInWeek {
   /** The day of the week. */
-  day?: WeekDay;
+  day?: WeekDay | (string & {});
   /** A list of hours in the day used to identify a time range. Each integer hour represents a time range beginning at 0m after the hour ending at the next hour (non-inclusive). 0 corresponds to 00:00 UTC, 23 corresponds to 23:00 UTC. Specifying [0, 1] means the 00:00 - 02:00 UTC time range. */
   hourSlots?: TimeInWeekHourSlotsList;
 }
@@ -4664,7 +4655,7 @@ export const TimeInWeek = /*@__PURE__*/ S.suspend(() =>
 
 /** Time slots during the week when planned maintenance is allowed to proceed. If two array entries specify the same day of the week, the applied configuration is the union of times in both entries. */
 export type MaintenanceConfigurationPropertiesTimeInWeekList =
-  ReadonlyArray<TimeInWeek>;
+  Array<TimeInWeek>;
 export const MaintenanceConfigurationPropertiesTimeInWeekList =
   /*@__PURE__*/ S.Array(
     TimeInWeek,
@@ -4686,7 +4677,7 @@ export const TimeSpan = /*@__PURE__*/ S.suspend(() =>
 
 /** Time slots on which upgrade is not allowed. */
 export type MaintenanceConfigurationPropertiesNotAllowedTimeList =
-  ReadonlyArray<TimeSpan>;
+  Array<TimeSpan>;
 export const MaintenanceConfigurationPropertiesNotAllowedTimeList =
   /*@__PURE__*/ S.Array(
     TimeSpan,
@@ -4708,7 +4699,7 @@ export interface WeeklySchedule {
   /** Specifies the number of weeks between each set of occurrences. */
   intervalWeeks: number;
   /** Specifies on which day of the week the maintenance occurs. */
-  dayOfWeek: WeekDay;
+  dayOfWeek: WeekDay | (string & {});
 }
 export const WeeklySchedule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4742,9 +4733,9 @@ export interface RelativeMonthlySchedule {
   /** Specifies the number of months between each set of occurrences. */
   intervalMonths: number;
   /** The week index. Specifies on which week of the month the dayOfWeek applies. */
-  weekIndex: Type;
+  weekIndex: Type | (string & {});
   /** Specifies on which day of the week the maintenance occurs. */
-  dayOfWeek: WeekDay;
+  dayOfWeek: WeekDay | (string & {});
 }
 export const RelativeMonthlySchedule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4791,7 +4782,7 @@ export const DateSpan = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DateSpan" }) as any as S.Schema<DateSpan>;
 
 /** Date ranges on which upgrade is not allowed. 'utcOffset' applies to this field. For example, with 'utcOffset: +02:00' and 'dateSpan' being '2022-12-23' to '2023-01-03', maintenance will be blocked from '2022-12-22 22:00' to '2023-01-03 22:00' in UTC time. */
-export type MaintenanceWindowNotAllowedDatesList = ReadonlyArray<DateSpan>;
+export type MaintenanceWindowNotAllowedDatesList = Array<DateSpan>;
 export const MaintenanceWindowNotAllowedDatesList = /*@__PURE__*/ S.Array(
   DateSpan,
 ) as any as S.Schema<MaintenanceWindowNotAllowedDatesList>;
@@ -5044,7 +5035,7 @@ export const MaintenanceConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** The MaintenanceConfiguration items on this page */
 export type MaintenanceConfigurationListResultValueList =
-  ReadonlyArray<MaintenanceConfiguration>;
+  Array<MaintenanceConfiguration>;
 export const MaintenanceConfigurationListResultValueList =
   /*@__PURE__*/ S.Array(
     MaintenanceConfiguration,
@@ -5114,7 +5105,7 @@ export const ManagedClusterAgentPoolProfileInputOsType = /*@__PURE__*/ S.String;
 
 /** The list of Availability zones to use for nodes. This can only be specified if the AgentPoolType property is 'VirtualMachineScaleSets'. */
 export type ManagedClusterAgentPoolProfileInputAvailabilityZonesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ManagedClusterAgentPoolProfileInputAvailabilityZonesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5155,8 +5146,7 @@ export const ManagedClusterAgentPoolProfileInputNodeLabelsMap =
   ) as any as S.Schema<ManagedClusterAgentPoolProfileInputNodeLabelsMap>;
 
 /** The taints added to new nodes during node pool create and scale. For example, key=value:NoSchedule. */
-export type ManagedClusterAgentPoolProfileInputNodeTaintsList =
-  ReadonlyArray<string>;
+export type ManagedClusterAgentPoolProfileInputNodeTaintsList = Array<string>;
 export const ManagedClusterAgentPoolProfileInputNodeTaintsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5164,7 +5154,7 @@ export const ManagedClusterAgentPoolProfileInputNodeTaintsList =
 
 /** The status of nodes in a VirtualMachines agent pool. */
 export type ManagedClusterAgentPoolProfileInputVirtualMachineNodesStatusList =
-  ReadonlyArray<VirtualMachineNodes>;
+  Array<VirtualMachineNodes>;
 export const ManagedClusterAgentPoolProfileInputVirtualMachineNodesStatusList =
   /*@__PURE__*/ S.Array(
     VirtualMachineNodes,
@@ -5353,7 +5343,7 @@ export const ManagedClusterAgentPoolProfileInput = /*@__PURE__*/ S.suspend(() =>
 
 /** The agent pool properties. */
 export type ManagedClusterPropertiesInputAgentPoolProfilesList =
-  ReadonlyArray<ManagedClusterAgentPoolProfileInput>;
+  Array<ManagedClusterAgentPoolProfileInput>;
 export const ManagedClusterPropertiesInputAgentPoolProfilesList =
   /*@__PURE__*/ S.Array(
     ManagedClusterAgentPoolProfileInput,
@@ -5374,7 +5364,7 @@ export const ContainerServiceSshPublicKey = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of SSH public keys used to authenticate with Linux-based VMs. A maximum of 1 key may be specified. */
 export type ContainerServiceSshConfigurationPublicKeysList =
-  ReadonlyArray<ContainerServiceSshPublicKey>;
+  Array<ContainerServiceSshPublicKey>;
 export const ContainerServiceSshConfigurationPublicKeysList =
   /*@__PURE__*/ S.Array(
     ContainerServiceSshPublicKey,
@@ -5439,7 +5429,7 @@ export interface ManagedClusterWindowsProfile {
   /** Specifies the password of the administrator account. <br><br> **Minimum-length:** 8 characters <br><br> **Max-length:** 123 characters <br><br> **Complexity requirements:** 3 out of 4 conditions below need to be fulfilled <br> Has lower characters <br>Has upper characters <br> Has a digit <br> Has a special character (Regex match [\W_]) <br><br> **Disallowed values:** "abc@123", "P@$$w0rd", "P@ssw0rd", "P@ssword123", "Pa$$word", "pass@word1", "Password!", "Password1", "Password22", "iloveyou!" */
   adminPassword?: string | Redacted.Redacted<string>;
   /** The license type to use for Windows VMs. See [Azure Hybrid User Benefits](https://azure.microsoft.com/pricing/hybrid-benefit/faq/) for more details. */
-  licenseType?: LicenseType;
+  licenseType?: LicenseType | (string & {});
   /** Whether to enable CSI proxy. For more details on CSI proxy, see the [CSI proxy GitHub repo](https://github.com/kubernetes-csi/csi-proxy). */
   enableCSIProxy?: boolean;
   /** The Windows gMSA Profile in the Managed Cluster. */
@@ -5555,7 +5545,7 @@ export const ManagedClusterPodIdentityInput = /*@__PURE__*/ S.suspend(() =>
 
 /** The pod identities to use in the cluster. */
 export type ManagedClusterPodIdentityProfileInputUserAssignedIdentitiesList =
-  ReadonlyArray<ManagedClusterPodIdentityInput>;
+  Array<ManagedClusterPodIdentityInput>;
 export const ManagedClusterPodIdentityProfileInputUserAssignedIdentitiesList =
   /*@__PURE__*/ S.Array(
     ManagedClusterPodIdentityInput,
@@ -5592,7 +5582,7 @@ export const ManagedClusterPodIdentityException = /*@__PURE__*/ S.suspend(() =>
 
 /** The pod identity exceptions to allow. */
 export type ManagedClusterPodIdentityProfileInputUserAssignedIdentityExceptionsList =
-  ReadonlyArray<ManagedClusterPodIdentityException>;
+  Array<ManagedClusterPodIdentityException>;
 export const ManagedClusterPodIdentityProfileInputUserAssignedIdentityExceptionsList =
   /*@__PURE__*/ S.Array(
     ManagedClusterPodIdentityException,
@@ -5646,7 +5636,7 @@ export const RestrictionLevel = /*@__PURE__*/ S.String;
 /** Node resource group lockdown profile for a managed cluster. */
 export interface ManagedClusterNodeResourceGroupProfile {
   /** The restriction level applied to the cluster's node resource group. If not specified, the default is 'Unrestricted' */
-  restrictionLevel?: RestrictionLevel;
+  restrictionLevel?: RestrictionLevel | (string & {});
 }
 export const ManagedClusterNodeResourceGroupProfile = /*@__PURE__*/ S.suspend(
   () =>
@@ -5705,7 +5695,7 @@ export const TransitEncryptionType = /*@__PURE__*/ S.String;
 /** Encryption configuration for Cilium-based clusters. Once enabled all traffic between Cilium managed pods will be encrypted when it leaves the node boundary. */
 export interface AdvancedNetworkingSecurityTransitEncryption {
   /** Configures pod-to-pod encryption. This can be enabled only on Cilium-based clusters. If not specified, the default value is None. */
-  type?: TransitEncryptionType;
+  type?: TransitEncryptionType | (string & {});
 }
 export const AdvancedNetworkingSecurityTransitEncryption =
   /*@__PURE__*/ S.suspend(() =>
@@ -5721,7 +5711,7 @@ export interface AdvancedNetworkingSecurity {
   /** This feature allows user to configure network policy based on DNS (FQDN) names. It can be enabled only on cilium based clusters. If not specified, the default is false. */
   enabled?: boolean;
   /** Enable advanced network policies. This allows users to configure Layer 7 network policies (FQDN, HTTP, Kafka). Policies themselves must be configured via the Cilium Network Policy resources, see https://docs.cilium.io/en/latest/security/policy/index.html. This can be enabled only on cilium-based clusters. If not specified, the default value is FQDN if security.enabled is set to true. */
-  advancedNetworkPolicies?: AdvancedNetworkPolicies;
+  advancedNetworkPolicies?: AdvancedNetworkPolicies | (string & {});
   /** Encryption configuration for Cilium-based clusters. Once enabled all traffic between Cilium managed pods will be encrypted when it leaves the node boundary. */
   transitEncryption?: AdvancedNetworkingSecurityTransitEncryption;
 }
@@ -5743,7 +5733,9 @@ export const AdvancedNetworkingPerformanceAccelerationMode =
 /** Profile to enable performance-enhancing features on clusters that use Azure CNI powered by Cilium. */
 export interface AdvancedNetworkingPerformance {
   /** Enable advanced network acceleration options. This allows users to configure acceleration using BPF host routing. This can be enabled only with Cilium dataplane. If not specified, the default value is None (no acceleration). The acceleration mode can be changed on a pre-existing cluster. See https://aka.ms/acnsperformance for a detailed explanation */
-  accelerationMode?: AdvancedNetworkingPerformanceAccelerationMode;
+  accelerationMode?:
+    | AdvancedNetworkingPerformanceAccelerationMode
+    | (string & {});
 }
 export const AdvancedNetworkingPerformance = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5821,7 +5813,7 @@ export const ResourceReference = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of public IP prefix resources. */
 export type ManagedClusterLoadBalancerProfileOutboundIPPrefixesPublicIPPrefixesList =
-  ReadonlyArray<ResourceReference>;
+  Array<ResourceReference>;
 export const ManagedClusterLoadBalancerProfileOutboundIPPrefixesPublicIPPrefixesList =
   /*@__PURE__*/ S.Array(
     ResourceReference,
@@ -5845,7 +5837,7 @@ export const ManagedClusterLoadBalancerProfileOutboundIPPrefixes =
 
 /** A list of public IP resources. */
 export type ManagedClusterLoadBalancerProfileOutboundIPsPublicIPsList =
-  ReadonlyArray<ResourceReference>;
+  Array<ResourceReference>;
 export const ManagedClusterLoadBalancerProfileOutboundIPsPublicIPsList =
   /*@__PURE__*/ S.Array(
     ResourceReference,
@@ -5962,23 +5954,21 @@ export const ManagedClusterStaticEgressGatewayProfile = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ManagedClusterStaticEgressGatewayProfile>;
 
 /** The CIDR notation IP ranges from which to assign pod IPs. One IPv4 CIDR is expected for single-stack networking. Two CIDRs, one for each IP family (IPv4/IPv6), is expected for dual-stack networking. */
-export type ContainerServiceNetworkProfileInputPodCidrsList =
-  ReadonlyArray<string>;
+export type ContainerServiceNetworkProfileInputPodCidrsList = Array<string>;
 export const ContainerServiceNetworkProfileInputPodCidrsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ContainerServiceNetworkProfileInputPodCidrsList>;
 
 /** The CIDR notation IP ranges from which to assign service cluster IPs. One IPv4 CIDR is expected for single-stack networking. Two CIDRs, one for each IP family (IPv4/IPv6), is expected for dual-stack networking. They must not overlap with any Subnet IP ranges. */
-export type ContainerServiceNetworkProfileInputServiceCidrsList =
-  ReadonlyArray<string>;
+export type ContainerServiceNetworkProfileInputServiceCidrsList = Array<string>;
 export const ContainerServiceNetworkProfileInputServiceCidrsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ContainerServiceNetworkProfileInputServiceCidrsList>;
 
 /** The IP families used to specify IP versions available to the cluster. IP families are used to determine single-stack or dual-stack clusters. For single-stack, the expected value is IPv4. For dual-stack, the expected values are IPv4 and IPv6. */
-export type ContainerServiceNetworkProfileInputIpFamiliesList = ReadonlyArray<
+export type ContainerServiceNetworkProfileInputIpFamiliesList = Array<
   IPFamily | (string & {})
 >;
 export const ContainerServiceNetworkProfileInputIpFamiliesList =
@@ -6054,8 +6044,7 @@ export const ContainerServiceNetworkProfileInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ContainerServiceNetworkProfileInput>;
 
 /** The list of AAD group object IDs that will have admin role of the cluster. */
-export type ManagedClusterAADProfileAdminGroupObjectIDsList =
-  ReadonlyArray<string>;
+export type ManagedClusterAADProfileAdminGroupObjectIDsList = Array<string>;
 export const ManagedClusterAADProfileAdminGroupObjectIDsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6114,9 +6103,9 @@ export const NodeOSUpgradeChannel = /*@__PURE__*/ S.String;
 /** Auto upgrade profile for a managed cluster. */
 export interface ManagedClusterAutoUpgradeProfile {
   /** The upgrade channel for auto upgrade. The default is 'none'. For more information see [setting the AKS cluster auto-upgrade channel](https://docs.microsoft.com/azure/aks/upgrade-cluster#set-auto-upgrade-channel). */
-  upgradeChannel?: UpgradeChannel;
+  upgradeChannel?: UpgradeChannel | (string & {});
   /** Node OS Upgrade Channel. Manner in which the OS on your nodes is updated. The default is NodeImage. */
-  nodeOSUpgradeChannel?: NodeOSUpgradeChannel;
+  nodeOSUpgradeChannel?: NodeOSUpgradeChannel | (string & {});
 }
 export const ManagedClusterAutoUpgradeProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6171,7 +6160,7 @@ export interface ManagedClusterPropertiesAutoScalerProfile {
   /** Should CA ignore DaemonSet pods when calculating resource utilization for scaling down. If set to true, the resources used by daemonset will be taken into account when making scaling down decisions. */
   ignore_daemonsets_utilization?: boolean;
   /** The expander to use when scaling up. If not specified, the default is 'random'. See [expanders](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-are-expanders) for more information. */
-  expander?: Expander;
+  expander?: Expander | (string & {});
   /** The maximum number of empty nodes that can be deleted at the same time. This must be a positive integer. The default is 10. */
   max_empty_bulk_delete?: string;
   /** The maximum number of seconds the cluster autoscaler waits for pod termination when trying to scale down a node. The default is 600. */
@@ -6269,7 +6258,7 @@ export const ManagedClusterPropertiesAutoScalerProfile =
 
 /** The IP ranges authorized to access the Kubernetes API server. IP ranges are specified in CIDR format, e.g. 137.117.106.88/29. This feature is not compatible with clusters that use Public IP Per Node, or clusters that are using a Basic Load Balancer. For more information see [API server authorized IP ranges](https://docs.microsoft.com/azure/aks/api-server-authorized-ip-ranges). */
 export type ManagedClusterAPIServerAccessProfileAuthorizedIPRangesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ManagedClusterAPIServerAccessProfileAuthorizedIPRangesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6320,7 +6309,7 @@ export const ManagedClusterPropertiesInputIdentityProfileMap =
   ) as any as S.Schema<ManagedClusterPropertiesInputIdentityProfileMap>;
 
 /** The RequiredMembers of the resource */
-export type PrivateLinkResourceInputRequiredMembersList = ReadonlyArray<string>;
+export type PrivateLinkResourceInputRequiredMembersList = Array<string>;
 export const PrivateLinkResourceInputRequiredMembersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6353,14 +6342,14 @@ export const PrivateLinkResourceInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Private link resources associated with the cluster. */
 export type ManagedClusterPropertiesInputPrivateLinkResourcesList =
-  ReadonlyArray<PrivateLinkResourceInput>;
+  Array<PrivateLinkResourceInput>;
 export const ManagedClusterPropertiesInputPrivateLinkResourcesList =
   /*@__PURE__*/ S.Array(
     PrivateLinkResourceInput,
   ) as any as S.Schema<ManagedClusterPropertiesInputPrivateLinkResourcesList>;
 
 /** The endpoints that should not go through proxy. */
-export type ManagedClusterHTTPProxyConfigNoProxyList = ReadonlyArray<string>;
+export type ManagedClusterHTTPProxyConfigNoProxyList = Array<string>;
 export const ManagedClusterHTTPProxyConfigNoProxyList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ManagedClusterHTTPProxyConfigNoProxyList>;
@@ -6423,7 +6412,7 @@ export const ManagedClusterSecurityProfileDefenderSecurityGatingIdentity =
 
 /** List of identities that the admission controller uses to pull security artifacts from registries. These are the same identities used by the cluster to pull container images. For more information on configuring this identity, see https://learn.microsoft.com/en-us/azure/defender-for-cloud/gated-deployment-infrastructure-as-code. */
 export type ManagedClusterSecurityProfileDefenderSecurityGatingIdentitiesList =
-  ReadonlyArray<ManagedClusterSecurityProfileDefenderSecurityGatingIdentity>;
+  Array<ManagedClusterSecurityProfileDefenderSecurityGatingIdentity>;
 export const ManagedClusterSecurityProfileDefenderSecurityGatingIdentitiesList =
   /*@__PURE__*/ S.Array(
     ManagedClusterSecurityProfileDefenderSecurityGatingIdentity,
@@ -6486,7 +6475,7 @@ export interface AzureKeyVaultKms {
   /** Identifier of Azure Key Vault key. See [key identifier format](https://docs.microsoft.com/en-us/azure/key-vault/general/about-keys-secrets-certificates#vault-name-and-object-name) for more details. When Azure Key Vault key management service is enabled, this field is required and must be a valid key identifier. When Azure Key Vault key management service is disabled, leave the field empty. */
   keyId?: string;
   /** Network access of the key vault. Network access of key vault. The possible values are `Public` and `Private`. `Public` means the key vault allows public access from all networks. `Private` means the key vault disables public access and enables private link. The default value is `Public`. */
-  keyVaultNetworkAccess?: AzureKeyVaultKmsKeyVaultNetworkAccess;
+  keyVaultNetworkAccess?: AzureKeyVaultKmsKeyVaultNetworkAccess | (string & {});
   /** Resource ID of key vault. When keyVaultNetworkAccess is `Private`, this field is required and must be a valid resource ID. When keyVaultNetworkAccess is `Public`, leave the field empty. */
   keyVaultResourceId?: string;
 }
@@ -6534,7 +6523,7 @@ export const ManagedClusterSecurityProfileImageCleaner =
 
 /** A list of up to 10 base64 encoded CAs that will be added to the trust store on all nodes in the cluster. For more information see [Custom CA Trust Certificates](https://learn.microsoft.com/en-us/azure/aks/custom-certificate-authority). */
 export type ManagedClusterSecurityProfileCustomCATrustCertificatesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ManagedClusterSecurityProfileCustomCATrustCertificatesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6654,7 +6643,7 @@ export const GatewayAPIIstioEnabled = /*@__PURE__*/ S.String;
 /** Configuration for using a sidecar-less Istio control plane for managed ingress via the Gateway API with App Routing. See https://aka.ms/gateway-on-istio for information on using Istio for ingress via the Gateway API. */
 export interface ManagedClusterAppRoutingIstio {
   /** Whether to enable Istio as a Gateway API implementation for managed ingress with App Routing. */
-  mode?: GatewayAPIIstioEnabled;
+  mode?: GatewayAPIIstioEnabled | (string & {});
 }
 export const ManagedClusterAppRoutingIstio = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6680,7 +6669,7 @@ export const ManagedClusterWebAppRoutingGatewayAPIImplementations =
 
 /** Resource IDs of the DNS zones to be associated with the Application Routing add-on. Used only when Application Routing add-on is enabled. Public and private DNS zones can be in different resource groups, but all public DNS zones must be in the same resource group and all private DNS zones must be in the same resource group. */
 export type ManagedClusterIngressProfileWebAppRoutingDnsZoneResourceIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ManagedClusterIngressProfileWebAppRoutingDnsZoneResourceIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6697,7 +6686,7 @@ export const NginxIngressControllerType = /*@__PURE__*/ S.String;
 /** Nginx ingress controller configuration for the managed cluster ingress profile. */
 export interface ManagedClusterIngressProfileNginx {
   /** Ingress type for the default NginxIngressController custom resource */
-  defaultIngressControllerType?: NginxIngressControllerType;
+  defaultIngressControllerType?: NginxIngressControllerType | (string & {});
 }
 export const ManagedClusterIngressProfileNginx = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6744,7 +6733,7 @@ export const ManagedGatewayType = /*@__PURE__*/ S.String;
 /** Configuration for managed Gateway API CRDs. See https://aka.ms/k8s-gateway-api for more details. */
 export interface ManagedClusterIngressProfileGatewayConfiguration {
   /** Configuration for the managed Gateway API installation. If not specified, the default is 'Disabled'. See https://aka.ms/k8s-gateway-api for more details. */
-  installation?: ManagedGatewayType;
+  installation?: ManagedGatewayType | (string & {});
 }
 export const ManagedClusterIngressProfileGatewayConfiguration =
   /*@__PURE__*/ S.suspend(() =>
@@ -6935,7 +6924,7 @@ export const IstioIngressGatewayMode = /*@__PURE__*/ S.String;
 /** Istio ingress gateway configuration. For now, we support up to one external ingress gateway named `aks-istio-ingressgateway-external` and one internal ingress gateway named `aks-istio-ingressgateway-internal`. */
 export interface IstioIngressGateway {
   /** Mode of an ingress gateway. */
-  mode: IstioIngressGatewayMode;
+  mode: IstioIngressGatewayMode | (string & {});
   /** Whether to enable the ingress gateway. */
   enabled: boolean;
 }
@@ -6949,8 +6938,7 @@ export const IstioIngressGateway = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IstioIngressGateway>;
 
 /** Istio ingress gateways. */
-export type IstioComponentsIngressGatewaysList =
-  ReadonlyArray<IstioIngressGateway>;
+export type IstioComponentsIngressGatewaysList = Array<IstioIngressGateway>;
 export const IstioComponentsIngressGatewaysList = /*@__PURE__*/ S.Array(
   IstioIngressGateway,
 ) as any as S.Schema<IstioComponentsIngressGatewaysList>;
@@ -6978,8 +6966,7 @@ export const IstioEgressGateway = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IstioEgressGateway>;
 
 /** Istio egress gateways. */
-export type IstioComponentsEgressGatewaysList =
-  ReadonlyArray<IstioEgressGateway>;
+export type IstioComponentsEgressGatewaysList = Array<IstioEgressGateway>;
 export const IstioComponentsEgressGatewaysList = /*@__PURE__*/ S.Array(
   IstioEgressGateway,
 ) as any as S.Schema<IstioComponentsEgressGatewaysList>;
@@ -6995,7 +6982,7 @@ export interface IstioComponents {
   /** Istio egress gateways. */
   egressGateways?: IstioComponentsEgressGatewaysList;
   /** Mode of traffic redirection. */
-  proxyRedirectionMechanism?: ProxyRedirectionMechanism;
+  proxyRedirectionMechanism?: ProxyRedirectionMechanism | (string & {});
 }
 export const IstioComponents = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -7046,7 +7033,7 @@ export const IstioCertificateAuthority = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IstioCertificateAuthority>;
 
 /** The list of revisions of the Istio control plane. When an upgrade is not in progress, this holds one value. When canary upgrade is in progress, this can only hold two consecutive values. For more information, see: https://learn.microsoft.com/en-us/azure/aks/istio-upgrade */
-export type IstioServiceMeshRevisionsList = ReadonlyArray<string>;
+export type IstioServiceMeshRevisionsList = Array<string>;
 export const IstioServiceMeshRevisionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<IstioServiceMeshRevisionsList>;
@@ -7073,7 +7060,7 @@ export const IstioServiceMesh = /*@__PURE__*/ S.suspend(() =>
 /** Service mesh profile for a managed cluster. */
 export interface ServiceMeshProfile {
   /** Mode of the service mesh. */
-  mode: ServiceMeshMode;
+  mode: ServiceMeshMode | (string & {});
   /** Istio service mesh configuration. */
   istio?: IstioServiceMesh;
 }
@@ -7126,9 +7113,11 @@ export const ManagedClusterNodeProvisioningProfileDefaultNodePools =
 /** Node provisioning profile for the managed cluster. */
 export interface ManagedClusterNodeProvisioningProfile {
   /** The node provisioning mode. If not specified, the default is Manual. */
-  mode?: NodeProvisioningMode;
+  mode?: NodeProvisioningMode | (string & {});
   /** The set of default Karpenter NodePools (CRDs) configured for node provisioning. This field has no effect unless mode is 'Auto'. Warning: Changing this from Auto to None on an existing cluster will cause the default Karpenter NodePools to be deleted, which will drain and delete the nodes associated with those pools. It is strongly recommended to not do this unless there are idle nodes ready to take the pods evicted by that action. If not specified, the default is Auto. For more information see aka.ms/aks/nap#node-pools. */
-  defaultNodePools?: ManagedClusterNodeProvisioningProfileDefaultNodePools;
+  defaultNodePools?:
+    | ManagedClusterNodeProvisioningProfileDefaultNodePools
+    | (string & {});
 }
 export const ManagedClusterNodeProvisioningProfile = /*@__PURE__*/ S.suspend(
   () =>
@@ -7150,7 +7139,7 @@ export const ManagedClusterBootstrapProfileArtifactSource =
 /** The bootstrap profile. */
 export interface ManagedClusterBootstrapProfile {
   /** The artifact source. The source where the artifacts are downloaded from. */
-  artifactSource?: ManagedClusterBootstrapProfileArtifactSource;
+  artifactSource?: ManagedClusterBootstrapProfileArtifactSource | (string & {});
   /** The resource Id of Azure Container Registry. The registry must have private network access, premium SKU and zone redundancy. */
   containerRegistryId?: string;
 }
@@ -7184,7 +7173,7 @@ export const SchedulerConfigMode = /*@__PURE__*/ S.String;
 /** Profile with settings related to a specific instance of an AKS-managed scheduler. */
 export interface SchedulerInstanceProfile {
   /** The configuration mode to be used by the AKS-managed scheduler. */
-  schedulerConfigMode?: SchedulerConfigMode;
+  schedulerConfigMode?: SchedulerConfigMode | (string & {});
 }
 export const SchedulerInstanceProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -7396,9 +7385,9 @@ export const ManagedClusterSKUTier = /*@__PURE__*/ S.String;
 /** The SKU of a Managed Cluster. */
 export interface ManagedClusterSKU {
   /** The name of a managed cluster SKU. */
-  name?: ManagedClusterSKUName;
+  name?: ManagedClusterSKUName | (string & {});
   /** The tier of a managed cluster SKU. If not specified, the default is 'Free'. See [AKS Pricing Tier](https://learn.microsoft.com/azure/aks/free-standard-pricing-tiers) for more details. */
-  tier?: ManagedClusterSKUTier;
+  tier?: ManagedClusterSKUTier | (string & {});
 }
 export const ManagedClusterSKU = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -7418,7 +7407,7 @@ export interface ExtendedLocation {
   /** The name of the extended location. */
   name?: string;
   /** The type of the extended location. */
-  type?: ExtendedLocationTypes;
+  type?: ExtendedLocationTypes | (string & {});
 }
 export const ExtendedLocation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -7570,8 +7559,7 @@ export type ManagedClusterAgentPoolProfileOsType = "Linux" | "Windows";
 export const ManagedClusterAgentPoolProfileOsType = /*@__PURE__*/ S.String;
 
 /** The list of Availability zones to use for nodes. This can only be specified if the AgentPoolType property is 'VirtualMachineScaleSets'. */
-export type ManagedClusterAgentPoolProfileAvailabilityZonesList =
-  ReadonlyArray<string>;
+export type ManagedClusterAgentPoolProfileAvailabilityZonesList = Array<string>;
 export const ManagedClusterAgentPoolProfileAvailabilityZonesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -7609,8 +7597,7 @@ export const ManagedClusterAgentPoolProfileNodeLabelsMap =
   ) as any as S.Schema<ManagedClusterAgentPoolProfileNodeLabelsMap>;
 
 /** The taints added to new nodes during node pool create and scale. For example, key=value:NoSchedule. */
-export type ManagedClusterAgentPoolProfileNodeTaintsList =
-  ReadonlyArray<string>;
+export type ManagedClusterAgentPoolProfileNodeTaintsList = Array<string>;
 export const ManagedClusterAgentPoolProfileNodeTaintsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -7618,7 +7605,7 @@ export const ManagedClusterAgentPoolProfileNodeTaintsList =
 
 /** The status of nodes in a VirtualMachines agent pool. */
 export type ManagedClusterAgentPoolProfileVirtualMachineNodesStatusList =
-  ReadonlyArray<VirtualMachineNodes>;
+  Array<VirtualMachineNodes>;
 export const ManagedClusterAgentPoolProfileVirtualMachineNodesStatusList =
   /*@__PURE__*/ S.Array(
     VirtualMachineNodes,
@@ -7812,7 +7799,7 @@ export const ManagedClusterAgentPoolProfile = /*@__PURE__*/ S.suspend(() =>
 
 /** The agent pool properties. */
 export type ManagedClusterPropertiesAgentPoolProfilesList =
-  ReadonlyArray<ManagedClusterAgentPoolProfile>;
+  Array<ManagedClusterAgentPoolProfile>;
 export const ManagedClusterPropertiesAgentPoolProfilesList =
   /*@__PURE__*/ S.Array(
     ManagedClusterAgentPoolProfile,
@@ -7840,7 +7827,7 @@ export const ManagedClusterPodIdentityProvisioningState =
 
 /** A list of additional details about the error. */
 export type ManagedClusterPodIdentityProvisioningErrorBodyDetailsList =
-  ReadonlyArray<ManagedClusterPodIdentityProvisioningErrorBody>;
+  Array<ManagedClusterPodIdentityProvisioningErrorBody>;
 export const ManagedClusterPodIdentityProvisioningErrorBodyDetailsList =
   /*@__PURE__*/ S.Array(
     S.suspend(() => ManagedClusterPodIdentityProvisioningErrorBody),
@@ -7929,7 +7916,7 @@ export const ManagedClusterPodIdentity = /*@__PURE__*/ S.suspend(() =>
 
 /** The pod identities to use in the cluster. */
 export type ManagedClusterPodIdentityProfileUserAssignedIdentitiesList =
-  ReadonlyArray<ManagedClusterPodIdentity>;
+  Array<ManagedClusterPodIdentity>;
 export const ManagedClusterPodIdentityProfileUserAssignedIdentitiesList =
   /*@__PURE__*/ S.Array(
     ManagedClusterPodIdentity,
@@ -7937,7 +7924,7 @@ export const ManagedClusterPodIdentityProfileUserAssignedIdentitiesList =
 
 /** The pod identity exceptions to allow. */
 export type ManagedClusterPodIdentityProfileUserAssignedIdentityExceptionsList =
-  ReadonlyArray<ManagedClusterPodIdentityException>;
+  Array<ManagedClusterPodIdentityException>;
 export const ManagedClusterPodIdentityProfileUserAssignedIdentityExceptionsList =
   /*@__PURE__*/ S.Array(
     ManagedClusterPodIdentityException,
@@ -7997,7 +7984,7 @@ export const ContainerServiceNetworkProfileOutboundType =
 
 /** The effective outbound IP resources of the cluster load balancer. */
 export type ManagedClusterLoadBalancerProfileEffectiveOutboundIPsList =
-  ReadonlyArray<ResourceReference>;
+  Array<ResourceReference>;
 export const ManagedClusterLoadBalancerProfileEffectiveOutboundIPsList =
   /*@__PURE__*/ S.Array(
     ResourceReference,
@@ -8054,7 +8041,7 @@ export const ManagedClusterLoadBalancerProfile = /*@__PURE__*/ S.suspend(() =>
 
 /** The effective outbound IP resources of the cluster NAT gateway. */
 export type ManagedClusterNATGatewayProfileEffectiveOutboundIPsList =
-  ReadonlyArray<ResourceReference>;
+  Array<ResourceReference>;
 export const ManagedClusterNATGatewayProfileEffectiveOutboundIPsList =
   /*@__PURE__*/ S.Array(
     ResourceReference,
@@ -8084,22 +8071,20 @@ export const ManagedClusterNATGatewayProfile = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ManagedClusterNATGatewayProfile>;
 
 /** The CIDR notation IP ranges from which to assign pod IPs. One IPv4 CIDR is expected for single-stack networking. Two CIDRs, one for each IP family (IPv4/IPv6), is expected for dual-stack networking. */
-export type ContainerServiceNetworkProfilePodCidrsList = ReadonlyArray<string>;
+export type ContainerServiceNetworkProfilePodCidrsList = Array<string>;
 export const ContainerServiceNetworkProfilePodCidrsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ContainerServiceNetworkProfilePodCidrsList>;
 
 /** The CIDR notation IP ranges from which to assign service cluster IPs. One IPv4 CIDR is expected for single-stack networking. Two CIDRs, one for each IP family (IPv4/IPv6), is expected for dual-stack networking. They must not overlap with any Subnet IP ranges. */
-export type ContainerServiceNetworkProfileServiceCidrsList =
-  ReadonlyArray<string>;
+export type ContainerServiceNetworkProfileServiceCidrsList = Array<string>;
 export const ContainerServiceNetworkProfileServiceCidrsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ContainerServiceNetworkProfileServiceCidrsList>;
 
 /** The IP families used to specify IP versions available to the cluster. IP families are used to determine single-stack or dual-stack clusters. For single-stack, the expected value is IPv4. For dual-stack, the expected values are IPv4 and IPv6. */
-export type ContainerServiceNetworkProfileIpFamiliesList =
-  ReadonlyArray<IPFamily>;
+export type ContainerServiceNetworkProfileIpFamiliesList = Array<IPFamily>;
 export const ContainerServiceNetworkProfileIpFamiliesList =
   /*@__PURE__*/ S.Array(
     IPFamily,
@@ -8179,7 +8164,7 @@ export const ManagedClusterPropertiesIdentityProfileMap =
   ) as any as S.Schema<ManagedClusterPropertiesIdentityProfileMap>;
 
 /** The RequiredMembers of the resource */
-export type PrivateLinkResourceRequiredMembersList = ReadonlyArray<string>;
+export type PrivateLinkResourceRequiredMembersList = Array<string>;
 export const PrivateLinkResourceRequiredMembersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PrivateLinkResourceRequiredMembersList>;
@@ -8214,7 +8199,7 @@ export const PrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
 
 /** Private link resources associated with the cluster. */
 export type ManagedClusterPropertiesPrivateLinkResourcesList =
-  ReadonlyArray<PrivateLinkResource>;
+  Array<PrivateLinkResource>;
 export const ManagedClusterPropertiesPrivateLinkResourcesList =
   /*@__PURE__*/ S.Array(
     PrivateLinkResource,
@@ -8222,7 +8207,7 @@ export const ManagedClusterPropertiesPrivateLinkResourcesList =
 
 /** The error details. */
 export type ManagedClusterStatusProvisioningErrorDetailsList =
-  ReadonlyArray<ErrorDetail>;
+  Array<ErrorDetail>;
 export const ManagedClusterStatusProvisioningErrorDetailsList =
   /*@__PURE__*/ S.Array(
     ErrorDetail,
@@ -8230,7 +8215,7 @@ export const ManagedClusterStatusProvisioningErrorDetailsList =
 
 /** The error additional info. */
 export type ManagedClusterStatusProvisioningErrorAdditionalInfoList =
-  ReadonlyArray<ErrorAdditionalInfo>;
+  Array<ErrorAdditionalInfo>;
 export const ManagedClusterStatusProvisioningErrorAdditionalInfoList =
   /*@__PURE__*/ S.Array(
     ErrorAdditionalInfo,
@@ -8782,13 +8767,13 @@ export const ManagedClustersGetMeshRevisionProfileRequest =
   }) as any as S.Schema<ManagedClustersGetMeshRevisionProfileRequest>;
 
 /** List of revisions available for upgrade of a specific mesh revision */
-export type MeshRevisionUpgradesList = ReadonlyArray<string>;
+export type MeshRevisionUpgradesList = Array<string>;
 export const MeshRevisionUpgradesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<MeshRevisionUpgradesList>;
 
 /** Product/service versions compatible with a service mesh add-on revision. */
-export type CompatibleVersionsVersionsList = ReadonlyArray<string>;
+export type CompatibleVersionsVersionsList = Array<string>;
 export const CompatibleVersionsVersionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CompatibleVersionsVersionsList>;
@@ -8810,7 +8795,7 @@ export const CompatibleVersions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CompatibleVersions>;
 
 /** List of items this revision of service mesh is compatible with, and their associated versions. */
-export type MeshRevisionCompatibleWithList = ReadonlyArray<CompatibleVersions>;
+export type MeshRevisionCompatibleWithList = Array<CompatibleVersions>;
 export const MeshRevisionCompatibleWithList = /*@__PURE__*/ S.Array(
   CompatibleVersions,
 ) as any as S.Schema<MeshRevisionCompatibleWithList>;
@@ -8834,7 +8819,7 @@ export const MeshRevision = /*@__PURE__*/ S.suspend(() =>
 
 /** Available mesh revisions. */
 export type MeshRevisionProfilePropertiesMeshRevisionsList =
-  ReadonlyArray<MeshRevision>;
+  Array<MeshRevision>;
 export const MeshRevisionProfilePropertiesMeshRevisionsList =
   /*@__PURE__*/ S.Array(
     MeshRevision,
@@ -8981,7 +8966,7 @@ export const ManagedClusterPoolUpgradeProfileUpgradesItem =
 
 /** List of orchestrator types and versions available for upgrade. */
 export type ManagedClusterPoolUpgradeProfileUpgradesList =
-  ReadonlyArray<ManagedClusterPoolUpgradeProfileUpgradesItem>;
+  Array<ManagedClusterPoolUpgradeProfileUpgradesItem>;
 export const ManagedClusterPoolUpgradeProfileUpgradesList =
   /*@__PURE__*/ S.Array(
     ManagedClusterPoolUpgradeProfileUpgradesItem,
@@ -9011,7 +8996,7 @@ export const ManagedClusterPoolUpgradeProfile = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of available upgrade versions for agent pools. */
 export type ManagedClusterUpgradeProfilePropertiesAgentPoolProfilesList =
-  ReadonlyArray<ManagedClusterPoolUpgradeProfile>;
+  Array<ManagedClusterPoolUpgradeProfile>;
 export const ManagedClusterUpgradeProfilePropertiesAgentPoolProfilesList =
   /*@__PURE__*/ S.Array(
     ManagedClusterPoolUpgradeProfile,
@@ -9131,7 +9116,7 @@ export const ManagedCluster = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ManagedCluster" }) as any as S.Schema<ManagedCluster>;
 
 /** The ManagedCluster items on this page */
-export type ManagedClusterListResultValueList = ReadonlyArray<ManagedCluster>;
+export type ManagedClusterListResultValueList = Array<ManagedCluster>;
 export const ManagedClusterListResultValueList = /*@__PURE__*/ S.Array(
   ManagedCluster,
 ) as any as S.Schema<ManagedClusterListResultValueList>;
@@ -9221,7 +9206,7 @@ export const CredentialResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CredentialResult>;
 
 /** Base64-encoded Kubernetes configuration file. */
-export type CredentialResultsKubeconfigsList = ReadonlyArray<CredentialResult>;
+export type CredentialResultsKubeconfigsList = Array<CredentialResult>;
 export const CredentialResultsKubeconfigsList = /*@__PURE__*/ S.Array(
   CredentialResult,
 ) as any as S.Schema<CredentialResultsKubeconfigsList>;
@@ -9335,7 +9320,7 @@ export const ManagedClustersListKubernetesVersionsRequest =
 
 /** Kubernetes support plans available for this version. */
 export type KubernetesVersionCapabilitiesSupportPlanList =
-  ReadonlyArray<KubernetesSupportPlan>;
+  Array<KubernetesSupportPlan>;
 export const KubernetesVersionCapabilitiesSupportPlanList =
   /*@__PURE__*/ S.Array(
     KubernetesSupportPlan,
@@ -9355,7 +9340,7 @@ export const KubernetesVersionCapabilities = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<KubernetesVersionCapabilities>;
 
 /** Possible upgrade path for given patch version */
-export type KubernetesPatchVersionUpgradesList = ReadonlyArray<string>;
+export type KubernetesPatchVersionUpgradesList = Array<string>;
 export const KubernetesPatchVersionUpgradesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<KubernetesPatchVersionUpgradesList>;
@@ -9408,8 +9393,7 @@ export const KubernetesVersion = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<KubernetesVersion>;
 
 /** Array of AKS supported Kubernetes versions. */
-export type KubernetesVersionListResultValuesList =
-  ReadonlyArray<KubernetesVersion>;
+export type KubernetesVersionListResultValuesList = Array<KubernetesVersion>;
 export const KubernetesVersionListResultValuesList = /*@__PURE__*/ S.Array(
   KubernetesVersion,
 ) as any as S.Schema<KubernetesVersionListResultValuesList>;
@@ -9476,8 +9460,7 @@ export const MeshRevisionProfile = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MeshRevisionProfile>;
 
 /** The MeshRevisionProfile items on this page */
-export type MeshRevisionProfileListValueList =
-  ReadonlyArray<MeshRevisionProfile>;
+export type MeshRevisionProfileListValueList = Array<MeshRevisionProfile>;
 export const MeshRevisionProfileListValueList = /*@__PURE__*/ S.Array(
   MeshRevisionProfile,
 ) as any as S.Schema<MeshRevisionProfileListValueList>;
@@ -9550,7 +9533,7 @@ export const MeshUpgradeProfile = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MeshUpgradeProfile>;
 
 /** The MeshUpgradeProfile items on this page */
-export type MeshUpgradeProfileListValueList = ReadonlyArray<MeshUpgradeProfile>;
+export type MeshUpgradeProfileListValueList = Array<MeshUpgradeProfile>;
 export const MeshUpgradeProfileListValueList = /*@__PURE__*/ S.Array(
   MeshUpgradeProfile,
 ) as any as S.Schema<MeshUpgradeProfileListValueList>;
@@ -9619,8 +9602,7 @@ export const EndpointDetail = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EndpointDetail" }) as any as S.Schema<EndpointDetail>;
 
 /** The Ports and Protocols used when connecting to domainName. */
-export type EndpointDependencyEndpointDetailsList =
-  ReadonlyArray<EndpointDetail>;
+export type EndpointDependencyEndpointDetailsList = Array<EndpointDetail>;
 export const EndpointDependencyEndpointDetailsList = /*@__PURE__*/ S.Array(
   EndpointDetail,
 ) as any as S.Schema<EndpointDependencyEndpointDetailsList>;
@@ -9643,7 +9625,7 @@ export const EndpointDependency = /*@__PURE__*/ S.suspend(() =>
 
 /** The endpoints that AKS agent nodes connect to */
 export type OutboundEnvironmentEndpointEndpointsList =
-  ReadonlyArray<EndpointDependency>;
+  Array<EndpointDependency>;
 export const OutboundEnvironmentEndpointEndpointsList = /*@__PURE__*/ S.Array(
   EndpointDependency,
 ) as any as S.Schema<OutboundEnvironmentEndpointEndpointsList>;
@@ -9666,7 +9648,7 @@ export const OutboundEnvironmentEndpoint = /*@__PURE__*/ S.suspend(() =>
 
 /** The OutboundEnvironmentEndpoint items on this page */
 export type OutboundEnvironmentEndpointCollectionValueList =
-  ReadonlyArray<OutboundEnvironmentEndpoint>;
+  Array<OutboundEnvironmentEndpoint>;
 export const OutboundEnvironmentEndpointCollectionValueList =
   /*@__PURE__*/ S.Array(
     OutboundEnvironmentEndpoint,
@@ -10045,9 +10027,9 @@ export const NetworkPoliciesEgress = /*@__PURE__*/ S.String;
 /** Default network policy of the namespace, specifying ingress and egress rules. */
 export interface NetworkPolicies {
   /** Enum representing different network policy rules. */
-  ingress?: NetworkPoliciesIngress;
+  ingress?: NetworkPoliciesIngress | (string & {});
   /** Enum representing different network policy rules. */
-  egress?: NetworkPoliciesEgress;
+  egress?: NetworkPoliciesEgress | (string & {});
 }
 export const NetworkPolicies = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -10411,8 +10393,7 @@ export const ManagedNamespace = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ManagedNamespace>;
 
 /** The ManagedNamespace items on this page */
-export type ManagedNamespaceListResultValueList =
-  ReadonlyArray<ManagedNamespace>;
+export type ManagedNamespaceListResultValueList = Array<ManagedNamespace>;
 export const ManagedNamespaceListResultValueList = /*@__PURE__*/ S.Array(
   ManagedNamespace,
 ) as any as S.Schema<ManagedNamespaceListResultValueList>;
@@ -10598,7 +10579,7 @@ export const OperationValue = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "OperationValue" }) as any as S.Schema<OperationValue>;
 
 /** The list of operations */
-export type OperationListResultValueList = ReadonlyArray<OperationValue>;
+export type OperationListResultValueList = Array<OperationValue>;
 export const OperationListResultValueList = /*@__PURE__*/ S.Array(
   OperationValue,
 ) as any as S.Schema<OperationListResultValueList>;
@@ -10718,7 +10699,7 @@ export const ConnectionStatus = /*@__PURE__*/ S.String;
 /** The state of a private link service connection. */
 export interface PrivateLinkServiceConnectionState {
   /** The private link service connection status. */
-  status?: ConnectionStatus;
+  status?: ConnectionStatus | (string & {});
   /** The private link service connection description. */
   description?: string;
 }
@@ -10828,7 +10809,7 @@ export const PrivateEndpointConnection = /*@__PURE__*/ S.suspend(() =>
 
 /** The collection value. */
 export type PrivateEndpointConnectionListResultValueList =
-  ReadonlyArray<PrivateEndpointConnection>;
+  Array<PrivateEndpointConnection>;
 export const PrivateEndpointConnectionListResultValueList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection,
@@ -10948,7 +10929,7 @@ export const PrivateLinkResourcesListRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The collection value. */
 export type PrivateLinkResourcesListResultValueList =
-  ReadonlyArray<PrivateLinkResource>;
+  Array<PrivateLinkResource>;
 export const PrivateLinkResourcesListResultValueList = /*@__PURE__*/ S.Array(
   PrivateLinkResource,
 ) as any as S.Schema<PrivateLinkResourcesListResultValueList>;
@@ -10968,7 +10949,7 @@ export const PrivateLinkResourcesListResult = /*@__PURE__*/ S.suspend(() =>
 
 /** The RequiredMembers of the resource */
 export type ResolvePrivateLinkServiceIdPOSTRequestRequiredMembersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ResolvePrivateLinkServiceIdPOSTRequestRequiredMembersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -11311,7 +11292,7 @@ export const Snapshot = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Snapshot" }) as any as S.Schema<Snapshot>;
 
 /** The Snapshot items on this page */
-export type SnapshotListResultValueList = ReadonlyArray<Snapshot>;
+export type SnapshotListResultValueList = Array<Snapshot>;
 export const SnapshotListResultValueList = /*@__PURE__*/ S.Array(
   Snapshot,
 ) as any as S.Schema<SnapshotListResultValueList>;
@@ -11431,8 +11412,7 @@ export const SnapshotsUpdateTagsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SnapshotsUpdateTagsResponse>;
 
 /** A list of roles to bind, each item is a resource type qualified role name. For example: 'Microsoft.MachineLearningServices/workspaces/reader'. */
-export type TrustedAccessRoleBindingPropertiesInputRolesList =
-  ReadonlyArray<string>;
+export type TrustedAccessRoleBindingPropertiesInputRolesList = Array<string>;
 export const TrustedAccessRoleBindingPropertiesInputRolesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -11497,7 +11477,7 @@ export type TrustedAccessRoleBindingProvisioningState =
 export const TrustedAccessRoleBindingProvisioningState = /*@__PURE__*/ S.String;
 
 /** A list of roles to bind, each item is a resource type qualified role name. For example: 'Microsoft.MachineLearningServices/workspaces/reader'. */
-export type TrustedAccessRoleBindingPropertiesRolesList = ReadonlyArray<string>;
+export type TrustedAccessRoleBindingPropertiesRolesList = Array<string>;
 export const TrustedAccessRoleBindingPropertiesRolesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -11689,7 +11669,7 @@ export const TrustedAccessRoleBinding = /*@__PURE__*/ S.suspend(() =>
 
 /** The TrustedAccessRoleBinding items on this page */
 export type TrustedAccessRoleBindingListResultValueList =
-  ReadonlyArray<TrustedAccessRoleBinding>;
+  Array<TrustedAccessRoleBinding>;
 export const TrustedAccessRoleBindingListResultValueList =
   /*@__PURE__*/ S.Array(
     TrustedAccessRoleBinding,
@@ -11734,31 +11714,31 @@ export const TrustedAccessRolesListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TrustedAccessRolesListRequest>;
 
 /** List of allowed verbs */
-export type TrustedAccessRoleRuleVerbsList = ReadonlyArray<string>;
+export type TrustedAccessRoleRuleVerbsList = Array<string>;
 export const TrustedAccessRoleRuleVerbsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<TrustedAccessRoleRuleVerbsList>;
 
 /** List of allowed apiGroups */
-export type TrustedAccessRoleRuleApiGroupsList = ReadonlyArray<string>;
+export type TrustedAccessRoleRuleApiGroupsList = Array<string>;
 export const TrustedAccessRoleRuleApiGroupsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<TrustedAccessRoleRuleApiGroupsList>;
 
 /** List of allowed resources */
-export type TrustedAccessRoleRuleResourcesList = ReadonlyArray<string>;
+export type TrustedAccessRoleRuleResourcesList = Array<string>;
 export const TrustedAccessRoleRuleResourcesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<TrustedAccessRoleRuleResourcesList>;
 
 /** List of allowed names */
-export type TrustedAccessRoleRuleResourceNamesList = ReadonlyArray<string>;
+export type TrustedAccessRoleRuleResourceNamesList = Array<string>;
 export const TrustedAccessRoleRuleResourceNamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<TrustedAccessRoleRuleResourceNamesList>;
 
 /** List of allowed nonResourceURLs */
-export type TrustedAccessRoleRuleNonResourceURLsList = ReadonlyArray<string>;
+export type TrustedAccessRoleRuleNonResourceURLsList = Array<string>;
 export const TrustedAccessRoleRuleNonResourceURLsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<TrustedAccessRoleRuleNonResourceURLsList>;
@@ -11789,7 +11769,7 @@ export const TrustedAccessRoleRule = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TrustedAccessRoleRule>;
 
 /** List of rules for the role. This maps to 'rules' property of [Kubernetes Cluster Role](https://kubernetes.io/docs/reference/kubernetes-api/authorization-resources/cluster-role-v1/#ClusterRole). */
-export type TrustedAccessRoleRulesList = ReadonlyArray<TrustedAccessRoleRule>;
+export type TrustedAccessRoleRulesList = Array<TrustedAccessRoleRule>;
 export const TrustedAccessRoleRulesList = /*@__PURE__*/ S.Array(
   TrustedAccessRoleRule,
 ) as any as S.Schema<TrustedAccessRoleRulesList>;
@@ -11814,8 +11794,7 @@ export const TrustedAccessRole = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TrustedAccessRole>;
 
 /** The TrustedAccessRole items on this page */
-export type TrustedAccessRoleListResultValueList =
-  ReadonlyArray<TrustedAccessRole>;
+export type TrustedAccessRoleListResultValueList = Array<TrustedAccessRole>;
 export const TrustedAccessRoleListResultValueList = /*@__PURE__*/ S.Array(
   TrustedAccessRole,
 ) as any as S.Schema<TrustedAccessRoleListResultValueList>;
@@ -11846,7 +11825,7 @@ export const ManagedClusterUpgradeType = /*@__PURE__*/ S.String;
 /** The upgrade to apply to a ManagedCluster. */
 export interface ManagedClusterUpgradeSpec {
   /** ManagedClusterUpgradeType is the type of upgrade to be applied. */
-  type: ManagedClusterUpgradeType;
+  type: ManagedClusterUpgradeType | (string & {});
   /** The Kubernetes version to upgrade the member clusters to. */
   kubernetesVersion?: string;
 }
@@ -11873,7 +11852,7 @@ export const NodeImageVersionInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Custom node image versions to upgrade the nodes to. This field is required if node image selection type is Custom. Otherwise, it must be empty. For each node image family (e.g., 'AKSUbuntu-1804gen2containerd'), this field can contain at most one version (e.g., only one of 'AKSUbuntu-1804gen2containerd-2023.01.12' or 'AKSUbuntu-1804gen2containerd-2023.02.12', not both). If the nodes belong to a family without a matching image version in this field, they are not upgraded. */
 export type NodeImageSelectionInputCustomNodeImageVersionsList =
-  ReadonlyArray<NodeImageVersionInput>;
+  Array<NodeImageVersionInput>;
 export const NodeImageSelectionInputCustomNodeImageVersionsList =
   /*@__PURE__*/ S.Array(
     NodeImageVersionInput,
@@ -11982,7 +11961,7 @@ export const NodeImageVersion = /*@__PURE__*/ S.suspend(() =>
 
 /** Custom node image versions to upgrade the nodes to. This field is required if node image selection type is Custom. Otherwise, it must be empty. For each node image family (e.g., 'AKSUbuntu-1804gen2containerd'), this field can contain at most one version (e.g., only one of 'AKSUbuntu-1804gen2containerd-2023.01.12' or 'AKSUbuntu-1804gen2containerd-2023.02.12', not both). If the nodes belong to a family without a matching image version in this field, they are not upgraded. */
 export type NodeImageSelectionCustomNodeImageVersionsList =
-  ReadonlyArray<NodeImageVersion>;
+  Array<NodeImageVersion>;
 export const NodeImageSelectionCustomNodeImageVersionsList =
   /*@__PURE__*/ S.Array(
     NodeImageVersion,
@@ -12035,14 +12014,13 @@ export type UpdateState =
 export const UpdateState = /*@__PURE__*/ S.String;
 
 /** The error details. */
-export type UpdateStatusErrorDetailsList = ReadonlyArray<ErrorDetail>;
+export type UpdateStatusErrorDetailsList = Array<ErrorDetail>;
 export const UpdateStatusErrorDetailsList = /*@__PURE__*/ S.Array(
   ErrorDetail,
 ) as any as S.Schema<UpdateStatusErrorDetailsList>;
 
 /** The error additional info. */
-export type UpdateStatusErrorAdditionalInfoList =
-  ReadonlyArray<ErrorAdditionalInfo>;
+export type UpdateStatusErrorAdditionalInfoList = Array<ErrorAdditionalInfo>;
 export const UpdateStatusErrorAdditionalInfoList = /*@__PURE__*/ S.Array(
   ErrorAdditionalInfo,
 ) as any as S.Schema<UpdateStatusErrorAdditionalInfoList>;
@@ -12118,7 +12096,7 @@ export const MemberUpdateStatus = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MemberUpdateStatus>;
 
 /** The list of member this UpdateGroup updates. */
-export type UpdateGroupStatusMembersList = ReadonlyArray<MemberUpdateStatus>;
+export type UpdateGroupStatusMembersList = Array<MemberUpdateStatus>;
 export const UpdateGroupStatusMembersList = /*@__PURE__*/ S.Array(
   MemberUpdateStatus,
 ) as any as S.Schema<UpdateGroupStatusMembersList>;
@@ -12143,7 +12121,7 @@ export const UpdateGroupStatus = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateGroupStatus>;
 
 /** The list of groups to be updated as part of this UpdateStage. */
-export type UpdateStageStatusGroupsList = ReadonlyArray<UpdateGroupStatus>;
+export type UpdateStageStatusGroupsList = Array<UpdateGroupStatus>;
 export const UpdateStageStatusGroupsList = /*@__PURE__*/ S.Array(
   UpdateGroupStatus,
 ) as any as S.Schema<UpdateStageStatusGroupsList>;
@@ -12185,14 +12163,14 @@ export const UpdateStageStatus = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateStageStatus>;
 
 /** The stages composing an update run. Stages are run sequentially withing an UpdateRun. */
-export type UpdateRunStatusStagesList = ReadonlyArray<UpdateStageStatus>;
+export type UpdateRunStatusStagesList = Array<UpdateStageStatus>;
 export const UpdateRunStatusStagesList = /*@__PURE__*/ S.Array(
   UpdateStageStatus,
 ) as any as S.Schema<UpdateRunStatusStagesList>;
 
 /** The image versions to upgrade the nodes to. */
 export type NodeImageSelectionStatusSelectedNodeImageVersionsList =
-  ReadonlyArray<NodeImageVersion>;
+  Array<NodeImageVersion>;
 export const NodeImageSelectionStatusSelectedNodeImageVersionsList =
   /*@__PURE__*/ S.Array(
     NodeImageVersion,
@@ -12435,7 +12413,7 @@ export const UpdateRun = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateRun" }) as any as S.Schema<UpdateRun>;
 
 /** The UpdateRun items on this page */
-export type UpdateRunListResultValueList = ReadonlyArray<UpdateRun>;
+export type UpdateRunListResultValueList = Array<UpdateRun>;
 export const UpdateRunListResultValueList = /*@__PURE__*/ S.Array(
   UpdateRun,
 ) as any as S.Schema<UpdateRunListResultValueList>;
@@ -12475,7 +12453,7 @@ export const SkipTarget = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SkipTarget" }) as any as S.Schema<SkipTarget>;
 
 /** The targets to skip. */
-export type UpdateRunsSkipRequestTargetsList = ReadonlyArray<SkipTarget>;
+export type UpdateRunsSkipRequestTargetsList = Array<SkipTarget>;
 export const UpdateRunsSkipRequestTargetsList = /*@__PURE__*/ S.Array(
   SkipTarget,
 ) as any as S.Schema<UpdateRunsSkipRequestTargetsList>;

@@ -345,7 +345,7 @@ export const HistoricalOptions = /*@__PURE__*/ S.suspend(() =>
   identifier: "HistoricalOptions",
 }) as any as S.Schema<HistoricalOptions>;
 export interface AutoAdjustData {
-  AutoAdjustType: AutoAdjustType;
+  AutoAdjustType: AutoAdjustType | (string & {});
   HistoricalOptions?: HistoricalOptions;
   LastAutoAdjustTime?: Date;
 }
@@ -414,10 +414,10 @@ export type MatchOption =
   | "CASE_INSENSITIVE";
 export const MatchOption = /*@__PURE__*/ S.String;
 
-export type MatchOptions = MatchOption[];
+export type MatchOptions = (MatchOption | (string & {}))[];
 export const MatchOptions = /*@__PURE__*/ S.Array(MatchOption);
 export interface ExpressionDimensionValues {
-  Key: Dimension;
+  Key: Dimension | (string & {});
   Values: string[];
   MatchOptions?: MatchOption[];
 }
@@ -495,7 +495,7 @@ export type Metric =
   | "Hours";
 export const Metric = /*@__PURE__*/ S.String;
 
-export type Metrics = Metric[];
+export type Metrics = (Metric | (string & {}))[];
 export const Metrics = /*@__PURE__*/ S.Array(Metric);
 export type BillingViewArn = string;
 export type HealthStatusValue = "HEALTHY" | "UNHEALTHY";
@@ -509,8 +509,8 @@ export type HealthStatusReason =
 export const HealthStatusReason = /*@__PURE__*/ S.String;
 
 export interface HealthStatus {
-  Status?: HealthStatusValue;
-  StatusReason?: HealthStatusReason;
+  Status?: HealthStatusValue | (string & {});
+  StatusReason?: HealthStatusReason | (string & {});
   LastUpdatedTime?: Date;
 }
 export const HealthStatus = /*@__PURE__*/ S.suspend(() =>
@@ -528,10 +528,10 @@ export interface Budget {
   PlannedBudgetLimits?: { [key: string]: Spend | undefined };
   CostFilters?: { [key: string]: string[] | undefined };
   CostTypes?: CostTypes;
-  TimeUnit: TimeUnit;
+  TimeUnit: TimeUnit | (string & {});
   TimePeriod?: TimePeriod;
   CalculatedSpend?: CalculatedSpend;
-  BudgetType: BudgetType;
+  BudgetType: BudgetType | (string & {});
   LastUpdatedTime?: Date;
   AutoAdjustData?: AutoAdjustData;
   FilterExpression?: Expression;
@@ -574,11 +574,11 @@ export type NotificationState = "OK" | "ALARM";
 export const NotificationState = /*@__PURE__*/ S.String;
 
 export interface Notification {
-  NotificationType: NotificationType;
-  ComparisonOperator: ComparisonOperator;
+  NotificationType: NotificationType | (string & {});
+  ComparisonOperator: ComparisonOperator | (string & {});
   Threshold: number;
-  ThresholdType?: ThresholdType;
-  NotificationState?: NotificationState;
+  ThresholdType?: ThresholdType | (string & {});
+  NotificationState?: NotificationState | (string & {});
 }
 export const Notification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -594,7 +594,7 @@ export const SubscriptionType = /*@__PURE__*/ S.String;
 
 export type SubscriberAddress = string | redacted.Redacted<string>;
 export interface Subscriber {
-  SubscriptionType: SubscriptionType;
+  SubscriptionType: SubscriptionType | (string & {});
   Address: string | redacted.Redacted<string>;
 }
 export const Subscriber = /*@__PURE__*/ S.suspend(() =>
@@ -658,7 +658,7 @@ export const ActionType = /*@__PURE__*/ S.String;
 
 export interface ActionThreshold {
   ActionThresholdValue: number;
-  ActionThresholdType: ThresholdType;
+  ActionThresholdType: ThresholdType | (string & {});
 }
 export const ActionThreshold = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -715,7 +715,7 @@ export type InstanceId = string;
 export type InstanceIds = string[];
 export const InstanceIds = /*@__PURE__*/ S.Array(S.String);
 export interface SsmActionDefinition {
-  ActionSubType: ActionSubType;
+  ActionSubType: ActionSubType | (string & {});
   Region: string;
   InstanceIds: string[];
 }

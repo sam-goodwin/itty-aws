@@ -437,7 +437,7 @@ export const ModelTypeEnum = /*@__PURE__*/ S.String;
 export type FloatVersionString = string;
 export interface ModelVersion {
   modelId: string;
-  modelType: ModelTypeEnum;
+  modelType: ModelTypeEnum | (string & {});
   modelVersionNumber: string;
   arn?: string;
 }
@@ -589,7 +589,7 @@ export const UnlabeledEventsTreatment = /*@__PURE__*/ S.String;
 
 export interface LabelSchema {
   labelMapper?: { [key: string]: string[] | undefined };
-  unlabeledEventsTreatment?: UnlabeledEventsTreatment;
+  unlabeledEventsTreatment?: UnlabeledEventsTreatment | (string & {});
 }
 export const LabelSchema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2530,7 +2530,7 @@ export type UseEventVariables = boolean;
 export type ModelInputTemplate = string;
 export interface ModelInputConfiguration {
   eventTypeName?: string;
-  format?: ModelInputDataFormat;
+  format?: ModelInputDataFormat | (string & {});
   useEventVariables: boolean;
   jsonInputTemplate?: string;
   csvInputTemplate?: string;
@@ -2560,7 +2560,7 @@ export const CsvIndexToVariableMap = /*@__PURE__*/ S.Record(
   S.String.pipe(S.optional),
 );
 export interface ModelOutputConfiguration {
-  format: ModelOutputDataFormat;
+  format: ModelOutputDataFormat | (string & {});
   jsonKeyToVariableMap?: { [key: string]: string | undefined };
   csvIndexToVariableMap?: { [key: string]: string | undefined };
 }

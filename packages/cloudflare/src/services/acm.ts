@@ -378,7 +378,7 @@ export const CustomTrustStoreListResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CustomTrustStoreListResultItem>;
 
 export type CustomTrustStoreListResultList =
-  ReadonlyArray<CustomTrustStoreListResultItem>;
+  Array<CustomTrustStoreListResultItem>;
 export const CustomTrustStoreListResultList = /*@__PURE__*/ S.Array(
   CustomTrustStoreListResultItem,
 ) as any as S.Schema<CustomTrustStoreListResultList>;

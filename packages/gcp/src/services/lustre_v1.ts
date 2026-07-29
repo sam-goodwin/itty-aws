@@ -130,7 +130,7 @@ export const DynamicTierOptionsModeEnum = /*@__PURE__*/ S.String;
 /** Dynamic tier options for a Managed Lustre instance. */
 export interface DynamicTierOptions {
   /** Required. Immutable. The dynamic tier mode of the instance. */
-  mode?: DynamicTierOptionsModeEnum;
+  mode?: DynamicTierOptionsModeEnum | (string & {});
 }
 export const DynamicTierOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -196,8 +196,7 @@ export const MaintenanceExclusionWindow = /*@__PURE__*/ S.suspend(() =>
   identifier: "MaintenanceExclusionWindow",
 }) as any as S.Schema<MaintenanceExclusionWindow>;
 
-export type MaintenanceExclusionWindowList =
-  ReadonlyArray<MaintenanceExclusionWindow>;
+export type MaintenanceExclusionWindowList = Array<MaintenanceExclusionWindow>;
 export const MaintenanceExclusionWindowList = /*@__PURE__*/ S.Array(
   MaintenanceExclusionWindow,
 ) as any as S.Schema<MaintenanceExclusionWindowList>;
@@ -218,7 +217,7 @@ export interface WeeklyMaintenanceWindow {
   /** Required. Start time of the maintenance window in UTC time zone. */
   startTime?: TimeOfDay;
   /** Required. Day of the week for the maintenance window. */
-  dayOfWeek?: WeeklyMaintenanceWindowDayOfWeekEnum;
+  dayOfWeek?: WeeklyMaintenanceWindowDayOfWeekEnum | (string & {});
 }
 export const WeeklyMaintenanceWindow = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -229,8 +228,7 @@ export const WeeklyMaintenanceWindow = /*@__PURE__*/ S.suspend(() =>
   identifier: "WeeklyMaintenanceWindow",
 }) as any as S.Schema<WeeklyMaintenanceWindow>;
 
-export type WeeklyMaintenanceWindowList =
-  ReadonlyArray<WeeklyMaintenanceWindow>;
+export type WeeklyMaintenanceWindowList = Array<WeeklyMaintenanceWindow>;
 export const WeeklyMaintenanceWindowList = /*@__PURE__*/ S.Array(
   WeeklyMaintenanceWindow,
 ) as any as S.Schema<WeeklyMaintenanceWindowList>;
@@ -257,7 +255,7 @@ export type AccessRuleSquashModeEnum =
   | "ROOT_SQUASH";
 export const AccessRuleSquashModeEnum = /*@__PURE__*/ S.String;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -265,7 +263,7 @@ export const StringList = /*@__PURE__*/ S.Array(
 /** A single policy group with IP-based access rules for the Managed Lustre instance. */
 export interface AccessRule {
   /** Required. Squash mode for the access rule. */
-  squashMode?: AccessRuleSquashModeEnum;
+  squashMode?: AccessRuleSquashModeEnum | (string & {});
   /** Required. The IP address ranges to which to apply this access rule. Accepts non-overlapping CIDR ranges (e.g., `192.168.1.0/24`) and IP addresses (e.g., `192.168.1.0`). */
   ipAddressRanges?: StringList;
   /** Required. The name of the access rule policy group. Must be 16 characters or less and include only alphanumeric characters or '_'. */
@@ -279,7 +277,7 @@ export const AccessRule = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AccessRule" }) as any as S.Schema<AccessRule>;
 
-export type AccessRuleList = ReadonlyArray<AccessRule>;
+export type AccessRuleList = Array<AccessRule>;
 export const AccessRuleList = /*@__PURE__*/ S.Array(
   AccessRule,
 ) as any as S.Schema<AccessRuleList>;
@@ -299,7 +297,7 @@ export interface AccessRulesOptions {
   /** Optional. The access rules for the instance. */
   accessRules?: AccessRuleList;
   /** Required. The squash mode for the default access rule. */
-  defaultSquashMode?: AccessRulesOptionsDefaultSquashModeEnum;
+  defaultSquashMode?: AccessRulesOptionsDefaultSquashModeEnum | (string & {});
 }
 export const AccessRulesOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -317,7 +315,7 @@ export interface Instance {
   /** Optional. Labels as key value pairs. */
   labels?: StringMap;
   /** Output only. The state of the instance. */
-  state?: InstanceStateEnum;
+  state?: InstanceStateEnum | (string & {});
   /** Output only. Unique ID of the resource. This is unrelated to the access rules which allow specifying the root squash uid. */
   uid?: string;
   /** Output only. Date and time of upcoming maintenance for the instance, if a maintenance policy is set. */
@@ -414,7 +412,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -722,7 +720,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = ReadonlyArray<Location>;
+export type LocationList = Array<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -774,7 +772,7 @@ export const ListProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsInstancesRequest",
 }) as any as S.Schema<ListProjectsLocationsInstancesRequest>;
 
-export type InstanceList = ReadonlyArray<Instance>;
+export type InstanceList = Array<Instance>;
 export const InstanceList = /*@__PURE__*/ S.Array(
   Instance,
 ) as any as S.Schema<InstanceList>;
@@ -829,7 +827,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type OperationList = ReadonlyArray<Operation>;
+export type OperationList = Array<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;

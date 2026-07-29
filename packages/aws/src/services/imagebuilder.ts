@@ -404,7 +404,7 @@ export interface EbsInstanceBlockDeviceSpecification {
   kmsKeyId?: string;
   snapshotId?: string;
   volumeSize?: number;
-  volumeType?: EbsVolumeType;
+  volumeType?: EbsVolumeType | (string & {});
   throughput?: number;
 }
 export const EbsInstanceBlockDeviceSpecification = /*@__PURE__*/ S.suspend(() =>
@@ -459,7 +459,7 @@ export type ContainerRepositoryService = "ECR";
 export const ContainerRepositoryService = /*@__PURE__*/ S.String;
 
 export interface TargetContainerRepository {
-  service: ContainerRepositoryService;
+  service: ContainerRepositoryService | (string & {});
   repositoryName: string;
 }
 export const TargetContainerRepository = /*@__PURE__*/ S.suspend(() =>
@@ -622,7 +622,7 @@ export const DiskImageFormat = /*@__PURE__*/ S.String;
 
 export interface S3ExportConfiguration {
   roleName: string;
-  diskImageFormat: DiskImageFormat;
+  diskImageFormat: DiskImageFormat | (string & {});
   s3Bucket: string;
   s3Prefix?: string;
 }
@@ -690,7 +690,7 @@ export const SsmParameterDataType = /*@__PURE__*/ S.String;
 export interface SsmParameterConfiguration {
   amiAccountId?: string;
   parameterName: string;
-  dataType?: SsmParameterDataType;
+  dataType?: SsmParameterDataType | (string & {});
 }
 export const SsmParameterConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -838,7 +838,7 @@ export interface WorkflowConfiguration {
   workflowArn: string;
   parameters?: WorkflowParameter[];
   parallelGroup?: string;
-  onFailure?: OnWorkflowFailure;
+  onFailure?: OnWorkflowFailure | (string & {});
 }
 export const WorkflowConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -939,7 +939,9 @@ export const AutoDisablePolicy = /*@__PURE__*/ S.suspend(() =>
 export interface Schedule {
   scheduleExpression?: string;
   timezone?: string;
-  pipelineExecutionStartCondition?: PipelineExecutionStartCondition;
+  pipelineExecutionStartCondition?:
+    | PipelineExecutionStartCondition
+    | (string & {});
   autoDisablePolicy?: AutoDisablePolicy;
 }
 export const Schedule = /*@__PURE__*/ S.suspend(() =>
@@ -1163,7 +1165,7 @@ export const TenancyType = /*@__PURE__*/ S.String;
 
 export interface Placement {
   availabilityZone?: string;
-  tenancy?: TenancyType;
+  tenancy?: TenancyType | (string & {});
   hostId?: string;
   hostResourceGroupArn?: string;
 }
@@ -1266,7 +1268,7 @@ export const LifecyclePolicyDetailActionIncludeResources =
     identifier: "LifecyclePolicyDetailActionIncludeResources",
   }) as any as S.Schema<LifecyclePolicyDetailActionIncludeResources>;
 export interface LifecyclePolicyDetailAction {
-  type: LifecyclePolicyDetailActionType;
+  type: LifecyclePolicyDetailActionType | (string & {});
   includeResources?: LifecyclePolicyDetailActionIncludeResources;
 }
 export const LifecyclePolicyDetailAction = /*@__PURE__*/ S.suspend(() =>
@@ -1286,9 +1288,9 @@ export const LifecyclePolicyTimeUnit = /*@__PURE__*/ S.String;
 
 export type LifecyclePolicyDetailFilterRetainAtLeast = number;
 export interface LifecyclePolicyDetailFilter {
-  type: LifecyclePolicyDetailFilterType;
+  type: LifecyclePolicyDetailFilterType | (string & {});
   value: number;
-  unit?: LifecyclePolicyTimeUnit;
+  unit?: LifecyclePolicyTimeUnit | (string & {});
   retainAtLeast?: number;
 }
 export const LifecyclePolicyDetailFilter = /*@__PURE__*/ S.suspend(() =>
@@ -1304,7 +1306,7 @@ export const LifecyclePolicyDetailFilter = /*@__PURE__*/ S.suspend(() =>
 export type LifecyclePolicyDetailExclusionRulesAmisLastLaunchedValue = number;
 export interface LifecyclePolicyDetailExclusionRulesAmisLastLaunched {
   value: number;
-  unit: LifecyclePolicyTimeUnit;
+  unit: LifecyclePolicyTimeUnit | (string & {});
 }
 export const LifecyclePolicyDetailExclusionRulesAmisLastLaunched =
   /*@__PURE__*/ S.suspend(() =>

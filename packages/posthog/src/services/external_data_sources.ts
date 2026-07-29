@@ -60,7 +60,7 @@ export const CdcTableModeEnum = /*@__PURE__*/ S.String;
 
 /** Columns to sync. Null means sync all columns. */
 export type ExternalDataSourceBulkUpdateSchemaEnabledColumnsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ExternalDataSourceBulkUpdateSchemaEnabledColumnsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -86,7 +86,7 @@ export const ExternalDataSourceBulkUpdateSchemaRowFiltersItem =
 
 /** Row-filter predicates ANDed onto the source query. Null/empty means sync all rows. */
 export type ExternalDataSourceBulkUpdateSchemaRowFiltersList =
-  ReadonlyArray<ExternalDataSourceBulkUpdateSchemaRowFiltersItem>;
+  Array<ExternalDataSourceBulkUpdateSchemaRowFiltersItem>;
 export const ExternalDataSourceBulkUpdateSchemaRowFiltersList =
   /*@__PURE__*/ S.Array(
     ExternalDataSourceBulkUpdateSchemaRowFiltersItem,
@@ -140,7 +140,7 @@ export const ExternalDataSourceBulkUpdateSchema = /*@__PURE__*/ S.suspend(() =>
 
 /** Schema updates to apply in a single batch. */
 export type ExternalDataSourcesBulkUpdateSchemasPartialUpdateRequestSchemasList =
-  ReadonlyArray<ExternalDataSourceBulkUpdateSchema>;
+  Array<ExternalDataSourceBulkUpdateSchema>;
 export const ExternalDataSourcesBulkUpdateSchemasPartialUpdateRequestSchemasList =
   /*@__PURE__*/ S.Array(
     ExternalDataSourceBulkUpdateSchema,
@@ -215,13 +215,13 @@ export type SyncFrequencyEnum =
 export const SyncFrequencyEnum = /*@__PURE__*/ S.String;
 
 /** Column names for primary key deduplication. */
-export type ExternalDataSchemaPrimaryKeyColumnsList = ReadonlyArray<string>;
+export type ExternalDataSchemaPrimaryKeyColumnsList = Array<string>;
 export const ExternalDataSchemaPrimaryKeyColumnsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ExternalDataSchemaPrimaryKeyColumnsList>;
 
 /** Names of source columns to sync. `null` (default) syncs all columns. Primary-key columns and the active incremental field are always retained, even if not listed here. */
-export type ExternalDataSchemaEnabledColumnsList = ReadonlyArray<string>;
+export type ExternalDataSchemaEnabledColumnsList = Array<string>;
 export const ExternalDataSchemaEnabledColumnsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ExternalDataSchemaEnabledColumnsList>;
@@ -245,7 +245,7 @@ export const ExternalDataSchemaRowFiltersItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Predicates ANDed onto the source query so only matching rows sync. Each is `{column, operator, value}`; `null`/empty (default) syncs all rows. The operator must be one of `> >= < <= = != IN "NOT IN"` and the value must match the column's type (for `IN`/`NOT IN`, a comma-separated list like `1, 2, 3` or `'a','b'`). Applied on the next sync — not retroactive to already-synced rows. */
 export type ExternalDataSchemaRowFiltersList =
-  ReadonlyArray<ExternalDataSchemaRowFiltersItem>;
+  Array<ExternalDataSchemaRowFiltersItem>;
 export const ExternalDataSchemaRowFiltersList = /*@__PURE__*/ S.Array(
   ExternalDataSchemaRowFiltersItem,
 ) as any as S.Schema<ExternalDataSchemaRowFiltersList>;
@@ -268,13 +268,12 @@ export const ExternalDataSchemaAvailableColumnsItem = /*@__PURE__*/ S.suspend(
 
 /** Column metadata (name, data type, nullable) for this schema. For SQL sources this is the source-side schema discovered via `refresh_schemas`; for other sources (and once synced) it falls back to the synced table's columns. Empty only before the first successful sync/refresh. */
 export type ExternalDataSchemaAvailableColumnsList =
-  ReadonlyArray<ExternalDataSchemaAvailableColumnsItem>;
+  Array<ExternalDataSchemaAvailableColumnsItem>;
 export const ExternalDataSchemaAvailableColumnsList = /*@__PURE__*/ S.Array(
   ExternalDataSchemaAvailableColumnsItem,
 ) as any as S.Schema<ExternalDataSchemaAvailableColumnsList>;
 
-export type ExternalDataSchemaSourceSupportedApiVersionsList =
-  ReadonlyArray<string>;
+export type ExternalDataSchemaSourceSupportedApiVersionsList = Array<string>;
 export const ExternalDataSchemaSourceSupportedApiVersionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -402,7 +401,7 @@ export const ExternalDataSchema = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExternalDataSchema>;
 
 export type PaginatedExternalDataSchemaListResultsList =
-  ReadonlyArray<ExternalDataSchema>;
+  Array<ExternalDataSchema>;
 export const PaginatedExternalDataSchemaListResultsList = /*@__PURE__*/ S.Array(
   ExternalDataSchema,
 ) as any as S.Schema<PaginatedExternalDataSchemaListResultsList>;
@@ -472,7 +471,7 @@ export const ExternalDataSourcesCheckCdcPrerequisitesCreateRequest =
   }) as any as S.Schema<ExternalDataSourcesCheckCdcPrerequisitesCreateRequest>;
 
 export type ExternalDataSourcesCheckCdcPrerequisitesCreateResponseErrorsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ExternalDataSourcesCheckCdcPrerequisitesCreateResponseErrorsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -506,7 +505,7 @@ export const ExternalDataSourceSerializersCreatedViaEnum =
 
 /** Optional fnmatch-style globs (`*` and `?` wildcards) restricting which newly discovered schema names auto-sync, matched case-insensitively against both the qualified and bare table name. Null or empty means every new schema qualifies. Only used when `auto_sync_new_schemas` is true. */
 export type ExternalDataSourcesCheckCdcPrerequisitesForSourceCreateRequestAutoSyncSchemaPatternsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ExternalDataSourcesCheckCdcPrerequisitesForSourceCreateRequestAutoSyncSchemaPatternsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1881,7 +1880,7 @@ export const ExternalDataSourceConnectionOption = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExternalDataSourceConnectionOption>;
 
 export type ExternalDataSourcesConnectionsListResponseBodyList =
-  ReadonlyArray<ExternalDataSourceConnectionOption>;
+  Array<ExternalDataSourceConnectionOption>;
 export const ExternalDataSourcesConnectionsListResponseBodyList =
   /*@__PURE__*/ S.Array(
     ExternalDataSourceConnectionOption,
@@ -2012,7 +2011,7 @@ export const ExternalDataSourceCreateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Optional fnmatch-style globs (`*` and `?` wildcards) restricting which newly discovered schema names auto-sync, matched case-insensitively against both the qualified and bare table name. Null or empty means every new schema qualifies. Only used when `auto_sync_new_schemas` is true. */
 export type ExternalDataSourcesCreateWebhookCreateRequestAutoSyncSchemaPatternsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ExternalDataSourcesCreateWebhookCreateRequestAutoSyncSchemaPatternsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2107,7 +2106,7 @@ export const ExternalDataSourcesDatabaseSchemaCreateResponse =
 
 /** Optional fnmatch-style globs (`*` and `?` wildcards) restricting which newly discovered schema names auto-sync, matched case-insensitively against both the qualified and bare table name. Null or empty means every new schema qualifies. Only used when `auto_sync_new_schemas` is true. */
 export type ExternalDataSourcesDeleteWebhookCreateRequestAutoSyncSchemaPatternsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ExternalDataSourcesDeleteWebhookCreateRequestAutoSyncSchemaPatternsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2202,7 +2201,7 @@ export const ExternalDataSourcesDestroyResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Optional fnmatch-style globs (`*` and `?` wildcards) restricting which newly discovered schema names auto-sync, matched case-insensitively against both the qualified and bare table name. Null or empty means every new schema qualifies. Only used when `auto_sync_new_schemas` is true. */
 export type ExternalDataSourcesDisableCdcCreateRequestAutoSyncSchemaPatternsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ExternalDataSourcesDisableCdcCreateRequestAutoSyncSchemaPatternsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2300,8 +2299,7 @@ export type DraftStatusEnum = "ok" | "invalid" | "model_error";
 export const DraftStatusEnum = /*@__PURE__*/ S.String;
 
 /** Names of the resources (tables) the validated manifest exposes. Empty unless draft_status is 'ok'. */
-export type DraftCustomManifestResponseResourceNamesList =
-  ReadonlyArray<string>;
+export type DraftCustomManifestResponseResourceNamesList = Array<string>;
 export const DraftCustomManifestResponseResourceNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2333,7 +2331,7 @@ export const DraftCustomManifestResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Optional fnmatch-style globs (`*` and `?` wildcards) restricting which newly discovered schema names auto-sync, matched case-insensitively against both the qualified and bare table name. Null or empty means every new schema qualifies. Only used when `auto_sync_new_schemas` is true. */
 export type ExternalDataSourcesEnableCdcCreateRequestAutoSyncSchemaPatternsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ExternalDataSourcesEnableCdcCreateRequestAutoSyncSchemaPatternsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2456,7 +2454,7 @@ export const ExternalDataSourcesListRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Optional fnmatch-style globs (`*` and `?` wildcards) restricting which newly discovered schema names auto-sync, matched case-insensitively against both the qualified and bare table name. Null or empty means every new schema qualifies. Only used when `auto_sync_new_schemas` is true. */
 export type ExternalDataSourceSerializersOutputAutoSyncSchemaPatternsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ExternalDataSourceSerializersOutputAutoSyncSchemaPatternsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2472,7 +2470,7 @@ export const ExternalDataSourceSerializersOutputSchemasItemMap =
   ) as any as S.Schema<ExternalDataSourceSerializersOutputSchemasItemMap>;
 
 export type ExternalDataSourceSerializersOutputSchemasList =
-  ReadonlyArray<ExternalDataSourceSerializersOutputSchemasItemMap>;
+  Array<ExternalDataSourceSerializersOutputSchemasItemMap>;
 export const ExternalDataSourceSerializersOutputSchemasList =
   /*@__PURE__*/ S.Array(
     ExternalDataSourceSerializersOutputSchemasItemMap,
@@ -2566,7 +2564,7 @@ export const ExternalDataSourceSerializersOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExternalDataSourceSerializersOutput>;
 
 export type PaginatedExternalDataSourceSerializersListOutputResultsList =
-  ReadonlyArray<ExternalDataSourceSerializersOutput>;
+  Array<ExternalDataSourceSerializersOutput>;
 export const PaginatedExternalDataSourceSerializersListOutputResultsList =
   /*@__PURE__*/ S.Array(
     ExternalDataSourceSerializersOutput,
@@ -2621,7 +2619,7 @@ export const ExternalDataSourcesOauthAccountsRetrieveRequest =
   }) as any as S.Schema<ExternalDataSourcesOauthAccountsRetrieveRequest>;
 
 /** Short status chips for the account, e.g. ['Active'] or ['Pause']. */
-export type IntegrationAccountBadgesList = ReadonlyArray<string>;
+export type IntegrationAccountBadgesList = Array<string>;
 export const IntegrationAccountBadgesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<IntegrationAccountBadgesList>;
@@ -2655,8 +2653,7 @@ export const IntegrationAccount = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IntegrationAccount>;
 
 /** All accounts the connected integration can access. */
-export type IntegrationAccountsResponseAccountsList =
-  ReadonlyArray<IntegrationAccount>;
+export type IntegrationAccountsResponseAccountsList = Array<IntegrationAccount>;
 export const IntegrationAccountsResponseAccountsList = /*@__PURE__*/ S.Array(
   IntegrationAccount,
 ) as any as S.Schema<IntegrationAccountsResponseAccountsList>;
@@ -2675,7 +2672,7 @@ export const IntegrationAccountsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Optional fnmatch-style globs (`*` and `?` wildcards) restricting which newly discovered schema names auto-sync, matched case-insensitively against both the qualified and bare table name. Null or empty means every new schema qualifies. Only used when `auto_sync_new_schemas` is true. */
 export type ExternalDataSourcesPartialUpdateRequestAutoSyncSchemaPatternsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ExternalDataSourcesPartialUpdateRequestAutoSyncSchemaPatternsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2787,7 +2784,7 @@ export const SourcePreviewResponseRowsItemMap = /*@__PURE__*/ S.Record(
 
 /** Up to `limit` sample rows, after data_selector extraction — the raw records the sync would ingest. */
 export type SourcePreviewResponseRowsList =
-  ReadonlyArray<SourcePreviewResponseRowsItemMap>;
+  Array<SourcePreviewResponseRowsItemMap>;
 export const SourcePreviewResponseRowsList = /*@__PURE__*/ S.Array(
   SourcePreviewResponseRowsItemMap,
 ) as any as S.Schema<SourcePreviewResponseRowsList>;
@@ -2808,8 +2805,7 @@ export const SourcePreviewColumn = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SourcePreviewColumn>;
 
 /** Columns observed across the sample rows, each with an inferred JSON type. */
-export type SourcePreviewResponseColumnsList =
-  ReadonlyArray<SourcePreviewColumn>;
+export type SourcePreviewResponseColumnsList = Array<SourcePreviewColumn>;
 export const SourcePreviewResponseColumnsList = /*@__PURE__*/ S.Array(
   SourcePreviewColumn,
 ) as any as S.Schema<SourcePreviewResponseColumnsList>;
@@ -2837,7 +2833,7 @@ export const SourcePreviewResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Optional fnmatch-style globs (`*` and `?` wildcards) restricting which newly discovered schema names auto-sync, matched case-insensitively against both the qualified and bare table name. Null or empty means every new schema qualifies. Only used when `auto_sync_new_schemas` is true. */
 export type ExternalDataSourcesRefreshSchemasCreateRequestAutoSyncSchemaPatternsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ExternalDataSourcesRefreshSchemasCreateRequestAutoSyncSchemaPatternsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2904,7 +2900,7 @@ export const ExternalDataSourcesRefreshSchemasCreateResponse =
 
 /** Optional fnmatch-style globs (`*` and `?` wildcards) restricting which newly discovered schema names auto-sync, matched case-insensitively against both the qualified and bare table name. Null or empty means every new schema qualifies. Only used when `auto_sync_new_schemas` is true. */
 export type ExternalDataSourcesReloadCreateRequestAutoSyncSchemaPatternsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ExternalDataSourcesReloadCreateRequestAutoSyncSchemaPatternsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3063,7 +3059,7 @@ export const ExternalDataSourcesRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Optional fnmatch-style globs (`*` and `?` wildcards) restricting which newly discovered schema names auto-sync, matched case-insensitively against both the qualified and bare table name. Null or empty means every new schema qualifies. Only used when `auto_sync_new_schemas` is true. */
 export type ExternalDataSourcesRevenueAnalyticsConfigPartialUpdateRequestAutoSyncSchemaPatternsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ExternalDataSourcesRevenueAnalyticsConfigPartialUpdateRequestAutoSyncSchemaPatternsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3174,7 +3170,7 @@ export const ExternalDataSourcesSetupCreateRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ExternalDataSourcesSetupCreateRequest>;
 
 /** Webhook input names the user still needs to provide (e.g. a signing secret the external API did not return on create). Submit them via the update_webhook_inputs endpoint. */
-export type SourceSetupWebhookPendingInputsList = ReadonlyArray<string>;
+export type SourceSetupWebhookPendingInputsList = Array<string>;
 export const SourceSetupWebhookPendingInputsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SourceSetupWebhookPendingInputsList>;
@@ -3217,7 +3213,7 @@ export const SourceSetupResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Optional fnmatch-style globs (`*` and `?` wildcards) restricting which newly discovered schema names auto-sync, matched case-insensitively against both the qualified and bare table name. Null or empty means every new schema qualifies. Only used when `auto_sync_new_schemas` is true. */
 export type ExternalDataSourcesSourcePrefixCreateRequestAutoSyncSchemaPatternsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ExternalDataSourcesSourcePrefixCreateRequestAutoSyncSchemaPatternsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3361,7 +3357,7 @@ export const ExternalDataSourcesStoredCredentialsListRequest =
   }) as any as S.Schema<ExternalDataSourcesStoredCredentialsListRequest>;
 
 export type ExternalDataSourcesStoredCredentialsListResponseBodyList =
-  ReadonlyArray<SourceCredential>;
+  Array<SourceCredential>;
 export const ExternalDataSourcesStoredCredentialsListResponseBodyList =
   /*@__PURE__*/ S.Array(
     SourceCredential,
@@ -3380,7 +3376,7 @@ export const ExternalDataSourcesStoredCredentialsListResponse =
 
 /** Optional fnmatch-style globs (`*` and `?` wildcards) restricting which newly discovered schema names auto-sync, matched case-insensitively against both the qualified and bare table name. Null or empty means every new schema qualifies. Only used when `auto_sync_new_schemas` is true. */
 export type ExternalDataSourcesUpdateRequestAutoSyncSchemaPatternsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ExternalDataSourcesUpdateRequestAutoSyncSchemaPatternsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3438,7 +3434,7 @@ export const ExternalDataSourcesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Optional fnmatch-style globs (`*` and `?` wildcards) restricting which newly discovered schema names auto-sync, matched case-insensitively against both the qualified and bare table name. Null or empty means every new schema qualifies. Only used when `auto_sync_new_schemas` is true. */
 export type ExternalDataSourcesUpdateCdcSettingsCreateRequestAutoSyncSchemaPatternsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ExternalDataSourcesUpdateCdcSettingsCreateRequestAutoSyncSchemaPatternsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3505,7 +3501,7 @@ export const ExternalDataSourcesUpdateCdcSettingsCreateResponse =
 
 /** Optional fnmatch-style globs (`*` and `?` wildcards) restricting which newly discovered schema names auto-sync, matched case-insensitively against both the qualified and bare table name. Null or empty means every new schema qualifies. Only used when `auto_sync_new_schemas` is true. */
 export type ExternalDataSourcesUpdateWebhookInputsCreateRequestAutoSyncSchemaPatternsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ExternalDataSourcesUpdateWebhookInputsCreateRequestAutoSyncSchemaPatternsList =
   /*@__PURE__*/ S.Array(
     S.String,

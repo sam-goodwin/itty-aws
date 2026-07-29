@@ -537,7 +537,7 @@ export const MappingRuleMatchType = /*@__PURE__*/ S.String;
 export type ClaimValue = string;
 export interface MappingRule {
   Claim: string;
-  MatchType: MappingRuleMatchType;
+  MatchType: MappingRuleMatchType | (string & {});
   Value: string;
   RoleARN: string;
 }
@@ -560,8 +560,8 @@ export const RulesConfigurationType = /*@__PURE__*/ S.suspend(() =>
   identifier: "RulesConfigurationType",
 }) as any as S.Schema<RulesConfigurationType>;
 export interface RoleMapping {
-  Type: RoleMappingType;
-  AmbiguousRoleResolution?: AmbiguousRoleResolutionType;
+  Type: RoleMappingType | (string & {});
+  AmbiguousRoleResolution?: AmbiguousRoleResolutionType | (string & {});
   RulesConfiguration?: RulesConfigurationType;
 }
 export const RoleMapping = /*@__PURE__*/ S.suspend(() =>

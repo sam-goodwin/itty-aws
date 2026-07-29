@@ -111,7 +111,7 @@ export const AdvanceRelocateBucketOperationsResponse = /*@__PURE__*/ S.suspend(
   identifier: "AdvanceRelocateBucketOperationsResponse",
 }) as any as S.Schema<AdvanceRelocateBucketOperationsResponse>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -174,7 +174,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -331,7 +331,7 @@ export const ObjectAccessControl = /*@__PURE__*/ S.suspend(() =>
   identifier: "ObjectAccessControl",
 }) as any as S.Schema<ObjectAccessControl>;
 
-export type ObjectAccessControlList = ReadonlyArray<ObjectAccessControl>;
+export type ObjectAccessControlList = Array<ObjectAccessControl>;
 export const ObjectAccessControlList = /*@__PURE__*/ S.Array(
   ObjectAccessControl,
 ) as any as S.Schema<ObjectAccessControlList>;
@@ -582,7 +582,7 @@ export const ComposeRequestSourceObjectsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ComposeRequestSourceObjectsItem>;
 
 export type ComposeRequestSourceObjectsItemList =
-  ReadonlyArray<ComposeRequestSourceObjectsItem>;
+  Array<ComposeRequestSourceObjectsItem>;
 export const ComposeRequestSourceObjectsItemList = /*@__PURE__*/ S.Array(
   ComposeRequestSourceObjectsItem,
 ) as any as S.Schema<ComposeRequestSourceObjectsItemList>;
@@ -1368,7 +1368,7 @@ export const GetBucketsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetBucketsRequest",
 }) as any as S.Schema<GetBucketsRequest>;
 
-export type BucketAccessControlList = ReadonlyArray<BucketAccessControl>;
+export type BucketAccessControlList = Array<BucketAccessControl>;
 export const BucketAccessControlList = /*@__PURE__*/ S.Array(
   BucketAccessControl,
 ) as any as S.Schema<BucketAccessControlList>;
@@ -1402,7 +1402,7 @@ export const BucketCorsItem = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "BucketCorsItem" }) as any as S.Schema<BucketCorsItem>;
 
-export type BucketCorsItemList = ReadonlyArray<BucketCorsItem>;
+export type BucketCorsItemList = Array<BucketCorsItem>;
 export const BucketCorsItemList = /*@__PURE__*/ S.Array(
   BucketCorsItem,
 ) as any as S.Schema<BucketCorsItemList>;
@@ -1426,7 +1426,9 @@ export const BucketEncryptionGoogleManagedEncryptionEnforcementConfigRestriction
 
 export interface BucketEncryptionGoogleManagedEncryptionEnforcementConfig {
   /** Restriction mode for Google-Managed Encryption Keys. Defaults to NotRestricted. */
-  restrictionMode?: BucketEncryptionGoogleManagedEncryptionEnforcementConfigRestrictionModeEnum;
+  restrictionMode?:
+    | BucketEncryptionGoogleManagedEncryptionEnforcementConfigRestrictionModeEnum
+    | (string & {});
   /** Server-determined value that indicates the time from which configuration was enforced and effective. This value is in RFC 3339 format. */
   effectiveTime?: string;
 }
@@ -1449,7 +1451,9 @@ export const BucketEncryptionCustomerManagedEncryptionEnforcementConfigRestricti
 
 export interface BucketEncryptionCustomerManagedEncryptionEnforcementConfig {
   /** Restriction mode for Customer-Managed Encryption Keys. Defaults to NotRestricted. */
-  restrictionMode?: BucketEncryptionCustomerManagedEncryptionEnforcementConfigRestrictionModeEnum;
+  restrictionMode?:
+    | BucketEncryptionCustomerManagedEncryptionEnforcementConfigRestrictionModeEnum
+    | (string & {});
   /** Server-determined value that indicates the time from which configuration was enforced and effective. This value is in RFC 3339 format. */
   effectiveTime?: string;
 }
@@ -1472,7 +1476,9 @@ export const BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigRestrict
 
 export interface BucketEncryptionCustomerSuppliedEncryptionEnforcementConfig {
   /** Restriction mode for Customer-Supplied Encryption Keys. Defaults to NotRestricted. */
-  restrictionMode?: BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigRestrictionModeEnum;
+  restrictionMode?:
+    | BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigRestrictionModeEnum
+    | (string & {});
   /** Server-determined value that indicates the time from which configuration was enforced and effective. This value is in RFC 3339 format. */
   effectiveTime?: string;
 }
@@ -1607,7 +1613,7 @@ export const BucketIpFilterVpcNetworkSourcesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BucketIpFilterVpcNetworkSourcesItem>;
 
 export type BucketIpFilterVpcNetworkSourcesItemList =
-  ReadonlyArray<BucketIpFilterVpcNetworkSourcesItem>;
+  Array<BucketIpFilterVpcNetworkSourcesItem>;
 export const BucketIpFilterVpcNetworkSourcesItemList = /*@__PURE__*/ S.Array(
   BucketIpFilterVpcNetworkSourcesItem,
 ) as any as S.Schema<BucketIpFilterVpcNetworkSourcesItemList>;
@@ -1715,8 +1721,7 @@ export const BucketLifecycleRuleItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "BucketLifecycleRuleItem",
 }) as any as S.Schema<BucketLifecycleRuleItem>;
 
-export type BucketLifecycleRuleItemList =
-  ReadonlyArray<BucketLifecycleRuleItem>;
+export type BucketLifecycleRuleItemList = Array<BucketLifecycleRuleItem>;
 export const BucketLifecycleRuleItemList = /*@__PURE__*/ S.Array(
   BucketLifecycleRuleItem,
 ) as any as S.Schema<BucketLifecycleRuleItemList>;
@@ -2133,7 +2138,7 @@ export const PolicyBindingsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "PolicyBindingsItem",
 }) as any as S.Schema<PolicyBindingsItem>;
 
-export type PolicyBindingsItemList = ReadonlyArray<PolicyBindingsItem>;
+export type PolicyBindingsItemList = Array<PolicyBindingsItem>;
 export const PolicyBindingsItemList = /*@__PURE__*/ S.Array(
   PolicyBindingsItem,
 ) as any as S.Schema<PolicyBindingsItemList>;
@@ -2886,7 +2891,7 @@ export const ListAnywhereCachesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAnywhereCachesRequest",
 }) as any as S.Schema<ListAnywhereCachesRequest>;
 
-export type AnywhereCacheList = ReadonlyArray<AnywhereCache>;
+export type AnywhereCacheList = Array<AnywhereCache>;
 export const AnywhereCacheList = /*@__PURE__*/ S.Array(
   AnywhereCache,
 ) as any as S.Schema<AnywhereCacheList>;
@@ -2987,7 +2992,7 @@ export const ListBucketsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListBucketsRequest",
 }) as any as S.Schema<ListBucketsRequest>;
 
-export type BucketList = ReadonlyArray<Bucket>;
+export type BucketList = Array<Bucket>;
 export const BucketList = /*@__PURE__*/ S.Array(
   Bucket,
 ) as any as S.Schema<BucketList>;
@@ -3092,7 +3097,7 @@ export const ListFoldersRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListFoldersRequest",
 }) as any as S.Schema<ListFoldersRequest>;
 
-export type FolderList = ReadonlyArray<Folder>;
+export type FolderList = Array<Folder>;
 export const FolderList = /*@__PURE__*/ S.Array(
   Folder,
 ) as any as S.Schema<FolderList>;
@@ -3141,7 +3146,7 @@ export const ListManagedFoldersRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListManagedFoldersRequest",
 }) as any as S.Schema<ListManagedFoldersRequest>;
 
-export type ManagedFolderList = ReadonlyArray<ManagedFolder>;
+export type ManagedFolderList = Array<ManagedFolder>;
 export const ManagedFolderList = /*@__PURE__*/ S.Array(
   ManagedFolder,
 ) as any as S.Schema<ManagedFolderList>;
@@ -3184,7 +3189,7 @@ export const ListNotificationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListNotificationsRequest",
 }) as any as S.Schema<ListNotificationsRequest>;
 
-export type NotificationList = ReadonlyArray<Notification>;
+export type NotificationList = Array<Notification>;
 export const NotificationList = /*@__PURE__*/ S.Array(
   Notification,
 ) as any as S.Schema<NotificationList>;
@@ -3293,7 +3298,7 @@ export const ListObjectsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListObjectsRequest",
 }) as any as S.Schema<ListObjectsRequest>;
 
-export type Storage_ObjectList = ReadonlyArray<Storage_Object>;
+export type Storage_ObjectList = Array<Storage_Object>;
 export const Storage_ObjectList = /*@__PURE__*/ S.Array(
   Storage_Object,
 ) as any as S.Schema<Storage_ObjectList>;
@@ -3345,8 +3350,7 @@ export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListOperationsRequest",
 }) as any as S.Schema<ListOperationsRequest>;
 
-export type GoogleLongrunningOperationList =
-  ReadonlyArray<GoogleLongrunningOperation>;
+export type GoogleLongrunningOperationList = Array<GoogleLongrunningOperation>;
 export const GoogleLongrunningOperationList = /*@__PURE__*/ S.Array(
   GoogleLongrunningOperation,
 ) as any as S.Schema<GoogleLongrunningOperationList>;
@@ -3404,7 +3408,7 @@ export const ListProjectsHmacKeysRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsHmacKeysRequest",
 }) as any as S.Schema<ListProjectsHmacKeysRequest>;
 
-export type HmacKeyMetadataList = ReadonlyArray<HmacKeyMetadata>;
+export type HmacKeyMetadataList = Array<HmacKeyMetadata>;
 export const HmacKeyMetadataList = /*@__PURE__*/ S.Array(
   HmacKeyMetadata,
 ) as any as S.Schema<HmacKeyMetadataList>;

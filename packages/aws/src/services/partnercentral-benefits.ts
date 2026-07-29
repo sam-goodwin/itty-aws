@@ -227,7 +227,7 @@ export type BenefitApplicationDescription = string;
 export type FulfillmentType = "CREDITS" | "CASH" | "ACCESS";
 export const FulfillmentType = /*@__PURE__*/ S.String;
 
-export type FulfillmentTypes = FulfillmentType[];
+export type FulfillmentTypes = (FulfillmentType | (string & {}))[];
 export const FulfillmentTypes = /*@__PURE__*/ S.Array(FulfillmentType);
 export type TagKey = string;
 export type TagValue = string;

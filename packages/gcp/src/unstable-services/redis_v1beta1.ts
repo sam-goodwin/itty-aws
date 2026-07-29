@@ -74,7 +74,7 @@ export interface AuthToken {
   /** Output only. Create time of the auth token. */
   createTime?: string;
   /** Output only. State of the auth token. */
-  state?: AuthTokenStateEnum;
+  state?: AuthTokenStateEnum | (string & {});
   /** Identifier. Name of the auth token. Format: projects/{project}/locations/{location}/clusters/{cluster}/tokenAuthUsers/{token_auth_user}/authTokens/{auth_token} */
   name?: string;
 }
@@ -128,7 +128,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -285,7 +285,7 @@ export const AclRule = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AclRule" }) as any as S.Schema<AclRule>;
 
-export type AclRuleList = ReadonlyArray<AclRule>;
+export type AclRuleList = Array<AclRule>;
 export const AclRuleList = /*@__PURE__*/ S.Array(
   AclRule,
 ) as any as S.Schema<AclRuleList>;
@@ -311,7 +311,7 @@ export interface AclPolicyRevisionStatus {
   /** Output only. Human-readable error message providing more details for FAILED states. */
   errorMessage?: string;
   /** Output only. AclPolicyRevision state. */
-  state?: AclPolicyRevisionStatusStateEnum;
+  state?: AclPolicyRevisionStatusStateEnum | (string & {});
   /** Output only. The revision number of the ACL policy revision this status refers to. */
   aclPolicyRevisionNumber?: string;
 }
@@ -326,8 +326,7 @@ export const AclPolicyRevisionStatus = /*@__PURE__*/ S.suspend(() =>
   identifier: "AclPolicyRevisionStatus",
 }) as any as S.Schema<AclPolicyRevisionStatus>;
 
-export type AclPolicyRevisionStatusList =
-  ReadonlyArray<AclPolicyRevisionStatus>;
+export type AclPolicyRevisionStatusList = Array<AclPolicyRevisionStatus>;
 export const AclPolicyRevisionStatusList = /*@__PURE__*/ S.Array(
   AclPolicyRevisionStatus,
 ) as any as S.Schema<AclPolicyRevisionStatusList>;
@@ -348,8 +347,7 @@ export const ClusterAclPolicyAttachment = /*@__PURE__*/ S.suspend(() =>
   identifier: "ClusterAclPolicyAttachment",
 }) as any as S.Schema<ClusterAclPolicyAttachment>;
 
-export type ClusterAclPolicyAttachmentList =
-  ReadonlyArray<ClusterAclPolicyAttachment>;
+export type ClusterAclPolicyAttachmentList = Array<ClusterAclPolicyAttachment>;
 export const ClusterAclPolicyAttachmentList = /*@__PURE__*/ S.Array(
   ClusterAclPolicyAttachment,
 ) as any as S.Schema<ClusterAclPolicyAttachmentList>;
@@ -361,7 +359,7 @@ export interface AclPolicy {
   /** Identifier. Full resource path of the ACL policy. */
   name?: string;
   /** Output only. The state of the ACL policy. */
-  state?: AclPolicyStateEnum;
+  state?: AclPolicyStateEnum | (string & {});
   /** Output only. Deprecated: Used in drift resolution. */
   version?: string;
   /** Output only. Etag for the ACL policy. */
@@ -437,7 +435,7 @@ export type EncryptionInfoKmsKeyPrimaryStateEnum =
   | "UNKNOWN_FAILURE";
 export const EncryptionInfoKmsKeyPrimaryStateEnum = /*@__PURE__*/ S.String;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -451,11 +449,11 @@ export const EncryptionInfoEncryptionTypeEnum = /*@__PURE__*/ S.String;
 /** EncryptionInfo describes the encryption information of a cluster or a backup. */
 export interface EncryptionInfo {
   /** Output only. The state of the primary version of the KMS key perceived by the system. This field is not populated in backups. */
-  kmsKeyPrimaryState?: EncryptionInfoKmsKeyPrimaryStateEnum;
+  kmsKeyPrimaryState?: EncryptionInfoKmsKeyPrimaryStateEnum | (string & {});
   /** Output only. KMS key versions that are being used to protect the data at-rest. */
   kmsKeyVersions?: StringList;
   /** Output only. Type of encryption. */
-  encryptionType?: EncryptionInfoEncryptionTypeEnum;
+  encryptionType?: EncryptionInfoEncryptionTypeEnum | (string & {});
   /** Output only. The most recent time when the encryption info was updated. */
   lastUpdateTime?: string;
 }
@@ -477,7 +475,7 @@ export const ZoneDistributionConfigModeEnum = /*@__PURE__*/ S.String;
 /** Zone distribution config for allocation of cluster resources. */
 export interface ZoneDistributionConfig {
   /** Optional. The mode of zone distribution. Defaults to MULTI_ZONE, when not specified. */
-  mode?: ZoneDistributionConfigModeEnum;
+  mode?: ZoneDistributionConfigModeEnum | (string & {});
   /** Optional. When SINGLE ZONE distribution is selected, zone field would be used to allocate all resources in that zone. This is not applicable to MULTI_ZONE, and would be ignored for MULTI_ZONE clusters. */
   zone?: string;
   /** Optional. Specify the zones of a multi-zone cluster where Redis Cluster allocates resources. This flag isn't applicable for single-zone clusters. */
@@ -503,7 +501,7 @@ export const PscConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PscConfig" }) as any as S.Schema<PscConfig>;
 
-export type PscConfigList = ReadonlyArray<PscConfig>;
+export type PscConfigList = Array<PscConfig>;
 export const PscConfigList = /*@__PURE__*/ S.Array(
   PscConfig,
 ) as any as S.Schema<PscConfigList>;
@@ -526,7 +524,7 @@ export interface PscAutoConnection {
   /** Required. The consumer project_id where the forwarding rule is created from. */
   projectId?: string;
   /** Output only. Type of the PSC connection. */
-  connectionType?: PscAutoConnectionConnectionTypeEnum;
+  connectionType?: PscAutoConnectionConnectionTypeEnum | (string & {});
   /** Output only. The PSC connection id of the forwarding rule connected to the service attachment. */
   pscConnectionId?: string;
   /** Output only. The IP allocated on the consumer network for the PSC forwarding rule. */
@@ -536,7 +534,9 @@ export interface PscAutoConnection {
   /** Required. The consumer network where the IP address resides, in the form of projects/{project_id}/global/networks/{network_id}. */
   network?: string;
   /** Output only. The status of the PSC connection. Please note that this value is updated periodically. Please use Private Service Connect APIs for the latest status. */
-  pscConnectionStatus?: PscAutoConnectionPscConnectionStatusEnum;
+  pscConnectionStatus?:
+    | PscAutoConnectionPscConnectionStatusEnum
+    | (string & {});
   /** Output only. The service attachment which is the target of the PSC connection, in the form of projects/{project-id}/regions/{region}/serviceAttachments/{service-attachment-id}. */
   serviceAttachment?: string;
 }
@@ -577,9 +577,9 @@ export interface PscConnection {
   /** Required. The consumer network where the IP address resides, in the form of projects/{project_id}/global/networks/{network_id}. */
   network?: string;
   /** Output only. Type of the PSC connection. */
-  connectionType?: PscConnectionConnectionTypeEnum;
+  connectionType?: PscConnectionConnectionTypeEnum | (string & {});
   /** Output only. The status of the PSC connection. Please note that this value is updated periodically. To get the latest status of a PSC connection, follow https://cloud.google.com/vpc/docs/configure-private-service-connect-services#endpoint-details. */
-  pscConnectionStatus?: PscConnectionPscConnectionStatusEnum;
+  pscConnectionStatus?: PscConnectionPscConnectionStatusEnum | (string & {});
   /** Output only. port will only be set for Primary/Reader or Discovery endpoint. */
   port?: number;
   /** Required. The service attachment which is the target of the PSC connection, in the form of projects/{project-id}/regions/{region}/serviceAttachments/{service-attachment-id}. */
@@ -619,7 +619,7 @@ export const ConnectionDetail = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConnectionDetail",
 }) as any as S.Schema<ConnectionDetail>;
 
-export type ConnectionDetailList = ReadonlyArray<ConnectionDetail>;
+export type ConnectionDetailList = Array<ConnectionDetail>;
 export const ConnectionDetailList = /*@__PURE__*/ S.Array(
   ConnectionDetail,
 ) as any as S.Schema<ConnectionDetailList>;
@@ -637,7 +637,7 @@ export const ClusterEndpoint = /*@__PURE__*/ S.suspend(() =>
   identifier: "ClusterEndpoint",
 }) as any as S.Schema<ClusterEndpoint>;
 
-export type ClusterEndpointList = ReadonlyArray<ClusterEndpoint>;
+export type ClusterEndpointList = Array<ClusterEndpoint>;
 export const ClusterEndpointList = /*@__PURE__*/ S.Array(
   ClusterEndpoint,
 ) as any as S.Schema<ClusterEndpointList>;
@@ -653,7 +653,7 @@ export const RDBConfigRdbSnapshotPeriodEnum = /*@__PURE__*/ S.String;
 /** Configuration of the RDB based persistence. */
 export interface RDBConfig {
   /** Optional. Period between RDB snapshots. */
-  rdbSnapshotPeriod?: RDBConfigRdbSnapshotPeriodEnum;
+  rdbSnapshotPeriod?: RDBConfigRdbSnapshotPeriodEnum | (string & {});
   /** Optional. The time that the first snapshot was/will be attempted, and to which future snapshots will be aligned. If not provided, the current time will be used. */
   rdbSnapshotStartTime?: string;
 }
@@ -674,7 +674,7 @@ export const AOFConfigAppendFsyncEnum = /*@__PURE__*/ S.String;
 /** Configuration of the AOF based persistence. */
 export interface AOFConfig {
   /** Optional. fsync configuration. */
-  appendFsync?: AOFConfigAppendFsyncEnum;
+  appendFsync?: AOFConfigAppendFsyncEnum | (string & {});
 }
 export const AOFConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -696,7 +696,7 @@ export interface ClusterPersistenceConfig {
   /** Optional. AOF configuration. This field will be ignored if mode is not AOF. */
   aofConfig?: AOFConfig;
   /** Optional. The mode of persistence. */
-  mode?: ClusterPersistenceConfigModeEnum;
+  mode?: ClusterPersistenceConfigModeEnum | (string & {});
 }
 export const ClusterPersistenceConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -751,7 +751,9 @@ export const FixedFrequencySchedule = /*@__PURE__*/ S.suspend(() =>
 /** The automated backup config for a cluster. */
 export interface AutomatedBackupConfig {
   /** Optional. The automated backup mode. If the mode is disabled, the other fields will be ignored. */
-  automatedBackupMode?: AutomatedBackupConfigAutomatedBackupModeEnum;
+  automatedBackupMode?:
+    | AutomatedBackupConfigAutomatedBackupModeEnum
+    | (string & {});
   /** Optional. How long to keep automated backups before the backups are deleted. The value should be between 1 day and 365 days. If not specified, the default value is 35 days. */
   retention?: string;
   /** Optional. Trigger automated backups at a fixed frequency. */
@@ -783,7 +785,7 @@ export const RemoteCluster = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "RemoteCluster" }) as any as S.Schema<RemoteCluster>;
 
-export type RemoteClusterList = ReadonlyArray<RemoteCluster>;
+export type RemoteClusterList = Array<RemoteCluster>;
 export const RemoteClusterList = /*@__PURE__*/ S.Array(
   RemoteCluster,
 ) as any as S.Schema<RemoteClusterList>;
@@ -819,7 +821,7 @@ export interface CrossClusterReplicationConfig {
   /** Output only. An output only view of all the member clusters participating in the cross cluster replication. This view will be provided by every member cluster irrespective of its cluster role(primary or secondary). A primary cluster can provide information about all the secondary clusters replicating from it. However, a secondary cluster only knows about the primary cluster from which it is replicating. However, for scenarios, where the primary cluster is unavailable(e.g. regional outage), a GetCluster request can be sent to any other member cluster and this field will list all the member clusters participating in cross cluster replication. */
   membership?: Membership;
   /** Output only. The role of the cluster in cross cluster replication. */
-  clusterRole?: CrossClusterReplicationConfigClusterRoleEnum;
+  clusterRole?: CrossClusterReplicationConfigClusterRoleEnum | (string & {});
   /** Output only. The last time cross cluster replication config was updated. */
   updateTime?: string;
 }
@@ -876,7 +878,7 @@ export const StringMap = /*@__PURE__*/ S.Record(
   S.String,
 ) as any as S.Schema<StringMap>;
 
-export type PscConnectionList = ReadonlyArray<PscConnection>;
+export type PscConnectionList = Array<PscConnection>;
 export const PscConnectionList = /*@__PURE__*/ S.Array(
   PscConnection,
 ) as any as S.Schema<PscConnectionList>;
@@ -895,7 +897,7 @@ export const ClusterWeeklyMaintenanceWindowDayEnum = /*@__PURE__*/ S.String;
 /** Time window specified for weekly operations. */
 export interface ClusterWeeklyMaintenanceWindow {
   /** Optional. Allows to define schedule that runs specified day of the week. */
-  day?: ClusterWeeklyMaintenanceWindowDayEnum;
+  day?: ClusterWeeklyMaintenanceWindowDayEnum | (string & {});
   /** Optional. Start time of the window in UTC. */
   startTime?: TimeOfDay;
 }
@@ -909,7 +911,7 @@ export const ClusterWeeklyMaintenanceWindow = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ClusterWeeklyMaintenanceWindow>;
 
 export type ClusterWeeklyMaintenanceWindowList =
-  ReadonlyArray<ClusterWeeklyMaintenanceWindow>;
+  Array<ClusterWeeklyMaintenanceWindow>;
 export const ClusterWeeklyMaintenanceWindowList = /*@__PURE__*/ S.Array(
   ClusterWeeklyMaintenanceWindow,
 ) as any as S.Schema<ClusterWeeklyMaintenanceWindowList>;
@@ -967,7 +969,7 @@ export const DiscoveryEndpoint = /*@__PURE__*/ S.suspend(() =>
   identifier: "DiscoveryEndpoint",
 }) as any as S.Schema<DiscoveryEndpoint>;
 
-export type DiscoveryEndpointList = ReadonlyArray<DiscoveryEndpoint>;
+export type DiscoveryEndpointList = Array<DiscoveryEndpoint>;
 export const DiscoveryEndpointList = /*@__PURE__*/ S.Array(
   DiscoveryEndpoint,
 ) as any as S.Schema<DiscoveryEndpointList>;
@@ -1024,7 +1026,7 @@ export interface PscServiceAttachment {
   /** Output only. Service attachment URI which your self-created PscConnection should use as target */
   serviceAttachment?: string;
   /** Output only. Type of a PSC connection targeting this service attachment. */
-  connectionType?: PscServiceAttachmentConnectionTypeEnum;
+  connectionType?: PscServiceAttachmentConnectionTypeEnum | (string & {});
 }
 export const PscServiceAttachment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1035,7 +1037,7 @@ export const PscServiceAttachment = /*@__PURE__*/ S.suspend(() =>
   identifier: "PscServiceAttachment",
 }) as any as S.Schema<PscServiceAttachment>;
 
-export type PscServiceAttachmentList = ReadonlyArray<PscServiceAttachment>;
+export type PscServiceAttachmentList = Array<PscServiceAttachment>;
 export const PscServiceAttachmentList = /*@__PURE__*/ S.Array(
   PscServiceAttachment,
 ) as any as S.Schema<PscServiceAttachmentList>;
@@ -1054,7 +1056,7 @@ export const UpdateInfoTargetNodeTypeEnum = /*@__PURE__*/ S.String;
 /** Represents information about an updating cluster. */
 export interface UpdateInfo {
   /** Target node type for redis cluster. */
-  targetNodeType?: UpdateInfoTargetNodeTypeEnum;
+  targetNodeType?: UpdateInfoTargetNodeTypeEnum | (string & {});
   /** Target number of replica nodes per shard. */
   targetReplicaCount?: number;
   /** Target number of shards for redis cluster */
@@ -1082,7 +1084,7 @@ export const StateInfo = /*@__PURE__*/ S.suspend(() =>
 /** A cluster instance. */
 export interface Cluster {
   /** Optional. The type of a redis node in the cluster. NodeType determines the underlying machine-type of a redis node. */
-  nodeType?: ClusterNodeTypeEnum;
+  nodeType?: ClusterNodeTypeEnum | (string & {});
   /** Output only. Encryption information of the data at rest of the cluster. */
   encryptionInfo?: EncryptionInfo;
   /** Optional. Immutable. Deprecated, do not use. */
@@ -1108,7 +1110,7 @@ export interface Cluster {
   /** Optional. Cross cluster replication config. */
   crossClusterReplicationConfig?: CrossClusterReplicationConfig;
   /** Optional. The in-transit encryption for the Redis cluster. If not provided, encryption is disabled for the cluster. */
-  transitEncryptionMode?: ClusterTransitEncryptionModeEnum;
+  transitEncryptionMode?: ClusterTransitEncryptionModeEnum | (string & {});
   /** Optional. Backups stored in Cloud Storage buckets. The Cloud Storage buckets need to be the same region as the clusters. Read permission is required to import from the provided Cloud Storage objects. */
   gcsSource?: GcsBackupSource;
   /** Output only. The timestamp associated with the cluster creation request. */
@@ -1130,7 +1132,7 @@ export interface Cluster {
   /** Optional. ClusterMaintenancePolicy determines when to allow or deny updates. */
   maintenancePolicy?: ClusterMaintenancePolicy;
   /** Optional. Server CA mode for the cluster. */
-  serverCaMode?: ClusterServerCaModeEnum;
+  serverCaMode?: ClusterServerCaModeEnum | (string & {});
   /** Optional. The ACL policy to be applied to the cluster. */
   aclPolicy?: string;
   /** Optional. The KMS key used to encrypt the at-rest data of the cluster. */
@@ -1138,7 +1140,7 @@ export interface Cluster {
   /** Optional. Labels to represent user-provided metadata. */
   labels?: StringMap;
   /** Output only. The current state of this cluster. Can be CREATING, READY, UPDATING, DELETING and SUSPENDED */
-  state?: ClusterStateEnum;
+  state?: ClusterStateEnum | (string & {});
   /** Optional. Input only. Rotate the server certificates. */
   rotateServerCertificate?: boolean;
   /** Required. Identifier. Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}` */
@@ -1158,7 +1160,7 @@ export interface Cluster {
   /** Optional. Backups generated and managed by memorystore service. */
   managedBackupSource?: ManagedBackupSource;
   /** Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster. */
-  authorizationMode?: ClusterAuthorizationModeEnum;
+  authorizationMode?: ClusterAuthorizationModeEnum | (string & {});
   /** Optional. Number of shards for the Redis cluster. */
   shardCount?: number;
   /** Output only. Precise value of redis memory size in GB for the entire cluster. */
@@ -1267,7 +1269,7 @@ export const WeeklyMaintenanceWindowDayEnum = /*@__PURE__*/ S.String;
 /** Time window in which disruptive maintenance updates occur. Non-disruptive updates can occur inside or outside this window. */
 export interface WeeklyMaintenanceWindow {
   /** Required. The day of week that maintenance updates occur. */
-  day?: WeeklyMaintenanceWindowDayEnum;
+  day?: WeeklyMaintenanceWindowDayEnum | (string & {});
   /** Required. Start time of the window in UTC time. */
   startTime?: TimeOfDay;
   /** Output only. Duration of the maintenance window. The current window is fixed at 1 hour. */
@@ -1283,8 +1285,7 @@ export const WeeklyMaintenanceWindow = /*@__PURE__*/ S.suspend(() =>
   identifier: "WeeklyMaintenanceWindow",
 }) as any as S.Schema<WeeklyMaintenanceWindow>;
 
-export type WeeklyMaintenanceWindowList =
-  ReadonlyArray<WeeklyMaintenanceWindow>;
+export type WeeklyMaintenanceWindowList = Array<WeeklyMaintenanceWindow>;
 export const WeeklyMaintenanceWindowList = /*@__PURE__*/ S.Array(
   WeeklyMaintenanceWindow,
 ) as any as S.Schema<WeeklyMaintenanceWindowList>;
@@ -1349,7 +1350,7 @@ export const TlsCertificate = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TlsCertificate" }) as any as S.Schema<TlsCertificate>;
 
-export type TlsCertificateList = ReadonlyArray<TlsCertificate>;
+export type TlsCertificateList = Array<TlsCertificate>;
 export const TlsCertificateList = /*@__PURE__*/ S.Array(
   TlsCertificate,
 ) as any as S.Schema<TlsCertificateList>;
@@ -1359,8 +1360,9 @@ export type InstanceSuspensionReasonsItemEnum =
   | "CUSTOMER_MANAGED_KEY_ISSUE";
 export const InstanceSuspensionReasonsItemEnum = /*@__PURE__*/ S.String;
 
-export type InstanceSuspensionReasonsItemEnumList =
-  ReadonlyArray<InstanceSuspensionReasonsItemEnum>;
+export type InstanceSuspensionReasonsItemEnumList = Array<
+  InstanceSuspensionReasonsItemEnum | (string & {})
+>;
 export const InstanceSuspensionReasonsItemEnumList = /*@__PURE__*/ S.Array(
   InstanceSuspensionReasonsItemEnum,
 ) as any as S.Schema<InstanceSuspensionReasonsItemEnumList>;
@@ -1385,7 +1387,7 @@ export const NodeInfo = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "NodeInfo" }) as any as S.Schema<NodeInfo>;
 
-export type NodeInfoList = ReadonlyArray<NodeInfo>;
+export type NodeInfoList = Array<NodeInfo>;
 export const NodeInfoList = /*@__PURE__*/ S.Array(
   NodeInfo,
 ) as any as S.Schema<NodeInfoList>;
@@ -1407,9 +1409,9 @@ export const PersistenceConfigRdbSnapshotPeriodEnum = /*@__PURE__*/ S.String;
 /** Configuration of the persistence functionality. */
 export interface PersistenceConfig {
   /** Optional. Controls whether Persistence features are enabled. If not provided, the existing value will be used. */
-  persistenceMode?: PersistenceConfigPersistenceModeEnum;
+  persistenceMode?: PersistenceConfigPersistenceModeEnum | (string & {});
   /** Optional. Period between RDB snapshots. Snapshots will be attempted every period starting from the provided snapshot start time. For example, a start time of 01/01/2033 06:45 and SIX_HOURS snapshot period will do nothing until 01/01/2033, and then trigger snapshots every day at 06:45, 12:45, 18:45, and 00:45 the next day, and so on. If not provided, TWENTY_FOUR_HOURS will be used as default. */
-  rdbSnapshotPeriod?: PersistenceConfigRdbSnapshotPeriodEnum;
+  rdbSnapshotPeriod?: PersistenceConfigRdbSnapshotPeriodEnum | (string & {});
   /** Output only. The next time that a snapshot attempt is scheduled to occur. */
   rdbNextSnapshotTime?: string;
   /** Optional. Date and time that the first snapshot was/will be attempted, and to which future snapshots will be aligned. If not provided, the current time will be used. */
@@ -1471,13 +1473,13 @@ export interface Instance {
   /** Resource labels to represent user provided metadata */
   labels?: StringMap;
   /** Required. The service tier of the instance. */
-  tier?: InstanceTierEnum;
+  tier?: InstanceTierEnum | (string & {});
   /** Output only. The port number of the exposed readonly redis endpoint. Standard tier only. Write requests should target 'port'. */
   readEndpointPort?: number;
   /** Required. Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Redis instances are managed and addressed at regional level so location_id here refers to a GCP region; however, users may choose which specific zone (or collection of zones for cross-zone instances) an instance should be provisioned in. Refer to location_id and alternative_location_id fields for more details. */
   name?: string;
   /** Output only. The current state of this instance. */
-  state?: InstanceStateEnum;
+  state?: InstanceStateEnum | (string & {});
   /** Optional. Indicates whether OSS Redis AUTH is enabled for the instance. If set to "true" AUTH is enabled on the instance. Default value is "false" meaning AUTH is disabled. */
   authEnabled?: boolean;
   /** Optional. Output only. Reserved for future use. */
@@ -1507,7 +1509,7 @@ export interface Instance {
   /** Output only. Hostname or IP address of the exposed readonly Redis endpoint. Standard tier only. Targets all healthy replica nodes in instance. Replication is asynchronous and replica nodes will exhibit some lag behind the primary. Write requests must target 'host'. */
   readEndpoint?: string;
   /** Optional. Read replicas mode for the instance. Defaults to READ_REPLICAS_DISABLED. */
-  readReplicasMode?: InstanceReadReplicasModeEnum;
+  readReplicasMode?: InstanceReadReplicasModeEnum | (string & {});
   /** Output only. Info per node. */
   nodes?: NodeInfoList;
   /** Optional. If specified, at least one node will be provisioned in this zone in addition to the zone specified in location_id. Only applicable to standard tier. If provided, it must be a different zone from the one provided in [location_id]. Additional nodes beyond the first 2 will be placed in zones selected by the service. */
@@ -1519,11 +1521,11 @@ export interface Instance {
   /** Optional. Persistence configuration parameters */
   persistenceConfig?: PersistenceConfig;
   /** Optional. The network connect mode of the Redis instance. If not provided, the connect mode defaults to DIRECT_PEERING. */
-  connectMode?: InstanceConnectModeEnum;
+  connectMode?: InstanceConnectModeEnum | (string & {});
   /** Output only. The time the instance was created. */
   createTime?: string;
   /** Optional. The TLS mode of the Redis instance. If not provided, TLS is disabled for the instance. */
-  transitEncryptionMode?: InstanceTransitEncryptionModeEnum;
+  transitEncryptionMode?: InstanceTransitEncryptionModeEnum | (string & {});
   /** Output only. Date and time of upcoming maintenance events which have been scheduled. */
   maintenanceSchedule?: MaintenanceSchedule;
   /** Output only. Hostname or IP address of the exposed Redis endpoint used by clients to connect to the service. */
@@ -1958,7 +1960,7 @@ export const CertChain = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CertChain" }) as any as S.Schema<CertChain>;
 
-export type CertChainList = ReadonlyArray<CertChain>;
+export type CertChainList = Array<CertChain>;
 export const CertChainList = /*@__PURE__*/ S.Array(
   CertChain,
 ) as any as S.Schema<CertChainList>;
@@ -2211,7 +2213,7 @@ export const BackupFile = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "BackupFile" }) as any as S.Schema<BackupFile>;
 
-export type BackupFileList = ReadonlyArray<BackupFile>;
+export type BackupFileList = Array<BackupFile>;
 export const BackupFileList = /*@__PURE__*/ S.Array(
   BackupFile,
 ) as any as S.Schema<BackupFileList>;
@@ -2417,7 +2419,7 @@ export const RegionalCertChain = /*@__PURE__*/ S.suspend(() =>
   identifier: "RegionalCertChain",
 }) as any as S.Schema<RegionalCertChain>;
 
-export type RegionalCertChainList = ReadonlyArray<RegionalCertChain>;
+export type RegionalCertChainList = Array<RegionalCertChain>;
 export const RegionalCertChainList = /*@__PURE__*/ S.Array(
   RegionalCertChain,
 ) as any as S.Schema<RegionalCertChainList>;
@@ -2538,7 +2540,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = ReadonlyArray<Location>;
+export type LocationList = Array<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -2584,7 +2586,7 @@ export const ListProjectsLocationsAclPoliciesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsAclPoliciesRequest",
 }) as any as S.Schema<ListProjectsLocationsAclPoliciesRequest>;
 
-export type AclPolicyList = ReadonlyArray<AclPolicy>;
+export type AclPolicyList = Array<AclPolicy>;
 export const AclPolicyList = /*@__PURE__*/ S.Array(
   AclPolicy,
 ) as any as S.Schema<AclPolicyList>;
@@ -2633,7 +2635,7 @@ export const ListProjectsLocationsAclPoliciesRevisionsRequest =
     identifier: "ListProjectsLocationsAclPoliciesRevisionsRequest",
   }) as any as S.Schema<ListProjectsLocationsAclPoliciesRevisionsRequest>;
 
-export type AclPolicyRevisionList = ReadonlyArray<AclPolicyRevision>;
+export type AclPolicyRevisionList = Array<AclPolicyRevision>;
 export const AclPolicyRevisionList = /*@__PURE__*/ S.Array(
   AclPolicyRevision,
 ) as any as S.Schema<AclPolicyRevisionList>;
@@ -2682,7 +2684,7 @@ export const ListProjectsLocationsBackupCollectionsRequest =
     identifier: "ListProjectsLocationsBackupCollectionsRequest",
   }) as any as S.Schema<ListProjectsLocationsBackupCollectionsRequest>;
 
-export type BackupCollectionList = ReadonlyArray<BackupCollection>;
+export type BackupCollectionList = Array<BackupCollection>;
 export const BackupCollectionList = /*@__PURE__*/ S.Array(
   BackupCollection,
 ) as any as S.Schema<BackupCollectionList>;
@@ -2731,7 +2733,7 @@ export const ListProjectsLocationsBackupCollectionsBackupsRequest =
     identifier: "ListProjectsLocationsBackupCollectionsBackupsRequest",
   }) as any as S.Schema<ListProjectsLocationsBackupCollectionsBackupsRequest>;
 
-export type BackupList = ReadonlyArray<Backup>;
+export type BackupList = Array<Backup>;
 export const BackupList = /*@__PURE__*/ S.Array(
   Backup,
 ) as any as S.Schema<BackupList>;
@@ -2780,7 +2782,7 @@ export const ListProjectsLocationsClustersRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsClustersRequest",
 }) as any as S.Schema<ListProjectsLocationsClustersRequest>;
 
-export type ClusterList = ReadonlyArray<Cluster>;
+export type ClusterList = Array<Cluster>;
 export const ClusterList = /*@__PURE__*/ S.Array(
   Cluster,
 ) as any as S.Schema<ClusterList>;
@@ -2835,7 +2837,7 @@ export const ListProjectsLocationsClustersTokenAuthUsersRequest =
     identifier: "ListProjectsLocationsClustersTokenAuthUsersRequest",
   }) as any as S.Schema<ListProjectsLocationsClustersTokenAuthUsersRequest>;
 
-export type TokenAuthUserList = ReadonlyArray<TokenAuthUser>;
+export type TokenAuthUserList = Array<TokenAuthUser>;
 export const TokenAuthUserList = /*@__PURE__*/ S.Array(
   TokenAuthUser,
 ) as any as S.Schema<TokenAuthUserList>;
@@ -2890,7 +2892,7 @@ export const ListProjectsLocationsClustersTokenAuthUsersAuthTokensRequest =
     identifier: "ListProjectsLocationsClustersTokenAuthUsersAuthTokensRequest",
   }) as any as S.Schema<ListProjectsLocationsClustersTokenAuthUsersAuthTokensRequest>;
 
-export type AuthTokenList = ReadonlyArray<AuthToken>;
+export type AuthTokenList = Array<AuthToken>;
 export const AuthTokenList = /*@__PURE__*/ S.Array(
   AuthToken,
 ) as any as S.Schema<AuthTokenList>;
@@ -2939,7 +2941,7 @@ export const ListProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsInstancesRequest",
 }) as any as S.Schema<ListProjectsLocationsInstancesRequest>;
 
-export type InstanceList = ReadonlyArray<Instance>;
+export type InstanceList = Array<Instance>;
 export const InstanceList = /*@__PURE__*/ S.Array(
   Instance,
 ) as any as S.Schema<InstanceList>;
@@ -2994,7 +2996,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type OperationList = ReadonlyArray<Operation>;
+export type OperationList = Array<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;

@@ -192,7 +192,7 @@ export const OperationDetail = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDetail>;
 
 /** Collection of available operation details */
-export type AvailableOperationsValueList = ReadonlyArray<OperationDetail>;
+export type AvailableOperationsValueList = Array<OperationDetail>;
 export const AvailableOperationsValueList = /*@__PURE__*/ S.Array(
   OperationDetail,
 ) as any as S.Schema<AvailableOperationsValueList>;
@@ -302,7 +302,7 @@ export const Notification = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Notification" }) as any as S.Schema<Notification>;
 
-export type NotificationListValueList = ReadonlyArray<Notification>;
+export type NotificationListValueList = Array<Notification>;
 export const NotificationListValueList = /*@__PURE__*/ S.Array(
   Notification,
 ) as any as S.Schema<NotificationListValueList>;

@@ -60,7 +60,7 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -160,7 +160,7 @@ export const VideoStat = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "VideoStat" }) as any as S.Schema<VideoStat>;
 
-export type VideoStatList = ReadonlyArray<VideoStat>;
+export type VideoStatList = Array<VideoStat>;
 export const VideoStatList = /*@__PURE__*/ S.Array(
   VideoStat,
 ) as any as S.Schema<VideoStatList>;
@@ -296,16 +296,20 @@ export interface LiveBroadcastContentDetails {
   /** This setting indicates whether HTTP POST closed captioning is enabled for this broadcast. The ingestion URL of the closed captions is returned through the liveStreams API. This is mutually exclusive with using the closed_captions_type property, and is equivalent to setting closed_captions_type to CLOSED_CAPTIONS_HTTP_POST. */
   enableClosedCaptions?: boolean;
   /** If both this and enable_low_latency are set, they must match. LATENCY_NORMAL should match enable_low_latency=false LATENCY_LOW should match enable_low_latency=true LATENCY_ULTRA_LOW should have enable_low_latency omitted. */
-  latencyPreference?: LiveBroadcastContentDetailsLatencyPreferenceEnum;
+  latencyPreference?:
+    | LiveBroadcastContentDetailsLatencyPreferenceEnum
+    | (string & {});
   /** The 3D stereo layout of this broadcast. This defaults to mono. */
-  stereoLayout?: LiveBroadcastContentDetailsStereoLayoutEnum;
+  stereoLayout?: LiveBroadcastContentDetailsStereoLayoutEnum | (string & {});
   /** This setting determines whether viewers can access DVR controls while watching the video. DVR controls enable the viewer to control the video playback experience by pausing, rewinding, or fast forwarding content. The default value for this property is true. *Important:* You must set the value to true and also set the enableArchive property's value to true if you want to make playback available immediately after the broadcast ends. */
   enableDvr?: boolean;
-  closedCaptionsType?: LiveBroadcastContentDetailsClosedCaptionsTypeEnum;
+  closedCaptionsType?:
+    | LiveBroadcastContentDetailsClosedCaptionsTypeEnum
+    | (string & {});
   /** Indicates whether this broadcast has low latency enabled. */
   enableLowLatency?: boolean;
   /** The projection format of this broadcast. This defaults to rectangular. */
-  projection?: LiveBroadcastContentDetailsProjectionEnum;
+  projection?: LiveBroadcastContentDetailsProjectionEnum | (string & {});
   /** This setting indicates whether auto stop is enabled for this broadcast. The default value for this property is false. This setting can only be used by Events. */
   enableAutoStop?: boolean;
   /** This setting indicates whether YouTube should enable content encryption for the broadcast. */
@@ -356,7 +360,7 @@ export interface CuepointSchedule {
   /** This field is semantically required. If it is set false or not set, other fields in this message will be ignored. */
   enabled?: boolean;
   /** The strategy to use when scheduling cuepoints. */
-  scheduleStrategy?: CuepointScheduleScheduleStrategyEnum;
+  scheduleStrategy?: CuepointScheduleScheduleStrategyEnum | (string & {});
 }
 export const CuepointSchedule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -504,15 +508,17 @@ export interface LiveBroadcastStatus {
   /** Whether the broadcast is made for kids or not, decided by YouTube instead of the creator. This field is read only. */
   madeForKids?: boolean;
   /** The broadcast's status. The status can be updated using the API's liveBroadcasts.transition method. */
-  lifeCycleStatus?: LiveBroadcastStatusLifeCycleStatusEnum;
+  lifeCycleStatus?: LiveBroadcastStatusLifeCycleStatusEnum | (string & {});
   /** The broadcast's privacy status. Note that the broadcast represents exactly one YouTube video, so the privacy settings are identical to those supported for videos. In addition, you can set this field by modifying the broadcast resource or by setting the privacyStatus field of the corresponding video resource. */
-  privacyStatus?: LiveBroadcastStatusPrivacyStatusEnum;
+  privacyStatus?: LiveBroadcastStatusPrivacyStatusEnum | (string & {});
   /** This field will be set to True if the creator declares the broadcast to be kids only: go/live-cw-work. */
   selfDeclaredMadeForKids?: boolean;
   /** The broadcast's recording status. */
-  recordingStatus?: LiveBroadcastStatusRecordingStatusEnum;
+  recordingStatus?: LiveBroadcastStatusRecordingStatusEnum | (string & {});
   /** Priority of the live broadcast event (internal state). */
-  liveBroadcastPriority?: LiveBroadcastStatusLiveBroadcastPriorityEnum;
+  liveBroadcastPriority?:
+    | LiveBroadcastStatusLiveBroadcastPriorityEnum
+    | (string & {});
 }
 export const LiveBroadcastStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1022,7 +1028,7 @@ export const VideoRating = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "VideoRating" }) as any as S.Schema<VideoRating>;
 
-export type VideoRatingList = ReadonlyArray<VideoRating>;
+export type VideoRatingList = Array<VideoRating>;
 export const VideoRatingList = /*@__PURE__*/ S.Array(
   VideoRating,
 ) as any as S.Schema<VideoRatingList>;
@@ -1113,7 +1119,7 @@ export const RelatedEntity = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "RelatedEntity" }) as any as S.Schema<RelatedEntity>;
 
-export type RelatedEntityList = ReadonlyArray<RelatedEntity>;
+export type RelatedEntityList = Array<RelatedEntity>;
 export const RelatedEntityList = /*@__PURE__*/ S.Array(
   RelatedEntity,
 ) as any as S.Schema<RelatedEntityList>;
@@ -1127,7 +1133,7 @@ export const AbuseType = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AbuseType" }) as any as S.Schema<AbuseType>;
 
-export type AbuseTypeList = ReadonlyArray<AbuseType>;
+export type AbuseTypeList = Array<AbuseType>;
 export const AbuseTypeList = /*@__PURE__*/ S.Array(
   AbuseType,
 ) as any as S.Schema<AbuseTypeList>;
@@ -1190,7 +1196,7 @@ export const CaptionSnippetStatusEnum = /*@__PURE__*/ S.String;
 /** Basic details about a caption track, such as its language and name. */
 export interface CaptionSnippet {
   /** The type of audio track associated with the caption track. */
-  audioTrackType?: CaptionSnippetAudioTrackTypeEnum;
+  audioTrackType?: CaptionSnippetAudioTrackTypeEnum | (string & {});
   /** Indicates whether the caption track is a draft. If the value is true, then the track is not publicly visible. The default value is false. @mutable youtube.captions.insert youtube.captions.update */
   isDraft?: boolean;
   /** The name of the caption track. The name is intended to be visible to the user as an option during playback. */
@@ -1200,9 +1206,9 @@ export interface CaptionSnippet {
   /** The date and time when the caption track was last updated. */
   lastUpdated?: string;
   /** The reason that YouTube failed to process the caption track. This property is only present if the state property's value is failed. */
-  failureReason?: CaptionSnippetFailureReasonEnum;
+  failureReason?: CaptionSnippetFailureReasonEnum | (string & {});
   /** The caption track's type. */
-  trackKind?: CaptionSnippetTrackKindEnum;
+  trackKind?: CaptionSnippetTrackKindEnum | (string & {});
   /** Indicates whether YouTube synchronized the caption track to the audio track in the video. The value will be true if a sync was explicitly requested when the caption track was uploaded. For example, when calling the captions.insert or captions.update methods, you can set the sync parameter to true to instruct YouTube to sync the uploaded track to the video. If the value is false, YouTube uses the time codes in the uploaded caption track to determine when to display captions. */
   isAutoSynced?: boolean;
   /** Indicates whether caption track is formatted for "easy reader," meaning it is at a third-grade level for language learners. The default value is false. */
@@ -1214,7 +1220,7 @@ export interface CaptionSnippet {
   /** Indicates whether the caption track uses large text for the vision-impaired. The default value is false. */
   isLarge?: boolean;
   /** The caption track's status. */
-  status?: CaptionSnippetStatusEnum;
+  status?: CaptionSnippetStatusEnum | (string & {});
 }
 export const CaptionSnippet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1373,9 +1379,9 @@ export interface ChannelSectionSnippet {
   /** The ID that YouTube uses to uniquely identify the channel that published the channel section. */
   channelId?: string;
   /** The type of the channel section. */
-  type?: ChannelSectionSnippetTypeEnum;
+  type?: ChannelSectionSnippetTypeEnum | (string & {});
   /** The style of the channel section. */
-  style?: ChannelSectionSnippetStyleEnum;
+  style?: ChannelSectionSnippetStyleEnum | (string & {});
   /** Localized title, read-only. */
   localized?: ChannelSectionLocalization;
   /** The channel section's title for multiple_playlists and multiple_channels. */
@@ -1548,11 +1554,11 @@ export interface CommentSnippet {
   /** Link to the author's YouTube channel, if any. */
   authorChannelUrl?: string;
   /** The rating the viewer has given to this comment. For the time being this will never return RATE_TYPE_DISLIKE and instead return RATE_TYPE_NONE. This may change in the future. */
-  viewerRating?: CommentSnippetViewerRatingEnum;
+  viewerRating?: CommentSnippetViewerRatingEnum | (string & {});
   /** Whether the current viewer can rate this comment. */
   canRate?: boolean;
   /** The comment's moderation status. Will not be set if the comments were requested through the id filter. */
-  moderationStatus?: CommentSnippetModerationStatusEnum;
+  moderationStatus?: CommentSnippetModerationStatusEnum | (string & {});
 }
 export const CommentSnippet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1647,7 +1653,7 @@ export const CommentThreadSnippet = /*@__PURE__*/ S.suspend(() =>
   identifier: "CommentThreadSnippet",
 }) as any as S.Schema<CommentThreadSnippet>;
 
-export type CommentList = ReadonlyArray<Comment>;
+export type CommentList = Array<Comment>;
 export const CommentList = /*@__PURE__*/ S.Array(
   Comment,
 ) as any as S.Schema<CommentList>;
@@ -1721,7 +1727,7 @@ export interface Cuepoint {
   etag?: string;
   /** The identifier for cuepoint resource. */
   id?: string;
-  cueType?: CuepointCueTypeEnum;
+  cueType?: CuepointCueTypeEnum | (string & {});
   /** The duration of this cuepoint. */
   durationSecs?: number;
 }
@@ -1827,7 +1833,7 @@ export interface LiveChatBanSnippet {
   banDurationSeconds?: string;
   bannedUserDetails?: ChannelProfileDetails;
   /** The type of ban. */
-  type?: LiveChatBanSnippetTypeEnum;
+  type?: LiveChatBanSnippetTypeEnum | (string & {});
 }
 export const LiveChatBanSnippet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1921,7 +1927,7 @@ export interface LiveChatUserBannedMessageDetails {
   /** The details of the user that was banned. */
   bannedUserDetails?: ChannelProfileDetails;
   /** The type of ban. */
-  banType?: LiveChatUserBannedMessageDetailsBanTypeEnum;
+  banType?: LiveChatUserBannedMessageDetailsBanTypeEnum | (string & {});
   /** The duration of the ban. This property is only present if the banType is temporary. */
   banDurationSeconds?: string;
 }
@@ -1950,7 +1956,7 @@ export const LiveChatPollDetailsPollMetadataPollOption =
   }) as any as S.Schema<LiveChatPollDetailsPollMetadataPollOption>;
 
 export type LiveChatPollDetailsPollMetadataPollOptionList =
-  ReadonlyArray<LiveChatPollDetailsPollMetadataPollOption>;
+  Array<LiveChatPollDetailsPollMetadataPollOption>;
 export const LiveChatPollDetailsPollMetadataPollOptionList =
   /*@__PURE__*/ S.Array(
     LiveChatPollDetailsPollMetadataPollOption,
@@ -1975,7 +1981,7 @@ export const LiveChatPollDetailsStatusEnum = /*@__PURE__*/ S.String;
 
 export interface LiveChatPollDetails {
   metadata?: LiveChatPollDetailsPollMetadata;
-  status?: LiveChatPollDetailsStatusEnum;
+  status?: LiveChatPollDetailsStatusEnum | (string & {});
 }
 export const LiveChatPollDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2221,7 +2227,7 @@ export interface LiveChatMessageSnippet {
   messageRetractedDetails?: LiveChatMessageRetractedDetails;
   liveChatId?: string;
   /** The type of message, this will always be present, it determines the contents of the message as well as which fields will be present. */
-  type?: LiveChatMessageSnippetTypeEnum;
+  type?: LiveChatMessageSnippetTypeEnum | (string & {});
   /** Details about the Super Chat event, this is only set if the type is 'superChatEvent'. */
   superChatDetails?: LiveChatSuperChatDetails;
   /** Whether the message has display content that should be displayed to users. */
@@ -2446,11 +2452,11 @@ export interface CdnSettings {
   /** The ingestionInfo object contains information that YouTube provides that you need to transmit your RTMP or HTTP stream to YouTube. */
   ingestionInfo?: IngestionInfo;
   /** The resolution of the inbound video data. */
-  resolution?: CdnSettingsResolutionEnum;
+  resolution?: CdnSettingsResolutionEnum | (string & {});
   /** The method or protocol used to transmit the video stream. */
-  ingestionType?: CdnSettingsIngestionTypeEnum;
+  ingestionType?: CdnSettingsIngestionTypeEnum | (string & {});
   /** The frame rate of the inbound video data. */
-  frameRate?: CdnSettingsFrameRateEnum;
+  frameRate?: CdnSettingsFrameRateEnum | (string & {});
   /** The format of the video stream that you are sending to Youtube. */
   format?: string;
 }
@@ -2564,13 +2570,13 @@ export const LiveStreamConfigurationIssueTypeEnum = /*@__PURE__*/ S.String;
 
 export interface LiveStreamConfigurationIssue {
   /** How severe this issue is to the stream. */
-  severity?: LiveStreamConfigurationIssueSeverityEnum;
+  severity?: LiveStreamConfigurationIssueSeverityEnum | (string & {});
   /** The long-form description of the issue and how to resolve it. */
   description?: string;
   /** The short-form reason for this issue. */
   reason?: string;
   /** The kind of error happening. */
-  type?: LiveStreamConfigurationIssueTypeEnum;
+  type?: LiveStreamConfigurationIssueTypeEnum | (string & {});
 }
 export const LiveStreamConfigurationIssue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2584,14 +2590,14 @@ export const LiveStreamConfigurationIssue = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LiveStreamConfigurationIssue>;
 
 export type LiveStreamConfigurationIssueList =
-  ReadonlyArray<LiveStreamConfigurationIssue>;
+  Array<LiveStreamConfigurationIssue>;
 export const LiveStreamConfigurationIssueList = /*@__PURE__*/ S.Array(
   LiveStreamConfigurationIssue,
 ) as any as S.Schema<LiveStreamConfigurationIssueList>;
 
 export interface LiveStreamHealthStatus {
   /** The status code of this stream */
-  status?: LiveStreamHealthStatusStatusEnum;
+  status?: LiveStreamHealthStatusStatusEnum | (string & {});
   /** The last time this status was updated (in seconds) */
   lastUpdateTimeSeconds?: string;
   /** The configurations issues on this stream */
@@ -2609,7 +2615,7 @@ export const LiveStreamHealthStatus = /*@__PURE__*/ S.suspend(() =>
 
 /** Brief description of the live stream status. */
 export interface LiveStreamStatus {
-  streamStatus?: LiveStreamStatusStreamStatusEnum;
+  streamStatus?: LiveStreamStatusStreamStatusEnum | (string & {});
   /** The health status of the stream. */
   healthStatus?: LiveStreamHealthStatus;
 }
@@ -2690,7 +2696,7 @@ export interface PlaylistImageSnippet {
   /** The image width. */
   width?: number;
   /** The image type. */
-  type?: PlaylistImageSnippetTypeEnum;
+  type?: PlaylistImageSnippetTypeEnum | (string & {});
 }
 export const PlaylistImageSnippet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2841,7 +2847,7 @@ export const PlaylistItemStatusPrivacyStatusEnum = /*@__PURE__*/ S.String;
 /** Information about the playlist item's privacy status. */
 export interface PlaylistItemStatus {
   /** This resource's privacy status. */
-  privacyStatus?: PlaylistItemStatusPrivacyStatusEnum;
+  privacyStatus?: PlaylistItemStatusPrivacyStatusEnum | (string & {});
 }
 export const PlaylistItemStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2973,9 +2979,9 @@ export const PlaylistStatusPodcastStatusEnum = /*@__PURE__*/ S.String;
 
 export interface PlaylistStatus {
   /** The playlist's privacy status. */
-  privacyStatus?: PlaylistStatusPrivacyStatusEnum;
+  privacyStatus?: PlaylistStatusPrivacyStatusEnum | (string & {});
   /** The playlist's podcast status. */
-  podcastStatus?: PlaylistStatusPodcastStatusEnum;
+  podcastStatus?: PlaylistStatusPodcastStatusEnum | (string & {});
 }
 export const PlaylistStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3077,7 +3083,7 @@ export interface SubscriptionContentDetails {
   /** The approximate number of items that the subscription points to. */
   totalItemCount?: number;
   /** The type of activity this subscription is for (only uploads, everything). */
-  activityType?: SubscriptionContentDetailsActivityTypeEnum;
+  activityType?: SubscriptionContentDetailsActivityTypeEnum | (string & {});
   /** The number of new items in the subscription since its content was last read. */
   newItemCount?: number;
 }
@@ -3246,7 +3252,7 @@ export const ThirdPartyLinkStatusLinkStatusEnum = /*@__PURE__*/ S.String;
 
 /** The third-party link status object contains information about the status of the link. */
 export interface ThirdPartyLinkStatus {
-  linkStatus?: ThirdPartyLinkStatusLinkStatusEnum;
+  linkStatus?: ThirdPartyLinkStatusLinkStatusEnum | (string & {});
 }
 export const ThirdPartyLinkStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3268,7 +3274,9 @@ export interface ChannelToAffiliateProgramLinkDetails {
   /** Optional. Timestamp when the affiliate program status was last updated. */
   statusUpdateTime?: string;
   /** Required. Affiliate program status. */
-  programStatus?: ChannelToAffiliateProgramLinkDetailsProgramStatusEnum;
+  programStatus?:
+    | ChannelToAffiliateProgramLinkDetailsProgramStatusEnum
+    | (string & {});
   /** Required. Google Merchant Center ID of the partner. */
   merchantId?: string;
   /** Optional. Reason for the last update of the affiliate program status. */
@@ -3305,7 +3313,9 @@ export const ChannelToStoreLinkDetailsMerchantAffiliateProgramDetailsStatusEnum 
 /** Information specific to merchant affiliate program. */
 export interface ChannelToStoreLinkDetailsMerchantAffiliateProgramDetails {
   /** The current merchant affiliate program status. */
-  status?: ChannelToStoreLinkDetailsMerchantAffiliateProgramDetailsStatusEnum;
+  status?:
+    | ChannelToStoreLinkDetailsMerchantAffiliateProgramDetailsStatusEnum
+    | (string & {});
 }
 export const ChannelToStoreLinkDetailsMerchantAffiliateProgramDetails =
   /*@__PURE__*/ S.suspend(() =>
@@ -3329,7 +3339,9 @@ export const ChannelToStoreLinkDetailsBillingDetailsBillingStatusEnum =
 /** Information specific to billing. */
 export interface ChannelToStoreLinkDetailsBillingDetails {
   /** The current billing profile status. */
-  billingStatus?: ChannelToStoreLinkDetailsBillingDetailsBillingStatusEnum;
+  billingStatus?:
+    | ChannelToStoreLinkDetailsBillingDetailsBillingStatusEnum
+    | (string & {});
 }
 export const ChannelToStoreLinkDetailsBillingDetails = /*@__PURE__*/ S.suspend(
   () =>
@@ -3374,7 +3386,7 @@ export interface ThirdPartyLinkSnippet {
   /** Information specific to a link between a channel and an affiliate program of a partner. */
   channelToAffiliateProgramLink?: ChannelToAffiliateProgramLinkDetails;
   /** Type of the link named after the entities that are being linked. */
-  type?: ThirdPartyLinkSnippetTypeEnum;
+  type?: ThirdPartyLinkSnippetTypeEnum | (string & {});
   /** Information specific to a link between a channel and a store on a merchandising platform. */
   channelToStoreLink?: ChannelToStoreLinkDetails;
 }
@@ -3553,18 +3565,18 @@ export const VideoStatusFailureReasonEnum = /*@__PURE__*/ S.String;
 /** Basic details about a video category, such as its localized title. Next Id: 19 */
 export interface VideoStatus {
   /** The video's license. @mutable youtube.videos.insert youtube.videos.update */
-  license?: VideoStatusLicenseEnum;
+  license?: VideoStatusLicenseEnum | (string & {});
   /** The video's privacy status. */
-  privacyStatus?: VideoStatusPrivacyStatusEnum;
+  privacyStatus?: VideoStatusPrivacyStatusEnum | (string & {});
   /** The status of the uploaded video. */
-  uploadStatus?: VideoStatusUploadStatusEnum;
+  uploadStatus?: VideoStatusUploadStatusEnum | (string & {});
   /** The date and time when the video is scheduled to publish. It can be set only if the privacy status of the video is private.. */
   publishAt?: string;
   /** This value explains why YouTube rejected an uploaded video. This property is only present if the uploadStatus property indicates that the upload was rejected. */
-  rejectionReason?: VideoStatusRejectionReasonEnum;
+  rejectionReason?: VideoStatusRejectionReasonEnum | (string & {});
   madeForKids?: boolean;
   /** This value explains why a video failed to upload. This property is only present if the uploadStatus property indicates that the upload failed. */
-  failureReason?: VideoStatusFailureReasonEnum;
+  failureReason?: VideoStatusFailureReasonEnum | (string & {});
   selfDeclaredMadeForKids?: boolean;
   /** Indicates if the video contains altered or synthetic media. */
   containsSyntheticMedia?: boolean;
@@ -3653,7 +3665,7 @@ export interface VideoFileDetailsVideoStream {
   /** The video content's display aspect ratio, which specifies the aspect ratio in which the video should be displayed. */
   aspectRatio?: number;
   /** The amount that YouTube needs to rotate the original source content to properly display the video. */
-  rotation?: VideoFileDetailsVideoStreamRotationEnum;
+  rotation?: VideoFileDetailsVideoStreamRotationEnum | (string & {});
   /** The encoded video content's height in pixels. */
   heightPixels?: number;
   /** The video codec that the stream uses. */
@@ -3679,7 +3691,7 @@ export const VideoFileDetailsVideoStream = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VideoFileDetailsVideoStream>;
 
 export type VideoFileDetailsVideoStreamList =
-  ReadonlyArray<VideoFileDetailsVideoStream>;
+  Array<VideoFileDetailsVideoStream>;
 export const VideoFileDetailsVideoStreamList = /*@__PURE__*/ S.Array(
   VideoFileDetailsVideoStream,
 ) as any as S.Schema<VideoFileDetailsVideoStreamList>;
@@ -3707,7 +3719,7 @@ export const VideoFileDetailsAudioStream = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VideoFileDetailsAudioStream>;
 
 export type VideoFileDetailsAudioStreamList =
-  ReadonlyArray<VideoFileDetailsAudioStream>;
+  Array<VideoFileDetailsAudioStream>;
 export const VideoFileDetailsAudioStreamList = /*@__PURE__*/ S.Array(
   VideoFileDetailsAudioStream,
 ) as any as S.Schema<VideoFileDetailsAudioStreamList>;
@@ -3715,7 +3727,7 @@ export const VideoFileDetailsAudioStreamList = /*@__PURE__*/ S.Array(
 /** Describes original video file properties, including technical details about audio and video streams, but also metadata information like content length, digitization time, or geotagging information. */
 export interface VideoFileDetails {
   /** The uploaded file's type as detected by YouTube's video processing engine. Currently, YouTube only processes video files, but this field is present whether a video file or another type of file was uploaded. */
-  fileType?: VideoFileDetailsFileTypeEnum;
+  fileType?: VideoFileDetailsFileTypeEnum | (string & {});
   /** The uploaded file's name. This field is present whether a video file or another type of file was uploaded. */
   fileName?: string;
   /** The uploaded video file's combined (video and audio) bitrate in bits per second. */
@@ -4394,8 +4406,9 @@ export type ContentRatingDjctqRatingReasonsItemEnum =
   | "djctqFantasyViolence";
 export const ContentRatingDjctqRatingReasonsItemEnum = /*@__PURE__*/ S.String;
 
-export type ContentRatingDjctqRatingReasonsItemEnumList =
-  ReadonlyArray<ContentRatingDjctqRatingReasonsItemEnum>;
+export type ContentRatingDjctqRatingReasonsItemEnumList = Array<
+  ContentRatingDjctqRatingReasonsItemEnum | (string & {})
+>;
 export const ContentRatingDjctqRatingReasonsItemEnumList =
   /*@__PURE__*/ S.Array(
     ContentRatingDjctqRatingReasonsItemEnum,
@@ -4607,8 +4620,9 @@ export type ContentRatingFpbRatingReasonsItemEnum =
   | "fpbImitativeActsTechniques";
 export const ContentRatingFpbRatingReasonsItemEnum = /*@__PURE__*/ S.String;
 
-export type ContentRatingFpbRatingReasonsItemEnumList =
-  ReadonlyArray<ContentRatingFpbRatingReasonsItemEnum>;
+export type ContentRatingFpbRatingReasonsItemEnumList = Array<
+  ContentRatingFpbRatingReasonsItemEnum | (string & {})
+>;
 export const ContentRatingFpbRatingReasonsItemEnumList = /*@__PURE__*/ S.Array(
   ContentRatingFpbRatingReasonsItemEnum,
 ) as any as S.Schema<ContentRatingFpbRatingReasonsItemEnumList>;
@@ -4661,147 +4675,149 @@ export const ContentRatingAnatelRatingEnum = /*@__PURE__*/ S.String;
 /** Ratings schemes. The country-specific ratings are mostly for movies and shows. LINT.IfChange */
 export interface ContentRating {
   /** The video's Departamento de Justiça, Classificação, Qualificação e Títulos (DJCQT - Brazil) rating. */
-  djctqRating?: ContentRatingDjctqRatingEnum;
+  djctqRating?: ContentRatingDjctqRatingEnum | (string & {});
   /** The video's rating from the Ministero dei Beni e delle Attività Culturali e del Turismo (Italy). */
-  mibacRating?: ContentRatingMibacRatingEnum;
+  mibacRating?: ContentRatingMibacRatingEnum | (string & {});
   /** The video's rating from Statens medieråd (Sweden's National Media Council). */
-  smsaRating?: ContentRatingSmsaRatingEnum;
+  smsaRating?: ContentRatingSmsaRatingEnum | (string & {});
   /** The rating system for trailer, DVD, and Ad in the US. See http://movielabs.com/md/ratings/v2.3/html/US_MPAAT_Ratings.html. */
-  mpaatRating?: ContentRatingMpaatRatingEnum;
+  mpaatRating?: ContentRatingMpaatRatingEnum | (string & {});
   /** The video's rating from Malaysia's Film Censorship Board. */
-  fcbmRating?: ContentRatingFcbmRatingEnum;
+  fcbmRating?: ContentRatingFcbmRatingEnum | (string & {});
   /** The video's rating from the Maldives National Bureau of Classification. */
-  nbcRating?: ContentRatingNbcRatingEnum;
+  nbcRating?: ContentRatingNbcRatingEnum | (string & {});
   /** The video's Office of Film and Literature Classification (OFLC - New Zealand) rating. */
-  oflcRating?: ContentRatingOflcRatingEnum;
+  oflcRating?: ContentRatingOflcRatingEnum | (string & {});
   /** The National Media Council ratings system for United Arab Emirates. */
-  nmcRating?: ContentRatingNmcRatingEnum;
+  nmcRating?: ContentRatingNmcRatingEnum | (string & {});
   /** The video's rating from Malta's Film Age-Classification Board. */
-  mccaaRating?: ContentRatingMccaaRatingEnum;
+  mccaaRating?: ContentRatingMccaaRatingEnum | (string & {});
   /** The video's rating from Medietilsynet, the Norwegian Media Authority. */
-  medietilsynetRating?: ContentRatingMedietilsynetRatingEnum;
+  medietilsynetRating?: ContentRatingMedietilsynetRatingEnum | (string & {});
   /** The video's Canadian Home Video Rating System (CHVRS) rating. */
-  chvrsRating?: ContentRatingChvrsRatingEnum;
+  chvrsRating?: ContentRatingChvrsRatingEnum | (string & {});
   /** The video's rating from the Austrian Board of Media Classification (Bundesministerium für Unterricht, Kunst und Kultur). */
-  bmukkRating?: ContentRatingBmukkRatingEnum;
+  bmukkRating?: ContentRatingBmukkRatingEnum | (string & {});
   /** The video's rating in the Czech Republic. */
-  czfilmRating?: ContentRatingCzfilmRatingEnum;
+  czfilmRating?: ContentRatingCzfilmRatingEnum | (string & {});
   /** The video's rating from the Hungarian Nemzeti Filmiroda, the Rating Committee of the National Office of Film. */
-  rcnofRating?: ContentRatingRcnofRatingEnum;
+  rcnofRating?: ContentRatingRcnofRatingEnum | (string & {});
   /** The video's Irish Film Classification Office (IFCO - Ireland) rating. See the IFCO website for more information. */
-  ifcoRating?: ContentRatingIfcoRatingEnum;
+  ifcoRating?: ContentRatingIfcoRatingEnum | (string & {});
   /** Rating system for Canadian TV - Canadian TV Classification System The video's rating from the Canadian Radio-Television and Telecommunications Commission (CRTC) for Canadian English-language broadcasts. For more information, see the Canadian Broadcast Standards Council website. */
-  catvRating?: ContentRatingCatvRatingEnum;
+  catvRating?: ContentRatingCatvRatingEnum | (string & {});
   /** The video's rating from the Kenya Film Classification Board. */
-  kfcbRating?: ContentRatingKfcbRatingEnum;
+  kfcbRating?: ContentRatingKfcbRatingEnum | (string & {});
   /** The video's rating in Estonia. */
-  eefilmRating?: ContentRatingEefilmRatingEnum;
+  eefilmRating?: ContentRatingEefilmRatingEnum | (string & {});
   /** This property has been deprecated. Use the contentDetails.contentRating.cncRating instead. */
-  fmocRating?: ContentRatingFmocRatingEnum;
+  fmocRating?: ContentRatingFmocRatingEnum | (string & {});
   /** The video's rating from the Bulgarian National Film Center. */
-  nfrcRating?: ContentRatingNfrcRatingEnum;
+  nfrcRating?: ContentRatingNfrcRatingEnum | (string & {});
   /** The video's rating from Thailand's Board of Film and Video Censors. */
-  bfvcRating?: ContentRatingBfvcRatingEnum;
+  bfvcRating?: ContentRatingBfvcRatingEnum | (string & {});
   /** The video's Ministerio de Cultura (Colombia) rating. */
-  mocRating?: ContentRatingMocRatingEnum;
+  mocRating?: ContentRatingMocRatingEnum | (string & {});
   /** The video's rating from Nigeria's National Film and Video Censors Board. */
-  nfvcbRating?: ContentRatingNfvcbRatingEnum;
+  nfvcbRating?: ContentRatingNfvcbRatingEnum | (string & {});
   /** The video's TV Parental Guidelines (TVPG) rating. */
-  tvpgRating?: ContentRatingTvpgRatingEnum;
+  tvpgRating?: ContentRatingTvpgRatingEnum | (string & {});
   /** The video's rating in Iceland. */
-  smaisRating?: ContentRatingSmaisRatingEnum;
+  smaisRating?: ContentRatingSmaisRatingEnum | (string & {});
   /** The video's National Film Registry of the Russian Federation (MKRF - Russia) rating. */
-  russiaRating?: ContentRatingRussiaRatingEnum;
+  russiaRating?: ContentRatingRussiaRatingEnum | (string & {});
   /** The video's rating from South Africa's Film and Publication Board. */
-  fpbRating?: ContentRatingFpbRatingEnum;
+  fpbRating?: ContentRatingFpbRatingEnum | (string & {});
   /** The video's rating from Taiwan's Ministry of Culture (文化部). */
-  moctwRating?: ContentRatingMoctwRatingEnum;
+  moctwRating?: ContentRatingMoctwRatingEnum | (string & {});
   /** The video's rating in Venezuela. */
-  resorteviolenciaRating?: ContentRatingResorteviolenciaRatingEnum;
+  resorteviolenciaRating?:
+    | ContentRatingResorteviolenciaRatingEnum
+    | (string & {});
   /** A rating that YouTube uses to identify age-restricted content. */
-  ytRating?: ContentRatingYtRatingEnum;
+  ytRating?: ContentRatingYtRatingEnum | (string & {});
   /** The video's Korea Media Rating Board (영상물등급위원회) rating. The KMRB rates videos in South Korea. */
-  kmrbRating?: ContentRatingKmrbRatingEnum;
+  kmrbRating?: ContentRatingKmrbRatingEnum | (string & {});
   /** The video's rating from Hong Kong's Office for Film, Newspaper and Article Administration. */
-  fcoRating?: ContentRatingFcoRatingEnum;
+  fcoRating?: ContentRatingFcoRatingEnum | (string & {});
   /** The video's Australian Classification Board (ACB) or Australian Communications and Media Authority (ACMA) rating. ACMA ratings are used to classify children's television programming. */
-  acbRating?: ContentRatingAcbRatingEnum;
+  acbRating?: ContentRatingAcbRatingEnum | (string & {});
   /** The video's rating from Romania's CONSILIUL NATIONAL AL AUDIOVIZUALULUI (CNA). */
-  cnaRating?: ContentRatingCnaRatingEnum;
+  cnaRating?: ContentRatingCnaRatingEnum | (string & {});
   /** The video's Freiwillige Selbstkontrolle der Filmwirtschaft (FSK - Germany) rating. */
-  fskRating?: ContentRatingFskRatingEnum;
+  fskRating?: ContentRatingFskRatingEnum | (string & {});
   /** The video's Consejo de Calificación Cinematográfica (Chile) rating. */
-  cccRating?: ContentRatingCccRatingEnum;
+  cccRating?: ContentRatingCccRatingEnum | (string & {});
   /** The video's rating from Luxembourg's Commission de surveillance de la classification des films (CSCF). */
-  cscfRating?: ContentRatingCscfRatingEnum;
+  cscfRating?: ContentRatingCscfRatingEnum | (string & {});
   /** The video's INCAA (Instituto Nacional de Cine y Artes Audiovisuales - Argentina) rating. */
-  incaaRating?: ContentRatingIncaaRatingEnum;
+  incaaRating?: ContentRatingIncaaRatingEnum | (string & {});
   /** The video's rating in Slovakia. */
-  skfilmRating?: ContentRatingSkfilmRatingEnum;
+  skfilmRating?: ContentRatingSkfilmRatingEnum | (string & {});
   /** The video's rating in Switzerland. */
-  chfilmRating?: ContentRatingChfilmRatingEnum;
+  chfilmRating?: ContentRatingChfilmRatingEnum | (string & {});
   /** The video's Motion Picture Association of America (MPAA) rating. */
-  mpaaRating?: ContentRatingMpaaRatingEnum;
+  mpaaRating?: ContentRatingMpaaRatingEnum | (string & {});
   /** The video's rating from Ireland's Raidió Teilifís Éireann. */
-  rteRating?: ContentRatingRteRatingEnum;
+  rteRating?: ContentRatingRteRatingEnum | (string & {});
   /** The video's rating from the Nacionãlais Kino centrs (National Film Centre of Latvia). */
-  nkclvRating?: ContentRatingNkclvRatingEnum;
+  nkclvRating?: ContentRatingNkclvRatingEnum | (string & {});
   /** The video's rating from Singapore's Media Development Authority (MDA) and, specifically, it's Board of Film Censors (BFC). */
-  mdaRating?: ContentRatingMdaRatingEnum;
+  mdaRating?: ContentRatingMdaRatingEnum | (string & {});
   /** The video's General Directorate of Radio, Television and Cinematography (Mexico) rating. */
-  rtcRating?: ContentRatingRtcRatingEnum;
+  rtcRating?: ContentRatingRtcRatingEnum | (string & {});
   /** The video's rating from the Movie and Television Review and Classification Board (Philippines). */
-  mtrcbRating?: ContentRatingMtrcbRatingEnum;
+  mtrcbRating?: ContentRatingMtrcbRatingEnum | (string & {});
   /** The video's rating in Egypt. */
-  egfilmRating?: ContentRatingEgfilmRatingEnum;
+  egfilmRating?: ContentRatingEgfilmRatingEnum | (string & {});
   /** Reasons that explain why the video received its DJCQT (Brazil) rating. */
   djctqRatingReasons?: ContentRatingDjctqRatingReasonsItemEnumList;
   /** The video's rating from Finland's Kansallinen Audiovisuaalinen Instituutti (National Audiovisual Institute). */
-  mekuRating?: ContentRatingMekuRatingEnum;
+  mekuRating?: ContentRatingMekuRatingEnum | (string & {});
   /** The video's NICAM/Kijkwijzer rating from the Nederlands Instituut voor de Classificatie van Audiovisuele Media (Netherlands). */
-  kijkwijzerRating?: ContentRatingKijkwijzerRatingEnum;
+  kijkwijzerRating?: ContentRatingKijkwijzerRatingEnum | (string & {});
   /** The video's Eirin (映倫) rating. Eirin is the Japanese rating system. */
-  eirinRating?: ContentRatingEirinRatingEnum;
+  eirinRating?: ContentRatingEirinRatingEnum | (string & {});
   /** The video's British Board of Film Classification (BBFC) rating. */
-  bbfcRating?: ContentRatingBbfcRatingEnum;
+  bbfcRating?: ContentRatingBbfcRatingEnum | (string & {});
   /** The video's rating in Peru. */
-  pefilmRating?: ContentRatingPefilmRatingEnum;
+  pefilmRating?: ContentRatingPefilmRatingEnum | (string & {});
   /** The video's rating system for Vietnam - MCST */
-  mcstRating?: ContentRatingMcstRatingEnum;
+  mcstRating?: ContentRatingMcstRatingEnum | (string & {});
   /** Rating system in France - Commission de classification cinematographique */
-  cncRating?: ContentRatingCncRatingEnum;
+  cncRating?: ContentRatingCncRatingEnum | (string & {});
   /** The video's rating from France's Conseil supérieur de l’audiovisuel, which rates broadcast content. */
-  csaRating?: ContentRatingCsaRatingEnum;
+  csaRating?: ContentRatingCsaRatingEnum | (string & {});
   /** The video's rating from the Danish Film Institute's (Det Danske Filminstitut) Media Council for Children and Young People. */
-  mccypRating?: ContentRatingMccypRatingEnum;
+  mccypRating?: ContentRatingMccypRatingEnum | (string & {});
   /** The video's rating from the Canadian Radio-Television and Telecommunications Commission (CRTC) for Canadian French-language broadcasts. For more information, see the Canadian Broadcast Standards Council website. */
-  catvfrRating?: ContentRatingCatvfrRatingEnum;
+  catvfrRating?: ContentRatingCatvfrRatingEnum | (string & {});
   /** The video's rating from Portugal's Comissão de Classificação de Espect´culos. */
-  cceRating?: ContentRatingCceRatingEnum;
+  cceRating?: ContentRatingCceRatingEnum | (string & {});
   /** The video's rating in Poland. */
-  nbcplRating?: ContentRatingNbcplRatingEnum;
+  nbcplRating?: ContentRatingNbcplRatingEnum | (string & {});
   /** Rating system in Turkey - Evaluation and Classification Board of the Ministry of Culture and Tourism */
-  ecbmctRating?: ContentRatingEcbmctRatingEnum;
+  ecbmctRating?: ContentRatingEcbmctRatingEnum | (string & {});
   /** The video's rating in Israel. */
-  ilfilmRating?: ContentRatingIlfilmRatingEnum;
+  ilfilmRating?: ContentRatingIlfilmRatingEnum | (string & {});
   /** The video's Central Board of Film Certification (CBFC - India) rating. */
-  cbfcRating?: ContentRatingCbfcRatingEnum;
+  cbfcRating?: ContentRatingCbfcRatingEnum | (string & {});
   /** The video's rating from the Commission de Contrôle des Films (Belgium). */
-  cicfRating?: ContentRatingCicfRatingEnum;
+  cicfRating?: ContentRatingCicfRatingEnum | (string & {});
   /** The video's rating from Indonesia's Lembaga Sensor Film. */
-  lsfRating?: ContentRatingLsfRatingEnum;
+  lsfRating?: ContentRatingLsfRatingEnum | (string & {});
   /** The video's rating from Italy's Autorità per le Garanzie nelle Comunicazioni (AGCOM). */
-  agcomRating?: ContentRatingAgcomRatingEnum;
+  agcomRating?: ContentRatingAgcomRatingEnum | (string & {});
   /** Reasons that explain why the video received its FPB (South Africa) rating. */
   fpbRatingReasons?: ContentRatingFpbRatingReasonsItemEnumList;
   /** The rating system for MENA countries, a clone of MPAA. It is needed to prevent titles go live w/o additional QC check, since some of them can be inappropriate for the countries at all. See b/33408548 for more details. */
-  menaMpaaRating?: ContentRatingMenaMpaaRatingEnum;
+  menaMpaaRating?: ContentRatingMenaMpaaRatingEnum | (string & {});
   /** The video's rating in Greece. */
-  grfilmRating?: ContentRatingGrfilmRatingEnum;
+  grfilmRating?: ContentRatingGrfilmRatingEnum | (string & {});
   /** The video's Instituto de la Cinematografía y de las Artes Audiovisuales (ICAA - Spain) rating. */
-  icaaRating?: ContentRatingIcaaRatingEnum;
+  icaaRating?: ContentRatingIcaaRatingEnum | (string & {});
   /** The video's Anatel (Asociación Nacional de Televisión) rating for Chilean television. */
-  anatelRating?: ContentRatingAnatelRatingEnum;
+  anatelRating?: ContentRatingAnatelRatingEnum | (string & {});
 }
 export const ContentRating = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4888,7 +4904,7 @@ export const VideoContentDetailsCaptionEnum = /*@__PURE__*/ S.String;
 /** Details about the content of a YouTube Video. */
 export interface VideoContentDetails {
   /** Specifies the projection format of the video. */
-  projection?: VideoContentDetailsProjectionEnum;
+  projection?: VideoContentDetailsProjectionEnum | (string & {});
   /** The regionRestriction object contains information about the countries where a video is (or is not) viewable. The object will contain either the contentDetails.regionRestriction.allowed property or the contentDetails.regionRestriction.blocked property. */
   regionRestriction?: VideoContentDetailsRegionRestriction;
   /** Indicates whether the video uploader has provided a custom thumbnail image for the video. This property is only visible to the video uploader. */
@@ -4902,11 +4918,11 @@ export interface VideoContentDetails {
   /** The value of dimension indicates whether the video is available in 3D or in 2D. */
   dimension?: string;
   /** The value of definition indicates whether the video is available in high definition or only in standard definition. */
-  definition?: VideoContentDetailsDefinitionEnum;
+  definition?: VideoContentDetailsDefinitionEnum | (string & {});
   /** The countryRestriction object contains information about the countries where a video is (or is not) viewable. */
   countryRestriction?: AccessPolicy;
   /** The value of captions indicates whether the video has captions or not. */
-  caption?: VideoContentDetailsCaptionEnum;
+  caption?: VideoContentDetailsCaptionEnum | (string & {});
 }
 export const VideoContentDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4964,11 +4980,13 @@ export const VideoProcessingDetailsProcessingFailureReasonEnum =
 /** Describes processing status and progress and availability of some other Video resource parts. */
 export interface VideoProcessingDetails {
   /** The video's processing status. This value indicates whether YouTube was able to process the video or if the video is still being processed. */
-  processingStatus?: VideoProcessingDetailsProcessingStatusEnum;
+  processingStatus?: VideoProcessingDetailsProcessingStatusEnum | (string & {});
   /** The processingProgress object contains information about the progress YouTube has made in processing the video. The values are really only relevant if the video's processing status is processing. */
   processingProgress?: VideoProcessingDetailsProcessingProgress;
   /** The reason that YouTube failed to process the video. This property will only have a value if the processingStatus property's value is failed. */
-  processingFailureReason?: VideoProcessingDetailsProcessingFailureReasonEnum;
+  processingFailureReason?:
+    | VideoProcessingDetailsProcessingFailureReasonEnum
+    | (string & {});
   /** This value indicates whether video editing suggestions, which might improve video quality or the playback experience, are available for the video. You can retrieve these suggestions by requesting the suggestions part in your videos.list() request. */
   editorSuggestionsAvailability?: string;
   /** This value indicates whether the video processing engine has generated suggestions that might improve YouTube's ability to process the the video, warnings that explain video processing problems, or errors that cause video processing problems. You can retrieve these suggestions by requesting the suggestions part in your videos.list() request. */
@@ -5013,8 +5031,9 @@ export type VideoSuggestionsProcessingWarningsItemEnum =
 export const VideoSuggestionsProcessingWarningsItemEnum =
   /*@__PURE__*/ S.String;
 
-export type VideoSuggestionsProcessingWarningsItemEnumList =
-  ReadonlyArray<VideoSuggestionsProcessingWarningsItemEnum>;
+export type VideoSuggestionsProcessingWarningsItemEnumList = Array<
+  VideoSuggestionsProcessingWarningsItemEnum | (string & {})
+>;
 export const VideoSuggestionsProcessingWarningsItemEnumList =
   /*@__PURE__*/ S.Array(
     VideoSuggestionsProcessingWarningsItemEnum,
@@ -5029,8 +5048,9 @@ export type VideoSuggestionsProcessingHintsItemEnum =
   | "hdrVideo";
 export const VideoSuggestionsProcessingHintsItemEnum = /*@__PURE__*/ S.String;
 
-export type VideoSuggestionsProcessingHintsItemEnumList =
-  ReadonlyArray<VideoSuggestionsProcessingHintsItemEnum>;
+export type VideoSuggestionsProcessingHintsItemEnumList = Array<
+  VideoSuggestionsProcessingHintsItemEnum | (string & {})
+>;
 export const VideoSuggestionsProcessingHintsItemEnumList =
   /*@__PURE__*/ S.Array(
     VideoSuggestionsProcessingHintsItemEnum,
@@ -5043,8 +5063,9 @@ export type VideoSuggestionsEditorSuggestionsItemEnum =
   | "audioQuietAudioSwap";
 export const VideoSuggestionsEditorSuggestionsItemEnum = /*@__PURE__*/ S.String;
 
-export type VideoSuggestionsEditorSuggestionsItemEnumList =
-  ReadonlyArray<VideoSuggestionsEditorSuggestionsItemEnum>;
+export type VideoSuggestionsEditorSuggestionsItemEnumList = Array<
+  VideoSuggestionsEditorSuggestionsItemEnum | (string & {})
+>;
 export const VideoSuggestionsEditorSuggestionsItemEnumList =
   /*@__PURE__*/ S.Array(
     VideoSuggestionsEditorSuggestionsItemEnum,
@@ -5060,8 +5081,9 @@ export type VideoSuggestionsProcessingErrorsItemEnum =
   | "unsupportedSpatialAudioLayout";
 export const VideoSuggestionsProcessingErrorsItemEnum = /*@__PURE__*/ S.String;
 
-export type VideoSuggestionsProcessingErrorsItemEnumList =
-  ReadonlyArray<VideoSuggestionsProcessingErrorsItemEnum>;
+export type VideoSuggestionsProcessingErrorsItemEnumList = Array<
+  VideoSuggestionsProcessingErrorsItemEnum | (string & {})
+>;
 export const VideoSuggestionsProcessingErrorsItemEnumList =
   /*@__PURE__*/ S.Array(
     VideoSuggestionsProcessingErrorsItemEnum,
@@ -5084,7 +5106,7 @@ export const VideoSuggestionsTagSuggestion = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VideoSuggestionsTagSuggestion>;
 
 export type VideoSuggestionsTagSuggestionList =
-  ReadonlyArray<VideoSuggestionsTagSuggestion>;
+  Array<VideoSuggestionsTagSuggestion>;
 export const VideoSuggestionsTagSuggestionList = /*@__PURE__*/ S.Array(
   VideoSuggestionsTagSuggestion,
 ) as any as S.Schema<VideoSuggestionsTagSuggestionList>;
@@ -5150,7 +5172,7 @@ export interface VideoAgeGating {
   /** Indicates whether or not the video has alcoholic beverage content. Only users of legal purchasing age in a particular country, as identified by ICAP, can view the content. */
   alcoholContent?: boolean;
   /** Video game rating, if any. */
-  videoGameRating?: VideoAgeGatingVideoGameRatingEnum;
+  videoGameRating?: VideoAgeGatingVideoGameRatingEnum | (string & {});
 }
 export const VideoAgeGating = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5178,7 +5200,7 @@ export interface VideoSnippet {
   /** Localized snippet selected with the hl parameter. If no such localization exists, this field is populated with the default snippet. (Read-only) */
   localized?: VideoLocalization;
   /** Indicates if the video is an upcoming/active live broadcast. Or it's "none" if the video is not an upcoming/active live broadcast. */
-  liveBroadcastContent?: VideoSnippetLiveBroadcastContentEnum;
+  liveBroadcastContent?: VideoSnippetLiveBroadcastContentEnum | (string & {});
   /** A map of thumbnail images associated with the video. For each object in the map, the key is the name of the thumbnail image, and the value is an object that contains other information about the thumbnail. */
   thumbnails?: ThumbnailDetails;
   /** The YouTube video category associated with the video. */
@@ -5688,7 +5710,7 @@ export const Activity = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Activity" }) as any as S.Schema<Activity>;
 
-export type ActivityList = ReadonlyArray<Activity>;
+export type ActivityList = Array<Activity>;
 export const ActivityList = /*@__PURE__*/ S.Array(
   Activity,
 ) as any as S.Schema<ActivityList>;
@@ -5771,7 +5793,7 @@ export const ListCaptionsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListCaptionsRequest",
 }) as any as S.Schema<ListCaptionsRequest>;
 
-export type CaptionList = ReadonlyArray<Caption>;
+export type CaptionList = Array<Caption>;
 export const CaptionList = /*@__PURE__*/ S.Array(
   Caption,
 ) as any as S.Schema<CaptionList>;
@@ -5885,7 +5907,7 @@ export const ChannelConversionPingContextEnum = /*@__PURE__*/ S.String;
 /** Pings that the app shall fire (authenticated by biscotti cookie). Each ping has a context, in which the app must fire the ping, and a url identifying the ping. */
 export interface ChannelConversionPing {
   /** Defines the context of the ping. */
-  context?: ChannelConversionPingContextEnum;
+  context?: ChannelConversionPingContextEnum | (string & {});
   /** The url (without the schema) that the player shall send the ping to. It's at caller's descretion to decide which schema to use (http vs https) Example of a returned url: //googleads.g.doubleclick.net/pagead/ viewthroughconversion/962985656/?data=path%3DtHe_path%3Btype%3D cview%3Butuid%3DGISQtTNGYqaYl4sKxoVvKA&labe=default The caller must append biscotti authentication (ms param in case of mobile, for example) to this ping. */
   conversionUrl?: string;
 }
@@ -5898,7 +5920,7 @@ export const ChannelConversionPing = /*@__PURE__*/ S.suspend(() =>
   identifier: "ChannelConversionPing",
 }) as any as S.Schema<ChannelConversionPing>;
 
-export type ChannelConversionPingList = ReadonlyArray<ChannelConversionPing>;
+export type ChannelConversionPingList = Array<ChannelConversionPing>;
 export const ChannelConversionPingList = /*@__PURE__*/ S.Array(
   ChannelConversionPing,
 ) as any as S.Schema<ChannelConversionPingList>;
@@ -6125,7 +6147,7 @@ export const LocalizedString = /*@__PURE__*/ S.suspend(() =>
   identifier: "LocalizedString",
 }) as any as S.Schema<LocalizedString>;
 
-export type LocalizedStringList = ReadonlyArray<LocalizedString>;
+export type LocalizedStringList = Array<LocalizedString>;
 export const LocalizedStringList = /*@__PURE__*/ S.Array(
   LocalizedString,
 ) as any as S.Schema<LocalizedStringList>;
@@ -6250,7 +6272,7 @@ export const PropertyValue = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PropertyValue" }) as any as S.Schema<PropertyValue>;
 
-export type PropertyValueList = ReadonlyArray<PropertyValue>;
+export type PropertyValueList = Array<PropertyValue>;
 export const PropertyValueList = /*@__PURE__*/ S.Array(
   PropertyValue,
 ) as any as S.Schema<PropertyValueList>;
@@ -6298,7 +6320,7 @@ export const ChannelStatusLongUploadsStatusEnum = /*@__PURE__*/ S.String;
 /** JSON template for the status part of a channel. */
 export interface ChannelStatus {
   /** Privacy status of the channel. */
-  privacyStatus?: ChannelStatusPrivacyStatusEnum;
+  privacyStatus?: ChannelStatusPrivacyStatusEnum | (string & {});
   selfDeclaredMadeForKids?: boolean;
   /** Whether the channel is considered ypp monetization enabled. See go/yppornot for more details. */
   isChannelMonetizationEnabled?: boolean;
@@ -6306,7 +6328,7 @@ export interface ChannelStatus {
   /** If true, then the user is linked to either a YouTube username or G+ account. Otherwise, the user doesn't have a public YouTube identity. */
   isLinked?: boolean;
   /** The long uploads status of this channel. See https://support.google.com/youtube/answer/71673 for more information. */
-  longUploadsStatus?: ChannelStatusLongUploadsStatusEnum;
+  longUploadsStatus?: ChannelStatusLongUploadsStatusEnum | (string & {});
 }
 export const ChannelStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6366,7 +6388,7 @@ export const Channel = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Channel" }) as any as S.Schema<Channel>;
 
-export type ChannelList = ReadonlyArray<Channel>;
+export type ChannelList = Array<Channel>;
 export const ChannelList = /*@__PURE__*/ S.Array(
   Channel,
 ) as any as S.Schema<ChannelList>;
@@ -6438,7 +6460,7 @@ export const ListChannelSectionsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListChannelSectionsRequest",
 }) as any as S.Schema<ListChannelSectionsRequest>;
 
-export type ChannelSectionList = ReadonlyArray<ChannelSection>;
+export type ChannelSectionList = Array<ChannelSection>;
 export const ChannelSectionList = /*@__PURE__*/ S.Array(
   ChannelSection,
 ) as any as S.Schema<ChannelSectionList>;
@@ -6609,7 +6631,7 @@ export const ListCommentThreadsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListCommentThreadsRequest",
 }) as any as S.Schema<ListCommentThreadsRequest>;
 
-export type CommentThreadList = ReadonlyArray<CommentThread>;
+export type CommentThreadList = Array<CommentThread>;
 export const CommentThreadList = /*@__PURE__*/ S.Array(
   CommentThread,
 ) as any as S.Schema<CommentThreadList>;
@@ -6702,7 +6724,7 @@ export const I18nLanguage = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "I18nLanguage" }) as any as S.Schema<I18nLanguage>;
 
-export type I18nLanguageList = ReadonlyArray<I18nLanguage>;
+export type I18nLanguageList = Array<I18nLanguage>;
 export const I18nLanguageList = /*@__PURE__*/ S.Array(
   I18nLanguage,
 ) as any as S.Schema<I18nLanguageList>;
@@ -6787,7 +6809,7 @@ export const I18nRegion = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "I18nRegion" }) as any as S.Schema<I18nRegion>;
 
-export type I18nRegionList = ReadonlyArray<I18nRegion>;
+export type I18nRegionList = Array<I18nRegion>;
 export const I18nRegionList = /*@__PURE__*/ S.Array(
   I18nRegion,
 ) as any as S.Schema<I18nRegionList>;
@@ -6876,7 +6898,7 @@ export const ListLiveBroadcastsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListLiveBroadcastsRequest",
 }) as any as S.Schema<ListLiveBroadcastsRequest>;
 
-export type LiveBroadcastList = ReadonlyArray<LiveBroadcast>;
+export type LiveBroadcastList = Array<LiveBroadcast>;
 export const LiveBroadcastList = /*@__PURE__*/ S.Array(
   LiveBroadcast,
 ) as any as S.Schema<LiveBroadcastList>;
@@ -6949,7 +6971,7 @@ export const ListLiveChatMessagesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListLiveChatMessagesRequest",
 }) as any as S.Schema<ListLiveChatMessagesRequest>;
 
-export type LiveChatMessageList = ReadonlyArray<LiveChatMessage>;
+export type LiveChatMessageList = Array<LiveChatMessage>;
 export const LiveChatMessageList = /*@__PURE__*/ S.Array(
   LiveChatMessage,
 ) as any as S.Schema<LiveChatMessageList>;
@@ -7020,7 +7042,7 @@ export const ListLiveChatModeratorsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListLiveChatModeratorsRequest",
 }) as any as S.Schema<ListLiveChatModeratorsRequest>;
 
-export type LiveChatModeratorList = ReadonlyArray<LiveChatModerator>;
+export type LiveChatModeratorList = Array<LiveChatModerator>;
 export const LiveChatModeratorList = /*@__PURE__*/ S.Array(
   LiveChatModerator,
 ) as any as S.Schema<LiveChatModeratorList>;
@@ -7095,7 +7117,7 @@ export const ListLiveStreamsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListLiveStreamsRequest",
 }) as any as S.Schema<ListLiveStreamsRequest>;
 
-export type LiveStreamList = ReadonlyArray<LiveStream>;
+export type LiveStreamList = Array<LiveStream>;
 export const LiveStreamList = /*@__PURE__*/ S.Array(
   LiveStream,
 ) as any as S.Schema<LiveStreamList>;
@@ -7206,8 +7228,7 @@ export const MembershipsDurationAtLevel = /*@__PURE__*/ S.suspend(() =>
   identifier: "MembershipsDurationAtLevel",
 }) as any as S.Schema<MembershipsDurationAtLevel>;
 
-export type MembershipsDurationAtLevelList =
-  ReadonlyArray<MembershipsDurationAtLevel>;
+export type MembershipsDurationAtLevelList = Array<MembershipsDurationAtLevel>;
 export const MembershipsDurationAtLevelList = /*@__PURE__*/ S.Array(
   MembershipsDurationAtLevel,
 ) as any as S.Schema<MembershipsDurationAtLevelList>;
@@ -7269,7 +7290,7 @@ export const Member = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Member" }) as any as S.Schema<Member>;
 
-export type MemberList = ReadonlyArray<Member>;
+export type MemberList = Array<Member>;
 export const MemberList = /*@__PURE__*/ S.Array(
   Member,
 ) as any as S.Schema<MemberList>;
@@ -7370,7 +7391,7 @@ export const MembershipsLevel = /*@__PURE__*/ S.suspend(() =>
   identifier: "MembershipsLevel",
 }) as any as S.Schema<MembershipsLevel>;
 
-export type MembershipsLevelList = ReadonlyArray<MembershipsLevel>;
+export type MembershipsLevelList = Array<MembershipsLevel>;
 export const MembershipsLevelList = /*@__PURE__*/ S.Array(
   MembershipsLevel,
 ) as any as S.Schema<MembershipsLevelList>;
@@ -7432,7 +7453,7 @@ export const ListPlaylistImagesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListPlaylistImagesRequest",
 }) as any as S.Schema<ListPlaylistImagesRequest>;
 
-export type PlaylistImageList = ReadonlyArray<PlaylistImage>;
+export type PlaylistImageList = Array<PlaylistImage>;
 export const PlaylistImageList = /*@__PURE__*/ S.Array(
   PlaylistImage,
 ) as any as S.Schema<PlaylistImageList>;
@@ -7495,7 +7516,7 @@ export const ListPlaylistItemsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListPlaylistItemsRequest",
 }) as any as S.Schema<ListPlaylistItemsRequest>;
 
-export type PlaylistItemList = ReadonlyArray<PlaylistItem>;
+export type PlaylistItemList = Array<PlaylistItem>;
 export const PlaylistItemList = /*@__PURE__*/ S.Array(
   PlaylistItem,
 ) as any as S.Schema<PlaylistItemList>;
@@ -7576,7 +7597,7 @@ export const ListPlaylistsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListPlaylistsRequest",
 }) as any as S.Schema<ListPlaylistsRequest>;
 
-export type PlaylistList = ReadonlyArray<Playlist>;
+export type PlaylistList = Array<Playlist>;
 export const PlaylistList = /*@__PURE__*/ S.Array(
   Playlist,
 ) as any as S.Schema<PlaylistList>;
@@ -7867,7 +7888,7 @@ export const SearchResult = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SearchResult" }) as any as S.Schema<SearchResult>;
 
-export type SearchResultList = ReadonlyArray<SearchResult>;
+export type SearchResultList = Array<SearchResult>;
 export const SearchResultList = /*@__PURE__*/ S.Array(
   SearchResult,
 ) as any as S.Schema<SearchResultList>;
@@ -7966,7 +7987,7 @@ export const ListSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListSubscriptionsRequest",
 }) as any as S.Schema<ListSubscriptionsRequest>;
 
-export type SubscriptionList = ReadonlyArray<Subscription>;
+export type SubscriptionList = Array<Subscription>;
 export const SubscriptionList = /*@__PURE__*/ S.Array(
   Subscription,
 ) as any as S.Schema<SubscriptionList>;
@@ -8091,7 +8112,7 @@ export const SuperChatEvent = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SuperChatEvent" }) as any as S.Schema<SuperChatEvent>;
 
-export type SuperChatEventList = ReadonlyArray<SuperChatEvent>;
+export type SuperChatEventList = Array<SuperChatEvent>;
 export const SuperChatEventList = /*@__PURE__*/ S.Array(
   SuperChatEvent,
 ) as any as S.Schema<SuperChatEventList>;
@@ -8160,7 +8181,7 @@ export const ListThirdPartyLinksRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListThirdPartyLinksRequest",
 }) as any as S.Schema<ListThirdPartyLinksRequest>;
 
-export type ThirdPartyLinkList = ReadonlyArray<ThirdPartyLink>;
+export type ThirdPartyLinkList = Array<ThirdPartyLink>;
 export const ThirdPartyLinkList = /*@__PURE__*/ S.Array(
   ThirdPartyLink,
 ) as any as S.Schema<ThirdPartyLinkList>;
@@ -8218,7 +8239,7 @@ export const VideoAbuseReportSecondaryReason = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VideoAbuseReportSecondaryReason>;
 
 export type VideoAbuseReportSecondaryReasonList =
-  ReadonlyArray<VideoAbuseReportSecondaryReason>;
+  Array<VideoAbuseReportSecondaryReason>;
 export const VideoAbuseReportSecondaryReasonList = /*@__PURE__*/ S.Array(
   VideoAbuseReportSecondaryReason,
 ) as any as S.Schema<VideoAbuseReportSecondaryReasonList>;
@@ -8261,7 +8282,7 @@ export const VideoAbuseReportReason = /*@__PURE__*/ S.suspend(() =>
   identifier: "VideoAbuseReportReason",
 }) as any as S.Schema<VideoAbuseReportReason>;
 
-export type VideoAbuseReportReasonList = ReadonlyArray<VideoAbuseReportReason>;
+export type VideoAbuseReportReasonList = Array<VideoAbuseReportReason>;
 export const VideoAbuseReportReasonList = /*@__PURE__*/ S.Array(
   VideoAbuseReportReason,
 ) as any as S.Schema<VideoAbuseReportReasonList>;
@@ -8353,7 +8374,7 @@ export const VideoCategory = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "VideoCategory" }) as any as S.Schema<VideoCategory>;
 
-export type VideoCategoryList = ReadonlyArray<VideoCategory>;
+export type VideoCategoryList = Array<VideoCategory>;
 export const VideoCategoryList = /*@__PURE__*/ S.Array(
   VideoCategory,
 ) as any as S.Schema<VideoCategoryList>;
@@ -8451,7 +8472,7 @@ export const ListVideosRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListVideosRequest",
 }) as any as S.Schema<ListVideosRequest>;
 
-export type VideoList = ReadonlyArray<Video>;
+export type VideoList = Array<Video>;
 export const VideoList = /*@__PURE__*/ S.Array(
   Video,
 ) as any as S.Schema<VideoList>;
@@ -8660,7 +8681,7 @@ export const SetThumbnailsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "SetThumbnailsRequest",
 }) as any as S.Schema<SetThumbnailsRequest>;
 
-export type ThumbnailDetailsList = ReadonlyArray<ThumbnailDetails>;
+export type ThumbnailDetailsList = Array<ThumbnailDetails>;
 export const ThumbnailDetailsList = /*@__PURE__*/ S.Array(
   ThumbnailDetails,
 ) as any as S.Schema<ThumbnailDetailsList>;

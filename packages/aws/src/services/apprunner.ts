@@ -397,7 +397,7 @@ export type TracingVendor = "AWSXRAY";
 export const TracingVendor = /*@__PURE__*/ S.String;
 
 export interface TraceConfiguration {
-  Vendor: TracingVendor;
+  Vendor: TracingVendor | (string & {});
 }
 export const TraceConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Vendor: TracingVendor }),
@@ -472,7 +472,7 @@ export type SourceCodeVersionType = "BRANCH";
 export const SourceCodeVersionType = /*@__PURE__*/ S.String;
 
 export interface SourceCodeVersion {
-  Type: SourceCodeVersionType;
+  Type: SourceCodeVersionType | (string & {});
   Value: string;
 }
 export const SourceCodeVersion = /*@__PURE__*/ S.suspend(() =>
@@ -522,7 +522,7 @@ export const RuntimeEnvironmentSecrets = /*@__PURE__*/ S.Record(
   SensitiveString.pipe(S.optional),
 );
 export interface CodeConfigurationValues {
-  Runtime: Runtime;
+  Runtime: Runtime | (string & {});
   BuildCommand?: string | redacted.Redacted<string>;
   StartCommand?: string | redacted.Redacted<string>;
   Port?: string;
@@ -546,7 +546,7 @@ export const CodeConfigurationValues = /*@__PURE__*/ S.suspend(() =>
   identifier: "CodeConfigurationValues",
 }) as any as S.Schema<CodeConfigurationValues>;
 export interface CodeConfiguration {
-  ConfigurationSource: ConfigurationSource;
+  ConfigurationSource: ConfigurationSource | (string & {});
   CodeConfigurationValues?: CodeConfigurationValues;
 }
 export const CodeConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -599,7 +599,7 @@ export const ImageRepositoryType = /*@__PURE__*/ S.String;
 export interface ImageRepository {
   ImageIdentifier: string;
   ImageConfiguration?: ImageConfiguration;
-  ImageRepositoryType: ImageRepositoryType;
+  ImageRepositoryType: ImageRepositoryType | (string & {});
 }
 export const ImageRepository = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -673,7 +673,7 @@ export type HealthCheckTimeout = number;
 export type HealthCheckHealthyThreshold = number;
 export type HealthCheckUnhealthyThreshold = number;
 export interface HealthCheckConfiguration {
-  Protocol?: HealthCheckProtocol;
+  Protocol?: HealthCheckProtocol | (string & {});
   Path?: string;
   Interval?: number;
   Timeout?: number;
@@ -696,7 +696,7 @@ export type EgressType = "DEFAULT" | "VPC";
 export const EgressType = /*@__PURE__*/ S.String;
 
 export interface EgressConfiguration {
-  EgressType?: EgressType;
+  EgressType?: EgressType | (string & {});
   VpcConnectorArn?: string;
 }
 export const EgressConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -721,7 +721,7 @@ export const IpAddressType = /*@__PURE__*/ S.String;
 export interface NetworkConfiguration {
   EgressConfiguration?: EgressConfiguration;
   IngressConfiguration?: IngressConfiguration;
-  IpAddressType?: IpAddressType;
+  IpAddressType?: IpAddressType | (string & {});
 }
 export const NetworkConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

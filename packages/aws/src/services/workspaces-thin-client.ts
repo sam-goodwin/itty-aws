@@ -179,19 +179,19 @@ export type DayOfWeek =
   | "SUNDAY";
 export const DayOfWeek = /*@__PURE__*/ S.String;
 
-export type DayOfWeekList = DayOfWeek[];
+export type DayOfWeekList = (DayOfWeek | (string & {}))[];
 export const DayOfWeekList = /*@__PURE__*/ S.Array(DayOfWeek);
 export type ApplyTimeOf = "UTC" | "DEVICE";
 export const ApplyTimeOf = /*@__PURE__*/ S.String;
 
 export interface MaintenanceWindow {
-  type: MaintenanceWindowType;
+  type: MaintenanceWindowType | (string & {});
   startTimeHour?: number;
   startTimeMinute?: number;
   endTimeHour?: number;
   endTimeMinute?: number;
   daysOfTheWeek?: DayOfWeek[];
-  applyTimeOf?: ApplyTimeOf;
+  applyTimeOf?: ApplyTimeOf | (string & {});
 }
 export const MaintenanceWindow = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

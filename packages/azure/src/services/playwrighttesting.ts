@@ -211,7 +211,7 @@ export const AccountQuota = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AccountQuota" }) as any as S.Schema<AccountQuota>;
 
 /** The AccountQuota items on this page */
-export type AccountQuotaListResultValueList = ReadonlyArray<AccountQuota>;
+export type AccountQuotaListResultValueList = Array<AccountQuota>;
 export const AccountQuotaListResultValueList = /*@__PURE__*/ S.Array(
   AccountQuota,
 ) as any as S.Schema<AccountQuotaListResultValueList>;
@@ -601,7 +601,7 @@ export const Account = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Account" }) as any as S.Schema<Account>;
 
 /** The Account items on this page */
-export type AccountListResultValueList = ReadonlyArray<Account>;
+export type AccountListResultValueList = Array<Account>;
 export const AccountListResultValueList = /*@__PURE__*/ S.Array(
   Account,
 ) as any as S.Schema<AccountListResultValueList>;
@@ -814,7 +814,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = ReadonlyArray<Operation>;
+export type OperationsListResponseValueList = Array<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;
@@ -983,7 +983,7 @@ export const Quota = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Quota" }) as any as S.Schema<Quota>;
 
 /** The Quota items on this page */
-export type QuotaListResultValueList = ReadonlyArray<Quota>;
+export type QuotaListResultValueList = Array<Quota>;
 export const QuotaListResultValueList = /*@__PURE__*/ S.Array(
   Quota,
 ) as any as S.Schema<QuotaListResultValueList>;

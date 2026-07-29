@@ -92,17 +92,17 @@ export const EnvironmentVariable = /*@__PURE__*/ S.suspend(() =>
   identifier: "EnvironmentVariable",
 }) as any as S.Schema<EnvironmentVariable>;
 
-export type EnvironmentVariableList = ReadonlyArray<EnvironmentVariable>;
+export type EnvironmentVariableList = Array<EnvironmentVariable>;
 export const EnvironmentVariableList = /*@__PURE__*/ S.Array(
   EnvironmentVariable,
 ) as any as S.Schema<EnvironmentVariableList>;
 
-export type DocumentList = ReadonlyArray<unknown>;
+export type DocumentList = Array<unknown>;
 export const DocumentList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<DocumentList>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -426,8 +426,7 @@ export const ListContainerApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListContainerApplicationsRequest",
 }) as any as S.Schema<ListContainerApplicationsRequest>;
 
-export type ContainerApplicationItemList =
-  ReadonlyArray<ContainerApplicationItem>;
+export type ContainerApplicationItemList = Array<ContainerApplicationItem>;
 export const ContainerApplicationItemList = /*@__PURE__*/ S.Array(
   ContainerApplicationItem,
 ) as any as S.Schema<ContainerApplicationItemList>;

@@ -146,7 +146,9 @@ export interface MerchantReviewAttributes {
   /** Required. This should be any freeform text provided by the user and should not be truncated. If multiple responses to different questions are provided, all responses should be included, with the minimal context for the responses to make sense. Context should not be provided if questions were left unanswered. */
   content?: string;
   /** Optional. The method used to collect the review. */
-  collectionMethod?: MerchantReviewAttributesCollectionMethodEnum;
+  collectionMethod?:
+    | MerchantReviewAttributesCollectionMethodEnum
+    | (string & {});
   /** Required. The timestamp indicating when the review was written. */
   reviewTime?: string;
   /** Optional. The country where the reviewer made the order defined by ISO 3166-1 Alpha-2 Country Code. */
@@ -214,7 +216,9 @@ export const MerchantReviewDestinationStatusReportingContextEnum =
 /** The destination status of the merchant review status. */
 export interface MerchantReviewDestinationStatus {
   /** Output only. The name of the reporting context. */
-  reportingContext?: MerchantReviewDestinationStatusReportingContextEnum;
+  reportingContext?:
+    | MerchantReviewDestinationStatusReportingContextEnum
+    | (string & {});
 }
 export const MerchantReviewDestinationStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -227,7 +231,7 @@ export const MerchantReviewDestinationStatus = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MerchantReviewDestinationStatus>;
 
 export type MerchantReviewDestinationStatusList =
-  ReadonlyArray<MerchantReviewDestinationStatus>;
+  Array<MerchantReviewDestinationStatus>;
 export const MerchantReviewDestinationStatusList = /*@__PURE__*/ S.Array(
   MerchantReviewDestinationStatus,
 ) as any as S.Schema<MerchantReviewDestinationStatusList>;
@@ -267,11 +271,13 @@ export interface MerchantReviewItemLevelIssue {
   /** Output only. The error code of the issue. */
   code?: string;
   /** Output only. The reporting context the issue applies to. */
-  reportingContext?: MerchantReviewItemLevelIssueReportingContextEnum;
+  reportingContext?:
+    | MerchantReviewItemLevelIssueReportingContextEnum
+    | (string & {});
   /** Output only. A short issue description in English. */
   description?: string;
   /** Output only. How this issue affects serving of the merchant review. */
-  severity?: MerchantReviewItemLevelIssueSeverityEnum;
+  severity?: MerchantReviewItemLevelIssueSeverityEnum | (string & {});
   /** Output only. A detailed issue description in English. */
   detail?: string;
   /** Output only. The URL of a web page to help with resolving this issue. */
@@ -299,7 +305,7 @@ export const MerchantReviewItemLevelIssue = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MerchantReviewItemLevelIssue>;
 
 export type MerchantReviewItemLevelIssueList =
-  ReadonlyArray<MerchantReviewItemLevelIssue>;
+  Array<MerchantReviewItemLevelIssue>;
 export const MerchantReviewItemLevelIssueList = /*@__PURE__*/ S.Array(
   MerchantReviewItemLevelIssue,
 ) as any as S.Schema<MerchantReviewItemLevelIssueList>;
@@ -345,7 +351,7 @@ export const CustomAttribute = /*@__PURE__*/ S.suspend(() =>
   identifier: "CustomAttribute",
 }) as any as S.Schema<CustomAttribute>;
 
-export type CustomAttributeList = ReadonlyArray<CustomAttribute>;
+export type CustomAttributeList = Array<CustomAttribute>;
 export const CustomAttributeList = /*@__PURE__*/ S.Array(
   CustomAttribute,
 ) as any as S.Schema<CustomAttributeList>;
@@ -402,7 +408,7 @@ export interface ReviewLink {
   /** Optional. The URI of the review landing page. For example: `http://www.example.com/review_5.html`. */
   link?: string;
   /** Optional. Type of the review URI. */
-  type?: ReviewLinkTypeEnum;
+  type?: ReviewLinkTypeEnum | (string & {});
 }
 export const ReviewLink = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -411,7 +417,7 @@ export const ReviewLink = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ReviewLink" }) as any as S.Schema<ReviewLink>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -450,7 +456,9 @@ export interface ProductReviewAttributes {
   /** Optional. Indicates whether the review is incentivized. */
   isIncentivizedReview?: boolean;
   /** Optional. The method used to collect the review. */
-  collectionMethod?: ProductReviewAttributesCollectionMethodEnum;
+  collectionMethod?:
+    | ProductReviewAttributesCollectionMethodEnum
+    | (string & {});
   /** Optional. Descriptive name of a product. */
   productNames?: StringList;
   /** Optional. Set to true if the reviewer should remain anonymous. */
@@ -553,7 +561,9 @@ export const ProductReviewDestinationStatusReportingContextEnum =
 /** The destination status of the product review status. */
 export interface ProductReviewDestinationStatus {
   /** Output only. The name of the reporting context. */
-  reportingContext?: ProductReviewDestinationStatusReportingContextEnum;
+  reportingContext?:
+    | ProductReviewDestinationStatusReportingContextEnum
+    | (string & {});
 }
 export const ProductReviewDestinationStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -566,7 +576,7 @@ export const ProductReviewDestinationStatus = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProductReviewDestinationStatus>;
 
 export type ProductReviewDestinationStatusList =
-  ReadonlyArray<ProductReviewDestinationStatus>;
+  Array<ProductReviewDestinationStatus>;
 export const ProductReviewDestinationStatusList = /*@__PURE__*/ S.Array(
   ProductReviewDestinationStatus,
 ) as any as S.Schema<ProductReviewDestinationStatusList>;
@@ -606,11 +616,13 @@ export interface ProductReviewItemLevelIssue {
   /** Output only. The error code of the issue. */
   code?: string;
   /** Output only. The reporting context the issue applies to. */
-  reportingContext?: ProductReviewItemLevelIssueReportingContextEnum;
+  reportingContext?:
+    | ProductReviewItemLevelIssueReportingContextEnum
+    | (string & {});
   /** Output only. A short issue description in English. */
   description?: string;
   /** Output only. How this issue affects serving of the product review. */
-  severity?: ProductReviewItemLevelIssueSeverityEnum;
+  severity?: ProductReviewItemLevelIssueSeverityEnum | (string & {});
   /** Output only. A detailed issue description in English. */
   detail?: string;
   /** Output only. The URL of a web page to help with resolving this issue. */
@@ -638,7 +650,7 @@ export const ProductReviewItemLevelIssue = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProductReviewItemLevelIssue>;
 
 export type ProductReviewItemLevelIssueList =
-  ReadonlyArray<ProductReviewItemLevelIssue>;
+  Array<ProductReviewItemLevelIssue>;
 export const ProductReviewItemLevelIssueList = /*@__PURE__*/ S.Array(
   ProductReviewItemLevelIssue,
 ) as any as S.Schema<ProductReviewItemLevelIssueList>;
@@ -764,7 +776,7 @@ export const ListAccountsMerchantReviewsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAccountsMerchantReviewsRequest",
 }) as any as S.Schema<ListAccountsMerchantReviewsRequest>;
 
-export type MerchantReviewList = ReadonlyArray<MerchantReview>;
+export type MerchantReviewList = Array<MerchantReview>;
 export const MerchantReviewList = /*@__PURE__*/ S.Array(
   MerchantReview,
 ) as any as S.Schema<MerchantReviewList>;
@@ -809,7 +821,7 @@ export const ListAccountsProductReviewsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAccountsProductReviewsRequest",
 }) as any as S.Schema<ListAccountsProductReviewsRequest>;
 
-export type ProductReviewList = ReadonlyArray<ProductReview>;
+export type ProductReviewList = Array<ProductReview>;
 export const ProductReviewList = /*@__PURE__*/ S.Array(
   ProductReview,
 ) as any as S.Schema<ProductReviewList>;

@@ -86,7 +86,7 @@ export const PkixPublicKeySignatureAlgorithmEnum = /*@__PURE__*/ S.String;
 /** A public key in the PkixPublicKey format (see https://tools.ietf.org/html/rfc5280#section-4.1.2.7 for details). Public keys of this type are typically textually encoded using the PEM format. */
 export interface PkixPublicKey {
   /** The signature algorithm used to verify a message against a signature using this key. These signature algorithm must match the structure and any object identifiers encoded in `public_key_pem` (i.e. this algorithm must match that of the public key). */
-  signatureAlgorithm?: PkixPublicKeySignatureAlgorithmEnum;
+  signatureAlgorithm?: PkixPublicKeySignatureAlgorithmEnum | (string & {});
   /** A PEM-encoded public key, as described in https://tools.ietf.org/html/rfc7468#section-13 */
   publicKeyPem?: string;
 }
@@ -119,7 +119,7 @@ export const AttestorPublicKey = /*@__PURE__*/ S.suspend(() =>
   identifier: "AttestorPublicKey",
 }) as any as S.Schema<AttestorPublicKey>;
 
-export type AttestorPublicKeyList = ReadonlyArray<AttestorPublicKey>;
+export type AttestorPublicKeyList = Array<AttestorPublicKey>;
 export const AttestorPublicKeyList = /*@__PURE__*/ S.Array(
   AttestorPublicKey,
 ) as any as S.Schema<AttestorPublicKeyList>;
@@ -256,7 +256,7 @@ export const Expr = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Expr" }) as any as S.Schema<Expr>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -278,7 +278,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
-export type BindingList = ReadonlyArray<Binding>;
+export type BindingList = Array<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -352,8 +352,7 @@ export const AdmissionWhitelistPattern = /*@__PURE__*/ S.suspend(() =>
   identifier: "AdmissionWhitelistPattern",
 }) as any as S.Schema<AdmissionWhitelistPattern>;
 
-export type AdmissionWhitelistPatternList =
-  ReadonlyArray<AdmissionWhitelistPattern>;
+export type AdmissionWhitelistPatternList = Array<AdmissionWhitelistPattern>;
 export const AdmissionWhitelistPatternList = /*@__PURE__*/ S.Array(
   AdmissionWhitelistPattern,
 ) as any as S.Schema<AdmissionWhitelistPatternList>;
@@ -375,9 +374,9 @@ export const AdmissionRuleEnforcementModeEnum = /*@__PURE__*/ S.String;
 export interface AdmissionRule {
   requireAttestationsBy?: StringList;
   /** Required. How this admission rule will be evaluated. */
-  evaluationMode?: AdmissionRuleEvaluationModeEnum;
+  evaluationMode?: AdmissionRuleEvaluationModeEnum | (string & {});
   /** Required. The action when a pod creation is denied by the admission rule. */
-  enforcementMode?: AdmissionRuleEnforcementModeEnum;
+  enforcementMode?: AdmissionRuleEnforcementModeEnum | (string & {});
 }
 export const AdmissionRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -414,7 +413,9 @@ export interface Policy {
   /** Optional. A descriptive comment. */
   description?: string;
   /** Optional. Controls the evaluation of a Google-maintained global admission policy for common system-level images. Images not covered by the global policy will be subject to the project admission policy. This setting has no effect when specified inside a global admission policy. */
-  globalPolicyEvaluationMode?: PolicyGlobalPolicyEvaluationModeEnum;
+  globalPolicyEvaluationMode?:
+    | PolicyGlobalPolicyEvaluationModeEnum
+    | (string & {});
   /** Optional. Per-kubernetes-service-account admission rules. Service account spec format: `namespace:serviceaccount`. e.g. `test-ns:default` */
   kubernetesServiceAccountAdmissionRules?: AdmissionRuleMap;
   /** Optional. Per-kubernetes-namespace admission rules. K8s namespace spec format: `[a-z.-]+`, e.g. `some-namespace` */
@@ -502,7 +503,7 @@ export const ListProjectsAttestorsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsAttestorsRequest",
 }) as any as S.Schema<ListProjectsAttestorsRequest>;
 
-export type AttestorList = ReadonlyArray<Attestor>;
+export type AttestorList = Array<Attestor>;
 export const AttestorList = /*@__PURE__*/ S.Array(
   Attestor,
 ) as any as S.Schema<AttestorList>;
@@ -701,7 +702,7 @@ export const Jwt = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Jwt" }) as any as S.Schema<Jwt>;
 
-export type JwtList = ReadonlyArray<Jwt>;
+export type JwtList = Array<Jwt>;
 export const JwtList = /*@__PURE__*/ S.Array(Jwt) as any as S.Schema<JwtList>;
 
 /** Verifiers (e.g. Kritis implementations) MUST verify signatures with respect to the trust anchors defined in policy (e.g. a Kritis policy). Typically this means that the verifier has been configured with a map from `public_key_id` to public key material (and any required parameters, e.g. signing algorithm). In particular, verification implementations MUST NOT treat the signature `public_key_id` as anything more than a key lookup hint. The `public_key_id` DOES NOT validate or authenticate a public key; it only provides a mechanism for quickly selecting a public key ALREADY CONFIGURED on the verifier through a trusted channel. Verification implementations MUST reject signatures in any of the following circumstances: * The `public_key_id` is not recognized by the verifier. * The public key that `public_key_id` refers to does not verify the signature with respect to the payload. The `signature` contents SHOULD NOT be "attached" (where the payload is included with the serialized `signature` bytes). Verifiers MUST ignore any "attached" payload and only verify signatures with respect to explicitly provided payload (e.g. a `payload` field on the proto message that holds this Signature, or the canonical serialization of the proto message that holds this signature). */
@@ -718,7 +719,7 @@ export const Signature = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Signature" }) as any as S.Schema<Signature>;
 
-export type SignatureList = ReadonlyArray<Signature>;
+export type SignatureList = Array<Signature>;
 export const SignatureList = /*@__PURE__*/ S.Array(
   Signature,
 ) as any as S.Schema<SignatureList>;

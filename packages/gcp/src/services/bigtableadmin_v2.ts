@@ -177,7 +177,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -248,13 +248,13 @@ export interface Instance {
   /** Output only. A commit timestamp representing when this Instance was created. For instances created before this field was added (August 2021), this value is `seconds: 0, nanos: 1`. */
   createTime?: string;
   /** Optional. The edition of the instance. See Edition for details. */
-  edition?: InstanceEditionEnum;
+  edition?: InstanceEditionEnum | (string & {});
   /** Required. The descriptive name for this instance as it appears in UIs. Can be changed at any time, but should be kept globally unique to avoid confusion. */
   displayName?: string;
   /** Output only. The region where Knowledge Catalog data is synced to and stored, including user-created aspects. */
   knowledgeCatalogRegion?: string;
   /** Output only. The current state of the instance. */
-  state?: InstanceStateEnum;
+  state?: InstanceStateEnum | (string & {});
   /** The unique name of the instance. Values are of the form `projects/{project}/instances/a-z+[a-z0-9]`. */
   name?: string;
   /** Labels are a flexible and lightweight mechanism for organizing cloud resources into groups that reflect a customer's organizational needs and deployment strategies. They can be used to filter resources and aggregate metrics. * Label keys must be between 1 and 63 characters long and must conform to the regular expression: `\p{Ll}\p{Lo}{0,62}`. * Label values must be between 0 and 63 characters long and must conform to the regular expression: `[\p{Ll}\p{Lo}\p{N}_-]{0,63}`. * No more than 64 labels can be associated with a given resource. * Keys and values must both be under 128 bytes. */
@@ -262,7 +262,7 @@ export interface Instance {
   /** Optional. Input only. Immutable. Tag keys/values directly bound to this resource. For example: - "123/environment": "production", - "123/costCenter": "marketing" Tags and Labels (above) are both used to bind metadata to resources, with different use-cases. See https://cloud.google.com/resource-manager/docs/tags/tags-overview for an in-depth overview on the difference between tags and labels. */
   tags?: StringMap;
   /** The type of the instance. Defaults to `PRODUCTION`. */
-  type?: InstanceTypeEnum;
+  type?: InstanceTypeEnum | (string & {});
   /** Output only. Reserved for future use. */
   satisfiesPzi?: boolean;
   /** Output only. Reserved for future use. */
@@ -379,9 +379,9 @@ export const EncryptionConfig = /*@__PURE__*/ S.suspend(() =>
 /** A resizable group of nodes in a particular cloud location, capable of serving all Tables in the parent Instance. */
 export interface Cluster {
   /** Immutable. The node scaling factor of this cluster. */
-  nodeScalingFactor?: ClusterNodeScalingFactorEnum;
+  nodeScalingFactor?: ClusterNodeScalingFactorEnum | (string & {});
   /** Immutable. The type of storage used by this cluster to serve its parent instance's tables, unless explicitly overridden. */
-  defaultStorageType?: ClusterDefaultStorageTypeEnum;
+  defaultStorageType?: ClusterDefaultStorageTypeEnum | (string & {});
   /** The unique name of the cluster. Values are of the form `projects/{project}/instances/{instance}/clusters/a-z*`. */
   name?: string;
   /** Immutable. The location where this cluster's nodes and storage reside. For best performance, clients should be located as close as possible to this cluster. Currently only zones are supported, so values should be of the form `projects/{project}/locations/{zone}`. */
@@ -389,7 +389,7 @@ export interface Cluster {
   /** Configuration for this cluster. */
   clusterConfig?: ClusterConfig;
   /** Output only. The current state of the cluster. */
-  state?: ClusterStateEnum;
+  state?: ClusterStateEnum | (string & {});
   /** The number of nodes in the cluster. If no value is set, Cloud Bigtable automatically allocates nodes based on your data footprint and optimized for 50% storage utilization. */
   serveNodes?: number;
   /** Immutable. The encryption configuration for CMEK-protected clusters. */
@@ -463,7 +463,7 @@ export const RowAffinity = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
   { identifier: "RowAffinity" },
 ) as any as S.Schema<RowAffinity>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -523,7 +523,7 @@ export const MemoryConfig = /*@__PURE__*/ S.suspend(() =>
 /** Standard options for isolating this app profile's traffic from other use cases. */
 export interface StandardIsolation {
   /** The priority of requests sent using this app profile. */
-  priority?: StandardIsolationPriorityEnum;
+  priority?: StandardIsolationPriorityEnum | (string & {});
   /** Optional. The memory config to use for requests sent using this app profile. */
   memoryConfig?: MemoryConfig;
 }
@@ -545,7 +545,9 @@ export const DataBoostIsolationReadOnlyComputeBillingOwnerEnum =
 /** Data Boost is a serverless compute capability that lets you run high-throughput read jobs and queries on your Bigtable data, without impacting the performance of the clusters that handle your application traffic. Data Boost supports read-only use cases with single-cluster routing. */
 export interface DataBoostIsolationReadOnly {
   /** The Compute Billing Owner for this Data Boost App Profile. */
-  computeBillingOwner?: DataBoostIsolationReadOnlyComputeBillingOwnerEnum;
+  computeBillingOwner?:
+    | DataBoostIsolationReadOnlyComputeBillingOwnerEnum
+    | (string & {});
 }
 export const DataBoostIsolationReadOnly = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -566,7 +568,7 @@ export interface AppProfile {
   /** Long form description of the use case for this AppProfile. */
   description?: string;
   /** This field has been deprecated in favor of `standard_isolation.priority`. If you set this field, `standard_isolation.priority` will be set instead. The priority of requests sent using this app profile. */
-  priority?: AppProfilePriorityEnum;
+  priority?: AppProfilePriorityEnum | (string & {});
   /** The standard options used for isolating this app profile's traffic from other use cases. */
   standardIsolation?: StandardIsolation;
   /** The unique name of the app profile, up to 50 characters long. Values are of the form `projects/{project}/instances/{instance}/appProfiles/_a-zA-Z0-9*`. */
@@ -664,7 +666,7 @@ export interface EncryptionInfo {
   /** Output only. The version of the Cloud KMS key specified in the parent cluster that is in use for the data underlying this table. */
   kmsKeyVersion?: string;
   /** Output only. The type of encryption used to protect this resource. */
-  encryptionType?: EncryptionInfoEncryptionTypeEnum;
+  encryptionType?: EncryptionInfoEncryptionTypeEnum | (string & {});
 }
 export const EncryptionInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -677,7 +679,7 @@ export const EncryptionInfo = /*@__PURE__*/ S.suspend(() =>
 /** A backup of a Cloud Bigtable table. */
 export interface Backup {
   /** Output only. The current state of the backup. */
-  state?: BackupStateEnum;
+  state?: BackupStateEnum | (string & {});
   /** Required. Immutable. Name of the table from which this backup was created. This needs to be in the same instance as the backup. Values are of the form `projects/{project}/instances/{instance}/tables/{source_table}`. */
   sourceTable?: string;
   /** Required. The expiration time of the backup. When creating a backup or updating its `expire_time`, the value must be greater than the backup creation time by: - At least 6 hours - At most 90 days Once the `expire_time` has passed, Cloud Bigtable will delete the backup. */
@@ -689,7 +691,7 @@ export interface Backup {
   /** The time at which the hot backup will be converted to a standard backup. Once the `hot_to_standard_time` has passed, Cloud Bigtable will convert the hot backup to a standard backup. This value must be greater than the backup creation time by: - At least 24 hours This field only applies for hot backups. When creating or updating a standard backup, attempting to set this field will fail the request. */
   hotToStandardTime?: string;
   /** Indicates the backup type of the backup. */
-  backupType?: BackupBackupTypeEnum;
+  backupType?: BackupBackupTypeEnum | (string & {});
   /** Output only. `end_time` is the time that the backup was finished. The row data in the backup will be no newer than this timestamp. */
   endTime?: string;
   /** Output only. Name of the backup from which this backup was copied. If a backup is not created by copying a backup, this field will be empty. Values are of the form: projects//instances//clusters//backups/ */
@@ -793,7 +795,9 @@ export const GoogleBigtableAdminV2MaterializedViewClusterStateReplicationStateEn
 /** The state of a materialized view's data in a particular cluster. */
 export interface GoogleBigtableAdminV2MaterializedViewClusterState {
   /** Output only. The state of the materialized view in this cluster. */
-  replicationState?: GoogleBigtableAdminV2MaterializedViewClusterStateReplicationStateEnum;
+  replicationState?:
+    | GoogleBigtableAdminV2MaterializedViewClusterStateReplicationStateEnum
+    | (string & {});
 }
 export const GoogleBigtableAdminV2MaterializedViewClusterState =
   /*@__PURE__*/ S.suspend(() =>
@@ -903,7 +907,7 @@ export interface RestoreInfo {
   /** Information about the backup used to restore the table. The backup may no longer exist. */
   backupInfo?: BackupInfo;
   /** The type of the restore source. */
-  sourceType?: RestoreInfoSourceTypeEnum;
+  sourceType?: RestoreInfoSourceTypeEnum | (string & {});
 }
 export const RestoreInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1384,7 +1388,7 @@ export const GoogleBigtableAdminV2TypeStructField = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleBigtableAdminV2TypeStructField>;
 
 export type GoogleBigtableAdminV2TypeStructFieldList =
-  ReadonlyArray<GoogleBigtableAdminV2TypeStructField>;
+  Array<GoogleBigtableAdminV2TypeStructField>;
 export const GoogleBigtableAdminV2TypeStructFieldList = /*@__PURE__*/ S.Array(
   GoogleBigtableAdminV2TypeStructField,
 ) as any as S.Schema<GoogleBigtableAdminV2TypeStructFieldList>;
@@ -1457,7 +1461,7 @@ export const GoogleBigtableAdminV2TypeStruct = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleBigtableAdminV2TypeStruct",
 }) as any as S.Schema<GoogleBigtableAdminV2TypeStruct>;
 
-export type GcRuleList = ReadonlyArray<GcRule>;
+export type GcRuleList = Array<GcRule>;
 export const GcRuleList = /*@__PURE__*/ S.Array(
   S.suspend(() => GcRule),
 ) as any as S.Schema<GcRuleList>;
@@ -1581,7 +1585,7 @@ export type ClusterStateReplicationStateEnum =
   | "READY_OPTIMIZING";
 export const ClusterStateReplicationStateEnum = /*@__PURE__*/ S.String;
 
-export type EncryptionInfoList = ReadonlyArray<EncryptionInfo>;
+export type EncryptionInfoList = Array<EncryptionInfo>;
 export const EncryptionInfoList = /*@__PURE__*/ S.Array(
   EncryptionInfo,
 ) as any as S.Schema<EncryptionInfoList>;
@@ -1589,7 +1593,7 @@ export const EncryptionInfoList = /*@__PURE__*/ S.Array(
 /** The state of a table's data in a particular cluster. */
 export interface ClusterState {
   /** Output only. The state of replication for the table in this cluster. */
-  replicationState?: ClusterStateReplicationStateEnum;
+  replicationState?: ClusterStateReplicationStateEnum | (string & {});
   /** Output only. The encryption information for the table in this cluster. If the encryption key protecting this resource is customer managed, then its version can be rotated in Cloud Key Management Service (Cloud KMS). The primary version of the key and its status will be reflected here when changes propagate from Cloud KMS. */
   encryptionInfo?: EncryptionInfoList;
 }
@@ -1682,7 +1686,7 @@ export interface Table {
   /** Output only. Only available with STATS_VIEW, this includes summary statistics about the entire table contents. For statistics about a specific column family, see ColumnFamilyStats in the mapped ColumnFamily collection above. */
   stats?: TableStats;
   /** Immutable. The granularity at which timestamps are stored in this table. Timestamps not matching the granularity will be rejected. If unspecified at creation time, the value will be set to `MILLIS`. Views: `SCHEMA_VIEW`, `FULL`. */
-  granularity?: TableGranularityEnum;
+  granularity?: TableGranularityEnum | (string & {});
   /** If specified, enable the change stream on this table. Otherwise, the change stream is disabled and the change stream is not retained. */
   changeStreamConfig?: ChangeStreamConfig;
   /** If specified, automated backups are enabled for this table. Otherwise, automated backups are disabled. */
@@ -1715,7 +1719,7 @@ export const Split = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Split" }) as any as S.Schema<Split>;
 
-export type SplitList = ReadonlyArray<Split>;
+export type SplitList = Array<Split>;
 export const SplitList = /*@__PURE__*/ S.Array(
   Split,
 ) as any as S.Schema<SplitList>;
@@ -2236,7 +2240,7 @@ export interface AuditLogConfig {
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
   exemptedMembers?: StringList;
   /** The log type that this config enables. */
-  logType?: AuditLogConfigLogTypeEnum;
+  logType?: AuditLogConfigLogTypeEnum | (string & {});
 }
 export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2245,7 +2249,7 @@ export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
-export type AuditLogConfigList = ReadonlyArray<AuditLogConfig>;
+export type AuditLogConfigList = Array<AuditLogConfig>;
 export const AuditLogConfigList = /*@__PURE__*/ S.Array(
   AuditLogConfig,
 ) as any as S.Schema<AuditLogConfigList>;
@@ -2264,7 +2268,7 @@ export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
-export type AuditConfigList = ReadonlyArray<AuditConfig>;
+export type AuditConfigList = Array<AuditConfig>;
 export const AuditConfigList = /*@__PURE__*/ S.Array(
   AuditConfig,
 ) as any as S.Schema<AuditConfigList>;
@@ -2306,7 +2310,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
-export type BindingList = ReadonlyArray<Binding>;
+export type BindingList = Array<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -2780,7 +2784,7 @@ export const ListOperationsProjectsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListOperationsProjectsOperationsRequest",
 }) as any as S.Schema<ListOperationsProjectsOperationsRequest>;
 
-export type OperationList = ReadonlyArray<Operation>;
+export type OperationList = Array<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -2825,7 +2829,7 @@ export const ListProjectsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsInstancesRequest",
 }) as any as S.Schema<ListProjectsInstancesRequest>;
 
-export type InstanceList = ReadonlyArray<Instance>;
+export type InstanceList = Array<Instance>;
 export const InstanceList = /*@__PURE__*/ S.Array(
   Instance,
 ) as any as S.Schema<InstanceList>;
@@ -2874,7 +2878,7 @@ export const ListProjectsInstancesAppProfilesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsInstancesAppProfilesRequest",
 }) as any as S.Schema<ListProjectsInstancesAppProfilesRequest>;
 
-export type AppProfileList = ReadonlyArray<AppProfile>;
+export type AppProfileList = Array<AppProfile>;
 export const AppProfileList = /*@__PURE__*/ S.Array(
   AppProfile,
 ) as any as S.Schema<AppProfileList>;
@@ -2920,7 +2924,7 @@ export const ListProjectsInstancesClustersRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsInstancesClustersRequest",
 }) as any as S.Schema<ListProjectsInstancesClustersRequest>;
 
-export type ClusterList = ReadonlyArray<Cluster>;
+export type ClusterList = Array<Cluster>;
 export const ClusterList = /*@__PURE__*/ S.Array(
   Cluster,
 ) as any as S.Schema<ClusterList>;
@@ -2975,7 +2979,7 @@ export const ListProjectsInstancesClustersBackupsRequest =
     identifier: "ListProjectsInstancesClustersBackupsRequest",
   }) as any as S.Schema<ListProjectsInstancesClustersBackupsRequest>;
 
-export type BackupList = ReadonlyArray<Backup>;
+export type BackupList = Array<Backup>;
 export const BackupList = /*@__PURE__*/ S.Array(
   Backup,
 ) as any as S.Schema<BackupList>;
@@ -3056,7 +3060,7 @@ export const HotTablet = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "HotTablet" }) as any as S.Schema<HotTablet>;
 
-export type HotTabletList = ReadonlyArray<HotTablet>;
+export type HotTabletList = Array<HotTablet>;
 export const HotTabletList = /*@__PURE__*/ S.Array(
   HotTablet,
 ) as any as S.Schema<HotTabletList>;
@@ -3102,7 +3106,7 @@ export const ListProjectsInstancesClustersMemoryLayersRequest =
     identifier: "ListProjectsInstancesClustersMemoryLayersRequest",
   }) as any as S.Schema<ListProjectsInstancesClustersMemoryLayersRequest>;
 
-export type MemoryLayerList = ReadonlyArray<MemoryLayer>;
+export type MemoryLayerList = Array<MemoryLayer>;
 export const MemoryLayerList = /*@__PURE__*/ S.Array(
   MemoryLayer,
 ) as any as S.Schema<MemoryLayerList>;
@@ -3151,7 +3155,7 @@ export const ListProjectsInstancesLogicalViewsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsInstancesLogicalViewsRequest",
 }) as any as S.Schema<ListProjectsInstancesLogicalViewsRequest>;
 
-export type LogicalViewList = ReadonlyArray<LogicalView>;
+export type LogicalViewList = Array<LogicalView>;
 export const LogicalViewList = /*@__PURE__*/ S.Array(
   LogicalView,
 ) as any as S.Schema<LogicalViewList>;
@@ -3210,7 +3214,7 @@ export const ListProjectsInstancesMaterializedViewsRequest =
     identifier: "ListProjectsInstancesMaterializedViewsRequest",
   }) as any as S.Schema<ListProjectsInstancesMaterializedViewsRequest>;
 
-export type MaterializedViewList = ReadonlyArray<MaterializedView>;
+export type MaterializedViewList = Array<MaterializedView>;
 export const MaterializedViewList = /*@__PURE__*/ S.Array(
   MaterializedView,
 ) as any as S.Schema<MaterializedViewList>;
@@ -3268,7 +3272,7 @@ export const ListProjectsInstancesTablesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsInstancesTablesRequest",
 }) as any as S.Schema<ListProjectsInstancesTablesRequest>;
 
-export type TableList = ReadonlyArray<Table>;
+export type TableList = Array<Table>;
 export const TableList = /*@__PURE__*/ S.Array(
   Table,
 ) as any as S.Schema<TableList>;
@@ -3327,7 +3331,7 @@ export const ListProjectsInstancesTablesAuthorizedViewsRequest =
     identifier: "ListProjectsInstancesTablesAuthorizedViewsRequest",
   }) as any as S.Schema<ListProjectsInstancesTablesAuthorizedViewsRequest>;
 
-export type AuthorizedViewList = ReadonlyArray<AuthorizedView>;
+export type AuthorizedViewList = Array<AuthorizedView>;
 export const AuthorizedViewList = /*@__PURE__*/ S.Array(
   AuthorizedView,
 ) as any as S.Schema<AuthorizedViewList>;
@@ -3386,7 +3390,7 @@ export const ListProjectsInstancesTablesSchemaBundlesRequest =
     identifier: "ListProjectsInstancesTablesSchemaBundlesRequest",
   }) as any as S.Schema<ListProjectsInstancesTablesSchemaBundlesRequest>;
 
-export type SchemaBundleList = ReadonlyArray<SchemaBundle>;
+export type SchemaBundleList = Array<SchemaBundle>;
 export const SchemaBundleList = /*@__PURE__*/ S.Array(
   SchemaBundle,
 ) as any as S.Schema<SchemaBundleList>;
@@ -3460,7 +3464,7 @@ export const Location = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Location" }) as any as S.Schema<Location>;
 
-export type LocationList = ReadonlyArray<Location>;
+export type LocationList = Array<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -3504,7 +3508,7 @@ export const Modification = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Modification" }) as any as S.Schema<Modification>;
 
-export type ModificationList = ReadonlyArray<Modification>;
+export type ModificationList = Array<Modification>;
 export const ModificationList = /*@__PURE__*/ S.Array(
   Modification,
 ) as any as S.Schema<ModificationList>;

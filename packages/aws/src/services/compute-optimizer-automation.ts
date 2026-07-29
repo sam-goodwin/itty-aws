@@ -190,7 +190,7 @@ export const OrganizationConfigurationAccountIds = /*@__PURE__*/ S.Array(
   S.String,
 );
 export interface OrganizationConfiguration {
-  ruleApplyOrder?: RuleApplyOrder;
+  ruleApplyOrder?: RuleApplyOrder | (string & {});
   accountIds?: string[];
 }
 export const OrganizationConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -206,7 +206,10 @@ export type RecommendedActionType =
   | "UpgradeEbsVolumeType";
 export const RecommendedActionType = /*@__PURE__*/ S.String;
 
-export type RecommendedActionTypeList = RecommendedActionType[];
+export type RecommendedActionTypeList = (
+  | RecommendedActionType
+  | (string & {})
+)[];
 export const RecommendedActionTypeList = /*@__PURE__*/ S.Array(
   RecommendedActionType,
 );
@@ -241,7 +244,7 @@ export type StringCriteriaValue = string;
 export type StringCriteriaValues = string[];
 export const StringCriteriaValues = /*@__PURE__*/ S.Array(S.String);
 export interface StringCriteriaCondition {
-  comparison?: ComparisonOperator;
+  comparison?: ComparisonOperator | (string & {});
   values?: string[];
 }
 export const StringCriteriaCondition = /*@__PURE__*/ S.suspend(() =>
@@ -259,7 +262,7 @@ export const StringCriteriaConditionList = /*@__PURE__*/ S.Array(
 export type IntegerList = number[];
 export const IntegerList = /*@__PURE__*/ S.Array(S.Number);
 export interface IntegerCriteriaCondition {
-  comparison?: ComparisonOperator;
+  comparison?: ComparisonOperator | (string & {});
   values?: number[];
 }
 export const IntegerCriteriaCondition = /*@__PURE__*/ S.suspend(() =>
@@ -277,7 +280,7 @@ export const IntegerCriteriaConditionList = /*@__PURE__*/ S.Array(
 export type DoubleList = number[];
 export const DoubleList = /*@__PURE__*/ S.Array(S.Number);
 export interface DoubleCriteriaCondition {
-  comparison?: ComparisonOperator;
+  comparison?: ComparisonOperator | (string & {});
   values?: number[];
 }
 export const DoubleCriteriaCondition = /*@__PURE__*/ S.suspend(() =>
@@ -293,7 +296,7 @@ export const DoubleCriteriaConditionList = /*@__PURE__*/ S.Array(
   DoubleCriteriaCondition,
 );
 export interface ResourceTagsCriteriaCondition {
-  comparison?: ComparisonOperator;
+  comparison?: ComparisonOperator | (string & {});
   key?: string;
   values?: string[];
 }

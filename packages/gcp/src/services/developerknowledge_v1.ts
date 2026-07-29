@@ -102,7 +102,7 @@ export const CitationSource = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CitationSource" }) as any as S.Schema<CitationSource>;
 
-export type CitationSourceList = ReadonlyArray<CitationSource>;
+export type CitationSourceList = Array<CitationSource>;
 export const CitationSourceList = /*@__PURE__*/ S.Array(
   CitationSource,
 ) as any as S.Schema<CitationSourceList>;
@@ -124,7 +124,7 @@ export const AnswerCitation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AnswerCitation" }) as any as S.Schema<AnswerCitation>;
 
-export type AnswerCitationList = ReadonlyArray<AnswerCitation>;
+export type AnswerCitationList = Array<AnswerCitation>;
 export const AnswerCitationList = /*@__PURE__*/ S.Array(
   AnswerCitation,
 ) as any as S.Schema<AnswerCitationList>;
@@ -217,7 +217,7 @@ export const AnswerReference = /*@__PURE__*/ S.suspend(() =>
   identifier: "AnswerReference",
 }) as any as S.Schema<AnswerReference>;
 
-export type AnswerReferenceList = ReadonlyArray<AnswerReference>;
+export type AnswerReferenceList = Array<AnswerReference>;
 export const AnswerReferenceList = /*@__PURE__*/ S.Array(
   AnswerReference,
 ) as any as S.Schema<AnswerReferenceList>;
@@ -252,7 +252,7 @@ export const AnswerQueryResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "AnswerQueryResponse",
 }) as any as S.Schema<AnswerQueryResponse>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -285,7 +285,7 @@ export const BatchGetDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "BatchGetDocumentsRequest",
 }) as any as S.Schema<BatchGetDocumentsRequest>;
 
-export type DocumentList = ReadonlyArray<Document>;
+export type DocumentList = Array<Document>;
 export const DocumentList = /*@__PURE__*/ S.Array(
   Document,
 ) as any as S.Schema<DocumentList>;
@@ -359,7 +359,7 @@ export const SearchDocumentChunksDocumentsRequest = /*@__PURE__*/ S.suspend(
   identifier: "SearchDocumentChunksDocumentsRequest",
 }) as any as S.Schema<SearchDocumentChunksDocumentsRequest>;
 
-export type DocumentChunkList = ReadonlyArray<DocumentChunk>;
+export type DocumentChunkList = Array<DocumentChunk>;
 export const DocumentChunkList = /*@__PURE__*/ S.Array(
   DocumentChunk,
 ) as any as S.Schema<DocumentChunkList>;

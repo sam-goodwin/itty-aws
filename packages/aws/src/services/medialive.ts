@@ -380,7 +380,7 @@ export type LastFrameClippingBehavior =
 export const LastFrameClippingBehavior = /*@__PURE__*/ S.String;
 
 export interface StopTimecode {
-  LastFrameClippingBehavior?: LastFrameClippingBehavior;
+  LastFrameClippingBehavior?: LastFrameClippingBehavior | (string & {});
   Timecode?: string;
 }
 export const StopTimecode = /*@__PURE__*/ S.suspend(() =>
@@ -395,7 +395,7 @@ export const StopTimecode = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "StopTimecode" }) as any as S.Schema<StopTimecode>;
 export interface InputClippingSettings {
-  InputTimecodeSource?: InputTimecodeSource;
+  InputTimecodeSource?: InputTimecodeSource | (string & {});
   StartTimecode?: StartTimecode;
   StopTimecode?: StopTimecode;
 }
@@ -488,7 +488,7 @@ export type PipelineId = "PIPELINE_0" | "PIPELINE_1";
 export const PipelineId = /*@__PURE__*/ S.String;
 
 export interface PipelinePauseStateSettings {
-  PipelineId?: PipelineId;
+  PipelineId?: PipelineId | (string & {});
 }
 export const PipelinePauseStateSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ PipelineId: S.optional(PipelineId) }).pipe(
@@ -516,7 +516,7 @@ export const Scte35InputMode = /*@__PURE__*/ S.String;
 
 export interface Scte35InputScheduleActionSettings {
   InputAttachmentNameReference?: string;
-  Mode?: Scte35InputMode;
+  Mode?: Scte35InputMode | (string & {});
 }
 export const Scte35InputScheduleActionSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -582,10 +582,10 @@ export type Scte35WebDeliveryAllowedFlag =
 export const Scte35WebDeliveryAllowedFlag = /*@__PURE__*/ S.String;
 
 export interface Scte35DeliveryRestrictions {
-  ArchiveAllowedFlag?: Scte35ArchiveAllowedFlag;
-  DeviceRestrictions?: Scte35DeviceRestrictions;
-  NoRegionalBlackoutFlag?: Scte35NoRegionalBlackoutFlag;
-  WebDeliveryAllowedFlag?: Scte35WebDeliveryAllowedFlag;
+  ArchiveAllowedFlag?: Scte35ArchiveAllowedFlag | (string & {});
+  DeviceRestrictions?: Scte35DeviceRestrictions | (string & {});
+  NoRegionalBlackoutFlag?: Scte35NoRegionalBlackoutFlag | (string & {});
+  WebDeliveryAllowedFlag?: Scte35WebDeliveryAllowedFlag | (string & {});
 }
 export const Scte35DeliveryRestrictions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -614,7 +614,9 @@ export type __longMin0Max1099511627775 = number;
 export interface Scte35SegmentationDescriptor {
   DeliveryRestrictions?: Scte35DeliveryRestrictions;
   SegmentNum?: number;
-  SegmentationCancelIndicator?: Scte35SegmentationCancelIndicator;
+  SegmentationCancelIndicator?:
+    | Scte35SegmentationCancelIndicator
+    | (string & {});
   SegmentationDuration?: number;
   SegmentationEventId?: number;
   SegmentationTypeId?: number;
@@ -965,7 +967,7 @@ export type FollowPoint = "END" | "START";
 export const FollowPoint = /*@__PURE__*/ S.String;
 
 export interface FollowModeScheduleActionStartSettings {
-  FollowPoint?: FollowPoint;
+  FollowPoint?: FollowPoint | (string & {});
   ReferenceActionName?: string;
 }
 export const FollowModeScheduleActionStartSettings = /*@__PURE__*/ S.suspend(
@@ -1313,7 +1315,7 @@ export type CdiInputResolution = "SD" | "HD" | "FHD" | "UHD";
 export const CdiInputResolution = /*@__PURE__*/ S.String;
 
 export interface CdiInputSpecification {
-  Resolution?: CdiInputResolution;
+  Resolution?: CdiInputResolution | (string & {});
 }
 export const CdiInputSpecification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Resolution: S.optional(CdiInputResolution) }).pipe(
@@ -1407,7 +1409,7 @@ export interface SrtOutputDestinationSettings {
   EncryptionPassphraseSecretArn?: string;
   StreamId?: string;
   Url?: string;
-  ConnectionMode?: ConnectionMode;
+  ConnectionMode?: ConnectionMode | (string & {});
   ListenerPort?: number;
 }
 export const SrtOutputDestinationSettings = /*@__PURE__*/ S.suspend(() =>
@@ -1440,7 +1442,7 @@ export type MediaConnectRouterOutputEncryptionType =
 export const MediaConnectRouterOutputEncryptionType = /*@__PURE__*/ S.String;
 
 export interface MediaConnectRouterOutputDestinationSettings {
-  EncryptionType?: MediaConnectRouterOutputEncryptionType;
+  EncryptionType?: MediaConnectRouterOutputEncryptionType | (string & {});
   SecretArn?: string;
 }
 export const MediaConnectRouterOutputDestinationSettings =
@@ -1516,10 +1518,10 @@ export const AudioNormalizationPeakCalculation = /*@__PURE__*/ S.String;
 
 export type __doubleMinNegative8Max0 = number;
 export interface AudioNormalizationSettings {
-  Algorithm?: AudioNormalizationAlgorithm;
-  AlgorithmControl?: AudioNormalizationAlgorithmControl;
+  Algorithm?: AudioNormalizationAlgorithm | (string & {});
+  AlgorithmControl?: AudioNormalizationAlgorithmControl | (string & {});
   TargetLkfs?: number;
-  PeakCalculation?: AudioNormalizationPeakCalculation;
+  PeakCalculation?: AudioNormalizationPeakCalculation | (string & {});
   PeakLimiterThreshold?: number;
 }
 export const AudioNormalizationSettings = /*@__PURE__*/ S.suspend(() =>
@@ -1560,7 +1562,7 @@ export const NielsenWatermarksCbetStepaside = /*@__PURE__*/ S.String;
 export type __stringMin1Max7 = string;
 export interface NielsenCBET {
   CbetCheckDigitString?: string;
-  CbetStepaside?: NielsenWatermarksCbetStepaside;
+  CbetStepaside?: NielsenWatermarksCbetStepaside | (string & {});
   Csid?: string;
 }
 export const NielsenCBET = /*@__PURE__*/ S.suspend(() =>
@@ -1598,7 +1600,7 @@ export const NielsenWatermarkTimezones = /*@__PURE__*/ S.String;
 export interface NielsenNaesIiNw {
   CheckDigitString?: string;
   Sid?: number;
-  Timezone?: NielsenWatermarkTimezones;
+  Timezone?: NielsenWatermarkTimezones | (string & {});
 }
 export const NielsenNaesIiNw = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1617,7 +1619,7 @@ export const NielsenNaesIiNw = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NielsenNaesIiNw>;
 export interface NielsenWatermarksSettings {
   NielsenCbetSettings?: NielsenCBET;
-  NielsenDistributionType?: NielsenWatermarksDistributionTypes;
+  NielsenDistributionType?: NielsenWatermarksDistributionTypes | (string & {});
   NielsenNaesIiNwSettings?: NielsenNaesIiNw;
 }
 export const NielsenWatermarksSettings = /*@__PURE__*/ S.suspend(() =>
@@ -1675,14 +1677,14 @@ export const AacVbrQuality = /*@__PURE__*/ S.String;
 
 export interface AacSettings {
   Bitrate?: number;
-  CodingMode?: AacCodingMode;
-  InputType?: AacInputType;
-  Profile?: AacProfile;
-  RateControlMode?: AacRateControlMode;
-  RawFormat?: AacRawFormat;
+  CodingMode?: AacCodingMode | (string & {});
+  InputType?: AacInputType | (string & {});
+  Profile?: AacProfile | (string & {});
+  RateControlMode?: AacRateControlMode | (string & {});
+  RawFormat?: AacRawFormat | (string & {});
   SampleRate?: number;
-  Spec?: AacSpec;
-  VbrQuality?: AacVbrQuality;
+  Spec?: AacSpec | (string & {});
+  VbrQuality?: AacVbrQuality | (string & {});
 }
 export const AacSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1742,13 +1744,13 @@ export const Ac3AttenuationControl = /*@__PURE__*/ S.String;
 
 export interface Ac3Settings {
   Bitrate?: number;
-  BitstreamMode?: Ac3BitstreamMode;
-  CodingMode?: Ac3CodingMode;
+  BitstreamMode?: Ac3BitstreamMode | (string & {});
+  CodingMode?: Ac3CodingMode | (string & {});
   Dialnorm?: number;
-  DrcProfile?: Ac3DrcProfile;
-  LfeFilter?: Ac3LfeFilter;
-  MetadataControl?: Ac3MetadataControl;
-  AttenuationControl?: Ac3AttenuationControl;
+  DrcProfile?: Ac3DrcProfile | (string & {});
+  LfeFilter?: Ac3LfeFilter | (string & {});
+  MetadataControl?: Ac3MetadataControl | (string & {});
+  AttenuationControl?: Ac3AttenuationControl | (string & {});
 }
 export const Ac3Settings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1799,10 +1801,10 @@ export const Eac3AtmosDrcRf = /*@__PURE__*/ S.String;
 
 export interface Eac3AtmosSettings {
   Bitrate?: number;
-  CodingMode?: Eac3AtmosCodingMode;
+  CodingMode?: Eac3AtmosCodingMode | (string & {});
   Dialnorm?: number;
-  DrcLine?: Eac3AtmosDrcLine;
-  DrcRf?: Eac3AtmosDrcRf;
+  DrcLine?: Eac3AtmosDrcLine | (string & {});
+  DrcRf?: Eac3AtmosDrcRf | (string & {});
   HeightTrim?: number;
   SurroundTrim?: number;
 }
@@ -1892,26 +1894,26 @@ export type Eac3SurroundMode = "DISABLED" | "ENABLED" | "NOT_INDICATED";
 export const Eac3SurroundMode = /*@__PURE__*/ S.String;
 
 export interface Eac3Settings {
-  AttenuationControl?: Eac3AttenuationControl;
+  AttenuationControl?: Eac3AttenuationControl | (string & {});
   Bitrate?: number;
-  BitstreamMode?: Eac3BitstreamMode;
-  CodingMode?: Eac3CodingMode;
-  DcFilter?: Eac3DcFilter;
+  BitstreamMode?: Eac3BitstreamMode | (string & {});
+  CodingMode?: Eac3CodingMode | (string & {});
+  DcFilter?: Eac3DcFilter | (string & {});
   Dialnorm?: number;
-  DrcLine?: Eac3DrcLine;
-  DrcRf?: Eac3DrcRf;
-  LfeControl?: Eac3LfeControl;
-  LfeFilter?: Eac3LfeFilter;
+  DrcLine?: Eac3DrcLine | (string & {});
+  DrcRf?: Eac3DrcRf | (string & {});
+  LfeControl?: Eac3LfeControl | (string & {});
+  LfeFilter?: Eac3LfeFilter | (string & {});
   LoRoCenterMixLevel?: number;
   LoRoSurroundMixLevel?: number;
   LtRtCenterMixLevel?: number;
   LtRtSurroundMixLevel?: number;
-  MetadataControl?: Eac3MetadataControl;
-  PassthroughControl?: Eac3PassthroughControl;
-  PhaseControl?: Eac3PhaseControl;
-  StereoDownmix?: Eac3StereoDownmix;
-  SurroundExMode?: Eac3SurroundExMode;
-  SurroundMode?: Eac3SurroundMode;
+  MetadataControl?: Eac3MetadataControl | (string & {});
+  PassthroughControl?: Eac3PassthroughControl | (string & {});
+  PhaseControl?: Eac3PhaseControl | (string & {});
+  StereoDownmix?: Eac3StereoDownmix | (string & {});
+  SurroundExMode?: Eac3SurroundExMode | (string & {});
+  SurroundMode?: Eac3SurroundMode | (string & {});
 }
 export const Eac3Settings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1965,7 +1967,7 @@ export const Mp2CodingMode = /*@__PURE__*/ S.String;
 
 export interface Mp2Settings {
   Bitrate?: number;
-  CodingMode?: Mp2CodingMode;
+  CodingMode?: Mp2CodingMode | (string & {});
   SampleRate?: number;
 }
 export const Mp2Settings = /*@__PURE__*/ S.suspend(() =>
@@ -1996,7 +1998,7 @@ export const WavCodingMode = /*@__PURE__*/ S.String;
 
 export interface WavSettings {
   BitDepth?: number;
-  CodingMode?: WavCodingMode;
+  CodingMode?: WavCodingMode | (string & {});
   SampleRate?: number;
 }
 export const WavSettings = /*@__PURE__*/ S.suspend(() =>
@@ -2120,7 +2122,7 @@ export type DashRoleAudio =
   | "SUPPLEMENTARY";
 export const DashRoleAudio = /*@__PURE__*/ S.String;
 
-export type __listOfDashRoleAudio = DashRoleAudio[];
+export type __listOfDashRoleAudio = (DashRoleAudio | (string & {}))[];
 export const __listOfDashRoleAudio = /*@__PURE__*/ S.Array(DashRoleAudio);
 export type DvbDashAccessibility =
   | "DVBDASH_1_VISUALLY_IMPAIRED"
@@ -2135,17 +2137,17 @@ export const DvbDashAccessibility = /*@__PURE__*/ S.String;
 export interface AudioDescription {
   AudioNormalizationSettings?: AudioNormalizationSettings;
   AudioSelectorName?: string;
-  AudioType?: AudioType;
-  AudioTypeControl?: AudioDescriptionAudioTypeControl;
+  AudioType?: AudioType | (string & {});
+  AudioTypeControl?: AudioDescriptionAudioTypeControl | (string & {});
   AudioWatermarkingSettings?: AudioWatermarkSettings;
   CodecSettings?: AudioCodecSettings;
   LanguageCode?: string;
-  LanguageCodeControl?: AudioDescriptionLanguageCodeControl;
+  LanguageCodeControl?: AudioDescriptionLanguageCodeControl | (string & {});
   Name?: string;
   RemixSettings?: RemixSettings;
   StreamName?: string;
   AudioDashRoles?: DashRoleAudio[];
-  DvbDashAccessibility?: DvbDashAccessibility;
+  DvbDashAccessibility?: DvbDashAccessibility | (string & {});
 }
 export const AudioDescription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2189,7 +2191,7 @@ export const AvailBlankingState = /*@__PURE__*/ S.String;
 
 export interface AvailBlanking {
   AvailBlankingImage?: InputLocation;
-  State?: AvailBlankingState;
+  State?: AvailBlankingState | (string & {});
 }
 export const AvailBlanking = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2238,8 +2240,12 @@ export const Scte35SpliceInsertWebDeliveryAllowedBehavior =
 
 export interface Scte35SpliceInsert {
   AdAvailOffset?: number;
-  NoRegionalBlackoutFlag?: Scte35SpliceInsertNoRegionalBlackoutBehavior;
-  WebDeliveryAllowedFlag?: Scte35SpliceInsertWebDeliveryAllowedBehavior;
+  NoRegionalBlackoutFlag?:
+    | Scte35SpliceInsertNoRegionalBlackoutBehavior
+    | (string & {});
+  WebDeliveryAllowedFlag?:
+    | Scte35SpliceInsertWebDeliveryAllowedBehavior
+    | (string & {});
 }
 export const Scte35SpliceInsert = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2268,8 +2274,8 @@ export const Scte35AposWebDeliveryAllowedBehavior = /*@__PURE__*/ S.String;
 
 export interface Scte35TimeSignalApos {
   AdAvailOffset?: number;
-  NoRegionalBlackoutFlag?: Scte35AposNoRegionalBlackoutBehavior;
-  WebDeliveryAllowedFlag?: Scte35AposWebDeliveryAllowedBehavior;
+  NoRegionalBlackoutFlag?: Scte35AposNoRegionalBlackoutBehavior | (string & {});
+  WebDeliveryAllowedFlag?: Scte35AposWebDeliveryAllowedBehavior | (string & {});
 }
 export const Scte35TimeSignalApos = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2311,7 +2317,7 @@ export const Scte35SegmentationScope = /*@__PURE__*/ S.String;
 
 export interface AvailConfiguration {
   AvailSettings?: AvailSettings;
-  Scte35SegmentationScope?: Scte35SegmentationScope;
+  Scte35SegmentationScope?: Scte35SegmentationScope | (string & {});
 }
 export const AvailConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2335,10 +2341,10 @@ export const BlackoutSlateState = /*@__PURE__*/ S.String;
 
 export interface BlackoutSlate {
   BlackoutSlateImage?: InputLocation;
-  NetworkEndBlackout?: BlackoutSlateNetworkEndBlackout;
+  NetworkEndBlackout?: BlackoutSlateNetworkEndBlackout | (string & {});
   NetworkEndBlackoutImage?: InputLocation;
   NetworkId?: string;
-  State?: BlackoutSlateState;
+  State?: BlackoutSlateState | (string & {});
 }
 export const BlackoutSlate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2404,24 +2410,24 @@ export type BurnInDestinationSubtitleRows = "ROWS_16" | "ROWS_20" | "ROWS_24";
 export const BurnInDestinationSubtitleRows = /*@__PURE__*/ S.String;
 
 export interface BurnInDestinationSettings {
-  Alignment?: BurnInAlignment;
-  BackgroundColor?: BurnInBackgroundColor;
+  Alignment?: BurnInAlignment | (string & {});
+  BackgroundColor?: BurnInBackgroundColor | (string & {});
   BackgroundOpacity?: number;
   Font?: InputLocation;
-  FontColor?: BurnInFontColor;
+  FontColor?: BurnInFontColor | (string & {});
   FontOpacity?: number;
   FontResolution?: number;
   FontSize?: string;
-  OutlineColor?: BurnInOutlineColor;
+  OutlineColor?: BurnInOutlineColor | (string & {});
   OutlineSize?: number;
-  ShadowColor?: BurnInShadowColor;
+  ShadowColor?: BurnInShadowColor | (string & {});
   ShadowOpacity?: number;
   ShadowXOffset?: number;
   ShadowYOffset?: number;
-  TeletextGridControl?: BurnInTeletextGridControl;
+  TeletextGridControl?: BurnInTeletextGridControl | (string & {});
   XPosition?: number;
   YPosition?: number;
-  SubtitleRows?: BurnInDestinationSubtitleRows;
+  SubtitleRows?: BurnInDestinationSubtitleRows | (string & {});
 }
 export const BurnInDestinationSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2502,24 +2508,24 @@ export type DvbSubDestinationSubtitleRows = "ROWS_16" | "ROWS_20" | "ROWS_24";
 export const DvbSubDestinationSubtitleRows = /*@__PURE__*/ S.String;
 
 export interface DvbSubDestinationSettings {
-  Alignment?: DvbSubDestinationAlignment;
-  BackgroundColor?: DvbSubDestinationBackgroundColor;
+  Alignment?: DvbSubDestinationAlignment | (string & {});
+  BackgroundColor?: DvbSubDestinationBackgroundColor | (string & {});
   BackgroundOpacity?: number;
   Font?: InputLocation;
-  FontColor?: DvbSubDestinationFontColor;
+  FontColor?: DvbSubDestinationFontColor | (string & {});
   FontOpacity?: number;
   FontResolution?: number;
   FontSize?: string;
-  OutlineColor?: DvbSubDestinationOutlineColor;
+  OutlineColor?: DvbSubDestinationOutlineColor | (string & {});
   OutlineSize?: number;
-  ShadowColor?: DvbSubDestinationShadowColor;
+  ShadowColor?: DvbSubDestinationShadowColor | (string & {});
   ShadowOpacity?: number;
   ShadowXOffset?: number;
   ShadowYOffset?: number;
-  TeletextGridControl?: DvbSubDestinationTeletextGridControl;
+  TeletextGridControl?: DvbSubDestinationTeletextGridControl | (string & {});
   XPosition?: number;
   YPosition?: number;
-  SubtitleRows?: DvbSubDestinationSubtitleRows;
+  SubtitleRows?: DvbSubDestinationSubtitleRows | (string & {});
 }
 export const DvbSubDestinationSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2577,9 +2583,9 @@ export type __integerMin1Max800 = number;
 export type __integerMin80Max800 = number;
 export interface EbuTtDDestinationSettings {
   CopyrightHolder?: string;
-  FillLineGap?: EbuTtDFillLineGapControl;
+  FillLineGap?: EbuTtDFillLineGapControl | (string & {});
   FontFamily?: string;
-  StyleControl?: EbuTtDDestinationStyleControl;
+  StyleControl?: EbuTtDDestinationStyleControl | (string & {});
   DefaultFontSize?: number;
   DefaultLineHeight?: number;
 }
@@ -2650,7 +2656,7 @@ export type TtmlDestinationStyleControl = "PASSTHROUGH" | "USE_CONFIGURED";
 export const TtmlDestinationStyleControl = /*@__PURE__*/ S.String;
 
 export interface TtmlDestinationSettings {
-  StyleControl?: TtmlDestinationStyleControl;
+  StyleControl?: TtmlDestinationStyleControl | (string & {});
 }
 export const TtmlDestinationSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ StyleControl: S.optional(TtmlDestinationStyleControl) }).pipe(
@@ -2663,7 +2669,7 @@ export type WebvttDestinationStyleControl = "NO_STYLE_DATA" | "PASSTHROUGH";
 export const WebvttDestinationStyleControl = /*@__PURE__*/ S.String;
 
 export interface WebvttDestinationSettings {
-  StyleControl?: WebvttDestinationStyleControl;
+  StyleControl?: WebvttDestinationStyleControl | (string & {});
 }
 export const WebvttDestinationSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ StyleControl: S.optional(WebvttDestinationStyleControl) }).pipe(
@@ -2746,17 +2752,17 @@ export type DashRoleCaption =
   | "SUPPLEMENTARY";
 export const DashRoleCaption = /*@__PURE__*/ S.String;
 
-export type __listOfDashRoleCaption = DashRoleCaption[];
+export type __listOfDashRoleCaption = (DashRoleCaption | (string & {}))[];
 export const __listOfDashRoleCaption = /*@__PURE__*/ S.Array(DashRoleCaption);
 export interface CaptionDescription {
-  Accessibility?: AccessibilityType;
+  Accessibility?: AccessibilityType | (string & {});
   CaptionSelectorName?: string;
   DestinationSettings?: CaptionDestinationSettings;
   LanguageCode?: string;
   LanguageDescription?: string;
   Name?: string;
   CaptionDashRoles?: DashRoleCaption[];
-  DvbDashAccessibility?: DvbDashAccessibility;
+  DvbDashAccessibility?: DvbDashAccessibility | (string & {});
 }
 export const CaptionDescription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2799,8 +2805,12 @@ export const FeatureActivationsOutputStaticImageOverlayScheduleActions =
   /*@__PURE__*/ S.String;
 
 export interface FeatureActivations {
-  InputPrepareScheduleActions?: FeatureActivationsInputPrepareScheduleActions;
-  OutputStaticImageOverlayScheduleActions?: FeatureActivationsOutputStaticImageOverlayScheduleActions;
+  InputPrepareScheduleActions?:
+    | FeatureActivationsInputPrepareScheduleActions
+    | (string & {});
+  OutputStaticImageOverlayScheduleActions?:
+    | FeatureActivationsOutputStaticImageOverlayScheduleActions
+    | (string & {});
 }
 export const FeatureActivations = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2835,7 +2845,7 @@ export interface InputLossBehavior {
   BlackFrameMsec?: number;
   InputLossImageColor?: string;
   InputLossImageSlate?: InputLocation;
-  InputLossImageType?: InputLossImageType;
+  InputLossImageType?: InputLossImageType | (string & {});
   RepeatFrameMsec?: number;
 }
 export const InputLossBehavior = /*@__PURE__*/ S.suspend(() =>
@@ -2889,7 +2899,7 @@ export type PipelineLockingMethod = "SOURCE_TIMECODE" | "VIDEO_ALIGNMENT";
 export const PipelineLockingMethod = /*@__PURE__*/ S.String;
 
 export interface PipelineLockingSettings {
-  PipelineLockingMethod?: PipelineLockingMethod;
+  PipelineLockingMethod?: PipelineLockingMethod | (string & {});
   CustomEpoch?: string;
 }
 export const PipelineLockingSettings = /*@__PURE__*/ S.suspend(() =>
@@ -2937,11 +2947,13 @@ export const OutputLockingSettings = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OutputLockingSettings>;
 export interface GlobalConfiguration {
   InitialAudioGain?: number;
-  InputEndAction?: GlobalConfigurationInputEndAction;
+  InputEndAction?: GlobalConfigurationInputEndAction | (string & {});
   InputLossBehavior?: InputLossBehavior;
-  OutputLockingMode?: GlobalConfigurationOutputLockingMode;
-  OutputTimingSource?: GlobalConfigurationOutputTimingSource;
-  SupportLowFramerateInputs?: GlobalConfigurationLowFramerateInputs;
+  OutputLockingMode?: GlobalConfigurationOutputLockingMode | (string & {});
+  OutputTimingSource?: GlobalConfigurationOutputTimingSource | (string & {});
+  SupportLowFramerateInputs?:
+    | GlobalConfigurationLowFramerateInputs
+    | (string & {});
   OutputLockingSettings?: OutputLockingSettings;
 }
 export const GlobalConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -2991,7 +3003,7 @@ export const MotionGraphicsSettings = /*@__PURE__*/ S.suspend(() =>
   identifier: "MotionGraphicsSettings",
 }) as any as S.Schema<MotionGraphicsSettings>;
 export interface MotionGraphicsConfiguration {
-  MotionGraphicsInsertion?: MotionGraphicsInsertion;
+  MotionGraphicsInsertion?: MotionGraphicsInsertion | (string & {});
   MotionGraphicsSettings?: MotionGraphicsSettings;
 }
 export const MotionGraphicsConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -3012,7 +3024,7 @@ export const NielsenPcmToId3TaggingState = /*@__PURE__*/ S.String;
 
 export interface NielsenConfiguration {
   DistributorId?: string;
-  NielsenPcmToId3Tagging?: NielsenPcmToId3TaggingState;
+  NielsenPcmToId3Tagging?: NielsenPcmToId3TaggingState | (string & {});
 }
 export const NielsenConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3036,7 +3048,7 @@ export type S3CannedAcl =
 export const S3CannedAcl = /*@__PURE__*/ S.String;
 
 export interface ArchiveS3Settings {
-  CannedAcl?: S3CannedAcl;
+  CannedAcl?: S3CannedAcl | (string & {});
 }
 export const ArchiveS3Settings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ CannedAcl: S.optional(S3CannedAcl) }).pipe(
@@ -3086,7 +3098,7 @@ export const ArchiveGroupSettings = /*@__PURE__*/ S.suspend(() =>
   identifier: "ArchiveGroupSettings",
 }) as any as S.Schema<ArchiveGroupSettings>;
 export interface FrameCaptureS3Settings {
-  CannedAcl?: S3CannedAcl;
+  CannedAcl?: S3CannedAcl | (string & {});
 }
 export const FrameCaptureS3Settings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ CannedAcl: S.optional(S3CannedAcl) }).pipe(
@@ -3125,7 +3137,7 @@ export const FrameCaptureGroupSettings = /*@__PURE__*/ S.suspend(() =>
 export type HlsAdMarkers = "ADOBE" | "ELEMENTAL" | "ELEMENTAL_SCTE35";
 export const HlsAdMarkers = /*@__PURE__*/ S.String;
 
-export type __listOfHlsAdMarkers = HlsAdMarkers[];
+export type __listOfHlsAdMarkers = (HlsAdMarkers | (string & {}))[];
 export const __listOfHlsAdMarkers = /*@__PURE__*/ S.Array(HlsAdMarkers);
 export type __integerMin1Max4 = number;
 export type __stringMin3Max3 = string;
@@ -3181,7 +3193,7 @@ export const HlsAkamaiHttpTransferMode = /*@__PURE__*/ S.String;
 export interface HlsAkamaiSettings {
   ConnectionRetryInterval?: number;
   FilecacheDuration?: number;
-  HttpTransferMode?: HlsAkamaiHttpTransferMode;
+  HttpTransferMode?: HlsAkamaiHttpTransferMode | (string & {});
   NumRetries?: number;
   RestartDelay?: number;
   Salt?: string;
@@ -3239,7 +3251,7 @@ export const HlsMediaStoreStorageClass = /*@__PURE__*/ S.String;
 export interface HlsMediaStoreSettings {
   ConnectionRetryInterval?: number;
   FilecacheDuration?: number;
-  MediaStoreStorageClass?: HlsMediaStoreStorageClass;
+  MediaStoreStorageClass?: HlsMediaStoreStorageClass | (string & {});
   NumRetries?: number;
   RestartDelay?: number;
 }
@@ -3263,7 +3275,7 @@ export const HlsMediaStoreSettings = /*@__PURE__*/ S.suspend(() =>
   identifier: "HlsMediaStoreSettings",
 }) as any as S.Schema<HlsMediaStoreSettings>;
 export interface HlsS3Settings {
-  CannedAcl?: S3CannedAcl;
+  CannedAcl?: S3CannedAcl | (string & {});
 }
 export const HlsS3Settings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ CannedAcl: S.optional(S3CannedAcl) }).pipe(
@@ -3276,7 +3288,7 @@ export const HlsWebdavHttpTransferMode = /*@__PURE__*/ S.String;
 export interface HlsWebdavSettings {
   ConnectionRetryInterval?: number;
   FilecacheDuration?: number;
-  HttpTransferMode?: HlsWebdavHttpTransferMode;
+  HttpTransferMode?: HlsWebdavHttpTransferMode | (string & {});
   NumRetries?: number;
   RestartDelay?: number;
 }
@@ -3417,43 +3429,43 @@ export interface HlsGroupSettings {
   BaseUrlManifest?: string;
   BaseUrlManifest1?: string;
   CaptionLanguageMappings?: CaptionLanguageMapping[];
-  CaptionLanguageSetting?: HlsCaptionLanguageSetting;
-  ClientCache?: HlsClientCache;
-  CodecSpecification?: HlsCodecSpecification;
+  CaptionLanguageSetting?: HlsCaptionLanguageSetting | (string & {});
+  ClientCache?: HlsClientCache | (string & {});
+  CodecSpecification?: HlsCodecSpecification | (string & {});
   ConstantIv?: string;
   Destination?: OutputLocationRef;
-  DirectoryStructure?: HlsDirectoryStructure;
-  DiscontinuityTags?: HlsDiscontinuityTags;
-  EncryptionType?: HlsEncryptionType;
+  DirectoryStructure?: HlsDirectoryStructure | (string & {});
+  DiscontinuityTags?: HlsDiscontinuityTags | (string & {});
+  EncryptionType?: HlsEncryptionType | (string & {});
   HlsCdnSettings?: HlsCdnSettings;
-  HlsId3SegmentTagging?: HlsId3SegmentTaggingState;
-  IFrameOnlyPlaylists?: IFrameOnlyPlaylistType;
-  IncompleteSegmentBehavior?: HlsIncompleteSegmentBehavior;
+  HlsId3SegmentTagging?: HlsId3SegmentTaggingState | (string & {});
+  IFrameOnlyPlaylists?: IFrameOnlyPlaylistType | (string & {});
+  IncompleteSegmentBehavior?: HlsIncompleteSegmentBehavior | (string & {});
   IndexNSegments?: number;
-  InputLossAction?: InputLossActionForHlsOut;
-  IvInManifest?: HlsIvInManifest;
-  IvSource?: HlsIvSource;
+  InputLossAction?: InputLossActionForHlsOut | (string & {});
+  IvInManifest?: HlsIvInManifest | (string & {});
+  IvSource?: HlsIvSource | (string & {});
   KeepSegments?: number;
   KeyFormat?: string;
   KeyFormatVersions?: string;
   KeyProviderSettings?: KeyProviderSettings;
-  ManifestCompression?: HlsManifestCompression;
-  ManifestDurationFormat?: HlsManifestDurationFormat;
+  ManifestCompression?: HlsManifestCompression | (string & {});
+  ManifestDurationFormat?: HlsManifestDurationFormat | (string & {});
   MinSegmentLength?: number;
-  Mode?: HlsMode;
-  OutputSelection?: HlsOutputSelection;
-  ProgramDateTime?: HlsProgramDateTime;
-  ProgramDateTimeClock?: HlsProgramDateTimeClock;
+  Mode?: HlsMode | (string & {});
+  OutputSelection?: HlsOutputSelection | (string & {});
+  ProgramDateTime?: HlsProgramDateTime | (string & {});
+  ProgramDateTimeClock?: HlsProgramDateTimeClock | (string & {});
   ProgramDateTimePeriod?: number;
-  RedundantManifest?: HlsRedundantManifest;
+  RedundantManifest?: HlsRedundantManifest | (string & {});
   SegmentLength?: number;
-  SegmentationMode?: HlsSegmentationMode;
+  SegmentationMode?: HlsSegmentationMode | (string & {});
   SegmentsPerSubdirectory?: number;
-  StreamInfResolution?: HlsStreamInfResolution;
-  TimedMetadataId3Frame?: HlsTimedMetadataId3Frame;
+  StreamInfResolution?: HlsStreamInfResolution | (string & {});
+  TimedMetadataId3Frame?: HlsTimedMetadataId3Frame | (string & {});
   TimedMetadataId3Period?: number;
   TimestampDeltaMilliseconds?: number;
-  TsFileMode?: HlsTsFileMode;
+  TsFileMode?: HlsTsFileMode | (string & {});
 }
 export const HlsGroupSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3589,15 +3601,15 @@ export const __listOfMediaPackageAdditionalDestinations = /*@__PURE__*/ S.Array(
 );
 export interface MediaPackageV2GroupSettings {
   CaptionLanguageMappings?: CaptionLanguageMapping[];
-  Id3Behavior?: CmafId3Behavior;
-  KlvBehavior?: CmafKLVBehavior;
-  NielsenId3Behavior?: CmafNielsenId3Behavior;
-  Scte35Type?: Scte35Type;
+  Id3Behavior?: CmafId3Behavior | (string & {});
+  KlvBehavior?: CmafKLVBehavior | (string & {});
+  NielsenId3Behavior?: CmafNielsenId3Behavior | (string & {});
+  Scte35Type?: Scte35Type | (string & {});
   SegmentLength?: number;
-  SegmentLengthUnits?: CmafIngestSegmentLengthUnits;
-  TimedMetadataId3Frame?: CmafTimedMetadataId3Frame;
+  SegmentLengthUnits?: CmafIngestSegmentLengthUnits | (string & {});
+  TimedMetadataId3Frame?: CmafTimedMetadataId3Frame | (string & {});
   TimedMetadataId3Period?: number;
-  TimedMetadataPassthrough?: CmafTimedMetadataPassthrough;
+  TimedMetadataPassthrough?: CmafTimedMetadataPassthrough | (string & {});
   AdditionalDestinations?: MediaPackageAdditionalDestinations[];
 }
 export const MediaPackageV2GroupSettings = /*@__PURE__*/ S.suspend(() =>
@@ -3691,24 +3703,26 @@ export const SmoothGroupTimestampOffsetMode = /*@__PURE__*/ S.String;
 
 export interface MsSmoothGroupSettings {
   AcquisitionPointId?: string;
-  AudioOnlyTimecodeControl?: SmoothGroupAudioOnlyTimecodeControl;
-  CertificateMode?: SmoothGroupCertificateMode;
+  AudioOnlyTimecodeControl?:
+    | SmoothGroupAudioOnlyTimecodeControl
+    | (string & {});
+  CertificateMode?: SmoothGroupCertificateMode | (string & {});
   ConnectionRetryInterval?: number;
   Destination?: OutputLocationRef;
   EventId?: string;
-  EventIdMode?: SmoothGroupEventIdMode;
-  EventStopBehavior?: SmoothGroupEventStopBehavior;
+  EventIdMode?: SmoothGroupEventIdMode | (string & {});
+  EventStopBehavior?: SmoothGroupEventStopBehavior | (string & {});
   FilecacheDuration?: number;
   FragmentLength?: number;
-  InputLossAction?: InputLossActionForMsSmoothOut;
+  InputLossAction?: InputLossActionForMsSmoothOut | (string & {});
   NumRetries?: number;
   RestartDelay?: number;
-  SegmentationMode?: SmoothGroupSegmentationMode;
+  SegmentationMode?: SmoothGroupSegmentationMode | (string & {});
   SendDelayMs?: number;
-  SparseTrackType?: SmoothGroupSparseTrackType;
-  StreamManifestBehavior?: SmoothGroupStreamManifestBehavior;
+  SparseTrackType?: SmoothGroupSparseTrackType | (string & {});
+  StreamManifestBehavior?: SmoothGroupStreamManifestBehavior | (string & {});
   TimestampOffset?: string;
-  TimestampOffsetMode?: SmoothGroupTimestampOffsetMode;
+  TimestampOffsetMode?: SmoothGroupTimestampOffsetMode | (string & {});
 }
 export const MsSmoothGroupSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3766,7 +3780,7 @@ export const MultiplexGroupSettings = /*@__PURE__*/ S.suspend(() =>
 export type RtmpAdMarkers = "ON_CUE_POINT_SCTE35";
 export const RtmpAdMarkers = /*@__PURE__*/ S.String;
 
-export type __listOfRtmpAdMarkers = RtmpAdMarkers[];
+export type __listOfRtmpAdMarkers = (RtmpAdMarkers | (string & {}))[];
 export const __listOfRtmpAdMarkers = /*@__PURE__*/ S.Array(RtmpAdMarkers);
 export type AuthenticationScheme = "AKAMAI" | "COMMON";
 export const AuthenticationScheme = /*@__PURE__*/ S.String;
@@ -3788,13 +3802,13 @@ export const IncludeFillerNalUnits = /*@__PURE__*/ S.String;
 
 export interface RtmpGroupSettings {
   AdMarkers?: RtmpAdMarkers[];
-  AuthenticationScheme?: AuthenticationScheme;
-  CacheFullBehavior?: RtmpCacheFullBehavior;
+  AuthenticationScheme?: AuthenticationScheme | (string & {});
+  CacheFullBehavior?: RtmpCacheFullBehavior | (string & {});
   CacheLength?: number;
-  CaptionData?: RtmpCaptionData;
-  InputLossAction?: InputLossActionForRtmpOut;
+  CaptionData?: RtmpCaptionData | (string & {});
+  InputLossAction?: InputLossActionForRtmpOut | (string & {});
   RestartDelay?: number;
-  IncludeFillerNalUnits?: IncludeFillerNalUnits;
+  IncludeFillerNalUnits?: IncludeFillerNalUnits | (string & {});
 }
 export const RtmpGroupSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3831,8 +3845,8 @@ export type UdpTimedMetadataId3Frame = "NONE" | "PRIV" | "TDRL";
 export const UdpTimedMetadataId3Frame = /*@__PURE__*/ S.String;
 
 export interface UdpGroupSettings {
-  InputLossAction?: InputLossActionForUdpOut;
-  TimedMetadataId3Frame?: UdpTimedMetadataId3Frame;
+  InputLossAction?: InputLossActionForUdpOut | (string & {});
+  TimedMetadataId3Frame?: UdpTimedMetadataId3Frame | (string & {});
   TimedMetadataId3Period?: number;
 }
 export const UdpGroupSettings = /*@__PURE__*/ S.suspend(() =>
@@ -3890,21 +3904,21 @@ export const __listOfAdditionalDestinations = /*@__PURE__*/ S.Array(
 );
 export interface CmafIngestGroupSettings {
   Destination?: OutputLocationRef;
-  NielsenId3Behavior?: CmafNielsenId3Behavior;
-  Scte35Type?: Scte35Type;
+  NielsenId3Behavior?: CmafNielsenId3Behavior | (string & {});
+  Scte35Type?: Scte35Type | (string & {});
   SegmentLength?: number;
-  SegmentLengthUnits?: CmafIngestSegmentLengthUnits;
+  SegmentLengthUnits?: CmafIngestSegmentLengthUnits | (string & {});
   SendDelayMs?: number;
-  KlvBehavior?: CmafKLVBehavior;
+  KlvBehavior?: CmafKLVBehavior | (string & {});
   KlvNameModifier?: string;
   NielsenId3NameModifier?: string;
   Scte35NameModifier?: string;
-  Id3Behavior?: CmafId3Behavior;
+  Id3Behavior?: CmafId3Behavior | (string & {});
   Id3NameModifier?: string;
   CaptionLanguageMappings?: CmafIngestCaptionLanguageMapping[];
-  TimedMetadataId3Frame?: CmafTimedMetadataId3Frame;
+  TimedMetadataId3Frame?: CmafTimedMetadataId3Frame | (string & {});
   TimedMetadataId3Period?: number;
-  TimedMetadataPassthrough?: CmafTimedMetadataPassthrough;
+  TimedMetadataPassthrough?: CmafTimedMetadataPassthrough | (string & {});
   AdditionalDestinations?: AdditionalDestinations[];
 }
 export const CmafIngestGroupSettings = /*@__PURE__*/ S.suspend(() =>
@@ -3953,7 +3967,7 @@ export const CmafIngestGroupSettings = /*@__PURE__*/ S.suspend(() =>
   identifier: "CmafIngestGroupSettings",
 }) as any as S.Schema<CmafIngestGroupSettings>;
 export interface SrtGroupSettings {
-  InputLossAction?: InputLossActionForUdpOut;
+  InputLossAction?: InputLossActionForUdpOut | (string & {});
 }
 export const SrtGroupSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ InputLossAction: S.optional(InputLossActionForUdpOut) }).pipe(
@@ -4070,7 +4084,7 @@ export const DvbSdtOutputSdt = /*@__PURE__*/ S.String;
 
 export type __integerMin25Max2000 = number;
 export interface DvbSdtSettings {
-  OutputSdt?: DvbSdtOutputSdt;
+  OutputSdt?: DvbSdtOutputSdt | (string & {});
   RepInterval?: number;
   ServiceName?: string;
   ServiceProviderName?: string;
@@ -4148,50 +4162,50 @@ export const M2tsTimedMetadataBehavior = /*@__PURE__*/ S.String;
 
 export type __doubleMin0Max5000 = number;
 export interface M2tsSettings {
-  AbsentInputAudioBehavior?: M2tsAbsentInputAudioBehavior;
-  Arib?: M2tsArib;
+  AbsentInputAudioBehavior?: M2tsAbsentInputAudioBehavior | (string & {});
+  Arib?: M2tsArib | (string & {});
   AribCaptionsPid?: string;
-  AribCaptionsPidControl?: M2tsAribCaptionsPidControl;
-  AudioBufferModel?: M2tsAudioBufferModel;
+  AribCaptionsPidControl?: M2tsAribCaptionsPidControl | (string & {});
+  AudioBufferModel?: M2tsAudioBufferModel | (string & {});
   AudioFramesPerPes?: number;
   AudioPids?: string;
-  AudioStreamType?: M2tsAudioStreamType;
+  AudioStreamType?: M2tsAudioStreamType | (string & {});
   Bitrate?: number;
-  BufferModel?: M2tsBufferModel;
-  CcDescriptor?: M2tsCcDescriptor;
+  BufferModel?: M2tsBufferModel | (string & {});
+  CcDescriptor?: M2tsCcDescriptor | (string & {});
   DvbNitSettings?: DvbNitSettings;
   DvbSdtSettings?: DvbSdtSettings;
   DvbSubPids?: string;
   DvbTdtSettings?: DvbTdtSettings;
   DvbTeletextPid?: string;
-  Ebif?: M2tsEbifControl;
-  EbpAudioInterval?: M2tsAudioInterval;
+  Ebif?: M2tsEbifControl | (string & {});
+  EbpAudioInterval?: M2tsAudioInterval | (string & {});
   EbpLookaheadMs?: number;
-  EbpPlacement?: M2tsEbpPlacement;
+  EbpPlacement?: M2tsEbpPlacement | (string & {});
   EcmPid?: string;
-  EsRateInPes?: M2tsEsRateInPes;
+  EsRateInPes?: M2tsEsRateInPes | (string & {});
   EtvPlatformPid?: string;
   EtvSignalPid?: string;
   FragmentTime?: number;
-  Klv?: M2tsKlv;
+  Klv?: M2tsKlv | (string & {});
   KlvDataPids?: string;
-  NielsenId3Behavior?: M2tsNielsenId3Behavior;
+  NielsenId3Behavior?: M2tsNielsenId3Behavior | (string & {});
   NullPacketBitrate?: number;
   PatInterval?: number;
-  PcrControl?: M2tsPcrControl;
+  PcrControl?: M2tsPcrControl | (string & {});
   PcrPeriod?: number;
   PcrPid?: string;
   PmtInterval?: number;
   PmtPid?: string;
   ProgramNum?: number;
-  RateMode?: M2tsRateMode;
+  RateMode?: M2tsRateMode | (string & {});
   Scte27Pids?: string;
-  Scte35Control?: M2tsScte35Control;
+  Scte35Control?: M2tsScte35Control | (string & {});
   Scte35Pid?: string;
-  SegmentationMarkers?: M2tsSegmentationMarkers;
-  SegmentationStyle?: M2tsSegmentationStyle;
+  SegmentationMarkers?: M2tsSegmentationMarkers | (string & {});
+  SegmentationStyle?: M2tsSegmentationStyle | (string & {});
   SegmentationTime?: number;
-  TimedMetadataBehavior?: M2tsTimedMetadataBehavior;
+  TimedMetadataBehavior?: M2tsTimedMetadataBehavior | (string & {});
   TimedMetadataPid?: string;
   TransportStreamId?: number;
   VideoPid?: string;
@@ -4364,8 +4378,8 @@ export const AudioOnlyHlsSegmentType = /*@__PURE__*/ S.String;
 export interface AudioOnlyHlsSettings {
   AudioGroupId?: string;
   AudioOnlyImage?: InputLocation;
-  AudioTrackType?: AudioOnlyHlsTrackType;
-  SegmentType?: AudioOnlyHlsSegmentType;
+  AudioTrackType?: AudioOnlyHlsTrackType | (string & {});
+  SegmentType?: AudioOnlyHlsSegmentType | (string & {});
 }
 export const AudioOnlyHlsSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4392,8 +4406,8 @@ export const Fmp4TimedMetadataBehavior = /*@__PURE__*/ S.String;
 
 export interface Fmp4HlsSettings {
   AudioRenditionSets?: string;
-  NielsenId3Behavior?: Fmp4NielsenId3Behavior;
-  TimedMetadataBehavior?: Fmp4TimedMetadataBehavior;
+  NielsenId3Behavior?: Fmp4NielsenId3Behavior | (string & {});
+  TimedMetadataBehavior?: Fmp4TimedMetadataBehavior | (string & {});
 }
 export const Fmp4HlsSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4435,21 +4449,21 @@ export interface M3u8Settings {
   AudioFramesPerPes?: number;
   AudioPids?: string;
   EcmPid?: string;
-  NielsenId3Behavior?: M3u8NielsenId3Behavior;
+  NielsenId3Behavior?: M3u8NielsenId3Behavior | (string & {});
   PatInterval?: number;
-  PcrControl?: M3u8PcrControl;
+  PcrControl?: M3u8PcrControl | (string & {});
   PcrPeriod?: number;
   PcrPid?: string;
   PmtInterval?: number;
   PmtPid?: string;
   ProgramNum?: number;
-  Scte35Behavior?: M3u8Scte35Behavior;
+  Scte35Behavior?: M3u8Scte35Behavior | (string & {});
   Scte35Pid?: string;
-  TimedMetadataBehavior?: M3u8TimedMetadataBehavior;
+  TimedMetadataBehavior?: M3u8TimedMetadataBehavior | (string & {});
   TimedMetadataPid?: string;
   TransportStreamId?: number;
   VideoPid?: string;
-  KlvBehavior?: M3u8KlvBehavior;
+  KlvBehavior?: M3u8KlvBehavior | (string & {});
   KlvDataPids?: string;
 }
 export const M3u8Settings = /*@__PURE__*/ S.suspend(() =>
@@ -4536,7 +4550,7 @@ export const HlsSettings = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "HlsSettings" }) as any as S.Schema<HlsSettings>;
 export interface HlsOutputSettings {
-  H265PackagingType?: HlsH265PackagingType;
+  H265PackagingType?: HlsH265PackagingType | (string & {});
   HlsSettings?: HlsSettings;
   NameModifier?: string;
   SegmentModifier?: string;
@@ -4567,8 +4581,8 @@ export const HlsDefault = /*@__PURE__*/ S.String;
 export interface MediaPackageV2DestinationSettings {
   AudioGroupId?: string;
   AudioRenditionSets?: string;
-  HlsAutoSelect?: HlsAutoSelect;
-  HlsDefault?: HlsDefault;
+  HlsAutoSelect?: HlsAutoSelect | (string & {});
+  HlsDefault?: HlsDefault | (string & {});
 }
 export const MediaPackageV2DestinationSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4607,7 +4621,7 @@ export type MsSmoothH265PackagingType = "HEV1" | "HVC1";
 export const MsSmoothH265PackagingType = /*@__PURE__*/ S.String;
 
 export interface MsSmoothOutputSettings {
-  H265PackagingType?: MsSmoothH265PackagingType;
+  H265PackagingType?: MsSmoothH265PackagingType | (string & {});
   NameModifier?: string;
 }
 export const MsSmoothOutputSettings = /*@__PURE__*/ S.suspend(() =>
@@ -4624,19 +4638,19 @@ export const MsSmoothOutputSettings = /*@__PURE__*/ S.suspend(() =>
   identifier: "MsSmoothOutputSettings",
 }) as any as S.Schema<MsSmoothOutputSettings>;
 export interface MultiplexM2tsSettings {
-  AbsentInputAudioBehavior?: M2tsAbsentInputAudioBehavior;
-  Arib?: M2tsArib;
-  AudioBufferModel?: M2tsAudioBufferModel;
+  AbsentInputAudioBehavior?: M2tsAbsentInputAudioBehavior | (string & {});
+  Arib?: M2tsArib | (string & {});
+  AudioBufferModel?: M2tsAudioBufferModel | (string & {});
   AudioFramesPerPes?: number;
-  AudioStreamType?: M2tsAudioStreamType;
-  CcDescriptor?: M2tsCcDescriptor;
-  Ebif?: M2tsEbifControl;
-  EsRateInPes?: M2tsEsRateInPes;
-  Klv?: M2tsKlv;
-  NielsenId3Behavior?: M2tsNielsenId3Behavior;
-  PcrControl?: M2tsPcrControl;
+  AudioStreamType?: M2tsAudioStreamType | (string & {});
+  CcDescriptor?: M2tsCcDescriptor | (string & {});
+  Ebif?: M2tsEbifControl | (string & {});
+  EsRateInPes?: M2tsEsRateInPes | (string & {});
+  Klv?: M2tsKlv | (string & {});
+  NielsenId3Behavior?: M2tsNielsenId3Behavior | (string & {});
+  PcrControl?: M2tsPcrControl | (string & {});
   PcrPeriod?: number;
-  Scte35Control?: M2tsScte35Control;
+  Scte35Control?: M2tsScte35Control | (string & {});
   Scte35PrerollPullupMilliseconds?: number;
 }
 export const MultiplexM2tsSettings = /*@__PURE__*/ S.suspend(() =>
@@ -4707,7 +4721,7 @@ export type RtmpOutputCertificateMode = "SELF_SIGNED" | "VERIFY_AUTHENTICITY";
 export const RtmpOutputCertificateMode = /*@__PURE__*/ S.String;
 
 export interface RtmpOutputSettings {
-  CertificateMode?: RtmpOutputCertificateMode;
+  CertificateMode?: RtmpOutputCertificateMode | (string & {});
   ConnectionRetryInterval?: number;
   Destination?: OutputLocationRef;
   NumRetries?: number;
@@ -4746,7 +4760,7 @@ export const FecOutputIncludeFec = /*@__PURE__*/ S.String;
 export type __integerMin1Max20 = number;
 export interface FecOutputSettings {
   ColumnDepth?: number;
-  IncludeFec?: FecOutputIncludeFec;
+  IncludeFec?: FecOutputIncludeFec | (string & {});
   RowLength?: number;
 }
 export const FecOutputSettings = /*@__PURE__*/ S.suspend(() =>
@@ -4805,7 +4819,7 @@ export interface SrtOutputSettings {
   BufferMsec?: number;
   ContainerSettings?: UdpContainerSettings;
   Destination?: OutputLocationRef;
-  EncryptionType?: SrtEncryptionType;
+  EncryptionType?: SrtEncryptionType | (string & {});
   Latency?: number;
 }
 export const SrtOutputSettings = /*@__PURE__*/ S.suspend(() =>
@@ -4965,7 +4979,7 @@ export const TimecodeConfigSource = /*@__PURE__*/ S.String;
 
 export type __integerMin1Max1000000 = number;
 export interface TimecodeConfig {
-  Source?: TimecodeConfigSource;
+  Source?: TimecodeConfigSource | (string & {});
   SyncThreshold?: number;
 }
 export const TimecodeConfig = /*@__PURE__*/ S.suspend(() =>
@@ -4998,8 +5012,8 @@ export type TimecodeBurninPosition =
 export const TimecodeBurninPosition = /*@__PURE__*/ S.String;
 
 export interface TimecodeBurninSettings {
-  FontSize?: TimecodeBurninFontSize;
-  Position?: TimecodeBurninPosition;
+  FontSize?: TimecodeBurninFontSize | (string & {});
+  Position?: TimecodeBurninPosition | (string & {});
   Prefix?: string;
 }
 export const TimecodeBurninSettings = /*@__PURE__*/ S.suspend(() =>
@@ -5019,7 +5033,7 @@ export const TimecodeBurninSettings = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TimecodeBurninSettings>;
 export interface FrameCaptureSettings {
   CaptureInterval?: number;
-  CaptureIntervalUnits?: FrameCaptureIntervalUnit;
+  CaptureIntervalUnits?: FrameCaptureIntervalUnit | (string & {});
   TimecodeBurninSettings?: TimecodeBurninSettings;
 }
 export const FrameCaptureSettings = /*@__PURE__*/ S.suspend(() =>
@@ -5118,8 +5132,8 @@ export type TemporalFilterStrength =
 export const TemporalFilterStrength = /*@__PURE__*/ S.String;
 
 export interface TemporalFilterSettings {
-  PostFilterSharpening?: TemporalFilterPostFilterSharpening;
-  Strength?: TemporalFilterStrength;
+  PostFilterSharpening?: TemporalFilterPostFilterSharpening | (string & {});
+  Strength?: TemporalFilterStrength | (string & {});
 }
 export const TemporalFilterSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5150,8 +5164,8 @@ export type BandwidthReductionFilterStrength =
 export const BandwidthReductionFilterStrength = /*@__PURE__*/ S.String;
 
 export interface BandwidthReductionFilterSettings {
-  PostFilterSharpening?: BandwidthReductionPostFilterSharpening;
-  Strength?: BandwidthReductionFilterStrength;
+  PostFilterSharpening?: BandwidthReductionPostFilterSharpening | (string & {});
+  Strength?: BandwidthReductionFilterStrength | (string & {});
 }
 export const BandwidthReductionFilterSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5283,47 +5297,47 @@ export const H264TimecodeInsertionBehavior = /*@__PURE__*/ S.String;
 
 export type __integerMin1Max51 = number;
 export interface H264Settings {
-  AdaptiveQuantization?: H264AdaptiveQuantization;
-  AfdSignaling?: AfdSignaling;
+  AdaptiveQuantization?: H264AdaptiveQuantization | (string & {});
+  AfdSignaling?: AfdSignaling | (string & {});
   Bitrate?: number;
   BufFillPct?: number;
   BufSize?: number;
-  ColorMetadata?: H264ColorMetadata;
+  ColorMetadata?: H264ColorMetadata | (string & {});
   ColorSpaceSettings?: H264ColorSpaceSettings;
-  EntropyEncoding?: H264EntropyEncoding;
+  EntropyEncoding?: H264EntropyEncoding | (string & {});
   FilterSettings?: H264FilterSettings;
-  FixedAfd?: FixedAfd;
-  FlickerAq?: H264FlickerAq;
-  ForceFieldPictures?: H264ForceFieldPictures;
-  FramerateControl?: H264FramerateControl;
+  FixedAfd?: FixedAfd | (string & {});
+  FlickerAq?: H264FlickerAq | (string & {});
+  ForceFieldPictures?: H264ForceFieldPictures | (string & {});
+  FramerateControl?: H264FramerateControl | (string & {});
   FramerateDenominator?: number;
   FramerateNumerator?: number;
-  GopBReference?: H264GopBReference;
+  GopBReference?: H264GopBReference | (string & {});
   GopClosedCadence?: number;
   GopNumBFrames?: number;
   GopSize?: number;
-  GopSizeUnits?: H264GopSizeUnits;
-  Level?: H264Level;
-  LookAheadRateControl?: H264LookAheadRateControl;
+  GopSizeUnits?: H264GopSizeUnits | (string & {});
+  Level?: H264Level | (string & {});
+  LookAheadRateControl?: H264LookAheadRateControl | (string & {});
   MaxBitrate?: number;
   MinIInterval?: number;
   NumRefFrames?: number;
-  ParControl?: H264ParControl;
+  ParControl?: H264ParControl | (string & {});
   ParDenominator?: number;
   ParNumerator?: number;
-  Profile?: H264Profile;
-  QualityLevel?: H264QualityLevel;
+  Profile?: H264Profile | (string & {});
+  QualityLevel?: H264QualityLevel | (string & {});
   QvbrQualityLevel?: number;
-  RateControlMode?: H264RateControlMode;
-  ScanType?: H264ScanType;
-  SceneChangeDetect?: H264SceneChangeDetect;
+  RateControlMode?: H264RateControlMode | (string & {});
+  ScanType?: H264ScanType | (string & {});
+  SceneChangeDetect?: H264SceneChangeDetect | (string & {});
   Slices?: number;
   Softness?: number;
-  SpatialAq?: H264SpatialAq;
-  SubgopLength?: H264SubGopLength;
-  Syntax?: H264Syntax;
-  TemporalAq?: H264TemporalAq;
-  TimecodeInsertion?: H264TimecodeInsertionBehavior;
+  SpatialAq?: H264SpatialAq | (string & {});
+  SubgopLength?: H264SubGopLength | (string & {});
+  Syntax?: H264Syntax | (string & {});
+  TemporalAq?: H264TemporalAq | (string & {});
+  TimecodeInsertion?: H264TimecodeInsertionBehavior | (string & {});
   TimecodeBurninSettings?: TimecodeBurninSettings;
   MinQp?: number;
   MinBitrate?: number;
@@ -5583,48 +5597,48 @@ export type H265SubGopLength = "DYNAMIC" | "FIXED";
 export const H265SubGopLength = /*@__PURE__*/ S.String;
 
 export interface H265Settings {
-  AdaptiveQuantization?: H265AdaptiveQuantization;
-  AfdSignaling?: AfdSignaling;
-  AlternativeTransferFunction?: H265AlternativeTransferFunction;
+  AdaptiveQuantization?: H265AdaptiveQuantization | (string & {});
+  AfdSignaling?: AfdSignaling | (string & {});
+  AlternativeTransferFunction?: H265AlternativeTransferFunction | (string & {});
   Bitrate?: number;
   BufSize?: number;
-  ColorMetadata?: H265ColorMetadata;
+  ColorMetadata?: H265ColorMetadata | (string & {});
   ColorSpaceSettings?: H265ColorSpaceSettings;
   FilterSettings?: H265FilterSettings;
-  FixedAfd?: FixedAfd;
-  FlickerAq?: H265FlickerAq;
+  FixedAfd?: FixedAfd | (string & {});
+  FlickerAq?: H265FlickerAq | (string & {});
   FramerateDenominator?: number;
   FramerateNumerator?: number;
   GopClosedCadence?: number;
   GopSize?: number;
-  GopSizeUnits?: H265GopSizeUnits;
-  Level?: H265Level;
-  LookAheadRateControl?: H265LookAheadRateControl;
+  GopSizeUnits?: H265GopSizeUnits | (string & {});
+  Level?: H265Level | (string & {});
+  LookAheadRateControl?: H265LookAheadRateControl | (string & {});
   MaxBitrate?: number;
   MinIInterval?: number;
   ParDenominator?: number;
   ParNumerator?: number;
-  Profile?: H265Profile;
+  Profile?: H265Profile | (string & {});
   QvbrQualityLevel?: number;
-  RateControlMode?: H265RateControlMode;
-  ScanType?: H265ScanType;
-  SceneChangeDetect?: H265SceneChangeDetect;
+  RateControlMode?: H265RateControlMode | (string & {});
+  ScanType?: H265ScanType | (string & {});
+  SceneChangeDetect?: H265SceneChangeDetect | (string & {});
   Slices?: number;
-  Tier?: H265Tier;
-  TimecodeInsertion?: H265TimecodeInsertionBehavior;
+  Tier?: H265Tier | (string & {});
+  TimecodeInsertion?: H265TimecodeInsertionBehavior | (string & {});
   TimecodeBurninSettings?: TimecodeBurninSettings;
-  MvOverPictureBoundaries?: H265MvOverPictureBoundaries;
-  MvTemporalPredictor?: H265MvTemporalPredictor;
+  MvOverPictureBoundaries?: H265MvOverPictureBoundaries | (string & {});
+  MvTemporalPredictor?: H265MvTemporalPredictor | (string & {});
   TileHeight?: number;
-  TilePadding?: H265TilePadding;
+  TilePadding?: H265TilePadding | (string & {});
   TileWidth?: number;
-  TreeblockSize?: H265TreeblockSize;
+  TreeblockSize?: H265TreeblockSize | (string & {});
   MinQp?: number;
-  Deblocking?: H265Deblocking;
-  GopBReference?: H265GopBReference;
+  Deblocking?: H265Deblocking | (string & {});
+  GopBReference?: H265GopBReference | (string & {});
   GopNumBFrames?: number;
   MinBitrate?: number;
-  SubgopLength?: H265SubGopLength;
+  SubgopLength?: H265SubGopLength | (string & {});
 }
 export const H265Settings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5757,22 +5771,22 @@ export type Mpeg2TimecodeInsertionBehavior = "DISABLED" | "GOP_TIMECODE";
 export const Mpeg2TimecodeInsertionBehavior = /*@__PURE__*/ S.String;
 
 export interface Mpeg2Settings {
-  AdaptiveQuantization?: Mpeg2AdaptiveQuantization;
-  AfdSignaling?: AfdSignaling;
-  ColorMetadata?: Mpeg2ColorMetadata;
-  ColorSpace?: Mpeg2ColorSpace;
-  DisplayAspectRatio?: Mpeg2DisplayRatio;
+  AdaptiveQuantization?: Mpeg2AdaptiveQuantization | (string & {});
+  AfdSignaling?: AfdSignaling | (string & {});
+  ColorMetadata?: Mpeg2ColorMetadata | (string & {});
+  ColorSpace?: Mpeg2ColorSpace | (string & {});
+  DisplayAspectRatio?: Mpeg2DisplayRatio | (string & {});
   FilterSettings?: Mpeg2FilterSettings;
-  FixedAfd?: FixedAfd;
+  FixedAfd?: FixedAfd | (string & {});
   FramerateDenominator?: number;
   FramerateNumerator?: number;
   GopClosedCadence?: number;
   GopNumBFrames?: number;
   GopSize?: number;
-  GopSizeUnits?: Mpeg2GopSizeUnits;
-  ScanType?: Mpeg2ScanType;
-  SubgopLength?: Mpeg2SubGopLength;
-  TimecodeInsertion?: Mpeg2TimecodeInsertionBehavior;
+  GopSizeUnits?: Mpeg2GopSizeUnits | (string & {});
+  ScanType?: Mpeg2ScanType | (string & {});
+  SubgopLength?: Mpeg2SubGopLength | (string & {});
+  TimecodeInsertion?: Mpeg2TimecodeInsertionBehavior | (string & {});
   TimecodeBurninSettings?: TimecodeBurninSettings;
 }
 export const Mpeg2Settings = /*@__PURE__*/ S.suspend(() =>
@@ -5888,30 +5902,30 @@ export type Av1BitDepth = "DEPTH_10" | "DEPTH_8";
 export const Av1BitDepth = /*@__PURE__*/ S.String;
 
 export interface Av1Settings {
-  AfdSignaling?: AfdSignaling;
+  AfdSignaling?: AfdSignaling | (string & {});
   BufSize?: number;
   ColorSpaceSettings?: Av1ColorSpaceSettings;
-  FixedAfd?: FixedAfd;
+  FixedAfd?: FixedAfd | (string & {});
   FramerateDenominator?: number;
   FramerateNumerator?: number;
   GopSize?: number;
-  GopSizeUnits?: Av1GopSizeUnits;
-  Level?: Av1Level;
-  LookAheadRateControl?: Av1LookAheadRateControl;
+  GopSizeUnits?: Av1GopSizeUnits | (string & {});
+  Level?: Av1Level | (string & {});
+  LookAheadRateControl?: Av1LookAheadRateControl | (string & {});
   MaxBitrate?: number;
   MinIInterval?: number;
   ParDenominator?: number;
   ParNumerator?: number;
   QvbrQualityLevel?: number;
-  SceneChangeDetect?: Av1SceneChangeDetect;
+  SceneChangeDetect?: Av1SceneChangeDetect | (string & {});
   TimecodeBurninSettings?: TimecodeBurninSettings;
   Bitrate?: number;
-  RateControlMode?: Av1RateControlMode;
+  RateControlMode?: Av1RateControlMode | (string & {});
   MinBitrate?: number;
-  SpatialAq?: Av1SpatialAq;
-  TemporalAq?: Av1TemporalAq;
-  TimecodeInsertion?: Av1TimecodeInsertionBehavior;
-  BitDepth?: Av1BitDepth;
+  SpatialAq?: Av1SpatialAq | (string & {});
+  TemporalAq?: Av1TemporalAq | (string & {});
+  TimecodeInsertion?: Av1TimecodeInsertionBehavior | (string & {});
+  BitDepth?: Av1BitDepth | (string & {});
 }
 export const Av1Settings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6007,8 +6021,8 @@ export interface VideoDescription {
   CodecSettings?: VideoCodecSettings;
   Height?: number;
   Name?: string;
-  RespondToAfd?: VideoDescriptionRespondToAfd;
-  ScalingBehavior?: VideoDescriptionScalingBehavior;
+  RespondToAfd?: VideoDescriptionRespondToAfd | (string & {});
+  ScalingBehavior?: VideoDescriptionScalingBehavior | (string & {});
   Sharpness?: number;
   Width?: number;
 }
@@ -6041,7 +6055,7 @@ export type ThumbnailState = "AUTO" | "DISABLED";
 export const ThumbnailState = /*@__PURE__*/ S.String;
 
 export interface ThumbnailConfiguration {
-  State?: ThumbnailState;
+  State?: ThumbnailState | (string & {});
 }
 export const ThumbnailConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ State: S.optional(ThumbnailState) }).pipe(
@@ -6054,8 +6068,8 @@ export type ColorSpace = "HDR10" | "HLG_2020" | "REC_601" | "REC_709";
 export const ColorSpace = /*@__PURE__*/ S.String;
 
 export interface ColorCorrection {
-  InputColorSpace?: ColorSpace;
-  OutputColorSpace?: ColorSpace;
+  InputColorSpace?: ColorSpace | (string & {});
+  OutputColorSpace?: ColorSpace | (string & {});
   Uri?: string;
 }
 export const ColorCorrection = /*@__PURE__*/ S.suspend(() =>
@@ -6227,7 +6241,7 @@ export const InputPreference = /*@__PURE__*/ S.String;
 export interface AutomaticInputFailoverSettings {
   ErrorClearTimeMsec?: number;
   FailoverConditions?: FailoverCondition[];
-  InputPreference?: InputPreference;
+  InputPreference?: InputPreference | (string & {});
   SecondaryInputId?: string;
 }
 export const AutomaticInputFailoverSettings = /*@__PURE__*/ S.suspend(() =>
@@ -6263,7 +6277,7 @@ export const AudioLanguageSelectionPolicy = /*@__PURE__*/ S.String;
 
 export interface AudioLanguageSelection {
   LanguageCode?: string;
-  LanguageSelectionPolicy?: AudioLanguageSelectionPolicy;
+  LanguageSelectionPolicy?: AudioLanguageSelectionPolicy | (string & {});
 }
 export const AudioLanguageSelection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6292,7 +6306,7 @@ export type DolbyEProgramSelection =
 export const DolbyEProgramSelection = /*@__PURE__*/ S.String;
 
 export interface AudioDolbyEDecode {
-  ProgramSelection?: DolbyEProgramSelection;
+  ProgramSelection?: DolbyEProgramSelection | (string & {});
 }
 export const AudioDolbyEDecode = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ProgramSelection: S.optional(DolbyEProgramSelection) }).pipe(
@@ -6438,7 +6452,7 @@ export type DvbSubOcrLanguage = "DEU" | "ENG" | "FRA" | "NLD" | "POR" | "SPA";
 export const DvbSubOcrLanguage = /*@__PURE__*/ S.String;
 
 export interface DvbSubSourceSettings {
-  OcrLanguage?: DvbSubOcrLanguage;
+  OcrLanguage?: DvbSubOcrLanguage | (string & {});
   Pid?: number;
 }
 export const DvbSubSourceSettings = /*@__PURE__*/ S.suspend(() =>
@@ -6457,8 +6471,8 @@ export const EmbeddedScte20Detection = /*@__PURE__*/ S.String;
 
 export type __integerMin1Max5 = number;
 export interface EmbeddedSourceSettings {
-  Convert608To708?: EmbeddedConvert608To708;
-  Scte20Detection?: EmbeddedScte20Detection;
+  Convert608To708?: EmbeddedConvert608To708 | (string & {});
+  Scte20Detection?: EmbeddedScte20Detection | (string & {});
   Source608ChannelNumber?: number;
   Source608TrackNumber?: number;
 }
@@ -6483,7 +6497,7 @@ export type Scte20Convert608To708 = "DISABLED" | "UPCONVERT";
 export const Scte20Convert608To708 = /*@__PURE__*/ S.String;
 
 export interface Scte20SourceSettings {
-  Convert608To708?: Scte20Convert608To708;
+  Convert608To708?: Scte20Convert608To708 | (string & {});
   Source608ChannelNumber?: number;
 }
 export const Scte20SourceSettings = /*@__PURE__*/ S.suspend(() =>
@@ -6503,7 +6517,7 @@ export type Scte27OcrLanguage = "DEU" | "ENG" | "FRA" | "NLD" | "POR" | "SPA";
 export const Scte27OcrLanguage = /*@__PURE__*/ S.String;
 
 export interface Scte27SourceSettings {
-  OcrLanguage?: Scte27OcrLanguage;
+  OcrLanguage?: Scte27OcrLanguage | (string & {});
   Pid?: number;
 }
 export const Scte27SourceSettings = /*@__PURE__*/ S.suspend(() =>
@@ -6561,7 +6575,7 @@ export type CaptionSynchronizationMode =
 export const CaptionSynchronizationMode = /*@__PURE__*/ S.String;
 
 export interface SmartSubtitleSourceSettings {
-  CaptionSynchronizationMode?: CaptionSynchronizationMode;
+  CaptionSynchronizationMode?: CaptionSynchronizationMode | (string & {});
   InferenceFeedOutput?: string;
 }
 export const SmartSubtitleSourceSettings = /*@__PURE__*/ S.suspend(() =>
@@ -6651,7 +6665,7 @@ export interface HlsInputSettings {
   BufferSegments?: number;
   Retries?: number;
   RetryInterval?: number;
-  Scte35Source?: HlsScte35SourceType;
+  Scte35Source?: HlsScte35SourceType | (string & {});
 }
 export const HlsInputSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6689,7 +6703,7 @@ export const MulticastInputSettings = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MulticastInputSettings>;
 export interface NetworkInputSettings {
   HlsInputSettings?: HlsInputSettings;
-  ServerValidation?: NetworkInputServerValidation;
+  ServerValidation?: NetworkInputServerValidation | (string & {});
   MulticastInputSettings?: MulticastInputSettings;
 }
 export const NetworkInputSettings = /*@__PURE__*/ S.suspend(() =>
@@ -6771,9 +6785,9 @@ export const VideoSelectorSettings = /*@__PURE__*/ S.suspend(() =>
   identifier: "VideoSelectorSettings",
 }) as any as S.Schema<VideoSelectorSettings>;
 export interface VideoSelector {
-  ColorSpace?: VideoSelectorColorSpace;
+  ColorSpace?: VideoSelectorColorSpace | (string & {});
   ColorSpaceSettings?: VideoSelectorColorSpaceSettings;
-  ColorSpaceUsage?: VideoSelectorColorSpaceUsage;
+  ColorSpaceUsage?: VideoSelectorColorSpaceUsage | (string & {});
   SelectorSettings?: VideoSelectorSettings;
 }
 export const VideoSelector = /*@__PURE__*/ S.suspend(() =>
@@ -6794,14 +6808,14 @@ export const VideoSelector = /*@__PURE__*/ S.suspend(() =>
 export interface InputSettings {
   AudioSelectors?: AudioSelector[];
   CaptionSelectors?: CaptionSelector[];
-  DeblockFilter?: InputDeblockFilter;
-  DenoiseFilter?: InputDenoiseFilter;
+  DeblockFilter?: InputDeblockFilter | (string & {});
+  DenoiseFilter?: InputDenoiseFilter | (string & {});
   FilterStrength?: number;
-  InputFilter?: InputFilter;
+  InputFilter?: InputFilter | (string & {});
   NetworkInputSettings?: NetworkInputSettings;
   Scte35Pid?: number;
-  Smpte2038DataPreference?: Smpte2038DataPreference;
-  SourceEndBehavior?: InputSourceEndBehavior;
+  Smpte2038DataPreference?: Smpte2038DataPreference | (string & {});
+  SourceEndBehavior?: InputSourceEndBehavior | (string & {});
   VideoSelector?: VideoSelector;
 }
 export const InputSettings = /*@__PURE__*/ S.suspend(() =>
@@ -6871,9 +6885,9 @@ export type InputResolution = "SD" | "HD" | "UHD";
 export const InputResolution = /*@__PURE__*/ S.String;
 
 export interface InputSpecification {
-  Codec?: InputCodec;
-  MaximumBitrate?: InputMaximumBitrate;
-  Resolution?: InputResolution;
+  Codec?: InputCodec | (string & {});
+  MaximumBitrate?: InputMaximumBitrate | (string & {});
+  Resolution?: InputResolution | (string & {});
 }
 export const InputSpecification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -9557,7 +9571,7 @@ export const MultiplexVideoSettings = /*@__PURE__*/ S.suspend(() =>
   identifier: "MultiplexVideoSettings",
 }) as any as S.Schema<MultiplexVideoSettings>;
 export interface MultiplexProgramSettings {
-  PreferredChannelPipeline?: PreferredChannelPipeline;
+  PreferredChannelPipeline?: PreferredChannelPipeline | (string & {});
   ProgramNumber?: number;
   ServiceDescriptor?: MultiplexProgramServiceDescriptor;
   VideoSettings?: MultiplexVideoSettings;
@@ -9948,7 +9962,7 @@ export const NodeConnectionState = /*@__PURE__*/ S.String;
 
 export interface NodeInterfaceMapping {
   LogicalInterfaceName?: string;
-  NetworkInterfaceMode?: NetworkInterfaceMode;
+  NetworkInterfaceMode?: NetworkInterfaceMode | (string & {});
   PhysicalInterfaceName?: string;
   PhysicalInterfaceIpAddresses?: string[];
 }
@@ -11457,7 +11471,7 @@ export type ReservationAutomaticRenewal =
 export const ReservationAutomaticRenewal = /*@__PURE__*/ S.String;
 
 export interface RenewalSettings {
-  AutomaticRenewal?: ReservationAutomaticRenewal;
+  AutomaticRenewal?: ReservationAutomaticRenewal | (string & {});
   RenewalCount?: number;
 }
 export const RenewalSettings = /*@__PURE__*/ S.suspend(() =>

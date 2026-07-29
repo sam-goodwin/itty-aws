@@ -29,7 +29,7 @@ export interface ExtendedLocation {
   /** The name of the extended location. */
   name: string;
   /** Type of ExtendedLocation. */
-  type: ExtendedLocationType;
+  type: ExtendedLocationType | (string & {});
 }
 export const ExtendedLocation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -148,7 +148,7 @@ export const AkriConnectorAllocatedDevice = /*@__PURE__*/ S.suspend(() =>
 
 /** The allocated devices for the connector. */
 export type AkriConnectorPropertiesAllocatedDevicesList =
-  ReadonlyArray<AkriConnectorAllocatedDevice>;
+  Array<AkriConnectorAllocatedDevice>;
 export const AkriConnectorPropertiesAllocatedDevicesList =
   /*@__PURE__*/ S.Array(
     AkriConnectorAllocatedDevice,
@@ -411,7 +411,7 @@ export const AkriConnectorResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The AkriConnectorResource items on this page */
 export type AkriConnectorResourceListResultValueList =
-  ReadonlyArray<AkriConnectorResource>;
+  Array<AkriConnectorResource>;
 export const AkriConnectorResourceListResultValueList = /*@__PURE__*/ S.Array(
   AkriConnectorResource,
 ) as any as S.Schema<AkriConnectorResourceListResultValueList>;
@@ -457,7 +457,9 @@ export const AkriConnectorTemplateRuntimeConfigurationType =
 /** AkriConnectorTemplateRuntimeConfiguration properties. */
 export interface AkriConnectorTemplateRuntimeConfiguration {
   /** Runtime configuration type for the Connector template. */
-  runtimeConfigurationType: AkriConnectorTemplateRuntimeConfigurationType;
+  runtimeConfigurationType:
+    | AkriConnectorTemplateRuntimeConfigurationType
+    | (string & {});
 }
 export const AkriConnectorTemplateRuntimeConfiguration =
   /*@__PURE__*/ S.suspend(() =>
@@ -516,7 +518,7 @@ export const AkriConnectorTemplateDeviceInboundEndpointType =
 
 /** Device inbound endpoint types. */
 export type AkriConnectorTemplatePropertiesInputDeviceInboundEndpointTypesList =
-  ReadonlyArray<AkriConnectorTemplateDeviceInboundEndpointType>;
+  Array<AkriConnectorTemplateDeviceInboundEndpointType>;
 export const AkriConnectorTemplatePropertiesInputDeviceInboundEndpointTypesList =
   /*@__PURE__*/ S.Array(
     AkriConnectorTemplateDeviceInboundEndpointType,
@@ -529,7 +531,7 @@ export const AkriConnectorsMqttAuthenticationMethod = /*@__PURE__*/ S.String;
 /** AkriConnectorsMqttAuthentication properties. */
 export interface AkriConnectorsMqttAuthentication {
   /** The authentication method for the MQTT connection. */
-  method: AkriConnectorsMqttAuthenticationMethod;
+  method: AkriConnectorsMqttAuthenticationMethod | (string & {});
 }
 export const AkriConnectorsMqttAuthentication = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -550,7 +552,7 @@ export const TlsPropertiesMode = /*@__PURE__*/ S.String;
 /** Tls properties */
 export interface TlsProperties {
   /** Mode for TLS. */
-  mode?: TlsPropertiesMode;
+  mode?: TlsPropertiesMode | (string & {});
   /** Trusted CA certificate config map. */
   trustedCaCertificateConfigMapRef?: string;
 }
@@ -568,7 +570,7 @@ export interface AkriConnectorsMqttConnectionConfiguration {
   /** Host of the Broker in the form of <hostname>:<port>. */
   host?: string;
   /** The protocol to use for the connection. Currently only `mqtt` is supported. */
-  protocol?: AkriConnectorsMqttProtocolType;
+  protocol?: AkriConnectorsMqttProtocolType | (string & {});
   /** KeepAlive for connection in seconds. */
   keepAliveSeconds?: number;
   /** The max number of messages to keep in flight. For subscribe, this is the receive maximum. For publish, this is the maximum number of messages to send before waiting for an ack. */
@@ -662,7 +664,7 @@ export const AkriConnectorTemplateCreateOrUpdateRequest =
 
 /** Device inbound endpoint types. */
 export type AkriConnectorTemplatePropertiesDeviceInboundEndpointTypesList =
-  ReadonlyArray<AkriConnectorTemplateDeviceInboundEndpointType>;
+  Array<AkriConnectorTemplateDeviceInboundEndpointType>;
 export const AkriConnectorTemplatePropertiesDeviceInboundEndpointTypesList =
   /*@__PURE__*/ S.Array(
     AkriConnectorTemplateDeviceInboundEndpointType,
@@ -888,7 +890,7 @@ export const AkriConnectorTemplateResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The AkriConnectorTemplateResource items on this page */
 export type AkriConnectorTemplateResourceListResultValueList =
-  ReadonlyArray<AkriConnectorTemplateResource>;
+  Array<AkriConnectorTemplateResource>;
 export const AkriConnectorTemplateResourceListResultValueList =
   /*@__PURE__*/ S.Array(
     AkriConnectorTemplateResource,
@@ -1154,8 +1156,7 @@ export const AkriServiceResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AkriServiceResource>;
 
 /** The AkriServiceResource items on this page */
-export type AkriServiceResourceListResultValueList =
-  ReadonlyArray<AkriServiceResource>;
+export type AkriServiceResourceListResultValueList = Array<AkriServiceResource>;
 export const AkriServiceResourceListResultValueList = /*@__PURE__*/ S.Array(
   AkriServiceResource,
 ) as any as S.Schema<AkriServiceResourceListResultValueList>;
@@ -1241,7 +1242,7 @@ export const BrokerAuthenticatorMethodCustom = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BrokerAuthenticatorMethodCustom>;
 
 /** List of allowed audience. */
-export type BrokerAuthenticatorMethodSatAudiencesList = ReadonlyArray<string>;
+export type BrokerAuthenticatorMethodSatAudiencesList = Array<string>;
 export const BrokerAuthenticatorMethodSatAudiencesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BrokerAuthenticatorMethodSatAudiencesList>;
@@ -1309,7 +1310,7 @@ export interface BrokerAuthenticatorMethodX509 {
   /** Name of the trusted client ca cert resource. */
   trustedClientCaCert?: string;
   /** X509 authentication attributes properties. */
-  additionalValidation?: BrokerAuthenticatorValidationMethods;
+  additionalValidation?: BrokerAuthenticatorValidationMethods | (string & {});
 }
 export const BrokerAuthenticatorMethodX509 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1326,7 +1327,7 @@ export const BrokerAuthenticatorMethodX509 = /*@__PURE__*/ S.suspend(() =>
 /** Set of broker authentication policies. Only one method is supported for each entry. */
 export interface BrokerAuthenticatorMethods {
   /** Custom authentication configuration. */
-  method: BrokerAuthenticationMethod;
+  method: BrokerAuthenticationMethod | (string & {});
   /** Custom authentication configuration. */
   customSettings?: BrokerAuthenticatorMethodCustom;
   /** ServiceAccountToken authentication configuration. */
@@ -1347,7 +1348,7 @@ export const BrokerAuthenticatorMethods = /*@__PURE__*/ S.suspend(() =>
 
 /** Defines a set of Broker authentication methods to be used on `BrokerListeners`. For each array element one authenticator type supported. */
 export type BrokerAuthenticationPropertiesInputAuthenticationMethodsList =
-  ReadonlyArray<BrokerAuthenticatorMethods>;
+  Array<BrokerAuthenticatorMethods>;
 export const BrokerAuthenticationPropertiesInputAuthenticationMethodsList =
   /*@__PURE__*/ S.Array(
     BrokerAuthenticatorMethods,
@@ -1407,7 +1408,7 @@ export const BrokerAuthenticationCreateOrUpdateRequest =
 
 /** Defines a set of Broker authentication methods to be used on `BrokerListeners`. For each array element one authenticator type supported. */
 export type BrokerAuthenticationPropertiesAuthenticationMethodsList =
-  ReadonlyArray<BrokerAuthenticatorMethods>;
+  Array<BrokerAuthenticatorMethods>;
 export const BrokerAuthenticationPropertiesAuthenticationMethodsList =
   /*@__PURE__*/ S.Array(
     BrokerAuthenticatorMethods,
@@ -1624,7 +1625,7 @@ export const BrokerAuthenticationResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The BrokerAuthenticationResource items on this page */
 export type BrokerAuthenticationResourceListResultValueList =
-  ReadonlyArray<BrokerAuthenticationResource>;
+  Array<BrokerAuthenticationResource>;
 export const BrokerAuthenticationResourceListResultValueList =
   /*@__PURE__*/ S.Array(
     BrokerAuthenticationResource,
@@ -1659,13 +1660,13 @@ export type BrokerResourceDefinitionMethods =
 export const BrokerResourceDefinitionMethods = /*@__PURE__*/ S.String;
 
 /** A list of client IDs that match the clients. The client IDs are case-sensitive and must match the client IDs provided by the clients during connection. This subfield may be set if the method is Connect. */
-export type BrokerResourceRuleClientIdsList = ReadonlyArray<string>;
+export type BrokerResourceRuleClientIdsList = Array<string>;
 export const BrokerResourceRuleClientIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BrokerResourceRuleClientIdsList>;
 
 /** A list of topics or topic patterns that match the topics that the clients can publish or subscribe to. This subfield is required if the method is Publish or Subscribe. */
-export type BrokerResourceRuleTopicsList = ReadonlyArray<string>;
+export type BrokerResourceRuleTopicsList = Array<string>;
 export const BrokerResourceRuleTopicsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BrokerResourceRuleTopicsList>;
@@ -1673,7 +1674,7 @@ export const BrokerResourceRuleTopicsList = /*@__PURE__*/ S.Array(
 /** Broker Resource Rule properties. This defines the objects that represent the actions or topics, such as - method.Connect, method.Publish, etc. */
 export interface BrokerResourceRule {
   /** Give access for a Broker method (i.e., Connect, Subscribe, or Publish). */
-  method: BrokerResourceDefinitionMethods;
+  method: BrokerResourceDefinitionMethods | (string & {});
   /** A list of client IDs that match the clients. The client IDs are case-sensitive and must match the client IDs provided by the clients during connection. This subfield may be set if the method is Connect. */
   clientIds?: BrokerResourceRuleClientIdsList;
   /** A list of topics or topic patterns that match the topics that the clients can publish or subscribe to. This subfield is required if the method is Publish or Subscribe. */
@@ -1690,8 +1691,7 @@ export const BrokerResourceRule = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BrokerResourceRule>;
 
 /** Give access to Broker methods and topics. */
-export type AuthorizationRuleBrokerResourcesList =
-  ReadonlyArray<BrokerResourceRule>;
+export type AuthorizationRuleBrokerResourcesList = Array<BrokerResourceRule>;
 export const AuthorizationRuleBrokerResourcesList = /*@__PURE__*/ S.Array(
   BrokerResourceRule,
 ) as any as S.Schema<AuthorizationRuleBrokerResourcesList>;
@@ -1706,19 +1706,19 @@ export const PrincipalDefinitionAttributesItemMap = /*@__PURE__*/ S.Record(
 
 /** A list of key-value pairs that match the attributes of the clients. The attributes are case-sensitive and must match the attributes provided by the clients during authentication. */
 export type PrincipalDefinitionAttributesList =
-  ReadonlyArray<PrincipalDefinitionAttributesItemMap>;
+  Array<PrincipalDefinitionAttributesItemMap>;
 export const PrincipalDefinitionAttributesList = /*@__PURE__*/ S.Array(
   PrincipalDefinitionAttributesItemMap,
 ) as any as S.Schema<PrincipalDefinitionAttributesList>;
 
 /** A list of client IDs that match the clients. The client IDs are case-sensitive and must match the client IDs provided by the clients during connection. */
-export type PrincipalDefinitionClientIdsList = ReadonlyArray<string>;
+export type PrincipalDefinitionClientIdsList = Array<string>;
 export const PrincipalDefinitionClientIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PrincipalDefinitionClientIdsList>;
 
 /** A list of usernames that match the clients. The usernames are case-sensitive and must match the usernames provided by the clients during authentication. */
-export type PrincipalDefinitionUsernamesList = ReadonlyArray<string>;
+export type PrincipalDefinitionUsernamesList = Array<string>;
 export const PrincipalDefinitionUsernamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PrincipalDefinitionUsernamesList>;
@@ -1747,7 +1747,7 @@ export type StateStoreResourceKeyTypes = "Pattern" | "String" | "Binary";
 export const StateStoreResourceKeyTypes = /*@__PURE__*/ S.String;
 
 /** Give access to state store keys for the corresponding principals defined. When key type is pattern set glob-style pattern (e.g., '*', 'clients/*'). */
-export type StateStoreResourceRuleKeysList = ReadonlyArray<string>;
+export type StateStoreResourceRuleKeysList = Array<string>;
 export const StateStoreResourceRuleKeysList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StateStoreResourceRuleKeysList>;
@@ -1762,11 +1762,11 @@ export const StateStoreResourceDefinitionMethods = /*@__PURE__*/ S.String;
 /** State Store Resource Rule properties. */
 export interface StateStoreResourceRule {
   /** Allowed keyTypes pattern, string, binary. The key type used for matching, for example pattern tries to match the key to a glob-style pattern and string checks key is equal to value provided in keys. */
-  keyType: StateStoreResourceKeyTypes;
+  keyType: StateStoreResourceKeyTypes | (string & {});
   /** Give access to state store keys for the corresponding principals defined. When key type is pattern set glob-style pattern (e.g., '*', 'clients/*'). */
   keys: StateStoreResourceRuleKeysList;
   /** Give access for `Read`, `Write` and `ReadWrite` access level. */
-  method: StateStoreResourceDefinitionMethods;
+  method: StateStoreResourceDefinitionMethods | (string & {});
 }
 export const StateStoreResourceRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1780,7 +1780,7 @@ export const StateStoreResourceRule = /*@__PURE__*/ S.suspend(() =>
 
 /** Give access to state store resources. */
 export type AuthorizationRuleStateStoreResourcesList =
-  ReadonlyArray<StateStoreResourceRule>;
+  Array<StateStoreResourceRule>;
 export const AuthorizationRuleStateStoreResourcesList = /*@__PURE__*/ S.Array(
   StateStoreResourceRule,
 ) as any as S.Schema<AuthorizationRuleStateStoreResourcesList>;
@@ -1805,7 +1805,7 @@ export const AuthorizationRule = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AuthorizationRule>;
 
 /** The authorization rules to follow. If no rule is set, but Authorization Resource is used that would mean DenyAll. */
-export type AuthorizationConfigRulesList = ReadonlyArray<AuthorizationRule>;
+export type AuthorizationConfigRulesList = Array<AuthorizationRule>;
 export const AuthorizationConfigRulesList = /*@__PURE__*/ S.Array(
   AuthorizationRule,
 ) as any as S.Schema<AuthorizationConfigRulesList>;
@@ -1813,7 +1813,7 @@ export const AuthorizationConfigRulesList = /*@__PURE__*/ S.Array(
 /** Broker AuthorizationConfig properties */
 export interface AuthorizationConfig {
   /** Enable caching of the authorization rules. */
-  cache?: AuthorizationConfigCache;
+  cache?: AuthorizationConfigCache | (string & {});
   /** The authorization rules to follow. If no rule is set, but Authorization Resource is used that would mean DenyAll. */
   rules?: AuthorizationConfigRulesList;
 }
@@ -2087,7 +2087,7 @@ export const BrokerAuthorizationResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The BrokerAuthorizationResource items on this page */
 export type BrokerAuthorizationResourceListResultValueList =
-  ReadonlyArray<BrokerAuthorizationResource>;
+  Array<BrokerAuthorizationResource>;
 export const BrokerAuthorizationResourceListResultValueList =
   /*@__PURE__*/ S.Array(
     BrokerAuthorizationResource,
@@ -2119,7 +2119,7 @@ export interface SubscriberQueueLimit {
   /** The maximum length of the queue before messages start getting dropped. */
   length?: number;
   /** The strategy to use for dropping messages from the queue. */
-  strategy?: SubscriberQueueLimitStrategy;
+  strategy?: SubscriberQueueLimitStrategy | (string & {});
 }
 export const SubscriberQueueLimit = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2178,9 +2178,9 @@ export const PrivateKeyRotationPolicy = /*@__PURE__*/ S.String;
 /** Cert Manager private key properties */
 export interface CertManagerPrivateKey {
   /** algorithm for private key. */
-  algorithm: PrivateKeyAlgorithm;
+  algorithm: PrivateKeyAlgorithm | (string & {});
   /** cert-manager private key rotationPolicy. */
-  rotationPolicy: PrivateKeyRotationPolicy;
+  rotationPolicy: PrivateKeyRotationPolicy | (string & {});
 }
 export const CertManagerPrivateKey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2215,7 +2215,9 @@ export interface AdvancedSettings {
   /** Configurations related to All Clients. */
   clients?: ClientConfig;
   /** The setting to enable or disable encryption of internal Traffic. */
-  encryptInternalTraffic?: AdvancedSettingsEncryptInternalTraffic;
+  encryptInternalTraffic?:
+    | AdvancedSettingsEncryptInternalTraffic
+    | (string & {});
   /** Certificate rotation and private key configuration. */
   internalCerts?: CertManagerCertOptions;
 }
@@ -2305,7 +2307,7 @@ export const SelfCheckMode = /*@__PURE__*/ S.String;
 /** Broker Diagnostic Self check properties */
 export interface SelfCheck {
   /** The toggle to enable/disable self check. */
-  mode?: SelfCheckMode;
+  mode?: SelfCheckMode | (string & {});
   /** The self check interval. */
   intervalSeconds?: number;
   /** The timeout for self check. */
@@ -2330,7 +2332,7 @@ export const SelfTracingMode = /*@__PURE__*/ S.String;
 /** Diagnostic Self tracing properties */
 export interface SelfTracing {
   /** The toggle to enable/disable self tracing. */
-  mode?: SelfTracingMode;
+  mode?: SelfTracingMode | (string & {});
   /** The self tracing interval. */
   intervalSeconds?: number;
 }
@@ -2344,7 +2346,7 @@ export const SelfTracing = /*@__PURE__*/ S.suspend(() =>
 /** Broker Diagnostic Trace properties */
 export interface Traces {
   /** The toggle to enable/disable traces. */
-  mode?: TracesMode;
+  mode?: TracesMode | (string & {});
   /** The cache size in megabytes. */
   cacheSizeMegabytes?: number;
   /** The self tracing properties. */
@@ -2384,7 +2386,7 @@ export const BrokerDiagnostics = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BrokerDiagnostics>;
 
 /** AccessModes contains the desired access modes the volume should have. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#access-modes-1 */
-export type VolumeClaimSpecAccessModesList = ReadonlyArray<string>;
+export type VolumeClaimSpecAccessModesList = Array<string>;
 export const VolumeClaimSpecAccessModesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<VolumeClaimSpecAccessModesList>;
@@ -2465,7 +2467,7 @@ export const VolumeClaimResourceRequirementsClaims = /*@__PURE__*/ S.suspend(
 
 /** Claims lists the names of resources, defined in spec.resourceClaims, that are used by this container. This is an alpha field and requires enabling the DynamicResourceAllocation feature gate. This field is immutable. It can only be set for containers. */
 export type VolumeClaimResourceRequirementsClaimsList =
-  ReadonlyArray<VolumeClaimResourceRequirementsClaims>;
+  Array<VolumeClaimResourceRequirementsClaims>;
 export const VolumeClaimResourceRequirementsClaimsList = /*@__PURE__*/ S.Array(
   VolumeClaimResourceRequirementsClaims,
 ) as any as S.Schema<VolumeClaimResourceRequirementsClaimsList>;
@@ -2494,8 +2496,7 @@ export type OperatorValues = "In" | "NotIn" | "Exists" | "DoesNotExist";
 export const OperatorValues = /*@__PURE__*/ S.String;
 
 /** values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch. */
-export type VolumeClaimSpecSelectorMatchExpressionsValuesList =
-  ReadonlyArray<string>;
+export type VolumeClaimSpecSelectorMatchExpressionsValuesList = Array<string>;
 export const VolumeClaimSpecSelectorMatchExpressionsValuesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2506,7 +2507,7 @@ export interface VolumeClaimSpecSelectorMatchExpressions {
   /** key is the label key that the selector applies to. */
   key: string;
   /** operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist. */
-  operator: OperatorValues;
+  operator: OperatorValues | (string & {});
   /** values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch. */
   values?: VolumeClaimSpecSelectorMatchExpressionsValuesList;
 }
@@ -2523,7 +2524,7 @@ export const VolumeClaimSpecSelectorMatchExpressions = /*@__PURE__*/ S.suspend(
 
 /** MatchExpressions is a list of label selector requirements. The requirements are ANDed. */
 export type VolumeClaimSpecSelectorMatchExpressionsList =
-  ReadonlyArray<VolumeClaimSpecSelectorMatchExpressions>;
+  Array<VolumeClaimSpecSelectorMatchExpressions>;
 export const VolumeClaimSpecSelectorMatchExpressionsList =
   /*@__PURE__*/ S.Array(
     VolumeClaimSpecSelectorMatchExpressions,
@@ -2614,7 +2615,7 @@ export const GenerateResourceLimitsCpu = /*@__PURE__*/ S.String;
 /** GenerateResourceLimits properties */
 export interface GenerateResourceLimits {
   /** The toggle to enable/disable cpu resource limits. */
-  cpu?: GenerateResourceLimitsCpu;
+  cpu?: GenerateResourceLimitsCpu | (string & {});
 }
 export const GenerateResourceLimits = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2643,7 +2644,7 @@ export const BrokerPersistencePolicyMode = /*@__PURE__*/ S.String;
 /** Broker Retain policy properties. */
 export interface BrokerRetainMessagesPolicy {
   /** 'All' to persist all retain messages, 'None' to not persist any, 'Custom' to persist only the specified topics. */
-  mode: BrokerPersistencePolicyMode;
+  mode: BrokerPersistencePolicyMode | (string & {});
 }
 export const BrokerRetainMessagesPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2656,7 +2657,7 @@ export const BrokerRetainMessagesPolicy = /*@__PURE__*/ S.suspend(() =>
 /** Broker State Store Policy. */
 export interface BrokerStateStorePolicy {
   /** 'All' to persist all keys, 'None' to not persist any, 'Custom' to persist only the specified keys. */
-  mode: BrokerPersistencePolicyMode;
+  mode: BrokerPersistencePolicyMode | (string & {});
 }
 export const BrokerStateStorePolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2669,7 +2670,7 @@ export const BrokerStateStorePolicy = /*@__PURE__*/ S.suspend(() =>
 /** Broker Subscriber Queue Policy properties. */
 export interface BrokerSubscriberQueuePolicy {
   /** 'All' to persist all subscriber queues, 'None' to not persist any, 'Custom' to persist only the specified queues. */
-  mode: BrokerPersistencePolicyMode;
+  mode: BrokerPersistencePolicyMode | (string & {});
 }
 export const BrokerSubscriberQueuePolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2686,7 +2687,7 @@ export const OperationalMode = /*@__PURE__*/ S.String;
 /** Broker Persistence Encryption properties. */
 export interface BrokerPersistenceEncryption {
   /** Determines if encryption is enabled. */
-  mode: OperationalMode;
+  mode: OperationalMode | (string & {});
 }
 export const BrokerPersistenceEncryption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3033,7 +3034,7 @@ export const BrokerResource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BrokerResource" }) as any as S.Schema<BrokerResource>;
 
 /** The BrokerResource items on this page */
-export type BrokerResourceListResultValueList = ReadonlyArray<BrokerResource>;
+export type BrokerResourceListResultValueList = Array<BrokerResource>;
 export const BrokerResourceListResultValueList = /*@__PURE__*/ S.Array(
   BrokerResource,
 ) as any as S.Schema<BrokerResourceListResultValueList>;
@@ -3071,7 +3072,7 @@ export interface CertManagerIssuerRef {
   /** group of issuer. */
   group: string;
   /** kind of issuer (Issuer or ClusterIssuer). */
-  kind: CertManagerIssuerKind;
+  kind: CertManagerIssuerKind | (string & {});
   /** name of issuer. */
   name: string;
 }
@@ -3086,13 +3087,13 @@ export const CertManagerIssuerRef = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CertManagerIssuerRef>;
 
 /** DNS SANs. */
-export type SanForCertDnsList = ReadonlyArray<string>;
+export type SanForCertDnsList = Array<string>;
 export const SanForCertDnsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SanForCertDnsList>;
 
 /** IP address SANs. */
-export type SanForCertIpList = ReadonlyArray<string>;
+export type SanForCertIpList = Array<string>;
 export const SanForCertIpList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SanForCertIpList>;
@@ -3142,7 +3143,7 @@ export const CertManagerCertificateSpec = /*@__PURE__*/ S.suspend(() =>
 /** Collection of different TLS types, NOTE- Enum at a time only one of them needs to be supported */
 export interface TlsCertMethod {
   /** Mode of TLS server certificate management. */
-  mode: TlsCertMethodMode;
+  mode: TlsCertMethodMode | (string & {});
   /** Option 1 - Automatic TLS server certificate management with cert-manager. */
   certManagerCertificateSpec?: CertManagerCertificateSpec;
   /** Option 2 - Manual TLS server certificate management through a defined secret. */
@@ -3167,7 +3168,7 @@ export interface ListenerPort {
   /** TCP port for accepting client connections. */
   port: number;
   /** Protocol to use for client connections. */
-  protocol?: ListenerPortProtocol;
+  protocol?: ListenerPortProtocol | (string & {});
   /** TLS server certificate settings for this port. Omit to disable TLS. */
   tls?: TlsCertMethod;
 }
@@ -3183,8 +3184,7 @@ export const ListenerPort = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListenerPort" }) as any as S.Schema<ListenerPort>;
 
 /** Ports on which this listener accepts client connections. */
-export type BrokerListenerPropertiesInputPortsList =
-  ReadonlyArray<ListenerPort>;
+export type BrokerListenerPropertiesInputPortsList = Array<ListenerPort>;
 export const BrokerListenerPropertiesInputPortsList = /*@__PURE__*/ S.Array(
   ListenerPort,
 ) as any as S.Schema<BrokerListenerPropertiesInputPortsList>;
@@ -3253,7 +3253,7 @@ export const BrokerListenerCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BrokerListenerCreateOrUpdateRequest>;
 
 /** Ports on which this listener accepts client connections. */
-export type BrokerListenerPropertiesPortsList = ReadonlyArray<ListenerPort>;
+export type BrokerListenerPropertiesPortsList = Array<ListenerPort>;
 export const BrokerListenerPropertiesPortsList = /*@__PURE__*/ S.Array(
   ListenerPort,
 ) as any as S.Schema<BrokerListenerPropertiesPortsList>;
@@ -3481,7 +3481,7 @@ export const BrokerListenerResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The BrokerListenerResource items on this page */
 export type BrokerListenerResourceListResultValueList =
-  ReadonlyArray<BrokerListenerResource>;
+  Array<BrokerListenerResource>;
 export const BrokerListenerResourceListResultValueList = /*@__PURE__*/ S.Array(
   BrokerListenerResource,
 ) as any as S.Schema<BrokerListenerResourceListResultValueList>;
@@ -3516,8 +3516,7 @@ export const DataflowSourceOperationSettingsSerializationFormat =
   /*@__PURE__*/ S.String;
 
 /** List of source locations. Can be Broker or Kafka topics. Supports wildcards # and +. */
-export type DataflowSourceOperationSettingsDataSourcesList =
-  ReadonlyArray<string>;
+export type DataflowSourceOperationSettingsDataSourcesList = Array<string>;
 export const DataflowSourceOperationSettingsDataSourcesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3530,7 +3529,9 @@ export interface DataflowSourceOperationSettings {
   /** Reference to the resource in Azure Device Registry where the data in the endpoint originates from. */
   assetRef?: string;
   /** Content is a JSON Schema. Allowed: JSON Schema/draft-7. */
-  serializationFormat?: DataflowSourceOperationSettingsSerializationFormat;
+  serializationFormat?:
+    | DataflowSourceOperationSettingsSerializationFormat
+    | (string & {});
   /** Schema CR reference. Data will be deserialized according to the schema, and dropped if it doesn't match. */
   schemaRef?: string;
   /** List of source locations. Can be Broker or Kafka topics. Supports wildcards # and +. */
@@ -3559,8 +3560,7 @@ export const DataflowBuiltInTransformationSettingsSerializationFormat =
   /*@__PURE__*/ S.String;
 
 /** List of fields for enriching from the Broker State Store. */
-export type DataflowBuiltInTransformationDatasetInputsList =
-  ReadonlyArray<string>;
+export type DataflowBuiltInTransformationDatasetInputsList = Array<string>;
 export const DataflowBuiltInTransformationDatasetInputsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3594,7 +3594,7 @@ export const DataflowBuiltInTransformationDataset = /*@__PURE__*/ S.suspend(
 
 /** Enrich data from Broker State Store. Dataset references a key in Broker State Store. */
 export type DataflowBuiltInTransformationSettingsDatasetsList =
-  ReadonlyArray<DataflowBuiltInTransformationDataset>;
+  Array<DataflowBuiltInTransformationDataset>;
 export const DataflowBuiltInTransformationSettingsDatasetsList =
   /*@__PURE__*/ S.Array(
     DataflowBuiltInTransformationDataset,
@@ -3605,8 +3605,7 @@ export type DataflowBuiltInTransformationFilterType = "Filter";
 export const DataflowBuiltInTransformationFilterType = /*@__PURE__*/ S.String;
 
 /** List of fields for filtering in JSON path expression. */
-export type DataflowBuiltInTransformationFilterInputsList =
-  ReadonlyArray<string>;
+export type DataflowBuiltInTransformationFilterInputsList = Array<string>;
 export const DataflowBuiltInTransformationFilterInputsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3615,7 +3614,7 @@ export const DataflowBuiltInTransformationFilterInputsList =
 /** Dataflow BuiltIn Transformation filter properties */
 export interface DataflowBuiltInTransformationFilter {
   /** The type of dataflow operation. */
-  type?: DataflowBuiltInTransformationFilterType;
+  type?: DataflowBuiltInTransformationFilterType | (string & {});
   /** A user provided optional description of the filter. */
   description?: string;
   /** List of fields for filtering in JSON path expression. */
@@ -3636,7 +3635,7 @@ export const DataflowBuiltInTransformationFilter = /*@__PURE__*/ S.suspend(() =>
 
 /** Filters input record or datapoints based on condition. */
 export type DataflowBuiltInTransformationSettingsFilterList =
-  ReadonlyArray<DataflowBuiltInTransformationFilter>;
+  Array<DataflowBuiltInTransformationFilter>;
 export const DataflowBuiltInTransformationSettingsFilterList =
   /*@__PURE__*/ S.Array(
     DataflowBuiltInTransformationFilter,
@@ -3652,7 +3651,7 @@ export type DataflowMappingType =
 export const DataflowMappingType = /*@__PURE__*/ S.String;
 
 /** List of fields for mapping in JSON path expression. */
-export type DataflowBuiltInTransformationMapInputsList = ReadonlyArray<string>;
+export type DataflowBuiltInTransformationMapInputsList = Array<string>;
 export const DataflowBuiltInTransformationMapInputsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DataflowBuiltInTransformationMapInputsList>;
@@ -3660,7 +3659,7 @@ export const DataflowBuiltInTransformationMapInputsList = /*@__PURE__*/ S.Array(
 /** Dataflow BuiltIn Transformation map properties */
 export interface DataflowBuiltInTransformationMap {
   /** Type of transformation. */
-  type?: DataflowMappingType;
+  type?: DataflowMappingType | (string & {});
   /** A user provided optional description of the mapping function. */
   description?: string;
   /** List of fields for mapping in JSON path expression. */
@@ -3684,7 +3683,7 @@ export const DataflowBuiltInTransformationMap = /*@__PURE__*/ S.suspend(() =>
 
 /** Maps input to output message. */
 export type DataflowBuiltInTransformationSettingsMapList =
-  ReadonlyArray<DataflowBuiltInTransformationMap>;
+  Array<DataflowBuiltInTransformationMap>;
 export const DataflowBuiltInTransformationSettingsMapList =
   /*@__PURE__*/ S.Array(
     DataflowBuiltInTransformationMap,
@@ -3693,7 +3692,9 @@ export const DataflowBuiltInTransformationSettingsMapList =
 /** Dataflow BuiltIn Transformation properties */
 export interface DataflowBuiltInTransformationSettings {
   /** Serialization format. Optional; defaults to JSON. Allowed value JSON Schema/draft-7, Parquet. Default: Json */
-  serializationFormat?: DataflowBuiltInTransformationSettingsSerializationFormat;
+  serializationFormat?:
+    | DataflowBuiltInTransformationSettingsSerializationFormat
+    | (string & {});
   /** Reference to the schema that describes the output of the transformation. */
   schemaRef?: string;
   /** Enrich data from Broker State Store. Dataset references a key in Broker State Store. */
@@ -3728,7 +3729,7 @@ export const DataflowHeaderActionType = /*@__PURE__*/ S.String;
 /** Dataflow Destination Header Action properties */
 export interface DataflowDestinationHeaderAction {
   /** The type of header operation to perform. */
-  actionType: DataflowHeaderActionType;
+  actionType: DataflowHeaderActionType | (string & {});
 }
 export const DataflowDestinationHeaderAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3740,7 +3741,7 @@ export const DataflowDestinationHeaderAction = /*@__PURE__*/ S.suspend(() =>
 
 /** Headers for the output data. */
 export type DataflowDestinationOperationSettingsHeadersList =
-  ReadonlyArray<DataflowDestinationHeaderAction>;
+  Array<DataflowDestinationHeaderAction>;
 export const DataflowDestinationOperationSettingsHeadersList =
   /*@__PURE__*/ S.Array(
     DataflowDestinationHeaderAction,
@@ -3769,7 +3770,7 @@ export const DataflowDestinationOperationSettings = /*@__PURE__*/ S.suspend(
 /** Dataflow Operation properties. NOTE - One only method is allowed to be used for one entry. */
 export interface DataflowOperation {
   /** Type of operation. */
-  operationType: OperationType;
+  operationType: OperationType | (string & {});
   /** Optional user provided name of the transformation. */
   name?: string;
   /** Source configuration. */
@@ -3794,8 +3795,7 @@ export const DataflowOperation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DataflowOperation>;
 
 /** List of operations including source and destination references as well as transformation. */
-export type DataflowPropertiesInputOperationsList =
-  ReadonlyArray<DataflowOperation>;
+export type DataflowPropertiesInputOperationsList = Array<DataflowOperation>;
 export const DataflowPropertiesInputOperationsList = /*@__PURE__*/ S.Array(
   DataflowOperation,
 ) as any as S.Schema<DataflowPropertiesInputOperationsList>;
@@ -3861,7 +3861,7 @@ export type DataflowPropertiesMode = "Enabled" | "Disabled";
 export const DataflowPropertiesMode = /*@__PURE__*/ S.String;
 
 /** List of operations including source and destination references as well as transformation. */
-export type DataflowPropertiesOperationsList = ReadonlyArray<DataflowOperation>;
+export type DataflowPropertiesOperationsList = Array<DataflowOperation>;
 export const DataflowPropertiesOperationsList = /*@__PURE__*/ S.Array(
   DataflowOperation,
 ) as any as S.Schema<DataflowPropertiesOperationsList>;
@@ -4042,7 +4042,7 @@ export const DataflowEndpointAuthenticationUserAssignedManagedIdentity =
 /** Azure Data Explorer Authentication properties. NOTE - only authentication property is allowed per entry. */
 export interface DataflowEndpointDataExplorerAuthentication {
   /** Mode of Authentication. */
-  method: ManagedIdentityMethod;
+  method: ManagedIdentityMethod | (string & {});
   /** System-assigned managed identity authentication. */
   systemAssignedManagedIdentitySettings?: DataflowEndpointAuthenticationSystemAssignedManagedIdentity;
   /** User-assigned managed identity authentication. */
@@ -4125,7 +4125,7 @@ export const DataflowEndpointAuthenticationAccessToken =
 /** Azure Data Lake endpoint Authentication properties. NOTE Enum - Only one method is supported for one entry */
 export interface DataflowEndpointDataLakeStorageAuthentication {
   /** Mode of Authentication. */
-  method: DataLakeStorageAuthMethod;
+  method: DataLakeStorageAuthMethod | (string & {});
   /** SAS token authentication. */
   accessTokenSettings?: DataflowEndpointAuthenticationAccessToken;
   /** System-assigned managed identity authentication. */
@@ -4173,7 +4173,7 @@ export const DataflowEndpointDataLakeStorage = /*@__PURE__*/ S.suspend(() =>
 /** Microsoft Fabric endpoint. Authentication properties. NOTE - Only one method is supported for one entry */
 export interface DataflowEndpointFabricOneLakeAuthentication {
   /** Mode of Authentication. */
-  method: ManagedIdentityMethod;
+  method: ManagedIdentityMethod | (string & {});
   /** System-assigned managed identity authentication. */
   systemAssignedManagedIdentitySettings?: DataflowEndpointAuthenticationSystemAssignedManagedIdentity;
   /** User-assigned managed identity authentication. */
@@ -4221,7 +4221,7 @@ export interface DataflowEndpointFabricOneLake {
   /** Names of the workspace and lakehouse. */
   names: DataflowEndpointFabricOneLakeNames;
   /** Type of location of the data in the workspace. Can be either tables or files. */
-  oneLakePathType: DataflowEndpointFabricPathType;
+  oneLakePathType: DataflowEndpointFabricPathType | (string & {});
   /** Host of the Microsoft Fabric in the form of https://<host>.fabric.microsoft.com. */
   host: string;
   /** Batching configuration. */
@@ -4258,7 +4258,7 @@ export const DataflowEndpointAuthenticationSaslType = /*@__PURE__*/ S.String;
 /** DataflowEndpoint Authentication Sasl properties */
 export interface DataflowEndpointAuthenticationSasl {
   /** Type of SASL authentication. Can be PLAIN, SCRAM-SHA-256, or SCRAM-SHA-512. */
-  saslType: DataflowEndpointAuthenticationSaslType;
+  saslType: DataflowEndpointAuthenticationSaslType | (string & {});
   /** Token secret name. */
   secretRef: string;
 }
@@ -4287,7 +4287,7 @@ export const DataflowEndpointAuthenticationX509 = /*@__PURE__*/ S.suspend(() =>
 /** Kafka endpoint Authentication properties. NOTE - only authentication property is allowed per entry */
 export interface DataflowEndpointKafkaAuthentication {
   /** Mode of Authentication. */
-  method: KafkaAuthMethod;
+  method: KafkaAuthMethod | (string & {});
   /** System-assigned managed identity authentication. */
   systemAssignedManagedIdentitySettings?: DataflowEndpointAuthenticationSystemAssignedManagedIdentity;
   /** User-assigned managed identity authentication. */
@@ -4320,7 +4320,7 @@ export const DataflowEndpointKafkaBatchingMode = /*@__PURE__*/ S.String;
 /** Kafka endpoint Batching properties */
 export interface DataflowEndpointKafkaBatching {
   /** Mode for batching. */
-  mode?: DataflowEndpointKafkaBatchingMode;
+  mode?: DataflowEndpointKafkaBatchingMode | (string & {});
   /** Batching latency in milliseconds. */
   latencyMs?: number;
   /** Maximum number of bytes in a batch. */
@@ -4378,17 +4378,17 @@ export interface DataflowEndpointKafka {
   /** Batching configuration. */
   batching?: DataflowEndpointKafkaBatching;
   /** Copy Broker properties. No effect if the endpoint is used as a source or if the dataflow doesn't have an Broker source. */
-  copyMqttProperties?: DataflowEndpointKafkaCopyMqttProperties;
+  copyMqttProperties?: DataflowEndpointKafkaCopyMqttProperties | (string & {});
   /** Compression. Can be none, gzip, lz4, or snappy. No effect if the endpoint is used as a source. */
-  compression?: DataflowEndpointKafkaCompression;
+  compression?: DataflowEndpointKafkaCompression | (string & {});
   /** Kafka acks. Can be all, one, or zero. No effect if the endpoint is used as a source. */
-  kafkaAcks?: DataflowEndpointKafkaKafkaAcks;
+  kafkaAcks?: DataflowEndpointKafkaKafkaAcks | (string & {});
   /** Partition handling strategy. Can be default or static. No effect if the endpoint is used as a source. */
-  partitionStrategy?: DataflowEndpointKafkaPartitionStrategy;
+  partitionStrategy?: DataflowEndpointKafkaPartitionStrategy | (string & {});
   /** TLS configuration. */
   tls?: TlsProperties;
   /** Cloud event mapping config. */
-  cloudEventAttributes?: CloudEventAttributeType;
+  cloudEventAttributes?: CloudEventAttributeType | (string & {});
 }
 export const DataflowEndpointKafka = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4446,7 +4446,7 @@ export const DataflowEndpointAuthenticationServiceAccountToken =
 /** Mqtt endpoint Authentication properties. NOTE - only authentication property is allowed per entry. */
 export interface DataflowEndpointMqttAuthentication {
   /** Mode of Authentication. */
-  method: MqttAuthMethod;
+  method: MqttAuthMethod | (string & {});
   /** System-assigned managed identity authentication. */
   systemAssignedManagedIdentitySettings?: DataflowEndpointAuthenticationSystemAssignedManagedIdentity;
   /** User-assigned managed identity authentication. */
@@ -4491,11 +4491,11 @@ export interface DataflowEndpointMqtt {
   /** Host of the Broker in the form of <hostname>:<port>. Optional; connects to Broker if omitted. */
   host?: string;
   /** Enable or disable websockets. */
-  protocol?: DataflowEndpointMqttProtocol;
+  protocol?: DataflowEndpointMqttProtocol | (string & {});
   /** Broker KeepAlive for connection in seconds. */
   keepAliveSeconds?: number;
   /** Whether or not to keep the retain setting. */
-  retain?: DataflowEndpointMqttRetain;
+  retain?: DataflowEndpointMqttRetain | (string & {});
   /** The max number of messages to keep in flight. For subscribe, this is the receive maximum. For publish, this is the maximum number of messages to send before waiting for an ack. */
   maxInflightMessages?: number;
   /** Qos for Broker connection. */
@@ -4505,7 +4505,7 @@ export interface DataflowEndpointMqtt {
   /** TLS configuration. */
   tls?: TlsProperties;
   /** Cloud event mapping config. */
-  cloudEventAttributes?: CloudEventAttributeType;
+  cloudEventAttributes?: CloudEventAttributeType | (string & {});
 }
 export const DataflowEndpointMqtt = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4535,7 +4535,7 @@ export const DataflowOpenTelemetryAuthenticationMethod = /*@__PURE__*/ S.String;
 /** Dataflow OpenTelemetry authentication properties. */
 export interface DataflowOpenTelemetryAuthentication {
   /** The authentication method. */
-  method: DataflowOpenTelemetryAuthenticationMethod;
+  method: DataflowOpenTelemetryAuthenticationMethod | (string & {});
 }
 export const DataflowOpenTelemetryAuthentication = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4864,7 +4864,7 @@ export const DataflowEndpointResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The DataflowEndpointResource items on this page */
 export type DataflowEndpointResourceListResultValueList =
-  ReadonlyArray<DataflowEndpointResource>;
+  Array<DataflowEndpointResource>;
 export const DataflowEndpointResourceListResultValueList =
   /*@__PURE__*/ S.Array(
     DataflowEndpointResource,
@@ -4957,7 +4957,7 @@ export interface DataflowGraphNode {
   /** Name of the node. */
   name: string;
   /** Type of the node. */
-  nodeType: DataflowGraphNodeType;
+  nodeType: DataflowGraphNodeType | (string & {});
 }
 export const DataflowGraphNode = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4969,8 +4969,7 @@ export const DataflowGraphNode = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DataflowGraphNode>;
 
 /** List of nodes in the dataflow graph. */
-export type DataflowGraphPropertiesInputNodesList =
-  ReadonlyArray<DataflowGraphNode>;
+export type DataflowGraphPropertiesInputNodesList = Array<DataflowGraphNode>;
 export const DataflowGraphPropertiesInputNodesList = /*@__PURE__*/ S.Array(
   DataflowGraphNode,
 ) as any as S.Schema<DataflowGraphPropertiesInputNodesList>;
@@ -4987,7 +4986,9 @@ export const DataflowGraphConnectionSchemaSerializationFormat =
 /** DataflowGraph connection node output schema settings. */
 export interface DataflowGraphConnectionSchemaSettings {
   /** Output serialization format. */
-  serializationFormat?: DataflowGraphConnectionSchemaSerializationFormat;
+  serializationFormat?:
+    | DataflowGraphConnectionSchemaSerializationFormat
+    | (string & {});
   /** Reference to the schema that describes the output of the transformation. */
   schemaRef?: string;
 }
@@ -5050,7 +5051,7 @@ export const DataflowGraphNodeConnection = /*@__PURE__*/ S.suspend(() =>
 
 /** List of connections between nodes in the dataflow graph. */
 export type DataflowGraphPropertiesInputNodeConnectionsList =
-  ReadonlyArray<DataflowGraphNodeConnection>;
+  Array<DataflowGraphNodeConnection>;
 export const DataflowGraphPropertiesInputNodeConnectionsList =
   /*@__PURE__*/ S.Array(
     DataflowGraphNodeConnection,
@@ -5120,14 +5121,14 @@ export type DataflowGraphPropertiesMode = "Enabled" | "Disabled";
 export const DataflowGraphPropertiesMode = /*@__PURE__*/ S.String;
 
 /** List of nodes in the dataflow graph. */
-export type DataflowGraphPropertiesNodesList = ReadonlyArray<DataflowGraphNode>;
+export type DataflowGraphPropertiesNodesList = Array<DataflowGraphNode>;
 export const DataflowGraphPropertiesNodesList = /*@__PURE__*/ S.Array(
   DataflowGraphNode,
 ) as any as S.Schema<DataflowGraphPropertiesNodesList>;
 
 /** List of connections between nodes in the dataflow graph. */
 export type DataflowGraphPropertiesNodeConnectionsList =
-  ReadonlyArray<DataflowGraphNodeConnection>;
+  Array<DataflowGraphNodeConnection>;
 export const DataflowGraphPropertiesNodeConnectionsList = /*@__PURE__*/ S.Array(
   DataflowGraphNodeConnection,
 ) as any as S.Schema<DataflowGraphPropertiesNodeConnectionsList>;
@@ -5366,7 +5367,7 @@ export const DataflowGraphResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The DataflowGraphResource items on this page */
 export type DataflowGraphResourceListResultValueList =
-  ReadonlyArray<DataflowGraphResource>;
+  Array<DataflowGraphResource>;
 export const DataflowGraphResourceListResultValueList = /*@__PURE__*/ S.Array(
   DataflowGraphResource,
 ) as any as S.Schema<DataflowGraphResourceListResultValueList>;
@@ -5445,8 +5446,7 @@ export const DataflowResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DataflowResource>;
 
 /** The DataflowResource items on this page */
-export type DataflowResourceListResultValueList =
-  ReadonlyArray<DataflowResource>;
+export type DataflowResourceListResultValueList = Array<DataflowResource>;
 export const DataflowResourceListResultValueList = /*@__PURE__*/ S.Array(
   DataflowResource,
 ) as any as S.Schema<DataflowResourceListResultValueList>;
@@ -5754,7 +5754,7 @@ export const DataflowProfileResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The DataflowProfileResource items on this page */
 export type DataflowProfileResourceListResultValueList =
-  ReadonlyArray<DataflowProfileResource>;
+  Array<DataflowProfileResource>;
 export const DataflowProfileResourceListResultValueList = /*@__PURE__*/ S.Array(
   DataflowProfileResource,
 ) as any as S.Schema<DataflowProfileResourceListResultValueList>;
@@ -5816,7 +5816,7 @@ export const InstanceFeatureMode = /*@__PURE__*/ S.String;
 
 /** The settings of the feature. */
 export type InstanceFeatureSettingsMap = {
-  [key: string]: OperationalMode | undefined;
+  [key: string]: OperationalMode | (string & {}) | undefined;
 };
 export const InstanceFeatureSettingsMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -5826,7 +5826,7 @@ export const InstanceFeatureSettingsMap = /*@__PURE__*/ S.Record(
 /** The features of the AIO Instance. */
 export interface InstanceFeature {
   /** The state of the feature. */
-  mode?: InstanceFeatureMode;
+  mode?: InstanceFeatureMode | (string & {});
   /** The settings of the feature. */
   settings?: InstanceFeatureSettingsMap;
 }
@@ -6315,8 +6315,7 @@ export const InstanceResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InstanceResource>;
 
 /** The InstanceResource items on this page */
-export type InstanceResourceListResultValueList =
-  ReadonlyArray<InstanceResource>;
+export type InstanceResourceListResultValueList = Array<InstanceResource>;
 export const InstanceResourceListResultValueList = /*@__PURE__*/ S.Array(
   InstanceResource,
 ) as any as S.Schema<InstanceResourceListResultValueList>;
@@ -6543,7 +6542,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = ReadonlyArray<Operation>;
+export type OperationsListResponseValueList = Array<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;
@@ -6574,7 +6573,7 @@ export const RegistryEndpointAuthenticationMethod = /*@__PURE__*/ S.String;
 /** Model for RegistryEndpointAuthentication */
 export interface RegistryEndpointAuthentication {
   /** The authentication method. */
-  method: RegistryEndpointAuthenticationMethod;
+  method: RegistryEndpointAuthenticationMethod | (string & {});
 }
 export const RegistryEndpointAuthentication = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6591,7 +6590,7 @@ export const RegistryEndpointTrustedSigningKeyType = /*@__PURE__*/ S.String;
 /** RegistryEndpoint Trust properties */
 export interface RegistryEndpointTrustedSigningKey {
   /** The trust type for the registry endpoint. */
-  type: RegistryEndpointTrustedSigningKeyType;
+  type: RegistryEndpointTrustedSigningKeyType | (string & {});
 }
 export const RegistryEndpointTrustedSigningKey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6603,7 +6602,7 @@ export const RegistryEndpointTrustedSigningKey = /*@__PURE__*/ S.suspend(() =>
 
 /** The signing certificate authorities used by artifacts in the registry endpoint */
 export type RegistryEndpointPropertiesInputCodeSigningCasList =
-  ReadonlyArray<RegistryEndpointTrustedSigningKey>;
+  Array<RegistryEndpointTrustedSigningKey>;
 export const RegistryEndpointPropertiesInputCodeSigningCasList =
   /*@__PURE__*/ S.Array(
     RegistryEndpointTrustedSigningKey,
@@ -6675,7 +6674,7 @@ export const RegistryEndpointPropertiesHealthState = /*@__PURE__*/ S.String;
 
 /** The signing certificate authorities used by artifacts in the registry endpoint */
 export type RegistryEndpointPropertiesCodeSigningCasList =
-  ReadonlyArray<RegistryEndpointTrustedSigningKey>;
+  Array<RegistryEndpointTrustedSigningKey>;
 export const RegistryEndpointPropertiesCodeSigningCasList =
   /*@__PURE__*/ S.Array(
     RegistryEndpointTrustedSigningKey,
@@ -6880,7 +6879,7 @@ export const RegistryEndpointResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The RegistryEndpointResource items on this page */
 export type RegistryEndpointResourceListResultValueList =
-  ReadonlyArray<RegistryEndpointResource>;
+  Array<RegistryEndpointResource>;
 export const RegistryEndpointResourceListResultValueList =
   /*@__PURE__*/ S.Array(
     RegistryEndpointResource,

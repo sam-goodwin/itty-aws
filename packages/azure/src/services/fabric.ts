@@ -78,7 +78,7 @@ export const FabricCapacitiesCreateOrUpdateRequestTagsMap =
   ) as any as S.Schema<FabricCapacitiesCreateOrUpdateRequestTagsMap>;
 
 /** An array of administrator user identities. */
-export type CapacityAdministrationMembersList = ReadonlyArray<string>;
+export type CapacityAdministrationMembersList = Array<string>;
 export const CapacityAdministrationMembersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CapacityAdministrationMembersList>;
@@ -118,7 +118,7 @@ export interface RpSku {
   /** The name of the SKU level. */
   name: string;
   /** The name of the Azure pricing tier to which the SKU applies. */
-  tier: RpSkuTier;
+  tier: RpSkuTier | (string & {});
 }
 export const RpSku = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -458,7 +458,7 @@ export const FabricCapacity = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FabricCapacity" }) as any as S.Schema<FabricCapacity>;
 
 /** The FabricCapacity items on this page */
-export type FabricCapacityListResultValueList = ReadonlyArray<FabricCapacity>;
+export type FabricCapacityListResultValueList = Array<FabricCapacity>;
 export const FabricCapacityListResultValueList = /*@__PURE__*/ S.Array(
   FabricCapacity,
 ) as any as S.Schema<FabricCapacityListResultValueList>;
@@ -519,7 +519,7 @@ export const FabricCapacitiesListSkusRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FabricCapacitiesListSkusRequest>;
 
 /** The list of available locations for the SKU */
-export type RpSkuDetailsForNewResourceLocationsList = ReadonlyArray<string>;
+export type RpSkuDetailsForNewResourceLocationsList = Array<string>;
 export const RpSkuDetailsForNewResourceLocationsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RpSkuDetailsForNewResourceLocationsList>;
@@ -545,7 +545,7 @@ export const RpSkuDetailsForNewResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The collection of available SKUs for new resources */
 export type RpSkuEnumerationForNewResourceResultValueList =
-  ReadonlyArray<RpSkuDetailsForNewResource>;
+  Array<RpSkuDetailsForNewResource>;
 export const RpSkuEnumerationForNewResourceResultValueList =
   /*@__PURE__*/ S.Array(
     RpSkuDetailsForNewResource,
@@ -612,7 +612,7 @@ export const RpSkuDetailsForExistingResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The SKU details */
 export type RpSkuEnumerationForExistingResourceResultValueList =
-  ReadonlyArray<RpSkuDetailsForExistingResource>;
+  Array<RpSkuDetailsForExistingResource>;
 export const RpSkuEnumerationForExistingResourceResultValueList =
   /*@__PURE__*/ S.Array(
     RpSkuDetailsForExistingResource,
@@ -865,7 +865,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = ReadonlyArray<Operation>;
+export type OperationsListResponseValueList = Array<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;

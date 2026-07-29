@@ -78,7 +78,7 @@ export const GetApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetApplicationsRequest",
 }) as any as S.Schema<GetApplicationsRequest>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -99,8 +99,7 @@ export const ApplicationTransferParam = /*@__PURE__*/ S.suspend(() =>
   identifier: "ApplicationTransferParam",
 }) as any as S.Schema<ApplicationTransferParam>;
 
-export type ApplicationTransferParamList =
-  ReadonlyArray<ApplicationTransferParam>;
+export type ApplicationTransferParamList = Array<ApplicationTransferParam>;
 export const ApplicationTransferParamList = /*@__PURE__*/ S.Array(
   ApplicationTransferParam,
 ) as any as S.Schema<ApplicationTransferParamList>;
@@ -165,8 +164,7 @@ export const ApplicationDataTransfer = /*@__PURE__*/ S.suspend(() =>
   identifier: "ApplicationDataTransfer",
 }) as any as S.Schema<ApplicationDataTransfer>;
 
-export type ApplicationDataTransferList =
-  ReadonlyArray<ApplicationDataTransfer>;
+export type ApplicationDataTransferList = Array<ApplicationDataTransfer>;
 export const ApplicationDataTransferList = /*@__PURE__*/ S.Array(
   ApplicationDataTransfer,
 ) as any as S.Schema<ApplicationDataTransferList>;
@@ -245,7 +243,7 @@ export const ListApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListApplicationsRequest",
 }) as any as S.Schema<ListApplicationsRequest>;
 
-export type ApplicationList = ReadonlyArray<Application>;
+export type ApplicationList = Array<Application>;
 export const ApplicationList = /*@__PURE__*/ S.Array(
   Application,
 ) as any as S.Schema<ApplicationList>;
@@ -305,7 +303,7 @@ export const ListTransfersRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListTransfersRequest",
 }) as any as S.Schema<ListTransfersRequest>;
 
-export type DataTransferList = ReadonlyArray<DataTransfer>;
+export type DataTransferList = Array<DataTransfer>;
 export const DataTransferList = /*@__PURE__*/ S.Array(
   DataTransfer,
 ) as any as S.Schema<DataTransferList>;

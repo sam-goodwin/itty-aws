@@ -779,8 +779,8 @@ export const IoTJobAbortAction = /*@__PURE__*/ S.String;
 export type IoTJobAbortThresholdPercentage = number;
 export type IoTJobMinimumNumberOfExecutedThings = number;
 export interface IoTJobAbortCriteria {
-  failureType: IoTJobExecutionFailureType;
-  action: IoTJobAbortAction;
+  failureType: IoTJobExecutionFailureType | (string & {});
+  action: IoTJobAbortAction | (string & {});
   thresholdPercentage: number;
   minNumberOfExecutedThings: number;
 }
@@ -838,7 +838,7 @@ export const DeploymentComponentUpdatePolicyAction = /*@__PURE__*/ S.String;
 
 export interface DeploymentComponentUpdatePolicy {
   timeoutInSeconds?: number;
-  action?: DeploymentComponentUpdatePolicyAction;
+  action?: DeploymentComponentUpdatePolicyAction | (string & {});
 }
 export const DeploymentComponentUpdatePolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -857,7 +857,7 @@ export const DeploymentConfigurationValidationPolicy = /*@__PURE__*/ S.suspend(
   identifier: "DeploymentConfigurationValidationPolicy",
 }) as any as S.Schema<DeploymentConfigurationValidationPolicy>;
 export interface DeploymentPolicies {
-  failureHandlingPolicy?: DeploymentFailureHandlingPolicy;
+  failureHandlingPolicy?: DeploymentFailureHandlingPolicy | (string & {});
   componentUpdatePolicy?: DeploymentComponentUpdatePolicy;
   configurationValidationPolicy?: DeploymentConfigurationValidationPolicy;
 }

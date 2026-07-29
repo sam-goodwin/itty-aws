@@ -177,7 +177,7 @@ export const EncryptionOption = /*@__PURE__*/ S.String;
 
 export interface KMSKeyDetails {
   KMSKeyId?: string;
-  EncryptionOption?: EncryptionOption;
+  EncryptionOption?: EncryptionOption | (string & {});
 }
 export const KMSKeyDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -363,7 +363,7 @@ export interface RequestMetadata {
   RequestId?: string;
   Requester?: string;
   EventInfo?: EventInfo;
-  VendorName?: VendorName;
+  VendorName?: VendorName | (string & {});
 }
 export const RequestMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -406,7 +406,7 @@ export const RepositoryAnalysis = /*@__PURE__*/ S.suspend(() =>
 export type AnalysisType = "Security" | "CodeQuality";
 export const AnalysisType = /*@__PURE__*/ S.String;
 
-export type AnalysisTypes = AnalysisType[];
+export type AnalysisTypes = (AnalysisType | (string & {}))[];
 export const AnalysisTypes = /*@__PURE__*/ S.Array(AnalysisType);
 export interface CodeReviewType {
   RepositoryAnalysis: RepositoryAnalysis;
@@ -571,7 +571,7 @@ export const DescribeRecommendationFeedbackRequest = /*@__PURE__*/ S.suspend(
 export type Reaction = "ThumbsUp" | "ThumbsDown";
 export const Reaction = /*@__PURE__*/ S.String;
 
-export type Reactions = Reaction[];
+export type Reactions = (Reaction | (string & {}))[];
 export const Reactions = /*@__PURE__*/ S.Array(Reaction);
 export interface RecommendationFeedback {
   CodeReviewArn?: string;

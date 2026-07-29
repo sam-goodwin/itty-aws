@@ -75,7 +75,7 @@ export const GoogleCloudVideointelligenceV1beta2_AnnotateVideoRequestFeaturesIte
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudVideointelligenceV1beta2_AnnotateVideoRequestFeaturesItemEnumList =
-  ReadonlyArray<
+  Array<
     | GoogleCloudVideointelligenceV1beta2_AnnotateVideoRequestFeaturesItemEnum
     | (string & {})
   >;
@@ -102,13 +102,13 @@ export const GoogleCloudVideointelligenceV1beta2_VideoSegment =
   }) as any as S.Schema<GoogleCloudVideointelligenceV1beta2_VideoSegment>;
 
 export type GoogleCloudVideointelligenceV1beta2_VideoSegmentList =
-  ReadonlyArray<GoogleCloudVideointelligenceV1beta2_VideoSegment>;
+  Array<GoogleCloudVideointelligenceV1beta2_VideoSegment>;
 export const GoogleCloudVideointelligenceV1beta2_VideoSegmentList =
   /*@__PURE__*/ S.Array(
     GoogleCloudVideointelligenceV1beta2_VideoSegment,
   ) as any as S.Schema<GoogleCloudVideointelligenceV1beta2_VideoSegmentList>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -232,13 +232,13 @@ export const GoogleCloudVideointelligenceV1beta2_SpeechContext =
   }) as any as S.Schema<GoogleCloudVideointelligenceV1beta2_SpeechContext>;
 
 export type GoogleCloudVideointelligenceV1beta2_SpeechContextList =
-  ReadonlyArray<GoogleCloudVideointelligenceV1beta2_SpeechContext>;
+  Array<GoogleCloudVideointelligenceV1beta2_SpeechContext>;
 export const GoogleCloudVideointelligenceV1beta2_SpeechContextList =
   /*@__PURE__*/ S.Array(
     GoogleCloudVideointelligenceV1beta2_SpeechContext,
   ) as any as S.Schema<GoogleCloudVideointelligenceV1beta2_SpeechContextList>;
 
-export type IntegerList = ReadonlyArray<number>;
+export type IntegerList = Array<number>;
 export const IntegerList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<IntegerList>;
@@ -437,7 +437,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;

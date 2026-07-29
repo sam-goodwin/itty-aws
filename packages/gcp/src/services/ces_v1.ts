@@ -60,7 +60,7 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -106,7 +106,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -213,7 +213,9 @@ export interface EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTur
   /** Optional. The success threshold for overall tool invocation correctness. Must be a float between 0 and 1. Default is 1.0. */
   overallToolInvocationCorrectnessThreshold?: number;
   /** Optional. The semantic similarity channel to use for evaluation. */
-  semanticSimilarityChannel?: EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMetricsThresholdsSemanticSimilarityChannelEnum;
+  semanticSimilarityChannel?:
+    | EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMetricsThresholdsSemanticSimilarityChannelEnum
+    | (string & {});
 }
 export const EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMetricsThresholds =
   /*@__PURE__*/ S.suspend(() =>
@@ -252,7 +254,9 @@ export const EvaluationMetricsThresholdsToolMatchingSettingsExtraToolCallBehavio
 /** Settings for matching tool calls. */
 export interface EvaluationMetricsThresholdsToolMatchingSettings {
   /** Optional. Behavior for extra tool calls. Defaults to FAIL. */
-  extraToolCallBehavior?: EvaluationMetricsThresholdsToolMatchingSettingsExtraToolCallBehaviorEnum;
+  extraToolCallBehavior?:
+    | EvaluationMetricsThresholdsToolMatchingSettingsExtraToolCallBehaviorEnum
+    | (string & {});
 }
 export const EvaluationMetricsThresholdsToolMatchingSettings =
   /*@__PURE__*/ S.suspend(() =>
@@ -315,11 +319,17 @@ export interface EvaluationMetricsThresholds {
   /** Optional. The golden evaluation metrics thresholds. */
   goldenEvaluationMetricsThresholds?: EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholds;
   /** Optional. Deprecated: Use `golden_hallucination_metric_behavior` instead. The hallucination metric behavior is currently used for golden evaluations. */
-  hallucinationMetricBehavior?: EvaluationMetricsThresholdsHallucinationMetricBehaviorEnum;
+  hallucinationMetricBehavior?:
+    | EvaluationMetricsThresholdsHallucinationMetricBehaviorEnum
+    | (string & {});
   /** Optional. The hallucination metric behavior for scenario evaluations. */
-  scenarioHallucinationMetricBehavior?: EvaluationMetricsThresholdsScenarioHallucinationMetricBehaviorEnum;
+  scenarioHallucinationMetricBehavior?:
+    | EvaluationMetricsThresholdsScenarioHallucinationMetricBehaviorEnum
+    | (string & {});
   /** Optional. The hallucination metric behavior for golden evaluations. */
-  goldenHallucinationMetricBehavior?: EvaluationMetricsThresholdsGoldenHallucinationMetricBehaviorEnum;
+  goldenHallucinationMetricBehavior?:
+    | EvaluationMetricsThresholdsGoldenHallucinationMetricBehaviorEnum
+    | (string & {});
 }
 export const EvaluationMetricsThresholds = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -376,7 +386,7 @@ export const ChannelProfilePersonaPropertyPersonaEnum = /*@__PURE__*/ S.String;
 /** Represents the persona property of a channel. */
 export interface ChannelProfilePersonaProperty {
   /** Optional. The persona of the channel. */
-  persona?: ChannelProfilePersonaPropertyPersonaEnum;
+  persona?: ChannelProfilePersonaPropertyPersonaEnum | (string & {});
 }
 export const ChannelProfilePersonaProperty = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -476,13 +486,13 @@ export const ChannelProfileWebWidgetConfigThemeEnum = /*@__PURE__*/ S.String;
 /** Message for configuration for the web widget. */
 export interface ChannelProfileWebWidgetConfig {
   /** Optional. The modality of the web widget. */
-  modality?: ChannelProfileWebWidgetConfigModalityEnum;
+  modality?: ChannelProfileWebWidgetConfigModalityEnum | (string & {});
   /** Optional. The title of the web widget. */
   webWidgetTitle?: string;
   /** Optional. The security settings of the web widget. */
   securitySettings?: ChannelProfileWebWidgetConfigSecuritySettings;
   /** Optional. The theme of the web widget. */
-  theme?: ChannelProfileWebWidgetConfigThemeEnum;
+  theme?: ChannelProfileWebWidgetConfigThemeEnum | (string & {});
 }
 export const ChannelProfileWebWidgetConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -498,7 +508,7 @@ export const ChannelProfileWebWidgetConfig = /*@__PURE__*/ S.suspend(() =>
 /** A ChannelProfile configures the agent's behavior for a specific communication channel, such as web UI or telephony. */
 export interface ChannelProfile {
   /** Optional. The type of the channel profile. */
-  channelType?: ChannelProfileChannelTypeEnum;
+  channelType?: ChannelProfileChannelTypeEnum | (string & {});
   /** Optional. The noise suppression level of the channel profile. Available values are "low", "moderate", "high", "very_high". */
   noiseSuppressionLevel?: string;
   /** Optional. The persona property of the channel profile. */
@@ -557,7 +567,9 @@ export interface AmbientSoundConfig {
   /** Optional. Volume gain (in dB) of the normal native volume supported by ambient noise, in the range [-96.0, 16.0]. If unset, or set to a value of 0.0 (dB), will play at normal native signal amplitude. A value of -6.0 (dB) will play at approximately half the amplitude of the normal native signal amplitude. A value of +6.0 (dB) will play at approximately twice the amplitude of the normal native signal amplitude. We strongly recommend not to exceed +10 (dB) as there's usually no effective increase in loudness for any value greater than that. */
   volumeGainDb?: number;
   /** Optional. Deprecated: `prebuilt_ambient_noise` is deprecated in favor of `prebuilt_ambient_sound`. */
-  prebuiltAmbientNoise?: AmbientSoundConfigPrebuiltAmbientNoiseEnum;
+  prebuiltAmbientNoise?:
+    | AmbientSoundConfigPrebuiltAmbientNoiseEnum
+    | (string & {});
   /** Optional. Ambient noise as a mono-channel, 16kHz WAV file stored in [Cloud Storage](https://cloud.google.com/storage). Note: Please make sure the CES service agent `service-@gcp-sa-ces.iam.gserviceaccount.com` has `storage.objects.get` permission to the Cloud Storage object. */
   gcsUri?: string;
   /** Optional. Name of the prebuilt ambient sound. Valid values are: - "coffee_shop" - "keyboard" - "keypad" - "hum" - "office_1" - "office_2" - "office_3" - "room_1" - "room_2" - "room_3" - "room_4" - "room_5" - "air_conditioner" */
@@ -642,7 +654,7 @@ export interface DataStoreSettingsEngine {
   /** Output only. The resource name of the engine. Format: `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}` */
   name?: string;
   /** Output only. The type of the engine. */
-  type?: DataStoreSettingsEngineTypeEnum;
+  type?: DataStoreSettingsEngineTypeEnum | (string & {});
 }
 export const DataStoreSettingsEngine = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -653,8 +665,7 @@ export const DataStoreSettingsEngine = /*@__PURE__*/ S.suspend(() =>
   identifier: "DataStoreSettingsEngine",
 }) as any as S.Schema<DataStoreSettingsEngine>;
 
-export type DataStoreSettingsEngineList =
-  ReadonlyArray<DataStoreSettingsEngine>;
+export type DataStoreSettingsEngineList = Array<DataStoreSettingsEngine>;
 export const DataStoreSettingsEngineList = /*@__PURE__*/ S.Array(
   DataStoreSettingsEngine,
 ) as any as S.Schema<DataStoreSettingsEngineList>;
@@ -731,7 +742,9 @@ export const ErrorHandlingSettingsEndSessionConfig = /*@__PURE__*/ S.suspend(
 /** Settings to describe how errors should be handled in the app. */
 export interface ErrorHandlingSettings {
   /** Optional. The strategy to use for error handling. */
-  errorHandlingStrategy?: ErrorHandlingSettingsErrorHandlingStrategyEnum;
+  errorHandlingStrategy?:
+    | ErrorHandlingSettingsErrorHandlingStrategyEnum
+    | (string & {});
   /** Optional. Configuration for handling fallback responses. */
   fallbackResponseConfig?: ErrorHandlingSettingsFallbackResponseConfig;
   /** Optional. Configuration for ending the session in case of system errors (e.g. LLM errors). */
@@ -909,7 +922,7 @@ export const Ces_SchemaMap = /*@__PURE__*/ S.Record(
   S.suspend(() => Ces_Schema),
 ) as any as S.Schema<Ces_SchemaMap>;
 
-export type Ces_SchemaList = ReadonlyArray<Ces_Schema>;
+export type Ces_SchemaList = Array<Ces_Schema>;
 export const Ces_SchemaList = /*@__PURE__*/ S.Array(
   S.suspend(() => Ces_Schema),
 ) as any as S.Schema<Ces_SchemaList>;
@@ -953,7 +966,7 @@ export interface Ces_Schema {
   /** Optional. Maximum number of the elements for Type.ARRAY. */
   maxItems?: string;
   /** Required. The type of the data. */
-  type?: Ces_SchemaTypeEnum;
+  type?: Ces_SchemaTypeEnum | (string & {});
   /** Optional. Minimum number of the elements for Type.ARRAY. */
   minItems?: string;
   /** Optional. Schema of the elements of Type.ARRAY. */
@@ -1008,7 +1021,7 @@ export const AppVariableDeclaration = /*@__PURE__*/ S.suspend(() =>
   identifier: "AppVariableDeclaration",
 }) as any as S.Schema<AppVariableDeclaration>;
 
-export type AppVariableDeclarationList = ReadonlyArray<AppVariableDeclaration>;
+export type AppVariableDeclarationList = Array<AppVariableDeclaration>;
 export const AppVariableDeclarationList = /*@__PURE__*/ S.Array(
   AppVariableDeclaration,
 ) as any as S.Schema<AppVariableDeclarationList>;
@@ -1084,7 +1097,7 @@ export interface App {
   /** Optional. The declarations of the variables. */
   variableDeclarations?: AppVariableDeclarationList;
   /** Optional. The tool execution mode for the app. If not provided, will default to PARALLEL. */
-  toolExecutionMode?: AppToolExecutionModeEnum;
+  toolExecutionMode?: AppToolExecutionModeEnum | (string & {});
   /** Optional. Human-readable description of the app. */
   description?: string;
   /** Output only. Misconfigurations or warnings in the app. */
@@ -1177,7 +1190,7 @@ export const Callback = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Callback" }) as any as S.Schema<Callback>;
 
-export type CallbackList = ReadonlyArray<Callback>;
+export type CallbackList = Array<Callback>;
 export const CallbackList = /*@__PURE__*/ S.Array(
   Callback,
 ) as any as S.Schema<CallbackList>;
@@ -1198,7 +1211,7 @@ export const AgentAgentToolset = /*@__PURE__*/ S.suspend(() =>
   identifier: "AgentAgentToolset",
 }) as any as S.Schema<AgentAgentToolset>;
 
-export type AgentAgentToolsetList = ReadonlyArray<AgentAgentToolset>;
+export type AgentAgentToolsetList = Array<AgentAgentToolset>;
 export const AgentAgentToolsetList = /*@__PURE__*/ S.Array(
   AgentAgentToolset,
 ) as any as S.Schema<AgentAgentToolsetList>;
@@ -1308,7 +1321,7 @@ export interface TransferRule {
   /** Required. The resource name of the child agent the rule applies to. Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}` */
   childAgent?: string;
   /** Required. The direction of the transfer. */
-  direction?: TransferRuleDirectionEnum;
+  direction?: TransferRuleDirectionEnum | (string & {});
   /** Optional. A rule that immediately transfers to the target agent when the condition is met. */
   deterministicTransfer?: TransferRuleDeterministicTransfer;
 }
@@ -1321,7 +1334,7 @@ export const TransferRule = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TransferRule" }) as any as S.Schema<TransferRule>;
 
-export type TransferRuleList = ReadonlyArray<TransferRule>;
+export type TransferRuleList = Array<TransferRule>;
 export const TransferRuleList = /*@__PURE__*/ S.Array(
   TransferRule,
 ) as any as S.Schema<TransferRuleList>;
@@ -1473,7 +1486,7 @@ export const ExperimentConfigVersionReleaseTrafficAllocation =
   }) as any as S.Schema<ExperimentConfigVersionReleaseTrafficAllocation>;
 
 export type ExperimentConfigVersionReleaseTrafficAllocationList =
-  ReadonlyArray<ExperimentConfigVersionReleaseTrafficAllocation>;
+  Array<ExperimentConfigVersionReleaseTrafficAllocation>;
 export const ExperimentConfigVersionReleaseTrafficAllocationList =
   /*@__PURE__*/ S.Array(
     ExperimentConfigVersionReleaseTrafficAllocation,
@@ -1482,7 +1495,7 @@ export const ExperimentConfigVersionReleaseTrafficAllocationList =
 /** Version release for the experiment. */
 export interface ExperimentConfigVersionRelease {
   /** Optional. State of the version release. */
-  state?: ExperimentConfigVersionReleaseStateEnum;
+  state?: ExperimentConfigVersionReleaseStateEnum | (string & {});
   /** Optional. Traffic allocations for the version release. */
   trafficAllocations?: ExperimentConfigVersionReleaseTrafficAllocationList;
 }
@@ -1741,7 +1754,7 @@ export const Chunk = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Chunk" }) as any as S.Schema<Chunk>;
 
-export type ChunkList = ReadonlyArray<Chunk>;
+export type ChunkList = Array<Chunk>;
 export const ChunkList = /*@__PURE__*/ S.Array(
   Chunk,
 ) as any as S.Schema<ChunkList>;
@@ -1763,7 +1776,7 @@ export const Message = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Message" }) as any as S.Schema<Message>;
 
-export type MessageList = ReadonlyArray<Message>;
+export type MessageList = Array<Message>;
 export const MessageList = /*@__PURE__*/ S.Array(
   Message,
 ) as any as S.Schema<MessageList>;
@@ -1842,7 +1855,7 @@ export interface GuardrailContentFilter {
   /** Optional. If true, diacritics are ignored during matching. */
   disregardDiacritics?: boolean;
   /** Required. Match type for the content filter. */
-  matchType?: GuardrailContentFilterMatchTypeEnum;
+  matchType?: GuardrailContentFilterMatchTypeEnum | (string & {});
   /** Optional. List of banned phrases. Applies to both user inputs and agent responses. */
   bannedContents?: StringList;
   /** Optional. List of banned phrases. Applies only to user inputs. */
@@ -1876,7 +1889,7 @@ export const TriggerActionResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "TriggerActionResponse",
 }) as any as S.Schema<TriggerActionResponse>;
 
-export type TriggerActionResponseList = ReadonlyArray<TriggerActionResponse>;
+export type TriggerActionResponseList = Array<TriggerActionResponse>;
 export const TriggerActionResponseList = /*@__PURE__*/ S.Array(
   TriggerActionResponse,
 ) as any as S.Schema<TriggerActionResponseList>;
@@ -1959,9 +1972,9 @@ export const GuardrailModelSafetySafetySettingCategoryEnum =
 /** Safety setting. */
 export interface GuardrailModelSafetySafetySetting {
   /** Required. The harm block threshold. */
-  threshold?: GuardrailModelSafetySafetySettingThresholdEnum;
+  threshold?: GuardrailModelSafetySafetySettingThresholdEnum | (string & {});
   /** Required. The harm category. */
-  category?: GuardrailModelSafetySafetySettingCategoryEnum;
+  category?: GuardrailModelSafetySafetySettingCategoryEnum | (string & {});
 }
 export const GuardrailModelSafetySafetySetting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1973,7 +1986,7 @@ export const GuardrailModelSafetySafetySetting = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GuardrailModelSafetySafetySetting>;
 
 export type GuardrailModelSafetySafetySettingList =
-  ReadonlyArray<GuardrailModelSafetySafetySetting>;
+  Array<GuardrailModelSafetySafetySetting>;
 export const GuardrailModelSafetySafetySettingList = /*@__PURE__*/ S.Array(
   GuardrailModelSafetySafetySetting,
 ) as any as S.Schema<GuardrailModelSafetySafetySettingList>;
@@ -2005,7 +2018,7 @@ export interface GuardrailLlmPolicy {
   /** Optional. When checking this policy, consider the last 'n' messages in the conversation. When not set a default value of 10 will be used. */
   maxConversationMessages?: number;
   /** Required. Defines when to apply the policy check during the conversation. If set to `POLICY_SCOPE_UNSPECIFIED`, the policy will be applied to the user input. When applying the policy to the agent response, additional latency will be introduced before the agent can respond. */
-  policyScope?: GuardrailLlmPolicyPolicyScopeEnum;
+  policyScope?: GuardrailLlmPolicyPolicyScopeEnum | (string & {});
   /** Required. Policy prompt. */
   prompt?: string;
   /** Optional. By default, the LLM policy check is bypassed for short utterances. Enabling this setting applies the policy check to all utterances, including those that would normally be skipped. */
@@ -2205,7 +2218,7 @@ export interface WidgetToolDataMapping {
   /** Optional. The resource name of the tool that provides the data for the widget (e.g., a search tool or a custom function). Format: `projects/{project}/locations/{location}/agents/{agent}/tools/{tool}` */
   sourceToolName?: string;
   /** Optional. The mode of the data mapping. */
-  mode?: WidgetToolDataMappingModeEnum;
+  mode?: WidgetToolDataMappingModeEnum | (string & {});
 }
 export const WidgetToolDataMapping = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2247,7 +2260,7 @@ export interface WidgetToolTextResponseConfig {
   /** Optional. Instruction for the LLM on how to generate the text response. Used as the description for the text response parameter if type is LLM_GENERATED. */
   textResponseInstruction?: string;
   /** Optional. The strategy for providing the text response. */
-  type?: WidgetToolTextResponseConfigTypeEnum;
+  type?: WidgetToolTextResponseConfigTypeEnum | (string & {});
   /** Optional. The static text response to return when type is STATIC. */
   staticText?: string;
 }
@@ -2272,7 +2285,7 @@ export interface WidgetTool {
   /** Required. The display name of the widget tool. */
   name?: string;
   /** Optional. The type of the widget tool. If not specified, the default type will be CUSTOMIZED. */
-  widgetType?: WidgetToolWidgetTypeEnum;
+  widgetType?: WidgetToolWidgetTypeEnum | (string & {});
   /** Optional. Configuration for rendering the widget. */
   uiConfig?: DocumentMap;
   /** Optional. Configuration for always-included text responses. */
@@ -2325,7 +2338,7 @@ export const AgentSkill = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AgentSkill" }) as any as S.Schema<AgentSkill>;
 
-export type AgentSkillList = ReadonlyArray<AgentSkill>;
+export type AgentSkillList = Array<AgentSkill>;
 export const AgentSkillList = /*@__PURE__*/ S.Array(
   AgentSkill,
 ) as any as S.Schema<AgentSkillList>;
@@ -2350,7 +2363,7 @@ export const AgentInterface = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AgentInterface" }) as any as S.Schema<AgentInterface>;
 
-export type AgentInterfaceList = ReadonlyArray<AgentInterface>;
+export type AgentInterfaceList = Array<AgentInterface>;
 export const AgentInterfaceList = /*@__PURE__*/ S.Array(
   AgentInterface,
 ) as any as S.Schema<AgentInterfaceList>;
@@ -2478,7 +2491,7 @@ export const ActionEntityOperationOperationEnum = /*@__PURE__*/ S.String;
 /** Entity CRUD operation specification. */
 export interface ActionEntityOperation {
   /** Required. Operation to perform on the entity. */
-  operation?: ActionEntityOperationOperationEnum;
+  operation?: ActionEntityOperationOperationEnum | (string & {});
   /** Required. ID of the entity. */
   entityId?: string;
 }
@@ -2619,7 +2632,7 @@ export interface FileSearchTool {
   /** Required. The tool name. */
   name?: string;
   /** Optional. The type of the corpus. Default is FULLY_MANAGED. */
-  corpusType?: FileSearchToolCorpusTypeEnum;
+  corpusType?: FileSearchToolCorpusTypeEnum | (string & {});
 }
 export const FileSearchTool = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2646,7 +2659,7 @@ export const TlsConfigCaCert = /*@__PURE__*/ S.suspend(() =>
   identifier: "TlsConfigCaCert",
 }) as any as S.Schema<TlsConfigCaCert>;
 
-export type TlsConfigCaCertList = ReadonlyArray<TlsConfigCaCert>;
+export type TlsConfigCaCertList = Array<TlsConfigCaCert>;
 export const TlsConfigCaCertList = /*@__PURE__*/ S.Array(
   TlsConfigCaCert,
 ) as any as S.Schema<TlsConfigCaCertList>;
@@ -2685,7 +2698,7 @@ export interface OAuthConfig {
   /** Optional. The OAuth scopes to grant. */
   scopes?: StringList;
   /** Required. OAuth grant types. */
-  oauthGrantType?: OAuthConfigOauthGrantTypeEnum;
+  oauthGrantType?: OAuthConfigOauthGrantTypeEnum | (string & {});
 }
 export const OAuthConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2747,7 +2760,7 @@ export interface ApiKeyConfig {
   /** Required. The name of the SecretManager secret version resource storing the API key. Format: `projects/{project}/secrets/{secret}/versions/{version}` Note: You should grant `roles/secretmanager.secretAccessor` role to the CES service agent `service-@gcp-sa-ces.iam.gserviceaccount.com`. */
   apiKeySecretVersion?: string;
   /** Required. Key location in the request. */
-  requestLocation?: ApiKeyConfigRequestLocationEnum;
+  requestLocation?: ApiKeyConfigRequestLocationEnum | (string & {});
 }
 export const ApiKeyConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2797,7 +2810,7 @@ export interface McpTool {
   /** Optional. The custom headers to send in the request to the MCP server. The values must be in the format `$context.variables.` and can be set in the session variables. See https://docs.cloud.google.com/customer-engagement-ai/conversational-agents/ps/tool/open-api#openapi-injection for more details. */
   customHeaders?: StringMap;
   /** Output only. The dynamic availability state of the tool on the external server. */
-  state?: McpToolStateEnum;
+  state?: McpToolStateEnum | (string & {});
   /** Optional. The description of the MCP tool. */
   description?: string;
   /** Optional. Authentication information required to execute the tool against the MCP server. For bearer token authentication, the token applies only to tool execution, not to listing tools. This requires that tools can be listed without authentication. */
@@ -2884,9 +2897,9 @@ export interface DataStore {
   /** Output only. The connector config for the data store connection. */
   connectorConfig?: DataStoreConnectorConfig;
   /** Output only. The type of the data store. This field is readonly and populated by the server. */
-  type?: DataStoreTypeEnum;
+  type?: DataStoreTypeEnum | (string & {});
   /** Output only. The document processing mode for the data store connection. Only set for PUBLIC_WEB and UNSTRUCTURED data stores. */
-  documentProcessingMode?: DataStoreDocumentProcessingModeEnum;
+  documentProcessingMode?: DataStoreDocumentProcessingModeEnum | (string & {});
   /** Required. Full resource name of the DataStore. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{dataStore}` */
   name?: string;
   /** Output only. The display name of the data store. */
@@ -2922,7 +2935,7 @@ export const DataStoreToolDataStoreSource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DataStoreToolDataStoreSource>;
 
 export type DataStoreToolDataStoreSourceList =
-  ReadonlyArray<DataStoreToolDataStoreSource>;
+  Array<DataStoreToolDataStoreSource>;
 export const DataStoreToolDataStoreSourceList = /*@__PURE__*/ S.Array(
   DataStoreToolDataStoreSource,
 ) as any as S.Schema<DataStoreToolDataStoreSourceList>;
@@ -3010,7 +3023,7 @@ export const DataStoreToolGroundingConfig = /*@__PURE__*/ S.suspend(() =>
 /** If specified, will apply the given configuration for the specified modality. */
 export interface DataStoreToolModalityConfig {
   /** Required. The modality type. */
-  modalityType?: DataStoreToolModalityConfigModalityTypeEnum;
+  modalityType?: DataStoreToolModalityConfigModalityTypeEnum | (string & {});
   /** Optional. The rewriter config. */
   rewriterConfig?: DataStoreToolRewriterConfig;
   /** Optional. The summarization config. */
@@ -3030,7 +3043,7 @@ export const DataStoreToolModalityConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DataStoreToolModalityConfig>;
 
 export type DataStoreToolModalityConfigList =
-  ReadonlyArray<DataStoreToolModalityConfig>;
+  Array<DataStoreToolModalityConfig>;
 export const DataStoreToolModalityConfigList = /*@__PURE__*/ S.Array(
   DataStoreToolModalityConfig,
 ) as any as S.Schema<DataStoreToolModalityConfigList>;
@@ -3064,7 +3077,7 @@ export const DataStoreToolBoostSpecConditionBoostSpecBoostControlSpecControlPoin
   }) as any as S.Schema<DataStoreToolBoostSpecConditionBoostSpecBoostControlSpecControlPoint>;
 
 export type DataStoreToolBoostSpecConditionBoostSpecBoostControlSpecControlPointList =
-  ReadonlyArray<DataStoreToolBoostSpecConditionBoostSpecBoostControlSpecControlPoint>;
+  Array<DataStoreToolBoostSpecConditionBoostSpecBoostControlSpecControlPoint>;
 export const DataStoreToolBoostSpecConditionBoostSpecBoostControlSpecControlPointList =
   /*@__PURE__*/ S.Array(
     DataStoreToolBoostSpecConditionBoostSpecBoostControlSpecControlPoint,
@@ -3073,9 +3086,13 @@ export const DataStoreToolBoostSpecConditionBoostSpecBoostControlSpecControlPoin
 /** Specification for custom ranking based on customer specified attribute value. It provides more controls for customized ranking than the simple (condition, boost) combination above. */
 export interface DataStoreToolBoostSpecConditionBoostSpecBoostControlSpec {
   /** Optional. The attribute type to be used to determine the boost amount. The attribute value can be derived from the field value of the specified field_name. In the case of numerical it is straightforward i.e. attribute_value = numerical_field_value. In the case of freshness however, attribute_value = (time.now() - datetime_field_value). */
-  attributeType?: DataStoreToolBoostSpecConditionBoostSpecBoostControlSpecAttributeTypeEnum;
+  attributeType?:
+    | DataStoreToolBoostSpecConditionBoostSpecBoostControlSpecAttributeTypeEnum
+    | (string & {});
   /** Optional. The interpolation type to be applied to connect the control points listed below. */
-  interpolationType?: DataStoreToolBoostSpecConditionBoostSpecBoostControlSpecInterpolationTypeEnum;
+  interpolationType?:
+    | DataStoreToolBoostSpecConditionBoostSpecBoostControlSpecInterpolationTypeEnum
+    | (string & {});
   /** Optional. The control points used to define the curve. The monotonic function (defined through the interpolation_type above) passes through the control points listed here. */
   controlPoints?: DataStoreToolBoostSpecConditionBoostSpecBoostControlSpecControlPointList;
   /** Optional. The name of the field whose value will be used to determine the boost amount. */
@@ -3122,7 +3139,7 @@ export const DataStoreToolBoostSpecConditionBoostSpec = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DataStoreToolBoostSpecConditionBoostSpec>;
 
 export type DataStoreToolBoostSpecConditionBoostSpecList =
-  ReadonlyArray<DataStoreToolBoostSpecConditionBoostSpec>;
+  Array<DataStoreToolBoostSpecConditionBoostSpec>;
 export const DataStoreToolBoostSpecConditionBoostSpecList =
   /*@__PURE__*/ S.Array(
     DataStoreToolBoostSpecConditionBoostSpec,
@@ -3143,7 +3160,7 @@ export const DataStoreToolBoostSpec = /*@__PURE__*/ S.suspend(() =>
   identifier: "DataStoreToolBoostSpec",
 }) as any as S.Schema<DataStoreToolBoostSpec>;
 
-export type DataStoreToolBoostSpecList = ReadonlyArray<DataStoreToolBoostSpec>;
+export type DataStoreToolBoostSpecList = Array<DataStoreToolBoostSpec>;
 export const DataStoreToolBoostSpecList = /*@__PURE__*/ S.Array(
   DataStoreToolBoostSpec,
 ) as any as S.Schema<DataStoreToolBoostSpecList>;
@@ -3164,8 +3181,7 @@ export const DataStoreToolBoostSpecs = /*@__PURE__*/ S.suspend(() =>
   identifier: "DataStoreToolBoostSpecs",
 }) as any as S.Schema<DataStoreToolBoostSpecs>;
 
-export type DataStoreToolBoostSpecsList =
-  ReadonlyArray<DataStoreToolBoostSpecs>;
+export type DataStoreToolBoostSpecsList = Array<DataStoreToolBoostSpecs>;
 export const DataStoreToolBoostSpecsList = /*@__PURE__*/ S.Array(
   DataStoreToolBoostSpecs,
 ) as any as S.Schema<DataStoreToolBoostSpecsList>;
@@ -3175,7 +3191,9 @@ export interface DataStoreTool {
   /** Required. The data store tool name. */
   name?: string;
   /** Optional. The filter parameter behavior. */
-  filterParameterBehavior?: DataStoreToolFilterParameterBehaviorEnum;
+  filterParameterBehavior?:
+    | DataStoreToolFilterParameterBehaviorEnum
+    | (string & {});
   /** Optional. Search within a single specific DataStore. */
   dataStoreSource?: DataStoreToolDataStoreSource;
   /** Optional. Search within an Engine (potentially across multiple DataStores). */
@@ -3254,7 +3272,7 @@ export interface Tool {
   /** Optional. The widget tool. */
   widgetTool?: WidgetTool;
   /** Optional. The execution type of the tool. */
-  executionType?: ToolExecutionTypeEnum;
+  executionType?: ToolExecutionTypeEnum | (string & {});
   /** Optional. The remote agent tool. */
   remoteAgentTool?: RemoteAgentTool;
   /** Optional. Configuration for tool behavior in fake mode. */
@@ -3343,7 +3361,7 @@ export const CreateProjectsLocationsAppsToolsRequest = /*@__PURE__*/ S.suspend(
   identifier: "CreateProjectsLocationsAppsToolsRequest",
 }) as any as S.Schema<CreateProjectsLocationsAppsToolsRequest>;
 
-export type ActionList = ReadonlyArray<Action>;
+export type ActionList = Array<Action>;
 export const ActionList = /*@__PURE__*/ S.Array(
   Action,
 ) as any as S.Schema<ActionList>;
@@ -3440,7 +3458,7 @@ export const McpToolOverride = /*@__PURE__*/ S.suspend(() =>
   identifier: "McpToolOverride",
 }) as any as S.Schema<McpToolOverride>;
 
-export type McpToolOverrideList = ReadonlyArray<McpToolOverride>;
+export type McpToolOverrideList = Array<McpToolOverride>;
 export const McpToolOverrideList = /*@__PURE__*/ S.Array(
   McpToolOverride,
 ) as any as S.Schema<McpToolOverrideList>;
@@ -3480,7 +3498,7 @@ export interface Toolset {
   /** Optional. The timeout for the toolset execution. If not set, the default timeout is 30 seconds for `SYNCHRONOUS` toolsets and 60 seconds for `ASYNCHRONOUS` toolsets. */
   timeout?: string;
   /** Optional. The execution type of the tools in the toolset. */
-  executionType?: ToolsetExecutionTypeEnum;
+  executionType?: ToolsetExecutionTypeEnum | (string & {});
   /** Optional. The display name of the toolset. Must be unique within the same app. */
   displayName?: string;
   /** Optional. A toolset that contains a list of tools that are defined by an OpenAPI schema. */
@@ -3540,27 +3558,27 @@ export const CreateProjectsLocationsAppsToolsetsRequest =
     identifier: "CreateProjectsLocationsAppsToolsetsRequest",
   }) as any as S.Schema<CreateProjectsLocationsAppsToolsetsRequest>;
 
-export type GuardrailList = ReadonlyArray<Guardrail>;
+export type GuardrailList = Array<Guardrail>;
 export const GuardrailList = /*@__PURE__*/ S.Array(
   Guardrail,
 ) as any as S.Schema<GuardrailList>;
 
-export type ToolsetList = ReadonlyArray<Toolset>;
+export type ToolsetList = Array<Toolset>;
 export const ToolsetList = /*@__PURE__*/ S.Array(
   Toolset,
 ) as any as S.Schema<ToolsetList>;
 
-export type AgentList = ReadonlyArray<Agent>;
+export type AgentList = Array<Agent>;
 export const AgentList = /*@__PURE__*/ S.Array(
   Agent,
 ) as any as S.Schema<AgentList>;
 
-export type ToolList = ReadonlyArray<Tool>;
+export type ToolList = Array<Tool>;
 export const ToolList = /*@__PURE__*/ S.Array(
   Tool,
 ) as any as S.Schema<ToolList>;
 
-export type ExampleList = ReadonlyArray<Example>;
+export type ExampleList = Array<Example>;
 export const ExampleList = /*@__PURE__*/ S.Array(
   Example,
 ) as any as S.Schema<ExampleList>;
@@ -3907,7 +3925,7 @@ export const MockedToolCall = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MockedToolCall" }) as any as S.Schema<MockedToolCall>;
 
-export type MockedToolCallList = ReadonlyArray<MockedToolCall>;
+export type MockedToolCallList = Array<MockedToolCall>;
 export const MockedToolCallList = /*@__PURE__*/ S.Array(
   MockedToolCall,
 ) as any as S.Schema<MockedToolCallList>;
@@ -4008,7 +4026,7 @@ export const CitationsCitedChunk = /*@__PURE__*/ S.suspend(() =>
   identifier: "CitationsCitedChunk",
 }) as any as S.Schema<CitationsCitedChunk>;
 
-export type CitationsCitedChunkList = ReadonlyArray<CitationsCitedChunk>;
+export type CitationsCitedChunkList = Array<CitationsCitedChunk>;
 export const CitationsCitedChunkList = /*@__PURE__*/ S.Array(
   CitationsCitedChunk,
 ) as any as S.Schema<CitationsCitedChunkList>;
@@ -4038,7 +4056,7 @@ export const WebSearchQuery = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "WebSearchQuery" }) as any as S.Schema<WebSearchQuery>;
 
-export type WebSearchQueryList = ReadonlyArray<WebSearchQuery>;
+export type WebSearchQueryList = Array<WebSearchQuery>;
 export const WebSearchQueryList = /*@__PURE__*/ S.Array(
   WebSearchQuery,
 ) as any as S.Schema<WebSearchQueryList>;
@@ -4232,7 +4250,7 @@ export const LfA2aV1AgentExtension = /*@__PURE__*/ S.suspend(() =>
   identifier: "LfA2aV1AgentExtension",
 }) as any as S.Schema<LfA2aV1AgentExtension>;
 
-export type LfA2aV1AgentExtensionList = ReadonlyArray<LfA2aV1AgentExtension>;
+export type LfA2aV1AgentExtensionList = Array<LfA2aV1AgentExtension>;
 export const LfA2aV1AgentExtensionList = /*@__PURE__*/ S.Array(
   LfA2aV1AgentExtension,
 ) as any as S.Schema<LfA2aV1AgentExtensionList>;
@@ -4293,8 +4311,7 @@ export const LfA2aV1SecurityRequirement = /*@__PURE__*/ S.suspend(() =>
   identifier: "LfA2aV1SecurityRequirement",
 }) as any as S.Schema<LfA2aV1SecurityRequirement>;
 
-export type LfA2aV1SecurityRequirementList =
-  ReadonlyArray<LfA2aV1SecurityRequirement>;
+export type LfA2aV1SecurityRequirementList = Array<LfA2aV1SecurityRequirement>;
 export const LfA2aV1SecurityRequirementList = /*@__PURE__*/ S.Array(
   LfA2aV1SecurityRequirement,
 ) as any as S.Schema<LfA2aV1SecurityRequirementList>;
@@ -4318,8 +4335,7 @@ export const LfA2aV1AgentCardSignature = /*@__PURE__*/ S.suspend(() =>
   identifier: "LfA2aV1AgentCardSignature",
 }) as any as S.Schema<LfA2aV1AgentCardSignature>;
 
-export type LfA2aV1AgentCardSignatureList =
-  ReadonlyArray<LfA2aV1AgentCardSignature>;
+export type LfA2aV1AgentCardSignatureList = Array<LfA2aV1AgentCardSignature>;
 export const LfA2aV1AgentCardSignatureList = /*@__PURE__*/ S.Array(
   LfA2aV1AgentCardSignature,
 ) as any as S.Schema<LfA2aV1AgentCardSignatureList>;
@@ -4594,7 +4610,7 @@ export const LfA2aV1AgentInterface = /*@__PURE__*/ S.suspend(() =>
   identifier: "LfA2aV1AgentInterface",
 }) as any as S.Schema<LfA2aV1AgentInterface>;
 
-export type LfA2aV1AgentInterfaceList = ReadonlyArray<LfA2aV1AgentInterface>;
+export type LfA2aV1AgentInterfaceList = Array<LfA2aV1AgentInterface>;
 export const LfA2aV1AgentInterfaceList = /*@__PURE__*/ S.Array(
   LfA2aV1AgentInterface,
 ) as any as S.Schema<LfA2aV1AgentInterfaceList>;
@@ -4633,7 +4649,7 @@ export const LfA2aV1AgentSkill = /*@__PURE__*/ S.suspend(() =>
   identifier: "LfA2aV1AgentSkill",
 }) as any as S.Schema<LfA2aV1AgentSkill>;
 
-export type LfA2aV1AgentSkillList = ReadonlyArray<LfA2aV1AgentSkill>;
+export type LfA2aV1AgentSkillList = Array<LfA2aV1AgentSkill>;
 export const LfA2aV1AgentSkillList = /*@__PURE__*/ S.Array(
   LfA2aV1AgentSkill,
 ) as any as S.Schema<LfA2aV1AgentSkillList>;
@@ -4926,7 +4942,7 @@ export type ConversationSourceEnum =
   | "AGENT_TOOL";
 export const ConversationSourceEnum = /*@__PURE__*/ S.String;
 
-export type SpanList = ReadonlyArray<Span>;
+export type SpanList = Array<Span>;
 export const SpanList = /*@__PURE__*/ S.Array(
   S.suspend(() => Span),
 ) as any as S.Schema<SpanList>;
@@ -4973,7 +4989,7 @@ export const ConversationTurn = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConversationTurn",
 }) as any as S.Schema<ConversationTurn>;
 
-export type ConversationTurnList = ReadonlyArray<ConversationTurn>;
+export type ConversationTurnList = Array<ConversationTurn>;
 export const ConversationTurnList = /*@__PURE__*/ S.Array(
   ConversationTurn,
 ) as any as S.Schema<ConversationTurnList>;
@@ -4997,7 +5013,7 @@ export type ConversationInputTypesItemEnum =
 export const ConversationInputTypesItemEnum = /*@__PURE__*/ S.String;
 
 export type ConversationInputTypesItemEnumList =
-  ReadonlyArray<ConversationInputTypesItemEnum>;
+  Array<ConversationInputTypesItemEnum>;
 export const ConversationInputTypesItemEnumList = /*@__PURE__*/ S.Array(
   ConversationInputTypesItemEnum,
 ) as any as S.Schema<ConversationInputTypesItemEnumList>;
@@ -5286,7 +5302,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = ReadonlyArray<Location>;
+export type LocationList = Array<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -5337,7 +5353,7 @@ export const ListProjectsLocationsAppsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsAppsRequest",
 }) as any as S.Schema<ListProjectsLocationsAppsRequest>;
 
-export type AppList = ReadonlyArray<App>;
+export type AppList = Array<App>;
 export const AppList = /*@__PURE__*/ S.Array(App) as any as S.Schema<AppList>;
 
 /** Response message for AgentService.ListApps. */
@@ -5437,7 +5453,7 @@ export const ListProjectsLocationsAppsChangelogsRequest =
     identifier: "ListProjectsLocationsAppsChangelogsRequest",
   }) as any as S.Schema<ListProjectsLocationsAppsChangelogsRequest>;
 
-export type ChangelogList = ReadonlyArray<Changelog>;
+export type ChangelogList = Array<Changelog>;
 export const ChangelogList = /*@__PURE__*/ S.Array(
   Changelog,
 ) as any as S.Schema<ChangelogList>;
@@ -5476,10 +5492,9 @@ export type ListProjectsLocationsAppsConversationsSourcesEnum =
 export const ListProjectsLocationsAppsConversationsSourcesEnum =
   /*@__PURE__*/ S.String;
 
-export type ListProjectsLocationsAppsConversationsSourcesEnumList =
-  ReadonlyArray<
-    ListProjectsLocationsAppsConversationsSourcesEnum | (string & {})
-  >;
+export type ListProjectsLocationsAppsConversationsSourcesEnumList = Array<
+  ListProjectsLocationsAppsConversationsSourcesEnum | (string & {})
+>;
 export const ListProjectsLocationsAppsConversationsSourcesEnumList =
   /*@__PURE__*/ S.Array(
     ListProjectsLocationsAppsConversationsSourcesEnum,
@@ -5523,7 +5538,7 @@ export const ListProjectsLocationsAppsConversationsRequest =
     identifier: "ListProjectsLocationsAppsConversationsRequest",
   }) as any as S.Schema<ListProjectsLocationsAppsConversationsRequest>;
 
-export type ConversationList = ReadonlyArray<Conversation>;
+export type ConversationList = Array<Conversation>;
 export const ConversationList = /*@__PURE__*/ S.Array(
   Conversation,
 ) as any as S.Schema<ConversationList>;
@@ -5572,7 +5587,7 @@ export const ListProjectsLocationsAppsDeploymentsRequest =
     identifier: "ListProjectsLocationsAppsDeploymentsRequest",
   }) as any as S.Schema<ListProjectsLocationsAppsDeploymentsRequest>;
 
-export type DeploymentList = ReadonlyArray<Deployment>;
+export type DeploymentList = Array<Deployment>;
 export const DeploymentList = /*@__PURE__*/ S.Array(
   Deployment,
 ) as any as S.Schema<DeploymentList>;
@@ -5812,7 +5827,7 @@ export const ListProjectsLocationsAppsVersionsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsAppsVersionsRequest",
 }) as any as S.Schema<ListProjectsLocationsAppsVersionsRequest>;
 
-export type AppVersionList = ReadonlyArray<AppVersion>;
+export type AppVersionList = Array<AppVersion>;
 export const AppVersionList = /*@__PURE__*/ S.Array(
   AppVersion,
 ) as any as S.Schema<AppVersionList>;
@@ -5864,7 +5879,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type OperationList = ReadonlyArray<Operation>;
+export type OperationList = Array<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -6309,7 +6324,7 @@ export const SessionConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SessionConfig" }) as any as S.Schema<SessionConfig>;
 
-export type ToolResponseList = ReadonlyArray<ToolResponse>;
+export type ToolResponseList = Array<ToolResponse>;
 export const ToolResponseList = /*@__PURE__*/ S.Array(
   ToolResponse,
 ) as any as S.Schema<ToolResponseList>;
@@ -6371,7 +6386,7 @@ export const SessionInput = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SessionInput" }) as any as S.Schema<SessionInput>;
 
-export type SessionInputList = ReadonlyArray<SessionInput>;
+export type SessionInputList = Array<SessionInput>;
 export const SessionInputList = /*@__PURE__*/ S.Array(
   SessionInput,
 ) as any as S.Schema<SessionInputList>;
@@ -6430,7 +6445,7 @@ export const SessionOutputDiagnosticInfo = /*@__PURE__*/ S.suspend(() =>
   identifier: "SessionOutputDiagnosticInfo",
 }) as any as S.Schema<SessionOutputDiagnosticInfo>;
 
-export type ToolCallList = ReadonlyArray<ToolCall>;
+export type ToolCallList = Array<ToolCall>;
 export const ToolCallList = /*@__PURE__*/ S.Array(
   ToolCall,
 ) as any as S.Schema<ToolCallList>;
@@ -6498,7 +6513,7 @@ export const SessionOutput = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SessionOutput" }) as any as S.Schema<SessionOutput>;
 
-export type SessionOutputList = ReadonlyArray<SessionOutput>;
+export type SessionOutputList = Array<SessionOutput>;
 export const SessionOutputList = /*@__PURE__*/ S.Array(
   SessionOutput,
 ) as any as S.Schema<SessionOutputList>;
@@ -6617,7 +6632,7 @@ export const LfA2aV1Part = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "LfA2aV1Part" }) as any as S.Schema<LfA2aV1Part>;
 
-export type LfA2aV1PartList = ReadonlyArray<LfA2aV1Part>;
+export type LfA2aV1PartList = Array<LfA2aV1Part>;
 export const LfA2aV1PartList = /*@__PURE__*/ S.Array(
   LfA2aV1Part,
 ) as any as S.Schema<LfA2aV1PartList>;
@@ -6625,7 +6640,7 @@ export const LfA2aV1PartList = /*@__PURE__*/ S.Array(
 /** `Message` is one unit of communication between client and server. It can be associated with a context and/or a task. For server messages, `context_id` must be provided, and `task_id` only if a task was created. For client messages, both fields are optional, with the caveat that if both are provided, they have to match (the `context_id` has to be the one that is set on the task). If only `task_id` is provided, the server will infer `context_id` from it. */
 export interface LfA2aV1Message {
   /** Required. Identifies the sender of the message. */
-  role?: LfA2aV1MessageRoleEnum;
+  role?: LfA2aV1MessageRoleEnum | (string & {});
   /** Required. The unique identifier (e.g. UUID) of the message. This is created by the message creator. */
   messageId?: string;
   /** Optional. The context id of the message. If set, the message will be associated with the given context. */
@@ -6723,12 +6738,12 @@ export const LfA2aV1Artifact = /*@__PURE__*/ S.suspend(() =>
   identifier: "LfA2aV1Artifact",
 }) as any as S.Schema<LfA2aV1Artifact>;
 
-export type LfA2aV1ArtifactList = ReadonlyArray<LfA2aV1Artifact>;
+export type LfA2aV1ArtifactList = Array<LfA2aV1Artifact>;
 export const LfA2aV1ArtifactList = /*@__PURE__*/ S.Array(
   LfA2aV1Artifact,
 ) as any as S.Schema<LfA2aV1ArtifactList>;
 
-export type LfA2aV1MessageList = ReadonlyArray<LfA2aV1Message>;
+export type LfA2aV1MessageList = Array<LfA2aV1Message>;
 export const LfA2aV1MessageList = /*@__PURE__*/ S.Array(
   LfA2aV1Message,
 ) as any as S.Schema<LfA2aV1MessageList>;

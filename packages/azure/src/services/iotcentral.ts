@@ -117,7 +117,7 @@ export const AppSkuInfoName = /*@__PURE__*/ S.String;
 /** Information about the SKU of the IoT Central application. */
 export interface AppSkuInfo {
   /** The name of the SKU. */
-  name: AppSkuInfoName;
+  name: AppSkuInfoName | (string & {});
 }
 export const AppSkuInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -459,7 +459,7 @@ export const App = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "App" }) as any as S.Schema<App>;
 
 /** A list of IoT Central Applications. */
-export type AppListResultValueList = ReadonlyArray<App>;
+export type AppListResultValueList = Array<App>;
 export const AppListResultValueList = /*@__PURE__*/ S.Array(
   App,
 ) as any as S.Schema<AppListResultValueList>;
@@ -533,7 +533,7 @@ export const AppTemplateLocations = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AppTemplateLocations>;
 
 /** A list of locations that support the template. */
-export type AppTemplateLocationsList = ReadonlyArray<AppTemplateLocations>;
+export type AppTemplateLocationsList = Array<AppTemplateLocations>;
 export const AppTemplateLocationsList = /*@__PURE__*/ S.Array(
   AppTemplateLocations,
 ) as any as S.Schema<AppTemplateLocationsList>;
@@ -571,7 +571,7 @@ export const AppTemplate = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AppTemplate" }) as any as S.Schema<AppTemplate>;
 
 /** A list of IoT Central Application Templates. */
-export type AppTemplatesResultValueList = ReadonlyArray<AppTemplate>;
+export type AppTemplatesResultValueList = Array<AppTemplate>;
 export const AppTemplatesResultValueList = /*@__PURE__*/ S.Array(
   AppTemplate,
 ) as any as S.Schema<AppTemplatesResultValueList>;
@@ -763,7 +763,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** A list of operations supported by the Microsoft.IoTCentral resource provider. */
-export type OperationListResultValueList = ReadonlyArray<Operation>;
+export type OperationListResultValueList = Array<Operation>;
 export const OperationListResultValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationListResultValueList>;

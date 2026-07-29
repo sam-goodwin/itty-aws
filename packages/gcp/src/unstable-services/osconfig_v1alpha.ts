@@ -128,13 +128,12 @@ export const OSPolicyInventoryFilter = /*@__PURE__*/ S.suspend(() =>
   identifier: "OSPolicyInventoryFilter",
 }) as any as S.Schema<OSPolicyInventoryFilter>;
 
-export type OSPolicyInventoryFilterList =
-  ReadonlyArray<OSPolicyInventoryFilter>;
+export type OSPolicyInventoryFilterList = Array<OSPolicyInventoryFilter>;
 export const OSPolicyInventoryFilterList = /*@__PURE__*/ S.Array(
   OSPolicyInventoryFilter,
 ) as any as S.Schema<OSPolicyInventoryFilterList>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -155,7 +154,9 @@ export interface OSPolicyResourceRepositoryResourceAptRepository {
   /** Required. List of components for this repository. Must contain at least one item. */
   components?: StringList;
   /** Required. Type of archive files in this repository. */
-  archiveType?: OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypeEnum;
+  archiveType?:
+    | OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypeEnum
+    | (string & {});
   /** URI of the key file for this repository. The agent maintains a keyring at `/etc/apt/trusted.gpg.d/osconfig_agent_managed.gpg`. */
   gpgKey?: string;
 }
@@ -326,7 +327,7 @@ export const OSPolicyResourceFile = /*@__PURE__*/ S.suspend(() =>
 /** A resource that manages the state of a file. */
 export interface OSPolicyResourceFileResource {
   /** Required. Desired state of the file. */
-  state?: OSPolicyResourceFileResourceStateEnum;
+  state?: OSPolicyResourceFileResourceStateEnum | (string & {});
   /** Consists of three octal digits which represent, in order, the permissions of the owner, group, and other users for the file (similarly to the numeric mode used in the linux chmod utility). Each digit represents a three bit number with the 4 bit corresponding to the read permissions, the 2 bit corresponds to the write bit, and the one bit corresponds to the execute permission. Default behavior is 755. Below are some examples of permissions and their associated values: read, write, and execute: 7 read and execute: 5 read and write: 6 read only: 4 */
   permissions?: string;
   /** A file with this content. The size of the content is limited to 32KiB. */
@@ -367,7 +368,7 @@ export interface OSPolicyResourceExecResourceExec {
   /** Optional arguments to pass to the source during execution. */
   args?: StringList;
   /** Required. The script interpreter to use. */
-  interpreter?: OSPolicyResourceExecResourceExecInterpreterEnum;
+  interpreter?: OSPolicyResourceExecResourceExecInterpreterEnum | (string & {});
 }
 export const OSPolicyResourceExecResourceExec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -511,7 +512,9 @@ export interface OSPolicyResourcePackageResource {
   /** A package managed by GooGet. */
   googet?: OSPolicyResourcePackageResourceGooGet;
   /** Required. The desired state the agent should maintain for this package. */
-  desiredState?: OSPolicyResourcePackageResourceDesiredStateEnum;
+  desiredState?:
+    | OSPolicyResourcePackageResourceDesiredStateEnum
+    | (string & {});
   /** An MSI package. */
   msi?: OSPolicyResourcePackageResourceMSI;
   /** A package managed by Zypper. */
@@ -565,7 +568,7 @@ export const OSPolicyResource = /*@__PURE__*/ S.suspend(() =>
   identifier: "OSPolicyResource",
 }) as any as S.Schema<OSPolicyResource>;
 
-export type OSPolicyResourceList = ReadonlyArray<OSPolicyResource>;
+export type OSPolicyResourceList = Array<OSPolicyResource>;
 export const OSPolicyResourceList = /*@__PURE__*/ S.Array(
   OSPolicyResource,
 ) as any as S.Schema<OSPolicyResourceList>;
@@ -589,7 +592,7 @@ export const OSPolicyResourceGroup = /*@__PURE__*/ S.suspend(() =>
   identifier: "OSPolicyResourceGroup",
 }) as any as S.Schema<OSPolicyResourceGroup>;
 
-export type OSPolicyResourceGroupList = ReadonlyArray<OSPolicyResourceGroup>;
+export type OSPolicyResourceGroupList = Array<OSPolicyResourceGroup>;
 export const OSPolicyResourceGroupList = /*@__PURE__*/ S.Array(
   OSPolicyResourceGroup,
 ) as any as S.Schema<OSPolicyResourceGroupList>;
@@ -609,7 +612,7 @@ export interface OSPolicy {
   /** Required. List of resource groups for the policy. For a particular VM, resource groups are evaluated in the order specified and the first resource group that is applicable is selected and the rest are ignored. If none of the resource groups are applicable for a VM, the VM is considered to be non-compliant w.r.t this policy. This behavior can be toggled by the flag `allow_no_resource_group_match` */
   resourceGroups?: OSPolicyResourceGroupList;
   /** Required. Policy mode */
-  mode?: OSPolicyModeEnum;
+  mode?: OSPolicyModeEnum | (string & {});
   /** Required. The id of the OS policy with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the assignment. */
   id?: string;
 }
@@ -623,7 +626,7 @@ export const OSPolicy = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "OSPolicy" }) as any as S.Schema<OSPolicy>;
 
-export type OSPolicyList = ReadonlyArray<OSPolicy>;
+export type OSPolicyList = Array<OSPolicy>;
 export const OSPolicyList = /*@__PURE__*/ S.Array(
   OSPolicy,
 ) as any as S.Schema<OSPolicyList>;
@@ -655,8 +658,7 @@ export const OSPolicyAssignmentLabelSet = /*@__PURE__*/ S.suspend(() =>
   identifier: "OSPolicyAssignmentLabelSet",
 }) as any as S.Schema<OSPolicyAssignmentLabelSet>;
 
-export type OSPolicyAssignmentLabelSetList =
-  ReadonlyArray<OSPolicyAssignmentLabelSet>;
+export type OSPolicyAssignmentLabelSetList = Array<OSPolicyAssignmentLabelSet>;
 export const OSPolicyAssignmentLabelSetList = /*@__PURE__*/ S.Array(
   OSPolicyAssignmentLabelSet,
 ) as any as S.Schema<OSPolicyAssignmentLabelSetList>;
@@ -679,7 +681,7 @@ export const OSPolicyAssignmentInstanceFilterInventory =
   }) as any as S.Schema<OSPolicyAssignmentInstanceFilterInventory>;
 
 export type OSPolicyAssignmentInstanceFilterInventoryList =
-  ReadonlyArray<OSPolicyAssignmentInstanceFilterInventory>;
+  Array<OSPolicyAssignmentInstanceFilterInventory>;
 export const OSPolicyAssignmentInstanceFilterInventoryList =
   /*@__PURE__*/ S.Array(
     OSPolicyAssignmentInstanceFilterInventory,
@@ -757,7 +759,7 @@ export interface OSPolicyAssignment {
   /** Output only. Indicates that this revision deletes the OS policy assignment. */
   deleted?: boolean;
   /** Output only. OS policy assignment rollout state */
-  rolloutState?: OSPolicyAssignmentRolloutStateEnum;
+  rolloutState?: OSPolicyAssignmentRolloutStateEnum | (string & {});
   /** Output only. The assignment revision ID A new revision is committed whenever a rollout is triggered for a OS policy assignment */
   revisionId?: string;
   /** The etag for this OS policy assignment. If this is provided on update, it must match the server's etag. */
@@ -823,7 +825,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -959,8 +961,7 @@ export const OSPolicyResourceConfigStep = /*@__PURE__*/ S.suspend(() =>
   identifier: "OSPolicyResourceConfigStep",
 }) as any as S.Schema<OSPolicyResourceConfigStep>;
 
-export type OSPolicyResourceConfigStepList =
-  ReadonlyArray<OSPolicyResourceConfigStep>;
+export type OSPolicyResourceConfigStepList = Array<OSPolicyResourceConfigStep>;
 export const OSPolicyResourceConfigStepList = /*@__PURE__*/ S.Array(
   OSPolicyResourceConfigStep,
 ) as any as S.Schema<OSPolicyResourceConfigStepList>;
@@ -1003,8 +1004,7 @@ export const OSPolicyResourceCompliance = /*@__PURE__*/ S.suspend(() =>
   identifier: "OSPolicyResourceCompliance",
 }) as any as S.Schema<OSPolicyResourceCompliance>;
 
-export type OSPolicyResourceComplianceList =
-  ReadonlyArray<OSPolicyResourceCompliance>;
+export type OSPolicyResourceComplianceList = Array<OSPolicyResourceCompliance>;
 export const OSPolicyResourceComplianceList = /*@__PURE__*/ S.Array(
   OSPolicyResourceCompliance,
 ) as any as S.Schema<OSPolicyResourceComplianceList>;
@@ -1035,7 +1035,7 @@ export const InstanceOSPoliciesComplianceOSPolicyCompliance =
   }) as any as S.Schema<InstanceOSPoliciesComplianceOSPolicyCompliance>;
 
 export type InstanceOSPoliciesComplianceOSPolicyComplianceList =
-  ReadonlyArray<InstanceOSPoliciesComplianceOSPolicyCompliance>;
+  Array<InstanceOSPoliciesComplianceOSPolicyCompliance>;
 export const InstanceOSPoliciesComplianceOSPolicyComplianceList =
   /*@__PURE__*/ S.Array(
     InstanceOSPoliciesComplianceOSPolicyCompliance,
@@ -1229,7 +1229,7 @@ export const InventoryWindowsUpdatePackageWindowsUpdateCategory =
   }) as any as S.Schema<InventoryWindowsUpdatePackageWindowsUpdateCategory>;
 
 export type InventoryWindowsUpdatePackageWindowsUpdateCategoryList =
-  ReadonlyArray<InventoryWindowsUpdatePackageWindowsUpdateCategory>;
+  Array<InventoryWindowsUpdatePackageWindowsUpdateCategory>;
 export const InventoryWindowsUpdatePackageWindowsUpdateCategoryList =
   /*@__PURE__*/ S.Array(
     InventoryWindowsUpdatePackageWindowsUpdateCategory,
@@ -1479,7 +1479,7 @@ export const OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianc
   }) as any as S.Schema<OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceOSPolicyResourceConfigStep>;
 
 export type OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceOSPolicyResourceConfigStepList =
-  ReadonlyArray<OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceOSPolicyResourceConfigStep>;
+  Array<OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceOSPolicyResourceConfigStep>;
 export const OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceOSPolicyResourceConfigStepList =
   /*@__PURE__*/ S.Array(
     OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceOSPolicyResourceConfigStep,
@@ -1539,7 +1539,7 @@ export const OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianc
   }) as any as S.Schema<OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceCompliance>;
 
 export type OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceList =
-  ReadonlyArray<OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceCompliance>;
+  Array<OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceCompliance>;
 export const OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceList =
   /*@__PURE__*/ S.Array(
     OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceCompliance,
@@ -1573,7 +1573,7 @@ export const OSPolicyAssignmentReportOSPolicyCompliance =
   }) as any as S.Schema<OSPolicyAssignmentReportOSPolicyCompliance>;
 
 export type OSPolicyAssignmentReportOSPolicyComplianceList =
-  ReadonlyArray<OSPolicyAssignmentReportOSPolicyCompliance>;
+  Array<OSPolicyAssignmentReportOSPolicyCompliance>;
 export const OSPolicyAssignmentReportOSPolicyComplianceList =
   /*@__PURE__*/ S.Array(
     OSPolicyAssignmentReportOSPolicyCompliance,
@@ -1663,7 +1663,7 @@ export const VulnerabilityReportVulnerabilityItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<VulnerabilityReportVulnerabilityItem>;
 
 export type VulnerabilityReportVulnerabilityItemList =
-  ReadonlyArray<VulnerabilityReportVulnerabilityItem>;
+  Array<VulnerabilityReportVulnerabilityItem>;
 export const VulnerabilityReportVulnerabilityItemList = /*@__PURE__*/ S.Array(
   VulnerabilityReportVulnerabilityItem,
 ) as any as S.Schema<VulnerabilityReportVulnerabilityItemList>;
@@ -1781,7 +1781,7 @@ export const VulnerabilityReportVulnerabilityDetailsReference =
   }) as any as S.Schema<VulnerabilityReportVulnerabilityDetailsReference>;
 
 export type VulnerabilityReportVulnerabilityDetailsReferenceList =
-  ReadonlyArray<VulnerabilityReportVulnerabilityDetailsReference>;
+  Array<VulnerabilityReportVulnerabilityDetailsReference>;
 export const VulnerabilityReportVulnerabilityDetailsReferenceList =
   /*@__PURE__*/ S.Array(
     VulnerabilityReportVulnerabilityDetailsReference,
@@ -1847,7 +1847,7 @@ export const VulnerabilityReportVulnerability = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VulnerabilityReportVulnerability>;
 
 export type VulnerabilityReportVulnerabilityList =
-  ReadonlyArray<VulnerabilityReportVulnerability>;
+  Array<VulnerabilityReportVulnerability>;
 export const VulnerabilityReportVulnerabilityList = /*@__PURE__*/ S.Array(
   VulnerabilityReportVulnerability,
 ) as any as S.Schema<VulnerabilityReportVulnerabilityList>;
@@ -1943,7 +1943,7 @@ export const ListProjectsLocationsInstanceOSPoliciesCompliancesRequest =
   }) as any as S.Schema<ListProjectsLocationsInstanceOSPoliciesCompliancesRequest>;
 
 export type InstanceOSPoliciesComplianceList =
-  ReadonlyArray<InstanceOSPoliciesCompliance>;
+  Array<InstanceOSPoliciesCompliance>;
 export const InstanceOSPoliciesComplianceList = /*@__PURE__*/ S.Array(
   InstanceOSPoliciesCompliance,
 ) as any as S.Schema<InstanceOSPoliciesComplianceList>;
@@ -2007,7 +2007,7 @@ export const ListProjectsLocationsInstancesInventoriesRequest =
     identifier: "ListProjectsLocationsInstancesInventoriesRequest",
   }) as any as S.Schema<ListProjectsLocationsInstancesInventoriesRequest>;
 
-export type InventoryList = ReadonlyArray<Inventory>;
+export type InventoryList = Array<Inventory>;
 export const InventoryList = /*@__PURE__*/ S.Array(
   Inventory,
 ) as any as S.Schema<InventoryList>;
@@ -2057,8 +2057,7 @@ export const ListProjectsLocationsInstancesOsPolicyAssignmentsReportsRequest =
       "ListProjectsLocationsInstancesOsPolicyAssignmentsReportsRequest",
   }) as any as S.Schema<ListProjectsLocationsInstancesOsPolicyAssignmentsReportsRequest>;
 
-export type OSPolicyAssignmentReportList =
-  ReadonlyArray<OSPolicyAssignmentReport>;
+export type OSPolicyAssignmentReportList = Array<OSPolicyAssignmentReport>;
 export const OSPolicyAssignmentReportList = /*@__PURE__*/ S.Array(
   OSPolicyAssignmentReport,
 ) as any as S.Schema<OSPolicyAssignmentReportList>;
@@ -2108,7 +2107,7 @@ export const ListProjectsLocationsInstancesVulnerabilityReportsRequest =
     identifier: "ListProjectsLocationsInstancesVulnerabilityReportsRequest",
   }) as any as S.Schema<ListProjectsLocationsInstancesVulnerabilityReportsRequest>;
 
-export type VulnerabilityReportList = ReadonlyArray<VulnerabilityReport>;
+export type VulnerabilityReportList = Array<VulnerabilityReport>;
 export const VulnerabilityReportList = /*@__PURE__*/ S.Array(
   VulnerabilityReport,
 ) as any as S.Schema<VulnerabilityReportList>;
@@ -2154,7 +2153,7 @@ export const ListProjectsLocationsOsPolicyAssignmentsRequest =
     identifier: "ListProjectsLocationsOsPolicyAssignmentsRequest",
   }) as any as S.Schema<ListProjectsLocationsOsPolicyAssignmentsRequest>;
 
-export type OSPolicyAssignmentList = ReadonlyArray<OSPolicyAssignment>;
+export type OSPolicyAssignmentList = Array<OSPolicyAssignment>;
 export const OSPolicyAssignmentList = /*@__PURE__*/ S.Array(
   OSPolicyAssignment,
 ) as any as S.Schema<OSPolicyAssignmentList>;

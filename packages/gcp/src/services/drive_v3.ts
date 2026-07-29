@@ -163,7 +163,7 @@ export const ReviewerResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ReviewerResponse",
 }) as any as S.Schema<ReviewerResponse>;
 
-export type ReviewerResponseList = ReadonlyArray<ReviewerResponse>;
+export type ReviewerResponseList = Array<ReviewerResponse>;
 export const ReviewerResponseList = /*@__PURE__*/ S.Array(
   ReviewerResponse,
 ) as any as S.Schema<ReviewerResponseList>;
@@ -291,7 +291,7 @@ export const StringMap = /*@__PURE__*/ S.Record(
   S.String,
 ) as any as S.Schema<StringMap>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -342,7 +342,7 @@ export const ContentRestriction = /*@__PURE__*/ S.suspend(() =>
   identifier: "ContentRestriction",
 }) as any as S.Schema<ContentRestriction>;
 
-export type ContentRestrictionList = ReadonlyArray<ContentRestriction>;
+export type ContentRestrictionList = Array<ContentRestriction>;
 export const ContentRestrictionList = /*@__PURE__*/ S.Array(
   ContentRestriction,
 ) as any as S.Schema<ContentRestrictionList>;
@@ -377,7 +377,7 @@ export const FileContentHints = /*@__PURE__*/ S.suspend(() =>
   identifier: "FileContentHints",
 }) as any as S.Schema<FileContentHints>;
 
-export type UserList = ReadonlyArray<User>;
+export type UserList = Array<User>;
 export const UserList = /*@__PURE__*/ S.Array(
   User,
 ) as any as S.Schema<UserList>;
@@ -437,7 +437,7 @@ export const PermissionTeamDrivePermissionDetailsItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PermissionTeamDrivePermissionDetailsItem>;
 
 export type PermissionTeamDrivePermissionDetailsItemList =
-  ReadonlyArray<PermissionTeamDrivePermissionDetailsItem>;
+  Array<PermissionTeamDrivePermissionDetailsItem>;
 export const PermissionTeamDrivePermissionDetailsItemList =
   /*@__PURE__*/ S.Array(
     PermissionTeamDrivePermissionDetailsItem,
@@ -465,7 +465,7 @@ export const PermissionPermissionDetailsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PermissionPermissionDetailsItem>;
 
 export type PermissionPermissionDetailsItemList =
-  ReadonlyArray<PermissionPermissionDetailsItem>;
+  Array<PermissionPermissionDetailsItem>;
 export const PermissionPermissionDetailsItemList = /*@__PURE__*/ S.Array(
   PermissionPermissionDetailsItem,
 ) as any as S.Schema<PermissionPermissionDetailsItemList>;
@@ -528,7 +528,7 @@ export const Permission = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Permission" }) as any as S.Schema<Permission>;
 
-export type PermissionList_ = ReadonlyArray<Permission>;
+export type PermissionList_ = Array<Permission>;
 export const PermissionList_ = /*@__PURE__*/ S.Array(
   Permission,
 ) as any as S.Schema<PermissionList_>;
@@ -591,7 +591,7 @@ export const Label = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Label" }) as any as S.Schema<Label>;
 
-export type LabelList_ = ReadonlyArray<Label>;
+export type LabelList_ = Array<Label>;
 export const LabelList_ = /*@__PURE__*/ S.Array(
   Label,
 ) as any as S.Schema<LabelList_>;
@@ -1215,7 +1215,7 @@ export const Reply = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Reply" }) as any as S.Schema<Reply>;
 
-export type ReplyList_ = ReadonlyArray<Reply>;
+export type ReplyList_ = Array<Reply>;
 export const ReplyList_ = /*@__PURE__*/ S.Array(
   Reply,
 ) as any as S.Schema<ReplyList_>;
@@ -2081,7 +2081,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -2300,8 +2300,7 @@ export const AboutTeamDriveThemesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "AboutTeamDriveThemesItem",
 }) as any as S.Schema<AboutTeamDriveThemesItem>;
 
-export type AboutTeamDriveThemesItemList =
-  ReadonlyArray<AboutTeamDriveThemesItem>;
+export type AboutTeamDriveThemesItemList = Array<AboutTeamDriveThemesItem>;
 export const AboutTeamDriveThemesItemList = /*@__PURE__*/ S.Array(
   AboutTeamDriveThemesItem,
 ) as any as S.Schema<AboutTeamDriveThemesItemList>;
@@ -2330,7 +2329,7 @@ export const AboutDriveThemesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "AboutDriveThemesItem",
 }) as any as S.Schema<AboutDriveThemesItem>;
 
-export type AboutDriveThemesItemList = ReadonlyArray<AboutDriveThemesItem>;
+export type AboutDriveThemesItemList = Array<AboutDriveThemesItem>;
 export const AboutDriveThemesItemList = /*@__PURE__*/ S.Array(
   AboutDriveThemesItem,
 ) as any as S.Schema<AboutDriveThemesItemList>;
@@ -2440,8 +2439,7 @@ export const AccessProposalRoleAndView = /*@__PURE__*/ S.suspend(() =>
   identifier: "AccessProposalRoleAndView",
 }) as any as S.Schema<AccessProposalRoleAndView>;
 
-export type AccessProposalRoleAndViewList =
-  ReadonlyArray<AccessProposalRoleAndView>;
+export type AccessProposalRoleAndViewList = Array<AccessProposalRoleAndView>;
 export const AccessProposalRoleAndViewList = /*@__PURE__*/ S.Array(
   AccessProposalRoleAndView,
 ) as any as S.Schema<AccessProposalRoleAndViewList>;
@@ -2528,7 +2526,7 @@ export const AppIcons = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AppIcons" }) as any as S.Schema<AppIcons>;
 
-export type AppIconsList = ReadonlyArray<AppIcons>;
+export type AppIconsList = Array<AppIcons>;
 export const AppIconsList = /*@__PURE__*/ S.Array(
   AppIcons,
 ) as any as S.Schema<AppIconsList>;
@@ -2943,7 +2941,7 @@ export const ListAccessproposalsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAccessproposalsRequest",
 }) as any as S.Schema<ListAccessproposalsRequest>;
 
-export type AccessProposalList = ReadonlyArray<AccessProposal>;
+export type AccessProposalList = Array<AccessProposal>;
 export const AccessProposalList = /*@__PURE__*/ S.Array(
   AccessProposal,
 ) as any as S.Schema<AccessProposalList>;
@@ -2988,7 +2986,7 @@ export const ListApprovalsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListApprovalsRequest",
 }) as any as S.Schema<ListApprovalsRequest>;
 
-export type ApprovalList_ = ReadonlyArray<Approval>;
+export type ApprovalList_ = Array<Approval>;
 export const ApprovalList_ = /*@__PURE__*/ S.Array(
   Approval,
 ) as any as S.Schema<ApprovalList_>;
@@ -3034,7 +3032,7 @@ export const ListAppsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAppsRequest",
 }) as any as S.Schema<ListAppsRequest>;
 
-export type AppList_ = ReadonlyArray<App>;
+export type AppList_ = Array<App>;
 export const AppList_ = /*@__PURE__*/ S.Array(App) as any as S.Schema<AppList_>;
 
 /** A list of third-party applications which the user has installed or given access to Google Drive. */
@@ -3155,7 +3153,7 @@ export const Change = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Change" }) as any as S.Schema<Change>;
 
-export type ChangeList_ = ReadonlyArray<Change>;
+export type ChangeList_ = Array<Change>;
 export const ChangeList_ = /*@__PURE__*/ S.Array(
   Change,
 ) as any as S.Schema<ChangeList_>;
@@ -3210,7 +3208,7 @@ export const ListCommentsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListCommentsRequest",
 }) as any as S.Schema<ListCommentsRequest>;
 
-export type CommentList_ = ReadonlyArray<Comment>;
+export type CommentList_ = Array<Comment>;
 export const CommentList_ = /*@__PURE__*/ S.Array(
   Comment,
 ) as any as S.Schema<CommentList_>;
@@ -3259,7 +3257,7 @@ export const ListDrivesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListDrivesRequest",
 }) as any as S.Schema<ListDrivesRequest>;
 
-export type DriveList_ = ReadonlyArray<Drive>;
+export type DriveList_ = Array<Drive>;
 export const DriveList_ = /*@__PURE__*/ S.Array(
   Drive,
 ) as any as S.Schema<DriveList_>;
@@ -3344,7 +3342,7 @@ export const ListFilesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListFilesRequest",
 }) as any as S.Schema<ListFilesRequest>;
 
-export type FileList_ = ReadonlyArray<File>;
+export type FileList_ = Array<File>;
 export const FileList_ = /*@__PURE__*/ S.Array(
   File,
 ) as any as S.Schema<FileList_>;
@@ -3534,7 +3532,7 @@ export const ListRevisionsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListRevisionsRequest",
 }) as any as S.Schema<ListRevisionsRequest>;
 
-export type RevisionList_ = ReadonlyArray<Revision>;
+export type RevisionList_ = Array<Revision>;
 export const RevisionList_ = /*@__PURE__*/ S.Array(
   Revision,
 ) as any as S.Schema<RevisionList_>;
@@ -3583,7 +3581,7 @@ export const ListTeamdrivesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListTeamdrivesRequest",
 }) as any as S.Schema<ListTeamdrivesRequest>;
 
-export type TeamDriveList_ = ReadonlyArray<TeamDrive>;
+export type TeamDriveList_ = Array<TeamDrive>;
 export const TeamDriveList_ = /*@__PURE__*/ S.Array(
   TeamDrive,
 ) as any as S.Schema<TeamDriveList_>;
@@ -3639,7 +3637,7 @@ export const LabelFieldModification = /*@__PURE__*/ S.suspend(() =>
   identifier: "LabelFieldModification",
 }) as any as S.Schema<LabelFieldModification>;
 
-export type LabelFieldModificationList = ReadonlyArray<LabelFieldModification>;
+export type LabelFieldModificationList = Array<LabelFieldModification>;
 export const LabelFieldModificationList = /*@__PURE__*/ S.Array(
   LabelFieldModification,
 ) as any as S.Schema<LabelFieldModificationList>;
@@ -3666,7 +3664,7 @@ export const LabelModification = /*@__PURE__*/ S.suspend(() =>
   identifier: "LabelModification",
 }) as any as S.Schema<LabelModification>;
 
-export type LabelModificationList = ReadonlyArray<LabelModification>;
+export type LabelModificationList = Array<LabelModification>;
 export const LabelModificationList = /*@__PURE__*/ S.Array(
   LabelModification,
 ) as any as S.Schema<LabelModificationList>;
@@ -3735,7 +3733,7 @@ export const AddReviewer = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AddReviewer" }) as any as S.Schema<AddReviewer>;
 
-export type AddReviewerList = ReadonlyArray<AddReviewer>;
+export type AddReviewerList = Array<AddReviewer>;
 export const AddReviewerList = /*@__PURE__*/ S.Array(
   AddReviewer,
 ) as any as S.Schema<AddReviewerList>;
@@ -3756,7 +3754,7 @@ export const ReplaceReviewer = /*@__PURE__*/ S.suspend(() =>
   identifier: "ReplaceReviewer",
 }) as any as S.Schema<ReplaceReviewer>;
 
-export type ReplaceReviewerList = ReadonlyArray<ReplaceReviewer>;
+export type ReplaceReviewerList = Array<ReplaceReviewer>;
 export const ReplaceReviewerList = /*@__PURE__*/ S.Array(
   ReplaceReviewer,
 ) as any as S.Schema<ReplaceReviewerList>;

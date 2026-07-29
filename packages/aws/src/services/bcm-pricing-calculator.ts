@@ -1501,7 +1501,7 @@ export type RateType =
   | "AFTER_DISCOUNTS_AND_COMMITMENTS";
 export const RateType = /*@__PURE__*/ S.String;
 
-export type RateTypes = RateType[];
+export type RateTypes = (RateType | (string & {}))[];
 export const RateTypes = /*@__PURE__*/ S.Array(RateType);
 export interface GetPreferencesResponse {
   managementAccountRateTypeSelections?: RateType[];

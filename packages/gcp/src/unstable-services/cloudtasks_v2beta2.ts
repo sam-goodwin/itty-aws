@@ -198,7 +198,7 @@ export interface AppEngineHttpRequest {
   /** Task-level setting for App Engine routing. If set, app_engine_routing_override is used for all tasks in the queue, no matter what the setting is for the task-level app_engine_routing. */
   appEngineRouting?: AppEngineRouting;
   /** The HTTP method to use for the request. The default is POST. The app's request handler for the task's target URL must be able to handle HTTP requests with this http_method, otherwise the task attempt fails with error code 405 (Method Not Allowed). See [Writing a push task request handler](https://cloud.google.com/appengine/docs/java/taskqueue/push/creating-handlers#writing_a_push_task_request_handler) and the App Engine documentation for your runtime on [How Requests are Handled](https://cloud.google.com/appengine/docs/standard/python3/how-requests-are-handled). */
-  httpMethod?: AppEngineHttpRequestHttpMethodEnum;
+  httpMethod?: AppEngineHttpRequestHttpMethodEnum | (string & {});
   /** The relative URL. The relative URL must begin with "/" and must be a valid HTTP relative URL. It can contain a path and query string arguments. If the relative URL is empty, then the root path "/" will be used. No spaces are allowed, and the maximum length allowed is 2083 characters. */
   relativeUrl?: string;
 }
@@ -220,7 +220,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -334,7 +334,7 @@ export interface HttpRequest {
   /** HTTP request body. A request body is allowed only if the HTTP method is POST, PUT, or PATCH. It is an error to set body on a task with an incompatible HttpMethod. */
   body?: string;
   /** The HTTP method to use for the request. The default is POST. */
-  httpMethod?: HttpRequestHttpMethodEnum;
+  httpMethod?: HttpRequestHttpMethodEnum | (string & {});
 }
 export const HttpRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -350,7 +350,7 @@ export const HttpRequest = /*@__PURE__*/ S.suspend(() =>
 /** A unit of scheduled work. */
 export interface Task {
   /** Output only. The view specifies which subset of the Task has been returned. */
-  view?: TaskViewEnum;
+  view?: TaskViewEnum | (string & {});
   /** Optional. Specifies the task-level retry config. If present, this overrides the queue-level retry config for this task. */
   retryConfig?: RetryConfig;
   /** LeaseTasks to process the task. Can be set only if pull_target is set on the queue. A pull task is a task that has PullMessage set. */
@@ -401,7 +401,7 @@ export const CreateTaskRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateTaskRequest",
 }) as any as S.Schema<CreateTaskRequest>;
 
-export type CreateTaskRequestList = ReadonlyArray<CreateTaskRequest>;
+export type CreateTaskRequestList = Array<CreateTaskRequest>;
 export const CreateTaskRequestList = /*@__PURE__*/ S.Array(
   CreateTaskRequest,
 ) as any as S.Schema<CreateTaskRequestList>;
@@ -467,7 +467,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -728,11 +728,13 @@ export interface UriOverride {
   /** URI Query. When specified, replaces the query part of the task URI. Setting the query value to an empty string clears the URI query segment. */
   queryOverride?: QueryOverride;
   /** Scheme override. When specified, the task URI scheme is replaced by the provided value (HTTP or HTTPS). */
-  scheme?: UriOverrideSchemeEnum;
+  scheme?: UriOverrideSchemeEnum | (string & {});
   /** URI path. When specified, replaces the existing path of the task URL. Setting the path value to an empty string clears the URI path segment. */
   pathOverride?: PathOverride;
   /** URI Override Enforce Mode When specified, determines the Target UriOverride mode. If not specified, it defaults to ALWAYS. */
-  uriOverrideEnforceMode?: UriOverrideUriOverrideEnforceModeEnum;
+  uriOverrideEnforceMode?:
+    | UriOverrideUriOverrideEnforceModeEnum
+    | (string & {});
 }
 export const UriOverride = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -781,7 +783,7 @@ export const HeaderOverride = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "HeaderOverride" }) as any as S.Schema<HeaderOverride>;
 
-export type HeaderOverrideList = ReadonlyArray<HeaderOverride>;
+export type HeaderOverrideList = Array<HeaderOverride>;
 export const HeaderOverrideList = /*@__PURE__*/ S.Array(
   HeaderOverride,
 ) as any as S.Schema<HeaderOverrideList>;
@@ -791,7 +793,7 @@ export interface HttpTarget {
   /** Uri override. When specified, overrides the execution Uri for all the tasks in the queue. */
   uriOverride?: UriOverride;
   /** The HTTP method to use for the request. When specified, it overrides HttpRequest for the task. Note that if the value is set to HttpMethod the HttpRequest of the task will be ignored at execution time. */
-  httpMethod?: HttpTargetHttpMethodEnum;
+  httpMethod?: HttpTargetHttpMethodEnum | (string & {});
   /** HTTP target headers. This map contains the header field names and values. Headers will be set when running the task is created and/or task is created. These headers represent a subset of the headers that will accompany the task's HTTP request. Some HTTP request headers will be ignored or replaced. A partial list of headers that will be ignored or replaced is: * Any header that is prefixed with "X-CloudTasks-" will be treated as service header. Service headers define properties of the task and are predefined in CloudTask. * Host: This will be computed by Cloud Tasks and derived from HttpRequest.url. * Content-Length: This will be computed by Cloud Tasks. * User-Agent: This will be set to `"Google-CloudTasks"`. * `X-Google-*`: Google use only. * `X-AppEngine-*`: Google use only. `Content-Type` won't be set by Cloud Tasks. You can explicitly set `Content-Type` to a media type when the task is created. For example, `Content-Type` can be set to `"application/octet-stream"` or `"application/json"`. Headers which can have multiple values (according to RFC2616) can be specified using comma-separated values. The size of the headers must be less than 80KB. Queue-level headers to override headers of all the tasks in the queue. Do not put business sensitive or personally identifying data in the HTTP Header Override Configuration or other similar fields in accordance with Section 12 (Resource Fields) of the [Service Specific Terms](https://cloud.google.com/terms/service-terms). */
   headerOverrides?: HeaderOverrideList;
   /** If specified, an [OIDC](https://developers.google.com/identity/protocols/OpenIDConnect) token is generated and attached as an `Authorization` header in the HTTP request. This type of authorization can be used for many scenarios, including calling Cloud Run, or endpoints where you intend to validate the token yourself. Note that both the service account email and the audience MUST be specified when using the queue-level authorization override. */
@@ -828,7 +830,7 @@ export interface Queue {
   /** Settings that determine the retry behavior. * For tasks created using Cloud Tasks: the queue-level retry settings apply to all tasks in the queue that were created using Cloud Tasks. Retry settings cannot be set on individual tasks. * For tasks created using the App Engine SDK: the queue-level retry settings apply to all tasks in the queue which do not have retry settings explicitly set on the task and were created by the App Engine SDK. See [App Engine documentation](https://cloud.google.com/appengine/docs/standard/python/taskqueue/push/retrying-tasks). */
   retryConfig?: RetryConfig;
   /** Output only. The state of the queue. `state` can only be changed by called PauseQueue, ResumeQueue, or uploading [queue.yaml/xml](https://cloud.google.com/appengine/docs/python/config/queueref). UpdateQueue cannot be used to change `state`. */
-  state?: QueueStateEnum;
+  state?: QueueStateEnum | (string & {});
   /** App Engine HTTP target. An App Engine queue is a queue that has an AppEngineHttpTarget. */
   appEngineHttpTarget?: AppEngineHttpTarget;
   /** An http_target is used to override the target values for HTTP tasks. */
@@ -1050,7 +1052,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
-export type BindingList = ReadonlyArray<Binding>;
+export type BindingList = Array<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -1236,7 +1238,7 @@ export const LeaseProjectsLocationsQueuesTasksRequest = /*@__PURE__*/ S.suspend(
   identifier: "LeaseProjectsLocationsQueuesTasksRequest",
 }) as any as S.Schema<LeaseProjectsLocationsQueuesTasksRequest>;
 
-export type TaskList = ReadonlyArray<Task>;
+export type TaskList = Array<Task>;
 export const TaskList = /*@__PURE__*/ S.Array(
   Task,
 ) as any as S.Schema<TaskList>;
@@ -1284,7 +1286,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = ReadonlyArray<Location>;
+export type LocationList = Array<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -1335,7 +1337,7 @@ export const ListProjectsLocationsQueuesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsQueuesRequest",
 }) as any as S.Schema<ListProjectsLocationsQueuesRequest>;
 
-export type QueueList = ReadonlyArray<Queue>;
+export type QueueList = Array<Queue>;
 export const QueueList = /*@__PURE__*/ S.Array(
   Queue,
 ) as any as S.Schema<QueueList>;

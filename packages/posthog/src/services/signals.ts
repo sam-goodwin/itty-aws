@@ -80,7 +80,7 @@ export const PauseStateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PauseStateResponse>;
 
 export type PaginatedPauseStateResponseListResultsList =
-  ReadonlyArray<PauseStateResponse>;
+  Array<PauseStateResponse>;
 export const PaginatedPauseStateResponseListResultsList = /*@__PURE__*/ S.Array(
   PauseStateResponse,
 ) as any as S.Schema<PaginatedPauseStateResponseListResultsList>;
@@ -340,7 +340,7 @@ export const SignalReportArtefactContentCase0Map = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<SignalReportArtefactContentCase0Map>;
 
-export type SignalReportArtefactContentCase1List = ReadonlyArray<unknown>;
+export type SignalReportArtefactContentCase1List = Array<unknown>;
 export const SignalReportArtefactContentCase1List = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<SignalReportArtefactContentCase1List>;
@@ -394,7 +394,7 @@ export const SignalReportArtefact = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SignalReportArtefact>;
 
 export type PaginatedSignalReportArtefactListResultsList =
-  ReadonlyArray<SignalReportArtefact>;
+  Array<SignalReportArtefact>;
 export const PaginatedSignalReportArtefactListResultsList =
   /*@__PURE__*/ S.Array(
     SignalReportArtefact,
@@ -485,7 +485,7 @@ export type DismissalReasonEnum =
 export const DismissalReasonEnum = /*@__PURE__*/ S.String;
 
 /** Report ids to transition to `state` in one call (1–100). Duplicates are de-duplicated; each id is processed independently so one disallowed transition does not block the rest. `dismissal_reason`, `dismissal_note` and `snooze_for` apply to every id. */
-export type SignalsReportsBulkStateCreateRequestIdsList = ReadonlyArray<string>;
+export type SignalsReportsBulkStateCreateRequestIdsList = Array<string>;
 export const SignalsReportsBulkStateCreateRequestIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -548,7 +548,7 @@ export const SignalReportBulkStateResult = /*@__PURE__*/ S.suspend(() =>
 
 /** One result per requested id, in request order (after de-duplication). */
 export type SignalReportBulkStateResponseResultsList =
-  ReadonlyArray<SignalReportBulkStateResult>;
+  Array<SignalReportBulkStateResult>;
 export const SignalReportBulkStateResponseResultsList = /*@__PURE__*/ S.Array(
   SignalReportBulkStateResult,
 ) as any as S.Schema<SignalReportBulkStateResponseResultsList>;
@@ -645,7 +645,7 @@ export type SignalReportStatusEnum =
 export const SignalReportStatusEnum = /*@__PURE__*/ S.String;
 
 /** Distinct source products contributing signals to this report (from ClickHouse). */
-export type SignalReportSourceProductsList = ReadonlyArray<string>;
+export type SignalReportSourceProductsList = Array<string>;
 export const SignalReportSourceProductsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SignalReportSourceProductsList>;
@@ -779,7 +779,7 @@ export const SignalReport = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SignalReport" }) as any as S.Schema<SignalReport>;
 
-export type PaginatedSignalReportListResultsList = ReadonlyArray<SignalReport>;
+export type PaginatedSignalReportListResultsList = Array<SignalReport>;
 export const PaginatedSignalReportListResultsList = /*@__PURE__*/ S.Array(
   SignalReport,
 ) as any as S.Schema<PaginatedSignalReportListResultsList>;
@@ -1081,7 +1081,7 @@ export const SessionProblemEventEntry = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SessionProblemEventEntry>;
 
 export type SessionProblemSignalExtraEventHistoryList =
-  ReadonlyArray<SessionProblemEventEntry>;
+  Array<SessionProblemEventEntry>;
 export const SessionProblemSignalExtraEventHistoryList = /*@__PURE__*/ S.Array(
   SessionProblemEventEntry,
 ) as any as S.Schema<SessionProblemSignalExtraEventHistoryList>;
@@ -1165,7 +1165,7 @@ export const LlmEvalReportSignalExtra = /*@__PURE__*/ S.suspend(() =>
   identifier: "LlmEvalReportSignalExtra",
 }) as any as S.Schema<LlmEvalReportSignalExtra>;
 
-export type ZendeskTicketSignalExtraTagsList = ReadonlyArray<string>;
+export type ZendeskTicketSignalExtraTagsList = Array<string>;
 export const ZendeskTicketSignalExtraTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ZendeskTicketSignalExtraTagsList>;
@@ -1191,7 +1191,7 @@ export const ZendeskTicketSignalExtra = /*@__PURE__*/ S.suspend(() =>
   identifier: "ZendeskTicketSignalExtra",
 }) as any as S.Schema<ZendeskTicketSignalExtra>;
 
-export type GithubIssueSignalExtraLabelsList = ReadonlyArray<string>;
+export type GithubIssueSignalExtraLabelsList = Array<string>;
 export const GithubIssueSignalExtraLabelsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GithubIssueSignalExtraLabelsList>;
@@ -1219,7 +1219,7 @@ export const GithubIssueSignalExtra = /*@__PURE__*/ S.suspend(() =>
   identifier: "GithubIssueSignalExtra",
 }) as any as S.Schema<GithubIssueSignalExtra>;
 
-export type LinearIssueSignalExtraLabelsList = ReadonlyArray<string>;
+export type LinearIssueSignalExtraLabelsList = Array<string>;
 export const LinearIssueSignalExtraLabelsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LinearIssueSignalExtraLabelsList>;
@@ -1255,7 +1255,7 @@ export const LinearIssueSignalExtra = /*@__PURE__*/ S.suspend(() =>
   identifier: "LinearIssueSignalExtra",
 }) as any as S.Schema<LinearIssueSignalExtra>;
 
-export type JiraIssueSignalExtraLabelsList = ReadonlyArray<string>;
+export type JiraIssueSignalExtraLabelsList = Array<string>;
 export const JiraIssueSignalExtraLabelsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<JiraIssueSignalExtraLabelsList>;
@@ -1337,7 +1337,7 @@ export const PgAnalyzeIssueReference = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PgAnalyzeIssueReference>;
 
 export type PgAnalyzeIssueSignalExtraReferencesList =
-  ReadonlyArray<PgAnalyzeIssueReference>;
+  Array<PgAnalyzeIssueReference>;
 export const PgAnalyzeIssueSignalExtraReferencesList = /*@__PURE__*/ S.Array(
   PgAnalyzeIssueReference,
 ) as any as S.Schema<PgAnalyzeIssueSignalExtraReferencesList>;
@@ -1417,17 +1417,17 @@ export const SignalsScoutEvidenceEntry = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SignalsScoutEvidenceEntry>;
 
 export type SignalsScoutSignalExtraEvidenceList =
-  ReadonlyArray<SignalsScoutEvidenceEntry>;
+  Array<SignalsScoutEvidenceEntry>;
 export const SignalsScoutSignalExtraEvidenceList = /*@__PURE__*/ S.Array(
   SignalsScoutEvidenceEntry,
 ) as any as S.Schema<SignalsScoutSignalExtraEvidenceList>;
 
-export type SignalsScoutSignalExtraDedupeKeysList = ReadonlyArray<string>;
+export type SignalsScoutSignalExtraDedupeKeysList = Array<string>;
 export const SignalsScoutSignalExtraDedupeKeysList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SignalsScoutSignalExtraDedupeKeysList>;
 
-export type SignalsScoutSignalExtraTagsList = ReadonlyArray<string>;
+export type SignalsScoutSignalExtraTagsList = Array<string>;
 export const SignalsScoutSignalExtraTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SignalsScoutSignalExtraTagsList>;
@@ -1578,7 +1578,7 @@ export type InvestigationVerdictEnum =
 export const InvestigationVerdictEnum = /*@__PURE__*/ S.String;
 
 export type AnalyticsAnomalyInvestigationSignalExtraTriggeredDatesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const AnalyticsAnomalyInvestigationSignalExtraTriggeredDatesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1742,7 +1742,7 @@ export const EngineeringAnalyticsCIDurationRegressionSignalExtra =
     identifier: "EngineeringAnalyticsCIDurationRegressionSignalExtra",
   }) as any as S.Schema<EngineeringAnalyticsCIDurationRegressionSignalExtra>;
 
-export type FreshdeskTicketSignalExtraTagsList = ReadonlyArray<unknown>;
+export type FreshdeskTicketSignalExtraTagsList = Array<unknown>;
 export const FreshdeskTicketSignalExtraTagsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<FreshdeskTicketSignalExtraTagsList>;
@@ -1766,7 +1766,7 @@ export const FreshdeskTicketSignalExtra = /*@__PURE__*/ S.suspend(() =>
   identifier: "FreshdeskTicketSignalExtra",
 }) as any as S.Schema<FreshdeskTicketSignalExtra>;
 
-export type FreshserviceTicketSignalExtraTagsList = ReadonlyArray<unknown>;
+export type FreshserviceTicketSignalExtraTagsList = Array<unknown>;
 export const FreshserviceTicketSignalExtraTagsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<FreshserviceTicketSignalExtraTagsList>;
@@ -1792,7 +1792,7 @@ export const FreshserviceTicketSignalExtra = /*@__PURE__*/ S.suspend(() =>
   identifier: "FreshserviceTicketSignalExtra",
 }) as any as S.Schema<FreshserviceTicketSignalExtra>;
 
-export type FrontConversationSignalExtraTagsList = ReadonlyArray<unknown>;
+export type FrontConversationSignalExtraTagsList = Array<unknown>;
 export const FrontConversationSignalExtraTagsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<FrontConversationSignalExtraTagsList>;
@@ -1812,7 +1812,7 @@ export const FrontConversationSignalExtra = /*@__PURE__*/ S.suspend(() =>
   identifier: "FrontConversationSignalExtra",
 }) as any as S.Schema<FrontConversationSignalExtra>;
 
-export type GorgiasTicketSignalExtraTagsList = ReadonlyArray<unknown>;
+export type GorgiasTicketSignalExtraTagsList = Array<unknown>;
 export const GorgiasTicketSignalExtraTagsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<GorgiasTicketSignalExtraTagsList>;
@@ -1836,7 +1836,7 @@ export const GorgiasTicketSignalExtra = /*@__PURE__*/ S.suspend(() =>
   identifier: "GorgiasTicketSignalExtra",
 }) as any as S.Schema<GorgiasTicketSignalExtra>;
 
-export type KustomerConversationSignalExtraTagsList = ReadonlyArray<unknown>;
+export type KustomerConversationSignalExtraTagsList = Array<unknown>;
 export const KustomerConversationSignalExtraTagsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<KustomerConversationSignalExtraTagsList>;
@@ -1858,7 +1858,7 @@ export const KustomerConversationSignalExtra = /*@__PURE__*/ S.suspend(() =>
   identifier: "KustomerConversationSignalExtra",
 }) as any as S.Schema<KustomerConversationSignalExtra>;
 
-export type DixaConversationSignalExtraTagsList = ReadonlyArray<unknown>;
+export type DixaConversationSignalExtraTagsList = Array<unknown>;
 export const DixaConversationSignalExtraTagsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<DixaConversationSignalExtraTagsList>;
@@ -1880,7 +1880,7 @@ export const DixaConversationSignalExtra = /*@__PURE__*/ S.suspend(() =>
   identifier: "DixaConversationSignalExtra",
 }) as any as S.Schema<DixaConversationSignalExtra>;
 
-export type PlainThreadSignalExtraLabelsList = ReadonlyArray<unknown>;
+export type PlainThreadSignalExtraLabelsList = Array<unknown>;
 export const PlainThreadSignalExtraLabelsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<PlainThreadSignalExtraLabelsList>;
@@ -1902,7 +1902,7 @@ export const PlainThreadSignalExtra = /*@__PURE__*/ S.suspend(() =>
   identifier: "PlainThreadSignalExtra",
 }) as any as S.Schema<PlainThreadSignalExtra>;
 
-export type GitlabIssueSignalExtraLabelsList = ReadonlyArray<unknown>;
+export type GitlabIssueSignalExtraLabelsList = Array<unknown>;
 export const GitlabIssueSignalExtraLabelsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<GitlabIssueSignalExtraLabelsList>;
@@ -1926,7 +1926,7 @@ export const GitlabIssueSignalExtra = /*@__PURE__*/ S.suspend(() =>
   identifier: "GitlabIssueSignalExtra",
 }) as any as S.Schema<GitlabIssueSignalExtra>;
 
-export type GiteaIssueSignalExtraLabelsList = ReadonlyArray<unknown>;
+export type GiteaIssueSignalExtraLabelsList = Array<unknown>;
 export const GiteaIssueSignalExtraLabelsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<GiteaIssueSignalExtraLabelsList>;
@@ -1950,7 +1950,7 @@ export const GiteaIssueSignalExtra = /*@__PURE__*/ S.suspend(() =>
   identifier: "GiteaIssueSignalExtra",
 }) as any as S.Schema<GiteaIssueSignalExtra>;
 
-export type ShortcutStorySignalExtraLabelsList = ReadonlyArray<unknown>;
+export type ShortcutStorySignalExtraLabelsList = Array<unknown>;
 export const ShortcutStorySignalExtraLabelsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<ShortcutStorySignalExtraLabelsList>;
@@ -2029,7 +2029,7 @@ export const BugsnagErrorSignalExtra = /*@__PURE__*/ S.suspend(() =>
   identifier: "BugsnagErrorSignalExtra",
 }) as any as S.Schema<BugsnagErrorSignalExtra>;
 
-export type HoneybadgerFaultSignalExtraTagsList = ReadonlyArray<unknown>;
+export type HoneybadgerFaultSignalExtraTagsList = Array<unknown>;
 export const HoneybadgerFaultSignalExtraTagsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<HoneybadgerFaultSignalExtraTagsList>;
@@ -2147,7 +2147,7 @@ export const Rapid7InsightvmScannerFindingSignalExtra = /*@__PURE__*/ S.suspend(
   identifier: "Rapid7InsightvmScannerFindingSignalExtra",
 }) as any as S.Schema<Rapid7InsightvmScannerFindingSignalExtra>;
 
-export type FeaturebaseFeedbackSignalExtraTagsList = ReadonlyArray<unknown>;
+export type FeaturebaseFeedbackSignalExtraTagsList = Array<unknown>;
 export const FeaturebaseFeedbackSignalExtraTagsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<FeaturebaseFeedbackSignalExtraTagsList>;
@@ -2169,7 +2169,7 @@ export const FeaturebaseFeedbackSignalExtra = /*@__PURE__*/ S.suspend(() =>
   identifier: "FeaturebaseFeedbackSignalExtra",
 }) as any as S.Schema<FeaturebaseFeedbackSignalExtra>;
 
-export type FrillFeedbackSignalExtraTopicsList = ReadonlyArray<unknown>;
+export type FrillFeedbackSignalExtraTopicsList = Array<unknown>;
 export const FrillFeedbackSignalExtraTopicsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<FrillFeedbackSignalExtraTopicsList>;
@@ -2227,7 +2227,7 @@ export const UservoiceFeedbackSignalExtra = /*@__PURE__*/ S.suspend(() =>
   identifier: "UservoiceFeedbackSignalExtra",
 }) as any as S.Schema<UservoiceFeedbackSignalExtra>;
 
-export type ProductboardFeedbackSignalExtraTagsList = ReadonlyArray<unknown>;
+export type ProductboardFeedbackSignalExtraTagsList = Array<unknown>;
 export const ProductboardFeedbackSignalExtraTagsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<ProductboardFeedbackSignalExtraTagsList>;
@@ -2249,7 +2249,7 @@ export const ProductboardFeedbackSignalExtra = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProductboardFeedbackSignalExtra",
 }) as any as S.Schema<ProductboardFeedbackSignalExtra>;
 
-export type CannyFeedbackSignalExtraTagsList = ReadonlyArray<unknown>;
+export type CannyFeedbackSignalExtraTagsList = Array<unknown>;
 export const CannyFeedbackSignalExtraTagsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<CannyFeedbackSignalExtraTagsList>;
@@ -2294,8 +2294,7 @@ export const AsknicelyFeedbackSignalExtra = /*@__PURE__*/ S.suspend(() =>
   identifier: "AsknicelyFeedbackSignalExtra",
 }) as any as S.Schema<AsknicelyFeedbackSignalExtra>;
 
-export type RetentlyFeedbackSignalExtraFeedbackTopicsList =
-  ReadonlyArray<unknown>;
+export type RetentlyFeedbackSignalExtraFeedbackTopicsList = Array<unknown>;
 export const RetentlyFeedbackSignalExtraFeedbackTopicsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -2879,7 +2878,7 @@ export const MatchedMetadata = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MatchedMetadata>;
 
 /** Candidate signals that were considered and rejected. */
-export type NoMatchMetadataRejectedSignalIdsList = ReadonlyArray<string>;
+export type NoMatchMetadataRejectedSignalIdsList = Array<string>;
 export const NoMatchMetadataRejectedSignalIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<NoMatchMetadataRejectedSignalIdsList>;
@@ -2964,7 +2963,7 @@ export const SignalNode = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SignalNode" }) as any as S.Schema<SignalNode>;
 
 /** All signals contributing to the report. */
-export type ReportSignalsResponseSignalsList = ReadonlyArray<SignalNode>;
+export type ReportSignalsResponseSignalsList = Array<SignalNode>;
 export const ReportSignalsResponseSignalsList = /*@__PURE__*/ S.Array(
   SignalNode,
 ) as any as S.Schema<ReportSignalsResponseSignalsList>;
@@ -3171,8 +3170,7 @@ export const SignalsScoutConfigListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "SignalsScoutConfigListRequest",
 }) as any as S.Schema<SignalsScoutConfigListRequest>;
 
-export type SignalsScoutConfigListResponseBodyList =
-  ReadonlyArray<SignalScoutConfig>;
+export type SignalsScoutConfigListResponseBodyList = Array<SignalScoutConfig>;
 export const SignalsScoutConfigListResponseBodyList = /*@__PURE__*/ S.Array(
   SignalScoutConfig,
 ) as any as S.Schema<SignalsScoutConfigListResponseBodyList>;
@@ -3231,8 +3229,7 @@ export const SignalsScoutConfigSyncRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "SignalsScoutConfigSyncRequest",
 }) as any as S.Schema<SignalsScoutConfigSyncRequest>;
 
-export type SignalsScoutConfigSyncResponseBodyList =
-  ReadonlyArray<SignalScoutConfig>;
+export type SignalsScoutConfigSyncResponseBodyList = Array<SignalScoutConfig>;
 export const SignalsScoutConfigSyncResponseBodyList = /*@__PURE__*/ S.Array(
   SignalScoutConfig,
 ) as any as S.Schema<SignalsScoutConfigSyncResponseBodyList>;
@@ -3302,7 +3299,7 @@ export const SuggestedReviewer = /*@__PURE__*/ S.suspend(() =>
 
 /** Optional reviewers to set on the report (each a `github_login` and/or `user_uuid`), replacing any existing list. Use this to route a report that surfaced with no reviewer — it re-runs autostart, so a report that was missing a qualifying reviewer can now open a draft PR. An empty list is a no-op (existing reviewers are left untouched, never cleared). */
 export type SignalsScoutEditReportRequestSuggestedReviewersList =
-  ReadonlyArray<SuggestedReviewer>;
+  Array<SuggestedReviewer>;
 export const SignalsScoutEditReportRequestSuggestedReviewersList =
   /*@__PURE__*/ S.Array(
     SuggestedReviewer,
@@ -3347,7 +3344,7 @@ export const SignalsScoutEditReportRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SignalsScoutEditReportRequest>;
 
 /** Which presentation fields changed (e.g. `title`, `summary`); empty if only a note was appended. */
-export type EditReportResponseUpdatedFieldsList = ReadonlyArray<string>;
+export type EditReportResponseUpdatedFieldsList = Array<string>;
 export const EditReportResponseUpdatedFieldsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EditReportResponseUpdatedFieldsList>;
@@ -3391,8 +3388,7 @@ export const ReportEvidence = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ReportEvidence" }) as any as S.Schema<ReportEvidence>;
 
 /** The observations backing the report — each becomes a bound signal. At least one. */
-export type SignalsScoutEmitReportRequestEvidenceList =
-  ReadonlyArray<ReportEvidence>;
+export type SignalsScoutEmitReportRequestEvidenceList = Array<ReportEvidence>;
 export const SignalsScoutEmitReportRequestEvidenceList = /*@__PURE__*/ S.Array(
   ReportEvidence,
 ) as any as S.Schema<SignalsScoutEmitReportRequestEvidenceList>;
@@ -3410,7 +3406,7 @@ export const AutonomyPriorityEnum = /*@__PURE__*/ S.String;
 
 /** Optional reviewers to route the report to (each a `github_login` and/or `user_uuid`). This is the primary way a report reaches a human — the inbox floats a reviewer's own reports to the top of their inbox even when no PR is involved — so set it whenever you can name a plausible owner. It also gates autostart: a PR opens only if at least one reviewer clears their autonomy threshold. */
 export type SignalsScoutEmitReportRequestSuggestedReviewersList =
-  ReadonlyArray<SuggestedReviewer>;
+  Array<SuggestedReviewer>;
 export const SignalsScoutEmitReportRequestSuggestedReviewersList =
   /*@__PURE__*/ S.Array(
     SuggestedReviewer,
@@ -3514,21 +3510,20 @@ export const EvidenceEntry = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EvidenceEntry" }) as any as S.Schema<EvidenceEntry>;
 
 /** Citations supporting the finding. Capped at 20 entries. */
-export type SignalsScoutEmitSignalRequestEvidenceList =
-  ReadonlyArray<EvidenceEntry>;
+export type SignalsScoutEmitSignalRequestEvidenceList = Array<EvidenceEntry>;
 export const SignalsScoutEmitSignalRequestEvidenceList = /*@__PURE__*/ S.Array(
   EvidenceEntry,
 ) as any as S.Schema<SignalsScoutEmitSignalRequestEvidenceList>;
 
 /** Optional keys for downstream dedupe (e.g. `error_tracking_issue:<id>`). */
-export type SignalsScoutEmitSignalRequestDedupeKeysList = ReadonlyArray<string>;
+export type SignalsScoutEmitSignalRequestDedupeKeysList = Array<string>;
 export const SignalsScoutEmitSignalRequestDedupeKeysList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<SignalsScoutEmitSignalRequestDedupeKeysList>;
 
 /** Optional category tags as lowercase kebab-case slugs (e.g. `cost-spike`, `silent-failure`), max 10. Reuse the vocabulary in your `tags:<domain>:taxonomy` scratchpad entry when a tag fits; coin a new slug when a genuinely new category emerges. Near-miss formats are normalized to slugs; persisted in the signal's `extra.tags` and on the emission row. */
-export type SignalsScoutEmitSignalRequestTagsList = ReadonlyArray<string>;
+export type SignalsScoutEmitSignalRequestTagsList = Array<string>;
 export const SignalsScoutEmitSignalRequestTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SignalsScoutEmitSignalRequestTagsList>;
@@ -3662,8 +3657,7 @@ export const ScoutMember = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ScoutMember" }) as any as S.Schema<ScoutMember>;
 
-export type SignalsScoutMembersListResponseBodyList =
-  ReadonlyArray<ScoutMember>;
+export type SignalsScoutMembersListResponseBodyList = Array<ScoutMember>;
 export const SignalsScoutMembersListResponseBodyList = /*@__PURE__*/ S.Array(
   ScoutMember,
 ) as any as S.Schema<SignalsScoutMembersListResponseBodyList>;
@@ -3850,7 +3844,7 @@ export const SignalsScoutNotesListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "SignalsScoutNotesListRequest",
 }) as any as S.Schema<SignalsScoutNotesListRequest>;
 
-export type SignalsScoutNotesListResponseBodyList = ReadonlyArray<ScoutNote>;
+export type SignalsScoutNotesListResponseBodyList = Array<ScoutNote>;
 export const SignalsScoutNotesListResponseBodyList = /*@__PURE__*/ S.Array(
   ScoutNote,
 ) as any as S.Schema<SignalsScoutNotesListResponseBodyList>;
@@ -3886,7 +3880,7 @@ export const SignalsScoutProjectProfileGetRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<SignalsScoutProjectProfileGetRequest>;
 
 /** Registered app URLs for this team (toolbar / replay). The team's actual product surface; complements `$pageview.$host` discovery via `read-data-schema`. */
-export type ProjectContextAppUrlsList = ReadonlyArray<string>;
+export type ProjectContextAppUrlsList = Array<string>;
 export const ProjectContextAppUrlsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ProjectContextAppUrlsList>;
@@ -3906,7 +3900,7 @@ export const ProjectContext = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ProjectContext" }) as any as S.Schema<ProjectContext>;
 
 /** Product keys this team has completed onboarding for, sorted alphabetically. */
-export type ProjectProfileInventoryProductsInUseList = ReadonlyArray<string>;
+export type ProjectProfileInventoryProductsInUseList = Array<string>;
 export const ProjectProfileInventoryProductsInUseList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ProjectProfileInventoryProductsInUseList>;
@@ -3932,7 +3926,7 @@ export const ProductIntentEntry = /*@__PURE__*/ S.suspend(() =>
 
 /** Products the team signaled intent to use; useful for spotting stuck onboardings. */
 export type ProjectProfileInventoryProductIntentsList =
-  ReadonlyArray<ProductIntentEntry>;
+  Array<ProductIntentEntry>;
 export const ProjectProfileInventoryProductIntentsList = /*@__PURE__*/ S.Array(
   ProductIntentEntry,
 ) as any as S.Schema<ProjectProfileInventoryProductIntentsList>;
@@ -3954,8 +3948,7 @@ export const IntegrationEntry = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IntegrationEntry>;
 
 /** Connected integrations (kind + connection time only — config never surfaced). */
-export type ProjectProfileInventoryIntegrationsList =
-  ReadonlyArray<IntegrationEntry>;
+export type ProjectProfileInventoryIntegrationsList = Array<IntegrationEntry>;
 export const ProjectProfileInventoryIntegrationsList = /*@__PURE__*/ S.Array(
   IntegrationEntry,
 ) as any as S.Schema<ProjectProfileInventoryIntegrationsList>;
@@ -3990,7 +3983,7 @@ export const ExternalDataSourceEntry = /*@__PURE__*/ S.suspend(() =>
 
 /** Connected warehouse sources (excludes soft-deleted). */
 export type ProjectProfileInventoryExternalDataSourcesList =
-  ReadonlyArray<ExternalDataSourceEntry>;
+  Array<ExternalDataSourceEntry>;
 export const ProjectProfileInventoryExternalDataSourcesList =
   /*@__PURE__*/ S.Array(
     ExternalDataSourceEntry,
@@ -4014,14 +4007,14 @@ export const SignalSourceConfigEntry = /*@__PURE__*/ S.suspend(() =>
 
 /** Source configs the team has explicitly enabled. */
 export type SignalSourceConfigsBucketsEnabledList =
-  ReadonlyArray<SignalSourceConfigEntry>;
+  Array<SignalSourceConfigEntry>;
 export const SignalSourceConfigsBucketsEnabledList = /*@__PURE__*/ S.Array(
   SignalSourceConfigEntry,
 ) as any as S.Schema<SignalSourceConfigsBucketsEnabledList>;
 
 /** Source configs the team has explicitly disabled (different from never wired up). */
 export type SignalSourceConfigsBucketsDisabledList =
-  ReadonlyArray<SignalSourceConfigEntry>;
+  Array<SignalSourceConfigEntry>;
 export const SignalSourceConfigsBucketsDisabledList = /*@__PURE__*/ S.Array(
   SignalSourceConfigEntry,
 ) as any as S.Schema<SignalSourceConfigsBucketsDisabledList>;
@@ -4081,8 +4074,7 @@ export const InboxReportStatusBucket = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InboxReportStatusBucket>;
 
 /** Per-status breakdown of inbox reports. */
-export type ExistingInboxReportsByStatusList =
-  ReadonlyArray<InboxReportStatusBucket>;
+export type ExistingInboxReportsByStatusList = Array<InboxReportStatusBucket>;
 export const ExistingInboxReportsByStatusList = /*@__PURE__*/ S.Array(
   InboxReportStatusBucket,
 ) as any as S.Schema<ExistingInboxReportsByStatusList>;
@@ -4126,7 +4118,7 @@ export const ScopeActivityEntry = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScopeActivityEntry>;
 
 /** Per-scope activity rows, busiest scope first. Triage which entity type the team has worked in lately. */
-export type RecentActivityByScopeList = ReadonlyArray<ScopeActivityEntry>;
+export type RecentActivityByScopeList = Array<ScopeActivityEntry>;
 export const RecentActivityByScopeList = /*@__PURE__*/ S.Array(
   ScopeActivityEntry,
 ) as any as S.Schema<RecentActivityByScopeList>;
@@ -4146,13 +4138,13 @@ export const RecentActivity = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RecentActivity" }) as any as S.Schema<RecentActivity>;
 
 /** GitHub logins on the report before the human edit (lowercased). */
-export type ReviewerCorrectionEntryBeforeList = ReadonlyArray<string>;
+export type ReviewerCorrectionEntryBeforeList = Array<string>;
 export const ReviewerCorrectionEntryBeforeList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ReviewerCorrectionEntryBeforeList>;
 
 /** GitHub logins on the report after the human edit (lowercased). */
-export type ReviewerCorrectionEntryAfterList = ReadonlyArray<string>;
+export type ReviewerCorrectionEntryAfterList = Array<string>;
 export const ReviewerCorrectionEntryAfterList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ReviewerCorrectionEntryAfterList>;
@@ -4184,7 +4176,7 @@ export const ReviewerCorrectionEntry = /*@__PURE__*/ S.suspend(() =>
 
 /** Human reviewer edits, newest first. A human swapping a report's suggested reviewers is authoritative ownership precedent — route to who they chose. */
 export type RecentReviewerCorrectionsCorrectionsList =
-  ReadonlyArray<ReviewerCorrectionEntry>;
+  Array<ReviewerCorrectionEntry>;
 export const RecentReviewerCorrectionsCorrectionsList = /*@__PURE__*/ S.Array(
   ReviewerCorrectionEntry,
 ) as any as S.Schema<RecentReviewerCorrectionsCorrectionsList>;
@@ -4232,7 +4224,7 @@ export const RecentDashboardEntry = /*@__PURE__*/ S.suspend(() =>
 
 /** Up to 20 dashboards on this team sorted by `last_accessed_at` desc — what the team is currently looking at, not necessarily the most-trafficked. We don't have per-dashboard view counts in Postgres, only the timestamp of the most recent access. */
 export type ProjectProfileInventoryRecentDashboardsList =
-  ReadonlyArray<RecentDashboardEntry>;
+  Array<RecentDashboardEntry>;
 export const ProjectProfileInventoryRecentDashboardsList =
   /*@__PURE__*/ S.Array(
     RecentDashboardEntry,
@@ -4264,7 +4256,7 @@ export const RecentSurveyEntry = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RecentSurveyEntry>;
 
 /** The 5 most recently updated surveys. */
-export type RecentSurveysRecentList = ReadonlyArray<RecentSurveyEntry>;
+export type RecentSurveysRecentList = Array<RecentSurveyEntry>;
 export const RecentSurveysRecentList = /*@__PURE__*/ S.Array(
   RecentSurveyEntry,
 ) as any as S.Schema<RecentSurveysRecentList>;
@@ -4312,8 +4304,7 @@ export const RecentFeatureFlagEntry = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RecentFeatureFlagEntry>;
 
 /** The 5 most recently updated non-deleted flags. */
-export type RecentFeatureFlagsRecentList =
-  ReadonlyArray<RecentFeatureFlagEntry>;
+export type RecentFeatureFlagsRecentList = Array<RecentFeatureFlagEntry>;
 export const RecentFeatureFlagsRecentList = /*@__PURE__*/ S.Array(
   RecentFeatureFlagEntry,
 ) as any as S.Schema<RecentFeatureFlagsRecentList>;
@@ -4363,7 +4354,7 @@ export const RecentExperimentEntry = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RecentExperimentEntry>;
 
 /** The 5 most recently updated experiments. */
-export type RecentExperimentsRecentList = ReadonlyArray<RecentExperimentEntry>;
+export type RecentExperimentsRecentList = Array<RecentExperimentEntry>;
 export const RecentExperimentsRecentList = /*@__PURE__*/ S.Array(
   RecentExperimentEntry,
 ) as any as S.Schema<RecentExperimentsRecentList>;
@@ -4419,7 +4410,7 @@ export const RecentAlertEntry = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RecentAlertEntry>;
 
 /** The 5 most recently created alerts. */
-export type RecentAlertsRecentList = ReadonlyArray<RecentAlertEntry>;
+export type RecentAlertsRecentList = Array<RecentAlertEntry>;
 export const RecentAlertsRecentList = /*@__PURE__*/ S.Array(
   RecentAlertEntry,
 ) as any as S.Schema<RecentAlertsRecentList>;
@@ -4470,8 +4461,7 @@ export const RecentHogFunctionEntry = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RecentHogFunctionEntry>;
 
 /** The 5 most recently updated hog functions. */
-export type RecentHogFunctionsRecentList =
-  ReadonlyArray<RecentHogFunctionEntry>;
+export type RecentHogFunctionsRecentList = Array<RecentHogFunctionEntry>;
 export const RecentHogFunctionsRecentList = /*@__PURE__*/ S.Array(
   RecentHogFunctionEntry,
 ) as any as S.Schema<RecentHogFunctionsRecentList>;
@@ -4518,7 +4508,7 @@ export const RecentHogFlowEntry = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RecentHogFlowEntry>;
 
 /** The 5 most recently updated hog flows. */
-export type RecentHogFlowsRecentList = ReadonlyArray<RecentHogFlowEntry>;
+export type RecentHogFlowsRecentList = Array<RecentHogFlowEntry>;
 export const RecentHogFlowsRecentList = /*@__PURE__*/ S.Array(
   RecentHogFlowEntry,
 ) as any as S.Schema<RecentHogFlowsRecentList>;
@@ -4560,7 +4550,7 @@ export const RecentNotebookEntry = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RecentNotebookEntry>;
 
 /** The 5 most recently modified notebooks. */
-export type RecentNotebooksRecentList = ReadonlyArray<RecentNotebookEntry>;
+export type RecentNotebooksRecentList = Array<RecentNotebookEntry>;
 export const RecentNotebooksRecentList = /*@__PURE__*/ S.Array(
   RecentNotebookEntry,
 ) as any as S.Schema<RecentNotebooksRecentList>;
@@ -4607,7 +4597,7 @@ export const RecentCohortEntry = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RecentCohortEntry>;
 
 /** The 5 most recently created cohorts. */
-export type RecentCohortsRecentList = ReadonlyArray<RecentCohortEntry>;
+export type RecentCohortsRecentList = Array<RecentCohortEntry>;
 export const RecentCohortsRecentList = /*@__PURE__*/ S.Array(
   RecentCohortEntry,
 ) as any as S.Schema<RecentCohortsRecentList>;
@@ -4646,7 +4636,7 @@ export const RecentActionEntry = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RecentActionEntry>;
 
 /** The 5 most recently updated actions. */
-export type RecentActionsRecentList = ReadonlyArray<RecentActionEntry>;
+export type RecentActionsRecentList = Array<RecentActionEntry>;
 export const RecentActionsRecentList = /*@__PURE__*/ S.Array(
   RecentActionEntry,
 ) as any as S.Schema<RecentActionsRecentList>;
@@ -4698,7 +4688,7 @@ export const TopEventEntry = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TopEventEntry" }) as any as S.Schema<TopEventEntry>;
 
 /** Top ~50 events by count over a recent rolling window (each row carries `window_days`), with first/last seen timestamps within that window. These are WINDOWED counts, not lifetime totals: a capture gap can collapse a real, high-volume project's counts to near-zero here, so rule out an ingestion gap (compare against a trailing baseline via a direct `execute-sql`) before reading thinness as a genuinely low-volume project. `null` if the underlying ClickHouse query failed or timed out (distinct from `[]`, which means the team has no captures in the window). Use the gap between `first_seen_in_window` and `now` to spot new event types or recent bursts. */
-export type ProjectProfileInventoryTopEventsList = ReadonlyArray<TopEventEntry>;
+export type ProjectProfileInventoryTopEventsList = Array<TopEventEntry>;
 export const ProjectProfileInventoryTopEventsList = /*@__PURE__*/ S.Array(
   TopEventEntry,
 ) as any as S.Schema<ProjectProfileInventoryTopEventsList>;
@@ -4873,7 +4863,7 @@ export const ScoutEmissionReportLink = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScoutEmissionReportLink>;
 
 export type SignalsScoutRunsEmissionReportsResponseBodyList =
-  ReadonlyArray<ScoutEmissionReportLink>;
+  Array<ScoutEmissionReportLink>;
 export const SignalsScoutRunsEmissionReportsResponseBodyList =
   /*@__PURE__*/ S.Array(
     ScoutEmissionReportLink,
@@ -4890,7 +4880,7 @@ export const SignalsScoutRunsEmissionReportsResponse = /*@__PURE__*/ S.suspend(
 
 /** UUIDs of the `SignalScoutRun` rows to resolve in one batch. Run ids belonging to another team are silently ignored (they contribute no rows) rather than failing the whole request. Capped at 200 ids per call. */
 export type SignalsScoutRunsEmissionReportsBatchRequestRunIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const SignalsScoutRunsEmissionReportsBatchRequestRunIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4919,7 +4909,7 @@ export const SignalsScoutRunsEmissionReportsBatchRequest =
   }) as any as S.Schema<SignalsScoutRunsEmissionReportsBatchRequest>;
 
 export type SignalsScoutRunsEmissionReportsBatchResponseBodyList =
-  ReadonlyArray<ScoutEmissionReportLink>;
+  Array<ScoutEmissionReportLink>;
 export const SignalsScoutRunsEmissionReportsBatchResponseBodyList =
   /*@__PURE__*/ S.Array(
     ScoutEmissionReportLink,
@@ -4958,7 +4948,7 @@ export const SignalsScoutRunsEmissionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SignalsScoutRunsEmissionsRequest>;
 
 /** Slug tags the scout attached to this finding (lowercase kebab-case, e.g. `cost-spike`). Empty list when the run set none. */
-export type SignalScoutEmissionTagsList = ReadonlyArray<string>;
+export type SignalScoutEmissionTagsList = Array<string>;
 export const SignalScoutEmissionTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SignalScoutEmissionTagsList>;
@@ -5003,7 +4993,7 @@ export const SignalScoutEmission = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SignalScoutEmission>;
 
 export type SignalsScoutRunsEmissionsResponseBodyList =
-  ReadonlyArray<SignalScoutEmission>;
+  Array<SignalScoutEmission>;
 export const SignalsScoutRunsEmissionsResponseBodyList = /*@__PURE__*/ S.Array(
   SignalScoutEmission,
 ) as any as S.Schema<SignalsScoutRunsEmissionsResponseBodyList>;
@@ -5017,8 +5007,7 @@ export const SignalsScoutRunsEmissionsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SignalsScoutRunsEmissionsResponse>;
 
 /** UUIDs of the `SignalScoutRun` rows to resolve in one batch. Run ids belonging to another team are silently ignored (they contribute no rows) rather than failing the whole request. Capped at 200 ids per call. */
-export type SignalsScoutRunsEmissionsBatchRequestRunIdsList =
-  ReadonlyArray<string>;
+export type SignalsScoutRunsEmissionsBatchRequestRunIdsList = Array<string>;
 export const SignalsScoutRunsEmissionsBatchRequestRunIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5047,7 +5036,7 @@ export const SignalsScoutRunsEmissionsBatchRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<SignalsScoutRunsEmissionsBatchRequest>;
 
 export type SignalsScoutRunsEmissionsBatchResponseBodyList =
-  ReadonlyArray<SignalScoutEmission>;
+  Array<SignalScoutEmission>;
 export const SignalsScoutRunsEmissionsBatchResponseBodyList =
   /*@__PURE__*/ S.Array(
     SignalScoutEmission,
@@ -5159,19 +5148,19 @@ export type RunStatusEnum =
 export const RunStatusEnum = /*@__PURE__*/ S.String;
 
 /** The `finding_id`s behind `emitted_count`, in emit order. Each maps to a `Signal` with `source_id = run:<run_id>:finding:<finding_id>`. Empty for non-emitting runs. */
-export type SignalScoutRunSummaryEmittedFindingIdsList = ReadonlyArray<string>;
+export type SignalScoutRunSummaryEmittedFindingIdsList = Array<string>;
 export const SignalScoutRunSummaryEmittedFindingIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SignalScoutRunSummaryEmittedFindingIdsList>;
 
 /** The `SignalReport` ids this run authored directly via the `emit_report` channel, in emit order. Separate from `emitted_finding_ids` (weak `emit_signal` findings) — a report-authoring scout writes a full report here instead. Empty for runs that authored no report. */
-export type SignalScoutRunSummaryEmittedReportIdsList = ReadonlyArray<string>;
+export type SignalScoutRunSummaryEmittedReportIdsList = Array<string>;
 export const SignalScoutRunSummaryEmittedReportIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SignalScoutRunSummaryEmittedReportIdsList>;
 
 /** The `SignalReport` ids this run mutated via the `edit_report` channel (rewrote title/summary and/or appended a note), deduped. Distinct from `emitted_report_ids`: edit can target any inbox report, so these are generally not reports the run authored. Empty for runs that edited no report. */
-export type SignalScoutRunSummaryEditedReportIdsList = ReadonlyArray<string>;
+export type SignalScoutRunSummaryEditedReportIdsList = Array<string>;
 export const SignalScoutRunSummaryEditedReportIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SignalScoutRunSummaryEditedReportIdsList>;
@@ -5249,8 +5238,7 @@ export const SignalScoutRunSummary = /*@__PURE__*/ S.suspend(() =>
   identifier: "SignalScoutRunSummary",
 }) as any as S.Schema<SignalScoutRunSummary>;
 
-export type SignalsScoutRunsListResponseBodyList =
-  ReadonlyArray<SignalScoutRunSummary>;
+export type SignalsScoutRunsListResponseBodyList = Array<SignalScoutRunSummary>;
 export const SignalsScoutRunsListResponseBodyList = /*@__PURE__*/ S.Array(
   SignalScoutRunSummary,
 ) as any as S.Schema<SignalsScoutRunsListResponseBodyList>;
@@ -5294,7 +5282,7 @@ export const SignalsScoutRunsRecentEmissionsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<SignalsScoutRunsRecentEmissionsRequest>;
 
 export type SignalsScoutRunsRecentEmissionsResponseBodyList =
-  ReadonlyArray<SignalScoutEmission>;
+  Array<SignalScoutEmission>;
 export const SignalsScoutRunsRecentEmissionsResponseBodyList =
   /*@__PURE__*/ S.Array(
     SignalScoutEmission,
@@ -5331,19 +5319,19 @@ export const SignalsScoutRunsRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SignalsScoutRunsRetrieveRequest>;
 
 /** The `finding_id`s behind `emitted_count`, in emit order. Each maps to a `Signal` with `source_id = run:<run_id>:finding:<finding_id>`. Empty for non-emitting runs. */
-export type SignalScoutRunDetailEmittedFindingIdsList = ReadonlyArray<string>;
+export type SignalScoutRunDetailEmittedFindingIdsList = Array<string>;
 export const SignalScoutRunDetailEmittedFindingIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SignalScoutRunDetailEmittedFindingIdsList>;
 
 /** The `SignalReport` ids this run authored directly via the `emit_report` channel, in emit order. Separate from `emitted_finding_ids` (weak `emit_signal` findings) — a report-authoring scout writes a full report here instead. Empty for runs that authored no report. */
-export type SignalScoutRunDetailEmittedReportIdsList = ReadonlyArray<string>;
+export type SignalScoutRunDetailEmittedReportIdsList = Array<string>;
 export const SignalScoutRunDetailEmittedReportIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SignalScoutRunDetailEmittedReportIdsList>;
 
 /** The `SignalReport` ids this run mutated via the `edit_report` channel (rewrote title/summary and/or appended a note), deduped. Distinct from `emitted_report_ids`: edit can target any inbox report, so these are generally not reports the run authored. Empty for runs that edited no report. */
-export type SignalScoutRunDetailEditedReportIdsList = ReadonlyArray<string>;
+export type SignalScoutRunDetailEditedReportIdsList = Array<string>;
 export const SignalScoutRunDetailEditedReportIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SignalScoutRunDetailEditedReportIdsList>;
@@ -5551,7 +5539,7 @@ export const SignalsScoutScratchpadSearchRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SignalsScoutScratchpadSearchRequest>;
 
 export type SignalsScoutScratchpadSearchResponseBodyList =
-  ReadonlyArray<ScratchpadEntry>;
+  Array<ScratchpadEntry>;
 export const SignalsScoutScratchpadSearchResponseBodyList =
   /*@__PURE__*/ S.Array(
     ScratchpadEntry,
@@ -5743,7 +5731,7 @@ export const SignalsSourceConfigsListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SignalsSourceConfigsListRequest>;
 
 export type PaginatedSignalSourceConfigListResultsList =
-  ReadonlyArray<SignalSourceConfig>;
+  Array<SignalSourceConfig>;
 export const PaginatedSignalSourceConfigListResultsList = /*@__PURE__*/ S.Array(
   SignalSourceConfig,
 ) as any as S.Schema<PaginatedSignalSourceConfigListResultsList>;

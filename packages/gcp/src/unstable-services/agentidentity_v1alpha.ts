@@ -66,7 +66,7 @@ export type AuthProviderStateEnum =
   | "DISABLED";
 export const AuthProviderStateEnum = /*@__PURE__*/ S.String;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -171,7 +171,7 @@ export interface AuthProvider {
   /** Output only. [Output only] Update time stamp */
   updateTime?: string;
   /** Output only. The state of the auth_provider. */
-  state?: AuthProviderStateEnum;
+  state?: AuthProviderStateEnum | (string & {});
   /** Optional. Input only. Represents the workload identity in IAM `principal://` format of the agent(s) that will use this AuthProvider. Example: `principal://agents.global.org-${ORG_ID}.system.id.goog/resources/aiplatform/projects/{PROJECT_ID}/locations/{LOCATIONS}/reasoningEngines/{ID}` */
   workloadIds?: StringList;
   /** Output only. [Output only] Create time stamp */
@@ -417,7 +417,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
-export type BindingList = ReadonlyArray<Binding>;
+export type BindingList = Array<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -434,7 +434,7 @@ export interface AuditLogConfig {
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
   exemptedMembers?: StringList;
   /** The log type that this config enables. */
-  logType?: AuditLogConfigLogTypeEnum;
+  logType?: AuditLogConfigLogTypeEnum | (string & {});
 }
 export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -443,7 +443,7 @@ export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
-export type AuditLogConfigList = ReadonlyArray<AuditLogConfig>;
+export type AuditLogConfigList = Array<AuditLogConfig>;
 export const AuditLogConfigList = /*@__PURE__*/ S.Array(
   AuditLogConfig,
 ) as any as S.Schema<AuditLogConfigList>;
@@ -462,7 +462,7 @@ export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
-export type AuditConfigList = ReadonlyArray<AuditConfig>;
+export type AuditConfigList = Array<AuditConfig>;
 export const AuditConfigList = /*@__PURE__*/ S.Array(
   AuditConfig,
 ) as any as S.Schema<AuditConfigList>;
@@ -702,7 +702,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = ReadonlyArray<Location>;
+export type LocationList = Array<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -754,7 +754,7 @@ export const ListProjectsLocationsAccessSummariesRequest =
     identifier: "ListProjectsLocationsAccessSummariesRequest",
   }) as any as S.Schema<ListProjectsLocationsAccessSummariesRequest>;
 
-export type AccessSummaryList = ReadonlyArray<AccessSummary>;
+export type AccessSummaryList = Array<AccessSummary>;
 export const AccessSummaryList = /*@__PURE__*/ S.Array(
   AccessSummary,
 ) as any as S.Schema<AccessSummaryList>;
@@ -812,7 +812,7 @@ export const ListProjectsLocationsAuthProvidersRequest =
     identifier: "ListProjectsLocationsAuthProvidersRequest",
   }) as any as S.Schema<ListProjectsLocationsAuthProvidersRequest>;
 
-export type AuthProviderList = ReadonlyArray<AuthProvider>;
+export type AuthProviderList = Array<AuthProvider>;
 export const AuthProviderList = /*@__PURE__*/ S.Array(
   AuthProvider,
 ) as any as S.Schema<AuthProviderList>;
@@ -867,7 +867,7 @@ export const ListProjectsLocationsAuthProvidersAuthorizationsRequest =
     identifier: "ListProjectsLocationsAuthProvidersAuthorizationsRequest",
   }) as any as S.Schema<ListProjectsLocationsAuthProvidersAuthorizationsRequest>;
 
-export type AuthorizationList = ReadonlyArray<Authorization>;
+export type AuthorizationList = Array<Authorization>;
 export const AuthorizationList = /*@__PURE__*/ S.Array(
   Authorization,
 ) as any as S.Schema<AuthorizationList>;

@@ -66,7 +66,7 @@ export type ComputeInsightsRequestInsightsItemEnum =
   | "INSIGHT_PLACES";
 export const ComputeInsightsRequestInsightsItemEnum = /*@__PURE__*/ S.String;
 
-export type ComputeInsightsRequestInsightsItemEnumList = ReadonlyArray<
+export type ComputeInsightsRequestInsightsItemEnumList = Array<
   ComputeInsightsRequestInsightsItemEnum | (string & {})
 >;
 export const ComputeInsightsRequestInsightsItemEnumList = /*@__PURE__*/ S.Array(
@@ -94,7 +94,7 @@ export type FilterOperatingStatusItemEnum =
   | "OPERATING_STATUS_TEMPORARILY_CLOSED";
 export const FilterOperatingStatusItemEnum = /*@__PURE__*/ S.String;
 
-export type FilterOperatingStatusItemEnumList = ReadonlyArray<
+export type FilterOperatingStatusItemEnumList = Array<
   FilterOperatingStatusItemEnum | (string & {})
 >;
 export const FilterOperatingStatusItemEnumList = /*@__PURE__*/ S.Array(
@@ -110,7 +110,7 @@ export type FilterPriceLevelsItemEnum =
   | "PRICE_LEVEL_VERY_EXPENSIVE";
 export const FilterPriceLevelsItemEnum = /*@__PURE__*/ S.String;
 
-export type FilterPriceLevelsItemEnumList = ReadonlyArray<
+export type FilterPriceLevelsItemEnumList = Array<
   FilterPriceLevelsItemEnum | (string & {})
 >;
 export const FilterPriceLevelsItemEnumList = /*@__PURE__*/ S.Array(
@@ -148,7 +148,7 @@ export const Circle = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Circle" }) as any as S.Schema<Circle>;
 
-export type LatLngList = ReadonlyArray<LatLng>;
+export type LatLngList = Array<LatLng>;
 export const LatLngList = /*@__PURE__*/ S.Array(
   LatLng,
 ) as any as S.Schema<LatLngList>;
@@ -203,7 +203,7 @@ export const LocationFilter = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "LocationFilter" }) as any as S.Schema<LocationFilter>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -296,7 +296,7 @@ export const PlaceInsight = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PlaceInsight" }) as any as S.Schema<PlaceInsight>;
 
-export type PlaceInsightList = ReadonlyArray<PlaceInsight>;
+export type PlaceInsightList = Array<PlaceInsight>;
 export const PlaceInsightList = /*@__PURE__*/ S.Array(
   PlaceInsight,
 ) as any as S.Schema<PlaceInsightList>;

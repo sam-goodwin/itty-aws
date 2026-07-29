@@ -198,7 +198,7 @@ export const KMSEncryptionConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "KMSEncryptionConfig",
 }) as any as S.Schema<KMSEncryptionConfig>;
 export interface EncryptionConfiguration {
-  NoEncryptionConfig?: NoEncryptionConfig;
+  NoEncryptionConfig?: NoEncryptionConfig | (string & {});
   KMSEncryptionConfig?: KMSEncryptionConfig;
 }
 export const EncryptionConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -274,7 +274,7 @@ export const ProcessorParameterName = /*@__PURE__*/ S.String;
 
 export type ProcessorParameterValue = string;
 export interface ProcessorParameter {
-  ParameterName: ProcessorParameterName;
+  ParameterName: ProcessorParameterName | (string & {});
   ParameterValue: string;
 }
 export const ProcessorParameter = /*@__PURE__*/ S.suspend(() =>
@@ -285,7 +285,7 @@ export const ProcessorParameter = /*@__PURE__*/ S.suspend(() =>
 export type ProcessorParameterList = ProcessorParameter[];
 export const ProcessorParameterList = /*@__PURE__*/ S.Array(ProcessorParameter);
 export interface Processor {
-  Type: ProcessorType;
+  Type: ProcessorType | (string & {});
   Parameters?: ProcessorParameter[];
 }
 export const Processor = /*@__PURE__*/ S.suspend(() =>
@@ -388,10 +388,10 @@ export const ParquetWriterVersion = /*@__PURE__*/ S.String;
 export interface ParquetSerDe {
   BlockSizeBytes?: number;
   PageSizeBytes?: number;
-  Compression?: ParquetCompression;
+  Compression?: ParquetCompression | (string & {});
   EnableDictionaryCompression?: boolean;
   MaxPaddingBytes?: number;
-  WriterVersion?: ParquetWriterVersion;
+  WriterVersion?: ParquetWriterVersion | (string & {});
 }
 export const ParquetSerDe = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -422,11 +422,11 @@ export interface OrcSerDe {
   RowIndexStride?: number;
   EnablePadding?: boolean;
   PaddingTolerance?: number;
-  Compression?: OrcCompression;
+  Compression?: OrcCompression | (string & {});
   BloomFilterColumns?: string[];
   BloomFilterFalsePositiveProbability?: number;
   DictionaryKeyThreshold?: number;
-  FormatVersion?: OrcFormatVersion;
+  FormatVersion?: OrcFormatVersion | (string & {});
 }
 export const OrcSerDe = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -676,7 +676,7 @@ export type DefaultDocumentIdFormat = "FIREHOSE_DEFAULT" | "NO_DOCUMENT_ID";
 export const DefaultDocumentIdFormat = /*@__PURE__*/ S.String;
 
 export interface DocumentIdOptions {
-  DefaultDocumentIdFormat: DefaultDocumentIdFormat;
+  DefaultDocumentIdFormat: DefaultDocumentIdFormat | (string & {});
 }
 export const DocumentIdOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DefaultDocumentIdFormat: DefaultDocumentIdFormat }),
@@ -915,7 +915,7 @@ export const HttpEndpointCommonAttributesList = /*@__PURE__*/ S.Array(
   HttpEndpointCommonAttribute,
 );
 export interface HttpEndpointRequestConfiguration {
-  ContentEncoding?: ContentEncoding;
+  ContentEncoding?: ContentEncoding | (string & {});
   CommonAttributes?: HttpEndpointCommonAttribute[];
 }
 export const HttpEndpointRequestConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -1045,7 +1045,7 @@ export const Connectivity = /*@__PURE__*/ S.String;
 
 export interface AuthenticationConfiguration {
   RoleARN: string;
-  Connectivity: Connectivity;
+  Connectivity: Connectivity | (string & {});
 }
 export const AuthenticationConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ RoleARN: S.String, Connectivity: Connectivity }),

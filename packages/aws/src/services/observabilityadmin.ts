@@ -167,7 +167,7 @@ export const EncryptedLogGroupStrategy = /*@__PURE__*/ S.String;
 export interface SourceLogsConfiguration {
   LogGroupSelectionCriteria?: string;
   DataSourceSelectionCriteria?: string;
-  EncryptedLogGroupStrategy: EncryptedLogGroupStrategy;
+  EncryptedLogGroupStrategy: EncryptedLogGroupStrategy | (string & {});
 }
 export const SourceLogsConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -212,9 +212,11 @@ export type EncryptionConflictResolutionStrategy = "ALLOW" | "SKIP";
 export const EncryptionConflictResolutionStrategy = /*@__PURE__*/ S.String;
 
 export interface LogsEncryptionConfiguration {
-  EncryptionStrategy: EncryptionStrategy;
+  EncryptionStrategy: EncryptionStrategy | (string & {});
   KmsKeyArn?: string;
-  EncryptionConflictResolutionStrategy?: EncryptionConflictResolutionStrategy;
+  EncryptionConflictResolutionStrategy?:
+    | EncryptionConflictResolutionStrategy
+    | (string & {});
 }
 export const LogsEncryptionConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -352,7 +354,7 @@ export type SSEAlgorithm = "aws:kms" | "AES256";
 export const SSEAlgorithm = /*@__PURE__*/ S.String;
 
 export interface Encryption {
-  SseAlgorithm: SSEAlgorithm;
+  SseAlgorithm: SSEAlgorithm | (string & {});
   KmsKeyArn?: string;
 }
 export const Encryption = /*@__PURE__*/ S.suspend(() =>
@@ -465,7 +467,7 @@ export type TelemetrySourceType =
   | "EKS_API_LOGS";
 export const TelemetrySourceType = /*@__PURE__*/ S.String;
 
-export type TelemetrySourceTypes = TelemetrySourceType[];
+export type TelemetrySourceTypes = (TelemetrySourceType | (string & {}))[];
 export const TelemetrySourceTypes = /*@__PURE__*/ S.Array(TelemetrySourceType);
 export type DestinationType = "cloud-watch-logs";
 export const DestinationType = /*@__PURE__*/ S.String;
@@ -536,7 +538,7 @@ export type OutputFormat = "plain" | "json";
 export const OutputFormat = /*@__PURE__*/ S.String;
 
 export interface ELBLoadBalancerLoggingParameters {
-  OutputFormat?: OutputFormat;
+  OutputFormat?: OutputFormat | (string & {});
   FieldDelimiter?: string;
 }
 export const ELBLoadBalancerLoggingParameters = /*@__PURE__*/ S.suspend(() =>
@@ -585,7 +587,7 @@ export type Action =
 export const Action = /*@__PURE__*/ S.String;
 
 export interface ActionCondition {
-  Action?: Action;
+  Action?: Action | (string & {});
 }
 export const ActionCondition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Action: S.optional(Action) }),
@@ -613,8 +615,8 @@ export const Condition = /*@__PURE__*/ S.suspend(() =>
 export type Conditions = Condition[];
 export const Conditions = /*@__PURE__*/ S.Array(Condition);
 export interface Filter {
-  Behavior?: FilterBehavior;
-  Requirement?: FilterRequirement;
+  Behavior?: FilterBehavior | (string & {});
+  Requirement?: FilterRequirement | (string & {});
   Conditions?: Condition[];
 }
 export const Filter = /*@__PURE__*/ S.suspend(() =>
@@ -628,7 +630,7 @@ export type Filters = Filter[];
 export const Filters = /*@__PURE__*/ S.Array(Filter);
 export interface LoggingFilter {
   Filters?: Filter[];
-  DefaultBehavior?: FilterBehavior;
+  DefaultBehavior?: FilterBehavior | (string & {});
 }
 export const LoggingFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -642,7 +644,7 @@ export const WAFLogType = /*@__PURE__*/ S.String;
 export interface WAFLoggingParameters {
   RedactedFields?: FieldToMatch[];
   LoggingFilter?: LoggingFilter;
-  LogType?: WAFLogType;
+  LogType?: WAFLogType | (string & {});
 }
 export const WAFLoggingParameters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -661,7 +663,7 @@ export type LogType =
   | "CONNECTION_LOGS";
 export const LogType = /*@__PURE__*/ S.String;
 
-export type LogTypes = LogType[];
+export type LogTypes = (LogType | (string & {}))[];
 export const LogTypes = /*@__PURE__*/ S.Array(LogType);
 export interface LogDeliveryParameters {
   LogTypes?: LogType[];
@@ -679,7 +681,7 @@ export type MskEnhancedMonitoringLevel =
 export const MskEnhancedMonitoringLevel = /*@__PURE__*/ S.String;
 
 export interface MskMonitoringParameters {
-  EnhancedMonitoring?: MskEnhancedMonitoringLevel;
+  EnhancedMonitoring?: MskEnhancedMonitoringLevel | (string & {});
 }
 export const MskMonitoringParameters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ EnhancedMonitoring: S.optional(MskEnhancedMonitoringLevel) }),
@@ -687,7 +689,7 @@ export const MskMonitoringParameters = /*@__PURE__*/ S.suspend(() =>
   identifier: "MskMonitoringParameters",
 }) as any as S.Schema<MskMonitoringParameters>;
 export interface TelemetryDestinationConfiguration {
-  DestinationType?: DestinationType;
+  DestinationType?: DestinationType | (string & {});
   DestinationPattern?: string;
   RetentionInDays?: number;
   VPCFlowLogParameters?: VPCFlowLogParameters;
@@ -716,8 +718,8 @@ export const TelemetryDestinationConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TelemetryDestinationConfiguration>;
 export type AllRegions = boolean;
 export interface TelemetryRule {
-  ResourceType?: ResourceType;
-  TelemetryType: TelemetryType;
+  ResourceType?: ResourceType | (string & {});
+  TelemetryType: TelemetryType | (string & {});
   TelemetrySourceTypes?: TelemetrySourceType[];
   DestinationConfiguration?: TelemetryDestinationConfiguration;
   Scope?: string;
@@ -1383,7 +1385,7 @@ export type TelemetryState = "Enabled" | "Disabled" | "NotApplicable";
 export const TelemetryState = /*@__PURE__*/ S.String;
 
 export type TelemetryConfigurationState = {
-  [key in TelemetryType]?: TelemetryState;
+  [key in TelemetryType | (string & {})]?: TelemetryState | (string & {});
 };
 export const TelemetryConfigurationState = /*@__PURE__*/ S.Record(
   TelemetryType,
@@ -1968,7 +1970,7 @@ export const RecordFormat = /*@__PURE__*/ S.String;
 
 export interface Record {
   Data?: string;
-  Type?: RecordFormat;
+  Type?: RecordFormat | (string & {});
 }
 export const Record = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Data: S.optional(S.String), Type: S.optional(RecordFormat) }),

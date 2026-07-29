@@ -130,7 +130,7 @@ export type LocationDetailsInternetAccessEnum =
   | "CONFIGURE_NAT";
 export const LocationDetailsInternetAccessEnum = /*@__PURE__*/ S.String;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -149,7 +149,7 @@ export interface LocationDetails {
   deploymentDnsEnabled?: boolean;
   /** Required. Region name. */
   regionName?: string;
-  internetAccess?: LocationDetailsInternetAccessEnum;
+  internetAccess?: LocationDetailsInternetAccessEnum | (string & {});
   /** Required. Zone 1 name. */
   zone1Name?: string;
   /** Optional. Network tags. */
@@ -306,7 +306,7 @@ export interface SapSystemS4Config {
   /** Required. Media bucket name. */
   mediaBucketName?: string;
   /** Required. Deployment environment. */
-  environmentType?: SapSystemS4ConfigEnvironmentTypeEnum;
+  environmentType?: SapSystemS4ConfigEnvironmentTypeEnum | (string & {});
   /** Instance details. */
   app?: AppDetails;
   /** VM prefix. */
@@ -316,11 +316,11 @@ export interface SapSystemS4Config {
   /** Ansible runner service account. Let customers bring their own service account for the Ansible runner. */
   ansibleRunnerServiceAccount?: string;
   /** Required. Supports non-HA and HA models. */
-  deploymentModel?: SapSystemS4ConfigDeploymentModelEnum;
+  deploymentModel?: SapSystemS4ConfigDeploymentModelEnum | (string & {});
   /** Required. Supports scale up and scale out. */
-  scalingMethod?: SapSystemS4ConfigScalingMethodEnum;
+  scalingMethod?: SapSystemS4ConfigScalingMethodEnum | (string & {});
   /** Required. SAP HANA version. */
-  version?: SapSystemS4ConfigVersionEnum;
+  version?: SapSystemS4ConfigVersionEnum | (string & {});
   /** The project that infrastructure is deployed in. Currently only supports the same project where the deployment resource exists. */
   gcpProjectId?: string;
   /** Optional. SAP boot disk image. */
@@ -390,7 +390,7 @@ export interface Database {
   /** Required. Whether to have TempDB on local SSD. */
   tempdbOnSsd?: boolean;
   /** Required. SHARED or SOLE_TENANT. */
-  tenancyModel?: DatabaseTenancyModelEnum;
+  tenancyModel?: DatabaseTenancyModelEnum | (string & {});
   /** Required. Secret Manager secret. */
   secretManagerSecret?: string;
   /** Optional. Only useful for Linux High Availability setup. */
@@ -449,7 +449,7 @@ export const ActiveDirectoryTypeEnum = /*@__PURE__*/ S.String;
 /** Active Directory details. */
 export interface ActiveDirectory {
   /** Required. Active Directory type. */
-  type?: ActiveDirectoryTypeEnum;
+  type?: ActiveDirectoryTypeEnum | (string & {});
   /** Optional. Human readable form of a domain such as `example.com`. */
   domain?: string;
   /** Required. Secret Manager secret. */
@@ -527,7 +527,7 @@ export interface SqlLocationDetails {
   /** Required. Region name. */
   region?: string;
   /** Required. Internet Access. */
-  internetAccess?: SqlLocationDetailsInternetAccessEnum;
+  internetAccess?: SqlLocationDetailsInternetAccessEnum | (string & {});
   /** Required. Network name. */
   network?: string;
   /** Optional. Secondary zone cannot be the same as primary_zone and is only for High Availability deployment mode. */
@@ -558,9 +558,9 @@ export const SqlServerWorkloadHaTypeEnum = /*@__PURE__*/ S.String;
 /** Message for MS SQL workload. */
 export interface SqlServerWorkload {
   /** Optional. SHARED_DISK or S2D. */
-  fciType?: SqlServerWorkloadFciTypeEnum;
+  fciType?: SqlServerWorkloadFciTypeEnum | (string & {});
   /** Required. HIGH_AVAILABILITY or SINGLE_INSTANCE. */
-  deploymentModel?: SqlServerWorkloadDeploymentModelEnum;
+  deploymentModel?: SqlServerWorkloadDeploymentModelEnum | (string & {});
   /** Required. Name of the media storing SQL server installation files. */
   mediaBucket?: string;
   /** Required. SQL licensing type. */
@@ -572,15 +572,17 @@ export interface SqlServerWorkload {
   /** Required. Active Directory details. */
   activeDirectory?: ActiveDirectory;
   /** Optional. 2017, 2019, or 2022. */
-  sqlServerVersion?: SqlServerWorkloadSqlServerVersionEnum;
+  sqlServerVersion?: SqlServerWorkloadSqlServerVersionEnum | (string & {});
   /** Required. The type of the operating system the SQL server is going to run on top of. */
-  operatingSystemType?: SqlServerWorkloadOperatingSystemTypeEnum;
+  operatingSystemType?:
+    | SqlServerWorkloadOperatingSystemTypeEnum
+    | (string & {});
   /** Optional. SQL Server Edition type, only applicable when the operating system is Linux. */
-  sqlServerEdition?: SqlServerWorkloadSqlServerEditionEnum;
+  sqlServerEdition?: SqlServerWorkloadSqlServerEditionEnum | (string & {});
   /** Optional. OS image type. It's used to create boot disks for VM instances. When either Windows licensing type or SQL licensing type is BYOL, this option is disabled and defaults to a custom image. */
-  osImageType?: SqlServerWorkloadOsImageTypeEnum;
+  osImageType?: SqlServerWorkloadOsImageTypeEnum | (string & {});
   /** Required. Deployment environment. */
-  environmentType?: SqlServerWorkloadEnvironmentTypeEnum;
+  environmentType?: SqlServerWorkloadEnvironmentTypeEnum | (string & {});
   /** Required. The image of the operating system. */
   osImage?: string;
   /** Required. Location details. */
@@ -590,7 +592,7 @@ export interface SqlServerWorkload {
   /** Compute Engine service account. Let customers bring their own service account for Compute Engine. */
   computeEngineServiceAccount?: string;
   /** Optional. AOAG or FCI. It is only needed for the High Availability deployment mode. */
-  haType?: SqlServerWorkloadHaTypeEnum;
+  haType?: SqlServerWorkloadHaTypeEnum | (string & {});
 }
 export const SqlServerWorkload = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -623,7 +625,7 @@ export interface Deployment {
   /** Optional. The user-specified Cloud Build worker pool resource in which the Cloud Build job will execute. Format: `projects/{project}/locations/{location}/workerPools/{workerPoolId}`. If this field is unspecified, the default Cloud Build worker pool will be used. */
   workerPool?: string;
   /** Optional. Workload type of the deployment. */
-  workloadType?: DeploymentWorkloadTypeEnum;
+  workloadType?: DeploymentWorkloadTypeEnum | (string & {});
   /** Optional. terraform_variables represents all the Terraform variables for the deployment workload. The key is the name of the Terraform variable, and the value is the TerraformVariable. For example: { "project_id": { "input_value": { "string_value": "my-project-id" } }, "zone": { "input_value": { "string_value": "us-central1-a" } } } */
   terraformVariables?: TerraformVariableMap;
   /** Output only. Create time stamp. */
@@ -633,7 +635,7 @@ export interface Deployment {
   /** SAP system workload input. */
   sapSystemS4Config?: SapSystemS4Config;
   /** Output only. Current state of the deployment. */
-  state?: DeploymentStateEnum;
+  state?: DeploymentStateEnum | (string & {});
   /** Output only. Update time stamp. */
   updateTime?: string;
   /** MS SQL workload input. */
@@ -691,7 +693,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -762,7 +764,7 @@ export const DeploymentOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeploymentOutput",
 }) as any as S.Schema<DeploymentOutput>;
 
-export type DeploymentOutputList = ReadonlyArray<DeploymentOutput>;
+export type DeploymentOutputList = Array<DeploymentOutput>;
 export const DeploymentOutputList = /*@__PURE__*/ S.Array(
   DeploymentOutput,
 ) as any as S.Schema<DeploymentOutputList>;
@@ -794,7 +796,7 @@ export interface ActuationOutput {
   /** A link to the actuation Cloud Build log. */
   errorLogs?: string;
   /** Output only. Code describing any errors that may have occurred. If not specified, there is no error in actuation. */
-  errorCode?: ActuationOutputErrorCodeEnum;
+  errorCode?: ActuationOutputErrorCodeEnum | (string & {});
   /** Output only. Error message returned from Terraform. */
   terraformError?: string;
   /** A link to the Cloud Storage file that stores build logs. */
@@ -826,7 +828,7 @@ export const ActuationOutput = /*@__PURE__*/ S.suspend(() =>
 /** The Actuation object represents the bootstrap state and output results of deployed infrastructure and software. */
 export interface Actuation {
   /** Output only. Actuation state. */
-  state?: ActuationStateEnum;
+  state?: ActuationStateEnum | (string & {});
   /** Output only. Deployment output. */
   deploymentOutput?: DeploymentOutputList;
   /** The name of the actuation resource. The format is projects/{project}/locations/{location}/deployments/{deployment}/actuations/{actuation}. */
@@ -891,7 +893,7 @@ export const ResourceStatusStateEnum = /*@__PURE__*/ S.String;
 /** The lifecycle status of an Evaluation resource. */
 export interface ResourceStatus {
   /** State of the Evaluation resource. */
-  state?: ResourceStatusStateEnum;
+  state?: ResourceStatusStateEnum | (string & {});
 }
 export const ResourceStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -961,7 +963,7 @@ export interface Evaluation {
   /** Optional. Immutable. Customer-managed encryption key name, in the format projects/*\/locations/*\/keyRings/*\/cryptoKeys/*. The key will be used for CMEK encryption of the evaluation resource. */
   kmsKey?: string;
   /** Evaluation type. */
-  evaluationType?: EvaluationEvaluationTypeEnum;
+  evaluationType?: EvaluationEvaluationTypeEnum | (string & {});
   /** Description of the Evaluation. */
   description?: string;
   /** Output only. [Output only] The current lifecycle state of the evaluation resource. */
@@ -1333,7 +1335,7 @@ export const IAMPermission = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "IAMPermission" }) as any as S.Schema<IAMPermission>;
 
-export type IAMPermissionList = ReadonlyArray<IAMPermission>;
+export type IAMPermissionList = Array<IAMPermission>;
 export const IAMPermissionList = /*@__PURE__*/ S.Array(
   IAMPermission,
 ) as any as S.Schema<IAMPermissionList>;
@@ -1404,7 +1406,7 @@ export type InstancePropertiesRolesItemEnum =
 export const InstancePropertiesRolesItemEnum = /*@__PURE__*/ S.String;
 
 export type InstancePropertiesRolesItemEnumList =
-  ReadonlyArray<InstancePropertiesRolesItemEnum>;
+  Array<InstancePropertiesRolesItemEnum>;
 export const InstancePropertiesRolesItemEnumList = /*@__PURE__*/ S.Array(
   InstancePropertiesRolesItemEnum,
 ) as any as S.Schema<InstancePropertiesRolesItemEnumList>;
@@ -1494,7 +1496,7 @@ export const CloudResource = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CloudResource" }) as any as S.Schema<CloudResource>;
 
-export type CloudResourceList = ReadonlyArray<CloudResource>;
+export type CloudResourceList = Array<CloudResource>;
 export const CloudResourceList = /*@__PURE__*/ S.Array(
   CloudResource,
 ) as any as S.Schema<CloudResourceList>;
@@ -1546,7 +1548,7 @@ export const Product = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Product" }) as any as S.Schema<Product>;
 
-export type ProductList = ReadonlyArray<Product>;
+export type ProductList = Array<Product>;
 export const ProductList = /*@__PURE__*/ S.Array(
   Product,
 ) as any as S.Schema<ProductList>;
@@ -1678,7 +1680,7 @@ export const HealthCheck = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "HealthCheck" }) as any as S.Schema<HealthCheck>;
 
-export type HealthCheckList = ReadonlyArray<HealthCheck>;
+export type HealthCheckList = Array<HealthCheck>;
 export const HealthCheckList = /*@__PURE__*/ S.Array(
   HealthCheck,
 ) as any as S.Schema<HealthCheckList>;
@@ -1708,7 +1710,7 @@ export const ComponentHealth = /*@__PURE__*/ S.suspend(() =>
   identifier: "ComponentHealth",
 }) as any as S.Schema<ComponentHealth>;
 
-export type ComponentHealthList = ReadonlyArray<ComponentHealth>;
+export type ComponentHealthList = Array<ComponentHealth>;
 export const ComponentHealthList = /*@__PURE__*/ S.Array(
   ComponentHealth,
 ) as any as S.Schema<ComponentHealthList>;
@@ -1811,7 +1813,7 @@ export const Notice = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Notice" }) as any as S.Schema<Notice>;
 
-export type NoticeList = ReadonlyArray<Notice>;
+export type NoticeList = Array<Notice>;
 export const NoticeList = /*@__PURE__*/ S.Array(
   Notice,
 ) as any as S.Schema<NoticeList>;
@@ -1838,7 +1840,7 @@ export interface RuleExecutionResult {
   /** Rule name as plain text like `sap-hana-configured`. */
   rule?: string;
   /** Output only. The execution status. */
-  state?: RuleExecutionResultStateEnum;
+  state?: RuleExecutionResultStateEnum | (string & {});
   /** Number of violations. */
   resultCount?: string;
 }
@@ -1854,7 +1856,7 @@ export const RuleExecutionResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "RuleExecutionResult",
 }) as any as S.Schema<RuleExecutionResult>;
 
-export type RuleExecutionResultList = ReadonlyArray<RuleExecutionResult>;
+export type RuleExecutionResultList = Array<RuleExecutionResult>;
 export const RuleExecutionResultList = /*@__PURE__*/ S.Array(
   RuleExecutionResult,
 ) as any as S.Schema<RuleExecutionResultList>;
@@ -1867,7 +1869,7 @@ export const ExternalDataSourcesTypeEnum = /*@__PURE__*/ S.String;
 /** External data sources for an execution. */
 export interface ExternalDataSources {
   /** Required. Type of external data source. */
-  type?: ExternalDataSourcesTypeEnum;
+  type?: ExternalDataSourcesTypeEnum | (string & {});
   /** Required. The asset type of the external data source. This can be a supported Cloud Asset Inventory asset type (see https://cloud.google.com/asset-inventory/docs/supported-asset-types) to override the default asset type, or it can be a custom type defined by the user. */
   assetType?: string;
   /** Required. URI of external data source. example of bq table {project_ID}.{dataset_ID}.{table_ID}. */
@@ -1886,7 +1888,7 @@ export const ExternalDataSources = /*@__PURE__*/ S.suspend(() =>
   identifier: "ExternalDataSources",
 }) as any as S.Schema<ExternalDataSources>;
 
-export type ExternalDataSourcesList = ReadonlyArray<ExternalDataSources>;
+export type ExternalDataSourcesList = Array<ExternalDataSources>;
 export const ExternalDataSourcesList = /*@__PURE__*/ S.Array(
   ExternalDataSources,
 ) as any as S.Schema<ExternalDataSourcesList>;
@@ -1900,11 +1902,11 @@ export interface Execution {
   /** Output only. [Output only] Result summary for the execution. */
   resultSummary?: Summary;
   /** Type which represents whether the execution executed directly by user or scheduled according to the `Evaluation.schedule` field. */
-  runType?: ExecutionRunTypeEnum;
+  runType?: ExecutionRunTypeEnum | (string & {});
   /** The name of execution resource. The format is projects/{project}/locations/{location}/evaluations/{evaluation}/executions/{execution}. */
   name?: string;
   /** Output only. [Output only] State. */
-  state?: ExecutionStateEnum;
+  state?: ExecutionStateEnum | (string & {});
   /** Output only. Additional information generated by the execution. */
   notices?: NoticeList;
   /** Output only. [Output only] End time stamp. */
@@ -1912,7 +1914,7 @@ export interface Execution {
   /** Output only. [Output only] Evaluation ID. */
   evaluationId?: string;
   /** Optional. Engine. */
-  engine?: ExecutionEngineEnum;
+  engine?: ExecutionEngineEnum | (string & {});
   /** Labels as key value pairs. */
   labels?: StringMap;
   /** Output only. Execution result summary per rule. */
@@ -1987,7 +1989,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = ReadonlyArray<Location>;
+export type LocationList = Array<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -2039,7 +2041,7 @@ export const ListProjectsLocationsDeploymentsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsDeploymentsRequest",
 }) as any as S.Schema<ListProjectsLocationsDeploymentsRequest>;
 
-export type DeploymentList = ReadonlyArray<Deployment>;
+export type DeploymentList = Array<Deployment>;
 export const DeploymentList = /*@__PURE__*/ S.Array(
   Deployment,
 ) as any as S.Schema<DeploymentList>;
@@ -2094,7 +2096,7 @@ export const ListProjectsLocationsDeploymentsActuationsRequest =
     identifier: "ListProjectsLocationsDeploymentsActuationsRequest",
   }) as any as S.Schema<ListProjectsLocationsDeploymentsActuationsRequest>;
 
-export type ActuationList = ReadonlyArray<Actuation>;
+export type ActuationList = Array<Actuation>;
 export const ActuationList = /*@__PURE__*/ S.Array(
   Actuation,
 ) as any as S.Schema<ActuationList>;
@@ -2146,7 +2148,7 @@ export const ListProjectsLocationsDiscoveredprofilesRequest =
     identifier: "ListProjectsLocationsDiscoveredprofilesRequest",
   }) as any as S.Schema<ListProjectsLocationsDiscoveredprofilesRequest>;
 
-export type WorkloadProfileList = ReadonlyArray<WorkloadProfile>;
+export type WorkloadProfileList = Array<WorkloadProfile>;
 export const WorkloadProfileList = /*@__PURE__*/ S.Array(
   WorkloadProfile,
 ) as any as S.Schema<WorkloadProfileList>;
@@ -2201,7 +2203,7 @@ export const ListProjectsLocationsEvaluationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsEvaluationsRequest",
 }) as any as S.Schema<ListProjectsLocationsEvaluationsRequest>;
 
-export type EvaluationList = ReadonlyArray<Evaluation>;
+export type EvaluationList = Array<Evaluation>;
 export const EvaluationList = /*@__PURE__*/ S.Array(
   Evaluation,
 ) as any as S.Schema<EvaluationList>;
@@ -2256,7 +2258,7 @@ export const ListProjectsLocationsEvaluationsExecutionsRequest =
     identifier: "ListProjectsLocationsEvaluationsExecutionsRequest",
   }) as any as S.Schema<ListProjectsLocationsEvaluationsExecutionsRequest>;
 
-export type ExecutionList = ReadonlyArray<Execution>;
+export type ExecutionList = Array<Execution>;
 export const ExecutionList = /*@__PURE__*/ S.Array(
   Execution,
 ) as any as S.Schema<ExecutionList>;
@@ -2376,7 +2378,7 @@ export const Command = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Command" }) as any as S.Schema<Command>;
 
-export type CommandList = ReadonlyArray<Command>;
+export type CommandList = Array<Command>;
 export const CommandList = /*@__PURE__*/ S.Array(
   Command,
 ) as any as S.Schema<CommandList>;
@@ -2395,7 +2397,7 @@ export const RuleOutput = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "RuleOutput" }) as any as S.Schema<RuleOutput>;
 
-export type RuleOutputList = ReadonlyArray<RuleOutput>;
+export type RuleOutputList = Array<RuleOutput>;
 export const RuleOutputList = /*@__PURE__*/ S.Array(
   RuleOutput,
 ) as any as S.Schema<RuleOutputList>;
@@ -2456,7 +2458,7 @@ export const ExecutionResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "ExecutionResult",
 }) as any as S.Schema<ExecutionResult>;
 
-export type ExecutionResultList = ReadonlyArray<ExecutionResult>;
+export type ExecutionResultList = Array<ExecutionResult>;
 export const ExecutionResultList = /*@__PURE__*/ S.Array(
   ExecutionResult,
 ) as any as S.Schema<ExecutionResultList>;
@@ -2528,7 +2530,7 @@ export const ScannedResource = /*@__PURE__*/ S.suspend(() =>
   identifier: "ScannedResource",
 }) as any as S.Schema<ScannedResource>;
 
-export type ScannedResourceList = ReadonlyArray<ScannedResource>;
+export type ScannedResourceList = Array<ScannedResource>;
 export const ScannedResourceList = /*@__PURE__*/ S.Array(
   ScannedResource,
 ) as any as S.Schema<ScannedResourceList>;
@@ -2580,7 +2582,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type OperationList = ReadonlyArray<Operation>;
+export type OperationList = Array<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -2697,7 +2699,7 @@ export const Rule = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Rule" }) as any as S.Schema<Rule>;
 
-export type RuleList = ReadonlyArray<Rule>;
+export type RuleList = Array<Rule>;
 export const RuleList = /*@__PURE__*/ S.Array(
   Rule,
 ) as any as S.Schema<RuleList>;
@@ -2797,8 +2799,7 @@ export const SqlserverValidationDetails = /*@__PURE__*/ S.suspend(() =>
   identifier: "SqlserverValidationDetails",
 }) as any as S.Schema<SqlserverValidationDetails>;
 
-export type SqlserverValidationDetailsList =
-  ReadonlyArray<SqlserverValidationDetails>;
+export type SqlserverValidationDetailsList = Array<SqlserverValidationDetails>;
 export const SqlserverValidationDetailsList = /*@__PURE__*/ S.Array(
   SqlserverValidationDetails,
 ) as any as S.Schema<SqlserverValidationDetailsList>;
@@ -2837,7 +2838,7 @@ export const SqlserverValidationValidationDetail = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SqlserverValidationValidationDetail>;
 
 export type SqlserverValidationValidationDetailList =
-  ReadonlyArray<SqlserverValidationValidationDetail>;
+  Array<SqlserverValidationValidationDetail>;
 export const SqlserverValidationValidationDetailList = /*@__PURE__*/ S.Array(
   SqlserverValidationValidationDetail,
 ) as any as S.Schema<SqlserverValidationValidationDetailList>;
@@ -2932,7 +2933,7 @@ export const SapValidationValidationDetail = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SapValidationValidationDetail>;
 
 export type SapValidationValidationDetailList =
-  ReadonlyArray<SapValidationValidationDetail>;
+  Array<SapValidationValidationDetail>;
 export const SapValidationValidationDetailList = /*@__PURE__*/ S.Array(
   SapValidationValidationDetail,
 ) as any as S.Schema<SapValidationValidationDetailList>;
@@ -2985,8 +2986,7 @@ export const AgentStatusIAMPermission = /*@__PURE__*/ S.suspend(() =>
   identifier: "AgentStatusIAMPermission",
 }) as any as S.Schema<AgentStatusIAMPermission>;
 
-export type AgentStatusIAMPermissionList =
-  ReadonlyArray<AgentStatusIAMPermission>;
+export type AgentStatusIAMPermissionList = Array<AgentStatusIAMPermission>;
 export const AgentStatusIAMPermissionList = /*@__PURE__*/ S.Array(
   AgentStatusIAMPermission,
 ) as any as S.Schema<AgentStatusIAMPermissionList>;
@@ -3017,7 +3017,7 @@ export const AgentStatusConfigValue = /*@__PURE__*/ S.suspend(() =>
   identifier: "AgentStatusConfigValue",
 }) as any as S.Schema<AgentStatusConfigValue>;
 
-export type AgentStatusConfigValueList = ReadonlyArray<AgentStatusConfigValue>;
+export type AgentStatusConfigValueList = Array<AgentStatusConfigValue>;
 export const AgentStatusConfigValueList = /*@__PURE__*/ S.Array(
   AgentStatusConfigValue,
 ) as any as S.Schema<AgentStatusConfigValueList>;
@@ -3053,8 +3053,7 @@ export const AgentStatusServiceStatus = /*@__PURE__*/ S.suspend(() =>
   identifier: "AgentStatusServiceStatus",
 }) as any as S.Schema<AgentStatusServiceStatus>;
 
-export type AgentStatusServiceStatusList =
-  ReadonlyArray<AgentStatusServiceStatus>;
+export type AgentStatusServiceStatusList = Array<AgentStatusServiceStatus>;
 export const AgentStatusServiceStatusList = /*@__PURE__*/ S.Array(
   AgentStatusServiceStatus,
 ) as any as S.Schema<AgentStatusServiceStatusList>;
@@ -3154,7 +3153,7 @@ export const AgentStatusReference = /*@__PURE__*/ S.suspend(() =>
   identifier: "AgentStatusReference",
 }) as any as S.Schema<AgentStatusReference>;
 
-export type AgentStatusReferenceList = ReadonlyArray<AgentStatusReference>;
+export type AgentStatusReferenceList = Array<AgentStatusReference>;
 export const AgentStatusReferenceList = /*@__PURE__*/ S.Array(
   AgentStatusReference,
 ) as any as S.Schema<AgentStatusReferenceList>;
@@ -3288,7 +3287,7 @@ export const SapDiscoveryResourceInstancePropertiesAppInstance =
   }) as any as S.Schema<SapDiscoveryResourceInstancePropertiesAppInstance>;
 
 export type SapDiscoveryResourceInstancePropertiesAppInstanceList =
-  ReadonlyArray<SapDiscoveryResourceInstancePropertiesAppInstance>;
+  Array<SapDiscoveryResourceInstancePropertiesAppInstance>;
 export const SapDiscoveryResourceInstancePropertiesAppInstanceList =
   /*@__PURE__*/ S.Array(
     SapDiscoveryResourceInstancePropertiesAppInstance,
@@ -3315,7 +3314,7 @@ export const SapDiscoveryResourceInstancePropertiesDiskMount =
   }) as any as S.Schema<SapDiscoveryResourceInstancePropertiesDiskMount>;
 
 export type SapDiscoveryResourceInstancePropertiesDiskMountList =
-  ReadonlyArray<SapDiscoveryResourceInstancePropertiesDiskMount>;
+  Array<SapDiscoveryResourceInstancePropertiesDiskMount>;
 export const SapDiscoveryResourceInstancePropertiesDiskMountList =
   /*@__PURE__*/ S.Array(
     SapDiscoveryResourceInstancePropertiesDiskMount,
@@ -3394,7 +3393,7 @@ export const SapDiscoveryResource = /*@__PURE__*/ S.suspend(() =>
   identifier: "SapDiscoveryResource",
 }) as any as S.Schema<SapDiscoveryResource>;
 
-export type SapDiscoveryResourceList = ReadonlyArray<SapDiscoveryResource>;
+export type SapDiscoveryResourceList = Array<SapDiscoveryResource>;
 export const SapDiscoveryResourceList = /*@__PURE__*/ S.Array(
   SapDiscoveryResource,
 ) as any as S.Schema<SapDiscoveryResourceList>;
@@ -3470,7 +3469,7 @@ export const SapDiscoveryComponentReplicationSite = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<SapDiscoveryComponentReplicationSite>;
 
 export type SapDiscoveryComponentReplicationSiteList =
-  ReadonlyArray<SapDiscoveryComponentReplicationSite>;
+  Array<SapDiscoveryComponentReplicationSite>;
 export const SapDiscoveryComponentReplicationSiteList = /*@__PURE__*/ S.Array(
   SapDiscoveryComponentReplicationSite,
 ) as any as S.Schema<SapDiscoveryComponentReplicationSiteList>;
@@ -3601,7 +3600,7 @@ export const SapDiscoveryWorkloadPropertiesProductVersion =
   }) as any as S.Schema<SapDiscoveryWorkloadPropertiesProductVersion>;
 
 export type SapDiscoveryWorkloadPropertiesProductVersionList =
-  ReadonlyArray<SapDiscoveryWorkloadPropertiesProductVersion>;
+  Array<SapDiscoveryWorkloadPropertiesProductVersion>;
 export const SapDiscoveryWorkloadPropertiesProductVersionList =
   /*@__PURE__*/ S.Array(
     SapDiscoveryWorkloadPropertiesProductVersion,
@@ -3631,7 +3630,7 @@ export const SapDiscoveryWorkloadPropertiesSoftwareComponentProperties =
   }) as any as S.Schema<SapDiscoveryWorkloadPropertiesSoftwareComponentProperties>;
 
 export type SapDiscoveryWorkloadPropertiesSoftwareComponentPropertiesList =
-  ReadonlyArray<SapDiscoveryWorkloadPropertiesSoftwareComponentProperties>;
+  Array<SapDiscoveryWorkloadPropertiesSoftwareComponentProperties>;
 export const SapDiscoveryWorkloadPropertiesSoftwareComponentPropertiesList =
   /*@__PURE__*/ S.Array(
     SapDiscoveryWorkloadPropertiesSoftwareComponentProperties,

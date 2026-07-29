@@ -36,7 +36,7 @@ export class NotFound extends T.applyErrorMatchers(
 ) {}
 
 export type GroupsTypesCreateDetailDashboardUpdateRequestDefaultColumnsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GroupsTypesCreateDetailDashboardUpdateRequestDefaultColumnsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -126,7 +126,7 @@ export const GroupsTypesListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GroupsTypesListRequest",
 }) as any as S.Schema<GroupsTypesListRequest>;
 
-export type GroupTypeDefaultColumnsList = ReadonlyArray<string>;
+export type GroupTypeDefaultColumnsList = Array<string>;
 export const GroupTypeDefaultColumnsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GroupTypeDefaultColumnsList>;
@@ -152,7 +152,7 @@ export const GroupType = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "GroupType" }) as any as S.Schema<GroupType>;
 
-export type GroupsTypesListResponseBodyList = ReadonlyArray<GroupType>;
+export type GroupsTypesListResponseBodyList = Array<GroupType>;
 export const GroupsTypesListResponseBodyList = /*@__PURE__*/ S.Array(
   GroupType,
 ) as any as S.Schema<GroupsTypesListResponseBodyList>;
@@ -321,8 +321,7 @@ export const GroupsTypesMetricsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GroupsTypesMetricsListRequest",
 }) as any as S.Schema<GroupsTypesMetricsListRequest>;
 
-export type PaginatedGroupUsageMetricListResultsList =
-  ReadonlyArray<GroupUsageMetric>;
+export type PaginatedGroupUsageMetricListResultsList = Array<GroupUsageMetric>;
 export const PaginatedGroupUsageMetricListResultsList = /*@__PURE__*/ S.Array(
   GroupUsageMetric,
 ) as any as S.Schema<PaginatedGroupUsageMetricListResultsList>;
@@ -476,7 +475,7 @@ export const GroupsTypesMetricsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GroupsTypesMetricsUpdateRequest>;
 
 export type GroupsTypesSetDefaultColumnsUpdateRequestDefaultColumnsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GroupsTypesSetDefaultColumnsUpdateRequestDefaultColumnsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -520,7 +519,7 @@ export const GroupsTypesSetDefaultColumnsUpdateResponse =
   }) as any as S.Schema<GroupsTypesSetDefaultColumnsUpdateResponse>;
 
 export type GroupsTypesUpdateMetadataPartialUpdateRequestDefaultColumnsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GroupsTypesUpdateMetadataPartialUpdateRequestDefaultColumnsList =
   /*@__PURE__*/ S.Array(
     S.String,

@@ -38,14 +38,13 @@ export const FeaturesDisableRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FeaturesDisableRequest>;
 
 /** The operations list. */
-export type OperationStatusResultOperationsList =
-  ReadonlyArray<OperationStatusResult>;
+export type OperationStatusResultOperationsList = Array<OperationStatusResult>;
 export const OperationStatusResultOperationsList = /*@__PURE__*/ S.Array(
   S.suspend(() => OperationStatusResult),
 ) as any as S.Schema<OperationStatusResultOperationsList>;
 
 /** The error details. */
-export type ErrorDetailDetailsList = ReadonlyArray<ErrorDetail>;
+export type ErrorDetailDetailsList = Array<ErrorDetail>;
 export const ErrorDetailDetailsList = /*@__PURE__*/ S.Array(
   S.suspend(() => ErrorDetail),
 ) as any as S.Schema<ErrorDetailDetailsList>;
@@ -67,7 +66,7 @@ export const ErrorAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ErrorAdditionalInfo>;
 
 /** The error additional info. */
-export type ErrorDetailAdditionalInfoList = ReadonlyArray<ErrorAdditionalInfo>;
+export type ErrorDetailAdditionalInfoList = Array<ErrorAdditionalInfo>;
 export const ErrorDetailAdditionalInfoList = /*@__PURE__*/ S.Array(
   ErrorAdditionalInfo,
 ) as any as S.Schema<ErrorDetailAdditionalInfoList>;
@@ -134,7 +133,7 @@ export const OperationStatusResult = /*@__PURE__*/ S.suspend(() =>
 
 /** The operations list. */
 export type FeaturesDisableResponseOperationsList =
-  ReadonlyArray<OperationStatusResult>;
+  Array<OperationStatusResult>;
 export const FeaturesDisableResponseOperationsList = /*@__PURE__*/ S.Array(
   OperationStatusResult,
 ) as any as S.Schema<FeaturesDisableResponseOperationsList>;
@@ -204,8 +203,7 @@ export const FeaturesEnableRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FeaturesEnableRequest>;
 
 /** The operations list. */
-export type FeaturesEnableResponseOperationsList =
-  ReadonlyArray<OperationStatusResult>;
+export type FeaturesEnableResponseOperationsList = Array<OperationStatusResult>;
 export const FeaturesEnableResponseOperationsList = /*@__PURE__*/ S.Array(
   OperationStatusResult,
 ) as any as S.Schema<FeaturesEnableResponseOperationsList>;
@@ -414,7 +412,7 @@ export const Feature = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Feature" }) as any as S.Schema<Feature>;
 
 /** The Feature items on this page */
-export type FeatureListResultValueList = ReadonlyArray<Feature>;
+export type FeatureListResultValueList = Array<Feature>;
 export const FeatureListResultValueList = /*@__PURE__*/ S.Array(
   Feature,
 ) as any as S.Schema<FeatureListResultValueList>;
@@ -640,8 +638,7 @@ export const GuestSubscription = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GuestSubscription>;
 
 /** The GuestSubscription items on this page */
-export type GuestSubscriptionListResultValueList =
-  ReadonlyArray<GuestSubscription>;
+export type GuestSubscriptionListResultValueList = Array<GuestSubscription>;
 export const GuestSubscriptionListResultValueList = /*@__PURE__*/ S.Array(
   GuestSubscription,
 ) as any as S.Schema<GuestSubscriptionListResultValueList>;
@@ -889,8 +886,7 @@ export const MemberCapOverride = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MemberCapOverride>;
 
 /** The MemberCapOverride items on this page */
-export type MemberCapOverrideListResultValueList =
-  ReadonlyArray<MemberCapOverride>;
+export type MemberCapOverrideListResultValueList = Array<MemberCapOverride>;
 export const MemberCapOverrideListResultValueList = /*@__PURE__*/ S.Array(
   MemberCapOverride,
 ) as any as S.Schema<MemberCapOverrideListResultValueList>;
@@ -979,7 +975,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = ReadonlyArray<Operation>;
+export type OperationsListResponseValueList = Array<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;
@@ -1218,7 +1214,7 @@ export const SharedLimitCap = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SharedLimitCap" }) as any as S.Schema<SharedLimitCap>;
 
 /** The SharedLimitCap items on this page */
-export type SharedLimitCapListResultValueList = ReadonlyArray<SharedLimitCap>;
+export type SharedLimitCapListResultValueList = Array<SharedLimitCap>;
 export const SharedLimitCapListResultValueList = /*@__PURE__*/ S.Array(
   SharedLimitCap,
 ) as any as S.Schema<SharedLimitCapListResultValueList>;
@@ -1255,7 +1251,7 @@ export const MemberCap = /*@__PURE__*/ S.suspend(() =>
 
 /** The full set of per-member cap overrides to persist for this resource. This call replaces the existing set entirely; supply an empty array (`[]`) to clear all overrides. */
 export type SharedLimitCapsSetMemberCapOverridesRequestMemberCapOverridesList =
-  ReadonlyArray<MemberCap>;
+  Array<MemberCap>;
 export const SharedLimitCapsSetMemberCapOverridesRequestMemberCapOverridesList =
   /*@__PURE__*/ S.Array(
     MemberCap,
@@ -1293,7 +1289,7 @@ export const SharedLimitCapsSetMemberCapOverridesRequest =
 
 /** The per-member cap overrides as persisted after the action completed. */
 export type SetMemberCapOverridesResultMemberCapOverridesList =
-  ReadonlyArray<MemberCap>;
+  Array<MemberCap>;
 export const SetMemberCapOverridesResultMemberCapOverridesList =
   /*@__PURE__*/ S.Array(
     MemberCap,
@@ -1538,7 +1534,7 @@ export const SharedLimit = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SharedLimit" }) as any as S.Schema<SharedLimit>;
 
 /** The SharedLimit items on this page */
-export type SharedLimitListResultValueList = ReadonlyArray<SharedLimit>;
+export type SharedLimitListResultValueList = Array<SharedLimit>;
 export const SharedLimitListResultValueList = /*@__PURE__*/ S.Array(
   SharedLimit,
 ) as any as S.Schema<SharedLimitListResultValueList>;
@@ -1731,8 +1727,7 @@ export const Resource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Resource" }) as any as S.Schema<Resource>;
 
 /** The TrustedHostSubscription items on this page */
-export type TrustedHostSubscriptionListResultValueList =
-  ReadonlyArray<Resource>;
+export type TrustedHostSubscriptionListResultValueList = Array<Resource>;
 export const TrustedHostSubscriptionListResultValueList = /*@__PURE__*/ S.Array(
   Resource,
 ) as any as S.Schema<TrustedHostSubscriptionListResultValueList>;
@@ -1870,7 +1865,7 @@ export const VmFamily = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VmFamily" }) as any as S.Schema<VmFamily>;
 
 /** The VmFamily items on this page */
-export type VmFamilyListResultValueList = ReadonlyArray<VmFamily>;
+export type VmFamilyListResultValueList = Array<VmFamily>;
 export const VmFamilyListResultValueList = /*@__PURE__*/ S.Array(
   VmFamily,
 ) as any as S.Schema<VmFamilyListResultValueList>;

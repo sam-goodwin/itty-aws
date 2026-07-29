@@ -100,7 +100,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -181,7 +181,7 @@ export const AddGoogleAnalyticsProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "AddGoogleAnalyticsProjectsRequest",
 }) as any as S.Schema<AddGoogleAnalyticsProjectsRequest>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -210,7 +210,7 @@ export interface AndroidApp {
   /** Output only. Immutable. The globally unique, Firebase-assigned identifier for the `AndroidApp`. This identifier should be treated as an opaque token, as the data format is not specified. */
   appId?: string;
   /** Output only. The lifecycle state of the App. */
-  state?: AndroidAppStateEnum;
+  state?: AndroidAppStateEnum | (string & {});
   /** Immutable. The canonical package name of the Android app as would appear in the Google Play Developer Console. */
   packageName?: string;
 }
@@ -262,7 +262,7 @@ export interface ShaCertificate {
   /** The resource name of the ShaCertificate for the AndroidApp, in the format: projects/PROJECT_IDENTIFIER/androidApps/APP_ID/sha/SHA_HASH * PROJECT_IDENTIFIER: the parent Project's [`ProjectNumber`](../projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or its [`ProjectId`](../projects#FirebaseProject.FIELDS.project_id). Learn more about using project identifiers in Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510). Note that the value for PROJECT_IDENTIFIER in any response body will be the `ProjectId`. * APP_ID: the globally unique, Firebase-assigned identifier for the App (see [`appId`](../projects.androidApps#AndroidApp.FIELDS.app_id)). * SHA_HASH: the certificate hash for the App (see [`shaHash`](../projects.androidApps.sha#ShaCertificate.FIELDS.sha_hash)). */
   name?: string;
   /** The type of SHA certificate encoded in the hash. */
-  certType?: ShaCertificateCertTypeEnum;
+  certType?: ShaCertificateCertTypeEnum | (string & {});
   /** The certificate hash for the `AndroidApp`. */
   shaHash?: string;
 }
@@ -319,7 +319,7 @@ export interface IosApp {
   /** The automatically generated Apple ID assigned to the iOS app by Apple in the iOS App Store. */
   appStoreId?: string;
   /** Output only. The lifecycle state of the App. */
-  state?: IosAppStateEnum;
+  state?: IosAppStateEnum | (string & {});
   /** Output only. Immutable. The globally unique, Firebase-assigned identifier for the `IosApp`. This identifier should be treated as an opaque token, as the data format is not specified. */
   appId?: string;
 }
@@ -376,7 +376,7 @@ export interface WebApp {
   /** The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the `WebApp`. Be aware that this value is the UID of the API key, _not_ the [`keyString`](https://cloud.google.com/api-keys/docs/reference/rest/v2/projects.locations.keys#Key.FIELDS.key_string) of the API key. The `keyString` is the value that can be found in the App's [configuration artifact](../../rest/v1beta1/projects.webApps/getConfig). If `api_key_id` is not set in requests to [`webApps.Create`](../../rest/v1beta1/projects.webApps/create), then Firebase automatically associates an `api_key_id` with the `WebApp`. This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned. In patch requests, `api_key_id` cannot be set to an empty value, and the new UID must have no restrictions or only have restrictions that are valid for the associated `WebApp`. We recommend using the [Google Cloud Console](https://console.cloud.google.com/apis/credentials) to manage API keys. */
   apiKeyId?: string;
   /** Output only. The lifecycle state of the App. */
-  state?: WebAppStateEnum;
+  state?: WebAppStateEnum | (string & {});
   /** Output only. Immutable. A unique, Firebase-assigned identifier for the `WebApp`. This identifier is only used to populate the `namespace` value for the `WebApp`. For most use cases, use `appId` to identify or reference the App. The `webId` value is only unique within a `FirebaseProject` and its associated Apps. */
   webId?: string;
   /** Output only. Immutable. The globally unique, Firebase-assigned identifier for the `WebApp`. This identifier should be treated as an opaque token, as the data format is not specified. */
@@ -571,7 +571,7 @@ export const StreamMapping = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "StreamMapping" }) as any as S.Schema<StreamMapping>;
 
-export type StreamMappingList = ReadonlyArray<StreamMapping>;
+export type StreamMappingList = Array<StreamMapping>;
 export const StreamMappingList = /*@__PURE__*/ S.Array(
   StreamMapping,
 ) as any as S.Schema<StreamMappingList>;
@@ -809,7 +809,7 @@ export interface FirebaseProject {
   /** The resource name of the Project, in the format: projects/PROJECT_IDENTIFIER PROJECT_IDENTIFIER: the Project's [`ProjectNumber`](../projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or its [`ProjectId`](../projects#FirebaseProject.FIELDS.project_id). Learn more about using project identifiers in Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510). Note that the value for PROJECT_IDENTIFIER in any response body will be the `ProjectId`. */
   name?: string;
   /** Output only. The lifecycle state of the Project. */
-  state?: FirebaseProjectStateEnum;
+  state?: FirebaseProjectStateEnum | (string & {});
 }
 export const FirebaseProject = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -918,7 +918,7 @@ export const ProjectInfo = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ProjectInfo" }) as any as S.Schema<ProjectInfo>;
 
-export type ProjectInfoList = ReadonlyArray<ProjectInfo>;
+export type ProjectInfoList = Array<ProjectInfo>;
 export const ProjectInfoList = /*@__PURE__*/ S.Array(
   ProjectInfo,
 ) as any as S.Schema<ProjectInfoList>;
@@ -962,7 +962,7 @@ export const ListProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsRequest",
 }) as any as S.Schema<ListProjectsRequest>;
 
-export type FirebaseProjectList = ReadonlyArray<FirebaseProject>;
+export type FirebaseProjectList = Array<FirebaseProject>;
 export const FirebaseProjectList = /*@__PURE__*/ S.Array(
   FirebaseProject,
 ) as any as S.Schema<FirebaseProjectList>;
@@ -1009,7 +1009,7 @@ export const ListProjectsAndroidAppsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsAndroidAppsRequest",
 }) as any as S.Schema<ListProjectsAndroidAppsRequest>;
 
-export type AndroidAppList = ReadonlyArray<AndroidApp>;
+export type AndroidAppList = Array<AndroidApp>;
 export const AndroidAppList = /*@__PURE__*/ S.Array(
   AndroidApp,
 ) as any as S.Schema<AndroidAppList>;
@@ -1047,7 +1047,7 @@ export const ListProjectsAndroidAppsShaRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsAndroidAppsShaRequest",
 }) as any as S.Schema<ListProjectsAndroidAppsShaRequest>;
 
-export type ShaCertificateList = ReadonlyArray<ShaCertificate>;
+export type ShaCertificateList = Array<ShaCertificate>;
 export const ShaCertificateList = /*@__PURE__*/ S.Array(
   ShaCertificate,
 ) as any as S.Schema<ShaCertificateList>;
@@ -1102,8 +1102,7 @@ export type LocationFeaturesItemEnum =
   | "FUNCTIONS";
 export const LocationFeaturesItemEnum = /*@__PURE__*/ S.String;
 
-export type LocationFeaturesItemEnumList =
-  ReadonlyArray<LocationFeaturesItemEnum>;
+export type LocationFeaturesItemEnumList = Array<LocationFeaturesItemEnum>;
 export const LocationFeaturesItemEnumList = /*@__PURE__*/ S.Array(
   LocationFeaturesItemEnum,
 ) as any as S.Schema<LocationFeaturesItemEnumList>;
@@ -1125,7 +1124,7 @@ export const Location = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Location" }) as any as S.Schema<Location>;
 
-export type LocationList = ReadonlyArray<Location>;
+export type LocationList = Array<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -1172,7 +1171,7 @@ export const ListProjectsIosAppsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsIosAppsRequest",
 }) as any as S.Schema<ListProjectsIosAppsRequest>;
 
-export type IosAppList = ReadonlyArray<IosApp>;
+export type IosAppList = Array<IosApp>;
 export const IosAppList = /*@__PURE__*/ S.Array(
   IosApp,
 ) as any as S.Schema<IosAppList>;
@@ -1219,7 +1218,7 @@ export const ListProjectsWebAppsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsWebAppsRequest",
 }) as any as S.Schema<ListProjectsWebAppsRequest>;
 
-export type WebAppList = ReadonlyArray<WebApp>;
+export type WebAppList = Array<WebApp>;
 export const WebAppList = /*@__PURE__*/ S.Array(
   WebApp,
 ) as any as S.Schema<WebAppList>;
@@ -1571,7 +1570,7 @@ export const FirebaseAppInfo = /*@__PURE__*/ S.suspend(() =>
   identifier: "FirebaseAppInfo",
 }) as any as S.Schema<FirebaseAppInfo>;
 
-export type FirebaseAppInfoList = ReadonlyArray<FirebaseAppInfo>;
+export type FirebaseAppInfoList = Array<FirebaseAppInfo>;
 export const FirebaseAppInfoList = /*@__PURE__*/ S.Array(
   FirebaseAppInfo,
 ) as any as S.Schema<FirebaseAppInfoList>;

@@ -65,7 +65,7 @@ export const BatchDeploymentConfigurationType = /*@__PURE__*/ S.String;
 /** Properties relevant to different deployment types. */
 export interface BatchDeploymentConfiguration {
   /** [Required] The type of the deployment */
-  deploymentConfigurationType: BatchDeploymentConfigurationType;
+  deploymentConfigurationType: BatchDeploymentConfigurationType | (string & {});
 }
 export const BatchDeploymentConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -89,7 +89,7 @@ export const ReferenceType = /*@__PURE__*/ S.String;
 /** Base definition for asset references. */
 export interface AssetReferenceBase {
   /** [Required] Specifies the type of asset reference. */
-  referenceType: ReferenceType;
+  referenceType: ReferenceType | (string & {});
 }
 export const AssetReferenceBase = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -176,7 +176,7 @@ export interface BatchDeploymentProperties {
   /** Error threshold, if the error count for the entire input goes above this value, the batch inference will be aborted. Range is [-1, int.MaxValue]. For FileDataset, this value is the count of file failures. For TabularDataset, this value is the count of record failures. If set to -1 (the lower bound), all failures during batch inference will be ignored. */
   errorThreshold?: number;
   /** Log verbosity for batch inferencing. Increasing verbosity order for logging is : Warning, Info and Debug. The default value is Info. */
-  loggingLevel?: BatchDeploymentPropertiesLoggingLevel;
+  loggingLevel?: BatchDeploymentPropertiesLoggingLevel | (string & {});
   /** Indicates maximum number of parallelism per instance. */
   maxConcurrencyPerInstance?: number;
   /** Size of the mini-batch passed to each batch invocation. For FileDataset, this is the number of files per mini-batch. For TabularDataset, this is the size of the records in bytes, per mini-batch. */
@@ -184,11 +184,11 @@ export interface BatchDeploymentProperties {
   /** Reference to the model asset for the endpoint deployment. */
   model?: AssetReferenceBase | null;
   /** Enum to determine how batch inferencing will handle output */
-  outputAction?: BatchDeploymentPropertiesOutputAction;
+  outputAction?: BatchDeploymentPropertiesOutputAction | (string & {});
   /** Customized output file name for append_row output action. */
   outputFileName?: string;
   /** Provisioning state for the endpoint deployment. */
-  provisioningState?: DeploymentProvisioningState;
+  provisioningState?: DeploymentProvisioningState | (string & {});
   /** Indicates compute configuration for the job. If not provided, will default to the defaults defined in ResourceConfiguration. */
   resources?: ResourceConfiguration | null;
   /** Retry Settings for the batch inference operation. If not provided, will default to the defaults defined in BatchRetrySettings. */
@@ -793,7 +793,7 @@ export const BatchDeployment = /*@__PURE__*/ S.suspend(() =>
 
 /** The BatchDeployment items on this page */
 export type BatchDeploymentTrackedResourceArmPaginatedResultValueList =
-  ReadonlyArray<BatchDeployment>;
+  Array<BatchDeployment>;
 export const BatchDeploymentTrackedResourceArmPaginatedResultValueList =
   /*@__PURE__*/ S.Array(
     BatchDeployment,
@@ -1557,7 +1557,7 @@ export const BatchEndpoint = /*@__PURE__*/ S.suspend(() =>
 
 /** The BatchEndpoint items on this page */
 export type BatchEndpointTrackedResourceArmPaginatedResultValueList =
-  ReadonlyArray<BatchEndpoint>;
+  Array<BatchEndpoint>;
 export const BatchEndpointTrackedResourceArmPaginatedResultValueList =
   /*@__PURE__*/ S.Array(
     BatchEndpoint,
@@ -1801,7 +1801,7 @@ export const CapabilityHostPropertiesInputTagsMap = /*@__PURE__*/ S.Record(
 
 /** List of Aca Environment connections. */
 export type CapabilityHostPropertiesInputAcaEnvironmentConnectionsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CapabilityHostPropertiesInputAcaEnvironmentConnectionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1809,7 +1809,7 @@ export const CapabilityHostPropertiesInputAcaEnvironmentConnectionsList =
 
 /** List of AI services connections. */
 export type CapabilityHostPropertiesInputAiServicesConnectionsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CapabilityHostPropertiesInputAiServicesConnectionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1821,8 +1821,7 @@ export const CapabilityHostPropertiesInputCapabilityHostKind =
   /*@__PURE__*/ S.String;
 
 /** List of Storage connections. */
-export type CapabilityHostPropertiesInputStorageConnectionsList =
-  ReadonlyArray<string>;
+export type CapabilityHostPropertiesInputStorageConnectionsList = Array<string>;
 export const CapabilityHostPropertiesInputStorageConnectionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1830,7 +1829,7 @@ export const CapabilityHostPropertiesInputStorageConnectionsList =
 
 /** List of Thread storage connections. */
 export type CapabilityHostPropertiesInputThreadStorageConnectionsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CapabilityHostPropertiesInputThreadStorageConnectionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1838,7 +1837,7 @@ export const CapabilityHostPropertiesInputThreadStorageConnectionsList =
 
 /** List of VectorStore connections. */
 export type CapabilityHostPropertiesInputVectorStoreConnectionsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CapabilityHostPropertiesInputVectorStoreConnectionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1951,15 +1950,14 @@ export const CapabilityHostPropertiesTagsMap = /*@__PURE__*/ S.Record(
 
 /** List of Aca Environment connections. */
 export type CapabilityHostPropertiesAcaEnvironmentConnectionsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CapabilityHostPropertiesAcaEnvironmentConnectionsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<CapabilityHostPropertiesAcaEnvironmentConnectionsList>;
 
 /** List of AI services connections. */
-export type CapabilityHostPropertiesAiServicesConnectionsList =
-  ReadonlyArray<string>;
+export type CapabilityHostPropertiesAiServicesConnectionsList = Array<string>;
 export const CapabilityHostPropertiesAiServicesConnectionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1981,8 +1979,7 @@ export type CapabilityHostProvisioningState =
 export const CapabilityHostProvisioningState = /*@__PURE__*/ S.String;
 
 /** List of Storage connections. */
-export type CapabilityHostPropertiesStorageConnectionsList =
-  ReadonlyArray<string>;
+export type CapabilityHostPropertiesStorageConnectionsList = Array<string>;
 export const CapabilityHostPropertiesStorageConnectionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1990,22 +1987,21 @@ export const CapabilityHostPropertiesStorageConnectionsList =
 
 /** List of Thread storage connections. */
 export type CapabilityHostPropertiesThreadStorageConnectionsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CapabilityHostPropertiesThreadStorageConnectionsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<CapabilityHostPropertiesThreadStorageConnectionsList>;
 
 /** List of VectorStore connections. */
-export type CapabilityHostPropertiesVectorStoreConnectionsList =
-  ReadonlyArray<string>;
+export type CapabilityHostPropertiesVectorStoreConnectionsList = Array<string>;
 export const CapabilityHostPropertiesVectorStoreConnectionsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<CapabilityHostPropertiesVectorStoreConnectionsList>;
 
 /** List of messages containing errors. */
-export type CapabilityHostPropertiesMessagesList = ReadonlyArray<string>;
+export type CapabilityHostPropertiesMessagesList = Array<string>;
 export const CapabilityHostPropertiesMessagesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CapabilityHostPropertiesMessagesList>;
@@ -2472,7 +2468,7 @@ export const CodeContainer = /*@__PURE__*/ S.suspend(() =>
 
 /** The CodeContainer items on this page */
 export type CodeContainerResourceArmPaginatedResultValueList =
-  ReadonlyArray<CodeContainer>;
+  Array<CodeContainer>;
 export const CodeContainerResourceArmPaginatedResultValueList =
   /*@__PURE__*/ S.Array(
     CodeContainer,
@@ -2637,7 +2633,7 @@ export interface CodeVersionProperties {
   /** Uri where code is located */
   codeUri?: string | null;
   /** Provisioning state for the code version. */
-  provisioningState?: AssetProvisioningState;
+  provisioningState?: AssetProvisioningState | (string & {});
 }
 export const CodeVersionProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2871,8 +2867,7 @@ export const CodeVersion = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CodeVersion" }) as any as S.Schema<CodeVersion>;
 
 /** The CodeVersion items on this page */
-export type CodeVersionResourceArmPaginatedResultValueList =
-  ReadonlyArray<CodeVersion>;
+export type CodeVersionResourceArmPaginatedResultValueList = Array<CodeVersion>;
 export const CodeVersionResourceArmPaginatedResultValueList =
   /*@__PURE__*/ S.Array(
     CodeVersion,
@@ -3245,7 +3240,7 @@ export const ComponentContainer = /*@__PURE__*/ S.suspend(() =>
 
 /** The ComponentContainer items on this page */
 export type ComponentContainerResourceArmPaginatedResultValueList =
-  ReadonlyArray<ComponentContainer>;
+  Array<ComponentContainer>;
 export const ComponentContainerResourceArmPaginatedResultValueList =
   /*@__PURE__*/ S.Array(
     ComponentContainer,
@@ -3301,7 +3296,7 @@ export interface ComponentVersionProperties {
   /** Defines Component definition details. <see href="https://docs.microsoft.com/en-us/azure/machine-learning/reference-yaml-component-command" /> */
   componentSpec?: unknown | null;
   /** Provisioning state for the component version. */
-  provisioningState?: AssetProvisioningState;
+  provisioningState?: AssetProvisioningState | (string & {});
 }
 export const ComponentVersionProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3545,7 +3540,7 @@ export const ComponentVersion = /*@__PURE__*/ S.suspend(() =>
 
 /** The ComponentVersion items on this page */
 export type ComponentVersionResourceArmPaginatedResultValueList =
-  ReadonlyArray<ComponentVersion>;
+  Array<ComponentVersion>;
 export const ComponentVersionResourceArmPaginatedResultValueList =
   /*@__PURE__*/ S.Array(
     ComponentVersion,
@@ -3755,7 +3750,7 @@ export type ProvisioningState =
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** The error details. */
-export type ErrorDetailDetailsList = ReadonlyArray<ErrorDetail>;
+export type ErrorDetailDetailsList = Array<ErrorDetail>;
 export const ErrorDetailDetailsList = /*@__PURE__*/ S.Array(
   S.suspend(() => ErrorDetail),
 ) as any as S.Schema<ErrorDetailDetailsList>;
@@ -3777,7 +3772,7 @@ export const ErrorAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ErrorAdditionalInfo>;
 
 /** The error additional info. */
-export type ErrorDetailAdditionalInfoList = ReadonlyArray<ErrorAdditionalInfo>;
+export type ErrorDetailAdditionalInfoList = Array<ErrorAdditionalInfo>;
 export const ErrorDetailAdditionalInfoList = /*@__PURE__*/ S.Array(
   ErrorAdditionalInfo,
 ) as any as S.Schema<ErrorDetailAdditionalInfoList>;
@@ -3820,7 +3815,7 @@ export const ComputeProvisioningErrorsItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Errors during provisioning */
 export type ComputeProvisioningErrorsList =
-  ReadonlyArray<ComputeProvisioningErrorsItem>;
+  Array<ComputeProvisioningErrorsItem>;
 export const ComputeProvisioningErrorsList = /*@__PURE__*/ S.Array(
   ComputeProvisioningErrorsItem,
 ) as any as S.Schema<ComputeProvisioningErrorsList>;
@@ -4231,8 +4226,7 @@ export const ComputeResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ComputeResource>;
 
 /** The ComputeResource items on this page */
-export type PaginatedComputeResourcesListValueList =
-  ReadonlyArray<ComputeResource>;
+export type PaginatedComputeResourcesListValueList = Array<ComputeResource>;
 export const PaginatedComputeResourcesListValueList = /*@__PURE__*/ S.Array(
   ComputeResource,
 ) as any as S.Schema<PaginatedComputeResourcesListValueList>;
@@ -4360,7 +4354,7 @@ export const AmlComputeNodeInformation = /*@__PURE__*/ S.suspend(() =>
 
 /** The collection of returned AmlCompute nodes details. */
 export type AmlComputeNodesInformationNodesList =
-  ReadonlyArray<AmlComputeNodeInformation>;
+  Array<AmlComputeNodeInformation>;
 export const AmlComputeNodesInformationNodesList = /*@__PURE__*/ S.Array(
   AmlComputeNodeInformation,
 ) as any as S.Schema<AmlComputeNodesInformationNodesList>;
@@ -4951,7 +4945,7 @@ export const DataContainer = /*@__PURE__*/ S.suspend(() =>
 
 /** The DataContainer items on this page */
 export type DataContainerResourceArmPaginatedResultValueList =
-  ReadonlyArray<DataContainer>;
+  Array<DataContainer>;
 export const DataContainerResourceArmPaginatedResultValueList =
   /*@__PURE__*/ S.Array(
     DataContainer,
@@ -5004,7 +4998,7 @@ export const CredentialsType = /*@__PURE__*/ S.String;
 /** Base definition for datastore credentials. */
 export interface DatastoreCredentials {
   /** [Required] Credential type used to authentication with storage. */
-  credentialsType: CredentialsType;
+  credentialsType: CredentialsType | (string & {});
 }
 export const DatastoreCredentials = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5237,7 +5231,7 @@ export const DatastoresGetResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DatastoresGetResponse",
 }) as any as S.Schema<DatastoresGetResponse>;
 
-export type DatastoresListRequestNamesList = ReadonlyArray<string>;
+export type DatastoresListRequestNamesList = Array<string>;
 export const DatastoresListRequestNamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DatastoresListRequestNamesList>;
@@ -5312,8 +5306,7 @@ export const Datastore = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Datastore" }) as any as S.Schema<Datastore>;
 
 /** The Datastore items on this page */
-export type DatastoreResourceArmPaginatedResultValueList =
-  ReadonlyArray<Datastore>;
+export type DatastoreResourceArmPaginatedResultValueList = Array<Datastore>;
 export const DatastoreResourceArmPaginatedResultValueList =
   /*@__PURE__*/ S.Array(
     Datastore,
@@ -5421,7 +5414,7 @@ export interface DataVersionBaseProperties {
   /** Is the asset archived? */
   isArchived?: boolean;
   /** [Required] Specifies the type of data. */
-  dataType: DataType;
+  dataType: DataType | (string & {});
   /** [Required] Uri of the data. Example: https://go.microsoft.com/fwlink/?linkid=2202330 */
   dataUri: string;
 }
@@ -5668,7 +5661,7 @@ export const DataVersionBase = /*@__PURE__*/ S.suspend(() =>
 
 /** The DataVersionBase items on this page */
 export type DataVersionBaseResourceArmPaginatedResultValueList =
-  ReadonlyArray<DataVersionBase>;
+  Array<DataVersionBase>;
 export const DataVersionBaseResourceArmPaginatedResultValueList =
   /*@__PURE__*/ S.Array(
     DataVersionBase,
@@ -6045,7 +6038,7 @@ export const EnvironmentContainer = /*@__PURE__*/ S.suspend(() =>
 
 /** The EnvironmentContainer items on this page */
 export type EnvironmentContainerResourceArmPaginatedResultValueList =
-  ReadonlyArray<EnvironmentContainer>;
+  Array<EnvironmentContainer>;
 export const EnvironmentContainerResourceArmPaginatedResultValueList =
   /*@__PURE__*/ S.Array(
     EnvironmentContainer,
@@ -6161,21 +6154,21 @@ export interface EnvironmentVersionProperties {
   /** Is the asset archived? */
   isArchived?: boolean;
   /** AutoRebuild setting for the derived image */
-  autoRebuild?: EnvironmentVersionPropertiesAutoRebuild;
+  autoRebuild?: EnvironmentVersionPropertiesAutoRebuild | (string & {});
   /** Configuration settings for Docker build context. */
   build?: BuildContext;
   /** Standard configuration file used by Conda that lets you install any kind of package, including Python, R, and C/C++ packages. <see href="https://repo2docker.readthedocs.io/en/latest/config_files.html#environment-yml-install-a-conda-environment" /> */
   condaFile?: string;
   /** Environment type is either user managed or curated by the Azure ML service <see href="https://docs.microsoft.com/en-us/azure/machine-learning/resource-curated-environments" /> */
-  environmentType?: EnvironmentType;
+  environmentType?: EnvironmentType | (string & {});
   /** Name of the image that will be used for the environment. <seealso href="https://docs.microsoft.com/en-us/azure/machine-learning/how-to-deploy-custom-docker-image#use-a-custom-base-image" /> */
   image?: string;
   /** Defines configuration specific to inference. */
   inferenceConfig?: InferenceContainerProperties;
   /** The type of operating system. */
-  osType?: EnvironmentVersionPropertiesOsType;
+  osType?: EnvironmentVersionPropertiesOsType | (string & {});
   /** Provisioning state for the environment version. */
-  provisioningState?: AssetProvisioningState;
+  provisioningState?: AssetProvisioningState | (string & {});
   /** Stage in the environment lifecycle assigned to this environment */
   stage?: string | null;
 }
@@ -6429,7 +6422,7 @@ export const EnvironmentVersion = /*@__PURE__*/ S.suspend(() =>
 
 /** The EnvironmentVersion items on this page */
 export type EnvironmentVersionResourceArmPaginatedResultValueList =
-  ReadonlyArray<EnvironmentVersion>;
+  Array<EnvironmentVersion>;
 export const EnvironmentVersionResourceArmPaginatedResultValueList =
   /*@__PURE__*/ S.Array(
     EnvironmentVersion,
@@ -6822,7 +6815,7 @@ export const FeaturesetContainer = /*@__PURE__*/ S.suspend(() =>
 
 /** The FeaturesetContainer items on this page */
 export type FeaturesetContainerResourceArmPaginatedResultValueList =
-  ReadonlyArray<FeaturesetContainer>;
+  Array<FeaturesetContainer>;
 export const FeaturesetContainerResourceArmPaginatedResultValueList =
   /*@__PURE__*/ S.Array(
     FeaturesetContainer,
@@ -6853,8 +6846,9 @@ export type DataAvailabilityStatus =
 export const DataAvailabilityStatus = /*@__PURE__*/ S.String;
 
 /** Specified the data availability status that you want to backfill */
-export type FeaturesetVersionsBackfillRequestDataAvailabilityStatusList =
-  ReadonlyArray<DataAvailabilityStatus | (string & {})>;
+export type FeaturesetVersionsBackfillRequestDataAvailabilityStatusList = Array<
+  DataAvailabilityStatus | (string & {})
+>;
 export const FeaturesetVersionsBackfillRequestDataAvailabilityStatusList =
   /*@__PURE__*/ S.Array(
     DataAvailabilityStatus,
@@ -6979,7 +6973,7 @@ export const FeaturesetVersionsBackfillRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FeaturesetVersionsBackfillRequest>;
 
 /** List of jobs submitted as part of the backfill request. */
-export type FeaturesetVersionBackfillResponseJobIdsList = ReadonlyArray<string>;
+export type FeaturesetVersionBackfillResponseJobIdsList = Array<string>;
 export const FeaturesetVersionBackfillResponseJobIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -7017,7 +7011,7 @@ export const FeaturesetVersionPropertiesTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<FeaturesetVersionPropertiesTagsMap>;
 
 /** Specifies list of entities */
-export type FeaturesetVersionPropertiesEntitiesList = ReadonlyArray<string>;
+export type FeaturesetVersionPropertiesEntitiesList = Array<string>;
 export const FeaturesetVersionPropertiesEntitiesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<FeaturesetVersionPropertiesEntitiesList>;
@@ -7030,14 +7024,15 @@ export type EmailNotificationEnableType =
 export const EmailNotificationEnableType = /*@__PURE__*/ S.String;
 
 /** Send email notification to user on specified notification type */
-export type NotificationSettingEmailOnList =
-  ReadonlyArray<EmailNotificationEnableType>;
+export type NotificationSettingEmailOnList = Array<
+  EmailNotificationEnableType | (string & {})
+>;
 export const NotificationSettingEmailOnList = /*@__PURE__*/ S.Array(
   EmailNotificationEnableType,
 ) as any as S.Schema<NotificationSettingEmailOnList>;
 
 /** This is the email recipient list which has a limitation of 499 characters in total concat with comma separator */
-export type NotificationSettingEmailsList = ReadonlyArray<string>;
+export type NotificationSettingEmailsList = Array<string>;
 export const NotificationSettingEmailsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<NotificationSettingEmailsList>;
@@ -7051,7 +7046,7 @@ export interface Webhook {
   /** Send callback on a specified notification event */
   eventType?: string | null;
   /** [Required] Specifies the type of service to send a callback */
-  webhookType: WebhookType;
+  webhookType: WebhookType | (string & {});
 }
 export const Webhook = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -7096,19 +7091,19 @@ export type RecurrenceFrequency = "Minute" | "Hour" | "Day" | "Week" | "Month";
 export const RecurrenceFrequency = /*@__PURE__*/ S.String;
 
 /** [Required] List of hours for the schedule. */
-export type RecurrenceScheduleHoursList = ReadonlyArray<number>;
+export type RecurrenceScheduleHoursList = Array<number>;
 export const RecurrenceScheduleHoursList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<RecurrenceScheduleHoursList>;
 
 /** [Required] List of minutes for the schedule. */
-export type RecurrenceScheduleMinutesList = ReadonlyArray<number>;
+export type RecurrenceScheduleMinutesList = Array<number>;
 export const RecurrenceScheduleMinutesList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<RecurrenceScheduleMinutesList>;
 
 /** List of month days for the schedule */
-export type RecurrenceScheduleMonthDaysList = ReadonlyArray<number>;
+export type RecurrenceScheduleMonthDaysList = Array<number>;
 export const RecurrenceScheduleMonthDaysList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<RecurrenceScheduleMonthDaysList>;
@@ -7125,7 +7120,7 @@ export type WeekDay =
 export const WeekDay = /*@__PURE__*/ S.String;
 
 /** List of days for the schedule. */
-export type RecurrenceScheduleWeekDaysList = ReadonlyArray<WeekDay>;
+export type RecurrenceScheduleWeekDaysList = Array<WeekDay | (string & {})>;
 export const RecurrenceScheduleWeekDaysList = /*@__PURE__*/ S.Array(
   WeekDay,
 ) as any as S.Schema<RecurrenceScheduleWeekDaysList>;
@@ -7159,9 +7154,9 @@ export interface RecurrenceTrigger {
   /** Specifies time zone in which the schedule runs. TimeZone should follow Windows time zone format. Refer: https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/default-time-zones?view=windows-11 */
   timeZone?: string;
   /** [Required] */
-  triggerType: TriggerType;
+  triggerType: TriggerType | (string & {});
   /** [Required] The frequency to trigger schedule. */
-  frequency: RecurrenceFrequency;
+  frequency: RecurrenceFrequency | (string & {});
   /** [Required] Specifies schedule interval in conjunction with frequency */
   interval: number;
   /** The recurrence schedule. */
@@ -7209,7 +7204,7 @@ export interface MaterializationSettings {
   /** Specifies the spark compute settings */
   sparkConfiguration?: MaterializationSettingsSparkConfigurationMap | null;
   /** Specifies the stores to which materialization should happen */
-  storeType?: MaterializationSettingsStoreType;
+  storeType?: MaterializationSettingsStoreType | (string & {});
 }
 export const MaterializationSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -7255,7 +7250,7 @@ export interface FeaturesetVersionProperties {
   /** Specifies the materialization settings */
   materializationSettings?: MaterializationSettings | null;
   /** Provisioning state for the featureset version container. */
-  provisioningState?: AssetProvisioningState;
+  provisioningState?: AssetProvisioningState | (string & {});
   /** Specifies the feature spec details */
   specification?: FeaturesetSpecification | null;
   /** Specifies the asset stage */
@@ -7521,7 +7516,7 @@ export const FeaturesetVersion = /*@__PURE__*/ S.suspend(() =>
 
 /** The FeaturesetVersion items on this page */
 export type FeaturesetVersionResourceArmPaginatedResultValueList =
-  ReadonlyArray<FeaturesetVersion>;
+  Array<FeaturesetVersion>;
 export const FeaturesetVersionResourceArmPaginatedResultValueList =
   /*@__PURE__*/ S.Array(
     FeaturesetVersion,
@@ -7734,7 +7729,7 @@ export const Feature = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Feature" }) as any as S.Schema<Feature>;
 
 /** The Feature items on this page */
-export type FeatureResourceArmPaginatedResultValueList = ReadonlyArray<Feature>;
+export type FeatureResourceArmPaginatedResultValueList = Array<Feature>;
 export const FeatureResourceArmPaginatedResultValueList = /*@__PURE__*/ S.Array(
   Feature,
 ) as any as S.Schema<FeatureResourceArmPaginatedResultValueList>;
@@ -8087,7 +8082,7 @@ export const FeaturestoreEntityContainer = /*@__PURE__*/ S.suspend(() =>
 
 /** The FeaturestoreEntityContainer items on this page */
 export type FeaturestoreEntityContainerResourceArmPaginatedResultValueList =
-  ReadonlyArray<FeaturestoreEntityContainer>;
+  Array<FeaturestoreEntityContainer>;
 export const FeaturestoreEntityContainerResourceArmPaginatedResultValueList =
   /*@__PURE__*/ S.Array(
     FeaturestoreEntityContainer,
@@ -8147,7 +8142,7 @@ export interface IndexColumn {
   /** Specifies the column name */
   columnName?: string | null;
   /** Specifies the data type */
-  dataType?: IndexColumnDataType;
+  dataType?: IndexColumnDataType | (string & {});
 }
 export const IndexColumn = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -8158,7 +8153,7 @@ export const IndexColumn = /*@__PURE__*/ S.suspend(() =>
 
 /** Specifies index columns */
 export type FeaturestoreEntityVersionPropertiesIndexColumnsList =
-  ReadonlyArray<IndexColumn>;
+  Array<IndexColumn>;
 export const FeaturestoreEntityVersionPropertiesIndexColumnsList =
   /*@__PURE__*/ S.Array(
     IndexColumn,
@@ -8179,7 +8174,7 @@ export interface FeaturestoreEntityVersionProperties {
   /** Specifies index columns */
   indexColumns?: FeaturestoreEntityVersionPropertiesIndexColumnsList | null;
   /** Provisioning state for the featurestore entity version. */
-  provisioningState?: AssetProvisioningState;
+  provisioningState?: AssetProvisioningState | (string & {});
   /** Specifies the asset stage */
   stage?: string | null;
 }
@@ -8452,7 +8447,7 @@ export const FeaturestoreEntityVersion = /*@__PURE__*/ S.suspend(() =>
 
 /** The FeaturestoreEntityVersion items on this page */
 export type FeaturestoreEntityVersionResourceArmPaginatedResultValueList =
-  ReadonlyArray<FeaturestoreEntityVersion>;
+  Array<FeaturestoreEntityVersion>;
 export const FeaturestoreEntityVersionResourceArmPaginatedResultValueList =
   /*@__PURE__*/ S.Array(
     FeaturestoreEntityVersion,
@@ -8535,7 +8530,7 @@ export const IdentityConfigurationType = /*@__PURE__*/ S.String;
 /** Base definition for identity configuration. */
 export interface IdentityConfiguration {
   /** [Required] Specifies the type of identity framework. */
-  identityType: IdentityConfigurationType;
+  identityType: IdentityConfigurationType | (string & {});
 }
 export const IdentityConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -8556,7 +8551,7 @@ export const NodesValueType = /*@__PURE__*/ S.String;
 /** Abstract Nodes definition */
 export interface Nodes {
   /** [Required] Type of the Nodes value */
-  nodesValueType: NodesValueType;
+  nodesValueType: NodesValueType | (string & {});
 }
 export const Nodes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -8988,7 +8983,7 @@ export const JobBase = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "JobBase" }) as any as S.Schema<JobBase>;
 
 /** The JobBase items on this page */
-export type JobBaseResourceArmPaginatedResultValueList = ReadonlyArray<JobBase>;
+export type JobBaseResourceArmPaginatedResultValueList = Array<JobBase>;
 export const JobBaseResourceArmPaginatedResultValueList = /*@__PURE__*/ S.Array(
   JobBase,
 ) as any as S.Schema<JobBaseResourceArmPaginatedResultValueList>;
@@ -9045,7 +9040,7 @@ export const ManagedNetworkStatus = /*@__PURE__*/ S.String;
 export interface ManagedNetworkProvisionStatus {
   sparkReady?: boolean;
   /** Status for the managed network of a machine learning workspace. */
-  status?: ManagedNetworkStatus;
+  status?: ManagedNetworkStatus | (string & {});
 }
 export const ManagedNetworkProvisionStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -9128,7 +9123,7 @@ export const ManagedNetworkSettingsRuleCreateOrUpdateRequest =
     identifier: "ManagedNetworkSettingsRuleCreateOrUpdateRequest",
   }) as any as S.Schema<ManagedNetworkSettingsRuleCreateOrUpdateRequest>;
 
-export type OutboundRuleParentRuleNamesList = ReadonlyArray<string>;
+export type OutboundRuleParentRuleNamesList = Array<string>;
 export const OutboundRuleParentRuleNamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<OutboundRuleParentRuleNamesList>;
@@ -9322,8 +9317,7 @@ export const OutboundRuleBasicResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OutboundRuleBasicResource>;
 
 /** The OutboundRuleBasicResource items on this page */
-export type OutboundRuleListResultValueList =
-  ReadonlyArray<OutboundRuleBasicResource>;
+export type OutboundRuleListResultValueList = Array<OutboundRuleBasicResource>;
 export const OutboundRuleListResultValueList = /*@__PURE__*/ S.Array(
   OutboundRuleBasicResource,
 ) as any as S.Schema<OutboundRuleListResultValueList>;
@@ -9611,7 +9605,7 @@ export const MarketplaceSubscription = /*@__PURE__*/ S.suspend(() =>
 
 /** The MarketplaceSubscription items on this page */
 export type MarketplaceSubscriptionResourceArmPaginatedResultValueList =
-  ReadonlyArray<MarketplaceSubscription>;
+  Array<MarketplaceSubscription>;
 export const MarketplaceSubscriptionResourceArmPaginatedResultValueList =
   /*@__PURE__*/ S.Array(
     MarketplaceSubscription,
@@ -9935,7 +9929,7 @@ export const ModelContainer = /*@__PURE__*/ S.suspend(() =>
 
 /** The ModelContainer items on this page */
 export type ModelContainerResourceArmPaginatedResultValueList =
-  ReadonlyArray<ModelContainer>;
+  Array<ModelContainer>;
 export const ModelContainerResourceArmPaginatedResultValueList =
   /*@__PURE__*/ S.Array(
     ModelContainer,
@@ -10019,8 +10013,7 @@ export const DatasetReference = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DatasetReference>;
 
 /** Array of dataset references */
-export type ModelVersionPropertiesDatasetsList =
-  ReadonlyArray<DatasetReference>;
+export type ModelVersionPropertiesDatasetsList = Array<DatasetReference>;
 export const ModelVersionPropertiesDatasetsList = /*@__PURE__*/ S.Array(
   DatasetReference,
 ) as any as S.Schema<ModelVersionPropertiesDatasetsList>;
@@ -10046,7 +10039,7 @@ export interface ModelVersionProperties {
   /** The URI path to the model contents. */
   modelUri?: string | null;
   /** Provisioning state for the model version. */
-  provisioningState?: AssetProvisioningState;
+  provisioningState?: AssetProvisioningState | (string & {});
   /** Stage in the model lifecycle assigned to this model */
   stage?: string | null;
   /** Array of dataset references */
@@ -10313,7 +10306,7 @@ export const ModelVersion = /*@__PURE__*/ S.suspend(() =>
 
 /** The ModelVersion items on this page */
 export type ModelVersionResourceArmPaginatedResultValueList =
-  ReadonlyArray<ModelVersion>;
+  Array<ModelVersion>;
 export const ModelVersionResourceArmPaginatedResultValueList =
   /*@__PURE__*/ S.Array(
     ModelVersion,
@@ -10420,7 +10413,7 @@ export interface Collection {
   /** The msi client id used to collect logging to blob storage. If it's null,backend will pick a registered endpoint identity to auth. */
   clientId?: string | null;
   /** Enable or disable data collection. */
-  dataCollectionMode?: CollectionDataCollectionMode;
+  dataCollectionMode?: CollectionDataCollectionMode | (string & {});
   /** The data asset arm resource id. Client side will ensure data asset is pointing to the blob storage, and backend will collect data to the blob storage. */
   dataId?: string | null;
   /** The sampling rate for collection. Sampling rate 1.0 means we collect 100% of data by default. */
@@ -10445,7 +10438,7 @@ export const DataCollectorCollectionsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<DataCollectorCollectionsMap>;
 
 /** For payload logging, we only collect payload by default. If customers also want to collect the specified headers, they can set them in captureHeaders so that backend will collect those headers along with payload. */
-export type RequestLoggingCaptureHeadersList = ReadonlyArray<string>;
+export type RequestLoggingCaptureHeadersList = Array<string>;
 export const RequestLoggingCaptureHeadersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RequestLoggingCaptureHeadersList>;
@@ -10475,7 +10468,7 @@ export interface DataCollector {
   /** The request logging configuration for mdc, it includes advanced logging settings for all collections. It's optional. */
   requestLogging?: RequestLogging | null;
   /** When model data is collected to blob storage, we need to roll the data to different path to avoid logging all of them in a single blob file. If the rolling rate is hour, all data will be collected in the blob path /yyyy/MM/dd/HH/. If it's day, all data will be collected in blob path /yyyy/MM/dd/. The other benefit of rolling path is that model monitoring ui is able to select a time range of data very quickly. */
-  rollingRate?: DataCollectorRollingRate;
+  rollingRate?: DataCollectorRollingRate | (string & {});
 }
 export const DataCollector = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -10544,7 +10537,7 @@ export const ScaleType = /*@__PURE__*/ S.String;
 /** Online deployment scaling configuration. */
 export interface OnlineScaleSettings {
   /** [Required] Type of deployment scaling algorithm */
-  scaleType: ScaleType;
+  scaleType: ScaleType | (string & {});
 }
 export const OnlineScaleSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -10570,9 +10563,11 @@ export interface OnlineDeploymentProperties {
   /** The mdc configuration, we disable mdc when it's null. */
   dataCollector?: DataCollector | null;
   /** Enum to determine whether PublicNetworkAccess is Enabled or Disabled for egress of a deployment. */
-  egressPublicNetworkAccess?: OnlineDeploymentPropertiesEgressPublicNetworkAccess;
+  egressPublicNetworkAccess?:
+    | OnlineDeploymentPropertiesEgressPublicNetworkAccess
+    | (string & {});
   /** [Required] The compute type of the endpoint. */
-  endpointComputeType: EndpointComputeType;
+  endpointComputeType: EndpointComputeType | (string & {});
   /** Compute instance type. Default: Standard_F4s_v2. */
   instanceType?: string | null;
   /** Liveness probe monitors the health of the container regularly. */
@@ -10582,7 +10577,7 @@ export interface OnlineDeploymentProperties {
   /** The path to mount the model in custom container. */
   modelMountPath?: string | null;
   /** Provisioning state for the endpoint deployment. */
-  provisioningState?: DeploymentProvisioningState;
+  provisioningState?: DeploymentProvisioningState | (string & {});
   /** Readiness probe validates if the container is ready to serve traffic. The properties and defaults are the same as liveness probe. */
   readinessProbe?: ProbeSettings | null;
   /** Request settings for the deployment. */
@@ -11153,7 +11148,7 @@ export const OnlineDeployment = /*@__PURE__*/ S.suspend(() =>
 
 /** The OnlineDeployment items on this page */
 export type OnlineDeploymentTrackedResourceArmPaginatedResultValueList =
-  ReadonlyArray<OnlineDeployment>;
+  Array<OnlineDeployment>;
 export const OnlineDeploymentTrackedResourceArmPaginatedResultValueList =
   /*@__PURE__*/ S.Array(
     OnlineDeployment,
@@ -11273,7 +11268,7 @@ export const SkuResource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SkuResource" }) as any as S.Schema<SkuResource>;
 
 /** The SkuResource items on this page */
-export type SkuResourceArmPaginatedResultValueList = ReadonlyArray<SkuResource>;
+export type SkuResourceArmPaginatedResultValueList = Array<SkuResource>;
 export const SkuResourceArmPaginatedResultValueList = /*@__PURE__*/ S.Array(
   SkuResource,
 ) as any as S.Schema<SkuResourceArmPaginatedResultValueList>;
@@ -12169,7 +12164,7 @@ export const OnlineEndpoint = /*@__PURE__*/ S.suspend(() =>
 
 /** The OnlineEndpoint items on this page */
 export type OnlineEndpointTrackedResourceArmPaginatedResultValueList =
-  ReadonlyArray<OnlineEndpoint>;
+  Array<OnlineEndpoint>;
 export const OnlineEndpointTrackedResourceArmPaginatedResultValueList =
   /*@__PURE__*/ S.Array(
     OnlineEndpoint,
@@ -12469,7 +12464,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = ReadonlyArray<Operation>;
+export type OperationsListResponseValueList = Array<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;
@@ -12513,7 +12508,7 @@ export interface PrivateLinkServiceConnectionState {
   /** User-defined message that, per NRP doc, may be used for approval-related message. */
   description?: string;
   /** Connection status of the service consumer with the service provider\r\nPossible state transitions\r\nPending -> Approved (Service provider approves the connection request)\r\nPending -> Rejected (Service provider rejects the connection request)\r\nPending -> Disconnected (Service provider deletes the connection)\r\nApproved -> Rejected (Service provider rejects the approved connection)\r\nApproved -> Disconnected (Service provider deletes the connection)\r\nRejected -> Pending (Service consumer re-initiates the connection request that was rejected)\r\nRejected -> Disconnected (Service provider deletes the connection) */
-  status?: EndpointServiceConnectionStatus;
+  status?: EndpointServiceConnectionStatus | (string & {});
 }
 export const PrivateLinkServiceConnectionState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -13047,7 +13042,7 @@ export const PrivateEndpointConnection = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of private endpoint connections */
 export type PrivateEndpointConnectionListResultValueList =
-  ReadonlyArray<PrivateEndpointConnection>;
+  Array<PrivateEndpointConnection>;
 export const PrivateEndpointConnectionListResultValueList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection,
@@ -13114,16 +13109,14 @@ export const PrivateLinkResourceIdentity = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateLinkResourceIdentity>;
 
 /** The private link resource required member names. */
-export type PrivateLinkResourcePropertiesRequiredMembersList =
-  ReadonlyArray<string>;
+export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
 export const PrivateLinkResourcePropertiesRequiredMembersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
 
 /** The private link resource Private link DNS zone name. */
-export type PrivateLinkResourcePropertiesRequiredZoneNamesList =
-  ReadonlyArray<string>;
+export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
 export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -13219,8 +13212,7 @@ export const PrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateLinkResource>;
 
 /** A list of private link resources */
-export type PrivateLinkResourceListResultValueList =
-  ReadonlyArray<PrivateLinkResource>;
+export type PrivateLinkResourceListResultValueList = Array<PrivateLinkResource>;
 export const PrivateLinkResourceListResultValueList = /*@__PURE__*/ S.Array(
   PrivateLinkResource,
 ) as any as S.Schema<PrivateLinkResourceListResultValueList>;
@@ -13307,7 +13299,7 @@ export const ResourceQuota = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResourceQuota" }) as any as S.Schema<ResourceQuota>;
 
 /** The ResourceQuota items on this page */
-export type ListWorkspaceQuotasValueList = ReadonlyArray<ResourceQuota>;
+export type ListWorkspaceQuotasValueList = Array<ResourceQuota>;
 export const ListWorkspaceQuotasValueList = /*@__PURE__*/ S.Array(
   ResourceQuota,
 ) as any as S.Schema<ListWorkspaceQuotasValueList>;
@@ -13351,7 +13343,7 @@ export const QuotaBaseProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<QuotaBaseProperties>;
 
 /** The list for update quota. */
-export type QuotasUpdateRequestValueList = ReadonlyArray<QuotaBaseProperties>;
+export type QuotasUpdateRequestValueList = Array<QuotaBaseProperties>;
 export const QuotasUpdateRequestValueList = /*@__PURE__*/ S.Array(
   QuotaBaseProperties,
 ) as any as S.Schema<QuotasUpdateRequestValueList>;
@@ -13419,8 +13411,7 @@ export const UpdateWorkspaceQuotas = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateWorkspaceQuotas>;
 
 /** The list of workspace quota update result. */
-export type UpdateWorkspaceQuotasResultValueList =
-  ReadonlyArray<UpdateWorkspaceQuotas>;
+export type UpdateWorkspaceQuotasResultValueList = Array<UpdateWorkspaceQuotas>;
 export const UpdateWorkspaceQuotasResultValueList = /*@__PURE__*/ S.Array(
   UpdateWorkspaceQuotas,
 ) as any as S.Schema<UpdateWorkspaceQuotasResultValueList>;
@@ -13477,7 +13468,7 @@ export const ManagedResourceGroupAssignedIdentities = /*@__PURE__*/ S.suspend(
 
 /** List of assigned identities for the managed resource group */
 export type ManagedResourceGroupSettingsAssignedIdentitiesList =
-  ReadonlyArray<ManagedResourceGroupAssignedIdentities>;
+  Array<ManagedResourceGroupAssignedIdentities>;
 export const ManagedResourceGroupSettingsAssignedIdentitiesList =
   /*@__PURE__*/ S.Array(
     ManagedResourceGroupAssignedIdentities,
@@ -13500,7 +13491,7 @@ export const ManagedResourceGroupSettings = /*@__PURE__*/ S.suspend(() =>
 
 /** The group ids */
 export type RegistryPrivateEndpointConnectionPropertiesInputGroupIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RegistryPrivateEndpointConnectionPropertiesInputGroupIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -13526,7 +13517,7 @@ export interface RegistryPrivateLinkServiceConnectionState {
   /** User-defined message that, per NRP doc, may be used for approval-related message. */
   description?: string | null;
   /** Connection status of the service consumer with the service provider */
-  status?: EndpointServiceConnectionStatus;
+  status?: EndpointServiceConnectionStatus | (string & {});
 }
 export const RegistryPrivateLinkServiceConnectionState =
   /*@__PURE__*/ S.suspend(() =>
@@ -13590,7 +13581,7 @@ export const RegistryPrivateEndpointConnectionInput = /*@__PURE__*/ S.suspend(
 
 /** Private endpoint connections info used for pending connections in private link portal */
 export type RegistryPropertiesInputRegistryPrivateEndpointConnectionsList =
-  ReadonlyArray<RegistryPrivateEndpointConnectionInput>;
+  Array<RegistryPrivateEndpointConnectionInput>;
 export const RegistryPropertiesInputRegistryPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     RegistryPrivateEndpointConnectionInput,
@@ -13626,7 +13617,7 @@ export const AcrDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AcrDetails" }) as any as S.Schema<AcrDetails>;
 
 /** List of ACR accounts */
-export type RegistryRegionArmDetailsAcrDetailsList = ReadonlyArray<AcrDetails>;
+export type RegistryRegionArmDetailsAcrDetailsList = Array<AcrDetails>;
 export const RegistryRegionArmDetailsAcrDetailsList = /*@__PURE__*/ S.Array(
   AcrDetails,
 ) as any as S.Schema<RegistryRegionArmDetailsAcrDetailsList>;
@@ -13672,7 +13663,7 @@ export const StorageAccountDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** List of storage accounts */
 export type RegistryRegionArmDetailsStorageAccountDetailsList =
-  ReadonlyArray<StorageAccountDetails>;
+  Array<StorageAccountDetails>;
 export const RegistryRegionArmDetailsStorageAccountDetailsList =
   /*@__PURE__*/ S.Array(
     StorageAccountDetails,
@@ -13701,7 +13692,7 @@ export const RegistryRegionArmDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** Details of each region the registry is in */
 export type RegistryPropertiesInputRegionDetailsList =
-  ReadonlyArray<RegistryRegionArmDetails>;
+  Array<RegistryRegionArmDetails>;
 export const RegistryPropertiesInputRegionDetailsList = /*@__PURE__*/ S.Array(
   RegistryRegionArmDetails,
 ) as any as S.Schema<RegistryPropertiesInputRegionDetailsList>;
@@ -13839,7 +13830,7 @@ export const RegistriesCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 
 /** The group ids */
 export type RegistryPrivateEndpointConnectionPropertiesGroupIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RegistryPrivateEndpointConnectionPropertiesGroupIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -13911,7 +13902,7 @@ export const RegistryPrivateEndpointConnection = /*@__PURE__*/ S.suspend(() =>
 
 /** Private endpoint connections info used for pending connections in private link portal */
 export type RegistryPropertiesRegistryPrivateEndpointConnectionsList =
-  ReadonlyArray<RegistryPrivateEndpointConnection>;
+  Array<RegistryPrivateEndpointConnection>;
 export const RegistryPropertiesRegistryPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     RegistryPrivateEndpointConnection,
@@ -13919,7 +13910,7 @@ export const RegistryPropertiesRegistryPrivateEndpointConnectionsList =
 
 /** Details of each region the registry is in */
 export type RegistryPropertiesRegionDetailsList =
-  ReadonlyArray<RegistryRegionArmDetails>;
+  Array<RegistryRegionArmDetails>;
 export const RegistryPropertiesRegionDetailsList = /*@__PURE__*/ S.Array(
   RegistryRegionArmDetails,
 ) as any as S.Schema<RegistryPropertiesRegionDetailsList>;
@@ -14306,7 +14297,7 @@ export const Registry = /*@__PURE__*/ S.suspend(() =>
 
 /** The Registry items on this page */
 export type RegistryTrackedResourceArmPaginatedResultValueList =
-  ReadonlyArray<Registry>;
+  Array<Registry>;
 export const RegistryTrackedResourceArmPaginatedResultValueList =
   /*@__PURE__*/ S.Array(
     Registry,
@@ -16856,7 +16847,7 @@ export const ScheduleActionType = /*@__PURE__*/ S.String;
 
 export interface ScheduleActionBase {
   /** [Required] Specifies the action type of the schedule */
-  actionType: ScheduleActionType;
+  actionType: ScheduleActionType | (string & {});
 }
 export const ScheduleActionBase = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -16883,7 +16874,7 @@ export interface TriggerBase {
   /** Specifies time zone in which the schedule runs. TimeZone should follow Windows time zone format. Refer: https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/default-time-zones?view=windows-11 */
   timeZone?: string;
   /** [Required] */
-  triggerType: TriggerType;
+  triggerType: TriggerType | (string & {});
 }
 export const TriggerBase = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -16909,7 +16900,7 @@ export interface ScheduleProperties {
   /** Is the schedule enabled? */
   isEnabled?: boolean;
   /** Provisioning state for the schedule. */
-  provisioningState?: ScheduleProvisioningStatus;
+  provisioningState?: ScheduleProvisioningStatus | (string & {});
   /** [Required] Specifies the trigger details */
   trigger: TriggerBase;
 }
@@ -17131,8 +17122,7 @@ export const Schedule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Schedule" }) as any as S.Schema<Schedule>;
 
 /** The Schedule items on this page */
-export type ScheduleResourceArmPaginatedResultValueList =
-  ReadonlyArray<Schedule>;
+export type ScheduleResourceArmPaginatedResultValueList = Array<Schedule>;
 export const ScheduleResourceArmPaginatedResultValueList =
   /*@__PURE__*/ S.Array(
     Schedule,
@@ -17173,7 +17163,7 @@ export const ContentSafetyStatus = /*@__PURE__*/ S.String;
 
 export interface ContentSafety {
   /** [Required] Specifies the status of content safety. */
-  contentSafetyStatus: ContentSafetyStatus;
+  contentSafetyStatus: ContentSafetyStatus | (string & {});
 }
 export const ContentSafety = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -17736,7 +17726,7 @@ export const ServerlessEndpoint = /*@__PURE__*/ S.suspend(() =>
 
 /** The ServerlessEndpoint items on this page */
 export type ServerlessEndpointTrackedResourceArmPaginatedResultValueList =
-  ReadonlyArray<ServerlessEndpoint>;
+  Array<ServerlessEndpoint>;
 export const ServerlessEndpointTrackedResourceArmPaginatedResultValueList =
   /*@__PURE__*/ S.Array(
     ServerlessEndpoint,
@@ -18032,7 +18022,7 @@ export const Usage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Usage" }) as any as S.Schema<Usage>;
 
 /** The Usage items on this page */
-export type ListUsagesResultValueList = ReadonlyArray<Usage>;
+export type ListUsagesResultValueList = Array<Usage>;
 export const ListUsagesResultValueList = /*@__PURE__*/ S.Array(
   Usage,
 ) as any as S.Schema<ListUsagesResultValueList>;
@@ -18111,7 +18101,7 @@ export const EstimatedVMPrice = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EstimatedVMPrice>;
 
 /** The list of estimated prices for using a VM of a particular OS type, tier, etc. */
-export type EstimatedVMPricesValuesList = ReadonlyArray<EstimatedVMPrice>;
+export type EstimatedVMPricesValuesList = Array<EstimatedVMPrice>;
 export const EstimatedVMPricesValuesList = /*@__PURE__*/ S.Array(
   EstimatedVMPrice,
 ) as any as S.Schema<EstimatedVMPricesValuesList>;
@@ -18136,7 +18126,7 @@ export const EstimatedVMPrices = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EstimatedVMPrices>;
 
 /** Specifies the compute types supported by the virtual machine size. */
-export type VirtualMachineSizeSupportedComputeTypesList = ReadonlyArray<string>;
+export type VirtualMachineSizeSupportedComputeTypesList = Array<string>;
 export const VirtualMachineSizeSupportedComputeTypesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -18188,8 +18178,7 @@ export const VirtualMachineSize = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VirtualMachineSize>;
 
 /** The list of virtual machine sizes supported by AmlCompute. */
-export type VirtualMachineSizeListResultValueList =
-  ReadonlyArray<VirtualMachineSize>;
+export type VirtualMachineSizeListResultValueList = Array<VirtualMachineSize>;
 export const VirtualMachineSizeListResultValueList = /*@__PURE__*/ S.Array(
   VirtualMachineSize,
 ) as any as S.Schema<VirtualMachineSizeListResultValueList>;
@@ -18371,7 +18360,7 @@ export type ManagedPEStatus = "Inactive" | "Active" | "NotApplicable";
 export const ManagedPEStatus = /*@__PURE__*/ S.String;
 
 export type WorkspaceConnectionPropertiesV2InputSharedUserListList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const WorkspaceConnectionPropertiesV2InputSharedUserListList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -18465,8 +18454,7 @@ export const WorkspaceConnectionPropertiesV2MetadataMap =
     S.String,
   ) as any as S.Schema<WorkspaceConnectionPropertiesV2MetadataMap>;
 
-export type WorkspaceConnectionPropertiesV2SharedUserListList =
-  ReadonlyArray<string>;
+export type WorkspaceConnectionPropertiesV2SharedUserListList = Array<string>;
 export const WorkspaceConnectionPropertiesV2SharedUserListList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -18684,7 +18672,7 @@ export const WorkspaceConnectionPropertiesV2BasicResource =
 
 /** The WorkspaceConnectionPropertiesV2BasicResource items on this page */
 export type WorkspaceConnectionPropertiesV2BasicResourceArmPaginatedResultValueList =
-  ReadonlyArray<WorkspaceConnectionPropertiesV2BasicResource>;
+  Array<WorkspaceConnectionPropertiesV2BasicResource>;
 export const WorkspaceConnectionPropertiesV2BasicResourceArmPaginatedResultValueList =
   /*@__PURE__*/ S.Array(
     WorkspaceConnectionPropertiesV2BasicResource,
@@ -18859,7 +18847,7 @@ export const AmlUserFeature = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AmlUserFeature" }) as any as S.Schema<AmlUserFeature>;
 
 /** The AmlUserFeature items on this page */
-export type ListAmlUserFeatureResultValueList = ReadonlyArray<AmlUserFeature>;
+export type ListAmlUserFeatureResultValueList = Array<AmlUserFeature>;
 export const ListAmlUserFeatureResultValueList = /*@__PURE__*/ S.Array(
   AmlUserFeature,
 ) as any as S.Schema<ListAmlUserFeatureResultValueList>;
@@ -18880,8 +18868,7 @@ export const ListAmlUserFeatureResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAmlUserFeatureResult",
 }) as any as S.Schema<ListAmlUserFeatureResult>;
 
-export type WorkspacePropertiesInputAssociatedWorkspacesList =
-  ReadonlyArray<string>;
+export type WorkspacePropertiesInputAssociatedWorkspacesList = Array<string>;
 export const WorkspacePropertiesInputAssociatedWorkspacesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -18931,7 +18918,7 @@ export interface EncryptionProperty {
   /** The byok search account that customer brings to store customer's data with encryption */
   searchAccountResourceId?: string;
   /** Indicates whether or not the encryption is enabled for the workspace. */
-  status: EncryptionStatus;
+  status: EncryptionStatus | (string & {});
   /** The byok storage account that customer brings to store customer's data with encryption */
   storageAccountResourceId?: string;
 }
@@ -19079,7 +19066,7 @@ export interface SharedPrivateLinkResourceProperty {
   /** Request message */
   requestMessage?: string;
   /** Connection status of the service consumer with the service provider\r\nPossible state transitions\r\nPending -> Approved (Service provider approves the connection request)\r\nPending -> Rejected (Service provider rejects the connection request)\r\nPending -> Disconnected (Service provider deletes the connection)\r\nApproved -> Rejected (Service provider rejects the approved connection)\r\nApproved -> Disconnected (Service provider deletes the connection)\r\nRejected -> Pending (Service consumer re-initiates the connection request that was rejected)\r\nRejected -> Disconnected (Service provider deletes the connection) */
-  status?: EndpointServiceConnectionStatus;
+  status?: EndpointServiceConnectionStatus | (string & {});
 }
 export const SharedPrivateLinkResourceProperty = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -19109,7 +19096,7 @@ export const SharedPrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of shared private link resources in this workspace. */
 export type WorkspacePropertiesInputSharedPrivateLinkResourcesList =
-  ReadonlyArray<SharedPrivateLinkResource>;
+  Array<SharedPrivateLinkResource>;
 export const WorkspacePropertiesInputSharedPrivateLinkResourcesList =
   /*@__PURE__*/ S.Array(
     SharedPrivateLinkResource,
@@ -19123,7 +19110,7 @@ export type SystemDatastoresAuthMode =
 export const SystemDatastoresAuthMode = /*@__PURE__*/ S.String;
 
 export type WorkspaceHubConfigAdditionalWorkspaceStorageAccountsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const WorkspaceHubConfigAdditionalWorkspaceStorageAccountsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -19320,7 +19307,7 @@ export const WorkspacesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "WorkspacesCreateOrUpdateRequest",
 }) as any as S.Schema<WorkspacesCreateOrUpdateRequest>;
 
-export type WorkspacePropertiesAssociatedWorkspacesList = ReadonlyArray<string>;
+export type WorkspacePropertiesAssociatedWorkspacesList = Array<string>;
 export const WorkspacePropertiesAssociatedWorkspacesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -19402,7 +19389,7 @@ export const NotebookResourceInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of private endpoint connections in the workspace. */
 export type WorkspacePropertiesPrivateEndpointConnectionsList =
-  ReadonlyArray<PrivateEndpointConnection>;
+  Array<PrivateEndpointConnection>;
 export const WorkspacePropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection,
@@ -19410,7 +19397,7 @@ export const WorkspacePropertiesPrivateEndpointConnectionsList =
 
 /** The list of shared private link resources in this workspace. */
 export type WorkspacePropertiesSharedPrivateLinkResourcesList =
-  ReadonlyArray<SharedPrivateLinkResource>;
+  Array<SharedPrivateLinkResource>;
 export const WorkspacePropertiesSharedPrivateLinkResourcesList =
   /*@__PURE__*/ S.Array(
     SharedPrivateLinkResource,
@@ -19845,63 +19832,62 @@ export const DiagnoseResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DiagnoseResult" }) as any as S.Schema<DiagnoseResult>;
 
 export type DiagnoseResponseResultValueUserDefinedRouteResultsList =
-  ReadonlyArray<DiagnoseResult>;
+  Array<DiagnoseResult>;
 export const DiagnoseResponseResultValueUserDefinedRouteResultsList =
   /*@__PURE__*/ S.Array(
     DiagnoseResult,
   ) as any as S.Schema<DiagnoseResponseResultValueUserDefinedRouteResultsList>;
 
 export type DiagnoseResponseResultValueNetworkSecurityRuleResultsList =
-  ReadonlyArray<DiagnoseResult>;
+  Array<DiagnoseResult>;
 export const DiagnoseResponseResultValueNetworkSecurityRuleResultsList =
   /*@__PURE__*/ S.Array(
     DiagnoseResult,
   ) as any as S.Schema<DiagnoseResponseResultValueNetworkSecurityRuleResultsList>;
 
 export type DiagnoseResponseResultValueResourceLockResultsList =
-  ReadonlyArray<DiagnoseResult>;
+  Array<DiagnoseResult>;
 export const DiagnoseResponseResultValueResourceLockResultsList =
   /*@__PURE__*/ S.Array(
     DiagnoseResult,
   ) as any as S.Schema<DiagnoseResponseResultValueResourceLockResultsList>;
 
 export type DiagnoseResponseResultValueDnsResolutionResultsList =
-  ReadonlyArray<DiagnoseResult>;
+  Array<DiagnoseResult>;
 export const DiagnoseResponseResultValueDnsResolutionResultsList =
   /*@__PURE__*/ S.Array(
     DiagnoseResult,
   ) as any as S.Schema<DiagnoseResponseResultValueDnsResolutionResultsList>;
 
 export type DiagnoseResponseResultValueStorageAccountResultsList =
-  ReadonlyArray<DiagnoseResult>;
+  Array<DiagnoseResult>;
 export const DiagnoseResponseResultValueStorageAccountResultsList =
   /*@__PURE__*/ S.Array(
     DiagnoseResult,
   ) as any as S.Schema<DiagnoseResponseResultValueStorageAccountResultsList>;
 
 export type DiagnoseResponseResultValueKeyVaultResultsList =
-  ReadonlyArray<DiagnoseResult>;
+  Array<DiagnoseResult>;
 export const DiagnoseResponseResultValueKeyVaultResultsList =
   /*@__PURE__*/ S.Array(
     DiagnoseResult,
   ) as any as S.Schema<DiagnoseResponseResultValueKeyVaultResultsList>;
 
 export type DiagnoseResponseResultValueContainerRegistryResultsList =
-  ReadonlyArray<DiagnoseResult>;
+  Array<DiagnoseResult>;
 export const DiagnoseResponseResultValueContainerRegistryResultsList =
   /*@__PURE__*/ S.Array(
     DiagnoseResult,
   ) as any as S.Schema<DiagnoseResponseResultValueContainerRegistryResultsList>;
 
 export type DiagnoseResponseResultValueApplicationInsightsResultsList =
-  ReadonlyArray<DiagnoseResult>;
+  Array<DiagnoseResult>;
 export const DiagnoseResponseResultValueApplicationInsightsResultsList =
   /*@__PURE__*/ S.Array(
     DiagnoseResult,
   ) as any as S.Schema<DiagnoseResponseResultValueApplicationInsightsResultsList>;
 
-export type DiagnoseResponseResultValueOtherResultsList =
-  ReadonlyArray<DiagnoseResult>;
+export type DiagnoseResponseResultValueOtherResultsList = Array<DiagnoseResult>;
 export const DiagnoseResponseResultValueOtherResultsList =
   /*@__PURE__*/ S.Array(
     DiagnoseResult,
@@ -20187,7 +20173,7 @@ export const Workspace = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Workspace" }) as any as S.Schema<Workspace>;
 
 /** The Workspace items on this page */
-export type WorkspaceListResultValueList = ReadonlyArray<Workspace>;
+export type WorkspaceListResultValueList = Array<Workspace>;
 export const WorkspaceListResultValueList = /*@__PURE__*/ S.Array(
   Workspace,
 ) as any as S.Schema<WorkspaceListResultValueList>;
@@ -20271,8 +20257,7 @@ export const Password = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Password" }) as any as S.Schema<Password>;
 
-export type RegistryListCredentialsResultPasswordsList =
-  ReadonlyArray<Password>;
+export type RegistryListCredentialsResultPasswordsList = Array<Password>;
 export const RegistryListCredentialsResultPasswordsList = /*@__PURE__*/ S.Array(
   Password,
 ) as any as S.Schema<RegistryListCredentialsResultPasswordsList>;
@@ -20444,7 +20429,7 @@ export const FQDNEndpointDetail = /*@__PURE__*/ S.suspend(() =>
   identifier: "FQDNEndpointDetail",
 }) as any as S.Schema<FQDNEndpointDetail>;
 
-export type FQDNEndpointEndpointDetailsList = ReadonlyArray<FQDNEndpointDetail>;
+export type FQDNEndpointEndpointDetailsList = Array<FQDNEndpointDetail>;
 export const FQDNEndpointEndpointDetailsList = /*@__PURE__*/ S.Array(
   FQDNEndpointDetail,
 ) as any as S.Schema<FQDNEndpointEndpointDetailsList>;
@@ -20460,7 +20445,7 @@ export const FQDNEndpoint = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "FQDNEndpoint" }) as any as S.Schema<FQDNEndpoint>;
 
-export type FQDNEndpointsEndpointsList = ReadonlyArray<FQDNEndpoint>;
+export type FQDNEndpointsEndpointsList = Array<FQDNEndpoint>;
 export const FQDNEndpointsEndpointsList = /*@__PURE__*/ S.Array(
   FQDNEndpoint,
 ) as any as S.Schema<FQDNEndpointsEndpointsList>;
@@ -20488,8 +20473,7 @@ export const FQDNEndpointsPropertyBag = /*@__PURE__*/ S.suspend(() =>
   identifier: "FQDNEndpointsPropertyBag",
 }) as any as S.Schema<FQDNEndpointsPropertyBag>;
 
-export type ExternalFQDNResponseValueList =
-  ReadonlyArray<FQDNEndpointsPropertyBag>;
+export type ExternalFQDNResponseValueList = Array<FQDNEndpointsPropertyBag>;
 export const ExternalFQDNResponseValueList = /*@__PURE__*/ S.Array(
   FQDNEndpointsPropertyBag,
 ) as any as S.Schema<ExternalFQDNResponseValueList>;

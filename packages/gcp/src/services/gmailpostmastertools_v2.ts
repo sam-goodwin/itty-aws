@@ -102,7 +102,7 @@ export const MetricDefinition = /*@__PURE__*/ S.suspend(() =>
   identifier: "MetricDefinition",
 }) as any as S.Schema<MetricDefinition>;
 
-export type MetricDefinitionList = ReadonlyArray<MetricDefinition>;
+export type MetricDefinitionList = Array<MetricDefinition>;
 export const MetricDefinitionList = /*@__PURE__*/ S.Array(
   MetricDefinition,
 ) as any as S.Schema<MetricDefinitionList>;
@@ -126,8 +126,7 @@ export const Gmailpostmastertools_Date = /*@__PURE__*/ S.suspend(() =>
   identifier: "Gmailpostmastertools_Date",
 }) as any as S.Schema<Gmailpostmastertools_Date>;
 
-export type Gmailpostmastertools_DateList =
-  ReadonlyArray<Gmailpostmastertools_Date>;
+export type Gmailpostmastertools_DateList = Array<Gmailpostmastertools_Date>;
 export const Gmailpostmastertools_DateList = /*@__PURE__*/ S.Array(
   Gmailpostmastertools_Date,
 ) as any as S.Schema<Gmailpostmastertools_DateList>;
@@ -157,7 +156,7 @@ export const DateRange = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DateRange" }) as any as S.Schema<DateRange>;
 
-export type DateRangeList = ReadonlyArray<DateRange>;
+export type DateRangeList = Array<DateRange>;
 export const DateRangeList = /*@__PURE__*/ S.Array(
   DateRange,
 ) as any as S.Schema<DateRangeList>;
@@ -226,8 +225,7 @@ export const QueryDomainStatsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "QueryDomainStatsRequest",
 }) as any as S.Schema<QueryDomainStatsRequest>;
 
-export type QueryDomainStatsRequestList =
-  ReadonlyArray<QueryDomainStatsRequest>;
+export type QueryDomainStatsRequestList = Array<QueryDomainStatsRequest>;
 export const QueryDomainStatsRequestList = /*@__PURE__*/ S.Array(
   QueryDomainStatsRequest,
 ) as any as S.Schema<QueryDomainStatsRequestList>;
@@ -269,7 +267,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -291,7 +289,7 @@ export const Status = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
-export type StringList_ = ReadonlyArray<string>;
+export type StringList_ = Array<string>;
 export const StringList_ = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList_>;
@@ -350,7 +348,7 @@ export const DomainStat = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DomainStat" }) as any as S.Schema<DomainStat>;
 
-export type DomainStatList = ReadonlyArray<DomainStat>;
+export type DomainStatList = Array<DomainStat>;
 export const DomainStatList = /*@__PURE__*/ S.Array(
   DomainStat,
 ) as any as S.Schema<DomainStatList>;
@@ -388,7 +386,7 @@ export const BatchQueryDomainStatsResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BatchQueryDomainStatsResult>;
 
 export type BatchQueryDomainStatsResultList =
-  ReadonlyArray<BatchQueryDomainStatsResult>;
+  Array<BatchQueryDomainStatsResult>;
 export const BatchQueryDomainStatsResultList = /*@__PURE__*/ S.Array(
   BatchQueryDomainStatsResult,
 ) as any as S.Schema<BatchQueryDomainStatsResultList>;
@@ -534,7 +532,7 @@ export interface User {
   /** Output only. The time the user was granted access. */
   createTime?: string;
   /** The permission level that the user has for the specified domain. */
-  permission?: UserPermissionEnum;
+  permission?: UserPermissionEnum | (string & {});
   /** Output only. The user that added the current user. */
   accessGranter?: string;
   /** Identifier. The resource name of the user. Format: users/{user} Note: {user} is the user's email address. */
@@ -706,7 +704,7 @@ export const ComplianceRowData = /*@__PURE__*/ S.suspend(() =>
   identifier: "ComplianceRowData",
 }) as any as S.Schema<ComplianceRowData>;
 
-export type ComplianceRowDataList = ReadonlyArray<ComplianceRowData>;
+export type ComplianceRowDataList = Array<ComplianceRowData>;
 export const ComplianceRowDataList = /*@__PURE__*/ S.Array(
   ComplianceRowData,
 ) as any as S.Schema<ComplianceRowDataList>;
@@ -899,7 +897,7 @@ export const ListDomainsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListDomainsRequest",
 }) as any as S.Schema<ListDomainsRequest>;
 
-export type DomainList = ReadonlyArray<Domain>;
+export type DomainList = Array<Domain>;
 export const DomainList = /*@__PURE__*/ S.Array(
   Domain,
 ) as any as S.Schema<DomainList>;
@@ -944,7 +942,7 @@ export const ListDomainsUsersRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListDomainsUsersRequest",
 }) as any as S.Schema<ListDomainsUsersRequest>;
 
-export type UserList = ReadonlyArray<User>;
+export type UserList = Array<User>;
 export const UserList = /*@__PURE__*/ S.Array(
   User,
 ) as any as S.Schema<UserList>;

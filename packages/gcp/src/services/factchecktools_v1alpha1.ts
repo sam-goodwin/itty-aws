@@ -100,7 +100,7 @@ export const GoogleFactcheckingFactchecktoolsV1alpha1ClaimAuthor =
     identifier: "GoogleFactcheckingFactchecktoolsV1alpha1ClaimAuthor",
   }) as any as S.Schema<GoogleFactcheckingFactchecktoolsV1alpha1ClaimAuthor>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -172,7 +172,7 @@ export const GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup =
   }) as any as S.Schema<GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup>;
 
 export type GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupList =
-  ReadonlyArray<GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup>;
+  Array<GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup>;
 export const GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupList =
   /*@__PURE__*/ S.Array(
     GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup,
@@ -354,7 +354,7 @@ export const GoogleFactcheckingFactchecktoolsV1alpha1ClaimReview =
   }) as any as S.Schema<GoogleFactcheckingFactchecktoolsV1alpha1ClaimReview>;
 
 export type GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewList =
-  ReadonlyArray<GoogleFactcheckingFactchecktoolsV1alpha1ClaimReview>;
+  Array<GoogleFactcheckingFactchecktoolsV1alpha1ClaimReview>;
 export const GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewList =
   /*@__PURE__*/ S.Array(
     GoogleFactcheckingFactchecktoolsV1alpha1ClaimReview,
@@ -401,7 +401,7 @@ export const GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearch
   }) as any as S.Schema<GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponseResult>;
 
 export type GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponseResultList =
-  ReadonlyArray<GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponseResult>;
+  Array<GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponseResult>;
 export const GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponseResultList =
   /*@__PURE__*/ S.Array(
     GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponseResult,
@@ -458,7 +458,7 @@ export const ListPagesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListPagesRequest>;
 
 export type GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPageList =
-  ReadonlyArray<GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage>;
+  Array<GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage>;
 export const GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPageList =
   /*@__PURE__*/ S.Array(
     GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage,
@@ -521,7 +521,7 @@ export const SearchClaimsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SearchClaimsRequest>;
 
 export type GoogleFactcheckingFactchecktoolsV1alpha1ClaimList =
-  ReadonlyArray<GoogleFactcheckingFactchecktoolsV1alpha1Claim>;
+  Array<GoogleFactcheckingFactchecktoolsV1alpha1Claim>;
 export const GoogleFactcheckingFactchecktoolsV1alpha1ClaimList =
   /*@__PURE__*/ S.Array(
     GoogleFactcheckingFactchecktoolsV1alpha1Claim,

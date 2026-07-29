@@ -92,7 +92,7 @@ export interface EndpointAuthentication {
   /** AAD principal ID. */
   principalID?: string;
   /** AAD principal type. */
-  principalType?: EndpointAuthenticationPrincipalType;
+  principalType?: EndpointAuthenticationPrincipalType | (string & {});
 }
 export const EndpointAuthentication = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -105,31 +105,31 @@ export const EndpointAuthentication = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EndpointAuthentication>;
 
 /** The list of service endpoints authentication details. */
-export type EndpointAuthenticationsList = ReadonlyArray<EndpointAuthentication>;
+export type EndpointAuthenticationsList = Array<EndpointAuthentication>;
 export const EndpointAuthenticationsList = /*@__PURE__*/ S.Array(
   EndpointAuthentication,
 ) as any as S.Schema<EndpointAuthenticationsList>;
 
 /** The origin domains that are permitted to make a request against the service via CORS. */
-export type CorsRuleAllowedOriginsList = ReadonlyArray<string>;
+export type CorsRuleAllowedOriginsList = Array<string>;
 export const CorsRuleAllowedOriginsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CorsRuleAllowedOriginsList>;
 
 /** The methods (HTTP request verbs) that the origin domain may use for a CORS request. */
-export type CorsRuleAllowedMethodsList = ReadonlyArray<string>;
+export type CorsRuleAllowedMethodsList = Array<string>;
 export const CorsRuleAllowedMethodsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CorsRuleAllowedMethodsList>;
 
 /** The request headers that the origin domain may specify on the CORS request. */
-export type CorsRuleAllowedHeadersList = ReadonlyArray<string>;
+export type CorsRuleAllowedHeadersList = Array<string>;
 export const CorsRuleAllowedHeadersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CorsRuleAllowedHeadersList>;
 
 /** The response headers to expose to CORS clients. */
-export type CorsRuleExposedHeadersList = ReadonlyArray<string>;
+export type CorsRuleExposedHeadersList = Array<string>;
 export const CorsRuleExposedHeadersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CorsRuleExposedHeadersList>;
@@ -158,7 +158,7 @@ export const CorsRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CorsRule" }) as any as S.Schema<CorsRule>;
 
 /** The list of CORS details. */
-export type CorsRuleList = ReadonlyArray<CorsRule>;
+export type CorsRuleList = Array<CorsRule>;
 export const CorsRuleList = /*@__PURE__*/ S.Array(
   CorsRule,
 ) as any as S.Schema<CorsRuleList>;
@@ -564,7 +564,7 @@ export const StageStatus = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StageStatus" }) as any as S.Schema<StageStatus>;
 
 /** Scope stage statuses. */
-export type ScopeStatusesStatusesList = ReadonlyArray<StageStatus>;
+export type ScopeStatusesStatusesList = Array<StageStatus>;
 export const ScopeStatusesStatusesList = /*@__PURE__*/ S.Array(
   StageStatus,
 ) as any as S.Schema<ScopeStatusesStatusesList>;
@@ -584,7 +584,7 @@ export const ScopeStatuses = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ScopeStatuses" }) as any as S.Schema<ScopeStatuses>;
 
 /** The list of scopes statuses. */
-export type AccountStatusScopesStatusesList = ReadonlyArray<ScopeStatuses>;
+export type AccountStatusScopesStatusesList = Array<ScopeStatuses>;
 export const AccountStatusScopesStatusesList = /*@__PURE__*/ S.Array(
   ScopeStatuses,
 ) as any as S.Schema<AccountStatusScopesStatusesList>;
@@ -735,7 +735,7 @@ export const AccountResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccountResource>;
 
 /** The list of RecommendationsService Account resources. */
-export type AccountResourceListValueList = ReadonlyArray<AccountResource>;
+export type AccountResourceListValueList = Array<AccountResource>;
 export const AccountResourceListValueList = /*@__PURE__*/ S.Array(
   AccountResource,
 ) as any as S.Schema<AccountResourceListValueList>;
@@ -1535,7 +1535,7 @@ export const ModelingResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ModelingResource>;
 
 /** The list of Modeling resources. */
-export type ModelingResourceListValueList = ReadonlyArray<ModelingResource>;
+export type ModelingResourceListValueList = Array<ModelingResource>;
 export const ModelingResourceListValueList = /*@__PURE__*/ S.Array(
   ModelingResource,
 ) as any as S.Schema<ModelingResourceListValueList>;
@@ -1801,7 +1801,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = ReadonlyArray<Operation>;
+export type OperationsListResponseValueList = Array<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;
@@ -1844,14 +1844,13 @@ export const OperationStatusesGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationStatusesGetRequest>;
 
 /** The operations list. */
-export type OperationStatusResultOperationsList =
-  ReadonlyArray<OperationStatusResult>;
+export type OperationStatusResultOperationsList = Array<OperationStatusResult>;
 export const OperationStatusResultOperationsList = /*@__PURE__*/ S.Array(
   S.suspend(() => OperationStatusResult),
 ) as any as S.Schema<OperationStatusResultOperationsList>;
 
 /** The error details. */
-export type ErrorDetailDetailsList = ReadonlyArray<ErrorDetail>;
+export type ErrorDetailDetailsList = Array<ErrorDetail>;
 export const ErrorDetailDetailsList = /*@__PURE__*/ S.Array(
   S.suspend(() => ErrorDetail),
 ) as any as S.Schema<ErrorDetailDetailsList>;
@@ -1873,7 +1872,7 @@ export const ErrorAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ErrorAdditionalInfo>;
 
 /** The error additional info. */
-export type ErrorDetailAdditionalInfoList = ReadonlyArray<ErrorAdditionalInfo>;
+export type ErrorDetailAdditionalInfoList = Array<ErrorAdditionalInfo>;
 export const ErrorDetailAdditionalInfoList = /*@__PURE__*/ S.Array(
   ErrorAdditionalInfo,
 ) as any as S.Schema<ErrorDetailAdditionalInfoList>;
@@ -1940,7 +1939,7 @@ export const OperationStatusResult = /*@__PURE__*/ S.suspend(() =>
 
 /** The operations list. */
 export type OperationStatusesGetResponseOperationsList =
-  ReadonlyArray<OperationStatusResult>;
+  Array<OperationStatusResult>;
 export const OperationStatusesGetResponseOperationsList = /*@__PURE__*/ S.Array(
   OperationStatusResult,
 ) as any as S.Schema<OperationStatusesGetResponseOperationsList>;
@@ -2472,7 +2471,7 @@ export const ServiceEndpointResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of ServiceEndpoint resources. */
 export type ServiceEndpointResourceListValueList =
-  ReadonlyArray<ServiceEndpointResource>;
+  Array<ServiceEndpointResource>;
 export const ServiceEndpointResourceListValueList = /*@__PURE__*/ S.Array(
   ServiceEndpointResource,
 ) as any as S.Schema<ServiceEndpointResourceListValueList>;

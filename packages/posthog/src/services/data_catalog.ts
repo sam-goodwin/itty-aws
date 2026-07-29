@@ -240,7 +240,7 @@ export const DataCatalogCertificationsListRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DataCatalogCertificationsListRequest>;
 
 export type PaginatedDataCatalogCertificationListResultsList =
-  ReadonlyArray<DataCatalogCertification>;
+  Array<DataCatalogCertification>;
 export const PaginatedDataCatalogCertificationListResultsList =
   /*@__PURE__*/ S.Array(
     DataCatalogCertification,
@@ -503,7 +503,7 @@ export const DataCatalogMetricsListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DataCatalogMetricsListRequest>;
 
 export type PaginatedDataCatalogMetricListResultsList =
-  ReadonlyArray<DataCatalogMetric>;
+  Array<DataCatalogMetric>;
 export const PaginatedDataCatalogMetricListResultsList = /*@__PURE__*/ S.Array(
   DataCatalogMetric,
 ) as any as S.Schema<PaginatedDataCatalogMetricListResultsList>;
@@ -933,7 +933,7 @@ export const DataCatalogRelationshipProposalsListRequest =
   }) as any as S.Schema<DataCatalogRelationshipProposalsListRequest>;
 
 export type PaginatedDataCatalogRelationshipProposalListResultsList =
-  ReadonlyArray<DataCatalogRelationshipProposal>;
+  Array<DataCatalogRelationshipProposal>;
 export const PaginatedDataCatalogRelationshipProposalListResultsList =
   /*@__PURE__*/ S.Array(
     DataCatalogRelationshipProposal,

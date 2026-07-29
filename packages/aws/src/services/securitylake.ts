@@ -504,7 +504,7 @@ export const CreateDataLakeExceptionSubscriptionResponse =
     identifier: "CreateDataLakeExceptionSubscriptionResponse",
   }) as any as S.Schema<CreateDataLakeExceptionSubscriptionResponse>;
 export interface AwsLogSourceResource {
-  sourceName?: AwsLogSourceName;
+  sourceName?: AwsLogSourceName | (string & {});
   sourceVersion?: string;
 }
 export const AwsLogSourceResource = /*@__PURE__*/ S.suspend(() =>
@@ -575,7 +575,7 @@ export const LogSourceResourceList = /*@__PURE__*/ S.Array(LogSourceResource);
 export type AccessType = "LAKEFORMATION" | "S3";
 export const AccessType = /*@__PURE__*/ S.String;
 
-export type AccessTypeList = AccessType[];
+export type AccessTypeList = (AccessType | (string & {}))[];
 export const AccessTypeList = /*@__PURE__*/ S.Array(AccessType);
 export interface CreateSubscriberRequest {
   subscriberIdentity: AwsIdentity;

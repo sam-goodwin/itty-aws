@@ -365,10 +365,10 @@ export type MatchOption =
   | "GREATER_THAN_OR_EQUAL";
 export const MatchOption = /*@__PURE__*/ S.String;
 
-export type MatchOptions = MatchOption[];
+export type MatchOptions = (MatchOption | (string & {}))[];
 export const MatchOptions = /*@__PURE__*/ S.Array(MatchOption);
 export interface DimensionValues {
-  Key?: Dimension;
+  Key?: Dimension | (string & {});
   Values?: string[];
   MatchOptions?: MatchOption[];
 }
@@ -442,8 +442,8 @@ export interface AnomalyMonitor {
   CreationDate?: string;
   LastUpdatedDate?: string;
   LastEvaluatedDate?: string;
-  MonitorType: MonitorType;
-  MonitorDimension?: MonitorDimension;
+  MonitorType: MonitorType | (string & {});
+  MonitorDimension?: MonitorDimension | (string & {});
   MonitorSpecification?: Expression;
   DimensionalValueCount?: number;
 }
@@ -505,8 +505,8 @@ export const SubscriberStatus = /*@__PURE__*/ S.String;
 
 export interface Subscriber {
   Address?: string;
-  Type?: SubscriberType;
-  Status?: SubscriberStatus;
+  Type?: SubscriberType | (string & {});
+  Status?: SubscriberStatus | (string & {});
 }
 export const Subscriber = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -527,7 +527,7 @@ export interface AnomalySubscription {
   MonitorArnList: string[];
   Subscribers: Subscriber[];
   Threshold?: number;
-  Frequency: AnomalySubscriptionFrequency;
+  Frequency: AnomalySubscriptionFrequency | (string & {});
   SubscriptionName: string;
   ThresholdExpression?: Expression;
 }
@@ -578,7 +578,7 @@ export type CostCategoryInheritedValueDimensionName =
 export const CostCategoryInheritedValueDimensionName = /*@__PURE__*/ S.String;
 
 export interface CostCategoryInheritedValueDimension {
-  DimensionName?: CostCategoryInheritedValueDimensionName;
+  DimensionName?: CostCategoryInheritedValueDimensionName | (string & {});
   DimensionKey?: string;
 }
 export const CostCategoryInheritedValueDimension = /*@__PURE__*/ S.suspend(() =>
@@ -596,7 +596,7 @@ export interface CostCategoryRule {
   Value?: string;
   Rule?: Expression;
   InheritedValue?: CostCategoryInheritedValueDimension;
-  Type?: CostCategoryRuleType;
+  Type?: CostCategoryRuleType | (string & {});
 }
 export const CostCategoryRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -624,7 +624,7 @@ export type CostCategorySplitChargeRuleParameterValuesList = string[];
 export const CostCategorySplitChargeRuleParameterValuesList =
   /*@__PURE__*/ S.Array(S.String);
 export interface CostCategorySplitChargeRuleParameter {
-  Type: CostCategorySplitChargeRuleParameterType;
+  Type: CostCategorySplitChargeRuleParameterType | (string & {});
   Values: string[];
 }
 export const CostCategorySplitChargeRuleParameter = /*@__PURE__*/ S.suspend(
@@ -644,7 +644,7 @@ export const CostCategorySplitChargeRuleParametersList = /*@__PURE__*/ S.Array(
 export interface CostCategorySplitChargeRule {
   Source: string;
   Targets: string[];
-  Method: CostCategorySplitChargeMethod;
+  Method: CostCategorySplitChargeMethod | (string & {});
   Parameters?: CostCategorySplitChargeRuleParameter[];
 }
 export const CostCategorySplitChargeRule = /*@__PURE__*/ S.suspend(() =>
@@ -1222,11 +1222,11 @@ export const TermInYears = /*@__PURE__*/ S.String;
 
 export type SavingsPlansCommitment = number;
 export interface SavingsPlans {
-  PaymentOption?: PaymentOption;
-  SavingsPlansType?: SupportedSavingsPlansType;
+  PaymentOption?: PaymentOption | (string & {});
+  SavingsPlansType?: SupportedSavingsPlansType | (string & {});
   Region?: string;
   InstanceFamily?: string;
-  TermInYears?: TermInYears;
+  TermInYears?: TermInYears | (string & {});
   SavingsPlansCommitment?: number;
   OfferingId?: string;
 }
@@ -1248,9 +1248,9 @@ export type SavingsPlansToExclude = string[];
 export const SavingsPlansToExclude = /*@__PURE__*/ S.Array(S.String);
 export type SavingsPlansTargetCoverage = number;
 export interface SavingsPlansPurchaseAnalysisConfiguration {
-  AccountScope?: AccountScope;
+  AccountScope?: AccountScope | (string & {});
   AccountId?: string;
-  AnalysisType: AnalysisType;
+  AnalysisType: AnalysisType | (string & {});
   SavingsPlansToAdd: SavingsPlans[];
   SavingsPlansToExclude?: string[];
   LookBackTimePeriod: DateInterval;
@@ -1317,7 +1317,7 @@ export const GroupDefinitionType = /*@__PURE__*/ S.String;
 
 export type GroupDefinitionKey = string;
 export interface GroupDefinition {
-  Type?: GroupDefinitionType;
+  Type?: GroupDefinitionType | (string & {});
   Key?: string;
 }
 export const GroupDefinition = /*@__PURE__*/ S.suspend(() =>
@@ -1930,7 +1930,7 @@ export type OfferingClass = "STANDARD" | "CONVERTIBLE";
 export const OfferingClass = /*@__PURE__*/ S.String;
 
 export interface EC2Specification {
-  OfferingClass?: OfferingClass;
+  OfferingClass?: OfferingClass | (string & {});
 }
 export const EC2Specification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ OfferingClass: S.optional(OfferingClass) }),
@@ -2418,7 +2418,7 @@ export type RecommendationTarget =
 export const RecommendationTarget = /*@__PURE__*/ S.String;
 
 export interface RightsizingRecommendationConfiguration {
-  RecommendationTarget: RecommendationTarget;
+  RecommendationTarget: RecommendationTarget | (string & {});
   BenefitsConsidered: boolean;
 }
 export const RightsizingRecommendationConfiguration = /*@__PURE__*/ S.suspend(

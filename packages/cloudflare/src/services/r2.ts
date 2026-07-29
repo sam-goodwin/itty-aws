@@ -311,8 +311,7 @@ export const CreateBucketResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateBucketResponse",
 }) as any as S.Schema<CreateBucketResponse>;
 
-export type BucketsDomainsCustomCreateRequestCiphersList =
-  ReadonlyArray<string>;
+export type BucketsDomainsCustomCreateRequestCiphersList = Array<string>;
 export const BucketsDomainsCustomCreateRequestCiphersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -379,8 +378,7 @@ export const CreateBucketDomainCustomRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateBucketDomainCustomRequest",
 }) as any as S.Schema<CreateBucketDomainCustomRequest>;
 
-export type BucketsDomainsCustomCreateResponseCiphersList =
-  ReadonlyArray<string>;
+export type BucketsDomainsCustomCreateResponseCiphersList = Array<string>;
 export const BucketsDomainsCustomCreateResponseCiphersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -439,7 +437,7 @@ export const SuperSlurperJobsCreateRequestSourceR2SlurperS3SourceSchemaVendor =
   /*@__PURE__*/ S.String;
 
 export type SuperSlurperJobsCreateRequestSourceR2SlurperS3SourceSchemaKeysList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const SuperSlurperJobsCreateRequestSourceR2SlurperS3SourceSchemaKeysList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -495,7 +493,7 @@ export const SuperSlurperJobsCreateRequestSourceR2SlurperGcsSourceSchemaVendor =
   /*@__PURE__*/ S.String;
 
 export type SuperSlurperJobsCreateRequestSourceR2SlurperGcsSourceSchemaKeysList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const SuperSlurperJobsCreateRequestSourceR2SlurperGcsSourceSchemaKeysList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -551,7 +549,7 @@ export const SuperSlurperJobsCreateRequestSourceR2SlurperR2SourceSchemaJurisdict
   /*@__PURE__*/ S.String;
 
 export type SuperSlurperJobsCreateRequestSourceR2SlurperR2SourceSchemaKeysList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const SuperSlurperJobsCreateRequestSourceR2SlurperR2SourceSchemaKeysList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -730,15 +728,13 @@ export type TemporaryCredentialsCreateRequestPermission =
 export const TemporaryCredentialsCreateRequestPermission =
   /*@__PURE__*/ S.String;
 
-export type TemporaryCredentialsCreateRequestObjectsList =
-  ReadonlyArray<string>;
+export type TemporaryCredentialsCreateRequestObjectsList = Array<string>;
 export const TemporaryCredentialsCreateRequestObjectsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<TemporaryCredentialsCreateRequestObjectsList>;
 
-export type TemporaryCredentialsCreateRequestPrefixesList =
-  ReadonlyArray<string>;
+export type TemporaryCredentialsCreateRequestPrefixesList = Array<string>;
 export const TemporaryCredentialsCreateRequestPrefixesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1088,7 +1084,7 @@ export const DeleteBucketSippyResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteBucketSippyResponse",
 }) as any as S.Schema<DeleteBucketSippyResponse>;
 
-export type DeleteObjectsKeyList = ReadonlyArray<string>;
+export type DeleteObjectsKeyList = Array<string>;
 export const DeleteObjectsKeyList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DeleteObjectsKeyList>;
@@ -1248,21 +1244,19 @@ export const BucketsCorsGetResponseRulesItemAllowedMethodsItem =
   /*@__PURE__*/ S.String;
 
 export type BucketsCorsGetResponseRulesItemAllowedMethodsList =
-  ReadonlyArray<BucketsCorsGetResponseRulesItemAllowedMethodsItem>;
+  Array<BucketsCorsGetResponseRulesItemAllowedMethodsItem>;
 export const BucketsCorsGetResponseRulesItemAllowedMethodsList =
   /*@__PURE__*/ S.Array(
     BucketsCorsGetResponseRulesItemAllowedMethodsItem,
   ) as any as S.Schema<BucketsCorsGetResponseRulesItemAllowedMethodsList>;
 
-export type BucketsCorsGetResponseRulesItemAllowedOriginsList =
-  ReadonlyArray<string>;
+export type BucketsCorsGetResponseRulesItemAllowedOriginsList = Array<string>;
 export const BucketsCorsGetResponseRulesItemAllowedOriginsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<BucketsCorsGetResponseRulesItemAllowedOriginsList>;
 
-export type BucketsCorsGetResponseRulesItemAllowedHeadersList =
-  ReadonlyArray<string>;
+export type BucketsCorsGetResponseRulesItemAllowedHeadersList = Array<string>;
 export const BucketsCorsGetResponseRulesItemAllowedHeadersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1287,8 +1281,7 @@ export const BucketsCorsGetResponseRulesItemAllowed = /*@__PURE__*/ S.suspend(
   identifier: "BucketsCorsGetResponseRulesItemAllowed",
 }) as any as S.Schema<BucketsCorsGetResponseRulesItemAllowed>;
 
-export type BucketsCorsGetResponseRulesItemExposeHeadersList =
-  ReadonlyArray<string>;
+export type BucketsCorsGetResponseRulesItemExposeHeadersList = Array<string>;
 export const BucketsCorsGetResponseRulesItemExposeHeadersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1316,7 +1309,7 @@ export const BucketsCorsGetResponseRulesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BucketsCorsGetResponseRulesItem>;
 
 export type BucketsCorsGetResponseRulesList =
-  ReadonlyArray<BucketsCorsGetResponseRulesItem>;
+  Array<BucketsCorsGetResponseRulesItem>;
 export const BucketsCorsGetResponseRulesList = /*@__PURE__*/ S.Array(
   BucketsCorsGetResponseRulesItem,
 ) as any as S.Schema<BucketsCorsGetResponseRulesList>;
@@ -1408,7 +1401,7 @@ export const BucketsDomainsCustomGetResponseStatus = /*@__PURE__*/ S.suspend(
   identifier: "BucketsDomainsCustomGetResponseStatus",
 }) as any as S.Schema<BucketsDomainsCustomGetResponseStatus>;
 
-export type BucketsDomainsCustomGetResponseCiphersList = ReadonlyArray<string>;
+export type BucketsDomainsCustomGetResponseCiphersList = Array<string>;
 export const BucketsDomainsCustomGetResponseCiphersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BucketsDomainsCustomGetResponseCiphersList>;
@@ -1502,7 +1495,7 @@ export const BucketsEventNotificationsGetResponseRulesItemActionsItem =
   /*@__PURE__*/ S.String;
 
 export type BucketsEventNotificationsGetResponseRulesItemActionsList =
-  ReadonlyArray<BucketsEventNotificationsGetResponseRulesItemActionsItem>;
+  Array<BucketsEventNotificationsGetResponseRulesItemActionsItem>;
 export const BucketsEventNotificationsGetResponseRulesItemActionsList =
   /*@__PURE__*/ S.Array(
     BucketsEventNotificationsGetResponseRulesItemActionsItem,
@@ -1537,7 +1530,7 @@ export const BucketsEventNotificationsGetResponseRulesItem =
   }) as any as S.Schema<BucketsEventNotificationsGetResponseRulesItem>;
 
 export type BucketsEventNotificationsGetResponseRulesList =
-  ReadonlyArray<BucketsEventNotificationsGetResponseRulesItem>;
+  Array<BucketsEventNotificationsGetResponseRulesItem>;
 export const BucketsEventNotificationsGetResponseRulesList =
   /*@__PURE__*/ S.Array(
     BucketsEventNotificationsGetResponseRulesItem,
@@ -1810,7 +1803,7 @@ export const BucketsLifecycleGetResponseRulesItemStorageClassTransitionsItem =
   }) as any as S.Schema<BucketsLifecycleGetResponseRulesItemStorageClassTransitionsItem>;
 
 export type BucketsLifecycleGetResponseRulesItemStorageClassTransitionsList =
-  ReadonlyArray<BucketsLifecycleGetResponseRulesItemStorageClassTransitionsItem>;
+  Array<BucketsLifecycleGetResponseRulesItemStorageClassTransitionsItem>;
 export const BucketsLifecycleGetResponseRulesItemStorageClassTransitionsList =
   /*@__PURE__*/ S.Array(
     BucketsLifecycleGetResponseRulesItemStorageClassTransitionsItem,
@@ -1851,7 +1844,7 @@ export const BucketsLifecycleGetResponseRulesItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<BucketsLifecycleGetResponseRulesItem>;
 
 export type BucketsLifecycleGetResponseRulesList =
-  ReadonlyArray<BucketsLifecycleGetResponseRulesItem>;
+  Array<BucketsLifecycleGetResponseRulesItem>;
 export const BucketsLifecycleGetResponseRulesList = /*@__PURE__*/ S.Array(
   BucketsLifecycleGetResponseRulesItem,
 ) as any as S.Schema<BucketsLifecycleGetResponseRulesList>;
@@ -2007,7 +2000,7 @@ export const BucketsLocksGetResponseRulesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BucketsLocksGetResponseRulesItem>;
 
 export type BucketsLocksGetResponseRulesList =
-  ReadonlyArray<BucketsLocksGetResponseRulesItem>;
+  Array<BucketsLocksGetResponseRulesItem>;
 export const BucketsLocksGetResponseRulesList = /*@__PURE__*/ S.Array(
   BucketsLocksGetResponseRulesItem,
 ) as any as S.Schema<BucketsLocksGetResponseRulesList>;
@@ -2199,7 +2192,7 @@ export const GetSuperSlurperJobRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetSuperSlurperJobRequest>;
 
 export type SuperSlurperJobsGetResponseSourceS3SourceResponseSchemaKeysList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const SuperSlurperJobsGetResponseSourceS3SourceResponseSchemaKeysList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2235,7 +2228,7 @@ export const SuperSlurperJobsGetResponseSourceS3SourceResponseSchema =
   }) as any as S.Schema<SuperSlurperJobsGetResponseSourceS3SourceResponseSchema>;
 
 export type SuperSlurperJobsGetResponseSourceGcsSourceResponseSchemaKeysList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const SuperSlurperJobsGetResponseSourceGcsSourceResponseSchemaKeysList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2274,7 +2267,7 @@ export const SuperSlurperJobsGetResponseSourceR2SourceResponseSchemaJurisdiction
   /*@__PURE__*/ S.String;
 
 export type SuperSlurperJobsGetResponseSourceR2SourceResponseSchemaKeysList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const SuperSlurperJobsGetResponseSourceR2SourceResponseSchemaKeysList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2483,7 +2476,7 @@ export const BucketsDomainsCustomListResponseDomainsItemStatus =
   }) as any as S.Schema<BucketsDomainsCustomListResponseDomainsItemStatus>;
 
 export type BucketsDomainsCustomListResponseDomainsItemCiphersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const BucketsDomainsCustomListResponseDomainsItemCiphersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2530,7 +2523,7 @@ export const BucketsDomainsCustomListResponseDomainsItem =
   }) as any as S.Schema<BucketsDomainsCustomListResponseDomainsItem>;
 
 export type BucketsDomainsCustomListResponseDomainsList =
-  ReadonlyArray<BucketsDomainsCustomListResponseDomainsItem>;
+  Array<BucketsDomainsCustomListResponseDomainsItem>;
 export const BucketsDomainsCustomListResponseDomainsList =
   /*@__PURE__*/ S.Array(
     BucketsDomainsCustomListResponseDomainsItem,
@@ -2655,7 +2648,7 @@ export const BucketsEventNotificationsListResponseQueuesItemRulesItemActionsItem
   /*@__PURE__*/ S.String;
 
 export type BucketsEventNotificationsListResponseQueuesItemRulesItemActionsList =
-  ReadonlyArray<BucketsEventNotificationsListResponseQueuesItemRulesItemActionsItem>;
+  Array<BucketsEventNotificationsListResponseQueuesItemRulesItemActionsItem>;
 export const BucketsEventNotificationsListResponseQueuesItemRulesItemActionsList =
   /*@__PURE__*/ S.Array(
     BucketsEventNotificationsListResponseQueuesItemRulesItemActionsItem,
@@ -2691,7 +2684,7 @@ export const BucketsEventNotificationsListResponseQueuesItemRulesItem =
   }) as any as S.Schema<BucketsEventNotificationsListResponseQueuesItemRulesItem>;
 
 export type BucketsEventNotificationsListResponseQueuesItemRulesList =
-  ReadonlyArray<BucketsEventNotificationsListResponseQueuesItemRulesItem>;
+  Array<BucketsEventNotificationsListResponseQueuesItemRulesItem>;
 export const BucketsEventNotificationsListResponseQueuesItemRulesList =
   /*@__PURE__*/ S.Array(
     BucketsEventNotificationsListResponseQueuesItemRulesItem,
@@ -2718,7 +2711,7 @@ export const BucketsEventNotificationsListResponseQueuesItem =
   }) as any as S.Schema<BucketsEventNotificationsListResponseQueuesItem>;
 
 export type BucketsEventNotificationsListResponseQueuesList =
-  ReadonlyArray<BucketsEventNotificationsListResponseQueuesItem>;
+  Array<BucketsEventNotificationsListResponseQueuesItem>;
 export const BucketsEventNotificationsListResponseQueuesList =
   /*@__PURE__*/ S.Array(
     BucketsEventNotificationsListResponseQueuesItem,
@@ -3020,8 +3013,7 @@ export const BucketsObjectsListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "BucketsObjectsListResultItem",
 }) as any as S.Schema<BucketsObjectsListResultItem>;
 
-export type BucketsObjectsListResultList =
-  ReadonlyArray<BucketsObjectsListResultItem>;
+export type BucketsObjectsListResultList = Array<BucketsObjectsListResultItem>;
 export const BucketsObjectsListResultList = /*@__PURE__*/ S.Array(
   BucketsObjectsListResultItem,
 ) as any as S.Schema<BucketsObjectsListResultList>;
@@ -3142,7 +3134,7 @@ export const BucketsListResponseBucketsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BucketsListResponseBucketsItem>;
 
 export type BucketsListResponseBucketsList =
-  ReadonlyArray<BucketsListResponseBucketsItem>;
+  Array<BucketsListResponseBucketsItem>;
 export const BucketsListResponseBucketsList = /*@__PURE__*/ S.Array(
   BucketsListResponseBucketsItem,
 ) as any as S.Schema<BucketsListResponseBucketsList>;
@@ -3222,7 +3214,7 @@ export const SuperSlurperJobsLogsListResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SuperSlurperJobsLogsListResultItem>;
 
 export type SuperSlurperJobsLogsListResultList =
-  ReadonlyArray<SuperSlurperJobsLogsListResultItem>;
+  Array<SuperSlurperJobsLogsListResultItem>;
 export const SuperSlurperJobsLogsListResultList = /*@__PURE__*/ S.Array(
   SuperSlurperJobsLogsListResultItem,
 ) as any as S.Schema<SuperSlurperJobsLogsListResultList>;
@@ -3266,7 +3258,7 @@ export const ListSuperSlurperJobsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListSuperSlurperJobsRequest>;
 
 export type SuperSlurperJobsListResultItemSourceS3SourceResponseSchemaKeysList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const SuperSlurperJobsListResultItemSourceS3SourceResponseSchemaKeysList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3302,7 +3294,7 @@ export const SuperSlurperJobsListResultItemSourceS3SourceResponseSchema =
   }) as any as S.Schema<SuperSlurperJobsListResultItemSourceS3SourceResponseSchema>;
 
 export type SuperSlurperJobsListResultItemSourceGcsSourceResponseSchemaKeysList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const SuperSlurperJobsListResultItemSourceGcsSourceResponseSchemaKeysList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3341,7 +3333,7 @@ export const SuperSlurperJobsListResultItemSourceR2SourceResponseSchemaJurisdict
   /*@__PURE__*/ S.String;
 
 export type SuperSlurperJobsListResultItemSourceR2SourceResponseSchemaKeysList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const SuperSlurperJobsListResultItemSourceR2SourceResponseSchemaKeysList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3478,7 +3470,7 @@ export const SuperSlurperJobsListResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SuperSlurperJobsListResultItem>;
 
 export type SuperSlurperJobsListResultList =
-  ReadonlyArray<SuperSlurperJobsListResultItem>;
+  Array<SuperSlurperJobsListResultItem>;
 export const SuperSlurperJobsListResultList = /*@__PURE__*/ S.Array(
   SuperSlurperJobsListResultItem,
 ) as any as S.Schema<SuperSlurperJobsListResultList>;
@@ -3670,7 +3662,7 @@ export type BucketsCorsUpdateRequestRulesItemAllowedMethodsItem =
 export const BucketsCorsUpdateRequestRulesItemAllowedMethodsItem =
   /*@__PURE__*/ S.String;
 
-export type BucketsCorsUpdateRequestRulesItemAllowedMethodsList = ReadonlyArray<
+export type BucketsCorsUpdateRequestRulesItemAllowedMethodsList = Array<
   BucketsCorsUpdateRequestRulesItemAllowedMethodsItem | (string & {})
 >;
 export const BucketsCorsUpdateRequestRulesItemAllowedMethodsList =
@@ -3678,15 +3670,13 @@ export const BucketsCorsUpdateRequestRulesItemAllowedMethodsList =
     BucketsCorsUpdateRequestRulesItemAllowedMethodsItem,
   ) as any as S.Schema<BucketsCorsUpdateRequestRulesItemAllowedMethodsList>;
 
-export type BucketsCorsUpdateRequestRulesItemAllowedOriginsList =
-  ReadonlyArray<string>;
+export type BucketsCorsUpdateRequestRulesItemAllowedOriginsList = Array<string>;
 export const BucketsCorsUpdateRequestRulesItemAllowedOriginsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<BucketsCorsUpdateRequestRulesItemAllowedOriginsList>;
 
-export type BucketsCorsUpdateRequestRulesItemAllowedHeadersList =
-  ReadonlyArray<string>;
+export type BucketsCorsUpdateRequestRulesItemAllowedHeadersList = Array<string>;
 export const BucketsCorsUpdateRequestRulesItemAllowedHeadersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3711,8 +3701,7 @@ export const BucketsCorsUpdateRequestRulesItemAllowed = /*@__PURE__*/ S.suspend(
   identifier: "BucketsCorsUpdateRequestRulesItemAllowed",
 }) as any as S.Schema<BucketsCorsUpdateRequestRulesItemAllowed>;
 
-export type BucketsCorsUpdateRequestRulesItemExposeHeadersList =
-  ReadonlyArray<string>;
+export type BucketsCorsUpdateRequestRulesItemExposeHeadersList = Array<string>;
 export const BucketsCorsUpdateRequestRulesItemExposeHeadersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3742,7 +3731,7 @@ export const BucketsCorsUpdateRequestRulesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BucketsCorsUpdateRequestRulesItem>;
 
 export type BucketsCorsUpdateRequestRulesList =
-  ReadonlyArray<BucketsCorsUpdateRequestRulesItem>;
+  Array<BucketsCorsUpdateRequestRulesItem>;
 export const BucketsCorsUpdateRequestRulesList = /*@__PURE__*/ S.Array(
   BucketsCorsUpdateRequestRulesItem,
 ) as any as S.Schema<BucketsCorsUpdateRequestRulesList>;
@@ -3862,10 +3851,9 @@ export type BucketsEventNotificationsUpdateRequestRulesItemActionsItem =
 export const BucketsEventNotificationsUpdateRequestRulesItemActionsItem =
   /*@__PURE__*/ S.String;
 
-export type BucketsEventNotificationsUpdateRequestRulesItemActionsList =
-  ReadonlyArray<
-    BucketsEventNotificationsUpdateRequestRulesItemActionsItem | (string & {})
-  >;
+export type BucketsEventNotificationsUpdateRequestRulesItemActionsList = Array<
+  BucketsEventNotificationsUpdateRequestRulesItemActionsItem | (string & {})
+>;
 export const BucketsEventNotificationsUpdateRequestRulesItemActionsList =
   /*@__PURE__*/ S.Array(
     BucketsEventNotificationsUpdateRequestRulesItemActionsItem,
@@ -3894,7 +3882,7 @@ export const BucketsEventNotificationsUpdateRequestRulesItem =
   }) as any as S.Schema<BucketsEventNotificationsUpdateRequestRulesItem>;
 
 export type BucketsEventNotificationsUpdateRequestRulesList =
-  ReadonlyArray<BucketsEventNotificationsUpdateRequestRulesItem>;
+  Array<BucketsEventNotificationsUpdateRequestRulesItem>;
 export const BucketsEventNotificationsUpdateRequestRulesList =
   /*@__PURE__*/ S.Array(
     BucketsEventNotificationsUpdateRequestRulesItem,
@@ -4180,7 +4168,7 @@ export const BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsItem =
   }) as any as S.Schema<BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsItem>;
 
 export type BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsList =
-  ReadonlyArray<BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsItem>;
+  Array<BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsItem>;
 export const BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsList =
   /*@__PURE__*/ S.Array(
     BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsItem,
@@ -4221,7 +4209,7 @@ export const BucketsLifecycleUpdateRequestRulesItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<BucketsLifecycleUpdateRequestRulesItem>;
 
 export type BucketsLifecycleUpdateRequestRulesList =
-  ReadonlyArray<BucketsLifecycleUpdateRequestRulesItem>;
+  Array<BucketsLifecycleUpdateRequestRulesItem>;
 export const BucketsLifecycleUpdateRequestRulesList = /*@__PURE__*/ S.Array(
   BucketsLifecycleUpdateRequestRulesItem,
 ) as any as S.Schema<BucketsLifecycleUpdateRequestRulesList>;
@@ -4384,7 +4372,7 @@ export const BucketsLocksUpdateRequestRulesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BucketsLocksUpdateRequestRulesItem>;
 
 export type BucketsLocksUpdateRequestRulesList =
-  ReadonlyArray<BucketsLocksUpdateRequestRulesItem>;
+  Array<BucketsLocksUpdateRequestRulesItem>;
 export const BucketsLocksUpdateRequestRulesList = /*@__PURE__*/ S.Array(
   BucketsLocksUpdateRequestRulesItem,
 ) as any as S.Schema<BucketsLocksUpdateRequestRulesList>;
@@ -4840,7 +4828,7 @@ export const SuperSlurperConnectivityPrecheckSourceRequestVendor =
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
 
 export type SuperSlurperConnectivityPrecheckSourceRequestKeysList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const SuperSlurperConnectivityPrecheckSourceRequestKeysList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4993,8 +4981,7 @@ export const TargetSuperSlurperConnectivityPrecheckResponse =
     identifier: "TargetSuperSlurperConnectivityPrecheckResponse",
   }) as any as S.Schema<TargetSuperSlurperConnectivityPrecheckResponse>;
 
-export type BucketsDomainsCustomUpdateRequestCiphersList =
-  ReadonlyArray<string>;
+export type BucketsDomainsCustomUpdateRequestCiphersList = Array<string>;
 export const BucketsDomainsCustomUpdateRequestCiphersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5058,8 +5045,7 @@ export const UpdateBucketDomainCustomRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateBucketDomainCustomRequest",
 }) as any as S.Schema<UpdateBucketDomainCustomRequest>;
 
-export type BucketsDomainsCustomUpdateResponseCiphersList =
-  ReadonlyArray<string>;
+export type BucketsDomainsCustomUpdateResponseCiphersList = Array<string>;
 export const BucketsDomainsCustomUpdateResponseCiphersList =
   /*@__PURE__*/ S.Array(
     S.String,

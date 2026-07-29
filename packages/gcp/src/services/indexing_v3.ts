@@ -91,7 +91,7 @@ export interface UrlNotification {
   /** Creation timestamp for this notification. Users should _not_ specify it, the field is ignored at the request time. */
   notifyTime?: string;
   /** The URL life cycle event that Google is being notified about. */
-  type?: UrlNotificationTypeEnum;
+  type?: UrlNotificationTypeEnum | (string & {});
 }
 export const UrlNotification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

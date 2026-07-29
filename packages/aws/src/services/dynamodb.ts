@@ -1357,7 +1357,7 @@ export const ScalarAttributeType = /*@__PURE__*/ S.String;
 
 export interface AttributeDefinition {
   AttributeName: string;
-  AttributeType: ScalarAttributeType;
+  AttributeType: ScalarAttributeType | (string & {});
 }
 export const AttributeDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ AttributeName: S.String, AttributeType: ScalarAttributeType }),
@@ -1371,7 +1371,7 @@ export const KeyType = /*@__PURE__*/ S.String;
 
 export interface KeySchemaElement {
   AttributeName: string;
-  KeyType: KeyType;
+  KeyType: KeyType | (string & {});
 }
 export const KeySchemaElement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ AttributeName: S.String, KeyType: KeyType }),
@@ -1387,7 +1387,7 @@ export type NonKeyAttributeName = string;
 export type NonKeyAttributeNameList = string[];
 export const NonKeyAttributeNameList = /*@__PURE__*/ S.Array(S.String);
 export interface Projection {
-  ProjectionType?: ProjectionType;
+  ProjectionType?: ProjectionType | (string & {});
   NonKeyAttributes?: string[];
 }
 export const Projection = /*@__PURE__*/ S.suspend(() =>
@@ -1480,7 +1480,7 @@ export const StreamViewType = /*@__PURE__*/ S.String;
 
 export interface StreamSpecification {
   StreamEnabled: boolean;
-  StreamViewType?: StreamViewType;
+  StreamViewType?: StreamViewType | (string & {});
 }
 export const StreamSpecification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1496,7 +1496,7 @@ export const SSEType = /*@__PURE__*/ S.String;
 
 export interface SSESpecification {
   Enabled?: boolean;
-  SSEType?: SSEType;
+  SSEType?: SSEType | (string & {});
   KMSMasterKeyId?: string;
 }
 export const SSESpecification = /*@__PURE__*/ S.suspend(() =>
@@ -2415,7 +2415,7 @@ export const ExportViewType = /*@__PURE__*/ S.String;
 export interface IncrementalExportSpecification {
   ExportFromTime?: Date;
   ExportToTime?: Date;
-  ExportViewType?: ExportViewType;
+  ExportViewType?: ExportViewType | (string & {});
 }
 export const IncrementalExportSpecification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2741,7 +2741,7 @@ export interface TableCreationParameters {
   TableName: string;
   AttributeDefinitions: AttributeDefinition[];
   KeySchema: KeySchemaElement[];
-  BillingMode?: BillingMode;
+  BillingMode?: BillingMode | (string & {});
   ProvisionedThroughput?: ProvisionedThroughput;
   OnDemandThroughput?: OnDemandThroughput;
   SSESpecification?: SSESpecification;
@@ -3071,7 +3071,9 @@ export const DescribeTimeToLiveOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeTimeToLiveOutput",
 }) as any as S.Schema<DescribeTimeToLiveOutput>;
 export interface EnableKinesisStreamingConfiguration {
-  ApproximateCreationDateTimePrecision?: ApproximateCreationDateTimePrecision;
+  ApproximateCreationDateTimePrecision?:
+    | ApproximateCreationDateTimePrecision
+    | (string & {});
 }
 export const EnableKinesisStreamingConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4782,7 +4784,9 @@ export const UpdateItemOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateItemOutput",
 }) as any as S.Schema<UpdateItemOutput>;
 export interface UpdateKinesisStreamingConfiguration {
-  ApproximateCreationDateTimePrecision?: ApproximateCreationDateTimePrecision;
+  ApproximateCreationDateTimePrecision?:
+    | ApproximateCreationDateTimePrecision
+    | (string & {});
 }
 export const UpdateKinesisStreamingConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

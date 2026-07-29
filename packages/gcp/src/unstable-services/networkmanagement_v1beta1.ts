@@ -128,7 +128,7 @@ export type VpcFlowLogsConfigAggregationIntervalEnum =
   | "INTERVAL_15_MIN";
 export const VpcFlowLogsConfigAggregationIntervalEnum = /*@__PURE__*/ S.String;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -171,7 +171,9 @@ export interface VpcFlowLogsConfig {
   /** Traffic will be logged from VMs within the subnetwork. Format: projects/{project_id}/regions/{region}/subnetworks/{name} */
   subnet?: string;
   /** Optional. The aggregation interval for the logs. Default value is INTERVAL_5_SEC. */
-  aggregationInterval?: VpcFlowLogsConfigAggregationIntervalEnum;
+  aggregationInterval?:
+    | VpcFlowLogsConfigAggregationIntervalEnum
+    | (string & {});
   /** Optional. Custom metadata fields to include in the reported VPC flow logs. Can only be specified if "metadata" was set to CUSTOM_METADATA. */
   metadataFields?: StringList;
   /** Optional. The value of the field must be in (0, 1]. The sampling rate of VPC Flow Logs where 1.0 means all collected logs are reported. Setting the sampling rate to 0.0 is not allowed. If you want to disable VPC Flow Logs, use the state field instead. Default value is 1.0. */
@@ -179,13 +181,17 @@ export interface VpcFlowLogsConfig {
   /** Optional. Export filter used to define which VPC Flow Logs should be logged. */
   filterExpr?: string;
   /** Optional. The state of the VPC Flow Log configuration. Default value is ENABLED. When creating a new configuration, it must be enabled. Setting state=DISABLED will pause the log generation for this config. */
-  state?: VpcFlowLogsConfigStateEnum;
+  state?: VpcFlowLogsConfigStateEnum | (string & {});
   /** Output only. Describes the state of the configured target resource for diagnostic purposes. */
-  targetResourceState?: VpcFlowLogsConfigTargetResourceStateEnum;
+  targetResourceState?:
+    | VpcFlowLogsConfigTargetResourceStateEnum
+    | (string & {});
   /** Optional. Configures whether all, none or a subset of metadata fields should be added to the reported VPC flow logs. Default value is INCLUDE_ALL_METADATA. */
-  metadata?: VpcFlowLogsConfigMetadataEnum;
+  metadata?: VpcFlowLogsConfigMetadataEnum | (string & {});
   /** Optional. Determines whether to include cross project annotations in the logs. This field is available only for organization configurations. If not specified in org configs will be set to CROSS_PROJECT_METADATA_ENABLED. */
-  crossProjectMetadata?: VpcFlowLogsConfigCrossProjectMetadataEnum;
+  crossProjectMetadata?:
+    | VpcFlowLogsConfigCrossProjectMetadataEnum
+    | (string & {});
   /** Traffic will be logged from the Interconnect Attachment. Format: projects/{project_id}/regions/{region}/interconnectAttachments/{name} */
   interconnectAttachment?: string;
   /** Output only. The time the config was updated. */
@@ -256,7 +262,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -377,7 +383,7 @@ export interface Endpoint {
   /** Output only. ID of the load balancer the forwarding rule points to. Empty for forwarding rules not related to load balancers. */
   loadBalancerId?: string;
   /** For source endpoints, type of the network where the endpoint is located. Not relevant for destination endpoints. */
-  networkType?: EndpointNetworkTypeEnum;
+  networkType?: EndpointNetworkTypeEnum | (string & {});
   /** A [Cloud SQL](https://cloud.google.com/sql) instance URI. */
   cloudSqlInstance?: string;
   /** A [Redis Cluster](https://cloud.google.com/memorystore/docs/cluster) URI. Applicable only to destination endpoint. */
@@ -403,13 +409,13 @@ export interface Endpoint {
   /** The IP protocol port of the endpoint. Only applicable when protocol is TCP or UDP. */
   port?: number;
   /** Output only. Type of the load balancer the forwarding rule points to. */
-  loadBalancerType?: EndpointLoadBalancerTypeEnum;
+  loadBalancerType?: EndpointLoadBalancerTypeEnum | (string & {});
   /** The IP address of the endpoint, which can be an external or internal IP. */
   ipAddress?: string;
   /** A [Cloud Run](https://cloud.google.com/run) [job](https://docs.cloud.google.com/run/docs/reference/rest/v2/projects.locations.jobs#Job) URI. Applicable only to source endpoint. The format is: projects/{project}/locations/{location}/jobs/{job} */
   cloudRunJob?: string;
   /** Output only. Specifies the type of the target of the forwarding rule. */
-  forwardingRuleTarget?: EndpointForwardingRuleTargetEnum;
+  forwardingRuleTarget?: EndpointForwardingRuleTargetEnum | (string & {});
   /** A cluster URI for [Google Kubernetes Engine cluster control plane](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-architecture). */
   gkeMasterCluster?: string;
   /** A [DMS Private Connection](https://docs.cloud.google.com/database-migration/docs/reference/rest/v1/projects.locations.privateConnections) name format: projects/{project}/locations/{location}/privateConnections/{privateConnection}. */
@@ -462,7 +468,7 @@ export const LatencyPercentile = /*@__PURE__*/ S.suspend(() =>
   identifier: "LatencyPercentile",
 }) as any as S.Schema<LatencyPercentile>;
 
-export type LatencyPercentileList = ReadonlyArray<LatencyPercentile>;
+export type LatencyPercentileList = Array<LatencyPercentile>;
 export const LatencyPercentileList = /*@__PURE__*/ S.Array(
   LatencyPercentile,
 ) as any as S.Schema<LatencyPercentileList>;
@@ -512,7 +518,7 @@ export interface SingleEdgeResponse {
   /** Number of probes sent. */
   sentProbeCount?: number;
   /** The overall result of active probing for this egress device. */
-  result?: SingleEdgeResponseResultEnum;
+  result?: SingleEdgeResponseResultEnum | (string & {});
   /** Number of probes that reached the destination. */
   successfulProbeCount?: number;
   /** The EdgeLocation from which a packet, destined to the internet, will egress the Google network. This will only be populated for a connectivity test which has an internet destination address. The absence of this field *must not* be used as an indication that the destination is part of the Google network. */
@@ -535,7 +541,7 @@ export const SingleEdgeResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "SingleEdgeResponse",
 }) as any as S.Schema<SingleEdgeResponse>;
 
-export type SingleEdgeResponseList = ReadonlyArray<SingleEdgeResponse>;
+export type SingleEdgeResponseList = Array<SingleEdgeResponse>;
 export const SingleEdgeResponseList = /*@__PURE__*/ S.Array(
   SingleEdgeResponse,
 ) as any as S.Schema<SingleEdgeResponseList>;
@@ -585,7 +591,7 @@ export interface ProbingDetails {
   /** Latency as measured by active probing in one direction: from the source to the destination endpoint. */
   probingLatency?: LatencyDistribution;
   /** The overall result of active probing. */
-  result?: ProbingDetailsResultEnum;
+  result?: ProbingDetailsResultEnum | (string & {});
   /** The EdgeLocation from which a packet, destined to the internet, will egress the Google network. This will only be populated for a connectivity test which has an internet destination address. The absence of this field *must not* be used as an indication that the destination is part of the Google network. */
   destinationEgressLocation?: EdgeLocation;
   /** Number of probes sent. */
@@ -595,7 +601,7 @@ export interface ProbingDetails {
   /** Whether all relevant edge devices were probed. */
   probedAllDevices?: boolean;
   /** The reason probing was aborted. */
-  abortCause?: ProbingDetailsAbortCauseEnum;
+  abortCause?: ProbingDetailsAbortCauseEnum | (string & {});
   /** Number of probes that reached the destination. */
   successfulProbeCount?: number;
   /** Details about an internal failure or the cancellation of active probing. */
@@ -674,7 +680,7 @@ export interface AbortInfo {
   /** List of project IDs the user specified in the request but lacks access to. In this case, analysis is aborted with the PERMISSION_DENIED cause. */
   projectsMissingPermission?: StringList;
   /** Causes that the analysis is aborted. */
-  cause?: AbortInfoCauseEnum;
+  cause?: AbortInfoCauseEnum | (string & {});
   /** URI of the resource that caused the abort. Format: * `projects/{project_id}/global/networks/{network_id}` (VPC network) * `projects/{project_id}/zones/{zone}/instances/{instance_id}` (VM instance) */
   resourceUri?: string;
 }
@@ -724,7 +730,7 @@ export const DeliverInfoGoogleServiceTypeEnum = /*@__PURE__*/ S.String;
 /** Details of the final state "deliver" and associated resource. */
 export interface DeliverInfo {
   /** Target type where the packet is delivered to. */
-  target?: DeliverInfoTargetEnum;
+  target?: DeliverInfoTargetEnum | (string & {});
   /** PSC Google API target the packet is delivered to (if applicable). */
   pscGoogleApiTarget?: string;
   /** IP address of the target (if applicable). */
@@ -734,7 +740,7 @@ export interface DeliverInfo {
   /** Name of the Cloud Storage Bucket the packet is delivered to (if applicable). */
   storageBucket?: string;
   /** Recognized type of a Google Service the packet is delivered to (if applicable). */
-  googleServiceType?: DeliverInfoGoogleServiceTypeEnum;
+  googleServiceType?: DeliverInfoGoogleServiceTypeEnum | (string & {});
 }
 export const DeliverInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -819,13 +825,13 @@ export interface NatInfo {
   /** Source IP address after NAT translation. */
   newSourceIp?: string;
   /** Type of NAT. */
-  type?: NatInfoTypeEnum;
+  type?: NatInfoTypeEnum | (string & {});
   /** Destination port before NAT translation. Only valid when protocol is TCP or UDP. */
   oldDestinationPort?: number;
   /** Destination IP address after NAT translation. */
   newDestinationIp?: string;
   /** Type of Cloud NAT gateway. Only valid when `type` is CLOUD_NAT. */
-  cloudNatGatewayType?: NatInfoCloudNatGatewayTypeEnum;
+  cloudNatGatewayType?: NatInfoCloudNatGatewayTypeEnum | (string & {});
   /** IP protocol in string format, for example: "TCP", "UDP", "ICMP". */
   protocol?: string;
   /** Destination IP address before NAT translation. */
@@ -929,7 +935,7 @@ export const ForwardInfoTargetEnum = /*@__PURE__*/ S.String;
 /** Details of the final state "forward" and associated resource. */
 export interface ForwardInfo {
   /** Target type where this packet is forwarded to. */
-  target?: ForwardInfoTargetEnum;
+  target?: ForwardInfoTargetEnum | (string & {});
   /** IP address of the target (if applicable). */
   ipAddress?: string;
   /** URI of the resource that the packet is forwarded to. Format: * `projects/{project_id}/global/networks/{network_id}` (VPC peering network) * `projects/{project_id}/regions/{region}/vpnGateways/{vpn_gateway_id}` (VPN gateway) */
@@ -1047,7 +1053,7 @@ export interface RouteInfo {
   /** URI of the NCC Hub the route is advertised by in format "projects/{project}/locations/global/hubs/{hub}". PEERING_SUBNET and PEERING_DYNAMIC routes that are advertised by NCC Hub only. */
   nccHubUri?: string;
   /** Type of next hop. */
-  nextHopType?: RouteInfoNextHopTypeEnum;
+  nextHopType?: RouteInfoNextHopTypeEnum | (string & {});
   /** Priority of the route. */
   priority?: number;
   /** For PEERING_SUBNET, PEERING_STATIC and PEERING_DYNAMIC routes, the name of the originating SUBNET/STATIC/DYNAMIC route. */
@@ -1059,7 +1065,7 @@ export interface RouteInfo {
   /** URI of a VPC network where the next hop resource is located in format "projects/{project}/global/networks/{network}". */
   nextHopNetworkUri?: string;
   /** Type of route. */
-  routeType?: RouteInfoRouteTypeEnum;
+  routeType?: RouteInfoRouteTypeEnum | (string & {});
   /** Protocols of the route. POLICY_BASED routes only. */
   protocols?: StringList;
   /** For ADVERTISED dynamic routes, the URI of the Cloud Router that advertised the corresponding IP prefix in format "projects/{project}/regions/{region}/routers/{router}". */
@@ -1085,7 +1091,7 @@ export interface RouteInfo {
   /** For PEERING_SUBNET and PEERING_DYNAMIC routes that are advertised by NCC Hub, the URI of the corresponding route in NCC Hub's routing table. Format: `projects/{project_id}/locations/global/hubs/{hub_id}/routeTables/{route_table_id}/routes/{route_id}` */
   nccHubRouteUri?: string;
   /** Indicates where route is applicable. Deprecated, routes with NCC_HUB scope are not included in the trace in new tests. */
-  routeScope?: RouteInfoRouteScopeEnum;
+  routeScope?: RouteInfoRouteScopeEnum | (string & {});
   /** For PEERING_SUBNET and PEERING_STATIC routes, the URI of the originating SUBNET/STATIC route. Format: `projects/{project_id}/global/routes/{route_id}` */
   originatingRouteUri?: string;
   /** Source port ranges of the route. POLICY_BASED routes only. */
@@ -1167,7 +1173,7 @@ export interface InterconnectAttachmentInfo {
   /** URI of the Cloud Router to be used for dynamic routing. Format: `projects/{project_id}/regions/{region}/routers/{router_id}` */
   cloudRouterUri?: string;
   /** The type of interconnect attachment this is. */
-  type?: InterconnectAttachmentInfoTypeEnum;
+  type?: InterconnectAttachmentInfoTypeEnum | (string & {});
   /** Name of an Interconnect attachment. */
   displayName?: string;
   /** URI of the Interconnect attachment. Format: `projects/{project_id}/regions/{region}/interconnectAttachments/{attachment_id}` */
@@ -1244,11 +1250,11 @@ export interface FirewallInfo {
   /** The display name of the firewall rule. This field might be empty for firewall policy rules. */
   displayName?: string;
   /** Target type of the firewall rule. */
-  targetType?: FirewallInfoTargetTypeEnum;
+  targetType?: FirewallInfoTargetTypeEnum | (string & {});
   /** The target service accounts specified by the firewall rule. */
   targetServiceAccounts?: StringList;
   /** The firewall rule's type. */
-  firewallRuleType?: FirewallInfoFirewallRuleTypeEnum;
+  firewallRuleType?: FirewallInfoFirewallRuleTypeEnum | (string & {});
   /** The URI of the firewall rule in format "projects/{project}/global/firewalls/{firewall}". This field is not applicable to implied VPC firewall rules. */
   uri?: string;
   /** Possible values: INGRESS, EGRESS */
@@ -1316,7 +1322,7 @@ export interface VpnTunnelInfo {
   /** Name of a VPN tunnel. */
   displayName?: string;
   /** Type of the routing policy. */
-  routingType?: VpnTunnelInfoRoutingTypeEnum;
+  routingType?: VpnTunnelInfoRoutingTypeEnum | (string & {});
   /** URI of the VPN tunnel. Format: `projects/{project_id}/regions/{region}/vpnTunnels/{vpn_tunnel_id}` */
   uri?: string;
   /** Remote VPN gateway's IP address. */
@@ -1414,7 +1420,9 @@ export interface LoadBalancerBackendInfo {
   /** URI of the backend instance (if applicable) in format "projects/{project}/zones/{zone}/instances/{instance}". Populated for instance group backends, and zonal NEG backends. */
   instanceUri?: string;
   /** Output only. Health check firewalls configuration state for the backend. This is a result of the static firewall analysis (verifying that health check traffic from required IP ranges to the backend is allowed or not). The backend might still be unhealthy even if these firewalls are configured. Please refer to the documentation for more information: https://cloud.google.com/load-balancing/docs/firewall-rules */
-  healthCheckFirewallsConfigState?: LoadBalancerBackendInfoHealthCheckFirewallsConfigStateEnum;
+  healthCheckFirewallsConfigState?:
+    | LoadBalancerBackendInfoHealthCheckFirewallsConfigStateEnum
+    | (string & {});
   /** PSC Google API target this PSC NEG backend targets (if applicable). */
   pscGoogleApiTarget?: string;
   /** Display name of the backend. For example, it might be an instance name for the instance group backends, or an IP address and port for zonal network endpoint group backends. */
@@ -1592,7 +1600,7 @@ export const IpMasqueradingSkippedInfoReasonEnum = /*@__PURE__*/ S.String;
 /** For display only. Contains information about why IP masquerading was skipped for the packet. */
 export interface IpMasqueradingSkippedInfo {
   /** Reason why IP masquerading was not applied. */
-  reason?: IpMasqueradingSkippedInfoReasonEnum;
+  reason?: IpMasqueradingSkippedInfoReasonEnum | (string & {});
   /** The matched non-masquerade IP range. Only set if reason is DESTINATION_IP_IN_CONFIGURED_NON_MASQUERADE_RANGE or DESTINATION_IP_IN_DEFAULT_NON_MASQUERADE_RANGE. */
   nonMasqueradeRange?: string;
 }
@@ -1655,7 +1663,7 @@ export const GkeNetworkPolicySkippedInfoReasonEnum = /*@__PURE__*/ S.String;
 /** For display only. Contains information about why GKE Network Policy evaluation was skipped. */
 export interface GkeNetworkPolicySkippedInfo {
   /** Reason why Network Policy evaluation was skipped. */
-  reason?: GkeNetworkPolicySkippedInfoReasonEnum;
+  reason?: GkeNetworkPolicySkippedInfoReasonEnum | (string & {});
 }
 export const GkeNetworkPolicySkippedInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1688,7 +1696,9 @@ export interface LoadBalancerBackend {
   /** URI of the backend instance or network endpoint. Format: * `projects/{project_id}/zones/{zone}/instances/{instance_id}` (instance) * `projects/{project_id}/zones/{zone}/networkEndpointGroups/{neg_id}` (zonal NEG) * `projects/{project_id}/regions/{region}/networkEndpointGroups/{neg_id}` (regional NEG) * `projects/{project_id}/global/networkEndpointGroups/{neg_id}` (global NEG) */
   uri?: string;
   /** State of the health check firewall configuration. */
-  healthCheckFirewallState?: LoadBalancerBackendHealthCheckFirewallStateEnum;
+  healthCheckFirewallState?:
+    | LoadBalancerBackendHealthCheckFirewallStateEnum
+    | (string & {});
   /** A list of firewall rule URIs allowing probes from health check IP ranges. */
   healthCheckAllowingFirewallRules?: StringList;
   /** A list of firewall rule URIs blocking probes from health check IP ranges. */
@@ -1708,7 +1718,7 @@ export const LoadBalancerBackend = /*@__PURE__*/ S.suspend(() =>
   identifier: "LoadBalancerBackend",
 }) as any as S.Schema<LoadBalancerBackend>;
 
-export type LoadBalancerBackendList = ReadonlyArray<LoadBalancerBackend>;
+export type LoadBalancerBackendList = Array<LoadBalancerBackend>;
 export const LoadBalancerBackendList = /*@__PURE__*/ S.Array(
   LoadBalancerBackend,
 ) as any as S.Schema<LoadBalancerBackendList>;
@@ -1725,13 +1735,13 @@ export interface LoadBalancerInfo {
   /** URI of the backend associated with the load balancer. Format: * `projects/{project_id}/regions/{region}/backendServices/{backend_service_id}` * `projects/{project_id}/global/backendServices/{backend_service_id}` * `projects/{project_id}/regions/{region}/targetPools/{target_pool_id}` * `projects/{project_id}/zones/{zone}/targetInstances/{target_instance_id}` */
   backendUri?: string;
   /** Type of the load balancer. */
-  loadBalancerType?: LoadBalancerInfoLoadBalancerTypeEnum;
+  loadBalancerType?: LoadBalancerInfoLoadBalancerTypeEnum | (string & {});
   /** Information for the loadbalancer backends. */
   backends?: LoadBalancerBackendList;
   /** URI of the health check for the load balancer. Deprecated and no longer populated as different load balancer backends might have different health checks. */
   healthCheckUri?: string;
   /** Type of load balancer's backend configuration. */
-  backendType?: LoadBalancerInfoBackendTypeEnum;
+  backendType?: LoadBalancerInfoBackendTypeEnum | (string & {});
 }
 export const LoadBalancerInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1761,7 +1771,7 @@ export interface GoogleServiceInfo {
   /** Source IP address. */
   sourceIp?: string;
   /** Recognized type of a Google Service. */
-  googleServiceType?: GoogleServiceInfoGoogleServiceTypeEnum;
+  googleServiceType?: GoogleServiceInfoGoogleServiceTypeEnum | (string & {});
 }
 export const GoogleServiceInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1900,7 +1910,7 @@ export interface DropInfo {
   /** Geolocation (region code) of the source IP address (if relevant). */
   sourceGeolocationCode?: string;
   /** Cause that the packet is dropped. */
-  cause?: DropInfoCauseEnum;
+  cause?: DropInfoCauseEnum | (string & {});
   /** URI of the resource that caused the drop. Format: * `projects/{project_id}/global/firewalls/{firewall_id}` (firewall rule) * `projects/{project_id}/global/routes/{route_id}` (route) */
   resourceUri?: string;
 }
@@ -2003,7 +2013,7 @@ export interface InstanceInfo {
   /** Service account authorized for the instance. */
   serviceAccount?: string;
   /** The status of the instance. */
-  status?: InstanceInfoStatusEnum;
+  status?: InstanceInfoStatusEnum | (string & {});
   /** URI of a Compute Engine network in format "projects/{project}/global/networks/{network}" */
   networkUri?: string;
   /** Network tags configured on the instance. */
@@ -2115,7 +2125,7 @@ export interface Step {
   /** Display information of a Datastream Private Connection. */
   datastreamPrivateConnection?: PrivateConnectionInfo;
   /** Each step is in one of the pre-defined states. */
-  state?: StepStateEnum;
+  state?: StepStateEnum | (string & {});
   /** Display information of a Storage Bucket. Used only for return traces. */
   storageBucket?: StorageBucketInfo;
   /** Display information of the reason why GKE Pod IP masquerading was skipped. */
@@ -2191,7 +2201,7 @@ export const Step = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Step" }) as any as S.Schema<Step>;
 
-export type StepList = ReadonlyArray<Step>;
+export type StepList = Array<Step>;
 export const StepList = /*@__PURE__*/ S.Array(
   Step,
 ) as any as S.Schema<StepList>;
@@ -2213,7 +2223,7 @@ export const Trace = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Trace" }) as any as S.Schema<Trace>;
 
-export type TraceList = ReadonlyArray<Trace>;
+export type TraceList = Array<Trace>;
 export const TraceList = /*@__PURE__*/ S.Array(
   Trace,
 ) as any as S.Schema<TraceList>;
@@ -2233,7 +2243,7 @@ export interface ReachabilityDetails {
   /** The details of a failure or a cancellation of reachability analysis. */
   error?: Status;
   /** The overall result of the test's configuration analysis. */
-  result?: ReachabilityDetailsResultEnum;
+  result?: ReachabilityDetailsResultEnum | (string & {});
   /** The time of the configuration analysis. */
   verifyTime?: string;
 }
@@ -2507,7 +2517,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
-export type BindingList = ReadonlyArray<Binding>;
+export type BindingList = Array<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -2522,7 +2532,7 @@ export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
 export interface AuditLogConfig {
   /** The log type that this config enables. */
-  logType?: AuditLogConfigLogTypeEnum;
+  logType?: AuditLogConfigLogTypeEnum | (string & {});
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
   exemptedMembers?: StringList;
 }
@@ -2533,7 +2543,7 @@ export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
-export type AuditLogConfigList = ReadonlyArray<AuditLogConfig>;
+export type AuditLogConfigList = Array<AuditLogConfig>;
 export const AuditLogConfigList = /*@__PURE__*/ S.Array(
   AuditLogConfig,
 ) as any as S.Schema<AuditLogConfigList>;
@@ -2552,7 +2562,7 @@ export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
-export type AuditConfigList = ReadonlyArray<AuditConfig>;
+export type AuditConfigList = Array<AuditConfig>;
 export const AuditConfigList = /*@__PURE__*/ S.Array(
   AuditConfig,
 ) as any as S.Schema<AuditConfigList>;
@@ -2761,7 +2771,7 @@ export const ListOrganizationsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListOrganizationsLocationsRequest",
 }) as any as S.Schema<ListOrganizationsLocationsRequest>;
 
-export type LocationList = ReadonlyArray<Location>;
+export type LocationList = Array<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -2813,7 +2823,7 @@ export const ListOrganizationsLocationsGlobalOperationsRequest =
     identifier: "ListOrganizationsLocationsGlobalOperationsRequest",
   }) as any as S.Schema<ListOrganizationsLocationsGlobalOperationsRequest>;
 
-export type OperationList = ReadonlyArray<Operation>;
+export type OperationList = Array<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -2868,7 +2878,7 @@ export const ListOrganizationsLocationsVpcFlowLogsConfigsRequest =
     identifier: "ListOrganizationsLocationsVpcFlowLogsConfigsRequest",
   }) as any as S.Schema<ListOrganizationsLocationsVpcFlowLogsConfigsRequest>;
 
-export type VpcFlowLogsConfigList = ReadonlyArray<VpcFlowLogsConfig>;
+export type VpcFlowLogsConfigList = Array<VpcFlowLogsConfig>;
 export const VpcFlowLogsConfigList = /*@__PURE__*/ S.Array(
   VpcFlowLogsConfig,
 ) as any as S.Schema<VpcFlowLogsConfigList>;
@@ -2953,7 +2963,7 @@ export const ListProjectsLocationsGlobalConnectivityTestsRequest =
     identifier: "ListProjectsLocationsGlobalConnectivityTestsRequest",
   }) as any as S.Schema<ListProjectsLocationsGlobalConnectivityTestsRequest>;
 
-export type ConnectivityTestList = ReadonlyArray<ConnectivityTest>;
+export type ConnectivityTestList = Array<ConnectivityTest>;
 export const ConnectivityTestList = /*@__PURE__*/ S.Array(
   ConnectivityTest,
 ) as any as S.Schema<ConnectivityTestList>;
@@ -3356,8 +3366,7 @@ export const EffectiveVpcFlowLogsConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "EffectiveVpcFlowLogsConfig",
 }) as any as S.Schema<EffectiveVpcFlowLogsConfig>;
 
-export type EffectiveVpcFlowLogsConfigList =
-  ReadonlyArray<EffectiveVpcFlowLogsConfig>;
+export type EffectiveVpcFlowLogsConfigList = Array<EffectiveVpcFlowLogsConfig>;
 export const EffectiveVpcFlowLogsConfigList = /*@__PURE__*/ S.Array(
   EffectiveVpcFlowLogsConfig,
 ) as any as S.Schema<EffectiveVpcFlowLogsConfigList>;

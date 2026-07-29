@@ -160,7 +160,7 @@ export const StringMap = /*@__PURE__*/ S.Record(
   S.String,
 ) as any as S.Schema<StringMap>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -226,7 +226,7 @@ export const GoogleIamV2PolicyRule = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleIamV2PolicyRule",
 }) as any as S.Schema<GoogleIamV2PolicyRule>;
 
-export type GoogleIamV2PolicyRuleList = ReadonlyArray<GoogleIamV2PolicyRule>;
+export type GoogleIamV2PolicyRuleList = Array<GoogleIamV2PolicyRule>;
 export const GoogleIamV2PolicyRuleList = /*@__PURE__*/ S.Array(
   GoogleIamV2PolicyRule,
 ) as any as S.Schema<GoogleIamV2PolicyRuleList>;
@@ -391,7 +391,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -415,7 +415,7 @@ export const GoogleRpcStatus = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleRpcStatus",
 }) as any as S.Schema<GoogleRpcStatus>;
 
-export type GoogleRpcStatusList = ReadonlyArray<GoogleRpcStatus>;
+export type GoogleRpcStatusList = Array<GoogleRpcStatus>;
 export const GoogleRpcStatusList = /*@__PURE__*/ S.Array(
   GoogleRpcStatus,
 ) as any as S.Schema<GoogleRpcStatusList>;
@@ -445,7 +445,7 @@ export const GoogleCloudPolicytroubleshooterIamV3betaConditionExplanationEvaluat
   }) as any as S.Schema<GoogleCloudPolicytroubleshooterIamV3betaConditionExplanationEvaluationState>;
 
 export type GoogleCloudPolicytroubleshooterIamV3betaConditionExplanationEvaluationStateList =
-  ReadonlyArray<GoogleCloudPolicytroubleshooterIamV3betaConditionExplanationEvaluationState>;
+  Array<GoogleCloudPolicytroubleshooterIamV3betaConditionExplanationEvaluationState>;
 export const GoogleCloudPolicytroubleshooterIamV3betaConditionExplanationEvaluationStateList =
   /*@__PURE__*/ S.Array(
     GoogleCloudPolicytroubleshooterIamV3betaConditionExplanationEvaluationState,
@@ -543,7 +543,7 @@ export const GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanation =
   }) as any as S.Schema<GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanation>;
 
 export type GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanationList =
-  ReadonlyArray<GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanation>;
+  Array<GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanation>;
 export const GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanationList =
   /*@__PURE__*/ S.Array(
     GoogleCloudPolicytroubleshooterIamV3betaDenyRuleExplanation,
@@ -579,7 +579,7 @@ export const GoogleCloudPolicytroubleshooterIamV3betaExplainedDenyPolicy =
   }) as any as S.Schema<GoogleCloudPolicytroubleshooterIamV3betaExplainedDenyPolicy>;
 
 export type GoogleCloudPolicytroubleshooterIamV3betaExplainedDenyPolicyList =
-  ReadonlyArray<GoogleCloudPolicytroubleshooterIamV3betaExplainedDenyPolicy>;
+  Array<GoogleCloudPolicytroubleshooterIamV3betaExplainedDenyPolicy>;
 export const GoogleCloudPolicytroubleshooterIamV3betaExplainedDenyPolicyList =
   /*@__PURE__*/ S.Array(
     GoogleCloudPolicytroubleshooterIamV3betaExplainedDenyPolicy,
@@ -622,7 +622,7 @@ export const GoogleCloudPolicytroubleshooterIamV3betaExplainedDenyResource =
   }) as any as S.Schema<GoogleCloudPolicytroubleshooterIamV3betaExplainedDenyResource>;
 
 export type GoogleCloudPolicytroubleshooterIamV3betaExplainedDenyResourceList =
-  ReadonlyArray<GoogleCloudPolicytroubleshooterIamV3betaExplainedDenyResource>;
+  Array<GoogleCloudPolicytroubleshooterIamV3betaExplainedDenyResource>;
 export const GoogleCloudPolicytroubleshooterIamV3betaExplainedDenyResourceList =
   /*@__PURE__*/ S.Array(
     GoogleCloudPolicytroubleshooterIamV3betaExplainedDenyResource,
@@ -744,7 +744,7 @@ export const GoogleIamV3PrincipalAccessBoundaryPolicyRule =
   }) as any as S.Schema<GoogleIamV3PrincipalAccessBoundaryPolicyRule>;
 
 export type GoogleIamV3PrincipalAccessBoundaryPolicyRuleList =
-  ReadonlyArray<GoogleIamV3PrincipalAccessBoundaryPolicyRule>;
+  Array<GoogleIamV3PrincipalAccessBoundaryPolicyRule>;
 export const GoogleIamV3PrincipalAccessBoundaryPolicyRuleList =
   /*@__PURE__*/ S.Array(
     GoogleIamV3PrincipalAccessBoundaryPolicyRule,
@@ -899,7 +899,7 @@ export const GoogleCloudPolicytroubleshooterIamV3betaExplainedPABRuleExplainedRe
   }) as any as S.Schema<GoogleCloudPolicytroubleshooterIamV3betaExplainedPABRuleExplainedResource>;
 
 export type GoogleCloudPolicytroubleshooterIamV3betaExplainedPABRuleExplainedResourceList =
-  ReadonlyArray<GoogleCloudPolicytroubleshooterIamV3betaExplainedPABRuleExplainedResource>;
+  Array<GoogleCloudPolicytroubleshooterIamV3betaExplainedPABRuleExplainedResource>;
 export const GoogleCloudPolicytroubleshooterIamV3betaExplainedPABRuleExplainedResourceList =
   /*@__PURE__*/ S.Array(
     GoogleCloudPolicytroubleshooterIamV3betaExplainedPABRuleExplainedResource,
@@ -959,7 +959,7 @@ export const GoogleCloudPolicytroubleshooterIamV3betaExplainedPABRule =
   }) as any as S.Schema<GoogleCloudPolicytroubleshooterIamV3betaExplainedPABRule>;
 
 export type GoogleCloudPolicytroubleshooterIamV3betaExplainedPABRuleList =
-  ReadonlyArray<GoogleCloudPolicytroubleshooterIamV3betaExplainedPABRule>;
+  Array<GoogleCloudPolicytroubleshooterIamV3betaExplainedPABRule>;
 export const GoogleCloudPolicytroubleshooterIamV3betaExplainedPABRuleList =
   /*@__PURE__*/ S.Array(
     GoogleCloudPolicytroubleshooterIamV3betaExplainedPABRule,
@@ -1167,7 +1167,7 @@ export const GoogleCloudPolicytroubleshooterIamV3betaExplainedPABBindingAndPolic
   }) as any as S.Schema<GoogleCloudPolicytroubleshooterIamV3betaExplainedPABBindingAndPolicy>;
 
 export type GoogleCloudPolicytroubleshooterIamV3betaExplainedPABBindingAndPolicyList =
-  ReadonlyArray<GoogleCloudPolicytroubleshooterIamV3betaExplainedPABBindingAndPolicy>;
+  Array<GoogleCloudPolicytroubleshooterIamV3betaExplainedPABBindingAndPolicy>;
 export const GoogleCloudPolicytroubleshooterIamV3betaExplainedPABBindingAndPolicyList =
   /*@__PURE__*/ S.Array(
     GoogleCloudPolicytroubleshooterIamV3betaExplainedPABBindingAndPolicy,
@@ -1359,7 +1359,7 @@ export const GoogleCloudPolicytroubleshooterIamV3betaAllowBindingExplanation =
   }) as any as S.Schema<GoogleCloudPolicytroubleshooterIamV3betaAllowBindingExplanation>;
 
 export type GoogleCloudPolicytroubleshooterIamV3betaAllowBindingExplanationList =
-  ReadonlyArray<GoogleCloudPolicytroubleshooterIamV3betaAllowBindingExplanation>;
+  Array<GoogleCloudPolicytroubleshooterIamV3betaAllowBindingExplanation>;
 export const GoogleCloudPolicytroubleshooterIamV3betaAllowBindingExplanationList =
   /*@__PURE__*/ S.Array(
     GoogleCloudPolicytroubleshooterIamV3betaAllowBindingExplanation,
@@ -1384,7 +1384,7 @@ export const GoogleIamV1Binding = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleIamV1Binding",
 }) as any as S.Schema<GoogleIamV1Binding>;
 
-export type GoogleIamV1BindingList = ReadonlyArray<GoogleIamV1Binding>;
+export type GoogleIamV1BindingList = Array<GoogleIamV1Binding>;
 export const GoogleIamV1BindingList = /*@__PURE__*/ S.Array(
   GoogleIamV1Binding,
 ) as any as S.Schema<GoogleIamV1BindingList>;
@@ -1412,8 +1412,7 @@ export const GoogleIamV1AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleIamV1AuditLogConfig",
 }) as any as S.Schema<GoogleIamV1AuditLogConfig>;
 
-export type GoogleIamV1AuditLogConfigList =
-  ReadonlyArray<GoogleIamV1AuditLogConfig>;
+export type GoogleIamV1AuditLogConfigList = Array<GoogleIamV1AuditLogConfig>;
 export const GoogleIamV1AuditLogConfigList = /*@__PURE__*/ S.Array(
   GoogleIamV1AuditLogConfig,
 ) as any as S.Schema<GoogleIamV1AuditLogConfigList>;
@@ -1434,7 +1433,7 @@ export const GoogleIamV1AuditConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleIamV1AuditConfig",
 }) as any as S.Schema<GoogleIamV1AuditConfig>;
 
-export type GoogleIamV1AuditConfigList = ReadonlyArray<GoogleIamV1AuditConfig>;
+export type GoogleIamV1AuditConfigList = Array<GoogleIamV1AuditConfig>;
 export const GoogleIamV1AuditConfigList = /*@__PURE__*/ S.Array(
   GoogleIamV1AuditConfig,
 ) as any as S.Schema<GoogleIamV1AuditConfigList>;
@@ -1494,7 +1493,7 @@ export const GoogleCloudPolicytroubleshooterIamV3betaExplainedAllowPolicy =
   }) as any as S.Schema<GoogleCloudPolicytroubleshooterIamV3betaExplainedAllowPolicy>;
 
 export type GoogleCloudPolicytroubleshooterIamV3betaExplainedAllowPolicyList =
-  ReadonlyArray<GoogleCloudPolicytroubleshooterIamV3betaExplainedAllowPolicy>;
+  Array<GoogleCloudPolicytroubleshooterIamV3betaExplainedAllowPolicy>;
 export const GoogleCloudPolicytroubleshooterIamV3betaExplainedAllowPolicyList =
   /*@__PURE__*/ S.Array(
     GoogleCloudPolicytroubleshooterIamV3betaExplainedAllowPolicy,
@@ -1628,7 +1627,7 @@ export const GoogleCloudPolicytroubleshooterIamV3betaConditionContextEffectiveTa
   }) as any as S.Schema<GoogleCloudPolicytroubleshooterIamV3betaConditionContextEffectiveTag>;
 
 export type GoogleCloudPolicytroubleshooterIamV3betaConditionContextEffectiveTagList =
-  ReadonlyArray<GoogleCloudPolicytroubleshooterIamV3betaConditionContextEffectiveTag>;
+  Array<GoogleCloudPolicytroubleshooterIamV3betaConditionContextEffectiveTag>;
 export const GoogleCloudPolicytroubleshooterIamV3betaConditionContextEffectiveTagList =
   /*@__PURE__*/ S.Array(
     GoogleCloudPolicytroubleshooterIamV3betaConditionContextEffectiveTag,

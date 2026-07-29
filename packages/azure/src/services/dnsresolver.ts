@@ -35,7 +35,7 @@ export const SubResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The reference to the DNS resolver outbound endpoints that are used to route DNS queries matching the forwarding rules in the ruleset to the target DNS servers. */
 export type DnsForwardingRulesetPropertiesInputDnsResolverOutboundEndpointsList =
-  ReadonlyArray<SubResource>;
+  Array<SubResource>;
 export const DnsForwardingRulesetPropertiesInputDnsResolverOutboundEndpointsList =
   /*@__PURE__*/ S.Array(
     SubResource,
@@ -144,7 +144,7 @@ export const DnsForwardingRulesetsCreateOrUpdateResponseTagsMap =
 
 /** The reference to the DNS resolver outbound endpoints that are used to route DNS queries matching the forwarding rules in the ruleset to the target DNS servers. */
 export type DnsForwardingRulesetPropertiesDnsResolverOutboundEndpointsList =
-  ReadonlyArray<SubResource>;
+  Array<SubResource>;
 export const DnsForwardingRulesetPropertiesDnsResolverOutboundEndpointsList =
   /*@__PURE__*/ S.Array(
     SubResource,
@@ -378,7 +378,7 @@ export const DnsForwardingRuleset = /*@__PURE__*/ S.suspend(() =>
 
 /** The DnsForwardingRuleset items on this page */
 export type DnsForwardingRulesetListResultValueList =
-  ReadonlyArray<DnsForwardingRuleset>;
+  Array<DnsForwardingRuleset>;
 export const DnsForwardingRulesetListResultValueList = /*@__PURE__*/ S.Array(
   DnsForwardingRuleset,
 ) as any as S.Schema<DnsForwardingRulesetListResultValueList>;
@@ -486,7 +486,7 @@ export const VirtualNetworkDnsForwardingRuleset = /*@__PURE__*/ S.suspend(() =>
 
 /** The VirtualNetworkDnsForwardingRuleset items on this page */
 export type VirtualNetworkDnsForwardingRulesetListResultValueList =
-  ReadonlyArray<VirtualNetworkDnsForwardingRuleset>;
+  Array<VirtualNetworkDnsForwardingRuleset>;
 export const VirtualNetworkDnsForwardingRulesetListResultValueList =
   /*@__PURE__*/ S.Array(
     VirtualNetworkDnsForwardingRuleset,
@@ -511,7 +511,7 @@ export const VirtualNetworkDnsForwardingRulesetListResult =
 
 /** The reference to the DNS resolver outbound endpoints that are used to route DNS queries matching the forwarding rules in the ruleset to the target DNS servers. */
 export type DnsForwardingRulesetsUpdateRequestDnsResolverOutboundEndpointsList =
-  ReadonlyArray<SubResource>;
+  Array<SubResource>;
 export const DnsForwardingRulesetsUpdateRequestDnsResolverOutboundEndpointsList =
   /*@__PURE__*/ S.Array(
     SubResource,
@@ -660,7 +660,7 @@ export const DnsResolverDomainListsBulkResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<DnsResolverDomainListsBulkResponseTagsMap>;
 
 /** The domains in the domain list. Will be null if user is using large domain list. */
-export type DnsResolverDomainListPropertiesDomainsList = ReadonlyArray<string>;
+export type DnsResolverDomainListPropertiesDomainsList = Array<string>;
 export const DnsResolverDomainListPropertiesDomainsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DnsResolverDomainListPropertiesDomainsList>;
@@ -731,8 +731,7 @@ export const DnsResolverDomainListsCreateOrUpdateRequestTagsMap =
   ) as any as S.Schema<DnsResolverDomainListsCreateOrUpdateRequestTagsMap>;
 
 /** The domains in the domain list. Will be null if user is using large domain list. */
-export type DnsResolverDomainListPropertiesInputDomainsList =
-  ReadonlyArray<string>;
+export type DnsResolverDomainListPropertiesInputDomainsList = Array<string>;
 export const DnsResolverDomainListPropertiesInputDomainsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -997,7 +996,7 @@ export const DnsResolverDomainList = /*@__PURE__*/ S.suspend(() =>
 
 /** The DnsResolverDomainList items on this page */
 export type DnsResolverDomainListListResultValueList =
-  ReadonlyArray<DnsResolverDomainList>;
+  Array<DnsResolverDomainList>;
 export const DnsResolverDomainListListResultValueList = /*@__PURE__*/ S.Array(
   DnsResolverDomainList,
 ) as any as S.Schema<DnsResolverDomainListListResultValueList>;
@@ -1045,8 +1044,7 @@ export const DnsResolverDomainListsListByResourceGroupRequest =
   }) as any as S.Schema<DnsResolverDomainListsListByResourceGroupRequest>;
 
 /** The domains in the domain list. */
-export type DnsResolverDomainListPatchPropertiesDomainsList =
-  ReadonlyArray<string>;
+export type DnsResolverDomainListPatchPropertiesDomainsList = Array<string>;
 export const DnsResolverDomainListPatchPropertiesDomainsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1427,8 +1425,7 @@ export const DnsResolverPolicy = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DnsResolverPolicy>;
 
 /** The DnsResolverPolicy items on this page */
-export type DnsResolverPolicyListResultValueList =
-  ReadonlyArray<DnsResolverPolicy>;
+export type DnsResolverPolicyListResultValueList = Array<DnsResolverPolicy>;
 export const DnsResolverPolicyListResultValueList = /*@__PURE__*/ S.Array(
   DnsResolverPolicy,
 ) as any as S.Schema<DnsResolverPolicyListResultValueList>;
@@ -1502,7 +1499,7 @@ export const DnsResolverPoliciesListByVirtualNetworkRequest =
   }) as any as S.Schema<DnsResolverPoliciesListByVirtualNetworkRequest>;
 
 /** The SubResource items on this page */
-export type SubResourceListResultValueList = ReadonlyArray<SubResource>;
+export type SubResourceListResultValueList = Array<SubResource>;
 export const SubResourceListResultValueList = /*@__PURE__*/ S.Array(
   SubResource,
 ) as any as S.Schema<SubResourceListResultValueList>;
@@ -1617,7 +1614,7 @@ export interface DnsResolverPolicyVirtualNetworkLinkProperties {
   /** The reference to the virtual network. This cannot be changed after creation. */
   virtualNetwork: SubResource;
   /** The current provisioning state of the DNS resolver policy virtual network link. This is a read-only property and any attempt to set this value will be ignored. */
-  provisioningState?: ProvisioningState;
+  provisioningState?: ProvisioningState | (string & {});
 }
 export const DnsResolverPolicyVirtualNetworkLinkProperties =
   /*@__PURE__*/ S.suspend(() =>
@@ -1897,7 +1894,7 @@ export const DnsResolverPolicyVirtualNetworkLink = /*@__PURE__*/ S.suspend(() =>
 
 /** The DnsResolverPolicyVirtualNetworkLink items on this page */
 export type DnsResolverPolicyVirtualNetworkLinkListResultValueList =
-  ReadonlyArray<DnsResolverPolicyVirtualNetworkLink>;
+  Array<DnsResolverPolicyVirtualNetworkLink>;
 export const DnsResolverPolicyVirtualNetworkLinkListResultValueList =
   /*@__PURE__*/ S.Array(
     DnsResolverPolicyVirtualNetworkLink,
@@ -2295,7 +2292,7 @@ export const DnsResolver = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DnsResolver" }) as any as S.Schema<DnsResolver>;
 
 /** The DnsResolver items on this page */
-export type DnsResolverListResultValueList = ReadonlyArray<DnsResolver>;
+export type DnsResolverListResultValueList = Array<DnsResolver>;
 export const DnsResolverListResultValueList = /*@__PURE__*/ S.Array(
   DnsResolver,
 ) as any as S.Schema<DnsResolverListResultValueList>;
@@ -2467,7 +2464,7 @@ export const ActionType = /*@__PURE__*/ S.String;
 /** The action to take on DNS requests that match the DNS security rule. */
 export interface DnsSecurityRuleAction {
   /** The type of action to take. */
-  actionType?: ActionType;
+  actionType?: ActionType | (string & {});
 }
 export const DnsSecurityRuleAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2479,7 +2476,7 @@ export const DnsSecurityRuleAction = /*@__PURE__*/ S.suspend(() =>
 
 /** DNS resolver policy domains lists that the DNS security rule applies to. */
 export type DnsSecurityRulePropertiesDnsResolverDomainListsList =
-  ReadonlyArray<SubResource>;
+  Array<SubResource>;
 export const DnsSecurityRulePropertiesDnsResolverDomainListsList =
   /*@__PURE__*/ S.Array(
     SubResource,
@@ -2498,9 +2495,9 @@ export interface DnsSecurityRuleProperties {
   /** DNS resolver policy domains lists that the DNS security rule applies to. */
   dnsResolverDomainLists: DnsSecurityRulePropertiesDnsResolverDomainListsList;
   /** The state of DNS security rule. */
-  dnsSecurityRuleState?: DnsSecurityRuleState;
+  dnsSecurityRuleState?: DnsSecurityRuleState | (string & {});
   /** The current provisioning state of the DNS security rule. This is a read-only property and any attempt to set this value will be ignored. */
-  provisioningState?: ProvisioningState;
+  provisioningState?: ProvisioningState | (string & {});
 }
 export const DnsSecurityRuleProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2771,7 +2768,7 @@ export const DnsSecurityRule = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DnsSecurityRule>;
 
 /** The DnsSecurityRule items on this page */
-export type DnsSecurityRuleListResultValueList = ReadonlyArray<DnsSecurityRule>;
+export type DnsSecurityRuleListResultValueList = Array<DnsSecurityRule>;
 export const DnsSecurityRuleListResultValueList = /*@__PURE__*/ S.Array(
   DnsSecurityRule,
 ) as any as S.Schema<DnsSecurityRuleListResultValueList>;
@@ -2794,7 +2791,7 @@ export const DnsSecurityRuleListResult = /*@__PURE__*/ S.suspend(() =>
 
 /** DNS resolver policy domains lists that the DNS security rule applies to. */
 export type DnsSecurityRulePatchPropertiesDnsResolverDomainListsList =
-  ReadonlyArray<SubResource>;
+  Array<SubResource>;
 export const DnsSecurityRulePatchPropertiesDnsResolverDomainListsList =
   /*@__PURE__*/ S.Array(
     SubResource,
@@ -2927,7 +2924,7 @@ export const TargetDnsServer = /*@__PURE__*/ S.suspend(() =>
 
 /** DNS servers to forward the DNS query to. */
 export type ForwardingRulePropertiesTargetDnsServersList =
-  ReadonlyArray<TargetDnsServer>;
+  Array<TargetDnsServer>;
 export const ForwardingRulePropertiesTargetDnsServersList =
   /*@__PURE__*/ S.Array(
     TargetDnsServer,
@@ -2955,9 +2952,9 @@ export interface ForwardingRuleProperties {
   /** Metadata attached to the forwarding rule. */
   metadata?: ForwardingRulePropertiesMetadataMap;
   /** The state of forwarding rule. */
-  forwardingRuleState?: ForwardingRuleState;
+  forwardingRuleState?: ForwardingRuleState | (string & {});
   /** The current provisioning state of the forwarding rule. This is a read-only property and any attempt to set this value will be ignored. */
-  provisioningState?: ProvisioningState;
+  provisioningState?: ProvisioningState | (string & {});
 }
 export const ForwardingRuleProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3176,7 +3173,7 @@ export const ForwardingRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ForwardingRule" }) as any as S.Schema<ForwardingRule>;
 
 /** The ForwardingRule items on this page */
-export type ForwardingRuleListResultValueList = ReadonlyArray<ForwardingRule>;
+export type ForwardingRuleListResultValueList = Array<ForwardingRule>;
 export const ForwardingRuleListResultValueList = /*@__PURE__*/ S.Array(
   ForwardingRule,
 ) as any as S.Schema<ForwardingRuleListResultValueList>;
@@ -3199,7 +3196,7 @@ export const ForwardingRuleListResult = /*@__PURE__*/ S.suspend(() =>
 
 /** DNS servers to forward the DNS query to. */
 export type ForwardingRulePatchPropertiesTargetDnsServersList =
-  ReadonlyArray<TargetDnsServer>;
+  Array<TargetDnsServer>;
 export const ForwardingRulePatchPropertiesTargetDnsServersList =
   /*@__PURE__*/ S.Array(
     TargetDnsServer,
@@ -3325,7 +3322,9 @@ export interface IpConfiguration {
   /** Private IP address of the IP configuration. */
   privateIpAddress?: string;
   /** Private IP address allocation method. */
-  privateIpAllocationMethod?: IpConfigurationPrivateIpAllocationMethod;
+  privateIpAllocationMethod?:
+    | IpConfigurationPrivateIpAllocationMethod
+    | (string & {});
 }
 export const IpConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3341,7 +3340,7 @@ export const IpConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** IP configurations for the inbound endpoint. */
 export type InboundEndpointPropertiesInputIpConfigurationsList =
-  ReadonlyArray<IpConfiguration>;
+  Array<IpConfiguration>;
 export const InboundEndpointPropertiesInputIpConfigurationsList =
   /*@__PURE__*/ S.Array(
     IpConfiguration,
@@ -3410,7 +3409,7 @@ export const InboundEndpointsCreateOrUpdateResponseTagsMap =
 
 /** IP configurations for the inbound endpoint. */
 export type InboundEndpointPropertiesIpConfigurationsList =
-  ReadonlyArray<IpConfiguration>;
+  Array<IpConfiguration>;
 export const InboundEndpointPropertiesIpConfigurationsList =
   /*@__PURE__*/ S.Array(
     IpConfiguration,
@@ -3644,7 +3643,7 @@ export const InboundEndpoint = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InboundEndpoint>;
 
 /** The InboundEndpoint items on this page */
-export type InboundEndpointListResultValueList = ReadonlyArray<InboundEndpoint>;
+export type InboundEndpointListResultValueList = Array<InboundEndpoint>;
 export const InboundEndpointListResultValueList = /*@__PURE__*/ S.Array(
   InboundEndpoint,
 ) as any as S.Schema<InboundEndpointListResultValueList>;
@@ -4046,8 +4045,7 @@ export const OutboundEndpoint = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OutboundEndpoint>;
 
 /** The OutboundEndpoint items on this page */
-export type OutboundEndpointListResultValueList =
-  ReadonlyArray<OutboundEndpoint>;
+export type OutboundEndpointListResultValueList = Array<OutboundEndpoint>;
 export const OutboundEndpointListResultValueList = /*@__PURE__*/ S.Array(
   OutboundEndpoint,
 ) as any as S.Schema<OutboundEndpointListResultValueList>;
@@ -4166,7 +4164,7 @@ export interface VirtualNetworkLinkProperties {
   /** Metadata attached to the virtual network link. */
   metadata?: VirtualNetworkLinkPropertiesMetadataMap;
   /** The current provisioning state of the virtual network link. This is a read-only property and any attempt to set this value will be ignored. */
-  provisioningState?: ProvisioningState;
+  provisioningState?: ProvisioningState | (string & {});
 }
 export const VirtualNetworkLinkProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4385,8 +4383,7 @@ export const VirtualNetworkLink = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VirtualNetworkLink>;
 
 /** The VirtualNetworkLink items on this page */
-export type VirtualNetworkLinkListResultValueList =
-  ReadonlyArray<VirtualNetworkLink>;
+export type VirtualNetworkLinkListResultValueList = Array<VirtualNetworkLink>;
 export const VirtualNetworkLinkListResultValueList = /*@__PURE__*/ S.Array(
   VirtualNetworkLink,
 ) as any as S.Schema<VirtualNetworkLinkListResultValueList>;

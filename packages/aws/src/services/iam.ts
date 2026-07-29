@@ -854,7 +854,7 @@ export const PolicyParameterTypeEnum = /*@__PURE__*/ S.String;
 export interface PolicyParameter {
   Name?: string;
   Values?: string[];
-  Type?: PolicyParameterTypeEnum;
+  Type?: PolicyParameterTypeEnum | (string & {});
 }
 export const PolicyParameter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

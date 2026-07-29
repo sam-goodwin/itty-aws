@@ -156,8 +156,7 @@ export const ExportsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ExportsListRequest",
 }) as any as S.Schema<ExportsListRequest>;
 
-export type PaginatedExportedAssetListResultsList =
-  ReadonlyArray<ExportedAsset>;
+export type PaginatedExportedAssetListResultsList = Array<ExportedAsset>;
 export const PaginatedExportedAssetListResultsList = /*@__PURE__*/ S.Array(
   ExportedAsset,
 ) as any as S.Schema<PaginatedExportedAssetListResultsList>;

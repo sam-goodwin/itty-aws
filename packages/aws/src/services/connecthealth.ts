@@ -436,7 +436,7 @@ export const MedicalScribeParticipantRole = /*@__PURE__*/ S.String;
 
 export interface MedicalScribeChannelDefinition {
   channelId: number;
-  participantRole: MedicalScribeParticipantRole;
+  participantRole: MedicalScribeParticipantRole | (string & {});
 }
 export const MedicalScribeChannelDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -670,7 +670,7 @@ export const Pronouns = /*@__PURE__*/ S.String;
 export interface PatientInsightsPatientContext {
   patientId: string | redacted.Redacted<string>;
   dateOfBirth?: string | redacted.Redacted<string>;
-  pronouns?: Pronouns;
+  pronouns?: Pronouns | (string & {});
 }
 export const PatientInsightsPatientContext = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -685,7 +685,7 @@ export type InsightsType = "PRE_VISIT";
 export const InsightsType = /*@__PURE__*/ S.String;
 
 export interface InsightsContext {
-  insightsType: InsightsType;
+  insightsType: InsightsType | (string & {});
 }
 export const InsightsContext = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ insightsType: InsightsType }),
@@ -707,9 +707,9 @@ export type Specialty = "PRIMARY_CARE";
 export const Specialty = /*@__PURE__*/ S.String;
 
 export interface UserContext {
-  role: ProviderRole;
+  role: ProviderRole | (string & {});
   userId: string | redacted.Redacted<string>;
-  specialty?: Specialty;
+  specialty?: Specialty | (string & {});
 }
 export const UserContext = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

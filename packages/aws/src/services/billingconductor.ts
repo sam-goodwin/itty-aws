@@ -514,15 +514,15 @@ export const MatchOption = /*@__PURE__*/ S.String;
 export type LineItemFilterValue = "SAVINGS_PLAN_NEGATION";
 export const LineItemFilterValue = /*@__PURE__*/ S.String;
 
-export type LineItemFilterValuesList = LineItemFilterValue[];
+export type LineItemFilterValuesList = (LineItemFilterValue | (string & {}))[];
 export const LineItemFilterValuesList =
   /*@__PURE__*/ S.Array(LineItemFilterValue);
 export type AttributeValue = string;
 export type AttributeValueList = string[];
 export const AttributeValueList = /*@__PURE__*/ S.Array(S.String);
 export interface LineItemFilter {
-  Attribute: LineItemFilterAttributeName;
-  MatchOption: MatchOption;
+  Attribute: LineItemFilterAttributeName | (string & {});
+  MatchOption: MatchOption | (string & {});
   Values?: LineItemFilterValue[];
   AttributeValues?: string[];
 }

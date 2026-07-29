@@ -286,9 +286,9 @@ export const SpotProvisioningAllocationStrategy = /*@__PURE__*/ S.String;
 
 export interface SpotProvisioningSpecification {
   TimeoutDurationMinutes?: number;
-  TimeoutAction?: SpotProvisioningTimeoutAction;
+  TimeoutAction?: SpotProvisioningTimeoutAction | (string & {});
   BlockDurationMinutes?: number;
-  AllocationStrategy?: SpotProvisioningAllocationStrategy;
+  AllocationStrategy?: SpotProvisioningAllocationStrategy | (string & {});
 }
 export const SpotProvisioningSpecification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -313,8 +313,10 @@ export type OnDemandCapacityReservationPreference = "open" | "none";
 export const OnDemandCapacityReservationPreference = /*@__PURE__*/ S.String;
 
 export interface OnDemandCapacityReservationOptions {
-  UsageStrategy?: OnDemandCapacityReservationUsageStrategy;
-  CapacityReservationPreference?: OnDemandCapacityReservationPreference;
+  UsageStrategy?: OnDemandCapacityReservationUsageStrategy | (string & {});
+  CapacityReservationPreference?:
+    | OnDemandCapacityReservationPreference
+    | (string & {});
   CapacityReservationResourceGroupArn?: string;
 }
 export const OnDemandCapacityReservationOptions = /*@__PURE__*/ S.suspend(() =>
@@ -329,7 +331,7 @@ export const OnDemandCapacityReservationOptions = /*@__PURE__*/ S.suspend(() =>
   identifier: "OnDemandCapacityReservationOptions",
 }) as any as S.Schema<OnDemandCapacityReservationOptions>;
 export interface OnDemandProvisioningSpecification {
-  AllocationStrategy?: OnDemandProvisioningAllocationStrategy;
+  AllocationStrategy?: OnDemandProvisioningAllocationStrategy | (string & {});
   CapacityReservationOptions?: OnDemandCapacityReservationOptions;
 }
 export const OnDemandProvisioningSpecification = /*@__PURE__*/ S.suspend(() =>
@@ -355,7 +357,7 @@ export const InstanceFleetProvisioningSpecifications = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<InstanceFleetProvisioningSpecifications>;
 export interface SpotResizingSpecification {
   TimeoutDurationMinutes?: number;
-  AllocationStrategy?: SpotProvisioningAllocationStrategy;
+  AllocationStrategy?: SpotProvisioningAllocationStrategy | (string & {});
 }
 export const SpotResizingSpecification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -367,7 +369,7 @@ export const SpotResizingSpecification = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SpotResizingSpecification>;
 export interface OnDemandResizingSpecification {
   TimeoutDurationMinutes?: number;
-  AllocationStrategy?: OnDemandProvisioningAllocationStrategy;
+  AllocationStrategy?: OnDemandProvisioningAllocationStrategy | (string & {});
   CapacityReservationOptions?: OnDemandCapacityReservationOptions;
 }
 export const OnDemandResizingSpecification = /*@__PURE__*/ S.suspend(() =>
@@ -478,7 +480,7 @@ export type AdjustmentType =
 export const AdjustmentType = /*@__PURE__*/ S.String;
 
 export interface SimpleScalingPolicyConfiguration {
-  AdjustmentType?: AdjustmentType;
+  AdjustmentType?: AdjustmentType | (string & {});
   ScalingAdjustment?: number;
   CoolDown?: number;
 }
@@ -492,7 +494,7 @@ export const SimpleScalingPolicyConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "SimpleScalingPolicyConfiguration",
 }) as any as S.Schema<SimpleScalingPolicyConfiguration>;
 export interface ScalingAction {
-  Market?: MarketType;
+  Market?: MarketType | (string & {});
   SimpleScalingPolicyConfiguration?: SimpleScalingPolicyConfiguration;
 }
 export const ScalingAction = /*@__PURE__*/ S.suspend(() =>
@@ -560,14 +562,14 @@ export const MetricDimension = /*@__PURE__*/ S.suspend(() =>
 export type MetricDimensionList = MetricDimension[];
 export const MetricDimensionList = /*@__PURE__*/ S.Array(MetricDimension);
 export interface CloudWatchAlarmDefinition {
-  ComparisonOperator?: ComparisonOperator;
+  ComparisonOperator?: ComparisonOperator | (string & {});
   EvaluationPeriods?: number;
   MetricName?: string;
   Namespace?: string;
   Period?: number;
-  Statistic?: Statistic;
+  Statistic?: Statistic | (string & {});
   Threshold?: number;
-  Unit?: Unit;
+  Unit?: Unit | (string & {});
   Dimensions?: MetricDimension[];
 }
 export const CloudWatchAlarmDefinition = /*@__PURE__*/ S.suspend(() =>
@@ -749,7 +751,7 @@ export const StepMonitoringConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StepMonitoringConfiguration>;
 export interface StepConfig {
   Name?: string;
-  ActionOnFailure?: ActionOnFailure;
+  ActionOnFailure?: ActionOnFailure | (string & {});
   HadoopJarStep?: HadoopJarStepConfig;
   StepMonitoringConfiguration?: StepMonitoringConfiguration;
 }
@@ -1349,8 +1351,8 @@ export type PlacementGroupStrategy =
 export const PlacementGroupStrategy = /*@__PURE__*/ S.String;
 
 export interface PlacementGroupConfig {
-  InstanceRole?: InstanceRoleType;
-  PlacementStrategy?: PlacementGroupStrategy;
+  InstanceRole?: InstanceRoleType | (string & {});
+  PlacementStrategy?: PlacementGroupStrategy | (string & {});
 }
 export const PlacementGroupConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1395,7 +1397,9 @@ export type LogUploadPolicyValue =
   | "disabled";
 export const LogUploadPolicyValue = /*@__PURE__*/ S.String;
 
-export type LogTypeMap = { [key in LogType]?: LogUploadPolicyValue };
+export type LogTypeMap = {
+  [key in LogType | (string & {})]?: LogUploadPolicyValue | (string & {});
+};
 export const LogTypeMap = /*@__PURE__*/ S.Record(
   LogType,
   LogUploadPolicyValue.pipe(S.optional),
@@ -1876,7 +1880,7 @@ export const ExecutionEngineType = /*@__PURE__*/ S.String;
 export type IAMRoleArn = string;
 export interface ExecutionEngineConfig {
   Id?: string;
-  Type?: ExecutionEngineType;
+  Type?: ExecutionEngineType | (string & {});
   MasterInstanceSecurityGroupId?: string;
   ExecutionRoleArn?: string;
 }
@@ -2534,7 +2538,7 @@ export type ComputeLimitsUnitType = "InstanceFleetUnits" | "Instances" | "VCPU";
 export const ComputeLimitsUnitType = /*@__PURE__*/ S.String;
 
 export interface ComputeLimits {
-  UnitType?: ComputeLimitsUnitType;
+  UnitType?: ComputeLimitsUnitType | (string & {});
   MinimumCapacityUnits?: number;
   MaximumCapacityUnits?: number;
   MaximumOnDemandCapacityUnits?: number;
@@ -2556,7 +2560,7 @@ export const ScalingStrategy = /*@__PURE__*/ S.String;
 export interface ManagedScalingPolicy {
   ComputeLimits?: ComputeLimits;
   UtilizationPerformanceIndex?: number;
-  ScalingStrategy?: ScalingStrategy;
+  ScalingStrategy?: ScalingStrategy | (string & {});
 }
 export const ManagedScalingPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

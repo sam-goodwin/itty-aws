@@ -249,7 +249,7 @@ export type HealthChecksCreateRequestCheckRegionsItem =
   | "ALL_REGIONS";
 export const HealthChecksCreateRequestCheckRegionsItem = /*@__PURE__*/ S.String;
 
-export type HealthChecksCreateRequestCheckRegionsList = ReadonlyArray<
+export type HealthChecksCreateRequestCheckRegionsList = Array<
   HealthChecksCreateRequestCheckRegionsItem | (string & {})
 >;
 export const HealthChecksCreateRequestCheckRegionsList = /*@__PURE__*/ S.Array(
@@ -257,14 +257,13 @@ export const HealthChecksCreateRequestCheckRegionsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<HealthChecksCreateRequestCheckRegionsList>;
 
 export type HealthChecksCreateRequestHttpConfigExpectedCodesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const HealthChecksCreateRequestHttpConfigExpectedCodesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<HealthChecksCreateRequestHttpConfigExpectedCodesList>;
 
-export type HealthChecksCreateRequestHttpConfigHeaderValueList =
-  ReadonlyArray<string>;
+export type HealthChecksCreateRequestHttpConfigHeaderValueList = Array<string>;
 export const HealthChecksCreateRequestHttpConfigHeaderValueList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -421,20 +420,19 @@ export const HealthChecksCreateResponseCheckRegionsItem =
   /*@__PURE__*/ S.String;
 
 export type HealthChecksCreateResponseCheckRegionsList =
-  ReadonlyArray<HealthChecksCreateResponseCheckRegionsItem>;
+  Array<HealthChecksCreateResponseCheckRegionsItem>;
 export const HealthChecksCreateResponseCheckRegionsList = /*@__PURE__*/ S.Array(
   HealthChecksCreateResponseCheckRegionsItem,
 ) as any as S.Schema<HealthChecksCreateResponseCheckRegionsList>;
 
 export type HealthChecksCreateResponseHttpConfigExpectedCodesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const HealthChecksCreateResponseHttpConfigExpectedCodesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<HealthChecksCreateResponseHttpConfigExpectedCodesList>;
 
-export type HealthChecksCreateResponseHttpConfigHeaderValueList =
-  ReadonlyArray<string>;
+export type HealthChecksCreateResponseHttpConfigHeaderValueList = Array<string>;
 export const HealthChecksCreateResponseHttpConfigHeaderValueList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -640,22 +638,20 @@ export type HealthChecksEditRequestCheckRegionsItem =
   | "ALL_REGIONS";
 export const HealthChecksEditRequestCheckRegionsItem = /*@__PURE__*/ S.String;
 
-export type HealthChecksEditRequestCheckRegionsList = ReadonlyArray<
+export type HealthChecksEditRequestCheckRegionsList = Array<
   HealthChecksEditRequestCheckRegionsItem | (string & {})
 >;
 export const HealthChecksEditRequestCheckRegionsList = /*@__PURE__*/ S.Array(
   HealthChecksEditRequestCheckRegionsItem,
 ) as any as S.Schema<HealthChecksEditRequestCheckRegionsList>;
 
-export type HealthChecksEditRequestHttpConfigExpectedCodesList =
-  ReadonlyArray<string>;
+export type HealthChecksEditRequestHttpConfigExpectedCodesList = Array<string>;
 export const HealthChecksEditRequestHttpConfigExpectedCodesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<HealthChecksEditRequestHttpConfigExpectedCodesList>;
 
-export type HealthChecksEditRequestHttpConfigHeaderValueList =
-  ReadonlyArray<string>;
+export type HealthChecksEditRequestHttpConfigHeaderValueList = Array<string>;
 export const HealthChecksEditRequestHttpConfigHeaderValueList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -814,20 +810,18 @@ export type HealthChecksEditResponseCheckRegionsItem =
 export const HealthChecksEditResponseCheckRegionsItem = /*@__PURE__*/ S.String;
 
 export type HealthChecksEditResponseCheckRegionsList =
-  ReadonlyArray<HealthChecksEditResponseCheckRegionsItem>;
+  Array<HealthChecksEditResponseCheckRegionsItem>;
 export const HealthChecksEditResponseCheckRegionsList = /*@__PURE__*/ S.Array(
   HealthChecksEditResponseCheckRegionsItem,
 ) as any as S.Schema<HealthChecksEditResponseCheckRegionsList>;
 
-export type HealthChecksEditResponseHttpConfigExpectedCodesList =
-  ReadonlyArray<string>;
+export type HealthChecksEditResponseHttpConfigExpectedCodesList = Array<string>;
 export const HealthChecksEditResponseHttpConfigExpectedCodesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<HealthChecksEditResponseHttpConfigExpectedCodesList>;
 
-export type HealthChecksEditResponseHttpConfigHeaderValueList =
-  ReadonlyArray<string>;
+export type HealthChecksEditResponseHttpConfigHeaderValueList = Array<string>;
 export const HealthChecksEditResponseHttpConfigHeaderValueList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1016,20 +1010,18 @@ export type HealthChecksGetResponseCheckRegionsItem =
 export const HealthChecksGetResponseCheckRegionsItem = /*@__PURE__*/ S.String;
 
 export type HealthChecksGetResponseCheckRegionsList =
-  ReadonlyArray<HealthChecksGetResponseCheckRegionsItem>;
+  Array<HealthChecksGetResponseCheckRegionsItem>;
 export const HealthChecksGetResponseCheckRegionsList = /*@__PURE__*/ S.Array(
   HealthChecksGetResponseCheckRegionsItem,
 ) as any as S.Schema<HealthChecksGetResponseCheckRegionsList>;
 
-export type HealthChecksGetResponseHttpConfigExpectedCodesList =
-  ReadonlyArray<string>;
+export type HealthChecksGetResponseHttpConfigExpectedCodesList = Array<string>;
 export const HealthChecksGetResponseHttpConfigExpectedCodesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<HealthChecksGetResponseHttpConfigExpectedCodesList>;
 
-export type HealthChecksGetResponseHttpConfigHeaderValueList =
-  ReadonlyArray<string>;
+export type HealthChecksGetResponseHttpConfigHeaderValueList = Array<string>;
 export const HealthChecksGetResponseHttpConfigHeaderValueList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1222,20 +1214,19 @@ export const HealthChecksListResultItemCheckRegionsItem =
   /*@__PURE__*/ S.String;
 
 export type HealthChecksListResultItemCheckRegionsList =
-  ReadonlyArray<HealthChecksListResultItemCheckRegionsItem>;
+  Array<HealthChecksListResultItemCheckRegionsItem>;
 export const HealthChecksListResultItemCheckRegionsList = /*@__PURE__*/ S.Array(
   HealthChecksListResultItemCheckRegionsItem,
 ) as any as S.Schema<HealthChecksListResultItemCheckRegionsList>;
 
 export type HealthChecksListResultItemHttpConfigExpectedCodesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const HealthChecksListResultItemHttpConfigExpectedCodesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<HealthChecksListResultItemHttpConfigExpectedCodesList>;
 
-export type HealthChecksListResultItemHttpConfigHeaderValueList =
-  ReadonlyArray<string>;
+export type HealthChecksListResultItemHttpConfigHeaderValueList = Array<string>;
 export const HealthChecksListResultItemHttpConfigHeaderValueList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1389,8 +1380,7 @@ export const HealthChecksListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "HealthChecksListResultItem",
 }) as any as S.Schema<HealthChecksListResultItem>;
 
-export type HealthChecksListResultList =
-  ReadonlyArray<HealthChecksListResultItem>;
+export type HealthChecksListResultList = Array<HealthChecksListResultItem>;
 export const HealthChecksListResultList = /*@__PURE__*/ S.Array(
   HealthChecksListResultItem,
 ) as any as S.Schema<HealthChecksListResultList>;
@@ -1432,7 +1422,7 @@ export const HealthChecksUpdateRequestErrorsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HealthChecksUpdateRequestErrorsItem>;
 
 export type HealthChecksUpdateRequestErrorsList =
-  ReadonlyArray<HealthChecksUpdateRequestErrorsItem>;
+  Array<HealthChecksUpdateRequestErrorsItem>;
 export const HealthChecksUpdateRequestErrorsList = /*@__PURE__*/ S.Array(
   HealthChecksUpdateRequestErrorsItem,
 ) as any as S.Schema<HealthChecksUpdateRequestErrorsList>;
@@ -1456,7 +1446,7 @@ export const HealthChecksUpdateRequestMessagesItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<HealthChecksUpdateRequestMessagesItem>;
 
 export type HealthChecksUpdateRequestMessagesList =
-  ReadonlyArray<HealthChecksUpdateRequestMessagesItem>;
+  Array<HealthChecksUpdateRequestMessagesItem>;
 export const HealthChecksUpdateRequestMessagesList = /*@__PURE__*/ S.Array(
   HealthChecksUpdateRequestMessagesItem,
 ) as any as S.Schema<HealthChecksUpdateRequestMessagesList>;
@@ -1479,7 +1469,7 @@ export type HealthChecksUpdateRequestResultCheckRegionsItem =
 export const HealthChecksUpdateRequestResultCheckRegionsItem =
   /*@__PURE__*/ S.String;
 
-export type HealthChecksUpdateRequestResultCheckRegionsList = ReadonlyArray<
+export type HealthChecksUpdateRequestResultCheckRegionsList = Array<
   HealthChecksUpdateRequestResultCheckRegionsItem | (string & {})
 >;
 export const HealthChecksUpdateRequestResultCheckRegionsList =
@@ -1488,14 +1478,14 @@ export const HealthChecksUpdateRequestResultCheckRegionsList =
   ) as any as S.Schema<HealthChecksUpdateRequestResultCheckRegionsList>;
 
 export type HealthChecksUpdateRequestResultHttpConfigExpectedCodesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const HealthChecksUpdateRequestResultHttpConfigExpectedCodesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<HealthChecksUpdateRequestResultHttpConfigExpectedCodesList>;
 
 export type HealthChecksUpdateRequestResultHttpConfigHeaderValueList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const HealthChecksUpdateRequestResultHttpConfigHeaderValueList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1702,20 +1692,19 @@ export const HealthChecksUpdateResponseCheckRegionsItem =
   /*@__PURE__*/ S.String;
 
 export type HealthChecksUpdateResponseCheckRegionsList =
-  ReadonlyArray<HealthChecksUpdateResponseCheckRegionsItem>;
+  Array<HealthChecksUpdateResponseCheckRegionsItem>;
 export const HealthChecksUpdateResponseCheckRegionsList = /*@__PURE__*/ S.Array(
   HealthChecksUpdateResponseCheckRegionsItem,
 ) as any as S.Schema<HealthChecksUpdateResponseCheckRegionsList>;
 
 export type HealthChecksUpdateResponseHttpConfigExpectedCodesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const HealthChecksUpdateResponseHttpConfigExpectedCodesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<HealthChecksUpdateResponseHttpConfigExpectedCodesList>;
 
-export type HealthChecksUpdateResponseHttpConfigHeaderValueList =
-  ReadonlyArray<string>;
+export type HealthChecksUpdateResponseHttpConfigHeaderValueList = Array<string>;
 export const HealthChecksUpdateResponseHttpConfigHeaderValueList =
   /*@__PURE__*/ S.Array(
     S.String,

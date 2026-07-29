@@ -313,7 +313,7 @@ export const MultiAzDisasterRecoveryApproach = /*@__PURE__*/ S.String;
 export interface MultiAzTargets {
   rtoInMinutes?: number;
   rpoInMinutes?: number;
-  disasterRecoveryApproach?: MultiAzDisasterRecoveryApproach;
+  disasterRecoveryApproach?: MultiAzDisasterRecoveryApproach | (string & {});
 }
 export const MultiAzTargets = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -333,7 +333,9 @@ export const MultiRegionDisasterRecoveryApproach = /*@__PURE__*/ S.String;
 export interface MultiRegionTargets {
   rtoInMinutes?: number;
   rpoInMinutes?: number;
-  disasterRecoveryApproach?: MultiRegionDisasterRecoveryApproach;
+  disasterRecoveryApproach?:
+    | MultiRegionDisasterRecoveryApproach
+    | (string & {});
 }
 export const MultiRegionTargets = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

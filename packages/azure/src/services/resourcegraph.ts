@@ -347,7 +347,7 @@ export const GraphQueryResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GraphQueryResource>;
 
 /** The GraphQueryResource items on this page */
-export type GraphQueryListResultValueList = ReadonlyArray<GraphQueryResource>;
+export type GraphQueryListResultValueList = Array<GraphQueryResource>;
 export const GraphQueryListResultValueList = /*@__PURE__*/ S.Array(
   GraphQueryResource,
 ) as any as S.Schema<GraphQueryListResultValueList>;
@@ -543,7 +543,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** The Operation items on this page */
-export type OperationListResultValueList = ReadonlyArray<Operation>;
+export type OperationListResultValueList = Array<Operation>;
 export const OperationListResultValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationListResultValueList>;
@@ -565,13 +565,13 @@ export const OperationListResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationListResult>;
 
 /** Azure subscriptions against which to execute the query. */
-export type ResourcesRequestSubscriptionsList = ReadonlyArray<string>;
+export type ResourcesRequestSubscriptionsList = Array<string>;
 export const ResourcesRequestSubscriptionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ResourcesRequestSubscriptionsList>;
 
 /** Azure management groups against which to execute the query. Example: [ 'mg1', 'mg2' ] */
-export type ResourcesRequestManagementGroupsList = ReadonlyArray<string>;
+export type ResourcesRequestManagementGroupsList = Array<string>;
 export const ResourcesRequestManagementGroupsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ResourcesRequestManagementGroupsList>;
@@ -662,7 +662,7 @@ export const FacetRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FacetRequest" }) as any as S.Schema<FacetRequest>;
 
 /** An array of facet requests to be computed against the query result. */
-export type ResourcesRequestFacetsList = ReadonlyArray<FacetRequest>;
+export type ResourcesRequestFacetsList = Array<FacetRequest>;
 export const ResourcesRequestFacetsList = /*@__PURE__*/ S.Array(
   FacetRequest,
 ) as any as S.Schema<ResourcesRequestFacetsList>;
@@ -717,7 +717,7 @@ export const Facet = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Facet" }) as any as S.Schema<Facet>;
 
 /** Query facets. */
-export type QueryResponseFacetsList = ReadonlyArray<Facet>;
+export type QueryResponseFacetsList = Array<Facet>;
 export const QueryResponseFacetsList = /*@__PURE__*/ S.Array(
   Facet,
 ) as any as S.Schema<QueryResponseFacetsList>;

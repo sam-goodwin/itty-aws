@@ -192,7 +192,7 @@ export type EnablePerformanceMode = boolean;
 export type EnablePullRequestPreview = boolean;
 export type PullRequestEnvironmentName = string;
 export interface AutoBranchCreationConfig {
-  stage?: Stage;
+  stage?: Stage | (string & {});
   framework?: string;
   enableAutoBuild?: boolean;
   environmentVariables?: { [key: string]: string | undefined };
@@ -223,7 +223,7 @@ export type BuildComputeType = "STANDARD_8GB" | "LARGE_16GB" | "XLARGE_72GB";
 export const BuildComputeType = /*@__PURE__*/ S.String;
 
 export interface JobConfig {
-  buildComputeType: BuildComputeType;
+  buildComputeType: BuildComputeType | (string & {});
 }
 export const JobConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ buildComputeType: BuildComputeType }),
@@ -232,7 +232,7 @@ export type CacheConfigType = "AMPLIFY_MANAGED" | "AMPLIFY_MANAGED_NO_COOKIES";
 export const CacheConfigType = /*@__PURE__*/ S.String;
 
 export interface CacheConfig {
-  type: CacheConfigType;
+  type: CacheConfigType | (string & {});
 }
 export const CacheConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ type: CacheConfigType }),

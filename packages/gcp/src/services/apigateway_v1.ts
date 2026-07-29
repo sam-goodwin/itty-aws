@@ -118,7 +118,7 @@ export interface ApigatewayApi {
   /** Optional. Display name. */
   displayName?: string;
   /** Output only. State of the API. */
-  state?: ApigatewayApiStateEnum;
+  state?: ApigatewayApiStateEnum | (string & {});
   /** Output only. Resource name of the API. Format: projects/{project}/locations/global/apis/{api} */
   name?: string;
   /** Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources */
@@ -170,7 +170,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -235,8 +235,7 @@ export const ApigatewayApiConfigFile = /*@__PURE__*/ S.suspend(() =>
   identifier: "ApigatewayApiConfigFile",
 }) as any as S.Schema<ApigatewayApiConfigFile>;
 
-export type ApigatewayApiConfigFileList =
-  ReadonlyArray<ApigatewayApiConfigFile>;
+export type ApigatewayApiConfigFileList = Array<ApigatewayApiConfigFile>;
 export const ApigatewayApiConfigFileList = /*@__PURE__*/ S.Array(
   ApigatewayApiConfigFile,
 ) as any as S.Schema<ApigatewayApiConfigFileList>;
@@ -255,7 +254,7 @@ export const ApigatewayApiConfigOpenApiDocument = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ApigatewayApiConfigOpenApiDocument>;
 
 export type ApigatewayApiConfigOpenApiDocumentList =
-  ReadonlyArray<ApigatewayApiConfigOpenApiDocument>;
+  Array<ApigatewayApiConfigOpenApiDocument>;
 export const ApigatewayApiConfigOpenApiDocumentList = /*@__PURE__*/ S.Array(
   ApigatewayApiConfigOpenApiDocument,
 ) as any as S.Schema<ApigatewayApiConfigOpenApiDocumentList>;
@@ -278,7 +277,7 @@ export const ApigatewayApiConfigGrpcServiceDefinition = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ApigatewayApiConfigGrpcServiceDefinition>;
 
 export type ApigatewayApiConfigGrpcServiceDefinitionList =
-  ReadonlyArray<ApigatewayApiConfigGrpcServiceDefinition>;
+  Array<ApigatewayApiConfigGrpcServiceDefinition>;
 export const ApigatewayApiConfigGrpcServiceDefinitionList =
   /*@__PURE__*/ S.Array(
     ApigatewayApiConfigGrpcServiceDefinition,
@@ -317,7 +316,7 @@ export interface ApigatewayApiConfig {
   /** Output only. The ID of the associated Service Config ( https://cloud.google.com/service-infrastructure/docs/glossary#config). */
   serviceConfigId?: string;
   /** Output only. State of the API Config. */
-  state?: ApigatewayApiConfigStateEnum;
+  state?: ApigatewayApiConfigStateEnum | (string & {});
 }
 export const ApigatewayApiConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -388,7 +387,7 @@ export interface ApigatewayGateway {
   /** Required. Resource name of the API Config for this Gateway. Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig} */
   apiConfig?: string;
   /** Output only. The current state of the Gateway. */
-  state?: ApigatewayGatewayStateEnum;
+  state?: ApigatewayGatewayStateEnum | (string & {});
 }
 export const ApigatewayGateway = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -527,7 +526,7 @@ export const GetIamPolicyProjectsLocationsApisRequest = /*@__PURE__*/ S.suspend(
   identifier: "GetIamPolicyProjectsLocationsApisRequest",
 }) as any as S.Schema<GetIamPolicyProjectsLocationsApisRequest>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -544,7 +543,7 @@ export interface ApigatewayAuditLogConfig {
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
   exemptedMembers?: StringList;
   /** The log type that this config enables. */
-  logType?: ApigatewayAuditLogConfigLogTypeEnum;
+  logType?: ApigatewayAuditLogConfigLogTypeEnum | (string & {});
 }
 export const ApigatewayAuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -555,8 +554,7 @@ export const ApigatewayAuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "ApigatewayAuditLogConfig",
 }) as any as S.Schema<ApigatewayAuditLogConfig>;
 
-export type ApigatewayAuditLogConfigList =
-  ReadonlyArray<ApigatewayAuditLogConfig>;
+export type ApigatewayAuditLogConfigList = Array<ApigatewayAuditLogConfig>;
 export const ApigatewayAuditLogConfigList = /*@__PURE__*/ S.Array(
   ApigatewayAuditLogConfig,
 ) as any as S.Schema<ApigatewayAuditLogConfigList>;
@@ -577,7 +575,7 @@ export const ApigatewayAuditConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "ApigatewayAuditConfig",
 }) as any as S.Schema<ApigatewayAuditConfig>;
 
-export type ApigatewayAuditConfigList = ReadonlyArray<ApigatewayAuditConfig>;
+export type ApigatewayAuditConfigList = Array<ApigatewayAuditConfig>;
 export const ApigatewayAuditConfigList = /*@__PURE__*/ S.Array(
   ApigatewayAuditConfig,
 ) as any as S.Schema<ApigatewayAuditConfigList>;
@@ -621,7 +619,7 @@ export const ApigatewayBinding = /*@__PURE__*/ S.suspend(() =>
   identifier: "ApigatewayBinding",
 }) as any as S.Schema<ApigatewayBinding>;
 
-export type ApigatewayBindingList = ReadonlyArray<ApigatewayBinding>;
+export type ApigatewayBindingList = Array<ApigatewayBinding>;
 export const ApigatewayBindingList = /*@__PURE__*/ S.Array(
   ApigatewayBinding,
 ) as any as S.Schema<ApigatewayBindingList>;
@@ -848,7 +846,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type ApigatewayLocationList = ReadonlyArray<ApigatewayLocation>;
+export type ApigatewayLocationList = Array<ApigatewayLocation>;
 export const ApigatewayLocationList = /*@__PURE__*/ S.Array(
   ApigatewayLocation,
 ) as any as S.Schema<ApigatewayLocationList>;
@@ -899,7 +897,7 @@ export const ListProjectsLocationsApisRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsApisRequest",
 }) as any as S.Schema<ListProjectsLocationsApisRequest>;
 
-export type ApigatewayApiList = ReadonlyArray<ApigatewayApi>;
+export type ApigatewayApiList = Array<ApigatewayApi>;
 export const ApigatewayApiList = /*@__PURE__*/ S.Array(
   ApigatewayApi,
 ) as any as S.Schema<ApigatewayApiList>;
@@ -954,7 +952,7 @@ export const ListProjectsLocationsApisConfigsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsApisConfigsRequest",
 }) as any as S.Schema<ListProjectsLocationsApisConfigsRequest>;
 
-export type ApigatewayApiConfigList = ReadonlyArray<ApigatewayApiConfig>;
+export type ApigatewayApiConfigList = Array<ApigatewayApiConfig>;
 export const ApigatewayApiConfigList = /*@__PURE__*/ S.Array(
   ApigatewayApiConfig,
 ) as any as S.Schema<ApigatewayApiConfigList>;
@@ -1009,7 +1007,7 @@ export const ListProjectsLocationsGatewaysRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsGatewaysRequest",
 }) as any as S.Schema<ListProjectsLocationsGatewaysRequest>;
 
-export type ApigatewayGatewayList = ReadonlyArray<ApigatewayGateway>;
+export type ApigatewayGatewayList = Array<ApigatewayGateway>;
 export const ApigatewayGatewayList = /*@__PURE__*/ S.Array(
   ApigatewayGateway,
 ) as any as S.Schema<ApigatewayGatewayList>;
@@ -1064,7 +1062,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type ApigatewayOperationList = ReadonlyArray<ApigatewayOperation>;
+export type ApigatewayOperationList = Array<ApigatewayOperation>;
 export const ApigatewayOperationList = /*@__PURE__*/ S.Array(
   ApigatewayOperation,
 ) as any as S.Schema<ApigatewayOperationList>;

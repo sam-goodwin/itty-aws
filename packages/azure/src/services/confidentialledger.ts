@@ -94,7 +94,7 @@ export interface AADBasedSecurityPrincipal {
   /** UUID/GUID based Tenant Id of the Security Principal */
   tenantId?: string;
   /** LedgerRole associated with the Security Principal of Ledger */
-  ledgerRoleName?: LedgerRoleName;
+  ledgerRoleName?: LedgerRoleName | (string & {});
 }
 export const AADBasedSecurityPrincipal = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -108,7 +108,7 @@ export const AADBasedSecurityPrincipal = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of all AAD based Security Principals. */
 export type LedgerPropertiesInputAadBasedSecurityPrincipalsList =
-  ReadonlyArray<AADBasedSecurityPrincipal>;
+  Array<AADBasedSecurityPrincipal>;
 export const LedgerPropertiesInputAadBasedSecurityPrincipalsList =
   /*@__PURE__*/ S.Array(
     AADBasedSecurityPrincipal,
@@ -119,7 +119,7 @@ export interface CertBasedSecurityPrincipal {
   /** Public key of the user cert (.pem or .cer) */
   cert?: string;
   /** LedgerRole associated with the Security Principal of Ledger */
-  ledgerRoleName?: LedgerRoleName;
+  ledgerRoleName?: LedgerRoleName | (string & {});
 }
 export const CertBasedSecurityPrincipal = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -132,7 +132,7 @@ export const CertBasedSecurityPrincipal = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of all cert based Security Principals. */
 export type LedgerPropertiesInputCertBasedSecurityPrincipalsList =
-  ReadonlyArray<CertBasedSecurityPrincipal>;
+  Array<CertBasedSecurityPrincipal>;
 export const LedgerPropertiesInputCertBasedSecurityPrincipalsList =
   /*@__PURE__*/ S.Array(
     CertBasedSecurityPrincipal,
@@ -291,7 +291,7 @@ export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** Array of all AAD based Security Principals. */
 export type LedgerPropertiesAadBasedSecurityPrincipalsList =
-  ReadonlyArray<AADBasedSecurityPrincipal>;
+  Array<AADBasedSecurityPrincipal>;
 export const LedgerPropertiesAadBasedSecurityPrincipalsList =
   /*@__PURE__*/ S.Array(
     AADBasedSecurityPrincipal,
@@ -299,7 +299,7 @@ export const LedgerPropertiesAadBasedSecurityPrincipalsList =
 
 /** Array of all cert based Security Principals. */
 export type LedgerPropertiesCertBasedSecurityPrincipalsList =
-  ReadonlyArray<CertBasedSecurityPrincipal>;
+  Array<CertBasedSecurityPrincipal>;
 export const LedgerPropertiesCertBasedSecurityPrincipalsList =
   /*@__PURE__*/ S.Array(
     CertBasedSecurityPrincipal,
@@ -613,7 +613,7 @@ export const ConfidentialLedger = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConfidentialLedger>;
 
 /** The ConfidentialLedger items on this page */
-export type ConfidentialLedgerListValueList = ReadonlyArray<ConfidentialLedger>;
+export type ConfidentialLedgerListValueList = Array<ConfidentialLedger>;
 export const ConfidentialLedgerListValueList = /*@__PURE__*/ S.Array(
   ConfidentialLedger,
 ) as any as S.Schema<ConfidentialLedgerListValueList>;
@@ -791,7 +791,7 @@ export const ResourceProviderOperationDefinition = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of operations. */
 export type ResourceProviderOperationListValueList =
-  ReadonlyArray<ResourceProviderOperationDefinition>;
+  Array<ResourceProviderOperationDefinition>;
 export const ResourceProviderOperationListValueList = /*@__PURE__*/ S.Array(
   ResourceProviderOperationDefinition,
 ) as any as S.Schema<ResourceProviderOperationListValueList>;

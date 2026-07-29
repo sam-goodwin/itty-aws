@@ -127,11 +127,11 @@ export const UpcomingMaintenanceMaintenanceStatusEnum = /*@__PURE__*/ S.String;
 /** Upcoming Maintenance notification information. */
 export interface UpcomingMaintenance {
   /** Defines the type of maintenance. */
-  type?: UpcomingMaintenanceTypeEnum;
+  type?: UpcomingMaintenanceTypeEnum | (string & {});
   /** Indicates if the maintenance can be customer triggered. */
   canReschedule?: boolean;
   /** The status of the maintenance. */
-  maintenanceStatus?: UpcomingMaintenanceMaintenanceStatusEnum;
+  maintenanceStatus?: UpcomingMaintenanceMaintenanceStatusEnum | (string & {});
   /** The latest time for the planned maintenance window to start. This timestamp value is in RFC3339 text format. */
   latestWindowStartTime?: string;
   /** The time by which the maintenance disruption will be completed. This timestamp value is in RFC3339 text format. */
@@ -165,7 +165,7 @@ export const ShieldedInstanceConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "ShieldedInstanceConfig",
 }) as any as S.Schema<ShieldedInstanceConfig>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -246,7 +246,7 @@ export const NetworkEndpoint = /*@__PURE__*/ S.suspend(() =>
   identifier: "NetworkEndpoint",
 }) as any as S.Schema<NetworkEndpoint>;
 
-export type NetworkEndpointList = ReadonlyArray<NetworkEndpoint>;
+export type NetworkEndpointList = Array<NetworkEndpoint>;
 export const NetworkEndpointList = /*@__PURE__*/ S.Array(
   NetworkEndpoint,
 ) as any as S.Schema<NetworkEndpointList>;
@@ -264,7 +264,7 @@ export const AcceleratorConfigTypeEnum = /*@__PURE__*/ S.String;
 /** A TPU accelerator configuration. */
 export interface AcceleratorConfig {
   /** Required. Type of TPU. */
-  type?: AcceleratorConfigTypeEnum;
+  type?: AcceleratorConfigTypeEnum | (string & {});
   /** Required. Topology of TPU in chips. */
   topology?: string;
 }
@@ -294,7 +294,7 @@ export interface Symptom {
   /** Timestamp when the Symptom is created. */
   createTime?: string;
   /** Type of the Symptom. */
-  symptomType?: SymptomSymptomTypeEnum;
+  symptomType?: SymptomSymptomTypeEnum | (string & {});
   /** Detailed information of the current Symptom. */
   details?: string;
 }
@@ -307,7 +307,7 @@ export const Symptom = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Symptom" }) as any as S.Schema<Symptom>;
 
-export type SymptomList = ReadonlyArray<Symptom>;
+export type SymptomList = Array<Symptom>;
 export const SymptomList = /*@__PURE__*/ S.Array(
   Symptom,
 ) as any as S.Schema<SymptomList>;
@@ -360,7 +360,7 @@ export const NetworkConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "NetworkConfig" }) as any as S.Schema<NetworkConfig>;
 
-export type NetworkConfigList = ReadonlyArray<NetworkConfig>;
+export type NetworkConfigList = Array<NetworkConfig>;
 export const NetworkConfigList = /*@__PURE__*/ S.Array(
   NetworkConfig,
 ) as any as S.Schema<NetworkConfigList>;
@@ -376,7 +376,7 @@ export interface AttachedDisk {
   /** Specifies the full path to an existing disk. For example: "projects/my-project/zones/us-central1-c/disks/my-disk". */
   sourceDisk?: string;
   /** The mode in which to attach this disk. If not specified, the default is READ_WRITE mode. Only applicable to data_disks. */
-  mode?: AttachedDiskModeEnum;
+  mode?: AttachedDiskModeEnum | (string & {});
 }
 export const AttachedDisk = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -385,7 +385,7 @@ export const AttachedDisk = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AttachedDisk" }) as any as S.Schema<AttachedDisk>;
 
-export type AttachedDiskList = ReadonlyArray<AttachedDisk>;
+export type AttachedDiskList = Array<AttachedDisk>;
 export const AttachedDiskList = /*@__PURE__*/ S.Array(
   AttachedDisk,
 ) as any as S.Schema<AttachedDiskList>;
@@ -395,7 +395,7 @@ export interface Node {
   /** The scheduling options for this node. */
   schedulingConfig?: SchedulingConfig;
   /** Output only. The API version that created this Node. */
-  apiVersion?: NodeApiVersionEnum;
+  apiVersion?: NodeApiVersionEnum | (string & {});
   /** Output only. The time when the node was created. */
   createTime?: string;
   /** Output only. Upcoming maintenance on this TPU node. */
@@ -407,7 +407,7 @@ export interface Node {
   /** The Google Cloud Platform Service Account to be used by the TPU node VMs. If None is specified, the default compute service account will be used. */
   serviceAccount?: ServiceAccount;
   /** The health status of the TPU node. */
-  health?: NodeHealthEnum;
+  health?: NodeHealthEnum | (string & {});
   /** Optional. Boot disk configuration. */
   bootDiskConfig?: BootDiskConfig;
   /** Output only. Whether the Node belongs to a Multislice group. */
@@ -427,7 +427,7 @@ export interface Node {
   /** Resource labels to represent user-provided metadata. */
   labels?: StringMap;
   /** Output only. The current state for the TPU Node. */
-  state?: NodeStateEnum;
+  state?: NodeStateEnum | (string & {});
   /** Optional. Repeated network configurations for the TPU node. This field is used to specify multiple networks configs for the TPU node. network_config and network_configs are mutually exclusive, you can only specify one of them. If both are specified, an error will be returned. */
   networkConfigs?: NetworkConfigList;
   /** Custom metadata to apply to the TPU Node. Can set startup-script and shutdown-script */
@@ -509,7 +509,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -590,7 +590,7 @@ export const NodeSpec = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "NodeSpec" }) as any as S.Schema<NodeSpec>;
 
-export type NodeSpecList = ReadonlyArray<NodeSpec>;
+export type NodeSpecList = Array<NodeSpec>;
 export const NodeSpecList = /*@__PURE__*/ S.Array(
   NodeSpec,
 ) as any as S.Schema<NodeSpecList>;
@@ -743,7 +743,7 @@ export interface QueuedResourceState {
   /** Output only. Further data for the provisioning state. */
   provisioningData?: ProvisioningData;
   /** Output only. State of the QueuedResource request. */
-  state?: QueuedResourceStateStateEnum;
+  state?: QueuedResourceStateStateEnum | (string & {});
   /** Output only. Further data for the deleting state. */
   deletingData?: DeletingData;
   /** Output only. Further data for the creating state. */
@@ -753,7 +753,7 @@ export interface QueuedResourceState {
   /** Output only. Further data for the suspended state. */
   suspendedData?: SuspendedData;
   /** Output only. The initiator of the QueuedResources's current state. Used to indicate whether the SUSPENDING/SUSPENDED state was initiated by the user or the service. */
-  stateInitiator?: QueuedResourceStateStateInitiatorEnum;
+  stateInitiator?: QueuedResourceStateStateInitiatorEnum | (string & {});
   /** Output only. Further data for the failed state. */
   failedData?: FailedData;
 }
@@ -1009,7 +1009,7 @@ export const GuestAttributesEntry = /*@__PURE__*/ S.suspend(() =>
   identifier: "GuestAttributesEntry",
 }) as any as S.Schema<GuestAttributesEntry>;
 
-export type GuestAttributesEntryList = ReadonlyArray<GuestAttributesEntry>;
+export type GuestAttributesEntryList = Array<GuestAttributesEntry>;
 export const GuestAttributesEntryList = /*@__PURE__*/ S.Array(
   GuestAttributesEntry,
 ) as any as S.Schema<GuestAttributesEntryList>;
@@ -1043,7 +1043,7 @@ export const GuestAttributes = /*@__PURE__*/ S.suspend(() =>
   identifier: "GuestAttributes",
 }) as any as S.Schema<GuestAttributes>;
 
-export type GuestAttributesList = ReadonlyArray<GuestAttributes>;
+export type GuestAttributesList = Array<GuestAttributes>;
 export const GuestAttributesList = /*@__PURE__*/ S.Array(
   GuestAttributes,
 ) as any as S.Schema<GuestAttributesList>;
@@ -1121,7 +1121,7 @@ export const GetProjectsLocationsAcceleratorTypesRequest =
     identifier: "GetProjectsLocationsAcceleratorTypesRequest",
   }) as any as S.Schema<GetProjectsLocationsAcceleratorTypesRequest>;
 
-export type AcceleratorConfigList = ReadonlyArray<AcceleratorConfig>;
+export type AcceleratorConfigList = Array<AcceleratorConfig>;
 export const AcceleratorConfigList = /*@__PURE__*/ S.Array(
   AcceleratorConfig,
 ) as any as S.Schema<AcceleratorConfigList>;
@@ -1264,7 +1264,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = ReadonlyArray<Location>;
+export type LocationList = Array<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -1316,7 +1316,7 @@ export const ListProjectsLocationsAcceleratorTypesRequest =
     identifier: "ListProjectsLocationsAcceleratorTypesRequest",
   }) as any as S.Schema<ListProjectsLocationsAcceleratorTypesRequest>;
 
-export type AcceleratorTypeList = ReadonlyArray<AcceleratorType>;
+export type AcceleratorTypeList = Array<AcceleratorType>;
 export const AcceleratorTypeList = /*@__PURE__*/ S.Array(
   AcceleratorType,
 ) as any as S.Schema<AcceleratorTypeList>;
@@ -1364,7 +1364,7 @@ export const ListProjectsLocationsNodesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsNodesRequest",
 }) as any as S.Schema<ListProjectsLocationsNodesRequest>;
 
-export type NodeList = ReadonlyArray<Node>;
+export type NodeList = Array<Node>;
 export const NodeList = /*@__PURE__*/ S.Array(
   Node,
 ) as any as S.Schema<NodeList>;
@@ -1419,7 +1419,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type OperationList = ReadonlyArray<Operation>;
+export type OperationList = Array<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -1468,7 +1468,7 @@ export const ListProjectsLocationsQueuedResourcesRequest =
     identifier: "ListProjectsLocationsQueuedResourcesRequest",
   }) as any as S.Schema<ListProjectsLocationsQueuedResourcesRequest>;
 
-export type QueuedResourceList = ReadonlyArray<QueuedResource>;
+export type QueuedResourceList = Array<QueuedResource>;
 export const QueuedResourceList = /*@__PURE__*/ S.Array(
   QueuedResource,
 ) as any as S.Schema<QueuedResourceList>;
@@ -1523,7 +1523,7 @@ export const ListProjectsLocationsRuntimeVersionsRequest =
     identifier: "ListProjectsLocationsRuntimeVersionsRequest",
   }) as any as S.Schema<ListProjectsLocationsRuntimeVersionsRequest>;
 
-export type RuntimeVersionList = ReadonlyArray<RuntimeVersion>;
+export type RuntimeVersionList = Array<RuntimeVersion>;
 export const RuntimeVersionList = /*@__PURE__*/ S.Array(
   RuntimeVersion,
 ) as any as S.Schema<RuntimeVersionList>;

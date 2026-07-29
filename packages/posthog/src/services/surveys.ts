@@ -288,7 +288,7 @@ export const FeatureFlagFilterPropertyMultiContainsSchemaOperatorEnum =
 
 /** List of strings to evaluate against. */
 export type FeatureFlagFilterPropertyMultiContainsSchemaValueList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const FeatureFlagFilterPropertyMultiContainsSchemaValueList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -485,7 +485,7 @@ export const FeatureFlagFilterPropertySchema = /*@__PURE__*/ S.suspend(() =>
 
 /** Property conditions for this release condition group. */
 export type FeatureFlagConditionGroupSchemaPropertiesList =
-  ReadonlyArray<FeatureFlagFilterPropertySchema>;
+  Array<FeatureFlagFilterPropertySchema>;
 export const FeatureFlagConditionGroupSchemaPropertiesList =
   /*@__PURE__*/ S.Array(
     FeatureFlagFilterPropertySchema,
@@ -514,7 +514,7 @@ export const FeatureFlagConditionGroupSchema = /*@__PURE__*/ S.suspend(() =>
 
 /** Release condition groups for the feature flag. */
 export type FeatureFlagFiltersSchemaGroupsList =
-  ReadonlyArray<FeatureFlagConditionGroupSchema>;
+  Array<FeatureFlagConditionGroupSchema>;
 export const FeatureFlagFiltersSchemaGroupsList = /*@__PURE__*/ S.Array(
   FeatureFlagConditionGroupSchema,
 ) as any as S.Schema<FeatureFlagFiltersSchemaGroupsList>;
@@ -540,7 +540,7 @@ export const FeatureFlagMultivariateVariantSchema = /*@__PURE__*/ S.suspend(
 
 /** Variant definitions for multivariate feature flags. */
 export type FeatureFlagMultivariateSchemaVariantsList =
-  ReadonlyArray<FeatureFlagMultivariateVariantSchema>;
+  Array<FeatureFlagMultivariateVariantSchema>;
 export const FeatureFlagMultivariateSchemaVariantsList = /*@__PURE__*/ S.Array(
   FeatureFlagMultivariateVariantSchema,
 ) as any as S.Schema<FeatureFlagMultivariateSchemaVariantsList>;
@@ -845,7 +845,7 @@ export type SurveySingleChoiceQuestionSchemaTypeEnum = "single_choice";
 export const SurveySingleChoiceQuestionSchemaTypeEnum = /*@__PURE__*/ S.String;
 
 /** Array of choice options. Choice indices (0, 1, 2, ...) are used for branching logic. */
-export type SurveySingleChoiceQuestionSchemaChoicesList = ReadonlyArray<string>;
+export type SurveySingleChoiceQuestionSchemaChoicesList = Array<string>;
 export const SurveySingleChoiceQuestionSchemaChoicesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -897,8 +897,7 @@ export const SurveyMultipleChoiceQuestionSchemaTypeEnum =
   /*@__PURE__*/ S.String;
 
 /** Array of choice options. Multiple selections allowed. No branching logic supported. */
-export type SurveyMultipleChoiceQuestionSchemaChoicesList =
-  ReadonlyArray<string>;
+export type SurveyMultipleChoiceQuestionSchemaChoicesList = Array<string>;
 export const SurveyMultipleChoiceQuestionSchemaChoicesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1024,7 +1023,7 @@ export const SurveyQuestionInputSchema = /*@__PURE__*/ S.suspend(() =>
 
 /** The `array` of questions included in the survey. Each question must conform to one of the defined question types: Basic, Link, Rating, or Multiple Choice. Basic (open-ended question) - `id`: The question ID - `type`: `open` - `question`: The text of the question. - `description`: Optional description of the question. - `descriptionContentType`: Content type of the description (`html` or `text`). - `optional`: Whether the question is optional (`boolean`). - `buttonText`: Text displayed on the submit button. - `branching`: Branching logic for the question. See branching types below for details. Link (a question with a link) - `id`: The question ID - `type`: `link` - `question`: The text of the question. - `description`: Optional description of the question. - `descriptionContentType`: Content type of the description (`html` or `text`). - `optional`: Whether the question is optional (`boolean`). - `buttonText`: Text displayed on the submit button. - `link`: The URL associated with the question. - `branching`: Branching logic for the question. See branching types below for details. Rating (a question with a rating scale) - `id`: The question ID - `type`: `rating` - `question`: The text of the question. - `description`: Optional description of the question. - `descriptionContentType`: Content type of the description (`html` or `text`). - `optional`: Whether the question is optional (`boolean`). - `buttonText`: Text displayed on the submit button. - `display`: Display style of the rating (`number` or `emoji`). - `scale`: The scale of the rating (`number`). - `lowerBoundLabel`: Label for the lower bound of the scale. - `upperBoundLabel`: Label for the upper bound of the scale. - `isNpsQuestion`: Whether the question is an NPS rating. - `branching`: Branching logic for the question. See branching types below for details. Multiple choice - `id`: The question ID - `type`: `single_choice` or `multiple_choice` - `question`: The text of the question. - `description`: Optional description of the question. - `descriptionContentType`: Content type of the description (`html` or `text`). - `optional`: Whether the question is optional (`boolean`). - `buttonText`: Text displayed on the submit button. - `choices`: An array of choices for the question. - `shuffleOptions`: Whether to shuffle the order of the choices (`boolean`). - `hasOpenChoice`: Whether the question allows an open-ended response (`boolean`). - `branching`: Branching logic for the question. See branching types below for details. Branching logic can be one of the following types: Next question: Proceeds to the next question ```json { "type": "next_question" } ``` End: Ends the survey, optionally displaying a confirmation message. ```json { "type": "end" } ``` Response-based: Branches based on the response values. Available for the `rating` and `single_choice` question types. ```json { "type": "response_based", "responseValues": { "responseKey": "value" } } ``` Specific question: Proceeds to a specific question by index. ```json { "type": "specific_question", "index": 2 } ``` Translations: Each question can include inline translations. - `translations`: Object mapping language codes to translated fields. - Language codes: Canonical BCP-47-ish strings (e.g., "es", "es-MX", "zh-CN"). Aliases like "english" or "default" are rejected. The survey's `base_language` (default "en") declares the language of the untranslated text and cannot also appear as a translation key. - Translatable fields: `question`, `description`, `buttonText`, `choices`, `lowerBoundLabel`, `upperBoundLabel`, `link` Example with translations: ```json { "id": "uuid", "type": "rating", "question": "How satisfied are you?", "lowerBoundLabel": "Not satisfied", "upperBoundLabel": "Very satisfied", "translations": { "es": { "question": "¿Qué tan satisfecho estás?", "lowerBoundLabel": "No satisfecho", "upperBoundLabel": "Muy satisfecho" }, "fr": { "question": "Dans quelle mesure êtes-vous satisfait?" } } } ``` */
 export type SurveysCreateRequestQuestionsList =
-  ReadonlyArray<SurveyQuestionInputSchema>;
+  Array<SurveyQuestionInputSchema>;
 export const SurveysCreateRequestQuestionsList = /*@__PURE__*/ S.Array(
   SurveyQuestionInputSchema,
 ) as any as S.Schema<SurveysCreateRequestQuestionsList>;
@@ -1053,7 +1052,7 @@ export const SurveyConditionEventValueSchema = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of event names that trigger the survey. */
 export type SurveyEventsConditionSchemaValuesList =
-  ReadonlyArray<SurveyConditionEventValueSchema>;
+  Array<SurveyConditionEventValueSchema>;
 export const SurveyEventsConditionSchemaValuesList = /*@__PURE__*/ S.Array(
   SurveyConditionEventValueSchema,
 ) as any as S.Schema<SurveyEventsConditionSchemaValuesList>;
@@ -1078,7 +1077,7 @@ export type DeviceTypesEnum = "Desktop" | "Mobile" | "Tablet";
 export const DeviceTypesEnum = /*@__PURE__*/ S.String;
 
 /** Device types that should match for this survey to be shown. */
-export type SurveyConditionsSchemaDeviceTypesList = ReadonlyArray<
+export type SurveyConditionsSchemaDeviceTypesList = Array<
   DeviceTypesEnum | (string & {})
 >;
 export const SurveyConditionsSchemaDeviceTypesList = /*@__PURE__*/ S.Array(
@@ -1196,7 +1195,7 @@ export const SurveyAppearanceSchema = /*@__PURE__*/ S.suspend(() =>
   identifier: "SurveyAppearanceSchema",
 }) as any as S.Schema<SurveyAppearanceSchema>;
 
-export type SurveysCreateRequestIterationStartDatesList = ReadonlyArray<string>;
+export type SurveysCreateRequestIterationStartDatesList = Array<string>;
 export const SurveysCreateRequestIterationStartDatesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1350,7 +1349,7 @@ export type MinimalFeatureFlagBucketingIdentifier =
 export const MinimalFeatureFlagBucketingIdentifier =
   /*@__PURE__*/ S.Unknown as any as S.Schema<MinimalFeatureFlagBucketingIdentifier>;
 
-export type MinimalFeatureFlagEvaluationContextsList = ReadonlyArray<string>;
+export type MinimalFeatureFlagEvaluationContextsList = Array<string>;
 export const MinimalFeatureFlagEvaluationContextsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<MinimalFeatureFlagEvaluationContextsList>;
@@ -1442,7 +1441,7 @@ export const UserBasic = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UserBasic" }) as any as S.Schema<UserBasic>;
 
 export type SurveySerializerCreateUpdateOnlyOutputIterationStartDatesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const SurveySerializerCreateUpdateOnlyOutputIterationStartDatesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1564,7 +1563,7 @@ export const SurveysDestroyResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SurveysDestroyResponse>;
 
 export type SurveysDuplicateToProjectsCreateRequestIterationStartDatesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const SurveysDuplicateToProjectsCreateRequestIterationStartDatesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1754,8 +1753,7 @@ export const GenerateSurveyTranslationsResponseTranslationsMap =
   ) as any as S.Schema<GenerateSurveyTranslationsResponseTranslationsMap>;
 
 /** Translated choices in the same order as the source choices. */
-export type GeneratedSurveyQuestionTranslationChoicesList =
-  ReadonlyArray<string>;
+export type GeneratedSurveyQuestionTranslationChoicesList = Array<string>;
 export const GeneratedSurveyQuestionTranslationChoicesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1819,7 +1817,7 @@ export const GeneratedSurveyQuestionTranslationPatch = /*@__PURE__*/ S.suspend(
 
 /** Question-level translation patches keyed by question id and language. */
 export type GenerateSurveyTranslationsResponseQuestionsList =
-  ReadonlyArray<GeneratedSurveyQuestionTranslationPatch>;
+  Array<GeneratedSurveyQuestionTranslationPatch>;
 export const GenerateSurveyTranslationsResponseQuestionsList =
   /*@__PURE__*/ S.Array(
     GeneratedSurveyQuestionTranslationPatch,
@@ -1827,7 +1825,7 @@ export const GenerateSurveyTranslationsResponseQuestionsList =
 
 /** Editor field paths generated by AI and safe to highlight as draft content. */
 export type GenerateSurveyTranslationsResponseGeneratedFieldPathsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GenerateSurveyTranslationsResponseGeneratedFieldPathsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1947,13 +1945,12 @@ export const SurveyFeatureFlagKeysItemMap = /*@__PURE__*/ S.Record(
   S.String,
 ) as any as S.Schema<SurveyFeatureFlagKeysItemMap>;
 
-export type SurveyFeatureFlagKeysList =
-  ReadonlyArray<SurveyFeatureFlagKeysItemMap>;
+export type SurveyFeatureFlagKeysList = Array<SurveyFeatureFlagKeysItemMap>;
 export const SurveyFeatureFlagKeysList = /*@__PURE__*/ S.Array(
   SurveyFeatureFlagKeysItemMap,
 ) as any as S.Schema<SurveyFeatureFlagKeysList>;
 
-export type SurveyIterationStartDatesList = ReadonlyArray<string>;
+export type SurveyIterationStartDatesList = Array<string>;
 export const SurveyIterationStartDatesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SurveyIterationStartDatesList>;
@@ -2055,7 +2052,7 @@ export const Survey = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Survey" }) as any as S.Schema<Survey>;
 
-export type SurveysListRequestIdsList = ReadonlyArray<string>;
+export type SurveysListRequestIdsList = Array<string>;
 export const SurveysListRequestIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SurveysListRequestIdsList>;
@@ -2102,7 +2099,7 @@ export const SurveysListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "SurveysListRequest",
 }) as any as S.Schema<SurveysListRequest>;
 
-export type PaginatedSurveyListResultsList = ReadonlyArray<Survey>;
+export type PaginatedSurveyListResultsList = Array<Survey>;
 export const PaginatedSurveyListResultsList = /*@__PURE__*/ S.Array(
   Survey,
 ) as any as S.Schema<PaginatedSurveyListResultsList>;
@@ -2126,13 +2123,12 @@ export const PaginatedSurveyList = /*@__PURE__*/ S.suspend(() =>
 
 /** The `array` of questions included in the survey. Each question must conform to one of the defined question types: Basic, Link, Rating, or Multiple Choice. Basic (open-ended question) - `id`: The question ID - `type`: `open` - `question`: The text of the question. - `description`: Optional description of the question. - `descriptionContentType`: Content type of the description (`html` or `text`). - `optional`: Whether the question is optional (`boolean`). - `buttonText`: Text displayed on the submit button. - `branching`: Branching logic for the question. See branching types below for details. Link (a question with a link) - `id`: The question ID - `type`: `link` - `question`: The text of the question. - `description`: Optional description of the question. - `descriptionContentType`: Content type of the description (`html` or `text`). - `optional`: Whether the question is optional (`boolean`). - `buttonText`: Text displayed on the submit button. - `link`: The URL associated with the question. - `branching`: Branching logic for the question. See branching types below for details. Rating (a question with a rating scale) - `id`: The question ID - `type`: `rating` - `question`: The text of the question. - `description`: Optional description of the question. - `descriptionContentType`: Content type of the description (`html` or `text`). - `optional`: Whether the question is optional (`boolean`). - `buttonText`: Text displayed on the submit button. - `display`: Display style of the rating (`number` or `emoji`). - `scale`: The scale of the rating (`number`). - `lowerBoundLabel`: Label for the lower bound of the scale. - `upperBoundLabel`: Label for the upper bound of the scale. - `isNpsQuestion`: Whether the question is an NPS rating. - `branching`: Branching logic for the question. See branching types below for details. Multiple choice - `id`: The question ID - `type`: `single_choice` or `multiple_choice` - `question`: The text of the question. - `description`: Optional description of the question. - `descriptionContentType`: Content type of the description (`html` or `text`). - `optional`: Whether the question is optional (`boolean`). - `buttonText`: Text displayed on the submit button. - `choices`: An array of choices for the question. - `shuffleOptions`: Whether to shuffle the order of the choices (`boolean`). - `hasOpenChoice`: Whether the question allows an open-ended response (`boolean`). - `branching`: Branching logic for the question. See branching types below for details. Branching logic can be one of the following types: Next question: Proceeds to the next question ```json { "type": "next_question" } ``` End: Ends the survey, optionally displaying a confirmation message. ```json { "type": "end" } ``` Response-based: Branches based on the response values. Available for the `rating` and `single_choice` question types. ```json { "type": "response_based", "responseValues": { "responseKey": "value" } } ``` Specific question: Proceeds to a specific question by index. ```json { "type": "specific_question", "index": 2 } ``` Translations: Each question can include inline translations. - `translations`: Object mapping language codes to translated fields. - Language codes: Canonical BCP-47-ish strings (e.g., "es", "es-MX", "zh-CN"). Aliases like "english" or "default" are rejected. The survey's `base_language` (default "en") declares the language of the untranslated text and cannot also appear as a translation key. - Translatable fields: `question`, `description`, `buttonText`, `choices`, `lowerBoundLabel`, `upperBoundLabel`, `link` Example with translations: ```json { "id": "uuid", "type": "rating", "question": "How satisfied are you?", "lowerBoundLabel": "Not satisfied", "upperBoundLabel": "Very satisfied", "translations": { "es": { "question": "¿Qué tan satisfecho estás?", "lowerBoundLabel": "No satisfecho", "upperBoundLabel": "Muy satisfecho" }, "fr": { "question": "Dans quelle mesure êtes-vous satisfait?" } } } ``` */
 export type SurveysPartialUpdateRequestQuestionsList =
-  ReadonlyArray<SurveyQuestionInputSchema>;
+  Array<SurveyQuestionInputSchema>;
 export const SurveysPartialUpdateRequestQuestionsList = /*@__PURE__*/ S.Array(
   SurveyQuestionInputSchema,
 ) as any as S.Schema<SurveysPartialUpdateRequestQuestionsList>;
 
-export type SurveysPartialUpdateRequestIterationStartDatesList =
-  ReadonlyArray<string>;
+export type SurveysPartialUpdateRequestIterationStartDatesList = Array<string>;
 export const SurveysPartialUpdateRequestIterationStartDatesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2295,8 +2291,7 @@ export const SurveyQuestionLabel = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SurveyQuestionLabel>;
 
 /** One entry per question that has an ID assigned, across all the team's surveys. */
-export type SurveyQuestionLabelsResponseLabelsList =
-  ReadonlyArray<SurveyQuestionLabel>;
+export type SurveyQuestionLabelsResponseLabelsList = Array<SurveyQuestionLabel>;
 export const SurveyQuestionLabelsResponseLabelsList = /*@__PURE__*/ S.Array(
   SurveyQuestionLabel,
 ) as any as S.Schema<SurveyQuestionLabelsResponseLabelsList>;
@@ -2314,7 +2309,7 @@ export const SurveyQuestionLabelsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SurveyQuestionLabelsResponse>;
 
 export type SurveysResponsesArchiveCreateRequestIterationStartDatesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const SurveysResponsesArchiveCreateRequestIterationStartDatesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2525,7 +2520,7 @@ export const SurveyResponseAnswer = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SurveyResponseAnswer>;
 
 /** One entry per survey question that received a non-empty answer. Question text is already resolved — callers do not need to look up `$survey_response_<id>` keys. */
-export type SurveyResponseRowAnswersList = ReadonlyArray<SurveyResponseAnswer>;
+export type SurveyResponseRowAnswersList = Array<SurveyResponseAnswer>;
 export const SurveyResponseRowAnswersList = /*@__PURE__*/ S.Array(
   SurveyResponseAnswer,
 ) as any as S.Schema<SurveyResponseRowAnswersList>;
@@ -2591,7 +2586,7 @@ export const SurveyResponseRow = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SurveyResponseRow>;
 
 /** Survey response rows for the requested page. */
-export type SurveyResponsesListResultsList = ReadonlyArray<SurveyResponseRow>;
+export type SurveyResponsesListResultsList = Array<SurveyResponseRow>;
 export const SurveyResponsesListResultsList = /*@__PURE__*/ S.Array(
   SurveyResponseRow,
 ) as any as S.Schema<SurveyResponsesListResultsList>;
@@ -2618,7 +2613,7 @@ export const SurveyResponsesList = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SurveyResponsesList>;
 
 export type SurveysResponsesUnarchiveCreateRequestIterationStartDatesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const SurveysResponsesUnarchiveCreateRequestIterationStartDatesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2802,7 +2797,7 @@ export const SurveyStatsResponseRatesMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<SurveyStatsResponseRatesMap>;
 
 /** Per-question response counts and distributions. Only present when include_per_question_stats=true was passed. For rating questions includes `average`; for choice/rating questions `distribution` maps answer value to count; for open questions `distribution` is empty (use surveys-responses-list to read free-text). */
-export type SurveyStatsResponsePerQuestionStatsList = ReadonlyArray<unknown>;
+export type SurveyStatsResponsePerQuestionStatsList = Array<unknown>;
 export const SurveyStatsResponsePerQuestionStatsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<SurveyStatsResponsePerQuestionStatsList>;
@@ -2894,7 +2889,7 @@ export const SurveysSummarizeResponsesCreateResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<SurveysSummarizeResponsesCreateResponse>;
 
 export type SurveysSummaryHeadlineCreateRequestIterationStartDatesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const SurveysSummaryHeadlineCreateRequestIterationStartDatesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3004,7 +2999,7 @@ export const SurveysSummaryHeadlineCreateResponse = /*@__PURE__*/ S.suspend(
   identifier: "SurveysSummaryHeadlineCreateResponse",
 }) as any as S.Schema<SurveysSummaryHeadlineCreateResponse>;
 
-export type SurveysUpdateRequestIterationStartDatesList = ReadonlyArray<string>;
+export type SurveysUpdateRequestIterationStartDatesList = Array<string>;
 export const SurveysUpdateRequestIterationStartDatesList =
   /*@__PURE__*/ S.Array(
     S.String,

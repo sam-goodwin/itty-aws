@@ -92,9 +92,9 @@ export const SkuTier = /*@__PURE__*/ S.String;
 /** Model representing SKU for Azure Dev Spaces Controller. */
 export interface Sku {
   /** The name of the SKU for Azure Dev Spaces Controller. */
-  name: SkuName;
+  name: SkuName | (string & {});
   /** The tier of the SKU for Azure Dev Spaces Controller. */
-  tier?: SkuTier;
+  tier?: SkuTier | (string & {});
 }
 export const Sku = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -360,7 +360,7 @@ export const Controller = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Controller" }) as any as S.Schema<Controller>;
 
 /** List of Azure Dev Spaces Controllers. */
-export type ControllerListValueList = ReadonlyArray<Controller>;
+export type ControllerListValueList = Array<Controller>;
 export const ControllerListValueList = /*@__PURE__*/ S.Array(
   Controller,
 ) as any as S.Schema<ControllerListValueList>;
@@ -459,7 +459,7 @@ export const ControllerConnectionDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Azure Dev Spaces Controller connection details. */
 export type ControllerConnectionDetailsListConnectionDetailsListList =
-  ReadonlyArray<ControllerConnectionDetails>;
+  Array<ControllerConnectionDetails>;
 export const ControllerConnectionDetailsListConnectionDetailsListList =
   /*@__PURE__*/ S.Array(
     ControllerConnectionDetails,
@@ -619,7 +619,7 @@ export const ResourceProviderOperationDefinition = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource provider operations list. */
 export type ResourceProviderOperationListValueList =
-  ReadonlyArray<ResourceProviderOperationDefinition>;
+  Array<ResourceProviderOperationDefinition>;
 export const ResourceProviderOperationListValueList = /*@__PURE__*/ S.Array(
   ResourceProviderOperationDefinition,
 ) as any as S.Schema<ResourceProviderOperationListValueList>;

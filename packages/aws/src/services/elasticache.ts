@@ -2455,7 +2455,7 @@ export const DataStorageUnit = /*@__PURE__*/ S.String;
 export interface DataStorage {
   Maximum?: number;
   Minimum?: number;
-  Unit?: DataStorageUnit;
+  Unit?: DataStorageUnit | (string & {});
 }
 export const DataStorage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

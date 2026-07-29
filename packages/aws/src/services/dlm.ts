@@ -138,12 +138,12 @@ export const PolicyTypeValues = /*@__PURE__*/ S.String;
 export type ResourceTypeValues = "VOLUME" | "INSTANCE";
 export const ResourceTypeValues = /*@__PURE__*/ S.String;
 
-export type ResourceTypeValuesList = ResourceTypeValues[];
+export type ResourceTypeValuesList = (ResourceTypeValues | (string & {}))[];
 export const ResourceTypeValuesList = /*@__PURE__*/ S.Array(ResourceTypeValues);
 export type ResourceLocationValues = "CLOUD" | "OUTPOST" | "LOCAL_ZONE";
 export const ResourceLocationValues = /*@__PURE__*/ S.String;
 
-export type ResourceLocationList = ResourceLocationValues[];
+export type ResourceLocationList = (ResourceLocationValues | (string & {}))[];
 export const ResourceLocationList = /*@__PURE__*/ S.Array(
   ResourceLocationValues,
 );
@@ -175,7 +175,7 @@ export type CronExpression = string;
 export type StageValues = "PRE" | "POST";
 export const StageValues = /*@__PURE__*/ S.String;
 
-export type StagesList = StageValues[];
+export type StagesList = (StageValues | (string & {}))[];
 export const StagesList = /*@__PURE__*/ S.Array(StageValues);
 export type ExecutionHandlerServiceValues = "AWS_SYSTEMS_MANAGER";
 export const ExecutionHandlerServiceValues = /*@__PURE__*/ S.String;
@@ -186,7 +186,7 @@ export type ScriptExecutionTimeout = number;
 export type ScriptMaximumRetryCount = number;
 export interface Script {
   Stages?: StageValues[];
-  ExecutionHandlerService?: ExecutionHandlerServiceValues;
+  ExecutionHandlerService?: ExecutionHandlerServiceValues | (string & {});
   ExecutionHandler?: string;
   ExecuteOperationOnScriptFailure?: boolean;
   ExecutionTimeout?: number;
@@ -205,9 +205,9 @@ export const Script = /*@__PURE__*/ S.suspend(() =>
 export type ScriptsList = Script[];
 export const ScriptsList = /*@__PURE__*/ S.Array(Script);
 export interface CreateRule {
-  Location?: LocationValues;
+  Location?: LocationValues | (string & {});
   Interval?: number;
-  IntervalUnit?: IntervalUnitValues;
+  IntervalUnit?: IntervalUnitValues | (string & {});
   Times?: string[];
   CronExpression?: string;
   Scripts?: Script[];
@@ -230,7 +230,7 @@ export const RetentionIntervalUnitValues = /*@__PURE__*/ S.String;
 export interface RetainRule {
   Count?: number;
   Interval?: number;
-  IntervalUnit?: RetentionIntervalUnitValues;
+  IntervalUnit?: RetentionIntervalUnitValues | (string & {});
 }
 export const RetainRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -249,7 +249,7 @@ export const AvailabilityZoneIdList = /*@__PURE__*/ S.Array(S.String);
 export interface FastRestoreRule {
   Count?: number;
   Interval?: number;
-  IntervalUnit?: RetentionIntervalUnitValues;
+  IntervalUnit?: RetentionIntervalUnitValues | (string & {});
   AvailabilityZones?: string[];
   AvailabilityZoneIds?: string[];
 }
@@ -271,7 +271,7 @@ export type CmkArn = string;
 export type CopyTagsNullable = boolean;
 export interface CrossRegionCopyRetainRule {
   Interval?: number;
-  IntervalUnit?: RetentionIntervalUnitValues;
+  IntervalUnit?: RetentionIntervalUnitValues | (string & {});
 }
 export const CrossRegionCopyRetainRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -283,7 +283,7 @@ export const CrossRegionCopyRetainRule = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CrossRegionCopyRetainRule>;
 export interface CrossRegionCopyDeprecateRule {
   Interval?: number;
-  IntervalUnit?: RetentionIntervalUnitValues;
+  IntervalUnit?: RetentionIntervalUnitValues | (string & {});
 }
 export const CrossRegionCopyDeprecateRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -323,7 +323,7 @@ export const ShareTargetAccountList = /*@__PURE__*/ S.Array(S.String);
 export interface ShareRule {
   TargetAccounts?: string[];
   UnshareInterval?: number;
-  UnshareIntervalUnit?: RetentionIntervalUnitValues;
+  UnshareIntervalUnit?: RetentionIntervalUnitValues | (string & {});
 }
 export const ShareRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -337,7 +337,7 @@ export const ShareRules = /*@__PURE__*/ S.Array(ShareRule);
 export interface DeprecateRule {
   Count?: number;
   Interval?: number;
-  IntervalUnit?: RetentionIntervalUnitValues;
+  IntervalUnit?: RetentionIntervalUnitValues | (string & {});
 }
 export const DeprecateRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -349,7 +349,7 @@ export const DeprecateRule = /*@__PURE__*/ S.suspend(() =>
 export interface RetentionArchiveTier {
   Count?: number;
   Interval?: number;
-  IntervalUnit?: RetentionIntervalUnitValues;
+  IntervalUnit?: RetentionIntervalUnitValues | (string & {});
 }
 export const RetentionArchiveTier = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -430,7 +430,7 @@ export type SnapshotOwnerList = string[];
 export const SnapshotOwnerList = /*@__PURE__*/ S.Array(S.String);
 export type DescriptionRegex = string;
 export interface EventParameters {
-  EventType?: EventTypeValues;
+  EventType?: EventTypeValues | (string & {});
   SnapshotOwner?: string[];
   DescriptionRegex?: string;
 }
@@ -444,7 +444,7 @@ export const EventParameters = /*@__PURE__*/ S.suspend(() =>
   identifier: "EventParameters",
 }) as any as S.Schema<EventParameters>;
 export interface EventSource {
-  Type?: EventSourceValues;
+  Type?: EventSourceValues | (string & {});
   Parameters?: EventParameters;
 }
 export const EventSource = /*@__PURE__*/ S.suspend(() =>
@@ -530,7 +530,7 @@ export const Exclusions = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Exclusions" }) as any as S.Schema<Exclusions>;
 export interface PolicyDetails {
-  PolicyType?: PolicyTypeValues;
+  PolicyType?: PolicyTypeValues | (string & {});
   ResourceTypes?: ResourceTypeValues[];
   ResourceLocations?: ResourceLocationValues[];
   TargetTags?: Tag[];
@@ -538,8 +538,8 @@ export interface PolicyDetails {
   Parameters?: Parameters;
   EventSource?: EventSource;
   Actions?: Action[];
-  PolicyLanguage?: PolicyLanguageValues;
-  ResourceType?: ResourceTypeValues;
+  PolicyLanguage?: PolicyLanguageValues | (string & {});
+  ResourceType?: ResourceTypeValues | (string & {});
   CreateInterval?: number;
   RetainInterval?: number;
   CopyTags?: boolean;

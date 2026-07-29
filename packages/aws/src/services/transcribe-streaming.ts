@@ -152,7 +152,7 @@ export const MedicalScribeParticipantRole = /*@__PURE__*/ S.String;
 
 export interface MedicalScribeChannelDefinition {
   ChannelId: number;
-  ParticipantRole: MedicalScribeParticipantRole;
+  ParticipantRole: MedicalScribeParticipantRole | (string & {});
 }
 export const MedicalScribeChannelDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -205,7 +205,7 @@ export const MedicalScribeNoteTemplate = /*@__PURE__*/ S.String;
 
 export interface ClinicalNoteGenerationSettings {
   OutputBucketName: string;
-  NoteTemplate?: MedicalScribeNoteTemplate;
+  NoteTemplate?: MedicalScribeNoteTemplate | (string & {});
 }
 export const ClinicalNoteGenerationSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

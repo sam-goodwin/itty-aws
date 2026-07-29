@@ -274,7 +274,7 @@ export const MappingParameters = /*@__PURE__*/ S.suspend(() =>
   identifier: "MappingParameters",
 }) as any as S.Schema<MappingParameters>;
 export interface RecordFormat {
-  RecordFormatType: RecordFormatType;
+  RecordFormatType: RecordFormatType | (string & {});
   MappingParameters?: MappingParameters;
 }
 export const RecordFormat = /*@__PURE__*/ S.suspend(() =>
@@ -420,7 +420,7 @@ export const LambdaOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ResourceARN: S.String, RoleARN: S.String }),
 ).annotate({ identifier: "LambdaOutput" }) as any as S.Schema<LambdaOutput>;
 export interface DestinationSchema {
-  RecordFormatType: RecordFormatType;
+  RecordFormatType: RecordFormatType | (string & {});
 }
 export const DestinationSchema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ RecordFormatType: RecordFormatType }),
@@ -842,7 +842,7 @@ export type InputStartingPosition =
 export const InputStartingPosition = /*@__PURE__*/ S.String;
 
 export interface InputStartingPositionConfiguration {
-  InputStartingPosition?: InputStartingPosition;
+  InputStartingPosition?: InputStartingPosition | (string & {});
 }
 export const InputStartingPositionConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ InputStartingPosition: S.optional(InputStartingPosition) }),

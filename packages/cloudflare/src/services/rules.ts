@@ -281,7 +281,7 @@ export const ListsItemsCreateRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListsItemsCreateRequestBodyItem>;
 
 export type ListsItemsCreateRequestBodyList =
-  ReadonlyArray<ListsItemsCreateRequestBodyItem>;
+  Array<ListsItemsCreateRequestBodyItem>;
 export const ListsItemsCreateRequestBodyList = /*@__PURE__*/ S.Array(
   ListsItemsCreateRequestBodyItem,
 ) as any as S.Schema<ListsItemsCreateRequestBodyList>;
@@ -373,7 +373,7 @@ export const ListsItemsDeleteRequestItemsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListsItemsDeleteRequestItemsItem>;
 
 export type ListsItemsDeleteRequestItemsList =
-  ReadonlyArray<ListsItemsDeleteRequestItemsItem>;
+  Array<ListsItemsDeleteRequestItemsItem>;
 export const ListsItemsDeleteRequestItemsList = /*@__PURE__*/ S.Array(
   ListsItemsDeleteRequestItemsItem,
 ) as any as S.Schema<ListsItemsDeleteRequestItemsList>;
@@ -1056,7 +1056,7 @@ export const ListsItemsListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListsItemsListResultItem",
 }) as any as S.Schema<ListsItemsListResultItem>;
 
-export type ListsItemsListResultList = ReadonlyArray<ListsItemsListResultItem>;
+export type ListsItemsListResultList = Array<ListsItemsListResultItem>;
 export const ListsItemsListResultList = /*@__PURE__*/ S.Array(
   ListsItemsListResultItem,
 ) as any as S.Schema<ListsItemsListResultList>;
@@ -1132,7 +1132,7 @@ export const ListsListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListsListResultItem",
 }) as any as S.Schema<ListsListResultItem>;
 
-export type ListsListResultList = ReadonlyArray<ListsListResultItem>;
+export type ListsListResultList = Array<ListsListResultItem>;
 export const ListsListResultList = /*@__PURE__*/ S.Array(
   ListsListResultItem,
 ) as any as S.Schema<ListsListResultList>;
@@ -1370,7 +1370,7 @@ export const ListsItemsUpdateRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListsItemsUpdateRequestBodyItem>;
 
 export type ListsItemsUpdateRequestBodyList =
-  ReadonlyArray<ListsItemsUpdateRequestBodyItem>;
+  Array<ListsItemsUpdateRequestBodyItem>;
 export const ListsItemsUpdateRequestBodyList = /*@__PURE__*/ S.Array(
   ListsItemsUpdateRequestBodyItem,
 ) as any as S.Schema<ListsItemsUpdateRequestBodyList>;

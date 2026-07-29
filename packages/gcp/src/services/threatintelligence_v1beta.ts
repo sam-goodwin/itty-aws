@@ -89,7 +89,7 @@ export const BenignProjectsAlertsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "BenignProjectsAlertsRequest",
 }) as any as S.Schema<BenignProjectsAlertsRequest>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -160,7 +160,7 @@ export const VulnerabilityMatchExploitationConsequencesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type VulnerabilityMatchExploitationConsequencesItemEnumList =
-  ReadonlyArray<VulnerabilityMatchExploitationConsequencesItemEnum>;
+  Array<VulnerabilityMatchExploitationConsequencesItemEnum>;
 export const VulnerabilityMatchExploitationConsequencesItemEnumList =
   /*@__PURE__*/ S.Array(
     VulnerabilityMatchExploitationConsequencesItemEnum,
@@ -189,7 +189,7 @@ export const VulnerabilityMatchExploitationVectorsItemEnum =
   /*@__PURE__*/ S.String;
 
 export type VulnerabilityMatchExploitationVectorsItemEnumList =
-  ReadonlyArray<VulnerabilityMatchExploitationVectorsItemEnum>;
+  Array<VulnerabilityMatchExploitationVectorsItemEnum>;
 export const VulnerabilityMatchExploitationVectorsItemEnumList =
   /*@__PURE__*/ S.Array(
     VulnerabilityMatchExploitationVectorsItemEnum,
@@ -242,7 +242,7 @@ export const ProductFix = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ProductFix" }) as any as S.Schema<ProductFix>;
 
-export type ProductFixList = ReadonlyArray<ProductFix>;
+export type ProductFixList = Array<ProductFix>;
 export const ProductFixList = /*@__PURE__*/ S.Array(
   ProductFix,
 ) as any as S.Schema<ProductFixList>;
@@ -272,7 +272,7 @@ export const Association = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Association" }) as any as S.Schema<Association>;
 
-export type AssociationList = ReadonlyArray<Association>;
+export type AssociationList = Array<Association>;
 export const AssociationList = /*@__PURE__*/ S.Array(
   Association,
 ) as any as S.Schema<AssociationList>;
@@ -320,7 +320,7 @@ export const PublicExploit = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PublicExploit" }) as any as S.Schema<PublicExploit>;
 
-export type PublicExploitList = ReadonlyArray<PublicExploit>;
+export type PublicExploitList = Array<PublicExploit>;
 export const PublicExploitList = /*@__PURE__*/ S.Array(
   PublicExploit,
 ) as any as S.Schema<PublicExploitList>;
@@ -706,7 +706,7 @@ export const FacetCount = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "FacetCount" }) as any as S.Schema<FacetCount>;
 
-export type FacetCountList = ReadonlyArray<FacetCount>;
+export type FacetCountList = Array<FacetCount>;
 export const FacetCountList = /*@__PURE__*/ S.Array(
   FacetCount,
 ) as any as S.Schema<FacetCountList>;
@@ -737,7 +737,7 @@ export const Facet = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Facet" }) as any as S.Schema<Facet>;
 
-export type FacetList = ReadonlyArray<Facet>;
+export type FacetList = Array<Facet>;
 export const FacetList = /*@__PURE__*/ S.Array(
   Facet,
 ) as any as S.Schema<FacetList>;
@@ -857,7 +857,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -1122,8 +1122,7 @@ export const CustomerProfileIndustry = /*@__PURE__*/ S.suspend(() =>
   identifier: "CustomerProfileIndustry",
 }) as any as S.Schema<CustomerProfileIndustry>;
 
-export type CustomerProfileIndustryList =
-  ReadonlyArray<CustomerProfileIndustry>;
+export type CustomerProfileIndustryList = Array<CustomerProfileIndustry>;
 export const CustomerProfileIndustryList = /*@__PURE__*/ S.Array(
   CustomerProfileIndustry,
 ) as any as S.Schema<CustomerProfileIndustryList>;
@@ -1170,8 +1169,7 @@ export const CustomerProfileCitation = /*@__PURE__*/ S.suspend(() =>
   identifier: "CustomerProfileCitation",
 }) as any as S.Schema<CustomerProfileCitation>;
 
-export type CustomerProfileCitationList =
-  ReadonlyArray<CustomerProfileCitation>;
+export type CustomerProfileCitationList = Array<CustomerProfileCitation>;
 export const CustomerProfileCitationList = /*@__PURE__*/ S.Array(
   CustomerProfileCitation,
 ) as any as S.Schema<CustomerProfileCitationList>;
@@ -1192,8 +1190,7 @@ export const CustomerProfileWebPresence = /*@__PURE__*/ S.suspend(() =>
   identifier: "CustomerProfileWebPresence",
 }) as any as S.Schema<CustomerProfileWebPresence>;
 
-export type CustomerProfileWebPresenceList =
-  ReadonlyArray<CustomerProfileWebPresence>;
+export type CustomerProfileWebPresenceList = Array<CustomerProfileWebPresence>;
 export const CustomerProfileWebPresenceList = /*@__PURE__*/ S.Array(
   CustomerProfileWebPresence,
 ) as any as S.Schema<CustomerProfileWebPresenceList>;
@@ -1214,7 +1211,7 @@ export const CustomerProfileCompany = /*@__PURE__*/ S.suspend(() =>
   identifier: "CustomerProfileCompany",
 }) as any as S.Schema<CustomerProfileCompany>;
 
-export type CustomerProfileCompanyList = ReadonlyArray<CustomerProfileCompany>;
+export type CustomerProfileCompanyList = Array<CustomerProfileCompany>;
 export const CustomerProfileCompanyList = /*@__PURE__*/ S.Array(
   CustomerProfileCompany,
 ) as any as S.Schema<CustomerProfileCompanyList>;
@@ -1238,7 +1235,7 @@ export const CustomerProfilePerson = /*@__PURE__*/ S.suspend(() =>
   identifier: "CustomerProfilePerson",
 }) as any as S.Schema<CustomerProfilePerson>;
 
-export type CustomerProfilePersonList = ReadonlyArray<CustomerProfilePerson>;
+export type CustomerProfilePersonList = Array<CustomerProfilePerson>;
 export const CustomerProfilePersonList = /*@__PURE__*/ S.Array(
   CustomerProfilePerson,
 ) as any as S.Schema<CustomerProfilePersonList>;
@@ -1262,7 +1259,7 @@ export const CustomerProfileProduct = /*@__PURE__*/ S.suspend(() =>
   identifier: "CustomerProfileProduct",
 }) as any as S.Schema<CustomerProfileProduct>;
 
-export type CustomerProfileProductList = ReadonlyArray<CustomerProfileProduct>;
+export type CustomerProfileProductList = Array<CustomerProfileProduct>;
 export const CustomerProfileProductList = /*@__PURE__*/ S.Array(
   CustomerProfileProduct,
 ) as any as S.Schema<CustomerProfileProductList>;
@@ -1289,8 +1286,7 @@ export const CustomerProfileLocation = /*@__PURE__*/ S.suspend(() =>
   identifier: "CustomerProfileLocation",
 }) as any as S.Schema<CustomerProfileLocation>;
 
-export type CustomerProfileLocationList =
-  ReadonlyArray<CustomerProfileLocation>;
+export type CustomerProfileLocationList = Array<CustomerProfileLocation>;
 export const CustomerProfileLocationList = /*@__PURE__*/ S.Array(
   CustomerProfileLocation,
 ) as any as S.Schema<CustomerProfileLocationList>;
@@ -1323,8 +1319,7 @@ export const CustomerProfileContactInfo = /*@__PURE__*/ S.suspend(() =>
   identifier: "CustomerProfileContactInfo",
 }) as any as S.Schema<CustomerProfileContactInfo>;
 
-export type CustomerProfileContactInfoList =
-  ReadonlyArray<CustomerProfileContactInfo>;
+export type CustomerProfileContactInfoList = Array<CustomerProfileContactInfo>;
 export const CustomerProfileContactInfoList = /*@__PURE__*/ S.Array(
   CustomerProfileContactInfo,
 ) as any as S.Schema<CustomerProfileContactInfoList>;
@@ -1389,7 +1384,9 @@ export const TechnologyWatchListAlertThresholdExploitationStatesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type TechnologyWatchListAlertThresholdExploitationStatesItemEnumList =
-  ReadonlyArray<TechnologyWatchListAlertThresholdExploitationStatesItemEnum>;
+  Array<
+    TechnologyWatchListAlertThresholdExploitationStatesItemEnum | (string & {})
+  >;
 export const TechnologyWatchListAlertThresholdExploitationStatesItemEnumList =
   /*@__PURE__*/ S.Array(
     TechnologyWatchListAlertThresholdExploitationStatesItemEnum,
@@ -1422,11 +1419,15 @@ export interface TechnologyWatchListAlertThreshold {
   /** Optional. The exploitation states of the alert. */
   exploitationStates?: TechnologyWatchListAlertThresholdExploitationStatesItemEnumList;
   /** Optional. The minimum priority for the alert. */
-  priorityMinimum?: TechnologyWatchListAlertThresholdPriorityMinimumEnum;
+  priorityMinimum?:
+    | TechnologyWatchListAlertThresholdPriorityMinimumEnum
+    | (string & {});
   /** Optional. The minimum epss score for the alert. Ex: 0.8. Valid range is [0.0, 1.0]. */
   epssScoreMinimum?: number;
   /** Optional. The minimum risk rating for the alert. */
-  riskRatingMinimum?: TechnologyWatchListAlertThresholdRiskRatingMinimumEnum;
+  riskRatingMinimum?:
+    | TechnologyWatchListAlertThresholdRiskRatingMinimumEnum
+    | (string & {});
 }
 export const TechnologyWatchListAlertThreshold = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1490,7 +1491,7 @@ export interface Configuration {
   /** If included when updating a configuration, this should be set to the current etag of the configuration. If the etags do not match, the update will be rejected and an ABORTED error will be returned. */
   etag?: string;
   /** Optional. State of the configuration. */
-  state?: ConfigurationStateEnum;
+  state?: ConfigurationStateEnum | (string & {});
   /** Required. Domain specific details for the configuration. */
   detail?: ConfigurationDetail;
   /** Identifier. Server generated name for the configuration. format is projects/{project}/configurations/{configuration} */
@@ -1726,7 +1727,7 @@ export const ListProjectsAlertsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsAlertsRequest",
 }) as any as S.Schema<ListProjectsAlertsRequest>;
 
-export type AlertList = ReadonlyArray<Alert>;
+export type AlertList = Array<Alert>;
 export const AlertList = /*@__PURE__*/ S.Array(
   Alert,
 ) as any as S.Schema<AlertList>;
@@ -1777,7 +1778,7 @@ export const ListProjectsConfigurationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsConfigurationsRequest",
 }) as any as S.Schema<ListProjectsConfigurationsRequest>;
 
-export type ConfigurationList = ReadonlyArray<Configuration>;
+export type ConfigurationList = Array<Configuration>;
 export const ConfigurationList = /*@__PURE__*/ S.Array(
   Configuration,
 ) as any as S.Schema<ConfigurationList>;
@@ -1848,7 +1849,7 @@ export const ConfigurationRevision = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConfigurationRevision",
 }) as any as S.Schema<ConfigurationRevision>;
 
-export type ConfigurationRevisionList = ReadonlyArray<ConfigurationRevision>;
+export type ConfigurationRevisionList = Array<ConfigurationRevision>;
 export const ConfigurationRevisionList = /*@__PURE__*/ S.Array(
   ConfigurationRevision,
 ) as any as S.Schema<ConfigurationRevisionList>;
@@ -1899,7 +1900,7 @@ export const ListProjectsFindingsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsFindingsRequest",
 }) as any as S.Schema<ListProjectsFindingsRequest>;
 
-export type FindingList = ReadonlyArray<Finding>;
+export type FindingList = Array<Finding>;
 export const FindingList = /*@__PURE__*/ S.Array(
   Finding,
 ) as any as S.Schema<FindingList>;

@@ -65,7 +65,7 @@ export type AppliedScopeType = "Single" | "Shared" | "ManagementGroup";
 export const AppliedScopeType = /*@__PURE__*/ S.String;
 
 /** List of the subscriptions that the benefit will be applied. Do not specify if AppliedScopeType is Shared. This property will be deprecated and replaced by appliedScopeProperties instead for Single AppliedScopeType. */
-export type PurchaseRequestPropertiesAppliedScopesList = ReadonlyArray<string>;
+export type PurchaseRequestPropertiesAppliedScopesList = Array<string>;
 export const PurchaseRequestPropertiesAppliedScopesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PurchaseRequestPropertiesAppliedScopesList>;
@@ -102,7 +102,7 @@ export const InstanceFlexibility = /*@__PURE__*/ S.String;
 /** Properties specific to each reserved resource type. Not required if not applicable. */
 export interface PurchaseRequestPropertiesReservedResourceProperties {
   /** Turning this on will apply the reservation discount to other VMs in the same VM size group. Only specify for VirtualMachines reserved resource type. */
-  instanceFlexibility?: InstanceFlexibility;
+  instanceFlexibility?: InstanceFlexibility | (string & {});
 }
 export const PurchaseRequestPropertiesReservedResourceProperties =
   /*@__PURE__*/ S.suspend(() =>
@@ -116,19 +116,19 @@ export const PurchaseRequestPropertiesReservedResourceProperties =
 /** Properties of reservation purchase request */
 export interface PurchaseRequestProperties {
   /** The type of the resource that is being reserved. In addition to below types we have also added the following: OpenAIPTU, MDC, Sentinel. */
-  reservedResourceType?: ReservedResourceType;
+  reservedResourceType?: ReservedResourceType | (string & {});
   /** Subscription that will be charged for purchasing reservation or savings plan */
   billingScopeId?: string;
   /** Represent the term of reservation. */
-  term?: ReservationTerm;
+  term?: ReservationTerm | (string & {});
   /** Represent the billing plans. */
-  billingPlan?: ReservationBillingPlan;
+  billingPlan?: ReservationBillingPlan | (string & {});
   /** Quantity of the skus that are part of the reservation. */
   quantity?: number;
   /** Friendly name of the reservation */
   displayName?: string;
   /** Type of the Applied Scope. */
-  appliedScopeType?: AppliedScopeType;
+  appliedScopeType?: AppliedScopeType | (string & {});
   /** List of the subscriptions that the benefit will be applied. Do not specify if AppliedScopeType is Shared. This property will be deprecated and replaced by appliedScopeProperties instead for Single AppliedScopeType. */
   appliedScopes?: PurchaseRequestPropertiesAppliedScopesList;
   /** Properties specific to applied scope type. Not required if not applicable. Required and need to provide tenantId and managementGroupId if AppliedScopeType is ManagementGroup */
@@ -182,7 +182,7 @@ export const PurchaseRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of reservations that are being purchased in this exchange. */
 export type CalculateExchangeRequestPropertiesReservationsToPurchaseList =
-  ReadonlyArray<PurchaseRequest>;
+  Array<PurchaseRequest>;
 export const CalculateExchangeRequestPropertiesReservationsToPurchaseList =
   /*@__PURE__*/ S.Array(
     PurchaseRequest,
@@ -206,7 +206,7 @@ export interface Commitment {
   currencyCode?: string;
   amount?: number;
   /** Commitment grain. */
-  grain?: CommitmentGrain;
+  grain?: CommitmentGrain | (string & {});
 }
 export const Commitment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -223,11 +223,11 @@ export interface SavingsPlanPurchaseRequestProperties {
   /** Subscription that will be charged for purchasing reservation or savings plan */
   billingScopeId?: string;
   /** Represent savings plan term in ISO 8601 format. */
-  term?: SavingsPlanTerm;
+  term?: SavingsPlanTerm | (string & {});
   /** Represents the billing plan in ISO 8601 format. Required only for monthly billing plans. */
-  billingPlan?: BillingPlan;
+  billingPlan?: BillingPlan | (string & {});
   /** Type of the Applied Scope. */
-  appliedScopeType?: AppliedScopeType;
+  appliedScopeType?: AppliedScopeType | (string & {});
   /** Properties specific to applied scope type. Not required if not applicable. Required and need to provide tenantId and managementGroupId if AppliedScopeType is ManagementGroup */
   appliedScopeProperties?: AppliedScopeProperties;
   /** Commitment towards the benefit. */
@@ -266,7 +266,7 @@ export const SavingsPlanPurchaseRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of savings plans that are being purchased in this exchange. */
 export type CalculateExchangeRequestPropertiesSavingsPlansToPurchaseList =
-  ReadonlyArray<SavingsPlanPurchaseRequest>;
+  Array<SavingsPlanPurchaseRequest>;
 export const CalculateExchangeRequestPropertiesSavingsPlansToPurchaseList =
   /*@__PURE__*/ S.Array(
     SavingsPlanPurchaseRequest,
@@ -290,7 +290,7 @@ export const ReservationToReturn = /*@__PURE__*/ S.suspend(() =>
 
 /** List of reservations that are being returned in this exchange. */
 export type CalculateExchangeRequestPropertiesReservationsToExchangeList =
-  ReadonlyArray<ReservationToReturn>;
+  Array<ReservationToReturn>;
 export const CalculateExchangeRequestPropertiesReservationsToExchangeList =
   /*@__PURE__*/ S.Array(
     ReservationToReturn,
@@ -380,7 +380,7 @@ export const ReservationToPurchaseCalculateExchange = /*@__PURE__*/ S.suspend(
 
 /** Details of the reservations being purchased */
 export type CalculateExchangeResponsePropertiesReservationsToPurchaseList =
-  ReadonlyArray<ReservationToPurchaseCalculateExchange>;
+  Array<ReservationToPurchaseCalculateExchange>;
 export const CalculateExchangeResponsePropertiesReservationsToPurchaseList =
   /*@__PURE__*/ S.Array(
     ReservationToPurchaseCalculateExchange,
@@ -405,7 +405,7 @@ export const SavingsPlanToPurchaseCalculateExchange = /*@__PURE__*/ S.suspend(
 
 /** Details of the savings plans being purchased */
 export type CalculateExchangeResponsePropertiesSavingsPlansToPurchaseList =
-  ReadonlyArray<SavingsPlanToPurchaseCalculateExchange>;
+  Array<SavingsPlanToPurchaseCalculateExchange>;
 export const CalculateExchangeResponsePropertiesSavingsPlansToPurchaseList =
   /*@__PURE__*/ S.Array(
     SavingsPlanToPurchaseCalculateExchange,
@@ -454,7 +454,7 @@ export const ReservationToExchange = /*@__PURE__*/ S.suspend(() =>
 
 /** Details of the reservations being returned */
 export type CalculateExchangeResponsePropertiesReservationsToExchangeList =
-  ReadonlyArray<ReservationToExchange>;
+  Array<ReservationToExchange>;
 export const CalculateExchangeResponsePropertiesReservationsToExchangeList =
   /*@__PURE__*/ S.Array(
     ReservationToExchange,
@@ -475,8 +475,7 @@ export const ExchangePolicyError = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExchangePolicyError>;
 
 /** Exchange Policy errors */
-export type ExchangePolicyErrorsPolicyErrorsList =
-  ReadonlyArray<ExchangePolicyError>;
+export type ExchangePolicyErrorsPolicyErrorsList = Array<ExchangePolicyError>;
 export const ExchangePolicyErrorsPolicyErrorsList = /*@__PURE__*/ S.Array(
   ExchangePolicyError,
 ) as any as S.Schema<ExchangePolicyErrorsPolicyErrorsList>;
@@ -696,7 +695,7 @@ export const RefundPolicyError = /*@__PURE__*/ S.suspend(() =>
 
 /** Refund Policy errors */
 export type RefundPolicyResultPropertyPolicyErrorsList =
-  ReadonlyArray<RefundPolicyError>;
+  Array<RefundPolicyError>;
 export const RefundPolicyResultPropertyPolicyErrorsList = /*@__PURE__*/ S.Array(
   RefundPolicyError,
 ) as any as S.Schema<RefundPolicyResultPropertyPolicyErrorsList>;
@@ -877,7 +876,7 @@ export const ReservationToPurchaseExchange = /*@__PURE__*/ S.suspend(() =>
 
 /** Details of the reservations being purchased */
 export type ExchangeResponsePropertiesReservationsToPurchaseList =
-  ReadonlyArray<ReservationToPurchaseExchange>;
+  Array<ReservationToPurchaseExchange>;
 export const ExchangeResponsePropertiesReservationsToPurchaseList =
   /*@__PURE__*/ S.Array(
     ReservationToPurchaseExchange,
@@ -910,7 +909,7 @@ export const SavingsPlanToPurchaseExchange = /*@__PURE__*/ S.suspend(() =>
 
 /** Details of the savings plans being purchased */
 export type ExchangeResponsePropertiesSavingsPlansToPurchaseList =
-  ReadonlyArray<SavingsPlanToPurchaseExchange>;
+  Array<SavingsPlanToPurchaseExchange>;
 export const ExchangeResponsePropertiesSavingsPlansToPurchaseList =
   /*@__PURE__*/ S.Array(
     SavingsPlanToPurchaseExchange,
@@ -943,7 +942,7 @@ export const ReservationToReturnForExchange = /*@__PURE__*/ S.suspend(() =>
 
 /** Details of the reservations being returned */
 export type ExchangeResponsePropertiesReservationsToExchangeList =
-  ReadonlyArray<ReservationToReturnForExchange>;
+  Array<ReservationToReturnForExchange>;
 export const ExchangeResponsePropertiesReservationsToExchangeList =
   /*@__PURE__*/ S.Array(
     ReservationToReturnForExchange,
@@ -1034,7 +1033,7 @@ export const GetAppliedReservationListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetAppliedReservationListRequest>;
 
 /** Array of reservation resource ids */
-export type AppliedReservationListValueList = ReadonlyArray<string>;
+export type AppliedReservationListValueList = Array<string>;
 export const AppliedReservationListValueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AppliedReservationListValueList>;
@@ -1133,8 +1132,7 @@ export const GetCatalogRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetCatalogRequest",
 }) as any as S.Schema<GetCatalogRequest>;
 
-export type CatalogBillingPlansValueList =
-  ReadonlyArray<ReservationBillingPlan>;
+export type CatalogBillingPlansValueList = Array<ReservationBillingPlan>;
 export const CatalogBillingPlansValueList = /*@__PURE__*/ S.Array(
   ReservationBillingPlan,
 ) as any as S.Schema<CatalogBillingPlansValueList>;
@@ -1149,12 +1147,12 @@ export const CatalogBillingPlansMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<CatalogBillingPlansMap>;
 
 /** Available reservation terms for this resource */
-export type CatalogTermsList = ReadonlyArray<ReservationTerm>;
+export type CatalogTermsList = Array<ReservationTerm>;
 export const CatalogTermsList = /*@__PURE__*/ S.Array(
   ReservationTerm,
 ) as any as S.Schema<CatalogTermsList>;
 
-export type CatalogLocationsList = ReadonlyArray<string>;
+export type CatalogLocationsList = Array<string>;
 export const CatalogLocationsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CatalogLocationsList>;
@@ -1173,7 +1171,7 @@ export const SkuProperty = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SkuProperty" }) as any as S.Schema<SkuProperty>;
 
-export type CatalogSkuPropertiesList = ReadonlyArray<SkuProperty>;
+export type CatalogSkuPropertiesList = Array<SkuProperty>;
 export const CatalogSkuPropertiesList = /*@__PURE__*/ S.Array(
   SkuProperty,
 ) as any as S.Schema<CatalogSkuPropertiesList>;
@@ -1196,7 +1194,7 @@ export const CatalogMsrp = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CatalogMsrp" }) as any as S.Schema<CatalogMsrp>;
 
 /** The value of restrictions. If the restriction type is set to location. This would be different locations where the sku is restricted. */
-export type SkuRestrictionValuesList = ReadonlyArray<string>;
+export type SkuRestrictionValuesList = Array<string>;
 export const SkuRestrictionValuesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SkuRestrictionValuesList>;
@@ -1218,7 +1216,7 @@ export const SkuRestriction = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SkuRestriction" }) as any as S.Schema<SkuRestriction>;
 
-export type CatalogRestrictionsList = ReadonlyArray<SkuRestriction>;
+export type CatalogRestrictionsList = Array<SkuRestriction>;
 export const CatalogRestrictionsList = /*@__PURE__*/ S.Array(
   SkuRestriction,
 ) as any as S.Schema<CatalogRestrictionsList>;
@@ -1237,7 +1235,7 @@ export const SkuCapability = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SkuCapability" }) as any as S.Schema<SkuCapability>;
 
-export type CatalogCapabilitiesList = ReadonlyArray<SkuCapability>;
+export type CatalogCapabilitiesList = Array<SkuCapability>;
 export const CatalogCapabilitiesList = /*@__PURE__*/ S.Array(
   SkuCapability,
 ) as any as S.Schema<CatalogCapabilitiesList>;
@@ -1280,7 +1278,7 @@ export const Catalog = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Catalog" }) as any as S.Schema<Catalog>;
 
 /** The Catalog items on this page */
-export type CatalogsResultValueList = ReadonlyArray<Catalog>;
+export type CatalogsResultValueList = Array<Catalog>;
 export const CatalogsResultValueList = /*@__PURE__*/ S.Array(
   Catalog,
 ) as any as S.Schema<CatalogsResultValueList>;
@@ -1359,7 +1357,7 @@ export const OperationResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "OperationResponse",
 }) as any as S.Schema<OperationResponse>;
 
-export type OperationListValueList = ReadonlyArray<OperationResponse>;
+export type OperationListValueList = Array<OperationResponse>;
 export const OperationListValueList = /*@__PURE__*/ S.Array(
   OperationResponse,
 ) as any as S.Schema<OperationListValueList>;
@@ -1405,7 +1403,7 @@ export const ReservationArchiveResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ReservationArchiveResponse",
 }) as any as S.Schema<ReservationArchiveResponse>;
 
-export type AvailableScopeRequestPropertiesScopesList = ReadonlyArray<string>;
+export type AvailableScopeRequestPropertiesScopesList = Array<string>;
 export const AvailableScopeRequestPropertiesScopesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AvailableScopeRequestPropertiesScopesList>;
@@ -1461,8 +1459,7 @@ export const ScopeProperties = /*@__PURE__*/ S.suspend(() =>
   identifier: "ScopeProperties",
 }) as any as S.Schema<ScopeProperties>;
 
-export type SubscriptionScopePropertiesScopesList =
-  ReadonlyArray<ScopeProperties>;
+export type SubscriptionScopePropertiesScopesList = Array<ScopeProperties>;
 export const SubscriptionScopePropertiesScopesList = /*@__PURE__*/ S.Array(
   ScopeProperties,
 ) as any as S.Schema<SubscriptionScopePropertiesScopesList>;
@@ -1560,7 +1557,7 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SystemData" }) as any as S.Schema<SystemData>;
 
 /** The list of applied scopes */
-export type ReservationsPropertiesAppliedScopesList = ReadonlyArray<string>;
+export type ReservationsPropertiesAppliedScopesList = Array<string>;
 export const ReservationsPropertiesAppliedScopesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ReservationsPropertiesAppliedScopesList>;
@@ -1610,8 +1607,7 @@ export const ExtendedStatusInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExtendedStatusInfo>;
 
 /** List of destination resource id that are created due to split. Format of the resource id is /providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/reservations/{reservationId} */
-export type ReservationSplitPropertiesSplitDestinationsList =
-  ReadonlyArray<string>;
+export type ReservationSplitPropertiesSplitDestinationsList = Array<string>;
 export const ReservationSplitPropertiesSplitDestinationsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1636,7 +1632,7 @@ export const ReservationSplitProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReservationSplitProperties>;
 
 /** Resource ids of the source reservation's merged to form this reservation. Format of the resource id is /providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/reservations/{reservationId} */
-export type ReservationMergePropertiesMergeSourcesList = ReadonlyArray<string>;
+export type ReservationMergePropertiesMergeSourcesList = Array<string>;
 export const ReservationMergePropertiesMergeSourcesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ReservationMergePropertiesMergeSourcesList>;
@@ -1752,7 +1748,7 @@ export const ReservationUtilizationAggregates = /*@__PURE__*/ S.suspend(() =>
 
 /** The array of aggregates of a reservation's utilization */
 export type ReservationsPropertiesUtilizationAggregatesList =
-  ReadonlyArray<ReservationUtilizationAggregates>;
+  Array<ReservationUtilizationAggregates>;
 export const ReservationsPropertiesUtilizationAggregatesList =
   /*@__PURE__*/ S.Array(
     ReservationUtilizationAggregates,
@@ -1988,7 +1984,7 @@ export const ReservationResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReservationResponse>;
 
 /** The ReservationResponse items on this page */
-export type ReservationListValueList = ReadonlyArray<ReservationResponse>;
+export type ReservationListValueList = Array<ReservationResponse>;
 export const ReservationListValueList = /*@__PURE__*/ S.Array(
   ReservationResponse,
 ) as any as S.Schema<ReservationListValueList>;
@@ -2044,8 +2040,7 @@ export const ReservationListAllRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReservationListAllRequest>;
 
 /** The list of reservations. */
-export type ReservationsListResultValueList =
-  ReadonlyArray<ReservationResponse>;
+export type ReservationsListResultValueList = Array<ReservationResponse>;
 export const ReservationsListResultValueList = /*@__PURE__*/ S.Array(
   ReservationResponse,
 ) as any as S.Schema<ReservationsListResultValueList>;
@@ -2129,7 +2124,7 @@ export const ReservationListRevisionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReservationListRevisionsRequest>;
 
 /** Format of the resource id should be /providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/reservations/{reservationId} */
-export type MergePropertiesSourcesList = ReadonlyArray<string>;
+export type MergePropertiesSourcesList = Array<string>;
 export const MergePropertiesSourcesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<MergePropertiesSourcesList>;
@@ -2169,8 +2164,7 @@ export const ReservationMergeRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ReservationMergeRequest",
 }) as any as S.Schema<ReservationMergeRequest>;
 
-export type ReservationMergeResponseBodyList =
-  ReadonlyArray<ReservationResponse>;
+export type ReservationMergeResponseBodyList = Array<ReservationResponse>;
 export const ReservationMergeResponseBodyList = /*@__PURE__*/ S.Array(
   ReservationResponse,
 ) as any as S.Schema<ReservationMergeResponseBodyList>;
@@ -2273,7 +2267,7 @@ export const PaymentDetail = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PaymentDetail" }) as any as S.Schema<PaymentDetail>;
 
 export type CalculatePriceResponsePropertiesPaymentScheduleList =
-  ReadonlyArray<PaymentDetail>;
+  Array<PaymentDetail>;
 export const CalculatePriceResponsePropertiesPaymentScheduleList =
   /*@__PURE__*/ S.Array(
     PaymentDetail,
@@ -2386,7 +2380,7 @@ export const ChangeDirectoryResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ChangeDirectoryResult>;
 
 export type ChangeDirectoryResponseReservationsList =
-  ReadonlyArray<ChangeDirectoryResult>;
+  Array<ChangeDirectoryResult>;
 export const ChangeDirectoryResponseReservationsList = /*@__PURE__*/ S.Array(
   ChangeDirectoryResult,
 ) as any as S.Schema<ChangeDirectoryResponseReservationsList>;
@@ -2429,7 +2423,7 @@ export const ReservationOrderGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReservationOrderGetRequest>;
 
 export type ReservationOrderBillingPlanInformationTransactionsList =
-  ReadonlyArray<PaymentDetail>;
+  Array<PaymentDetail>;
 export const ReservationOrderBillingPlanInformationTransactionsList =
   /*@__PURE__*/ S.Array(
     PaymentDetail,
@@ -2460,7 +2454,7 @@ export const ReservationOrderBillingPlanInformation = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ReservationOrderBillingPlanInformation>;
 
 export type ReservationOrderPropertiesReservationsList =
-  ReadonlyArray<ReservationResponse>;
+  Array<ReservationResponse>;
 export const ReservationOrderPropertiesReservationsList = /*@__PURE__*/ S.Array(
   ReservationResponse,
 ) as any as S.Schema<ReservationOrderPropertiesReservationsList>;
@@ -2581,8 +2575,7 @@ export const ReservationOrderResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReservationOrderResponse>;
 
 /** The ReservationOrderResponse items on this page */
-export type ReservationOrderListValueList =
-  ReadonlyArray<ReservationOrderResponse>;
+export type ReservationOrderListValueList = Array<ReservationOrderResponse>;
 export const ReservationOrderListValueList = /*@__PURE__*/ S.Array(
   ReservationOrderResponse,
 ) as any as S.Schema<ReservationOrderListValueList>;
@@ -2658,7 +2651,7 @@ export const ReservationOrderPurchaseResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReservationOrderPurchaseResponse>;
 
 /** List of the quantities in the new reservations to create. */
-export type SplitPropertiesQuantitiesList = ReadonlyArray<number>;
+export type SplitPropertiesQuantitiesList = Array<number>;
 export const SplitPropertiesQuantitiesList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<SplitPropertiesQuantitiesList>;
@@ -2701,8 +2694,7 @@ export const ReservationSplitRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ReservationSplitRequest",
 }) as any as S.Schema<ReservationSplitRequest>;
 
-export type ReservationSplitResponseBodyList =
-  ReadonlyArray<ReservationResponse>;
+export type ReservationSplitResponseBodyList = Array<ReservationResponse>;
 export const ReservationSplitResponseBodyList = /*@__PURE__*/ S.Array(
   ReservationResponse,
 ) as any as S.Schema<ReservationSplitResponseBodyList>;
@@ -2744,7 +2736,7 @@ export const ReservationUnarchiveResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReservationUnarchiveResponse>;
 
 /** List of the subscriptions that the benefit will be applied. Do not specify if AppliedScopeType is Shared. This property will be deprecated and replaced by appliedScopeProperties instead for Single AppliedScopeType. */
-export type PatchPropertiesAppliedScopesList = ReadonlyArray<string>;
+export type PatchPropertiesAppliedScopesList = Array<string>;
 export const PatchPropertiesAppliedScopesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PatchPropertiesAppliedScopesList>;

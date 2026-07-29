@@ -69,7 +69,7 @@ export const Dimension = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Dimension" }) as any as S.Schema<Dimension>;
 
 /** The dimensions of the metrics. */
-export type MetricSpecificationDimensionsList = ReadonlyArray<Dimension>;
+export type MetricSpecificationDimensionsList = Array<Dimension>;
 export const MetricSpecificationDimensionsList = /*@__PURE__*/ S.Array(
   Dimension,
 ) as any as S.Schema<MetricSpecificationDimensionsList>;
@@ -110,7 +110,7 @@ export const MetricSpecification = /*@__PURE__*/ S.suspend(() =>
 
 /** Specifications of the Metrics for Azure Monitoring. */
 export type ServiceSpecificationMetricSpecificationsList =
-  ReadonlyArray<MetricSpecification>;
+  Array<MetricSpecification>;
 export const ServiceSpecificationMetricSpecificationsList =
   /*@__PURE__*/ S.Array(
     MetricSpecification,
@@ -133,8 +133,7 @@ export const LogSpecification = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LogSpecification>;
 
 /** Specifications of the Logs for Azure Monitoring. */
-export type ServiceSpecificationLogSpecificationsList =
-  ReadonlyArray<LogSpecification>;
+export type ServiceSpecificationLogSpecificationsList = Array<LogSpecification>;
 export const ServiceSpecificationLogSpecificationsList = /*@__PURE__*/ S.Array(
   LogSpecification,
 ) as any as S.Schema<ServiceSpecificationLogSpecificationsList>;
@@ -191,7 +190,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider. */
-export type OperationListValueList = ReadonlyArray<Operation>;
+export type OperationListValueList = Array<Operation>;
 export const OperationListValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationListValueList>;
@@ -273,8 +272,7 @@ export const SignalRServiceUsage = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SignalRServiceUsage>;
 
 /** List of the resource usages */
-export type SignalRServiceUsageListValueList =
-  ReadonlyArray<SignalRServiceUsage>;
+export type SignalRServiceUsageListValueList = Array<SignalRServiceUsage>;
 export const SignalRServiceUsageListValueList = /*@__PURE__*/ S.Array(
   SignalRServiceUsage,
 ) as any as S.Schema<SignalRServiceUsageListValueList>;
@@ -404,8 +402,7 @@ export const LiveTraceCategory = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LiveTraceCategory>;
 
 /** Gets or sets the list of category configurations. */
-export type LiveTraceConfigurationCategoriesList =
-  ReadonlyArray<LiveTraceCategory>;
+export type LiveTraceConfigurationCategoriesList = Array<LiveTraceCategory>;
 export const LiveTraceConfigurationCategoriesList = /*@__PURE__*/ S.Array(
   LiveTraceCategory,
 ) as any as S.Schema<LiveTraceConfigurationCategoriesList>;
@@ -443,8 +440,7 @@ export const ResourceLogCategory = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourceLogCategory>;
 
 /** Gets or sets the list of category configurations. */
-export type ResourceLogConfigurationCategoriesList =
-  ReadonlyArray<ResourceLogCategory>;
+export type ResourceLogConfigurationCategoriesList = Array<ResourceLogCategory>;
 export const ResourceLogConfigurationCategoriesList = /*@__PURE__*/ S.Array(
   ResourceLogCategory,
 ) as any as S.Schema<ResourceLogConfigurationCategoriesList>;
@@ -475,13 +471,13 @@ export type WebPubSubRequestType =
 export const WebPubSubRequestType = /*@__PURE__*/ S.String;
 
 /** Allowed request types. The value can be one or more of: ClientConnection, ServerConnection, RESTAPI. */
-export type NetworkACLAllowList = ReadonlyArray<WebPubSubRequestType>;
+export type NetworkACLAllowList = Array<WebPubSubRequestType | (string & {})>;
 export const NetworkACLAllowList = /*@__PURE__*/ S.Array(
   WebPubSubRequestType,
 ) as any as S.Schema<NetworkACLAllowList>;
 
 /** Denied request types. The value can be one or more of: ClientConnection, ServerConnection, RESTAPI. */
-export type NetworkACLDenyList = ReadonlyArray<WebPubSubRequestType>;
+export type NetworkACLDenyList = Array<WebPubSubRequestType | (string & {})>;
 export const NetworkACLDenyList = /*@__PURE__*/ S.Array(
   WebPubSubRequestType,
 ) as any as S.Schema<NetworkACLDenyList>;
@@ -501,13 +497,17 @@ export const NetworkACL = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NetworkACL" }) as any as S.Schema<NetworkACL>;
 
 /** Allowed request types. The value can be one or more of: ClientConnection, ServerConnection, RESTAPI. */
-export type PrivateEndpointACLAllowList = ReadonlyArray<WebPubSubRequestType>;
+export type PrivateEndpointACLAllowList = Array<
+  WebPubSubRequestType | (string & {})
+>;
 export const PrivateEndpointACLAllowList = /*@__PURE__*/ S.Array(
   WebPubSubRequestType,
 ) as any as S.Schema<PrivateEndpointACLAllowList>;
 
 /** Denied request types. The value can be one or more of: ClientConnection, ServerConnection, RESTAPI. */
-export type PrivateEndpointACLDenyList = ReadonlyArray<WebPubSubRequestType>;
+export type PrivateEndpointACLDenyList = Array<
+  WebPubSubRequestType | (string & {})
+>;
 export const PrivateEndpointACLDenyList = /*@__PURE__*/ S.Array(
   WebPubSubRequestType,
 ) as any as S.Schema<PrivateEndpointACLDenyList>;
@@ -533,7 +533,7 @@ export const PrivateEndpointACL = /*@__PURE__*/ S.suspend(() =>
 
 /** ACLs for requests from private endpoints */
 export type WebPubSubNetworkACLsPrivateEndpointsList =
-  ReadonlyArray<PrivateEndpointACL>;
+  Array<PrivateEndpointACL>;
 export const WebPubSubNetworkACLsPrivateEndpointsList = /*@__PURE__*/ S.Array(
   PrivateEndpointACL,
 ) as any as S.Schema<WebPubSubNetworkACLsPrivateEndpointsList>;
@@ -542,7 +542,7 @@ export const WebPubSubNetworkACLsPrivateEndpointsList = /*@__PURE__*/ S.Array(
 export interface IPRule {
   /** An IP or CIDR or ServiceTag */
   value?: string;
-  action?: ACLAction;
+  action?: ACLAction | (string & {});
 }
 export const IPRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -552,14 +552,14 @@ export const IPRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IPRule" }) as any as S.Schema<IPRule>;
 
 /** IP rules for filtering public traffic */
-export type WebPubSubNetworkACLsIpRulesList = ReadonlyArray<IPRule>;
+export type WebPubSubNetworkACLsIpRulesList = Array<IPRule>;
 export const WebPubSubNetworkACLsIpRulesList = /*@__PURE__*/ S.Array(
   IPRule,
 ) as any as S.Schema<WebPubSubNetworkACLsIpRulesList>;
 
 /** Network ACLs for the resource */
 export interface WebPubSubNetworkACLs {
-  defaultAction?: ACLAction;
+  defaultAction?: ACLAction | (string & {});
   publicNetwork?: NetworkACL;
   /** ACLs for requests from private endpoints */
   privateEndpoints?: WebPubSubNetworkACLsPrivateEndpointsList;
@@ -807,8 +807,7 @@ export const PrivateEndpoint = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateEndpoint>;
 
 /** Group IDs */
-export type PrivateEndpointConnectionPropertiesGroupIdsList =
-  ReadonlyArray<string>;
+export type PrivateEndpointConnectionPropertiesGroupIdsList = Array<string>;
 export const PrivateEndpointConnectionPropertiesGroupIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -824,7 +823,7 @@ export const PrivateLinkServiceConnectionStatus = /*@__PURE__*/ S.String;
 
 /** Connection state of the private endpoint connection */
 export interface PrivateLinkServiceConnectionState {
-  status?: PrivateLinkServiceConnectionStatus;
+  status?: PrivateLinkServiceConnectionStatus | (string & {});
   /** The reason for approval/rejection of the connection. */
   description?: string;
   /** A message indicating if changes on the service provider require any updates on the consumer. */
@@ -887,7 +886,7 @@ export const PrivateEndpointConnection = /*@__PURE__*/ S.suspend(() =>
 
 /** Private endpoint connections to the resource. */
 export type WebPubSubPropertiesPrivateEndpointConnectionsList =
-  ReadonlyArray<PrivateEndpointConnection>;
+  Array<PrivateEndpointConnection>;
 export const WebPubSubPropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection,
@@ -951,7 +950,7 @@ export const SharedPrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of shared private link resources. */
 export type WebPubSubPropertiesSharedPrivateLinkResourcesList =
-  ReadonlyArray<SharedPrivateLinkResource>;
+  Array<SharedPrivateLinkResource>;
 export const WebPubSubPropertiesSharedPrivateLinkResourcesList =
   /*@__PURE__*/ S.Array(
     SharedPrivateLinkResource,
@@ -1339,7 +1338,7 @@ export const CustomCertificate = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CustomCertificate>;
 
 /** List of custom certificates of this resource. */
-export type CustomCertificateListValueList = ReadonlyArray<CustomCertificate>;
+export type CustomCertificateListValueList = Array<CustomCertificate>;
 export const CustomCertificateListValueList = /*@__PURE__*/ S.Array(
   CustomCertificate,
 ) as any as S.Schema<CustomCertificateListValueList>;
@@ -1594,7 +1593,7 @@ export const CustomDomain = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CustomDomain" }) as any as S.Schema<CustomDomain>;
 
 /** List of custom domains that bind to this resource. */
-export type CustomDomainListValueList = ReadonlyArray<CustomDomain>;
+export type CustomDomainListValueList = Array<CustomDomain>;
 export const CustomDomainListValueList = /*@__PURE__*/ S.Array(
   CustomDomain,
 ) as any as S.Schema<CustomDomainListValueList>;
@@ -1715,7 +1714,7 @@ export const WebPubSubGetResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WebPubSubGetResponse>;
 
 /** Gets or sets the list of system events. */
-export type EventHandlerSystemEventsList = ReadonlyArray<string>;
+export type EventHandlerSystemEventsList = Array<string>;
 export const EventHandlerSystemEventsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EventHandlerSystemEventsList>;
@@ -1739,7 +1738,7 @@ export const ManagedIdentitySettings = /*@__PURE__*/ S.suspend(() =>
 
 /** Upstream auth settings. If not set, no auth is used for upstream messages. */
 export interface UpstreamAuthSettings {
-  type?: UpstreamAuthType;
+  type?: UpstreamAuthType | (string & {});
   managedIdentity?: ManagedIdentitySettings;
 }
 export const UpstreamAuthSettings = /*@__PURE__*/ S.suspend(() =>
@@ -1771,8 +1770,7 @@ export const EventHandler = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EventHandler" }) as any as S.Schema<EventHandler>;
 
 /** Event handler of a hub. */
-export type WebPubSubHubPropertiesEventHandlersList =
-  ReadonlyArray<EventHandler>;
+export type WebPubSubHubPropertiesEventHandlersList = Array<EventHandler>;
 export const WebPubSubHubPropertiesEventHandlersList = /*@__PURE__*/ S.Array(
   EventHandler,
 ) as any as S.Schema<WebPubSubHubPropertiesEventHandlersList>;
@@ -1782,7 +1780,7 @@ export const EventListenerFilterType = /*@__PURE__*/ S.String;
 
 /** A base class for event filter which determines whether an event should be sent to an event listener. */
 export interface EventListenerFilter {
-  type: EventListenerFilterType;
+  type: EventListenerFilterType | (string & {});
 }
 export const EventListenerFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1797,7 +1795,7 @@ export const EventListenerEndpointType = /*@__PURE__*/ S.String;
 
 /** An endpoint specifying where Web PubSub should send events to. */
 export interface EventListenerEndpoint {
-  type: EventListenerEndpointType;
+  type: EventListenerEndpointType | (string & {});
 }
 export const EventListenerEndpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1820,8 +1818,7 @@ export const EventListener = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EventListener" }) as any as S.Schema<EventListener>;
 
 /** Event listener settings for forwarding your client events to listeners. Event listener is transparent to Web PubSub clients, and it doesn't return any result to clients nor interrupt the lifetime of clients. One event can be sent to multiple listeners, as long as it matches the filters in those listeners. The order of the array elements doesn't matter. Maximum count of event listeners among all hubs is 10. */
-export type WebPubSubHubPropertiesEventListenersList =
-  ReadonlyArray<EventListener>;
+export type WebPubSubHubPropertiesEventListenersList = Array<EventListener>;
 export const WebPubSubHubPropertiesEventListenersList = /*@__PURE__*/ S.Array(
   EventListener,
 ) as any as S.Schema<WebPubSubHubPropertiesEventListenersList>;
@@ -2035,7 +2032,7 @@ export const WebPubSubHub = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "WebPubSubHub" }) as any as S.Schema<WebPubSubHub>;
 
 /** List of hub settings to this resource. */
-export type WebPubSubHubListValueList = ReadonlyArray<WebPubSubHub>;
+export type WebPubSubHubListValueList = Array<WebPubSubHub>;
 export const WebPubSubHubListValueList = /*@__PURE__*/ S.Array(
   WebPubSubHub,
 ) as any as S.Schema<WebPubSubHubListValueList>;
@@ -2122,7 +2119,7 @@ export const WebPubSubResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WebPubSubResource>;
 
 /** List of the resources */
-export type WebPubSubResourceListValueList = ReadonlyArray<WebPubSubResource>;
+export type WebPubSubResourceListValueList = Array<WebPubSubResource>;
 export const WebPubSubResourceListValueList = /*@__PURE__*/ S.Array(
   WebPubSubResource,
 ) as any as S.Schema<WebPubSubResourceListValueList>;
@@ -2236,7 +2233,7 @@ export const WebPubSubListReplicaSkusRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WebPubSubListReplicaSkusRequest>;
 
 /** Allows capacity value list. */
-export type SkuCapacityAllowedValuesList = ReadonlyArray<number>;
+export type SkuCapacityAllowedValuesList = Array<number>;
 export const SkuCapacityAllowedValuesList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<SkuCapacityAllowedValuesList>;
@@ -2283,7 +2280,7 @@ export const Sku = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Sku" }) as any as S.Schema<Sku>;
 
 /** The list of skus available for the resource. */
-export type SkuListValueList = ReadonlyArray<Sku>;
+export type SkuListValueList = Array<Sku>;
 export const SkuListValueList = /*@__PURE__*/ S.Array(
   Sku,
 ) as any as S.Schema<SkuListValueList>;
@@ -2443,7 +2440,7 @@ export const WebPubSubPrivateEndpointConnectionsListRequest =
 
 /** The list of the private endpoint connections */
 export type PrivateEndpointConnectionListValueList =
-  ReadonlyArray<PrivateEndpointConnection>;
+  Array<PrivateEndpointConnection>;
 export const PrivateEndpointConnectionListValueList = /*@__PURE__*/ S.Array(
   PrivateEndpointConnection,
 ) as any as S.Schema<PrivateEndpointConnectionListValueList>;
@@ -2563,16 +2560,14 @@ export const WebPubSubPrivateLinkResourcesListRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<WebPubSubPrivateLinkResourcesListRequest>;
 
 /** Required members of the private link resource */
-export type PrivateLinkResourcePropertiesRequiredMembersList =
-  ReadonlyArray<string>;
+export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
 export const PrivateLinkResourcePropertiesRequiredMembersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
 
 /** Required private DNS zone names */
-export type PrivateLinkResourcePropertiesRequiredZoneNamesList =
-  ReadonlyArray<string>;
+export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
 export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2615,7 +2610,7 @@ export const ShareablePrivateLinkResourceType = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of resources that are onboarded to private link service */
 export type PrivateLinkResourcePropertiesShareablePrivateLinkResourceTypesList =
-  ReadonlyArray<ShareablePrivateLinkResourceType>;
+  Array<ShareablePrivateLinkResourceType>;
 export const PrivateLinkResourcePropertiesShareablePrivateLinkResourceTypesList =
   /*@__PURE__*/ S.Array(
     ShareablePrivateLinkResourceType,
@@ -2674,8 +2669,7 @@ export const PrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateLinkResource>;
 
 /** List of PrivateLinkResource */
-export type PrivateLinkResourceListValueList =
-  ReadonlyArray<PrivateLinkResource>;
+export type PrivateLinkResourceListValueList = Array<PrivateLinkResource>;
 export const PrivateLinkResourceListValueList = /*@__PURE__*/ S.Array(
   PrivateLinkResource,
 ) as any as S.Schema<PrivateLinkResourceListValueList>;
@@ -3120,7 +3114,7 @@ export const WebPubSubReplicaSharedPrivateLinkResourcesListRequest =
 
 /** The list of the shared private link resources */
 export type SharedPrivateLinkResourceListValueList =
-  ReadonlyArray<SharedPrivateLinkResource>;
+  Array<SharedPrivateLinkResource>;
 export const SharedPrivateLinkResourceListValueList = /*@__PURE__*/ S.Array(
   SharedPrivateLinkResource,
 ) as any as S.Schema<SharedPrivateLinkResourceListValueList>;
@@ -3204,7 +3198,7 @@ export const Replica = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Replica" }) as any as S.Schema<Replica>;
 
 /** List of the replica */
-export type ReplicaListValueList = ReadonlyArray<Replica>;
+export type ReplicaListValueList = Array<Replica>;
 export const ReplicaListValueList = /*@__PURE__*/ S.Array(
   Replica,
 ) as any as S.Schema<ReplicaListValueList>;

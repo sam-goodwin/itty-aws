@@ -98,7 +98,7 @@ export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "Empty",
 }) as any as S.Schema<Empty>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -140,7 +140,7 @@ export const GoogleCloudApihubV1AllowedValue = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudApihubV1AllowedValue>;
 
 export type GoogleCloudApihubV1AllowedValueList =
-  ReadonlyArray<GoogleCloudApihubV1AllowedValue>;
+  Array<GoogleCloudApihubV1AllowedValue>;
 export const GoogleCloudApihubV1AllowedValueList = /*@__PURE__*/ S.Array(
   GoogleCloudApihubV1AllowedValue,
 ) as any as S.Schema<GoogleCloudApihubV1AllowedValueList>;
@@ -220,7 +220,7 @@ export interface GoogleCloudApihubV1SourceMetadata {
   /** Output only. The source of the resource is a plugin instance action. */
   pluginInstanceActionSource?: GoogleCloudApihubV1PluginInstanceActionSource;
   /** Output only. The type of the source. */
-  sourceType?: GoogleCloudApihubV1SourceMetadataSourceTypeEnum;
+  sourceType?: GoogleCloudApihubV1SourceMetadataSourceTypeEnum | (string & {});
   /** Output only. The unique identifier of the resource at the source. */
   originalResourceId?: string;
   /** Output only. The time at which the resource was created at the source. */
@@ -243,7 +243,7 @@ export const GoogleCloudApihubV1SourceMetadata = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudApihubV1SourceMetadata>;
 
 export type GoogleCloudApihubV1SourceMetadataList =
-  ReadonlyArray<GoogleCloudApihubV1SourceMetadata>;
+  Array<GoogleCloudApihubV1SourceMetadata>;
 export const GoogleCloudApihubV1SourceMetadataList = /*@__PURE__*/ S.Array(
   GoogleCloudApihubV1SourceMetadata,
 ) as any as S.Schema<GoogleCloudApihubV1SourceMetadataList>;
@@ -349,7 +349,7 @@ export const GoogleCloudApihubV1DeploymentMetadata = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudApihubV1DeploymentMetadata>;
 
 export type GoogleCloudApihubV1DeploymentMetadataList =
-  ReadonlyArray<GoogleCloudApihubV1DeploymentMetadata>;
+  Array<GoogleCloudApihubV1DeploymentMetadata>;
 export const GoogleCloudApihubV1DeploymentMetadataList = /*@__PURE__*/ S.Array(
   GoogleCloudApihubV1DeploymentMetadata,
 ) as any as S.Schema<GoogleCloudApihubV1DeploymentMetadataList>;
@@ -444,7 +444,9 @@ export const StringMap = /*@__PURE__*/ S.Record(
 /** The additional spec content for the spec. This contains the metadata and the last update time for the additional spec content. */
 export interface GoogleCloudApihubV1AdditionalSpecContent {
   /** Required. The type of the spec content. */
-  specContentType?: GoogleCloudApihubV1AdditionalSpecContentSpecContentTypeEnum;
+  specContentType?:
+    | GoogleCloudApihubV1AdditionalSpecContentSpecContentTypeEnum
+    | (string & {});
   /** Output only. The time at which the spec content was created. */
   createTime?: string;
   /** Optional. The labels of the spec content e.g. specboost addon version. */
@@ -470,7 +472,7 @@ export const GoogleCloudApihubV1AdditionalSpecContent = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudApihubV1AdditionalSpecContent>;
 
 export type GoogleCloudApihubV1AdditionalSpecContentList =
-  ReadonlyArray<GoogleCloudApihubV1AdditionalSpecContent>;
+  Array<GoogleCloudApihubV1AdditionalSpecContent>;
 export const GoogleCloudApihubV1AdditionalSpecContentList =
   /*@__PURE__*/ S.Array(
     GoogleCloudApihubV1AdditionalSpecContent,
@@ -505,7 +507,7 @@ export interface GoogleCloudApihubV1OpenApiSpecDetails {
   /** Output only. Owner details for the spec. This maps to `info.contact` in OpenAPI spec. */
   owner?: GoogleCloudApihubV1Owner;
   /** Output only. The format of the spec. */
-  format?: GoogleCloudApihubV1OpenApiSpecDetailsFormatEnum;
+  format?: GoogleCloudApihubV1OpenApiSpecDetailsFormatEnum | (string & {});
   /** Output only. The version in the spec. This maps to `info.version` in OpenAPI spec. */
   version?: string;
 }
@@ -562,7 +564,7 @@ export interface GoogleCloudApihubV1SummaryEntry {
   /** Required. Count of issues with the given severity. */
   count?: number;
   /** Required. Severity of the issue. */
-  severity?: GoogleCloudApihubV1SummaryEntrySeverityEnum;
+  severity?: GoogleCloudApihubV1SummaryEntrySeverityEnum | (string & {});
 }
 export const GoogleCloudApihubV1SummaryEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -574,7 +576,7 @@ export const GoogleCloudApihubV1SummaryEntry = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudApihubV1SummaryEntry>;
 
 export type GoogleCloudApihubV1SummaryEntryList =
-  ReadonlyArray<GoogleCloudApihubV1SummaryEntry>;
+  Array<GoogleCloudApihubV1SummaryEntry>;
 export const GoogleCloudApihubV1SummaryEntryList = /*@__PURE__*/ S.Array(
   GoogleCloudApihubV1SummaryEntry,
 ) as any as S.Schema<GoogleCloudApihubV1SummaryEntryList>;
@@ -626,7 +628,7 @@ export interface GoogleCloudApihubV1Issue {
   /** Required. Human-readable message describing the issue found by the linter. */
   message?: string;
   /** Required. Severity level of the rule violation. */
-  severity?: GoogleCloudApihubV1IssueSeverityEnum;
+  severity?: GoogleCloudApihubV1IssueSeverityEnum | (string & {});
   /** Required. Rule code unique to each rule defined in linter. */
   code?: string;
   /** Required. Object describing where in the file the issue was found. */
@@ -644,8 +646,7 @@ export const GoogleCloudApihubV1Issue = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleCloudApihubV1Issue",
 }) as any as S.Schema<GoogleCloudApihubV1Issue>;
 
-export type GoogleCloudApihubV1IssueList =
-  ReadonlyArray<GoogleCloudApihubV1Issue>;
+export type GoogleCloudApihubV1IssueList = Array<GoogleCloudApihubV1Issue>;
 export const GoogleCloudApihubV1IssueList = /*@__PURE__*/ S.Array(
   GoogleCloudApihubV1Issue,
 ) as any as S.Schema<GoogleCloudApihubV1IssueList>;
@@ -659,7 +660,7 @@ export const GoogleCloudApihubV1LintResponseStateEnum = /*@__PURE__*/ S.String;
 /** LintResponse contains the response from the linter. */
 export interface GoogleCloudApihubV1LintResponse {
   /** Required. Name of the linter used. */
-  linter?: GoogleCloudApihubV1LintResponseLinterEnum;
+  linter?: GoogleCloudApihubV1LintResponseLinterEnum | (string & {});
   /** Optional. Summary of all issue types and counts for each severity level. */
   summary?: GoogleCloudApihubV1SummaryEntryList;
   /** Required. Name of the linting application. */
@@ -669,7 +670,7 @@ export interface GoogleCloudApihubV1LintResponse {
   /** Optional. Array of issues found in the analyzed document. */
   issues?: GoogleCloudApihubV1IssueList;
   /** Required. Lint state represents success or failure for linting. */
-  state?: GoogleCloudApihubV1LintResponseStateEnum;
+  state?: GoogleCloudApihubV1LintResponseStateEnum | (string & {});
 }
 export const GoogleCloudApihubV1LintResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -711,7 +712,7 @@ export interface GoogleCloudApihubV1Spec {
   /** Output only. The time at which the spec was last updated. */
   updateTime?: string;
   /** Optional. Input only. Enum specifying the parsing mode for OpenAPI Specification (OAS) parsing. */
-  parsingMode?: GoogleCloudApihubV1SpecParsingModeEnum;
+  parsingMode?: GoogleCloudApihubV1SpecParsingModeEnum | (string & {});
   /** Optional. The lint response for the spec. */
   lintResponse?: GoogleCloudApihubV1LintResponse;
 }
@@ -761,7 +762,7 @@ export const GoogleCloudApihubV1SpecMetadata = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudApihubV1SpecMetadata>;
 
 export type GoogleCloudApihubV1SpecMetadataList =
-  ReadonlyArray<GoogleCloudApihubV1SpecMetadata>;
+  Array<GoogleCloudApihubV1SpecMetadata>;
 export const GoogleCloudApihubV1SpecMetadataList = /*@__PURE__*/ S.Array(
   GoogleCloudApihubV1SpecMetadata,
 ) as any as S.Schema<GoogleCloudApihubV1SpecMetadataList>;
@@ -795,7 +796,7 @@ export const GoogleCloudApihubV1VersionMetadata = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudApihubV1VersionMetadata>;
 
 export type GoogleCloudApihubV1VersionMetadataList =
-  ReadonlyArray<GoogleCloudApihubV1VersionMetadata>;
+  Array<GoogleCloudApihubV1VersionMetadata>;
 export const GoogleCloudApihubV1VersionMetadataList = /*@__PURE__*/ S.Array(
   GoogleCloudApihubV1VersionMetadata,
 ) as any as S.Schema<GoogleCloudApihubV1VersionMetadataList>;
@@ -896,7 +897,7 @@ export const GoogleCloudApihubV1APIMetadata = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudApihubV1APIMetadata>;
 
 export type GoogleCloudApihubV1APIMetadataList =
-  ReadonlyArray<GoogleCloudApihubV1APIMetadata>;
+  Array<GoogleCloudApihubV1APIMetadata>;
 export const GoogleCloudApihubV1APIMetadataList = /*@__PURE__*/ S.Array(
   GoogleCloudApihubV1APIMetadata,
 ) as any as S.Schema<GoogleCloudApihubV1APIMetadataList>;
@@ -991,7 +992,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -1109,7 +1110,7 @@ export const GoogleCloudApihubV1McpToolConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudApihubV1McpToolConfig>;
 
 export type GoogleCloudApihubV1McpToolConfigList =
-  ReadonlyArray<GoogleCloudApihubV1McpToolConfig>;
+  Array<GoogleCloudApihubV1McpToolConfig>;
 export const GoogleCloudApihubV1McpToolConfigList = /*@__PURE__*/ S.Array(
   GoogleCloudApihubV1McpToolConfig,
 ) as any as S.Schema<GoogleCloudApihubV1McpToolConfigList>;
@@ -1234,7 +1235,7 @@ export const GoogleCloudApihubV1AgentRegistrySyncConfig =
 /** Available configurations to provision an ApiHub Instance. */
 export interface GoogleCloudApihubV1Config {
   /** Optional. Encryption type for the region. If the encryption type is CMEK, the cmek_key_name must be provided. If no encryption type is provided, GMEK will be used. */
-  encryptionType?: GoogleCloudApihubV1ConfigEncryptionTypeEnum;
+  encryptionType?: GoogleCloudApihubV1ConfigEncryptionTypeEnum | (string & {});
   /** Optional. The name of the Vertex AI location where the data store is stored. */
   vertexLocation?: string;
   /** Optional. The configuration for syncing MCP data in the API Hub instance to the Agent Registry. */
@@ -1280,7 +1281,7 @@ export interface GoogleCloudApihubV1ApiHubInstance {
   /** Output only. Last update timestamp. */
   updateTime?: string;
   /** Output only. The current state of the ApiHub instance. */
-  state?: GoogleCloudApihubV1ApiHubInstanceStateEnum;
+  state?: GoogleCloudApihubV1ApiHubInstanceStateEnum | (string & {});
   /** Output only. Extra information about ApiHub instance state. Currently the message would be populated when state is `FAILED`. */
   stateMessage?: string;
   /** Identifier. Format: `projects/{project}/locations/{location}/apiHubInstances/{apiHubInstance}`. */
@@ -1411,7 +1412,7 @@ export interface GoogleCloudApihubV1HttpOperation {
   /** Optional. The path details for the Operation. Note: Even though this field is optional, it is required for CreateApiOperation API and we will fail the request if not provided. */
   path?: GoogleCloudApihubV1Path;
   /** Optional. Operation method Note: Even though this field is optional, it is required for CreateApiOperation API and we will fail the request if not provided. */
-  method?: GoogleCloudApihubV1HttpOperationMethodEnum;
+  method?: GoogleCloudApihubV1HttpOperationMethodEnum | (string & {});
 }
 export const GoogleCloudApihubV1HttpOperation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1630,9 +1631,11 @@ export interface GoogleCloudApihubV1Attribute {
   /** Identifier. The name of the attribute in the API Hub. Format: `projects/{project}/locations/{location}/attributes/{attribute}` */
   name?: string;
   /** Output only. The definition type of the attribute. */
-  definitionType?: GoogleCloudApihubV1AttributeDefinitionTypeEnum;
+  definitionType?:
+    | GoogleCloudApihubV1AttributeDefinitionTypeEnum
+    | (string & {});
   /** Required. The scope of the attribute. It represents the resource in the API Hub to which the attribute can be linked. */
-  scope?: GoogleCloudApihubV1AttributeScopeEnum;
+  scope?: GoogleCloudApihubV1AttributeScopeEnum | (string & {});
   /** Required. The display name of the attribute. */
   displayName?: string;
   /** Optional. The description of the attribute. */
@@ -1640,7 +1643,7 @@ export interface GoogleCloudApihubV1Attribute {
   /** Optional. The maximum number of values that the attribute can have when associated with an API Hub resource. Cardinality 1 would represent a single-valued attribute. It must not be less than 1 or greater than 20. If not specified, the cardinality would be set to 1 by default and represent a single-valued attribute. */
   cardinality?: number;
   /** Required. The type of the data of the attribute. */
-  dataType?: GoogleCloudApihubV1AttributeDataTypeEnum;
+  dataType?: GoogleCloudApihubV1AttributeDataTypeEnum | (string & {});
   /** Output only. When mandatory is true, the attribute is mandatory for the resource specified in the scope. Only System defined attributes can be mandatory. */
   mandatory?: boolean;
   /** Optional. The list of allowed values when the attribute value is of type enum. This is required when the data_type of the attribute is ENUM. The maximum number of allowed values of an attribute will be 1000. */
@@ -1711,7 +1714,7 @@ export const GoogleCloudApihubV1PluginInstanceActionID =
   }) as any as S.Schema<GoogleCloudApihubV1PluginInstanceActionID>;
 
 export type GoogleCloudApihubV1PluginInstanceActionIDList =
-  ReadonlyArray<GoogleCloudApihubV1PluginInstanceActionID>;
+  Array<GoogleCloudApihubV1PluginInstanceActionID>;
 export const GoogleCloudApihubV1PluginInstanceActionIDList =
   /*@__PURE__*/ S.Array(
     GoogleCloudApihubV1PluginInstanceActionID,
@@ -1774,9 +1777,13 @@ export interface GoogleCloudApihubV1Curation {
   /** Optional. The description of the curation. */
   description?: string;
   /** Output only. The error code of the last execution of the curation. The error code is populated only when the last execution state is failed. */
-  lastExecutionErrorCode?: GoogleCloudApihubV1CurationLastExecutionErrorCodeEnum;
+  lastExecutionErrorCode?:
+    | GoogleCloudApihubV1CurationLastExecutionErrorCodeEnum
+    | (string & {});
   /** Output only. The last execution state of the curation. */
-  lastExecutionState?: GoogleCloudApihubV1CurationLastExecutionStateEnum;
+  lastExecutionState?:
+    | GoogleCloudApihubV1CurationLastExecutionStateEnum
+    | (string & {});
   /** Required. The endpoint to be triggered for curation. */
   endpoint?: GoogleCloudApihubV1Endpoint;
   /** Output only. Error message describing the failure, if any, during the last execution of the curation. */
@@ -1850,7 +1857,7 @@ export const GoogleCloudApihubV1DependencyErrorDetailErrorEnum =
 /** Details describing error condition of a dependency. */
 export interface GoogleCloudApihubV1DependencyErrorDetail {
   /** Optional. Error in the dependency. */
-  error?: GoogleCloudApihubV1DependencyErrorDetailErrorEnum;
+  error?: GoogleCloudApihubV1DependencyErrorDetailErrorEnum | (string & {});
   /** Optional. Timestamp at which the error was found. */
   errorTime?: string;
 }
@@ -1897,11 +1904,13 @@ export interface GoogleCloudApihubV1Dependency {
   /** Optional. Human readable description corresponding of the dependency. */
   description?: string;
   /** Output only. Discovery mode of the dependency. */
-  discoveryMode?: GoogleCloudApihubV1DependencyDiscoveryModeEnum;
+  discoveryMode?:
+    | GoogleCloudApihubV1DependencyDiscoveryModeEnum
+    | (string & {});
   /** Output only. Error details of a dependency if the system has detected it internally. */
   errorDetail?: GoogleCloudApihubV1DependencyErrorDetail;
   /** Output only. State of the dependency. */
-  state?: GoogleCloudApihubV1DependencyStateEnum;
+  state?: GoogleCloudApihubV1DependencyStateEnum | (string & {});
   /** Optional. The list of user defined attributes associated with the dependency resource. The key is the attribute name. It will be of the format: `projects/{project}/locations/{location}/attributes/{attribute}`. The value is the attribute values associated with the resource. */
   attributes?: GoogleCloudApihubV1AttributeValuesMap;
   /** Required. Immutable. The entity acting as the supplier in the dependency. */
@@ -2113,7 +2122,9 @@ export interface GoogleCloudApihubV1PluginActionConfig {
   /** Required. The id of the action. */
   id?: string;
   /** Required. The trigger mode supported by the action. */
-  triggerMode?: GoogleCloudApihubV1PluginActionConfigTriggerModeEnum;
+  triggerMode?:
+    | GoogleCloudApihubV1PluginActionConfigTriggerModeEnum
+    | (string & {});
 }
 export const GoogleCloudApihubV1PluginActionConfig = /*@__PURE__*/ S.suspend(
   () =>
@@ -2130,7 +2141,7 @@ export const GoogleCloudApihubV1PluginActionConfig = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudApihubV1PluginActionConfig>;
 
 export type GoogleCloudApihubV1PluginActionConfigList =
-  ReadonlyArray<GoogleCloudApihubV1PluginActionConfig>;
+  Array<GoogleCloudApihubV1PluginActionConfig>;
 export const GoogleCloudApihubV1PluginActionConfigList = /*@__PURE__*/ S.Array(
   GoogleCloudApihubV1PluginActionConfig,
 ) as any as S.Schema<GoogleCloudApihubV1PluginActionConfigList>;
@@ -2171,7 +2182,10 @@ export const GoogleCloudApihubV1AuthConfigTemplateSupportedAuthTypesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudApihubV1AuthConfigTemplateSupportedAuthTypesItemEnumList =
-  ReadonlyArray<GoogleCloudApihubV1AuthConfigTemplateSupportedAuthTypesItemEnum>;
+  Array<
+    | GoogleCloudApihubV1AuthConfigTemplateSupportedAuthTypesItemEnum
+    | (string & {})
+  >;
 export const GoogleCloudApihubV1AuthConfigTemplateSupportedAuthTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleCloudApihubV1AuthConfigTemplateSupportedAuthTypesItemEnum,
@@ -2231,7 +2245,7 @@ export const GoogleCloudApihubV1ConfigValueOption = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudApihubV1ConfigValueOption>;
 
 export type GoogleCloudApihubV1ConfigValueOptionList =
-  ReadonlyArray<GoogleCloudApihubV1ConfigValueOption>;
+  Array<GoogleCloudApihubV1ConfigValueOption>;
 export const GoogleCloudApihubV1ConfigValueOptionList = /*@__PURE__*/ S.Array(
   GoogleCloudApihubV1ConfigValueOption,
 ) as any as S.Schema<GoogleCloudApihubV1ConfigValueOptionList>;
@@ -2262,7 +2276,9 @@ export interface GoogleCloudApihubV1ConfigVariableTemplate {
   /** Optional. Regular expression in RE2 syntax used for validating the `value` of a `ConfigVariable`. */
   validationRegex?: string;
   /** Required. Type of the parameter: string, int, bool etc. */
-  valueType?: GoogleCloudApihubV1ConfigVariableTemplateValueTypeEnum;
+  valueType?:
+    | GoogleCloudApihubV1ConfigVariableTemplateValueTypeEnum
+    | (string & {});
   /** Optional. Multi select options. To be populated if `ValueType` is `MULTI_SELECT`. */
   multiSelectOptions?: GoogleCloudApihubV1ConfigValueOptionList;
 }
@@ -2284,7 +2300,7 @@ export const GoogleCloudApihubV1ConfigVariableTemplate =
   }) as any as S.Schema<GoogleCloudApihubV1ConfigVariableTemplate>;
 
 export type GoogleCloudApihubV1ConfigVariableTemplateList =
-  ReadonlyArray<GoogleCloudApihubV1ConfigVariableTemplate>;
+  Array<GoogleCloudApihubV1ConfigVariableTemplate>;
 export const GoogleCloudApihubV1ConfigVariableTemplateList =
   /*@__PURE__*/ S.Array(
     GoogleCloudApihubV1ConfigVariableTemplate,
@@ -2324,7 +2340,7 @@ export const GoogleCloudApihubV1HostingService = /*@__PURE__*/ S.suspend(() =>
 /** A plugin resource in the API Hub. */
 export interface GoogleCloudApihubV1Plugin {
   /** Output only. The type of the plugin, indicating whether it is 'SYSTEM_OWNED' or 'USER_OWNED'. */
-  ownershipType?: GoogleCloudApihubV1PluginOwnershipTypeEnum;
+  ownershipType?: GoogleCloudApihubV1PluginOwnershipTypeEnum | (string & {});
   /** Output only. Timestamp indicating when the plugin was last updated. */
   updateTime?: string;
   /** Optional. The type of the API. This maps to the following system defined attribute: `projects/{project}/locations/{location}/attributes/system-plugin-type` attribute. The number of allowed values for this attribute will be based on the cardinality of the attribute. The same can be retrieved via GetAttribute API. All values should be from the list of allowed values defined for the attribute. Note this field is not required for plugins developed via plugin framework. */
@@ -2334,11 +2350,11 @@ export interface GoogleCloudApihubV1Plugin {
   /** Optional. The configuration of actions supported by the plugin. **REQUIRED**: This field must be provided when creating or updating a Plugin. The server will reject requests if this field is missing. */
   actionsConfig?: GoogleCloudApihubV1PluginActionConfigList;
   /** Output only. Represents the state of the plugin. Note this field will not be set for plugins developed via plugin framework as the state will be managed at plugin instance level. */
-  state?: GoogleCloudApihubV1PluginStateEnum;
+  state?: GoogleCloudApihubV1PluginStateEnum | (string & {});
   /** Optional. The category of the plugin, identifying its primary category or purpose. This field is required for all plugins. */
-  pluginCategory?: GoogleCloudApihubV1PluginPluginCategoryEnum;
+  pluginCategory?: GoogleCloudApihubV1PluginPluginCategoryEnum | (string & {});
   /** Optional. The type of the gateway. */
-  gatewayType?: GoogleCloudApihubV1PluginGatewayTypeEnum;
+  gatewayType?: GoogleCloudApihubV1PluginGatewayTypeEnum | (string & {});
   /** Optional. The documentation of the plugin, that explains how to set up and use the plugin. */
   documentation?: GoogleCloudApihubV1Documentation;
   /** Optional. The configuration template for the plugin. */
@@ -2450,7 +2466,7 @@ export const GoogleCloudApihubV1MultiSelectValues = /*@__PURE__*/ S.suspend(
   identifier: "GoogleCloudApihubV1MultiSelectValues",
 }) as any as S.Schema<GoogleCloudApihubV1MultiSelectValues>;
 
-export type IntegerList = ReadonlyArray<number>;
+export type IntegerList = Array<number>;
 export const IntegerList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<IntegerList>;
@@ -2578,7 +2594,9 @@ export interface GoogleCloudApihubV1ApiKeyConfig {
   /** Required. The name of the SecretManager secret version resource storing the API key. Format: `projects/{project}/secrets/{secrete}/versions/{version}`. The `secretmanager.versions.access` permission should be granted to the service account accessing the secret. */
   apiKey?: GoogleCloudApihubV1Secret;
   /** Required. The location of the API key. The default value is QUERY. */
-  httpElementLocation?: GoogleCloudApihubV1ApiKeyConfigHttpElementLocationEnum;
+  httpElementLocation?:
+    | GoogleCloudApihubV1ApiKeyConfigHttpElementLocationEnum
+    | (string & {});
 }
 export const GoogleCloudApihubV1ApiKeyConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2629,7 +2647,7 @@ export interface GoogleCloudApihubV1AuthConfig {
   /** Oauth2.0 Client Credentials. */
   oauth2ClientCredentialsConfig?: GoogleCloudApihubV1Oauth2ClientCredentialsConfig;
   /** Required. The authentication type. */
-  authType?: GoogleCloudApihubV1AuthConfigAuthTypeEnum;
+  authType?: GoogleCloudApihubV1AuthConfigAuthTypeEnum | (string & {});
 }
 export const GoogleCloudApihubV1AuthConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2670,7 +2688,7 @@ export interface GoogleCloudApihubV1LastExecution {
   /** Output only. Error message describing the failure, if any, during the last execution. */
   errorMessage?: string;
   /** Output only. The result of the last execution of the plugin instance. */
-  result?: GoogleCloudApihubV1LastExecutionResultEnum;
+  result?: GoogleCloudApihubV1LastExecutionResultEnum | (string & {});
   /** Output only. The last execution end time of the plugin instance. */
   endTime?: string;
 }
@@ -2689,7 +2707,9 @@ export const GoogleCloudApihubV1LastExecution = /*@__PURE__*/ S.suspend(() =>
 /** The execution status for the plugin instance. */
 export interface GoogleCloudApihubV1ExecutionStatus {
   /** Output only. The current state of the execution. */
-  currentExecutionState?: GoogleCloudApihubV1ExecutionStatusCurrentExecutionStateEnum;
+  currentExecutionState?:
+    | GoogleCloudApihubV1ExecutionStatusCurrentExecutionStateEnum
+    | (string & {});
   /** Output only. The last execution of the plugin instance. */
   lastExecution?: GoogleCloudApihubV1LastExecution;
 }
@@ -2729,7 +2749,9 @@ export interface GoogleCloudApihubV1CurationConfig {
   /** Optional. Custom curation information for this plugin instance. */
   customCuration?: GoogleCloudApihubV1CustomCuration;
   /** Required. The curation type for this plugin instance. */
-  curationType?: GoogleCloudApihubV1CurationConfigCurationTypeEnum;
+  curationType?:
+    | GoogleCloudApihubV1CurationConfigCurationTypeEnum
+    | (string & {});
 }
 export const GoogleCloudApihubV1CurationConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2750,7 +2772,7 @@ export const GoogleCloudApihubV1ResourceConfigActionTypeEnum =
 /** The configuration of resources created for a given plugin instance action. */
 export interface GoogleCloudApihubV1ResourceConfig {
   /** Output only. The type of the action. */
-  actionType?: GoogleCloudApihubV1ResourceConfigActionTypeEnum;
+  actionType?: GoogleCloudApihubV1ResourceConfigActionTypeEnum | (string & {});
   /** Output only. The pubsub topic to publish the data to. Format is projects/{project}/topics/{topic} */
   pubsubTopic?: string;
 }
@@ -2790,7 +2812,7 @@ export interface GoogleCloudApihubV1PluginInstanceAction {
   /** Required. This should map to one of the action id specified in actions_config in the plugin. */
   actionId?: string;
   /** Output only. The current state of the plugin action in the plugin instance. */
-  state?: GoogleCloudApihubV1PluginInstanceActionStateEnum;
+  state?: GoogleCloudApihubV1PluginInstanceActionStateEnum | (string & {});
 }
 export const GoogleCloudApihubV1PluginInstanceAction = /*@__PURE__*/ S.suspend(
   () =>
@@ -2809,7 +2831,7 @@ export const GoogleCloudApihubV1PluginInstanceAction = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudApihubV1PluginInstanceAction>;
 
 export type GoogleCloudApihubV1PluginInstanceActionList =
-  ReadonlyArray<GoogleCloudApihubV1PluginInstanceAction>;
+  Array<GoogleCloudApihubV1PluginInstanceAction>;
 export const GoogleCloudApihubV1PluginInstanceActionList =
   /*@__PURE__*/ S.Array(
     GoogleCloudApihubV1PluginInstanceAction,
@@ -2818,7 +2840,7 @@ export const GoogleCloudApihubV1PluginInstanceActionList =
 /** Represents a plugin instance resource in the API Hub. A PluginInstance is a specific instance of a hub plugin with its own configuration, state, and execution details. */
 export interface GoogleCloudApihubV1PluginInstance {
   /** Output only. The current state of the plugin instance (e.g., enabled, disabled, provisioning). */
-  state?: GoogleCloudApihubV1PluginInstanceStateEnum;
+  state?: GoogleCloudApihubV1PluginInstanceStateEnum | (string & {});
   /** Optional. The source project id of the plugin instance. This will be the id of runtime project in case of Google Cloud based plugins and org id in case of non-Google Cloud based plugins. This field will be a required field for Google provided on-ramp plugins. */
   sourceProjectId?: string;
   /** Required. The display name for this plugin instance. Max length is 255 characters. */
@@ -3650,7 +3672,7 @@ export const GoogleCloudApihubV1GatewayPluginConfig = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudApihubV1GatewayPluginConfig>;
 
 export type GoogleCloudApihubV1GatewayPluginConfigList =
-  ReadonlyArray<GoogleCloudApihubV1GatewayPluginConfig>;
+  Array<GoogleCloudApihubV1GatewayPluginConfig>;
 export const GoogleCloudApihubV1GatewayPluginConfigList = /*@__PURE__*/ S.Array(
   GoogleCloudApihubV1GatewayPluginConfig,
 ) as any as S.Schema<GoogleCloudApihubV1GatewayPluginConfigList>;
@@ -4019,7 +4041,7 @@ export const GoogleCloudApihubV1DiscoveredApiObservationSourceTypesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudApihubV1DiscoveredApiObservationSourceTypesItemEnumList =
-  ReadonlyArray<GoogleCloudApihubV1DiscoveredApiObservationSourceTypesItemEnum>;
+  Array<GoogleCloudApihubV1DiscoveredApiObservationSourceTypesItemEnum>;
 export const GoogleCloudApihubV1DiscoveredApiObservationSourceTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleCloudApihubV1DiscoveredApiObservationSourceTypesItemEnum,
@@ -4122,7 +4144,7 @@ export const GoogleCloudApihubV1MatchResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudApihubV1MatchResult>;
 
 export type GoogleCloudApihubV1MatchResultList =
-  ReadonlyArray<GoogleCloudApihubV1MatchResult>;
+  Array<GoogleCloudApihubV1MatchResult>;
 export const GoogleCloudApihubV1MatchResultList = /*@__PURE__*/ S.Array(
   GoogleCloudApihubV1MatchResult,
 ) as any as S.Schema<GoogleCloudApihubV1MatchResultList>;
@@ -4254,7 +4276,7 @@ export const GoogleCloudApihubV1PathParam = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudApihubV1PathParam>;
 
 export type GoogleCloudApihubV1PathParamList =
-  ReadonlyArray<GoogleCloudApihubV1PathParam>;
+  Array<GoogleCloudApihubV1PathParam>;
 export const GoogleCloudApihubV1PathParamList = /*@__PURE__*/ S.Array(
   GoogleCloudApihubV1PathParam,
 ) as any as S.Schema<GoogleCloudApihubV1PathParamList>;
@@ -4476,7 +4498,7 @@ export const GoogleCloudApihubV1StyleGuideLinterEnum = /*@__PURE__*/ S.String;
 /** Represents a singleton style guide resource to be used for linting Open API specs. */
 export interface GoogleCloudApihubV1StyleGuide {
   /** Required. Target linter for the style guide. */
-  linter?: GoogleCloudApihubV1StyleGuideLinterEnum;
+  linter?: GoogleCloudApihubV1StyleGuideLinterEnum | (string & {});
   /** Required. Input only. The contents of the uploaded style guide. */
   contents?: GoogleCloudApihubV1StyleGuideContents;
   /** Identifier. The name of the style guide. Format: `projects/{project}/locations/{location}/plugins/{plugin}/styleGuide` */
@@ -4553,7 +4575,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
 export type GoogleCloudLocationLocationList =
-  ReadonlyArray<GoogleCloudLocationLocation>;
+  Array<GoogleCloudLocationLocation>;
 export const GoogleCloudLocationLocationList = /*@__PURE__*/ S.Array(
   GoogleCloudLocationLocation,
 ) as any as S.Schema<GoogleCloudLocationLocationList>;
@@ -4602,8 +4624,7 @@ export const ListProjectsLocationsAddonsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsAddonsRequest",
 }) as any as S.Schema<ListProjectsLocationsAddonsRequest>;
 
-export type GoogleCloudApihubV1AddonList =
-  ReadonlyArray<GoogleCloudApihubV1Addon>;
+export type GoogleCloudApihubV1AddonList = Array<GoogleCloudApihubV1Addon>;
 export const GoogleCloudApihubV1AddonList = /*@__PURE__*/ S.Array(
   GoogleCloudApihubV1Addon,
 ) as any as S.Schema<GoogleCloudApihubV1AddonList>;
@@ -4652,7 +4673,7 @@ export const ListProjectsLocationsApisRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsApisRequest",
 }) as any as S.Schema<ListProjectsLocationsApisRequest>;
 
-export type GoogleCloudApihubV1ApiList = ReadonlyArray<GoogleCloudApihubV1Api>;
+export type GoogleCloudApihubV1ApiList = Array<GoogleCloudApihubV1Api>;
 export const GoogleCloudApihubV1ApiList = /*@__PURE__*/ S.Array(
   GoogleCloudApihubV1Api,
 ) as any as S.Schema<GoogleCloudApihubV1ApiList>;
@@ -4701,8 +4722,7 @@ export const ListProjectsLocationsApisVersionsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsApisVersionsRequest",
 }) as any as S.Schema<ListProjectsLocationsApisVersionsRequest>;
 
-export type GoogleCloudApihubV1VersionList =
-  ReadonlyArray<GoogleCloudApihubV1Version>;
+export type GoogleCloudApihubV1VersionList = Array<GoogleCloudApihubV1Version>;
 export const GoogleCloudApihubV1VersionList = /*@__PURE__*/ S.Array(
   GoogleCloudApihubV1Version,
 ) as any as S.Schema<GoogleCloudApihubV1VersionList>;
@@ -4753,7 +4773,7 @@ export const ListProjectsLocationsApisVersionsOperationsRequest =
   }) as any as S.Schema<ListProjectsLocationsApisVersionsOperationsRequest>;
 
 export type GoogleCloudApihubV1ApiOperationList =
-  ReadonlyArray<GoogleCloudApihubV1ApiOperation>;
+  Array<GoogleCloudApihubV1ApiOperation>;
 export const GoogleCloudApihubV1ApiOperationList = /*@__PURE__*/ S.Array(
   GoogleCloudApihubV1ApiOperation,
 ) as any as S.Schema<GoogleCloudApihubV1ApiOperationList>;
@@ -4803,8 +4823,7 @@ export const ListProjectsLocationsApisVersionsSpecsRequest =
     identifier: "ListProjectsLocationsApisVersionsSpecsRequest",
   }) as any as S.Schema<ListProjectsLocationsApisVersionsSpecsRequest>;
 
-export type GoogleCloudApihubV1SpecList =
-  ReadonlyArray<GoogleCloudApihubV1Spec>;
+export type GoogleCloudApihubV1SpecList = Array<GoogleCloudApihubV1Spec>;
 export const GoogleCloudApihubV1SpecList = /*@__PURE__*/ S.Array(
   GoogleCloudApihubV1Spec,
 ) as any as S.Schema<GoogleCloudApihubV1SpecList>;
@@ -4855,7 +4874,7 @@ export const ListProjectsLocationsAttributesRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListProjectsLocationsAttributesRequest>;
 
 export type GoogleCloudApihubV1AttributeList =
-  ReadonlyArray<GoogleCloudApihubV1Attribute>;
+  Array<GoogleCloudApihubV1Attribute>;
 export const GoogleCloudApihubV1AttributeList = /*@__PURE__*/ S.Array(
   GoogleCloudApihubV1Attribute,
 ) as any as S.Schema<GoogleCloudApihubV1AttributeList>;
@@ -4906,7 +4925,7 @@ export const ListProjectsLocationsCurationsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListProjectsLocationsCurationsRequest>;
 
 export type GoogleCloudApihubV1CurationList =
-  ReadonlyArray<GoogleCloudApihubV1Curation>;
+  Array<GoogleCloudApihubV1Curation>;
 export const GoogleCloudApihubV1CurationList = /*@__PURE__*/ S.Array(
   GoogleCloudApihubV1Curation,
 ) as any as S.Schema<GoogleCloudApihubV1CurationList>;
@@ -4957,7 +4976,7 @@ export const ListProjectsLocationsDependenciesRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListProjectsLocationsDependenciesRequest>;
 
 export type GoogleCloudApihubV1DependencyList =
-  ReadonlyArray<GoogleCloudApihubV1Dependency>;
+  Array<GoogleCloudApihubV1Dependency>;
 export const GoogleCloudApihubV1DependencyList = /*@__PURE__*/ S.Array(
   GoogleCloudApihubV1Dependency,
 ) as any as S.Schema<GoogleCloudApihubV1DependencyList>;
@@ -5008,7 +5027,7 @@ export const ListProjectsLocationsDeploymentsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListProjectsLocationsDeploymentsRequest>;
 
 export type GoogleCloudApihubV1DeploymentList =
-  ReadonlyArray<GoogleCloudApihubV1Deployment>;
+  Array<GoogleCloudApihubV1Deployment>;
 export const GoogleCloudApihubV1DeploymentList = /*@__PURE__*/ S.Array(
   GoogleCloudApihubV1Deployment,
 ) as any as S.Schema<GoogleCloudApihubV1DeploymentList>;
@@ -5056,7 +5075,7 @@ export const ListProjectsLocationsDiscoveredApiObservationsRequest =
   }) as any as S.Schema<ListProjectsLocationsDiscoveredApiObservationsRequest>;
 
 export type GoogleCloudApihubV1DiscoveredApiObservationList =
-  ReadonlyArray<GoogleCloudApihubV1DiscoveredApiObservation>;
+  Array<GoogleCloudApihubV1DiscoveredApiObservation>;
 export const GoogleCloudApihubV1DiscoveredApiObservationList =
   /*@__PURE__*/ S.Array(
     GoogleCloudApihubV1DiscoveredApiObservation,
@@ -5108,7 +5127,7 @@ export const ListProjectsLocationsDiscoveredApiObservationsDiscoveredApiOperatio
   }) as any as S.Schema<ListProjectsLocationsDiscoveredApiObservationsDiscoveredApiOperationsRequest>;
 
 export type GoogleCloudApihubV1DiscoveredApiOperationList =
-  ReadonlyArray<GoogleCloudApihubV1DiscoveredApiOperation>;
+  Array<GoogleCloudApihubV1DiscoveredApiOperation>;
 export const GoogleCloudApihubV1DiscoveredApiOperationList =
   /*@__PURE__*/ S.Array(
     GoogleCloudApihubV1DiscoveredApiOperation,
@@ -5159,7 +5178,7 @@ export const ListProjectsLocationsExternalApisRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListProjectsLocationsExternalApisRequest>;
 
 export type GoogleCloudApihubV1ExternalApiList =
-  ReadonlyArray<GoogleCloudApihubV1ExternalApi>;
+  Array<GoogleCloudApihubV1ExternalApi>;
 export const GoogleCloudApihubV1ExternalApiList = /*@__PURE__*/ S.Array(
   GoogleCloudApihubV1ExternalApi,
 ) as any as S.Schema<GoogleCloudApihubV1ExternalApiList>;
@@ -5213,7 +5232,7 @@ export const ListProjectsLocationsHostProjectRegistrationsRequest =
   }) as any as S.Schema<ListProjectsLocationsHostProjectRegistrationsRequest>;
 
 export type GoogleCloudApihubV1HostProjectRegistrationList =
-  ReadonlyArray<GoogleCloudApihubV1HostProjectRegistration>;
+  Array<GoogleCloudApihubV1HostProjectRegistration>;
 export const GoogleCloudApihubV1HostProjectRegistrationList =
   /*@__PURE__*/ S.Array(
     GoogleCloudApihubV1HostProjectRegistration,
@@ -5269,8 +5288,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type GoogleLongrunningOperationList =
-  ReadonlyArray<GoogleLongrunningOperation>;
+export type GoogleLongrunningOperationList = Array<GoogleLongrunningOperation>;
 export const GoogleLongrunningOperationList = /*@__PURE__*/ S.Array(
   GoogleLongrunningOperation,
 ) as any as S.Schema<GoogleLongrunningOperationList>;
@@ -5322,8 +5340,7 @@ export const ListProjectsLocationsPluginsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsPluginsRequest",
 }) as any as S.Schema<ListProjectsLocationsPluginsRequest>;
 
-export type GoogleCloudApihubV1PluginList =
-  ReadonlyArray<GoogleCloudApihubV1Plugin>;
+export type GoogleCloudApihubV1PluginList = Array<GoogleCloudApihubV1Plugin>;
 export const GoogleCloudApihubV1PluginList = /*@__PURE__*/ S.Array(
   GoogleCloudApihubV1Plugin,
 ) as any as S.Schema<GoogleCloudApihubV1PluginList>;
@@ -5374,7 +5391,7 @@ export const ListProjectsLocationsPluginsInstancesRequest =
   }) as any as S.Schema<ListProjectsLocationsPluginsInstancesRequest>;
 
 export type GoogleCloudApihubV1PluginInstanceList =
-  ReadonlyArray<GoogleCloudApihubV1PluginInstance>;
+  Array<GoogleCloudApihubV1PluginInstance>;
 export const GoogleCloudApihubV1PluginInstanceList = /*@__PURE__*/ S.Array(
   GoogleCloudApihubV1PluginInstance,
 ) as any as S.Schema<GoogleCloudApihubV1PluginInstanceList>;
@@ -5428,7 +5445,7 @@ export const ListProjectsLocationsRuntimeProjectAttachmentsRequest =
   }) as any as S.Schema<ListProjectsLocationsRuntimeProjectAttachmentsRequest>;
 
 export type GoogleCloudApihubV1RuntimeProjectAttachmentList =
-  ReadonlyArray<GoogleCloudApihubV1RuntimeProjectAttachment>;
+  Array<GoogleCloudApihubV1RuntimeProjectAttachment>;
 export const GoogleCloudApihubV1RuntimeProjectAttachmentList =
   /*@__PURE__*/ S.Array(
     GoogleCloudApihubV1RuntimeProjectAttachment,
@@ -6013,8 +6030,7 @@ export const GoogleCloudApihubV1ApiView = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleCloudApihubV1ApiView",
 }) as any as S.Schema<GoogleCloudApihubV1ApiView>;
 
-export type GoogleCloudApihubV1ApiViewList =
-  ReadonlyArray<GoogleCloudApihubV1ApiView>;
+export type GoogleCloudApihubV1ApiViewList = Array<GoogleCloudApihubV1ApiView>;
 export const GoogleCloudApihubV1ApiViewList = /*@__PURE__*/ S.Array(
   GoogleCloudApihubV1ApiView,
 ) as any as S.Schema<GoogleCloudApihubV1ApiViewList>;
@@ -6125,7 +6141,7 @@ export const GoogleCloudApihubV1SearchResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudApihubV1SearchResult>;
 
 export type GoogleCloudApihubV1SearchResultList =
-  ReadonlyArray<GoogleCloudApihubV1SearchResult>;
+  Array<GoogleCloudApihubV1SearchResult>;
 export const GoogleCloudApihubV1SearchResultList = /*@__PURE__*/ S.Array(
   GoogleCloudApihubV1SearchResult,
 ) as any as S.Schema<GoogleCloudApihubV1SearchResultList>;

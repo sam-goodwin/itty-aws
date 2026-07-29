@@ -78,7 +78,7 @@ export const CommunicationServicesCreateOrUpdateRequestTagsMap =
   ) as any as S.Schema<CommunicationServicesCreateOrUpdateRequestTagsMap>;
 
 /** List of email Domain resource Ids. */
-export type DomainsResourceList = ReadonlyArray<string>;
+export type DomainsResourceList = Array<string>;
 export const DomainsResourceList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DomainsResourceList>;
@@ -672,7 +672,7 @@ export const CommunicationServiceResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The CommunicationServiceResource items on this page */
 export type CommunicationServiceResourceListValueList =
-  ReadonlyArray<CommunicationServiceResource>;
+  Array<CommunicationServiceResource>;
 export const CommunicationServiceResourceListValueList = /*@__PURE__*/ S.Array(
   CommunicationServiceResource,
 ) as any as S.Schema<CommunicationServiceResourceListValueList>;
@@ -1470,7 +1470,7 @@ export const DomainResource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DomainResource" }) as any as S.Schema<DomainResource>;
 
 /** The DomainResource items on this page */
-export type DomainResourceListValueList = ReadonlyArray<DomainResource>;
+export type DomainResourceListValueList = Array<DomainResource>;
 export const DomainResourceListValueList = /*@__PURE__*/ S.Array(
   DomainResource,
 ) as any as S.Schema<DomainResourceListValueList>;
@@ -1609,7 +1609,7 @@ export const EmailServicesProvisioningState = /*@__PURE__*/ S.String;
 /** A class that describes the properties of the EmailService. */
 export interface EmailServiceProperties {
   /** Provisioning state of the resource. */
-  provisioningState?: EmailServicesProvisioningState;
+  provisioningState?: EmailServicesProvisioningState | (string & {});
   /** The location where the email service stores its data at rest. */
   dataLocation: string;
 }
@@ -1854,8 +1854,7 @@ export const EmailServiceResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EmailServiceResource>;
 
 /** The EmailServiceResource items on this page */
-export type EmailServiceResourceListValueList =
-  ReadonlyArray<EmailServiceResource>;
+export type EmailServiceResourceListValueList = Array<EmailServiceResource>;
 export const EmailServiceResourceListValueList = /*@__PURE__*/ S.Array(
   EmailServiceResource,
 ) as any as S.Schema<EmailServiceResourceListValueList>;
@@ -1917,7 +1916,7 @@ export const EmailServicesListVerifiedExchangeOnlineDomainsRequest =
   }) as any as S.Schema<EmailServicesListVerifiedExchangeOnlineDomainsRequest>;
 
 /** List of FQDNs of verified domains in Exchange Online. */
-export type VerifiedExchangeOnlineDomainList = ReadonlyArray<string>;
+export type VerifiedExchangeOnlineDomainList = Array<string>;
 export const VerifiedExchangeOnlineDomainList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<VerifiedExchangeOnlineDomainList>;
@@ -2075,7 +2074,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = ReadonlyArray<Operation>;
+export type OperationsListResponseValueList = Array<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;
@@ -2354,7 +2353,7 @@ export const SenderUsernameResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The SenderUsernameResource items on this page */
 export type SenderUsernameResourceCollectionValueList =
-  ReadonlyArray<SenderUsernameResource>;
+  Array<SenderUsernameResource>;
 export const SenderUsernameResourceCollectionValueList = /*@__PURE__*/ S.Array(
   SenderUsernameResource,
 ) as any as S.Schema<SenderUsernameResourceCollectionValueList>;
@@ -2588,7 +2587,7 @@ export const SmtpUsernameResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The SmtpUsernameResource items on this page */
 export type SmtpUsernameResourceCollectionValueList =
-  ReadonlyArray<SmtpUsernameResource>;
+  Array<SmtpUsernameResource>;
 export const SmtpUsernameResourceCollectionValueList = /*@__PURE__*/ S.Array(
   SmtpUsernameResource,
 ) as any as S.Schema<SmtpUsernameResourceCollectionValueList>;
@@ -2881,7 +2880,7 @@ export const SuppressionListAddressResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The SuppressionListAddressResource items on this page */
 export type SuppressionListAddressResourceCollectionValueList =
-  ReadonlyArray<SuppressionListAddressResource>;
+  Array<SuppressionListAddressResource>;
 export const SuppressionListAddressResourceCollectionValueList =
   /*@__PURE__*/ S.Array(
     SuppressionListAddressResource,
@@ -3147,7 +3146,7 @@ export const SuppressionListResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The SuppressionListResource items on this page */
 export type SuppressionListResourceCollectionValueList =
-  ReadonlyArray<SuppressionListResource>;
+  Array<SuppressionListResource>;
 export const SuppressionListResourceCollectionValueList = /*@__PURE__*/ S.Array(
   SuppressionListResource,
 ) as any as S.Schema<SuppressionListResourceCollectionValueList>;

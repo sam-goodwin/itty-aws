@@ -113,7 +113,7 @@ export const GoogleCloudPolicyanalyzerV1beta1Activity = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudPolicyanalyzerV1beta1Activity>;
 
 export type GoogleCloudPolicyanalyzerV1beta1ActivityList =
-  ReadonlyArray<GoogleCloudPolicyanalyzerV1beta1Activity>;
+  Array<GoogleCloudPolicyanalyzerV1beta1Activity>;
 export const GoogleCloudPolicyanalyzerV1beta1ActivityList =
   /*@__PURE__*/ S.Array(
     GoogleCloudPolicyanalyzerV1beta1Activity,

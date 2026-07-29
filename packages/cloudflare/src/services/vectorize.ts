@@ -282,7 +282,7 @@ export const CreateIndexMetadataIndexResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateIndexMetadataIndexResponse",
 }) as any as S.Schema<CreateIndexMetadataIndexResponse>;
 
-export type IndexesDeleteByIdsRequestIdsList = ReadonlyArray<string>;
+export type IndexesDeleteByIdsRequestIdsList = Array<string>;
 export const IndexesDeleteByIdsRequestIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<IndexesDeleteByIdsRequestIdsList>;
@@ -392,7 +392,7 @@ export const DeleteIndexMetadataIndexResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteIndexMetadataIndexResponse",
 }) as any as S.Schema<DeleteIndexMetadataIndexResponse>;
 
-export type IndexesGetByIdsRequestIdsList = ReadonlyArray<string>;
+export type IndexesGetByIdsRequestIdsList = Array<string>;
 export const IndexesGetByIdsRequestIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<IndexesGetByIdsRequestIdsList>;
@@ -651,7 +651,7 @@ export const IndexesListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "IndexesListResultItem",
 }) as any as S.Schema<IndexesListResultItem>;
 
-export type IndexesListResultList = ReadonlyArray<IndexesListResultItem>;
+export type IndexesListResultList = Array<IndexesListResultItem>;
 export const IndexesListResultList = /*@__PURE__*/ S.Array(
   IndexesListResultItem,
 ) as any as S.Schema<IndexesListResultList>;
@@ -719,7 +719,7 @@ export const IndexesMetadataIndexListResponseMetadataIndexesItem =
   }) as any as S.Schema<IndexesMetadataIndexListResponseMetadataIndexesItem>;
 
 export type IndexesMetadataIndexListResponseMetadataIndexesList =
-  ReadonlyArray<IndexesMetadataIndexListResponseMetadataIndexesItem>;
+  Array<IndexesMetadataIndexListResponseMetadataIndexesItem>;
 export const IndexesMetadataIndexListResponseMetadataIndexesList =
   /*@__PURE__*/ S.Array(
     IndexesMetadataIndexListResponseMetadataIndexesItem,
@@ -782,7 +782,7 @@ export const IndexesListVectorsResponseVectorsItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<IndexesListVectorsResponseVectorsItem>;
 
 export type IndexesListVectorsResponseVectorsList =
-  ReadonlyArray<IndexesListVectorsResponseVectorsItem>;
+  Array<IndexesListVectorsResponseVectorsItem>;
 export const IndexesListVectorsResponseVectorsList = /*@__PURE__*/ S.Array(
   IndexesListVectorsResponseVectorsItem,
 ) as any as S.Schema<IndexesListVectorsResponseVectorsList>;
@@ -815,7 +815,7 @@ export const ListVectorsIndexResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListVectorsIndexResponse",
 }) as any as S.Schema<ListVectorsIndexResponse>;
 
-export type IndexesQueryRequestVectorList = ReadonlyArray<number>;
+export type IndexesQueryRequestVectorList = Array<number>;
 export const IndexesQueryRequestVectorList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<IndexesQueryRequestVectorList>;
@@ -860,7 +860,7 @@ export const QueryIndexRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "QueryIndexRequest",
 }) as any as S.Schema<QueryIndexRequest>;
 
-export type IndexesQueryResponseMatchesItemValuesList = ReadonlyArray<number>;
+export type IndexesQueryResponseMatchesItemValuesList = Array<number>;
 export const IndexesQueryResponseMatchesItemValuesList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<IndexesQueryResponseMatchesItemValuesList>;
@@ -887,7 +887,7 @@ export const IndexesQueryResponseMatchesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IndexesQueryResponseMatchesItem>;
 
 export type IndexesQueryResponseMatchesList =
-  ReadonlyArray<IndexesQueryResponseMatchesItem>;
+  Array<IndexesQueryResponseMatchesItem>;
 export const IndexesQueryResponseMatchesList = /*@__PURE__*/ S.Array(
   IndexesQueryResponseMatchesItem,
 ) as any as S.Schema<IndexesQueryResponseMatchesList>;

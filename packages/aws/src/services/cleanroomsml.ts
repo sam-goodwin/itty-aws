@@ -277,7 +277,7 @@ export const ConfiguredAudienceModelOutputConfig = /*@__PURE__*/ S.suspend(() =>
 export type SharedAudienceMetrics = "ALL" | "NONE";
 export const SharedAudienceMetrics = /*@__PURE__*/ S.String;
 
-export type MetricsList = SharedAudienceMetrics[];
+export type MetricsList = (SharedAudienceMetrics | (string & {}))[];
 export const MetricsList = /*@__PURE__*/ S.Array(SharedAudienceMetrics);
 export type MinMatchingSeedSize = number;
 export type AudienceSizeType = "ABSOLUTE" | "PERCENTAGE";
@@ -287,7 +287,7 @@ export type AudienceSizeValue = number;
 export type AudienceSizeBins = number[];
 export const AudienceSizeBins = /*@__PURE__*/ S.Array(S.Number);
 export interface AudienceSizeConfig {
-  audienceSizeType: AudienceSizeType;
+  audienceSizeType: AudienceSizeType | (string & {});
   audienceSizeBins: number[];
 }
 export const AudienceSizeConfig = /*@__PURE__*/ S.suspend(() =>
@@ -442,7 +442,7 @@ export type EntityType =
   | "CUSTOM";
 export const EntityType = /*@__PURE__*/ S.String;
 
-export type EntityTypeList = EntityType[];
+export type EntityTypeList = (EntityType | (string & {}))[];
 export const EntityTypeList = /*@__PURE__*/ S.Array(EntityType);
 export type CustomDataIdentifier = string;
 export type CustomDataIdentifierList = string[];
@@ -470,7 +470,7 @@ export const LogRedactionConfiguration = /*@__PURE__*/ S.suspend(() =>
 export interface LogsConfigurationPolicy {
   allowedAccountIds: string[];
   filterPattern?: string;
-  logType?: LogType;
+  logType?: LogType | (string & {});
   logRedactionConfiguration?: LogRedactionConfiguration;
 }
 export const LogsConfigurationPolicy = /*@__PURE__*/ S.suspend(() =>
@@ -491,7 +491,7 @@ export type NoiseLevelType = "HIGH" | "MEDIUM" | "LOW" | "NONE";
 export const NoiseLevelType = /*@__PURE__*/ S.String;
 
 export interface MetricsConfigurationPolicy {
-  noiseLevel: NoiseLevelType;
+  noiseLevel: NoiseLevelType | (string & {});
 }
 export const MetricsConfigurationPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ noiseLevel: NoiseLevelType }),
@@ -503,7 +503,7 @@ export const TrainedModelArtifactMaxSizeUnitType = /*@__PURE__*/ S.String;
 
 export type TrainedModelArtifactMaxSizeValue = number;
 export interface TrainedModelArtifactMaxSize {
-  unit: TrainedModelArtifactMaxSizeUnitType;
+  unit: TrainedModelArtifactMaxSizeUnitType | (string & {});
   value: number;
 }
 export const TrainedModelArtifactMaxSize = /*@__PURE__*/ S.suspend(() =>
@@ -530,7 +530,7 @@ export const TrainedModelExportsMaxSizeUnitType = /*@__PURE__*/ S.String;
 
 export type TrainedModelExportsMaxSizeValue = number;
 export interface TrainedModelExportsMaxSize {
-  unit: TrainedModelExportsMaxSizeUnitType;
+  unit: TrainedModelExportsMaxSizeUnitType | (string & {});
   value: number;
 }
 export const TrainedModelExportsMaxSize = /*@__PURE__*/ S.suspend(() =>
@@ -541,7 +541,10 @@ export const TrainedModelExportsMaxSize = /*@__PURE__*/ S.suspend(() =>
 export type TrainedModelExportFileType = "MODEL" | "OUTPUT";
 export const TrainedModelExportFileType = /*@__PURE__*/ S.String;
 
-export type TrainedModelExportFileTypeList = TrainedModelExportFileType[];
+export type TrainedModelExportFileTypeList = (
+  | TrainedModelExportFileType
+  | (string & {})
+)[];
 export const TrainedModelExportFileTypeList = /*@__PURE__*/ S.Array(
   TrainedModelExportFileType,
 );
@@ -564,7 +567,7 @@ export const TrainedModelInferenceMaxOutputSizeUnitType =
 
 export type TrainedModelInferenceMaxOutputSizeValue = number;
 export interface TrainedModelInferenceMaxOutputSize {
-  unit: TrainedModelInferenceMaxOutputSizeUnitType;
+  unit: TrainedModelInferenceMaxOutputSizeUnitType | (string & {});
   value: number;
 }
 export const TrainedModelInferenceMaxOutputSize = /*@__PURE__*/ S.suspend(() =>
@@ -698,7 +701,7 @@ export const WorkerComputeConfigurationProperties = /*@__PURE__*/ S.Union([
   S.Struct({ spark: SparkProperties }),
 ]);
 export interface WorkerComputeConfiguration {
-  type?: WorkerComputeType;
+  type?: WorkerComputeType | (string & {});
   number?: number;
   properties?: WorkerComputeConfigurationProperties;
 }
@@ -721,7 +724,7 @@ export const ResultFormat = /*@__PURE__*/ S.String;
 export interface ProtectedQueryInputParameters {
   sqlParameters: ProtectedQuerySQLParameters;
   computeConfiguration?: ComputeConfiguration;
-  resultFormat?: ResultFormat;
+  resultFormat?: ResultFormat | (string & {});
 }
 export const ProtectedQueryInputParameters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -954,7 +957,7 @@ export const InstanceType = /*@__PURE__*/ S.String;
 
 export interface ResourceConfig {
   instanceCount?: number;
-  instanceType: InstanceType;
+  instanceType: InstanceType | (string & {});
   volumeSizeInGB: number;
 }
 export const ResourceConfig = /*@__PURE__*/ S.suspend(() =>
@@ -997,7 +1000,7 @@ export const S3DataDistributionType = /*@__PURE__*/ S.String;
 export interface ModelTrainingDataChannel {
   mlInputChannelArn: string;
   channelName: string;
-  s3DataDistributionType?: S3DataDistributionType;
+  s3DataDistributionType?: S3DataDistributionType | (string & {});
 }
 export const ModelTrainingDataChannel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1089,7 +1092,7 @@ export type ColumnType =
   | "NUMERICAL_FEATURE";
 export const ColumnType = /*@__PURE__*/ S.String;
 
-export type ColumnTypeList = ColumnType[];
+export type ColumnTypeList = (ColumnType | (string & {}))[];
 export const ColumnTypeList = /*@__PURE__*/ S.Array(ColumnType);
 export interface ColumnSchema {
   columnName: string;
@@ -1130,7 +1133,7 @@ export const DatasetInputConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "DatasetInputConfig",
 }) as any as S.Schema<DatasetInputConfig>;
 export interface Dataset {
-  type: DatasetType;
+  type: DatasetType | (string & {});
   inputConfig: DatasetInputConfig;
 }
 export const Dataset = /*@__PURE__*/ S.suspend(() =>
@@ -1531,7 +1534,7 @@ export const AudienceGenerationJobDataSource = /*@__PURE__*/ S.suspend(() =>
   identifier: "AudienceGenerationJobDataSource",
 }) as any as S.Schema<AudienceGenerationJobDataSource>;
 export interface AudienceSize {
-  type: AudienceSizeType;
+  type: AudienceSizeType | (string & {});
   value: number;
 }
 export const AudienceSize = /*@__PURE__*/ S.suspend(() =>
@@ -2637,7 +2640,7 @@ export type InferenceInstanceType =
 export const InferenceInstanceType = /*@__PURE__*/ S.String;
 
 export interface InferenceResourceConfig {
-  instanceType: InferenceInstanceType;
+  instanceType: InferenceInstanceType | (string & {});
   instanceCount?: number;
 }
 export const InferenceResourceConfig = /*@__PURE__*/ S.suspend(() =>

@@ -16,17 +16,17 @@ export type MessageTemplateContentTemplatingEnum = "liquid";
 export const MessageTemplateContentTemplatingEnum = /*@__PURE__*/ S.String;
 
 /** Rows of {id, cells, columns[{id, contents[{id, type, values}], values}], values}. */
-export type EmailTemplateDesignBodyRowsList = ReadonlyArray<unknown>;
+export type EmailTemplateDesignBodyRowsList = Array<unknown>;
 export const EmailTemplateDesignBodyRowsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<EmailTemplateDesignBodyRowsList>;
 
-export type EmailTemplateDesignBodyHeadersList = ReadonlyArray<unknown>;
+export type EmailTemplateDesignBodyHeadersList = Array<unknown>;
 export const EmailTemplateDesignBodyHeadersList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<EmailTemplateDesignBodyHeadersList>;
 
-export type EmailTemplateDesignBodyFootersList = ReadonlyArray<unknown>;
+export type EmailTemplateDesignBodyFootersList = Array<unknown>;
 export const EmailTemplateDesignBodyFootersList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<EmailTemplateDesignBodyFootersList>;
@@ -92,7 +92,7 @@ export const EmailTemplate = /*@__PURE__*/ S.suspend(() =>
 
 export interface MessageTemplateContent {
   /** Templating language for the email content. Always 'liquid' — Liquid tags pass through verbatim. * `liquid` - liquid */
-  templating?: MessageTemplateContentTemplatingEnum;
+  templating?: MessageTemplateContentTemplatingEnum | (string & {});
   /** Email message content. Replaced as a whole on update — send the complete object. */
   email?: EmailTemplate | null;
 }
@@ -271,7 +271,7 @@ export const DesignOperation = /*@__PURE__*/ S.suspend(() =>
 
 /** Ordered edits applied atomically to a template's Unlayer design: the stored design is read, the ops are applied in order, the result is validated and re-rendered to HTML, and it's saved only if valid — otherwise the template is unchanged. Reference blocks by id so you never resend the whole design. */
 export type MessagingTemplatesDesignPartialUpdateRequestOperationsList =
-  ReadonlyArray<DesignOperation>;
+  Array<DesignOperation>;
 export const MessagingTemplatesDesignPartialUpdateRequestOperationsList =
   /*@__PURE__*/ S.Array(
     DesignOperation,
@@ -356,8 +356,7 @@ export const MessagingTemplatesListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "MessagingTemplatesListRequest",
 }) as any as S.Schema<MessagingTemplatesListRequest>;
 
-export type PaginatedMessageTemplateListResultsList =
-  ReadonlyArray<MessageTemplate>;
+export type PaginatedMessageTemplateListResultsList = Array<MessageTemplate>;
 export const PaginatedMessageTemplateListResultsList = /*@__PURE__*/ S.Array(
   MessageTemplate,
 ) as any as S.Schema<PaginatedMessageTemplateListResultsList>;

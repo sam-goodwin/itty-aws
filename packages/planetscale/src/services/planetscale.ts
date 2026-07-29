@@ -172,8 +172,7 @@ export const OrganizationTeamMembershipPasswordsItemRole =
   /*@__PURE__*/ S.String;
 
 /** List of IP addresses or CIDR ranges that can use this password */
-export type OrganizationTeamMembershipPasswordsItemCidrsList =
-  ReadonlyArray<string>;
+export type OrganizationTeamMembershipPasswordsItemCidrsList = Array<string>;
 export const OrganizationTeamMembershipPasswordsItemCidrsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -181,7 +180,7 @@ export const OrganizationTeamMembershipPasswordsItemCidrsList =
 
 /** The list of hosts in each availability zone providing direct access to a vtgate */
 export type OrganizationTeamMembershipPasswordsItemDirectVtgateAddressesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const OrganizationTeamMembershipPasswordsItemDirectVtgateAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -189,7 +188,7 @@ export const OrganizationTeamMembershipPasswordsItemDirectVtgateAddressesList =
 
 /** The read-only replica host URLs */
 export type OrganizationTeamMembershipPasswordsItemAccessHostRegionalUrlsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const OrganizationTeamMembershipPasswordsItemAccessHostRegionalUrlsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -216,7 +215,7 @@ export const OrganizationTeamMembershipPasswordsItemActor =
 
 /** Public IP addresses for the region */
 export type OrganizationTeamMembershipPasswordsItemRegionPublicIpAddressesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const OrganizationTeamMembershipPasswordsItemRegionPublicIpAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -364,7 +363,7 @@ export const OrganizationTeamMembershipPasswordsItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<OrganizationTeamMembershipPasswordsItem>;
 
 export type OrganizationTeamMembershipPasswordsList =
-  ReadonlyArray<OrganizationTeamMembershipPasswordsItem>;
+  Array<OrganizationTeamMembershipPasswordsItem>;
 export const OrganizationTeamMembershipPasswordsList = /*@__PURE__*/ S.Array(
   OrganizationTeamMembershipPasswordsItem,
 ) as any as S.Schema<OrganizationTeamMembershipPasswordsList>;
@@ -600,7 +599,7 @@ export const DatabaseDeployRequestDeploymentPrecedingDeploymentsItemMap =
 
 /** The deployments ahead of this one in the queue */
 export type DatabaseDeployRequestDeploymentPrecedingDeploymentsList =
-  ReadonlyArray<DatabaseDeployRequestDeploymentPrecedingDeploymentsItemMap>;
+  Array<DatabaseDeployRequestDeploymentPrecedingDeploymentsItemMap>;
 export const DatabaseDeployRequestDeploymentPrecedingDeploymentsList =
   /*@__PURE__*/ S.Array(
     DatabaseDeployRequestDeploymentPrecedingDeploymentsItemMap,
@@ -619,7 +618,7 @@ export const DatabaseDeployRequestDeploymentDeployOperationsItemState =
 
 /** Names of foreign keys removed by this operation */
 export type DatabaseDeployRequestDeploymentDeployOperationsItemRemovedForeignKeyNamesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const DatabaseDeployRequestDeploymentDeployOperationsItemRemovedForeignKeyNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -695,7 +694,7 @@ export const DatabaseDeployRequestDeploymentDeployOperationsItem =
   }) as any as S.Schema<DatabaseDeployRequestDeploymentDeployOperationsItem>;
 
 export type DatabaseDeployRequestDeploymentDeployOperationsList =
-  ReadonlyArray<DatabaseDeployRequestDeploymentDeployOperationsItem>;
+  Array<DatabaseDeployRequestDeploymentDeployOperationsItem>;
 export const DatabaseDeployRequestDeploymentDeployOperationsList =
   /*@__PURE__*/ S.Array(
     DatabaseDeployRequestDeploymentDeployOperationsItem,
@@ -713,7 +712,7 @@ export const DatabaseDeployRequestDeploymentDeployOperationSummariesItemState =
 
 /** Names of foreign keys removed by this operation summary */
 export type DatabaseDeployRequestDeploymentDeployOperationSummariesItemRemovedForeignKeyNamesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const DatabaseDeployRequestDeploymentDeployOperationSummariesItemRemovedForeignKeyNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -721,7 +720,7 @@ export const DatabaseDeployRequestDeploymentDeployOperationSummariesItemRemovedF
 
 /** Names of shards in the keyspace modified by the deploy operation summary */
 export type DatabaseDeployRequestDeploymentDeployOperationSummariesItemShardNamesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const DatabaseDeployRequestDeploymentDeployOperationSummariesItemShardNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -761,7 +760,7 @@ export const DatabaseDeployRequestDeploymentDeployOperationSummariesItemOperatio
   }) as any as S.Schema<DatabaseDeployRequestDeploymentDeployOperationSummariesItemOperationsItem>;
 
 export type DatabaseDeployRequestDeploymentDeployOperationSummariesItemOperationsList =
-  ReadonlyArray<DatabaseDeployRequestDeploymentDeployOperationSummariesItemOperationsItem>;
+  Array<DatabaseDeployRequestDeploymentDeployOperationSummariesItemOperationsItem>;
 export const DatabaseDeployRequestDeploymentDeployOperationSummariesItemOperationsList =
   /*@__PURE__*/ S.Array(
     DatabaseDeployRequestDeploymentDeployOperationSummariesItemOperationsItem,
@@ -840,7 +839,7 @@ export const DatabaseDeployRequestDeploymentDeployOperationSummariesItem =
   }) as any as S.Schema<DatabaseDeployRequestDeploymentDeployOperationSummariesItem>;
 
 export type DatabaseDeployRequestDeploymentDeployOperationSummariesList =
-  ReadonlyArray<DatabaseDeployRequestDeploymentDeployOperationSummariesItem>;
+  Array<DatabaseDeployRequestDeploymentDeployOperationSummariesItem>;
 export const DatabaseDeployRequestDeploymentDeployOperationSummariesList =
   /*@__PURE__*/ S.Array(
     DatabaseDeployRequestDeploymentDeployOperationSummariesItem,
@@ -857,7 +856,7 @@ export const DatabaseDeployRequestDeploymentLintErrorsItemMap =
 
 /** Schema lint errors preventing the deployment from completing */
 export type DatabaseDeployRequestDeploymentLintErrorsList =
-  ReadonlyArray<DatabaseDeployRequestDeploymentLintErrorsItemMap>;
+  Array<DatabaseDeployRequestDeploymentLintErrorsItemMap>;
 export const DatabaseDeployRequestDeploymentLintErrorsList =
   /*@__PURE__*/ S.Array(
     DatabaseDeployRequestDeploymentLintErrorsItemMap,
@@ -874,7 +873,7 @@ export const DatabaseDeployRequestDeploymentSequentialDiffDependenciesItemMap =
 
 /** The schema dependencies that must be satisfied */
 export type DatabaseDeployRequestDeploymentSequentialDiffDependenciesList =
-  ReadonlyArray<DatabaseDeployRequestDeploymentSequentialDiffDependenciesItemMap>;
+  Array<DatabaseDeployRequestDeploymentSequentialDiffDependenciesItemMap>;
 export const DatabaseDeployRequestDeploymentSequentialDiffDependenciesList =
   /*@__PURE__*/ S.Array(
     DatabaseDeployRequestDeploymentSequentialDiffDependenciesItemMap,
@@ -891,7 +890,7 @@ export const DatabaseDeployRequestDeploymentLookupVindexOperationsItemMap =
 
 /** Lookup Vitess index operations */
 export type DatabaseDeployRequestDeploymentLookupVindexOperationsList =
-  ReadonlyArray<DatabaseDeployRequestDeploymentLookupVindexOperationsItemMap>;
+  Array<DatabaseDeployRequestDeploymentLookupVindexOperationsItemMap>;
 export const DatabaseDeployRequestDeploymentLookupVindexOperationsList =
   /*@__PURE__*/ S.Array(
     DatabaseDeployRequestDeploymentLookupVindexOperationsItemMap,
@@ -1493,8 +1492,7 @@ export const BackupRestoredBranchesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "BackupRestoredBranchesItem",
 }) as any as S.Schema<BackupRestoredBranchesItem>;
 
-export type BackupRestoredBranchesList =
-  ReadonlyArray<BackupRestoredBranchesItem>;
+export type BackupRestoredBranchesList = Array<BackupRestoredBranchesItem>;
 export const BackupRestoredBranchesList = /*@__PURE__*/ S.Array(
   BackupRestoredBranchesItem,
 ) as any as S.Schema<BackupRestoredBranchesList>;
@@ -1941,7 +1939,7 @@ export const PostgresBouncerParametersItemParameterType =
   /*@__PURE__*/ S.String;
 
 /** Valid options for the parameter value */
-export type PostgresBouncerParametersItemOptionsList = ReadonlyArray<string>;
+export type PostgresBouncerParametersItemOptionsList = Array<string>;
 export const PostgresBouncerParametersItemOptionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostgresBouncerParametersItemOptionsList>;
@@ -2033,7 +2031,7 @@ export const PostgresBouncerParametersItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostgresBouncerParametersItem>;
 
 export type PostgresBouncerParametersList =
-  ReadonlyArray<PostgresBouncerParametersItem>;
+  Array<PostgresBouncerParametersItem>;
 export const PostgresBouncerParametersList = /*@__PURE__*/ S.Array(
   PostgresBouncerParametersItem,
 ) as any as S.Schema<PostgresBouncerParametersList>;
@@ -2084,7 +2082,7 @@ export type CreateBranchRequestSeedData = "last_successful_backup";
 export const CreateBranchRequestSeedData = /*@__PURE__*/ S.String;
 
 /** For MySQL backup restores, per-keyspace cluster sizes. Each entry is { "keyspace_name": "main", "cluster_size": "PS_40" }. When provided, each restored keyspace must have a size here or via cluster_size. */
-export type CreateBranchRequestKeyspaceClusterSizesList = ReadonlyArray<string>;
+export type CreateBranchRequestKeyspaceClusterSizesList = Array<string>;
 export const CreateBranchRequestKeyspaceClusterSizesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2223,7 +2221,7 @@ export const DatabaseBranchRestoredFromBranch = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DatabaseBranchRestoredFromBranch>;
 
 /** Public IP addresses for the region */
-export type DatabaseBranchRegionPublicIpAddressesList = ReadonlyArray<string>;
+export type DatabaseBranchRegionPublicIpAddressesList = Array<string>;
 export const DatabaseBranchRegionPublicIpAddressesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DatabaseBranchRegionPublicIpAddressesList>;
@@ -2486,7 +2484,7 @@ export const DatabaseDataImport = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DatabaseDataImport>;
 
 /** Public IP addresses for the region */
-export type DatabaseRegionPublicIpAddressesList = ReadonlyArray<string>;
+export type DatabaseRegionPublicIpAddressesList = Array<string>;
 export const DatabaseRegionPublicIpAddressesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DatabaseRegionPublicIpAddressesList>;
@@ -2672,7 +2670,7 @@ export const Database = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Database" }) as any as S.Schema<Database>;
 
 /** List of IPv4 CIDR ranges (e.g., ['192.168.1.0/24', '192.168.1.1/32']). Must contain at least one valid IPv4 address or range. */
-export type CreateDatabasePostgresCidrRequestCidrsList = ReadonlyArray<string>;
+export type CreateDatabasePostgresCidrRequestCidrsList = Array<string>;
 export const CreateDatabasePostgresCidrRequestCidrsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateDatabasePostgresCidrRequestCidrsList>;
@@ -2708,7 +2706,7 @@ export const CreateDatabasePostgresCidrRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateDatabasePostgresCidrRequest>;
 
 /** List of CIDR ranges */
-export type PostgresClusterCidrCidrsList = ReadonlyArray<string>;
+export type PostgresClusterCidrCidrsList = Array<string>;
 export const PostgresClusterCidrCidrsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostgresClusterCidrCidrsList>;
@@ -3195,7 +3193,7 @@ export const ServiceTokenServiceTokenAccessesItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ServiceTokenServiceTokenAccessesItem>;
 
 export type ServiceTokenServiceTokenAccessesList =
-  ReadonlyArray<ServiceTokenServiceTokenAccessesItem>;
+  Array<ServiceTokenServiceTokenAccessesItem>;
 export const ServiceTokenServiceTokenAccessesList = /*@__PURE__*/ S.Array(
   ServiceTokenServiceTokenAccessesItem,
 ) as any as S.Schema<ServiceTokenServiceTokenAccessesList>;
@@ -3223,7 +3221,7 @@ export const ServiceTokenOauthAccessesByResourceDatabaseDatabasesItem =
   }) as any as S.Schema<ServiceTokenOauthAccessesByResourceDatabaseDatabasesItem>;
 
 export type ServiceTokenOauthAccessesByResourceDatabaseDatabasesList =
-  ReadonlyArray<ServiceTokenOauthAccessesByResourceDatabaseDatabasesItem>;
+  Array<ServiceTokenOauthAccessesByResourceDatabaseDatabasesItem>;
 export const ServiceTokenOauthAccessesByResourceDatabaseDatabasesList =
   /*@__PURE__*/ S.Array(
     ServiceTokenOauthAccessesByResourceDatabaseDatabasesItem,
@@ -3246,7 +3244,7 @@ export const ServiceTokenOauthAccessesByResourceDatabaseAccessesItem =
   }) as any as S.Schema<ServiceTokenOauthAccessesByResourceDatabaseAccessesItem>;
 
 export type ServiceTokenOauthAccessesByResourceDatabaseAccessesList =
-  ReadonlyArray<ServiceTokenOauthAccessesByResourceDatabaseAccessesItem>;
+  Array<ServiceTokenOauthAccessesByResourceDatabaseAccessesItem>;
 export const ServiceTokenOauthAccessesByResourceDatabaseAccessesList =
   /*@__PURE__*/ S.Array(
     ServiceTokenOauthAccessesByResourceDatabaseAccessesItem,
@@ -3287,7 +3285,7 @@ export const ServiceTokenOauthAccessesByResourceOrganizationOrganizationsItem =
   }) as any as S.Schema<ServiceTokenOauthAccessesByResourceOrganizationOrganizationsItem>;
 
 export type ServiceTokenOauthAccessesByResourceOrganizationOrganizationsList =
-  ReadonlyArray<ServiceTokenOauthAccessesByResourceOrganizationOrganizationsItem>;
+  Array<ServiceTokenOauthAccessesByResourceOrganizationOrganizationsItem>;
 export const ServiceTokenOauthAccessesByResourceOrganizationOrganizationsList =
   /*@__PURE__*/ S.Array(
     ServiceTokenOauthAccessesByResourceOrganizationOrganizationsItem,
@@ -3310,7 +3308,7 @@ export const ServiceTokenOauthAccessesByResourceOrganizationAccessesItem =
   }) as any as S.Schema<ServiceTokenOauthAccessesByResourceOrganizationAccessesItem>;
 
 export type ServiceTokenOauthAccessesByResourceOrganizationAccessesList =
-  ReadonlyArray<ServiceTokenOauthAccessesByResourceOrganizationAccessesItem>;
+  Array<ServiceTokenOauthAccessesByResourceOrganizationAccessesItem>;
 export const ServiceTokenOauthAccessesByResourceOrganizationAccessesList =
   /*@__PURE__*/ S.Array(
     ServiceTokenOauthAccessesByResourceOrganizationAccessesItem,
@@ -3357,7 +3355,7 @@ export const ServiceTokenOauthAccessesByResourceBranchBranchesItem =
   }) as any as S.Schema<ServiceTokenOauthAccessesByResourceBranchBranchesItem>;
 
 export type ServiceTokenOauthAccessesByResourceBranchBranchesList =
-  ReadonlyArray<ServiceTokenOauthAccessesByResourceBranchBranchesItem>;
+  Array<ServiceTokenOauthAccessesByResourceBranchBranchesItem>;
 export const ServiceTokenOauthAccessesByResourceBranchBranchesList =
   /*@__PURE__*/ S.Array(
     ServiceTokenOauthAccessesByResourceBranchBranchesItem,
@@ -3380,7 +3378,7 @@ export const ServiceTokenOauthAccessesByResourceBranchAccessesItem =
   }) as any as S.Schema<ServiceTokenOauthAccessesByResourceBranchAccessesItem>;
 
 export type ServiceTokenOauthAccessesByResourceBranchAccessesList =
-  ReadonlyArray<ServiceTokenOauthAccessesByResourceBranchAccessesItem>;
+  Array<ServiceTokenOauthAccessesByResourceBranchAccessesItem>;
 export const ServiceTokenOauthAccessesByResourceBranchAccessesList =
   /*@__PURE__*/ S.Array(
     ServiceTokenOauthAccessesByResourceBranchAccessesItem,
@@ -3417,7 +3415,7 @@ export const ServiceTokenOauthAccessesByResourceUserUsersItem =
   }) as any as S.Schema<ServiceTokenOauthAccessesByResourceUserUsersItem>;
 
 export type ServiceTokenOauthAccessesByResourceUserUsersList =
-  ReadonlyArray<ServiceTokenOauthAccessesByResourceUserUsersItem>;
+  Array<ServiceTokenOauthAccessesByResourceUserUsersItem>;
 export const ServiceTokenOauthAccessesByResourceUserUsersList =
   /*@__PURE__*/ S.Array(
     ServiceTokenOauthAccessesByResourceUserUsersItem,
@@ -3440,7 +3438,7 @@ export const ServiceTokenOauthAccessesByResourceUserAccessesItem =
   }) as any as S.Schema<ServiceTokenOauthAccessesByResourceUserAccessesItem>;
 
 export type ServiceTokenOauthAccessesByResourceUserAccessesList =
-  ReadonlyArray<ServiceTokenOauthAccessesByResourceUserAccessesItem>;
+  Array<ServiceTokenOauthAccessesByResourceUserAccessesItem>;
 export const ServiceTokenOauthAccessesByResourceUserAccessesList =
   /*@__PURE__*/ S.Array(
     ServiceTokenOauthAccessesByResourceUserAccessesItem,
@@ -3649,8 +3647,7 @@ export const OrganizationTeamMembersItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "OrganizationTeamMembersItem",
 }) as any as S.Schema<OrganizationTeamMembersItem>;
 
-export type OrganizationTeamMembersList =
-  ReadonlyArray<OrganizationTeamMembersItem>;
+export type OrganizationTeamMembersList = Array<OrganizationTeamMembersItem>;
 export const OrganizationTeamMembersList = /*@__PURE__*/ S.Array(
   OrganizationTeamMembersItem,
 ) as any as S.Schema<OrganizationTeamMembersList>;
@@ -3677,7 +3674,7 @@ export const OrganizationTeamDatabasesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OrganizationTeamDatabasesItem>;
 
 export type OrganizationTeamDatabasesList =
-  ReadonlyArray<OrganizationTeamDatabasesItem>;
+  Array<OrganizationTeamDatabasesItem>;
 export const OrganizationTeamDatabasesList = /*@__PURE__*/ S.Array(
   OrganizationTeamDatabasesItem,
 ) as any as S.Schema<OrganizationTeamDatabasesList>;
@@ -3705,7 +3702,7 @@ export const OrganizationTeamAnalystDatabasesItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<OrganizationTeamAnalystDatabasesItem>;
 
 export type OrganizationTeamAnalystDatabasesList =
-  ReadonlyArray<OrganizationTeamAnalystDatabasesItem>;
+  Array<OrganizationTeamAnalystDatabasesItem>;
 export const OrganizationTeamAnalystDatabasesList = /*@__PURE__*/ S.Array(
   OrganizationTeamAnalystDatabasesItem,
 ) as any as S.Schema<OrganizationTeamAnalystDatabasesList>;
@@ -3760,7 +3757,7 @@ export type CreatePasswordRequestRole =
 export const CreatePasswordRequestRole = /*@__PURE__*/ S.String;
 
 /** List of IP addresses or CIDR ranges that can use this password */
-export type CreatePasswordRequestCidrsList = ReadonlyArray<string>;
+export type CreatePasswordRequestCidrsList = Array<string>;
 export const CreatePasswordRequestCidrsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreatePasswordRequestCidrsList>;
@@ -3816,14 +3813,14 @@ export type DatabaseBranchPasswordWithSecretRole =
 export const DatabaseBranchPasswordWithSecretRole = /*@__PURE__*/ S.String;
 
 /** List of IP addresses or CIDR ranges that can use this password */
-export type DatabaseBranchPasswordWithSecretCidrsList = ReadonlyArray<string>;
+export type DatabaseBranchPasswordWithSecretCidrsList = Array<string>;
 export const DatabaseBranchPasswordWithSecretCidrsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DatabaseBranchPasswordWithSecretCidrsList>;
 
 /** The list of hosts in each availability zone providing direct access to a vtgate */
 export type DatabaseBranchPasswordWithSecretDirectVtgateAddressesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const DatabaseBranchPasswordWithSecretDirectVtgateAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3831,7 +3828,7 @@ export const DatabaseBranchPasswordWithSecretDirectVtgateAddressesList =
 
 /** The read-only replica host URLs */
 export type DatabaseBranchPasswordWithSecretAccessHostRegionalUrlsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const DatabaseBranchPasswordWithSecretAccessHostRegionalUrlsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3858,7 +3855,7 @@ export const DatabaseBranchPasswordWithSecretActor = /*@__PURE__*/ S.suspend(
 
 /** Public IP addresses for the region */
 export type DatabaseBranchPasswordWithSecretRegionPublicIpAddressesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const DatabaseBranchPasswordWithSecretRegionPublicIpAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4096,7 +4093,7 @@ export type CreateRoleRequestInheritedRolesItem =
 export const CreateRoleRequestInheritedRolesItem = /*@__PURE__*/ S.String;
 
 /** Roles to inherit from */
-export type CreateRoleRequestInheritedRolesList = ReadonlyArray<
+export type CreateRoleRequestInheritedRolesList = Array<
   CreateRoleRequestInheritedRolesItem | (string & {})
 >;
 export const CreateRoleRequestInheritedRolesList = /*@__PURE__*/ S.Array(
@@ -4163,7 +4160,7 @@ export const PostgresRoleInheritedRolesItem = /*@__PURE__*/ S.String;
 
 /** Database roles these credentials inherit */
 export type PostgresRoleInheritedRolesList =
-  ReadonlyArray<PostgresRoleInheritedRolesItem>;
+  Array<PostgresRoleInheritedRolesItem>;
 export const PostgresRoleInheritedRolesList = /*@__PURE__*/ S.Array(
   PostgresRoleInheritedRolesItem,
 ) as any as S.Schema<PostgresRoleInheritedRolesList>;
@@ -4348,7 +4345,7 @@ export type CreateTrafficBudgetRequestMode = "enforce" | "warn" | "off";
 export const CreateTrafficBudgetRequestMode = /*@__PURE__*/ S.String;
 
 /** Array of traffic rules to apply to the budget */
-export type CreateTrafficBudgetRequestRulesList = ReadonlyArray<string>;
+export type CreateTrafficBudgetRequestRulesList = Array<string>;
 export const CreateTrafficBudgetRequestRulesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateTrafficBudgetRequestRulesList>;
@@ -4453,7 +4450,7 @@ export const TrafficBudgetRulesItemTagsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TrafficBudgetRulesItemTagsItem>;
 
 export type TrafficBudgetRulesItemTagsList =
-  ReadonlyArray<TrafficBudgetRulesItemTagsItem>;
+  Array<TrafficBudgetRulesItemTagsItem>;
 export const TrafficBudgetRulesItemTagsList = /*@__PURE__*/ S.Array(
   TrafficBudgetRulesItemTagsItem,
 ) as any as S.Schema<TrafficBudgetRulesItemTagsList>;
@@ -4510,7 +4507,7 @@ export const TrafficBudgetRulesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "TrafficBudgetRulesItem",
 }) as any as S.Schema<TrafficBudgetRulesItem>;
 
-export type TrafficBudgetRulesList = ReadonlyArray<TrafficBudgetRulesItem>;
+export type TrafficBudgetRulesList = Array<TrafficBudgetRulesItem>;
 export const TrafficBudgetRulesList = /*@__PURE__*/ S.Array(
   TrafficBudgetRulesItem,
 ) as any as S.Schema<TrafficBudgetRulesList>;
@@ -4561,7 +4558,7 @@ export type CreateTrafficRuleRequestKind = "match" | "each";
 export const CreateTrafficRuleRequestKind = /*@__PURE__*/ S.String;
 
 /** Optional array of tags for this rule. Each rules take exactly one tag. */
-export type CreateTrafficRuleRequestTagsList = ReadonlyArray<string>;
+export type CreateTrafficRuleRequestTagsList = Array<string>;
 export const CreateTrafficRuleRequestTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateTrafficRuleRequestTagsList>;
@@ -4634,7 +4631,7 @@ export const TrafficRuleTagsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "TrafficRuleTagsItem",
 }) as any as S.Schema<TrafficRuleTagsItem>;
 
-export type TrafficRuleTagsList = ReadonlyArray<TrafficRuleTagsItem>;
+export type TrafficRuleTagsList = Array<TrafficRuleTagsItem>;
 export const TrafficRuleTagsList = /*@__PURE__*/ S.Array(
   TrafficRuleTagsItem,
 ) as any as S.Schema<TrafficRuleTagsList>;
@@ -4690,7 +4687,7 @@ export const TrafficRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TrafficRule" }) as any as S.Schema<TrafficRule>;
 
 /** The events this webhook should subscribe to */
-export type CreateWebhookRequestEventsList = ReadonlyArray<string>;
+export type CreateWebhookRequestEventsList = Array<string>;
 export const CreateWebhookRequestEventsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateWebhookRequestEventsList>;
@@ -4748,8 +4745,7 @@ export type DatabaseWebhookEventsItem =
 export const DatabaseWebhookEventsItem = /*@__PURE__*/ S.String;
 
 /** The events this webhook subscribes to */
-export type DatabaseWebhookEventsList =
-  ReadonlyArray<DatabaseWebhookEventsItem>;
+export type DatabaseWebhookEventsList = Array<DatabaseWebhookEventsItem>;
 export const DatabaseWebhookEventsList = /*@__PURE__*/ S.Array(
   DatabaseWebhookEventsItem,
 ) as any as S.Schema<DatabaseWebhookEventsList>;
@@ -4802,7 +4798,7 @@ export type CreateWorkflowRequestOnDdl =
 export const CreateWorkflowRequestOnDdl = /*@__PURE__*/ S.String;
 
 /** List of tables to move */
-export type CreateWorkflowRequestTablesList = ReadonlyArray<string>;
+export type CreateWorkflowRequestTablesList = Array<string>;
 export const CreateWorkflowRequestTablesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateWorkflowRequestTablesList>;
@@ -6189,7 +6185,7 @@ export const AnomalyCorrelationsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "AnomalyCorrelationsItem",
 }) as any as S.Schema<AnomalyCorrelationsItem>;
 
-export type AnomalyCorrelationsList = ReadonlyArray<AnomalyCorrelationsItem>;
+export type AnomalyCorrelationsList = Array<AnomalyCorrelationsItem>;
 export const AnomalyCorrelationsList = /*@__PURE__*/ S.Array(
   AnomalyCorrelationsItem,
 ) as any as S.Schema<AnomalyCorrelationsList>;
@@ -6446,13 +6442,13 @@ export const QueryTagsItemMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<QueryTagsItemMap>;
 
 /** Tags associated with the query */
-export type QueryTagsList = ReadonlyArray<QueryTagsItemMap>;
+export type QueryTagsList = Array<QueryTagsItemMap>;
 export const QueryTagsList = /*@__PURE__*/ S.Array(
   QueryTagsItemMap,
 ) as any as S.Schema<QueryTagsList>;
 
 /** Tables accessed by the query */
-export type QueryTablesList = ReadonlyArray<string>;
+export type QueryTablesList = Array<string>;
 export const QueryTablesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<QueryTablesList>;
@@ -6591,13 +6587,13 @@ export const PaginatedQueryDataItemTagsItemMap = /*@__PURE__*/ S.Record(
 
 /** Tags associated with the query */
 export type PaginatedQueryDataItemTagsList =
-  ReadonlyArray<PaginatedQueryDataItemTagsItemMap>;
+  Array<PaginatedQueryDataItemTagsItemMap>;
 export const PaginatedQueryDataItemTagsList = /*@__PURE__*/ S.Array(
   PaginatedQueryDataItemTagsItemMap,
 ) as any as S.Schema<PaginatedQueryDataItemTagsList>;
 
 /** Tables accessed by the query */
-export type PaginatedQueryDataItemTablesList = ReadonlyArray<string>;
+export type PaginatedQueryDataItemTablesList = Array<string>;
 export const PaginatedQueryDataItemTablesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PaginatedQueryDataItemTablesList>;
@@ -6677,7 +6673,7 @@ export const PaginatedQueryDataItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "PaginatedQueryDataItem",
 }) as any as S.Schema<PaginatedQueryDataItem>;
 
-export type PaginatedQueryDataList = ReadonlyArray<PaginatedQueryDataItem>;
+export type PaginatedQueryDataList = Array<PaginatedQueryDataItem>;
 export const PaginatedQueryDataList = /*@__PURE__*/ S.Array(
   PaginatedQueryDataItem,
 ) as any as S.Schema<PaginatedQueryDataList>;
@@ -6792,7 +6788,7 @@ export const QueryTagValuesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "QueryTagValuesItem",
 }) as any as S.Schema<QueryTagValuesItem>;
 
-export type QueryTagValuesList = ReadonlyArray<QueryTagValuesItem>;
+export type QueryTagValuesList = Array<QueryTagValuesItem>;
 export const QueryTagValuesList = /*@__PURE__*/ S.Array(
   QueryTagValuesItem,
 ) as any as S.Schema<QueryTagValuesList>;
@@ -6867,7 +6863,7 @@ export const GetBranchSchemaResponseDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetBranchSchemaResponseDataItem>;
 
 export type GetBranchSchemaResponseDataList =
-  ReadonlyArray<GetBranchSchemaResponseDataItem>;
+  Array<GetBranchSchemaResponseDataItem>;
 export const GetBranchSchemaResponseDataList = /*@__PURE__*/ S.Array(
   GetBranchSchemaResponseDataItem,
 ) as any as S.Schema<GetBranchSchemaResponseDataList>;
@@ -7026,7 +7022,7 @@ export const GetDatabaseThrottlerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetDatabaseThrottlerRequest>;
 
 /** Keyspaces that are eligible for throttler configuration in the configurable resource (database or deploy request) */
-export type ThrottlerConfigurationsKeyspacesList = ReadonlyArray<string>;
+export type ThrottlerConfigurationsKeyspacesList = Array<string>;
 export const ThrottlerConfigurationsKeyspacesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ThrottlerConfigurationsKeyspacesList>;
@@ -7072,7 +7068,7 @@ export const ThrottlerConfigurationsConfigurationsItem =
   }) as any as S.Schema<ThrottlerConfigurationsConfigurationsItem>;
 
 export type ThrottlerConfigurationsConfigurationsList =
-  ReadonlyArray<ThrottlerConfigurationsConfigurationsItem>;
+  Array<ThrottlerConfigurationsConfigurationsItem>;
 export const ThrottlerConfigurationsConfigurationsList = /*@__PURE__*/ S.Array(
   ThrottlerConfigurationsConfigurationsItem,
 ) as any as S.Schema<ThrottlerConfigurationsConfigurationsList>;
@@ -7175,7 +7171,7 @@ export const DeploymentPrecedingDeploymentsItemMap = /*@__PURE__*/ S.Record(
 
 /** The deployments ahead of this one in the queue */
 export type DeploymentPrecedingDeploymentsList =
-  ReadonlyArray<DeploymentPrecedingDeploymentsItemMap>;
+  Array<DeploymentPrecedingDeploymentsItemMap>;
 export const DeploymentPrecedingDeploymentsList = /*@__PURE__*/ S.Array(
   DeploymentPrecedingDeploymentsItemMap,
 ) as any as S.Schema<DeploymentPrecedingDeploymentsList>;
@@ -7192,7 +7188,7 @@ export const DeploymentDeployOperationsItemState = /*@__PURE__*/ S.String;
 
 /** Names of foreign keys removed by this operation */
 export type DeploymentDeployOperationsItemRemovedForeignKeyNamesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const DeploymentDeployOperationsItemRemovedForeignKeyNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -7267,7 +7263,7 @@ export const DeploymentDeployOperationsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeploymentDeployOperationsItem>;
 
 export type DeploymentDeployOperationsList =
-  ReadonlyArray<DeploymentDeployOperationsItem>;
+  Array<DeploymentDeployOperationsItem>;
 export const DeploymentDeployOperationsList = /*@__PURE__*/ S.Array(
   DeploymentDeployOperationsItem,
 ) as any as S.Schema<DeploymentDeployOperationsList>;
@@ -7284,7 +7280,7 @@ export const DeploymentDeployOperationSummariesItemState =
 
 /** Names of foreign keys removed by this operation summary */
 export type DeploymentDeployOperationSummariesItemRemovedForeignKeyNamesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const DeploymentDeployOperationSummariesItemRemovedForeignKeyNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -7292,7 +7288,7 @@ export const DeploymentDeployOperationSummariesItemRemovedForeignKeyNamesList =
 
 /** Names of shards in the keyspace modified by the deploy operation summary */
 export type DeploymentDeployOperationSummariesItemShardNamesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const DeploymentDeployOperationSummariesItemShardNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -7335,7 +7331,7 @@ export const DeploymentDeployOperationSummariesItemOperationsItem =
   }) as any as S.Schema<DeploymentDeployOperationSummariesItemOperationsItem>;
 
 export type DeploymentDeployOperationSummariesItemOperationsList =
-  ReadonlyArray<DeploymentDeployOperationSummariesItemOperationsItem>;
+  Array<DeploymentDeployOperationSummariesItemOperationsItem>;
 export const DeploymentDeployOperationSummariesItemOperationsList =
   /*@__PURE__*/ S.Array(
     DeploymentDeployOperationSummariesItemOperationsItem,
@@ -7412,7 +7408,7 @@ export const DeploymentDeployOperationSummariesItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DeploymentDeployOperationSummariesItem>;
 
 export type DeploymentDeployOperationSummariesList =
-  ReadonlyArray<DeploymentDeployOperationSummariesItem>;
+  Array<DeploymentDeployOperationSummariesItem>;
 export const DeploymentDeployOperationSummariesList = /*@__PURE__*/ S.Array(
   DeploymentDeployOperationSummariesItem,
 ) as any as S.Schema<DeploymentDeployOperationSummariesList>;
@@ -7426,8 +7422,7 @@ export const DeploymentLintErrorsItemMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<DeploymentLintErrorsItemMap>;
 
 /** Schema lint errors preventing the deployment from completing */
-export type DeploymentLintErrorsList =
-  ReadonlyArray<DeploymentLintErrorsItemMap>;
+export type DeploymentLintErrorsList = Array<DeploymentLintErrorsItemMap>;
 export const DeploymentLintErrorsList = /*@__PURE__*/ S.Array(
   DeploymentLintErrorsItemMap,
 ) as any as S.Schema<DeploymentLintErrorsList>;
@@ -7443,7 +7438,7 @@ export const DeploymentSequentialDiffDependenciesItemMap =
 
 /** The schema dependencies that must be satisfied */
 export type DeploymentSequentialDiffDependenciesList =
-  ReadonlyArray<DeploymentSequentialDiffDependenciesItemMap>;
+  Array<DeploymentSequentialDiffDependenciesItemMap>;
 export const DeploymentSequentialDiffDependenciesList = /*@__PURE__*/ S.Array(
   DeploymentSequentialDiffDependenciesItemMap,
 ) as any as S.Schema<DeploymentSequentialDiffDependenciesList>;
@@ -7458,7 +7453,7 @@ export const DeploymentLookupVindexOperationsItemMap = /*@__PURE__*/ S.Record(
 
 /** Lookup Vitess index operations */
 export type DeploymentLookupVindexOperationsList =
-  ReadonlyArray<DeploymentLookupVindexOperationsItemMap>;
+  Array<DeploymentLookupVindexOperationsItemMap>;
 export const DeploymentLookupVindexOperationsList = /*@__PURE__*/ S.Array(
   DeploymentLookupVindexOperationsItemMap,
 ) as any as S.Schema<DeploymentLookupVindexOperationsList>;
@@ -7709,7 +7704,7 @@ export const PaginatedDeploymentDataItemPrecedingDeploymentsItemMap =
 
 /** The deployments ahead of this one in the queue */
 export type PaginatedDeploymentDataItemPrecedingDeploymentsList =
-  ReadonlyArray<PaginatedDeploymentDataItemPrecedingDeploymentsItemMap>;
+  Array<PaginatedDeploymentDataItemPrecedingDeploymentsItemMap>;
 export const PaginatedDeploymentDataItemPrecedingDeploymentsList =
   /*@__PURE__*/ S.Array(
     PaginatedDeploymentDataItemPrecedingDeploymentsItemMap,
@@ -7728,7 +7723,7 @@ export const PaginatedDeploymentDataItemDeployOperationsItemState =
 
 /** Names of foreign keys removed by this operation */
 export type PaginatedDeploymentDataItemDeployOperationsItemRemovedForeignKeyNamesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PaginatedDeploymentDataItemDeployOperationsItemRemovedForeignKeyNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -7804,7 +7799,7 @@ export const PaginatedDeploymentDataItemDeployOperationsItem =
   }) as any as S.Schema<PaginatedDeploymentDataItemDeployOperationsItem>;
 
 export type PaginatedDeploymentDataItemDeployOperationsList =
-  ReadonlyArray<PaginatedDeploymentDataItemDeployOperationsItem>;
+  Array<PaginatedDeploymentDataItemDeployOperationsItem>;
 export const PaginatedDeploymentDataItemDeployOperationsList =
   /*@__PURE__*/ S.Array(
     PaginatedDeploymentDataItemDeployOperationsItem,
@@ -7822,7 +7817,7 @@ export const PaginatedDeploymentDataItemDeployOperationSummariesItemState =
 
 /** Names of foreign keys removed by this operation summary */
 export type PaginatedDeploymentDataItemDeployOperationSummariesItemRemovedForeignKeyNamesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PaginatedDeploymentDataItemDeployOperationSummariesItemRemovedForeignKeyNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -7830,7 +7825,7 @@ export const PaginatedDeploymentDataItemDeployOperationSummariesItemRemovedForei
 
 /** Names of shards in the keyspace modified by the deploy operation summary */
 export type PaginatedDeploymentDataItemDeployOperationSummariesItemShardNamesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PaginatedDeploymentDataItemDeployOperationSummariesItemShardNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -7870,7 +7865,7 @@ export const PaginatedDeploymentDataItemDeployOperationSummariesItemOperationsIt
   }) as any as S.Schema<PaginatedDeploymentDataItemDeployOperationSummariesItemOperationsItem>;
 
 export type PaginatedDeploymentDataItemDeployOperationSummariesItemOperationsList =
-  ReadonlyArray<PaginatedDeploymentDataItemDeployOperationSummariesItemOperationsItem>;
+  Array<PaginatedDeploymentDataItemDeployOperationSummariesItemOperationsItem>;
 export const PaginatedDeploymentDataItemDeployOperationSummariesItemOperationsList =
   /*@__PURE__*/ S.Array(
     PaginatedDeploymentDataItemDeployOperationSummariesItemOperationsItem,
@@ -7949,7 +7944,7 @@ export const PaginatedDeploymentDataItemDeployOperationSummariesItem =
   }) as any as S.Schema<PaginatedDeploymentDataItemDeployOperationSummariesItem>;
 
 export type PaginatedDeploymentDataItemDeployOperationSummariesList =
-  ReadonlyArray<PaginatedDeploymentDataItemDeployOperationSummariesItem>;
+  Array<PaginatedDeploymentDataItemDeployOperationSummariesItem>;
 export const PaginatedDeploymentDataItemDeployOperationSummariesList =
   /*@__PURE__*/ S.Array(
     PaginatedDeploymentDataItemDeployOperationSummariesItem,
@@ -7966,7 +7961,7 @@ export const PaginatedDeploymentDataItemLintErrorsItemMap =
 
 /** Schema lint errors preventing the deployment from completing */
 export type PaginatedDeploymentDataItemLintErrorsList =
-  ReadonlyArray<PaginatedDeploymentDataItemLintErrorsItemMap>;
+  Array<PaginatedDeploymentDataItemLintErrorsItemMap>;
 export const PaginatedDeploymentDataItemLintErrorsList = /*@__PURE__*/ S.Array(
   PaginatedDeploymentDataItemLintErrorsItemMap,
 ) as any as S.Schema<PaginatedDeploymentDataItemLintErrorsList>;
@@ -7982,7 +7977,7 @@ export const PaginatedDeploymentDataItemSequentialDiffDependenciesItemMap =
 
 /** The schema dependencies that must be satisfied */
 export type PaginatedDeploymentDataItemSequentialDiffDependenciesList =
-  ReadonlyArray<PaginatedDeploymentDataItemSequentialDiffDependenciesItemMap>;
+  Array<PaginatedDeploymentDataItemSequentialDiffDependenciesItemMap>;
 export const PaginatedDeploymentDataItemSequentialDiffDependenciesList =
   /*@__PURE__*/ S.Array(
     PaginatedDeploymentDataItemSequentialDiffDependenciesItemMap,
@@ -7999,7 +7994,7 @@ export const PaginatedDeploymentDataItemLookupVindexOperationsItemMap =
 
 /** Lookup Vitess index operations */
 export type PaginatedDeploymentDataItemLookupVindexOperationsList =
-  ReadonlyArray<PaginatedDeploymentDataItemLookupVindexOperationsItemMap>;
+  Array<PaginatedDeploymentDataItemLookupVindexOperationsItemMap>;
 export const PaginatedDeploymentDataItemLookupVindexOperationsList =
   /*@__PURE__*/ S.Array(
     PaginatedDeploymentDataItemLookupVindexOperationsItemMap,
@@ -8204,8 +8199,7 @@ export const PaginatedDeploymentDataItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "PaginatedDeploymentDataItem",
 }) as any as S.Schema<PaginatedDeploymentDataItem>;
 
-export type PaginatedDeploymentDataList =
-  ReadonlyArray<PaginatedDeploymentDataItem>;
+export type PaginatedDeploymentDataList = Array<PaginatedDeploymentDataItem>;
 export const PaginatedDeploymentDataList = /*@__PURE__*/ S.Array(
   PaginatedDeploymentDataItem,
 ) as any as S.Schema<PaginatedDeploymentDataList>;
@@ -8416,8 +8410,7 @@ export const PaginatedLineItemDataItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "PaginatedLineItemDataItem",
 }) as any as S.Schema<PaginatedLineItemDataItem>;
 
-export type PaginatedLineItemDataList =
-  ReadonlyArray<PaginatedLineItemDataItem>;
+export type PaginatedLineItemDataList = Array<PaginatedLineItemDataItem>;
 export const PaginatedLineItemDataList = /*@__PURE__*/ S.Array(
   PaginatedLineItemDataItem,
 ) as any as S.Schema<PaginatedLineItemDataList>;
@@ -8528,7 +8521,7 @@ export const GetKeyspaceRolloutStatusResponseShardsItem =
   }) as any as S.Schema<GetKeyspaceRolloutStatusResponseShardsItem>;
 
 export type GetKeyspaceRolloutStatusResponseShardsList =
-  ReadonlyArray<GetKeyspaceRolloutStatusResponseShardsItem>;
+  Array<GetKeyspaceRolloutStatusResponseShardsItem>;
 export const GetKeyspaceRolloutStatusResponseShardsList = /*@__PURE__*/ S.Array(
   GetKeyspaceRolloutStatusResponseShardsItem,
 ) as any as S.Schema<GetKeyspaceRolloutStatusResponseShardsList>;
@@ -9098,22 +9091,20 @@ export type DatabaseBranchPasswordRole =
 export const DatabaseBranchPasswordRole = /*@__PURE__*/ S.String;
 
 /** List of IP addresses or CIDR ranges that can use this password */
-export type DatabaseBranchPasswordCidrsList = ReadonlyArray<string>;
+export type DatabaseBranchPasswordCidrsList = Array<string>;
 export const DatabaseBranchPasswordCidrsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DatabaseBranchPasswordCidrsList>;
 
 /** The list of hosts in each availability zone providing direct access to a vtgate */
-export type DatabaseBranchPasswordDirectVtgateAddressesList =
-  ReadonlyArray<string>;
+export type DatabaseBranchPasswordDirectVtgateAddressesList = Array<string>;
 export const DatabaseBranchPasswordDirectVtgateAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<DatabaseBranchPasswordDirectVtgateAddressesList>;
 
 /** The read-only replica host URLs */
-export type DatabaseBranchPasswordAccessHostRegionalUrlsList =
-  ReadonlyArray<string>;
+export type DatabaseBranchPasswordAccessHostRegionalUrlsList = Array<string>;
 export const DatabaseBranchPasswordAccessHostRegionalUrlsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -9138,8 +9129,7 @@ export const DatabaseBranchPasswordActor = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DatabaseBranchPasswordActor>;
 
 /** Public IP addresses for the region */
-export type DatabaseBranchPasswordRegionPublicIpAddressesList =
-  ReadonlyArray<string>;
+export type DatabaseBranchPasswordRegionPublicIpAddressesList = Array<string>;
 export const DatabaseBranchPasswordRegionPublicIpAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -9427,13 +9417,13 @@ export const GetQuerySummaryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetQuerySummaryRequest>;
 
 /** Tables accessed by the query */
-export type QuerySummaryTablesList = ReadonlyArray<string>;
+export type QuerySummaryTablesList = Array<string>;
 export const QuerySummaryTablesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<QuerySummaryTablesList>;
 
 /** Fully qualified tables accessed by the query */
-export type QuerySummaryQualifiedTablesList = ReadonlyArray<string>;
+export type QuerySummaryQualifiedTablesList = Array<string>;
 export const QuerySummaryQualifiedTablesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<QuerySummaryQualifiedTablesList>;
@@ -9448,7 +9438,7 @@ export const QuerySummaryTableKeyspacesItemMap = /*@__PURE__*/ S.Record(
 
 /** Mapping of tables to their keyspaces */
 export type QuerySummaryTableKeyspacesList =
-  ReadonlyArray<QuerySummaryTableKeyspacesItemMap>;
+  Array<QuerySummaryTableKeyspacesItemMap>;
 export const QuerySummaryTableKeyspacesList = /*@__PURE__*/ S.Array(
   QuerySummaryTableKeyspacesItemMap,
 ) as any as S.Schema<QuerySummaryTableKeyspacesList>;
@@ -9462,8 +9452,7 @@ export const QuerySummaryIndexUsagesItemMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<QuerySummaryIndexUsagesItemMap>;
 
 /** Index usage information */
-export type QuerySummaryIndexUsagesList =
-  ReadonlyArray<QuerySummaryIndexUsagesItemMap>;
+export type QuerySummaryIndexUsagesList = Array<QuerySummaryIndexUsagesItemMap>;
 export const QuerySummaryIndexUsagesList = /*@__PURE__*/ S.Array(
   QuerySummaryIndexUsagesItemMap,
 ) as any as S.Schema<QuerySummaryIndexUsagesList>;
@@ -9478,7 +9467,7 @@ export const QuerySummaryRoutingIndexUsagesItemMap = /*@__PURE__*/ S.Record(
 
 /** Routing index usage information */
 export type QuerySummaryRoutingIndexUsagesList =
-  ReadonlyArray<QuerySummaryRoutingIndexUsagesItemMap>;
+  Array<QuerySummaryRoutingIndexUsagesItemMap>;
 export const QuerySummaryRoutingIndexUsagesList = /*@__PURE__*/ S.Array(
   QuerySummaryRoutingIndexUsagesItemMap,
 ) as any as S.Schema<QuerySummaryRoutingIndexUsagesList>;
@@ -9822,7 +9811,7 @@ export const PaginatedSchemaLintErrorDataItemSubjectType =
 
 /** A list of invalid foreign key columns in a table */
 export type PaginatedSchemaLintErrorDataItemForeignKeyColumnNamesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PaginatedSchemaLintErrorDataItemForeignKeyColumnNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -9830,7 +9819,7 @@ export const PaginatedSchemaLintErrorDataItemForeignKeyColumnNamesList =
 
 /** A list of invalid auto-incremented columns */
 export type PaginatedSchemaLintErrorDataItemAutoIncrementColumnNamesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PaginatedSchemaLintErrorDataItemAutoIncrementColumnNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -9899,7 +9888,7 @@ export const PaginatedSchemaLintErrorDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PaginatedSchemaLintErrorDataItem>;
 
 export type PaginatedSchemaLintErrorDataList =
-  ReadonlyArray<PaginatedSchemaLintErrorDataItem>;
+  Array<PaginatedSchemaLintErrorDataItem>;
 export const PaginatedSchemaLintErrorDataList = /*@__PURE__*/ S.Array(
   PaginatedSchemaLintErrorDataItem,
 ) as any as S.Schema<PaginatedSchemaLintErrorDataList>;
@@ -10030,7 +10019,7 @@ export const PaginatedAuditLogEventDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PaginatedAuditLogEventDataItem>;
 
 export type PaginatedAuditLogEventDataList =
-  ReadonlyArray<PaginatedAuditLogEventDataItem>;
+  Array<PaginatedAuditLogEventDataItem>;
 export const PaginatedAuditLogEventDataList = /*@__PURE__*/ S.Array(
   PaginatedAuditLogEventDataItem,
 ) as any as S.Schema<PaginatedAuditLogEventDataList>;
@@ -10150,7 +10139,7 @@ export const PaginatedBackupPolicyDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PaginatedBackupPolicyDataItem>;
 
 export type PaginatedBackupPolicyDataList =
-  ReadonlyArray<PaginatedBackupPolicyDataItem>;
+  Array<PaginatedBackupPolicyDataItem>;
 export const PaginatedBackupPolicyDataList = /*@__PURE__*/ S.Array(
   PaginatedBackupPolicyDataItem,
 ) as any as S.Schema<PaginatedBackupPolicyDataList>;
@@ -10280,7 +10269,7 @@ export const PaginatedBackupDataItemRestoredBranchesItem =
   }) as any as S.Schema<PaginatedBackupDataItemRestoredBranchesItem>;
 
 export type PaginatedBackupDataItemRestoredBranchesList =
-  ReadonlyArray<PaginatedBackupDataItemRestoredBranchesItem>;
+  Array<PaginatedBackupDataItemRestoredBranchesItem>;
 export const PaginatedBackupDataItemRestoredBranchesList =
   /*@__PURE__*/ S.Array(
     PaginatedBackupDataItemRestoredBranchesItem,
@@ -10488,7 +10477,7 @@ export const PaginatedBackupDataItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "PaginatedBackupDataItem",
 }) as any as S.Schema<PaginatedBackupDataItem>;
 
-export type PaginatedBackupDataList = ReadonlyArray<PaginatedBackupDataItem>;
+export type PaginatedBackupDataList = Array<PaginatedBackupDataItem>;
 export const PaginatedBackupDataList = /*@__PURE__*/ S.Array(
   PaginatedBackupDataItem,
 ) as any as S.Schema<PaginatedBackupDataList>;
@@ -10727,7 +10716,7 @@ export const PaginatedPostgresBouncerResizeRequestDataItem =
   }) as any as S.Schema<PaginatedPostgresBouncerResizeRequestDataItem>;
 
 export type PaginatedPostgresBouncerResizeRequestDataList =
-  ReadonlyArray<PaginatedPostgresBouncerResizeRequestDataItem>;
+  Array<PaginatedPostgresBouncerResizeRequestDataItem>;
 export const PaginatedPostgresBouncerResizeRequestDataList =
   /*@__PURE__*/ S.Array(
     PaginatedPostgresBouncerResizeRequestDataItem,
@@ -10886,7 +10875,7 @@ export const PaginatedPostgresBouncerDataItemParametersItemParameterType =
 
 /** Valid options for the parameter value */
 export type PaginatedPostgresBouncerDataItemParametersItemOptionsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PaginatedPostgresBouncerDataItemParametersItemOptionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -10982,7 +10971,7 @@ export const PaginatedPostgresBouncerDataItemParametersItem =
   }) as any as S.Schema<PaginatedPostgresBouncerDataItemParametersItem>;
 
 export type PaginatedPostgresBouncerDataItemParametersList =
-  ReadonlyArray<PaginatedPostgresBouncerDataItemParametersItem>;
+  Array<PaginatedPostgresBouncerDataItemParametersItem>;
 export const PaginatedPostgresBouncerDataItemParametersList =
   /*@__PURE__*/ S.Array(
     PaginatedPostgresBouncerDataItemParametersItem,
@@ -11030,7 +11019,7 @@ export const PaginatedPostgresBouncerDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PaginatedPostgresBouncerDataItem>;
 
 export type PaginatedPostgresBouncerDataList =
-  ReadonlyArray<PaginatedPostgresBouncerDataItem>;
+  Array<PaginatedPostgresBouncerDataItem>;
 export const PaginatedPostgresBouncerDataList = /*@__PURE__*/ S.Array(
   PaginatedPostgresBouncerDataItem,
 ) as any as S.Schema<PaginatedPostgresBouncerDataList>;
@@ -11143,7 +11132,7 @@ export const PaginatedAnomalyDataItemCorrelationsItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PaginatedAnomalyDataItemCorrelationsItem>;
 
 export type PaginatedAnomalyDataItemCorrelationsList =
-  ReadonlyArray<PaginatedAnomalyDataItemCorrelationsItem>;
+  Array<PaginatedAnomalyDataItemCorrelationsItem>;
 export const PaginatedAnomalyDataItemCorrelationsList = /*@__PURE__*/ S.Array(
   PaginatedAnomalyDataItemCorrelationsItem,
 ) as any as S.Schema<PaginatedAnomalyDataItemCorrelationsList>;
@@ -11185,7 +11174,7 @@ export const PaginatedAnomalyDataItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "PaginatedAnomalyDataItem",
 }) as any as S.Schema<PaginatedAnomalyDataItem>;
 
-export type PaginatedAnomalyDataList = ReadonlyArray<PaginatedAnomalyDataItem>;
+export type PaginatedAnomalyDataList = Array<PaginatedAnomalyDataItem>;
 export const PaginatedAnomalyDataList = /*@__PURE__*/ S.Array(
   PaginatedAnomalyDataItem,
 ) as any as S.Schema<PaginatedAnomalyDataList>;
@@ -11440,7 +11429,7 @@ export const PaginatedPostgresClusterResizeRequestDataItem =
   }) as any as S.Schema<PaginatedPostgresClusterResizeRequestDataItem>;
 
 export type PaginatedPostgresClusterResizeRequestDataList =
-  ReadonlyArray<PaginatedPostgresClusterResizeRequestDataItem>;
+  Array<PaginatedPostgresClusterResizeRequestDataItem>;
 export const PaginatedPostgresClusterResizeRequestDataList =
   /*@__PURE__*/ S.Array(
     PaginatedPostgresClusterResizeRequestDataItem,
@@ -11577,7 +11566,7 @@ export const PaginatedDatabaseBranchDataItemRestoredFromBranch =
 
 /** Public IP addresses for the region */
 export type PaginatedDatabaseBranchDataItemRegionPublicIpAddressesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PaginatedDatabaseBranchDataItemRegionPublicIpAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -11750,7 +11739,7 @@ export const PaginatedDatabaseBranchDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PaginatedDatabaseBranchDataItem>;
 
 export type PaginatedDatabaseBranchDataList =
-  ReadonlyArray<PaginatedDatabaseBranchDataItem>;
+  Array<PaginatedDatabaseBranchDataItem>;
 export const PaginatedDatabaseBranchDataList = /*@__PURE__*/ S.Array(
   PaginatedDatabaseBranchDataItem,
 ) as any as S.Schema<PaginatedDatabaseBranchDataList>;
@@ -11847,7 +11836,7 @@ export type ListBranchQueriesRequestType =
   | "DELETE";
 export const ListBranchQueriesRequestType = /*@__PURE__*/ S.String;
 
-export type ListBranchQueriesRequestFieldsList = ReadonlyArray<string>;
+export type ListBranchQueriesRequestFieldsList = Array<string>;
 export const ListBranchQueriesRequestFieldsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ListBranchQueriesRequestFieldsList>;
@@ -11910,14 +11899,13 @@ export const ListBranchQueriesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListBranchQueriesRequest>;
 
 /** Tables accessed by the query */
-export type PaginatedQuerySummaryDataItemTablesList = ReadonlyArray<string>;
+export type PaginatedQuerySummaryDataItemTablesList = Array<string>;
 export const PaginatedQuerySummaryDataItemTablesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PaginatedQuerySummaryDataItemTablesList>;
 
 /** Fully qualified tables accessed by the query */
-export type PaginatedQuerySummaryDataItemQualifiedTablesList =
-  ReadonlyArray<string>;
+export type PaginatedQuerySummaryDataItemQualifiedTablesList = Array<string>;
 export const PaginatedQuerySummaryDataItemQualifiedTablesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -11934,7 +11922,7 @@ export const PaginatedQuerySummaryDataItemTableKeyspacesItemMap =
 
 /** Mapping of tables to their keyspaces */
 export type PaginatedQuerySummaryDataItemTableKeyspacesList =
-  ReadonlyArray<PaginatedQuerySummaryDataItemTableKeyspacesItemMap>;
+  Array<PaginatedQuerySummaryDataItemTableKeyspacesItemMap>;
 export const PaginatedQuerySummaryDataItemTableKeyspacesList =
   /*@__PURE__*/ S.Array(
     PaginatedQuerySummaryDataItemTableKeyspacesItemMap,
@@ -11951,7 +11939,7 @@ export const PaginatedQuerySummaryDataItemIndexUsagesItemMap =
 
 /** Index usage information */
 export type PaginatedQuerySummaryDataItemIndexUsagesList =
-  ReadonlyArray<PaginatedQuerySummaryDataItemIndexUsagesItemMap>;
+  Array<PaginatedQuerySummaryDataItemIndexUsagesItemMap>;
 export const PaginatedQuerySummaryDataItemIndexUsagesList =
   /*@__PURE__*/ S.Array(
     PaginatedQuerySummaryDataItemIndexUsagesItemMap,
@@ -11968,7 +11956,7 @@ export const PaginatedQuerySummaryDataItemRoutingIndexUsagesItemMap =
 
 /** Routing index usage information */
 export type PaginatedQuerySummaryDataItemRoutingIndexUsagesList =
-  ReadonlyArray<PaginatedQuerySummaryDataItemRoutingIndexUsagesItemMap>;
+  Array<PaginatedQuerySummaryDataItemRoutingIndexUsagesItemMap>;
 export const PaginatedQuerySummaryDataItemRoutingIndexUsagesList =
   /*@__PURE__*/ S.Array(
     PaginatedQuerySummaryDataItemRoutingIndexUsagesItemMap,
@@ -12131,7 +12119,7 @@ export const PaginatedQuerySummaryDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PaginatedQuerySummaryDataItem>;
 
 export type PaginatedQuerySummaryDataList =
-  ReadonlyArray<PaginatedQuerySummaryDataItem>;
+  Array<PaginatedQuerySummaryDataItem>;
 export const PaginatedQuerySummaryDataList = /*@__PURE__*/ S.Array(
   PaginatedQuerySummaryDataItem,
 ) as any as S.Schema<PaginatedQuerySummaryDataList>;
@@ -12266,7 +12254,7 @@ export const PaginatedErrorSummaryDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PaginatedErrorSummaryDataItem>;
 
 export type PaginatedErrorSummaryDataList =
-  ReadonlyArray<PaginatedErrorSummaryDataItem>;
+  Array<PaginatedErrorSummaryDataItem>;
 export const PaginatedErrorSummaryDataList = /*@__PURE__*/ S.Array(
   PaginatedErrorSummaryDataItem,
 ) as any as S.Schema<PaginatedErrorSummaryDataList>;
@@ -12395,7 +12383,7 @@ export const PaginatedQueryTagDataItemValuesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PaginatedQueryTagDataItemValuesItem>;
 
 export type PaginatedQueryTagDataItemValuesList =
-  ReadonlyArray<PaginatedQueryTagDataItemValuesItem>;
+  Array<PaginatedQueryTagDataItemValuesItem>;
 export const PaginatedQueryTagDataItemValuesList = /*@__PURE__*/ S.Array(
   PaginatedQueryTagDataItemValuesItem,
 ) as any as S.Schema<PaginatedQueryTagDataItemValuesList>;
@@ -12423,8 +12411,7 @@ export const PaginatedQueryTagDataItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "PaginatedQueryTagDataItem",
 }) as any as S.Schema<PaginatedQueryTagDataItem>;
 
-export type PaginatedQueryTagDataList =
-  ReadonlyArray<PaginatedQueryTagDataItem>;
+export type PaginatedQueryTagDataList = Array<PaginatedQueryTagDataItem>;
 export const PaginatedQueryTagDataList = /*@__PURE__*/ S.Array(
   PaginatedQueryTagDataItem,
 ) as any as S.Schema<PaginatedQueryTagDataList>;
@@ -12458,7 +12445,7 @@ export const PaginatedQueryTag = /*@__PURE__*/ S.suspend(() =>
   identifier: "PaginatedQueryTag",
 }) as any as S.Schema<PaginatedQueryTag>;
 
-export type ListBranchQueryTagSummariesRequestTagsList = ReadonlyArray<string>;
+export type ListBranchQueryTagSummariesRequestTagsList = Array<string>;
 export const ListBranchQueryTagSummariesRequestTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ListBranchQueryTagSummariesRequestTagsList>;
@@ -12526,8 +12513,7 @@ export type ListBranchQueryTagSummariesRequestType =
   | "DELETE";
 export const ListBranchQueryTagSummariesRequestType = /*@__PURE__*/ S.String;
 
-export type ListBranchQueryTagSummariesRequestFieldsList =
-  ReadonlyArray<string>;
+export type ListBranchQueryTagSummariesRequestFieldsList = Array<string>;
 export const ListBranchQueryTagSummariesRequestFieldsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -12610,8 +12596,7 @@ export const PaginatedDimensionsQuerySummaryDataItemDimensionsMap =
   ) as any as S.Schema<PaginatedDimensionsQuerySummaryDataItemDimensionsMap>;
 
 /** Tables accessed by the query */
-export type PaginatedDimensionsQuerySummaryDataItemTablesList =
-  ReadonlyArray<string>;
+export type PaginatedDimensionsQuerySummaryDataItemTablesList = Array<string>;
 export const PaginatedDimensionsQuerySummaryDataItemTablesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -12619,7 +12604,7 @@ export const PaginatedDimensionsQuerySummaryDataItemTablesList =
 
 /** Fully qualified tables accessed by the query */
 export type PaginatedDimensionsQuerySummaryDataItemQualifiedTablesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PaginatedDimensionsQuerySummaryDataItemQualifiedTablesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -12636,7 +12621,7 @@ export const PaginatedDimensionsQuerySummaryDataItemTableKeyspacesItemMap =
 
 /** Mapping of tables to their keyspaces */
 export type PaginatedDimensionsQuerySummaryDataItemTableKeyspacesList =
-  ReadonlyArray<PaginatedDimensionsQuerySummaryDataItemTableKeyspacesItemMap>;
+  Array<PaginatedDimensionsQuerySummaryDataItemTableKeyspacesItemMap>;
 export const PaginatedDimensionsQuerySummaryDataItemTableKeyspacesList =
   /*@__PURE__*/ S.Array(
     PaginatedDimensionsQuerySummaryDataItemTableKeyspacesItemMap,
@@ -12653,7 +12638,7 @@ export const PaginatedDimensionsQuerySummaryDataItemIndexUsagesItemMap =
 
 /** Index usage information */
 export type PaginatedDimensionsQuerySummaryDataItemIndexUsagesList =
-  ReadonlyArray<PaginatedDimensionsQuerySummaryDataItemIndexUsagesItemMap>;
+  Array<PaginatedDimensionsQuerySummaryDataItemIndexUsagesItemMap>;
 export const PaginatedDimensionsQuerySummaryDataItemIndexUsagesList =
   /*@__PURE__*/ S.Array(
     PaginatedDimensionsQuerySummaryDataItemIndexUsagesItemMap,
@@ -12670,7 +12655,7 @@ export const PaginatedDimensionsQuerySummaryDataItemRoutingIndexUsagesItemMap =
 
 /** Routing index usage information */
 export type PaginatedDimensionsQuerySummaryDataItemRoutingIndexUsagesList =
-  ReadonlyArray<PaginatedDimensionsQuerySummaryDataItemRoutingIndexUsagesItemMap>;
+  Array<PaginatedDimensionsQuerySummaryDataItemRoutingIndexUsagesItemMap>;
 export const PaginatedDimensionsQuerySummaryDataItemRoutingIndexUsagesList =
   /*@__PURE__*/ S.Array(
     PaginatedDimensionsQuerySummaryDataItemRoutingIndexUsagesItemMap,
@@ -12819,7 +12804,7 @@ export const PaginatedDimensionsQuerySummaryDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PaginatedDimensionsQuerySummaryDataItem>;
 
 export type PaginatedDimensionsQuerySummaryDataList =
-  ReadonlyArray<PaginatedDimensionsQuerySummaryDataItem>;
+  Array<PaginatedDimensionsQuerySummaryDataItem>;
 export const PaginatedDimensionsQuerySummaryDataList = /*@__PURE__*/ S.Array(
   PaginatedDimensionsQuerySummaryDataItem,
 ) as any as S.Schema<PaginatedDimensionsQuerySummaryDataList>;
@@ -12944,7 +12929,7 @@ export const ClusterSizeSkuSerializer = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ClusterSizeSkuSerializer>;
 
 export type ListClusterSizeSkusResponseBodyList =
-  ReadonlyArray<ClusterSizeSkuSerializer>;
+  Array<ClusterSizeSkuSerializer>;
 export const ListClusterSizeSkusResponseBodyList = /*@__PURE__*/ S.Array(
   ClusterSizeSkuSerializer,
 ) as any as S.Schema<ListClusterSizeSkusResponseBodyList>;
@@ -12984,8 +12969,7 @@ export const ListDatabasePostgresCidrsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListDatabasePostgresCidrsRequest>;
 
 /** List of CIDR ranges */
-export type PaginatedPostgresClusterCidrDataItemCidrsList =
-  ReadonlyArray<string>;
+export type PaginatedPostgresClusterCidrDataItemCidrsList = Array<string>;
 export const PaginatedPostgresClusterCidrDataItemCidrsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -13044,7 +13028,7 @@ export const PaginatedPostgresClusterCidrDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PaginatedPostgresClusterCidrDataItem>;
 
 export type PaginatedPostgresClusterCidrDataList =
-  ReadonlyArray<PaginatedPostgresClusterCidrDataItem>;
+  Array<PaginatedPostgresClusterCidrDataItem>;
 export const PaginatedPostgresClusterCidrDataList = /*@__PURE__*/ S.Array(
   PaginatedPostgresClusterCidrDataItem,
 ) as any as S.Schema<PaginatedPostgresClusterCidrDataList>;
@@ -13107,7 +13091,7 @@ export const ListDatabaseRegionsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Public IP addresses for the region */
 export type PaginatedPlanetscaleRegionDataItemPublicIpAddressesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PaginatedPlanetscaleRegionDataItemPublicIpAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -13154,7 +13138,7 @@ export const PaginatedPlanetscaleRegionDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PaginatedPlanetscaleRegionDataItem>;
 
 export type PaginatedPlanetscaleRegionDataList =
-  ReadonlyArray<PaginatedPlanetscaleRegionDataItem>;
+  Array<PaginatedPlanetscaleRegionDataItem>;
 export const PaginatedPlanetscaleRegionDataList = /*@__PURE__*/ S.Array(
   PaginatedPlanetscaleRegionDataItem,
 ) as any as S.Schema<PaginatedPlanetscaleRegionDataList>;
@@ -13259,7 +13243,7 @@ export const PaginatedDatabaseDataItemDataImport = /*@__PURE__*/ S.suspend(() =>
 
 /** Public IP addresses for the region */
 export type PaginatedDatabaseDataItemRegionPublicIpAddressesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PaginatedDatabaseDataItemRegionPublicIpAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -13449,8 +13433,7 @@ export const PaginatedDatabaseDataItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "PaginatedDatabaseDataItem",
 }) as any as S.Schema<PaginatedDatabaseDataItem>;
 
-export type PaginatedDatabaseDataList =
-  ReadonlyArray<PaginatedDatabaseDataItem>;
+export type PaginatedDatabaseDataList = Array<PaginatedDatabaseDataItem>;
 export const PaginatedDatabaseDataList = /*@__PURE__*/ S.Array(
   PaginatedDatabaseDataItem,
 ) as any as S.Schema<PaginatedDatabaseDataList>;
@@ -13526,7 +13509,7 @@ export const PaginatedDeployOperationDataItemState = /*@__PURE__*/ S.String;
 
 /** Names of foreign keys removed by this operation */
 export type PaginatedDeployOperationDataItemRemovedForeignKeyNamesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PaginatedDeployOperationDataItemRemovedForeignKeyNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -13601,7 +13584,7 @@ export const PaginatedDeployOperationDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PaginatedDeployOperationDataItem>;
 
 export type PaginatedDeployOperationDataList =
-  ReadonlyArray<PaginatedDeployOperationDataItem>;
+  Array<PaginatedDeployOperationDataItem>;
 export const PaginatedDeployOperationDataList = /*@__PURE__*/ S.Array(
   PaginatedDeployOperationDataItem,
 ) as any as S.Schema<PaginatedDeployOperationDataList>;
@@ -13721,7 +13704,7 @@ export const PaginatedDeployRequestReviewDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PaginatedDeployRequestReviewDataItem>;
 
 export type PaginatedDeployRequestReviewDataList =
-  ReadonlyArray<PaginatedDeployRequestReviewDataItem>;
+  Array<PaginatedDeployRequestReviewDataItem>;
 export const PaginatedDeployRequestReviewDataList = /*@__PURE__*/ S.Array(
   PaginatedDeployRequestReviewDataItem,
 ) as any as S.Schema<PaginatedDeployRequestReviewDataList>;
@@ -13919,7 +13902,7 @@ export const PaginatedDatabaseDeployRequestDataItemDeploymentPrecedingDeployment
 
 /** The deployments ahead of this one in the queue */
 export type PaginatedDatabaseDeployRequestDataItemDeploymentPrecedingDeploymentsList =
-  ReadonlyArray<PaginatedDatabaseDeployRequestDataItemDeploymentPrecedingDeploymentsItemMap>;
+  Array<PaginatedDatabaseDeployRequestDataItemDeploymentPrecedingDeploymentsItemMap>;
 export const PaginatedDatabaseDeployRequestDataItemDeploymentPrecedingDeploymentsList =
   /*@__PURE__*/ S.Array(
     PaginatedDatabaseDeployRequestDataItemDeploymentPrecedingDeploymentsItemMap,
@@ -13933,7 +13916,7 @@ export const PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationsIte
 
 /** Names of foreign keys removed by this operation */
 export type PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationsItemRemovedForeignKeyNamesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationsItemRemovedForeignKeyNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -14011,7 +13994,7 @@ export const PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationsIte
   }) as any as S.Schema<PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationsItem>;
 
 export type PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationsList =
-  ReadonlyArray<PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationsItem>;
+  Array<PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationsItem>;
 export const PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationsList =
   /*@__PURE__*/ S.Array(
     PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationsItem,
@@ -14025,7 +14008,7 @@ export const PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationSumm
 
 /** Names of foreign keys removed by this operation summary */
 export type PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationSummariesItemRemovedForeignKeyNamesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationSummariesItemRemovedForeignKeyNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -14033,7 +14016,7 @@ export const PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationSumm
 
 /** Names of shards in the keyspace modified by the deploy operation summary */
 export type PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationSummariesItemShardNamesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationSummariesItemShardNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -14073,7 +14056,7 @@ export const PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationSumm
   }) as any as S.Schema<PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationSummariesItemOperationsItem>;
 
 export type PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationSummariesItemOperationsList =
-  ReadonlyArray<PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationSummariesItemOperationsItem>;
+  Array<PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationSummariesItemOperationsItem>;
 export const PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationSummariesItemOperationsList =
   /*@__PURE__*/ S.Array(
     PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationSummariesItemOperationsItem,
@@ -14154,7 +14137,7 @@ export const PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationSumm
   }) as any as S.Schema<PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationSummariesItem>;
 
 export type PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationSummariesList =
-  ReadonlyArray<PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationSummariesItem>;
+  Array<PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationSummariesItem>;
 export const PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationSummariesList =
   /*@__PURE__*/ S.Array(
     PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationSummariesItem,
@@ -14170,7 +14153,7 @@ export const PaginatedDatabaseDeployRequestDataItemDeploymentLintErrorsItemMap =
 
 /** Schema lint errors preventing the deployment from completing */
 export type PaginatedDatabaseDeployRequestDataItemDeploymentLintErrorsList =
-  ReadonlyArray<PaginatedDatabaseDeployRequestDataItemDeploymentLintErrorsItemMap>;
+  Array<PaginatedDatabaseDeployRequestDataItemDeploymentLintErrorsItemMap>;
 export const PaginatedDatabaseDeployRequestDataItemDeploymentLintErrorsList =
   /*@__PURE__*/ S.Array(
     PaginatedDatabaseDeployRequestDataItemDeploymentLintErrorsItemMap,
@@ -14186,7 +14169,7 @@ export const PaginatedDatabaseDeployRequestDataItemDeploymentSequentialDiffDepen
 
 /** The schema dependencies that must be satisfied */
 export type PaginatedDatabaseDeployRequestDataItemDeploymentSequentialDiffDependenciesList =
-  ReadonlyArray<PaginatedDatabaseDeployRequestDataItemDeploymentSequentialDiffDependenciesItemMap>;
+  Array<PaginatedDatabaseDeployRequestDataItemDeploymentSequentialDiffDependenciesItemMap>;
 export const PaginatedDatabaseDeployRequestDataItemDeploymentSequentialDiffDependenciesList =
   /*@__PURE__*/ S.Array(
     PaginatedDatabaseDeployRequestDataItemDeploymentSequentialDiffDependenciesItemMap,
@@ -14202,7 +14185,7 @@ export const PaginatedDatabaseDeployRequestDataItemDeploymentLookupVindexOperati
 
 /** Lookup Vitess index operations */
 export type PaginatedDatabaseDeployRequestDataItemDeploymentLookupVindexOperationsList =
-  ReadonlyArray<PaginatedDatabaseDeployRequestDataItemDeploymentLookupVindexOperationsItemMap>;
+  Array<PaginatedDatabaseDeployRequestDataItemDeploymentLookupVindexOperationsItemMap>;
 export const PaginatedDatabaseDeployRequestDataItemDeploymentLookupVindexOperationsList =
   /*@__PURE__*/ S.Array(
     PaginatedDatabaseDeployRequestDataItemDeploymentLookupVindexOperationsItemMap,
@@ -14503,7 +14486,7 @@ export const PaginatedDatabaseDeployRequestDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PaginatedDatabaseDeployRequestDataItem>;
 
 export type PaginatedDatabaseDeployRequestDataList =
-  ReadonlyArray<PaginatedDatabaseDeployRequestDataItem>;
+  Array<PaginatedDatabaseDeployRequestDataItem>;
 export const PaginatedDatabaseDeployRequestDataList = /*@__PURE__*/ S.Array(
   PaginatedDatabaseDeployRequestDataItem,
 ) as any as S.Schema<PaginatedDatabaseDeployRequestDataList>;
@@ -14591,8 +14574,7 @@ export const PostgresClusterExtensionParametersItemParameterType =
   /*@__PURE__*/ S.String;
 
 /** Valid options for the parameter value */
-export type PostgresClusterExtensionParametersItemOptionsList =
-  ReadonlyArray<string>;
+export type PostgresClusterExtensionParametersItemOptionsList = Array<string>;
 export const PostgresClusterExtensionParametersItemOptionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -14690,7 +14672,7 @@ export const PostgresClusterExtensionParametersItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PostgresClusterExtensionParametersItem>;
 
 export type PostgresClusterExtensionParametersList =
-  ReadonlyArray<PostgresClusterExtensionParametersItem>;
+  Array<PostgresClusterExtensionParametersItem>;
 export const PostgresClusterExtensionParametersList = /*@__PURE__*/ S.Array(
   PostgresClusterExtensionParametersItem,
 ) as any as S.Schema<PostgresClusterExtensionParametersList>;
@@ -14730,8 +14712,7 @@ export const PostgresClusterExtension = /*@__PURE__*/ S.suspend(() =>
   identifier: "PostgresClusterExtension",
 }) as any as S.Schema<PostgresClusterExtension>;
 
-export type ListExtensionsResponseBodyList =
-  ReadonlyArray<PostgresClusterExtension>;
+export type ListExtensionsResponseBodyList = Array<PostgresClusterExtension>;
 export const ListExtensionsResponseBodyList = /*@__PURE__*/ S.Array(
   PostgresClusterExtension,
 ) as any as S.Schema<ListExtensionsResponseBodyList>;
@@ -14835,7 +14816,7 @@ export const PaginatedQueryPatternsDownloadDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PaginatedQueryPatternsDownloadDataItem>;
 
 export type PaginatedQueryPatternsDownloadDataList =
-  ReadonlyArray<PaginatedQueryPatternsDownloadDataItem>;
+  Array<PaginatedQueryPatternsDownloadDataItem>;
 export const PaginatedQueryPatternsDownloadDataList = /*@__PURE__*/ S.Array(
   PaginatedQueryPatternsDownloadDataItem,
 ) as any as S.Schema<PaginatedQueryPatternsDownloadDataList>;
@@ -14917,7 +14898,7 @@ export const PaginatedInvoiceDataItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "PaginatedInvoiceDataItem",
 }) as any as S.Schema<PaginatedInvoiceDataItem>;
 
-export type PaginatedInvoiceDataList = ReadonlyArray<PaginatedInvoiceDataItem>;
+export type PaginatedInvoiceDataList = Array<PaginatedInvoiceDataItem>;
 export const PaginatedInvoiceDataList = /*@__PURE__*/ S.Array(
   PaginatedInvoiceDataItem,
 ) as any as S.Schema<PaginatedInvoiceDataList>;
@@ -14985,7 +14966,7 @@ export const ListKeyspaceResizeRequestsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListKeyspaceResizeRequestsRequest>;
 
 export type PaginatedKeyspaceResizeRequestDataList =
-  ReadonlyArray<KeyspaceResizeRequest>;
+  Array<KeyspaceResizeRequest>;
 export const PaginatedKeyspaceResizeRequestDataList = /*@__PURE__*/ S.Array(
   KeyspaceResizeRequest,
 ) as any as S.Schema<PaginatedKeyspaceResizeRequestDataList>;
@@ -15201,7 +15182,7 @@ export const PaginatedDatabaseBranchKeyspaceDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PaginatedDatabaseBranchKeyspaceDataItem>;
 
 export type PaginatedDatabaseBranchKeyspaceDataList =
-  ReadonlyArray<PaginatedDatabaseBranchKeyspaceDataItem>;
+  Array<PaginatedDatabaseBranchKeyspaceDataItem>;
 export const PaginatedDatabaseBranchKeyspaceDataList = /*@__PURE__*/ S.Array(
   PaginatedDatabaseBranchKeyspaceDataItem,
 ) as any as S.Schema<PaginatedDatabaseBranchKeyspaceDataList>;
@@ -15342,7 +15323,7 @@ export const PaginatedBranchMaintenanceScheduleDataItem =
   }) as any as S.Schema<PaginatedBranchMaintenanceScheduleDataItem>;
 
 export type PaginatedBranchMaintenanceScheduleDataList =
-  ReadonlyArray<PaginatedBranchMaintenanceScheduleDataItem>;
+  Array<PaginatedBranchMaintenanceScheduleDataItem>;
 export const PaginatedBranchMaintenanceScheduleDataList = /*@__PURE__*/ S.Array(
   PaginatedBranchMaintenanceScheduleDataItem,
 ) as any as S.Schema<PaginatedBranchMaintenanceScheduleDataList>;
@@ -15432,7 +15413,7 @@ export const PaginatedBranchMaintenanceWindowDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PaginatedBranchMaintenanceWindowDataItem>;
 
 export type PaginatedBranchMaintenanceWindowDataList =
-  ReadonlyArray<PaginatedBranchMaintenanceWindowDataItem>;
+  Array<PaginatedBranchMaintenanceWindowDataItem>;
 export const PaginatedBranchMaintenanceWindowDataList = /*@__PURE__*/ S.Array(
   PaginatedBranchMaintenanceWindowDataItem,
 ) as any as S.Schema<PaginatedBranchMaintenanceWindowDataList>;
@@ -15566,7 +15547,7 @@ export const PaginatedOauthApplicationDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PaginatedOauthApplicationDataItem>;
 
 export type PaginatedOauthApplicationDataList =
-  ReadonlyArray<PaginatedOauthApplicationDataItem>;
+  Array<PaginatedOauthApplicationDataItem>;
 export const PaginatedOauthApplicationDataList = /*@__PURE__*/ S.Array(
   PaginatedOauthApplicationDataItem,
 ) as any as S.Schema<PaginatedOauthApplicationDataList>;
@@ -15683,7 +15664,7 @@ export const PaginatedServiceTokenDataItemServiceTokenAccessesItem =
   }) as any as S.Schema<PaginatedServiceTokenDataItemServiceTokenAccessesItem>;
 
 export type PaginatedServiceTokenDataItemServiceTokenAccessesList =
-  ReadonlyArray<PaginatedServiceTokenDataItemServiceTokenAccessesItem>;
+  Array<PaginatedServiceTokenDataItemServiceTokenAccessesItem>;
 export const PaginatedServiceTokenDataItemServiceTokenAccessesList =
   /*@__PURE__*/ S.Array(
     PaginatedServiceTokenDataItemServiceTokenAccessesItem,
@@ -15713,7 +15694,7 @@ export const PaginatedServiceTokenDataItemOauthAccessesByResourceDatabaseDatabas
   }) as any as S.Schema<PaginatedServiceTokenDataItemOauthAccessesByResourceDatabaseDatabasesItem>;
 
 export type PaginatedServiceTokenDataItemOauthAccessesByResourceDatabaseDatabasesList =
-  ReadonlyArray<PaginatedServiceTokenDataItemOauthAccessesByResourceDatabaseDatabasesItem>;
+  Array<PaginatedServiceTokenDataItemOauthAccessesByResourceDatabaseDatabasesItem>;
 export const PaginatedServiceTokenDataItemOauthAccessesByResourceDatabaseDatabasesList =
   /*@__PURE__*/ S.Array(
     PaginatedServiceTokenDataItemOauthAccessesByResourceDatabaseDatabasesItem,
@@ -15737,7 +15718,7 @@ export const PaginatedServiceTokenDataItemOauthAccessesByResourceDatabaseAccesse
   }) as any as S.Schema<PaginatedServiceTokenDataItemOauthAccessesByResourceDatabaseAccessesItem>;
 
 export type PaginatedServiceTokenDataItemOauthAccessesByResourceDatabaseAccessesList =
-  ReadonlyArray<PaginatedServiceTokenDataItemOauthAccessesByResourceDatabaseAccessesItem>;
+  Array<PaginatedServiceTokenDataItemOauthAccessesByResourceDatabaseAccessesItem>;
 export const PaginatedServiceTokenDataItemOauthAccessesByResourceDatabaseAccessesList =
   /*@__PURE__*/ S.Array(
     PaginatedServiceTokenDataItemOauthAccessesByResourceDatabaseAccessesItem,
@@ -15780,7 +15761,7 @@ export const PaginatedServiceTokenDataItemOauthAccessesByResourceOrganizationOrg
   }) as any as S.Schema<PaginatedServiceTokenDataItemOauthAccessesByResourceOrganizationOrganizationsItem>;
 
 export type PaginatedServiceTokenDataItemOauthAccessesByResourceOrganizationOrganizationsList =
-  ReadonlyArray<PaginatedServiceTokenDataItemOauthAccessesByResourceOrganizationOrganizationsItem>;
+  Array<PaginatedServiceTokenDataItemOauthAccessesByResourceOrganizationOrganizationsItem>;
 export const PaginatedServiceTokenDataItemOauthAccessesByResourceOrganizationOrganizationsList =
   /*@__PURE__*/ S.Array(
     PaginatedServiceTokenDataItemOauthAccessesByResourceOrganizationOrganizationsItem,
@@ -15804,7 +15785,7 @@ export const PaginatedServiceTokenDataItemOauthAccessesByResourceOrganizationAcc
   }) as any as S.Schema<PaginatedServiceTokenDataItemOauthAccessesByResourceOrganizationAccessesItem>;
 
 export type PaginatedServiceTokenDataItemOauthAccessesByResourceOrganizationAccessesList =
-  ReadonlyArray<PaginatedServiceTokenDataItemOauthAccessesByResourceOrganizationAccessesItem>;
+  Array<PaginatedServiceTokenDataItemOauthAccessesByResourceOrganizationAccessesItem>;
 export const PaginatedServiceTokenDataItemOauthAccessesByResourceOrganizationAccessesList =
   /*@__PURE__*/ S.Array(
     PaginatedServiceTokenDataItemOauthAccessesByResourceOrganizationAccessesItem,
@@ -15854,7 +15835,7 @@ export const PaginatedServiceTokenDataItemOauthAccessesByResourceBranchBranchesI
   }) as any as S.Schema<PaginatedServiceTokenDataItemOauthAccessesByResourceBranchBranchesItem>;
 
 export type PaginatedServiceTokenDataItemOauthAccessesByResourceBranchBranchesList =
-  ReadonlyArray<PaginatedServiceTokenDataItemOauthAccessesByResourceBranchBranchesItem>;
+  Array<PaginatedServiceTokenDataItemOauthAccessesByResourceBranchBranchesItem>;
 export const PaginatedServiceTokenDataItemOauthAccessesByResourceBranchBranchesList =
   /*@__PURE__*/ S.Array(
     PaginatedServiceTokenDataItemOauthAccessesByResourceBranchBranchesItem,
@@ -15878,7 +15859,7 @@ export const PaginatedServiceTokenDataItemOauthAccessesByResourceBranchAccessesI
   }) as any as S.Schema<PaginatedServiceTokenDataItemOauthAccessesByResourceBranchAccessesItem>;
 
 export type PaginatedServiceTokenDataItemOauthAccessesByResourceBranchAccessesList =
-  ReadonlyArray<PaginatedServiceTokenDataItemOauthAccessesByResourceBranchAccessesItem>;
+  Array<PaginatedServiceTokenDataItemOauthAccessesByResourceBranchAccessesItem>;
 export const PaginatedServiceTokenDataItemOauthAccessesByResourceBranchAccessesList =
   /*@__PURE__*/ S.Array(
     PaginatedServiceTokenDataItemOauthAccessesByResourceBranchAccessesItem,
@@ -15918,7 +15899,7 @@ export const PaginatedServiceTokenDataItemOauthAccessesByResourceUserUsersItem =
   }) as any as S.Schema<PaginatedServiceTokenDataItemOauthAccessesByResourceUserUsersItem>;
 
 export type PaginatedServiceTokenDataItemOauthAccessesByResourceUserUsersList =
-  ReadonlyArray<PaginatedServiceTokenDataItemOauthAccessesByResourceUserUsersItem>;
+  Array<PaginatedServiceTokenDataItemOauthAccessesByResourceUserUsersItem>;
 export const PaginatedServiceTokenDataItemOauthAccessesByResourceUserUsersList =
   /*@__PURE__*/ S.Array(
     PaginatedServiceTokenDataItemOauthAccessesByResourceUserUsersItem,
@@ -15942,7 +15923,7 @@ export const PaginatedServiceTokenDataItemOauthAccessesByResourceUserAccessesIte
   }) as any as S.Schema<PaginatedServiceTokenDataItemOauthAccessesByResourceUserAccessesItem>;
 
 export type PaginatedServiceTokenDataItemOauthAccessesByResourceUserAccessesList =
-  ReadonlyArray<PaginatedServiceTokenDataItemOauthAccessesByResourceUserAccessesItem>;
+  Array<PaginatedServiceTokenDataItemOauthAccessesByResourceUserAccessesItem>;
 export const PaginatedServiceTokenDataItemOauthAccessesByResourceUserAccessesList =
   /*@__PURE__*/ S.Array(
     PaginatedServiceTokenDataItemOauthAccessesByResourceUserAccessesItem,
@@ -16041,7 +16022,7 @@ export const PaginatedServiceTokenDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PaginatedServiceTokenDataItem>;
 
 export type PaginatedServiceTokenDataList =
-  ReadonlyArray<PaginatedServiceTokenDataItem>;
+  Array<PaginatedServiceTokenDataItem>;
 export const PaginatedServiceTokenDataList = /*@__PURE__*/ S.Array(
   PaginatedServiceTokenDataItem,
 ) as any as S.Schema<PaginatedServiceTokenDataList>;
@@ -16210,7 +16191,7 @@ export const PaginatedOrganizationMembershipDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PaginatedOrganizationMembershipDataItem>;
 
 export type PaginatedOrganizationMembershipDataList =
-  ReadonlyArray<PaginatedOrganizationMembershipDataItem>;
+  Array<PaginatedOrganizationMembershipDataItem>;
 export const PaginatedOrganizationMembershipDataList = /*@__PURE__*/ S.Array(
   PaginatedOrganizationMembershipDataItem,
 ) as any as S.Schema<PaginatedOrganizationMembershipDataList>;
@@ -16338,7 +16319,7 @@ export const PaginatedOrganizationDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PaginatedOrganizationDataItem>;
 
 export type PaginatedOrganizationDataList =
-  ReadonlyArray<PaginatedOrganizationDataItem>;
+  Array<PaginatedOrganizationDataItem>;
 export const PaginatedOrganizationDataList = /*@__PURE__*/ S.Array(
   PaginatedOrganizationDataItem,
 ) as any as S.Schema<PaginatedOrganizationDataList>;
@@ -16507,7 +16488,7 @@ export const PaginatedOrganizationTeamMembershipDataItemPasswordsItemRole =
 
 /** List of IP addresses or CIDR ranges that can use this password */
 export type PaginatedOrganizationTeamMembershipDataItemPasswordsItemCidrsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PaginatedOrganizationTeamMembershipDataItemPasswordsItemCidrsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -16515,7 +16496,7 @@ export const PaginatedOrganizationTeamMembershipDataItemPasswordsItemCidrsList =
 
 /** The list of hosts in each availability zone providing direct access to a vtgate */
 export type PaginatedOrganizationTeamMembershipDataItemPasswordsItemDirectVtgateAddressesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PaginatedOrganizationTeamMembershipDataItemPasswordsItemDirectVtgateAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -16523,7 +16504,7 @@ export const PaginatedOrganizationTeamMembershipDataItemPasswordsItemDirectVtgat
 
 /** The read-only replica host URLs */
 export type PaginatedOrganizationTeamMembershipDataItemPasswordsItemAccessHostRegionalUrlsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PaginatedOrganizationTeamMembershipDataItemPasswordsItemAccessHostRegionalUrlsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -16550,7 +16531,7 @@ export const PaginatedOrganizationTeamMembershipDataItemPasswordsItemActor =
 
 /** Public IP addresses for the region */
 export type PaginatedOrganizationTeamMembershipDataItemPasswordsItemRegionPublicIpAddressesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PaginatedOrganizationTeamMembershipDataItemPasswordsItemRegionPublicIpAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -16705,7 +16686,7 @@ export const PaginatedOrganizationTeamMembershipDataItemPasswordsItem =
   }) as any as S.Schema<PaginatedOrganizationTeamMembershipDataItemPasswordsItem>;
 
 export type PaginatedOrganizationTeamMembershipDataItemPasswordsList =
-  ReadonlyArray<PaginatedOrganizationTeamMembershipDataItemPasswordsItem>;
+  Array<PaginatedOrganizationTeamMembershipDataItemPasswordsItem>;
 export const PaginatedOrganizationTeamMembershipDataItemPasswordsList =
   /*@__PURE__*/ S.Array(
     PaginatedOrganizationTeamMembershipDataItemPasswordsItem,
@@ -16737,7 +16718,7 @@ export const PaginatedOrganizationTeamMembershipDataItem =
   }) as any as S.Schema<PaginatedOrganizationTeamMembershipDataItem>;
 
 export type PaginatedOrganizationTeamMembershipDataList =
-  ReadonlyArray<PaginatedOrganizationTeamMembershipDataItem>;
+  Array<PaginatedOrganizationTeamMembershipDataItem>;
 export const PaginatedOrganizationTeamMembershipDataList =
   /*@__PURE__*/ S.Array(
     PaginatedOrganizationTeamMembershipDataItem,
@@ -16897,7 +16878,7 @@ export const PaginatedOrganizationTeamDataItemMembersItem =
   }) as any as S.Schema<PaginatedOrganizationTeamDataItemMembersItem>;
 
 export type PaginatedOrganizationTeamDataItemMembersList =
-  ReadonlyArray<PaginatedOrganizationTeamDataItemMembersItem>;
+  Array<PaginatedOrganizationTeamDataItemMembersItem>;
 export const PaginatedOrganizationTeamDataItemMembersList =
   /*@__PURE__*/ S.Array(
     PaginatedOrganizationTeamDataItemMembersItem,
@@ -16926,7 +16907,7 @@ export const PaginatedOrganizationTeamDataItemDatabasesItem =
   }) as any as S.Schema<PaginatedOrganizationTeamDataItemDatabasesItem>;
 
 export type PaginatedOrganizationTeamDataItemDatabasesList =
-  ReadonlyArray<PaginatedOrganizationTeamDataItemDatabasesItem>;
+  Array<PaginatedOrganizationTeamDataItemDatabasesItem>;
 export const PaginatedOrganizationTeamDataItemDatabasesList =
   /*@__PURE__*/ S.Array(
     PaginatedOrganizationTeamDataItemDatabasesItem,
@@ -16955,7 +16936,7 @@ export const PaginatedOrganizationTeamDataItemAnalystDatabasesItem =
   }) as any as S.Schema<PaginatedOrganizationTeamDataItemAnalystDatabasesItem>;
 
 export type PaginatedOrganizationTeamDataItemAnalystDatabasesList =
-  ReadonlyArray<PaginatedOrganizationTeamDataItemAnalystDatabasesItem>;
+  Array<PaginatedOrganizationTeamDataItemAnalystDatabasesItem>;
 export const PaginatedOrganizationTeamDataItemAnalystDatabasesList =
   /*@__PURE__*/ S.Array(
     PaginatedOrganizationTeamDataItemAnalystDatabasesItem,
@@ -17003,7 +16984,7 @@ export const PaginatedOrganizationTeamDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PaginatedOrganizationTeamDataItem>;
 
 export type PaginatedOrganizationTeamDataList =
-  ReadonlyArray<PaginatedOrganizationTeamDataItem>;
+  Array<PaginatedOrganizationTeamDataItem>;
 export const PaginatedOrganizationTeamDataList = /*@__PURE__*/ S.Array(
   PaginatedOrganizationTeamDataItem,
 ) as any as S.Schema<PaginatedOrganizationTeamDataList>;
@@ -17082,7 +17063,7 @@ export type PostgresClusterParameterParameterType =
 export const PostgresClusterParameterParameterType = /*@__PURE__*/ S.String;
 
 /** Valid options for the parameter value */
-export type PostgresClusterParameterOptionsList = ReadonlyArray<string>;
+export type PostgresClusterParameterOptionsList = Array<string>;
 export const PostgresClusterParameterOptionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostgresClusterParameterOptionsList>;
@@ -17176,8 +17157,7 @@ export const PostgresClusterParameter = /*@__PURE__*/ S.suspend(() =>
   identifier: "PostgresClusterParameter",
 }) as any as S.Schema<PostgresClusterParameter>;
 
-export type ListParametersResponseBodyList =
-  ReadonlyArray<PostgresClusterParameter>;
+export type ListParametersResponseBodyList = Array<PostgresClusterParameter>;
 export const ListParametersResponseBodyList = /*@__PURE__*/ S.Array(
   PostgresClusterParameter,
 ) as any as S.Schema<ListParametersResponseBodyList>;
@@ -17238,8 +17218,7 @@ export const PaginatedDatabaseBranchPasswordDataItemRole =
   /*@__PURE__*/ S.String;
 
 /** List of IP addresses or CIDR ranges that can use this password */
-export type PaginatedDatabaseBranchPasswordDataItemCidrsList =
-  ReadonlyArray<string>;
+export type PaginatedDatabaseBranchPasswordDataItemCidrsList = Array<string>;
 export const PaginatedDatabaseBranchPasswordDataItemCidrsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -17247,7 +17226,7 @@ export const PaginatedDatabaseBranchPasswordDataItemCidrsList =
 
 /** The list of hosts in each availability zone providing direct access to a vtgate */
 export type PaginatedDatabaseBranchPasswordDataItemDirectVtgateAddressesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PaginatedDatabaseBranchPasswordDataItemDirectVtgateAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -17255,7 +17234,7 @@ export const PaginatedDatabaseBranchPasswordDataItemDirectVtgateAddressesList =
 
 /** The read-only replica host URLs */
 export type PaginatedDatabaseBranchPasswordDataItemAccessHostRegionalUrlsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PaginatedDatabaseBranchPasswordDataItemAccessHostRegionalUrlsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -17282,7 +17261,7 @@ export const PaginatedDatabaseBranchPasswordDataItemActor =
 
 /** Public IP addresses for the region */
 export type PaginatedDatabaseBranchPasswordDataItemRegionPublicIpAddressesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PaginatedDatabaseBranchPasswordDataItemRegionPublicIpAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -17430,7 +17409,7 @@ export const PaginatedDatabaseBranchPasswordDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PaginatedDatabaseBranchPasswordDataItem>;
 
 export type PaginatedDatabaseBranchPasswordDataList =
-  ReadonlyArray<PaginatedDatabaseBranchPasswordDataItem>;
+  Array<PaginatedDatabaseBranchPasswordDataItem>;
 export const PaginatedDatabaseBranchPasswordDataList = /*@__PURE__*/ S.Array(
   PaginatedDatabaseBranchPasswordDataItem,
 ) as any as S.Schema<PaginatedDatabaseBranchPasswordDataList>;
@@ -17481,7 +17460,7 @@ export const ListPublicRegionsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of public IP addresses for the region */
 export type PaginatedPublicPlanetscaleRegionSerializerDataItemPublicIpAddressesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PaginatedPublicPlanetscaleRegionSerializerDataItemPublicIpAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -17520,7 +17499,7 @@ export const PaginatedPublicPlanetscaleRegionSerializerDataItem =
   }) as any as S.Schema<PaginatedPublicPlanetscaleRegionSerializerDataItem>;
 
 export type PaginatedPublicPlanetscaleRegionSerializerDataList =
-  ReadonlyArray<PaginatedPublicPlanetscaleRegionSerializerDataItem>;
+  Array<PaginatedPublicPlanetscaleRegionSerializerDataItem>;
 export const PaginatedPublicPlanetscaleRegionSerializerDataList =
   /*@__PURE__*/ S.Array(
     PaginatedPublicPlanetscaleRegionSerializerDataItem,
@@ -17604,7 +17583,7 @@ export const PaginatedDatabaseBranchReadOnlyRegionDataItemActor =
 
 /** Public IP addresses for the region */
 export type PaginatedDatabaseBranchReadOnlyRegionDataItemRegionPublicIpAddressesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PaginatedDatabaseBranchReadOnlyRegionDataItemRegionPublicIpAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -17684,7 +17663,7 @@ export const PaginatedDatabaseBranchReadOnlyRegionDataItem =
   }) as any as S.Schema<PaginatedDatabaseBranchReadOnlyRegionDataItem>;
 
 export type PaginatedDatabaseBranchReadOnlyRegionDataList =
-  ReadonlyArray<PaginatedDatabaseBranchReadOnlyRegionDataItem>;
+  Array<PaginatedDatabaseBranchReadOnlyRegionDataItem>;
 export const PaginatedDatabaseBranchReadOnlyRegionDataList =
   /*@__PURE__*/ S.Array(
     PaginatedDatabaseBranchReadOnlyRegionDataItem,
@@ -17799,7 +17778,7 @@ export const PaginatedPostgresRoleDataItemInheritedRolesItem =
 
 /** Database roles these credentials inherit */
 export type PaginatedPostgresRoleDataItemInheritedRolesList =
-  ReadonlyArray<PaginatedPostgresRoleDataItemInheritedRolesItem>;
+  Array<PaginatedPostgresRoleDataItemInheritedRolesItem>;
 export const PaginatedPostgresRoleDataItemInheritedRolesList =
   /*@__PURE__*/ S.Array(
     PaginatedPostgresRoleDataItemInheritedRolesItem,
@@ -17956,7 +17935,7 @@ export const PaginatedPostgresRoleDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PaginatedPostgresRoleDataItem>;
 
 export type PaginatedPostgresRoleDataList =
-  ReadonlyArray<PaginatedPostgresRoleDataItem>;
+  Array<PaginatedPostgresRoleDataItem>;
 export const PaginatedPostgresRoleDataList = /*@__PURE__*/ S.Array(
   PaginatedPostgresRoleDataItem,
 ) as any as S.Schema<PaginatedPostgresRoleDataList>;
@@ -18141,7 +18120,7 @@ export const PaginatedSchemaRecommendationDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PaginatedSchemaRecommendationDataItem>;
 
 export type PaginatedSchemaRecommendationDataList =
-  ReadonlyArray<PaginatedSchemaRecommendationDataItem>;
+  Array<PaginatedSchemaRecommendationDataItem>;
 export const PaginatedSchemaRecommendationDataList = /*@__PURE__*/ S.Array(
   PaginatedSchemaRecommendationDataItem,
 ) as any as S.Schema<PaginatedSchemaRecommendationDataList>;
@@ -18295,7 +18274,7 @@ export const PaginatedTrafficBudgetDataItemRulesItemTagsItem =
   }) as any as S.Schema<PaginatedTrafficBudgetDataItemRulesItemTagsItem>;
 
 export type PaginatedTrafficBudgetDataItemRulesItemTagsList =
-  ReadonlyArray<PaginatedTrafficBudgetDataItemRulesItemTagsItem>;
+  Array<PaginatedTrafficBudgetDataItemRulesItemTagsItem>;
 export const PaginatedTrafficBudgetDataItemRulesItemTagsList =
   /*@__PURE__*/ S.Array(
     PaginatedTrafficBudgetDataItemRulesItemTagsItem,
@@ -18356,7 +18335,7 @@ export const PaginatedTrafficBudgetDataItemRulesItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PaginatedTrafficBudgetDataItemRulesItem>;
 
 export type PaginatedTrafficBudgetDataItemRulesList =
-  ReadonlyArray<PaginatedTrafficBudgetDataItemRulesItem>;
+  Array<PaginatedTrafficBudgetDataItemRulesItem>;
 export const PaginatedTrafficBudgetDataItemRulesList = /*@__PURE__*/ S.Array(
   PaginatedTrafficBudgetDataItemRulesItem,
 ) as any as S.Schema<PaginatedTrafficBudgetDataItemRulesList>;
@@ -18405,7 +18384,7 @@ export const PaginatedTrafficBudgetDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PaginatedTrafficBudgetDataItem>;
 
 export type PaginatedTrafficBudgetDataList =
-  ReadonlyArray<PaginatedTrafficBudgetDataItem>;
+  Array<PaginatedTrafficBudgetDataItem>;
 export const PaginatedTrafficBudgetDataList = /*@__PURE__*/ S.Array(
   PaginatedTrafficBudgetDataItem,
 ) as any as S.Schema<PaginatedTrafficBudgetDataList>;
@@ -18527,7 +18506,7 @@ export const PaginatedDatabaseWebhookDataItemEventsItem =
 
 /** The events this webhook subscribes to */
 export type PaginatedDatabaseWebhookDataItemEventsList =
-  ReadonlyArray<PaginatedDatabaseWebhookDataItemEventsItem>;
+  Array<PaginatedDatabaseWebhookDataItemEventsItem>;
 export const PaginatedDatabaseWebhookDataItemEventsList = /*@__PURE__*/ S.Array(
   PaginatedDatabaseWebhookDataItemEventsItem,
 ) as any as S.Schema<PaginatedDatabaseWebhookDataItemEventsList>;
@@ -18572,7 +18551,7 @@ export const PaginatedDatabaseWebhookDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PaginatedDatabaseWebhookDataItem>;
 
 export type PaginatedDatabaseWebhookDataList =
-  ReadonlyArray<PaginatedDatabaseWebhookDataItem>;
+  Array<PaginatedDatabaseWebhookDataItem>;
 export const PaginatedDatabaseWebhookDataList = /*@__PURE__*/ S.Array(
   PaginatedDatabaseWebhookDataItem,
 ) as any as S.Schema<PaginatedDatabaseWebhookDataList>;
@@ -19074,8 +19053,7 @@ export const PaginatedWorkflowDataItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "PaginatedWorkflowDataItem",
 }) as any as S.Schema<PaginatedWorkflowDataItem>;
 
-export type PaginatedWorkflowDataList =
-  ReadonlyArray<PaginatedWorkflowDataItem>;
+export type PaginatedWorkflowDataList = Array<PaginatedWorkflowDataItem>;
 export const PaginatedWorkflowDataList = /*@__PURE__*/ S.Array(
   PaginatedWorkflowDataItem,
 ) as any as S.Schema<PaginatedWorkflowDataList>;
@@ -20009,7 +19987,7 @@ export const UpdateBranchClusterConfigResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateBranchClusterConfigResponse>;
 
 /** List of IPv4 CIDR ranges (e.g., ['192.168.1.0/24', '192.168.1.1/32']). Only provided fields will be updated. */
-export type UpdateDatabasePostgresCidrRequestCidrsList = ReadonlyArray<string>;
+export type UpdateDatabasePostgresCidrRequestCidrsList = Array<string>;
 export const UpdateDatabasePostgresCidrRequestCidrsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<UpdateDatabasePostgresCidrRequestCidrsList>;
@@ -20102,8 +20080,7 @@ export const UpdateDatabaseSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateDatabaseSettingsRequest>;
 
 /** If specifying throttler ratios per keyspace, an array of { "keyspace_name": "mykeyspace", "ratio": 10 }, one for each eligible keyspace */
-export type UpdateDatabaseThrottlerRequestConfigurationsList =
-  ReadonlyArray<string>;
+export type UpdateDatabaseThrottlerRequestConfigurationsList = Array<string>;
 export const UpdateDatabaseThrottlerRequestConfigurationsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -20140,7 +20117,7 @@ export const UpdateDatabaseThrottlerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** If specifying throttler ratios per keyspace, an array of { "keyspace_name": "mykeyspace", "ratio": 10 }, one for each eligible keyspace */
 export type UpdateDeployRequestThrottlerRequestConfigurationsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const UpdateDeployRequestThrottlerRequestConfigurationsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -20326,7 +20303,7 @@ export const UpdateOrganizationTeamRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateOrganizationTeamRequest>;
 
 /** List of IP addresses or CIDR ranges that can use this password */
-export type UpdatePasswordRequestCidrsList = ReadonlyArray<string>;
+export type UpdatePasswordRequestCidrsList = Array<string>;
 export const UpdatePasswordRequestCidrsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<UpdatePasswordRequestCidrsList>;
@@ -20405,7 +20382,7 @@ export type UpdateTrafficBudgetRequestMode = "enforce" | "warn" | "off";
 export const UpdateTrafficBudgetRequestMode = /*@__PURE__*/ S.String;
 
 /** Array of traffic rules to apply to the budget */
-export type UpdateTrafficBudgetRequestRulesList = ReadonlyArray<string>;
+export type UpdateTrafficBudgetRequestRulesList = Array<string>;
 export const UpdateTrafficBudgetRequestRulesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<UpdateTrafficBudgetRequestRulesList>;
@@ -20462,7 +20439,7 @@ export const UpdateTrafficBudgetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateTrafficBudgetRequest>;
 
 /** The events this webhook should subscribe to */
-export type UpdateWebhookRequestEventsList = ReadonlyArray<string>;
+export type UpdateWebhookRequestEventsList = Array<string>;
 export const UpdateWebhookRequestEventsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<UpdateWebhookRequestEventsList>;

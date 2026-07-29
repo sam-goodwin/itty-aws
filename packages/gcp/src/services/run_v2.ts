@@ -107,7 +107,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -156,7 +156,7 @@ export const GoogleLongrunningOperation = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleLongrunningOperation",
 }) as any as S.Schema<GoogleLongrunningOperation>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -178,7 +178,7 @@ export const GoogleCloudRunV2ContainerPort = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudRunV2ContainerPort>;
 
 export type GoogleCloudRunV2ContainerPortList =
-  ReadonlyArray<GoogleCloudRunV2ContainerPort>;
+  Array<GoogleCloudRunV2ContainerPort>;
 export const GoogleCloudRunV2ContainerPortList = /*@__PURE__*/ S.Array(
   GoogleCloudRunV2ContainerPort,
 ) as any as S.Schema<GoogleCloudRunV2ContainerPortList>;
@@ -247,7 +247,7 @@ export const GoogleCloudRunV2EnvVar = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleCloudRunV2EnvVar",
 }) as any as S.Schema<GoogleCloudRunV2EnvVar>;
 
-export type GoogleCloudRunV2EnvVarList = ReadonlyArray<GoogleCloudRunV2EnvVar>;
+export type GoogleCloudRunV2EnvVarList = Array<GoogleCloudRunV2EnvVar>;
 export const GoogleCloudRunV2EnvVarList = /*@__PURE__*/ S.Array(
   GoogleCloudRunV2EnvVar,
 ) as any as S.Schema<GoogleCloudRunV2EnvVarList>;
@@ -297,8 +297,7 @@ export const GoogleCloudRunV2HTTPHeader = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleCloudRunV2HTTPHeader",
 }) as any as S.Schema<GoogleCloudRunV2HTTPHeader>;
 
-export type GoogleCloudRunV2HTTPHeaderList =
-  ReadonlyArray<GoogleCloudRunV2HTTPHeader>;
+export type GoogleCloudRunV2HTTPHeaderList = Array<GoogleCloudRunV2HTTPHeader>;
 export const GoogleCloudRunV2HTTPHeaderList = /*@__PURE__*/ S.Array(
   GoogleCloudRunV2HTTPHeader,
 ) as any as S.Schema<GoogleCloudRunV2HTTPHeaderList>;
@@ -399,7 +398,7 @@ export const GoogleCloudRunV2VolumeMount = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudRunV2VolumeMount>;
 
 export type GoogleCloudRunV2VolumeMountList =
-  ReadonlyArray<GoogleCloudRunV2VolumeMount>;
+  Array<GoogleCloudRunV2VolumeMount>;
 export const GoogleCloudRunV2VolumeMountList = /*@__PURE__*/ S.Array(
   GoogleCloudRunV2VolumeMount,
 ) as any as S.Schema<GoogleCloudRunV2VolumeMountList>;
@@ -420,8 +419,7 @@ export const GoogleCloudRunV2SourceFile = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleCloudRunV2SourceFile",
 }) as any as S.Schema<GoogleCloudRunV2SourceFile>;
 
-export type GoogleCloudRunV2SourceFileList =
-  ReadonlyArray<GoogleCloudRunV2SourceFile>;
+export type GoogleCloudRunV2SourceFileList = Array<GoogleCloudRunV2SourceFile>;
 export const GoogleCloudRunV2SourceFileList = /*@__PURE__*/ S.Array(
   GoogleCloudRunV2SourceFile,
 ) as any as S.Schema<GoogleCloudRunV2SourceFileList>;
@@ -535,8 +533,7 @@ export const GoogleCloudRunV2Container = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleCloudRunV2Container",
 }) as any as S.Schema<GoogleCloudRunV2Container>;
 
-export type GoogleCloudRunV2ContainerList =
-  ReadonlyArray<GoogleCloudRunV2Container>;
+export type GoogleCloudRunV2ContainerList = Array<GoogleCloudRunV2Container>;
 export const GoogleCloudRunV2ContainerList = /*@__PURE__*/ S.Array(
   GoogleCloudRunV2Container,
 ) as any as S.Schema<GoogleCloudRunV2ContainerList>;
@@ -608,7 +605,7 @@ export const GoogleCloudRunV2ContainerStatus = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudRunV2ContainerStatus>;
 
 export type GoogleCloudRunV2ContainerStatusList =
-  ReadonlyArray<GoogleCloudRunV2ContainerStatus>;
+  Array<GoogleCloudRunV2ContainerStatus>;
 export const GoogleCloudRunV2ContainerStatusList = /*@__PURE__*/ S.Array(
   GoogleCloudRunV2ContainerStatus,
 ) as any as S.Schema<GoogleCloudRunV2ContainerStatusList>;
@@ -687,21 +684,23 @@ export const GoogleCloudRunV2ConditionStateEnum = /*@__PURE__*/ S.String;
 /** Defines a status condition for a resource. */
 export interface GoogleCloudRunV2Condition {
   /** Output only. A reason for the instance condition. */
-  instanceReason?: GoogleCloudRunV2ConditionInstanceReasonEnum;
+  instanceReason?: GoogleCloudRunV2ConditionInstanceReasonEnum | (string & {});
   /** How to interpret failures of this condition, one of Error, Warning, Info */
-  severity?: GoogleCloudRunV2ConditionSeverityEnum;
+  severity?: GoogleCloudRunV2ConditionSeverityEnum | (string & {});
   /** type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready. */
   type?: string;
   /** Last time the condition transitioned from one status to another. */
   lastTransitionTime?: string;
   /** Output only. A reason for the execution condition. */
-  executionReason?: GoogleCloudRunV2ConditionExecutionReasonEnum;
+  executionReason?:
+    | GoogleCloudRunV2ConditionExecutionReasonEnum
+    | (string & {});
   /** Output only. A common (service-level) reason for this condition. */
-  reason?: GoogleCloudRunV2ConditionReasonEnum;
+  reason?: GoogleCloudRunV2ConditionReasonEnum | (string & {});
   /** Output only. A reason for the revision condition. */
-  revisionReason?: GoogleCloudRunV2ConditionRevisionReasonEnum;
+  revisionReason?: GoogleCloudRunV2ConditionRevisionReasonEnum | (string & {});
   /** State of the condition. */
-  state?: GoogleCloudRunV2ConditionStateEnum;
+  state?: GoogleCloudRunV2ConditionStateEnum | (string & {});
   /** Human readable message indicating details about the current status. */
   message?: string;
 }
@@ -773,7 +772,7 @@ export const GoogleCloudRunV2VersionToPath = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudRunV2VersionToPath>;
 
 export type GoogleCloudRunV2VersionToPathList =
-  ReadonlyArray<GoogleCloudRunV2VersionToPath>;
+  Array<GoogleCloudRunV2VersionToPath>;
 export const GoogleCloudRunV2VersionToPathList = /*@__PURE__*/ S.Array(
   GoogleCloudRunV2VersionToPath,
 ) as any as S.Schema<GoogleCloudRunV2VersionToPathList>;
@@ -807,7 +806,7 @@ export const GoogleCloudRunV2EmptyDirVolumeSourceMediumEnum =
 /** In memory (tmpfs) ephemeral storage. It is ephemeral in the sense that when the sandbox is taken down, the data is destroyed with it (it does not persist across sandbox runs). */
 export interface GoogleCloudRunV2EmptyDirVolumeSource {
   /** The medium on which the data is stored. Acceptable values today is only MEMORY or none. When none, the default will currently be backed by memory but could change over time. +optional */
-  medium?: GoogleCloudRunV2EmptyDirVolumeSourceMediumEnum;
+  medium?: GoogleCloudRunV2EmptyDirVolumeSourceMediumEnum | (string & {});
   /** Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers. The default is nil which means that the limit is undefined. More info: https://cloud.google.com/run/docs/configuring/in-memory-volumes#configure-volume. Info in Kubernetes: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir */
   sizeLimit?: string;
 }
@@ -868,7 +867,7 @@ export const GoogleCloudRunV2Volume = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleCloudRunV2Volume",
 }) as any as S.Schema<GoogleCloudRunV2Volume>;
 
-export type GoogleCloudRunV2VolumeList = ReadonlyArray<GoogleCloudRunV2Volume>;
+export type GoogleCloudRunV2VolumeList = Array<GoogleCloudRunV2Volume>;
 export const GoogleCloudRunV2VolumeList = /*@__PURE__*/ S.Array(
   GoogleCloudRunV2Volume,
 ) as any as S.Schema<GoogleCloudRunV2VolumeList>;
@@ -899,7 +898,7 @@ export const GoogleCloudRunV2NetworkInterface = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudRunV2NetworkInterface>;
 
 export type GoogleCloudRunV2NetworkInterfaceList =
-  ReadonlyArray<GoogleCloudRunV2NetworkInterface>;
+  Array<GoogleCloudRunV2NetworkInterface>;
 export const GoogleCloudRunV2NetworkInterfaceList = /*@__PURE__*/ S.Array(
   GoogleCloudRunV2NetworkInterface,
 ) as any as S.Schema<GoogleCloudRunV2NetworkInterfaceList>;
@@ -907,7 +906,7 @@ export const GoogleCloudRunV2NetworkInterfaceList = /*@__PURE__*/ S.Array(
 /** VPC Access settings. For more information on sending traffic to a VPC network, visit https://cloud.google.com/run/docs/configuring/connecting-vpc. */
 export interface GoogleCloudRunV2VpcAccess {
   /** Optional. Traffic VPC egress settings. If not provided, it defaults to PRIVATE_RANGES_ONLY. */
-  egress?: GoogleCloudRunV2VpcAccessEgressEnum;
+  egress?: GoogleCloudRunV2VpcAccessEgressEnum | (string & {});
   /** VPC Access connector name. Format: `projects/{project}/locations/{location}/connectors/{connector}`, where `{project}` can be project id or number. For more information on sending traffic to a VPC network via a connector, visit https://cloud.google.com/run/docs/configuring/vpc-connectors. */
   connector?: string;
   /** Optional. Direct VPC egress settings. Currently only single network interface is supported. */
@@ -923,8 +922,7 @@ export const GoogleCloudRunV2VpcAccess = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleCloudRunV2VpcAccess",
 }) as any as S.Schema<GoogleCloudRunV2VpcAccess>;
 
-export type GoogleCloudRunV2ConditionList =
-  ReadonlyArray<GoogleCloudRunV2Condition>;
+export type GoogleCloudRunV2ConditionList = Array<GoogleCloudRunV2Condition>;
 export const GoogleCloudRunV2ConditionList = /*@__PURE__*/ S.Array(
   GoogleCloudRunV2Condition,
 ) as any as S.Schema<GoogleCloudRunV2ConditionList>;
@@ -962,9 +960,9 @@ export interface GoogleCloudRunV2Instance {
   createTime?: string;
   labels?: StringMap;
   /** The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/terms/launch-stages). Cloud Run supports `ALPHA`, `BETA`, and `GA`. If no value is specified, `GA` is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features. For example, if `ALPHA` is provided as input, but only `BETA` and `GA`-level features are used, this field will be `BETA` on output. */
-  launchStage?: GoogleCloudRunV2InstanceLaunchStageEnum;
+  launchStage?: GoogleCloudRunV2InstanceLaunchStageEnum | (string & {});
   /** Optional. Restart policy for the Instance. */
-  restartPolicy?: GoogleCloudRunV2InstanceRestartPolicyEnum;
+  restartPolicy?: GoogleCloudRunV2InstanceRestartPolicyEnum | (string & {});
   /** Output only. Returns `true` if the Instance is currently being acted upon by the system to bring it into the desired state. When a new Instance is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring the Instance to the desired serving state. This process is called reconciliation. While reconciliation is in process, `observed_generation` will have a transient value that might mismatch the intended state. Once reconciliation is over (and this field is `false`), there are two possible outcomes: reconciliation succeeded and the serving state matches the Instance, or there was an error, and reconciliation failed. This state can be found in `terminal_condition.state`. */
   reconciling?: boolean;
   /** Optional. A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates. */
@@ -1011,11 +1009,13 @@ export interface GoogleCloudRunV2Instance {
   /** The fully qualified name of this Instance. In `CreateInstanceRequest`, this field is ignored, and instead composed from `CreateInstanceRequest.parent` and `CreateInstanceRequest.instance_id`. */
   name?: string;
   /** The action to take if the encryption key is revoked. */
-  encryptionKeyRevocationAction?: GoogleCloudRunV2InstanceEncryptionKeyRevocationActionEnum;
+  encryptionKeyRevocationAction?:
+    | GoogleCloudRunV2InstanceEncryptionKeyRevocationActionEnum
+    | (string & {});
   /** Output only. The Google Console URI to obtain logs for the Instance. */
   logUri?: string;
   /** Optional. Provides the ingress settings for this Instance. On output, returns the currently observed ingress settings, or `INGRESS_TRAFFIC_UNSPECIFIED` if no revision is active. */
-  ingress?: GoogleCloudRunV2InstanceIngressEnum;
+  ingress?: GoogleCloudRunV2InstanceIngressEnum | (string & {});
   serviceAccount?: string;
   /** Output only. Reserved for future use. */
   satisfiesPzs?: boolean;
@@ -1123,7 +1123,9 @@ export interface GoogleCloudRunV2TaskTemplate {
   /** Optional. Max allowed time duration the Task may be active before the system will actively try to mark it failed and kill associated containers. This applies per attempt of a task, meaning each retry can run for the full timeout. Defaults to 600 seconds. */
   timeout?: string;
   /** Optional. The execution environment being used to host this Task. */
-  executionEnvironment?: GoogleCloudRunV2TaskTemplateExecutionEnvironmentEnum;
+  executionEnvironment?:
+    | GoogleCloudRunV2TaskTemplateExecutionEnvironmentEnum
+    | (string & {});
   /** Optional. Email address of the IAM service account associated with the Task of a Job. The service account represents the identity of the running task, and determines what permissions the task has. If not provided, the task will use the project's default service account. */
   serviceAccount?: string;
   /** Optional. The node selector for the task template. */
@@ -1206,7 +1208,9 @@ export interface GoogleCloudRunV2ExecutionReference {
   /** Creation timestamp of the execution. */
   completionTime?: string;
   /** Status for the execution completion. */
-  completionStatus?: GoogleCloudRunV2ExecutionReferenceCompletionStatusEnum;
+  completionStatus?:
+    | GoogleCloudRunV2ExecutionReferenceCompletionStatusEnum
+    | (string & {});
   /** Name of the execution. */
   name?: string;
   /** The deletion time of the execution. It is only populated as a response to a Delete request. */
@@ -1247,7 +1251,7 @@ export interface GoogleCloudRunV2Job {
   /** Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels. Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system labels in v1 now have a corresponding field in v2 Job. */
   labels?: StringMap;
   /** The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/terms/launch-stages). Cloud Run supports `ALPHA`, `BETA`, and `GA`. If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features. For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output. */
-  launchStage?: GoogleCloudRunV2JobLaunchStageEnum;
+  launchStage?: GoogleCloudRunV2JobLaunchStageEnum | (string & {});
   /** Output only. Email address of the last authenticated modifier. */
   lastModifier?: string;
   /** Output only. The Condition of this Job, containing its readiness status, and detailed error information in case it did not reach the desired state. */
@@ -1427,7 +1431,9 @@ export interface GoogleCloudRunV2RevisionTemplate {
   /** Optional. Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels. Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system labels in v1 now have a corresponding field in v2 RevisionTemplate. */
   labels?: StringMap;
   /** Optional. The action to take if the encryption key is revoked. */
-  encryptionKeyRevocationAction?: GoogleCloudRunV2RevisionTemplateEncryptionKeyRevocationActionEnum;
+  encryptionKeyRevocationAction?:
+    | GoogleCloudRunV2RevisionTemplateEncryptionKeyRevocationActionEnum
+    | (string & {});
   /** Optional. Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects. Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system annotations in v1 now have a corresponding field in v2 RevisionTemplate. This field follows Kubernetes annotations' namespacing, limits, and rules. */
   annotations?: StringMap;
   /** Optional. Scaling settings for this Revision. */
@@ -1457,7 +1463,9 @@ export interface GoogleCloudRunV2RevisionTemplate {
   /** Optional. Max allowed time for an instance to respond to a request. */
   timeout?: string;
   /** Optional. The sandbox environment to host this Revision. */
-  executionEnvironment?: GoogleCloudRunV2RevisionTemplateExecutionEnvironmentEnum;
+  executionEnvironment?:
+    | GoogleCloudRunV2RevisionTemplateExecutionEnvironmentEnum
+    | (string & {});
 }
 export const GoogleCloudRunV2RevisionTemplate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1506,7 +1514,7 @@ export interface GoogleCloudRunV2TrafficTarget {
   /** Specifies percent of the traffic to this Revision. This defaults to zero if unspecified. */
   percent?: number;
   /** The allocation type for this traffic target. */
-  type?: GoogleCloudRunV2TrafficTargetTypeEnum;
+  type?: GoogleCloudRunV2TrafficTargetTypeEnum | (string & {});
 }
 export const GoogleCloudRunV2TrafficTarget = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1520,7 +1528,7 @@ export const GoogleCloudRunV2TrafficTarget = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudRunV2TrafficTarget>;
 
 export type GoogleCloudRunV2TrafficTargetList =
-  ReadonlyArray<GoogleCloudRunV2TrafficTarget>;
+  Array<GoogleCloudRunV2TrafficTarget>;
 export const GoogleCloudRunV2TrafficTargetList = /*@__PURE__*/ S.Array(
   GoogleCloudRunV2TrafficTarget,
 ) as any as S.Schema<GoogleCloudRunV2TrafficTargetList>;
@@ -1546,7 +1554,7 @@ export const GoogleCloudRunV2ServiceScalingScalingModeEnum =
 /** Scaling settings applied at the service level rather than at the revision level. */
 export interface GoogleCloudRunV2ServiceScaling {
   /** Optional. The scaling mode for the service. */
-  scalingMode?: GoogleCloudRunV2ServiceScalingScalingModeEnum;
+  scalingMode?: GoogleCloudRunV2ServiceScalingScalingModeEnum | (string & {});
   /** Optional. total max instances for the service. This number of instances is divided among all revisions with specified traffic based on the percent of traffic they are receiving. */
   maxInstanceCount?: number;
   /** Optional. total instance count for the service in manual scaling mode. This number of instances is divided among all revisions with specified traffic based on the percent of traffic they are receiving. */
@@ -1583,7 +1591,7 @@ export interface GoogleCloudRunV2TrafficTargetStatus {
   /** Revision to which this traffic is sent. */
   revision?: string;
   /** The allocation type for this traffic target. */
-  type?: GoogleCloudRunV2TrafficTargetStatusTypeEnum;
+  type?: GoogleCloudRunV2TrafficTargetStatusTypeEnum | (string & {});
 }
 export const GoogleCloudRunV2TrafficTargetStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1598,7 +1606,7 @@ export const GoogleCloudRunV2TrafficTargetStatus = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudRunV2TrafficTargetStatus>;
 
 export type GoogleCloudRunV2TrafficTargetStatusList =
-  ReadonlyArray<GoogleCloudRunV2TrafficTargetStatus>;
+  Array<GoogleCloudRunV2TrafficTargetStatus>;
 export const GoogleCloudRunV2TrafficTargetStatusList = /*@__PURE__*/ S.Array(
   GoogleCloudRunV2TrafficTargetStatus,
 ) as any as S.Schema<GoogleCloudRunV2TrafficTargetStatusList>;
@@ -1653,7 +1661,7 @@ export interface GoogleCloudRunV2Service {
   /** Output only. Reserved for future use. */
   satisfiesPzs?: boolean;
   /** Optional. Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or INGRESS_TRAFFIC_UNSPECIFIED if no revision is active. */
-  ingress?: GoogleCloudRunV2ServiceIngressEnum;
+  ingress?: GoogleCloudRunV2ServiceIngressEnum | (string & {});
   /** Arbitrary identifier for the API client. */
   client?: string;
   /** Output only. A number that monotonically increases every time the user modifies the desired state. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a `string` instead of an `integer`. */
@@ -1683,7 +1691,7 @@ export interface GoogleCloudRunV2Service {
   /** Optional. Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels. Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system labels in v1 now have a corresponding field in v2 Service. */
   labels?: StringMap;
   /** Optional. The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/terms/launch-stages). Cloud Run supports `ALPHA`, `BETA`, and `GA`. If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features. For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output. */
-  launchStage?: GoogleCloudRunV2ServiceLaunchStageEnum;
+  launchStage?: GoogleCloudRunV2ServiceLaunchStageEnum | (string & {});
   /** Optional. A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates. */
   etag?: string;
   /** Output only. Returns true if the Service is currently being acted upon by the system to bring it into the desired state. When a new Service is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring the Service to the desired serving state. This process is called reconciliation. While reconciliation is in process, `observed_generation`, `latest_ready_revision`, `traffic_statuses`, and `uri` will have transient values that might mismatch the intended state: Once reconciliation is over (and this field is false), there are two possible outcomes: reconciliation succeeded and the serving state matches the Service, or there was an error, and reconciliation failed. This state can be found in `terminal_condition.state`. If reconciliation succeeded, the following fields will match: `traffic` and `traffic_statuses`, `observed_generation` and `generation`, `latest_ready_revision` and `latest_created_revision`. If reconciliation failed, `traffic_statuses`, `observed_generation`, and `latest_ready_revision` will have the state of the last serving revision, or empty for newly created Services. Additional information on the failure can be found in `terminal_condition` and `conditions`. */
@@ -1803,7 +1811,9 @@ export const GoogleCloudRunV2WorkerPoolRevisionTemplateEncryptionKeyRevocationAc
 /** WorkerPoolRevisionTemplate describes the data a worker pool revision should have when created from a template. */
 export interface GoogleCloudRunV2WorkerPoolRevisionTemplate {
   /** Optional. The action to take if the encryption key is revoked. */
-  encryptionKeyRevocationAction?: GoogleCloudRunV2WorkerPoolRevisionTemplateEncryptionKeyRevocationActionEnum;
+  encryptionKeyRevocationAction?:
+    | GoogleCloudRunV2WorkerPoolRevisionTemplateEncryptionKeyRevocationActionEnum
+    | (string & {});
   /** Optional. Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels. Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system labels in v1 now have a corresponding field in v2 WorkerPoolRevisionTemplate. */
   labels?: StringMap;
   /** Optional. Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects. Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system annotations in v1 now have a corresponding field in v2 WorkerPoolRevisionTemplate. This field follows Kubernetes annotations' namespacing, limits, and rules. */
@@ -1871,7 +1881,7 @@ export interface GoogleCloudRunV2InstanceSplit {
   /** Specifies percent of the instance split to this Revision. This defaults to zero if unspecified. */
   percent?: number;
   /** The allocation type for this instance split. */
-  type?: GoogleCloudRunV2InstanceSplitTypeEnum;
+  type?: GoogleCloudRunV2InstanceSplitTypeEnum | (string & {});
 }
 export const GoogleCloudRunV2InstanceSplit = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1884,7 +1894,7 @@ export const GoogleCloudRunV2InstanceSplit = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudRunV2InstanceSplit>;
 
 export type GoogleCloudRunV2InstanceSplitList =
-  ReadonlyArray<GoogleCloudRunV2InstanceSplit>;
+  Array<GoogleCloudRunV2InstanceSplit>;
 export const GoogleCloudRunV2InstanceSplitList = /*@__PURE__*/ S.Array(
   GoogleCloudRunV2InstanceSplit,
 ) as any as S.Schema<GoogleCloudRunV2InstanceSplitList>;
@@ -1927,7 +1937,7 @@ export interface GoogleCloudRunV2InstanceSplitStatus {
   /** Specifies percent of the instance split to this Revision. */
   percent?: number;
   /** The allocation type for this instance split. */
-  type?: GoogleCloudRunV2InstanceSplitStatusTypeEnum;
+  type?: GoogleCloudRunV2InstanceSplitStatusTypeEnum | (string & {});
 }
 export const GoogleCloudRunV2InstanceSplitStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1940,7 +1950,7 @@ export const GoogleCloudRunV2InstanceSplitStatus = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudRunV2InstanceSplitStatus>;
 
 export type GoogleCloudRunV2InstanceSplitStatusList =
-  ReadonlyArray<GoogleCloudRunV2InstanceSplitStatus>;
+  Array<GoogleCloudRunV2InstanceSplitStatus>;
 export const GoogleCloudRunV2InstanceSplitStatusList = /*@__PURE__*/ S.Array(
   GoogleCloudRunV2InstanceSplitStatus,
 ) as any as S.Schema<GoogleCloudRunV2InstanceSplitStatusList>;
@@ -1988,7 +1998,7 @@ export interface GoogleCloudRunV2WorkerPool {
   /** Optional. Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels. Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system labels in v1 now have a corresponding field in v2 WorkerPool. */
   labels?: StringMap;
   /** Optional. The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/terms/launch-stages). Cloud Run supports `ALPHA`, `BETA`, and `GA`. If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features. For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output. */
-  launchStage?: GoogleCloudRunV2WorkerPoolLaunchStageEnum;
+  launchStage?: GoogleCloudRunV2WorkerPoolLaunchStageEnum | (string & {});
   /** Optional. A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates. */
   etag?: string;
   /** Output only. Returns true if the WorkerPool is currently being acted upon by the system to bring it into the desired state. When a new WorkerPool is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring the WorkerPool to the desired serving state. This process is called reconciliation. While reconciliation is in process, `observed_generation`, `latest_ready_revison`, `instance_split_statuses`, and `uri` will have transient values that might mismatch the intended state: Once reconciliation is over (and this field is false), there are two possible outcomes: reconciliation succeeded and the serving state matches the WorkerPool, or there was an error, and reconciliation failed. This state can be found in `terminal_condition.state`. If reconciliation succeeded, the following fields will match: `instance_splits` and `instance_split_statuses`, `observed_generation` and `generation`, `latest_ready_revision` and `latest_created_revision`. If reconciliation failed, `instance_split_statuses`, `observed_generation`, and `latest_ready_revision` will have the state of the last serving revision, or empty for newly created WorkerPools. Additional information on the failure can be found in `terminal_condition` and `conditions`. */
@@ -2485,7 +2495,7 @@ export const GoogleCloudRunV2ImageExportStatus = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudRunV2ImageExportStatus>;
 
 export type GoogleCloudRunV2ImageExportStatusList =
-  ReadonlyArray<GoogleCloudRunV2ImageExportStatus>;
+  Array<GoogleCloudRunV2ImageExportStatus>;
 export const GoogleCloudRunV2ImageExportStatusList = /*@__PURE__*/ S.Array(
   GoogleCloudRunV2ImageExportStatus,
 ) as any as S.Schema<GoogleCloudRunV2ImageExportStatusList>;
@@ -2566,7 +2576,7 @@ export const GoogleIamV1AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
 export interface GoogleIamV1AuditLogConfig {
   /** The log type that this config enables. */
-  logType?: GoogleIamV1AuditLogConfigLogTypeEnum;
+  logType?: GoogleIamV1AuditLogConfigLogTypeEnum | (string & {});
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
   exemptedMembers?: StringList;
 }
@@ -2579,8 +2589,7 @@ export const GoogleIamV1AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleIamV1AuditLogConfig",
 }) as any as S.Schema<GoogleIamV1AuditLogConfig>;
 
-export type GoogleIamV1AuditLogConfigList =
-  ReadonlyArray<GoogleIamV1AuditLogConfig>;
+export type GoogleIamV1AuditLogConfigList = Array<GoogleIamV1AuditLogConfig>;
 export const GoogleIamV1AuditLogConfigList = /*@__PURE__*/ S.Array(
   GoogleIamV1AuditLogConfig,
 ) as any as S.Schema<GoogleIamV1AuditLogConfigList>;
@@ -2601,7 +2610,7 @@ export const GoogleIamV1AuditConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleIamV1AuditConfig",
 }) as any as S.Schema<GoogleIamV1AuditConfig>;
 
-export type GoogleIamV1AuditConfigList = ReadonlyArray<GoogleIamV1AuditConfig>;
+export type GoogleIamV1AuditConfigList = Array<GoogleIamV1AuditConfig>;
 export const GoogleIamV1AuditConfigList = /*@__PURE__*/ S.Array(
   GoogleIamV1AuditConfig,
 ) as any as S.Schema<GoogleIamV1AuditConfigList>;
@@ -2645,7 +2654,7 @@ export const GoogleIamV1Binding = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleIamV1Binding",
 }) as any as S.Schema<GoogleIamV1Binding>;
 
-export type GoogleIamV1BindingList = ReadonlyArray<GoogleIamV1Binding>;
+export type GoogleIamV1BindingList = Array<GoogleIamV1Binding>;
 export const GoogleIamV1BindingList = /*@__PURE__*/ S.Array(
   GoogleIamV1Binding,
 ) as any as S.Schema<GoogleIamV1BindingList>;
@@ -3344,8 +3353,7 @@ export const ListProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsInstancesRequest",
 }) as any as S.Schema<ListProjectsLocationsInstancesRequest>;
 
-export type GoogleCloudRunV2InstanceList =
-  ReadonlyArray<GoogleCloudRunV2Instance>;
+export type GoogleCloudRunV2InstanceList = Array<GoogleCloudRunV2Instance>;
 export const GoogleCloudRunV2InstanceList = /*@__PURE__*/ S.Array(
   GoogleCloudRunV2Instance,
 ) as any as S.Schema<GoogleCloudRunV2InstanceList>;
@@ -3394,7 +3402,7 @@ export const ListProjectsLocationsJobsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsJobsRequest",
 }) as any as S.Schema<ListProjectsLocationsJobsRequest>;
 
-export type GoogleCloudRunV2JobList = ReadonlyArray<GoogleCloudRunV2Job>;
+export type GoogleCloudRunV2JobList = Array<GoogleCloudRunV2Job>;
 export const GoogleCloudRunV2JobList = /*@__PURE__*/ S.Array(
   GoogleCloudRunV2Job,
 ) as any as S.Schema<GoogleCloudRunV2JobList>;
@@ -3443,8 +3451,7 @@ export const ListProjectsLocationsJobsExecutionsRequest =
     identifier: "ListProjectsLocationsJobsExecutionsRequest",
   }) as any as S.Schema<ListProjectsLocationsJobsExecutionsRequest>;
 
-export type GoogleCloudRunV2ExecutionList =
-  ReadonlyArray<GoogleCloudRunV2Execution>;
+export type GoogleCloudRunV2ExecutionList = Array<GoogleCloudRunV2Execution>;
 export const GoogleCloudRunV2ExecutionList = /*@__PURE__*/ S.Array(
   GoogleCloudRunV2Execution,
 ) as any as S.Schema<GoogleCloudRunV2ExecutionList>;
@@ -3494,7 +3501,7 @@ export const ListProjectsLocationsJobsExecutionsTasksRequest =
     identifier: "ListProjectsLocationsJobsExecutionsTasksRequest",
   }) as any as S.Schema<ListProjectsLocationsJobsExecutionsTasksRequest>;
 
-export type GoogleCloudRunV2TaskList = ReadonlyArray<GoogleCloudRunV2Task>;
+export type GoogleCloudRunV2TaskList = Array<GoogleCloudRunV2Task>;
 export const GoogleCloudRunV2TaskList = /*@__PURE__*/ S.Array(
   GoogleCloudRunV2Task,
 ) as any as S.Schema<GoogleCloudRunV2TaskList>;
@@ -3546,8 +3553,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type GoogleLongrunningOperationList =
-  ReadonlyArray<GoogleLongrunningOperation>;
+export type GoogleLongrunningOperationList = Array<GoogleLongrunningOperation>;
 export const GoogleLongrunningOperationList = /*@__PURE__*/ S.Array(
   GoogleLongrunningOperation,
 ) as any as S.Schema<GoogleLongrunningOperationList>;
@@ -3600,8 +3606,7 @@ export const ListProjectsLocationsServicesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsServicesRequest",
 }) as any as S.Schema<ListProjectsLocationsServicesRequest>;
 
-export type GoogleCloudRunV2ServiceList =
-  ReadonlyArray<GoogleCloudRunV2Service>;
+export type GoogleCloudRunV2ServiceList = Array<GoogleCloudRunV2Service>;
 export const GoogleCloudRunV2ServiceList = /*@__PURE__*/ S.Array(
   GoogleCloudRunV2Service,
 ) as any as S.Schema<GoogleCloudRunV2ServiceList>;
@@ -3654,8 +3659,7 @@ export const ListProjectsLocationsServicesRevisionsRequest =
     identifier: "ListProjectsLocationsServicesRevisionsRequest",
   }) as any as S.Schema<ListProjectsLocationsServicesRevisionsRequest>;
 
-export type GoogleCloudRunV2RevisionList =
-  ReadonlyArray<GoogleCloudRunV2Revision>;
+export type GoogleCloudRunV2RevisionList = Array<GoogleCloudRunV2Revision>;
 export const GoogleCloudRunV2RevisionList = /*@__PURE__*/ S.Array(
   GoogleCloudRunV2Revision,
 ) as any as S.Schema<GoogleCloudRunV2RevisionList>;
@@ -3705,8 +3709,7 @@ export const ListProjectsLocationsWorkerPoolsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsWorkerPoolsRequest",
 }) as any as S.Schema<ListProjectsLocationsWorkerPoolsRequest>;
 
-export type GoogleCloudRunV2WorkerPoolList =
-  ReadonlyArray<GoogleCloudRunV2WorkerPool>;
+export type GoogleCloudRunV2WorkerPoolList = Array<GoogleCloudRunV2WorkerPool>;
 export const GoogleCloudRunV2WorkerPoolList = /*@__PURE__*/ S.Array(
   GoogleCloudRunV2WorkerPool,
 ) as any as S.Schema<GoogleCloudRunV2WorkerPoolList>;
@@ -3905,7 +3908,7 @@ export const GoogleCloudRunV2ContainerOverride = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudRunV2ContainerOverride>;
 
 export type GoogleCloudRunV2ContainerOverrideList =
-  ReadonlyArray<GoogleCloudRunV2ContainerOverride>;
+  Array<GoogleCloudRunV2ContainerOverride>;
 export const GoogleCloudRunV2ContainerOverrideList = /*@__PURE__*/ S.Array(
   GoogleCloudRunV2ContainerOverride,
 ) as any as S.Schema<GoogleCloudRunV2ContainerOverrideList>;

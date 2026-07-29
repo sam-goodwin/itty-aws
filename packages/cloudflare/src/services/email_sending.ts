@@ -265,8 +265,7 @@ export const SubdomainsDnsGetResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "SubdomainsDnsGetResultItem",
 }) as any as S.Schema<SubdomainsDnsGetResultItem>;
 
-export type SubdomainsDnsGetResultList =
-  ReadonlyArray<SubdomainsDnsGetResultItem>;
+export type SubdomainsDnsGetResultList = Array<SubdomainsDnsGetResultItem>;
 export const SubdomainsDnsGetResultList = /*@__PURE__*/ S.Array(
   SubdomainsDnsGetResultItem,
 ) as any as S.Schema<SubdomainsDnsGetResultList>;
@@ -339,7 +338,7 @@ export const SubdomainsListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "SubdomainsListResultItem",
 }) as any as S.Schema<SubdomainsListResultItem>;
 
-export type SubdomainsListResultList = ReadonlyArray<SubdomainsListResultItem>;
+export type SubdomainsListResultList = Array<SubdomainsListResultItem>;
 export const SubdomainsListResultList = /*@__PURE__*/ S.Array(
   SubdomainsListResultItem,
 ) as any as S.Schema<SubdomainsListResultList>;
@@ -467,8 +466,7 @@ export const SendRequestAttachmentsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "SendRequestAttachmentsItem",
 }) as any as S.Schema<SendRequestAttachmentsItem>;
 
-export type SendRequestAttachmentsList =
-  ReadonlyArray<SendRequestAttachmentsItem>;
+export type SendRequestAttachmentsList = Array<SendRequestAttachmentsItem>;
 export const SendRequestAttachmentsList = /*@__PURE__*/ S.Array(
   SendRequestAttachmentsItem,
 ) as any as S.Schema<SendRequestAttachmentsList>;
@@ -512,7 +510,7 @@ export const SendRequestBccCase2Item = /*@__PURE__*/ S.Unknown.pipe(
   T.UnionCases([[], ["address", "name"]]),
 );
 
-export type SendRequestBccCase2List = ReadonlyArray<SendRequestBccCase2Item>;
+export type SendRequestBccCase2List = Array<SendRequestBccCase2Item>;
 export const SendRequestBccCase2List = /*@__PURE__*/ S.Array(
   SendRequestBccCase2Item,
 ) as any as S.Schema<SendRequestBccCase2List>;
@@ -564,7 +562,7 @@ export const SendRequestCcCase2Item = /*@__PURE__*/ S.Unknown.pipe(
   T.UnionCases([[], ["address", "name"]]),
 );
 
-export type SendRequestCcCase2List = ReadonlyArray<SendRequestCcCase2Item>;
+export type SendRequestCcCase2List = Array<SendRequestCcCase2Item>;
 export const SendRequestCcCase2List = /*@__PURE__*/ S.Array(
   SendRequestCcCase2Item,
 ) as any as S.Schema<SendRequestCcCase2List>;
@@ -645,7 +643,7 @@ export const SendRequestToCase2Item = /*@__PURE__*/ S.Unknown.pipe(
   T.UnionCases([[], ["address", "name"]]),
 );
 
-export type SendRequestToCase2List = ReadonlyArray<SendRequestToCase2Item>;
+export type SendRequestToCase2List = Array<SendRequestToCase2Item>;
 export const SendRequestToCase2List = /*@__PURE__*/ S.Array(
   SendRequestToCase2Item,
 ) as any as S.Schema<SendRequestToCase2List>;
@@ -708,17 +706,17 @@ export const SendEmailSendingRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "SendEmailSendingRequest",
 }) as any as S.Schema<SendEmailSendingRequest>;
 
-export type SendResponseDeliveredList = ReadonlyArray<string>;
+export type SendResponseDeliveredList = Array<string>;
 export const SendResponseDeliveredList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SendResponseDeliveredList>;
 
-export type SendResponsePermanentBouncesList = ReadonlyArray<string>;
+export type SendResponsePermanentBouncesList = Array<string>;
 export const SendResponsePermanentBouncesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SendResponsePermanentBouncesList>;
 
-export type SendResponseQueuedList = ReadonlyArray<string>;
+export type SendResponseQueuedList = Array<string>;
 export const SendResponseQueuedList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SendResponseQueuedList>;
@@ -747,7 +745,7 @@ export const SendEmailSendingResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "SendEmailSendingResponse",
 }) as any as S.Schema<SendEmailSendingResponse>;
 
-export type SendRawRequestRecipientsList = ReadonlyArray<string>;
+export type SendRawRequestRecipientsList = Array<string>;
 export const SendRawRequestRecipientsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SendRawRequestRecipientsList>;
@@ -781,17 +779,17 @@ export const SendRawEmailSendingRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "SendRawEmailSendingRequest",
 }) as any as S.Schema<SendRawEmailSendingRequest>;
 
-export type SendRawResponseDeliveredList = ReadonlyArray<string>;
+export type SendRawResponseDeliveredList = Array<string>;
 export const SendRawResponseDeliveredList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SendRawResponseDeliveredList>;
 
-export type SendRawResponsePermanentBouncesList = ReadonlyArray<string>;
+export type SendRawResponsePermanentBouncesList = Array<string>;
 export const SendRawResponsePermanentBouncesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SendRawResponsePermanentBouncesList>;
 
-export type SendRawResponseQueuedList = ReadonlyArray<string>;
+export type SendRawResponseQueuedList = Array<string>;
 export const SendRawResponseQueuedList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SendRawResponseQueuedList>;

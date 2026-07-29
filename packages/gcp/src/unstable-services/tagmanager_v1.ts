@@ -171,14 +171,15 @@ export type ContainerEnabledBuiltInVariableItemEnum =
   | "analyticsSessionNumber";
 export const ContainerEnabledBuiltInVariableItemEnum = /*@__PURE__*/ S.String;
 
-export type ContainerEnabledBuiltInVariableItemEnumList =
-  ReadonlyArray<ContainerEnabledBuiltInVariableItemEnum>;
+export type ContainerEnabledBuiltInVariableItemEnumList = Array<
+  ContainerEnabledBuiltInVariableItemEnum | (string & {})
+>;
 export const ContainerEnabledBuiltInVariableItemEnumList =
   /*@__PURE__*/ S.Array(
     ContainerEnabledBuiltInVariableItemEnum,
   ) as any as S.Schema<ContainerEnabledBuiltInVariableItemEnumList>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -192,8 +193,9 @@ export type ContainerUsageContextItemEnum =
   | "amp";
 export const ContainerUsageContextItemEnum = /*@__PURE__*/ S.String;
 
-export type ContainerUsageContextItemEnumList =
-  ReadonlyArray<ContainerUsageContextItemEnum>;
+export type ContainerUsageContextItemEnumList = Array<
+  ContainerUsageContextItemEnum | (string & {})
+>;
 export const ContainerUsageContextItemEnumList = /*@__PURE__*/ S.Array(
   ContainerUsageContextItemEnum,
 ) as any as S.Schema<ContainerUsageContextItemEnumList>;
@@ -280,7 +282,7 @@ export interface Environment {
   /** GTM Container ID. */
   containerId?: string;
   /** The type of this environment. */
-  type?: EnvironmentTypeEnum;
+  type?: EnvironmentTypeEnum | (string & {});
   /** The environment display name. Can be set or changed only on USER type environments. */
   name?: string;
   /** The environment description. Can be set or changed only on USER type environments. */
@@ -402,7 +404,7 @@ export interface Parameter {
   /** This map parameter's parameters (must have keys; keys must be unique). */
   map?: ParameterList;
   /** The parameter type. Valid values are: - boolean: The value represents a boolean, represented as 'true' or 'false' - integer: The value represents a 64-bit signed integer value, in base 10 - list: A list of parameters should be specified - map: A map of parameters should be specified - template: The value represents any text; this can include variable references (even variable references that might return non-string types) - trigger_reference: The value represents a trigger, represented as the trigger id - tag_reference: The value represents a tag, represented as the tag name */
-  type?: ParameterTypeEnum;
+  type?: ParameterTypeEnum | (string & {});
   /** A parameter's value (may contain variable references). as appropriate to the specified type. */
   value?: string;
   /** This list parameter's parameters (keys will be ignored). */
@@ -420,7 +422,7 @@ export const Parameter = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Parameter" }) as any as S.Schema<Parameter>;
 
-export type ParameterList = ReadonlyArray<Parameter>;
+export type ParameterList = Array<Parameter>;
 export const ParameterList = /*@__PURE__*/ S.Array(
   Parameter,
 ) as any as S.Schema<ParameterList>;
@@ -438,7 +440,7 @@ export const TeardownTag = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TeardownTag" }) as any as S.Schema<TeardownTag>;
 
-export type TeardownTagList = ReadonlyArray<TeardownTag>;
+export type TeardownTagList = Array<TeardownTag>;
 export const TeardownTagList = /*@__PURE__*/ S.Array(
   TeardownTag,
 ) as any as S.Schema<TeardownTagList>;
@@ -456,7 +458,7 @@ export const SetupTag = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SetupTag" }) as any as S.Schema<SetupTag>;
 
-export type SetupTagList = ReadonlyArray<SetupTag>;
+export type SetupTagList = Array<SetupTag>;
 export const SetupTagList = /*@__PURE__*/ S.Array(
   SetupTag,
 ) as any as S.Schema<SetupTagList>;
@@ -466,7 +468,7 @@ export interface Tag {
   /** Firing trigger IDs. A tag will fire when any of the listed triggers are true and all of its blockingTriggerIds (if any specified) are false. */
   firingTriggerId?: StringList;
   /** Option to fire this tag. */
-  tagFiringOption?: TagTagFiringOptionEnum;
+  tagFiringOption?: TagTagFiringOptionEnum | (string & {});
   /** The fingerprint of the GTM Tag as computed at storage time. This value is recomputed whenever the tag is modified. */
   fingerprint?: string;
   /** The tag's parameters. */
@@ -567,7 +569,7 @@ export const ConditionTypeEnum = /*@__PURE__*/ S.String;
 /** Represents a predicate. */
 export interface Condition {
   /** The type of operator for this condition. */
-  type?: ConditionTypeEnum;
+  type?: ConditionTypeEnum | (string & {});
   /** A list of named parameters (key/value), depending on the condition's type. Notes: - For binary operators, include parameters named arg0 and arg1 for specifying the left and right operands, respectively. - At this time, the left operand (arg0) must be a reference to a variable. - For case-insensitive Regex matching, include a boolean parameter named ignore_case that is set to true. If not specified or set to any other value, the matching will be case sensitive. - To negate an operator, include a boolean parameter named negate boolean parameter that is set to true. */
   parameter?: ParameterList;
 }
@@ -578,7 +580,7 @@ export const Condition = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Condition" }) as any as S.Schema<Condition>;
 
-export type ConditionList = ReadonlyArray<Condition>;
+export type ConditionList = Array<Condition>;
 export const ConditionList = /*@__PURE__*/ S.Array(
   Condition,
 ) as any as S.Schema<ConditionList>;
@@ -662,7 +664,7 @@ export interface Trigger {
   /** The Trigger ID uniquely identifies the GTM Trigger. */
   triggerId?: string;
   /** Defines the data layer event that causes this trigger. */
-  type?: TriggerTypeEnum;
+  type?: TriggerTypeEnum | (string & {});
 }
 export const Trigger = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -841,20 +843,20 @@ export const CreateAccountsContainersVersionsRequest = /*@__PURE__*/ S.suspend(
   identifier: "CreateAccountsContainersVersionsRequest",
 }) as any as S.Schema<CreateAccountsContainersVersionsRequest>;
 
-export type TagList = ReadonlyArray<Tag>;
+export type TagList = Array<Tag>;
 export const TagList = /*@__PURE__*/ S.Array(Tag) as any as S.Schema<TagList>;
 
-export type FolderList = ReadonlyArray<Folder>;
+export type FolderList = Array<Folder>;
 export const FolderList = /*@__PURE__*/ S.Array(
   Folder,
 ) as any as S.Schema<FolderList>;
 
-export type VariableList = ReadonlyArray<Variable>;
+export type VariableList = Array<Variable>;
 export const VariableList = /*@__PURE__*/ S.Array(
   Variable,
 ) as any as S.Schema<VariableList>;
 
-export type TriggerList = ReadonlyArray<Trigger>;
+export type TriggerList = Array<Trigger>;
 export const TriggerList = /*@__PURE__*/ S.Array(
   Trigger,
 ) as any as S.Schema<TriggerList>;
@@ -930,8 +932,9 @@ export type AccountAccessPermissionItemEnum =
   | "editWorkspace";
 export const AccountAccessPermissionItemEnum = /*@__PURE__*/ S.String;
 
-export type AccountAccessPermissionItemEnumList =
-  ReadonlyArray<AccountAccessPermissionItemEnum>;
+export type AccountAccessPermissionItemEnumList = Array<
+  AccountAccessPermissionItemEnum | (string & {})
+>;
 export const AccountAccessPermissionItemEnumList = /*@__PURE__*/ S.Array(
   AccountAccessPermissionItemEnum,
 ) as any as S.Schema<AccountAccessPermissionItemEnumList>;
@@ -956,8 +959,9 @@ export type ContainerAccessPermissionItemEnum =
   | "editWorkspace";
 export const ContainerAccessPermissionItemEnum = /*@__PURE__*/ S.String;
 
-export type ContainerAccessPermissionItemEnumList =
-  ReadonlyArray<ContainerAccessPermissionItemEnum>;
+export type ContainerAccessPermissionItemEnumList = Array<
+  ContainerAccessPermissionItemEnum | (string & {})
+>;
 export const ContainerAccessPermissionItemEnumList = /*@__PURE__*/ S.Array(
   ContainerAccessPermissionItemEnum,
 ) as any as S.Schema<ContainerAccessPermissionItemEnumList>;
@@ -978,7 +982,7 @@ export const ContainerAccess = /*@__PURE__*/ S.suspend(() =>
   identifier: "ContainerAccess",
 }) as any as S.Schema<ContainerAccess>;
 
-export type ContainerAccessList = ReadonlyArray<ContainerAccess>;
+export type ContainerAccessList = Array<ContainerAccess>;
 export const ContainerAccessList = /*@__PURE__*/ S.Array(
   ContainerAccess,
 ) as any as S.Schema<ContainerAccessList>;
@@ -1513,7 +1517,7 @@ export const ListAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAccountsRequest",
 }) as any as S.Schema<ListAccountsRequest>;
 
-export type AccountList = ReadonlyArray<Account>;
+export type AccountList = Array<Account>;
 export const AccountList = /*@__PURE__*/ S.Array(
   Account,
 ) as any as S.Schema<AccountList>;
@@ -1549,7 +1553,7 @@ export const ListAccountsContainersRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAccountsContainersRequest",
 }) as any as S.Schema<ListAccountsContainersRequest>;
 
-export type ContainerList = ReadonlyArray<Container>;
+export type ContainerList = Array<Container>;
 export const ContainerList = /*@__PURE__*/ S.Array(
   Container,
 ) as any as S.Schema<ContainerList>;
@@ -1589,7 +1593,7 @@ export const ListAccountsContainersEnvironmentsRequest =
     identifier: "ListAccountsContainersEnvironmentsRequest",
   }) as any as S.Schema<ListAccountsContainersEnvironmentsRequest>;
 
-export type EnvironmentList = ReadonlyArray<Environment>;
+export type EnvironmentList = Array<Environment>;
 export const EnvironmentList = /*@__PURE__*/ S.Array(
   Environment,
 ) as any as S.Schema<EnvironmentList>;
@@ -1850,12 +1854,12 @@ export const ContainerVersionHeader = /*@__PURE__*/ S.suspend(() =>
   identifier: "ContainerVersionHeader",
 }) as any as S.Schema<ContainerVersionHeader>;
 
-export type ContainerVersionHeaderList = ReadonlyArray<ContainerVersionHeader>;
+export type ContainerVersionHeaderList = Array<ContainerVersionHeader>;
 export const ContainerVersionHeaderList = /*@__PURE__*/ S.Array(
   ContainerVersionHeader,
 ) as any as S.Schema<ContainerVersionHeaderList>;
 
-export type ContainerVersionList = ReadonlyArray<ContainerVersion>;
+export type ContainerVersionList = Array<ContainerVersion>;
 export const ContainerVersionList = /*@__PURE__*/ S.Array(
   ContainerVersion,
 ) as any as S.Schema<ContainerVersionList>;
@@ -1894,7 +1898,7 @@ export const ListAccountsPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAccountsPermissionsRequest",
 }) as any as S.Schema<ListAccountsPermissionsRequest>;
 
-export type UserAccessList = ReadonlyArray<UserAccess>;
+export type UserAccessList = Array<UserAccess>;
 export const UserAccessList = /*@__PURE__*/ S.Array(
   UserAccess,
 ) as any as S.Schema<UserAccessList>;

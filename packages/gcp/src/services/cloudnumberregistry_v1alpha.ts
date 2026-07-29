@@ -96,7 +96,7 @@ export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "Empty",
 }) as any as S.Schema<Empty>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -149,8 +149,7 @@ export const IpamAdminScopeAvailability = /*@__PURE__*/ S.suspend(() =>
   identifier: "IpamAdminScopeAvailability",
 }) as any as S.Schema<IpamAdminScopeAvailability>;
 
-export type IpamAdminScopeAvailabilityList =
-  ReadonlyArray<IpamAdminScopeAvailability>;
+export type IpamAdminScopeAvailabilityList = Array<IpamAdminScopeAvailability>;
 export const IpamAdminScopeAvailabilityList = /*@__PURE__*/ S.Array(
   IpamAdminScopeAvailability,
 ) as any as S.Schema<IpamAdminScopeAvailabilityList>;
@@ -210,7 +209,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -269,7 +268,7 @@ export const Attribute = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Attribute" }) as any as S.Schema<Attribute>;
 
-export type AttributeList = ReadonlyArray<Attribute>;
+export type AttributeList = Array<Attribute>;
 export const AttributeList = /*@__PURE__*/ S.Array(
   Attribute,
 ) as any as S.Schema<AttributeList>;
@@ -350,8 +349,9 @@ export type IpamAdminScopeEnabledAddonPlatformsItemEnum =
 export const IpamAdminScopeEnabledAddonPlatformsItemEnum =
   /*@__PURE__*/ S.String;
 
-export type IpamAdminScopeEnabledAddonPlatformsItemEnumList =
-  ReadonlyArray<IpamAdminScopeEnabledAddonPlatformsItemEnum>;
+export type IpamAdminScopeEnabledAddonPlatformsItemEnumList = Array<
+  IpamAdminScopeEnabledAddonPlatformsItemEnum | (string & {})
+>;
 export const IpamAdminScopeEnabledAddonPlatformsItemEnumList =
   /*@__PURE__*/ S.Array(
     IpamAdminScopeEnabledAddonPlatformsItemEnum,
@@ -383,7 +383,7 @@ export interface IpamAdminScope {
   /** Output only. The time at which the IpamAdminScope was created. */
   createTime?: string;
   /** Output only. State of resource discovery pipeline. */
-  state?: IpamAdminScopeStateEnum;
+  state?: IpamAdminScopeStateEnum | (string & {});
   /** Required. Identifier. The resource name of the IpamAdminScope. */
   name?: string;
   /** Optional. User-defined labels. */
@@ -486,7 +486,7 @@ export interface DiscoveryMetadata {
   /** Output only. A single source resource can be the source of multiple CNR resources. This sub_id is used to distinguish between the different CNR resources derived from the same upstream resource. For example, a single subnetwork can be the source of multiple Ranges, one for each protocol. In this case, the sub_id could be "private-ipv4" or "private-ipv6". */
   sourceSubId?: string;
   /** Output only. The state of the resource. */
-  state?: DiscoveryMetadataStateEnum;
+  state?: DiscoveryMetadataStateEnum | (string & {});
 }
 export const DiscoveryMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -509,7 +509,7 @@ export const RealmIpVersionEnum = /*@__PURE__*/ S.String;
 /** A Realm represents a distinct network domain or security zone. It groups Ranges that share the same traffic and management characteristics. All the ranges in a Realm are routable to each other, meaning that they cannot overlap. */
 export interface Realm {
   /** Optional. Management type of the Realm. */
-  managementType?: RealmManagementTypeEnum;
+  managementType?: RealmManagementTypeEnum | (string & {});
   /** Optional. User-defined labels. */
   labels?: StringMap;
   /** Output only. The time at which the Realm was last updated. */
@@ -519,11 +519,11 @@ export interface Realm {
   /** Required. Identifier. The resource name of the Realm. */
   name?: string;
   /** Required. Traffic type of the Realm. */
-  trafficType?: RealmTrafficTypeEnum;
+  trafficType?: RealmTrafficTypeEnum | (string & {});
   /** Output only. Discovery metadata of the Realm. */
   discoveryMetadata?: DiscoveryMetadata;
   /** Optional. IP version of the Realm. */
-  ipVersion?: RealmIpVersionEnum;
+  ipVersion?: RealmIpVersionEnum | (string & {});
   /** Required. Name of the RegistryBook that claims the Realm. */
   registryBook?: string;
   /** Output only. The time at which the Realm was created. */
@@ -1144,7 +1144,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = ReadonlyArray<Location>;
+export type LocationList = Array<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -1196,7 +1196,7 @@ export const ListProjectsLocationsCustomRangesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsCustomRangesRequest",
 }) as any as S.Schema<ListProjectsLocationsCustomRangesRequest>;
 
-export type CustomRangeList = ReadonlyArray<CustomRange>;
+export type CustomRangeList = Array<CustomRange>;
 export const CustomRangeList = /*@__PURE__*/ S.Array(
   CustomRange,
 ) as any as S.Schema<CustomRangeList>;
@@ -1251,7 +1251,7 @@ export const ListProjectsLocationsDiscoveredRangesRequest =
     identifier: "ListProjectsLocationsDiscoveredRangesRequest",
   }) as any as S.Schema<ListProjectsLocationsDiscoveredRangesRequest>;
 
-export type DiscoveredRangeList = ReadonlyArray<DiscoveredRange>;
+export type DiscoveredRangeList = Array<DiscoveredRange>;
 export const DiscoveredRangeList = /*@__PURE__*/ S.Array(
   DiscoveredRange,
 ) as any as S.Schema<DiscoveredRangeList>;
@@ -1306,7 +1306,7 @@ export const ListProjectsLocationsIpamAdminScopesRequest =
     identifier: "ListProjectsLocationsIpamAdminScopesRequest",
   }) as any as S.Schema<ListProjectsLocationsIpamAdminScopesRequest>;
 
-export type IpamAdminScopeList = ReadonlyArray<IpamAdminScope>;
+export type IpamAdminScopeList = Array<IpamAdminScope>;
 export const IpamAdminScopeList = /*@__PURE__*/ S.Array(
   IpamAdminScope,
 ) as any as S.Schema<IpamAdminScopeList>;
@@ -1361,7 +1361,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type OperationList = ReadonlyArray<Operation>;
+export type OperationList = Array<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -1425,7 +1425,7 @@ export const ListProjectsLocationsRealmsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRealmsRequest",
 }) as any as S.Schema<ListProjectsLocationsRealmsRequest>;
 
-export type RealmList = ReadonlyArray<Realm>;
+export type RealmList = Array<Realm>;
 export const RealmList = /*@__PURE__*/ S.Array(
   Realm,
 ) as any as S.Schema<RealmList>;
@@ -1493,7 +1493,7 @@ export const ListProjectsLocationsRegistryBooksRequest =
     identifier: "ListProjectsLocationsRegistryBooksRequest",
   }) as any as S.Schema<ListProjectsLocationsRegistryBooksRequest>;
 
-export type RegistryBookList = ReadonlyArray<RegistryBook>;
+export type RegistryBookList = Array<RegistryBook>;
 export const RegistryBookList = /*@__PURE__*/ S.Array(
   RegistryBook,
 ) as any as S.Schema<RegistryBookList>;
@@ -1635,10 +1635,9 @@ export type SearchIpResourcesRequestSearchResourceTypesItemEnum =
 export const SearchIpResourcesRequestSearchResourceTypesItemEnum =
   /*@__PURE__*/ S.String;
 
-export type SearchIpResourcesRequestSearchResourceTypesItemEnumList =
-  ReadonlyArray<
-    SearchIpResourcesRequestSearchResourceTypesItemEnum | (string & {})
-  >;
+export type SearchIpResourcesRequestSearchResourceTypesItemEnumList = Array<
+  SearchIpResourcesRequestSearchResourceTypesItemEnum | (string & {})
+>;
 export const SearchIpResourcesRequestSearchResourceTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     SearchIpResourcesRequestSearchResourceTypesItemEnum,
@@ -1732,7 +1731,7 @@ export const Range = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Range" }) as any as S.Schema<Range>;
 
-export type RangeList = ReadonlyArray<Range>;
+export type RangeList = Array<Range>;
 export const RangeList = /*@__PURE__*/ S.Array(
   Range,
 ) as any as S.Schema<RangeList>;
@@ -1753,8 +1752,7 @@ export const SearchIpResourcesResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "SearchIpResourcesResult",
 }) as any as S.Schema<SearchIpResourcesResult>;
 
-export type SearchIpResourcesResultList =
-  ReadonlyArray<SearchIpResourcesResult>;
+export type SearchIpResourcesResultList = Array<SearchIpResourcesResult>;
 export const SearchIpResourcesResultList = /*@__PURE__*/ S.Array(
   SearchIpResourcesResult,
 ) as any as S.Schema<SearchIpResourcesResultList>;

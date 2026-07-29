@@ -95,7 +95,7 @@ export const ConfigModuleEnablementStateEnum = /*@__PURE__*/ S.String;
 
 export interface Config {
   value?: DocumentMap;
-  moduleEnablementState?: ConfigModuleEnablementStateEnum;
+  moduleEnablementState?: ConfigModuleEnablementStateEnum | (string & {});
 }
 export const Config = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -123,7 +123,9 @@ export interface ContainerThreatDetectionSettings {
   serviceAccount?: string;
   updateTime?: string;
   modules?: ConfigMap;
-  serviceEnablementState?: ContainerThreatDetectionSettingsServiceEnablementStateEnum;
+  serviceEnablementState?:
+    | ContainerThreatDetectionSettingsServiceEnablementStateEnum
+    | (string & {});
 }
 export const ContainerThreatDetectionSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -170,7 +172,9 @@ export const EventThreatDetectionSettingsServiceEnablementStateEnum =
 export interface EventThreatDetectionSettings {
   updateTime?: string;
   name?: string;
-  serviceEnablementState?: EventThreatDetectionSettingsServiceEnablementStateEnum;
+  serviceEnablementState?:
+    | EventThreatDetectionSettingsServiceEnablementStateEnum
+    | (string & {});
   modules?: ConfigMap;
 }
 export const EventThreatDetectionSettings = /*@__PURE__*/ S.suspend(() =>
@@ -213,7 +217,9 @@ export const RapidVulnerabilityDetectionSettingsServiceEnablementStateEnum =
   /*@__PURE__*/ S.String;
 
 export interface RapidVulnerabilityDetectionSettings {
-  serviceEnablementState?: RapidVulnerabilityDetectionSettingsServiceEnablementStateEnum;
+  serviceEnablementState?:
+    | RapidVulnerabilityDetectionSettingsServiceEnablementStateEnum
+    | (string & {});
   modules?: ConfigMap;
   updateTime?: string;
   name?: string;
@@ -263,7 +269,9 @@ export interface SecurityHealthAnalyticsSettings {
   updateTime?: string;
   name?: string;
   serviceAccount?: string;
-  serviceEnablementState?: SecurityHealthAnalyticsSettingsServiceEnablementStateEnum;
+  serviceEnablementState?:
+    | SecurityHealthAnalyticsSettingsServiceEnablementStateEnum
+    | (string & {});
   modules?: ConfigMap;
 }
 export const SecurityHealthAnalyticsSettings = /*@__PURE__*/ S.suspend(() =>
@@ -312,7 +320,9 @@ export interface VirtualMachineThreatDetectionSettings {
   updateTime?: string;
   name?: string;
   serviceAccount?: string;
-  serviceEnablementState?: VirtualMachineThreatDetectionSettingsServiceEnablementStateEnum;
+  serviceEnablementState?:
+    | VirtualMachineThreatDetectionSettingsServiceEnablementStateEnum
+    | (string & {});
   modules?: ConfigMap;
 }
 export const VirtualMachineThreatDetectionSettings = /*@__PURE__*/ S.suspend(
@@ -360,7 +370,9 @@ export const WebSecurityScannerSettingsServiceEnablementStateEnum =
 
 export interface WebSecurityScannerSettings {
   modules?: ConfigMap;
-  serviceEnablementState?: WebSecurityScannerSettingsServiceEnablementStateEnum;
+  serviceEnablementState?:
+    | WebSecurityScannerSettingsServiceEnablementStateEnum
+    | (string & {});
   name?: string;
   updateTime?: string;
 }

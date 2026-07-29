@@ -1630,7 +1630,7 @@ export interface RadiusSettings {
   RadiusTimeout?: number;
   RadiusRetries?: number;
   SharedSecret?: string | redacted.Redacted<string>;
-  AuthenticationProtocol?: RadiusAuthenticationProtocol;
+  AuthenticationProtocol?: RadiusAuthenticationProtocol | (string & {});
   DisplayLabel?: string;
   UseSameUsername?: boolean;
 }
@@ -2532,7 +2532,7 @@ export const DescribeUpdateDirectoryRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeUpdateDirectoryRequest",
 }) as any as S.Schema<DescribeUpdateDirectoryRequest>;
 export interface OSUpdateSettings {
-  OSVersion?: OSVersion;
+  OSVersion?: OSVersion | (string & {});
 }
 export const OSUpdateSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ OSVersion: S.optional(OSVersion) }),

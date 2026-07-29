@@ -222,7 +222,7 @@ export class UnsupportedBindingConfiguration extends T.applyErrorMatchers(
   [{ code: 1003 }],
 ) {}
 
-export type AddressMapsCreateRequestIpsList = ReadonlyArray<string>;
+export type AddressMapsCreateRequestIpsList = Array<string>;
 export const AddressMapsCreateRequestIpsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AddressMapsCreateRequestIpsList>;
@@ -248,7 +248,7 @@ export const AddressMapsCreateRequestMembershipsItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<AddressMapsCreateRequestMembershipsItem>;
 
 export type AddressMapsCreateRequestMembershipsList =
-  ReadonlyArray<AddressMapsCreateRequestMembershipsItem>;
+  Array<AddressMapsCreateRequestMembershipsItem>;
 export const AddressMapsCreateRequestMembershipsList = /*@__PURE__*/ S.Array(
   AddressMapsCreateRequestMembershipsItem,
 ) as any as S.Schema<AddressMapsCreateRequestMembershipsList>;
@@ -299,7 +299,7 @@ export const AddressMapsCreateResponseIps = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AddressMapsCreateResponseIps>;
 
 export type AddressMapsCreateResponseIpsList =
-  ReadonlyArray<AddressMapsCreateResponseIps>;
+  Array<AddressMapsCreateResponseIps>;
 export const AddressMapsCreateResponseIpsList = /*@__PURE__*/ S.Array(
   AddressMapsCreateResponseIps,
 ) as any as S.Schema<AddressMapsCreateResponseIpsList>;
@@ -330,7 +330,7 @@ export const AddressMapsCreateResponseMembershipsItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<AddressMapsCreateResponseMembershipsItem>;
 
 export type AddressMapsCreateResponseMembershipsList =
-  ReadonlyArray<AddressMapsCreateResponseMembershipsItem>;
+  Array<AddressMapsCreateResponseMembershipsItem>;
 export const AddressMapsCreateResponseMembershipsList = /*@__PURE__*/ S.Array(
   AddressMapsCreateResponseMembershipsItem,
 ) as any as S.Schema<AddressMapsCreateResponseMembershipsList>;
@@ -1123,8 +1123,7 @@ export const AddressMapsGetResponseIps = /*@__PURE__*/ S.suspend(() =>
   identifier: "AddressMapsGetResponseIps",
 }) as any as S.Schema<AddressMapsGetResponseIps>;
 
-export type AddressMapsGetResponseIpsList =
-  ReadonlyArray<AddressMapsGetResponseIps>;
+export type AddressMapsGetResponseIpsList = Array<AddressMapsGetResponseIps>;
 export const AddressMapsGetResponseIpsList = /*@__PURE__*/ S.Array(
   AddressMapsGetResponseIps,
 ) as any as S.Schema<AddressMapsGetResponseIpsList>;
@@ -1154,7 +1153,7 @@ export const AddressMapsGetResponseMembershipsItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<AddressMapsGetResponseMembershipsItem>;
 
 export type AddressMapsGetResponseMembershipsList =
-  ReadonlyArray<AddressMapsGetResponseMembershipsItem>;
+  Array<AddressMapsGetResponseMembershipsItem>;
 export const AddressMapsGetResponseMembershipsList = /*@__PURE__*/ S.Array(
   AddressMapsGetResponseMembershipsItem,
 ) as any as S.Schema<AddressMapsGetResponseMembershipsList>;
@@ -1639,8 +1638,7 @@ export const AddressMapsListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "AddressMapsListResultItem",
 }) as any as S.Schema<AddressMapsListResultItem>;
 
-export type AddressMapsListResultList =
-  ReadonlyArray<AddressMapsListResultItem>;
+export type AddressMapsListResultList = Array<AddressMapsListResultItem>;
 export const AddressMapsListResultList = /*@__PURE__*/ S.Array(
   AddressMapsListResultItem,
 ) as any as S.Schema<AddressMapsListResultList>;
@@ -1764,7 +1762,7 @@ export const PrefixesBgpPrefixesListResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrefixesBgpPrefixesListResultItem>;
 
 export type PrefixesBgpPrefixesListResultList =
-  ReadonlyArray<PrefixesBgpPrefixesListResultItem>;
+  Array<PrefixesBgpPrefixesListResultItem>;
 export const PrefixesBgpPrefixesListResultList = /*@__PURE__*/ S.Array(
   PrefixesBgpPrefixesListResultItem,
 ) as any as S.Schema<PrefixesBgpPrefixesListResultList>;
@@ -1835,7 +1833,7 @@ export const PrefixesDelegationsListResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrefixesDelegationsListResultItem>;
 
 export type PrefixesDelegationsListResultList =
-  ReadonlyArray<PrefixesDelegationsListResultItem>;
+  Array<PrefixesDelegationsListResultItem>;
 export const PrefixesDelegationsListResultList = /*@__PURE__*/ S.Array(
   PrefixesDelegationsListResultItem,
 ) as any as S.Schema<PrefixesDelegationsListResultList>;
@@ -1948,7 +1946,7 @@ export const PrefixesListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "PrefixesListResultItem",
 }) as any as S.Schema<PrefixesListResultItem>;
 
-export type PrefixesListResultList = ReadonlyArray<PrefixesListResultItem>;
+export type PrefixesListResultList = Array<PrefixesListResultItem>;
 export const PrefixesListResultList = /*@__PURE__*/ S.Array(
   PrefixesListResultItem,
 ) as any as S.Schema<PrefixesListResultList>;
@@ -2038,7 +2036,7 @@ export const PrefixesServiceBindingsListResultItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PrefixesServiceBindingsListResultItem>;
 
 export type PrefixesServiceBindingsListResultList =
-  ReadonlyArray<PrefixesServiceBindingsListResultItem>;
+  Array<PrefixesServiceBindingsListResultItem>;
 export const PrefixesServiceBindingsListResultList = /*@__PURE__*/ S.Array(
   PrefixesServiceBindingsListResultItem,
 ) as any as S.Schema<PrefixesServiceBindingsListResultList>;
@@ -2095,7 +2093,7 @@ export const RegionalHostnamesRegionsListResultItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<RegionalHostnamesRegionsListResultItem>;
 
 export type RegionalHostnamesRegionsListResultList =
-  ReadonlyArray<RegionalHostnamesRegionsListResultItem>;
+  Array<RegionalHostnamesRegionsListResultItem>;
 export const RegionalHostnamesRegionsListResultList = /*@__PURE__*/ S.Array(
   RegionalHostnamesRegionsListResultItem,
 ) as any as S.Schema<RegionalHostnamesRegionsListResultList>;
@@ -2157,7 +2155,7 @@ export const RegionalHostnamesListResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RegionalHostnamesListResultItem>;
 
 export type RegionalHostnamesListResultList =
-  ReadonlyArray<RegionalHostnamesListResultItem>;
+  Array<RegionalHostnamesListResultItem>;
 export const RegionalHostnamesListResultList = /*@__PURE__*/ S.Array(
   RegionalHostnamesListResultItem,
 ) as any as S.Schema<RegionalHostnamesListResultList>;
@@ -2212,7 +2210,7 @@ export const ServicesListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "ServicesListResultItem",
 }) as any as S.Schema<ServicesListResultItem>;
 
-export type ServicesListResultList = ReadonlyArray<ServicesListResultItem>;
+export type ServicesListResultList = Array<ServicesListResultItem>;
 export const ServicesListResultList = /*@__PURE__*/ S.Array(
   ServicesListResultItem,
 ) as any as S.Schema<ServicesListResultList>;

@@ -438,7 +438,7 @@ export type DurationType =
 export const DurationType = /*@__PURE__*/ S.String;
 
 export interface Duration {
-  durationType: DurationType;
+  durationType: DurationType | (string & {});
   value: number;
 }
 export const Duration = /*@__PURE__*/ S.suspend(() =>
@@ -446,11 +446,11 @@ export const Duration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Duration" }) as any as S.Schema<Duration>;
 export interface InfluxDBv2Parameters {
   fluxLogEnabled?: boolean;
-  logLevel?: LogLevel;
+  logLevel?: LogLevel | (string & {});
   noTasks?: boolean;
   queryConcurrency?: number;
   queryQueueSize?: number;
-  tracingType?: TracingType;
+  tracingType?: TracingType | (string & {});
   metricsDisabled?: boolean;
   httpIdleTimeout?: Duration;
   httpReadHeaderTimeout?: Duration;
@@ -537,9 +537,9 @@ export interface InfluxDBv3CoreParameters {
   queryFileLimit?: number;
   queryLogSize?: number;
   logFilter?: string;
-  logFormat?: LogFormats;
+  logFormat?: LogFormats | (string & {});
   dataFusionNumThreads?: number;
-  dataFusionRuntimeType?: DataFusionRuntimeType;
+  dataFusionRuntimeType?: DataFusionRuntimeType | (string & {});
   dataFusionRuntimeDisableLifoSlot?: boolean;
   dataFusionRuntimeEventInterval?: number;
   dataFusionRuntimeGlobalQueueInterval?: number;
@@ -623,9 +623,9 @@ export interface InfluxDBv3EnterpriseParameters {
   queryFileLimit?: number;
   queryLogSize?: number;
   logFilter?: string;
-  logFormat?: LogFormats;
+  logFormat?: LogFormats | (string & {});
   dataFusionNumThreads?: number;
-  dataFusionRuntimeType?: DataFusionRuntimeType;
+  dataFusionRuntimeType?: DataFusionRuntimeType | (string & {});
   dataFusionRuntimeDisableLifoSlot?: boolean;
   dataFusionRuntimeEventInterval?: number;
   dataFusionRuntimeGlobalQueueInterval?: number;

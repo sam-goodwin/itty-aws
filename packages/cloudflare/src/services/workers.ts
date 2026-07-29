@@ -487,10 +487,9 @@ export type ScriptsSecretsBulkUpdateRequestSecretsSecretKeyUsagesItem =
 export const ScriptsSecretsBulkUpdateRequestSecretsSecretKeyUsagesItem =
   /*@__PURE__*/ S.String;
 
-export type ScriptsSecretsBulkUpdateRequestSecretsSecretKeyUsagesList =
-  ReadonlyArray<
-    ScriptsSecretsBulkUpdateRequestSecretsSecretKeyUsagesItem | (string & {})
-  >;
+export type ScriptsSecretsBulkUpdateRequestSecretsSecretKeyUsagesList = Array<
+  ScriptsSecretsBulkUpdateRequestSecretsSecretKeyUsagesItem | (string & {})
+>;
 export const ScriptsSecretsBulkUpdateRequestSecretsSecretKeyUsagesList =
   /*@__PURE__*/ S.Array(
     ScriptsSecretsBulkUpdateRequestSecretsSecretKeyUsagesItem,
@@ -662,7 +661,7 @@ export const ScriptsSecretsBulkUpdateResultSecretKeyUsagesItem =
   /*@__PURE__*/ S.String;
 
 export type ScriptsSecretsBulkUpdateResultSecretKeyUsagesList =
-  ReadonlyArray<ScriptsSecretsBulkUpdateResultSecretKeyUsagesItem>;
+  Array<ScriptsSecretsBulkUpdateResultSecretKeyUsagesItem>;
 export const ScriptsSecretsBulkUpdateResultSecretKeyUsagesList =
   /*@__PURE__*/ S.Array(
     ScriptsSecretsBulkUpdateResultSecretKeyUsagesItem,
@@ -794,7 +793,7 @@ export const CreateAssetUploadResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateAssetUploadResponse>;
 
 export type BetaWorkersCreateRequestObservabilityLogsDestinationsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const BetaWorkersCreateRequestObservabilityLogsDestinationsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -828,7 +827,7 @@ export const BetaWorkersCreateRequestObservabilityLogs =
   }) as any as S.Schema<BetaWorkersCreateRequestObservabilityLogs>;
 
 export type BetaWorkersCreateRequestObservabilityTracesDestinationsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const BetaWorkersCreateRequestObservabilityTracesDestinationsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -910,7 +909,7 @@ export const BetaWorkersCreateRequestSubdomain = /*@__PURE__*/ S.suspend(() =>
   identifier: "BetaWorkersCreateRequestSubdomain",
 }) as any as S.Schema<BetaWorkersCreateRequestSubdomain>;
 
-export type BetaWorkersCreateRequestTagsList = ReadonlyArray<string>;
+export type BetaWorkersCreateRequestTagsList = Array<string>;
 export const BetaWorkersCreateRequestTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BetaWorkersCreateRequestTagsList>;
@@ -929,7 +928,7 @@ export const BetaWorkersCreateRequestTailConsumersItem =
   }) as any as S.Schema<BetaWorkersCreateRequestTailConsumersItem>;
 
 export type BetaWorkersCreateRequestTailConsumersList =
-  ReadonlyArray<BetaWorkersCreateRequestTailConsumersItem>;
+  Array<BetaWorkersCreateRequestTailConsumersItem>;
 export const BetaWorkersCreateRequestTailConsumersList = /*@__PURE__*/ S.Array(
   BetaWorkersCreateRequestTailConsumersItem,
 ) as any as S.Schema<BetaWorkersCreateRequestTailConsumersList>;
@@ -975,7 +974,7 @@ export const CreateBetaWorkerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateBetaWorkerRequest>;
 
 export type BetaWorkersCreateResponseObservabilityLogsDestinationsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const BetaWorkersCreateResponseObservabilityLogsDestinationsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1009,7 +1008,7 @@ export const BetaWorkersCreateResponseObservabilityLogs =
   }) as any as S.Schema<BetaWorkersCreateResponseObservabilityLogs>;
 
 export type BetaWorkersCreateResponseObservabilityTracesDestinationsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const BetaWorkersCreateResponseObservabilityTracesDestinationsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1098,7 +1097,7 @@ export const BetaWorkersCreateResponseReferencesDispatchNamespaceOutboundsItem =
   }) as any as S.Schema<BetaWorkersCreateResponseReferencesDispatchNamespaceOutboundsItem>;
 
 export type BetaWorkersCreateResponseReferencesDispatchNamespaceOutboundsList =
-  ReadonlyArray<BetaWorkersCreateResponseReferencesDispatchNamespaceOutboundsItem>;
+  Array<BetaWorkersCreateResponseReferencesDispatchNamespaceOutboundsItem>;
 export const BetaWorkersCreateResponseReferencesDispatchNamespaceOutboundsList =
   /*@__PURE__*/ S.Array(
     BetaWorkersCreateResponseReferencesDispatchNamespaceOutboundsItem,
@@ -1130,7 +1129,7 @@ export const BetaWorkersCreateResponseReferencesDomainsItem =
   }) as any as S.Schema<BetaWorkersCreateResponseReferencesDomainsItem>;
 
 export type BetaWorkersCreateResponseReferencesDomainsList =
-  ReadonlyArray<BetaWorkersCreateResponseReferencesDomainsItem>;
+  Array<BetaWorkersCreateResponseReferencesDomainsItem>;
 export const BetaWorkersCreateResponseReferencesDomainsList =
   /*@__PURE__*/ S.Array(
     BetaWorkersCreateResponseReferencesDomainsItem,
@@ -1159,7 +1158,7 @@ export const BetaWorkersCreateResponseReferencesDurableObjectsItem =
   }) as any as S.Schema<BetaWorkersCreateResponseReferencesDurableObjectsItem>;
 
 export type BetaWorkersCreateResponseReferencesDurableObjectsList =
-  ReadonlyArray<BetaWorkersCreateResponseReferencesDurableObjectsItem>;
+  Array<BetaWorkersCreateResponseReferencesDurableObjectsItem>;
 export const BetaWorkersCreateResponseReferencesDurableObjectsList =
   /*@__PURE__*/ S.Array(
     BetaWorkersCreateResponseReferencesDurableObjectsItem,
@@ -1185,7 +1184,7 @@ export const BetaWorkersCreateResponseReferencesQueuesItem =
   }) as any as S.Schema<BetaWorkersCreateResponseReferencesQueuesItem>;
 
 export type BetaWorkersCreateResponseReferencesQueuesList =
-  ReadonlyArray<BetaWorkersCreateResponseReferencesQueuesItem>;
+  Array<BetaWorkersCreateResponseReferencesQueuesItem>;
 export const BetaWorkersCreateResponseReferencesQueuesList =
   /*@__PURE__*/ S.Array(
     BetaWorkersCreateResponseReferencesQueuesItem,
@@ -1208,7 +1207,7 @@ export const BetaWorkersCreateResponseReferencesWorkersItem =
   }) as any as S.Schema<BetaWorkersCreateResponseReferencesWorkersItem>;
 
 export type BetaWorkersCreateResponseReferencesWorkersList =
-  ReadonlyArray<BetaWorkersCreateResponseReferencesWorkersItem>;
+  Array<BetaWorkersCreateResponseReferencesWorkersItem>;
 export const BetaWorkersCreateResponseReferencesWorkersList =
   /*@__PURE__*/ S.Array(
     BetaWorkersCreateResponseReferencesWorkersItem,
@@ -1258,7 +1257,7 @@ export const BetaWorkersCreateResponseSubdomain = /*@__PURE__*/ S.suspend(() =>
   identifier: "BetaWorkersCreateResponseSubdomain",
 }) as any as S.Schema<BetaWorkersCreateResponseSubdomain>;
 
-export type BetaWorkersCreateResponseTagsList = ReadonlyArray<string>;
+export type BetaWorkersCreateResponseTagsList = Array<string>;
 export const BetaWorkersCreateResponseTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BetaWorkersCreateResponseTagsList>;
@@ -1277,7 +1276,7 @@ export const BetaWorkersCreateResponseTailConsumersItem =
   }) as any as S.Schema<BetaWorkersCreateResponseTailConsumersItem>;
 
 export type BetaWorkersCreateResponseTailConsumersList =
-  ReadonlyArray<BetaWorkersCreateResponseTailConsumersItem>;
+  Array<BetaWorkersCreateResponseTailConsumersItem>;
 export const BetaWorkersCreateResponseTailConsumersList = /*@__PURE__*/ S.Array(
   BetaWorkersCreateResponseTailConsumersItem,
 ) as any as S.Schema<BetaWorkersCreateResponseTailConsumersList>;
@@ -1364,7 +1363,7 @@ export const BetaWorkersVersionsCreateRequestAssetsConfigNotFoundHandling =
   /*@__PURE__*/ S.String;
 
 export type BetaWorkersVersionsCreateRequestAssetsConfigRunWorkerFirstCase0List =
-  ReadonlyArray<string>;
+  Array<string>;
 export const BetaWorkersVersionsCreateRequestAssetsConfigRunWorkerFirstCase0List =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1640,7 +1639,7 @@ export const BetaWorkersVersionsCreateRequestBindingsItemDispatchNamespaceOutbou
   }) as any as S.Schema<BetaWorkersVersionsCreateRequestBindingsItemDispatchNamespaceOutboundParamsItem>;
 
 export type BetaWorkersVersionsCreateRequestBindingsItemDispatchNamespaceOutboundParamsList =
-  ReadonlyArray<BetaWorkersVersionsCreateRequestBindingsItemDispatchNamespaceOutboundParamsItem>;
+  Array<BetaWorkersVersionsCreateRequestBindingsItemDispatchNamespaceOutboundParamsItem>;
 export const BetaWorkersVersionsCreateRequestBindingsItemDispatchNamespaceOutboundParamsList =
   /*@__PURE__*/ S.Array(
     BetaWorkersVersionsCreateRequestBindingsItemDispatchNamespaceOutboundParamsItem,
@@ -2118,14 +2117,14 @@ export const BetaWorkersVersionsCreateRequestBindingsItemSendEmailType =
   /*@__PURE__*/ S.String;
 
 export type BetaWorkersVersionsCreateRequestBindingsItemSendEmailAllowedDestinationAddressesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const BetaWorkersVersionsCreateRequestBindingsItemSendEmailAllowedDestinationAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<BetaWorkersVersionsCreateRequestBindingsItemSendEmailAllowedDestinationAddressesList>;
 
 export type BetaWorkersVersionsCreateRequestBindingsItemSendEmailAllowedSenderAddressesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const BetaWorkersVersionsCreateRequestBindingsItemSendEmailAllowedSenderAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2354,7 +2353,7 @@ export const BetaWorkersVersionsCreateRequestBindingsItemSecretKeyUsagesItem =
   /*@__PURE__*/ S.String;
 
 export type BetaWorkersVersionsCreateRequestBindingsItemSecretKeyUsagesList =
-  ReadonlyArray<
+  Array<
     | BetaWorkersVersionsCreateRequestBindingsItemSecretKeyUsagesItem
     | (string & {})
   >;
@@ -2780,7 +2779,7 @@ export const BetaWorkersVersionsCreateRequestBindingsItem =
   }) as any as S.Schema<BetaWorkersVersionsCreateRequestBindingsItem>;
 
 export type BetaWorkersVersionsCreateRequestBindingsList =
-  ReadonlyArray<BetaWorkersVersionsCreateRequestBindingsItem>;
+  Array<BetaWorkersVersionsCreateRequestBindingsItem>;
 export const BetaWorkersVersionsCreateRequestBindingsList =
   /*@__PURE__*/ S.Array(
     BetaWorkersVersionsCreateRequestBindingsItem,
@@ -2805,7 +2804,7 @@ export const BetaWorkersVersionsCreateRequestCacheOptions =
   }) as any as S.Schema<BetaWorkersVersionsCreateRequestCacheOptions>;
 
 export type BetaWorkersVersionsCreateRequestCompatibilityFlagsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const BetaWorkersVersionsCreateRequestCompatibilityFlagsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2825,7 +2824,7 @@ export const BetaWorkersVersionsCreateRequestContainersItem =
   }) as any as S.Schema<BetaWorkersVersionsCreateRequestContainersItem>;
 
 export type BetaWorkersVersionsCreateRequestContainersList =
-  ReadonlyArray<BetaWorkersVersionsCreateRequestContainersItem>;
+  Array<BetaWorkersVersionsCreateRequestContainersItem>;
 export const BetaWorkersVersionsCreateRequestContainersList =
   /*@__PURE__*/ S.Array(
     BetaWorkersVersionsCreateRequestContainersItem,
@@ -2848,21 +2847,21 @@ export const BetaWorkersVersionsCreateRequestLimits = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<BetaWorkersVersionsCreateRequestLimits>;
 
 export type BetaWorkersVersionsCreateRequestMigrationsSingleStepMigrationDeletedClassesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const BetaWorkersVersionsCreateRequestMigrationsSingleStepMigrationDeletedClassesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<BetaWorkersVersionsCreateRequestMigrationsSingleStepMigrationDeletedClassesList>;
 
 export type BetaWorkersVersionsCreateRequestMigrationsSingleStepMigrationNewClassesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const BetaWorkersVersionsCreateRequestMigrationsSingleStepMigrationNewClassesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<BetaWorkersVersionsCreateRequestMigrationsSingleStepMigrationNewClassesList>;
 
 export type BetaWorkersVersionsCreateRequestMigrationsSingleStepMigrationNewSqliteClassesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const BetaWorkersVersionsCreateRequestMigrationsSingleStepMigrationNewSqliteClassesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2884,7 +2883,7 @@ export const BetaWorkersVersionsCreateRequestMigrationsSingleStepMigrationRename
   }) as any as S.Schema<BetaWorkersVersionsCreateRequestMigrationsSingleStepMigrationRenamedClassesItem>;
 
 export type BetaWorkersVersionsCreateRequestMigrationsSingleStepMigrationRenamedClassesList =
-  ReadonlyArray<BetaWorkersVersionsCreateRequestMigrationsSingleStepMigrationRenamedClassesItem>;
+  Array<BetaWorkersVersionsCreateRequestMigrationsSingleStepMigrationRenamedClassesItem>;
 export const BetaWorkersVersionsCreateRequestMigrationsSingleStepMigrationRenamedClassesList =
   /*@__PURE__*/ S.Array(
     BetaWorkersVersionsCreateRequestMigrationsSingleStepMigrationRenamedClassesItem,
@@ -2908,7 +2907,7 @@ export const BetaWorkersVersionsCreateRequestMigrationsSingleStepMigrationTransf
   }) as any as S.Schema<BetaWorkersVersionsCreateRequestMigrationsSingleStepMigrationTransferredClassesItem>;
 
 export type BetaWorkersVersionsCreateRequestMigrationsSingleStepMigrationTransferredClassesList =
-  ReadonlyArray<BetaWorkersVersionsCreateRequestMigrationsSingleStepMigrationTransferredClassesItem>;
+  Array<BetaWorkersVersionsCreateRequestMigrationsSingleStepMigrationTransferredClassesItem>;
 export const BetaWorkersVersionsCreateRequestMigrationsSingleStepMigrationTransferredClassesList =
   /*@__PURE__*/ S.Array(
     BetaWorkersVersionsCreateRequestMigrationsSingleStepMigrationTransferredClassesItem,
@@ -2966,21 +2965,21 @@ export const BetaWorkersVersionsCreateRequestMigrationsSingleStepMigration =
   }) as any as S.Schema<BetaWorkersVersionsCreateRequestMigrationsSingleStepMigration>;
 
 export type BetaWorkersVersionsCreateRequestMigrationsWorkersMultipleStepMigrationsStepsItemDeletedClassesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const BetaWorkersVersionsCreateRequestMigrationsWorkersMultipleStepMigrationsStepsItemDeletedClassesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<BetaWorkersVersionsCreateRequestMigrationsWorkersMultipleStepMigrationsStepsItemDeletedClassesList>;
 
 export type BetaWorkersVersionsCreateRequestMigrationsWorkersMultipleStepMigrationsStepsItemNewClassesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const BetaWorkersVersionsCreateRequestMigrationsWorkersMultipleStepMigrationsStepsItemNewClassesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<BetaWorkersVersionsCreateRequestMigrationsWorkersMultipleStepMigrationsStepsItemNewClassesList>;
 
 export type BetaWorkersVersionsCreateRequestMigrationsWorkersMultipleStepMigrationsStepsItemNewSqliteClassesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const BetaWorkersVersionsCreateRequestMigrationsWorkersMultipleStepMigrationsStepsItemNewSqliteClassesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3002,7 +3001,7 @@ export const BetaWorkersVersionsCreateRequestMigrationsWorkersMultipleStepMigrat
   }) as any as S.Schema<BetaWorkersVersionsCreateRequestMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesItem>;
 
 export type BetaWorkersVersionsCreateRequestMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesList =
-  ReadonlyArray<BetaWorkersVersionsCreateRequestMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesItem>;
+  Array<BetaWorkersVersionsCreateRequestMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesItem>;
 export const BetaWorkersVersionsCreateRequestMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesList =
   /*@__PURE__*/ S.Array(
     BetaWorkersVersionsCreateRequestMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesItem,
@@ -3026,7 +3025,7 @@ export const BetaWorkersVersionsCreateRequestMigrationsWorkersMultipleStepMigrat
   }) as any as S.Schema<BetaWorkersVersionsCreateRequestMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesItem>;
 
 export type BetaWorkersVersionsCreateRequestMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesList =
-  ReadonlyArray<BetaWorkersVersionsCreateRequestMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesItem>;
+  Array<BetaWorkersVersionsCreateRequestMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesItem>;
 export const BetaWorkersVersionsCreateRequestMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesList =
   /*@__PURE__*/ S.Array(
     BetaWorkersVersionsCreateRequestMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesItem,
@@ -3079,7 +3078,7 @@ export const BetaWorkersVersionsCreateRequestMigrationsWorkersMultipleStepMigrat
   }) as any as S.Schema<BetaWorkersVersionsCreateRequestMigrationsWorkersMultipleStepMigrationsStepsItem>;
 
 export type BetaWorkersVersionsCreateRequestMigrationsWorkersMultipleStepMigrationsStepsList =
-  ReadonlyArray<BetaWorkersVersionsCreateRequestMigrationsWorkersMultipleStepMigrationsStepsItem>;
+  Array<BetaWorkersVersionsCreateRequestMigrationsWorkersMultipleStepMigrationsStepsItem>;
 export const BetaWorkersVersionsCreateRequestMigrationsWorkersMultipleStepMigrationsStepsList =
   /*@__PURE__*/ S.Array(
     BetaWorkersVersionsCreateRequestMigrationsWorkersMultipleStepMigrationsStepsItem,
@@ -3183,7 +3182,7 @@ export const BetaWorkersVersionsCreateRequestModulesItem =
   }) as any as S.Schema<BetaWorkersVersionsCreateRequestModulesItem>;
 
 export type BetaWorkersVersionsCreateRequestModulesList =
-  ReadonlyArray<BetaWorkersVersionsCreateRequestModulesItem>;
+  Array<BetaWorkersVersionsCreateRequestModulesItem>;
 export const BetaWorkersVersionsCreateRequestModulesList =
   /*@__PURE__*/ S.Array(
     BetaWorkersVersionsCreateRequestModulesItem,
@@ -3209,7 +3208,7 @@ export const BetaWorkersVersionsCreateRequestPackageDependenciesItem =
   }) as any as S.Schema<BetaWorkersVersionsCreateRequestPackageDependenciesItem>;
 
 export type BetaWorkersVersionsCreateRequestPackageDependenciesList =
-  ReadonlyArray<BetaWorkersVersionsCreateRequestPackageDependenciesItem>;
+  Array<BetaWorkersVersionsCreateRequestPackageDependenciesItem>;
 export const BetaWorkersVersionsCreateRequestPackageDependenciesList =
   /*@__PURE__*/ S.Array(
     BetaWorkersVersionsCreateRequestPackageDependenciesItem,
@@ -3396,7 +3395,7 @@ export const BetaWorkersVersionsCreateRequestPlacementCase7TargetItem =
   }) as any as S.Schema<BetaWorkersVersionsCreateRequestPlacementCase7TargetItem>;
 
 export type BetaWorkersVersionsCreateRequestPlacementCase7TargetList =
-  ReadonlyArray<BetaWorkersVersionsCreateRequestPlacementCase7TargetItem>;
+  Array<BetaWorkersVersionsCreateRequestPlacementCase7TargetItem>;
 export const BetaWorkersVersionsCreateRequestPlacementCase7TargetList =
   /*@__PURE__*/ S.Array(
     BetaWorkersVersionsCreateRequestPlacementCase7TargetItem,
@@ -3552,7 +3551,7 @@ export const CreateBetaWorkerVersionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateBetaWorkerVersionRequest",
 }) as any as S.Schema<CreateBetaWorkerVersionRequest>;
 
-export type BetaWorkersVersionsCreateResponseUrlsList = ReadonlyArray<string>;
+export type BetaWorkersVersionsCreateResponseUrlsList = Array<string>;
 export const BetaWorkersVersionsCreateResponseUrlsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BetaWorkersVersionsCreateResponseUrlsList>;
@@ -3594,7 +3593,7 @@ export const BetaWorkersVersionsCreateResponseAssetsConfigNotFoundHandling =
   /*@__PURE__*/ S.String;
 
 export type BetaWorkersVersionsCreateResponseAssetsConfigRunWorkerFirstCase0List =
-  ReadonlyArray<string>;
+  Array<string>;
 export const BetaWorkersVersionsCreateResponseAssetsConfigRunWorkerFirstCase0List =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3860,7 +3859,7 @@ export const BetaWorkersVersionsCreateResponseBindingsItemDispatchNamespaceOutbo
   }) as any as S.Schema<BetaWorkersVersionsCreateResponseBindingsItemDispatchNamespaceOutboundParamsItem>;
 
 export type BetaWorkersVersionsCreateResponseBindingsItemDispatchNamespaceOutboundParamsList =
-  ReadonlyArray<BetaWorkersVersionsCreateResponseBindingsItemDispatchNamespaceOutboundParamsItem>;
+  Array<BetaWorkersVersionsCreateResponseBindingsItemDispatchNamespaceOutboundParamsItem>;
 export const BetaWorkersVersionsCreateResponseBindingsItemDispatchNamespaceOutboundParamsList =
   /*@__PURE__*/ S.Array(
     BetaWorkersVersionsCreateResponseBindingsItemDispatchNamespaceOutboundParamsItem,
@@ -4318,14 +4317,14 @@ export const BetaWorkersVersionsCreateResponseBindingsItemSendEmailType =
   /*@__PURE__*/ S.String;
 
 export type BetaWorkersVersionsCreateResponseBindingsItemSendEmailAllowedDestinationAddressesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const BetaWorkersVersionsCreateResponseBindingsItemSendEmailAllowedDestinationAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<BetaWorkersVersionsCreateResponseBindingsItemSendEmailAllowedDestinationAddressesList>;
 
 export type BetaWorkersVersionsCreateResponseBindingsItemSendEmailAllowedSenderAddressesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const BetaWorkersVersionsCreateResponseBindingsItemSendEmailAllowedSenderAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4543,7 +4542,7 @@ export const BetaWorkersVersionsCreateResponseBindingsItemSecretKeyUsagesItem =
   /*@__PURE__*/ S.String;
 
 export type BetaWorkersVersionsCreateResponseBindingsItemSecretKeyUsagesList =
-  ReadonlyArray<BetaWorkersVersionsCreateResponseBindingsItemSecretKeyUsagesItem>;
+  Array<BetaWorkersVersionsCreateResponseBindingsItemSecretKeyUsagesItem>;
 export const BetaWorkersVersionsCreateResponseBindingsItemSecretKeyUsagesList =
   /*@__PURE__*/ S.Array(
     BetaWorkersVersionsCreateResponseBindingsItemSecretKeyUsagesItem,
@@ -4915,7 +4914,7 @@ export const BetaWorkersVersionsCreateResponseBindingsItem =
   }) as any as S.Schema<BetaWorkersVersionsCreateResponseBindingsItem>;
 
 export type BetaWorkersVersionsCreateResponseBindingsList =
-  ReadonlyArray<BetaWorkersVersionsCreateResponseBindingsItem>;
+  Array<BetaWorkersVersionsCreateResponseBindingsItem>;
 export const BetaWorkersVersionsCreateResponseBindingsList =
   /*@__PURE__*/ S.Array(
     BetaWorkersVersionsCreateResponseBindingsItem,
@@ -4940,7 +4939,7 @@ export const BetaWorkersVersionsCreateResponseCacheOptions =
   }) as any as S.Schema<BetaWorkersVersionsCreateResponseCacheOptions>;
 
 export type BetaWorkersVersionsCreateResponseCompatibilityFlagsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const BetaWorkersVersionsCreateResponseCompatibilityFlagsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4960,7 +4959,7 @@ export const BetaWorkersVersionsCreateResponseContainersItem =
   }) as any as S.Schema<BetaWorkersVersionsCreateResponseContainersItem>;
 
 export type BetaWorkersVersionsCreateResponseContainersList =
-  ReadonlyArray<BetaWorkersVersionsCreateResponseContainersItem>;
+  Array<BetaWorkersVersionsCreateResponseContainersItem>;
 export const BetaWorkersVersionsCreateResponseContainersList =
   /*@__PURE__*/ S.Array(
     BetaWorkersVersionsCreateResponseContainersItem,
@@ -4983,21 +4982,21 @@ export const BetaWorkersVersionsCreateResponseLimits = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<BetaWorkersVersionsCreateResponseLimits>;
 
 export type BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationDeletedClassesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationDeletedClassesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationDeletedClassesList>;
 
 export type BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationNewClassesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationNewClassesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationNewClassesList>;
 
 export type BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationNewSqliteClassesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationNewSqliteClassesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5019,7 +5018,7 @@ export const BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationRenam
   }) as any as S.Schema<BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationRenamedClassesItem>;
 
 export type BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationRenamedClassesList =
-  ReadonlyArray<BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationRenamedClassesItem>;
+  Array<BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationRenamedClassesItem>;
 export const BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationRenamedClassesList =
   /*@__PURE__*/ S.Array(
     BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationRenamedClassesItem,
@@ -5043,7 +5042,7 @@ export const BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationTrans
   }) as any as S.Schema<BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationTransferredClassesItem>;
 
 export type BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationTransferredClassesList =
-  ReadonlyArray<BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationTransferredClassesItem>;
+  Array<BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationTransferredClassesItem>;
 export const BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationTransferredClassesList =
   /*@__PURE__*/ S.Array(
     BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationTransferredClassesItem,
@@ -5102,21 +5101,21 @@ export const BetaWorkersVersionsCreateResponseMigrationsSingleStepMigration =
   }) as any as S.Schema<BetaWorkersVersionsCreateResponseMigrationsSingleStepMigration>;
 
 export type BetaWorkersVersionsCreateResponseMigrationsWorkersMultipleStepMigrationsStepsItemDeletedClassesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const BetaWorkersVersionsCreateResponseMigrationsWorkersMultipleStepMigrationsStepsItemDeletedClassesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<BetaWorkersVersionsCreateResponseMigrationsWorkersMultipleStepMigrationsStepsItemDeletedClassesList>;
 
 export type BetaWorkersVersionsCreateResponseMigrationsWorkersMultipleStepMigrationsStepsItemNewClassesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const BetaWorkersVersionsCreateResponseMigrationsWorkersMultipleStepMigrationsStepsItemNewClassesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<BetaWorkersVersionsCreateResponseMigrationsWorkersMultipleStepMigrationsStepsItemNewClassesList>;
 
 export type BetaWorkersVersionsCreateResponseMigrationsWorkersMultipleStepMigrationsStepsItemNewSqliteClassesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const BetaWorkersVersionsCreateResponseMigrationsWorkersMultipleStepMigrationsStepsItemNewSqliteClassesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5138,7 +5137,7 @@ export const BetaWorkersVersionsCreateResponseMigrationsWorkersMultipleStepMigra
   }) as any as S.Schema<BetaWorkersVersionsCreateResponseMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesItem>;
 
 export type BetaWorkersVersionsCreateResponseMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesList =
-  ReadonlyArray<BetaWorkersVersionsCreateResponseMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesItem>;
+  Array<BetaWorkersVersionsCreateResponseMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesItem>;
 export const BetaWorkersVersionsCreateResponseMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesList =
   /*@__PURE__*/ S.Array(
     BetaWorkersVersionsCreateResponseMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesItem,
@@ -5162,7 +5161,7 @@ export const BetaWorkersVersionsCreateResponseMigrationsWorkersMultipleStepMigra
   }) as any as S.Schema<BetaWorkersVersionsCreateResponseMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesItem>;
 
 export type BetaWorkersVersionsCreateResponseMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesList =
-  ReadonlyArray<BetaWorkersVersionsCreateResponseMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesItem>;
+  Array<BetaWorkersVersionsCreateResponseMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesItem>;
 export const BetaWorkersVersionsCreateResponseMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesList =
   /*@__PURE__*/ S.Array(
     BetaWorkersVersionsCreateResponseMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesItem,
@@ -5215,7 +5214,7 @@ export const BetaWorkersVersionsCreateResponseMigrationsWorkersMultipleStepMigra
   }) as any as S.Schema<BetaWorkersVersionsCreateResponseMigrationsWorkersMultipleStepMigrationsStepsItem>;
 
 export type BetaWorkersVersionsCreateResponseMigrationsWorkersMultipleStepMigrationsStepsList =
-  ReadonlyArray<BetaWorkersVersionsCreateResponseMigrationsWorkersMultipleStepMigrationsStepsItem>;
+  Array<BetaWorkersVersionsCreateResponseMigrationsWorkersMultipleStepMigrationsStepsItem>;
 export const BetaWorkersVersionsCreateResponseMigrationsWorkersMultipleStepMigrationsStepsList =
   /*@__PURE__*/ S.Array(
     BetaWorkersVersionsCreateResponseMigrationsWorkersMultipleStepMigrationsStepsItem,
@@ -5319,7 +5318,7 @@ export const BetaWorkersVersionsCreateResponseModulesItem =
   }) as any as S.Schema<BetaWorkersVersionsCreateResponseModulesItem>;
 
 export type BetaWorkersVersionsCreateResponseModulesList =
-  ReadonlyArray<BetaWorkersVersionsCreateResponseModulesItem>;
+  Array<BetaWorkersVersionsCreateResponseModulesItem>;
 export const BetaWorkersVersionsCreateResponseModulesList =
   /*@__PURE__*/ S.Array(
     BetaWorkersVersionsCreateResponseModulesItem,
@@ -5345,7 +5344,7 @@ export const BetaWorkersVersionsCreateResponsePackageDependenciesItem =
   }) as any as S.Schema<BetaWorkersVersionsCreateResponsePackageDependenciesItem>;
 
 export type BetaWorkersVersionsCreateResponsePackageDependenciesList =
-  ReadonlyArray<BetaWorkersVersionsCreateResponsePackageDependenciesItem>;
+  Array<BetaWorkersVersionsCreateResponsePackageDependenciesItem>;
 export const BetaWorkersVersionsCreateResponsePackageDependenciesList =
   /*@__PURE__*/ S.Array(
     BetaWorkersVersionsCreateResponsePackageDependenciesItem,
@@ -5532,7 +5531,7 @@ export const BetaWorkersVersionsCreateResponsePlacementCase7TargetItem =
   }) as any as S.Schema<BetaWorkersVersionsCreateResponsePlacementCase7TargetItem>;
 
 export type BetaWorkersVersionsCreateResponsePlacementCase7TargetList =
-  ReadonlyArray<BetaWorkersVersionsCreateResponsePlacementCase7TargetItem>;
+  Array<BetaWorkersVersionsCreateResponsePlacementCase7TargetItem>;
 export const BetaWorkersVersionsCreateResponsePlacementCase7TargetList =
   /*@__PURE__*/ S.Array(
     BetaWorkersVersionsCreateResponsePlacementCase7TargetItem,
@@ -5788,8 +5787,7 @@ export const ObservabilityDestinationsCreateResponseConfiguration =
     identifier: "ObservabilityDestinationsCreateResponseConfiguration",
   }) as any as S.Schema<ObservabilityDestinationsCreateResponseConfiguration>;
 
-export type ObservabilityDestinationsCreateResponseScriptsList =
-  ReadonlyArray<string>;
+export type ObservabilityDestinationsCreateResponseScriptsList = Array<string>;
 export const ObservabilityDestinationsCreateResponseScriptsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5889,14 +5887,14 @@ export const ObservabilityQueriesCreateRequestParametersCalculationsItem =
   }) as any as S.Schema<ObservabilityQueriesCreateRequestParametersCalculationsItem>;
 
 export type ObservabilityQueriesCreateRequestParametersCalculationsList =
-  ReadonlyArray<ObservabilityQueriesCreateRequestParametersCalculationsItem>;
+  Array<ObservabilityQueriesCreateRequestParametersCalculationsItem>;
 export const ObservabilityQueriesCreateRequestParametersCalculationsList =
   /*@__PURE__*/ S.Array(
     ObservabilityQueriesCreateRequestParametersCalculationsItem,
   ) as any as S.Schema<ObservabilityQueriesCreateRequestParametersCalculationsList>;
 
 export type ObservabilityQueriesCreateRequestParametersDatasetsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ObservabilityQueriesCreateRequestParametersDatasetsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5916,7 +5914,7 @@ export const ObservabilityQueriesCreateRequestParametersFiltersItemCase0FilterCo
   /*@__PURE__*/ S.String;
 
 export type ObservabilityQueriesCreateRequestParametersFiltersItemCase0FiltersList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const ObservabilityQueriesCreateRequestParametersFiltersItemCase0FiltersList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -6090,7 +6088,7 @@ export const ObservabilityQueriesCreateRequestParametersFiltersItem =
   }) as any as S.Schema<ObservabilityQueriesCreateRequestParametersFiltersItem>;
 
 export type ObservabilityQueriesCreateRequestParametersFiltersList =
-  ReadonlyArray<ObservabilityQueriesCreateRequestParametersFiltersItem>;
+  Array<ObservabilityQueriesCreateRequestParametersFiltersItem>;
 export const ObservabilityQueriesCreateRequestParametersFiltersList =
   /*@__PURE__*/ S.Array(
     ObservabilityQueriesCreateRequestParametersFiltersItem,
@@ -6120,7 +6118,7 @@ export const ObservabilityQueriesCreateRequestParametersGroupBysItem =
   }) as any as S.Schema<ObservabilityQueriesCreateRequestParametersGroupBysItem>;
 
 export type ObservabilityQueriesCreateRequestParametersGroupBysList =
-  ReadonlyArray<ObservabilityQueriesCreateRequestParametersGroupBysItem>;
+  Array<ObservabilityQueriesCreateRequestParametersGroupBysItem>;
 export const ObservabilityQueriesCreateRequestParametersGroupBysList =
   /*@__PURE__*/ S.Array(
     ObservabilityQueriesCreateRequestParametersGroupBysItem,
@@ -6156,7 +6154,7 @@ export const ObservabilityQueriesCreateRequestParametersHavingsItem =
   }) as any as S.Schema<ObservabilityQueriesCreateRequestParametersHavingsItem>;
 
 export type ObservabilityQueriesCreateRequestParametersHavingsList =
-  ReadonlyArray<ObservabilityQueriesCreateRequestParametersHavingsItem>;
+  Array<ObservabilityQueriesCreateRequestParametersHavingsItem>;
 export const ObservabilityQueriesCreateRequestParametersHavingsList =
   /*@__PURE__*/ S.Array(
     ObservabilityQueriesCreateRequestParametersHavingsItem,
@@ -6357,14 +6355,14 @@ export const ObservabilityQueriesCreateResponseParametersCalculationsItem =
   }) as any as S.Schema<ObservabilityQueriesCreateResponseParametersCalculationsItem>;
 
 export type ObservabilityQueriesCreateResponseParametersCalculationsList =
-  ReadonlyArray<ObservabilityQueriesCreateResponseParametersCalculationsItem>;
+  Array<ObservabilityQueriesCreateResponseParametersCalculationsItem>;
 export const ObservabilityQueriesCreateResponseParametersCalculationsList =
   /*@__PURE__*/ S.Array(
     ObservabilityQueriesCreateResponseParametersCalculationsItem,
   ) as any as S.Schema<ObservabilityQueriesCreateResponseParametersCalculationsList>;
 
 export type ObservabilityQueriesCreateResponseParametersDatasetsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ObservabilityQueriesCreateResponseParametersDatasetsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6384,7 +6382,7 @@ export const ObservabilityQueriesCreateResponseParametersFiltersItemCase0FilterC
   /*@__PURE__*/ S.String;
 
 export type ObservabilityQueriesCreateResponseParametersFiltersItemCase0FiltersList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const ObservabilityQueriesCreateResponseParametersFiltersItemCase0FiltersList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -6540,7 +6538,7 @@ export const ObservabilityQueriesCreateResponseParametersFiltersItem =
   }) as any as S.Schema<ObservabilityQueriesCreateResponseParametersFiltersItem>;
 
 export type ObservabilityQueriesCreateResponseParametersFiltersList =
-  ReadonlyArray<ObservabilityQueriesCreateResponseParametersFiltersItem>;
+  Array<ObservabilityQueriesCreateResponseParametersFiltersItem>;
 export const ObservabilityQueriesCreateResponseParametersFiltersList =
   /*@__PURE__*/ S.Array(
     ObservabilityQueriesCreateResponseParametersFiltersItem,
@@ -6568,7 +6566,7 @@ export const ObservabilityQueriesCreateResponseParametersGroupBysItem =
   }) as any as S.Schema<ObservabilityQueriesCreateResponseParametersGroupBysItem>;
 
 export type ObservabilityQueriesCreateResponseParametersGroupBysList =
-  ReadonlyArray<ObservabilityQueriesCreateResponseParametersGroupBysItem>;
+  Array<ObservabilityQueriesCreateResponseParametersGroupBysItem>;
 export const ObservabilityQueriesCreateResponseParametersGroupBysList =
   /*@__PURE__*/ S.Array(
     ObservabilityQueriesCreateResponseParametersGroupBysItem,
@@ -6602,7 +6600,7 @@ export const ObservabilityQueriesCreateResponseParametersHavingsItem =
   }) as any as S.Schema<ObservabilityQueriesCreateResponseParametersHavingsItem>;
 
 export type ObservabilityQueriesCreateResponseParametersHavingsList =
-  ReadonlyArray<ObservabilityQueriesCreateResponseParametersHavingsItem>;
+  Array<ObservabilityQueriesCreateResponseParametersHavingsItem>;
 export const ObservabilityQueriesCreateResponseParametersHavingsList =
   /*@__PURE__*/ S.Array(
     ObservabilityQueriesCreateResponseParametersHavingsItem,
@@ -6828,14 +6826,14 @@ export const ObservabilitySharedQueriesCreateRequestParametersCalculationsItem =
   }) as any as S.Schema<ObservabilitySharedQueriesCreateRequestParametersCalculationsItem>;
 
 export type ObservabilitySharedQueriesCreateRequestParametersCalculationsList =
-  ReadonlyArray<ObservabilitySharedQueriesCreateRequestParametersCalculationsItem>;
+  Array<ObservabilitySharedQueriesCreateRequestParametersCalculationsItem>;
 export const ObservabilitySharedQueriesCreateRequestParametersCalculationsList =
   /*@__PURE__*/ S.Array(
     ObservabilitySharedQueriesCreateRequestParametersCalculationsItem,
   ) as any as S.Schema<ObservabilitySharedQueriesCreateRequestParametersCalculationsList>;
 
 export type ObservabilitySharedQueriesCreateRequestParametersDatasetsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ObservabilitySharedQueriesCreateRequestParametersDatasetsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6857,7 +6855,7 @@ export const ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0Fi
   /*@__PURE__*/ S.String;
 
 export type ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItemCase0FiltersList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItemCase0FiltersList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -7033,7 +7031,7 @@ export const ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0Fi
   }) as any as S.Schema<ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItem>;
 
 export type ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersList =
-  ReadonlyArray<ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItem>;
+  Array<ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItem>;
 export const ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersList =
   /*@__PURE__*/ S.Array(
     ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItem,
@@ -7208,7 +7206,7 @@ export const ObservabilitySharedQueriesCreateRequestParametersFiltersItem =
   }) as any as S.Schema<ObservabilitySharedQueriesCreateRequestParametersFiltersItem>;
 
 export type ObservabilitySharedQueriesCreateRequestParametersFiltersList =
-  ReadonlyArray<ObservabilitySharedQueriesCreateRequestParametersFiltersItem>;
+  Array<ObservabilitySharedQueriesCreateRequestParametersFiltersItem>;
 export const ObservabilitySharedQueriesCreateRequestParametersFiltersList =
   /*@__PURE__*/ S.Array(
     ObservabilitySharedQueriesCreateRequestParametersFiltersItem,
@@ -7240,7 +7238,7 @@ export const ObservabilitySharedQueriesCreateRequestParametersGroupBysItem =
   }) as any as S.Schema<ObservabilitySharedQueriesCreateRequestParametersGroupBysItem>;
 
 export type ObservabilitySharedQueriesCreateRequestParametersGroupBysList =
-  ReadonlyArray<ObservabilitySharedQueriesCreateRequestParametersGroupBysItem>;
+  Array<ObservabilitySharedQueriesCreateRequestParametersGroupBysItem>;
 export const ObservabilitySharedQueriesCreateRequestParametersGroupBysList =
   /*@__PURE__*/ S.Array(
     ObservabilitySharedQueriesCreateRequestParametersGroupBysItem,
@@ -7274,7 +7272,7 @@ export const ObservabilitySharedQueriesCreateRequestParametersHavingsItem =
   }) as any as S.Schema<ObservabilitySharedQueriesCreateRequestParametersHavingsItem>;
 
 export type ObservabilitySharedQueriesCreateRequestParametersHavingsList =
-  ReadonlyArray<ObservabilitySharedQueriesCreateRequestParametersHavingsItem>;
+  Array<ObservabilitySharedQueriesCreateRequestParametersHavingsItem>;
 export const ObservabilitySharedQueriesCreateRequestParametersHavingsList =
   /*@__PURE__*/ S.Array(
     ObservabilitySharedQueriesCreateRequestParametersHavingsItem,
@@ -7566,15 +7564,14 @@ export const CreateScriptAssetUploadRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateScriptAssetUploadRequest",
 }) as any as S.Schema<CreateScriptAssetUploadRequest>;
 
-export type ScriptsAssetsUploadCreateResponseBucketsItemList =
-  ReadonlyArray<string>;
+export type ScriptsAssetsUploadCreateResponseBucketsItemList = Array<string>;
 export const ScriptsAssetsUploadCreateResponseBucketsItemList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ScriptsAssetsUploadCreateResponseBucketsItemList>;
 
 export type ScriptsAssetsUploadCreateResponseBucketsList =
-  ReadonlyArray<ScriptsAssetsUploadCreateResponseBucketsItemList>;
+  Array<ScriptsAssetsUploadCreateResponseBucketsItemList>;
 export const ScriptsAssetsUploadCreateResponseBucketsList =
   /*@__PURE__*/ S.Array(
     ScriptsAssetsUploadCreateResponseBucketsItemList,
@@ -7614,7 +7611,7 @@ export const ScriptsDeploymentsCreateRequestVersionsItem =
   }) as any as S.Schema<ScriptsDeploymentsCreateRequestVersionsItem>;
 
 export type ScriptsDeploymentsCreateRequestVersionsList =
-  ReadonlyArray<ScriptsDeploymentsCreateRequestVersionsItem>;
+  Array<ScriptsDeploymentsCreateRequestVersionsItem>;
 export const ScriptsDeploymentsCreateRequestVersionsList =
   /*@__PURE__*/ S.Array(
     ScriptsDeploymentsCreateRequestVersionsItem,
@@ -7688,7 +7685,7 @@ export const ScriptsDeploymentsCreateResponseVersionsItem =
   }) as any as S.Schema<ScriptsDeploymentsCreateResponseVersionsItem>;
 
 export type ScriptsDeploymentsCreateResponseVersionsList =
-  ReadonlyArray<ScriptsDeploymentsCreateResponseVersionsItem>;
+  Array<ScriptsDeploymentsCreateResponseVersionsItem>;
 export const ScriptsDeploymentsCreateResponseVersionsList =
   /*@__PURE__*/ S.Array(
     ScriptsDeploymentsCreateResponseVersionsItem,
@@ -7736,7 +7733,7 @@ export const CreateScriptDeploymentResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateScriptDeploymentResponse",
 }) as any as S.Schema<CreateScriptDeploymentResponse>;
 
-export type PutScriptMetadataStringList = ReadonlyArray<string>;
+export type PutScriptMetadataStringList = Array<string>;
 export const PutScriptMetadataStringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PutScriptMetadataStringList>;
@@ -8860,7 +8857,7 @@ export const CreateScriptEdgePreviewWranglerSessionConfigWorkersDev =
   }) as any as S.Schema<CreateScriptEdgePreviewWranglerSessionConfigWorkersDev>;
 
 export type CreateScriptEdgePreviewWranglerSessionConfigRoutesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CreateScriptEdgePreviewWranglerSessionConfigRoutesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -9283,7 +9280,7 @@ export const ScriptsVersionsCreateResponseResourcesBindingsItemDispatchNamespace
   }) as any as S.Schema<ScriptsVersionsCreateResponseResourcesBindingsItemDispatchNamespaceOutboundParamsItem>;
 
 export type ScriptsVersionsCreateResponseResourcesBindingsItemDispatchNamespaceOutboundParamsList =
-  ReadonlyArray<ScriptsVersionsCreateResponseResourcesBindingsItemDispatchNamespaceOutboundParamsItem>;
+  Array<ScriptsVersionsCreateResponseResourcesBindingsItemDispatchNamespaceOutboundParamsItem>;
 export const ScriptsVersionsCreateResponseResourcesBindingsItemDispatchNamespaceOutboundParamsList =
   /*@__PURE__*/ S.Array(
     ScriptsVersionsCreateResponseResourcesBindingsItemDispatchNamespaceOutboundParamsItem,
@@ -9744,14 +9741,14 @@ export const ScriptsVersionsCreateResponseResourcesBindingsItemSendEmailType =
   /*@__PURE__*/ S.String;
 
 export type ScriptsVersionsCreateResponseResourcesBindingsItemSendEmailAllowedDestinationAddressesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ScriptsVersionsCreateResponseResourcesBindingsItemSendEmailAllowedDestinationAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ScriptsVersionsCreateResponseResourcesBindingsItemSendEmailAllowedDestinationAddressesList>;
 
 export type ScriptsVersionsCreateResponseResourcesBindingsItemSendEmailAllowedSenderAddressesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ScriptsVersionsCreateResponseResourcesBindingsItemSendEmailAllowedSenderAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -9970,7 +9967,7 @@ export const ScriptsVersionsCreateResponseResourcesBindingsItemSecretKeyUsagesIt
   /*@__PURE__*/ S.String;
 
 export type ScriptsVersionsCreateResponseResourcesBindingsItemSecretKeyUsagesList =
-  ReadonlyArray<ScriptsVersionsCreateResponseResourcesBindingsItemSecretKeyUsagesItem>;
+  Array<ScriptsVersionsCreateResponseResourcesBindingsItemSecretKeyUsagesItem>;
 export const ScriptsVersionsCreateResponseResourcesBindingsItemSecretKeyUsagesList =
   /*@__PURE__*/ S.Array(
     ScriptsVersionsCreateResponseResourcesBindingsItemSecretKeyUsagesItem,
@@ -10343,21 +10340,21 @@ export const ScriptsVersionsCreateResponseResourcesBindingsItem =
   }) as any as S.Schema<ScriptsVersionsCreateResponseResourcesBindingsItem>;
 
 export type ScriptsVersionsCreateResponseResourcesBindingsList =
-  ReadonlyArray<ScriptsVersionsCreateResponseResourcesBindingsItem>;
+  Array<ScriptsVersionsCreateResponseResourcesBindingsItem>;
 export const ScriptsVersionsCreateResponseResourcesBindingsList =
   /*@__PURE__*/ S.Array(
     ScriptsVersionsCreateResponseResourcesBindingsItem,
   ) as any as S.Schema<ScriptsVersionsCreateResponseResourcesBindingsList>;
 
 export type ScriptsVersionsCreateResponseResourcesScriptHandlersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ScriptsVersionsCreateResponseResourcesScriptHandlersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ScriptsVersionsCreateResponseResourcesScriptHandlersList>;
 
 export type ScriptsVersionsCreateResponseResourcesScriptNamedHandlersItemHandlersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ScriptsVersionsCreateResponseResourcesScriptNamedHandlersItemHandlersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -10382,7 +10379,7 @@ export const ScriptsVersionsCreateResponseResourcesScriptNamedHandlersItem =
   }) as any as S.Schema<ScriptsVersionsCreateResponseResourcesScriptNamedHandlersItem>;
 
 export type ScriptsVersionsCreateResponseResourcesScriptNamedHandlersList =
-  ReadonlyArray<ScriptsVersionsCreateResponseResourcesScriptNamedHandlersItem>;
+  Array<ScriptsVersionsCreateResponseResourcesScriptNamedHandlersItem>;
 export const ScriptsVersionsCreateResponseResourcesScriptNamedHandlersList =
   /*@__PURE__*/ S.Array(
     ScriptsVersionsCreateResponseResourcesScriptNamedHandlersItem,
@@ -10417,7 +10414,7 @@ export const ScriptsVersionsCreateResponseResourcesScript =
   }) as any as S.Schema<ScriptsVersionsCreateResponseResourcesScript>;
 
 export type ScriptsVersionsCreateResponseResourcesScriptRuntimeCompatibilityFlagsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ScriptsVersionsCreateResponseResourcesScriptRuntimeCompatibilityFlagsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -10751,8 +10748,7 @@ export const ObservabilityDestinationsDeleteResponseConfiguration =
     identifier: "ObservabilityDestinationsDeleteResponseConfiguration",
   }) as any as S.Schema<ObservabilityDestinationsDeleteResponseConfiguration>;
 
-export type ObservabilityDestinationsDeleteResponseScriptsList =
-  ReadonlyArray<string>;
+export type ObservabilityDestinationsDeleteResponseScriptsList = Array<string>;
 export const ObservabilityDestinationsDeleteResponseScriptsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -11073,7 +11069,7 @@ export const GetBetaWorkerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetBetaWorkerRequest>;
 
 export type BetaWorkersGetResponseObservabilityLogsDestinationsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const BetaWorkersGetResponseObservabilityLogsDestinationsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -11107,7 +11103,7 @@ export const BetaWorkersGetResponseObservabilityLogs = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<BetaWorkersGetResponseObservabilityLogs>;
 
 export type BetaWorkersGetResponseObservabilityTracesDestinationsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const BetaWorkersGetResponseObservabilityTracesDestinationsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -11195,7 +11191,7 @@ export const BetaWorkersGetResponseReferencesDispatchNamespaceOutboundsItem =
   }) as any as S.Schema<BetaWorkersGetResponseReferencesDispatchNamespaceOutboundsItem>;
 
 export type BetaWorkersGetResponseReferencesDispatchNamespaceOutboundsList =
-  ReadonlyArray<BetaWorkersGetResponseReferencesDispatchNamespaceOutboundsItem>;
+  Array<BetaWorkersGetResponseReferencesDispatchNamespaceOutboundsItem>;
 export const BetaWorkersGetResponseReferencesDispatchNamespaceOutboundsList =
   /*@__PURE__*/ S.Array(
     BetaWorkersGetResponseReferencesDispatchNamespaceOutboundsItem,
@@ -11227,7 +11223,7 @@ export const BetaWorkersGetResponseReferencesDomainsItem =
   }) as any as S.Schema<BetaWorkersGetResponseReferencesDomainsItem>;
 
 export type BetaWorkersGetResponseReferencesDomainsList =
-  ReadonlyArray<BetaWorkersGetResponseReferencesDomainsItem>;
+  Array<BetaWorkersGetResponseReferencesDomainsItem>;
 export const BetaWorkersGetResponseReferencesDomainsList =
   /*@__PURE__*/ S.Array(
     BetaWorkersGetResponseReferencesDomainsItem,
@@ -11256,7 +11252,7 @@ export const BetaWorkersGetResponseReferencesDurableObjectsItem =
   }) as any as S.Schema<BetaWorkersGetResponseReferencesDurableObjectsItem>;
 
 export type BetaWorkersGetResponseReferencesDurableObjectsList =
-  ReadonlyArray<BetaWorkersGetResponseReferencesDurableObjectsItem>;
+  Array<BetaWorkersGetResponseReferencesDurableObjectsItem>;
 export const BetaWorkersGetResponseReferencesDurableObjectsList =
   /*@__PURE__*/ S.Array(
     BetaWorkersGetResponseReferencesDurableObjectsItem,
@@ -11282,7 +11278,7 @@ export const BetaWorkersGetResponseReferencesQueuesItem =
   }) as any as S.Schema<BetaWorkersGetResponseReferencesQueuesItem>;
 
 export type BetaWorkersGetResponseReferencesQueuesList =
-  ReadonlyArray<BetaWorkersGetResponseReferencesQueuesItem>;
+  Array<BetaWorkersGetResponseReferencesQueuesItem>;
 export const BetaWorkersGetResponseReferencesQueuesList = /*@__PURE__*/ S.Array(
   BetaWorkersGetResponseReferencesQueuesItem,
 ) as any as S.Schema<BetaWorkersGetResponseReferencesQueuesList>;
@@ -11304,7 +11300,7 @@ export const BetaWorkersGetResponseReferencesWorkersItem =
   }) as any as S.Schema<BetaWorkersGetResponseReferencesWorkersItem>;
 
 export type BetaWorkersGetResponseReferencesWorkersList =
-  ReadonlyArray<BetaWorkersGetResponseReferencesWorkersItem>;
+  Array<BetaWorkersGetResponseReferencesWorkersItem>;
 export const BetaWorkersGetResponseReferencesWorkersList =
   /*@__PURE__*/ S.Array(
     BetaWorkersGetResponseReferencesWorkersItem,
@@ -11354,7 +11350,7 @@ export const BetaWorkersGetResponseSubdomain = /*@__PURE__*/ S.suspend(() =>
   identifier: "BetaWorkersGetResponseSubdomain",
 }) as any as S.Schema<BetaWorkersGetResponseSubdomain>;
 
-export type BetaWorkersGetResponseTagsList = ReadonlyArray<string>;
+export type BetaWorkersGetResponseTagsList = Array<string>;
 export const BetaWorkersGetResponseTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BetaWorkersGetResponseTagsList>;
@@ -11373,7 +11369,7 @@ export const BetaWorkersGetResponseTailConsumersItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<BetaWorkersGetResponseTailConsumersItem>;
 
 export type BetaWorkersGetResponseTailConsumersList =
-  ReadonlyArray<BetaWorkersGetResponseTailConsumersItem>;
+  Array<BetaWorkersGetResponseTailConsumersItem>;
 export const BetaWorkersGetResponseTailConsumersList = /*@__PURE__*/ S.Array(
   BetaWorkersGetResponseTailConsumersItem,
 ) as any as S.Schema<BetaWorkersGetResponseTailConsumersList>;
@@ -11455,7 +11451,7 @@ export const GetBetaWorkerVersionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetBetaWorkerVersionRequest",
 }) as any as S.Schema<GetBetaWorkerVersionRequest>;
 
-export type BetaWorkersVersionsGetResponseUrlsList = ReadonlyArray<string>;
+export type BetaWorkersVersionsGetResponseUrlsList = Array<string>;
 export const BetaWorkersVersionsGetResponseUrlsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BetaWorkersVersionsGetResponseUrlsList>;
@@ -11497,7 +11493,7 @@ export const BetaWorkersVersionsGetResponseAssetsConfigNotFoundHandling =
   /*@__PURE__*/ S.String;
 
 export type BetaWorkersVersionsGetResponseAssetsConfigRunWorkerFirstCase0List =
-  ReadonlyArray<string>;
+  Array<string>;
 export const BetaWorkersVersionsGetResponseAssetsConfigRunWorkerFirstCase0List =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -11761,7 +11757,7 @@ export const BetaWorkersVersionsGetResponseBindingsItemDispatchNamespaceOutbound
   }) as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemDispatchNamespaceOutboundParamsItem>;
 
 export type BetaWorkersVersionsGetResponseBindingsItemDispatchNamespaceOutboundParamsList =
-  ReadonlyArray<BetaWorkersVersionsGetResponseBindingsItemDispatchNamespaceOutboundParamsItem>;
+  Array<BetaWorkersVersionsGetResponseBindingsItemDispatchNamespaceOutboundParamsItem>;
 export const BetaWorkersVersionsGetResponseBindingsItemDispatchNamespaceOutboundParamsList =
   /*@__PURE__*/ S.Array(
     BetaWorkersVersionsGetResponseBindingsItemDispatchNamespaceOutboundParamsItem,
@@ -12217,14 +12213,14 @@ export const BetaWorkersVersionsGetResponseBindingsItemSendEmailType =
   /*@__PURE__*/ S.String;
 
 export type BetaWorkersVersionsGetResponseBindingsItemSendEmailAllowedDestinationAddressesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const BetaWorkersVersionsGetResponseBindingsItemSendEmailAllowedDestinationAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemSendEmailAllowedDestinationAddressesList>;
 
 export type BetaWorkersVersionsGetResponseBindingsItemSendEmailAllowedSenderAddressesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const BetaWorkersVersionsGetResponseBindingsItemSendEmailAllowedSenderAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -12439,7 +12435,7 @@ export const BetaWorkersVersionsGetResponseBindingsItemSecretKeyUsagesItem =
   /*@__PURE__*/ S.String;
 
 export type BetaWorkersVersionsGetResponseBindingsItemSecretKeyUsagesList =
-  ReadonlyArray<BetaWorkersVersionsGetResponseBindingsItemSecretKeyUsagesItem>;
+  Array<BetaWorkersVersionsGetResponseBindingsItemSecretKeyUsagesItem>;
 export const BetaWorkersVersionsGetResponseBindingsItemSecretKeyUsagesList =
   /*@__PURE__*/ S.Array(
     BetaWorkersVersionsGetResponseBindingsItemSecretKeyUsagesItem,
@@ -12810,7 +12806,7 @@ export const BetaWorkersVersionsGetResponseBindingsItem =
   }) as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItem>;
 
 export type BetaWorkersVersionsGetResponseBindingsList =
-  ReadonlyArray<BetaWorkersVersionsGetResponseBindingsItem>;
+  Array<BetaWorkersVersionsGetResponseBindingsItem>;
 export const BetaWorkersVersionsGetResponseBindingsList = /*@__PURE__*/ S.Array(
   BetaWorkersVersionsGetResponseBindingsItem,
 ) as any as S.Schema<BetaWorkersVersionsGetResponseBindingsList>;
@@ -12834,7 +12830,7 @@ export const BetaWorkersVersionsGetResponseCacheOptions =
   }) as any as S.Schema<BetaWorkersVersionsGetResponseCacheOptions>;
 
 export type BetaWorkersVersionsGetResponseCompatibilityFlagsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const BetaWorkersVersionsGetResponseCompatibilityFlagsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -12854,7 +12850,7 @@ export const BetaWorkersVersionsGetResponseContainersItem =
   }) as any as S.Schema<BetaWorkersVersionsGetResponseContainersItem>;
 
 export type BetaWorkersVersionsGetResponseContainersList =
-  ReadonlyArray<BetaWorkersVersionsGetResponseContainersItem>;
+  Array<BetaWorkersVersionsGetResponseContainersItem>;
 export const BetaWorkersVersionsGetResponseContainersList =
   /*@__PURE__*/ S.Array(
     BetaWorkersVersionsGetResponseContainersItem,
@@ -12877,21 +12873,21 @@ export const BetaWorkersVersionsGetResponseLimits = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<BetaWorkersVersionsGetResponseLimits>;
 
 export type BetaWorkersVersionsGetResponseMigrationsSingleStepMigrationDeletedClassesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const BetaWorkersVersionsGetResponseMigrationsSingleStepMigrationDeletedClassesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<BetaWorkersVersionsGetResponseMigrationsSingleStepMigrationDeletedClassesList>;
 
 export type BetaWorkersVersionsGetResponseMigrationsSingleStepMigrationNewClassesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const BetaWorkersVersionsGetResponseMigrationsSingleStepMigrationNewClassesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<BetaWorkersVersionsGetResponseMigrationsSingleStepMigrationNewClassesList>;
 
 export type BetaWorkersVersionsGetResponseMigrationsSingleStepMigrationNewSqliteClassesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const BetaWorkersVersionsGetResponseMigrationsSingleStepMigrationNewSqliteClassesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -12913,7 +12909,7 @@ export const BetaWorkersVersionsGetResponseMigrationsSingleStepMigrationRenamedC
   }) as any as S.Schema<BetaWorkersVersionsGetResponseMigrationsSingleStepMigrationRenamedClassesItem>;
 
 export type BetaWorkersVersionsGetResponseMigrationsSingleStepMigrationRenamedClassesList =
-  ReadonlyArray<BetaWorkersVersionsGetResponseMigrationsSingleStepMigrationRenamedClassesItem>;
+  Array<BetaWorkersVersionsGetResponseMigrationsSingleStepMigrationRenamedClassesItem>;
 export const BetaWorkersVersionsGetResponseMigrationsSingleStepMigrationRenamedClassesList =
   /*@__PURE__*/ S.Array(
     BetaWorkersVersionsGetResponseMigrationsSingleStepMigrationRenamedClassesItem,
@@ -12937,7 +12933,7 @@ export const BetaWorkersVersionsGetResponseMigrationsSingleStepMigrationTransfer
   }) as any as S.Schema<BetaWorkersVersionsGetResponseMigrationsSingleStepMigrationTransferredClassesItem>;
 
 export type BetaWorkersVersionsGetResponseMigrationsSingleStepMigrationTransferredClassesList =
-  ReadonlyArray<BetaWorkersVersionsGetResponseMigrationsSingleStepMigrationTransferredClassesItem>;
+  Array<BetaWorkersVersionsGetResponseMigrationsSingleStepMigrationTransferredClassesItem>;
 export const BetaWorkersVersionsGetResponseMigrationsSingleStepMigrationTransferredClassesList =
   /*@__PURE__*/ S.Array(
     BetaWorkersVersionsGetResponseMigrationsSingleStepMigrationTransferredClassesItem,
@@ -12995,21 +12991,21 @@ export const BetaWorkersVersionsGetResponseMigrationsSingleStepMigration =
   }) as any as S.Schema<BetaWorkersVersionsGetResponseMigrationsSingleStepMigration>;
 
 export type BetaWorkersVersionsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemDeletedClassesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const BetaWorkersVersionsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemDeletedClassesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<BetaWorkersVersionsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemDeletedClassesList>;
 
 export type BetaWorkersVersionsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemNewClassesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const BetaWorkersVersionsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemNewClassesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<BetaWorkersVersionsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemNewClassesList>;
 
 export type BetaWorkersVersionsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemNewSqliteClassesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const BetaWorkersVersionsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemNewSqliteClassesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -13031,7 +13027,7 @@ export const BetaWorkersVersionsGetResponseMigrationsWorkersMultipleStepMigratio
   }) as any as S.Schema<BetaWorkersVersionsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesItem>;
 
 export type BetaWorkersVersionsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesList =
-  ReadonlyArray<BetaWorkersVersionsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesItem>;
+  Array<BetaWorkersVersionsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesItem>;
 export const BetaWorkersVersionsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesList =
   /*@__PURE__*/ S.Array(
     BetaWorkersVersionsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesItem,
@@ -13055,7 +13051,7 @@ export const BetaWorkersVersionsGetResponseMigrationsWorkersMultipleStepMigratio
   }) as any as S.Schema<BetaWorkersVersionsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesItem>;
 
 export type BetaWorkersVersionsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesList =
-  ReadonlyArray<BetaWorkersVersionsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesItem>;
+  Array<BetaWorkersVersionsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesItem>;
 export const BetaWorkersVersionsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesList =
   /*@__PURE__*/ S.Array(
     BetaWorkersVersionsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesItem,
@@ -13108,7 +13104,7 @@ export const BetaWorkersVersionsGetResponseMigrationsWorkersMultipleStepMigratio
   }) as any as S.Schema<BetaWorkersVersionsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItem>;
 
 export type BetaWorkersVersionsGetResponseMigrationsWorkersMultipleStepMigrationsStepsList =
-  ReadonlyArray<BetaWorkersVersionsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItem>;
+  Array<BetaWorkersVersionsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItem>;
 export const BetaWorkersVersionsGetResponseMigrationsWorkersMultipleStepMigrationsStepsList =
   /*@__PURE__*/ S.Array(
     BetaWorkersVersionsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItem,
@@ -13212,7 +13208,7 @@ export const BetaWorkersVersionsGetResponseModulesItem =
   }) as any as S.Schema<BetaWorkersVersionsGetResponseModulesItem>;
 
 export type BetaWorkersVersionsGetResponseModulesList =
-  ReadonlyArray<BetaWorkersVersionsGetResponseModulesItem>;
+  Array<BetaWorkersVersionsGetResponseModulesItem>;
 export const BetaWorkersVersionsGetResponseModulesList = /*@__PURE__*/ S.Array(
   BetaWorkersVersionsGetResponseModulesItem,
 ) as any as S.Schema<BetaWorkersVersionsGetResponseModulesList>;
@@ -13237,7 +13233,7 @@ export const BetaWorkersVersionsGetResponsePackageDependenciesItem =
   }) as any as S.Schema<BetaWorkersVersionsGetResponsePackageDependenciesItem>;
 
 export type BetaWorkersVersionsGetResponsePackageDependenciesList =
-  ReadonlyArray<BetaWorkersVersionsGetResponsePackageDependenciesItem>;
+  Array<BetaWorkersVersionsGetResponsePackageDependenciesItem>;
 export const BetaWorkersVersionsGetResponsePackageDependenciesList =
   /*@__PURE__*/ S.Array(
     BetaWorkersVersionsGetResponsePackageDependenciesItem,
@@ -13423,7 +13419,7 @@ export const BetaWorkersVersionsGetResponsePlacementCase7TargetItem =
   }) as any as S.Schema<BetaWorkersVersionsGetResponsePlacementCase7TargetItem>;
 
 export type BetaWorkersVersionsGetResponsePlacementCase7TargetList =
-  ReadonlyArray<BetaWorkersVersionsGetResponsePlacementCase7TargetItem>;
+  Array<BetaWorkersVersionsGetResponsePlacementCase7TargetItem>;
 export const BetaWorkersVersionsGetResponsePlacementCase7TargetList =
   /*@__PURE__*/ S.Array(
     BetaWorkersVersionsGetResponsePlacementCase7TargetItem,
@@ -13731,14 +13727,14 @@ export const ObservabilitySharedQueriesGetResponseRunQueryParametersCalculations
   }) as any as S.Schema<ObservabilitySharedQueriesGetResponseRunQueryParametersCalculationsItem>;
 
 export type ObservabilitySharedQueriesGetResponseRunQueryParametersCalculationsList =
-  ReadonlyArray<ObservabilitySharedQueriesGetResponseRunQueryParametersCalculationsItem>;
+  Array<ObservabilitySharedQueriesGetResponseRunQueryParametersCalculationsItem>;
 export const ObservabilitySharedQueriesGetResponseRunQueryParametersCalculationsList =
   /*@__PURE__*/ S.Array(
     ObservabilitySharedQueriesGetResponseRunQueryParametersCalculationsItem,
   ) as any as S.Schema<ObservabilitySharedQueriesGetResponseRunQueryParametersCalculationsList>;
 
 export type ObservabilitySharedQueriesGetResponseRunQueryParametersDatasetsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ObservabilitySharedQueriesGetResponseRunQueryParametersDatasetsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -13755,7 +13751,7 @@ export const ObservabilitySharedQueriesGetResponseRunQueryParametersFiltersItemC
   /*@__PURE__*/ S.String;
 
 export type ObservabilitySharedQueriesGetResponseRunQueryParametersFiltersItemCase0FiltersList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const ObservabilitySharedQueriesGetResponseRunQueryParametersFiltersItemCase0FiltersList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -13913,7 +13909,7 @@ export const ObservabilitySharedQueriesGetResponseRunQueryParametersFiltersItem 
   }) as any as S.Schema<ObservabilitySharedQueriesGetResponseRunQueryParametersFiltersItem>;
 
 export type ObservabilitySharedQueriesGetResponseRunQueryParametersFiltersList =
-  ReadonlyArray<ObservabilitySharedQueriesGetResponseRunQueryParametersFiltersItem>;
+  Array<ObservabilitySharedQueriesGetResponseRunQueryParametersFiltersItem>;
 export const ObservabilitySharedQueriesGetResponseRunQueryParametersFiltersList =
   /*@__PURE__*/ S.Array(
     ObservabilitySharedQueriesGetResponseRunQueryParametersFiltersItem,
@@ -13940,7 +13936,7 @@ export const ObservabilitySharedQueriesGetResponseRunQueryParametersGroupBysItem
   }) as any as S.Schema<ObservabilitySharedQueriesGetResponseRunQueryParametersGroupBysItem>;
 
 export type ObservabilitySharedQueriesGetResponseRunQueryParametersGroupBysList =
-  ReadonlyArray<ObservabilitySharedQueriesGetResponseRunQueryParametersGroupBysItem>;
+  Array<ObservabilitySharedQueriesGetResponseRunQueryParametersGroupBysItem>;
 export const ObservabilitySharedQueriesGetResponseRunQueryParametersGroupBysList =
   /*@__PURE__*/ S.Array(
     ObservabilitySharedQueriesGetResponseRunQueryParametersGroupBysItem,
@@ -13970,7 +13966,7 @@ export const ObservabilitySharedQueriesGetResponseRunQueryParametersHavingsItem 
   }) as any as S.Schema<ObservabilitySharedQueriesGetResponseRunQueryParametersHavingsItem>;
 
 export type ObservabilitySharedQueriesGetResponseRunQueryParametersHavingsList =
-  ReadonlyArray<ObservabilitySharedQueriesGetResponseRunQueryParametersHavingsItem>;
+  Array<ObservabilitySharedQueriesGetResponseRunQueryParametersHavingsItem>;
 export const ObservabilitySharedQueriesGetResponseRunQueryParametersHavingsList =
   /*@__PURE__*/ S.Array(
     ObservabilitySharedQueriesGetResponseRunQueryParametersHavingsItem,
@@ -14254,7 +14250,7 @@ export const ObservabilitySharedQueriesGetResponseAgentsItem =
   }) as any as S.Schema<ObservabilitySharedQueriesGetResponseAgentsItem>;
 
 export type ObservabilitySharedQueriesGetResponseAgentsList =
-  ReadonlyArray<ObservabilitySharedQueriesGetResponseAgentsItem>;
+  Array<ObservabilitySharedQueriesGetResponseAgentsItem>;
 export const ObservabilitySharedQueriesGetResponseAgentsList =
   /*@__PURE__*/ S.Array(
     ObservabilitySharedQueriesGetResponseAgentsItem,
@@ -14282,7 +14278,7 @@ export const ObservabilitySharedQueriesGetResponseCalculationsItemAggregatesItem
   }) as any as S.Schema<ObservabilitySharedQueriesGetResponseCalculationsItemAggregatesItemGroupsItem>;
 
 export type ObservabilitySharedQueriesGetResponseCalculationsItemAggregatesItemGroupsList =
-  ReadonlyArray<ObservabilitySharedQueriesGetResponseCalculationsItemAggregatesItemGroupsItem>;
+  Array<ObservabilitySharedQueriesGetResponseCalculationsItemAggregatesItemGroupsItem>;
 export const ObservabilitySharedQueriesGetResponseCalculationsItemAggregatesItemGroupsList =
   /*@__PURE__*/ S.Array(
     ObservabilitySharedQueriesGetResponseCalculationsItemAggregatesItemGroupsItem,
@@ -14312,7 +14308,7 @@ export const ObservabilitySharedQueriesGetResponseCalculationsItemAggregatesItem
   }) as any as S.Schema<ObservabilitySharedQueriesGetResponseCalculationsItemAggregatesItem>;
 
 export type ObservabilitySharedQueriesGetResponseCalculationsItemAggregatesList =
-  ReadonlyArray<ObservabilitySharedQueriesGetResponseCalculationsItemAggregatesItem>;
+  Array<ObservabilitySharedQueriesGetResponseCalculationsItemAggregatesItem>;
 export const ObservabilitySharedQueriesGetResponseCalculationsItemAggregatesList =
   /*@__PURE__*/ S.Array(
     ObservabilitySharedQueriesGetResponseCalculationsItemAggregatesItem,
@@ -14340,7 +14336,7 @@ export const ObservabilitySharedQueriesGetResponseCalculationsItemSeriesItemData
   }) as any as S.Schema<ObservabilitySharedQueriesGetResponseCalculationsItemSeriesItemDataItemGroupsItem>;
 
 export type ObservabilitySharedQueriesGetResponseCalculationsItemSeriesItemDataItemGroupsList =
-  ReadonlyArray<ObservabilitySharedQueriesGetResponseCalculationsItemSeriesItemDataItemGroupsItem>;
+  Array<ObservabilitySharedQueriesGetResponseCalculationsItemSeriesItemDataItemGroupsItem>;
 export const ObservabilitySharedQueriesGetResponseCalculationsItemSeriesItemDataItemGroupsList =
   /*@__PURE__*/ S.Array(
     ObservabilitySharedQueriesGetResponseCalculationsItemSeriesItemDataItemGroupsItem,
@@ -14374,7 +14370,7 @@ export const ObservabilitySharedQueriesGetResponseCalculationsItemSeriesItemData
   }) as any as S.Schema<ObservabilitySharedQueriesGetResponseCalculationsItemSeriesItemDataItem>;
 
 export type ObservabilitySharedQueriesGetResponseCalculationsItemSeriesItemDataList =
-  ReadonlyArray<ObservabilitySharedQueriesGetResponseCalculationsItemSeriesItemDataItem>;
+  Array<ObservabilitySharedQueriesGetResponseCalculationsItemSeriesItemDataItem>;
 export const ObservabilitySharedQueriesGetResponseCalculationsItemSeriesItemDataList =
   /*@__PURE__*/ S.Array(
     ObservabilitySharedQueriesGetResponseCalculationsItemSeriesItemDataItem,
@@ -14396,7 +14392,7 @@ export const ObservabilitySharedQueriesGetResponseCalculationsItemSeriesItem =
   }) as any as S.Schema<ObservabilitySharedQueriesGetResponseCalculationsItemSeriesItem>;
 
 export type ObservabilitySharedQueriesGetResponseCalculationsItemSeriesList =
-  ReadonlyArray<ObservabilitySharedQueriesGetResponseCalculationsItemSeriesItem>;
+  Array<ObservabilitySharedQueriesGetResponseCalculationsItemSeriesItem>;
 export const ObservabilitySharedQueriesGetResponseCalculationsItemSeriesList =
   /*@__PURE__*/ S.Array(
     ObservabilitySharedQueriesGetResponseCalculationsItemSeriesItem,
@@ -14422,7 +14418,7 @@ export const ObservabilitySharedQueriesGetResponseCalculationsItem =
   }) as any as S.Schema<ObservabilitySharedQueriesGetResponseCalculationsItem>;
 
 export type ObservabilitySharedQueriesGetResponseCalculationsList =
-  ReadonlyArray<ObservabilitySharedQueriesGetResponseCalculationsItem>;
+  Array<ObservabilitySharedQueriesGetResponseCalculationsItem>;
 export const ObservabilitySharedQueriesGetResponseCalculationsList =
   /*@__PURE__*/ S.Array(
     ObservabilitySharedQueriesGetResponseCalculationsItem,
@@ -14450,7 +14446,7 @@ export const ObservabilitySharedQueriesGetResponseCompareItemAggregatesItemGroup
   }) as any as S.Schema<ObservabilitySharedQueriesGetResponseCompareItemAggregatesItemGroupsItem>;
 
 export type ObservabilitySharedQueriesGetResponseCompareItemAggregatesItemGroupsList =
-  ReadonlyArray<ObservabilitySharedQueriesGetResponseCompareItemAggregatesItemGroupsItem>;
+  Array<ObservabilitySharedQueriesGetResponseCompareItemAggregatesItemGroupsItem>;
 export const ObservabilitySharedQueriesGetResponseCompareItemAggregatesItemGroupsList =
   /*@__PURE__*/ S.Array(
     ObservabilitySharedQueriesGetResponseCompareItemAggregatesItemGroupsItem,
@@ -14480,7 +14476,7 @@ export const ObservabilitySharedQueriesGetResponseCompareItemAggregatesItem =
   }) as any as S.Schema<ObservabilitySharedQueriesGetResponseCompareItemAggregatesItem>;
 
 export type ObservabilitySharedQueriesGetResponseCompareItemAggregatesList =
-  ReadonlyArray<ObservabilitySharedQueriesGetResponseCompareItemAggregatesItem>;
+  Array<ObservabilitySharedQueriesGetResponseCompareItemAggregatesItem>;
 export const ObservabilitySharedQueriesGetResponseCompareItemAggregatesList =
   /*@__PURE__*/ S.Array(
     ObservabilitySharedQueriesGetResponseCompareItemAggregatesItem,
@@ -14508,7 +14504,7 @@ export const ObservabilitySharedQueriesGetResponseCompareItemSeriesItemDataItemG
   }) as any as S.Schema<ObservabilitySharedQueriesGetResponseCompareItemSeriesItemDataItemGroupsItem>;
 
 export type ObservabilitySharedQueriesGetResponseCompareItemSeriesItemDataItemGroupsList =
-  ReadonlyArray<ObservabilitySharedQueriesGetResponseCompareItemSeriesItemDataItemGroupsItem>;
+  Array<ObservabilitySharedQueriesGetResponseCompareItemSeriesItemDataItemGroupsItem>;
 export const ObservabilitySharedQueriesGetResponseCompareItemSeriesItemDataItemGroupsList =
   /*@__PURE__*/ S.Array(
     ObservabilitySharedQueriesGetResponseCompareItemSeriesItemDataItemGroupsItem,
@@ -14542,7 +14538,7 @@ export const ObservabilitySharedQueriesGetResponseCompareItemSeriesItemDataItem 
   }) as any as S.Schema<ObservabilitySharedQueriesGetResponseCompareItemSeriesItemDataItem>;
 
 export type ObservabilitySharedQueriesGetResponseCompareItemSeriesItemDataList =
-  ReadonlyArray<ObservabilitySharedQueriesGetResponseCompareItemSeriesItemDataItem>;
+  Array<ObservabilitySharedQueriesGetResponseCompareItemSeriesItemDataItem>;
 export const ObservabilitySharedQueriesGetResponseCompareItemSeriesItemDataList =
   /*@__PURE__*/ S.Array(
     ObservabilitySharedQueriesGetResponseCompareItemSeriesItemDataItem,
@@ -14563,7 +14559,7 @@ export const ObservabilitySharedQueriesGetResponseCompareItemSeriesItem =
   }) as any as S.Schema<ObservabilitySharedQueriesGetResponseCompareItemSeriesItem>;
 
 export type ObservabilitySharedQueriesGetResponseCompareItemSeriesList =
-  ReadonlyArray<ObservabilitySharedQueriesGetResponseCompareItemSeriesItem>;
+  Array<ObservabilitySharedQueriesGetResponseCompareItemSeriesItem>;
 export const ObservabilitySharedQueriesGetResponseCompareItemSeriesList =
   /*@__PURE__*/ S.Array(
     ObservabilitySharedQueriesGetResponseCompareItemSeriesItem,
@@ -14589,7 +14585,7 @@ export const ObservabilitySharedQueriesGetResponseCompareItem =
   }) as any as S.Schema<ObservabilitySharedQueriesGetResponseCompareItem>;
 
 export type ObservabilitySharedQueriesGetResponseCompareList =
-  ReadonlyArray<ObservabilitySharedQueriesGetResponseCompareItem>;
+  Array<ObservabilitySharedQueriesGetResponseCompareItem>;
 export const ObservabilitySharedQueriesGetResponseCompareList =
   /*@__PURE__*/ S.Array(
     ObservabilitySharedQueriesGetResponseCompareItem,
@@ -14862,7 +14858,7 @@ export const ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersCase1Di
   }) as any as S.Schema<ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersCase1DiagnosticsChannelEventsItem>;
 
 export type ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersCase1DiagnosticsChannelEventsList =
-  ReadonlyArray<ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersCase1DiagnosticsChannelEventsItem>;
+  Array<ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersCase1DiagnosticsChannelEventsItem>;
 export const ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersCase1DiagnosticsChannelEventsList =
   /*@__PURE__*/ S.Array(
     ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersCase1DiagnosticsChannelEventsItem,
@@ -15090,7 +15086,7 @@ export const ObservabilitySharedQueriesGetResponseEventsEventsItem =
   }) as any as S.Schema<ObservabilitySharedQueriesGetResponseEventsEventsItem>;
 
 export type ObservabilitySharedQueriesGetResponseEventsEventsList =
-  ReadonlyArray<ObservabilitySharedQueriesGetResponseEventsEventsItem>;
+  Array<ObservabilitySharedQueriesGetResponseEventsEventsItem>;
 export const ObservabilitySharedQueriesGetResponseEventsEventsList =
   /*@__PURE__*/ S.Array(
     ObservabilitySharedQueriesGetResponseEventsEventsItem,
@@ -15113,7 +15109,7 @@ export const ObservabilitySharedQueriesGetResponseEventsFieldsItem =
   }) as any as S.Schema<ObservabilitySharedQueriesGetResponseEventsFieldsItem>;
 
 export type ObservabilitySharedQueriesGetResponseEventsFieldsList =
-  ReadonlyArray<ObservabilitySharedQueriesGetResponseEventsFieldsItem>;
+  Array<ObservabilitySharedQueriesGetResponseEventsFieldsItem>;
 export const ObservabilitySharedQueriesGetResponseEventsFieldsList =
   /*@__PURE__*/ S.Array(
     ObservabilitySharedQueriesGetResponseEventsFieldsItem,
@@ -15172,7 +15168,7 @@ export const ObservabilitySharedQueriesGetResponseEventsSeriesItemDataItem =
   }) as any as S.Schema<ObservabilitySharedQueriesGetResponseEventsSeriesItemDataItem>;
 
 export type ObservabilitySharedQueriesGetResponseEventsSeriesItemDataList =
-  ReadonlyArray<ObservabilitySharedQueriesGetResponseEventsSeriesItemDataItem>;
+  Array<ObservabilitySharedQueriesGetResponseEventsSeriesItemDataItem>;
 export const ObservabilitySharedQueriesGetResponseEventsSeriesItemDataList =
   /*@__PURE__*/ S.Array(
     ObservabilitySharedQueriesGetResponseEventsSeriesItemDataItem,
@@ -15193,7 +15189,7 @@ export const ObservabilitySharedQueriesGetResponseEventsSeriesItem =
   }) as any as S.Schema<ObservabilitySharedQueriesGetResponseEventsSeriesItem>;
 
 export type ObservabilitySharedQueriesGetResponseEventsSeriesList =
-  ReadonlyArray<ObservabilitySharedQueriesGetResponseEventsSeriesItem>;
+  Array<ObservabilitySharedQueriesGetResponseEventsSeriesItem>;
 export const ObservabilitySharedQueriesGetResponseEventsSeriesList =
   /*@__PURE__*/ S.Array(
     ObservabilitySharedQueriesGetResponseEventsSeriesItem,
@@ -15489,7 +15485,7 @@ export const ObservabilitySharedQueriesGetResponseInvocationsValueItemWorkersCas
   }) as any as S.Schema<ObservabilitySharedQueriesGetResponseInvocationsValueItemWorkersCase1DiagnosticsChannelEventsItem>;
 
 export type ObservabilitySharedQueriesGetResponseInvocationsValueItemWorkersCase1DiagnosticsChannelEventsList =
-  ReadonlyArray<ObservabilitySharedQueriesGetResponseInvocationsValueItemWorkersCase1DiagnosticsChannelEventsItem>;
+  Array<ObservabilitySharedQueriesGetResponseInvocationsValueItemWorkersCase1DiagnosticsChannelEventsItem>;
 export const ObservabilitySharedQueriesGetResponseInvocationsValueItemWorkersCase1DiagnosticsChannelEventsList =
   /*@__PURE__*/ S.Array(
     ObservabilitySharedQueriesGetResponseInvocationsValueItemWorkersCase1DiagnosticsChannelEventsItem,
@@ -15718,7 +15714,7 @@ export const ObservabilitySharedQueriesGetResponseInvocationsValueItem =
   }) as any as S.Schema<ObservabilitySharedQueriesGetResponseInvocationsValueItem>;
 
 export type ObservabilitySharedQueriesGetResponseInvocationsValueList =
-  ReadonlyArray<ObservabilitySharedQueriesGetResponseInvocationsValueItem>;
+  Array<ObservabilitySharedQueriesGetResponseInvocationsValueItem>;
 export const ObservabilitySharedQueriesGetResponseInvocationsValueList =
   /*@__PURE__*/ S.Array(
     ObservabilitySharedQueriesGetResponseInvocationsValueItem,
@@ -15736,14 +15732,14 @@ export const ObservabilitySharedQueriesGetResponseInvocationsMap =
   ) as any as S.Schema<ObservabilitySharedQueriesGetResponseInvocationsMap>;
 
 export type ObservabilitySharedQueriesGetResponseTracesItemServiceList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ObservabilitySharedQueriesGetResponseTracesItemServiceList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ObservabilitySharedQueriesGetResponseTracesItemServiceList>;
 
 export type ObservabilitySharedQueriesGetResponseTracesItemErrorsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ObservabilitySharedQueriesGetResponseTracesItemErrorsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -15789,7 +15785,7 @@ export const ObservabilitySharedQueriesGetResponseTracesItem =
   }) as any as S.Schema<ObservabilitySharedQueriesGetResponseTracesItem>;
 
 export type ObservabilitySharedQueriesGetResponseTracesList =
-  ReadonlyArray<ObservabilitySharedQueriesGetResponseTracesItem>;
+  Array<ObservabilitySharedQueriesGetResponseTracesItem>;
 export const ObservabilitySharedQueriesGetResponseTracesList =
   /*@__PURE__*/ S.Array(
     ObservabilitySharedQueriesGetResponseTracesItem,
@@ -15978,7 +15974,7 @@ export const ScriptsDeploymentsGetResponseVersionsItem =
   }) as any as S.Schema<ScriptsDeploymentsGetResponseVersionsItem>;
 
 export type ScriptsDeploymentsGetResponseVersionsList =
-  ReadonlyArray<ScriptsDeploymentsGetResponseVersionsItem>;
+  Array<ScriptsDeploymentsGetResponseVersionsItem>;
 export const ScriptsDeploymentsGetResponseVersionsList = /*@__PURE__*/ S.Array(
   ScriptsDeploymentsGetResponseVersionsItem,
 ) as any as S.Schema<ScriptsDeploymentsGetResponseVersionsList>;
@@ -16065,7 +16061,7 @@ export const ScriptsSchedulesGetResponseSchedulesItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ScriptsSchedulesGetResponseSchedulesItem>;
 
 export type ScriptsSchedulesGetResponseSchedulesList =
-  ReadonlyArray<ScriptsSchedulesGetResponseSchedulesItem>;
+  Array<ScriptsSchedulesGetResponseSchedulesItem>;
 export const ScriptsSchedulesGetResponseSchedulesList = /*@__PURE__*/ S.Array(
   ScriptsSchedulesGetResponseSchedulesItem,
 ) as any as S.Schema<ScriptsSchedulesGetResponseSchedulesList>;
@@ -16338,7 +16334,7 @@ export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemDispatchNames
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseBindingsItemDispatchNamespaceOutboundParamsItem>;
 
 export type ScriptsScriptAndVersionSettingsGetResponseBindingsItemDispatchNamespaceOutboundParamsList =
-  ReadonlyArray<ScriptsScriptAndVersionSettingsGetResponseBindingsItemDispatchNamespaceOutboundParamsItem>;
+  Array<ScriptsScriptAndVersionSettingsGetResponseBindingsItemDispatchNamespaceOutboundParamsItem>;
 export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemDispatchNamespaceOutboundParamsList =
   /*@__PURE__*/ S.Array(
     ScriptsScriptAndVersionSettingsGetResponseBindingsItemDispatchNamespaceOutboundParamsItem,
@@ -16808,14 +16804,14 @@ export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemSendEmailType
   /*@__PURE__*/ S.String;
 
 export type ScriptsScriptAndVersionSettingsGetResponseBindingsItemSendEmailAllowedDestinationAddressesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemSendEmailAllowedDestinationAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseBindingsItemSendEmailAllowedDestinationAddressesList>;
 
 export type ScriptsScriptAndVersionSettingsGetResponseBindingsItemSendEmailAllowedSenderAddressesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemSendEmailAllowedSenderAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -17035,7 +17031,7 @@ export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemSecretKeyUsag
   /*@__PURE__*/ S.String;
 
 export type ScriptsScriptAndVersionSettingsGetResponseBindingsItemSecretKeyUsagesList =
-  ReadonlyArray<ScriptsScriptAndVersionSettingsGetResponseBindingsItemSecretKeyUsagesItem>;
+  Array<ScriptsScriptAndVersionSettingsGetResponseBindingsItemSecretKeyUsagesItem>;
 export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemSecretKeyUsagesList =
   /*@__PURE__*/ S.Array(
     ScriptsScriptAndVersionSettingsGetResponseBindingsItemSecretKeyUsagesItem,
@@ -17414,7 +17410,7 @@ export const ScriptsScriptAndVersionSettingsGetResponseBindingsItem =
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseBindingsItem>;
 
 export type ScriptsScriptAndVersionSettingsGetResponseBindingsList =
-  ReadonlyArray<ScriptsScriptAndVersionSettingsGetResponseBindingsItem>;
+  Array<ScriptsScriptAndVersionSettingsGetResponseBindingsItem>;
 export const ScriptsScriptAndVersionSettingsGetResponseBindingsList =
   /*@__PURE__*/ S.Array(
     ScriptsScriptAndVersionSettingsGetResponseBindingsItem,
@@ -17439,7 +17435,7 @@ export const ScriptsScriptAndVersionSettingsGetResponseCacheOptions =
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseCacheOptions>;
 
 export type ScriptsScriptAndVersionSettingsGetResponseCompatibilityFlagsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ScriptsScriptAndVersionSettingsGetResponseCompatibilityFlagsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -17510,21 +17506,21 @@ export const ScriptsScriptAndVersionSettingsGetResponseLimits =
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseLimits>;
 
 export type ScriptsScriptAndVersionSettingsGetResponseMigrationsSingleStepMigrationDeletedClassesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ScriptsScriptAndVersionSettingsGetResponseMigrationsSingleStepMigrationDeletedClassesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseMigrationsSingleStepMigrationDeletedClassesList>;
 
 export type ScriptsScriptAndVersionSettingsGetResponseMigrationsSingleStepMigrationNewClassesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ScriptsScriptAndVersionSettingsGetResponseMigrationsSingleStepMigrationNewClassesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseMigrationsSingleStepMigrationNewClassesList>;
 
 export type ScriptsScriptAndVersionSettingsGetResponseMigrationsSingleStepMigrationNewSqliteClassesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ScriptsScriptAndVersionSettingsGetResponseMigrationsSingleStepMigrationNewSqliteClassesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -17546,7 +17542,7 @@ export const ScriptsScriptAndVersionSettingsGetResponseMigrationsSingleStepMigra
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseMigrationsSingleStepMigrationRenamedClassesItem>;
 
 export type ScriptsScriptAndVersionSettingsGetResponseMigrationsSingleStepMigrationRenamedClassesList =
-  ReadonlyArray<ScriptsScriptAndVersionSettingsGetResponseMigrationsSingleStepMigrationRenamedClassesItem>;
+  Array<ScriptsScriptAndVersionSettingsGetResponseMigrationsSingleStepMigrationRenamedClassesItem>;
 export const ScriptsScriptAndVersionSettingsGetResponseMigrationsSingleStepMigrationRenamedClassesList =
   /*@__PURE__*/ S.Array(
     ScriptsScriptAndVersionSettingsGetResponseMigrationsSingleStepMigrationRenamedClassesItem,
@@ -17570,7 +17566,7 @@ export const ScriptsScriptAndVersionSettingsGetResponseMigrationsSingleStepMigra
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseMigrationsSingleStepMigrationTransferredClassesItem>;
 
 export type ScriptsScriptAndVersionSettingsGetResponseMigrationsSingleStepMigrationTransferredClassesList =
-  ReadonlyArray<ScriptsScriptAndVersionSettingsGetResponseMigrationsSingleStepMigrationTransferredClassesItem>;
+  Array<ScriptsScriptAndVersionSettingsGetResponseMigrationsSingleStepMigrationTransferredClassesItem>;
 export const ScriptsScriptAndVersionSettingsGetResponseMigrationsSingleStepMigrationTransferredClassesList =
   /*@__PURE__*/ S.Array(
     ScriptsScriptAndVersionSettingsGetResponseMigrationsSingleStepMigrationTransferredClassesItem,
@@ -17629,21 +17625,21 @@ export const ScriptsScriptAndVersionSettingsGetResponseMigrationsSingleStepMigra
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseMigrationsSingleStepMigration>;
 
 export type ScriptsScriptAndVersionSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemDeletedClassesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ScriptsScriptAndVersionSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemDeletedClassesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemDeletedClassesList>;
 
 export type ScriptsScriptAndVersionSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemNewClassesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ScriptsScriptAndVersionSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemNewClassesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemNewClassesList>;
 
 export type ScriptsScriptAndVersionSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemNewSqliteClassesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ScriptsScriptAndVersionSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemNewSqliteClassesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -17665,7 +17661,7 @@ export const ScriptsScriptAndVersionSettingsGetResponseMigrationsWorkersMultiple
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesItem>;
 
 export type ScriptsScriptAndVersionSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesList =
-  ReadonlyArray<ScriptsScriptAndVersionSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesItem>;
+  Array<ScriptsScriptAndVersionSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesItem>;
 export const ScriptsScriptAndVersionSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesList =
   /*@__PURE__*/ S.Array(
     ScriptsScriptAndVersionSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesItem,
@@ -17689,7 +17685,7 @@ export const ScriptsScriptAndVersionSettingsGetResponseMigrationsWorkersMultiple
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesItem>;
 
 export type ScriptsScriptAndVersionSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesList =
-  ReadonlyArray<ScriptsScriptAndVersionSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesItem>;
+  Array<ScriptsScriptAndVersionSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesItem>;
 export const ScriptsScriptAndVersionSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesList =
   /*@__PURE__*/ S.Array(
     ScriptsScriptAndVersionSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesItem,
@@ -17742,7 +17738,7 @@ export const ScriptsScriptAndVersionSettingsGetResponseMigrationsWorkersMultiple
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItem>;
 
 export type ScriptsScriptAndVersionSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsList =
-  ReadonlyArray<ScriptsScriptAndVersionSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItem>;
+  Array<ScriptsScriptAndVersionSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItem>;
 export const ScriptsScriptAndVersionSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsList =
   /*@__PURE__*/ S.Array(
     ScriptsScriptAndVersionSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItem,
@@ -17827,7 +17823,7 @@ export const ScriptsScriptAndVersionSettingsGetResponseMigrations =
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseMigrations>;
 
 export type ScriptsScriptAndVersionSettingsGetResponseObservabilityLogsDestinationsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ScriptsScriptAndVersionSettingsGetResponseObservabilityLogsDestinationsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -17861,7 +17857,7 @@ export const ScriptsScriptAndVersionSettingsGetResponseObservabilityLogs =
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseObservabilityLogs>;
 
 export type ScriptsScriptAndVersionSettingsGetResponseObservabilityTracesDestinationsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ScriptsScriptAndVersionSettingsGetResponseObservabilityTracesDestinationsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -18117,7 +18113,7 @@ export const ScriptsScriptAndVersionSettingsGetResponsePlacementCase7TargetItem 
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponsePlacementCase7TargetItem>;
 
 export type ScriptsScriptAndVersionSettingsGetResponsePlacementCase7TargetList =
-  ReadonlyArray<ScriptsScriptAndVersionSettingsGetResponsePlacementCase7TargetItem>;
+  Array<ScriptsScriptAndVersionSettingsGetResponsePlacementCase7TargetItem>;
 export const ScriptsScriptAndVersionSettingsGetResponsePlacementCase7TargetList =
   /*@__PURE__*/ S.Array(
     ScriptsScriptAndVersionSettingsGetResponsePlacementCase7TargetItem,
@@ -18180,8 +18176,7 @@ export const ScriptsScriptAndVersionSettingsGetResponsePlacement =
     identifier: "ScriptsScriptAndVersionSettingsGetResponsePlacement",
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponsePlacement>;
 
-export type ScriptsScriptAndVersionSettingsGetResponseTagsList =
-  ReadonlyArray<string>;
+export type ScriptsScriptAndVersionSettingsGetResponseTagsList = Array<string>;
 export const ScriptsScriptAndVersionSettingsGetResponseTagsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -18207,7 +18202,7 @@ export const ScriptsScriptAndVersionSettingsGetResponseTailConsumersItem =
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseTailConsumersItem>;
 
 export type ScriptsScriptAndVersionSettingsGetResponseTailConsumersList =
-  ReadonlyArray<ScriptsScriptAndVersionSettingsGetResponseTailConsumersItem>;
+  Array<ScriptsScriptAndVersionSettingsGetResponseTailConsumersItem>;
 export const ScriptsScriptAndVersionSettingsGetResponseTailConsumersList =
   /*@__PURE__*/ S.Array(
     ScriptsScriptAndVersionSettingsGetResponseTailConsumersItem,
@@ -18374,7 +18369,7 @@ export const ScriptsSecretsGetResultSecretKeyUsagesItem =
   /*@__PURE__*/ S.String;
 
 export type ScriptsSecretsGetResultSecretKeyUsagesList =
-  ReadonlyArray<ScriptsSecretsGetResultSecretKeyUsagesItem>;
+  Array<ScriptsSecretsGetResultSecretKeyUsagesItem>;
 export const ScriptsSecretsGetResultSecretKeyUsagesList = /*@__PURE__*/ S.Array(
   ScriptsSecretsGetResultSecretKeyUsagesItem,
 ) as any as S.Schema<ScriptsSecretsGetResultSecretKeyUsagesList>;
@@ -18478,7 +18473,7 @@ export const GetScriptSettingRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetScriptSettingRequest>;
 
 export type ScriptsSettingsGetResponseObservabilityLogsDestinationsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ScriptsSettingsGetResponseObservabilityLogsDestinationsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -18512,7 +18507,7 @@ export const ScriptsSettingsGetResponseObservabilityLogs =
   }) as any as S.Schema<ScriptsSettingsGetResponseObservabilityLogs>;
 
 export type ScriptsSettingsGetResponseObservabilityTracesDestinationsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ScriptsSettingsGetResponseObservabilityTracesDestinationsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -18577,7 +18572,7 @@ export const ScriptsSettingsGetResponseObservability = /*@__PURE__*/ S.suspend(
   identifier: "ScriptsSettingsGetResponseObservability",
 }) as any as S.Schema<ScriptsSettingsGetResponseObservability>;
 
-export type ScriptsSettingsGetResponseTagsList = ReadonlyArray<string>;
+export type ScriptsSettingsGetResponseTagsList = Array<string>;
 export const ScriptsSettingsGetResponseTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ScriptsSettingsGetResponseTagsList>;
@@ -18602,7 +18597,7 @@ export const ScriptsSettingsGetResponseTailConsumersItem =
   }) as any as S.Schema<ScriptsSettingsGetResponseTailConsumersItem>;
 
 export type ScriptsSettingsGetResponseTailConsumersList =
-  ReadonlyArray<ScriptsSettingsGetResponseTailConsumersItem>;
+  Array<ScriptsSettingsGetResponseTailConsumersItem>;
 export const ScriptsSettingsGetResponseTailConsumersList =
   /*@__PURE__*/ S.Array(
     ScriptsSettingsGetResponseTailConsumersItem,
@@ -18947,7 +18942,7 @@ export const ScriptsVersionsGetResponseResourcesBindingsItemDispatchNamespaceOut
   }) as any as S.Schema<ScriptsVersionsGetResponseResourcesBindingsItemDispatchNamespaceOutboundParamsItem>;
 
 export type ScriptsVersionsGetResponseResourcesBindingsItemDispatchNamespaceOutboundParamsList =
-  ReadonlyArray<ScriptsVersionsGetResponseResourcesBindingsItemDispatchNamespaceOutboundParamsItem>;
+  Array<ScriptsVersionsGetResponseResourcesBindingsItemDispatchNamespaceOutboundParamsItem>;
 export const ScriptsVersionsGetResponseResourcesBindingsItemDispatchNamespaceOutboundParamsList =
   /*@__PURE__*/ S.Array(
     ScriptsVersionsGetResponseResourcesBindingsItemDispatchNamespaceOutboundParamsItem,
@@ -19406,14 +19401,14 @@ export const ScriptsVersionsGetResponseResourcesBindingsItemSendEmailType =
   /*@__PURE__*/ S.String;
 
 export type ScriptsVersionsGetResponseResourcesBindingsItemSendEmailAllowedDestinationAddressesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ScriptsVersionsGetResponseResourcesBindingsItemSendEmailAllowedDestinationAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ScriptsVersionsGetResponseResourcesBindingsItemSendEmailAllowedDestinationAddressesList>;
 
 export type ScriptsVersionsGetResponseResourcesBindingsItemSendEmailAllowedSenderAddressesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ScriptsVersionsGetResponseResourcesBindingsItemSendEmailAllowedSenderAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -19632,7 +19627,7 @@ export const ScriptsVersionsGetResponseResourcesBindingsItemSecretKeyUsagesItem 
   /*@__PURE__*/ S.String;
 
 export type ScriptsVersionsGetResponseResourcesBindingsItemSecretKeyUsagesList =
-  ReadonlyArray<ScriptsVersionsGetResponseResourcesBindingsItemSecretKeyUsagesItem>;
+  Array<ScriptsVersionsGetResponseResourcesBindingsItemSecretKeyUsagesItem>;
 export const ScriptsVersionsGetResponseResourcesBindingsItemSecretKeyUsagesList =
   /*@__PURE__*/ S.Array(
     ScriptsVersionsGetResponseResourcesBindingsItemSecretKeyUsagesItem,
@@ -20005,21 +20000,21 @@ export const ScriptsVersionsGetResponseResourcesBindingsItem =
   }) as any as S.Schema<ScriptsVersionsGetResponseResourcesBindingsItem>;
 
 export type ScriptsVersionsGetResponseResourcesBindingsList =
-  ReadonlyArray<ScriptsVersionsGetResponseResourcesBindingsItem>;
+  Array<ScriptsVersionsGetResponseResourcesBindingsItem>;
 export const ScriptsVersionsGetResponseResourcesBindingsList =
   /*@__PURE__*/ S.Array(
     ScriptsVersionsGetResponseResourcesBindingsItem,
   ) as any as S.Schema<ScriptsVersionsGetResponseResourcesBindingsList>;
 
 export type ScriptsVersionsGetResponseResourcesScriptHandlersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ScriptsVersionsGetResponseResourcesScriptHandlersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ScriptsVersionsGetResponseResourcesScriptHandlersList>;
 
 export type ScriptsVersionsGetResponseResourcesScriptNamedHandlersItemHandlersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ScriptsVersionsGetResponseResourcesScriptNamedHandlersItemHandlersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -20044,7 +20039,7 @@ export const ScriptsVersionsGetResponseResourcesScriptNamedHandlersItem =
   }) as any as S.Schema<ScriptsVersionsGetResponseResourcesScriptNamedHandlersItem>;
 
 export type ScriptsVersionsGetResponseResourcesScriptNamedHandlersList =
-  ReadonlyArray<ScriptsVersionsGetResponseResourcesScriptNamedHandlersItem>;
+  Array<ScriptsVersionsGetResponseResourcesScriptNamedHandlersItem>;
 export const ScriptsVersionsGetResponseResourcesScriptNamedHandlersList =
   /*@__PURE__*/ S.Array(
     ScriptsVersionsGetResponseResourcesScriptNamedHandlersItem,
@@ -20079,7 +20074,7 @@ export const ScriptsVersionsGetResponseResourcesScript =
   }) as any as S.Schema<ScriptsVersionsGetResponseResourcesScript>;
 
 export type ScriptsVersionsGetResponseResourcesScriptRuntimeCompatibilityFlagsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ScriptsVersionsGetResponseResourcesScriptRuntimeCompatibilityFlagsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -20256,8 +20251,7 @@ export const GetSubdomainResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetSubdomainResponse",
 }) as any as S.Schema<GetSubdomainResponse>;
 
-export type ObservabilityTelemetryKeysRequestDatasetsList =
-  ReadonlyArray<string>;
+export type ObservabilityTelemetryKeysRequestDatasetsList = Array<string>;
 export const ObservabilityTelemetryKeysRequestDatasetsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -20274,7 +20268,7 @@ export const ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemCase0Fi
   /*@__PURE__*/ S.String;
 
 export type ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemCase0FiltersList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemCase0FiltersList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -20449,7 +20443,7 @@ export const ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItem =
   }) as any as S.Schema<ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItem>;
 
 export type ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersList =
-  ReadonlyArray<ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItem>;
+  Array<ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItem>;
 export const ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersList =
   /*@__PURE__*/ S.Array(
     ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItem,
@@ -20619,7 +20613,7 @@ export const ObservabilityTelemetryKeysRequestFiltersItem =
   }) as any as S.Schema<ObservabilityTelemetryKeysRequestFiltersItem>;
 
 export type ObservabilityTelemetryKeysRequestFiltersList =
-  ReadonlyArray<ObservabilityTelemetryKeysRequestFiltersItem>;
+  Array<ObservabilityTelemetryKeysRequestFiltersItem>;
 export const ObservabilityTelemetryKeysRequestFiltersList =
   /*@__PURE__*/ S.Array(
     ObservabilityTelemetryKeysRequestFiltersItem,
@@ -20738,7 +20732,7 @@ export const ObservabilityTelemetryKeysResultItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ObservabilityTelemetryKeysResultItem>;
 
 export type ObservabilityTelemetryKeysResultList =
-  ReadonlyArray<ObservabilityTelemetryKeysResultItem>;
+  Array<ObservabilityTelemetryKeysResultItem>;
 export const ObservabilityTelemetryKeysResultList = /*@__PURE__*/ S.Array(
   ObservabilityTelemetryKeysResultItem,
 ) as any as S.Schema<ObservabilityTelemetryKeysResultList>;
@@ -20803,7 +20797,7 @@ export const ListBetaWorkersRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListBetaWorkersRequest>;
 
 export type BetaWorkersListResultItemObservabilityLogsDestinationsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const BetaWorkersListResultItemObservabilityLogsDestinationsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -20837,7 +20831,7 @@ export const BetaWorkersListResultItemObservabilityLogs =
   }) as any as S.Schema<BetaWorkersListResultItemObservabilityLogs>;
 
 export type BetaWorkersListResultItemObservabilityTracesDestinationsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const BetaWorkersListResultItemObservabilityTracesDestinationsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -20926,7 +20920,7 @@ export const BetaWorkersListResultItemReferencesDispatchNamespaceOutboundsItem =
   }) as any as S.Schema<BetaWorkersListResultItemReferencesDispatchNamespaceOutboundsItem>;
 
 export type BetaWorkersListResultItemReferencesDispatchNamespaceOutboundsList =
-  ReadonlyArray<BetaWorkersListResultItemReferencesDispatchNamespaceOutboundsItem>;
+  Array<BetaWorkersListResultItemReferencesDispatchNamespaceOutboundsItem>;
 export const BetaWorkersListResultItemReferencesDispatchNamespaceOutboundsList =
   /*@__PURE__*/ S.Array(
     BetaWorkersListResultItemReferencesDispatchNamespaceOutboundsItem,
@@ -20958,7 +20952,7 @@ export const BetaWorkersListResultItemReferencesDomainsItem =
   }) as any as S.Schema<BetaWorkersListResultItemReferencesDomainsItem>;
 
 export type BetaWorkersListResultItemReferencesDomainsList =
-  ReadonlyArray<BetaWorkersListResultItemReferencesDomainsItem>;
+  Array<BetaWorkersListResultItemReferencesDomainsItem>;
 export const BetaWorkersListResultItemReferencesDomainsList =
   /*@__PURE__*/ S.Array(
     BetaWorkersListResultItemReferencesDomainsItem,
@@ -20987,7 +20981,7 @@ export const BetaWorkersListResultItemReferencesDurableObjectsItem =
   }) as any as S.Schema<BetaWorkersListResultItemReferencesDurableObjectsItem>;
 
 export type BetaWorkersListResultItemReferencesDurableObjectsList =
-  ReadonlyArray<BetaWorkersListResultItemReferencesDurableObjectsItem>;
+  Array<BetaWorkersListResultItemReferencesDurableObjectsItem>;
 export const BetaWorkersListResultItemReferencesDurableObjectsList =
   /*@__PURE__*/ S.Array(
     BetaWorkersListResultItemReferencesDurableObjectsItem,
@@ -21013,7 +21007,7 @@ export const BetaWorkersListResultItemReferencesQueuesItem =
   }) as any as S.Schema<BetaWorkersListResultItemReferencesQueuesItem>;
 
 export type BetaWorkersListResultItemReferencesQueuesList =
-  ReadonlyArray<BetaWorkersListResultItemReferencesQueuesItem>;
+  Array<BetaWorkersListResultItemReferencesQueuesItem>;
 export const BetaWorkersListResultItemReferencesQueuesList =
   /*@__PURE__*/ S.Array(
     BetaWorkersListResultItemReferencesQueuesItem,
@@ -21036,7 +21030,7 @@ export const BetaWorkersListResultItemReferencesWorkersItem =
   }) as any as S.Schema<BetaWorkersListResultItemReferencesWorkersItem>;
 
 export type BetaWorkersListResultItemReferencesWorkersList =
-  ReadonlyArray<BetaWorkersListResultItemReferencesWorkersItem>;
+  Array<BetaWorkersListResultItemReferencesWorkersItem>;
 export const BetaWorkersListResultItemReferencesWorkersList =
   /*@__PURE__*/ S.Array(
     BetaWorkersListResultItemReferencesWorkersItem,
@@ -21086,7 +21080,7 @@ export const BetaWorkersListResultItemSubdomain = /*@__PURE__*/ S.suspend(() =>
   identifier: "BetaWorkersListResultItemSubdomain",
 }) as any as S.Schema<BetaWorkersListResultItemSubdomain>;
 
-export type BetaWorkersListResultItemTagsList = ReadonlyArray<string>;
+export type BetaWorkersListResultItemTagsList = Array<string>;
 export const BetaWorkersListResultItemTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BetaWorkersListResultItemTagsList>;
@@ -21105,7 +21099,7 @@ export const BetaWorkersListResultItemTailConsumersItem =
   }) as any as S.Schema<BetaWorkersListResultItemTailConsumersItem>;
 
 export type BetaWorkersListResultItemTailConsumersList =
-  ReadonlyArray<BetaWorkersListResultItemTailConsumersItem>;
+  Array<BetaWorkersListResultItemTailConsumersItem>;
 export const BetaWorkersListResultItemTailConsumersList = /*@__PURE__*/ S.Array(
   BetaWorkersListResultItemTailConsumersItem,
 ) as any as S.Schema<BetaWorkersListResultItemTailConsumersList>;
@@ -21154,8 +21148,7 @@ export const BetaWorkersListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "BetaWorkersListResultItem",
 }) as any as S.Schema<BetaWorkersListResultItem>;
 
-export type BetaWorkersListResultList =
-  ReadonlyArray<BetaWorkersListResultItem>;
+export type BetaWorkersListResultList = Array<BetaWorkersListResultItem>;
 export const BetaWorkersListResultList = /*@__PURE__*/ S.Array(
   BetaWorkersListResultItem,
 ) as any as S.Schema<BetaWorkersListResultList>;
@@ -21204,7 +21197,7 @@ export const ListBetaWorkerVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListBetaWorkerVersionsRequest",
 }) as any as S.Schema<ListBetaWorkerVersionsRequest>;
 
-export type BetaWorkersVersionsListResultItemUrlsList = ReadonlyArray<string>;
+export type BetaWorkersVersionsListResultItemUrlsList = Array<string>;
 export const BetaWorkersVersionsListResultItemUrlsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BetaWorkersVersionsListResultItemUrlsList>;
@@ -21246,7 +21239,7 @@ export const BetaWorkersVersionsListResultItemAssetsConfigNotFoundHandling =
   /*@__PURE__*/ S.String;
 
 export type BetaWorkersVersionsListResultItemAssetsConfigRunWorkerFirstCase0List =
-  ReadonlyArray<string>;
+  Array<string>;
 export const BetaWorkersVersionsListResultItemAssetsConfigRunWorkerFirstCase0List =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -21512,7 +21505,7 @@ export const BetaWorkersVersionsListResultItemBindingsItemDispatchNamespaceOutbo
   }) as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemDispatchNamespaceOutboundParamsItem>;
 
 export type BetaWorkersVersionsListResultItemBindingsItemDispatchNamespaceOutboundParamsList =
-  ReadonlyArray<BetaWorkersVersionsListResultItemBindingsItemDispatchNamespaceOutboundParamsItem>;
+  Array<BetaWorkersVersionsListResultItemBindingsItemDispatchNamespaceOutboundParamsItem>;
 export const BetaWorkersVersionsListResultItemBindingsItemDispatchNamespaceOutboundParamsList =
   /*@__PURE__*/ S.Array(
     BetaWorkersVersionsListResultItemBindingsItemDispatchNamespaceOutboundParamsItem,
@@ -21970,14 +21963,14 @@ export const BetaWorkersVersionsListResultItemBindingsItemSendEmailType =
   /*@__PURE__*/ S.String;
 
 export type BetaWorkersVersionsListResultItemBindingsItemSendEmailAllowedDestinationAddressesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const BetaWorkersVersionsListResultItemBindingsItemSendEmailAllowedDestinationAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemSendEmailAllowedDestinationAddressesList>;
 
 export type BetaWorkersVersionsListResultItemBindingsItemSendEmailAllowedSenderAddressesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const BetaWorkersVersionsListResultItemBindingsItemSendEmailAllowedSenderAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -22195,7 +22188,7 @@ export const BetaWorkersVersionsListResultItemBindingsItemSecretKeyUsagesItem =
   /*@__PURE__*/ S.String;
 
 export type BetaWorkersVersionsListResultItemBindingsItemSecretKeyUsagesList =
-  ReadonlyArray<BetaWorkersVersionsListResultItemBindingsItemSecretKeyUsagesItem>;
+  Array<BetaWorkersVersionsListResultItemBindingsItemSecretKeyUsagesItem>;
 export const BetaWorkersVersionsListResultItemBindingsItemSecretKeyUsagesList =
   /*@__PURE__*/ S.Array(
     BetaWorkersVersionsListResultItemBindingsItemSecretKeyUsagesItem,
@@ -22567,7 +22560,7 @@ export const BetaWorkersVersionsListResultItemBindingsItem =
   }) as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItem>;
 
 export type BetaWorkersVersionsListResultItemBindingsList =
-  ReadonlyArray<BetaWorkersVersionsListResultItemBindingsItem>;
+  Array<BetaWorkersVersionsListResultItemBindingsItem>;
 export const BetaWorkersVersionsListResultItemBindingsList =
   /*@__PURE__*/ S.Array(
     BetaWorkersVersionsListResultItemBindingsItem,
@@ -22592,7 +22585,7 @@ export const BetaWorkersVersionsListResultItemCacheOptions =
   }) as any as S.Schema<BetaWorkersVersionsListResultItemCacheOptions>;
 
 export type BetaWorkersVersionsListResultItemCompatibilityFlagsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const BetaWorkersVersionsListResultItemCompatibilityFlagsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -22612,7 +22605,7 @@ export const BetaWorkersVersionsListResultItemContainersItem =
   }) as any as S.Schema<BetaWorkersVersionsListResultItemContainersItem>;
 
 export type BetaWorkersVersionsListResultItemContainersList =
-  ReadonlyArray<BetaWorkersVersionsListResultItemContainersItem>;
+  Array<BetaWorkersVersionsListResultItemContainersItem>;
 export const BetaWorkersVersionsListResultItemContainersList =
   /*@__PURE__*/ S.Array(
     BetaWorkersVersionsListResultItemContainersItem,
@@ -22635,21 +22628,21 @@ export const BetaWorkersVersionsListResultItemLimits = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<BetaWorkersVersionsListResultItemLimits>;
 
 export type BetaWorkersVersionsListResultItemMigrationsSingleStepMigrationDeletedClassesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const BetaWorkersVersionsListResultItemMigrationsSingleStepMigrationDeletedClassesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<BetaWorkersVersionsListResultItemMigrationsSingleStepMigrationDeletedClassesList>;
 
 export type BetaWorkersVersionsListResultItemMigrationsSingleStepMigrationNewClassesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const BetaWorkersVersionsListResultItemMigrationsSingleStepMigrationNewClassesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<BetaWorkersVersionsListResultItemMigrationsSingleStepMigrationNewClassesList>;
 
 export type BetaWorkersVersionsListResultItemMigrationsSingleStepMigrationNewSqliteClassesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const BetaWorkersVersionsListResultItemMigrationsSingleStepMigrationNewSqliteClassesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -22671,7 +22664,7 @@ export const BetaWorkersVersionsListResultItemMigrationsSingleStepMigrationRenam
   }) as any as S.Schema<BetaWorkersVersionsListResultItemMigrationsSingleStepMigrationRenamedClassesItem>;
 
 export type BetaWorkersVersionsListResultItemMigrationsSingleStepMigrationRenamedClassesList =
-  ReadonlyArray<BetaWorkersVersionsListResultItemMigrationsSingleStepMigrationRenamedClassesItem>;
+  Array<BetaWorkersVersionsListResultItemMigrationsSingleStepMigrationRenamedClassesItem>;
 export const BetaWorkersVersionsListResultItemMigrationsSingleStepMigrationRenamedClassesList =
   /*@__PURE__*/ S.Array(
     BetaWorkersVersionsListResultItemMigrationsSingleStepMigrationRenamedClassesItem,
@@ -22695,7 +22688,7 @@ export const BetaWorkersVersionsListResultItemMigrationsSingleStepMigrationTrans
   }) as any as S.Schema<BetaWorkersVersionsListResultItemMigrationsSingleStepMigrationTransferredClassesItem>;
 
 export type BetaWorkersVersionsListResultItemMigrationsSingleStepMigrationTransferredClassesList =
-  ReadonlyArray<BetaWorkersVersionsListResultItemMigrationsSingleStepMigrationTransferredClassesItem>;
+  Array<BetaWorkersVersionsListResultItemMigrationsSingleStepMigrationTransferredClassesItem>;
 export const BetaWorkersVersionsListResultItemMigrationsSingleStepMigrationTransferredClassesList =
   /*@__PURE__*/ S.Array(
     BetaWorkersVersionsListResultItemMigrationsSingleStepMigrationTransferredClassesItem,
@@ -22754,21 +22747,21 @@ export const BetaWorkersVersionsListResultItemMigrationsSingleStepMigration =
   }) as any as S.Schema<BetaWorkersVersionsListResultItemMigrationsSingleStepMigration>;
 
 export type BetaWorkersVersionsListResultItemMigrationsWorkersMultipleStepMigrationsStepsItemDeletedClassesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const BetaWorkersVersionsListResultItemMigrationsWorkersMultipleStepMigrationsStepsItemDeletedClassesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<BetaWorkersVersionsListResultItemMigrationsWorkersMultipleStepMigrationsStepsItemDeletedClassesList>;
 
 export type BetaWorkersVersionsListResultItemMigrationsWorkersMultipleStepMigrationsStepsItemNewClassesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const BetaWorkersVersionsListResultItemMigrationsWorkersMultipleStepMigrationsStepsItemNewClassesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<BetaWorkersVersionsListResultItemMigrationsWorkersMultipleStepMigrationsStepsItemNewClassesList>;
 
 export type BetaWorkersVersionsListResultItemMigrationsWorkersMultipleStepMigrationsStepsItemNewSqliteClassesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const BetaWorkersVersionsListResultItemMigrationsWorkersMultipleStepMigrationsStepsItemNewSqliteClassesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -22790,7 +22783,7 @@ export const BetaWorkersVersionsListResultItemMigrationsWorkersMultipleStepMigra
   }) as any as S.Schema<BetaWorkersVersionsListResultItemMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesItem>;
 
 export type BetaWorkersVersionsListResultItemMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesList =
-  ReadonlyArray<BetaWorkersVersionsListResultItemMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesItem>;
+  Array<BetaWorkersVersionsListResultItemMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesItem>;
 export const BetaWorkersVersionsListResultItemMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesList =
   /*@__PURE__*/ S.Array(
     BetaWorkersVersionsListResultItemMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesItem,
@@ -22814,7 +22807,7 @@ export const BetaWorkersVersionsListResultItemMigrationsWorkersMultipleStepMigra
   }) as any as S.Schema<BetaWorkersVersionsListResultItemMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesItem>;
 
 export type BetaWorkersVersionsListResultItemMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesList =
-  ReadonlyArray<BetaWorkersVersionsListResultItemMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesItem>;
+  Array<BetaWorkersVersionsListResultItemMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesItem>;
 export const BetaWorkersVersionsListResultItemMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesList =
   /*@__PURE__*/ S.Array(
     BetaWorkersVersionsListResultItemMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesItem,
@@ -22867,7 +22860,7 @@ export const BetaWorkersVersionsListResultItemMigrationsWorkersMultipleStepMigra
   }) as any as S.Schema<BetaWorkersVersionsListResultItemMigrationsWorkersMultipleStepMigrationsStepsItem>;
 
 export type BetaWorkersVersionsListResultItemMigrationsWorkersMultipleStepMigrationsStepsList =
-  ReadonlyArray<BetaWorkersVersionsListResultItemMigrationsWorkersMultipleStepMigrationsStepsItem>;
+  Array<BetaWorkersVersionsListResultItemMigrationsWorkersMultipleStepMigrationsStepsItem>;
 export const BetaWorkersVersionsListResultItemMigrationsWorkersMultipleStepMigrationsStepsList =
   /*@__PURE__*/ S.Array(
     BetaWorkersVersionsListResultItemMigrationsWorkersMultipleStepMigrationsStepsItem,
@@ -22971,7 +22964,7 @@ export const BetaWorkersVersionsListResultItemModulesItem =
   }) as any as S.Schema<BetaWorkersVersionsListResultItemModulesItem>;
 
 export type BetaWorkersVersionsListResultItemModulesList =
-  ReadonlyArray<BetaWorkersVersionsListResultItemModulesItem>;
+  Array<BetaWorkersVersionsListResultItemModulesItem>;
 export const BetaWorkersVersionsListResultItemModulesList =
   /*@__PURE__*/ S.Array(
     BetaWorkersVersionsListResultItemModulesItem,
@@ -22997,7 +22990,7 @@ export const BetaWorkersVersionsListResultItemPackageDependenciesItem =
   }) as any as S.Schema<BetaWorkersVersionsListResultItemPackageDependenciesItem>;
 
 export type BetaWorkersVersionsListResultItemPackageDependenciesList =
-  ReadonlyArray<BetaWorkersVersionsListResultItemPackageDependenciesItem>;
+  Array<BetaWorkersVersionsListResultItemPackageDependenciesItem>;
 export const BetaWorkersVersionsListResultItemPackageDependenciesList =
   /*@__PURE__*/ S.Array(
     BetaWorkersVersionsListResultItemPackageDependenciesItem,
@@ -23184,7 +23177,7 @@ export const BetaWorkersVersionsListResultItemPlacementCase7TargetItem =
   }) as any as S.Schema<BetaWorkersVersionsListResultItemPlacementCase7TargetItem>;
 
 export type BetaWorkersVersionsListResultItemPlacementCase7TargetList =
-  ReadonlyArray<BetaWorkersVersionsListResultItemPlacementCase7TargetItem>;
+  Array<BetaWorkersVersionsListResultItemPlacementCase7TargetItem>;
 export const BetaWorkersVersionsListResultItemPlacementCase7TargetList =
   /*@__PURE__*/ S.Array(
     BetaWorkersVersionsListResultItemPlacementCase7TargetItem,
@@ -23340,7 +23333,7 @@ export const BetaWorkersVersionsListResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BetaWorkersVersionsListResultItem>;
 
 export type BetaWorkersVersionsListResultList =
-  ReadonlyArray<BetaWorkersVersionsListResultItem>;
+  Array<BetaWorkersVersionsListResultItem>;
 export const BetaWorkersVersionsListResultList = /*@__PURE__*/ S.Array(
   BetaWorkersVersionsListResultItem,
 ) as any as S.Schema<BetaWorkersVersionsListResultList>;
@@ -23425,7 +23418,7 @@ export const DomainsListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "DomainsListResultItem",
 }) as any as S.Schema<DomainsListResultItem>;
 
-export type DomainsListResultList = ReadonlyArray<DomainsListResultItem>;
+export type DomainsListResultList = Array<DomainsListResultItem>;
 export const DomainsListResultList = /*@__PURE__*/ S.Array(
   DomainsListResultItem,
 ) as any as S.Schema<DomainsListResultList>;
@@ -23542,8 +23535,7 @@ export const ObservabilityDestinationsListResultItemConfiguration =
     identifier: "ObservabilityDestinationsListResultItemConfiguration",
   }) as any as S.Schema<ObservabilityDestinationsListResultItemConfiguration>;
 
-export type ObservabilityDestinationsListResultItemScriptsList =
-  ReadonlyArray<string>;
+export type ObservabilityDestinationsListResultItemScriptsList = Array<string>;
 export const ObservabilityDestinationsListResultItemScriptsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -23570,7 +23562,7 @@ export const ObservabilityDestinationsListResultItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ObservabilityDestinationsListResultItem>;
 
 export type ObservabilityDestinationsListResultList =
-  ReadonlyArray<ObservabilityDestinationsListResultItem>;
+  Array<ObservabilityDestinationsListResultItem>;
 export const ObservabilityDestinationsListResultList = /*@__PURE__*/ S.Array(
   ObservabilityDestinationsListResultItem,
 ) as any as S.Schema<ObservabilityDestinationsListResultList>;
@@ -23693,14 +23685,14 @@ export const ObservabilityQueriesListResultItemParametersCalculationsItem =
   }) as any as S.Schema<ObservabilityQueriesListResultItemParametersCalculationsItem>;
 
 export type ObservabilityQueriesListResultItemParametersCalculationsList =
-  ReadonlyArray<ObservabilityQueriesListResultItemParametersCalculationsItem>;
+  Array<ObservabilityQueriesListResultItemParametersCalculationsItem>;
 export const ObservabilityQueriesListResultItemParametersCalculationsList =
   /*@__PURE__*/ S.Array(
     ObservabilityQueriesListResultItemParametersCalculationsItem,
   ) as any as S.Schema<ObservabilityQueriesListResultItemParametersCalculationsList>;
 
 export type ObservabilityQueriesListResultItemParametersDatasetsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ObservabilityQueriesListResultItemParametersDatasetsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -23720,7 +23712,7 @@ export const ObservabilityQueriesListResultItemParametersFiltersItemCase0FilterC
   /*@__PURE__*/ S.String;
 
 export type ObservabilityQueriesListResultItemParametersFiltersItemCase0FiltersList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const ObservabilityQueriesListResultItemParametersFiltersItemCase0FiltersList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -23876,7 +23868,7 @@ export const ObservabilityQueriesListResultItemParametersFiltersItem =
   }) as any as S.Schema<ObservabilityQueriesListResultItemParametersFiltersItem>;
 
 export type ObservabilityQueriesListResultItemParametersFiltersList =
-  ReadonlyArray<ObservabilityQueriesListResultItemParametersFiltersItem>;
+  Array<ObservabilityQueriesListResultItemParametersFiltersItem>;
 export const ObservabilityQueriesListResultItemParametersFiltersList =
   /*@__PURE__*/ S.Array(
     ObservabilityQueriesListResultItemParametersFiltersItem,
@@ -23904,7 +23896,7 @@ export const ObservabilityQueriesListResultItemParametersGroupBysItem =
   }) as any as S.Schema<ObservabilityQueriesListResultItemParametersGroupBysItem>;
 
 export type ObservabilityQueriesListResultItemParametersGroupBysList =
-  ReadonlyArray<ObservabilityQueriesListResultItemParametersGroupBysItem>;
+  Array<ObservabilityQueriesListResultItemParametersGroupBysItem>;
 export const ObservabilityQueriesListResultItemParametersGroupBysList =
   /*@__PURE__*/ S.Array(
     ObservabilityQueriesListResultItemParametersGroupBysItem,
@@ -23938,7 +23930,7 @@ export const ObservabilityQueriesListResultItemParametersHavingsItem =
   }) as any as S.Schema<ObservabilityQueriesListResultItemParametersHavingsItem>;
 
 export type ObservabilityQueriesListResultItemParametersHavingsList =
-  ReadonlyArray<ObservabilityQueriesListResultItemParametersHavingsItem>;
+  Array<ObservabilityQueriesListResultItemParametersHavingsItem>;
 export const ObservabilityQueriesListResultItemParametersHavingsList =
   /*@__PURE__*/ S.Array(
     ObservabilityQueriesListResultItemParametersHavingsItem,
@@ -24070,7 +24062,7 @@ export const ObservabilityQueriesListResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ObservabilityQueriesListResultItem>;
 
 export type ObservabilityQueriesListResultList =
-  ReadonlyArray<ObservabilityQueriesListResultItem>;
+  Array<ObservabilityQueriesListResultItem>;
 export const ObservabilityQueriesListResultList = /*@__PURE__*/ S.Array(
   ObservabilityQueriesListResultItem,
 ) as any as S.Schema<ObservabilityQueriesListResultList>;
@@ -24128,7 +24120,7 @@ export const RoutesListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "RoutesListResultItem",
 }) as any as S.Schema<RoutesListResultItem>;
 
-export type RoutesListResultList = ReadonlyArray<RoutesListResultItem>;
+export type RoutesListResultList = Array<RoutesListResultItem>;
 export const RoutesListResultList = /*@__PURE__*/ S.Array(
   RoutesListResultItem,
 ) as any as S.Schema<RoutesListResultList>;
@@ -24191,7 +24183,7 @@ export const ScriptsDeploymentsListResponseDeploymentsItemVersionsItem =
   }) as any as S.Schema<ScriptsDeploymentsListResponseDeploymentsItemVersionsItem>;
 
 export type ScriptsDeploymentsListResponseDeploymentsItemVersionsList =
-  ReadonlyArray<ScriptsDeploymentsListResponseDeploymentsItemVersionsItem>;
+  Array<ScriptsDeploymentsListResponseDeploymentsItemVersionsItem>;
 export const ScriptsDeploymentsListResponseDeploymentsItemVersionsList =
   /*@__PURE__*/ S.Array(
     ScriptsDeploymentsListResponseDeploymentsItemVersionsItem,
@@ -24242,7 +24234,7 @@ export const ScriptsDeploymentsListResponseDeploymentsItem =
   }) as any as S.Schema<ScriptsDeploymentsListResponseDeploymentsItem>;
 
 export type ScriptsDeploymentsListResponseDeploymentsList =
-  ReadonlyArray<ScriptsDeploymentsListResponseDeploymentsItem>;
+  Array<ScriptsDeploymentsListResponseDeploymentsItem>;
 export const ScriptsDeploymentsListResponseDeploymentsList =
   /*@__PURE__*/ S.Array(
     ScriptsDeploymentsListResponseDeploymentsItem,
@@ -24300,19 +24292,18 @@ export const ScriptsListResultItemCacheOptions = /*@__PURE__*/ S.suspend(() =>
   identifier: "ScriptsListResultItemCacheOptions",
 }) as any as S.Schema<ScriptsListResultItemCacheOptions>;
 
-export type ScriptsListResultItemCompatibilityFlagsList = ReadonlyArray<string>;
+export type ScriptsListResultItemCompatibilityFlagsList = Array<string>;
 export const ScriptsListResultItemCompatibilityFlagsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ScriptsListResultItemCompatibilityFlagsList>;
 
-export type ScriptsListResultItemHandlersList = ReadonlyArray<string>;
+export type ScriptsListResultItemHandlersList = Array<string>;
 export const ScriptsListResultItemHandlersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ScriptsListResultItemHandlersList>;
 
-export type ScriptsListResultItemNamedHandlersItemHandlersList =
-  ReadonlyArray<string>;
+export type ScriptsListResultItemNamedHandlersItemHandlersList = Array<string>;
 export const ScriptsListResultItemNamedHandlersItemHandlersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -24335,13 +24326,13 @@ export const ScriptsListResultItemNamedHandlersItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ScriptsListResultItemNamedHandlersItem>;
 
 export type ScriptsListResultItemNamedHandlersList =
-  ReadonlyArray<ScriptsListResultItemNamedHandlersItem>;
+  Array<ScriptsListResultItemNamedHandlersItem>;
 export const ScriptsListResultItemNamedHandlersList = /*@__PURE__*/ S.Array(
   ScriptsListResultItemNamedHandlersItem,
 ) as any as S.Schema<ScriptsListResultItemNamedHandlersList>;
 
 export type ScriptsListResultItemObservabilityLogsDestinationsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ScriptsListResultItemObservabilityLogsDestinationsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -24375,7 +24366,7 @@ export const ScriptsListResultItemObservabilityLogs = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ScriptsListResultItemObservabilityLogs>;
 
 export type ScriptsListResultItemObservabilityTracesDestinationsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ScriptsListResultItemObservabilityTracesDestinationsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -24690,7 +24681,7 @@ export const ScriptsListResultItemPlacementCase7TargetItem =
   }) as any as S.Schema<ScriptsListResultItemPlacementCase7TargetItem>;
 
 export type ScriptsListResultItemPlacementCase7TargetList =
-  ReadonlyArray<ScriptsListResultItemPlacementCase7TargetItem>;
+  Array<ScriptsListResultItemPlacementCase7TargetItem>;
 export const ScriptsListResultItemPlacementCase7TargetList =
   /*@__PURE__*/ S.Array(
     ScriptsListResultItemPlacementCase7TargetItem,
@@ -24813,12 +24804,12 @@ export const ScriptsListResultItemRoutesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScriptsListResultItemRoutesItem>;
 
 export type ScriptsListResultItemRoutesList =
-  ReadonlyArray<ScriptsListResultItemRoutesItem>;
+  Array<ScriptsListResultItemRoutesItem>;
 export const ScriptsListResultItemRoutesList = /*@__PURE__*/ S.Array(
   ScriptsListResultItemRoutesItem,
 ) as any as S.Schema<ScriptsListResultItemRoutesList>;
 
-export type ScriptsListResultItemTagsList = ReadonlyArray<string>;
+export type ScriptsListResultItemTagsList = Array<string>;
 export const ScriptsListResultItemTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ScriptsListResultItemTagsList>;
@@ -24843,7 +24834,7 @@ export const ScriptsListResultItemTailConsumersItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ScriptsListResultItemTailConsumersItem>;
 
 export type ScriptsListResultItemTailConsumersList =
-  ReadonlyArray<ScriptsListResultItemTailConsumersItem>;
+  Array<ScriptsListResultItemTailConsumersItem>;
 export const ScriptsListResultItemTailConsumersList = /*@__PURE__*/ S.Array(
   ScriptsListResultItemTailConsumersItem,
 ) as any as S.Schema<ScriptsListResultItemTailConsumersList>;
@@ -24946,7 +24937,7 @@ export const ScriptsListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "ScriptsListResultItem",
 }) as any as S.Schema<ScriptsListResultItem>;
 
-export type ScriptsListResultList = ReadonlyArray<ScriptsListResultItem>;
+export type ScriptsListResultList = Array<ScriptsListResultItem>;
 export const ScriptsListResultList = /*@__PURE__*/ S.Array(
   ScriptsListResultItem,
 ) as any as S.Schema<ScriptsListResultList>;
@@ -25036,7 +25027,7 @@ export const ScriptsSecretsListResultItemSecretKeyUsagesItem =
   /*@__PURE__*/ S.String;
 
 export type ScriptsSecretsListResultItemSecretKeyUsagesList =
-  ReadonlyArray<ScriptsSecretsListResultItemSecretKeyUsagesItem>;
+  Array<ScriptsSecretsListResultItemSecretKeyUsagesItem>;
 export const ScriptsSecretsListResultItemSecretKeyUsagesList =
   /*@__PURE__*/ S.Array(
     ScriptsSecretsListResultItemSecretKeyUsagesItem,
@@ -25111,8 +25102,7 @@ export const ScriptsSecretsListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "ScriptsSecretsListResultItem",
 }) as any as S.Schema<ScriptsSecretsListResultItem>;
 
-export type ScriptsSecretsListResultList =
-  ReadonlyArray<ScriptsSecretsListResultItem>;
+export type ScriptsSecretsListResultList = Array<ScriptsSecretsListResultItem>;
 export const ScriptsSecretsListResultList = /*@__PURE__*/ S.Array(
   ScriptsSecretsListResultItem,
 ) as any as S.Schema<ScriptsSecretsListResultList>;
@@ -25226,7 +25216,7 @@ export const ScriptsVersionsListResponseItemsItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ScriptsVersionsListResponseItemsItem>;
 
 export type ScriptsVersionsListResponseItemsList =
-  ReadonlyArray<ScriptsVersionsListResponseItemsItem>;
+  Array<ScriptsVersionsListResponseItemsItem>;
 export const ScriptsVersionsListResponseItemsList = /*@__PURE__*/ S.Array(
   ScriptsVersionsListResponseItemsItem,
 ) as any as S.Schema<ScriptsVersionsListResponseItemsList>;
@@ -25292,7 +25282,7 @@ export const ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItemCas
   /*@__PURE__*/ S.String;
 
 export type ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItemCase0FiltersList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItemCase0FiltersList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -25468,7 +25458,7 @@ export const ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItem =
   }) as any as S.Schema<ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItem>;
 
 export type ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersList =
-  ReadonlyArray<ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItem>;
+  Array<ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItem>;
 export const ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersList =
   /*@__PURE__*/ S.Array(
     ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItem,
@@ -25640,7 +25630,7 @@ export const ObservabilityTelemetryLiveTailRequestFiltersItem =
   }) as any as S.Schema<ObservabilityTelemetryLiveTailRequestFiltersItem>;
 
 export type ObservabilityTelemetryLiveTailRequestFiltersList =
-  ReadonlyArray<ObservabilityTelemetryLiveTailRequestFiltersItem>;
+  Array<ObservabilityTelemetryLiveTailRequestFiltersItem>;
 export const ObservabilityTelemetryLiveTailRequestFiltersList =
   /*@__PURE__*/ S.Array(
     ObservabilityTelemetryLiveTailRequestFiltersItem,
@@ -25693,7 +25683,7 @@ export const LiveTailObservabilityTelemetryResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<LiveTailObservabilityTelemetryResponse>;
 
 export type BetaWorkersEditRequestObservabilityLogsDestinationsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const BetaWorkersEditRequestObservabilityLogsDestinationsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -25727,7 +25717,7 @@ export const BetaWorkersEditRequestObservabilityLogs = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<BetaWorkersEditRequestObservabilityLogs>;
 
 export type BetaWorkersEditRequestObservabilityTracesDestinationsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const BetaWorkersEditRequestObservabilityTracesDestinationsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -25808,7 +25798,7 @@ export const BetaWorkersEditRequestSubdomain = /*@__PURE__*/ S.suspend(() =>
   identifier: "BetaWorkersEditRequestSubdomain",
 }) as any as S.Schema<BetaWorkersEditRequestSubdomain>;
 
-export type BetaWorkersEditRequestTagsList = ReadonlyArray<string>;
+export type BetaWorkersEditRequestTagsList = Array<string>;
 export const BetaWorkersEditRequestTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BetaWorkersEditRequestTagsList>;
@@ -25827,7 +25817,7 @@ export const BetaWorkersEditRequestTailConsumersItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<BetaWorkersEditRequestTailConsumersItem>;
 
 export type BetaWorkersEditRequestTailConsumersList =
-  ReadonlyArray<BetaWorkersEditRequestTailConsumersItem>;
+  Array<BetaWorkersEditRequestTailConsumersItem>;
 export const BetaWorkersEditRequestTailConsumersList = /*@__PURE__*/ S.Array(
   BetaWorkersEditRequestTailConsumersItem,
 ) as any as S.Schema<BetaWorkersEditRequestTailConsumersList>;
@@ -25876,7 +25866,7 @@ export const PatchBetaWorkerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PatchBetaWorkerRequest>;
 
 export type BetaWorkersEditResponseObservabilityLogsDestinationsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const BetaWorkersEditResponseObservabilityLogsDestinationsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -25910,7 +25900,7 @@ export const BetaWorkersEditResponseObservabilityLogs = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<BetaWorkersEditResponseObservabilityLogs>;
 
 export type BetaWorkersEditResponseObservabilityTracesDestinationsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const BetaWorkersEditResponseObservabilityTracesDestinationsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -25999,7 +25989,7 @@ export const BetaWorkersEditResponseReferencesDispatchNamespaceOutboundsItem =
   }) as any as S.Schema<BetaWorkersEditResponseReferencesDispatchNamespaceOutboundsItem>;
 
 export type BetaWorkersEditResponseReferencesDispatchNamespaceOutboundsList =
-  ReadonlyArray<BetaWorkersEditResponseReferencesDispatchNamespaceOutboundsItem>;
+  Array<BetaWorkersEditResponseReferencesDispatchNamespaceOutboundsItem>;
 export const BetaWorkersEditResponseReferencesDispatchNamespaceOutboundsList =
   /*@__PURE__*/ S.Array(
     BetaWorkersEditResponseReferencesDispatchNamespaceOutboundsItem,
@@ -26031,7 +26021,7 @@ export const BetaWorkersEditResponseReferencesDomainsItem =
   }) as any as S.Schema<BetaWorkersEditResponseReferencesDomainsItem>;
 
 export type BetaWorkersEditResponseReferencesDomainsList =
-  ReadonlyArray<BetaWorkersEditResponseReferencesDomainsItem>;
+  Array<BetaWorkersEditResponseReferencesDomainsItem>;
 export const BetaWorkersEditResponseReferencesDomainsList =
   /*@__PURE__*/ S.Array(
     BetaWorkersEditResponseReferencesDomainsItem,
@@ -26060,7 +26050,7 @@ export const BetaWorkersEditResponseReferencesDurableObjectsItem =
   }) as any as S.Schema<BetaWorkersEditResponseReferencesDurableObjectsItem>;
 
 export type BetaWorkersEditResponseReferencesDurableObjectsList =
-  ReadonlyArray<BetaWorkersEditResponseReferencesDurableObjectsItem>;
+  Array<BetaWorkersEditResponseReferencesDurableObjectsItem>;
 export const BetaWorkersEditResponseReferencesDurableObjectsList =
   /*@__PURE__*/ S.Array(
     BetaWorkersEditResponseReferencesDurableObjectsItem,
@@ -26086,7 +26076,7 @@ export const BetaWorkersEditResponseReferencesQueuesItem =
   }) as any as S.Schema<BetaWorkersEditResponseReferencesQueuesItem>;
 
 export type BetaWorkersEditResponseReferencesQueuesList =
-  ReadonlyArray<BetaWorkersEditResponseReferencesQueuesItem>;
+  Array<BetaWorkersEditResponseReferencesQueuesItem>;
 export const BetaWorkersEditResponseReferencesQueuesList =
   /*@__PURE__*/ S.Array(
     BetaWorkersEditResponseReferencesQueuesItem,
@@ -26109,7 +26099,7 @@ export const BetaWorkersEditResponseReferencesWorkersItem =
   }) as any as S.Schema<BetaWorkersEditResponseReferencesWorkersItem>;
 
 export type BetaWorkersEditResponseReferencesWorkersList =
-  ReadonlyArray<BetaWorkersEditResponseReferencesWorkersItem>;
+  Array<BetaWorkersEditResponseReferencesWorkersItem>;
 export const BetaWorkersEditResponseReferencesWorkersList =
   /*@__PURE__*/ S.Array(
     BetaWorkersEditResponseReferencesWorkersItem,
@@ -26159,7 +26149,7 @@ export const BetaWorkersEditResponseSubdomain = /*@__PURE__*/ S.suspend(() =>
   identifier: "BetaWorkersEditResponseSubdomain",
 }) as any as S.Schema<BetaWorkersEditResponseSubdomain>;
 
-export type BetaWorkersEditResponseTagsList = ReadonlyArray<string>;
+export type BetaWorkersEditResponseTagsList = Array<string>;
 export const BetaWorkersEditResponseTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BetaWorkersEditResponseTagsList>;
@@ -26178,7 +26168,7 @@ export const BetaWorkersEditResponseTailConsumersItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<BetaWorkersEditResponseTailConsumersItem>;
 
 export type BetaWorkersEditResponseTailConsumersList =
-  ReadonlyArray<BetaWorkersEditResponseTailConsumersItem>;
+  Array<BetaWorkersEditResponseTailConsumersItem>;
 export const BetaWorkersEditResponseTailConsumersList = /*@__PURE__*/ S.Array(
   BetaWorkersEditResponseTailConsumersItem,
 ) as any as S.Schema<BetaWorkersEditResponseTailConsumersList>;
@@ -26314,8 +26304,7 @@ export const ObservabilityDestinationsUpdateResponseConfiguration =
     identifier: "ObservabilityDestinationsUpdateResponseConfiguration",
   }) as any as S.Schema<ObservabilityDestinationsUpdateResponseConfiguration>;
 
-export type ObservabilityDestinationsUpdateResponseScriptsList =
-  ReadonlyArray<string>;
+export type ObservabilityDestinationsUpdateResponseScriptsList = Array<string>;
 export const ObservabilityDestinationsUpdateResponseScriptsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -26605,7 +26594,7 @@ export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemDispatchName
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemDispatchNamespaceOutboundParamsItem>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseBindingsItemDispatchNamespaceOutboundParamsList =
-  ReadonlyArray<ScriptsScriptAndVersionSettingsEditResponseBindingsItemDispatchNamespaceOutboundParamsItem>;
+  Array<ScriptsScriptAndVersionSettingsEditResponseBindingsItemDispatchNamespaceOutboundParamsItem>;
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemDispatchNamespaceOutboundParamsList =
   /*@__PURE__*/ S.Array(
     ScriptsScriptAndVersionSettingsEditResponseBindingsItemDispatchNamespaceOutboundParamsItem,
@@ -27076,14 +27065,14 @@ export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemSendEmailTyp
   /*@__PURE__*/ S.String;
 
 export type ScriptsScriptAndVersionSettingsEditResponseBindingsItemSendEmailAllowedDestinationAddressesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemSendEmailAllowedDestinationAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemSendEmailAllowedDestinationAddressesList>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseBindingsItemSendEmailAllowedSenderAddressesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemSendEmailAllowedSenderAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -27304,7 +27293,7 @@ export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemSecretKeyUsa
   /*@__PURE__*/ S.String;
 
 export type ScriptsScriptAndVersionSettingsEditResponseBindingsItemSecretKeyUsagesList =
-  ReadonlyArray<ScriptsScriptAndVersionSettingsEditResponseBindingsItemSecretKeyUsagesItem>;
+  Array<ScriptsScriptAndVersionSettingsEditResponseBindingsItemSecretKeyUsagesItem>;
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemSecretKeyUsagesList =
   /*@__PURE__*/ S.Array(
     ScriptsScriptAndVersionSettingsEditResponseBindingsItemSecretKeyUsagesItem,
@@ -27683,7 +27672,7 @@ export const ScriptsScriptAndVersionSettingsEditResponseBindingsItem =
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItem>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseBindingsList =
-  ReadonlyArray<ScriptsScriptAndVersionSettingsEditResponseBindingsItem>;
+  Array<ScriptsScriptAndVersionSettingsEditResponseBindingsItem>;
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsList =
   /*@__PURE__*/ S.Array(
     ScriptsScriptAndVersionSettingsEditResponseBindingsItem,
@@ -27708,7 +27697,7 @@ export const ScriptsScriptAndVersionSettingsEditResponseCacheOptions =
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseCacheOptions>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseCompatibilityFlagsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ScriptsScriptAndVersionSettingsEditResponseCompatibilityFlagsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -27779,21 +27768,21 @@ export const ScriptsScriptAndVersionSettingsEditResponseLimits =
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseLimits>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseMigrationsSingleStepMigrationDeletedClassesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ScriptsScriptAndVersionSettingsEditResponseMigrationsSingleStepMigrationDeletedClassesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseMigrationsSingleStepMigrationDeletedClassesList>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseMigrationsSingleStepMigrationNewClassesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ScriptsScriptAndVersionSettingsEditResponseMigrationsSingleStepMigrationNewClassesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseMigrationsSingleStepMigrationNewClassesList>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseMigrationsSingleStepMigrationNewSqliteClassesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ScriptsScriptAndVersionSettingsEditResponseMigrationsSingleStepMigrationNewSqliteClassesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -27815,7 +27804,7 @@ export const ScriptsScriptAndVersionSettingsEditResponseMigrationsSingleStepMigr
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseMigrationsSingleStepMigrationRenamedClassesItem>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseMigrationsSingleStepMigrationRenamedClassesList =
-  ReadonlyArray<ScriptsScriptAndVersionSettingsEditResponseMigrationsSingleStepMigrationRenamedClassesItem>;
+  Array<ScriptsScriptAndVersionSettingsEditResponseMigrationsSingleStepMigrationRenamedClassesItem>;
 export const ScriptsScriptAndVersionSettingsEditResponseMigrationsSingleStepMigrationRenamedClassesList =
   /*@__PURE__*/ S.Array(
     ScriptsScriptAndVersionSettingsEditResponseMigrationsSingleStepMigrationRenamedClassesItem,
@@ -27839,7 +27828,7 @@ export const ScriptsScriptAndVersionSettingsEditResponseMigrationsSingleStepMigr
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseMigrationsSingleStepMigrationTransferredClassesItem>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseMigrationsSingleStepMigrationTransferredClassesList =
-  ReadonlyArray<ScriptsScriptAndVersionSettingsEditResponseMigrationsSingleStepMigrationTransferredClassesItem>;
+  Array<ScriptsScriptAndVersionSettingsEditResponseMigrationsSingleStepMigrationTransferredClassesItem>;
 export const ScriptsScriptAndVersionSettingsEditResponseMigrationsSingleStepMigrationTransferredClassesList =
   /*@__PURE__*/ S.Array(
     ScriptsScriptAndVersionSettingsEditResponseMigrationsSingleStepMigrationTransferredClassesItem,
@@ -27898,21 +27887,21 @@ export const ScriptsScriptAndVersionSettingsEditResponseMigrationsSingleStepMigr
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseMigrationsSingleStepMigration>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemDeletedClassesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ScriptsScriptAndVersionSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemDeletedClassesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemDeletedClassesList>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemNewClassesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ScriptsScriptAndVersionSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemNewClassesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemNewClassesList>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemNewSqliteClassesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ScriptsScriptAndVersionSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemNewSqliteClassesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -27934,7 +27923,7 @@ export const ScriptsScriptAndVersionSettingsEditResponseMigrationsWorkersMultipl
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesItem>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesList =
-  ReadonlyArray<ScriptsScriptAndVersionSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesItem>;
+  Array<ScriptsScriptAndVersionSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesItem>;
 export const ScriptsScriptAndVersionSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesList =
   /*@__PURE__*/ S.Array(
     ScriptsScriptAndVersionSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesItem,
@@ -27958,7 +27947,7 @@ export const ScriptsScriptAndVersionSettingsEditResponseMigrationsWorkersMultipl
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesItem>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesList =
-  ReadonlyArray<ScriptsScriptAndVersionSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesItem>;
+  Array<ScriptsScriptAndVersionSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesItem>;
 export const ScriptsScriptAndVersionSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesList =
   /*@__PURE__*/ S.Array(
     ScriptsScriptAndVersionSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesItem,
@@ -28011,7 +28000,7 @@ export const ScriptsScriptAndVersionSettingsEditResponseMigrationsWorkersMultipl
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItem>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsList =
-  ReadonlyArray<ScriptsScriptAndVersionSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItem>;
+  Array<ScriptsScriptAndVersionSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItem>;
 export const ScriptsScriptAndVersionSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsList =
   /*@__PURE__*/ S.Array(
     ScriptsScriptAndVersionSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItem,
@@ -28096,7 +28085,7 @@ export const ScriptsScriptAndVersionSettingsEditResponseMigrations =
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseMigrations>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseObservabilityLogsDestinationsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ScriptsScriptAndVersionSettingsEditResponseObservabilityLogsDestinationsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -28130,7 +28119,7 @@ export const ScriptsScriptAndVersionSettingsEditResponseObservabilityLogs =
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseObservabilityLogs>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseObservabilityTracesDestinationsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ScriptsScriptAndVersionSettingsEditResponseObservabilityTracesDestinationsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -28387,7 +28376,7 @@ export const ScriptsScriptAndVersionSettingsEditResponsePlacementCase7TargetItem
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponsePlacementCase7TargetItem>;
 
 export type ScriptsScriptAndVersionSettingsEditResponsePlacementCase7TargetList =
-  ReadonlyArray<ScriptsScriptAndVersionSettingsEditResponsePlacementCase7TargetItem>;
+  Array<ScriptsScriptAndVersionSettingsEditResponsePlacementCase7TargetItem>;
 export const ScriptsScriptAndVersionSettingsEditResponsePlacementCase7TargetList =
   /*@__PURE__*/ S.Array(
     ScriptsScriptAndVersionSettingsEditResponsePlacementCase7TargetItem,
@@ -28450,8 +28439,7 @@ export const ScriptsScriptAndVersionSettingsEditResponsePlacement =
     identifier: "ScriptsScriptAndVersionSettingsEditResponsePlacement",
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponsePlacement>;
 
-export type ScriptsScriptAndVersionSettingsEditResponseTagsList =
-  ReadonlyArray<string>;
+export type ScriptsScriptAndVersionSettingsEditResponseTagsList = Array<string>;
 export const ScriptsScriptAndVersionSettingsEditResponseTagsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -28477,7 +28465,7 @@ export const ScriptsScriptAndVersionSettingsEditResponseTailConsumersItem =
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseTailConsumersItem>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseTailConsumersList =
-  ReadonlyArray<ScriptsScriptAndVersionSettingsEditResponseTailConsumersItem>;
+  Array<ScriptsScriptAndVersionSettingsEditResponseTailConsumersItem>;
 export const ScriptsScriptAndVersionSettingsEditResponseTailConsumersList =
   /*@__PURE__*/ S.Array(
     ScriptsScriptAndVersionSettingsEditResponseTailConsumersItem,
@@ -28574,7 +28562,7 @@ export const PatchScriptScriptAndVersionSettingResponse =
   }) as any as S.Schema<PatchScriptScriptAndVersionSettingResponse>;
 
 export type ScriptsSettingsEditRequestObservabilityLogsDestinationsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ScriptsSettingsEditRequestObservabilityLogsDestinationsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -28608,7 +28596,7 @@ export const ScriptsSettingsEditRequestObservabilityLogs =
   }) as any as S.Schema<ScriptsSettingsEditRequestObservabilityLogs>;
 
 export type ScriptsSettingsEditRequestObservabilityTracesDestinationsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ScriptsSettingsEditRequestObservabilityTracesDestinationsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -28675,7 +28663,7 @@ export const ScriptsSettingsEditRequestObservability = /*@__PURE__*/ S.suspend(
   identifier: "ScriptsSettingsEditRequestObservability",
 }) as any as S.Schema<ScriptsSettingsEditRequestObservability>;
 
-export type ScriptsSettingsEditRequestTagsList = ReadonlyArray<string>;
+export type ScriptsSettingsEditRequestTagsList = Array<string>;
 export const ScriptsSettingsEditRequestTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ScriptsSettingsEditRequestTagsList>;
@@ -28700,7 +28688,7 @@ export const ScriptsSettingsEditRequestTailConsumersItem =
   }) as any as S.Schema<ScriptsSettingsEditRequestTailConsumersItem>;
 
 export type ScriptsSettingsEditRequestTailConsumersList =
-  ReadonlyArray<ScriptsSettingsEditRequestTailConsumersItem>;
+  Array<ScriptsSettingsEditRequestTailConsumersItem>;
 export const ScriptsSettingsEditRequestTailConsumersList =
   /*@__PURE__*/ S.Array(
     ScriptsSettingsEditRequestTailConsumersItem,
@@ -28746,7 +28734,7 @@ export const PatchScriptSettingRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PatchScriptSettingRequest>;
 
 export type ScriptsSettingsEditResponseObservabilityLogsDestinationsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ScriptsSettingsEditResponseObservabilityLogsDestinationsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -28780,7 +28768,7 @@ export const ScriptsSettingsEditResponseObservabilityLogs =
   }) as any as S.Schema<ScriptsSettingsEditResponseObservabilityLogs>;
 
 export type ScriptsSettingsEditResponseObservabilityTracesDestinationsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ScriptsSettingsEditResponseObservabilityTracesDestinationsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -28845,7 +28833,7 @@ export const ScriptsSettingsEditResponseObservability = /*@__PURE__*/ S.suspend(
   identifier: "ScriptsSettingsEditResponseObservability",
 }) as any as S.Schema<ScriptsSettingsEditResponseObservability>;
 
-export type ScriptsSettingsEditResponseTagsList = ReadonlyArray<string>;
+export type ScriptsSettingsEditResponseTagsList = Array<string>;
 export const ScriptsSettingsEditResponseTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ScriptsSettingsEditResponseTagsList>;
@@ -28870,7 +28858,7 @@ export const ScriptsSettingsEditResponseTailConsumersItem =
   }) as any as S.Schema<ScriptsSettingsEditResponseTailConsumersItem>;
 
 export type ScriptsSettingsEditResponseTailConsumersList =
-  ReadonlyArray<ScriptsSettingsEditResponseTailConsumersItem>;
+  Array<ScriptsSettingsEditResponseTailConsumersItem>;
 export const ScriptsSettingsEditResponseTailConsumersList =
   /*@__PURE__*/ S.Array(
     ScriptsSettingsEditResponseTailConsumersItem,
@@ -29163,19 +29151,18 @@ export const ScriptsUpdateResponseCacheOptions = /*@__PURE__*/ S.suspend(() =>
   identifier: "ScriptsUpdateResponseCacheOptions",
 }) as any as S.Schema<ScriptsUpdateResponseCacheOptions>;
 
-export type ScriptsUpdateResponseCompatibilityFlagsList = ReadonlyArray<string>;
+export type ScriptsUpdateResponseCompatibilityFlagsList = Array<string>;
 export const ScriptsUpdateResponseCompatibilityFlagsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ScriptsUpdateResponseCompatibilityFlagsList>;
 
-export type ScriptsUpdateResponseHandlersList = ReadonlyArray<string>;
+export type ScriptsUpdateResponseHandlersList = Array<string>;
 export const ScriptsUpdateResponseHandlersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ScriptsUpdateResponseHandlersList>;
 
-export type ScriptsUpdateResponseNamedHandlersItemHandlersList =
-  ReadonlyArray<string>;
+export type ScriptsUpdateResponseNamedHandlersItemHandlersList = Array<string>;
 export const ScriptsUpdateResponseNamedHandlersItemHandlersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -29198,13 +29185,13 @@ export const ScriptsUpdateResponseNamedHandlersItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ScriptsUpdateResponseNamedHandlersItem>;
 
 export type ScriptsUpdateResponseNamedHandlersList =
-  ReadonlyArray<ScriptsUpdateResponseNamedHandlersItem>;
+  Array<ScriptsUpdateResponseNamedHandlersItem>;
 export const ScriptsUpdateResponseNamedHandlersList = /*@__PURE__*/ S.Array(
   ScriptsUpdateResponseNamedHandlersItem,
 ) as any as S.Schema<ScriptsUpdateResponseNamedHandlersList>;
 
 export type ScriptsUpdateResponseObservabilityLogsDestinationsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ScriptsUpdateResponseObservabilityLogsDestinationsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -29238,7 +29225,7 @@ export const ScriptsUpdateResponseObservabilityLogs = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ScriptsUpdateResponseObservabilityLogs>;
 
 export type ScriptsUpdateResponseObservabilityTracesDestinationsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ScriptsUpdateResponseObservabilityTracesDestinationsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -29553,7 +29540,7 @@ export const ScriptsUpdateResponsePlacementCase7TargetItem =
   }) as any as S.Schema<ScriptsUpdateResponsePlacementCase7TargetItem>;
 
 export type ScriptsUpdateResponsePlacementCase7TargetList =
-  ReadonlyArray<ScriptsUpdateResponsePlacementCase7TargetItem>;
+  Array<ScriptsUpdateResponsePlacementCase7TargetItem>;
 export const ScriptsUpdateResponsePlacementCase7TargetList =
   /*@__PURE__*/ S.Array(
     ScriptsUpdateResponsePlacementCase7TargetItem,
@@ -29657,7 +29644,7 @@ export type ScriptsUpdateResponsePlacementStatus =
   | "INSUFFICIENT_INVOCATIONS";
 export const ScriptsUpdateResponsePlacementStatus = /*@__PURE__*/ S.String;
 
-export type ScriptsUpdateResponseTagsList = ReadonlyArray<string>;
+export type ScriptsUpdateResponseTagsList = Array<string>;
 export const ScriptsUpdateResponseTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ScriptsUpdateResponseTagsList>;
@@ -29682,7 +29669,7 @@ export const ScriptsUpdateResponseTailConsumersItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ScriptsUpdateResponseTailConsumersItem>;
 
 export type ScriptsUpdateResponseTailConsumersList =
-  ReadonlyArray<ScriptsUpdateResponseTailConsumersItem>;
+  Array<ScriptsUpdateResponseTailConsumersItem>;
 export const ScriptsUpdateResponseTailConsumersList = /*@__PURE__*/ S.Array(
   ScriptsUpdateResponseTailConsumersItem,
 ) as any as S.Schema<ScriptsUpdateResponseTailConsumersList>;
@@ -29837,20 +29824,19 @@ export const ScriptsContentUpdateResponseCacheOptions = /*@__PURE__*/ S.suspend(
   identifier: "ScriptsContentUpdateResponseCacheOptions",
 }) as any as S.Schema<ScriptsContentUpdateResponseCacheOptions>;
 
-export type ScriptsContentUpdateResponseCompatibilityFlagsList =
-  ReadonlyArray<string>;
+export type ScriptsContentUpdateResponseCompatibilityFlagsList = Array<string>;
 export const ScriptsContentUpdateResponseCompatibilityFlagsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ScriptsContentUpdateResponseCompatibilityFlagsList>;
 
-export type ScriptsContentUpdateResponseHandlersList = ReadonlyArray<string>;
+export type ScriptsContentUpdateResponseHandlersList = Array<string>;
 export const ScriptsContentUpdateResponseHandlersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ScriptsContentUpdateResponseHandlersList>;
 
 export type ScriptsContentUpdateResponseNamedHandlersItemHandlersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ScriptsContentUpdateResponseNamedHandlersItemHandlersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -29875,14 +29861,14 @@ export const ScriptsContentUpdateResponseNamedHandlersItem =
   }) as any as S.Schema<ScriptsContentUpdateResponseNamedHandlersItem>;
 
 export type ScriptsContentUpdateResponseNamedHandlersList =
-  ReadonlyArray<ScriptsContentUpdateResponseNamedHandlersItem>;
+  Array<ScriptsContentUpdateResponseNamedHandlersItem>;
 export const ScriptsContentUpdateResponseNamedHandlersList =
   /*@__PURE__*/ S.Array(
     ScriptsContentUpdateResponseNamedHandlersItem,
   ) as any as S.Schema<ScriptsContentUpdateResponseNamedHandlersList>;
 
 export type ScriptsContentUpdateResponseObservabilityLogsDestinationsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ScriptsContentUpdateResponseObservabilityLogsDestinationsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -29916,7 +29902,7 @@ export const ScriptsContentUpdateResponseObservabilityLogs =
   }) as any as S.Schema<ScriptsContentUpdateResponseObservabilityLogs>;
 
 export type ScriptsContentUpdateResponseObservabilityTracesDestinationsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ScriptsContentUpdateResponseObservabilityTracesDestinationsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -30251,7 +30237,7 @@ export const ScriptsContentUpdateResponsePlacementCase7TargetItem =
   }) as any as S.Schema<ScriptsContentUpdateResponsePlacementCase7TargetItem>;
 
 export type ScriptsContentUpdateResponsePlacementCase7TargetList =
-  ReadonlyArray<ScriptsContentUpdateResponsePlacementCase7TargetItem>;
+  Array<ScriptsContentUpdateResponsePlacementCase7TargetItem>;
 export const ScriptsContentUpdateResponsePlacementCase7TargetList =
   /*@__PURE__*/ S.Array(
     ScriptsContentUpdateResponsePlacementCase7TargetItem,
@@ -30359,7 +30345,7 @@ export type ScriptsContentUpdateResponsePlacementStatus =
 export const ScriptsContentUpdateResponsePlacementStatus =
   /*@__PURE__*/ S.String;
 
-export type ScriptsContentUpdateResponseTagsList = ReadonlyArray<string>;
+export type ScriptsContentUpdateResponseTagsList = Array<string>;
 export const ScriptsContentUpdateResponseTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ScriptsContentUpdateResponseTagsList>;
@@ -30384,7 +30370,7 @@ export const ScriptsContentUpdateResponseTailConsumersItem =
   }) as any as S.Schema<ScriptsContentUpdateResponseTailConsumersItem>;
 
 export type ScriptsContentUpdateResponseTailConsumersList =
-  ReadonlyArray<ScriptsContentUpdateResponseTailConsumersItem>;
+  Array<ScriptsContentUpdateResponseTailConsumersItem>;
 export const ScriptsContentUpdateResponseTailConsumersList =
   /*@__PURE__*/ S.Array(
     ScriptsContentUpdateResponseTailConsumersItem,
@@ -30511,7 +30497,7 @@ export const ScriptsSchedulesUpdateRequestBodyItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ScriptsSchedulesUpdateRequestBodyItem>;
 
 export type ScriptsSchedulesUpdateRequestBodyList =
-  ReadonlyArray<ScriptsSchedulesUpdateRequestBodyItem>;
+  Array<ScriptsSchedulesUpdateRequestBodyItem>;
 export const ScriptsSchedulesUpdateRequestBodyList = /*@__PURE__*/ S.Array(
   ScriptsSchedulesUpdateRequestBodyItem,
 ) as any as S.Schema<ScriptsSchedulesUpdateRequestBodyList>;
@@ -30558,7 +30544,7 @@ export const ScriptsSchedulesUpdateResponseSchedulesItem =
   }) as any as S.Schema<ScriptsSchedulesUpdateResponseSchedulesItem>;
 
 export type ScriptsSchedulesUpdateResponseSchedulesList =
-  ReadonlyArray<ScriptsSchedulesUpdateResponseSchedulesItem>;
+  Array<ScriptsSchedulesUpdateResponseSchedulesItem>;
 export const ScriptsSchedulesUpdateResponseSchedulesList =
   /*@__PURE__*/ S.Array(
     ScriptsSchedulesUpdateResponseSchedulesItem,
@@ -30597,7 +30583,7 @@ export type ScriptsSecretsUpdateRequestUsagesItem =
   | "unwrapKey";
 export const ScriptsSecretsUpdateRequestUsagesItem = /*@__PURE__*/ S.String;
 
-export type ScriptsSecretsUpdateRequestUsagesList = ReadonlyArray<
+export type ScriptsSecretsUpdateRequestUsagesList = Array<
   ScriptsSecretsUpdateRequestUsagesItem | (string & {})
 >;
 export const ScriptsSecretsUpdateRequestUsagesList = /*@__PURE__*/ S.Array(
@@ -30696,7 +30682,7 @@ export const ScriptsSecretsUpdateResultSecretKeyUsagesItem =
   /*@__PURE__*/ S.String;
 
 export type ScriptsSecretsUpdateResultSecretKeyUsagesList =
-  ReadonlyArray<ScriptsSecretsUpdateResultSecretKeyUsagesItem>;
+  Array<ScriptsSecretsUpdateResultSecretKeyUsagesItem>;
 export const ScriptsSecretsUpdateResultSecretKeyUsagesList =
   /*@__PURE__*/ S.Array(
     ScriptsSecretsUpdateResultSecretKeyUsagesItem,
@@ -30904,14 +30890,14 @@ export const ObservabilityTelemetryQueryRequestParametersCalculationsItem =
   }) as any as S.Schema<ObservabilityTelemetryQueryRequestParametersCalculationsItem>;
 
 export type ObservabilityTelemetryQueryRequestParametersCalculationsList =
-  ReadonlyArray<ObservabilityTelemetryQueryRequestParametersCalculationsItem>;
+  Array<ObservabilityTelemetryQueryRequestParametersCalculationsItem>;
 export const ObservabilityTelemetryQueryRequestParametersCalculationsList =
   /*@__PURE__*/ S.Array(
     ObservabilityTelemetryQueryRequestParametersCalculationsItem,
   ) as any as S.Schema<ObservabilityTelemetryQueryRequestParametersCalculationsList>;
 
 export type ObservabilityTelemetryQueryRequestParametersDatasetsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ObservabilityTelemetryQueryRequestParametersDatasetsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -30936,7 +30922,7 @@ export const ObservabilityTelemetryQueryRequestParametersFiltersItemCase0Filters
   /*@__PURE__*/ S.String;
 
 export type ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItemCase0FiltersList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItemCase0FiltersList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -31112,7 +31098,7 @@ export const ObservabilityTelemetryQueryRequestParametersFiltersItemCase0Filters
   }) as any as S.Schema<ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItem>;
 
 export type ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersList =
-  ReadonlyArray<ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItem>;
+  Array<ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItem>;
 export const ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersList =
   /*@__PURE__*/ S.Array(
     ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItem,
@@ -31286,7 +31272,7 @@ export const ObservabilityTelemetryQueryRequestParametersFiltersItem =
   }) as any as S.Schema<ObservabilityTelemetryQueryRequestParametersFiltersItem>;
 
 export type ObservabilityTelemetryQueryRequestParametersFiltersList =
-  ReadonlyArray<ObservabilityTelemetryQueryRequestParametersFiltersItem>;
+  Array<ObservabilityTelemetryQueryRequestParametersFiltersItem>;
 export const ObservabilityTelemetryQueryRequestParametersFiltersList =
   /*@__PURE__*/ S.Array(
     ObservabilityTelemetryQueryRequestParametersFiltersItem,
@@ -31318,7 +31304,7 @@ export const ObservabilityTelemetryQueryRequestParametersGroupBysItem =
   }) as any as S.Schema<ObservabilityTelemetryQueryRequestParametersGroupBysItem>;
 
 export type ObservabilityTelemetryQueryRequestParametersGroupBysList =
-  ReadonlyArray<ObservabilityTelemetryQueryRequestParametersGroupBysItem>;
+  Array<ObservabilityTelemetryQueryRequestParametersGroupBysItem>;
 export const ObservabilityTelemetryQueryRequestParametersGroupBysList =
   /*@__PURE__*/ S.Array(
     ObservabilityTelemetryQueryRequestParametersGroupBysItem,
@@ -31357,7 +31343,7 @@ export const ObservabilityTelemetryQueryRequestParametersHavingsItem =
   }) as any as S.Schema<ObservabilityTelemetryQueryRequestParametersHavingsItem>;
 
 export type ObservabilityTelemetryQueryRequestParametersHavingsList =
-  ReadonlyArray<ObservabilityTelemetryQueryRequestParametersHavingsItem>;
+  Array<ObservabilityTelemetryQueryRequestParametersHavingsItem>;
 export const ObservabilityTelemetryQueryRequestParametersHavingsList =
   /*@__PURE__*/ S.Array(
     ObservabilityTelemetryQueryRequestParametersHavingsItem,
@@ -31603,14 +31589,14 @@ export const ObservabilityTelemetryQueryResponseRunQueryParametersCalculationsIt
   }) as any as S.Schema<ObservabilityTelemetryQueryResponseRunQueryParametersCalculationsItem>;
 
 export type ObservabilityTelemetryQueryResponseRunQueryParametersCalculationsList =
-  ReadonlyArray<ObservabilityTelemetryQueryResponseRunQueryParametersCalculationsItem>;
+  Array<ObservabilityTelemetryQueryResponseRunQueryParametersCalculationsItem>;
 export const ObservabilityTelemetryQueryResponseRunQueryParametersCalculationsList =
   /*@__PURE__*/ S.Array(
     ObservabilityTelemetryQueryResponseRunQueryParametersCalculationsItem,
   ) as any as S.Schema<ObservabilityTelemetryQueryResponseRunQueryParametersCalculationsList>;
 
 export type ObservabilityTelemetryQueryResponseRunQueryParametersDatasetsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ObservabilityTelemetryQueryResponseRunQueryParametersDatasetsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -31627,7 +31613,7 @@ export const ObservabilityTelemetryQueryResponseRunQueryParametersFiltersItemCas
   /*@__PURE__*/ S.String;
 
 export type ObservabilityTelemetryQueryResponseRunQueryParametersFiltersItemCase0FiltersList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const ObservabilityTelemetryQueryResponseRunQueryParametersFiltersItemCase0FiltersList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -31785,7 +31771,7 @@ export const ObservabilityTelemetryQueryResponseRunQueryParametersFiltersItem =
   }) as any as S.Schema<ObservabilityTelemetryQueryResponseRunQueryParametersFiltersItem>;
 
 export type ObservabilityTelemetryQueryResponseRunQueryParametersFiltersList =
-  ReadonlyArray<ObservabilityTelemetryQueryResponseRunQueryParametersFiltersItem>;
+  Array<ObservabilityTelemetryQueryResponseRunQueryParametersFiltersItem>;
 export const ObservabilityTelemetryQueryResponseRunQueryParametersFiltersList =
   /*@__PURE__*/ S.Array(
     ObservabilityTelemetryQueryResponseRunQueryParametersFiltersItem,
@@ -31812,7 +31798,7 @@ export const ObservabilityTelemetryQueryResponseRunQueryParametersGroupBysItem =
   }) as any as S.Schema<ObservabilityTelemetryQueryResponseRunQueryParametersGroupBysItem>;
 
 export type ObservabilityTelemetryQueryResponseRunQueryParametersGroupBysList =
-  ReadonlyArray<ObservabilityTelemetryQueryResponseRunQueryParametersGroupBysItem>;
+  Array<ObservabilityTelemetryQueryResponseRunQueryParametersGroupBysItem>;
 export const ObservabilityTelemetryQueryResponseRunQueryParametersGroupBysList =
   /*@__PURE__*/ S.Array(
     ObservabilityTelemetryQueryResponseRunQueryParametersGroupBysItem,
@@ -31842,7 +31828,7 @@ export const ObservabilityTelemetryQueryResponseRunQueryParametersHavingsItem =
   }) as any as S.Schema<ObservabilityTelemetryQueryResponseRunQueryParametersHavingsItem>;
 
 export type ObservabilityTelemetryQueryResponseRunQueryParametersHavingsList =
-  ReadonlyArray<ObservabilityTelemetryQueryResponseRunQueryParametersHavingsItem>;
+  Array<ObservabilityTelemetryQueryResponseRunQueryParametersHavingsItem>;
 export const ObservabilityTelemetryQueryResponseRunQueryParametersHavingsList =
   /*@__PURE__*/ S.Array(
     ObservabilityTelemetryQueryResponseRunQueryParametersHavingsItem,
@@ -32125,7 +32111,7 @@ export const ObservabilityTelemetryQueryResponseAgentsItem =
   }) as any as S.Schema<ObservabilityTelemetryQueryResponseAgentsItem>;
 
 export type ObservabilityTelemetryQueryResponseAgentsList =
-  ReadonlyArray<ObservabilityTelemetryQueryResponseAgentsItem>;
+  Array<ObservabilityTelemetryQueryResponseAgentsItem>;
 export const ObservabilityTelemetryQueryResponseAgentsList =
   /*@__PURE__*/ S.Array(
     ObservabilityTelemetryQueryResponseAgentsItem,
@@ -32153,7 +32139,7 @@ export const ObservabilityTelemetryQueryResponseCalculationsItemAggregatesItemGr
   }) as any as S.Schema<ObservabilityTelemetryQueryResponseCalculationsItemAggregatesItemGroupsItem>;
 
 export type ObservabilityTelemetryQueryResponseCalculationsItemAggregatesItemGroupsList =
-  ReadonlyArray<ObservabilityTelemetryQueryResponseCalculationsItemAggregatesItemGroupsItem>;
+  Array<ObservabilityTelemetryQueryResponseCalculationsItemAggregatesItemGroupsItem>;
 export const ObservabilityTelemetryQueryResponseCalculationsItemAggregatesItemGroupsList =
   /*@__PURE__*/ S.Array(
     ObservabilityTelemetryQueryResponseCalculationsItemAggregatesItemGroupsItem,
@@ -32183,7 +32169,7 @@ export const ObservabilityTelemetryQueryResponseCalculationsItemAggregatesItem =
   }) as any as S.Schema<ObservabilityTelemetryQueryResponseCalculationsItemAggregatesItem>;
 
 export type ObservabilityTelemetryQueryResponseCalculationsItemAggregatesList =
-  ReadonlyArray<ObservabilityTelemetryQueryResponseCalculationsItemAggregatesItem>;
+  Array<ObservabilityTelemetryQueryResponseCalculationsItemAggregatesItem>;
 export const ObservabilityTelemetryQueryResponseCalculationsItemAggregatesList =
   /*@__PURE__*/ S.Array(
     ObservabilityTelemetryQueryResponseCalculationsItemAggregatesItem,
@@ -32211,7 +32197,7 @@ export const ObservabilityTelemetryQueryResponseCalculationsItemSeriesItemDataIt
   }) as any as S.Schema<ObservabilityTelemetryQueryResponseCalculationsItemSeriesItemDataItemGroupsItem>;
 
 export type ObservabilityTelemetryQueryResponseCalculationsItemSeriesItemDataItemGroupsList =
-  ReadonlyArray<ObservabilityTelemetryQueryResponseCalculationsItemSeriesItemDataItemGroupsItem>;
+  Array<ObservabilityTelemetryQueryResponseCalculationsItemSeriesItemDataItemGroupsItem>;
 export const ObservabilityTelemetryQueryResponseCalculationsItemSeriesItemDataItemGroupsList =
   /*@__PURE__*/ S.Array(
     ObservabilityTelemetryQueryResponseCalculationsItemSeriesItemDataItemGroupsItem,
@@ -32245,7 +32231,7 @@ export const ObservabilityTelemetryQueryResponseCalculationsItemSeriesItemDataIt
   }) as any as S.Schema<ObservabilityTelemetryQueryResponseCalculationsItemSeriesItemDataItem>;
 
 export type ObservabilityTelemetryQueryResponseCalculationsItemSeriesItemDataList =
-  ReadonlyArray<ObservabilityTelemetryQueryResponseCalculationsItemSeriesItemDataItem>;
+  Array<ObservabilityTelemetryQueryResponseCalculationsItemSeriesItemDataItem>;
 export const ObservabilityTelemetryQueryResponseCalculationsItemSeriesItemDataList =
   /*@__PURE__*/ S.Array(
     ObservabilityTelemetryQueryResponseCalculationsItemSeriesItemDataItem,
@@ -32266,7 +32252,7 @@ export const ObservabilityTelemetryQueryResponseCalculationsItemSeriesItem =
   }) as any as S.Schema<ObservabilityTelemetryQueryResponseCalculationsItemSeriesItem>;
 
 export type ObservabilityTelemetryQueryResponseCalculationsItemSeriesList =
-  ReadonlyArray<ObservabilityTelemetryQueryResponseCalculationsItemSeriesItem>;
+  Array<ObservabilityTelemetryQueryResponseCalculationsItemSeriesItem>;
 export const ObservabilityTelemetryQueryResponseCalculationsItemSeriesList =
   /*@__PURE__*/ S.Array(
     ObservabilityTelemetryQueryResponseCalculationsItemSeriesItem,
@@ -32292,7 +32278,7 @@ export const ObservabilityTelemetryQueryResponseCalculationsItem =
   }) as any as S.Schema<ObservabilityTelemetryQueryResponseCalculationsItem>;
 
 export type ObservabilityTelemetryQueryResponseCalculationsList =
-  ReadonlyArray<ObservabilityTelemetryQueryResponseCalculationsItem>;
+  Array<ObservabilityTelemetryQueryResponseCalculationsItem>;
 export const ObservabilityTelemetryQueryResponseCalculationsList =
   /*@__PURE__*/ S.Array(
     ObservabilityTelemetryQueryResponseCalculationsItem,
@@ -32320,7 +32306,7 @@ export const ObservabilityTelemetryQueryResponseCompareItemAggregatesItemGroupsI
   }) as any as S.Schema<ObservabilityTelemetryQueryResponseCompareItemAggregatesItemGroupsItem>;
 
 export type ObservabilityTelemetryQueryResponseCompareItemAggregatesItemGroupsList =
-  ReadonlyArray<ObservabilityTelemetryQueryResponseCompareItemAggregatesItemGroupsItem>;
+  Array<ObservabilityTelemetryQueryResponseCompareItemAggregatesItemGroupsItem>;
 export const ObservabilityTelemetryQueryResponseCompareItemAggregatesItemGroupsList =
   /*@__PURE__*/ S.Array(
     ObservabilityTelemetryQueryResponseCompareItemAggregatesItemGroupsItem,
@@ -32349,7 +32335,7 @@ export const ObservabilityTelemetryQueryResponseCompareItemAggregatesItem =
   }) as any as S.Schema<ObservabilityTelemetryQueryResponseCompareItemAggregatesItem>;
 
 export type ObservabilityTelemetryQueryResponseCompareItemAggregatesList =
-  ReadonlyArray<ObservabilityTelemetryQueryResponseCompareItemAggregatesItem>;
+  Array<ObservabilityTelemetryQueryResponseCompareItemAggregatesItem>;
 export const ObservabilityTelemetryQueryResponseCompareItemAggregatesList =
   /*@__PURE__*/ S.Array(
     ObservabilityTelemetryQueryResponseCompareItemAggregatesItem,
@@ -32377,7 +32363,7 @@ export const ObservabilityTelemetryQueryResponseCompareItemSeriesItemDataItemGro
   }) as any as S.Schema<ObservabilityTelemetryQueryResponseCompareItemSeriesItemDataItemGroupsItem>;
 
 export type ObservabilityTelemetryQueryResponseCompareItemSeriesItemDataItemGroupsList =
-  ReadonlyArray<ObservabilityTelemetryQueryResponseCompareItemSeriesItemDataItemGroupsItem>;
+  Array<ObservabilityTelemetryQueryResponseCompareItemSeriesItemDataItemGroupsItem>;
 export const ObservabilityTelemetryQueryResponseCompareItemSeriesItemDataItemGroupsList =
   /*@__PURE__*/ S.Array(
     ObservabilityTelemetryQueryResponseCompareItemSeriesItemDataItemGroupsItem,
@@ -32411,7 +32397,7 @@ export const ObservabilityTelemetryQueryResponseCompareItemSeriesItemDataItem =
   }) as any as S.Schema<ObservabilityTelemetryQueryResponseCompareItemSeriesItemDataItem>;
 
 export type ObservabilityTelemetryQueryResponseCompareItemSeriesItemDataList =
-  ReadonlyArray<ObservabilityTelemetryQueryResponseCompareItemSeriesItemDataItem>;
+  Array<ObservabilityTelemetryQueryResponseCompareItemSeriesItemDataItem>;
 export const ObservabilityTelemetryQueryResponseCompareItemSeriesItemDataList =
   /*@__PURE__*/ S.Array(
     ObservabilityTelemetryQueryResponseCompareItemSeriesItemDataItem,
@@ -32432,7 +32418,7 @@ export const ObservabilityTelemetryQueryResponseCompareItemSeriesItem =
   }) as any as S.Schema<ObservabilityTelemetryQueryResponseCompareItemSeriesItem>;
 
 export type ObservabilityTelemetryQueryResponseCompareItemSeriesList =
-  ReadonlyArray<ObservabilityTelemetryQueryResponseCompareItemSeriesItem>;
+  Array<ObservabilityTelemetryQueryResponseCompareItemSeriesItem>;
 export const ObservabilityTelemetryQueryResponseCompareItemSeriesList =
   /*@__PURE__*/ S.Array(
     ObservabilityTelemetryQueryResponseCompareItemSeriesItem,
@@ -32457,7 +32443,7 @@ export const ObservabilityTelemetryQueryResponseCompareItem =
   }) as any as S.Schema<ObservabilityTelemetryQueryResponseCompareItem>;
 
 export type ObservabilityTelemetryQueryResponseCompareList =
-  ReadonlyArray<ObservabilityTelemetryQueryResponseCompareItem>;
+  Array<ObservabilityTelemetryQueryResponseCompareItem>;
 export const ObservabilityTelemetryQueryResponseCompareList =
   /*@__PURE__*/ S.Array(
     ObservabilityTelemetryQueryResponseCompareItem,
@@ -32731,7 +32717,7 @@ export const ObservabilityTelemetryQueryResponseEventsEventsItemWorkersCase1Diag
   }) as any as S.Schema<ObservabilityTelemetryQueryResponseEventsEventsItemWorkersCase1DiagnosticsChannelEventsItem>;
 
 export type ObservabilityTelemetryQueryResponseEventsEventsItemWorkersCase1DiagnosticsChannelEventsList =
-  ReadonlyArray<ObservabilityTelemetryQueryResponseEventsEventsItemWorkersCase1DiagnosticsChannelEventsItem>;
+  Array<ObservabilityTelemetryQueryResponseEventsEventsItemWorkersCase1DiagnosticsChannelEventsItem>;
 export const ObservabilityTelemetryQueryResponseEventsEventsItemWorkersCase1DiagnosticsChannelEventsList =
   /*@__PURE__*/ S.Array(
     ObservabilityTelemetryQueryResponseEventsEventsItemWorkersCase1DiagnosticsChannelEventsItem,
@@ -32959,7 +32945,7 @@ export const ObservabilityTelemetryQueryResponseEventsEventsItem =
   }) as any as S.Schema<ObservabilityTelemetryQueryResponseEventsEventsItem>;
 
 export type ObservabilityTelemetryQueryResponseEventsEventsList =
-  ReadonlyArray<ObservabilityTelemetryQueryResponseEventsEventsItem>;
+  Array<ObservabilityTelemetryQueryResponseEventsEventsItem>;
 export const ObservabilityTelemetryQueryResponseEventsEventsList =
   /*@__PURE__*/ S.Array(
     ObservabilityTelemetryQueryResponseEventsEventsItem,
@@ -32982,7 +32968,7 @@ export const ObservabilityTelemetryQueryResponseEventsFieldsItem =
   }) as any as S.Schema<ObservabilityTelemetryQueryResponseEventsFieldsItem>;
 
 export type ObservabilityTelemetryQueryResponseEventsFieldsList =
-  ReadonlyArray<ObservabilityTelemetryQueryResponseEventsFieldsItem>;
+  Array<ObservabilityTelemetryQueryResponseEventsFieldsItem>;
 export const ObservabilityTelemetryQueryResponseEventsFieldsList =
   /*@__PURE__*/ S.Array(
     ObservabilityTelemetryQueryResponseEventsFieldsItem,
@@ -33043,7 +33029,7 @@ export const ObservabilityTelemetryQueryResponseEventsSeriesItemDataItem =
   }) as any as S.Schema<ObservabilityTelemetryQueryResponseEventsSeriesItemDataItem>;
 
 export type ObservabilityTelemetryQueryResponseEventsSeriesItemDataList =
-  ReadonlyArray<ObservabilityTelemetryQueryResponseEventsSeriesItemDataItem>;
+  Array<ObservabilityTelemetryQueryResponseEventsSeriesItemDataItem>;
 export const ObservabilityTelemetryQueryResponseEventsSeriesItemDataList =
   /*@__PURE__*/ S.Array(
     ObservabilityTelemetryQueryResponseEventsSeriesItemDataItem,
@@ -33064,7 +33050,7 @@ export const ObservabilityTelemetryQueryResponseEventsSeriesItem =
   }) as any as S.Schema<ObservabilityTelemetryQueryResponseEventsSeriesItem>;
 
 export type ObservabilityTelemetryQueryResponseEventsSeriesList =
-  ReadonlyArray<ObservabilityTelemetryQueryResponseEventsSeriesItem>;
+  Array<ObservabilityTelemetryQueryResponseEventsSeriesItem>;
 export const ObservabilityTelemetryQueryResponseEventsSeriesList =
   /*@__PURE__*/ S.Array(
     ObservabilityTelemetryQueryResponseEventsSeriesItem,
@@ -33360,7 +33346,7 @@ export const ObservabilityTelemetryQueryResponseInvocationsValueItemWorkersCase1
   }) as any as S.Schema<ObservabilityTelemetryQueryResponseInvocationsValueItemWorkersCase1DiagnosticsChannelEventsItem>;
 
 export type ObservabilityTelemetryQueryResponseInvocationsValueItemWorkersCase1DiagnosticsChannelEventsList =
-  ReadonlyArray<ObservabilityTelemetryQueryResponseInvocationsValueItemWorkersCase1DiagnosticsChannelEventsItem>;
+  Array<ObservabilityTelemetryQueryResponseInvocationsValueItemWorkersCase1DiagnosticsChannelEventsItem>;
 export const ObservabilityTelemetryQueryResponseInvocationsValueItemWorkersCase1DiagnosticsChannelEventsList =
   /*@__PURE__*/ S.Array(
     ObservabilityTelemetryQueryResponseInvocationsValueItemWorkersCase1DiagnosticsChannelEventsItem,
@@ -33589,7 +33575,7 @@ export const ObservabilityTelemetryQueryResponseInvocationsValueItem =
   }) as any as S.Schema<ObservabilityTelemetryQueryResponseInvocationsValueItem>;
 
 export type ObservabilityTelemetryQueryResponseInvocationsValueList =
-  ReadonlyArray<ObservabilityTelemetryQueryResponseInvocationsValueItem>;
+  Array<ObservabilityTelemetryQueryResponseInvocationsValueItem>;
 export const ObservabilityTelemetryQueryResponseInvocationsValueList =
   /*@__PURE__*/ S.Array(
     ObservabilityTelemetryQueryResponseInvocationsValueItem,
@@ -33607,14 +33593,14 @@ export const ObservabilityTelemetryQueryResponseInvocationsMap =
   ) as any as S.Schema<ObservabilityTelemetryQueryResponseInvocationsMap>;
 
 export type ObservabilityTelemetryQueryResponseTracesItemServiceList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ObservabilityTelemetryQueryResponseTracesItemServiceList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ObservabilityTelemetryQueryResponseTracesItemServiceList>;
 
 export type ObservabilityTelemetryQueryResponseTracesItemErrorsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ObservabilityTelemetryQueryResponseTracesItemErrorsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -33660,7 +33646,7 @@ export const ObservabilityTelemetryQueryResponseTracesItem =
   }) as any as S.Schema<ObservabilityTelemetryQueryResponseTracesItem>;
 
 export type ObservabilityTelemetryQueryResponseTracesList =
-  ReadonlyArray<ObservabilityTelemetryQueryResponseTracesItem>;
+  Array<ObservabilityTelemetryQueryResponseTracesItem>;
 export const ObservabilityTelemetryQueryResponseTracesList =
   /*@__PURE__*/ S.Array(
     ObservabilityTelemetryQueryResponseTracesItem,
@@ -33772,7 +33758,7 @@ export const ScriptsSearchResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "ScriptsSearchResultItem",
 }) as any as S.Schema<ScriptsSearchResultItem>;
 
-export type ScriptsSearchResultList = ReadonlyArray<ScriptsSearchResultItem>;
+export type ScriptsSearchResultList = Array<ScriptsSearchResultItem>;
 export const ScriptsSearchResultList = /*@__PURE__*/ S.Array(
   ScriptsSearchResultItem,
 ) as any as S.Schema<ScriptsSearchResultList>;
@@ -33785,7 +33771,7 @@ export const SearchScriptResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SearchScriptResponse>;
 
 export type BetaWorkersUpdateRequestObservabilityLogsDestinationsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const BetaWorkersUpdateRequestObservabilityLogsDestinationsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -33819,7 +33805,7 @@ export const BetaWorkersUpdateRequestObservabilityLogs =
   }) as any as S.Schema<BetaWorkersUpdateRequestObservabilityLogs>;
 
 export type BetaWorkersUpdateRequestObservabilityTracesDestinationsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const BetaWorkersUpdateRequestObservabilityTracesDestinationsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -33901,7 +33887,7 @@ export const BetaWorkersUpdateRequestSubdomain = /*@__PURE__*/ S.suspend(() =>
   identifier: "BetaWorkersUpdateRequestSubdomain",
 }) as any as S.Schema<BetaWorkersUpdateRequestSubdomain>;
 
-export type BetaWorkersUpdateRequestTagsList = ReadonlyArray<string>;
+export type BetaWorkersUpdateRequestTagsList = Array<string>;
 export const BetaWorkersUpdateRequestTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BetaWorkersUpdateRequestTagsList>;
@@ -33920,7 +33906,7 @@ export const BetaWorkersUpdateRequestTailConsumersItem =
   }) as any as S.Schema<BetaWorkersUpdateRequestTailConsumersItem>;
 
 export type BetaWorkersUpdateRequestTailConsumersList =
-  ReadonlyArray<BetaWorkersUpdateRequestTailConsumersItem>;
+  Array<BetaWorkersUpdateRequestTailConsumersItem>;
 export const BetaWorkersUpdateRequestTailConsumersList = /*@__PURE__*/ S.Array(
   BetaWorkersUpdateRequestTailConsumersItem,
 ) as any as S.Schema<BetaWorkersUpdateRequestTailConsumersList>;
@@ -33969,7 +33955,7 @@ export const UpdateBetaWorkerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateBetaWorkerRequest>;
 
 export type BetaWorkersUpdateResponseObservabilityLogsDestinationsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const BetaWorkersUpdateResponseObservabilityLogsDestinationsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -34003,7 +33989,7 @@ export const BetaWorkersUpdateResponseObservabilityLogs =
   }) as any as S.Schema<BetaWorkersUpdateResponseObservabilityLogs>;
 
 export type BetaWorkersUpdateResponseObservabilityTracesDestinationsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const BetaWorkersUpdateResponseObservabilityTracesDestinationsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -34092,7 +34078,7 @@ export const BetaWorkersUpdateResponseReferencesDispatchNamespaceOutboundsItem =
   }) as any as S.Schema<BetaWorkersUpdateResponseReferencesDispatchNamespaceOutboundsItem>;
 
 export type BetaWorkersUpdateResponseReferencesDispatchNamespaceOutboundsList =
-  ReadonlyArray<BetaWorkersUpdateResponseReferencesDispatchNamespaceOutboundsItem>;
+  Array<BetaWorkersUpdateResponseReferencesDispatchNamespaceOutboundsItem>;
 export const BetaWorkersUpdateResponseReferencesDispatchNamespaceOutboundsList =
   /*@__PURE__*/ S.Array(
     BetaWorkersUpdateResponseReferencesDispatchNamespaceOutboundsItem,
@@ -34124,7 +34110,7 @@ export const BetaWorkersUpdateResponseReferencesDomainsItem =
   }) as any as S.Schema<BetaWorkersUpdateResponseReferencesDomainsItem>;
 
 export type BetaWorkersUpdateResponseReferencesDomainsList =
-  ReadonlyArray<BetaWorkersUpdateResponseReferencesDomainsItem>;
+  Array<BetaWorkersUpdateResponseReferencesDomainsItem>;
 export const BetaWorkersUpdateResponseReferencesDomainsList =
   /*@__PURE__*/ S.Array(
     BetaWorkersUpdateResponseReferencesDomainsItem,
@@ -34153,7 +34139,7 @@ export const BetaWorkersUpdateResponseReferencesDurableObjectsItem =
   }) as any as S.Schema<BetaWorkersUpdateResponseReferencesDurableObjectsItem>;
 
 export type BetaWorkersUpdateResponseReferencesDurableObjectsList =
-  ReadonlyArray<BetaWorkersUpdateResponseReferencesDurableObjectsItem>;
+  Array<BetaWorkersUpdateResponseReferencesDurableObjectsItem>;
 export const BetaWorkersUpdateResponseReferencesDurableObjectsList =
   /*@__PURE__*/ S.Array(
     BetaWorkersUpdateResponseReferencesDurableObjectsItem,
@@ -34179,7 +34165,7 @@ export const BetaWorkersUpdateResponseReferencesQueuesItem =
   }) as any as S.Schema<BetaWorkersUpdateResponseReferencesQueuesItem>;
 
 export type BetaWorkersUpdateResponseReferencesQueuesList =
-  ReadonlyArray<BetaWorkersUpdateResponseReferencesQueuesItem>;
+  Array<BetaWorkersUpdateResponseReferencesQueuesItem>;
 export const BetaWorkersUpdateResponseReferencesQueuesList =
   /*@__PURE__*/ S.Array(
     BetaWorkersUpdateResponseReferencesQueuesItem,
@@ -34202,7 +34188,7 @@ export const BetaWorkersUpdateResponseReferencesWorkersItem =
   }) as any as S.Schema<BetaWorkersUpdateResponseReferencesWorkersItem>;
 
 export type BetaWorkersUpdateResponseReferencesWorkersList =
-  ReadonlyArray<BetaWorkersUpdateResponseReferencesWorkersItem>;
+  Array<BetaWorkersUpdateResponseReferencesWorkersItem>;
 export const BetaWorkersUpdateResponseReferencesWorkersList =
   /*@__PURE__*/ S.Array(
     BetaWorkersUpdateResponseReferencesWorkersItem,
@@ -34252,7 +34238,7 @@ export const BetaWorkersUpdateResponseSubdomain = /*@__PURE__*/ S.suspend(() =>
   identifier: "BetaWorkersUpdateResponseSubdomain",
 }) as any as S.Schema<BetaWorkersUpdateResponseSubdomain>;
 
-export type BetaWorkersUpdateResponseTagsList = ReadonlyArray<string>;
+export type BetaWorkersUpdateResponseTagsList = Array<string>;
 export const BetaWorkersUpdateResponseTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BetaWorkersUpdateResponseTagsList>;
@@ -34271,7 +34257,7 @@ export const BetaWorkersUpdateResponseTailConsumersItem =
   }) as any as S.Schema<BetaWorkersUpdateResponseTailConsumersItem>;
 
 export type BetaWorkersUpdateResponseTailConsumersList =
-  ReadonlyArray<BetaWorkersUpdateResponseTailConsumersItem>;
+  Array<BetaWorkersUpdateResponseTailConsumersItem>;
 export const BetaWorkersUpdateResponseTailConsumersList = /*@__PURE__*/ S.Array(
   BetaWorkersUpdateResponseTailConsumersItem,
 ) as any as S.Schema<BetaWorkersUpdateResponseTailConsumersList>;
@@ -34369,8 +34355,7 @@ export const UpdateRouteResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateRouteResponse",
 }) as any as S.Schema<UpdateRouteResponse>;
 
-export type ObservabilityTelemetryValuesRequestDatasetsList =
-  ReadonlyArray<string>;
+export type ObservabilityTelemetryValuesRequestDatasetsList = Array<string>;
 export const ObservabilityTelemetryValuesRequestDatasetsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -34407,7 +34392,7 @@ export const ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemCase0
   /*@__PURE__*/ S.String;
 
 export type ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemCase0FiltersList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemCase0FiltersList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -34583,7 +34568,7 @@ export const ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItem =
   }) as any as S.Schema<ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItem>;
 
 export type ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersList =
-  ReadonlyArray<ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItem>;
+  Array<ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItem>;
 export const ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersList =
   /*@__PURE__*/ S.Array(
     ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItem,
@@ -34753,7 +34738,7 @@ export const ObservabilityTelemetryValuesRequestFiltersItem =
   }) as any as S.Schema<ObservabilityTelemetryValuesRequestFiltersItem>;
 
 export type ObservabilityTelemetryValuesRequestFiltersList =
-  ReadonlyArray<ObservabilityTelemetryValuesRequestFiltersItem>;
+  Array<ObservabilityTelemetryValuesRequestFiltersItem>;
 export const ObservabilityTelemetryValuesRequestFiltersList =
   /*@__PURE__*/ S.Array(
     ObservabilityTelemetryValuesRequestFiltersItem,
@@ -34854,7 +34839,7 @@ export const ObservabilityTelemetryValuesResultItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ObservabilityTelemetryValuesResultItem>;
 
 export type ObservabilityTelemetryValuesResultList =
-  ReadonlyArray<ObservabilityTelemetryValuesResultItem>;
+  Array<ObservabilityTelemetryValuesResultItem>;
 export const ObservabilityTelemetryValuesResultList = /*@__PURE__*/ S.Array(
   ObservabilityTelemetryValuesResultItem,
 ) as any as S.Schema<ObservabilityTelemetryValuesResultList>;

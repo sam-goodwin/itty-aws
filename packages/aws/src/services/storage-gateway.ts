@@ -1643,7 +1643,7 @@ export type CacheReportFilterValue = string;
 export type CacheReportFilterValues = string[];
 export const CacheReportFilterValues = /*@__PURE__*/ S.Array(S.String);
 export interface CacheReportFilter {
-  Name: CacheReportFilterName;
+  Name: CacheReportFilterName | (string & {});
   Values: string[];
 }
 export const CacheReportFilter = /*@__PURE__*/ S.suspend(() =>
@@ -1951,7 +1951,7 @@ export type AutomaticUpdatePolicy = "ALL_VERSIONS" | "EMERGENCY_VERSIONS_ONLY";
 export const AutomaticUpdatePolicy = /*@__PURE__*/ S.String;
 
 export interface SoftwareUpdatePreferences {
-  AutomaticUpdatePolicy?: AutomaticUpdatePolicy;
+  AutomaticUpdatePolicy?: AutomaticUpdatePolicy | (string & {});
 }
 export const SoftwareUpdatePreferences = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ AutomaticUpdatePolicy: S.optional(AutomaticUpdatePolicy) }),

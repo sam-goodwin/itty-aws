@@ -102,7 +102,7 @@ export const AddAclEntryProjectsLocationsClustersAclsRequest =
     identifier: "AddAclEntryProjectsLocationsClustersAclsRequest",
   }) as any as S.Schema<AddAclEntryProjectsLocationsClustersAclsRequest>;
 
-export type AclEntryList = ReadonlyArray<AclEntry>;
+export type AclEntryList = Array<AclEntry>;
 export const AclEntryList = /*@__PURE__*/ S.Array(
   AclEntry,
 ) as any as S.Schema<AclEntryList>;
@@ -211,7 +211,7 @@ export const SchemaReference = /*@__PURE__*/ S.suspend(() =>
   identifier: "SchemaReference",
 }) as any as S.Schema<SchemaReference>;
 
-export type SchemaReferenceList = ReadonlyArray<SchemaReference>;
+export type SchemaReferenceList = Array<SchemaReference>;
 export const SchemaReferenceList = /*@__PURE__*/ S.Array(
   SchemaReference,
 ) as any as S.Schema<SchemaReferenceList>;
@@ -261,7 +261,7 @@ export const CheckCompatibilityProjectsLocationsSchemaRegistriesCompatibilityReq
       "CheckCompatibilityProjectsLocationsSchemaRegistriesCompatibilityRequest",
   }) as any as S.Schema<CheckCompatibilityProjectsLocationsSchemaRegistriesCompatibilityRequest>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -344,7 +344,7 @@ export const NetworkConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "NetworkConfig" }) as any as S.Schema<NetworkConfig>;
 
-export type NetworkConfigList = ReadonlyArray<NetworkConfig>;
+export type NetworkConfigList = Array<NetworkConfig>;
 export const NetworkConfigList = /*@__PURE__*/ S.Array(
   NetworkConfig,
 ) as any as S.Schema<NetworkConfigList>;
@@ -388,7 +388,7 @@ export const CertificateAuthorityServiceConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CertificateAuthorityServiceConfig>;
 
 export type CertificateAuthorityServiceConfigList =
-  ReadonlyArray<CertificateAuthorityServiceConfig>;
+  Array<CertificateAuthorityServiceConfig>;
 export const CertificateAuthorityServiceConfigList = /*@__PURE__*/ S.Array(
   CertificateAuthorityServiceConfig,
 ) as any as S.Schema<CertificateAuthorityServiceConfigList>;
@@ -438,7 +438,7 @@ export const RebalanceConfigModeEnum = /*@__PURE__*/ S.String;
 /** Defines rebalancing behavior of a Kafka cluster. */
 export interface RebalanceConfig {
   /** Optional. The rebalance behavior for the cluster. When not specified, defaults to `NO_REBALANCE`. */
-  mode?: RebalanceConfigModeEnum;
+  mode?: RebalanceConfigModeEnum | (string & {});
 }
 export const RebalanceConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -465,7 +465,7 @@ export const BrokerDetails = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "BrokerDetails" }) as any as S.Schema<BrokerDetails>;
 
-export type BrokerDetailsList = ReadonlyArray<BrokerDetails>;
+export type BrokerDetailsList = Array<BrokerDetails>;
 export const BrokerDetailsList = /*@__PURE__*/ S.Array(
   BrokerDetails,
 ) as any as S.Schema<BrokerDetailsList>;
@@ -483,7 +483,7 @@ export interface Cluster {
   /** Output only. Reserved for future use. */
   satisfiesPzi?: boolean;
   /** Output only. The current state of the cluster. */
-  state?: ClusterStateEnum;
+  state?: ClusterStateEnum | (string & {});
   /** Required. Configuration properties for a Kafka cluster deployed to Google Cloud Platform. */
   gcpConfig?: GcpConfig;
   /** Optional. TLS configuration for the Kafka cluster. */
@@ -554,7 +554,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -688,7 +688,7 @@ export const ConnectNetworkConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConnectNetworkConfig",
 }) as any as S.Schema<ConnectNetworkConfig>;
 
-export type ConnectNetworkConfigList = ReadonlyArray<ConnectNetworkConfig>;
+export type ConnectNetworkConfigList = Array<ConnectNetworkConfig>;
 export const ConnectNetworkConfigList = /*@__PURE__*/ S.Array(
   ConnectNetworkConfig,
 ) as any as S.Schema<ConnectNetworkConfigList>;
@@ -735,7 +735,7 @@ export interface ConnectCluster {
   /** Required. Configuration properties for a Kafka Connect cluster deployed to Google Cloud Platform. */
   gcpConfig?: ConnectGcpConfig;
   /** Output only. The current state of the Kafka Connect cluster. */
-  state?: ConnectClusterStateEnum;
+  state?: ConnectClusterStateEnum | (string & {});
   /** Required. Capacity configuration for the Kafka Connect cluster. */
   capacityConfig?: CapacityConfig;
   /** Output only. Reserved for future use. */
@@ -831,7 +831,7 @@ export const TaskRetryPolicy = /*@__PURE__*/ S.suspend(() =>
 /** A Kafka Connect connector in a given ConnectCluster. */
 export interface Connector {
   /** Output only. The current state of the connector. */
-  state?: ConnectorStateEnum;
+  state?: ConnectorStateEnum | (string & {});
   /** Identifier. The name of the connector. Structured like: projects/{project}/locations/{location}/connectClusters/{connect_cluster}/connectors/{connector} */
   name?: string;
   /** Optional. Connector config as keys/values. The keys of the map are connector property names, for example: `connector.class`, `tasks.max`, `key.converter`. */
@@ -2046,7 +2046,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = ReadonlyArray<Location>;
+export type LocationList = Array<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -2098,7 +2098,7 @@ export const ListProjectsLocationsClustersRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsClustersRequest",
 }) as any as S.Schema<ListProjectsLocationsClustersRequest>;
 
-export type ClusterList = ReadonlyArray<Cluster>;
+export type ClusterList = Array<Cluster>;
 export const ClusterList = /*@__PURE__*/ S.Array(
   Cluster,
 ) as any as S.Schema<ClusterList>;
@@ -2147,7 +2147,7 @@ export const ListProjectsLocationsClustersAclsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsClustersAclsRequest",
 }) as any as S.Schema<ListProjectsLocationsClustersAclsRequest>;
 
-export type AclList = ReadonlyArray<Acl>;
+export type AclList = Array<Acl>;
 export const AclList = /*@__PURE__*/ S.Array(Acl) as any as S.Schema<AclList>;
 
 /** Response for ListAcls. */
@@ -2206,7 +2206,7 @@ export const ListProjectsLocationsClustersConsumerGroupsRequest =
     identifier: "ListProjectsLocationsClustersConsumerGroupsRequest",
   }) as any as S.Schema<ListProjectsLocationsClustersConsumerGroupsRequest>;
 
-export type ConsumerGroupList = ReadonlyArray<ConsumerGroup>;
+export type ConsumerGroupList = Array<ConsumerGroup>;
 export const ConsumerGroupList = /*@__PURE__*/ S.Array(
   ConsumerGroup,
 ) as any as S.Schema<ConsumerGroupList>;
@@ -2252,7 +2252,7 @@ export const ListProjectsLocationsClustersTopicsRequest =
     identifier: "ListProjectsLocationsClustersTopicsRequest",
   }) as any as S.Schema<ListProjectsLocationsClustersTopicsRequest>;
 
-export type TopicList = ReadonlyArray<Topic>;
+export type TopicList = Array<Topic>;
 export const TopicList = /*@__PURE__*/ S.Array(
   Topic,
 ) as any as S.Schema<TopicList>;
@@ -2304,7 +2304,7 @@ export const ListProjectsLocationsConnectClustersRequest =
     identifier: "ListProjectsLocationsConnectClustersRequest",
   }) as any as S.Schema<ListProjectsLocationsConnectClustersRequest>;
 
-export type ConnectClusterList = ReadonlyArray<ConnectCluster>;
+export type ConnectClusterList = Array<ConnectCluster>;
 export const ConnectClusterList = /*@__PURE__*/ S.Array(
   ConnectCluster,
 ) as any as S.Schema<ConnectClusterList>;
@@ -2353,7 +2353,7 @@ export const ListProjectsLocationsConnectClustersConnectorsRequest =
     identifier: "ListProjectsLocationsConnectClustersConnectorsRequest",
   }) as any as S.Schema<ListProjectsLocationsConnectClustersConnectorsRequest>;
 
-export type ConnectorList = ReadonlyArray<Connector>;
+export type ConnectorList = Array<Connector>;
 export const ConnectorList = /*@__PURE__*/ S.Array(
   Connector,
 ) as any as S.Schema<ConnectorList>;
@@ -2405,7 +2405,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type OperationList = ReadonlyArray<Operation>;
+export type OperationList = Array<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -2460,7 +2460,7 @@ export const ListProjectsLocationsSchemaRegistriesRequest =
     identifier: "ListProjectsLocationsSchemaRegistriesRequest",
   }) as any as S.Schema<ListProjectsLocationsSchemaRegistriesRequest>;
 
-export type SchemaRegistryList = ReadonlyArray<SchemaRegistry>;
+export type SchemaRegistryList = Array<SchemaRegistry>;
 export const SchemaRegistryList = /*@__PURE__*/ S.Array(
   SchemaRegistry,
 ) as any as S.Schema<SchemaRegistryList>;

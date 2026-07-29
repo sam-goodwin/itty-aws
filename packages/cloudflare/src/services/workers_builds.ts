@@ -189,22 +189,22 @@ export type BuildsGetResponseStatus =
   | "stopped";
 export const BuildsGetResponseStatus = /*@__PURE__*/ S.String;
 
-export type BuildsGetResponseTriggerBranchExcludesList = ReadonlyArray<string>;
+export type BuildsGetResponseTriggerBranchExcludesList = Array<string>;
 export const BuildsGetResponseTriggerBranchExcludesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BuildsGetResponseTriggerBranchExcludesList>;
 
-export type BuildsGetResponseTriggerBranchIncludesList = ReadonlyArray<string>;
+export type BuildsGetResponseTriggerBranchIncludesList = Array<string>;
 export const BuildsGetResponseTriggerBranchIncludesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BuildsGetResponseTriggerBranchIncludesList>;
 
-export type BuildsGetResponseTriggerPathExcludesList = ReadonlyArray<string>;
+export type BuildsGetResponseTriggerPathExcludesList = Array<string>;
 export const BuildsGetResponseTriggerPathExcludesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BuildsGetResponseTriggerPathExcludesList>;
 
-export type BuildsGetResponseTriggerPathIncludesList = ReadonlyArray<string>;
+export type BuildsGetResponseTriggerPathIncludesList = Array<string>;
 export const BuildsGetResponseTriggerPathIncludesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BuildsGetResponseTriggerPathIncludesList>;
@@ -492,27 +492,25 @@ export type BuildsListResultItemStatus =
   | "stopped";
 export const BuildsListResultItemStatus = /*@__PURE__*/ S.String;
 
-export type BuildsListResultItemTriggerBranchExcludesList =
-  ReadonlyArray<string>;
+export type BuildsListResultItemTriggerBranchExcludesList = Array<string>;
 export const BuildsListResultItemTriggerBranchExcludesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<BuildsListResultItemTriggerBranchExcludesList>;
 
-export type BuildsListResultItemTriggerBranchIncludesList =
-  ReadonlyArray<string>;
+export type BuildsListResultItemTriggerBranchIncludesList = Array<string>;
 export const BuildsListResultItemTriggerBranchIncludesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<BuildsListResultItemTriggerBranchIncludesList>;
 
-export type BuildsListResultItemTriggerPathExcludesList = ReadonlyArray<string>;
+export type BuildsListResultItemTriggerPathExcludesList = Array<string>;
 export const BuildsListResultItemTriggerPathExcludesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<BuildsListResultItemTriggerPathExcludesList>;
 
-export type BuildsListResultItemTriggerPathIncludesList = ReadonlyArray<string>;
+export type BuildsListResultItemTriggerPathIncludesList = Array<string>;
 export const BuildsListResultItemTriggerPathIncludesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -665,7 +663,7 @@ export const BuildsListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "BuildsListResultItem",
 }) as any as S.Schema<BuildsListResultItem>;
 
-export type BuildsListResultList = ReadonlyArray<BuildsListResultItem>;
+export type BuildsListResultList = Array<BuildsListResultItem>;
 export const BuildsListResultList = /*@__PURE__*/ S.Array(
   BuildsListResultItem,
 ) as any as S.Schema<BuildsListResultList>;
@@ -707,7 +705,7 @@ export const BuildsLogsGetResponseLinesItem = /*@__PURE__*/ S.Unknown.pipe(
 );
 
 export type BuildsLogsGetResponseLinesList =
-  ReadonlyArray<BuildsLogsGetResponseLinesItem>;
+  Array<BuildsLogsGetResponseLinesItem>;
 export const BuildsLogsGetResponseLinesList = /*@__PURE__*/ S.Array(
   BuildsLogsGetResponseLinesItem,
 ) as any as S.Schema<BuildsLogsGetResponseLinesList>;
@@ -944,8 +942,7 @@ export const DeployHooksListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeployHooksListResultItem",
 }) as any as S.Schema<DeployHooksListResultItem>;
 
-export type DeployHooksListResultList =
-  ReadonlyArray<DeployHooksListResultItem>;
+export type DeployHooksListResultList = Array<DeployHooksListResultItem>;
 export const DeployHooksListResultList = /*@__PURE__*/ S.Array(
   DeployHooksListResultItem,
 ) as any as S.Schema<DeployHooksListResultList>;
@@ -1223,28 +1220,28 @@ export const GetBuildsByVersionResponseBuildsValueStatus =
   /*@__PURE__*/ S.String;
 
 export type GetBuildsByVersionResponseBuildsValueTriggerBranchExcludesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GetBuildsByVersionResponseBuildsValueTriggerBranchExcludesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<GetBuildsByVersionResponseBuildsValueTriggerBranchExcludesList>;
 
 export type GetBuildsByVersionResponseBuildsValueTriggerBranchIncludesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GetBuildsByVersionResponseBuildsValueTriggerBranchIncludesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<GetBuildsByVersionResponseBuildsValueTriggerBranchIncludesList>;
 
 export type GetBuildsByVersionResponseBuildsValueTriggerPathExcludesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GetBuildsByVersionResponseBuildsValueTriggerPathExcludesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<GetBuildsByVersionResponseBuildsValueTriggerPathExcludesList>;
 
 export type GetBuildsByVersionResponseBuildsValueTriggerPathIncludesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GetBuildsByVersionResponseBuildsValueTriggerPathIncludesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1553,28 +1550,28 @@ export type GetLatestBuildsResponseBuildsValueStatus =
 export const GetLatestBuildsResponseBuildsValueStatus = /*@__PURE__*/ S.String;
 
 export type GetLatestBuildsResponseBuildsValueTriggerBranchExcludesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GetLatestBuildsResponseBuildsValueTriggerBranchExcludesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<GetLatestBuildsResponseBuildsValueTriggerBranchExcludesList>;
 
 export type GetLatestBuildsResponseBuildsValueTriggerBranchIncludesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GetLatestBuildsResponseBuildsValueTriggerBranchIncludesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<GetLatestBuildsResponseBuildsValueTriggerBranchIncludesList>;
 
 export type GetLatestBuildsResponseBuildsValueTriggerPathExcludesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GetLatestBuildsResponseBuildsValueTriggerPathExcludesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<GetLatestBuildsResponseBuildsValueTriggerPathExcludesList>;
 
 export type GetLatestBuildsResponseBuildsValueTriggerPathIncludesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GetLatestBuildsResponseBuildsValueTriggerPathIncludesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2073,7 +2070,7 @@ export const TokensListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "TokensListResultItem",
 }) as any as S.Schema<TokensListResultItem>;
 
-export type TokensListResultList = ReadonlyArray<TokensListResultItem>;
+export type TokensListResultList = Array<TokensListResultItem>;
 export const TokensListResultList = /*@__PURE__*/ S.Array(
   TokensListResultItem,
 ) as any as S.Schema<TokensListResultList>;
@@ -2085,22 +2082,22 @@ export const TokensListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "TokensListResponse",
 }) as any as S.Schema<TokensListResponse>;
 
-export type TriggersCreateRequestBranchExcludesList = ReadonlyArray<string>;
+export type TriggersCreateRequestBranchExcludesList = Array<string>;
 export const TriggersCreateRequestBranchExcludesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<TriggersCreateRequestBranchExcludesList>;
 
-export type TriggersCreateRequestBranchIncludesList = ReadonlyArray<string>;
+export type TriggersCreateRequestBranchIncludesList = Array<string>;
 export const TriggersCreateRequestBranchIncludesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<TriggersCreateRequestBranchIncludesList>;
 
-export type TriggersCreateRequestPathExcludesList = ReadonlyArray<string>;
+export type TriggersCreateRequestPathExcludesList = Array<string>;
 export const TriggersCreateRequestPathExcludesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<TriggersCreateRequestPathExcludesList>;
 
-export type TriggersCreateRequestPathIncludesList = ReadonlyArray<string>;
+export type TriggersCreateRequestPathIncludesList = Array<string>;
 export const TriggersCreateRequestPathIncludesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<TriggersCreateRequestPathIncludesList>;
@@ -2161,22 +2158,22 @@ export const TriggersCreateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "TriggersCreateRequest",
 }) as any as S.Schema<TriggersCreateRequest>;
 
-export type TriggersCreateResponseBranchExcludesList = ReadonlyArray<string>;
+export type TriggersCreateResponseBranchExcludesList = Array<string>;
 export const TriggersCreateResponseBranchExcludesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<TriggersCreateResponseBranchExcludesList>;
 
-export type TriggersCreateResponseBranchIncludesList = ReadonlyArray<string>;
+export type TriggersCreateResponseBranchIncludesList = Array<string>;
 export const TriggersCreateResponseBranchIncludesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<TriggersCreateResponseBranchIncludesList>;
 
-export type TriggersCreateResponsePathExcludesList = ReadonlyArray<string>;
+export type TriggersCreateResponsePathExcludesList = Array<string>;
 export const TriggersCreateResponsePathExcludesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<TriggersCreateResponsePathExcludesList>;
 
-export type TriggersCreateResponsePathIncludesList = ReadonlyArray<string>;
+export type TriggersCreateResponsePathIncludesList = Array<string>;
 export const TriggersCreateResponsePathIncludesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<TriggersCreateResponsePathIncludesList>;
@@ -2316,7 +2313,7 @@ export const TriggersCreateBuildRequestSeedRepoFilesItem =
   }) as any as S.Schema<TriggersCreateBuildRequestSeedRepoFilesItem>;
 
 export type TriggersCreateBuildRequestSeedRepoFilesList =
-  ReadonlyArray<TriggersCreateBuildRequestSeedRepoFilesItem>;
+  Array<TriggersCreateBuildRequestSeedRepoFilesItem>;
 export const TriggersCreateBuildRequestSeedRepoFilesList =
   /*@__PURE__*/ S.Array(
     TriggersCreateBuildRequestSeedRepoFilesItem,
@@ -2611,22 +2608,22 @@ export const TriggersListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "TriggersListRequest",
 }) as any as S.Schema<TriggersListRequest>;
 
-export type TriggersListResultItemBranchExcludesList = ReadonlyArray<string>;
+export type TriggersListResultItemBranchExcludesList = Array<string>;
 export const TriggersListResultItemBranchExcludesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<TriggersListResultItemBranchExcludesList>;
 
-export type TriggersListResultItemBranchIncludesList = ReadonlyArray<string>;
+export type TriggersListResultItemBranchIncludesList = Array<string>;
 export const TriggersListResultItemBranchIncludesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<TriggersListResultItemBranchIncludesList>;
 
-export type TriggersListResultItemPathExcludesList = ReadonlyArray<string>;
+export type TriggersListResultItemPathExcludesList = Array<string>;
 export const TriggersListResultItemPathExcludesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<TriggersListResultItemPathExcludesList>;
 
-export type TriggersListResultItemPathIncludesList = ReadonlyArray<string>;
+export type TriggersListResultItemPathIncludesList = Array<string>;
 export const TriggersListResultItemPathIncludesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<TriggersListResultItemPathIncludesList>;
@@ -2738,7 +2735,7 @@ export const TriggersListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "TriggersListResultItem",
 }) as any as S.Schema<TriggersListResultItem>;
 
-export type TriggersListResultList = ReadonlyArray<TriggersListResultItem>;
+export type TriggersListResultList = Array<TriggersListResultItem>;
 export const TriggersListResultList = /*@__PURE__*/ S.Array(
   TriggersListResultItem,
 ) as any as S.Schema<TriggersListResultList>;
@@ -2778,22 +2775,22 @@ export const TriggersPurgeCacheResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "TriggersPurgeCacheResponse",
 }) as any as S.Schema<TriggersPurgeCacheResponse>;
 
-export type TriggersUpdateRequestBranchExcludesList = ReadonlyArray<string>;
+export type TriggersUpdateRequestBranchExcludesList = Array<string>;
 export const TriggersUpdateRequestBranchExcludesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<TriggersUpdateRequestBranchExcludesList>;
 
-export type TriggersUpdateRequestBranchIncludesList = ReadonlyArray<string>;
+export type TriggersUpdateRequestBranchIncludesList = Array<string>;
 export const TriggersUpdateRequestBranchIncludesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<TriggersUpdateRequestBranchIncludesList>;
 
-export type TriggersUpdateRequestPathExcludesList = ReadonlyArray<string>;
+export type TriggersUpdateRequestPathExcludesList = Array<string>;
 export const TriggersUpdateRequestPathExcludesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<TriggersUpdateRequestPathExcludesList>;
 
-export type TriggersUpdateRequestPathIncludesList = ReadonlyArray<string>;
+export type TriggersUpdateRequestPathIncludesList = Array<string>;
 export const TriggersUpdateRequestPathIncludesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<TriggersUpdateRequestPathIncludesList>;
@@ -2851,22 +2848,22 @@ export const TriggersUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "TriggersUpdateRequest",
 }) as any as S.Schema<TriggersUpdateRequest>;
 
-export type TriggersUpdateResponseBranchExcludesList = ReadonlyArray<string>;
+export type TriggersUpdateResponseBranchExcludesList = Array<string>;
 export const TriggersUpdateResponseBranchExcludesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<TriggersUpdateResponseBranchExcludesList>;
 
-export type TriggersUpdateResponseBranchIncludesList = ReadonlyArray<string>;
+export type TriggersUpdateResponseBranchIncludesList = Array<string>;
 export const TriggersUpdateResponseBranchIncludesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<TriggersUpdateResponseBranchIncludesList>;
 
-export type TriggersUpdateResponsePathExcludesList = ReadonlyArray<string>;
+export type TriggersUpdateResponsePathExcludesList = Array<string>;
 export const TriggersUpdateResponsePathExcludesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<TriggersUpdateResponsePathExcludesList>;
 
-export type TriggersUpdateResponsePathIncludesList = ReadonlyArray<string>;
+export type TriggersUpdateResponsePathIncludesList = Array<string>;
 export const TriggersUpdateResponsePathIncludesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<TriggersUpdateResponsePathIncludesList>;

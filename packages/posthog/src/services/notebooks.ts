@@ -192,7 +192,7 @@ export const NotebooksCollabPresenceCreateResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<NotebooksCollabPresenceCreateResponse>;
 
 /** List of ProseMirror step JSON objects to apply. */
-export type NotebooksCollabSaveCreateRequestStepsList = ReadonlyArray<unknown>;
+export type NotebooksCollabSaveCreateRequestStepsList = Array<unknown>;
 export const NotebooksCollabSaveCreateRequestStepsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<NotebooksCollabSaveCreateRequestStepsList>;
@@ -880,7 +880,7 @@ export const NotebookMinimalOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NotebookMinimalOutput>;
 
 export type PaginatedNotebookMinimalListOutputResultsList =
-  ReadonlyArray<NotebookMinimalOutput>;
+  Array<NotebookMinimalOutput>;
 export const PaginatedNotebookMinimalListOutputResultsList =
   /*@__PURE__*/ S.Array(
     NotebookMinimalOutput,
@@ -1022,8 +1022,7 @@ export const SharePassword = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SharePassword" }) as any as S.Schema<SharePassword>;
 
-export type SharingConfigurationSharePasswordsList =
-  ReadonlyArray<SharePassword>;
+export type SharingConfigurationSharePasswordsList = Array<SharePassword>;
 export const SharingConfigurationSharePasswordsList = /*@__PURE__*/ S.Array(
   SharePassword,
 ) as any as S.Schema<SharingConfigurationSharePasswordsList>;
@@ -1053,8 +1052,7 @@ export const SharingConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "SharingConfiguration",
 }) as any as S.Schema<SharingConfiguration>;
 
-export type NotebooksSharingListResponseBodyList =
-  ReadonlyArray<SharingConfiguration>;
+export type NotebooksSharingListResponseBodyList = Array<SharingConfiguration>;
 export const NotebooksSharingListResponseBodyList = /*@__PURE__*/ S.Array(
   SharingConfiguration,
 ) as any as S.Schema<NotebooksSharingListResponseBodyList>;

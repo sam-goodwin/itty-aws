@@ -66,7 +66,7 @@ export const StringMap = /*@__PURE__*/ S.Record(
   S.String,
 ) as any as S.Schema<StringMap>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -132,8 +132,7 @@ export const GoogleIamV2betaPolicyRule = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleIamV2betaPolicyRule",
 }) as any as S.Schema<GoogleIamV2betaPolicyRule>;
 
-export type GoogleIamV2betaPolicyRuleList =
-  ReadonlyArray<GoogleIamV2betaPolicyRule>;
+export type GoogleIamV2betaPolicyRuleList = Array<GoogleIamV2betaPolicyRule>;
 export const GoogleIamV2betaPolicyRuleList = /*@__PURE__*/ S.Array(
   GoogleIamV2betaPolicyRule,
 ) as any as S.Schema<GoogleIamV2betaPolicyRuleList>;
@@ -208,7 +207,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -338,7 +337,7 @@ export const ListPoliciesPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListPoliciesPoliciesRequest",
 }) as any as S.Schema<ListPoliciesPoliciesRequest>;
 
-export type GoogleIamV2betaPolicyList = ReadonlyArray<GoogleIamV2betaPolicy>;
+export type GoogleIamV2betaPolicyList = Array<GoogleIamV2betaPolicy>;
 export const GoogleIamV2betaPolicyList = /*@__PURE__*/ S.Array(
   GoogleIamV2betaPolicy,
 ) as any as S.Schema<GoogleIamV2betaPolicyList>;

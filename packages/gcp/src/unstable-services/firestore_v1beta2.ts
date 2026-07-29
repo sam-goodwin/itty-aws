@@ -92,9 +92,11 @@ export interface GoogleFirestoreAdminV1beta2IndexField {
   /** Can be __name__. For single field indexes, this must match the name of the field or may be omitted. */
   fieldPath?: string;
   /** Indicates that this field supports operations on `array_value`s. */
-  arrayConfig?: GoogleFirestoreAdminV1beta2IndexFieldArrayConfigEnum;
+  arrayConfig?:
+    | GoogleFirestoreAdminV1beta2IndexFieldArrayConfigEnum
+    | (string & {});
   /** Indicates that this field supports ordering by the specified order or comparing using =, <, <=, >, >=. */
-  order?: GoogleFirestoreAdminV1beta2IndexFieldOrderEnum;
+  order?: GoogleFirestoreAdminV1beta2IndexFieldOrderEnum | (string & {});
 }
 export const GoogleFirestoreAdminV1beta2IndexField = /*@__PURE__*/ S.suspend(
   () =>
@@ -110,7 +112,7 @@ export const GoogleFirestoreAdminV1beta2IndexField = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleFirestoreAdminV1beta2IndexField>;
 
 export type GoogleFirestoreAdminV1beta2IndexFieldList =
-  ReadonlyArray<GoogleFirestoreAdminV1beta2IndexField>;
+  Array<GoogleFirestoreAdminV1beta2IndexField>;
 export const GoogleFirestoreAdminV1beta2IndexFieldList = /*@__PURE__*/ S.Array(
   GoogleFirestoreAdminV1beta2IndexField,
 ) as any as S.Schema<GoogleFirestoreAdminV1beta2IndexFieldList>;
@@ -118,9 +120,9 @@ export const GoogleFirestoreAdminV1beta2IndexFieldList = /*@__PURE__*/ S.Array(
 /** Cloud Firestore indexes enable simple and complex queries against documents in a database. */
 export interface GoogleFirestoreAdminV1beta2Index {
   /** Output only. The serving state of the index. */
-  state?: GoogleFirestoreAdminV1beta2IndexStateEnum;
+  state?: GoogleFirestoreAdminV1beta2IndexStateEnum | (string & {});
   /** Indexes with a collection query scope specified allow queries against a collection that is the child of a specific document, specified at query time, and that has the same collection id. Indexes with a collection group query scope specified allow queries against all collections descended from a specific document, specified at query time, and that have the same collection id as this index. */
-  queryScope?: GoogleFirestoreAdminV1beta2IndexQueryScopeEnum;
+  queryScope?: GoogleFirestoreAdminV1beta2IndexQueryScopeEnum | (string & {});
   /** The fields supported by this index. For composite indexes, this is always 2 or more fields. The last field entry is always for the field path `__name__`. If, on creation, `__name__` was not specified as the last field, it will be added automatically with the same direction as that of the last field defined. If the final field in a composite index is not directional, the `__name__` will be ordered ASCENDING (unless explicitly specified). For single field indexes, this will always be exactly one entry with a field path equal to the field path of the associated field. */
   fields?: GoogleFirestoreAdminV1beta2IndexFieldList;
   /** Output only. A server defined name for this index. The form of this name for composite indexes will be: `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/indexes/{composite_index_id}` For single field indexes, this field will be empty. */
@@ -165,7 +167,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -237,7 +239,7 @@ export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "Empty",
 }) as any as S.Schema<Empty>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -303,7 +305,7 @@ export const GetProjectsDatabasesCollectionGroupsFieldsRequest =
   }) as any as S.Schema<GetProjectsDatabasesCollectionGroupsFieldsRequest>;
 
 export type GoogleFirestoreAdminV1beta2IndexList =
-  ReadonlyArray<GoogleFirestoreAdminV1beta2Index>;
+  Array<GoogleFirestoreAdminV1beta2Index>;
 export const GoogleFirestoreAdminV1beta2IndexList = /*@__PURE__*/ S.Array(
   GoogleFirestoreAdminV1beta2Index,
 ) as any as S.Schema<GoogleFirestoreAdminV1beta2IndexList>;
@@ -436,7 +438,7 @@ export const ListProjectsDatabasesCollectionGroupsFieldsRequest =
   }) as any as S.Schema<ListProjectsDatabasesCollectionGroupsFieldsRequest>;
 
 export type GoogleFirestoreAdminV1beta2FieldList =
-  ReadonlyArray<GoogleFirestoreAdminV1beta2Field>;
+  Array<GoogleFirestoreAdminV1beta2Field>;
 export const GoogleFirestoreAdminV1beta2FieldList = /*@__PURE__*/ S.Array(
   GoogleFirestoreAdminV1beta2Field,
 ) as any as S.Schema<GoogleFirestoreAdminV1beta2FieldList>;

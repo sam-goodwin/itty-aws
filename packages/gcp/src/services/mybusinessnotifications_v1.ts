@@ -95,8 +95,9 @@ export type NotificationSettingNotificationTypesItemEnum =
 export const NotificationSettingNotificationTypesItemEnum =
   /*@__PURE__*/ S.String;
 
-export type NotificationSettingNotificationTypesItemEnumList =
-  ReadonlyArray<NotificationSettingNotificationTypesItemEnum>;
+export type NotificationSettingNotificationTypesItemEnumList = Array<
+  NotificationSettingNotificationTypesItemEnum | (string & {})
+>;
 export const NotificationSettingNotificationTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     NotificationSettingNotificationTypesItemEnum,

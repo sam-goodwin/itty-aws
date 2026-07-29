@@ -2759,7 +2759,7 @@ export const RelativeFileVersionEnum = /*@__PURE__*/ S.String;
 export interface Location {
   filePath?: string;
   filePosition?: number;
-  relativeFileVersion?: RelativeFileVersionEnum;
+  relativeFileVersion?: RelativeFileVersionEnum | (string & {});
 }
 export const Location = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3425,7 +3425,10 @@ export type RepositoryTriggerEventEnum =
   | "deleteReference";
 export const RepositoryTriggerEventEnum = /*@__PURE__*/ S.String;
 
-export type RepositoryTriggerEventList = RepositoryTriggerEventEnum[];
+export type RepositoryTriggerEventList = (
+  | RepositoryTriggerEventEnum
+  | (string & {})
+)[];
 export const RepositoryTriggerEventList = /*@__PURE__*/ S.Array(
   RepositoryTriggerEventEnum,
 );

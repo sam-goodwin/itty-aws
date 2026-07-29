@@ -104,7 +104,7 @@ export const StringMap = /*@__PURE__*/ S.Record(
   S.String,
 ) as any as S.Schema<StringMap>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -157,7 +157,7 @@ export interface ActiveDirectory {
   /** Optional. Domain users to be given the SeSecurityPrivilege. */
   securityOperators?: StringList;
   /** Output only. The state of the AD. */
-  state?: ActiveDirectoryStateEnum;
+  state?: ActiveDirectoryStateEnum | (string & {});
   /** Description of the active directory. */
   description?: string;
   /** Optional. Users to be added to the Built-in Backup Operator active directory group. */
@@ -227,7 +227,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -300,7 +300,7 @@ export interface BackupPolicy {
   /** Output only. The time when the backup policy was created. */
   createTime?: string;
   /** Output only. The backup policy state. */
-  state?: BackupPolicyStateEnum;
+  state?: BackupPolicyStateEnum | (string & {});
   /** Output only. The total number of volumes assigned by this backup policy. */
   assignedVolumeCount?: number;
 }
@@ -395,7 +395,7 @@ export const BackupVaultEncryptionStateEnum = /*@__PURE__*/ S.String;
 /** A NetApp BackupVault. */
 export interface BackupVault {
   /** Optional. Type of backup vault to be created. Default is IN_REGION. */
-  backupVaultType?: BackupVaultBackupVaultTypeEnum;
+  backupVaultType?: BackupVaultBackupVaultTypeEnum | (string & {});
   /** Output only. Create time of the backup vault. */
   createTime?: string;
   /** Optional. Backup retention policy defining the retention of backups. */
@@ -415,13 +415,13 @@ export interface BackupVault {
   /** Output only. Region in which the backup vault is created. Format: `projects/{project_id}/locations/{location}` */
   sourceRegion?: string;
   /** Output only. The backup vault state. */
-  state?: BackupVaultStateEnum;
+  state?: BackupVaultStateEnum | (string & {});
   /** Description of the backup vault. */
   description?: string;
   /** Output only. Name of the Backup vault created in source region. Format: `projects/{project_id}/locations/{location}/backupVaults/{backup_vault_id}` */
   sourceBackupVault?: string;
   /** Output only. Field indicating encryption state of CMEK backups. */
-  encryptionState?: BackupVaultEncryptionStateEnum;
+  encryptionState?: BackupVaultEncryptionStateEnum | (string & {});
 }
 export const BackupVault = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -512,7 +512,7 @@ export interface Backup {
   /** Output only. Region in which backup is stored. Format: `projects/{project_id}/locations/{location}` */
   backupRegion?: string;
   /** Output only. Type of backup, manually created or created by a backup policy. */
-  backupType?: BackupBackupTypeEnum;
+  backupType?: BackupBackupTypeEnum | (string & {});
   /** Resource labels to represent user provided metadata. */
   labels?: StringMap;
   /** The resource name of the volume that this backup belongs to. You must provide either `source_volume` or `ontap_source`. Format: `projects/{project_id}/locations/{location}/volumes/{volume_id}` */
@@ -520,7 +520,7 @@ export interface Backup {
   /** Output only. Reserved for future use */
   satisfiesPzs?: boolean;
   /** Output only. The backup state. */
-  state?: BackupStateEnum;
+  state?: BackupStateEnum | (string & {});
   /** A description of the backup with 2048 characters or less. Requests with longer descriptions will be rejected. */
   description?: string;
   /** Output only. Size of the file system when the backup was created. When creating a new volume from the backup, the volume capacity will have to be at least as big. */
@@ -602,15 +602,15 @@ export interface HostGroup {
   /** Optional. Labels of the host group. */
   labels?: StringMap;
   /** Required. Type of the host group. */
-  type?: HostGroupTypeEnum;
+  type?: HostGroupTypeEnum | (string & {});
   /** Required. The list of hosts associated with the host group. */
   hosts?: StringList;
   /** Required. The OS type of the host group. It indicates the type of operating system used by all of the hosts in the HostGroup. All hosts in a HostGroup must be of the same OS type. This can be set only when creating a HostGroup. */
-  osType?: HostGroupOsTypeEnum;
+  osType?: HostGroupOsTypeEnum | (string & {});
   /** Identifier. The resource name of the host group. Format: `projects/{project_number}/locations/{location_id}/hostGroups/{host_group_id}`. */
   name?: string;
   /** Output only. State of the host group. */
-  state?: HostGroupStateEnum;
+  state?: HostGroupStateEnum | (string & {});
   /** Output only. Create time of the host group. */
   createTime?: string;
   /** Optional. Description of the host group. */
@@ -682,7 +682,7 @@ export interface KmsConfig {
   /** Output only. Instructions to provide the access to the customer provided encryption key. */
   instructions?: string;
   /** Output only. State of the KmsConfig. */
-  state?: KmsConfigStateEnum;
+  state?: KmsConfigStateEnum | (string & {});
   /** Output only. Create time of the KmsConfig. */
   createTime?: string;
   /** Description of the KmsConfig. */
@@ -775,7 +775,7 @@ export const StoragePoolScaleTypeEnum = /*@__PURE__*/ S.String;
 /** StoragePool is a container for volumes with a service level and capacity. Volumes can be created in a pool of sufficient available capacity. StoragePool capacity is what you are billed for. */
 export interface StoragePool {
   /** Output only. State of the storage pool */
-  state?: StoragePoolStateEnum;
+  state?: StoragePoolStateEnum | (string & {});
   /** Output only. Reserved for future use */
   satisfiesPzs?: boolean;
   /** Optional. Specifies the Active Directory to be used for creating a SMB volume. */
@@ -795,7 +795,7 @@ export interface StoragePool {
   /** Required. Capacity in GIB of the pool */
   capacityGib?: string;
   /** Output only. Specifies the current pool encryption key source. */
-  encryptionType?: StoragePoolEncryptionTypeEnum;
+  encryptionType?: StoragePoolEncryptionTypeEnum | (string & {});
   /** Optional. Custom Performance Total Throughput of the pool (in MiBps) */
   totalThroughputMibps?: string;
   /** Optional. Custom Performance Total IOPS of the pool if not provided, it will be calculated based on the total_throughput_mibps */
@@ -811,7 +811,7 @@ export interface StoragePool {
   /** Optional. Specifies the active zone for regional storagePool. */
   zone?: string;
   /** Required. Service level of the storage pool */
-  serviceLevel?: StoragePoolServiceLevelEnum;
+  serviceLevel?: StoragePoolServiceLevelEnum | (string & {});
   /** Optional. Description of the storage pool */
   description?: string;
   /** Output only. Volume count of the storage pool */
@@ -827,11 +827,11 @@ export interface StoragePool {
   /** Output only. Total hot tier data rounded down to the nearest GiB used by the storage pool. */
   hotTierSizeUsedGib?: string;
   /** Optional. Mode of the storage pool. This field is used to control whether the user can perform ONTAP operations on the storage pool using the GCNV ONTAP Mode APIs. If not specified during creation, it defaults to `DEFAULT`. */
-  mode?: StoragePoolModeEnum;
+  mode?: StoragePoolModeEnum | (string & {});
   /** Optional. QoS (Quality of Service) Type of the storage pool */
-  qosType?: StoragePoolQosTypeEnum;
+  qosType?: StoragePoolQosTypeEnum | (string & {});
   /** Optional. Type of the storage pool. This field is used to control whether the pool supports `FILE` based volumes only or `UNIFIED` (both `FILE` and `BLOCK`) volumes. If not specified during creation, it defaults to `FILE`. */
-  type?: StoragePoolTypeEnum;
+  type?: StoragePoolTypeEnum | (string & {});
   /** Optional. Flag indicating if the pool is NFS LDAP enabled or not. */
   ldapEnabled?: boolean;
   /** Optional. True if the storage pool supports Auto Tiering enabled volumes. Default is false. Auto-tiering can be enabled after storage pool creation but it can't be disabled once enabled. */
@@ -839,7 +839,7 @@ export interface StoragePool {
   /** Optional. Specifies the KMS config to be used for volume encryption. */
   kmsConfig?: string;
   /** Optional. The scale type of the storage pool. Defaults to `SCALE_TYPE_DEFAULT` if not specified. */
-  scaleType?: StoragePoolScaleTypeEnum;
+  scaleType?: StoragePoolScaleTypeEnum | (string & {});
   /** Output only. State details of the storage pool */
   stateDetails?: string;
 }
@@ -920,8 +920,9 @@ export type VolumeSmbSettingsItemEnum =
   | "CONTINUOUSLY_AVAILABLE";
 export const VolumeSmbSettingsItemEnum = /*@__PURE__*/ S.String;
 
-export type VolumeSmbSettingsItemEnumList =
-  ReadonlyArray<VolumeSmbSettingsItemEnum>;
+export type VolumeSmbSettingsItemEnumList = Array<
+  VolumeSmbSettingsItemEnum | (string & {})
+>;
 export const VolumeSmbSettingsItemEnumList = /*@__PURE__*/ S.Array(
   VolumeSmbSettingsItemEnum,
 ) as any as S.Schema<VolumeSmbSettingsItemEnumList>;
@@ -942,7 +943,7 @@ export interface MountOption {
   /** Output only. IP Address. */
   ipAddress?: string;
   /** Protocol to mount with. */
-  protocol?: MountOptionProtocolEnum;
+  protocol?: MountOptionProtocolEnum | (string & {});
   /** Instructions for mounting */
   instructions?: string;
   /** Export string */
@@ -958,7 +959,7 @@ export const MountOption = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MountOption" }) as any as S.Schema<MountOption>;
 
-export type MountOptionList = ReadonlyArray<MountOption>;
+export type MountOptionList = Array<MountOption>;
 export const MountOptionList = /*@__PURE__*/ S.Array(
   MountOption,
 ) as any as S.Schema<MountOptionList>;
@@ -977,7 +978,7 @@ export interface BlockDevice {
   /** Optional. The size of the block device in GiB. Any value provided for the `size_gib` field during volume creation is ignored. The block device's size is system-managed and will be set to match the parent Volume's `capacity_gib`. */
   sizeGib?: string;
   /** Required. Immutable. The OS type of the volume. This field can't be changed after the block device is created. */
-  osType?: BlockDeviceOsTypeEnum;
+  osType?: BlockDeviceOsTypeEnum | (string & {});
   /** Optional. User-defined name for the block device, unique within the volume. In case no user input is provided, name will be auto-generated in the backend. The name must meet the following requirements: * Be between 1 and 255 characters long. * Contain only uppercase or lowercase letters (A-Z, a-z), numbers (0-9), and the following special characters: "-", "_", "}", "{", ".". * Spaces are not allowed. */
   name?: string;
   /** Output only. Device identifier of the block volume. This represents `lun_serial_number` for iSCSI volumes. */
@@ -993,7 +994,7 @@ export const BlockDevice = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "BlockDevice" }) as any as S.Schema<BlockDevice>;
 
-export type BlockDeviceList = ReadonlyArray<BlockDevice>;
+export type BlockDeviceList = Array<BlockDevice>;
 export const BlockDeviceList = /*@__PURE__*/ S.Array(
   BlockDevice,
 ) as any as S.Schema<BlockDeviceList>;
@@ -1042,8 +1043,9 @@ export type VolumeRestrictedActionsItemEnum =
   | "DELETE";
 export const VolumeRestrictedActionsItemEnum = /*@__PURE__*/ S.String;
 
-export type VolumeRestrictedActionsItemEnumList =
-  ReadonlyArray<VolumeRestrictedActionsItemEnum>;
+export type VolumeRestrictedActionsItemEnumList = Array<
+  VolumeRestrictedActionsItemEnum | (string & {})
+>;
 export const VolumeRestrictedActionsItemEnumList = /*@__PURE__*/ S.Array(
   VolumeRestrictedActionsItemEnum,
 ) as any as S.Schema<VolumeRestrictedActionsItemEnumList>;
@@ -1144,7 +1146,7 @@ export interface CacheConfig {
   /** Optional. Flag indicating whether writeback is enabled for the FlexCache volume. */
   writebackEnabled?: boolean;
   /** Output only. State of the prepopulation job indicating how the prepopulation is progressing. */
-  cachePrePopulateState?: CacheConfigCachePrePopulateStateEnum;
+  cachePrePopulateState?: CacheConfigCachePrePopulateStateEnum | (string & {});
 }
 export const CacheConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1174,7 +1176,7 @@ export interface CacheParameters {
   /** Output only. Detailed description of the current cache state. */
   stateDetails?: string;
   /** Output only. State of the cache volume indicating the peering status. */
-  cacheState?: CacheParametersCacheStateEnum;
+  cacheState?: CacheParametersCacheStateEnum | (string & {});
   /** Output only. Temporary passphrase generated to accept cluster peering command. */
   passphrase?: string;
   /** Required. List of IC LIF addresses of the origin volume's ONTAP cluster. */
@@ -1215,8 +1217,9 @@ export type VolumeProtocolsItemEnum =
   | "NVME";
 export const VolumeProtocolsItemEnum = /*@__PURE__*/ S.String;
 
-export type VolumeProtocolsItemEnumList =
-  ReadonlyArray<VolumeProtocolsItemEnum>;
+export type VolumeProtocolsItemEnumList = Array<
+  VolumeProtocolsItemEnum | (string & {})
+>;
 export const VolumeProtocolsItemEnumList = /*@__PURE__*/ S.Array(
   VolumeProtocolsItemEnum,
 ) as any as S.Schema<VolumeProtocolsItemEnumList>;
@@ -1326,7 +1329,7 @@ export const TieringPolicyTierActionEnum = /*@__PURE__*/ S.String;
 /** Defines tiering policy for the volume. */
 export interface TieringPolicy {
   /** Optional. Flag indicating if the volume has tiering policy enable/pause. Default is PAUSED. */
-  tierAction?: TieringPolicyTierActionEnum;
+  tierAction?: TieringPolicyTierActionEnum | (string & {});
   /** Optional. Time in days to mark the volume's data block as cold and make it eligible for tiering, can be range from 2-183. Default is 31. */
   coolingThresholdDays?: number;
   /** Optional. Flag indicating that the hot tier bypass mode is enabled. Default is false. This is only applicable to Flex service level. */
@@ -1363,7 +1366,7 @@ export interface SimpleExportPolicyRule {
   /** NFS V3 protocol. */
   nfsv3?: boolean;
   /** Access type (ReadWrite, ReadOnly, None) */
-  accessType?: SimpleExportPolicyRuleAccessTypeEnum;
+  accessType?: SimpleExportPolicyRuleAccessTypeEnum | (string & {});
   /** If enabled (true) the rule defines a read only access for clients matching the 'allowedClients' specification. It enables nfs clients to mount using 'integrity' kerberos security mode. */
   kerberos5iReadOnly?: boolean;
   /** NFS V4 protocol. */
@@ -1377,7 +1380,7 @@ export interface SimpleExportPolicyRule {
   /** If enabled (true) the rule defines a read only access for clients matching the 'allowedClients' specification. It enables nfs clients to mount using 'privacy' kerberos security mode. */
   kerberos5pReadOnly?: boolean;
   /** Optional. Defines how user identity squashing is applied for this export rule. This field is the preferred way to configure squashing behavior and takes precedence over `has_root_access` if both are provided. */
-  squashMode?: SimpleExportPolicyRuleSquashModeEnum;
+  squashMode?: SimpleExportPolicyRuleSquashModeEnum | (string & {});
   /** If enabled (true) the rule defines a read only access for clients matching the 'allowedClients' specification. It enables nfs clients to mount using 'authentication' kerberos security mode. */
   kerberos5ReadOnly?: boolean;
   /** Optional. An integer representing the anonymous user ID. Range is 0 to `4294967295`. Required when `squash_mode` is `ROOT_SQUASH` or `ALL_SQUASH`. */
@@ -1403,7 +1406,7 @@ export const SimpleExportPolicyRule = /*@__PURE__*/ S.suspend(() =>
   identifier: "SimpleExportPolicyRule",
 }) as any as S.Schema<SimpleExportPolicyRule>;
 
-export type SimpleExportPolicyRuleList = ReadonlyArray<SimpleExportPolicyRule>;
+export type SimpleExportPolicyRuleList = Array<SimpleExportPolicyRule>;
 export const SimpleExportPolicyRuleList = /*@__PURE__*/ S.Array(
   SimpleExportPolicyRule,
 ) as any as S.Schema<SimpleExportPolicyRuleList>;
@@ -1445,13 +1448,17 @@ export interface HybridReplicationParameters {
   /** Required. Desired name for the replication of this volume. */
   replication?: string;
   /** Optional. Type of the hybrid replication. */
-  hybridReplicationType?: HybridReplicationParametersHybridReplicationTypeEnum;
+  hybridReplicationType?:
+    | HybridReplicationParametersHybridReplicationTypeEnum
+    | (string & {});
   /** Optional. Constituent volume count for large volume. */
   largeVolumeConstituentCount?: number;
   /** Required. List of node ip addresses to be peered with. */
   peerIpAddresses?: StringList;
   /** Optional. Replication Schedule for the replication created. */
-  replicationSchedule?: HybridReplicationParametersReplicationScheduleEnum;
+  replicationSchedule?:
+    | HybridReplicationParametersReplicationScheduleEnum
+    | (string & {});
   /** Required. Name of the user's local source vserver svm to be peered with the destination vserver svm. */
   peerSvmName?: string;
   /** Optional. Description of the replication. */
@@ -1500,9 +1507,9 @@ export interface Volume {
   /** Output only. Specifies the replica zone for regional volume. */
   replicaZone?: string;
   /** Output only. State of the volume */
-  state?: VolumeStateEnum;
+  state?: VolumeStateEnum | (string & {});
   /** Optional. Security Style of the Volume */
-  securityStyle?: VolumeSecurityStyleEnum;
+  securityStyle?: VolumeSecurityStyleEnum | (string & {});
   /** BackupConfig of the volume. */
   backupConfig?: BackupConfig;
   /** Optional. Flag indicating if the volume will be a large capacity volume or a regular volume. This field is used for legacy FILE pools. For Unified pools, use the `large_capacity_config` field instead. This field and `large_capacity_config` are mutually exclusive. */
@@ -1532,7 +1539,7 @@ export interface Volume {
   /** Optional. Large capacity config for the volume. Enables and configures large capacity for volumes in Unified pools with File protocols. Not applicable for Block protocols in Unified pools. This field and the legacy `large_capacity` boolean field are mutually exclusive. */
   largeCapacityConfig?: LargeCapacityConfig;
   /** Output only. Specified the current volume encryption key source. */
-  encryptionType?: VolumeEncryptionTypeEnum;
+  encryptionType?: VolumeEncryptionTypeEnum | (string & {});
   /** Output only. Create time of the volume */
   createTime?: string;
   /** Output only. Total hot tier data rounded down to the nearest GiB used by the Volume. This field is only used for flex Service Level */
@@ -1542,7 +1549,7 @@ export interface Volume {
   /** Optional. Specifies the source of the volume to be created from. */
   restoreParameters?: RestoreParameters;
   /** Output only. Service level of the volume */
-  serviceLevel?: VolumeServiceLevelEnum;
+  serviceLevel?: VolumeServiceLevelEnum | (string & {});
   /** Optional. Description of the volume */
   description?: string;
   /** Output only. State details of the volume */
@@ -1668,9 +1675,9 @@ export const QuotaRuleStateEnum = /*@__PURE__*/ S.String;
 /** QuotaRule specifies the maximum disk space a user or group can use within a volume. They can be used for creating default and individual quota rules. */
 export interface QuotaRule {
   /** Required. The type of quota rule. */
-  type?: QuotaRuleTypeEnum;
+  type?: QuotaRuleTypeEnum | (string & {});
   /** Output only. State of the quota rule */
-  state?: QuotaRuleStateEnum;
+  state?: QuotaRuleStateEnum | (string & {});
   /** Output only. Create time of the quota rule */
   createTime?: string;
   /** Optional. Description of the quota rule */
@@ -1875,17 +1882,17 @@ export interface Replication {
   /** Output only. Condition of the relationship. Can be one of the following: - true: The replication relationship is healthy. It has not missed the most recent scheduled transfer. - false: The replication relationship is not healthy. It has missed the most recent scheduled transfer. */
   healthy?: boolean;
   /** Output only. Type of the hybrid replication. */
-  hybridReplicationType?: ReplicationHybridReplicationTypeEnum;
+  hybridReplicationType?: ReplicationHybridReplicationTypeEnum | (string & {});
   /** Output only. Full name of destination volume resource. Example : "projects/{project}/locations/{location}/volumes/{volume_id}" */
   destinationVolume?: string;
   /** Output only. Copy pastable snapmirror commands to be executed on onprem cluster by the customer. */
   hybridReplicationUserCommands?: UserCommands;
   /** Output only. State of the replication. */
-  state?: ReplicationStateEnum;
+  state?: ReplicationStateEnum | (string & {});
   /** A description about this replication relationship. */
   description?: string;
   /** Required. Indicates the schedule for replication. */
-  replicationSchedule?: ReplicationReplicationScheduleEnum;
+  replicationSchedule?: ReplicationReplicationScheduleEnum | (string & {});
   /** Optional. Location of the user cluster. */
   clusterLocation?: string;
   /** Output only. Full name of source volume resource. Example : "projects/{project}/locations/{location}/volumes/{volume_id}" */
@@ -1899,11 +1906,11 @@ export interface Replication {
   /** Output only. Replication transfer statistics. */
   transferStats?: TransferStats;
   /** Output only. Indicates the state of mirroring. */
-  mirrorState?: ReplicationMirrorStateEnum;
+  mirrorState?: ReplicationMirrorStateEnum | (string & {});
   /** Output only. Hybrid peering details. */
   hybridPeeringDetails?: HybridPeeringDetails;
   /** Output only. Indicates whether this points to source or destination. */
-  role?: ReplicationRoleEnum;
+  role?: ReplicationRoleEnum | (string & {});
   /** Required. Input only. Destination volume parameters */
   destinationVolumeParameters?: DestinationVolumeParameters;
   /** Output only. Replication create time. */
@@ -1978,7 +1985,7 @@ export interface Snapshot {
   /** Output only. Current storage usage for the snapshot in bytes. */
   usedBytes?: number;
   /** Output only. The snapshot state. */
-  state?: SnapshotStateEnum;
+  state?: SnapshotStateEnum | (string & {});
   /** A description of the snapshot with 2048 characters or less. Requests with longer descriptions will be rejected. */
   description?: string;
   /** Output only. The time when the snapshot was created. */
@@ -2828,7 +2835,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = ReadonlyArray<Location>;
+export type LocationList = Array<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -2880,7 +2887,7 @@ export const ListProjectsLocationsActiveDirectoriesRequest =
     identifier: "ListProjectsLocationsActiveDirectoriesRequest",
   }) as any as S.Schema<ListProjectsLocationsActiveDirectoriesRequest>;
 
-export type ActiveDirectoryList = ReadonlyArray<ActiveDirectory>;
+export type ActiveDirectoryList = Array<ActiveDirectory>;
 export const ActiveDirectoryList = /*@__PURE__*/ S.Array(
   ActiveDirectory,
 ) as any as S.Schema<ActiveDirectoryList>;
@@ -2935,7 +2942,7 @@ export const ListProjectsLocationsBackupPoliciesRequest =
     identifier: "ListProjectsLocationsBackupPoliciesRequest",
   }) as any as S.Schema<ListProjectsLocationsBackupPoliciesRequest>;
 
-export type BackupPolicyList = ReadonlyArray<BackupPolicy>;
+export type BackupPolicyList = Array<BackupPolicy>;
 export const BackupPolicyList = /*@__PURE__*/ S.Array(
   BackupPolicy,
 ) as any as S.Schema<BackupPolicyList>;
@@ -2990,7 +2997,7 @@ export const ListProjectsLocationsBackupVaultsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsBackupVaultsRequest",
 }) as any as S.Schema<ListProjectsLocationsBackupVaultsRequest>;
 
-export type BackupVaultList = ReadonlyArray<BackupVault>;
+export type BackupVaultList = Array<BackupVault>;
 export const BackupVaultList = /*@__PURE__*/ S.Array(
   BackupVault,
 ) as any as S.Schema<BackupVaultList>;
@@ -3045,7 +3052,7 @@ export const ListProjectsLocationsBackupVaultsBackupsRequest =
     identifier: "ListProjectsLocationsBackupVaultsBackupsRequest",
   }) as any as S.Schema<ListProjectsLocationsBackupVaultsBackupsRequest>;
 
-export type BackupList = ReadonlyArray<Backup>;
+export type BackupList = Array<Backup>;
 export const BackupList = /*@__PURE__*/ S.Array(
   Backup,
 ) as any as S.Schema<BackupList>;
@@ -3100,7 +3107,7 @@ export const ListProjectsLocationsHostGroupsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsHostGroupsRequest",
 }) as any as S.Schema<ListProjectsLocationsHostGroupsRequest>;
 
-export type HostGroupList = ReadonlyArray<HostGroup>;
+export type HostGroupList = Array<HostGroup>;
 export const HostGroupList = /*@__PURE__*/ S.Array(
   HostGroup,
 ) as any as S.Schema<HostGroupList>;
@@ -3155,7 +3162,7 @@ export const ListProjectsLocationsKmsConfigsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsKmsConfigsRequest",
 }) as any as S.Schema<ListProjectsLocationsKmsConfigsRequest>;
 
-export type KmsConfigList = ReadonlyArray<KmsConfig>;
+export type KmsConfigList = Array<KmsConfig>;
 export const KmsConfigList = /*@__PURE__*/ S.Array(
   KmsConfig,
 ) as any as S.Schema<KmsConfigList>;
@@ -3210,7 +3217,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type OperationList = ReadonlyArray<Operation>;
+export type OperationList = Array<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -3265,7 +3272,7 @@ export const ListProjectsLocationsStoragePoolsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsStoragePoolsRequest",
 }) as any as S.Schema<ListProjectsLocationsStoragePoolsRequest>;
 
-export type StoragePoolList = ReadonlyArray<StoragePool>;
+export type StoragePoolList = Array<StoragePool>;
 export const StoragePoolList = /*@__PURE__*/ S.Array(
   StoragePool,
 ) as any as S.Schema<StoragePoolList>;
@@ -3336,7 +3343,7 @@ export const VolumeBackupConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "VolumeBackupConfig",
 }) as any as S.Schema<VolumeBackupConfig>;
 
-export type VolumeBackupConfigList = ReadonlyArray<VolumeBackupConfig>;
+export type VolumeBackupConfigList = Array<VolumeBackupConfig>;
 export const VolumeBackupConfigList = /*@__PURE__*/ S.Array(
   VolumeBackupConfig,
 ) as any as S.Schema<VolumeBackupConfigList>;
@@ -3390,7 +3397,7 @@ export const ListProjectsLocationsVolumesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsVolumesRequest",
 }) as any as S.Schema<ListProjectsLocationsVolumesRequest>;
 
-export type VolumeList = ReadonlyArray<Volume>;
+export type VolumeList = Array<Volume>;
 export const VolumeList = /*@__PURE__*/ S.Array(
   Volume,
 ) as any as S.Schema<VolumeList>;
@@ -3445,7 +3452,7 @@ export const ListProjectsLocationsVolumesQuotaRulesRequest =
     identifier: "ListProjectsLocationsVolumesQuotaRulesRequest",
   }) as any as S.Schema<ListProjectsLocationsVolumesQuotaRulesRequest>;
 
-export type QuotaRuleList = ReadonlyArray<QuotaRule>;
+export type QuotaRuleList = Array<QuotaRule>;
 export const QuotaRuleList = /*@__PURE__*/ S.Array(
   QuotaRule,
 ) as any as S.Schema<QuotaRuleList>;
@@ -3500,7 +3507,7 @@ export const ListProjectsLocationsVolumesReplicationsRequest =
     identifier: "ListProjectsLocationsVolumesReplicationsRequest",
   }) as any as S.Schema<ListProjectsLocationsVolumesReplicationsRequest>;
 
-export type ReplicationList = ReadonlyArray<Replication>;
+export type ReplicationList = Array<Replication>;
 export const ReplicationList = /*@__PURE__*/ S.Array(
   Replication,
 ) as any as S.Schema<ReplicationList>;
@@ -3555,7 +3562,7 @@ export const ListProjectsLocationsVolumesSnapshotsRequest =
     identifier: "ListProjectsLocationsVolumesSnapshotsRequest",
   }) as any as S.Schema<ListProjectsLocationsVolumesSnapshotsRequest>;
 
-export type SnapshotList = ReadonlyArray<Snapshot>;
+export type SnapshotList = Array<Snapshot>;
 export const SnapshotList = /*@__PURE__*/ S.Array(
   Snapshot,
 ) as any as S.Schema<SnapshotList>;

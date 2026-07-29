@@ -53,7 +53,7 @@ export const DashboardPartMetadataType = /*@__PURE__*/ S.String;
 
 /** A dashboard part metadata. */
 export interface DashboardPartMetadata {
-  type: DashboardPartMetadataType;
+  type: DashboardPartMetadataType | (string & {});
 }
 export const DashboardPartMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -78,7 +78,7 @@ export const DashboardParts = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DashboardParts" }) as any as S.Schema<DashboardParts>;
 
 /** The dashboard parts. */
-export type DashboardLensPartsList = ReadonlyArray<DashboardParts>;
+export type DashboardLensPartsList = Array<DashboardParts>;
 export const DashboardLensPartsList = /*@__PURE__*/ S.Array(
   DashboardParts,
 ) as any as S.Schema<DashboardLensPartsList>;
@@ -102,7 +102,7 @@ export const DashboardLens = /*@__PURE__*/ S.suspend(() =>
 
 /** The dashboard lenses. */
 export type DashboardPropertiesWithProvisioningStateInputLensesList =
-  ReadonlyArray<DashboardLens>;
+  Array<DashboardLens>;
 export const DashboardPropertiesWithProvisioningStateInputLensesList =
   /*@__PURE__*/ S.Array(
     DashboardLens,
@@ -214,7 +214,7 @@ export const DashboardsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 
 /** The dashboard lenses. */
 export type DashboardPropertiesWithProvisioningStateLensesList =
-  ReadonlyArray<DashboardLens>;
+  Array<DashboardLens>;
 export const DashboardPropertiesWithProvisioningStateLensesList =
   /*@__PURE__*/ S.Array(
     DashboardLens,
@@ -436,7 +436,7 @@ export const Dashboard = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Dashboard" }) as any as S.Schema<Dashboard>;
 
 /** The Dashboard items on this page */
-export type DashboardListResultValueList = ReadonlyArray<Dashboard>;
+export type DashboardListResultValueList = Array<Dashboard>;
 export const DashboardListResultValueList = /*@__PURE__*/ S.Array(
   Dashboard,
 ) as any as S.Schema<DashboardListResultValueList>;
@@ -477,7 +477,7 @@ export const DashboardsListBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DashboardsListBySubscriptionRequest>;
 
 /** The dashboard lenses. */
-export type DashboardPropertiesLensesList = ReadonlyArray<DashboardLens>;
+export type DashboardPropertiesLensesList = Array<DashboardLens>;
 export const DashboardPropertiesLensesList = /*@__PURE__*/ S.Array(
   DashboardLens,
 ) as any as S.Schema<DashboardPropertiesLensesList>;
@@ -610,7 +610,7 @@ export const Violation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Violation" }) as any as S.Schema<Violation>;
 
 /** The Violation items on this page */
-export type ViolationsListValueList = ReadonlyArray<Violation>;
+export type ViolationsListValueList = Array<Violation>;
 export const ViolationsListValueList = /*@__PURE__*/ S.Array(
   Violation,
 ) as any as S.Schema<ViolationsListValueList>;
@@ -697,7 +697,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = ReadonlyArray<Operation>;
+export type OperationsListResponseValueList = Array<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;
@@ -901,7 +901,7 @@ export const Configuration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Configuration" }) as any as S.Schema<Configuration>;
 
 /** The Configuration items on this page */
-export type ConfigurationListResultValueList = ReadonlyArray<Configuration>;
+export type ConfigurationListResultValueList = Array<Configuration>;
 export const ConfigurationListResultValueList = /*@__PURE__*/ S.Array(
   Configuration,
 ) as any as S.Schema<ConfigurationListResultValueList>;

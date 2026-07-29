@@ -55,7 +55,7 @@ export const IssuedCertificate = /*@__PURE__*/ S.suspend(() =>
   identifier: "IssuedCertificate",
 }) as any as S.Schema<IssuedCertificate>;
 
-export type CertificateEntryIssuedList = ReadonlyArray<IssuedCertificate>;
+export type CertificateEntryIssuedList = Array<IssuedCertificate>;
 export const CertificateEntryIssuedList = /*@__PURE__*/ S.Array(
   IssuedCertificate,
 ) as any as S.Schema<CertificateEntryIssuedList>;
@@ -90,17 +90,17 @@ export const CertificateEntry = /*@__PURE__*/ S.suspend(() =>
   identifier: "CertificateEntry",
 }) as any as S.Schema<CertificateEntry>;
 
-export type CertificateDetailCertificatesList = ReadonlyArray<CertificateEntry>;
+export type CertificateDetailCertificatesList = Array<CertificateEntry>;
 export const CertificateDetailCertificatesList = /*@__PURE__*/ S.Array(
   CertificateEntry,
 ) as any as S.Schema<CertificateDetailCertificatesList>;
 
-export type DNSRequirementsAList = ReadonlyArray<string>;
+export type DNSRequirementsAList = Array<string>;
 export const DNSRequirementsAList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DNSRequirementsAList>;
 
-export type DNSRequirementsAaaaList = ReadonlyArray<string>;
+export type DNSRequirementsAaaaList = Array<string>;
 export const DNSRequirementsAaaaList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DNSRequirementsAaaaList>;
@@ -185,7 +185,7 @@ export const CertificateValidationError = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CertificateValidationError>;
 
 export type CertificateDetailValidationErrorsList =
-  ReadonlyArray<CertificateValidationError>;
+  Array<CertificateValidationError>;
 export const CertificateDetailValidationErrorsList = /*@__PURE__*/ S.Array(
   CertificateValidationError,
 ) as any as S.Schema<CertificateDetailValidationErrorsList>;
@@ -261,28 +261,27 @@ export const AppCertificatesCheckRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "AppCertificatesCheckRequest",
 }) as any as S.Schema<AppCertificatesCheckRequest>;
 
-export type CertificateCheckResponseCertificatesList =
-  ReadonlyArray<CertificateEntry>;
+export type CertificateCheckResponseCertificatesList = Array<CertificateEntry>;
 export const CertificateCheckResponseCertificatesList = /*@__PURE__*/ S.Array(
   CertificateEntry,
 ) as any as S.Schema<CertificateCheckResponseCertificatesList>;
 
-export type DNSRecordsAList = ReadonlyArray<string>;
+export type DNSRecordsAList = Array<string>;
 export const DNSRecordsAList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DNSRecordsAList>;
 
-export type DNSRecordsAaaaList = ReadonlyArray<string>;
+export type DNSRecordsAaaaList = Array<string>;
 export const DNSRecordsAaaaList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DNSRecordsAaaaList>;
 
-export type DNSRecordsCnameList = ReadonlyArray<string>;
+export type DNSRecordsCnameList = Array<string>;
 export const DNSRecordsCnameList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DNSRecordsCnameList>;
 
-export type DNSRecordsResolvedAddressesList = ReadonlyArray<string>;
+export type DNSRecordsResolvedAddressesList = Array<string>;
 export const DNSRecordsResolvedAddressesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DNSRecordsResolvedAddressesList>;
@@ -309,7 +308,7 @@ export const DNSRecords = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DNSRecords" }) as any as S.Schema<DNSRecords>;
 
 export type CertificateCheckResponseValidationErrorsList =
-  ReadonlyArray<CertificateValidationError>;
+  Array<CertificateValidationError>;
 export const CertificateCheckResponseValidationErrorsList =
   /*@__PURE__*/ S.Array(
     CertificateValidationError,
@@ -392,14 +391,14 @@ export const AppCertificatesCustomDeleteRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AppCertificatesCustomDeleteRequest>;
 
 export type DestroyCustomCertificateResponseCertificatesList =
-  ReadonlyArray<CertificateEntry>;
+  Array<CertificateEntry>;
 export const DestroyCustomCertificateResponseCertificatesList =
   /*@__PURE__*/ S.Array(
     CertificateEntry,
   ) as any as S.Schema<DestroyCustomCertificateResponseCertificatesList>;
 
 export type DestroyCustomCertificateResponseValidationErrorsList =
-  ReadonlyArray<CertificateValidationError>;
+  Array<CertificateValidationError>;
 export const DestroyCustomCertificateResponseValidationErrorsList =
   /*@__PURE__*/ S.Array(
     CertificateValidationError,
@@ -525,7 +524,7 @@ export const CertificateSummary = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CertificateSummary>;
 
 export type ListCertificatesResponseCertificatesList =
-  ReadonlyArray<CertificateSummary>;
+  Array<CertificateSummary>;
 export const ListCertificatesResponseCertificatesList = /*@__PURE__*/ S.Array(
   CertificateSummary,
 ) as any as S.Schema<ListCertificatesResponseCertificatesList>;
@@ -684,7 +683,7 @@ export const AppIPAssignmentsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "AppIPAssignmentsListRequest",
 }) as any as S.Schema<AppIPAssignmentsListRequest>;
 
-export type ListIPAssignmentsResponseIpsList = ReadonlyArray<IPAssignment>;
+export type ListIPAssignmentsResponseIpsList = Array<IPAssignment>;
 export const ListIPAssignmentsResponseIpsList = /*@__PURE__*/ S.Array(
   IPAssignment,
 ) as any as S.Schema<ListIPAssignmentsResponseIpsList>;
@@ -796,7 +795,7 @@ export const App = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "App" }) as any as S.Schema<App>;
 
-export type ListAppsResponseAppsList = ReadonlyArray<App>;
+export type ListAppsResponseAppsList = Array<App>;
 export const ListAppsResponseAppsList = /*@__PURE__*/ S.Array(
   App,
 ) as any as S.Schema<ListAppsResponseAppsList>;
@@ -863,7 +862,7 @@ export const CurrentTokenShowRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CurrentTokenShowRequest",
 }) as any as S.Schema<CurrentTokenShowRequest>;
 
-export type MainTokenInfoAppsList = ReadonlyArray<string>;
+export type MainTokenInfoAppsList = Array<string>;
 export const MainTokenInfoAppsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<MainTokenInfoAppsList>;
@@ -892,7 +891,7 @@ export const MainTokenInfo = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MainTokenInfo" }) as any as S.Schema<MainTokenInfo>;
 
-export type CurrentTokenResponseTokensList = ReadonlyArray<MainTokenInfo>;
+export type CurrentTokenResponseTokensList = Array<MainTokenInfo>;
 export const CurrentTokenResponseTokensList = /*@__PURE__*/ S.Array(
   MainTokenInfo,
 ) as any as S.Schema<CurrentTokenResponseTokensList>;
@@ -948,7 +947,7 @@ export const FlyMachineCacheDrive = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FlyMachineCacheDrive>;
 
 /** The header value */
-export type FlyMachineHTTPHeaderValuesList = ReadonlyArray<string>;
+export type FlyMachineHTTPHeaderValuesList = Array<string>;
 export const FlyMachineHTTPHeaderValuesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<FlyMachineHTTPHeaderValuesList>;
@@ -969,7 +968,7 @@ export const FlyMachineHTTPHeader = /*@__PURE__*/ S.suspend(() =>
   identifier: "FlyMachineHTTPHeader",
 }) as any as S.Schema<FlyMachineHTTPHeader>;
 
-export type FlyMachineCheckHeadersList = ReadonlyArray<FlyMachineHTTPHeader>;
+export type FlyMachineCheckHeadersList = Array<FlyMachineHTTPHeader>;
 export const FlyMachineCheckHeadersList = /*@__PURE__*/ S.Array(
   FlyMachineHTTPHeader,
 ) as any as S.Schema<FlyMachineCheckHeadersList>;
@@ -985,7 +984,7 @@ export interface FlyMachineCheck {
   /** The time between connectivity checks */
   interval?: string;
   /** Kind of the check (informational, readiness) */
-  kind?: FlyMachineCheckKind;
+  kind?: FlyMachineCheckKind | (string & {});
   /** For http checks, the HTTP method to use to when making the request */
   method?: string;
   /** For http checks, the path to send the request to */
@@ -1032,7 +1031,7 @@ export const FlyMachineConfigChecksMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<FlyMachineConfigChecksMap>;
 
 /** CmdOverride is used to override the default command of the image. */
-export type FlyContainerConfigCmdList = ReadonlyArray<string>;
+export type FlyContainerConfigCmdList = Array<string>;
 export const FlyContainerConfigCmdList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<FlyContainerConfigCmdList>;
@@ -1044,7 +1043,7 @@ export type FlyContainerDependencyCondition =
 export const FlyContainerDependencyCondition = /*@__PURE__*/ S.String;
 
 export interface FlyContainerDependency {
-  condition?: FlyContainerDependencyCondition;
+  condition?: FlyContainerDependencyCondition | (string & {});
   name?: string;
 }
 export const FlyContainerDependency = /*@__PURE__*/ S.suspend(() =>
@@ -1057,14 +1056,13 @@ export const FlyContainerDependency = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FlyContainerDependency>;
 
 /** DependsOn can be used to define dependencies between containers. The container will only be started after all of its dependent conditions have been satisfied. */
-export type FlyContainerConfigDependsOnList =
-  ReadonlyArray<FlyContainerDependency>;
+export type FlyContainerConfigDependsOnList = Array<FlyContainerDependency>;
 export const FlyContainerConfigDependsOnList = /*@__PURE__*/ S.Array(
   FlyContainerDependency,
 ) as any as S.Schema<FlyContainerConfigDependsOnList>;
 
 /** EntrypointOverride is used to override the default entrypoint of the image. */
-export type FlyContainerConfigEntrypointList = ReadonlyArray<string>;
+export type FlyContainerConfigEntrypointList = Array<string>;
 export const FlyContainerConfigEntrypointList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<FlyContainerConfigEntrypointList>;
@@ -1091,7 +1089,7 @@ export interface FlyEnvFrom {
   /** EnvVar is required and is the name of the environment variable that will be set from the secret. It must be a valid environment variable name. */
   env_var?: string;
   /** FieldRef selects a field of the Machine: supports id, version, app_name, private_ip, region, image. */
-  field_ref?: FlyEnvFromFieldRef;
+  field_ref?: FlyEnvFromFieldRef | (string & {});
 }
 export const FlyEnvFrom = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1101,13 +1099,13 @@ export const FlyEnvFrom = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FlyEnvFrom" }) as any as S.Schema<FlyEnvFrom>;
 
 /** EnvFrom can be provided to set environment variables from machine fields. */
-export type FlyContainerConfigEnvFromList = ReadonlyArray<FlyEnvFrom>;
+export type FlyContainerConfigEnvFromList = Array<FlyEnvFrom>;
 export const FlyContainerConfigEnvFromList = /*@__PURE__*/ S.Array(
   FlyEnvFrom,
 ) as any as S.Schema<FlyContainerConfigEnvFromList>;
 
 /** Image Config overrides - these fields are used to override the image configuration. If not provided, the image configuration will be used. ExecOverride is used to override the default command of the image. */
-export type FlyContainerConfigExecList = ReadonlyArray<string>;
+export type FlyContainerConfigExecList = Array<string>;
 export const FlyContainerConfigExecList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<FlyContainerConfigExecList>;
@@ -1136,13 +1134,13 @@ export const FlyFile = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FlyFile" }) as any as S.Schema<FlyFile>;
 
 /** Files are files that will be written to the container file system. */
-export type FlyContainerConfigFilesList = ReadonlyArray<FlyFile>;
+export type FlyContainerConfigFilesList = Array<FlyFile>;
 export const FlyContainerConfigFilesList = /*@__PURE__*/ S.Array(
   FlyFile,
 ) as any as S.Schema<FlyContainerConfigFilesList>;
 
 /** The command to run to check the health of the container (e.g. ["cat", "/tmp/healthy"]) */
-export type FlyExecHealthcheckCommandList = ReadonlyArray<string>;
+export type FlyExecHealthcheckCommandList = Array<string>;
 export const FlyExecHealthcheckCommandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<FlyExecHealthcheckCommandList>;
@@ -1160,7 +1158,7 @@ export const FlyExecHealthcheck = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FlyExecHealthcheck>;
 
 /** Additional headers to send with the request */
-export type FlyHTTPHealthcheckHeadersList = ReadonlyArray<FlyMachineHTTPHeader>;
+export type FlyHTTPHealthcheckHeadersList = Array<FlyMachineHTTPHeader>;
 export const FlyHTTPHealthcheckHeadersList = /*@__PURE__*/ S.Array(
   FlyMachineHTTPHeader,
 ) as any as S.Schema<FlyHTTPHealthcheckHeadersList>;
@@ -1178,7 +1176,7 @@ export interface FlyHTTPHealthcheck {
   /** The port to connect to, often the same as internal_port */
   port?: number;
   /** Whether to use http or https */
-  scheme?: FlyContainerHealthcheckScheme;
+  scheme?: FlyContainerHealthcheckScheme | (string & {});
   /** If the protocol is https, the hostname to use for TLS certificate validation */
   tls_server_name?: string;
   /** If the protocol is https, whether or not to verify the TLS certificate */
@@ -1226,7 +1224,7 @@ export interface FlyContainerHealthcheck {
   /** The time in seconds between executing the defined check. */
   interval?: number;
   /** Kind of healthcheck (readiness, liveness) */
-  kind?: FlyContainerHealthcheckKind;
+  kind?: FlyContainerHealthcheckKind | (string & {});
   /** The name of the check. Must be unique within the container. */
   name?: string;
   /** The number of times the check must succeeed before considering the container healthy. */
@@ -1235,7 +1233,7 @@ export interface FlyContainerHealthcheck {
   /** The time in seconds to wait for the check to complete. */
   timeout?: number;
   /** Unhealthy policy that determines what action to take if a container is deemed unhealthy */
-  unhealthy?: FlyUnhealthyPolicy;
+  unhealthy?: FlyUnhealthyPolicy | (string & {});
 }
 export const FlyContainerHealthcheck = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1256,8 +1254,7 @@ export const FlyContainerHealthcheck = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FlyContainerHealthcheck>;
 
 /** Healthchecks determine the health of your containers. Healthchecks can use HTTP, TCP or an Exec command. */
-export type FlyContainerConfigHealthchecksList =
-  ReadonlyArray<FlyContainerHealthcheck>;
+export type FlyContainerConfigHealthchecksList = Array<FlyContainerHealthcheck>;
 export const FlyContainerConfigHealthchecksList = /*@__PURE__*/ S.Array(
   FlyContainerHealthcheck,
 ) as any as S.Schema<FlyContainerConfigHealthchecksList>;
@@ -1277,7 +1274,7 @@ export interface FlyMachineRestart {
   /** When policy is on-failure, the maximum number of times to attempt to restart the Machine before letting it stop. */
   max_retries?: number;
   /** * no - Never try to restart a Machine automatically when its main process exits, whether that’s on purpose or on a crash. * always - Always restart a Machine automatically and never let it enter a stopped state, even when the main process exits cleanly. * on-failure - Try up to MaxRetries times to automatically restart the Machine if it exits with a non-zero exit code. Default when no explicit policy is set, and for Machines with schedules. * spot-price - Starts the Machine only when there is capacity and the spot price is less than or equal to the bid price. */
-  policy?: FlyMachineRestartPolicy;
+  policy?: FlyMachineRestartPolicy | (string & {});
 }
 export const FlyMachineRestart = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1306,7 +1303,7 @@ export const FlyMachineSecret = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FlyMachineSecret>;
 
 /** Secrets can be provided at the process level to explicitly indicate which secrets should be used for the process. If not provided, the secrets provided at the machine level will be used. */
-export type FlyContainerConfigSecretsList = ReadonlyArray<FlyMachineSecret>;
+export type FlyContainerConfigSecretsList = Array<FlyMachineSecret>;
 export const FlyContainerConfigSecretsList = /*@__PURE__*/ S.Array(
   FlyMachineSecret,
 ) as any as S.Schema<FlyContainerConfigSecretsList>;
@@ -1322,7 +1319,7 @@ export type FlyStopConfigSignal =
 export const FlyStopConfigSignal = /*@__PURE__*/ S.String;
 
 export interface FlyStopConfig {
-  signal?: FlyStopConfigSignal;
+  signal?: FlyStopConfigSignal | (string & {});
   timeout?: string;
 }
 export const FlyStopConfig = /*@__PURE__*/ S.suspend(() =>
@@ -1384,7 +1381,7 @@ export const FlyContainerConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FlyContainerConfig>;
 
 /** Containers are a list of containers that will run in the machine. Currently restricted to only specific organizations. */
-export type FlyMachineConfigContainersList = ReadonlyArray<FlyContainerConfig>;
+export type FlyMachineConfigContainersList = Array<FlyContainerConfig>;
 export const FlyMachineConfigContainersList = /*@__PURE__*/ S.Array(
   FlyContainerConfig,
 ) as any as S.Schema<FlyMachineConfigContainersList>;
@@ -1402,12 +1399,12 @@ export const FlyDnsForwardRule = /*@__PURE__*/ S.suspend(() =>
   identifier: "FlyDnsForwardRule",
 }) as any as S.Schema<FlyDnsForwardRule>;
 
-export type FlyDNSConfigDnsForwardRulesList = ReadonlyArray<FlyDnsForwardRule>;
+export type FlyDNSConfigDnsForwardRulesList = Array<FlyDnsForwardRule>;
 export const FlyDNSConfigDnsForwardRulesList = /*@__PURE__*/ S.Array(
   FlyDnsForwardRule,
 ) as any as S.Schema<FlyDNSConfigDnsForwardRulesList>;
 
-export type FlyDNSConfigNameserversList = ReadonlyArray<string>;
+export type FlyDNSConfigNameserversList = Array<string>;
 export const FlyDNSConfigNameserversList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<FlyDNSConfigNameserversList>;
@@ -1423,12 +1420,12 @@ export const FlyDnsOption = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "FlyDnsOption" }) as any as S.Schema<FlyDnsOption>;
 
-export type FlyDNSConfigOptionsList = ReadonlyArray<FlyDnsOption>;
+export type FlyDNSConfigOptionsList = Array<FlyDnsOption>;
 export const FlyDNSConfigOptionsList = /*@__PURE__*/ S.Array(
   FlyDnsOption,
 ) as any as S.Schema<FlyDNSConfigOptionsList>;
 
-export type FlyDNSConfigSearchesList = ReadonlyArray<string>;
+export type FlyDNSConfigSearchesList = Array<string>;
 export const FlyDNSConfigSearchesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<FlyDNSConfigSearchesList>;
@@ -1461,12 +1458,12 @@ export const FlyMachineConfigEnvMap = /*@__PURE__*/ S.Record(
   S.String,
 ) as any as S.Schema<FlyMachineConfigEnvMap>;
 
-export type FlyMachineConfigFilesList = ReadonlyArray<FlyFile>;
+export type FlyMachineConfigFilesList = Array<FlyFile>;
 export const FlyMachineConfigFilesList = /*@__PURE__*/ S.Array(
   FlyFile,
 ) as any as S.Schema<FlyMachineConfigFilesList>;
 
-export type FlyMachineGuestKernelArgsList = ReadonlyArray<string>;
+export type FlyMachineGuestKernelArgsList = Array<string>;
 export const FlyMachineGuestKernelArgsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<FlyMachineGuestKernelArgsList>;
@@ -1485,7 +1482,7 @@ export interface FlyMachineGuest {
   max_memory_mb?: number;
   memory_mb?: number;
   /** Deprecated: use MachineConfig.Rootfs instead */
-  persist_rootfs?: FlyMachineGuestPersistRootfs;
+  persist_rootfs?: FlyMachineGuestPersistRootfs | (string & {});
 }
 export const FlyMachineGuest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1503,22 +1500,22 @@ export const FlyMachineGuest = /*@__PURE__*/ S.suspend(() =>
   identifier: "FlyMachineGuest",
 }) as any as S.Schema<FlyMachineGuest>;
 
-export type FlyMachineInitCmdList = ReadonlyArray<string>;
+export type FlyMachineInitCmdList = Array<string>;
 export const FlyMachineInitCmdList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<FlyMachineInitCmdList>;
 
-export type FlyMachineInitEntrypointList = ReadonlyArray<string>;
+export type FlyMachineInitEntrypointList = Array<string>;
 export const FlyMachineInitEntrypointList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<FlyMachineInitEntrypointList>;
 
-export type FlyMachineInitExecList = ReadonlyArray<string>;
+export type FlyMachineInitExecList = Array<string>;
 export const FlyMachineInitExecList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<FlyMachineInitExecList>;
 
-export type FlyMachineInitKernelArgsList = ReadonlyArray<string>;
+export type FlyMachineInitKernelArgsList = Array<string>;
 export const FlyMachineInitKernelArgsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<FlyMachineInitKernelArgsList>;
@@ -1588,17 +1585,17 @@ export const FlyMachineMount = /*@__PURE__*/ S.suspend(() =>
   identifier: "FlyMachineMount",
 }) as any as S.Schema<FlyMachineMount>;
 
-export type FlyMachineConfigMountsList = ReadonlyArray<FlyMachineMount>;
+export type FlyMachineConfigMountsList = Array<FlyMachineMount>;
 export const FlyMachineConfigMountsList = /*@__PURE__*/ S.Array(
   FlyMachineMount,
 ) as any as S.Schema<FlyMachineConfigMountsList>;
 
-export type FlyMachineProcessCmdList = ReadonlyArray<string>;
+export type FlyMachineProcessCmdList = Array<string>;
 export const FlyMachineProcessCmdList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<FlyMachineProcessCmdList>;
 
-export type FlyMachineProcessEntrypointList = ReadonlyArray<string>;
+export type FlyMachineProcessEntrypointList = Array<string>;
 export const FlyMachineProcessEntrypointList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<FlyMachineProcessEntrypointList>;
@@ -1610,18 +1607,18 @@ export const FlyMachineProcessEnvMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<FlyMachineProcessEnvMap>;
 
 /** EnvFrom can be provided to set environment variables from machine fields. */
-export type FlyMachineProcessEnvFromList = ReadonlyArray<FlyEnvFrom>;
+export type FlyMachineProcessEnvFromList = Array<FlyEnvFrom>;
 export const FlyMachineProcessEnvFromList = /*@__PURE__*/ S.Array(
   FlyEnvFrom,
 ) as any as S.Schema<FlyMachineProcessEnvFromList>;
 
-export type FlyMachineProcessExecList = ReadonlyArray<string>;
+export type FlyMachineProcessExecList = Array<string>;
 export const FlyMachineProcessExecList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<FlyMachineProcessExecList>;
 
 /** Secrets can be provided at the process level to explicitly indicate which secrets should be used for the process. If not provided, the secrets provided at the machine level will be used. */
-export type FlyMachineProcessSecretsList = ReadonlyArray<FlyMachineSecret>;
+export type FlyMachineProcessSecretsList = Array<FlyMachineSecret>;
 export const FlyMachineProcessSecretsList = /*@__PURE__*/ S.Array(
   FlyMachineSecret,
 ) as any as S.Schema<FlyMachineProcessSecretsList>;
@@ -1654,7 +1651,7 @@ export const FlyMachineProcess = /*@__PURE__*/ S.suspend(() =>
   identifier: "FlyMachineProcess",
 }) as any as S.Schema<FlyMachineProcess>;
 
-export type FlyMachineConfigProcessesList = ReadonlyArray<FlyMachineProcess>;
+export type FlyMachineConfigProcessesList = Array<FlyMachineProcess>;
 export const FlyMachineConfigProcessesList = /*@__PURE__*/ S.Array(
   FlyMachineProcess,
 ) as any as S.Schema<FlyMachineConfigProcessesList>;
@@ -1663,7 +1660,7 @@ export type FlyMachineRootfsPersist = "never" | "always" | "restart";
 export const FlyMachineRootfsPersist = /*@__PURE__*/ S.String;
 
 export interface FlyMachineRootfs {
-  persist?: FlyMachineRootfsPersist;
+  persist?: FlyMachineRootfsPersist | (string & {});
   size_gb?: number;
 }
 export const FlyMachineRootfs = /*@__PURE__*/ S.suspend(() =>
@@ -1679,8 +1676,7 @@ export const FlyMachineRootfs = /*@__PURE__*/ S.suspend(() =>
 export type FlyMachineServiceAutostop = "off" | "stop" | "suspend";
 export const FlyMachineServiceAutostop = /*@__PURE__*/ S.String;
 
-export type FlyMachineServiceCheckHeadersList =
-  ReadonlyArray<FlyMachineHTTPHeader>;
+export type FlyMachineServiceCheckHeadersList = Array<FlyMachineHTTPHeader>;
 export const FlyMachineServiceCheckHeadersList = /*@__PURE__*/ S.Array(
   FlyMachineHTTPHeader,
 ) as any as S.Schema<FlyMachineServiceCheckHeadersList>;
@@ -1727,7 +1723,7 @@ export const FlyMachineServiceCheck = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FlyMachineServiceCheck>;
 
 /** An optional list of service checks */
-export type FlyMachineServiceChecksList = ReadonlyArray<FlyMachineServiceCheck>;
+export type FlyMachineServiceChecksList = Array<FlyMachineServiceCheck>;
 export const FlyMachineServiceChecksList = /*@__PURE__*/ S.Array(
   FlyMachineServiceCheck,
 ) as any as S.Schema<FlyMachineServiceChecksList>;
@@ -1747,7 +1743,7 @@ export const FlyMachineServiceConcurrency = /*@__PURE__*/ S.suspend(() =>
   identifier: "FlyMachineServiceConcurrency",
 }) as any as S.Schema<FlyMachineServiceConcurrency>;
 
-export type FlyMachinePortHandlersList = ReadonlyArray<string>;
+export type FlyMachinePortHandlersList = Array<string>;
 export const FlyMachinePortHandlersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<FlyMachinePortHandlersList>;
@@ -1763,7 +1759,7 @@ export interface FlyReplayCache {
   path_prefix?: string;
   ttl_seconds?: number;
   /** Currently either "cookie" or "header" */
-  type?: FlyReplayCacheType;
+  type?: FlyReplayCacheType | (string & {});
 }
 export const FlyReplayCache = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1775,7 +1771,7 @@ export const FlyReplayCache = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "FlyReplayCache" }) as any as S.Schema<FlyReplayCache>;
 
-export type FlyHTTPOptionsReplayCacheList = ReadonlyArray<FlyReplayCache>;
+export type FlyHTTPOptionsReplayCacheList = Array<FlyReplayCache>;
 export const FlyHTTPOptionsReplayCacheList = /*@__PURE__*/ S.Array(
   FlyReplayCache,
 ) as any as S.Schema<FlyHTTPOptionsReplayCacheList>;
@@ -1831,12 +1827,12 @@ export const FlyProxyProtoOptions = /*@__PURE__*/ S.suspend(() =>
   identifier: "FlyProxyProtoOptions",
 }) as any as S.Schema<FlyProxyProtoOptions>;
 
-export type FlyTLSOptionsAlpnList = ReadonlyArray<string>;
+export type FlyTLSOptionsAlpnList = Array<string>;
 export const FlyTLSOptionsAlpnList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<FlyTLSOptionsAlpnList>;
 
-export type FlyTLSOptionsVersionsList = ReadonlyArray<string>;
+export type FlyTLSOptionsVersionsList = Array<string>;
 export const FlyTLSOptionsVersionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<FlyTLSOptionsVersionsList>;
@@ -1877,7 +1873,7 @@ export const FlyMachinePort = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "FlyMachinePort" }) as any as S.Schema<FlyMachinePort>;
 
-export type FlyMachineServicePortsList = ReadonlyArray<FlyMachinePort>;
+export type FlyMachineServicePortsList = Array<FlyMachinePort>;
 export const FlyMachineServicePortsList = /*@__PURE__*/ S.Array(
   FlyMachinePort,
 ) as any as S.Schema<FlyMachineServicePortsList>;
@@ -1885,7 +1881,7 @@ export const FlyMachineServicePortsList = /*@__PURE__*/ S.Array(
 export interface FlyMachineService {
   autostart?: boolean;
   /** Accepts a string (new format) or a boolean (old format). For backward compatibility with older clients, the API continues to use booleans for "off" and "stop" in responses. * "off" or false - Do not autostop the Machine. * "stop" or true - Automatically stop the Machine. * "suspend" - Automatically suspend the Machine, falling back to a full stop if this is not possible. */
-  autostop?: FlyMachineServiceAutostop;
+  autostop?: FlyMachineServiceAutostop | (string & {});
   /** An optional list of service checks */
   checks?: FlyMachineServiceChecksList;
   concurrency?: FlyMachineServiceConcurrency;
@@ -1913,7 +1909,7 @@ export const FlyMachineService = /*@__PURE__*/ S.suspend(() =>
   identifier: "FlyMachineService",
 }) as any as S.Schema<FlyMachineService>;
 
-export type FlyMachineConfigServicesList = ReadonlyArray<FlyMachineService>;
+export type FlyMachineConfigServicesList = Array<FlyMachineService>;
 export const FlyMachineConfigServicesList = /*@__PURE__*/ S.Array(
   FlyMachineService,
 ) as any as S.Schema<FlyMachineConfigServicesList>;
@@ -1929,7 +1925,7 @@ export const FlyMachineSpot = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FlyMachineSpot" }) as any as S.Schema<FlyMachineSpot>;
 
 /** Standbys enable a machine to be a standby for another. In the event of a hardware failure, the standby machine will be started. */
-export type FlyMachineConfigStandbysList = ReadonlyArray<string>;
+export type FlyMachineConfigStandbysList = Array<string>;
 export const FlyMachineConfigStandbysList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<FlyMachineConfigStandbysList>;
@@ -1949,7 +1945,7 @@ export const FlyStatic = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "FlyStatic" }) as any as S.Schema<FlyStatic>;
 
-export type FlyMachineConfigStaticsList = ReadonlyArray<FlyStatic>;
+export type FlyMachineConfigStaticsList = Array<FlyStatic>;
 export const FlyMachineConfigStaticsList = /*@__PURE__*/ S.Array(
   FlyStatic,
 ) as any as S.Schema<FlyMachineConfigStaticsList>;
@@ -2067,7 +2063,7 @@ export const CheckStatus = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CheckStatus" }) as any as S.Schema<CheckStatus>;
 
-export type MachineChecksList = ReadonlyArray<CheckStatus>;
+export type MachineChecksList = Array<CheckStatus>;
 export const MachineChecksList = /*@__PURE__*/ S.Array(
   CheckStatus,
 ) as any as S.Schema<MachineChecksList>;
@@ -2091,7 +2087,7 @@ export const MachineEvent = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MachineEvent" }) as any as S.Schema<MachineEvent>;
 
-export type MachineEventsList = ReadonlyArray<MachineEvent>;
+export type MachineEventsList = Array<MachineEvent>;
 export const MachineEventsList = /*@__PURE__*/ S.Array(
   MachineEvent,
 ) as any as S.Schema<MachineEventsList>;
@@ -2289,7 +2285,7 @@ export const MachinesDeleteMetadataResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "MachinesDeleteMetadataResponse",
 }) as any as S.Schema<MachinesDeleteMetadataResponse>;
 
-export type MachinesExecRequestCommandList = ReadonlyArray<string>;
+export type MachinesExecRequestCommandList = Array<string>;
 export const MachinesExecRequestCommandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<MachinesExecRequestCommandList>;
@@ -2441,7 +2437,7 @@ export const MachinesListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "MachinesListRequest",
 }) as any as S.Schema<MachinesListRequest>;
 
-export type MachinesListResponseBodyList = ReadonlyArray<Machine>;
+export type MachinesListResponseBodyList = Array<Machine>;
 export const MachinesListResponseBodyList = /*@__PURE__*/ S.Array(
   Machine,
 ) as any as S.Schema<MachinesListResponseBodyList>;
@@ -2477,7 +2473,7 @@ export const MachinesListEventsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "MachinesListEventsRequest",
 }) as any as S.Schema<MachinesListEventsRequest>;
 
-export type MachinesListEventsResponseBodyList = ReadonlyArray<MachineEvent>;
+export type MachinesListEventsResponseBodyList = Array<MachineEvent>;
 export const MachinesListEventsResponseBodyList = /*@__PURE__*/ S.Array(
   MachineEvent,
 ) as any as S.Schema<MachinesListEventsResponseBodyList>;
@@ -2527,7 +2523,7 @@ export const ListenSocket = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ListenSocket" }) as any as S.Schema<ListenSocket>;
 
-export type ProcessStatListenSocketsList = ReadonlyArray<ListenSocket>;
+export type ProcessStatListenSocketsList = Array<ListenSocket>;
 export const ProcessStatListenSocketsList = /*@__PURE__*/ S.Array(
   ListenSocket,
 ) as any as S.Schema<ProcessStatListenSocketsList>;
@@ -2555,7 +2551,7 @@ export const ProcessStat = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ProcessStat" }) as any as S.Schema<ProcessStat>;
 
-export type MachinesListProcessesResponseBodyList = ReadonlyArray<ProcessStat>;
+export type MachinesListProcessesResponseBodyList = Array<ProcessStat>;
 export const MachinesListProcessesResponseBodyList = /*@__PURE__*/ S.Array(
   ProcessStat,
 ) as any as S.Schema<MachinesListProcessesResponseBodyList>;
@@ -2600,8 +2596,7 @@ export const MachineVersion = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MachineVersion" }) as any as S.Schema<MachineVersion>;
 
-export type MachinesListVersionsResponseBodyList =
-  ReadonlyArray<MachineVersion>;
+export type MachinesListVersionsResponseBodyList = Array<MachineVersion>;
 export const MachinesListVersionsResponseBodyList = /*@__PURE__*/ S.Array(
   MachineVersion,
 ) as any as S.Schema<MachinesListVersionsResponseBodyList>;
@@ -2648,7 +2643,7 @@ export const MachinesOrgListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "MachinesOrgListRequest",
 }) as any as S.Schema<MachinesOrgListRequest>;
 
-export type OrgMachinesResponseErrorRegionsList = ReadonlyArray<string>;
+export type OrgMachinesResponseErrorRegionsList = Array<string>;
 export const OrgMachinesResponseErrorRegionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<OrgMachinesResponseErrorRegionsList>;
@@ -2703,7 +2698,7 @@ export const OrgMachine = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "OrgMachine" }) as any as S.Schema<OrgMachine>;
 
-export type OrgMachinesResponseMachinesList = ReadonlyArray<OrgMachine>;
+export type OrgMachinesResponseMachinesList = Array<OrgMachine>;
 export const OrgMachinesResponseMachinesList = /*@__PURE__*/ S.Array(
   OrgMachine,
 ) as any as S.Schema<OrgMachinesResponseMachinesList>;
@@ -3382,7 +3377,7 @@ export const PlacementRegionPlacement = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PlacementRegionPlacement>;
 
 export type MainGetPlacementsResponseRegionsList =
-  ReadonlyArray<PlacementRegionPlacement>;
+  Array<PlacementRegionPlacement>;
 export const MainGetPlacementsResponseRegionsList = /*@__PURE__*/ S.Array(
   PlacementRegionPlacement,
 ) as any as S.Schema<MainGetPlacementsResponseRegionsList>;
@@ -3430,7 +3425,7 @@ export const MainRegionRow = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MainRegionRow" }) as any as S.Schema<MainRegionRow>;
 
-export type MainRegionResponseRegionsList = ReadonlyArray<MainRegionRow>;
+export type MainRegionResponseRegionsList = Array<MainRegionRow>;
 export const MainRegionResponseRegionsList = /*@__PURE__*/ S.Array(
   MainRegionRow,
 ) as any as S.Schema<MainRegionResponseRegionsList>;
@@ -3574,12 +3569,12 @@ export const AppSecret = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AppSecret" }) as any as S.Schema<AppSecret>;
 
-export type SecretkeyDecryptRequestAssociatedDataList = ReadonlyArray<number>;
+export type SecretkeyDecryptRequestAssociatedDataList = Array<number>;
 export const SecretkeyDecryptRequestAssociatedDataList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<SecretkeyDecryptRequestAssociatedDataList>;
 
-export type SecretkeyDecryptRequestCiphertextList = ReadonlyArray<number>;
+export type SecretkeyDecryptRequestCiphertextList = Array<number>;
 export const SecretkeyDecryptRequestCiphertextList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<SecretkeyDecryptRequestCiphertextList>;
@@ -3612,7 +3607,7 @@ export const SecretkeyDecryptRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "SecretkeyDecryptRequest",
 }) as any as S.Schema<SecretkeyDecryptRequest>;
 
-export type DecryptSecretkeyResponsePlaintextList = ReadonlyArray<number>;
+export type DecryptSecretkeyResponsePlaintextList = Array<number>;
 export const DecryptSecretkeyResponsePlaintextList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<DecryptSecretkeyResponsePlaintextList>;
@@ -3663,12 +3658,12 @@ export const DeleteSecretkeyResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteSecretkeyResponse",
 }) as any as S.Schema<DeleteSecretkeyResponse>;
 
-export type SecretkeyEncryptRequestAssociatedDataList = ReadonlyArray<number>;
+export type SecretkeyEncryptRequestAssociatedDataList = Array<number>;
 export const SecretkeyEncryptRequestAssociatedDataList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<SecretkeyEncryptRequestAssociatedDataList>;
 
-export type SecretkeyEncryptRequestPlaintextList = ReadonlyArray<number>;
+export type SecretkeyEncryptRequestPlaintextList = Array<number>;
 export const SecretkeyEncryptRequestPlaintextList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<SecretkeyEncryptRequestPlaintextList>;
@@ -3701,7 +3696,7 @@ export const SecretkeyEncryptRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "SecretkeyEncryptRequest",
 }) as any as S.Schema<SecretkeyEncryptRequest>;
 
-export type EncryptSecretkeyResponseCiphertextList = ReadonlyArray<number>;
+export type EncryptSecretkeyResponseCiphertextList = Array<number>;
 export const EncryptSecretkeyResponseCiphertextList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<EncryptSecretkeyResponseCiphertextList>;
@@ -3717,7 +3712,7 @@ export const EncryptSecretkeyResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "EncryptSecretkeyResponse",
 }) as any as S.Schema<EncryptSecretkeyResponse>;
 
-export type SecretkeyGenerateRequestValueList = ReadonlyArray<number>;
+export type SecretkeyGenerateRequestValueList = Array<number>;
 export const SecretkeyGenerateRequestValueList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<SecretkeyGenerateRequestValueList>;
@@ -3747,7 +3742,7 @@ export const SecretkeyGenerateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "SecretkeyGenerateRequest",
 }) as any as S.Schema<SecretkeyGenerateRequest>;
 
-export type SetSecretkeyResponsePublicKeyList = ReadonlyArray<number>;
+export type SetSecretkeyResponsePublicKeyList = Array<number>;
 export const SetSecretkeyResponsePublicKeyList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<SetSecretkeyResponsePublicKeyList>;
@@ -3800,7 +3795,7 @@ export const SecretkeyGetRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "SecretkeyGetRequest",
 }) as any as S.Schema<SecretkeyGetRequest>;
 
-export type SecretKeyPublicKeyList = ReadonlyArray<number>;
+export type SecretKeyPublicKeyList = Array<number>;
 export const SecretKeyPublicKeyList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<SecretKeyPublicKeyList>;
@@ -3822,7 +3817,7 @@ export const SecretKey = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SecretKey" }) as any as S.Schema<SecretKey>;
 
-export type SecretkeySetRequestValueList = ReadonlyArray<number>;
+export type SecretkeySetRequestValueList = Array<number>;
 export const SecretkeySetRequestValueList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<SecretkeySetRequestValueList>;
@@ -3852,7 +3847,7 @@ export const SecretkeySetRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "SecretkeySetRequest",
 }) as any as S.Schema<SecretkeySetRequest>;
 
-export type SecretkeySignRequestPlaintextList = ReadonlyArray<number>;
+export type SecretkeySignRequestPlaintextList = Array<number>;
 export const SecretkeySignRequestPlaintextList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<SecretkeySignRequestPlaintextList>;
@@ -3883,7 +3878,7 @@ export const SecretkeySignRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "SecretkeySignRequest",
 }) as any as S.Schema<SecretkeySignRequest>;
 
-export type SignSecretkeyResponseSignatureList = ReadonlyArray<number>;
+export type SignSecretkeyResponseSignatureList = Array<number>;
 export const SignSecretkeyResponseSignatureList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<SignSecretkeyResponseSignatureList>;
@@ -3919,7 +3914,7 @@ export const SecretkeysListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "SecretkeysListRequest",
 }) as any as S.Schema<SecretkeysListRequest>;
 
-export type SecretKeysSecretKeysList = ReadonlyArray<SecretKey>;
+export type SecretKeysSecretKeysList = Array<SecretKey>;
 export const SecretKeysSecretKeysList = /*@__PURE__*/ S.Array(
   SecretKey,
 ) as any as S.Schema<SecretKeysSecretKeysList>;
@@ -3933,12 +3928,12 @@ export const SecretKeys = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SecretKeys" }) as any as S.Schema<SecretKeys>;
 
-export type SecretkeyVerifyRequestPlaintextList = ReadonlyArray<number>;
+export type SecretkeyVerifyRequestPlaintextList = Array<number>;
 export const SecretkeyVerifyRequestPlaintextList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<SecretkeyVerifyRequestPlaintextList>;
 
-export type SecretkeyVerifyRequestSignatureList = ReadonlyArray<number>;
+export type SecretkeyVerifyRequestSignatureList = Array<number>;
 export const SecretkeyVerifyRequestSignatureList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<SecretkeyVerifyRequestSignatureList>;
@@ -3998,7 +3993,7 @@ export const SecretsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "SecretsListRequest",
 }) as any as S.Schema<SecretsListRequest>;
 
-export type AppSecretsSecretsList = ReadonlyArray<AppSecret>;
+export type AppSecretsSecretsList = Array<AppSecret>;
 export const AppSecretsSecretsList = /*@__PURE__*/ S.Array(
   AppSecret,
 ) as any as S.Schema<AppSecretsSecretsList>;
@@ -4036,7 +4031,7 @@ export const SecretsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "SecretsUpdateRequest",
 }) as any as S.Schema<SecretsUpdateRequest>;
 
-export type AppSecretsUpdateRespSecretsList = ReadonlyArray<AppSecret>;
+export type AppSecretsUpdateRespSecretsList = Array<AppSecret>;
 export const AppSecretsUpdateRespSecretsList = /*@__PURE__*/ S.Array(
   AppSecret,
 ) as any as S.Schema<AppSecretsUpdateRespSecretsList>;
@@ -4068,7 +4063,7 @@ export const TokensAuthenticateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "TokensAuthenticateRequest",
 }) as any as S.Schema<TokensAuthenticateRequest>;
 
-export type MacaroonCaveatSetCaveatsList = ReadonlyArray<unknown>;
+export type MacaroonCaveatSetCaveatsList = Array<unknown>;
 export const MacaroonCaveatSetCaveatsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<MacaroonCaveatSetCaveatsList>;
@@ -4084,12 +4079,12 @@ export const MacaroonCaveatSet = /*@__PURE__*/ S.suspend(() =>
   identifier: "MacaroonCaveatSet",
 }) as any as S.Schema<MacaroonCaveatSet>;
 
-export type MacaroonNonceKidList = ReadonlyArray<number>;
+export type MacaroonNonceKidList = Array<number>;
 export const MacaroonNonceKidList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<MacaroonNonceKidList>;
 
-export type MacaroonNonceRndList = ReadonlyArray<number>;
+export type MacaroonNonceRndList = Array<number>;
 export const MacaroonNonceRndList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<MacaroonNonceRndList>;
@@ -4107,7 +4102,7 @@ export const MacaroonNonce = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MacaroonNonce" }) as any as S.Schema<MacaroonNonce>;
 
-export type RootVerifiedTokenPermissionTokenList = ReadonlyArray<number>;
+export type RootVerifiedTokenPermissionTokenList = Array<number>;
 export const RootVerifiedTokenPermissionTokenList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<RootVerifiedTokenPermissionTokenList>;
@@ -4129,8 +4124,7 @@ export const RootVerifiedToken = /*@__PURE__*/ S.suspend(() =>
   identifier: "RootVerifiedToken",
 }) as any as S.Schema<RootVerifiedToken>;
 
-export type TokensAuthenticateResponseBodyList =
-  ReadonlyArray<RootVerifiedToken>;
+export type TokensAuthenticateResponseBodyList = Array<RootVerifiedToken>;
 export const TokensAuthenticateResponseBodyList = /*@__PURE__*/ S.Array(
   RootVerifiedToken,
 ) as any as S.Schema<TokensAuthenticateResponseBodyList>;
@@ -4146,7 +4140,7 @@ export type RessetAction = 1 | 2 | 4 | 8 | 16 | 31 | 0;
 export const RessetAction = /*@__PURE__*/ S.Number;
 
 /** Command is the command being executed on a machine. If this is specified, the Machine must be set. */
-export type MainTokenAccessCommandList = ReadonlyArray<string>;
+export type MainTokenAccessCommandList = Array<string>;
 export const MainTokenAccessCommandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<MainTokenAccessCommandList>;
@@ -4209,7 +4203,7 @@ export const TokensAuthorizeRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "TokensAuthorizeRequest",
 }) as any as S.Schema<TokensAuthorizeRequest>;
 
-export type FlyioAccessCommandList = ReadonlyArray<string>;
+export type FlyioAccessCommandList = Array<string>;
 export const FlyioAccessCommandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<FlyioAccessCommandList>;
@@ -4491,7 +4485,7 @@ export const VolumesListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "VolumesListRequest",
 }) as any as S.Schema<VolumesListRequest>;
 
-export type VolumesListResponseBodyList = ReadonlyArray<Volume>;
+export type VolumesListResponseBodyList = Array<Volume>;
 export const VolumesListResponseBodyList = /*@__PURE__*/ S.Array(
   Volume,
 ) as any as S.Schema<VolumesListResponseBodyList>;
@@ -4545,8 +4539,7 @@ export const VolumeSnapshot = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "VolumeSnapshot" }) as any as S.Schema<VolumeSnapshot>;
 
-export type VolumesListSnapshotsResponseBodyList =
-  ReadonlyArray<VolumeSnapshot>;
+export type VolumesListSnapshotsResponseBodyList = Array<VolumeSnapshot>;
 export const VolumesListSnapshotsResponseBodyList = /*@__PURE__*/ S.Array(
   VolumeSnapshot,
 ) as any as S.Schema<VolumesListSnapshotsResponseBodyList>;
@@ -4652,7 +4645,7 @@ export const OrgVolume = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "OrgVolume" }) as any as S.Schema<OrgVolume>;
 
-export type OrgVolumesResponseVolumesList = ReadonlyArray<OrgVolume>;
+export type OrgVolumesResponseVolumesList = Array<OrgVolume>;
 export const OrgVolumesResponseVolumesList = /*@__PURE__*/ S.Array(
   OrgVolume,
 ) as any as S.Schema<OrgVolumesResponseVolumesList>;

@@ -172,7 +172,7 @@ export type EventType =
   | "NO_ANSWER";
 export const EventType = /*@__PURE__*/ S.String;
 
-export type EventTypes = EventType[];
+export type EventTypes = (EventType | (string & {}))[];
 export const EventTypes = /*@__PURE__*/ S.Array(EventType);
 export interface SnsDestination {
   TopicArn?: string;

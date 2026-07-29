@@ -28,7 +28,7 @@ export const ClusterSkuName = /*@__PURE__*/ S.String;
 /** The SKU of the cluster. This determines the size/capacity of the cluster. Required on PUT (CreateOrUpdate) requests. */
 export interface ClusterSku {
   /** Specifies the SKU name of the cluster. Required on PUT (CreateOrUpdate) requests. */
-  name?: ClusterSkuName;
+  name?: ClusterSkuName | (string & {});
   /** Denotes the number of streaming units the cluster can support. Valid values for this property are multiples of 36 with a minimum value of 36 and maximum value of 216. Required on PUT (CreateOrUpdate) requests. */
   capacity?: number;
 }
@@ -313,7 +313,7 @@ export const Cluster = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Cluster" }) as any as S.Schema<Cluster>;
 
 /** A list of clusters. */
-export type ClusterListResultValueList = ReadonlyArray<Cluster>;
+export type ClusterListResultValueList = Array<Cluster>;
 export const ClusterListResultValueList = /*@__PURE__*/ S.Array(
   Cluster,
 ) as any as S.Schema<ClusterListResultValueList>;
@@ -409,7 +409,7 @@ export const ClusterJob = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ClusterJob" }) as any as S.Schema<ClusterJob>;
 
 /** A list of streaming jobs. */
-export type ClusterJobListResultValueList = ReadonlyArray<ClusterJob>;
+export type ClusterJobListResultValueList = Array<ClusterJob>;
 export const ClusterJobListResultValueList = /*@__PURE__*/ S.Array(
   ClusterJob,
 ) as any as S.Schema<ClusterJobListResultValueList>;
@@ -530,7 +530,7 @@ export const FunctionInput = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "FunctionInput" }) as any as S.Schema<FunctionInput>;
 
-export type FunctionConfigurationInputsList = ReadonlyArray<FunctionInput>;
+export type FunctionConfigurationInputsList = Array<FunctionInput>;
 export const FunctionConfigurationInputsList = /*@__PURE__*/ S.Array(
   FunctionInput,
 ) as any as S.Schema<FunctionConfigurationInputsList>;
@@ -795,7 +795,7 @@ export const Function = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Function" }) as any as S.Schema<Function>;
 
 /** A list of functions under a streaming job. Populated by a 'List' operation. */
-export type FunctionListResultValueList = ReadonlyArray<Function>;
+export type FunctionListResultValueList = Array<Function>;
 export const FunctionListResultValueList = /*@__PURE__*/ S.Array(
   Function,
 ) as any as S.Schema<FunctionListResultValueList>;
@@ -995,7 +995,7 @@ export const EventSerializationType = /*@__PURE__*/ S.String;
 /** Describes how data from an input is serialized or how data is serialized when written to an output. */
 export interface Serialization {
   /** Indicates the type of serialization that the input or output uses. Required on PUT (CreateOrReplace) requests. */
-  type: EventSerializationType;
+  type: EventSerializationType | (string & {});
 }
 export const Serialization = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1010,7 +1010,7 @@ export const CompressionType = /*@__PURE__*/ S.String;
 /** Describes how input data is compressed */
 export interface Compression {
   /** Indicates the type of compression that the input uses. Required on PUT (CreateOrReplace) requests. */
-  type: CompressionType;
+  type: CompressionType | (string & {});
 }
 export const Compression = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1094,7 +1094,7 @@ export const DiagnosticCondition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DiagnosticCondition>;
 
 /** A collection of zero or more conditions applicable to the resource, or to the job overall, that warrant customer attention. */
-export type DiagnosticsConditionsList = ReadonlyArray<DiagnosticCondition>;
+export type DiagnosticsConditionsList = Array<DiagnosticCondition>;
 export const DiagnosticsConditionsList = /*@__PURE__*/ S.Array(
   DiagnosticCondition,
 ) as any as S.Schema<DiagnosticsConditionsList>;
@@ -1292,7 +1292,7 @@ export const Input = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Input" }) as any as S.Schema<Input>;
 
 /** A list of inputs under a streaming job. Populated by a 'List' operation. */
-export type InputListResultValueList = ReadonlyArray<Input>;
+export type InputListResultValueList = Array<Input>;
 export const InputListResultValueList = /*@__PURE__*/ S.Array(
   Input,
 ) as any as S.Schema<InputListResultValueList>;
@@ -1472,7 +1472,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of Stream Analytics operations supported by the Microsoft.StreamAnalytics resource provider. */
-export type OperationListResultValueList = ReadonlyArray<Operation>;
+export type OperationListResultValueList = Array<Operation>;
 export const OperationListResultValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationListResultValueList>;
@@ -1601,7 +1601,7 @@ export const OutputPropertiesSerialization = /*@__PURE__*/ S.suspend(() =>
 
 /** A collection of zero or more conditions applicable to the resource, or to the job overall, that warrant customer attention. */
 export type OutputPropertiesDiagnosticsConditionsList =
-  ReadonlyArray<DiagnosticCondition>;
+  Array<DiagnosticCondition>;
 export const OutputPropertiesDiagnosticsConditionsList = /*@__PURE__*/ S.Array(
   DiagnosticCondition,
 ) as any as S.Schema<OutputPropertiesDiagnosticsConditionsList>;
@@ -1801,7 +1801,7 @@ export const Output = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Output" }) as any as S.Schema<Output>;
 
 /** A list of outputs under a streaming job. Populated by a 'List' operation. */
-export type OutputListResultValueList = ReadonlyArray<Output>;
+export type OutputListResultValueList = Array<Output>;
 export const OutputListResultValueList = /*@__PURE__*/ S.Array(
   Output,
 ) as any as S.Schema<OutputListResultValueList>;
@@ -1928,7 +1928,7 @@ export const OutputsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The ID(s) of the group(s) obtained from the remote resource that this private endpoint should connect to. Required on PUT (CreateOrUpdate) requests. */
 export type PrivateLinkServiceConnectionPropertiesInputGroupIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PrivateLinkServiceConnectionPropertiesInputGroupIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1981,7 +1981,7 @@ export const PrivateLinkServiceConnectionInput = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of connections to the remote resource. Immutable after it is set. */
 export type PrivateEndpointPropertiesInputManualPrivateLinkServiceConnectionsList =
-  ReadonlyArray<PrivateLinkServiceConnectionInput>;
+  Array<PrivateLinkServiceConnectionInput>;
 export const PrivateEndpointPropertiesInputManualPrivateLinkServiceConnectionsList =
   /*@__PURE__*/ S.Array(
     PrivateLinkServiceConnectionInput,
@@ -2035,8 +2035,7 @@ export const PrivateEndpointsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PrivateEndpointsCreateOrUpdateRequest>;
 
 /** The ID(s) of the group(s) obtained from the remote resource that this private endpoint should connect to. Required on PUT (CreateOrUpdate) requests. */
-export type PrivateLinkServiceConnectionPropertiesGroupIdsList =
-  ReadonlyArray<string>;
+export type PrivateLinkServiceConnectionPropertiesGroupIdsList = Array<string>;
 export const PrivateLinkServiceConnectionPropertiesGroupIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2099,7 +2098,7 @@ export const PrivateLinkServiceConnection = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of connections to the remote resource. Immutable after it is set. */
 export type PrivateEndpointPropertiesManualPrivateLinkServiceConnectionsList =
-  ReadonlyArray<PrivateLinkServiceConnection>;
+  Array<PrivateLinkServiceConnection>;
 export const PrivateEndpointPropertiesManualPrivateLinkServiceConnectionsList =
   /*@__PURE__*/ S.Array(
     PrivateLinkServiceConnection,
@@ -2287,7 +2286,7 @@ export const PrivateEndpoint = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateEndpoint>;
 
 /** A list of private endpoints. */
-export type PrivateEndpointListResultValueList = ReadonlyArray<PrivateEndpoint>;
+export type PrivateEndpointListResultValueList = Array<PrivateEndpoint>;
 export const PrivateEndpointListResultValueList = /*@__PURE__*/ S.Array(
   PrivateEndpoint,
 ) as any as S.Schema<PrivateEndpointListResultValueList>;
@@ -2325,7 +2324,7 @@ export const SkuName = /*@__PURE__*/ S.String;
 /** The properties that are associated with a SKU. */
 export interface Sku {
   /** The name of the SKU. Required on PUT (CreateOrReplace) requests. */
-  name?: SkuName;
+  name?: SkuName | (string & {});
 }
 export const Sku = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2375,14 +2374,14 @@ export const StreamingJobPropertiesInputInputsItem = /*@__PURE__*/ S.suspend(
 
 /** A list of one or more inputs to the streaming job. The name property for each input is required when specifying this property in a PUT request. This property cannot be modify via a PATCH operation. You must use the PATCH API available for the individual input. */
 export type StreamingJobPropertiesInputInputsList =
-  ReadonlyArray<StreamingJobPropertiesInputInputsItem>;
+  Array<StreamingJobPropertiesInputInputsItem>;
 export const StreamingJobPropertiesInputInputsList = /*@__PURE__*/ S.Array(
   StreamingJobPropertiesInputInputsItem,
 ) as any as S.Schema<StreamingJobPropertiesInputInputsList>;
 
 /** Specifies the valid streaming units a streaming job can scale to. */
 export type TransformationPropertiesInputValidStreamingUnitsList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const TransformationPropertiesInputValidStreamingUnitsList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -2445,7 +2444,7 @@ export const StreamingJobPropertiesInputOutputsItem = /*@__PURE__*/ S.suspend(
 
 /** A list of one or more outputs for the streaming job. The name property for each output is required when specifying this property in a PUT request. This property cannot be modify via a PATCH operation. You must use the PATCH API available for the individual output. */
 export type StreamingJobPropertiesInputOutputsList =
-  ReadonlyArray<StreamingJobPropertiesInputOutputsItem>;
+  Array<StreamingJobPropertiesInputOutputsItem>;
 export const StreamingJobPropertiesInputOutputsList = /*@__PURE__*/ S.Array(
   StreamingJobPropertiesInputOutputsItem,
 ) as any as S.Schema<StreamingJobPropertiesInputOutputsList>;
@@ -2469,7 +2468,7 @@ export const StreamingJobPropertiesInputFunctionsItem = /*@__PURE__*/ S.suspend(
 
 /** A list of one or more functions for the streaming job. The name property for each function is required when specifying this property in a PUT request. This property cannot be modify via a PATCH operation. You must use the PATCH API available for the individual transformation. */
 export type StreamingJobPropertiesInputFunctionsList =
-  ReadonlyArray<StreamingJobPropertiesInputFunctionsItem>;
+  Array<StreamingJobPropertiesInputFunctionsItem>;
 export const StreamingJobPropertiesInputFunctionsList = /*@__PURE__*/ S.Array(
   StreamingJobPropertiesInputFunctionsItem,
 ) as any as S.Schema<StreamingJobPropertiesInputFunctionsList>;
@@ -2488,7 +2487,7 @@ export interface JobStorageAccount {
   /** The account key for the Azure Storage account. Required on PUT (CreateOrReplace) requests. */
   accountKey?: string;
   /** Authentication Mode. Valid modes are `ConnectionString`, `Msi` and 'UserToken'. */
-  authenticationMode?: JobStorageAccountAuthenticationMode;
+  authenticationMode?: JobStorageAccountAuthenticationMode | (string & {});
 }
 export const JobStorageAccount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2669,14 +2668,13 @@ export const StreamingJobPropertiesInputsItem = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of one or more inputs to the streaming job. The name property for each input is required when specifying this property in a PUT request. This property cannot be modify via a PATCH operation. You must use the PATCH API available for the individual input. */
 export type StreamingJobPropertiesInputsList =
-  ReadonlyArray<StreamingJobPropertiesInputsItem>;
+  Array<StreamingJobPropertiesInputsItem>;
 export const StreamingJobPropertiesInputsList = /*@__PURE__*/ S.Array(
   StreamingJobPropertiesInputsItem,
 ) as any as S.Schema<StreamingJobPropertiesInputsList>;
 
 /** Specifies the valid streaming units a streaming job can scale to. */
-export type TransformationPropertiesValidStreamingUnitsList =
-  ReadonlyArray<number>;
+export type TransformationPropertiesValidStreamingUnitsList = Array<number>;
 export const TransformationPropertiesValidStreamingUnitsList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -2753,7 +2751,7 @@ export const StreamingJobPropertiesOutputsItem = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of one or more outputs for the streaming job. The name property for each output is required when specifying this property in a PUT request. This property cannot be modify via a PATCH operation. You must use the PATCH API available for the individual output. */
 export type StreamingJobPropertiesOutputsList =
-  ReadonlyArray<StreamingJobPropertiesOutputsItem>;
+  Array<StreamingJobPropertiesOutputsItem>;
 export const StreamingJobPropertiesOutputsList = /*@__PURE__*/ S.Array(
   StreamingJobPropertiesOutputsItem,
 ) as any as S.Schema<StreamingJobPropertiesOutputsList>;
@@ -2782,7 +2780,7 @@ export const StreamingJobPropertiesFunctionsItem = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of one or more functions for the streaming job. The name property for each function is required when specifying this property in a PUT request. This property cannot be modify via a PATCH operation. You must use the PATCH API available for the individual transformation. */
 export type StreamingJobPropertiesFunctionsList =
-  ReadonlyArray<StreamingJobPropertiesFunctionsItem>;
+  Array<StreamingJobPropertiesFunctionsItem>;
 export const StreamingJobPropertiesFunctionsList = /*@__PURE__*/ S.Array(
   StreamingJobPropertiesFunctionsItem,
 ) as any as S.Schema<StreamingJobPropertiesFunctionsList>;
@@ -3081,7 +3079,7 @@ export const StreamingJob = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StreamingJob" }) as any as S.Schema<StreamingJob>;
 
 /** A list of streaming jobs. Populated by a 'List' operation. */
-export type StreamingJobListResultValueList = ReadonlyArray<StreamingJob>;
+export type StreamingJobListResultValueList = Array<StreamingJob>;
 export const StreamingJobListResultValueList = /*@__PURE__*/ S.Array(
   StreamingJob,
 ) as any as S.Schema<StreamingJobListResultValueList>;
@@ -3379,8 +3377,7 @@ export const SubscriptionQuota = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SubscriptionQuota>;
 
 /** List of quotas for the subscription in a particular region. */
-export type SubscriptionQuotasListResultValueList =
-  ReadonlyArray<SubscriptionQuota>;
+export type SubscriptionQuotasListResultValueList = Array<SubscriptionQuota>;
 export const SubscriptionQuotasListResultValueList = /*@__PURE__*/ S.Array(
   SubscriptionQuota,
 ) as any as S.Schema<SubscriptionQuotasListResultValueList>;

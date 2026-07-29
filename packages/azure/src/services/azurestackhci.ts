@@ -171,8 +171,7 @@ export const PerNodeState = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PerNodeState" }) as any as S.Schema<PerNodeState>;
 
 /** State of Arc agent in each of the nodes. */
-export type ArcSettingPropertiesPerNodeDetailsList =
-  ReadonlyArray<PerNodeState>;
+export type ArcSettingPropertiesPerNodeDetailsList = Array<PerNodeState>;
 export const ArcSettingPropertiesPerNodeDetailsList = /*@__PURE__*/ S.Array(
   PerNodeState,
 ) as any as S.Schema<ArcSettingPropertiesPerNodeDetailsList>;
@@ -184,7 +183,7 @@ export const ServiceName = /*@__PURE__*/ S.String;
 /** Service configuration details */
 export interface ServiceConfiguration {
   /** Specifies the name of the service associated with the update or operation. This helps identify which system component or tool is involved. */
-  serviceName: ServiceName;
+  serviceName: ServiceName | (string & {});
   /** The port on which service is enabled. */
   port: number;
 }
@@ -199,7 +198,7 @@ export const ServiceConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** Service configurations associated with the connectivity resource. They are only processed by the server if 'enabled' property is set to 'true'. */
 export type ArcConnectivityPropertiesServiceConfigurationsList =
-  ReadonlyArray<ServiceConfiguration>;
+  Array<ServiceConfiguration>;
 export const ArcConnectivityPropertiesServiceConfigurationsList =
   /*@__PURE__*/ S.Array(
     ServiceConfiguration,
@@ -241,7 +240,7 @@ export const DefaultExtensionDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** Properties for each of the default extensions category */
 export type ArcSettingPropertiesDefaultExtensionsList =
-  ReadonlyArray<DefaultExtensionDetails>;
+  Array<DefaultExtensionDetails>;
 export const ArcSettingPropertiesDefaultExtensionsList = /*@__PURE__*/ S.Array(
   DefaultExtensionDetails,
 ) as any as S.Schema<ArcSettingPropertiesDefaultExtensionsList>;
@@ -668,7 +667,7 @@ export const ArcSetting = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ArcSetting" }) as any as S.Schema<ArcSetting>;
 
 /** The ArcSetting items on this page */
-export type ArcSettingListValueList = ReadonlyArray<ArcSetting>;
+export type ArcSettingListValueList = Array<ArcSetting>;
 export const ArcSettingListValueList = /*@__PURE__*/ S.Array(
   ArcSetting,
 ) as any as S.Schema<ArcSettingListValueList>;
@@ -688,7 +687,7 @@ export const ArcSettingList = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ArcSettingList" }) as any as S.Schema<ArcSettingList>;
 
 export type ReconcileArcSettingsRequestPropertiesClusterNodesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ReconcileArcSettingsRequestPropertiesClusterNodesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1022,7 +1021,7 @@ export const LogCollectionSession = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LogCollectionSession>;
 
 export type LogCollectionPropertiesLogCollectionSessionDetailsList =
-  ReadonlyArray<LogCollectionSession>;
+  Array<LogCollectionSession>;
 export const LogCollectionPropertiesLogCollectionSessionDetailsList =
   /*@__PURE__*/ S.Array(
     LogCollectionSession,
@@ -1087,7 +1086,7 @@ export const RemoteSupportNodeSettings = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RemoteSupportNodeSettings>;
 
 export type RemoteSupportPropertiesRemoteSupportNodeSettingsList =
-  ReadonlyArray<RemoteSupportNodeSettings>;
+  Array<RemoteSupportNodeSettings>;
 export const RemoteSupportPropertiesRemoteSupportNodeSettingsList =
   /*@__PURE__*/ S.Array(
     RemoteSupportNodeSettings,
@@ -1122,7 +1121,7 @@ export const PerNodeRemoteSupportSession = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PerNodeRemoteSupportSession>;
 
 export type RemoteSupportPropertiesRemoteSupportSessionDetailsList =
-  ReadonlyArray<PerNodeRemoteSupportSession>;
+  Array<PerNodeRemoteSupportSession>;
 export const RemoteSupportPropertiesRemoteSupportSessionDetailsList =
   /*@__PURE__*/ S.Array(
     PerNodeRemoteSupportSession,
@@ -1178,9 +1177,9 @@ export const DiagnosticLevel = /*@__PURE__*/ S.String;
 /** Desired properties of the cluster. */
 export interface ClusterDesiredProperties {
   /** Desired state of Windows Server Subscription. */
-  windowsServerSubscription?: WindowsServerSubscription;
+  windowsServerSubscription?: WindowsServerSubscription | (string & {});
   /** Desired level of diagnostic data emitted by the cluster. */
-  diagnosticLevel?: DiagnosticLevel;
+  diagnosticLevel?: DiagnosticLevel | (string & {});
 }
 export const ClusterDesiredProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1253,7 +1252,7 @@ export const ClusterNode = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ClusterNode" }) as any as S.Schema<ClusterNode>;
 
 /** List of nodes reported by the cluster. */
-export type ClusterReportedPropertiesNodesList = ReadonlyArray<ClusterNode>;
+export type ClusterReportedPropertiesNodesList = Array<ClusterNode>;
 export const ClusterReportedPropertiesNodesList = /*@__PURE__*/ S.Array(
   ClusterNode,
 ) as any as S.Schema<ClusterReportedPropertiesNodesList>;
@@ -1263,8 +1262,7 @@ export type ImdsAttestation = "Disabled" | "Enabled";
 export const ImdsAttestation = /*@__PURE__*/ S.String;
 
 /** Capabilities supported by the cluster. */
-export type ClusterReportedPropertiesSupportedCapabilitiesList =
-  ReadonlyArray<string>;
+export type ClusterReportedPropertiesSupportedCapabilitiesList = Array<string>;
 export const ClusterReportedPropertiesSupportedCapabilitiesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1348,7 +1346,7 @@ export const IsolatedVmAttestationConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IsolatedVmAttestationConfiguration>;
 
 /** Capabilities enabled under this billing model. */
-export type NextBillingModelCapabilitiesEnabledList = ReadonlyArray<string>;
+export type NextBillingModelCapabilitiesEnabledList = Array<string>;
 export const NextBillingModelCapabilitiesEnabledList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<NextBillingModelCapabilitiesEnabledList>;
@@ -1392,7 +1390,7 @@ export const SecretsType = /*@__PURE__*/ S.String;
 /** Secrets location details */
 export interface SecretsLocationDetails {
   /** Type of secrets to store */
-  secretsType: SecretsType;
+  secretsType: SecretsType | (string & {});
   /** secrets location */
   secretsLocation: string;
 }
@@ -1407,7 +1405,7 @@ export const SecretsLocationDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** List of secret locations. */
 export type ClusterPropertiesSecretsLocationsList =
-  ReadonlyArray<SecretsLocationDetails>;
+  Array<SecretsLocationDetails>;
 export const ClusterPropertiesSecretsLocationsList = /*@__PURE__*/ S.Array(
   SecretsLocationDetails,
 ) as any as S.Schema<ClusterPropertiesSecretsLocationsList>;
@@ -1417,7 +1415,7 @@ export type ClusterPattern = "Standard" | "RackAware";
 export const ClusterPattern = /*@__PURE__*/ S.String;
 
 /** Nodes belonging to a particular zone */
-export type LocalAvailabilityZonesNodesList = ReadonlyArray<string>;
+export type LocalAvailabilityZonesNodesList = Array<string>;
 export const LocalAvailabilityZonesNodesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LocalAvailabilityZonesNodesList>;
@@ -1440,7 +1438,7 @@ export const LocalAvailabilityZones = /*@__PURE__*/ S.suspend(() =>
 
 /** Local Availability Zone information for HCI cluster */
 export type ClusterPropertiesLocalAvailabilityZonesList =
-  ReadonlyArray<LocalAvailabilityZones>;
+  Array<LocalAvailabilityZones>;
 export const ClusterPropertiesLocalAvailabilityZonesList =
   /*@__PURE__*/ S.Array(
     LocalAvailabilityZones,
@@ -1691,14 +1689,14 @@ export const RemoteSupportPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 
 /** List of secret locations. */
 export type ClusterPropertiesInputSecretsLocationsList =
-  ReadonlyArray<SecretsLocationDetails>;
+  Array<SecretsLocationDetails>;
 export const ClusterPropertiesInputSecretsLocationsList = /*@__PURE__*/ S.Array(
   SecretsLocationDetails,
 ) as any as S.Schema<ClusterPropertiesInputSecretsLocationsList>;
 
 /** Local Availability Zone information for HCI cluster */
 export type ClusterPropertiesInputLocalAvailabilityZonesList =
-  ReadonlyArray<LocalAvailabilityZones>;
+  Array<LocalAvailabilityZones>;
 export const ClusterPropertiesInputLocalAvailabilityZonesList =
   /*@__PURE__*/ S.Array(
     LocalAvailabilityZones,
@@ -2310,7 +2308,7 @@ export const Cluster = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Cluster" }) as any as S.Schema<Cluster>;
 
 /** The Cluster items on this page */
-export type ClusterListValueList = ReadonlyArray<Cluster>;
+export type ClusterListValueList = Array<Cluster>;
 export const ClusterListValueList = /*@__PURE__*/ S.Array(
   Cluster,
 ) as any as S.Schema<ClusterListValueList>;
@@ -2644,7 +2642,7 @@ export const ClustersUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** List of secret locations */
 export type ClustersUpdateSecretsLocationsRequestPropertiesList =
-  ReadonlyArray<SecretsLocationDetails>;
+  Array<SecretsLocationDetails>;
 export const ClustersUpdateSecretsLocationsRequestPropertiesList =
   /*@__PURE__*/ S.Array(
     SecretsLocationDetails,
@@ -2761,7 +2759,7 @@ export const ClustersUpdateSecretsLocationsResponse = /*@__PURE__*/ S.suspend(
   identifier: "ClustersUpdateSecretsLocationsResponse",
 }) as any as S.Schema<ClustersUpdateSecretsLocationsResponse>;
 
-export type RawCertificateDataCertificatesList = ReadonlyArray<string>;
+export type RawCertificateDataCertificatesList = Array<string>;
 export const RawCertificateDataCertificatesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RawCertificateDataCertificatesList>;
@@ -2813,7 +2811,7 @@ export const ClustersUploadCertificateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Azure resource ids of Arc machines to be part of cluster. */
 export type DeploymentSettingsPropertiesInputArcNodeResourceIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const DeploymentSettingsPropertiesInputArcNodeResourceIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2930,9 +2928,9 @@ export const OverprovisioningRatio = /*@__PURE__*/ S.String;
 /** The S2D (Storage Spaces Direct) configuration for AzureStackHCI Cluster storage. */
 export interface StorageS2dConfig {
   /** Volume provisioning type. Allowed values are 'Fixed', 'ThinProvisioned'. */
-  volumeType?: VolumeType;
+  volumeType?: VolumeType | (string & {});
   /** Overprovisioning ratio for S2D storage. Allowed values are '0', '1', '2'. */
-  overprovisioningRatio?: OverprovisioningRatio;
+  overprovisioningRatio?: OverprovisioningRatio | (string & {});
 }
 export const StorageS2dConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2964,7 +2962,7 @@ export interface Storage {
   /** By default, this mode is set to Express and your storage is configured as per best practices based on the number of nodes in the cluster. Allowed values are 'Express','InfraOnly', 'KeepStorage' */
   configurationMode?: string;
   /** Storage type for the HCI Cluster. Allowed values are 'S2D', 'SAN', 'SANS2D'. */
-  storageType?: StorageType;
+  storageType?: StorageType | (string & {});
   /** S2D (Storage Spaces Direct) configuration. Applicable when StorageType is 'S2D' or 'SANS2D'. */
   s2d?: StorageS2dConfig;
   /** SAN (Storage Area Network) configuration. Applicable when StorageType is 'SAN' or 'SANS2D'. */
@@ -2994,7 +2992,7 @@ export const IpPools = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IpPools" }) as any as S.Schema<IpPools>;
 
 /** Range of IP addresses from which addresses are allocated for nodes within a subnet. */
-export type InfrastructureNetworkIpPoolsList = ReadonlyArray<IpPools>;
+export type InfrastructureNetworkIpPoolsList = Array<IpPools>;
 export const InfrastructureNetworkIpPoolsList = /*@__PURE__*/ S.Array(
   IpPools,
 ) as any as S.Schema<InfrastructureNetworkIpPoolsList>;
@@ -3006,7 +3004,7 @@ export type InfrastructureNetworkDnsServerConfig =
 export const InfrastructureNetworkDnsServerConfig = /*@__PURE__*/ S.String;
 
 /** Forwarder details of the DNS Zone to be configured. */
-export type DnsZonesDnsForwarderList = ReadonlyArray<string>;
+export type DnsZonesDnsForwarderList = Array<string>;
 export const DnsZonesDnsForwarderList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DnsZonesDnsForwarderList>;
@@ -3026,13 +3024,13 @@ export const DnsZones = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DnsZones" }) as any as S.Schema<DnsZones>;
 
 /** Details of the DNS Zones to be configured. */
-export type InfrastructureNetworkDnsZonesList = ReadonlyArray<DnsZones>;
+export type InfrastructureNetworkDnsZonesList = Array<DnsZones>;
 export const InfrastructureNetworkDnsZonesList = /*@__PURE__*/ S.Array(
   DnsZones,
 ) as any as S.Schema<InfrastructureNetworkDnsZonesList>;
 
 /** IPv4 address of the DNS servers in your environment. */
-export type InfrastructureNetworkDnsServersList = ReadonlyArray<string>;
+export type InfrastructureNetworkDnsServersList = Array<string>;
 export const InfrastructureNetworkDnsServersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<InfrastructureNetworkDnsServersList>;
@@ -3046,7 +3044,7 @@ export interface InfrastructureNetwork {
   /** Range of IP addresses from which addresses are allocated for nodes within a subnet. */
   ipPools?: InfrastructureNetworkIpPoolsList;
   /** Specifies how DNS servers are configured for the infrastructure network. Allowed values are 'UseDnsServer' to use the provided DNS servers, and 'UseForwarder' to use DNS forwarders. */
-  dnsServerConfig?: InfrastructureNetworkDnsServerConfig;
+  dnsServerConfig?: InfrastructureNetworkDnsServerConfig | (string & {});
   /** Details of the DNS Zones to be configured. */
   dnsZones?: InfrastructureNetworkDnsZonesList;
   /** IPv4 address of the DNS servers in your environment. */
@@ -3070,7 +3068,7 @@ export const InfrastructureNetwork = /*@__PURE__*/ S.suspend(() =>
 
 /** InfrastructureNetwork config to deploy AzureStackHCI Cluster. */
 export type DeploymentDataInputInfrastructureNetworkList =
-  ReadonlyArray<InfrastructureNetwork>;
+  Array<InfrastructureNetwork>;
 export const DeploymentDataInputInfrastructureNetworkList =
   /*@__PURE__*/ S.Array(
     InfrastructureNetwork,
@@ -3091,19 +3089,19 @@ export const PhysicalNodes = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PhysicalNodes" }) as any as S.Schema<PhysicalNodes>;
 
 /** list of physical nodes config to deploy AzureStackHCI Cluster. */
-export type DeploymentDataInputPhysicalNodesList = ReadonlyArray<PhysicalNodes>;
+export type DeploymentDataInputPhysicalNodesList = Array<PhysicalNodes>;
 export const DeploymentDataInputPhysicalNodesList = /*@__PURE__*/ S.Array(
   PhysicalNodes,
 ) as any as S.Schema<DeploymentDataInputPhysicalNodesList>;
 
 /** List of network traffic types. Only allowed values are 'Compute', 'Storage', 'Management'. */
-export type DeploymentSettingIntentsTrafficTypeList = ReadonlyArray<string>;
+export type DeploymentSettingIntentsTrafficTypeList = Array<string>;
 export const DeploymentSettingIntentsTrafficTypeList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DeploymentSettingIntentsTrafficTypeList>;
 
 /** Array of network interfaces used for the network intent. */
-export type DeploymentSettingIntentsAdapterList = ReadonlyArray<string>;
+export type DeploymentSettingIntentsAdapterList = Array<string>;
 export const DeploymentSettingIntentsAdapterList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DeploymentSettingIntentsAdapterList>;
@@ -3207,7 +3205,7 @@ export const DeploymentSettingIntents = /*@__PURE__*/ S.suspend(() =>
 
 /** The network intents assigned to the network reference pattern used for the deployment. Each intent will define its own name, traffic type, adapter names, and overrides as recommended by your OEM. */
 export type DeploymentSettingHostNetworkIntentsList =
-  ReadonlyArray<DeploymentSettingIntents>;
+  Array<DeploymentSettingIntents>;
 export const DeploymentSettingHostNetworkIntentsList = /*@__PURE__*/ S.Array(
   DeploymentSettingIntents,
 ) as any as S.Schema<DeploymentSettingHostNetworkIntentsList>;
@@ -3234,7 +3232,7 @@ export const DeploymentSettingStorageAdapterIPInfo = /*@__PURE__*/ S.suspend(
 
 /** List of Storage adapter physical nodes config to deploy AzureStackHCI Cluster. */
 export type DeploymentSettingStorageNetworksStorageAdapterIPInfoList =
-  ReadonlyArray<DeploymentSettingStorageAdapterIPInfo>;
+  Array<DeploymentSettingStorageAdapterIPInfo>;
 export const DeploymentSettingStorageNetworksStorageAdapterIPInfoList =
   /*@__PURE__*/ S.Array(
     DeploymentSettingStorageAdapterIPInfo,
@@ -3266,7 +3264,7 @@ export const DeploymentSettingStorageNetworks = /*@__PURE__*/ S.suspend(() =>
 
 /** List of StorageNetworks config to deploy AzureStackHCI Cluster. */
 export type DeploymentSettingHostNetworkStorageNetworksList =
-  ReadonlyArray<DeploymentSettingStorageNetworks>;
+  Array<DeploymentSettingStorageNetworks>;
 export const DeploymentSettingHostNetworkStorageNetworksList =
   /*@__PURE__*/ S.Array(
     DeploymentSettingStorageNetworks,
@@ -3318,7 +3316,7 @@ export const SanAdapterIPConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** Per-adapter IP configuration for the cluster network. */
 export type SanClusterNetworkConfigAdapterIPConfigList =
-  ReadonlyArray<SanAdapterIPConfig>;
+  Array<SanAdapterIPConfig>;
 export const SanClusterNetworkConfigAdapterIPConfigList = /*@__PURE__*/ S.Array(
   SanAdapterIPConfig,
 ) as any as S.Schema<SanClusterNetworkConfigAdapterIPConfigList>;
@@ -3420,7 +3418,7 @@ export interface EceDeploymentSecrets {
   /** Secret name stored in keyvault. */
   secretName?: string;
   /** Secret name expected for Enterprise Cloud Engine (ECE) deployment. */
-  eceSecretName?: EceSecrets;
+  eceSecretName?: EceSecrets | (string & {});
   /** Secret URI stored in keyvault. */
   secretLocation?: string;
 }
@@ -3435,8 +3433,7 @@ export const EceDeploymentSecrets = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EceDeploymentSecrets>;
 
 /** secrets used for cloud deployment. */
-export type DeploymentDataInputSecretsList =
-  ReadonlyArray<EceDeploymentSecrets>;
+export type DeploymentDataInputSecretsList = Array<EceDeploymentSecrets>;
 export const DeploymentDataInputSecretsList = /*@__PURE__*/ S.Array(
   EceDeploymentSecrets,
 ) as any as S.Schema<DeploymentDataInputSecretsList>;
@@ -3456,7 +3453,7 @@ export const OptionalServices = /*@__PURE__*/ S.suspend(() =>
 
 /** Local Availability Zone information for HCI cluster */
 export type DeploymentDataInputLocalAvailabilityZonesList =
-  ReadonlyArray<LocalAvailabilityZones>;
+  Array<LocalAvailabilityZones>;
 export const DeploymentDataInputLocalAvailabilityZonesList =
   /*@__PURE__*/ S.Array(
     LocalAvailabilityZones,
@@ -3580,8 +3577,7 @@ export const SbePartnerProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SbePartnerProperties>;
 
 /** List of SBE partner properties for AzureStackHCI cluster deployment. */
-export type SbePartnerInfoPartnerPropertiesList =
-  ReadonlyArray<SbePartnerProperties>;
+export type SbePartnerInfoPartnerPropertiesList = Array<SbePartnerProperties>;
 export const SbePartnerInfoPartnerPropertiesList = /*@__PURE__*/ S.Array(
   SbePartnerProperties,
 ) as any as S.Schema<SbePartnerInfoPartnerPropertiesList>;
@@ -3604,7 +3600,7 @@ export const SbeCredentials = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SbeCredentials" }) as any as S.Schema<SbeCredentials>;
 
 /** SBE credentials list for AzureStackHCI cluster deployment. */
-export type SbePartnerInfoCredentialListList = ReadonlyArray<SbeCredentials>;
+export type SbePartnerInfoCredentialListList = Array<SbeCredentials>;
 export const SbePartnerInfoCredentialListList = /*@__PURE__*/ S.Array(
   SbeCredentials,
 ) as any as S.Schema<SbePartnerInfoCredentialListList>;
@@ -3643,8 +3639,7 @@ export const ScaleUnitsInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScaleUnitsInput>;
 
 /** Scale units will contains list of deployment data */
-export type DeploymentConfigurationInputScaleUnitsList =
-  ReadonlyArray<ScaleUnitsInput>;
+export type DeploymentConfigurationInputScaleUnitsList = Array<ScaleUnitsInput>;
 export const DeploymentConfigurationInputScaleUnitsList = /*@__PURE__*/ S.Array(
   ScaleUnitsInput,
 ) as any as S.Schema<DeploymentConfigurationInputScaleUnitsList>;
@@ -3722,8 +3717,7 @@ export const DeploymentSettingsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DeploymentSettingsCreateOrUpdateRequest>;
 
 /** Azure resource ids of Arc machines to be part of cluster. */
-export type DeploymentSettingsPropertiesArcNodeResourceIdsList =
-  ReadonlyArray<string>;
+export type DeploymentSettingsPropertiesArcNodeResourceIdsList = Array<string>;
 export const DeploymentSettingsPropertiesArcNodeResourceIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3772,26 +3766,26 @@ export const DeploymentCluster = /*@__PURE__*/ S.suspend(() =>
 
 /** InfrastructureNetwork config to deploy AzureStackHCI Cluster. */
 export type DeploymentDataInfrastructureNetworkList =
-  ReadonlyArray<InfrastructureNetwork>;
+  Array<InfrastructureNetwork>;
 export const DeploymentDataInfrastructureNetworkList = /*@__PURE__*/ S.Array(
   InfrastructureNetwork,
 ) as any as S.Schema<DeploymentDataInfrastructureNetworkList>;
 
 /** list of physical nodes config to deploy AzureStackHCI Cluster. */
-export type DeploymentDataPhysicalNodesList = ReadonlyArray<PhysicalNodes>;
+export type DeploymentDataPhysicalNodesList = Array<PhysicalNodes>;
 export const DeploymentDataPhysicalNodesList = /*@__PURE__*/ S.Array(
   PhysicalNodes,
 ) as any as S.Schema<DeploymentDataPhysicalNodesList>;
 
 /** secrets used for cloud deployment. */
-export type DeploymentDataSecretsList = ReadonlyArray<EceDeploymentSecrets>;
+export type DeploymentDataSecretsList = Array<EceDeploymentSecrets>;
 export const DeploymentDataSecretsList = /*@__PURE__*/ S.Array(
   EceDeploymentSecrets,
 ) as any as S.Schema<DeploymentDataSecretsList>;
 
 /** Local Availability Zone information for HCI cluster */
 export type DeploymentDataLocalAvailabilityZonesList =
-  ReadonlyArray<LocalAvailabilityZones>;
+  Array<LocalAvailabilityZones>;
 export const DeploymentDataLocalAvailabilityZonesList = /*@__PURE__*/ S.Array(
   LocalAvailabilityZones,
 ) as any as S.Schema<DeploymentDataLocalAvailabilityZonesList>;
@@ -3819,7 +3813,7 @@ export const AssemblyInfoPayload = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AssemblyInfoPayload>;
 
 /** Payload properties for Validated Solution Recipe for AzureStackHCI Cluster */
-export type AssemblyInfoPayloadList = ReadonlyArray<AssemblyInfoPayload>;
+export type AssemblyInfoPayloadList = Array<AssemblyInfoPayload>;
 export const AssemblyInfoPayloadList = /*@__PURE__*/ S.Array(
   AssemblyInfoPayload,
 ) as any as S.Schema<AssemblyInfoPayloadList>;
@@ -3917,7 +3911,7 @@ export const ScaleUnits = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ScaleUnits" }) as any as S.Schema<ScaleUnits>;
 
 /** Scale units will contains list of deployment data */
-export type DeploymentConfigurationScaleUnitsList = ReadonlyArray<ScaleUnits>;
+export type DeploymentConfigurationScaleUnitsList = Array<ScaleUnits>;
 export const DeploymentConfigurationScaleUnitsList = /*@__PURE__*/ S.Array(
   ScaleUnits,
 ) as any as S.Schema<DeploymentConfigurationScaleUnitsList>;
@@ -3939,13 +3933,13 @@ export const DeploymentConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeploymentConfiguration>;
 
 /** List of nested steps of AzureStackHCI Cluster Deployment. */
-export type DeploymentStepStepsList = ReadonlyArray<DeploymentStep>;
+export type DeploymentStepStepsList = Array<DeploymentStep>;
 export const DeploymentStepStepsList = /*@__PURE__*/ S.Array(
   S.suspend(() => DeploymentStep),
 ) as any as S.Schema<DeploymentStepStepsList>;
 
 /** List of exceptions in AzureStackHCI Cluster Deployment. */
-export type DeploymentStepExceptionList = ReadonlyArray<string>;
+export type DeploymentStepExceptionList = Array<string>;
 export const DeploymentStepExceptionList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DeploymentStepExceptionList>;
@@ -3983,7 +3977,7 @@ export const DeploymentStep = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeploymentStep" }) as any as S.Schema<DeploymentStep>;
 
 /** List of steps of AzureStackHCI Cluster Deployment. */
-export type EceActionStatusStepsList = ReadonlyArray<DeploymentStep>;
+export type EceActionStatusStepsList = Array<DeploymentStep>;
 export const EceActionStatusStepsList = /*@__PURE__*/ S.Array(
   DeploymentStep,
 ) as any as S.Schema<EceActionStatusStepsList>;
@@ -4212,8 +4206,7 @@ export const DeploymentSetting = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeploymentSetting>;
 
 /** The DeploymentSetting items on this page */
-export type DeploymentSettingListResultValueList =
-  ReadonlyArray<DeploymentSetting>;
+export type DeploymentSettingListResultValueList = Array<DeploymentSetting>;
 export const DeploymentSettingListResultValueList = /*@__PURE__*/ S.Array(
   DeploymentSetting,
 ) as any as S.Schema<DeploymentSettingListResultValueList>;
@@ -4419,7 +4412,7 @@ export const EdgeDeviceJob = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EdgeDeviceJob" }) as any as S.Schema<EdgeDeviceJob>;
 
 /** The EdgeDeviceJob items on this page */
-export type EdgeDeviceJobListResultValueList = ReadonlyArray<EdgeDeviceJob>;
+export type EdgeDeviceJobListResultValueList = Array<EdgeDeviceJob>;
 export const EdgeDeviceJobListResultValueList = /*@__PURE__*/ S.Array(
   EdgeDeviceJob,
 ) as any as S.Schema<EdgeDeviceJobListResultValueList>;
@@ -4611,7 +4604,7 @@ export const EdgeDevice = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EdgeDevice" }) as any as S.Schema<EdgeDevice>;
 
 /** The EdgeDevice items on this page */
-export type EdgeDeviceListResultValueList = ReadonlyArray<EdgeDevice>;
+export type EdgeDeviceListResultValueList = Array<EdgeDevice>;
 export const EdgeDeviceListResultValueList = /*@__PURE__*/ S.Array(
   EdgeDevice,
 ) as any as S.Schema<EdgeDeviceListResultValueList>;
@@ -4633,7 +4626,7 @@ export const EdgeDeviceListResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EdgeDeviceListResult>;
 
 /** Node Ids against which, current node has to be validated. */
-export type EdgeDevicesValidateRequestEdgeDeviceIdsList = ReadonlyArray<string>;
+export type EdgeDevicesValidateRequestEdgeDeviceIdsList = Array<string>;
 export const EdgeDevicesValidateRequestEdgeDeviceIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4882,7 +4875,7 @@ export const PerNodeExtensionState = /*@__PURE__*/ S.suspend(() =>
 
 /** State of Arc Extension in each of the nodes. */
 export type ExtensionPropertiesPerNodeExtensionDetailsList =
-  ReadonlyArray<PerNodeExtensionState>;
+  Array<PerNodeExtensionState>;
 export const ExtensionPropertiesPerNodeExtensionDetailsList =
   /*@__PURE__*/ S.Array(
     PerNodeExtensionState,
@@ -5088,7 +5081,7 @@ export const Extension = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Extension" }) as any as S.Schema<Extension>;
 
 /** The Extension items on this page */
-export type ExtensionListValueList = ReadonlyArray<Extension>;
+export type ExtensionListValueList = Array<Extension>;
 export const ExtensionListValueList = /*@__PURE__*/ S.Array(
   Extension,
 ) as any as S.Schema<ExtensionListValueList>;
@@ -5848,7 +5841,7 @@ export const GalleryImages = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "GalleryImages" }) as any as S.Schema<GalleryImages>;
 
-export type GalleryImagesListResultValueList = ReadonlyArray<GalleryImages>;
+export type GalleryImagesListResultValueList = Array<GalleryImages>;
 export const GalleryImagesListResultValueList = /*@__PURE__*/ S.Array(
   GalleryImages,
 ) as any as S.Schema<GalleryImagesListResultValueList>;
@@ -6198,7 +6191,7 @@ export const GuestAgent = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GuestAgent" }) as any as S.Schema<GuestAgent>;
 
 /** Array of GuestAgent */
-export type GuestAgentListValueList = ReadonlyArray<GuestAgent>;
+export type GuestAgentListValueList = Array<GuestAgent>;
 export const GuestAgentListValueList = /*@__PURE__*/ S.Array(
   GuestAgent,
 ) as any as S.Schema<GuestAgentListValueList>;
@@ -6352,8 +6345,7 @@ export const HybridIdentityMetadata = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HybridIdentityMetadata>;
 
 /** Array of HybridIdentityMetadata */
-export type HybridIdentityMetadataListValueList =
-  ReadonlyArray<HybridIdentityMetadata>;
+export type HybridIdentityMetadataListValueList = Array<HybridIdentityMetadata>;
 export const HybridIdentityMetadataListValueList = /*@__PURE__*/ S.Array(
   HybridIdentityMetadata,
 ) as any as S.Schema<HybridIdentityMetadataListValueList>;
@@ -6386,7 +6378,7 @@ export const LogicalNetworksCreateOrUpdateRequestTagsMap =
 
 /** The list of DNS servers IP addresses. */
 export type LogicalNetworkPropertiesInputDhcpOptionsDnsServersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const LogicalNetworkPropertiesInputDhcpOptionsDnsServersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6409,8 +6401,7 @@ export const LogicalNetworkPropertiesInputDhcpOptions = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<LogicalNetworkPropertiesInputDhcpOptions>;
 
 /** List of address prefixes for the subnet. */
-export type SubnetPropertiesFormatInputAddressPrefixesList =
-  ReadonlyArray<string>;
+export type SubnetPropertiesFormatInputAddressPrefixesList = Array<string>;
 export const SubnetPropertiesFormatInputAddressPrefixesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6439,7 +6430,7 @@ export const SubnetPropertiesFormatInputIpConfigurationReferencesItem =
 
 /** IPConfigurationReferences - list of IPConfigurationReferences */
 export type SubnetPropertiesFormatInputIpConfigurationReferencesList =
-  ReadonlyArray<SubnetPropertiesFormatInputIpConfigurationReferencesItem>;
+  Array<SubnetPropertiesFormatInputIpConfigurationReferencesItem>;
 export const SubnetPropertiesFormatInputIpConfigurationReferencesList =
   /*@__PURE__*/ S.Array(
     SubnetPropertiesFormatInputIpConfigurationReferencesItem,
@@ -6476,7 +6467,7 @@ export const Route = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Route" }) as any as S.Schema<Route>;
 
 /** Collection of routes contained within a route table. */
-export type RouteTablePropertiesFormatRoutesList = ReadonlyArray<Route>;
+export type RouteTablePropertiesFormatRoutesList = Array<Route>;
 export const RouteTablePropertiesFormatRoutesList = /*@__PURE__*/ S.Array(
   Route,
 ) as any as S.Schema<RouteTablePropertiesFormatRoutesList>;
@@ -6540,7 +6531,7 @@ export const IPPoolInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IPPoolInput" }) as any as S.Schema<IPPoolInput>;
 
 /** network associated pool of IP Addresses */
-export type SubnetPropertiesFormatInputIpPoolsList = ReadonlyArray<IPPoolInput>;
+export type SubnetPropertiesFormatInputIpPoolsList = Array<IPPoolInput>;
 export const SubnetPropertiesFormatInputIpPoolsList = /*@__PURE__*/ S.Array(
   IPPoolInput,
 ) as any as S.Schema<SubnetPropertiesFormatInputIpPoolsList>;
@@ -6595,8 +6586,7 @@ export const SubnetInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SubnetInput" }) as any as S.Schema<SubnetInput>;
 
 /** Subnet - list of subnets under the logical network */
-export type LogicalNetworkPropertiesInputSubnetsList =
-  ReadonlyArray<SubnetInput>;
+export type LogicalNetworkPropertiesInputSubnetsList = Array<SubnetInput>;
 export const LogicalNetworkPropertiesInputSubnetsList = /*@__PURE__*/ S.Array(
   SubnetInput,
 ) as any as S.Schema<LogicalNetworkPropertiesInputSubnetsList>;
@@ -6687,8 +6677,7 @@ export const LogicalNetworksCreateOrUpdateResponseTagsMap =
   ) as any as S.Schema<LogicalNetworksCreateOrUpdateResponseTagsMap>;
 
 /** The list of DNS servers IP addresses. */
-export type LogicalNetworkPropertiesDhcpOptionsDnsServersList =
-  ReadonlyArray<string>;
+export type LogicalNetworkPropertiesDhcpOptionsDnsServersList = Array<string>;
 export const LogicalNetworkPropertiesDhcpOptionsDnsServersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6708,7 +6697,7 @@ export const LogicalNetworkPropertiesDhcpOptions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LogicalNetworkPropertiesDhcpOptions>;
 
 /** List of address prefixes for the subnet. */
-export type SubnetPropertiesFormatAddressPrefixesList = ReadonlyArray<string>;
+export type SubnetPropertiesFormatAddressPrefixesList = Array<string>;
 export const SubnetPropertiesFormatAddressPrefixesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SubnetPropertiesFormatAddressPrefixesList>;
@@ -6733,7 +6722,7 @@ export const SubnetPropertiesFormatIpConfigurationReferencesItem =
 
 /** IPConfigurationReferences - list of IPConfigurationReferences */
 export type SubnetPropertiesFormatIpConfigurationReferencesList =
-  ReadonlyArray<SubnetPropertiesFormatIpConfigurationReferencesItem>;
+  Array<SubnetPropertiesFormatIpConfigurationReferencesItem>;
 export const SubnetPropertiesFormatIpConfigurationReferencesList =
   /*@__PURE__*/ S.Array(
     SubnetPropertiesFormatIpConfigurationReferencesItem,
@@ -6798,7 +6787,7 @@ export const IPPool = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IPPool" }) as any as S.Schema<IPPool>;
 
 /** network associated pool of IP Addresses */
-export type SubnetPropertiesFormatIpPoolsList = ReadonlyArray<IPPool>;
+export type SubnetPropertiesFormatIpPoolsList = Array<IPPool>;
 export const SubnetPropertiesFormatIpPoolsList = /*@__PURE__*/ S.Array(
   IPPool,
 ) as any as S.Schema<SubnetPropertiesFormatIpPoolsList>;
@@ -6849,7 +6838,7 @@ export const Subnet = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Subnet" }) as any as S.Schema<Subnet>;
 
 /** Subnet - list of subnets under the logical network */
-export type LogicalNetworkPropertiesSubnetsList = ReadonlyArray<Subnet>;
+export type LogicalNetworkPropertiesSubnetsList = Array<Subnet>;
 export const LogicalNetworkPropertiesSubnetsList = /*@__PURE__*/ S.Array(
   Subnet,
 ) as any as S.Schema<LogicalNetworkPropertiesSubnetsList>;
@@ -7175,7 +7164,7 @@ export const LogicalNetworks = /*@__PURE__*/ S.suspend(() =>
   identifier: "LogicalNetworks",
 }) as any as S.Schema<LogicalNetworks>;
 
-export type LogicalNetworksListResultValueList = ReadonlyArray<LogicalNetworks>;
+export type LogicalNetworksListResultValueList = Array<LogicalNetworks>;
 export const LogicalNetworksListResultValueList = /*@__PURE__*/ S.Array(
   LogicalNetworks,
 ) as any as S.Schema<LogicalNetworksListResultValueList>;
@@ -7819,7 +7808,7 @@ export const MarketplaceGalleryImages = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MarketplaceGalleryImages>;
 
 export type MarketplaceGalleryImagesListResultValueList =
-  ReadonlyArray<MarketplaceGalleryImages>;
+  Array<MarketplaceGalleryImages>;
 export const MarketplaceGalleryImagesListResultValueList =
   /*@__PURE__*/ S.Array(
     MarketplaceGalleryImages,
@@ -8017,14 +8006,14 @@ export const IPConfigurationInput = /*@__PURE__*/ S.suspend(() =>
 
 /** IPConfigurations - A list of IPConfigurations of the network interface. */
 export type NetworkInterfacePropertiesInputIpConfigurationsList =
-  ReadonlyArray<IPConfigurationInput>;
+  Array<IPConfigurationInput>;
 export const NetworkInterfacePropertiesInputIpConfigurationsList =
   /*@__PURE__*/ S.Array(
     IPConfigurationInput,
   ) as any as S.Schema<NetworkInterfacePropertiesInputIpConfigurationsList>;
 
 /** List of DNS server IP Addresses for the interface */
-export type InterfaceDNSSettingsDnsServersList = ReadonlyArray<string>;
+export type InterfaceDNSSettingsDnsServersList = Array<string>;
 export const InterfaceDNSSettingsDnsServersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<InterfaceDNSSettingsDnsServersList>;
@@ -8181,7 +8170,7 @@ export const IPConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** IPConfigurations - A list of IPConfigurations of the network interface. */
 export type NetworkInterfacePropertiesIpConfigurationsList =
-  ReadonlyArray<IPConfiguration>;
+  Array<IPConfiguration>;
 export const NetworkInterfacePropertiesIpConfigurationsList =
   /*@__PURE__*/ S.Array(
     IPConfiguration,
@@ -8511,8 +8500,7 @@ export const NetworkInterfaces = /*@__PURE__*/ S.suspend(() =>
   identifier: "NetworkInterfaces",
 }) as any as S.Schema<NetworkInterfaces>;
 
-export type NetworkInterfacesListResultValueList =
-  ReadonlyArray<NetworkInterfaces>;
+export type NetworkInterfacesListResultValueList = Array<NetworkInterfaces>;
 export const NetworkInterfacesListResultValueList = /*@__PURE__*/ S.Array(
   NetworkInterfaces,
 ) as any as S.Schema<NetworkInterfacesListResultValueList>;
@@ -8681,7 +8669,7 @@ export const OffersGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OffersGetRequest>;
 
 /** Array of SKU versions available */
-export type SkuMappingsMarketplaceSkuVersionsList = ReadonlyArray<string>;
+export type SkuMappingsMarketplaceSkuVersionsList = Array<string>;
 export const SkuMappingsMarketplaceSkuVersionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SkuMappingsMarketplaceSkuVersionsList>;
@@ -8704,7 +8692,7 @@ export const SkuMappings = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SkuMappings" }) as any as S.Schema<SkuMappings>;
 
 /** Array of SKU mappings */
-export type OfferPropertiesSkuMappingsList = ReadonlyArray<SkuMappings>;
+export type OfferPropertiesSkuMappingsList = Array<SkuMappings>;
 export const OfferPropertiesSkuMappingsList = /*@__PURE__*/ S.Array(
   SkuMappings,
 ) as any as S.Schema<OfferPropertiesSkuMappingsList>;
@@ -8810,7 +8798,7 @@ export const Offer = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Offer" }) as any as S.Schema<Offer>;
 
 /** The Offer items on this page */
-export type OfferListValueList = ReadonlyArray<Offer>;
+export type OfferListValueList = Array<Offer>;
 export const OfferListValueList = /*@__PURE__*/ S.Array(
   Offer,
 ) as any as S.Schema<OfferListValueList>;
@@ -8928,7 +8916,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = ReadonlyArray<Operation>;
+export type OperationsListResponseValueList = Array<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;
@@ -9275,7 +9263,7 @@ export const SecuritySetting = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SecuritySetting>;
 
 /** The SecuritySetting items on this page */
-export type SecuritySettingListResultValueList = ReadonlyArray<SecuritySetting>;
+export type SecuritySettingListResultValueList = Array<SecuritySetting>;
 export const SecuritySettingListResultValueList = /*@__PURE__*/ S.Array(
   SecuritySetting,
 ) as any as S.Schema<SecuritySettingListResultValueList>;
@@ -9332,7 +9320,7 @@ export const SkusGetRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SkusGetRequest" }) as any as S.Schema<SkusGetRequest>;
 
 /** Array of SKU mappings */
-export type SkuPropertiesSkuMappingsList = ReadonlyArray<SkuMappings>;
+export type SkuPropertiesSkuMappingsList = Array<SkuMappings>;
 export const SkuPropertiesSkuMappingsList = /*@__PURE__*/ S.Array(
   SkuMappings,
 ) as any as S.Schema<SkuPropertiesSkuMappingsList>;
@@ -9445,7 +9433,7 @@ export const Sku = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Sku" }) as any as S.Schema<Sku>;
 
 /** The Sku items on this page */
-export type SkuListValueList = ReadonlyArray<Sku>;
+export type SkuListValueList = Array<Sku>;
 export const SkuListValueList = /*@__PURE__*/ S.Array(
   Sku,
 ) as any as S.Schema<SkuListValueList>;
@@ -9875,8 +9863,7 @@ export const StorageContainers = /*@__PURE__*/ S.suspend(() =>
   identifier: "StorageContainers",
 }) as any as S.Schema<StorageContainers>;
 
-export type StorageContainersListResultValueList =
-  ReadonlyArray<StorageContainers>;
+export type StorageContainersListResultValueList = Array<StorageContainers>;
 export const StorageContainersListResultValueList = /*@__PURE__*/ S.Array(
   StorageContainers,
 ) as any as S.Schema<StorageContainersListResultValueList>;
@@ -10088,7 +10075,7 @@ export type UpdateRunPropertiesState =
 export const UpdateRunPropertiesState = /*@__PURE__*/ S.String;
 
 /** Recursive model for child steps of this step. */
-export type StepStepsList = ReadonlyArray<Step>;
+export type StepStepsList = Array<Step>;
 export const StepStepsList = /*@__PURE__*/ S.Array(
   S.suspend(() => Step),
 ) as any as S.Schema<StepStepsList>;
@@ -10238,7 +10225,7 @@ export const UpdateRun = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateRun" }) as any as S.Schema<UpdateRun>;
 
 /** The UpdateRun items on this page */
-export type UpdateRunListValueList = ReadonlyArray<UpdateRun>;
+export type UpdateRunListValueList = Array<UpdateRun>;
 export const UpdateRunListValueList = /*@__PURE__*/ S.Array(
   UpdateRun,
 ) as any as S.Schema<UpdateRunListValueList>;
@@ -10451,8 +10438,7 @@ export const UpdatePrerequisite = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdatePrerequisite>;
 
 /** If update State is HasPrerequisite, this property contains an array of objects describing prerequisite updates before installing this update. Otherwise, it is empty. */
-export type UpdatePropertiesPrerequisitesList =
-  ReadonlyArray<UpdatePrerequisite>;
+export type UpdatePropertiesPrerequisitesList = Array<UpdatePrerequisite>;
 export const UpdatePropertiesPrerequisitesList = /*@__PURE__*/ S.Array(
   UpdatePrerequisite,
 ) as any as S.Schema<UpdatePropertiesPrerequisitesList>;
@@ -10477,8 +10463,7 @@ export const PackageVersionInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PackageVersionInfo>;
 
 /** An array of component versions for a Solution Bundle update, and an empty array otherwise. */
-export type UpdatePropertiesComponentVersionsList =
-  ReadonlyArray<PackageVersionInfo>;
+export type UpdatePropertiesComponentVersionsList = Array<PackageVersionInfo>;
 export const UpdatePropertiesComponentVersionsList = /*@__PURE__*/ S.Array(
   PackageVersionInfo,
 ) as any as S.Schema<UpdatePropertiesComponentVersionsList>;
@@ -10529,9 +10514,9 @@ export interface PrecheckResult {
   /** User-facing name; one or more sentences indicating the direct issue. */
   title?: string;
   /** Represents the current status of the check being performed. Indicates whether the check has completed successfully, failed, or is still in progress. */
-  status?: Status;
+  status?: Status | (string & {});
   /** Indicates the importance or impact level of the result. Determines whether the result is informational, a warning, or a critical issue that may block updates. */
-  severity?: Severity;
+  severity?: Severity | (string & {});
   /** Detailed overview of the issue and what impact the issue has on the stamp. */
   description?: string;
   /** Set of steps that can be taken to resolve the issue found. */
@@ -10570,8 +10555,7 @@ export const PrecheckResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PrecheckResult" }) as any as S.Schema<PrecheckResult>;
 
 /** An array of PrecheckResult objects. */
-export type UpdatePropertiesHealthCheckResultList =
-  ReadonlyArray<PrecheckResult>;
+export type UpdatePropertiesHealthCheckResultList = Array<PrecheckResult>;
 export const UpdatePropertiesHealthCheckResultList = /*@__PURE__*/ S.Array(
   PrecheckResult,
 ) as any as S.Schema<UpdatePropertiesHealthCheckResultList>;
@@ -10748,7 +10732,7 @@ export const Update = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Update" }) as any as S.Schema<Update>;
 
 /** The Update items on this page */
-export type UpdateListValueList = ReadonlyArray<Update>;
+export type UpdateListValueList = Array<Update>;
 export const UpdateListValueList = /*@__PURE__*/ S.Array(
   Update,
 ) as any as S.Schema<UpdateListValueList>;
@@ -10838,22 +10822,20 @@ export const UpdatesPrepareResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdatesPrepareResponse>;
 
 /** If update State is HasPrerequisite, this property contains an array of objects describing prerequisite updates before installing this update. Otherwise, it is empty. */
-export type UpdatePropertiesInputPrerequisitesList =
-  ReadonlyArray<UpdatePrerequisite>;
+export type UpdatePropertiesInputPrerequisitesList = Array<UpdatePrerequisite>;
 export const UpdatePropertiesInputPrerequisitesList = /*@__PURE__*/ S.Array(
   UpdatePrerequisite,
 ) as any as S.Schema<UpdatePropertiesInputPrerequisitesList>;
 
 /** An array of component versions for a Solution Bundle update, and an empty array otherwise. */
 export type UpdatePropertiesInputComponentVersionsList =
-  ReadonlyArray<PackageVersionInfo>;
+  Array<PackageVersionInfo>;
 export const UpdatePropertiesInputComponentVersionsList = /*@__PURE__*/ S.Array(
   PackageVersionInfo,
 ) as any as S.Schema<UpdatePropertiesInputComponentVersionsList>;
 
 /** An array of PrecheckResult objects. */
-export type UpdatePropertiesInputHealthCheckResultList =
-  ReadonlyArray<PrecheckResult>;
+export type UpdatePropertiesInputHealthCheckResultList = Array<PrecheckResult>;
 export const UpdatePropertiesInputHealthCheckResultList = /*@__PURE__*/ S.Array(
   PrecheckResult,
 ) as any as S.Schema<UpdatePropertiesInputHealthCheckResultList>;
@@ -11048,7 +11030,7 @@ export const UpdateSummariesGetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Current version of each updatable component. */
 export type UpdateSummariesPropertiesPackageVersionsList =
-  ReadonlyArray<PackageVersionInfo>;
+  Array<PackageVersionInfo>;
 export const UpdateSummariesPropertiesPackageVersionsList =
   /*@__PURE__*/ S.Array(
     PackageVersionInfo,
@@ -11056,7 +11038,7 @@ export const UpdateSummariesPropertiesPackageVersionsList =
 
 /** An array of pre-check result objects. */
 export type UpdateSummariesPropertiesHealthCheckResultList =
-  ReadonlyArray<PrecheckResult>;
+  Array<PrecheckResult>;
 export const UpdateSummariesPropertiesHealthCheckResultList =
   /*@__PURE__*/ S.Array(
     PrecheckResult,
@@ -11206,7 +11188,7 @@ export const UpdateSummaries = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateSummaries>;
 
 /** The UpdateSummaries items on this page */
-export type UpdateSummariesListValueList = ReadonlyArray<UpdateSummaries>;
+export type UpdateSummariesListValueList = Array<UpdateSummaries>;
 export const UpdateSummariesListValueList = /*@__PURE__*/ S.Array(
   UpdateSummaries,
 ) as any as S.Schema<UpdateSummariesListValueList>;
@@ -11296,7 +11278,7 @@ export const UpdateSummariesOperationGroupCheckUpdatesResponse =
 
 /** Current version of each updatable component. */
 export type UpdateSummariesPropertiesInputPackageVersionsList =
-  ReadonlyArray<PackageVersionInfo>;
+  Array<PackageVersionInfo>;
 export const UpdateSummariesPropertiesInputPackageVersionsList =
   /*@__PURE__*/ S.Array(
     PackageVersionInfo,
@@ -11304,7 +11286,7 @@ export const UpdateSummariesPropertiesInputPackageVersionsList =
 
 /** An array of pre-check result objects. */
 export type UpdateSummariesPropertiesInputHealthCheckResultList =
-  ReadonlyArray<PrecheckResult>;
+  Array<PrecheckResult>;
 export const UpdateSummariesPropertiesInputHealthCheckResultList =
   /*@__PURE__*/ S.Array(
     PrecheckResult,
@@ -11474,7 +11456,7 @@ export const ValidatedSolutionRecipeCapability = /*@__PURE__*/ S.suspend(() =>
 
 /** Represents the cluster capabilities. */
 export type ValidatedSolutionRecipeCapabilitiesClusterCapabilitiesList =
-  ReadonlyArray<ValidatedSolutionRecipeCapability>;
+  Array<ValidatedSolutionRecipeCapability>;
 export const ValidatedSolutionRecipeCapabilitiesClusterCapabilitiesList =
   /*@__PURE__*/ S.Array(
     ValidatedSolutionRecipeCapability,
@@ -11482,7 +11464,7 @@ export const ValidatedSolutionRecipeCapabilitiesClusterCapabilitiesList =
 
 /** Represents the node capabilities. */
 export type ValidatedSolutionRecipeCapabilitiesNodeCapabilitiesList =
-  ReadonlyArray<ValidatedSolutionRecipeCapability>;
+  Array<ValidatedSolutionRecipeCapability>;
 export const ValidatedSolutionRecipeCapabilitiesNodeCapabilitiesList =
   /*@__PURE__*/ S.Array(
     ValidatedSolutionRecipeCapability,
@@ -11506,7 +11488,7 @@ export const ValidatedSolutionRecipeCapabilities = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ValidatedSolutionRecipeCapabilities>;
 
 /** Represents the component's tags. */
-export type ValidatedSolutionRecipeComponentTagsList = ReadonlyArray<string>;
+export type ValidatedSolutionRecipeComponentTagsList = Array<string>;
 export const ValidatedSolutionRecipeComponentTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ValidatedSolutionRecipeComponentTagsList>;
@@ -11536,7 +11518,7 @@ export const ValidatedSolutionRecipeComponentPayload = /*@__PURE__*/ S.suspend(
 
 /** Represents the component's payloads. */
 export type ValidatedSolutionRecipeComponentPayloadsList =
-  ReadonlyArray<ValidatedSolutionRecipeComponentPayload>;
+  Array<ValidatedSolutionRecipeComponentPayload>;
 export const ValidatedSolutionRecipeComponentPayloadsList =
   /*@__PURE__*/ S.Array(
     ValidatedSolutionRecipeComponentPayload,
@@ -11619,7 +11601,7 @@ export const ValidatedSolutionRecipeComponent = /*@__PURE__*/ S.suspend(() =>
 
 /** Represents components available in a validated solution recipe. */
 export type ValidatedSolutionRecipeContentComponentsList =
-  ReadonlyArray<ValidatedSolutionRecipeComponent>;
+  Array<ValidatedSolutionRecipeComponent>;
 export const ValidatedSolutionRecipeContentComponentsList =
   /*@__PURE__*/ S.Array(
     ValidatedSolutionRecipeComponent,
@@ -11735,7 +11717,7 @@ export const ValidatedSolutionRecipe = /*@__PURE__*/ S.suspend(() =>
 
 /** The ValidatedSolutionRecipe items on this page */
 export type ValidatedSolutionRecipeListResultValueList =
-  ReadonlyArray<ValidatedSolutionRecipe>;
+  Array<ValidatedSolutionRecipe>;
 export const ValidatedSolutionRecipeListResultValueList = /*@__PURE__*/ S.Array(
   ValidatedSolutionRecipe,
 ) as any as S.Schema<ValidatedSolutionRecipeListResultValueList>;
@@ -12219,8 +12201,7 @@ export const VirtualHardDisks = /*@__PURE__*/ S.suspend(() =>
   identifier: "VirtualHardDisks",
 }) as any as S.Schema<VirtualHardDisks>;
 
-export type VirtualHardDisksListResultValueList =
-  ReadonlyArray<VirtualHardDisks>;
+export type VirtualHardDisksListResultValueList = Array<VirtualHardDisks>;
 export const VirtualHardDisksListResultValueList = /*@__PURE__*/ S.Array(
   VirtualHardDisks,
 ) as any as S.Schema<VirtualHardDisksListResultValueList>;
@@ -12442,7 +12423,7 @@ export const VirtualMachineInstancePropertiesInputNetworkProfileNetworkInterface
 
 /** NetworkInterfaces - list of network interfaces to be attached to the virtual machine instance */
 export type VirtualMachineInstancePropertiesInputNetworkProfileNetworkInterfacesList =
-  ReadonlyArray<VirtualMachineInstancePropertiesInputNetworkProfileNetworkInterfacesItem>;
+  Array<VirtualMachineInstancePropertiesInputNetworkProfileNetworkInterfacesItem>;
 export const VirtualMachineInstancePropertiesInputNetworkProfileNetworkInterfacesList =
   /*@__PURE__*/ S.Array(
     VirtualMachineInstancePropertiesInputNetworkProfileNetworkInterfacesItem,
@@ -12479,7 +12460,7 @@ export const SshPublicKey = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SshPublicKey" }) as any as S.Schema<SshPublicKey>;
 
 /** The list of SSH public keys used to authenticate with linux based VMs. */
-export type SshConfigurationPublicKeysList = ReadonlyArray<SshPublicKey>;
+export type SshConfigurationPublicKeysList = Array<SshPublicKey>;
 export const SshConfigurationPublicKeysList = /*@__PURE__*/ S.Array(
   SshPublicKey,
 ) as any as S.Schema<SshConfigurationPublicKeysList>;
@@ -12639,7 +12620,7 @@ export const VirtualMachineInstancePropertiesInputStorageProfileDataDisksItem =
 
 /** adds data disks to the virtual machine instance */
 export type VirtualMachineInstancePropertiesInputStorageProfileDataDisksList =
-  ReadonlyArray<VirtualMachineInstancePropertiesInputStorageProfileDataDisksItem>;
+  Array<VirtualMachineInstancePropertiesInputStorageProfileDataDisksItem>;
 export const VirtualMachineInstancePropertiesInputStorageProfileDataDisksList =
   /*@__PURE__*/ S.Array(
     VirtualMachineInstancePropertiesInputStorageProfileDataDisksItem,
@@ -12718,7 +12699,7 @@ export const VirtualMachineInstancePropertiesInputStorageProfile =
   }) as any as S.Schema<VirtualMachineInstancePropertiesInputStorageProfile>;
 
 /** The endpoints that should not go through proxy. */
-export type HttpProxyConfigurationNoProxyList = ReadonlyArray<string>;
+export type HttpProxyConfigurationNoProxyList = Array<string>;
 export const HttpProxyConfigurationNoProxyList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<HttpProxyConfigurationNoProxyList>;
@@ -12953,7 +12934,7 @@ export const VirtualMachineInstancePropertiesNetworkProfileNetworkInterfacesItem
 
 /** NetworkInterfaces - list of network interfaces to be attached to the virtual machine instance */
 export type VirtualMachineInstancePropertiesNetworkProfileNetworkInterfacesList =
-  ReadonlyArray<VirtualMachineInstancePropertiesNetworkProfileNetworkInterfacesItem>;
+  Array<VirtualMachineInstancePropertiesNetworkProfileNetworkInterfacesItem>;
 export const VirtualMachineInstancePropertiesNetworkProfileNetworkInterfacesList =
   /*@__PURE__*/ S.Array(
     VirtualMachineInstancePropertiesNetworkProfileNetworkInterfacesItem,
@@ -13111,7 +13092,7 @@ export const VirtualMachineInstancePropertiesStorageProfileDataDisksItem =
 
 /** adds data disks to the virtual machine instance */
 export type VirtualMachineInstancePropertiesStorageProfileDataDisksList =
-  ReadonlyArray<VirtualMachineInstancePropertiesStorageProfileDataDisksItem>;
+  Array<VirtualMachineInstancePropertiesStorageProfileDataDisksItem>;
 export const VirtualMachineInstancePropertiesStorageProfileDataDisksList =
   /*@__PURE__*/ S.Array(
     VirtualMachineInstancePropertiesStorageProfileDataDisksItem,
@@ -13226,7 +13207,7 @@ export const InstanceViewStatus = /*@__PURE__*/ S.suspend(() =>
 
 /** The resource status information. */
 export type VirtualMachineConfigAgentInstanceViewStatusesList =
-  ReadonlyArray<InstanceViewStatus>;
+  Array<InstanceViewStatus>;
 export const VirtualMachineConfigAgentInstanceViewStatusesList =
   /*@__PURE__*/ S.Array(
     InstanceViewStatus,
@@ -13328,7 +13309,7 @@ export type GuestAgentInstallStatusStatus =
 export const GuestAgentInstallStatusStatus = /*@__PURE__*/ S.String;
 
 /** The error details. */
-export type ErrorDetailDetailsList = ReadonlyArray<ErrorDetail>;
+export type ErrorDetailDetailsList = Array<ErrorDetail>;
 export const ErrorDetailDetailsList = /*@__PURE__*/ S.Array(
   S.suspend(() => ErrorDetail),
 ) as any as S.Schema<ErrorDetailDetailsList>;
@@ -13350,7 +13331,7 @@ export const ErrorAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ErrorAdditionalInfo>;
 
 /** The error additional info. */
-export type ErrorDetailAdditionalInfoList = ReadonlyArray<ErrorAdditionalInfo>;
+export type ErrorDetailAdditionalInfoList = Array<ErrorAdditionalInfo>;
 export const ErrorDetailAdditionalInfoList = /*@__PURE__*/ S.Array(
   ErrorAdditionalInfo,
 ) as any as S.Schema<ErrorDetailAdditionalInfoList>;
@@ -13380,7 +13361,7 @@ export const ErrorDetail = /*@__PURE__*/ S.suspend(() =>
 
 /** The error details. */
 export type GuestAgentInstallStatusErrorDetailsItemDetailsList =
-  ReadonlyArray<ErrorDetail>;
+  Array<ErrorDetail>;
 export const GuestAgentInstallStatusErrorDetailsItemDetailsList =
   /*@__PURE__*/ S.Array(
     ErrorDetail,
@@ -13388,7 +13369,7 @@ export const GuestAgentInstallStatusErrorDetailsItemDetailsList =
 
 /** The error additional info. */
 export type GuestAgentInstallStatusErrorDetailsItemAdditionalInfoList =
-  ReadonlyArray<ErrorAdditionalInfo>;
+  Array<ErrorAdditionalInfo>;
 export const GuestAgentInstallStatusErrorDetailsItemAdditionalInfoList =
   /*@__PURE__*/ S.Array(
     ErrorAdditionalInfo,
@@ -13424,7 +13405,7 @@ export const GuestAgentInstallStatusErrorDetailsItem = /*@__PURE__*/ S.suspend(
 
 /** Details about the error state. */
 export type GuestAgentInstallStatusErrorDetailsList =
-  ReadonlyArray<GuestAgentInstallStatusErrorDetailsItem>;
+  Array<GuestAgentInstallStatusErrorDetailsItem>;
 export const GuestAgentInstallStatusErrorDetailsList = /*@__PURE__*/ S.Array(
   GuestAgentInstallStatusErrorDetailsItem,
 ) as any as S.Schema<GuestAgentInstallStatusErrorDetailsList>;
@@ -13793,7 +13774,7 @@ export const VirtualMachineInstance = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VirtualMachineInstance>;
 
 export type VirtualMachineInstanceListResultValueList =
-  ReadonlyArray<VirtualMachineInstance>;
+  Array<VirtualMachineInstance>;
 export const VirtualMachineInstanceListResultValueList = /*@__PURE__*/ S.Array(
   VirtualMachineInstance,
 ) as any as S.Schema<VirtualMachineInstanceListResultValueList>;
@@ -14148,7 +14129,7 @@ export const StorageProfileUpdateDataDisksItem = /*@__PURE__*/ S.suspend(() =>
 
 /** adds data disks to the virtual machine instance for the update call */
 export type StorageProfileUpdateDataDisksList =
-  ReadonlyArray<StorageProfileUpdateDataDisksItem>;
+  Array<StorageProfileUpdateDataDisksItem>;
 export const StorageProfileUpdateDataDisksList = /*@__PURE__*/ S.Array(
   StorageProfileUpdateDataDisksItem,
 ) as any as S.Schema<StorageProfileUpdateDataDisksList>;
@@ -14180,7 +14161,7 @@ export const NetworkProfileUpdateNetworkInterfacesItem =
 
 /** NetworkInterfaces - list of network interfaces to be attached to the virtual machine instance */
 export type NetworkProfileUpdateNetworkInterfacesList =
-  ReadonlyArray<NetworkProfileUpdateNetworkInterfacesItem>;
+  Array<NetworkProfileUpdateNetworkInterfacesItem>;
 export const NetworkProfileUpdateNetworkInterfacesList = /*@__PURE__*/ S.Array(
   NetworkProfileUpdateNetworkInterfacesItem,
 ) as any as S.Schema<NetworkProfileUpdateNetworkInterfacesList>;

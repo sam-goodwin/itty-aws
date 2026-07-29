@@ -36,7 +36,7 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -57,7 +57,7 @@ export type ListWebfontsCapabilityEnum =
   | "FAMILY_TAGS";
 export const ListWebfontsCapabilityEnum = /*@__PURE__*/ S.String;
 
-export type ListWebfontsCapabilityEnumList = ReadonlyArray<
+export type ListWebfontsCapabilityEnumList = Array<
   ListWebfontsCapabilityEnum | (string & {})
 >;
 export const ListWebfontsCapabilityEnumList = /*@__PURE__*/ S.Array(
@@ -114,7 +114,7 @@ export const Tag = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
 
-export type TagList = ReadonlyArray<Tag>;
+export type TagList = Array<Tag>;
 export const TagList = /*@__PURE__*/ S.Array(Tag) as any as S.Schema<TagList>;
 
 /** Metadata for a variable font axis. */
@@ -134,7 +134,7 @@ export const Axis = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Axis" }) as any as S.Schema<Axis>;
 
-export type AxisList = ReadonlyArray<Axis>;
+export type AxisList = Array<Axis>;
 export const AxisList = /*@__PURE__*/ S.Array(
   Axis,
 ) as any as S.Schema<AxisList>;
@@ -183,7 +183,7 @@ export const Webfont = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Webfont" }) as any as S.Schema<Webfont>;
 
-export type WebfontList_ = ReadonlyArray<Webfont>;
+export type WebfontList_ = Array<Webfont>;
 export const WebfontList_ = /*@__PURE__*/ S.Array(
   Webfont,
 ) as any as S.Schema<WebfontList_>;

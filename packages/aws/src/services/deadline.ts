@@ -666,7 +666,7 @@ export const OutputRelativeDirectoriesList = /*@__PURE__*/ S.Array(S.String);
 export interface ManifestProperties {
   fileSystemLocationName?: string;
   rootPath: string;
-  rootPathFormat: PathFormat;
+  rootPathFormat: PathFormat | (string & {});
   outputRelativeDirectories?: string[];
   inputManifestPath?: string;
   inputManifestHash?: string;
@@ -690,7 +690,7 @@ export const JobAttachmentsFileSystem = /*@__PURE__*/ S.String;
 
 export interface Attachments {
   manifests: ManifestProperties[];
-  fileSystem?: JobAttachmentsFileSystem;
+  fileSystem?: JobAttachmentsFileSystem | (string & {});
 }
 export const Attachments = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -931,7 +931,7 @@ export const RunAs = /*@__PURE__*/ S.String;
 export interface JobRunAsUser {
   posix?: PosixUser;
   windows?: WindowsUser;
-  runAs: RunAs;
+  runAs: RunAs | (string & {});
 }
 export const JobRunAsUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2579,7 +2579,7 @@ export const MemoryMiBRange = /*@__PURE__*/ S.suspend(() =>
 export type AcceleratorType = "gpu";
 export const AcceleratorType = /*@__PURE__*/ S.String;
 
-export type AcceleratorTypes = AcceleratorType[];
+export type AcceleratorTypes = (AcceleratorType | (string & {}))[];
 export const AcceleratorTypes = /*@__PURE__*/ S.Array(AcceleratorType);
 export interface AcceleratorCountRange {
   min: number;
@@ -2643,8 +2643,8 @@ export interface CustomerManagedWorkerCapabilities {
   acceleratorTypes?: AcceleratorType[];
   acceleratorCount?: AcceleratorCountRange;
   acceleratorTotalMemoryMiB?: AcceleratorTotalMemoryMiBRange;
-  osFamily: CustomerManagedFleetOperatingSystemFamily;
-  cpuArchitectureType: CpuArchitectureType;
+  osFamily: CustomerManagedFleetOperatingSystemFamily | (string & {});
+  cpuArchitectureType: CpuArchitectureType | (string & {});
   customAmounts?: FleetAmountCapability[];
   customAttributes?: FleetAttributeCapability[];
 }
@@ -2669,11 +2669,11 @@ export type TagPropagationMode =
 export const TagPropagationMode = /*@__PURE__*/ S.String;
 
 export interface CustomerManagedFleetConfiguration {
-  mode: AutoScalingMode;
+  mode: AutoScalingMode | (string & {});
   autoScalingConfiguration?: CustomerManagedAutoScalingConfiguration;
   workerCapabilities: CustomerManagedWorkerCapabilities;
   storageProfileId?: string;
-  tagPropagationMode?: TagPropagationMode;
+  tagPropagationMode?: TagPropagationMode | (string & {});
 }
 export const CustomerManagedFleetConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2715,7 +2715,7 @@ export const AcceleratorName = /*@__PURE__*/ S.String;
 
 export type AcceleratorRuntime = string;
 export interface AcceleratorSelection {
-  name: AcceleratorName;
+  name: AcceleratorName | (string & {});
   runtime?: string;
 }
 export const AcceleratorSelection = /*@__PURE__*/ S.suspend(() =>
@@ -2743,8 +2743,8 @@ export const InstanceTypes = /*@__PURE__*/ S.Array(S.String);
 export interface ServiceManagedEc2InstanceCapabilities {
   vCpuCount: VCpuCountRange;
   memoryMiB: MemoryMiBRange;
-  osFamily: ServiceManagedFleetOperatingSystemFamily;
-  cpuArchitectureType: CpuArchitectureType;
+  osFamily: ServiceManagedFleetOperatingSystemFamily | (string & {});
+  cpuArchitectureType: CpuArchitectureType | (string & {});
   rootEbsVolume?: Ec2EbsVolume;
   acceleratorCapabilities?: AcceleratorCapabilities;
   allowedInstanceTypes?: string[];
@@ -2773,7 +2773,7 @@ export type Ec2MarketType = "on-demand" | "spot" | "wait-and-save";
 export const Ec2MarketType = /*@__PURE__*/ S.String;
 
 export interface ServiceManagedEc2InstanceMarketOptions {
-  type: Ec2MarketType;
+  type: Ec2MarketType | (string & {});
 }
 export const ServiceManagedEc2InstanceMarketOptions = /*@__PURE__*/ S.suspend(
   () => S.Struct({ type: Ec2MarketType }),
@@ -3408,7 +3408,7 @@ export const FileSystemLocationType = /*@__PURE__*/ S.String;
 export interface FileSystemLocation {
   name: string;
   path: string;
-  type: FileSystemLocationType;
+  type: FileSystemLocationType | (string & {});
 }
 export const FileSystemLocation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ name: S.String, path: S.String, type: FileSystemLocationType }),

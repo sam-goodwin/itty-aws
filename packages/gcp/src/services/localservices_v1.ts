@@ -157,7 +157,7 @@ export const GoogleAdsHomeservicesLocalservicesV1AccountReport =
   }) as any as S.Schema<GoogleAdsHomeservicesLocalservicesV1AccountReport>;
 
 export type GoogleAdsHomeservicesLocalservicesV1AccountReportList =
-  ReadonlyArray<GoogleAdsHomeservicesLocalservicesV1AccountReport>;
+  Array<GoogleAdsHomeservicesLocalservicesV1AccountReport>;
 export const GoogleAdsHomeservicesLocalservicesV1AccountReportList =
   /*@__PURE__*/ S.Array(
     GoogleAdsHomeservicesLocalservicesV1AccountReport,
@@ -389,7 +389,7 @@ export const GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport =
   }) as any as S.Schema<GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport>;
 
 export type GoogleAdsHomeservicesLocalservicesV1DetailedLeadReportList =
-  ReadonlyArray<GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport>;
+  Array<GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport>;
 export const GoogleAdsHomeservicesLocalservicesV1DetailedLeadReportList =
   /*@__PURE__*/ S.Array(
     GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport,

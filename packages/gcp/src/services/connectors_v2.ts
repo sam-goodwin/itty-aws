@@ -245,7 +245,7 @@ export const DeleteProjectsLocationsConnectionsEntityTypesEntitiesRequest =
     identifier: "DeleteProjectsLocationsConnectionsEntityTypesEntitiesRequest",
   }) as any as S.Schema<DeleteProjectsLocationsConnectionsEntityTypesEntitiesRequest>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -397,7 +397,7 @@ export const HttpHeader = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "HttpHeader" }) as any as S.Schema<HttpHeader>;
 
-export type HttpHeaderList = ReadonlyArray<HttpHeader>;
+export type HttpHeaderList = Array<HttpHeader>;
 export const HttpHeaderList = /*@__PURE__*/ S.Array(
   HttpHeader,
 ) as any as S.Schema<HttpHeaderList>;
@@ -504,7 +504,7 @@ export const ExecuteProjectsLocationsConnectionsActionsRequest =
     identifier: "ExecuteProjectsLocationsConnectionsActionsRequest",
   }) as any as S.Schema<ExecuteProjectsLocationsConnectionsActionsRequest>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -645,7 +645,7 @@ export const QueryParameter = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "QueryParameter" }) as any as S.Schema<QueryParameter>;
 
-export type QueryParameterList = ReadonlyArray<QueryParameter>;
+export type QueryParameterList = Array<QueryParameter>;
 export const QueryParameterList = /*@__PURE__*/ S.Array(
   QueryParameter,
 ) as any as S.Schema<QueryParameterList>;
@@ -731,7 +731,7 @@ export interface ToolName {
   /** Tool name that was generated in the list tools call. */
   name?: string;
   /** Operation for which the tool was generated. */
-  operation?: ToolNameOperationEnum;
+  operation?: ToolNameOperationEnum | (string & {});
   /** Entity name for which the tool was generated. */
   entityName?: string;
 }
@@ -743,7 +743,7 @@ export const ToolName = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ToolName" }) as any as S.Schema<ToolName>;
 
-export type ToolNameList = ReadonlyArray<ToolName>;
+export type ToolNameList = Array<ToolName>;
 export const ToolNameList = /*@__PURE__*/ S.Array(
   ToolName,
 ) as any as S.Schema<ToolNameList>;
@@ -890,7 +890,7 @@ export type InputParameterDataTypeEnum =
   | "TIMESTAMP_WITH_TIMEZONE";
 export const InputParameterDataTypeEnum = /*@__PURE__*/ S.String;
 
-export type DocumentList = ReadonlyArray<unknown>;
+export type DocumentList = Array<unknown>;
 export const DocumentList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<DocumentList>;
@@ -901,7 +901,7 @@ export const JsonSchemaMap = /*@__PURE__*/ S.Record(
   S.suspend(() => JsonSchema),
 ) as any as S.Schema<JsonSchemaMap>;
 
-export type JsonSchemaList = ReadonlyArray<JsonSchema>;
+export type JsonSchemaList = Array<JsonSchema>;
 export const JsonSchemaList = /*@__PURE__*/ S.Array(
   S.suspend(() => JsonSchema),
 ) as any as S.Schema<JsonSchemaList>;
@@ -1138,7 +1138,7 @@ export const InputParameter = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "InputParameter" }) as any as S.Schema<InputParameter>;
 
-export type InputParameterList = ReadonlyArray<InputParameter>;
+export type InputParameterList = Array<InputParameter>;
 export const InputParameterList = /*@__PURE__*/ S.Array(
   InputParameter,
 ) as any as S.Schema<InputParameterList>;
@@ -1217,7 +1217,7 @@ export const ResultMetadata = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ResultMetadata" }) as any as S.Schema<ResultMetadata>;
 
-export type ResultMetadataList = ReadonlyArray<ResultMetadata>;
+export type ResultMetadataList = Array<ResultMetadata>;
 export const ResultMetadataList = /*@__PURE__*/ S.Array(
   ResultMetadata,
 ) as any as S.Schema<ResultMetadataList>;
@@ -1387,7 +1387,7 @@ export const Field = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Field" }) as any as S.Schema<Field>;
 
-export type FieldList = ReadonlyArray<Field>;
+export type FieldList = Array<Field>;
 export const FieldList = /*@__PURE__*/ S.Array(
   Field,
 ) as any as S.Schema<FieldList>;
@@ -1402,7 +1402,7 @@ export type EntityTypeOperationsItemEnum =
 export const EntityTypeOperationsItemEnum = /*@__PURE__*/ S.String;
 
 export type EntityTypeOperationsItemEnumList =
-  ReadonlyArray<EntityTypeOperationsItemEnum>;
+  Array<EntityTypeOperationsItemEnum>;
 export const EntityTypeOperationsItemEnumList = /*@__PURE__*/ S.Array(
   EntityTypeOperationsItemEnum,
 ) as any as S.Schema<EntityTypeOperationsItemEnumList>;
@@ -1605,7 +1605,7 @@ export const ListProjectsLocationsConnectionsActionsRequest =
     identifier: "ListProjectsLocationsConnectionsActionsRequest",
   }) as any as S.Schema<ListProjectsLocationsConnectionsActionsRequest>;
 
-export type ActionList = ReadonlyArray<Action>;
+export type ActionList = Array<Action>;
 export const ActionList = /*@__PURE__*/ S.Array(
   Action,
 ) as any as S.Schema<ActionList>;
@@ -1672,7 +1672,7 @@ export const ListProjectsLocationsConnectionsEntityTypesRequest =
     identifier: "ListProjectsLocationsConnectionsEntityTypesRequest",
   }) as any as S.Schema<ListProjectsLocationsConnectionsEntityTypesRequest>;
 
-export type EntityTypeList = ReadonlyArray<EntityType>;
+export type EntityTypeList = Array<EntityType>;
 export const EntityTypeList = /*@__PURE__*/ S.Array(
   EntityType,
 ) as any as S.Schema<EntityTypeList>;
@@ -1736,7 +1736,7 @@ export const ListProjectsLocationsConnectionsEntityTypesEntitiesRequest =
     identifier: "ListProjectsLocationsConnectionsEntityTypesEntitiesRequest",
   }) as any as S.Schema<ListProjectsLocationsConnectionsEntityTypesEntitiesRequest>;
 
-export type EntityList = ReadonlyArray<Entity>;
+export type EntityList = Array<Entity>;
 export const EntityList = /*@__PURE__*/ S.Array(
   Entity,
 ) as any as S.Schema<EntityList>;
@@ -1813,7 +1813,7 @@ export const Resource = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Resource" }) as any as S.Schema<Resource>;
 
-export type ResourceList = ReadonlyArray<Resource>;
+export type ResourceList = Array<Resource>;
 export const ResourceList = /*@__PURE__*/ S.Array(
   Resource,
 ) as any as S.Schema<ResourceList>;
@@ -1921,7 +1921,7 @@ export const Tool = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Tool" }) as any as S.Schema<Tool>;
 
-export type ToolList = ReadonlyArray<Tool>;
+export type ToolList = Array<Tool>;
 export const ToolList = /*@__PURE__*/ S.Array(
   Tool,
 ) as any as S.Schema<ToolList>;

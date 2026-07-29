@@ -256,7 +256,7 @@ export type ManagedScalingTargetCapacity = number;
 export type ManagedScalingStepSize = number;
 export type ManagedScalingInstanceWarmupPeriod = number;
 export interface ManagedScaling {
-  status?: ManagedScalingStatus;
+  status?: ManagedScalingStatus | (string & {});
   targetCapacity?: number;
   minimumScalingStepSize?: number;
   maximumScalingStepSize?: number;
@@ -280,8 +280,8 @@ export const ManagedDraining = /*@__PURE__*/ S.String;
 export interface AutoScalingGroupProvider {
   autoScalingGroupArn: string;
   managedScaling?: ManagedScaling;
-  managedTerminationProtection?: ManagedTerminationProtection;
-  managedDraining?: ManagedDraining;
+  managedTerminationProtection?: ManagedTerminationProtection | (string & {});
+  managedDraining?: ManagedDraining | (string & {});
 }
 export const AutoScalingGroupProvider = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -355,7 +355,7 @@ export const MemoryMiBRequest = /*@__PURE__*/ S.suspend(() =>
 export type CpuManufacturer = "intel" | "amd" | "amazon-web-services";
 export const CpuManufacturer = /*@__PURE__*/ S.String;
 
-export type CpuManufacturerSet = CpuManufacturer[];
+export type CpuManufacturerSet = (CpuManufacturer | (string & {}))[];
 export const CpuManufacturerSet = /*@__PURE__*/ S.Array(
   CpuManufacturer.pipe(T.XmlName("item")),
 );
@@ -377,7 +377,7 @@ export const ExcludedInstanceTypeSet = /*@__PURE__*/ S.Array(
 export type InstanceGeneration = "current" | "previous";
 export const InstanceGeneration = /*@__PURE__*/ S.String;
 
-export type InstanceGenerationSet = InstanceGeneration[];
+export type InstanceGenerationSet = (InstanceGeneration | (string & {}))[];
 export const InstanceGenerationSet = /*@__PURE__*/ S.Array(
   InstanceGeneration.pipe(T.XmlName("item")),
 );
@@ -402,7 +402,7 @@ export const LocalStorage = /*@__PURE__*/ S.String;
 export type LocalStorageType = "hdd" | "ssd";
 export const LocalStorageType = /*@__PURE__*/ S.String;
 
-export type LocalStorageTypeSet = LocalStorageType[];
+export type LocalStorageTypeSet = (LocalStorageType | (string & {}))[];
 export const LocalStorageTypeSet = /*@__PURE__*/ S.Array(
   LocalStorageType.pipe(T.XmlName("item")),
 );
@@ -427,7 +427,7 @@ export const BaselineEbsBandwidthMbpsRequest = /*@__PURE__*/ S.suspend(() =>
 export type AcceleratorType = "gpu" | "fpga" | "inference";
 export const AcceleratorType = /*@__PURE__*/ S.String;
 
-export type AcceleratorTypeSet = AcceleratorType[];
+export type AcceleratorTypeSet = (AcceleratorType | (string & {}))[];
 export const AcceleratorTypeSet = /*@__PURE__*/ S.Array(
   AcceleratorType.pipe(T.XmlName("item")),
 );
@@ -448,7 +448,10 @@ export type AcceleratorManufacturer =
   | "habana";
 export const AcceleratorManufacturer = /*@__PURE__*/ S.String;
 
-export type AcceleratorManufacturerSet = AcceleratorManufacturer[];
+export type AcceleratorManufacturerSet = (
+  | AcceleratorManufacturer
+  | (string & {})
+)[];
 export const AcceleratorManufacturerSet = /*@__PURE__*/ S.Array(
   AcceleratorManufacturer.pipe(T.XmlName("item")),
 );
@@ -467,7 +470,7 @@ export type AcceleratorName =
   | "t4g";
 export const AcceleratorName = /*@__PURE__*/ S.String;
 
-export type AcceleratorNameSet = AcceleratorName[];
+export type AcceleratorNameSet = (AcceleratorName | (string & {}))[];
 export const AcceleratorNameSet = /*@__PURE__*/ S.Array(
   AcceleratorName.pipe(T.XmlName("item")),
 );
@@ -503,11 +506,11 @@ export interface InstanceRequirementsRequest {
   instanceGenerations?: InstanceGeneration[];
   spotMaxPricePercentageOverLowestPrice?: number;
   onDemandMaxPricePercentageOverLowestPrice?: number;
-  bareMetal?: BareMetal;
-  burstablePerformance?: BurstablePerformance;
+  bareMetal?: BareMetal | (string & {});
+  burstablePerformance?: BurstablePerformance | (string & {});
   requireHibernateSupport?: boolean;
   networkInterfaceCount?: NetworkInterfaceCountRequest;
-  localStorage?: LocalStorage;
+  localStorage?: LocalStorage | (string & {});
   localStorageTypes?: LocalStorageType[];
   totalLocalStorageGB?: TotalLocalStorageGBRequest;
   baselineEbsBandwidthMbps?: BaselineEbsBandwidthMbpsRequest;
@@ -574,7 +577,7 @@ export const CapacityReservationPreference = /*@__PURE__*/ S.String;
 
 export interface CapacityReservationRequest {
   reservationGroupArn?: string;
-  reservationPreference?: CapacityReservationPreference;
+  reservationPreference?: CapacityReservationPreference | (string & {});
 }
 export const CapacityReservationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -589,8 +592,8 @@ export interface InstanceLaunchTemplate {
   networkConfiguration: ManagedInstancesNetworkConfiguration;
   storageConfiguration?: ManagedInstancesStorageConfiguration;
   localStorageConfiguration?: ManagedInstancesLocalStorageConfiguration;
-  monitoring?: ManagedInstancesMonitoringOptions;
-  capacityOptionType?: CapacityOptionType;
+  monitoring?: ManagedInstancesMonitoringOptions | (string & {});
+  capacityOptionType?: CapacityOptionType | (string & {});
   instanceMetadataTagsPropagation?: boolean;
   instanceRequirements?: InstanceRequirementsRequest;
   fipsEnabled?: boolean;
@@ -629,7 +632,7 @@ export type AutoRepairActionsStatus = "ENABLED" | "DISABLED";
 export const AutoRepairActionsStatus = /*@__PURE__*/ S.String;
 
 export interface AutoRepairConfiguration {
-  actionsStatus?: AutoRepairActionsStatus;
+  actionsStatus?: AutoRepairActionsStatus | (string & {});
 }
 export const AutoRepairConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ actionsStatus: S.optional(AutoRepairActionsStatus) }),
@@ -780,7 +783,7 @@ export type ClusterSettingName = "containerInsights";
 export const ClusterSettingName = /*@__PURE__*/ S.String;
 
 export interface ClusterSetting {
-  name?: ClusterSettingName;
+  name?: ClusterSettingName | (string & {});
   value?: string;
 }
 export const ClusterSetting = /*@__PURE__*/ S.suspend(() =>
@@ -814,7 +817,7 @@ export const ExecuteCommandLogConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExecuteCommandLogConfiguration>;
 export interface ExecuteCommandConfiguration {
   kmsKeyId?: string;
-  logging?: ExecuteCommandLogging;
+  logging?: ExecuteCommandLogging | (string & {});
   logConfiguration?: ExecuteCommandLogConfiguration;
 }
 export const ExecuteCommandConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -1151,7 +1154,7 @@ export const ExpressGatewayServiceScalingMetric = /*@__PURE__*/ S.String;
 export interface ExpressGatewayScalingTarget {
   minTaskCount?: number;
   maxTaskCount?: number;
-  autoScalingMetric?: ExpressGatewayServiceScalingMetric;
+  autoScalingMetric?: ExpressGatewayServiceScalingMetric | (string & {});
   autoScalingTargetValue?: number;
 }
 export const ExpressGatewayScalingTarget = /*@__PURE__*/ S.suspend(() =>
@@ -1375,7 +1378,7 @@ export type ThresholdType = "COUNT" | "BOUNDED_PERCENT" | "UNBOUNDED_PERCENT";
 export const ThresholdType = /*@__PURE__*/ S.String;
 
 export interface ThresholdConfiguration {
-  type: ThresholdType;
+  type: ThresholdType | (string & {});
   value: number;
 }
 export const ThresholdConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -1427,7 +1430,10 @@ export type DeploymentLifecycleHookStage =
   | "POST_PRODUCTION_TRAFFIC_SHIFT";
 export const DeploymentLifecycleHookStage = /*@__PURE__*/ S.String;
 
-export type DeploymentLifecycleHookStageList = DeploymentLifecycleHookStage[];
+export type DeploymentLifecycleHookStageList = (
+  | DeploymentLifecycleHookStage
+  | (string & {})
+)[];
 export const DeploymentLifecycleHookStageList = /*@__PURE__*/ S.Array(
   DeploymentLifecycleHookStage,
 );
@@ -1435,7 +1441,7 @@ export type HookDetails = unknown;
 export type DeploymentLifecycleHookDuration = number;
 export interface DeploymentLifecycleHookTimeoutConfiguration {
   timeoutInMinutes?: number;
-  action?: DeploymentLifecycleHookAction;
+  action?: DeploymentLifecycleHookAction | (string & {});
 }
 export const DeploymentLifecycleHookTimeoutConfiguration =
   /*@__PURE__*/ S.suspend(() =>
@@ -1447,7 +1453,7 @@ export const DeploymentLifecycleHookTimeoutConfiguration =
     identifier: "DeploymentLifecycleHookTimeoutConfiguration",
   }) as any as S.Schema<DeploymentLifecycleHookTimeoutConfiguration>;
 export interface DeploymentLifecycleHook {
-  targetType?: DeploymentLifecycleHookTargetType;
+  targetType?: DeploymentLifecycleHookTargetType | (string & {});
   hookTargetArn?: string;
   roleArn?: string;
   lifecycleStages?: DeploymentLifecycleHookStage[];
@@ -1501,7 +1507,7 @@ export interface DeploymentConfiguration {
   maximumPercent?: number;
   minimumHealthyPercent?: number;
   alarms?: DeploymentAlarms;
-  strategy?: DeploymentStrategy;
+  strategy?: DeploymentStrategy | (string & {});
   bakeTimeInMinutes?: number;
   lifecycleHooks?: DeploymentLifecycleHook[];
   linearConfiguration?: LinearConfiguration;
@@ -1526,7 +1532,7 @@ export type PlacementConstraintType = "distinctInstance" | "memberOf";
 export const PlacementConstraintType = /*@__PURE__*/ S.String;
 
 export interface PlacementConstraint {
-  type?: PlacementConstraintType;
+  type?: PlacementConstraintType | (string & {});
   expression?: string;
 }
 export const PlacementConstraint = /*@__PURE__*/ S.suspend(() =>
@@ -1543,7 +1549,7 @@ export type PlacementStrategyType = "random" | "spread" | "binpack";
 export const PlacementStrategyType = /*@__PURE__*/ S.String;
 
 export interface PlacementStrategy {
-  type?: PlacementStrategyType;
+  type?: PlacementStrategyType | (string & {});
   field?: string;
 }
 export const PlacementStrategy = /*@__PURE__*/ S.suspend(() =>
@@ -1562,7 +1568,7 @@ export const AssignPublicIp = /*@__PURE__*/ S.String;
 export interface AwsVpcConfiguration {
   subnets: string[];
   securityGroups?: string[];
-  assignPublicIp?: AssignPublicIp;
+  assignPublicIp?: AssignPublicIp | (string & {});
 }
 export const AwsVpcConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1588,7 +1594,7 @@ export type DeploymentControllerType = "ECS" | "CODE_DEPLOY" | "EXTERNAL";
 export const DeploymentControllerType = /*@__PURE__*/ S.String;
 
 export interface DeploymentController {
-  type: DeploymentControllerType;
+  type: DeploymentControllerType | (string & {});
 }
 export const DeploymentController = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ type: DeploymentControllerType }),
@@ -1721,7 +1727,7 @@ export const LogConfigurationOptionsMap = /*@__PURE__*/ S.Record(
   S.String.pipe(S.optional),
 );
 export interface LogConfiguration {
-  logDriver: LogDriver;
+  logDriver: LogDriver | (string & {});
   options?: { [key: string]: string | undefined };
   secretOptions?: Secret[];
 }
@@ -1741,8 +1747,8 @@ export type ServiceConnectIncludeQueryParameters = "DISABLED" | "ENABLED";
 export const ServiceConnectIncludeQueryParameters = /*@__PURE__*/ S.String;
 
 export interface ServiceConnectAccessLogConfiguration {
-  format: ServiceConnectAccessLoggingFormat;
-  includeQueryParameters?: ServiceConnectIncludeQueryParameters;
+  format: ServiceConnectAccessLoggingFormat | (string & {});
+  includeQueryParameters?: ServiceConnectIncludeQueryParameters | (string & {});
 }
 export const ServiceConnectAccessLogConfiguration = /*@__PURE__*/ S.suspend(
   () =>
@@ -1779,9 +1785,9 @@ export type EBSResourceType = "volume";
 export const EBSResourceType = /*@__PURE__*/ S.String;
 
 export interface EBSTagSpecification {
-  resourceType: EBSResourceType;
+  resourceType: EBSResourceType | (string & {});
   tags?: Tag[];
-  propagateTags?: PropagateTags;
+  propagateTags?: PropagateTags | (string & {});
 }
 export const EBSTagSpecification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1808,7 +1814,7 @@ export interface ServiceManagedEBSVolumeConfiguration {
   throughput?: number;
   tagSpecifications?: EBSTagSpecification[];
   roleArn: string;
-  filesystemType?: TaskFilesystemType;
+  filesystemType?: TaskFilesystemType | (string & {});
 }
 export const ServiceManagedEBSVolumeConfiguration = /*@__PURE__*/ S.suspend(
   () =>
@@ -1959,7 +1965,7 @@ export const ScaleUnit = /*@__PURE__*/ S.String;
 
 export interface Scale {
   value?: number;
-  unit?: ScaleUnit;
+  unit?: ScaleUnit | (string & {});
 }
 export const Scale = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ value: S.optional(S.Number), unit: S.optional(ScaleUnit) }),
@@ -2341,7 +2347,7 @@ export const TargetType = /*@__PURE__*/ S.String;
 export interface Attribute {
   name: string;
   value?: string;
-  targetType?: TargetType;
+  targetType?: TargetType | (string & {});
   targetId?: string;
 }
 export const Attribute = /*@__PURE__*/ S.suspend(() =>
@@ -2589,9 +2595,9 @@ export const ApplicationProtocol = /*@__PURE__*/ S.String;
 export interface PortMapping {
   containerPort?: number;
   hostPort?: number;
-  protocol?: TransportProtocol;
+  protocol?: TransportProtocol | (string & {});
   name?: string;
-  appProtocol?: ApplicationProtocol;
+  appProtocol?: ApplicationProtocol | (string & {});
   containerPortRange?: string;
 }
 export const PortMapping = /*@__PURE__*/ S.suspend(() =>
@@ -2627,7 +2633,7 @@ export const EnvironmentFileType = /*@__PURE__*/ S.String;
 
 export interface EnvironmentFile {
   value: string;
-  type: EnvironmentFileType;
+  type: EnvironmentFileType | (string & {});
 }
 export const EnvironmentFile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ value: S.String, type: EnvironmentFileType }),
@@ -2674,7 +2680,10 @@ export const KernelCapabilities = /*@__PURE__*/ S.suspend(() =>
 export type DeviceCgroupPermission = "read" | "write" | "mknod";
 export const DeviceCgroupPermission = /*@__PURE__*/ S.String;
 
-export type DeviceCgroupPermissions = DeviceCgroupPermission[];
+export type DeviceCgroupPermissions = (
+  | DeviceCgroupPermission
+  | (string & {})
+)[];
 export const DeviceCgroupPermissions = /*@__PURE__*/ S.Array(
   DeviceCgroupPermission,
 );
@@ -2733,7 +2742,7 @@ export const ContainerCondition = /*@__PURE__*/ S.String;
 
 export interface ContainerDependency {
   containerName: string;
-  condition: ContainerCondition;
+  condition: ContainerCondition | (string & {});
 }
 export const ContainerDependency = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ containerName: S.String, condition: ContainerCondition }),
@@ -2778,7 +2787,7 @@ export type UlimitName =
 export const UlimitName = /*@__PURE__*/ S.String;
 
 export interface Ulimit {
-  name: UlimitName;
+  name: UlimitName | (string & {});
   softLimit: number;
   hardLimit: number;
 }
@@ -2817,7 +2826,7 @@ export const ResourceType = /*@__PURE__*/ S.String;
 
 export interface ResourceRequirement {
   value: string;
-  type: ResourceType;
+  type: ResourceType | (string & {});
 }
 export const ResourceRequirement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ value: S.String, type: ResourceType }),
@@ -2837,7 +2846,7 @@ export const FirelensConfigurationOptionsMap = /*@__PURE__*/ S.Record(
   S.String.pipe(S.optional),
 );
 export interface FirelensConfiguration {
-  type: FirelensConfigurationType;
+  type: FirelensConfigurationType | (string & {});
   options?: { [key: string]: string | undefined };
 }
 export const FirelensConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -2870,7 +2879,7 @@ export interface ContainerDefinition {
   dependsOn?: ContainerDependency[];
   startTimeout?: number;
   stopTimeout?: number;
-  versionConsistency?: VersionConsistency;
+  versionConsistency?: VersionConsistency | (string & {});
   hostname?: string;
   user?: string;
   workingDirectory?: string;
@@ -2962,7 +2971,7 @@ export const StringMap = /*@__PURE__*/ S.Record(
   S.String.pipe(S.optional),
 );
 export interface DockerVolumeConfiguration {
-  scope?: Scope;
+  scope?: Scope | (string & {});
   autoprovision?: boolean;
   driver?: string;
   driverOpts?: { [key: string]: string | undefined };
@@ -2987,7 +2996,7 @@ export const EFSAuthorizationConfigIAM = /*@__PURE__*/ S.String;
 
 export interface EFSAuthorizationConfig {
   accessPointId?: string;
-  iam?: EFSAuthorizationConfigIAM;
+  iam?: EFSAuthorizationConfigIAM | (string & {});
 }
 export const EFSAuthorizationConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3000,7 +3009,7 @@ export const EFSAuthorizationConfig = /*@__PURE__*/ S.suspend(() =>
 export interface EFSVolumeConfiguration {
   fileSystemId: string;
   rootDirectory?: string;
-  transitEncryption?: EFSTransitEncryption;
+  transitEncryption?: EFSTransitEncryption | (string & {});
   transitEncryptionPort?: number;
   authorizationConfig?: EFSAuthorizationConfig;
 }
@@ -3088,7 +3097,7 @@ export type TaskDefinitionPlacementConstraintType = "memberOf";
 export const TaskDefinitionPlacementConstraintType = /*@__PURE__*/ S.String;
 
 export interface TaskDefinitionPlacementConstraint {
-  type?: TaskDefinitionPlacementConstraintType;
+  type?: TaskDefinitionPlacementConstraintType | (string & {});
   expression?: string;
 }
 export const TaskDefinitionPlacementConstraint = /*@__PURE__*/ S.suspend(() =>
@@ -3111,7 +3120,7 @@ export type Compatibility =
   | "MANAGED_INSTANCES";
 export const Compatibility = /*@__PURE__*/ S.String;
 
-export type CompatibilityList = Compatibility[];
+export type CompatibilityList = (Compatibility | (string & {}))[];
 export const CompatibilityList = /*@__PURE__*/ S.Array(Compatibility);
 export type CPUArchitecture = "X86_64" | "ARM64";
 export const CPUArchitecture = /*@__PURE__*/ S.String;
@@ -3130,8 +3139,8 @@ export type OSFamily =
 export const OSFamily = /*@__PURE__*/ S.String;
 
 export interface RuntimePlatform {
-  cpuArchitecture?: CPUArchitecture;
-  operatingSystemFamily?: OSFamily;
+  cpuArchitecture?: CPUArchitecture | (string & {});
+  operatingSystemFamily?: OSFamily | (string & {});
 }
 export const RuntimePlatform = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3165,7 +3174,7 @@ export const ProxyConfigurationType = /*@__PURE__*/ S.String;
 export type ProxyConfigurationProperties = KeyValuePair[];
 export const ProxyConfigurationProperties = /*@__PURE__*/ S.Array(KeyValuePair);
 export interface ProxyConfiguration {
-  type?: ProxyConfigurationType;
+  type?: ProxyConfigurationType | (string & {});
   containerName: string;
   properties?: KeyValuePair[];
 }
@@ -4894,7 +4903,7 @@ export interface NetworkBinding {
   bindIP?: string;
   containerPort?: number;
   hostPort?: number;
-  protocol?: TransportProtocol;
+  protocol?: TransportProtocol | (string & {});
   containerPortRange?: string;
   hostPortRange?: string;
 }

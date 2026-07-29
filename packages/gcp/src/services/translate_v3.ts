@@ -93,7 +93,7 @@ export const ReferenceSentencePair = /*@__PURE__*/ S.suspend(() =>
   identifier: "ReferenceSentencePair",
 }) as any as S.Schema<ReferenceSentencePair>;
 
-export type ReferenceSentencePairList_ = ReadonlyArray<ReferenceSentencePair>;
+export type ReferenceSentencePairList_ = Array<ReferenceSentencePair>;
 export const ReferenceSentencePairList_ = /*@__PURE__*/ S.Array(
   ReferenceSentencePair,
 ) as any as S.Schema<ReferenceSentencePairList_>;
@@ -111,8 +111,7 @@ export const ReferenceSentencePairList = /*@__PURE__*/ S.suspend(() =>
   identifier: "ReferenceSentencePairList",
 }) as any as S.Schema<ReferenceSentencePairList>;
 
-export type ReferenceSentencePairListList =
-  ReadonlyArray<ReferenceSentencePairList>;
+export type ReferenceSentencePairListList = Array<ReferenceSentencePairList>;
 export const ReferenceSentencePairListList = /*@__PURE__*/ S.Array(
   ReferenceSentencePairList,
 ) as any as S.Schema<ReferenceSentencePairListList>;
@@ -136,7 +135,7 @@ export const ReferenceSentenceConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "ReferenceSentenceConfig",
 }) as any as S.Schema<ReferenceSentenceConfig>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -198,7 +197,7 @@ export const AdaptiveMtTranslation = /*@__PURE__*/ S.suspend(() =>
   identifier: "AdaptiveMtTranslation",
 }) as any as S.Schema<AdaptiveMtTranslation>;
 
-export type AdaptiveMtTranslationList = ReadonlyArray<AdaptiveMtTranslation>;
+export type AdaptiveMtTranslationList = Array<AdaptiveMtTranslation>;
 export const AdaptiveMtTranslationList = /*@__PURE__*/ S.Array(
   AdaptiveMtTranslation,
 ) as any as S.Schema<AdaptiveMtTranslationList>;
@@ -276,8 +275,7 @@ export const BatchDocumentInputConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "BatchDocumentInputConfig",
 }) as any as S.Schema<BatchDocumentInputConfig>;
 
-export type BatchDocumentInputConfigList =
-  ReadonlyArray<BatchDocumentInputConfig>;
+export type BatchDocumentInputConfigList = Array<BatchDocumentInputConfig>;
 export const BatchDocumentInputConfigList = /*@__PURE__*/ S.Array(
   BatchDocumentInputConfig,
 ) as any as S.Schema<BatchDocumentInputConfigList>;
@@ -380,7 +378,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -450,7 +448,7 @@ export const InputConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "InputConfig" }) as any as S.Schema<InputConfig>;
 
-export type InputConfigList = ReadonlyArray<InputConfig>;
+export type InputConfigList = Array<InputConfig>;
 export const InputConfigList = /*@__PURE__*/ S.Array(
   InputConfig,
 ) as any as S.Schema<InputConfigList>;
@@ -767,7 +765,7 @@ export const GlossaryTerm = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "GlossaryTerm" }) as any as S.Schema<GlossaryTerm>;
 
-export type GlossaryTermList = ReadonlyArray<GlossaryTerm>;
+export type GlossaryTermList = Array<GlossaryTerm>;
 export const GlossaryTermList = /*@__PURE__*/ S.Array(
   GlossaryTerm,
 ) as any as S.Schema<GlossaryTermList>;
@@ -1118,7 +1116,7 @@ export const DetectedLanguage = /*@__PURE__*/ S.suspend(() =>
   identifier: "DetectedLanguage",
 }) as any as S.Schema<DetectedLanguage>;
 
-export type DetectedLanguageList = ReadonlyArray<DetectedLanguage>;
+export type DetectedLanguageList = Array<DetectedLanguage>;
 export const DetectedLanguageList = /*@__PURE__*/ S.Array(
   DetectedLanguage,
 ) as any as S.Schema<DetectedLanguageList>;
@@ -1461,7 +1459,7 @@ export const SupportedLanguage = /*@__PURE__*/ S.suspend(() =>
   identifier: "SupportedLanguage",
 }) as any as S.Schema<SupportedLanguage>;
 
-export type SupportedLanguageList = ReadonlyArray<SupportedLanguage>;
+export type SupportedLanguageList = Array<SupportedLanguage>;
 export const SupportedLanguageList = /*@__PURE__*/ S.Array(
   SupportedLanguage,
 ) as any as S.Schema<SupportedLanguageList>;
@@ -1600,7 +1598,7 @@ export const InputFile = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "InputFile" }) as any as S.Schema<InputFile>;
 
-export type InputFileList = ReadonlyArray<InputFile>;
+export type InputFileList = Array<InputFile>;
 export const InputFileList = /*@__PURE__*/ S.Array(
   InputFile,
 ) as any as S.Schema<InputFileList>;
@@ -1683,7 +1681,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = ReadonlyArray<Location>;
+export type LocationList = Array<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -1732,7 +1730,7 @@ export const ListProjectsLocationsAdaptiveMtDatasetsRequest =
     identifier: "ListProjectsLocationsAdaptiveMtDatasetsRequest",
   }) as any as S.Schema<ListProjectsLocationsAdaptiveMtDatasetsRequest>;
 
-export type AdaptiveMtDatasetList = ReadonlyArray<AdaptiveMtDataset>;
+export type AdaptiveMtDatasetList = Array<AdaptiveMtDataset>;
 export const AdaptiveMtDatasetList = /*@__PURE__*/ S.Array(
   AdaptiveMtDataset,
 ) as any as S.Schema<AdaptiveMtDatasetList>;
@@ -1778,7 +1776,7 @@ export const ListProjectsLocationsAdaptiveMtDatasetsAdaptiveMtFilesRequest =
     identifier: "ListProjectsLocationsAdaptiveMtDatasetsAdaptiveMtFilesRequest",
   }) as any as S.Schema<ListProjectsLocationsAdaptiveMtDatasetsAdaptiveMtFilesRequest>;
 
-export type AdaptiveMtFileList = ReadonlyArray<AdaptiveMtFile>;
+export type AdaptiveMtFileList = Array<AdaptiveMtFile>;
 export const AdaptiveMtFileList = /*@__PURE__*/ S.Array(
   AdaptiveMtFile,
 ) as any as S.Schema<AdaptiveMtFileList>;
@@ -1849,7 +1847,7 @@ export const AdaptiveMtSentence = /*@__PURE__*/ S.suspend(() =>
   identifier: "AdaptiveMtSentence",
 }) as any as S.Schema<AdaptiveMtSentence>;
 
-export type AdaptiveMtSentenceList = ReadonlyArray<AdaptiveMtSentence>;
+export type AdaptiveMtSentenceList = Array<AdaptiveMtSentence>;
 export const AdaptiveMtSentenceList = /*@__PURE__*/ S.Array(
   AdaptiveMtSentence,
 ) as any as S.Schema<AdaptiveMtSentenceList>;
@@ -1920,7 +1918,7 @@ export const ListProjectsLocationsDatasetsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsDatasetsRequest",
 }) as any as S.Schema<ListProjectsLocationsDatasetsRequest>;
 
-export type DatasetList = ReadonlyArray<Dataset>;
+export type DatasetList = Array<Dataset>;
 export const DatasetList = /*@__PURE__*/ S.Array(
   Dataset,
 ) as any as S.Schema<DatasetList>;
@@ -1989,7 +1987,7 @@ export const Example = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Example" }) as any as S.Schema<Example>;
 
-export type ExampleList = ReadonlyArray<Example>;
+export type ExampleList = Array<Example>;
 export const ExampleList = /*@__PURE__*/ S.Array(
   Example,
 ) as any as S.Schema<ExampleList>;
@@ -2038,7 +2036,7 @@ export const ListProjectsLocationsGlossariesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsGlossariesRequest",
 }) as any as S.Schema<ListProjectsLocationsGlossariesRequest>;
 
-export type GlossaryList = ReadonlyArray<Glossary>;
+export type GlossaryList = Array<Glossary>;
 export const GlossaryList = /*@__PURE__*/ S.Array(
   Glossary,
 ) as any as S.Schema<GlossaryList>;
@@ -2084,7 +2082,7 @@ export const ListProjectsLocationsGlossariesGlossaryEntriesRequest =
     identifier: "ListProjectsLocationsGlossariesGlossaryEntriesRequest",
   }) as any as S.Schema<ListProjectsLocationsGlossariesGlossaryEntriesRequest>;
 
-export type GlossaryEntryList = ReadonlyArray<GlossaryEntry>;
+export type GlossaryEntryList = Array<GlossaryEntry>;
 export const GlossaryEntryList = /*@__PURE__*/ S.Array(
   GlossaryEntry,
 ) as any as S.Schema<GlossaryEntryList>;
@@ -2132,7 +2130,7 @@ export const ListProjectsLocationsModelsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsModelsRequest",
 }) as any as S.Schema<ListProjectsLocationsModelsRequest>;
 
-export type ModelList = ReadonlyArray<Model>;
+export type ModelList = Array<Model>;
 export const ModelList = /*@__PURE__*/ S.Array(
   Model,
 ) as any as S.Schema<ModelList>;
@@ -2184,7 +2182,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type OperationList = ReadonlyArray<Operation>;
+export type OperationList = Array<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -2271,7 +2269,7 @@ export const RefinementEntry = /*@__PURE__*/ S.suspend(() =>
   identifier: "RefinementEntry",
 }) as any as S.Schema<RefinementEntry>;
 
-export type RefinementEntryList = ReadonlyArray<RefinementEntry>;
+export type RefinementEntryList = Array<RefinementEntry>;
 export const RefinementEntryList = /*@__PURE__*/ S.Array(
   RefinementEntry,
 ) as any as S.Schema<RefinementEntryList>;
@@ -2380,7 +2378,7 @@ export const Romanization = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Romanization" }) as any as S.Schema<Romanization>;
 
-export type RomanizationList = ReadonlyArray<Romanization>;
+export type RomanizationList = Array<Romanization>;
 export const RomanizationList = /*@__PURE__*/ S.Array(
   Romanization,
 ) as any as S.Schema<RomanizationList>;
@@ -2630,7 +2628,7 @@ export const Translation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Translation" }) as any as S.Schema<Translation>;
 
-export type TranslationList = ReadonlyArray<Translation>;
+export type TranslationList = Array<Translation>;
 export const TranslationList = /*@__PURE__*/ S.Array(
   Translation,
 ) as any as S.Schema<TranslationList>;

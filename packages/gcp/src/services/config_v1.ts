@@ -96,7 +96,7 @@ export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "Empty",
 }) as any as S.Schema<Empty>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -118,7 +118,7 @@ export const DeploymentUnit = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DeploymentUnit" }) as any as S.Schema<DeploymentUnit>;
 
-export type DeploymentUnitList = ReadonlyArray<DeploymentUnit>;
+export type DeploymentUnitList = Array<DeploymentUnit>;
 export const DeploymentUnitList = /*@__PURE__*/ S.Array(
   DeploymentUnit,
 ) as any as S.Schema<DeploymentUnitList>;
@@ -129,7 +129,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -187,7 +187,7 @@ export interface DeploymentGroup {
   /** Output only. The error status of the deployment group provisioning or deprovisioning. */
   provisioningError?: Status;
   /** Output only. The provisioning state of the deployment group. */
-  provisioningState?: DeploymentGroupProvisioningStateEnum;
+  provisioningState?: DeploymentGroupProvisioningStateEnum | (string & {});
   /** Output only. Time when the deployment group was last updated. */
   updateTime?: string;
   /** Optional. Arbitrary key-value metadata storage e.g. to help client tools identify deployment group during automation. See https://google.aip.dev/148#annotations for details on format and size limitations. */
@@ -199,7 +199,7 @@ export interface DeploymentGroup {
   /** Identifier. The name of the deployment group. Format: 'projects/{project_id}/locations/{location}/deploymentGroups/{deployment_group}'. */
   name?: string;
   /** Output only. Current state of the deployment group. */
-  state?: DeploymentGroupStateEnum;
+  state?: DeploymentGroupStateEnum | (string & {});
   /** Output only. Time when the deployment group was created. */
   createTime?: string;
 }
@@ -331,7 +331,7 @@ export const TerraformError = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TerraformError" }) as any as S.Schema<TerraformError>;
 
-export type TerraformErrorList = ReadonlyArray<TerraformError>;
+export type TerraformErrorList = Array<TerraformError>;
 export const TerraformErrorList = /*@__PURE__*/ S.Array(
   TerraformError,
 ) as any as S.Schema<TerraformErrorList>;
@@ -344,7 +344,7 @@ export const ProviderConfigSourceTypeEnum = /*@__PURE__*/ S.String;
 /** ProviderConfig contains the provider configurations. */
 export interface ProviderConfig {
   /** Optional. ProviderSource specifies the source type of the provider. */
-  sourceType?: ProviderConfigSourceTypeEnum;
+  sourceType?: ProviderConfigSourceTypeEnum | (string & {});
 }
 export const ProviderConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -504,11 +504,11 @@ export interface Deployment {
   /** Optional. Arbitrary key-value metadata storage e.g. to help client tools identify deployments during automation. See https://google.aip.dev/148#annotations for details on format and size limitations. */
   annotations?: StringMap;
   /** Output only. Current lock state of the deployment. */
-  lockState?: DeploymentLockStateEnum;
+  lockState?: DeploymentLockStateEnum | (string & {});
   /** User-defined location of Cloud Build logs and artifacts in Google Cloud Storage. Format: `gs://{bucket}/{folder}` A default bucket will be bootstrapped if the field is not set or empty. Default bucket format: `gs://--blueprint-config` Constraints: - The bucket needs to be in the same project as the deployment - The path cannot be within the path of `gcs_source` - The field cannot be updated, including changing its presence */
   artifactsGcsBucket?: string;
   /** Output only. Current state of the deployment. */
-  state?: DeploymentStateEnum;
+  state?: DeploymentStateEnum | (string & {});
   /** Output only. The current Terraform version set on the deployment. It is in the format of "Major.Minor.Patch", for example, "1.3.10". */
   tfVersion?: string;
   /** Required. User-specified Service Account (SA) credentials to be used when actuating resources. Format: `projects/{projectID}/serviceAccounts/{serviceAccount}` */
@@ -518,7 +518,7 @@ export interface Deployment {
   /** Output only. Revision name that was most recently applied. Format: `projects/{project}/locations/{location}/deployments/{deployment}/ revisions/{revision}` */
   latestRevision?: string;
   /** Optional. Input to control quota checks for resources in terraform configuration files. There are limited resources on which quota validation applies. */
-  quotaValidation?: DeploymentQuotaValidationEnum;
+  quotaValidation?: DeploymentQuotaValidationEnum | (string & {});
   /** Output only. Cloud Build instance UUID associated with deleting this deployment. */
   deleteBuild?: string;
   /** Output only. Location of Cloud Build logs in Google Cloud Storage, populated when deleting this deployment. Format: `gs://{bucket}/{object}`. */
@@ -528,7 +528,7 @@ export interface Deployment {
   /** Optional. User-defined metadata for the deployment. */
   labels?: StringMap;
   /** Output only. Error code describing errors that may have occurred. */
-  errorCode?: DeploymentErrorCodeEnum;
+  errorCode?: DeploymentErrorCodeEnum | (string & {});
   /** The user-specified Terraform version constraint. Example: "=1.3.10". */
   tfVersionConstraint?: string;
   /** A blueprint described using Terraform's HashiCorp Configuration Language as a root module. */
@@ -656,7 +656,7 @@ export interface Preview {
   /** The user-specified Terraform version constraint. Example: "=1.3.10". */
   tfVersionConstraint?: string;
   /** Output only. Code describing any errors that may have occurred. */
-  errorCode?: PreviewErrorCodeEnum;
+  errorCode?: PreviewErrorCodeEnum | (string & {});
   /** Optional. User-defined labels for the preview. */
   labels?: StringMap;
   /** Output only. Cloud Build instance UUID associated with this preview. */
@@ -674,13 +674,13 @@ export interface Preview {
   /** Output only. The current Terraform version set on the preview. It is in the format of "Major.Minor.Patch", for example, "1.3.10". */
   tfVersion?: string;
   /** Output only. Current state of the preview. */
-  state?: PreviewStateEnum;
+  state?: PreviewStateEnum | (string & {});
   /** Output only. Artifacts from preview. */
   previewArtifacts?: PreviewArtifacts;
   /** User-defined location of Cloud Build logs, artifacts, and in Google Cloud Storage. Format: `gs://{bucket}/{folder}` A default bucket will be bootstrapped if the field is not set or empty Default Bucket Format: `gs://--blueprint-config` Constraints: - The bucket needs to be in the same project as the deployment - The path cannot be within the path of `gcs_source` If omitted and deployment resource ref provided has artifacts_gcs_bucket defined, that artifact bucket is used. */
   artifactsGcsBucket?: string;
   /** Optional. Current mode of preview. */
-  previewMode?: PreviewPreviewModeEnum;
+  previewMode?: PreviewPreviewModeEnum | (string & {});
   /** Optional. Arbitrary key-value metadata storage e.g. to help client tools identify preview during automation. See https://google.aip.dev/148#annotations for details on format and size limitations. */
   annotations?: StringMap;
 }
@@ -1192,7 +1192,7 @@ export interface AuditLogConfig {
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
   exemptedMembers?: StringList;
   /** The log type that this config enables. */
-  logType?: AuditLogConfigLogTypeEnum;
+  logType?: AuditLogConfigLogTypeEnum | (string & {});
 }
 export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1201,7 +1201,7 @@ export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
-export type AuditLogConfigList = ReadonlyArray<AuditLogConfig>;
+export type AuditLogConfigList = Array<AuditLogConfig>;
 export const AuditLogConfigList = /*@__PURE__*/ S.Array(
   AuditLogConfig,
 ) as any as S.Schema<AuditLogConfigList>;
@@ -1220,7 +1220,7 @@ export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
-export type AuditConfigList = ReadonlyArray<AuditConfig>;
+export type AuditConfigList = Array<AuditConfig>;
 export const AuditConfigList = /*@__PURE__*/ S.Array(
   AuditConfig,
 ) as any as S.Schema<AuditConfigList>;
@@ -1262,7 +1262,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
-export type BindingList = ReadonlyArray<Binding>;
+export type BindingList = Array<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -1736,7 +1736,7 @@ export const PropertyChange = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PropertyChange" }) as any as S.Schema<PropertyChange>;
 
-export type PropertyChangeList = ReadonlyArray<PropertyChange>;
+export type PropertyChangeList = Array<PropertyChange>;
 export const PropertyChangeList = /*@__PURE__*/ S.Array(
   PropertyChange,
 ) as any as S.Schema<PropertyChangeList>;
@@ -1825,7 +1825,7 @@ export const PropertyDrift = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PropertyDrift" }) as any as S.Schema<PropertyDrift>;
 
-export type PropertyDriftList = ReadonlyArray<PropertyDrift>;
+export type PropertyDriftList = Array<PropertyDrift>;
 export const PropertyDriftList = /*@__PURE__*/ S.Array(
   PropertyDrift,
 ) as any as S.Schema<PropertyDriftList>;
@@ -1963,7 +1963,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = ReadonlyArray<Location>;
+export type LocationList = Array<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -2015,7 +2015,7 @@ export const ListProjectsLocationsDeploymentGroupsRequest =
     identifier: "ListProjectsLocationsDeploymentGroupsRequest",
   }) as any as S.Schema<ListProjectsLocationsDeploymentGroupsRequest>;
 
-export type DeploymentGroupList = ReadonlyArray<DeploymentGroup>;
+export type DeploymentGroupList = Array<DeploymentGroup>;
 export const DeploymentGroupList = /*@__PURE__*/ S.Array(
   DeploymentGroup,
 ) as any as S.Schema<DeploymentGroupList>;
@@ -2064,8 +2064,7 @@ export const ListProjectsLocationsDeploymentGroupsRevisionsRequest =
     identifier: "ListProjectsLocationsDeploymentGroupsRevisionsRequest",
   }) as any as S.Schema<ListProjectsLocationsDeploymentGroupsRevisionsRequest>;
 
-export type DeploymentGroupRevisionList =
-  ReadonlyArray<DeploymentGroupRevision>;
+export type DeploymentGroupRevisionList = Array<DeploymentGroupRevision>;
 export const DeploymentGroupRevisionList = /*@__PURE__*/ S.Array(
   DeploymentGroupRevision,
 ) as any as S.Schema<DeploymentGroupRevisionList>;
@@ -2121,7 +2120,7 @@ export const ListProjectsLocationsDeploymentsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsDeploymentsRequest",
 }) as any as S.Schema<ListProjectsLocationsDeploymentsRequest>;
 
-export type DeploymentList = ReadonlyArray<Deployment>;
+export type DeploymentList = Array<Deployment>;
 export const DeploymentList = /*@__PURE__*/ S.Array(
   Deployment,
 ) as any as S.Schema<DeploymentList>;
@@ -2175,7 +2174,7 @@ export const ListProjectsLocationsDeploymentsRevisionsRequest =
     identifier: "ListProjectsLocationsDeploymentsRevisionsRequest",
   }) as any as S.Schema<ListProjectsLocationsDeploymentsRevisionsRequest>;
 
-export type RevisionList = ReadonlyArray<Revision>;
+export type RevisionList = Array<Revision>;
 export const RevisionList = /*@__PURE__*/ S.Array(
   Revision,
 ) as any as S.Schema<RevisionList>;
@@ -2230,7 +2229,7 @@ export const ListProjectsLocationsDeploymentsRevisionsResourcesRequest =
     identifier: "ListProjectsLocationsDeploymentsRevisionsResourcesRequest",
   }) as any as S.Schema<ListProjectsLocationsDeploymentsRevisionsResourcesRequest>;
 
-export type ResourceList = ReadonlyArray<Resource>;
+export type ResourceList = Array<Resource>;
 export const ResourceList = /*@__PURE__*/ S.Array(
   Resource,
 ) as any as S.Schema<ResourceList>;
@@ -2285,7 +2284,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type OperationList = ReadonlyArray<Operation>;
+export type OperationList = Array<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -2340,7 +2339,7 @@ export const ListProjectsLocationsPreviewsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsPreviewsRequest",
 }) as any as S.Schema<ListProjectsLocationsPreviewsRequest>;
 
-export type PreviewList = ReadonlyArray<Preview>;
+export type PreviewList = Array<Preview>;
 export const PreviewList = /*@__PURE__*/ S.Array(
   Preview,
 ) as any as S.Schema<PreviewList>;
@@ -2395,7 +2394,7 @@ export const ListProjectsLocationsPreviewsResourceChangesRequest =
     identifier: "ListProjectsLocationsPreviewsResourceChangesRequest",
   }) as any as S.Schema<ListProjectsLocationsPreviewsResourceChangesRequest>;
 
-export type ResourceChangeList = ReadonlyArray<ResourceChange>;
+export type ResourceChangeList = Array<ResourceChange>;
 export const ResourceChangeList = /*@__PURE__*/ S.Array(
   ResourceChange,
 ) as any as S.Schema<ResourceChangeList>;
@@ -2450,7 +2449,7 @@ export const ListProjectsLocationsPreviewsResourceDriftsRequest =
     identifier: "ListProjectsLocationsPreviewsResourceDriftsRequest",
   }) as any as S.Schema<ListProjectsLocationsPreviewsResourceDriftsRequest>;
 
-export type ResourceDriftList = ReadonlyArray<ResourceDrift>;
+export type ResourceDriftList = Array<ResourceDrift>;
 export const ResourceDriftList = /*@__PURE__*/ S.Array(
   ResourceDrift,
 ) as any as S.Schema<ResourceDriftList>;
@@ -2505,7 +2504,7 @@ export const ListProjectsLocationsTerraformVersionsRequest =
     identifier: "ListProjectsLocationsTerraformVersionsRequest",
   }) as any as S.Schema<ListProjectsLocationsTerraformVersionsRequest>;
 
-export type TerraformVersionList = ReadonlyArray<TerraformVersion>;
+export type TerraformVersionList = Array<TerraformVersion>;
 export const TerraformVersionList = /*@__PURE__*/ S.Array(
   TerraformVersion,
 ) as any as S.Schema<TerraformVersionList>;

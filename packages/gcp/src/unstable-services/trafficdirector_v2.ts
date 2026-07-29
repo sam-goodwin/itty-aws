@@ -122,7 +122,7 @@ export const PathSegment = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PathSegment" }) as any as S.Schema<PathSegment>;
 
-export type PathSegmentList = ReadonlyArray<PathSegment>;
+export type PathSegmentList = Array<PathSegment>;
 export const PathSegmentList = /*@__PURE__*/ S.Array(
   PathSegment,
 ) as any as S.Schema<PathSegmentList>;
@@ -212,7 +212,7 @@ export const StructMatcher = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "StructMatcher" }) as any as S.Schema<StructMatcher>;
 
-export type StructMatcherList = ReadonlyArray<StructMatcher>;
+export type StructMatcherList = Array<StructMatcher>;
 export const StructMatcherList = /*@__PURE__*/ S.Array(
   StructMatcher,
 ) as any as S.Schema<StructMatcherList>;
@@ -231,7 +231,7 @@ export const NodeMatcher = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "NodeMatcher" }) as any as S.Schema<NodeMatcher>;
 
-export type NodeMatcherList = ReadonlyArray<NodeMatcher>;
+export type NodeMatcherList = Array<NodeMatcher>;
 export const NodeMatcherList = /*@__PURE__*/ S.Array(
   NodeMatcher,
 ) as any as S.Schema<NodeMatcherList>;
@@ -296,7 +296,7 @@ export const StaticRouteConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "StaticRouteConfig",
 }) as any as S.Schema<StaticRouteConfig>;
 
-export type StaticRouteConfigList = ReadonlyArray<StaticRouteConfig>;
+export type StaticRouteConfigList = Array<StaticRouteConfig>;
 export const StaticRouteConfigList = /*@__PURE__*/ S.Array(
   StaticRouteConfig,
 ) as any as S.Schema<StaticRouteConfigList>;
@@ -319,7 +319,7 @@ export const DynamicRouteConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "DynamicRouteConfig",
 }) as any as S.Schema<DynamicRouteConfig>;
 
-export type DynamicRouteConfigList = ReadonlyArray<DynamicRouteConfig>;
+export type DynamicRouteConfigList = Array<DynamicRouteConfig>;
 export const DynamicRouteConfigList = /*@__PURE__*/ S.Array(
   DynamicRouteConfig,
 ) as any as S.Schema<DynamicRouteConfigList>;
@@ -354,7 +354,7 @@ export const StaticListener = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "StaticListener" }) as any as S.Schema<StaticListener>;
 
-export type StaticListenerList = ReadonlyArray<StaticListener>;
+export type StaticListenerList = Array<StaticListener>;
 export const StaticListenerList = /*@__PURE__*/ S.Array(
   StaticListener,
 ) as any as S.Schema<StaticListenerList>;
@@ -420,7 +420,7 @@ export const DynamicListener = /*@__PURE__*/ S.suspend(() =>
   identifier: "DynamicListener",
 }) as any as S.Schema<DynamicListener>;
 
-export type DynamicListenerList = ReadonlyArray<DynamicListener>;
+export type DynamicListenerList = Array<DynamicListener>;
 export const DynamicListenerList = /*@__PURE__*/ S.Array(
   DynamicListener,
 ) as any as S.Schema<DynamicListenerList>;
@@ -444,7 +444,7 @@ export const ListenersConfigDump = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListenersConfigDump",
 }) as any as S.Schema<ListenersConfigDump>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -470,8 +470,7 @@ export const DynamicScopedRouteConfigs = /*@__PURE__*/ S.suspend(() =>
   identifier: "DynamicScopedRouteConfigs",
 }) as any as S.Schema<DynamicScopedRouteConfigs>;
 
-export type DynamicScopedRouteConfigsList =
-  ReadonlyArray<DynamicScopedRouteConfigs>;
+export type DynamicScopedRouteConfigsList = Array<DynamicScopedRouteConfigs>;
 export const DynamicScopedRouteConfigsList = /*@__PURE__*/ S.Array(
   DynamicScopedRouteConfigs,
 ) as any as S.Schema<DynamicScopedRouteConfigsList>;
@@ -494,8 +493,7 @@ export const InlineScopedRouteConfigs = /*@__PURE__*/ S.suspend(() =>
   identifier: "InlineScopedRouteConfigs",
 }) as any as S.Schema<InlineScopedRouteConfigs>;
 
-export type InlineScopedRouteConfigsList =
-  ReadonlyArray<InlineScopedRouteConfigs>;
+export type InlineScopedRouteConfigsList = Array<InlineScopedRouteConfigs>;
 export const InlineScopedRouteConfigsList = /*@__PURE__*/ S.Array(
   InlineScopedRouteConfigs,
 ) as any as S.Schema<InlineScopedRouteConfigsList>;
@@ -530,7 +528,7 @@ export const StaticCluster = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "StaticCluster" }) as any as S.Schema<StaticCluster>;
 
-export type StaticClusterList = ReadonlyArray<StaticCluster>;
+export type StaticClusterList = Array<StaticCluster>;
 export const StaticClusterList = /*@__PURE__*/ S.Array(
   StaticCluster,
 ) as any as S.Schema<StaticClusterList>;
@@ -552,7 +550,7 @@ export const DynamicCluster = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DynamicCluster" }) as any as S.Schema<DynamicCluster>;
 
-export type DynamicClusterList = ReadonlyArray<DynamicCluster>;
+export type DynamicClusterList = Array<DynamicCluster>;
 export const DynamicClusterList = /*@__PURE__*/ S.Array(
   DynamicCluster,
 ) as any as S.Schema<DynamicClusterList>;
@@ -597,7 +595,7 @@ export const PerXdsConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PerXdsConfig" }) as any as S.Schema<PerXdsConfig>;
 
-export type PerXdsConfigList = ReadonlyArray<PerXdsConfig>;
+export type PerXdsConfigList = Array<PerXdsConfig>;
 export const PerXdsConfigList = /*@__PURE__*/ S.Array(
   PerXdsConfig,
 ) as any as S.Schema<PerXdsConfigList>;
@@ -619,7 +617,7 @@ export const Locality = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Locality" }) as any as S.Schema<Locality>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -676,7 +674,7 @@ export const Address = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Address" }) as any as S.Schema<Address>;
 
-export type AddressList = ReadonlyArray<Address>;
+export type AddressList = Array<Address>;
 export const AddressList = /*@__PURE__*/ S.Array(
   Address,
 ) as any as S.Schema<AddressList>;
@@ -734,7 +732,7 @@ export const Extension = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Extension" }) as any as S.Schema<Extension>;
 
-export type ExtensionList = ReadonlyArray<Extension>;
+export type ExtensionList = Array<Extension>;
 export const ExtensionList = /*@__PURE__*/ S.Array(
   Extension,
 ) as any as S.Schema<ExtensionList>;
@@ -793,7 +791,7 @@ export const ClientConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ClientConfig" }) as any as S.Schema<ClientConfig>;
 
-export type ClientConfigList = ReadonlyArray<ClientConfig>;
+export type ClientConfigList = Array<ClientConfig>;
 export const ClientConfigList = /*@__PURE__*/ S.Array(
   ClientConfig,
 ) as any as S.Schema<ClientConfigList>;

@@ -283,7 +283,7 @@ export const ColumnDataType = /*@__PURE__*/ S.String;
 export type ColumnName = string;
 export type ColumnDescription = string;
 export interface ColumnDefinition {
-  dataType?: ColumnDataType;
+  dataType?: ColumnDataType | (string & {});
   columnName?: string;
   columnDescription?: string;
 }
@@ -376,7 +376,7 @@ export const S3DestinationFormatOptions = /*@__PURE__*/ S.Record(
 );
 export interface DataViewDestinationTypeParams {
   destinationType: string;
-  s3DestinationExportFileFormat?: ExportFileFormat;
+  s3DestinationExportFileFormat?: ExportFileFormat | (string & {});
   s3DestinationExportFileFormatOptions?: { [key: string]: string | undefined };
 }
 export const DataViewDestinationTypeParams = /*@__PURE__*/ S.suspend(() =>
@@ -446,7 +446,10 @@ export type ApplicationPermission =
   | "GetTemporaryCredentials";
 export const ApplicationPermission = /*@__PURE__*/ S.String;
 
-export type ApplicationPermissionList = ApplicationPermission[];
+export type ApplicationPermissionList = (
+  | ApplicationPermission
+  | (string & {})
+)[];
 export const ApplicationPermissionList = /*@__PURE__*/ S.Array(
   ApplicationPermission,
 );

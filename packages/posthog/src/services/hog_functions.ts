@@ -75,8 +75,7 @@ export const InputsSchemaItemChoicesItemMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<InputsSchemaItemChoicesItemMap>;
 
-export type InputsSchemaItemChoicesList =
-  ReadonlyArray<InputsSchemaItemChoicesItemMap>;
+export type InputsSchemaItemChoicesList = Array<InputsSchemaItemChoicesItemMap>;
 export const InputsSchemaItemChoicesList = /*@__PURE__*/ S.Array(
   InputsSchemaItemChoicesItemMap,
 ) as any as S.Schema<InputsSchemaItemChoicesList>;
@@ -91,7 +90,7 @@ export const InputsSchemaItemTemplating =
   /*@__PURE__*/ S.Unknown as any as S.Schema<InputsSchemaItemTemplating>;
 
 export interface InputsSchemaItem {
-  type?: InputsSchemaItemTypeEnum;
+  type?: InputsSchemaItemTypeEnum | (string & {});
   key?: string;
   label?: string;
   choices?: InputsSchemaItemChoicesList;
@@ -132,8 +131,7 @@ export const InputsSchemaItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InputsSchemaItem>;
 
 /** Schema defining the configurable input parameters for this function. */
-export type HogFunctionsCreateRequestInputsSchemaList =
-  ReadonlyArray<InputsSchemaItem>;
+export type HogFunctionsCreateRequestInputsSchemaList = Array<InputsSchemaItem>;
 export const HogFunctionsCreateRequestInputsSchemaList = /*@__PURE__*/ S.Array(
   InputsSchemaItem,
 ) as any as S.Schema<HogFunctionsCreateRequestInputsSchemaList>;
@@ -180,7 +178,7 @@ export const HogFunctionFiltersActionsItemMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<HogFunctionFiltersActionsItemMap>;
 
 export type HogFunctionFiltersActionsList =
-  ReadonlyArray<HogFunctionFiltersActionsItemMap>;
+  Array<HogFunctionFiltersActionsItemMap>;
 export const HogFunctionFiltersActionsList = /*@__PURE__*/ S.Array(
   HogFunctionFiltersActionsItemMap,
 ) as any as S.Schema<HogFunctionFiltersActionsList>;
@@ -194,7 +192,7 @@ export const HogFunctionFiltersEventsItemMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<HogFunctionFiltersEventsItemMap>;
 
 export type HogFunctionFiltersEventsList =
-  ReadonlyArray<HogFunctionFiltersEventsItemMap>;
+  Array<HogFunctionFiltersEventsItemMap>;
 export const HogFunctionFiltersEventsList = /*@__PURE__*/ S.Array(
   HogFunctionFiltersEventsItemMap,
 ) as any as S.Schema<HogFunctionFiltersEventsList>;
@@ -208,7 +206,7 @@ export const HogFunctionFiltersDataWarehouseItemMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<HogFunctionFiltersDataWarehouseItemMap>;
 
 export type HogFunctionFiltersDataWarehouseList =
-  ReadonlyArray<HogFunctionFiltersDataWarehouseItemMap>;
+  Array<HogFunctionFiltersDataWarehouseItemMap>;
 export const HogFunctionFiltersDataWarehouseList = /*@__PURE__*/ S.Array(
   HogFunctionFiltersDataWarehouseItemMap,
 ) as any as S.Schema<HogFunctionFiltersDataWarehouseList>;
@@ -222,13 +220,13 @@ export const HogFunctionFiltersPropertiesItemMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<HogFunctionFiltersPropertiesItemMap>;
 
 export type HogFunctionFiltersPropertiesList =
-  ReadonlyArray<HogFunctionFiltersPropertiesItemMap>;
+  Array<HogFunctionFiltersPropertiesItemMap>;
 export const HogFunctionFiltersPropertiesList = /*@__PURE__*/ S.Array(
   HogFunctionFiltersPropertiesItemMap,
 ) as any as S.Schema<HogFunctionFiltersPropertiesList>;
 
 export interface HogFunctionFilters {
-  source?: HogFunctionFiltersSourceEnum;
+  source?: HogFunctionFiltersSourceEnum | (string & {});
   actions?: HogFunctionFiltersActionsList;
   events?: HogFunctionFiltersEventsList;
   data_warehouse?: HogFunctionFiltersDataWarehouseList;
@@ -275,7 +273,7 @@ export const HogFunctionMasking = /*@__PURE__*/ S.suspend(() =>
   identifier: "HogFunctionMasking",
 }) as any as S.Schema<HogFunctionMasking>;
 
-export type MappingsInputInputsSchemaList = ReadonlyArray<InputsSchemaItem>;
+export type MappingsInputInputsSchemaList = Array<InputsSchemaItem>;
 export const MappingsInputInputsSchemaList = /*@__PURE__*/ S.Array(
   InputsSchemaItem,
 ) as any as S.Schema<MappingsInputInputsSchemaList>;
@@ -304,8 +302,7 @@ export const MappingsInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MappingsInput" }) as any as S.Schema<MappingsInput>;
 
 /** Event-to-destination field mappings. Only for destination and site_destination types. */
-export type HogFunctionsCreateRequestMappingsList =
-  ReadonlyArray<MappingsInput>;
+export type HogFunctionsCreateRequestMappingsList = Array<MappingsInput>;
 export const HogFunctionsCreateRequestMappingsList = /*@__PURE__*/ S.Array(
   MappingsInput,
 ) as any as S.Schema<HogFunctionsCreateRequestMappingsList>;
@@ -423,12 +420,12 @@ export const UserBasic = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UserBasic" }) as any as S.Schema<UserBasic>;
 
 /** Schema defining the configurable input parameters for this function. */
-export type HogFunctionOutputInputsSchemaList = ReadonlyArray<InputsSchemaItem>;
+export type HogFunctionOutputInputsSchemaList = Array<InputsSchemaItem>;
 export const HogFunctionOutputInputsSchemaList = /*@__PURE__*/ S.Array(
   InputsSchemaItem,
 ) as any as S.Schema<HogFunctionOutputInputsSchemaList>;
 
-export type InputsItemBytecodeList = ReadonlyArray<unknown>;
+export type InputsItemBytecodeList = Array<unknown>;
 export const InputsItemBytecodeList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<InputsItemBytecodeList>;
@@ -459,7 +456,7 @@ export const HogFunctionOutputInputsMap = /*@__PURE__*/ S.Record(
   InputsItem,
 ) as any as S.Schema<HogFunctionOutputInputsMap>;
 
-export type MappingsInputsSchemaList = ReadonlyArray<InputsSchemaItem>;
+export type MappingsInputsSchemaList = Array<InputsSchemaItem>;
 export const MappingsInputsSchemaList = /*@__PURE__*/ S.Array(
   InputsSchemaItem,
 ) as any as S.Schema<MappingsInputsSchemaList>;
@@ -486,7 +483,7 @@ export const Mappings = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Mappings" }) as any as S.Schema<Mappings>;
 
 /** Event-to-destination field mappings. Only for destination and site_destination types. */
-export type HogFunctionOutputMappingsList = ReadonlyArray<Mappings>;
+export type HogFunctionOutputMappingsList = Array<Mappings>;
 export const HogFunctionOutputMappingsList = /*@__PURE__*/ S.Array(
   Mappings,
 ) as any as S.Schema<HogFunctionOutputMappingsList>;
@@ -520,7 +517,7 @@ export const HogFunctionMappingTemplate = /*@__PURE__*/ S.suspend(() =>
 
 /** Pre-defined mapping configurations for destination templates. */
 export type HogFunctionTemplateMappingTemplatesList =
-  ReadonlyArray<HogFunctionMappingTemplate>;
+  Array<HogFunctionMappingTemplate>;
 export const HogFunctionTemplateMappingTemplatesList = /*@__PURE__*/ S.Array(
   HogFunctionMappingTemplate,
 ) as any as S.Schema<HogFunctionTemplateMappingTemplatesList>;
@@ -694,7 +691,7 @@ export const HogFunctionsDestroyResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Schema defining the configurable input parameters for this function. */
 export type HogFunctionsEnableBackfillsCreateRequestInputsSchemaList =
-  ReadonlyArray<InputsSchemaItem>;
+  Array<InputsSchemaItem>;
 export const HogFunctionsEnableBackfillsCreateRequestInputsSchemaList =
   /*@__PURE__*/ S.Array(
     InputsSchemaItem,
@@ -712,7 +709,7 @@ export const HogFunctionsEnableBackfillsCreateRequestInputsMap =
 
 /** Event-to-destination field mappings. Only for destination and site_destination types. */
 export type HogFunctionsEnableBackfillsCreateRequestMappingsList =
-  ReadonlyArray<MappingsInput>;
+  Array<MappingsInput>;
 export const HogFunctionsEnableBackfillsCreateRequestMappingsList =
   /*@__PURE__*/ S.Array(
     MappingsInput,
@@ -845,7 +842,7 @@ export const HogFunctionsIconsRetrieveResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HogFunctionsIconsRetrieveResponse>;
 
 /** Schema defining the configurable input parameters for this function. */
-export type HogFunctionInputInputsSchemaList = ReadonlyArray<InputsSchemaItem>;
+export type HogFunctionInputInputsSchemaList = Array<InputsSchemaItem>;
 export const HogFunctionInputInputsSchemaList = /*@__PURE__*/ S.Array(
   InputsSchemaItem,
 ) as any as S.Schema<HogFunctionInputInputsSchemaList>;
@@ -860,7 +857,7 @@ export const HogFunctionInputInputsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<HogFunctionInputInputsMap>;
 
 /** Event-to-destination field mappings. Only for destination and site_destination types. */
-export type HogFunctionInputMappingsList = ReadonlyArray<MappingsInput>;
+export type HogFunctionInputMappingsList = Array<MappingsInput>;
 export const HogFunctionInputMappingsList = /*@__PURE__*/ S.Array(
   MappingsInput,
 ) as any as S.Schema<HogFunctionInputMappingsList>;
@@ -978,7 +975,7 @@ export const HogFunctionsInvocationsCreateRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<HogFunctionsInvocationsCreateRequest>;
 
 /** Execution logs from the test invocation. */
-export type HogFunctionInvocationOutputLogsList = ReadonlyArray<unknown>;
+export type HogFunctionInvocationOutputLogsList = Array<unknown>;
 export const HogFunctionInvocationOutputLogsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<HogFunctionInvocationOutputLogsList>;
@@ -1001,7 +998,7 @@ export const HogFunctionInvocationOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "HogFunctionInvocationOutput",
 }) as any as S.Schema<HogFunctionInvocationOutput>;
 
-export type HogFunctionsListRequestTypeList = ReadonlyArray<string>;
+export type HogFunctionsListRequestTypeList = Array<string>;
 export const HogFunctionsListRequestTypeList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<HogFunctionsListRequestTypeList>;
@@ -1084,7 +1081,7 @@ export const HogFunctionMinimal = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HogFunctionMinimal>;
 
 export type PaginatedHogFunctionMinimalListResultsList =
-  ReadonlyArray<HogFunctionMinimal>;
+  Array<HogFunctionMinimal>;
 export const PaginatedHogFunctionMinimalListResultsList = /*@__PURE__*/ S.Array(
   HogFunctionMinimal,
 ) as any as S.Schema<PaginatedHogFunctionMinimalListResultsList>;
@@ -1209,12 +1206,12 @@ export const HogFunctionsMetricsRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "HogFunctionsMetricsRetrieveRequest",
 }) as any as S.Schema<HogFunctionsMetricsRetrieveRequest>;
 
-export type AppMetricsResponseLabelsList = ReadonlyArray<string>;
+export type AppMetricsResponseLabelsList = Array<string>;
 export const AppMetricsResponseLabelsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AppMetricsResponseLabelsList>;
 
-export type AppMetricSeriesValuesList = ReadonlyArray<number>;
+export type AppMetricSeriesValuesList = Array<number>;
 export const AppMetricSeriesValuesList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<AppMetricSeriesValuesList>;
@@ -1232,7 +1229,7 @@ export const AppMetricSeries = /*@__PURE__*/ S.suspend(() =>
   identifier: "AppMetricSeries",
 }) as any as S.Schema<AppMetricSeries>;
 
-export type AppMetricsResponseSeriesList = ReadonlyArray<AppMetricSeries>;
+export type AppMetricsResponseSeriesList = Array<AppMetricSeries>;
 export const AppMetricsResponseSeriesList = /*@__PURE__*/ S.Array(
   AppMetricSeries,
 ) as any as S.Schema<AppMetricsResponseSeriesList>;
@@ -1333,7 +1330,7 @@ export const AppMetricsTotalsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Schema defining the configurable input parameters for this function. */
 export type HogFunctionsPartialUpdateRequestInputsSchemaList =
-  ReadonlyArray<InputsSchemaItem>;
+  Array<InputsSchemaItem>;
 export const HogFunctionsPartialUpdateRequestInputsSchemaList =
   /*@__PURE__*/ S.Array(
     InputsSchemaItem,
@@ -1349,8 +1346,7 @@ export const HogFunctionsPartialUpdateRequestInputsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<HogFunctionsPartialUpdateRequestInputsMap>;
 
 /** Event-to-destination field mappings. Only for destination and site_destination types. */
-export type HogFunctionsPartialUpdateRequestMappingsList =
-  ReadonlyArray<MappingsInput>;
+export type HogFunctionsPartialUpdateRequestMappingsList = Array<MappingsInput>;
 export const HogFunctionsPartialUpdateRequestMappingsList =
   /*@__PURE__*/ S.Array(
     MappingsInput,
@@ -1456,7 +1452,7 @@ export const HogFunctionsRearrangePartialUpdateRequest =
   }) as any as S.Schema<HogFunctionsRearrangePartialUpdateRequest>;
 
 export type HogFunctionsRearrangePartialUpdateResponseBodyList =
-  ReadonlyArray<HogFunctionOutput>;
+  Array<HogFunctionOutput>;
 export const HogFunctionsRearrangePartialUpdateResponseBodyList =
   /*@__PURE__*/ S.Array(
     HogFunctionOutput,
@@ -1481,7 +1477,7 @@ export type HogInvocationRerunFilterStatusEnum =
 export const HogInvocationRerunFilterStatusEnum = /*@__PURE__*/ S.String;
 
 /** Restrict to invocations whose latest status is one of these. Defaults to ['failed']. */
-export type HogInvocationRerunFilterStatusList = ReadonlyArray<
+export type HogInvocationRerunFilterStatusList = Array<
   HogInvocationRerunFilterStatusEnum | (string & {})
 >;
 export const HogInvocationRerunFilterStatusList = /*@__PURE__*/ S.Array(
@@ -1489,13 +1485,13 @@ export const HogInvocationRerunFilterStatusList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<HogInvocationRerunFilterStatusList>;
 
 /** Restrict to invocations whose error_kind matches one of these (e.g. 'http_5xx', 'timeout'). */
-export type HogInvocationRerunFilterErrorKindList = ReadonlyArray<string>;
+export type HogInvocationRerunFilterErrorKindList = Array<string>;
 export const HogInvocationRerunFilterErrorKindList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<HogInvocationRerunFilterErrorKindList>;
 
 /** Optional restriction to specific invocation IDs within the window. Capped at 10000 per request. Always combined with `window_start`/`window_end` so the ClickHouse query can be partition-pruned. */
-export type HogInvocationRerunFilterInvocationIdsList = ReadonlyArray<string>;
+export type HogInvocationRerunFilterInvocationIdsList = Array<string>;
 export const HogInvocationRerunFilterInvocationIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<HogInvocationRerunFilterInvocationIdsList>;
@@ -1596,8 +1592,7 @@ export const HogFunctionsRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HogFunctionsRetrieveRequest>;
 
 /** Schema defining the configurable input parameters for this function. */
-export type HogFunctionsUpdateRequestInputsSchemaList =
-  ReadonlyArray<InputsSchemaItem>;
+export type HogFunctionsUpdateRequestInputsSchemaList = Array<InputsSchemaItem>;
 export const HogFunctionsUpdateRequestInputsSchemaList = /*@__PURE__*/ S.Array(
   InputsSchemaItem,
 ) as any as S.Schema<HogFunctionsUpdateRequestInputsSchemaList>;
@@ -1612,8 +1607,7 @@ export const HogFunctionsUpdateRequestInputsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<HogFunctionsUpdateRequestInputsMap>;
 
 /** Event-to-destination field mappings. Only for destination and site_destination types. */
-export type HogFunctionsUpdateRequestMappingsList =
-  ReadonlyArray<MappingsInput>;
+export type HogFunctionsUpdateRequestMappingsList = Array<MappingsInput>;
 export const HogFunctionsUpdateRequestMappingsList = /*@__PURE__*/ S.Array(
   MappingsInput,
 ) as any as S.Schema<HogFunctionsUpdateRequestMappingsList>;

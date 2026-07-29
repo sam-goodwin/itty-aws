@@ -60,7 +60,7 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -140,7 +140,7 @@ export const GoogleFirebaseAppdistroV1alphaAiStep = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleFirebaseAppdistroV1alphaAiStep>;
 
 export type GoogleFirebaseAppdistroV1alphaAiStepList =
-  ReadonlyArray<GoogleFirebaseAppdistroV1alphaAiStep>;
+  Array<GoogleFirebaseAppdistroV1alphaAiStep>;
 export const GoogleFirebaseAppdistroV1alphaAiStepList = /*@__PURE__*/ S.Array(
   GoogleFirebaseAppdistroV1alphaAiStep,
 ) as any as S.Schema<GoogleFirebaseAppdistroV1alphaAiStepList>;
@@ -205,7 +205,7 @@ export const GoogleFirebaseAppdistroV1alphaUpdateTestCaseRequest =
   }) as any as S.Schema<GoogleFirebaseAppdistroV1alphaUpdateTestCaseRequest>;
 
 export type GoogleFirebaseAppdistroV1alphaUpdateTestCaseRequestList =
-  ReadonlyArray<GoogleFirebaseAppdistroV1alphaUpdateTestCaseRequest>;
+  Array<GoogleFirebaseAppdistroV1alphaUpdateTestCaseRequest>;
 export const GoogleFirebaseAppdistroV1alphaUpdateTestCaseRequestList =
   /*@__PURE__*/ S.Array(
     GoogleFirebaseAppdistroV1alphaUpdateTestCaseRequest,
@@ -254,7 +254,7 @@ export const BatchUpdateProjectsAppsTestCasesRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<BatchUpdateProjectsAppsTestCasesRequest>;
 
 export type GoogleFirebaseAppdistroV1alphaTestCaseList =
-  ReadonlyArray<GoogleFirebaseAppdistroV1alphaTestCase>;
+  Array<GoogleFirebaseAppdistroV1alphaTestCase>;
 export const GoogleFirebaseAppdistroV1alphaTestCaseList = /*@__PURE__*/ S.Array(
   GoogleFirebaseAppdistroV1alphaTestCase,
 ) as any as S.Schema<GoogleFirebaseAppdistroV1alphaTestCaseList>;
@@ -323,7 +323,7 @@ export const GoogleFirebaseAppdistroV1alphaTestDevice = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleFirebaseAppdistroV1alphaTestDevice>;
 
 export type GoogleFirebaseAppdistroV1alphaTestDeviceList =
-  ReadonlyArray<GoogleFirebaseAppdistroV1alphaTestDevice>;
+  Array<GoogleFirebaseAppdistroV1alphaTestDevice>;
 export const GoogleFirebaseAppdistroV1alphaTestDeviceList =
   /*@__PURE__*/ S.Array(
     GoogleFirebaseAppdistroV1alphaTestDevice,
@@ -690,7 +690,9 @@ export interface GoogleFirebaseAppdistroV1alphaDeviceInteraction {
   /** Output only. A long press (tap and hold) action. */
   longPress?: AndroidxCrawlerOutputPoint;
   /** Output only. The target orientation of the device in a set orientation action. */
-  targetOrientation?: GoogleFirebaseAppdistroV1alphaDeviceInteractionTargetOrientationEnum;
+  targetOrientation?:
+    | GoogleFirebaseAppdistroV1alphaDeviceInteractionTargetOrientationEnum
+    | (string & {});
   /** Output only. A drag and drop action. */
   dragAndDrop?: GoogleFirebaseAppdistroV1alphaDeviceInteractionDragAndDrop;
   /** Output only. A text input action, that types some text into whatever field is currently focused, if any. Unlike `enter_text` this action requires that the field be brought into focus first, for example by emitting a tap action before this one. */
@@ -737,7 +739,7 @@ export const GoogleFirebaseAppdistroV1alphaDeviceInteraction =
   }) as any as S.Schema<GoogleFirebaseAppdistroV1alphaDeviceInteraction>;
 
 export type GoogleFirebaseAppdistroV1alphaDeviceInteractionList =
-  ReadonlyArray<GoogleFirebaseAppdistroV1alphaDeviceInteraction>;
+  Array<GoogleFirebaseAppdistroV1alphaDeviceInteraction>;
 export const GoogleFirebaseAppdistroV1alphaDeviceInteractionList =
   /*@__PURE__*/ S.Array(
     GoogleFirebaseAppdistroV1alphaDeviceInteraction,
@@ -774,7 +776,9 @@ export interface GoogleFirebaseAppdistroV1alphaTerminalAction {
   /** Output only. The screenshot used in the context of this terminal action. */
   screenshot?: GoogleFirebaseAppdistroV1alphaScreenshot;
   /** Output only. The reason why this goal was ended. */
-  reason?: GoogleFirebaseAppdistroV1alphaTerminalActionReasonEnum;
+  reason?:
+    | GoogleFirebaseAppdistroV1alphaTerminalActionReasonEnum
+    | (string & {});
 }
 export const GoogleFirebaseAppdistroV1alphaTerminalAction =
   /*@__PURE__*/ S.suspend(() =>
@@ -820,7 +824,9 @@ export interface GoogleFirebaseAppdistroV1alphaGoalAction {
   /** Output only. An action taken by the AI to end the goal. */
   terminalAction?: GoogleFirebaseAppdistroV1alphaTerminalAction;
   /** Output only. The type of caching used to determine the action. */
-  cachingType?: GoogleFirebaseAppdistroV1alphaGoalActionCachingTypeEnum;
+  cachingType?:
+    | GoogleFirebaseAppdistroV1alphaGoalActionCachingTypeEnum
+    | (string & {});
   /** Output only. An explanation justifying why the action was taken. */
   explanation?: string;
   /** Output only. The time at which the action started. */
@@ -845,7 +851,7 @@ export const GoogleFirebaseAppdistroV1alphaGoalAction = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleFirebaseAppdistroV1alphaGoalAction>;
 
 export type GoogleFirebaseAppdistroV1alphaGoalActionList =
-  ReadonlyArray<GoogleFirebaseAppdistroV1alphaGoalAction>;
+  Array<GoogleFirebaseAppdistroV1alphaGoalAction>;
 export const GoogleFirebaseAppdistroV1alphaGoalActionList =
   /*@__PURE__*/ S.Array(
     GoogleFirebaseAppdistroV1alphaGoalAction,
@@ -868,7 +874,7 @@ export const GoogleFirebaseAppdistroV1alphaGoalDetails =
 /** Captures the results of an AiStep */
 export interface GoogleFirebaseAppdistroV1alphaAiStepResult {
   /** Output only. The current state of the step */
-  state?: GoogleFirebaseAppdistroV1alphaAiStepResultStateEnum;
+  state?: GoogleFirebaseAppdistroV1alphaAiStepResultStateEnum | (string & {});
   /** Output only. Details for an assertion step. */
   assertionDetails?: GoogleFirebaseAppdistroV1alphaAssertionDetails;
   /** Required. The step performed by the AI */
@@ -891,7 +897,7 @@ export const GoogleFirebaseAppdistroV1alphaAiStepResult =
   }) as any as S.Schema<GoogleFirebaseAppdistroV1alphaAiStepResult>;
 
 export type GoogleFirebaseAppdistroV1alphaAiStepResultList =
-  ReadonlyArray<GoogleFirebaseAppdistroV1alphaAiStepResult>;
+  Array<GoogleFirebaseAppdistroV1alphaAiStepResult>;
 export const GoogleFirebaseAppdistroV1alphaAiStepResultList =
   /*@__PURE__*/ S.Array(
     GoogleFirebaseAppdistroV1alphaAiStepResult,
@@ -902,7 +908,9 @@ export interface GoogleFirebaseAppdistroV1alphaDeviceExecution {
   /** Output only. The path to a directory in Cloud Storage that will eventually contain the results for this execution. For example, gs://bucket/Nexus5-18-en-portrait. */
   resultsStoragePath?: string;
   /** Output only. The reason why the test was inconclusive. */
-  inconclusiveReason?: GoogleFirebaseAppdistroV1alphaDeviceExecutionInconclusiveReasonEnum;
+  inconclusiveReason?:
+    | GoogleFirebaseAppdistroV1alphaDeviceExecutionInconclusiveReasonEnum
+    | (string & {});
   /** Output only. An app crash, if any occurred during the test. */
   appCrash?: GoogleFirebaseAppdistroV1alphaAppCrash;
   /** Identifier. The name of the device execution resource. Format: `projects/{project_number}/apps/{app}/releases/{release}/tests/{test}/deviceExecutions/{device_execution}` */
@@ -912,15 +920,21 @@ export interface GoogleFirebaseAppdistroV1alphaDeviceExecution {
   /** Required. The device that the test was run on. */
   device?: GoogleFirebaseAppdistroV1alphaTestDevice;
   /** Output only. The state of the test. */
-  state?: GoogleFirebaseAppdistroV1alphaDeviceExecutionStateEnum;
+  state?:
+    | GoogleFirebaseAppdistroV1alphaDeviceExecutionStateEnum
+    | (string & {});
   /** Output only. The time at which the video started recording. */
   videoStartTime?: string;
   /** Output only. A list of screenshot image URIs taken from the Robo crawl. The file names are numbered by the order in which they were taken. */
   screenshotUris?: StringList;
   /** Output only. The type of execution for the test. */
-  executionType?: GoogleFirebaseAppdistroV1alphaDeviceExecutionExecutionTypeEnum;
+  executionType?:
+    | GoogleFirebaseAppdistroV1alphaDeviceExecutionExecutionTypeEnum
+    | (string & {});
   /** Output only. The reason why the test failed. */
-  failedReason?: GoogleFirebaseAppdistroV1alphaDeviceExecutionFailedReasonEnum;
+  failedReason?:
+    | GoogleFirebaseAppdistroV1alphaDeviceExecutionFailedReasonEnum
+    | (string & {});
   /** Output only. The statistics collected during the Robo test. */
   roboStats?: GoogleFirebaseAppdistroV1alphaRoboStats;
   /** Output only. A URI to an image of the Robo crawl graph. */
@@ -963,7 +977,7 @@ export const GoogleFirebaseAppdistroV1alphaDeviceExecution =
   }) as any as S.Schema<GoogleFirebaseAppdistroV1alphaDeviceExecution>;
 
 export type GoogleFirebaseAppdistroV1alphaDeviceExecutionList =
-  ReadonlyArray<GoogleFirebaseAppdistroV1alphaDeviceExecution>;
+  Array<GoogleFirebaseAppdistroV1alphaDeviceExecution>;
 export const GoogleFirebaseAppdistroV1alphaDeviceExecutionList =
   /*@__PURE__*/ S.Array(
     GoogleFirebaseAppdistroV1alphaDeviceExecution,
@@ -1035,7 +1049,9 @@ export interface GoogleFirebaseAppdistroV1alphaReleaseTest {
   /** Output only. Timestamp when the test was run. */
   createTime?: string;
   /** Output only. The state of the release test. */
-  testState?: GoogleFirebaseAppdistroV1alphaReleaseTestTestStateEnum;
+  testState?:
+    | GoogleFirebaseAppdistroV1alphaReleaseTestTestStateEnum
+    | (string & {});
   /** Optional. The test case that was used to generate this release test. Note: The test case may have changed or been deleted since the release test was created. Format: `projects/{project_number}/apps/{app}/testCases/{test_case}` */
   testCase?: string;
   /** Optional. Input only. Login credentials for the test. Input only. */
@@ -1612,7 +1628,7 @@ export const GoogleFirebaseAppdistroV1alphaTesterUdid = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleFirebaseAppdistroV1alphaTesterUdid>;
 
 export type GoogleFirebaseAppdistroV1alphaTesterUdidList =
-  ReadonlyArray<GoogleFirebaseAppdistroV1alphaTesterUdid>;
+  Array<GoogleFirebaseAppdistroV1alphaTesterUdid>;
 export const GoogleFirebaseAppdistroV1alphaTesterUdidList =
   /*@__PURE__*/ S.Array(
     GoogleFirebaseAppdistroV1alphaTesterUdid,
@@ -1726,7 +1742,7 @@ export const ListProjectsAppsReleasesTestsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListProjectsAppsReleasesTestsRequest>;
 
 export type GoogleFirebaseAppdistroV1alphaReleaseTestList =
-  ReadonlyArray<GoogleFirebaseAppdistroV1alphaReleaseTest>;
+  Array<GoogleFirebaseAppdistroV1alphaReleaseTest>;
 export const GoogleFirebaseAppdistroV1alphaReleaseTestList =
   /*@__PURE__*/ S.Array(
     GoogleFirebaseAppdistroV1alphaReleaseTest,

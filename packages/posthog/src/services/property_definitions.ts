@@ -37,7 +37,7 @@ export class NotFound extends T.applyErrorMatchers(
 
 /** List of object IDs to update tags on. */
 export type PropertyDefinitionsBulkUpdateTagsCreateRequestIdsList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const PropertyDefinitionsBulkUpdateTagsCreateRequestIdsList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -49,7 +49,7 @@ export const BulkUpdateTagsActionEnum = /*@__PURE__*/ S.String;
 
 /** Tag names to add, remove, or set. */
 export type PropertyDefinitionsBulkUpdateTagsCreateRequestTagsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PropertyDefinitionsBulkUpdateTagsCreateRequestTagsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -83,7 +83,7 @@ export const PropertyDefinitionsBulkUpdateTagsCreateRequest =
     identifier: "PropertyDefinitionsBulkUpdateTagsCreateRequest",
   }) as any as S.Schema<PropertyDefinitionsBulkUpdateTagsCreateRequest>;
 
-export type BulkUpdateTagsItemTagsList = ReadonlyArray<string>;
+export type BulkUpdateTagsItemTagsList = Array<string>;
 export const BulkUpdateTagsItemTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BulkUpdateTagsItemTagsList>;
@@ -101,8 +101,7 @@ export const BulkUpdateTagsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "BulkUpdateTagsItem",
 }) as any as S.Schema<BulkUpdateTagsItem>;
 
-export type BulkUpdateTagsResponseUpdatedList =
-  ReadonlyArray<BulkUpdateTagsItem>;
+export type BulkUpdateTagsResponseUpdatedList = Array<BulkUpdateTagsItem>;
 export const BulkUpdateTagsResponseUpdatedList = /*@__PURE__*/ S.Array(
   BulkUpdateTagsItem,
 ) as any as S.Schema<BulkUpdateTagsResponseUpdatedList>;
@@ -120,8 +119,7 @@ export const BulkUpdateTagsError = /*@__PURE__*/ S.suspend(() =>
   identifier: "BulkUpdateTagsError",
 }) as any as S.Schema<BulkUpdateTagsError>;
 
-export type BulkUpdateTagsResponseSkippedList =
-  ReadonlyArray<BulkUpdateTagsError>;
+export type BulkUpdateTagsResponseSkippedList = Array<BulkUpdateTagsError>;
 export const BulkUpdateTagsResponseSkippedList = /*@__PURE__*/ S.Array(
   BulkUpdateTagsError,
 ) as any as S.Schema<BulkUpdateTagsResponseSkippedList>;
@@ -237,7 +235,7 @@ export const PropertyDefinitionsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PropertyDefinitionsListRequest",
 }) as any as S.Schema<PropertyDefinitionsListRequest>;
 
-export type EnterprisePropertyDefinitionTagsList = ReadonlyArray<unknown>;
+export type EnterprisePropertyDefinitionTagsList = Array<unknown>;
 export const EnterprisePropertyDefinitionTagsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<EnterprisePropertyDefinitionTagsList>;
@@ -349,7 +347,7 @@ export const EnterprisePropertyDefinition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EnterprisePropertyDefinition>;
 
 export type PaginatedEnterprisePropertyDefinitionListResultsList =
-  ReadonlyArray<EnterprisePropertyDefinition>;
+  Array<EnterprisePropertyDefinition>;
 export const PaginatedEnterprisePropertyDefinitionListResultsList =
   /*@__PURE__*/ S.Array(
     EnterprisePropertyDefinition,
@@ -373,8 +371,7 @@ export const PaginatedEnterprisePropertyDefinitionList =
     identifier: "PaginatedEnterprisePropertyDefinitionList",
   }) as any as S.Schema<PaginatedEnterprisePropertyDefinitionList>;
 
-export type PropertyDefinitionsPartialUpdateRequestTagsList =
-  ReadonlyArray<unknown>;
+export type PropertyDefinitionsPartialUpdateRequestTagsList = Array<unknown>;
 export const PropertyDefinitionsPartialUpdateRequestTagsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -466,7 +463,7 @@ export const PropertyDefinitionsSeenTogetherRetrieveResponse =
     identifier: "PropertyDefinitionsSeenTogetherRetrieveResponse",
   }) as any as S.Schema<PropertyDefinitionsSeenTogetherRetrieveResponse>;
 
-export type PropertyDefinitionsUpdateRequestTagsList = ReadonlyArray<unknown>;
+export type PropertyDefinitionsUpdateRequestTagsList = Array<unknown>;
 export const PropertyDefinitionsUpdateRequestTagsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<PropertyDefinitionsUpdateRequestTagsList>;

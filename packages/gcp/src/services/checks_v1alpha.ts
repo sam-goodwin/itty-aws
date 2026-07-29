@@ -144,7 +144,7 @@ export const GoogleChecksAisafetyV1alphaClassifyContentRequestPolicyConfig =
   }) as any as S.Schema<GoogleChecksAisafetyV1alphaClassifyContentRequestPolicyConfig>;
 
 export type GoogleChecksAisafetyV1alphaClassifyContentRequestPolicyConfigList =
-  ReadonlyArray<GoogleChecksAisafetyV1alphaClassifyContentRequestPolicyConfig>;
+  Array<GoogleChecksAisafetyV1alphaClassifyContentRequestPolicyConfig>;
 export const GoogleChecksAisafetyV1alphaClassifyContentRequestPolicyConfigList =
   /*@__PURE__*/ S.Array(
     GoogleChecksAisafetyV1alphaClassifyContentRequestPolicyConfig,
@@ -286,7 +286,7 @@ export const GoogleChecksAisafetyV1alphaClassifyContentResponsePolicyResult =
   }) as any as S.Schema<GoogleChecksAisafetyV1alphaClassifyContentResponsePolicyResult>;
 
 export type GoogleChecksAisafetyV1alphaClassifyContentResponsePolicyResultList =
-  ReadonlyArray<GoogleChecksAisafetyV1alphaClassifyContentResponsePolicyResult>;
+  Array<GoogleChecksAisafetyV1alphaClassifyContentResponsePolicyResult>;
 export const GoogleChecksAisafetyV1alphaClassifyContentResponsePolicyResultList =
   /*@__PURE__*/ S.Array(
     GoogleChecksAisafetyV1alphaClassifyContentResponsePolicyResult,
@@ -435,7 +435,7 @@ export const GoogleChecksRepoScanV1alphaCodeAttribution =
 /** Represents a data source finding. */
 export interface GoogleChecksRepoScanV1alphaSource {
   /** Required. Data type. */
-  dataType?: GoogleChecksRepoScanV1alphaSourceDataTypeEnum;
+  dataType?: GoogleChecksRepoScanV1alphaSourceDataTypeEnum | (string & {});
   /** Optional. Whether the finding was marked as a false positive. */
   falsePositive?: boolean;
   /** Optional. Source code attribution for the finding. */
@@ -452,7 +452,7 @@ export const GoogleChecksRepoScanV1alphaSource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleChecksRepoScanV1alphaSource>;
 
 export type GoogleChecksRepoScanV1alphaSourceList =
-  ReadonlyArray<GoogleChecksRepoScanV1alphaSource>;
+  Array<GoogleChecksRepoScanV1alphaSource>;
 export const GoogleChecksRepoScanV1alphaSourceList = /*@__PURE__*/ S.Array(
   GoogleChecksRepoScanV1alphaSource,
 ) as any as S.Schema<GoogleChecksRepoScanV1alphaSourceList>;
@@ -545,7 +545,7 @@ export const GoogleChecksRepoScanV1alphaCodeScanDataTypeClassification =
   }) as any as S.Schema<GoogleChecksRepoScanV1alphaCodeScanDataTypeClassification>;
 
 export type GoogleChecksRepoScanV1alphaCodeScanDataTypeClassificationList =
-  ReadonlyArray<GoogleChecksRepoScanV1alphaCodeScanDataTypeClassification>;
+  Array<GoogleChecksRepoScanV1alphaCodeScanDataTypeClassification>;
 export const GoogleChecksRepoScanV1alphaCodeScanDataTypeClassificationList =
   /*@__PURE__*/ S.Array(
     GoogleChecksRepoScanV1alphaCodeScanDataTypeClassification,
@@ -570,7 +570,7 @@ export const GoogleChecksRepoScanV1alphaCodeScan = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleChecksRepoScanV1alphaCodeScan>;
 
 export type GoogleChecksRepoScanV1alphaCodeScanList =
-  ReadonlyArray<GoogleChecksRepoScanV1alphaCodeScan>;
+  Array<GoogleChecksRepoScanV1alphaCodeScan>;
 export const GoogleChecksRepoScanV1alphaCodeScanList = /*@__PURE__*/ S.Array(
   GoogleChecksRepoScanV1alphaCodeScan,
 ) as any as S.Schema<GoogleChecksRepoScanV1alphaCodeScanList>;
@@ -644,7 +644,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -768,7 +768,7 @@ export const GoogleChecksReportV1alphaDataMonitoringResultMetadataBadgesItemEnum
   /*@__PURE__*/ S.String;
 
 export type GoogleChecksReportV1alphaDataMonitoringResultMetadataBadgesItemEnumList =
-  ReadonlyArray<GoogleChecksReportV1alphaDataMonitoringResultMetadataBadgesItemEnum>;
+  Array<GoogleChecksReportV1alphaDataMonitoringResultMetadataBadgesItemEnum>;
 export const GoogleChecksReportV1alphaDataMonitoringResultMetadataBadgesItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleChecksReportV1alphaDataMonitoringResultMetadataBadgesItemEnum,
@@ -832,7 +832,7 @@ export const GoogleChecksReportV1alphaDataMonitoringSdkResult =
   }) as any as S.Schema<GoogleChecksReportV1alphaDataMonitoringSdkResult>;
 
 export type GoogleChecksReportV1alphaDataMonitoringSdkResultList =
-  ReadonlyArray<GoogleChecksReportV1alphaDataMonitoringSdkResult>;
+  Array<GoogleChecksReportV1alphaDataMonitoringSdkResult>;
 export const GoogleChecksReportV1alphaDataMonitoringSdkResultList =
   /*@__PURE__*/ S.Array(
     GoogleChecksReportV1alphaDataMonitoringSdkResult,
@@ -874,7 +874,7 @@ export const GoogleChecksReportV1alphaDataMonitoringEndpointResult =
   }) as any as S.Schema<GoogleChecksReportV1alphaDataMonitoringEndpointResult>;
 
 export type GoogleChecksReportV1alphaDataMonitoringEndpointResultList =
-  ReadonlyArray<GoogleChecksReportV1alphaDataMonitoringEndpointResult>;
+  Array<GoogleChecksReportV1alphaDataMonitoringEndpointResult>;
 export const GoogleChecksReportV1alphaDataMonitoringEndpointResultList =
   /*@__PURE__*/ S.Array(
     GoogleChecksReportV1alphaDataMonitoringEndpointResult,
@@ -913,7 +913,7 @@ export const GoogleChecksReportV1alphaDataMonitoringPermissionResult =
   }) as any as S.Schema<GoogleChecksReportV1alphaDataMonitoringPermissionResult>;
 
 export type GoogleChecksReportV1alphaDataMonitoringPermissionResultList =
-  ReadonlyArray<GoogleChecksReportV1alphaDataMonitoringPermissionResult>;
+  Array<GoogleChecksReportV1alphaDataMonitoringPermissionResult>;
 export const GoogleChecksReportV1alphaDataMonitoringPermissionResultList =
   /*@__PURE__*/ S.Array(
     GoogleChecksReportV1alphaDataMonitoringPermissionResult,
@@ -977,7 +977,7 @@ export const GoogleChecksReportV1alphaDataTypePermissionEvidence =
   }) as any as S.Schema<GoogleChecksReportV1alphaDataTypePermissionEvidence>;
 
 export type GoogleChecksReportV1alphaDataTypePermissionEvidenceList =
-  ReadonlyArray<GoogleChecksReportV1alphaDataTypePermissionEvidence>;
+  Array<GoogleChecksReportV1alphaDataTypePermissionEvidence>;
 export const GoogleChecksReportV1alphaDataTypePermissionEvidenceList =
   /*@__PURE__*/ S.Array(
     GoogleChecksReportV1alphaDataTypePermissionEvidence,
@@ -1022,7 +1022,7 @@ export const GoogleChecksReportV1alphaDataTypeEndpointEvidenceAttributedSdk =
   }) as any as S.Schema<GoogleChecksReportV1alphaDataTypeEndpointEvidenceAttributedSdk>;
 
 export type GoogleChecksReportV1alphaDataTypeEndpointEvidenceAttributedSdkList =
-  ReadonlyArray<GoogleChecksReportV1alphaDataTypeEndpointEvidenceAttributedSdk>;
+  Array<GoogleChecksReportV1alphaDataTypeEndpointEvidenceAttributedSdk>;
 export const GoogleChecksReportV1alphaDataTypeEndpointEvidenceAttributedSdkList =
   /*@__PURE__*/ S.Array(
     GoogleChecksReportV1alphaDataTypeEndpointEvidenceAttributedSdk,
@@ -1044,7 +1044,7 @@ export const GoogleChecksReportV1alphaDataTypeEndpointEvidenceEndpointDetails =
   }) as any as S.Schema<GoogleChecksReportV1alphaDataTypeEndpointEvidenceEndpointDetails>;
 
 export type GoogleChecksReportV1alphaDataTypeEndpointEvidenceEndpointDetailsList =
-  ReadonlyArray<GoogleChecksReportV1alphaDataTypeEndpointEvidenceEndpointDetails>;
+  Array<GoogleChecksReportV1alphaDataTypeEndpointEvidenceEndpointDetails>;
 export const GoogleChecksReportV1alphaDataTypeEndpointEvidenceEndpointDetailsList =
   /*@__PURE__*/ S.Array(
     GoogleChecksReportV1alphaDataTypeEndpointEvidenceEndpointDetails,
@@ -1077,7 +1077,7 @@ export const GoogleChecksReportV1alphaDataTypeEndpointEvidence =
   }) as any as S.Schema<GoogleChecksReportV1alphaDataTypeEndpointEvidence>;
 
 export type GoogleChecksReportV1alphaDataTypeEndpointEvidenceList =
-  ReadonlyArray<GoogleChecksReportV1alphaDataTypeEndpointEvidence>;
+  Array<GoogleChecksReportV1alphaDataTypeEndpointEvidence>;
 export const GoogleChecksReportV1alphaDataTypeEndpointEvidenceList =
   /*@__PURE__*/ S.Array(
     GoogleChecksReportV1alphaDataTypeEndpointEvidence,
@@ -1115,7 +1115,7 @@ export const GoogleChecksReportV1alphaDataTypePrivacyPolicyTextEvidence =
   }) as any as S.Schema<GoogleChecksReportV1alphaDataTypePrivacyPolicyTextEvidence>;
 
 export type GoogleChecksReportV1alphaDataTypePrivacyPolicyTextEvidenceList =
-  ReadonlyArray<GoogleChecksReportV1alphaDataTypePrivacyPolicyTextEvidence>;
+  Array<GoogleChecksReportV1alphaDataTypePrivacyPolicyTextEvidence>;
 export const GoogleChecksReportV1alphaDataTypePrivacyPolicyTextEvidenceList =
   /*@__PURE__*/ S.Array(
     GoogleChecksReportV1alphaDataTypePrivacyPolicyTextEvidence,
@@ -1172,7 +1172,7 @@ export const GoogleChecksReportV1alphaDataMonitoringDataTypeResult =
   }) as any as S.Schema<GoogleChecksReportV1alphaDataMonitoringDataTypeResult>;
 
 export type GoogleChecksReportV1alphaDataMonitoringDataTypeResultList =
-  ReadonlyArray<GoogleChecksReportV1alphaDataMonitoringDataTypeResult>;
+  Array<GoogleChecksReportV1alphaDataMonitoringDataTypeResult>;
 export const GoogleChecksReportV1alphaDataMonitoringDataTypeResultList =
   /*@__PURE__*/ S.Array(
     GoogleChecksReportV1alphaDataMonitoringDataTypeResult,
@@ -1248,7 +1248,7 @@ export const GoogleChecksReportV1alphaCheckStateMetadataBadgesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleChecksReportV1alphaCheckStateMetadataBadgesItemEnumList =
-  ReadonlyArray<GoogleChecksReportV1alphaCheckStateMetadataBadgesItemEnum>;
+  Array<GoogleChecksReportV1alphaCheckStateMetadataBadgesItemEnum>;
 export const GoogleChecksReportV1alphaCheckStateMetadataBadgesItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleChecksReportV1alphaCheckStateMetadataBadgesItemEnum,
@@ -1292,7 +1292,7 @@ export const GoogleChecksReportV1alphaCheckDataSecurityEvidenceDataInTransitInfo
   }) as any as S.Schema<GoogleChecksReportV1alphaCheckDataSecurityEvidenceDataInTransitInfo>;
 
 export type GoogleChecksReportV1alphaCheckDataSecurityEvidenceDataInTransitInfoList =
-  ReadonlyArray<GoogleChecksReportV1alphaCheckDataSecurityEvidenceDataInTransitInfo>;
+  Array<GoogleChecksReportV1alphaCheckDataSecurityEvidenceDataInTransitInfo>;
 export const GoogleChecksReportV1alphaCheckDataSecurityEvidenceDataInTransitInfoList =
   /*@__PURE__*/ S.Array(
     GoogleChecksReportV1alphaCheckDataSecurityEvidenceDataInTransitInfo,
@@ -1377,7 +1377,7 @@ export const GoogleChecksReportV1alphaCheckDataTypeEvidence =
   }) as any as S.Schema<GoogleChecksReportV1alphaCheckDataTypeEvidence>;
 
 export type GoogleChecksReportV1alphaCheckDataTypeEvidenceList =
-  ReadonlyArray<GoogleChecksReportV1alphaCheckDataTypeEvidence>;
+  Array<GoogleChecksReportV1alphaCheckDataTypeEvidence>;
 export const GoogleChecksReportV1alphaCheckDataTypeEvidenceList =
   /*@__PURE__*/ S.Array(
     GoogleChecksReportV1alphaCheckDataTypeEvidence,
@@ -1401,7 +1401,7 @@ export const GoogleChecksReportV1alphaCheckSdkIssueEvidence =
   }) as any as S.Schema<GoogleChecksReportV1alphaCheckSdkIssueEvidence>;
 
 export type GoogleChecksReportV1alphaCheckSdkIssueEvidenceList =
-  ReadonlyArray<GoogleChecksReportV1alphaCheckSdkIssueEvidence>;
+  Array<GoogleChecksReportV1alphaCheckSdkIssueEvidence>;
 export const GoogleChecksReportV1alphaCheckSdkIssueEvidenceList =
   /*@__PURE__*/ S.Array(
     GoogleChecksReportV1alphaCheckSdkIssueEvidence,
@@ -1422,7 +1422,7 @@ export const GoogleChecksReportV1alphaCheckPermissionEvidence =
   }) as any as S.Schema<GoogleChecksReportV1alphaCheckPermissionEvidence>;
 
 export type GoogleChecksReportV1alphaCheckPermissionEvidenceList =
-  ReadonlyArray<GoogleChecksReportV1alphaCheckPermissionEvidence>;
+  Array<GoogleChecksReportV1alphaCheckPermissionEvidence>;
 export const GoogleChecksReportV1alphaCheckPermissionEvidenceList =
   /*@__PURE__*/ S.Array(
     GoogleChecksReportV1alphaCheckPermissionEvidence,
@@ -1444,7 +1444,7 @@ export const GoogleChecksReportV1alphaCheckSdkRestrictionViolationEvidenceSdkDet
   }) as any as S.Schema<GoogleChecksReportV1alphaCheckSdkRestrictionViolationEvidenceSdkDetails>;
 
 export type GoogleChecksReportV1alphaCheckSdkRestrictionViolationEvidenceSdkDetailsList =
-  ReadonlyArray<GoogleChecksReportV1alphaCheckSdkRestrictionViolationEvidenceSdkDetails>;
+  Array<GoogleChecksReportV1alphaCheckSdkRestrictionViolationEvidenceSdkDetails>;
 export const GoogleChecksReportV1alphaCheckSdkRestrictionViolationEvidenceSdkDetailsList =
   /*@__PURE__*/ S.Array(
     GoogleChecksReportV1alphaCheckSdkRestrictionViolationEvidenceSdkDetails,
@@ -1467,7 +1467,7 @@ export const GoogleChecksReportV1alphaCheckSdkRestrictionViolationEvidence =
   }) as any as S.Schema<GoogleChecksReportV1alphaCheckSdkRestrictionViolationEvidence>;
 
 export type GoogleChecksReportV1alphaCheckSdkRestrictionViolationEvidenceList =
-  ReadonlyArray<GoogleChecksReportV1alphaCheckSdkRestrictionViolationEvidence>;
+  Array<GoogleChecksReportV1alphaCheckSdkRestrictionViolationEvidence>;
 export const GoogleChecksReportV1alphaCheckSdkRestrictionViolationEvidenceList =
   /*@__PURE__*/ S.Array(
     GoogleChecksReportV1alphaCheckSdkRestrictionViolationEvidence,
@@ -1488,7 +1488,7 @@ export const GoogleChecksReportV1alphaCheckEndpointEvidence =
   }) as any as S.Schema<GoogleChecksReportV1alphaCheckEndpointEvidence>;
 
 export type GoogleChecksReportV1alphaCheckEndpointEvidenceList =
-  ReadonlyArray<GoogleChecksReportV1alphaCheckEndpointEvidence>;
+  Array<GoogleChecksReportV1alphaCheckEndpointEvidence>;
 export const GoogleChecksReportV1alphaCheckEndpointEvidenceList =
   /*@__PURE__*/ S.Array(
     GoogleChecksReportV1alphaCheckEndpointEvidence,
@@ -1510,7 +1510,7 @@ export const GoogleChecksReportV1alphaCheckPermissionRestrictionViolationEvidenc
   }) as any as S.Schema<GoogleChecksReportV1alphaCheckPermissionRestrictionViolationEvidencePermissionDetails>;
 
 export type GoogleChecksReportV1alphaCheckPermissionRestrictionViolationEvidencePermissionDetailsList =
-  ReadonlyArray<GoogleChecksReportV1alphaCheckPermissionRestrictionViolationEvidencePermissionDetails>;
+  Array<GoogleChecksReportV1alphaCheckPermissionRestrictionViolationEvidencePermissionDetails>;
 export const GoogleChecksReportV1alphaCheckPermissionRestrictionViolationEvidencePermissionDetailsList =
   /*@__PURE__*/ S.Array(
     GoogleChecksReportV1alphaCheckPermissionRestrictionViolationEvidencePermissionDetails,
@@ -1534,7 +1534,7 @@ export const GoogleChecksReportV1alphaCheckPermissionRestrictionViolationEvidenc
   }) as any as S.Schema<GoogleChecksReportV1alphaCheckPermissionRestrictionViolationEvidence>;
 
 export type GoogleChecksReportV1alphaCheckPermissionRestrictionViolationEvidenceList =
-  ReadonlyArray<GoogleChecksReportV1alphaCheckPermissionRestrictionViolationEvidence>;
+  Array<GoogleChecksReportV1alphaCheckPermissionRestrictionViolationEvidence>;
 export const GoogleChecksReportV1alphaCheckPermissionRestrictionViolationEvidenceList =
   /*@__PURE__*/ S.Array(
     GoogleChecksReportV1alphaCheckPermissionRestrictionViolationEvidence,
@@ -1555,7 +1555,7 @@ export const GoogleChecksReportV1alphaCheckPrivacyPolicyTextEvidence =
   }) as any as S.Schema<GoogleChecksReportV1alphaCheckPrivacyPolicyTextEvidence>;
 
 export type GoogleChecksReportV1alphaCheckPrivacyPolicyTextEvidenceList =
-  ReadonlyArray<GoogleChecksReportV1alphaCheckPrivacyPolicyTextEvidence>;
+  Array<GoogleChecksReportV1alphaCheckPrivacyPolicyTextEvidence>;
 export const GoogleChecksReportV1alphaCheckPrivacyPolicyTextEvidenceList =
   /*@__PURE__*/ S.Array(
     GoogleChecksReportV1alphaCheckPrivacyPolicyTextEvidence,
@@ -1577,7 +1577,7 @@ export const GoogleChecksReportV1alphaCheckEndpointRestrictionViolationEvidenceE
   }) as any as S.Schema<GoogleChecksReportV1alphaCheckEndpointRestrictionViolationEvidenceEndpointDetails>;
 
 export type GoogleChecksReportV1alphaCheckEndpointRestrictionViolationEvidenceEndpointDetailsList =
-  ReadonlyArray<GoogleChecksReportV1alphaCheckEndpointRestrictionViolationEvidenceEndpointDetails>;
+  Array<GoogleChecksReportV1alphaCheckEndpointRestrictionViolationEvidenceEndpointDetails>;
 export const GoogleChecksReportV1alphaCheckEndpointRestrictionViolationEvidenceEndpointDetailsList =
   /*@__PURE__*/ S.Array(
     GoogleChecksReportV1alphaCheckEndpointRestrictionViolationEvidenceEndpointDetails,
@@ -1601,7 +1601,7 @@ export const GoogleChecksReportV1alphaCheckEndpointRestrictionViolationEvidence 
   }) as any as S.Schema<GoogleChecksReportV1alphaCheckEndpointRestrictionViolationEvidence>;
 
 export type GoogleChecksReportV1alphaCheckEndpointRestrictionViolationEvidenceList =
-  ReadonlyArray<GoogleChecksReportV1alphaCheckEndpointRestrictionViolationEvidence>;
+  Array<GoogleChecksReportV1alphaCheckEndpointRestrictionViolationEvidence>;
 export const GoogleChecksReportV1alphaCheckEndpointRestrictionViolationEvidenceList =
   /*@__PURE__*/ S.Array(
     GoogleChecksReportV1alphaCheckEndpointRestrictionViolationEvidence,
@@ -1622,7 +1622,7 @@ export const GoogleChecksReportV1alphaCheckSdkEvidence =
   }) as any as S.Schema<GoogleChecksReportV1alphaCheckSdkEvidence>;
 
 export type GoogleChecksReportV1alphaCheckSdkEvidenceList =
-  ReadonlyArray<GoogleChecksReportV1alphaCheckSdkEvidence>;
+  Array<GoogleChecksReportV1alphaCheckSdkEvidence>;
 export const GoogleChecksReportV1alphaCheckSdkEvidenceList =
   /*@__PURE__*/ S.Array(
     GoogleChecksReportV1alphaCheckSdkEvidence,
@@ -1829,7 +1829,7 @@ export const GoogleChecksReportV1alphaCheckCitation = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleChecksReportV1alphaCheckCitation>;
 
 export type GoogleChecksReportV1alphaCheckCitationList =
-  ReadonlyArray<GoogleChecksReportV1alphaCheckCitation>;
+  Array<GoogleChecksReportV1alphaCheckCitation>;
 export const GoogleChecksReportV1alphaCheckCitationList = /*@__PURE__*/ S.Array(
   GoogleChecksReportV1alphaCheckCitation,
 ) as any as S.Schema<GoogleChecksReportV1alphaCheckCitationList>;
@@ -1842,7 +1842,7 @@ export type GoogleChecksReportV1alphaCheckSeverityEnum =
 export const GoogleChecksReportV1alphaCheckSeverityEnum =
   /*@__PURE__*/ S.String;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -1879,7 +1879,7 @@ export const GoogleChecksReportV1alphaCheck = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleChecksReportV1alphaCheck>;
 
 export type GoogleChecksReportV1alphaCheckList =
-  ReadonlyArray<GoogleChecksReportV1alphaCheck>;
+  Array<GoogleChecksReportV1alphaCheck>;
 export const GoogleChecksReportV1alphaCheckList = /*@__PURE__*/ S.Array(
   GoogleChecksReportV1alphaCheck,
 ) as any as S.Schema<GoogleChecksReportV1alphaCheckList>;
@@ -1998,7 +1998,7 @@ export const ListAccountsAppsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAccountsAppsRequest>;
 
 export type GoogleChecksAccountV1alphaAppList =
-  ReadonlyArray<GoogleChecksAccountV1alphaApp>;
+  Array<GoogleChecksAccountV1alphaApp>;
 export const GoogleChecksAccountV1alphaAppList = /*@__PURE__*/ S.Array(
   GoogleChecksAccountV1alphaApp,
 ) as any as S.Schema<GoogleChecksAccountV1alphaAppList>;
@@ -2050,7 +2050,7 @@ export const ListAccountsAppsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAccountsAppsOperationsRequest",
 }) as any as S.Schema<ListAccountsAppsOperationsRequest>;
 
-export type OperationList = ReadonlyArray<Operation>;
+export type OperationList = Array<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -2105,7 +2105,7 @@ export const ListAccountsAppsReportsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAccountsAppsReportsRequest>;
 
 export type GoogleChecksReportV1alphaReportList =
-  ReadonlyArray<GoogleChecksReportV1alphaReport>;
+  Array<GoogleChecksReportV1alphaReport>;
 export const GoogleChecksReportV1alphaReportList = /*@__PURE__*/ S.Array(
   GoogleChecksReportV1alphaReport,
 ) as any as S.Schema<GoogleChecksReportV1alphaReportList>;
@@ -2155,7 +2155,7 @@ export const ListAccountsReposScansRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAccountsReposScansRequest>;
 
 export type GoogleChecksRepoScanV1alphaRepoScanList =
-  ReadonlyArray<GoogleChecksRepoScanV1alphaRepoScan>;
+  Array<GoogleChecksRepoScanV1alphaRepoScan>;
 export const GoogleChecksRepoScanV1alphaRepoScanList = /*@__PURE__*/ S.Array(
   GoogleChecksRepoScanV1alphaRepoScan,
 ) as any as S.Schema<GoogleChecksRepoScanV1alphaRepoScanList>;

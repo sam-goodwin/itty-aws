@@ -177,8 +177,7 @@ export type ProvisioningState =
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** The group ids for the private endpoint resource. */
-export type PrivateEndpointConnectionPropertiesGroupIdsList =
-  ReadonlyArray<string>;
+export type PrivateEndpointConnectionPropertiesGroupIdsList = Array<string>;
 export const PrivateEndpointConnectionPropertiesGroupIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -207,7 +206,7 @@ export const PrivateEndpointServiceConnectionStatus = /*@__PURE__*/ S.String;
 /** A collection of information about the state of the connection between service consumer and provider. */
 export interface PrivateLinkServiceConnectionState {
   /** Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service. */
-  status?: PrivateEndpointServiceConnectionStatus;
+  status?: PrivateEndpointServiceConnectionStatus | (string & {});
   /** The reason for approval/rejection of the connection. */
   description?: string;
   /** A message indicating if changes on the service provider require any updates on the consumer. */
@@ -282,7 +281,7 @@ export const DeidServicePropertiesPrivateEndpointConnectionsItem =
 
 /** List of private endpoint connections. */
 export type DeidServicePropertiesPrivateEndpointConnectionsList =
-  ReadonlyArray<DeidServicePropertiesPrivateEndpointConnectionsItem>;
+  Array<DeidServicePropertiesPrivateEndpointConnectionsItem>;
 export const DeidServicePropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     DeidServicePropertiesPrivateEndpointConnectionsItem,
@@ -592,7 +591,7 @@ export const DeidService = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeidService" }) as any as S.Schema<DeidService>;
 
 /** The DeidService items on this page */
-export type DeidServiceListResultValueList = ReadonlyArray<DeidService>;
+export type DeidServiceListResultValueList = Array<DeidService>;
 export const DeidServiceListResultValueList = /*@__PURE__*/ S.Array(
   DeidService,
 ) as any as S.Schema<DeidServiceListResultValueList>;
@@ -864,7 +863,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = ReadonlyArray<Operation>;
+export type OperationsListResponseValueList = Array<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;
@@ -943,7 +942,7 @@ export const PrivateEndpointConnectionsCreateRequest = /*@__PURE__*/ S.suspend(
 
 /** The group ids for the private endpoint resource. */
 export type PrivateEndpointConnectionsCreateResponsePropertiesGroupIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PrivateEndpointConnectionsCreateResponsePropertiesGroupIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1068,7 +1067,7 @@ export const PrivateEndpointConnectionsGetRequest = /*@__PURE__*/ S.suspend(
 
 /** The group ids for the private endpoint resource. */
 export type PrivateEndpointConnectionsGetResponsePropertiesGroupIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PrivateEndpointConnectionsGetResponsePropertiesGroupIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1152,7 +1151,7 @@ export const PrivateEndpointConnectionsListByDeidServiceRequest =
 
 /** The group ids for the private endpoint resource. */
 export type PrivateEndpointConnectionResourcePropertiesGroupIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PrivateEndpointConnectionResourcePropertiesGroupIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1210,7 +1209,7 @@ export const PrivateEndpointConnectionResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The PrivateEndpointConnectionResource items on this page */
 export type PrivateEndpointConnectionResourceListResultValueList =
-  ReadonlyArray<PrivateEndpointConnectionResource>;
+  Array<PrivateEndpointConnectionResource>;
 export const PrivateEndpointConnectionResourceListResultValueList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnectionResource,
@@ -1260,16 +1259,14 @@ export const PrivateLinksListByDeidServiceRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PrivateLinksListByDeidServiceRequest>;
 
 /** The private link resource required member names. */
-export type PrivateLinkResourcePropertiesRequiredMembersList =
-  ReadonlyArray<string>;
+export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
 export const PrivateLinkResourcePropertiesRequiredMembersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
 
 /** The private link resource private link DNS zone name. */
-export type PrivateLinkResourcePropertiesRequiredZoneNamesList =
-  ReadonlyArray<string>;
+export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
 export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1324,8 +1321,7 @@ export const PrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateLinkResource>;
 
 /** The PrivateLinkResource items on this page */
-export type PrivateLinkResourceListResultValueList =
-  ReadonlyArray<PrivateLinkResource>;
+export type PrivateLinkResourceListResultValueList = Array<PrivateLinkResource>;
 export const PrivateLinkResourceListResultValueList = /*@__PURE__*/ S.Array(
   PrivateLinkResource,
 ) as any as S.Schema<PrivateLinkResourceListResultValueList>;

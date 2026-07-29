@@ -179,7 +179,7 @@ export const WarehouseSavedQueryFoldersListRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<WarehouseSavedQueryFoldersListRequest>;
 
 export type WarehouseSavedQueryFoldersListResponseBodyList =
-  ReadonlyArray<DataWarehouseSavedQueryFolder>;
+  Array<DataWarehouseSavedQueryFolder>;
 export const WarehouseSavedQueryFoldersListResponseBodyList =
   /*@__PURE__*/ S.Array(
     DataWarehouseSavedQueryFolder,

@@ -174,7 +174,7 @@ export const ParallelDataFormat = /*@__PURE__*/ S.String;
 
 export interface ParallelDataConfig {
   S3Uri?: string;
-  Format?: ParallelDataFormat;
+  Format?: ParallelDataFormat | (string & {});
 }
 export const ParallelDataConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -189,7 +189,7 @@ export const EncryptionKeyType = /*@__PURE__*/ S.String;
 
 export type EncryptionKeyID = string;
 export interface EncryptionKey {
-  Type: EncryptionKeyType;
+  Type: EncryptionKeyType | (string & {});
   Id: string;
 }
 export const EncryptionKey = /*@__PURE__*/ S.suspend(() =>
@@ -357,9 +357,9 @@ export type Brevity = "ON";
 export const Brevity = /*@__PURE__*/ S.String;
 
 export interface TranslationSettings {
-  Formality?: Formality;
-  Profanity?: Profanity;
-  Brevity?: Brevity;
+  Formality?: Formality | (string & {});
+  Profanity?: Profanity | (string & {});
+  Brevity?: Brevity | (string & {});
 }
 export const TranslationSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

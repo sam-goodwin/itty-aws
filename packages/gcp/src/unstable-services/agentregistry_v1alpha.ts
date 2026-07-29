@@ -107,7 +107,7 @@ export const Target = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Target" }) as any as S.Schema<Target>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -208,7 +208,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -259,7 +259,7 @@ export const EndpointSpecTypeEnum = /*@__PURE__*/ S.String;
 /** The spec of the endpoint. */
 export interface EndpointSpec {
   /** Required. The type of the endpoint spec content. */
-  type?: EndpointSpecTypeEnum;
+  type?: EndpointSpecTypeEnum | (string & {});
   /** Optional. The content of the endpoint spec. Reserved for future use. */
   content?: DocumentMap;
 }
@@ -281,7 +281,7 @@ export interface McpServerSpec {
   /** Optional. The content of the MCP Server spec. This payload is validated against the schema for the specified type. The content size is limited to `10KB`. */
   content?: DocumentMap;
   /** Required. The type of the MCP Server spec content. */
-  type?: McpServerSpecTypeEnum;
+  type?: McpServerSpecTypeEnum | (string & {});
 }
 export const McpServerSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -302,7 +302,7 @@ export interface Interface {
   /** Required. The destination URL. */
   url?: string;
   /** Required. The protocol binding of the interface. */
-  protocolBinding?: InterfaceProtocolBindingEnum;
+  protocolBinding?: InterfaceProtocolBindingEnum | (string & {});
 }
 export const Interface = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -311,7 +311,7 @@ export const Interface = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Interface" }) as any as S.Schema<Interface>;
 
-export type InterfaceList = ReadonlyArray<Interface>;
+export type InterfaceList = Array<Interface>;
 export const InterfaceList = /*@__PURE__*/ S.Array(
   Interface,
 ) as any as S.Schema<InterfaceList>;
@@ -327,7 +327,7 @@ export interface AgentSpec {
   /** Optional. The content of the Agent spec in the JSON format. This payload is validated against the schema for the specified type. The content size is limited to `10KB`. */
   content?: DocumentMap;
   /** Required. The type of the agent spec content. */
-  type?: AgentSpecTypeEnum;
+  type?: AgentSpecTypeEnum | (string & {});
 }
 export const AgentSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -485,7 +485,7 @@ export interface SkillRevision {
   /** Output only. Cryptographic SHA-256 integrity and deduplication digest of the payload zip. */
   sha256Hash?: string;
   /** Output only. The system-managed lifecycle state of this revision. */
-  state?: SkillRevisionStateEnum;
+  state?: SkillRevisionStateEnum | (string & {});
 }
 export const SkillRevision = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -537,7 +537,7 @@ export interface Skill {
   /** Output only. A stable, globally unique logical identifier for the skill. It is securely constructed by the backend by combining the associated `publisher`'s verified namespace and the skill's resource ID to enforce strict ownership. For example, the prefix `google-` is reserved exclusively for first-party Google publishers to prevent namespace squatting. Example: `urn:skill:google-workspace:create-docs` */
   skillId?: string;
   /** Required. User-managed target state of the skill. */
-  targetState?: SkillTargetStateEnum;
+  targetState?: SkillTargetStateEnum | (string & {});
   /** Output only. Lightweight frontmatter metadata attributes copied from the default revision. */
   frontmatter?: Frontmatter;
   /** Output only. Universally unique identifier (UUID4) for the logical container. */
@@ -545,7 +545,7 @@ export interface Skill {
   /** Output only. Update time. */
   updateTime?: string;
   /** Output only. The system-managed state of the skill. */
-  state?: SkillStateEnum;
+  state?: SkillStateEnum | (string & {});
   /** Identifier. Resource name of the Skill. Format: `projects/{project}/locations/{location}/skills/{skill}` The `{skill}` segment acts as the resource ID. If the skill is associated with a Publisher, this segment typically uses a hyphenated namespace prefix corresponding to the publisher (e.g., `google-workspace-create-docs`). */
   name?: string;
   /** Optional. Brief summary describing the capabilities of the skill. Maximum length is 2048 characters. */
@@ -553,7 +553,7 @@ export interface Skill {
   /** Required. Human-readable display name of the skill. Maximum length is 128 characters. */
   displayName?: string;
   /** Required. Structural deployment type (SIMPLE leaf vs COMPOSITE bundle). */
-  type?: SkillTypeEnum;
+  type?: SkillTypeEnum | (string & {});
 }
 export const Skill = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -771,7 +771,7 @@ export const FetchAvailableProjectsLocationsBindingsRequest =
     identifier: "FetchAvailableProjectsLocationsBindingsRequest",
   }) as any as S.Schema<FetchAvailableProjectsLocationsBindingsRequest>;
 
-export type BindingList = ReadonlyArray<Binding>;
+export type BindingList = Array<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -894,7 +894,7 @@ export const Protocol = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Protocol" }) as any as S.Schema<Protocol>;
 
-export type ProtocolList = ReadonlyArray<Protocol>;
+export type ProtocolList = Array<Protocol>;
 export const ProtocolList = /*@__PURE__*/ S.Array(
   Protocol,
 ) as any as S.Schema<ProtocolList>;
@@ -922,7 +922,7 @@ export const A2ASkill = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "A2ASkill" }) as any as S.Schema<A2ASkill>;
 
-export type A2ASkillList = ReadonlyArray<A2ASkill>;
+export type A2ASkillList = Array<A2ASkill>;
 export const A2ASkillList = /*@__PURE__*/ S.Array(
   A2ASkill,
 ) as any as S.Schema<A2ASkillList>;
@@ -1102,7 +1102,7 @@ export const Tool = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Tool" }) as any as S.Schema<Tool>;
 
-export type ToolList = ReadonlyArray<Tool>;
+export type ToolList = Array<Tool>;
 export const ToolList = /*@__PURE__*/ S.Array(
   Tool,
 ) as any as S.Schema<ToolList>;
@@ -1298,7 +1298,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = ReadonlyArray<Location>;
+export type LocationList = Array<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -1349,7 +1349,7 @@ export const ListProjectsLocationsAgentsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsAgentsRequest",
 }) as any as S.Schema<ListProjectsLocationsAgentsRequest>;
 
-export type AgentList = ReadonlyArray<Agent>;
+export type AgentList = Array<Agent>;
 export const AgentList = /*@__PURE__*/ S.Array(
   Agent,
 ) as any as S.Schema<AgentList>;
@@ -1445,7 +1445,7 @@ export const ListProjectsLocationsEndpointsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsEndpointsRequest",
 }) as any as S.Schema<ListProjectsLocationsEndpointsRequest>;
 
-export type EndpointList = ReadonlyArray<Endpoint>;
+export type EndpointList = Array<Endpoint>;
 export const EndpointList = /*@__PURE__*/ S.Array(
   Endpoint,
 ) as any as S.Schema<EndpointList>;
@@ -1497,7 +1497,7 @@ export const ListProjectsLocationsMcpServersRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsMcpServersRequest",
 }) as any as S.Schema<ListProjectsLocationsMcpServersRequest>;
 
-export type McpServerList = ReadonlyArray<McpServer>;
+export type McpServerList = Array<McpServer>;
 export const McpServerList = /*@__PURE__*/ S.Array(
   McpServer,
 ) as any as S.Schema<McpServerList>;
@@ -1549,7 +1549,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type OperationList = ReadonlyArray<Operation>;
+export type OperationList = Array<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -1598,7 +1598,7 @@ export const ListProjectsLocationsPublishersRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsPublishersRequest",
 }) as any as S.Schema<ListProjectsLocationsPublishersRequest>;
 
-export type PublisherList = ReadonlyArray<Publisher>;
+export type PublisherList = Array<Publisher>;
 export const PublisherList = /*@__PURE__*/ S.Array(
   Publisher,
 ) as any as S.Schema<PublisherList>;
@@ -1647,7 +1647,7 @@ export const ListProjectsLocationsServicesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsServicesRequest",
 }) as any as S.Schema<ListProjectsLocationsServicesRequest>;
 
-export type ServiceList = ReadonlyArray<Service>;
+export type ServiceList = Array<Service>;
 export const ServiceList = /*@__PURE__*/ S.Array(
   Service,
 ) as any as S.Schema<ServiceList>;
@@ -1698,7 +1698,7 @@ export const ListProjectsLocationsSkillsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsSkillsRequest",
 }) as any as S.Schema<ListProjectsLocationsSkillsRequest>;
 
-export type SkillList = ReadonlyArray<Skill>;
+export type SkillList = Array<Skill>;
 export const SkillList = /*@__PURE__*/ S.Array(
   Skill,
 ) as any as S.Schema<SkillList>;
@@ -1747,7 +1747,7 @@ export const ListProjectsLocationsSkillsRevisionsRequest =
     identifier: "ListProjectsLocationsSkillsRevisionsRequest",
   }) as any as S.Schema<ListProjectsLocationsSkillsRevisionsRequest>;
 
-export type SkillRevisionList = ReadonlyArray<SkillRevision>;
+export type SkillRevisionList = Array<SkillRevision>;
 export const SkillRevisionList = /*@__PURE__*/ S.Array(
   SkillRevision,
 ) as any as S.Schema<SkillRevisionList>;

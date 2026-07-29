@@ -35,7 +35,7 @@ export const WizardTaskDTOStatusEnum = /*@__PURE__*/ S.String;
 export interface WizardTaskDTO {
   id: string;
   title: string;
-  status: WizardTaskDTOStatusEnum;
+  status: WizardTaskDTOStatusEnum | (string & {});
 }
 export const WizardTaskDTO = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -45,7 +45,7 @@ export const WizardTaskDTO = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "WizardTaskDTO" }) as any as S.Schema<WizardTaskDTO>;
 
-export type WizardSessionsCreateRequestTasksList = ReadonlyArray<WizardTaskDTO>;
+export type WizardSessionsCreateRequestTasksList = Array<WizardTaskDTO>;
 export const WizardSessionsCreateRequestTasksList = /*@__PURE__*/ S.Array(
   WizardTaskDTO,
 ) as any as S.Schema<WizardSessionsCreateRequestTasksList>;
@@ -109,7 +109,7 @@ export const WizardSessionsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "WizardSessionsCreateRequest",
 }) as any as S.Schema<WizardSessionsCreateRequest>;
 
-export type WizardSessionDTOTasksList = ReadonlyArray<WizardTaskDTO>;
+export type WizardSessionDTOTasksList = Array<WizardTaskDTO>;
 export const WizardSessionDTOTasksList = /*@__PURE__*/ S.Array(
   WizardTaskDTO,
 ) as any as S.Schema<WizardSessionDTOTasksList>;
@@ -216,8 +216,7 @@ export const WizardSessionsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "WizardSessionsListRequest",
 }) as any as S.Schema<WizardSessionsListRequest>;
 
-export type PaginatedWizardSessionDTOListResultsList =
-  ReadonlyArray<WizardSessionDTO>;
+export type PaginatedWizardSessionDTOListResultsList = Array<WizardSessionDTO>;
 export const PaginatedWizardSessionDTOListResultsList = /*@__PURE__*/ S.Array(
   WizardSessionDTO,
 ) as any as S.Schema<PaginatedWizardSessionDTOListResultsList>;

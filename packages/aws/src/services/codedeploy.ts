@@ -583,7 +583,7 @@ export type ETag = string;
 export interface S3Location {
   bucket?: string;
   key?: string;
-  bundleType?: BundleType;
+  bundleType?: BundleType | (string & {});
   version?: string;
   eTag?: string;
 }
@@ -625,7 +625,7 @@ export const AppSpecContent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ content: S.optional(S.String), sha256: S.optional(S.String) }),
 ).annotate({ identifier: "AppSpecContent" }) as any as S.Schema<AppSpecContent>;
 export interface RevisionLocation {
-  revisionType?: RevisionLocationType;
+  revisionType?: RevisionLocationType | (string & {});
   s3Location?: S3Location;
   gitHubLocation?: GitHubLocation;
   string?: RawString;
@@ -797,7 +797,7 @@ export const EC2TagFilterType = /*@__PURE__*/ S.String;
 export interface EC2TagFilter {
   Key?: string;
   Value?: string;
-  Type?: EC2TagFilterType;
+  Type?: EC2TagFilterType | (string & {});
 }
 export const EC2TagFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -814,7 +814,7 @@ export const TagFilterType = /*@__PURE__*/ S.String;
 export interface TagFilter {
   Key?: string;
   Value?: string;
-  Type?: TagFilterType;
+  Type?: TagFilterType | (string & {});
 }
 export const TagFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -859,7 +859,7 @@ export type TriggerEventType =
   | "InstanceReady";
 export const TriggerEventType = /*@__PURE__*/ S.String;
 
-export type TriggerEventTypeList = TriggerEventType[];
+export type TriggerEventTypeList = (TriggerEventType | (string & {}))[];
 export const TriggerEventTypeList = /*@__PURE__*/ S.Array(TriggerEventType);
 export interface TriggerConfig {
   triggerName?: string;
@@ -904,7 +904,7 @@ export type AutoRollbackEvent =
   | "DEPLOYMENT_STOP_ON_REQUEST";
 export const AutoRollbackEvent = /*@__PURE__*/ S.String;
 
-export type AutoRollbackEventsList = AutoRollbackEvent[];
+export type AutoRollbackEventsList = (AutoRollbackEvent | (string & {}))[];
 export const AutoRollbackEventsList = /*@__PURE__*/ S.Array(AutoRollbackEvent);
 export interface AutoRollbackConfiguration {
   enabled?: boolean;
@@ -927,8 +927,8 @@ export type DeploymentOption =
 export const DeploymentOption = /*@__PURE__*/ S.String;
 
 export interface DeploymentStyle {
-  deploymentType?: DeploymentType;
-  deploymentOption?: DeploymentOption;
+  deploymentType?: DeploymentType | (string & {});
+  deploymentOption?: DeploymentOption | (string & {});
 }
 export const DeploymentStyle = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -946,7 +946,7 @@ export const InstanceAction = /*@__PURE__*/ S.String;
 
 export type Duration = number;
 export interface BlueInstanceTerminationOption {
-  action?: InstanceAction;
+  action?: InstanceAction | (string & {});
   terminationWaitTimeInMinutes?: number;
 }
 export const BlueInstanceTerminationOption = /*@__PURE__*/ S.suspend(() =>
@@ -961,7 +961,7 @@ export type DeploymentReadyAction = "CONTINUE_DEPLOYMENT" | "STOP_DEPLOYMENT";
 export const DeploymentReadyAction = /*@__PURE__*/ S.String;
 
 export interface DeploymentReadyOption {
-  actionOnTimeout?: DeploymentReadyAction;
+  actionOnTimeout?: DeploymentReadyAction | (string & {});
   waitTimeInMinutes?: number;
 }
 export const DeploymentReadyOption = /*@__PURE__*/ S.suspend(() =>
@@ -978,7 +978,7 @@ export type GreenFleetProvisioningAction =
 export const GreenFleetProvisioningAction = /*@__PURE__*/ S.String;
 
 export interface GreenFleetProvisioningOption {
-  action?: GreenFleetProvisioningAction;
+  action?: GreenFleetProvisioningAction | (string & {});
 }
 export const GreenFleetProvisioningOption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ action: S.optional(GreenFleetProvisioningAction) }),
@@ -1908,7 +1908,7 @@ export const MinimumHealthyHostsType = /*@__PURE__*/ S.String;
 
 export type MinimumHealthyHostsValue = number;
 export interface MinimumHealthyHosts {
-  type?: MinimumHealthyHostsType;
+  type?: MinimumHealthyHostsType | (string & {});
   value?: number;
 }
 export const MinimumHealthyHosts = /*@__PURE__*/ S.suspend(() =>
@@ -1952,7 +1952,7 @@ export const TimeBasedLinear = /*@__PURE__*/ S.suspend(() =>
   identifier: "TimeBasedLinear",
 }) as any as S.Schema<TimeBasedLinear>;
 export interface TrafficRoutingConfig {
-  type?: TrafficRoutingType;
+  type?: TrafficRoutingType | (string & {});
   timeBasedCanary?: TimeBasedCanary;
   timeBasedLinear?: TimeBasedLinear;
 }
@@ -1971,7 +1971,7 @@ export const MinimumHealthyHostsPerZoneType = /*@__PURE__*/ S.String;
 
 export type MinimumHealthyHostsPerZoneValue = number;
 export interface MinimumHealthyHostsPerZone {
-  type?: MinimumHealthyHostsPerZoneType;
+  type?: MinimumHealthyHostsPerZoneType | (string & {});
   value?: number;
 }
 export const MinimumHealthyHostsPerZone = /*@__PURE__*/ S.suspend(() =>

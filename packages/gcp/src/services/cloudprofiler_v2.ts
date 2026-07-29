@@ -97,7 +97,7 @@ export const Deployment = /*@__PURE__*/ S.suspend(() =>
 /** Profile resource. */
 export interface Profile {
   /** Type of profile. For offline mode, this must be specified when creating the profile. For online mode it is assigned and returned by the server. */
-  profileType?: ProfileProfileTypeEnum;
+  profileType?: ProfileProfileTypeEnum | (string & {});
   /** Input only. Profile bytes, as a gzip compressed serialized proto, the format is https://github.com/google/pprof/blob/master/proto/profile.proto. */
   profileBytes?: string;
   /** Deployment this profile corresponds to. */
@@ -156,7 +156,7 @@ export type CreateProfileRequestProfileTypeItemEnum =
   | "HEAP_ALLOC";
 export const CreateProfileRequestProfileTypeItemEnum = /*@__PURE__*/ S.String;
 
-export type CreateProfileRequestProfileTypeItemEnumList = ReadonlyArray<
+export type CreateProfileRequestProfileTypeItemEnumList = Array<
   CreateProfileRequestProfileTypeItemEnum | (string & {})
 >;
 export const CreateProfileRequestProfileTypeItemEnumList =
@@ -225,7 +225,7 @@ export const ListProjectsProfilesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsProfilesRequest",
 }) as any as S.Schema<ListProjectsProfilesRequest>;
 
-export type ProfileList = ReadonlyArray<Profile>;
+export type ProfileList = Array<Profile>;
 export const ProfileList = /*@__PURE__*/ S.Array(
   Profile,
 ) as any as S.Schema<ProfileList>;

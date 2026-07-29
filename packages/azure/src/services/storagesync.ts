@@ -487,7 +487,7 @@ export const CloudEndpoint = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CloudEndpoint" }) as any as S.Schema<CloudEndpoint>;
 
 /** Collection of CloudEndpoint. */
-export type CloudEndpointArrayValueList = ReadonlyArray<CloudEndpoint>;
+export type CloudEndpointArrayValueList = Array<CloudEndpoint>;
 export const CloudEndpointArrayValueList = /*@__PURE__*/ S.Array(
   CloudEndpoint,
 ) as any as S.Schema<CloudEndpointArrayValueList>;
@@ -586,7 +586,7 @@ export const RestoreFileSpec = /*@__PURE__*/ S.suspend(() =>
 
 /** Post Restore restore file spec array. */
 export type CloudEndpointsPostRestoreRequestRestoreFileSpecList =
-  ReadonlyArray<RestoreFileSpec>;
+  Array<RestoreFileSpec>;
 export const CloudEndpointsPostRestoreRequestRestoreFileSpecList =
   /*@__PURE__*/ S.Array(
     RestoreFileSpec,
@@ -699,7 +699,7 @@ export const CloudEndpointsPreBackupResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Pre Restore restore file spec array. */
 export type CloudEndpointsPreRestoreRequestRestoreFileSpecList =
-  ReadonlyArray<RestoreFileSpec>;
+  Array<RestoreFileSpec>;
 export const CloudEndpointsPreRestoreRequestRestoreFileSpecList =
   /*@__PURE__*/ S.Array(
     RestoreFileSpec,
@@ -817,7 +817,7 @@ export const ChangeDetectionMode = /*@__PURE__*/ S.String;
 
 /** Array of relative paths on the Azure File share to be included in the change detection. Can be files and directories. */
 export type CloudEndpointsTriggerChangeDetectionRequestPathsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CloudEndpointsTriggerChangeDetectionRequestPathsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1045,7 +1045,7 @@ export const OperationDisplayInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** Supported aggregation types for the metric. */
 export type OperationResourceMetricSpecificationSupportedAggregationTypesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const OperationResourceMetricSpecificationSupportedAggregationTypesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1073,7 +1073,7 @@ export const OperationResourceMetricSpecificationDimension =
 
 /** Dimensions for the metric specification. */
 export type OperationResourceMetricSpecificationDimensionsList =
-  ReadonlyArray<OperationResourceMetricSpecificationDimension>;
+  Array<OperationResourceMetricSpecificationDimension>;
 export const OperationResourceMetricSpecificationDimensionsList =
   /*@__PURE__*/ S.Array(
     OperationResourceMetricSpecificationDimension,
@@ -1123,7 +1123,7 @@ export const OperationResourceMetricSpecification = /*@__PURE__*/ S.suspend(
 
 /** List of metric specifications. */
 export type OperationResourceServiceSpecificationMetricSpecificationsList =
-  ReadonlyArray<OperationResourceMetricSpecification>;
+  Array<OperationResourceMetricSpecification>;
 export const OperationResourceServiceSpecificationMetricSpecificationsList =
   /*@__PURE__*/ S.Array(
     OperationResourceMetricSpecification,
@@ -1181,7 +1181,7 @@ export const OperationEntity = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationEntity>;
 
 /** The OperationEntity items on this page */
-export type OperationEntityListResultValueList = ReadonlyArray<OperationEntity>;
+export type OperationEntityListResultValueList = Array<OperationEntity>;
 export const OperationEntityListResultValueList = /*@__PURE__*/ S.Array(
   OperationEntity,
 ) as any as S.Schema<OperationEntityListResultValueList>;
@@ -1276,7 +1276,7 @@ export const PrivateEndpointServiceConnectionStatus = /*@__PURE__*/ S.String;
 /** A collection of information about the state of the connection between service consumer and provider. */
 export interface PrivateLinkServiceConnectionState {
   /** Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service. */
-  status?: PrivateEndpointServiceConnectionStatus;
+  status?: PrivateEndpointServiceConnectionStatus | (string & {});
   /** The reason for approval/rejection of the connection. */
   description?: string;
   /** A message indicating if changes on the service provider require any updates on the consumer. */
@@ -1342,8 +1342,7 @@ export const PrivateEndpointConnectionsCreateRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PrivateEndpointConnectionsCreateRequest>;
 
 /** The group ids for the private endpoint resource. */
-export type PrivateEndpointConnectionPropertiesGroupIdsList =
-  ReadonlyArray<string>;
+export type PrivateEndpointConnectionPropertiesGroupIdsList = Array<string>;
 export const PrivateEndpointConnectionPropertiesGroupIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1562,7 +1561,7 @@ export const PrivateEndpointConnectionListResultValueItem =
 
 /** List of private endpoint connections associated with the specified resource. */
 export type PrivateEndpointConnectionListResultValueList =
-  ReadonlyArray<PrivateEndpointConnectionListResultValueItem>;
+  Array<PrivateEndpointConnectionListResultValueItem>;
 export const PrivateEndpointConnectionListResultValueList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnectionListResultValueItem,
@@ -1611,16 +1610,14 @@ export const PrivateLinkResourcesListByStorageSyncServiceRequest =
   }) as any as S.Schema<PrivateLinkResourcesListByStorageSyncServiceRequest>;
 
 /** The private link resource required member names. */
-export type PrivateLinkResourcePropertiesRequiredMembersList =
-  ReadonlyArray<string>;
+export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
 export const PrivateLinkResourcePropertiesRequiredMembersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
 
 /** The private link resource private link DNS zone name. */
-export type PrivateLinkResourcePropertiesRequiredZoneNamesList =
-  ReadonlyArray<string>;
+export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
 export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1676,7 +1673,7 @@ export const PrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of private link resources */
 export type PrivateLinkResourcesListByStorageSyncServiceResponseValueList =
-  ReadonlyArray<PrivateLinkResource>;
+  Array<PrivateLinkResource>;
 export const PrivateLinkResourcesListByStorageSyncServiceResponseValueList =
   /*@__PURE__*/ S.Array(
     PrivateLinkResource,
@@ -2038,7 +2035,7 @@ export const RegisteredServer = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RegisteredServer>;
 
 /** Collection of Registered Server. */
-export type RegisteredServerArrayValueList = ReadonlyArray<RegisteredServer>;
+export type RegisteredServerArrayValueList = Array<RegisteredServer>;
 export const RegisteredServerArrayValueList = /*@__PURE__*/ S.Array(
   RegisteredServer,
 ) as any as S.Schema<RegisteredServerArrayValueList>;
@@ -2317,7 +2314,7 @@ export const ServerEndpointFilesNotSyncingError = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of per-item errors coming from the last sync session. */
 export type ServerEndpointSyncSessionStatusFilesNotSyncingErrorsList =
-  ReadonlyArray<ServerEndpointFilesNotSyncingError>;
+  Array<ServerEndpointFilesNotSyncingError>;
 export const ServerEndpointSyncSessionStatusFilesNotSyncingErrorsList =
   /*@__PURE__*/ S.Array(
     ServerEndpointFilesNotSyncingError,
@@ -2550,8 +2547,7 @@ export const FilesNotTieringError = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FilesNotTieringError>;
 
 /** Array of tiering errors */
-export type CloudTieringFilesNotTieringErrorsList =
-  ReadonlyArray<FilesNotTieringError>;
+export type CloudTieringFilesNotTieringErrorsList = Array<FilesNotTieringError>;
 export const CloudTieringFilesNotTieringErrorsList = /*@__PURE__*/ S.Array(
   FilesNotTieringError,
 ) as any as S.Schema<CloudTieringFilesNotTieringErrorsList>;
@@ -2694,7 +2690,7 @@ export const ServerEndpointRecallError = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of recall errors */
 export type ServerEndpointRecallStatusRecallErrorsList =
-  ReadonlyArray<ServerEndpointRecallError>;
+  Array<ServerEndpointRecallError>;
 export const ServerEndpointRecallStatusRecallErrorsList = /*@__PURE__*/ S.Array(
   ServerEndpointRecallError,
 ) as any as S.Schema<ServerEndpointRecallStatusRecallErrorsList>;
@@ -2797,7 +2793,7 @@ export const ServerEndpointProvisioningStepStatus = /*@__PURE__*/ S.suspend(
 
 /** Provisioning Step status information for each step in the provisioning process */
 export type ServerEndpointProvisioningStatusProvisioningStepStatusesList =
-  ReadonlyArray<ServerEndpointProvisioningStepStatus>;
+  Array<ServerEndpointProvisioningStepStatus>;
 export const ServerEndpointProvisioningStatusProvisioningStepStatusesList =
   /*@__PURE__*/ S.Array(
     ServerEndpointProvisioningStepStatus,
@@ -3073,7 +3069,7 @@ export const ServerEndpoint = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ServerEndpoint" }) as any as S.Schema<ServerEndpoint>;
 
 /** Collection of ServerEndpoint. */
-export type ServerEndpointArrayValueList = ReadonlyArray<ServerEndpoint>;
+export type ServerEndpointArrayValueList = Array<ServerEndpoint>;
 export const ServerEndpointArrayValueList = /*@__PURE__*/ S.Array(
   ServerEndpoint,
 ) as any as S.Schema<ServerEndpointArrayValueList>;
@@ -3432,7 +3428,7 @@ export const StorageSyncServicePropertiesPrivateEndpointConnectionsItem =
 
 /** List of private endpoint connection associated with the specified storage sync service */
 export type StorageSyncServicePropertiesPrivateEndpointConnectionsList =
-  ReadonlyArray<StorageSyncServicePropertiesPrivateEndpointConnectionsItem>;
+  Array<StorageSyncServicePropertiesPrivateEndpointConnectionsItem>;
 export const StorageSyncServicePropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     StorageSyncServicePropertiesPrivateEndpointConnectionsItem,
@@ -3758,8 +3754,7 @@ export const StorageSyncService = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StorageSyncService>;
 
 /** Collection of StorageSyncServices. */
-export type StorageSyncServiceArrayValueList =
-  ReadonlyArray<StorageSyncService>;
+export type StorageSyncServiceArrayValueList = Array<StorageSyncService>;
 export const StorageSyncServiceArrayValueList = /*@__PURE__*/ S.Array(
   StorageSyncService,
 ) as any as S.Schema<StorageSyncServiceArrayValueList>;
@@ -4145,7 +4140,7 @@ export const SyncGroup = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SyncGroup" }) as any as S.Schema<SyncGroup>;
 
 /** Collection of SyncGroup. */
-export type SyncGroupArrayValueList = ReadonlyArray<SyncGroup>;
+export type SyncGroupArrayValueList = Array<SyncGroup>;
 export const SyncGroupArrayValueList = /*@__PURE__*/ S.Array(
   SyncGroup,
 ) as any as S.Schema<SyncGroupArrayValueList>;
@@ -4348,7 +4343,7 @@ export const Workflow = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Workflow" }) as any as S.Schema<Workflow>;
 
 /** Collection of workflow items. */
-export type WorkflowArrayValueList = ReadonlyArray<Workflow>;
+export type WorkflowArrayValueList = Array<Workflow>;
 export const WorkflowArrayValueList = /*@__PURE__*/ S.Array(
   Workflow,
 ) as any as S.Schema<WorkflowArrayValueList>;

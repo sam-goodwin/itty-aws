@@ -303,7 +303,9 @@ export interface OneTimeProductOfferRegionalPricingAndAvailabilityConfig {
   /** The fraction of the purchase option price that the user pays for this offer. For example, if the purchase option price for this region is $12, then a 50% discount would correspond to a price of $6. The discount must be specified as a fraction strictly larger than 0 and strictly smaller than 1. The resulting price will be rounded to the nearest billable unit (e.g. cents for USD). The relative discount is considered invalid if the discounted price ends up being smaller than the minimum price allowed in this region. */
   relativeDiscount?: number;
   /** Required. The availability for this region. */
-  availability?: OneTimeProductOfferRegionalPricingAndAvailabilityConfigAvailabilityEnum;
+  availability?:
+    | OneTimeProductOfferRegionalPricingAndAvailabilityConfigAvailabilityEnum
+    | (string & {});
 }
 export const OneTimeProductOfferRegionalPricingAndAvailabilityConfig =
   /*@__PURE__*/ S.suspend(() =>
@@ -321,7 +323,7 @@ export const OneTimeProductOfferRegionalPricingAndAvailabilityConfig =
   }) as any as S.Schema<OneTimeProductOfferRegionalPricingAndAvailabilityConfig>;
 
 export type OneTimeProductOfferRegionalPricingAndAvailabilityConfigList =
-  ReadonlyArray<OneTimeProductOfferRegionalPricingAndAvailabilityConfig>;
+  Array<OneTimeProductOfferRegionalPricingAndAvailabilityConfig>;
 export const OneTimeProductOfferRegionalPricingAndAvailabilityConfigList =
   /*@__PURE__*/ S.Array(
     OneTimeProductOfferRegionalPricingAndAvailabilityConfig,
@@ -338,7 +340,7 @@ export const OfferTag = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "OfferTag" }) as any as S.Schema<OfferTag>;
 
-export type OfferTagList = ReadonlyArray<OfferTag>;
+export type OfferTagList = Array<OfferTag>;
 export const OfferTagList = /*@__PURE__*/ S.Array(
   OfferTag,
 ) as any as S.Schema<OfferTagList>;
@@ -372,7 +374,9 @@ export const OneTimeProductPreOrderOfferPriceChangeBehaviorEnum =
 /** Configuration specific to pre-order offers. */
 export interface OneTimeProductPreOrderOffer {
   /** Required. Immutable. Specifies how price changes affect pre-existing pre-orders. */
-  priceChangeBehavior?: OneTimeProductPreOrderOfferPriceChangeBehaviorEnum;
+  priceChangeBehavior?:
+    | OneTimeProductPreOrderOfferPriceChangeBehaviorEnum
+    | (string & {});
   /** Required. Time on which the product associated with the pre-order will be released and the pre-order orders fulfilled. */
   releaseTime?: string;
   /** Required. Time when the pre-order will start being available. */
@@ -398,7 +402,7 @@ export interface OneTimeProductOffer {
   /** Output only. The version of the regions configuration that was used to generate the one-time product offer. */
   regionsVersion?: RegionsVersion;
   /** Output only. The current state of this offer. This field cannot be changed by updating the resource. Use the dedicated endpoints instead. */
-  state?: OneTimeProductOfferStateEnum;
+  state?: OneTimeProductOfferStateEnum | (string & {});
   /** Set of regional pricing and availability information for this offer. Must not have duplicate entries with the same region_code. */
   regionalPricingAndAvailabilityConfigs?: OneTimeProductOfferRegionalPricingAndAvailabilityConfigList;
   /** Required. Immutable. The package name of the app the parent product belongs to. */
@@ -506,7 +510,9 @@ export const RegionalProductAgeRatingInfoProductAgeRatingTierEnum =
 /** Details about the age rating for a specific geographic region. */
 export interface RegionalProductAgeRatingInfo {
   /** The age rating tier of a product for the given region. */
-  productAgeRatingTier?: RegionalProductAgeRatingInfoProductAgeRatingTierEnum;
+  productAgeRatingTier?:
+    | RegionalProductAgeRatingInfoProductAgeRatingTierEnum
+    | (string & {});
   /** Region code this configuration applies to, as defined by ISO 3166-2, e.g. "US". */
   regionCode?: string;
 }
@@ -522,7 +528,7 @@ export const RegionalProductAgeRatingInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RegionalProductAgeRatingInfo>;
 
 export type RegionalProductAgeRatingInfoList =
-  ReadonlyArray<RegionalProductAgeRatingInfo>;
+  Array<RegionalProductAgeRatingInfo>;
 export const RegionalProductAgeRatingInfoList = /*@__PURE__*/ S.Array(
   RegionalProductAgeRatingInfo,
 ) as any as S.Schema<RegionalProductAgeRatingInfoList>;
@@ -556,9 +562,9 @@ export const RegionalTaxRateInfoTaxTierEnum = /*@__PURE__*/ S.String;
 /** Specified details about taxation in a given geographical region. */
 export interface RegionalTaxRateInfo {
   /** To collect communications or amusement taxes in the United States, choose the appropriate tax category. [Learn more](https://support.google.com/googleplay/android-developer/answer/10463498#streaming_tax). */
-  streamingTaxType?: RegionalTaxRateInfoStreamingTaxTypeEnum;
+  streamingTaxType?: RegionalTaxRateInfoStreamingTaxTypeEnum | (string & {});
   /** Tax tier to specify reduced tax rate. Developers who sell digital news, magazines, newspapers, books, or audiobooks in various regions may be eligible for reduced tax rates. [Learn more](https://support.google.com/googleplay/android-developer/answer/10463498). */
-  taxTier?: RegionalTaxRateInfoTaxTierEnum;
+  taxTier?: RegionalTaxRateInfoTaxTierEnum | (string & {});
   /** You must tell us if your app contains streaming products to correctly charge US state and local sales tax. Field only supported in the United States. */
   eligibleForStreamingServiceTaxRate?: boolean;
 }
@@ -587,7 +593,9 @@ export interface SubscriptionTaxAndComplianceSettings {
   /** Regional age rating information. Currently this field is only supported for region code `US`. */
   regionalProductAgeRatingInfos?: RegionalProductAgeRatingInfoList;
   /** Digital content or service classification for products distributed to users in the European Economic Area (EEA). The withdrawal regime under EEA consumer laws depends on this classification. Refer to the [Help Center article](https://support.google.com/googleplay/android-developer/answer/10463498) for more information. */
-  eeaWithdrawalRightType?: SubscriptionTaxAndComplianceSettingsEeaWithdrawalRightTypeEnum;
+  eeaWithdrawalRightType?:
+    | SubscriptionTaxAndComplianceSettingsEeaWithdrawalRightTypeEnum
+    | (string & {});
   /** A mapping from region code to tax rate details. The keys are region codes as defined by Unicode's "CLDR". */
   taxRateInfoByRegionCode?: RegionalTaxRateInfoMap;
   /** Product tax category code to assign to the subscription. Product tax category determines the transaction tax rates applied to the subscription. Refer to the [Help Center article](https://support.google.com/googleplay/android-developer/answer/16408159) for more information. */
@@ -610,7 +618,7 @@ export const SubscriptionTaxAndComplianceSettings = /*@__PURE__*/ S.suspend(
   identifier: "SubscriptionTaxAndComplianceSettings",
 }) as any as S.Schema<SubscriptionTaxAndComplianceSettings>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -665,11 +673,13 @@ export interface InstallmentsBasePlanType {
   /** Grace period of the subscription, specified in ISO 8601 format. Acceptable values must be in days and between P0D and the lesser of 30D and base plan billing period. If not specified, a default value will be used based on the billing period. The sum of gracePeriodDuration and accountHoldDuration must be between P30D and P60D days, inclusive. */
   gracePeriodDuration?: string;
   /** Whether users should be able to resubscribe to this base plan in Google Play surfaces. Defaults to RESUBSCRIBE_STATE_ACTIVE if not specified. */
-  resubscribeState?: InstallmentsBasePlanTypeResubscribeStateEnum;
+  resubscribeState?:
+    | InstallmentsBasePlanTypeResubscribeStateEnum
+    | (string & {});
   /** Required. Immutable. Installments base plan renewal type. Determines the behavior at the end of the initial commitment. The renewal type is immutable after the base plan is created. */
-  renewalType?: InstallmentsBasePlanTypeRenewalTypeEnum;
+  renewalType?: InstallmentsBasePlanTypeRenewalTypeEnum | (string & {});
   /** The proration mode for the base plan determines what happens when a user switches to this plan from another base plan. If unspecified, defaults to CHARGE_ON_NEXT_BILLING_DATE. */
-  prorationMode?: InstallmentsBasePlanTypeProrationModeEnum;
+  prorationMode?: InstallmentsBasePlanTypeProrationModeEnum | (string & {});
 }
 export const InstallmentsBasePlanType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -715,7 +725,7 @@ export interface PrepaidBasePlanType {
   /** Required. Immutable. Subscription period, specified in ISO 8601 format. For a list of acceptable billing periods, refer to the help center. The duration is immutable after the base plan is created. */
   billingPeriodDuration?: string;
   /** Whether users should be able to extend this prepaid base plan in Google Play surfaces. Defaults to TIME_EXTENSION_ACTIVE if not specified. */
-  timeExtension?: PrepaidBasePlanTypeTimeExtensionEnum;
+  timeExtension?: PrepaidBasePlanTypeTimeExtensionEnum | (string & {});
 }
 export const PrepaidBasePlanType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -744,11 +754,13 @@ export interface AutoRenewingBasePlanType {
   /** Subscription offer id which is legacy compatible. The backward compatible subscription offer is returned by the Google Play Billing Library deprecated method querySkuDetailsAsync(). Only one subscription offer can be marked as legacy compatible for a given renewing base plan. To have no Subscription offer as legacy compatible set this field as empty string. */
   legacyCompatibleSubscriptionOfferId?: string;
   /** The proration mode for the base plan determines what happens when a user switches to this plan from another base plan. If unspecified, defaults to CHARGE_ON_NEXT_BILLING_DATE. */
-  prorationMode?: AutoRenewingBasePlanTypeProrationModeEnum;
+  prorationMode?: AutoRenewingBasePlanTypeProrationModeEnum | (string & {});
   /** Whether the renewing base plan is backward compatible. The backward compatible base plan is returned by the Google Play Billing Library deprecated method querySkuDetailsAsync(). Only one renewing base plan can be marked as legacy compatible for a given subscription. */
   legacyCompatible?: boolean;
   /** Whether users should be able to resubscribe to this base plan in Google Play surfaces. Defaults to RESUBSCRIBE_STATE_ACTIVE if not specified. */
-  resubscribeState?: AutoRenewingBasePlanTypeResubscribeStateEnum;
+  resubscribeState?:
+    | AutoRenewingBasePlanTypeResubscribeStateEnum
+    | (string & {});
   /** Grace period of the subscription, specified in ISO 8601 format. Acceptable values must be in days and between P0D and the lesser of 30D and base plan billing period. If not specified, a default value will be used based on the billing period. The sum of gracePeriodDuration and accountHoldDuration must be between P30D and P60D days, inclusive. */
   gracePeriodDuration?: string;
   /** Optional. Custom account hold period of the subscription, specified in ISO 8601 format. Acceptable values must be in days and between P0D and P60D. An empty field represents a recommended account hold, calculated as 60 days minus grace period. The sum of gracePeriodDuration and accountHoldDuration must be between P30D and P60D days, inclusive. */
@@ -789,7 +801,7 @@ export const RegionalBasePlanConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "RegionalBasePlanConfig",
 }) as any as S.Schema<RegionalBasePlanConfig>;
 
-export type RegionalBasePlanConfigList = ReadonlyArray<RegionalBasePlanConfig>;
+export type RegionalBasePlanConfigList = Array<RegionalBasePlanConfig>;
 export const RegionalBasePlanConfigList = /*@__PURE__*/ S.Array(
   RegionalBasePlanConfig,
 ) as any as S.Schema<RegionalBasePlanConfigList>;
@@ -797,7 +809,7 @@ export const RegionalBasePlanConfigList = /*@__PURE__*/ S.Array(
 /** A single base plan for a subscription. */
 export interface BasePlan {
   /** Output only. The state of the base plan, i.e. whether it's active. Draft and inactive base plans can be activated or deleted. Active base plans can be made inactive. Inactive base plans can be canceled. This field cannot be changed by updating the resource. Use the dedicated endpoints instead. */
-  state?: BasePlanStateEnum;
+  state?: BasePlanStateEnum | (string & {});
   /** Set for installments base plans where a user is committed to a specified number of payments. */
   installmentsBasePlanType?: InstallmentsBasePlanType;
   /** Pricing information for any new locations Play may launch in the future. If omitted, the BasePlan will not be automatically available any new locations Play may launch in the future. */
@@ -826,7 +838,7 @@ export const BasePlan = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "BasePlan" }) as any as S.Schema<BasePlan>;
 
-export type BasePlanList = ReadonlyArray<BasePlan>;
+export type BasePlanList = Array<BasePlan>;
 export const BasePlanList = /*@__PURE__*/ S.Array(
   BasePlan,
 ) as any as S.Schema<BasePlanList>;
@@ -853,7 +865,7 @@ export const SubscriptionListing = /*@__PURE__*/ S.suspend(() =>
   identifier: "SubscriptionListing",
 }) as any as S.Schema<SubscriptionListing>;
 
-export type SubscriptionListingList = ReadonlyArray<SubscriptionListing>;
+export type SubscriptionListingList = Array<SubscriptionListing>;
 export const SubscriptionListingList = /*@__PURE__*/ S.Array(
   SubscriptionListing,
 ) as any as S.Schema<SubscriptionListingList>;
@@ -1061,7 +1073,7 @@ export const RegionalSubscriptionOfferConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RegionalSubscriptionOfferConfig>;
 
 export type RegionalSubscriptionOfferConfigList =
-  ReadonlyArray<RegionalSubscriptionOfferConfig>;
+  Array<RegionalSubscriptionOfferConfig>;
 export const RegionalSubscriptionOfferConfigList = /*@__PURE__*/ S.Array(
   RegionalSubscriptionOfferConfig,
 ) as any as S.Schema<RegionalSubscriptionOfferConfigList>;
@@ -1160,7 +1172,7 @@ export const RegionalSubscriptionOfferPhaseConfig = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<RegionalSubscriptionOfferPhaseConfig>;
 
 export type RegionalSubscriptionOfferPhaseConfigList =
-  ReadonlyArray<RegionalSubscriptionOfferPhaseConfig>;
+  Array<RegionalSubscriptionOfferPhaseConfig>;
 export const RegionalSubscriptionOfferPhaseConfigList = /*@__PURE__*/ S.Array(
   RegionalSubscriptionOfferPhaseConfig,
 ) as any as S.Schema<RegionalSubscriptionOfferPhaseConfigList>;
@@ -1187,7 +1199,7 @@ export const SubscriptionOfferPhase = /*@__PURE__*/ S.suspend(() =>
   identifier: "SubscriptionOfferPhase",
 }) as any as S.Schema<SubscriptionOfferPhase>;
 
-export type SubscriptionOfferPhaseList = ReadonlyArray<SubscriptionOfferPhase>;
+export type SubscriptionOfferPhaseList = Array<SubscriptionOfferPhase>;
 export const SubscriptionOfferPhaseList = /*@__PURE__*/ S.Array(
   SubscriptionOfferPhase,
 ) as any as S.Schema<SubscriptionOfferPhaseList>;
@@ -1199,7 +1211,7 @@ export interface SubscriptionOffer {
   /** Required. Immutable. Unique ID of this subscription offer. Must be unique within the base plan. */
   offerId?: string;
   /** Output only. The current state of this offer. Can be changed using Activate and Deactivate actions. NB: the base plan state supersedes this state, so an active offer may not be available if the base plan is not active. */
-  state?: SubscriptionOfferStateEnum;
+  state?: SubscriptionOfferStateEnum | (string & {});
   /** Required. Immutable. The ID of the base plan to which this offer is an extension. */
   basePlanId?: string;
   /** The requirements that users need to fulfil to be eligible for this offer. Represents the requirements that Play will evaluate to decide whether an offer should be returned. Developers may further filter these offers themselves. */
@@ -1246,7 +1258,7 @@ export const UsesPermission = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "UsesPermission" }) as any as S.Schema<UsesPermission>;
 
-export type UsesPermissionList = ReadonlyArray<UsesPermission>;
+export type UsesPermissionList = Array<UsesPermission>;
 export const UsesPermissionList = /*@__PURE__*/ S.Array(
   UsesPermission,
 ) as any as S.Schema<UsesPermissionList>;
@@ -1516,8 +1528,7 @@ export const InappproductsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "InappproductsDeleteRequest",
 }) as any as S.Schema<InappproductsDeleteRequest>;
 
-export type InappproductsDeleteRequestList =
-  ReadonlyArray<InappproductsDeleteRequest>;
+export type InappproductsDeleteRequestList = Array<InappproductsDeleteRequest>;
 export const InappproductsDeleteRequestList = /*@__PURE__*/ S.Array(
   InappproductsDeleteRequest,
 ) as any as S.Schema<InappproductsDeleteRequestList>;
@@ -1594,7 +1605,7 @@ export const DeleteOneTimeProductRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteOneTimeProductRequest>;
 
 export type DeleteOneTimeProductRequestList =
-  ReadonlyArray<DeleteOneTimeProductRequest>;
+  Array<DeleteOneTimeProductRequest>;
 export const DeleteOneTimeProductRequestList = /*@__PURE__*/ S.Array(
   DeleteOneTimeProductRequest,
 ) as any as S.Schema<DeleteOneTimeProductRequestList>;
@@ -1677,7 +1688,7 @@ export const DeletePurchaseOptionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeletePurchaseOptionRequest>;
 
 export type DeletePurchaseOptionRequestList =
-  ReadonlyArray<DeletePurchaseOptionRequest>;
+  Array<DeletePurchaseOptionRequest>;
 export const DeletePurchaseOptionRequestList = /*@__PURE__*/ S.Array(
   DeletePurchaseOptionRequest,
 ) as any as S.Schema<DeletePurchaseOptionRequestList>;
@@ -1763,7 +1774,7 @@ export const DeleteOneTimeProductOfferRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteOneTimeProductOfferRequest>;
 
 export type DeleteOneTimeProductOfferRequestList =
-  ReadonlyArray<DeleteOneTimeProductOfferRequest>;
+  Array<DeleteOneTimeProductOfferRequest>;
 export const DeleteOneTimeProductOfferRequestList = /*@__PURE__*/ S.Array(
   DeleteOneTimeProductOfferRequest,
 ) as any as S.Schema<DeleteOneTimeProductOfferRequestList>;
@@ -1879,7 +1890,9 @@ export interface ManagedProductTaxAndComplianceSettings {
   /** Regional age rating information. Currently this field is only supported for region code `US`. */
   regionalProductAgeRatingInfos?: RegionalProductAgeRatingInfoList;
   /** Digital content or service classification for products distributed to users in the European Economic Area (EEA). The withdrawal regime under EEA consumer laws depends on this classification. Refer to the [Help Center article](https://support.google.com/googleplay/android-developer/answer/10463498) for more information. */
-  eeaWithdrawalRightType?: ManagedProductTaxAndComplianceSettingsEeaWithdrawalRightTypeEnum;
+  eeaWithdrawalRightType?:
+    | ManagedProductTaxAndComplianceSettingsEeaWithdrawalRightTypeEnum
+    | (string & {});
   /** Whether this in-app product is declared as a product representing a tokenized digital asset. */
   isTokenizedDigitalAsset?: boolean;
   /** Product tax category code to assign to the in-app product. Product tax category determines the transaction tax rates applied to the product. Refer to the [Help Center article](https://support.google.com/googleplay/android-developer/answer/16408159) for more information. */
@@ -1940,7 +1953,7 @@ export const InAppProductListingMap = /*@__PURE__*/ S.Record(
 /** An in-app product. The resource for InappproductsService. */
 export interface InAppProduct {
   /** The status of the product, e.g. whether it's active. */
-  status?: InAppProductStatusEnum;
+  status?: InAppProductStatusEnum | (string & {});
   /** Default price. Cannot be zero, as in-app products are never free. Always in the developer's Checkout merchant currency. */
   defaultPrice?: Price;
   /** Package name of the parent app. */
@@ -1960,7 +1973,7 @@ export interface InAppProduct {
   /** Grace period of the subscription, specified in ISO 8601 format. Allows developers to give their subscribers a grace period when the payment for the new recurrence period is declined. Acceptable values are P0D (zero days), P3D (three days), P7D (seven days), P14D (14 days), and P30D (30 days). */
   gracePeriod?: string;
   /** The type of the product, e.g. a recurring subscription. */
-  purchaseType?: InAppProductPurchaseTypeEnum;
+  purchaseType?: InAppProductPurchaseTypeEnum | (string & {});
   /** Stock-keeping-unit (SKU) of the product, unique within an app. */
   sku?: string;
   /** List of localized title and description data. Map key is the language of the localized data, as defined by BCP-47, e.g. "en-US". */
@@ -1988,7 +2001,7 @@ export const InAppProduct = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "InAppProduct" }) as any as S.Schema<InAppProduct>;
 
-export type InAppProductList = ReadonlyArray<InAppProduct>;
+export type InAppProductList = Array<InAppProduct>;
 export const InAppProductList = /*@__PURE__*/ S.Array(
   InAppProduct,
 ) as any as S.Schema<InAppProductList>;
@@ -2050,11 +2063,11 @@ export const RegionalTaxConfigTaxTierEnum = /*@__PURE__*/ S.String;
 /** Details about taxation in a given geographical region. */
 export interface RegionalTaxConfig {
   /** To collect communications or amusement taxes in the United States, choose the appropriate tax category. [Learn more](https://support.google.com/googleplay/android-developer/answer/10463498#streaming_tax). */
-  streamingTaxType?: RegionalTaxConfigStreamingTaxTypeEnum;
+  streamingTaxType?: RegionalTaxConfigStreamingTaxTypeEnum | (string & {});
   /** Required. Region code this configuration applies to, as defined by ISO 3166-2, e.g. "US". */
   regionCode?: string;
   /** Tax tier to specify reduced tax rate. Developers who sell digital news, magazines, newspapers, books, or audiobooks in various regions may be eligible for reduced tax rates. [Learn more](https://support.google.com/googleplay/android-developer/answer/10463498). */
-  taxTier?: RegionalTaxConfigTaxTierEnum;
+  taxTier?: RegionalTaxConfigTaxTierEnum | (string & {});
   /** You must tell us if your app contains streaming products to correctly charge US state and local sales tax. Field only supported in the United States. */
   eligibleForStreamingServiceTaxRate?: boolean;
 }
@@ -2069,7 +2082,7 @@ export const RegionalTaxConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "RegionalTaxConfig",
 }) as any as S.Schema<RegionalTaxConfig>;
 
-export type RegionalTaxConfigList = ReadonlyArray<RegionalTaxConfig>;
+export type RegionalTaxConfigList = Array<RegionalTaxConfig>;
 export const RegionalTaxConfigList = /*@__PURE__*/ S.Array(
   RegionalTaxConfig,
 ) as any as S.Schema<RegionalTaxConfigList>;
@@ -2111,7 +2124,9 @@ export interface OneTimeProductPurchaseOptionNewRegionsConfig {
   /** Required. Price in USD to use for any new regions Play may launch in. */
   usdPrice?: Money;
   /** Required. The regional availability for the new regions config. When set to AVAILABLE, the pricing information will be used for any new regions Play may launch in the future. */
-  availability?: OneTimeProductPurchaseOptionNewRegionsConfigAvailabilityEnum;
+  availability?:
+    | OneTimeProductPurchaseOptionNewRegionsConfigAvailabilityEnum
+    | (string & {});
   /** Required. Price in EUR to use for any new regions Play may launch in. */
   eurPrice?: Money;
 }
@@ -2138,7 +2153,9 @@ export const PurchaseOptionTaxAndComplianceSettingsWithdrawalRightTypeEnum =
 /** Details about taxation, Google Play policy and legal compliance for one-time product purchase options. */
 export interface PurchaseOptionTaxAndComplianceSettings {
   /** Optional. Digital content or service classification for products distributed to users in eligible regions. If unset, it defaults to `WITHDRAWAL_RIGHT_DIGITAL_CONTENT`. Refer to the [Help Center article](https://support.google.com/googleplay/android-developer/answer/10463498) for more information. */
-  withdrawalRightType?: PurchaseOptionTaxAndComplianceSettingsWithdrawalRightTypeEnum;
+  withdrawalRightType?:
+    | PurchaseOptionTaxAndComplianceSettingsWithdrawalRightTypeEnum
+    | (string & {});
 }
 export const PurchaseOptionTaxAndComplianceSettings = /*@__PURE__*/ S.suspend(
   () =>
@@ -2207,7 +2224,9 @@ export interface OneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfi
   /** The price of the purchase option in the specified region. Must be set in the currency that is linked to the specified region. */
   price?: Money;
   /** The availability of the purchase option. */
-  availability?: OneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfigAvailabilityEnum;
+  availability?:
+    | OneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfigAvailabilityEnum
+    | (string & {});
 }
 export const OneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfig =
   /*@__PURE__*/ S.suspend(() =>
@@ -2224,7 +2243,7 @@ export const OneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfig =
   }) as any as S.Schema<OneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfig>;
 
 export type OneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfigList =
-  ReadonlyArray<OneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfig>;
+  Array<OneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfig>;
 export const OneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfigList =
   /*@__PURE__*/ S.Array(
     OneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfig,
@@ -2245,7 +2264,7 @@ export interface OneTimeProductPurchaseOption {
   /** A purchase option that can be rented. */
   rentOption?: OneTimeProductRentPurchaseOption;
   /** Output only. The state of the purchase option, i.e., whether it's active. This field cannot be changed by updating the resource. Use the dedicated endpoints instead. */
-  state?: OneTimeProductPurchaseOptionStateEnum;
+  state?: OneTimeProductPurchaseOptionStateEnum | (string & {});
   /** Regional pricing and availability information for this purchase option. */
   regionalPricingAndAvailabilityConfigs?: OneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfigList;
 }
@@ -2269,7 +2288,7 @@ export const OneTimeProductPurchaseOption = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OneTimeProductPurchaseOption>;
 
 export type OneTimeProductPurchaseOptionList =
-  ReadonlyArray<OneTimeProductPurchaseOption>;
+  Array<OneTimeProductPurchaseOption>;
 export const OneTimeProductPurchaseOptionList = /*@__PURE__*/ S.Array(
   OneTimeProductPurchaseOption,
 ) as any as S.Schema<OneTimeProductPurchaseOptionList>;
@@ -2293,7 +2312,7 @@ export const OneTimeProductListing = /*@__PURE__*/ S.suspend(() =>
   identifier: "OneTimeProductListing",
 }) as any as S.Schema<OneTimeProductListing>;
 
-export type OneTimeProductListingList = ReadonlyArray<OneTimeProductListing>;
+export type OneTimeProductListingList = Array<OneTimeProductListing>;
 export const OneTimeProductListingList = /*@__PURE__*/ S.Array(
   OneTimeProductListing,
 ) as any as S.Schema<OneTimeProductListingList>;
@@ -2332,7 +2351,7 @@ export const OneTimeProduct = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "OneTimeProduct" }) as any as S.Schema<OneTimeProduct>;
 
-export type OneTimeProductList = ReadonlyArray<OneTimeProduct>;
+export type OneTimeProductList = Array<OneTimeProduct>;
 export const OneTimeProductList = /*@__PURE__*/ S.Array(
   OneTimeProduct,
 ) as any as S.Schema<OneTimeProductList>;
@@ -2373,7 +2392,7 @@ export const GetOneTimeProductOfferRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetOneTimeProductOfferRequest>;
 
 export type GetOneTimeProductOfferRequestList =
-  ReadonlyArray<GetOneTimeProductOfferRequest>;
+  Array<GetOneTimeProductOfferRequest>;
 export const GetOneTimeProductOfferRequestList = /*@__PURE__*/ S.Array(
   GetOneTimeProductOfferRequest,
 ) as any as S.Schema<GetOneTimeProductOfferRequestList>;
@@ -2420,7 +2439,7 @@ export const BatchGetMonetizationOnetimeproductsPurchaseOptionsOffersRequest =
       "BatchGetMonetizationOnetimeproductsPurchaseOptionsOffersRequest",
   }) as any as S.Schema<BatchGetMonetizationOnetimeproductsPurchaseOptionsOffersRequest>;
 
-export type OneTimeProductOfferList = ReadonlyArray<OneTimeProductOffer>;
+export type OneTimeProductOfferList = Array<OneTimeProductOffer>;
 export const OneTimeProductOfferList = /*@__PURE__*/ S.Array(
   OneTimeProductOffer,
 ) as any as S.Schema<OneTimeProductOfferList>;
@@ -2461,7 +2480,7 @@ export const BatchGetMonetizationSubscriptionsRequest = /*@__PURE__*/ S.suspend(
   identifier: "BatchGetMonetizationSubscriptionsRequest",
 }) as any as S.Schema<BatchGetMonetizationSubscriptionsRequest>;
 
-export type SubscriptionList = ReadonlyArray<Subscription>;
+export type SubscriptionList = Array<Subscription>;
 export const SubscriptionList = /*@__PURE__*/ S.Array(
   Subscription,
 ) as any as S.Schema<SubscriptionList>;
@@ -2502,7 +2521,7 @@ export const GetSubscriptionOfferRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetSubscriptionOfferRequest>;
 
 export type GetSubscriptionOfferRequestList =
-  ReadonlyArray<GetSubscriptionOfferRequest>;
+  Array<GetSubscriptionOfferRequest>;
 export const GetSubscriptionOfferRequestList = /*@__PURE__*/ S.Array(
   GetSubscriptionOfferRequest,
 ) as any as S.Schema<GetSubscriptionOfferRequestList>;
@@ -2548,7 +2567,7 @@ export const BatchGetMonetizationSubscriptionsBasePlansOffersRequest =
     identifier: "BatchGetMonetizationSubscriptionsBasePlansOffersRequest",
   }) as any as S.Schema<BatchGetMonetizationSubscriptionsBasePlansOffersRequest>;
 
-export type SubscriptionOfferList = ReadonlyArray<SubscriptionOffer>;
+export type SubscriptionOfferList = Array<SubscriptionOffer>;
 export const SubscriptionOfferList = /*@__PURE__*/ S.Array(
   SubscriptionOffer,
 ) as any as S.Schema<SubscriptionOfferList>;
@@ -2742,7 +2761,7 @@ export const PartialRefundEvent = /*@__PURE__*/ S.suspend(() =>
   identifier: "PartialRefundEvent",
 }) as any as S.Schema<PartialRefundEvent>;
 
-export type PartialRefundEventList = ReadonlyArray<PartialRefundEvent>;
+export type PartialRefundEventList = Array<PartialRefundEvent>;
 export const PartialRefundEventList = /*@__PURE__*/ S.Array(
   PartialRefundEvent,
 ) as any as S.Schema<PartialRefundEventList>;
@@ -2946,7 +2965,7 @@ export const LineItem = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "LineItem" }) as any as S.Schema<LineItem>;
 
-export type LineItemList = ReadonlyArray<LineItem>;
+export type LineItemList = Array<LineItem>;
 export const LineItemList = /*@__PURE__*/ S.Array(
   LineItem,
 ) as any as S.Schema<LineItemList>;
@@ -3001,7 +3020,7 @@ export const Order = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Order" }) as any as S.Schema<Order>;
 
-export type OrderList = ReadonlyArray<Order>;
+export type OrderList = Array<Order>;
 export const OrderList = /*@__PURE__*/ S.Array(
   Order,
 ) as any as S.Schema<OrderList>;
@@ -3057,7 +3076,7 @@ export const RegionalPriceMigrationConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RegionalPriceMigrationConfig>;
 
 export type RegionalPriceMigrationConfigList =
-  ReadonlyArray<RegionalPriceMigrationConfig>;
+  Array<RegionalPriceMigrationConfig>;
 export const RegionalPriceMigrationConfigList = /*@__PURE__*/ S.Array(
   RegionalPriceMigrationConfig,
 ) as any as S.Schema<RegionalPriceMigrationConfigList>;
@@ -3095,7 +3114,7 @@ export const MigrateBasePlanPricesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MigrateBasePlanPricesRequest>;
 
 export type MigrateBasePlanPricesRequestList =
-  ReadonlyArray<MigrateBasePlanPricesRequest>;
+  Array<MigrateBasePlanPricesRequest>;
 export const MigrateBasePlanPricesRequestList = /*@__PURE__*/ S.Array(
   MigrateBasePlanPricesRequest,
 ) as any as S.Schema<MigrateBasePlanPricesRequestList>;
@@ -3147,7 +3166,7 @@ export const MigrateBasePlanPricesResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MigrateBasePlanPricesResponse>;
 
 export type MigrateBasePlanPricesResponseList =
-  ReadonlyArray<MigrateBasePlanPricesResponse>;
+  Array<MigrateBasePlanPricesResponse>;
 export const MigrateBasePlanPricesResponseList = /*@__PURE__*/ S.Array(
   MigrateBasePlanPricesResponse,
 ) as any as S.Schema<MigrateBasePlanPricesResponseList>;
@@ -3204,8 +3223,7 @@ export const InappproductsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "InappproductsUpdateRequest",
 }) as any as S.Schema<InappproductsUpdateRequest>;
 
-export type InappproductsUpdateRequestList =
-  ReadonlyArray<InappproductsUpdateRequest>;
+export type InappproductsUpdateRequestList = Array<InappproductsUpdateRequest>;
 export const InappproductsUpdateRequestList = /*@__PURE__*/ S.Array(
   InappproductsUpdateRequest,
 ) as any as S.Schema<InappproductsUpdateRequestList>;
@@ -3294,7 +3312,7 @@ export const UpdateOneTimeProductRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateOneTimeProductRequest>;
 
 export type UpdateOneTimeProductRequestList =
-  ReadonlyArray<UpdateOneTimeProductRequest>;
+  Array<UpdateOneTimeProductRequest>;
 export const UpdateOneTimeProductRequestList = /*@__PURE__*/ S.Array(
   UpdateOneTimeProductRequest,
 ) as any as S.Schema<UpdateOneTimeProductRequestList>;
@@ -3384,7 +3402,7 @@ export const UpdateOneTimeProductOfferRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateOneTimeProductOfferRequest>;
 
 export type UpdateOneTimeProductOfferRequestList =
-  ReadonlyArray<UpdateOneTimeProductOfferRequest>;
+  Array<UpdateOneTimeProductOfferRequest>;
 export const UpdateOneTimeProductOfferRequestList = /*@__PURE__*/ S.Array(
   UpdateOneTimeProductOfferRequest,
 ) as any as S.Schema<UpdateOneTimeProductOfferRequestList>;
@@ -3482,8 +3500,7 @@ export const UpdateSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateSubscriptionRequest",
 }) as any as S.Schema<UpdateSubscriptionRequest>;
 
-export type UpdateSubscriptionRequestList =
-  ReadonlyArray<UpdateSubscriptionRequest>;
+export type UpdateSubscriptionRequestList = Array<UpdateSubscriptionRequest>;
 export const UpdateSubscriptionRequestList = /*@__PURE__*/ S.Array(
   UpdateSubscriptionRequest,
 ) as any as S.Schema<UpdateSubscriptionRequestList>;
@@ -3573,7 +3590,7 @@ export const UpdateSubscriptionOfferRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateSubscriptionOfferRequest>;
 
 export type UpdateSubscriptionOfferRequestList =
-  ReadonlyArray<UpdateSubscriptionOfferRequest>;
+  Array<UpdateSubscriptionOfferRequest>;
 export const UpdateSubscriptionOfferRequestList = /*@__PURE__*/ S.Array(
   UpdateSubscriptionOfferRequest,
 ) as any as S.Schema<UpdateSubscriptionOfferRequestList>;
@@ -3719,7 +3736,7 @@ export const UpdatePurchaseOptionStateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdatePurchaseOptionStateRequest>;
 
 export type UpdatePurchaseOptionStateRequestList =
-  ReadonlyArray<UpdatePurchaseOptionStateRequest>;
+  Array<UpdatePurchaseOptionStateRequest>;
 export const UpdatePurchaseOptionStateRequestList = /*@__PURE__*/ S.Array(
   UpdatePurchaseOptionStateRequest,
 ) as any as S.Schema<UpdatePurchaseOptionStateRequestList>;
@@ -3880,7 +3897,7 @@ export const UpdateOneTimeProductOfferStateRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<UpdateOneTimeProductOfferStateRequest>;
 
 export type UpdateOneTimeProductOfferStateRequestList =
-  ReadonlyArray<UpdateOneTimeProductOfferStateRequest>;
+  Array<UpdateOneTimeProductOfferStateRequest>;
 export const UpdateOneTimeProductOfferStateRequestList = /*@__PURE__*/ S.Array(
   UpdateOneTimeProductOfferStateRequest,
 ) as any as S.Schema<UpdateOneTimeProductOfferStateRequestList>;
@@ -3991,8 +4008,7 @@ export const UpdateBasePlanStateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateBasePlanStateRequest",
 }) as any as S.Schema<UpdateBasePlanStateRequest>;
 
-export type UpdateBasePlanStateRequestList =
-  ReadonlyArray<UpdateBasePlanStateRequest>;
+export type UpdateBasePlanStateRequestList = Array<UpdateBasePlanStateRequest>;
 export const UpdateBasePlanStateRequestList = /*@__PURE__*/ S.Array(
   UpdateBasePlanStateRequest,
 ) as any as S.Schema<UpdateBasePlanStateRequestList>;
@@ -4105,7 +4121,7 @@ export const UpdateSubscriptionOfferStateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateSubscriptionOfferStateRequest>;
 
 export type UpdateSubscriptionOfferStateRequestList =
-  ReadonlyArray<UpdateSubscriptionOfferStateRequest>;
+  Array<UpdateSubscriptionOfferStateRequest>;
 export const UpdateSubscriptionOfferStateRequestList = /*@__PURE__*/ S.Array(
   UpdateSubscriptionOfferStateRequest,
 ) as any as S.Schema<UpdateSubscriptionOfferStateRequestList>;
@@ -4532,7 +4548,7 @@ export const UserCountrySet = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "UserCountrySet" }) as any as S.Schema<UserCountrySet>;
 
-export type UserCountrySetList = ReadonlyArray<UserCountrySet>;
+export type UserCountrySetList = Array<UserCountrySet>;
 export const UserCountrySetList = /*@__PURE__*/ S.Array(
   UserCountrySet,
 ) as any as S.Schema<UserCountrySetList>;
@@ -4551,7 +4567,7 @@ export const SystemOnChip = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SystemOnChip" }) as any as S.Schema<SystemOnChip>;
 
-export type SystemOnChipList = ReadonlyArray<SystemOnChip>;
+export type SystemOnChipList = Array<SystemOnChip>;
 export const SystemOnChipList = /*@__PURE__*/ S.Array(
   SystemOnChip,
 ) as any as S.Schema<SystemOnChipList>;
@@ -4570,7 +4586,7 @@ export const DeviceId = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DeviceId" }) as any as S.Schema<DeviceId>;
 
-export type DeviceIdList = ReadonlyArray<DeviceId>;
+export type DeviceIdList = Array<DeviceId>;
 export const DeviceIdList = /*@__PURE__*/ S.Array(
   DeviceId,
 ) as any as S.Schema<DeviceIdList>;
@@ -4586,7 +4602,7 @@ export const SystemFeature = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SystemFeature" }) as any as S.Schema<SystemFeature>;
 
-export type SystemFeatureList = ReadonlyArray<SystemFeature>;
+export type SystemFeatureList = Array<SystemFeature>;
 export const SystemFeatureList = /*@__PURE__*/ S.Array(
   SystemFeature,
 ) as any as S.Schema<SystemFeatureList>;
@@ -4631,7 +4647,7 @@ export const DeviceSelector = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DeviceSelector" }) as any as S.Schema<DeviceSelector>;
 
-export type DeviceSelectorList = ReadonlyArray<DeviceSelector>;
+export type DeviceSelectorList = Array<DeviceSelector>;
 export const DeviceSelectorList = /*@__PURE__*/ S.Array(
   DeviceSelector,
 ) as any as S.Schema<DeviceSelectorList>;
@@ -4650,7 +4666,7 @@ export const DeviceGroup = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DeviceGroup" }) as any as S.Schema<DeviceGroup>;
 
-export type DeviceGroupList = ReadonlyArray<DeviceGroup>;
+export type DeviceGroupList = Array<DeviceGroup>;
 export const DeviceGroupList = /*@__PURE__*/ S.Array(
   DeviceGroup,
 ) as any as S.Schema<DeviceGroupList>;
@@ -4669,7 +4685,7 @@ export const DeviceTier = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DeviceTier" }) as any as S.Schema<DeviceTier>;
 
-export type DeviceTierList = ReadonlyArray<DeviceTier>;
+export type DeviceTierList = Array<DeviceTier>;
 export const DeviceTierList = /*@__PURE__*/ S.Array(
   DeviceTier,
 ) as any as S.Schema<DeviceTierList>;
@@ -4861,7 +4877,7 @@ export const RemoteInAppUpdateDataPerBundle = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RemoteInAppUpdateDataPerBundle>;
 
 export type RemoteInAppUpdateDataPerBundleList =
-  ReadonlyArray<RemoteInAppUpdateDataPerBundle>;
+  Array<RemoteInAppUpdateDataPerBundle>;
 export const RemoteInAppUpdateDataPerBundleList = /*@__PURE__*/ S.Array(
   RemoteInAppUpdateDataPerBundle,
 ) as any as S.Schema<RemoteInAppUpdateDataPerBundleList>;
@@ -5023,7 +5039,7 @@ export const LocalizedText = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "LocalizedText" }) as any as S.Schema<LocalizedText>;
 
-export type LocalizedTextList = ReadonlyArray<LocalizedText>;
+export type LocalizedTextList = Array<LocalizedText>;
 export const LocalizedTextList = /*@__PURE__*/ S.Array(
   LocalizedText,
 ) as any as S.Schema<LocalizedTextList>;
@@ -5063,7 +5079,7 @@ export interface TrackRelease {
   /** Version codes of all APKs in the release. Must include version codes to retain from previous releases. */
   versionCodes?: StringList;
   /** The status of the release. */
-  status?: TrackReleaseStatusEnum;
+  status?: TrackReleaseStatusEnum | (string & {});
   /** Restricts a release to a specific set of countries. Note this is only allowed to be set for inProgress releases in the production track. */
   countryTargeting?: CountryTargeting;
   /** In-app update priority of the release. All newly added APKs in the release will be considered at this priority. Can take values in the range [0, 5], with 5 the highest priority. Defaults to 0. in_app_update_priority can not be updated once the release is rolled out. See https://developer.android.com/guide/playcore/in-app-updates. */
@@ -5081,7 +5097,7 @@ export const TrackRelease = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TrackRelease" }) as any as S.Schema<TrackRelease>;
 
-export type TrackReleaseList = ReadonlyArray<TrackRelease>;
+export type TrackReleaseList = Array<TrackRelease>;
 export const TrackReleaseList = /*@__PURE__*/ S.Array(
   TrackRelease,
 ) as any as S.Schema<TrackReleaseList>;
@@ -5137,7 +5153,7 @@ export const ExternalSubscriptionSubscriptionTypeEnum = /*@__PURE__*/ S.String;
 /** Details of an external subscription. */
 export interface ExternalSubscription {
   /** Required. The type of the external subscription. */
-  subscriptionType?: ExternalSubscriptionSubscriptionTypeEnum;
+  subscriptionType?: ExternalSubscriptionSubscriptionTypeEnum | (string & {});
 }
 export const ExternalSubscription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5156,7 +5172,9 @@ export interface RecurringExternalTransaction {
   /** The external transaction id of the first transaction of this recurring series of transactions. For example, for a subscription this would be the transaction id of the first payment. Required when creating recurring external transactions. */
   initialExternalTransactionId?: string;
   /** Input only. Provided during the call to Create. Must only be used when migrating a subscription from manual monthly reporting to automated reporting. */
-  migratedTransactionProgram?: RecurringExternalTransactionMigratedTransactionProgramEnum;
+  migratedTransactionProgram?:
+    | RecurringExternalTransactionMigratedTransactionProgramEnum
+    | (string & {});
   /** Details of an external subscription. */
   externalSubscription?: ExternalSubscription;
 }
@@ -5208,11 +5226,13 @@ export interface ExternalOfferDetails {
   /** Optional. The package name of the app downloaded through this transaction. Required when link_type is LINK_TO_APP_DOWNLOAD. */
   installedAppPackage?: string;
   /** Optional. The category of the downloaded app though this transaction. This must match the category provided in Play Console during the external app verification process. Only required for app downloads. */
-  installedAppCategory?: ExternalOfferDetailsInstalledAppCategoryEnum;
+  installedAppCategory?:
+    | ExternalOfferDetailsInstalledAppCategoryEnum
+    | (string & {});
   /** Optional. The external transaction id associated with the app download event through an external link. Required when reporting transactions made in externally installed apps. */
   appDownloadEventExternalTransactionId?: string;
   /** Optional. The type of content being reported by this transaction. Required when reporting app downloads or purchased digital content offers made in app installed through Google Play. */
-  linkType?: ExternalOfferDetailsLinkTypeEnum;
+  linkType?: ExternalOfferDetailsLinkTypeEnum | (string & {});
 }
 export const ExternalOfferDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5262,7 +5282,7 @@ export interface ExternalTransaction {
   /** Optional. Details necessary to accurately report external offers transactions. */
   externalOfferDetails?: ExternalOfferDetails;
   /** Output only. The current state of the transaction. */
-  transactionState?: ExternalTransactionTransactionStateEnum;
+  transactionState?: ExternalTransactionTransactionStateEnum | (string & {});
   /** Output only. If set, this transaction was a test purchase. Google will not charge for a test transaction. */
   testPurchase?: ExternalTransactionTestPurchase;
   /** Output only. The id of this transaction. All transaction ids under the same package name must be unique. Set when creating the external transaction. */
@@ -5339,8 +5359,9 @@ export type GrantAppLevelPermissionsItemEnum =
   | "CAN_MANAGE_DEEPLINKS";
 export const GrantAppLevelPermissionsItemEnum = /*@__PURE__*/ S.String;
 
-export type GrantAppLevelPermissionsItemEnumList =
-  ReadonlyArray<GrantAppLevelPermissionsItemEnum>;
+export type GrantAppLevelPermissionsItemEnumList = Array<
+  GrantAppLevelPermissionsItemEnum | (string & {})
+>;
 export const GrantAppLevelPermissionsItemEnumList = /*@__PURE__*/ S.Array(
   GrantAppLevelPermissionsItemEnum,
 ) as any as S.Schema<GrantAppLevelPermissionsItemEnumList>;
@@ -5530,7 +5551,7 @@ export type UserAccessStateEnum =
   | "ACCESS_EXPIRED";
 export const UserAccessStateEnum = /*@__PURE__*/ S.String;
 
-export type GrantList = ReadonlyArray<Grant>;
+export type GrantList = Array<Grant>;
 export const GrantList = /*@__PURE__*/ S.Array(
   Grant,
 ) as any as S.Schema<GrantList>;
@@ -5559,8 +5580,9 @@ export type UserDeveloperAccountPermissionsItemEnum =
   | "CAN_EDIT_CONNECTED_APPS_GLOBAL";
 export const UserDeveloperAccountPermissionsItemEnum = /*@__PURE__*/ S.String;
 
-export type UserDeveloperAccountPermissionsItemEnumList =
-  ReadonlyArray<UserDeveloperAccountPermissionsItemEnum>;
+export type UserDeveloperAccountPermissionsItemEnumList = Array<
+  UserDeveloperAccountPermissionsItemEnum | (string & {})
+>;
 export const UserDeveloperAccountPermissionsItemEnumList =
   /*@__PURE__*/ S.Array(
     UserDeveloperAccountPermissionsItemEnum,
@@ -5569,7 +5591,7 @@ export const UserDeveloperAccountPermissionsItemEnumList =
 /** A user resource. */
 export interface User {
   /** Output only. The state of the user's access to the Play Console. */
-  accessState?: UserAccessStateEnum;
+  accessState?: UserAccessStateEnum | (string & {});
   /** Output only. Per-app permissions for the user. */
   grants?: GrantList;
   /** The time at which the user's access expires, if set. When setting this value, it must always be in the future. */
@@ -5893,7 +5915,7 @@ export const ItemExpiryTimeDetails = /*@__PURE__*/ S.suspend(() =>
   identifier: "ItemExpiryTimeDetails",
 }) as any as S.Schema<ItemExpiryTimeDetails>;
 
-export type ItemExpiryTimeDetailsList = ReadonlyArray<ItemExpiryTimeDetails>;
+export type ItemExpiryTimeDetailsList = Array<ItemExpiryTimeDetails>;
 export const ItemExpiryTimeDetailsList = /*@__PURE__*/ S.Array(
   ItemExpiryTimeDetails,
 ) as any as S.Schema<ItemExpiryTimeDetailsList>;
@@ -5979,7 +6001,7 @@ export const Image = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Image" }) as any as S.Schema<Image>;
 
-export type ImageList = ReadonlyArray<Image>;
+export type ImageList = Array<Image>;
 export const ImageList = /*@__PURE__*/ S.Array(
   Image,
 ) as any as S.Schema<ImageList>;
@@ -6526,7 +6548,7 @@ export const ImageAsset = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ImageAsset" }) as any as S.Schema<ImageAsset>;
 
-export type ImageAssetList = ReadonlyArray<ImageAsset>;
+export type ImageAssetList = Array<ImageAsset>;
 export const ImageAssetList = /*@__PURE__*/ S.Array(
   ImageAsset,
 ) as any as S.Schema<ImageAssetList>;
@@ -6582,7 +6604,7 @@ export const LocalizedStoreListing = /*@__PURE__*/ S.suspend(() =>
   identifier: "LocalizedStoreListing",
 }) as any as S.Schema<LocalizedStoreListing>;
 
-export type LocalizedStoreListingList = ReadonlyArray<LocalizedStoreListing>;
+export type LocalizedStoreListingList = Array<LocalizedStoreListing>;
 export const LocalizedStoreListingList = /*@__PURE__*/ S.Array(
   LocalizedStoreListing,
 ) as any as S.Schema<LocalizedStoreListingList>;
@@ -6618,7 +6640,7 @@ export const CatalogPermission = /*@__PURE__*/ S.suspend(() =>
   identifier: "CatalogPermission",
 }) as any as S.Schema<CatalogPermission>;
 
-export type CatalogPermissionList = ReadonlyArray<CatalogPermission>;
+export type CatalogPermissionList = Array<CatalogPermission>;
 export const CatalogPermissionList = /*@__PURE__*/ S.Array(
   CatalogPermission,
 ) as any as S.Schema<CatalogPermissionList>;
@@ -6717,7 +6739,7 @@ export const UsesConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "UsesConfiguration",
 }) as any as S.Schema<UsesConfiguration>;
 
-export type UsesConfigurationList = ReadonlyArray<UsesConfiguration>;
+export type UsesConfigurationList = Array<UsesConfiguration>;
 export const UsesConfigurationList = /*@__PURE__*/ S.Array(
   UsesConfiguration,
 ) as any as S.Schema<UsesConfigurationList>;
@@ -6763,7 +6785,7 @@ export const CompatibleScreen = /*@__PURE__*/ S.suspend(() =>
   identifier: "CompatibleScreen",
 }) as any as S.Schema<CompatibleScreen>;
 
-export type CompatibleScreenList = ReadonlyArray<CompatibleScreen>;
+export type CompatibleScreenList = Array<CompatibleScreen>;
 export const CompatibleScreenList = /*@__PURE__*/ S.Array(
   CompatibleScreen,
 ) as any as S.Schema<CompatibleScreenList>;
@@ -6785,7 +6807,7 @@ export const DeviceCompatibilityRequirementsSupportedScreensItemEnum =
   /*@__PURE__*/ S.String;
 
 export type DeviceCompatibilityRequirementsSupportedScreensItemEnumList =
-  ReadonlyArray<DeviceCompatibilityRequirementsSupportedScreensItemEnum>;
+  Array<DeviceCompatibilityRequirementsSupportedScreensItemEnum>;
 export const DeviceCompatibilityRequirementsSupportedScreensItemEnumList =
   /*@__PURE__*/ S.Array(
     DeviceCompatibilityRequirementsSupportedScreensItemEnum,
@@ -6840,7 +6862,7 @@ export const DeviceCompatibilityRequirements = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeviceCompatibilityRequirements>;
 
 export type DeviceCompatibilityRequirementsList =
-  ReadonlyArray<DeviceCompatibilityRequirements>;
+  Array<DeviceCompatibilityRequirements>;
 export const DeviceCompatibilityRequirementsList = /*@__PURE__*/ S.Array(
   DeviceCompatibilityRequirements,
 ) as any as S.Schema<DeviceCompatibilityRequirementsList>;
@@ -6876,7 +6898,7 @@ export const SocSelector = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SocSelector" }) as any as S.Schema<SocSelector>;
 
-export type SocSelectorList = ReadonlyArray<SocSelector>;
+export type SocSelectorList = Array<SocSelector>;
 export const SocSelectorList = /*@__PURE__*/ S.Array(
   SocSelector,
 ) as any as S.Schema<SocSelectorList>;
@@ -6906,7 +6928,7 @@ export const CatalogDeviceSelector = /*@__PURE__*/ S.suspend(() =>
   identifier: "CatalogDeviceSelector",
 }) as any as S.Schema<CatalogDeviceSelector>;
 
-export type CatalogDeviceSelectorList = ReadonlyArray<CatalogDeviceSelector>;
+export type CatalogDeviceSelectorList = Array<CatalogDeviceSelector>;
 export const CatalogDeviceSelectorList = /*@__PURE__*/ S.Array(
   CatalogDeviceSelector,
 ) as any as S.Schema<CatalogDeviceSelectorList>;
@@ -6927,7 +6949,7 @@ export const DeviceIdentifier = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeviceIdentifier",
 }) as any as S.Schema<DeviceIdentifier>;
 
-export type DeviceIdentifierList = ReadonlyArray<DeviceIdentifier>;
+export type DeviceIdentifierList = Array<DeviceIdentifier>;
 export const DeviceIdentifierList = /*@__PURE__*/ S.Array(
   DeviceIdentifier,
 ) as any as S.Schema<DeviceIdentifierList>;
@@ -7121,7 +7143,7 @@ export const TrackTargetedCountry = /*@__PURE__*/ S.suspend(() =>
   identifier: "TrackTargetedCountry",
 }) as any as S.Schema<TrackTargetedCountry>;
 
-export type TrackTargetedCountryList = ReadonlyArray<TrackTargetedCountry>;
+export type TrackTargetedCountryList = Array<TrackTargetedCountry>;
 export const TrackTargetedCountryList = /*@__PURE__*/ S.Array(
   TrackTargetedCountry,
 ) as any as S.Schema<TrackTargetedCountryList>;
@@ -7620,7 +7642,7 @@ export const ProductLineItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProductLineItem",
 }) as any as S.Schema<ProductLineItem>;
 
-export type ProductLineItemList = ReadonlyArray<ProductLineItem>;
+export type ProductLineItemList = Array<ProductLineItem>;
 export const ProductLineItemList = /*@__PURE__*/ S.Array(
   ProductLineItem,
 ) as any as S.Schema<ProductLineItemList>;
@@ -8339,7 +8361,7 @@ export const SubscriptionPurchaseLineItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SubscriptionPurchaseLineItem>;
 
 export type SubscriptionPurchaseLineItemList =
-  ReadonlyArray<SubscriptionPurchaseLineItem>;
+  Array<SubscriptionPurchaseLineItem>;
 export const SubscriptionPurchaseLineItemList = /*@__PURE__*/ S.Array(
   SubscriptionPurchaseLineItem,
 ) as any as S.Schema<SubscriptionPurchaseLineItemList>;
@@ -8557,7 +8579,7 @@ export const Comment = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Comment" }) as any as S.Schema<Comment>;
 
-export type CommentList = ReadonlyArray<Comment>;
+export type CommentList = Array<Comment>;
 export const CommentList = /*@__PURE__*/ S.Array(
   Comment,
 ) as any as S.Schema<CommentList>;
@@ -8673,7 +8695,7 @@ export const ListApplicationsDeviceTierConfigsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListApplicationsDeviceTierConfigsRequest",
 }) as any as S.Schema<ListApplicationsDeviceTierConfigsRequest>;
 
-export type DeviceTierConfigList = ReadonlyArray<DeviceTierConfig>;
+export type DeviceTierConfigList = Array<DeviceTierConfig>;
 export const DeviceTierConfigList = /*@__PURE__*/ S.Array(
   DeviceTierConfig,
 ) as any as S.Schema<DeviceTierConfigList>;
@@ -8726,7 +8748,7 @@ export const ArtifactSummary = /*@__PURE__*/ S.suspend(() =>
   identifier: "ArtifactSummary",
 }) as any as S.Schema<ArtifactSummary>;
 
-export type ArtifactSummaryList = ReadonlyArray<ArtifactSummary>;
+export type ArtifactSummaryList = Array<ArtifactSummary>;
 export const ArtifactSummaryList = /*@__PURE__*/ S.Array(
   ArtifactSummary,
 ) as any as S.Schema<ArtifactSummaryList>;
@@ -8761,7 +8783,7 @@ export const ReleaseSummary = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ReleaseSummary" }) as any as S.Schema<ReleaseSummary>;
 
-export type ReleaseSummaryList = ReadonlyArray<ReleaseSummary>;
+export type ReleaseSummaryList = Array<ReleaseSummary>;
 export const ReleaseSummaryList = /*@__PURE__*/ S.Array(
   ReleaseSummary,
 ) as any as S.Schema<ReleaseSummaryList>;
@@ -8800,7 +8822,7 @@ export const ListApprecoveryRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListApprecoveryRequest",
 }) as any as S.Schema<ListApprecoveryRequest>;
 
-export type AppRecoveryActionList = ReadonlyArray<AppRecoveryAction>;
+export type AppRecoveryActionList = Array<AppRecoveryAction>;
 export const AppRecoveryActionList = /*@__PURE__*/ S.Array(
   AppRecoveryAction,
 ) as any as S.Schema<AppRecoveryActionList>;
@@ -8874,7 +8896,7 @@ export const RecentUpdateEvent = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecentUpdateEvent",
 }) as any as S.Schema<RecentUpdateEvent>;
 
-export type RecentUpdateEventList = ReadonlyArray<RecentUpdateEvent>;
+export type RecentUpdateEventList = Array<RecentUpdateEvent>;
 export const RecentUpdateEventList = /*@__PURE__*/ S.Array(
   RecentUpdateEvent,
 ) as any as S.Schema<RecentUpdateEventList>;
@@ -8944,7 +8966,7 @@ export const Apk = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Apk" }) as any as S.Schema<Apk>;
 
-export type ApkList = ReadonlyArray<Apk>;
+export type ApkList = Array<Apk>;
 export const ApkList = /*@__PURE__*/ S.Array(Apk) as any as S.Schema<ApkList>;
 
 /** Response listing all APKs. */
@@ -9001,7 +9023,7 @@ export const Bundle = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Bundle" }) as any as S.Schema<Bundle>;
 
-export type BundleList = ReadonlyArray<Bundle>;
+export type BundleList = Array<Bundle>;
 export const BundleList = /*@__PURE__*/ S.Array(
   Bundle,
 ) as any as S.Schema<BundleList>;
@@ -9095,7 +9117,7 @@ export const ListEditsListingsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListEditsListingsRequest",
 }) as any as S.Schema<ListEditsListingsRequest>;
 
-export type ListingList = ReadonlyArray<Listing>;
+export type ListingList = Array<Listing>;
 export const ListingList = /*@__PURE__*/ S.Array(
   Listing,
 ) as any as S.Schema<ListingList>;
@@ -9137,7 +9159,7 @@ export const ListEditsTracksRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListEditsTracksRequest",
 }) as any as S.Schema<ListEditsTracksRequest>;
 
-export type TrackList = ReadonlyArray<Track>;
+export type TrackList = Array<Track>;
 export const TrackList = /*@__PURE__*/ S.Array(
   Track,
 ) as any as S.Schema<TrackList>;
@@ -9201,7 +9223,7 @@ export const GeneratedSplitApk = /*@__PURE__*/ S.suspend(() =>
   identifier: "GeneratedSplitApk",
 }) as any as S.Schema<GeneratedSplitApk>;
 
-export type GeneratedSplitApkList = ReadonlyArray<GeneratedSplitApk>;
+export type GeneratedSplitApkList = Array<GeneratedSplitApk>;
 export const GeneratedSplitApkList = /*@__PURE__*/ S.Array(
   GeneratedSplitApk,
 ) as any as S.Schema<GeneratedSplitApkList>;
@@ -9237,7 +9259,7 @@ export const GeneratedRecoveryApk = /*@__PURE__*/ S.suspend(() =>
   identifier: "GeneratedRecoveryApk",
 }) as any as S.Schema<GeneratedRecoveryApk>;
 
-export type GeneratedRecoveryApkList = ReadonlyArray<GeneratedRecoveryApk>;
+export type GeneratedRecoveryApkList = Array<GeneratedRecoveryApk>;
 export const GeneratedRecoveryApkList = /*@__PURE__*/ S.Array(
   GeneratedRecoveryApk,
 ) as any as S.Schema<GeneratedRecoveryApkList>;
@@ -9258,7 +9280,7 @@ export const GeneratedStandaloneApk = /*@__PURE__*/ S.suspend(() =>
   identifier: "GeneratedStandaloneApk",
 }) as any as S.Schema<GeneratedStandaloneApk>;
 
-export type GeneratedStandaloneApkList = ReadonlyArray<GeneratedStandaloneApk>;
+export type GeneratedStandaloneApkList = Array<GeneratedStandaloneApk>;
 export const GeneratedStandaloneApkList = /*@__PURE__*/ S.Array(
   GeneratedStandaloneApk,
 ) as any as S.Schema<GeneratedStandaloneApkList>;
@@ -9342,7 +9364,7 @@ export const SdkVersion = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SdkVersion" }) as any as S.Schema<SdkVersion>;
 
-export type SdkVersionList = ReadonlyArray<SdkVersion>;
+export type SdkVersionList = Array<SdkVersion>;
 export const SdkVersionList = /*@__PURE__*/ S.Array(
   SdkVersion,
 ) as any as S.Schema<SdkVersionList>;
@@ -9384,7 +9406,7 @@ export const Abi = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Abi" }) as any as S.Schema<Abi>;
 
-export type AbiList = ReadonlyArray<Abi>;
+export type AbiList = Array<Abi>;
 export const AbiList = /*@__PURE__*/ S.Array(Abi) as any as S.Schema<AbiList>;
 
 /** Targeting based on Abi. */
@@ -9412,7 +9434,7 @@ export const MultiAbi = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MultiAbi" }) as any as S.Schema<MultiAbi>;
 
-export type MultiAbiList = ReadonlyArray<MultiAbi>;
+export type MultiAbiList = Array<MultiAbi>;
 export const MultiAbiList = /*@__PURE__*/ S.Array(
   MultiAbi,
 ) as any as S.Schema<MultiAbiList>;
@@ -9459,7 +9481,7 @@ export const ScreenDensity = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ScreenDensity" }) as any as S.Schema<ScreenDensity>;
 
-export type ScreenDensityList = ReadonlyArray<ScreenDensity>;
+export type ScreenDensityList = Array<ScreenDensity>;
 export const ScreenDensityList = /*@__PURE__*/ S.Array(
   ScreenDensity,
 ) as any as S.Schema<ScreenDensityList>;
@@ -9507,8 +9529,7 @@ export const TextureCompressionFormat = /*@__PURE__*/ S.suspend(() =>
   identifier: "TextureCompressionFormat",
 }) as any as S.Schema<TextureCompressionFormat>;
 
-export type TextureCompressionFormatList =
-  ReadonlyArray<TextureCompressionFormat>;
+export type TextureCompressionFormatList = Array<TextureCompressionFormat>;
 export const TextureCompressionFormatList = /*@__PURE__*/ S.Array(
   TextureCompressionFormat,
 ) as any as S.Schema<TextureCompressionFormatList>;
@@ -9596,7 +9617,7 @@ export const ApkDescription = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ApkDescription" }) as any as S.Schema<ApkDescription>;
 
-export type ApkDescriptionList = ReadonlyArray<ApkDescription>;
+export type ApkDescriptionList = Array<ApkDescription>;
 export const ApkDescriptionList = /*@__PURE__*/ S.Array(
   ApkDescription,
 ) as any as S.Schema<ApkDescriptionList>;
@@ -9615,7 +9636,7 @@ export const AssetSliceSet = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AssetSliceSet" }) as any as S.Schema<AssetSliceSet>;
 
-export type AssetSliceSetList = ReadonlyArray<AssetSliceSet>;
+export type AssetSliceSetList = Array<AssetSliceSet>;
 export const AssetSliceSetList = /*@__PURE__*/ S.Array(
   AssetSliceSet,
 ) as any as S.Schema<AssetSliceSetList>;
@@ -9686,7 +9707,7 @@ export const DeviceFeatureTargeting = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeviceFeatureTargeting",
 }) as any as S.Schema<DeviceFeatureTargeting>;
 
-export type DeviceFeatureTargetingList = ReadonlyArray<DeviceFeatureTargeting>;
+export type DeviceFeatureTargetingList = Array<DeviceFeatureTargeting>;
 export const DeviceFeatureTargetingList = /*@__PURE__*/ S.Array(
   DeviceFeatureTargeting,
 ) as any as S.Schema<DeviceFeatureTargetingList>;
@@ -9763,7 +9784,7 @@ export const ApkSet = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ApkSet" }) as any as S.Schema<ApkSet>;
 
-export type ApkSetList = ReadonlyArray<ApkSet>;
+export type ApkSetList = Array<ApkSet>;
 export const ApkSetList = /*@__PURE__*/ S.Array(
   ApkSet,
 ) as any as S.Schema<ApkSetList>;
@@ -9787,7 +9808,7 @@ export const SplitApkVariant = /*@__PURE__*/ S.suspend(() =>
   identifier: "SplitApkVariant",
 }) as any as S.Schema<SplitApkVariant>;
 
-export type SplitApkVariantList = ReadonlyArray<SplitApkVariant>;
+export type SplitApkVariantList = Array<SplitApkVariant>;
 export const SplitApkVariantList = /*@__PURE__*/ S.Array(
   SplitApkVariant,
 ) as any as S.Schema<SplitApkVariantList>;
@@ -9831,8 +9852,7 @@ export const GeneratedAssetPackSlice = /*@__PURE__*/ S.suspend(() =>
   identifier: "GeneratedAssetPackSlice",
 }) as any as S.Schema<GeneratedAssetPackSlice>;
 
-export type GeneratedAssetPackSliceList =
-  ReadonlyArray<GeneratedAssetPackSlice>;
+export type GeneratedAssetPackSliceList = Array<GeneratedAssetPackSlice>;
 export const GeneratedAssetPackSliceList = /*@__PURE__*/ S.Array(
   GeneratedAssetPackSlice,
 ) as any as S.Schema<GeneratedAssetPackSliceList>;
@@ -9874,8 +9894,7 @@ export const GeneratedApksPerSigningKey = /*@__PURE__*/ S.suspend(() =>
   identifier: "GeneratedApksPerSigningKey",
 }) as any as S.Schema<GeneratedApksPerSigningKey>;
 
-export type GeneratedApksPerSigningKeyList =
-  ReadonlyArray<GeneratedApksPerSigningKey>;
+export type GeneratedApksPerSigningKeyList = Array<GeneratedApksPerSigningKey>;
 export const GeneratedApksPerSigningKeyList = /*@__PURE__*/ S.Array(
   GeneratedApksPerSigningKey,
 ) as any as S.Schema<GeneratedApksPerSigningKeyList>;
@@ -10224,7 +10243,7 @@ export const VoidedPurchase = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "VoidedPurchase" }) as any as S.Schema<VoidedPurchase>;
 
-export type VoidedPurchaseList = ReadonlyArray<VoidedPurchase>;
+export type VoidedPurchaseList = Array<VoidedPurchase>;
 export const VoidedPurchaseList = /*@__PURE__*/ S.Array(
   VoidedPurchase,
 ) as any as S.Schema<VoidedPurchaseList>;
@@ -10277,7 +10296,7 @@ export const ListReviewsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListReviewsRequest",
 }) as any as S.Schema<ListReviewsRequest>;
 
-export type ReviewList = ReadonlyArray<Review>;
+export type ReviewList = Array<Review>;
 export const ReviewList = /*@__PURE__*/ S.Array(
   Review,
 ) as any as S.Schema<ReviewList>;
@@ -10322,7 +10341,7 @@ export const ListSystemapksVariantsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListSystemapksVariantsRequest",
 }) as any as S.Schema<ListSystemapksVariantsRequest>;
 
-export type VariantList = ReadonlyArray<Variant>;
+export type VariantList = Array<Variant>;
 export const VariantList = /*@__PURE__*/ S.Array(
   Variant,
 ) as any as S.Schema<VariantList>;
@@ -10364,7 +10383,7 @@ export const ListUsersRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListUsersRequest",
 }) as any as S.Schema<ListUsersRequest>;
 
-export type UserList = ReadonlyArray<User>;
+export type UserList = Array<User>;
 export const UserList = /*@__PURE__*/ S.Array(
   User,
 ) as any as S.Schema<UserList>;
@@ -11011,7 +11030,7 @@ export const ConsumptionUsageEvent = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConsumptionUsageEvent",
 }) as any as S.Schema<ConsumptionUsageEvent>;
 
-export type ConsumptionUsageEventList = ReadonlyArray<ConsumptionUsageEvent>;
+export type ConsumptionUsageEventList = Array<ConsumptionUsageEvent>;
 export const ConsumptionUsageEventList = /*@__PURE__*/ S.Array(
   ConsumptionUsageEvent,
 ) as any as S.Schema<ConsumptionUsageEventList>;
@@ -11203,8 +11222,7 @@ export const AppStoreAppActiveApkSet = /*@__PURE__*/ S.suspend(() =>
   identifier: "AppStoreAppActiveApkSet",
 }) as any as S.Schema<AppStoreAppActiveApkSet>;
 
-export type AppStoreAppActiveApkSetList =
-  ReadonlyArray<AppStoreAppActiveApkSet>;
+export type AppStoreAppActiveApkSetList = Array<AppStoreAppActiveApkSet>;
 export const AppStoreAppActiveApkSetList = /*@__PURE__*/ S.Array(
   AppStoreAppActiveApkSet,
 ) as any as S.Schema<AppStoreAppActiveApkSetList>;
@@ -11253,8 +11271,7 @@ export const AppStoreAppStoreListing = /*@__PURE__*/ S.suspend(() =>
   identifier: "AppStoreAppStoreListing",
 }) as any as S.Schema<AppStoreAppStoreListing>;
 
-export type AppStoreAppStoreListingList =
-  ReadonlyArray<AppStoreAppStoreListing>;
+export type AppStoreAppStoreListingList = Array<AppStoreAppStoreListing>;
 export const AppStoreAppStoreListingList = /*@__PURE__*/ S.Array(
   AppStoreAppStoreListing,
 ) as any as S.Schema<AppStoreAppStoreListingList>;
@@ -11358,7 +11375,7 @@ export const NestedPolicyResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "NestedPolicyResponse",
 }) as any as S.Schema<NestedPolicyResponse>;
 
-export type NestedPolicyResponseList = ReadonlyArray<NestedPolicyResponse>;
+export type NestedPolicyResponseList = Array<NestedPolicyResponse>;
 export const NestedPolicyResponseList = /*@__PURE__*/ S.Array(
   NestedPolicyResponse,
 ) as any as S.Schema<NestedPolicyResponseList>;
@@ -11377,7 +11394,7 @@ export const KeyedGroup = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "KeyedGroup" }) as any as S.Schema<KeyedGroup>;
 
-export type KeyedGroupList = ReadonlyArray<KeyedGroup>;
+export type KeyedGroupList = Array<KeyedGroup>;
 export const KeyedGroupList = /*@__PURE__*/ S.Array(
   KeyedGroup,
 ) as any as S.Schema<KeyedGroupList>;
@@ -11406,7 +11423,7 @@ export const Group = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Group" }) as any as S.Schema<Group>;
 
-export type GroupList = ReadonlyArray<Group>;
+export type GroupList = Array<Group>;
 export const GroupList = /*@__PURE__*/ S.Array(
   Group,
 ) as any as S.Schema<GroupList>;
@@ -11456,7 +11473,7 @@ export const PolicyResponse = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PolicyResponse" }) as any as S.Schema<PolicyResponse>;
 
-export type PolicyResponseList = ReadonlyArray<PolicyResponse>;
+export type PolicyResponseList = Array<PolicyResponse>;
 export const PolicyResponseList = /*@__PURE__*/ S.Array(
   PolicyResponse,
 ) as any as S.Schema<PolicyResponseList>;
@@ -11478,7 +11495,7 @@ export const AppStoreAppPolicyDeclaration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AppStoreAppPolicyDeclaration>;
 
 export type AppStoreAppPolicyDeclarationList =
-  ReadonlyArray<AppStoreAppPolicyDeclaration>;
+  Array<AppStoreAppPolicyDeclaration>;
 export const AppStoreAppPolicyDeclarationList = /*@__PURE__*/ S.Array(
   AppStoreAppPolicyDeclaration,
 ) as any as S.Schema<AppStoreAppPolicyDeclarationList>;

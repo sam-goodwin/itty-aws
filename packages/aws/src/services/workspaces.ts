@@ -601,7 +601,7 @@ export interface StandbyWorkspace {
   VolumeEncryptionKey?: string;
   DirectoryId: string;
   Tags?: Tag[];
-  DataReplication?: DataReplication;
+  DataReplication?: DataReplication | (string & {});
 }
 export const StandbyWorkspace = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -805,7 +805,7 @@ export type Compute =
 export const Compute = /*@__PURE__*/ S.String;
 
 export interface ComputeType {
-  Name?: Compute;
+  Name?: Compute | (string & {});
 }
 export const ComputeType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Name: S.optional(Compute) }),
@@ -980,7 +980,7 @@ export type UserVolumeSizeGib = number;
 export type Protocol = "PCOIP" | "WSP";
 export const Protocol = /*@__PURE__*/ S.String;
 
-export type ProtocolList = Protocol[];
+export type ProtocolList = (Protocol | (string & {}))[];
 export const ProtocolList = /*@__PURE__*/ S.Array(Protocol);
 export type OperatingSystemName =
   | "AMAZON_LINUX_2"
@@ -1006,8 +1006,8 @@ export type AGAPreferredProtocolForWorkSpace = "TCP" | "NONE" | "INHERITED";
 export const AGAPreferredProtocolForWorkSpace = /*@__PURE__*/ S.String;
 
 export interface GlobalAcceleratorForWorkSpace {
-  Mode: AGAModeForWorkSpaceEnum;
-  PreferredProtocol?: AGAPreferredProtocolForWorkSpace;
+  Mode: AGAModeForWorkSpaceEnum | (string & {});
+  PreferredProtocol?: AGAPreferredProtocolForWorkSpace | (string & {});
 }
 export const GlobalAcceleratorForWorkSpace = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1018,13 +1018,13 @@ export const GlobalAcceleratorForWorkSpace = /*@__PURE__*/ S.suspend(() =>
   identifier: "GlobalAcceleratorForWorkSpace",
 }) as any as S.Schema<GlobalAcceleratorForWorkSpace>;
 export interface WorkspaceProperties {
-  RunningMode?: RunningMode;
+  RunningMode?: RunningMode | (string & {});
   RunningModeAutoStopTimeoutInMinutes?: number;
   RootVolumeSizeGib?: number;
   UserVolumeSizeGib?: number;
-  ComputeTypeName?: Compute;
+  ComputeTypeName?: Compute | (string & {});
   Protocols?: Protocol[];
-  OperatingSystemName?: OperatingSystemName;
+  OperatingSystemName?: OperatingSystemName | (string & {});
   GlobalAccelerator?: GlobalAcceleratorForWorkSpace;
 }
 export const WorkspaceProperties = /*@__PURE__*/ S.suspend(() =>
@@ -1939,12 +1939,12 @@ export const DescribeApplicationAssociationsResult = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DescribeApplicationAssociationsResult>;
 export type WorkSpaceApplicationIdList = string[];
 export const WorkSpaceApplicationIdList = /*@__PURE__*/ S.Array(S.String);
-export type ComputeList = Compute[];
+export type ComputeList = (Compute | (string & {}))[];
 export const ComputeList = /*@__PURE__*/ S.Array(Compute);
 export type WorkSpaceApplicationLicenseType = "LICENSED" | "UNLICENSED";
 export const WorkSpaceApplicationLicenseType = /*@__PURE__*/ S.String;
 
-export type OperatingSystemNameList = OperatingSystemName[];
+export type OperatingSystemNameList = (OperatingSystemName | (string & {}))[];
 export const OperatingSystemNameList =
   /*@__PURE__*/ S.Array(OperatingSystemName);
 export type WorkSpaceApplicationOwner = string;
@@ -2212,8 +2212,8 @@ export type LogUploadEnum = "ENABLED" | "DISABLED";
 export const LogUploadEnum = /*@__PURE__*/ S.String;
 
 export interface ClientProperties {
-  ReconnectEnabled?: ReconnectEnum;
-  LogUploadEnabled?: LogUploadEnum;
+  ReconnectEnabled?: ReconnectEnum | (string & {});
+  LogUploadEnabled?: LogUploadEnum | (string & {});
 }
 export const ClientProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2901,7 +2901,7 @@ export const AccessEndpointType = /*@__PURE__*/ S.String;
 
 export type AlphanumericDashUnderscoreNonEmptyString = string;
 export interface AccessEndpoint {
-  AccessEndpointType?: AccessEndpointType;
+  AccessEndpointType?: AccessEndpointType | (string & {});
   VpcEndpointId?: string;
 }
 export const AccessEndpoint = /*@__PURE__*/ S.suspend(() =>
@@ -2915,7 +2915,10 @@ export const AccessEndpointList = /*@__PURE__*/ S.Array(AccessEndpoint);
 export type InternetFallbackProtocol = "PCOIP";
 export const InternetFallbackProtocol = /*@__PURE__*/ S.String;
 
-export type InternetFallbackProtocolList = InternetFallbackProtocol[];
+export type InternetFallbackProtocolList = (
+  | InternetFallbackProtocol
+  | (string & {})
+)[];
 export const InternetFallbackProtocolList = /*@__PURE__*/ S.Array(
   InternetFallbackProtocol,
 );
@@ -2932,15 +2935,15 @@ export const AccessEndpointConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "AccessEndpointConfig",
 }) as any as S.Schema<AccessEndpointConfig>;
 export interface WorkspaceAccessProperties {
-  DeviceTypeWindows?: AccessPropertyValue;
-  DeviceTypeOsx?: AccessPropertyValue;
-  DeviceTypeWeb?: AccessPropertyValue;
-  DeviceTypeIos?: AccessPropertyValue;
-  DeviceTypeAndroid?: AccessPropertyValue;
-  DeviceTypeChromeOs?: AccessPropertyValue;
-  DeviceTypeZeroClient?: AccessPropertyValue;
-  DeviceTypeLinux?: AccessPropertyValue;
-  DeviceTypeWorkSpacesThinClient?: AccessPropertyValue;
+  DeviceTypeWindows?: AccessPropertyValue | (string & {});
+  DeviceTypeOsx?: AccessPropertyValue | (string & {});
+  DeviceTypeWeb?: AccessPropertyValue | (string & {});
+  DeviceTypeIos?: AccessPropertyValue | (string & {});
+  DeviceTypeAndroid?: AccessPropertyValue | (string & {});
+  DeviceTypeChromeOs?: AccessPropertyValue | (string & {});
+  DeviceTypeZeroClient?: AccessPropertyValue | (string & {});
+  DeviceTypeLinux?: AccessPropertyValue | (string & {});
+  DeviceTypeWorkSpacesThinClient?: AccessPropertyValue | (string & {});
   AccessEndpointConfig?: AccessEndpointConfig;
 }
 export const WorkspaceAccessProperties = /*@__PURE__*/ S.suspend(() =>
@@ -2963,11 +2966,11 @@ export type Tenancy = "DEDICATED" | "SHARED";
 export const Tenancy = /*@__PURE__*/ S.String;
 
 export interface SelfservicePermissions {
-  RestartWorkspace?: ReconnectEnum;
-  IncreaseVolumeSize?: ReconnectEnum;
-  ChangeComputeType?: ReconnectEnum;
-  SwitchRunningMode?: ReconnectEnum;
-  RebuildWorkspace?: ReconnectEnum;
+  RestartWorkspace?: ReconnectEnum | (string & {});
+  IncreaseVolumeSize?: ReconnectEnum | (string & {});
+  ChangeComputeType?: ReconnectEnum | (string & {});
+  SwitchRunningMode?: ReconnectEnum | (string & {});
+  RebuildWorkspace?: ReconnectEnum | (string & {});
 }
 export const SelfservicePermissions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2988,7 +2991,7 @@ export const SamlStatusEnum = /*@__PURE__*/ S.String;
 
 export type SamlUserAccessUrl = string;
 export interface SamlProperties {
-  Status?: SamlStatusEnum;
+  Status?: SamlStatusEnum | (string & {});
   UserAccessUrl?: string;
   RelayStateParameterName?: string;
 }
@@ -3004,7 +3007,7 @@ export const CertificateBasedAuthStatusEnum = /*@__PURE__*/ S.String;
 
 export type CertificateAuthorityArn = string;
 export interface CertificateBasedAuthProperties {
-  Status?: CertificateBasedAuthStatusEnum;
+  Status?: CertificateBasedAuthStatusEnum | (string & {});
   CertificateAuthorityArn?: string;
 }
 export const CertificateBasedAuthProperties = /*@__PURE__*/ S.suspend(() =>
@@ -3077,8 +3080,8 @@ export const UserSettingPermissionEnum = /*@__PURE__*/ S.String;
 
 export type MaximumLength = number;
 export interface UserSetting {
-  Action: UserSettingActionEnum;
-  Permission: UserSettingPermissionEnum;
+  Action: UserSettingActionEnum | (string & {});
+  Permission: UserSettingPermissionEnum | (string & {});
   MaximumLength?: number;
 }
 export const UserSetting = /*@__PURE__*/ S.suspend(() =>
@@ -3097,8 +3100,8 @@ export type StorageConnectorStatusEnum = "ENABLED" | "DISABLED";
 export const StorageConnectorStatusEnum = /*@__PURE__*/ S.String;
 
 export interface StorageConnector {
-  ConnectorType: StorageConnectorTypeEnum;
-  Status: StorageConnectorStatusEnum;
+  ConnectorType: StorageConnectorTypeEnum | (string & {});
+  Status: StorageConnectorStatusEnum | (string & {});
 }
 export const StorageConnector = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3117,8 +3120,8 @@ export type AGAPreferredProtocolForDirectory = "TCP" | "NONE";
 export const AGAPreferredProtocolForDirectory = /*@__PURE__*/ S.String;
 
 export interface GlobalAcceleratorForDirectory {
-  Mode: AGAModeForDirectoryEnum;
-  PreferredProtocol?: AGAPreferredProtocolForDirectory;
+  Mode: AGAModeForDirectoryEnum | (string & {});
+  PreferredProtocol?: AGAPreferredProtocolForDirectory | (string & {});
 }
 export const GlobalAcceleratorForDirectory = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3129,7 +3132,9 @@ export const GlobalAcceleratorForDirectory = /*@__PURE__*/ S.suspend(() =>
   identifier: "GlobalAcceleratorForDirectory",
 }) as any as S.Schema<GlobalAcceleratorForDirectory>;
 export interface StreamingProperties {
-  StreamingExperiencePreferredProtocol?: StreamingExperiencePreferredProtocolEnum;
+  StreamingExperiencePreferredProtocol?:
+    | StreamingExperiencePreferredProtocolEnum
+    | (string & {});
   UserSettings?: UserSetting[];
   StorageConnectors?: StorageConnector[];
   GlobalAccelerator?: GlobalAcceleratorForDirectory;

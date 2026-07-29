@@ -178,7 +178,7 @@ export const Tier = /*@__PURE__*/ S.String;
 export type ComponentConfiguration = string;
 export interface WorkloadConfiguration {
   WorkloadName?: string;
-  Tier?: Tier;
+  Tier?: Tier | (string & {});
   Configuration?: string;
 }
 export const WorkloadConfiguration = /*@__PURE__*/ S.suspend(() =>

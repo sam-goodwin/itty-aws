@@ -31,7 +31,7 @@ export const PrivateIPAddress = /*@__PURE__*/ S.suspend(() =>
 
 /** List of the SQL virtual machine instance resource id's that are enrolled into the availability group listener. */
 export type LoadBalancerConfigurationSqlVirtualMachineInstancesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const LoadBalancerConfigurationSqlVirtualMachineInstancesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -66,7 +66,7 @@ export const LoadBalancerConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** List of load balancer configurations for an availability group listener. */
 export type AvailabilityGroupListenerPropertiesInputLoadBalancerConfigurationsList =
-  ReadonlyArray<LoadBalancerConfiguration>;
+  Array<LoadBalancerConfiguration>;
 export const AvailabilityGroupListenerPropertiesInputLoadBalancerConfigurationsList =
   /*@__PURE__*/ S.Array(
     LoadBalancerConfiguration,
@@ -90,7 +90,7 @@ export const MultiSubnetIpConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** List of multi subnet IP configurations for an AG listener. */
 export type AvailabilityGroupListenerPropertiesInputMultiSubnetIpConfigurationsList =
-  ReadonlyArray<MultiSubnetIpConfiguration>;
+  Array<MultiSubnetIpConfiguration>;
 export const AvailabilityGroupListenerPropertiesInputMultiSubnetIpConfigurationsList =
   /*@__PURE__*/ S.Array(
     MultiSubnetIpConfiguration,
@@ -117,13 +117,13 @@ export interface AgReplica {
   /** Sql VirtualMachine Instance Id. */
   sqlVirtualMachineInstanceId?: string;
   /** Replica Role in availability group. */
-  role?: Role;
+  role?: Role | (string & {});
   /** Replica commit mode in availability group. */
-  commit?: Commit;
+  commit?: Commit | (string & {});
   /** Replica failover mode in availability group. */
-  failover?: Failover;
+  failover?: Failover | (string & {});
   /** Replica readable secondary mode in availability group. */
-  readableSecondary?: ReadableSecondary;
+  readableSecondary?: ReadableSecondary | (string & {});
 }
 export const AgReplica = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -136,7 +136,7 @@ export const AgReplica = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AgReplica" }) as any as S.Schema<AgReplica>;
 
 /** Replica configurations. */
-export type AgConfigurationReplicasList = ReadonlyArray<AgReplica>;
+export type AgConfigurationReplicasList = Array<AgReplica>;
 export const AgConfigurationReplicasList = /*@__PURE__*/ S.Array(
   AgReplica,
 ) as any as S.Schema<AgConfigurationReplicasList>;
@@ -263,7 +263,7 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 
 /** List of load balancer configurations for an availability group listener. */
 export type AvailabilityGroupListenerPropertiesLoadBalancerConfigurationsList =
-  ReadonlyArray<LoadBalancerConfiguration>;
+  Array<LoadBalancerConfiguration>;
 export const AvailabilityGroupListenerPropertiesLoadBalancerConfigurationsList =
   /*@__PURE__*/ S.Array(
     LoadBalancerConfiguration,
@@ -271,7 +271,7 @@ export const AvailabilityGroupListenerPropertiesLoadBalancerConfigurationsList =
 
 /** List of multi subnet IP configurations for an AG listener. */
 export type AvailabilityGroupListenerPropertiesMultiSubnetIpConfigurationsList =
-  ReadonlyArray<MultiSubnetIpConfiguration>;
+  Array<MultiSubnetIpConfiguration>;
 export const AvailabilityGroupListenerPropertiesMultiSubnetIpConfigurationsList =
   /*@__PURE__*/ S.Array(
     MultiSubnetIpConfiguration,
@@ -483,7 +483,7 @@ export const AvailabilityGroupListener = /*@__PURE__*/ S.suspend(() =>
 
 /** The AvailabilityGroupListener items on this page */
 export type AvailabilityGroupListenerListResultValueList =
-  ReadonlyArray<AvailabilityGroupListener>;
+  Array<AvailabilityGroupListener>;
 export const AvailabilityGroupListenerListResultValueList =
   /*@__PURE__*/ S.Array(
     AvailabilityGroupListener,
@@ -573,7 +573,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** The Operation items on this page */
-export type OperationListResultValueList = ReadonlyArray<Operation>;
+export type OperationListResultValueList = Array<Operation>;
 export const OperationListResultValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationListResultValueList>;
@@ -633,7 +633,7 @@ export interface WsfcDomainProfile {
   /** Primary key of the witness storage account. */
   storageAccountPrimaryKey?: string;
   /** Cluster subnet type. */
-  clusterSubnetType?: ClusterSubnetType;
+  clusterSubnetType?: ClusterSubnetType | (string & {});
 }
 export const WsfcDomainProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -949,7 +949,7 @@ export const SqlVirtualMachineGroup = /*@__PURE__*/ S.suspend(() =>
 
 /** The SqlVirtualMachineGroup items on this page */
 export type SqlVirtualMachineGroupListResultValueList =
-  ReadonlyArray<SqlVirtualMachineGroup>;
+  Array<SqlVirtualMachineGroup>;
 export const SqlVirtualMachineGroupListResultValueList = /*@__PURE__*/ S.Array(
   SqlVirtualMachineGroup,
 ) as any as S.Schema<SqlVirtualMachineGroupListResultValueList>;
@@ -1153,13 +1153,13 @@ export interface AutoPatchingSettings {
   /** Enable or disable autopatching on SQL virtual machine. */
   enable?: boolean;
   /** Day of week to apply the patch on. */
-  dayOfWeek?: DayOfWeek;
+  dayOfWeek?: DayOfWeek | (string & {});
   /** Hour of the day when patching is initiated. Local VM time. */
   maintenanceWindowStartingHour?: number;
   /** Duration of patching. */
   maintenanceWindowDuration?: number;
   /** Additional Patch to be enable or enabled on the SQL Virtual Machine. */
-  additionalVmPatch?: AutoPatchingSettingsAdditionalVmPatch;
+  additionalVmPatch?: AutoPatchingSettingsAdditionalVmPatch | (string & {});
 }
 export const AutoPatchingSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1192,8 +1192,9 @@ export type AutoBackupDaysOfWeek =
 export const AutoBackupDaysOfWeek = /*@__PURE__*/ S.String;
 
 /** Days of the week for the backups when FullBackupFrequency is set to Weekly. */
-export type AutoBackupSettingsDaysOfWeekList =
-  ReadonlyArray<AutoBackupDaysOfWeek>;
+export type AutoBackupSettingsDaysOfWeekList = Array<
+  AutoBackupDaysOfWeek | (string & {})
+>;
 export const AutoBackupSettingsDaysOfWeekList = /*@__PURE__*/ S.Array(
   AutoBackupDaysOfWeek,
 ) as any as S.Schema<AutoBackupSettingsDaysOfWeekList>;
@@ -1217,9 +1218,9 @@ export interface AutoBackupSettings {
   /** Include or exclude system databases from auto backup. */
   backupSystemDbs?: boolean;
   /** Backup schedule type. */
-  backupScheduleType?: BackupScheduleType;
+  backupScheduleType?: BackupScheduleType | (string & {});
   /** Frequency of full backups. In both cases, full backups begin during the next scheduled time window. */
-  fullBackupFrequency?: FullBackupFrequencyType;
+  fullBackupFrequency?: FullBackupFrequencyType | (string & {});
   /** Days of the week for the backups when FullBackupFrequency is set to Weekly. */
   daysOfWeek?: AutoBackupSettingsDaysOfWeekList;
   /** Start time of a given day during which full backups can take place. 0-23 hours. */
@@ -1282,7 +1283,7 @@ export const ConnectivityType = /*@__PURE__*/ S.String;
 /** Set the access level and network port settings for SQL Server. */
 export interface SqlConnectivityUpdateSettings {
   /** SQL Server connectivity option. */
-  connectivityType?: ConnectivityType;
+  connectivityType?: ConnectivityType | (string & {});
   /** SQL Server port. */
   port?: number;
   /** SQL Server sysadmin login to create. */
@@ -1308,7 +1309,7 @@ export const SqlWorkloadType = /*@__PURE__*/ S.String;
 /** Set workload type to optimize storage for SQL Server. */
 export interface SqlWorkloadTypeUpdateSettings {
   /** SQL Server workload type. */
-  sqlWorkloadType?: SqlWorkloadType;
+  sqlWorkloadType?: SqlWorkloadType | (string & {});
 }
 export const SqlWorkloadTypeUpdateSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1329,7 +1330,7 @@ export interface SqlStorageUpdateSettings {
   /** Device id of the first disk to be updated. */
   startingDeviceId?: number;
   /** Disk configuration to apply to SQL Server. */
-  diskConfigurationType?: DiskConfigurationType;
+  diskConfigurationType?: DiskConfigurationType | (string & {});
 }
 export const SqlStorageUpdateSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1431,7 +1432,7 @@ export const ServerConfigurationsManagementSettings = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ServerConfigurationsManagementSettings>;
 
 /** Logical Unit Numbers for the disks. */
-export type SQLStorageSettingsLunsList = ReadonlyArray<number>;
+export type SQLStorageSettingsLunsList = Array<number>;
 export const SQLStorageSettingsLunsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<SQLStorageSettingsLunsList>;
@@ -1456,7 +1457,7 @@ export const SQLStorageSettings = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SQLStorageSettings>;
 
 /** Logical Unit Numbers for the disks. */
-export type SQLTempDbSettingsLunsList = ReadonlyArray<number>;
+export type SQLTempDbSettingsLunsList = Array<number>;
 export const SQLTempDbSettingsLunsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<SQLTempDbSettingsLunsList>;
@@ -1516,9 +1517,9 @@ export interface StorageConfigurationSettings {
   /** SQL Server SystemDb Storage on DataPool if true. */
   sqlSystemDbOnDataDisk?: boolean;
   /** Disk configuration to apply to SQL Server. */
-  diskConfigurationType?: DiskConfigurationType;
+  diskConfigurationType?: DiskConfigurationType | (string & {});
   /** Storage workload type. */
-  storageWorkloadType?: StorageWorkloadType;
+  storageWorkloadType?: StorageWorkloadType | (string & {});
   /** Enable SQL IaaS Agent storage configuration blade in Azure Portal. */
   enableStorageConfigBlade?: boolean;
 }
@@ -1556,7 +1557,7 @@ export interface Schedule {
   /** Occurrence of the DayOfWeek day within a month to schedule assessment. Takes values: 1,2,3,4 and -1. Use -1 for last DayOfWeek day of the month */
   monthlyOccurrence?: number;
   /** Day of the week to run assessment. */
-  dayOfWeek?: AssessmentDayOfWeek;
+  dayOfWeek?: AssessmentDayOfWeek | (string & {});
   /** Time of the day in HH:mm format. Eg. 17:30 */
   startTime?: string;
 }
@@ -1596,7 +1597,7 @@ export const VmIdentityType = /*@__PURE__*/ S.String;
 /** Virtual Machine Identity details used for Sql IaaS extension configurations. */
 export interface VirtualMachineIdentity {
   /** Identity type of the virtual machine. Specify None to opt-out of Managed Identities. */
-  type?: VmIdentityType;
+  type?: VmIdentityType | (string & {});
   /** ARM Resource Id of the identity. Only required when UserAssigned identity is selected. */
   resourceId?: string;
 }
@@ -2149,8 +2150,7 @@ export const SqlVirtualMachine = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SqlVirtualMachine>;
 
 /** The SqlVirtualMachine items on this page */
-export type SqlVirtualMachineListResultValueList =
-  ReadonlyArray<SqlVirtualMachine>;
+export type SqlVirtualMachineListResultValueList = Array<SqlVirtualMachine>;
 export const SqlVirtualMachineListResultValueList = /*@__PURE__*/ S.Array(
   SqlVirtualMachine,
 ) as any as S.Schema<SqlVirtualMachineListResultValueList>;

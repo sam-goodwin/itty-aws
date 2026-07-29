@@ -73,7 +73,9 @@ export const GoogleAdsSearchads360V23Common__CustomizerValueTypeEnum =
 /** A customizer value that is referenced in customizer linkage entities like CustomerCustomizer, CampaignCustomizer, etc. */
 export interface GoogleAdsSearchads360V23Common__CustomizerValue {
   /** Required. The data type for the customizer value. It must match the attribute type. The string_value content must match the constraints associated with the type. */
-  type?: GoogleAdsSearchads360V23Common__CustomizerValueTypeEnum;
+  type?:
+    | GoogleAdsSearchads360V23Common__CustomizerValueTypeEnum
+    | (string & {});
   /** Required. Value to insert in creative text. Customizer values of all types are stored as string to make formatting unambiguous. */
   stringValue?: string;
 }
@@ -104,7 +106,9 @@ export interface GoogleAdsSearchads360V23Resources__AdGroupCustomizer {
   /** Immutable. The resource name of the ad group customizer. Ad group customizer resource names have the form: `customers/{customer_id}/adGroupCustomizers/{ad_group_id}~{customizer_attribute_id}` */
   resourceName?: string;
   /** Output only. The status of the ad group customizer. */
-  status?: GoogleAdsSearchads360V23Resources__AdGroupCustomizerStatusEnum;
+  status?:
+    | GoogleAdsSearchads360V23Resources__AdGroupCustomizerStatusEnum
+    | (string & {});
   /** Required. Immutable. The customizer attribute which is linked to the ad group. */
   customizerAttribute?: string;
 }
@@ -173,9 +177,13 @@ export const GoogleAdsSearchads360V23Common__CrmBasedUserListInfoDataSourceTypeE
 /** UserList of CRM users provided by the advertiser. */
 export interface GoogleAdsSearchads360V23Common__CrmBasedUserListInfo {
   /** Matching key type of the list. Mixed data types are not allowed on the same list. This field is required for an ADD operation. */
-  uploadKeyType?: GoogleAdsSearchads360V23Common__CrmBasedUserListInfoUploadKeyTypeEnum;
+  uploadKeyType?:
+    | GoogleAdsSearchads360V23Common__CrmBasedUserListInfoUploadKeyTypeEnum
+    | (string & {});
   /** Data source of the list. Default value is FIRST_PARTY. Only customers on the allow-list can create third-party sourced CRM lists. */
-  dataSourceType?: GoogleAdsSearchads360V23Common__CrmBasedUserListInfoDataSourceTypeEnum;
+  dataSourceType?:
+    | GoogleAdsSearchads360V23Common__CrmBasedUserListInfoDataSourceTypeEnum
+    | (string & {});
   /** A string that uniquely identifies a mobile application from which the data was collected. For iOS, the ID string is the 9 digit string that appears at the end of an App Store URL (for example, "476943146" for "Flood-It! 2" whose App Store link is http://itunes.apple.com/us/app/flood-it!-2/id476943146). For Android, the ID string is the application's package name (for example, "com.labpixies.colordrips" for "Color Drips" given Google Play link https://play.google.com/store/apps/details?id=com.labpixies.colordrips). Required when creating CrmBasedUserList for uploading mobile advertising IDs. */
   appId?: string;
 }
@@ -229,7 +237,7 @@ export const GoogleAdsSearchads360V23Common__LogicalUserListOperandInfo =
   }) as any as S.Schema<GoogleAdsSearchads360V23Common__LogicalUserListOperandInfo>;
 
 export type GoogleAdsSearchads360V23Common__LogicalUserListOperandInfoList =
-  ReadonlyArray<GoogleAdsSearchads360V23Common__LogicalUserListOperandInfo>;
+  Array<GoogleAdsSearchads360V23Common__LogicalUserListOperandInfo>;
 export const GoogleAdsSearchads360V23Common__LogicalUserListOperandInfoList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Common__LogicalUserListOperandInfo,
@@ -245,7 +253,9 @@ export interface GoogleAdsSearchads360V23Common__UserListLogicalRuleInfo {
   /** The list of operands of the rule. */
   ruleOperands?: GoogleAdsSearchads360V23Common__LogicalUserListOperandInfoList;
   /** The logical operator of the rule. */
-  operator?: GoogleAdsSearchads360V23Common__UserListLogicalRuleInfoOperatorEnum;
+  operator?:
+    | GoogleAdsSearchads360V23Common__UserListLogicalRuleInfoOperatorEnum
+    | (string & {});
 }
 export const GoogleAdsSearchads360V23Common__UserListLogicalRuleInfo =
   /*@__PURE__*/ S.suspend(() =>
@@ -262,7 +272,7 @@ export const GoogleAdsSearchads360V23Common__UserListLogicalRuleInfo =
   }) as any as S.Schema<GoogleAdsSearchads360V23Common__UserListLogicalRuleInfo>;
 
 export type GoogleAdsSearchads360V23Common__UserListLogicalRuleInfoList =
-  ReadonlyArray<GoogleAdsSearchads360V23Common__UserListLogicalRuleInfo>;
+  Array<GoogleAdsSearchads360V23Common__UserListLogicalRuleInfo>;
 export const GoogleAdsSearchads360V23Common__UserListLogicalRuleInfoList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Common__UserListLogicalRuleInfo,
@@ -302,7 +312,7 @@ export const GoogleAdsSearchads360V23Common__UserListActionInfo =
   }) as any as S.Schema<GoogleAdsSearchads360V23Common__UserListActionInfo>;
 
 export type GoogleAdsSearchads360V23Common__UserListActionInfoList =
-  ReadonlyArray<GoogleAdsSearchads360V23Common__UserListActionInfo>;
+  Array<GoogleAdsSearchads360V23Common__UserListActionInfo>;
 export const GoogleAdsSearchads360V23Common__UserListActionInfoList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Common__UserListActionInfo,
@@ -363,7 +373,7 @@ export type GoogleAdsSearchads360V23Common__LookalikeUserListInfoExpansionLevelE
 export const GoogleAdsSearchads360V23Common__LookalikeUserListInfoExpansionLevelEnum =
   /*@__PURE__*/ S.String;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -371,7 +381,9 @@ export const StringList = /*@__PURE__*/ S.Array(
 /** LookalikeUserlist, composed of users similar to those of a configurable seed (set of UserLists) */
 export interface GoogleAdsSearchads360V23Common__LookalikeUserListInfo {
   /** Expansion level, reflecting the size of the lookalike audience */
-  expansionLevel?: GoogleAdsSearchads360V23Common__LookalikeUserListInfoExpansionLevelEnum;
+  expansionLevel?:
+    | GoogleAdsSearchads360V23Common__LookalikeUserListInfoExpansionLevelEnum
+    | (string & {});
   /** Countries targeted by the Lookalike. Two-letter country code as defined by ISO-3166 */
   countryCodes?: StringList;
   /** Seed UserList ID from which this list is derived, provided by user. */
@@ -439,7 +451,9 @@ export interface GoogleAdsSearchads360V23Common__UserListStringRuleItemInfo {
   /** The right hand side of the string rule item. For URLs or referrer URLs, the value can not contain illegal URL chars such as newlines, quotes, tabs, or parentheses. This field is required and must be populated when creating a new string rule item. */
   value?: string;
   /** String comparison operator. This field is required and must be populated when creating a new string rule item. */
-  operator?: GoogleAdsSearchads360V23Common__UserListStringRuleItemInfoOperatorEnum;
+  operator?:
+    | GoogleAdsSearchads360V23Common__UserListStringRuleItemInfoOperatorEnum
+    | (string & {});
 }
 export const GoogleAdsSearchads360V23Common__UserListStringRuleItemInfo =
   /*@__PURE__*/ S.suspend(() =>
@@ -463,7 +477,9 @@ export interface GoogleAdsSearchads360V23Common__UserListDateRuleItemInfo {
   /** String representing date value to be compared with the rule variable. Supported date format is YYYY-MM-DD. Times are reported in the customer's time zone. */
   value?: string;
   /** Date comparison operator. This field is required and must be populated when creating new date rule item. */
-  operator?: GoogleAdsSearchads360V23Common__UserListDateRuleItemInfoOperatorEnum;
+  operator?:
+    | GoogleAdsSearchads360V23Common__UserListDateRuleItemInfoOperatorEnum
+    | (string & {});
   /** The relative date value of the right hand side denoted by number of days offset from now. The value field will override this field when both are present. */
   offsetInDays?: string;
 }
@@ -495,7 +511,9 @@ export const GoogleAdsSearchads360V23Common__UserListNumberRuleItemInfoOperatorE
 /** A rule item composed of a number operation. */
 export interface GoogleAdsSearchads360V23Common__UserListNumberRuleItemInfo {
   /** Number comparison operator. This field is required and must be populated when creating a new number rule item. */
-  operator?: GoogleAdsSearchads360V23Common__UserListNumberRuleItemInfoOperatorEnum;
+  operator?:
+    | GoogleAdsSearchads360V23Common__UserListNumberRuleItemInfoOperatorEnum
+    | (string & {});
   /** Number value to be compared with the variable. This field is required and must be populated when creating a new number rule item. */
   value?: number;
 }
@@ -541,7 +559,7 @@ export const GoogleAdsSearchads360V23Common__UserListRuleItemInfo =
   }) as any as S.Schema<GoogleAdsSearchads360V23Common__UserListRuleItemInfo>;
 
 export type GoogleAdsSearchads360V23Common__UserListRuleItemInfoList =
-  ReadonlyArray<GoogleAdsSearchads360V23Common__UserListRuleItemInfo>;
+  Array<GoogleAdsSearchads360V23Common__UserListRuleItemInfo>;
 export const GoogleAdsSearchads360V23Common__UserListRuleItemInfoList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Common__UserListRuleItemInfo,
@@ -564,7 +582,7 @@ export const GoogleAdsSearchads360V23Common__UserListRuleItemGroupInfo =
   }) as any as S.Schema<GoogleAdsSearchads360V23Common__UserListRuleItemGroupInfo>;
 
 export type GoogleAdsSearchads360V23Common__UserListRuleItemGroupInfoList =
-  ReadonlyArray<GoogleAdsSearchads360V23Common__UserListRuleItemGroupInfo>;
+  Array<GoogleAdsSearchads360V23Common__UserListRuleItemGroupInfo>;
 export const GoogleAdsSearchads360V23Common__UserListRuleItemGroupInfoList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Common__UserListRuleItemGroupInfo,
@@ -573,7 +591,9 @@ export const GoogleAdsSearchads360V23Common__UserListRuleItemGroupInfoList =
 /** A client defined rule based on custom parameters sent by web sites or uploaded by the advertiser. */
 export interface GoogleAdsSearchads360V23Common__UserListRuleInfo {
   /** Rule type is used to determine how to group rule items. The default is OR of ANDs (disjunctive normal form). That is, rule items will be ANDed together within rule item groups and the groups themselves will be ORed together. OR of ANDs is the only supported type for FlexibleRuleUserList. */
-  ruleType?: GoogleAdsSearchads360V23Common__UserListRuleInfoRuleTypeEnum;
+  ruleType?:
+    | GoogleAdsSearchads360V23Common__UserListRuleInfoRuleTypeEnum
+    | (string & {});
   /** List of rule item groups that defines this rule. Rule item groups are grouped together based on rule_type. */
   ruleItemGroups?: GoogleAdsSearchads360V23Common__UserListRuleItemGroupInfoList;
 }
@@ -609,7 +629,7 @@ export const GoogleAdsSearchads360V23Common__FlexibleRuleOperandInfo =
   }) as any as S.Schema<GoogleAdsSearchads360V23Common__FlexibleRuleOperandInfo>;
 
 export type GoogleAdsSearchads360V23Common__FlexibleRuleOperandInfoList =
-  ReadonlyArray<GoogleAdsSearchads360V23Common__FlexibleRuleOperandInfo>;
+  Array<GoogleAdsSearchads360V23Common__FlexibleRuleOperandInfo>;
 export const GoogleAdsSearchads360V23Common__FlexibleRuleOperandInfoList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Common__FlexibleRuleOperandInfo,
@@ -625,7 +645,9 @@ export interface GoogleAdsSearchads360V23Common__FlexibleRuleUserListInfo {
   /** Rules representing users that should be excluded from the user list. These are located on the right side of the AND_NOT operator, and joined together by OR. */
   exclusiveOperands?: GoogleAdsSearchads360V23Common__FlexibleRuleOperandInfoList;
   /** Operator that defines how the inclusive operands are combined. */
-  inclusiveRuleOperator?: GoogleAdsSearchads360V23Common__FlexibleRuleUserListInfoInclusiveRuleOperatorEnum;
+  inclusiveRuleOperator?:
+    | GoogleAdsSearchads360V23Common__FlexibleRuleUserListInfoInclusiveRuleOperatorEnum
+    | (string & {});
   /** Rules representing users that should be included in the user list. These are located on the left side of the AND_NOT operator, and joined together by either AND/OR as specified by the inclusive_rule_operator. */
   inclusiveOperands?: GoogleAdsSearchads360V23Common__FlexibleRuleOperandInfoList;
 }
@@ -656,7 +678,9 @@ export interface GoogleAdsSearchads360V23Common__RuleBasedUserListInfo {
   /** Flexible rule representation of visitors with one or multiple actions. The flexible user list is defined by two lists of operands – inclusive_operands and exclusive_operands; each operand represents a set of users based on actions they took in a given timeframe. These lists of operands are combined with the AND_NOT operator, so that users represented by the inclusive operands are included in the user list, minus the users represented by the exclusive operands. */
   flexibleRuleUserList?: GoogleAdsSearchads360V23Common__FlexibleRuleUserListInfo;
   /** The status of pre-population. The field is default to NONE if not set which means the previous users will not be considered. If set to REQUESTED, past site visitors or app users who match the list definition will be included in the list (works on the Display Network only). This will only add past users from within the last 30 days, depending on the list's membership duration and the date when the remarketing tag is added. The status will be updated to FINISHED once request is processed, or FAILED if the request fails. */
-  prepopulationStatus?: GoogleAdsSearchads360V23Common__RuleBasedUserListInfoPrepopulationStatusEnum;
+  prepopulationStatus?:
+    | GoogleAdsSearchads360V23Common__RuleBasedUserListInfoPrepopulationStatusEnum
+    | (string & {});
 }
 export const GoogleAdsSearchads360V23Common__RuleBasedUserListInfo =
   /*@__PURE__*/ S.suspend(() =>
@@ -693,19 +717,27 @@ export interface GoogleAdsSearchads360V23Resources__UserList {
   /** Output only. Estimated number of users in this user list in the google.com domain. These are the users available for targeting in Search campaigns. This value is null if the number of users has not yet been determined. This field is read-only. */
   sizeForSearch?: string;
   /** Output only. Indicates the reason this account has been granted access to the list. The reason can be SHARED, OWNED, LICENSED or SUBSCRIBED. This field is read-only. */
-  accessReason?: GoogleAdsSearchads360V23Resources__UserListAccessReasonEnum;
+  accessReason?:
+    | GoogleAdsSearchads360V23Resources__UserListAccessReasonEnum
+    | (string & {});
   /** Number of days a user's cookie stays on your list since its most recent addition to the list. This field must be between 0 and 540 inclusive. However, for CRM based userlists, this field can be set to 10000 which means no expiration. Beginning on April 7, 2025, using a value of 10000 to indicate no expiration will no longer be supported. This field is ignored for logical_user_list and rule_based_user_list types. Membership to lists of these types depends on the rules defined by the lists. */
   membershipLifeSpan?: string;
   /** User list of CRM users provided by the advertiser. */
   crmBasedUserList?: GoogleAdsSearchads360V23Common__CrmBasedUserListInfo;
   /** Indicating the reason why this user list membership status is closed. It is only populated on lists that were automatically closed due to inactivity, and will be cleared once the list membership status becomes open. */
-  closingReason?: GoogleAdsSearchads360V23Resources__UserListClosingReasonEnum;
+  closingReason?:
+    | GoogleAdsSearchads360V23Resources__UserListClosingReasonEnum
+    | (string & {});
   /** Description of this user list. */
   description?: string;
   /** Membership status of this user list. Indicates whether a user list is open or active. Only open user lists can accumulate more users and can be targeted to. */
-  membershipStatus?: GoogleAdsSearchads360V23Resources__UserListMembershipStatusEnum;
+  membershipStatus?:
+    | GoogleAdsSearchads360V23Resources__UserListMembershipStatusEnum
+    | (string & {});
   /** Indicates if this share is still enabled. When a UserList is shared with the user this field is set to ENABLED. Later the userList owner can decide to revoke the share and make it DISABLED. The default value of this field is set to ENABLED. */
-  accountUserListStatus?: GoogleAdsSearchads360V23Resources__UserListAccountUserListStatusEnum;
+  accountUserListStatus?:
+    | GoogleAdsSearchads360V23Resources__UserListAccountUserListStatusEnum
+    | (string & {});
   /** User list that is a custom combination of user lists. */
   logicalUserList?: GoogleAdsSearchads360V23Common__LogicalUserListInfo;
   /** User list targeting as a collection of conversion or remarketing actions. */
@@ -717,15 +749,19 @@ export interface GoogleAdsSearchads360V23Resources__UserList {
   /** An ID from external system. It is used by user list sellers to correlate IDs on their systems. */
   integrationCode?: string;
   /** Output only. Size range in terms of number of users of the UserList, for Search ads. This field is read-only. */
-  sizeRangeForSearch?: GoogleAdsSearchads360V23Resources__UserListSizeRangeForSearchEnum;
+  sizeRangeForSearch?:
+    | GoogleAdsSearchads360V23Resources__UserListSizeRangeForSearchEnum
+    | (string & {});
   /** Output only. Estimated number of users in this user list, on the Google Display Network. This value is if the number of users has not yet been determined. This field is -only. */
   sizeForDisplay?: string;
   /** Output only. Type of this list. This field is read-only. */
-  type?: GoogleAdsSearchads360V23Resources__UserListTypeEnum;
+  type?: GoogleAdsSearchads360V23Resources__UserListTypeEnum | (string & {});
   /** Immutable. Lookalike User List. */
   lookalikeUserList?: GoogleAdsSearchads360V23Common__LookalikeUserListInfo;
   /** Output only. Size range in terms of number of users of the UserList, on the Google Display Network. This field is read-only. */
-  sizeRangeForDisplay?: GoogleAdsSearchads360V23Resources__UserListSizeRangeForDisplayEnum;
+  sizeRangeForDisplay?:
+    | GoogleAdsSearchads360V23Resources__UserListSizeRangeForDisplayEnum
+    | (string & {});
   /** Output only. Id of the user list. */
   id?: string;
   /** Name of this user list. Unique per user list, except in some cases where a user list of the same name has `access_reason` set to `SHARED`. */
@@ -862,11 +898,15 @@ export const GoogleAdsSearchads360V23Resources__CampaignConversionGoalOriginEnum
 /** The biddability setting for the specified campaign only for all conversion actions with a matching category and origin. */
 export interface GoogleAdsSearchads360V23Resources__CampaignConversionGoal {
   /** The conversion category of this campaign conversion goal. */
-  category?: GoogleAdsSearchads360V23Resources__CampaignConversionGoalCategoryEnum;
+  category?:
+    | GoogleAdsSearchads360V23Resources__CampaignConversionGoalCategoryEnum
+    | (string & {});
   /** Search Ads 360 biddability of the campaign conversion goal. */
   searchAds360Biddable?: boolean;
   /** The conversion origin of this campaign conversion goal. */
-  origin?: GoogleAdsSearchads360V23Resources__CampaignConversionGoalOriginEnum;
+  origin?:
+    | GoogleAdsSearchads360V23Resources__CampaignConversionGoalOriginEnum
+    | (string & {});
   /** The biddability of the campaign conversion goal. */
   biddable?: boolean;
   /** Immutable. The resource name of the campaign conversion goal. Campaign conversion goal resource names have the form: `customers/{customer_id}/campaignConversionGoals/{campaign_id}~{category}~{origin}` */
@@ -937,7 +977,9 @@ export const GoogleAdsSearchads360V23Common__IncomeRangeInfoTypeEnum =
 /** An income range criterion. */
 export interface GoogleAdsSearchads360V23Common__IncomeRangeInfo {
   /** Type of the income range. */
-  type?: GoogleAdsSearchads360V23Common__IncomeRangeInfoTypeEnum;
+  type?:
+    | GoogleAdsSearchads360V23Common__IncomeRangeInfoTypeEnum
+    | (string & {});
 }
 export const GoogleAdsSearchads360V23Common__IncomeRangeInfo =
   /*@__PURE__*/ S.suspend(() =>
@@ -974,7 +1016,9 @@ export const GoogleAdsSearchads360V23Common__KeywordInfoMatchTypeEnum =
 /** A keyword criterion. */
 export interface GoogleAdsSearchads360V23Common__KeywordInfo {
   /** The match type of the keyword. */
-  matchType?: GoogleAdsSearchads360V23Common__KeywordInfoMatchTypeEnum;
+  matchType?:
+    | GoogleAdsSearchads360V23Common__KeywordInfoMatchTypeEnum
+    | (string & {});
   /** The text of the keyword (at most 80 characters and 10 words). */
   text?: string;
 }
@@ -1091,7 +1135,9 @@ export const GoogleAdsSearchads360V23Common__ProductTypeInfoLevelEnum =
 /** Type of a product offer. */
 export interface GoogleAdsSearchads360V23Common__ProductTypeInfo {
   /** Level of the type. */
-  level?: GoogleAdsSearchads360V23Common__ProductTypeInfoLevelEnum;
+  level?:
+    | GoogleAdsSearchads360V23Common__ProductTypeInfoLevelEnum
+    | (string & {});
   /** Value of the type. */
   value?: string;
 }
@@ -1165,7 +1211,9 @@ export interface GoogleAdsSearchads360V23Common__ProductCategoryInfo {
   /** ID of the product category. This ID is equivalent to the google_product_category ID as described in this article: https://support.google.com/merchants/answer/6324436 */
   categoryId?: string;
   /** Level of the product category. */
-  level?: GoogleAdsSearchads360V23Common__ProductCategoryInfoLevelEnum;
+  level?:
+    | GoogleAdsSearchads360V23Common__ProductCategoryInfoLevelEnum
+    | (string & {});
 }
 export const GoogleAdsSearchads360V23Common__ProductCategoryInfo =
   /*@__PURE__*/ S.suspend(() =>
@@ -1215,7 +1263,9 @@ export const GoogleAdsSearchads360V23Common__ProductChannelExclusivityInfoChanne
 /** Availability of a product offer. */
 export interface GoogleAdsSearchads360V23Common__ProductChannelExclusivityInfo {
   /** Value of the availability. */
-  channelExclusivity?: GoogleAdsSearchads360V23Common__ProductChannelExclusivityInfoChannelExclusivityEnum;
+  channelExclusivity?:
+    | GoogleAdsSearchads360V23Common__ProductChannelExclusivityInfoChannelExclusivityEnum
+    | (string & {});
 }
 export const GoogleAdsSearchads360V23Common__ProductChannelExclusivityInfo =
   /*@__PURE__*/ S.suspend(() =>
@@ -1324,7 +1374,9 @@ export const GoogleAdsSearchads360V23Common__ProductConditionInfoConditionEnum =
 /** Condition of a product offer. */
 export interface GoogleAdsSearchads360V23Common__ProductConditionInfo {
   /** Value of the condition. */
-  condition?: GoogleAdsSearchads360V23Common__ProductConditionInfoConditionEnum;
+  condition?:
+    | GoogleAdsSearchads360V23Common__ProductConditionInfoConditionEnum
+    | (string & {});
 }
 export const GoogleAdsSearchads360V23Common__ProductConditionInfo =
   /*@__PURE__*/ S.suspend(() =>
@@ -1376,7 +1428,9 @@ export const GoogleAdsSearchads360V23Common__ProductChannelInfoChannelEnum =
 /** Locality of a product offer. */
 export interface GoogleAdsSearchads360V23Common__ProductChannelInfo {
   /** Value of the locality. */
-  channel?: GoogleAdsSearchads360V23Common__ProductChannelInfoChannelEnum;
+  channel?:
+    | GoogleAdsSearchads360V23Common__ProductChannelInfoChannelEnum
+    | (string & {});
 }
 export const GoogleAdsSearchads360V23Common__ProductChannelInfo =
   /*@__PURE__*/ S.suspend(() =>
@@ -1426,7 +1480,9 @@ export interface GoogleAdsSearchads360V23Common__ProductCustomAttributeInfo {
   /** String value of the product custom attribute. */
   value?: string;
   /** Indicates the index of the custom attribute. */
-  index?: GoogleAdsSearchads360V23Common__ProductCustomAttributeInfoIndexEnum;
+  index?:
+    | GoogleAdsSearchads360V23Common__ProductCustomAttributeInfoIndexEnum
+    | (string & {});
 }
 export const GoogleAdsSearchads360V23Common__ProductCustomAttributeInfo =
   /*@__PURE__*/ S.suspend(() =>
@@ -1555,7 +1611,7 @@ export const GoogleAdsSearchads360V23Common__ListingDimensionInfo =
   }) as any as S.Schema<GoogleAdsSearchads360V23Common__ListingDimensionInfo>;
 
 export type GoogleAdsSearchads360V23Common__ListingDimensionInfoList =
-  ReadonlyArray<GoogleAdsSearchads360V23Common__ListingDimensionInfo>;
+  Array<GoogleAdsSearchads360V23Common__ListingDimensionInfo>;
 export const GoogleAdsSearchads360V23Common__ListingDimensionInfoList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Common__ListingDimensionInfo,
@@ -1735,7 +1791,9 @@ export const GoogleAdsSearchads360V23Common__ContentLabelInfoTypeEnum =
 /** Content Label for category exclusion. */
 export interface GoogleAdsSearchads360V23Common__ContentLabelInfo {
   /** Content label type, required for CREATE operations. */
-  type?: GoogleAdsSearchads360V23Common__ContentLabelInfoTypeEnum;
+  type?:
+    | GoogleAdsSearchads360V23Common__ContentLabelInfoTypeEnum
+    | (string & {});
 }
 export const GoogleAdsSearchads360V23Common__ContentLabelInfo =
   /*@__PURE__*/ S.suspend(() =>
@@ -1816,7 +1874,9 @@ export const GoogleAdsSearchads360V23Common__ParentalStatusInfoTypeEnum =
 /** A parental status criterion. */
 export interface GoogleAdsSearchads360V23Common__ParentalStatusInfo {
   /** Type of the parental status. */
-  type?: GoogleAdsSearchads360V23Common__ParentalStatusInfoTypeEnum;
+  type?:
+    | GoogleAdsSearchads360V23Common__ParentalStatusInfoTypeEnum
+    | (string & {});
 }
 export const GoogleAdsSearchads360V23Common__ParentalStatusInfo =
   /*@__PURE__*/ S.suspend(() =>
@@ -1857,7 +1917,7 @@ export const GoogleAdsSearchads360V23Common__DeviceInfoTypeEnum =
 /** A device criterion. */
 export interface GoogleAdsSearchads360V23Common__DeviceInfo {
   /** Type of the device. */
-  type?: GoogleAdsSearchads360V23Common__DeviceInfoTypeEnum;
+  type?: GoogleAdsSearchads360V23Common__DeviceInfoTypeEnum | (string & {});
 }
 export const GoogleAdsSearchads360V23Common__DeviceInfo =
   /*@__PURE__*/ S.suspend(() =>
@@ -1890,9 +1950,13 @@ export const GoogleAdsSearchads360V23Common__WebpageConditionInfoOperandEnum =
 /** Logical expression for targeting webpages of an advertiser's website. */
 export interface GoogleAdsSearchads360V23Common__WebpageConditionInfo {
   /** Operator of webpage targeting condition. */
-  operator?: GoogleAdsSearchads360V23Common__WebpageConditionInfoOperatorEnum;
+  operator?:
+    | GoogleAdsSearchads360V23Common__WebpageConditionInfoOperatorEnum
+    | (string & {});
   /** Operand of webpage targeting condition. */
-  operand?: GoogleAdsSearchads360V23Common__WebpageConditionInfoOperandEnum;
+  operand?:
+    | GoogleAdsSearchads360V23Common__WebpageConditionInfoOperandEnum
+    | (string & {});
   /** Argument of webpage targeting condition. */
   argument?: string;
 }
@@ -1912,7 +1976,7 @@ export const GoogleAdsSearchads360V23Common__WebpageConditionInfo =
   }) as any as S.Schema<GoogleAdsSearchads360V23Common__WebpageConditionInfo>;
 
 export type GoogleAdsSearchads360V23Common__WebpageConditionInfoList =
-  ReadonlyArray<GoogleAdsSearchads360V23Common__WebpageConditionInfo>;
+  Array<GoogleAdsSearchads360V23Common__WebpageConditionInfo>;
 export const GoogleAdsSearchads360V23Common__WebpageConditionInfoList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Common__WebpageConditionInfo,
@@ -2017,7 +2081,9 @@ export const GoogleAdsSearchads360V23Common__GeoPointInfo =
 /** A Proximity criterion. The geo point and radius determine what geographical area is included. The address is a description of the geo point that does not affect ad serving. There are two ways to create a proximity. First, by setting an address and radius. The geo point will be automatically computed. Second, by setting a geo point and radius. The address is an optional label that won't be validated. */
 export interface GoogleAdsSearchads360V23Common__ProximityInfo {
   /** The unit of measurement of the radius. Default is KILOMETERS. */
-  radiusUnits?: GoogleAdsSearchads360V23Common__ProximityInfoRadiusUnitsEnum;
+  radiusUnits?:
+    | GoogleAdsSearchads360V23Common__ProximityInfoRadiusUnitsEnum
+    | (string & {});
   /** Full address. */
   address?: GoogleAdsSearchads360V23Common__AddressInfo;
   /** Latitude and longitude. */
@@ -2110,7 +2176,9 @@ export const GoogleAdsSearchads360V23Common__LocationGroupInfoRadiusUnitsEnum =
 /** A radius around a list of locations specified through a feed. */
 export interface GoogleAdsSearchads360V23Common__LocationGroupInfo {
   /** Unit of the radius. Miles and meters are supported for geo target constants. Milli miles and meters are supported for feed item sets. This is required and must be set in CREATE operations. */
-  radiusUnits?: GoogleAdsSearchads360V23Common__LocationGroupInfoRadiusUnitsEnum;
+  radiusUnits?:
+    | GoogleAdsSearchads360V23Common__LocationGroupInfoRadiusUnitsEnum
+    | (string & {});
   /** Geo target constant(s) restricting the scope of the geographic area within the feed. Currently only one geo target constant is allowed. */
   geoTargetConstants?: StringList;
   /** Denotes that the latest customer level asset set is used for targeting. Used with radius and radius_units. Cannot be used with feed, geo target constants or feed item sets. When using asset sets, either this field or location_group_asset_sets should be specified. Both cannot be used at the same time. This can only be set in CREATE operations. */
@@ -2168,7 +2236,7 @@ export const GoogleAdsSearchads360V23Common__AgeRangeInfoTypeEnum =
 /** An age range criterion. */
 export interface GoogleAdsSearchads360V23Common__AgeRangeInfo {
   /** Type of the age range. */
-  type?: GoogleAdsSearchads360V23Common__AgeRangeInfoTypeEnum;
+  type?: GoogleAdsSearchads360V23Common__AgeRangeInfoTypeEnum | (string & {});
 }
 export const GoogleAdsSearchads360V23Common__AgeRangeInfo =
   /*@__PURE__*/ S.suspend(() =>
@@ -2229,11 +2297,17 @@ export const GoogleAdsSearchads360V23Common__AdScheduleInfoEndMinuteEnum =
 /** Represents an AdSchedule criterion. AdSchedule is specified as the day of the week and a time interval within which ads will be shown. No more than six AdSchedules can be added for the same day. */
 export interface GoogleAdsSearchads360V23Common__AdScheduleInfo {
   /** Day of the week the schedule applies to. This field is required for CREATE operations and is prohibited on UPDATE operations. */
-  dayOfWeek?: GoogleAdsSearchads360V23Common__AdScheduleInfoDayOfWeekEnum;
+  dayOfWeek?:
+    | GoogleAdsSearchads360V23Common__AdScheduleInfoDayOfWeekEnum
+    | (string & {});
   /** Minutes after the start hour at which this schedule starts. This field is required for CREATE operations and is prohibited on UPDATE operations. */
-  startMinute?: GoogleAdsSearchads360V23Common__AdScheduleInfoStartMinuteEnum;
+  startMinute?:
+    | GoogleAdsSearchads360V23Common__AdScheduleInfoStartMinuteEnum
+    | (string & {});
   /** Minutes after the end hour at which this schedule ends. The schedule is exclusive of the end minute. This field is required for CREATE operations and is prohibited on UPDATE operations. */
-  endMinute?: GoogleAdsSearchads360V23Common__AdScheduleInfoEndMinuteEnum;
+  endMinute?:
+    | GoogleAdsSearchads360V23Common__AdScheduleInfoEndMinuteEnum
+    | (string & {});
   /** Starting hour in 24 hour time. This field must be between 0 and 23, inclusive. This field is required for CREATE operations and is prohibited on UPDATE operations. */
   startHour?: number;
   /** Ending hour in 24 hour time; 24 signifies end of the day. This field must be between 0 and 24, inclusive. This field is required for CREATE operations and is prohibited on UPDATE operations. */
@@ -2270,7 +2344,7 @@ export const GoogleAdsSearchads360V23Common__GenderInfoTypeEnum =
 /** A gender criterion. */
 export interface GoogleAdsSearchads360V23Common__GenderInfo {
   /** Type of the gender. */
-  type?: GoogleAdsSearchads360V23Common__GenderInfoTypeEnum;
+  type?: GoogleAdsSearchads360V23Common__GenderInfoTypeEnum | (string & {});
 }
 export const GoogleAdsSearchads360V23Common__GenderInfo =
   /*@__PURE__*/ S.suspend(() =>
@@ -2300,7 +2374,9 @@ export interface GoogleAdsSearchads360V23Resources__CampaignCriterion {
   /** Output only. The ID of the criterion. This field is ignored during mutate. */
   criterionId?: string;
   /** The status of the criterion. */
-  status?: GoogleAdsSearchads360V23Resources__CampaignCriterionStatusEnum;
+  status?:
+    | GoogleAdsSearchads360V23Resources__CampaignCriterionStatusEnum
+    | (string & {});
   /** Immutable. Income range. */
   incomeRange?: GoogleAdsSearchads360V23Common__IncomeRangeInfo;
   /** Immutable. YouTube Video. */
@@ -2322,7 +2398,9 @@ export interface GoogleAdsSearchads360V23Resources__CampaignCriterion {
   /** Output only. The display name of the criterion. This field is ignored for mutates. */
   displayName?: string;
   /** Output only. The type of the criterion. */
-  type?: GoogleAdsSearchads360V23Resources__CampaignCriterionTypeEnum;
+  type?:
+    | GoogleAdsSearchads360V23Resources__CampaignCriterionTypeEnum
+    | (string & {});
   /** Immutable. IpBlock. You can exclude up to 500 IP addresses per campaign. */
   ipBlock?: GoogleAdsSearchads360V23Common__IpBlockInfo;
   /** Immutable. Brand list campaign criterion. */
@@ -2524,7 +2602,7 @@ export interface GoogleAdsSearchads360V23Resources__Label {
   /** A type of label displaying text on a colored background. */
   textLabel?: GoogleAdsSearchads360V23Common__TextLabel;
   /** Output only. Status of the label. Read only. */
-  status?: GoogleAdsSearchads360V23Resources__LabelStatusEnum;
+  status?: GoogleAdsSearchads360V23Resources__LabelStatusEnum | (string & {});
   /** Output only. ID of the label. Read only. */
   id?: string;
   /** Immutable. Name of the resource. Label resource names have the form: `customers/{owner_customer_id}/labels/{label_id}` */
@@ -2583,7 +2661,9 @@ export interface GoogleAdsSearchads360V23Resources__CustomConversionGoal {
   /** Immutable. The ID for this custom conversion goal. */
   id?: string;
   /** The status of the custom conversion goal. */
-  status?: GoogleAdsSearchads360V23Resources__CustomConversionGoalStatusEnum;
+  status?:
+    | GoogleAdsSearchads360V23Resources__CustomConversionGoalStatusEnum
+    | (string & {});
   /** Immutable. The resource name of the custom conversion goal. Custom conversion goal resource names have the form: `customers/{customer_id}/customConversionGoals/{goal_id}` */
   resourceName?: string;
 }
@@ -2805,7 +2885,9 @@ export interface GoogleAdsSearchads360V23Resources__CustomerNegativeCriterion {
   /** Immutable. ContentLabel. */
   contentLabel?: GoogleAdsSearchads360V23Common__ContentLabelInfo;
   /** Output only. The type of the criterion. */
-  type?: GoogleAdsSearchads360V23Resources__CustomerNegativeCriterionTypeEnum;
+  type?:
+    | GoogleAdsSearchads360V23Resources__CustomerNegativeCriterionTypeEnum
+    | (string & {});
   /** Immutable. MobileApplication. */
   mobileApplication?: GoogleAdsSearchads360V23Common__MobileApplicationInfo;
   /** Immutable. YouTube Channel. */
@@ -2927,7 +3009,9 @@ export interface GoogleAdsSearchads360V23Resources__CustomerCustomizer {
   /** Required. Immutable. The customizer attribute which is linked to the customer. */
   customizerAttribute?: string;
   /** Output only. The status of the customer customizer attribute. */
-  status?: GoogleAdsSearchads360V23Resources__CustomerCustomizerStatusEnum;
+  status?:
+    | GoogleAdsSearchads360V23Resources__CustomerCustomizerStatusEnum
+    | (string & {});
   /** Required. The value to associate with the customizer attribute at this level. The value must be of the type specified for the CustomizerAttribute. */
   value?: GoogleAdsSearchads360V23Common__CustomizerValue;
 }
@@ -2976,7 +3060,10 @@ export const GoogleAdsSearchads360V23Resources__CustomerPayPerConversionEligibil
   /*@__PURE__*/ S.String;
 
 export type GoogleAdsSearchads360V23Resources__CustomerPayPerConversionEligibilityFailureReasonsItemEnumList =
-  ReadonlyArray<GoogleAdsSearchads360V23Resources__CustomerPayPerConversionEligibilityFailureReasonsItemEnum>;
+  Array<
+    | GoogleAdsSearchads360V23Resources__CustomerPayPerConversionEligibilityFailureReasonsItemEnum
+    | (string & {})
+  >;
 export const GoogleAdsSearchads360V23Resources__CustomerPayPerConversionEligibilityFailureReasonsItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Resources__CustomerPayPerConversionEligibilityFailureReasonsItemEnum,
@@ -3073,7 +3160,9 @@ export interface GoogleAdsSearchads360V23Resources__ConversionTrackingSetting {
   /** Output only. Whether the customer has accepted customer data terms. If using cross-account conversion tracking, this value is inherited from the manager. This field is read-only. For more information, see https://support.google.com/adspolicy/answer/7475709. */
   acceptedCustomerDataTerms?: boolean;
   /** Output only. Conversion tracking status. It indicates whether the customer is using conversion tracking, and who is the conversion tracking owner of this customer. If this customer is using cross-account conversion tracking, the value returned will differ based on the `login-customer-id` of the request. */
-  conversionTrackingStatus?: GoogleAdsSearchads360V23Resources__ConversionTrackingSettingConversionTrackingStatusEnum;
+  conversionTrackingStatus?:
+    | GoogleAdsSearchads360V23Resources__ConversionTrackingSettingConversionTrackingStatusEnum
+    | (string & {});
   /** Output only. The conversion tracking id of the customer's manager. This is set when the customer is opted into cross-account conversion tracking, and it overrides conversion_tracking_id. */
   crossAccountConversionTrackingId?: string;
   /** Output only. Whether the customer is opted-in for enhanced conversions for leads. If using cross-account conversion tracking, this value is inherited from the manager. This field is read-only. */
@@ -3158,7 +3247,9 @@ export interface GoogleAdsSearchads360V23Resources__GranularLicenseStatus {
   /** Output only. Service category associated with the status. For example, xcat:service_area_business_plumber. For more details see: https://developers.google.com/google-ads/api/data/codes-formats#local_services_ids */
   categoryId?: string;
   /** Output only. Granular license status, per geo + vertical. */
-  verificationStatus?: GoogleAdsSearchads360V23Resources__GranularLicenseStatusVerificationStatusEnum;
+  verificationStatus?:
+    | GoogleAdsSearchads360V23Resources__GranularLicenseStatusVerificationStatusEnum
+    | (string & {});
   /** Output only. Geotarget criterion ID associated with the status. Can be on country or state/province geo level, depending on requirements and location. See https://developers.google.com/google-ads/api/data/geotargets for more information. */
   geoCriterionId?: string;
 }
@@ -3176,7 +3267,7 @@ export const GoogleAdsSearchads360V23Resources__GranularLicenseStatus =
   }) as any as S.Schema<GoogleAdsSearchads360V23Resources__GranularLicenseStatus>;
 
 export type GoogleAdsSearchads360V23Resources__GranularLicenseStatusList =
-  ReadonlyArray<GoogleAdsSearchads360V23Resources__GranularLicenseStatus>;
+  Array<GoogleAdsSearchads360V23Resources__GranularLicenseStatus>;
 export const GoogleAdsSearchads360V23Resources__GranularLicenseStatusList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Resources__GranularLicenseStatus,
@@ -3202,7 +3293,9 @@ export interface GoogleAdsSearchads360V23Resources__GranularInsuranceStatus {
   /** Output only. Service category associated with the status. For example, xcat:service_area_business_plumber. For more details see: https://developers.google.com/google-ads/api/data/codes-formats#local_services_ids */
   categoryId?: string;
   /** Output only. Granular insurance status, per geo + vertical. */
-  verificationStatus?: GoogleAdsSearchads360V23Resources__GranularInsuranceStatusVerificationStatusEnum;
+  verificationStatus?:
+    | GoogleAdsSearchads360V23Resources__GranularInsuranceStatusVerificationStatusEnum
+    | (string & {});
 }
 export const GoogleAdsSearchads360V23Resources__GranularInsuranceStatus =
   /*@__PURE__*/ S.suspend(() =>
@@ -3218,7 +3311,7 @@ export const GoogleAdsSearchads360V23Resources__GranularInsuranceStatus =
   }) as any as S.Schema<GoogleAdsSearchads360V23Resources__GranularInsuranceStatus>;
 
 export type GoogleAdsSearchads360V23Resources__GranularInsuranceStatusList =
-  ReadonlyArray<GoogleAdsSearchads360V23Resources__GranularInsuranceStatus>;
+  Array<GoogleAdsSearchads360V23Resources__GranularInsuranceStatus>;
 export const GoogleAdsSearchads360V23Resources__GranularInsuranceStatusList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Resources__GranularInsuranceStatus,
@@ -3274,7 +3367,9 @@ export const GoogleAdsSearchads360V23Common__CustomerThirdPartyBrandSafetyIntegr
 /** Container for third party brand safety integration data for Customer. */
 export interface GoogleAdsSearchads360V23Common__CustomerThirdPartyBrandSafetyIntegrationPartner {
   /** Allowed third party integration partners for brand safety verification. */
-  brandSafetyIntegrationPartner?: GoogleAdsSearchads360V23Common__CustomerThirdPartyBrandSafetyIntegrationPartnerBrandSafetyIntegrationPartnerEnum;
+  brandSafetyIntegrationPartner?:
+    | GoogleAdsSearchads360V23Common__CustomerThirdPartyBrandSafetyIntegrationPartnerBrandSafetyIntegrationPartnerEnum
+    | (string & {});
 }
 export const GoogleAdsSearchads360V23Common__CustomerThirdPartyBrandSafetyIntegrationPartner =
   /*@__PURE__*/ S.suspend(() =>
@@ -3289,7 +3384,7 @@ export const GoogleAdsSearchads360V23Common__CustomerThirdPartyBrandSafetyIntegr
   }) as any as S.Schema<GoogleAdsSearchads360V23Common__CustomerThirdPartyBrandSafetyIntegrationPartner>;
 
 export type GoogleAdsSearchads360V23Common__CustomerThirdPartyBrandSafetyIntegrationPartnerList =
-  ReadonlyArray<GoogleAdsSearchads360V23Common__CustomerThirdPartyBrandSafetyIntegrationPartner>;
+  Array<GoogleAdsSearchads360V23Common__CustomerThirdPartyBrandSafetyIntegrationPartner>;
 export const GoogleAdsSearchads360V23Common__CustomerThirdPartyBrandSafetyIntegrationPartnerList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Common__CustomerThirdPartyBrandSafetyIntegrationPartner,
@@ -3303,7 +3398,9 @@ export const GoogleAdsSearchads360V23Common__CustomerThirdPartyViewabilityIntegr
 /** Container for third party viewability integration data for Customer. */
 export interface GoogleAdsSearchads360V23Common__CustomerThirdPartyViewabilityIntegrationPartner {
   /** Allowed third party integration partners for YouTube viewability verification. */
-  viewabilityIntegrationPartner?: GoogleAdsSearchads360V23Common__CustomerThirdPartyViewabilityIntegrationPartnerViewabilityIntegrationPartnerEnum;
+  viewabilityIntegrationPartner?:
+    | GoogleAdsSearchads360V23Common__CustomerThirdPartyViewabilityIntegrationPartnerViewabilityIntegrationPartnerEnum
+    | (string & {});
   /** If true, cost data can be shared with this vendor. */
   allowShareCost?: boolean;
 }
@@ -3321,7 +3418,7 @@ export const GoogleAdsSearchads360V23Common__CustomerThirdPartyViewabilityIntegr
   }) as any as S.Schema<GoogleAdsSearchads360V23Common__CustomerThirdPartyViewabilityIntegrationPartner>;
 
 export type GoogleAdsSearchads360V23Common__CustomerThirdPartyViewabilityIntegrationPartnerList =
-  ReadonlyArray<GoogleAdsSearchads360V23Common__CustomerThirdPartyViewabilityIntegrationPartner>;
+  Array<GoogleAdsSearchads360V23Common__CustomerThirdPartyViewabilityIntegrationPartner>;
 export const GoogleAdsSearchads360V23Common__CustomerThirdPartyViewabilityIntegrationPartnerList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Common__CustomerThirdPartyViewabilityIntegrationPartner,
@@ -3340,7 +3437,9 @@ export const GoogleAdsSearchads360V23Common__CustomerThirdPartyBrandLiftIntegrat
 /** Container for third party Brand Lift integration data for Customer. */
 export interface GoogleAdsSearchads360V23Common__CustomerThirdPartyBrandLiftIntegrationPartner {
   /** Allowed Third Party integration partners for Brand Lift verification. */
-  brandLiftIntegrationPartner?: GoogleAdsSearchads360V23Common__CustomerThirdPartyBrandLiftIntegrationPartnerBrandLiftIntegrationPartnerEnum;
+  brandLiftIntegrationPartner?:
+    | GoogleAdsSearchads360V23Common__CustomerThirdPartyBrandLiftIntegrationPartnerBrandLiftIntegrationPartnerEnum
+    | (string & {});
   /** If true, cost data can be shared with this vendor. */
   allowShareCost?: boolean;
 }
@@ -3358,7 +3457,7 @@ export const GoogleAdsSearchads360V23Common__CustomerThirdPartyBrandLiftIntegrat
   }) as any as S.Schema<GoogleAdsSearchads360V23Common__CustomerThirdPartyBrandLiftIntegrationPartner>;
 
 export type GoogleAdsSearchads360V23Common__CustomerThirdPartyBrandLiftIntegrationPartnerList =
-  ReadonlyArray<GoogleAdsSearchads360V23Common__CustomerThirdPartyBrandLiftIntegrationPartner>;
+  Array<GoogleAdsSearchads360V23Common__CustomerThirdPartyBrandLiftIntegrationPartner>;
 export const GoogleAdsSearchads360V23Common__CustomerThirdPartyBrandLiftIntegrationPartnerList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Common__CustomerThirdPartyBrandLiftIntegrationPartner,
@@ -3384,7 +3483,9 @@ export interface GoogleAdsSearchads360V23Common__CustomerThirdPartyReachIntegrat
   /** If true, cost data can be shared with this vendor. */
   allowShareCost?: boolean;
   /** Allowed Third Party integration partners for reach verification. */
-  reachIntegrationPartner?: GoogleAdsSearchads360V23Common__CustomerThirdPartyReachIntegrationPartnerReachIntegrationPartnerEnum;
+  reachIntegrationPartner?:
+    | GoogleAdsSearchads360V23Common__CustomerThirdPartyReachIntegrationPartnerReachIntegrationPartnerEnum
+    | (string & {});
 }
 export const GoogleAdsSearchads360V23Common__CustomerThirdPartyReachIntegrationPartner =
   /*@__PURE__*/ S.suspend(() =>
@@ -3400,7 +3501,7 @@ export const GoogleAdsSearchads360V23Common__CustomerThirdPartyReachIntegrationP
   }) as any as S.Schema<GoogleAdsSearchads360V23Common__CustomerThirdPartyReachIntegrationPartner>;
 
 export type GoogleAdsSearchads360V23Common__CustomerThirdPartyReachIntegrationPartnerList =
-  ReadonlyArray<GoogleAdsSearchads360V23Common__CustomerThirdPartyReachIntegrationPartner>;
+  Array<GoogleAdsSearchads360V23Common__CustomerThirdPartyReachIntegrationPartner>;
 export const GoogleAdsSearchads360V23Common__CustomerThirdPartyReachIntegrationPartnerList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Common__CustomerThirdPartyReachIntegrationPartner,
@@ -3465,9 +3566,13 @@ export interface GoogleAdsSearchads360V23Resources__Customer {
   /** Whether auto-tagging is enabled for the customer. */
   autoTaggingEnabled?: boolean;
   /** Output only. Engine account type, for example, Google Ads, Microsoft Advertising, Yahoo Japan, Baidu, Facebook, Engine Track, etc. */
-  accountType?: GoogleAdsSearchads360V23Resources__CustomerAccountTypeEnum;
+  accountType?:
+    | GoogleAdsSearchads360V23Resources__CustomerAccountTypeEnum
+    | (string & {});
   /** Brand Safety setting at the account level. Allows for selecting an inventory type to show your ads on content that is the right fit for your brand. See https://support.google.com/google-ads/answer/7515513. */
-  videoBrandSafetySuitability?: GoogleAdsSearchads360V23Resources__CustomerVideoBrandSafetySuitabilityEnum;
+  videoBrandSafetySuitability?:
+    | GoogleAdsSearchads360V23Resources__CustomerVideoBrandSafetySuitabilityEnum
+    | (string & {});
   /** Output only. The customer ID of the sub manager. A 0 value indicates that the customer has no sub SA360 manager. */
   subManagerId?: string;
   /** Output only. ID of the account in the external engine account. */
@@ -3477,7 +3582,9 @@ export interface GoogleAdsSearchads360V23Resources__Customer {
   /** Output only. Optimization score weight of the customer. Optimization score weight can be used to compare/aggregate optimization scores across multiple non-manager customers. The aggregate optimization score of a manager is computed as the sum over all of their customers of `Customer.optimization_score * Customer.optimization_score_weight`. This field is 0 for all manager customers, and for unscored non-manager customers. This field is read-only. */
   optimizationScoreWeight?: number;
   /** Output only. Returns the advertiser self-declaration status of whether this customer contains political advertising content targeted towards the European Union. You can use the Google Ads UI to update this account-level declaration, or use the API to update the self-declaration status of individual campaigns. */
-  containsEuPoliticalAdvertising?: GoogleAdsSearchads360V23Resources__CustomerContainsEuPoliticalAdvertisingEnum;
+  containsEuPoliticalAdvertising?:
+    | GoogleAdsSearchads360V23Resources__CustomerContainsEuPoliticalAdvertisingEnum
+    | (string & {});
   /** Output only. True if feed based image has been migrated to asset based image. */
   imageAssetAutoMigrationDone?: boolean;
   /** Call reporting setting for a customer. */
@@ -3499,7 +3606,9 @@ export interface GoogleAdsSearchads360V23Resources__Customer {
   /** Output only. Remarketing setting for a customer. */
   remarketingSetting?: GoogleAdsSearchads360V23Resources__RemarketingSetting;
   /** Output only. The account level of the customer: Manager, Sub-manager, Associate manager, Service account. */
-  accountLevel?: GoogleAdsSearchads360V23Resources__CustomerAccountLevelEnum;
+  accountLevel?:
+    | GoogleAdsSearchads360V23Resources__CustomerAccountLevelEnum
+    | (string & {});
   /** Output only. True if feed based location has been migrated to asset based location. */
   locationAssetAutoMigrationDone?: boolean;
   /** Output only. The datetime when this customer was last modified. The datetime is in the customer's time zone and in "yyyy-MM-dd HH:mm:ss.ssssss" format. */
@@ -3519,11 +3628,15 @@ export interface GoogleAdsSearchads360V23Resources__Customer {
   /** Output only. The customer ID of the manager. A 0 value indicates that the customer has no SA360 manager. */
   managerId?: string;
   /** Output only. Account status, for example, Enabled, Paused, Removed, etc. */
-  accountStatus?: GoogleAdsSearchads360V23Resources__CustomerAccountStatusEnum;
+  accountStatus?:
+    | GoogleAdsSearchads360V23Resources__CustomerAccountStatusEnum
+    | (string & {});
   /** The URL template for constructing a tracking URL out of parameters. */
   trackingUrlTemplate?: string;
   /** Output only. The status of the customer. */
-  status?: GoogleAdsSearchads360V23Resources__CustomerStatusEnum;
+  status?:
+    | GoogleAdsSearchads360V23Resources__CustomerStatusEnum
+    | (string & {});
   /** Output only. Optimization score of the customer. Optimization score is an estimate of how well a customer's campaigns are set to perform. It ranges from 0% (0.0) to 100% (1.0). This field is null for all manager customers, and for unscored non-manager customers. See "About optimization score" at https://support.google.com/google-ads/answer/9061546. This field is read-only. */
   optimizationScore?: number;
   /** Video specific information about a Customer. */
@@ -3638,7 +3751,9 @@ export interface GoogleAdsSearchads360V23Resources__KeywordPlanCampaignKeyword {
   /** Immutable. The resource name of the Keyword Plan Campaign keyword. KeywordPlanCampaignKeyword resource names have the form: `customers/{customer_id}/keywordPlanCampaignKeywords/{kp_campaign_keyword_id}` */
   resourceName?: string;
   /** The keyword match type. */
-  matchType?: GoogleAdsSearchads360V23Resources__KeywordPlanCampaignKeywordMatchTypeEnum;
+  matchType?:
+    | GoogleAdsSearchads360V23Resources__KeywordPlanCampaignKeywordMatchTypeEnum
+    | (string & {});
   /** The keyword text. */
   text?: string;
   /** Output only. The ID of the Keyword Plan negative keyword. */
@@ -3798,9 +3913,11 @@ export interface GoogleAdsSearchads360V23Common__BrandInfo {
   /** The Commercial KG MID for the brand. */
   entityId?: string;
   /** Output only. The rejection reason when a brand status is REJECTED. */
-  rejectionReason?: GoogleAdsSearchads360V23Common__BrandInfoRejectionReasonEnum;
+  rejectionReason?:
+    | GoogleAdsSearchads360V23Common__BrandInfoRejectionReasonEnum
+    | (string & {});
   /** Output only. The status of a brand. */
-  status?: GoogleAdsSearchads360V23Common__BrandInfoStatusEnum;
+  status?: GoogleAdsSearchads360V23Common__BrandInfoStatusEnum | (string & {});
   /** Output only. The primary url of a brand. */
   primaryUrl?: string;
 }
@@ -3842,7 +3959,9 @@ export interface GoogleAdsSearchads360V23Resources__SharedCriterion {
   /** Immutable. Mobile application. */
   mobileApplication?: GoogleAdsSearchads360V23Common__MobileApplicationInfo;
   /** Output only. The type of the criterion. */
-  type?: GoogleAdsSearchads360V23Resources__SharedCriterionTypeEnum;
+  type?:
+    | GoogleAdsSearchads360V23Resources__SharedCriterionTypeEnum
+    | (string & {});
   /** Immutable. Brand. */
   brand?: GoogleAdsSearchads360V23Common__BrandInfo;
   /** Immutable. The resource name of the shared criterion. Shared set resource names have the form: `customers/{customer_id}/sharedCriteria/{shared_set_id}~{criterion_id}` */
@@ -3969,9 +4088,13 @@ export const GoogleAdsSearchads360V23Resources__RecommendationSubscriptionTypeEn
 /** Recommendation Subscription resource */
 export interface GoogleAdsSearchads360V23Resources__RecommendationSubscription {
   /** Required. Status of the subscription, either enabled or paused. */
-  status?: GoogleAdsSearchads360V23Resources__RecommendationSubscriptionStatusEnum;
+  status?:
+    | GoogleAdsSearchads360V23Resources__RecommendationSubscriptionStatusEnum
+    | (string & {});
   /** Required. Immutable. The type of recommendation subscribed to. */
-  type?: GoogleAdsSearchads360V23Resources__RecommendationSubscriptionTypeEnum;
+  type?:
+    | GoogleAdsSearchads360V23Resources__RecommendationSubscriptionTypeEnum
+    | (string & {});
   /** Output only. Contains the time in microseconds, when the Recommendation Subscription was last updated. The datetime is in the customer's time zone and in "yyyy-MM-dd HH:mm:ss.ssssss" format. */
   modifyDateTime?: string;
   /** Output only. Time in seconds when the subscription was first created. The datetime is in the customer's time zone and in "yyyy-MM-dd HH:mm:ss" format. */
@@ -4066,9 +4189,13 @@ export interface GoogleAdsSearchads360V23Resources__CustomerConversionGoal {
   /** Immutable. The resource name of the customer conversion goal. Customer conversion goal resource names have the form: `customers/{customer_id}/customerConversionGoals/{category}~{origin}` */
   resourceName?: string;
   /** The conversion category of this customer conversion goal. Only conversion actions that have this category will be included in this goal. */
-  category?: GoogleAdsSearchads360V23Resources__CustomerConversionGoalCategoryEnum;
+  category?:
+    | GoogleAdsSearchads360V23Resources__CustomerConversionGoalCategoryEnum
+    | (string & {});
   /** The conversion origin of this customer conversion goal. Only conversion actions that have this conversion origin will be included in this goal. */
-  origin?: GoogleAdsSearchads360V23Resources__CustomerConversionGoalOriginEnum;
+  origin?:
+    | GoogleAdsSearchads360V23Resources__CustomerConversionGoalOriginEnum
+    | (string & {});
   /** The biddability of the customer conversion goal. */
   biddable?: boolean;
 }
@@ -4168,9 +4295,11 @@ export const GoogleAdsSearchads360V23Common__MetricGoalDirectionEnum =
 /** A metric goal for an experiment. */
 export interface GoogleAdsSearchads360V23Common__MetricGoal {
   /** The metric of the goal. For example, clicks, impressions, cost, conversions, etc. */
-  metric?: GoogleAdsSearchads360V23Common__MetricGoalMetricEnum;
+  metric?: GoogleAdsSearchads360V23Common__MetricGoalMetricEnum | (string & {});
   /** The metric direction of the goal. For example, increase, decrease, no change. */
-  direction?: GoogleAdsSearchads360V23Common__MetricGoalDirectionEnum;
+  direction?:
+    | GoogleAdsSearchads360V23Common__MetricGoalDirectionEnum
+    | (string & {});
 }
 export const GoogleAdsSearchads360V23Common__MetricGoal =
   /*@__PURE__*/ S.suspend(() =>
@@ -4185,7 +4314,7 @@ export const GoogleAdsSearchads360V23Common__MetricGoal =
   }) as any as S.Schema<GoogleAdsSearchads360V23Common__MetricGoal>;
 
 export type GoogleAdsSearchads360V23Common__MetricGoalList =
-  ReadonlyArray<GoogleAdsSearchads360V23Common__MetricGoal>;
+  Array<GoogleAdsSearchads360V23Common__MetricGoal>;
 export const GoogleAdsSearchads360V23Common__MetricGoalList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Common__MetricGoal,
@@ -4209,13 +4338,15 @@ export interface GoogleAdsSearchads360V23Resources__Experiment {
   /** Immutable. The resource name of the experiment. Experiment resource names have the form: `customers/{customer_id}/experiments/{experiment_id}` */
   resourceName?: string;
   /** Required. The product/feature that uses this experiment. */
-  type?: GoogleAdsSearchads360V23Resources__ExperimentTypeEnum;
+  type?: GoogleAdsSearchads360V23Resources__ExperimentTypeEnum | (string & {});
   /** Date when the experiment starts. By default, the experiment starts now or on the campaign's start date, whichever is later. If this field is set, then the experiment starts at the beginning of the specified date in the customer's time zone. Format: YYYY-MM-DD Example: 2019-03-14 */
   startDate?: string;
   /** Output only. The resource name of the long-running operation that can be used to poll for completion of experiment schedule or promote. The most recent long running operation is returned. */
   longRunningOperation?: string;
   /** Output only. The status of the experiment promotion process. */
-  promoteStatus?: GoogleAdsSearchads360V23Resources__ExperimentPromoteStatusEnum;
+  promoteStatus?:
+    | GoogleAdsSearchads360V23Resources__ExperimentPromoteStatusEnum
+    | (string & {});
   /** Date when the experiment ends. By default, the experiment ends on the campaign's end date. If this field is set, then the experiment ends at the end of the specified date in the customer's time zone. Format: YYYY-MM-DD Example: 2019-04-18 */
   endDate?: string;
   /** The goals of this experiment. */
@@ -4229,7 +4360,9 @@ export interface GoogleAdsSearchads360V23Resources__Experiment {
   /** Required. The name of the experiment. It must have a minimum length of 1 and maximum length of 1024. It must be unique under a customer. */
   name?: string;
   /** The Advertiser-chosen status of this experiment. */
-  status?: GoogleAdsSearchads360V23Resources__ExperimentStatusEnum;
+  status?:
+    | GoogleAdsSearchads360V23Resources__ExperimentStatusEnum
+    | (string & {});
   /** Output only. The ID of the experiment. Read only. */
   experimentId?: string;
 }
@@ -4299,7 +4432,7 @@ export const GoogleAdsSearchads360V23Common__PolicyViolationKey =
   }) as any as S.Schema<GoogleAdsSearchads360V23Common__PolicyViolationKey>;
 
 export type GoogleAdsSearchads360V23Common__PolicyViolationKeyList =
-  ReadonlyArray<GoogleAdsSearchads360V23Common__PolicyViolationKey>;
+  Array<GoogleAdsSearchads360V23Common__PolicyViolationKey>;
 export const GoogleAdsSearchads360V23Common__PolicyViolationKeyList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Common__PolicyViolationKey,
@@ -4367,7 +4500,10 @@ export const GoogleAdsSearchads360V23Resources__AdGroupCriterionPrimaryStatusRea
   /*@__PURE__*/ S.String;
 
 export type GoogleAdsSearchads360V23Resources__AdGroupCriterionPrimaryStatusReasonsItemEnumList =
-  ReadonlyArray<GoogleAdsSearchads360V23Resources__AdGroupCriterionPrimaryStatusReasonsItemEnum>;
+  Array<
+    | GoogleAdsSearchads360V23Resources__AdGroupCriterionPrimaryStatusReasonsItemEnum
+    | (string & {})
+  >;
 export const GoogleAdsSearchads360V23Resources__AdGroupCriterionPrimaryStatusReasonsItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Resources__AdGroupCriterionPrimaryStatusReasonsItemEnum,
@@ -4441,7 +4577,7 @@ export const GoogleAdsSearchads360V23Common__CustomParameter =
   }) as any as S.Schema<GoogleAdsSearchads360V23Common__CustomParameter>;
 
 export type GoogleAdsSearchads360V23Common__CustomParameterList =
-  ReadonlyArray<GoogleAdsSearchads360V23Common__CustomParameter>;
+  Array<GoogleAdsSearchads360V23Common__CustomParameter>;
 export const GoogleAdsSearchads360V23Common__CustomParameterList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Common__CustomParameter,
@@ -4526,13 +4662,19 @@ export const GoogleAdsSearchads360V23Resources_AdGroupCriterion_QualityInfoSearc
 /** A container for ad group criterion quality information. */
 export interface GoogleAdsSearchads360V23Resources_AdGroupCriterion_QualityInfo {
   /** Output only. The performance of the ad compared to other advertisers. */
-  creativeQualityScore?: GoogleAdsSearchads360V23Resources_AdGroupCriterion_QualityInfoCreativeQualityScoreEnum;
+  creativeQualityScore?:
+    | GoogleAdsSearchads360V23Resources_AdGroupCriterion_QualityInfoCreativeQualityScoreEnum
+    | (string & {});
   /** Output only. The quality score of the landing page. */
-  postClickQualityScore?: GoogleAdsSearchads360V23Resources_AdGroupCriterion_QualityInfoPostClickQualityScoreEnum;
+  postClickQualityScore?:
+    | GoogleAdsSearchads360V23Resources_AdGroupCriterion_QualityInfoPostClickQualityScoreEnum
+    | (string & {});
   /** Output only. The quality score. This field may not be populated if Google does not have enough information to determine a value. */
   qualityScore?: number;
   /** Output only. The click-through rate compared to that of other advertisers. */
-  searchPredictedCtr?: GoogleAdsSearchads360V23Resources_AdGroupCriterion_QualityInfoSearchPredictedCtrEnum;
+  searchPredictedCtr?:
+    | GoogleAdsSearchads360V23Resources_AdGroupCriterion_QualityInfoSearchPredictedCtrEnum
+    | (string & {});
 }
 export const GoogleAdsSearchads360V23Resources_AdGroupCriterion_QualityInfo =
   /*@__PURE__*/ S.suspend(() =>
@@ -4563,7 +4705,9 @@ export const GoogleAdsSearchads360V23Common__AppPaymentModelInfoTypeEnum =
 /** An app payment model criterion. */
 export interface GoogleAdsSearchads360V23Common__AppPaymentModelInfo {
   /** Type of the app payment model. */
-  type?: GoogleAdsSearchads360V23Common__AppPaymentModelInfoTypeEnum;
+  type?:
+    | GoogleAdsSearchads360V23Common__AppPaymentModelInfoTypeEnum
+    | (string & {});
 }
 export const GoogleAdsSearchads360V23Common__AppPaymentModelInfo =
   /*@__PURE__*/ S.suspend(() =>
@@ -4656,7 +4800,9 @@ export interface GoogleAdsSearchads360V23Common__ListingGroupInfo {
   /** Resource name of ad group criterion which is the parent listing group subdivision. Null for the root group. */
   parentAdGroupCriterion?: string;
   /** Type of the listing group. */
-  type?: GoogleAdsSearchads360V23Common__ListingGroupInfoTypeEnum;
+  type?:
+    | GoogleAdsSearchads360V23Common__ListingGroupInfoTypeEnum
+    | (string & {});
   /** Dimension value with which this listing group is refining its parent. Undefined for the root group. */
   caseValue?: GoogleAdsSearchads360V23Common__ListingDimensionInfo;
   /** The path of dimensions defining this listing group. */
@@ -4727,7 +4873,9 @@ export const GoogleAdsSearchads360V23Common__CustomAffinityInfo =
 /** An ad group criterion. The ad_group_criterion report only returns criteria that were explicitly added to the ad group. */
 export interface GoogleAdsSearchads360V23Resources__AdGroupCriterion {
   /** Output only. Source of the effective CPC bid. */
-  effectiveCpcBidSource?: GoogleAdsSearchads360V23Resources__AdGroupCriterionEffectiveCpcBidSourceEnum;
+  effectiveCpcBidSource?:
+    | GoogleAdsSearchads360V23Resources__AdGroupCriterionEffectiveCpcBidSourceEnum
+    | (string & {});
   /** Output only. The display name of the criterion. */
   displayName?: string;
   /** The list of possible final mobile URLs after all cross-domain redirects. */
@@ -4759,7 +4907,9 @@ export interface GoogleAdsSearchads360V23Resources__AdGroupCriterion {
   /** The modifier for the bid when the criterion matches. The modifier must be in the range: 0.1 - 10.0. Most targetable criteria types support modifiers. */
   bidModifier?: number;
   /** Output only. The primary status for the ad group criterion. */
-  primaryStatus?: GoogleAdsSearchads360V23Resources__AdGroupCriterionPrimaryStatusEnum;
+  primaryStatus?:
+    | GoogleAdsSearchads360V23Resources__AdGroupCriterionPrimaryStatusEnum
+    | (string & {});
   /** Immutable. Mobile application. */
   mobileApplication?: GoogleAdsSearchads360V23Common__MobileApplicationInfo;
   /** The CPC (cost-per-click) bid. */
@@ -4781,7 +4931,9 @@ export interface GoogleAdsSearchads360V23Resources__AdGroupCriterion {
   /** Immutable. Webpage */
   webpage?: GoogleAdsSearchads360V23Common__WebpageInfo;
   /** Output only. The Engine Status for ad group criterion. */
-  engineStatus?: GoogleAdsSearchads360V23Resources__AdGroupCriterionEngineStatusEnum;
+  engineStatus?:
+    | GoogleAdsSearchads360V23Resources__AdGroupCriterionEngineStatusEnum
+    | (string & {});
   /** Immutable. Mobile app category. */
   mobileAppCategory?: GoogleAdsSearchads360V23Common__MobileAppCategoryInfo;
   /** The list of mappings used to substitute custom parameter tags in a `tracking_url_template`, `final_urls`, or `mobile_final_urls`. */
@@ -4791,13 +4943,17 @@ export interface GoogleAdsSearchads360V23Resources__AdGroupCriterion {
   /** Immutable. Vertical ads item group rule list criterion. */
   verticalAdsItemGroupRuleList?: GoogleAdsSearchads360V23Common__VerticalAdsItemGroupRuleListInfo;
   /** Output only. Approval status of the criterion. */
-  approvalStatus?: GoogleAdsSearchads360V23Resources__AdGroupCriterionApprovalStatusEnum;
+  approvalStatus?:
+    | GoogleAdsSearchads360V23Resources__AdGroupCriterionApprovalStatusEnum
+    | (string & {});
   /** Output only. Estimates for criterion bids at various positions. */
   positionEstimates?: GoogleAdsSearchads360V23Resources_AdGroupCriterion_PositionEstimates;
   /** The CPC bid amount, expressed as a fraction of the advertised price for some good or service. The valid range for the fraction is [0,1) and the value stored here is 1,000,000 * [fraction]. */
   percentCpcBidMicros?: string;
   /** Output only. Source of the effective CPM bid. */
-  effectiveCpmBidSource?: GoogleAdsSearchads360V23Resources__AdGroupCriterionEffectiveCpmBidSourceEnum;
+  effectiveCpmBidSource?:
+    | GoogleAdsSearchads360V23Resources__AdGroupCriterionEffectiveCpmBidSourceEnum
+    | (string & {});
   /** Output only. Information regarding the quality of the criterion. */
   qualityInfo?: GoogleAdsSearchads360V23Resources_AdGroupCriterion_QualityInfo;
   /** Immutable. Location. */
@@ -4809,7 +4965,9 @@ export interface GoogleAdsSearchads360V23Resources__AdGroupCriterion {
   /** Output only. The timestamp when this ad group criterion was created. The timestamp is in the customer's time zone and in "yyyy-MM-dd HH:mm:ss" format. */
   creationTime?: string;
   /** Output only. The type of the criterion. */
-  type?: GoogleAdsSearchads360V23Resources__AdGroupCriterionTypeEnum;
+  type?:
+    | GoogleAdsSearchads360V23Resources__AdGroupCriterionTypeEnum
+    | (string & {});
   /** Immutable. Listing group. */
   listingGroup?: GoogleAdsSearchads360V23Common__ListingGroupInfo;
   /** Output only. The effective Percent CPC bid amount. */
@@ -4821,7 +4979,9 @@ export interface GoogleAdsSearchads360V23Resources__AdGroupCriterion {
   /** Immutable. Income range. */
   incomeRange?: GoogleAdsSearchads360V23Common__IncomeRangeInfo;
   /** The status of the criterion. This is the status of the ad group criterion entity, set by the client. Note: UI reports may incorporate additional information that affects whether a criterion is eligible to run. In some cases a criterion that's REMOVED in the API can still show as enabled in the UI. For example, campaigns by default show to users of all age ranges unless excluded. The UI will show each age range as "enabled", since they're eligible to see the ads; but AdGroupCriterion.status will show "removed", since no positive criterion was added. */
-  status?: GoogleAdsSearchads360V23Resources__AdGroupCriterionStatusEnum;
+  status?:
+    | GoogleAdsSearchads360V23Resources__AdGroupCriterionStatusEnum
+    | (string & {});
   /** The URL template for constructing a tracking URL. */
   trackingUrlTemplate?: string;
   /** Immutable. Language. */
@@ -4829,7 +4989,9 @@ export interface GoogleAdsSearchads360V23Resources__AdGroupCriterion {
   /** The CPV (cost-per-view) bid. */
   cpvBidMicros?: string;
   /** Output only. Serving status of the criterion. */
-  systemServingStatus?: GoogleAdsSearchads360V23Resources__AdGroupCriterionSystemServingStatusEnum;
+  systemServingStatus?:
+    | GoogleAdsSearchads360V23Resources__AdGroupCriterionSystemServingStatusEnum
+    | (string & {});
   /** The CPM (cost-per-thousand viewable impressions) bid. */
   cpmBidMicros?: string;
   /** Immutable. User List. */
@@ -4847,11 +5009,15 @@ export interface GoogleAdsSearchads360V23Resources__AdGroupCriterion {
   /** Immutable. Placement. */
   placement?: GoogleAdsSearchads360V23Common__PlacementInfo;
   /** Output only. Source of the effective Percent CPC bid. */
-  effectivePercentCpcBidSource?: GoogleAdsSearchads360V23Resources__AdGroupCriterionEffectivePercentCpcBidSourceEnum;
+  effectivePercentCpcBidSource?:
+    | GoogleAdsSearchads360V23Resources__AdGroupCriterionEffectivePercentCpcBidSourceEnum
+    | (string & {});
   /** The list of possible final URLs after all cross-domain redirects for the ad. */
   finalUrls?: StringList;
   /** Output only. Source of the effective CPV bid. */
-  effectiveCpvBidSource?: GoogleAdsSearchads360V23Resources__AdGroupCriterionEffectiveCpvBidSourceEnum;
+  effectiveCpvBidSource?:
+    | GoogleAdsSearchads360V23Resources__AdGroupCriterionEffectiveCpvBidSourceEnum
+    | (string & {});
   /** Immutable. YouTube Channel. */
   youtubeChannel?: GoogleAdsSearchads360V23Common__YouTubeChannelInfo;
   /** Immutable. Custom Affinity. */
@@ -5067,7 +5233,9 @@ export const GoogleAdsSearchads360V23Common__HotelCheckInDayInfoDayOfWeekEnum =
 /** Criterion for day of the week the booking is for. */
 export interface GoogleAdsSearchads360V23Common__HotelCheckInDayInfo {
   /** The day of the week. */
-  dayOfWeek?: GoogleAdsSearchads360V23Common__HotelCheckInDayInfoDayOfWeekEnum;
+  dayOfWeek?:
+    | GoogleAdsSearchads360V23Common__HotelCheckInDayInfoDayOfWeekEnum
+    | (string & {});
 }
 export const GoogleAdsSearchads360V23Common__HotelCheckInDayInfo =
   /*@__PURE__*/ S.suspend(() =>
@@ -5110,7 +5278,9 @@ export const GoogleAdsSearchads360V23Common__HotelDateSelectionTypeInfoTypeEnum 
 /** Criterion for hotel date selection (default dates versus user selected). */
 export interface GoogleAdsSearchads360V23Common__HotelDateSelectionTypeInfo {
   /** Type of the hotel date selection */
-  type?: GoogleAdsSearchads360V23Common__HotelDateSelectionTypeInfoTypeEnum;
+  type?:
+    | GoogleAdsSearchads360V23Common__HotelDateSelectionTypeInfoTypeEnum
+    | (string & {});
 }
 export const GoogleAdsSearchads360V23Common__HotelDateSelectionTypeInfo =
   /*@__PURE__*/ S.suspend(() =>
@@ -5144,7 +5314,9 @@ export interface GoogleAdsSearchads360V23Resources__AdGroupBidModifier {
   /** Immutable. Criterion for length of hotel stay in nights. */
   hotelLengthOfStay?: GoogleAdsSearchads360V23Common__HotelLengthOfStayInfo;
   /** Output only. Bid modifier source. */
-  bidModifierSource?: GoogleAdsSearchads360V23Resources__AdGroupBidModifierBidModifierSourceEnum;
+  bidModifierSource?:
+    | GoogleAdsSearchads360V23Resources__AdGroupBidModifierBidModifierSourceEnum
+    | (string & {});
   /** Output only. The base ad group from which this draft/trial adgroup bid modifier was created. If ad_group is a base ad group then this field will be equal to ad_group. If the ad group was created in the draft or trial and has no corresponding base ad group, then this field will be null. This field is readonly. */
   baseAdGroup?: string;
   /** Immutable. Criterion for hotel date selection (default dates versus user selected). */
@@ -5265,7 +5437,7 @@ export const GoogleAdsSearchads360V23Resources__KeywordPlanGeoTarget =
   }) as any as S.Schema<GoogleAdsSearchads360V23Resources__KeywordPlanGeoTarget>;
 
 export type GoogleAdsSearchads360V23Resources__KeywordPlanGeoTargetList =
-  ReadonlyArray<GoogleAdsSearchads360V23Resources__KeywordPlanGeoTarget>;
+  Array<GoogleAdsSearchads360V23Resources__KeywordPlanGeoTarget>;
 export const GoogleAdsSearchads360V23Resources__KeywordPlanGeoTargetList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Resources__KeywordPlanGeoTarget,
@@ -5276,7 +5448,9 @@ export interface GoogleAdsSearchads360V23Resources__KeywordPlanCampaign {
   /** The keyword plan this campaign belongs to. */
   keywordPlan?: string;
   /** Targeting network. This field is required and should not be empty when creating Keyword Plan campaigns. */
-  keywordPlanNetwork?: GoogleAdsSearchads360V23Resources__KeywordPlanCampaignKeywordPlanNetworkEnum;
+  keywordPlanNetwork?:
+    | GoogleAdsSearchads360V23Resources__KeywordPlanCampaignKeywordPlanNetworkEnum
+    | (string & {});
   /** The geo targets. Max number allowed: 20. */
   geoTargets?: GoogleAdsSearchads360V23Resources__KeywordPlanGeoTargetList;
   /** Immutable. The resource name of the Keyword Plan campaign. KeywordPlanCampaign resource names have the form: `customers/{customer_id}/keywordPlanCampaigns/{kp_campaign_id}` */
@@ -5360,7 +5534,10 @@ export const GoogleAdsSearchads360V23Resources__ConversionValueRuleSetDimensions
   /*@__PURE__*/ S.String;
 
 export type GoogleAdsSearchads360V23Resources__ConversionValueRuleSetDimensionsItemEnumList =
-  ReadonlyArray<GoogleAdsSearchads360V23Resources__ConversionValueRuleSetDimensionsItemEnum>;
+  Array<
+    | GoogleAdsSearchads360V23Resources__ConversionValueRuleSetDimensionsItemEnum
+    | (string & {})
+  >;
 export const GoogleAdsSearchads360V23Resources__ConversionValueRuleSetDimensionsItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Resources__ConversionValueRuleSetDimensionsItemEnum,
@@ -5394,7 +5571,10 @@ export const GoogleAdsSearchads360V23Resources__ConversionValueRuleSetConversion
   /*@__PURE__*/ S.String;
 
 export type GoogleAdsSearchads360V23Resources__ConversionValueRuleSetConversionActionCategoriesItemEnumList =
-  ReadonlyArray<GoogleAdsSearchads360V23Resources__ConversionValueRuleSetConversionActionCategoriesItemEnum>;
+  Array<
+    | GoogleAdsSearchads360V23Resources__ConversionValueRuleSetConversionActionCategoriesItemEnum
+    | (string & {})
+  >;
 export const GoogleAdsSearchads360V23Resources__ConversionValueRuleSetConversionActionCategoriesItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Resources__ConversionValueRuleSetConversionActionCategoriesItemEnum,
@@ -5403,11 +5583,15 @@ export const GoogleAdsSearchads360V23Resources__ConversionValueRuleSetConversion
 /** A conversion value rule set is a collection of conversion value rules that lets you adjust conversion values based on the dimensions specified in the `dimensions` field. */
 export interface GoogleAdsSearchads360V23Resources__ConversionValueRuleSet {
   /** Immutable. Defines the scope where the conversion value rule set is attached. */
-  attachmentType?: GoogleAdsSearchads360V23Resources__ConversionValueRuleSetAttachmentTypeEnum;
+  attachmentType?:
+    | GoogleAdsSearchads360V23Resources__ConversionValueRuleSetAttachmentTypeEnum
+    | (string & {});
   /** Resource names of rules within the rule set. */
   conversionValueRules?: StringList;
   /** Output only. The status of the conversion value rule set. ** Read-only ** */
-  status?: GoogleAdsSearchads360V23Resources__ConversionValueRuleSetStatusEnum;
+  status?:
+    | GoogleAdsSearchads360V23Resources__ConversionValueRuleSetStatusEnum
+    | (string & {});
   /** Defines dimensions for Value Rule conditions. The condition types of value rules within this value rule set must be of these dimensions. The first entry in this list is the primary dimension of the included value rules. When using value rule primary dimension segmentation, conversion values will be segmented into the values adjusted by value rules and the original values, if some value rules apply. */
   dimensions?: GoogleAdsSearchads360V23Resources__ConversionValueRuleSetDimensionsItemEnumList;
   /** Immutable. The conversion action categories of the conversion value rule set. */
@@ -5500,7 +5684,9 @@ export interface GoogleAdsSearchads360V23Resources__CampaignDraft {
   /** Immutable. The base campaign to which the draft belongs. */
   baseCampaign?: string;
   /** Output only. The status of the campaign draft. This field is read-only. When a new campaign draft is added, the status defaults to PROPOSED. */
-  status?: GoogleAdsSearchads360V23Resources__CampaignDraftStatusEnum;
+  status?:
+    | GoogleAdsSearchads360V23Resources__CampaignDraftStatusEnum
+    | (string & {});
   /** Output only. Whether there is an experiment based on this draft currently serving. */
   hasExperimentRunning?: boolean;
 }
@@ -5630,7 +5816,7 @@ export const GoogleAdsSearchads360V23Common_PolicyTopicConstraint_CountryConstra
   }) as any as S.Schema<GoogleAdsSearchads360V23Common_PolicyTopicConstraint_CountryConstraint>;
 
 export type GoogleAdsSearchads360V23Common_PolicyTopicConstraint_CountryConstraintList_ =
-  ReadonlyArray<GoogleAdsSearchads360V23Common_PolicyTopicConstraint_CountryConstraint>;
+  Array<GoogleAdsSearchads360V23Common_PolicyTopicConstraint_CountryConstraint>;
 export const GoogleAdsSearchads360V23Common_PolicyTopicConstraint_CountryConstraintList_ =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Common_PolicyTopicConstraint_CountryConstraint,
@@ -5696,7 +5882,7 @@ export const GoogleAdsSearchads360V23Common__PolicyTopicConstraint =
   }) as any as S.Schema<GoogleAdsSearchads360V23Common__PolicyTopicConstraint>;
 
 export type GoogleAdsSearchads360V23Common__PolicyTopicConstraintList =
-  ReadonlyArray<GoogleAdsSearchads360V23Common__PolicyTopicConstraint>;
+  Array<GoogleAdsSearchads360V23Common__PolicyTopicConstraint>;
 export const GoogleAdsSearchads360V23Common__PolicyTopicConstraintList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Common__PolicyTopicConstraint,
@@ -5714,7 +5900,10 @@ export const GoogleAdsSearchads360V23Common_PolicyTopicEvidence_DestinationMisma
   /*@__PURE__*/ S.String;
 
 export type GoogleAdsSearchads360V23Common_PolicyTopicEvidence_DestinationMismatchUrlTypesItemEnumList =
-  ReadonlyArray<GoogleAdsSearchads360V23Common_PolicyTopicEvidence_DestinationMismatchUrlTypesItemEnum>;
+  Array<
+    | GoogleAdsSearchads360V23Common_PolicyTopicEvidence_DestinationMismatchUrlTypesItemEnum
+    | (string & {})
+  >;
 export const GoogleAdsSearchads360V23Common_PolicyTopicEvidence_DestinationMismatchUrlTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Common_PolicyTopicEvidence_DestinationMismatchUrlTypesItemEnum,
@@ -5798,9 +5987,13 @@ export interface GoogleAdsSearchads360V23Common_PolicyTopicEvidence_DestinationN
   /** The time the URL was last checked. The format is "YYYY-MM-DD HH:MM:SS". Examples: "2018-03-05 09:15:00" or "2018-02-01 14:34:30" */
   lastCheckedDateTime?: string;
   /** The type of DNS error. */
-  dnsErrorType?: GoogleAdsSearchads360V23Common_PolicyTopicEvidence_DestinationNotWorkingDnsErrorTypeEnum;
+  dnsErrorType?:
+    | GoogleAdsSearchads360V23Common_PolicyTopicEvidence_DestinationNotWorkingDnsErrorTypeEnum
+    | (string & {});
   /** The type of device that failed to load the URL. */
-  device?: GoogleAdsSearchads360V23Common_PolicyTopicEvidence_DestinationNotWorkingDeviceEnum;
+  device?:
+    | GoogleAdsSearchads360V23Common_PolicyTopicEvidence_DestinationNotWorkingDeviceEnum
+    | (string & {});
   /** The full URL that didn't work. */
   expandedUrl?: string;
 }
@@ -5862,7 +6055,7 @@ export const GoogleAdsSearchads360V23Common__PolicyTopicEvidence =
   }) as any as S.Schema<GoogleAdsSearchads360V23Common__PolicyTopicEvidence>;
 
 export type GoogleAdsSearchads360V23Common__PolicyTopicEvidenceList =
-  ReadonlyArray<GoogleAdsSearchads360V23Common__PolicyTopicEvidence>;
+  Array<GoogleAdsSearchads360V23Common__PolicyTopicEvidence>;
 export const GoogleAdsSearchads360V23Common__PolicyTopicEvidenceList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Common__PolicyTopicEvidence,
@@ -5871,7 +6064,9 @@ export const GoogleAdsSearchads360V23Common__PolicyTopicEvidenceList =
 /** Policy finding attached to a resource (for example, alcohol policy associated with a site that sells alcohol). Each PolicyTopicEntry has a topic that indicates the specific ads policy the entry is about and a type to indicate the effect that the entry will have on serving. It may optionally have one or more evidences that indicate the reason for the finding. It may also optionally have one or more constraints that provide details about how serving may be restricted. */
 export interface GoogleAdsSearchads360V23Common__PolicyTopicEntry {
   /** Describes the negative or positive effect this policy will have on serving. */
-  type?: GoogleAdsSearchads360V23Common__PolicyTopicEntryTypeEnum;
+  type?:
+    | GoogleAdsSearchads360V23Common__PolicyTopicEntryTypeEnum
+    | (string & {});
   /** Indicates how serving of this resource may be affected (for example, not serving in a country). */
   constraints?: GoogleAdsSearchads360V23Common__PolicyTopicConstraintList;
   /** Additional information that explains policy finding (for example, the brand name for a trademark finding). */
@@ -5898,7 +6093,7 @@ export const GoogleAdsSearchads360V23Common__PolicyTopicEntry =
   }) as any as S.Schema<GoogleAdsSearchads360V23Common__PolicyTopicEntry>;
 
 export type GoogleAdsSearchads360V23Common__PolicyTopicEntryList =
-  ReadonlyArray<GoogleAdsSearchads360V23Common__PolicyTopicEntry>;
+  Array<GoogleAdsSearchads360V23Common__PolicyTopicEntry>;
 export const GoogleAdsSearchads360V23Common__PolicyTopicEntryList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Common__PolicyTopicEntry,
@@ -5917,11 +6112,15 @@ export const GoogleAdsSearchads360V23Common__PolicySummaryReviewStatusEnum =
 /** Contains policy summary information. */
 export interface GoogleAdsSearchads360V23Common__PolicySummary {
   /** The overall approval status, which is calculated based on the status of its individual policy topic entries. */
-  approvalStatus?: GoogleAdsSearchads360V23Common__PolicySummaryApprovalStatusEnum;
+  approvalStatus?:
+    | GoogleAdsSearchads360V23Common__PolicySummaryApprovalStatusEnum
+    | (string & {});
   /** The list of policy findings. */
   policyTopicEntries?: GoogleAdsSearchads360V23Common__PolicyTopicEntryList;
   /** Where in the review process the resource is. */
-  reviewStatus?: GoogleAdsSearchads360V23Common__PolicySummaryReviewStatusEnum;
+  reviewStatus?:
+    | GoogleAdsSearchads360V23Common__PolicySummaryReviewStatusEnum
+    | (string & {});
 }
 export const GoogleAdsSearchads360V23Common__PolicySummary =
   /*@__PURE__*/ S.suspend(() =>
@@ -5977,7 +6176,10 @@ export const GoogleAdsSearchads360V23Common__AssetDisapprovedOfflineEvaluationEr
   /*@__PURE__*/ S.String;
 
 export type GoogleAdsSearchads360V23Common__AssetDisapprovedOfflineEvaluationErrorReasonsItemEnumList =
-  ReadonlyArray<GoogleAdsSearchads360V23Common__AssetDisapprovedOfflineEvaluationErrorReasonsItemEnum>;
+  Array<
+    | GoogleAdsSearchads360V23Common__AssetDisapprovedOfflineEvaluationErrorReasonsItemEnum
+    | (string & {})
+  >;
 export const GoogleAdsSearchads360V23Common__AssetDisapprovedOfflineEvaluationErrorReasonsItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Common__AssetDisapprovedOfflineEvaluationErrorReasonsItemEnum,
@@ -6002,9 +6204,13 @@ export const GoogleAdsSearchads360V23Common__AssetDisapproved =
 /** Provides the detail of a PrimaryStatus. Each asset link has a PrimaryStatus value (e.g. NOT_ELIGIBLE, meaning not serving), and list of corroborating PrimaryStatusReasons (e.g. [ASSET_DISAPPROVED]). Each reason may have some additional details annotated with it. For instance, when the reason is ASSET_DISAPPROVED, the details field will contain additional information about the offline evaluation errors which led to the asset being disapproved. */
 export interface GoogleAdsSearchads360V23Common__AssetLinkPrimaryStatusDetails {
   /** Provides the reason of this PrimaryStatus. */
-  reason?: GoogleAdsSearchads360V23Common__AssetLinkPrimaryStatusDetailsReasonEnum;
+  reason?:
+    | GoogleAdsSearchads360V23Common__AssetLinkPrimaryStatusDetailsReasonEnum
+    | (string & {});
   /** Provides the PrimaryStatus of this status detail. */
-  status?: GoogleAdsSearchads360V23Common__AssetLinkPrimaryStatusDetailsStatusEnum;
+  status?:
+    | GoogleAdsSearchads360V23Common__AssetLinkPrimaryStatusDetailsStatusEnum
+    | (string & {});
   /** Provides the details for AssetLinkPrimaryStatusReason.ASSET_DISAPPROVED */
   assetDisapproved?: GoogleAdsSearchads360V23Common__AssetDisapproved;
 }
@@ -6026,7 +6232,7 @@ export const GoogleAdsSearchads360V23Common__AssetLinkPrimaryStatusDetails =
   }) as any as S.Schema<GoogleAdsSearchads360V23Common__AssetLinkPrimaryStatusDetails>;
 
 export type GoogleAdsSearchads360V23Common__AssetLinkPrimaryStatusDetailsList =
-  ReadonlyArray<GoogleAdsSearchads360V23Common__AssetLinkPrimaryStatusDetails>;
+  Array<GoogleAdsSearchads360V23Common__AssetLinkPrimaryStatusDetails>;
 export const GoogleAdsSearchads360V23Common__AssetLinkPrimaryStatusDetailsList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Common__AssetLinkPrimaryStatusDetails,
@@ -6065,7 +6271,10 @@ export const GoogleAdsSearchads360V23Resources__AssetGroupAssetPrimaryStatusReas
   /*@__PURE__*/ S.String;
 
 export type GoogleAdsSearchads360V23Resources__AssetGroupAssetPrimaryStatusReasonsItemEnumList =
-  ReadonlyArray<GoogleAdsSearchads360V23Resources__AssetGroupAssetPrimaryStatusReasonsItemEnum>;
+  Array<
+    | GoogleAdsSearchads360V23Resources__AssetGroupAssetPrimaryStatusReasonsItemEnum
+    | (string & {})
+  >;
 export const GoogleAdsSearchads360V23Resources__AssetGroupAssetPrimaryStatusReasonsItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Resources__AssetGroupAssetPrimaryStatusReasonsItemEnum,
@@ -6074,11 +6283,15 @@ export const GoogleAdsSearchads360V23Resources__AssetGroupAssetPrimaryStatusReas
 /** AssetGroupAsset is the link between an asset and an asset group. Adding an AssetGroupAsset links an asset with an asset group. */
 export interface GoogleAdsSearchads360V23Resources__AssetGroupAsset {
   /** Output only. Source of the asset group asset. */
-  source?: GoogleAdsSearchads360V23Resources__AssetGroupAssetSourceEnum;
+  source?:
+    | GoogleAdsSearchads360V23Resources__AssetGroupAssetSourceEnum
+    | (string & {});
   /** Immutable. The asset which this asset group asset is linking. */
   asset?: string;
   /** The description of the placement of the asset within the asset group. For example: HEADLINE, YOUTUBE_VIDEO etc */
-  fieldType?: GoogleAdsSearchads360V23Resources__AssetGroupAssetFieldTypeEnum;
+  fieldType?:
+    | GoogleAdsSearchads360V23Resources__AssetGroupAssetFieldTypeEnum
+    | (string & {});
   /** Immutable. The resource name of the asset group asset. Asset group asset resource name have the form: `customers/{customer_id}/assetGroupAssets/{asset_group_id}~{asset_id}~{field_type}` */
   resourceName?: string;
   /** Immutable. The asset group which this asset group asset is linking. */
@@ -6088,9 +6301,13 @@ export interface GoogleAdsSearchads360V23Resources__AssetGroupAsset {
   /** Output only. Provides the details of the primary status and its associated reasons. */
   primaryStatusDetails?: GoogleAdsSearchads360V23Common__AssetLinkPrimaryStatusDetailsList;
   /** The status of the link between an asset and asset group. */
-  status?: GoogleAdsSearchads360V23Resources__AssetGroupAssetStatusEnum;
+  status?:
+    | GoogleAdsSearchads360V23Resources__AssetGroupAssetStatusEnum
+    | (string & {});
   /** Output only. Provides the PrimaryStatus of this asset link. Primary status is meant essentially to differentiate between the plain "status" field, which has advertiser set values of enabled, paused, or removed. The primary status takes into account other signals (for assets its mainly policy and quality approvals) to come up with a more comprehensive status to indicate its serving state. */
-  primaryStatus?: GoogleAdsSearchads360V23Resources__AssetGroupAssetPrimaryStatusEnum;
+  primaryStatus?:
+    | GoogleAdsSearchads360V23Resources__AssetGroupAssetPrimaryStatusEnum
+    | (string & {});
   /** Output only. Provides a list of reasons for why an asset is not serving or not serving at full capacity. */
   primaryStatusReasons?: GoogleAdsSearchads360V23Resources__AssetGroupAssetPrimaryStatusReasonsItemEnumList;
 }
@@ -6193,7 +6410,10 @@ export const GoogleAdsSearchads360V23Resources__CampaignExcludedParentAssetSetTy
   /*@__PURE__*/ S.String;
 
 export type GoogleAdsSearchads360V23Resources__CampaignExcludedParentAssetSetTypesItemEnumList =
-  ReadonlyArray<GoogleAdsSearchads360V23Resources__CampaignExcludedParentAssetSetTypesItemEnum>;
+  Array<
+    | GoogleAdsSearchads360V23Resources__CampaignExcludedParentAssetSetTypesItemEnum
+    | (string & {})
+  >;
 export const GoogleAdsSearchads360V23Resources__CampaignExcludedParentAssetSetTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Resources__CampaignExcludedParentAssetSetTypesItemEnum,
@@ -6216,7 +6436,9 @@ export const GoogleAdsSearchads360V23Common__TargetRestrictionTargetingDimension
 /** The list of per-targeting-dimension targeting settings. */
 export interface GoogleAdsSearchads360V23Common__TargetRestriction {
   /** The targeting dimension that these settings apply to. */
-  targetingDimension?: GoogleAdsSearchads360V23Common__TargetRestrictionTargetingDimensionEnum;
+  targetingDimension?:
+    | GoogleAdsSearchads360V23Common__TargetRestrictionTargetingDimensionEnum
+    | (string & {});
   /** Indicates whether to restrict your ads to show only for the criteria you have selected for this targeting_dimension, or to target all values for this targeting_dimension and show ads based on your targeting in other TargetingDimensions. A value of `true` means that these criteria will only apply bid modifiers, and not affect targeting. A value of `false` means that these criteria will restrict targeting as well as applying bid modifiers. */
   bidOnly?: boolean;
 }
@@ -6233,7 +6455,7 @@ export const GoogleAdsSearchads360V23Common__TargetRestriction =
   }) as any as S.Schema<GoogleAdsSearchads360V23Common__TargetRestriction>;
 
 export type GoogleAdsSearchads360V23Common__TargetRestrictionList =
-  ReadonlyArray<GoogleAdsSearchads360V23Common__TargetRestriction>;
+  Array<GoogleAdsSearchads360V23Common__TargetRestriction>;
 export const GoogleAdsSearchads360V23Common__TargetRestrictionList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Common__TargetRestriction,
@@ -6247,7 +6469,9 @@ export const GoogleAdsSearchads360V23Common__TargetRestrictionOperationOperatorE
 /** Operation to be performed on a target restriction list in a mutate. */
 export interface GoogleAdsSearchads360V23Common__TargetRestrictionOperation {
   /** Type of list operation to perform. */
-  operator?: GoogleAdsSearchads360V23Common__TargetRestrictionOperationOperatorEnum;
+  operator?:
+    | GoogleAdsSearchads360V23Common__TargetRestrictionOperationOperatorEnum
+    | (string & {});
   /** The target restriction being added to or removed from the list. */
   value?: GoogleAdsSearchads360V23Common__TargetRestriction;
 }
@@ -6264,7 +6488,7 @@ export const GoogleAdsSearchads360V23Common__TargetRestrictionOperation =
   }) as any as S.Schema<GoogleAdsSearchads360V23Common__TargetRestrictionOperation>;
 
 export type GoogleAdsSearchads360V23Common__TargetRestrictionOperationList =
-  ReadonlyArray<GoogleAdsSearchads360V23Common__TargetRestrictionOperation>;
+  Array<GoogleAdsSearchads360V23Common__TargetRestrictionOperation>;
 export const GoogleAdsSearchads360V23Common__TargetRestrictionOperationList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Common__TargetRestrictionOperation,
@@ -6364,7 +6588,10 @@ export const GoogleAdsSearchads360V23Resources__CampaignPrimaryStatusReasonsItem
   /*@__PURE__*/ S.String;
 
 export type GoogleAdsSearchads360V23Resources__CampaignPrimaryStatusReasonsItemEnumList =
-  ReadonlyArray<GoogleAdsSearchads360V23Resources__CampaignPrimaryStatusReasonsItemEnum>;
+  Array<
+    | GoogleAdsSearchads360V23Resources__CampaignPrimaryStatusReasonsItemEnum
+    | (string & {})
+  >;
 export const GoogleAdsSearchads360V23Resources__CampaignPrimaryStatusReasonsItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Resources__CampaignPrimaryStatusReasonsItemEnum,
@@ -6393,7 +6620,9 @@ export const GoogleAdsSearchads360V23Common__TargetImpressionShareLocationEnum =
 /** An automated bidding strategy that sets bids so that a certain percentage of search ads are shown at the top of the first page (or other targeted location). */
 export interface GoogleAdsSearchads360V23Common__TargetImpressionShare {
   /** The targeted location on the search results page. */
-  location?: GoogleAdsSearchads360V23Common__TargetImpressionShareLocationEnum;
+  location?:
+    | GoogleAdsSearchads360V23Common__TargetImpressionShareLocationEnum
+    | (string & {});
   /** The chosen fraction of ads to be shown in the targeted location in micros. For example, 1% equals 10,000. */
   locationFractionMicros?: string;
   /** The highest CPC bid the automated bidding system is permitted to specify. This is a required field entered by the advertiser that sets the ceiling and specified in local micros. */
@@ -6544,7 +6773,9 @@ export interface GoogleAdsSearchads360V23Resources_Campaign_PerformanceMaxUpgrad
   /** Output only. The resource name of the legacy campaign upgraded to Performance Max. */
   preUpgradeCampaign?: string;
   /** Output only. The upgrade status of a campaign requested to be upgraded to Performance Max. */
-  status?: GoogleAdsSearchads360V23Resources_Campaign_PerformanceMaxUpgradeStatusEnum;
+  status?:
+    | GoogleAdsSearchads360V23Resources_Campaign_PerformanceMaxUpgradeStatusEnum
+    | (string & {});
 }
 export const GoogleAdsSearchads360V23Resources_Campaign_PerformanceMaxUpgrade =
   /*@__PURE__*/ S.suspend(() =>
@@ -6597,9 +6828,13 @@ export const GoogleAdsSearchads360V23Resources_Campaign_GeoTargetTypeSettingNega
 /** Represents a collection of settings related to ads geotargeting. */
 export interface GoogleAdsSearchads360V23Resources_Campaign_GeoTargetTypeSetting {
   /** The setting used for positive geotargeting in this particular campaign. */
-  positiveGeoTargetType?: GoogleAdsSearchads360V23Resources_Campaign_GeoTargetTypeSettingPositiveGeoTargetTypeEnum;
+  positiveGeoTargetType?:
+    | GoogleAdsSearchads360V23Resources_Campaign_GeoTargetTypeSettingPositiveGeoTargetTypeEnum
+    | (string & {});
   /** The setting used for negative geotargeting in this particular campaign. */
-  negativeGeoTargetType?: GoogleAdsSearchads360V23Resources_Campaign_GeoTargetTypeSettingNegativeGeoTargetTypeEnum;
+  negativeGeoTargetType?:
+    | GoogleAdsSearchads360V23Resources_Campaign_GeoTargetTypeSettingNegativeGeoTargetTypeEnum
+    | (string & {});
 }
 export const GoogleAdsSearchads360V23Resources_Campaign_GeoTargetTypeSetting =
   /*@__PURE__*/ S.suspend(() =>
@@ -6648,7 +6883,9 @@ export const GoogleAdsSearchads360V23Resources__CampaignFeedTypesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleAdsSearchads360V23Resources__CampaignFeedTypesItemEnumList =
-  ReadonlyArray<GoogleAdsSearchads360V23Resources__CampaignFeedTypesItemEnum>;
+  Array<
+    GoogleAdsSearchads360V23Resources__CampaignFeedTypesItemEnum | (string & {})
+  >;
 export const GoogleAdsSearchads360V23Resources__CampaignFeedTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Resources__CampaignFeedTypesItemEnum,
@@ -6714,7 +6951,7 @@ export const GoogleAdsSearchads360V23Resources_Campaign_CategoryBid =
   }) as any as S.Schema<GoogleAdsSearchads360V23Resources_Campaign_CategoryBid>;
 
 export type GoogleAdsSearchads360V23Resources_Campaign_CategoryBidList =
-  ReadonlyArray<GoogleAdsSearchads360V23Resources_Campaign_CategoryBid>;
+  Array<GoogleAdsSearchads360V23Resources_Campaign_CategoryBid>;
 export const GoogleAdsSearchads360V23Resources_Campaign_CategoryBidList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Resources_Campaign_CategoryBid,
@@ -6819,7 +7056,10 @@ export const GoogleAdsSearchads360V23Resources_Campaign_OptimizationGoalSettingO
   /*@__PURE__*/ S.String;
 
 export type GoogleAdsSearchads360V23Resources_Campaign_OptimizationGoalSettingOptimizationGoalTypesItemEnumList =
-  ReadonlyArray<GoogleAdsSearchads360V23Resources_Campaign_OptimizationGoalSettingOptimizationGoalTypesItemEnum>;
+  Array<
+    | GoogleAdsSearchads360V23Resources_Campaign_OptimizationGoalSettingOptimizationGoalTypesItemEnum
+    | (string & {})
+  >;
 export const GoogleAdsSearchads360V23Resources_Campaign_OptimizationGoalSettingOptimizationGoalTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Resources_Campaign_OptimizationGoalSettingOptimizationGoalTypesItemEnum,
@@ -6954,7 +7194,10 @@ export const GoogleAdsSearchads360V23Resources__CampaignExcludedParentAssetField
   /*@__PURE__*/ S.String;
 
 export type GoogleAdsSearchads360V23Resources__CampaignExcludedParentAssetFieldTypesItemEnumList =
-  ReadonlyArray<GoogleAdsSearchads360V23Resources__CampaignExcludedParentAssetFieldTypesItemEnum>;
+  Array<
+    | GoogleAdsSearchads360V23Resources__CampaignExcludedParentAssetFieldTypesItemEnum
+    | (string & {})
+  >;
 export const GoogleAdsSearchads360V23Resources__CampaignExcludedParentAssetFieldTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Resources__CampaignExcludedParentAssetFieldTypesItemEnum,
@@ -7010,7 +7253,9 @@ export const GoogleAdsSearchads360V23Common__ThirdPartyIntegrationPartnerData =
 /** Container for third party brand safety integration data for Campaign. */
 export interface GoogleAdsSearchads360V23Common__CampaignThirdPartyBrandSafetyIntegrationPartner {
   /** Allowed third party integration partners for brand safety verification. */
-  brandSafetyIntegrationPartner?: GoogleAdsSearchads360V23Common__CampaignThirdPartyBrandSafetyIntegrationPartnerBrandSafetyIntegrationPartnerEnum;
+  brandSafetyIntegrationPartner?:
+    | GoogleAdsSearchads360V23Common__CampaignThirdPartyBrandSafetyIntegrationPartnerBrandSafetyIntegrationPartnerEnum
+    | (string & {});
   /** Third party partner data for YouTube brand safety verification. This is optional metadata for partners to join or attach data to Ads campaigns. */
   brandSafetyIntegrationPartnerData?: GoogleAdsSearchads360V23Common__ThirdPartyIntegrationPartnerData;
 }
@@ -7030,7 +7275,7 @@ export const GoogleAdsSearchads360V23Common__CampaignThirdPartyBrandSafetyIntegr
   }) as any as S.Schema<GoogleAdsSearchads360V23Common__CampaignThirdPartyBrandSafetyIntegrationPartner>;
 
 export type GoogleAdsSearchads360V23Common__CampaignThirdPartyBrandSafetyIntegrationPartnerList =
-  ReadonlyArray<GoogleAdsSearchads360V23Common__CampaignThirdPartyBrandSafetyIntegrationPartner>;
+  Array<GoogleAdsSearchads360V23Common__CampaignThirdPartyBrandSafetyIntegrationPartner>;
 export const GoogleAdsSearchads360V23Common__CampaignThirdPartyBrandSafetyIntegrationPartnerList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Common__CampaignThirdPartyBrandSafetyIntegrationPartner,
@@ -7046,7 +7291,9 @@ export interface GoogleAdsSearchads360V23Common__CampaignThirdPartyViewabilityIn
   /** Third party partner data for YouTube viewability verification. This is optional metadata for partners to join or attach data to Ads campaigns. */
   viewabilityIntegrationPartnerData?: GoogleAdsSearchads360V23Common__ThirdPartyIntegrationPartnerData;
   /** Allowed third party integration partners for YouTube viewability verification. */
-  viewabilityIntegrationPartner?: GoogleAdsSearchads360V23Common__CampaignThirdPartyViewabilityIntegrationPartnerViewabilityIntegrationPartnerEnum;
+  viewabilityIntegrationPartner?:
+    | GoogleAdsSearchads360V23Common__CampaignThirdPartyViewabilityIntegrationPartnerViewabilityIntegrationPartnerEnum
+    | (string & {});
   /** If true, then cost data will be shared with this vendor. */
   shareCost?: boolean;
 }
@@ -7067,7 +7314,7 @@ export const GoogleAdsSearchads360V23Common__CampaignThirdPartyViewabilityIntegr
   }) as any as S.Schema<GoogleAdsSearchads360V23Common__CampaignThirdPartyViewabilityIntegrationPartner>;
 
 export type GoogleAdsSearchads360V23Common__CampaignThirdPartyViewabilityIntegrationPartnerList =
-  ReadonlyArray<GoogleAdsSearchads360V23Common__CampaignThirdPartyViewabilityIntegrationPartner>;
+  Array<GoogleAdsSearchads360V23Common__CampaignThirdPartyViewabilityIntegrationPartner>;
 export const GoogleAdsSearchads360V23Common__CampaignThirdPartyViewabilityIntegrationPartnerList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Common__CampaignThirdPartyViewabilityIntegrationPartner,
@@ -7086,7 +7333,9 @@ export const GoogleAdsSearchads360V23Common__CampaignThirdPartyBrandLiftIntegrat
 /** Container for third party Brand Lift integration data for Campaign. */
 export interface GoogleAdsSearchads360V23Common__CampaignThirdPartyBrandLiftIntegrationPartner {
   /** Allowed third party integration partners for Brand Lift verification. */
-  brandLiftIntegrationPartner?: GoogleAdsSearchads360V23Common__CampaignThirdPartyBrandLiftIntegrationPartnerBrandLiftIntegrationPartnerEnum;
+  brandLiftIntegrationPartner?:
+    | GoogleAdsSearchads360V23Common__CampaignThirdPartyBrandLiftIntegrationPartnerBrandLiftIntegrationPartnerEnum
+    | (string & {});
   /** Third party partner data for YouTube Brand Lift verification. This is optional metadata for partners to join or attach data to Ads campaigns. */
   brandLiftIntegrationPartnerData?: GoogleAdsSearchads360V23Common__ThirdPartyIntegrationPartnerData;
   /** If true, then cost data will be shared with this vendor. */
@@ -7109,7 +7358,7 @@ export const GoogleAdsSearchads360V23Common__CampaignThirdPartyBrandLiftIntegrat
   }) as any as S.Schema<GoogleAdsSearchads360V23Common__CampaignThirdPartyBrandLiftIntegrationPartner>;
 
 export type GoogleAdsSearchads360V23Common__CampaignThirdPartyBrandLiftIntegrationPartnerList =
-  ReadonlyArray<GoogleAdsSearchads360V23Common__CampaignThirdPartyBrandLiftIntegrationPartner>;
+  Array<GoogleAdsSearchads360V23Common__CampaignThirdPartyBrandLiftIntegrationPartner>;
 export const GoogleAdsSearchads360V23Common__CampaignThirdPartyBrandLiftIntegrationPartnerList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Common__CampaignThirdPartyBrandLiftIntegrationPartner,
@@ -7133,7 +7382,9 @@ export const GoogleAdsSearchads360V23Common__CampaignThirdPartyReachIntegrationP
 /** Container for third party reach integration data for Campaign. */
 export interface GoogleAdsSearchads360V23Common__CampaignThirdPartyReachIntegrationPartner {
   /** Allowed third party integration partners for reach verification. */
-  reachIntegrationPartner?: GoogleAdsSearchads360V23Common__CampaignThirdPartyReachIntegrationPartnerReachIntegrationPartnerEnum;
+  reachIntegrationPartner?:
+    | GoogleAdsSearchads360V23Common__CampaignThirdPartyReachIntegrationPartnerReachIntegrationPartnerEnum
+    | (string & {});
   /** If true, then cost data will be shared with this vendor. */
   shareCost?: boolean;
   /** Third party partner data for YouTube Reach verification. This is optional metadata for partners to join or attach data to Ads campaigns. */
@@ -7156,7 +7407,7 @@ export const GoogleAdsSearchads360V23Common__CampaignThirdPartyReachIntegrationP
   }) as any as S.Schema<GoogleAdsSearchads360V23Common__CampaignThirdPartyReachIntegrationPartner>;
 
 export type GoogleAdsSearchads360V23Common__CampaignThirdPartyReachIntegrationPartnerList =
-  ReadonlyArray<GoogleAdsSearchads360V23Common__CampaignThirdPartyReachIntegrationPartner>;
+  Array<GoogleAdsSearchads360V23Common__CampaignThirdPartyReachIntegrationPartner>;
 export const GoogleAdsSearchads360V23Common__CampaignThirdPartyReachIntegrationPartnerList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Common__CampaignThirdPartyReachIntegrationPartner,
@@ -7223,9 +7474,13 @@ export const GoogleAdsSearchads360V23Resources_Campaign_VanityPharmaVanityPharma
 /** Describes how unbranded pharma ads will be displayed. */
 export interface GoogleAdsSearchads360V23Resources_Campaign_VanityPharma {
   /** The display mode for vanity pharma URLs. */
-  vanityPharmaDisplayUrlMode?: GoogleAdsSearchads360V23Resources_Campaign_VanityPharmaVanityPharmaDisplayUrlModeEnum;
+  vanityPharmaDisplayUrlMode?:
+    | GoogleAdsSearchads360V23Resources_Campaign_VanityPharmaVanityPharmaDisplayUrlModeEnum
+    | (string & {});
   /** The text that will be displayed in display URL of the text ad when website description is the selected display mode for vanity pharma URLs. */
-  vanityPharmaText?: GoogleAdsSearchads360V23Resources_Campaign_VanityPharmaVanityPharmaTextEnum;
+  vanityPharmaText?:
+    | GoogleAdsSearchads360V23Resources_Campaign_VanityPharmaVanityPharmaTextEnum
+    | (string & {});
 }
 export const GoogleAdsSearchads360V23Resources_Campaign_VanityPharma =
   /*@__PURE__*/ S.suspend(() =>
@@ -7280,7 +7535,9 @@ export const GoogleAdsSearchads360V23Resources_Campaign_LocalCampaignSettingLoca
 /** Campaign setting for local campaigns. */
 export interface GoogleAdsSearchads360V23Resources_Campaign_LocalCampaignSetting {
   /** The location source type for this local campaign. */
-  locationSourceType?: GoogleAdsSearchads360V23Resources_Campaign_LocalCampaignSettingLocationSourceTypeEnum;
+  locationSourceType?:
+    | GoogleAdsSearchads360V23Resources_Campaign_LocalCampaignSettingLocationSourceTypeEnum
+    | (string & {});
 }
 export const GoogleAdsSearchads360V23Resources_Campaign_LocalCampaignSetting =
   /*@__PURE__*/ S.suspend(() =>
@@ -7318,9 +7575,13 @@ export const GoogleAdsSearchads360V23Resources_Campaign_AssetAutomationSettingAs
 /** Asset automation setting contains pair of AssetAutomationType and the asset automation opt-in/out status */
 export interface GoogleAdsSearchads360V23Resources_Campaign_AssetAutomationSetting {
   /** The asset automation type advertiser would like to opt-in/out. */
-  assetAutomationType?: GoogleAdsSearchads360V23Resources_Campaign_AssetAutomationSettingAssetAutomationTypeEnum;
+  assetAutomationType?:
+    | GoogleAdsSearchads360V23Resources_Campaign_AssetAutomationSettingAssetAutomationTypeEnum
+    | (string & {});
   /** The opt-in/out status of asset automation type. */
-  assetAutomationStatus?: GoogleAdsSearchads360V23Resources_Campaign_AssetAutomationSettingAssetAutomationStatusEnum;
+  assetAutomationStatus?:
+    | GoogleAdsSearchads360V23Resources_Campaign_AssetAutomationSettingAssetAutomationStatusEnum
+    | (string & {});
 }
 export const GoogleAdsSearchads360V23Resources_Campaign_AssetAutomationSetting =
   /*@__PURE__*/ S.suspend(() =>
@@ -7338,7 +7599,7 @@ export const GoogleAdsSearchads360V23Resources_Campaign_AssetAutomationSetting =
   }) as any as S.Schema<GoogleAdsSearchads360V23Resources_Campaign_AssetAutomationSetting>;
 
 export type GoogleAdsSearchads360V23Resources_Campaign_AssetAutomationSettingList =
-  ReadonlyArray<GoogleAdsSearchads360V23Resources_Campaign_AssetAutomationSetting>;
+  Array<GoogleAdsSearchads360V23Resources_Campaign_AssetAutomationSetting>;
 export const GoogleAdsSearchads360V23Resources_Campaign_AssetAutomationSettingList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Resources_Campaign_AssetAutomationSetting,
@@ -7466,7 +7727,9 @@ export interface GoogleAdsSearchads360V23Resources_Campaign_AiMaxSetting {
   /** Controls whether or not AI Max features are served for this campaign. Individual AI Max features are enabled or disabled by their respective settings. But if enable_ai_max is set to false or cleared, then no AI Max features will serve for this campaign, regardless of the other settings. Search Term Matching is enabled by default when AI Max is enabled, and can be disabled at the ad group level. */
   enableAiMax?: boolean;
   /** Output only. Indicates whether a search campaign has adopted AI Max before, and is required to have AI Max enabled to adopt campaign-level text asset automation and brand list targeting in all API versions. */
-  bundlingRequired?: GoogleAdsSearchads360V23Resources_Campaign_AiMaxSettingBundlingRequiredEnum;
+  bundlingRequired?:
+    | GoogleAdsSearchads360V23Resources_Campaign_AiMaxSettingBundlingRequiredEnum
+    | (string & {});
 }
 export const GoogleAdsSearchads360V23Resources_Campaign_AiMaxSetting =
   /*@__PURE__*/ S.suspend(() =>
@@ -7520,11 +7783,17 @@ export const GoogleAdsSearchads360V23Common__FrequencyCapKeyTimeUnitEnum =
 /** A group of fields used as keys for a frequency cap. There can be no more than one frequency cap with the same key. */
 export interface GoogleAdsSearchads360V23Common__FrequencyCapKey {
   /** The type of event that the cap applies to (for example, impression). */
-  eventType?: GoogleAdsSearchads360V23Common__FrequencyCapKeyEventTypeEnum;
+  eventType?:
+    | GoogleAdsSearchads360V23Common__FrequencyCapKeyEventTypeEnum
+    | (string & {});
   /** The level on which the cap is to be applied (for example, ad group ad, ad group). The cap is applied to all the entities of this level. */
-  level?: GoogleAdsSearchads360V23Common__FrequencyCapKeyLevelEnum;
+  level?:
+    | GoogleAdsSearchads360V23Common__FrequencyCapKeyLevelEnum
+    | (string & {});
   /** Unit of time the cap is defined at (for example, day, week). */
-  timeUnit?: GoogleAdsSearchads360V23Common__FrequencyCapKeyTimeUnitEnum;
+  timeUnit?:
+    | GoogleAdsSearchads360V23Common__FrequencyCapKeyTimeUnitEnum
+    | (string & {});
   /** Number of time units the cap lasts. */
   timeLength?: number;
 }
@@ -7564,7 +7833,7 @@ export const GoogleAdsSearchads360V23Common__FrequencyCapEntry =
   }) as any as S.Schema<GoogleAdsSearchads360V23Common__FrequencyCapEntry>;
 
 export type GoogleAdsSearchads360V23Common__FrequencyCapEntryList =
-  ReadonlyArray<GoogleAdsSearchads360V23Common__FrequencyCapEntry>;
+  Array<GoogleAdsSearchads360V23Common__FrequencyCapEntry>;
 export const GoogleAdsSearchads360V23Common__FrequencyCapEntryList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Common__FrequencyCapEntry,
@@ -7645,9 +7914,13 @@ export const GoogleAdsSearchads360V23Resources_Campaign_AppCampaignSettingBiddin
 /** Campaign-level settings for App Campaigns. */
 export interface GoogleAdsSearchads360V23Resources_Campaign_AppCampaignSetting {
   /** Immutable. The application store that distributes this specific app. */
-  appStore?: GoogleAdsSearchads360V23Resources_Campaign_AppCampaignSettingAppStoreEnum;
+  appStore?:
+    | GoogleAdsSearchads360V23Resources_Campaign_AppCampaignSettingAppStoreEnum
+    | (string & {});
   /** Represents the goal which the bidding strategy of this app campaign should optimize towards. */
-  biddingStrategyGoalType?: GoogleAdsSearchads360V23Resources_Campaign_AppCampaignSettingBiddingStrategyGoalTypeEnum;
+  biddingStrategyGoalType?:
+    | GoogleAdsSearchads360V23Resources_Campaign_AppCampaignSettingBiddingStrategyGoalTypeEnum
+    | (string & {});
   /** Immutable. A string that uniquely identifies a mobile application. */
   appId?: string;
 }
@@ -7695,13 +7968,17 @@ export interface GoogleAdsSearchads360V23Resources__Campaign {
   /** Immutable. The resource name for a set of hotel properties for Performance Max for travel goals campaigns. */
   hotelPropertyAssetSet?: string;
   /** Immutable. Listing type of ads served for this campaign. Field is restricted for usage with Performance Max campaigns. */
-  listingType?: GoogleAdsSearchads360V23Resources__CampaignListingTypeEnum;
+  listingType?:
+    | GoogleAdsSearchads360V23Resources__CampaignListingTypeEnum
+    | (string & {});
   /** The name of the campaign. This field is required and should not be empty when creating new campaigns. It must not contain any null (code point 0x0), NL line feed (code point 0xA) or carriage return (code point 0xD) characters. */
   name?: string;
   /** Output only. The primary status reasons of the campaign. Provides insight into why a campaign is not serving or not serving optimally. These reasons are aggregated to determine an overall CampaignPrimaryStatus. */
   primaryStatusReasons?: GoogleAdsSearchads360V23Resources__CampaignPrimaryStatusReasonsItemEnumList;
   /** Output only. The ad serving status of the campaign. */
-  servingStatus?: GoogleAdsSearchads360V23Resources__CampaignServingStatusEnum;
+  servingStatus?:
+    | GoogleAdsSearchads360V23Resources__CampaignServingStatusEnum
+    | (string & {});
   /** Output only. Optimization score of the campaign. Optimization score is an estimate of how well a campaign is set to perform. It ranges from 0% (0.0) to 100% (1.0), with 100% indicating that the campaign is performing at full potential. This field is null for unscored campaigns. See "About optimization score" at https://support.google.com/google-ads/answer/9061546. This field is read-only. */
   optimizationScore?: number;
   /** Target Impression Share bidding strategy. An automated bidding strategy that sets bids to achieve a chosen percentage of impressions. */
@@ -7711,12 +7988,16 @@ export interface GoogleAdsSearchads360V23Resources__Campaign {
   /** Output only. The ID of the campaign. */
   id?: string;
   /** Immutable. The primary serving target for ads within the campaign. The targeting options can be refined in `network_settings`. This field is required and should not be empty when creating new campaigns. Can be set only when creating campaigns. After the campaign is created, the field can not be changed. */
-  advertisingChannelType?: GoogleAdsSearchads360V23Resources__CampaignAdvertisingChannelTypeEnum;
+  advertisingChannelType?:
+    | GoogleAdsSearchads360V23Resources__CampaignAdvertisingChannelTypeEnum
+    | (string & {});
   brandGuidelines?: GoogleAdsSearchads360V23Resources_Campaign_BrandGuidelines;
   /** Selective optimization setting for this campaign, which includes a set of conversion actions to optimize this campaign towards. This feature only applies to app campaigns that use MULTI_CHANNEL as AdvertisingChannelType and APP_CAMPAIGN or APP_CAMPAIGN_FOR_ENGAGEMENT as AdvertisingChannelSubType. */
   selectiveOptimization?: GoogleAdsSearchads360V23Resources_Campaign_SelectiveOptimization;
   /** Output only. The type of campaign: normal, draft, or experiment. */
-  experimentType?: GoogleAdsSearchads360V23Resources__CampaignExperimentTypeEnum;
+  experimentType?:
+    | GoogleAdsSearchads360V23Resources__CampaignExperimentTypeEnum
+    | (string & {});
   /** Suffix used to append query parameters to landing pages that are served with parallel tracking. */
   finalUrlSuffix?: string;
   /** Immutable. Setting for audience related features. */
@@ -7724,9 +8005,13 @@ export interface GoogleAdsSearchads360V23Resources__Campaign {
   /** The last day and time of the campaign in serving customer's timezone in "yyyy-MM-dd HH:mm:ss" format. Set the time component to 23:59:59 for daily granularity, time granularity is only supported for some campaign types. On create, defaults to running indefinitely. To set an existing campaign to run indefinitely, clear this field. */
   endDateTime?: string;
   /** Selective optimization mode for this campaign. */
-  selectiveOptimizationMode?: GoogleAdsSearchads360V23Resources__CampaignSelectiveOptimizationModeEnum;
+  selectiveOptimizationMode?:
+    | GoogleAdsSearchads360V23Resources__CampaignSelectiveOptimizationModeEnum
+    | (string & {});
   /** Output only. The primary status of the campaign. Provides insight into why a campaign is not serving or not serving optimally. Modification to the campaign and its related entities might take a while to be reflected in this status. */
-  primaryStatus?: GoogleAdsSearchads360V23Resources__CampaignPrimaryStatusEnum;
+  primaryStatus?:
+    | GoogleAdsSearchads360V23Resources__CampaignPrimaryStatusEnum
+    | (string & {});
   /** Output only. Information about campaigns being upgraded to Performance Max. */
   performanceMaxUpgrade?: GoogleAdsSearchads360V23Resources_Campaign_PerformanceMaxUpgrade;
   /** Standard Maximize Conversions bidding strategy that automatically maximizes number of conversions while spending your budget. */
@@ -7734,7 +8019,9 @@ export interface GoogleAdsSearchads360V23Resources__Campaign {
   /** The setting for ads geotargeting. */
   geoTargetTypeSetting?: GoogleAdsSearchads360V23Resources_Campaign_GeoTargetTypeSetting;
   /** Brand Safety setting at the individual campaign level. Allows for selecting an inventory type to show your ads on content that is the right fit for your brand. See https://support.google.com/google-ads/answer/7515513. */
-  videoBrandSafetySuitability?: GoogleAdsSearchads360V23Resources__CampaignVideoBrandSafetySuitabilityEnum;
+  videoBrandSafetySuitability?:
+    | GoogleAdsSearchads360V23Resources__CampaignVideoBrandSafetySuitabilityEnum
+    | (string & {});
   /** Output only. Types of feeds that are attached directly to this campaign. */
   feedTypes?: GoogleAdsSearchads360V23Resources__CampaignFeedTypesItemEnumList;
   /** The date and time when campaign started in serving. The timestamp is in the customer's time zone and in "yyyy-MM-dd HH:mm:ss" format. Set the time component to 00:00:00 for daily granularity, time granularity is only supported for some campaign types. */
@@ -7744,7 +8031,9 @@ export interface GoogleAdsSearchads360V23Resources__Campaign {
   /** Output only. ID of the campaign in the external engine account. This field is for non-Google Ads account only, for example, Yahoo Japan, Microsoft, Baidu etc. For Google Ads entity, use "campaign.id" instead. */
   engineId?: string;
   /** Immutable. Optional refinement to `advertising_channel_type`. Must be a valid sub-type of the parent channel type. Can be set only when creating campaigns. After campaign is created, the field can not be changed. */
-  advertisingChannelSubType?: GoogleAdsSearchads360V23Resources__CampaignAdvertisingChannelSubTypeEnum;
+  advertisingChannelSubType?:
+    | GoogleAdsSearchads360V23Resources__CampaignAdvertisingChannelSubTypeEnum
+    | (string & {});
   /** The list of mappings used to substitute custom parameter tags in a `tracking_url_template`, `final_urls`, or `mobile_final_urls`. */
   urlCustomParameters?: GoogleAdsSearchads360V23Common__CustomParameterList;
   /** The Local Services Campaign related settings. */
@@ -7752,13 +8041,17 @@ export interface GoogleAdsSearchads360V23Resources__Campaign {
   /** Output only. The hotel setting for the campaign. */
   hotelSetting?: GoogleAdsSearchads360V23Resources_Campaign_HotelSettingInfo;
   /** Payment mode for the campaign. */
-  paymentMode?: GoogleAdsSearchads360V23Resources__CampaignPaymentModeEnum;
+  paymentMode?:
+    | GoogleAdsSearchads360V23Resources__CampaignPaymentModeEnum
+    | (string & {});
   /** Standard Percent Cpc bidding strategy where bids are a fraction of the advertised price for some good or service. */
   percentCpc?: GoogleAdsSearchads360V23Common__PercentCpc;
   /** Standard Manual CPA bidding strategy. Manual bidding strategy that allows advertiser to set the bid per advertiser-specified action. Supported only for Local Services campaigns. */
   manualCpa?: GoogleAdsSearchads360V23Common__ManualCpa;
   /** Output only. The type of bidding strategy. A bidding strategy can be created by setting either the bidding scheme to create a standard bidding strategy or the `bidding_strategy` field to create a portfolio bidding strategy. This field is read-only. */
-  biddingStrategyType?: GoogleAdsSearchads360V23Resources__CampaignBiddingStrategyTypeEnum;
+  biddingStrategyType?:
+    | GoogleAdsSearchads360V23Resources__CampaignBiddingStrategyTypeEnum
+    | (string & {});
   /** Optimization goal setting for this campaign, which includes a set of optimization goal types. */
   optimizationGoalSetting?: GoogleAdsSearchads360V23Resources_Campaign_OptimizationGoalSetting;
   /** Output only. Indicates whether this campaign is missing a declaration about whether it contains political advertising targeted towards the EU and is ineligible for any exemptions. If this field is true, use the contains_eu_political_advertising field to add the required declaration. This field is read-only. */
@@ -7784,19 +8077,25 @@ export interface GoogleAdsSearchads360V23Resources__Campaign {
   /** Describes how unbranded pharma ads will be displayed. */
   vanityPharma?: GoogleAdsSearchads360V23Resources_Campaign_VanityPharma;
   /** Output only. The system status of the campaign's bidding strategy. */
-  biddingStrategySystemStatus?: GoogleAdsSearchads360V23Resources__CampaignBiddingStrategySystemStatusEnum;
+  biddingStrategySystemStatus?:
+    | GoogleAdsSearchads360V23Resources__CampaignBiddingStrategySystemStatusEnum
+    | (string & {});
   /** The setting for local campaign. */
   localCampaignSetting?: GoogleAdsSearchads360V23Resources_Campaign_LocalCampaignSetting;
   /** Contains the opt-in/out status of each AssetAutomationType. See documentation of each asset automation type enum for default opt in/out behavior. */
   assetAutomationSettings?: GoogleAdsSearchads360V23Resources_Campaign_AssetAutomationSettingList;
   /** The status of the campaign. When a new campaign is added, the status defaults to ENABLED. */
-  status?: GoogleAdsSearchads360V23Resources__CampaignStatusEnum;
+  status?:
+    | GoogleAdsSearchads360V23Resources__CampaignStatusEnum
+    | (string & {});
   /** The URL template for constructing a tracking URL. */
   trackingUrlTemplate?: string;
   /** Settings for Performance Max campaign. */
   pmaxCampaignSettings?: GoogleAdsSearchads360V23Resources_Campaign_PmaxCampaignSettings;
   /** Keyword match type of Campaign. Set to BROAD to set broad matching for all keywords in a campaign. */
-  keywordMatchType?: GoogleAdsSearchads360V23Resources__CampaignKeywordMatchTypeEnum;
+  keywordMatchType?:
+    | GoogleAdsSearchads360V23Resources__CampaignKeywordMatchTypeEnum
+    | (string & {});
   /** Settings for Real-Time Bidding, a feature only available for campaigns targeting the Ad Exchange network. */
   realTimeBiddingSetting?: GoogleAdsSearchads360V23Common__RealTimeBiddingSetting;
   /** The network settings for the campaign. */
@@ -7814,7 +8113,9 @@ export interface GoogleAdsSearchads360V23Resources__Campaign {
   /** Settings for AI Max in search campaigns. */
   aiMaxSetting?: GoogleAdsSearchads360V23Resources_Campaign_AiMaxSetting;
   /** The ad serving optimization status of the campaign. */
-  adServingOptimizationStatus?: GoogleAdsSearchads360V23Resources__CampaignAdServingOptimizationStatusEnum;
+  adServingOptimizationStatus?:
+    | GoogleAdsSearchads360V23Resources__CampaignAdServingOptimizationStatusEnum
+    | (string & {});
   /** Output only. The resource names of labels attached to this campaign. */
   labels?: StringList;
   /** A list that limits how often each user will see this campaign's ads. */
@@ -7830,7 +8131,9 @@ export interface GoogleAdsSearchads360V23Resources__Campaign {
   /** Output only. The resource name of the base campaign of a draft or experiment campaign. For base campaigns, this is equal to `resource_name`. This field is read-only. */
   baseCampaign?: string;
   /** The advertiser should self-declare whether this campaign contains political advertising content targeted towards the European Union. */
-  containsEuPoliticalAdvertising?: GoogleAdsSearchads360V23Resources__CampaignContainsEuPoliticalAdvertisingEnum;
+  containsEuPoliticalAdvertising?:
+    | GoogleAdsSearchads360V23Resources__CampaignContainsEuPoliticalAdvertisingEnum
+    | (string & {});
 }
 export const GoogleAdsSearchads360V23Resources__Campaign =
   /*@__PURE__*/ S.suspend(() =>
@@ -8046,9 +8349,13 @@ export const GoogleAdsSearchads360V23Resources__ConversionGoalCampaignConfigGoal
 /** Conversion goal settings for a Campaign. */
 export interface GoogleAdsSearchads360V23Resources__ConversionGoalCampaignConfig {
   /** The level of Search Ads 360 goal config the campaign is using. */
-  searchAds360GoalConfigLevel?: GoogleAdsSearchads360V23Resources__ConversionGoalCampaignConfigSearchAds360GoalConfigLevelEnum;
+  searchAds360GoalConfigLevel?:
+    | GoogleAdsSearchads360V23Resources__ConversionGoalCampaignConfigSearchAds360GoalConfigLevelEnum
+    | (string & {});
   /** The level of goal config the campaign is using. */
-  goalConfigLevel?: GoogleAdsSearchads360V23Resources__ConversionGoalCampaignConfigGoalConfigLevelEnum;
+  goalConfigLevel?:
+    | GoogleAdsSearchads360V23Resources__ConversionGoalCampaignConfigGoalConfigLevelEnum
+    | (string & {});
   /** The custom conversion goal the campaign is using for optimization. */
   customConversionGoal?: string;
   /** The Search Ads 360 custom conversion goal the campaign is using for optimization. */
@@ -8109,7 +8416,10 @@ export const GoogleAdsSearchads360V23Resources__BiddingDataExclusionDevicesItemE
   /*@__PURE__*/ S.String;
 
 export type GoogleAdsSearchads360V23Resources__BiddingDataExclusionDevicesItemEnumList =
-  ReadonlyArray<GoogleAdsSearchads360V23Resources__BiddingDataExclusionDevicesItemEnum>;
+  Array<
+    | GoogleAdsSearchads360V23Resources__BiddingDataExclusionDevicesItemEnum
+    | (string & {})
+  >;
 export const GoogleAdsSearchads360V23Resources__BiddingDataExclusionDevicesItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Resources__BiddingDataExclusionDevicesItemEnum,
@@ -8135,7 +8445,10 @@ export const GoogleAdsSearchads360V23Resources__BiddingDataExclusionAdvertisingC
   /*@__PURE__*/ S.String;
 
 export type GoogleAdsSearchads360V23Resources__BiddingDataExclusionAdvertisingChannelTypesItemEnumList =
-  ReadonlyArray<GoogleAdsSearchads360V23Resources__BiddingDataExclusionAdvertisingChannelTypesItemEnum>;
+  Array<
+    | GoogleAdsSearchads360V23Resources__BiddingDataExclusionAdvertisingChannelTypesItemEnum
+    | (string & {})
+  >;
 export const GoogleAdsSearchads360V23Resources__BiddingDataExclusionAdvertisingChannelTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Resources__BiddingDataExclusionAdvertisingChannelTypesItemEnum,
@@ -8167,11 +8480,15 @@ export interface GoogleAdsSearchads360V23Resources__BiddingDataExclusion {
   /** The data_exclusion will apply to all the campaigns under the listed channels retroactively as well as going forward when the scope of this exclusion is CHANNEL. The supported advertising channel types are DISPLAY, SEARCH and SHOPPING. Note: a data exclusion with both advertising_channel_types and campaign_ids is not supported. */
   advertisingChannelTypes?: GoogleAdsSearchads360V23Resources__BiddingDataExclusionAdvertisingChannelTypesItemEnumList;
   /** Output only. The status of the data exclusion. */
-  status?: GoogleAdsSearchads360V23Resources__BiddingDataExclusionStatusEnum;
+  status?:
+    | GoogleAdsSearchads360V23Resources__BiddingDataExclusionStatusEnum
+    | (string & {});
   /** The name of the data exclusion. The name can be at most 255 characters. */
   name?: string;
   /** The scope of the data exclusion. */
-  scope?: GoogleAdsSearchads360V23Resources__BiddingDataExclusionScopeEnum;
+  scope?:
+    | GoogleAdsSearchads360V23Resources__BiddingDataExclusionScopeEnum
+    | (string & {});
   /** Required. The inclusive start time of the data exclusion in yyyy-MM-dd HH:mm:ss format. A data exclusion is backward looking and should be used for events that start in the past and end either in the past or future. */
   startDateTime?: string;
   /** The data exclusion will apply to the campaigns listed when the scope of this exclusion is CAMPAIGN. The maximum number of campaigns per event is 2000. Note: a data exclusion with both advertising_channel_types and campaign_ids is not supported. */
@@ -8261,9 +8578,13 @@ export const GoogleAdsSearchads360V23Resources_ConversionCustomVariable_Floodlig
 /** Information for Search Ads 360 Floodlight Conversion Custom Variables. */
 export interface GoogleAdsSearchads360V23Resources_ConversionCustomVariable_FloodlightConversionCustomVariableInfo {
   /** Output only. Floodlight variable type defined in Search Ads 360. */
-  floodlightVariableType?: GoogleAdsSearchads360V23Resources_ConversionCustomVariable_FloodlightConversionCustomVariableInfoFloodlightVariableTypeEnum;
+  floodlightVariableType?:
+    | GoogleAdsSearchads360V23Resources_ConversionCustomVariable_FloodlightConversionCustomVariableInfoFloodlightVariableTypeEnum
+    | (string & {});
   /** Output only. Floodlight variable data type defined in Search Ads 360. */
-  floodlightVariableDataType?: GoogleAdsSearchads360V23Resources_ConversionCustomVariable_FloodlightConversionCustomVariableInfoFloodlightVariableDataTypeEnum;
+  floodlightVariableDataType?:
+    | GoogleAdsSearchads360V23Resources_ConversionCustomVariable_FloodlightConversionCustomVariableInfoFloodlightVariableDataTypeEnum
+    | (string & {});
 }
 export const GoogleAdsSearchads360V23Resources_ConversionCustomVariable_FloodlightConversionCustomVariableInfo =
   /*@__PURE__*/ S.suspend(() =>
@@ -8293,17 +8614,23 @@ export const GoogleAdsSearchads360V23Resources__ConversionCustomVariableCardinal
 /** A conversion custom variable. See "About custom Floodlight metrics and dimensions in the new Search Ads 360" at https://support.google.com/sa360/answer/13567857 */
 export interface GoogleAdsSearchads360V23Resources__ConversionCustomVariable {
   /** Output only. Family of the conversion custom variable. */
-  family?: GoogleAdsSearchads360V23Resources__ConversionCustomVariableFamilyEnum;
+  family?:
+    | GoogleAdsSearchads360V23Resources__ConversionCustomVariableFamilyEnum
+    | (string & {});
   /** Output only. The IDs of custom columns that use this conversion custom variable. */
   customColumnIds?: StringList;
   /** The status of the conversion custom variable for conversion event accrual. */
-  status?: GoogleAdsSearchads360V23Resources__ConversionCustomVariableStatusEnum;
+  status?:
+    | GoogleAdsSearchads360V23Resources__ConversionCustomVariableStatusEnum
+    | (string & {});
   /** Output only. Fields for Search Ads 360 floodlight conversion custom variables. */
   floodlightConversionCustomVariableInfo?: GoogleAdsSearchads360V23Resources_ConversionCustomVariable_FloodlightConversionCustomVariableInfo;
   /** Required. The name of the conversion custom variable. Name should be unique. The maximum length of name is 100 characters. There should not be any extra spaces before and after. */
   name?: string;
   /** Output only. Cardinality of the conversion custom variable. */
-  cardinality?: GoogleAdsSearchads360V23Resources__ConversionCustomVariableCardinalityEnum;
+  cardinality?:
+    | GoogleAdsSearchads360V23Resources__ConversionCustomVariableCardinalityEnum
+    | (string & {});
   /** Immutable. The resource name of the conversion custom variable. Conversion custom variable resource names have the form: `customers/{customer_id}/conversionCustomVariables/{conversion_custom_variable_id}` */
   resourceName?: string;
   /** Required. Immutable. The tag of the conversion custom variable. Tag should be unique and consist of a "u" character directly followed with a number less than ormequal to 100. For example: "u4". */
@@ -8536,7 +8863,10 @@ export const GoogleAdsSearchads360V23Resources__CustomerAssetPrimaryStatusReason
   /*@__PURE__*/ S.String;
 
 export type GoogleAdsSearchads360V23Resources__CustomerAssetPrimaryStatusReasonsItemEnumList =
-  ReadonlyArray<GoogleAdsSearchads360V23Resources__CustomerAssetPrimaryStatusReasonsItemEnum>;
+  Array<
+    | GoogleAdsSearchads360V23Resources__CustomerAssetPrimaryStatusReasonsItemEnum
+    | (string & {})
+  >;
 export const GoogleAdsSearchads360V23Resources__CustomerAssetPrimaryStatusReasonsItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Resources__CustomerAssetPrimaryStatusReasonsItemEnum,
@@ -8547,17 +8877,25 @@ export interface GoogleAdsSearchads360V23Resources__CustomerAsset {
   /** Output only. Provides the details of the primary status and its associated reasons. */
   primaryStatusDetails?: GoogleAdsSearchads360V23Common__AssetLinkPrimaryStatusDetailsList;
   /** Output only. Source of the customer asset link. */
-  source?: GoogleAdsSearchads360V23Resources__CustomerAssetSourceEnum;
+  source?:
+    | GoogleAdsSearchads360V23Resources__CustomerAssetSourceEnum
+    | (string & {});
   /** Status of the customer asset. */
-  status?: GoogleAdsSearchads360V23Resources__CustomerAssetStatusEnum;
+  status?:
+    | GoogleAdsSearchads360V23Resources__CustomerAssetStatusEnum
+    | (string & {});
   /** Required. Immutable. The asset which is linked to the customer. */
   asset?: string;
   /** Required. Immutable. Role that the asset takes for the customer link. */
-  fieldType?: GoogleAdsSearchads360V23Resources__CustomerAssetFieldTypeEnum;
+  fieldType?:
+    | GoogleAdsSearchads360V23Resources__CustomerAssetFieldTypeEnum
+    | (string & {});
   /** Immutable. The resource name of the customer asset. CustomerAsset resource names have the form: `customers/{customer_id}/customerAssets/{asset_id}~{field_type}` */
   resourceName?: string;
   /** Output only. Provides the PrimaryStatus of this asset link. Primary status is meant essentially to differentiate between the plain "status" field, which has advertiser set values of enabled, paused, or removed. The primary status takes into account other signals (for assets its mainly policy and quality approvals) to come up with a more comprehensive status to indicate its serving state. */
-  primaryStatus?: GoogleAdsSearchads360V23Resources__CustomerAssetPrimaryStatusEnum;
+  primaryStatus?:
+    | GoogleAdsSearchads360V23Resources__CustomerAssetPrimaryStatusEnum
+    | (string & {});
   /** Output only. Provides a list of reasons for why an asset is not serving or not serving at full capacity. */
   primaryStatusReasons?: GoogleAdsSearchads360V23Resources__CustomerAssetPrimaryStatusReasonsItemEnumList;
 }
@@ -8635,11 +8973,13 @@ export interface GoogleAdsSearchads360V23Common__TagSnippet {
   /** The event snippet that works with the site tag to track actions that should be counted as conversions. */
   eventSnippet?: string;
   /** The type of the generated tag snippets for tracking conversions. */
-  type?: GoogleAdsSearchads360V23Common__TagSnippetTypeEnum;
+  type?: GoogleAdsSearchads360V23Common__TagSnippetTypeEnum | (string & {});
   /** The site tag that adds visitors to your basic remarketing lists and sets new cookies on your domain. */
   globalSiteTag?: string;
   /** The format of the web page where the tracking tag and snippet will be installed, for example, HTML. */
-  pageFormat?: GoogleAdsSearchads360V23Common__TagSnippetPageFormatEnum;
+  pageFormat?:
+    | GoogleAdsSearchads360V23Common__TagSnippetPageFormatEnum
+    | (string & {});
 }
 export const GoogleAdsSearchads360V23Common__TagSnippet =
   /*@__PURE__*/ S.suspend(() =>
@@ -8656,7 +8996,7 @@ export const GoogleAdsSearchads360V23Common__TagSnippet =
   }) as any as S.Schema<GoogleAdsSearchads360V23Common__TagSnippet>;
 
 export type GoogleAdsSearchads360V23Common__TagSnippetList =
-  ReadonlyArray<GoogleAdsSearchads360V23Common__TagSnippet>;
+  Array<GoogleAdsSearchads360V23Common__TagSnippet>;
 export const GoogleAdsSearchads360V23Common__TagSnippetList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Common__TagSnippet,
@@ -8720,7 +9060,9 @@ export interface GoogleAdsSearchads360V23Resources__CampaignSharedSet {
   /** Immutable. The campaign to which the campaign shared set belongs. */
   campaign?: string;
   /** Output only. The status of this campaign shared set. Read only. */
-  status?: GoogleAdsSearchads360V23Resources__CampaignSharedSetStatusEnum;
+  status?:
+    | GoogleAdsSearchads360V23Resources__CampaignSharedSetStatusEnum
+    | (string & {});
   /** Immutable. The shared set associated with the campaign. This may be a negative keyword shared set of another customer. This customer should be a manager of the other customer, otherwise the campaign shared set will exist but have no serving effect. Only negative keyword shared sets can be associated with Shopping campaigns. Only negative placement shared sets can be associated with Display mobile app campaigns. */
   sharedSet?: string;
 }
@@ -8807,7 +9149,9 @@ export interface GoogleAdsSearchads360V23Resources__BiddingStrategy {
   /** The name of the bidding strategy. All bidding strategies within an account must be named distinctly. The length of this string should be between 1 and 255, inclusive, in UTF-8 bytes, (trimmed). */
   name?: string;
   /** Output only. The status of the bidding strategy. This field is read-only. */
-  status?: GoogleAdsSearchads360V23Resources__BiddingStrategyStatusEnum;
+  status?:
+    | GoogleAdsSearchads360V23Resources__BiddingStrategyStatusEnum
+    | (string & {});
   /** A bidding strategy that raises bids for clicks that seem more likely to lead to a conversion and lowers them for clicks where they seem less likely. */
   enhancedCpc?: GoogleAdsSearchads360V23Common__EnhancedCpc;
   /** Immutable. The resource name of the bidding strategy. Bidding strategy resource names have the form: `customers/{customer_id}/biddingStrategies/{bidding_strategy_id}` */
@@ -8823,7 +9167,9 @@ export interface GoogleAdsSearchads360V23Resources__BiddingStrategy {
   /** A bidding strategy that sets bids to help get as many conversions as possible at the target cost-per-acquisition (CPA) you set. */
   targetCpa?: GoogleAdsSearchads360V23Common__TargetCpa;
   /** Output only. The type of the bidding strategy. Create a bidding strategy by setting the bidding scheme. This field is read-only. */
-  type?: GoogleAdsSearchads360V23Resources__BiddingStrategyTypeEnum;
+  type?:
+    | GoogleAdsSearchads360V23Resources__BiddingStrategyTypeEnum
+    | (string & {});
   /** A bidding strategy that helps you maximize revenue while averaging a specific target Return On Ad Spend (ROAS). */
   targetRoas?: GoogleAdsSearchads360V23Common__TargetRoas;
   /** Immutable. The currency used by the bidding strategy (ISO 4217 three-letter code). For bidding strategies in manager customers, this currency can be set on creation and defaults to the manager customer's currency. For serving customers, this field cannot be set; all strategies in a serving customer implicitly use the serving customer's currency. In all cases the effective_currency_code field returns the currency used by the strategy. */
@@ -8904,7 +9250,9 @@ export interface GoogleAdsSearchads360V23Resources__CampaignGroup {
   /** The name of the campaign group. This field is required and should not be empty when creating new campaign groups. It must not contain any null (code point 0x0), NL line feed (code point 0xA) or carriage return (code point 0xD) characters. */
   name?: string;
   /** The status of the campaign group. When a new campaign group is added, the status defaults to ENABLED. */
-  status?: GoogleAdsSearchads360V23Resources__CampaignGroupStatusEnum;
+  status?:
+    | GoogleAdsSearchads360V23Resources__CampaignGroupStatusEnum
+    | (string & {});
   /** Output only. The ID of the campaign group. */
   id?: string;
 }
@@ -8974,7 +9322,7 @@ export const GoogleAdsSearchads360V23Resources_ListingGroupFilterDimension_Webpa
   }) as any as S.Schema<GoogleAdsSearchads360V23Resources_ListingGroupFilterDimension_WebpageCondition>;
 
 export type GoogleAdsSearchads360V23Resources_ListingGroupFilterDimension_WebpageConditionList =
-  ReadonlyArray<GoogleAdsSearchads360V23Resources_ListingGroupFilterDimension_WebpageCondition>;
+  Array<GoogleAdsSearchads360V23Resources_ListingGroupFilterDimension_WebpageCondition>;
 export const GoogleAdsSearchads360V23Resources_ListingGroupFilterDimension_WebpageConditionList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Resources_ListingGroupFilterDimension_WebpageCondition,
@@ -9005,7 +9353,9 @@ export const GoogleAdsSearchads360V23Resources_ListingGroupFilterDimension_Produ
 /** Locality of a product offer. */
 export interface GoogleAdsSearchads360V23Resources_ListingGroupFilterDimension_ProductChannel {
   /** Value of the locality. */
-  channel?: GoogleAdsSearchads360V23Resources_ListingGroupFilterDimension_ProductChannelChannelEnum;
+  channel?:
+    | GoogleAdsSearchads360V23Resources_ListingGroupFilterDimension_ProductChannelChannelEnum
+    | (string & {});
 }
 export const GoogleAdsSearchads360V23Resources_ListingGroupFilterDimension_ProductChannel =
   /*@__PURE__*/ S.suspend(() =>
@@ -9027,7 +9377,9 @@ export const GoogleAdsSearchads360V23Resources_ListingGroupFilterDimension_Produ
 /** Condition of a product offer. */
 export interface GoogleAdsSearchads360V23Resources_ListingGroupFilterDimension_ProductCondition {
   /** Value of the condition. */
-  condition?: GoogleAdsSearchads360V23Resources_ListingGroupFilterDimension_ProductConditionConditionEnum;
+  condition?:
+    | GoogleAdsSearchads360V23Resources_ListingGroupFilterDimension_ProductConditionConditionEnum
+    | (string & {});
 }
 export const GoogleAdsSearchads360V23Resources_ListingGroupFilterDimension_ProductCondition =
   /*@__PURE__*/ S.suspend(() =>
@@ -9070,7 +9422,9 @@ export const GoogleAdsSearchads360V23Resources_ListingGroupFilterDimension_Produ
 /** Type of a product offer. */
 export interface GoogleAdsSearchads360V23Resources_ListingGroupFilterDimension_ProductType {
   /** Level of the type. */
-  level?: GoogleAdsSearchads360V23Resources_ListingGroupFilterDimension_ProductTypeLevelEnum;
+  level?:
+    | GoogleAdsSearchads360V23Resources_ListingGroupFilterDimension_ProductTypeLevelEnum
+    | (string & {});
   /** Value of the type. */
   value?: string;
 }
@@ -9103,7 +9457,9 @@ export interface GoogleAdsSearchads360V23Resources_ListingGroupFilterDimension_P
   /** String value of the product custom attribute. */
   value?: string;
   /** Indicates the index of the custom attribute. */
-  index?: GoogleAdsSearchads360V23Resources_ListingGroupFilterDimension_ProductCustomAttributeIndexEnum;
+  index?:
+    | GoogleAdsSearchads360V23Resources_ListingGroupFilterDimension_ProductCustomAttributeIndexEnum
+    | (string & {});
 }
 export const GoogleAdsSearchads360V23Resources_ListingGroupFilterDimension_ProductCustomAttribute =
   /*@__PURE__*/ S.suspend(() =>
@@ -9134,7 +9490,9 @@ export interface GoogleAdsSearchads360V23Resources_ListingGroupFilterDimension_P
   /** ID of the product category. This ID is equivalent to the google_product_category ID as described in this article: https://support.google.com/merchants/answer/6324436 */
   categoryId?: string;
   /** Indicates the level of the category in the taxonomy. */
-  level?: GoogleAdsSearchads360V23Resources_ListingGroupFilterDimension_ProductCategoryLevelEnum;
+  level?:
+    | GoogleAdsSearchads360V23Resources_ListingGroupFilterDimension_ProductCategoryLevelEnum
+    | (string & {});
 }
 export const GoogleAdsSearchads360V23Resources_ListingGroupFilterDimension_ProductCategory =
   /*@__PURE__*/ S.suspend(() =>
@@ -9217,7 +9575,7 @@ export const GoogleAdsSearchads360V23Resources__ListingGroupFilterDimension =
   }) as any as S.Schema<GoogleAdsSearchads360V23Resources__ListingGroupFilterDimension>;
 
 export type GoogleAdsSearchads360V23Resources__ListingGroupFilterDimensionList =
-  ReadonlyArray<GoogleAdsSearchads360V23Resources__ListingGroupFilterDimension>;
+  Array<GoogleAdsSearchads360V23Resources__ListingGroupFilterDimension>;
 export const GoogleAdsSearchads360V23Resources__ListingGroupFilterDimensionList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Resources__ListingGroupFilterDimension,
@@ -9251,9 +9609,13 @@ export interface GoogleAdsSearchads360V23Resources__AssetGroupListingGroupFilter
   /** Output only. The ID of the ListingGroupFilter. */
   id?: string;
   /** Immutable. The source of listings filtered by this listing group filter. */
-  listingSource?: GoogleAdsSearchads360V23Resources__AssetGroupListingGroupFilterListingSourceEnum;
+  listingSource?:
+    | GoogleAdsSearchads360V23Resources__AssetGroupListingGroupFilterListingSourceEnum
+    | (string & {});
   /** Immutable. Type of a listing group filter node. */
-  type?: GoogleAdsSearchads360V23Resources__AssetGroupListingGroupFilterTypeEnum;
+  type?:
+    | GoogleAdsSearchads360V23Resources__AssetGroupListingGroupFilterTypeEnum
+    | (string & {});
   /** Dimension value with which this listing group is refining its parent. Undefined for the root group. */
   caseValue?: GoogleAdsSearchads360V23Resources__ListingGroupFilterDimension;
   /** Output only. The path of dimensions defining this listing group filter. */
@@ -9336,9 +9698,13 @@ export const GoogleAdsSearchads360V23Resources__AdGroupAdAssetAutomationSettingA
 /** Asset automation setting for an AdGroupAd. */
 export interface GoogleAdsSearchads360V23Resources__AdGroupAdAssetAutomationSetting {
   /** The asset automation type that this setting configures. */
-  assetAutomationType?: GoogleAdsSearchads360V23Resources__AdGroupAdAssetAutomationSettingAssetAutomationTypeEnum;
+  assetAutomationType?:
+    | GoogleAdsSearchads360V23Resources__AdGroupAdAssetAutomationSettingAssetAutomationTypeEnum
+    | (string & {});
   /** The opt-in/out status for the specified asset automation type. */
-  assetAutomationStatus?: GoogleAdsSearchads360V23Resources__AdGroupAdAssetAutomationSettingAssetAutomationStatusEnum;
+  assetAutomationStatus?:
+    | GoogleAdsSearchads360V23Resources__AdGroupAdAssetAutomationSettingAssetAutomationStatusEnum
+    | (string & {});
 }
 export const GoogleAdsSearchads360V23Resources__AdGroupAdAssetAutomationSetting =
   /*@__PURE__*/ S.suspend(() =>
@@ -9356,7 +9722,7 @@ export const GoogleAdsSearchads360V23Resources__AdGroupAdAssetAutomationSetting 
   }) as any as S.Schema<GoogleAdsSearchads360V23Resources__AdGroupAdAssetAutomationSetting>;
 
 export type GoogleAdsSearchads360V23Resources__AdGroupAdAssetAutomationSettingList =
-  ReadonlyArray<GoogleAdsSearchads360V23Resources__AdGroupAdAssetAutomationSetting>;
+  Array<GoogleAdsSearchads360V23Resources__AdGroupAdAssetAutomationSetting>;
 export const GoogleAdsSearchads360V23Resources__AdGroupAdAssetAutomationSettingList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Resources__AdGroupAdAssetAutomationSetting,
@@ -9393,7 +9759,10 @@ export const GoogleAdsSearchads360V23Resources__AdGroupAdPrimaryStatusReasonsIte
   /*@__PURE__*/ S.String;
 
 export type GoogleAdsSearchads360V23Resources__AdGroupAdPrimaryStatusReasonsItemEnumList =
-  ReadonlyArray<GoogleAdsSearchads360V23Resources__AdGroupAdPrimaryStatusReasonsItemEnum>;
+  Array<
+    | GoogleAdsSearchads360V23Resources__AdGroupAdPrimaryStatusReasonsItemEnum
+    | (string & {})
+  >;
 export const GoogleAdsSearchads360V23Resources__AdGroupAdPrimaryStatusReasonsItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Resources__AdGroupAdPrimaryStatusReasonsItemEnum,
@@ -9445,11 +9814,15 @@ export const GoogleAdsSearchads360V23Resources__AdGroupAdPolicySummaryReviewStat
 /** Contains policy information for an ad. */
 export interface GoogleAdsSearchads360V23Resources__AdGroupAdPolicySummary {
   /** Output only. The overall approval status of this ad, calculated based on the status of its individual policy topic entries. */
-  approvalStatus?: GoogleAdsSearchads360V23Resources__AdGroupAdPolicySummaryApprovalStatusEnum;
+  approvalStatus?:
+    | GoogleAdsSearchads360V23Resources__AdGroupAdPolicySummaryApprovalStatusEnum
+    | (string & {});
   /** Output only. The list of policy findings for this ad. */
   policyTopicEntries?: GoogleAdsSearchads360V23Common__PolicyTopicEntryList;
   /** Output only. Where in the review process this ad is. */
-  reviewStatus?: GoogleAdsSearchads360V23Resources__AdGroupAdPolicySummaryReviewStatusEnum;
+  reviewStatus?:
+    | GoogleAdsSearchads360V23Resources__AdGroupAdPolicySummaryReviewStatusEnum
+    | (string & {});
 }
 export const GoogleAdsSearchads360V23Resources__AdGroupAdPolicySummary =
   /*@__PURE__*/ S.suspend(() =>
@@ -9500,7 +9873,7 @@ export const GoogleAdsSearchads360V23Common__AdImageAsset =
   }) as any as S.Schema<GoogleAdsSearchads360V23Common__AdImageAsset>;
 
 export type GoogleAdsSearchads360V23Common__AdImageAssetList =
-  ReadonlyArray<GoogleAdsSearchads360V23Common__AdImageAsset>;
+  Array<GoogleAdsSearchads360V23Common__AdImageAsset>;
 export const GoogleAdsSearchads360V23Common__AdImageAssetList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Common__AdImageAsset,
@@ -9557,7 +9930,7 @@ export const GoogleAdsSearchads360V23Common__AdVideoAsset =
   }) as any as S.Schema<GoogleAdsSearchads360V23Common__AdVideoAsset>;
 
 export type GoogleAdsSearchads360V23Common__AdVideoAssetList =
-  ReadonlyArray<GoogleAdsSearchads360V23Common__AdVideoAsset>;
+  Array<GoogleAdsSearchads360V23Common__AdVideoAsset>;
 export const GoogleAdsSearchads360V23Common__AdVideoAssetList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Common__AdVideoAsset,
@@ -9639,9 +10012,13 @@ export const GoogleAdsSearchads360V23Common__AdAssetPolicySummaryApprovalStatusE
 /** Contains policy information for an asset inside an ad. */
 export interface GoogleAdsSearchads360V23Common__AdAssetPolicySummary {
   /** Where in the review process this asset. */
-  reviewStatus?: GoogleAdsSearchads360V23Common__AdAssetPolicySummaryReviewStatusEnum;
+  reviewStatus?:
+    | GoogleAdsSearchads360V23Common__AdAssetPolicySummaryReviewStatusEnum
+    | (string & {});
   /** The overall approval status of this asset, which is calculated based on the status of its individual policy topic entries. */
-  approvalStatus?: GoogleAdsSearchads360V23Common__AdAssetPolicySummaryApprovalStatusEnum;
+  approvalStatus?:
+    | GoogleAdsSearchads360V23Common__AdAssetPolicySummaryApprovalStatusEnum
+    | (string & {});
   /** The list of policy findings for this asset. */
   policyTopicEntries?: GoogleAdsSearchads360V23Common__PolicyTopicEntryList;
 }
@@ -9665,9 +10042,13 @@ export const GoogleAdsSearchads360V23Common__AdAssetPolicySummary =
 /** A text asset used inside an ad. */
 export interface GoogleAdsSearchads360V23Common__AdTextAsset {
   /** The pinned field of the asset. This restricts the asset to only serve within this field. Multiple assets can be pinned to the same field. An asset that is unpinned or pinned to a different field will not serve in a field where some other asset has been pinned. */
-  pinnedField?: GoogleAdsSearchads360V23Common__AdTextAssetPinnedFieldEnum;
+  pinnedField?:
+    | GoogleAdsSearchads360V23Common__AdTextAssetPinnedFieldEnum
+    | (string & {});
   /** The performance label of this text asset. */
-  assetPerformanceLabel?: GoogleAdsSearchads360V23Common__AdTextAssetAssetPerformanceLabelEnum;
+  assetPerformanceLabel?:
+    | GoogleAdsSearchads360V23Common__AdTextAssetAssetPerformanceLabelEnum
+    | (string & {});
   /** The policy summary of this text asset. */
   policySummaryInfo?: GoogleAdsSearchads360V23Common__AdAssetPolicySummary;
   /** Asset text. */
@@ -9692,7 +10073,7 @@ export const GoogleAdsSearchads360V23Common__AdTextAsset =
   }) as any as S.Schema<GoogleAdsSearchads360V23Common__AdTextAsset>;
 
 export type GoogleAdsSearchads360V23Common__AdTextAssetList =
-  ReadonlyArray<GoogleAdsSearchads360V23Common__AdTextAsset>;
+  Array<GoogleAdsSearchads360V23Common__AdTextAsset>;
 export const GoogleAdsSearchads360V23Common__AdTextAssetList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Common__AdTextAsset,
@@ -9713,7 +10094,7 @@ export const GoogleAdsSearchads360V23Common__AdCallToActionAsset =
   }) as any as S.Schema<GoogleAdsSearchads360V23Common__AdCallToActionAsset>;
 
 export type GoogleAdsSearchads360V23Common__AdCallToActionAssetList =
-  ReadonlyArray<GoogleAdsSearchads360V23Common__AdCallToActionAsset>;
+  Array<GoogleAdsSearchads360V23Common__AdCallToActionAsset>;
 export const GoogleAdsSearchads360V23Common__AdCallToActionAssetList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Common__AdCallToActionAsset,
@@ -9826,7 +10207,7 @@ export const GoogleAdsSearchads360V23Common__AdMediaBundleAsset =
   }) as any as S.Schema<GoogleAdsSearchads360V23Common__AdMediaBundleAsset>;
 
 export type GoogleAdsSearchads360V23Common__AdMediaBundleAssetList =
-  ReadonlyArray<GoogleAdsSearchads360V23Common__AdMediaBundleAsset>;
+  Array<GoogleAdsSearchads360V23Common__AdMediaBundleAsset>;
 export const GoogleAdsSearchads360V23Common__AdMediaBundleAssetList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Common__AdMediaBundleAsset,
@@ -9908,7 +10289,7 @@ export const GoogleAdsSearchads360V23Common__UrlCollection =
   }) as any as S.Schema<GoogleAdsSearchads360V23Common__UrlCollection>;
 
 export type GoogleAdsSearchads360V23Common__UrlCollectionList =
-  ReadonlyArray<GoogleAdsSearchads360V23Common__UrlCollection>;
+  Array<GoogleAdsSearchads360V23Common__UrlCollection>;
 export const GoogleAdsSearchads360V23Common__UrlCollectionList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Common__UrlCollection,
@@ -10056,7 +10437,7 @@ export const GoogleAdsSearchads360V23Common__AdDemandGenCarouselCardAsset =
   }) as any as S.Schema<GoogleAdsSearchads360V23Common__AdDemandGenCarouselCardAsset>;
 
 export type GoogleAdsSearchads360V23Common__AdDemandGenCarouselCardAssetList =
-  ReadonlyArray<GoogleAdsSearchads360V23Common__AdDemandGenCarouselCardAsset>;
+  Array<GoogleAdsSearchads360V23Common__AdDemandGenCarouselCardAsset>;
 export const GoogleAdsSearchads360V23Common__AdDemandGenCarouselCardAssetList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Common__AdDemandGenCarouselCardAsset,
@@ -10158,7 +10539,9 @@ export const GoogleAdsSearchads360V23Common__DisplayUploadAdInfoDisplayUploadPro
 /** A generic type of display ad. The exact ad format is controlled by the `display_upload_product_type` field, which determines what kinds of data need to be included with the ad. */
 export interface GoogleAdsSearchads360V23Common__DisplayUploadAdInfo {
   /** The product type of this ad. See comments on the enum for details. */
-  displayUploadProductType?: GoogleAdsSearchads360V23Common__DisplayUploadAdInfoDisplayUploadProductTypeEnum;
+  displayUploadProductType?:
+    | GoogleAdsSearchads360V23Common__DisplayUploadAdInfoDisplayUploadProductTypeEnum
+    | (string & {});
   /** A media bundle asset to be used in the ad. For information about the media bundle for HTML5_UPLOAD_AD, see https://support.google.com/google-ads/answer/1722096 Media bundles that are part of dynamic product types use a special format that needs to be created through the Google Web Designer. See https://support.google.com/webdesigner/answer/7543898 for more information. */
   mediaBundle?: GoogleAdsSearchads360V23Common__AdMediaBundleAsset;
 }
@@ -10263,7 +10646,9 @@ export interface GoogleAdsSearchads360V23Common__FinalAppUrl {
   /** The app deep link URL. Deep links specify a location in an app that corresponds to the content you'd like to show, and should be of the form {scheme}://{host_path} The scheme identifies which app to open. For your app, you can use a custom scheme that starts with the app's name. The host and path specify the unique location in the app where your content exists. Example: "exampleapp://productid_1234". Required. */
   url?: string;
   /** The operating system targeted by this URL. Required. */
-  osType?: GoogleAdsSearchads360V23Common__FinalAppUrlOsTypeEnum;
+  osType?:
+    | GoogleAdsSearchads360V23Common__FinalAppUrlOsTypeEnum
+    | (string & {});
 }
 export const GoogleAdsSearchads360V23Common__FinalAppUrl =
   /*@__PURE__*/ S.suspend(() =>
@@ -10276,7 +10661,7 @@ export const GoogleAdsSearchads360V23Common__FinalAppUrl =
   }) as any as S.Schema<GoogleAdsSearchads360V23Common__FinalAppUrl>;
 
 export type GoogleAdsSearchads360V23Common__FinalAppUrlList =
-  ReadonlyArray<GoogleAdsSearchads360V23Common__FinalAppUrl>;
+  Array<GoogleAdsSearchads360V23Common__FinalAppUrl>;
 export const GoogleAdsSearchads360V23Common__FinalAppUrlList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Common__FinalAppUrl,
@@ -10448,7 +10833,9 @@ export const GoogleAdsSearchads360V23Common__LegacyAppInstallAdInfoAppStoreEnum 
 /** A legacy app install ad that only can be used by a few select customers. */
 export interface GoogleAdsSearchads360V23Common__LegacyAppInstallAdInfo {
   /** The app store the mobile app is available in. */
-  appStore?: GoogleAdsSearchads360V23Common__LegacyAppInstallAdInfoAppStoreEnum;
+  appStore?:
+    | GoogleAdsSearchads360V23Common__LegacyAppInstallAdInfoAppStoreEnum
+    | (string & {});
   /** The ID of the mobile app. */
   appId?: string;
   /** The first description line of the ad. */
@@ -10519,7 +10906,9 @@ export interface GoogleAdsSearchads360V23Common__ResponsiveDisplayAdInfo {
   /** Logo images to be used in the ad. Valid image types are GIF, JPEG, and PNG. The minimum size is 512x128 and the aspect ratio must be 4:1 (+-1%). Combined with `square_logo_images`, the maximum is 5. */
   logoImages?: GoogleAdsSearchads360V23Common__AdImageAssetList;
   /** Specifies which format the ad will be served in. Default is ALL_FORMATS. */
-  formatSetting?: GoogleAdsSearchads360V23Common__ResponsiveDisplayAdInfoFormatSettingEnum;
+  formatSetting?:
+    | GoogleAdsSearchads360V23Common__ResponsiveDisplayAdInfoFormatSettingEnum
+    | (string & {});
   /** Descriptive texts for the ad. The maximum length is 90 characters. At least 1 and max 5 headlines can be specified. */
   descriptions?: GoogleAdsSearchads360V23Common__AdTextAssetList;
   /** A required long format headline. The maximum length is 90 characters. */
@@ -10601,7 +10990,9 @@ export interface GoogleAdsSearchads360V23Common__ImageAdInfo {
   /** Height in pixels of the preview size image. */
   previewPixelHeight?: string;
   /** The mime type of the image. */
-  mimeType?: GoogleAdsSearchads360V23Common__ImageAdInfoMimeTypeEnum;
+  mimeType?:
+    | GoogleAdsSearchads360V23Common__ImageAdInfoMimeTypeEnum
+    | (string & {});
   /** The name of the image. If the image was created from a MediaFile, this is the MediaFile's name. If the image was created from bytes, this is empty. */
   name?: string;
   /** An ad ID to copy the image from. */
@@ -10668,7 +11059,9 @@ export interface GoogleAdsSearchads360V23Common__LegacyResponsiveDisplayAdInfo {
   /** The MediaFile resource name of the marketing image used in the ad. */
   marketingImage?: string;
   /** Specifies which format the ad will be served in. Default is ALL_FORMATS. */
-  formatSetting?: GoogleAdsSearchads360V23Common__LegacyResponsiveDisplayAdInfoFormatSettingEnum;
+  formatSetting?:
+    | GoogleAdsSearchads360V23Common__LegacyResponsiveDisplayAdInfoFormatSettingEnum
+    | (string & {});
   /** Advertiser's consent to allow flexible color. When true, the ad may be served with different color if necessary. When false, the ad will be served with the specified colors or a neutral color. The default value is `true`. Must be true if `main_color` and `accent_color` are not set. */
   allowFlexibleColor?: boolean;
 }
@@ -10756,7 +11149,7 @@ export interface GoogleAdsSearchads360V23Resources__Ad {
   /** Immutable. Details pertaining to a responsive search ad. */
   searchAds360ResponsiveSearchAd?: GoogleAdsSearchads360V23Common__SearchAds360ResponsiveSearchAdInfo;
   /** Output only. The type of ad. */
-  type?: GoogleAdsSearchads360V23Resources__AdTypeEnum;
+  type?: GoogleAdsSearchads360V23Resources__AdTypeEnum | (string & {});
   /** Immutable. Details pertaining to a text ad. */
   textAd?: GoogleAdsSearchads360V23Common__TextAdInfo;
   /** Details pertaining to a Smart Shopping ad. */
@@ -10776,7 +11169,9 @@ export interface GoogleAdsSearchads360V23Resources__Ad {
   /** Immutable. Details pertaining to a text ad. */
   searchAds360TextAd?: GoogleAdsSearchads360V23Common__SearchAds360TextAdInfo;
   /** Output only. If this ad is system managed, then this field will indicate the source. This field is read-only. */
-  systemManagedResourceSource?: GoogleAdsSearchads360V23Resources__AdSystemManagedResourceSourceEnum;
+  systemManagedResourceSource?:
+    | GoogleAdsSearchads360V23Resources__AdSystemManagedResourceSourceEnum
+    | (string & {});
   /** Details pertaining to a Shopping Comparison Listing ad. */
   shoppingComparisonListingAd?: GoogleAdsSearchads360V23Common__ShoppingComparisonListingAdInfo;
   /** Details pertaining to an app pre-registration ad. */
@@ -10802,7 +11197,9 @@ export interface GoogleAdsSearchads360V23Resources__Ad {
   /** Immutable. Details pertaining to a product ad. */
   productAd?: GoogleAdsSearchads360V23Common__SearchAds360ProductAdInfo;
   /** The device preference for the ad. You can only specify a preference for mobile devices. When this preference is set the ad will be preferred over other ads when being displayed on a mobile device. The ad can still be displayed on other device types, for example, if no other ads are available. If unspecified (no device preference), all devices are targeted. This is only supported by some ad types. */
-  devicePreference?: GoogleAdsSearchads360V23Resources__AdDevicePreferenceEnum;
+  devicePreference?:
+    | GoogleAdsSearchads360V23Resources__AdDevicePreferenceEnum
+    | (string & {});
   /** Immutable. Details pertaining to a legacy app install ad. */
   legacyAppInstallAd?: GoogleAdsSearchads360V23Common__LegacyAppInstallAdInfo;
   /** Details pertaining to a responsive display ad. */
@@ -10952,11 +11349,15 @@ export interface GoogleAdsSearchads360V23Resources__AdGroupAd {
   /** Settings that control the types of asset automation. See the AssetAutomationTypeEnum documentation for the default opt in/out behavior of each type. */
   adGroupAdAssetAutomationSettings?: GoogleAdsSearchads360V23Resources__AdGroupAdAssetAutomationSettingList;
   /** The status of the ad. */
-  status?: GoogleAdsSearchads360V23Resources__AdGroupAdStatusEnum;
+  status?:
+    | GoogleAdsSearchads360V23Resources__AdGroupAdStatusEnum
+    | (string & {});
   /** Output only. Provides reasons for why an ad group ad is not serving or not serving optimally. */
   primaryStatusReasons?: GoogleAdsSearchads360V23Resources__AdGroupAdPrimaryStatusReasonsItemEnumList;
   /** Output only. Additional status of the ad in the external engine account. Possible statuses (depending on the type of external account) include active, eligible, pending review, etc. */
-  engineStatus?: GoogleAdsSearchads360V23Resources__AdGroupAdEngineStatusEnum;
+  engineStatus?:
+    | GoogleAdsSearchads360V23Resources__AdGroupAdEngineStatusEnum
+    | (string & {});
   /** Output only. The resource names of effective labels attached to this ad. An effective label is a label inherited or directly assigned to this ad. */
   effectiveLabels?: StringList;
   /** Output only. The datetime when this ad group ad was last modified. The datetime is in the customer's time zone and in "yyyy-MM-dd HH:mm:ss.ssssss" format. */
@@ -10976,9 +11377,13 @@ export interface GoogleAdsSearchads360V23Resources__AdGroupAd {
   /** Immutable. The ad. */
   ad?: GoogleAdsSearchads360V23Resources__Ad;
   /** Output only. Overall ad strength for this ad group ad. */
-  adStrength?: GoogleAdsSearchads360V23Resources__AdGroupAdAdStrengthEnum;
+  adStrength?:
+    | GoogleAdsSearchads360V23Resources__AdGroupAdAdStrengthEnum
+    | (string & {});
   /** Output only. Provides aggregated view into why an ad group ad is not serving or not serving optimally. */
-  primaryStatus?: GoogleAdsSearchads360V23Resources__AdGroupAdPrimaryStatusEnum;
+  primaryStatus?:
+    | GoogleAdsSearchads360V23Resources__AdGroupAdPrimaryStatusEnum
+    | (string & {});
 }
 export const GoogleAdsSearchads360V23Resources__AdGroupAd =
   /*@__PURE__*/ S.suspend(() =>
@@ -11099,15 +11504,21 @@ export const GoogleAdsSearchads360V23Resources__CampaignBudgetStatusEnum =
 /** A campaign budget. */
 export interface GoogleAdsSearchads360V23Resources__CampaignBudget {
   /** Immutable. The type of the campaign budget. */
-  type?: GoogleAdsSearchads360V23Resources__CampaignBudgetTypeEnum;
+  type?:
+    | GoogleAdsSearchads360V23Resources__CampaignBudgetTypeEnum
+    | (string & {});
   /** ID of the portfolio bidding strategy that this shared campaign budget is aligned with. When a bidding strategy and a campaign budget are aligned, they are attached to the same set of campaigns. After a campaign budget is aligned with a bidding strategy, campaigns that are added to the campaign budget must also use the aligned bidding strategy. */
   alignedBiddingStrategyId?: string;
   /** Output only. Indicates whether there is a recommended budget for this campaign budget. This field is read-only. */
   hasRecommendedBudget?: boolean;
   /** The delivery method that determines the rate at which the campaign budget is spent. Defaults to STANDARD if unspecified in a create operation. */
-  deliveryMethod?: GoogleAdsSearchads360V23Resources__CampaignBudgetDeliveryMethodEnum;
+  deliveryMethod?:
+    | GoogleAdsSearchads360V23Resources__CampaignBudgetDeliveryMethodEnum
+    | (string & {});
   /** Immutable. Period over which to spend the budget. Defaults to DAILY if not specified. */
-  period?: GoogleAdsSearchads360V23Resources__CampaignBudgetPeriodEnum;
+  period?:
+    | GoogleAdsSearchads360V23Resources__CampaignBudgetPeriodEnum
+    | (string & {});
   /** Output only. The estimated change in weekly clicks if the recommended budget is applied. This field is read-only. */
   recommendedBudgetEstimatedChangeWeeklyClicks?: string;
   /** Immutable. The resource name of the campaign budget. Campaign budget resource names have the form: `customers/{customer_id}/campaignBudgets/{campaign_budget_id}` */
@@ -11121,7 +11532,9 @@ export interface GoogleAdsSearchads360V23Resources__CampaignBudget {
   /** Output only. The recommended budget amount. If no recommendation is available, this will be set to the budget amount. Amount is specified in micros, where one million is equivalent to one currency unit. This field is read-only. */
   recommendedBudgetAmountMicros?: string;
   /** Output only. The status of this campaign budget. This field is read-only. */
-  status?: GoogleAdsSearchads360V23Resources__CampaignBudgetStatusEnum;
+  status?:
+    | GoogleAdsSearchads360V23Resources__CampaignBudgetStatusEnum
+    | (string & {});
   /** Specifies whether the budget is explicitly shared. Defaults to true if unspecified in a create operation. If true, the budget was created with the purpose of sharing across one or more campaigns. If false, the budget was created with the intention of only being used with a single campaign. The budget's name and status will stay in sync with the campaign's name and status. Attempting to share the budget with a second campaign will result in an error. A non-shared budget can become an explicitly shared. The same operation must also assign the budget a name. A shared campaign budget can never become non-shared. */
   explicitlyShared?: boolean;
   /** The average daily amount to be spent by the campaign. This field is used when the CampaignBudget `period` is set to `DAILY`, which is the default. Amount is specified in micros in the account's local currency. One million micros is equivalent to one currency unit. The effective monthly spend is capped at 30.4 times this daily amount. This field is mutually exclusive with 'total_amount_micros'. Only one of 'amount_micros' or 'total_amount_micros' should be set. */
@@ -11218,9 +11631,13 @@ export const GoogleAdsSearchads360V23Resources_ConversionAction_AttributionModel
 /** Settings related to this conversion action's attribution model. */
 export interface GoogleAdsSearchads360V23Resources_ConversionAction_AttributionModelSettings {
   /** Output only. The status of the data-driven attribution model for the conversion action. */
-  dataDrivenModelStatus?: GoogleAdsSearchads360V23Resources_ConversionAction_AttributionModelSettingsDataDrivenModelStatusEnum;
+  dataDrivenModelStatus?:
+    | GoogleAdsSearchads360V23Resources_ConversionAction_AttributionModelSettingsDataDrivenModelStatusEnum
+    | (string & {});
   /** The attribution model type of this conversion action. */
-  attributionModel?: GoogleAdsSearchads360V23Resources_ConversionAction_AttributionModelSettingsAttributionModelEnum;
+  attributionModel?:
+    | GoogleAdsSearchads360V23Resources_ConversionAction_AttributionModelSettingsAttributionModelEnum
+    | (string & {});
 }
 export const GoogleAdsSearchads360V23Resources_ConversionAction_AttributionModelSettings =
   /*@__PURE__*/ S.suspend(() =>
@@ -11462,7 +11879,9 @@ export interface GoogleAdsSearchads360V23Resources__ConversionAction {
   /** Output only. Timestamp of the Floodlight activity's creation, formatted in ISO 8601. */
   creationTime?: string;
   /** Immutable. The type of this conversion action. */
-  type?: GoogleAdsSearchads360V23Resources__ConversionActionTypeEnum;
+  type?:
+    | GoogleAdsSearchads360V23Resources__ConversionActionTypeEnum
+    | (string & {});
   /** Output only. Firebase settings for Firebase conversion types. */
   firebaseSettings?: GoogleAdsSearchads360V23Resources_ConversionAction_FirebaseSettings;
   /** Output only. The ID of the conversion action. */
@@ -11470,17 +11889,23 @@ export interface GoogleAdsSearchads360V23Resources__ConversionAction {
   /** Settings related to the value for conversion events associated with this conversion action. */
   valueSettings?: GoogleAdsSearchads360V23Resources_ConversionAction_ValueSettings;
   /** Output only. The conversion origin of this conversion action. */
-  origin?: GoogleAdsSearchads360V23Resources__ConversionActionOriginEnum;
+  origin?:
+    | GoogleAdsSearchads360V23Resources__ConversionActionOriginEnum
+    | (string & {});
   /** Output only. Third Party App Analytics settings for third party conversion types. */
   thirdPartyAppAnalyticsSettings?: GoogleAdsSearchads360V23Resources_ConversionAction_ThirdPartyAppAnalyticsSettings;
   /** Output only. Floodlight settings for Floodlight conversion types. */
   floodlightSettings?: GoogleAdsSearchads360V23Resources_ConversionAction_FloodlightSettings;
   /** The status of this conversion action for conversion event accrual. */
-  status?: GoogleAdsSearchads360V23Resources__ConversionActionStatusEnum;
+  status?:
+    | GoogleAdsSearchads360V23Resources__ConversionActionStatusEnum
+    | (string & {});
   /** The name of the conversion action. This field is required and should not be empty when creating new conversion actions. */
   name?: string;
   /** How to count conversion events for the conversion action. */
-  countingType?: GoogleAdsSearchads360V23Resources__ConversionActionCountingTypeEnum;
+  countingType?:
+    | GoogleAdsSearchads360V23Resources__ConversionActionCountingTypeEnum
+    | (string & {});
   /** If a conversion action's primary_for_goal bit is false, the conversion action is non-biddable for all campaigns regardless of their customer conversion goal or campaign conversion goal. However, custom conversion goals do not respect primary_for_goal, so if a campaign has a custom conversion goal configured with a primary_for_goal = false conversion action, that conversion action is still biddable. By default, primary_for_goal will be true if not set. In V9, primary_for_goal can only be set to false after creation through an 'update' operation because it's not declared as optional. */
   primaryForGoal?: boolean;
   /** Output only. Google Analytics 4 settings for Google Analytics 4 conversion types. */
@@ -11496,9 +11921,13 @@ export interface GoogleAdsSearchads360V23Resources__ConversionAction {
   /** The maximum number of days that may elapse between an interaction (for example, a click) and a conversion event. */
   clickThroughLookbackWindowDays?: string;
   /** Output only. Mobile app vendor for an app conversion action. */
-  mobileAppVendor?: GoogleAdsSearchads360V23Resources__ConversionActionMobileAppVendorEnum;
+  mobileAppVendor?:
+    | GoogleAdsSearchads360V23Resources__ConversionActionMobileAppVendorEnum
+    | (string & {});
   /** The category of conversions reported for this conversion action. */
-  category?: GoogleAdsSearchads360V23Resources__ConversionActionCategoryEnum;
+  category?:
+    | GoogleAdsSearchads360V23Resources__ConversionActionCategoryEnum
+    | (string & {});
 }
 export const GoogleAdsSearchads360V23Resources__ConversionAction =
   /*@__PURE__*/ S.suspend(() =>
@@ -11624,7 +12053,9 @@ export interface GoogleAdsSearchads360V23Resources_ExperimentArm_AssetGroupAsset
   /** Asset resource name of the asset group asset. */
   asset?: string;
   /** Field type of the asset group asset. */
-  fieldType?: GoogleAdsSearchads360V23Resources_ExperimentArm_AssetGroupAssetInfoFieldTypeEnum;
+  fieldType?:
+    | GoogleAdsSearchads360V23Resources_ExperimentArm_AssetGroupAssetInfoFieldTypeEnum
+    | (string & {});
 }
 export const GoogleAdsSearchads360V23Resources_ExperimentArm_AssetGroupAssetInfo =
   /*@__PURE__*/ S.suspend(() =>
@@ -11640,7 +12071,7 @@ export const GoogleAdsSearchads360V23Resources_ExperimentArm_AssetGroupAssetInfo
   }) as any as S.Schema<GoogleAdsSearchads360V23Resources_ExperimentArm_AssetGroupAssetInfo>;
 
 export type GoogleAdsSearchads360V23Resources_ExperimentArm_AssetGroupAssetInfoList =
-  ReadonlyArray<GoogleAdsSearchads360V23Resources_ExperimentArm_AssetGroupAssetInfo>;
+  Array<GoogleAdsSearchads360V23Resources_ExperimentArm_AssetGroupAssetInfo>;
 export const GoogleAdsSearchads360V23Resources_ExperimentArm_AssetGroupAssetInfoList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Resources_ExperimentArm_AssetGroupAssetInfo,
@@ -11667,7 +12098,7 @@ export const GoogleAdsSearchads360V23Resources_ExperimentArm_AssetGroupInfo =
   }) as any as S.Schema<GoogleAdsSearchads360V23Resources_ExperimentArm_AssetGroupInfo>;
 
 export type GoogleAdsSearchads360V23Resources_ExperimentArm_AssetGroupInfoList =
-  ReadonlyArray<GoogleAdsSearchads360V23Resources_ExperimentArm_AssetGroupInfo>;
+  Array<GoogleAdsSearchads360V23Resources_ExperimentArm_AssetGroupInfo>;
 export const GoogleAdsSearchads360V23Resources_ExperimentArm_AssetGroupInfoList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Resources_ExperimentArm_AssetGroupInfo,
@@ -11746,7 +12177,9 @@ export interface GoogleAdsSearchads360V23Resources__CampaignAssetSet {
   /** Immutable. The asset set which is linked to the campaign. */
   assetSet?: string;
   /** Output only. The status of the campaign asset set asset. Read-only. */
-  status?: GoogleAdsSearchads360V23Resources__CampaignAssetSetStatusEnum;
+  status?:
+    | GoogleAdsSearchads360V23Resources__CampaignAssetSetStatusEnum
+    | (string & {});
   /** Immutable. The resource name of the campaign asset set. Asset set asset resource names have the form: `customers/{customer_id}/campaignAssetSets/{campaign_id}~{asset_set_id}` */
   resourceName?: string;
   /** Immutable. The campaign to which this asset set is linked. */
@@ -11797,7 +12230,9 @@ export interface GoogleAdsSearchads360V23Resources__AdGroupCriterionCustomizer {
   /** Required. The value to associate with the customizer attribute at this level. The value must be of the type specified for the CustomizerAttribute. */
   value?: GoogleAdsSearchads360V23Common__CustomizerValue;
   /** Output only. The status of the ad group criterion customizer. */
-  status?: GoogleAdsSearchads360V23Resources__AdGroupCriterionCustomizerStatusEnum;
+  status?:
+    | GoogleAdsSearchads360V23Resources__AdGroupCriterionCustomizerStatusEnum
+    | (string & {});
   /** Required. Immutable. The customizer attribute which is linked to the ad group criterion. */
   customizerAttribute?: string;
 }
@@ -11900,7 +12335,9 @@ export interface GoogleAdsSearchads360V23Resources__AssetSetAsset {
   /** Immutable. The asset which this asset set asset is linking to. */
   asset?: string;
   /** Output only. The status of the asset set asset. Read-only. */
-  status?: GoogleAdsSearchads360V23Resources__AssetSetAssetStatusEnum;
+  status?:
+    | GoogleAdsSearchads360V23Resources__AssetSetAssetStatusEnum
+    | (string & {});
   /** Immutable. The resource name of the asset set asset. Asset set asset resource names have the form: `customers/{customer_id}/assetSetAssets/{asset_set_id}~{asset_id}` */
   resourceName?: string;
 }
@@ -11945,7 +12382,9 @@ export interface GoogleAdsSearchads360V23Resources__SearchAds360Campaign {
   /** Immutable. The resource name of the Search Ads 360 campaign. Search Ads 360 campaign resource names have the form: `customers/{customer_id}/searchAds360Campaigns/{campaign_id}` */
   resourceName?: string;
   /** The type of product attribution filtering to apply to this campaign. */
-  productAttributionFilterType?: GoogleAdsSearchads360V23Resources__SearchAds360CampaignProductAttributionFilterTypeEnum;
+  productAttributionFilterType?:
+    | GoogleAdsSearchads360V23Resources__SearchAds360CampaignProductAttributionFilterTypeEnum
+    | (string & {});
 }
 export const GoogleAdsSearchads360V23Resources__SearchAds360Campaign =
   /*@__PURE__*/ S.suspend(() =>
@@ -12006,7 +12445,9 @@ export const GoogleAdsSearchads360V23Common__SearchThemeInfo =
 /** AssetGroupSignal represents a signal in an asset group. The existence of a signal tells the performance max campaign who's most likely to convert. Performance Max uses the signal to look for new people with similar or stronger intent to find conversions across Search, Display, Video, and more. */
 export interface GoogleAdsSearchads360V23Resources__AssetGroupSignal {
   /** Output only. Approval status is the output value for search theme signal after Google ads policy review. When using Audience signal, this field is not used and will be absent. */
-  approvalStatus?: GoogleAdsSearchads360V23Resources__AssetGroupSignalApprovalStatusEnum;
+  approvalStatus?:
+    | GoogleAdsSearchads360V23Resources__AssetGroupSignalApprovalStatusEnum
+    | (string & {});
   /** Immutable. The asset group which this asset group signal belongs to. */
   assetGroup?: string;
   /** Immutable. The resource name of the asset group signal. Asset group signal resource name have the form: `customers/{customer_id}/assetGroupSignals/{asset_group_id}~{signal_id}` */
@@ -12078,7 +12519,10 @@ export const GoogleAdsSearchads360V23Common__HouseholdIncomeDimensionIncomeRange
   /*@__PURE__*/ S.String;
 
 export type GoogleAdsSearchads360V23Common__HouseholdIncomeDimensionIncomeRangesItemEnumList =
-  ReadonlyArray<GoogleAdsSearchads360V23Common__HouseholdIncomeDimensionIncomeRangesItemEnum>;
+  Array<
+    | GoogleAdsSearchads360V23Common__HouseholdIncomeDimensionIncomeRangesItemEnum
+    | (string & {})
+  >;
 export const GoogleAdsSearchads360V23Common__HouseholdIncomeDimensionIncomeRangesItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Common__HouseholdIncomeDimensionIncomeRangesItemEnum,
@@ -12113,7 +12557,10 @@ export const GoogleAdsSearchads360V23Common__GenderDimensionGendersItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleAdsSearchads360V23Common__GenderDimensionGendersItemEnumList =
-  ReadonlyArray<GoogleAdsSearchads360V23Common__GenderDimensionGendersItemEnum>;
+  Array<
+    | GoogleAdsSearchads360V23Common__GenderDimensionGendersItemEnum
+    | (string & {})
+  >;
 export const GoogleAdsSearchads360V23Common__GenderDimensionGendersItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Common__GenderDimensionGendersItemEnum,
@@ -12241,7 +12688,7 @@ export const GoogleAdsSearchads360V23Common__AudienceSegment =
   }) as any as S.Schema<GoogleAdsSearchads360V23Common__AudienceSegment>;
 
 export type GoogleAdsSearchads360V23Common__AudienceSegmentList =
-  ReadonlyArray<GoogleAdsSearchads360V23Common__AudienceSegment>;
+  Array<GoogleAdsSearchads360V23Common__AudienceSegment>;
 export const GoogleAdsSearchads360V23Common__AudienceSegmentList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Common__AudienceSegment,
@@ -12279,7 +12726,7 @@ export const GoogleAdsSearchads360V23Common__AgeSegment =
   }) as any as S.Schema<GoogleAdsSearchads360V23Common__AgeSegment>;
 
 export type GoogleAdsSearchads360V23Common__AgeSegmentList =
-  ReadonlyArray<GoogleAdsSearchads360V23Common__AgeSegment>;
+  Array<GoogleAdsSearchads360V23Common__AgeSegment>;
 export const GoogleAdsSearchads360V23Common__AgeSegmentList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Common__AgeSegment,
@@ -12308,7 +12755,10 @@ export const GoogleAdsSearchads360V23Common__ParentalStatusDimensionParentalStat
   /*@__PURE__*/ S.String;
 
 export type GoogleAdsSearchads360V23Common__ParentalStatusDimensionParentalStatusesItemEnumList =
-  ReadonlyArray<GoogleAdsSearchads360V23Common__ParentalStatusDimensionParentalStatusesItemEnum>;
+  Array<
+    | GoogleAdsSearchads360V23Common__ParentalStatusDimensionParentalStatusesItemEnum
+    | (string & {})
+  >;
 export const GoogleAdsSearchads360V23Common__ParentalStatusDimensionParentalStatusesItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Common__ParentalStatusDimensionParentalStatusesItemEnum,
@@ -12366,7 +12816,7 @@ export const GoogleAdsSearchads360V23Common__AudienceDimension =
   }) as any as S.Schema<GoogleAdsSearchads360V23Common__AudienceDimension>;
 
 export type GoogleAdsSearchads360V23Common__AudienceDimensionList =
-  ReadonlyArray<GoogleAdsSearchads360V23Common__AudienceDimension>;
+  Array<GoogleAdsSearchads360V23Common__AudienceDimension>;
 export const GoogleAdsSearchads360V23Common__AudienceDimensionList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Common__AudienceDimension,
@@ -12395,7 +12845,7 @@ export const GoogleAdsSearchads360V23Common__ExclusionSegment =
   }) as any as S.Schema<GoogleAdsSearchads360V23Common__ExclusionSegment>;
 
 export type GoogleAdsSearchads360V23Common__ExclusionSegmentList =
-  ReadonlyArray<GoogleAdsSearchads360V23Common__ExclusionSegment>;
+  Array<GoogleAdsSearchads360V23Common__ExclusionSegment>;
 export const GoogleAdsSearchads360V23Common__ExclusionSegmentList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Common__ExclusionSegment,
@@ -12420,13 +12870,15 @@ export const GoogleAdsSearchads360V23Common__AudienceExclusionDimension =
 /** Audience is an effective targeting option that lets you intersect different segment attributes, such as detailed demographics and affinities, to create audiences that represent sections of your target segments. */
 export interface GoogleAdsSearchads360V23Resources__Audience {
   /** Output only. Status of this audience. Indicates whether the audience is enabled or removed. */
-  status?: GoogleAdsSearchads360V23Resources__AudienceStatusEnum;
+  status?:
+    | GoogleAdsSearchads360V23Resources__AudienceStatusEnum
+    | (string & {});
   /** Name of the audience. It should be unique across all audiences within the account. It must have a minimum length of 1 and maximum length of 255. Required when scope is not set or is set to CUSTOMER. Cannot be set or updated when scope is ASSET_GROUP. */
   name?: string;
   /** Positive dimensions specifying the audience composition. */
   dimensions?: GoogleAdsSearchads360V23Common__AudienceDimensionList;
   /** Defines the scope this audience can be used in. By default, the scope is CUSTOMER. Audiences can be created with a scope of ASSET_GROUP for exclusive use by a single asset_group. Scope may change from ASSET_GROUP to CUSTOMER but not from CUSTOMER to ASSET_GROUP. */
-  scope?: GoogleAdsSearchads360V23Resources__AudienceScopeEnum;
+  scope?: GoogleAdsSearchads360V23Resources__AudienceScopeEnum | (string & {});
   /** Description of this audience. */
   description?: string;
   /** Immutable. The asset group that this audience is scoped under. Must be set if and only if scope is ASSET_GROUP. Immutable after creation. If an audience with ASSET_GROUP scope is upgraded to CUSTOMER scope, this field will automatically be cleared. */
@@ -12487,7 +12939,9 @@ export const GoogleAdsSearchads360V23Resources_ConversionValueRule_ValueRuleActi
 /** Action applied when rule is applied. */
 export interface GoogleAdsSearchads360V23Resources_ConversionValueRule_ValueRuleAction {
   /** Specifies applied operation. */
-  operation?: GoogleAdsSearchads360V23Resources_ConversionValueRule_ValueRuleActionOperationEnum;
+  operation?:
+    | GoogleAdsSearchads360V23Resources_ConversionValueRule_ValueRuleActionOperationEnum
+    | (string & {});
   /** Specifies applied value. */
   value?: number;
 }
@@ -12510,7 +12964,10 @@ export const GoogleAdsSearchads360V23Resources_ConversionValueRule_ValueRuleDevi
   /*@__PURE__*/ S.String;
 
 export type GoogleAdsSearchads360V23Resources_ConversionValueRule_ValueRuleDeviceConditionDeviceTypesItemEnumList =
-  ReadonlyArray<GoogleAdsSearchads360V23Resources_ConversionValueRule_ValueRuleDeviceConditionDeviceTypesItemEnum>;
+  Array<
+    | GoogleAdsSearchads360V23Resources_ConversionValueRule_ValueRuleDeviceConditionDeviceTypesItemEnum
+    | (string & {})
+  >;
 export const GoogleAdsSearchads360V23Resources_ConversionValueRule_ValueRuleDeviceConditionDeviceTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Resources_ConversionValueRule_ValueRuleDeviceConditionDeviceTypesItemEnum,
@@ -12555,9 +13012,13 @@ export const GoogleAdsSearchads360V23Resources_ConversionValueRule_ValueRuleGeoL
 /** Condition on Geo dimension. */
 export interface GoogleAdsSearchads360V23Resources_ConversionValueRule_ValueRuleGeoLocationCondition {
   /** Excluded Geo location match type. */
-  excludedGeoMatchType?: GoogleAdsSearchads360V23Resources_ConversionValueRule_ValueRuleGeoLocationConditionExcludedGeoMatchTypeEnum;
+  excludedGeoMatchType?:
+    | GoogleAdsSearchads360V23Resources_ConversionValueRule_ValueRuleGeoLocationConditionExcludedGeoMatchTypeEnum
+    | (string & {});
   /** Included Geo location match type. */
-  geoMatchType?: GoogleAdsSearchads360V23Resources_ConversionValueRule_ValueRuleGeoLocationConditionGeoMatchTypeEnum;
+  geoMatchType?:
+    | GoogleAdsSearchads360V23Resources_ConversionValueRule_ValueRuleGeoLocationConditionGeoMatchTypeEnum
+    | (string & {});
   /** Geo locations that advertisers want to include. */
   geoTargetConstants?: StringList;
   /** Geo locations that advertisers want to exclude. */
@@ -12701,7 +13162,9 @@ export interface GoogleAdsSearchads360V23Resources__ConversionValueRule {
   /** Condition for device type that must be satisfied for the value rule to apply. */
   deviceCondition?: GoogleAdsSearchads360V23Resources_ConversionValueRule_ValueRuleDeviceCondition;
   /** The status of the conversion value rule. */
-  status?: GoogleAdsSearchads360V23Resources__ConversionValueRuleStatusEnum;
+  status?:
+    | GoogleAdsSearchads360V23Resources__ConversionValueRuleStatusEnum
+    | (string & {});
   /** Immutable. The resource name of the conversion value rule. Conversion value rule resource names have the form: `customers/{customer_id}/conversionValueRules/{conversion_value_rule_id}` */
   resourceName?: string;
   /** Condition for Geo location that must be satisfied for the value rule to apply. */
@@ -12843,9 +13306,13 @@ export interface GoogleAdsSearchads360V23Resources__CustomizerAttribute {
   /** Required. Immutable. Name of the customizer attribute. Required. It must have a minimum length of 1 and maximum length of 40. Name of an enabled customizer attribute must be unique (case insensitive). */
   name?: string;
   /** Immutable. The type of the customizer attribute. */
-  type?: GoogleAdsSearchads360V23Resources__CustomizerAttributeTypeEnum;
+  type?:
+    | GoogleAdsSearchads360V23Resources__CustomizerAttributeTypeEnum
+    | (string & {});
   /** Output only. The status of the customizer attribute. */
-  status?: GoogleAdsSearchads360V23Resources__CustomizerAttributeStatusEnum;
+  status?:
+    | GoogleAdsSearchads360V23Resources__CustomizerAttributeStatusEnum
+    | (string & {});
   /** Output only. The ID of the customizer attribute. */
   id?: string;
 }
@@ -12982,7 +13449,9 @@ export interface GoogleAdsSearchads360V23Common__ImageAsset {
   /** File size of the image asset in bytes. */
   fileSize?: string;
   /** MIME type of the image asset. */
-  mimeType?: GoogleAdsSearchads360V23Common__ImageAssetMimeTypeEnum;
+  mimeType?:
+    | GoogleAdsSearchads360V23Common__ImageAssetMimeTypeEnum
+    | (string & {});
   /** Metadata for this image at its original size. */
   fullSize?: GoogleAdsSearchads360V23Common__ImageDimension;
 }
@@ -13001,7 +13470,7 @@ export const GoogleAdsSearchads360V23Common__ImageAsset =
   }) as any as S.Schema<GoogleAdsSearchads360V23Common__ImageAsset>;
 
 export type GoogleAdsSearchads360V23Common__AdScheduleInfoList =
-  ReadonlyArray<GoogleAdsSearchads360V23Common__AdScheduleInfo>;
+  Array<GoogleAdsSearchads360V23Common__AdScheduleInfo>;
 export const GoogleAdsSearchads360V23Common__AdScheduleInfoList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Common__AdScheduleInfo,
@@ -13021,7 +13490,9 @@ export interface GoogleAdsSearchads360V23Common__CallAsset {
   /** List of non-overlapping schedules specifying all time intervals for which the asset may serve. There can be a maximum of 6 schedules per day, 42 in total. */
   adScheduleTargets?: GoogleAdsSearchads360V23Common__AdScheduleInfoList;
   /** Indicates whether this CallAsset should use its own call conversion setting, follow the account level setting, or disable call conversion. */
-  callConversionReportingState?: GoogleAdsSearchads360V23Common__CallAssetCallConversionReportingStateEnum;
+  callConversionReportingState?:
+    | GoogleAdsSearchads360V23Common__CallAssetCallConversionReportingStateEnum
+    | (string & {});
   /** Required. Two-letter country code of the phone number. Examples: 'US', 'us'. */
   countryCode?: string;
   /** The conversion action to attribute a call conversion to. If not set, the default conversion action is used. This field only has effect if call_conversion_reporting_state is set to USE_RESOURCE_LEVEL_CALL_CONVERSION_ACTION. */
@@ -13308,11 +13779,15 @@ export const GoogleAdsSearchads360V23Resources__AssetPolicySummaryApprovalStatus
 /** Contains policy information for an asset. */
 export interface GoogleAdsSearchads360V23Resources__AssetPolicySummary {
   /** Output only. Where in the review process this asset is. */
-  reviewStatus?: GoogleAdsSearchads360V23Resources__AssetPolicySummaryReviewStatusEnum;
+  reviewStatus?:
+    | GoogleAdsSearchads360V23Resources__AssetPolicySummaryReviewStatusEnum
+    | (string & {});
   /** Output only. The list of policy findings for this asset. */
   policyTopicEntries?: GoogleAdsSearchads360V23Common__PolicyTopicEntryList;
   /** Output only. The overall approval status of this asset, calculated based on the status of its individual policy topic entries. */
-  approvalStatus?: GoogleAdsSearchads360V23Resources__AssetPolicySummaryApprovalStatusEnum;
+  approvalStatus?:
+    | GoogleAdsSearchads360V23Resources__AssetPolicySummaryApprovalStatusEnum
+    | (string & {});
 }
 export const GoogleAdsSearchads360V23Resources__AssetPolicySummary =
   /*@__PURE__*/ S.suspend(() =>
@@ -13426,7 +13901,9 @@ export interface GoogleAdsSearchads360V23Common__BusinessMessageCallToActionInfo
   /** Required. Text providing a clear value proposition of what users expect once they take the action. Examples: 'Message us for a quote', 'Ask our expert team'. */
   callToActionDescription?: string;
   /** Required. Pre-defined call to action text. */
-  callToActionSelection?: GoogleAdsSearchads360V23Common__BusinessMessageCallToActionInfoCallToActionSelectionEnum;
+  callToActionSelection?:
+    | GoogleAdsSearchads360V23Common__BusinessMessageCallToActionInfoCallToActionSelectionEnum
+    | (string & {});
 }
 export const GoogleAdsSearchads360V23Common__BusinessMessageCallToActionInfo =
   /*@__PURE__*/ S.suspend(() =>
@@ -13508,7 +13985,9 @@ export interface GoogleAdsSearchads360V23Common__BusinessMessageAsset {
   /** Zalo. */
   zaloInfo?: GoogleAdsSearchads360V23Common__ZaloBusinessMessageInfo;
   /** Required. Message provider of the business message asset. */
-  messageProvider?: GoogleAdsSearchads360V23Common__BusinessMessageAssetMessageProviderEnum;
+  messageProvider?:
+    | GoogleAdsSearchads360V23Common__BusinessMessageAssetMessageProviderEnum
+    | (string & {});
 }
 export const GoogleAdsSearchads360V23Common__BusinessMessageAsset =
   /*@__PURE__*/ S.suspend(() =>
@@ -13651,7 +14130,9 @@ export interface GoogleAdsSearchads360V23Common__PromotionBarcodeInfo {
   /** Promotion message to be encoded in the barcode. */
   barcodeContent?: string;
   /** Barcode type used to generate barcode with the correct format. */
-  type?: GoogleAdsSearchads360V23Common__PromotionBarcodeInfoTypeEnum;
+  type?:
+    | GoogleAdsSearchads360V23Common__PromotionBarcodeInfoTypeEnum
+    | (string & {});
 }
 export const GoogleAdsSearchads360V23Common__PromotionBarcodeInfo =
   /*@__PURE__*/ S.suspend(() =>
@@ -13676,7 +14157,9 @@ export interface GoogleAdsSearchads360V23Common__PromotionAsset {
   /** Money amount off for discount in the promotion. Either this or percent_off is required. */
   moneyAmountOff?: GoogleAdsSearchads360V23Common__Money;
   /** A modifier for qualification of the discount. */
-  discountModifier?: GoogleAdsSearchads360V23Common__PromotionAssetDiscountModifierEnum;
+  discountModifier?:
+    | GoogleAdsSearchads360V23Common__PromotionAssetDiscountModifierEnum
+    | (string & {});
   /** List of non-overlapping schedules specifying all time intervals for which the asset may serve. There can be a maximum of 6 schedules per day, 42 in total. */
   adScheduleTargets?: GoogleAdsSearchads360V23Common__AdScheduleInfoList;
   /** QR code info used to generate promotion QR code for user to be eligible for the promotion. */
@@ -13686,7 +14169,9 @@ export interface GoogleAdsSearchads360V23Common__PromotionAsset {
   /** Required. A freeform description of what the promotion is targeting. */
   promotionTarget?: string;
   /** The occasion the promotion was intended for. If an occasion is set, the redemption window will need to fall within the date range associated with the occasion. */
-  occasion?: GoogleAdsSearchads360V23Common__PromotionAssetOccasionEnum;
+  occasion?:
+    | GoogleAdsSearchads360V23Common__PromotionAssetOccasionEnum
+    | (string & {});
   /** Last date of when this asset is effective and still serving, in yyyy-MM-dd format. */
   endDate?: string;
   /** Start date of when this asset is effective and can begin serving, in yyyy-MM-dd format. */
@@ -13750,7 +14235,9 @@ export interface GoogleAdsSearchads360V23Common__MobileAppAsset {
   /** Start date of when this asset is effective and can begin serving, in yyyy-MM-dd format. */
   startDate?: string;
   /** Required. The application store that distributes this specific app. */
-  appStore?: GoogleAdsSearchads360V23Common__MobileAppAssetAppStoreEnum;
+  appStore?:
+    | GoogleAdsSearchads360V23Common__MobileAppAssetAppStoreEnum
+    | (string & {});
   /** Last date of when this asset is effective and still serving, in yyyy-MM-dd format. */
   endDate?: string;
   /** Required. A string that uniquely identifies a mobile application. It should just contain the platform native id, like "com.android.ebay" for Android or "12345689" for iOS. */
@@ -13973,7 +14460,9 @@ export const GoogleAdsSearchads360V23Common__CallToActionAssetCallToActionEnum =
 /** A call to action asset. */
 export interface GoogleAdsSearchads360V23Common__CallToActionAsset {
   /** Call to action. */
-  callToAction?: GoogleAdsSearchads360V23Common__CallToActionAssetCallToActionEnum;
+  callToAction?:
+    | GoogleAdsSearchads360V23Common__CallToActionAssetCallToActionEnum
+    | (string & {});
 }
 export const GoogleAdsSearchads360V23Common__CallToActionAsset =
   /*@__PURE__*/ S.suspend(() =>
@@ -14032,7 +14521,7 @@ export const GoogleAdsSearchads360V23Common__BusinessProfileLocation =
   }) as any as S.Schema<GoogleAdsSearchads360V23Common__BusinessProfileLocation>;
 
 export type GoogleAdsSearchads360V23Common__BusinessProfileLocationList =
-  ReadonlyArray<GoogleAdsSearchads360V23Common__BusinessProfileLocation>;
+  Array<GoogleAdsSearchads360V23Common__BusinessProfileLocation>;
 export const GoogleAdsSearchads360V23Common__BusinessProfileLocationList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Common__BusinessProfileLocation,
@@ -14048,7 +14537,9 @@ export interface GoogleAdsSearchads360V23Common__UnifiedLocationAsset {
   /** The list of business locations for the customer. This will only be returned if the Location Asset is syncing from the Business Profile account. It is possible to have multiple Business Profile listings under the same account that point to the same Place ID. */
   businessProfileLocations?: GoogleAdsSearchads360V23Common__BusinessProfileLocationList;
   /** The type of location ownership. If the type is BUSINESS_OWNER, it will be served as a location extension. If the type is AFFILIATE, it will be served as an affiliate location. */
-  locationOwnershipType?: GoogleAdsSearchads360V23Common__UnifiedLocationAssetLocationOwnershipTypeEnum;
+  locationOwnershipType?:
+    | GoogleAdsSearchads360V23Common__UnifiedLocationAssetLocationOwnershipTypeEnum
+    | (string & {});
   /** Place IDs uniquely identify a place in the Google Places database and on Google Maps. This field is unique for a given customer ID and asset type. See https://developers.google.com/places/web-service/place-id to learn more about Place ID. */
   placeId?: string;
 }
@@ -14169,9 +14660,13 @@ export interface GoogleAdsSearchads360V23Resources__AssetFieldTypePolicySummary 
   /** Output only. Policy summary. */
   policySummaryInfo?: GoogleAdsSearchads360V23Resources__AssetPolicySummary;
   /** Output only. FieldType of this asset. */
-  assetFieldType?: GoogleAdsSearchads360V23Resources__AssetFieldTypePolicySummaryAssetFieldTypeEnum;
+  assetFieldType?:
+    | GoogleAdsSearchads360V23Resources__AssetFieldTypePolicySummaryAssetFieldTypeEnum
+    | (string & {});
   /** Output only. Source of this asset. */
-  assetSource?: GoogleAdsSearchads360V23Resources__AssetFieldTypePolicySummaryAssetSourceEnum;
+  assetSource?:
+    | GoogleAdsSearchads360V23Resources__AssetFieldTypePolicySummaryAssetSourceEnum
+    | (string & {});
 }
 export const GoogleAdsSearchads360V23Resources__AssetFieldTypePolicySummary =
   /*@__PURE__*/ S.suspend(() =>
@@ -14192,7 +14687,7 @@ export const GoogleAdsSearchads360V23Resources__AssetFieldTypePolicySummary =
   }) as any as S.Schema<GoogleAdsSearchads360V23Resources__AssetFieldTypePolicySummary>;
 
 export type GoogleAdsSearchads360V23Resources__AssetFieldTypePolicySummaryList =
-  ReadonlyArray<GoogleAdsSearchads360V23Resources__AssetFieldTypePolicySummary>;
+  Array<GoogleAdsSearchads360V23Resources__AssetFieldTypePolicySummary>;
 export const GoogleAdsSearchads360V23Resources__AssetFieldTypePolicySummaryList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Resources__AssetFieldTypePolicySummary,
@@ -14413,7 +14908,9 @@ export interface GoogleAdsSearchads360V23Common__LeadFormField {
   /** Answer configuration for location question. If true, campaign/account level location data (state, city, business name etc) will be rendered on the Lead Form. Starting V13.1, has_location_answer can only be set for "What is your preferred dealership?" question, for advertisers with Location Assets setup at campaign/account level. */
   hasLocationAnswer?: boolean;
   /** Describes the input type, which may be a predefined type such as "full name" or a pre-vetted question like "What kind of vehicle do you have?". */
-  inputType?: GoogleAdsSearchads360V23Common__LeadFormFieldInputTypeEnum;
+  inputType?:
+    | GoogleAdsSearchads360V23Common__LeadFormFieldInputTypeEnum
+    | (string & {});
 }
 export const GoogleAdsSearchads360V23Common__LeadFormField =
   /*@__PURE__*/ S.suspend(() =>
@@ -14431,7 +14928,7 @@ export const GoogleAdsSearchads360V23Common__LeadFormField =
   }) as any as S.Schema<GoogleAdsSearchads360V23Common__LeadFormField>;
 
 export type GoogleAdsSearchads360V23Common__LeadFormFieldList =
-  ReadonlyArray<GoogleAdsSearchads360V23Common__LeadFormField>;
+  Array<GoogleAdsSearchads360V23Common__LeadFormField>;
 export const GoogleAdsSearchads360V23Common__LeadFormFieldList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Common__LeadFormField,
@@ -14488,7 +14985,7 @@ export const GoogleAdsSearchads360V23Common__LeadFormCustomQuestionField =
   }) as any as S.Schema<GoogleAdsSearchads360V23Common__LeadFormCustomQuestionField>;
 
 export type GoogleAdsSearchads360V23Common__LeadFormCustomQuestionFieldList =
-  ReadonlyArray<GoogleAdsSearchads360V23Common__LeadFormCustomQuestionField>;
+  Array<GoogleAdsSearchads360V23Common__LeadFormCustomQuestionField>;
 export const GoogleAdsSearchads360V23Common__LeadFormCustomQuestionFieldList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Common__LeadFormCustomQuestionField,
@@ -14529,7 +15026,7 @@ export const GoogleAdsSearchads360V23Common__LeadFormDeliveryMethod =
   }) as any as S.Schema<GoogleAdsSearchads360V23Common__LeadFormDeliveryMethod>;
 
 export type GoogleAdsSearchads360V23Common__LeadFormDeliveryMethodList =
-  ReadonlyArray<GoogleAdsSearchads360V23Common__LeadFormDeliveryMethod>;
+  Array<GoogleAdsSearchads360V23Common__LeadFormDeliveryMethod>;
 export const GoogleAdsSearchads360V23Common__LeadFormDeliveryMethodList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Common__LeadFormDeliveryMethod,
@@ -14540,7 +15037,9 @@ export interface GoogleAdsSearchads360V23Common__LeadFormAsset {
   /** Required. Text giving a clear value proposition of what users expect once they expand the form. */
   callToActionDescription?: string;
   /** Pre-defined display text that encourages user action after the form is submitted. */
-  postSubmitCallToActionType?: GoogleAdsSearchads360V23Common__LeadFormAssetPostSubmitCallToActionTypeEnum;
+  postSubmitCallToActionType?:
+    | GoogleAdsSearchads360V23Common__LeadFormAssetPostSubmitCallToActionTypeEnum
+    | (string & {});
   /** Ordered list of input fields. This field can be updated by reordering questions, but not by adding or removing questions. */
   fields?: GoogleAdsSearchads360V23Common__LeadFormFieldList;
   /** Detailed description shown after form submission that describes how the advertiser will follow up with the user. */
@@ -14548,11 +15047,15 @@ export interface GoogleAdsSearchads360V23Common__LeadFormAsset {
   /** Asset resource name of the background image. The image dimensions must be exactly 1200x628. */
   backgroundImageAsset?: string;
   /** Chosen intent for the lead form, for example, more volume or more qualified. */
-  desiredIntent?: GoogleAdsSearchads360V23Common__LeadFormAssetDesiredIntentEnum;
+  desiredIntent?:
+    | GoogleAdsSearchads360V23Common__LeadFormAssetDesiredIntentEnum
+    | (string & {});
   /** Required. Detailed description of the expanded form to describe what the form is asking for or facilitating. */
   description?: string;
   /** Required. Pre-defined display text that encourages user to expand the form. */
-  callToActionType?: GoogleAdsSearchads360V23Common__LeadFormAssetCallToActionTypeEnum;
+  callToActionType?:
+    | GoogleAdsSearchads360V23Common__LeadFormAssetCallToActionTypeEnum
+    | (string & {});
   /** Required. Link to a page describing the policy on how the collected data is handled by the advertiser/business. */
   privacyPolicyUrl?: string;
   /** Required. Headline of the expanded form to describe what the form is asking for or facilitating. */
@@ -14677,7 +15180,9 @@ export interface GoogleAdsSearchads360V23Common__UnifiedCallAsset {
   /** Whether to show the call extension in search user's time zone. Applies to Microsoft Ads. */
   useSearcherTimeZone?: boolean;
   /** Output only. Indicates whether this CallAsset should use its own call conversion setting, follow the account level setting, or disable call conversion. */
-  callConversionReportingState?: GoogleAdsSearchads360V23Common__UnifiedCallAssetCallConversionReportingStateEnum;
+  callConversionReportingState?:
+    | GoogleAdsSearchads360V23Common__UnifiedCallAssetCallConversionReportingStateEnum
+    | (string & {});
   /** Two-letter country code of the phone number. Examples: 'US', 'us'. */
   countryCode?: string;
   /** Start date of when this asset is effective and can begin serving, in yyyy-MM-dd format. */
@@ -14727,7 +15232,9 @@ export interface GoogleAdsSearchads360V23Common__LocationAsset {
   /** The list of business locations for the customer. This will only be returned if the Location Asset is syncing from the Business Profile account. It is possible to have multiple Business Profile listings under the same account that point to the same Place ID. */
   businessProfileLocations?: GoogleAdsSearchads360V23Common__BusinessProfileLocationList;
   /** The type of location ownership. If the type is BUSINESS_OWNER, it will be served as a location extension. If the type is AFFILIATE, it will be served as an affiliate location. */
-  locationOwnershipType?: GoogleAdsSearchads360V23Common__LocationAssetLocationOwnershipTypeEnum;
+  locationOwnershipType?:
+    | GoogleAdsSearchads360V23Common__LocationAssetLocationOwnershipTypeEnum
+    | (string & {});
   /** Place IDs uniquely identify a place in the Google Places database and on Google Maps. This field is unique for a given customer ID and asset type. See https://developers.google.com/places/web-service/place-id to learn more about Place ID. */
   placeId?: string;
 }
@@ -14845,7 +15352,7 @@ export const GoogleAdsSearchads360V23Common__PriceOfferingUnitEnum =
 /** A single price offering within a PriceAsset. */
 export interface GoogleAdsSearchads360V23Common__PriceOffering {
   /** The price unit of the price offering. */
-  unit?: GoogleAdsSearchads360V23Common__PriceOfferingUnitEnum;
+  unit?: GoogleAdsSearchads360V23Common__PriceOfferingUnitEnum | (string & {});
   /** The final mobile URL after all cross domain redirects. */
   finalMobileUrl?: string;
   /** Required. The price value of the price offering. */
@@ -14872,7 +15379,7 @@ export const GoogleAdsSearchads360V23Common__PriceOffering =
   }) as any as S.Schema<GoogleAdsSearchads360V23Common__PriceOffering>;
 
 export type GoogleAdsSearchads360V23Common__PriceOfferingList =
-  ReadonlyArray<GoogleAdsSearchads360V23Common__PriceOffering>;
+  Array<GoogleAdsSearchads360V23Common__PriceOffering>;
 export const GoogleAdsSearchads360V23Common__PriceOfferingList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Common__PriceOffering,
@@ -14909,9 +15416,11 @@ export interface GoogleAdsSearchads360V23Common__PriceAsset {
   /** Required. The language of the price asset. Represented as BCP 47 language tag. */
   languageCode?: string;
   /** The price qualifier of the price asset. */
-  priceQualifier?: GoogleAdsSearchads360V23Common__PriceAssetPriceQualifierEnum;
+  priceQualifier?:
+    | GoogleAdsSearchads360V23Common__PriceAssetPriceQualifierEnum
+    | (string & {});
   /** Required. The type of the price asset. */
-  type?: GoogleAdsSearchads360V23Common__PriceAssetTypeEnum;
+  type?: GoogleAdsSearchads360V23Common__PriceAssetTypeEnum | (string & {});
 }
 export const GoogleAdsSearchads360V23Common__PriceAsset =
   /*@__PURE__*/ S.suspend(() =>
@@ -14936,7 +15445,7 @@ export interface GoogleAdsSearchads360V23Resources__Asset {
   /** Immutable. A Demand Gen carousel card asset. */
   demandGenCarouselCardAsset?: GoogleAdsSearchads360V23Common__DemandGenCarouselCardAsset;
   /** Output only. Source of the asset. */
-  source?: GoogleAdsSearchads360V23Resources__AssetSourceEnum;
+  source?: GoogleAdsSearchads360V23Resources__AssetSourceEnum | (string & {});
   /** Output only. An image asset. */
   imageAsset?: GoogleAdsSearchads360V23Common__ImageAsset;
   /** A call asset. */
@@ -14956,7 +15465,9 @@ export interface GoogleAdsSearchads360V23Resources__Asset {
   /** Output only. Policy information for the asset. */
   policySummary?: GoogleAdsSearchads360V23Resources__AssetPolicySummary;
   /** Output only. Orientation of the asset. This is only supported for image and video assets. */
-  orientation?: GoogleAdsSearchads360V23Resources__AssetOrientationEnum;
+  orientation?:
+    | GoogleAdsSearchads360V23Resources__AssetOrientationEnum
+    | (string & {});
   /** Output only. A unified page feed asset. */
   searchAds360PageFeedAsset?: GoogleAdsSearchads360V23Common__UnifiedPageFeedAsset;
   /** A list of possible final URLs after all cross domain redirects. */
@@ -14964,7 +15475,7 @@ export interface GoogleAdsSearchads360V23Resources__Asset {
   /** URL template for constructing a tracking URL. */
   trackingUrlTemplate?: string;
   /** Output only. The status of the asset. */
-  status?: GoogleAdsSearchads360V23Resources__AssetStatusEnum;
+  status?: GoogleAdsSearchads360V23Resources__AssetStatusEnum | (string & {});
   /** Output only. A unified sitelink asset. */
   searchAds360SitelinkAsset?: GoogleAdsSearchads360V23Common__UnifiedSitelinkAsset;
   /** A business message asset. */
@@ -14982,7 +15493,7 @@ export interface GoogleAdsSearchads360V23Resources__Asset {
   /** Immutable. A media bundle asset. */
   mediaBundleAsset?: GoogleAdsSearchads360V23Common__MediaBundleAsset;
   /** Output only. Type of the asset. */
-  type?: GoogleAdsSearchads360V23Resources__AssetTypeEnum;
+  type?: GoogleAdsSearchads360V23Resources__AssetTypeEnum | (string & {});
   /** Output only. The timestamp when this asset was created. The timestamp is in the customer's time zone and in "yyyy-MM-dd HH:mm:ss" format. */
   creationTime?: string;
   /** A book on google asset. */
@@ -14996,7 +15507,9 @@ export interface GoogleAdsSearchads360V23Resources__Asset {
   /** Immutable. A call to action asset. */
   callToActionAsset?: GoogleAdsSearchads360V23Common__CallToActionAsset;
   /** Output only. The Engine Status for an asset. */
-  engineStatus?: GoogleAdsSearchads360V23Resources__AssetEngineStatusEnum;
+  engineStatus?:
+    | GoogleAdsSearchads360V23Resources__AssetEngineStatusEnum
+    | (string & {});
   /** Immutable. An app deep link asset. */
   appDeepLinkAsset?: GoogleAdsSearchads360V23Common__AppDeepLinkAsset;
   /** Output only. A unified location asset. */
@@ -15183,7 +15696,9 @@ export const GoogleAdsSearchads360V23Common__InteractionTypeInfoTypeEnum =
 /** Criterion for Interaction Type. */
 export interface GoogleAdsSearchads360V23Common__InteractionTypeInfo {
   /** The interaction type. */
-  type?: GoogleAdsSearchads360V23Common__InteractionTypeInfoTypeEnum;
+  type?:
+    | GoogleAdsSearchads360V23Common__InteractionTypeInfoTypeEnum
+    | (string & {});
 }
 export const GoogleAdsSearchads360V23Common__InteractionTypeInfo =
   /*@__PURE__*/ S.suspend(() =>
@@ -15265,7 +15780,9 @@ export interface GoogleAdsSearchads360V23Resources__CampaignCustomizer {
   /** Required. Immutable. The customizer attribute which is linked to the campaign. */
   customizerAttribute?: string;
   /** Output only. The status of the campaign customizer. */
-  status?: GoogleAdsSearchads360V23Resources__CampaignCustomizerStatusEnum;
+  status?:
+    | GoogleAdsSearchads360V23Resources__CampaignCustomizerStatusEnum
+    | (string & {});
   /** Required. The value to associate with the customizer attribute at this level. The value must be of the type specified for the CustomizerAttribute. */
   value?: GoogleAdsSearchads360V23Common__CustomizerValue;
   /** Immutable. The resource name of the campaign customizer. Campaign customizer resource names have the form: `customers/{customer_id}/campaignCustomizers/{campaign_id}~{customizer_attribute_id}` */
@@ -15342,11 +15859,13 @@ export interface GoogleAdsSearchads360V23Resources__SharedSet {
   /** The name of this shared set. Required. Shared Sets must have names that are unique among active shared sets of the same type. The length of this string should be between 1 and 255 UTF-8 bytes, inclusive. */
   name?: string;
   /** Immutable. The type of this shared set: each shared set holds only a single kind of resource. Required. Immutable. */
-  type?: GoogleAdsSearchads360V23Resources__SharedSetTypeEnum;
+  type?: GoogleAdsSearchads360V23Resources__SharedSetTypeEnum | (string & {});
   /** Output only. The number of campaigns associated with this shared set. Read only. */
   referenceCount?: string;
   /** Output only. The status of this shared set. Read only. */
-  status?: GoogleAdsSearchads360V23Resources__SharedSetStatusEnum;
+  status?:
+    | GoogleAdsSearchads360V23Resources__SharedSetStatusEnum
+    | (string & {});
   /** Output only. The number of shared criteria within this shared set. Read only. */
   memberCount?: string;
   /** Output only. The ID of this shared set. Read only. */
@@ -15354,7 +15873,9 @@ export interface GoogleAdsSearchads360V23Resources__SharedSet {
   /** Immutable. The resource name of the shared set. Shared set resource names have the form: `customers/{customer_id}/sharedSets/{shared_set_id}` */
   resourceName?: string;
   /** Immutable. Shared sets of type VERTICAL_ADS_ITEM_GROUP_RULE_LIST are associated with a particular vertical (e.g. hotels, things to do, flights, etc.). This field is required for shared sets of type VERTICAL_ADS_ITEM_GROUP_RULE_LIST. */
-  verticalAdsItemVerticalType?: GoogleAdsSearchads360V23Resources__SharedSetVerticalAdsItemVerticalTypeEnum;
+  verticalAdsItemVerticalType?:
+    | GoogleAdsSearchads360V23Resources__SharedSetVerticalAdsItemVerticalTypeEnum
+    | (string & {});
 }
 export const GoogleAdsSearchads360V23Resources__SharedSet =
   /*@__PURE__*/ S.suspend(() =>
@@ -15411,7 +15932,10 @@ export const GoogleAdsSearchads360V23Resources__CampaignAssetPrimaryStatusReason
   /*@__PURE__*/ S.String;
 
 export type GoogleAdsSearchads360V23Resources__CampaignAssetPrimaryStatusReasonsItemEnumList =
-  ReadonlyArray<GoogleAdsSearchads360V23Resources__CampaignAssetPrimaryStatusReasonsItemEnum>;
+  Array<
+    | GoogleAdsSearchads360V23Resources__CampaignAssetPrimaryStatusReasonsItemEnum
+    | (string & {})
+  >;
 export const GoogleAdsSearchads360V23Resources__CampaignAssetPrimaryStatusReasonsItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Resources__CampaignAssetPrimaryStatusReasonsItemEnum,
@@ -15490,9 +16014,13 @@ export interface GoogleAdsSearchads360V23Resources__CampaignAsset {
   /** Output only. Provides a list of reasons for why an asset is not serving or not serving at full capacity. */
   primaryStatusReasons?: GoogleAdsSearchads360V23Resources__CampaignAssetPrimaryStatusReasonsItemEnumList;
   /** Output only. Provides the PrimaryStatus of this asset link. Primary status is meant essentially to differentiate between the plain "status" field, which has advertiser set values of enabled, paused, or removed. The primary status takes into account other signals (for assets its mainly policy and quality approvals) to come up with a more comprehensive status to indicate its serving state. */
-  primaryStatus?: GoogleAdsSearchads360V23Resources__CampaignAssetPrimaryStatusEnum;
+  primaryStatus?:
+    | GoogleAdsSearchads360V23Resources__CampaignAssetPrimaryStatusEnum
+    | (string & {});
   /** Status of the campaign asset. */
-  status?: GoogleAdsSearchads360V23Resources__CampaignAssetStatusEnum;
+  status?:
+    | GoogleAdsSearchads360V23Resources__CampaignAssetStatusEnum
+    | (string & {});
   /** Output only. Provides the details of the primary status and its associated reasons. */
   primaryStatusDetails?: GoogleAdsSearchads360V23Common__AssetLinkPrimaryStatusDetailsList;
   /** Immutable. The resource name of the campaign asset. CampaignAsset resource names have the form: `customers/{customer_id}/campaignAssets/{campaign_id}~{asset_id}~{field_type}` */
@@ -15502,9 +16030,13 @@ export interface GoogleAdsSearchads360V23Resources__CampaignAsset {
   /** Immutable. The asset which is linked to the campaign. */
   asset?: string;
   /** Immutable. Role that the asset takes under the linked campaign. Required. */
-  fieldType?: GoogleAdsSearchads360V23Resources__CampaignAssetFieldTypeEnum;
+  fieldType?:
+    | GoogleAdsSearchads360V23Resources__CampaignAssetFieldTypeEnum
+    | (string & {});
   /** Output only. Source of the campaign asset link. */
-  source?: GoogleAdsSearchads360V23Resources__CampaignAssetSourceEnum;
+  source?:
+    | GoogleAdsSearchads360V23Resources__CampaignAssetSourceEnum
+    | (string & {});
 }
 export const GoogleAdsSearchads360V23Resources__CampaignAsset =
   /*@__PURE__*/ S.suspend(() =>
@@ -15582,7 +16114,10 @@ export const GoogleAdsSearchads360V23Resources__AdGroupAssetPrimaryStatusReasons
   /*@__PURE__*/ S.String;
 
 export type GoogleAdsSearchads360V23Resources__AdGroupAssetPrimaryStatusReasonsItemEnumList =
-  ReadonlyArray<GoogleAdsSearchads360V23Resources__AdGroupAssetPrimaryStatusReasonsItemEnum>;
+  Array<
+    | GoogleAdsSearchads360V23Resources__AdGroupAssetPrimaryStatusReasonsItemEnum
+    | (string & {})
+  >;
 export const GoogleAdsSearchads360V23Resources__AdGroupAssetPrimaryStatusReasonsItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Resources__AdGroupAssetPrimaryStatusReasonsItemEnum,
@@ -15647,13 +16182,17 @@ export const GoogleAdsSearchads360V23Resources__AdGroupAssetSourceEnum =
 /** A link between an ad group and an asset. */
 export interface GoogleAdsSearchads360V23Resources__AdGroupAsset {
   /** Output only. Provides the PrimaryStatus of this asset link. Primary status is meant essentially to differentiate between the plain "status" field, which has advertiser set values of enabled, paused, or removed. The primary status takes into account other signals (for assets its mainly policy and quality approvals) to come up with a more comprehensive status to indicate its serving state. */
-  primaryStatus?: GoogleAdsSearchads360V23Resources__AdGroupAssetPrimaryStatusEnum;
+  primaryStatus?:
+    | GoogleAdsSearchads360V23Resources__AdGroupAssetPrimaryStatusEnum
+    | (string & {});
   /** Output only. Provides a list of reasons for why an asset is not serving or not serving at full capacity. */
   primaryStatusReasons?: GoogleAdsSearchads360V23Resources__AdGroupAssetPrimaryStatusReasonsItemEnumList;
   /** Output only. Provides the details of the primary status and its associated reasons. */
   primaryStatusDetails?: GoogleAdsSearchads360V23Common__AssetLinkPrimaryStatusDetailsList;
   /** Status of the ad group asset. */
-  status?: GoogleAdsSearchads360V23Resources__AdGroupAssetStatusEnum;
+  status?:
+    | GoogleAdsSearchads360V23Resources__AdGroupAssetStatusEnum
+    | (string & {});
   /** Immutable. The resource name of the ad group asset. AdGroupAsset resource names have the form: `customers/{customer_id}/adGroupAssets/{ad_group_id}~{asset_id}~{field_type}` */
   resourceName?: string;
   /** Required. Immutable. The ad group to which the asset is linked. */
@@ -15661,9 +16200,13 @@ export interface GoogleAdsSearchads360V23Resources__AdGroupAsset {
   /** Required. Immutable. The asset which is linked to the ad group. */
   asset?: string;
   /** Required. Immutable. Role that the asset takes under the linked ad group. */
-  fieldType?: GoogleAdsSearchads360V23Resources__AdGroupAssetFieldTypeEnum;
+  fieldType?:
+    | GoogleAdsSearchads360V23Resources__AdGroupAssetFieldTypeEnum
+    | (string & {});
   /** Output only. Source of the adgroup asset link. */
-  source?: GoogleAdsSearchads360V23Resources__AdGroupAssetSourceEnum;
+  source?:
+    | GoogleAdsSearchads360V23Resources__AdGroupAssetSourceEnum
+    | (string & {});
 }
 export const GoogleAdsSearchads360V23Resources__AdGroupAsset =
   /*@__PURE__*/ S.suspend(() =>
@@ -15777,7 +16320,9 @@ export interface GoogleAdsSearchads360V23Resources__KeywordPlanAdGroupKeyword {
   /** The Keyword Plan ad group to which this keyword belongs. */
   keywordPlanAdGroup?: string;
   /** The keyword match type. */
-  matchType?: GoogleAdsSearchads360V23Resources__KeywordPlanAdGroupKeywordMatchTypeEnum;
+  matchType?:
+    | GoogleAdsSearchads360V23Resources__KeywordPlanAdGroupKeywordMatchTypeEnum
+    | (string & {});
 }
 export const GoogleAdsSearchads360V23Resources__KeywordPlanAdGroupKeyword =
   /*@__PURE__*/ S.suspend(() =>
@@ -15836,7 +16381,10 @@ export const GoogleAdsSearchads360V23Resources__BiddingSeasonalityAdjustmentDevi
   /*@__PURE__*/ S.String;
 
 export type GoogleAdsSearchads360V23Resources__BiddingSeasonalityAdjustmentDevicesItemEnumList =
-  ReadonlyArray<GoogleAdsSearchads360V23Resources__BiddingSeasonalityAdjustmentDevicesItemEnum>;
+  Array<
+    | GoogleAdsSearchads360V23Resources__BiddingSeasonalityAdjustmentDevicesItemEnum
+    | (string & {})
+  >;
 export const GoogleAdsSearchads360V23Resources__BiddingSeasonalityAdjustmentDevicesItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Resources__BiddingSeasonalityAdjustmentDevicesItemEnum,
@@ -15862,7 +16410,10 @@ export const GoogleAdsSearchads360V23Resources__BiddingSeasonalityAdjustmentAdve
   /*@__PURE__*/ S.String;
 
 export type GoogleAdsSearchads360V23Resources__BiddingSeasonalityAdjustmentAdvertisingChannelTypesItemEnumList =
-  ReadonlyArray<GoogleAdsSearchads360V23Resources__BiddingSeasonalityAdjustmentAdvertisingChannelTypesItemEnum>;
+  Array<
+    | GoogleAdsSearchads360V23Resources__BiddingSeasonalityAdjustmentAdvertisingChannelTypesItemEnum
+    | (string & {})
+  >;
 export const GoogleAdsSearchads360V23Resources__BiddingSeasonalityAdjustmentAdvertisingChannelTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Resources__BiddingSeasonalityAdjustmentAdvertisingChannelTypesItemEnum,
@@ -15887,7 +16438,9 @@ export interface GoogleAdsSearchads360V23Resources__BiddingSeasonalityAdjustment
   /** The seasonality adjustment will apply to all the campaigns under the listed channels retroactively as well as going forward when the scope of this adjustment is CHANNEL. The supported advertising channel types are DISPLAY, SEARCH and SHOPPING. Note: a seasonality adjustment with both advertising_channel_types and campaign_ids is not supported. */
   advertisingChannelTypes?: GoogleAdsSearchads360V23Resources__BiddingSeasonalityAdjustmentAdvertisingChannelTypesItemEnumList;
   /** Output only. The status of the seasonality adjustment. */
-  status?: GoogleAdsSearchads360V23Resources__BiddingSeasonalityAdjustmentStatusEnum;
+  status?:
+    | GoogleAdsSearchads360V23Resources__BiddingSeasonalityAdjustmentStatusEnum
+    | (string & {});
   /** Output only. The ID of the seasonality adjustment. */
   seasonalityAdjustmentId?: string;
   /** The name of the seasonality adjustment. The name can be at most 255 characters. */
@@ -15895,7 +16448,9 @@ export interface GoogleAdsSearchads360V23Resources__BiddingSeasonalityAdjustment
   /** Conversion rate modifier estimated based on expected conversion rate changes. When this field is unset or set to 1.0 no adjustment will be applied to traffic. The allowed range is 0.1 to 10.0. */
   conversionRateModifier?: number;
   /** The scope of the seasonality adjustment. */
-  scope?: GoogleAdsSearchads360V23Resources__BiddingSeasonalityAdjustmentScopeEnum;
+  scope?:
+    | GoogleAdsSearchads360V23Resources__BiddingSeasonalityAdjustmentScopeEnum
+    | (string & {});
   /** Required. The inclusive start time of the seasonality adjustment in yyyy-MM-dd HH:mm:ss format. A seasonality adjustment is forward looking and should be used for events that start and end in the future. */
   startDateTime?: string;
   /** The seasonality adjustment will apply to the campaigns listed when the scope of this adjustment is CAMPAIGN. The maximum number of campaigns per event is 2000. Note: a seasonality adjustment with both advertising_channel_types and campaign_ids is not supported. */
@@ -16041,7 +16596,10 @@ export const GoogleAdsSearchads360V23Resources__AdGroupExcludedParentAssetFieldT
   /*@__PURE__*/ S.String;
 
 export type GoogleAdsSearchads360V23Resources__AdGroupExcludedParentAssetFieldTypesItemEnumList =
-  ReadonlyArray<GoogleAdsSearchads360V23Resources__AdGroupExcludedParentAssetFieldTypesItemEnum>;
+  Array<
+    | GoogleAdsSearchads360V23Resources__AdGroupExcludedParentAssetFieldTypesItemEnum
+    | (string & {})
+  >;
 export const GoogleAdsSearchads360V23Resources__AdGroupExcludedParentAssetFieldTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Resources__AdGroupExcludedParentAssetFieldTypesItemEnum,
@@ -16111,7 +16669,10 @@ export const GoogleAdsSearchads360V23Resources__AdGroupPrimaryStatusReasonsItemE
   /*@__PURE__*/ S.String;
 
 export type GoogleAdsSearchads360V23Resources__AdGroupPrimaryStatusReasonsItemEnumList =
-  ReadonlyArray<GoogleAdsSearchads360V23Resources__AdGroupPrimaryStatusReasonsItemEnum>;
+  Array<
+    | GoogleAdsSearchads360V23Resources__AdGroupPrimaryStatusReasonsItemEnum
+    | (string & {})
+  >;
 export const GoogleAdsSearchads360V23Resources__AdGroupPrimaryStatusReasonsItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Resources__AdGroupPrimaryStatusReasonsItemEnum,
@@ -16154,7 +16715,10 @@ export const GoogleAdsSearchads360V23Resources__AdGroupExcludedParentAssetSetTyp
   /*@__PURE__*/ S.String;
 
 export type GoogleAdsSearchads360V23Resources__AdGroupExcludedParentAssetSetTypesItemEnumList =
-  ReadonlyArray<GoogleAdsSearchads360V23Resources__AdGroupExcludedParentAssetSetTypesItemEnum>;
+  Array<
+    | GoogleAdsSearchads360V23Resources__AdGroupExcludedParentAssetSetTypesItemEnum
+    | (string & {})
+  >;
 export const GoogleAdsSearchads360V23Resources__AdGroupExcludedParentAssetSetTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Resources__AdGroupExcludedParentAssetSetTypesItemEnum,
@@ -16221,9 +16785,13 @@ export const GoogleAdsSearchads360V23Resources_AdGroupDemandGenAdGroupSettingsDe
 /** Channel controls for Demand Gen ad groups. */
 export interface GoogleAdsSearchads360V23Resources_AdGroupDemandGenAdGroupSettings_DemandGenChannelControls {
   /** Output only. Channel configuration reflecting which field in the oneof is populated. */
-  channelConfig?: GoogleAdsSearchads360V23Resources_AdGroupDemandGenAdGroupSettings_DemandGenChannelControlsChannelConfigEnum;
+  channelConfig?:
+    | GoogleAdsSearchads360V23Resources_AdGroupDemandGenAdGroupSettings_DemandGenChannelControlsChannelConfigEnum
+    | (string & {});
   /** High level channel strategy. */
-  channelStrategy?: GoogleAdsSearchads360V23Resources_AdGroupDemandGenAdGroupSettings_DemandGenChannelControlsChannelStrategyEnum;
+  channelStrategy?:
+    | GoogleAdsSearchads360V23Resources_AdGroupDemandGenAdGroupSettings_DemandGenChannelControlsChannelStrategyEnum
+    | (string & {});
   /** Explicitly selected channels. This field should be set with at least one true value when present. */
   selectedChannels?: GoogleAdsSearchads360V23Resources_AdGroupDemandGenAdGroupSettingsDemandGenChannelControls_DemandGenSelectedChannels;
 }
@@ -16312,11 +16880,13 @@ export const GoogleAdsSearchads360V23Resources__AdGroupPrimaryStatusEnum =
 /** An ad group. */
 export interface GoogleAdsSearchads360V23Resources__AdGroup {
   /** The status of the ad group. */
-  status?: GoogleAdsSearchads360V23Resources__AdGroupStatusEnum;
+  status?: GoogleAdsSearchads360V23Resources__AdGroupStatusEnum | (string & {});
   /** The URL template for constructing a tracking URL. */
   trackingUrlTemplate?: string;
   /** The ad rotation mode of the ad group. */
-  adRotationMode?: GoogleAdsSearchads360V23Resources__AdGroupAdRotationModeEnum;
+  adRotationMode?:
+    | GoogleAdsSearchads360V23Resources__AdGroupAdRotationModeEnum
+    | (string & {});
   /** The fixed amount in micros that the advertiser pays for every thousand impressions of the ad. */
   fixedCpmMicros?: string;
   /** The maximum CPM (cost-per-thousand viewable impressions) bid. */
@@ -16326,7 +16896,7 @@ export interface GoogleAdsSearchads360V23Resources__AdGroup {
   /** The CPV (cost-per-view) bid. */
   cpvBidMicros?: string;
   /** Immutable. The type of the ad group. */
-  type?: GoogleAdsSearchads360V23Resources__AdGroupTypeEnum;
+  type?: GoogleAdsSearchads360V23Resources__AdGroupTypeEnum | (string & {});
   /** The target ROAS (return-on-ad-spend) for this ad group. This field lets you override the target ROAS specified in the campaign's bidding strategy, but only if the campaign is using a standard (not portfolio) `TargetRoas` strategy or a standard `MaximizeConversionValue` strategy with its `target_roas` field set. If the campaign is using a portfolio bidding strategy, this field cannot be set and attempting to do so will result in an error. For any other bidding strategies, this value is ignored. To see the actual target ROAS being used by the ad group, considering potential overrides, query the `effective_target_roas` and `effective_target_roas_source` fields. */
   targetRoas?: number;
   /** Output only. The timestamp when this ad_group was created. The timestamp is in the customer's time zone and in "yyyy-MM-dd HH:mm:ss" format. */
@@ -16344,7 +16914,9 @@ export interface GoogleAdsSearchads360V23Resources__AdGroup {
   /** When this value is true, demographics will be excluded from the types of targeting which are expanded when optimized_targeting_enabled is true. When optimized_targeting_enabled is false, this field is ignored. Default is false. */
   excludeDemographicExpansion?: boolean;
   /** Output only. Source of the effective target CPC. This field is read-only. */
-  effectiveTargetCpcSource?: GoogleAdsSearchads360V23Resources__AdGroupEffectiveTargetCpcSourceEnum;
+  effectiveTargetCpcSource?:
+    | GoogleAdsSearchads360V23Resources__AdGroupEffectiveTargetCpcSourceEnum
+    | (string & {});
   /** The target CPA (cost-per-acquisition). If the ad group's campaign bidding strategy is TargetCpa or MaximizeConversions (with its target_cpa field set), then this field overrides the target CPA specified in the campaign's bidding strategy. Otherwise, this value is ignored. */
   targetCpaMicros?: string;
   /** Output only. The effective target CPA (cost-per-acquisition). This field is read-only. */
@@ -16354,7 +16926,9 @@ export interface GoogleAdsSearchads360V23Resources__AdGroup {
   /** Output only. The resource names of labels attached to this ad group. */
   labels?: StringList;
   /** Output only. Source of the effective target CPA. This field is read-only. */
-  effectiveTargetCpaSource?: GoogleAdsSearchads360V23Resources__AdGroupEffectiveTargetCpaSourceEnum;
+  effectiveTargetCpaSource?:
+    | GoogleAdsSearchads360V23Resources__AdGroupEffectiveTargetCpaSourceEnum
+    | (string & {});
   /** Output only. For draft or experiment ad groups, this field is the resource name of the base ad group from which this ad group was created. If a draft or experiment ad group does not have a base ad group, then this field is null. For base ad groups, this field equals the ad group resource name. This field is read-only. */
   baseAdGroup?: string;
   /** Output only. The effective target CPC (cost-per-click). This field is read-only. */
@@ -16362,7 +16936,9 @@ export interface GoogleAdsSearchads360V23Resources__AdGroup {
   /** The name of the ad group. This field is required and should not be empty when creating new ad groups. It must contain fewer than 255 UTF-8 full-width characters. It must not contain any null (code point 0x0), NL line feed (code point 0xA) or carriage return (code point 0xD) characters. */
   name?: string;
   /** Output only. Source of the effective target ROAS. This field is read-only. */
-  effectiveTargetRoasSource?: GoogleAdsSearchads360V23Resources__AdGroupEffectiveTargetRoasSourceEnum;
+  effectiveTargetRoasSource?:
+    | GoogleAdsSearchads360V23Resources__AdGroupEffectiveTargetRoasSourceEnum
+    | (string & {});
   /** Output only. Provides reasons for why an ad group is not serving or not serving optimally. */
   primaryStatusReasons?: GoogleAdsSearchads360V23Resources__AdGroupPrimaryStatusReasonsItemEnumList;
   /** Output only. The ID of the ad group. */
@@ -16372,7 +16948,9 @@ export interface GoogleAdsSearchads360V23Resources__AdGroup {
   /** Average amount in micros that the advertiser is willing to pay for every ad click. Overrides the target CPC configured at the campaign level. */
   targetCpcMicros?: string;
   /** Lets advertisers specify a targeting dimension on which to place absolute bids. This is only applicable for campaigns that target only the display network and not search. */
-  displayCustomBidDimension?: GoogleAdsSearchads360V23Resources__AdGroupDisplayCustomBidDimensionEnum;
+  displayCustomBidDimension?:
+    | GoogleAdsSearchads360V23Resources__AdGroupDisplayCustomBidDimensionEnum
+    | (string & {});
   /** Output only. Date when this ad group starts serving ads. By default, the ad group starts now or the ad group's start date, whichever is later. If this field is set, then the ad group starts at the beginning of the specified date in the customer's time zone. This field is only available for Microsoft Advertising and Facebook gateway accounts. Format: YYYY-MM-DD Example: 2019-03-14 */
   startDate?: string;
   /** Output only. The language of the ads and keywords in an ad group. This field is only available for Microsoft Advertising accounts. More details: https://docs.microsoft.com/en-us/advertising/guides/ad-languages?view=bingads-13#adlanguage */
@@ -16388,7 +16966,9 @@ export interface GoogleAdsSearchads360V23Resources__AdGroup {
   /** The list of mappings used to substitute custom parameter tags in a `tracking_url_template`, `final_urls`, or `mobile_final_urls`. */
   urlCustomParameters?: GoogleAdsSearchads360V23Common__CustomParameterList;
   /** Output only. The Engine Status for ad group. */
-  engineStatus?: GoogleAdsSearchads360V23Resources__AdGroupEngineStatusEnum;
+  engineStatus?:
+    | GoogleAdsSearchads360V23Resources__AdGroupEngineStatusEnum
+    | (string & {});
   /** Settings for Demand Gen ad groups. */
   demandGenAdGroupSettings?: GoogleAdsSearchads360V23Resources_AdGroup_DemandGenAdGroupSettings;
   /** The percent cpc bid amount, expressed as a fraction of the advertised price for some good or service. The valid range for the fraction is [0,1) and the value stored here is 1,000,000 * [fraction]. */
@@ -16400,7 +16980,9 @@ export interface GoogleAdsSearchads360V23Resources__AdGroup {
   /** Immutable. Setting for audience related features. */
   audienceSetting?: GoogleAdsSearchads360V23Resources_AdGroup_AudienceSetting;
   /** Output only. Provides aggregated view into why an ad group is not serving or not serving optimally. */
-  primaryStatus?: GoogleAdsSearchads360V23Resources__AdGroupPrimaryStatusEnum;
+  primaryStatus?:
+    | GoogleAdsSearchads360V23Resources__AdGroupPrimaryStatusEnum
+    | (string & {});
   /** Output only. Value will be same as that of the CPC (cost-per-click) bid value when the bidding strategy is one of manual cpc, enhanced cpc, page one promoted or target outrank share, otherwise the value will be null. */
   effectiveCpcBidMicros?: string;
   /** Output only. ID of the ad group in the external engine account. This field is for non-Google Ads account only, for example, Yahoo Japan, Microsoft, Baidu etc. For Google Ads entity, use "ad_group.id" instead. */
@@ -16562,7 +17144,10 @@ export const GoogleAdsSearchads360V23Resources__AssetGroupPrimaryStatusReasonsIt
   /*@__PURE__*/ S.String;
 
 export type GoogleAdsSearchads360V23Resources__AssetGroupPrimaryStatusReasonsItemEnumList =
-  ReadonlyArray<GoogleAdsSearchads360V23Resources__AssetGroupPrimaryStatusReasonsItemEnum>;
+  Array<
+    | GoogleAdsSearchads360V23Resources__AssetGroupPrimaryStatusReasonsItemEnum
+    | (string & {})
+  >;
 export const GoogleAdsSearchads360V23Resources__AssetGroupPrimaryStatusReasonsItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Resources__AssetGroupPrimaryStatusReasonsItemEnum,
@@ -16629,11 +17214,15 @@ export const GoogleAdsSearchads360V23Resources_AdStrengthActionItem_AddAssetDeta
 /** The details of the asset to add. */
 export interface GoogleAdsSearchads360V23Resources_AdStrengthActionItem_AddAssetDetails {
   /** Output only. The asset field type of the asset(s) to add. */
-  assetFieldType?: GoogleAdsSearchads360V23Resources_AdStrengthActionItem_AddAssetDetailsAssetFieldTypeEnum;
+  assetFieldType?:
+    | GoogleAdsSearchads360V23Resources_AdStrengthActionItem_AddAssetDetailsAssetFieldTypeEnum
+    | (string & {});
   /** Output only. The number of assets to add. */
   assetCount?: number;
   /** Output only. For video field types, the required aspect ratio of the video. When unset and asset_field_type is YOUTUBE_VIDEO, the system recommends the advertiser upload any YouTube video, regardless of aspect ratio. */
-  videoAspectRatioRequirement?: GoogleAdsSearchads360V23Resources_AdStrengthActionItem_AddAssetDetailsVideoAspectRatioRequirementEnum;
+  videoAspectRatioRequirement?:
+    | GoogleAdsSearchads360V23Resources_AdStrengthActionItem_AddAssetDetailsVideoAspectRatioRequirementEnum
+    | (string & {});
 }
 export const GoogleAdsSearchads360V23Resources_AdStrengthActionItem_AddAssetDetails =
   /*@__PURE__*/ S.suspend(() =>
@@ -16654,7 +17243,9 @@ export const GoogleAdsSearchads360V23Resources_AdStrengthActionItem_AddAssetDeta
 /** An action item to improve the ad strength of an asset group. */
 export interface GoogleAdsSearchads360V23Resources__AdStrengthActionItem {
   /** Output only. The action item type. */
-  actionItemType?: GoogleAdsSearchads360V23Resources__AdStrengthActionItemActionItemTypeEnum;
+  actionItemType?:
+    | GoogleAdsSearchads360V23Resources__AdStrengthActionItemActionItemTypeEnum
+    | (string & {});
   /** Output only. The action item details for action item type ADD_ASSET. */
   addAssetDetails?: GoogleAdsSearchads360V23Resources_AdStrengthActionItem_AddAssetDetails;
 }
@@ -16673,7 +17264,7 @@ export const GoogleAdsSearchads360V23Resources__AdStrengthActionItem =
   }) as any as S.Schema<GoogleAdsSearchads360V23Resources__AdStrengthActionItem>;
 
 export type GoogleAdsSearchads360V23Resources__AdStrengthActionItemList =
-  ReadonlyArray<GoogleAdsSearchads360V23Resources__AdStrengthActionItem>;
+  Array<GoogleAdsSearchads360V23Resources__AdStrengthActionItem>;
 export const GoogleAdsSearchads360V23Resources__AdStrengthActionItemList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Resources__AdStrengthActionItem,
@@ -16706,9 +17297,13 @@ export interface GoogleAdsSearchads360V23Resources__AssetGroup {
   /** Immutable. The campaign with which this asset group is associated. The asset which is linked to the asset group. */
   campaign?: string;
   /** Output only. The primary status of the asset group. Provides insights into why an asset group is not serving or not serving optimally. */
-  primaryStatus?: GoogleAdsSearchads360V23Resources__AssetGroupPrimaryStatusEnum;
+  primaryStatus?:
+    | GoogleAdsSearchads360V23Resources__AssetGroupPrimaryStatusEnum
+    | (string & {});
   /** Output only. Overall ad strength of this asset group. */
-  adStrength?: GoogleAdsSearchads360V23Resources__AssetGroupAdStrengthEnum;
+  adStrength?:
+    | GoogleAdsSearchads360V23Resources__AssetGroupAdStrengthEnum
+    | (string & {});
   /** A list of final mobile URLs after all cross domain redirects. In performance max, by default, the urls are eligible for expansion unless opted out. */
   finalMobileUrls?: StringList;
   /** Output only. The ID of the asset group. */
@@ -16718,7 +17313,9 @@ export interface GoogleAdsSearchads360V23Resources__AssetGroup {
   /** First part of text that may appear appended to the url displayed in the ad. */
   path1?: string;
   /** The status of the asset group. */
-  status?: GoogleAdsSearchads360V23Resources__AssetGroupStatusEnum;
+  status?:
+    | GoogleAdsSearchads360V23Resources__AssetGroupStatusEnum
+    | (string & {});
   /** Output only. The asset coverage of this asset group. */
   assetCoverage?: GoogleAdsSearchads360V23Resources__AssetCoverage;
   /** Required. Name of the asset group. Required. It must have a minimum length of 1 and maximum length of 128. It must be unique under a campaign. */
@@ -16803,7 +17400,9 @@ export const GoogleAdsSearchads360V23Common__DateRange =
 /** The forecasting period associated with the keyword plan. */
 export interface GoogleAdsSearchads360V23Resources__KeywordPlanForecastPeriod {
   /** A future date range relative to the current date used for forecasting. */
-  dateInterval?: GoogleAdsSearchads360V23Resources__KeywordPlanForecastPeriodDateIntervalEnum;
+  dateInterval?:
+    | GoogleAdsSearchads360V23Resources__KeywordPlanForecastPeriodDateIntervalEnum
+    | (string & {});
   /** The custom date range used for forecasting. It cannot be greater than a year. The start and end dates must be in the future. Otherwise, an error will be returned when the forecasting action is performed. The start and end dates are inclusive. */
   dateRange?: GoogleAdsSearchads360V23Common__DateRange;
 }
@@ -16875,7 +17474,9 @@ export const GoogleAdsSearchads360V23Common__BusinessProfileBusinessNameFilterFi
 /** Business Profile location group business name filter. */
 export interface GoogleAdsSearchads360V23Common__BusinessProfileBusinessNameFilter {
   /** The type of string matching to use when filtering with business_name. */
-  filterType?: GoogleAdsSearchads360V23Common__BusinessProfileBusinessNameFilterFilterTypeEnum;
+  filterType?:
+    | GoogleAdsSearchads360V23Common__BusinessProfileBusinessNameFilterFilterTypeEnum
+    | (string & {});
   /** Business name string to use for filtering. */
   businessName?: string;
 }
@@ -17044,7 +17645,7 @@ export const GoogleAdsSearchads360V23Common__MapsLocationInfo =
   }) as any as S.Schema<GoogleAdsSearchads360V23Common__MapsLocationInfo>;
 
 export type GoogleAdsSearchads360V23Common__MapsLocationInfoList =
-  ReadonlyArray<GoogleAdsSearchads360V23Common__MapsLocationInfo>;
+  Array<GoogleAdsSearchads360V23Common__MapsLocationInfo>;
 export const GoogleAdsSearchads360V23Common__MapsLocationInfoList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Common__MapsLocationInfo,
@@ -17084,7 +17685,7 @@ export const GoogleAdsSearchads360V23Common__ChainFilter =
   }) as any as S.Schema<GoogleAdsSearchads360V23Common__ChainFilter>;
 
 export type GoogleAdsSearchads360V23Common__ChainFilterList =
-  ReadonlyArray<GoogleAdsSearchads360V23Common__ChainFilter>;
+  Array<GoogleAdsSearchads360V23Common__ChainFilter>;
 export const GoogleAdsSearchads360V23Common__ChainFilterList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Common__ChainFilter,
@@ -17103,7 +17704,9 @@ export interface GoogleAdsSearchads360V23Common__ChainSet {
   /** Required. A list of chain level filters, all filters are OR'ed together. */
   chains?: GoogleAdsSearchads360V23Common__ChainFilterList;
   /** Required. Immutable. Relationship type the specified chains have with this advertiser. */
-  relationshipType?: GoogleAdsSearchads360V23Common__ChainSetRelationshipTypeEnum;
+  relationshipType?:
+    | GoogleAdsSearchads360V23Common__ChainSetRelationshipTypeEnum
+    | (string & {});
 }
 export const GoogleAdsSearchads360V23Common__ChainSet = /*@__PURE__*/ S.suspend(
   () =>
@@ -17120,7 +17723,9 @@ export const GoogleAdsSearchads360V23Common__ChainSet = /*@__PURE__*/ S.suspend(
 /** Data related to location set. One of the Google Business Profile (previously known as Google My Business) data, Chain data, and map location data need to be specified. */
 export interface GoogleAdsSearchads360V23Common__LocationSet {
   /** Required. Immutable. Location Ownership Type (owned location or affiliate location). */
-  locationOwnershipType?: GoogleAdsSearchads360V23Common__LocationSetLocationOwnershipTypeEnum;
+  locationOwnershipType?:
+    | GoogleAdsSearchads360V23Common__LocationSetLocationOwnershipTypeEnum
+    | (string & {});
   /** Data used to configure a location set populated from Google Business Profile locations. */
   businessProfileLocationSet?: GoogleAdsSearchads360V23Common__BusinessProfileLocationSet;
   /** Only set if locations are synced based on selected maps locations */
@@ -17177,9 +17782,11 @@ export interface GoogleAdsSearchads360V23Resources__AssetSet {
   /** Required. Name of the asset set. Required. It must have a minimum length of 1 and maximum length of 128. */
   name?: string;
   /** Required. Immutable. The type of the asset set. Required. */
-  type?: GoogleAdsSearchads360V23Resources__AssetSetTypeEnum;
+  type?: GoogleAdsSearchads360V23Resources__AssetSetTypeEnum | (string & {});
   /** Output only. The status of the asset set. Read-only. */
-  status?: GoogleAdsSearchads360V23Resources__AssetSetStatusEnum;
+  status?:
+    | GoogleAdsSearchads360V23Resources__AssetSetStatusEnum
+    | (string & {});
   /** Merchant ID and Feed Label from Google Merchant Center. */
   merchantCenterFeed?: GoogleAdsSearchads360V23Resources_AssetSet_MerchantCenterFeed;
   /** Location asset set data. This will be used for sync level location set. This can only be set if AssetSet's type is LOCATION_SYNC. */
@@ -17584,7 +18191,7 @@ export const GoogleAdsSearchads360V23Services__MutateOperation =
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateOperation>;
 
 export type GoogleAdsSearchads360V23Services__MutateOperationList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__MutateOperation>;
+  Array<GoogleAdsSearchads360V23Services__MutateOperation>;
 export const GoogleAdsSearchads360V23Services__MutateOperationList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__MutateOperation,
@@ -17727,7 +18334,7 @@ export const GoogleAdsSearchads360V23Common__UserIdentifier =
   }) as any as S.Schema<GoogleAdsSearchads360V23Common__UserIdentifier>;
 
 export type GoogleAdsSearchads360V23Common__UserIdentifierList =
-  ReadonlyArray<GoogleAdsSearchads360V23Common__UserIdentifier>;
+  Array<GoogleAdsSearchads360V23Common__UserIdentifier>;
 export const GoogleAdsSearchads360V23Common__UserIdentifierList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Common__UserIdentifier,
@@ -17752,9 +18359,13 @@ export const GoogleAdsSearchads360V23Common__ConsentAdUserDataEnum =
 /** Consent */
 export interface GoogleAdsSearchads360V23Common__Consent {
   /** This represents consent for ad personalization. This can only be set for OfflineUserDataJobService and UserDataService. */
-  adPersonalization?: GoogleAdsSearchads360V23Common__ConsentAdPersonalizationEnum;
+  adPersonalization?:
+    | GoogleAdsSearchads360V23Common__ConsentAdPersonalizationEnum
+    | (string & {});
   /** This represents consent for ad user data. */
-  adUserData?: GoogleAdsSearchads360V23Common__ConsentAdUserDataEnum;
+  adUserData?:
+    | GoogleAdsSearchads360V23Common__ConsentAdUserDataEnum
+    | (string & {});
 }
 export const GoogleAdsSearchads360V23Common__Consent = /*@__PURE__*/ S.suspend(
   () =>
@@ -17876,7 +18487,7 @@ export const GoogleAdsSearchads360V23Common__EventItemAttribute =
   }) as any as S.Schema<GoogleAdsSearchads360V23Common__EventItemAttribute>;
 
 export type GoogleAdsSearchads360V23Common__EventItemAttributeList =
-  ReadonlyArray<GoogleAdsSearchads360V23Common__EventItemAttribute>;
+  Array<GoogleAdsSearchads360V23Common__EventItemAttribute>;
 export const GoogleAdsSearchads360V23Common__EventItemAttributeList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Common__EventItemAttribute,
@@ -17905,7 +18516,7 @@ export const GoogleAdsSearchads360V23Common__EventAttribute =
   }) as any as S.Schema<GoogleAdsSearchads360V23Common__EventAttribute>;
 
 export type GoogleAdsSearchads360V23Common__EventAttributeList =
-  ReadonlyArray<GoogleAdsSearchads360V23Common__EventAttribute>;
+  Array<GoogleAdsSearchads360V23Common__EventAttribute>;
 export const GoogleAdsSearchads360V23Common__EventAttributeList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Common__EventAttribute,
@@ -18004,7 +18615,7 @@ export const GoogleAdsSearchads360V23Services__OfflineUserDataJobOperation =
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__OfflineUserDataJobOperation>;
 
 export type GoogleAdsSearchads360V23Services__OfflineUserDataJobOperationList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__OfflineUserDataJobOperation>;
+  Array<GoogleAdsSearchads360V23Services__OfflineUserDataJobOperation>;
 export const GoogleAdsSearchads360V23Services__OfflineUserDataJobOperationList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__OfflineUserDataJobOperation,
@@ -18068,7 +18679,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -18128,7 +18739,7 @@ export const GoogleAdsSearchads360V23Services__Conversation =
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__Conversation>;
 
 export type GoogleAdsSearchads360V23Services__ConversationList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__Conversation>;
+  Array<GoogleAdsSearchads360V23Services__Conversation>;
 export const GoogleAdsSearchads360V23Services__ConversationList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__Conversation,
@@ -18195,7 +18806,7 @@ export const GoogleAdsSearchads360V23Services__ConversationOrError =
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__ConversationOrError>;
 
 export type GoogleAdsSearchads360V23Services__ConversationOrErrorList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__ConversationOrError>;
+  Array<GoogleAdsSearchads360V23Services__ConversationOrError>;
 export const GoogleAdsSearchads360V23Services__ConversationOrErrorList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__ConversationOrError,
@@ -18275,7 +18886,7 @@ export const GoogleAdsSearchads360V23Services_ApplyRecommendationOperation_AdAss
   /*@__PURE__*/ S.String;
 
 export type GoogleAdsSearchads360V23Resources__AssetList =
-  ReadonlyArray<GoogleAdsSearchads360V23Resources__Asset>;
+  Array<GoogleAdsSearchads360V23Resources__Asset>;
 export const GoogleAdsSearchads360V23Resources__AssetList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Resources__Asset,
@@ -18408,7 +19019,7 @@ export const GoogleAdsSearchads360V23Common__SitelinkFeedItem =
   }) as any as S.Schema<GoogleAdsSearchads360V23Common__SitelinkFeedItem>;
 
 export type GoogleAdsSearchads360V23Common__SitelinkFeedItemList =
-  ReadonlyArray<GoogleAdsSearchads360V23Common__SitelinkFeedItem>;
+  Array<GoogleAdsSearchads360V23Common__SitelinkFeedItem>;
 export const GoogleAdsSearchads360V23Common__SitelinkFeedItemList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Common__SitelinkFeedItem,
@@ -18589,7 +19200,7 @@ export const GoogleAdsSearchads360V23Common__CalloutFeedItem =
   }) as any as S.Schema<GoogleAdsSearchads360V23Common__CalloutFeedItem>;
 
 export type GoogleAdsSearchads360V23Common__CalloutFeedItemList =
-  ReadonlyArray<GoogleAdsSearchads360V23Common__CalloutFeedItem>;
+  Array<GoogleAdsSearchads360V23Common__CalloutFeedItem>;
 export const GoogleAdsSearchads360V23Common__CalloutFeedItemList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Common__CalloutFeedItem,
@@ -18655,7 +19266,7 @@ export const GoogleAdsSearchads360V23Common__CallFeedItem =
   }) as any as S.Schema<GoogleAdsSearchads360V23Common__CallFeedItem>;
 
 export type GoogleAdsSearchads360V23Common__CallFeedItemList =
-  ReadonlyArray<GoogleAdsSearchads360V23Common__CallFeedItem>;
+  Array<GoogleAdsSearchads360V23Common__CallFeedItem>;
 export const GoogleAdsSearchads360V23Common__CallFeedItemList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Common__CallFeedItem,
@@ -18879,7 +19490,7 @@ export const GoogleAdsSearchads360V23Services__ApplyRecommendationOperation =
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__ApplyRecommendationOperation>;
 
 export type GoogleAdsSearchads360V23Services__ApplyRecommendationOperationList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__ApplyRecommendationOperation>;
+  Array<GoogleAdsSearchads360V23Services__ApplyRecommendationOperation>;
 export const GoogleAdsSearchads360V23Services__ApplyRecommendationOperationList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__ApplyRecommendationOperation,
@@ -18945,7 +19556,7 @@ export const GoogleAdsSearchads360V23Services__ApplyRecommendationResult =
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__ApplyRecommendationResult>;
 
 export type GoogleAdsSearchads360V23Services__ApplyRecommendationResultList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__ApplyRecommendationResult>;
+  Array<GoogleAdsSearchads360V23Services__ApplyRecommendationResult>;
 export const GoogleAdsSearchads360V23Services__ApplyRecommendationResultList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__ApplyRecommendationResult,
@@ -19061,7 +19672,9 @@ export interface GoogleAdsSearchads360V23Resources__CustomerAcquisitionGoalSetti
   /** Output only. Campaign specific values for the customer acquisition goal. */
   valueSettings?: GoogleAdsSearchads360V23Common__LifecycleGoalValueSettings;
   /** Output only. Customer acquisition optimization mode of this campaign. */
-  optimizationMode?: GoogleAdsSearchads360V23Resources__CustomerAcquisitionGoalSettingsOptimizationModeEnum;
+  optimizationMode?:
+    | GoogleAdsSearchads360V23Resources__CustomerAcquisitionGoalSettingsOptimizationModeEnum
+    | (string & {});
 }
 export const GoogleAdsSearchads360V23Resources__CustomerAcquisitionGoalSettings =
   /*@__PURE__*/ S.suspend(() =>
@@ -19421,7 +20034,9 @@ export interface GoogleAdsSearchads360V23Resources__ThirdPartyAppAnalyticsLinkId
   /** Immutable. A string that uniquely identifies a mobile application from which the data was collected to the Google Ads API. For iOS, the ID string is the 9 digit string that appears at the end of an App Store URL (for example, "422689480" for "Gmail" whose App Store link is https://apps.apple.com/us/app/gmail-email-by-google/id422689480). For Android, the ID string is the application's package name (for example, "com.google.android.gm" for "Gmail" given Google Play link https://play.google.com/store/apps/details?id=com.google.android.gm) This field should not be empty when creating a new third party app analytics link. It is unable to be modified after the creation of the link. */
   appId?: string;
   /** Immutable. The vendor of the app. This field should not be empty when creating a new third party app analytics link. It is unable to be modified after the creation of the link. */
-  appVendor?: GoogleAdsSearchads360V23Resources__ThirdPartyAppAnalyticsLinkIdentifierAppVendorEnum;
+  appVendor?:
+    | GoogleAdsSearchads360V23Resources__ThirdPartyAppAnalyticsLinkIdentifierAppVendorEnum
+    | (string & {});
   /** Immutable. The ID of the app analytics provider. This field should not be empty when creating a new third party app analytics link. It is unable to be modified after the creation of the link. */
   appAnalyticsProviderId?: string;
 }
@@ -19458,11 +20073,13 @@ export interface GoogleAdsSearchads360V23Resources__AccountLink {
   /** Immutable. Resource name of the account link. AccountLink resource names have the form: `customers/{customer_id}/accountLinks/{account_link_id}` */
   resourceName?: string;
   /** Output only. The type of the linked account. */
-  type?: GoogleAdsSearchads360V23Resources__AccountLinkTypeEnum;
+  type?: GoogleAdsSearchads360V23Resources__AccountLinkTypeEnum | (string & {});
   /** Immutable. A third party app analytics link. */
   thirdPartyAppAnalytics?: GoogleAdsSearchads360V23Resources__ThirdPartyAppAnalyticsLinkIdentifier;
   /** The status of the link. */
-  status?: GoogleAdsSearchads360V23Resources__AccountLinkStatusEnum;
+  status?:
+    | GoogleAdsSearchads360V23Resources__AccountLinkStatusEnum
+    | (string & {});
 }
 export const GoogleAdsSearchads360V23Resources__AccountLink =
   /*@__PURE__*/ S.suspend(() =>
@@ -19581,9 +20198,11 @@ export interface GoogleAdsSearchads360V23Resources__DataLink {
   /** Immutable. Resource name of the product data link. DataLink resource names have the form: ` */
   resourceName?: string;
   /** Output only. The status of the data link. */
-  status?: GoogleAdsSearchads360V23Resources__DataLinkStatusEnum;
+  status?:
+    | GoogleAdsSearchads360V23Resources__DataLinkStatusEnum
+    | (string & {});
   /** Output only. The type of the data. */
-  type?: GoogleAdsSearchads360V23Resources__DataLinkTypeEnum;
+  type?: GoogleAdsSearchads360V23Resources__DataLinkTypeEnum | (string & {});
 }
 export const GoogleAdsSearchads360V23Resources__DataLink =
   /*@__PURE__*/ S.suspend(() =>
@@ -19774,7 +20393,9 @@ export const GoogleAdsSearchads360V23Resources__OfflineUserDataJobMetadataMatchR
 /** Metadata of offline user data job. */
 export interface GoogleAdsSearchads360V23Resources__OfflineUserDataJobMetadata {
   /** Output only. Match rate of the Customer Match user list upload. Describes the estimated match rate when the status of the job is "RUNNING" and final match rate when the final match rate is available after the status of the job is "SUCCESS/FAILED". */
-  matchRateRange?: GoogleAdsSearchads360V23Resources__OfflineUserDataJobMetadataMatchRateRangeEnum;
+  matchRateRange?:
+    | GoogleAdsSearchads360V23Resources__OfflineUserDataJobMetadataMatchRateRangeEnum
+    | (string & {});
 }
 export const GoogleAdsSearchads360V23Resources__OfflineUserDataJobMetadata =
   /*@__PURE__*/ S.suspend(() =>
@@ -19790,13 +20411,19 @@ export const GoogleAdsSearchads360V23Resources__OfflineUserDataJobMetadata =
 /** A job containing offline user data of store visitors, or user list members that will be processed asynchronously. The uploaded data isn't readable and the processing results of the job can only be read using */
 export interface GoogleAdsSearchads360V23Resources__OfflineUserDataJob {
   /** Output only. Status of the job. */
-  status?: GoogleAdsSearchads360V23Resources__OfflineUserDataJobStatusEnum;
+  status?:
+    | GoogleAdsSearchads360V23Resources__OfflineUserDataJobStatusEnum
+    | (string & {});
   /** Immutable. User specified job ID. */
   externalId?: string;
   /** Output only. Reason for the processing failure, if status is FAILED. */
-  failureReason?: GoogleAdsSearchads360V23Resources__OfflineUserDataJobFailureReasonEnum;
+  failureReason?:
+    | GoogleAdsSearchads360V23Resources__OfflineUserDataJobFailureReasonEnum
+    | (string & {});
   /** Immutable. Type of the job. */
-  type?: GoogleAdsSearchads360V23Resources__OfflineUserDataJobTypeEnum;
+  type?:
+    | GoogleAdsSearchads360V23Resources__OfflineUserDataJobTypeEnum
+    | (string & {});
   /** Immutable. Metadata for store sales data update. */
   storeSalesMetadata?: GoogleAdsSearchads360V23Common__StoreSalesMetadata;
   /** Immutable. Metadata for data updates to a CRM-based user list. */
@@ -19976,13 +20603,17 @@ export interface GoogleAdsSearchads360V23Resources__ProductLinkInvitation {
   /** Output only. Merchant Center link invitation. */
   merchantCenter?: GoogleAdsSearchads360V23Resources__MerchantCenterLinkInvitationIdentifier;
   /** Output only. The status of the product link invitation. This field is read only. */
-  status?: GoogleAdsSearchads360V23Resources__ProductLinkInvitationStatusEnum;
+  status?:
+    | GoogleAdsSearchads360V23Resources__ProductLinkInvitationStatusEnum
+    | (string & {});
   /** Output only. Advertising Partner link invitation. */
   advertisingPartner?: GoogleAdsSearchads360V23Resources__AdvertisingPartnerLinkInvitationIdentifier;
   /** Output only. Hotel link invitation. */
   hotelCenter?: GoogleAdsSearchads360V23Resources__HotelCenterLinkInvitationIdentifier;
   /** Output only. The type of the invited account. This field is read only and can be used for filtering invitations with {@code GoogleAdsService.SearchGoogleAdsRequest}. */
-  type?: GoogleAdsSearchads360V23Resources__ProductLinkInvitationTypeEnum;
+  type?:
+    | GoogleAdsSearchads360V23Resources__ProductLinkInvitationTypeEnum
+    | (string & {});
 }
 export const GoogleAdsSearchads360V23Resources__ProductLinkInvitation =
   /*@__PURE__*/ S.suspend(() =>
@@ -20140,7 +20771,7 @@ export interface GoogleAdsSearchads360V23Resources__ProductLink {
   /** Output only. Advertising Partner link. */
   advertisingPartner?: GoogleAdsSearchads360V23Resources__AdvertisingPartnerIdentifier;
   /** Output only. The type of the linked product. */
-  type?: GoogleAdsSearchads360V23Resources__ProductLinkTypeEnum;
+  type?: GoogleAdsSearchads360V23Resources__ProductLinkTypeEnum | (string & {});
   /** Immutable. Data partner link. */
   dataPartner?: GoogleAdsSearchads360V23Resources__DataPartnerIdentifier;
   /** Output only. The ID of the link. This field is read only. */
@@ -20244,7 +20875,7 @@ export const GoogleAdsSearchads360V23Services_DismissRecommendationRequest_Dismi
   }) as any as S.Schema<GoogleAdsSearchads360V23Services_DismissRecommendationRequest_DismissRecommendationOperation>;
 
 export type GoogleAdsSearchads360V23Services_DismissRecommendationRequest_DismissRecommendationOperationList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services_DismissRecommendationRequest_DismissRecommendationOperation>;
+  Array<GoogleAdsSearchads360V23Services_DismissRecommendationRequest_DismissRecommendationOperation>;
 export const GoogleAdsSearchads360V23Services_DismissRecommendationRequest_DismissRecommendationOperationList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services_DismissRecommendationRequest_DismissRecommendationOperation,
@@ -20312,7 +20943,7 @@ export const GoogleAdsSearchads360V23Services_DismissRecommendationResponse_Dism
   }) as any as S.Schema<GoogleAdsSearchads360V23Services_DismissRecommendationResponse_DismissRecommendationResult>;
 
 export type GoogleAdsSearchads360V23Services_DismissRecommendationResponse_DismissRecommendationResultList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services_DismissRecommendationResponse_DismissRecommendationResult>;
+  Array<GoogleAdsSearchads360V23Services_DismissRecommendationResponse_DismissRecommendationResult>;
 export const GoogleAdsSearchads360V23Services_DismissRecommendationResponse_DismissRecommendationResultList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services_DismissRecommendationResponse_DismissRecommendationResult,
@@ -20393,7 +21024,7 @@ export const GoogleAdsSearchads360V23Services__EnableOperation =
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__EnableOperation>;
 
 export type GoogleAdsSearchads360V23Services__EnableOperationList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__EnableOperation>;
+  Array<GoogleAdsSearchads360V23Services__EnableOperation>;
 export const GoogleAdsSearchads360V23Services__EnableOperationList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__EnableOperation,
@@ -20460,7 +21091,7 @@ export const GoogleAdsSearchads360V23Services__EnablementResult =
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__EnablementResult>;
 
 export type GoogleAdsSearchads360V23Services__EnablementResultList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__EnablementResult>;
+  Array<GoogleAdsSearchads360V23Services__EnablementResult>;
 export const GoogleAdsSearchads360V23Services__EnablementResultList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__EnablementResult,
@@ -20778,7 +21409,7 @@ export const GoogleAdsSearchads360V23Services__UnusableAdGroup =
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__UnusableAdGroup>;
 
 export type GoogleAdsSearchads360V23Services__UnusableAdGroupList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__UnusableAdGroup>;
+  Array<GoogleAdsSearchads360V23Services__UnusableAdGroup>;
 export const GoogleAdsSearchads360V23Services__UnusableAdGroupList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__UnusableAdGroup,
@@ -20818,7 +21449,7 @@ export const GoogleAdsSearchads360V23Services__AdGroupKeywordSuggestion =
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__AdGroupKeywordSuggestion>;
 
 export type GoogleAdsSearchads360V23Services__AdGroupKeywordSuggestionList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__AdGroupKeywordSuggestion>;
+  Array<GoogleAdsSearchads360V23Services__AdGroupKeywordSuggestion>;
 export const GoogleAdsSearchads360V23Services__AdGroupKeywordSuggestionList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__AdGroupKeywordSuggestion,
@@ -20847,21 +21478,21 @@ export const GoogleAdsSearchads360V23Services__GenerateAdGroupThemesResponse =
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__GenerateAdGroupThemesResponse>;
 
 export type GoogleAdsSearchads360V23Common__LocationInfoList =
-  ReadonlyArray<GoogleAdsSearchads360V23Common__LocationInfo>;
+  Array<GoogleAdsSearchads360V23Common__LocationInfo>;
 export const GoogleAdsSearchads360V23Common__LocationInfoList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Common__LocationInfo,
   ) as any as S.Schema<GoogleAdsSearchads360V23Common__LocationInfoList>;
 
 export type GoogleAdsSearchads360V23Common__AgeRangeInfoList =
-  ReadonlyArray<GoogleAdsSearchads360V23Common__AgeRangeInfo>;
+  Array<GoogleAdsSearchads360V23Common__AgeRangeInfo>;
 export const GoogleAdsSearchads360V23Common__AgeRangeInfoList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Common__AgeRangeInfo,
   ) as any as S.Schema<GoogleAdsSearchads360V23Common__AgeRangeInfoList>;
 
 export type GoogleAdsSearchads360V23Common__IncomeRangeInfoList =
-  ReadonlyArray<GoogleAdsSearchads360V23Common__IncomeRangeInfo>;
+  Array<GoogleAdsSearchads360V23Common__IncomeRangeInfo>;
 export const GoogleAdsSearchads360V23Common__IncomeRangeInfoList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Common__IncomeRangeInfo,
@@ -20882,7 +21513,7 @@ export const GoogleAdsSearchads360V23Common__AudienceInsightsLineup =
   }) as any as S.Schema<GoogleAdsSearchads360V23Common__AudienceInsightsLineup>;
 
 export type GoogleAdsSearchads360V23Common__AudienceInsightsLineupList =
-  ReadonlyArray<GoogleAdsSearchads360V23Common__AudienceInsightsLineup>;
+  Array<GoogleAdsSearchads360V23Common__AudienceInsightsLineup>;
 export const GoogleAdsSearchads360V23Common__AudienceInsightsLineupList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Common__AudienceInsightsLineup,
@@ -20981,7 +21612,7 @@ export const GoogleAdsSearchads360V23Common__AudienceInsightsAttribute =
   }) as any as S.Schema<GoogleAdsSearchads360V23Common__AudienceInsightsAttribute>;
 
 export type GoogleAdsSearchads360V23Common__AudienceInsightsAttributeList =
-  ReadonlyArray<GoogleAdsSearchads360V23Common__AudienceInsightsAttribute>;
+  Array<GoogleAdsSearchads360V23Common__AudienceInsightsAttribute>;
 export const GoogleAdsSearchads360V23Common__AudienceInsightsAttributeList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Common__AudienceInsightsAttribute,
@@ -21005,7 +21636,7 @@ export const GoogleAdsSearchads360V23Services__InsightsAudienceAttributeGroup =
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__InsightsAudienceAttributeGroup>;
 
 export type GoogleAdsSearchads360V23Services__InsightsAudienceAttributeGroupList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__InsightsAudienceAttributeGroup>;
+  Array<GoogleAdsSearchads360V23Services__InsightsAudienceAttributeGroup>;
 export const GoogleAdsSearchads360V23Services__InsightsAudienceAttributeGroupList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__InsightsAudienceAttributeGroup,
@@ -21084,7 +21715,7 @@ export const GoogleAdsSearchads360V23Services__GenerateAudienceCompositionInsigh
   /*@__PURE__*/ S.String;
 
 export type GoogleAdsSearchads360V23Services__GenerateAudienceCompositionInsightsRequestDimensionsItemEnumList =
-  ReadonlyArray<
+  Array<
     | GoogleAdsSearchads360V23Services__GenerateAudienceCompositionInsightsRequestDimensionsItemEnum
     | (string & {})
   >;
@@ -21209,7 +21840,7 @@ export const GoogleAdsSearchads360V23Common__YouTubeVideoAttributeMetadataVideoP
   /*@__PURE__*/ S.String;
 
 export type GoogleAdsSearchads360V23Common__YouTubeVideoAttributeMetadataVideoPropertiesItemEnumList =
-  ReadonlyArray<GoogleAdsSearchads360V23Common__YouTubeVideoAttributeMetadataVideoPropertiesItemEnum>;
+  Array<GoogleAdsSearchads360V23Common__YouTubeVideoAttributeMetadataVideoPropertiesItemEnum>;
 export const GoogleAdsSearchads360V23Common__YouTubeVideoAttributeMetadataVideoPropertiesItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Common__YouTubeVideoAttributeMetadataVideoPropertiesItemEnum,
@@ -21255,14 +21886,14 @@ export const GoogleAdsSearchads360V23Common__KnowledgeGraphAttributeMetadataEnti
   /*@__PURE__*/ S.String;
 
 export type GoogleAdsSearchads360V23Common__KnowledgeGraphAttributeMetadataEntityCapabilitiesItemEnumList =
-  ReadonlyArray<GoogleAdsSearchads360V23Common__KnowledgeGraphAttributeMetadataEntityCapabilitiesItemEnum>;
+  Array<GoogleAdsSearchads360V23Common__KnowledgeGraphAttributeMetadataEntityCapabilitiesItemEnum>;
 export const GoogleAdsSearchads360V23Common__KnowledgeGraphAttributeMetadataEntityCapabilitiesItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Common__KnowledgeGraphAttributeMetadataEntityCapabilitiesItemEnum,
   ) as any as S.Schema<GoogleAdsSearchads360V23Common__KnowledgeGraphAttributeMetadataEntityCapabilitiesItemEnumList>;
 
 export type GoogleAdsSearchads360V23Common__AudienceInsightsAttributeMetadataList =
-  ReadonlyArray<GoogleAdsSearchads360V23Common__AudienceInsightsAttributeMetadata>;
+  Array<GoogleAdsSearchads360V23Common__AudienceInsightsAttributeMetadata>;
 export const GoogleAdsSearchads360V23Common__AudienceInsightsAttributeMetadataList =
   /*@__PURE__*/ S.Array(
     S.suspend(
@@ -21398,7 +22029,7 @@ export const GoogleAdsSearchads360V23Common_LineupAttributeMetadata_SampleChanne
   }) as any as S.Schema<GoogleAdsSearchads360V23Common_LineupAttributeMetadata_SampleChannel>;
 
 export type GoogleAdsSearchads360V23Common_LineupAttributeMetadata_SampleChannelList =
-  ReadonlyArray<GoogleAdsSearchads360V23Common_LineupAttributeMetadata_SampleChannel>;
+  Array<GoogleAdsSearchads360V23Common_LineupAttributeMetadata_SampleChannel>;
 export const GoogleAdsSearchads360V23Common_LineupAttributeMetadata_SampleChannelList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Common_LineupAttributeMetadata_SampleChannel,
@@ -21566,7 +22197,7 @@ export const GoogleAdsSearchads360V23Services__AudienceCompositionAttribute =
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__AudienceCompositionAttribute>;
 
 export type GoogleAdsSearchads360V23Services__AudienceCompositionAttributeList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__AudienceCompositionAttribute>;
+  Array<GoogleAdsSearchads360V23Services__AudienceCompositionAttribute>;
 export const GoogleAdsSearchads360V23Services__AudienceCompositionAttributeList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__AudienceCompositionAttribute,
@@ -21598,7 +22229,7 @@ export const GoogleAdsSearchads360V23Services__AudienceCompositionAttributeClust
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__AudienceCompositionAttributeCluster>;
 
 export type GoogleAdsSearchads360V23Services__AudienceCompositionAttributeClusterList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__AudienceCompositionAttributeCluster>;
+  Array<GoogleAdsSearchads360V23Services__AudienceCompositionAttributeCluster>;
 export const GoogleAdsSearchads360V23Services__AudienceCompositionAttributeClusterList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__AudienceCompositionAttributeCluster,
@@ -21631,7 +22262,7 @@ export const GoogleAdsSearchads360V23Services__AudienceCompositionSection =
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__AudienceCompositionSection>;
 
 export type GoogleAdsSearchads360V23Services__AudienceCompositionSectionList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__AudienceCompositionSection>;
+  Array<GoogleAdsSearchads360V23Services__AudienceCompositionSection>;
 export const GoogleAdsSearchads360V23Services__AudienceCompositionSectionList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__AudienceCompositionSection,
@@ -21677,7 +22308,7 @@ export const GoogleAdsSearchads360V23Services__AudienceInsightsDimensionsDimensi
   /*@__PURE__*/ S.String;
 
 export type GoogleAdsSearchads360V23Services__AudienceInsightsDimensionsDimensionsItemEnumList =
-  ReadonlyArray<
+  Array<
     | GoogleAdsSearchads360V23Services__AudienceInsightsDimensionsDimensionsItemEnum
     | (string & {})
   >;
@@ -21834,7 +22465,7 @@ export const GoogleAdsSearchads360V23Services__GenerateAudienceOverlapInsightsRe
   /*@__PURE__*/ S.String;
 
 export type GoogleAdsSearchads360V23Services__GenerateAudienceOverlapInsightsRequestDimensionsItemEnumList =
-  ReadonlyArray<
+  Array<
     | GoogleAdsSearchads360V23Services__GenerateAudienceOverlapInsightsRequestDimensionsItemEnum
     | (string & {})
   >;
@@ -21944,7 +22575,7 @@ export const GoogleAdsSearchads360V23Services__AudienceOverlapItem =
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__AudienceOverlapItem>;
 
 export type GoogleAdsSearchads360V23Services__AudienceOverlapItemList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__AudienceOverlapItem>;
+  Array<GoogleAdsSearchads360V23Services__AudienceOverlapItem>;
 export const GoogleAdsSearchads360V23Services__AudienceOverlapItemList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__AudienceOverlapItem,
@@ -21972,7 +22603,7 @@ export const GoogleAdsSearchads360V23Services__DimensionOverlapResult =
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__DimensionOverlapResult>;
 
 export type GoogleAdsSearchads360V23Services__DimensionOverlapResultList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__DimensionOverlapResult>;
+  Array<GoogleAdsSearchads360V23Services__DimensionOverlapResult>;
 export const GoogleAdsSearchads360V23Services__DimensionOverlapResultList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__DimensionOverlapResult,
@@ -22020,7 +22651,7 @@ export const GoogleAdsSearchads360V23Services_ProductFilter_MarketingObjectiveLi
   /*@__PURE__*/ S.String;
 
 export type GoogleAdsSearchads360V23Services_ProductFilter_MarketingObjectiveListMarketingObjectivesItemEnumList =
-  ReadonlyArray<
+  Array<
     | GoogleAdsSearchads360V23Services_ProductFilter_MarketingObjectiveListMarketingObjectivesItemEnum
     | (string & {})
   >;
@@ -22307,7 +22938,10 @@ export const GoogleAdsSearchads360V23Services__SurfaceTargetingSurfacesItemEnum 
   /*@__PURE__*/ S.String;
 
 export type GoogleAdsSearchads360V23Services__SurfaceTargetingSurfacesItemEnumList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__SurfaceTargetingSurfacesItemEnum>;
+  Array<
+    | GoogleAdsSearchads360V23Services__SurfaceTargetingSurfacesItemEnum
+    | (string & {})
+  >;
 export const GoogleAdsSearchads360V23Services__SurfaceTargetingSurfacesItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__SurfaceTargetingSurfacesItemEnum,
@@ -22357,7 +22991,7 @@ export const GoogleAdsSearchads360V23Services__ConversionRateSuggestion =
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__ConversionRateSuggestion>;
 
 export type GoogleAdsSearchads360V23Services__ConversionRateSuggestionList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__ConversionRateSuggestion>;
+  Array<GoogleAdsSearchads360V23Services__ConversionRateSuggestion>;
 export const GoogleAdsSearchads360V23Services__ConversionRateSuggestionList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__ConversionRateSuggestion,
@@ -22433,7 +23067,7 @@ export const GoogleAdsSearchads360V23Services_GenerateRecommendationsRequest_Bud
   }) as any as S.Schema<GoogleAdsSearchads360V23Services_GenerateRecommendationsRequest_BudgetInfo>;
 
 export type GoogleAdsSearchads360V23Common__KeywordInfoList =
-  ReadonlyArray<GoogleAdsSearchads360V23Common__KeywordInfo>;
+  Array<GoogleAdsSearchads360V23Common__KeywordInfo>;
 export const GoogleAdsSearchads360V23Common__KeywordInfoList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Common__KeywordInfo,
@@ -22484,7 +23118,7 @@ export const GoogleAdsSearchads360V23Services_GenerateRecommendationsRequest_AdG
   }) as any as S.Schema<GoogleAdsSearchads360V23Services_GenerateRecommendationsRequest_AdGroupInfo>;
 
 export type GoogleAdsSearchads360V23Services_GenerateRecommendationsRequest_AdGroupInfoList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services_GenerateRecommendationsRequest_AdGroupInfo>;
+  Array<GoogleAdsSearchads360V23Services_GenerateRecommendationsRequest_AdGroupInfo>;
 export const GoogleAdsSearchads360V23Services_GenerateRecommendationsRequest_AdGroupInfoList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services_GenerateRecommendationsRequest_AdGroupInfo,
@@ -22610,7 +23244,7 @@ export const GoogleAdsSearchads360V23Services_GenerateRecommendationsRequest_Ass
   }) as any as S.Schema<GoogleAdsSearchads360V23Services_GenerateRecommendationsRequest_AssetGroupInfo>;
 
 export type GoogleAdsSearchads360V23Services_GenerateRecommendationsRequest_AssetGroupInfoList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services_GenerateRecommendationsRequest_AssetGroupInfo>;
+  Array<GoogleAdsSearchads360V23Services_GenerateRecommendationsRequest_AssetGroupInfo>;
 export const GoogleAdsSearchads360V23Services_GenerateRecommendationsRequest_AssetGroupInfoList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services_GenerateRecommendationsRequest_AssetGroupInfo,
@@ -22677,7 +23311,7 @@ export const GoogleAdsSearchads360V23Services__GenerateRecommendationsRequestRec
   /*@__PURE__*/ S.String;
 
 export type GoogleAdsSearchads360V23Services__GenerateRecommendationsRequestRecommendationTypesItemEnumList =
-  ReadonlyArray<
+  Array<
     | GoogleAdsSearchads360V23Services__GenerateRecommendationsRequestRecommendationTypesItemEnum
     | (string & {})
   >;
@@ -22993,7 +23627,7 @@ export const GoogleAdsSearchads360V23Resources_RecommendationCampaignBudgetRecom
   }) as any as S.Schema<GoogleAdsSearchads360V23Resources_RecommendationCampaignBudgetRecommendation_CampaignBudgetRecommendationOption>;
 
 export type GoogleAdsSearchads360V23Resources_RecommendationCampaignBudgetRecommendation_CampaignBudgetRecommendationOptionList =
-  ReadonlyArray<GoogleAdsSearchads360V23Resources_RecommendationCampaignBudgetRecommendation_CampaignBudgetRecommendationOption>;
+  Array<GoogleAdsSearchads360V23Resources_RecommendationCampaignBudgetRecommendation_CampaignBudgetRecommendationOption>;
 export const GoogleAdsSearchads360V23Resources_RecommendationCampaignBudgetRecommendation_CampaignBudgetRecommendationOptionList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Resources_RecommendationCampaignBudgetRecommendation_CampaignBudgetRecommendationOption,
@@ -23150,7 +23784,7 @@ export const GoogleAdsSearchads360V23Resources_RecommendationTargetCpaOptInRecom
   }) as any as S.Schema<GoogleAdsSearchads360V23Resources_RecommendationTargetCpaOptInRecommendation_TargetCpaOptInRecommendationOption>;
 
 export type GoogleAdsSearchads360V23Resources_RecommendationTargetCpaOptInRecommendation_TargetCpaOptInRecommendationOptionList =
-  ReadonlyArray<GoogleAdsSearchads360V23Resources_RecommendationTargetCpaOptInRecommendation_TargetCpaOptInRecommendationOption>;
+  Array<GoogleAdsSearchads360V23Resources_RecommendationTargetCpaOptInRecommendation_TargetCpaOptInRecommendationOption>;
 export const GoogleAdsSearchads360V23Resources_RecommendationTargetCpaOptInRecommendation_TargetCpaOptInRecommendationOptionList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Resources_RecommendationTargetCpaOptInRecommendation_TargetCpaOptInRecommendationOption,
@@ -23443,7 +24077,7 @@ export const GoogleAdsSearchads360V23Resources_Recommendation_AccountInfo =
   }) as any as S.Schema<GoogleAdsSearchads360V23Resources_Recommendation_AccountInfo>;
 
 export type GoogleAdsSearchads360V23Resources_Recommendation_AccountInfoList =
-  ReadonlyArray<GoogleAdsSearchads360V23Resources_Recommendation_AccountInfo>;
+  Array<GoogleAdsSearchads360V23Resources_Recommendation_AccountInfo>;
 export const GoogleAdsSearchads360V23Resources_Recommendation_AccountInfoList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Resources_Recommendation_AccountInfo,
@@ -23705,7 +24339,7 @@ export const GoogleAdsSearchads360V23Resources_RecommendationKeywordRecommendati
   }) as any as S.Schema<GoogleAdsSearchads360V23Resources_RecommendationKeywordRecommendation_SearchTerm>;
 
 export type GoogleAdsSearchads360V23Resources_RecommendationKeywordRecommendation_SearchTermList =
-  ReadonlyArray<GoogleAdsSearchads360V23Resources_RecommendationKeywordRecommendation_SearchTerm>;
+  Array<GoogleAdsSearchads360V23Resources_RecommendationKeywordRecommendation_SearchTerm>;
 export const GoogleAdsSearchads360V23Resources_RecommendationKeywordRecommendation_SearchTermList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Resources_RecommendationKeywordRecommendation_SearchTerm,
@@ -24215,7 +24849,7 @@ export const GoogleAdsSearchads360V23Resources__Recommendation =
   }) as any as S.Schema<GoogleAdsSearchads360V23Resources__Recommendation>;
 
 export type GoogleAdsSearchads360V23Resources__RecommendationList =
-  ReadonlyArray<GoogleAdsSearchads360V23Resources__Recommendation>;
+  Array<GoogleAdsSearchads360V23Resources__Recommendation>;
 export const GoogleAdsSearchads360V23Resources__RecommendationList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Resources__Recommendation,
@@ -24327,7 +24961,7 @@ export const GoogleAdsSearchads360V23Services__CriterionBidModifier =
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__CriterionBidModifier>;
 
 export type GoogleAdsSearchads360V23Services__CriterionBidModifierList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__CriterionBidModifier>;
+  Array<GoogleAdsSearchads360V23Services__CriterionBidModifier>;
 export const GoogleAdsSearchads360V23Services__CriterionBidModifierList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__CriterionBidModifier,
@@ -24433,7 +25067,7 @@ export const GoogleAdsSearchads360V23Services__BiddableKeyword =
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__BiddableKeyword>;
 
 export type GoogleAdsSearchads360V23Services__BiddableKeywordList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__BiddableKeyword>;
+  Array<GoogleAdsSearchads360V23Services__BiddableKeyword>;
 export const GoogleAdsSearchads360V23Services__BiddableKeywordList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__BiddableKeyword,
@@ -24464,7 +25098,7 @@ export const GoogleAdsSearchads360V23Services__ForecastAdGroup =
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__ForecastAdGroup>;
 
 export type GoogleAdsSearchads360V23Services__ForecastAdGroupList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__ForecastAdGroup>;
+  Array<GoogleAdsSearchads360V23Services__ForecastAdGroup>;
 export const GoogleAdsSearchads360V23Services__ForecastAdGroupList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__ForecastAdGroup,
@@ -24697,7 +25331,7 @@ export const GoogleAdsSearchads360V23Common__KeywordPlanAggregateMetricsAggregat
   /*@__PURE__*/ S.String;
 
 export type GoogleAdsSearchads360V23Common__KeywordPlanAggregateMetricsAggregateMetricTypesItemEnumList =
-  ReadonlyArray<
+  Array<
     | GoogleAdsSearchads360V23Common__KeywordPlanAggregateMetricsAggregateMetricTypesItemEnum
     | (string & {})
   >;
@@ -24830,7 +25464,7 @@ export const GoogleAdsSearchads360V23Common__MonthlySearchVolume =
   }) as any as S.Schema<GoogleAdsSearchads360V23Common__MonthlySearchVolume>;
 
 export type GoogleAdsSearchads360V23Common__MonthlySearchVolumeList =
-  ReadonlyArray<GoogleAdsSearchads360V23Common__MonthlySearchVolume>;
+  Array<GoogleAdsSearchads360V23Common__MonthlySearchVolume>;
 export const GoogleAdsSearchads360V23Common__MonthlySearchVolumeList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Common__MonthlySearchVolume,
@@ -24901,7 +25535,7 @@ export const GoogleAdsSearchads360V23Services__GenerateKeywordHistoricalMetricsR
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__GenerateKeywordHistoricalMetricsResult>;
 
 export type GoogleAdsSearchads360V23Services__GenerateKeywordHistoricalMetricsResultList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__GenerateKeywordHistoricalMetricsResult>;
+  Array<GoogleAdsSearchads360V23Services__GenerateKeywordHistoricalMetricsResult>;
 export const GoogleAdsSearchads360V23Services__GenerateKeywordHistoricalMetricsResultList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__GenerateKeywordHistoricalMetricsResult,
@@ -24938,7 +25572,7 @@ export const GoogleAdsSearchads360V23Common__KeywordPlanDeviceSearches =
   }) as any as S.Schema<GoogleAdsSearchads360V23Common__KeywordPlanDeviceSearches>;
 
 export type GoogleAdsSearchads360V23Common__KeywordPlanDeviceSearchesList =
-  ReadonlyArray<GoogleAdsSearchads360V23Common__KeywordPlanDeviceSearches>;
+  Array<GoogleAdsSearchads360V23Common__KeywordPlanDeviceSearches>;
 export const GoogleAdsSearchads360V23Common__KeywordPlanDeviceSearchesList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Common__KeywordPlanDeviceSearches,
@@ -24989,7 +25623,7 @@ export const GoogleAdsSearchads360V23Services__GenerateKeywordIdeasRequestKeywor
   /*@__PURE__*/ S.String;
 
 export type GoogleAdsSearchads360V23Services__GenerateKeywordIdeasRequestKeywordAnnotationItemEnumList =
-  ReadonlyArray<
+  Array<
     | GoogleAdsSearchads360V23Services__GenerateKeywordIdeasRequestKeywordAnnotationItemEnum
     | (string & {})
   >;
@@ -25194,7 +25828,7 @@ export const GoogleAdsSearchads360V23Common__KeywordConcept =
   }) as any as S.Schema<GoogleAdsSearchads360V23Common__KeywordConcept>;
 
 export type GoogleAdsSearchads360V23Common__KeywordConceptList =
-  ReadonlyArray<GoogleAdsSearchads360V23Common__KeywordConcept>;
+  Array<GoogleAdsSearchads360V23Common__KeywordConcept>;
 export const GoogleAdsSearchads360V23Common__KeywordConceptList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Common__KeywordConcept,
@@ -25242,7 +25876,7 @@ export const GoogleAdsSearchads360V23Services__GenerateKeywordIdeaResult =
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__GenerateKeywordIdeaResult>;
 
 export type GoogleAdsSearchads360V23Services__GenerateKeywordIdeaResultList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__GenerateKeywordIdeaResult>;
+  Array<GoogleAdsSearchads360V23Services__GenerateKeywordIdeaResult>;
 export const GoogleAdsSearchads360V23Services__GenerateKeywordIdeaResultList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__GenerateKeywordIdeaResult,
@@ -25308,14 +25942,14 @@ export const GoogleAdsSearchads360V23Services__TargetingAgeRangeEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleAdsSearchads360V23Common__UserListInfoList =
-  ReadonlyArray<GoogleAdsSearchads360V23Common__UserListInfo>;
+  Array<GoogleAdsSearchads360V23Common__UserListInfo>;
 export const GoogleAdsSearchads360V23Common__UserListInfoList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Common__UserListInfo,
   ) as any as S.Schema<GoogleAdsSearchads360V23Common__UserListInfoList>;
 
 export type GoogleAdsSearchads360V23Common__UserInterestInfoList =
-  ReadonlyArray<GoogleAdsSearchads360V23Common__UserInterestInfo>;
+  Array<GoogleAdsSearchads360V23Common__UserInterestInfo>;
 export const GoogleAdsSearchads360V23Common__UserInterestInfoList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Common__UserInterestInfo,
@@ -25341,14 +25975,14 @@ export const GoogleAdsSearchads360V23Services__AudienceTargeting =
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__AudienceTargeting>;
 
 export type GoogleAdsSearchads360V23Common__GenderInfoList =
-  ReadonlyArray<GoogleAdsSearchads360V23Common__GenderInfo>;
+  Array<GoogleAdsSearchads360V23Common__GenderInfo>;
 export const GoogleAdsSearchads360V23Common__GenderInfoList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Common__GenderInfo,
   ) as any as S.Schema<GoogleAdsSearchads360V23Common__GenderInfoList>;
 
 export type GoogleAdsSearchads360V23Common__DeviceInfoList =
-  ReadonlyArray<GoogleAdsSearchads360V23Common__DeviceInfo>;
+  Array<GoogleAdsSearchads360V23Common__DeviceInfo>;
 export const GoogleAdsSearchads360V23Common__DeviceInfoList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Common__DeviceInfo,
@@ -25511,7 +26145,7 @@ export const GoogleAdsSearchads360V23Services__PlannedProduct =
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__PlannedProduct>;
 
 export type GoogleAdsSearchads360V23Services__PlannedProductList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__PlannedProduct>;
+  Array<GoogleAdsSearchads360V23Services__PlannedProduct>;
 export const GoogleAdsSearchads360V23Services__PlannedProductList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__PlannedProduct,
@@ -25705,7 +26339,7 @@ export const GoogleAdsSearchads360V23Services__EffectiveFrequencyBreakdown =
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__EffectiveFrequencyBreakdown>;
 
 export type GoogleAdsSearchads360V23Services__EffectiveFrequencyBreakdownList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__EffectiveFrequencyBreakdown>;
+  Array<GoogleAdsSearchads360V23Services__EffectiveFrequencyBreakdown>;
 export const GoogleAdsSearchads360V23Services__EffectiveFrequencyBreakdownList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__EffectiveFrequencyBreakdown,
@@ -25830,7 +26464,7 @@ export const GoogleAdsSearchads360V23Services__PlannedProductReachForecast =
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__PlannedProductReachForecast>;
 
 export type GoogleAdsSearchads360V23Services__PlannedProductReachForecastList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__PlannedProductReachForecast>;
+  Array<GoogleAdsSearchads360V23Services__PlannedProductReachForecast>;
 export const GoogleAdsSearchads360V23Services__PlannedProductReachForecastList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__PlannedProductReachForecast,
@@ -25859,7 +26493,7 @@ export const GoogleAdsSearchads360V23Services__ReachForecast =
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__ReachForecast>;
 
 export type GoogleAdsSearchads360V23Services__ReachForecastList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__ReachForecast>;
+  Array<GoogleAdsSearchads360V23Services__ReachForecast>;
 export const GoogleAdsSearchads360V23Services__ReachForecastList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__ReachForecast,
@@ -25997,7 +26631,7 @@ export const GoogleAdsSearchads360V23Common__AudienceInsightsAttributeMetadataGr
   }) as any as S.Schema<GoogleAdsSearchads360V23Common__AudienceInsightsAttributeMetadataGroup>;
 
 export type GoogleAdsSearchads360V23Common__AudienceInsightsAttributeMetadataGroupList =
-  ReadonlyArray<GoogleAdsSearchads360V23Common__AudienceInsightsAttributeMetadataGroup>;
+  Array<GoogleAdsSearchads360V23Common__AudienceInsightsAttributeMetadataGroup>;
 export const GoogleAdsSearchads360V23Common__AudienceInsightsAttributeMetadataGroupList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Common__AudienceInsightsAttributeMetadataGroup,
@@ -26045,7 +26679,7 @@ export const GoogleAdsSearchads360V23Services__TargetingSuggestionMetrics =
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__TargetingSuggestionMetrics>;
 
 export type GoogleAdsSearchads360V23Services__TargetingSuggestionMetricsList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__TargetingSuggestionMetrics>;
+  Array<GoogleAdsSearchads360V23Services__TargetingSuggestionMetrics>;
 export const GoogleAdsSearchads360V23Services__TargetingSuggestionMetricsList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__TargetingSuggestionMetrics,
@@ -26069,7 +26703,7 @@ export const GoogleAdsSearchads360V23Services__GenerateSuggestedTargetingInsight
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__GenerateSuggestedTargetingInsightsResponse>;
 
 export type GoogleAdsSearchads360V23Services__InsightsAudienceList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__InsightsAudience>;
+  Array<GoogleAdsSearchads360V23Services__InsightsAudience>;
 export const GoogleAdsSearchads360V23Services__InsightsAudienceList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__InsightsAudience,
@@ -26331,7 +26965,7 @@ export const GoogleAdsSearchads360V23Services__IdentityVerification =
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__IdentityVerification>;
 
 export type GoogleAdsSearchads360V23Services__IdentityVerificationList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__IdentityVerification>;
+  Array<GoogleAdsSearchads360V23Services__IdentityVerification>;
 export const GoogleAdsSearchads360V23Services__IdentityVerificationList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__IdentityVerification,
@@ -26634,7 +27268,7 @@ export const GoogleAdsSearchads360V23Services__CampaignBudgetMapping =
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__CampaignBudgetMapping>;
 
 export type GoogleAdsSearchads360V23Services__CampaignBudgetMappingList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__CampaignBudgetMapping>;
+  Array<GoogleAdsSearchads360V23Services__CampaignBudgetMapping>;
 export const GoogleAdsSearchads360V23Services__CampaignBudgetMappingList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__CampaignBudgetMapping,
@@ -26739,7 +27373,7 @@ export const ListAsyncErrorsCustomersCampaignDraftsRequest =
     identifier: "ListAsyncErrorsCustomersCampaignDraftsRequest",
   }) as any as S.Schema<ListAsyncErrorsCustomersCampaignDraftsRequest>;
 
-export type GoogleRpc__StatusList = ReadonlyArray<GoogleRpc__Status>;
+export type GoogleRpc__StatusList = Array<GoogleRpc__Status>;
 export const GoogleRpc__StatusList = /*@__PURE__*/ S.Array(
   GoogleRpc__Status,
 ) as any as S.Schema<GoogleRpc__StatusList>;
@@ -26877,7 +27511,7 @@ export const GoogleAdsSearchads360V23Services__BenchmarksLocation =
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__BenchmarksLocation>;
 
 export type GoogleAdsSearchads360V23Services__BenchmarksLocationList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__BenchmarksLocation>;
+  Array<GoogleAdsSearchads360V23Services__BenchmarksLocation>;
 export const GoogleAdsSearchads360V23Services__BenchmarksLocationList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__BenchmarksLocation,
@@ -26967,7 +27601,7 @@ export const GoogleAdsSearchads360V23Services__BenchmarksProductMetadata =
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__BenchmarksProductMetadata>;
 
 export type GoogleAdsSearchads360V23Services__BenchmarksProductMetadataList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__BenchmarksProductMetadata>;
+  Array<GoogleAdsSearchads360V23Services__BenchmarksProductMetadata>;
 export const GoogleAdsSearchads360V23Services__BenchmarksProductMetadataList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__BenchmarksProductMetadata,
@@ -26996,7 +27630,7 @@ export const GoogleAdsSearchads360V23Services__ListBenchmarksSourcesRequestBench
   /*@__PURE__*/ S.String;
 
 export type GoogleAdsSearchads360V23Services__ListBenchmarksSourcesRequestBenchmarksSourcesItemEnumList =
-  ReadonlyArray<
+  Array<
     | GoogleAdsSearchads360V23Services__ListBenchmarksSourcesRequestBenchmarksSourcesItemEnum
     | (string & {})
   >;
@@ -27096,7 +27730,7 @@ export const GoogleAdsSearchads360V23Services__BenchmarksSourceMetadata =
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__BenchmarksSourceMetadata>;
 
 export type GoogleAdsSearchads360V23Services__BenchmarksSourceMetadataList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__BenchmarksSourceMetadata>;
+  Array<GoogleAdsSearchads360V23Services__BenchmarksSourceMetadata>;
 export const GoogleAdsSearchads360V23Services__BenchmarksSourceMetadataList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__BenchmarksSourceMetadata,
@@ -27138,7 +27772,7 @@ export const ListCustomersCustomColumnsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListCustomersCustomColumnsRequest>;
 
 export type GoogleAdsSearchads360V23Resources__CustomColumnList =
-  ReadonlyArray<GoogleAdsSearchads360V23Resources__CustomColumn>;
+  Array<GoogleAdsSearchads360V23Resources__CustomColumn>;
 export const GoogleAdsSearchads360V23Resources__CustomColumnList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Resources__CustomColumn,
@@ -27251,7 +27885,7 @@ export const GoogleAdsSearchads360V23Resources_Invoice_CampaignSummary =
   }) as any as S.Schema<GoogleAdsSearchads360V23Resources_Invoice_CampaignSummary>;
 
 export type GoogleAdsSearchads360V23Resources_Invoice_CampaignSummaryList =
-  ReadonlyArray<GoogleAdsSearchads360V23Resources_Invoice_CampaignSummary>;
+  Array<GoogleAdsSearchads360V23Resources_Invoice_CampaignSummary>;
 export const GoogleAdsSearchads360V23Resources_Invoice_CampaignSummaryList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Resources_Invoice_CampaignSummary,
@@ -27308,7 +27942,7 @@ export const GoogleAdsSearchads360V23Resources_Invoice_InvalidActivitySummary =
   }) as any as S.Schema<GoogleAdsSearchads360V23Resources_Invoice_InvalidActivitySummary>;
 
 export type GoogleAdsSearchads360V23Resources_Invoice_InvalidActivitySummaryList =
-  ReadonlyArray<GoogleAdsSearchads360V23Resources_Invoice_InvalidActivitySummary>;
+  Array<GoogleAdsSearchads360V23Resources_Invoice_InvalidActivitySummary>;
 export const GoogleAdsSearchads360V23Resources_Invoice_InvalidActivitySummaryList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Resources_Invoice_InvalidActivitySummary,
@@ -27378,7 +28012,7 @@ export const GoogleAdsSearchads360V23Resources_Invoice_AccountBudgetSummary =
   }) as any as S.Schema<GoogleAdsSearchads360V23Resources_Invoice_AccountBudgetSummary>;
 
 export type GoogleAdsSearchads360V23Resources_Invoice_AccountBudgetSummaryList =
-  ReadonlyArray<GoogleAdsSearchads360V23Resources_Invoice_AccountBudgetSummary>;
+  Array<GoogleAdsSearchads360V23Resources_Invoice_AccountBudgetSummary>;
 export const GoogleAdsSearchads360V23Resources_Invoice_AccountBudgetSummaryList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Resources_Invoice_AccountBudgetSummary,
@@ -27402,7 +28036,7 @@ export const GoogleAdsSearchads360V23Resources_Invoice_AdjustmentSummary =
   }) as any as S.Schema<GoogleAdsSearchads360V23Resources_Invoice_AdjustmentSummary>;
 
 export type GoogleAdsSearchads360V23Resources_Invoice_AdjustmentSummaryList =
-  ReadonlyArray<GoogleAdsSearchads360V23Resources_Invoice_AdjustmentSummary>;
+  Array<GoogleAdsSearchads360V23Resources_Invoice_AdjustmentSummary>;
 export const GoogleAdsSearchads360V23Resources_Invoice_AdjustmentSummaryList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Resources_Invoice_AdjustmentSummary,
@@ -27445,7 +28079,7 @@ export const GoogleAdsSearchads360V23Resources_Invoice_RegulatoryCostSummary =
   }) as any as S.Schema<GoogleAdsSearchads360V23Resources_Invoice_RegulatoryCostSummary>;
 
 export type GoogleAdsSearchads360V23Resources_Invoice_RegulatoryCostSummaryList =
-  ReadonlyArray<GoogleAdsSearchads360V23Resources_Invoice_RegulatoryCostSummary>;
+  Array<GoogleAdsSearchads360V23Resources_Invoice_RegulatoryCostSummary>;
 export const GoogleAdsSearchads360V23Resources_Invoice_RegulatoryCostSummaryList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Resources_Invoice_RegulatoryCostSummary,
@@ -27530,7 +28164,7 @@ export const GoogleAdsSearchads360V23Resources_Invoice_AccountSummary =
   }) as any as S.Schema<GoogleAdsSearchads360V23Resources_Invoice_AccountSummary>;
 
 export type GoogleAdsSearchads360V23Resources_Invoice_AccountSummaryList =
-  ReadonlyArray<GoogleAdsSearchads360V23Resources_Invoice_AccountSummary>;
+  Array<GoogleAdsSearchads360V23Resources_Invoice_AccountSummary>;
 export const GoogleAdsSearchads360V23Resources_Invoice_AccountSummaryList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Resources_Invoice_AccountSummary,
@@ -27641,7 +28275,7 @@ export const GoogleAdsSearchads360V23Resources__Invoice =
   }) as any as S.Schema<GoogleAdsSearchads360V23Resources__Invoice>;
 
 export type GoogleAdsSearchads360V23Resources__InvoiceList =
-  ReadonlyArray<GoogleAdsSearchads360V23Resources__Invoice>;
+  Array<GoogleAdsSearchads360V23Resources__Invoice>;
 export const GoogleAdsSearchads360V23Resources__InvoiceList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Resources__Invoice,
@@ -27713,7 +28347,7 @@ export const GoogleAdsSearchads360V23Resources__PaymentsAccount =
   }) as any as S.Schema<GoogleAdsSearchads360V23Resources__PaymentsAccount>;
 
 export type GoogleAdsSearchads360V23Resources__PaymentsAccountList =
-  ReadonlyArray<GoogleAdsSearchads360V23Resources__PaymentsAccount>;
+  Array<GoogleAdsSearchads360V23Resources__PaymentsAccount>;
 export const GoogleAdsSearchads360V23Resources__PaymentsAccountList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Resources__PaymentsAccount,
@@ -27903,7 +28537,7 @@ export const GoogleAdsSearchads360V23Services__PlannableLocation =
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__PlannableLocation>;
 
 export type GoogleAdsSearchads360V23Services__PlannableLocationList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__PlannableLocation>;
+  Array<GoogleAdsSearchads360V23Services__PlannableLocation>;
 export const GoogleAdsSearchads360V23Services__PlannableLocationList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__PlannableLocation,
@@ -27969,7 +28603,7 @@ export const ListPlannableProductsV23Request = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListPlannableProductsV23Request>;
 
 export type GoogleAdsSearchads360V23Services__SurfaceTargetingList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__SurfaceTargeting>;
+  Array<GoogleAdsSearchads360V23Services__SurfaceTargeting>;
 export const GoogleAdsSearchads360V23Services__SurfaceTargetingList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__SurfaceTargeting,
@@ -28015,7 +28649,7 @@ export const GoogleAdsSearchads360V23Services__YouTubeSelectLineUp =
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__YouTubeSelectLineUp>;
 
 export type GoogleAdsSearchads360V23Services__YouTubeSelectLineUpList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__YouTubeSelectLineUp>;
+  Array<GoogleAdsSearchads360V23Services__YouTubeSelectLineUp>;
 export const GoogleAdsSearchads360V23Services__YouTubeSelectLineUpList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__YouTubeSelectLineUp,
@@ -28054,7 +28688,7 @@ export const GoogleAdsSearchads360V23Services__PlannableTargetingAgeRangesItemEn
   /*@__PURE__*/ S.String;
 
 export type GoogleAdsSearchads360V23Services__PlannableTargetingAgeRangesItemEnumList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__PlannableTargetingAgeRangesItemEnum>;
+  Array<GoogleAdsSearchads360V23Services__PlannableTargetingAgeRangesItemEnum>;
 export const GoogleAdsSearchads360V23Services__PlannableTargetingAgeRangesItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__PlannableTargetingAgeRangesItemEnum,
@@ -28070,7 +28704,7 @@ export const GoogleAdsSearchads360V23Services__PlannableTargetingNetworksItemEnu
   /*@__PURE__*/ S.String;
 
 export type GoogleAdsSearchads360V23Services__PlannableTargetingNetworksItemEnumList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__PlannableTargetingNetworksItemEnum>;
+  Array<GoogleAdsSearchads360V23Services__PlannableTargetingNetworksItemEnum>;
 export const GoogleAdsSearchads360V23Services__PlannableTargetingNetworksItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__PlannableTargetingNetworksItemEnum,
@@ -28136,7 +28770,7 @@ export const GoogleAdsSearchads360V23Services__ProductMetadata =
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__ProductMetadata>;
 
 export type GoogleAdsSearchads360V23Services__ProductMetadataList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__ProductMetadata>;
+  Array<GoogleAdsSearchads360V23Services__ProductMetadata>;
 export const GoogleAdsSearchads360V23Services__ProductMetadataList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__ProductMetadata,
@@ -28171,7 +28805,7 @@ export const GoogleAdsSearchads360V23Services__ListPlannableUserInterestsRequest
   /*@__PURE__*/ S.String;
 
 export type GoogleAdsSearchads360V23Services__ListPlannableUserInterestsRequestUserInterestTaxonomyTypesItemEnumList =
-  ReadonlyArray<
+  Array<
     | GoogleAdsSearchads360V23Services__ListPlannableUserInterestsRequestUserInterestTaxonomyTypesItemEnum
     | (string & {})
   >;
@@ -28273,7 +28907,7 @@ export const GoogleAdsSearchads360V23Services__PlannableUserInterest =
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__PlannableUserInterest>;
 
 export type GoogleAdsSearchads360V23Services__PlannableUserInterestList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__PlannableUserInterest>;
+  Array<GoogleAdsSearchads360V23Services__PlannableUserInterest>;
 export const GoogleAdsSearchads360V23Services__PlannableUserInterestList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__PlannableUserInterest,
@@ -28418,7 +29052,7 @@ export const GoogleAdsSearchads360V23Services__PlannableUserList =
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__PlannableUserList>;
 
 export type GoogleAdsSearchads360V23Services__PlannableUserListList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__PlannableUserList>;
+  Array<GoogleAdsSearchads360V23Services__PlannableUserList>;
 export const GoogleAdsSearchads360V23Services__PlannableUserListList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__PlannableUserList,
@@ -29947,7 +30581,7 @@ export const GoogleAdsSearchads360V23Services__BatchJobResult =
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__BatchJobResult>;
 
 export type GoogleAdsSearchads360V23Services__BatchJobResultList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__BatchJobResult>;
+  Array<GoogleAdsSearchads360V23Services__BatchJobResult>;
 export const GoogleAdsSearchads360V23Services__BatchJobResultList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__BatchJobResult,
@@ -30150,7 +30784,9 @@ export interface GoogleAdsSearchads360V23Resources__AccountBudgetProposal {
   /** Immutable. The proposed spending limit in micros. One million is equivalent to one unit. */
   proposedSpendingLimitMicros?: string;
   /** Output only. The status of this proposal. When a new proposal is created, the status defaults to PENDING. */
-  status?: GoogleAdsSearchads360V23Resources__AccountBudgetProposalStatusEnum;
+  status?:
+    | GoogleAdsSearchads360V23Resources__AccountBudgetProposalStatusEnum
+    | (string & {});
   /** Output only. The date time when this account-level budget proposal was created, which is not the same as its approval date time, if applicable. */
   creationDateTime?: string;
   /** Immutable. The resource name of the billing setup associated with this proposal. */
@@ -30158,27 +30794,39 @@ export interface GoogleAdsSearchads360V23Resources__AccountBudgetProposal {
   /** Output only. The date time when this account-level budget was approved, if applicable. */
   approvalDateTime?: string;
   /** Output only. The approved spending limit as a well-defined type, for example, INFINITE. */
-  approvedSpendingLimitType?: GoogleAdsSearchads360V23Resources__AccountBudgetProposalApprovedSpendingLimitTypeEnum;
+  approvedSpendingLimitType?:
+    | GoogleAdsSearchads360V23Resources__AccountBudgetProposalApprovedSpendingLimitTypeEnum
+    | (string & {});
   /** Immutable. The proposed end date time as a well-defined type, for example, FOREVER. */
-  proposedEndTimeType?: GoogleAdsSearchads360V23Resources__AccountBudgetProposalProposedEndTimeTypeEnum;
+  proposedEndTimeType?:
+    | GoogleAdsSearchads360V23Resources__AccountBudgetProposalProposedEndTimeTypeEnum
+    | (string & {});
   /** Immutable. The resource name of the proposal. AccountBudgetProposal resource names have the form: `customers/{customer_id}/accountBudgetProposals/{account_budget_proposal_id}` */
   resourceName?: string;
   /** Output only. The approved start date time in yyyy-mm-dd hh:mm:ss format. */
   approvedStartDateTime?: string;
   /** Output only. The approved end date time as a well-defined type, for example, FOREVER. */
-  approvedEndTimeType?: GoogleAdsSearchads360V23Resources__AccountBudgetProposalApprovedEndTimeTypeEnum;
+  approvedEndTimeType?:
+    | GoogleAdsSearchads360V23Resources__AccountBudgetProposalApprovedEndTimeTypeEnum
+    | (string & {});
   /** Immutable. The proposed start date time as a well-defined type, for example, NOW. */
-  proposedStartTimeType?: GoogleAdsSearchads360V23Resources__AccountBudgetProposalProposedStartTimeTypeEnum;
+  proposedStartTimeType?:
+    | GoogleAdsSearchads360V23Resources__AccountBudgetProposalProposedStartTimeTypeEnum
+    | (string & {});
   /** Immutable. A purchase order number is a value that enables the user to help them reference this budget in their monthly invoices. */
   proposedPurchaseOrderNumber?: string;
   /** Immutable. The proposed end date time in yyyy-mm-dd hh:mm:ss format. */
   proposedEndDateTime?: string;
   /** Immutable. The proposed spending limit as a well-defined type, for example, INFINITE. */
-  proposedSpendingLimitType?: GoogleAdsSearchads360V23Resources__AccountBudgetProposalProposedSpendingLimitTypeEnum;
+  proposedSpendingLimitType?:
+    | GoogleAdsSearchads360V23Resources__AccountBudgetProposalProposedSpendingLimitTypeEnum
+    | (string & {});
   /** Immutable. The resource name of the account-level budget associated with this proposal. */
   accountBudget?: string;
   /** Immutable. The type of this proposal, for example, END to end the budget associated with this proposal. */
-  proposalType?: GoogleAdsSearchads360V23Resources__AccountBudgetProposalProposalTypeEnum;
+  proposalType?:
+    | GoogleAdsSearchads360V23Resources__AccountBudgetProposalProposalTypeEnum
+    | (string & {});
   /** Immutable. Notes associated with this budget. */
   proposedNotes?: string;
   /** Immutable. The name to assign to the account-level budget. */
@@ -30436,7 +31084,7 @@ export const GoogleAdsSearchads360V23Services__MutateAccountLinkResponse =
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateAccountLinkResponse>;
 
 export type GoogleAdsSearchads360V23Services__AdGroupAdLabelOperationList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__AdGroupAdLabelOperation>;
+  Array<GoogleAdsSearchads360V23Services__AdGroupAdLabelOperation>;
 export const GoogleAdsSearchads360V23Services__AdGroupAdLabelOperationList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__AdGroupAdLabelOperation,
@@ -30492,7 +31140,7 @@ export const MutateCustomersAdGroupAdLabelsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<MutateCustomersAdGroupAdLabelsRequest>;
 
 export type GoogleAdsSearchads360V23Services__MutateAdGroupAdLabelResultList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__MutateAdGroupAdLabelResult>;
+  Array<GoogleAdsSearchads360V23Services__MutateAdGroupAdLabelResult>;
 export const GoogleAdsSearchads360V23Services__MutateAdGroupAdLabelResultList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__MutateAdGroupAdLabelResult,
@@ -30524,7 +31172,7 @@ export const GoogleAdsSearchads360V23Services__MutateAdGroupAdsRequestResponseCo
   /*@__PURE__*/ S.String;
 
 export type GoogleAdsSearchads360V23Services__AdGroupAdOperationList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__AdGroupAdOperation>;
+  Array<GoogleAdsSearchads360V23Services__AdGroupAdOperation>;
 export const GoogleAdsSearchads360V23Services__AdGroupAdOperationList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__AdGroupAdOperation,
@@ -30585,7 +31233,7 @@ export const MutateCustomersAdGroupAdsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MutateCustomersAdGroupAdsRequest>;
 
 export type GoogleAdsSearchads360V23Services__MutateAdGroupAdResultList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__MutateAdGroupAdResult>;
+  Array<GoogleAdsSearchads360V23Services__MutateAdGroupAdResult>;
 export const GoogleAdsSearchads360V23Services__MutateAdGroupAdResultList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__MutateAdGroupAdResult,
@@ -30611,7 +31259,7 @@ export const GoogleAdsSearchads360V23Services__MutateAdGroupAdsResponse =
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateAdGroupAdsResponse>;
 
 export type GoogleAdsSearchads360V23Services__AdGroupAssetOperationList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__AdGroupAssetOperation>;
+  Array<GoogleAdsSearchads360V23Services__AdGroupAssetOperation>;
 export const GoogleAdsSearchads360V23Services__AdGroupAssetOperationList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__AdGroupAssetOperation,
@@ -30677,7 +31325,7 @@ export const MutateCustomersAdGroupAssetsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MutateCustomersAdGroupAssetsRequest>;
 
 export type GoogleAdsSearchads360V23Services__MutateAdGroupAssetResultList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__MutateAdGroupAssetResult>;
+  Array<GoogleAdsSearchads360V23Services__MutateAdGroupAssetResult>;
 export const GoogleAdsSearchads360V23Services__MutateAdGroupAssetResultList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__MutateAdGroupAssetResult,
@@ -30715,7 +31363,9 @@ export interface GoogleAdsSearchads360V23Resources__AdGroupAssetSet {
   /** Immutable. The ad group to which this asset set is linked. */
   adGroup?: string;
   /** Output only. The status of the ad group asset set. Read-only. */
-  status?: GoogleAdsSearchads360V23Resources__AdGroupAssetSetStatusEnum;
+  status?:
+    | GoogleAdsSearchads360V23Resources__AdGroupAssetSetStatusEnum
+    | (string & {});
   /** Immutable. The asset set which is linked to the ad group. */
   assetSet?: string;
   /** Immutable. The resource name of the ad group asset set. Ad group asset set resource names have the form: `customers/{customer_id}/adGroupAssetSets/{ad_group_id}~{asset_set_id}` */
@@ -30753,7 +31403,7 @@ export const GoogleAdsSearchads360V23Services__AdGroupAssetSetOperation =
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__AdGroupAssetSetOperation>;
 
 export type GoogleAdsSearchads360V23Services__AdGroupAssetSetOperationList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__AdGroupAssetSetOperation>;
+  Array<GoogleAdsSearchads360V23Services__AdGroupAssetSetOperation>;
 export const GoogleAdsSearchads360V23Services__AdGroupAssetSetOperationList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__AdGroupAssetSetOperation,
@@ -30840,7 +31490,7 @@ export const GoogleAdsSearchads360V23Services__MutateAdGroupAssetSetResult =
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateAdGroupAssetSetResult>;
 
 export type GoogleAdsSearchads360V23Services__MutateAdGroupAssetSetResultList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__MutateAdGroupAssetSetResult>;
+  Array<GoogleAdsSearchads360V23Services__MutateAdGroupAssetSetResult>;
 export const GoogleAdsSearchads360V23Services__MutateAdGroupAssetSetResultList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__MutateAdGroupAssetSetResult,
@@ -30872,7 +31522,7 @@ export const GoogleAdsSearchads360V23Services__MutateAdGroupBidModifiersRequestR
   /*@__PURE__*/ S.String;
 
 export type GoogleAdsSearchads360V23Services__AdGroupBidModifierOperationList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__AdGroupBidModifierOperation>;
+  Array<GoogleAdsSearchads360V23Services__AdGroupBidModifierOperation>;
 export const GoogleAdsSearchads360V23Services__AdGroupBidModifierOperationList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__AdGroupBidModifierOperation,
@@ -30935,7 +31585,7 @@ export const MutateCustomersAdGroupBidModifiersRequest =
   }) as any as S.Schema<MutateCustomersAdGroupBidModifiersRequest>;
 
 export type GoogleAdsSearchads360V23Services__MutateAdGroupBidModifierResultList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__MutateAdGroupBidModifierResult>;
+  Array<GoogleAdsSearchads360V23Services__MutateAdGroupBidModifierResult>;
 export const GoogleAdsSearchads360V23Services__MutateAdGroupBidModifierResultList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__MutateAdGroupBidModifierResult,
@@ -30962,7 +31612,7 @@ export const GoogleAdsSearchads360V23Services__MutateAdGroupBidModifiersResponse
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateAdGroupBidModifiersResponse>;
 
 export type GoogleAdsSearchads360V23Services__AdGroupCriterionOperationList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__AdGroupCriterionOperation>;
+  Array<GoogleAdsSearchads360V23Services__AdGroupCriterionOperation>;
 export const GoogleAdsSearchads360V23Services__AdGroupCriterionOperationList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__AdGroupCriterionOperation,
@@ -31030,7 +31680,7 @@ export const MutateCustomersAdGroupCriteriaRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<MutateCustomersAdGroupCriteriaRequest>;
 
 export type GoogleAdsSearchads360V23Services__MutateAdGroupCriterionResultList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__MutateAdGroupCriterionResult>;
+  Array<GoogleAdsSearchads360V23Services__MutateAdGroupCriterionResult>;
 export const GoogleAdsSearchads360V23Services__MutateAdGroupCriterionResultList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__MutateAdGroupCriterionResult,
@@ -31062,7 +31712,7 @@ export const GoogleAdsSearchads360V23Services__MutateAdGroupCriterionCustomizers
   /*@__PURE__*/ S.String;
 
 export type GoogleAdsSearchads360V23Services__AdGroupCriterionCustomizerOperationList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__AdGroupCriterionCustomizerOperation>;
+  Array<GoogleAdsSearchads360V23Services__AdGroupCriterionCustomizerOperation>;
 export const GoogleAdsSearchads360V23Services__AdGroupCriterionCustomizerOperationList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__AdGroupCriterionCustomizerOperation,
@@ -31125,7 +31775,7 @@ export const MutateCustomersAdGroupCriterionCustomizersRequest =
   }) as any as S.Schema<MutateCustomersAdGroupCriterionCustomizersRequest>;
 
 export type GoogleAdsSearchads360V23Services__MutateAdGroupCriterionCustomizerResultList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__MutateAdGroupCriterionCustomizerResult>;
+  Array<GoogleAdsSearchads360V23Services__MutateAdGroupCriterionCustomizerResult>;
 export const GoogleAdsSearchads360V23Services__MutateAdGroupCriterionCustomizerResultList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__MutateAdGroupCriterionCustomizerResult,
@@ -31152,7 +31802,7 @@ export const GoogleAdsSearchads360V23Services__MutateAdGroupCriterionCustomizers
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateAdGroupCriterionCustomizersResponse>;
 
 export type GoogleAdsSearchads360V23Services__AdGroupCriterionLabelOperationList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__AdGroupCriterionLabelOperation>;
+  Array<GoogleAdsSearchads360V23Services__AdGroupCriterionLabelOperation>;
 export const GoogleAdsSearchads360V23Services__AdGroupCriterionLabelOperationList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__AdGroupCriterionLabelOperation,
@@ -31208,7 +31858,7 @@ export const MutateCustomersAdGroupCriterionLabelsRequest =
   }) as any as S.Schema<MutateCustomersAdGroupCriterionLabelsRequest>;
 
 export type GoogleAdsSearchads360V23Services__MutateAdGroupCriterionLabelResultList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__MutateAdGroupCriterionLabelResult>;
+  Array<GoogleAdsSearchads360V23Services__MutateAdGroupCriterionLabelResult>;
 export const GoogleAdsSearchads360V23Services__MutateAdGroupCriterionLabelResultList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__MutateAdGroupCriterionLabelResult,
@@ -31235,7 +31885,7 @@ export const GoogleAdsSearchads360V23Services__MutateAdGroupCriterionLabelsRespo
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateAdGroupCriterionLabelsResponse>;
 
 export type GoogleAdsSearchads360V23Services__AdGroupCustomizerOperationList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__AdGroupCustomizerOperation>;
+  Array<GoogleAdsSearchads360V23Services__AdGroupCustomizerOperation>;
 export const GoogleAdsSearchads360V23Services__AdGroupCustomizerOperationList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__AdGroupCustomizerOperation,
@@ -31303,7 +31953,7 @@ export const MutateCustomersAdGroupCustomizersRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<MutateCustomersAdGroupCustomizersRequest>;
 
 export type GoogleAdsSearchads360V23Services__MutateAdGroupCustomizerResultList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__MutateAdGroupCustomizerResult>;
+  Array<GoogleAdsSearchads360V23Services__MutateAdGroupCustomizerResult>;
 export const GoogleAdsSearchads360V23Services__MutateAdGroupCustomizerResultList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__MutateAdGroupCustomizerResult,
@@ -31330,7 +31980,7 @@ export const GoogleAdsSearchads360V23Services__MutateAdGroupCustomizersResponse 
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateAdGroupCustomizersResponse>;
 
 export type GoogleAdsSearchads360V23Services__AdGroupLabelOperationList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__AdGroupLabelOperation>;
+  Array<GoogleAdsSearchads360V23Services__AdGroupLabelOperation>;
 export const GoogleAdsSearchads360V23Services__AdGroupLabelOperationList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__AdGroupLabelOperation,
@@ -31384,7 +32034,7 @@ export const MutateCustomersAdGroupLabelsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MutateCustomersAdGroupLabelsRequest>;
 
 export type GoogleAdsSearchads360V23Services__MutateAdGroupLabelResultList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__MutateAdGroupLabelResult>;
+  Array<GoogleAdsSearchads360V23Services__MutateAdGroupLabelResult>;
 export const GoogleAdsSearchads360V23Services__MutateAdGroupLabelResultList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__MutateAdGroupLabelResult,
@@ -31410,7 +32060,7 @@ export const GoogleAdsSearchads360V23Services__MutateAdGroupLabelsResponse =
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateAdGroupLabelsResponse>;
 
 export type GoogleAdsSearchads360V23Services__AdGroupOperationList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__AdGroupOperation>;
+  Array<GoogleAdsSearchads360V23Services__AdGroupOperation>;
 export const GoogleAdsSearchads360V23Services__AdGroupOperationList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__AdGroupOperation,
@@ -31476,7 +32126,7 @@ export const MutateCustomersAdGroupsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MutateCustomersAdGroupsRequest>;
 
 export type GoogleAdsSearchads360V23Services__MutateAdGroupResultList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__MutateAdGroupResult>;
+  Array<GoogleAdsSearchads360V23Services__MutateAdGroupResult>;
 export const GoogleAdsSearchads360V23Services__MutateAdGroupResultList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__MutateAdGroupResult,
@@ -31502,7 +32152,7 @@ export const GoogleAdsSearchads360V23Services__MutateAdGroupsResponse =
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateAdGroupsResponse>;
 
 export type GoogleAdsSearchads360V23Services__AdParameterOperationList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__AdParameterOperation>;
+  Array<GoogleAdsSearchads360V23Services__AdParameterOperation>;
 export const GoogleAdsSearchads360V23Services__AdParameterOperationList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__AdParameterOperation,
@@ -31568,7 +32218,7 @@ export const MutateCustomersAdParametersRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MutateCustomersAdParametersRequest>;
 
 export type GoogleAdsSearchads360V23Services__MutateAdParameterResultList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__MutateAdParameterResult>;
+  Array<GoogleAdsSearchads360V23Services__MutateAdParameterResult>;
 export const GoogleAdsSearchads360V23Services__MutateAdParameterResultList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__MutateAdParameterResult,
@@ -31594,7 +32244,7 @@ export const GoogleAdsSearchads360V23Services__MutateAdParametersResponse =
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateAdParametersResponse>;
 
 export type GoogleAdsSearchads360V23Services__AdOperationList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__AdOperation>;
+  Array<GoogleAdsSearchads360V23Services__AdOperation>;
 export const GoogleAdsSearchads360V23Services__AdOperationList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__AdOperation,
@@ -31656,7 +32306,7 @@ export const MutateCustomersAdsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MutateCustomersAdsRequest>;
 
 export type GoogleAdsSearchads360V23Services__MutateAdResultList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__MutateAdResult>;
+  Array<GoogleAdsSearchads360V23Services__MutateAdResult>;
 export const GoogleAdsSearchads360V23Services__MutateAdResultList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__MutateAdResult,
@@ -31680,7 +32330,7 @@ export const GoogleAdsSearchads360V23Services__MutateAdsResponse =
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateAdsResponse>;
 
 export type GoogleAdsSearchads360V23Services__AssetGroupAssetOperationList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__AssetGroupAssetOperation>;
+  Array<GoogleAdsSearchads360V23Services__AssetGroupAssetOperation>;
 export const GoogleAdsSearchads360V23Services__AssetGroupAssetOperationList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__AssetGroupAssetOperation,
@@ -31736,7 +32386,7 @@ export const MutateCustomersAssetGroupAssetsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<MutateCustomersAssetGroupAssetsRequest>;
 
 export type GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResultList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult>;
+  Array<GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult>;
 export const GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResultList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResult,
@@ -31768,7 +32418,7 @@ export const GoogleAdsSearchads360V23Services__MutateAssetGroupListingGroupFilte
   /*@__PURE__*/ S.String;
 
 export type GoogleAdsSearchads360V23Services__AssetGroupListingGroupFilterOperationList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__AssetGroupListingGroupFilterOperation>;
+  Array<GoogleAdsSearchads360V23Services__AssetGroupListingGroupFilterOperation>;
 export const GoogleAdsSearchads360V23Services__AssetGroupListingGroupFilterOperationList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__AssetGroupListingGroupFilterOperation,
@@ -31828,7 +32478,7 @@ export const MutateCustomersAssetGroupListingGroupFiltersRequest =
   }) as any as S.Schema<MutateCustomersAssetGroupListingGroupFiltersRequest>;
 
 export type GoogleAdsSearchads360V23Services__MutateAssetGroupListingGroupFilterResultList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__MutateAssetGroupListingGroupFilterResult>;
+  Array<GoogleAdsSearchads360V23Services__MutateAssetGroupListingGroupFilterResult>;
 export const GoogleAdsSearchads360V23Services__MutateAssetGroupListingGroupFilterResultList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__MutateAssetGroupListingGroupFilterResult,
@@ -31852,7 +32502,7 @@ export const GoogleAdsSearchads360V23Services__MutateAssetGroupListingGroupFilte
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateAssetGroupListingGroupFiltersResponse>;
 
 export type GoogleAdsSearchads360V23Services__AssetGroupOperationList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__AssetGroupOperation>;
+  Array<GoogleAdsSearchads360V23Services__AssetGroupOperation>;
 export const GoogleAdsSearchads360V23Services__AssetGroupOperationList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__AssetGroupOperation,
@@ -31903,7 +32553,7 @@ export const MutateCustomersAssetGroupsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MutateCustomersAssetGroupsRequest>;
 
 export type GoogleAdsSearchads360V23Services__MutateAssetGroupResultList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__MutateAssetGroupResult>;
+  Array<GoogleAdsSearchads360V23Services__MutateAssetGroupResult>;
 export const GoogleAdsSearchads360V23Services__MutateAssetGroupResultList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__MutateAssetGroupResult,
@@ -31929,7 +32579,7 @@ export const GoogleAdsSearchads360V23Services__MutateAssetGroupsResponse =
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateAssetGroupsResponse>;
 
 export type GoogleAdsSearchads360V23Services__AssetGroupSignalOperationList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__AssetGroupSignalOperation>;
+  Array<GoogleAdsSearchads360V23Services__AssetGroupSignalOperation>;
 export const GoogleAdsSearchads360V23Services__AssetGroupSignalOperationList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__AssetGroupSignalOperation,
@@ -31997,7 +32647,7 @@ export const MutateCustomersAssetGroupSignalsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<MutateCustomersAssetGroupSignalsRequest>;
 
 export type GoogleAdsSearchads360V23Services__MutateAssetGroupSignalResultList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__MutateAssetGroupSignalResult>;
+  Array<GoogleAdsSearchads360V23Services__MutateAssetGroupSignalResult>;
 export const GoogleAdsSearchads360V23Services__MutateAssetGroupSignalResultList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__MutateAssetGroupSignalResult,
@@ -32029,7 +32679,7 @@ export const GoogleAdsSearchads360V23Services__MutateAssetsRequestResponseConten
   /*@__PURE__*/ S.String;
 
 export type GoogleAdsSearchads360V23Services__AssetOperationList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__AssetOperation>;
+  Array<GoogleAdsSearchads360V23Services__AssetOperation>;
 export const GoogleAdsSearchads360V23Services__AssetOperationList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__AssetOperation,
@@ -32088,7 +32738,7 @@ export const MutateCustomersAssetsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MutateCustomersAssetsRequest>;
 
 export type GoogleAdsSearchads360V23Services__MutateAssetResultList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__MutateAssetResult>;
+  Array<GoogleAdsSearchads360V23Services__MutateAssetResult>;
 export const GoogleAdsSearchads360V23Services__MutateAssetResultList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__MutateAssetResult,
@@ -32114,7 +32764,7 @@ export const GoogleAdsSearchads360V23Services__MutateAssetsResponse =
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateAssetsResponse>;
 
 export type GoogleAdsSearchads360V23Services__AssetSetAssetOperationList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__AssetSetAssetOperation>;
+  Array<GoogleAdsSearchads360V23Services__AssetSetAssetOperation>;
 export const GoogleAdsSearchads360V23Services__AssetSetAssetOperationList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__AssetSetAssetOperation,
@@ -32181,7 +32831,7 @@ export const MutateCustomersAssetSetAssetsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<MutateCustomersAssetSetAssetsRequest>;
 
 export type GoogleAdsSearchads360V23Services__MutateAssetSetAssetResultList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__MutateAssetSetAssetResult>;
+  Array<GoogleAdsSearchads360V23Services__MutateAssetSetAssetResult>;
 export const GoogleAdsSearchads360V23Services__MutateAssetSetAssetResultList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__MutateAssetSetAssetResult,
@@ -32208,7 +32858,7 @@ export const GoogleAdsSearchads360V23Services__MutateAssetSetAssetsResponse =
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateAssetSetAssetsResponse>;
 
 export type GoogleAdsSearchads360V23Services__AssetSetOperationList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__AssetSetOperation>;
+  Array<GoogleAdsSearchads360V23Services__AssetSetOperation>;
 export const GoogleAdsSearchads360V23Services__AssetSetOperationList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__AssetSetOperation,
@@ -32274,7 +32924,7 @@ export const MutateCustomersAssetSetsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MutateCustomersAssetSetsRequest>;
 
 export type GoogleAdsSearchads360V23Services__MutateAssetSetResultList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__MutateAssetSetResult>;
+  Array<GoogleAdsSearchads360V23Services__MutateAssetSetResult>;
 export const GoogleAdsSearchads360V23Services__MutateAssetSetResultList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__MutateAssetSetResult,
@@ -32305,7 +32955,7 @@ export const GoogleAdsSearchads360V23Services__MutateAudiencesRequestResponseCon
   /*@__PURE__*/ S.String;
 
 export type GoogleAdsSearchads360V23Services__AudienceOperationList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__AudienceOperation>;
+  Array<GoogleAdsSearchads360V23Services__AudienceOperation>;
 export const GoogleAdsSearchads360V23Services__AudienceOperationList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__AudienceOperation,
@@ -32366,7 +33016,7 @@ export const MutateCustomersAudiencesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MutateCustomersAudiencesRequest>;
 
 export type GoogleAdsSearchads360V23Services__MutateAudienceResultList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__MutateAudienceResult>;
+  Array<GoogleAdsSearchads360V23Services__MutateAudienceResult>;
 export const GoogleAdsSearchads360V23Services__MutateAudienceResultList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__MutateAudienceResult,
@@ -32439,7 +33089,9 @@ export interface GoogleAdsSearchads360V23Resources__BatchJob {
   /** Output only. ID of this batch job. */
   id?: string;
   /** Output only. Status of this batch job. */
-  status?: GoogleAdsSearchads360V23Resources__BatchJobStatusEnum;
+  status?:
+    | GoogleAdsSearchads360V23Resources__BatchJobStatusEnum
+    | (string & {});
   /** Output only. The resource name of the long-running operation that can be used to poll for completion. Only set when the batch job status is RUNNING or DONE. */
   longRunningOperation?: string;
   /** Immutable. The resource name of the batch job. Batch job resource names have the form: `customers/{customer_id}/batchJobs/{batch_job_id}` */
@@ -32557,7 +33209,7 @@ export const GoogleAdsSearchads360V23Services__MutateBiddingDataExclusionsReques
   /*@__PURE__*/ S.String;
 
 export type GoogleAdsSearchads360V23Services__BiddingDataExclusionOperationList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__BiddingDataExclusionOperation>;
+  Array<GoogleAdsSearchads360V23Services__BiddingDataExclusionOperation>;
 export const GoogleAdsSearchads360V23Services__BiddingDataExclusionOperationList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__BiddingDataExclusionOperation,
@@ -32620,7 +33272,7 @@ export const MutateCustomersBiddingDataExclusionsRequest =
   }) as any as S.Schema<MutateCustomersBiddingDataExclusionsRequest>;
 
 export type GoogleAdsSearchads360V23Services__MutateBiddingDataExclusionsResultList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__MutateBiddingDataExclusionsResult>;
+  Array<GoogleAdsSearchads360V23Services__MutateBiddingDataExclusionsResult>;
 export const GoogleAdsSearchads360V23Services__MutateBiddingDataExclusionsResultList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__MutateBiddingDataExclusionsResult,
@@ -32652,7 +33304,7 @@ export const GoogleAdsSearchads360V23Services__MutateBiddingSeasonalityAdjustmen
   /*@__PURE__*/ S.String;
 
 export type GoogleAdsSearchads360V23Services__BiddingSeasonalityAdjustmentOperationList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__BiddingSeasonalityAdjustmentOperation>;
+  Array<GoogleAdsSearchads360V23Services__BiddingSeasonalityAdjustmentOperation>;
 export const GoogleAdsSearchads360V23Services__BiddingSeasonalityAdjustmentOperationList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__BiddingSeasonalityAdjustmentOperation,
@@ -32715,7 +33367,7 @@ export const MutateCustomersBiddingSeasonalityAdjustmentsRequest =
   }) as any as S.Schema<MutateCustomersBiddingSeasonalityAdjustmentsRequest>;
 
 export type GoogleAdsSearchads360V23Services__MutateBiddingSeasonalityAdjustmentsResultList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__MutateBiddingSeasonalityAdjustmentsResult>;
+  Array<GoogleAdsSearchads360V23Services__MutateBiddingSeasonalityAdjustmentsResult>;
 export const GoogleAdsSearchads360V23Services__MutateBiddingSeasonalityAdjustmentsResultList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__MutateBiddingSeasonalityAdjustmentsResult,
@@ -32742,7 +33394,7 @@ export const GoogleAdsSearchads360V23Services__MutateBiddingSeasonalityAdjustmen
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateBiddingSeasonalityAdjustmentsResponse>;
 
 export type GoogleAdsSearchads360V23Services__BiddingStrategyOperationList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__BiddingStrategyOperation>;
+  Array<GoogleAdsSearchads360V23Services__BiddingStrategyOperation>;
 export const GoogleAdsSearchads360V23Services__BiddingStrategyOperationList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__BiddingStrategyOperation,
@@ -32810,7 +33462,7 @@ export const MutateCustomersBiddingStrategiesRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<MutateCustomersBiddingStrategiesRequest>;
 
 export type GoogleAdsSearchads360V23Services__MutateBiddingStrategyResultList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__MutateBiddingStrategyResult>;
+  Array<GoogleAdsSearchads360V23Services__MutateBiddingStrategyResult>;
 export const GoogleAdsSearchads360V23Services__MutateBiddingStrategyResultList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__MutateBiddingStrategyResult,
@@ -32892,17 +33544,23 @@ export const GoogleAdsSearchads360V23Resources_BillingSetup_PaymentsAccountInfo 
 /** A billing setup, which associates a payments account and an advertiser. A billing setup is specific to one advertiser. */
 export interface GoogleAdsSearchads360V23Resources__BillingSetup {
   /** Output only. The status of the billing setup. */
-  status?: GoogleAdsSearchads360V23Resources__BillingSetupStatusEnum;
+  status?:
+    | GoogleAdsSearchads360V23Resources__BillingSetupStatusEnum
+    | (string & {});
   /** Immutable. The resource name of the payments account associated with this billing setup. Payments resource names have the form: `customers/{customer_id}/paymentsAccounts/{payments_account_id}` When setting up billing, this is used to signup with an existing payments account (and then payments_account_info should not be set). When getting a billing setup, this and payments_account_info will be populated. */
   paymentsAccount?: string;
   /** Output only. The end date time in yyyy-MM-dd or yyyy-MM-dd HH:mm:ss format. */
   endDateTime?: string;
   /** Immutable. The start time as a type. Only NOW is allowed. */
-  startTimeType?: GoogleAdsSearchads360V23Resources__BillingSetupStartTimeTypeEnum;
+  startTimeType?:
+    | GoogleAdsSearchads360V23Resources__BillingSetupStartTimeTypeEnum
+    | (string & {});
   /** Output only. The ID of the billing setup. */
   id?: string;
   /** Output only. The end time as a type. The only possible value is FOREVER. */
-  endTimeType?: GoogleAdsSearchads360V23Resources__BillingSetupEndTimeTypeEnum;
+  endTimeType?:
+    | GoogleAdsSearchads360V23Resources__BillingSetupEndTimeTypeEnum
+    | (string & {});
   /** Immutable. The resource name of the billing setup. BillingSetup resource names have the form: `customers/{customer_id}/billingSetups/{billing_setup_id}` */
   resourceName?: string;
   /** Immutable. The payments account information associated with this billing setup. When setting up billing, this is used to signup with a new payments account (and then payments_account should not be set). When getting a billing setup, this and payments_account will be populated. */
@@ -33024,7 +33682,7 @@ export const GoogleAdsSearchads360V23Services__MutateBillingSetupResponse =
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateBillingSetupResponse>;
 
 export type GoogleAdsSearchads360V23Services__CampaignAssetOperationList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__CampaignAssetOperation>;
+  Array<GoogleAdsSearchads360V23Services__CampaignAssetOperation>;
 export const GoogleAdsSearchads360V23Services__CampaignAssetOperationList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__CampaignAssetOperation,
@@ -33091,7 +33749,7 @@ export const MutateCustomersCampaignAssetsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<MutateCustomersCampaignAssetsRequest>;
 
 export type GoogleAdsSearchads360V23Services__MutateCampaignAssetResultList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__MutateCampaignAssetResult>;
+  Array<GoogleAdsSearchads360V23Services__MutateCampaignAssetResult>;
 export const GoogleAdsSearchads360V23Services__MutateCampaignAssetResultList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__MutateCampaignAssetResult,
@@ -33118,7 +33776,7 @@ export const GoogleAdsSearchads360V23Services__MutateCampaignAssetsResponse =
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateCampaignAssetsResponse>;
 
 export type GoogleAdsSearchads360V23Services__CampaignAssetSetOperationList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__CampaignAssetSetOperation>;
+  Array<GoogleAdsSearchads360V23Services__CampaignAssetSetOperation>;
 export const GoogleAdsSearchads360V23Services__CampaignAssetSetOperationList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__CampaignAssetSetOperation,
@@ -33186,7 +33844,7 @@ export const MutateCustomersCampaignAssetSetsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<MutateCustomersCampaignAssetSetsRequest>;
 
 export type GoogleAdsSearchads360V23Services__MutateCampaignAssetSetResultList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__MutateCampaignAssetSetResult>;
+  Array<GoogleAdsSearchads360V23Services__MutateCampaignAssetSetResult>;
 export const GoogleAdsSearchads360V23Services__MutateCampaignAssetSetResultList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__MutateCampaignAssetSetResult,
@@ -33213,7 +33871,7 @@ export const GoogleAdsSearchads360V23Services__MutateCampaignAssetSetsResponse =
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateCampaignAssetSetsResponse>;
 
 export type GoogleAdsSearchads360V23Services__CampaignBidModifierOperationList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__CampaignBidModifierOperation>;
+  Array<GoogleAdsSearchads360V23Services__CampaignBidModifierOperation>;
 export const GoogleAdsSearchads360V23Services__CampaignBidModifierOperationList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__CampaignBidModifierOperation,
@@ -33281,7 +33939,7 @@ export const MutateCustomersCampaignBidModifiersRequest =
   }) as any as S.Schema<MutateCustomersCampaignBidModifiersRequest>;
 
 export type GoogleAdsSearchads360V23Services__MutateCampaignBidModifierResultList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__MutateCampaignBidModifierResult>;
+  Array<GoogleAdsSearchads360V23Services__MutateCampaignBidModifierResult>;
 export const GoogleAdsSearchads360V23Services__MutateCampaignBidModifierResultList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__MutateCampaignBidModifierResult,
@@ -33308,7 +33966,7 @@ export const GoogleAdsSearchads360V23Services__MutateCampaignBidModifiersRespons
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateCampaignBidModifiersResponse>;
 
 export type GoogleAdsSearchads360V23Services__CampaignBudgetOperationList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__CampaignBudgetOperation>;
+  Array<GoogleAdsSearchads360V23Services__CampaignBudgetOperation>;
 export const GoogleAdsSearchads360V23Services__CampaignBudgetOperationList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__CampaignBudgetOperation,
@@ -33376,7 +34034,7 @@ export const MutateCustomersCampaignBudgetsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<MutateCustomersCampaignBudgetsRequest>;
 
 export type GoogleAdsSearchads360V23Services__MutateCampaignBudgetResultList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__MutateCampaignBudgetResult>;
+  Array<GoogleAdsSearchads360V23Services__MutateCampaignBudgetResult>;
 export const GoogleAdsSearchads360V23Services__MutateCampaignBudgetResultList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__MutateCampaignBudgetResult,
@@ -33403,7 +34061,7 @@ export const GoogleAdsSearchads360V23Services__MutateCampaignBudgetsResponse =
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateCampaignBudgetsResponse>;
 
 export type GoogleAdsSearchads360V23Services__CampaignConversionGoalOperationList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__CampaignConversionGoalOperation>;
+  Array<GoogleAdsSearchads360V23Services__CampaignConversionGoalOperation>;
 export const GoogleAdsSearchads360V23Services__CampaignConversionGoalOperationList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__CampaignConversionGoalOperation,
@@ -33456,7 +34114,7 @@ export const MutateCustomersCampaignConversionGoalsRequest =
   }) as any as S.Schema<MutateCustomersCampaignConversionGoalsRequest>;
 
 export type GoogleAdsSearchads360V23Services__MutateCampaignConversionGoalResultList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__MutateCampaignConversionGoalResult>;
+  Array<GoogleAdsSearchads360V23Services__MutateCampaignConversionGoalResult>;
 export const GoogleAdsSearchads360V23Services__MutateCampaignConversionGoalResultList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__MutateCampaignConversionGoalResult,
@@ -33485,7 +34143,7 @@ export const GoogleAdsSearchads360V23Services__MutateCampaignCriteriaRequestResp
   /*@__PURE__*/ S.String;
 
 export type GoogleAdsSearchads360V23Services__CampaignCriterionOperationList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__CampaignCriterionOperation>;
+  Array<GoogleAdsSearchads360V23Services__CampaignCriterionOperation>;
 export const GoogleAdsSearchads360V23Services__CampaignCriterionOperationList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__CampaignCriterionOperation,
@@ -33548,7 +34206,7 @@ export const MutateCustomersCampaignCriteriaRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<MutateCustomersCampaignCriteriaRequest>;
 
 export type GoogleAdsSearchads360V23Services__MutateCampaignCriterionResultList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__MutateCampaignCriterionResult>;
+  Array<GoogleAdsSearchads360V23Services__MutateCampaignCriterionResult>;
 export const GoogleAdsSearchads360V23Services__MutateCampaignCriterionResultList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__MutateCampaignCriterionResult,
@@ -33575,7 +34233,7 @@ export const GoogleAdsSearchads360V23Services__MutateCampaignCriteriaResponse =
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateCampaignCriteriaResponse>;
 
 export type GoogleAdsSearchads360V23Services__CampaignCustomizerOperationList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__CampaignCustomizerOperation>;
+  Array<GoogleAdsSearchads360V23Services__CampaignCustomizerOperation>;
 export const GoogleAdsSearchads360V23Services__CampaignCustomizerOperationList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__CampaignCustomizerOperation,
@@ -33643,7 +34301,7 @@ export const MutateCustomersCampaignCustomizersRequest =
   }) as any as S.Schema<MutateCustomersCampaignCustomizersRequest>;
 
 export type GoogleAdsSearchads360V23Services__MutateCampaignCustomizerResultList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__MutateCampaignCustomizerResult>;
+  Array<GoogleAdsSearchads360V23Services__MutateCampaignCustomizerResult>;
 export const GoogleAdsSearchads360V23Services__MutateCampaignCustomizerResultList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__MutateCampaignCustomizerResult,
@@ -33675,7 +34333,7 @@ export const GoogleAdsSearchads360V23Services__MutateCampaignDraftsRequestRespon
   /*@__PURE__*/ S.String;
 
 export type GoogleAdsSearchads360V23Services__CampaignDraftOperationList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__CampaignDraftOperation>;
+  Array<GoogleAdsSearchads360V23Services__CampaignDraftOperation>;
 export const GoogleAdsSearchads360V23Services__CampaignDraftOperationList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__CampaignDraftOperation,
@@ -33737,7 +34395,7 @@ export const MutateCustomersCampaignDraftsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<MutateCustomersCampaignDraftsRequest>;
 
 export type GoogleAdsSearchads360V23Services__MutateCampaignDraftResultList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__MutateCampaignDraftResult>;
+  Array<GoogleAdsSearchads360V23Services__MutateCampaignDraftResult>;
 export const GoogleAdsSearchads360V23Services__MutateCampaignDraftResultList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__MutateCampaignDraftResult,
@@ -33798,7 +34456,9 @@ export interface GoogleAdsSearchads360V23Common_CampaignGoalSettings_CampaignRet
   /** Retention goal campaign specific value settings. */
   valueSettingsOverride?: GoogleAdsSearchads360V23Common__CustomerLifecycleOptimizationValueSettings;
   /** Retention goal optimization mode for this campaign. Defaults to TARGET_ALL. Only customers on the allowlist can set target_option. */
-  targetOption?: GoogleAdsSearchads360V23Common_CampaignGoalSettings_CampaignRetentionGoalSettingsTargetOptionEnum;
+  targetOption?:
+    | GoogleAdsSearchads360V23Common_CampaignGoalSettings_CampaignRetentionGoalSettingsTargetOptionEnum
+    | (string & {});
 }
 export const GoogleAdsSearchads360V23Common_CampaignGoalSettings_CampaignRetentionGoalSettings =
   /*@__PURE__*/ S.suspend(() =>
@@ -33820,7 +34480,9 @@ export interface GoogleAdsSearchads360V23Resources__CampaignGoalConfig {
   /** Immutable. The resource name of the goal this link is attached to. */
   goal?: string;
   /** Output only. The goal type this link is attached to. */
-  goalType?: GoogleAdsSearchads360V23Resources__CampaignGoalConfigGoalTypeEnum;
+  goalType?:
+    | GoogleAdsSearchads360V23Resources__CampaignGoalConfigGoalTypeEnum
+    | (string & {});
   /** Retention goal campaign settings. */
   campaignRetentionSettings?: GoogleAdsSearchads360V23Common_CampaignGoalSettings_CampaignRetentionGoalSettings;
   /** Immutable. The resource name of the campaign goal config. campaign goal config resource names have the form: `customers/{customer_id}/campaignGoalConfigs/{campaign_id}~{goal_id}` */
@@ -33869,7 +34531,7 @@ export const GoogleAdsSearchads360V23Services__CampaignGoalConfigOperation =
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__CampaignGoalConfigOperation>;
 
 export type GoogleAdsSearchads360V23Services__CampaignGoalConfigOperationList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__CampaignGoalConfigOperation>;
+  Array<GoogleAdsSearchads360V23Services__CampaignGoalConfigOperation>;
 export const GoogleAdsSearchads360V23Services__CampaignGoalConfigOperationList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__CampaignGoalConfigOperation,
@@ -33940,7 +34602,7 @@ export const GoogleAdsSearchads360V23Services__MutateCampaignGoalConfigResult =
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateCampaignGoalConfigResult>;
 
 export type GoogleAdsSearchads360V23Services__MutateCampaignGoalConfigResultList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__MutateCampaignGoalConfigResult>;
+  Array<GoogleAdsSearchads360V23Services__MutateCampaignGoalConfigResult>;
 export const GoogleAdsSearchads360V23Services__MutateCampaignGoalConfigResultList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__MutateCampaignGoalConfigResult,
@@ -33972,7 +34634,7 @@ export const GoogleAdsSearchads360V23Services__MutateCampaignGroupsRequestRespon
   /*@__PURE__*/ S.String;
 
 export type GoogleAdsSearchads360V23Services__CampaignGroupOperationList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__CampaignGroupOperation>;
+  Array<GoogleAdsSearchads360V23Services__CampaignGroupOperation>;
 export const GoogleAdsSearchads360V23Services__CampaignGroupOperationList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__CampaignGroupOperation,
@@ -34034,7 +34696,7 @@ export const MutateCustomersCampaignGroupsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<MutateCustomersCampaignGroupsRequest>;
 
 export type GoogleAdsSearchads360V23Services__MutateCampaignGroupResultList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__MutateCampaignGroupResult>;
+  Array<GoogleAdsSearchads360V23Services__MutateCampaignGroupResult>;
 export const GoogleAdsSearchads360V23Services__MutateCampaignGroupResultList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__MutateCampaignGroupResult,
@@ -34061,7 +34723,7 @@ export const GoogleAdsSearchads360V23Services__MutateCampaignGroupsResponse =
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateCampaignGroupsResponse>;
 
 export type GoogleAdsSearchads360V23Services__CampaignLabelOperationList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__CampaignLabelOperation>;
+  Array<GoogleAdsSearchads360V23Services__CampaignLabelOperation>;
 export const GoogleAdsSearchads360V23Services__CampaignLabelOperationList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__CampaignLabelOperation,
@@ -34116,7 +34778,7 @@ export const MutateCustomersCampaignLabelsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<MutateCustomersCampaignLabelsRequest>;
 
 export type GoogleAdsSearchads360V23Services__MutateCampaignLabelResultList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__MutateCampaignLabelResult>;
+  Array<GoogleAdsSearchads360V23Services__MutateCampaignLabelResult>;
 export const GoogleAdsSearchads360V23Services__MutateCampaignLabelResultList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__MutateCampaignLabelResult,
@@ -34148,7 +34810,7 @@ export const GoogleAdsSearchads360V23Services__MutateCampaignsRequestResponseCon
   /*@__PURE__*/ S.String;
 
 export type GoogleAdsSearchads360V23Services__CampaignOperationList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__CampaignOperation>;
+  Array<GoogleAdsSearchads360V23Services__CampaignOperation>;
 export const GoogleAdsSearchads360V23Services__CampaignOperationList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__CampaignOperation,
@@ -34209,7 +34871,7 @@ export const MutateCustomersCampaignsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MutateCustomersCampaignsRequest>;
 
 export type GoogleAdsSearchads360V23Services__MutateCampaignResultList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__MutateCampaignResult>;
+  Array<GoogleAdsSearchads360V23Services__MutateCampaignResult>;
 export const GoogleAdsSearchads360V23Services__MutateCampaignResultList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__MutateCampaignResult,
@@ -34240,7 +34902,7 @@ export const GoogleAdsSearchads360V23Services__MutateCampaignSharedSetsRequestRe
   /*@__PURE__*/ S.String;
 
 export type GoogleAdsSearchads360V23Services__CampaignSharedSetOperationList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__CampaignSharedSetOperation>;
+  Array<GoogleAdsSearchads360V23Services__CampaignSharedSetOperation>;
 export const GoogleAdsSearchads360V23Services__CampaignSharedSetOperationList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__CampaignSharedSetOperation,
@@ -34303,7 +34965,7 @@ export const MutateCustomersCampaignSharedSetsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<MutateCustomersCampaignSharedSetsRequest>;
 
 export type GoogleAdsSearchads360V23Services__MutateCampaignSharedSetResultList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__MutateCampaignSharedSetResult>;
+  Array<GoogleAdsSearchads360V23Services__MutateCampaignSharedSetResult>;
 export const GoogleAdsSearchads360V23Services__MutateCampaignSharedSetResultList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__MutateCampaignSharedSetResult,
@@ -34330,7 +34992,7 @@ export const GoogleAdsSearchads360V23Services__MutateCampaignSharedSetsResponse 
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateCampaignSharedSetsResponse>;
 
 export type GoogleAdsSearchads360V23Services__ConversionActionOperationList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__ConversionActionOperation>;
+  Array<GoogleAdsSearchads360V23Services__ConversionActionOperation>;
 export const GoogleAdsSearchads360V23Services__ConversionActionOperationList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__ConversionActionOperation,
@@ -34398,7 +35060,7 @@ export const MutateCustomersConversionActionsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<MutateCustomersConversionActionsRequest>;
 
 export type GoogleAdsSearchads360V23Services__MutateConversionActionResultList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__MutateConversionActionResult>;
+  Array<GoogleAdsSearchads360V23Services__MutateConversionActionResult>;
 export const GoogleAdsSearchads360V23Services__MutateConversionActionResultList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__MutateConversionActionResult,
@@ -34430,7 +35092,7 @@ export const GoogleAdsSearchads360V23Services__MutateConversionCustomVariablesRe
   /*@__PURE__*/ S.String;
 
 export type GoogleAdsSearchads360V23Services__ConversionCustomVariableOperationList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__ConversionCustomVariableOperation>;
+  Array<GoogleAdsSearchads360V23Services__ConversionCustomVariableOperation>;
 export const GoogleAdsSearchads360V23Services__ConversionCustomVariableOperationList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__ConversionCustomVariableOperation,
@@ -34493,7 +35155,7 @@ export const MutateCustomersConversionCustomVariablesRequest =
   }) as any as S.Schema<MutateCustomersConversionCustomVariablesRequest>;
 
 export type GoogleAdsSearchads360V23Services__MutateConversionCustomVariableResultList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__MutateConversionCustomVariableResult>;
+  Array<GoogleAdsSearchads360V23Services__MutateConversionCustomVariableResult>;
 export const GoogleAdsSearchads360V23Services__MutateConversionCustomVariableResultList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__MutateConversionCustomVariableResult,
@@ -34520,7 +35182,7 @@ export const GoogleAdsSearchads360V23Services__MutateConversionCustomVariablesRe
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateConversionCustomVariablesResponse>;
 
 export type GoogleAdsSearchads360V23Services__ConversionGoalCampaignConfigOperationList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__ConversionGoalCampaignConfigOperation>;
+  Array<GoogleAdsSearchads360V23Services__ConversionGoalCampaignConfigOperation>;
 export const GoogleAdsSearchads360V23Services__ConversionGoalCampaignConfigOperationList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__ConversionGoalCampaignConfigOperation,
@@ -34585,7 +35247,7 @@ export const MutateCustomersConversionGoalCampaignConfigsRequest =
   }) as any as S.Schema<MutateCustomersConversionGoalCampaignConfigsRequest>;
 
 export type GoogleAdsSearchads360V23Services__MutateConversionGoalCampaignConfigResultList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__MutateConversionGoalCampaignConfigResult>;
+  Array<GoogleAdsSearchads360V23Services__MutateConversionGoalCampaignConfigResult>;
 export const GoogleAdsSearchads360V23Services__MutateConversionGoalCampaignConfigResultList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__MutateConversionGoalCampaignConfigResult,
@@ -34609,7 +35271,7 @@ export const GoogleAdsSearchads360V23Services__MutateConversionGoalCampaignConfi
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateConversionGoalCampaignConfigsResponse>;
 
 export type GoogleAdsSearchads360V23Services__ConversionValueRuleOperationList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__ConversionValueRuleOperation>;
+  Array<GoogleAdsSearchads360V23Services__ConversionValueRuleOperation>;
 export const GoogleAdsSearchads360V23Services__ConversionValueRuleOperationList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__ConversionValueRuleOperation,
@@ -34677,7 +35339,7 @@ export const MutateCustomersConversionValueRulesRequest =
   }) as any as S.Schema<MutateCustomersConversionValueRulesRequest>;
 
 export type GoogleAdsSearchads360V23Services__MutateConversionValueRuleResultList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__MutateConversionValueRuleResult>;
+  Array<GoogleAdsSearchads360V23Services__MutateConversionValueRuleResult>;
 export const GoogleAdsSearchads360V23Services__MutateConversionValueRuleResultList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__MutateConversionValueRuleResult,
@@ -34709,7 +35371,7 @@ export const GoogleAdsSearchads360V23Services__MutateConversionValueRuleSetsRequ
   /*@__PURE__*/ S.String;
 
 export type GoogleAdsSearchads360V23Services__ConversionValueRuleSetOperationList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__ConversionValueRuleSetOperation>;
+  Array<GoogleAdsSearchads360V23Services__ConversionValueRuleSetOperation>;
 export const GoogleAdsSearchads360V23Services__ConversionValueRuleSetOperationList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__ConversionValueRuleSetOperation,
@@ -34772,7 +35434,7 @@ export const MutateCustomersConversionValueRuleSetsRequest =
   }) as any as S.Schema<MutateCustomersConversionValueRuleSetsRequest>;
 
 export type GoogleAdsSearchads360V23Services__MutateConversionValueRuleSetResultList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__MutateConversionValueRuleSetResult>;
+  Array<GoogleAdsSearchads360V23Services__MutateConversionValueRuleSetResult>;
 export const GoogleAdsSearchads360V23Services__MutateConversionValueRuleSetResultList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__MutateConversionValueRuleSetResult,
@@ -34816,7 +35478,9 @@ export const GoogleAdsSearchads360V23Resources__CustomAudienceMemberMemberTypeEn
 /** A member of custom audience. A member can be a KEYWORD, URL, PLACE_CATEGORY or APP. It can only be created or removed but not changed. */
 export interface GoogleAdsSearchads360V23Resources__CustomAudienceMember {
   /** The type of custom audience member, KEYWORD, URL, PLACE_CATEGORY or APP. */
-  memberType?: GoogleAdsSearchads360V23Resources__CustomAudienceMemberMemberTypeEnum;
+  memberType?:
+    | GoogleAdsSearchads360V23Resources__CustomAudienceMemberMemberTypeEnum
+    | (string & {});
   /** A package name of Android apps which users installed such as com.google.example. */
   app?: string;
   /** A keyword or keyword phrase — at most 10 words and 80 characters. Languages with double-width characters such as Chinese, Japanese, or Korean, are allowed 40 characters, which describes the user's interests or actions. */
@@ -34842,7 +35506,7 @@ export const GoogleAdsSearchads360V23Resources__CustomAudienceMember =
   }) as any as S.Schema<GoogleAdsSearchads360V23Resources__CustomAudienceMember>;
 
 export type GoogleAdsSearchads360V23Resources__CustomAudienceMemberList =
-  ReadonlyArray<GoogleAdsSearchads360V23Resources__CustomAudienceMember>;
+  Array<GoogleAdsSearchads360V23Resources__CustomAudienceMember>;
 export const GoogleAdsSearchads360V23Resources__CustomAudienceMemberList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Resources__CustomAudienceMember,
@@ -34863,7 +35527,9 @@ export interface GoogleAdsSearchads360V23Resources__CustomAudience {
   /** Immutable. The resource name of the custom audience. Custom audience resource names have the form: `customers/{customer_id}/customAudiences/{custom_audience_id}` */
   resourceName?: string;
   /** Type of the custom audience. ("INTEREST" OR "PURCHASE_INTENT" is not allowed for newly created custom audience but kept for existing audiences) */
-  type?: GoogleAdsSearchads360V23Resources__CustomAudienceTypeEnum;
+  type?:
+    | GoogleAdsSearchads360V23Resources__CustomAudienceTypeEnum
+    | (string & {});
   /** Name of the custom audience. It should be unique for all custom audiences created by a customer. This field is required for creating operations. */
   name?: string;
   /** Output only. ID of the custom audience. */
@@ -34871,7 +35537,9 @@ export interface GoogleAdsSearchads360V23Resources__CustomAudience {
   /** List of custom audience members that this custom audience is composed of. Members can be added during CustomAudience creation. If members are presented in UPDATE operation, existing members will be overridden. */
   members?: GoogleAdsSearchads360V23Resources__CustomAudienceMemberList;
   /** Output only. Status of this custom audience. Indicates whether the custom audience is enabled or removed. */
-  status?: GoogleAdsSearchads360V23Resources__CustomAudienceStatusEnum;
+  status?:
+    | GoogleAdsSearchads360V23Resources__CustomAudienceStatusEnum
+    | (string & {});
 }
 export const GoogleAdsSearchads360V23Resources__CustomAudience =
   /*@__PURE__*/ S.suspend(() =>
@@ -34918,7 +35586,7 @@ export const GoogleAdsSearchads360V23Services__CustomAudienceOperation =
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__CustomAudienceOperation>;
 
 export type GoogleAdsSearchads360V23Services__CustomAudienceOperationList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__CustomAudienceOperation>;
+  Array<GoogleAdsSearchads360V23Services__CustomAudienceOperation>;
 export const GoogleAdsSearchads360V23Services__CustomAudienceOperationList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__CustomAudienceOperation,
@@ -34985,7 +35653,7 @@ export const GoogleAdsSearchads360V23Services__MutateCustomAudienceResult =
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateCustomAudienceResult>;
 
 export type GoogleAdsSearchads360V23Services__MutateCustomAudienceResultList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__MutateCustomAudienceResult>;
+  Array<GoogleAdsSearchads360V23Services__MutateCustomAudienceResult>;
 export const GoogleAdsSearchads360V23Services__MutateCustomAudienceResultList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__MutateCustomAudienceResult,
@@ -35009,7 +35677,7 @@ export const GoogleAdsSearchads360V23Services__MutateCustomAudiencesResponse =
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateCustomAudiencesResponse>;
 
 export type GoogleAdsSearchads360V23Services__CustomConversionGoalOperationList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__CustomConversionGoalOperation>;
+  Array<GoogleAdsSearchads360V23Services__CustomConversionGoalOperation>;
 export const GoogleAdsSearchads360V23Services__CustomConversionGoalOperationList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__CustomConversionGoalOperation,
@@ -35074,7 +35742,7 @@ export const MutateCustomersCustomConversionGoalsRequest =
   }) as any as S.Schema<MutateCustomersCustomConversionGoalsRequest>;
 
 export type GoogleAdsSearchads360V23Services__MutateCustomConversionGoalResultList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__MutateCustomConversionGoalResult>;
+  Array<GoogleAdsSearchads360V23Services__MutateCustomConversionGoalResult>;
 export const GoogleAdsSearchads360V23Services__MutateCustomConversionGoalResultList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__MutateCustomConversionGoalResult,
@@ -35103,7 +35771,7 @@ export const GoogleAdsSearchads360V23Services__MutateCustomerAssetsRequestRespon
   /*@__PURE__*/ S.String;
 
 export type GoogleAdsSearchads360V23Services__CustomerAssetOperationList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__CustomerAssetOperation>;
+  Array<GoogleAdsSearchads360V23Services__CustomerAssetOperation>;
 export const GoogleAdsSearchads360V23Services__CustomerAssetOperationList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__CustomerAssetOperation,
@@ -35165,7 +35833,7 @@ export const MutateCustomersCustomerAssetsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<MutateCustomersCustomerAssetsRequest>;
 
 export type GoogleAdsSearchads360V23Services__MutateCustomerAssetResultList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__MutateCustomerAssetResult>;
+  Array<GoogleAdsSearchads360V23Services__MutateCustomerAssetResult>;
 export const GoogleAdsSearchads360V23Services__MutateCustomerAssetResultList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__MutateCustomerAssetResult,
@@ -35207,7 +35875,9 @@ export const GoogleAdsSearchads360V23Resources__CustomerAssetSetStatusEnum =
 /** CustomerAssetSet is the linkage between a customer and an asset set. Adding a CustomerAssetSet links an asset set with a customer. */
 export interface GoogleAdsSearchads360V23Resources__CustomerAssetSet {
   /** Output only. The status of the customer asset set asset. Read-only. */
-  status?: GoogleAdsSearchads360V23Resources__CustomerAssetSetStatusEnum;
+  status?:
+    | GoogleAdsSearchads360V23Resources__CustomerAssetSetStatusEnum
+    | (string & {});
   /** Immutable. The asset set which is linked to the customer. */
   assetSet?: string;
   /** Immutable. The resource name of the customer asset set. Asset set asset resource names have the form: `customers/{customer_id}/customerAssetSets/{asset_set_id}` */
@@ -35247,7 +35917,7 @@ export const GoogleAdsSearchads360V23Services__CustomerAssetSetOperation =
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__CustomerAssetSetOperation>;
 
 export type GoogleAdsSearchads360V23Services__CustomerAssetSetOperationList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__CustomerAssetSetOperation>;
+  Array<GoogleAdsSearchads360V23Services__CustomerAssetSetOperation>;
 export const GoogleAdsSearchads360V23Services__CustomerAssetSetOperationList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__CustomerAssetSetOperation,
@@ -35330,7 +36000,7 @@ export const GoogleAdsSearchads360V23Services__MutateCustomerAssetSetResult =
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateCustomerAssetSetResult>;
 
 export type GoogleAdsSearchads360V23Services__MutateCustomerAssetSetResultList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__MutateCustomerAssetSetResult>;
+  Array<GoogleAdsSearchads360V23Services__MutateCustomerAssetSetResult>;
 export const GoogleAdsSearchads360V23Services__MutateCustomerAssetSetResultList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__MutateCustomerAssetSetResult,
@@ -35370,7 +36040,9 @@ export const GoogleAdsSearchads360V23Resources__CustomerClientLinkStatusEnum =
 /** Represents customer client link relationship. */
 export interface GoogleAdsSearchads360V23Resources__CustomerClientLink {
   /** This is the status of the link between client and manager. */
-  status?: GoogleAdsSearchads360V23Resources__CustomerClientLinkStatusEnum;
+  status?:
+    | GoogleAdsSearchads360V23Resources__CustomerClientLinkStatusEnum
+    | (string & {});
   /** Immutable. The client customer linked to this customer. */
   clientCustomer?: string;
   /** Output only. This is uniquely identifies a customer client link. Read only. */
@@ -35494,7 +36166,7 @@ export const GoogleAdsSearchads360V23Services__MutateCustomerClientLinkResponse 
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateCustomerClientLinkResponse>;
 
 export type GoogleAdsSearchads360V23Services__CustomerConversionGoalOperationList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__CustomerConversionGoalOperation>;
+  Array<GoogleAdsSearchads360V23Services__CustomerConversionGoalOperation>;
 export const GoogleAdsSearchads360V23Services__CustomerConversionGoalOperationList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__CustomerConversionGoalOperation,
@@ -35547,7 +36219,7 @@ export const MutateCustomersCustomerConversionGoalsRequest =
   }) as any as S.Schema<MutateCustomersCustomerConversionGoalsRequest>;
 
 export type GoogleAdsSearchads360V23Services__MutateCustomerConversionGoalResultList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__MutateCustomerConversionGoalResult>;
+  Array<GoogleAdsSearchads360V23Services__MutateCustomerConversionGoalResult>;
 export const GoogleAdsSearchads360V23Services__MutateCustomerConversionGoalResultList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__MutateCustomerConversionGoalResult,
@@ -35576,7 +36248,7 @@ export const GoogleAdsSearchads360V23Services__MutateCustomerCustomizersRequestR
   /*@__PURE__*/ S.String;
 
 export type GoogleAdsSearchads360V23Services__CustomerCustomizerOperationList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__CustomerCustomizerOperation>;
+  Array<GoogleAdsSearchads360V23Services__CustomerCustomizerOperation>;
 export const GoogleAdsSearchads360V23Services__CustomerCustomizerOperationList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__CustomerCustomizerOperation,
@@ -35639,7 +36311,7 @@ export const MutateCustomersCustomerCustomizersRequest =
   }) as any as S.Schema<MutateCustomersCustomerCustomizersRequest>;
 
 export type GoogleAdsSearchads360V23Services__MutateCustomerCustomizerResultList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__MutateCustomerCustomizerResult>;
+  Array<GoogleAdsSearchads360V23Services__MutateCustomerCustomizerResult>;
 export const GoogleAdsSearchads360V23Services__MutateCustomerCustomizerResultList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__MutateCustomerCustomizerResult,
@@ -35666,7 +36338,7 @@ export const GoogleAdsSearchads360V23Services__MutateCustomerCustomizersResponse
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateCustomerCustomizersResponse>;
 
 export type GoogleAdsSearchads360V23Services__CustomerLabelOperationList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__CustomerLabelOperation>;
+  Array<GoogleAdsSearchads360V23Services__CustomerLabelOperation>;
 export const GoogleAdsSearchads360V23Services__CustomerLabelOperationList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__CustomerLabelOperation,
@@ -35721,7 +36393,7 @@ export const MutateCustomersCustomerLabelsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<MutateCustomersCustomerLabelsRequest>;
 
 export type GoogleAdsSearchads360V23Services__MutateCustomerLabelResultList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__MutateCustomerLabelResult>;
+  Array<GoogleAdsSearchads360V23Services__MutateCustomerLabelResult>;
 export const GoogleAdsSearchads360V23Services__MutateCustomerLabelResultList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__MutateCustomerLabelResult,
@@ -35767,7 +36439,9 @@ export interface GoogleAdsSearchads360V23Resources__CustomerManagerLink {
   /** Output only. The manager customer linked to the customer. */
   managerCustomer?: string;
   /** Status of the link between the customer and the manager. */
-  status?: GoogleAdsSearchads360V23Resources__CustomerManagerLinkStatusEnum;
+  status?:
+    | GoogleAdsSearchads360V23Resources__CustomerManagerLinkStatusEnum
+    | (string & {});
   /** Output only. The timestamp when the CustomerManagerLink was created. The timestamp is in the customer's time zone and in "yyyy-MM-dd HH:mm:ss" format. */
   startTime?: string;
 }
@@ -35807,7 +36481,7 @@ export const GoogleAdsSearchads360V23Services__CustomerManagerLinkOperation =
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__CustomerManagerLinkOperation>;
 
 export type GoogleAdsSearchads360V23Services__CustomerManagerLinkOperationList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__CustomerManagerLinkOperation>;
+  Array<GoogleAdsSearchads360V23Services__CustomerManagerLinkOperation>;
 export const GoogleAdsSearchads360V23Services__CustomerManagerLinkOperationList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__CustomerManagerLinkOperation,
@@ -35875,7 +36549,7 @@ export const GoogleAdsSearchads360V23Services__MutateCustomerManagerLinkResult =
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateCustomerManagerLinkResult>;
 
 export type GoogleAdsSearchads360V23Services__MutateCustomerManagerLinkResultList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__MutateCustomerManagerLinkResult>;
+  Array<GoogleAdsSearchads360V23Services__MutateCustomerManagerLinkResult>;
 export const GoogleAdsSearchads360V23Services__MutateCustomerManagerLinkResultList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__MutateCustomerManagerLinkResult,
@@ -35899,7 +36573,7 @@ export const GoogleAdsSearchads360V23Services__MutateCustomerManagerLinkResponse
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateCustomerManagerLinkResponse>;
 
 export type GoogleAdsSearchads360V23Services__CustomerNegativeCriterionOperationList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__CustomerNegativeCriterionOperation>;
+  Array<GoogleAdsSearchads360V23Services__CustomerNegativeCriterionOperation>;
 export const GoogleAdsSearchads360V23Services__CustomerNegativeCriterionOperationList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__CustomerNegativeCriterionOperation,
@@ -35967,7 +36641,7 @@ export const MutateCustomersCustomerNegativeCriteriaRequest =
   }) as any as S.Schema<MutateCustomersCustomerNegativeCriteriaRequest>;
 
 export type GoogleAdsSearchads360V23Services__MutateCustomerNegativeCriteriaResultList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__MutateCustomerNegativeCriteriaResult>;
+  Array<GoogleAdsSearchads360V23Services__MutateCustomerNegativeCriteriaResult>;
 export const GoogleAdsSearchads360V23Services__MutateCustomerNegativeCriteriaResultList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__MutateCustomerNegativeCriteriaResult,
@@ -36064,7 +36738,7 @@ export const GoogleAdsSearchads360V23Resources_CustomerSkAdNetworkConversionValu
   }) as any as S.Schema<GoogleAdsSearchads360V23Resources_CustomerSkAdNetworkConversionValueSchemaSkAdNetworkConversionValueSchema_Event>;
 
 export type GoogleAdsSearchads360V23Resources_CustomerSkAdNetworkConversionValueSchemaSkAdNetworkConversionValueSchema_EventList =
-  ReadonlyArray<GoogleAdsSearchads360V23Resources_CustomerSkAdNetworkConversionValueSchemaSkAdNetworkConversionValueSchema_Event>;
+  Array<GoogleAdsSearchads360V23Resources_CustomerSkAdNetworkConversionValueSchemaSkAdNetworkConversionValueSchema_Event>;
 export const GoogleAdsSearchads360V23Resources_CustomerSkAdNetworkConversionValueSchemaSkAdNetworkConversionValueSchema_EventList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Resources_CustomerSkAdNetworkConversionValueSchemaSkAdNetworkConversionValueSchema_Event,
@@ -36114,7 +36788,7 @@ export const GoogleAdsSearchads360V23Resources_CustomerSkAdNetworkConversionValu
   }) as any as S.Schema<GoogleAdsSearchads360V23Resources_CustomerSkAdNetworkConversionValueSchemaSkAdNetworkConversionValueSchema_FineGrainedConversionValueMappings>;
 
 export type GoogleAdsSearchads360V23Resources_CustomerSkAdNetworkConversionValueSchemaSkAdNetworkConversionValueSchema_FineGrainedConversionValueMappingsList =
-  ReadonlyArray<GoogleAdsSearchads360V23Resources_CustomerSkAdNetworkConversionValueSchemaSkAdNetworkConversionValueSchema_FineGrainedConversionValueMappings>;
+  Array<GoogleAdsSearchads360V23Resources_CustomerSkAdNetworkConversionValueSchemaSkAdNetworkConversionValueSchema_FineGrainedConversionValueMappings>;
 export const GoogleAdsSearchads360V23Resources_CustomerSkAdNetworkConversionValueSchemaSkAdNetworkConversionValueSchema_FineGrainedConversionValueMappingsList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Resources_CustomerSkAdNetworkConversionValueSchemaSkAdNetworkConversionValueSchema_FineGrainedConversionValueMappings,
@@ -36192,7 +36866,7 @@ export const GoogleAdsSearchads360V23Resources_CustomerSkAdNetworkConversionValu
   }) as any as S.Schema<GoogleAdsSearchads360V23Resources_CustomerSkAdNetworkConversionValueSchemaSkAdNetworkConversionValueSchema_PostbackMapping>;
 
 export type GoogleAdsSearchads360V23Resources_CustomerSkAdNetworkConversionValueSchemaSkAdNetworkConversionValueSchema_PostbackMappingList =
-  ReadonlyArray<GoogleAdsSearchads360V23Resources_CustomerSkAdNetworkConversionValueSchemaSkAdNetworkConversionValueSchema_PostbackMapping>;
+  Array<GoogleAdsSearchads360V23Resources_CustomerSkAdNetworkConversionValueSchemaSkAdNetworkConversionValueSchema_PostbackMapping>;
 export const GoogleAdsSearchads360V23Resources_CustomerSkAdNetworkConversionValueSchemaSkAdNetworkConversionValueSchema_PostbackMappingList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Resources_CustomerSkAdNetworkConversionValueSchemaSkAdNetworkConversionValueSchema_PostbackMapping,
@@ -36359,7 +37033,9 @@ export const GoogleAdsSearchads360V23Resources__CustomerUserAccessAccessRoleEnum
 /** Represents the permission of a single user onto a single customer. */
 export interface GoogleAdsSearchads360V23Resources__CustomerUserAccess {
   /** Access role of the user. */
-  accessRole?: GoogleAdsSearchads360V23Resources__CustomerUserAccessAccessRoleEnum;
+  accessRole?:
+    | GoogleAdsSearchads360V23Resources__CustomerUserAccessAccessRoleEnum
+    | (string & {});
   /** Output only. The email address of the inviter user. Read only field */
   inviterUserEmailAddress?: string;
   /** Output only. User id of the user with the customer access. Read only field */
@@ -36501,9 +37177,13 @@ export interface GoogleAdsSearchads360V23Resources__CustomerUserAccessInvitation
   /** Output only. The ID of the invitation. This field is read-only. */
   invitationId?: string;
   /** Output only. Invitation status of the user. */
-  invitationStatus?: GoogleAdsSearchads360V23Resources__CustomerUserAccessInvitationInvitationStatusEnum;
+  invitationStatus?:
+    | GoogleAdsSearchads360V23Resources__CustomerUserAccessInvitationInvitationStatusEnum
+    | (string & {});
   /** Immutable. Access role of the user. */
-  accessRole?: GoogleAdsSearchads360V23Resources__CustomerUserAccessInvitationAccessRoleEnum;
+  accessRole?:
+    | GoogleAdsSearchads360V23Resources__CustomerUserAccessInvitationAccessRoleEnum
+    | (string & {});
   /** Output only. Time invitation was created. This field is read-only. The format is "YYYY-MM-DD HH:MM:SS". Examples: "2018-03-05 09:15:00" or "2018-02-01 14:34:30" */
   creationDateTime?: string;
 }
@@ -36639,7 +37319,9 @@ export interface GoogleAdsSearchads360V23Resources__CustomInterestMember {
   /** Keyword text when member_type is KEYWORD or URL string when member_type is URL. */
   parameter?: string;
   /** The type of custom interest member, KEYWORD or URL. */
-  memberType?: GoogleAdsSearchads360V23Resources__CustomInterestMemberMemberTypeEnum;
+  memberType?:
+    | GoogleAdsSearchads360V23Resources__CustomInterestMemberMemberTypeEnum
+    | (string & {});
 }
 export const GoogleAdsSearchads360V23Resources__CustomInterestMember =
   /*@__PURE__*/ S.suspend(() =>
@@ -36654,7 +37336,7 @@ export const GoogleAdsSearchads360V23Resources__CustomInterestMember =
   }) as any as S.Schema<GoogleAdsSearchads360V23Resources__CustomInterestMember>;
 
 export type GoogleAdsSearchads360V23Resources__CustomInterestMemberList =
-  ReadonlyArray<GoogleAdsSearchads360V23Resources__CustomInterestMember>;
+  Array<GoogleAdsSearchads360V23Resources__CustomInterestMember>;
 export const GoogleAdsSearchads360V23Resources__CustomInterestMemberList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Resources__CustomInterestMember,
@@ -36671,7 +37353,9 @@ export const GoogleAdsSearchads360V23Resources__CustomInterestStatusEnum =
 /** A custom interest. This is a list of users by interest. */
 export interface GoogleAdsSearchads360V23Resources__CustomInterest {
   /** Type of the custom interest, CUSTOM_AFFINITY or CUSTOM_INTENT. By default the type is set to CUSTOM_AFFINITY. */
-  type?: GoogleAdsSearchads360V23Resources__CustomInterestTypeEnum;
+  type?:
+    | GoogleAdsSearchads360V23Resources__CustomInterestTypeEnum
+    | (string & {});
   /** Name of the custom interest. It should be unique across the same custom affinity audience. This field is required for create operations. */
   name?: string;
   /** Output only. Id of the custom interest. */
@@ -36679,7 +37363,9 @@ export interface GoogleAdsSearchads360V23Resources__CustomInterest {
   /** List of custom interest members that this custom interest is composed of. Members can be added during CustomInterest creation. If members are presented in UPDATE operation, existing members will be overridden. */
   members?: GoogleAdsSearchads360V23Resources__CustomInterestMemberList;
   /** Status of this custom interest. Indicates whether the custom interest is enabled or removed. */
-  status?: GoogleAdsSearchads360V23Resources__CustomInterestStatusEnum;
+  status?:
+    | GoogleAdsSearchads360V23Resources__CustomInterestStatusEnum
+    | (string & {});
   /** Description of this custom interest audience. */
   description?: string;
   /** Immutable. The resource name of the custom interest. Custom interest resource names have the form: `customers/{customer_id}/customInterests/{custom_interest_id}` */
@@ -36727,7 +37413,7 @@ export const GoogleAdsSearchads360V23Services__CustomInterestOperation =
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__CustomInterestOperation>;
 
 export type GoogleAdsSearchads360V23Services__CustomInterestOperationList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__CustomInterestOperation>;
+  Array<GoogleAdsSearchads360V23Services__CustomInterestOperation>;
 export const GoogleAdsSearchads360V23Services__CustomInterestOperationList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__CustomInterestOperation,
@@ -36794,7 +37480,7 @@ export const GoogleAdsSearchads360V23Services__MutateCustomInterestResult =
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateCustomInterestResult>;
 
 export type GoogleAdsSearchads360V23Services__MutateCustomInterestResultList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__MutateCustomInterestResult>;
+  Array<GoogleAdsSearchads360V23Services__MutateCustomInterestResult>;
 export const GoogleAdsSearchads360V23Services__MutateCustomInterestResultList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__MutateCustomInterestResult,
@@ -36818,7 +37504,7 @@ export const GoogleAdsSearchads360V23Services__MutateCustomInterestsResponse =
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateCustomInterestsResponse>;
 
 export type GoogleAdsSearchads360V23Services__CustomizerAttributeOperationList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__CustomizerAttributeOperation>;
+  Array<GoogleAdsSearchads360V23Services__CustomizerAttributeOperation>;
 export const GoogleAdsSearchads360V23Services__CustomizerAttributeOperationList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__CustomizerAttributeOperation,
@@ -36886,7 +37572,7 @@ export const MutateCustomersCustomizerAttributesRequest =
   }) as any as S.Schema<MutateCustomersCustomizerAttributesRequest>;
 
 export type GoogleAdsSearchads360V23Services__MutateCustomizerAttributeResultList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__MutateCustomizerAttributeResult>;
+  Array<GoogleAdsSearchads360V23Services__MutateCustomizerAttributeResult>;
 export const GoogleAdsSearchads360V23Services__MutateCustomizerAttributeResultList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__MutateCustomizerAttributeResult,
@@ -36918,7 +37604,7 @@ export const GoogleAdsSearchads360V23Services__MutateExperimentArmsRequestRespon
   /*@__PURE__*/ S.String;
 
 export type GoogleAdsSearchads360V23Services__ExperimentArmOperationList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__ExperimentArmOperation>;
+  Array<GoogleAdsSearchads360V23Services__ExperimentArmOperation>;
 export const GoogleAdsSearchads360V23Services__ExperimentArmOperationList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__ExperimentArmOperation,
@@ -36980,7 +37666,7 @@ export const MutateCustomersExperimentArmsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<MutateCustomersExperimentArmsRequest>;
 
 export type GoogleAdsSearchads360V23Services__MutateExperimentArmResultList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__MutateExperimentArmResult>;
+  Array<GoogleAdsSearchads360V23Services__MutateExperimentArmResult>;
 export const GoogleAdsSearchads360V23Services__MutateExperimentArmResultList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__MutateExperimentArmResult,
@@ -37007,7 +37693,7 @@ export const GoogleAdsSearchads360V23Services__MutateExperimentArmsResponse =
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateExperimentArmsResponse>;
 
 export type GoogleAdsSearchads360V23Services__ExperimentOperationList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__ExperimentOperation>;
+  Array<GoogleAdsSearchads360V23Services__ExperimentOperation>;
 export const GoogleAdsSearchads360V23Services__ExperimentOperationList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__ExperimentOperation,
@@ -37061,7 +37747,7 @@ export const MutateCustomersExperimentsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MutateCustomersExperimentsRequest>;
 
 export type GoogleAdsSearchads360V23Services__MutateExperimentResultList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__MutateExperimentResult>;
+  Array<GoogleAdsSearchads360V23Services__MutateExperimentResult>;
 export const GoogleAdsSearchads360V23Services__MutateExperimentResultList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__MutateExperimentResult,
@@ -37121,11 +37807,15 @@ export interface GoogleAdsSearchads360V23Resources__Goal {
   /** Output only. The resource name of the goal owner customer. */
   ownerCustomer?: string;
   /** Output only. Indicates if this goal is eligible for campaign optimization. */
-  optimizationEligibility?: GoogleAdsSearchads360V23Resources__GoalOptimizationEligibilityEnum;
+  optimizationEligibility?:
+    | GoogleAdsSearchads360V23Resources__GoalOptimizationEligibilityEnum
+    | (string & {});
   /** Output only. The ID of this goal. */
   goalId?: string;
   /** Output only. The type of this goal. */
-  goalType?: GoogleAdsSearchads360V23Resources__GoalGoalTypeEnum;
+  goalType?:
+    | GoogleAdsSearchads360V23Resources__GoalGoalTypeEnum
+    | (string & {});
   /** Retention goal settings. */
   retentionGoalSettings?: GoogleAdsSearchads360V23Common_GoalSetting_RetentionGoal;
 }
@@ -37168,7 +37858,7 @@ export const GoogleAdsSearchads360V23Services__GoalOperation =
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__GoalOperation>;
 
 export type GoogleAdsSearchads360V23Services__GoalOperationList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__GoalOperation>;
+  Array<GoogleAdsSearchads360V23Services__GoalOperation>;
 export const GoogleAdsSearchads360V23Services__GoalOperationList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__GoalOperation,
@@ -37234,7 +37924,7 @@ export const GoogleAdsSearchads360V23Services__MutateGoalResult =
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateGoalResult>;
 
 export type GoogleAdsSearchads360V23Services__MutateGoalResultList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__MutateGoalResult>;
+  Array<GoogleAdsSearchads360V23Services__MutateGoalResult>;
 export const GoogleAdsSearchads360V23Services__MutateGoalResultList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__MutateGoalResult,
@@ -37260,7 +37950,7 @@ export const GoogleAdsSearchads360V23Services__MutateGoalsResponse =
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateGoalsResponse>;
 
 export type GoogleAdsSearchads360V23Services__KeywordPlanAdGroupKeywordOperationList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__KeywordPlanAdGroupKeywordOperation>;
+  Array<GoogleAdsSearchads360V23Services__KeywordPlanAdGroupKeywordOperation>;
 export const GoogleAdsSearchads360V23Services__KeywordPlanAdGroupKeywordOperationList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__KeywordPlanAdGroupKeywordOperation,
@@ -37316,7 +38006,7 @@ export const MutateCustomersKeywordPlanAdGroupKeywordsRequest =
   }) as any as S.Schema<MutateCustomersKeywordPlanAdGroupKeywordsRequest>;
 
 export type GoogleAdsSearchads360V23Services__MutateKeywordPlanAdGroupKeywordResultList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__MutateKeywordPlanAdGroupKeywordResult>;
+  Array<GoogleAdsSearchads360V23Services__MutateKeywordPlanAdGroupKeywordResult>;
 export const GoogleAdsSearchads360V23Services__MutateKeywordPlanAdGroupKeywordResultList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__MutateKeywordPlanAdGroupKeywordResult,
@@ -37343,7 +38033,7 @@ export const GoogleAdsSearchads360V23Services__MutateKeywordPlanAdGroupKeywordsR
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateKeywordPlanAdGroupKeywordsResponse>;
 
 export type GoogleAdsSearchads360V23Services__KeywordPlanAdGroupOperationList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__KeywordPlanAdGroupOperation>;
+  Array<GoogleAdsSearchads360V23Services__KeywordPlanAdGroupOperation>;
 export const GoogleAdsSearchads360V23Services__KeywordPlanAdGroupOperationList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__KeywordPlanAdGroupOperation,
@@ -37399,7 +38089,7 @@ export const MutateCustomersKeywordPlanAdGroupsRequest =
   }) as any as S.Schema<MutateCustomersKeywordPlanAdGroupsRequest>;
 
 export type GoogleAdsSearchads360V23Services__MutateKeywordPlanAdGroupResultList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__MutateKeywordPlanAdGroupResult>;
+  Array<GoogleAdsSearchads360V23Services__MutateKeywordPlanAdGroupResult>;
 export const GoogleAdsSearchads360V23Services__MutateKeywordPlanAdGroupResultList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__MutateKeywordPlanAdGroupResult,
@@ -37426,7 +38116,7 @@ export const GoogleAdsSearchads360V23Services__MutateKeywordPlanAdGroupsResponse
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateKeywordPlanAdGroupsResponse>;
 
 export type GoogleAdsSearchads360V23Services__KeywordPlanCampaignKeywordOperationList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__KeywordPlanCampaignKeywordOperation>;
+  Array<GoogleAdsSearchads360V23Services__KeywordPlanCampaignKeywordOperation>;
 export const GoogleAdsSearchads360V23Services__KeywordPlanCampaignKeywordOperationList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__KeywordPlanCampaignKeywordOperation,
@@ -37482,7 +38172,7 @@ export const MutateCustomersKeywordPlanCampaignKeywordsRequest =
   }) as any as S.Schema<MutateCustomersKeywordPlanCampaignKeywordsRequest>;
 
 export type GoogleAdsSearchads360V23Services__MutateKeywordPlanCampaignKeywordResultList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__MutateKeywordPlanCampaignKeywordResult>;
+  Array<GoogleAdsSearchads360V23Services__MutateKeywordPlanCampaignKeywordResult>;
 export const GoogleAdsSearchads360V23Services__MutateKeywordPlanCampaignKeywordResultList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__MutateKeywordPlanCampaignKeywordResult,
@@ -37509,7 +38199,7 @@ export const GoogleAdsSearchads360V23Services__MutateKeywordPlanCampaignKeywords
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateKeywordPlanCampaignKeywordsResponse>;
 
 export type GoogleAdsSearchads360V23Services__KeywordPlanCampaignOperationList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__KeywordPlanCampaignOperation>;
+  Array<GoogleAdsSearchads360V23Services__KeywordPlanCampaignOperation>;
 export const GoogleAdsSearchads360V23Services__KeywordPlanCampaignOperationList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__KeywordPlanCampaignOperation,
@@ -37565,7 +38255,7 @@ export const MutateCustomersKeywordPlanCampaignsRequest =
   }) as any as S.Schema<MutateCustomersKeywordPlanCampaignsRequest>;
 
 export type GoogleAdsSearchads360V23Services__MutateKeywordPlanCampaignResultList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__MutateKeywordPlanCampaignResult>;
+  Array<GoogleAdsSearchads360V23Services__MutateKeywordPlanCampaignResult>;
 export const GoogleAdsSearchads360V23Services__MutateKeywordPlanCampaignResultList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__MutateKeywordPlanCampaignResult,
@@ -37592,7 +38282,7 @@ export const GoogleAdsSearchads360V23Services__MutateKeywordPlanCampaignsRespons
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateKeywordPlanCampaignsResponse>;
 
 export type GoogleAdsSearchads360V23Services__KeywordPlanOperationList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__KeywordPlanOperation>;
+  Array<GoogleAdsSearchads360V23Services__KeywordPlanOperation>;
 export const GoogleAdsSearchads360V23Services__KeywordPlanOperationList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__KeywordPlanOperation,
@@ -37646,7 +38336,7 @@ export const MutateCustomersKeywordPlansRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MutateCustomersKeywordPlansRequest>;
 
 export type GoogleAdsSearchads360V23Services__MutateKeywordPlansResultList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__MutateKeywordPlansResult>;
+  Array<GoogleAdsSearchads360V23Services__MutateKeywordPlansResult>;
 export const GoogleAdsSearchads360V23Services__MutateKeywordPlansResultList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__MutateKeywordPlansResult,
@@ -37677,7 +38367,7 @@ export const GoogleAdsSearchads360V23Services__MutateLabelsRequestResponseConten
   /*@__PURE__*/ S.String;
 
 export type GoogleAdsSearchads360V23Services__LabelOperationList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__LabelOperation>;
+  Array<GoogleAdsSearchads360V23Services__LabelOperation>;
 export const GoogleAdsSearchads360V23Services__LabelOperationList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__LabelOperation,
@@ -37736,7 +38426,7 @@ export const MutateCustomersLabelsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MutateCustomersLabelsRequest>;
 
 export type GoogleAdsSearchads360V23Services__MutateLabelResultList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__MutateLabelResult>;
+  Array<GoogleAdsSearchads360V23Services__MutateLabelResult>;
 export const GoogleAdsSearchads360V23Services__MutateLabelResultList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__MutateLabelResult,
@@ -37762,7 +38452,7 @@ export const GoogleAdsSearchads360V23Services__MutateLabelsResponse =
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateLabelsResponse>;
 
 export type GoogleAdsSearchads360V23Services__RemarketingActionOperationList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__RemarketingActionOperation>;
+  Array<GoogleAdsSearchads360V23Services__RemarketingActionOperation>;
 export const GoogleAdsSearchads360V23Services__RemarketingActionOperationList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__RemarketingActionOperation,
@@ -37818,7 +38508,7 @@ export const MutateCustomersRemarketingActionsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<MutateCustomersRemarketingActionsRequest>;
 
 export type GoogleAdsSearchads360V23Services__MutateRemarketingActionResultList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__MutateRemarketingActionResult>;
+  Array<GoogleAdsSearchads360V23Services__MutateRemarketingActionResult>;
 export const GoogleAdsSearchads360V23Services__MutateRemarketingActionResultList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__MutateRemarketingActionResult,
@@ -37903,7 +38593,7 @@ export const MutateCustomersSearchAds360Request = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MutateCustomersSearchAds360Request>;
 
 export type GoogleAdsSearchads360V23Services__MutateOperationResponseList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__MutateOperationResponse>;
+  Array<GoogleAdsSearchads360V23Services__MutateOperationResponse>;
 export const GoogleAdsSearchads360V23Services__MutateOperationResponseList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__MutateOperationResponse,
@@ -37929,7 +38619,7 @@ export const GoogleAdsSearchads360V23Services__MutateSearchAds360Response =
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateSearchAds360Response>;
 
 export type GoogleAdsSearchads360V23Services__SharedCriterionOperationList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__SharedCriterionOperation>;
+  Array<GoogleAdsSearchads360V23Services__SharedCriterionOperation>;
 export const GoogleAdsSearchads360V23Services__SharedCriterionOperationList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__SharedCriterionOperation,
@@ -37996,7 +38686,7 @@ export const MutateCustomersSharedCriteriaRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<MutateCustomersSharedCriteriaRequest>;
 
 export type GoogleAdsSearchads360V23Services__MutateSharedCriterionResultList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__MutateSharedCriterionResult>;
+  Array<GoogleAdsSearchads360V23Services__MutateSharedCriterionResult>;
 export const GoogleAdsSearchads360V23Services__MutateSharedCriterionResultList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__MutateSharedCriterionResult,
@@ -38023,7 +38713,7 @@ export const GoogleAdsSearchads360V23Services__MutateSharedCriteriaResponse =
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateSharedCriteriaResponse>;
 
 export type GoogleAdsSearchads360V23Services__SharedSetOperationList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__SharedSetOperation>;
+  Array<GoogleAdsSearchads360V23Services__SharedSetOperation>;
 export const GoogleAdsSearchads360V23Services__SharedSetOperationList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__SharedSetOperation,
@@ -38089,7 +38779,7 @@ export const MutateCustomersSharedSetsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MutateCustomersSharedSetsRequest>;
 
 export type GoogleAdsSearchads360V23Services__MutateSharedSetResultList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__MutateSharedSetResult>;
+  Array<GoogleAdsSearchads360V23Services__MutateSharedSetResult>;
 export const GoogleAdsSearchads360V23Services__MutateSharedSetResultList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__MutateSharedSetResult,
@@ -38115,7 +38805,7 @@ export const GoogleAdsSearchads360V23Services__MutateSharedSetsResponse =
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateSharedSetsResponse>;
 
 export type GoogleAdsSearchads360V23Services__SmartCampaignSettingOperationList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__SmartCampaignSettingOperation>;
+  Array<GoogleAdsSearchads360V23Services__SmartCampaignSettingOperation>;
 export const GoogleAdsSearchads360V23Services__SmartCampaignSettingOperationList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__SmartCampaignSettingOperation,
@@ -38183,7 +38873,7 @@ export const MutateCustomersSmartCampaignSettingsRequest =
   }) as any as S.Schema<MutateCustomersSmartCampaignSettingsRequest>;
 
 export type GoogleAdsSearchads360V23Services__MutateSmartCampaignSettingResultList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__MutateSmartCampaignSettingResult>;
+  Array<GoogleAdsSearchads360V23Services__MutateSmartCampaignSettingResult>;
 export const GoogleAdsSearchads360V23Services__MutateSmartCampaignSettingResultList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__MutateSmartCampaignSettingResult,
@@ -38236,7 +38926,9 @@ export interface GoogleAdsSearchads360V23Resources__UserListCustomerType {
   /** Immutable. The resource name for the user list this user list customer type is associated with */
   userList?: string;
   /** Immutable. The user list customer type category */
-  customerTypeCategory?: GoogleAdsSearchads360V23Resources__UserListCustomerTypeCustomerTypeCategoryEnum;
+  customerTypeCategory?:
+    | GoogleAdsSearchads360V23Resources__UserListCustomerTypeCustomerTypeCategoryEnum
+    | (string & {});
   /** Immutable. The resource name of the user list customer type User list customer type resource names have the form: `customers/{customer_id}/userListCustomerTypes/{user_list_id}~{customer_type_category}` */
   resourceName?: string;
 }
@@ -38274,7 +38966,7 @@ export const GoogleAdsSearchads360V23Services__UserListCustomerTypeOperation =
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__UserListCustomerTypeOperation>;
 
 export type GoogleAdsSearchads360V23Services__UserListCustomerTypeOperationList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__UserListCustomerTypeOperation>;
+  Array<GoogleAdsSearchads360V23Services__UserListCustomerTypeOperation>;
 export const GoogleAdsSearchads360V23Services__UserListCustomerTypeOperationList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__UserListCustomerTypeOperation,
@@ -38345,7 +39037,7 @@ export const GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult 
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult>;
 
 export type GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResultList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult>;
+  Array<GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult>;
 export const GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResultList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult,
@@ -38372,7 +39064,7 @@ export const GoogleAdsSearchads360V23Services__MutateUserListCustomerTypesRespon
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateUserListCustomerTypesResponse>;
 
 export type GoogleAdsSearchads360V23Services__UserListOperationList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__UserListOperation>;
+  Array<GoogleAdsSearchads360V23Services__UserListOperation>;
 export const GoogleAdsSearchads360V23Services__UserListOperationList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__UserListOperation,
@@ -38426,7 +39118,7 @@ export const MutateCustomersUserListsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MutateCustomersUserListsRequest>;
 
 export type GoogleAdsSearchads360V23Services__MutateUserListResultList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__MutateUserListResult>;
+  Array<GoogleAdsSearchads360V23Services__MutateUserListResult>;
 export const GoogleAdsSearchads360V23Services__MutateUserListResultList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__MutateUserListResult,
@@ -38452,7 +39144,7 @@ export const GoogleAdsSearchads360V23Services__MutateUserListsResponse =
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateUserListsResponse>;
 
 export type GoogleAdsSearchads360V23Services__RecommendationSubscriptionOperationList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__RecommendationSubscriptionOperation>;
+  Array<GoogleAdsSearchads360V23Services__RecommendationSubscriptionOperation>;
 export const GoogleAdsSearchads360V23Services__RecommendationSubscriptionOperationList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__RecommendationSubscriptionOperation,
@@ -38521,7 +39213,7 @@ export const MutateRecommendationSubscriptionCustomersRecommendationSubscription
   }) as any as S.Schema<MutateRecommendationSubscriptionCustomersRecommendationSubscriptionsRequest>;
 
 export type GoogleAdsSearchads360V23Services__MutateRecommendationSubscriptionResultList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__MutateRecommendationSubscriptionResult>;
+  Array<GoogleAdsSearchads360V23Services__MutateRecommendationSubscriptionResult>;
 export const GoogleAdsSearchads360V23Services__MutateRecommendationSubscriptionResultList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__MutateRecommendationSubscriptionResult,
@@ -38913,7 +39605,7 @@ export const GoogleAdsSearchads360V23Services__AssetsWithFieldType =
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__AssetsWithFieldType>;
 
 export type GoogleAdsSearchads360V23Services__AssetsWithFieldTypeList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__AssetsWithFieldType>;
+  Array<GoogleAdsSearchads360V23Services__AssetsWithFieldType>;
 export const GoogleAdsSearchads360V23Services__AssetsWithFieldTypeList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__AssetsWithFieldType,
@@ -39027,7 +39719,7 @@ export const GoogleAdsSearchads360V23Services__RemoveCampaignAutomaticallyCreate
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__RemoveCampaignAutomaticallyCreatedAssetOperation>;
 
 export type GoogleAdsSearchads360V23Services__RemoveCampaignAutomaticallyCreatedAssetOperationList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__RemoveCampaignAutomaticallyCreatedAssetOperation>;
+  Array<GoogleAdsSearchads360V23Services__RemoveCampaignAutomaticallyCreatedAssetOperation>;
 export const GoogleAdsSearchads360V23Services__RemoveCampaignAutomaticallyCreatedAssetOperationList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__RemoveCampaignAutomaticallyCreatedAssetOperation,
@@ -39393,7 +40085,7 @@ export const GoogleAdsSearchads360V23Services__ListAudienceInsightsAttributesReq
   /*@__PURE__*/ S.String;
 
 export type GoogleAdsSearchads360V23Services__ListAudienceInsightsAttributesRequestDimensionsItemEnumList =
-  ReadonlyArray<
+  Array<
     | GoogleAdsSearchads360V23Services__ListAudienceInsightsAttributesRequestDimensionsItemEnum
     | (string & {})
   >;
@@ -39575,7 +40267,7 @@ export const GoogleAdsSearchads360V23Services__RawEventConversionMetricHeader =
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__RawEventConversionMetricHeader>;
 
 export type GoogleAdsSearchads360V23Services__RawEventConversionMetricHeaderList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__RawEventConversionMetricHeader>;
+  Array<GoogleAdsSearchads360V23Services__RawEventConversionMetricHeader>;
 export const GoogleAdsSearchads360V23Services__RawEventConversionMetricHeaderList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__RawEventConversionMetricHeader,
@@ -39602,7 +40294,7 @@ export const GoogleAdsSearchads360V23Services__CustomColumnHeader =
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__CustomColumnHeader>;
 
 export type GoogleAdsSearchads360V23Services__CustomColumnHeaderList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__CustomColumnHeader>;
+  Array<GoogleAdsSearchads360V23Services__CustomColumnHeader>;
 export const GoogleAdsSearchads360V23Services__CustomColumnHeaderList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__CustomColumnHeader,
@@ -39627,7 +40319,7 @@ export const GoogleAdsSearchads360V23Services__ConversionCustomMetricHeader =
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__ConversionCustomMetricHeader>;
 
 export type GoogleAdsSearchads360V23Services__ConversionCustomMetricHeaderList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__ConversionCustomMetricHeader>;
+  Array<GoogleAdsSearchads360V23Services__ConversionCustomMetricHeader>;
 export const GoogleAdsSearchads360V23Services__ConversionCustomMetricHeaderList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__ConversionCustomMetricHeader,
@@ -39652,7 +40344,7 @@ export const GoogleAdsSearchads360V23Services__ConversionCustomDimensionHeader =
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__ConversionCustomDimensionHeader>;
 
 export type GoogleAdsSearchads360V23Services__ConversionCustomDimensionHeaderList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__ConversionCustomDimensionHeader>;
+  Array<GoogleAdsSearchads360V23Services__ConversionCustomDimensionHeader>;
 export const GoogleAdsSearchads360V23Services__ConversionCustomDimensionHeaderList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__ConversionCustomDimensionHeader,
@@ -40364,7 +41056,7 @@ export const GoogleAdsSearchads360V23Common__CriterionCategoryLocaleAvailability
   }) as any as S.Schema<GoogleAdsSearchads360V23Common__CriterionCategoryLocaleAvailability>;
 
 export type GoogleAdsSearchads360V23Common__CriterionCategoryLocaleAvailabilityList =
-  ReadonlyArray<GoogleAdsSearchads360V23Common__CriterionCategoryLocaleAvailability>;
+  Array<GoogleAdsSearchads360V23Common__CriterionCategoryLocaleAvailability>;
 export const GoogleAdsSearchads360V23Common__CriterionCategoryLocaleAvailabilityList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Common__CriterionCategoryLocaleAvailability,
@@ -40424,7 +41116,7 @@ export const GoogleAdsSearchads360V23Common__CriterionCategoryChannelAvailabilit
   /*@__PURE__*/ S.String;
 
 export type GoogleAdsSearchads360V23Common__CriterionCategoryChannelAvailabilityAdvertisingChannelSubTypeItemEnumList =
-  ReadonlyArray<GoogleAdsSearchads360V23Common__CriterionCategoryChannelAvailabilityAdvertisingChannelSubTypeItemEnum>;
+  Array<GoogleAdsSearchads360V23Common__CriterionCategoryChannelAvailabilityAdvertisingChannelSubTypeItemEnum>;
 export const GoogleAdsSearchads360V23Common__CriterionCategoryChannelAvailabilityAdvertisingChannelSubTypeItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Common__CriterionCategoryChannelAvailabilityAdvertisingChannelSubTypeItemEnum,
@@ -40482,7 +41174,7 @@ export const GoogleAdsSearchads360V23Common__CriterionCategoryAvailability =
   }) as any as S.Schema<GoogleAdsSearchads360V23Common__CriterionCategoryAvailability>;
 
 export type GoogleAdsSearchads360V23Common__CriterionCategoryAvailabilityList =
-  ReadonlyArray<GoogleAdsSearchads360V23Common__CriterionCategoryAvailability>;
+  Array<GoogleAdsSearchads360V23Common__CriterionCategoryAvailability>;
 export const GoogleAdsSearchads360V23Common__CriterionCategoryAvailabilityList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Common__CriterionCategoryAvailability,
@@ -40678,7 +41370,7 @@ export const GoogleAdsSearchads360V23Resources__OfflineConversionSummary =
   }) as any as S.Schema<GoogleAdsSearchads360V23Resources__OfflineConversionSummary>;
 
 export type GoogleAdsSearchads360V23Resources__OfflineConversionSummaryList =
-  ReadonlyArray<GoogleAdsSearchads360V23Resources__OfflineConversionSummary>;
+  Array<GoogleAdsSearchads360V23Resources__OfflineConversionSummary>;
 export const GoogleAdsSearchads360V23Resources__OfflineConversionSummaryList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Resources__OfflineConversionSummary,
@@ -40928,7 +41620,7 @@ export const GoogleAdsSearchads360V23Resources__OfflineConversionAlert =
   }) as any as S.Schema<GoogleAdsSearchads360V23Resources__OfflineConversionAlert>;
 
 export type GoogleAdsSearchads360V23Resources__OfflineConversionAlertList =
-  ReadonlyArray<GoogleAdsSearchads360V23Resources__OfflineConversionAlert>;
+  Array<GoogleAdsSearchads360V23Resources__OfflineConversionAlert>;
 export const GoogleAdsSearchads360V23Resources__OfflineConversionAlertList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Resources__OfflineConversionAlert,
@@ -41040,7 +41732,7 @@ export const GoogleAdsSearchads360V23Resources_ProductCategoryConstant_ProductCa
   }) as any as S.Schema<GoogleAdsSearchads360V23Resources_ProductCategoryConstant_ProductCategoryLocalization>;
 
 export type GoogleAdsSearchads360V23Resources_ProductCategoryConstant_ProductCategoryLocalizationList =
-  ReadonlyArray<GoogleAdsSearchads360V23Resources_ProductCategoryConstant_ProductCategoryLocalization>;
+  Array<GoogleAdsSearchads360V23Resources_ProductCategoryConstant_ProductCategoryLocalization>;
 export const GoogleAdsSearchads360V23Resources_ProductCategoryConstant_ProductCategoryLocalizationList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Resources_ProductCategoryConstant_ProductCategoryLocalization,
@@ -41332,7 +42024,7 @@ export const GoogleAdsSearchads360V23Common__Value = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleAdsSearchads360V23Common__Value>;
 
 export type GoogleAdsSearchads360V23Common__ValueList =
-  ReadonlyArray<GoogleAdsSearchads360V23Common__Value>;
+  Array<GoogleAdsSearchads360V23Common__Value>;
 export const GoogleAdsSearchads360V23Common__ValueList = /*@__PURE__*/ S.Array(
   GoogleAdsSearchads360V23Common__Value,
 ) as any as S.Schema<GoogleAdsSearchads360V23Common__ValueList>;
@@ -41353,7 +42045,7 @@ export const GoogleAdsSearchads360V23Common__MetricsInteractionEventTypesItemEnu
   /*@__PURE__*/ S.String;
 
 export type GoogleAdsSearchads360V23Common__MetricsInteractionEventTypesItemEnumList =
-  ReadonlyArray<GoogleAdsSearchads360V23Common__MetricsInteractionEventTypesItemEnum>;
+  Array<GoogleAdsSearchads360V23Common__MetricsInteractionEventTypesItemEnum>;
 export const GoogleAdsSearchads360V23Common__MetricsInteractionEventTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Common__MetricsInteractionEventTypesItemEnum,
@@ -41801,7 +42493,7 @@ export const GoogleAdsSearchads360V23Common__TargetRoasSimulationPoint =
   }) as any as S.Schema<GoogleAdsSearchads360V23Common__TargetRoasSimulationPoint>;
 
 export type GoogleAdsSearchads360V23Common__TargetRoasSimulationPointList_ =
-  ReadonlyArray<GoogleAdsSearchads360V23Common__TargetRoasSimulationPoint>;
+  Array<GoogleAdsSearchads360V23Common__TargetRoasSimulationPoint>;
 export const GoogleAdsSearchads360V23Common__TargetRoasSimulationPointList_ =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Common__TargetRoasSimulationPoint,
@@ -41867,7 +42559,7 @@ export const GoogleAdsSearchads360V23Common__CpcBidSimulationPoint =
   }) as any as S.Schema<GoogleAdsSearchads360V23Common__CpcBidSimulationPoint>;
 
 export type GoogleAdsSearchads360V23Common__CpcBidSimulationPointList_ =
-  ReadonlyArray<GoogleAdsSearchads360V23Common__CpcBidSimulationPoint>;
+  Array<GoogleAdsSearchads360V23Common__CpcBidSimulationPoint>;
 export const GoogleAdsSearchads360V23Common__CpcBidSimulationPointList_ =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Common__CpcBidSimulationPoint,
@@ -41937,7 +42629,7 @@ export const GoogleAdsSearchads360V23Common__TargetCpaSimulationPoint =
   }) as any as S.Schema<GoogleAdsSearchads360V23Common__TargetCpaSimulationPoint>;
 
 export type GoogleAdsSearchads360V23Common__TargetCpaSimulationPointList_ =
-  ReadonlyArray<GoogleAdsSearchads360V23Common__TargetCpaSimulationPoint>;
+  Array<GoogleAdsSearchads360V23Common__TargetCpaSimulationPoint>;
 export const GoogleAdsSearchads360V23Common__TargetCpaSimulationPointList_ =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Common__TargetCpaSimulationPoint,
@@ -41983,7 +42675,7 @@ export const GoogleAdsSearchads360V23Common__CpvBidSimulationPoint =
   }) as any as S.Schema<GoogleAdsSearchads360V23Common__CpvBidSimulationPoint>;
 
 export type GoogleAdsSearchads360V23Common__CpvBidSimulationPointList_ =
-  ReadonlyArray<GoogleAdsSearchads360V23Common__CpvBidSimulationPoint>;
+  Array<GoogleAdsSearchads360V23Common__CpvBidSimulationPoint>;
 export const GoogleAdsSearchads360V23Common__CpvBidSimulationPointList_ =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Common__CpvBidSimulationPoint,
@@ -42174,7 +42866,7 @@ export const GoogleAdsSearchads360V23Common__AssetUsage =
   }) as any as S.Schema<GoogleAdsSearchads360V23Common__AssetUsage>;
 
 export type GoogleAdsSearchads360V23Common__AssetUsageList =
-  ReadonlyArray<GoogleAdsSearchads360V23Common__AssetUsage>;
+  Array<GoogleAdsSearchads360V23Common__AssetUsage>;
 export const GoogleAdsSearchads360V23Common__AssetUsageList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Common__AssetUsage,
@@ -42198,7 +42890,7 @@ export const GoogleAdsSearchads360V23Resources__AssetGroupAssetCombinationData =
   }) as any as S.Schema<GoogleAdsSearchads360V23Resources__AssetGroupAssetCombinationData>;
 
 export type GoogleAdsSearchads360V23Resources__AssetGroupAssetCombinationDataList =
-  ReadonlyArray<GoogleAdsSearchads360V23Resources__AssetGroupAssetCombinationData>;
+  Array<GoogleAdsSearchads360V23Resources__AssetGroupAssetCombinationData>;
 export const GoogleAdsSearchads360V23Resources__AssetGroupAssetCombinationDataList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Resources__AssetGroupAssetCombinationData,
@@ -42434,7 +43126,7 @@ export const GoogleAdsSearchads360V23Resources_ShoppingProduct_ProductIssue =
   }) as any as S.Schema<GoogleAdsSearchads360V23Resources_ShoppingProduct_ProductIssue>;
 
 export type GoogleAdsSearchads360V23Resources_ShoppingProduct_ProductIssueList =
-  ReadonlyArray<GoogleAdsSearchads360V23Resources_ShoppingProduct_ProductIssue>;
+  Array<GoogleAdsSearchads360V23Resources_ShoppingProduct_ProductIssue>;
 export const GoogleAdsSearchads360V23Resources_ShoppingProduct_ProductIssueList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Resources_ShoppingProduct_ProductIssue,
@@ -43908,7 +44600,7 @@ export const GoogleAdsSearchads360V23Resources__CustomLeadFormSubmissionField =
   }) as any as S.Schema<GoogleAdsSearchads360V23Resources__CustomLeadFormSubmissionField>;
 
 export type GoogleAdsSearchads360V23Resources__CustomLeadFormSubmissionFieldList =
-  ReadonlyArray<GoogleAdsSearchads360V23Resources__CustomLeadFormSubmissionField>;
+  Array<GoogleAdsSearchads360V23Resources__CustomLeadFormSubmissionField>;
 export const GoogleAdsSearchads360V23Resources__CustomLeadFormSubmissionFieldList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Resources__CustomLeadFormSubmissionField,
@@ -44056,7 +44748,7 @@ export const GoogleAdsSearchads360V23Resources__LeadFormSubmissionField =
   }) as any as S.Schema<GoogleAdsSearchads360V23Resources__LeadFormSubmissionField>;
 
 export type GoogleAdsSearchads360V23Resources__LeadFormSubmissionFieldList =
-  ReadonlyArray<GoogleAdsSearchads360V23Resources__LeadFormSubmissionField>;
+  Array<GoogleAdsSearchads360V23Resources__LeadFormSubmissionField>;
 export const GoogleAdsSearchads360V23Resources__LeadFormSubmissionFieldList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Resources__LeadFormSubmissionField,
@@ -44401,7 +45093,7 @@ export const GoogleAdsSearchads360V23Resources__Fellowship =
   }) as any as S.Schema<GoogleAdsSearchads360V23Resources__Fellowship>;
 
 export type GoogleAdsSearchads360V23Resources__FellowshipList =
-  ReadonlyArray<GoogleAdsSearchads360V23Resources__Fellowship>;
+  Array<GoogleAdsSearchads360V23Resources__Fellowship>;
 export const GoogleAdsSearchads360V23Resources__FellowshipList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Resources__Fellowship,
@@ -44430,7 +45122,7 @@ export const GoogleAdsSearchads360V23Resources__Residency =
   }) as any as S.Schema<GoogleAdsSearchads360V23Resources__Residency>;
 
 export type GoogleAdsSearchads360V23Resources__ResidencyList =
-  ReadonlyArray<GoogleAdsSearchads360V23Resources__Residency>;
+  Array<GoogleAdsSearchads360V23Resources__Residency>;
 export const GoogleAdsSearchads360V23Resources__ResidencyList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Resources__Residency,
@@ -44457,7 +45149,7 @@ export const GoogleAdsSearchads360V23Resources__UniversityDegree =
   }) as any as S.Schema<GoogleAdsSearchads360V23Resources__UniversityDegree>;
 
 export type GoogleAdsSearchads360V23Resources__UniversityDegreeList =
-  ReadonlyArray<GoogleAdsSearchads360V23Resources__UniversityDegree>;
+  Array<GoogleAdsSearchads360V23Resources__UniversityDegree>;
 export const GoogleAdsSearchads360V23Resources__UniversityDegreeList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Resources__UniversityDegree,
@@ -44808,7 +45500,7 @@ export const GoogleAdsSearchads360V23Common__PercentCpcBidSimulationPoint =
   }) as any as S.Schema<GoogleAdsSearchads360V23Common__PercentCpcBidSimulationPoint>;
 
 export type GoogleAdsSearchads360V23Common__PercentCpcBidSimulationPointList_ =
-  ReadonlyArray<GoogleAdsSearchads360V23Common__PercentCpcBidSimulationPoint>;
+  Array<GoogleAdsSearchads360V23Common__PercentCpcBidSimulationPoint>;
 export const GoogleAdsSearchads360V23Common__PercentCpcBidSimulationPointList_ =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Common__PercentCpcBidSimulationPoint,
@@ -45348,7 +46040,7 @@ export const GoogleAdsSearchads360V23Common__TargetImpressionShareSimulationPoin
   }) as any as S.Schema<GoogleAdsSearchads360V23Common__TargetImpressionShareSimulationPoint>;
 
 export type GoogleAdsSearchads360V23Common__TargetImpressionShareSimulationPointList_ =
-  ReadonlyArray<GoogleAdsSearchads360V23Common__TargetImpressionShareSimulationPoint>;
+  Array<GoogleAdsSearchads360V23Common__TargetImpressionShareSimulationPoint>;
 export const GoogleAdsSearchads360V23Common__TargetImpressionShareSimulationPointList_ =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Common__TargetImpressionShareSimulationPoint,
@@ -45410,7 +46102,7 @@ export const GoogleAdsSearchads360V23Common__BudgetSimulationPoint =
   }) as any as S.Schema<GoogleAdsSearchads360V23Common__BudgetSimulationPoint>;
 
 export type GoogleAdsSearchads360V23Common__BudgetSimulationPointList_ =
-  ReadonlyArray<GoogleAdsSearchads360V23Common__BudgetSimulationPoint>;
+  Array<GoogleAdsSearchads360V23Common__BudgetSimulationPoint>;
 export const GoogleAdsSearchads360V23Common__BudgetSimulationPointList_ =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Common__BudgetSimulationPoint,
@@ -47283,7 +47975,7 @@ export const GoogleAdsSearchads360V23Services_MetricAttributes_Attribute =
   }) as any as S.Schema<GoogleAdsSearchads360V23Services_MetricAttributes_Attribute>;
 
 export type GoogleAdsSearchads360V23Services_MetricAttributes_AttributeList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services_MetricAttributes_Attribute>;
+  Array<GoogleAdsSearchads360V23Services_MetricAttributes_Attribute>;
 export const GoogleAdsSearchads360V23Services_MetricAttributes_AttributeList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services_MetricAttributes_Attribute,
@@ -47309,14 +48001,14 @@ export const GoogleAdsSearchads360V23Services__MetricAttributes =
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__MetricAttributes>;
 
 export type GoogleAdsSearchads360V23Services__MetricAttributesList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__MetricAttributes>;
+  Array<GoogleAdsSearchads360V23Services__MetricAttributes>;
 export const GoogleAdsSearchads360V23Services__MetricAttributesList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__MetricAttributes,
   ) as any as S.Schema<GoogleAdsSearchads360V23Services__MetricAttributesList>;
 
 export type GoogleAdsSearchads360V23Services__SearchAds360RowList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__SearchAds360Row>;
+  Array<GoogleAdsSearchads360V23Services__SearchAds360Row>;
 export const GoogleAdsSearchads360V23Services__SearchAds360RowList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__SearchAds360Row,
@@ -47341,7 +48033,7 @@ export const GoogleAdsSearchads360V23Services__RawEventConversionDimensionHeader
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__RawEventConversionDimensionHeader>;
 
 export type GoogleAdsSearchads360V23Services__RawEventConversionDimensionHeaderList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__RawEventConversionDimensionHeader>;
+  Array<GoogleAdsSearchads360V23Services__RawEventConversionDimensionHeader>;
 export const GoogleAdsSearchads360V23Services__RawEventConversionDimensionHeaderList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__RawEventConversionDimensionHeader,
@@ -47452,7 +48144,7 @@ export const SearchSearchAds360FieldsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SearchSearchAds360FieldsRequest>;
 
 export type GoogleAdsSearchads360V23Resources__SearchAds360FieldList =
-  ReadonlyArray<GoogleAdsSearchads360V23Resources__SearchAds360Field>;
+  Array<GoogleAdsSearchads360V23Resources__SearchAds360Field>;
 export const GoogleAdsSearchads360V23Resources__SearchAds360FieldList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Resources__SearchAds360Field,
@@ -47612,7 +48304,7 @@ export const SuggestGeoTargetConstantsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SuggestGeoTargetConstantsRequest>;
 
 export type GoogleAdsSearchads360V23Resources__GeoTargetConstantList =
-  ReadonlyArray<GoogleAdsSearchads360V23Resources__GeoTargetConstant>;
+  Array<GoogleAdsSearchads360V23Resources__GeoTargetConstant>;
 export const GoogleAdsSearchads360V23Resources__GeoTargetConstantList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Resources__GeoTargetConstant,
@@ -47649,7 +48341,7 @@ export const GoogleAdsSearchads360V23Services__GeoTargetConstantSuggestion =
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__GeoTargetConstantSuggestion>;
 
 export type GoogleAdsSearchads360V23Services__GeoTargetConstantSuggestionList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__GeoTargetConstantSuggestion>;
+  Array<GoogleAdsSearchads360V23Services__GeoTargetConstantSuggestion>;
 export const GoogleAdsSearchads360V23Services__GeoTargetConstantSuggestionList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__GeoTargetConstantSuggestion,
@@ -47716,7 +48408,7 @@ export const SuggestKeywordThemeConstantsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SuggestKeywordThemeConstantsRequest>;
 
 export type GoogleAdsSearchads360V23Resources__KeywordThemeConstantList =
-  ReadonlyArray<GoogleAdsSearchads360V23Resources__KeywordThemeConstant>;
+  Array<GoogleAdsSearchads360V23Resources__KeywordThemeConstant>;
 export const GoogleAdsSearchads360V23Resources__KeywordThemeConstantList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Resources__KeywordThemeConstant,
@@ -47755,7 +48447,7 @@ export const GoogleAdsSearchads360V23Services_SmartCampaignSuggestionInfo_Locati
   }) as any as S.Schema<GoogleAdsSearchads360V23Services_SmartCampaignSuggestionInfo_LocationList>;
 
 export type GoogleAdsSearchads360V23Common__KeywordThemeInfoList =
-  ReadonlyArray<GoogleAdsSearchads360V23Common__KeywordThemeInfo>;
+  Array<GoogleAdsSearchads360V23Common__KeywordThemeInfo>;
 export const GoogleAdsSearchads360V23Common__KeywordThemeInfoList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Common__KeywordThemeInfo,
@@ -47882,7 +48574,7 @@ export const GoogleAdsSearchads360V23Services_SuggestKeywordThemesResponse_Keywo
   }) as any as S.Schema<GoogleAdsSearchads360V23Services_SuggestKeywordThemesResponse_KeywordTheme>;
 
 export type GoogleAdsSearchads360V23Services_SuggestKeywordThemesResponse_KeywordThemeList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services_SuggestKeywordThemesResponse_KeywordTheme>;
+  Array<GoogleAdsSearchads360V23Services_SuggestKeywordThemesResponse_KeywordTheme>;
 export const GoogleAdsSearchads360V23Services_SuggestKeywordThemesResponse_KeywordThemeList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services_SuggestKeywordThemesResponse_KeywordTheme,
@@ -48184,7 +48876,7 @@ export const GoogleAdsSearchads360V23Services__HotelTextAsset =
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__HotelTextAsset>;
 
 export type GoogleAdsSearchads360V23Services__HotelTextAssetList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__HotelTextAsset>;
+  Array<GoogleAdsSearchads360V23Services__HotelTextAsset>;
 export const GoogleAdsSearchads360V23Services__HotelTextAssetList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__HotelTextAsset,
@@ -48272,7 +48964,7 @@ export const GoogleAdsSearchads360V23Services__HotelImageAsset =
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__HotelImageAsset>;
 
 export type GoogleAdsSearchads360V23Services__HotelImageAssetList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__HotelImageAsset>;
+  Array<GoogleAdsSearchads360V23Services__HotelImageAsset>;
 export const GoogleAdsSearchads360V23Services__HotelImageAssetList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__HotelImageAsset,
@@ -48319,7 +49011,7 @@ export const GoogleAdsSearchads360V23Services__HotelAssetSuggestion =
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__HotelAssetSuggestion>;
 
 export type GoogleAdsSearchads360V23Services__HotelAssetSuggestionList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__HotelAssetSuggestion>;
+  Array<GoogleAdsSearchads360V23Services__HotelAssetSuggestion>;
 export const GoogleAdsSearchads360V23Services__HotelAssetSuggestionList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__HotelAssetSuggestion,
@@ -48506,7 +49198,7 @@ export const GoogleAdsSearchads360V23Services__UserDataOperation =
   }) as any as S.Schema<GoogleAdsSearchads360V23Services__UserDataOperation>;
 
 export type GoogleAdsSearchads360V23Services__UserDataOperationList =
-  ReadonlyArray<GoogleAdsSearchads360V23Services__UserDataOperation>;
+  Array<GoogleAdsSearchads360V23Services__UserDataOperation>;
 export const GoogleAdsSearchads360V23Services__UserDataOperationList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V23Services__UserDataOperation,

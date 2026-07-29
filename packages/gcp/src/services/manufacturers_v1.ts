@@ -131,7 +131,7 @@ export type IssueResolutionEnum =
   | "PENDING_PROCESSING";
 export const IssueResolutionEnum = /*@__PURE__*/ S.String;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -148,7 +148,7 @@ export interface Issue {
   /** The destination this issue applies to. */
   destination?: string;
   /** What needs to happen to resolve the issue. */
-  resolution?: IssueResolutionEnum;
+  resolution?: IssueResolutionEnum | (string & {});
   /** If present, the attribute that triggered the issue. For more information about attributes, see https://support.google.com/manufacturers/answer/6124116. */
   attribute?: string;
   /** Output only. List of country codes (ISO 3166-1 alpha-2) where issue applies to the manufacturer product. */
@@ -156,7 +156,7 @@ export interface Issue {
   /** Longer description of the issue focused on how to resolve it. */
   description?: string;
   /** The severity of the issue. */
-  severity?: IssueSeverityEnum;
+  severity?: IssueSeverityEnum | (string & {});
   /** The server-generated type of the issue, for example, “INCORRECT_TEXT_FORMATTING”, “IMAGE_NOT_SERVEABLE”, etc. */
   type?: string;
   /** Short title describing the nature of the issue. */
@@ -178,7 +178,7 @@ export const Issue = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Issue" }) as any as S.Schema<Issue>;
 
-export type IssueList = ReadonlyArray<Issue>;
+export type IssueList = Array<Issue>;
 export const IssueList = /*@__PURE__*/ S.Array(
   Issue,
 ) as any as S.Schema<IssueList>;
@@ -212,7 +212,7 @@ export const Certification = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Certification" }) as any as S.Schema<Certification>;
 
-export type CertificationList = ReadonlyArray<Certification>;
+export type CertificationList = Array<Certification>;
 export const CertificationList = /*@__PURE__*/ S.Array(
   Certification,
 ) as any as S.Schema<CertificationList>;
@@ -231,7 +231,7 @@ export interface DestinationStatus {
   /** The name of the destination. */
   destination?: string;
   /** The status of the destination. */
-  status?: DestinationStatusStatusEnum;
+  status?: DestinationStatusStatusEnum | (string & {});
   /** Output only. List of country codes (ISO 3166-1 alpha-2) where the offer is approved. */
   approvedCountries?: StringList;
   /** Output only. List of country codes (ISO 3166-1 alpha-2) where the offer is disapproved. */
@@ -249,7 +249,7 @@ export const DestinationStatus = /*@__PURE__*/ S.suspend(() =>
   identifier: "DestinationStatus",
 }) as any as S.Schema<DestinationStatus>;
 
-export type DestinationStatusList = ReadonlyArray<DestinationStatus>;
+export type DestinationStatusList = Array<DestinationStatus>;
 export const DestinationStatusList = /*@__PURE__*/ S.Array(
   DestinationStatus,
 ) as any as S.Schema<DestinationStatusList>;
@@ -301,7 +301,7 @@ export type GetAccountsProductsIncludeEnum =
   | "DESTINATION_STATUSES";
 export const GetAccountsProductsIncludeEnum = /*@__PURE__*/ S.String;
 
-export type GetAccountsProductsIncludeEnumList = ReadonlyArray<
+export type GetAccountsProductsIncludeEnumList = Array<
   GetAccountsProductsIncludeEnum | (string & {})
 >;
 export const GetAccountsProductsIncludeEnumList = /*@__PURE__*/ S.Array(
@@ -402,11 +402,11 @@ export const ImageTypeEnum = /*@__PURE__*/ S.String;
 /** An image. */
 export interface Image {
   /** The status of the image. @OutputOnly */
-  status?: ImageStatusEnum;
+  status?: ImageStatusEnum | (string & {});
   /** The URL of the image. For crawled images, this is the provided URL. For uploaded images, this is a serving URL from Google if the image has been processed successfully. */
   imageUrl?: string;
   /** The type of the image, i.e., crawled or uploaded. @OutputOnly */
-  type?: ImageTypeEnum;
+  type?: ImageTypeEnum | (string & {});
 }
 export const Image = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -433,7 +433,7 @@ export const ProductDetail = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ProductDetail" }) as any as S.Schema<ProductDetail>;
 
-export type ProductDetailList = ReadonlyArray<ProductDetail>;
+export type ProductDetailList = Array<ProductDetail>;
 export const ProductDetailList = /*@__PURE__*/ S.Array(
   ProductDetail,
 ) as any as S.Schema<ProductDetailList>;
@@ -485,7 +485,7 @@ export const GoogleShoppingManufacturersV1ProductCertification =
   }) as any as S.Schema<GoogleShoppingManufacturersV1ProductCertification>;
 
 export type GoogleShoppingManufacturersV1ProductCertificationList =
-  ReadonlyArray<GoogleShoppingManufacturersV1ProductCertification>;
+  Array<GoogleShoppingManufacturersV1ProductCertification>;
 export const GoogleShoppingManufacturersV1ProductCertificationList =
   /*@__PURE__*/ S.Array(
     GoogleShoppingManufacturersV1ProductCertification,
@@ -510,12 +510,12 @@ export const FeatureDescription = /*@__PURE__*/ S.suspend(() =>
   identifier: "FeatureDescription",
 }) as any as S.Schema<FeatureDescription>;
 
-export type FeatureDescriptionList = ReadonlyArray<FeatureDescription>;
+export type FeatureDescriptionList = Array<FeatureDescription>;
 export const FeatureDescriptionList = /*@__PURE__*/ S.Array(
   FeatureDescription,
 ) as any as S.Schema<FeatureDescriptionList>;
 
-export type ImageList = ReadonlyArray<Image>;
+export type ImageList = Array<Image>;
 export const ImageList = /*@__PURE__*/ S.Array(
   Image,
 ) as any as S.Schema<ImageList>;
@@ -567,7 +567,7 @@ export const VoluntaryNutritionFact = /*@__PURE__*/ S.suspend(() =>
   identifier: "VoluntaryNutritionFact",
 }) as any as S.Schema<VoluntaryNutritionFact>;
 
-export type VoluntaryNutritionFactList = ReadonlyArray<VoluntaryNutritionFact>;
+export type VoluntaryNutritionFactList = Array<VoluntaryNutritionFact>;
 export const VoluntaryNutritionFactList = /*@__PURE__*/ S.Array(
   VoluntaryNutritionFact,
 ) as any as S.Schema<VoluntaryNutritionFactList>;
@@ -904,7 +904,7 @@ export const ListAccountsLanguagesProductCertificationsRequest =
     identifier: "ListAccountsLanguagesProductCertificationsRequest",
   }) as any as S.Schema<ListAccountsLanguagesProductCertificationsRequest>;
 
-export type ProductCertificationList = ReadonlyArray<ProductCertification>;
+export type ProductCertificationList = Array<ProductCertification>;
 export const ProductCertificationList = /*@__PURE__*/ S.Array(
   ProductCertification,
 ) as any as S.Schema<ProductCertificationList>;
@@ -932,7 +932,7 @@ export type ListAccountsProductsIncludeEnum =
   | "DESTINATION_STATUSES";
 export const ListAccountsProductsIncludeEnum = /*@__PURE__*/ S.String;
 
-export type ListAccountsProductsIncludeEnumList = ReadonlyArray<
+export type ListAccountsProductsIncludeEnumList = Array<
   ListAccountsProductsIncludeEnum | (string & {})
 >;
 export const ListAccountsProductsIncludeEnumList = /*@__PURE__*/ S.Array(
@@ -966,7 +966,7 @@ export const ListAccountsProductsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAccountsProductsRequest",
 }) as any as S.Schema<ListAccountsProductsRequest>;
 
-export type ProductList = ReadonlyArray<Product>;
+export type ProductList = Array<Product>;
 export const ProductList = /*@__PURE__*/ S.Array(
   Product,
 ) as any as S.Schema<ProductList>;

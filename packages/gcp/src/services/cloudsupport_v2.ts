@@ -98,7 +98,7 @@ export type CasePriorityEnum =
   | "P4";
 export const CasePriorityEnum = /*@__PURE__*/ S.String;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -151,7 +151,7 @@ export const Actor = /*@__PURE__*/ S.suspend(() =>
 /** A Case is an object that contains the details of a support case. It contains fields for the time it was created, its priority, its classification, and more. Cases can also have comments and attachments that get added over time. A case is parented by a Google Cloud organization or project. Organizations are identified by a number, so the name of a case parented by an organization would look like this: ``` organizations/123/cases/456 ``` Projects have two unique identifiers, an ID and a number, and they look like this: ``` projects/abc/cases/456 ``` ``` projects/123/cases/456 ``` You can use either of them when calling the API. To learn more about project identifiers, see [AIP-2510](https://google.aip.dev/cloud/2510). */
 export interface Case {
   /** The priority of this case. */
-  priority?: CasePriorityEnum;
+  priority?: CasePriorityEnum | (string & {});
   /** The short summary of the issue reported in this case. */
   displayName?: string;
   /** The email addresses to receive updates on this case. */
@@ -177,7 +177,7 @@ export interface Case {
   /** A user-supplied email address to send case update notifications for. This should only be used in BYOID flows, where we cannot infer the user's email address directly from their EUCs. */
   contactEmail?: string;
   /** Output only. The current status of the support case. */
-  state?: CaseStateEnum;
+  state?: CaseStateEnum | (string & {});
   /** The user who created the case. Note: The name and email will be obfuscated if the case was created by Google Support. */
   creator?: Actor;
 }
@@ -289,7 +289,7 @@ export interface SupportEventSubscription {
   /** Output only. The time at which the subscription was created. */
   createTime?: string;
   /** Output only. The state of the subscription. */
-  state?: SupportEventSubscriptionStateEnum;
+  state?: SupportEventSubscriptionStateEnum | (string & {});
   /** Output only. The time at which the subscription was last updated. */
   updateTime?: string;
   /** Identifier. The resource name of the support event subscription. */
@@ -297,7 +297,7 @@ export interface SupportEventSubscription {
   /** Output only. The time at which the subscription will be purged. */
   purgeTime?: string;
   /** Output only. Reason why subscription is failing. State of subscription must be FAILING in order for this to have a value. */
-  failureReason?: SupportEventSubscriptionFailureReasonEnum;
+  failureReason?: SupportEventSubscriptionFailureReasonEnum | (string & {});
 }
 export const SupportEventSubscription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -534,7 +534,7 @@ export const DiffVersionResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DiffVersionResponse",
 }) as any as S.Schema<DiffVersionResponse>;
 
-export type CompositeMediaList = ReadonlyArray<CompositeMedia>;
+export type CompositeMediaList = Array<CompositeMedia>;
 export const CompositeMediaList = /*@__PURE__*/ S.Array(
   CompositeMedia,
 ) as any as S.Schema<CompositeMediaList>;
@@ -944,7 +944,7 @@ export const ListCasesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListCasesRequest",
 }) as any as S.Schema<ListCasesRequest>;
 
-export type CaseList = ReadonlyArray<Case>;
+export type CaseList = Array<Case>;
 export const CaseList = /*@__PURE__*/ S.Array(
   Case,
 ) as any as S.Schema<CaseList>;
@@ -989,7 +989,7 @@ export const ListCasesAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListCasesAttachmentsRequest",
 }) as any as S.Schema<ListCasesAttachmentsRequest>;
 
-export type AttachmentList = ReadonlyArray<Attachment>;
+export type AttachmentList = Array<Attachment>;
 export const AttachmentList = /*@__PURE__*/ S.Array(
   Attachment,
 ) as any as S.Schema<AttachmentList>;
@@ -1034,7 +1034,7 @@ export const ListCasesCommentsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListCasesCommentsRequest",
 }) as any as S.Schema<ListCasesCommentsRequest>;
 
-export type CommentList = ReadonlyArray<Comment>;
+export type CommentList = Array<Comment>;
 export const CommentList = /*@__PURE__*/ S.Array(
   Comment,
 ) as any as S.Schema<CommentList>;
@@ -1086,8 +1086,7 @@ export const ListSupportEventSubscriptionsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListSupportEventSubscriptionsRequest",
 }) as any as S.Schema<ListSupportEventSubscriptionsRequest>;
 
-export type SupportEventSubscriptionList =
-  ReadonlyArray<SupportEventSubscription>;
+export type SupportEventSubscriptionList = Array<SupportEventSubscription>;
 export const SupportEventSubscriptionList = /*@__PURE__*/ S.Array(
   SupportEventSubscription,
 ) as any as S.Schema<SupportEventSubscriptionList>;
@@ -1182,7 +1181,7 @@ export const SearchCaseClassificationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "SearchCaseClassificationsRequest",
 }) as any as S.Schema<SearchCaseClassificationsRequest>;
 
-export type CaseClassificationList = ReadonlyArray<CaseClassification>;
+export type CaseClassificationList = Array<CaseClassification>;
 export const CaseClassificationList = /*@__PURE__*/ S.Array(
   CaseClassification,
 ) as any as S.Schema<CaseClassificationList>;

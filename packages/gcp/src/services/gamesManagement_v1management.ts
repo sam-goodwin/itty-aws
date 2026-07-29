@@ -239,7 +239,7 @@ export const HiddenPlayer = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "HiddenPlayer" }) as any as S.Schema<HiddenPlayer>;
 
-export type HiddenPlayerList_ = ReadonlyArray<HiddenPlayer>;
+export type HiddenPlayerList_ = Array<HiddenPlayer>;
 export const HiddenPlayerList_ = /*@__PURE__*/ S.Array(
   HiddenPlayer,
 ) as any as S.Schema<HiddenPlayerList_>;
@@ -316,8 +316,7 @@ export const ResetAllAchievementsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ResetAllAchievementsRequest",
 }) as any as S.Schema<ResetAllAchievementsRequest>;
 
-export type AchievementResetResponseList =
-  ReadonlyArray<AchievementResetResponse>;
+export type AchievementResetResponseList = Array<AchievementResetResponse>;
 export const AchievementResetResponseList = /*@__PURE__*/ S.Array(
   AchievementResetResponse,
 ) as any as S.Schema<AchievementResetResponseList>;
@@ -431,7 +430,7 @@ export const ResetAllScoresRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ResetAllScoresRequest",
 }) as any as S.Schema<ResetAllScoresRequest>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -455,8 +454,7 @@ export const PlayerScoreResetResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PlayerScoreResetResponse",
 }) as any as S.Schema<PlayerScoreResetResponse>;
 
-export type PlayerScoreResetResponseList =
-  ReadonlyArray<PlayerScoreResetResponse>;
+export type PlayerScoreResetResponseList = Array<PlayerScoreResetResponse>;
 export const PlayerScoreResetResponseList = /*@__PURE__*/ S.Array(
   PlayerScoreResetResponse,
 ) as any as S.Schema<PlayerScoreResetResponseList>;

@@ -115,7 +115,7 @@ export const ComputeDiffThreatListsConstraints_supportedCompressionsEnum =
   /*@__PURE__*/ S.String;
 
 export type ComputeDiffThreatListsConstraints_supportedCompressionsEnumList =
-  ReadonlyArray<
+  Array<
     ComputeDiffThreatListsConstraints_supportedCompressionsEnum | (string & {})
   >;
 export const ComputeDiffThreatListsConstraints_supportedCompressionsEnumList =
@@ -183,7 +183,7 @@ export const GoogleCloudWebriskV1RawHashes = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudWebriskV1RawHashes>;
 
 export type GoogleCloudWebriskV1RawHashesList =
-  ReadonlyArray<GoogleCloudWebriskV1RawHashes>;
+  Array<GoogleCloudWebriskV1RawHashes>;
 export const GoogleCloudWebriskV1RawHashesList = /*@__PURE__*/ S.Array(
   GoogleCloudWebriskV1RawHashes,
 ) as any as S.Schema<GoogleCloudWebriskV1RawHashesList>;
@@ -242,7 +242,7 @@ export const GoogleCloudWebriskV1ComputeThreatListDiffResponseChecksum =
     identifier: "GoogleCloudWebriskV1ComputeThreatListDiffResponseChecksum",
   }) as any as S.Schema<GoogleCloudWebriskV1ComputeThreatListDiffResponseChecksum>;
 
-export type IntegerList = ReadonlyArray<number>;
+export type IntegerList = Array<number>;
 export const IntegerList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<IntegerList>;
@@ -385,7 +385,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -464,13 +464,12 @@ export const ListProjectsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsOperationsRequest",
 }) as any as S.Schema<ListProjectsOperationsRequest>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
 
-export type GoogleLongrunningOperationList =
-  ReadonlyArray<GoogleLongrunningOperation>;
+export type GoogleLongrunningOperationList = Array<GoogleLongrunningOperation>;
 export const GoogleLongrunningOperationList = /*@__PURE__*/ S.Array(
   GoogleLongrunningOperation,
 ) as any as S.Schema<GoogleLongrunningOperationList>;
@@ -503,7 +502,7 @@ export type SearchHashesThreatTypesEnum =
   | "SOCIAL_ENGINEERING_EXTENDED_COVERAGE";
 export const SearchHashesThreatTypesEnum = /*@__PURE__*/ S.String;
 
-export type SearchHashesThreatTypesEnumList = ReadonlyArray<
+export type SearchHashesThreatTypesEnumList = Array<
   SearchHashesThreatTypesEnum | (string & {})
 >;
 export const SearchHashesThreatTypesEnumList = /*@__PURE__*/ S.Array(
@@ -541,7 +540,7 @@ export const GoogleCloudWebriskV1SearchHashesResponseThreatHashThreatTypesItemEn
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudWebriskV1SearchHashesResponseThreatHashThreatTypesItemEnumList =
-  ReadonlyArray<GoogleCloudWebriskV1SearchHashesResponseThreatHashThreatTypesItemEnum>;
+  Array<GoogleCloudWebriskV1SearchHashesResponseThreatHashThreatTypesItemEnum>;
 export const GoogleCloudWebriskV1SearchHashesResponseThreatHashThreatTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleCloudWebriskV1SearchHashesResponseThreatHashThreatTypesItemEnum,
@@ -570,7 +569,7 @@ export const GoogleCloudWebriskV1SearchHashesResponseThreatHash =
   }) as any as S.Schema<GoogleCloudWebriskV1SearchHashesResponseThreatHash>;
 
 export type GoogleCloudWebriskV1SearchHashesResponseThreatHashList =
-  ReadonlyArray<GoogleCloudWebriskV1SearchHashesResponseThreatHash>;
+  Array<GoogleCloudWebriskV1SearchHashesResponseThreatHash>;
 export const GoogleCloudWebriskV1SearchHashesResponseThreatHashList =
   /*@__PURE__*/ S.Array(
     GoogleCloudWebriskV1SearchHashesResponseThreatHash,
@@ -602,7 +601,7 @@ export type SearchUrisThreatTypesEnum =
   | "SOCIAL_ENGINEERING_EXTENDED_COVERAGE";
 export const SearchUrisThreatTypesEnum = /*@__PURE__*/ S.String;
 
-export type SearchUrisThreatTypesEnumList = ReadonlyArray<
+export type SearchUrisThreatTypesEnumList = Array<
   SearchUrisThreatTypesEnum | (string & {})
 >;
 export const SearchUrisThreatTypesEnumList = /*@__PURE__*/ S.Array(
@@ -640,7 +639,7 @@ export const GoogleCloudWebriskV1SearchUrisResponseThreatUriThreatTypesItemEnum 
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudWebriskV1SearchUrisResponseThreatUriThreatTypesItemEnumList =
-  ReadonlyArray<GoogleCloudWebriskV1SearchUrisResponseThreatUriThreatTypesItemEnum>;
+  Array<GoogleCloudWebriskV1SearchUrisResponseThreatUriThreatTypesItemEnum>;
 export const GoogleCloudWebriskV1SearchUrisResponseThreatUriThreatTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleCloudWebriskV1SearchUrisResponseThreatUriThreatTypesItemEnum,

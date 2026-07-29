@@ -170,7 +170,7 @@ export interface CustomFloodlightVariable {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#customFloodlightVariable". */
   kind?: string;
   /** The type of custom floodlight variable to supply a value for. These map to the "u[1-100]=" in the tags. */
-  type?: CustomFloodlightVariableTypeEnum;
+  type?: CustomFloodlightVariableTypeEnum | (string & {});
 }
 export const CustomFloodlightVariable = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -182,8 +182,7 @@ export const CustomFloodlightVariable = /*@__PURE__*/ S.suspend(() =>
   identifier: "CustomFloodlightVariable",
 }) as any as S.Schema<CustomFloodlightVariable>;
 
-export type CustomFloodlightVariableList =
-  ReadonlyArray<CustomFloodlightVariable>;
+export type CustomFloodlightVariableList = Array<CustomFloodlightVariable>;
 export const CustomFloodlightVariableList = /*@__PURE__*/ S.Array(
   CustomFloodlightVariable,
 ) as any as S.Schema<CustomFloodlightVariableList>;
@@ -239,7 +238,7 @@ export const UserIdentifier = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "UserIdentifier" }) as any as S.Schema<UserIdentifier>;
 
-export type UserIdentifierList = ReadonlyArray<UserIdentifier>;
+export type UserIdentifierList = Array<UserIdentifier>;
 export const UserIdentifierList = /*@__PURE__*/ S.Array(
   UserIdentifier,
 ) as any as S.Schema<UserIdentifierList>;
@@ -261,7 +260,7 @@ export const CartDataItem = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CartDataItem" }) as any as S.Schema<CartDataItem>;
 
-export type CartDataItemList = ReadonlyArray<CartDataItem>;
+export type CartDataItemList = Array<CartDataItem>;
 export const CartDataItemList = /*@__PURE__*/ S.Array(
   CartDataItem,
 ) as any as S.Schema<CartDataItemList>;
@@ -286,7 +285,7 @@ export const CartData = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CartData" }) as any as S.Schema<CartData>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -304,7 +303,7 @@ export interface Conversion {
   /** The quantity of the conversion. This is a required field. */
   quantity?: string;
   /** This represents consent for ad user data. */
-  adUserDataConsent?: ConversionAdUserDataConsentEnum;
+  adUserDataConsent?: ConversionAdUserDataConsentEnum | (string & {});
   /** Floodlight Activity ID of this conversion. This is a required field. */
   floodlightActivityId?: string;
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#conversion". */
@@ -368,7 +367,7 @@ export const Conversion = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Conversion" }) as any as S.Schema<Conversion>;
 
-export type ConversionList = ReadonlyArray<Conversion>;
+export type ConversionList = Array<Conversion>;
 export const ConversionList = /*@__PURE__*/ S.Array(
   Conversion,
 ) as any as S.Schema<ConversionList>;
@@ -475,7 +474,7 @@ export const ConversionError = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConversionError",
 }) as any as S.Schema<ConversionError>;
 
-export type ConversionErrorList = ReadonlyArray<ConversionError>;
+export type ConversionErrorList = Array<ConversionError>;
 export const ConversionErrorList = /*@__PURE__*/ S.Array(
   ConversionError,
 ) as any as S.Schema<ConversionErrorList>;
@@ -499,7 +498,7 @@ export const ConversionStatus = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConversionStatus",
 }) as any as S.Schema<ConversionStatus>;
 
-export type ConversionStatusList = ReadonlyArray<ConversionStatus>;
+export type ConversionStatusList = Array<ConversionStatus>;
 export const ConversionStatusList = /*@__PURE__*/ S.Array(
   ConversionStatus,
 ) as any as S.Schema<ConversionStatusList>;
@@ -974,7 +973,7 @@ export type GeneratetagsPlacementsTagFormatsEnum =
   | "PLACEMENT_TAG_TRACKING_THIRD_PARTY_MEASUREMENT";
 export const GeneratetagsPlacementsTagFormatsEnum = /*@__PURE__*/ S.String;
 
-export type GeneratetagsPlacementsTagFormatsEnumList = ReadonlyArray<
+export type GeneratetagsPlacementsTagFormatsEnumList = Array<
   GeneratetagsPlacementsTagFormatsEnum | (string & {})
 >;
 export const GeneratetagsPlacementsTagFormatsEnumList = /*@__PURE__*/ S.Array(
@@ -1067,7 +1066,7 @@ export const TagData = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TagData" }) as any as S.Schema<TagData>;
 
-export type TagDataList = ReadonlyArray<TagData>;
+export type TagDataList = Array<TagData>;
 export const TagDataList = /*@__PURE__*/ S.Array(
   TagData,
 ) as any as S.Schema<TagDataList>;
@@ -1086,7 +1085,7 @@ export const PlacementTag = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PlacementTag" }) as any as S.Schema<PlacementTag>;
 
-export type PlacementTagList = ReadonlyArray<PlacementTag>;
+export type PlacementTagList = Array<PlacementTag>;
 export const PlacementTagList = /*@__PURE__*/ S.Array(
   PlacementTag,
 ) as any as S.Schema<PlacementTagList>;
@@ -1234,7 +1233,7 @@ export type AccountPermissionAccountProfilesItemEnum =
 export const AccountPermissionAccountProfilesItemEnum = /*@__PURE__*/ S.String;
 
 export type AccountPermissionAccountProfilesItemEnumList =
-  ReadonlyArray<AccountPermissionAccountProfilesItemEnum>;
+  Array<AccountPermissionAccountProfilesItemEnum>;
 export const AccountPermissionAccountProfilesItemEnumList =
   /*@__PURE__*/ S.Array(
     AccountPermissionAccountProfilesItemEnum,
@@ -1350,11 +1349,11 @@ export interface Account {
   /** Whether this account is active. */
   active?: boolean;
   /** Maximum number of active ads allowed for this account. */
-  activeAdsLimitTier?: AccountActiveAdsLimitTierEnum;
+  activeAdsLimitTier?: AccountActiveAdsLimitTierEnum | (string & {});
   /** ID of this account. This is a read-only, auto-generated field. */
   id?: string;
   /** Profile for this account. This is a read-only field that can be left blank. */
-  accountProfile?: AccountAccountProfileEnum;
+  accountProfile?: AccountAccountProfileEnum | (string & {});
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#account". */
   kind?: string;
   /** User role permissions available to the user roles of this account. */
@@ -1443,7 +1442,7 @@ export interface ObjectFilter {
   /** Applicable when status is ASSIGNED. The user has access to objects with these object IDs. */
   objectIds?: StringList;
   /** Status of the filter. NONE means the user has access to none of the objects. ALL means the user has access to all objects. ASSIGNED means the user has access to the objects with IDs in the objectIds list. */
-  status?: ObjectFilterStatusEnum;
+  status?: ObjectFilterStatusEnum | (string & {});
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#objectFilter". */
   kind?: string;
 }
@@ -1473,13 +1472,13 @@ export interface AccountUserProfile {
   /** Comments for this user profile. */
   comments?: string;
   /** Trafficker type of this user profile. This is a read-only field. */
-  traffickerType?: AccountUserProfileTraffickerTypeEnum;
+  traffickerType?: AccountUserProfileTraffickerTypeEnum | (string & {});
   /** Filter that describes which sites are visible to the user profile. */
   siteFilter?: ObjectFilter;
   /** Whether this user profile is active. This defaults to false, and must be set true on insert for the user profile to be usable. */
   active?: boolean;
   /** User type of the user profile. This is a read-only field that can be left blank. */
-  userAccessType?: AccountUserProfileUserAccessTypeEnum;
+  userAccessType?: AccountUserProfileUserAccessTypeEnum | (string & {});
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#accountUserProfile". */
   kind?: string;
   /** Name of the user profile. This is a required field. Must be less than 64 characters long, must be globally unique, and cannot contain whitespace or any of the following characters: "&;<>"#%,". */
@@ -1555,7 +1554,7 @@ export const EventTagOverride = /*@__PURE__*/ S.suspend(() =>
   identifier: "EventTagOverride",
 }) as any as S.Schema<EventTagOverride>;
 
-export type EventTagOverrideList = ReadonlyArray<EventTagOverride>;
+export type EventTagOverrideList = Array<EventTagOverride>;
 export const EventTagOverrideList = /*@__PURE__*/ S.Array(
   EventTagOverride,
 ) as any as S.Schema<EventTagOverrideList>;
@@ -1570,7 +1569,7 @@ export const DimensionValueMatchTypeEnum = /*@__PURE__*/ S.String;
 /** Represents a DimensionValue resource. */
 export interface DimensionValue {
   /** Determines how the 'value' field is matched when filtering. If not specified, defaults to EXACT. If set to WILDCARD_EXPRESSION, '*' is allowed as a placeholder for variable length character sequences, and it can be escaped with a backslash. Note, only paid search dimensions ('dfa:paidSearch*') allow a matchType other than EXACT. */
-  matchType?: DimensionValueMatchTypeEnum;
+  matchType?: DimensionValueMatchTypeEnum | (string & {});
   /** The kind of resource this is, in this case dfareporting#dimensionValue. */
   kind?: string;
   /** The value of the dimension. */
@@ -1615,7 +1614,7 @@ export const PlacementAssignment = /*@__PURE__*/ S.suspend(() =>
   identifier: "PlacementAssignment",
 }) as any as S.Schema<PlacementAssignment>;
 
-export type PlacementAssignmentList = ReadonlyArray<PlacementAssignment>;
+export type PlacementAssignmentList = Array<PlacementAssignment>;
 export const PlacementAssignmentList = /*@__PURE__*/ S.Array(
   PlacementAssignment,
 ) as any as S.Schema<PlacementAssignmentList>;
@@ -1660,7 +1659,7 @@ export interface DeliverySchedule {
   /** Whether or not hard cutoff is enabled. If true, the ad will not serve after the end date and time. Otherwise the ad will continue to be served until it has reached its delivery goals. */
   hardCutoff?: boolean;
   /** Serving priority of an ad, with respect to other ads. The lower the priority number, the greater the priority with which it is served. */
-  priority?: DeliverySchedulePriorityEnum;
+  priority?: DeliverySchedulePriorityEnum | (string & {});
   /** Impression ratio for this ad. This ratio determines how often each ad is served relative to the others. For example, if ad A has an impression ratio of 1 and ad B has an impression ratio of 3, then Campaign Manager will serve ad B three times as often as ad A. Acceptable values are 1 to 10, inclusive. */
   impressionRatio?: string;
 }
@@ -1688,7 +1687,7 @@ export const ContextualKeyword = /*@__PURE__*/ S.suspend(() =>
   identifier: "ContextualKeyword",
 }) as any as S.Schema<ContextualKeyword>;
 
-export type ContextualKeywordList = ReadonlyArray<ContextualKeyword>;
+export type ContextualKeywordList = Array<ContextualKeyword>;
 export const ContextualKeywordList = /*@__PURE__*/ S.Array(
   ContextualKeyword,
 ) as any as S.Schema<ContextualKeywordList>;
@@ -1796,7 +1795,9 @@ export interface CreativeGroupAssignment {
   /** ID of the creative group to be assigned. */
   creativeGroupId?: string;
   /** Creative group number of the creative group assignment. */
-  creativeGroupNumber?: CreativeGroupAssignmentCreativeGroupNumberEnum;
+  creativeGroupNumber?:
+    | CreativeGroupAssignmentCreativeGroupNumberEnum
+    | (string & {});
 }
 export const CreativeGroupAssignment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1809,8 +1810,7 @@ export const CreativeGroupAssignment = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreativeGroupAssignment",
 }) as any as S.Schema<CreativeGroupAssignment>;
 
-export type CreativeGroupAssignmentList =
-  ReadonlyArray<CreativeGroupAssignment>;
+export type CreativeGroupAssignmentList = Array<CreativeGroupAssignment>;
 export const CreativeGroupAssignmentList = /*@__PURE__*/ S.Array(
   CreativeGroupAssignment,
 ) as any as S.Schema<CreativeGroupAssignmentList>;
@@ -1832,7 +1832,7 @@ export const CompanionClickThroughOverride = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CompanionClickThroughOverride>;
 
 export type CompanionClickThroughOverrideList =
-  ReadonlyArray<CompanionClickThroughOverride>;
+  Array<CompanionClickThroughOverride>;
 export const CompanionClickThroughOverrideList = /*@__PURE__*/ S.Array(
   CompanionClickThroughOverride,
 ) as any as S.Schema<CompanionClickThroughOverrideList>;
@@ -1856,7 +1856,7 @@ export const RichMediaExitOverride = /*@__PURE__*/ S.suspend(() =>
   identifier: "RichMediaExitOverride",
 }) as any as S.Schema<RichMediaExitOverride>;
 
-export type RichMediaExitOverrideList = ReadonlyArray<RichMediaExitOverride>;
+export type RichMediaExitOverrideList = Array<RichMediaExitOverride>;
 export const RichMediaExitOverrideList = /*@__PURE__*/ S.Array(
   RichMediaExitOverride,
 ) as any as S.Schema<RichMediaExitOverrideList>;
@@ -1908,7 +1908,7 @@ export const CreativeAssignment = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreativeAssignment",
 }) as any as S.Schema<CreativeAssignment>;
 
-export type CreativeAssignmentList = ReadonlyArray<CreativeAssignment>;
+export type CreativeAssignmentList = Array<CreativeAssignment>;
 export const CreativeAssignmentList = /*@__PURE__*/ S.Array(
   CreativeAssignment,
 ) as any as S.Schema<CreativeAssignmentList>;
@@ -1924,11 +1924,13 @@ export const CreativeRotationWeightCalculationStrategyEnum =
 /** Creative Rotation. */
 export interface CreativeRotation {
   /** Type of creative rotation. Can be used to specify whether to use sequential or random rotation. */
-  type?: CreativeRotationTypeEnum;
+  type?: CreativeRotationTypeEnum | (string & {});
   /** Creative assignments in this creative rotation. */
   creativeAssignments?: CreativeAssignmentList;
   /** Strategy for calculating weights. Used with CREATIVE_ROTATION_TYPE_RANDOM. */
-  weightCalculationStrategy?: CreativeRotationWeightCalculationStrategyEnum;
+  weightCalculationStrategy?:
+    | CreativeRotationWeightCalculationStrategyEnum
+    | (string & {});
   /** Creative optimization configuration that is used by this ad. It should refer to one of the existing optimization configurations in the ad's campaign. If it is unset or set to 0, then the campaign's default optimization configuration will be used for this ad. */
   creativeOptimizationConfigurationId?: string;
 }
@@ -1955,13 +1957,14 @@ export type DayPartTargetingDaysOfWeekItemEnum =
   | "SATURDAY";
 export const DayPartTargetingDaysOfWeekItemEnum = /*@__PURE__*/ S.String;
 
-export type DayPartTargetingDaysOfWeekItemEnumList =
-  ReadonlyArray<DayPartTargetingDaysOfWeekItemEnum>;
+export type DayPartTargetingDaysOfWeekItemEnumList = Array<
+  DayPartTargetingDaysOfWeekItemEnum | (string & {})
+>;
 export const DayPartTargetingDaysOfWeekItemEnumList = /*@__PURE__*/ S.Array(
   DayPartTargetingDaysOfWeekItemEnum,
 ) as any as S.Schema<DayPartTargetingDaysOfWeekItemEnumList>;
 
-export type IntegerList = ReadonlyArray<number>;
+export type IntegerList = Array<number>;
 export const IntegerList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<IntegerList>;
@@ -2019,8 +2022,9 @@ export type CountryTvDataProvidersItemEnum =
   | "SAMBA_AU";
 export const CountryTvDataProvidersItemEnum = /*@__PURE__*/ S.String;
 
-export type CountryTvDataProvidersItemEnumList =
-  ReadonlyArray<CountryTvDataProvidersItemEnum>;
+export type CountryTvDataProvidersItemEnumList = Array<
+  CountryTvDataProvidersItemEnum | (string & {})
+>;
 export const CountryTvDataProvidersItemEnumList = /*@__PURE__*/ S.Array(
   CountryTvDataProvidersItemEnum,
 ) as any as S.Schema<CountryTvDataProvidersItemEnumList>;
@@ -2051,7 +2055,7 @@ export const Country = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Country" }) as any as S.Schema<Country>;
 
-export type CountryList = ReadonlyArray<Country>;
+export type CountryList = Array<Country>;
 export const CountryList = /*@__PURE__*/ S.Array(
   Country,
 ) as any as S.Schema<CountryList>;
@@ -2079,7 +2083,7 @@ export const PostalCode = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PostalCode" }) as any as S.Schema<PostalCode>;
 
-export type PostalCodeList = ReadonlyArray<PostalCode>;
+export type PostalCodeList = Array<PostalCode>;
 export const PostalCodeList = /*@__PURE__*/ S.Array(
   PostalCode,
 ) as any as S.Schema<PostalCodeList>;
@@ -2113,7 +2117,7 @@ export const Metro = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Metro" }) as any as S.Schema<Metro>;
 
-export type MetroList = ReadonlyArray<Metro>;
+export type MetroList = Array<Metro>;
 export const MetroList = /*@__PURE__*/ S.Array(
   Metro,
 ) as any as S.Schema<MetroList>;
@@ -2144,7 +2148,7 @@ export const Region = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Region" }) as any as S.Schema<Region>;
 
-export type RegionList = ReadonlyArray<Region>;
+export type RegionList = Array<Region>;
 export const RegionList = /*@__PURE__*/ S.Array(
   Region,
 ) as any as S.Schema<RegionList>;
@@ -2184,7 +2188,7 @@ export const City = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "City" }) as any as S.Schema<City>;
 
-export type CityList = ReadonlyArray<City>;
+export type CityList = Array<City>;
 export const CityList = /*@__PURE__*/ S.Array(
   City,
 ) as any as S.Schema<CityList>;
@@ -2274,7 +2278,7 @@ export const Language = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Language" }) as any as S.Schema<Language>;
 
-export type LanguageList = ReadonlyArray<Language>;
+export type LanguageList = Array<Language>;
 export const LanguageList = /*@__PURE__*/ S.Array(
   Language,
 ) as any as S.Schema<LanguageList>;
@@ -2317,7 +2321,7 @@ export const OperatingSystem = /*@__PURE__*/ S.suspend(() =>
   identifier: "OperatingSystem",
 }) as any as S.Schema<OperatingSystem>;
 
-export type OperatingSystemList = ReadonlyArray<OperatingSystem>;
+export type OperatingSystemList = Array<OperatingSystem>;
 export const OperatingSystemList = /*@__PURE__*/ S.Array(
   OperatingSystem,
 ) as any as S.Schema<OperatingSystemList>;
@@ -2345,7 +2349,7 @@ export const MobileCarrier = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MobileCarrier" }) as any as S.Schema<MobileCarrier>;
 
-export type MobileCarrierList = ReadonlyArray<MobileCarrier>;
+export type MobileCarrierList = Array<MobileCarrier>;
 export const MobileCarrierList = /*@__PURE__*/ S.Array(
   MobileCarrier,
 ) as any as S.Schema<MobileCarrierList>;
@@ -2378,7 +2382,7 @@ export const OperatingSystemVersion = /*@__PURE__*/ S.suspend(() =>
   identifier: "OperatingSystemVersion",
 }) as any as S.Schema<OperatingSystemVersion>;
 
-export type OperatingSystemVersionList = ReadonlyArray<OperatingSystemVersion>;
+export type OperatingSystemVersionList = Array<OperatingSystemVersion>;
 export const OperatingSystemVersionList = /*@__PURE__*/ S.Array(
   OperatingSystemVersion,
 ) as any as S.Schema<OperatingSystemVersionList>;
@@ -2400,7 +2404,7 @@ export const ConnectionType = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ConnectionType" }) as any as S.Schema<ConnectionType>;
 
-export type ConnectionTypeList = ReadonlyArray<ConnectionType>;
+export type ConnectionTypeList = Array<ConnectionType>;
 export const ConnectionTypeList = /*@__PURE__*/ S.Array(
   ConnectionType,
 ) as any as S.Schema<ConnectionTypeList>;
@@ -2431,7 +2435,7 @@ export const Browser = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Browser" }) as any as S.Schema<Browser>;
 
-export type BrowserList = ReadonlyArray<Browser>;
+export type BrowserList = Array<Browser>;
 export const BrowserList = /*@__PURE__*/ S.Array(
   Browser,
 ) as any as S.Schema<BrowserList>;
@@ -2453,7 +2457,7 @@ export const PlatformType = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PlatformType" }) as any as S.Schema<PlatformType>;
 
-export type PlatformTypeList = ReadonlyArray<PlatformType>;
+export type PlatformTypeList = Array<PlatformType>;
 export const PlatformTypeList = /*@__PURE__*/ S.Array(
   PlatformType,
 ) as any as S.Schema<PlatformTypeList>;
@@ -2531,7 +2535,7 @@ export interface Ad {
   /** Time and day targeting information for this ad. This field must be left blank if the ad is using a targeting template. Applicable when type is AD_SERVING_STANDARD_AD. */
   dayPartTargeting?: DayPartTargeting;
   /** Type of ad. This is a required field on insertion. Note that default ads ( AD_SERVING_DEFAULT_AD) cannot be created directly (see Creative resource). */
-  type?: AdTypeEnum;
+  type?: AdTypeEnum | (string & {});
   /** Name of this ad. This is a required field and must be less than 256 characters long. */
   name?: string;
   /** Information about the creation of this ad. This is a read-only field. */
@@ -2549,7 +2553,7 @@ export interface Ad {
   /** Default click-through event tag properties for this ad. */
   defaultClickThroughEventTagProperties?: DefaultClickThroughEventTagProperties;
   /** Compatibility of this ad. Applicable when type is AD_SERVING_DEFAULT_AD. DISPLAY and DISPLAY_INTERSTITIAL refer to either rendering on desktop or on mobile devices or in mobile apps for regular or interstitial ads, respectively. APP and APP_INTERSTITIAL are only used for existing default ads. New mobile placements must be assigned DISPLAY or DISPLAY_INTERSTITIAL and default ads created for those placements will be limited to those compatibility types. IN_STREAM_VIDEO refers to rendering in-stream video ads developed with the VAST standard. */
-  compatibility?: AdCompatibilityEnum;
+  compatibility?: AdCompatibilityEnum | (string & {});
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#ad". */
   kind?: string;
   /** Dimension value for the ID of this ad. This is a read-only, auto-generated field. */
@@ -2705,7 +2709,7 @@ export interface MobileApp {
   /** ID of this mobile app. */
   id?: string;
   /** Mobile app directory. */
-  directory?: MobileAppDirectoryEnum;
+  directory?: MobileAppDirectoryEnum | (string & {});
 }
 export const MobileApp = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2740,7 +2744,7 @@ export const DeepLink = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DeepLink" }) as any as S.Schema<DeepLink>;
 
-export type DeepLinkList = ReadonlyArray<DeepLink>;
+export type DeepLinkList = Array<DeepLink>;
 export const DeepLinkList = /*@__PURE__*/ S.Array(
   DeepLink,
 ) as any as S.Schema<DeepLinkList>;
@@ -2827,9 +2831,11 @@ export interface MeasurementPartnerAdvertiserLink {
   /** partner Advertiser Id. */
   partnerAdvertiserId?: string;
   /** Measurement partner used for tag wrapping. */
-  measurementPartner?: MeasurementPartnerAdvertiserLinkMeasurementPartnerEnum;
+  measurementPartner?:
+    | MeasurementPartnerAdvertiserLinkMeasurementPartnerEnum
+    | (string & {});
   /** Status of the partner link. */
-  linkStatus?: MeasurementPartnerAdvertiserLinkLinkStatusEnum;
+  linkStatus?: MeasurementPartnerAdvertiserLinkLinkStatusEnum | (string & {});
 }
 export const MeasurementPartnerAdvertiserLink = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2854,13 +2860,15 @@ export interface Advertiser {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#advertiser". */
   kind?: string;
   /** Optional. Whether the advertiser plans to serve EU political ads. */
-  euPoliticalAdsDeclaration?: AdvertiserEuPoliticalAdsDeclarationEnum;
+  euPoliticalAdsDeclaration?:
+    | AdvertiserEuPoliticalAdsDeclarationEnum
+    | (string & {});
   /** ID of this advertiser. This is a read-only, auto-generated field. */
   id?: string;
   /** ID of the click-through event tag to apply by default to the landing pages of this advertiser's campaigns. */
   defaultClickThroughEventTagId?: string;
   /** Status of this advertiser. */
-  status?: AdvertiserStatusEnum;
+  status?: AdvertiserStatusEnum | (string & {});
   /** Floodlight configuration ID of this advertiser. The floodlight configuration ID will be created automatically, so on insert this field should be left blank. This field can be set to another advertiser's floodlight configuration ID in order to share that advertiser's floodlight configuration with this advertiser, so long as: - This advertiser's original floodlight configuration is not already associated with floodlight activities or floodlight activity groups. - This advertiser's original floodlight configuration is not already shared with another advertiser. */
   floodlightConfigurationId?: string;
   /** Default email address used in sender field for tag emails. */
@@ -2941,7 +2949,7 @@ export interface BillingProfile {
   /** True if the billing profile is the account default profile. This is a read-only field. */
   isDefault?: boolean;
   /** Status of this billing profile.This is a read-only field. */
-  status?: BillingProfileStatusEnum;
+  status?: BillingProfileStatusEnum | (string & {});
   /** ID of this billing profile. This is a read-only, auto-generated field. */
   id?: string;
   /** Billing currency code in ISO 4217 format.This is a read-only field. */
@@ -2955,7 +2963,7 @@ export interface BillingProfile {
   /** The ID of the payment account the billing profile belongs to. This is a read-only field. */
   paymentsAccountId?: string;
   /** Invoice level for this billing profile. Used to group fees into separate invoices by account, advertiser, or campaign. */
-  invoiceLevel?: BillingProfileInvoiceLevelEnum;
+  invoiceLevel?: BillingProfileInvoiceLevelEnum | (string & {});
   /** Name of this billing profile. This is a required field and must be less than 256 characters long and must be unique among billing profile in the same account. */
   name?: string;
   /** The ID of the secondary payment customer the billing profile belongs to. This is a read-only field. */
@@ -3030,7 +3038,7 @@ export const OptimizationActivity = /*@__PURE__*/ S.suspend(() =>
   identifier: "OptimizationActivity",
 }) as any as S.Schema<OptimizationActivity>;
 
-export type OptimizationActivityList = ReadonlyArray<OptimizationActivity>;
+export type OptimizationActivityList = Array<OptimizationActivity>;
 export const OptimizationActivityList = /*@__PURE__*/ S.Array(
   OptimizationActivity,
 ) as any as S.Schema<OptimizationActivityList>;
@@ -3038,7 +3046,9 @@ export const OptimizationActivityList = /*@__PURE__*/ S.Array(
 /** Creative optimization settings. */
 export interface CreativeOptimizationConfiguration {
   /** Optimization model for this configuration. */
-  optimizationModel?: CreativeOptimizationConfigurationOptimizationModelEnum;
+  optimizationModel?:
+    | CreativeOptimizationConfigurationOptimizationModelEnum
+    | (string & {});
   /** ID of this creative optimization config. This field is auto-generated when the campaign is inserted or updated. It can be null for existing campaigns. */
   id?: string;
   /** Name of this creative optimization config. This is a required field and must be less than 129 characters long. */
@@ -3099,9 +3109,11 @@ export const MeasurementPartnerCampaignLinkLinkStatusEnum =
 
 export interface MeasurementPartnerCampaignLink {
   /** Measurement partner used for tag wrapping. */
-  measurementPartner?: MeasurementPartnerCampaignLinkMeasurementPartnerEnum;
+  measurementPartner?:
+    | MeasurementPartnerCampaignLinkMeasurementPartnerEnum
+    | (string & {});
   /** . */
-  linkStatus?: MeasurementPartnerCampaignLinkLinkStatusEnum;
+  linkStatus?: MeasurementPartnerCampaignLinkLinkStatusEnum | (string & {});
   /** Partner campaign ID needed for establishing linking with Measurement partner. */
   partnerCampaignId?: string;
 }
@@ -3136,7 +3148,7 @@ export const AudienceSegment = /*@__PURE__*/ S.suspend(() =>
   identifier: "AudienceSegment",
 }) as any as S.Schema<AudienceSegment>;
 
-export type AudienceSegmentList = ReadonlyArray<AudienceSegment>;
+export type AudienceSegmentList = Array<AudienceSegment>;
 export const AudienceSegmentList = /*@__PURE__*/ S.Array(
   AudienceSegment,
 ) as any as S.Schema<AudienceSegmentList>;
@@ -3160,13 +3172,13 @@ export const AudienceSegmentGroup = /*@__PURE__*/ S.suspend(() =>
   identifier: "AudienceSegmentGroup",
 }) as any as S.Schema<AudienceSegmentGroup>;
 
-export type AudienceSegmentGroupList = ReadonlyArray<AudienceSegmentGroup>;
+export type AudienceSegmentGroupList = Array<AudienceSegmentGroup>;
 export const AudienceSegmentGroupList = /*@__PURE__*/ S.Array(
   AudienceSegmentGroup,
 ) as any as S.Schema<AudienceSegmentGroupList>;
 
 export type CreativeOptimizationConfigurationList =
-  ReadonlyArray<CreativeOptimizationConfiguration>;
+  Array<CreativeOptimizationConfiguration>;
 export const CreativeOptimizationConfigurationList = /*@__PURE__*/ S.Array(
   CreativeOptimizationConfiguration,
 ) as any as S.Schema<CreativeOptimizationConfigurationList>;
@@ -3199,7 +3211,9 @@ export interface Campaign {
   /** Ad blocking settings for this campaign. */
   adBlockingConfiguration?: AdBlockingConfiguration;
   /** Optional. Whether the campaign has EU political ads. Campaign Manager 360 doesn't allow campaigns with EU political ads to serve in the EU. They can still serve in other regions. */
-  euPoliticalAdsDeclaration?: CampaignEuPoliticalAdsDeclarationEnum;
+  euPoliticalAdsDeclaration?:
+    | CampaignEuPoliticalAdsDeclarationEnum
+    | (string & {});
   /** ID of this campaign. This is a read-only auto-generated field. */
   id?: string;
   endDate?: string;
@@ -3618,7 +3632,9 @@ export const ThirdPartyTrackingUrlThirdPartyUrlTypeEnum =
 /** Third-party Tracking URL. */
 export interface ThirdPartyTrackingUrl {
   /** Third-party URL type for in-stream video and in-stream audio creatives. */
-  thirdPartyUrlType?: ThirdPartyTrackingUrlThirdPartyUrlTypeEnum;
+  thirdPartyUrlType?:
+    | ThirdPartyTrackingUrlThirdPartyUrlTypeEnum
+    | (string & {});
   /** URL for the specified third-party URL type. */
   url?: string;
 }
@@ -3631,7 +3647,7 @@ export const ThirdPartyTrackingUrl = /*@__PURE__*/ S.suspend(() =>
   identifier: "ThirdPartyTrackingUrl",
 }) as any as S.Schema<ThirdPartyTrackingUrl>;
 
-export type ThirdPartyTrackingUrlList = ReadonlyArray<ThirdPartyTrackingUrl>;
+export type ThirdPartyTrackingUrlList = Array<ThirdPartyTrackingUrl>;
 export const ThirdPartyTrackingUrlList = /*@__PURE__*/ S.Array(
   ThirdPartyTrackingUrl,
 ) as any as S.Schema<ThirdPartyTrackingUrlList>;
@@ -3669,7 +3685,7 @@ export interface TargetWindow {
   /** User-entered value. */
   customHtml?: string;
   /** Type of browser window for which the backup image of the flash creative can be displayed. */
-  targetWindowOption?: TargetWindowTargetWindowOptionEnum;
+  targetWindowOption?: TargetWindowTargetWindowOptionEnum | (string & {});
 }
 export const TargetWindow = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3695,7 +3711,7 @@ export const ClickTag = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ClickTag" }) as any as S.Schema<ClickTag>;
 
-export type ClickTagList = ReadonlyArray<ClickTag>;
+export type ClickTagList = Array<ClickTag>;
 export const ClickTagList = /*@__PURE__*/ S.Array(
   ClickTag,
 ) as any as S.Schema<ClickTagList>;
@@ -3724,7 +3740,7 @@ export interface FsCommand {
   /** Width of the window. */
   windowWidth?: number;
   /** Position in the browser where the window will open. */
-  positionOption?: FsCommandPositionOptionEnum;
+  positionOption?: FsCommandPositionOptionEnum | (string & {});
   /** Distance from the top of the browser. Applicable when positionOption is DISTANCE_FROM_TOP_LEFT_CORNER. */
   top?: number;
   /** Distance from the left of the browser.Applicable when positionOption is DISTANCE_FROM_TOP_LEFT_CORNER. */
@@ -3781,7 +3797,7 @@ export interface PopupWindowProperties {
   /** Whether to display the browser address bar. */
   showAddressBar?: boolean;
   /** Popup window position either centered or at specific coordinate. */
-  positionType?: PopupWindowPropertiesPositionTypeEnum;
+  positionType?: PopupWindowPropertiesPositionTypeEnum | (string & {});
   /** Whether to display the browser status bar. */
   showStatusBar?: boolean;
   /** Title of popup window. */
@@ -3821,7 +3837,9 @@ export const CreativeCustomEventTargetTypeEnum = /*@__PURE__*/ S.String;
 /** Creative Custom Event. */
 export interface CreativeCustomEvent {
   /** Type of the event. This is a read-only field. */
-  advertiserCustomEventType?: CreativeCustomEventAdvertiserCustomEventTypeEnum;
+  advertiserCustomEventType?:
+    | CreativeCustomEventAdvertiserCustomEventTypeEnum
+    | (string & {});
   /** Properties for rich media popup windows. This field is used only for exit events. */
   popupWindowProperties?: PopupWindowProperties;
   /** Video reporting ID, used to differentiate multiple videos in a single creative. This is a read-only field. */
@@ -3833,13 +3851,13 @@ export interface CreativeCustomEvent {
   /** Unique ID of this event used by Reporting and Data Transfer. This is a read-only field. */
   advertiserCustomEventId?: string;
   /** Artwork type used by the creative.This is a read-only field. */
-  artworkType?: CreativeCustomEventArtworkTypeEnum;
+  artworkType?: CreativeCustomEventArtworkTypeEnum | (string & {});
   /** Exit click-through URL for the event. This field is used only for exit events. */
   exitClickThroughUrl?: CreativeClickThroughUrl;
   /** ID of this event. This is a required field and should not be modified after insertion. */
   id?: string;
   /** Target type used by the event. */
-  targetType?: CreativeCustomEventTargetTypeEnum;
+  targetType?: CreativeCustomEventTargetTypeEnum | (string & {});
 }
 export const CreativeCustomEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3860,7 +3878,7 @@ export const CreativeCustomEvent = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreativeCustomEvent",
 }) as any as S.Schema<CreativeCustomEvent>;
 
-export type CreativeCustomEventList = ReadonlyArray<CreativeCustomEvent>;
+export type CreativeCustomEventList = Array<CreativeCustomEvent>;
 export const CreativeCustomEventList = /*@__PURE__*/ S.Array(
   CreativeCustomEvent,
 ) as any as S.Schema<CreativeCustomEventList>;
@@ -3881,8 +3899,7 @@ export const CreativeFieldAssignment = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreativeFieldAssignment",
 }) as any as S.Schema<CreativeFieldAssignment>;
 
-export type CreativeFieldAssignmentList =
-  ReadonlyArray<CreativeFieldAssignment>;
+export type CreativeFieldAssignmentList = Array<CreativeFieldAssignment>;
 export const CreativeFieldAssignmentList = /*@__PURE__*/ S.Array(
   CreativeFieldAssignment,
 ) as any as S.Schema<CreativeFieldAssignmentList>;
@@ -3938,7 +3955,7 @@ export const UniversalAdIdRegistryEnum = /*@__PURE__*/ S.String;
 /** A Universal Ad ID as per the VAST 4.0 spec. Applicable to the following creative types: INSTREAM_AUDIO, INSTREAM_VIDEO and VPAID. */
 export interface UniversalAdId {
   /** Registry used for the Ad ID value. */
-  registry?: UniversalAdIdRegistryEnum;
+  registry?: UniversalAdIdRegistryEnum | (string & {});
   /** ID value for this creative. Only alphanumeric characters and the following symbols are valid: "_/\-". Maximum length is 64 characters. Read only when registry is DCM. */
   value?: string;
 }
@@ -4046,8 +4063,9 @@ export type CreativeBackupImageFeaturesItemEnum =
   | "SVG_FE_IMAGE";
 export const CreativeBackupImageFeaturesItemEnum = /*@__PURE__*/ S.String;
 
-export type CreativeBackupImageFeaturesItemEnumList =
-  ReadonlyArray<CreativeBackupImageFeaturesItemEnum>;
+export type CreativeBackupImageFeaturesItemEnumList = Array<
+  CreativeBackupImageFeaturesItemEnum | (string & {})
+>;
 export const CreativeBackupImageFeaturesItemEnumList = /*@__PURE__*/ S.Array(
   CreativeBackupImageFeaturesItemEnum,
 ) as any as S.Schema<CreativeBackupImageFeaturesItemEnumList>;
@@ -4061,8 +4079,9 @@ export type CreativeCompatibilityItemEnum =
   | "IN_STREAM_AUDIO";
 export const CreativeCompatibilityItemEnum = /*@__PURE__*/ S.String;
 
-export type CreativeCompatibilityItemEnumList =
-  ReadonlyArray<CreativeCompatibilityItemEnum>;
+export type CreativeCompatibilityItemEnumList = Array<
+  CreativeCompatibilityItemEnum | (string & {})
+>;
 export const CreativeCompatibilityItemEnumList = /*@__PURE__*/ S.Array(
   CreativeCompatibilityItemEnum,
 ) as any as S.Schema<CreativeCompatibilityItemEnumList>;
@@ -4088,7 +4107,7 @@ export type CreativeArtworkTypeEnum =
   | "ARTWORK_TYPE_IMAGE";
 export const CreativeArtworkTypeEnum = /*@__PURE__*/ S.String;
 
-export type SizeList = ReadonlyArray<Size>;
+export type SizeList = Array<Size>;
 export const SizeList = /*@__PURE__*/ S.Array(
   Size,
 ) as any as S.Schema<SizeList>;
@@ -4180,8 +4199,9 @@ export type CreativeAssetDetectedFeaturesItemEnum =
   | "SVG_FE_IMAGE";
 export const CreativeAssetDetectedFeaturesItemEnum = /*@__PURE__*/ S.String;
 
-export type CreativeAssetDetectedFeaturesItemEnumList =
-  ReadonlyArray<CreativeAssetDetectedFeaturesItemEnum>;
+export type CreativeAssetDetectedFeaturesItemEnumList = Array<
+  CreativeAssetDetectedFeaturesItemEnum | (string & {})
+>;
 export const CreativeAssetDetectedFeaturesItemEnumList = /*@__PURE__*/ S.Array(
   CreativeAssetDetectedFeaturesItemEnum,
 ) as any as S.Schema<CreativeAssetDetectedFeaturesItemEnumList>;
@@ -4231,7 +4251,7 @@ export const CreativeAssetIdTypeEnum = /*@__PURE__*/ S.String;
 /** Creative Asset ID. */
 export interface CreativeAssetId {
   /** Type of asset to upload. This is a required field. FLASH and IMAGE are no longer supported for new uploads. All image assets should use HTML_IMAGE. */
-  type?: CreativeAssetIdTypeEnum;
+  type?: CreativeAssetIdTypeEnum | (string & {});
   /** Name of the creative asset. This is a required field while inserting an asset. After insertion, this assetIdentifier is used to identify the uploaded asset. Characters in the name must be alphanumeric or one of the following: ".-_ ". Spaces are allowed. */
   name?: string;
 }
@@ -4274,7 +4294,7 @@ export interface CreativeAsset {
   /** Numeric ID of this creative asset. This is a required field and should not be modified. Applicable to all but the following creative types: all REDIRECT and TRACKING_TEXT. */
   id?: string;
   /** Initial wait time type before making the asset visible. Applicable to the following creative types: all RICH_MEDIA. */
-  startTimeType?: CreativeAssetStartTimeTypeEnum;
+  startTimeType?: CreativeAssetStartTimeTypeEnum | (string & {});
   /** Whether the asset pushes down other content. Applicable to the following creative types: all RICH_MEDIA. Additionally, only applicable when the asset offsets are 0, the collapsedSize.width matches size.width, and the collapsedSize.height is less than size.height. */
   pushdown?: boolean;
   /** Whether the video or audio asset is active. This is a read-only field for VPAID_NON_LINEAR_VIDEO assets. Applicable to the following creative types: INSTREAM_AUDIO, INSTREAM_VIDEO and all VPAID. */
@@ -4282,7 +4302,7 @@ export interface CreativeAsset {
   /** Additional sizes associated with this creative asset. HTML5 asset generated by compatible software such as GWD will be able to support more sizes this creative asset can render. */
   additionalSizes?: SizeList;
   /** Artwork type of rich media creative. This is a read-only field. Applicable to the following creative types: all RICH_MEDIA. */
-  artworkType?: CreativeAssetArtworkTypeEnum;
+  artworkType?: CreativeAssetArtworkTypeEnum | (string & {});
   /** Audio stream bit rate in kbps. This is a read-only field. Applicable to the following creative types: INSTREAM_AUDIO, INSTREAM_VIDEO and all VPAID. */
   audioBitRate?: number;
   /** Audio sample bit rate in hertz. This is a read-only field. Applicable to the following creative types: INSTREAM_AUDIO, INSTREAM_VIDEO and all VPAID. */
@@ -4290,7 +4310,7 @@ export interface CreativeAsset {
   /** Whether this asset is used as a polite load asset. */
   politeLoad?: boolean;
   /** Offset left unit for an asset. This is a read-only field. Applicable to the following creative types: all RICH_MEDIA. */
-  positionLeftUnit?: CreativeAssetPositionLeftUnitEnum;
+  positionLeftUnit?: CreativeAssetPositionLeftUnitEnum | (string & {});
   /** Progressive URL for video asset. This is a read-only field. Applicable to the following creative types: INSTREAM_VIDEO and all VPAID. */
   progressiveServingUrl?: string;
   /** Detected expanded dimension for video asset. This is a read-only field. Applicable to the following creative types: INSTREAM_VIDEO and all VPAID. */
@@ -4298,7 +4318,7 @@ export interface CreativeAsset {
   /** List of feature dependencies for the creative asset that are detected by Campaign Manager. Feature dependencies are features that a browser must be able to support in order to render your HTML5 creative correctly. This is a read-only, auto-generated field. Applicable to the following creative types: HTML5_BANNER. Applicable to DISPLAY when the primary asset type is not HTML_IMAGE. */
   detectedFeatures?: CreativeAssetDetectedFeaturesItemEnumList;
   /** Rich media child asset type. This is a read-only field. Applicable to the following creative types: all VPAID. */
-  childAssetType?: CreativeAssetChildAssetTypeEnum;
+  childAssetType?: CreativeAssetChildAssetTypeEnum | (string & {});
   /** Size associated with this creative asset. This is a required field when applicable; however for IMAGE and FLASH_INPAGE, creatives if left blank, this field will be automatically set using the actual size of the associated image asset. Applicable to the following creative types: DISPLAY_IMAGE_GALLERY, FLASH_INPAGE, HTML5_BANNER, IMAGE, and all RICH_MEDIA. Applicable to DISPLAY when the primary asset type is not HTML_IMAGE. */
   size?: Size;
   /** File size associated with this creative asset. This is a read-only field. Applicable to all but the following creative types: all REDIRECT and TRACKING_TEXT. */
@@ -4316,13 +4336,13 @@ export interface CreativeAsset {
   /** Detected bit-rate for audio or video asset. This is a read-only field. Applicable to the following creative types: INSTREAM_AUDIO, INSTREAM_VIDEO and all VPAID. */
   bitRate?: number;
   /** Offset top unit for an asset. This is a read-only field if the asset displayType is ASSET_DISPLAY_TYPE_OVERLAY. Applicable to the following creative types: all RICH_MEDIA. */
-  positionTopUnit?: CreativeAssetPositionTopUnitEnum;
+  positionTopUnit?: CreativeAssetPositionTopUnitEnum | (string & {});
   /** Duration in seconds for which an asset will be displayed. Applicable to the following creative types: INSTREAM_AUDIO, INSTREAM_VIDEO and VPAID_LINEAR_VIDEO. Value must be greater than or equal to 1. */
   duration?: number;
   /** Size of zip file. This is a read-only field. Applicable to the following creative types: HTML5_BANNER. */
   zipFilesize?: string;
   /** Role of the asset in relation to creative. Applicable to all but the following creative types: all REDIRECT and TRACKING_TEXT. This is a required field. PRIMARY applies to DISPLAY, FLASH_INPAGE, HTML5_BANNER, IMAGE, DISPLAY_IMAGE_GALLERY, all RICH_MEDIA (which may contain multiple primary assets), and all VPAID creatives. BACKUP_IMAGE applies to FLASH_INPAGE, HTML5_BANNER, all RICH_MEDIA, and all VPAID creatives. Applicable to DISPLAY when the primary asset type is not HTML_IMAGE. ADDITIONAL_IMAGE and ADDITIONAL_FLASH apply to FLASH_INPAGE creatives. OTHER refers to assets from sources other than Campaign Manager, such as Studio uploaded assets, applicable to all RICH_MEDIA and all VPAID creatives. PARENT_VIDEO refers to videos uploaded by the user in Campaign Manager and is applicable to INSTREAM_VIDEO and VPAID_LINEAR_VIDEO creatives. TRANSCODED_VIDEO refers to videos transcoded by Campaign Manager from PARENT_VIDEO assets and is applicable to INSTREAM_VIDEO and VPAID_LINEAR_VIDEO creatives. ALTERNATE_VIDEO refers to the Campaign Manager representation of child asset videos from Studio, and is applicable to VPAID_LINEAR_VIDEO creatives. These cannot be added or removed within Campaign Manager. For VPAID_LINEAR_VIDEO creatives, PARENT_VIDEO, TRANSCODED_VIDEO and ALTERNATE_VIDEO assets that are marked active serve as backup in case the VPAID creative cannot be served. Only PARENT_VIDEO assets can be added or removed for an INSTREAM_VIDEO or VPAID_LINEAR_VIDEO creative. PARENT_AUDIO refers to audios uploaded by the user in Campaign Manager and is applicable to INSTREAM_AUDIO creatives. TRANSCODED_AUDIO refers to audios transcoded by Campaign Manager from PARENT_AUDIO assets and is applicable to INSTREAM_AUDIO creatives. */
-  role?: CreativeAssetRoleEnum;
+  role?: CreativeAssetRoleEnum | (string & {});
   /** Flash version of the asset. This is a read-only field. Applicable to the following creative types: FLASH_INPAGE, all RICH_MEDIA, and all VPAID. Applicable to DISPLAY when the primary asset type is not HTML_IMAGE. */
   flashVersion?: number;
   /** Exit event configured for the backup image. Applicable to the following creative types: all RICH_MEDIA. */
@@ -4336,11 +4356,11 @@ export interface CreativeAsset {
   /** Whether the asset is horizontally locked. This is a read-only field. Applicable to the following creative types: all RICH_MEDIA. */
   horizontallyLocked?: boolean;
   /** Possible alignments for an asset. This is a read-only field. Applicable to the following creative types: RICH_MEDIA_DISPLAY_MULTI_FLOATING_INTERSTITIAL . */
-  alignment?: CreativeAssetAlignmentEnum;
+  alignment?: CreativeAssetAlignmentEnum | (string & {});
   /** Identifier of this asset. This is the same identifier returned during creative asset insert operation. This is a required field. Applicable to all but the following creative types: all REDIRECT and TRACKING_TEXT. */
   assetIdentifier?: CreativeAssetId;
   /** Type of rich media asset. This is a read-only field. Applicable to the following creative types: all RICH_MEDIA. */
-  displayType?: CreativeAssetDisplayTypeEnum;
+  displayType?: CreativeAssetDisplayTypeEnum | (string & {});
   /** Video frame rate for video asset in frames per second. This is a read-only field. Applicable to the following creative types: INSTREAM_VIDEO and all VPAID. */
   frameRate?: number;
   /** Whether to hide Flash objects flag for an asset. Applicable to the following creative types: all RICH_MEDIA. */
@@ -4354,11 +4374,11 @@ export interface CreativeAsset {
   /** Custom start time in seconds for making the asset visible. Applicable to the following creative types: all RICH_MEDIA. Value must be greater than or equal to 0. */
   customStartTimeValue?: number;
   /** Orientation of video asset. This is a read-only, auto-generated field. */
-  orientation?: CreativeAssetOrientationEnum;
+  orientation?: CreativeAssetOrientationEnum | (string & {});
   /** Whether the asset is vertically locked. This is a read-only field. Applicable to the following creative types: all RICH_MEDIA. */
   verticallyLocked?: boolean;
   /** Duration type for which an asset will be displayed. Applicable to the following creative types: all RICH_MEDIA. */
-  durationType?: CreativeAssetDurationTypeEnum;
+  durationType?: CreativeAssetDurationTypeEnum | (string & {});
   /** File name of zip file. This is a read-only field. Applicable to the following creative types: HTML5_BANNER. */
   zipFilename?: string;
   /** Whether ActionScript3 is enabled for the flash asset. This is a read-only field. Applicable to the following creative type: FLASH_INPAGE. Applicable to DISPLAY when the primary asset type is not HTML_IMAGE. */
@@ -4368,7 +4388,7 @@ export interface CreativeAsset {
   /** Detected MIME type for audio or video asset. This is a read-only field. Applicable to the following creative types: INSTREAM_AUDIO, INSTREAM_VIDEO and all VPAID. */
   mimeType?: string;
   /** Window mode options for flash assets. Applicable to the following creative types: FLASH_INPAGE, RICH_MEDIA_DISPLAY_EXPANDING, RICH_MEDIA_IM_EXPAND, RICH_MEDIA_DISPLAY_BANNER, and RICH_MEDIA_INPAGE_FLOATING. */
-  windowMode?: CreativeAssetWindowModeEnum;
+  windowMode?: CreativeAssetWindowModeEnum | (string & {});
   /** List of companion creatives assigned to an in-stream video creative asset. Acceptable values include IDs of existing flash and image creatives. Applicable to INSTREAM_VIDEO creative type with dynamicAssetSelection set to true. */
   companionCreativeIds?: StringList;
 }
@@ -4427,7 +4447,7 @@ export const CreativeAsset = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CreativeAsset" }) as any as S.Schema<CreativeAsset>;
 
-export type CreativeAssetList = ReadonlyArray<CreativeAsset>;
+export type CreativeAssetList = Array<CreativeAsset>;
 export const CreativeAssetList = /*@__PURE__*/ S.Array(
   CreativeAsset,
 ) as any as S.Schema<CreativeAssetList>;
@@ -4447,7 +4467,7 @@ export interface Creative {
   /** Industry standard ID assigned to creative for reach and frequency. Applicable to INSTREAM_VIDEO_REDIRECT creatives. */
   commercialId?: string;
   /** Authoring tool for HTML5 banner creatives. This is a read-only field. Applicable to the following creative types: HTML5_BANNER. */
-  authoringTool?: CreativeAuthoringToolEnum;
+  authoringTool?: CreativeAuthoringToolEnum | (string & {});
   /** Custom key-values for a Rich Media creative. Key-values let you customize the creative settings of a Rich Media ad running on your site without having to contact the advertiser. You can use key-values to dynamically change the look or functionality of a creative. Applicable to the following creative types: all RICH_MEDIA, and all VPAID. */
   customKeyValues?: StringList;
   /** ID of current rendering version. This is a read-only field. Applicable to all creative types. */
@@ -4483,7 +4503,9 @@ export interface Creative {
   /** Account ID of this creative. This field, if left unset, will be auto-generated for both insert and update operations. Applicable to all creative types. */
   accountId?: string;
   /** Optional. Whether to add a label to the creative as created or edited using AI when served in regions with local AI labeling regulations. [Learn more about labeling requirements in AI regulations.](https://support.google.com/campaignmanager/answer/17232030) */
-  syntheticContentAttestationStatus?: CreativeSyntheticContentAttestationStatusEnum;
+  syntheticContentAttestationStatus?:
+    | CreativeSyntheticContentAttestationStatusEnum
+    | (string & {});
   /** Creative audio or video duration in seconds. This is a read-only field. Applicable to the following creative types: INSTREAM_VIDEO, INSTREAM_AUDIO, all RICH_MEDIA, and all VPAID. */
   mediaDuration?: number;
   /** Whether Flash assets associated with the creative need to be automatically converted to HTML5. This flag is enabled by default and users can choose to disable it if they don't want the system to generate and use HTML5 asset for this creative. Applicable to the following creative type: FLASH_INPAGE. Applicable to DISPLAY when the primary asset type is not HTML_IMAGE. */
@@ -4507,7 +4529,7 @@ export interface Creative {
   /** A Universal Ad ID as per the VAST 4.0 spec. Applicable to the following creative types: INSTREAM_AUDIO and INSTREAM_VIDEO and VPAID. */
   universalAdId?: UniversalAdId;
   /** Required. Type of this creative. Applicable to all creative types. *Note:* FLASH_INPAGE, HTML5_BANNER, and IMAGE are only used for existing creatives. New creatives should use DISPLAY as a replacement for these types. */
-  type?: CreativeTypeEnum;
+  type?: CreativeTypeEnum | (string & {});
   /** List of feature dependencies that will cause a backup image to be served if the browser that serves the ad does not support them. Feature dependencies are features that a browser must be able to support in order to render your HTML5 creative asset correctly. This field is initially auto-generated to contain all features detected by Campaign Manager for all the assets of this creative and can then be modified by the client. To reset this field, copy over all the creativeAssets' detected features. Applicable to the following creative types: HTML5_BANNER. Applicable to DISPLAY when the primary asset type is not HTML_IMAGE. */
   backupImageFeatures?: CreativeBackupImageFeaturesItemEnumList;
   /** Latest Studio trafficked creative ID associated with rich media and VPAID creatives. This is a read-only field. Applicable to the following creative types: all RICH_MEDIA, and all VPAID. */
@@ -4529,7 +4551,7 @@ export interface Creative {
   /** URL of hosted image or hosted video or another ad tag. For INSTREAM_VIDEO_REDIRECT creatives this is the in-stream video redirect URL. The standard for a VAST (Video Ad Serving Template) ad response allows for a redirect link to another VAST 2.0 or 3.0 call. This is a required field when applicable. Applicable to the following creative types: DISPLAY_REDIRECT, INTERNAL_REDIRECT, INTERSTITIAL_INTERNAL_REDIRECT, and INSTREAM_VIDEO_REDIRECT */
   redirectUrl?: string;
   /** Source application where creative was authored. Presently, only DBM authored creatives will have this field set. Applicable to all creative types. */
-  authoringSource?: CreativeAuthoringSourceEnum;
+  authoringSource?: CreativeAuthoringSourceEnum | (string & {});
   /** Size associated with this creative. When inserting or updating a creative either the size ID field or size width and height fields can be used. This is a required field when applicable; however for IMAGE, FLASH_INPAGE creatives, and for DISPLAY creatives with a primary asset of type HTML_IMAGE, if left blank, this field will be automatically set using the actual size of the associated image assets. Applicable to the following creative types: DISPLAY, DISPLAY_IMAGE_GALLERY, FLASH_INPAGE, HTML5_BANNER, IMAGE, and all RICH_MEDIA. */
   size?: Size;
   /** Whether the creative is archived. Applicable to all creative types. */
@@ -4551,7 +4573,7 @@ export interface Creative {
   /** HTML code for the creative. This is a required field when applicable. This field is ignored if htmlCodeLocked is true. Applicable to the following creative types: all CUSTOM, FLASH_INPAGE, and HTML5_BANNER, and all RICH_MEDIA. */
   htmlCode?: string;
   /** Type of artwork used for the creative. This is a read-only field. Applicable to the following creative types: all RICH_MEDIA, and all VPAID. */
-  artworkType?: CreativeArtworkTypeEnum;
+  artworkType?: CreativeArtworkTypeEnum | (string & {});
   /** Whether the creative is active. Applicable to all creative types. */
   active?: boolean;
   /** Additional sizes associated with a responsive creative. When inserting or updating a creative either the size ID field or size width and height fields can be used. Applicable to DISPLAY creatives when the primary asset type is HTML_IMAGE. */
@@ -4662,8 +4684,9 @@ export type DirectorySiteInpageTagFormatsItemEnum =
   | "JAVASCRIPT_INPAGE";
 export const DirectorySiteInpageTagFormatsItemEnum = /*@__PURE__*/ S.String;
 
-export type DirectorySiteInpageTagFormatsItemEnumList =
-  ReadonlyArray<DirectorySiteInpageTagFormatsItemEnum>;
+export type DirectorySiteInpageTagFormatsItemEnumList = Array<
+  DirectorySiteInpageTagFormatsItemEnum | (string & {})
+>;
 export const DirectorySiteInpageTagFormatsItemEnumList = /*@__PURE__*/ S.Array(
   DirectorySiteInpageTagFormatsItemEnum,
 ) as any as S.Schema<DirectorySiteInpageTagFormatsItemEnumList>;
@@ -4720,8 +4743,9 @@ export type DirectorySiteInterstitialTagFormatsItemEnum =
 export const DirectorySiteInterstitialTagFormatsItemEnum =
   /*@__PURE__*/ S.String;
 
-export type DirectorySiteInterstitialTagFormatsItemEnumList =
-  ReadonlyArray<DirectorySiteInterstitialTagFormatsItemEnum>;
+export type DirectorySiteInterstitialTagFormatsItemEnumList = Array<
+  DirectorySiteInterstitialTagFormatsItemEnum | (string & {})
+>;
 export const DirectorySiteInterstitialTagFormatsItemEnumList =
   /*@__PURE__*/ S.Array(
     DirectorySiteInterstitialTagFormatsItemEnum,
@@ -4851,7 +4875,7 @@ export interface FeedField {
   /** Optional. The default value of the field. */
   defaultValue?: string;
   /** Required. The type of the field. */
-  type?: FeedFieldTypeEnum;
+  type?: FeedFieldTypeEnum | (string & {});
   /** Optional. Whether the field is able to display. Could be set as true when the field type is not in any of the following and the field is not filterable: - COUNTRY_CODE_ISO - CITY - REGION - POSTAL_CODE - METRO - GEO_CANONICAL - USERLIST_ID - CONTEXTUAL_KEYWORD - CM360_DYNAMIC_TARGETING_KEY - WEIGHT */
   renderable?: boolean;
   /** Optional. Whether the field is filterable. Could be set as true when the field type is any of the following and is not renderable: - STRING - BOOL - COUNTRY_CODE_ISO - CM360_SITE_ID - CM360_KEYWORD - CM360_CREATIVE_ID - CM360_PLACEMENT_ID - CM360_AD_ID - CM360_ADVERTISER_ID - CM360_CAMPAIGN_ID - CITY - REGION - POSTAL_CODE - METRO - CUSTOM_VALUE - REMARKETING_VALUE - GEO_CANONICAL - STRING_LIST - CREATIVE_DIMENSION - USERLIST_ID - CM360_DYNAMIC_TARGETING_KEY - DV360_LINE_ITEM_ID */
@@ -4871,7 +4895,7 @@ export const FeedField = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "FeedField" }) as any as S.Schema<FeedField>;
 
-export type FeedFieldList = ReadonlyArray<FeedField>;
+export type FeedFieldList = Array<FeedField>;
 export const FeedFieldList = /*@__PURE__*/ S.Array(
   FeedField,
 ) as any as S.Schema<FeedFieldList>;
@@ -4981,7 +5005,7 @@ export const FieldErrorIngestionErrorEnum = /*@__PURE__*/ S.String;
 /** Contains the field error of the dynamic feed. */
 export interface FieldError {
   /** Output only. The ingestion error of the field. */
-  ingestionError?: FieldErrorIngestionErrorEnum;
+  ingestionError?: FieldErrorIngestionErrorEnum | (string & {});
   /** Output only. The ID of the field. */
   fieldId?: number;
   /** Output only. Incidcates whether the field has error or warning. */
@@ -5001,7 +5025,7 @@ export const FieldError = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "FieldError" }) as any as S.Schema<FieldError>;
 
-export type FieldErrorList = ReadonlyArray<FieldError>;
+export type FieldErrorList = Array<FieldError>;
 export const FieldErrorList = /*@__PURE__*/ S.Array(
   FieldError,
 ) as any as S.Schema<FieldErrorList>;
@@ -5022,7 +5046,7 @@ export const IngestionErrorRecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "IngestionErrorRecord",
 }) as any as S.Schema<IngestionErrorRecord>;
 
-export type IngestionErrorRecordList = ReadonlyArray<IngestionErrorRecord>;
+export type IngestionErrorRecordList = Array<IngestionErrorRecord>;
 export const IngestionErrorRecordList = /*@__PURE__*/ S.Array(
   IngestionErrorRecord,
 ) as any as S.Schema<IngestionErrorRecordList>;
@@ -5055,7 +5079,7 @@ export const IngestionStatus = /*@__PURE__*/ S.suspend(() =>
 /** Contains the ingestion status of the dynamic feed. Feed ingestion is an asynchronous process. If the feed create request is successful, feed ingestion will be processed in the background, including validation, assets retrieval, and saving the data from the resource link. The processing time is dependent on the data size in the resource link. This read-only status field contains the current stage of that processing and its ingestion state. */
 export interface FeedIngestionStatus {
   /** Output only. The processing state of the feed. */
-  state?: FeedIngestionStatusStateEnum;
+  state?: FeedIngestionStatusStateEnum | (string & {});
   /** Output only. The ingestion error records of the feed. */
   ingestionErrorRecords?: IngestionErrorRecordList;
   /** Output only. The ingestion status of the feed. */
@@ -5111,7 +5135,7 @@ export interface ContentSource {
   /** Output only. Metadata of the content source. It contains the number of rows and the column names from resource link. This is a read-only field. */
   metaData?: ContentSourceMetaData;
   /** Required. The resource type of the content source. */
-  resourceType?: ContentSourceResourceTypeEnum;
+  resourceType?: ContentSourceResourceTypeEnum | (string & {});
   /** Required. The link to the file of the content source. */
   resourceLink?: string;
   /** Optional. The name of the content source. It is defaulted to content source file name if not provided. */
@@ -5145,7 +5169,7 @@ export interface DynamicFeed {
   /** Output only. The ingestion status of the dynamic feed. This is a read-only field. */
   feedIngestionStatus?: FeedIngestionStatus;
   /** Output only. The status of the feed. It is a read-only field that depends on the the feed ingestion status. The default value is INACTIVE, and it will be updated to ACTIVE once the feed is ingested successfully. */
-  status?: DynamicFeedStatusEnum;
+  status?: DynamicFeedStatusEnum | (string & {});
   /** Required. The content source of the dynamic feed. This is a required field. */
   contentSource?: ContentSource;
   /** Optional. Name of this dynamic feed. It is defaulted to content source file name if not provided. */
@@ -5264,7 +5288,7 @@ export interface FieldFilter {
   /** Optional. The field ID on the left hand side of the expression. */
   fieldId?: number;
   /** Optional. Left hand side of the expression match type. */
-  matchType?: FieldFilterMatchTypeEnum;
+  matchType?: FieldFilterMatchTypeEnum | (string & {});
   /** Optional. The string value, only applicable when rhs_value_type is STRING. */
   stringValue?: string;
   /** Optional. The boolean values, only applicable when rhs_value_type is BOOL. */
@@ -5272,7 +5296,7 @@ export interface FieldFilter {
   /** Optional. The dependent values, only applicable when rhs_value_type is DEPENDENT. */
   dependentFieldValue?: DependentFieldValue;
   /** Optional. Right hand side of the expression. */
-  valueType?: FieldFilterValueTypeEnum;
+  valueType?: FieldFilterValueTypeEnum | (string & {});
 }
 export const FieldFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5286,7 +5310,7 @@ export const FieldFilter = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "FieldFilter" }) as any as S.Schema<FieldFilter>;
 
-export type FieldFilterList = ReadonlyArray<FieldFilter>;
+export type FieldFilterList = Array<FieldFilter>;
 export const FieldFilterList = /*@__PURE__*/ S.Array(
   FieldFilter,
 ) as any as S.Schema<FieldFilterList>;
@@ -5302,7 +5326,7 @@ export const RuleBlock = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "RuleBlock" }) as any as S.Schema<RuleBlock>;
 
-export type RuleBlockList = ReadonlyArray<RuleBlock>;
+export type RuleBlockList = Array<RuleBlock>;
 export const RuleBlockList = /*@__PURE__*/ S.Array(
   RuleBlock,
 ) as any as S.Schema<RuleBlockList>;
@@ -5324,7 +5348,7 @@ export const CustomRule = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CustomRule" }) as any as S.Schema<CustomRule>;
 
-export type CustomRuleList = ReadonlyArray<CustomRule>;
+export type CustomRuleList = Array<CustomRule>;
 export const CustomRuleList = /*@__PURE__*/ S.Array(
   CustomRule,
 ) as any as S.Schema<CustomRuleList>;
@@ -5345,8 +5369,7 @@ export const RemarketingValueAttribute = /*@__PURE__*/ S.suspend(() =>
   identifier: "RemarketingValueAttribute",
 }) as any as S.Schema<RemarketingValueAttribute>;
 
-export type RemarketingValueAttributeList =
-  ReadonlyArray<RemarketingValueAttribute>;
+export type RemarketingValueAttributeList = Array<RemarketingValueAttribute>;
 export const RemarketingValueAttributeList = /*@__PURE__*/ S.Array(
   RemarketingValueAttribute,
 ) as any as S.Schema<RemarketingValueAttributeList>;
@@ -5378,11 +5401,11 @@ export interface ProximityFilter {
   /** Optional. Radius length in units defined by radius_units. */
   radiusValue?: number;
   /** Optional. The radius bucket type of the proximity filter */
-  radiusBucketType?: ProximityFilterRadiusBucketTypeEnum;
+  radiusBucketType?: ProximityFilterRadiusBucketTypeEnum | (string & {});
   /** Optional. Field ID in the element. */
   fieldId?: number;
   /** Optional. The units of the radius value */
-  radiusUnitType?: ProximityFilterRadiusUnitTypeEnum;
+  radiusUnitType?: ProximityFilterRadiusUnitTypeEnum | (string & {});
 }
 export const ProximityFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5411,7 +5434,7 @@ export const CustomValueField = /*@__PURE__*/ S.suspend(() =>
   identifier: "CustomValueField",
 }) as any as S.Schema<CustomValueField>;
 
-export type CustomValueFieldList = ReadonlyArray<CustomValueField>;
+export type CustomValueFieldList = Array<CustomValueField>;
 export const CustomValueFieldList = /*@__PURE__*/ S.Array(
   CustomValueField,
 ) as any as S.Schema<CustomValueFieldList>;
@@ -5421,7 +5444,7 @@ export interface DynamicRules {
   /** Optional. The field ID for the feed that will be used for weighted rotation, only applicable when rotation type is WEIGHTED. */
   weightFieldId?: number;
   /** Optional. The type of the rule, the default value is OPEN. */
-  ruleType?: DynamicRulesRuleTypeEnum;
+  ruleType?: DynamicRulesRuleTypeEnum | (string & {});
   /** Optional. The custom rules of the dynamic feed, only applicable when rule type is CUSTOM. */
   customRules?: CustomRuleList;
   /** Optional. List of field IDs in this element that should be auto-targeted. Applicable when rule type is AUTO. */
@@ -5429,7 +5452,7 @@ export interface DynamicRules {
   /** Optional. The link between an element field ID and a list of user attribute IDs. */
   remarketingValueAttributes?: RemarketingValueAttributeList;
   /** Optional. The rotation type to select from eligible rows. Rotation type only apply when the filtering rule results in more than one eligible rows. */
-  rotationType?: DynamicRulesRotationTypeEnum;
+  rotationType?: DynamicRulesRotationTypeEnum | (string & {});
   /** Optional. The proximity targeting rules of the dynamic feed, only applicable when rule type is PROXIMITY_TARGETING. */
   proximityFilter?: ProximityFilter;
   /** Optional. Mapping between field ID and custom key that are used to match for auto filtering. */
@@ -5467,8 +5490,7 @@ export const DynamicProfileFeedSettings = /*@__PURE__*/ S.suspend(() =>
   identifier: "DynamicProfileFeedSettings",
 }) as any as S.Schema<DynamicProfileFeedSettings>;
 
-export type DynamicProfileFeedSettingsList =
-  ReadonlyArray<DynamicProfileFeedSettings>;
+export type DynamicProfileFeedSettingsList = Array<DynamicProfileFeedSettings>;
 export const DynamicProfileFeedSettingsList = /*@__PURE__*/ S.Array(
   DynamicProfileFeedSettings,
 ) as any as S.Schema<DynamicProfileFeedSettingsList>;
@@ -5501,7 +5523,7 @@ export interface DynamicProfile {
   /** Required. Identifier. Name of this dynamic profile. This is a required field and must be less than 256 characters long. */
   name?: string;
   /** Optional. Archive status of this dynamic profile. */
-  archiveStatus?: DynamicProfileArchiveStatusEnum;
+  archiveStatus?: DynamicProfileArchiveStatusEnum | (string & {});
   /** Output only. The creation timestamp of the dynamic profile. This is a read-only field. */
   createInfo?: LastModifiedInfo;
   /** Optional. Draft version of the dynamic profile. */
@@ -5511,7 +5533,7 @@ export interface DynamicProfile {
   /** Optional. Active version of the dynamic profile. */
   active?: DynamicProfileVersion;
   /** Optional. Status of this dynamic profile. */
-  status?: DynamicProfileStatusEnum;
+  status?: DynamicProfileStatusEnum | (string & {});
   /** Output only. Unique ID of this dynamic profile. This is a read-only, auto-generated field. */
   dynamicProfileId?: string;
   /** Output only. The last modified timestamp of the dynamic profile. This is a read-only field. */
@@ -5581,13 +5603,13 @@ export interface EventTag {
   /** Name of this event tag. This is a required field and must be less than 256 characters long. */
   name?: string;
   /** Event tag type. Can be used to specify whether to use a third-party pixel, a third-party JavaScript URL, or a third-party click-through URL for either impression or click tracking. This is a required field. */
-  type?: EventTagTypeEnum;
+  type?: EventTagTypeEnum | (string & {});
   /** Whether to remove this event tag from ads that are trafficked through Display & Video 360 to Ad Exchange. This may be useful if the event tag uses a pixel that is unapproved for Ad Exchange bids on one or more networks, such as the Google Display Network. */
   excludeFromAdxRequests?: boolean;
   /** Payload URL for this event tag. The URL on a click-through event tag should have a landing page URL appended to the end of it. This field is required on insertion. */
   url?: string;
   /** Status of this event tag. Must be ENABLED for this event tag to fire. This is a required field. */
-  status?: EventTagStatusEnum;
+  status?: EventTagStatusEnum | (string & {});
   /** ID of this event tag. This is a read-only, auto-generated field. */
   id?: string;
   /** Number of times the landing page URL should be URL-escaped before being appended to the click-through event tag URL. Only applies to click-through event tags as specified by the event tag type. */
@@ -5599,7 +5621,7 @@ export interface EventTag {
   /** Filter list of site IDs associated with this event tag. The siteFilterType determines whether this is a allowlist or blocklist filter. */
   siteIds?: StringList;
   /** Site filter type for this event tag. If no type is specified then the event tag will be applied to all sites. */
-  siteFilterType?: EventTagSiteFilterTypeEnum;
+  siteFilterType?: EventTagSiteFilterTypeEnum | (string & {});
   /** Dimension value for the ID of the campaign. This is a read-only, auto-generated field. */
   campaignIdDimensionValue?: DimensionValue;
   /** Campaign ID of this event tag. This field or the advertiserId field is required on insertion. */
@@ -5688,7 +5710,7 @@ export const DateRangeRelativeDateRangeEnum = /*@__PURE__*/ S.String;
 export interface DateRange {
   startDate?: string;
   /** The date range relative to the date of when the report is run. */
-  relativeDateRange?: DateRangeRelativeDateRangeEnum;
+  relativeDateRange?: DateRangeRelativeDateRangeEnum | (string & {});
   endDate?: string;
   /** The kind of resource this is, in this case dfareporting#dateRange. */
   kind?: string;
@@ -5878,8 +5900,9 @@ export type FloodlightActivityUserDefinedVariableTypesItemEnum =
 export const FloodlightActivityUserDefinedVariableTypesItemEnum =
   /*@__PURE__*/ S.String;
 
-export type FloodlightActivityUserDefinedVariableTypesItemEnumList =
-  ReadonlyArray<FloodlightActivityUserDefinedVariableTypesItemEnum>;
+export type FloodlightActivityUserDefinedVariableTypesItemEnumList = Array<
+  FloodlightActivityUserDefinedVariableTypesItemEnum | (string & {})
+>;
 export const FloodlightActivityUserDefinedVariableTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     FloodlightActivityUserDefinedVariableTypesItemEnum,
@@ -5911,7 +5934,7 @@ export const FloodlightActivityDynamicTag = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FloodlightActivityDynamicTag>;
 
 export type FloodlightActivityDynamicTagList =
-  ReadonlyArray<FloodlightActivityDynamicTag>;
+  Array<FloodlightActivityDynamicTag>;
 export const FloodlightActivityDynamicTagList = /*@__PURE__*/ S.Array(
   FloodlightActivityDynamicTag,
 ) as any as S.Schema<FloodlightActivityDynamicTagList>;
@@ -5974,7 +5997,7 @@ export const FloodlightActivityPublisherDynamicTag = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<FloodlightActivityPublisherDynamicTag>;
 
 export type FloodlightActivityPublisherDynamicTagList =
-  ReadonlyArray<FloodlightActivityPublisherDynamicTag>;
+  Array<FloodlightActivityPublisherDynamicTag>;
 export const FloodlightActivityPublisherDynamicTagList = /*@__PURE__*/ S.Array(
   FloodlightActivityPublisherDynamicTag,
 ) as any as S.Schema<FloodlightActivityPublisherDynamicTagList>;
@@ -6018,15 +6041,15 @@ export interface FloodlightActivity {
   /** URL where this tag will be deployed. If specified, must be less than 256 characters long. */
   expectedUrl?: string;
   /** The type of Floodlight tag this activity will generate. This is a required field. */
-  floodlightTagType?: FloodlightActivityFloodlightTagTypeEnum;
+  floodlightTagType?: FloodlightActivityFloodlightTagTypeEnum | (string & {});
   /** Dynamic floodlight tags. */
   defaultTags?: FloodlightActivityDynamicTagList;
   /** Code type used for cache busting in the generated tag. Applicable only when floodlightActivityGroupType is COUNTER and countingMethod is STANDARD_COUNTING or UNIQUE_COUNTING. */
-  cacheBustingType?: FloodlightActivityCacheBustingTypeEnum;
+  cacheBustingType?: FloodlightActivityCacheBustingTypeEnum | (string & {});
   /** Whether the activity is enabled for attribution. */
   attributionEnabled?: boolean;
   /** Required. The conversion category of the activity. */
-  conversionCategory?: FloodlightActivityConversionCategoryEnum;
+  conversionCategory?: FloodlightActivityConversionCategoryEnum | (string & {});
   /** Name of this floodlight activity. This is a required field. Must be less than 129 characters long and cannot contain quotes. */
   name?: string;
   /** Publisher dynamic floodlight tags. */
@@ -6036,17 +6059,19 @@ export interface FloodlightActivity {
   /** Dimension value for the ID of the floodlight configuration. This is a read-only, auto-generated field. */
   floodlightConfigurationIdDimensionValue?: DimensionValue;
   /** Counting method for conversions for this floodlight activity. This is a required field. */
-  countingMethod?: FloodlightActivityCountingMethodEnum;
+  countingMethod?: FloodlightActivityCountingMethodEnum | (string & {});
   /** Advertiser ID of this floodlight activity. If this field is left blank, the value will be copied over either from the activity group's advertiser or the existing activity's advertiser. */
   advertiserId?: string;
   /** Type of the associated floodlight activity group. This is a read-only field. */
-  floodlightActivityGroupType?: FloodlightActivityFloodlightActivityGroupTypeEnum;
+  floodlightActivityGroupType?:
+    | FloodlightActivityFloodlightActivityGroupTypeEnum
+    | (string & {});
   /** General notes or implementation instructions for the tag. */
   notes?: string;
   /** The status of the activity. This can only be set to ACTIVE or ARCHIVED_AND_DISABLED. The ARCHIVED status is no longer supported and cannot be set for Floodlight activities. The DISABLED_POLICY status indicates that a Floodlight activity is violating Google policy. Contact your account manager for more information. */
-  status?: FloodlightActivityStatusEnum;
+  status?: FloodlightActivityStatusEnum | (string & {});
   /** Tag format type for the floodlight activity. If left blank, the tag format will default to HTML. */
-  tagFormat?: FloodlightActivityTagFormatEnum;
+  tagFormat?: FloodlightActivityTagFormatEnum | (string & {});
   /** ID of this floodlight activity. This is a read-only, auto-generated field. */
   id?: string;
   /** Tag string of the associated floodlight activity group. This is a read-only field. */
@@ -6144,7 +6169,7 @@ export interface FloodlightActivityGroup {
   /** Name of this floodlight activity group. This is a required field. Must be less than 65 characters long and cannot contain quotes. */
   name?: string;
   /** Type of the floodlight activity group. This is a required field that is read-only after insertion. */
-  type?: FloodlightActivityGroupTypeEnum;
+  type?: FloodlightActivityGroupTypeEnum | (string & {});
   /** Dimension value for the ID of this floodlight activity group. This is a read-only, auto-generated field. */
   idDimensionValue?: DimensionValue;
   /** Value of the type= parameter in the floodlight tag, which the ad servers use to identify the activity group that the activity belongs to. This is optional: if empty, a new tag string will be generated for you. This string must be 1 to 8 characters long, with valid characters being a-z0-9[ _ ]. This tag string must also be unique among activity groups of the same floodlight configuration. This field is read-only after insertion. */
@@ -6309,9 +6334,11 @@ export const UserDefinedVariableConfigurationVariableTypeEnum =
 /** User Defined Variable configuration. */
 export interface UserDefinedVariableConfiguration {
   /** Data type for the variable. This is a required field. */
-  dataType?: UserDefinedVariableConfigurationDataTypeEnum;
+  dataType?: UserDefinedVariableConfigurationDataTypeEnum | (string & {});
   /** Variable name in the tag. This is a required field. */
-  variableType?: UserDefinedVariableConfigurationVariableTypeEnum;
+  variableType?:
+    | UserDefinedVariableConfigurationVariableTypeEnum
+    | (string & {});
   /** User-friendly name for the variable which will appear in reports. This is a required field, must be less than 64 characters long, and cannot contain the following characters: ""<>". */
   reportName?: string;
 }
@@ -6326,7 +6353,7 @@ export const UserDefinedVariableConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UserDefinedVariableConfiguration>;
 
 export type UserDefinedVariableConfigurationList =
-  ReadonlyArray<UserDefinedVariableConfiguration>;
+  Array<UserDefinedVariableConfiguration>;
 export const UserDefinedVariableConfigurationList = /*@__PURE__*/ S.Array(
   UserDefinedVariableConfiguration,
 ) as any as S.Schema<UserDefinedVariableConfigurationList>;
@@ -6411,7 +6438,7 @@ export const ThirdPartyAuthenticationToken = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ThirdPartyAuthenticationToken>;
 
 export type ThirdPartyAuthenticationTokenList =
-  ReadonlyArray<ThirdPartyAuthenticationToken>;
+  Array<ThirdPartyAuthenticationToken>;
 export const ThirdPartyAuthenticationTokenList = /*@__PURE__*/ S.Array(
   ThirdPartyAuthenticationToken,
 ) as any as S.Schema<ThirdPartyAuthenticationTokenList>;
@@ -6448,7 +6475,9 @@ export interface FloodlightConfiguration {
   /** Whether in-app attribution tracking is enabled. */
   inAppAttributionTrackingEnabled?: boolean;
   /** Types of attribution options for natural search conversions. */
-  naturalSearchConversionAttributionOption?: FloodlightConfigurationNaturalSearchConversionAttributionOptionEnum;
+  naturalSearchConversionAttributionOption?:
+    | FloodlightConfigurationNaturalSearchConversionAttributionOptionEnum
+    | (string & {});
   /** Configuration settings for dynamic and image floodlight tags. */
   tagSettings?: TagSettings;
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#floodlightConfiguration". */
@@ -6465,7 +6494,7 @@ export interface FloodlightConfiguration {
   advertiserId?: string;
   /** List of third-party authentication tokens enabled for this configuration. */
   thirdPartyAuthenticationTokens?: ThirdPartyAuthenticationTokenList;
-  firstDayOfWeek?: FloodlightConfigurationFirstDayOfWeekEnum;
+  firstDayOfWeek?: FloodlightConfigurationFirstDayOfWeekEnum | (string & {});
   /** Settings for Campaign Manager Omniture integration. */
   omnitureSettings?: OmnitureSettings;
   /** Lookback window settings for this floodlight configuration. */
@@ -6644,7 +6673,7 @@ export const PricingSchedulePricingPeriod = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PricingSchedulePricingPeriod>;
 
 export type PricingSchedulePricingPeriodList =
-  ReadonlyArray<PricingSchedulePricingPeriod>;
+  Array<PricingSchedulePricingPeriod>;
 export const PricingSchedulePricingPeriodList = /*@__PURE__*/ S.Array(
   PricingSchedulePricingPeriod,
 ) as any as S.Schema<PricingSchedulePricingPeriodList>;
@@ -6661,13 +6690,13 @@ export const PricingSchedulePricingTypeEnum = /*@__PURE__*/ S.String;
 /** Pricing Schedule */
 export interface PricingSchedule {
   /** Placement cap cost option. */
-  capCostOption?: PricingScheduleCapCostOptionEnum;
+  capCostOption?: PricingScheduleCapCostOptionEnum | (string & {});
   /** Pricing periods for this placement. */
   pricingPeriods?: PricingSchedulePricingPeriodList;
   testingStartDate?: string;
   endDate?: string;
   /** Placement pricing type. This field is required on insertion. */
-  pricingType?: PricingSchedulePricingTypeEnum;
+  pricingType?: PricingSchedulePricingTypeEnum | (string & {});
   /** Floodlight activity ID associated with this placement. This field should be set when placement pricing type is set to PRICING_TYPE_CPA. */
   floodlightActivityId?: string;
   startDate?: string;
@@ -6730,7 +6759,7 @@ export interface PlacementGroup {
   /** Information about the creation of this placement group. This is a read-only field. */
   createInfo?: LastModifiedInfo;
   /** Type of this placement group. A package is a simple group of placements that acts as a single pricing point for a group of tags. A roadblock is a group of placements that not only acts as a single pricing point, but also assumes that all the tags in it will be served at the same time. A roadblock requires one of its assigned placements to be marked as primary for reporting. This field is required on insertion. */
-  placementGroupType?: PlacementGroupPlacementGroupTypeEnum;
+  placementGroupType?: PlacementGroupPlacementGroupTypeEnum | (string & {});
   /** ID of the primary placement, used to calculate the media cost of a roadblock (placement group). Modifying this field will automatically modify the primary field on all affected roadblock child placements. */
   primaryPlacementId?: string;
   /** Dimension value for the ID of the primary placement. This is a read-only, auto-generated field. */
@@ -6750,7 +6779,7 @@ export interface PlacementGroup {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#placementGroup". */
   kind?: string;
   /** Whether this placement group is active, inactive, archived or permanently archived. */
-  activeStatus?: PlacementGroupActiveStatusEnum;
+  activeStatus?: PlacementGroupActiveStatusEnum | (string & {});
 }
 export const PlacementGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6834,8 +6863,9 @@ export type PlacementTagFormatsItemEnum =
   | "PLACEMENT_TAG_TRACKING_THIRD_PARTY_MEASUREMENT";
 export const PlacementTagFormatsItemEnum = /*@__PURE__*/ S.String;
 
-export type PlacementTagFormatsItemEnumList =
-  ReadonlyArray<PlacementTagFormatsItemEnum>;
+export type PlacementTagFormatsItemEnumList = Array<
+  PlacementTagFormatsItemEnum | (string & {})
+>;
 export const PlacementTagFormatsItemEnumList = /*@__PURE__*/ S.Array(
   PlacementTagFormatsItemEnum,
 ) as any as S.Schema<PlacementTagFormatsItemEnumList>;
@@ -6860,7 +6890,7 @@ export interface TagSetting {
   /** Whether click-tracking string should be included in the tags. */
   includeClickTracking?: boolean;
   /** Option specifying how keywords are embedded in ad tags. This setting can be used to specify whether keyword placeholders are inserted in placement tags for this site. Publishers can then add keywords to those placeholders. */
-  keywordOption?: TagSettingKeywordOptionEnum;
+  keywordOption?: TagSettingKeywordOptionEnum | (string & {});
   /** Additional key-values to be included in tags. Each key-value pair must be of the form key=value, and pairs must be separated by a semicolon (;). Keys and values must not contain commas. For example, id=2;color=red is a valid value for this field. */
   additionalKeyValues?: string;
 }
@@ -6910,8 +6940,9 @@ export type YoutubeSettingsCallToActionsItemEnum =
   | "CALL_TO_ACTION_WATCH_NOW";
 export const YoutubeSettingsCallToActionsItemEnum = /*@__PURE__*/ S.String;
 
-export type YoutubeSettingsCallToActionsItemEnumList =
-  ReadonlyArray<YoutubeSettingsCallToActionsItemEnum>;
+export type YoutubeSettingsCallToActionsItemEnumList = Array<
+  YoutubeSettingsCallToActionsItemEnum | (string & {})
+>;
 export const YoutubeSettingsCallToActionsItemEnumList = /*@__PURE__*/ S.Array(
   YoutubeSettingsCallToActionsItemEnum,
 ) as any as S.Schema<YoutubeSettingsCallToActionsItemEnumList>;
@@ -7024,7 +7055,7 @@ export interface VideoSettings {
   /** Publisher specification ID of a video placement. Possible values are: * `1`, Hulu * `2`, NBC * `3`, CBS * `4`, CBS Desktop * `5`, Discovery * `6`, VEVO HD * `7`, VEVO Vertical * `8`, Fox * `9`, CW Network * `10`, Disney * `11`, IGN * `12`, NFL.com * `13`, Turner Broadcasting * `14`, Tubi on Fox * `15`, Hearst Corporation * `16`, Twitch Desktop * `17`, ABC * `18`, Univision * `19`, MLB.com * `20`, MLB.com Mobile * `21`, MLB.com OTT * `22`, Polsat * `23`, TVN * `24`, Mediaset * `25`, Antena 3 * `26`, Mediamond * `27`, Sky Italia * `28`, Tubi on CBS * `29`, Spotify * `30`, Paramount * `31`, Max */
   publisherSpecificationId?: string;
   /** Orientation of a video placement. If this value is set, placement will return assets matching the specified orientation. */
-  orientation?: VideoSettingsOrientationEnum;
+  orientation?: VideoSettingsOrientationEnum | (string & {});
   /** Settings for the transcodes of video creatives served to this placement. If this object is provided, the creative-level transcode settings will be overridden. */
   transcodeSettings?: TranscodeSetting;
   /** Settings for the OBA icon of video creatives served to this placement. If this object is provided, the creative-level OBA settings will be overridden. */
@@ -7093,11 +7124,15 @@ export const MeasurementPartnerWrappingDataLinkStatusEnum =
 /** Placement tag wrapping */
 export interface MeasurementPartnerWrappingData {
   /** Measurement mode for the wrapped placement. */
-  tagWrappingMode?: MeasurementPartnerWrappingDataTagWrappingModeEnum;
+  tagWrappingMode?:
+    | MeasurementPartnerWrappingDataTagWrappingModeEnum
+    | (string & {});
   /** Measurement partner used for wrapping the placement. */
-  measurementPartner?: MeasurementPartnerWrappingDataMeasurementPartnerEnum;
+  measurementPartner?:
+    | MeasurementPartnerWrappingDataMeasurementPartnerEnum
+    | (string & {});
   /** Placement wrapping status. */
-  linkStatus?: MeasurementPartnerWrappingDataLinkStatusEnum;
+  linkStatus?: MeasurementPartnerWrappingDataLinkStatusEnum | (string & {});
   /** Tag provided by the measurement partner during wrapping. */
   wrappedTag?: string;
 }
@@ -7139,7 +7174,7 @@ export const PlacementSingleConversionDomain = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PlacementSingleConversionDomain>;
 
 export type PlacementSingleConversionDomainList =
-  ReadonlyArray<PlacementSingleConversionDomain>;
+  Array<PlacementSingleConversionDomain>;
 export const PlacementSingleConversionDomainList = /*@__PURE__*/ S.Array(
   PlacementSingleConversionDomain,
 ) as any as S.Schema<PlacementSingleConversionDomainList>;
@@ -7162,7 +7197,7 @@ export interface Placement {
   /** Optional. Ad serving platform ID to identify the ad serving platform used by the placement. Measurement partners can use this field to add ad-server specific macros. Possible values are: * `1`, Adelphic * `2`, Adform * `3`, Adobe * `4`, Amobee * `5`, Basis (Centro) * `6`, Beeswax * `7`, Amazon * `8`, DV360 (DBM) * `9`, Innovid * `10`, MediaMath * `11`, Roku OneView DSP * `12`, TabMo Hawk * `13`, The Trade Desk * `14`, Xandr Invest DSP * `15`, Yahoo DSP * `16`, Zeta Global * `17`, Scaleout * `18`, Bidtellect * `19`, Unicorn * `20`, Teads * `21`, Quantcast * `22`, Cognitiv * `23`, AdTheorent * `24`, DeepIntent * `25`, Pulsepoint */
   adServingPlatformId?: string;
   /** VPAID adapter setting for this placement. Controls which VPAID format the measurement adapter will use for in-stream video creatives assigned to this placement. *Note:* Flash is no longer supported. This field now defaults to HTML5 when the following values are provided: FLASH, BOTH. */
-  vpaidAdapterChoice?: PlacementVpaidAdapterChoiceEnum;
+  vpaidAdapterChoice?: PlacementVpaidAdapterChoiceEnum | (string & {});
   /** Name of this placement.This is a required field and must be less than or equal to 512 characters long. */
   name?: string;
   /** Information about the creation of this placement. This is a read-only field. */
@@ -7170,13 +7205,13 @@ export interface Placement {
   /** Tag formats to generate for this placement. This field is required on insertion. Acceptable values are: - "PLACEMENT_TAG_STANDARD" - "PLACEMENT_TAG_IFRAME_JAVASCRIPT" - "PLACEMENT_TAG_IFRAME_ILAYER" - "PLACEMENT_TAG_INTERNAL_REDIRECT" - "PLACEMENT_TAG_JAVASCRIPT" - "PLACEMENT_TAG_INTERSTITIAL_IFRAME_JAVASCRIPT" - "PLACEMENT_TAG_INTERSTITIAL_INTERNAL_REDIRECT" - "PLACEMENT_TAG_INTERSTITIAL_JAVASCRIPT" - "PLACEMENT_TAG_CLICK_COMMANDS" - "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH" - "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH_VAST_3" - "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH_VAST_4" - "PLACEMENT_TAG_TRACKING" - "PLACEMENT_TAG_TRACKING_IFRAME" - "PLACEMENT_TAG_TRACKING_JAVASCRIPT" */
   tagFormats?: PlacementTagFormatsItemEnumList;
   /** Payment source for this placement. This is a required field that is read-only after insertion. */
-  paymentSource?: PlacementPaymentSourceEnum;
+  paymentSource?: PlacementPaymentSourceEnum | (string & {});
   /** Tag settings for this placement. */
   tagSetting?: TagSetting;
   /** Pricing schedule of this placement. This field is required on insertion, specifically subfields startDate, endDate and pricingType. */
   pricingSchedule?: PricingSchedule;
   /** Placement compatibility. DISPLAY and DISPLAY_INTERSTITIAL refer to rendering on desktop, on mobile devices or in mobile apps for regular or interstitial ads respectively. APP and APP_INTERSTITIAL are no longer allowed for new placement insertions. Instead, use DISPLAY or DISPLAY_INTERSTITIAL. IN_STREAM_VIDEO refers to rendering in in-stream video ads developed with the VAST standard. This field is required on insertion. */
-  compatibility?: PlacementCompatibilityEnum;
+  compatibility?: PlacementCompatibilityEnum | (string & {});
   /** Lookback window settings for this placement. */
   lookbackConfiguration?: LookbackConfiguration;
   /** ID of the content category assigned to this placement. */
@@ -7184,7 +7219,7 @@ export interface Placement {
   /** Optional. YouTube settings for the placement. The placement must be enabled for YouTube to use this field. */
   youtubeSettings?: YoutubeSettings;
   /** Whether this placement is active, inactive, archived or permanently archived. */
-  activeStatus?: PlacementActiveStatusEnum;
+  activeStatus?: PlacementActiveStatusEnum | (string & {});
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#placement". */
   kind?: string;
   /** A collection of settings which affect video creatives served through this placement. Applicable to placements with IN_STREAM_VIDEO compatibility. */
@@ -7234,7 +7269,7 @@ export interface Placement {
   /** Measurement partner provided settings for a wrapped placement. */
   partnerWrappingData?: MeasurementPartnerWrappingData;
   /** Third-party placement status. */
-  status?: PlacementStatusEnum;
+  status?: PlacementStatusEnum | (string & {});
   /** Additional sizes associated with this placement. When inserting or updating a placement, only the size ID field is used. */
   additionalSizes?: SizeList;
   /** ID of this placement's group, if applicable. */
@@ -7438,9 +7473,9 @@ export interface ListPopulationTerm {
   /** Will be true if the term should check if the user is in the list and false if the term should check if the user is not in the list. This field is only relevant when type is set to LIST_MEMBERSHIP_TERM. False by default. */
   contains?: boolean;
   /** Comparison operator of this term. This field is only relevant when type is left unset or set to CUSTOM_VARIABLE_TERM or REFERRER_TERM. */
-  operator?: ListPopulationTermOperatorEnum;
+  operator?: ListPopulationTermOperatorEnum | (string & {});
   /** List population term type determines the applicable fields in this object. If left unset or set to CUSTOM_VARIABLE_TERM, then variableName, variableFriendlyName, operator, value, and negation are applicable. If set to LIST_MEMBERSHIP_TERM then remarketingListId and contains are applicable. If set to REFERRER_TERM then operator, value, and negation are applicable. */
-  type?: ListPopulationTermTypeEnum;
+  type?: ListPopulationTermTypeEnum | (string & {});
   /** Whether to negate the comparison result of this term during rule evaluation. This field is only relevant when type is left unset or set to CUSTOM_VARIABLE_TERM or REFERRER_TERM. */
   negation?: boolean;
   /** Friendly name of this term's variable. This is a read-only, auto-generated field. This field is only relevant when type is left unset or set to CUSTOM_VARIABLE_TERM. */
@@ -7463,7 +7498,7 @@ export const ListPopulationTerm = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListPopulationTerm",
 }) as any as S.Schema<ListPopulationTerm>;
 
-export type ListPopulationTermList = ReadonlyArray<ListPopulationTerm>;
+export type ListPopulationTermList = Array<ListPopulationTerm>;
 export const ListPopulationTermList = /*@__PURE__*/ S.Array(
   ListPopulationTerm,
 ) as any as S.Schema<ListPopulationTermList>;
@@ -7481,7 +7516,7 @@ export const ListPopulationClause = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListPopulationClause",
 }) as any as S.Schema<ListPopulationClause>;
 
-export type ListPopulationClauseList = ReadonlyArray<ListPopulationClause>;
+export type ListPopulationClauseList = Array<ListPopulationClause>;
 export const ListPopulationClauseList = /*@__PURE__*/ S.Array(
   ListPopulationClause,
 ) as any as S.Schema<ListPopulationClauseList>;
@@ -7542,7 +7577,7 @@ export interface RemarketingList {
   /** Remarketing list ID. This is a read-only, auto-generated field. */
   id?: string;
   /** Product from which this remarketing list was originated. */
-  listSource?: RemarketingListListSourceEnum;
+  listSource?: RemarketingListListSourceEnum | (string & {});
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#remarketingList". */
   kind?: string;
   /** Dimension value for the advertiser ID that owns this remarketing list. This is a required field. */
@@ -7640,7 +7675,7 @@ export interface SortedDimension {
   /** The name of the dimension. */
   name?: string;
   /** An optional sort order for the dimension column. */
-  sortOrder?: SortedDimensionSortOrderEnum;
+  sortOrder?: SortedDimensionSortOrderEnum | (string & {});
   /** The kind of resource this is, in this case dfareporting#sortedDimension. */
   kind?: string;
 }
@@ -7654,12 +7689,12 @@ export const SortedDimension = /*@__PURE__*/ S.suspend(() =>
   identifier: "SortedDimension",
 }) as any as S.Schema<SortedDimension>;
 
-export type SortedDimensionList = ReadonlyArray<SortedDimension>;
+export type SortedDimensionList = Array<SortedDimension>;
 export const SortedDimensionList = /*@__PURE__*/ S.Array(
   SortedDimension,
 ) as any as S.Schema<SortedDimensionList>;
 
-export type DimensionValueList_ = ReadonlyArray<DimensionValue>;
+export type DimensionValueList_ = Array<DimensionValue>;
 export const DimensionValueList_ = /*@__PURE__*/ S.Array(
   DimensionValue,
 ) as any as S.Schema<DimensionValueList_>;
@@ -7737,8 +7772,9 @@ export type ReportScheduleRepeatsOnWeekDaysItemEnum =
   | "SATURDAY";
 export const ReportScheduleRepeatsOnWeekDaysItemEnum = /*@__PURE__*/ S.String;
 
-export type ReportScheduleRepeatsOnWeekDaysItemEnumList =
-  ReadonlyArray<ReportScheduleRepeatsOnWeekDaysItemEnum>;
+export type ReportScheduleRepeatsOnWeekDaysItemEnumList = Array<
+  ReportScheduleRepeatsOnWeekDaysItemEnum | (string & {})
+>;
 export const ReportScheduleRepeatsOnWeekDaysItemEnumList =
   /*@__PURE__*/ S.Array(
     ReportScheduleRepeatsOnWeekDaysItemEnum,
@@ -7752,7 +7788,7 @@ export interface ReportSchedule {
   startDate?: string;
   expirationDate?: string;
   /** Enum to define for "MONTHLY" scheduled reports whether reports should be repeated on the same day of the month as "startDate" or the same day of the week of the month. Example: If 'startDate' is Monday, April 2nd 2012 (2012-04-02), "DAY_OF_MONTH" would run subsequent reports on the 2nd of every Month, and "WEEK_OF_MONTH" would run subsequent reports on the first Monday of the month. */
-  runsOnDayOfMonth?: ReportScheduleRunsOnDayOfMonthEnum;
+  runsOnDayOfMonth?: ReportScheduleRunsOnDayOfMonthEnum | (string & {});
   /** Defines every how many days, weeks or months the report should be run. Needs to be set when "repeats" is either "DAILY", "WEEKLY" or "MONTHLY". */
   every?: number;
   /** The timezone when the report will run. */
@@ -7972,7 +8008,7 @@ export interface Recipient {
   /** The email address of the recipient. */
   email?: string;
   /** The delivery type for the recipient. */
-  deliveryType?: RecipientDeliveryTypeEnum;
+  deliveryType?: RecipientDeliveryTypeEnum | (string & {});
 }
 export const Recipient = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -7982,7 +8018,7 @@ export const Recipient = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Recipient" }) as any as S.Schema<Recipient>;
 
-export type RecipientList = ReadonlyArray<Recipient>;
+export type RecipientList = Array<Recipient>;
 export const RecipientList = /*@__PURE__*/ S.Array(
   Recipient,
 ) as any as S.Schema<RecipientList>;
@@ -7991,7 +8027,9 @@ export interface ReportDelivery {
   /** Whether the report should be emailed to the report owner. */
   emailOwner?: boolean;
   /** The type of delivery for the owner to receive, if enabled. */
-  emailOwnerDeliveryType?: ReportDeliveryEmailOwnerDeliveryTypeEnum;
+  emailOwnerDeliveryType?:
+    | ReportDeliveryEmailOwnerDeliveryTypeEnum
+    | (string & {});
   /** The message to be sent with each email. */
   message?: string;
   /** The list of recipients to which to email the report. */
@@ -8023,7 +8061,7 @@ export interface Report {
   /** Optional. The report criteria for a report of type "CROSS_MEDIA_REACH". */
   crossMediaReachCriteria?: ReportCrossMediaReachCriteria;
   /** The type of the report. */
-  type?: ReportTypeEnum;
+  type?: ReportTypeEnum | (string & {});
   /** The subaccount ID to which this report belongs if applicable. */
   subAccountId?: string;
   /** The name of the report. */
@@ -8033,7 +8071,7 @@ export interface Report {
   /** The report criteria for a report of type "PATH_TO_CONVERSION". */
   pathToConversionCriteria?: ReportPathToConversionCriteria;
   /** The output format of the report. If not specified, default format is "CSV". Note that the actual format in the completed report file might differ if for instance the report's size exceeds the format's capabilities. "CSV" will then be the fallback format. */
-  format?: ReportFormatEnum;
+  format?: ReportFormatEnum | (string & {});
   /** The filename used when generating report files for this report. */
   fileName?: string;
   /** The kind of resource this is, in this case dfareporting#report. */
@@ -8135,7 +8173,7 @@ export interface SiteContact {
   /** Title or designation of this site contact. */
   title?: string;
   /** Site contact type. */
-  contactType?: SiteContactContactTypeEnum;
+  contactType?: SiteContactContactTypeEnum | (string & {});
 }
 export const SiteContact = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -8150,7 +8188,7 @@ export const SiteContact = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SiteContact" }) as any as S.Schema<SiteContact>;
 
-export type SiteContactList = ReadonlyArray<SiteContact>;
+export type SiteContactList = Array<SiteContact>;
 export const SiteContactList = /*@__PURE__*/ S.Array(
   SiteContact,
 ) as any as S.Schema<SiteContactList>;
@@ -8221,7 +8259,7 @@ export const SiteSkippableSetting = /*@__PURE__*/ S.suspend(() =>
 /** Video Settings */
 export interface SiteVideoSettings {
   /** Orientation of a site template used for video. This will act as default for new placements created under this site. */
-  orientation?: SiteVideoSettingsOrientationEnum;
+  orientation?: SiteVideoSettingsOrientationEnum | (string & {});
   /** Settings for the companion creatives of video creatives served to this site. */
   companionSettings?: SiteCompanionSetting;
   /** Settings for the transcodes of video creatives served to this site. This will act as default for new placements created under this site. */
@@ -8271,7 +8309,9 @@ export interface SiteSettings {
   /** Whether active view creatives are disabled for this site. */
   activeViewOptOut?: boolean;
   /** Default VPAID adapter setting for new placements created under this site. This value will be used to populate the placements.vpaidAdapterChoice field, when no value is specified for the new placement. Controls which VPAID format the measurement adapter will use for in-stream video creatives assigned to the placement. The publisher's specifications will typically determine this setting. For VPAID creatives, the adapter format will match the VPAID format (HTML5 VPAID creatives use the HTML5 adapter). *Note:* Flash is no longer supported. This field now defaults to HTML5 when the following values are provided: FLASH, BOTH. */
-  vpaidAdapterChoiceTemplate?: SiteSettingsVpaidAdapterChoiceTemplateEnum;
+  vpaidAdapterChoiceTemplate?:
+    | SiteSettingsVpaidAdapterChoiceTemplateEnum
+    | (string & {});
   /** Configuration settings for dynamic and image floodlight tags. */
   tagSetting?: TagSetting;
 }
@@ -8429,11 +8469,11 @@ export interface StudioCreative {
   /** Output only. Unique ID of this studio creative. This is a read-only, auto-generated field. */
   id?: string;
   /** Output only. Status of this studio creative. It is a read-only field. */
-  status?: StudioCreativeStatusEnum;
+  status?: StudioCreativeStatusEnum | (string & {});
   /** List of assets associated with this studio creative. It is a required field on insertion. */
   assetIds?: StringList;
   /** Format of this studio creative. This is a required field on insertion. */
-  format?: StudioCreativeFormatEnum;
+  format?: StudioCreativeFormatEnum | (string & {});
   /** Dynamic profile ID of this studio creative. */
   dynamicProfileId?: string;
   /** Backup image asset ID of this studio creative. It is a required field on insertion. */
@@ -8729,7 +8769,7 @@ export const TvCampaignTimepoint = /*@__PURE__*/ S.suspend(() =>
   identifier: "TvCampaignTimepoint",
 }) as any as S.Schema<TvCampaignTimepoint>;
 
-export type TvCampaignTimepointList = ReadonlyArray<TvCampaignTimepoint>;
+export type TvCampaignTimepointList = Array<TvCampaignTimepoint>;
 export const TvCampaignTimepointList = /*@__PURE__*/ S.Array(
   TvCampaignTimepoint,
 ) as any as S.Schema<TvCampaignTimepointList>;
@@ -8876,7 +8916,7 @@ export const UserRolePermissionAvailabilityEnum = /*@__PURE__*/ S.String;
 /** Contains properties of a user role permission. */
 export interface UserRolePermission {
   /** Levels of availability for a user role permission. */
-  availability?: UserRolePermissionAvailabilityEnum;
+  availability?: UserRolePermissionAvailabilityEnum | (string & {});
   /** ID of this user role permission. */
   id?: string;
   /** Name of this user role permission. */
@@ -8919,7 +8959,7 @@ export const GetUserRolesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetUserRolesRequest",
 }) as any as S.Schema<GetUserRolesRequest>;
 
-export type UserRolePermissionList = ReadonlyArray<UserRolePermission>;
+export type UserRolePermissionList = Array<UserRolePermission>;
 export const UserRolePermissionList = /*@__PURE__*/ S.Array(
   UserRolePermission,
 ) as any as S.Schema<UserRolePermissionList>;
@@ -9315,8 +9355,9 @@ export type CreativeAssetMetadataDetectedFeaturesItemEnum =
 export const CreativeAssetMetadataDetectedFeaturesItemEnum =
   /*@__PURE__*/ S.String;
 
-export type CreativeAssetMetadataDetectedFeaturesItemEnumList =
-  ReadonlyArray<CreativeAssetMetadataDetectedFeaturesItemEnum>;
+export type CreativeAssetMetadataDetectedFeaturesItemEnumList = Array<
+  CreativeAssetMetadataDetectedFeaturesItemEnum | (string & {})
+>;
 export const CreativeAssetMetadataDetectedFeaturesItemEnumList =
   /*@__PURE__*/ S.Array(
     CreativeAssetMetadataDetectedFeaturesItemEnum,
@@ -9352,8 +9393,9 @@ export type CreativeAssetMetadataWarnedValidationRulesItemEnum =
 export const CreativeAssetMetadataWarnedValidationRulesItemEnum =
   /*@__PURE__*/ S.String;
 
-export type CreativeAssetMetadataWarnedValidationRulesItemEnumList =
-  ReadonlyArray<CreativeAssetMetadataWarnedValidationRulesItemEnum>;
+export type CreativeAssetMetadataWarnedValidationRulesItemEnumList = Array<
+  CreativeAssetMetadataWarnedValidationRulesItemEnum | (string & {})
+>;
 export const CreativeAssetMetadataWarnedValidationRulesItemEnumList =
   /*@__PURE__*/ S.Array(
     CreativeAssetMetadataWarnedValidationRulesItemEnum,
@@ -9602,7 +9644,7 @@ export interface DynamicTargetingKey {
   /** Name of this dynamic targeting key. This is a required field. Must be less than 256 characters long and cannot contain commas. All characters are converted to lowercase. */
   name?: string;
   /** Type of the object of this dynamic targeting key. This is a required field. */
-  objectType?: DynamicTargetingKeyObjectTypeEnum;
+  objectType?: DynamicTargetingKeyObjectTypeEnum | (string & {});
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#dynamicTargetingKey". */
   kind?: string;
   /** ID of the object of this dynamic targeting key. This is a required field. */
@@ -9962,7 +10004,7 @@ export const StudioCreativeAsset = /*@__PURE__*/ S.suspend(() =>
   identifier: "StudioCreativeAsset",
 }) as any as S.Schema<StudioCreativeAsset>;
 
-export type StudioCreativeAssetList = ReadonlyArray<StudioCreativeAsset>;
+export type StudioCreativeAssetList = Array<StudioCreativeAsset>;
 export const StudioCreativeAssetList = /*@__PURE__*/ S.Array(
   StudioCreativeAsset,
 ) as any as S.Schema<StudioCreativeAssetList>;
@@ -10079,7 +10121,7 @@ export const ListAccountPermissionGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAccountPermissionGroupsRequest",
 }) as any as S.Schema<ListAccountPermissionGroupsRequest>;
 
-export type AccountPermissionGroupList = ReadonlyArray<AccountPermissionGroup>;
+export type AccountPermissionGroupList = Array<AccountPermissionGroup>;
 export const AccountPermissionGroupList = /*@__PURE__*/ S.Array(
   AccountPermissionGroup,
 ) as any as S.Schema<AccountPermissionGroupList>;
@@ -10118,7 +10160,7 @@ export const ListAccountPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAccountPermissionsRequest",
 }) as any as S.Schema<ListAccountPermissionsRequest>;
 
-export type AccountPermissionList = ReadonlyArray<AccountPermission>;
+export type AccountPermissionList = Array<AccountPermission>;
 export const AccountPermissionList = /*@__PURE__*/ S.Array(
   AccountPermission,
 ) as any as S.Schema<AccountPermissionList>;
@@ -10184,7 +10226,7 @@ export const ListAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAccountsRequest",
 }) as any as S.Schema<ListAccountsRequest>;
 
-export type AccountList = ReadonlyArray<Account>;
+export type AccountList = Array<Account>;
 export const AccountList = /*@__PURE__*/ S.Array(
   Account,
 ) as any as S.Schema<AccountList>;
@@ -10259,7 +10301,7 @@ export const ListAccountUserProfilesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAccountUserProfilesRequest",
 }) as any as S.Schema<ListAccountUserProfilesRequest>;
 
-export type AccountUserProfileList = ReadonlyArray<AccountUserProfile>;
+export type AccountUserProfileList = Array<AccountUserProfile>;
 export const AccountUserProfileList = /*@__PURE__*/ S.Array(
   AccountUserProfile,
 ) as any as S.Schema<AccountUserProfileList>;
@@ -10291,9 +10333,7 @@ export type ListAdsTypeEnum =
   | "AD_SERVING_BRAND_SAFE_AD";
 export const ListAdsTypeEnum = /*@__PURE__*/ S.String;
 
-export type ListAdsTypeEnumList = ReadonlyArray<
-  ListAdsTypeEnum | (string & {})
->;
+export type ListAdsTypeEnumList = Array<ListAdsTypeEnum | (string & {})>;
 export const ListAdsTypeEnumList = /*@__PURE__*/ S.Array(
   ListAdsTypeEnum,
 ) as any as S.Schema<ListAdsTypeEnumList>;
@@ -10400,7 +10440,7 @@ export const ListAdsRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "ListAdsRequest" }) as any as S.Schema<ListAdsRequest>;
 
-export type AdList = ReadonlyArray<Ad>;
+export type AdList = Array<Ad>;
 export const AdList = /*@__PURE__*/ S.Array(Ad) as any as S.Schema<AdList>;
 
 /** Ad List Response */
@@ -10464,7 +10504,7 @@ export const ListAdvertiserGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAdvertiserGroupsRequest",
 }) as any as S.Schema<ListAdvertiserGroupsRequest>;
 
-export type AdvertiserGroupList = ReadonlyArray<AdvertiserGroup>;
+export type AdvertiserGroupList = Array<AdvertiserGroup>;
 export const AdvertiserGroupList = /*@__PURE__*/ S.Array(
   AdvertiserGroup,
 ) as any as S.Schema<AdvertiserGroupList>;
@@ -10543,7 +10583,7 @@ export const CampaignSummary = /*@__PURE__*/ S.suspend(() =>
   identifier: "CampaignSummary",
 }) as any as S.Schema<CampaignSummary>;
 
-export type CampaignSummaryList = ReadonlyArray<CampaignSummary>;
+export type CampaignSummaryList = Array<CampaignSummary>;
 export const CampaignSummaryList = /*@__PURE__*/ S.Array(
   CampaignSummary,
 ) as any as S.Schema<CampaignSummaryList>;
@@ -10616,7 +10656,7 @@ export const Invoice = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Invoice" }) as any as S.Schema<Invoice>;
 
-export type InvoiceList = ReadonlyArray<Invoice>;
+export type InvoiceList = Array<Invoice>;
 export const InvoiceList = /*@__PURE__*/ S.Array(
   Invoice,
 ) as any as S.Schema<InvoiceList>;
@@ -10700,7 +10740,7 @@ export const ListAdvertiserLandingPagesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAdvertiserLandingPagesRequest",
 }) as any as S.Schema<ListAdvertiserLandingPagesRequest>;
 
-export type LandingPageList = ReadonlyArray<LandingPage>;
+export type LandingPageList = Array<LandingPage>;
 export const LandingPageList = /*@__PURE__*/ S.Array(
   LandingPage,
 ) as any as S.Schema<LandingPageList>;
@@ -10787,7 +10827,7 @@ export const ListAdvertisersRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAdvertisersRequest",
 }) as any as S.Schema<ListAdvertisersRequest>;
 
-export type AdvertiserList = ReadonlyArray<Advertiser>;
+export type AdvertiserList = Array<Advertiser>;
 export const AdvertiserList = /*@__PURE__*/ S.Array(
   Advertiser,
 ) as any as S.Schema<AdvertiserList>;
@@ -10832,7 +10872,7 @@ export const ListBillingAssignmentsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListBillingAssignmentsRequest",
 }) as any as S.Schema<ListBillingAssignmentsRequest>;
 
-export type BillingAssignmentList = ReadonlyArray<BillingAssignment>;
+export type BillingAssignmentList = Array<BillingAssignment>;
 export const BillingAssignmentList = /*@__PURE__*/ S.Array(
   BillingAssignment,
 ) as any as S.Schema<BillingAssignmentList>;
@@ -10862,7 +10902,7 @@ export type ListBillingProfilesStatusEnum =
   | "ARCHIVED";
 export const ListBillingProfilesStatusEnum = /*@__PURE__*/ S.String;
 
-export type ListBillingProfilesStatusEnumList = ReadonlyArray<
+export type ListBillingProfilesStatusEnumList = Array<
   ListBillingProfilesStatusEnum | (string & {})
 >;
 export const ListBillingProfilesStatusEnumList = /*@__PURE__*/ S.Array(
@@ -10920,7 +10960,7 @@ export const ListBillingProfilesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListBillingProfilesRequest",
 }) as any as S.Schema<ListBillingProfilesRequest>;
 
-export type BillingProfileList = ReadonlyArray<BillingProfile>;
+export type BillingProfileList = Array<BillingProfile>;
 export const BillingProfileList = /*@__PURE__*/ S.Array(
   BillingProfile,
 ) as any as S.Schema<BillingProfileList>;
@@ -10986,7 +11026,7 @@ export const BillingRateTieredRate = /*@__PURE__*/ S.suspend(() =>
   identifier: "BillingRateTieredRate",
 }) as any as S.Schema<BillingRateTieredRate>;
 
-export type BillingRateTieredRateList = ReadonlyArray<BillingRateTieredRate>;
+export type BillingRateTieredRateList = Array<BillingRateTieredRate>;
 export const BillingRateTieredRateList = /*@__PURE__*/ S.Array(
   BillingRateTieredRate,
 ) as any as S.Schema<BillingRateTieredRateList>;
@@ -11060,7 +11100,7 @@ export const BillingRate = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "BillingRate" }) as any as S.Schema<BillingRate>;
 
-export type BillingRateList = ReadonlyArray<BillingRate>;
+export type BillingRateList = Array<BillingRate>;
 export const BillingRateList = /*@__PURE__*/ S.Array(
   BillingRate,
 ) as any as S.Schema<BillingRateList>;
@@ -11158,7 +11198,7 @@ export const ListCampaignCreativeAssociationsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListCampaignCreativeAssociationsRequest>;
 
 export type CampaignCreativeAssociationList =
-  ReadonlyArray<CampaignCreativeAssociation>;
+  Array<CampaignCreativeAssociation>;
 export const CampaignCreativeAssociationList = /*@__PURE__*/ S.Array(
   CampaignCreativeAssociation,
 ) as any as S.Schema<CampaignCreativeAssociationList>;
@@ -11246,7 +11286,7 @@ export const ListCampaignsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListCampaignsRequest",
 }) as any as S.Schema<ListCampaignsRequest>;
 
-export type CampaignList = ReadonlyArray<Campaign>;
+export type CampaignList = Array<Campaign>;
 export const CampaignList = /*@__PURE__*/ S.Array(
   Campaign,
 ) as any as S.Schema<CampaignList>;
@@ -11384,7 +11424,7 @@ export const ListChangeLogsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListChangeLogsRequest",
 }) as any as S.Schema<ListChangeLogsRequest>;
 
-export type ChangeLogList = ReadonlyArray<ChangeLog>;
+export type ChangeLogList = Array<ChangeLog>;
 export const ChangeLogList = /*@__PURE__*/ S.Array(
   ChangeLog,
 ) as any as S.Schema<ChangeLogList>;
@@ -11530,7 +11570,7 @@ export const ListContentCategoriesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListContentCategoriesRequest",
 }) as any as S.Schema<ListContentCategoriesRequest>;
 
-export type ContentCategoryList = ReadonlyArray<ContentCategory>;
+export type ContentCategoryList = Array<ContentCategory>;
 export const ContentCategoryList = /*@__PURE__*/ S.Array(
   ContentCategory,
 ) as any as S.Schema<ContentCategoryList>;
@@ -11633,7 +11673,7 @@ export const ListCreativeFieldsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListCreativeFieldsRequest",
 }) as any as S.Schema<ListCreativeFieldsRequest>;
 
-export type CreativeFieldList = ReadonlyArray<CreativeField>;
+export type CreativeFieldList = Array<CreativeField>;
 export const CreativeFieldList = /*@__PURE__*/ S.Array(
   CreativeField,
 ) as any as S.Schema<CreativeFieldList>;
@@ -11702,7 +11742,7 @@ export const ListCreativeFieldValuesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListCreativeFieldValuesRequest",
 }) as any as S.Schema<ListCreativeFieldValuesRequest>;
 
-export type CreativeFieldValueList = ReadonlyArray<CreativeFieldValue>;
+export type CreativeFieldValueList = Array<CreativeFieldValue>;
 export const CreativeFieldValueList = /*@__PURE__*/ S.Array(
   CreativeFieldValue,
 ) as any as S.Schema<CreativeFieldValueList>;
@@ -11774,7 +11814,7 @@ export const ListCreativeGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListCreativeGroupsRequest",
 }) as any as S.Schema<ListCreativeGroupsRequest>;
 
-export type CreativeGroupList = ReadonlyArray<CreativeGroup>;
+export type CreativeGroupList = Array<CreativeGroup>;
 export const CreativeGroupList = /*@__PURE__*/ S.Array(
   CreativeGroup,
 ) as any as S.Schema<CreativeGroupList>;
@@ -11829,7 +11869,7 @@ export type ListCreativesTypesEnum =
   | "INSTREAM_AUDIO";
 export const ListCreativesTypesEnum = /*@__PURE__*/ S.String;
 
-export type ListCreativesTypesEnumList = ReadonlyArray<
+export type ListCreativesTypesEnumList = Array<
   ListCreativesTypesEnum | (string & {})
 >;
 export const ListCreativesTypesEnumList = /*@__PURE__*/ S.Array(
@@ -11905,7 +11945,7 @@ export const ListCreativesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListCreativesRequest",
 }) as any as S.Schema<ListCreativesRequest>;
 
-export type CreativeList = ReadonlyArray<Creative>;
+export type CreativeList = Array<Creative>;
 export const CreativeList = /*@__PURE__*/ S.Array(
   Creative,
 ) as any as S.Schema<CreativeList>;
@@ -11986,7 +12026,7 @@ export const ListDirectorySitesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListDirectorySitesRequest",
 }) as any as S.Schema<ListDirectorySitesRequest>;
 
-export type DirectorySiteList = ReadonlyArray<DirectorySite>;
+export type DirectorySiteList = Array<DirectorySite>;
 export const DirectorySiteList = /*@__PURE__*/ S.Array(
   DirectorySite,
 ) as any as S.Schema<DirectorySiteList>;
@@ -12049,7 +12089,7 @@ export const ListDynamicTargetingKeysRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListDynamicTargetingKeysRequest",
 }) as any as S.Schema<ListDynamicTargetingKeysRequest>;
 
-export type DynamicTargetingKeyList = ReadonlyArray<DynamicTargetingKey>;
+export type DynamicTargetingKeyList = Array<DynamicTargetingKey>;
 export const DynamicTargetingKeyList = /*@__PURE__*/ S.Array(
   DynamicTargetingKey,
 ) as any as S.Schema<DynamicTargetingKeyList>;
@@ -12082,7 +12122,7 @@ export type ListEventTagsEventTagTypesEnum =
   | "CLICK_THROUGH_EVENT_TAG";
 export const ListEventTagsEventTagTypesEnum = /*@__PURE__*/ S.String;
 
-export type ListEventTagsEventTagTypesEnumList = ReadonlyArray<
+export type ListEventTagsEventTagTypesEnumList = Array<
   ListEventTagsEventTagTypesEnum | (string & {})
 >;
 export const ListEventTagsEventTagTypesEnumList = /*@__PURE__*/ S.Array(
@@ -12139,7 +12179,7 @@ export const ListEventTagsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListEventTagsRequest",
 }) as any as S.Schema<ListEventTagsRequest>;
 
-export type EventTagList = ReadonlyArray<EventTag>;
+export type EventTagList = Array<EventTag>;
 export const EventTagList = /*@__PURE__*/ S.Array(
   EventTag,
 ) as any as S.Schema<EventTagList>;
@@ -12202,7 +12242,7 @@ export const ListFilesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListFilesRequest",
 }) as any as S.Schema<ListFilesRequest>;
 
-export type FileList_ = ReadonlyArray<File>;
+export type FileList_ = Array<File>;
 export const FileList_ = /*@__PURE__*/ S.Array(
   File,
 ) as any as S.Schema<FileList_>;
@@ -12304,7 +12344,7 @@ export const ListFloodlightActivitiesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListFloodlightActivitiesRequest",
 }) as any as S.Schema<ListFloodlightActivitiesRequest>;
 
-export type FloodlightActivityList = ReadonlyArray<FloodlightActivity>;
+export type FloodlightActivityList = Array<FloodlightActivity>;
 export const FloodlightActivityList = /*@__PURE__*/ S.Array(
   FloodlightActivity,
 ) as any as S.Schema<FloodlightActivityList>;
@@ -12388,8 +12428,7 @@ export const ListFloodlightActivityGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListFloodlightActivityGroupsRequest",
 }) as any as S.Schema<ListFloodlightActivityGroupsRequest>;
 
-export type FloodlightActivityGroupList =
-  ReadonlyArray<FloodlightActivityGroup>;
+export type FloodlightActivityGroupList = Array<FloodlightActivityGroup>;
 export const FloodlightActivityGroupList = /*@__PURE__*/ S.Array(
   FloodlightActivityGroup,
 ) as any as S.Schema<FloodlightActivityGroupList>;
@@ -12435,8 +12474,7 @@ export const ListFloodlightConfigurationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListFloodlightConfigurationsRequest",
 }) as any as S.Schema<ListFloodlightConfigurationsRequest>;
 
-export type FloodlightConfigurationList =
-  ReadonlyArray<FloodlightConfiguration>;
+export type FloodlightConfigurationList = Array<FloodlightConfiguration>;
 export const FloodlightConfigurationList = /*@__PURE__*/ S.Array(
   FloodlightConfiguration,
 ) as any as S.Schema<FloodlightConfigurationList>;
@@ -12540,7 +12578,7 @@ export type ListMobileAppsDirectoriesEnum =
   | "GENERIC_CTV_APP_STORE";
 export const ListMobileAppsDirectoriesEnum = /*@__PURE__*/ S.String;
 
-export type ListMobileAppsDirectoriesEnumList = ReadonlyArray<
+export type ListMobileAppsDirectoriesEnumList = Array<
   ListMobileAppsDirectoriesEnum | (string & {})
 >;
 export const ListMobileAppsDirectoriesEnumList = /*@__PURE__*/ S.Array(
@@ -12580,7 +12618,7 @@ export const ListMobileAppsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListMobileAppsRequest",
 }) as any as S.Schema<ListMobileAppsRequest>;
 
-export type MobileAppList = ReadonlyArray<MobileApp>;
+export type MobileAppList = Array<MobileApp>;
 export const MobileAppList = /*@__PURE__*/ S.Array(
   MobileApp,
 ) as any as S.Schema<MobileAppList>;
@@ -12714,7 +12752,7 @@ export type ListPlacementGroupsActiveStatusEnum =
   | "PLACEMENT_STATUS_PERMANENTLY_ARCHIVED";
 export const ListPlacementGroupsActiveStatusEnum = /*@__PURE__*/ S.String;
 
-export type ListPlacementGroupsActiveStatusEnumList = ReadonlyArray<
+export type ListPlacementGroupsActiveStatusEnumList = Array<
   ListPlacementGroupsActiveStatusEnum | (string & {})
 >;
 export const ListPlacementGroupsActiveStatusEnumList = /*@__PURE__*/ S.Array(
@@ -12736,7 +12774,7 @@ export type ListPlacementGroupsPricingTypesEnum =
   | "PRICING_TYPE_CPM_ACTIVEVIEW";
 export const ListPlacementGroupsPricingTypesEnum = /*@__PURE__*/ S.String;
 
-export type ListPlacementGroupsPricingTypesEnumList = ReadonlyArray<
+export type ListPlacementGroupsPricingTypesEnumList = Array<
   ListPlacementGroupsPricingTypesEnum | (string & {})
 >;
 export const ListPlacementGroupsPricingTypesEnumList = /*@__PURE__*/ S.Array(
@@ -12831,7 +12869,7 @@ export const ListPlacementGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListPlacementGroupsRequest",
 }) as any as S.Schema<ListPlacementGroupsRequest>;
 
-export type PlacementGroupList = ReadonlyArray<PlacementGroup>;
+export type PlacementGroupList = Array<PlacementGroup>;
 export const PlacementGroupList = /*@__PURE__*/ S.Array(
   PlacementGroup,
 ) as any as S.Schema<PlacementGroupList>;
@@ -12864,7 +12902,7 @@ export type ListPlacementsCompatibilitiesEnum =
   | "IN_STREAM_AUDIO";
 export const ListPlacementsCompatibilitiesEnum = /*@__PURE__*/ S.String;
 
-export type ListPlacementsCompatibilitiesEnumList = ReadonlyArray<
+export type ListPlacementsCompatibilitiesEnumList = Array<
   ListPlacementsCompatibilitiesEnum | (string & {})
 >;
 export const ListPlacementsCompatibilitiesEnumList = /*@__PURE__*/ S.Array(
@@ -12880,7 +12918,7 @@ export type ListPlacementsPricingTypesEnum =
   | "PRICING_TYPE_CPM_ACTIVEVIEW";
 export const ListPlacementsPricingTypesEnum = /*@__PURE__*/ S.String;
 
-export type ListPlacementsPricingTypesEnumList = ReadonlyArray<
+export type ListPlacementsPricingTypesEnumList = Array<
   ListPlacementsPricingTypesEnum | (string & {})
 >;
 export const ListPlacementsPricingTypesEnumList = /*@__PURE__*/ S.Array(
@@ -12906,7 +12944,7 @@ export type ListPlacementsActiveStatusEnum =
   | "PLACEMENT_STATUS_PERMANENTLY_ARCHIVED";
 export const ListPlacementsActiveStatusEnum = /*@__PURE__*/ S.String;
 
-export type ListPlacementsActiveStatusEnumList = ReadonlyArray<
+export type ListPlacementsActiveStatusEnumList = Array<
   ListPlacementsActiveStatusEnum | (string & {})
 >;
 export const ListPlacementsActiveStatusEnumList = /*@__PURE__*/ S.Array(
@@ -13003,7 +13041,7 @@ export const ListPlacementsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListPlacementsRequest",
 }) as any as S.Schema<ListPlacementsRequest>;
 
-export type PlacementList = ReadonlyArray<Placement>;
+export type PlacementList = Array<Placement>;
 export const PlacementList = /*@__PURE__*/ S.Array(
   Placement,
 ) as any as S.Schema<PlacementList>;
@@ -13069,7 +13107,7 @@ export const ListPlacementStrategiesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListPlacementStrategiesRequest",
 }) as any as S.Schema<ListPlacementStrategiesRequest>;
 
-export type PlacementStrategyList = ReadonlyArray<PlacementStrategy>;
+export type PlacementStrategyList = Array<PlacementStrategy>;
 export const PlacementStrategyList = /*@__PURE__*/ S.Array(
   PlacementStrategy,
 ) as any as S.Schema<PlacementStrategyList>;
@@ -13243,7 +13281,7 @@ export const ListRemarketingListsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListRemarketingListsRequest",
 }) as any as S.Schema<ListRemarketingListsRequest>;
 
-export type RemarketingListList = ReadonlyArray<RemarketingList>;
+export type RemarketingListList = Array<RemarketingList>;
 export const RemarketingListList = /*@__PURE__*/ S.Array(
   RemarketingList,
 ) as any as S.Schema<RemarketingListList>;
@@ -13309,7 +13347,7 @@ export const ListReportsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListReportsRequest",
 }) as any as S.Schema<ListReportsRequest>;
 
-export type ReportList_ = ReadonlyArray<Report>;
+export type ReportList_ = Array<Report>;
 export const ReportList_ = /*@__PURE__*/ S.Array(
   Report,
 ) as any as S.Schema<ReportList_>;
@@ -13442,7 +13480,7 @@ export const ListSitesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListSitesRequest",
 }) as any as S.Schema<ListSitesRequest>;
 
-export type SiteList = ReadonlyArray<Site>;
+export type SiteList = Array<Site>;
 export const SiteList = /*@__PURE__*/ S.Array(
   Site,
 ) as any as S.Schema<SiteList>;
@@ -13554,7 +13592,7 @@ export const ListSubaccountsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListSubaccountsRequest",
 }) as any as S.Schema<ListSubaccountsRequest>;
 
-export type SubaccountList = ReadonlyArray<Subaccount>;
+export type SubaccountList = Array<Subaccount>;
 export const SubaccountList = /*@__PURE__*/ S.Array(
   Subaccount,
 ) as any as S.Schema<SubaccountList>;
@@ -13632,8 +13670,7 @@ export const ListTargetableRemarketingListsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListTargetableRemarketingListsRequest",
 }) as any as S.Schema<ListTargetableRemarketingListsRequest>;
 
-export type TargetableRemarketingListList =
-  ReadonlyArray<TargetableRemarketingList>;
+export type TargetableRemarketingListList = Array<TargetableRemarketingList>;
 export const TargetableRemarketingListList = /*@__PURE__*/ S.Array(
   TargetableRemarketingList,
 ) as any as S.Schema<TargetableRemarketingListList>;
@@ -13703,7 +13740,7 @@ export const ListTargetingTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListTargetingTemplatesRequest",
 }) as any as S.Schema<ListTargetingTemplatesRequest>;
 
-export type TargetingTemplateList = ReadonlyArray<TargetingTemplate>;
+export type TargetingTemplateList = Array<TargetingTemplate>;
 export const TargetingTemplateList = /*@__PURE__*/ S.Array(
   TargetingTemplate,
 ) as any as S.Schema<TargetingTemplateList>;
@@ -13817,7 +13854,7 @@ export const TvCampaignSummary = /*@__PURE__*/ S.suspend(() =>
   identifier: "TvCampaignSummary",
 }) as any as S.Schema<TvCampaignSummary>;
 
-export type TvCampaignSummaryList = ReadonlyArray<TvCampaignSummary>;
+export type TvCampaignSummaryList = Array<TvCampaignSummary>;
 export const TvCampaignSummaryList = /*@__PURE__*/ S.Array(
   TvCampaignSummary,
 ) as any as S.Schema<TvCampaignSummaryList>;
@@ -13851,7 +13888,7 @@ export const ListUserProfilesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListUserProfilesRequest",
 }) as any as S.Schema<ListUserProfilesRequest>;
 
-export type UserProfileList_ = ReadonlyArray<UserProfile>;
+export type UserProfileList_ = Array<UserProfile>;
 export const UserProfileList_ = /*@__PURE__*/ S.Array(
   UserProfile,
 ) as any as S.Schema<UserProfileList_>;
@@ -13893,8 +13930,7 @@ export const ListUserRolePermissionGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListUserRolePermissionGroupsRequest",
 }) as any as S.Schema<ListUserRolePermissionGroupsRequest>;
 
-export type UserRolePermissionGroupList =
-  ReadonlyArray<UserRolePermissionGroup>;
+export type UserRolePermissionGroupList = Array<UserRolePermissionGroup>;
 export const UserRolePermissionGroupList = /*@__PURE__*/ S.Array(
   UserRolePermissionGroup,
 ) as any as S.Schema<UserRolePermissionGroupList>;
@@ -14001,7 +14037,7 @@ export const ListUserRolesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListUserRolesRequest",
 }) as any as S.Schema<ListUserRolesRequest>;
 
-export type UserRoleList = ReadonlyArray<UserRole>;
+export type UserRoleList = Array<UserRole>;
 export const UserRoleList = /*@__PURE__*/ S.Array(
   UserRole,
 ) as any as S.Schema<UserRoleList>;
@@ -14043,7 +14079,7 @@ export const ListVideoFormatsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListVideoFormatsRequest",
 }) as any as S.Schema<ListVideoFormatsRequest>;
 
-export type VideoFormatList = ReadonlyArray<VideoFormat>;
+export type VideoFormatList = Array<VideoFormat>;
 export const VideoFormatList = /*@__PURE__*/ S.Array(
   VideoFormat,
 ) as any as S.Schema<VideoFormatList>;
@@ -14738,7 +14774,7 @@ export const DimensionFilter = /*@__PURE__*/ S.suspend(() =>
   identifier: "DimensionFilter",
 }) as any as S.Schema<DimensionFilter>;
 
-export type DimensionFilterList = ReadonlyArray<DimensionFilter>;
+export type DimensionFilterList = Array<DimensionFilter>;
 export const DimensionFilterList = /*@__PURE__*/ S.Array(
   DimensionFilter,
 ) as any as S.Schema<DimensionFilterList>;
@@ -14832,7 +14868,7 @@ export const SortBy = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SortBy" }) as any as S.Schema<SortBy>;
 
-export type SortByList = ReadonlyArray<SortBy>;
+export type SortByList = Array<SortBy>;
 export const SortByList = /*@__PURE__*/ S.Array(
   SortBy,
 ) as any as S.Schema<SortByList>;
@@ -14900,7 +14936,7 @@ export const ReportDataRow = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ReportDataRow" }) as any as S.Schema<ReportDataRow>;
 
-export type ReportDataRowList = ReadonlyArray<ReportDataRow>;
+export type ReportDataRowList = Array<ReportDataRow>;
 export const ReportDataRowList = /*@__PURE__*/ S.Array(
   ReportDataRow,
 ) as any as S.Schema<ReportDataRowList>;
@@ -14925,7 +14961,7 @@ export const ColumnHeader = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ColumnHeader" }) as any as S.Schema<ColumnHeader>;
 
-export type ColumnHeaderList = ReadonlyArray<ColumnHeader>;
+export type ColumnHeaderList = Array<ColumnHeader>;
 export const ColumnHeaderList = /*@__PURE__*/ S.Array(
   ColumnHeader,
 ) as any as S.Schema<ColumnHeaderList>;
@@ -14987,7 +15023,7 @@ export const Dimension = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Dimension" }) as any as S.Schema<Dimension>;
 
-export type DimensionList = ReadonlyArray<Dimension>;
+export type DimensionList = Array<Dimension>;
 export const DimensionList = /*@__PURE__*/ S.Array(
   Dimension,
 ) as any as S.Schema<DimensionList>;
@@ -15006,7 +15042,7 @@ export const Metric = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Metric" }) as any as S.Schema<Metric>;
 
-export type MetricList = ReadonlyArray<Metric>;
+export type MetricList = Array<Metric>;
 export const MetricList = /*@__PURE__*/ S.Array(
   Metric,
 ) as any as S.Schema<MetricList>;

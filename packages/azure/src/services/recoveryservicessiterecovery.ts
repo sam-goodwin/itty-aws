@@ -151,7 +151,7 @@ export const ClusterRecoveryPointsListByReplicationProtectionClusterRequest =
 
 /** The ClusterRecoveryPoint items on this page */
 export type ClusterRecoveryPointCollectionValueList =
-  ReadonlyArray<ClusterRecoveryPoint>;
+  Array<ClusterRecoveryPoint>;
 export const ClusterRecoveryPointCollectionValueList = /*@__PURE__*/ S.Array(
   ClusterRecoveryPoint,
 ) as any as S.Schema<ClusterRecoveryPointCollectionValueList>;
@@ -366,7 +366,7 @@ export const MigrationRecoveryPoint = /*@__PURE__*/ S.suspend(() =>
 
 /** The MigrationRecoveryPoint items on this page */
 export type MigrationRecoveryPointCollectionValueList =
-  ReadonlyArray<MigrationRecoveryPoint>;
+  Array<MigrationRecoveryPoint>;
 export const MigrationRecoveryPointCollectionValueList = /*@__PURE__*/ S.Array(
   MigrationRecoveryPoint,
 ) as any as S.Schema<MigrationRecoveryPointCollectionValueList>;
@@ -452,8 +452,7 @@ export const OperationsDiscovery = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationsDiscovery>;
 
 /** The OperationsDiscovery items on this page */
-export type OperationsDiscoveryCollectionValueList =
-  ReadonlyArray<OperationsDiscovery>;
+export type OperationsDiscoveryCollectionValueList = Array<OperationsDiscovery>;
 export const OperationsDiscoveryCollectionValueList = /*@__PURE__*/ S.Array(
   OperationsDiscovery,
 ) as any as S.Schema<OperationsDiscoveryCollectionValueList>;
@@ -633,7 +632,7 @@ export const RecoveryPoint = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RecoveryPoint" }) as any as S.Schema<RecoveryPoint>;
 
 /** The RecoveryPoint items on this page */
-export type RecoveryPointCollectionValueList = ReadonlyArray<RecoveryPoint>;
+export type RecoveryPointCollectionValueList = Array<RecoveryPoint>;
 export const RecoveryPointCollectionValueList = /*@__PURE__*/ S.Array(
   RecoveryPoint,
 ) as any as S.Schema<RecoveryPointCollectionValueList>;
@@ -656,7 +655,7 @@ export const RecoveryPointCollection = /*@__PURE__*/ S.suspend(() =>
 
 /** The custom email address for sending emails. */
 export type ConfigureAlertRequestPropertiesCustomEmailAddressesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ConfigureAlertRequestPropertiesCustomEmailAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -716,7 +715,7 @@ export const ReplicationAlertSettingsCreateRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ReplicationAlertSettingsCreateRequest>;
 
 /** The custom email address for sending emails. */
-export type AlertPropertiesCustomEmailAddressesList = ReadonlyArray<string>;
+export type AlertPropertiesCustomEmailAddressesList = Array<string>;
 export const AlertPropertiesCustomEmailAddressesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AlertPropertiesCustomEmailAddressesList>;
@@ -875,7 +874,7 @@ export const Alert = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Alert" }) as any as S.Schema<Alert>;
 
 /** The Alert items on this page */
-export type AlertCollectionValueList = ReadonlyArray<Alert>;
+export type AlertCollectionValueList = Array<Alert>;
 export const AlertCollectionValueList = /*@__PURE__*/ S.Array(
   Alert,
 ) as any as S.Schema<AlertCollectionValueList>;
@@ -964,7 +963,7 @@ export const ReplicationAppliance = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReplicationAppliance>;
 
 /** The ReplicationAppliance items on this page */
-export type ApplianceCollectionValueList = ReadonlyArray<ReplicationAppliance>;
+export type ApplianceCollectionValueList = Array<ReplicationAppliance>;
 export const ApplianceCollectionValueList = /*@__PURE__*/ S.Array(
   ReplicationAppliance,
 ) as any as S.Schema<ApplianceCollectionValueList>;
@@ -1039,7 +1038,7 @@ export const ReplicationEligibilityResultsErrorInfo = /*@__PURE__*/ S.suspend(
 
 /** The error details. */
 export type ReplicationEligibilityResultsPropertiesErrorsList =
-  ReadonlyArray<ReplicationEligibilityResultsErrorInfo>;
+  Array<ReplicationEligibilityResultsErrorInfo>;
 export const ReplicationEligibilityResultsPropertiesErrorsList =
   /*@__PURE__*/ S.Array(
     ReplicationEligibilityResultsErrorInfo,
@@ -1140,7 +1139,7 @@ export const ReplicationEligibilityResults = /*@__PURE__*/ S.suspend(() =>
 
 /** The replication eligibility results details. */
 export type ReplicationEligibilityResultsCollectionValueList =
-  ReadonlyArray<ReplicationEligibilityResults>;
+  Array<ReplicationEligibilityResults>;
 export const ReplicationEligibilityResultsCollectionValueList =
   /*@__PURE__*/ S.Array(
     ReplicationEligibilityResults,
@@ -1247,7 +1246,7 @@ export interface InnerHealthError {
   /** The health error unique id. */
   errorId?: string;
   /** Value indicating whether the health error is customer resolvable. */
-  customerResolvability?: HealthErrorCustomerResolvability;
+  customerResolvability?: HealthErrorCustomerResolvability | (string & {});
 }
 export const InnerHealthError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1271,7 +1270,7 @@ export const InnerHealthError = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InnerHealthError>;
 
 /** The inner health errors. HealthError having a list of HealthError as child errors is problematic. InnerHealthError is used because this will prevent an infinite loop of structures when Hydra tries to auto-generate the contract. We are exposing the related health errors as inner health errors and all API consumers can utilize this in the same fashion as Exception -&gt; InnerException. */
-export type HealthErrorInnerHealthErrorsList = ReadonlyArray<InnerHealthError>;
+export type HealthErrorInnerHealthErrorsList = Array<InnerHealthError>;
 export const HealthErrorInnerHealthErrorsList = /*@__PURE__*/ S.Array(
   InnerHealthError,
 ) as any as S.Schema<HealthErrorInnerHealthErrorsList>;
@@ -1307,7 +1306,7 @@ export interface HealthError {
   /** The health error unique id. */
   errorId?: string;
   /** Value indicating whether the health error is customer resolvable. */
-  customerResolvability?: HealthErrorCustomerResolvability;
+  customerResolvability?: HealthErrorCustomerResolvability | (string & {});
 }
 export const HealthError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1330,7 +1329,7 @@ export const HealthError = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "HealthError" }) as any as S.Schema<HealthError>;
 
 /** The list of errors / warnings capturing details associated with the issue(s). */
-export type EventPropertiesHealthErrorsList = ReadonlyArray<HealthError>;
+export type EventPropertiesHealthErrorsList = Array<HealthError>;
 export const EventPropertiesHealthErrorsList = /*@__PURE__*/ S.Array(
   HealthError,
 ) as any as S.Schema<EventPropertiesHealthErrorsList>;
@@ -1460,7 +1459,7 @@ export const Event = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Event" }) as any as S.Schema<Event>;
 
 /** The Event items on this page */
-export type EventCollectionValueList = ReadonlyArray<Event>;
+export type EventCollectionValueList = Array<Event>;
 export const EventCollectionValueList = /*@__PURE__*/ S.Array(
   Event,
 ) as any as S.Schema<EventCollectionValueList>;
@@ -1543,7 +1542,7 @@ export const FabricSpecificDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FabricSpecificDetails>;
 
 /** Fabric health error details. */
-export type FabricPropertiesHealthErrorDetailsList = ReadonlyArray<HealthError>;
+export type FabricPropertiesHealthErrorDetailsList = Array<HealthError>;
 export const FabricPropertiesHealthErrorDetailsList = /*@__PURE__*/ S.Array(
   HealthError,
 ) as any as S.Schema<FabricPropertiesHealthErrorDetailsList>;
@@ -1839,7 +1838,7 @@ export const Fabric = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Fabric" }) as any as S.Schema<Fabric>;
 
 /** The Fabric items on this page */
-export type FabricCollectionValueList = ReadonlyArray<Fabric>;
+export type FabricCollectionValueList = Array<Fabric>;
 export const FabricCollectionValueList = /*@__PURE__*/ S.Array(
   Fabric,
 ) as any as S.Schema<FabricCollectionValueList>;
@@ -1933,7 +1932,7 @@ export const ReplicationFabricsPurgeResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The VMS to migrate. */
 export type FailoverProcessServerRequestPropertiesVmsToMigrateList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const FailoverProcessServerRequestPropertiesVmsToMigrateList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2165,7 +2164,7 @@ export const ReplicationJobsCancelRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReplicationJobsCancelRequest>;
 
 /** The state/actions applicable on this task. */
-export type ASRTaskAllowedActionsList = ReadonlyArray<string>;
+export type ASRTaskAllowedActionsList = Array<string>;
 export const ASRTaskAllowedActionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ASRTaskAllowedActionsList>;
@@ -2184,7 +2183,7 @@ export const TaskTypeDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TaskTypeDetails>;
 
 /** The child tasks. */
-export type GroupTaskDetailsChildTasksList = ReadonlyArray<ASRTask>;
+export type GroupTaskDetailsChildTasksList = Array<ASRTask>;
 export const GroupTaskDetailsChildTasksList = /*@__PURE__*/ S.Array(
   S.suspend(() => ASRTask),
 ) as any as S.Schema<GroupTaskDetailsChildTasksList>;
@@ -2277,7 +2276,7 @@ export const JobErrorDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<JobErrorDetails>;
 
 /** The task error details. */
-export type ASRTaskErrorsList = ReadonlyArray<JobErrorDetails>;
+export type ASRTaskErrorsList = Array<JobErrorDetails>;
 export const ASRTaskErrorsList = /*@__PURE__*/ S.Array(
   JobErrorDetails,
 ) as any as S.Schema<ASRTaskErrorsList>;
@@ -2327,19 +2326,19 @@ export const ASRTask = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ASRTask" }) as any as S.Schema<ASRTask>;
 
 /** The tasks. */
-export type JobPropertiesTasksList = ReadonlyArray<ASRTask>;
+export type JobPropertiesTasksList = Array<ASRTask>;
 export const JobPropertiesTasksList = /*@__PURE__*/ S.Array(
   ASRTask,
 ) as any as S.Schema<JobPropertiesTasksList>;
 
 /** The errors. */
-export type JobPropertiesErrorsList = ReadonlyArray<JobErrorDetails>;
+export type JobPropertiesErrorsList = Array<JobErrorDetails>;
 export const JobPropertiesErrorsList = /*@__PURE__*/ S.Array(
   JobErrorDetails,
 ) as any as S.Schema<JobPropertiesErrorsList>;
 
 /** The Allowed action the job. */
-export type JobPropertiesAllowedActionsList = ReadonlyArray<string>;
+export type JobPropertiesAllowedActionsList = Array<string>;
 export const JobPropertiesAllowedActionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<JobPropertiesAllowedActionsList>;
@@ -2634,7 +2633,7 @@ export const Job = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Job" }) as any as S.Schema<Job>;
 
 /** The Job items on this page */
-export type JobCollectionValueList = ReadonlyArray<Job>;
+export type JobCollectionValueList = Array<Job>;
 export const JobCollectionValueList = /*@__PURE__*/ S.Array(
   Job,
 ) as any as S.Schema<JobCollectionValueList>;
@@ -2917,7 +2916,7 @@ export const LogicalNetwork = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LogicalNetwork" }) as any as S.Schema<LogicalNetwork>;
 
 /** The LogicalNetwork items on this page */
-export type LogicalNetworkCollectionValueList = ReadonlyArray<LogicalNetwork>;
+export type LogicalNetworkCollectionValueList = Array<LogicalNetwork>;
 export const LogicalNetworkCollectionValueList = /*@__PURE__*/ S.Array(
   LogicalNetwork,
 ) as any as S.Schema<LogicalNetworkCollectionValueList>;
@@ -3043,8 +3042,7 @@ export type ProtectionHealth = "None" | "Normal" | "Warning" | "Critical";
 export const ProtectionHealth = /*@__PURE__*/ S.String;
 
 /** The list of health errors. */
-export type MigrationItemPropertiesHealthErrorsList =
-  ReadonlyArray<HealthError>;
+export type MigrationItemPropertiesHealthErrorsList = Array<HealthError>;
 export const MigrationItemPropertiesHealthErrorsList = /*@__PURE__*/ S.Array(
   HealthError,
 ) as any as S.Schema<MigrationItemPropertiesHealthErrorsList>;
@@ -3062,7 +3060,7 @@ export const MigrationItemOperation = /*@__PURE__*/ S.String;
 
 /** The allowed operations on the migration item based on the current migration state of the item. */
 export type MigrationItemPropertiesAllowedOperationsList =
-  ReadonlyArray<MigrationItemOperation>;
+  Array<MigrationItemOperation>;
 export const MigrationItemPropertiesAllowedOperationsList =
   /*@__PURE__*/ S.Array(
     MigrationItemOperation,
@@ -3111,7 +3109,7 @@ export const CriticalJobHistoryDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** The critical past job details. */
 export type MigrationItemPropertiesCriticalJobHistoryList =
-  ReadonlyArray<CriticalJobHistoryDetails>;
+  Array<CriticalJobHistoryDetails>;
 export const MigrationItemPropertiesCriticalJobHistoryList =
   /*@__PURE__*/ S.Array(
     CriticalJobHistoryDetails,
@@ -3399,7 +3397,7 @@ export const MigrationItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MigrationItem" }) as any as S.Schema<MigrationItem>;
 
 /** The MigrationItem items on this page */
-export type MigrationItemCollectionValueList = ReadonlyArray<MigrationItem>;
+export type MigrationItemCollectionValueList = Array<MigrationItem>;
 export const MigrationItemCollectionValueList = /*@__PURE__*/ S.Array(
   MigrationItem,
 ) as any as S.Schema<MigrationItemCollectionValueList>;
@@ -4390,7 +4388,7 @@ export const NetworkMapping = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NetworkMapping" }) as any as S.Schema<NetworkMapping>;
 
 /** The NetworkMapping items on this page */
-export type NetworkMappingCollectionValueList = ReadonlyArray<NetworkMapping>;
+export type NetworkMappingCollectionValueList = Array<NetworkMapping>;
 export const NetworkMappingCollectionValueList = /*@__PURE__*/ S.Array(
   NetworkMapping,
 ) as any as S.Schema<NetworkMappingCollectionValueList>;
@@ -4574,7 +4572,7 @@ export const ReplicationNetworksGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReplicationNetworksGetRequest>;
 
 /** The list of addresses for the subnet. */
-export type SubnetAddressListList = ReadonlyArray<string>;
+export type SubnetAddressListList = Array<string>;
 export const SubnetAddressListList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SubnetAddressListList>;
@@ -4597,7 +4595,7 @@ export const Subnet = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Subnet" }) as any as S.Schema<Subnet>;
 
 /** The List of subnets. */
-export type NetworkPropertiesSubnetsList = ReadonlyArray<Subnet>;
+export type NetworkPropertiesSubnetsList = Array<Subnet>;
 export const NetworkPropertiesSubnetsList = /*@__PURE__*/ S.Array(
   Subnet,
 ) as any as S.Schema<NetworkPropertiesSubnetsList>;
@@ -4703,7 +4701,7 @@ export const Network = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Network" }) as any as S.Schema<Network>;
 
 /** The Network items on this page */
-export type NetworkCollectionValueList = ReadonlyArray<Network>;
+export type NetworkCollectionValueList = Array<Network>;
 export const NetworkCollectionValueList = /*@__PURE__*/ S.Array(
   Network,
 ) as any as S.Schema<NetworkCollectionValueList>;
@@ -5008,7 +5006,7 @@ export const Policy = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Policy" }) as any as S.Schema<Policy>;
 
 /** The Policy items on this page */
-export type PolicyCollectionValueList = ReadonlyArray<Policy>;
+export type PolicyCollectionValueList = Array<Policy>;
 export const PolicyCollectionValueList = /*@__PURE__*/ S.Array(
   Policy,
 ) as any as S.Schema<PolicyCollectionValueList>;
@@ -5137,7 +5135,7 @@ export const ReplicationProtectableItemsGetRequest = /*@__PURE__*/ S.suspend(
 
 /** The Current protection readiness errors. */
 export type ProtectableItemPropertiesProtectionReadinessErrorsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ProtectableItemPropertiesProtectionReadinessErrorsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5145,7 +5143,7 @@ export const ProtectableItemPropertiesProtectionReadinessErrorsList =
 
 /** The list of replication providers supported for the protectable item. */
 export type ProtectableItemPropertiesSupportedReplicationProvidersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ProtectableItemPropertiesSupportedReplicationProvidersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5298,7 +5296,7 @@ export const ProtectableItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProtectableItem>;
 
 /** The ProtectableItem items on this page */
-export type ProtectableItemCollectionValueList = ReadonlyArray<ProtectableItem>;
+export type ProtectableItemCollectionValueList = Array<ProtectableItem>;
 export const ProtectableItemCollectionValueList = /*@__PURE__*/ S.Array(
   ProtectableItem,
 ) as any as S.Schema<ProtectableItemCollectionValueList>;
@@ -5385,7 +5383,7 @@ export const ReplicationProtectedItemsAddDisksRequest = /*@__PURE__*/ S.suspend(
 
 /** The allowed operations on the Replication protected item. */
 export type ReplicationProtectedItemPropertiesAllowedOperationsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ReplicationProtectedItemPropertiesAllowedOperationsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5393,7 +5391,7 @@ export const ReplicationProtectedItemPropertiesAllowedOperationsList =
 
 /** List of health errors. */
 export type ReplicationProtectedItemPropertiesHealthErrorsList =
-  ReadonlyArray<HealthError>;
+  Array<HealthError>;
 export const ReplicationProtectedItemPropertiesHealthErrorsList =
   /*@__PURE__*/ S.Array(
     HealthError,
@@ -6089,7 +6087,7 @@ export const ReplicationProtectedItem = /*@__PURE__*/ S.suspend(() =>
 
 /** The ReplicationProtectedItem items on this page */
 export type ReplicationProtectedItemCollectionValueList =
-  ReadonlyArray<ReplicationProtectedItem>;
+  Array<ReplicationProtectedItem>;
 export const ReplicationProtectedItemCollectionValueList =
   /*@__PURE__*/ S.Array(
     ReplicationProtectedItem,
@@ -6632,7 +6630,7 @@ export const ResolveHealthError = /*@__PURE__*/ S.suspend(() =>
 
 /** Health errors. */
 export type ResolveHealthInputPropertiesHealthErrorsList =
-  ReadonlyArray<ResolveHealthError>;
+  Array<ResolveHealthError>;
 export const ResolveHealthInputPropertiesHealthErrorsList =
   /*@__PURE__*/ S.Array(
     ResolveHealthError,
@@ -7092,14 +7090,13 @@ export const ReplicationProtectedItemsUnplannedFailoverResponse =
   }) as any as S.Schema<ReplicationProtectedItemsUnplannedFailoverResponse>;
 
 export type IPConfigInputDetailsRecoveryLBBackendAddressPoolIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const IPConfigInputDetailsRecoveryLBBackendAddressPoolIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<IPConfigInputDetailsRecoveryLBBackendAddressPoolIdsList>;
 
-export type IPConfigInputDetailsTfoLBBackendAddressPoolIdsList =
-  ReadonlyArray<string>;
+export type IPConfigInputDetailsTfoLBBackendAddressPoolIdsList = Array<string>;
 export const IPConfigInputDetailsTfoLBBackendAddressPoolIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -7141,8 +7138,7 @@ export const IPConfigInputDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IPConfigInputDetails>;
 
 /** The IP configurations to be used by NIC during test failover and failover. */
-export type VMNicInputDetailsIpConfigsList =
-  ReadonlyArray<IPConfigInputDetails>;
+export type VMNicInputDetailsIpConfigsList = Array<IPConfigInputDetails>;
 export const VMNicInputDetailsIpConfigsList = /*@__PURE__*/ S.Array(
   IPConfigInputDetails,
 ) as any as S.Schema<VMNicInputDetailsIpConfigsList>;
@@ -7201,7 +7197,7 @@ export const VMNicInputDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of VM nic details. */
 export type UpdateReplicationProtectedItemInputPropertiesVmNicsList =
-  ReadonlyArray<VMNicInputDetails>;
+  Array<VMNicInputDetails>;
 export const UpdateReplicationProtectedItemInputPropertiesVmNicsList =
   /*@__PURE__*/ S.Array(
     VMNicInputDetails,
@@ -7517,7 +7513,7 @@ export const ReplicationProtectedItemsUpdateMobilityServiceResponse =
 
 /** The list of individual node recovery points. */
 export type ApplyClusterRecoveryPointInputPropertiesIndividualNodeRecoveryPointsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ApplyClusterRecoveryPointInputPropertiesIndividualNodeRecoveryPointsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -7599,7 +7595,7 @@ export const ReplicationProtectionClustersApplyRecoveryPointRequest =
 
 /** The allowed operations on the Replication protection cluster. */
 export type ReplicationProtectionClusterPropertiesAllowedOperationsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ReplicationProtectionClusterPropertiesAllowedOperationsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -7607,7 +7603,7 @@ export const ReplicationProtectionClusterPropertiesAllowedOperationsList =
 
 /** List of health errors. */
 export type ReplicationProtectionClusterPropertiesHealthErrorsList =
-  ReadonlyArray<HealthError>;
+  Array<HealthError>;
 export const ReplicationProtectionClusterPropertiesHealthErrorsList =
   /*@__PURE__*/ S.Array(
     HealthError,
@@ -7615,7 +7611,7 @@ export const ReplicationProtectionClusterPropertiesHealthErrorsList =
 
 /** The List of cluster Node FQDNs. */
 export type ReplicationProtectionClusterPropertiesClusterNodeFqdnsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ReplicationProtectionClusterPropertiesClusterNodeFqdnsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -7623,7 +7619,7 @@ export const ReplicationProtectionClusterPropertiesClusterNodeFqdnsList =
 
 /** The List of Protected Item Id's. */
 export type ReplicationProtectionClusterPropertiesClusterProtectedItemIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ReplicationProtectionClusterPropertiesClusterProtectedItemIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -7653,7 +7649,7 @@ export const RegisteredClusterNodes = /*@__PURE__*/ S.suspend(() =>
 
 /** The registered node details. */
 export type ReplicationProtectionClusterPropertiesClusterRegisteredNodesList =
-  ReadonlyArray<RegisteredClusterNodes>;
+  Array<RegisteredClusterNodes>;
 export const ReplicationProtectionClusterPropertiesClusterRegisteredNodesList =
   /*@__PURE__*/ S.Array(
     RegisteredClusterNodes,
@@ -7675,7 +7671,7 @@ export const ReplicationClusterProviderSpecificSettings =
 
 /** The allowed operations on the Replication protected item. */
 export type SharedDiskReplicationItemPropertiesAllowedOperationsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const SharedDiskReplicationItemPropertiesAllowedOperationsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -7683,7 +7679,7 @@ export const SharedDiskReplicationItemPropertiesAllowedOperationsList =
 
 /** List of health errors. */
 export type SharedDiskReplicationItemPropertiesHealthErrorsList =
-  ReadonlyArray<HealthError>;
+  Array<HealthError>;
 export const SharedDiskReplicationItemPropertiesHealthErrorsList =
   /*@__PURE__*/ S.Array(
     HealthError,
@@ -7883,7 +7879,7 @@ export const ReplicationProtectionClustersApplyRecoveryPointResponse =
 
 /** The allowed operations on the Replication protection cluster. */
 export type ReplicationProtectionClusterPropertiesInputAllowedOperationsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ReplicationProtectionClusterPropertiesInputAllowedOperationsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -7891,7 +7887,7 @@ export const ReplicationProtectionClusterPropertiesInputAllowedOperationsList =
 
 /** List of health errors. */
 export type ReplicationProtectionClusterPropertiesInputHealthErrorsList =
-  ReadonlyArray<HealthError>;
+  Array<HealthError>;
 export const ReplicationProtectionClusterPropertiesInputHealthErrorsList =
   /*@__PURE__*/ S.Array(
     HealthError,
@@ -7899,7 +7895,7 @@ export const ReplicationProtectionClusterPropertiesInputHealthErrorsList =
 
 /** The List of cluster Node FQDNs. */
 export type ReplicationProtectionClusterPropertiesInputClusterNodeFqdnsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ReplicationProtectionClusterPropertiesInputClusterNodeFqdnsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -7907,7 +7903,7 @@ export const ReplicationProtectionClusterPropertiesInputClusterNodeFqdnsList =
 
 /** The List of Protected Item Id's. */
 export type ReplicationProtectionClusterPropertiesInputClusterProtectedItemIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ReplicationProtectionClusterPropertiesInputClusterProtectedItemIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -7915,7 +7911,7 @@ export const ReplicationProtectionClusterPropertiesInputClusterProtectedItemIdsL
 
 /** The registered node details. */
 export type ReplicationProtectionClusterPropertiesInputClusterRegisteredNodesList =
-  ReadonlyArray<RegisteredClusterNodes>;
+  Array<RegisteredClusterNodes>;
 export const ReplicationProtectionClusterPropertiesInputClusterRegisteredNodesList =
   /*@__PURE__*/ S.Array(
     RegisteredClusterNodes,
@@ -8336,7 +8332,7 @@ export const ReplicationProtectionCluster = /*@__PURE__*/ S.suspend(() =>
 
 /** The ReplicationProtectionCluster items on this page */
 export type ReplicationProtectionClusterCollectionValueList =
-  ReadonlyArray<ReplicationProtectionCluster>;
+  Array<ReplicationProtectionCluster>;
 export const ReplicationProtectionClusterCollectionValueList =
   /*@__PURE__*/ S.Array(
     ReplicationProtectionCluster,
@@ -8864,7 +8860,7 @@ export const ProtectionContainerMappingProviderSpecificDetails =
 
 /** Health error. */
 export type ProtectionContainerMappingPropertiesHealthErrorDetailsList =
-  ReadonlyArray<HealthError>;
+  Array<HealthError>;
 export const ProtectionContainerMappingPropertiesHealthErrorDetailsList =
   /*@__PURE__*/ S.Array(
     HealthError,
@@ -9139,7 +9135,7 @@ export const ProtectionContainerMapping = /*@__PURE__*/ S.suspend(() =>
 
 /** The ProtectionContainerMapping items on this page */
 export type ProtectionContainerMappingCollectionValueList =
-  ReadonlyArray<ProtectionContainerMapping>;
+  Array<ProtectionContainerMapping>;
 export const ProtectionContainerMappingCollectionValueList =
   /*@__PURE__*/ S.Array(
     ProtectionContainerMapping,
@@ -9348,7 +9344,7 @@ export const ReplicationProviderSpecificContainerCreationInput =
 
 /** Provider specific inputs for container creation. */
 export type CreateProtectionContainerInputPropertiesProviderSpecificInputList =
-  ReadonlyArray<ReplicationProviderSpecificContainerCreationInput>;
+  Array<ReplicationProviderSpecificContainerCreationInput>;
 export const CreateProtectionContainerInputPropertiesProviderSpecificInputList =
   /*@__PURE__*/ S.Array(
     ReplicationProviderSpecificContainerCreationInput,
@@ -9715,8 +9711,7 @@ export const ProtectionContainer = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProtectionContainer>;
 
 /** The ProtectionContainer items on this page */
-export type ProtectionContainerCollectionValueList =
-  ReadonlyArray<ProtectionContainer>;
+export type ProtectionContainerCollectionValueList = Array<ProtectionContainer>;
 export const ProtectionContainerCollectionValueList = /*@__PURE__*/ S.Array(
   ProtectionContainer,
 ) as any as S.Schema<ProtectionContainerCollectionValueList>;
@@ -10210,7 +10205,7 @@ export const ReplicationProtectionIntent = /*@__PURE__*/ S.suspend(() =>
 
 /** The ReplicationProtectionIntent items on this page */
 export type ReplicationProtectionIntentCollectionValueList =
-  ReadonlyArray<ReplicationProtectionIntent>;
+  Array<ReplicationProtectionIntent>;
 export const ReplicationProtectionIntentCollectionValueList =
   /*@__PURE__*/ S.Array(
     ReplicationProtectionIntent,
@@ -10262,7 +10257,7 @@ export const RecoveryPlanProtectedItem = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of protected items. */
 export type RecoveryPlanGroupReplicationProtectedItemsList =
-  ReadonlyArray<RecoveryPlanProtectedItem>;
+  Array<RecoveryPlanProtectedItem>;
 export const RecoveryPlanGroupReplicationProtectedItemsList =
   /*@__PURE__*/ S.Array(
     RecoveryPlanProtectedItem,
@@ -10287,8 +10282,9 @@ export type ReplicationProtectedItemOperation =
 export const ReplicationProtectedItemOperation = /*@__PURE__*/ S.String;
 
 /** The list of failover types. */
-export type RecoveryPlanActionFailoverTypesList =
-  ReadonlyArray<ReplicationProtectedItemOperation>;
+export type RecoveryPlanActionFailoverTypesList = Array<
+  ReplicationProtectedItemOperation | (string & {})
+>;
 export const RecoveryPlanActionFailoverTypesList = /*@__PURE__*/ S.Array(
   ReplicationProtectedItemOperation,
 ) as any as S.Schema<RecoveryPlanActionFailoverTypesList>;
@@ -10300,8 +10296,9 @@ export type PossibleOperationsDirections =
 export const PossibleOperationsDirections = /*@__PURE__*/ S.String;
 
 /** The list of failover directions. */
-export type RecoveryPlanActionFailoverDirectionsList =
-  ReadonlyArray<PossibleOperationsDirections>;
+export type RecoveryPlanActionFailoverDirectionsList = Array<
+  PossibleOperationsDirections | (string & {})
+>;
 export const RecoveryPlanActionFailoverDirectionsList = /*@__PURE__*/ S.Array(
   PossibleOperationsDirections,
 ) as any as S.Schema<RecoveryPlanActionFailoverDirectionsList>;
@@ -10342,15 +10339,13 @@ export const RecoveryPlanAction = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RecoveryPlanAction>;
 
 /** The start group actions. */
-export type RecoveryPlanGroupStartGroupActionsList =
-  ReadonlyArray<RecoveryPlanAction>;
+export type RecoveryPlanGroupStartGroupActionsList = Array<RecoveryPlanAction>;
 export const RecoveryPlanGroupStartGroupActionsList = /*@__PURE__*/ S.Array(
   RecoveryPlanAction,
 ) as any as S.Schema<RecoveryPlanGroupStartGroupActionsList>;
 
 /** The end group actions. */
-export type RecoveryPlanGroupEndGroupActionsList =
-  ReadonlyArray<RecoveryPlanAction>;
+export type RecoveryPlanGroupEndGroupActionsList = Array<RecoveryPlanAction>;
 export const RecoveryPlanGroupEndGroupActionsList = /*@__PURE__*/ S.Array(
   RecoveryPlanAction,
 ) as any as S.Schema<RecoveryPlanGroupEndGroupActionsList>;
@@ -10358,7 +10353,7 @@ export const RecoveryPlanGroupEndGroupActionsList = /*@__PURE__*/ S.Array(
 /** Recovery plan group details. */
 export interface RecoveryPlanGroup {
   /** The group type. */
-  groupType: RecoveryPlanGroupType;
+  groupType: RecoveryPlanGroupType | (string & {});
   /** The list of protected items. */
   replicationProtectedItems?: RecoveryPlanGroupReplicationProtectedItemsList;
   /** The start group actions. */
@@ -10381,7 +10376,7 @@ export const RecoveryPlanGroup = /*@__PURE__*/ S.suspend(() =>
 
 /** The recovery plan groups. */
 export type CreateRecoveryPlanInputPropertiesGroupsList =
-  ReadonlyArray<RecoveryPlanGroup>;
+  Array<RecoveryPlanGroup>;
 export const CreateRecoveryPlanInputPropertiesGroupsList =
   /*@__PURE__*/ S.Array(
     RecoveryPlanGroup,
@@ -10402,7 +10397,7 @@ export const RecoveryPlanProviderSpecificInput = /*@__PURE__*/ S.suspend(() =>
 
 /** The provider specific input. */
 export type CreateRecoveryPlanInputPropertiesProviderSpecificInputList =
-  ReadonlyArray<RecoveryPlanProviderSpecificInput>;
+  Array<RecoveryPlanProviderSpecificInput>;
 export const CreateRecoveryPlanInputPropertiesProviderSpecificInputList =
   /*@__PURE__*/ S.Array(
     RecoveryPlanProviderSpecificInput,
@@ -10468,22 +10463,21 @@ export const ReplicationRecoveryPlansCreateRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ReplicationRecoveryPlansCreateRequest>;
 
 /** The list of replication providers. */
-export type RecoveryPlanPropertiesReplicationProvidersList =
-  ReadonlyArray<string>;
+export type RecoveryPlanPropertiesReplicationProvidersList = Array<string>;
 export const RecoveryPlanPropertiesReplicationProvidersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<RecoveryPlanPropertiesReplicationProvidersList>;
 
 /** The list of allowed operations. */
-export type RecoveryPlanPropertiesAllowedOperationsList = ReadonlyArray<string>;
+export type RecoveryPlanPropertiesAllowedOperationsList = Array<string>;
 export const RecoveryPlanPropertiesAllowedOperationsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<RecoveryPlanPropertiesAllowedOperationsList>;
 
 /** The recovery plan groups. */
-export type RecoveryPlanPropertiesGroupsList = ReadonlyArray<RecoveryPlanGroup>;
+export type RecoveryPlanPropertiesGroupsList = Array<RecoveryPlanGroup>;
 export const RecoveryPlanPropertiesGroupsList = /*@__PURE__*/ S.Array(
   RecoveryPlanGroup,
 ) as any as S.Schema<RecoveryPlanPropertiesGroupsList>;
@@ -10503,7 +10497,7 @@ export const RecoveryPlanProviderSpecificDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** The provider id and provider specific details. */
 export type RecoveryPlanPropertiesProviderSpecificDetailsList =
-  ReadonlyArray<RecoveryPlanProviderSpecificDetails>;
+  Array<RecoveryPlanProviderSpecificDetails>;
 export const RecoveryPlanPropertiesProviderSpecificDetailsList =
   /*@__PURE__*/ S.Array(
     RecoveryPlanProviderSpecificDetails,
@@ -10856,7 +10850,7 @@ export const RecoveryPlan = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RecoveryPlan" }) as any as S.Schema<RecoveryPlan>;
 
 /** The RecoveryPlan items on this page */
-export type RecoveryPlanCollectionValueList = ReadonlyArray<RecoveryPlan>;
+export type RecoveryPlanCollectionValueList = Array<RecoveryPlan>;
 export const RecoveryPlanCollectionValueList = /*@__PURE__*/ S.Array(
   RecoveryPlan,
 ) as any as S.Schema<RecoveryPlanCollectionValueList>;
@@ -10893,7 +10887,7 @@ export const RecoveryPlanProviderSpecificFailoverInput =
 
 /** The provider specific properties. */
 export type RecoveryPlanPlannedFailoverInputPropertiesProviderSpecificDetailsList =
-  ReadonlyArray<RecoveryPlanProviderSpecificFailoverInput>;
+  Array<RecoveryPlanProviderSpecificFailoverInput>;
 export const RecoveryPlanPlannedFailoverInputPropertiesProviderSpecificDetailsList =
   /*@__PURE__*/ S.Array(
     RecoveryPlanProviderSpecificFailoverInput,
@@ -11037,7 +11031,7 @@ export const ReplicationRecoveryPlansReprotectResponse =
 
 /** The provider specific properties. */
 export type RecoveryPlanTestFailoverInputPropertiesProviderSpecificDetailsList =
-  ReadonlyArray<RecoveryPlanProviderSpecificFailoverInput>;
+  Array<RecoveryPlanProviderSpecificFailoverInput>;
 export const RecoveryPlanTestFailoverInputPropertiesProviderSpecificDetailsList =
   /*@__PURE__*/ S.Array(
     RecoveryPlanProviderSpecificFailoverInput,
@@ -11208,7 +11202,7 @@ export const SourceSiteOperations = /*@__PURE__*/ S.String;
 
 /** The provider specific properties. */
 export type RecoveryPlanUnplannedFailoverInputPropertiesProviderSpecificDetailsList =
-  ReadonlyArray<RecoveryPlanProviderSpecificFailoverInput>;
+  Array<RecoveryPlanProviderSpecificFailoverInput>;
 export const RecoveryPlanUnplannedFailoverInputPropertiesProviderSpecificDetailsList =
   /*@__PURE__*/ S.Array(
     RecoveryPlanProviderSpecificFailoverInput,
@@ -11298,7 +11292,7 @@ export const ReplicationRecoveryPlansUnplannedFailoverResponse =
 
 /** The recovery plan groups. */
 export type UpdateRecoveryPlanInputPropertiesGroupsList =
-  ReadonlyArray<RecoveryPlanGroup>;
+  Array<RecoveryPlanGroup>;
 export const UpdateRecoveryPlanInputPropertiesGroupsList =
   /*@__PURE__*/ S.Array(
     RecoveryPlanGroup,
@@ -11468,7 +11462,7 @@ export const ReplicationRecoveryServicesProvidersCreateRequest =
 
 /** The scenarios allowed on this provider. */
 export type RecoveryServicesProviderPropertiesAllowedScenariosList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RecoveryServicesProviderPropertiesAllowedScenariosList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -11476,7 +11470,7 @@ export const RecoveryServicesProviderPropertiesAllowedScenariosList =
 
 /** The recovery services provider health error details. */
 export type RecoveryServicesProviderPropertiesHealthErrorDetailsList =
-  ReadonlyArray<HealthError>;
+  Array<HealthError>;
 export const RecoveryServicesProviderPropertiesHealthErrorDetailsList =
   /*@__PURE__*/ S.Array(
     HealthError,
@@ -11789,7 +11783,7 @@ export const RecoveryServicesProvider = /*@__PURE__*/ S.suspend(() =>
 
 /** The RecoveryServicesProvider items on this page */
 export type RecoveryServicesProviderCollectionValueList =
-  ReadonlyArray<RecoveryServicesProvider>;
+  Array<RecoveryServicesProvider>;
 export const RecoveryServicesProviderCollectionValueList =
   /*@__PURE__*/ S.Array(
     RecoveryServicesProvider,
@@ -12192,7 +12186,7 @@ export const StorageClassificationMapping = /*@__PURE__*/ S.suspend(() =>
 
 /** The StorageClassificationMapping items on this page */
 export type StorageClassificationMappingCollectionValueList =
-  ReadonlyArray<StorageClassificationMapping>;
+  Array<StorageClassificationMapping>;
 export const StorageClassificationMappingCollectionValueList =
   /*@__PURE__*/ S.Array(
     StorageClassificationMapping,
@@ -12377,7 +12371,7 @@ export const StorageClassification = /*@__PURE__*/ S.suspend(() =>
 
 /** The StorageClassification items on this page */
 export type StorageClassificationCollectionValueList =
-  ReadonlyArray<StorageClassification>;
+  Array<StorageClassification>;
 export const StorageClassificationCollectionValueList = /*@__PURE__*/ S.Array(
   StorageClassification,
 ) as any as S.Schema<StorageClassificationCollectionValueList>;
@@ -12454,7 +12448,7 @@ export const ReplicationVaultHealthGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReplicationVaultHealthGetRequest>;
 
 /** The list of errors on the vault. */
-export type VaultHealthPropertiesVaultErrorsList = ReadonlyArray<HealthError>;
+export type VaultHealthPropertiesVaultErrorsList = Array<HealthError>;
 export const VaultHealthPropertiesVaultErrorsList = /*@__PURE__*/ S.Array(
   HealthError,
 ) as any as S.Schema<VaultHealthPropertiesVaultErrorsList>;
@@ -12480,7 +12474,7 @@ export const Severity = /*@__PURE__*/ S.String;
 
 /** The list of affected resource correlation Ids. This can be used to uniquely identify the count of items affected by a specific category and severity as well as count of item affected by an specific issue. */
 export type HealthErrorSummaryAffectedResourceCorrelationIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const HealthErrorSummaryAffectedResourceCorrelationIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -12520,7 +12514,7 @@ export const HealthErrorSummary = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HealthErrorSummary>;
 
 /** The list of summary of health errors across the resources under the container. */
-export type ResourceHealthSummaryIssuesList = ReadonlyArray<HealthErrorSummary>;
+export type ResourceHealthSummaryIssuesList = Array<HealthErrorSummary>;
 export const ResourceHealthSummaryIssuesList = /*@__PURE__*/ S.Array(
   HealthErrorSummary,
 ) as any as S.Schema<ResourceHealthSummaryIssuesList>;
@@ -12858,7 +12852,7 @@ export const VaultSetting = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VaultSetting" }) as any as S.Schema<VaultSetting>;
 
 /** The VaultSetting items on this page */
-export type VaultSettingCollectionValueList = ReadonlyArray<VaultSetting>;
+export type VaultSettingCollectionValueList = Array<VaultSetting>;
 export const VaultSettingCollectionValueList = /*@__PURE__*/ S.Array(
   VaultSetting,
 ) as any as S.Schema<VaultSettingCollectionValueList>;
@@ -12939,7 +12933,7 @@ export const ReplicationvCentersCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReplicationvCentersCreateRequest>;
 
 /** The health errors for this VCenter. */
-export type VCenterPropertiesHealthErrorsList = ReadonlyArray<HealthError>;
+export type VCenterPropertiesHealthErrorsList = Array<HealthError>;
 export const VCenterPropertiesHealthErrorsList = /*@__PURE__*/ S.Array(
   HealthError,
 ) as any as S.Schema<VCenterPropertiesHealthErrorsList>;
@@ -13162,7 +13156,7 @@ export const VCenter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VCenter" }) as any as S.Schema<VCenter>;
 
 /** The VCenter items on this page */
-export type VCenterCollectionValueList = ReadonlyArray<VCenter>;
+export type VCenterCollectionValueList = Array<VCenter>;
 export const VCenterCollectionValueList = /*@__PURE__*/ S.Array(
   VCenter,
 ) as any as S.Schema<VCenterCollectionValueList>;
@@ -13343,7 +13337,7 @@ export const OSVersionWrapper = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OSVersionWrapper>;
 
 /** The list of version for operating system. */
-export type SupportedOSDetailsOsVersionsList = ReadonlyArray<OSVersionWrapper>;
+export type SupportedOSDetailsOsVersionsList = Array<OSVersionWrapper>;
 export const SupportedOSDetailsOsVersionsList = /*@__PURE__*/ S.Array(
   OSVersionWrapper,
 ) as any as S.Schema<SupportedOSDetailsOsVersionsList>;
@@ -13368,8 +13362,7 @@ export const SupportedOSDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SupportedOSDetails>;
 
 /** The list of supported operating systems. */
-export type SupportedOSPropertySupportedOsList =
-  ReadonlyArray<SupportedOSDetails>;
+export type SupportedOSPropertySupportedOsList = Array<SupportedOSDetails>;
 export const SupportedOSPropertySupportedOsList = /*@__PURE__*/ S.Array(
   SupportedOSDetails,
 ) as any as S.Schema<SupportedOSPropertySupportedOsList>;
@@ -13392,7 +13385,7 @@ export const SupportedOSProperty = /*@__PURE__*/ S.suspend(() =>
 
 /** The supported operating systems property list. */
 export type SupportedOSPropertiesSupportedOsListList =
-  ReadonlyArray<SupportedOSProperty>;
+  Array<SupportedOSProperty>;
 export const SupportedOSPropertiesSupportedOsListList = /*@__PURE__*/ S.Array(
   SupportedOSProperty,
 ) as any as S.Schema<SupportedOSPropertiesSupportedOsListList>;
@@ -13491,14 +13484,13 @@ export const ComputeSizeErrorDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** The reasons why the target compute size is not applicable for the protected item. */
 export type TargetComputeSizePropertiesErrorsList =
-  ReadonlyArray<ComputeSizeErrorDetails>;
+  Array<ComputeSizeErrorDetails>;
 export const TargetComputeSizePropertiesErrorsList = /*@__PURE__*/ S.Array(
   ComputeSizeErrorDetails,
 ) as any as S.Schema<TargetComputeSizePropertiesErrorsList>;
 
 /** The supported HyperV Generations. */
-export type TargetComputeSizePropertiesHyperVGenerationsList =
-  ReadonlyArray<string>;
+export type TargetComputeSizePropertiesHyperVGenerationsList = Array<string>;
 export const TargetComputeSizePropertiesHyperVGenerationsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -13569,8 +13561,7 @@ export const TargetComputeSize = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TargetComputeSize>;
 
 /** The TargetComputeSize items on this page */
-export type TargetComputeSizeCollectionValueList =
-  ReadonlyArray<TargetComputeSize>;
+export type TargetComputeSizeCollectionValueList = Array<TargetComputeSize>;
 export const TargetComputeSizeCollectionValueList = /*@__PURE__*/ S.Array(
   TargetComputeSize,
 ) as any as S.Schema<TargetComputeSizeCollectionValueList>;

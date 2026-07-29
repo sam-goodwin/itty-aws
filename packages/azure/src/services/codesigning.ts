@@ -206,8 +206,7 @@ export const Certificate = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Certificate" }) as any as S.Schema<Certificate>;
 
 /** List of renewed certificates. */
-export type CertificateProfilePropertiesCertificatesList =
-  ReadonlyArray<Certificate>;
+export type CertificateProfilePropertiesCertificatesList = Array<Certificate>;
 export const CertificateProfilePropertiesCertificatesList =
   /*@__PURE__*/ S.Array(
     Certificate,
@@ -416,8 +415,7 @@ export const CertificateProfile = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CertificateProfile>;
 
 /** The CertificateProfile items on this page */
-export type CertificateProfileListResultValueList =
-  ReadonlyArray<CertificateProfile>;
+export type CertificateProfileListResultValueList = Array<CertificateProfile>;
 export const CertificateProfileListResultValueList = /*@__PURE__*/ S.Array(
   CertificateProfile,
 ) as any as S.Schema<CertificateProfileListResultValueList>;
@@ -553,7 +551,7 @@ export const SkuName = /*@__PURE__*/ S.String;
 /** SKU of the artifact signing account. */
 export interface AccountSku {
   /** Name of the SKU. */
-  name: SkuName;
+  name: SkuName | (string & {});
 }
 export const AccountSku = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -824,8 +822,7 @@ export const CodeSigningAccount = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CodeSigningAccount>;
 
 /** The CodeSigningAccount items on this page */
-export type CodeSigningAccountListResultValueList =
-  ReadonlyArray<CodeSigningAccount>;
+export type CodeSigningAccountListResultValueList = Array<CodeSigningAccount>;
 export const CodeSigningAccountListResultValueList = /*@__PURE__*/ S.Array(
   CodeSigningAccount,
 ) as any as S.Schema<CodeSigningAccountListResultValueList>;
@@ -1039,7 +1036,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = ReadonlyArray<Operation>;
+export type OperationsListResponseValueList = Array<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;

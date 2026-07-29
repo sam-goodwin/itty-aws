@@ -851,7 +851,7 @@ export type ResourceType =
   | "AWS::ApiGateway::Method";
 export const ResourceType = /*@__PURE__*/ S.String;
 
-export type ResourceTypeList = ResourceType[];
+export type ResourceTypeList = (ResourceType | (string & {}))[];
 export const ResourceTypeList = /*@__PURE__*/ S.Array(ResourceType);
 export interface AssociateResourceTypesRequest {
   ConfigurationRecorderArn: string;
@@ -893,7 +893,7 @@ export type RecordingStrategyType =
 export const RecordingStrategyType = /*@__PURE__*/ S.String;
 
 export interface RecordingStrategy {
-  useOnly?: RecordingStrategyType;
+  useOnly?: RecordingStrategyType | (string & {});
 }
 export const RecordingStrategy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ useOnly: S.optional(RecordingStrategyType) }),
@@ -920,13 +920,13 @@ export type RecordingFrequency = "CONTINUOUS" | "DAILY";
 export const RecordingFrequency = /*@__PURE__*/ S.String;
 
 export type Description = string;
-export type RecordingModeResourceTypesList = ResourceType[];
+export type RecordingModeResourceTypesList = (ResourceType | (string & {}))[];
 export const RecordingModeResourceTypesList =
   /*@__PURE__*/ S.Array(ResourceType);
 export interface RecordingModeOverride {
   description?: string;
   resourceTypes: ResourceType[];
-  recordingFrequency: RecordingFrequency;
+  recordingFrequency: RecordingFrequency | (string & {});
 }
 export const RecordingModeOverride = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -942,7 +942,7 @@ export const RecordingModeOverrides = /*@__PURE__*/ S.Array(
   RecordingModeOverride,
 );
 export interface RecordingMode {
-  recordingFrequency: RecordingFrequency;
+  recordingFrequency: RecordingFrequency | (string & {});
   recordingModeOverrides?: RecordingModeOverride[];
 }
 export const RecordingMode = /*@__PURE__*/ S.suspend(() =>
@@ -961,7 +961,7 @@ export interface ConfigurationRecorder {
   roleARN?: string;
   recordingGroup?: RecordingGroup;
   recordingMode?: RecordingMode;
-  recordingScope?: RecordingScope;
+  recordingScope?: RecordingScope | (string & {});
   servicePrincipal?: string;
 }
 export const ConfigurationRecorder = /*@__PURE__*/ S.suspend(() =>
@@ -994,7 +994,7 @@ export interface AggregateResourceIdentifier {
   SourceAccountId: string;
   SourceRegion: string;
   ResourceId: string;
-  ResourceType: ResourceType;
+  ResourceType: ResourceType | (string & {});
   ResourceName?: string;
 }
 export const AggregateResourceIdentifier = /*@__PURE__*/ S.suspend(() =>
@@ -1128,7 +1128,7 @@ export const BatchGetAggregateResourceConfigResponse = /*@__PURE__*/ S.suspend(
   identifier: "BatchGetAggregateResourceConfigResponse",
 }) as any as S.Schema<BatchGetAggregateResourceConfigResponse>;
 export interface ResourceKey {
-  resourceType: ResourceType;
+  resourceType: ResourceType | (string & {});
   resourceId: string;
 }
 export const ResourceKey = /*@__PURE__*/ S.suspend(() =>
@@ -2220,9 +2220,9 @@ export type MaximumExecutionFrequency =
 export const MaximumExecutionFrequency = /*@__PURE__*/ S.String;
 
 export interface SourceDetail {
-  EventSource?: EventSource;
-  MessageType?: MessageType;
-  MaximumExecutionFrequency?: MaximumExecutionFrequency;
+  EventSource?: EventSource | (string & {});
+  MessageType?: MessageType | (string & {});
+  MaximumExecutionFrequency?: MaximumExecutionFrequency | (string & {});
 }
 export const SourceDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2250,7 +2250,7 @@ export const CustomPolicyDetails = /*@__PURE__*/ S.suspend(() =>
   identifier: "CustomPolicyDetails",
 }) as any as S.Schema<CustomPolicyDetails>;
 export interface Source {
-  Owner: Owner;
+  Owner: Owner | (string & {});
   SourceIdentifier?: string;
   SourceDetails?: SourceDetail[];
   CustomPolicyDetails?: CustomPolicyDetails;
@@ -2271,7 +2271,7 @@ export type ConfigRuleState =
 export const ConfigRuleState = /*@__PURE__*/ S.String;
 
 export interface EvaluationModeConfiguration {
-  Mode?: EvaluationMode;
+  Mode?: EvaluationMode | (string & {});
 }
 export const EvaluationModeConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Mode: S.optional(EvaluationMode) }),
@@ -2290,11 +2290,11 @@ export interface ConfigRule {
   Scope?: Scope;
   Source: Source;
   InputParameters?: string;
-  MaximumExecutionFrequency?: MaximumExecutionFrequency;
-  ConfigRuleState?: ConfigRuleState;
+  MaximumExecutionFrequency?: MaximumExecutionFrequency | (string & {});
+  ConfigRuleState?: ConfigRuleState | (string & {});
   CreatedBy?: string;
   EvaluationModes?: EvaluationModeConfiguration[];
-  RuleEvaluationVisibility?: RuleEvaluationVisibility;
+  RuleEvaluationVisibility?: RuleEvaluationVisibility | (string & {});
 }
 export const ConfigRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2399,7 +2399,7 @@ export type ResourceTypeValue = string;
 export type ResourceTypeValueList = string[];
 export const ResourceTypeValueList = /*@__PURE__*/ S.Array(S.String);
 export interface AggregatorFilterResourceType {
-  Type?: AggregatorFilterType;
+  Type?: AggregatorFilterType | (string & {});
   Value?: string[];
 }
 export const AggregatorFilterResourceType = /*@__PURE__*/ S.suspend(() =>
@@ -2414,7 +2414,7 @@ export type ServicePrincipalValue = string;
 export type ServicePrincipalValueList = string[];
 export const ServicePrincipalValueList = /*@__PURE__*/ S.Array(S.String);
 export interface AggregatorFilterServicePrincipal {
-  Type?: AggregatorFilterType;
+  Type?: AggregatorFilterType | (string & {});
   Value?: string[];
 }
 export const AggregatorFilterServicePrincipal = /*@__PURE__*/ S.suspend(() =>
@@ -2957,7 +2957,7 @@ export const DescribeDeliveryChannelsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeDeliveryChannelsRequest",
 }) as any as S.Schema<DescribeDeliveryChannelsRequest>;
 export interface ConfigSnapshotDeliveryProperties {
-  deliveryFrequency?: MaximumExecutionFrequency;
+  deliveryFrequency?: MaximumExecutionFrequency | (string & {});
 }
 export const ConfigSnapshotDeliveryProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ deliveryFrequency: S.optional(MaximumExecutionFrequency) }),
@@ -3131,7 +3131,7 @@ export interface OrganizationManagedRuleMetadata {
   Description?: string;
   RuleIdentifier: string;
   InputParameters?: string;
-  MaximumExecutionFrequency?: MaximumExecutionFrequency;
+  MaximumExecutionFrequency?: MaximumExecutionFrequency | (string & {});
   ResourceTypesScope?: string[];
   ResourceIdScope?: string;
   TagKeyScope?: string;
@@ -3157,8 +3157,10 @@ export type OrganizationConfigRuleTriggerType =
   | "ScheduledNotification";
 export const OrganizationConfigRuleTriggerType = /*@__PURE__*/ S.String;
 
-export type OrganizationConfigRuleTriggerTypes =
-  OrganizationConfigRuleTriggerType[];
+export type OrganizationConfigRuleTriggerTypes = (
+  | OrganizationConfigRuleTriggerType
+  | (string & {})
+)[];
 export const OrganizationConfigRuleTriggerTypes = /*@__PURE__*/ S.Array(
   OrganizationConfigRuleTriggerType,
 );
@@ -3167,7 +3169,7 @@ export interface OrganizationCustomRuleMetadata {
   LambdaFunctionArn: string;
   OrganizationConfigRuleTriggerTypes: OrganizationConfigRuleTriggerType[];
   InputParameters?: string;
-  MaximumExecutionFrequency?: MaximumExecutionFrequency;
+  MaximumExecutionFrequency?: MaximumExecutionFrequency | (string & {});
   ResourceTypesScope?: string[];
   ResourceIdScope?: string;
   TagKeyScope?: string;
@@ -3195,8 +3197,10 @@ export type OrganizationConfigRuleTriggerTypeNoSN =
   | "OversizedConfigurationItemChangeNotification";
 export const OrganizationConfigRuleTriggerTypeNoSN = /*@__PURE__*/ S.String;
 
-export type OrganizationConfigRuleTriggerTypeNoSNs =
-  OrganizationConfigRuleTriggerTypeNoSN[];
+export type OrganizationConfigRuleTriggerTypeNoSNs = (
+  | OrganizationConfigRuleTriggerTypeNoSN
+  | (string & {})
+)[];
 export const OrganizationConfigRuleTriggerTypeNoSNs = /*@__PURE__*/ S.Array(
   OrganizationConfigRuleTriggerTypeNoSN,
 );
@@ -3574,7 +3578,7 @@ export type ResourceValueType = "RESOURCE_ID";
 export const ResourceValueType = /*@__PURE__*/ S.String;
 
 export interface ResourceValue {
-  Value: ResourceValueType;
+  Value: ResourceValueType | (string & {});
 }
 export const ResourceValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Value: ResourceValueType }),
@@ -3629,7 +3633,7 @@ export type AutoRemediationAttempts = number;
 export type AutoRemediationAttemptSeconds = number;
 export interface RemediationConfiguration {
   ConfigRuleName: string;
-  TargetType: RemediationTargetType;
+  TargetType: RemediationTargetType | (string & {});
   TargetId: string;
   TargetVersion?: string;
   Parameters?: { [key: string]: RemediationParameterValue | undefined };
@@ -5125,7 +5129,9 @@ export interface ResourceDetails {
   ResourceId: string;
   ResourceType: string;
   ResourceConfiguration: string;
-  ResourceConfigurationSchemaType?: ResourceConfigurationSchemaType;
+  ResourceConfigurationSchemaType?:
+    | ResourceConfigurationSchemaType
+    | (string & {});
 }
 export const ResourceDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5875,7 +5881,7 @@ export type OrderingTimestamp = Date;
 export interface Evaluation {
   ComplianceResourceType: string;
   ComplianceResourceId: string;
-  ComplianceType: ComplianceType;
+  ComplianceType: ComplianceType | (string & {});
   Annotation?: string;
   OrderingTimestamp: Date;
 }

@@ -112,7 +112,7 @@ export interface MembershipState {
   /** This field is never set by the Hub Service. */
   updateTime?: string;
   /** Output only. The current state of the Membership resource. */
-  code?: MembershipStateCodeEnum;
+  code?: MembershipStateCodeEnum | (string & {});
 }
 export const MembershipState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -222,7 +222,7 @@ export const ResourceManifest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ResourceManifest",
 }) as any as S.Schema<ResourceManifest>;
 
-export type ResourceManifestList = ReadonlyArray<ResourceManifest>;
+export type ResourceManifestList = Array<ResourceManifest>;
 export const ResourceManifestList = /*@__PURE__*/ S.Array(
   ResourceManifest,
 ) as any as S.Schema<ResourceManifestList>;
@@ -280,7 +280,7 @@ export interface OnPremCluster {
   /** Immutable. Self-link of the Google Cloud resource for the GKE On-Prem cluster. For example: //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/vmwareClusters/my-cluster //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/bareMetalClusters/my-cluster */
   resourceLink?: string;
   /** Immutable. The on prem cluster's type. */
-  clusterType?: OnPremClusterClusterTypeEnum;
+  clusterType?: OnPremClusterClusterTypeEnum | (string & {});
 }
 export const OnPremCluster = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -413,7 +413,7 @@ export interface Membership {
   /** Output only. For clusters using Connect, the timestamp of the most recent connection established with Google Cloud. This time is updated every several minutes, not continuously. For clusters that do not use GKE Connect, or that have never connected successfully, this field will be unset. */
   lastConnectionTime?: string;
   /** Output only. The type of the membership. */
-  membershipType?: MembershipMembershipTypeEnum;
+  membershipType?: MembershipMembershipTypeEnum | (string & {});
   /** Optional. Google Cloud labels for this membership. These labels are not leveraged by multi-cluster features, instead, we prefer cluster labels, which can be set on GKE cluster or other cluster types. */
   labels?: StringMap;
   /** Optional. An externally-generated and managed ID for this Membership. This ID may be modified after creation, but this is not recommended. For GKE clusters, external_id is managed by the Hub API and updates will be ignored. The ID must match the regex: `a-zA-Z0-9*` If this Membership represents a Kubernetes cluster, this value should be set to the UID of the `kube-system` namespace object. */
@@ -429,7 +429,7 @@ export interface Membership {
   /** Output only. Google-generated UUID for this resource. This is unique across all Membership resources. If a Membership resource is deleted and another resource with the same name is created, it gets a different unique_id. */
   uniqueId?: string;
   /** Optional. The infrastructure type this Membership is running on. */
-  infrastructureType?: MembershipInfrastructureTypeEnum;
+  infrastructureType?: MembershipInfrastructureTypeEnum | (string & {});
 }
 export const Membership = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -485,7 +485,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -646,7 +646,7 @@ export const ConnectAgentResource = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConnectAgentResource",
 }) as any as S.Schema<ConnectAgentResource>;
 
-export type ConnectAgentResourceList = ReadonlyArray<ConnectAgentResource>;
+export type ConnectAgentResourceList = Array<ConnectAgentResource>;
 export const ConnectAgentResourceList = /*@__PURE__*/ S.Array(
   ConnectAgentResource,
 ) as any as S.Schema<ConnectAgentResourceList>;
@@ -728,7 +728,7 @@ export const GetIamPolicyProjectsLocationsMembershipsRequest =
     identifier: "GetIamPolicyProjectsLocationsMembershipsRequest",
   }) as any as S.Schema<GetIamPolicyProjectsLocationsMembershipsRequest>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -770,7 +770,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
-export type BindingList = ReadonlyArray<Binding>;
+export type BindingList = Array<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -785,7 +785,7 @@ export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
 export interface AuditLogConfig {
   /** The log type that this config enables. */
-  logType?: AuditLogConfigLogTypeEnum;
+  logType?: AuditLogConfigLogTypeEnum | (string & {});
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
   exemptedMembers?: StringList;
 }
@@ -796,7 +796,7 @@ export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
-export type AuditLogConfigList = ReadonlyArray<AuditLogConfig>;
+export type AuditLogConfigList = Array<AuditLogConfig>;
 export const AuditLogConfigList = /*@__PURE__*/ S.Array(
   AuditLogConfig,
 ) as any as S.Schema<AuditLogConfigList>;
@@ -815,7 +815,7 @@ export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
-export type AuditConfigList = ReadonlyArray<AuditConfig>;
+export type AuditConfigList = Array<AuditConfig>;
 export const AuditConfigList = /*@__PURE__*/ S.Array(
   AuditConfig,
 ) as any as S.Schema<AuditConfigList>;
@@ -949,7 +949,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = ReadonlyArray<Location>;
+export type LocationList = Array<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -1001,7 +1001,7 @@ export const ListProjectsLocationsMembershipsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsMembershipsRequest",
 }) as any as S.Schema<ListProjectsLocationsMembershipsRequest>;
 
-export type MembershipList = ReadonlyArray<Membership>;
+export type MembershipList = Array<Membership>;
 export const MembershipList = /*@__PURE__*/ S.Array(
   Membership,
 ) as any as S.Schema<MembershipList>;
@@ -1056,7 +1056,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type OperationList = ReadonlyArray<Operation>;
+export type OperationList = Array<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;

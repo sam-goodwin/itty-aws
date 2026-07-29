@@ -107,7 +107,7 @@ export const AddDataLakeStoreWithAccountParameters = /*@__PURE__*/ S.suspend(
 
 /** The list of Data Lake Store accounts associated with this account. */
 export type CreateDataLakeAnalyticsAccountPropertiesDataLakeStoreAccountsList =
-  ReadonlyArray<AddDataLakeStoreWithAccountParameters>;
+  Array<AddDataLakeStoreWithAccountParameters>;
 export const CreateDataLakeAnalyticsAccountPropertiesDataLakeStoreAccountsList =
   /*@__PURE__*/ S.Array(
     AddDataLakeStoreWithAccountParameters,
@@ -148,7 +148,7 @@ export const AddStorageAccountWithAccountParameters = /*@__PURE__*/ S.suspend(
 
 /** The list of Azure Blob Storage accounts associated with this account. */
 export type CreateDataLakeAnalyticsAccountPropertiesStorageAccountsList =
-  ReadonlyArray<AddStorageAccountWithAccountParameters>;
+  Array<AddStorageAccountWithAccountParameters>;
 export const CreateDataLakeAnalyticsAccountPropertiesStorageAccountsList =
   /*@__PURE__*/ S.Array(
     AddStorageAccountWithAccountParameters,
@@ -204,7 +204,7 @@ export const CreateComputePolicyWithAccountParameters = /*@__PURE__*/ S.suspend(
 
 /** The list of compute policies associated with this account. */
 export type CreateDataLakeAnalyticsAccountPropertiesComputePoliciesList =
-  ReadonlyArray<CreateComputePolicyWithAccountParameters>;
+  Array<CreateComputePolicyWithAccountParameters>;
 export const CreateDataLakeAnalyticsAccountPropertiesComputePoliciesList =
   /*@__PURE__*/ S.Array(
     CreateComputePolicyWithAccountParameters,
@@ -246,7 +246,7 @@ export const CreateFirewallRuleWithAccountParameters = /*@__PURE__*/ S.suspend(
 
 /** The list of firewall rules associated with this account. */
 export type CreateDataLakeAnalyticsAccountPropertiesFirewallRulesList =
-  ReadonlyArray<CreateFirewallRuleWithAccountParameters>;
+  Array<CreateFirewallRuleWithAccountParameters>;
 export const CreateDataLakeAnalyticsAccountPropertiesFirewallRulesList =
   /*@__PURE__*/ S.Array(
     CreateFirewallRuleWithAccountParameters,
@@ -445,7 +445,7 @@ export const DataLakeStoreAccountInformation = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of Data Lake Store accounts associated with this account. */
 export type DataLakeAnalyticsAccountPropertiesDataLakeStoreAccountsList =
-  ReadonlyArray<DataLakeStoreAccountInformation>;
+  Array<DataLakeStoreAccountInformation>;
 export const DataLakeAnalyticsAccountPropertiesDataLakeStoreAccountsList =
   /*@__PURE__*/ S.Array(
     DataLakeStoreAccountInformation,
@@ -453,7 +453,7 @@ export const DataLakeAnalyticsAccountPropertiesDataLakeStoreAccountsList =
 
 /** The list of Data Lake Store accounts associated with this account. */
 export type DataLakeAnalyticsAccountPropertiesPublicDataLakeStoreAccountsList =
-  ReadonlyArray<DataLakeStoreAccountInformation>;
+  Array<DataLakeStoreAccountInformation>;
 export const DataLakeAnalyticsAccountPropertiesPublicDataLakeStoreAccountsList =
   /*@__PURE__*/ S.Array(
     DataLakeStoreAccountInformation,
@@ -496,7 +496,7 @@ export const StorageAccountInformation = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of Azure Blob Storage accounts associated with this account. */
 export type DataLakeAnalyticsAccountPropertiesStorageAccountsList =
-  ReadonlyArray<StorageAccountInformation>;
+  Array<StorageAccountInformation>;
 export const DataLakeAnalyticsAccountPropertiesStorageAccountsList =
   /*@__PURE__*/ S.Array(
     StorageAccountInformation,
@@ -553,7 +553,7 @@ export const ComputePolicy = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of compute policies associated with this account. */
 export type DataLakeAnalyticsAccountPropertiesComputePoliciesList =
-  ReadonlyArray<ComputePolicy>;
+  Array<ComputePolicy>;
 export const DataLakeAnalyticsAccountPropertiesComputePoliciesList =
   /*@__PURE__*/ S.Array(
     ComputePolicy,
@@ -617,7 +617,7 @@ export const HiveMetastore = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of hiveMetastores associated with this account. */
 export type DataLakeAnalyticsAccountPropertiesHiveMetastoresList =
-  ReadonlyArray<HiveMetastore>;
+  Array<HiveMetastore>;
 export const DataLakeAnalyticsAccountPropertiesHiveMetastoresList =
   /*@__PURE__*/ S.Array(
     HiveMetastore,
@@ -670,7 +670,7 @@ export const VirtualNetworkRule = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of virtualNetwork rules associated with this account. */
 export type DataLakeAnalyticsAccountPropertiesVirtualNetworkRulesList =
-  ReadonlyArray<VirtualNetworkRule>;
+  Array<VirtualNetworkRule>;
 export const DataLakeAnalyticsAccountPropertiesVirtualNetworkRulesList =
   /*@__PURE__*/ S.Array(
     VirtualNetworkRule,
@@ -714,7 +714,7 @@ export const FirewallRule = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of firewall rules associated with this account. */
 export type DataLakeAnalyticsAccountPropertiesFirewallRulesList =
-  ReadonlyArray<FirewallRule>;
+  Array<FirewallRule>;
 export const DataLakeAnalyticsAccountPropertiesFirewallRulesList =
   /*@__PURE__*/ S.Array(
     FirewallRule,
@@ -1134,7 +1134,7 @@ export const DataLakeAnalyticsAccountBasic = /*@__PURE__*/ S.suspend(() =>
 
 /** The results of the list operation. */
 export type DataLakeAnalyticsAccountListResultValueList =
-  ReadonlyArray<DataLakeAnalyticsAccountBasic>;
+  Array<DataLakeAnalyticsAccountBasic>;
 export const DataLakeAnalyticsAccountListResultValueList =
   /*@__PURE__*/ S.Array(
     DataLakeAnalyticsAccountBasic,
@@ -1240,7 +1240,7 @@ export const UpdateDataLakeStoreWithAccountParameters = /*@__PURE__*/ S.suspend(
 
 /** The list of Data Lake Store accounts associated with this account. */
 export type UpdateDataLakeAnalyticsAccountPropertiesDataLakeStoreAccountsList =
-  ReadonlyArray<UpdateDataLakeStoreWithAccountParameters>;
+  Array<UpdateDataLakeStoreWithAccountParameters>;
 export const UpdateDataLakeAnalyticsAccountPropertiesDataLakeStoreAccountsList =
   /*@__PURE__*/ S.Array(
     UpdateDataLakeStoreWithAccountParameters,
@@ -1281,7 +1281,7 @@ export const UpdateStorageAccountWithAccountParameters =
 
 /** The list of Azure Blob storage accounts associated with this account. */
 export type UpdateDataLakeAnalyticsAccountPropertiesStorageAccountsList =
-  ReadonlyArray<UpdateStorageAccountWithAccountParameters>;
+  Array<UpdateStorageAccountWithAccountParameters>;
 export const UpdateDataLakeAnalyticsAccountPropertiesStorageAccountsList =
   /*@__PURE__*/ S.Array(
     UpdateStorageAccountWithAccountParameters,
@@ -1335,7 +1335,7 @@ export const UpdateComputePolicyWithAccountParameters = /*@__PURE__*/ S.suspend(
 
 /** The list of compute policies associated with this account. */
 export type UpdateDataLakeAnalyticsAccountPropertiesComputePoliciesList =
-  ReadonlyArray<UpdateComputePolicyWithAccountParameters>;
+  Array<UpdateComputePolicyWithAccountParameters>;
 export const UpdateDataLakeAnalyticsAccountPropertiesComputePoliciesList =
   /*@__PURE__*/ S.Array(
     UpdateComputePolicyWithAccountParameters,
@@ -1376,7 +1376,7 @@ export const UpdateFirewallRuleWithAccountParameters = /*@__PURE__*/ S.suspend(
 
 /** The list of firewall rules associated with this account. */
 export type UpdateDataLakeAnalyticsAccountPropertiesFirewallRulesList =
-  ReadonlyArray<UpdateFirewallRuleWithAccountParameters>;
+  Array<UpdateFirewallRuleWithAccountParameters>;
 export const UpdateDataLakeAnalyticsAccountPropertiesFirewallRulesList =
   /*@__PURE__*/ S.Array(
     UpdateFirewallRuleWithAccountParameters,
@@ -1704,7 +1704,7 @@ export const ComputePoliciesListByAccountRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ComputePoliciesListByAccountRequest>;
 
 /** The results of the list operation. */
-export type ComputePolicyListResultValueList = ReadonlyArray<ComputePolicy>;
+export type ComputePolicyListResultValueList = Array<ComputePolicy>;
 export const ComputePolicyListResultValueList = /*@__PURE__*/ S.Array(
   ComputePolicy,
 ) as any as S.Schema<ComputePolicyListResultValueList>;
@@ -1945,7 +1945,7 @@ export const DataLakeStoreAccountsListByAccountRequest =
 
 /** The results of the list operation. */
 export type DataLakeStoreAccountInformationListResultValueList =
-  ReadonlyArray<DataLakeStoreAccountInformation>;
+  Array<DataLakeStoreAccountInformation>;
 export const DataLakeStoreAccountInformationListResultValueList =
   /*@__PURE__*/ S.Array(
     DataLakeStoreAccountInformation,
@@ -2130,7 +2130,7 @@ export const FirewallRulesListByAccountRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FirewallRulesListByAccountRequest>;
 
 /** The results of the list operation. */
-export type FirewallRuleListResultValueList = ReadonlyArray<FirewallRule>;
+export type FirewallRuleListResultValueList = Array<FirewallRule>;
 export const FirewallRuleListResultValueList = /*@__PURE__*/ S.Array(
   FirewallRule,
 ) as any as S.Schema<FirewallRuleListResultValueList>;
@@ -2313,7 +2313,7 @@ export const OperationMetaMetricAvailabilitiesSpecification =
 
 /** The availabilities for OperationMetaMetricSpecification. */
 export type OperationMetaMetricSpecificationAvailabilitiesList =
-  ReadonlyArray<OperationMetaMetricAvailabilitiesSpecification>;
+  Array<OperationMetaMetricAvailabilitiesSpecification>;
 export const OperationMetaMetricSpecificationAvailabilitiesList =
   /*@__PURE__*/ S.Array(
     OperationMetaMetricAvailabilitiesSpecification,
@@ -2350,7 +2350,7 @@ export const OperationMetaMetricSpecification = /*@__PURE__*/ S.suspend(() =>
 
 /** The metricSpecifications for OperationMetaServiceSpecification. */
 export type OperationMetaServiceSpecificationMetricSpecificationsList =
-  ReadonlyArray<OperationMetaMetricSpecification>;
+  Array<OperationMetaMetricSpecification>;
 export const OperationMetaServiceSpecificationMetricSpecificationsList =
   /*@__PURE__*/ S.Array(
     OperationMetaMetricSpecification,
@@ -2376,7 +2376,7 @@ export const OperationMetaLogSpecification = /*@__PURE__*/ S.suspend(() =>
 
 /** The logSpecifications for OperationMetaServiceSpecification. */
 export type OperationMetaServiceSpecificationLogSpecificationsList =
-  ReadonlyArray<OperationMetaLogSpecification>;
+  Array<OperationMetaLogSpecification>;
 export const OperationMetaServiceSpecificationLogSpecificationsList =
   /*@__PURE__*/ S.Array(
     OperationMetaLogSpecification,
@@ -2438,7 +2438,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** The results of the list operation. */
-export type OperationListResultValueList = ReadonlyArray<Operation>;
+export type OperationListResultValueList = Array<Operation>;
 export const OperationListResultValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationListResultValueList>;
@@ -2693,7 +2693,7 @@ export const StorageAccountsListByAccountRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The results of the list operation. */
 export type StorageAccountInformationListResultValueList =
-  ReadonlyArray<StorageAccountInformation>;
+  Array<StorageAccountInformation>;
 export const StorageAccountInformationListResultValueList =
   /*@__PURE__*/ S.Array(
     StorageAccountInformation,
@@ -2760,8 +2760,7 @@ export const SasTokenInformation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SasTokenInformation>;
 
 /** The results of the list operation. */
-export type SasTokenInformationListResultValueList =
-  ReadonlyArray<SasTokenInformation>;
+export type SasTokenInformationListResultValueList = Array<SasTokenInformation>;
 export const SasTokenInformationListResultValueList = /*@__PURE__*/ S.Array(
   SasTokenInformation,
 ) as any as S.Schema<SasTokenInformationListResultValueList>;
@@ -2834,8 +2833,7 @@ export const StorageContainer = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StorageContainer>;
 
 /** The results of the list operation. */
-export type StorageContainerListResultValueList =
-  ReadonlyArray<StorageContainer>;
+export type StorageContainerListResultValueList = Array<StorageContainer>;
 export const StorageContainerListResultValueList = /*@__PURE__*/ S.Array(
   StorageContainer,
 ) as any as S.Schema<StorageContainerListResultValueList>;

@@ -213,7 +213,7 @@ export const ScalingMetricType = /*@__PURE__*/ S.String;
 
 export type ResourceLabel = string;
 export interface PredefinedScalingMetricSpecification {
-  PredefinedScalingMetricType: ScalingMetricType;
+  PredefinedScalingMetricType: ScalingMetricType | (string & {});
   ResourceLabel?: string;
 }
 export const PredefinedScalingMetricSpecification = /*@__PURE__*/ S.suspend(
@@ -253,7 +253,7 @@ export interface CustomizedScalingMetricSpecification {
   MetricName: string;
   Namespace: string;
   Dimensions?: MetricDimension[];
-  Statistic: MetricStatistic;
+  Statistic: MetricStatistic | (string & {});
   Unit?: string;
 }
 export const CustomizedScalingMetricSpecification = /*@__PURE__*/ S.suspend(
@@ -309,7 +309,7 @@ export type LoadMetricType =
 export const LoadMetricType = /*@__PURE__*/ S.String;
 
 export interface PredefinedLoadMetricSpecification {
-  PredefinedLoadMetricType: LoadMetricType;
+  PredefinedLoadMetricType: LoadMetricType | (string & {});
   ResourceLabel?: string;
 }
 export const PredefinedLoadMetricSpecification = /*@__PURE__*/ S.suspend(() =>
@@ -324,7 +324,7 @@ export interface CustomizedLoadMetricSpecification {
   MetricName: string;
   Namespace: string;
   Dimensions?: MetricDimension[];
-  Statistic: MetricStatistic;
+  Statistic: MetricStatistic | (string & {});
   Unit?: string;
 }
 export const CustomizedLoadMetricSpecification = /*@__PURE__*/ S.suspend(() =>
@@ -355,19 +355,21 @@ export const ScalingPolicyUpdateBehavior = /*@__PURE__*/ S.String;
 
 export type DisableDynamicScaling = boolean;
 export interface ScalingInstruction {
-  ServiceNamespace: ServiceNamespace;
+  ServiceNamespace: ServiceNamespace | (string & {});
   ResourceId: string;
-  ScalableDimension: ScalableDimension;
+  ScalableDimension: ScalableDimension | (string & {});
   MinCapacity: number;
   MaxCapacity: number;
   TargetTrackingConfigurations: TargetTrackingConfiguration[];
   PredefinedLoadMetricSpecification?: PredefinedLoadMetricSpecification;
   CustomizedLoadMetricSpecification?: CustomizedLoadMetricSpecification;
   ScheduledActionBufferTime?: number;
-  PredictiveScalingMaxCapacityBehavior?: PredictiveScalingMaxCapacityBehavior;
+  PredictiveScalingMaxCapacityBehavior?:
+    | PredictiveScalingMaxCapacityBehavior
+    | (string & {});
   PredictiveScalingMaxCapacityBuffer?: number;
-  PredictiveScalingMode?: PredictiveScalingMode;
-  ScalingPolicyUpdateBehavior?: ScalingPolicyUpdateBehavior;
+  PredictiveScalingMode?: PredictiveScalingMode | (string & {});
+  ScalingPolicyUpdateBehavior?: ScalingPolicyUpdateBehavior | (string & {});
   DisableDynamicScaling?: boolean;
 }
 export const ScalingInstruction = /*@__PURE__*/ S.suspend(() =>

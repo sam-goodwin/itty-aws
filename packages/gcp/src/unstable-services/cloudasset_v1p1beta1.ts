@@ -70,7 +70,7 @@ export type AuditLogConfigLogTypeEnum =
   | "DATA_READ";
 export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -89,7 +89,7 @@ export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
-export type AuditLogConfigList = ReadonlyArray<AuditLogConfig>;
+export type AuditLogConfigList = Array<AuditLogConfig>;
 export const AuditLogConfigList = /*@__PURE__*/ S.Array(
   AuditLogConfig,
 ) as any as S.Schema<AuditLogConfigList>;
@@ -108,7 +108,7 @@ export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
-export type AuditConfigList = ReadonlyArray<AuditConfig>;
+export type AuditConfigList = Array<AuditConfig>;
 export const AuditConfigList = /*@__PURE__*/ S.Array(
   AuditConfig,
 ) as any as S.Schema<AuditConfigList>;
@@ -150,7 +150,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
-export type BindingList = ReadonlyArray<Binding>;
+export type BindingList = Array<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -225,7 +225,7 @@ export const IamPolicySearchResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "IamPolicySearchResult",
 }) as any as S.Schema<IamPolicySearchResult>;
 
-export type IamPolicySearchResultList = ReadonlyArray<IamPolicySearchResult>;
+export type IamPolicySearchResultList = Array<IamPolicySearchResult>;
 export const IamPolicySearchResultList = /*@__PURE__*/ S.Array(
   IamPolicySearchResult,
 ) as any as S.Schema<IamPolicySearchResultList>;
@@ -322,8 +322,7 @@ export const StandardResourceMetadata = /*@__PURE__*/ S.suspend(() =>
   identifier: "StandardResourceMetadata",
 }) as any as S.Schema<StandardResourceMetadata>;
 
-export type StandardResourceMetadataList =
-  ReadonlyArray<StandardResourceMetadata>;
+export type StandardResourceMetadataList = Array<StandardResourceMetadata>;
 export const StandardResourceMetadataList = /*@__PURE__*/ S.Array(
   StandardResourceMetadata,
 ) as any as S.Schema<StandardResourceMetadataList>;

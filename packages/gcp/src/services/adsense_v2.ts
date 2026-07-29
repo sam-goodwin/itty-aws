@@ -77,7 +77,7 @@ export interface ContentAdsSettings {
   /** Required. Size of the ad unit. e.g. "728x90", "1x3" (for responsive ad units). */
   size?: string;
   /** Required. Type of the ad unit. */
-  type?: ContentAdsSettingsTypeEnum;
+  type?: ContentAdsSettingsTypeEnum | (string & {});
 }
 export const ContentAdsSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -91,7 +91,7 @@ export const ContentAdsSettings = /*@__PURE__*/ S.suspend(() =>
 /** Representation of an ad unit. An ad unit represents a saved ad unit with a specific set of ad settings that have been customized within an account. */
 export interface AdUnit {
   /** Required. State of the ad unit. */
-  state?: AdUnitStateEnum;
+  state?: AdUnitStateEnum | (string & {});
   /** Output only. Unique ID of the ad unit as used in the `AD_UNIT_ID` reporting dimension. */
   reportingDimensionId?: string;
   /** Required. Display name of the ad unit, as provided when the ad unit was created. */
@@ -240,14 +240,14 @@ export type GenerateAccountsReportsMetricsEnum =
   | "FUNNEL_RPM";
 export const GenerateAccountsReportsMetricsEnum = /*@__PURE__*/ S.String;
 
-export type GenerateAccountsReportsMetricsEnumList = ReadonlyArray<
+export type GenerateAccountsReportsMetricsEnumList = Array<
   GenerateAccountsReportsMetricsEnum | (string & {})
 >;
 export const GenerateAccountsReportsMetricsEnumList = /*@__PURE__*/ S.Array(
   GenerateAccountsReportsMetricsEnum,
 ) as any as S.Schema<GenerateAccountsReportsMetricsEnumList>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -312,7 +312,7 @@ export type GenerateAccountsReportsDimensionsEnum =
   | "WEBVIEW_TYPE_CODE";
 export const GenerateAccountsReportsDimensionsEnum = /*@__PURE__*/ S.String;
 
-export type GenerateAccountsReportsDimensionsEnumList = ReadonlyArray<
+export type GenerateAccountsReportsDimensionsEnumList = Array<
   GenerateAccountsReportsDimensionsEnum | (string & {})
 >;
 export const GenerateAccountsReportsDimensionsEnumList = /*@__PURE__*/ S.Array(
@@ -433,7 +433,7 @@ export const Header = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Header" }) as any as S.Schema<Header>;
 
-export type HeaderList = ReadonlyArray<Header>;
+export type HeaderList = Array<Header>;
 export const HeaderList = /*@__PURE__*/ S.Array(
   Header,
 ) as any as S.Schema<HeaderList>;
@@ -449,7 +449,7 @@ export const Cell = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Cell" }) as any as S.Schema<Cell>;
 
-export type CellList = ReadonlyArray<Cell>;
+export type CellList = Array<Cell>;
 export const CellList = /*@__PURE__*/ S.Array(
   Cell,
 ) as any as S.Schema<CellList>;
@@ -482,7 +482,7 @@ export const Adsense_Date = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Adsense_Date" }) as any as S.Schema<Adsense_Date>;
 
-export type RowList = ReadonlyArray<Row>;
+export type RowList = Array<Row>;
 export const RowList = /*@__PURE__*/ S.Array(Row) as any as S.Schema<RowList>;
 
 /** Result of a generated report. */
@@ -640,7 +640,7 @@ export type GenerateCsvAccountsReportsMetricsEnum =
   | "FUNNEL_RPM";
 export const GenerateCsvAccountsReportsMetricsEnum = /*@__PURE__*/ S.String;
 
-export type GenerateCsvAccountsReportsMetricsEnumList = ReadonlyArray<
+export type GenerateCsvAccountsReportsMetricsEnumList = Array<
   GenerateCsvAccountsReportsMetricsEnum | (string & {})
 >;
 export const GenerateCsvAccountsReportsMetricsEnumList = /*@__PURE__*/ S.Array(
@@ -707,7 +707,7 @@ export type GenerateCsvAccountsReportsDimensionsEnum =
   | "WEBVIEW_TYPE_CODE";
 export const GenerateCsvAccountsReportsDimensionsEnum = /*@__PURE__*/ S.String;
 
-export type GenerateCsvAccountsReportsDimensionsEnumList = ReadonlyArray<
+export type GenerateCsvAccountsReportsDimensionsEnumList = Array<
   GenerateCsvAccountsReportsDimensionsEnum | (string & {})
 >;
 export const GenerateCsvAccountsReportsDimensionsEnumList =
@@ -801,7 +801,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -1141,7 +1141,7 @@ export const PolicyTopic = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PolicyTopic" }) as any as S.Schema<PolicyTopic>;
 
-export type PolicyTopicList = ReadonlyArray<PolicyTopic>;
+export type PolicyTopicList = Array<PolicyTopic>;
 export const PolicyTopicList = /*@__PURE__*/ S.Array(
   PolicyTopic,
 ) as any as S.Schema<PolicyTopicList>;
@@ -1392,7 +1392,7 @@ export const ListAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAccountsRequest",
 }) as any as S.Schema<ListAccountsRequest>;
 
-export type AccountList = ReadonlyArray<Account>;
+export type AccountList = Array<Account>;
 export const AccountList = /*@__PURE__*/ S.Array(
   Account,
 ) as any as S.Schema<AccountList>;
@@ -1437,7 +1437,7 @@ export const ListAccountsAdclientsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAccountsAdclientsRequest",
 }) as any as S.Schema<ListAccountsAdclientsRequest>;
 
-export type AdClientList = ReadonlyArray<AdClient>;
+export type AdClientList = Array<AdClient>;
 export const AdClientList = /*@__PURE__*/ S.Array(
   AdClient,
 ) as any as S.Schema<AdClientList>;
@@ -1482,7 +1482,7 @@ export const ListAccountsAdclientsAdunitsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAccountsAdclientsAdunitsRequest",
 }) as any as S.Schema<ListAccountsAdclientsAdunitsRequest>;
 
-export type AdUnitList = ReadonlyArray<AdUnit>;
+export type AdUnitList = Array<AdUnit>;
 export const AdUnitList = /*@__PURE__*/ S.Array(
   AdUnit,
 ) as any as S.Schema<AdUnitList>;
@@ -1528,7 +1528,7 @@ export const ListAccountsAdclientsCustomchannelsRequest =
     identifier: "ListAccountsAdclientsCustomchannelsRequest",
   }) as any as S.Schema<ListAccountsAdclientsCustomchannelsRequest>;
 
-export type CustomChannelList = ReadonlyArray<CustomChannel>;
+export type CustomChannelList = Array<CustomChannel>;
 export const CustomChannelList = /*@__PURE__*/ S.Array(
   CustomChannel,
 ) as any as S.Schema<CustomChannelList>;
@@ -1574,7 +1574,7 @@ export const ListAccountsAdclientsUrlchannelsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListAccountsAdclientsUrlchannelsRequest",
 }) as any as S.Schema<ListAccountsAdclientsUrlchannelsRequest>;
 
-export type UrlChannelList = ReadonlyArray<UrlChannel>;
+export type UrlChannelList = Array<UrlChannel>;
 export const UrlChannelList = /*@__PURE__*/ S.Array(
   UrlChannel,
 ) as any as S.Schema<UrlChannelList>;
@@ -1643,7 +1643,7 @@ export const Alert = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Alert" }) as any as S.Schema<Alert>;
 
-export type AlertList = ReadonlyArray<Alert>;
+export type AlertList = Array<Alert>;
 export const AlertList = /*@__PURE__*/ S.Array(
   Alert,
 ) as any as S.Schema<AlertList>;
@@ -1696,7 +1696,7 @@ export const Payment = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Payment" }) as any as S.Schema<Payment>;
 
-export type PaymentList = ReadonlyArray<Payment>;
+export type PaymentList = Array<Payment>;
 export const PaymentList = /*@__PURE__*/ S.Array(
   Payment,
 ) as any as S.Schema<PaymentList>;
@@ -1738,7 +1738,7 @@ export const ListAccountsPolicyIssuesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAccountsPolicyIssuesRequest",
 }) as any as S.Schema<ListAccountsPolicyIssuesRequest>;
 
-export type PolicyIssueList = ReadonlyArray<PolicyIssue>;
+export type PolicyIssueList = Array<PolicyIssue>;
 export const PolicyIssueList = /*@__PURE__*/ S.Array(
   PolicyIssue,
 ) as any as S.Schema<PolicyIssueList>;
@@ -1783,7 +1783,7 @@ export const ListAccountsReportsSavedRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAccountsReportsSavedRequest",
 }) as any as S.Schema<ListAccountsReportsSavedRequest>;
 
-export type SavedReportList = ReadonlyArray<SavedReport>;
+export type SavedReportList = Array<SavedReport>;
 export const SavedReportList = /*@__PURE__*/ S.Array(
   SavedReport,
 ) as any as S.Schema<SavedReportList>;
@@ -1828,7 +1828,7 @@ export const ListAccountsSitesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAccountsSitesRequest",
 }) as any as S.Schema<ListAccountsSitesRequest>;
 
-export type SiteList = ReadonlyArray<Site>;
+export type SiteList = Array<Site>;
 export const SiteList = /*@__PURE__*/ S.Array(
   Site,
 ) as any as S.Schema<SiteList>;

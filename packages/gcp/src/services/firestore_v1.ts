@@ -60,7 +60,7 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -170,7 +170,7 @@ export const BatchGetProjectsDatabasesDocumentsRequest =
     identifier: "BatchGetProjectsDatabasesDocumentsRequest",
   }) as any as S.Schema<BatchGetProjectsDatabasesDocumentsRequest>;
 
-export type ValueList = ReadonlyArray<Value>;
+export type ValueList = Array<Value>;
 export const ValueList = /*@__PURE__*/ S.Array(
   S.suspend(() => Value),
 ) as any as S.Schema<ValueList>;
@@ -239,7 +239,7 @@ export const Stage = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Stage" }) as any as S.Schema<Stage>;
 
-export type StageList = ReadonlyArray<Stage>;
+export type StageList = Array<Stage>;
 export const StageList = /*@__PURE__*/ S.Array(
   Stage,
 ) as any as S.Schema<StageList>;
@@ -273,7 +273,7 @@ export interface Value {
   /** A boolean value. */
   booleanValue?: boolean;
   /** A null value. */
-  nullValue?: ValueNullValueEnum;
+  nullValue?: ValueNullValueEnum | (string & {});
   /** A reference to a document. For example: `projects/{project_id}/databases/{database_id}/documents/{document_path}`. */
   referenceValue?: string;
   /** A double value. */
@@ -401,7 +401,7 @@ export const FieldTransform = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "FieldTransform" }) as any as S.Schema<FieldTransform>;
 
-export type FieldTransformList = ReadonlyArray<FieldTransform>;
+export type FieldTransformList = Array<FieldTransform>;
 export const FieldTransformList = /*@__PURE__*/ S.Array(
   FieldTransform,
 ) as any as S.Schema<FieldTransformList>;
@@ -462,7 +462,7 @@ export const Write = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Write" }) as any as S.Schema<Write>;
 
-export type WriteList = ReadonlyArray<Write>;
+export type WriteList = Array<Write>;
 export const WriteList = /*@__PURE__*/ S.Array(
   Write,
 ) as any as S.Schema<WriteList>;
@@ -525,7 +525,7 @@ export const WriteResult = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "WriteResult" }) as any as S.Schema<WriteResult>;
 
-export type WriteResultList = ReadonlyArray<WriteResult>;
+export type WriteResultList = Array<WriteResult>;
 export const WriteResultList = /*@__PURE__*/ S.Array(
   WriteResult,
 ) as any as S.Schema<WriteResultList>;
@@ -536,7 +536,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -558,7 +558,7 @@ export const Status = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
-export type StatusList = ReadonlyArray<Status>;
+export type StatusList = Array<Status>;
 export const StatusList = /*@__PURE__*/ S.Array(
   Status,
 ) as any as S.Schema<StatusList>;
@@ -1044,15 +1044,23 @@ export interface GoogleFirestoreAdminV1Database {
   /** Output only. The system-generated UUID4 for this Database. */
   uid?: string;
   /** Immutable. The default Realtime Updates mode to use for this database. */
-  realtimeUpdatesMode?: GoogleFirestoreAdminV1DatabaseRealtimeUpdatesModeEnum;
+  realtimeUpdatesMode?:
+    | GoogleFirestoreAdminV1DatabaseRealtimeUpdatesModeEnum
+    | (string & {});
   /** Whether to enable the PITR feature on this database. */
-  pointInTimeRecoveryEnablement?: GoogleFirestoreAdminV1DatabasePointInTimeRecoveryEnablementEnum;
+  pointInTimeRecoveryEnablement?:
+    | GoogleFirestoreAdminV1DatabasePointInTimeRecoveryEnablementEnum
+    | (string & {});
   /** Immutable. The edition of the database. */
-  databaseEdition?: GoogleFirestoreAdminV1DatabaseDatabaseEditionEnum;
+  databaseEdition?:
+    | GoogleFirestoreAdminV1DatabaseDatabaseEditionEnum
+    | (string & {});
   /** Output only. The timestamp at which this database was most recently updated. Note this only includes updates to the database resource and not data contained by the database. */
   updateTime?: string;
   /** Optional. The Firestore API data access mode to use for this database. If not set on write: - the default value is DATA_ACCESS_MODE_DISABLED for Enterprise Edition. - the default value is DATA_ACCESS_MODE_ENABLED for Standard Edition. */
-  firestoreDataAccessMode?: GoogleFirestoreAdminV1DatabaseFirestoreDataAccessModeEnum;
+  firestoreDataAccessMode?:
+    | GoogleFirestoreAdminV1DatabaseFirestoreDataAccessModeEnum
+    | (string & {});
   /** Output only. The earliest timestamp at which older versions of the data can be read from the database. See [version_retention_period] above; this field is populated with `now - version_retention_period`. This value is continuously updated, and becomes stale the moment it is queried. If you are using this value to recover data, make sure to account for the time from the moment when the value is queried to the moment when you initiate the recovery. */
   earliestVersionTime?: string;
   /** Output only. The key_prefix for this database. This key_prefix is used, in combination with the project ID ("~") to construct the application ID that is returned from the Cloud Datastore APIs in Google App Engine first generation runtimes. This value may be empty in which case the appid to use for URL-encoded keys is the project_id (eg: foo instead of v~foo). */
@@ -1060,7 +1068,9 @@ export interface GoogleFirestoreAdminV1Database {
   /** Required. The location of the database. Available locations are listed at https://cloud.google.com/firestore/docs/locations. */
   locationId?: string;
   /** Optional. The MongoDB compatible API data access mode to use for this database. If not set on write, the default value is DATA_ACCESS_MODE_ENABLED for Enterprise Edition. The value is always DATA_ACCESS_MODE_DISABLED for Standard Edition. */
-  mongodbCompatibleDataAccessMode?: GoogleFirestoreAdminV1DatabaseMongodbCompatibleDataAccessModeEnum;
+  mongodbCompatibleDataAccessMode?:
+    | GoogleFirestoreAdminV1DatabaseMongodbCompatibleDataAccessModeEnum
+    | (string & {});
   /** Optional. Input only. Immutable. Tag keys/values directly bound to this resource. For example: "123/environment": "production", "123/costCenter": "marketing" */
   tags?: StringMap;
   /** Output only. The timestamp at which this database was created. Databases created before 2016 do not populate create_time. */
@@ -1072,21 +1082,27 @@ export interface GoogleFirestoreAdminV1Database {
   /** Output only. Information about the provenance of this database. */
   sourceInfo?: GoogleFirestoreAdminV1SourceInfo;
   /** The default concurrency control mode to use for this database. If unspecified in a CreateDatabase request, this will default based on the database edition: Optimistic for Enterprise and Pessimistic for all other databases. While transactions can explicitly specify their own concurrency mode, this setting defines the default behavior when left unspecified. Important: This database-level setting is not respected for Firestore with MongoDB compatibility. All transactions through the MongoDB compatibility layer will use optimistic concurrency control, regardless of this setting. */
-  concurrencyMode?: GoogleFirestoreAdminV1DatabaseConcurrencyModeEnum;
+  concurrencyMode?:
+    | GoogleFirestoreAdminV1DatabaseConcurrencyModeEnum
+    | (string & {});
   /** The App Engine integration mode to use for this database. */
-  appEngineIntegrationMode?: GoogleFirestoreAdminV1DatabaseAppEngineIntegrationModeEnum;
+  appEngineIntegrationMode?:
+    | GoogleFirestoreAdminV1DatabaseAppEngineIntegrationModeEnum
+    | (string & {});
   /** The resource name of the Database. Format: `projects/{project}/databases/{database}` */
   name?: string;
   /** Output only. The period during which past versions of data are retained in the database. Any read or query can specify a `read_time` within this window, and will read the state of the database at that time. If the PITR feature is enabled, the retention period is 7 days. Otherwise, the retention period is 1 hour. */
   versionRetentionPeriod?: string;
   /** Required. The type of the database. See https://cloud.google.com/datastore/docs/firestore-or-datastore for information about how to choose. */
-  type?: GoogleFirestoreAdminV1DatabaseTypeEnum;
+  type?: GoogleFirestoreAdminV1DatabaseTypeEnum | (string & {});
   /** Optional. Presence indicates CMEK is enabled for this database. */
   cmekConfig?: GoogleFirestoreAdminV1CmekConfig;
   /** This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding. */
   etag?: string;
   /** State of delete protection for the database. */
-  deleteProtectionState?: GoogleFirestoreAdminV1DatabaseDeleteProtectionStateEnum;
+  deleteProtectionState?:
+    | GoogleFirestoreAdminV1DatabaseDeleteProtectionStateEnum
+    | (string & {});
   /** Output only. The timestamp at which this database was deleted. Only set if the database has been deleted. */
   deleteTime?: string;
 }
@@ -1176,7 +1192,7 @@ export const GoogleFirestoreAdminV1WeeklyRecurrenceDayEnum =
 /** Represents a recurring schedule that runs on a specified day of the week. The time zone is UTC. */
 export interface GoogleFirestoreAdminV1WeeklyRecurrence {
   /** The day of week to run. DAY_OF_WEEK_UNSPECIFIED is not allowed. */
-  day?: GoogleFirestoreAdminV1WeeklyRecurrenceDayEnum;
+  day?: GoogleFirestoreAdminV1WeeklyRecurrenceDayEnum | (string & {});
 }
 export const GoogleFirestoreAdminV1WeeklyRecurrence = /*@__PURE__*/ S.suspend(
   () =>
@@ -1310,9 +1326,13 @@ export const GoogleFirestoreAdminV1SearchTextIndexSpecMatchTypeEnum =
 /** Specification of how the field should be indexed for search text indexes. */
 export interface GoogleFirestoreAdminV1SearchTextIndexSpec {
   /** Required. How to index the text field value. */
-  indexType?: GoogleFirestoreAdminV1SearchTextIndexSpecIndexTypeEnum;
+  indexType?:
+    | GoogleFirestoreAdminV1SearchTextIndexSpecIndexTypeEnum
+    | (string & {});
   /** Required. How to match the text field value. */
-  matchType?: GoogleFirestoreAdminV1SearchTextIndexSpecMatchTypeEnum;
+  matchType?:
+    | GoogleFirestoreAdminV1SearchTextIndexSpecMatchTypeEnum
+    | (string & {});
 }
 export const GoogleFirestoreAdminV1SearchTextIndexSpec =
   /*@__PURE__*/ S.suspend(() =>
@@ -1329,7 +1349,7 @@ export const GoogleFirestoreAdminV1SearchTextIndexSpec =
   }) as any as S.Schema<GoogleFirestoreAdminV1SearchTextIndexSpec>;
 
 export type GoogleFirestoreAdminV1SearchTextIndexSpecList =
-  ReadonlyArray<GoogleFirestoreAdminV1SearchTextIndexSpec>;
+  Array<GoogleFirestoreAdminV1SearchTextIndexSpec>;
 export const GoogleFirestoreAdminV1SearchTextIndexSpecList =
   /*@__PURE__*/ S.Array(
     GoogleFirestoreAdminV1SearchTextIndexSpec,
@@ -1368,13 +1388,13 @@ export const GoogleFirestoreAdminV1SearchConfig = /*@__PURE__*/ S.suspend(() =>
 /** A field in an index. The field_path describes which field is indexed, the value_mode describes how the field value is indexed. */
 export interface GoogleFirestoreAdminV1IndexField {
   /** Indicates that this field supports operations on `array_value`s. */
-  arrayConfig?: GoogleFirestoreAdminV1IndexFieldArrayConfigEnum;
+  arrayConfig?: GoogleFirestoreAdminV1IndexFieldArrayConfigEnum | (string & {});
   /** Can be __name__. For single field indexes, this must match the name of the field or may be omitted. */
   fieldPath?: string;
   /** Indicates that this field supports nearest neighbor and distance operations on vector. */
   vectorConfig?: GoogleFirestoreAdminV1VectorConfig;
   /** Indicates that this field supports ordering by the specified order or comparing using =, !=, <, <=, >, >=. */
-  order?: GoogleFirestoreAdminV1IndexFieldOrderEnum;
+  order?: GoogleFirestoreAdminV1IndexFieldOrderEnum | (string & {});
   /** Indicates that this field supports search operations. */
   searchConfig?: GoogleFirestoreAdminV1SearchConfig;
 }
@@ -1391,7 +1411,7 @@ export const GoogleFirestoreAdminV1IndexField = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleFirestoreAdminV1IndexField>;
 
 export type GoogleFirestoreAdminV1IndexFieldList =
-  ReadonlyArray<GoogleFirestoreAdminV1IndexField>;
+  Array<GoogleFirestoreAdminV1IndexField>;
 export const GoogleFirestoreAdminV1IndexFieldList = /*@__PURE__*/ S.Array(
   GoogleFirestoreAdminV1IndexField,
 ) as any as S.Schema<GoogleFirestoreAdminV1IndexFieldList>;
@@ -1449,15 +1469,15 @@ export interface GoogleFirestoreAdminV1Index {
   /** Output only. A server defined name for this index. The form of this name for composite indexes will be: `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/indexes/{composite_index_id}` For single field indexes, this field will be empty. */
   name?: string;
   /** Indexes with a collection query scope specified allow queries against a collection that is the child of a specific document, specified at query time, and that has the same collection ID. Indexes with a collection group query scope specified allow queries against all collections descended from a specific document, specified at query time, and that have the same collection ID as this index. */
-  queryScope?: GoogleFirestoreAdminV1IndexQueryScopeEnum;
+  queryScope?: GoogleFirestoreAdminV1IndexQueryScopeEnum | (string & {});
   /** Immutable. The density configuration of the index. */
-  density?: GoogleFirestoreAdminV1IndexDensityEnum;
+  density?: GoogleFirestoreAdminV1IndexDensityEnum | (string & {});
   /** Optional. Whether the index is multikey. By default, the index is not multikey. For non-multikey indexes, none of the paths in the index definition reach or traverse an array, except via an explicit array index. For multikey indexes, at most one of the paths in the index definition reach or traverse an array, except via an explicit array index. Violations will result in errors. Note this field only applies to index with MONGODB_COMPATIBLE_API ApiScope. */
   multikey?: boolean;
   /** Output only. The serving state of the index. */
-  state?: GoogleFirestoreAdminV1IndexStateEnum;
+  state?: GoogleFirestoreAdminV1IndexStateEnum | (string & {});
   /** The API scope supported by this index. */
-  apiScope?: GoogleFirestoreAdminV1IndexApiScopeEnum;
+  apiScope?: GoogleFirestoreAdminV1IndexApiScopeEnum | (string & {});
   /** Optional. The number of shards for the index. */
   shardCount?: number;
   /** Optional. Options for search indexes that are at the index definition level. This field is only currently supported for indexes with MONGODB_COMPATIBLE_API ApiScope. */
@@ -1531,7 +1551,7 @@ export interface GoogleFirestoreAdminV1UserCreds {
   /** Output only. The plaintext server-generated password for the user creds. Only populated in responses for CreateUserCreds and ResetUserPassword. */
   securePassword?: string;
   /** Output only. Whether the user creds are enabled or disabled. Defaults to ENABLED on creation. */
-  state?: GoogleFirestoreAdminV1UserCredsStateEnum;
+  state?: GoogleFirestoreAdminV1UserCredsStateEnum | (string & {});
   /** Identifier. The resource name of the UserCreds. Format: `projects/{project}/databases/{database}/userCreds/{user_creds}` */
   name?: string;
   /** Resource Identity descriptor. */
@@ -1841,7 +1861,7 @@ export const ExecutePipelineProjectsDatabasesDocumentsRequest =
     identifier: "ExecutePipelineProjectsDatabasesDocumentsRequest",
   }) as any as S.Schema<ExecutePipelineProjectsDatabasesDocumentsRequest>;
 
-export type DocumentList = ReadonlyArray<Document>;
+export type DocumentList = Array<Document>;
 export const DocumentList = /*@__PURE__*/ S.Array(
   Document,
 ) as any as S.Schema<DocumentList>;
@@ -1983,7 +2003,7 @@ export const GetProjectsDatabasesCollectionGroupsFieldsRequest =
   }) as any as S.Schema<GetProjectsDatabasesCollectionGroupsFieldsRequest>;
 
 export type GoogleFirestoreAdminV1IndexList =
-  ReadonlyArray<GoogleFirestoreAdminV1Index>;
+  Array<GoogleFirestoreAdminV1Index>;
 export const GoogleFirestoreAdminV1IndexList = /*@__PURE__*/ S.Array(
   GoogleFirestoreAdminV1Index,
 ) as any as S.Schema<GoogleFirestoreAdminV1IndexList>;
@@ -2020,7 +2040,7 @@ export const GoogleFirestoreAdminV1TtlConfigStateEnum = /*@__PURE__*/ S.String;
 /** The TTL (time-to-live) configuration for documents that have this `Field` set. A timestamp stored in a TTL-enabled field will be used to determine the expiration time of the document. The expiration time is the sum of the timestamp value and the `expiration_offset`. For Enterprise edition databases, the timestamp value may alternatively be stored in an array value in the TTL-enabled field. An expiration time in the past indicates that the document is eligible for immediate expiration. Using any other data type or leaving the field absent will disable expiration for the individual document. */
 export interface GoogleFirestoreAdminV1TtlConfig {
   /** Output only. The state of the TTL configuration. */
-  state?: GoogleFirestoreAdminV1TtlConfigStateEnum;
+  state?: GoogleFirestoreAdminV1TtlConfigStateEnum | (string & {});
   /** Optional. The offset, relative to the timestamp value from the TTL-enabled field, used to determine the document's expiration time. `expiration_offset.seconds` must be between 0 and 2,147,483,647 inclusive. Values more precise than seconds are rejected. If unset, defaults to 0, in which case the expiration time is the same as the timestamp value from the TTL-enabled field. */
   expirationOffset?: string;
 }
@@ -2446,7 +2466,7 @@ export const CollectionSelector = /*@__PURE__*/ S.suspend(() =>
   identifier: "CollectionSelector",
 }) as any as S.Schema<CollectionSelector>;
 
-export type CollectionSelectorList = ReadonlyArray<CollectionSelector>;
+export type CollectionSelectorList = Array<CollectionSelector>;
 export const CollectionSelectorList = /*@__PURE__*/ S.Array(
   CollectionSelector,
 ) as any as S.Schema<CollectionSelectorList>;
@@ -2515,7 +2535,7 @@ export const FieldFilter = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "FieldFilter" }) as any as S.Schema<FieldFilter>;
 
-export type FilterList = ReadonlyArray<Filter>;
+export type FilterList = Array<Filter>;
 export const FilterList = /*@__PURE__*/ S.Array(
   S.suspend(() => Filter),
 ) as any as S.Schema<FilterList>;
@@ -2576,12 +2596,12 @@ export const Order = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Order" }) as any as S.Schema<Order>;
 
-export type OrderList = ReadonlyArray<Order>;
+export type OrderList = Array<Order>;
 export const OrderList = /*@__PURE__*/ S.Array(
   Order,
 ) as any as S.Schema<OrderList>;
 
-export type FieldReferenceList = ReadonlyArray<FieldReference>;
+export type FieldReferenceList = Array<FieldReference>;
 export const FieldReferenceList = /*@__PURE__*/ S.Array(
   FieldReference,
 ) as any as S.Schema<FieldReferenceList>;
@@ -2770,7 +2790,7 @@ export type TargetChangeTargetChangeTypeEnum =
   | "RESET";
 export const TargetChangeTargetChangeTypeEnum = /*@__PURE__*/ S.String;
 
-export type IntegerList = ReadonlyArray<number>;
+export type IntegerList = Array<number>;
 export const IntegerList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<IntegerList>;
@@ -2941,7 +2961,7 @@ export const ListProjectsDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsDatabasesRequest>;
 
 export type GoogleFirestoreAdminV1DatabaseList =
-  ReadonlyArray<GoogleFirestoreAdminV1Database>;
+  Array<GoogleFirestoreAdminV1Database>;
 export const GoogleFirestoreAdminV1DatabaseList = /*@__PURE__*/ S.Array(
   GoogleFirestoreAdminV1Database,
 ) as any as S.Schema<GoogleFirestoreAdminV1DatabaseList>;
@@ -2983,7 +3003,7 @@ export const ListProjectsDatabasesBackupSchedulesRequest =
   }) as any as S.Schema<ListProjectsDatabasesBackupSchedulesRequest>;
 
 export type GoogleFirestoreAdminV1BackupScheduleList =
-  ReadonlyArray<GoogleFirestoreAdminV1BackupSchedule>;
+  Array<GoogleFirestoreAdminV1BackupSchedule>;
 export const GoogleFirestoreAdminV1BackupScheduleList = /*@__PURE__*/ S.Array(
   GoogleFirestoreAdminV1BackupSchedule,
 ) as any as S.Schema<GoogleFirestoreAdminV1BackupScheduleList>;
@@ -3031,7 +3051,7 @@ export const ListProjectsDatabasesCollectionGroupsFieldsRequest =
   }) as any as S.Schema<ListProjectsDatabasesCollectionGroupsFieldsRequest>;
 
 export type GoogleFirestoreAdminV1FieldList =
-  ReadonlyArray<GoogleFirestoreAdminV1Field>;
+  Array<GoogleFirestoreAdminV1Field>;
 export const GoogleFirestoreAdminV1FieldList = /*@__PURE__*/ S.Array(
   GoogleFirestoreAdminV1Field,
 ) as any as S.Schema<GoogleFirestoreAdminV1FieldList>;
@@ -3175,8 +3195,7 @@ export const ListProjectsDatabasesOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsDatabasesOperationsRequest",
 }) as any as S.Schema<ListProjectsDatabasesOperationsRequest>;
 
-export type GoogleLongrunningOperationList =
-  ReadonlyArray<GoogleLongrunningOperation>;
+export type GoogleLongrunningOperationList = Array<GoogleLongrunningOperation>;
 export const GoogleLongrunningOperationList = /*@__PURE__*/ S.Array(
   GoogleLongrunningOperation,
 ) as any as S.Schema<GoogleLongrunningOperationList>;
@@ -3221,7 +3240,7 @@ export const ListProjectsDatabasesUserCredsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListProjectsDatabasesUserCredsRequest>;
 
 export type GoogleFirestoreAdminV1UserCredsList =
-  ReadonlyArray<GoogleFirestoreAdminV1UserCreds>;
+  Array<GoogleFirestoreAdminV1UserCreds>;
 export const GoogleFirestoreAdminV1UserCredsList = /*@__PURE__*/ S.Array(
   GoogleFirestoreAdminV1UserCreds,
 ) as any as S.Schema<GoogleFirestoreAdminV1UserCredsList>;
@@ -3270,7 +3289,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = ReadonlyArray<Location>;
+export type LocationList = Array<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -3313,7 +3332,7 @@ export const ListProjectsLocationsBackupsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsLocationsBackupsRequest>;
 
 export type GoogleFirestoreAdminV1BackupList =
-  ReadonlyArray<GoogleFirestoreAdminV1Backup>;
+  Array<GoogleFirestoreAdminV1Backup>;
 export const GoogleFirestoreAdminV1BackupList = /*@__PURE__*/ S.Array(
   GoogleFirestoreAdminV1Backup,
 ) as any as S.Schema<GoogleFirestoreAdminV1BackupList>;
@@ -3382,7 +3401,7 @@ export const PartitionQueryProjectsDatabasesDocumentsRequest =
     identifier: "PartitionQueryProjectsDatabasesDocumentsRequest",
   }) as any as S.Schema<PartitionQueryProjectsDatabasesDocumentsRequest>;
 
-export type CursorList = ReadonlyArray<Cursor>;
+export type CursorList = Array<Cursor>;
 export const CursorList = /*@__PURE__*/ S.Array(
   Cursor,
 ) as any as S.Schema<CursorList>;
@@ -3676,7 +3695,7 @@ export const Aggregation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Aggregation" }) as any as S.Schema<Aggregation>;
 
-export type AggregationList = ReadonlyArray<Aggregation>;
+export type AggregationList = Array<Aggregation>;
 export const AggregationList = /*@__PURE__*/ S.Array(
   Aggregation,
 ) as any as S.Schema<AggregationList>;

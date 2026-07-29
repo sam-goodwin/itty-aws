@@ -28,7 +28,7 @@ export const NetworkManagerSecurityGroupItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Groups for configuration */
 export type AdminRuleCollectionPropertiesFormatInputAppliesToGroupsList =
-  ReadonlyArray<NetworkManagerSecurityGroupItem>;
+  Array<NetworkManagerSecurityGroupItem>;
 export const AdminRuleCollectionPropertiesFormatInputAppliesToGroupsList =
   /*@__PURE__*/ S.Array(
     NetworkManagerSecurityGroupItem,
@@ -107,7 +107,7 @@ export const AdminRuleCollectionsCreateOrUpdateRequest =
 
 /** Groups for configuration */
 export type AdminRuleCollectionPropertiesFormatAppliesToGroupsList =
-  ReadonlyArray<NetworkManagerSecurityGroupItem>;
+  Array<NetworkManagerSecurityGroupItem>;
 export const AdminRuleCollectionPropertiesFormatAppliesToGroupsList =
   /*@__PURE__*/ S.Array(
     NetworkManagerSecurityGroupItem,
@@ -487,8 +487,7 @@ export const AdminRuleCollection = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AdminRuleCollection>;
 
 /** The AdminRuleCollection items on this page */
-export type AdminRuleCollectionListResultValueList =
-  ReadonlyArray<AdminRuleCollection>;
+export type AdminRuleCollectionListResultValueList = Array<AdminRuleCollection>;
 export const AdminRuleCollectionListResultValueList = /*@__PURE__*/ S.Array(
   AdminRuleCollection,
 ) as any as S.Schema<AdminRuleCollectionListResultValueList>;
@@ -901,7 +900,7 @@ export const BaseAdminRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BaseAdminRule" }) as any as S.Schema<BaseAdminRule>;
 
 /** The BaseAdminRule items on this page */
-export type AdminRuleListResultValueList = ReadonlyArray<BaseAdminRule>;
+export type AdminRuleListResultValueList = Array<BaseAdminRule>;
 export const AdminRuleListResultValueList = /*@__PURE__*/ S.Array(
   BaseAdminRule,
 ) as any as S.Schema<AdminRuleListResultValueList>;
@@ -996,8 +995,7 @@ export const ApplicationGatewayPrivateEndpointConnectionPropertiesPrivateEndpoin
   ) as any as S.Schema<ApplicationGatewayPrivateEndpointConnectionPropertiesPrivateEndpointTagsMap>;
 
 /** List of address prefixes for the subnet. */
-export type CommonSubnetPropertiesFormatAddressPrefixesList =
-  ReadonlyArray<string>;
+export type CommonSubnetPropertiesFormatAddressPrefixesList = Array<string>;
 export const CommonSubnetPropertiesFormatAddressPrefixesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1025,7 +1023,7 @@ export const CommonSecurityRulePropertiesFormatProtocol =
 
 /** The CIDR or source IP ranges. */
 export type CommonSecurityRulePropertiesFormatSourceAddressPrefixesList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const CommonSecurityRulePropertiesFormatSourceAddressPrefixesList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -1033,7 +1031,7 @@ export const CommonSecurityRulePropertiesFormatSourceAddressPrefixesList =
 
 /** The application security group specified as source. */
 export type CommonSecurityRulePropertiesFormatSourceApplicationSecurityGroupsList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const CommonSecurityRulePropertiesFormatSourceApplicationSecurityGroupsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -1041,7 +1039,7 @@ export const CommonSecurityRulePropertiesFormatSourceApplicationSecurityGroupsLi
 
 /** The destination address prefixes. CIDR or destination IP ranges. */
 export type CommonSecurityRulePropertiesFormatDestinationAddressPrefixesList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const CommonSecurityRulePropertiesFormatDestinationAddressPrefixesList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -1049,7 +1047,7 @@ export const CommonSecurityRulePropertiesFormatDestinationAddressPrefixesList =
 
 /** The application security group specified as destination. */
 export type CommonSecurityRulePropertiesFormatDestinationApplicationSecurityGroupsList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const CommonSecurityRulePropertiesFormatDestinationApplicationSecurityGroupsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -1057,7 +1055,7 @@ export const CommonSecurityRulePropertiesFormatDestinationApplicationSecurityGro
 
 /** The source port ranges. */
 export type CommonSecurityRulePropertiesFormatSourcePortRangesList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const CommonSecurityRulePropertiesFormatSourcePortRangesList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -1065,7 +1063,7 @@ export const CommonSecurityRulePropertiesFormatSourcePortRangesList =
 
 /** The destination port ranges. */
 export type CommonSecurityRulePropertiesFormatDestinationPortRangesList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const CommonSecurityRulePropertiesFormatDestinationPortRangesList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -1192,7 +1190,7 @@ export const CommonSecurityRule = /*@__PURE__*/ S.suspend(() =>
 
 /** A collection of security rules of the network security group. */
 export type CommonNetworkSecurityGroupPropertiesFormatSecurityRulesList =
-  ReadonlyArray<CommonSecurityRule>;
+  Array<CommonSecurityRule>;
 export const CommonNetworkSecurityGroupPropertiesFormatSecurityRulesList =
   /*@__PURE__*/ S.Array(
     CommonSecurityRule,
@@ -1200,7 +1198,7 @@ export const CommonNetworkSecurityGroupPropertiesFormatSecurityRulesList =
 
 /** The default security rules of network security group. */
 export type CommonNetworkSecurityGroupPropertiesFormatDefaultSecurityRulesList =
-  ReadonlyArray<CommonSecurityRule>;
+  Array<CommonSecurityRule>;
 export const CommonNetworkSecurityGroupPropertiesFormatDefaultSecurityRulesList =
   /*@__PURE__*/ S.Array(
     CommonSecurityRule,
@@ -1231,7 +1229,7 @@ export const CommonNetworkInterfacePropertiesFormatVirtualMachine =
 
 /** A list of IPConfigurations of the network interface. */
 export type CommonNetworkInterfacePropertiesFormatIpConfigurationsList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const CommonNetworkInterfacePropertiesFormatIpConfigurationsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -1239,7 +1237,7 @@ export const CommonNetworkInterfacePropertiesFormatIpConfigurationsList =
 
 /** A list of TapConfigurations of the network interface. */
 export type CommonNetworkInterfacePropertiesFormatTapConfigurationsList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const CommonNetworkInterfacePropertiesFormatTapConfigurationsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -1247,7 +1245,7 @@ export const CommonNetworkInterfacePropertiesFormatTapConfigurationsList =
 
 /** A list of references to linked BareMetal resources. */
 export type CommonNetworkInterfacePropertiesFormatHostedWorkloadsList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const CommonNetworkInterfacePropertiesFormatHostedWorkloadsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -1471,7 +1469,7 @@ export const CommonNetworkInterface = /*@__PURE__*/ S.suspend(() =>
 
 /** A collection of references to network interfaces. */
 export type CommonNetworkSecurityGroupPropertiesFormatNetworkInterfacesList =
-  ReadonlyArray<CommonNetworkInterface>;
+  Array<CommonNetworkInterface>;
 export const CommonNetworkSecurityGroupPropertiesFormatNetworkInterfacesList =
   /*@__PURE__*/ S.Array(
     CommonNetworkInterface,
@@ -1479,7 +1477,7 @@ export const CommonNetworkSecurityGroupPropertiesFormatNetworkInterfacesList =
 
 /** A collection of references to subnets. */
 export type CommonNetworkSecurityGroupPropertiesFormatSubnetsList =
-  ReadonlyArray<CommonSubnet>;
+  Array<CommonSubnet>;
 export const CommonNetworkSecurityGroupPropertiesFormatSubnetsList =
   /*@__PURE__*/ S.Array(
     S.suspend(() => CommonSubnet),
@@ -1693,7 +1691,7 @@ export const CommonNetworkSecurityGroupPropertiesFormatFlowLogsItem =
 
 /** A collection of references to flow log resources. */
 export type CommonNetworkSecurityGroupPropertiesFormatFlowLogsList =
-  ReadonlyArray<CommonNetworkSecurityGroupPropertiesFormatFlowLogsItem>;
+  Array<CommonNetworkSecurityGroupPropertiesFormatFlowLogsItem>;
 export const CommonNetworkSecurityGroupPropertiesFormatFlowLogsList =
   /*@__PURE__*/ S.Array(
     CommonNetworkSecurityGroupPropertiesFormatFlowLogsItem,
@@ -1868,15 +1866,13 @@ export const CommonRoute = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CommonRoute" }) as any as S.Schema<CommonRoute>;
 
 /** Collection of routes contained within a route table. */
-export type CommonRouteTablePropertiesFormatRoutesList =
-  ReadonlyArray<CommonRoute>;
+export type CommonRouteTablePropertiesFormatRoutesList = Array<CommonRoute>;
 export const CommonRouteTablePropertiesFormatRoutesList = /*@__PURE__*/ S.Array(
   CommonRoute,
 ) as any as S.Schema<CommonRouteTablePropertiesFormatRoutesList>;
 
 /** A collection of references to subnets. */
-export type CommonRouteTablePropertiesFormatSubnetsList =
-  ReadonlyArray<CommonSubnet>;
+export type CommonRouteTablePropertiesFormatSubnetsList = Array<CommonSubnet>;
 export const CommonRouteTablePropertiesFormatSubnetsList =
   /*@__PURE__*/ S.Array(
     S.suspend(() => CommonSubnet),
@@ -1992,8 +1988,7 @@ export const CommonServiceEndpointPropertiesFormatNetworkIdentifier =
   }) as any as S.Schema<CommonServiceEndpointPropertiesFormatNetworkIdentifier>;
 
 /** A list of locations. */
-export type CommonServiceEndpointPropertiesFormatLocationsList =
-  ReadonlyArray<string>;
+export type CommonServiceEndpointPropertiesFormatLocationsList = Array<string>;
 export const CommonServiceEndpointPropertiesFormatLocationsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2019,7 +2014,9 @@ export interface CommonServiceEndpointPropertiesFormat {
   /** A list of locations. */
   locations?: CommonServiceEndpointPropertiesFormatLocationsList;
   /** Provisioning states of a resource. */
-  provisioningState?: CommonServiceEndpointPropertiesFormatProvisioningState;
+  provisioningState?:
+    | CommonServiceEndpointPropertiesFormatProvisioningState
+    | (string & {});
 }
 export const CommonServiceEndpointPropertiesFormat = /*@__PURE__*/ S.suspend(
   () =>
@@ -2039,7 +2036,7 @@ export const CommonServiceEndpointPropertiesFormat = /*@__PURE__*/ S.suspend(
 
 /** An array of service endpoints. */
 export type CommonSubnetPropertiesFormatServiceEndpointsList =
-  ReadonlyArray<CommonServiceEndpointPropertiesFormat>;
+  Array<CommonServiceEndpointPropertiesFormat>;
 export const CommonSubnetPropertiesFormatServiceEndpointsList =
   /*@__PURE__*/ S.Array(
     CommonServiceEndpointPropertiesFormat,
@@ -2057,7 +2054,7 @@ export const CommonSubnetPropertiesFormatServiceEndpointPoliciesItemTagsMap =
 
 /** A list of service resources. */
 export type CommonServiceEndpointPolicyDefinitionPropertiesFormatServiceResourcesList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const CommonServiceEndpointPolicyDefinitionPropertiesFormatServiceResourcesList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -2078,7 +2075,9 @@ export interface CommonServiceEndpointPolicyDefinitionPropertiesFormat {
   /** A list of service resources. */
   serviceResources?: CommonServiceEndpointPolicyDefinitionPropertiesFormatServiceResourcesList;
   /** Provisioning states of a resource. */
-  provisioningState?: CommonServiceEndpointPolicyDefinitionPropertiesFormatProvisioningState;
+  provisioningState?:
+    | CommonServiceEndpointPolicyDefinitionPropertiesFormatProvisioningState
+    | (string & {});
 }
 export const CommonServiceEndpointPolicyDefinitionPropertiesFormat =
   /*@__PURE__*/ S.suspend(() =>
@@ -2126,7 +2125,7 @@ export const CommonServiceEndpointPolicyDefinition = /*@__PURE__*/ S.suspend(
 
 /** A collection of service endpoint policy definitions of the service endpoint policy. */
 export type CommonServiceEndpointPolicyPropertiesFormatServiceEndpointPolicyDefinitionsList =
-  ReadonlyArray<CommonServiceEndpointPolicyDefinition>;
+  Array<CommonServiceEndpointPolicyDefinition>;
 export const CommonServiceEndpointPolicyPropertiesFormatServiceEndpointPolicyDefinitionsList =
   /*@__PURE__*/ S.Array(
     CommonServiceEndpointPolicyDefinition,
@@ -2160,7 +2159,7 @@ export const CommonServiceEndpointPolicyPropertiesFormatSubnetsItem =
 
 /** A collection of references to subnets. */
 export type CommonServiceEndpointPolicyPropertiesFormatSubnetsList =
-  ReadonlyArray<CommonServiceEndpointPolicyPropertiesFormatSubnetsItem>;
+  Array<CommonServiceEndpointPolicyPropertiesFormatSubnetsItem>;
 export const CommonServiceEndpointPolicyPropertiesFormatSubnetsList =
   /*@__PURE__*/ S.Array(
     CommonServiceEndpointPolicyPropertiesFormatSubnetsItem,
@@ -2179,7 +2178,7 @@ export const CommonServiceEndpointPolicyPropertiesFormatProvisioningState =
 
 /** A collection of contextual service endpoint policy. */
 export type CommonServiceEndpointPolicyPropertiesFormatContextualServiceEndpointPoliciesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CommonServiceEndpointPolicyPropertiesFormatContextualServiceEndpointPoliciesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2261,15 +2260,14 @@ export const CommonSubnetPropertiesFormatServiceEndpointPoliciesItem =
 
 /** An array of service endpoint policies. */
 export type CommonSubnetPropertiesFormatServiceEndpointPoliciesList =
-  ReadonlyArray<CommonSubnetPropertiesFormatServiceEndpointPoliciesItem>;
+  Array<CommonSubnetPropertiesFormatServiceEndpointPoliciesItem>;
 export const CommonSubnetPropertiesFormatServiceEndpointPoliciesList =
   /*@__PURE__*/ S.Array(
     CommonSubnetPropertiesFormatServiceEndpointPoliciesItem,
   ) as any as S.Schema<CommonSubnetPropertiesFormatServiceEndpointPoliciesList>;
 
 /** An array of references to private endpoints. */
-export type CommonSubnetPropertiesFormatPrivateEndpointsList =
-  ReadonlyArray<unknown>;
+export type CommonSubnetPropertiesFormatPrivateEndpointsList = Array<unknown>;
 export const CommonSubnetPropertiesFormatPrivateEndpointsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -2306,8 +2304,7 @@ export const CommonPublicIPAddressPropertiesFormatPublicIPAddressVersion =
   /*@__PURE__*/ S.String;
 
 /** The list of tags associated with the public IP address. */
-export type CommonPublicIPAddressPropertiesFormatIpTagsList =
-  ReadonlyArray<unknown>;
+export type CommonPublicIPAddressPropertiesFormatIpTagsList = Array<unknown>;
 export const CommonPublicIPAddressPropertiesFormatIpTagsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -2456,9 +2453,9 @@ export const CommonPublicIPAddressSkuTier = /*@__PURE__*/ S.String;
 /** SKU of a public IP address. */
 export interface CommonPublicIPAddressSku {
   /** Name of a public IP address SKU. */
-  name?: CommonPublicIPAddressSkuName;
+  name?: CommonPublicIPAddressSkuName | (string & {});
   /** Tier of a public IP address SKU. */
-  tier?: CommonPublicIPAddressSkuTier;
+  tier?: CommonPublicIPAddressSkuTier | (string & {});
 }
 export const CommonPublicIPAddressSku = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2470,7 +2467,7 @@ export const CommonPublicIPAddressSku = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CommonPublicIPAddressSku>;
 
 /** A list of availability zones denoting the IP allocated for the resource needs to come from. */
-export type CommonPublicIPAddressZonesList = ReadonlyArray<string>;
+export type CommonPublicIPAddressZonesList = Array<string>;
 export const CommonPublicIPAddressZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CommonPublicIPAddressZonesList>;
@@ -2580,7 +2577,7 @@ export const CommonIPConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of references to the network interface IP configurations using subnet. */
 export type CommonSubnetPropertiesFormatIpConfigurationsList =
-  ReadonlyArray<CommonIPConfiguration>;
+  Array<CommonIPConfiguration>;
 export const CommonSubnetPropertiesFormatIpConfigurationsList =
   /*@__PURE__*/ S.Array(
     CommonIPConfiguration,
@@ -2643,7 +2640,7 @@ export const CommonIPConfigurationProfile = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of IP configuration profiles which reference this subnet. */
 export type CommonSubnetPropertiesFormatIpConfigurationProfilesList =
-  ReadonlyArray<CommonIPConfigurationProfile>;
+  Array<CommonIPConfigurationProfile>;
 export const CommonSubnetPropertiesFormatIpConfigurationProfilesList =
   /*@__PURE__*/ S.Array(
     CommonIPConfigurationProfile,
@@ -2665,7 +2662,7 @@ export const CommonSubnetPropertiesFormatIpAllocationsItem =
 
 /** Array of IpAllocation which reference this subnet. */
 export type CommonSubnetPropertiesFormatIpAllocationsList =
-  ReadonlyArray<CommonSubnetPropertiesFormatIpAllocationsItem>;
+  Array<CommonSubnetPropertiesFormatIpAllocationsItem>;
 export const CommonSubnetPropertiesFormatIpAllocationsList =
   /*@__PURE__*/ S.Array(
     CommonSubnetPropertiesFormatIpAllocationsItem,
@@ -2730,7 +2727,7 @@ export const CommonResourceNavigationLink = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of references to the external resources using subnet. */
 export type CommonSubnetPropertiesFormatResourceNavigationLinksList =
-  ReadonlyArray<CommonResourceNavigationLink>;
+  Array<CommonResourceNavigationLink>;
 export const CommonSubnetPropertiesFormatResourceNavigationLinksList =
   /*@__PURE__*/ S.Array(
     CommonResourceNavigationLink,
@@ -2749,7 +2746,7 @@ export const CommonServiceAssociationLinkPropertiesFormatProvisioningState =
 
 /** A list of locations. */
 export type CommonServiceAssociationLinkPropertiesFormatLocationsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CommonServiceAssociationLinkPropertiesFormatLocationsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2812,15 +2809,14 @@ export const CommonServiceAssociationLink = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of references to services injecting into this subnet. */
 export type CommonSubnetPropertiesFormatServiceAssociationLinksList =
-  ReadonlyArray<CommonServiceAssociationLink>;
+  Array<CommonServiceAssociationLink>;
 export const CommonSubnetPropertiesFormatServiceAssociationLinksList =
   /*@__PURE__*/ S.Array(
     CommonServiceAssociationLink,
   ) as any as S.Schema<CommonSubnetPropertiesFormatServiceAssociationLinksList>;
 
 /** The actions permitted to the service upon delegation. */
-export type CommonServiceDelegationPropertiesFormatActionsList =
-  ReadonlyArray<string>;
+export type CommonServiceDelegationPropertiesFormatActionsList = Array<string>;
 export const CommonServiceDelegationPropertiesFormatActionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2886,7 +2882,7 @@ export const CommonDelegation = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of references to the delegations on the subnet. */
 export type CommonSubnetPropertiesFormatDelegationsList =
-  ReadonlyArray<CommonDelegation>;
+  Array<CommonDelegation>;
 export const CommonSubnetPropertiesFormatDelegationsList =
   /*@__PURE__*/ S.Array(
     CommonDelegation,
@@ -2944,7 +2940,9 @@ export interface CommonApplicationGatewayIPConfigurationPropertiesFormat {
   /** Reference to another subresource. */
   subnet?: CommonApplicationGatewayIPConfigurationPropertiesFormatSubnet;
   /** Provisioning states of a resource. */
-  provisioningState?: CommonApplicationGatewayIPConfigurationPropertiesFormatProvisioningState;
+  provisioningState?:
+    | CommonApplicationGatewayIPConfigurationPropertiesFormatProvisioningState
+    | (string & {});
 }
 export const CommonApplicationGatewayIPConfigurationPropertiesFormat =
   /*@__PURE__*/ S.suspend(() =>
@@ -2991,7 +2989,7 @@ export const CommonSubnetPropertiesFormatApplicationGatewayIPConfigurationsItem 
 
 /** Application gateway IP configurations of virtual network resource. */
 export type CommonSubnetPropertiesFormatApplicationGatewayIPConfigurationsList =
-  ReadonlyArray<CommonSubnetPropertiesFormatApplicationGatewayIPConfigurationsItem>;
+  Array<CommonSubnetPropertiesFormatApplicationGatewayIPConfigurationsItem>;
 export const CommonSubnetPropertiesFormatApplicationGatewayIPConfigurationsList =
   /*@__PURE__*/ S.Array(
     CommonSubnetPropertiesFormatApplicationGatewayIPConfigurationsItem,
@@ -3017,7 +3015,7 @@ export const CommonIpamPoolPrefixAllocationPool = /*@__PURE__*/ S.suspend(() =>
 
 /** List of assigned IP address prefixes in the IpamPool of the associated resource. */
 export type CommonIpamPoolPrefixAllocationAllocatedAddressPrefixesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CommonIpamPoolPrefixAllocationAllocatedAddressPrefixesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3045,7 +3043,7 @@ export const CommonIpamPoolPrefixAllocation = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of IPAM Pools for allocating IP address prefixes. */
 export type CommonSubnetPropertiesFormatIpamPoolPrefixAllocationsList =
-  ReadonlyArray<CommonIpamPoolPrefixAllocation>;
+  Array<CommonIpamPoolPrefixAllocation>;
 export const CommonSubnetPropertiesFormatIpamPoolPrefixAllocationsList =
   /*@__PURE__*/ S.Array(
     CommonIpamPoolPrefixAllocation,
@@ -3195,7 +3193,7 @@ export const CommonSubnet = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of references to the network interfaces created for this private endpoint. */
 export type CommonPrivateEndpointPropertiesNetworkInterfacesList =
-  ReadonlyArray<CommonNetworkInterface>;
+  Array<CommonNetworkInterface>;
 export const CommonPrivateEndpointPropertiesNetworkInterfacesList =
   /*@__PURE__*/ S.Array(
     CommonNetworkInterface,
@@ -3233,7 +3231,7 @@ export const CommonPrivateLinkServiceConnectionPropertiesProvisioningState =
 
 /** The ID(s) of the group(s) obtained from the remote resource that this private endpoint should connect to. */
 export type CommonPrivateLinkServiceConnectionPropertiesGroupIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CommonPrivateLinkServiceConnectionPropertiesGroupIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3262,7 +3260,9 @@ export const CommonPrivateLinkServiceConnectionState = /*@__PURE__*/ S.suspend(
 /** Properties of the PrivateLinkServiceConnection. */
 export interface CommonPrivateLinkServiceConnectionProperties {
   /** Provisioning states of a resource. */
-  provisioningState?: CommonPrivateLinkServiceConnectionPropertiesProvisioningState;
+  provisioningState?:
+    | CommonPrivateLinkServiceConnectionPropertiesProvisioningState
+    | (string & {});
   /** The resource id of private link service. */
   privateLinkServiceId?: string;
   /** The ID(s) of the group(s) obtained from the remote resource that this private endpoint should connect to. */
@@ -3318,7 +3318,7 @@ export const CommonPrivateLinkServiceConnection = /*@__PURE__*/ S.suspend(() =>
 
 /** A grouping of information about the connection to the remote resource. */
 export type CommonPrivateEndpointPropertiesPrivateLinkServiceConnectionsList =
-  ReadonlyArray<CommonPrivateLinkServiceConnection>;
+  Array<CommonPrivateLinkServiceConnection>;
 export const CommonPrivateEndpointPropertiesPrivateLinkServiceConnectionsList =
   /*@__PURE__*/ S.Array(
     CommonPrivateLinkServiceConnection,
@@ -3326,7 +3326,7 @@ export const CommonPrivateEndpointPropertiesPrivateLinkServiceConnectionsList =
 
 /** A grouping of information about the connection to the remote resource. Used when the network admin does not have access to approve connections to the remote resource. */
 export type CommonPrivateEndpointPropertiesManualPrivateLinkServiceConnectionsList =
-  ReadonlyArray<CommonPrivateLinkServiceConnection>;
+  Array<CommonPrivateLinkServiceConnection>;
 export const CommonPrivateEndpointPropertiesManualPrivateLinkServiceConnectionsList =
   /*@__PURE__*/ S.Array(
     CommonPrivateLinkServiceConnection,
@@ -3334,7 +3334,7 @@ export const CommonPrivateEndpointPropertiesManualPrivateLinkServiceConnectionsL
 
 /** A list of private ip addresses of the private endpoint. */
 export type CommonCustomDnsConfigPropertiesFormatIpAddressesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CommonCustomDnsConfigPropertiesFormatIpAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3361,7 +3361,7 @@ export const CommonCustomDnsConfigPropertiesFormat = /*@__PURE__*/ S.suspend(
 
 /** An array of custom dns configurations. */
 export type CommonPrivateEndpointPropertiesCustomDnsConfigsList =
-  ReadonlyArray<CommonCustomDnsConfigPropertiesFormat>;
+  Array<CommonCustomDnsConfigPropertiesFormat>;
 export const CommonPrivateEndpointPropertiesCustomDnsConfigsList =
   /*@__PURE__*/ S.Array(
     CommonCustomDnsConfigPropertiesFormat,
@@ -3439,7 +3439,7 @@ export const CommonApplicationSecurityGroup = /*@__PURE__*/ S.suspend(() =>
 
 /** Application security groups in which the private endpoint IP configuration is included. */
 export type CommonPrivateEndpointPropertiesApplicationSecurityGroupsList =
-  ReadonlyArray<CommonApplicationSecurityGroup>;
+  Array<CommonApplicationSecurityGroup>;
 export const CommonPrivateEndpointPropertiesApplicationSecurityGroupsList =
   /*@__PURE__*/ S.Array(
     CommonApplicationSecurityGroup,
@@ -3490,7 +3490,7 @@ export const CommonPrivateEndpointIPConfiguration = /*@__PURE__*/ S.suspend(
 
 /** A list of IP configurations of the private endpoint. This will be used to map to the First Party Service's endpoints. */
 export type CommonPrivateEndpointPropertiesIpConfigurationsList =
-  ReadonlyArray<CommonPrivateEndpointIPConfiguration>;
+  Array<CommonPrivateEndpointIPConfiguration>;
 export const CommonPrivateEndpointPropertiesIpConfigurationsList =
   /*@__PURE__*/ S.Array(
     CommonPrivateEndpointIPConfiguration,
@@ -3754,7 +3754,7 @@ export const ApplicationGatewayPrivateEndpointConnection =
 
 /** The ApplicationGatewayPrivateEndpointConnection items on this page */
 export type ApplicationGatewayPrivateEndpointConnectionListResultValueList =
-  ReadonlyArray<ApplicationGatewayPrivateEndpointConnection>;
+  Array<ApplicationGatewayPrivateEndpointConnection>;
 export const ApplicationGatewayPrivateEndpointConnectionListResultValueList =
   /*@__PURE__*/ S.Array(
     ApplicationGatewayPrivateEndpointConnection,
@@ -3788,7 +3788,7 @@ export const ApplicationGatewayPrivateEndpointConnectionPropertiesInputPrivateEn
 
 /** List of address prefixes for the subnet. */
 export type CommonSubnetPropertiesFormatInputAddressPrefixesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CommonSubnetPropertiesFormatInputAddressPrefixesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3816,7 +3816,7 @@ export const CommonSecurityRulePropertiesFormatInputProtocol =
 
 /** The CIDR or source IP ranges. */
 export type CommonSecurityRulePropertiesFormatInputSourceAddressPrefixesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CommonSecurityRulePropertiesFormatInputSourceAddressPrefixesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3880,7 +3880,7 @@ export const CommonApplicationSecurityGroupInput = /*@__PURE__*/ S.suspend(() =>
 
 /** The application security group specified as source. */
 export type CommonSecurityRulePropertiesFormatInputSourceApplicationSecurityGroupsList =
-  ReadonlyArray<CommonApplicationSecurityGroupInput>;
+  Array<CommonApplicationSecurityGroupInput>;
 export const CommonSecurityRulePropertiesFormatInputSourceApplicationSecurityGroupsList =
   /*@__PURE__*/ S.Array(
     CommonApplicationSecurityGroupInput,
@@ -3888,7 +3888,7 @@ export const CommonSecurityRulePropertiesFormatInputSourceApplicationSecurityGro
 
 /** The destination address prefixes. CIDR or destination IP ranges. */
 export type CommonSecurityRulePropertiesFormatInputDestinationAddressPrefixesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CommonSecurityRulePropertiesFormatInputDestinationAddressPrefixesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3896,7 +3896,7 @@ export const CommonSecurityRulePropertiesFormatInputDestinationAddressPrefixesLi
 
 /** The application security group specified as destination. */
 export type CommonSecurityRulePropertiesFormatInputDestinationApplicationSecurityGroupsList =
-  ReadonlyArray<CommonApplicationSecurityGroupInput>;
+  Array<CommonApplicationSecurityGroupInput>;
 export const CommonSecurityRulePropertiesFormatInputDestinationApplicationSecurityGroupsList =
   /*@__PURE__*/ S.Array(
     CommonApplicationSecurityGroupInput,
@@ -3904,7 +3904,7 @@ export const CommonSecurityRulePropertiesFormatInputDestinationApplicationSecuri
 
 /** The source port ranges. */
 export type CommonSecurityRulePropertiesFormatInputSourcePortRangesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CommonSecurityRulePropertiesFormatInputSourcePortRangesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3912,7 +3912,7 @@ export const CommonSecurityRulePropertiesFormatInputSourcePortRangesList =
 
 /** The destination port ranges. */
 export type CommonSecurityRulePropertiesFormatInputDestinationPortRangesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CommonSecurityRulePropertiesFormatInputDestinationPortRangesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4037,7 +4037,7 @@ export const CommonSecurityRuleInput = /*@__PURE__*/ S.suspend(() =>
 
 /** A collection of security rules of the network security group. */
 export type CommonNetworkSecurityGroupPropertiesFormatInputSecurityRulesList =
-  ReadonlyArray<CommonSecurityRuleInput>;
+  Array<CommonSecurityRuleInput>;
 export const CommonNetworkSecurityGroupPropertiesFormatInputSecurityRulesList =
   /*@__PURE__*/ S.Array(
     CommonSecurityRuleInput,
@@ -4183,7 +4183,7 @@ export const CommonRouteInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Collection of routes contained within a route table. */
 export type CommonRouteTablePropertiesFormatInputRoutesList =
-  ReadonlyArray<CommonRouteInput>;
+  Array<CommonRouteInput>;
 export const CommonRouteTablePropertiesFormatInputRoutesList =
   /*@__PURE__*/ S.Array(
     CommonRouteInput,
@@ -4276,7 +4276,7 @@ export const CommonSubnetPropertiesFormatInputNatGateway =
 
 /** An array of service endpoints. */
 export type CommonSubnetPropertiesFormatInputServiceEndpointsList =
-  ReadonlyArray<CommonServiceEndpointPropertiesFormat>;
+  Array<CommonServiceEndpointPropertiesFormat>;
 export const CommonSubnetPropertiesFormatInputServiceEndpointsList =
   /*@__PURE__*/ S.Array(
     CommonServiceEndpointPropertiesFormat,
@@ -4315,7 +4315,7 @@ export const CommonServiceEndpointPolicyDefinitionInput =
 
 /** A collection of service endpoint policy definitions of the service endpoint policy. */
 export type CommonServiceEndpointPolicyPropertiesFormatInputServiceEndpointPolicyDefinitionsList =
-  ReadonlyArray<CommonServiceEndpointPolicyDefinitionInput>;
+  Array<CommonServiceEndpointPolicyDefinitionInput>;
 export const CommonServiceEndpointPolicyPropertiesFormatInputServiceEndpointPolicyDefinitionsList =
   /*@__PURE__*/ S.Array(
     CommonServiceEndpointPolicyDefinitionInput,
@@ -4334,7 +4334,7 @@ export const CommonServiceEndpointPolicyPropertiesFormatInputProvisioningState =
 
 /** A collection of contextual service endpoint policy. */
 export type CommonServiceEndpointPolicyPropertiesFormatInputContextualServiceEndpointPoliciesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CommonServiceEndpointPolicyPropertiesFormatInputContextualServiceEndpointPoliciesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4398,7 +4398,7 @@ export const CommonSubnetPropertiesFormatInputServiceEndpointPoliciesItem =
 
 /** An array of service endpoint policies. */
 export type CommonSubnetPropertiesFormatInputServiceEndpointPoliciesList =
-  ReadonlyArray<CommonSubnetPropertiesFormatInputServiceEndpointPoliciesItem>;
+  Array<CommonSubnetPropertiesFormatInputServiceEndpointPoliciesItem>;
 export const CommonSubnetPropertiesFormatInputServiceEndpointPoliciesList =
   /*@__PURE__*/ S.Array(
     CommonSubnetPropertiesFormatInputServiceEndpointPoliciesItem,
@@ -4420,7 +4420,7 @@ export const CommonSubnetPropertiesFormatInputIpAllocationsItem =
 
 /** Array of IpAllocation which reference this subnet. */
 export type CommonSubnetPropertiesFormatInputIpAllocationsList =
-  ReadonlyArray<CommonSubnetPropertiesFormatInputIpAllocationsItem>;
+  Array<CommonSubnetPropertiesFormatInputIpAllocationsItem>;
 export const CommonSubnetPropertiesFormatInputIpAllocationsList =
   /*@__PURE__*/ S.Array(
     CommonSubnetPropertiesFormatInputIpAllocationsItem,
@@ -4482,7 +4482,7 @@ export const CommonDelegationInput = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of references to the delegations on the subnet. */
 export type CommonSubnetPropertiesFormatInputDelegationsList =
-  ReadonlyArray<CommonDelegationInput>;
+  Array<CommonDelegationInput>;
 export const CommonSubnetPropertiesFormatInputDelegationsList =
   /*@__PURE__*/ S.Array(
     CommonDelegationInput,
@@ -4539,7 +4539,7 @@ export const CommonSubnetPropertiesFormatInputApplicationGatewayIPConfigurations
 
 /** Application gateway IP configurations of virtual network resource. */
 export type CommonSubnetPropertiesFormatInputApplicationGatewayIPConfigurationsList =
-  ReadonlyArray<CommonSubnetPropertiesFormatInputApplicationGatewayIPConfigurationsItem>;
+  Array<CommonSubnetPropertiesFormatInputApplicationGatewayIPConfigurationsItem>;
 export const CommonSubnetPropertiesFormatInputApplicationGatewayIPConfigurationsList =
   /*@__PURE__*/ S.Array(
     CommonSubnetPropertiesFormatInputApplicationGatewayIPConfigurationsItem,
@@ -4569,7 +4569,7 @@ export const CommonIpamPoolPrefixAllocationInput = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of IPAM Pools for allocating IP address prefixes. */
 export type CommonSubnetPropertiesFormatInputIpamPoolPrefixAllocationsList =
-  ReadonlyArray<CommonIpamPoolPrefixAllocationInput>;
+  Array<CommonIpamPoolPrefixAllocationInput>;
 export const CommonSubnetPropertiesFormatInputIpamPoolPrefixAllocationsList =
   /*@__PURE__*/ S.Array(
     CommonIpamPoolPrefixAllocationInput,
@@ -4734,7 +4734,7 @@ export const CommonPrivateLinkServiceConnectionInput = /*@__PURE__*/ S.suspend(
 
 /** A grouping of information about the connection to the remote resource. */
 export type CommonPrivateEndpointPropertiesInputPrivateLinkServiceConnectionsList =
-  ReadonlyArray<CommonPrivateLinkServiceConnectionInput>;
+  Array<CommonPrivateLinkServiceConnectionInput>;
 export const CommonPrivateEndpointPropertiesInputPrivateLinkServiceConnectionsList =
   /*@__PURE__*/ S.Array(
     CommonPrivateLinkServiceConnectionInput,
@@ -4742,7 +4742,7 @@ export const CommonPrivateEndpointPropertiesInputPrivateLinkServiceConnectionsLi
 
 /** A grouping of information about the connection to the remote resource. Used when the network admin does not have access to approve connections to the remote resource. */
 export type CommonPrivateEndpointPropertiesInputManualPrivateLinkServiceConnectionsList =
-  ReadonlyArray<CommonPrivateLinkServiceConnectionInput>;
+  Array<CommonPrivateLinkServiceConnectionInput>;
 export const CommonPrivateEndpointPropertiesInputManualPrivateLinkServiceConnectionsList =
   /*@__PURE__*/ S.Array(
     CommonPrivateLinkServiceConnectionInput,
@@ -4750,7 +4750,7 @@ export const CommonPrivateEndpointPropertiesInputManualPrivateLinkServiceConnect
 
 /** An array of custom dns configurations. */
 export type CommonPrivateEndpointPropertiesInputCustomDnsConfigsList =
-  ReadonlyArray<CommonCustomDnsConfigPropertiesFormat>;
+  Array<CommonCustomDnsConfigPropertiesFormat>;
 export const CommonPrivateEndpointPropertiesInputCustomDnsConfigsList =
   /*@__PURE__*/ S.Array(
     CommonCustomDnsConfigPropertiesFormat,
@@ -4758,7 +4758,7 @@ export const CommonPrivateEndpointPropertiesInputCustomDnsConfigsList =
 
 /** Application security groups in which the private endpoint IP configuration is included. */
 export type CommonPrivateEndpointPropertiesInputApplicationSecurityGroupsList =
-  ReadonlyArray<CommonApplicationSecurityGroupInput>;
+  Array<CommonApplicationSecurityGroupInput>;
 export const CommonPrivateEndpointPropertiesInputApplicationSecurityGroupsList =
   /*@__PURE__*/ S.Array(
     CommonApplicationSecurityGroupInput,
@@ -4783,7 +4783,7 @@ export const CommonPrivateEndpointIPConfigurationInput =
 
 /** A list of IP configurations of the private endpoint. This will be used to map to the First Party Service's endpoints. */
 export type CommonPrivateEndpointPropertiesInputIpConfigurationsList =
-  ReadonlyArray<CommonPrivateEndpointIPConfigurationInput>;
+  Array<CommonPrivateEndpointIPConfigurationInput>;
 export const CommonPrivateEndpointPropertiesInputIpConfigurationsList =
   /*@__PURE__*/ S.Array(
     CommonPrivateEndpointIPConfigurationInput,
@@ -5054,7 +5054,7 @@ export const ApplicationGatewayPrivateLinkResourcesListRequest =
 
 /** Required member names of private link resource. */
 export type ApplicationGatewayPrivateLinkResourcePropertiesRequiredMembersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ApplicationGatewayPrivateLinkResourcePropertiesRequiredMembersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5062,7 +5062,7 @@ export const ApplicationGatewayPrivateLinkResourcePropertiesRequiredMembersList 
 
 /** Required DNS zone names of the the private link resource. */
 export type ApplicationGatewayPrivateLinkResourcePropertiesRequiredZoneNamesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ApplicationGatewayPrivateLinkResourcePropertiesRequiredZoneNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5120,7 +5120,7 @@ export const ApplicationGatewayPrivateLinkResource = /*@__PURE__*/ S.suspend(
 
 /** The ApplicationGatewayPrivateLinkResource items on this page */
 export type ApplicationGatewayPrivateLinkResourceListResultValueList =
-  ReadonlyArray<ApplicationGatewayPrivateLinkResource>;
+  Array<ApplicationGatewayPrivateLinkResource>;
 export const ApplicationGatewayPrivateLinkResourceListResultValueList =
   /*@__PURE__*/ S.Array(
     ApplicationGatewayPrivateLinkResource,
@@ -5300,7 +5300,7 @@ export const CommonVirtualNetworkTapPropertiesFormatNetworkInterfaceTapConfigura
 
 /** Specifies the list of resource IDs for the network interface IP configuration that needs to be tapped. */
 export type CommonVirtualNetworkTapPropertiesFormatNetworkInterfaceTapConfigurationsList =
-  ReadonlyArray<CommonVirtualNetworkTapPropertiesFormatNetworkInterfaceTapConfigurationsItem>;
+  Array<CommonVirtualNetworkTapPropertiesFormatNetworkInterfaceTapConfigurationsItem>;
 export const CommonVirtualNetworkTapPropertiesFormatNetworkInterfaceTapConfigurationsList =
   /*@__PURE__*/ S.Array(
     CommonVirtualNetworkTapPropertiesFormatNetworkInterfaceTapConfigurationsItem,
@@ -5363,7 +5363,7 @@ export const CommonFrontendIPConfigurationPropertiesFormatInboundNatRulesItem =
 
 /** An array of references to inbound rules that use this frontend IP. */
 export type CommonFrontendIPConfigurationPropertiesFormatInboundNatRulesList =
-  ReadonlyArray<CommonFrontendIPConfigurationPropertiesFormatInboundNatRulesItem>;
+  Array<CommonFrontendIPConfigurationPropertiesFormatInboundNatRulesItem>;
 export const CommonFrontendIPConfigurationPropertiesFormatInboundNatRulesList =
   /*@__PURE__*/ S.Array(
     CommonFrontendIPConfigurationPropertiesFormatInboundNatRulesItem,
@@ -5386,7 +5386,7 @@ export const CommonFrontendIPConfigurationPropertiesFormatInboundNatPoolsItem =
 
 /** An array of references to inbound pools that use this frontend IP. */
 export type CommonFrontendIPConfigurationPropertiesFormatInboundNatPoolsList =
-  ReadonlyArray<CommonFrontendIPConfigurationPropertiesFormatInboundNatPoolsItem>;
+  Array<CommonFrontendIPConfigurationPropertiesFormatInboundNatPoolsItem>;
 export const CommonFrontendIPConfigurationPropertiesFormatInboundNatPoolsList =
   /*@__PURE__*/ S.Array(
     CommonFrontendIPConfigurationPropertiesFormatInboundNatPoolsItem,
@@ -5409,7 +5409,7 @@ export const CommonFrontendIPConfigurationPropertiesFormatOutboundRulesItem =
 
 /** An array of references to outbound rules that use this frontend IP. */
 export type CommonFrontendIPConfigurationPropertiesFormatOutboundRulesList =
-  ReadonlyArray<CommonFrontendIPConfigurationPropertiesFormatOutboundRulesItem>;
+  Array<CommonFrontendIPConfigurationPropertiesFormatOutboundRulesItem>;
 export const CommonFrontendIPConfigurationPropertiesFormatOutboundRulesList =
   /*@__PURE__*/ S.Array(
     CommonFrontendIPConfigurationPropertiesFormatOutboundRulesItem,
@@ -5432,7 +5432,7 @@ export const CommonFrontendIPConfigurationPropertiesFormatLoadBalancingRulesItem
 
 /** An array of references to load balancing rules that use this frontend IP. */
 export type CommonFrontendIPConfigurationPropertiesFormatLoadBalancingRulesList =
-  ReadonlyArray<CommonFrontendIPConfigurationPropertiesFormatLoadBalancingRulesItem>;
+  Array<CommonFrontendIPConfigurationPropertiesFormatLoadBalancingRulesItem>;
 export const CommonFrontendIPConfigurationPropertiesFormatLoadBalancingRulesList =
   /*@__PURE__*/ S.Array(
     CommonFrontendIPConfigurationPropertiesFormatLoadBalancingRulesItem,
@@ -5505,7 +5505,7 @@ export const CommonFrontendIPConfigurationPropertiesFormatPublicIPAddressExtende
 
 /** A list of availability zones denoting the IP allocated for the resource needs to come from. */
 export type CommonFrontendIPConfigurationPropertiesFormatPublicIPAddressZonesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CommonFrontendIPConfigurationPropertiesFormatPublicIPAddressZonesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5699,7 +5699,7 @@ export const CommonFrontendIPConfigurationPropertiesFormat =
 
 /** A list of availability zones denoting the IP allocated for the resource needs to come from. */
 export type CommonVirtualNetworkTapPropertiesFormatDestinationLoadBalancerFrontEndIPConfigurationZonesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CommonVirtualNetworkTapPropertiesFormatDestinationLoadBalancerFrontEndIPConfigurationZonesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5811,7 +5811,7 @@ export const CommonNetworkInterfaceIPConfigurationPropertiesFormatVirtualNetwork
 
 /** The reference to Virtual Network Taps. */
 export type CommonNetworkInterfaceIPConfigurationPropertiesFormatVirtualNetworkTapsList =
-  ReadonlyArray<CommonNetworkInterfaceIPConfigurationPropertiesFormatVirtualNetworkTapsItem>;
+  Array<CommonNetworkInterfaceIPConfigurationPropertiesFormatVirtualNetworkTapsItem>;
 export const CommonNetworkInterfaceIPConfigurationPropertiesFormatVirtualNetworkTapsList =
   /*@__PURE__*/ S.Array(
     CommonNetworkInterfaceIPConfigurationPropertiesFormatVirtualNetworkTapsItem,
@@ -5850,7 +5850,7 @@ export const CommonNetworkInterfaceIPConfigurationPropertiesFormatApplicationGat
 
 /** The reference to ApplicationGatewayBackendAddressPool resource. */
 export type CommonNetworkInterfaceIPConfigurationPropertiesFormatApplicationGatewayBackendAddressPoolsList =
-  ReadonlyArray<CommonNetworkInterfaceIPConfigurationPropertiesFormatApplicationGatewayBackendAddressPoolsItem>;
+  Array<CommonNetworkInterfaceIPConfigurationPropertiesFormatApplicationGatewayBackendAddressPoolsItem>;
 export const CommonNetworkInterfaceIPConfigurationPropertiesFormatApplicationGatewayBackendAddressPoolsList =
   /*@__PURE__*/ S.Array(
     CommonNetworkInterfaceIPConfigurationPropertiesFormatApplicationGatewayBackendAddressPoolsItem,
@@ -5879,9 +5879,9 @@ export interface CommonGatewayLoadBalancerTunnelInterface {
   /** Identifier of gateway load balancer tunnel interface. */
   identifier?: number;
   /** Protocol of gateway load balancer tunnel interface. */
-  protocol?: CommonGatewayLoadBalancerTunnelInterfaceProtocol;
+  protocol?: CommonGatewayLoadBalancerTunnelInterfaceProtocol | (string & {});
   /** Traffic type of gateway load balancer tunnel interface. */
-  type?: CommonGatewayLoadBalancerTunnelInterfaceType;
+  type?: CommonGatewayLoadBalancerTunnelInterfaceType | (string & {});
 }
 export const CommonGatewayLoadBalancerTunnelInterface = /*@__PURE__*/ S.suspend(
   () =>
@@ -5897,7 +5897,7 @@ export const CommonGatewayLoadBalancerTunnelInterface = /*@__PURE__*/ S.suspend(
 
 /** An array of gateway load balancer tunnel interfaces. */
 export type CommonBackendAddressPoolPropertiesFormatTunnelInterfacesList =
-  ReadonlyArray<CommonGatewayLoadBalancerTunnelInterface>;
+  Array<CommonGatewayLoadBalancerTunnelInterface>;
 export const CommonBackendAddressPoolPropertiesFormatTunnelInterfacesList =
   /*@__PURE__*/ S.Array(
     CommonGatewayLoadBalancerTunnelInterface,
@@ -5983,7 +5983,7 @@ export const CommonNatRulePortMapping = /*@__PURE__*/ S.suspend(() =>
 
 /** Collection of inbound NAT rule port mappings. */
 export type CommonLoadBalancerBackendAddressPropertiesFormatInboundNatRulesPortMappingList =
-  ReadonlyArray<CommonNatRulePortMapping>;
+  Array<CommonNatRulePortMapping>;
 export const CommonLoadBalancerBackendAddressPropertiesFormatInboundNatRulesPortMappingList =
   /*@__PURE__*/ S.Array(
     CommonNatRulePortMapping,
@@ -6059,7 +6059,7 @@ export const CommonLoadBalancerBackendAddress = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of backend addresses. */
 export type CommonBackendAddressPoolPropertiesFormatLoadBalancerBackendAddressesList =
-  ReadonlyArray<CommonLoadBalancerBackendAddress>;
+  Array<CommonLoadBalancerBackendAddress>;
 export const CommonBackendAddressPoolPropertiesFormatLoadBalancerBackendAddressesList =
   /*@__PURE__*/ S.Array(
     CommonLoadBalancerBackendAddress,
@@ -6096,7 +6096,7 @@ export const CommonBackendAddressPoolPropertiesFormatBackendIPConfigurationsItem
 
 /** An array of references to IP addresses defined in network interfaces. */
 export type CommonBackendAddressPoolPropertiesFormatBackendIPConfigurationsList =
-  ReadonlyArray<CommonBackendAddressPoolPropertiesFormatBackendIPConfigurationsItem>;
+  Array<CommonBackendAddressPoolPropertiesFormatBackendIPConfigurationsItem>;
 export const CommonBackendAddressPoolPropertiesFormatBackendIPConfigurationsList =
   /*@__PURE__*/ S.Array(
     CommonBackendAddressPoolPropertiesFormatBackendIPConfigurationsItem,
@@ -6119,7 +6119,7 @@ export const CommonBackendAddressPoolPropertiesFormatLoadBalancingRulesItem =
 
 /** An array of references to load balancing rules that use this backend address pool. */
 export type CommonBackendAddressPoolPropertiesFormatLoadBalancingRulesList =
-  ReadonlyArray<CommonBackendAddressPoolPropertiesFormatLoadBalancingRulesItem>;
+  Array<CommonBackendAddressPoolPropertiesFormatLoadBalancingRulesItem>;
 export const CommonBackendAddressPoolPropertiesFormatLoadBalancingRulesList =
   /*@__PURE__*/ S.Array(
     CommonBackendAddressPoolPropertiesFormatLoadBalancingRulesItem,
@@ -6155,7 +6155,7 @@ export const CommonBackendAddressPoolPropertiesFormatOutboundRulesItem =
 
 /** An array of references to outbound rules that use this backend address pool. */
 export type CommonBackendAddressPoolPropertiesFormatOutboundRulesList =
-  ReadonlyArray<CommonBackendAddressPoolPropertiesFormatOutboundRulesItem>;
+  Array<CommonBackendAddressPoolPropertiesFormatOutboundRulesItem>;
 export const CommonBackendAddressPoolPropertiesFormatOutboundRulesList =
   /*@__PURE__*/ S.Array(
     CommonBackendAddressPoolPropertiesFormatOutboundRulesItem,
@@ -6177,7 +6177,7 @@ export const CommonBackendAddressPoolPropertiesFormatInboundNatRulesItem =
 
 /** An array of references to inbound NAT rules that use this backend address pool. */
 export type CommonBackendAddressPoolPropertiesFormatInboundNatRulesList =
-  ReadonlyArray<CommonBackendAddressPoolPropertiesFormatInboundNatRulesItem>;
+  Array<CommonBackendAddressPoolPropertiesFormatInboundNatRulesItem>;
 export const CommonBackendAddressPoolPropertiesFormatInboundNatRulesList =
   /*@__PURE__*/ S.Array(
     CommonBackendAddressPoolPropertiesFormatInboundNatRulesItem,
@@ -6309,7 +6309,7 @@ export const CommonNetworkInterfaceIPConfigurationPropertiesFormatLoadBalancerBa
 
 /** The reference to LoadBalancerBackendAddressPool resource. */
 export type CommonNetworkInterfaceIPConfigurationPropertiesFormatLoadBalancerBackendAddressPoolsList =
-  ReadonlyArray<CommonNetworkInterfaceIPConfigurationPropertiesFormatLoadBalancerBackendAddressPoolsItem>;
+  Array<CommonNetworkInterfaceIPConfigurationPropertiesFormatLoadBalancerBackendAddressPoolsItem>;
 export const CommonNetworkInterfaceIPConfigurationPropertiesFormatLoadBalancerBackendAddressPoolsList =
   /*@__PURE__*/ S.Array(
     CommonNetworkInterfaceIPConfigurationPropertiesFormatLoadBalancerBackendAddressPoolsItem,
@@ -6475,7 +6475,7 @@ export const CommonNetworkInterfaceIPConfigurationPropertiesFormatLoadBalancerIn
 
 /** A list of references of LoadBalancerInboundNatRules. */
 export type CommonNetworkInterfaceIPConfigurationPropertiesFormatLoadBalancerInboundNatRulesList =
-  ReadonlyArray<CommonNetworkInterfaceIPConfigurationPropertiesFormatLoadBalancerInboundNatRulesItem>;
+  Array<CommonNetworkInterfaceIPConfigurationPropertiesFormatLoadBalancerInboundNatRulesItem>;
 export const CommonNetworkInterfaceIPConfigurationPropertiesFormatLoadBalancerInboundNatRulesList =
   /*@__PURE__*/ S.Array(
     CommonNetworkInterfaceIPConfigurationPropertiesFormatLoadBalancerInboundNatRulesItem,
@@ -6495,7 +6495,7 @@ export const CommonNetworkInterfaceIPConfigurationPropertiesFormatPrivateIPAddre
 
 /** Application security groups in which the IP configuration is included. */
 export type CommonNetworkInterfaceIPConfigurationPropertiesFormatApplicationSecurityGroupsList =
-  ReadonlyArray<CommonApplicationSecurityGroup>;
+  Array<CommonApplicationSecurityGroup>;
 export const CommonNetworkInterfaceIPConfigurationPropertiesFormatApplicationSecurityGroupsList =
   /*@__PURE__*/ S.Array(
     CommonApplicationSecurityGroup,
@@ -6509,7 +6509,7 @@ export const CommonNetworkInterfaceIPConfigurationPropertiesFormatProvisioningSt
 
 /** List of FQDNs for current private link connection. */
 export type CommonNetworkInterfaceIPConfigurationPrivateLinkConnectionPropertiesFqdnsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CommonNetworkInterfaceIPConfigurationPrivateLinkConnectionPropertiesFqdnsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6645,7 +6645,7 @@ export const CommonApplicationGatewayBackendAddressPoolPropertiesFormatBackendIP
 
 /** Collection of references to IPs defined in network interfaces. */
 export type CommonApplicationGatewayBackendAddressPoolPropertiesFormatBackendIPConfigurationsList =
-  ReadonlyArray<CommonApplicationGatewayBackendAddressPoolPropertiesFormatBackendIPConfigurationsItem>;
+  Array<CommonApplicationGatewayBackendAddressPoolPropertiesFormatBackendIPConfigurationsItem>;
 export const CommonApplicationGatewayBackendAddressPoolPropertiesFormatBackendIPConfigurationsList =
   /*@__PURE__*/ S.Array(
     CommonApplicationGatewayBackendAddressPoolPropertiesFormatBackendIPConfigurationsItem,
@@ -6670,7 +6670,7 @@ export const CommonApplicationGatewayBackendAddress = /*@__PURE__*/ S.suspend(
 
 /** Backend addresses. */
 export type CommonApplicationGatewayBackendAddressPoolPropertiesFormatBackendAddressesList =
-  ReadonlyArray<CommonApplicationGatewayBackendAddress>;
+  Array<CommonApplicationGatewayBackendAddress>;
 export const CommonApplicationGatewayBackendAddressPoolPropertiesFormatBackendAddressesList =
   /*@__PURE__*/ S.Array(
     CommonApplicationGatewayBackendAddress,
@@ -6782,7 +6782,7 @@ export const ApplicationGatewayBackendHttpSettingsPropertiesFormatAuthentication
 
 /** Array of references to application gateway authentication certificates. */
 export type ApplicationGatewayBackendHttpSettingsPropertiesFormatAuthenticationCertificatesList =
-  ReadonlyArray<ApplicationGatewayBackendHttpSettingsPropertiesFormatAuthenticationCertificatesItem>;
+  Array<ApplicationGatewayBackendHttpSettingsPropertiesFormatAuthenticationCertificatesItem>;
 export const ApplicationGatewayBackendHttpSettingsPropertiesFormatAuthenticationCertificatesList =
   /*@__PURE__*/ S.Array(
     ApplicationGatewayBackendHttpSettingsPropertiesFormatAuthenticationCertificatesItem,
@@ -6805,7 +6805,7 @@ export const ApplicationGatewayBackendHttpSettingsPropertiesFormatTrustedRootCer
 
 /** Array of references to application gateway trusted root certificates. */
 export type ApplicationGatewayBackendHttpSettingsPropertiesFormatTrustedRootCertificatesList =
-  ReadonlyArray<ApplicationGatewayBackendHttpSettingsPropertiesFormatTrustedRootCertificatesItem>;
+  Array<ApplicationGatewayBackendHttpSettingsPropertiesFormatTrustedRootCertificatesItem>;
 export const ApplicationGatewayBackendHttpSettingsPropertiesFormatTrustedRootCertificatesList =
   /*@__PURE__*/ S.Array(
     ApplicationGatewayBackendHttpSettingsPropertiesFormatTrustedRootCertificatesItem,
@@ -6839,9 +6839,13 @@ export interface ApplicationGatewayBackendHttpSettingsPropertiesFormat {
   /** The destination port on the backend. */
   port?: number;
   /** Application Gateway protocol. */
-  protocol?: ApplicationGatewayBackendHttpSettingsPropertiesFormatProtocol;
+  protocol?:
+    | ApplicationGatewayBackendHttpSettingsPropertiesFormatProtocol
+    | (string & {});
   /** Cookie based affinity. */
-  cookieBasedAffinity?: ApplicationGatewayBackendHttpSettingsPropertiesFormatCookieBasedAffinity;
+  cookieBasedAffinity?:
+    | ApplicationGatewayBackendHttpSettingsPropertiesFormatCookieBasedAffinity
+    | (string & {});
   /** Request timeout in seconds. Application Gateway will fail the request if response is not received within RequestTimeout. Acceptable values are from 1 second to 86400 seconds. */
   requestTimeout?: number;
   /** Reference to another subresource. */
@@ -6871,7 +6875,9 @@ export interface ApplicationGatewayBackendHttpSettingsPropertiesFormat {
   /** Specify an SNI value to match the common name of the certificate on the backend. By default, the application gateway uses the incoming request’s host header as the SNI. Default value is null. */
   sniName?: string;
   /** Provisioning states of a resource. */
-  provisioningState?: ApplicationGatewayBackendHttpSettingsPropertiesFormatProvisioningState;
+  provisioningState?:
+    | ApplicationGatewayBackendHttpSettingsPropertiesFormatProvisioningState
+    | (string & {});
 }
 export const ApplicationGatewayBackendHttpSettingsPropertiesFormat =
   /*@__PURE__*/ S.suspend(() =>
@@ -7004,7 +7010,7 @@ export const ApplicationGatewayBackendHealthServer = /*@__PURE__*/ S.suspend(
 
 /** List of ApplicationGatewayBackendHealthServer resources. */
 export type ApplicationGatewayBackendHealthHttpSettingsServersList =
-  ReadonlyArray<ApplicationGatewayBackendHealthServer>;
+  Array<ApplicationGatewayBackendHealthServer>;
 export const ApplicationGatewayBackendHealthHttpSettingsServersList =
   /*@__PURE__*/ S.Array(
     ApplicationGatewayBackendHealthServer,
@@ -7031,7 +7037,7 @@ export const ApplicationGatewayBackendHealthHttpSettings =
 
 /** List of ApplicationGatewayBackendHealthHttpSettings resources. */
 export type ApplicationGatewayBackendHealthPoolBackendHttpSettingsCollectionList =
-  ReadonlyArray<ApplicationGatewayBackendHealthHttpSettings>;
+  Array<ApplicationGatewayBackendHealthHttpSettings>;
 export const ApplicationGatewayBackendHealthPoolBackendHttpSettingsCollectionList =
   /*@__PURE__*/ S.Array(
     ApplicationGatewayBackendHealthHttpSettings,
@@ -7057,7 +7063,7 @@ export const ApplicationGatewayBackendHealthPool = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of ApplicationGatewayBackendHealthPool resources. */
 export type ApplicationGatewayBackendHealthBackendAddressPoolsList =
-  ReadonlyArray<ApplicationGatewayBackendHealthPool>;
+  Array<ApplicationGatewayBackendHealthPool>;
 export const ApplicationGatewayBackendHealthBackendAddressPoolsList =
   /*@__PURE__*/ S.Array(
     ApplicationGatewayBackendHealthPool,
@@ -7089,7 +7095,7 @@ export const ApplicationGatewaysBackendHealthOnDemandRequestProtocol =
 
 /** Allowed ranges of healthy status codes. Default range of healthy status codes is 200-399. */
 export type ApplicationGatewayProbeHealthResponseMatchStatusCodesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ApplicationGatewayProbeHealthResponseMatchStatusCodesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -7267,13 +7273,13 @@ export const ApplicationGatewaySkuFamily = /*@__PURE__*/ S.String;
 /** SKU of an application gateway. */
 export interface ApplicationGatewaySku {
   /** Name of an application gateway SKU. */
-  name?: ApplicationGatewaySkuName;
+  name?: ApplicationGatewaySkuName | (string & {});
   /** Tier of an application gateway. */
-  tier?: ApplicationGatewaySkuTier;
+  tier?: ApplicationGatewaySkuTier | (string & {});
   /** Capacity (instance count) of an application gateway. */
   capacity?: number;
   /** Family of an application gateway SKU. */
-  family?: ApplicationGatewaySkuFamily;
+  family?: ApplicationGatewaySkuFamily | (string & {});
 }
 export const ApplicationGatewaySku = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -7296,8 +7302,9 @@ export const ApplicationGatewaySslPolicyDisabledSslProtocolsItem =
   /*@__PURE__*/ S.String;
 
 /** Ssl protocols to be disabled on application gateway. */
-export type ApplicationGatewaySslPolicyDisabledSslProtocolsList =
-  ReadonlyArray<ApplicationGatewaySslPolicyDisabledSslProtocolsItem>;
+export type ApplicationGatewaySslPolicyDisabledSslProtocolsList = Array<
+  ApplicationGatewaySslPolicyDisabledSslProtocolsItem | (string & {})
+>;
 export const ApplicationGatewaySslPolicyDisabledSslProtocolsList =
   /*@__PURE__*/ S.Array(
     ApplicationGatewaySslPolicyDisabledSslProtocolsItem,
@@ -7353,8 +7360,9 @@ export const ApplicationGatewaySslPolicyCipherSuitesItem =
   /*@__PURE__*/ S.String;
 
 /** Ssl cipher suites to be enabled in the specified order to application gateway. */
-export type ApplicationGatewaySslPolicyCipherSuitesList =
-  ReadonlyArray<ApplicationGatewaySslPolicyCipherSuitesItem>;
+export type ApplicationGatewaySslPolicyCipherSuitesList = Array<
+  ApplicationGatewaySslPolicyCipherSuitesItem | (string & {})
+>;
 export const ApplicationGatewaySslPolicyCipherSuitesList =
   /*@__PURE__*/ S.Array(
     ApplicationGatewaySslPolicyCipherSuitesItem,
@@ -7374,13 +7382,15 @@ export interface ApplicationGatewaySslPolicy {
   /** Ssl protocols to be disabled on application gateway. */
   disabledSslProtocols?: ApplicationGatewaySslPolicyDisabledSslProtocolsList;
   /** Type of Ssl Policy. */
-  policyType?: ApplicationGatewaySslPolicyPolicyType;
+  policyType?: ApplicationGatewaySslPolicyPolicyType | (string & {});
   /** Ssl predefined policy name enums. */
-  policyName?: ApplicationGatewaySslPolicyPolicyName;
+  policyName?: ApplicationGatewaySslPolicyPolicyName | (string & {});
   /** Ssl cipher suites to be enabled in the specified order to application gateway. */
   cipherSuites?: ApplicationGatewaySslPolicyCipherSuitesList;
   /** Ssl protocol enums. */
-  minProtocolVersion?: ApplicationGatewaySslPolicyMinProtocolVersion;
+  minProtocolVersion?:
+    | ApplicationGatewaySslPolicyMinProtocolVersion
+    | (string & {});
 }
 export const ApplicationGatewaySslPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -7431,7 +7441,7 @@ export const CommonApplicationGatewayIPConfigurationInput =
 
 /** Subnets of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits). */
 export type ApplicationGatewayPropertiesFormatInputGatewayIPConfigurationsList =
-  ReadonlyArray<CommonApplicationGatewayIPConfigurationInput>;
+  Array<CommonApplicationGatewayIPConfigurationInput>;
 export const ApplicationGatewayPropertiesFormatInputGatewayIPConfigurationsList =
   /*@__PURE__*/ S.Array(
     CommonApplicationGatewayIPConfigurationInput,
@@ -7448,7 +7458,9 @@ export interface ApplicationGatewayAuthenticationCertificatePropertiesFormat {
   /** Certificate public data. */
   data?: string;
   /** Provisioning states of a resource. */
-  provisioningState?: ApplicationGatewayAuthenticationCertificatePropertiesFormatProvisioningState;
+  provisioningState?:
+    | ApplicationGatewayAuthenticationCertificatePropertiesFormatProvisioningState
+    | (string & {});
 }
 export const ApplicationGatewayAuthenticationCertificatePropertiesFormat =
   /*@__PURE__*/ S.suspend(() =>
@@ -7486,7 +7498,7 @@ export const ApplicationGatewayAuthenticationCertificateInput =
 
 /** Authentication certificates of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits). */
 export type ApplicationGatewayPropertiesFormatInputAuthenticationCertificatesList =
-  ReadonlyArray<ApplicationGatewayAuthenticationCertificateInput>;
+  Array<ApplicationGatewayAuthenticationCertificateInput>;
 export const ApplicationGatewayPropertiesFormatInputAuthenticationCertificatesList =
   /*@__PURE__*/ S.Array(
     ApplicationGatewayAuthenticationCertificateInput,
@@ -7505,7 +7517,9 @@ export interface ApplicationGatewayTrustedRootCertificatePropertiesFormat {
   /** Secret Id of (base-64 encoded unencrypted pfx) 'Secret' or 'Certificate' object stored in KeyVault. */
   keyVaultSecretId?: string;
   /** Provisioning states of a resource. */
-  provisioningState?: ApplicationGatewayTrustedRootCertificatePropertiesFormatProvisioningState;
+  provisioningState?:
+    | ApplicationGatewayTrustedRootCertificatePropertiesFormatProvisioningState
+    | (string & {});
 }
 export const ApplicationGatewayTrustedRootCertificatePropertiesFormat =
   /*@__PURE__*/ S.suspend(() =>
@@ -7544,7 +7558,7 @@ export const ApplicationGatewayTrustedRootCertificateInput =
 
 /** Trusted Root certificates of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits). */
 export type ApplicationGatewayPropertiesFormatInputTrustedRootCertificatesList =
-  ReadonlyArray<ApplicationGatewayTrustedRootCertificateInput>;
+  Array<ApplicationGatewayTrustedRootCertificateInput>;
 export const ApplicationGatewayPropertiesFormatInputTrustedRootCertificatesList =
   /*@__PURE__*/ S.Array(
     ApplicationGatewayTrustedRootCertificateInput,
@@ -7602,7 +7616,7 @@ export const ApplicationGatewayTrustedClientCertificateInput =
 
 /** Trusted client certificates of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits). */
 export type ApplicationGatewayPropertiesFormatInputTrustedClientCertificatesList =
-  ReadonlyArray<ApplicationGatewayTrustedClientCertificateInput>;
+  Array<ApplicationGatewayTrustedClientCertificateInput>;
 export const ApplicationGatewayPropertiesFormatInputTrustedClientCertificatesList =
   /*@__PURE__*/ S.Array(
     ApplicationGatewayTrustedClientCertificateInput,
@@ -7684,7 +7698,7 @@ export const ApplicationGatewaySslCertificateInput = /*@__PURE__*/ S.suspend(
 
 /** SSL certificates of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits). */
 export type ApplicationGatewayPropertiesFormatInputSslCertificatesList =
-  ReadonlyArray<ApplicationGatewaySslCertificateInput>;
+  Array<ApplicationGatewaySslCertificateInput>;
 export const ApplicationGatewayPropertiesFormatInputSslCertificatesList =
   /*@__PURE__*/ S.Array(
     ApplicationGatewaySslCertificateInput,
@@ -7752,7 +7766,9 @@ export interface ApplicationGatewayFrontendIPConfigurationPropertiesFormat {
   /** PrivateIPAddress of the network interface IP Configuration. */
   privateIPAddress?: string;
   /** IP address allocation method. */
-  privateIPAllocationMethod?: ApplicationGatewayFrontendIPConfigurationPropertiesFormatPrivateIPAllocationMethod;
+  privateIPAllocationMethod?:
+    | ApplicationGatewayFrontendIPConfigurationPropertiesFormatPrivateIPAllocationMethod
+    | (string & {});
   /** Reference to another subresource. */
   subnet?: ApplicationGatewayFrontendIPConfigurationPropertiesFormatSubnet;
   /** Reference to another subresource. */
@@ -7760,7 +7776,9 @@ export interface ApplicationGatewayFrontendIPConfigurationPropertiesFormat {
   /** Reference to another subresource. */
   privateLinkConfiguration?: ApplicationGatewayFrontendIPConfigurationPropertiesFormatPrivateLinkConfiguration;
   /** Provisioning states of a resource. */
-  provisioningState?: ApplicationGatewayFrontendIPConfigurationPropertiesFormatProvisioningState;
+  provisioningState?:
+    | ApplicationGatewayFrontendIPConfigurationPropertiesFormatProvisioningState
+    | (string & {});
 }
 export const ApplicationGatewayFrontendIPConfigurationPropertiesFormat =
   /*@__PURE__*/ S.suspend(() =>
@@ -7810,7 +7828,7 @@ export const ApplicationGatewayFrontendIPConfigurationInput =
 
 /** Frontend IP addresses of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits). */
 export type ApplicationGatewayPropertiesFormatInputFrontendIPConfigurationsList =
-  ReadonlyArray<ApplicationGatewayFrontendIPConfigurationInput>;
+  Array<ApplicationGatewayFrontendIPConfigurationInput>;
 export const ApplicationGatewayPropertiesFormatInputFrontendIPConfigurationsList =
   /*@__PURE__*/ S.Array(
     ApplicationGatewayFrontendIPConfigurationInput,
@@ -7832,7 +7850,9 @@ export interface ApplicationGatewayFrontendPortPropertiesFormat {
   /** Frontend port. */
   port?: number;
   /** Provisioning states of a resource. */
-  provisioningState?: ApplicationGatewayFrontendPortPropertiesFormatProvisioningState;
+  provisioningState?:
+    | ApplicationGatewayFrontendPortPropertiesFormatProvisioningState
+    | (string & {});
 }
 export const ApplicationGatewayFrontendPortPropertiesFormat =
   /*@__PURE__*/ S.suspend(() =>
@@ -7867,7 +7887,7 @@ export const ApplicationGatewayFrontendPortInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Frontend ports of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits). */
 export type ApplicationGatewayPropertiesFormatInputFrontendPortsList =
-  ReadonlyArray<ApplicationGatewayFrontendPortInput>;
+  Array<ApplicationGatewayFrontendPortInput>;
 export const ApplicationGatewayPropertiesFormatInputFrontendPortsList =
   /*@__PURE__*/ S.Array(
     ApplicationGatewayFrontendPortInput,
@@ -7896,7 +7916,7 @@ export const ApplicationGatewayProbePropertiesFormatProvisioningState =
 /** Properties of probe of an application gateway. */
 export interface ApplicationGatewayProbePropertiesFormat {
   /** Application Gateway protocol. */
-  protocol?: ApplicationGatewayProbePropertiesFormatProtocol;
+  protocol?: ApplicationGatewayProbePropertiesFormatProtocol | (string & {});
   /** Host name to send the probe to. */
   host?: string;
   /** Relative path of probe. Valid path starts from '/'. Probe is sent to <Protocol>://<host>:<port><path>. */
@@ -7918,7 +7938,9 @@ export interface ApplicationGatewayProbePropertiesFormat {
   /** Whether to send Proxy Protocol header along with the Health Probe over TCP or TLS protocol. Default value is false. */
   enableProbeProxyProtocolHeader?: boolean;
   /** Provisioning states of a resource. */
-  provisioningState?: ApplicationGatewayProbePropertiesFormatProvisioningState;
+  provisioningState?:
+    | ApplicationGatewayProbePropertiesFormatProvisioningState
+    | (string & {});
   /** Custom port which will be used for probing the backend servers. The valid value ranges from 1 to 65535. In case not set, port from http settings will be used. This property is valid for Basic, Standard_v2 and WAF_v2 only. */
   port?: number;
 }
@@ -7966,7 +7988,7 @@ export const ApplicationGatewayProbeInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Probes of the application gateway resource. */
 export type ApplicationGatewayPropertiesFormatInputProbesList =
-  ReadonlyArray<ApplicationGatewayProbeInput>;
+  Array<ApplicationGatewayProbeInput>;
 export const ApplicationGatewayPropertiesFormatInputProbesList =
   /*@__PURE__*/ S.Array(
     ApplicationGatewayProbeInput,
@@ -7974,7 +7996,7 @@ export const ApplicationGatewayPropertiesFormatInputProbesList =
 
 /** Backend addresses. */
 export type CommonApplicationGatewayBackendAddressPoolPropertiesFormatInputBackendAddressesList =
-  ReadonlyArray<CommonApplicationGatewayBackendAddress>;
+  Array<CommonApplicationGatewayBackendAddress>;
 export const CommonApplicationGatewayBackendAddressPoolPropertiesFormatInputBackendAddressesList =
   /*@__PURE__*/ S.Array(
     CommonApplicationGatewayBackendAddress,
@@ -8034,7 +8056,7 @@ export const CommonApplicationGatewayBackendAddressPoolInput =
 
 /** Backend address pool of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits). */
 export type ApplicationGatewayPropertiesFormatInputBackendAddressPoolsList =
-  ReadonlyArray<CommonApplicationGatewayBackendAddressPoolInput>;
+  Array<CommonApplicationGatewayBackendAddressPoolInput>;
 export const ApplicationGatewayPropertiesFormatInputBackendAddressPoolsList =
   /*@__PURE__*/ S.Array(
     CommonApplicationGatewayBackendAddressPoolInput,
@@ -8064,7 +8086,7 @@ export const ApplicationGatewayBackendHttpSettingsInput =
 
 /** Backend http settings of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits). */
 export type ApplicationGatewayPropertiesFormatInputBackendHttpSettingsCollectionList =
-  ReadonlyArray<ApplicationGatewayBackendHttpSettingsInput>;
+  Array<ApplicationGatewayBackendHttpSettingsInput>;
 export const ApplicationGatewayPropertiesFormatInputBackendHttpSettingsCollectionList =
   /*@__PURE__*/ S.Array(
     ApplicationGatewayBackendHttpSettingsInput,
@@ -8110,7 +8132,7 @@ export const ApplicationGatewayBackendSettingsPropertiesFormatTrustedRootCertifi
 
 /** Array of references to application gateway trusted root certificates. */
 export type ApplicationGatewayBackendSettingsPropertiesFormatTrustedRootCertificatesList =
-  ReadonlyArray<ApplicationGatewayBackendSettingsPropertiesFormatTrustedRootCertificatesItem>;
+  Array<ApplicationGatewayBackendSettingsPropertiesFormatTrustedRootCertificatesItem>;
 export const ApplicationGatewayBackendSettingsPropertiesFormatTrustedRootCertificatesList =
   /*@__PURE__*/ S.Array(
     ApplicationGatewayBackendSettingsPropertiesFormatTrustedRootCertificatesItem,
@@ -8127,7 +8149,9 @@ export interface ApplicationGatewayBackendSettingsPropertiesFormat {
   /** The destination port on the backend. */
   port?: number;
   /** Application Gateway protocol. */
-  protocol?: ApplicationGatewayBackendSettingsPropertiesFormatProtocol;
+  protocol?:
+    | ApplicationGatewayBackendSettingsPropertiesFormatProtocol
+    | (string & {});
   /** Connection timeout in seconds. Application Gateway will fail the request if response is not received within ConnectionTimeout. Acceptable values are from 1 second to 86400 seconds. */
   timeout?: number;
   /** Reference to another subresource. */
@@ -8141,7 +8165,9 @@ export interface ApplicationGatewayBackendSettingsPropertiesFormat {
   /** Whether to send Proxy Protocol header to backend servers over TCP or TLS protocols. Default value is false. */
   enableL4ClientIpPreservation?: boolean;
   /** Provisioning states of a resource. */
-  provisioningState?: ApplicationGatewayBackendSettingsPropertiesFormatProvisioningState;
+  provisioningState?:
+    | ApplicationGatewayBackendSettingsPropertiesFormatProvisioningState
+    | (string & {});
 }
 export const ApplicationGatewayBackendSettingsPropertiesFormat =
   /*@__PURE__*/ S.suspend(() =>
@@ -8188,7 +8214,7 @@ export const ApplicationGatewayBackendSettingsInput = /*@__PURE__*/ S.suspend(
 
 /** Backend settings of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits). */
 export type ApplicationGatewayPropertiesFormatInputBackendSettingsCollectionList =
-  ReadonlyArray<ApplicationGatewayBackendSettingsInput>;
+  Array<ApplicationGatewayBackendSettingsInput>;
 export const ApplicationGatewayPropertiesFormatInputBackendSettingsCollectionList =
   /*@__PURE__*/ S.Array(
     ApplicationGatewayBackendSettingsInput,
@@ -8287,7 +8313,7 @@ export const ApplicationGatewayCustomErrorStatusCode = /*@__PURE__*/ S.String;
 /** Custom error of an application gateway. */
 export interface ApplicationGatewayCustomError {
   /** Status code of the application gateway custom error. */
-  statusCode?: ApplicationGatewayCustomErrorStatusCode;
+  statusCode?: ApplicationGatewayCustomErrorStatusCode | (string & {});
   /** Error page URL of the application gateway custom error. */
   customErrorPageUrl?: string;
 }
@@ -8302,7 +8328,7 @@ export const ApplicationGatewayCustomError = /*@__PURE__*/ S.suspend(() =>
 
 /** Custom error configurations of the HTTP listener. */
 export type ApplicationGatewayHttpListenerPropertiesFormatCustomErrorConfigurationsList =
-  ReadonlyArray<ApplicationGatewayCustomError>;
+  Array<ApplicationGatewayCustomError>;
 export const ApplicationGatewayHttpListenerPropertiesFormatCustomErrorConfigurationsList =
   /*@__PURE__*/ S.Array(
     ApplicationGatewayCustomError,
@@ -8324,7 +8350,7 @@ export const ApplicationGatewayHttpListenerPropertiesFormatFirewallPolicy =
 
 /** List of Host names for HTTP Listener that allows special wildcard characters as well. */
 export type ApplicationGatewayHttpListenerPropertiesFormatHostNamesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ApplicationGatewayHttpListenerPropertiesFormatHostNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -8337,7 +8363,9 @@ export interface ApplicationGatewayHttpListenerPropertiesFormat {
   /** Reference to another subresource. */
   frontendPort?: ApplicationGatewayHttpListenerPropertiesFormatFrontendPort;
   /** Application Gateway protocol. */
-  protocol?: ApplicationGatewayHttpListenerPropertiesFormatProtocol;
+  protocol?:
+    | ApplicationGatewayHttpListenerPropertiesFormatProtocol
+    | (string & {});
   /** Host name of HTTP listener. */
   hostName?: string;
   /** Reference to another subresource. */
@@ -8347,7 +8375,9 @@ export interface ApplicationGatewayHttpListenerPropertiesFormat {
   /** Applicable only if protocol is https. Enables SNI for multi-hosting. */
   requireServerNameIndication?: boolean;
   /** Provisioning states of a resource. */
-  provisioningState?: ApplicationGatewayHttpListenerPropertiesFormatProvisioningState;
+  provisioningState?:
+    | ApplicationGatewayHttpListenerPropertiesFormatProvisioningState
+    | (string & {});
   /** Custom error configurations of the HTTP listener. */
   customErrorConfigurations?: ApplicationGatewayHttpListenerPropertiesFormatCustomErrorConfigurationsList;
   /** Reference to another subresource. */
@@ -8413,7 +8443,7 @@ export const ApplicationGatewayHttpListenerInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Http listeners of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits). */
 export type ApplicationGatewayPropertiesFormatInputHttpListenersList =
-  ReadonlyArray<ApplicationGatewayHttpListenerInput>;
+  Array<ApplicationGatewayHttpListenerInput>;
 export const ApplicationGatewayPropertiesFormatInputHttpListenersList =
   /*@__PURE__*/ S.Array(
     ApplicationGatewayHttpListenerInput,
@@ -8498,7 +8528,7 @@ export const ApplicationGatewayListenerPropertiesFormatProvisioningState =
 
 /** List of Server Name Indications(SNI) for TLS Multi-site Listener that allows special wildcard characters as well. */
 export type ApplicationGatewayListenerPropertiesFormatHostNamesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ApplicationGatewayListenerPropertiesFormatHostNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -8511,13 +8541,15 @@ export interface ApplicationGatewayListenerPropertiesFormat {
   /** Reference to another subresource. */
   frontendPort?: ApplicationGatewayListenerPropertiesFormatFrontendPort;
   /** Application Gateway protocol. */
-  protocol?: ApplicationGatewayListenerPropertiesFormatProtocol;
+  protocol?: ApplicationGatewayListenerPropertiesFormatProtocol | (string & {});
   /** Reference to another subresource. */
   sslCertificate?: ApplicationGatewayListenerPropertiesFormatSslCertificate;
   /** Reference to another subresource. */
   sslProfile?: ApplicationGatewayListenerPropertiesFormatSslProfile;
   /** Provisioning states of a resource. */
-  provisioningState?: ApplicationGatewayListenerPropertiesFormatProvisioningState;
+  provisioningState?:
+    | ApplicationGatewayListenerPropertiesFormatProvisioningState
+    | (string & {});
   /** List of Server Name Indications(SNI) for TLS Multi-site Listener that allows special wildcard characters as well. */
   hostNames?: ApplicationGatewayListenerPropertiesFormatHostNamesList;
 }
@@ -8569,7 +8601,7 @@ export const ApplicationGatewayListenerInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Listeners of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits). */
 export type ApplicationGatewayPropertiesFormatInputListenersList =
-  ReadonlyArray<ApplicationGatewayListenerInput>;
+  Array<ApplicationGatewayListenerInput>;
 export const ApplicationGatewayPropertiesFormatInputListenersList =
   /*@__PURE__*/ S.Array(
     ApplicationGatewayListenerInput,
@@ -8592,7 +8624,7 @@ export const ApplicationGatewaySslProfilePropertiesFormatTrustedClientCertificat
 
 /** Array of references to application gateway trusted client certificates. */
 export type ApplicationGatewaySslProfilePropertiesFormatTrustedClientCertificatesList =
-  ReadonlyArray<ApplicationGatewaySslProfilePropertiesFormatTrustedClientCertificatesItem>;
+  Array<ApplicationGatewaySslProfilePropertiesFormatTrustedClientCertificatesItem>;
 export const ApplicationGatewaySslProfilePropertiesFormatTrustedClientCertificatesList =
   /*@__PURE__*/ S.Array(
     ApplicationGatewaySslProfilePropertiesFormatTrustedClientCertificatesItem,
@@ -8617,9 +8649,13 @@ export interface ApplicationGatewayClientAuthConfiguration {
   /** Verify client certificate issuer name on the application gateway. */
   verifyClientCertIssuerDN?: boolean;
   /** Verify client certificate revocation status. */
-  verifyClientRevocation?: ApplicationGatewayClientAuthConfigurationVerifyClientRevocation;
+  verifyClientRevocation?:
+    | ApplicationGatewayClientAuthConfigurationVerifyClientRevocation
+    | (string & {});
   /** Verify client Authentication mode. */
-  verifyClientAuthMode?: ApplicationGatewayClientAuthConfigurationVerifyClientAuthMode;
+  verifyClientAuthMode?:
+    | ApplicationGatewayClientAuthConfigurationVerifyClientAuthMode
+    | (string & {});
 }
 export const ApplicationGatewayClientAuthConfiguration =
   /*@__PURE__*/ S.suspend(() =>
@@ -8656,7 +8692,9 @@ export interface ApplicationGatewaySslProfilePropertiesFormat {
   /** Client authentication configuration of the application gateway resource. */
   clientAuthConfiguration?: ApplicationGatewayClientAuthConfiguration;
   /** Provisioning states of a resource. */
-  provisioningState?: ApplicationGatewaySslProfilePropertiesFormatProvisioningState;
+  provisioningState?:
+    | ApplicationGatewaySslProfilePropertiesFormatProvisioningState
+    | (string & {});
 }
 export const ApplicationGatewaySslProfilePropertiesFormat =
   /*@__PURE__*/ S.suspend(() =>
@@ -8697,7 +8735,7 @@ export const ApplicationGatewaySslProfileInput = /*@__PURE__*/ S.suspend(() =>
 
 /** SSL profiles of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits). */
 export type ApplicationGatewayPropertiesFormatInputSslProfilesList =
-  ReadonlyArray<ApplicationGatewaySslProfileInput>;
+  Array<ApplicationGatewaySslProfileInput>;
 export const ApplicationGatewayPropertiesFormatInputSslProfilesList =
   /*@__PURE__*/ S.Array(
     ApplicationGatewaySslProfileInput,
@@ -8779,8 +8817,7 @@ export const ApplicationGatewayUrlPathMapPropertiesFormatInputDefaultLoadDistrib
   }) as any as S.Schema<ApplicationGatewayUrlPathMapPropertiesFormatInputDefaultLoadDistributionPolicy>;
 
 /** Path rules of URL path map. */
-export type ApplicationGatewayPathRulePropertiesFormatPathsList =
-  ReadonlyArray<string>;
+export type ApplicationGatewayPathRulePropertiesFormatPathsList = Array<string>;
 export const ApplicationGatewayPathRulePropertiesFormatPathsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -8898,7 +8935,9 @@ export interface ApplicationGatewayPathRulePropertiesFormat {
   /** Reference to another subresource. */
   loadDistributionPolicy?: ApplicationGatewayPathRulePropertiesFormatLoadDistributionPolicy;
   /** Provisioning states of a resource. */
-  provisioningState?: ApplicationGatewayPathRulePropertiesFormatProvisioningState;
+  provisioningState?:
+    | ApplicationGatewayPathRulePropertiesFormatProvisioningState
+    | (string & {});
   /** Reference to another subresource. */
   firewallPolicy?: ApplicationGatewayPathRulePropertiesFormatFirewallPolicy;
 }
@@ -8953,7 +8992,7 @@ export const ApplicationGatewayPathRuleInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Path rule of URL path map resource. */
 export type ApplicationGatewayUrlPathMapPropertiesFormatInputPathRulesList =
-  ReadonlyArray<ApplicationGatewayPathRuleInput>;
+  Array<ApplicationGatewayPathRuleInput>;
 export const ApplicationGatewayUrlPathMapPropertiesFormatInputPathRulesList =
   /*@__PURE__*/ S.Array(
     ApplicationGatewayPathRuleInput,
@@ -9034,7 +9073,7 @@ export const ApplicationGatewayUrlPathMapInput = /*@__PURE__*/ S.suspend(() =>
 
 /** URL path map of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits). */
 export type ApplicationGatewayPropertiesFormatInputUrlPathMapsList =
-  ReadonlyArray<ApplicationGatewayUrlPathMapInput>;
+  Array<ApplicationGatewayUrlPathMapInput>;
 export const ApplicationGatewayPropertiesFormatInputUrlPathMapsList =
   /*@__PURE__*/ S.Array(
     ApplicationGatewayUrlPathMapInput,
@@ -9176,7 +9215,9 @@ export const ApplicationGatewayRequestRoutingRulePropertiesFormatProvisioningSta
 /** Properties of request routing rule of the application gateway. */
 export interface ApplicationGatewayRequestRoutingRulePropertiesFormat {
   /** Rule type. */
-  ruleType?: ApplicationGatewayRequestRoutingRulePropertiesFormatRuleType;
+  ruleType?:
+    | ApplicationGatewayRequestRoutingRulePropertiesFormatRuleType
+    | (string & {});
   /** Priority of the request routing rule. */
   priority?: number;
   /** Reference to another subresource. */
@@ -9196,7 +9237,9 @@ export interface ApplicationGatewayRequestRoutingRulePropertiesFormat {
   /** Reference to another subresource. */
   entraJWTValidationConfig?: ApplicationGatewayRequestRoutingRulePropertiesFormatEntraJWTValidationConfig;
   /** Provisioning states of a resource. */
-  provisioningState?: ApplicationGatewayRequestRoutingRulePropertiesFormatProvisioningState;
+  provisioningState?:
+    | ApplicationGatewayRequestRoutingRulePropertiesFormatProvisioningState
+    | (string & {});
 }
 export const ApplicationGatewayRequestRoutingRulePropertiesFormat =
   /*@__PURE__*/ S.suspend(() =>
@@ -9261,7 +9304,7 @@ export const ApplicationGatewayRequestRoutingRuleInput =
 
 /** Request routing rules of the application gateway resource. */
 export type ApplicationGatewayPropertiesFormatInputRequestRoutingRulesList =
-  ReadonlyArray<ApplicationGatewayRequestRoutingRuleInput>;
+  Array<ApplicationGatewayRequestRoutingRuleInput>;
 export const ApplicationGatewayPropertiesFormatInputRequestRoutingRulesList =
   /*@__PURE__*/ S.Array(
     ApplicationGatewayRequestRoutingRuleInput,
@@ -9331,7 +9374,9 @@ export const ApplicationGatewayRoutingRulePropertiesFormatProvisioningState =
 /** Properties of routing rule of the application gateway. */
 export interface ApplicationGatewayRoutingRulePropertiesFormat {
   /** Rule type. */
-  ruleType?: ApplicationGatewayRoutingRulePropertiesFormatRuleType;
+  ruleType?:
+    | ApplicationGatewayRoutingRulePropertiesFormatRuleType
+    | (string & {});
   /** Priority of the routing rule. */
   priority: number;
   /** Reference to another subresource. */
@@ -9341,7 +9386,9 @@ export interface ApplicationGatewayRoutingRulePropertiesFormat {
   /** Reference to another subresource. */
   listener?: ApplicationGatewayRoutingRulePropertiesFormatListener;
   /** Provisioning states of a resource. */
-  provisioningState?: ApplicationGatewayRoutingRulePropertiesFormatProvisioningState;
+  provisioningState?:
+    | ApplicationGatewayRoutingRulePropertiesFormatProvisioningState
+    | (string & {});
 }
 export const ApplicationGatewayRoutingRulePropertiesFormat =
   /*@__PURE__*/ S.suspend(() =>
@@ -9388,7 +9435,7 @@ export const ApplicationGatewayRoutingRuleInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Routing rules of the application gateway resource. */
 export type ApplicationGatewayPropertiesFormatInputRoutingRulesList =
-  ReadonlyArray<ApplicationGatewayRoutingRuleInput>;
+  Array<ApplicationGatewayRoutingRuleInput>;
 export const ApplicationGatewayPropertiesFormatInputRoutingRulesList =
   /*@__PURE__*/ S.Array(
     ApplicationGatewayRoutingRuleInput,
@@ -9419,7 +9466,7 @@ export const ApplicationGatewayRewriteRuleCondition = /*@__PURE__*/ S.suspend(
 
 /** Conditions based on which the action set execution will be evaluated. */
 export type ApplicationGatewayRewriteRuleConditionsList =
-  ReadonlyArray<ApplicationGatewayRewriteRuleCondition>;
+  Array<ApplicationGatewayRewriteRuleCondition>;
 export const ApplicationGatewayRewriteRuleConditionsList =
   /*@__PURE__*/ S.Array(
     ApplicationGatewayRewriteRuleCondition,
@@ -9466,7 +9513,7 @@ export const ApplicationGatewayHeaderConfiguration = /*@__PURE__*/ S.suspend(
 
 /** Request Header Actions in the Action Set. */
 export type ApplicationGatewayRewriteRuleActionSetRequestHeaderConfigurationsList =
-  ReadonlyArray<ApplicationGatewayHeaderConfiguration>;
+  Array<ApplicationGatewayHeaderConfiguration>;
 export const ApplicationGatewayRewriteRuleActionSetRequestHeaderConfigurationsList =
   /*@__PURE__*/ S.Array(
     ApplicationGatewayHeaderConfiguration,
@@ -9474,7 +9521,7 @@ export const ApplicationGatewayRewriteRuleActionSetRequestHeaderConfigurationsLi
 
 /** Response Header Actions in the Action Set. */
 export type ApplicationGatewayRewriteRuleActionSetResponseHeaderConfigurationsList =
-  ReadonlyArray<ApplicationGatewayHeaderConfiguration>;
+  Array<ApplicationGatewayHeaderConfiguration>;
 export const ApplicationGatewayRewriteRuleActionSetResponseHeaderConfigurationsList =
   /*@__PURE__*/ S.Array(
     ApplicationGatewayHeaderConfiguration,
@@ -9547,7 +9594,7 @@ export const ApplicationGatewayRewriteRule = /*@__PURE__*/ S.suspend(() =>
 
 /** Rewrite rules in the rewrite rule set. */
 export type ApplicationGatewayRewriteRuleSetPropertiesFormatRewriteRulesList =
-  ReadonlyArray<ApplicationGatewayRewriteRule>;
+  Array<ApplicationGatewayRewriteRule>;
 export const ApplicationGatewayRewriteRuleSetPropertiesFormatRewriteRulesList =
   /*@__PURE__*/ S.Array(
     ApplicationGatewayRewriteRule,
@@ -9569,7 +9616,9 @@ export interface ApplicationGatewayRewriteRuleSetPropertiesFormat {
   /** Rewrite rules in the rewrite rule set. */
   rewriteRules?: ApplicationGatewayRewriteRuleSetPropertiesFormatRewriteRulesList;
   /** Provisioning states of a resource. */
-  provisioningState?: ApplicationGatewayRewriteRuleSetPropertiesFormatProvisioningState;
+  provisioningState?:
+    | ApplicationGatewayRewriteRuleSetPropertiesFormatProvisioningState
+    | (string & {});
 }
 export const ApplicationGatewayRewriteRuleSetPropertiesFormat =
   /*@__PURE__*/ S.suspend(() =>
@@ -9607,7 +9656,7 @@ export const ApplicationGatewayRewriteRuleSetInput = /*@__PURE__*/ S.suspend(
 
 /** Rewrite rules for the application gateway resource. */
 export type ApplicationGatewayPropertiesFormatInputRewriteRuleSetsList =
-  ReadonlyArray<ApplicationGatewayRewriteRuleSetInput>;
+  Array<ApplicationGatewayRewriteRuleSetInput>;
 export const ApplicationGatewayPropertiesFormatInputRewriteRuleSetsList =
   /*@__PURE__*/ S.Array(
     ApplicationGatewayRewriteRuleSetInput,
@@ -9651,7 +9700,7 @@ export const ApplicationGatewayRedirectConfigurationPropertiesFormatRequestRouti
 
 /** Request routing specifying redirect configuration. */
 export type ApplicationGatewayRedirectConfigurationPropertiesFormatRequestRoutingRulesList =
-  ReadonlyArray<ApplicationGatewayRedirectConfigurationPropertiesFormatRequestRoutingRulesItem>;
+  Array<ApplicationGatewayRedirectConfigurationPropertiesFormatRequestRoutingRulesItem>;
 export const ApplicationGatewayRedirectConfigurationPropertiesFormatRequestRoutingRulesList =
   /*@__PURE__*/ S.Array(
     ApplicationGatewayRedirectConfigurationPropertiesFormatRequestRoutingRulesItem,
@@ -9674,7 +9723,7 @@ export const ApplicationGatewayRedirectConfigurationPropertiesFormatUrlPathMapsI
 
 /** Url path maps specifying default redirect configuration. */
 export type ApplicationGatewayRedirectConfigurationPropertiesFormatUrlPathMapsList =
-  ReadonlyArray<ApplicationGatewayRedirectConfigurationPropertiesFormatUrlPathMapsItem>;
+  Array<ApplicationGatewayRedirectConfigurationPropertiesFormatUrlPathMapsItem>;
 export const ApplicationGatewayRedirectConfigurationPropertiesFormatUrlPathMapsList =
   /*@__PURE__*/ S.Array(
     ApplicationGatewayRedirectConfigurationPropertiesFormatUrlPathMapsItem,
@@ -9697,7 +9746,7 @@ export const ApplicationGatewayRedirectConfigurationPropertiesFormatPathRulesIte
 
 /** Path rules specifying redirect configuration. */
 export type ApplicationGatewayRedirectConfigurationPropertiesFormatPathRulesList =
-  ReadonlyArray<ApplicationGatewayRedirectConfigurationPropertiesFormatPathRulesItem>;
+  Array<ApplicationGatewayRedirectConfigurationPropertiesFormatPathRulesItem>;
 export const ApplicationGatewayRedirectConfigurationPropertiesFormatPathRulesList =
   /*@__PURE__*/ S.Array(
     ApplicationGatewayRedirectConfigurationPropertiesFormatPathRulesItem,
@@ -9706,7 +9755,9 @@ export const ApplicationGatewayRedirectConfigurationPropertiesFormatPathRulesLis
 /** Properties of redirect configuration of the application gateway. */
 export interface ApplicationGatewayRedirectConfigurationPropertiesFormat {
   /** Redirect type enum. */
-  redirectType?: ApplicationGatewayRedirectConfigurationPropertiesFormatRedirectType;
+  redirectType?:
+    | ApplicationGatewayRedirectConfigurationPropertiesFormatRedirectType
+    | (string & {});
   /** Reference to another subresource. */
   targetListener?: ApplicationGatewayRedirectConfigurationPropertiesFormatTargetListener;
   /** Url to redirect the request to. */
@@ -9772,7 +9823,7 @@ export const ApplicationGatewayRedirectConfigurationInput =
 
 /** Redirect configurations of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits). */
 export type ApplicationGatewayPropertiesFormatInputRedirectConfigurationsList =
-  ReadonlyArray<ApplicationGatewayRedirectConfigurationInput>;
+  Array<ApplicationGatewayRedirectConfigurationInput>;
 export const ApplicationGatewayPropertiesFormatInputRedirectConfigurationsList =
   /*@__PURE__*/ S.Array(
     ApplicationGatewayRedirectConfigurationInput,
@@ -9787,7 +9838,7 @@ export const ApplicationGatewayWebApplicationFirewallConfigurationFirewallMode =
 
 /** The list of rules that will be disabled. If null, all rules of the rule group will be disabled. */
 export type ApplicationGatewayFirewallDisabledRuleGroupRulesList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const ApplicationGatewayFirewallDisabledRuleGroupRulesList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -9812,7 +9863,7 @@ export const ApplicationGatewayFirewallDisabledRuleGroup =
 
 /** The disabled rule groups. */
 export type ApplicationGatewayWebApplicationFirewallConfigurationDisabledRuleGroupsList =
-  ReadonlyArray<ApplicationGatewayFirewallDisabledRuleGroup>;
+  Array<ApplicationGatewayFirewallDisabledRuleGroup>;
 export const ApplicationGatewayWebApplicationFirewallConfigurationDisabledRuleGroupsList =
   /*@__PURE__*/ S.Array(
     ApplicationGatewayFirewallDisabledRuleGroup,
@@ -9839,7 +9890,7 @@ export const ApplicationGatewayFirewallExclusion = /*@__PURE__*/ S.suspend(() =>
 
 /** The exclusion list. */
 export type ApplicationGatewayWebApplicationFirewallConfigurationExclusionsList =
-  ReadonlyArray<ApplicationGatewayFirewallExclusion>;
+  Array<ApplicationGatewayFirewallExclusion>;
 export const ApplicationGatewayWebApplicationFirewallConfigurationExclusionsList =
   /*@__PURE__*/ S.Array(
     ApplicationGatewayFirewallExclusion,
@@ -9850,7 +9901,9 @@ export interface ApplicationGatewayWebApplicationFirewallConfiguration {
   /** Whether the web application firewall is enabled or not. */
   enabled: boolean;
   /** Web application firewall mode. */
-  firewallMode: ApplicationGatewayWebApplicationFirewallConfigurationFirewallMode;
+  firewallMode:
+    | ApplicationGatewayWebApplicationFirewallConfigurationFirewallMode
+    | (string & {});
   /** The type of the web application firewall rule set. Possible values are: 'OWASP'. */
   ruleSetType: string;
   /** The version of the rule set type. */
@@ -9953,13 +10006,17 @@ export interface ApplicationGatewayPrivateLinkIpConfigurationProperties {
   /** The private IP address of the IP configuration. */
   privateIPAddress?: string;
   /** IP address allocation method. */
-  privateIPAllocationMethod?: ApplicationGatewayPrivateLinkIpConfigurationPropertiesPrivateIPAllocationMethod;
+  privateIPAllocationMethod?:
+    | ApplicationGatewayPrivateLinkIpConfigurationPropertiesPrivateIPAllocationMethod
+    | (string & {});
   /** Reference to another subresource. */
   subnet?: ApplicationGatewayPrivateLinkIpConfigurationPropertiesSubnet;
   /** Whether the ip configuration is primary or not. */
   primary?: boolean;
   /** Provisioning states of a resource. */
-  provisioningState?: ApplicationGatewayPrivateLinkIpConfigurationPropertiesProvisioningState;
+  provisioningState?:
+    | ApplicationGatewayPrivateLinkIpConfigurationPropertiesProvisioningState
+    | (string & {});
 }
 export const ApplicationGatewayPrivateLinkIpConfigurationProperties =
   /*@__PURE__*/ S.suspend(() =>
@@ -10004,7 +10061,7 @@ export const ApplicationGatewayPrivateLinkIpConfigurationInput =
 
 /** An array of application gateway private link ip configurations. */
 export type ApplicationGatewayPrivateLinkConfigurationPropertiesInputIpConfigurationsList =
-  ReadonlyArray<ApplicationGatewayPrivateLinkIpConfigurationInput>;
+  Array<ApplicationGatewayPrivateLinkIpConfigurationInput>;
 export const ApplicationGatewayPrivateLinkConfigurationPropertiesInputIpConfigurationsList =
   /*@__PURE__*/ S.Array(
     ApplicationGatewayPrivateLinkIpConfigurationInput,
@@ -10063,7 +10120,7 @@ export const ApplicationGatewayPrivateLinkConfigurationInput =
 
 /** PrivateLink configurations on application gateway. */
 export type ApplicationGatewayPropertiesFormatInputPrivateLinkConfigurationsList =
-  ReadonlyArray<ApplicationGatewayPrivateLinkConfigurationInput>;
+  Array<ApplicationGatewayPrivateLinkConfigurationInput>;
 export const ApplicationGatewayPropertiesFormatInputPrivateLinkConfigurationsList =
   /*@__PURE__*/ S.Array(
     ApplicationGatewayPrivateLinkConfigurationInput,
@@ -10082,7 +10139,7 @@ export const ApplicationGatewayPropertiesFormatInputProvisioningState =
 
 /** Custom error configurations of the application gateway resource. */
 export type ApplicationGatewayPropertiesFormatInputCustomErrorConfigurationsList =
-  ReadonlyArray<ApplicationGatewayCustomError>;
+  Array<ApplicationGatewayCustomError>;
 export const ApplicationGatewayPropertiesFormatInputCustomErrorConfigurationsList =
   /*@__PURE__*/ S.Array(
     ApplicationGatewayCustomError,
@@ -10145,7 +10202,7 @@ export const ApplicationGatewayLoadDistributionTargetInput =
 
 /** Load Distribution Targets resource of an application gateway. */
 export type ApplicationGatewayLoadDistributionPolicyPropertiesFormatInputLoadDistributionTargetsList =
-  ReadonlyArray<ApplicationGatewayLoadDistributionTargetInput>;
+  Array<ApplicationGatewayLoadDistributionTargetInput>;
 export const ApplicationGatewayLoadDistributionPolicyPropertiesFormatInputLoadDistributionTargetsList =
   /*@__PURE__*/ S.Array(
     ApplicationGatewayLoadDistributionTargetInput,
@@ -10217,7 +10274,7 @@ export const ApplicationGatewayLoadDistributionPolicyInput =
 
 /** Load distribution policies of the application gateway resource. */
 export type ApplicationGatewayPropertiesFormatInputLoadDistributionPoliciesList =
-  ReadonlyArray<ApplicationGatewayLoadDistributionPolicyInput>;
+  Array<ApplicationGatewayLoadDistributionPolicyInput>;
 export const ApplicationGatewayPropertiesFormatInputLoadDistributionPoliciesList =
   /*@__PURE__*/ S.Array(
     ApplicationGatewayLoadDistributionPolicyInput,
@@ -10231,7 +10288,7 @@ export const ApplicationGatewayEntraJWTValidationConfigPropertiesFormatUnAuthori
 
 /** List of acceptable audience claims that can be present in the token (aud claim). A maximum of 5 audiences are permitted. */
 export type ApplicationGatewayEntraJWTValidationConfigPropertiesFormatAudiencesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ApplicationGatewayEntraJWTValidationConfigPropertiesFormatAudiencesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -10246,7 +10303,9 @@ export const ApplicationGatewayEntraJWTValidationConfigPropertiesFormatProvision
 /** Properties of entra jwt validation configuration of the application gateway. */
 export interface ApplicationGatewayEntraJWTValidationConfigPropertiesFormat {
   /** Unauthorized request action. */
-  unAuthorizedRequestAction?: ApplicationGatewayEntraJWTValidationConfigPropertiesFormatUnAuthorizedRequestAction;
+  unAuthorizedRequestAction?:
+    | ApplicationGatewayEntraJWTValidationConfigPropertiesFormatUnAuthorizedRequestAction
+    | (string & {});
   /** The Tenant ID of the Microsoft Entra ID application. */
   tenantId?: string;
   /** The Client ID of the Microsoft Entra ID application. */
@@ -10254,7 +10313,9 @@ export interface ApplicationGatewayEntraJWTValidationConfigPropertiesFormat {
   /** List of acceptable audience claims that can be present in the token (aud claim). A maximum of 5 audiences are permitted. */
   audiences?: ApplicationGatewayEntraJWTValidationConfigPropertiesFormatAudiencesList;
   /** Provisioning states of a resource. */
-  provisioningState?: ApplicationGatewayEntraJWTValidationConfigPropertiesFormatProvisioningState;
+  provisioningState?:
+    | ApplicationGatewayEntraJWTValidationConfigPropertiesFormatProvisioningState
+    | (string & {});
 }
 export const ApplicationGatewayEntraJWTValidationConfigPropertiesFormat =
   /*@__PURE__*/ S.suspend(() =>
@@ -10299,7 +10360,7 @@ export const ApplicationGatewayEntraJWTValidationConfigInput =
 
 /** Entra JWT validation configurations for the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits). */
 export type ApplicationGatewayPropertiesFormatInputEntraJWTValidationConfigsList =
-  ReadonlyArray<ApplicationGatewayEntraJWTValidationConfigInput>;
+  Array<ApplicationGatewayEntraJWTValidationConfigInput>;
 export const ApplicationGatewayPropertiesFormatInputEntraJWTValidationConfigsList =
   /*@__PURE__*/ S.Array(
     ApplicationGatewayEntraJWTValidationConfigInput,
@@ -10511,8 +10572,7 @@ export const ApplicationGatewayPropertiesFormatInput = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ApplicationGatewayPropertiesFormatInput>;
 
 /** A list of availability zones denoting where the resource needs to come from. */
-export type ApplicationGatewaysCreateOrUpdateRequestZonesList =
-  ReadonlyArray<string>;
+export type ApplicationGatewaysCreateOrUpdateRequestZonesList = Array<string>;
 export const ApplicationGatewaysCreateOrUpdateRequestZonesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -10649,7 +10709,7 @@ export const CommonApplicationGatewayIPConfiguration = /*@__PURE__*/ S.suspend(
 
 /** Subnets of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits). */
 export type ApplicationGatewayPropertiesFormatGatewayIPConfigurationsList =
-  ReadonlyArray<CommonApplicationGatewayIPConfiguration>;
+  Array<CommonApplicationGatewayIPConfiguration>;
 export const ApplicationGatewayPropertiesFormatGatewayIPConfigurationsList =
   /*@__PURE__*/ S.Array(
     CommonApplicationGatewayIPConfiguration,
@@ -10685,7 +10745,7 @@ export const ApplicationGatewayAuthenticationCertificate =
 
 /** Authentication certificates of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits). */
 export type ApplicationGatewayPropertiesFormatAuthenticationCertificatesList =
-  ReadonlyArray<ApplicationGatewayAuthenticationCertificate>;
+  Array<ApplicationGatewayAuthenticationCertificate>;
 export const ApplicationGatewayPropertiesFormatAuthenticationCertificatesList =
   /*@__PURE__*/ S.Array(
     ApplicationGatewayAuthenticationCertificate,
@@ -10721,7 +10781,7 @@ export const ApplicationGatewayTrustedRootCertificate = /*@__PURE__*/ S.suspend(
 
 /** Trusted Root certificates of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits). */
 export type ApplicationGatewayPropertiesFormatTrustedRootCertificatesList =
-  ReadonlyArray<ApplicationGatewayTrustedRootCertificate>;
+  Array<ApplicationGatewayTrustedRootCertificate>;
 export const ApplicationGatewayPropertiesFormatTrustedRootCertificatesList =
   /*@__PURE__*/ S.Array(
     ApplicationGatewayTrustedRootCertificate,
@@ -10788,7 +10848,7 @@ export const ApplicationGatewayTrustedClientCertificate =
 
 /** Trusted client certificates of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits). */
 export type ApplicationGatewayPropertiesFormatTrustedClientCertificatesList =
-  ReadonlyArray<ApplicationGatewayTrustedClientCertificate>;
+  Array<ApplicationGatewayTrustedClientCertificate>;
 export const ApplicationGatewayPropertiesFormatTrustedClientCertificatesList =
   /*@__PURE__*/ S.Array(
     ApplicationGatewayTrustedClientCertificate,
@@ -10863,7 +10923,7 @@ export const ApplicationGatewaySslCertificate = /*@__PURE__*/ S.suspend(() =>
 
 /** SSL certificates of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits). */
 export type ApplicationGatewayPropertiesFormatSslCertificatesList =
-  ReadonlyArray<ApplicationGatewaySslCertificate>;
+  Array<ApplicationGatewaySslCertificate>;
 export const ApplicationGatewayPropertiesFormatSslCertificatesList =
   /*@__PURE__*/ S.Array(
     ApplicationGatewaySslCertificate,
@@ -10899,7 +10959,7 @@ export const ApplicationGatewayFrontendIPConfiguration =
 
 /** Frontend IP addresses of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits). */
 export type ApplicationGatewayPropertiesFormatFrontendIPConfigurationsList =
-  ReadonlyArray<ApplicationGatewayFrontendIPConfiguration>;
+  Array<ApplicationGatewayFrontendIPConfiguration>;
 export const ApplicationGatewayPropertiesFormatFrontendIPConfigurationsList =
   /*@__PURE__*/ S.Array(
     ApplicationGatewayFrontendIPConfiguration,
@@ -10932,7 +10992,7 @@ export const ApplicationGatewayFrontendPort = /*@__PURE__*/ S.suspend(() =>
 
 /** Frontend ports of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits). */
 export type ApplicationGatewayPropertiesFormatFrontendPortsList =
-  ReadonlyArray<ApplicationGatewayFrontendPort>;
+  Array<ApplicationGatewayFrontendPort>;
 export const ApplicationGatewayPropertiesFormatFrontendPortsList =
   /*@__PURE__*/ S.Array(
     ApplicationGatewayFrontendPort,
@@ -10965,7 +11025,7 @@ export const ApplicationGatewayProbe = /*@__PURE__*/ S.suspend(() =>
 
 /** Probes of the application gateway resource. */
 export type ApplicationGatewayPropertiesFormatProbesList =
-  ReadonlyArray<ApplicationGatewayProbe>;
+  Array<ApplicationGatewayProbe>;
 export const ApplicationGatewayPropertiesFormatProbesList =
   /*@__PURE__*/ S.Array(
     ApplicationGatewayProbe,
@@ -10973,7 +11033,7 @@ export const ApplicationGatewayPropertiesFormatProbesList =
 
 /** Backend address pool of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits). */
 export type ApplicationGatewayPropertiesFormatBackendAddressPoolsList =
-  ReadonlyArray<CommonApplicationGatewayBackendAddressPool>;
+  Array<CommonApplicationGatewayBackendAddressPool>;
 export const ApplicationGatewayPropertiesFormatBackendAddressPoolsList =
   /*@__PURE__*/ S.Array(
     CommonApplicationGatewayBackendAddressPool,
@@ -10981,7 +11041,7 @@ export const ApplicationGatewayPropertiesFormatBackendAddressPoolsList =
 
 /** Backend http settings of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits). */
 export type ApplicationGatewayPropertiesFormatBackendHttpSettingsCollectionList =
-  ReadonlyArray<ApplicationGatewayBackendHttpSettings>;
+  Array<ApplicationGatewayBackendHttpSettings>;
 export const ApplicationGatewayPropertiesFormatBackendHttpSettingsCollectionList =
   /*@__PURE__*/ S.Array(
     ApplicationGatewayBackendHttpSettings,
@@ -11014,7 +11074,7 @@ export const ApplicationGatewayBackendSettings = /*@__PURE__*/ S.suspend(() =>
 
 /** Backend settings of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits). */
 export type ApplicationGatewayPropertiesFormatBackendSettingsCollectionList =
-  ReadonlyArray<ApplicationGatewayBackendSettings>;
+  Array<ApplicationGatewayBackendSettings>;
 export const ApplicationGatewayPropertiesFormatBackendSettingsCollectionList =
   /*@__PURE__*/ S.Array(
     ApplicationGatewayBackendSettings,
@@ -11047,7 +11107,7 @@ export const ApplicationGatewayHttpListener = /*@__PURE__*/ S.suspend(() =>
 
 /** Http listeners of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits). */
 export type ApplicationGatewayPropertiesFormatHttpListenersList =
-  ReadonlyArray<ApplicationGatewayHttpListener>;
+  Array<ApplicationGatewayHttpListener>;
 export const ApplicationGatewayPropertiesFormatHttpListenersList =
   /*@__PURE__*/ S.Array(
     ApplicationGatewayHttpListener,
@@ -11080,7 +11140,7 @@ export const ApplicationGatewayListener = /*@__PURE__*/ S.suspend(() =>
 
 /** Listeners of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits). */
 export type ApplicationGatewayPropertiesFormatListenersList =
-  ReadonlyArray<ApplicationGatewayListener>;
+  Array<ApplicationGatewayListener>;
 export const ApplicationGatewayPropertiesFormatListenersList =
   /*@__PURE__*/ S.Array(
     ApplicationGatewayListener,
@@ -11113,7 +11173,7 @@ export const ApplicationGatewaySslProfile = /*@__PURE__*/ S.suspend(() =>
 
 /** SSL profiles of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits). */
 export type ApplicationGatewayPropertiesFormatSslProfilesList =
-  ReadonlyArray<ApplicationGatewaySslProfile>;
+  Array<ApplicationGatewaySslProfile>;
 export const ApplicationGatewayPropertiesFormatSslProfilesList =
   /*@__PURE__*/ S.Array(
     ApplicationGatewaySslProfile,
@@ -11221,7 +11281,7 @@ export const ApplicationGatewayPathRule = /*@__PURE__*/ S.suspend(() =>
 
 /** Path rule of URL path map resource. */
 export type ApplicationGatewayUrlPathMapPropertiesFormatPathRulesList =
-  ReadonlyArray<ApplicationGatewayPathRule>;
+  Array<ApplicationGatewayPathRule>;
 export const ApplicationGatewayUrlPathMapPropertiesFormatPathRulesList =
   /*@__PURE__*/ S.Array(
     ApplicationGatewayPathRule,
@@ -11311,7 +11371,7 @@ export const ApplicationGatewayUrlPathMap = /*@__PURE__*/ S.suspend(() =>
 
 /** URL path map of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits). */
 export type ApplicationGatewayPropertiesFormatUrlPathMapsList =
-  ReadonlyArray<ApplicationGatewayUrlPathMap>;
+  Array<ApplicationGatewayUrlPathMap>;
 export const ApplicationGatewayPropertiesFormatUrlPathMapsList =
   /*@__PURE__*/ S.Array(
     ApplicationGatewayUrlPathMap,
@@ -11347,7 +11407,7 @@ export const ApplicationGatewayRequestRoutingRule = /*@__PURE__*/ S.suspend(
 
 /** Request routing rules of the application gateway resource. */
 export type ApplicationGatewayPropertiesFormatRequestRoutingRulesList =
-  ReadonlyArray<ApplicationGatewayRequestRoutingRule>;
+  Array<ApplicationGatewayRequestRoutingRule>;
 export const ApplicationGatewayPropertiesFormatRequestRoutingRulesList =
   /*@__PURE__*/ S.Array(
     ApplicationGatewayRequestRoutingRule,
@@ -11380,7 +11440,7 @@ export const ApplicationGatewayRoutingRule = /*@__PURE__*/ S.suspend(() =>
 
 /** Routing rules of the application gateway resource. */
 export type ApplicationGatewayPropertiesFormatRoutingRulesList =
-  ReadonlyArray<ApplicationGatewayRoutingRule>;
+  Array<ApplicationGatewayRoutingRule>;
 export const ApplicationGatewayPropertiesFormatRoutingRulesList =
   /*@__PURE__*/ S.Array(
     ApplicationGatewayRoutingRule,
@@ -11410,7 +11470,7 @@ export const ApplicationGatewayRewriteRuleSet = /*@__PURE__*/ S.suspend(() =>
 
 /** Rewrite rules for the application gateway resource. */
 export type ApplicationGatewayPropertiesFormatRewriteRuleSetsList =
-  ReadonlyArray<ApplicationGatewayRewriteRuleSet>;
+  Array<ApplicationGatewayRewriteRuleSet>;
 export const ApplicationGatewayPropertiesFormatRewriteRuleSetsList =
   /*@__PURE__*/ S.Array(
     ApplicationGatewayRewriteRuleSet,
@@ -11446,7 +11506,7 @@ export const ApplicationGatewayRedirectConfiguration = /*@__PURE__*/ S.suspend(
 
 /** Redirect configurations of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits). */
 export type ApplicationGatewayPropertiesFormatRedirectConfigurationsList =
-  ReadonlyArray<ApplicationGatewayRedirectConfiguration>;
+  Array<ApplicationGatewayRedirectConfiguration>;
 export const ApplicationGatewayPropertiesFormatRedirectConfigurationsList =
   /*@__PURE__*/ S.Array(
     ApplicationGatewayRedirectConfiguration,
@@ -11496,7 +11556,7 @@ export const ApplicationGatewayPrivateLinkIpConfiguration =
 
 /** An array of application gateway private link ip configurations. */
 export type ApplicationGatewayPrivateLinkConfigurationPropertiesIpConfigurationsList =
-  ReadonlyArray<ApplicationGatewayPrivateLinkIpConfiguration>;
+  Array<ApplicationGatewayPrivateLinkIpConfiguration>;
 export const ApplicationGatewayPrivateLinkConfigurationPropertiesIpConfigurationsList =
   /*@__PURE__*/ S.Array(
     ApplicationGatewayPrivateLinkIpConfiguration,
@@ -11559,7 +11619,7 @@ export const ApplicationGatewayPrivateLinkConfiguration =
 
 /** PrivateLink configurations on application gateway. */
 export type ApplicationGatewayPropertiesFormatPrivateLinkConfigurationsList =
-  ReadonlyArray<ApplicationGatewayPrivateLinkConfiguration>;
+  Array<ApplicationGatewayPrivateLinkConfiguration>;
 export const ApplicationGatewayPropertiesFormatPrivateLinkConfigurationsList =
   /*@__PURE__*/ S.Array(
     ApplicationGatewayPrivateLinkConfiguration,
@@ -11567,7 +11627,7 @@ export const ApplicationGatewayPropertiesFormatPrivateLinkConfigurationsList =
 
 /** Private Endpoint connections on application gateway. */
 export type ApplicationGatewayPropertiesFormatPrivateEndpointConnectionsList =
-  ReadonlyArray<ApplicationGatewayPrivateEndpointConnection>;
+  Array<ApplicationGatewayPrivateEndpointConnection>;
 export const ApplicationGatewayPropertiesFormatPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     ApplicationGatewayPrivateEndpointConnection,
@@ -11586,7 +11646,7 @@ export const ApplicationGatewayPropertiesFormatProvisioningState =
 
 /** Custom error configurations of the application gateway resource. */
 export type ApplicationGatewayPropertiesFormatCustomErrorConfigurationsList =
-  ReadonlyArray<ApplicationGatewayCustomError>;
+  Array<ApplicationGatewayCustomError>;
 export const ApplicationGatewayPropertiesFormatCustomErrorConfigurationsList =
   /*@__PURE__*/ S.Array(
     ApplicationGatewayCustomError,
@@ -11622,7 +11682,7 @@ export const ApplicationGatewayLoadDistributionTarget = /*@__PURE__*/ S.suspend(
 
 /** Load Distribution Targets resource of an application gateway. */
 export type ApplicationGatewayLoadDistributionPolicyPropertiesFormatLoadDistributionTargetsList =
-  ReadonlyArray<ApplicationGatewayLoadDistributionTarget>;
+  Array<ApplicationGatewayLoadDistributionTarget>;
 export const ApplicationGatewayLoadDistributionPolicyPropertiesFormatLoadDistributionTargetsList =
   /*@__PURE__*/ S.Array(
     ApplicationGatewayLoadDistributionTarget,
@@ -11696,7 +11756,7 @@ export const ApplicationGatewayLoadDistributionPolicy = /*@__PURE__*/ S.suspend(
 
 /** Load distribution policies of the application gateway resource. */
 export type ApplicationGatewayPropertiesFormatLoadDistributionPoliciesList =
-  ReadonlyArray<ApplicationGatewayLoadDistributionPolicy>;
+  Array<ApplicationGatewayLoadDistributionPolicy>;
 export const ApplicationGatewayPropertiesFormatLoadDistributionPoliciesList =
   /*@__PURE__*/ S.Array(
     ApplicationGatewayLoadDistributionPolicy,
@@ -11729,7 +11789,7 @@ export const ApplicationGatewayEntraJWTValidationConfig =
 
 /** Entra JWT validation configurations for the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits). */
 export type ApplicationGatewayPropertiesFormatEntraJWTValidationConfigsList =
-  ReadonlyArray<ApplicationGatewayEntraJWTValidationConfig>;
+  Array<ApplicationGatewayEntraJWTValidationConfig>;
 export const ApplicationGatewayPropertiesFormatEntraJWTValidationConfigsList =
   /*@__PURE__*/ S.Array(
     ApplicationGatewayEntraJWTValidationConfig,
@@ -11919,8 +11979,7 @@ export const ApplicationGatewayPropertiesFormat = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ApplicationGatewayPropertiesFormat>;
 
 /** A list of availability zones denoting where the resource needs to come from. */
-export type ApplicationGatewaysCreateOrUpdateResponseZonesList =
-  ReadonlyArray<string>;
+export type ApplicationGatewaysCreateOrUpdateResponseZonesList = Array<string>;
 export const ApplicationGatewaysCreateOrUpdateResponseZonesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -12064,7 +12123,7 @@ export const ApplicationGatewaysGetResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ApplicationGatewaysGetResponseTagsMap>;
 
 /** A list of availability zones denoting where the resource needs to come from. */
-export type ApplicationGatewaysGetResponseZonesList = ReadonlyArray<string>;
+export type ApplicationGatewaysGetResponseZonesList = Array<string>;
 export const ApplicationGatewaysGetResponseZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ApplicationGatewaysGetResponseZonesList>;
@@ -12198,7 +12257,7 @@ export const ApplicationGatewaySslPredefinedPolicyPropertiesFormatCipherSuitesIt
 
 /** Ssl cipher suites to be enabled in the specified order for application gateway. */
 export type ApplicationGatewaySslPredefinedPolicyPropertiesFormatCipherSuitesList =
-  ReadonlyArray<ApplicationGatewaySslPredefinedPolicyPropertiesFormatCipherSuitesItem>;
+  Array<ApplicationGatewaySslPredefinedPolicyPropertiesFormatCipherSuitesItem>;
 export const ApplicationGatewaySslPredefinedPolicyPropertiesFormatCipherSuitesList =
   /*@__PURE__*/ S.Array(
     ApplicationGatewaySslPredefinedPolicyPropertiesFormatCipherSuitesItem,
@@ -12282,7 +12341,7 @@ export const ApplicationGatewayTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ApplicationGatewayTagsMap>;
 
 /** A list of availability zones denoting where the resource needs to come from. */
-export type ApplicationGatewayZonesList = ReadonlyArray<string>;
+export type ApplicationGatewayZonesList = Array<string>;
 export const ApplicationGatewayZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ApplicationGatewayZonesList>;
@@ -12359,8 +12418,7 @@ export const ApplicationGateway = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ApplicationGateway>;
 
 /** The ApplicationGateway items on this page */
-export type ApplicationGatewayListResultValueList =
-  ReadonlyArray<ApplicationGateway>;
+export type ApplicationGatewayListResultValueList = Array<ApplicationGateway>;
 export const ApplicationGatewayListResultValueList = /*@__PURE__*/ S.Array(
   ApplicationGateway,
 ) as any as S.Schema<ApplicationGatewayListResultValueList>;
@@ -12421,7 +12479,7 @@ export const ApplicationGatewaysListAvailableRequestHeadersRequest =
   }) as any as S.Schema<ApplicationGatewaysListAvailableRequestHeadersRequest>;
 
 export type ApplicationGatewaysListAvailableRequestHeadersResponseBodyList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ApplicationGatewaysListAvailableRequestHeadersResponseBodyList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -12459,7 +12517,7 @@ export const ApplicationGatewaysListAvailableResponseHeadersRequest =
   }) as any as S.Schema<ApplicationGatewaysListAvailableResponseHeadersRequest>;
 
 export type ApplicationGatewaysListAvailableResponseHeadersResponseBodyList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ApplicationGatewaysListAvailableResponseHeadersResponseBodyList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -12497,7 +12555,7 @@ export const ApplicationGatewaysListAvailableServerVariablesRequest =
   }) as any as S.Schema<ApplicationGatewaysListAvailableServerVariablesRequest>;
 
 export type ApplicationGatewaysListAvailableServerVariablesResponseBodyList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ApplicationGatewaysListAvailableServerVariablesResponseBodyList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -12561,7 +12619,7 @@ export const ApplicationGatewayAvailableSslOptionsPropertiesFormatPredefinedPoli
 
 /** List of available Ssl predefined policy. */
 export type ApplicationGatewayAvailableSslOptionsPropertiesFormatPredefinedPoliciesList =
-  ReadonlyArray<ApplicationGatewayAvailableSslOptionsPropertiesFormatPredefinedPoliciesItem>;
+  Array<ApplicationGatewayAvailableSslOptionsPropertiesFormatPredefinedPoliciesItem>;
 export const ApplicationGatewayAvailableSslOptionsPropertiesFormatPredefinedPoliciesList =
   /*@__PURE__*/ S.Array(
     ApplicationGatewayAvailableSslOptionsPropertiesFormatPredefinedPoliciesItem,
@@ -12612,7 +12670,7 @@ export const ApplicationGatewayAvailableSslOptionsPropertiesFormatAvailableCiphe
 
 /** List of available Ssl cipher suites. */
 export type ApplicationGatewayAvailableSslOptionsPropertiesFormatAvailableCipherSuitesList =
-  ReadonlyArray<ApplicationGatewayAvailableSslOptionsPropertiesFormatAvailableCipherSuitesItem>;
+  Array<ApplicationGatewayAvailableSslOptionsPropertiesFormatAvailableCipherSuitesItem>;
 export const ApplicationGatewayAvailableSslOptionsPropertiesFormatAvailableCipherSuitesList =
   /*@__PURE__*/ S.Array(
     ApplicationGatewayAvailableSslOptionsPropertiesFormatAvailableCipherSuitesItem,
@@ -12626,7 +12684,7 @@ export const ApplicationGatewayAvailableSslOptionsPropertiesFormatAvailableProto
 
 /** List of available Ssl protocols. */
 export type ApplicationGatewayAvailableSslOptionsPropertiesFormatAvailableProtocolsList =
-  ReadonlyArray<ApplicationGatewayAvailableSslOptionsPropertiesFormatAvailableProtocolsItem>;
+  Array<ApplicationGatewayAvailableSslOptionsPropertiesFormatAvailableProtocolsItem>;
 export const ApplicationGatewayAvailableSslOptionsPropertiesFormatAvailableProtocolsList =
   /*@__PURE__*/ S.Array(
     ApplicationGatewayAvailableSslOptionsPropertiesFormatAvailableProtocolsItem,
@@ -12739,7 +12797,7 @@ export const ApplicationGatewaySslPredefinedPolicy = /*@__PURE__*/ S.suspend(
 
 /** The ApplicationGatewaySslPredefinedPolicy items on this page */
 export type ApplicationGatewayAvailableSslPredefinedPoliciesValueList =
-  ReadonlyArray<ApplicationGatewaySslPredefinedPolicy>;
+  Array<ApplicationGatewaySslPredefinedPolicy>;
 export const ApplicationGatewayAvailableSslPredefinedPoliciesValueList =
   /*@__PURE__*/ S.Array(
     ApplicationGatewaySslPredefinedPolicy,
@@ -12847,7 +12905,7 @@ export const ApplicationGatewayFirewallRule = /*@__PURE__*/ S.suspend(() =>
 
 /** The rules of the web application firewall rule group. */
 export type ApplicationGatewayFirewallRuleGroupRulesList =
-  ReadonlyArray<ApplicationGatewayFirewallRule>;
+  Array<ApplicationGatewayFirewallRule>;
 export const ApplicationGatewayFirewallRuleGroupRulesList =
   /*@__PURE__*/ S.Array(
     ApplicationGatewayFirewallRule,
@@ -12874,7 +12932,7 @@ export const ApplicationGatewayFirewallRuleGroup = /*@__PURE__*/ S.suspend(() =>
 
 /** The rule groups of the web application firewall rule set. */
 export type ApplicationGatewayFirewallRuleSetPropertiesFormatRuleGroupsList =
-  ReadonlyArray<ApplicationGatewayFirewallRuleGroup>;
+  Array<ApplicationGatewayFirewallRuleGroup>;
 export const ApplicationGatewayFirewallRuleSetPropertiesFormatRuleGroupsList =
   /*@__PURE__*/ S.Array(
     ApplicationGatewayFirewallRuleGroup,
@@ -12890,7 +12948,7 @@ export const ApplicationGatewayFirewallRuleSetPropertiesFormatTiersItem =
 
 /** Tier of an application gateway that support the rule set. */
 export type ApplicationGatewayFirewallRuleSetPropertiesFormatTiersList =
-  ReadonlyArray<ApplicationGatewayFirewallRuleSetPropertiesFormatTiersItem>;
+  Array<ApplicationGatewayFirewallRuleSetPropertiesFormatTiersItem>;
 export const ApplicationGatewayFirewallRuleSetPropertiesFormatTiersList =
   /*@__PURE__*/ S.Array(
     ApplicationGatewayFirewallRuleSetPropertiesFormatTiersItem,
@@ -12957,7 +13015,7 @@ export const ApplicationGatewayFirewallRuleSet = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of application gateway rule sets. */
 export type ApplicationGatewayAvailableWafRuleSetsResultValueList =
-  ReadonlyArray<ApplicationGatewayFirewallRuleSet>;
+  Array<ApplicationGatewayFirewallRuleSet>;
 export const ApplicationGatewayAvailableWafRuleSetsResultValueList =
   /*@__PURE__*/ S.Array(
     ApplicationGatewayFirewallRuleSet,
@@ -13091,8 +13149,7 @@ export const ApplicationGatewaysUpdateTagsResponseTagsMap =
   ) as any as S.Schema<ApplicationGatewaysUpdateTagsResponseTagsMap>;
 
 /** A list of availability zones denoting where the resource needs to come from. */
-export type ApplicationGatewaysUpdateTagsResponseZonesList =
-  ReadonlyArray<string>;
+export type ApplicationGatewaysUpdateTagsResponseZonesList = Array<string>;
 export const ApplicationGatewaysUpdateTagsResponseZonesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -13227,7 +13284,7 @@ export const ApplicationGatewayFirewallManifestRuleSetTiersItem =
 
 /** Tier of an application gateway that support the rule set. */
 export type ApplicationGatewayFirewallManifestRuleSetTiersList =
-  ReadonlyArray<ApplicationGatewayFirewallManifestRuleSetTiersItem>;
+  Array<ApplicationGatewayFirewallManifestRuleSetTiersItem>;
 export const ApplicationGatewayFirewallManifestRuleSetTiersList =
   /*@__PURE__*/ S.Array(
     ApplicationGatewayFirewallManifestRuleSetTiersItem,
@@ -13235,7 +13292,7 @@ export const ApplicationGatewayFirewallManifestRuleSetTiersList =
 
 /** The rule groups of the web application firewall rule set. */
 export type ApplicationGatewayFirewallManifestRuleSetRuleGroupsList =
-  ReadonlyArray<ApplicationGatewayFirewallRuleGroup>;
+  Array<ApplicationGatewayFirewallRuleGroup>;
 export const ApplicationGatewayFirewallManifestRuleSetRuleGroupsList =
   /*@__PURE__*/ S.Array(
     ApplicationGatewayFirewallRuleGroup,
@@ -13269,7 +13326,7 @@ export const ApplicationGatewayFirewallManifestRuleSet =
 
 /** The available rulesets. */
 export type ApplicationGatewayWafDynamicManifestPropertiesResultAvailableRuleSetsList =
-  ReadonlyArray<ApplicationGatewayFirewallManifestRuleSet>;
+  Array<ApplicationGatewayFirewallManifestRuleSet>;
 export const ApplicationGatewayWafDynamicManifestPropertiesResultAvailableRuleSetsList =
   /*@__PURE__*/ S.Array(
     ApplicationGatewayFirewallManifestRuleSet,
@@ -13368,7 +13425,7 @@ export const ApplicationGatewayWafDynamicManifestResult =
 
 /** The ApplicationGatewayWafDynamicManifestResult items on this page */
 export type ApplicationGatewayWafDynamicManifestResultListValueList =
-  ReadonlyArray<ApplicationGatewayWafDynamicManifestResult>;
+  Array<ApplicationGatewayWafDynamicManifestResult>;
 export const ApplicationGatewayWafDynamicManifestResultListValueList =
   /*@__PURE__*/ S.Array(
     ApplicationGatewayWafDynamicManifestResult,
@@ -13606,7 +13663,7 @@ export const ApplicationSecurityGroupsListRequest = /*@__PURE__*/ S.suspend(
 
 /** The ApplicationSecurityGroup items on this page */
 export type ApplicationSecurityGroupListResultValueList =
-  ReadonlyArray<CommonApplicationSecurityGroup>;
+  Array<CommonApplicationSecurityGroup>;
 export const ApplicationSecurityGroupListResultValueList =
   /*@__PURE__*/ S.Array(
     CommonApplicationSecurityGroup,
@@ -13751,7 +13808,7 @@ export const AvailableDelegationsListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AvailableDelegationsListRequest>;
 
 /** The actions permitted to the service upon delegation. */
-export type AvailableDelegationActionsList = ReadonlyArray<string>;
+export type AvailableDelegationActionsList = Array<string>;
 export const AvailableDelegationActionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AvailableDelegationActionsList>;
@@ -13782,8 +13839,7 @@ export const AvailableDelegation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AvailableDelegation>;
 
 /** The AvailableDelegation items on this page */
-export type AvailableDelegationsResultValueList =
-  ReadonlyArray<AvailableDelegation>;
+export type AvailableDelegationsResultValueList = Array<AvailableDelegation>;
 export const AvailableDelegationsResultValueList = /*@__PURE__*/ S.Array(
   AvailableDelegation,
 ) as any as S.Schema<AvailableDelegationsResultValueList>;
@@ -13847,8 +13903,7 @@ export const EndpointServiceResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EndpointServiceResult>;
 
 /** The EndpointServiceResult items on this page */
-export type EndpointServicesListResultValueList =
-  ReadonlyArray<EndpointServiceResult>;
+export type EndpointServicesListResultValueList = Array<EndpointServiceResult>;
 export const EndpointServicesListResultValueList = /*@__PURE__*/ S.Array(
   EndpointServiceResult,
 ) as any as S.Schema<EndpointServicesListResultValueList>;
@@ -13919,7 +13974,7 @@ export const AvailablePrivateEndpointType = /*@__PURE__*/ S.suspend(() =>
 
 /** The AvailablePrivateEndpointType items on this page */
 export type AvailablePrivateEndpointTypesResultValueList =
-  ReadonlyArray<AvailablePrivateEndpointType>;
+  Array<AvailablePrivateEndpointType>;
 export const AvailablePrivateEndpointTypesResultValueList =
   /*@__PURE__*/ S.Array(
     AvailablePrivateEndpointType,
@@ -14039,7 +14094,7 @@ export const AvailableServiceAlias = /*@__PURE__*/ S.suspend(() =>
 
 /** The AvailableServiceAlias items on this page */
 export type AvailableServiceAliasesResultValueList =
-  ReadonlyArray<AvailableServiceAlias>;
+  Array<AvailableServiceAlias>;
 export const AvailableServiceAliasesResultValueList = /*@__PURE__*/ S.Array(
   AvailableServiceAlias,
 ) as any as S.Schema<AvailableServiceAliasesResultValueList>;
@@ -14175,7 +14230,7 @@ export const AzureFirewallFqdnTag = /*@__PURE__*/ S.suspend(() =>
 
 /** The AzureFirewallFqdnTag items on this page */
 export type AzureFirewallFqdnTagListResultValueList =
-  ReadonlyArray<AzureFirewallFqdnTag>;
+  Array<AzureFirewallFqdnTag>;
 export const AzureFirewallFqdnTagListResultValueList = /*@__PURE__*/ S.Array(
   AzureFirewallFqdnTag,
 ) as any as S.Schema<AzureFirewallFqdnTagListResultValueList>;
@@ -14213,7 +14268,7 @@ export const AzureFirewallRCActionType = /*@__PURE__*/ S.String;
 /** Properties of the AzureFirewallRCAction. */
 export interface AzureFirewallRCAction {
   /** The action type of a rule collection. */
-  type?: AzureFirewallRCActionType;
+  type?: AzureFirewallRCActionType | (string & {});
 }
 export const AzureFirewallRCAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -14224,8 +14279,7 @@ export const AzureFirewallRCAction = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AzureFirewallRCAction>;
 
 /** List of source IP addresses for this rule. */
-export type AzureFirewallApplicationRuleSourceAddressesList =
-  ReadonlyArray<string>;
+export type AzureFirewallApplicationRuleSourceAddressesList = Array<string>;
 export const AzureFirewallApplicationRuleSourceAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -14242,7 +14296,9 @@ export const AzureFirewallApplicationRuleProtocolProtocolType =
 /** Properties of the application rule protocol. */
 export interface AzureFirewallApplicationRuleProtocol {
   /** The protocol type of a Application Rule resource. */
-  protocolType?: AzureFirewallApplicationRuleProtocolProtocolType;
+  protocolType?:
+    | AzureFirewallApplicationRuleProtocolProtocolType
+    | (string & {});
   /** Port number for the protocol, cannot be greater than 64000. This field is optional. */
   port?: number;
 }
@@ -14260,27 +14316,26 @@ export const AzureFirewallApplicationRuleProtocol = /*@__PURE__*/ S.suspend(
 
 /** Array of ApplicationRuleProtocols. */
 export type AzureFirewallApplicationRuleProtocolsList =
-  ReadonlyArray<AzureFirewallApplicationRuleProtocol>;
+  Array<AzureFirewallApplicationRuleProtocol>;
 export const AzureFirewallApplicationRuleProtocolsList = /*@__PURE__*/ S.Array(
   AzureFirewallApplicationRuleProtocol,
 ) as any as S.Schema<AzureFirewallApplicationRuleProtocolsList>;
 
 /** List of FQDNs for this rule. */
-export type AzureFirewallApplicationRuleTargetFqdnsList = ReadonlyArray<string>;
+export type AzureFirewallApplicationRuleTargetFqdnsList = Array<string>;
 export const AzureFirewallApplicationRuleTargetFqdnsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AzureFirewallApplicationRuleTargetFqdnsList>;
 
 /** List of FQDN Tags for this rule. */
-export type AzureFirewallApplicationRuleFqdnTagsList = ReadonlyArray<string>;
+export type AzureFirewallApplicationRuleFqdnTagsList = Array<string>;
 export const AzureFirewallApplicationRuleFqdnTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AzureFirewallApplicationRuleFqdnTagsList>;
 
 /** List of source IpGroups for this rule. */
-export type AzureFirewallApplicationRuleSourceIpGroupsList =
-  ReadonlyArray<string>;
+export type AzureFirewallApplicationRuleSourceIpGroupsList = Array<string>;
 export const AzureFirewallApplicationRuleSourceIpGroupsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -14321,7 +14376,7 @@ export const AzureFirewallApplicationRule = /*@__PURE__*/ S.suspend(() =>
 
 /** Collection of rules used by a application rule collection. */
 export type AzureFirewallApplicationRuleCollectionPropertiesFormatRulesList =
-  ReadonlyArray<AzureFirewallApplicationRule>;
+  Array<AzureFirewallApplicationRule>;
 export const AzureFirewallApplicationRuleCollectionPropertiesFormatRulesList =
   /*@__PURE__*/ S.Array(
     AzureFirewallApplicationRule,
@@ -14342,7 +14397,9 @@ export interface AzureFirewallApplicationRuleCollectionPropertiesFormat {
   /** Collection of rules used by a application rule collection. */
   rules?: AzureFirewallApplicationRuleCollectionPropertiesFormatRulesList;
   /** Provisioning states of a resource. */
-  provisioningState?: AzureFirewallApplicationRuleCollectionPropertiesFormatProvisioningState;
+  provisioningState?:
+    | AzureFirewallApplicationRuleCollectionPropertiesFormatProvisioningState
+    | (string & {});
 }
 export const AzureFirewallApplicationRuleCollectionPropertiesFormat =
   /*@__PURE__*/ S.suspend(() =>
@@ -14384,7 +14441,7 @@ export const AzureFirewallApplicationRuleCollectionInput =
 
 /** Collection of application rule collections used by Azure Firewall. */
 export type AzureFirewallPropertiesFormatInputApplicationRuleCollectionsList =
-  ReadonlyArray<AzureFirewallApplicationRuleCollectionInput>;
+  Array<AzureFirewallApplicationRuleCollectionInput>;
 export const AzureFirewallPropertiesFormatInputApplicationRuleCollectionsList =
   /*@__PURE__*/ S.Array(
     AzureFirewallApplicationRuleCollectionInput,
@@ -14397,7 +14454,7 @@ export const AzureFirewallNatRCActionType = /*@__PURE__*/ S.String;
 /** AzureFirewall NAT Rule Collection Action. */
 export interface AzureFirewallNatRCAction {
   /** The action type of a NAT rule collection. */
-  type?: AzureFirewallNatRCActionType;
+  type?: AzureFirewallNatRCActionType | (string & {});
 }
 export const AzureFirewallNatRCAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -14408,21 +14465,20 @@ export const AzureFirewallNatRCAction = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AzureFirewallNatRCAction>;
 
 /** List of source IP addresses for this rule. */
-export type AzureFirewallNatRuleSourceAddressesList = ReadonlyArray<string>;
+export type AzureFirewallNatRuleSourceAddressesList = Array<string>;
 export const AzureFirewallNatRuleSourceAddressesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AzureFirewallNatRuleSourceAddressesList>;
 
 /** List of destination IP addresses for this rule. Supports IP ranges, prefixes, and service tags. */
-export type AzureFirewallNatRuleDestinationAddressesList =
-  ReadonlyArray<string>;
+export type AzureFirewallNatRuleDestinationAddressesList = Array<string>;
 export const AzureFirewallNatRuleDestinationAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AzureFirewallNatRuleDestinationAddressesList>;
 
 /** List of destination ports. */
-export type AzureFirewallNatRuleDestinationPortsList = ReadonlyArray<string>;
+export type AzureFirewallNatRuleDestinationPortsList = Array<string>;
 export const AzureFirewallNatRuleDestinationPortsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AzureFirewallNatRuleDestinationPortsList>;
@@ -14432,14 +14488,15 @@ export type AzureFirewallNatRuleProtocolsItem = "TCP" | "UDP" | "Any" | "ICMP";
 export const AzureFirewallNatRuleProtocolsItem = /*@__PURE__*/ S.String;
 
 /** Array of AzureFirewallNetworkRuleProtocols applicable to this NAT rule. */
-export type AzureFirewallNatRuleProtocolsList =
-  ReadonlyArray<AzureFirewallNatRuleProtocolsItem>;
+export type AzureFirewallNatRuleProtocolsList = Array<
+  AzureFirewallNatRuleProtocolsItem | (string & {})
+>;
 export const AzureFirewallNatRuleProtocolsList = /*@__PURE__*/ S.Array(
   AzureFirewallNatRuleProtocolsItem,
 ) as any as S.Schema<AzureFirewallNatRuleProtocolsList>;
 
 /** List of source IpGroups for this rule. */
-export type AzureFirewallNatRuleSourceIpGroupsList = ReadonlyArray<string>;
+export type AzureFirewallNatRuleSourceIpGroupsList = Array<string>;
 export const AzureFirewallNatRuleSourceIpGroupsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AzureFirewallNatRuleSourceIpGroupsList>;
@@ -14488,7 +14545,7 @@ export const AzureFirewallNatRule = /*@__PURE__*/ S.suspend(() =>
 
 /** Collection of rules used by a NAT rule collection. */
 export type AzureFirewallNatRuleCollectionPropertiesRulesList =
-  ReadonlyArray<AzureFirewallNatRule>;
+  Array<AzureFirewallNatRule>;
 export const AzureFirewallNatRuleCollectionPropertiesRulesList =
   /*@__PURE__*/ S.Array(
     AzureFirewallNatRule,
@@ -14514,7 +14571,9 @@ export interface AzureFirewallNatRuleCollectionProperties {
   /** Collection of rules used by a NAT rule collection. */
   rules?: AzureFirewallNatRuleCollectionPropertiesRulesList;
   /** Provisioning states of a resource. */
-  provisioningState?: AzureFirewallNatRuleCollectionPropertiesProvisioningState;
+  provisioningState?:
+    | AzureFirewallNatRuleCollectionPropertiesProvisioningState
+    | (string & {});
 }
 export const AzureFirewallNatRuleCollectionProperties = /*@__PURE__*/ S.suspend(
   () =>
@@ -14551,7 +14610,7 @@ export const AzureFirewallNatRuleCollectionInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Collection of NAT rule collections used by Azure Firewall. */
 export type AzureFirewallPropertiesFormatInputNatRuleCollectionsList =
-  ReadonlyArray<AzureFirewallNatRuleCollectionInput>;
+  Array<AzureFirewallNatRuleCollectionInput>;
 export const AzureFirewallPropertiesFormatInputNatRuleCollectionsList =
   /*@__PURE__*/ S.Array(
     AzureFirewallNatRuleCollectionInput,
@@ -14566,52 +14625,49 @@ export type AzureFirewallNetworkRuleProtocolsItem =
 export const AzureFirewallNetworkRuleProtocolsItem = /*@__PURE__*/ S.String;
 
 /** Array of AzureFirewallNetworkRuleProtocols. */
-export type AzureFirewallNetworkRuleProtocolsList =
-  ReadonlyArray<AzureFirewallNetworkRuleProtocolsItem>;
+export type AzureFirewallNetworkRuleProtocolsList = Array<
+  AzureFirewallNetworkRuleProtocolsItem | (string & {})
+>;
 export const AzureFirewallNetworkRuleProtocolsList = /*@__PURE__*/ S.Array(
   AzureFirewallNetworkRuleProtocolsItem,
 ) as any as S.Schema<AzureFirewallNetworkRuleProtocolsList>;
 
 /** List of source IP addresses for this rule. */
-export type AzureFirewallNetworkRuleSourceAddressesList = ReadonlyArray<string>;
+export type AzureFirewallNetworkRuleSourceAddressesList = Array<string>;
 export const AzureFirewallNetworkRuleSourceAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AzureFirewallNetworkRuleSourceAddressesList>;
 
 /** List of destination IP addresses. */
-export type AzureFirewallNetworkRuleDestinationAddressesList =
-  ReadonlyArray<string>;
+export type AzureFirewallNetworkRuleDestinationAddressesList = Array<string>;
 export const AzureFirewallNetworkRuleDestinationAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AzureFirewallNetworkRuleDestinationAddressesList>;
 
 /** List of destination ports. */
-export type AzureFirewallNetworkRuleDestinationPortsList =
-  ReadonlyArray<string>;
+export type AzureFirewallNetworkRuleDestinationPortsList = Array<string>;
 export const AzureFirewallNetworkRuleDestinationPortsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AzureFirewallNetworkRuleDestinationPortsList>;
 
 /** List of destination FQDNs. */
-export type AzureFirewallNetworkRuleDestinationFqdnsList =
-  ReadonlyArray<string>;
+export type AzureFirewallNetworkRuleDestinationFqdnsList = Array<string>;
 export const AzureFirewallNetworkRuleDestinationFqdnsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AzureFirewallNetworkRuleDestinationFqdnsList>;
 
 /** List of source IpGroups for this rule. */
-export type AzureFirewallNetworkRuleSourceIpGroupsList = ReadonlyArray<string>;
+export type AzureFirewallNetworkRuleSourceIpGroupsList = Array<string>;
 export const AzureFirewallNetworkRuleSourceIpGroupsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AzureFirewallNetworkRuleSourceIpGroupsList>;
 
 /** List of destination IpGroups for this rule. */
-export type AzureFirewallNetworkRuleDestinationIpGroupsList =
-  ReadonlyArray<string>;
+export type AzureFirewallNetworkRuleDestinationIpGroupsList = Array<string>;
 export const AzureFirewallNetworkRuleDestinationIpGroupsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -14660,7 +14716,7 @@ export const AzureFirewallNetworkRule = /*@__PURE__*/ S.suspend(() =>
 
 /** Collection of rules used by a network rule collection. */
 export type AzureFirewallNetworkRuleCollectionPropertiesFormatRulesList =
-  ReadonlyArray<AzureFirewallNetworkRule>;
+  Array<AzureFirewallNetworkRule>;
 export const AzureFirewallNetworkRuleCollectionPropertiesFormatRulesList =
   /*@__PURE__*/ S.Array(
     AzureFirewallNetworkRule,
@@ -14681,7 +14737,9 @@ export interface AzureFirewallNetworkRuleCollectionPropertiesFormat {
   /** Collection of rules used by a network rule collection. */
   rules?: AzureFirewallNetworkRuleCollectionPropertiesFormatRulesList;
   /** Provisioning states of a resource. */
-  provisioningState?: AzureFirewallNetworkRuleCollectionPropertiesFormatProvisioningState;
+  provisioningState?:
+    | AzureFirewallNetworkRuleCollectionPropertiesFormatProvisioningState
+    | (string & {});
 }
 export const AzureFirewallNetworkRuleCollectionPropertiesFormat =
   /*@__PURE__*/ S.suspend(() =>
@@ -14723,7 +14781,7 @@ export const AzureFirewallNetworkRuleCollectionInput = /*@__PURE__*/ S.suspend(
 
 /** Collection of network rule collections used by Azure Firewall. */
 export type AzureFirewallPropertiesFormatInputNetworkRuleCollectionsList =
-  ReadonlyArray<AzureFirewallNetworkRuleCollectionInput>;
+  Array<AzureFirewallNetworkRuleCollectionInput>;
 export const AzureFirewallPropertiesFormatInputNetworkRuleCollectionsList =
   /*@__PURE__*/ S.Array(
     AzureFirewallNetworkRuleCollectionInput,
@@ -14813,7 +14871,7 @@ export const AzureFirewallIPConfigurationInput = /*@__PURE__*/ S.suspend(() =>
 
 /** IP configuration of the Azure Firewall resource. */
 export type AzureFirewallPropertiesFormatInputIpConfigurationsList =
-  ReadonlyArray<AzureFirewallIPConfigurationInput>;
+  Array<AzureFirewallIPConfigurationInput>;
 export const AzureFirewallPropertiesFormatInputIpConfigurationsList =
   /*@__PURE__*/ S.Array(
     AzureFirewallIPConfigurationInput,
@@ -14881,7 +14939,7 @@ export const AzureFirewallPublicIPAddress = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of Public IP addresses associated with azure firewall or IP addresses to be retained. */
 export type HubPublicIPAddressesAddressesList =
-  ReadonlyArray<AzureFirewallPublicIPAddress>;
+  Array<AzureFirewallPublicIPAddress>;
 export const HubPublicIPAddressesAddressesList = /*@__PURE__*/ S.Array(
   AzureFirewallPublicIPAddress,
 ) as any as S.Schema<HubPublicIPAddressesAddressesList>;
@@ -14927,9 +14985,9 @@ export const AzureFirewallSkuTier = /*@__PURE__*/ S.String;
 /** SKU of an Azure Firewall. */
 export interface AzureFirewallSku {
   /** Name of an Azure Firewall SKU. */
-  name?: AzureFirewallSkuName;
+  name?: AzureFirewallSkuName | (string & {});
   /** Tier of an Azure Firewall. */
-  tier?: AzureFirewallSkuTier;
+  tier?: AzureFirewallSkuTier | (string & {});
 }
 export const AzureFirewallSku = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -15053,8 +15111,7 @@ export const AzureFirewallsCreateOrUpdateRequestExtendedLocation =
   }) as any as S.Schema<AzureFirewallsCreateOrUpdateRequestExtendedLocation>;
 
 /** A list of availability zones denoting where the resource needs to come from. */
-export type AzureFirewallsCreateOrUpdateRequestZonesList =
-  ReadonlyArray<string>;
+export type AzureFirewallsCreateOrUpdateRequestZonesList = Array<string>;
 export const AzureFirewallsCreateOrUpdateRequestZonesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -15145,7 +15202,7 @@ export const AzureFirewallApplicationRuleCollection = /*@__PURE__*/ S.suspend(
 
 /** Collection of application rule collections used by Azure Firewall. */
 export type AzureFirewallPropertiesFormatApplicationRuleCollectionsList =
-  ReadonlyArray<AzureFirewallApplicationRuleCollection>;
+  Array<AzureFirewallApplicationRuleCollection>;
 export const AzureFirewallPropertiesFormatApplicationRuleCollectionsList =
   /*@__PURE__*/ S.Array(
     AzureFirewallApplicationRuleCollection,
@@ -15175,7 +15232,7 @@ export const AzureFirewallNatRuleCollection = /*@__PURE__*/ S.suspend(() =>
 
 /** Collection of NAT rule collections used by Azure Firewall. */
 export type AzureFirewallPropertiesFormatNatRuleCollectionsList =
-  ReadonlyArray<AzureFirewallNatRuleCollection>;
+  Array<AzureFirewallNatRuleCollection>;
 export const AzureFirewallPropertiesFormatNatRuleCollectionsList =
   /*@__PURE__*/ S.Array(
     AzureFirewallNatRuleCollection,
@@ -15205,7 +15262,7 @@ export const AzureFirewallNetworkRuleCollection = /*@__PURE__*/ S.suspend(() =>
 
 /** Collection of network rule collections used by Azure Firewall. */
 export type AzureFirewallPropertiesFormatNetworkRuleCollectionsList =
-  ReadonlyArray<AzureFirewallNetworkRuleCollection>;
+  Array<AzureFirewallNetworkRuleCollection>;
 export const AzureFirewallPropertiesFormatNetworkRuleCollectionsList =
   /*@__PURE__*/ S.Array(
     AzureFirewallNetworkRuleCollection,
@@ -15304,7 +15361,7 @@ export const AzureFirewallIPConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** IP configuration of the Azure Firewall resource. */
 export type AzureFirewallPropertiesFormatIpConfigurationsList =
-  ReadonlyArray<AzureFirewallIPConfiguration>;
+  Array<AzureFirewallIPConfiguration>;
 export const AzureFirewallPropertiesFormatIpConfigurationsList =
   /*@__PURE__*/ S.Array(
     AzureFirewallIPConfiguration,
@@ -15375,7 +15432,7 @@ export const AzureFirewallIpGroups = /*@__PURE__*/ S.suspend(() =>
 
 /** IpGroups associated with AzureFirewall. */
 export type AzureFirewallPropertiesFormatIpGroupsList =
-  ReadonlyArray<AzureFirewallIpGroups>;
+  Array<AzureFirewallIpGroups>;
 export const AzureFirewallPropertiesFormatIpGroupsList = /*@__PURE__*/ S.Array(
   AzureFirewallIpGroups,
 ) as any as S.Schema<AzureFirewallPropertiesFormatIpGroupsList>;
@@ -15488,8 +15545,7 @@ export const AzureFirewallsCreateOrUpdateResponseExtendedLocation =
   }) as any as S.Schema<AzureFirewallsCreateOrUpdateResponseExtendedLocation>;
 
 /** A list of availability zones denoting where the resource needs to come from. */
-export type AzureFirewallsCreateOrUpdateResponseZonesList =
-  ReadonlyArray<string>;
+export type AzureFirewallsCreateOrUpdateResponseZonesList = Array<string>;
 export const AzureFirewallsCreateOrUpdateResponseZonesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -15618,7 +15674,7 @@ export const AzureFirewallsGetResponseExtendedLocation =
   }) as any as S.Schema<AzureFirewallsGetResponseExtendedLocation>;
 
 /** A list of availability zones denoting where the resource needs to come from. */
-export type AzureFirewallsGetResponseZonesList = ReadonlyArray<string>;
+export type AzureFirewallsGetResponseZonesList = Array<string>;
 export const AzureFirewallsGetResponseZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AzureFirewallsGetResponseZonesList>;
@@ -15705,7 +15761,7 @@ export const AzureFirewallExtendedLocation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AzureFirewallExtendedLocation>;
 
 /** A list of availability zones denoting where the resource needs to come from. */
-export type AzureFirewallZonesList = ReadonlyArray<string>;
+export type AzureFirewallZonesList = Array<string>;
 export const AzureFirewallZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AzureFirewallZonesList>;
@@ -15746,7 +15802,7 @@ export const AzureFirewall = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AzureFirewall" }) as any as S.Schema<AzureFirewall>;
 
 /** The AzureFirewall items on this page */
-export type AzureFirewallListResultValueList = ReadonlyArray<AzureFirewall>;
+export type AzureFirewallListResultValueList = Array<AzureFirewall>;
 export const AzureFirewallListResultValueList = /*@__PURE__*/ S.Array(
   AzureFirewall,
 ) as any as S.Schema<AzureFirewallListResultValueList>;
@@ -15813,7 +15869,7 @@ export const AzureFirewallsListLearnedPrefixesRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<AzureFirewallsListLearnedPrefixesRequest>;
 
 /** IP Prefix value. */
-export type IPPrefixesListIpPrefixesList = ReadonlyArray<string>;
+export type IPPrefixesListIpPrefixesList = Array<string>;
 export const IPPrefixesListIpPrefixesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<IPPrefixesListIpPrefixesList>;
@@ -15863,29 +15919,27 @@ export const AzureFirewallPacketCaptureFlags = /*@__PURE__*/ S.suspend(() =>
 
 /** The tcp-flag type to be captured. Used with protocol TCP */
 export type AzureFirewallsPacketCaptureRequestFlagsList =
-  ReadonlyArray<AzureFirewallPacketCaptureFlags>;
+  Array<AzureFirewallPacketCaptureFlags>;
 export const AzureFirewallsPacketCaptureRequestFlagsList =
   /*@__PURE__*/ S.Array(
     AzureFirewallPacketCaptureFlags,
   ) as any as S.Schema<AzureFirewallsPacketCaptureRequestFlagsList>;
 
 /** List of source IP addresses/subnets to be captured. */
-export type AzureFirewallPacketCaptureRuleSourcesList = ReadonlyArray<string>;
+export type AzureFirewallPacketCaptureRuleSourcesList = Array<string>;
 export const AzureFirewallPacketCaptureRuleSourcesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AzureFirewallPacketCaptureRuleSourcesList>;
 
 /** List of destination IP addresses/subnets to be captured. */
-export type AzureFirewallPacketCaptureRuleDestinationsList =
-  ReadonlyArray<string>;
+export type AzureFirewallPacketCaptureRuleDestinationsList = Array<string>;
 export const AzureFirewallPacketCaptureRuleDestinationsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AzureFirewallPacketCaptureRuleDestinationsList>;
 
 /** List of ports to be captured. */
-export type AzureFirewallPacketCaptureRuleDestinationPortsList =
-  ReadonlyArray<string>;
+export type AzureFirewallPacketCaptureRuleDestinationPortsList = Array<string>;
 export const AzureFirewallPacketCaptureRuleDestinationPortsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -15914,7 +15968,7 @@ export const AzureFirewallPacketCaptureRule = /*@__PURE__*/ S.suspend(() =>
 
 /** Rules to filter packet captures. */
 export type AzureFirewallsPacketCaptureRequestFiltersList =
-  ReadonlyArray<AzureFirewallPacketCaptureRule>;
+  Array<AzureFirewallPacketCaptureRule>;
 export const AzureFirewallsPacketCaptureRequestFiltersList =
   /*@__PURE__*/ S.Array(
     AzureFirewallPacketCaptureRule,
@@ -15995,7 +16049,7 @@ export const AzureFirewallsPacketCaptureOperationRequestProtocol =
 
 /** The tcp-flag type to be captured. Used with protocol TCP */
 export type AzureFirewallsPacketCaptureOperationRequestFlagsList =
-  ReadonlyArray<AzureFirewallPacketCaptureFlags>;
+  Array<AzureFirewallPacketCaptureFlags>;
 export const AzureFirewallsPacketCaptureOperationRequestFlagsList =
   /*@__PURE__*/ S.Array(
     AzureFirewallPacketCaptureFlags,
@@ -16003,7 +16057,7 @@ export const AzureFirewallsPacketCaptureOperationRequestFlagsList =
 
 /** Rules to filter packet captures. */
 export type AzureFirewallsPacketCaptureOperationRequestFiltersList =
-  ReadonlyArray<AzureFirewallPacketCaptureRule>;
+  Array<AzureFirewallPacketCaptureRule>;
 export const AzureFirewallsPacketCaptureOperationRequestFiltersList =
   /*@__PURE__*/ S.Array(
     AzureFirewallPacketCaptureRule,
@@ -16170,7 +16224,7 @@ export const AzureFirewallsUpdateTagsResponseExtendedLocation =
   }) as any as S.Schema<AzureFirewallsUpdateTagsResponseExtendedLocation>;
 
 /** A list of availability zones denoting where the resource needs to come from. */
-export type AzureFirewallsUpdateTagsResponseZonesList = ReadonlyArray<string>;
+export type AzureFirewallsUpdateTagsResponseZonesList = Array<string>;
 export const AzureFirewallsUpdateTagsResponseZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AzureFirewallsUpdateTagsResponseZonesList>;
@@ -16274,9 +16328,13 @@ export interface BastionHostIPConfigurationPropertiesFormat {
   /** Reference to another subresource. */
   publicIPAddress?: BastionHostIPConfigurationPropertiesFormatPublicIPAddress;
   /** Provisioning states of a resource. */
-  provisioningState?: BastionHostIPConfigurationPropertiesFormatProvisioningState;
+  provisioningState?:
+    | BastionHostIPConfigurationPropertiesFormatProvisioningState
+    | (string & {});
   /** IP address allocation method. */
-  privateIPAllocationMethod?: BastionHostIPConfigurationPropertiesFormatPrivateIPAllocationMethod;
+  privateIPAllocationMethod?:
+    | BastionHostIPConfigurationPropertiesFormatPrivateIPAllocationMethod
+    | (string & {});
 }
 export const BastionHostIPConfigurationPropertiesFormat =
   /*@__PURE__*/ S.suspend(() =>
@@ -16317,7 +16375,7 @@ export const BastionHostIPConfigurationInput = /*@__PURE__*/ S.suspend(() =>
 
 /** IP configuration of the Bastion Host resource. */
 export type BastionHostPropertiesFormatInputIpConfigurationsList =
-  ReadonlyArray<BastionHostIPConfigurationInput>;
+  Array<BastionHostIPConfigurationInput>;
 export const BastionHostPropertiesFormatInputIpConfigurationsList =
   /*@__PURE__*/ S.Array(
     BastionHostIPConfigurationInput,
@@ -16348,8 +16406,7 @@ export const IPRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IPRule" }) as any as S.Schema<IPRule>;
 
 /** Sets the IP ACL rules for Developer Bastion Host. */
-export type BastionHostPropertiesFormatNetworkAclsIpRulesList =
-  ReadonlyArray<IPRule>;
+export type BastionHostPropertiesFormatNetworkAclsIpRulesList = Array<IPRule>;
 export const BastionHostPropertiesFormatNetworkAclsIpRulesList =
   /*@__PURE__*/ S.Array(
     IPRule,
@@ -16437,7 +16494,7 @@ export const BastionHostPropertiesFormatInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BastionHostPropertiesFormatInput>;
 
 /** A list of availability zones denoting where the resource needs to come from. */
-export type BastionHostsCreateOrUpdateRequestZonesList = ReadonlyArray<string>;
+export type BastionHostsCreateOrUpdateRequestZonesList = Array<string>;
 export const BastionHostsCreateOrUpdateRequestZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BastionHostsCreateOrUpdateRequestZonesList>;
@@ -16449,7 +16506,7 @@ export const SkuName = /*@__PURE__*/ S.String;
 /** The sku of this Bastion Host. */
 export interface Sku {
   /** The name of the sku of this Bastion Host. */
-  name?: SkuName;
+  name?: SkuName | (string & {});
 }
 export const Sku = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -16536,7 +16593,7 @@ export const BastionHostIPConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** IP configuration of the Bastion Host resource. */
 export type BastionHostPropertiesFormatIpConfigurationsList =
-  ReadonlyArray<BastionHostIPConfiguration>;
+  Array<BastionHostIPConfiguration>;
 export const BastionHostPropertiesFormatIpConfigurationsList =
   /*@__PURE__*/ S.Array(
     BastionHostIPConfiguration,
@@ -16621,7 +16678,7 @@ export const BastionHostPropertiesFormat = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BastionHostPropertiesFormat>;
 
 /** A list of availability zones denoting where the resource needs to come from. */
-export type BastionHostsCreateOrUpdateResponseZonesList = ReadonlyArray<string>;
+export type BastionHostsCreateOrUpdateResponseZonesList = Array<string>;
 export const BastionHostsCreateOrUpdateResponseZonesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -16730,7 +16787,7 @@ export const BastionHostsGetResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<BastionHostsGetResponseTagsMap>;
 
 /** A list of availability zones denoting where the resource needs to come from. */
-export type BastionHostsGetResponseZonesList = ReadonlyArray<string>;
+export type BastionHostsGetResponseZonesList = Array<string>;
 export const BastionHostsGetResponseZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BastionHostsGetResponseZonesList>;
@@ -16798,7 +16855,7 @@ export const BastionHostTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<BastionHostTagsMap>;
 
 /** A list of availability zones denoting where the resource needs to come from. */
-export type BastionHostZonesList = ReadonlyArray<string>;
+export type BastionHostZonesList = Array<string>;
 export const BastionHostZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BastionHostZonesList>;
@@ -16839,7 +16896,7 @@ export const BastionHost = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BastionHost" }) as any as S.Schema<BastionHost>;
 
 /** The BastionHost items on this page */
-export type BastionHostListResultValueList = ReadonlyArray<BastionHost>;
+export type BastionHostListResultValueList = Array<BastionHost>;
 export const BastionHostListResultValueList = /*@__PURE__*/ S.Array(
   BastionHost,
 ) as any as S.Schema<BastionHostListResultValueList>;
@@ -16930,7 +16987,7 @@ export const BastionHostsUpdateTagsResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<BastionHostsUpdateTagsResponseTagsMap>;
 
 /** A list of availability zones denoting where the resource needs to come from. */
-export type BastionHostsUpdateTagsResponseZonesList = ReadonlyArray<string>;
+export type BastionHostsUpdateTagsResponseZonesList = Array<string>;
 export const BastionHostsUpdateTagsResponseZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BastionHostsUpdateTagsResponseZonesList>;
@@ -16998,7 +17055,7 @@ export const BgpServiceCommunityTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<BgpServiceCommunityTagsMap>;
 
 /** The prefixes that the bgp community contains. */
-export type BGPCommunityCommunityPrefixesList = ReadonlyArray<string>;
+export type BGPCommunityCommunityPrefixesList = Array<string>;
 export const BGPCommunityCommunityPrefixesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BGPCommunityCommunityPrefixesList>;
@@ -17031,7 +17088,7 @@ export const BGPCommunity = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of bgp communities. */
 export type BgpServiceCommunityPropertiesFormatBgpCommunitiesList =
-  ReadonlyArray<BGPCommunity>;
+  Array<BGPCommunity>;
 export const BgpServiceCommunityPropertiesFormatBgpCommunitiesList =
   /*@__PURE__*/ S.Array(
     BGPCommunity,
@@ -17084,8 +17141,7 @@ export const BgpServiceCommunity = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BgpServiceCommunity>;
 
 /** The BgpServiceCommunity items on this page */
-export type BgpServiceCommunityListResultValueList =
-  ReadonlyArray<BgpServiceCommunity>;
+export type BgpServiceCommunityListResultValueList = Array<BgpServiceCommunity>;
 export const BgpServiceCommunityListResultValueList = /*@__PURE__*/ S.Array(
   BgpServiceCommunity,
 ) as any as S.Schema<BgpServiceCommunityListResultValueList>;
@@ -17163,13 +17219,13 @@ export type CommitPropertiesInputCommitType =
 export const CommitPropertiesInputCommitType = /*@__PURE__*/ S.String;
 
 /** List of configuration IDs. */
-export type CommitPropertiesInputConfigurationIdsList = ReadonlyArray<string>;
+export type CommitPropertiesInputConfigurationIdsList = Array<string>;
 export const CommitPropertiesInputConfigurationIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CommitPropertiesInputConfigurationIdsList>;
 
 /** List of target locations. */
-export type CommitPropertiesInputTargetLocationsList = ReadonlyArray<string>;
+export type CommitPropertiesInputTargetLocationsList = Array<string>;
 export const CommitPropertiesInputTargetLocationsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CommitPropertiesInputTargetLocationsList>;
@@ -17252,19 +17308,19 @@ export type CommitPropertiesCommitType =
 export const CommitPropertiesCommitType = /*@__PURE__*/ S.String;
 
 /** List of configuration IDs. */
-export type CommitPropertiesConfigurationIdsList = ReadonlyArray<string>;
+export type CommitPropertiesConfigurationIdsList = Array<string>;
 export const CommitPropertiesConfigurationIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CommitPropertiesConfigurationIdsList>;
 
 /** List of target locations. */
-export type CommitPropertiesTargetLocationsList = ReadonlyArray<string>;
+export type CommitPropertiesTargetLocationsList = Array<string>;
 export const CommitPropertiesTargetLocationsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CommitPropertiesTargetLocationsList>;
 
 /** List of active locations. */
-export type CommitPropertiesActiveLocationsList = ReadonlyArray<string>;
+export type CommitPropertiesActiveLocationsList = Array<string>;
 export const CommitPropertiesActiveLocationsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CommitPropertiesActiveLocationsList>;
@@ -17620,7 +17676,7 @@ export const Commit = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Commit" }) as any as S.Schema<Commit>;
 
 /** The Commit items on this page */
-export type CommitListResultValueList = ReadonlyArray<Commit>;
+export type CommitListResultValueList = Array<Commit>;
 export const CommitListResultValueList = /*@__PURE__*/ S.Array(
   Commit,
 ) as any as S.Schema<CommitListResultValueList>;
@@ -17654,7 +17710,9 @@ export interface VpnServerConfigurationPolicyGroupMember {
   /** Name of the VpnServerConfigurationPolicyGroupMember. */
   name?: string;
   /** The Vpn Policy member attribute type. */
-  attributeType?: VpnServerConfigurationPolicyGroupMemberAttributeType;
+  attributeType?:
+    | VpnServerConfigurationPolicyGroupMemberAttributeType
+    | (string & {});
   /** The value of Attribute used for this VpnServerConfigurationPolicyGroupMember. */
   attributeValue?: string;
 }
@@ -17673,7 +17731,7 @@ export const VpnServerConfigurationPolicyGroupMember = /*@__PURE__*/ S.suspend(
 
 /** Multiple PolicyMembers for VpnServerConfigurationPolicyGroup. */
 export type VpnServerConfigurationPolicyGroupPropertiesInputPolicyMembersList =
-  ReadonlyArray<VpnServerConfigurationPolicyGroupMember>;
+  Array<VpnServerConfigurationPolicyGroupMember>;
 export const VpnServerConfigurationPolicyGroupPropertiesInputPolicyMembersList =
   /*@__PURE__*/ S.Array(
     VpnServerConfigurationPolicyGroupMember,
@@ -17759,7 +17817,7 @@ export const ConfigurationPolicyGroupsCreateOrUpdateRequest =
 
 /** Multiple PolicyMembers for VpnServerConfigurationPolicyGroup. */
 export type VpnServerConfigurationPolicyGroupPropertiesPolicyMembersList =
-  ReadonlyArray<VpnServerConfigurationPolicyGroupMember>;
+  Array<VpnServerConfigurationPolicyGroupMember>;
 export const VpnServerConfigurationPolicyGroupPropertiesPolicyMembersList =
   /*@__PURE__*/ S.Array(
     VpnServerConfigurationPolicyGroupMember,
@@ -17782,7 +17840,7 @@ export const VpnServerConfigurationPolicyGroupPropertiesP2SConnectionConfigurati
 
 /** List of references to P2SConnectionConfigurations. */
 export type VpnServerConfigurationPolicyGroupPropertiesP2SConnectionConfigurationsList =
-  ReadonlyArray<VpnServerConfigurationPolicyGroupPropertiesP2SConnectionConfigurationsItem>;
+  Array<VpnServerConfigurationPolicyGroupPropertiesP2SConnectionConfigurationsItem>;
 export const VpnServerConfigurationPolicyGroupPropertiesP2SConnectionConfigurationsList =
   /*@__PURE__*/ S.Array(
     VpnServerConfigurationPolicyGroupPropertiesP2SConnectionConfigurationsItem,
@@ -17998,7 +18056,7 @@ export const VpnServerConfigurationPolicyGroup = /*@__PURE__*/ S.suspend(() =>
 
 /** The VpnServerConfigurationPolicyGroup items on this page */
 export type ListVpnServerConfigurationPolicyGroupsResultValueList =
-  ReadonlyArray<VpnServerConfigurationPolicyGroup>;
+  Array<VpnServerConfigurationPolicyGroup>;
 export const ListVpnServerConfigurationPolicyGroupsResultValueList =
   /*@__PURE__*/ S.Array(
     VpnServerConfigurationPolicyGroup,
@@ -18090,7 +18148,7 @@ export const ConnectionMonitorEndpointFilterItemType = /*@__PURE__*/ S.String;
 /** Describes the connection monitor endpoint filter item. */
 export interface ConnectionMonitorEndpointFilterItem {
   /** The type of item included in the filter. Currently only 'AgentAddress' is supported. */
-  type?: ConnectionMonitorEndpointFilterItemType;
+  type?: ConnectionMonitorEndpointFilterItemType | (string & {});
   /** The address of the filter item. */
   address?: string;
 }
@@ -18105,7 +18163,7 @@ export const ConnectionMonitorEndpointFilterItem = /*@__PURE__*/ S.suspend(() =>
 
 /** List of items in the filter. */
 export type ConnectionMonitorEndpointFilterItemsList =
-  ReadonlyArray<ConnectionMonitorEndpointFilterItem>;
+  Array<ConnectionMonitorEndpointFilterItem>;
 export const ConnectionMonitorEndpointFilterItemsList = /*@__PURE__*/ S.Array(
   ConnectionMonitorEndpointFilterItem,
 ) as any as S.Schema<ConnectionMonitorEndpointFilterItemsList>;
@@ -18113,7 +18171,7 @@ export const ConnectionMonitorEndpointFilterItemsList = /*@__PURE__*/ S.Array(
 /** Describes the connection monitor endpoint filter. */
 export interface ConnectionMonitorEndpointFilter {
   /** The behavior of the endpoint filter. Currently only 'Include' is supported. */
-  type?: ConnectionMonitorEndpointFilterType;
+  type?: ConnectionMonitorEndpointFilterType | (string & {});
   /** List of items in the filter. */
   items?: ConnectionMonitorEndpointFilterItemsList;
 }
@@ -18141,14 +18199,14 @@ export const ConnectionMonitorEndpointScopeItem = /*@__PURE__*/ S.suspend(() =>
 
 /** List of items which needs to be included to the endpoint scope. */
 export type ConnectionMonitorEndpointScopeIncludeList =
-  ReadonlyArray<ConnectionMonitorEndpointScopeItem>;
+  Array<ConnectionMonitorEndpointScopeItem>;
 export const ConnectionMonitorEndpointScopeIncludeList = /*@__PURE__*/ S.Array(
   ConnectionMonitorEndpointScopeItem,
 ) as any as S.Schema<ConnectionMonitorEndpointScopeIncludeList>;
 
 /** List of items which needs to be excluded from the endpoint scope. */
 export type ConnectionMonitorEndpointScopeExcludeList =
-  ReadonlyArray<ConnectionMonitorEndpointScopeItem>;
+  Array<ConnectionMonitorEndpointScopeItem>;
 export const ConnectionMonitorEndpointScopeExcludeList = /*@__PURE__*/ S.Array(
   ConnectionMonitorEndpointScopeItem,
 ) as any as S.Schema<ConnectionMonitorEndpointScopeExcludeList>;
@@ -18198,7 +18256,7 @@ export interface ConnectionMonitorEndpoint {
   /** The name of the connection monitor endpoint. */
   name: string;
   /** The endpoint type. */
-  type?: ConnectionMonitorEndpointType;
+  type?: ConnectionMonitorEndpointType | (string & {});
   /** Resource ID of the connection monitor endpoint are supported for AzureVM, AzureVMSS, AzureVNet, AzureSubnet, MMAWorkspaceMachine, MMAWorkspaceNetwork, AzureArcVM endpoint type. */
   resourceId?: string;
   /** Address of the connection monitor endpoint. Supported for AzureVM, ExternalAddress, ArcMachine, MMAWorkspaceMachine endpoint type. */
@@ -18208,7 +18266,7 @@ export interface ConnectionMonitorEndpoint {
   /** Endpoint scope defines which target resource to monitor in case of compound resource endpoints like VMSS, AzureSubnet, AzureVNet, MMAWorkspaceNetwork, AzureArcNetwork. */
   scope?: ConnectionMonitorEndpointScope;
   /** Test coverage for the endpoint. */
-  coverageLevel?: ConnectionMonitorEndpointCoverageLevel;
+  coverageLevel?: ConnectionMonitorEndpointCoverageLevel | (string & {});
   /** Location details is optional and only being used for 'AzureArcNetwork' type endpoints, which contains region details. */
   locationDetails?: ConnectionMonitorEndpointLocationDetails;
   /** Subscription ID for connection monitor endpoint. It's an optional parameter which is being used for 'AzureArcNetwork' type endpoint. */
@@ -18232,7 +18290,7 @@ export const ConnectionMonitorEndpoint = /*@__PURE__*/ S.suspend(() =>
 
 /** List of connection monitor endpoints. */
 export type ConnectionMonitorParametersEndpointsList =
-  ReadonlyArray<ConnectionMonitorEndpoint>;
+  Array<ConnectionMonitorEndpoint>;
 export const ConnectionMonitorParametersEndpointsList = /*@__PURE__*/ S.Array(
   ConnectionMonitorEndpoint,
 ) as any as S.Schema<ConnectionMonitorParametersEndpointsList>;
@@ -18272,7 +18330,7 @@ export const HTTPHeader = /*@__PURE__*/ S.suspend(() =>
 
 /** The HTTP headers to transmit with the request. */
 export type ConnectionMonitorHttpConfigurationRequestHeadersList =
-  ReadonlyArray<HTTPHeader>;
+  Array<HTTPHeader>;
 export const ConnectionMonitorHttpConfigurationRequestHeadersList =
   /*@__PURE__*/ S.Array(
     HTTPHeader,
@@ -18280,7 +18338,7 @@ export const ConnectionMonitorHttpConfigurationRequestHeadersList =
 
 /** HTTP status codes to consider successful. For instance, "2xx,301-304,418". */
 export type ConnectionMonitorHttpConfigurationValidStatusCodeRangesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ConnectionMonitorHttpConfigurationValidStatusCodeRangesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -18291,7 +18349,7 @@ export interface ConnectionMonitorHttpConfiguration {
   /** The port to connect to. */
   port?: number;
   /** The HTTP method to use. */
-  method?: ConnectionMonitorHttpConfigurationMethod;
+  method?: ConnectionMonitorHttpConfigurationMethod | (string & {});
   /** The path component of the URI. For instance, "/dir1/dir2". */
   path?: string;
   /** The HTTP headers to transmit with the request. */
@@ -18332,7 +18390,9 @@ export interface ConnectionMonitorTcpConfiguration {
   /** Value indicating whether path evaluation with trace route should be disabled. */
   disableTraceRoute?: boolean;
   /** Destination port behavior. */
-  destinationPortBehavior?: ConnectionMonitorTcpConfigurationDestinationPortBehavior;
+  destinationPortBehavior?:
+    | ConnectionMonitorTcpConfigurationDestinationPortBehavior
+    | (string & {});
 }
 export const ConnectionMonitorTcpConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -18382,9 +18442,11 @@ export interface ConnectionMonitorTestConfiguration {
   /** The frequency of test evaluation, in seconds. */
   testFrequencySec?: number;
   /** The protocol to use in test evaluation. */
-  protocol: ConnectionMonitorTestConfigurationProtocol;
+  protocol: ConnectionMonitorTestConfigurationProtocol | (string & {});
   /** The preferred IP version to use in test evaluation. The connection monitor may choose to use a different version depending on other parameters. */
-  preferredIPVersion?: ConnectionMonitorTestConfigurationPreferredIPVersion;
+  preferredIPVersion?:
+    | ConnectionMonitorTestConfigurationPreferredIPVersion
+    | (string & {});
   /** The parameters used to perform test evaluation over HTTP. */
   httpConfiguration?: ConnectionMonitorHttpConfiguration;
   /** The parameters used to perform test evaluation over TCP. */
@@ -18413,28 +18475,27 @@ export const ConnectionMonitorTestConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** List of connection monitor test configurations. */
 export type ConnectionMonitorParametersTestConfigurationsList =
-  ReadonlyArray<ConnectionMonitorTestConfiguration>;
+  Array<ConnectionMonitorTestConfiguration>;
 export const ConnectionMonitorParametersTestConfigurationsList =
   /*@__PURE__*/ S.Array(
     ConnectionMonitorTestConfiguration,
   ) as any as S.Schema<ConnectionMonitorParametersTestConfigurationsList>;
 
 /** List of test configuration names. */
-export type ConnectionMonitorTestGroupTestConfigurationsList =
-  ReadonlyArray<string>;
+export type ConnectionMonitorTestGroupTestConfigurationsList = Array<string>;
 export const ConnectionMonitorTestGroupTestConfigurationsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ConnectionMonitorTestGroupTestConfigurationsList>;
 
 /** List of source endpoint names. */
-export type ConnectionMonitorTestGroupSourcesList = ReadonlyArray<string>;
+export type ConnectionMonitorTestGroupSourcesList = Array<string>;
 export const ConnectionMonitorTestGroupSourcesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ConnectionMonitorTestGroupSourcesList>;
 
 /** List of destination endpoint names. */
-export type ConnectionMonitorTestGroupDestinationsList = ReadonlyArray<string>;
+export type ConnectionMonitorTestGroupDestinationsList = Array<string>;
 export const ConnectionMonitorTestGroupDestinationsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ConnectionMonitorTestGroupDestinationsList>;
@@ -18466,7 +18527,7 @@ export const ConnectionMonitorTestGroup = /*@__PURE__*/ S.suspend(() =>
 
 /** List of connection monitor test groups. */
 export type ConnectionMonitorParametersTestGroupsList =
-  ReadonlyArray<ConnectionMonitorTestGroup>;
+  Array<ConnectionMonitorTestGroup>;
 export const ConnectionMonitorParametersTestGroupsList = /*@__PURE__*/ S.Array(
   ConnectionMonitorTestGroup,
 ) as any as S.Schema<ConnectionMonitorParametersTestGroupsList>;
@@ -18491,7 +18552,7 @@ export const ConnectionMonitorWorkspaceSettings = /*@__PURE__*/ S.suspend(() =>
 /** Describes a connection monitor output destination. */
 export interface ConnectionMonitorOutput {
   /** Connection monitor output destination type. Currently, only "Workspace" is supported. */
-  type?: ConnectionMonitorOutputType;
+  type?: ConnectionMonitorOutputType | (string & {});
   /** Describes the settings for producing output into a log analytics workspace. */
   workspaceSettings?: ConnectionMonitorWorkspaceSettings;
 }
@@ -18506,7 +18567,7 @@ export const ConnectionMonitorOutput = /*@__PURE__*/ S.suspend(() =>
 
 /** List of connection monitor outputs. */
 export type ConnectionMonitorParametersOutputsList =
-  ReadonlyArray<ConnectionMonitorOutput>;
+  Array<ConnectionMonitorOutput>;
 export const ConnectionMonitorParametersOutputsList = /*@__PURE__*/ S.Array(
   ConnectionMonitorOutput,
 ) as any as S.Schema<ConnectionMonitorParametersOutputsList>;
@@ -18603,7 +18664,7 @@ export const ConnectionMonitorsCreateOrUpdateResponseTagsMap =
 
 /** List of connection monitor endpoints. */
 export type ConnectionMonitorResultPropertiesEndpointsList =
-  ReadonlyArray<ConnectionMonitorEndpoint>;
+  Array<ConnectionMonitorEndpoint>;
 export const ConnectionMonitorResultPropertiesEndpointsList =
   /*@__PURE__*/ S.Array(
     ConnectionMonitorEndpoint,
@@ -18611,7 +18672,7 @@ export const ConnectionMonitorResultPropertiesEndpointsList =
 
 /** List of connection monitor test configurations. */
 export type ConnectionMonitorResultPropertiesTestConfigurationsList =
-  ReadonlyArray<ConnectionMonitorTestConfiguration>;
+  Array<ConnectionMonitorTestConfiguration>;
 export const ConnectionMonitorResultPropertiesTestConfigurationsList =
   /*@__PURE__*/ S.Array(
     ConnectionMonitorTestConfiguration,
@@ -18619,7 +18680,7 @@ export const ConnectionMonitorResultPropertiesTestConfigurationsList =
 
 /** List of connection monitor test groups. */
 export type ConnectionMonitorResultPropertiesTestGroupsList =
-  ReadonlyArray<ConnectionMonitorTestGroup>;
+  Array<ConnectionMonitorTestGroup>;
 export const ConnectionMonitorResultPropertiesTestGroupsList =
   /*@__PURE__*/ S.Array(
     ConnectionMonitorTestGroup,
@@ -18627,7 +18688,7 @@ export const ConnectionMonitorResultPropertiesTestGroupsList =
 
 /** List of connection monitor outputs. */
 export type ConnectionMonitorResultPropertiesOutputsList =
-  ReadonlyArray<ConnectionMonitorOutput>;
+  Array<ConnectionMonitorOutput>;
 export const ConnectionMonitorResultPropertiesOutputsList =
   /*@__PURE__*/ S.Array(
     ConnectionMonitorOutput,
@@ -18906,7 +18967,7 @@ export const ConnectionMonitorResult = /*@__PURE__*/ S.suspend(() =>
 
 /** Information about connection monitors. */
 export type ConnectionMonitorListResultValueList =
-  ReadonlyArray<ConnectionMonitorResult>;
+  Array<ConnectionMonitorResult>;
 export const ConnectionMonitorListResultValueList = /*@__PURE__*/ S.Array(
   ConnectionMonitorResult,
 ) as any as S.Schema<ConnectionMonitorListResultValueList>;
@@ -19059,7 +19120,7 @@ export const RoutingConfigurationInputAssociatedRouteTable =
   }) as any as S.Schema<RoutingConfigurationInputAssociatedRouteTable>;
 
 /** The list of labels. */
-export type PropagatedRouteTableLabelsList = ReadonlyArray<string>;
+export type PropagatedRouteTableLabelsList = Array<string>;
 export const PropagatedRouteTableLabelsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PropagatedRouteTableLabelsList>;
@@ -19078,8 +19139,7 @@ export const PropagatedRouteTableIdsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PropagatedRouteTableIdsItem>;
 
 /** The list of resource ids of all the RouteTables. */
-export type PropagatedRouteTableIdsList =
-  ReadonlyArray<PropagatedRouteTableIdsItem>;
+export type PropagatedRouteTableIdsList = Array<PropagatedRouteTableIdsItem>;
 export const PropagatedRouteTableIdsList = /*@__PURE__*/ S.Array(
   PropagatedRouteTableIdsItem,
 ) as any as S.Schema<PropagatedRouteTableIdsList>;
@@ -19112,7 +19172,9 @@ export interface StaticRoutesConfig {
   /** Boolean indicating whether static routes on this connection are automatically propagate to route tables which this connection propagates to. */
   propagateStaticRoutes?: boolean;
   /** Parameter determining whether NVA in spoke vnet is bypassed for traffic with destination in spoke vnet. */
-  vnetLocalRouteOverrideCriteria?: StaticRoutesConfigVnetLocalRouteOverrideCriteria;
+  vnetLocalRouteOverrideCriteria?:
+    | StaticRoutesConfigVnetLocalRouteOverrideCriteria
+    | (string & {});
 }
 export const StaticRoutesConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -19126,7 +19188,7 @@ export const StaticRoutesConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StaticRoutesConfig>;
 
 /** List of all address prefixes. */
-export type StaticRouteAddressPrefixesList = ReadonlyArray<string>;
+export type StaticRouteAddressPrefixesList = Array<string>;
 export const StaticRouteAddressPrefixesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StaticRouteAddressPrefixesList>;
@@ -19149,7 +19211,7 @@ export const StaticRoute = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StaticRoute" }) as any as S.Schema<StaticRoute>;
 
 /** List of all Static Routes. */
-export type VnetRouteInputStaticRoutesList = ReadonlyArray<StaticRoute>;
+export type VnetRouteInputStaticRoutesList = Array<StaticRoute>;
 export const VnetRouteInputStaticRoutesList = /*@__PURE__*/ S.Array(
   StaticRoute,
 ) as any as S.Schema<VnetRouteInputStaticRoutesList>;
@@ -19307,7 +19369,7 @@ export const RoutingConfigurationAssociatedRouteTable = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<RoutingConfigurationAssociatedRouteTable>;
 
 /** List of all Static Routes. */
-export type VnetRouteStaticRoutesList = ReadonlyArray<StaticRoute>;
+export type VnetRouteStaticRoutesList = Array<StaticRoute>;
 export const VnetRouteStaticRoutesList = /*@__PURE__*/ S.Array(
   StaticRoute,
 ) as any as S.Schema<VnetRouteStaticRoutesList>;
@@ -19326,8 +19388,7 @@ export const VnetRouteBgpConnectionsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VnetRouteBgpConnectionsItem>;
 
 /** The list of references to HubBgpConnection objects. */
-export type VnetRouteBgpConnectionsList =
-  ReadonlyArray<VnetRouteBgpConnectionsItem>;
+export type VnetRouteBgpConnectionsList = Array<VnetRouteBgpConnectionsItem>;
 export const VnetRouteBgpConnectionsList = /*@__PURE__*/ S.Array(
   VnetRouteBgpConnectionsItem,
 ) as any as S.Schema<VnetRouteBgpConnectionsList>;
@@ -19413,8 +19474,7 @@ export const ConnectionPolicyPropertiesProvisioningState =
   /*@__PURE__*/ S.String;
 
 /** List of connection names (e.g. VpnConnection, HubVirtualNetworkConnection) associated with this ConnectionPolicy. These are resource names, not Azure resource IDs, consistent with the established VirtualWAN pattern used by HubRouteTable.associatedConnections. */
-export type ConnectionPolicyPropertiesAssociatedConnectionsList =
-  ReadonlyArray<string>;
+export type ConnectionPolicyPropertiesAssociatedConnectionsList = Array<string>;
 export const ConnectionPolicyPropertiesAssociatedConnectionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -19607,8 +19667,7 @@ export const ConnectionPolicy = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConnectionPolicy>;
 
 /** The ConnectionPolicy items on this page */
-export type ListConnectionPoliciesResultValueList =
-  ReadonlyArray<ConnectionPolicy>;
+export type ListConnectionPoliciesResultValueList = Array<ConnectionPolicy>;
 export const ListConnectionPoliciesResultValueList = /*@__PURE__*/ S.Array(
   ConnectionPolicy,
 ) as any as S.Schema<ListConnectionPoliciesResultValueList>;
@@ -19651,8 +19710,7 @@ export const Hub = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Hub" }) as any as S.Schema<Hub>;
 
 /** List of hubItems */
-export type ConnectivityConfigurationPropertiesInputHubsList =
-  ReadonlyArray<Hub>;
+export type ConnectivityConfigurationPropertiesInputHubsList = Array<Hub>;
 export const ConnectivityConfigurationPropertiesInputHubsList =
   /*@__PURE__*/ S.Array(
     Hub,
@@ -19684,11 +19742,17 @@ export const ConnectivityConfigurationPropertiesConnectivityCapabilitiesPeeringE
 /** Collection of additional settings to enhance specific topology behaviors of the connectivity configuration resource. */
 export interface ConnectivityConfigurationPropertiesConnectivityCapabilities {
   /** Option indicating the scale of private endpoints allowed in the connected group of the connectivity configuration. */
-  connectedGroupPrivateEndpointsScale: ConnectivityConfigurationPropertiesConnectivityCapabilitiesConnectedGroupPrivateEndpointsScale;
+  connectedGroupPrivateEndpointsScale:
+    | ConnectivityConfigurationPropertiesConnectivityCapabilitiesConnectedGroupPrivateEndpointsScale
+    | (string & {});
   /** Behavior to handle overlapped IP address space among members of the connected group of the connectivity configuration. */
-  connectedGroupAddressOverlap: ConnectivityConfigurationPropertiesConnectivityCapabilitiesConnectedGroupAddressOverlap;
+  connectedGroupAddressOverlap:
+    | ConnectivityConfigurationPropertiesConnectivityCapabilitiesConnectedGroupAddressOverlap
+    | (string & {});
   /** Option indicating enforcement of peerings created by the connectivity configuration. */
-  peeringEnforcement: ConnectivityConfigurationPropertiesConnectivityCapabilitiesPeeringEnforcement;
+  peeringEnforcement:
+    | ConnectivityConfigurationPropertiesConnectivityCapabilitiesPeeringEnforcement
+    | (string & {});
 }
 export const ConnectivityConfigurationPropertiesConnectivityCapabilities =
   /*@__PURE__*/ S.suspend(() =>
@@ -19723,11 +19787,11 @@ export interface ConnectivityGroupItem {
   /** Network group Id. */
   networkGroupId: string;
   /** Flag if need to use hub gateway. */
-  useHubGateway?: ConnectivityGroupItemUseHubGateway;
+  useHubGateway?: ConnectivityGroupItemUseHubGateway | (string & {});
   /** Flag if global mesh is supported. */
-  isGlobal?: ConnectivityGroupItemIsGlobal;
+  isGlobal?: ConnectivityGroupItemIsGlobal | (string & {});
   /** Group connectivity type. */
-  groupConnectivity: ConnectivityGroupItemGroupConnectivity;
+  groupConnectivity: ConnectivityGroupItemGroupConnectivity | (string & {});
 }
 export const ConnectivityGroupItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -19742,7 +19806,7 @@ export const ConnectivityGroupItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Groups for configuration */
 export type ConnectivityConfigurationPropertiesInputAppliesToGroupsList =
-  ReadonlyArray<ConnectivityGroupItem>;
+  Array<ConnectivityGroupItem>;
 export const ConnectivityConfigurationPropertiesInputAppliesToGroupsList =
   /*@__PURE__*/ S.Array(
     ConnectivityGroupItem,
@@ -19855,7 +19919,7 @@ export const ConnectivityConfigurationPropertiesConnectivityTopology =
   /*@__PURE__*/ S.String;
 
 /** List of hubItems */
-export type ConnectivityConfigurationPropertiesHubsList = ReadonlyArray<Hub>;
+export type ConnectivityConfigurationPropertiesHubsList = Array<Hub>;
 export const ConnectivityConfigurationPropertiesHubsList =
   /*@__PURE__*/ S.Array(
     Hub,
@@ -19868,7 +19932,7 @@ export const ConnectivityConfigurationPropertiesIsGlobal =
 
 /** Groups for configuration */
 export type ConnectivityConfigurationPropertiesAppliesToGroupsList =
-  ReadonlyArray<ConnectivityGroupItem>;
+  Array<ConnectivityGroupItem>;
 export const ConnectivityConfigurationPropertiesAppliesToGroupsList =
   /*@__PURE__*/ S.Array(
     ConnectivityGroupItem,
@@ -20268,7 +20332,7 @@ export const ConnectivityConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** The ConnectivityConfiguration items on this page */
 export type ConnectivityConfigurationListResultValueList =
-  ReadonlyArray<ConnectivityConfiguration>;
+  Array<ConnectivityConfiguration>;
 export const ConnectivityConfigurationListResultValueList =
   /*@__PURE__*/ S.Array(
     ConnectivityConfiguration,
@@ -20430,8 +20494,7 @@ export const CustomIPPrefixesCreateOrUpdateRequestExtendedLocation =
   }) as any as S.Schema<CustomIPPrefixesCreateOrUpdateRequestExtendedLocation>;
 
 /** A list of availability zones denoting where the resource needs to come from. */
-export type CustomIPPrefixesCreateOrUpdateRequestZonesList =
-  ReadonlyArray<string>;
+export type CustomIPPrefixesCreateOrUpdateRequestZonesList = Array<string>;
 export const CustomIPPrefixesCreateOrUpdateRequestZonesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -20523,7 +20586,7 @@ export const CustomIpPrefixPropertiesFormatChildCustomIpPrefixesItem =
 
 /** The list of all Children for IPv6 /48 CustomIpPrefix. */
 export type CustomIpPrefixPropertiesFormatChildCustomIpPrefixesList =
-  ReadonlyArray<CustomIpPrefixPropertiesFormatChildCustomIpPrefixesItem>;
+  Array<CustomIpPrefixPropertiesFormatChildCustomIpPrefixesItem>;
 export const CustomIpPrefixPropertiesFormatChildCustomIpPrefixesList =
   /*@__PURE__*/ S.Array(
     CustomIpPrefixPropertiesFormatChildCustomIpPrefixesItem,
@@ -20578,7 +20641,7 @@ export const CustomIpPrefixPropertiesFormatPublicIpPrefixesItem =
 
 /** The list of all referenced PublicIpPrefixes. */
 export type CustomIpPrefixPropertiesFormatPublicIpPrefixesList =
-  ReadonlyArray<CustomIpPrefixPropertiesFormatPublicIpPrefixesItem>;
+  Array<CustomIpPrefixPropertiesFormatPublicIpPrefixesItem>;
 export const CustomIpPrefixPropertiesFormatPublicIpPrefixesList =
   /*@__PURE__*/ S.Array(
     CustomIpPrefixPropertiesFormatPublicIpPrefixesItem,
@@ -20678,8 +20741,7 @@ export const CustomIPPrefixesCreateOrUpdateResponseExtendedLocation =
   }) as any as S.Schema<CustomIPPrefixesCreateOrUpdateResponseExtendedLocation>;
 
 /** A list of availability zones denoting where the resource needs to come from. */
-export type CustomIPPrefixesCreateOrUpdateResponseZonesList =
-  ReadonlyArray<string>;
+export type CustomIPPrefixesCreateOrUpdateResponseZonesList = Array<string>;
 export const CustomIPPrefixesCreateOrUpdateResponseZonesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -20811,7 +20873,7 @@ export const CustomIPPrefixesGetResponseExtendedLocation =
   }) as any as S.Schema<CustomIPPrefixesGetResponseExtendedLocation>;
 
 /** A list of availability zones denoting where the resource needs to come from. */
-export type CustomIPPrefixesGetResponseZonesList = ReadonlyArray<string>;
+export type CustomIPPrefixesGetResponseZonesList = Array<string>;
 export const CustomIPPrefixesGetResponseZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CustomIPPrefixesGetResponseZonesList>;
@@ -20898,7 +20960,7 @@ export const CustomIpPrefixExtendedLocation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CustomIpPrefixExtendedLocation>;
 
 /** A list of availability zones denoting where the resource needs to come from. */
-export type CustomIpPrefixZonesList = ReadonlyArray<string>;
+export type CustomIpPrefixZonesList = Array<string>;
 export const CustomIpPrefixZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CustomIpPrefixZonesList>;
@@ -20939,7 +21001,7 @@ export const CustomIpPrefix = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CustomIpPrefix" }) as any as S.Schema<CustomIpPrefix>;
 
 /** The CustomIpPrefix items on this page */
-export type CustomIpPrefixListResultValueList = ReadonlyArray<CustomIpPrefix>;
+export type CustomIpPrefixListResultValueList = Array<CustomIpPrefix>;
 export const CustomIpPrefixListResultValueList = /*@__PURE__*/ S.Array(
   CustomIpPrefix,
 ) as any as S.Schema<CustomIpPrefixListResultValueList>;
@@ -21043,7 +21105,7 @@ export const CustomIPPrefixesUpdateTagsResponseExtendedLocation =
   }) as any as S.Schema<CustomIPPrefixesUpdateTagsResponseExtendedLocation>;
 
 /** A list of availability zones denoting where the resource needs to come from. */
-export type CustomIPPrefixesUpdateTagsResponseZonesList = ReadonlyArray<string>;
+export type CustomIPPrefixesUpdateTagsResponseZonesList = Array<string>;
 export const CustomIPPrefixesUpdateTagsResponseZonesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -21131,7 +21193,7 @@ export const TrafficDetectionRuleTrafficType = /*@__PURE__*/ S.String;
 /** Ddos Custom Policy traffic detection rule. */
 export interface TrafficDetectionRule {
   /** The traffic type (one of Tcp, Udp, TcpSyn) that the detection rule will be applied upon. */
-  trafficType?: TrafficDetectionRuleTrafficType;
+  trafficType?: TrafficDetectionRuleTrafficType | (string & {});
   /** The customized packets per second threshold. */
   packetsPerSecond?: number;
 }
@@ -21147,9 +21209,13 @@ export const TrafficDetectionRule = /*@__PURE__*/ S.suspend(() =>
 /** DDoS detection rule properties. */
 export interface DdosDetectionRulePropertiesFormat {
   /** Provisioning states of a resource. */
-  provisioningState?: DdosDetectionRulePropertiesFormatProvisioningState;
+  provisioningState?:
+    | DdosDetectionRulePropertiesFormatProvisioningState
+    | (string & {});
   /** The detection mode for the DDoS detection rule. */
-  detectionMode?: DdosDetectionRulePropertiesFormatDetectionMode;
+  detectionMode?:
+    | DdosDetectionRulePropertiesFormatDetectionMode
+    | (string & {});
   /** The traffic detection rule details. */
   trafficDetectionRule?: TrafficDetectionRule;
 }
@@ -21186,7 +21252,7 @@ export const DdosDetectionRuleInput = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of DDoS detection rules associated with the custom policy. */
 export type DdosCustomPolicyPropertiesFormatInputDetectionRulesList =
-  ReadonlyArray<DdosDetectionRuleInput>;
+  Array<DdosDetectionRuleInput>;
 export const DdosCustomPolicyPropertiesFormatInputDetectionRulesList =
   /*@__PURE__*/ S.Array(
     DdosDetectionRuleInput,
@@ -21209,7 +21275,7 @@ export const DdosCustomPolicyPropertiesFormatInputFrontEndIpConfigurationItem =
 
 /** The list of frontend IP configurations associated with the custom policy. */
 export type DdosCustomPolicyPropertiesFormatInputFrontEndIpConfigurationList =
-  ReadonlyArray<DdosCustomPolicyPropertiesFormatInputFrontEndIpConfigurationItem>;
+  Array<DdosCustomPolicyPropertiesFormatInputFrontEndIpConfigurationItem>;
 export const DdosCustomPolicyPropertiesFormatInputFrontEndIpConfigurationList =
   /*@__PURE__*/ S.Array(
     DdosCustomPolicyPropertiesFormatInputFrontEndIpConfigurationItem,
@@ -21329,7 +21395,7 @@ export const DdosDetectionRule = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of DDoS detection rules associated with the custom policy. */
 export type DdosCustomPolicyPropertiesFormatDetectionRulesList =
-  ReadonlyArray<DdosDetectionRule>;
+  Array<DdosDetectionRule>;
 export const DdosCustomPolicyPropertiesFormatDetectionRulesList =
   /*@__PURE__*/ S.Array(
     DdosDetectionRule,
@@ -21351,7 +21417,7 @@ export const DdosCustomPolicyPropertiesFormatFrontEndIpConfigurationItem =
 
 /** The list of frontend IP configurations associated with the custom policy. */
 export type DdosCustomPolicyPropertiesFormatFrontEndIpConfigurationList =
-  ReadonlyArray<DdosCustomPolicyPropertiesFormatFrontEndIpConfigurationItem>;
+  Array<DdosCustomPolicyPropertiesFormatFrontEndIpConfigurationItem>;
 export const DdosCustomPolicyPropertiesFormatFrontEndIpConfigurationList =
   /*@__PURE__*/ S.Array(
     DdosCustomPolicyPropertiesFormatFrontEndIpConfigurationItem,
@@ -21373,7 +21439,7 @@ export const DdosCustomPolicyPropertiesFormatPublicIPAddressesItem =
 
 /** The list of public IP addresses associated with the custom policy. This list is read-only. */
 export type DdosCustomPolicyPropertiesFormatPublicIPAddressesList =
-  ReadonlyArray<DdosCustomPolicyPropertiesFormatPublicIPAddressesItem>;
+  Array<DdosCustomPolicyPropertiesFormatPublicIPAddressesItem>;
 export const DdosCustomPolicyPropertiesFormatPublicIPAddressesList =
   /*@__PURE__*/ S.Array(
     DdosCustomPolicyPropertiesFormatPublicIPAddressesItem,
@@ -21600,8 +21666,7 @@ export const DdosCustomPolicy = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DdosCustomPolicy>;
 
 /** The DdosCustomPolicy items on this page */
-export type DdosCustomPolicyListResultValueList =
-  ReadonlyArray<DdosCustomPolicy>;
+export type DdosCustomPolicyListResultValueList = Array<DdosCustomPolicy>;
 export const DdosCustomPolicyListResultValueList = /*@__PURE__*/ S.Array(
   DdosCustomPolicy,
 ) as any as S.Schema<DdosCustomPolicyListResultValueList>;
@@ -21831,7 +21896,7 @@ export const DdosProtectionPlanPropertiesFormatPublicIPAddressesItem =
 
 /** The list of public IPs associated with the DDoS protection plan resource. This list is read-only. */
 export type DdosProtectionPlanPropertiesFormatPublicIPAddressesList =
-  ReadonlyArray<DdosProtectionPlanPropertiesFormatPublicIPAddressesItem>;
+  Array<DdosProtectionPlanPropertiesFormatPublicIPAddressesItem>;
 export const DdosProtectionPlanPropertiesFormatPublicIPAddressesList =
   /*@__PURE__*/ S.Array(
     DdosProtectionPlanPropertiesFormatPublicIPAddressesItem,
@@ -21853,7 +21918,7 @@ export const DdosProtectionPlanPropertiesFormatVirtualNetworksItem =
 
 /** The list of virtual networks associated with the DDoS protection plan resource. This list is read-only. */
 export type DdosProtectionPlanPropertiesFormatVirtualNetworksList =
-  ReadonlyArray<DdosProtectionPlanPropertiesFormatVirtualNetworksItem>;
+  Array<DdosProtectionPlanPropertiesFormatVirtualNetworksItem>;
 export const DdosProtectionPlanPropertiesFormatVirtualNetworksList =
   /*@__PURE__*/ S.Array(
     DdosProtectionPlanPropertiesFormatVirtualNetworksItem,
@@ -22072,8 +22137,7 @@ export const DdosProtectionPlan = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DdosProtectionPlan>;
 
 /** The DdosProtectionPlan items on this page */
-export type DdosProtectionPlanListResultValueList =
-  ReadonlyArray<DdosProtectionPlan>;
+export type DdosProtectionPlanListResultValueList = Array<DdosProtectionPlan>;
 export const DdosProtectionPlanListResultValueList = /*@__PURE__*/ S.Array(
   DdosProtectionPlan,
 ) as any as S.Schema<DdosProtectionPlanListResultValueList>;
@@ -22227,7 +22291,7 @@ export const DefaultSecurityRulesGetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The CIDR or source IP ranges. */
 export type CommonSecurityRulePropertiesFormatSourceAddressPrefixesList_7 =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CommonSecurityRulePropertiesFormatSourceAddressPrefixesList_7 =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -22235,7 +22299,7 @@ export const CommonSecurityRulePropertiesFormatSourceAddressPrefixesList_7 =
 
 /** The application security group specified as source. */
 export type CommonSecurityRulePropertiesFormatSourceApplicationSecurityGroupsList_7 =
-  ReadonlyArray<CommonApplicationSecurityGroup>;
+  Array<CommonApplicationSecurityGroup>;
 export const CommonSecurityRulePropertiesFormatSourceApplicationSecurityGroupsList_7 =
   /*@__PURE__*/ S.Array(
     CommonApplicationSecurityGroup,
@@ -22243,7 +22307,7 @@ export const CommonSecurityRulePropertiesFormatSourceApplicationSecurityGroupsLi
 
 /** The destination address prefixes. CIDR or destination IP ranges. */
 export type CommonSecurityRulePropertiesFormatDestinationAddressPrefixesList_7 =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CommonSecurityRulePropertiesFormatDestinationAddressPrefixesList_7 =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -22251,7 +22315,7 @@ export const CommonSecurityRulePropertiesFormatDestinationAddressPrefixesList_7 
 
 /** The application security group specified as destination. */
 export type CommonSecurityRulePropertiesFormatDestinationApplicationSecurityGroupsList_7 =
-  ReadonlyArray<CommonApplicationSecurityGroup>;
+  Array<CommonApplicationSecurityGroup>;
 export const CommonSecurityRulePropertiesFormatDestinationApplicationSecurityGroupsList_7 =
   /*@__PURE__*/ S.Array(
     CommonApplicationSecurityGroup,
@@ -22259,7 +22323,7 @@ export const CommonSecurityRulePropertiesFormatDestinationApplicationSecurityGro
 
 /** The source port ranges. */
 export type CommonSecurityRulePropertiesFormatSourcePortRangesList_7 =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CommonSecurityRulePropertiesFormatSourcePortRangesList_7 =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -22267,7 +22331,7 @@ export const CommonSecurityRulePropertiesFormatSourcePortRangesList_7 =
 
 /** The destination port ranges. */
 export type CommonSecurityRulePropertiesFormatDestinationPortRangesList_7 =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CommonSecurityRulePropertiesFormatDestinationPortRangesList_7 =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -22421,8 +22485,7 @@ export const CommonSecurityRule_6 = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CommonSecurityRule_6>;
 
 /** The SecurityRule items on this page */
-export type SecurityRuleListResultValueList =
-  ReadonlyArray<CommonSecurityRule_6>;
+export type SecurityRuleListResultValueList = Array<CommonSecurityRule_6>;
 export const SecurityRuleListResultValueList = /*@__PURE__*/ S.Array(
   CommonSecurityRule_6,
 ) as any as S.Schema<SecurityRuleListResultValueList>;
@@ -22482,7 +22545,7 @@ export const BastionShareableLinkInput = /*@__PURE__*/ S.suspend(() =>
 
 /** List of VM references. */
 export type DeleteBastionShareableLinkRequestVmsList =
-  ReadonlyArray<BastionShareableLinkInput>;
+  Array<BastionShareableLinkInput>;
 export const DeleteBastionShareableLinkRequestVmsList = /*@__PURE__*/ S.Array(
   BastionShareableLinkInput,
 ) as any as S.Schema<DeleteBastionShareableLinkRequestVmsList>;
@@ -22523,8 +22586,7 @@ export const DeleteBastionShareableLinkResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteBastionShareableLinkResponse>;
 
 /** List of Bastion Shareable Link Token. */
-export type DeleteBastionShareableLinkByTokenRequestTokensList =
-  ReadonlyArray<string>;
+export type DeleteBastionShareableLinkByTokenRequestTokensList = Array<string>;
 export const DeleteBastionShareableLinkByTokenRequestTokensList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -22566,8 +22628,7 @@ export const DeleteBastionShareableLinkByTokenResponse =
   }) as any as S.Schema<DeleteBastionShareableLinkByTokenResponse>;
 
 /** List of session IDs. */
-export type DisconnectActiveSessionsRequestSessionIdsList =
-  ReadonlyArray<string>;
+export type DisconnectActiveSessionsRequestSessionIdsList = Array<string>;
 export const DisconnectActiveSessionsRequestSessionIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -22621,8 +22682,7 @@ export const BastionSessionState = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BastionSessionState>;
 
 /** The BastionSessionState items on this page */
-export type BastionSessionDeleteResultValueList =
-  ReadonlyArray<BastionSessionState>;
+export type BastionSessionDeleteResultValueList = Array<BastionSessionState>;
 export const BastionSessionDeleteResultValueList = /*@__PURE__*/ S.Array(
   BastionSessionState,
 ) as any as S.Schema<BastionSessionDeleteResultValueList>;
@@ -22654,8 +22714,7 @@ export const DscpConfigurationCreateOrUpdateRequestTagsMap =
   ) as any as S.Schema<DscpConfigurationCreateOrUpdateRequestTagsMap>;
 
 /** List of markings to be used in the configuration. */
-export type DscpConfigurationPropertiesFormatInputMarkingsList =
-  ReadonlyArray<number>;
+export type DscpConfigurationPropertiesFormatInputMarkingsList = Array<number>;
 export const DscpConfigurationPropertiesFormatInputMarkingsList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -22677,7 +22736,7 @@ export const QosIpRange = /*@__PURE__*/ S.suspend(() =>
 
 /** Source IP ranges. */
 export type DscpConfigurationPropertiesFormatInputSourceIpRangesList =
-  ReadonlyArray<QosIpRange>;
+  Array<QosIpRange>;
 export const DscpConfigurationPropertiesFormatInputSourceIpRangesList =
   /*@__PURE__*/ S.Array(
     QosIpRange,
@@ -22685,7 +22744,7 @@ export const DscpConfigurationPropertiesFormatInputSourceIpRangesList =
 
 /** Destination IP ranges. */
 export type DscpConfigurationPropertiesFormatInputDestinationIpRangesList =
-  ReadonlyArray<QosIpRange>;
+  Array<QosIpRange>;
 export const DscpConfigurationPropertiesFormatInputDestinationIpRangesList =
   /*@__PURE__*/ S.Array(
     QosIpRange,
@@ -22707,7 +22766,7 @@ export const QosPortRange = /*@__PURE__*/ S.suspend(() =>
 
 /** Sources port ranges. */
 export type DscpConfigurationPropertiesFormatInputSourcePortRangesList =
-  ReadonlyArray<QosPortRange>;
+  Array<QosPortRange>;
 export const DscpConfigurationPropertiesFormatInputSourcePortRangesList =
   /*@__PURE__*/ S.Array(
     QosPortRange,
@@ -22715,7 +22774,7 @@ export const DscpConfigurationPropertiesFormatInputSourcePortRangesList =
 
 /** Destination port ranges. */
 export type DscpConfigurationPropertiesFormatInputDestinationPortRangesList =
-  ReadonlyArray<QosPortRange>;
+  Array<QosPortRange>;
 export const DscpConfigurationPropertiesFormatInputDestinationPortRangesList =
   /*@__PURE__*/ S.Array(
     QosPortRange,
@@ -22736,32 +22795,31 @@ export const DscpConfigurationPropertiesFormatInputProtocol =
   /*@__PURE__*/ S.String;
 
 /** List of markings to be used in the configuration. */
-export type QosDefinitionMarkingsList = ReadonlyArray<number>;
+export type QosDefinitionMarkingsList = Array<number>;
 export const QosDefinitionMarkingsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<QosDefinitionMarkingsList>;
 
 /** Source IP ranges. */
-export type QosDefinitionSourceIpRangesList = ReadonlyArray<QosIpRange>;
+export type QosDefinitionSourceIpRangesList = Array<QosIpRange>;
 export const QosDefinitionSourceIpRangesList = /*@__PURE__*/ S.Array(
   QosIpRange,
 ) as any as S.Schema<QosDefinitionSourceIpRangesList>;
 
 /** Destination IP ranges. */
-export type QosDefinitionDestinationIpRangesList = ReadonlyArray<QosIpRange>;
+export type QosDefinitionDestinationIpRangesList = Array<QosIpRange>;
 export const QosDefinitionDestinationIpRangesList = /*@__PURE__*/ S.Array(
   QosIpRange,
 ) as any as S.Schema<QosDefinitionDestinationIpRangesList>;
 
 /** Sources port ranges. */
-export type QosDefinitionSourcePortRangesList = ReadonlyArray<QosPortRange>;
+export type QosDefinitionSourcePortRangesList = Array<QosPortRange>;
 export const QosDefinitionSourcePortRangesList = /*@__PURE__*/ S.Array(
   QosPortRange,
 ) as any as S.Schema<QosDefinitionSourcePortRangesList>;
 
 /** Destination port ranges. */
-export type QosDefinitionDestinationPortRangesList =
-  ReadonlyArray<QosPortRange>;
+export type QosDefinitionDestinationPortRangesList = Array<QosPortRange>;
 export const QosDefinitionDestinationPortRangesList = /*@__PURE__*/ S.Array(
   QosPortRange,
 ) as any as S.Schema<QosDefinitionDestinationPortRangesList>;
@@ -22792,7 +22850,7 @@ export interface QosDefinition {
   /** Destination port ranges. */
   destinationPortRanges?: QosDefinitionDestinationPortRangesList;
   /** RNM supported protocol types. */
-  protocol?: QosDefinitionProtocol;
+  protocol?: QosDefinitionProtocol | (string & {});
 }
 export const QosDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -22807,7 +22865,7 @@ export const QosDefinition = /*@__PURE__*/ S.suspend(() =>
 
 /** QoS object definitions */
 export type DscpConfigurationPropertiesFormatInputQosDefinitionCollectionList =
-  ReadonlyArray<QosDefinition>;
+  Array<QosDefinition>;
 export const DscpConfigurationPropertiesFormatInputQosDefinitionCollectionList =
   /*@__PURE__*/ S.Array(
     QosDefinition,
@@ -22922,8 +22980,7 @@ export const DscpConfigurationCreateOrUpdateResponseTagsMap =
   ) as any as S.Schema<DscpConfigurationCreateOrUpdateResponseTagsMap>;
 
 /** List of markings to be used in the configuration. */
-export type DscpConfigurationPropertiesFormatMarkingsList =
-  ReadonlyArray<number>;
+export type DscpConfigurationPropertiesFormatMarkingsList = Array<number>;
 export const DscpConfigurationPropertiesFormatMarkingsList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -22931,7 +22988,7 @@ export const DscpConfigurationPropertiesFormatMarkingsList =
 
 /** Source IP ranges. */
 export type DscpConfigurationPropertiesFormatSourceIpRangesList =
-  ReadonlyArray<QosIpRange>;
+  Array<QosIpRange>;
 export const DscpConfigurationPropertiesFormatSourceIpRangesList =
   /*@__PURE__*/ S.Array(
     QosIpRange,
@@ -22939,7 +22996,7 @@ export const DscpConfigurationPropertiesFormatSourceIpRangesList =
 
 /** Destination IP ranges. */
 export type DscpConfigurationPropertiesFormatDestinationIpRangesList =
-  ReadonlyArray<QosIpRange>;
+  Array<QosIpRange>;
 export const DscpConfigurationPropertiesFormatDestinationIpRangesList =
   /*@__PURE__*/ S.Array(
     QosIpRange,
@@ -22947,7 +23004,7 @@ export const DscpConfigurationPropertiesFormatDestinationIpRangesList =
 
 /** Sources port ranges. */
 export type DscpConfigurationPropertiesFormatSourcePortRangesList =
-  ReadonlyArray<QosPortRange>;
+  Array<QosPortRange>;
 export const DscpConfigurationPropertiesFormatSourcePortRangesList =
   /*@__PURE__*/ S.Array(
     QosPortRange,
@@ -22955,7 +23012,7 @@ export const DscpConfigurationPropertiesFormatSourcePortRangesList =
 
 /** Destination port ranges. */
 export type DscpConfigurationPropertiesFormatDestinationPortRangesList =
-  ReadonlyArray<QosPortRange>;
+  Array<QosPortRange>;
 export const DscpConfigurationPropertiesFormatDestinationPortRangesList =
   /*@__PURE__*/ S.Array(
     QosPortRange,
@@ -22976,7 +23033,7 @@ export const DscpConfigurationPropertiesFormatProtocol = /*@__PURE__*/ S.String;
 
 /** QoS object definitions */
 export type DscpConfigurationPropertiesFormatQosDefinitionCollectionList =
-  ReadonlyArray<QosDefinition>;
+  Array<QosDefinition>;
 export const DscpConfigurationPropertiesFormatQosDefinitionCollectionList =
   /*@__PURE__*/ S.Array(
     QosDefinition,
@@ -22998,7 +23055,7 @@ export const CommonNetworkInterfacePropertiesFormatVirtualMachine_6 =
 
 /** A collection of security rules of the network security group. */
 export type CommonNetworkSecurityGroupPropertiesFormatSecurityRulesList_6 =
-  ReadonlyArray<CommonSecurityRule_6>;
+  Array<CommonSecurityRule_6>;
 export const CommonNetworkSecurityGroupPropertiesFormatSecurityRulesList_6 =
   /*@__PURE__*/ S.Array(
     CommonSecurityRule_6,
@@ -23006,7 +23063,7 @@ export const CommonNetworkSecurityGroupPropertiesFormatSecurityRulesList_6 =
 
 /** The default security rules of network security group. */
 export type CommonNetworkSecurityGroupPropertiesFormatDefaultSecurityRulesList_6 =
-  ReadonlyArray<CommonSecurityRule_6>;
+  Array<CommonSecurityRule_6>;
 export const CommonNetworkSecurityGroupPropertiesFormatDefaultSecurityRulesList_6 =
   /*@__PURE__*/ S.Array(
     CommonSecurityRule_6,
@@ -23014,15 +23071,14 @@ export const CommonNetworkSecurityGroupPropertiesFormatDefaultSecurityRulesList_
 
 /** A collection of references to network interfaces. */
 export type CommonNetworkSecurityGroupPropertiesFormatNetworkInterfacesList_6 =
-  ReadonlyArray<CommonNetworkInterface_6>;
+  Array<CommonNetworkInterface_6>;
 export const CommonNetworkSecurityGroupPropertiesFormatNetworkInterfacesList_6 =
   /*@__PURE__*/ S.Array(
     S.suspend(() => CommonNetworkInterface_6),
   ) as any as S.Schema<CommonNetworkSecurityGroupPropertiesFormatNetworkInterfacesList_6>;
 
 /** List of next hop IP addresses for ECMP routing. Must contain between 2 and 64 IP addresses. */
-export type CommonRouteNextHopEcmpNextHopIpAddressesList =
-  ReadonlyArray<string>;
+export type CommonRouteNextHopEcmpNextHopIpAddressesList = Array<string>;
 export const CommonRouteNextHopEcmpNextHopIpAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -23093,8 +23149,7 @@ export const CommonRoute_6 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CommonRoute_6" }) as any as S.Schema<CommonRoute_6>;
 
 /** Collection of routes contained within a route table. */
-export type CommonRouteTablePropertiesFormatRoutesList_6 =
-  ReadonlyArray<CommonRoute_6>;
+export type CommonRouteTablePropertiesFormatRoutesList_6 = Array<CommonRoute_6>;
 export const CommonRouteTablePropertiesFormatRoutesList_6 =
   /*@__PURE__*/ S.Array(
     CommonRoute_6,
@@ -23102,7 +23157,7 @@ export const CommonRouteTablePropertiesFormatRoutesList_6 =
 
 /** A collection of references to subnets. */
 export type CommonRouteTablePropertiesFormatSubnetsList_6 =
-  ReadonlyArray<CommonSubnet_6>;
+  Array<CommonSubnet_6>;
 export const CommonRouteTablePropertiesFormatSubnetsList_6 =
   /*@__PURE__*/ S.Array(
     S.suspend(() => CommonSubnet_6),
@@ -23173,7 +23228,7 @@ export const CommonRouteTable_6 = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of service resources. */
 export type CommonServiceEndpointPolicyDefinitionPropertiesFormatServiceResourcesList_6 =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CommonServiceEndpointPolicyDefinitionPropertiesFormatServiceResourcesList_6 =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -23188,7 +23243,9 @@ export interface CommonServiceEndpointPolicyDefinitionPropertiesFormat_6 {
   /** A list of service resources. */
   serviceResources?: CommonServiceEndpointPolicyDefinitionPropertiesFormatServiceResourcesList_6;
   /** Provisioning states of a resource. */
-  provisioningState?: CommonServiceEndpointPolicyDefinitionPropertiesFormatProvisioningState;
+  provisioningState?:
+    | CommonServiceEndpointPolicyDefinitionPropertiesFormatProvisioningState
+    | (string & {});
 }
 export const CommonServiceEndpointPolicyDefinitionPropertiesFormat_6 =
   /*@__PURE__*/ S.suspend(() =>
@@ -23236,7 +23293,7 @@ export const CommonServiceEndpointPolicyDefinition_6 = /*@__PURE__*/ S.suspend(
 
 /** A collection of service endpoint policy definitions of the service endpoint policy. */
 export type CommonServiceEndpointPolicyPropertiesFormatServiceEndpointPolicyDefinitionsList_6 =
-  ReadonlyArray<CommonServiceEndpointPolicyDefinition_6>;
+  Array<CommonServiceEndpointPolicyDefinition_6>;
 export const CommonServiceEndpointPolicyPropertiesFormatServiceEndpointPolicyDefinitionsList_6 =
   /*@__PURE__*/ S.Array(
     CommonServiceEndpointPolicyDefinition_6,
@@ -23270,7 +23327,7 @@ export const CommonServiceEndpointPolicyPropertiesFormatSubnetsItem_6 =
 
 /** A collection of references to subnets. */
 export type CommonServiceEndpointPolicyPropertiesFormatSubnetsList_6 =
-  ReadonlyArray<CommonServiceEndpointPolicyPropertiesFormatSubnetsItem_6>;
+  Array<CommonServiceEndpointPolicyPropertiesFormatSubnetsItem_6>;
 export const CommonServiceEndpointPolicyPropertiesFormatSubnetsList_6 =
   /*@__PURE__*/ S.Array(
     CommonServiceEndpointPolicyPropertiesFormatSubnetsItem_6,
@@ -23352,7 +23409,7 @@ export const CommonSubnetPropertiesFormatServiceEndpointPoliciesItem_6 =
 
 /** An array of service endpoint policies. */
 export type CommonSubnetPropertiesFormatServiceEndpointPoliciesList_6 =
-  ReadonlyArray<CommonSubnetPropertiesFormatServiceEndpointPoliciesItem_6>;
+  Array<CommonSubnetPropertiesFormatServiceEndpointPoliciesItem_6>;
 export const CommonSubnetPropertiesFormatServiceEndpointPoliciesList_6 =
   /*@__PURE__*/ S.Array(
     CommonSubnetPropertiesFormatServiceEndpointPoliciesItem_6,
@@ -23369,7 +23426,7 @@ export const CommonPrivateEndpointTagsMap = /*@__PURE__*/ S.Record(
 
 /** An array of references to the network interfaces created for this private endpoint. */
 export type CommonPrivateEndpointPropertiesNetworkInterfacesList_6 =
-  ReadonlyArray<CommonNetworkInterface_6>;
+  Array<CommonNetworkInterface_6>;
 export const CommonPrivateEndpointPropertiesNetworkInterfacesList_6 =
   /*@__PURE__*/ S.Array(
     S.suspend(() => CommonNetworkInterface_6),
@@ -23485,7 +23542,7 @@ export const CommonPrivateEndpoint_5 = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of references to private endpoints. */
 export type CommonSubnetPropertiesFormatPrivateEndpointsList_6 =
-  ReadonlyArray<CommonPrivateEndpoint_5>;
+  Array<CommonPrivateEndpoint_5>;
 export const CommonSubnetPropertiesFormatPrivateEndpointsList_6 =
   /*@__PURE__*/ S.Array(
     CommonPrivateEndpoint_5,
@@ -23505,7 +23562,9 @@ export interface CommonPublicIPAddressDnsSettings {
   /** The domain name label. The concatenation of the domain name label and the regionalized DNS zone make up the fully qualified domain name associated with the public IP address. If a domain name label is specified, an A DNS record is created for the public IP in the Microsoft Azure DNS system. */
   domainNameLabel?: string;
   /** The domain name label scope. If a domain name label and a domain name label scope are specified, an A DNS record is created for the public IP in the Microsoft Azure DNS system with a hashed value includes in FQDN. */
-  domainNameLabelScope?: CommonPublicIPAddressDnsSettingsDomainNameLabelScope;
+  domainNameLabelScope?:
+    | CommonPublicIPAddressDnsSettingsDomainNameLabelScope
+    | (string & {});
   /** The Fully Qualified Domain Name of the A DNS record associated with the public IP. This is the concatenation of the domainNameLabel and the regionalized DNS zone. */
   fqdn?: string;
   /** The reverse FQDN. A user-visible, fully qualified domain name that resolves to this public IP address. If the reverseFqdn is specified, then a PTR DNS record is created pointing from the IP address in the in-addr.arpa domain to the reverse FQDN. */
@@ -23561,7 +23620,7 @@ export const CommonDdosSettingsDdosProtectionPlan = /*@__PURE__*/ S.suspend(
 /** Contains the DDoS protection settings of the public IP. */
 export interface CommonDdosSettings {
   /** The DDoS protection mode of the public IP */
-  protectionMode?: CommonDdosSettingsProtectionMode;
+  protectionMode?: CommonDdosSettingsProtectionMode | (string & {});
   /** Reference to another subresource. */
   ddosCustomPolicy?: CommonDdosSettingsDdosCustomPolicy;
   /** Reference to another subresource. */
@@ -23593,7 +23652,7 @@ export const CommonIpTag = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of tags associated with the public IP address. */
 export type CommonPublicIPAddressPropertiesFormatIpTagsList_5 =
-  ReadonlyArray<CommonIpTag>;
+  Array<CommonIpTag>;
 export const CommonPublicIPAddressPropertiesFormatIpTagsList_5 =
   /*@__PURE__*/ S.Array(
     CommonIpTag,
@@ -23636,7 +23695,7 @@ export const CommonNatGatewayPropertiesFormatPublicIpAddressesItem_4 =
 
 /** An array of public ip addresses V4 associated with the nat gateway resource. */
 export type CommonNatGatewayPropertiesFormatPublicIpAddressesList_4 =
-  ReadonlyArray<CommonNatGatewayPropertiesFormatPublicIpAddressesItem_4>;
+  Array<CommonNatGatewayPropertiesFormatPublicIpAddressesItem_4>;
 export const CommonNatGatewayPropertiesFormatPublicIpAddressesList_4 =
   /*@__PURE__*/ S.Array(
     CommonNatGatewayPropertiesFormatPublicIpAddressesItem_4,
@@ -23658,7 +23717,7 @@ export const CommonNatGatewayPropertiesFormatPublicIpAddressesV6Item_4 =
 
 /** An array of public ip addresses V6 associated with the nat gateway resource. */
 export type CommonNatGatewayPropertiesFormatPublicIpAddressesV6List_4 =
-  ReadonlyArray<CommonNatGatewayPropertiesFormatPublicIpAddressesV6Item_4>;
+  Array<CommonNatGatewayPropertiesFormatPublicIpAddressesV6Item_4>;
 export const CommonNatGatewayPropertiesFormatPublicIpAddressesV6List_4 =
   /*@__PURE__*/ S.Array(
     CommonNatGatewayPropertiesFormatPublicIpAddressesV6Item_4,
@@ -23680,7 +23739,7 @@ export const CommonNatGatewayPropertiesFormatPublicIpPrefixesItem_4 =
 
 /** An array of public ip prefixes V4 associated with the nat gateway resource. */
 export type CommonNatGatewayPropertiesFormatPublicIpPrefixesList_4 =
-  ReadonlyArray<CommonNatGatewayPropertiesFormatPublicIpPrefixesItem_4>;
+  Array<CommonNatGatewayPropertiesFormatPublicIpPrefixesItem_4>;
 export const CommonNatGatewayPropertiesFormatPublicIpPrefixesList_4 =
   /*@__PURE__*/ S.Array(
     CommonNatGatewayPropertiesFormatPublicIpPrefixesItem_4,
@@ -23702,7 +23761,7 @@ export const CommonNatGatewayPropertiesFormatPublicIpPrefixesV6Item_4 =
 
 /** An array of public ip prefixes V6 associated with the nat gateway resource. */
 export type CommonNatGatewayPropertiesFormatPublicIpPrefixesV6List_4 =
-  ReadonlyArray<CommonNatGatewayPropertiesFormatPublicIpPrefixesV6Item_4>;
+  Array<CommonNatGatewayPropertiesFormatPublicIpPrefixesV6Item_4>;
 export const CommonNatGatewayPropertiesFormatPublicIpPrefixesV6List_4 =
   /*@__PURE__*/ S.Array(
     CommonNatGatewayPropertiesFormatPublicIpPrefixesV6Item_4,
@@ -23724,7 +23783,7 @@ export const CommonNatGatewayPropertiesFormatSubnetsItem_4 =
 
 /** An array of references to the subnets using this nat gateway resource. */
 export type CommonNatGatewayPropertiesFormatSubnetsList_4 =
-  ReadonlyArray<CommonNatGatewayPropertiesFormatSubnetsItem_4>;
+  Array<CommonNatGatewayPropertiesFormatSubnetsItem_4>;
 export const CommonNatGatewayPropertiesFormatSubnetsList_4 =
   /*@__PURE__*/ S.Array(
     CommonNatGatewayPropertiesFormatSubnetsItem_4,
@@ -23838,7 +23897,7 @@ export const CommonNatGatewaySkuName = /*@__PURE__*/ S.String;
 /** SKU of nat gateway. */
 export interface CommonNatGatewaySku {
   /** Name of Nat Gateway SKU. */
-  name?: CommonNatGatewaySkuName;
+  name?: CommonNatGatewaySkuName | (string & {});
 }
 export const CommonNatGatewaySku = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -23849,7 +23908,7 @@ export const CommonNatGatewaySku = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CommonNatGatewaySku>;
 
 /** A list of availability zones denoting the zone in which Nat Gateway should be deployed. */
-export type CommonNatGatewayZonesList = ReadonlyArray<string>;
+export type CommonNatGatewayZonesList = Array<string>;
 export const CommonNatGatewayZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CommonNatGatewayZonesList>;
@@ -24060,7 +24119,7 @@ export const CommonIPConfiguration_6 = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of references to the network interface IP configurations using subnet. */
 export type CommonSubnetPropertiesFormatIpConfigurationsList_6 =
-  ReadonlyArray<CommonIPConfiguration_6>;
+  Array<CommonIPConfiguration_6>;
 export const CommonSubnetPropertiesFormatIpConfigurationsList_6 =
   /*@__PURE__*/ S.Array(
     CommonIPConfiguration_6,
@@ -24112,7 +24171,7 @@ export const CommonIPConfigurationProfile_6 = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of IP configuration profiles which reference this subnet. */
 export type CommonSubnetPropertiesFormatIpConfigurationProfilesList_6 =
-  ReadonlyArray<CommonIPConfigurationProfile_6>;
+  Array<CommonIPConfigurationProfile_6>;
 export const CommonSubnetPropertiesFormatIpConfigurationProfilesList_6 =
   /*@__PURE__*/ S.Array(
     CommonIPConfigurationProfile_6,
@@ -24250,7 +24309,7 @@ export const CommonSubnet_6 = /*@__PURE__*/ S.suspend(() =>
 
 /** A collection of references to subnets. */
 export type CommonNetworkSecurityGroupPropertiesFormatSubnetsList_6 =
-  ReadonlyArray<CommonSubnet_6>;
+  Array<CommonSubnet_6>;
 export const CommonNetworkSecurityGroupPropertiesFormatSubnetsList_6 =
   /*@__PURE__*/ S.Array(
     CommonSubnet_6,
@@ -24467,7 +24526,7 @@ export const CommonNetworkSecurityGroupPropertiesFormatFlowLogsItem_6 =
 
 /** A collection of references to flow log resources. */
 export type CommonNetworkSecurityGroupPropertiesFormatFlowLogsList_6 =
-  ReadonlyArray<CommonNetworkSecurityGroupPropertiesFormatFlowLogsItem_6>;
+  Array<CommonNetworkSecurityGroupPropertiesFormatFlowLogsItem_6>;
 export const CommonNetworkSecurityGroupPropertiesFormatFlowLogsList_6 =
   /*@__PURE__*/ S.Array(
     CommonNetworkSecurityGroupPropertiesFormatFlowLogsItem_6,
@@ -24640,7 +24699,7 @@ export const CommonVirtualNetworkTapPropertiesFormatNetworkInterfaceTapConfigura
 
 /** Specifies the list of resource IDs for the network interface IP configuration that needs to be tapped. */
 export type CommonVirtualNetworkTapPropertiesFormatNetworkInterfaceTapConfigurationsList_6 =
-  ReadonlyArray<CommonVirtualNetworkTapPropertiesFormatNetworkInterfaceTapConfigurationsItem_6>;
+  Array<CommonVirtualNetworkTapPropertiesFormatNetworkInterfaceTapConfigurationsItem_6>;
 export const CommonVirtualNetworkTapPropertiesFormatNetworkInterfaceTapConfigurationsList_6 =
   /*@__PURE__*/ S.Array(
     CommonVirtualNetworkTapPropertiesFormatNetworkInterfaceTapConfigurationsItem_6,
@@ -24929,7 +24988,7 @@ export const CommonNetworkInterfaceIPConfigurationPropertiesFormatVirtualNetwork
 
 /** The reference to Virtual Network Taps. */
 export type CommonNetworkInterfaceIPConfigurationPropertiesFormatVirtualNetworkTapsList_6 =
-  ReadonlyArray<CommonNetworkInterfaceIPConfigurationPropertiesFormatVirtualNetworkTapsItem_6>;
+  Array<CommonNetworkInterfaceIPConfigurationPropertiesFormatVirtualNetworkTapsItem_6>;
 export const CommonNetworkInterfaceIPConfigurationPropertiesFormatVirtualNetworkTapsList_6 =
   /*@__PURE__*/ S.Array(
     CommonNetworkInterfaceIPConfigurationPropertiesFormatVirtualNetworkTapsItem_6,
@@ -24968,7 +25027,7 @@ export const CommonApplicationGatewayBackendAddressPoolPropertiesFormatBackendIP
 
 /** Collection of references to IPs defined in network interfaces. */
 export type CommonApplicationGatewayBackendAddressPoolPropertiesFormatBackendIPConfigurationsList_6 =
-  ReadonlyArray<CommonApplicationGatewayBackendAddressPoolPropertiesFormatBackendIPConfigurationsItem_6>;
+  Array<CommonApplicationGatewayBackendAddressPoolPropertiesFormatBackendIPConfigurationsItem_6>;
 export const CommonApplicationGatewayBackendAddressPoolPropertiesFormatBackendIPConfigurationsList_6 =
   /*@__PURE__*/ S.Array(
     CommonApplicationGatewayBackendAddressPoolPropertiesFormatBackendIPConfigurationsItem_6,
@@ -25031,7 +25090,7 @@ export const CommonNetworkInterfaceIPConfigurationPropertiesFormatApplicationGat
 
 /** The reference to ApplicationGatewayBackendAddressPool resource. */
 export type CommonNetworkInterfaceIPConfigurationPropertiesFormatApplicationGatewayBackendAddressPoolsList_6 =
-  ReadonlyArray<CommonNetworkInterfaceIPConfigurationPropertiesFormatApplicationGatewayBackendAddressPoolsItem_6>;
+  Array<CommonNetworkInterfaceIPConfigurationPropertiesFormatApplicationGatewayBackendAddressPoolsItem_6>;
 export const CommonNetworkInterfaceIPConfigurationPropertiesFormatApplicationGatewayBackendAddressPoolsList_6 =
   /*@__PURE__*/ S.Array(
     CommonNetworkInterfaceIPConfigurationPropertiesFormatApplicationGatewayBackendAddressPoolsItem_6,
@@ -25070,7 +25129,7 @@ export const CommonBackendAddressPoolPropertiesFormatBackendIPConfigurationsItem
 
 /** An array of references to IP addresses defined in network interfaces. */
 export type CommonBackendAddressPoolPropertiesFormatBackendIPConfigurationsList_6 =
-  ReadonlyArray<CommonBackendAddressPoolPropertiesFormatBackendIPConfigurationsItem_6>;
+  Array<CommonBackendAddressPoolPropertiesFormatBackendIPConfigurationsItem_6>;
 export const CommonBackendAddressPoolPropertiesFormatBackendIPConfigurationsList_6 =
   /*@__PURE__*/ S.Array(
     CommonBackendAddressPoolPropertiesFormatBackendIPConfigurationsItem_6,
@@ -25170,7 +25229,7 @@ export const CommonNetworkInterfaceIPConfigurationPropertiesFormatLoadBalancerBa
 
 /** The reference to LoadBalancerBackendAddressPool resource. */
 export type CommonNetworkInterfaceIPConfigurationPropertiesFormatLoadBalancerBackendAddressPoolsList_6 =
-  ReadonlyArray<CommonNetworkInterfaceIPConfigurationPropertiesFormatLoadBalancerBackendAddressPoolsItem_6>;
+  Array<CommonNetworkInterfaceIPConfigurationPropertiesFormatLoadBalancerBackendAddressPoolsItem_6>;
 export const CommonNetworkInterfaceIPConfigurationPropertiesFormatLoadBalancerBackendAddressPoolsList_6 =
   /*@__PURE__*/ S.Array(
     CommonNetworkInterfaceIPConfigurationPropertiesFormatLoadBalancerBackendAddressPoolsItem_6,
@@ -25290,7 +25349,7 @@ export const CommonNetworkInterfaceIPConfigurationPropertiesFormatLoadBalancerIn
 
 /** A list of references of LoadBalancerInboundNatRules. */
 export type CommonNetworkInterfaceIPConfigurationPropertiesFormatLoadBalancerInboundNatRulesList_6 =
-  ReadonlyArray<CommonNetworkInterfaceIPConfigurationPropertiesFormatLoadBalancerInboundNatRulesItem_6>;
+  Array<CommonNetworkInterfaceIPConfigurationPropertiesFormatLoadBalancerInboundNatRulesItem_6>;
 export const CommonNetworkInterfaceIPConfigurationPropertiesFormatLoadBalancerInboundNatRulesList_6 =
   /*@__PURE__*/ S.Array(
     CommonNetworkInterfaceIPConfigurationPropertiesFormatLoadBalancerInboundNatRulesItem_6,
@@ -25402,7 +25461,7 @@ export const CommonNetworkInterfaceIPConfiguration_5 = /*@__PURE__*/ S.suspend(
 
 /** A list of IPConfigurations of the network interface. */
 export type CommonNetworkInterfacePropertiesFormatIpConfigurationsList_6 =
-  ReadonlyArray<CommonNetworkInterfaceIPConfiguration_5>;
+  Array<CommonNetworkInterfaceIPConfiguration_5>;
 export const CommonNetworkInterfacePropertiesFormatIpConfigurationsList_6 =
   /*@__PURE__*/ S.Array(
     CommonNetworkInterfaceIPConfiguration_5,
@@ -25438,15 +25497,14 @@ export const CommonNetworkInterfaceTapConfiguration_5 = /*@__PURE__*/ S.suspend(
 
 /** A list of TapConfigurations of the network interface. */
 export type CommonNetworkInterfacePropertiesFormatTapConfigurationsList_6 =
-  ReadonlyArray<CommonNetworkInterfaceTapConfiguration_5>;
+  Array<CommonNetworkInterfaceTapConfiguration_5>;
 export const CommonNetworkInterfacePropertiesFormatTapConfigurationsList_6 =
   /*@__PURE__*/ S.Array(
     CommonNetworkInterfaceTapConfiguration_5,
   ) as any as S.Schema<CommonNetworkInterfacePropertiesFormatTapConfigurationsList_6>;
 
 /** List of DNS servers IP addresses. Use 'AzureProvidedDNS' to switch to azure provided DNS resolution. 'AzureProvidedDNS' value cannot be combined with other IPs, it must be the only value in dnsServers collection. */
-export type CommonNetworkInterfaceDnsSettingsDnsServersList =
-  ReadonlyArray<string>;
+export type CommonNetworkInterfaceDnsSettingsDnsServersList = Array<string>;
 export const CommonNetworkInterfaceDnsSettingsDnsServersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -25454,7 +25512,7 @@ export const CommonNetworkInterfaceDnsSettingsDnsServersList =
 
 /** If the VM that uses this NIC is part of an Availability Set, then this list will have the union of all DNS servers from all NICs that are part of the Availability Set. This property is what is configured on each of those VMs. */
 export type CommonNetworkInterfaceDnsSettingsAppliedDnsServersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CommonNetworkInterfaceDnsSettingsAppliedDnsServersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -25489,7 +25547,7 @@ export const CommonNetworkInterfaceDnsSettings = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of references to linked BareMetal resources. */
 export type CommonNetworkInterfacePropertiesFormatHostedWorkloadsList_6 =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CommonNetworkInterfacePropertiesFormatHostedWorkloadsList_6 =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -25520,7 +25578,7 @@ export const CommonPrivateLinkServiceTagsMap = /*@__PURE__*/ S.Record(
 
 /** A list of availability zones denoting the IP allocated for the resource needs to come from. */
 export type CommonPrivateLinkServicePropertiesLoadBalancerFrontendIpConfigurationsItemZonesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CommonPrivateLinkServicePropertiesLoadBalancerFrontendIpConfigurationsItemZonesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -25560,7 +25618,7 @@ export const CommonPrivateLinkServicePropertiesLoadBalancerFrontendIpConfigurati
 
 /** An array of references to the load balancer IP configurations. */
 export type CommonPrivateLinkServicePropertiesLoadBalancerFrontendIpConfigurationsList_5 =
-  ReadonlyArray<CommonPrivateLinkServicePropertiesLoadBalancerFrontendIpConfigurationsItem_5>;
+  Array<CommonPrivateLinkServicePropertiesLoadBalancerFrontendIpConfigurationsItem_5>;
 export const CommonPrivateLinkServicePropertiesLoadBalancerFrontendIpConfigurationsList_5 =
   /*@__PURE__*/ S.Array(
     CommonPrivateLinkServicePropertiesLoadBalancerFrontendIpConfigurationsItem_5,
@@ -25649,7 +25707,7 @@ export const CommonPrivateLinkServiceIpConfiguration_5 =
 
 /** An array of private link service IP configurations. */
 export type CommonPrivateLinkServicePropertiesIpConfigurationsList_5 =
-  ReadonlyArray<CommonPrivateLinkServiceIpConfiguration_5>;
+  Array<CommonPrivateLinkServiceIpConfiguration_5>;
 export const CommonPrivateLinkServicePropertiesIpConfigurationsList_5 =
   /*@__PURE__*/ S.Array(
     CommonPrivateLinkServiceIpConfiguration_5,
@@ -25664,7 +25722,7 @@ export const CommonPrivateLinkServicePropertiesAccessMode =
 
 /** An array of references to the network interfaces created for this private link service. */
 export type CommonPrivateLinkServicePropertiesNetworkInterfacesList_5 =
-  ReadonlyArray<CommonNetworkInterface_6>;
+  Array<CommonNetworkInterface_6>;
 export const CommonPrivateLinkServicePropertiesNetworkInterfacesList_5 =
   /*@__PURE__*/ S.Array(
     S.suspend(() => CommonNetworkInterface_6),
@@ -25749,14 +25807,14 @@ export const CommonPrivateEndpointConnection_5 = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of list about connections to the private endpoint. */
 export type CommonPrivateLinkServicePropertiesPrivateEndpointConnectionsList_5 =
-  ReadonlyArray<CommonPrivateEndpointConnection_5>;
+  Array<CommonPrivateEndpointConnection_5>;
 export const CommonPrivateLinkServicePropertiesPrivateEndpointConnectionsList_5 =
   /*@__PURE__*/ S.Array(
     CommonPrivateEndpointConnection_5,
   ) as any as S.Schema<CommonPrivateLinkServicePropertiesPrivateEndpointConnectionsList_5>;
 
 /** The list of subscriptions. */
-export type CommonResourceSetSubscriptionsList = ReadonlyArray<string>;
+export type CommonResourceSetSubscriptionsList = Array<string>;
 export const CommonResourceSetSubscriptionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CommonResourceSetSubscriptionsList>;
@@ -25775,7 +25833,7 @@ export const CommonResourceSet = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CommonResourceSet>;
 
 /** The list of Fqdn. */
-export type CommonPrivateLinkServicePropertiesFqdnsList = ReadonlyArray<string>;
+export type CommonPrivateLinkServicePropertiesFqdnsList = Array<string>;
 export const CommonPrivateLinkServicePropertiesFqdnsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -26023,7 +26081,7 @@ export const CommonNetworkInterface_6 = /*@__PURE__*/ S.suspend(() =>
 
 /** Associated Network Interfaces to the DSCP Configuration. */
 export type DscpConfigurationPropertiesFormatAssociatedNetworkInterfacesList =
-  ReadonlyArray<CommonNetworkInterface_6>;
+  Array<CommonNetworkInterface_6>;
 export const DscpConfigurationPropertiesFormatAssociatedNetworkInterfacesList =
   /*@__PURE__*/ S.Array(
     CommonNetworkInterface_6,
@@ -26285,8 +26343,7 @@ export const DscpConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DscpConfiguration>;
 
 /** The DscpConfiguration items on this page */
-export type DscpConfigurationListResultValueList =
-  ReadonlyArray<DscpConfiguration>;
+export type DscpConfigurationListResultValueList = Array<DscpConfiguration>;
 export const DscpConfigurationListResultValueList = /*@__PURE__*/ S.Array(
   DscpConfiguration,
 ) as any as S.Schema<DscpConfigurationListResultValueList>;
@@ -26620,7 +26677,7 @@ export const ExpressRouteCircuitAuthorization = /*@__PURE__*/ S.suspend(() =>
 
 /** The ExpressRouteCircuitAuthorization items on this page */
 export type AuthorizationListResultValueList =
-  ReadonlyArray<ExpressRouteCircuitAuthorization>;
+  Array<ExpressRouteCircuitAuthorization>;
 export const AuthorizationListResultValueList = /*@__PURE__*/ S.Array(
   ExpressRouteCircuitAuthorization,
 ) as any as S.Schema<AuthorizationListResultValueList>;
@@ -26684,7 +26741,9 @@ export interface Ipv6CircuitConnectionConfig {
   /** /125 IP address space to carve out customer addresses for global reach. */
   addressPrefix?: string;
   /** Express Route Circuit connection state. */
-  circuitConnectionStatus?: Ipv6CircuitConnectionConfigCircuitConnectionStatus;
+  circuitConnectionStatus?:
+    | Ipv6CircuitConnectionConfigCircuitConnectionStatus
+    | (string & {});
 }
 export const Ipv6CircuitConnectionConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -26727,9 +26786,13 @@ export interface ExpressRouteCircuitConnectionPropertiesFormat {
   /** IPv6 Address PrefixProperties of the express route circuit connection. */
   ipv6CircuitConnectionConfig?: Ipv6CircuitConnectionConfig;
   /** Express Route Circuit connection state. */
-  circuitConnectionStatus?: ExpressRouteCircuitConnectionPropertiesFormatCircuitConnectionStatus;
+  circuitConnectionStatus?:
+    | ExpressRouteCircuitConnectionPropertiesFormatCircuitConnectionStatus
+    | (string & {});
   /** Provisioning states of a resource. */
-  provisioningState?: ExpressRouteCircuitConnectionPropertiesFormatProvisioningState;
+  provisioningState?:
+    | ExpressRouteCircuitConnectionPropertiesFormatProvisioningState
+    | (string & {});
 }
 export const ExpressRouteCircuitConnectionPropertiesFormat =
   /*@__PURE__*/ S.suspend(() =>
@@ -26971,7 +27034,7 @@ export const ExpressRouteCircuitConnection = /*@__PURE__*/ S.suspend(() =>
 
 /** The ExpressRouteCircuitConnection items on this page */
 export type ExpressRouteCircuitConnectionListResultValueList =
-  ReadonlyArray<ExpressRouteCircuitConnection>;
+  Array<ExpressRouteCircuitConnection>;
 export const ExpressRouteCircuitConnectionListResultValueList =
   /*@__PURE__*/ S.Array(
     ExpressRouteCircuitConnection,
@@ -27011,7 +27074,7 @@ export const ExpressRouteCircuitPeeringPropertiesFormatInputState =
 
 /** The reference to AdvertisedPublicPrefixes. */
 export type ExpressRouteCircuitPeeringConfigAdvertisedPublicPrefixesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ExpressRouteCircuitPeeringConfigAdvertisedPublicPrefixesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -27019,7 +27082,7 @@ export const ExpressRouteCircuitPeeringConfigAdvertisedPublicPrefixesList =
 
 /** The communities of bgp peering. Specified for microsoft peering. */
 export type ExpressRouteCircuitPeeringConfigAdvertisedCommunitiesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ExpressRouteCircuitPeeringConfigAdvertisedCommunitiesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -27058,7 +27121,9 @@ export interface AdvertisedPublicPrefixProperties {
   /** Signed string generated by encrypting validationId with a private key. */
   signature?: string;
   /** Advertised Public Prefix State that denotes if the prefix is validated or not. */
-  validationState?: AdvertisedPublicPrefixPropertiesValidationState;
+  validationState?:
+    | AdvertisedPublicPrefixPropertiesValidationState
+    | (string & {});
 }
 export const AdvertisedPublicPrefixProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -27075,7 +27140,7 @@ export const AdvertisedPublicPrefixProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Prefix information required to perform validation. */
 export type ExpressRouteCircuitPeeringConfigAdvertisedPublicPrefixInfoList =
-  ReadonlyArray<AdvertisedPublicPrefixProperties>;
+  Array<AdvertisedPublicPrefixProperties>;
 export const ExpressRouteCircuitPeeringConfigAdvertisedPublicPrefixInfoList =
   /*@__PURE__*/ S.Array(
     AdvertisedPublicPrefixProperties,
@@ -27088,7 +27153,9 @@ export interface ExpressRouteCircuitPeeringConfig {
   /** The communities of bgp peering. Specified for microsoft peering. */
   advertisedCommunities?: ExpressRouteCircuitPeeringConfigAdvertisedCommunitiesList;
   /** The advertised public prefix state of the Peering resource. */
-  advertisedPublicPrefixesState?: ExpressRouteCircuitPeeringConfigAdvertisedPublicPrefixesState;
+  advertisedPublicPrefixesState?:
+    | ExpressRouteCircuitPeeringConfigAdvertisedPublicPrefixesState
+    | (string & {});
   /** The legacy mode of the peering. */
   legacyMode?: number;
   /** The CustomerASN of the peering. */
@@ -27196,7 +27263,7 @@ export interface Ipv6ExpressRouteCircuitPeeringConfig {
   /** Reference to another subresource. */
   routeFilter?: Ipv6ExpressRouteCircuitPeeringConfigRouteFilter;
   /** The state of peering. */
-  state?: Ipv6ExpressRouteCircuitPeeringConfigState;
+  state?: Ipv6ExpressRouteCircuitPeeringConfigState | (string & {});
 }
 export const Ipv6ExpressRouteCircuitPeeringConfig = /*@__PURE__*/ S.suspend(
   () =>
@@ -27240,7 +27307,7 @@ export const ExpressRouteCircuitConnectionInput = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of circuit connections associated with Azure Private Peering for this circuit. */
 export type ExpressRouteCircuitPeeringPropertiesFormatInputConnectionsList =
-  ReadonlyArray<ExpressRouteCircuitConnectionInput>;
+  Array<ExpressRouteCircuitConnectionInput>;
 export const ExpressRouteCircuitPeeringPropertiesFormatInputConnectionsList =
   /*@__PURE__*/ S.Array(
     ExpressRouteCircuitConnectionInput,
@@ -27420,7 +27487,7 @@ export const ExpressRouteCircuitPeeringPropertiesFormatExpressRouteConnection =
 
 /** The list of circuit connections associated with Azure Private Peering for this circuit. */
 export type ExpressRouteCircuitPeeringPropertiesFormatConnectionsList =
-  ReadonlyArray<ExpressRouteCircuitConnection>;
+  Array<ExpressRouteCircuitConnection>;
 export const ExpressRouteCircuitPeeringPropertiesFormatConnectionsList =
   /*@__PURE__*/ S.Array(
     ExpressRouteCircuitConnection,
@@ -27535,7 +27602,7 @@ export const PeerExpressRouteCircuitConnection = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of peered circuit connections associated with Azure Private Peering for this circuit. */
 export type ExpressRouteCircuitPeeringPropertiesFormatPeeredConnectionsList =
-  ReadonlyArray<PeerExpressRouteCircuitConnection>;
+  Array<PeerExpressRouteCircuitConnection>;
 export const ExpressRouteCircuitPeeringPropertiesFormatPeeredConnectionsList =
   /*@__PURE__*/ S.Array(
     PeerExpressRouteCircuitConnection,
@@ -27791,7 +27858,7 @@ export const ExpressRouteCircuitPeering = /*@__PURE__*/ S.suspend(() =>
 
 /** The ExpressRouteCircuitPeering items on this page */
 export type ExpressRouteCircuitPeeringListResultValueList =
-  ReadonlyArray<ExpressRouteCircuitPeering>;
+  Array<ExpressRouteCircuitPeering>;
 export const ExpressRouteCircuitPeeringListResultValueList =
   /*@__PURE__*/ S.Array(
     ExpressRouteCircuitPeering,
@@ -27852,7 +27919,7 @@ export const ExpressRouteCircuitAuthorizationInput = /*@__PURE__*/ S.suspend(
 
 /** The list of authorizations. */
 export type ExpressRouteCircuitPropertiesFormatInputAuthorizationsList =
-  ReadonlyArray<ExpressRouteCircuitAuthorizationInput>;
+  Array<ExpressRouteCircuitAuthorizationInput>;
 export const ExpressRouteCircuitPropertiesFormatInputAuthorizationsList =
   /*@__PURE__*/ S.Array(
     ExpressRouteCircuitAuthorizationInput,
@@ -27879,7 +27946,7 @@ export const ExpressRouteCircuitPeeringInput = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of peerings. */
 export type ExpressRouteCircuitPropertiesFormatInputPeeringsList =
-  ReadonlyArray<ExpressRouteCircuitPeeringInput>;
+  Array<ExpressRouteCircuitPeeringInput>;
 export const ExpressRouteCircuitPropertiesFormatInputPeeringsList =
   /*@__PURE__*/ S.Array(
     ExpressRouteCircuitPeeringInput,
@@ -28019,9 +28086,9 @@ export interface ExpressRouteCircuitSku {
   /** The name of the SKU. */
   name?: string;
   /** The tier of the SKU. */
-  tier?: ExpressRouteCircuitSkuTier;
+  tier?: ExpressRouteCircuitSkuTier | (string & {});
   /** The family of the SKU. */
-  family?: ExpressRouteCircuitSkuFamily;
+  family?: ExpressRouteCircuitSkuFamily | (string & {});
 }
 export const ExpressRouteCircuitSku = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -28092,7 +28159,7 @@ export const ExpressRouteCircuitPropertiesFormatServiceProviderProvisioningState
 
 /** The list of authorizations. */
 export type ExpressRouteCircuitPropertiesFormatAuthorizationsList =
-  ReadonlyArray<ExpressRouteCircuitAuthorization>;
+  Array<ExpressRouteCircuitAuthorization>;
 export const ExpressRouteCircuitPropertiesFormatAuthorizationsList =
   /*@__PURE__*/ S.Array(
     ExpressRouteCircuitAuthorization,
@@ -28100,7 +28167,7 @@ export const ExpressRouteCircuitPropertiesFormatAuthorizationsList =
 
 /** The list of peerings. */
 export type ExpressRouteCircuitPropertiesFormatPeeringsList =
-  ReadonlyArray<ExpressRouteCircuitPeering>;
+  Array<ExpressRouteCircuitPeering>;
 export const ExpressRouteCircuitPropertiesFormatPeeringsList =
   /*@__PURE__*/ S.Array(
     ExpressRouteCircuitPeering,
@@ -28391,8 +28458,7 @@ export const ExpressRouteLinkFailoverAllTestsDetailsTestType =
   /*@__PURE__*/ S.String;
 
 /** A list of all issues with the test. */
-export type ExpressRouteLinkFailoverAllTestsDetailsIssuesList =
-  ReadonlyArray<string>;
+export type ExpressRouteLinkFailoverAllTestsDetailsIssuesList = Array<string>;
 export const ExpressRouteLinkFailoverAllTestsDetailsIssuesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -28453,7 +28519,7 @@ export const ExpressRouteLinkFailoverTestBgpStatus = /*@__PURE__*/ S.suspend(
 
 /** The BGP status details. */
 export type ExpressRouteLinkFailoverAllTestsDetailsBgpStatusList =
-  ReadonlyArray<ExpressRouteLinkFailoverTestBgpStatus>;
+  Array<ExpressRouteLinkFailoverTestBgpStatus>;
 export const ExpressRouteLinkFailoverAllTestsDetailsBgpStatusList =
   /*@__PURE__*/ S.Array(
     ExpressRouteLinkFailoverTestBgpStatus,
@@ -28505,7 +28571,7 @@ export const ExpressRouteLinkFailoverAllTestsDetails = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ExpressRouteLinkFailoverAllTestsDetails>;
 
 export type ExpressRouteCircuitsGetCircuitLinkFailoverAllTestsDetailsResponseBodyList =
-  ReadonlyArray<ExpressRouteLinkFailoverAllTestsDetails>;
+  Array<ExpressRouteLinkFailoverAllTestsDetails>;
 export const ExpressRouteCircuitsGetCircuitLinkFailoverAllTestsDetailsResponseBodyList =
   /*@__PURE__*/ S.Array(
     ExpressRouteLinkFailoverAllTestsDetails,
@@ -28611,7 +28677,7 @@ export const ExpressRouteLinkFailoverRoute = /*@__PURE__*/ S.suspend(() =>
 
 /** The routes before the simulation. */
 export type ExpressRouteLinkFailoverRouteListBeforeSimulationList =
-  ReadonlyArray<ExpressRouteLinkFailoverRoute>;
+  Array<ExpressRouteLinkFailoverRoute>;
 export const ExpressRouteLinkFailoverRouteListBeforeSimulationList =
   /*@__PURE__*/ S.Array(
     ExpressRouteLinkFailoverRoute,
@@ -28619,7 +28685,7 @@ export const ExpressRouteLinkFailoverRouteListBeforeSimulationList =
 
 /** The routes during the simulation. */
 export type ExpressRouteLinkFailoverRouteListDuringSimulationList =
-  ReadonlyArray<ExpressRouteLinkFailoverRoute>;
+  Array<ExpressRouteLinkFailoverRoute>;
 export const ExpressRouteLinkFailoverRouteListDuringSimulationList =
   /*@__PURE__*/ S.Array(
     ExpressRouteLinkFailoverRoute,
@@ -28647,7 +28713,7 @@ export const ExpressRouteLinkFailoverRouteList = /*@__PURE__*/ S.suspend(() =>
 
 /** The BGP status details. */
 export type ExpressRouteLinkFailoverSingleTestDetailsBgpStatusList =
-  ReadonlyArray<ExpressRouteLinkFailoverTestBgpStatus>;
+  Array<ExpressRouteLinkFailoverTestBgpStatus>;
 export const ExpressRouteLinkFailoverSingleTestDetailsBgpStatusList =
   /*@__PURE__*/ S.Array(
     ExpressRouteLinkFailoverTestBgpStatus,
@@ -28699,7 +28765,7 @@ export const ExpressRouteLinkFailoverSingleTestDetails =
   }) as any as S.Schema<ExpressRouteLinkFailoverSingleTestDetails>;
 
 export type ExpressRouteCircuitsGetCircuitLinkFailoverSingleTestDetailsResponseBodyList =
-  ReadonlyArray<ExpressRouteLinkFailoverSingleTestDetails>;
+  Array<ExpressRouteLinkFailoverSingleTestDetails>;
 export const ExpressRouteCircuitsGetCircuitLinkFailoverSingleTestDetailsResponseBodyList =
   /*@__PURE__*/ S.Array(
     ExpressRouteLinkFailoverSingleTestDetails,
@@ -28835,8 +28901,7 @@ export const ExpressRouteCircuit = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExpressRouteCircuit>;
 
 /** The ExpressRouteCircuit items on this page */
-export type ExpressRouteCircuitListResultValueList =
-  ReadonlyArray<ExpressRouteCircuit>;
+export type ExpressRouteCircuitListResultValueList = Array<ExpressRouteCircuit>;
 export const ExpressRouteCircuitListResultValueList = /*@__PURE__*/ S.Array(
   ExpressRouteCircuit,
 ) as any as S.Schema<ExpressRouteCircuitListResultValueList>;
@@ -28932,7 +28997,7 @@ export const ExpressRouteCircuitArpTable = /*@__PURE__*/ S.suspend(() =>
 
 /** The ExpressRouteCircuitArpTable items on this page */
 export type ExpressRouteCircuitsArpTableListResultValueList =
-  ReadonlyArray<ExpressRouteCircuitArpTable>;
+  Array<ExpressRouteCircuitArpTable>;
 export const ExpressRouteCircuitsArpTableListResultValueList =
   /*@__PURE__*/ S.Array(
     ExpressRouteCircuitArpTable,
@@ -29014,7 +29079,7 @@ export const ExpressRouteCircuitRoutesTable = /*@__PURE__*/ S.suspend(() =>
 
 /** The ExpressRouteCircuitRoutesTable items on this page */
 export type ExpressRouteCircuitsRoutesTableListResultValueList =
-  ReadonlyArray<ExpressRouteCircuitRoutesTable>;
+  Array<ExpressRouteCircuitRoutesTable>;
 export const ExpressRouteCircuitsRoutesTableListResultValueList =
   /*@__PURE__*/ S.Array(
     ExpressRouteCircuitRoutesTable,
@@ -29097,7 +29162,7 @@ export const ExpressRouteCircuitRoutesTableSummary = /*@__PURE__*/ S.suspend(
 
 /** The ExpressRouteCircuitRoutesTableSummary items on this page */
 export type ExpressRouteCircuitsRoutesTableSummaryListResultValueList =
-  ReadonlyArray<ExpressRouteCircuitRoutesTableSummary>;
+  Array<ExpressRouteCircuitRoutesTableSummary>;
 export const ExpressRouteCircuitsRoutesTableSummaryListResultValueList =
   /*@__PURE__*/ S.Array(
     ExpressRouteCircuitRoutesTableSummary,
@@ -29579,8 +29644,7 @@ export const ExpressRouteConnection = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExpressRouteConnection>;
 
 /** The list of ExpressRoute connections. */
-export type ExpressRouteConnectionListValueList =
-  ReadonlyArray<ExpressRouteConnection>;
+export type ExpressRouteConnectionListValueList = Array<ExpressRouteConnection>;
 export const ExpressRouteConnectionListValueList = /*@__PURE__*/ S.Array(
   ExpressRouteConnection,
 ) as any as S.Schema<ExpressRouteConnectionListValueList>;
@@ -29955,7 +30019,7 @@ export const ExpressRouteCrossConnectionPeering = /*@__PURE__*/ S.suspend(() =>
 
 /** The ExpressRouteCrossConnectionPeering items on this page */
 export type ExpressRouteCrossConnectionPeeringListValueList =
-  ReadonlyArray<ExpressRouteCrossConnectionPeering>;
+  Array<ExpressRouteCrossConnectionPeering>;
 export const ExpressRouteCrossConnectionPeeringListValueList =
   /*@__PURE__*/ S.Array(
     ExpressRouteCrossConnectionPeering,
@@ -30040,7 +30104,7 @@ export const ExpressRouteCrossConnectionPeeringInput = /*@__PURE__*/ S.suspend(
 
 /** The list of peerings. */
 export type ExpressRouteCrossConnectionPropertiesInputPeeringsList =
-  ReadonlyArray<ExpressRouteCrossConnectionPeeringInput>;
+  Array<ExpressRouteCrossConnectionPeeringInput>;
 export const ExpressRouteCrossConnectionPropertiesInputPeeringsList =
   /*@__PURE__*/ S.Array(
     ExpressRouteCrossConnectionPeeringInput,
@@ -30151,7 +30215,7 @@ export const ExpressRouteCrossConnectionPropertiesProvisioningState =
 
 /** The list of peerings. */
 export type ExpressRouteCrossConnectionPropertiesPeeringsList =
-  ReadonlyArray<ExpressRouteCrossConnectionPeering>;
+  Array<ExpressRouteCrossConnectionPeering>;
 export const ExpressRouteCrossConnectionPropertiesPeeringsList =
   /*@__PURE__*/ S.Array(
     ExpressRouteCrossConnectionPeering,
@@ -30367,7 +30431,7 @@ export const ExpressRouteCrossConnection = /*@__PURE__*/ S.suspend(() =>
 
 /** The ExpressRouteCrossConnection items on this page */
 export type ExpressRouteCrossConnectionListResultValueList =
-  ReadonlyArray<ExpressRouteCrossConnection>;
+  Array<ExpressRouteCrossConnection>;
 export const ExpressRouteCrossConnectionListResultValueList =
   /*@__PURE__*/ S.Array(
     ExpressRouteCrossConnection,
@@ -30534,7 +30598,7 @@ export const ExpressRouteCrossConnectionRoutesTableSummary =
 
 /** The ExpressRouteCrossConnectionRoutesTableSummary items on this page */
 export type ExpressRouteCrossConnectionsRoutesTableSummaryListResultValueList =
-  ReadonlyArray<ExpressRouteCrossConnectionRoutesTableSummary>;
+  Array<ExpressRouteCrossConnectionRoutesTableSummary>;
 export const ExpressRouteCrossConnectionsRoutesTableSummaryListResultValueList =
   /*@__PURE__*/ S.Array(
     ExpressRouteCrossConnectionRoutesTableSummary,
@@ -30701,7 +30765,7 @@ export const ExpressRouteConnectionInput = /*@__PURE__*/ S.suspend(() =>
 
 /** List of ExpressRoute connections to the ExpressRoute gateway. */
 export type ExpressRouteGatewayPropertiesInputExpressRouteConnectionsList =
-  ReadonlyArray<ExpressRouteConnectionInput>;
+  Array<ExpressRouteConnectionInput>;
 export const ExpressRouteGatewayPropertiesInputExpressRouteConnectionsList =
   /*@__PURE__*/ S.Array(
     ExpressRouteConnectionInput,
@@ -30812,7 +30876,7 @@ export const ExpressRouteGatewaysCreateOrUpdateResponseTagsMap =
 
 /** List of ExpressRoute connections to the ExpressRoute gateway. */
 export type ExpressRouteGatewayPropertiesExpressRouteConnectionsList =
-  ReadonlyArray<ExpressRouteConnection>;
+  Array<ExpressRouteConnection>;
 export const ExpressRouteGatewayPropertiesExpressRouteConnectionsList =
   /*@__PURE__*/ S.Array(
     ExpressRouteConnection,
@@ -31040,7 +31104,7 @@ export const ExpressRouteFailoverCircuitResourceDetails =
 
 /** All circuits in the peering location */
 export type ExpressRouteGatewaysGetFailoverAllTestsDetailsResponseBodyItemCircuitsList =
-  ReadonlyArray<ExpressRouteFailoverCircuitResourceDetails>;
+  Array<ExpressRouteFailoverCircuitResourceDetails>;
 export const ExpressRouteGatewaysGetFailoverAllTestsDetailsResponseBodyItemCircuitsList =
   /*@__PURE__*/ S.Array(
     ExpressRouteFailoverCircuitResourceDetails,
@@ -31091,7 +31155,7 @@ export const ExpressRouteFailoverConnectionResourceDetails =
 
 /** All connections to the circuits in the peering location */
 export type ExpressRouteGatewaysGetFailoverAllTestsDetailsResponseBodyItemConnectionsList =
-  ReadonlyArray<ExpressRouteFailoverConnectionResourceDetails>;
+  Array<ExpressRouteFailoverConnectionResourceDetails>;
 export const ExpressRouteGatewaysGetFailoverAllTestsDetailsResponseBodyItemConnectionsList =
   /*@__PURE__*/ S.Array(
     ExpressRouteFailoverConnectionResourceDetails,
@@ -31105,7 +31169,7 @@ export const ExpressRouteGatewaysGetFailoverAllTestsDetailsResponseBodyItemTestT
 
 /** A list of all issues with the test */
 export type ExpressRouteGatewaysGetFailoverAllTestsDetailsResponseBodyItemIssuesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ExpressRouteGatewaysGetFailoverAllTestsDetailsResponseBodyItemIssuesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -31161,7 +31225,7 @@ export const ExpressRouteGatewaysGetFailoverAllTestsDetailsResponseBodyItem =
   }) as any as S.Schema<ExpressRouteGatewaysGetFailoverAllTestsDetailsResponseBodyItem>;
 
 export type ExpressRouteGatewaysGetFailoverAllTestsDetailsResponseBodyList =
-  ReadonlyArray<ExpressRouteGatewaysGetFailoverAllTestsDetailsResponseBodyItem>;
+  Array<ExpressRouteGatewaysGetFailoverAllTestsDetailsResponseBodyItem>;
 export const ExpressRouteGatewaysGetFailoverAllTestsDetailsResponseBodyList =
   /*@__PURE__*/ S.Array(
     ExpressRouteGatewaysGetFailoverAllTestsDetailsResponseBodyItem,
@@ -31226,15 +31290,14 @@ export const ExpressRouteGatewaysGetFailoverSingleTestDetailsResponseBodyItemSta
 
 /** A list of all the peering locations for the redundant routes */
 export type ExpressRouteFailoverRedundantRoutePeeringLocationsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ExpressRouteFailoverRedundantRoutePeeringLocationsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ExpressRouteFailoverRedundantRoutePeeringLocationsList>;
 
 /** A list of all the redundant routes in the peering locations */
-export type ExpressRouteFailoverRedundantRouteRoutesList =
-  ReadonlyArray<string>;
+export type ExpressRouteFailoverRedundantRouteRoutesList = Array<string>;
 export const ExpressRouteFailoverRedundantRouteRoutesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -31259,7 +31322,7 @@ export const ExpressRouteFailoverRedundantRoute = /*@__PURE__*/ S.suspend(() =>
 
 /** List of routes received from this peering as well as some other peering location */
 export type ExpressRouteGatewaysGetFailoverSingleTestDetailsResponseBodyItemRedundantRoutesList =
-  ReadonlyArray<ExpressRouteFailoverRedundantRoute>;
+  Array<ExpressRouteFailoverRedundantRoute>;
 export const ExpressRouteGatewaysGetFailoverSingleTestDetailsResponseBodyItemRedundantRoutesList =
   /*@__PURE__*/ S.Array(
     ExpressRouteFailoverRedundantRoute,
@@ -31267,7 +31330,7 @@ export const ExpressRouteGatewaysGetFailoverSingleTestDetailsResponseBodyItemRed
 
 /** List of al the routes that were received only from this peering location */
 export type ExpressRouteGatewaysGetFailoverSingleTestDetailsResponseBodyItemNonRedundantRoutesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ExpressRouteGatewaysGetFailoverSingleTestDetailsResponseBodyItemNonRedundantRoutesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -31293,7 +31356,7 @@ export const FailoverConnectionDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** List of all the failover connections for this peering location */
 export type ExpressRouteGatewaysGetFailoverSingleTestDetailsResponseBodyItemFailoverConnectionDetailsList =
-  ReadonlyArray<FailoverConnectionDetails>;
+  Array<FailoverConnectionDetails>;
 export const ExpressRouteGatewaysGetFailoverSingleTestDetailsResponseBodyItemFailoverConnectionDetailsList =
   /*@__PURE__*/ S.Array(
     FailoverConnectionDetails,
@@ -31344,7 +31407,7 @@ export const ExpressRouteGatewaysGetFailoverSingleTestDetailsResponseBodyItem =
   }) as any as S.Schema<ExpressRouteGatewaysGetFailoverSingleTestDetailsResponseBodyItem>;
 
 export type ExpressRouteGatewaysGetFailoverSingleTestDetailsResponseBodyList =
-  ReadonlyArray<ExpressRouteGatewaysGetFailoverSingleTestDetailsResponseBodyItem>;
+  Array<ExpressRouteGatewaysGetFailoverSingleTestDetailsResponseBodyItem>;
 export const ExpressRouteGatewaysGetFailoverSingleTestDetailsResponseBodyList =
   /*@__PURE__*/ S.Array(
     ExpressRouteGatewaysGetFailoverSingleTestDetailsResponseBodyItem,
@@ -31420,7 +31483,7 @@ export const GatewayResiliencyRecommendation = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Gateway Resiliency based Recommendations */
 export type ResiliencyRecommendationComponentsRecommendationsList =
-  ReadonlyArray<GatewayResiliencyRecommendation>;
+  Array<GatewayResiliencyRecommendation>;
 export const ResiliencyRecommendationComponentsRecommendationsList =
   /*@__PURE__*/ S.Array(
     GatewayResiliencyRecommendation,
@@ -31452,7 +31515,7 @@ export const ResiliencyRecommendationComponents = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Resiliency based Recommendation Components for the gateway */
 export type ExpressRouteGatewaysGetResiliencyInformationResponseComponentsList =
-  ReadonlyArray<ResiliencyRecommendationComponents>;
+  Array<ResiliencyRecommendationComponents>;
 export const ExpressRouteGatewaysGetResiliencyInformationResponseComponentsList =
   /*@__PURE__*/ S.Array(
     ResiliencyRecommendationComponents,
@@ -31521,7 +31584,7 @@ export const ExpressRouteGatewaysGetRoutesInformationRequest =
   }) as any as S.Schema<ExpressRouteGatewaysGetRoutesInformationRequest>;
 
 /** List of different locations from where the routes are learned */
-export type GatewayRouteSetLocationsList = ReadonlyArray<string>;
+export type GatewayRouteSetLocationsList = Array<string>;
 export const GatewayRouteSetLocationsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GatewayRouteSetLocationsList>;
@@ -31544,7 +31607,7 @@ export const RouteSourceDetails = /*@__PURE__*/ S.suspend(() =>
   identifier: "RouteSourceDetails",
 }) as any as S.Schema<RouteSourceDetails>;
 
-export type GatewayRouteSetDetailsValueList = ReadonlyArray<RouteSourceDetails>;
+export type GatewayRouteSetDetailsValueList = Array<RouteSourceDetails>;
 export const GatewayRouteSetDetailsValueList = /*@__PURE__*/ S.Array(
   RouteSourceDetails,
 ) as any as S.Schema<GatewayRouteSetDetailsValueList>;
@@ -31578,7 +31641,7 @@ export const GatewayRouteSet = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Gateway Route Sets */
 export type ExpressRouteGatewaysGetRoutesInformationResponseRouteSetsList =
-  ReadonlyArray<GatewayRouteSet>;
+  Array<GatewayRouteSet>;
 export const ExpressRouteGatewaysGetRoutesInformationResponseRouteSetsList =
   /*@__PURE__*/ S.Array(
     GatewayRouteSet,
@@ -31702,8 +31765,7 @@ export const ExpressRouteGateway = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExpressRouteGateway>;
 
 /** List of ExpressRoute gateways. */
-export type ExpressRouteGatewayListValueList =
-  ReadonlyArray<ExpressRouteGateway>;
+export type ExpressRouteGatewayListValueList = Array<ExpressRouteGateway>;
 export const ExpressRouteGatewayListValueList = /*@__PURE__*/ S.Array(
   ExpressRouteGateway,
 ) as any as S.Schema<ExpressRouteGatewayListValueList>;
@@ -31778,7 +31840,7 @@ export const ExpressRouteGatewaysStartSiteFailoverTestResponse =
 
 /** List of all the failover connections for this peering location */
 export type ExpressRouteGatewaysStopSiteFailoverTestRequestDetailsList =
-  ReadonlyArray<FailoverConnectionDetails>;
+  Array<FailoverConnectionDetails>;
 export const ExpressRouteGatewaysStopSiteFailoverTestRequestDetailsList =
   /*@__PURE__*/ S.Array(
     FailoverConnectionDetails,
@@ -31975,9 +32037,9 @@ export interface ExpressRouteLinkMacSecConfig {
   /** Keyvault Secret Identifier URL containing Mac security CAK key. */
   cakSecretIdentifier?: string;
   /** Mac security cipher. */
-  cipher?: ExpressRouteLinkMacSecConfigCipher;
+  cipher?: ExpressRouteLinkMacSecConfigCipher | (string & {});
   /** Sci mode enabled/disabled. */
-  sciState?: ExpressRouteLinkMacSecConfigSciState;
+  sciState?: ExpressRouteLinkMacSecConfigSciState | (string & {});
 }
 export const ExpressRouteLinkMacSecConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -32098,8 +32160,7 @@ export const ExpressRouteLink = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExpressRouteLink>;
 
 /** The ExpressRouteLink items on this page */
-export type ExpressRouteLinkListResultValueList =
-  ReadonlyArray<ExpressRouteLink>;
+export type ExpressRouteLinkListResultValueList = Array<ExpressRouteLink>;
 export const ExpressRouteLinkListResultValueList = /*@__PURE__*/ S.Array(
   ExpressRouteLink,
 ) as any as S.Schema<ExpressRouteLinkListResultValueList>;
@@ -32408,7 +32469,7 @@ export const ExpressRoutePortAuthorization = /*@__PURE__*/ S.suspend(() =>
 
 /** The ExpressRoutePortAuthorization items on this page */
 export type ExpressRoutePortAuthorizationListResultValueList =
-  ReadonlyArray<ExpressRoutePortAuthorization>;
+  Array<ExpressRoutePortAuthorization>;
 export const ExpressRoutePortAuthorizationListResultValueList =
   /*@__PURE__*/ S.Array(
     ExpressRoutePortAuthorization,
@@ -32523,7 +32584,7 @@ export const ExpressRouteLinkInput = /*@__PURE__*/ S.suspend(() =>
 
 /** The set of physical links of the ExpressRoutePort resource. */
 export type ExpressRoutePortPropertiesFormatInputLinksList =
-  ReadonlyArray<ExpressRouteLinkInput>;
+  Array<ExpressRouteLinkInput>;
 export const ExpressRoutePortPropertiesFormatInputLinksList =
   /*@__PURE__*/ S.Array(
     ExpressRouteLinkInput,
@@ -32675,8 +32736,7 @@ export const ExpressRoutePortPropertiesFormatEncapsulation =
   /*@__PURE__*/ S.String;
 
 /** The set of physical links of the ExpressRoutePort resource. */
-export type ExpressRoutePortPropertiesFormatLinksList =
-  ReadonlyArray<ExpressRouteLink>;
+export type ExpressRoutePortPropertiesFormatLinksList = Array<ExpressRouteLink>;
 export const ExpressRoutePortPropertiesFormatLinksList = /*@__PURE__*/ S.Array(
   ExpressRouteLink,
 ) as any as S.Schema<ExpressRoutePortPropertiesFormatLinksList>;
@@ -32697,7 +32757,7 @@ export const ExpressRoutePortPropertiesFormatCircuitsItem =
 
 /** Reference the ExpressRoute circuit(s) that are provisioned on this ExpressRoutePort resource. */
 export type ExpressRoutePortPropertiesFormatCircuitsList =
-  ReadonlyArray<ExpressRoutePortPropertiesFormatCircuitsItem>;
+  Array<ExpressRoutePortPropertiesFormatCircuitsItem>;
 export const ExpressRoutePortPropertiesFormatCircuitsList =
   /*@__PURE__*/ S.Array(
     ExpressRoutePortPropertiesFormatCircuitsItem,
@@ -33123,8 +33183,7 @@ export const ExpressRoutePort = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExpressRoutePort>;
 
 /** The ExpressRoutePort items on this page */
-export type ExpressRoutePortListResultValueList =
-  ReadonlyArray<ExpressRoutePort>;
+export type ExpressRoutePortListResultValueList = Array<ExpressRoutePort>;
 export const ExpressRoutePortListResultValueList = /*@__PURE__*/ S.Array(
   ExpressRoutePort,
 ) as any as S.Schema<ExpressRoutePortListResultValueList>;
@@ -33219,7 +33278,7 @@ export const ExpressRoutePortsLocationBandwidths = /*@__PURE__*/ S.suspend(() =>
 
 /** The inventory of available ExpressRoutePort bandwidths. */
 export type ExpressRoutePortsLocationPropertiesFormatAvailableBandwidthsList =
-  ReadonlyArray<ExpressRoutePortsLocationBandwidths>;
+  Array<ExpressRoutePortsLocationBandwidths>;
 export const ExpressRoutePortsLocationPropertiesFormatAvailableBandwidthsList =
   /*@__PURE__*/ S.Array(
     ExpressRoutePortsLocationBandwidths,
@@ -33350,7 +33409,7 @@ export const ExpressRoutePortsLocation = /*@__PURE__*/ S.suspend(() =>
 
 /** The ExpressRoutePortsLocation items on this page */
 export type ExpressRoutePortsLocationListResultValueList =
-  ReadonlyArray<ExpressRoutePortsLocation>;
+  Array<ExpressRoutePortsLocation>;
 export const ExpressRoutePortsLocationListResultValueList =
   /*@__PURE__*/ S.Array(
     ExpressRoutePortsLocation,
@@ -33646,7 +33705,7 @@ export const ExpressRouteProviderPort = /*@__PURE__*/ S.suspend(() =>
 
 /** The ExpressRouteProviderPort items on this page */
 export type ExpressRouteProviderPortListResultValueList =
-  ReadonlyArray<ExpressRouteProviderPort>;
+  Array<ExpressRouteProviderPort>;
 export const ExpressRouteProviderPortListResultValueList =
   /*@__PURE__*/ S.Array(
     ExpressRouteProviderPort,
@@ -33699,7 +33758,7 @@ export const ExpressRouteServiceProviderTagsMap = /*@__PURE__*/ S.Record(
 
 /** A list of peering locations. */
 export type ExpressRouteServiceProviderPropertiesFormatPeeringLocationsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ExpressRouteServiceProviderPropertiesFormatPeeringLocationsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -33724,7 +33783,7 @@ export const ExpressRouteServiceProviderBandwidthsOffered =
 
 /** A list of bandwidths offered. */
 export type ExpressRouteServiceProviderPropertiesFormatBandwidthsOfferedList =
-  ReadonlyArray<ExpressRouteServiceProviderBandwidthsOffered>;
+  Array<ExpressRouteServiceProviderBandwidthsOffered>;
 export const ExpressRouteServiceProviderPropertiesFormatBandwidthsOfferedList =
   /*@__PURE__*/ S.Array(
     ExpressRouteServiceProviderBandwidthsOffered,
@@ -33797,7 +33856,7 @@ export const ExpressRouteServiceProvider = /*@__PURE__*/ S.suspend(() =>
 
 /** The ExpressRouteServiceProvider items on this page */
 export type ExpressRouteServiceProviderListResultValueList =
-  ReadonlyArray<ExpressRouteServiceProvider>;
+  Array<ExpressRouteServiceProvider>;
 export const ExpressRouteServiceProviderListResultValueList =
   /*@__PURE__*/ S.Array(
     ExpressRouteServiceProvider,
@@ -33864,15 +33923,14 @@ export const FirewallPolicyPropertiesFormatInputThreatIntelMode =
   /*@__PURE__*/ S.String;
 
 /** List of IP addresses for the ThreatIntel Whitelist. */
-export type FirewallPolicyThreatIntelWhitelistIpAddressesList =
-  ReadonlyArray<string>;
+export type FirewallPolicyThreatIntelWhitelistIpAddressesList = Array<string>;
 export const FirewallPolicyThreatIntelWhitelistIpAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<FirewallPolicyThreatIntelWhitelistIpAddressesList>;
 
 /** List of FQDNs for the ThreatIntel Whitelist. */
-export type FirewallPolicyThreatIntelWhitelistFqdnsList = ReadonlyArray<string>;
+export type FirewallPolicyThreatIntelWhitelistFqdnsList = Array<string>;
 export const FirewallPolicyThreatIntelWhitelistFqdnsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -33926,7 +33984,7 @@ export const FirewallPolicyLogAnalyticsWorkspace = /*@__PURE__*/ S.suspend(() =>
 
 /** List of workspaces for Firewall Policy Insights. */
 export type FirewallPolicyLogAnalyticsResourcesWorkspacesList =
-  ReadonlyArray<FirewallPolicyLogAnalyticsWorkspace>;
+  Array<FirewallPolicyLogAnalyticsWorkspace>;
 export const FirewallPolicyLogAnalyticsResourcesWorkspacesList =
   /*@__PURE__*/ S.Array(
     FirewallPolicyLogAnalyticsWorkspace,
@@ -33984,7 +34042,7 @@ export const FirewallPolicyInsights = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FirewallPolicyInsights>;
 
 /** List of private IP addresses/IP address ranges to not be SNAT. */
-export type FirewallPolicySNATPrivateRangesList = ReadonlyArray<string>;
+export type FirewallPolicySNATPrivateRangesList = Array<string>;
 export const FirewallPolicySNATPrivateRangesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<FirewallPolicySNATPrivateRangesList>;
@@ -33998,7 +34056,9 @@ export interface FirewallPolicySNAT {
   /** List of private IP addresses/IP address ranges to not be SNAT. */
   privateRanges?: FirewallPolicySNATPrivateRangesList;
   /** The operation mode for automatically learning private ranges to not be SNAT */
-  autoLearnPrivateRanges?: FirewallPolicySNATAutoLearnPrivateRanges;
+  autoLearnPrivateRanges?:
+    | FirewallPolicySNATAutoLearnPrivateRanges
+    | (string & {});
 }
 export const FirewallPolicySNAT = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -34025,7 +34085,7 @@ export const FirewallPolicySQL = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FirewallPolicySQL>;
 
 /** List of Custom DNS Servers. */
-export type DnsSettingsServersList = ReadonlyArray<string>;
+export type DnsSettingsServersList = Array<string>;
 export const DnsSettingsServersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DnsSettingsServersList>;
@@ -34098,7 +34158,9 @@ export interface FirewallPolicyIntrusionDetectionSignatureSpecification {
   /** Signature id. */
   id?: string;
   /** Possible state values. */
-  mode?: FirewallPolicyIntrusionDetectionSignatureSpecificationMode;
+  mode?:
+    | FirewallPolicyIntrusionDetectionSignatureSpecificationMode
+    | (string & {});
 }
 export const FirewallPolicyIntrusionDetectionSignatureSpecification =
   /*@__PURE__*/ S.suspend(() =>
@@ -34114,7 +34176,7 @@ export const FirewallPolicyIntrusionDetectionSignatureSpecification =
 
 /** List of specific signatures states. */
 export type FirewallPolicyIntrusionDetectionConfigurationSignatureOverridesList =
-  ReadonlyArray<FirewallPolicyIntrusionDetectionSignatureSpecification>;
+  Array<FirewallPolicyIntrusionDetectionSignatureSpecification>;
 export const FirewallPolicyIntrusionDetectionConfigurationSignatureOverridesList =
   /*@__PURE__*/ S.Array(
     FirewallPolicyIntrusionDetectionSignatureSpecification,
@@ -34128,7 +34190,7 @@ export const FirewallPolicyIntrusionDetectionBypassTrafficSpecificationsProtocol
 
 /** List of source IP addresses or ranges for this rule. */
 export type FirewallPolicyIntrusionDetectionBypassTrafficSpecificationsSourceAddressesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const FirewallPolicyIntrusionDetectionBypassTrafficSpecificationsSourceAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -34136,7 +34198,7 @@ export const FirewallPolicyIntrusionDetectionBypassTrafficSpecificationsSourceAd
 
 /** List of destination IP addresses or ranges for this rule. */
 export type FirewallPolicyIntrusionDetectionBypassTrafficSpecificationsDestinationAddressesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const FirewallPolicyIntrusionDetectionBypassTrafficSpecificationsDestinationAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -34144,7 +34206,7 @@ export const FirewallPolicyIntrusionDetectionBypassTrafficSpecificationsDestinat
 
 /** List of destination ports or ranges. */
 export type FirewallPolicyIntrusionDetectionBypassTrafficSpecificationsDestinationPortsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const FirewallPolicyIntrusionDetectionBypassTrafficSpecificationsDestinationPortsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -34152,7 +34214,7 @@ export const FirewallPolicyIntrusionDetectionBypassTrafficSpecificationsDestinat
 
 /** List of source IpGroups for this rule. */
 export type FirewallPolicyIntrusionDetectionBypassTrafficSpecificationsSourceIpGroupsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const FirewallPolicyIntrusionDetectionBypassTrafficSpecificationsSourceIpGroupsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -34160,7 +34222,7 @@ export const FirewallPolicyIntrusionDetectionBypassTrafficSpecificationsSourceIp
 
 /** List of destination IpGroups for this rule. */
 export type FirewallPolicyIntrusionDetectionBypassTrafficSpecificationsDestinationIpGroupsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const FirewallPolicyIntrusionDetectionBypassTrafficSpecificationsDestinationIpGroupsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -34173,7 +34235,9 @@ export interface FirewallPolicyIntrusionDetectionBypassTrafficSpecifications {
   /** Description of the bypass traffic rule. */
   description?: string;
   /** Possible intrusion detection bypass traffic protocols. */
-  protocol?: FirewallPolicyIntrusionDetectionBypassTrafficSpecificationsProtocol;
+  protocol?:
+    | FirewallPolicyIntrusionDetectionBypassTrafficSpecificationsProtocol
+    | (string & {});
   /** List of source IP addresses or ranges for this rule. */
   sourceAddresses?: FirewallPolicyIntrusionDetectionBypassTrafficSpecificationsSourceAddressesList;
   /** List of destination IP addresses or ranges for this rule. */
@@ -34215,7 +34279,7 @@ export const FirewallPolicyIntrusionDetectionBypassTrafficSpecifications =
 
 /** List of rules for traffic to bypass. */
 export type FirewallPolicyIntrusionDetectionConfigurationBypassTrafficSettingsList =
-  ReadonlyArray<FirewallPolicyIntrusionDetectionBypassTrafficSpecifications>;
+  Array<FirewallPolicyIntrusionDetectionBypassTrafficSpecifications>;
 export const FirewallPolicyIntrusionDetectionConfigurationBypassTrafficSettingsList =
   /*@__PURE__*/ S.Array(
     FirewallPolicyIntrusionDetectionBypassTrafficSpecifications,
@@ -34223,7 +34287,7 @@ export const FirewallPolicyIntrusionDetectionConfigurationBypassTrafficSettingsL
 
 /** IDPS Private IP address ranges are used to identify traffic direction (i.e. inbound, outbound, etc.). By default, only ranges defined by IANA RFC 1918 are considered private IP addresses. To modify default ranges, specify your Private IP address ranges with this property */
 export type FirewallPolicyIntrusionDetectionConfigurationPrivateRangesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const FirewallPolicyIntrusionDetectionConfigurationPrivateRangesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -34258,9 +34322,9 @@ export const FirewallPolicyIntrusionDetectionConfiguration =
 /** Configuration for intrusion detection mode and rules. */
 export interface FirewallPolicyIntrusionDetection {
   /** Possible state values. */
-  mode?: FirewallPolicyIntrusionDetectionMode;
+  mode?: FirewallPolicyIntrusionDetectionMode | (string & {});
   /** Specifies the Intrusion Detection signature profile to apply. Values: - Off: IDPS profiles disabled; uses the same signature set that existed before profiles. - Emerging: Signatures of the newest, most recent threats. - Core: Complete, modern, standard set of signatures. - Extended: Core signatures plus older legacy signatures for maximum coverage. */
-  profile?: FirewallPolicyIntrusionDetectionProfile;
+  profile?: FirewallPolicyIntrusionDetectionProfile | (string & {});
   /** Intrusion detection configuration properties. */
   configuration?: FirewallPolicyIntrusionDetectionConfiguration;
 }
@@ -34310,7 +34374,7 @@ export const FirewallPolicySkuTier = /*@__PURE__*/ S.String;
 /** SKU of Firewall policy. */
 export interface FirewallPolicySku {
   /** Tier of Firewall Policy. */
-  tier?: FirewallPolicySkuTier;
+  tier?: FirewallPolicySkuTier | (string & {});
 }
 export const FirewallPolicySku = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -34473,7 +34537,7 @@ export const FirewallPolicyPropertiesFormatRuleCollectionGroupsItem =
 
 /** List of references to FirewallPolicyRuleCollectionGroups. */
 export type FirewallPolicyPropertiesFormatRuleCollectionGroupsList =
-  ReadonlyArray<FirewallPolicyPropertiesFormatRuleCollectionGroupsItem>;
+  Array<FirewallPolicyPropertiesFormatRuleCollectionGroupsItem>;
 export const FirewallPolicyPropertiesFormatRuleCollectionGroupsList =
   /*@__PURE__*/ S.Array(
     FirewallPolicyPropertiesFormatRuleCollectionGroupsItem,
@@ -34520,7 +34584,7 @@ export const FirewallPolicyPropertiesFormatFirewallsItem =
 
 /** List of references to Azure Firewalls that this Firewall Policy is associated with. */
 export type FirewallPolicyPropertiesFormatFirewallsList =
-  ReadonlyArray<FirewallPolicyPropertiesFormatFirewallsItem>;
+  Array<FirewallPolicyPropertiesFormatFirewallsItem>;
 export const FirewallPolicyPropertiesFormatFirewallsList =
   /*@__PURE__*/ S.Array(
     FirewallPolicyPropertiesFormatFirewallsItem,
@@ -34542,7 +34606,7 @@ export const FirewallPolicyPropertiesFormatChildPoliciesItem =
 
 /** List of references to Child Firewall Policies. */
 export type FirewallPolicyPropertiesFormatChildPoliciesList =
-  ReadonlyArray<FirewallPolicyPropertiesFormatChildPoliciesItem>;
+  Array<FirewallPolicyPropertiesFormatChildPoliciesItem>;
 export const FirewallPolicyPropertiesFormatChildPoliciesList =
   /*@__PURE__*/ S.Array(
     FirewallPolicyPropertiesFormatChildPoliciesItem,
@@ -34934,7 +34998,7 @@ export const FirewallPolicy = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FirewallPolicy" }) as any as S.Schema<FirewallPolicy>;
 
 /** The FirewallPolicy items on this page */
-export type FirewallPolicyListResultValueList = ReadonlyArray<FirewallPolicy>;
+export type FirewallPolicyListResultValueList = Array<FirewallPolicy>;
 export const FirewallPolicyListResultValueList = /*@__PURE__*/ S.Array(
   FirewallPolicy,
 ) as any as S.Schema<FirewallPolicyListResultValueList>;
@@ -35156,7 +35220,9 @@ export interface FirewallPolicyDraftProperties {
   /** Reference to another subresource. */
   basePolicy?: FirewallPolicyDraftPropertiesBasePolicy;
   /** The operation mode for Threat Intel. */
-  threatIntelMode?: FirewallPolicyDraftPropertiesThreatIntelMode;
+  threatIntelMode?:
+    | FirewallPolicyDraftPropertiesThreatIntelMode
+    | (string & {});
   /** ThreatIntel Whitelist for Firewall Policy. */
   threatIntelWhitelist?: FirewallPolicyThreatIntelWhitelist;
   /** Insights on Firewall Policy. */
@@ -35388,7 +35454,7 @@ export const FirewallPolicyIdpsSignaturesFilterValuesListRequest =
 
 /** Describes the possible values */
 export type SignatureOverridesFilterValuesResponseFilterValuesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const SignatureOverridesFilterValuesResponseFilterValuesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -35411,7 +35477,7 @@ export const SignatureOverridesFilterValuesResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<SignatureOverridesFilterValuesResponse>;
 
 /** List of values to filter the current field by */
-export type FilterItemsValuesList = ReadonlyArray<string>;
+export type FilterItemsValuesList = Array<string>;
 export const FilterItemsValuesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<FilterItemsValuesList>;
@@ -35432,7 +35498,7 @@ export const FilterItems = /*@__PURE__*/ S.suspend(() =>
 
 /** Contain all filters names and values */
 export type FirewallPolicyIdpsSignaturesListRequestFiltersList =
-  ReadonlyArray<FilterItems>;
+  Array<FilterItems>;
 export const FirewallPolicyIdpsSignaturesListRequestFiltersList =
   /*@__PURE__*/ S.Array(
     FilterItems,
@@ -35510,13 +35576,13 @@ export type SingleQueryResultDirection = 0 | 1 | 2 | 3 | 4 | 5;
 export const SingleQueryResultDirection = /*@__PURE__*/ S.Number;
 
 /** Describes the list of source ports related to this signature */
-export type SingleQueryResultSourcePortsList = ReadonlyArray<string>;
+export type SingleQueryResultSourcePortsList = Array<string>;
 export const SingleQueryResultSourcePortsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SingleQueryResultSourcePortsList>;
 
 /** Describes the list of destination ports related to this signature */
-export type SingleQueryResultDestinationPortsList = ReadonlyArray<string>;
+export type SingleQueryResultDestinationPortsList = Array<string>;
 export const SingleQueryResultDestinationPortsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SingleQueryResultDestinationPortsList>;
@@ -35564,7 +35630,7 @@ export const SingleQueryResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SingleQueryResult>;
 
 /** Array containing the results of the query */
-export type QueryResultsSignaturesList = ReadonlyArray<SingleQueryResult>;
+export type QueryResultsSignaturesList = Array<SingleQueryResult>;
 export const QueryResultsSignaturesList = /*@__PURE__*/ S.Array(
   SingleQueryResult,
 ) as any as S.Schema<QueryResultsSignaturesList>;
@@ -35703,8 +35769,7 @@ export const SignaturesOverrides = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SignaturesOverrides>;
 
 /** Describes a list consisting exactly one item describing the policy's signature override status */
-export type SignaturesOverridesListValueList =
-  ReadonlyArray<SignaturesOverrides>;
+export type SignaturesOverridesListValueList = Array<SignaturesOverrides>;
 export const SignaturesOverridesListValueList = /*@__PURE__*/ S.Array(
   SignaturesOverrides,
 ) as any as S.Schema<SignaturesOverridesListValueList>;
@@ -35852,7 +35917,9 @@ export const FirewallPolicyRuleCollectionRuleCollectionType =
 /** Properties of the rule collection. */
 export interface FirewallPolicyRuleCollection {
   /** The type of the rule collection. */
-  ruleCollectionType: FirewallPolicyRuleCollectionRuleCollectionType;
+  ruleCollectionType:
+    | FirewallPolicyRuleCollectionRuleCollectionType
+    | (string & {});
   /** The name of the rule collection. */
   name?: string;
   /** Priority of the Firewall Policy Rule Collection resource. */
@@ -35870,7 +35937,7 @@ export const FirewallPolicyRuleCollection = /*@__PURE__*/ S.suspend(() =>
 
 /** Group of Firewall Policy rule collections. */
 export type FirewallPolicyRuleCollectionGroupDraftPropertiesInputRuleCollectionsList =
-  ReadonlyArray<FirewallPolicyRuleCollection>;
+  Array<FirewallPolicyRuleCollection>;
 export const FirewallPolicyRuleCollectionGroupDraftPropertiesInputRuleCollectionsList =
   /*@__PURE__*/ S.Array(
     FirewallPolicyRuleCollection,
@@ -35937,7 +36004,7 @@ export const FirewallPolicyRuleCollectionGroupDraftsCreateOrUpdateRequest =
 
 /** Group of Firewall Policy rule collections. */
 export type FirewallPolicyRuleCollectionGroupDraftPropertiesRuleCollectionsList =
-  ReadonlyArray<FirewallPolicyRuleCollection>;
+  Array<FirewallPolicyRuleCollection>;
 export const FirewallPolicyRuleCollectionGroupDraftPropertiesRuleCollectionsList =
   /*@__PURE__*/ S.Array(
     FirewallPolicyRuleCollection,
@@ -36075,7 +36142,7 @@ export const FirewallPolicyRuleCollectionGroupDraftsGetResponse =
 
 /** Group of Firewall Policy rule collections. */
 export type FirewallPolicyRuleCollectionGroupPropertiesInputRuleCollectionsList =
-  ReadonlyArray<FirewallPolicyRuleCollection>;
+  Array<FirewallPolicyRuleCollection>;
 export const FirewallPolicyRuleCollectionGroupPropertiesInputRuleCollectionsList =
   /*@__PURE__*/ S.Array(
     FirewallPolicyRuleCollection,
@@ -36158,7 +36225,7 @@ export const FirewallPolicyRuleCollectionGroupsCreateOrUpdateRequest =
 
 /** Group of Firewall Policy rule collections. */
 export type FirewallPolicyRuleCollectionGroupPropertiesRuleCollectionsList =
-  ReadonlyArray<FirewallPolicyRuleCollection>;
+  Array<FirewallPolicyRuleCollection>;
 export const FirewallPolicyRuleCollectionGroupPropertiesRuleCollectionsList =
   /*@__PURE__*/ S.Array(
     FirewallPolicyRuleCollection,
@@ -36369,7 +36436,7 @@ export const FirewallPolicyRuleCollectionGroup = /*@__PURE__*/ S.suspend(() =>
 
 /** The FirewallPolicyRuleCollectionGroup items on this page */
 export type FirewallPolicyRuleCollectionGroupListResultValueList =
-  ReadonlyArray<FirewallPolicyRuleCollectionGroup>;
+  Array<FirewallPolicyRuleCollectionGroup>;
 export const FirewallPolicyRuleCollectionGroupListResultValueList =
   /*@__PURE__*/ S.Array(
     FirewallPolicyRuleCollectionGroup,
@@ -36420,7 +36487,7 @@ export const CommonRetentionPolicyParameters_5 = /*@__PURE__*/ S.suspend(() =>
 /** Parameters that define the flow log format. */
 export interface CommonFlowLogFormatParameters_5 {
   /** The file type of flow log. */
-  type?: CommonFlowLogFormatParametersType;
+  type?: CommonFlowLogFormatParametersType | (string & {});
   /** The version (revision) of the flow log. */
   version?: number;
 }
@@ -36943,7 +37010,7 @@ export const CommonFlowLog = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CommonFlowLog" }) as any as S.Schema<CommonFlowLog>;
 
 /** The FlowLog items on this page */
-export type FlowLogListResultValueList = ReadonlyArray<CommonFlowLog>;
+export type FlowLogListResultValueList = Array<CommonFlowLog>;
 export const FlowLogListResultValueList = /*@__PURE__*/ S.Array(
   CommonFlowLog,
 ) as any as S.Schema<FlowLogListResultValueList>;
@@ -37209,7 +37276,7 @@ export const BastionActiveSession = /*@__PURE__*/ S.suspend(() =>
 
 /** The BastionActiveSession items on this page */
 export type BastionActiveSessionListResultValueList =
-  ReadonlyArray<BastionActiveSession>;
+  Array<BastionActiveSession>;
 export const BastionActiveSessionListResultValueList = /*@__PURE__*/ S.Array(
   BastionActiveSession,
 ) as any as S.Schema<BastionActiveSessionListResultValueList>;
@@ -37232,7 +37299,7 @@ export const BastionActiveSessionListResult = /*@__PURE__*/ S.suspend(() =>
 
 /** List of VM references. */
 export type GetBastionShareableLinkRequestVmsList =
-  ReadonlyArray<BastionShareableLinkInput>;
+  Array<BastionShareableLinkInput>;
 export const GetBastionShareableLinkRequestVmsList = /*@__PURE__*/ S.Array(
   BastionShareableLinkInput,
 ) as any as S.Schema<GetBastionShareableLinkRequestVmsList>;
@@ -37319,7 +37386,7 @@ export const BastionShareableLink = /*@__PURE__*/ S.suspend(() =>
 
 /** The BastionShareableLink items on this page */
 export type BastionShareableLinkListResultValueList =
-  ReadonlyArray<BastionShareableLink>;
+  Array<BastionShareableLink>;
 export const BastionShareableLinkListResultValueList = /*@__PURE__*/ S.Array(
   BastionShareableLink,
 ) as any as S.Schema<BastionShareableLinkListResultValueList>;
@@ -37341,7 +37408,7 @@ export const BastionShareableLinkListResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BastionShareableLinkListResult>;
 
 /** List of all destinations. */
-export type HubRouteDestinationsList = ReadonlyArray<string>;
+export type HubRouteDestinationsList = Array<string>;
 export const HubRouteDestinationsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<HubRouteDestinationsList>;
@@ -37370,13 +37437,13 @@ export const HubRoute = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "HubRoute" }) as any as S.Schema<HubRoute>;
 
 /** List of all routes. */
-export type HubRouteTablePropertiesInputRoutesList = ReadonlyArray<HubRoute>;
+export type HubRouteTablePropertiesInputRoutesList = Array<HubRoute>;
 export const HubRouteTablePropertiesInputRoutesList = /*@__PURE__*/ S.Array(
   HubRoute,
 ) as any as S.Schema<HubRouteTablePropertiesInputRoutesList>;
 
 /** List of labels associated with this route table. */
-export type HubRouteTablePropertiesInputLabelsList = ReadonlyArray<string>;
+export type HubRouteTablePropertiesInputLabelsList = Array<string>;
 export const HubRouteTablePropertiesInputLabelsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<HubRouteTablePropertiesInputLabelsList>;
@@ -37453,28 +37520,26 @@ export const HubRouteTablesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HubRouteTablesCreateOrUpdateRequest>;
 
 /** List of all routes. */
-export type HubRouteTablePropertiesRoutesList = ReadonlyArray<HubRoute>;
+export type HubRouteTablePropertiesRoutesList = Array<HubRoute>;
 export const HubRouteTablePropertiesRoutesList = /*@__PURE__*/ S.Array(
   HubRoute,
 ) as any as S.Schema<HubRouteTablePropertiesRoutesList>;
 
 /** List of labels associated with this route table. */
-export type HubRouteTablePropertiesLabelsList = ReadonlyArray<string>;
+export type HubRouteTablePropertiesLabelsList = Array<string>;
 export const HubRouteTablePropertiesLabelsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<HubRouteTablePropertiesLabelsList>;
 
 /** List of all connections associated with this route table. */
-export type HubRouteTablePropertiesAssociatedConnectionsList =
-  ReadonlyArray<string>;
+export type HubRouteTablePropertiesAssociatedConnectionsList = Array<string>;
 export const HubRouteTablePropertiesAssociatedConnectionsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<HubRouteTablePropertiesAssociatedConnectionsList>;
 
 /** List of all connections that advertise to this route table. */
-export type HubRouteTablePropertiesPropagatingConnectionsList =
-  ReadonlyArray<string>;
+export type HubRouteTablePropertiesPropagatingConnectionsList = Array<string>;
 export const HubRouteTablePropertiesPropagatingConnectionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -37680,7 +37745,7 @@ export const HubRouteTable = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "HubRouteTable" }) as any as S.Schema<HubRouteTable>;
 
 /** The HubRouteTable items on this page */
-export type ListHubRouteTablesResultValueList = ReadonlyArray<HubRouteTable>;
+export type ListHubRouteTablesResultValueList = Array<HubRouteTable>;
 export const ListHubRouteTablesResultValueList = /*@__PURE__*/ S.Array(
   HubRouteTable,
 ) as any as S.Schema<ListHubRouteTablesResultValueList>;
@@ -38051,7 +38116,7 @@ export const HubVirtualNetworkConnection = /*@__PURE__*/ S.suspend(() =>
 
 /** The HubVirtualNetworkConnection items on this page */
 export type ListHubVirtualNetworkConnectionsResultValueList =
-  ReadonlyArray<HubVirtualNetworkConnection>;
+  Array<HubVirtualNetworkConnection>;
 export const ListHubVirtualNetworkConnectionsResultValueList =
   /*@__PURE__*/ S.Array(
     HubVirtualNetworkConnection,
@@ -38211,7 +38276,7 @@ export const CommonRouteInput_2 = /*@__PURE__*/ S.suspend(() =>
 
 /** Collection of routes contained within a route table. */
 export type CommonRouteTablePropertiesFormatInputRoutesList_2 =
-  ReadonlyArray<CommonRouteInput_2>;
+  Array<CommonRouteInput_2>;
 export const CommonRouteTablePropertiesFormatInputRoutesList_2 =
   /*@__PURE__*/ S.Array(
     CommonRouteInput_2,
@@ -38272,7 +38337,7 @@ export const CommonRouteTableInput_2 = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of service resources. */
 export type CommonServiceEndpointPolicyDefinitionPropertiesFormatServiceResourcesList_3 =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CommonServiceEndpointPolicyDefinitionPropertiesFormatServiceResourcesList_3 =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -38287,7 +38352,9 @@ export interface CommonServiceEndpointPolicyDefinitionPropertiesFormat_3 {
   /** A list of service resources. */
   serviceResources?: CommonServiceEndpointPolicyDefinitionPropertiesFormatServiceResourcesList_3;
   /** Provisioning states of a resource. */
-  provisioningState?: CommonServiceEndpointPolicyDefinitionPropertiesFormatProvisioningState;
+  provisioningState?:
+    | CommonServiceEndpointPolicyDefinitionPropertiesFormatProvisioningState
+    | (string & {});
 }
 export const CommonServiceEndpointPolicyDefinitionPropertiesFormat_3 =
   /*@__PURE__*/ S.suspend(() =>
@@ -38329,7 +38396,7 @@ export const CommonServiceEndpointPolicyDefinitionInput_3 =
 
 /** A collection of service endpoint policy definitions of the service endpoint policy. */
 export type CommonServiceEndpointPolicyPropertiesFormatInputServiceEndpointPolicyDefinitionsList_3 =
-  ReadonlyArray<CommonServiceEndpointPolicyDefinitionInput_3>;
+  Array<CommonServiceEndpointPolicyDefinitionInput_3>;
 export const CommonServiceEndpointPolicyPropertiesFormatInputServiceEndpointPolicyDefinitionsList_3 =
   /*@__PURE__*/ S.Array(
     CommonServiceEndpointPolicyDefinitionInput_3,
@@ -38396,7 +38463,7 @@ export const CommonSubnetPropertiesFormatInputServiceEndpointPoliciesItem_2 =
 
 /** An array of service endpoint policies. */
 export type CommonSubnetPropertiesFormatInputServiceEndpointPoliciesList_2 =
-  ReadonlyArray<CommonSubnetPropertiesFormatInputServiceEndpointPoliciesItem_2>;
+  Array<CommonSubnetPropertiesFormatInputServiceEndpointPoliciesItem_2>;
 export const CommonSubnetPropertiesFormatInputServiceEndpointPoliciesList_2 =
   /*@__PURE__*/ S.Array(
     CommonSubnetPropertiesFormatInputServiceEndpointPoliciesItem_2,
@@ -38531,7 +38598,7 @@ export const CommonPublicIPAddressPropertiesFormatInputPublicIPAddressVersion =
 
 /** The list of tags associated with the public IP address. */
 export type CommonPublicIPAddressPropertiesFormatInputIpTagsList =
-  ReadonlyArray<CommonIpTag>;
+  Array<CommonIpTag>;
 export const CommonPublicIPAddressPropertiesFormatInputIpTagsList =
   /*@__PURE__*/ S.Array(
     CommonIpTag,
@@ -38589,7 +38656,7 @@ export const CommonPublicIPAddressInputExtendedLocation =
   }) as any as S.Schema<CommonPublicIPAddressInputExtendedLocation>;
 
 /** A list of availability zones denoting the IP allocated for the resource needs to come from. */
-export type CommonPublicIPAddressInputZonesList = ReadonlyArray<string>;
+export type CommonPublicIPAddressInputZonesList = Array<string>;
 export const CommonPublicIPAddressInputZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CommonPublicIPAddressInputZonesList>;
@@ -38652,7 +38719,7 @@ export const CommonNatGatewayPropertiesFormatInputPublicIpAddressesItem =
 
 /** An array of public ip addresses V4 associated with the nat gateway resource. */
 export type CommonNatGatewayPropertiesFormatInputPublicIpAddressesList =
-  ReadonlyArray<CommonNatGatewayPropertiesFormatInputPublicIpAddressesItem>;
+  Array<CommonNatGatewayPropertiesFormatInputPublicIpAddressesItem>;
 export const CommonNatGatewayPropertiesFormatInputPublicIpAddressesList =
   /*@__PURE__*/ S.Array(
     CommonNatGatewayPropertiesFormatInputPublicIpAddressesItem,
@@ -38674,7 +38741,7 @@ export const CommonNatGatewayPropertiesFormatInputPublicIpAddressesV6Item =
 
 /** An array of public ip addresses V6 associated with the nat gateway resource. */
 export type CommonNatGatewayPropertiesFormatInputPublicIpAddressesV6List =
-  ReadonlyArray<CommonNatGatewayPropertiesFormatInputPublicIpAddressesV6Item>;
+  Array<CommonNatGatewayPropertiesFormatInputPublicIpAddressesV6Item>;
 export const CommonNatGatewayPropertiesFormatInputPublicIpAddressesV6List =
   /*@__PURE__*/ S.Array(
     CommonNatGatewayPropertiesFormatInputPublicIpAddressesV6Item,
@@ -38696,7 +38763,7 @@ export const CommonNatGatewayPropertiesFormatInputPublicIpPrefixesItem =
 
 /** An array of public ip prefixes V4 associated with the nat gateway resource. */
 export type CommonNatGatewayPropertiesFormatInputPublicIpPrefixesList =
-  ReadonlyArray<CommonNatGatewayPropertiesFormatInputPublicIpPrefixesItem>;
+  Array<CommonNatGatewayPropertiesFormatInputPublicIpPrefixesItem>;
 export const CommonNatGatewayPropertiesFormatInputPublicIpPrefixesList =
   /*@__PURE__*/ S.Array(
     CommonNatGatewayPropertiesFormatInputPublicIpPrefixesItem,
@@ -38718,7 +38785,7 @@ export const CommonNatGatewayPropertiesFormatInputPublicIpPrefixesV6Item =
 
 /** An array of public ip prefixes V6 associated with the nat gateway resource. */
 export type CommonNatGatewayPropertiesFormatInputPublicIpPrefixesV6List =
-  ReadonlyArray<CommonNatGatewayPropertiesFormatInputPublicIpPrefixesV6Item>;
+  Array<CommonNatGatewayPropertiesFormatInputPublicIpPrefixesV6Item>;
 export const CommonNatGatewayPropertiesFormatInputPublicIpPrefixesV6List =
   /*@__PURE__*/ S.Array(
     CommonNatGatewayPropertiesFormatInputPublicIpPrefixesV6Item,
@@ -38826,7 +38893,7 @@ export const CommonNatGatewayPropertiesFormatInput = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CommonNatGatewayPropertiesFormatInput>;
 
 /** A list of availability zones denoting the zone in which Nat Gateway should be deployed. */
-export type CommonNatGatewayInputZonesList = ReadonlyArray<string>;
+export type CommonNatGatewayInputZonesList = Array<string>;
 export const CommonNatGatewayInputZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CommonNatGatewayInputZonesList>;
@@ -38971,7 +39038,7 @@ export const CommonFrontendIPConfigurationPropertiesFormatInputPublicIPAddressEx
 
 /** A list of availability zones denoting the IP allocated for the resource needs to come from. */
 export type CommonFrontendIPConfigurationPropertiesFormatInputPublicIPAddressZonesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CommonFrontendIPConfigurationPropertiesFormatInputPublicIPAddressZonesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -39129,7 +39196,7 @@ export const CommonFrontendIPConfigurationPropertiesFormatInput =
 
 /** A list of availability zones denoting the IP allocated for the resource needs to come from. */
 export type CommonVirtualNetworkTapPropertiesFormatInputDestinationLoadBalancerFrontEndIPConfigurationZonesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CommonVirtualNetworkTapPropertiesFormatInputDestinationLoadBalancerFrontEndIPConfigurationZonesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -39222,7 +39289,7 @@ export const CommonNetworkInterfaceIPConfigurationPropertiesFormatInputVirtualNe
 
 /** The reference to Virtual Network Taps. */
 export type CommonNetworkInterfaceIPConfigurationPropertiesFormatInputVirtualNetworkTapsList =
-  ReadonlyArray<CommonNetworkInterfaceIPConfigurationPropertiesFormatInputVirtualNetworkTapsItem>;
+  Array<CommonNetworkInterfaceIPConfigurationPropertiesFormatInputVirtualNetworkTapsItem>;
 export const CommonNetworkInterfaceIPConfigurationPropertiesFormatInputVirtualNetworkTapsList =
   /*@__PURE__*/ S.Array(
     CommonNetworkInterfaceIPConfigurationPropertiesFormatInputVirtualNetworkTapsItem,
@@ -39253,7 +39320,7 @@ export const CommonNetworkInterfaceIPConfigurationPropertiesFormatInputApplicati
 
 /** The reference to ApplicationGatewayBackendAddressPool resource. */
 export type CommonNetworkInterfaceIPConfigurationPropertiesFormatInputApplicationGatewayBackendAddressPoolsList =
-  ReadonlyArray<CommonNetworkInterfaceIPConfigurationPropertiesFormatInputApplicationGatewayBackendAddressPoolsItem>;
+  Array<CommonNetworkInterfaceIPConfigurationPropertiesFormatInputApplicationGatewayBackendAddressPoolsItem>;
 export const CommonNetworkInterfaceIPConfigurationPropertiesFormatInputApplicationGatewayBackendAddressPoolsList =
   /*@__PURE__*/ S.Array(
     CommonNetworkInterfaceIPConfigurationPropertiesFormatInputApplicationGatewayBackendAddressPoolsItem,
@@ -39261,7 +39328,7 @@ export const CommonNetworkInterfaceIPConfigurationPropertiesFormatInputApplicati
 
 /** An array of gateway load balancer tunnel interfaces. */
 export type CommonBackendAddressPoolPropertiesFormatInputTunnelInterfacesList =
-  ReadonlyArray<CommonGatewayLoadBalancerTunnelInterface>;
+  Array<CommonGatewayLoadBalancerTunnelInterface>;
 export const CommonBackendAddressPoolPropertiesFormatInputTunnelInterfacesList =
   /*@__PURE__*/ S.Array(
     CommonGatewayLoadBalancerTunnelInterface,
@@ -39396,7 +39463,7 @@ export const CommonLoadBalancerBackendAddressInput = /*@__PURE__*/ S.suspend(
 
 /** An array of backend addresses. */
 export type CommonBackendAddressPoolPropertiesFormatInputLoadBalancerBackendAddressesList =
-  ReadonlyArray<CommonLoadBalancerBackendAddressInput>;
+  Array<CommonLoadBalancerBackendAddressInput>;
 export const CommonBackendAddressPoolPropertiesFormatInputLoadBalancerBackendAddressesList =
   /*@__PURE__*/ S.Array(
     CommonLoadBalancerBackendAddressInput,
@@ -39522,7 +39589,7 @@ export const CommonNetworkInterfaceIPConfigurationPropertiesFormatInputLoadBalan
 
 /** The reference to LoadBalancerBackendAddressPool resource. */
 export type CommonNetworkInterfaceIPConfigurationPropertiesFormatInputLoadBalancerBackendAddressPoolsList =
-  ReadonlyArray<CommonNetworkInterfaceIPConfigurationPropertiesFormatInputLoadBalancerBackendAddressPoolsItem>;
+  Array<CommonNetworkInterfaceIPConfigurationPropertiesFormatInputLoadBalancerBackendAddressPoolsItem>;
 export const CommonNetworkInterfaceIPConfigurationPropertiesFormatInputLoadBalancerBackendAddressPoolsList =
   /*@__PURE__*/ S.Array(
     CommonNetworkInterfaceIPConfigurationPropertiesFormatInputLoadBalancerBackendAddressPoolsItem,
@@ -39553,7 +39620,7 @@ export const CommonNetworkInterfaceIPConfigurationPropertiesFormatInputLoadBalan
 
 /** A list of references of LoadBalancerInboundNatRules. */
 export type CommonNetworkInterfaceIPConfigurationPropertiesFormatInputLoadBalancerInboundNatRulesList =
-  ReadonlyArray<CommonNetworkInterfaceIPConfigurationPropertiesFormatInputLoadBalancerInboundNatRulesItem>;
+  Array<CommonNetworkInterfaceIPConfigurationPropertiesFormatInputLoadBalancerInboundNatRulesItem>;
 export const CommonNetworkInterfaceIPConfigurationPropertiesFormatInputLoadBalancerInboundNatRulesList =
   /*@__PURE__*/ S.Array(
     CommonNetworkInterfaceIPConfigurationPropertiesFormatInputLoadBalancerInboundNatRulesItem,
@@ -39592,7 +39659,7 @@ export const CommonSubnetInput_2 = /*@__PURE__*/ S.suspend(() =>
 
 /** Application security groups in which the IP configuration is included. */
 export type CommonNetworkInterfaceIPConfigurationPropertiesFormatInputApplicationSecurityGroupsList =
-  ReadonlyArray<CommonApplicationSecurityGroupInput>;
+  Array<CommonApplicationSecurityGroupInput>;
 export const CommonNetworkInterfaceIPConfigurationPropertiesFormatInputApplicationSecurityGroupsList =
   /*@__PURE__*/ S.Array(
     CommonApplicationSecurityGroupInput,
@@ -39922,7 +39989,7 @@ export const CommonVirtualNetworkTapPropertiesFormatNetworkInterfaceTapConfigura
 
 /** Specifies the list of resource IDs for the network interface IP configuration that needs to be tapped. */
 export type CommonVirtualNetworkTapPropertiesFormatNetworkInterfaceTapConfigurationsList_3 =
-  ReadonlyArray<CommonVirtualNetworkTapPropertiesFormatNetworkInterfaceTapConfigurationsItem_3>;
+  Array<CommonVirtualNetworkTapPropertiesFormatNetworkInterfaceTapConfigurationsItem_3>;
 export const CommonVirtualNetworkTapPropertiesFormatNetworkInterfaceTapConfigurationsList_3 =
   /*@__PURE__*/ S.Array(
     CommonVirtualNetworkTapPropertiesFormatNetworkInterfaceTapConfigurationsItem_3,
@@ -39961,7 +40028,7 @@ export const CommonVirtualNetworkTapPropertiesFormatDestinationNetworkInterfaceI
 
 /** The CIDR or source IP ranges. */
 export type CommonSecurityRulePropertiesFormatSourceAddressPrefixesList_3 =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CommonSecurityRulePropertiesFormatSourceAddressPrefixesList_3 =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -39969,7 +40036,7 @@ export const CommonSecurityRulePropertiesFormatSourceAddressPrefixesList_3 =
 
 /** The application security group specified as source. */
 export type CommonSecurityRulePropertiesFormatSourceApplicationSecurityGroupsList_3 =
-  ReadonlyArray<CommonApplicationSecurityGroup>;
+  Array<CommonApplicationSecurityGroup>;
 export const CommonSecurityRulePropertiesFormatSourceApplicationSecurityGroupsList_3 =
   /*@__PURE__*/ S.Array(
     CommonApplicationSecurityGroup,
@@ -39977,7 +40044,7 @@ export const CommonSecurityRulePropertiesFormatSourceApplicationSecurityGroupsLi
 
 /** The destination address prefixes. CIDR or destination IP ranges. */
 export type CommonSecurityRulePropertiesFormatDestinationAddressPrefixesList_3 =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CommonSecurityRulePropertiesFormatDestinationAddressPrefixesList_3 =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -39985,7 +40052,7 @@ export const CommonSecurityRulePropertiesFormatDestinationAddressPrefixesList_3 
 
 /** The application security group specified as destination. */
 export type CommonSecurityRulePropertiesFormatDestinationApplicationSecurityGroupsList_3 =
-  ReadonlyArray<CommonApplicationSecurityGroup>;
+  Array<CommonApplicationSecurityGroup>;
 export const CommonSecurityRulePropertiesFormatDestinationApplicationSecurityGroupsList_3 =
   /*@__PURE__*/ S.Array(
     CommonApplicationSecurityGroup,
@@ -39993,7 +40060,7 @@ export const CommonSecurityRulePropertiesFormatDestinationApplicationSecurityGro
 
 /** The source port ranges. */
 export type CommonSecurityRulePropertiesFormatSourcePortRangesList_3 =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CommonSecurityRulePropertiesFormatSourcePortRangesList_3 =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -40001,7 +40068,7 @@ export const CommonSecurityRulePropertiesFormatSourcePortRangesList_3 =
 
 /** The destination port ranges. */
 export type CommonSecurityRulePropertiesFormatDestinationPortRangesList_3 =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CommonSecurityRulePropertiesFormatDestinationPortRangesList_3 =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -40107,7 +40174,7 @@ export const CommonSecurityRule_3 = /*@__PURE__*/ S.suspend(() =>
 
 /** A collection of security rules of the network security group. */
 export type CommonNetworkSecurityGroupPropertiesFormatSecurityRulesList_3 =
-  ReadonlyArray<CommonSecurityRule_3>;
+  Array<CommonSecurityRule_3>;
 export const CommonNetworkSecurityGroupPropertiesFormatSecurityRulesList_3 =
   /*@__PURE__*/ S.Array(
     CommonSecurityRule_3,
@@ -40115,7 +40182,7 @@ export const CommonNetworkSecurityGroupPropertiesFormatSecurityRulesList_3 =
 
 /** The default security rules of network security group. */
 export type CommonNetworkSecurityGroupPropertiesFormatDefaultSecurityRulesList_3 =
-  ReadonlyArray<CommonSecurityRule_3>;
+  Array<CommonSecurityRule_3>;
 export const CommonNetworkSecurityGroupPropertiesFormatDefaultSecurityRulesList_3 =
   /*@__PURE__*/ S.Array(
     CommonSecurityRule_3,
@@ -40160,7 +40227,7 @@ export const CommonSubnet_3 = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of references to the network interfaces created for this private endpoint. */
 export type CommonPrivateEndpointPropertiesNetworkInterfacesList_3 =
-  ReadonlyArray<CommonNetworkInterface_3>;
+  Array<CommonNetworkInterface_3>;
 export const CommonPrivateEndpointPropertiesNetworkInterfacesList_3 =
   /*@__PURE__*/ S.Array(
     S.suspend(() => CommonNetworkInterface_3),
@@ -40289,7 +40356,7 @@ export const CommonNetworkInterfaceIPConfiguration_2 = /*@__PURE__*/ S.suspend(
 
 /** A list of IPConfigurations of the network interface. */
 export type CommonNetworkInterfacePropertiesFormatIpConfigurationsList_3 =
-  ReadonlyArray<CommonNetworkInterfaceIPConfiguration_2>;
+  Array<CommonNetworkInterfaceIPConfiguration_2>;
 export const CommonNetworkInterfacePropertiesFormatIpConfigurationsList_3 =
   /*@__PURE__*/ S.Array(
     CommonNetworkInterfaceIPConfiguration_2,
@@ -40325,7 +40392,7 @@ export const CommonNetworkInterfaceTapConfiguration_2 = /*@__PURE__*/ S.suspend(
 
 /** A list of TapConfigurations of the network interface. */
 export type CommonNetworkInterfacePropertiesFormatTapConfigurationsList_3 =
-  ReadonlyArray<CommonNetworkInterfaceTapConfiguration_2>;
+  Array<CommonNetworkInterfaceTapConfiguration_2>;
 export const CommonNetworkInterfacePropertiesFormatTapConfigurationsList_3 =
   /*@__PURE__*/ S.Array(
     CommonNetworkInterfaceTapConfiguration_2,
@@ -40333,7 +40400,7 @@ export const CommonNetworkInterfacePropertiesFormatTapConfigurationsList_3 =
 
 /** A list of references to linked BareMetal resources. */
 export type CommonNetworkInterfacePropertiesFormatHostedWorkloadsList_3 =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CommonNetworkInterfacePropertiesFormatHostedWorkloadsList_3 =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -40389,7 +40456,7 @@ export const CommonPrivateLinkServicePropertiesLoadBalancerFrontendIpConfigurati
 
 /** An array of references to the load balancer IP configurations. */
 export type CommonPrivateLinkServicePropertiesLoadBalancerFrontendIpConfigurationsList_2 =
-  ReadonlyArray<CommonPrivateLinkServicePropertiesLoadBalancerFrontendIpConfigurationsItem_2>;
+  Array<CommonPrivateLinkServicePropertiesLoadBalancerFrontendIpConfigurationsItem_2>;
 export const CommonPrivateLinkServicePropertiesLoadBalancerFrontendIpConfigurationsList_2 =
   /*@__PURE__*/ S.Array(
     CommonPrivateLinkServicePropertiesLoadBalancerFrontendIpConfigurationsItem_2,
@@ -40460,7 +40527,7 @@ export const CommonPrivateLinkServiceIpConfiguration_2 =
 
 /** An array of private link service IP configurations. */
 export type CommonPrivateLinkServicePropertiesIpConfigurationsList_2 =
-  ReadonlyArray<CommonPrivateLinkServiceIpConfiguration_2>;
+  Array<CommonPrivateLinkServiceIpConfiguration_2>;
 export const CommonPrivateLinkServicePropertiesIpConfigurationsList_2 =
   /*@__PURE__*/ S.Array(
     CommonPrivateLinkServiceIpConfiguration_2,
@@ -40468,7 +40535,7 @@ export const CommonPrivateLinkServicePropertiesIpConfigurationsList_2 =
 
 /** An array of references to the network interfaces created for this private link service. */
 export type CommonPrivateLinkServicePropertiesNetworkInterfacesList_2 =
-  ReadonlyArray<CommonNetworkInterface_3>;
+  Array<CommonNetworkInterface_3>;
 export const CommonPrivateLinkServicePropertiesNetworkInterfacesList_2 =
   /*@__PURE__*/ S.Array(
     S.suspend(() => CommonNetworkInterface_3),
@@ -40531,7 +40598,7 @@ export const CommonPrivateEndpointConnection_2 = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of list about connections to the private endpoint. */
 export type CommonPrivateLinkServicePropertiesPrivateEndpointConnectionsList_2 =
-  ReadonlyArray<CommonPrivateEndpointConnection_2>;
+  Array<CommonPrivateEndpointConnection_2>;
 export const CommonPrivateLinkServicePropertiesPrivateEndpointConnectionsList_2 =
   /*@__PURE__*/ S.Array(
     CommonPrivateEndpointConnection_2,
@@ -40764,7 +40831,7 @@ export const CommonNetworkInterface_3 = /*@__PURE__*/ S.suspend(() =>
 
 /** A collection of references to network interfaces. */
 export type CommonNetworkSecurityGroupPropertiesFormatNetworkInterfacesList_3 =
-  ReadonlyArray<CommonNetworkInterface_3>;
+  Array<CommonNetworkInterface_3>;
 export const CommonNetworkSecurityGroupPropertiesFormatNetworkInterfacesList_3 =
   /*@__PURE__*/ S.Array(
     CommonNetworkInterface_3,
@@ -40772,7 +40839,7 @@ export const CommonNetworkSecurityGroupPropertiesFormatNetworkInterfacesList_3 =
 
 /** A collection of references to subnets. */
 export type CommonNetworkSecurityGroupPropertiesFormatSubnetsList_3 =
-  ReadonlyArray<CommonSubnet_3>;
+  Array<CommonSubnet_3>;
 export const CommonNetworkSecurityGroupPropertiesFormatSubnetsList_3 =
   /*@__PURE__*/ S.Array(
     CommonSubnet_3,
@@ -40959,7 +41026,7 @@ export const CommonNetworkSecurityGroupPropertiesFormatFlowLogsItem_3 =
 
 /** A collection of references to flow log resources. */
 export type CommonNetworkSecurityGroupPropertiesFormatFlowLogsList_3 =
-  ReadonlyArray<CommonNetworkSecurityGroupPropertiesFormatFlowLogsItem_3>;
+  Array<CommonNetworkSecurityGroupPropertiesFormatFlowLogsItem_3>;
 export const CommonNetworkSecurityGroupPropertiesFormatFlowLogsList_3 =
   /*@__PURE__*/ S.Array(
     CommonNetworkSecurityGroupPropertiesFormatFlowLogsItem_3,
@@ -41095,8 +41162,7 @@ export const CommonRoute_3 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CommonRoute_3" }) as any as S.Schema<CommonRoute_3>;
 
 /** Collection of routes contained within a route table. */
-export type CommonRouteTablePropertiesFormatRoutesList_3 =
-  ReadonlyArray<CommonRoute_3>;
+export type CommonRouteTablePropertiesFormatRoutesList_3 = Array<CommonRoute_3>;
 export const CommonRouteTablePropertiesFormatRoutesList_3 =
   /*@__PURE__*/ S.Array(
     CommonRoute_3,
@@ -41104,7 +41170,7 @@ export const CommonRouteTablePropertiesFormatRoutesList_3 =
 
 /** A collection of references to subnets. */
 export type CommonRouteTablePropertiesFormatSubnetsList_3 =
-  ReadonlyArray<CommonSubnet_3>;
+  Array<CommonSubnet_3>;
 export const CommonRouteTablePropertiesFormatSubnetsList_3 =
   /*@__PURE__*/ S.Array(
     CommonSubnet_3,
@@ -41203,7 +41269,7 @@ export const CommonServiceEndpointPolicyDefinition_3 = /*@__PURE__*/ S.suspend(
 
 /** A collection of service endpoint policy definitions of the service endpoint policy. */
 export type CommonServiceEndpointPolicyPropertiesFormatServiceEndpointPolicyDefinitionsList_3 =
-  ReadonlyArray<CommonServiceEndpointPolicyDefinition_3>;
+  Array<CommonServiceEndpointPolicyDefinition_3>;
 export const CommonServiceEndpointPolicyPropertiesFormatServiceEndpointPolicyDefinitionsList_3 =
   /*@__PURE__*/ S.Array(
     CommonServiceEndpointPolicyDefinition_3,
@@ -41237,7 +41303,7 @@ export const CommonServiceEndpointPolicyPropertiesFormatSubnetsItem_3 =
 
 /** A collection of references to subnets. */
 export type CommonServiceEndpointPolicyPropertiesFormatSubnetsList_3 =
-  ReadonlyArray<CommonServiceEndpointPolicyPropertiesFormatSubnetsItem_3>;
+  Array<CommonServiceEndpointPolicyPropertiesFormatSubnetsItem_3>;
 export const CommonServiceEndpointPolicyPropertiesFormatSubnetsList_3 =
   /*@__PURE__*/ S.Array(
     CommonServiceEndpointPolicyPropertiesFormatSubnetsItem_3,
@@ -41319,7 +41385,7 @@ export const CommonSubnetPropertiesFormatServiceEndpointPoliciesItem_3 =
 
 /** An array of service endpoint policies. */
 export type CommonSubnetPropertiesFormatServiceEndpointPoliciesList_3 =
-  ReadonlyArray<CommonSubnetPropertiesFormatServiceEndpointPoliciesItem_3>;
+  Array<CommonSubnetPropertiesFormatServiceEndpointPoliciesItem_3>;
 export const CommonSubnetPropertiesFormatServiceEndpointPoliciesList_3 =
   /*@__PURE__*/ S.Array(
     CommonSubnetPropertiesFormatServiceEndpointPoliciesItem_3,
@@ -41327,7 +41393,7 @@ export const CommonSubnetPropertiesFormatServiceEndpointPoliciesList_3 =
 
 /** An array of references to private endpoints. */
 export type CommonSubnetPropertiesFormatPrivateEndpointsList_3 =
-  ReadonlyArray<CommonPrivateEndpoint_2>;
+  Array<CommonPrivateEndpoint_2>;
 export const CommonSubnetPropertiesFormatPrivateEndpointsList_3 =
   /*@__PURE__*/ S.Array(
     CommonPrivateEndpoint_2,
@@ -41335,7 +41401,7 @@ export const CommonSubnetPropertiesFormatPrivateEndpointsList_3 =
 
 /** The list of tags associated with the public IP address. */
 export type CommonPublicIPAddressPropertiesFormatIpTagsList_3 =
-  ReadonlyArray<CommonIpTag>;
+  Array<CommonIpTag>;
 export const CommonPublicIPAddressPropertiesFormatIpTagsList_3 =
   /*@__PURE__*/ S.Array(
     CommonIpTag,
@@ -41371,7 +41437,7 @@ export const CommonNatGatewayPropertiesFormatPublicIpAddressesItem_2 =
 
 /** An array of public ip addresses V4 associated with the nat gateway resource. */
 export type CommonNatGatewayPropertiesFormatPublicIpAddressesList_2 =
-  ReadonlyArray<CommonNatGatewayPropertiesFormatPublicIpAddressesItem_2>;
+  Array<CommonNatGatewayPropertiesFormatPublicIpAddressesItem_2>;
 export const CommonNatGatewayPropertiesFormatPublicIpAddressesList_2 =
   /*@__PURE__*/ S.Array(
     CommonNatGatewayPropertiesFormatPublicIpAddressesItem_2,
@@ -41393,7 +41459,7 @@ export const CommonNatGatewayPropertiesFormatPublicIpAddressesV6Item_2 =
 
 /** An array of public ip addresses V6 associated with the nat gateway resource. */
 export type CommonNatGatewayPropertiesFormatPublicIpAddressesV6List_2 =
-  ReadonlyArray<CommonNatGatewayPropertiesFormatPublicIpAddressesV6Item_2>;
+  Array<CommonNatGatewayPropertiesFormatPublicIpAddressesV6Item_2>;
 export const CommonNatGatewayPropertiesFormatPublicIpAddressesV6List_2 =
   /*@__PURE__*/ S.Array(
     CommonNatGatewayPropertiesFormatPublicIpAddressesV6Item_2,
@@ -41415,7 +41481,7 @@ export const CommonNatGatewayPropertiesFormatPublicIpPrefixesItem_2 =
 
 /** An array of public ip prefixes V4 associated with the nat gateway resource. */
 export type CommonNatGatewayPropertiesFormatPublicIpPrefixesList_2 =
-  ReadonlyArray<CommonNatGatewayPropertiesFormatPublicIpPrefixesItem_2>;
+  Array<CommonNatGatewayPropertiesFormatPublicIpPrefixesItem_2>;
 export const CommonNatGatewayPropertiesFormatPublicIpPrefixesList_2 =
   /*@__PURE__*/ S.Array(
     CommonNatGatewayPropertiesFormatPublicIpPrefixesItem_2,
@@ -41437,7 +41503,7 @@ export const CommonNatGatewayPropertiesFormatPublicIpPrefixesV6Item_2 =
 
 /** An array of public ip prefixes V6 associated with the nat gateway resource. */
 export type CommonNatGatewayPropertiesFormatPublicIpPrefixesV6List_2 =
-  ReadonlyArray<CommonNatGatewayPropertiesFormatPublicIpPrefixesV6Item_2>;
+  Array<CommonNatGatewayPropertiesFormatPublicIpPrefixesV6Item_2>;
 export const CommonNatGatewayPropertiesFormatPublicIpPrefixesV6List_2 =
   /*@__PURE__*/ S.Array(
     CommonNatGatewayPropertiesFormatPublicIpPrefixesV6Item_2,
@@ -41459,7 +41525,7 @@ export const CommonNatGatewayPropertiesFormatSubnetsItem_2 =
 
 /** An array of references to the subnets using this nat gateway resource. */
 export type CommonNatGatewayPropertiesFormatSubnetsList_2 =
-  ReadonlyArray<CommonNatGatewayPropertiesFormatSubnetsItem_2>;
+  Array<CommonNatGatewayPropertiesFormatSubnetsItem_2>;
 export const CommonNatGatewayPropertiesFormatSubnetsList_2 =
   /*@__PURE__*/ S.Array(
     CommonNatGatewayPropertiesFormatSubnetsItem_2,
@@ -41726,7 +41792,7 @@ export const CommonIPConfiguration_3 = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of references to the network interface IP configurations using subnet. */
 export type CommonSubnetPropertiesFormatIpConfigurationsList_3 =
-  ReadonlyArray<CommonIPConfiguration_3>;
+  Array<CommonIPConfiguration_3>;
 export const CommonSubnetPropertiesFormatIpConfigurationsList_3 =
   /*@__PURE__*/ S.Array(
     CommonIPConfiguration_3,
@@ -41778,7 +41844,7 @@ export const CommonIPConfigurationProfile_3 = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of IP configuration profiles which reference this subnet. */
 export type CommonSubnetPropertiesFormatIpConfigurationProfilesList_3 =
-  ReadonlyArray<CommonIPConfigurationProfile_3>;
+  Array<CommonIPConfigurationProfile_3>;
 export const CommonSubnetPropertiesFormatIpConfigurationProfilesList_3 =
   /*@__PURE__*/ S.Array(
     CommonIPConfigurationProfile_3,
@@ -42141,7 +42207,7 @@ export const CommonNetworkInterfaceIPConfigurationPropertiesFormatVirtualNetwork
 
 /** The reference to Virtual Network Taps. */
 export type CommonNetworkInterfaceIPConfigurationPropertiesFormatVirtualNetworkTapsList_3 =
-  ReadonlyArray<CommonNetworkInterfaceIPConfigurationPropertiesFormatVirtualNetworkTapsItem_3>;
+  Array<CommonNetworkInterfaceIPConfigurationPropertiesFormatVirtualNetworkTapsItem_3>;
 export const CommonNetworkInterfaceIPConfigurationPropertiesFormatVirtualNetworkTapsList_3 =
   /*@__PURE__*/ S.Array(
     CommonNetworkInterfaceIPConfigurationPropertiesFormatVirtualNetworkTapsItem_3,
@@ -42180,7 +42246,7 @@ export const CommonApplicationGatewayBackendAddressPoolPropertiesFormatBackendIP
 
 /** Collection of references to IPs defined in network interfaces. */
 export type CommonApplicationGatewayBackendAddressPoolPropertiesFormatBackendIPConfigurationsList_3 =
-  ReadonlyArray<CommonApplicationGatewayBackendAddressPoolPropertiesFormatBackendIPConfigurationsItem_3>;
+  Array<CommonApplicationGatewayBackendAddressPoolPropertiesFormatBackendIPConfigurationsItem_3>;
 export const CommonApplicationGatewayBackendAddressPoolPropertiesFormatBackendIPConfigurationsList_3 =
   /*@__PURE__*/ S.Array(
     CommonApplicationGatewayBackendAddressPoolPropertiesFormatBackendIPConfigurationsItem_3,
@@ -42243,7 +42309,7 @@ export const CommonNetworkInterfaceIPConfigurationPropertiesFormatApplicationGat
 
 /** The reference to ApplicationGatewayBackendAddressPool resource. */
 export type CommonNetworkInterfaceIPConfigurationPropertiesFormatApplicationGatewayBackendAddressPoolsList_3 =
-  ReadonlyArray<CommonNetworkInterfaceIPConfigurationPropertiesFormatApplicationGatewayBackendAddressPoolsItem_3>;
+  Array<CommonNetworkInterfaceIPConfigurationPropertiesFormatApplicationGatewayBackendAddressPoolsItem_3>;
 export const CommonNetworkInterfaceIPConfigurationPropertiesFormatApplicationGatewayBackendAddressPoolsList_3 =
   /*@__PURE__*/ S.Array(
     CommonNetworkInterfaceIPConfigurationPropertiesFormatApplicationGatewayBackendAddressPoolsItem_3,
@@ -42270,7 +42336,7 @@ export const CommonNatRulePortMapping_2 = /*@__PURE__*/ S.suspend(() =>
 
 /** Collection of inbound NAT rule port mappings. */
 export type CommonLoadBalancerBackendAddressPropertiesFormatInboundNatRulesPortMappingList_2 =
-  ReadonlyArray<CommonNatRulePortMapping_2>;
+  Array<CommonNatRulePortMapping_2>;
 export const CommonLoadBalancerBackendAddressPropertiesFormatInboundNatRulesPortMappingList_2 =
   /*@__PURE__*/ S.Array(
     CommonNatRulePortMapping_2,
@@ -42338,7 +42404,7 @@ export const CommonLoadBalancerBackendAddress_2 = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of backend addresses. */
 export type CommonBackendAddressPoolPropertiesFormatLoadBalancerBackendAddressesList_2 =
-  ReadonlyArray<CommonLoadBalancerBackendAddress_2>;
+  Array<CommonLoadBalancerBackendAddress_2>;
 export const CommonBackendAddressPoolPropertiesFormatLoadBalancerBackendAddressesList_2 =
   /*@__PURE__*/ S.Array(
     CommonLoadBalancerBackendAddress_2,
@@ -42377,7 +42443,7 @@ export const CommonBackendAddressPoolPropertiesFormatBackendIPConfigurationsItem
 
 /** An array of references to IP addresses defined in network interfaces. */
 export type CommonBackendAddressPoolPropertiesFormatBackendIPConfigurationsList_3 =
-  ReadonlyArray<CommonBackendAddressPoolPropertiesFormatBackendIPConfigurationsItem_3>;
+  Array<CommonBackendAddressPoolPropertiesFormatBackendIPConfigurationsItem_3>;
 export const CommonBackendAddressPoolPropertiesFormatBackendIPConfigurationsList_3 =
   /*@__PURE__*/ S.Array(
     CommonBackendAddressPoolPropertiesFormatBackendIPConfigurationsItem_3,
@@ -42477,7 +42543,7 @@ export const CommonNetworkInterfaceIPConfigurationPropertiesFormatLoadBalancerBa
 
 /** The reference to LoadBalancerBackendAddressPool resource. */
 export type CommonNetworkInterfaceIPConfigurationPropertiesFormatLoadBalancerBackendAddressPoolsList_3 =
-  ReadonlyArray<CommonNetworkInterfaceIPConfigurationPropertiesFormatLoadBalancerBackendAddressPoolsItem_3>;
+  Array<CommonNetworkInterfaceIPConfigurationPropertiesFormatLoadBalancerBackendAddressPoolsItem_3>;
 export const CommonNetworkInterfaceIPConfigurationPropertiesFormatLoadBalancerBackendAddressPoolsList_3 =
   /*@__PURE__*/ S.Array(
     CommonNetworkInterfaceIPConfigurationPropertiesFormatLoadBalancerBackendAddressPoolsItem_3,
@@ -42514,7 +42580,7 @@ export const CommonNetworkInterfaceIPConfigurationPropertiesFormatLoadBalancerIn
 
 /** A list of references of LoadBalancerInboundNatRules. */
 export type CommonNetworkInterfaceIPConfigurationPropertiesFormatLoadBalancerInboundNatRulesList_3 =
-  ReadonlyArray<CommonNetworkInterfaceIPConfigurationPropertiesFormatLoadBalancerInboundNatRulesItem_3>;
+  Array<CommonNetworkInterfaceIPConfigurationPropertiesFormatLoadBalancerInboundNatRulesItem_3>;
 export const CommonNetworkInterfaceIPConfigurationPropertiesFormatLoadBalancerInboundNatRulesList_3 =
   /*@__PURE__*/ S.Array(
     CommonNetworkInterfaceIPConfigurationPropertiesFormatLoadBalancerInboundNatRulesItem_3,
@@ -42845,8 +42911,7 @@ export const CommonInboundNatRule = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CommonInboundNatRule>;
 
 /** The InboundNatRule items on this page */
-export type InboundNatRuleListResultValueList =
-  ReadonlyArray<CommonInboundNatRule>;
+export type InboundNatRuleListResultValueList = Array<CommonInboundNatRule>;
 export const InboundNatRuleListResultValueList = /*@__PURE__*/ S.Array(
   CommonInboundNatRule,
 ) as any as S.Schema<InboundNatRuleListResultValueList>;
@@ -42876,15 +42941,14 @@ export type InboundSecurityRulesProtocol = "TCP" | "UDP";
 export const InboundSecurityRulesProtocol = /*@__PURE__*/ S.String;
 
 /** NVA port ranges to be opened up. One can provide a range of ports. Allowed port value between 0 and 65535. */
-export type InboundSecurityRulesDestinationPortRangesList =
-  ReadonlyArray<string>;
+export type InboundSecurityRulesDestinationPortRangesList = Array<string>;
 export const InboundSecurityRulesDestinationPortRangesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<InboundSecurityRulesDestinationPortRangesList>;
 
 /** Public IP name in case of Permanent Rule type & Interface Name in case of Auto Expire Rule type */
-export type InboundSecurityRulesAppliesOnList = ReadonlyArray<string>;
+export type InboundSecurityRulesAppliesOnList = Array<string>;
 export const InboundSecurityRulesAppliesOnList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<InboundSecurityRulesAppliesOnList>;
@@ -42894,7 +42958,7 @@ export interface InboundSecurityRules {
   /** Name of the rule. */
   name?: string;
   /** Protocol. This should be either TCP or UDP. */
-  protocol?: InboundSecurityRulesProtocol;
+  protocol?: InboundSecurityRulesProtocol | (string & {});
   /** The CIDR or source IP range. */
   sourceAddressPrefix?: string;
   /** NVA port ranges to be opened up. One needs to provide specific ports. */
@@ -42921,7 +42985,7 @@ export const InboundSecurityRules = /*@__PURE__*/ S.suspend(() =>
 
 /** List of allowed rules. */
 export type InboundSecurityRulePropertiesRulesList =
-  ReadonlyArray<InboundSecurityRules>;
+  Array<InboundSecurityRules>;
 export const InboundSecurityRulePropertiesRulesList = /*@__PURE__*/ S.Array(
   InboundSecurityRules,
 ) as any as S.Schema<InboundSecurityRulePropertiesRulesList>;
@@ -42940,11 +43004,13 @@ export const InboundSecurityRulePropertiesProvisioningState =
 /** Properties of the Inbound Security Rules resource. */
 export interface InboundSecurityRuleProperties {
   /** Rule Type. This should be either AutoExpire or Permanent. Auto Expire Rule only creates NSG rules. Permanent Rule creates NSG rule and SLB LB Rule. */
-  ruleType?: InboundSecurityRulePropertiesRuleType;
+  ruleType?: InboundSecurityRulePropertiesRuleType | (string & {});
   /** List of allowed rules. */
   rules?: InboundSecurityRulePropertiesRulesList;
   /** Provisioning states of a resource. */
-  provisioningState?: InboundSecurityRulePropertiesProvisioningState;
+  provisioningState?:
+    | InboundSecurityRulePropertiesProvisioningState
+    | (string & {});
 }
 export const InboundSecurityRuleProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -43108,7 +43174,7 @@ export interface SubgroupProfile {
   /** VM size of the subgroup profile. */
   vmSize: string;
   /** Scope of the subgroup profile. */
-  scope?: SubgroupProfileScope;
+  scope?: SubgroupProfileScope | (string & {});
   /** Size of the subgroup profile. */
   size?: number;
 }
@@ -43227,7 +43293,7 @@ export const SubgroupPropertiesVirtualMachinesItem = /*@__PURE__*/ S.suspend(
 
 /** A list of virtual machine references. */
 export type SubgroupPropertiesVirtualMachinesList =
-  ReadonlyArray<SubgroupPropertiesVirtualMachinesItem>;
+  Array<SubgroupPropertiesVirtualMachinesItem>;
 export const SubgroupPropertiesVirtualMachinesList = /*@__PURE__*/ S.Array(
   SubgroupPropertiesVirtualMachinesItem,
 ) as any as S.Schema<SubgroupPropertiesVirtualMachinesList>;
@@ -43285,8 +43351,7 @@ export const Subgroup = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Subgroup" }) as any as S.Schema<Subgroup>;
 
 /** A list of subgroups of the interconnect group. */
-export type InterconnectGroupPropertiesFormatSubgroupsList =
-  ReadonlyArray<Subgroup>;
+export type InterconnectGroupPropertiesFormatSubgroupsList = Array<Subgroup>;
 export const InterconnectGroupPropertiesFormatSubgroupsList =
   /*@__PURE__*/ S.Array(
     Subgroup,
@@ -43510,7 +43575,7 @@ export const SubgroupNodeAvailabilityEntry = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of subgroup node availability entries. */
 export type InterconnectGroupNodeAvailabilitySubgroupsNodeAvailabilityList =
-  ReadonlyArray<SubgroupNodeAvailabilityEntry>;
+  Array<SubgroupNodeAvailabilityEntry>;
 export const InterconnectGroupNodeAvailabilitySubgroupsNodeAvailabilityList =
   /*@__PURE__*/ S.Array(
     SubgroupNodeAvailabilityEntry,
@@ -43592,8 +43657,7 @@ export const InterconnectGroup = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InterconnectGroup>;
 
 /** The InterconnectGroup items on this page */
-export type InterconnectGroupListResultValueList =
-  ReadonlyArray<InterconnectGroup>;
+export type InterconnectGroupListResultValueList = Array<InterconnectGroup>;
 export const InterconnectGroupListResultValueList = /*@__PURE__*/ S.Array(
   InterconnectGroup,
 ) as any as S.Schema<InterconnectGroupListResultValueList>;
@@ -43773,13 +43837,13 @@ export interface IpAllocationPropertiesFormat {
   /** Reference to another subresource. */
   virtualNetwork?: IpAllocationPropertiesFormatVirtualNetwork;
   /** IpAllocation type. */
-  type?: IpAllocationPropertiesFormatType;
+  type?: IpAllocationPropertiesFormatType | (string & {});
   /** The address prefix for the IpAllocation. */
   prefix?: string;
   /** The address prefix length for the IpAllocation. */
   prefixLength?: number | null;
   /** IP address version. */
-  prefixType?: IpAllocationPropertiesFormatPrefixType;
+  prefixType?: IpAllocationPropertiesFormatPrefixType | (string & {});
   /** The IPAM allocation ID. */
   ipamAllocationId?: string;
   /** IpAllocation tags. */
@@ -44032,7 +44096,7 @@ export const IpAllocation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IpAllocation" }) as any as S.Schema<IpAllocation>;
 
 /** The IpAllocation items on this page */
-export type IpAllocationListResultValueList = ReadonlyArray<IpAllocation>;
+export type IpAllocationListResultValueList = Array<IpAllocation>;
 export const IpAllocationListResultValueList = /*@__PURE__*/ S.Array(
   IpAllocation,
 ) as any as S.Schema<IpAllocationListResultValueList>;
@@ -44162,7 +44226,7 @@ export const IpamPoolsCreateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<IpamPoolsCreateRequestTagsMap>;
 
 /** List of IP address prefixes of the resource. */
-export type IpamPoolPropertiesInputAddressPrefixesList = ReadonlyArray<string>;
+export type IpamPoolPropertiesInputAddressPrefixesList = Array<string>;
 export const IpamPoolPropertiesInputAddressPrefixesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<IpamPoolPropertiesInputAddressPrefixesList>;
@@ -44301,13 +44365,13 @@ export const IpamPoolPropertiesIpAddressTypeItem = /*@__PURE__*/ S.String;
 
 /** List of IP address type for the IpamPool. */
 export type IpamPoolPropertiesIpAddressTypeList =
-  ReadonlyArray<IpamPoolPropertiesIpAddressTypeItem>;
+  Array<IpamPoolPropertiesIpAddressTypeItem>;
 export const IpamPoolPropertiesIpAddressTypeList = /*@__PURE__*/ S.Array(
   IpamPoolPropertiesIpAddressTypeItem,
 ) as any as S.Schema<IpamPoolPropertiesIpAddressTypeList>;
 
 /** List of IP address prefixes of the resource. */
-export type IpamPoolPropertiesAddressPrefixesList = ReadonlyArray<string>;
+export type IpamPoolPropertiesAddressPrefixesList = Array<string>;
 export const IpamPoolPropertiesAddressPrefixesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<IpamPoolPropertiesAddressPrefixesList>;
@@ -44562,13 +44626,13 @@ export const IpamPoolsGetPoolUsageRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IpamPoolsGetPoolUsageRequest>;
 
 /** List of IP address prefixes of the resource. */
-export type PoolUsageAddressPrefixesList = ReadonlyArray<string>;
+export type PoolUsageAddressPrefixesList = Array<string>;
 export const PoolUsageAddressPrefixesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoolUsageAddressPrefixesList>;
 
 /** List of IP address prefixes of the resource. */
-export type ResourceBasicsAddressPrefixesList = ReadonlyArray<string>;
+export type ResourceBasicsAddressPrefixesList = Array<string>;
 export const ResourceBasicsAddressPrefixesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ResourceBasicsAddressPrefixesList>;
@@ -44588,25 +44652,25 @@ export const ResourceBasics = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResourceBasics" }) as any as S.Schema<ResourceBasics>;
 
 /** List of IpamPool that are children of this IpamPool. */
-export type PoolUsageChildPoolsList = ReadonlyArray<ResourceBasics>;
+export type PoolUsageChildPoolsList = Array<ResourceBasics>;
 export const PoolUsageChildPoolsList = /*@__PURE__*/ S.Array(
   ResourceBasics,
 ) as any as S.Schema<PoolUsageChildPoolsList>;
 
 /** List of assigned IP address prefixes. */
-export type PoolUsageAllocatedAddressPrefixesList = ReadonlyArray<string>;
+export type PoolUsageAllocatedAddressPrefixesList = Array<string>;
 export const PoolUsageAllocatedAddressPrefixesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoolUsageAllocatedAddressPrefixesList>;
 
 /** List of reserved IP address prefixes. These IP addresses could be reclaimed if not assigned in the given time. */
-export type PoolUsageReservedAddressPrefixesList = ReadonlyArray<string>;
+export type PoolUsageReservedAddressPrefixesList = Array<string>;
 export const PoolUsageReservedAddressPrefixesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoolUsageReservedAddressPrefixesList>;
 
 /** List of available IP address prefixes. */
-export type PoolUsageAvailableAddressPrefixesList = ReadonlyArray<string>;
+export type PoolUsageAvailableAddressPrefixesList = Array<string>;
 export const PoolUsageAvailableAddressPrefixesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoolUsageAvailableAddressPrefixesList>;
@@ -44770,7 +44834,7 @@ export const IpamPool = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IpamPool" }) as any as S.Schema<IpamPool>;
 
 /** The IpamPool items on this page */
-export type IpamPoolListValueList = ReadonlyArray<IpamPool>;
+export type IpamPoolListValueList = Array<IpamPool>;
 export const IpamPoolListValueList = /*@__PURE__*/ S.Array(
   IpamPool,
 ) as any as S.Schema<IpamPoolListValueList>;
@@ -44819,13 +44883,13 @@ export const IpamPoolsListAssociatedResourcesRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<IpamPoolsListAssociatedResourcesRequest>;
 
 /** List of assigned IP address prefixes in the IpamPool of the associated resource. */
-export type PoolAssociationAddressPrefixesList = ReadonlyArray<string>;
+export type PoolAssociationAddressPrefixesList = Array<string>;
 export const PoolAssociationAddressPrefixesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoolAssociationAddressPrefixesList>;
 
 /** List of reserved IP address prefixes in the IpamPool of the associated resource. */
-export type PoolAssociationReservedPrefixesList = ReadonlyArray<string>;
+export type PoolAssociationReservedPrefixesList = Array<string>;
 export const PoolAssociationReservedPrefixesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoolAssociationReservedPrefixesList>;
@@ -44867,7 +44931,7 @@ export const PoolAssociation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PoolAssociation>;
 
 /** The PoolAssociation items on this page */
-export type PoolAssociationListValueList = ReadonlyArray<PoolAssociation>;
+export type PoolAssociationListValueList = Array<PoolAssociation>;
 export const PoolAssociationListValueList = /*@__PURE__*/ S.Array(
   PoolAssociation,
 ) as any as S.Schema<PoolAssociationListValueList>;
@@ -45057,7 +45121,7 @@ export const IpGroupPropertiesFormatInputProvisioningState =
   /*@__PURE__*/ S.String;
 
 /** IpAddresses/IpAddressPrefixes in the IpGroups resource. */
-export type IpGroupPropertiesFormatInputIpAddressesList = ReadonlyArray<string>;
+export type IpGroupPropertiesFormatInputIpAddressesList = Array<string>;
 export const IpGroupPropertiesFormatInputIpAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -45140,7 +45204,7 @@ export type IpGroupPropertiesFormatProvisioningState =
 export const IpGroupPropertiesFormatProvisioningState = /*@__PURE__*/ S.String;
 
 /** IpAddresses/IpAddressPrefixes in the IpGroups resource. */
-export type IpGroupPropertiesFormatIpAddressesList = ReadonlyArray<string>;
+export type IpGroupPropertiesFormatIpAddressesList = Array<string>;
 export const IpGroupPropertiesFormatIpAddressesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<IpGroupPropertiesFormatIpAddressesList>;
@@ -45161,7 +45225,7 @@ export const IpGroupPropertiesFormatFirewallsItem = /*@__PURE__*/ S.suspend(
 
 /** List of references to Firewall resources that this IpGroups is associated with. */
 export type IpGroupPropertiesFormatFirewallsList =
-  ReadonlyArray<IpGroupPropertiesFormatFirewallsItem>;
+  Array<IpGroupPropertiesFormatFirewallsItem>;
 export const IpGroupPropertiesFormatFirewallsList = /*@__PURE__*/ S.Array(
   IpGroupPropertiesFormatFirewallsItem,
 ) as any as S.Schema<IpGroupPropertiesFormatFirewallsList>;
@@ -45182,7 +45246,7 @@ export const IpGroupPropertiesFormatFirewallPoliciesItem =
 
 /** List of references to Firewall Policies resources that this IpGroups is associated with. */
 export type IpGroupPropertiesFormatFirewallPoliciesList =
-  ReadonlyArray<IpGroupPropertiesFormatFirewallPoliciesItem>;
+  Array<IpGroupPropertiesFormatFirewallPoliciesItem>;
 export const IpGroupPropertiesFormatFirewallPoliciesList =
   /*@__PURE__*/ S.Array(
     IpGroupPropertiesFormatFirewallPoliciesItem,
@@ -45393,7 +45457,7 @@ export const IpGroup = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IpGroup" }) as any as S.Schema<IpGroup>;
 
 /** The IpGroup items on this page */
-export type IpGroupListResultValueList = ReadonlyArray<IpGroup>;
+export type IpGroupListResultValueList = Array<IpGroup>;
 export const IpGroupListResultValueList = /*@__PURE__*/ S.Array(
   IpGroup,
 ) as any as S.Schema<IpGroupListResultValueList>;
@@ -45514,7 +45578,7 @@ export const IpGroupsUpdateGroupsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** List of regions. */
 export type ListActiveConnectivityConfigurationsRequestRegionsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ListActiveConnectivityConfigurationsRequestRegionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -45611,7 +45675,7 @@ export const ConfigurationGroup = /*@__PURE__*/ S.suspend(() =>
 
 /** Effective configuration groups. */
 export type ActiveConnectivityConfigurationConfigurationGroupsList =
-  ReadonlyArray<ConfigurationGroup>;
+  Array<ConfigurationGroup>;
 export const ActiveConnectivityConfigurationConfigurationGroupsList =
   /*@__PURE__*/ S.Array(
     ConfigurationGroup,
@@ -45646,7 +45710,7 @@ export const ActiveConnectivityConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets a page of active connectivity configurations. */
 export type ActiveConnectivityConfigurationsListResultValueList =
-  ReadonlyArray<ActiveConnectivityConfiguration>;
+  Array<ActiveConnectivityConfiguration>;
 export const ActiveConnectivityConfigurationsListResultValueList =
   /*@__PURE__*/ S.Array(
     ActiveConnectivityConfiguration,
@@ -45670,8 +45734,7 @@ export const ActiveConnectivityConfigurationsListResult =
   }) as any as S.Schema<ActiveConnectivityConfigurationsListResult>;
 
 /** List of regions. */
-export type ListActiveSecurityAdminRulesRequestRegionsList =
-  ReadonlyArray<string>;
+export type ListActiveSecurityAdminRulesRequestRegionsList = Array<string>;
 export const ListActiveSecurityAdminRulesRequestRegionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -45713,7 +45776,7 @@ export const ListActiveSecurityAdminRulesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Groups for rule collection */
 export type ActiveBaseSecurityAdminRuleRuleCollectionAppliesToGroupsList =
-  ReadonlyArray<NetworkManagerSecurityGroupItem>;
+  Array<NetworkManagerSecurityGroupItem>;
 export const ActiveBaseSecurityAdminRuleRuleCollectionAppliesToGroupsList =
   /*@__PURE__*/ S.Array(
     NetworkManagerSecurityGroupItem,
@@ -45721,7 +45784,7 @@ export const ActiveBaseSecurityAdminRuleRuleCollectionAppliesToGroupsList =
 
 /** Effective configuration groups. */
 export type ActiveBaseSecurityAdminRuleRuleGroupsList =
-  ReadonlyArray<ConfigurationGroup>;
+  Array<ConfigurationGroup>;
 export const ActiveBaseSecurityAdminRuleRuleGroupsList = /*@__PURE__*/ S.Array(
   ConfigurationGroup,
 ) as any as S.Schema<ActiveBaseSecurityAdminRuleRuleGroupsList>;
@@ -45768,7 +45831,7 @@ export const ActiveBaseSecurityAdminRule = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets a page of active security admin rules. */
 export type ActiveSecurityAdminRulesListResultValueList =
-  ReadonlyArray<ActiveBaseSecurityAdminRule>;
+  Array<ActiveBaseSecurityAdminRule>;
 export const ActiveSecurityAdminRulesListResultValueList =
   /*@__PURE__*/ S.Array(
     ActiveBaseSecurityAdminRule,
@@ -45824,7 +45887,7 @@ export const ListNetworkManagerEffectiveConnectivityConfigurationsRequest =
 
 /** Effective configuration groups. */
 export type EffectiveConnectivityConfigurationConfigurationGroupsList =
-  ReadonlyArray<ConfigurationGroup>;
+  Array<ConfigurationGroup>;
 export const EffectiveConnectivityConfigurationConfigurationGroupsList =
   /*@__PURE__*/ S.Array(
     ConfigurationGroup,
@@ -45853,7 +45916,7 @@ export const EffectiveConnectivityConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets a page of NetworkManagerEffectiveConnectivityConfiguration */
 export type NetworkManagerEffectiveConnectivityConfigurationListResultValueList =
-  ReadonlyArray<EffectiveConnectivityConfiguration>;
+  Array<EffectiveConnectivityConfiguration>;
 export const NetworkManagerEffectiveConnectivityConfigurationListResultValueList =
   /*@__PURE__*/ S.Array(
     EffectiveConnectivityConfiguration,
@@ -45912,7 +45975,7 @@ export const ListNetworkManagerEffectiveSecurityAdminRulesRequest =
 
 /** Groups for rule collection */
 export type EffectiveBaseSecurityAdminRuleRuleCollectionAppliesToGroupsList =
-  ReadonlyArray<NetworkManagerSecurityGroupItem>;
+  Array<NetworkManagerSecurityGroupItem>;
 export const EffectiveBaseSecurityAdminRuleRuleCollectionAppliesToGroupsList =
   /*@__PURE__*/ S.Array(
     NetworkManagerSecurityGroupItem,
@@ -45920,7 +45983,7 @@ export const EffectiveBaseSecurityAdminRuleRuleCollectionAppliesToGroupsList =
 
 /** Effective configuration groups. */
 export type EffectiveBaseSecurityAdminRuleRuleGroupsList =
-  ReadonlyArray<ConfigurationGroup>;
+  Array<ConfigurationGroup>;
 export const EffectiveBaseSecurityAdminRuleRuleGroupsList =
   /*@__PURE__*/ S.Array(
     ConfigurationGroup,
@@ -45962,7 +46025,7 @@ export const EffectiveBaseSecurityAdminRule = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets a page of NetworkManagerEffectiveSecurityAdminRules */
 export type NetworkManagerEffectiveSecurityAdminRulesListResultValueList =
-  ReadonlyArray<EffectiveBaseSecurityAdminRule>;
+  Array<EffectiveBaseSecurityAdminRule>;
 export const NetworkManagerEffectiveSecurityAdminRulesListResultValueList =
   /*@__PURE__*/ S.Array(
     EffectiveBaseSecurityAdminRule,
@@ -46192,7 +46255,7 @@ export const CommonBackendAddressPool = /*@__PURE__*/ S.suspend(() =>
 
 /** The BackendAddressPool items on this page */
 export type LoadBalancerBackendAddressPoolListResultValueList =
-  ReadonlyArray<CommonBackendAddressPool>;
+  Array<CommonBackendAddressPool>;
 export const LoadBalancerBackendAddressPoolListResultValueList =
   /*@__PURE__*/ S.Array(
     CommonBackendAddressPool,
@@ -46246,7 +46309,7 @@ export const LoadBalancerFrontendIPConfigurationsGetRequest =
 
 /** A list of availability zones denoting the IP allocated for the resource needs to come from. */
 export type LoadBalancerFrontendIPConfigurationsGetResponseZonesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const LoadBalancerFrontendIPConfigurationsGetResponseZonesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -46309,7 +46372,7 @@ export const LoadBalancerFrontendIPConfigurationsListRequest =
   }) as any as S.Schema<LoadBalancerFrontendIPConfigurationsListRequest>;
 
 /** A list of availability zones denoting the IP allocated for the resource needs to come from. */
-export type CommonFrontendIPConfigurationZonesList = ReadonlyArray<string>;
+export type CommonFrontendIPConfigurationZonesList = Array<string>;
 export const CommonFrontendIPConfigurationZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CommonFrontendIPConfigurationZonesList>;
@@ -46344,7 +46407,7 @@ export const CommonFrontendIPConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** The FrontendIPConfiguration items on this page */
 export type LoadBalancerFrontendIPConfigurationListResultValueList =
-  ReadonlyArray<CommonFrontendIPConfiguration>;
+  Array<CommonFrontendIPConfiguration>;
 export const LoadBalancerFrontendIPConfigurationListResultValueList =
   /*@__PURE__*/ S.Array(
     CommonFrontendIPConfiguration,
@@ -46442,7 +46505,7 @@ export const CommonLoadBalancingRulePropertiesFormatBackendAddressPoolsItem =
 
 /** An array of references to pool of DIPs. */
 export type CommonLoadBalancingRulePropertiesFormatBackendAddressPoolsList =
-  ReadonlyArray<CommonLoadBalancingRulePropertiesFormatBackendAddressPoolsItem>;
+  Array<CommonLoadBalancingRulePropertiesFormatBackendAddressPoolsItem>;
 export const CommonLoadBalancingRulePropertiesFormatBackendAddressPoolsList =
   /*@__PURE__*/ S.Array(
     CommonLoadBalancingRulePropertiesFormatBackendAddressPoolsItem,
@@ -46501,9 +46564,11 @@ export interface CommonLoadBalancingRulePropertiesFormat {
   /** Reference to another subresource. */
   probe?: CommonLoadBalancingRulePropertiesFormatProbe;
   /** The transport protocol for the endpoint. */
-  protocol: CommonLoadBalancingRulePropertiesFormatProtocol;
+  protocol: CommonLoadBalancingRulePropertiesFormatProtocol | (string & {});
   /** The load distribution policy for this rule. */
-  loadDistribution?: CommonLoadBalancingRulePropertiesFormatLoadDistribution;
+  loadDistribution?:
+    | CommonLoadBalancingRulePropertiesFormatLoadDistribution
+    | (string & {});
   /** The port for the external endpoint. Port numbers for each rule must be unique within the Load Balancer. Acceptable values are between 0 and 65534. Note that value 0 enables "Any Port". */
   frontendPort: number;
   /** The port used for internal connections on the endpoint. Acceptable values are between 0 and 65535. Note that value 0 enables "Any Port". */
@@ -46519,7 +46584,9 @@ export interface CommonLoadBalancingRulePropertiesFormat {
   /** Defines whether connections between 2 communicating endpoints can be tracked and associated to the same backend VM over its lifetime when using UDP protocol. */
   enableConnectionTracking?: boolean;
   /** Provisioning states of a resource. */
-  provisioningState?: CommonLoadBalancingRulePropertiesFormatProvisioningState;
+  provisioningState?:
+    | CommonLoadBalancingRulePropertiesFormatProvisioningState
+    | (string & {});
 }
 export const CommonLoadBalancingRulePropertiesFormat = /*@__PURE__*/ S.suspend(
   () =>
@@ -46631,7 +46698,7 @@ export const LoadBalancerHealthPerRulePerBackendAddress =
 
 /** Information about the health per rule of the backend addresses. */
 export type LoadBalancerHealthPerRuleLoadBalancerBackendAddressesList =
-  ReadonlyArray<LoadBalancerHealthPerRulePerBackendAddress>;
+  Array<LoadBalancerHealthPerRulePerBackendAddress>;
 export const LoadBalancerHealthPerRuleLoadBalancerBackendAddressesList =
   /*@__PURE__*/ S.Array(
     LoadBalancerHealthPerRulePerBackendAddress,
@@ -46711,7 +46778,7 @@ export const CommonLoadBalancingRule = /*@__PURE__*/ S.suspend(() =>
 
 /** The LoadBalancingRule items on this page */
 export type LoadBalancerLoadBalancingRuleListResultValueList =
-  ReadonlyArray<CommonLoadBalancingRule>;
+  Array<CommonLoadBalancingRule>;
 export const LoadBalancerLoadBalancingRuleListResultValueList =
   /*@__PURE__*/ S.Array(
     CommonLoadBalancingRule,
@@ -46762,7 +46829,7 @@ export const LoadBalancerNetworkInterfacesListRequest = /*@__PURE__*/ S.suspend(
 
 /** The NetworkInterface items on this page */
 export type LoadBalancerNetworkInterfacesListResponseValueList =
-  ReadonlyArray<CommonNetworkInterface_3>;
+  Array<CommonNetworkInterface_3>;
 export const LoadBalancerNetworkInterfacesListResponseValueList =
   /*@__PURE__*/ S.Array(
     CommonNetworkInterface_3,
@@ -46829,7 +46896,7 @@ export const CommonOutboundRulePropertiesFormatFrontendIPConfigurationsItem =
 
 /** The Frontend IP addresses of the load balancer. */
 export type CommonOutboundRulePropertiesFormatFrontendIPConfigurationsList =
-  ReadonlyArray<CommonOutboundRulePropertiesFormatFrontendIPConfigurationsItem>;
+  Array<CommonOutboundRulePropertiesFormatFrontendIPConfigurationsItem>;
 export const CommonOutboundRulePropertiesFormatFrontendIPConfigurationsList =
   /*@__PURE__*/ S.Array(
     CommonOutboundRulePropertiesFormatFrontendIPConfigurationsItem,
@@ -46874,9 +46941,11 @@ export interface CommonOutboundRulePropertiesFormat {
   /** Reference to another subresource. */
   backendAddressPool: CommonOutboundRulePropertiesFormatBackendAddressPool;
   /** Provisioning states of a resource. */
-  provisioningState?: CommonOutboundRulePropertiesFormatProvisioningState;
+  provisioningState?:
+    | CommonOutboundRulePropertiesFormatProvisioningState
+    | (string & {});
   /** The protocol for the outbound rule in load balancer. */
-  protocol: CommonOutboundRulePropertiesFormatProtocol;
+  protocol: CommonOutboundRulePropertiesFormatProtocol | (string & {});
   /** Receive bidirectional TCP Reset on TCP flow idle timeout or unexpected connection termination. This element is only used when the protocol is set to TCP. */
   enableTcpReset?: boolean;
   /** The timeout for the TCP idle connection. */
@@ -46977,7 +47046,7 @@ export const CommonOutboundRule = /*@__PURE__*/ S.suspend(() =>
 
 /** The OutboundRule items on this page */
 export type LoadBalancerOutboundRuleListResultValueList =
-  ReadonlyArray<CommonOutboundRule>;
+  Array<CommonOutboundRule>;
 export const LoadBalancerOutboundRuleListResultValueList =
   /*@__PURE__*/ S.Array(
     CommonOutboundRule,
@@ -47043,7 +47112,7 @@ export const CommonProbePropertiesFormatLoadBalancingRulesItem =
 
 /** The load balancer rules that use this probe. */
 export type CommonProbePropertiesFormatLoadBalancingRulesList =
-  ReadonlyArray<CommonProbePropertiesFormatLoadBalancingRulesItem>;
+  Array<CommonProbePropertiesFormatLoadBalancingRulesItem>;
 export const CommonProbePropertiesFormatLoadBalancingRulesList =
   /*@__PURE__*/ S.Array(
     CommonProbePropertiesFormatLoadBalancingRulesItem,
@@ -47185,7 +47254,7 @@ export const CommonProbe = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CommonProbe" }) as any as S.Schema<CommonProbe>;
 
 /** The Probe items on this page */
-export type LoadBalancerProbeListResultValueList = ReadonlyArray<CommonProbe>;
+export type LoadBalancerProbeListResultValueList = Array<CommonProbe>;
 export const LoadBalancerProbeListResultValueList = /*@__PURE__*/ S.Array(
   CommonProbe,
 ) as any as S.Schema<LoadBalancerProbeListResultValueList>;
@@ -47216,7 +47285,7 @@ export const LoadBalancersCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<LoadBalancersCreateOrUpdateRequestTagsMap>;
 
 /** A list of availability zones denoting the IP allocated for the resource needs to come from. */
-export type CommonFrontendIPConfigurationInputZonesList = ReadonlyArray<string>;
+export type CommonFrontendIPConfigurationInputZonesList = Array<string>;
 export const CommonFrontendIPConfigurationInputZonesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -47246,7 +47315,7 @@ export const CommonFrontendIPConfigurationInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Object representing the frontend IPs to be used for the load balancer. */
 export type CommonLoadBalancerPropertiesFormatInputFrontendIPConfigurationsList =
-  ReadonlyArray<CommonFrontendIPConfigurationInput>;
+  Array<CommonFrontendIPConfigurationInput>;
 export const CommonLoadBalancerPropertiesFormatInputFrontendIPConfigurationsList =
   /*@__PURE__*/ S.Array(
     CommonFrontendIPConfigurationInput,
@@ -47273,7 +47342,7 @@ export const CommonBackendAddressPoolInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Collection of backend address pools used by a load balancer. */
 export type CommonLoadBalancerPropertiesFormatInputBackendAddressPoolsList =
-  ReadonlyArray<CommonBackendAddressPoolInput>;
+  Array<CommonBackendAddressPoolInput>;
 export const CommonLoadBalancerPropertiesFormatInputBackendAddressPoolsList =
   /*@__PURE__*/ S.Array(
     CommonBackendAddressPoolInput,
@@ -47300,7 +47369,7 @@ export const CommonLoadBalancingRuleInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Object collection representing the load balancing rules Gets the provisioning. */
 export type CommonLoadBalancerPropertiesFormatInputLoadBalancingRulesList =
-  ReadonlyArray<CommonLoadBalancingRuleInput>;
+  Array<CommonLoadBalancingRuleInput>;
 export const CommonLoadBalancerPropertiesFormatInputLoadBalancingRulesList =
   /*@__PURE__*/ S.Array(
     CommonLoadBalancingRuleInput,
@@ -47391,7 +47460,7 @@ export const CommonProbeInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Collection of probe objects used in the load balancer. */
 export type CommonLoadBalancerPropertiesFormatInputProbesList =
-  ReadonlyArray<CommonProbeInput>;
+  Array<CommonProbeInput>;
 export const CommonLoadBalancerPropertiesFormatInputProbesList =
   /*@__PURE__*/ S.Array(
     CommonProbeInput,
@@ -47418,7 +47487,7 @@ export const CommonInboundNatRuleInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Collection of inbound NAT Rules used by a load balancer. Defining inbound NAT rules on your load balancer is mutually exclusive with defining an inbound NAT pool. Inbound NAT pools are referenced from virtual machine scale sets. NICs that are associated with individual virtual machines cannot reference an Inbound NAT pool. They have to reference individual inbound NAT rules. */
 export type CommonLoadBalancerPropertiesFormatInputInboundNatRulesList =
-  ReadonlyArray<CommonInboundNatRuleInput>;
+  Array<CommonInboundNatRuleInput>;
 export const CommonLoadBalancerPropertiesFormatInputInboundNatRulesList =
   /*@__PURE__*/ S.Array(
     CommonInboundNatRuleInput,
@@ -47463,7 +47532,7 @@ export interface CommonInboundNatPoolPropertiesFormat {
   /** Reference to another subresource. */
   frontendIPConfiguration?: CommonInboundNatPoolPropertiesFormatFrontendIPConfiguration;
   /** The transport protocol for the endpoint. */
-  protocol: CommonInboundNatPoolPropertiesFormatProtocol;
+  protocol: CommonInboundNatPoolPropertiesFormatProtocol | (string & {});
   /** The first port number in the range of external ports that will be used to provide Inbound Nat to NICs associated with a load balancer. Acceptable values range between 1 and 65534. */
   frontendPortRangeStart: number;
   /** The last port number in the range of external ports that will be used to provide Inbound Nat to NICs associated with a load balancer. Acceptable values range between 1 and 65535. */
@@ -47477,7 +47546,9 @@ export interface CommonInboundNatPoolPropertiesFormat {
   /** Receive bidirectional TCP Reset on TCP flow idle timeout or unexpected connection termination. This element is only used when the protocol is set to TCP. */
   enableTcpReset?: boolean;
   /** Provisioning states of a resource. */
-  provisioningState?: CommonInboundNatPoolPropertiesFormatProvisioningState;
+  provisioningState?:
+    | CommonInboundNatPoolPropertiesFormatProvisioningState
+    | (string & {});
 }
 export const CommonInboundNatPoolPropertiesFormat = /*@__PURE__*/ S.suspend(
   () =>
@@ -47521,7 +47592,7 @@ export const CommonInboundNatPoolInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Defines an external port range for inbound NAT to a single backend port on NICs associated with a load balancer. Inbound NAT rules are created automatically for each NIC associated with the Load Balancer using an external port from this range. Defining an Inbound NAT pool on your Load Balancer is mutually exclusive with defining inbound NAT rules. Inbound NAT pools are referenced from virtual machine scale sets. NICs that are associated with individual virtual machines cannot reference an inbound NAT pool. They have to reference individual inbound NAT rules. */
 export type CommonLoadBalancerPropertiesFormatInputInboundNatPoolsList =
-  ReadonlyArray<CommonInboundNatPoolInput>;
+  Array<CommonInboundNatPoolInput>;
 export const CommonLoadBalancerPropertiesFormatInputInboundNatPoolsList =
   /*@__PURE__*/ S.Array(
     CommonInboundNatPoolInput,
@@ -47548,7 +47619,7 @@ export const CommonOutboundRuleInput = /*@__PURE__*/ S.suspend(() =>
 
 /** The outbound rules. */
 export type CommonLoadBalancerPropertiesFormatInputOutboundRulesList =
-  ReadonlyArray<CommonOutboundRuleInput>;
+  Array<CommonOutboundRuleInput>;
 export const CommonLoadBalancerPropertiesFormatInputOutboundRulesList =
   /*@__PURE__*/ S.Array(
     CommonOutboundRuleInput,
@@ -47652,9 +47723,9 @@ export const CommonLoadBalancerSkuTier = /*@__PURE__*/ S.String;
 /** SKU of a load balancer. */
 export interface CommonLoadBalancerSku {
   /** Name of a load balancer SKU. */
-  name?: CommonLoadBalancerSkuName;
+  name?: CommonLoadBalancerSkuName | (string & {});
   /** Tier of a load balancer SKU. */
-  tier?: CommonLoadBalancerSkuTier;
+  tier?: CommonLoadBalancerSkuTier | (string & {});
 }
 export const CommonLoadBalancerSku = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -47722,7 +47793,7 @@ export const LoadBalancersCreateOrUpdateResponseTagsMap =
 
 /** Object representing the frontend IPs to be used for the load balancer. */
 export type CommonLoadBalancerPropertiesFormatFrontendIPConfigurationsList =
-  ReadonlyArray<CommonFrontendIPConfiguration>;
+  Array<CommonFrontendIPConfiguration>;
 export const CommonLoadBalancerPropertiesFormatFrontendIPConfigurationsList =
   /*@__PURE__*/ S.Array(
     CommonFrontendIPConfiguration,
@@ -47730,7 +47801,7 @@ export const CommonLoadBalancerPropertiesFormatFrontendIPConfigurationsList =
 
 /** Collection of backend address pools used by a load balancer. */
 export type CommonLoadBalancerPropertiesFormatBackendAddressPoolsList =
-  ReadonlyArray<CommonBackendAddressPool>;
+  Array<CommonBackendAddressPool>;
 export const CommonLoadBalancerPropertiesFormatBackendAddressPoolsList =
   /*@__PURE__*/ S.Array(
     CommonBackendAddressPool,
@@ -47738,15 +47809,14 @@ export const CommonLoadBalancerPropertiesFormatBackendAddressPoolsList =
 
 /** Object collection representing the load balancing rules Gets the provisioning. */
 export type CommonLoadBalancerPropertiesFormatLoadBalancingRulesList =
-  ReadonlyArray<CommonLoadBalancingRule>;
+  Array<CommonLoadBalancingRule>;
 export const CommonLoadBalancerPropertiesFormatLoadBalancingRulesList =
   /*@__PURE__*/ S.Array(
     CommonLoadBalancingRule,
   ) as any as S.Schema<CommonLoadBalancerPropertiesFormatLoadBalancingRulesList>;
 
 /** Collection of probe objects used in the load balancer. */
-export type CommonLoadBalancerPropertiesFormatProbesList =
-  ReadonlyArray<CommonProbe>;
+export type CommonLoadBalancerPropertiesFormatProbesList = Array<CommonProbe>;
 export const CommonLoadBalancerPropertiesFormatProbesList =
   /*@__PURE__*/ S.Array(
     CommonProbe,
@@ -47754,7 +47824,7 @@ export const CommonLoadBalancerPropertiesFormatProbesList =
 
 /** Collection of inbound NAT Rules used by a load balancer. Defining inbound NAT rules on your load balancer is mutually exclusive with defining an inbound NAT pool. Inbound NAT pools are referenced from virtual machine scale sets. NICs that are associated with individual virtual machines cannot reference an Inbound NAT pool. They have to reference individual inbound NAT rules. */
 export type CommonLoadBalancerPropertiesFormatInboundNatRulesList =
-  ReadonlyArray<CommonInboundNatRule>;
+  Array<CommonInboundNatRule>;
 export const CommonLoadBalancerPropertiesFormatInboundNatRulesList =
   /*@__PURE__*/ S.Array(
     CommonInboundNatRule,
@@ -47787,7 +47857,7 @@ export const CommonInboundNatPool = /*@__PURE__*/ S.suspend(() =>
 
 /** Defines an external port range for inbound NAT to a single backend port on NICs associated with a load balancer. Inbound NAT rules are created automatically for each NIC associated with the Load Balancer using an external port from this range. Defining an Inbound NAT pool on your Load Balancer is mutually exclusive with defining inbound NAT rules. Inbound NAT pools are referenced from virtual machine scale sets. NICs that are associated with individual virtual machines cannot reference an inbound NAT pool. They have to reference individual inbound NAT rules. */
 export type CommonLoadBalancerPropertiesFormatInboundNatPoolsList =
-  ReadonlyArray<CommonInboundNatPool>;
+  Array<CommonInboundNatPool>;
 export const CommonLoadBalancerPropertiesFormatInboundNatPoolsList =
   /*@__PURE__*/ S.Array(
     CommonInboundNatPool,
@@ -47795,7 +47865,7 @@ export const CommonLoadBalancerPropertiesFormatInboundNatPoolsList =
 
 /** The outbound rules. */
 export type CommonLoadBalancerPropertiesFormatOutboundRulesList =
-  ReadonlyArray<CommonOutboundRule>;
+  Array<CommonOutboundRule>;
 export const CommonLoadBalancerPropertiesFormatOutboundRulesList =
   /*@__PURE__*/ S.Array(
     CommonOutboundRule,
@@ -48136,7 +48206,7 @@ export const CommonLoadBalancer = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CommonLoadBalancer>;
 
 /** The LoadBalancer items on this page */
-export type LoadBalancerListResultValueList = ReadonlyArray<CommonLoadBalancer>;
+export type LoadBalancerListResultValueList = Array<CommonLoadBalancer>;
 export const LoadBalancerListResultValueList = /*@__PURE__*/ S.Array(
   CommonLoadBalancer,
 ) as any as S.Schema<LoadBalancerListResultValueList>;
@@ -48255,7 +48325,7 @@ export const InboundNatRulePortMapping = /*@__PURE__*/ S.suspend(() =>
 
 /** Collection of inbound NAT rule port mappings. */
 export type BackendAddressInboundNatRulePortMappingsInboundNatRulePortMappingsList =
-  ReadonlyArray<InboundNatRulePortMapping>;
+  Array<InboundNatRulePortMapping>;
 export const BackendAddressInboundNatRulePortMappingsInboundNatRulePortMappingsList =
   /*@__PURE__*/ S.Array(
     InboundNatRulePortMapping,
@@ -48278,8 +48348,7 @@ export const BackendAddressInboundNatRulePortMappings = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<BackendAddressInboundNatRulePortMappings>;
 
 /** A list of pool names that should be migrated from Nic based to IP based pool */
-export type LoadBalancersMigrateToIpBasedRequestPoolsList =
-  ReadonlyArray<string>;
+export type LoadBalancersMigrateToIpBasedRequestPoolsList = Array<string>;
 export const LoadBalancersMigrateToIpBasedRequestPoolsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -48314,7 +48383,7 @@ export const LoadBalancersMigrateToIpBasedRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<LoadBalancersMigrateToIpBasedRequest>;
 
 /** A list of pools migrated from Nic based to IP based pool */
-export type MigratedPoolsMigratedPoolsList = ReadonlyArray<string>;
+export type MigratedPoolsMigratedPoolsList = Array<string>;
 export const MigratedPoolsMigratedPoolsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<MigratedPoolsMigratedPoolsList>;
@@ -48382,7 +48451,7 @@ export const LoadBalancerVipSwapRequestFrontendIPConfiguration =
 
 /** A list of frontend IP configuration resources that should swap VIPs. */
 export type LoadBalancersSwapPublicIpAddressesRequestFrontendIPConfigurationsList =
-  ReadonlyArray<LoadBalancerVipSwapRequestFrontendIPConfiguration>;
+  Array<LoadBalancerVipSwapRequestFrontendIPConfiguration>;
 export const LoadBalancersSwapPublicIpAddressesRequestFrontendIPConfigurationsList =
   /*@__PURE__*/ S.Array(
     LoadBalancerVipSwapRequestFrontendIPConfiguration,
@@ -48535,7 +48604,7 @@ export const LocalNetworkGatewaysCreateOrUpdateRequestTagsMap =
 
 /** A list of address blocks reserved for this virtual network in CIDR notation. */
 export type LocalNetworkGatewayPropertiesFormatInputLocalNetworkAddressSpaceAddressPrefixesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const LocalNetworkGatewayPropertiesFormatInputLocalNetworkAddressSpaceAddressPrefixesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -48543,7 +48612,7 @@ export const LocalNetworkGatewayPropertiesFormatInputLocalNetworkAddressSpaceAdd
 
 /** A list of IPAM Pools allocating IP address prefixes. */
 export type LocalNetworkGatewayPropertiesFormatInputLocalNetworkAddressSpaceIpamPoolPrefixAllocationsList =
-  ReadonlyArray<CommonIpamPoolPrefixAllocationInput>;
+  Array<CommonIpamPoolPrefixAllocationInput>;
 export const LocalNetworkGatewayPropertiesFormatInputLocalNetworkAddressSpaceIpamPoolPrefixAllocationsList =
   /*@__PURE__*/ S.Array(
     CommonIpamPoolPrefixAllocationInput,
@@ -48573,7 +48642,7 @@ export const LocalNetworkGatewayPropertiesFormatInputLocalNetworkAddressSpace =
 
 /** The list of custom BGP peering addresses which belong to IP configuration. */
 export type IPConfigurationBgpPeeringAddressInputCustomBgpIpAddressesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const IPConfigurationBgpPeeringAddressInputCustomBgpIpAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -48600,7 +48669,7 @@ export const IPConfigurationBgpPeeringAddressInput = /*@__PURE__*/ S.suspend(
 
 /** BGP peering address with IP configuration ID for virtual network gateway. */
 export type BgpSettingsInputBgpPeeringAddressesList =
-  ReadonlyArray<IPConfigurationBgpPeeringAddressInput>;
+  Array<IPConfigurationBgpPeeringAddressInput>;
 export const BgpSettingsInputBgpPeeringAddressesList = /*@__PURE__*/ S.Array(
   IPConfigurationBgpPeeringAddressInput,
 ) as any as S.Schema<BgpSettingsInputBgpPeeringAddressesList>;
@@ -48720,7 +48789,7 @@ export const LocalNetworkGatewaysCreateOrUpdateResponseTagsMap =
 
 /** A list of address blocks reserved for this virtual network in CIDR notation. */
 export type LocalNetworkGatewayPropertiesFormatLocalNetworkAddressSpaceAddressPrefixesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const LocalNetworkGatewayPropertiesFormatLocalNetworkAddressSpaceAddressPrefixesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -48728,7 +48797,7 @@ export const LocalNetworkGatewayPropertiesFormatLocalNetworkAddressSpaceAddressP
 
 /** A list of IPAM Pools allocating IP address prefixes. */
 export type LocalNetworkGatewayPropertiesFormatLocalNetworkAddressSpaceIpamPoolPrefixAllocationsList =
-  ReadonlyArray<CommonIpamPoolPrefixAllocation>;
+  Array<CommonIpamPoolPrefixAllocation>;
 export const LocalNetworkGatewayPropertiesFormatLocalNetworkAddressSpaceIpamPoolPrefixAllocationsList =
   /*@__PURE__*/ S.Array(
     CommonIpamPoolPrefixAllocation,
@@ -48757,7 +48826,7 @@ export const LocalNetworkGatewayPropertiesFormatLocalNetworkAddressSpace =
 
 /** The list of default BGP peering addresses which belong to IP configuration. */
 export type IPConfigurationBgpPeeringAddressDefaultBgpIpAddressesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const IPConfigurationBgpPeeringAddressDefaultBgpIpAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -48765,7 +48834,7 @@ export const IPConfigurationBgpPeeringAddressDefaultBgpIpAddressesList =
 
 /** The list of custom BGP peering addresses which belong to IP configuration. */
 export type IPConfigurationBgpPeeringAddressCustomBgpIpAddressesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const IPConfigurationBgpPeeringAddressCustomBgpIpAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -48773,7 +48842,7 @@ export const IPConfigurationBgpPeeringAddressCustomBgpIpAddressesList =
 
 /** The list of tunnel public IP addresses which belong to IP configuration. */
 export type IPConfigurationBgpPeeringAddressTunnelIpAddressesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const IPConfigurationBgpPeeringAddressTunnelIpAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -48809,7 +48878,7 @@ export const IPConfigurationBgpPeeringAddress = /*@__PURE__*/ S.suspend(() =>
 
 /** BGP peering address with IP configuration ID for virtual network gateway. */
 export type BgpSettingsBgpPeeringAddressesList =
-  ReadonlyArray<IPConfigurationBgpPeeringAddress>;
+  Array<IPConfigurationBgpPeeringAddress>;
 export const BgpSettingsBgpPeeringAddressesList = /*@__PURE__*/ S.Array(
   IPConfigurationBgpPeeringAddress,
 ) as any as S.Schema<BgpSettingsBgpPeeringAddressesList>;
@@ -49065,8 +49134,7 @@ export const LocalNetworkGateway = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LocalNetworkGateway>;
 
 /** The LocalNetworkGateway items on this page */
-export type LocalNetworkGatewayListResultValueList =
-  ReadonlyArray<LocalNetworkGateway>;
+export type LocalNetworkGatewayListResultValueList = Array<LocalNetworkGateway>;
 export const LocalNetworkGatewayListResultValueList = /*@__PURE__*/ S.Array(
   LocalNetworkGateway,
 ) as any as S.Schema<LocalNetworkGatewayListResultValueList>;
@@ -49182,7 +49250,9 @@ export interface NetworkManagerConnectionProperties {
   /** Network Manager Id. */
   networkManagerId?: string;
   /** The current scope connection state. */
-  connectionState?: NetworkManagerConnectionPropertiesConnectionState;
+  connectionState?:
+    | NetworkManagerConnectionPropertiesConnectionState
+    | (string & {});
   /** A description of the network manager connection. */
   description?: string;
 }
@@ -49532,7 +49602,7 @@ export const NetworkManagerConnection = /*@__PURE__*/ S.suspend(() =>
 
 /** The NetworkManagerConnection items on this page */
 export type NetworkManagerConnectionListResultValueList =
-  ReadonlyArray<NetworkManagerConnection>;
+  Array<NetworkManagerConnection>;
 export const NetworkManagerConnectionListResultValueList =
   /*@__PURE__*/ S.Array(
     NetworkManagerConnection,
@@ -49564,7 +49634,7 @@ export const NatGatewaysCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<NatGatewaysCreateOrUpdateRequestTagsMap>;
 
 /** A list of availability zones denoting the zone in which Nat Gateway should be deployed. */
-export type NatGatewaysCreateOrUpdateRequestZonesList = ReadonlyArray<string>;
+export type NatGatewaysCreateOrUpdateRequestZonesList = Array<string>;
 export const NatGatewaysCreateOrUpdateRequestZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<NatGatewaysCreateOrUpdateRequestZonesList>;
@@ -49622,7 +49692,7 @@ export const NatGatewaysCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<NatGatewaysCreateOrUpdateResponseTagsMap>;
 
 /** A list of availability zones denoting the zone in which Nat Gateway should be deployed. */
-export type NatGatewaysCreateOrUpdateResponseZonesList = ReadonlyArray<string>;
+export type NatGatewaysCreateOrUpdateResponseZonesList = Array<string>;
 export const NatGatewaysCreateOrUpdateResponseZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<NatGatewaysCreateOrUpdateResponseZonesList>;
@@ -49733,7 +49803,7 @@ export const NatGatewaysGetResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<NatGatewaysGetResponseTagsMap>;
 
 /** A list of availability zones denoting the zone in which Nat Gateway should be deployed. */
-export type NatGatewaysGetResponseZonesList = ReadonlyArray<string>;
+export type NatGatewaysGetResponseZonesList = Array<string>;
 export const NatGatewaysGetResponseZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<NatGatewaysGetResponseZonesList>;
@@ -49797,7 +49867,7 @@ export const NatGatewaysListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NatGatewaysListRequest>;
 
 /** The NatGateway items on this page */
-export type NatGatewayListResultValueList = ReadonlyArray<CommonNatGateway_5>;
+export type NatGatewayListResultValueList = Array<CommonNatGateway_5>;
 export const NatGatewayListResultValueList = /*@__PURE__*/ S.Array(
   CommonNatGateway_5,
 ) as any as S.Schema<NatGatewayListResultValueList>;
@@ -49884,7 +49954,7 @@ export const NatGatewaysUpdateTagsResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<NatGatewaysUpdateTagsResponseTagsMap>;
 
 /** A list of availability zones denoting the zone in which Nat Gateway should be deployed. */
-export type NatGatewaysUpdateTagsResponseZonesList = ReadonlyArray<string>;
+export type NatGatewaysUpdateTagsResponseZonesList = Array<string>;
 export const NatGatewaysUpdateTagsResponseZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<NatGatewaysUpdateTagsResponseZonesList>;
@@ -49962,7 +50032,7 @@ export const VpnNatRuleMapping = /*@__PURE__*/ S.suspend(() =>
 
 /** The private IP address internal mapping for NAT. */
 export type VpnGatewayNatRulePropertiesInputInternalMappingsList =
-  ReadonlyArray<VpnNatRuleMapping>;
+  Array<VpnNatRuleMapping>;
 export const VpnGatewayNatRulePropertiesInputInternalMappingsList =
   /*@__PURE__*/ S.Array(
     VpnNatRuleMapping,
@@ -49970,7 +50040,7 @@ export const VpnGatewayNatRulePropertiesInputInternalMappingsList =
 
 /** The private IP address external mapping for NAT. */
 export type VpnGatewayNatRulePropertiesInputExternalMappingsList =
-  ReadonlyArray<VpnNatRuleMapping>;
+  Array<VpnNatRuleMapping>;
 export const VpnGatewayNatRulePropertiesInputExternalMappingsList =
   /*@__PURE__*/ S.Array(
     VpnNatRuleMapping,
@@ -50070,7 +50140,7 @@ export const VpnGatewayNatRulePropertiesMode = /*@__PURE__*/ S.String;
 
 /** The private IP address internal mapping for NAT. */
 export type VpnGatewayNatRulePropertiesInternalMappingsList =
-  ReadonlyArray<VpnNatRuleMapping>;
+  Array<VpnNatRuleMapping>;
 export const VpnGatewayNatRulePropertiesInternalMappingsList =
   /*@__PURE__*/ S.Array(
     VpnNatRuleMapping,
@@ -50078,7 +50148,7 @@ export const VpnGatewayNatRulePropertiesInternalMappingsList =
 
 /** The private IP address external mapping for NAT. */
 export type VpnGatewayNatRulePropertiesExternalMappingsList =
-  ReadonlyArray<VpnNatRuleMapping>;
+  Array<VpnNatRuleMapping>;
 export const VpnGatewayNatRulePropertiesExternalMappingsList =
   /*@__PURE__*/ S.Array(
     VpnNatRuleMapping,
@@ -50100,7 +50170,7 @@ export const VpnGatewayNatRulePropertiesEgressVpnSiteLinkConnectionsItem =
 
 /** List of egress VpnSiteLinkConnections. */
 export type VpnGatewayNatRulePropertiesEgressVpnSiteLinkConnectionsList =
-  ReadonlyArray<VpnGatewayNatRulePropertiesEgressVpnSiteLinkConnectionsItem>;
+  Array<VpnGatewayNatRulePropertiesEgressVpnSiteLinkConnectionsItem>;
 export const VpnGatewayNatRulePropertiesEgressVpnSiteLinkConnectionsList =
   /*@__PURE__*/ S.Array(
     VpnGatewayNatRulePropertiesEgressVpnSiteLinkConnectionsItem,
@@ -50122,7 +50192,7 @@ export const VpnGatewayNatRulePropertiesIngressVpnSiteLinkConnectionsItem =
 
 /** List of ingress VpnSiteLinkConnections. */
 export type VpnGatewayNatRulePropertiesIngressVpnSiteLinkConnectionsList =
-  ReadonlyArray<VpnGatewayNatRulePropertiesIngressVpnSiteLinkConnectionsItem>;
+  Array<VpnGatewayNatRulePropertiesIngressVpnSiteLinkConnectionsItem>;
 export const VpnGatewayNatRulePropertiesIngressVpnSiteLinkConnectionsList =
   /*@__PURE__*/ S.Array(
     VpnGatewayNatRulePropertiesIngressVpnSiteLinkConnectionsItem,
@@ -50332,8 +50402,7 @@ export const VpnGatewayNatRule = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VpnGatewayNatRule>;
 
 /** The VpnGatewayNatRule items on this page */
-export type ListVpnGatewayNatRulesResultValueList =
-  ReadonlyArray<VpnGatewayNatRule>;
+export type ListVpnGatewayNatRulesResultValueList = Array<VpnGatewayNatRule>;
 export const ListVpnGatewayNatRulesResultValueList = /*@__PURE__*/ S.Array(
   VpnGatewayNatRule,
 ) as any as S.Schema<ListVpnGatewayNatRulesResultValueList>;
@@ -50742,7 +50811,7 @@ export const NetworkGroup = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NetworkGroup" }) as any as S.Schema<NetworkGroup>;
 
 /** The NetworkGroup items on this page */
-export type NetworkGroupListResultValueList = ReadonlyArray<NetworkGroup>;
+export type NetworkGroupListResultValueList = Array<NetworkGroup>;
 export const NetworkGroupListResultValueList = /*@__PURE__*/ S.Array(
   NetworkGroup,
 ) as any as S.Schema<NetworkGroupListResultValueList>;
@@ -50847,7 +50916,7 @@ export const NetworkInterfaceIPConfigurationsListRequest =
 
 /** The NetworkInterfaceIPConfiguration items on this page */
 export type NetworkInterfaceIPConfigurationListResultValueList =
-  ReadonlyArray<CommonNetworkInterfaceIPConfiguration_5>;
+  Array<CommonNetworkInterfaceIPConfiguration_5>;
 export const NetworkInterfaceIPConfigurationListResultValueList =
   /*@__PURE__*/ S.Array(
     CommonNetworkInterfaceIPConfiguration_5,
@@ -50936,7 +51005,7 @@ export const CommonFrontendIPConfiguration_2 = /*@__PURE__*/ S.suspend(() =>
 
 /** Object representing the frontend IPs to be used for the load balancer. */
 export type CommonLoadBalancerPropertiesFormatFrontendIPConfigurationsList_2 =
-  ReadonlyArray<CommonFrontendIPConfiguration_2>;
+  Array<CommonFrontendIPConfiguration_2>;
 export const CommonLoadBalancerPropertiesFormatFrontendIPConfigurationsList_2 =
   /*@__PURE__*/ S.Array(
     CommonFrontendIPConfiguration_2,
@@ -50969,7 +51038,7 @@ export const CommonBackendAddressPool_2 = /*@__PURE__*/ S.suspend(() =>
 
 /** Collection of backend address pools used by a load balancer. */
 export type CommonLoadBalancerPropertiesFormatBackendAddressPoolsList_2 =
-  ReadonlyArray<CommonBackendAddressPool_2>;
+  Array<CommonBackendAddressPool_2>;
 export const CommonLoadBalancerPropertiesFormatBackendAddressPoolsList_2 =
   /*@__PURE__*/ S.Array(
     CommonBackendAddressPool_2,
@@ -51002,7 +51071,7 @@ export const CommonInboundNatRule_2 = /*@__PURE__*/ S.suspend(() =>
 
 /** Collection of inbound NAT Rules used by a load balancer. Defining inbound NAT rules on your load balancer is mutually exclusive with defining an inbound NAT pool. Inbound NAT pools are referenced from virtual machine scale sets. NICs that are associated with individual virtual machines cannot reference an Inbound NAT pool. They have to reference individual inbound NAT rules. */
 export type CommonLoadBalancerPropertiesFormatInboundNatRulesList_2 =
-  ReadonlyArray<CommonInboundNatRule_2>;
+  Array<CommonInboundNatRule_2>;
 export const CommonLoadBalancerPropertiesFormatInboundNatRulesList_2 =
   /*@__PURE__*/ S.Array(
     CommonInboundNatRule_2,
@@ -51123,7 +51192,7 @@ export const NetworkInterfaceLoadBalancerListResultValueItem =
 
 /** The LoadBalancer items on this page */
 export type NetworkInterfaceLoadBalancerListResultValueList =
-  ReadonlyArray<NetworkInterfaceLoadBalancerListResultValueItem>;
+  Array<NetworkInterfaceLoadBalancerListResultValueItem>;
 export const NetworkInterfaceLoadBalancerListResultValueList =
   /*@__PURE__*/ S.Array(
     NetworkInterfaceLoadBalancerListResultValueItem,
@@ -51194,7 +51263,7 @@ export const CommonNetworkInterfaceIPConfigurationInput =
 
 /** A list of IPConfigurations of the network interface. */
 export type CommonNetworkInterfacePropertiesFormatInputIpConfigurationsList =
-  ReadonlyArray<CommonNetworkInterfaceIPConfigurationInput>;
+  Array<CommonNetworkInterfaceIPConfigurationInput>;
 export const CommonNetworkInterfacePropertiesFormatInputIpConfigurationsList =
   /*@__PURE__*/ S.Array(
     CommonNetworkInterfaceIPConfigurationInput,
@@ -51202,7 +51271,7 @@ export const CommonNetworkInterfacePropertiesFormatInputIpConfigurationsList =
 
 /** List of DNS servers IP addresses. Use 'AzureProvidedDNS' to switch to azure provided DNS resolution. 'AzureProvidedDNS' value cannot be combined with other IPs, it must be the only value in dnsServers collection. */
 export type CommonNetworkInterfaceDnsSettingsInputDnsServersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CommonNetworkInterfaceDnsSettingsInputDnsServersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -51270,7 +51339,7 @@ export const CommonPrivateLinkServiceInputTagsMap = /*@__PURE__*/ S.Record(
 
 /** A list of availability zones denoting the IP allocated for the resource needs to come from. */
 export type CommonPrivateLinkServicePropertiesInputLoadBalancerFrontendIpConfigurationsItemZonesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CommonPrivateLinkServicePropertiesInputLoadBalancerFrontendIpConfigurationsItemZonesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -51306,7 +51375,7 @@ export const CommonPrivateLinkServicePropertiesInputLoadBalancerFrontendIpConfig
 
 /** An array of references to the load balancer IP configurations. */
 export type CommonPrivateLinkServicePropertiesInputLoadBalancerFrontendIpConfigurationsList =
-  ReadonlyArray<CommonPrivateLinkServicePropertiesInputLoadBalancerFrontendIpConfigurationsItem>;
+  Array<CommonPrivateLinkServicePropertiesInputLoadBalancerFrontendIpConfigurationsItem>;
 export const CommonPrivateLinkServicePropertiesInputLoadBalancerFrontendIpConfigurationsList =
   /*@__PURE__*/ S.Array(
     CommonPrivateLinkServicePropertiesInputLoadBalancerFrontendIpConfigurationsItem,
@@ -51368,7 +51437,7 @@ export const CommonRouteInput_5 = /*@__PURE__*/ S.suspend(() =>
 
 /** Collection of routes contained within a route table. */
 export type CommonRouteTablePropertiesFormatInputRoutesList_5 =
-  ReadonlyArray<CommonRouteInput_5>;
+  Array<CommonRouteInput_5>;
 export const CommonRouteTablePropertiesFormatInputRoutesList_5 =
   /*@__PURE__*/ S.Array(
     CommonRouteInput_5,
@@ -51451,7 +51520,7 @@ export const CommonServiceEndpointPolicyDefinitionInput_6 =
 
 /** A collection of service endpoint policy definitions of the service endpoint policy. */
 export type CommonServiceEndpointPolicyPropertiesFormatInputServiceEndpointPolicyDefinitionsList_6 =
-  ReadonlyArray<CommonServiceEndpointPolicyDefinitionInput_6>;
+  Array<CommonServiceEndpointPolicyDefinitionInput_6>;
 export const CommonServiceEndpointPolicyPropertiesFormatInputServiceEndpointPolicyDefinitionsList_6 =
   /*@__PURE__*/ S.Array(
     CommonServiceEndpointPolicyDefinitionInput_6,
@@ -51518,7 +51587,7 @@ export const CommonSubnetPropertiesFormatInputServiceEndpointPoliciesItem_5 =
 
 /** An array of service endpoint policies. */
 export type CommonSubnetPropertiesFormatInputServiceEndpointPoliciesList_5 =
-  ReadonlyArray<CommonSubnetPropertiesFormatInputServiceEndpointPoliciesItem_5>;
+  Array<CommonSubnetPropertiesFormatInputServiceEndpointPoliciesItem_5>;
 export const CommonSubnetPropertiesFormatInputServiceEndpointPoliciesList_5 =
   /*@__PURE__*/ S.Array(
     CommonSubnetPropertiesFormatInputServiceEndpointPoliciesItem_5,
@@ -51705,7 +51774,7 @@ export const CommonPrivateLinkServiceIpConfigurationInput =
 
 /** An array of private link service IP configurations. */
 export type CommonPrivateLinkServicePropertiesInputIpConfigurationsList =
-  ReadonlyArray<CommonPrivateLinkServiceIpConfigurationInput>;
+  Array<CommonPrivateLinkServiceIpConfigurationInput>;
 export const CommonPrivateLinkServicePropertiesInputIpConfigurationsList =
   /*@__PURE__*/ S.Array(
     CommonPrivateLinkServiceIpConfigurationInput,
@@ -51730,8 +51799,7 @@ export const CommonPrivateLinkServicePropertiesInputProvisioningState =
   /*@__PURE__*/ S.String;
 
 /** The list of Fqdn. */
-export type CommonPrivateLinkServicePropertiesInputFqdnsList =
-  ReadonlyArray<string>;
+export type CommonPrivateLinkServicePropertiesInputFqdnsList = Array<string>;
 export const CommonPrivateLinkServicePropertiesInputFqdnsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -52316,13 +52384,13 @@ export type EffectiveRouteState = "Active" | "Invalid";
 export const EffectiveRouteState = /*@__PURE__*/ S.String;
 
 /** The address prefixes of the effective routes in CIDR notation. */
-export type EffectiveRouteAddressPrefixList = ReadonlyArray<string>;
+export type EffectiveRouteAddressPrefixList = Array<string>;
 export const EffectiveRouteAddressPrefixList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EffectiveRouteAddressPrefixList>;
 
 /** The IP address of the next hop of the effective route. */
-export type EffectiveRouteNextHopIpAddressList = ReadonlyArray<string>;
+export type EffectiveRouteNextHopIpAddressList = Array<string>;
 export const EffectiveRouteNextHopIpAddressList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EffectiveRouteNextHopIpAddressList>;
@@ -52367,7 +52435,7 @@ export const EffectiveRoute = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EffectiveRoute" }) as any as S.Schema<EffectiveRoute>;
 
 /** The EffectiveRoute items on this page */
-export type EffectiveRouteListResultValueList = ReadonlyArray<EffectiveRoute>;
+export type EffectiveRouteListResultValueList = Array<EffectiveRoute>;
 export const EffectiveRouteListResultValueList = /*@__PURE__*/ S.Array(
   EffectiveRoute,
 ) as any as S.Schema<EffectiveRouteListResultValueList>;
@@ -52412,7 +52480,7 @@ export const NetworkInterfacesListRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The NetworkInterface items on this page */
 export type NetworkInterfaceListResultValueList =
-  ReadonlyArray<CommonNetworkInterface_6>;
+  Array<CommonNetworkInterface_6>;
 export const NetworkInterfaceListResultValueList = /*@__PURE__*/ S.Array(
   CommonNetworkInterface_6,
 ) as any as S.Schema<NetworkInterfaceListResultValueList>;
@@ -52619,8 +52687,7 @@ export type EffectiveNetworkSecurityRuleProtocol = "Tcp" | "Udp" | "All";
 export const EffectiveNetworkSecurityRuleProtocol = /*@__PURE__*/ S.String;
 
 /** The source port ranges. Expected values include a single integer between 0 and 65535, a range using '-' as separator (e.g. 100-400), or an asterisk (*). */
-export type EffectiveNetworkSecurityRuleSourcePortRangesList =
-  ReadonlyArray<string>;
+export type EffectiveNetworkSecurityRuleSourcePortRangesList = Array<string>;
 export const EffectiveNetworkSecurityRuleSourcePortRangesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -52628,7 +52695,7 @@ export const EffectiveNetworkSecurityRuleSourcePortRangesList =
 
 /** The destination port ranges. Expected values include a single integer between 0 and 65535, a range using '-' as separator (e.g. 100-400), or an asterisk (*). */
 export type EffectiveNetworkSecurityRuleDestinationPortRangesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const EffectiveNetworkSecurityRuleDestinationPortRangesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -52636,7 +52703,7 @@ export const EffectiveNetworkSecurityRuleDestinationPortRangesList =
 
 /** The source address prefixes. Expected values include CIDR IP ranges, Default Tags (VirtualNetwork, AzureLoadBalancer, Internet), System Tags, and the asterisk (*). */
 export type EffectiveNetworkSecurityRuleSourceAddressPrefixesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const EffectiveNetworkSecurityRuleSourceAddressPrefixesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -52644,7 +52711,7 @@ export const EffectiveNetworkSecurityRuleSourceAddressPrefixesList =
 
 /** The destination address prefixes. Expected values include CIDR IP ranges, Default Tags (VirtualNetwork, AzureLoadBalancer, Internet), System Tags, and the asterisk (*). */
 export type EffectiveNetworkSecurityRuleDestinationAddressPrefixesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const EffectiveNetworkSecurityRuleDestinationAddressPrefixesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -52652,7 +52719,7 @@ export const EffectiveNetworkSecurityRuleDestinationAddressPrefixesList =
 
 /** The expanded source address prefix. */
 export type EffectiveNetworkSecurityRuleExpandedSourceAddressPrefixList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const EffectiveNetworkSecurityRuleExpandedSourceAddressPrefixList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -52660,7 +52727,7 @@ export const EffectiveNetworkSecurityRuleExpandedSourceAddressPrefixList =
 
 /** Expanded destination address prefix. */
 export type EffectiveNetworkSecurityRuleExpandedDestinationAddressPrefixList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const EffectiveNetworkSecurityRuleExpandedDestinationAddressPrefixList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -52743,14 +52810,13 @@ export const EffectiveNetworkSecurityRule = /*@__PURE__*/ S.suspend(() =>
 
 /** A collection of effective security rules. */
 export type EffectiveNetworkSecurityGroupEffectiveSecurityRulesList =
-  ReadonlyArray<EffectiveNetworkSecurityRule>;
+  Array<EffectiveNetworkSecurityRule>;
 export const EffectiveNetworkSecurityGroupEffectiveSecurityRulesList =
   /*@__PURE__*/ S.Array(
     EffectiveNetworkSecurityRule,
   ) as any as S.Schema<EffectiveNetworkSecurityGroupEffectiveSecurityRulesList>;
 
-export type EffectiveNetworkSecurityGroupTagMapValueList =
-  ReadonlyArray<string>;
+export type EffectiveNetworkSecurityGroupTagMapValueList = Array<string>;
 export const EffectiveNetworkSecurityGroupTagMapValueList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -52793,7 +52859,7 @@ export const EffectiveNetworkSecurityGroup = /*@__PURE__*/ S.suspend(() =>
 
 /** The EffectiveNetworkSecurityGroup items on this page */
 export type EffectiveNetworkSecurityGroupListResultValueList =
-  ReadonlyArray<EffectiveNetworkSecurityGroup>;
+  Array<EffectiveNetworkSecurityGroup>;
 export const EffectiveNetworkSecurityGroupListResultValueList =
   /*@__PURE__*/ S.Array(
     EffectiveNetworkSecurityGroup,
@@ -53165,7 +53231,7 @@ export const NetworkInterfaceTapConfigurationsListRequest =
 
 /** The NetworkInterfaceTapConfiguration items on this page */
 export type NetworkInterfaceTapConfigurationListResultValueList =
-  ReadonlyArray<CommonNetworkInterfaceTapConfiguration_5>;
+  Array<CommonNetworkInterfaceTapConfiguration_5>;
 export const NetworkInterfaceTapConfigurationListResultValueList =
   /*@__PURE__*/ S.Array(
     CommonNetworkInterfaceTapConfiguration_5,
@@ -53189,8 +53255,7 @@ export const NetworkInterfaceTapConfigurationListResult =
   }) as any as S.Schema<NetworkInterfaceTapConfigurationListResult>;
 
 /** List of target locations. */
-export type NetworkManagerCommitsPostRequestTargetLocationsList =
-  ReadonlyArray<string>;
+export type NetworkManagerCommitsPostRequestTargetLocationsList = Array<string>;
 export const NetworkManagerCommitsPostRequestTargetLocationsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -53198,7 +53263,7 @@ export const NetworkManagerCommitsPostRequestTargetLocationsList =
 
 /** List of configuration ids. */
 export type NetworkManagerCommitsPostRequestConfigurationIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const NetworkManagerCommitsPostRequestConfigurationIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -53250,13 +53315,13 @@ export const NetworkManagerCommitsPostRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NetworkManagerCommitsPostRequest>;
 
 /** List of target locations. */
-export type NetworkManagerCommitTargetLocationsList = ReadonlyArray<string>;
+export type NetworkManagerCommitTargetLocationsList = Array<string>;
 export const NetworkManagerCommitTargetLocationsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<NetworkManagerCommitTargetLocationsList>;
 
 /** List of configuration ids. */
-export type NetworkManagerCommitConfigurationIdsList = ReadonlyArray<string>;
+export type NetworkManagerCommitConfigurationIdsList = Array<string>;
 export const NetworkManagerCommitConfigurationIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<NetworkManagerCommitConfigurationIdsList>;
@@ -53293,7 +53358,7 @@ export const NetworkManagerCommit = /*@__PURE__*/ S.suspend(() =>
 
 /** List of locations. */
 export type NetworkManagerDeploymentStatusListRequestRegionsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const NetworkManagerDeploymentStatusListRequestRegionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -53310,7 +53375,7 @@ export const NetworkManagerDeploymentStatusListRequestDeploymentTypesItem =
 
 /** List of deployment types. */
 export type NetworkManagerDeploymentStatusListRequestDeploymentTypesList =
-  ReadonlyArray<
+  Array<
     NetworkManagerDeploymentStatusListRequestDeploymentTypesItem | (string & {})
   >;
 export const NetworkManagerDeploymentStatusListRequestDeploymentTypesList =
@@ -53368,8 +53433,7 @@ export const NetworkManagerDeploymentStatusDeploymentStatus =
   /*@__PURE__*/ S.String;
 
 /** List of configuration ids. */
-export type NetworkManagerDeploymentStatusConfigurationIdsList =
-  ReadonlyArray<string>;
+export type NetworkManagerDeploymentStatusConfigurationIdsList = Array<string>;
 export const NetworkManagerDeploymentStatusConfigurationIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -53418,7 +53482,7 @@ export const NetworkManagerDeploymentStatus = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets a page of Network Manager Deployment Status */
 export type NetworkManagerDeploymentStatusListResultValueList =
-  ReadonlyArray<NetworkManagerDeploymentStatus>;
+  Array<NetworkManagerDeploymentStatus>;
 export const NetworkManagerDeploymentStatusListResultValueList =
   /*@__PURE__*/ S.Array(
     NetworkManagerDeploymentStatus,
@@ -53889,7 +53953,7 @@ export const NetworkManagerRoutingConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** The NetworkManagerRoutingConfiguration items on this page */
 export type NetworkManagerRoutingConfigurationListResultValueList =
-  ReadonlyArray<NetworkManagerRoutingConfiguration>;
+  Array<NetworkManagerRoutingConfiguration>;
 export const NetworkManagerRoutingConfigurationListResultValueList =
   /*@__PURE__*/ S.Array(
     NetworkManagerRoutingConfiguration,
@@ -53924,7 +53988,7 @@ export const NetworkManagersCreateOrUpdateRequestTagsMap =
 
 /** List of management groups. */
 export type NetworkManagerPropertiesNetworkManagerScopesInputManagementGroupsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const NetworkManagerPropertiesNetworkManagerScopesInputManagementGroupsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -53932,7 +53996,7 @@ export const NetworkManagerPropertiesNetworkManagerScopesInputManagementGroupsLi
 
 /** List of subscriptions. */
 export type NetworkManagerPropertiesNetworkManagerScopesInputSubscriptionsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const NetworkManagerPropertiesNetworkManagerScopesInputSubscriptionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -53970,7 +54034,7 @@ export const NetworkManagerPropertiesInputNetworkManagerScopeAccessesItem =
 
 /** Scope Access. */
 export type NetworkManagerPropertiesInputNetworkManagerScopeAccessesList =
-  ReadonlyArray<
+  Array<
     NetworkManagerPropertiesInputNetworkManagerScopeAccessesItem | (string & {})
   >;
 export const NetworkManagerPropertiesInputNetworkManagerScopeAccessesList =
@@ -54067,7 +54131,7 @@ export const NetworkManagersCreateOrUpdateResponseTagsMap =
 
 /** List of management groups. */
 export type NetworkManagerPropertiesNetworkManagerScopesManagementGroupsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const NetworkManagerPropertiesNetworkManagerScopesManagementGroupsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -54075,20 +54139,20 @@ export const NetworkManagerPropertiesNetworkManagerScopesManagementGroupsList =
 
 /** List of subscriptions. */
 export type NetworkManagerPropertiesNetworkManagerScopesSubscriptionsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const NetworkManagerPropertiesNetworkManagerScopesSubscriptionsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<NetworkManagerPropertiesNetworkManagerScopesSubscriptionsList>;
 
 /** List of management groups. */
-export type CrossTenantScopesManagementGroupsList = ReadonlyArray<string>;
+export type CrossTenantScopesManagementGroupsList = Array<string>;
 export const CrossTenantScopesManagementGroupsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CrossTenantScopesManagementGroupsList>;
 
 /** List of subscriptions. */
-export type CrossTenantScopesSubscriptionsList = ReadonlyArray<string>;
+export type CrossTenantScopesSubscriptionsList = Array<string>;
 export const CrossTenantScopesSubscriptionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CrossTenantScopesSubscriptionsList>;
@@ -54114,7 +54178,7 @@ export const CrossTenantScopes = /*@__PURE__*/ S.suspend(() =>
 
 /** List of cross tenant scopes. */
 export type NetworkManagerPropertiesNetworkManagerScopesCrossTenantScopesList =
-  ReadonlyArray<CrossTenantScopes>;
+  Array<CrossTenantScopes>;
 export const NetworkManagerPropertiesNetworkManagerScopesCrossTenantScopesList =
   /*@__PURE__*/ S.Array(
     CrossTenantScopes,
@@ -54157,7 +54221,7 @@ export const NetworkManagerPropertiesNetworkManagerScopeAccessesItem =
 
 /** Scope Access. */
 export type NetworkManagerPropertiesNetworkManagerScopeAccessesList =
-  ReadonlyArray<NetworkManagerPropertiesNetworkManagerScopeAccessesItem>;
+  Array<NetworkManagerPropertiesNetworkManagerScopeAccessesItem>;
 export const NetworkManagerPropertiesNetworkManagerScopeAccessesList =
   /*@__PURE__*/ S.Array(
     NetworkManagerPropertiesNetworkManagerScopeAccessesItem,
@@ -54551,7 +54615,7 @@ export const NetworkManager = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NetworkManager" }) as any as S.Schema<NetworkManager>;
 
 /** The NetworkManager items on this page */
-export type NetworkManagerListResultValueList = ReadonlyArray<NetworkManager>;
+export type NetworkManagerListResultValueList = Array<NetworkManager>;
 export const NetworkManagerListResultValueList = /*@__PURE__*/ S.Array(
   NetworkManager,
 ) as any as S.Schema<NetworkManagerListResultValueList>;
@@ -54786,7 +54850,7 @@ export const CommonIPConfigurationProfileInput = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of ip configurations of the container network interface configuration. */
 export type ContainerNetworkInterfaceConfigurationPropertiesFormatInputIpConfigurationsList =
-  ReadonlyArray<CommonIPConfigurationProfileInput>;
+  Array<CommonIPConfigurationProfileInput>;
 export const ContainerNetworkInterfaceConfigurationPropertiesFormatInputIpConfigurationsList =
   /*@__PURE__*/ S.Array(
     CommonIPConfigurationProfileInput,
@@ -54809,7 +54873,7 @@ export const ContainerNetworkInterfaceConfigurationPropertiesFormatInputContaine
 
 /** A list of container network interfaces created from this container network interface configuration. */
 export type ContainerNetworkInterfaceConfigurationPropertiesFormatInputContainerNetworkInterfacesList =
-  ReadonlyArray<ContainerNetworkInterfaceConfigurationPropertiesFormatInputContainerNetworkInterfacesItem>;
+  Array<ContainerNetworkInterfaceConfigurationPropertiesFormatInputContainerNetworkInterfacesItem>;
 export const ContainerNetworkInterfaceConfigurationPropertiesFormatInputContainerNetworkInterfacesList =
   /*@__PURE__*/ S.Array(
     ContainerNetworkInterfaceConfigurationPropertiesFormatInputContainerNetworkInterfacesItem,
@@ -54873,7 +54937,7 @@ export const ContainerNetworkInterfaceConfigurationInput =
 
 /** List of chid container network interface configurations. */
 export type NetworkProfilePropertiesFormatInputContainerNetworkInterfaceConfigurationsList =
-  ReadonlyArray<ContainerNetworkInterfaceConfigurationInput>;
+  Array<ContainerNetworkInterfaceConfigurationInput>;
 export const NetworkProfilePropertiesFormatInputContainerNetworkInterfaceConfigurationsList =
   /*@__PURE__*/ S.Array(
     ContainerNetworkInterfaceConfigurationInput,
@@ -54962,7 +55026,7 @@ export const NetworkProfilesCreateOrUpdateResponseTagsMap =
 
 /** A list of ip configurations of the container network interface configuration. */
 export type ContainerNetworkInterfaceConfigurationPropertiesFormatIpConfigurationsList =
-  ReadonlyArray<CommonIPConfigurationProfile_6>;
+  Array<CommonIPConfigurationProfile_6>;
 export const ContainerNetworkInterfaceConfigurationPropertiesFormatIpConfigurationsList =
   /*@__PURE__*/ S.Array(
     CommonIPConfigurationProfile_6,
@@ -54985,7 +55049,7 @@ export const ContainerNetworkInterfaceConfigurationPropertiesFormatContainerNetw
 
 /** A list of container network interfaces created from this container network interface configuration. */
 export type ContainerNetworkInterfaceConfigurationPropertiesFormatContainerNetworkInterfacesList =
-  ReadonlyArray<ContainerNetworkInterfaceConfigurationPropertiesFormatContainerNetworkInterfacesItem>;
+  Array<ContainerNetworkInterfaceConfigurationPropertiesFormatContainerNetworkInterfacesItem>;
 export const ContainerNetworkInterfaceConfigurationPropertiesFormatContainerNetworkInterfacesList =
   /*@__PURE__*/ S.Array(
     ContainerNetworkInterfaceConfigurationPropertiesFormatContainerNetworkInterfacesItem,
@@ -55111,7 +55175,7 @@ export const ContainerNetworkInterfaceIpConfiguration = /*@__PURE__*/ S.suspend(
 
 /** Reference to the ip configuration on this container nic. */
 export type ContainerNetworkInterfacePropertiesFormatIpConfigurationsList =
-  ReadonlyArray<ContainerNetworkInterfaceIpConfiguration>;
+  Array<ContainerNetworkInterfaceIpConfiguration>;
 export const ContainerNetworkInterfacePropertiesFormatIpConfigurationsList =
   /*@__PURE__*/ S.Array(
     ContainerNetworkInterfaceIpConfiguration,
@@ -55184,7 +55248,7 @@ export const ContainerNetworkInterface = /*@__PURE__*/ S.suspend(() =>
 
 /** List of child container network interfaces. */
 export type NetworkProfilePropertiesFormatContainerNetworkInterfacesList =
-  ReadonlyArray<ContainerNetworkInterface>;
+  Array<ContainerNetworkInterface>;
 export const NetworkProfilePropertiesFormatContainerNetworkInterfacesList =
   /*@__PURE__*/ S.Array(
     ContainerNetworkInterface,
@@ -55192,7 +55256,7 @@ export const NetworkProfilePropertiesFormatContainerNetworkInterfacesList =
 
 /** List of chid container network interface configurations. */
 export type NetworkProfilePropertiesFormatContainerNetworkInterfaceConfigurationsList =
-  ReadonlyArray<ContainerNetworkInterfaceConfiguration>;
+  Array<ContainerNetworkInterfaceConfiguration>;
 export const NetworkProfilePropertiesFormatContainerNetworkInterfaceConfigurationsList =
   /*@__PURE__*/ S.Array(
     ContainerNetworkInterfaceConfiguration,
@@ -55426,7 +55490,7 @@ export const NetworkProfile = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NetworkProfile" }) as any as S.Schema<NetworkProfile>;
 
 /** The NetworkProfile items on this page */
-export type NetworkProfileListResultValueList = ReadonlyArray<NetworkProfile>;
+export type NetworkProfileListResultValueList = Array<NetworkProfile>;
 export const NetworkProfileListResultValueList = /*@__PURE__*/ S.Array(
   NetworkProfile,
 ) as any as S.Schema<NetworkProfileListResultValueList>;
@@ -55754,7 +55818,7 @@ export const NetworkSecurityGroupsListRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The NetworkSecurityGroup items on this page */
 export type NetworkSecurityGroupListResultValueList =
-  ReadonlyArray<CommonNetworkSecurityGroup_6>;
+  Array<CommonNetworkSecurityGroup_6>;
 export const NetworkSecurityGroupListResultValueList = /*@__PURE__*/ S.Array(
   CommonNetworkSecurityGroup_6,
 ) as any as S.Schema<NetworkSecurityGroupListResultValueList>;
@@ -55890,8 +55954,7 @@ export type NspAccessRulePropertiesInputDirection = "Inbound" | "Outbound";
 export const NspAccessRulePropertiesInputDirection = /*@__PURE__*/ S.String;
 
 /** Inbound address prefixes (IPv4/IPv6) */
-export type NspAccessRulePropertiesInputAddressPrefixesList =
-  ReadonlyArray<string>;
+export type NspAccessRulePropertiesInputAddressPrefixesList = Array<string>;
 export const NspAccessRulePropertiesInputAddressPrefixesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -55899,7 +55962,7 @@ export const NspAccessRulePropertiesInputAddressPrefixesList =
 
 /** Outbound rules in fully qualified domain name format. */
 export type NspAccessRulePropertiesInputFullyQualifiedDomainNamesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const NspAccessRulePropertiesInputFullyQualifiedDomainNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -55917,30 +55980,28 @@ export const SubscriptionId = /*@__PURE__*/ S.suspend(() =>
 
 /** List of subscription ids */
 export type NspAccessRulePropertiesInputSubscriptionsList =
-  ReadonlyArray<SubscriptionId>;
+  Array<SubscriptionId>;
 export const NspAccessRulePropertiesInputSubscriptionsList =
   /*@__PURE__*/ S.Array(
     SubscriptionId,
   ) as any as S.Schema<NspAccessRulePropertiesInputSubscriptionsList>;
 
 /** Outbound rules in email address format. This access rule type is currently unavailable for use. */
-export type NspAccessRulePropertiesInputEmailAddressesList =
-  ReadonlyArray<string>;
+export type NspAccessRulePropertiesInputEmailAddressesList = Array<string>;
 export const NspAccessRulePropertiesInputEmailAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<NspAccessRulePropertiesInputEmailAddressesList>;
 
 /** Outbound rules in phone number format. This access rule type is currently unavailable for use. */
-export type NspAccessRulePropertiesInputPhoneNumbersList =
-  ReadonlyArray<string>;
+export type NspAccessRulePropertiesInputPhoneNumbersList = Array<string>;
 export const NspAccessRulePropertiesInputPhoneNumbersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<NspAccessRulePropertiesInputPhoneNumbersList>;
 
 /** Inbound rules of type service tag. This access rule type is currently unavailable for use. */
-export type NspAccessRulePropertiesInputServiceTagsList = ReadonlyArray<string>;
+export type NspAccessRulePropertiesInputServiceTagsList = Array<string>;
 export const NspAccessRulePropertiesInputServiceTagsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -56084,22 +56145,21 @@ export type NspAccessRulePropertiesDirection = "Inbound" | "Outbound";
 export const NspAccessRulePropertiesDirection = /*@__PURE__*/ S.String;
 
 /** Inbound address prefixes (IPv4/IPv6) */
-export type NspAccessRulePropertiesAddressPrefixesList = ReadonlyArray<string>;
+export type NspAccessRulePropertiesAddressPrefixesList = Array<string>;
 export const NspAccessRulePropertiesAddressPrefixesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<NspAccessRulePropertiesAddressPrefixesList>;
 
 /** Outbound rules in fully qualified domain name format. */
 export type NspAccessRulePropertiesFullyQualifiedDomainNamesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const NspAccessRulePropertiesFullyQualifiedDomainNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<NspAccessRulePropertiesFullyQualifiedDomainNamesList>;
 
 /** List of subscription ids */
-export type NspAccessRulePropertiesSubscriptionsList =
-  ReadonlyArray<SubscriptionId>;
+export type NspAccessRulePropertiesSubscriptionsList = Array<SubscriptionId>;
 export const NspAccessRulePropertiesSubscriptionsList = /*@__PURE__*/ S.Array(
   SubscriptionId,
 ) as any as S.Schema<NspAccessRulePropertiesSubscriptionsList>;
@@ -56124,26 +56184,26 @@ export const PerimeterBasedAccessRule = /*@__PURE__*/ S.suspend(() =>
 
 /** Rule specified by the perimeter id. */
 export type NspAccessRulePropertiesNetworkSecurityPerimetersList =
-  ReadonlyArray<PerimeterBasedAccessRule>;
+  Array<PerimeterBasedAccessRule>;
 export const NspAccessRulePropertiesNetworkSecurityPerimetersList =
   /*@__PURE__*/ S.Array(
     PerimeterBasedAccessRule,
   ) as any as S.Schema<NspAccessRulePropertiesNetworkSecurityPerimetersList>;
 
 /** Outbound rules in email address format. This access rule type is currently unavailable for use. */
-export type NspAccessRulePropertiesEmailAddressesList = ReadonlyArray<string>;
+export type NspAccessRulePropertiesEmailAddressesList = Array<string>;
 export const NspAccessRulePropertiesEmailAddressesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<NspAccessRulePropertiesEmailAddressesList>;
 
 /** Outbound rules in phone number format. This access rule type is currently unavailable for use. */
-export type NspAccessRulePropertiesPhoneNumbersList = ReadonlyArray<string>;
+export type NspAccessRulePropertiesPhoneNumbersList = Array<string>;
 export const NspAccessRulePropertiesPhoneNumbersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<NspAccessRulePropertiesPhoneNumbersList>;
 
 /** Inbound rules of type service tag. This access rule type is currently unavailable for use. */
-export type NspAccessRulePropertiesServiceTagsList = ReadonlyArray<string>;
+export type NspAccessRulePropertiesServiceTagsList = Array<string>;
 export const NspAccessRulePropertiesServiceTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<NspAccessRulePropertiesServiceTagsList>;
@@ -56461,7 +56521,7 @@ export const NspAccessRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NspAccessRule" }) as any as S.Schema<NspAccessRule>;
 
 /** The NspAccessRule items on this page */
-export type NspAccessRuleListResultValueList = ReadonlyArray<NspAccessRule>;
+export type NspAccessRuleListResultValueList = Array<NspAccessRule>;
 export const NspAccessRuleListResultValueList = /*@__PURE__*/ S.Array(
   NspAccessRule,
 ) as any as S.Schema<NspAccessRuleListResultValueList>;
@@ -56545,7 +56605,7 @@ export const NetworkSecurityPerimeterAssociableResourceTypesListRequest =
 
 /** Public DNS zone names of the resources. */
 export type PerimeterAssociableResourcePropertiesPublicDnsZonesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PerimeterAssociableResourcePropertiesPublicDnsZonesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -56553,7 +56613,7 @@ export const PerimeterAssociableResourcePropertiesPublicDnsZonesList =
 
 /** Service tags associated with the resource provider. */
 export type PerimeterAssociableResourcePropertiesServiceTagsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PerimeterAssociableResourcePropertiesServiceTagsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -56630,7 +56690,7 @@ export const PerimeterAssociableResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The PerimeterAssociableResource items on this page */
 export type PerimeterAssociableResourcesListResultValueList =
-  ReadonlyArray<PerimeterAssociableResource>;
+  Array<PerimeterAssociableResource>;
 export const PerimeterAssociableResourcesListResultValueList =
   /*@__PURE__*/ S.Array(
     PerimeterAssociableResource,
@@ -57138,7 +57198,7 @@ export const NspAssociation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NspAssociation" }) as any as S.Schema<NspAssociation>;
 
 /** The NspAssociation items on this page */
-export type NspAssociationsListResultValueList = ReadonlyArray<NspAssociation>;
+export type NspAssociationsListResultValueList = Array<NspAssociation>;
 export const NspAssociationsListResultValueList = /*@__PURE__*/ S.Array(
   NspAssociation,
 ) as any as S.Schema<NspAssociationsListResultValueList>;
@@ -57316,24 +57376,21 @@ export const NspLinkReferencePropertiesProvisioningState =
   /*@__PURE__*/ S.String;
 
 /** Local Inbound profile names to which Inbound is allowed. Use ['*'] to allow inbound to all profiles. */
-export type NspLinkReferencePropertiesLocalInboundProfilesList =
-  ReadonlyArray<string>;
+export type NspLinkReferencePropertiesLocalInboundProfilesList = Array<string>;
 export const NspLinkReferencePropertiesLocalInboundProfilesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<NspLinkReferencePropertiesLocalInboundProfilesList>;
 
 /** Local Outbound profile names from which Outbound is allowed. In current version, it is readonly property and it's value is set to ['*'] to allow outbound from all profiles. In later version, user will be able to modify it. */
-export type NspLinkReferencePropertiesLocalOutboundProfilesList =
-  ReadonlyArray<string>;
+export type NspLinkReferencePropertiesLocalOutboundProfilesList = Array<string>;
 export const NspLinkReferencePropertiesLocalOutboundProfilesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<NspLinkReferencePropertiesLocalOutboundProfilesList>;
 
 /** Remote Inbound profile names to which Inbound is allowed. ['*'] value implies inbound is allowed to all profiles at remote perimeter. This property can only be updated from corresponding link resource present in remote perimeter. */
-export type NspLinkReferencePropertiesRemoteInboundProfilesList =
-  ReadonlyArray<string>;
+export type NspLinkReferencePropertiesRemoteInboundProfilesList = Array<string>;
 export const NspLinkReferencePropertiesRemoteInboundProfilesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -57341,7 +57398,7 @@ export const NspLinkReferencePropertiesRemoteInboundProfilesList =
 
 /** Remote Outbound profile names from which Outbound is allowed. ['*'] value implies outbound is allowed from all profiles at remote perimeter. This property can only be updated from corresponding link resource present in remote perimeter. */
 export type NspLinkReferencePropertiesRemoteOutboundProfilesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const NspLinkReferencePropertiesRemoteOutboundProfilesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -57535,8 +57592,7 @@ export const NspLinkReference = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NspLinkReference>;
 
 /** The NspLinkReference items on this page */
-export type NspLinkReferenceListResultValueList =
-  ReadonlyArray<NspLinkReference>;
+export type NspLinkReferenceListResultValueList = Array<NspLinkReference>;
 export const NspLinkReferenceListResultValueList = /*@__PURE__*/ S.Array(
   NspLinkReference,
 ) as any as S.Schema<NspLinkReferenceListResultValueList>;
@@ -57569,16 +57625,14 @@ export type NspLinkPropertiesInputProvisioningState =
 export const NspLinkPropertiesInputProvisioningState = /*@__PURE__*/ S.String;
 
 /** Local Inbound profile names to which Inbound is allowed. Use ['*'] to allow inbound to all profiles. */
-export type NspLinkPropertiesInputLocalInboundProfilesList =
-  ReadonlyArray<string>;
+export type NspLinkPropertiesInputLocalInboundProfilesList = Array<string>;
 export const NspLinkPropertiesInputLocalInboundProfilesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<NspLinkPropertiesInputLocalInboundProfilesList>;
 
 /** Remote Inbound profile names to which Inbound is allowed. Use ['*'] to allow inbound to all profiles. This property can only be updated in auto-approval mode. */
-export type NspLinkPropertiesInputRemoteInboundProfilesList =
-  ReadonlyArray<string>;
+export type NspLinkPropertiesInputRemoteInboundProfilesList = Array<string>;
 export const NspLinkPropertiesInputRemoteInboundProfilesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -57713,25 +57767,25 @@ export type NspLinkPropertiesProvisioningState =
 export const NspLinkPropertiesProvisioningState = /*@__PURE__*/ S.String;
 
 /** Local Inbound profile names to which Inbound is allowed. Use ['*'] to allow inbound to all profiles. */
-export type NspLinkPropertiesLocalInboundProfilesList = ReadonlyArray<string>;
+export type NspLinkPropertiesLocalInboundProfilesList = Array<string>;
 export const NspLinkPropertiesLocalInboundProfilesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<NspLinkPropertiesLocalInboundProfilesList>;
 
 /** Local Outbound profile names from which Outbound is allowed. In current version, it is readonly property and it's value is set to ['*'] to allow outbound from all profiles. In later version, user will be able to modify it. */
-export type NspLinkPropertiesLocalOutboundProfilesList = ReadonlyArray<string>;
+export type NspLinkPropertiesLocalOutboundProfilesList = Array<string>;
 export const NspLinkPropertiesLocalOutboundProfilesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<NspLinkPropertiesLocalOutboundProfilesList>;
 
 /** Remote Inbound profile names to which Inbound is allowed. Use ['*'] to allow inbound to all profiles. This property can only be updated in auto-approval mode. */
-export type NspLinkPropertiesRemoteInboundProfilesList = ReadonlyArray<string>;
+export type NspLinkPropertiesRemoteInboundProfilesList = Array<string>;
 export const NspLinkPropertiesRemoteInboundProfilesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<NspLinkPropertiesRemoteInboundProfilesList>;
 
 /** Remote Outbound profile names from which Outbound is allowed. In current version, it is readonly property and it's value is set to ['*'] to allow outbound from all profiles. In later version, user will be able to modify it. */
-export type NspLinkPropertiesRemoteOutboundProfilesList = ReadonlyArray<string>;
+export type NspLinkPropertiesRemoteOutboundProfilesList = Array<string>;
 export const NspLinkPropertiesRemoteOutboundProfilesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -58057,7 +58111,7 @@ export const NspLink = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NspLink" }) as any as S.Schema<NspLink>;
 
 /** The NspLink items on this page */
-export type NspLinkListResultValueList = ReadonlyArray<NspLink>;
+export type NspLinkListResultValueList = Array<NspLink>;
 export const NspLinkListResultValueList = /*@__PURE__*/ S.Array(
   NspLink,
 ) as any as S.Schema<NspLinkListResultValueList>;
@@ -58080,7 +58134,7 @@ export const NspLinkListResult = /*@__PURE__*/ S.suspend(() =>
 
 /** The log categories to enable in the NSP logging configuration. */
 export type NspLoggingConfigurationPropertiesEnabledLogCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const NspLoggingConfigurationPropertiesEnabledLogCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -58449,7 +58503,7 @@ export const NspLoggingConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** The NspLoggingConfiguration items on this page */
 export type NspLoggingConfigurationListResultValueList =
-  ReadonlyArray<NspLoggingConfiguration>;
+  Array<NspLoggingConfiguration>;
 export const NspLoggingConfigurationListResultValueList = /*@__PURE__*/ S.Array(
   NspLoggingConfiguration,
 ) as any as S.Schema<NspLoggingConfigurationListResultValueList>;
@@ -58497,14 +58551,13 @@ export const NetworkSecurityPerimeterOperationStatusesGetRequest =
   }) as any as S.Schema<NetworkSecurityPerimeterOperationStatusesGetRequest>;
 
 /** The operations list. */
-export type OperationStatusResultOperationsList =
-  ReadonlyArray<OperationStatusResult>;
+export type OperationStatusResultOperationsList = Array<OperationStatusResult>;
 export const OperationStatusResultOperationsList = /*@__PURE__*/ S.Array(
   S.suspend(() => OperationStatusResult),
 ) as any as S.Schema<OperationStatusResultOperationsList>;
 
 /** The error details. */
-export type ErrorDetailDetailsList = ReadonlyArray<ErrorDetail>;
+export type ErrorDetailDetailsList = Array<ErrorDetail>;
 export const ErrorDetailDetailsList = /*@__PURE__*/ S.Array(
   S.suspend(() => ErrorDetail),
 ) as any as S.Schema<ErrorDetailDetailsList>;
@@ -58526,7 +58579,7 @@ export const ErrorAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ErrorAdditionalInfo>;
 
 /** The error additional info. */
-export type ErrorDetailAdditionalInfoList = ReadonlyArray<ErrorAdditionalInfo>;
+export type ErrorDetailAdditionalInfoList = Array<ErrorAdditionalInfo>;
 export const ErrorDetailAdditionalInfoList = /*@__PURE__*/ S.Array(
   ErrorAdditionalInfo,
 ) as any as S.Schema<ErrorDetailAdditionalInfoList>;
@@ -58593,7 +58646,7 @@ export const OperationStatusResult = /*@__PURE__*/ S.suspend(() =>
 
 /** The operations list. */
 export type NetworkSecurityPerimeterOperationStatusesGetResponseOperationsList =
-  ReadonlyArray<OperationStatusResult>;
+  Array<OperationStatusResult>;
 export const NetworkSecurityPerimeterOperationStatusesGetResponseOperationsList =
   /*@__PURE__*/ S.Array(
     OperationStatusResult,
@@ -59003,7 +59056,7 @@ export const NspProfile = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NspProfile" }) as any as S.Schema<NspProfile>;
 
 /** The NspProfile items on this page */
-export type NspProfileListResultValueList = ReadonlyArray<NspProfile>;
+export type NspProfileListResultValueList = Array<NspProfile>;
 export const NspProfileListResultValueList = /*@__PURE__*/ S.Array(
   NspProfile,
 ) as any as S.Schema<NspProfileListResultValueList>;
@@ -59275,7 +59328,7 @@ export const NetworkSecurityPerimeterServiceTagsListRequest =
   }) as any as S.Schema<NetworkSecurityPerimeterServiceTagsListRequest>;
 
 /** NSP service tags. */
-export type NspServiceTagsResourceServiceTagsList = ReadonlyArray<string>;
+export type NspServiceTagsResourceServiceTagsList = Array<string>;
 export const NspServiceTagsResourceServiceTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<NspServiceTagsResourceServiceTagsList>;
@@ -59294,8 +59347,7 @@ export const NspServiceTagsResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NspServiceTagsResource>;
 
 /** The NspServiceTagsResource items on this page */
-export type NspServiceTagsListResultValueList =
-  ReadonlyArray<NspServiceTagsResource>;
+export type NspServiceTagsListResultValueList = Array<NspServiceTagsResource>;
 export const NspServiceTagsListResultValueList = /*@__PURE__*/ S.Array(
   NspServiceTagsResource,
 ) as any as S.Schema<NspServiceTagsListResultValueList>;
@@ -59552,7 +59604,7 @@ export const NetworkSecurityPerimeter = /*@__PURE__*/ S.suspend(() =>
 
 /** The NetworkSecurityPerimeter items on this page */
 export type NetworkSecurityPerimeterListResultValueList =
-  ReadonlyArray<NetworkSecurityPerimeter>;
+  Array<NetworkSecurityPerimeter>;
 export const NetworkSecurityPerimeterListResultValueList =
   /*@__PURE__*/ S.Array(
     NetworkSecurityPerimeter,
@@ -59741,7 +59793,7 @@ export const NetworkVirtualApplianceConnectionPropertiesInputProvisioningState =
 
 /** List of bgpPeerAddresses for the NVA instances */
 export type NetworkVirtualApplianceConnectionPropertiesInputBgpPeerAddressList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const NetworkVirtualApplianceConnectionPropertiesInputBgpPeerAddressList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -59835,7 +59887,7 @@ export const NetworkVirtualApplianceConnectionPropertiesProvisioningState =
 
 /** List of bgpPeerAddresses for the NVA instances */
 export type NetworkVirtualApplianceConnectionPropertiesBgpPeerAddressList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const NetworkVirtualApplianceConnectionPropertiesBgpPeerAddressList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -60024,7 +60076,7 @@ export const NetworkVirtualApplianceConnection = /*@__PURE__*/ S.suspend(() =>
 
 /** The NetworkVirtualApplianceConnection items on this page */
 export type NetworkVirtualApplianceConnectionListValueList =
-  ReadonlyArray<NetworkVirtualApplianceConnection>;
+  Array<NetworkVirtualApplianceConnection>;
 export const NetworkVirtualApplianceConnectionListValueList =
   /*@__PURE__*/ S.Array(
     NetworkVirtualApplianceConnection,
@@ -60078,7 +60130,7 @@ export const VirtualApplianceSkuProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** BootStrapConfigurationBlobs storage URLs. */
 export type NetworkVirtualAppliancePropertiesFormatInputBootStrapConfigurationBlobsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const NetworkVirtualAppliancePropertiesFormatInputBootStrapConfigurationBlobsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -60100,7 +60152,7 @@ export const NetworkVirtualAppliancePropertiesFormatInputVirtualHub =
 
 /** CloudInitConfigurationBlob storage URLs. */
 export type NetworkVirtualAppliancePropertiesFormatInputCloudInitConfigurationBlobsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const NetworkVirtualAppliancePropertiesFormatInputCloudInitConfigurationBlobsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -60144,7 +60196,7 @@ export const VirtualApplianceIPConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VirtualApplianceIPConfiguration>;
 
 export type VirtualApplianceNetworkInterfaceConfigurationPropertiesIpConfigurationsList =
-  ReadonlyArray<VirtualApplianceIPConfiguration>;
+  Array<VirtualApplianceIPConfiguration>;
 export const VirtualApplianceNetworkInterfaceConfigurationPropertiesIpConfigurationsList =
   /*@__PURE__*/ S.Array(
     VirtualApplianceIPConfiguration,
@@ -60168,7 +60220,7 @@ export const VirtualApplianceNetworkInterfaceConfigurationProperties =
 /** Represents a single NIC configuration. */
 export interface VirtualApplianceNetworkInterfaceConfiguration {
   /** NIC type. This should be either PublicNic or PrivateNic. */
-  type?: VirtualApplianceNetworkInterfaceConfigurationType;
+  type?: VirtualApplianceNetworkInterfaceConfigurationType | (string & {});
   /** Represents a single NIC configuration properties. */
   properties?: VirtualApplianceNetworkInterfaceConfigurationProperties;
 }
@@ -60185,7 +60237,7 @@ export const VirtualApplianceNetworkInterfaceConfiguration =
   }) as any as S.Schema<VirtualApplianceNetworkInterfaceConfiguration>;
 
 export type NetworkVirtualAppliancePropertiesFormatNetworkProfileNetworkInterfaceConfigurationsList =
-  ReadonlyArray<VirtualApplianceNetworkInterfaceConfiguration>;
+  Array<VirtualApplianceNetworkInterfaceConfiguration>;
 export const NetworkVirtualAppliancePropertiesFormatNetworkProfileNetworkInterfaceConfigurationsList =
   /*@__PURE__*/ S.Array(
     VirtualApplianceNetworkInterfaceConfiguration,
@@ -60225,7 +60277,7 @@ export const VirtualApplianceAdditionalNicProperties = /*@__PURE__*/ S.suspend(
 
 /** Details required for Additional Network Interface. This property is not compatible with the NVA deployed in VNets. */
 export type NetworkVirtualAppliancePropertiesFormatInputAdditionalNicsList =
-  ReadonlyArray<VirtualApplianceAdditionalNicProperties>;
+  Array<VirtualApplianceAdditionalNicProperties>;
 export const NetworkVirtualAppliancePropertiesFormatInputAdditionalNicsList =
   /*@__PURE__*/ S.Array(
     VirtualApplianceAdditionalNicProperties,
@@ -60246,7 +60298,7 @@ export const InternetIngressPublicIpsProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Resource Uri of Public IPs for Internet Ingress Scenario. */
 export type NetworkVirtualAppliancePropertiesFormatInputInternetIngressPublicIpsList =
-  ReadonlyArray<InternetIngressPublicIpsProperties>;
+  Array<InternetIngressPublicIpsProperties>;
 export const NetworkVirtualAppliancePropertiesFormatInputInternetIngressPublicIpsList =
   /*@__PURE__*/ S.Array(
     InternetIngressPublicIpsProperties,
@@ -60278,7 +60330,7 @@ export interface DelegationProperties {
   /** The service name to which the NVA is delegated. */
   serviceName?: string;
   /** Provisioning states of a resource. */
-  provisioningState?: DelegationPropertiesProvisioningState;
+  provisioningState?: DelegationPropertiesProvisioningState | (string & {});
 }
 export const DelegationProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -60319,8 +60371,9 @@ export const NvaInterfaceConfigurationsPropertiesTypeItem =
   /*@__PURE__*/ S.String;
 
 /** Specifies the NIC types for the NVA interface configuration. Allowed values: PrivateNic, PublicNic, AdditionalPrivateNic, AdditionalPublicNic. Only the combination of PrivateNic and PublicNic is currently supported. */
-export type NvaInterfaceConfigurationsPropertiesTypeList =
-  ReadonlyArray<NvaInterfaceConfigurationsPropertiesTypeItem>;
+export type NvaInterfaceConfigurationsPropertiesTypeList = Array<
+  NvaInterfaceConfigurationsPropertiesTypeItem | (string & {})
+>;
 export const NvaInterfaceConfigurationsPropertiesTypeList =
   /*@__PURE__*/ S.Array(
     NvaInterfaceConfigurationsPropertiesTypeItem,
@@ -60348,7 +60401,7 @@ export const NvaInterfaceConfigurationsProperties = /*@__PURE__*/ S.suspend(
 
 /** The NVA in VNet interface configurations */
 export type NetworkVirtualAppliancePropertiesFormatInputNvaInterfaceConfigurationsList =
-  ReadonlyArray<NvaInterfaceConfigurationsProperties>;
+  Array<NvaInterfaceConfigurationsProperties>;
 export const NetworkVirtualAppliancePropertiesFormatInputNvaInterfaceConfigurationsList =
   /*@__PURE__*/ S.Array(
     NvaInterfaceConfigurationsProperties,
@@ -60512,7 +60565,7 @@ export const NetworkVirtualAppliancesCreateOrUpdateResponseTagsMap =
 
 /** BootStrapConfigurationBlobs storage URLs. */
 export type NetworkVirtualAppliancePropertiesFormatBootStrapConfigurationBlobsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const NetworkVirtualAppliancePropertiesFormatBootStrapConfigurationBlobsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -60534,7 +60587,7 @@ export const NetworkVirtualAppliancePropertiesFormatVirtualHub =
 
 /** CloudInitConfigurationBlob storage URLs. */
 export type NetworkVirtualAppliancePropertiesFormatCloudInitConfigurationBlobsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const NetworkVirtualAppliancePropertiesFormatCloudInitConfigurationBlobsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -60574,7 +60627,7 @@ export const VirtualApplianceNicProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Virtual Appliance Network Interfaces. */
 export type NetworkVirtualAppliancePropertiesFormatVirtualApplianceNicsList =
-  ReadonlyArray<VirtualApplianceNicProperties>;
+  Array<VirtualApplianceNicProperties>;
 export const NetworkVirtualAppliancePropertiesFormatVirtualApplianceNicsList =
   /*@__PURE__*/ S.Array(
     VirtualApplianceNicProperties,
@@ -60582,7 +60635,7 @@ export const NetworkVirtualAppliancePropertiesFormatVirtualApplianceNicsList =
 
 /** Details required for Additional Network Interface. This property is not compatible with the NVA deployed in VNets. */
 export type NetworkVirtualAppliancePropertiesFormatAdditionalNicsList =
-  ReadonlyArray<VirtualApplianceAdditionalNicProperties>;
+  Array<VirtualApplianceAdditionalNicProperties>;
 export const NetworkVirtualAppliancePropertiesFormatAdditionalNicsList =
   /*@__PURE__*/ S.Array(
     VirtualApplianceAdditionalNicProperties,
@@ -60590,7 +60643,7 @@ export const NetworkVirtualAppliancePropertiesFormatAdditionalNicsList =
 
 /** List of Resource Uri of Public IPs for Internet Ingress Scenario. */
 export type NetworkVirtualAppliancePropertiesFormatInternetIngressPublicIpsList =
-  ReadonlyArray<InternetIngressPublicIpsProperties>;
+  Array<InternetIngressPublicIpsProperties>;
 export const NetworkVirtualAppliancePropertiesFormatInternetIngressPublicIpsList =
   /*@__PURE__*/ S.Array(
     InternetIngressPublicIpsProperties,
@@ -60613,7 +60666,7 @@ export const NetworkVirtualAppliancePropertiesFormatVirtualApplianceSitesItem =
 
 /** List of references to VirtualApplianceSite. */
 export type NetworkVirtualAppliancePropertiesFormatVirtualApplianceSitesList =
-  ReadonlyArray<NetworkVirtualAppliancePropertiesFormatVirtualApplianceSitesItem>;
+  Array<NetworkVirtualAppliancePropertiesFormatVirtualApplianceSitesItem>;
 export const NetworkVirtualAppliancePropertiesFormatVirtualApplianceSitesList =
   /*@__PURE__*/ S.Array(
     NetworkVirtualAppliancePropertiesFormatVirtualApplianceSitesItem,
@@ -60636,7 +60689,7 @@ export const NetworkVirtualAppliancePropertiesFormatVirtualApplianceConnectionsI
 
 /** List of references to VirtualApplianceConnections. */
 export type NetworkVirtualAppliancePropertiesFormatVirtualApplianceConnectionsList =
-  ReadonlyArray<NetworkVirtualAppliancePropertiesFormatVirtualApplianceConnectionsItem>;
+  Array<NetworkVirtualAppliancePropertiesFormatVirtualApplianceConnectionsItem>;
 export const NetworkVirtualAppliancePropertiesFormatVirtualApplianceConnectionsList =
   /*@__PURE__*/ S.Array(
     NetworkVirtualAppliancePropertiesFormatVirtualApplianceConnectionsItem,
@@ -60659,7 +60712,7 @@ export const NetworkVirtualAppliancePropertiesFormatInboundSecurityRulesItem =
 
 /** List of references to InboundSecurityRules. */
 export type NetworkVirtualAppliancePropertiesFormatInboundSecurityRulesList =
-  ReadonlyArray<NetworkVirtualAppliancePropertiesFormatInboundSecurityRulesItem>;
+  Array<NetworkVirtualAppliancePropertiesFormatInboundSecurityRulesItem>;
 export const NetworkVirtualAppliancePropertiesFormatInboundSecurityRulesList =
   /*@__PURE__*/ S.Array(
     NetworkVirtualAppliancePropertiesFormatInboundSecurityRulesItem,
@@ -60697,7 +60750,7 @@ export const PartnerManagedResourceProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** The NVA in VNet interface configurations */
 export type NetworkVirtualAppliancePropertiesFormatNvaInterfaceConfigurationsList =
-  ReadonlyArray<NvaInterfaceConfigurationsProperties>;
+  Array<NvaInterfaceConfigurationsProperties>;
 export const NetworkVirtualAppliancePropertiesFormatNvaInterfaceConfigurationsList =
   /*@__PURE__*/ S.Array(
     NvaInterfaceConfigurationsProperties,
@@ -61152,7 +61205,7 @@ export const NetworkVirtualAppliance = /*@__PURE__*/ S.suspend(() =>
 
 /** The NetworkVirtualAppliance items on this page */
 export type NetworkVirtualApplianceListResultValueList =
-  ReadonlyArray<NetworkVirtualAppliance>;
+  Array<NetworkVirtualAppliance>;
 export const NetworkVirtualApplianceListResultValueList = /*@__PURE__*/ S.Array(
   NetworkVirtualAppliance,
 ) as any as S.Schema<NetworkVirtualApplianceListResultValueList>;
@@ -61198,7 +61251,7 @@ export const NetworkVirtualAppliancesListByResourceGroupRequest =
 
 /** The network virtual appliance instance ids. Omitting the network virtual appliance instance ids will result in the operation being performed on all virtual machines belonging to the network virtual appliance. */
 export type NetworkVirtualAppliancesReimageRequestInstanceIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const NetworkVirtualAppliancesReimageRequestInstanceIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -61236,8 +61289,7 @@ export const NetworkVirtualAppliancesReimageRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<NetworkVirtualAppliancesReimageRequest>;
 
 /** The network virtual appliance instance ids. Omitting the network virtual appliance instance ids will result in the operation being performed on all virtual machines belonging to the network virtual appliance. */
-export type NetworkVirtualApplianceInstanceIdsInstanceIdsList =
-  ReadonlyArray<string>;
+export type NetworkVirtualApplianceInstanceIdsInstanceIdsList = Array<string>;
 export const NetworkVirtualApplianceInstanceIdsInstanceIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -61258,7 +61310,7 @@ export const NetworkVirtualApplianceInstanceIds = /*@__PURE__*/ S.suspend(() =>
 
 /** The network virtual appliance instance ids. Omitting the network virtual appliance instance ids will result in the operation being performed on all virtual machines belonging to the network virtual appliance. */
 export type NetworkVirtualAppliancesRestartRequestInstanceIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const NetworkVirtualAppliancesRestartRequestInstanceIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -61461,13 +61513,13 @@ export type HTTPConfigurationMethod = "Get";
 export const HTTPConfigurationMethod = /*@__PURE__*/ S.String;
 
 /** List of HTTP headers. */
-export type HTTPConfigurationHeadersList = ReadonlyArray<HTTPHeader>;
+export type HTTPConfigurationHeadersList = Array<HTTPHeader>;
 export const HTTPConfigurationHeadersList = /*@__PURE__*/ S.Array(
   HTTPHeader,
 ) as any as S.Schema<HTTPConfigurationHeadersList>;
 
 /** Valid status codes. */
-export type HTTPConfigurationValidStatusCodesList = ReadonlyArray<number>;
+export type HTTPConfigurationValidStatusCodesList = Array<number>;
 export const HTTPConfigurationValidStatusCodesList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<HTTPConfigurationValidStatusCodesList>;
@@ -61557,13 +61609,13 @@ export const NetworkWatchersCheckConnectivityRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<NetworkWatchersCheckConnectivityRequest>;
 
 /** List of next hop identifiers. */
-export type ConnectivityHopNextHopIdsList = ReadonlyArray<string>;
+export type ConnectivityHopNextHopIdsList = Array<string>;
 export const ConnectivityHopNextHopIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ConnectivityHopNextHopIdsList>;
 
 /** List of previous hop identifiers. */
-export type ConnectivityHopPreviousHopIdsList = ReadonlyArray<string>;
+export type ConnectivityHopPreviousHopIdsList = Array<string>;
 export const ConnectivityHopPreviousHopIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ConnectivityHopPreviousHopIdsList>;
@@ -61618,7 +61670,7 @@ export const ConnectivityIssueContextItemMap = /*@__PURE__*/ S.Record(
 
 /** Provides additional context on the issue. */
 export type ConnectivityIssueContextList =
-  ReadonlyArray<ConnectivityIssueContextItemMap>;
+  Array<ConnectivityIssueContextItemMap>;
 export const ConnectivityIssueContextList = /*@__PURE__*/ S.Array(
   ConnectivityIssueContextItemMap,
 ) as any as S.Schema<ConnectivityIssueContextList>;
@@ -61646,7 +61698,7 @@ export const ConnectivityIssue = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConnectivityIssue>;
 
 /** List of issues. */
-export type HopLinkIssuesList = ReadonlyArray<ConnectivityIssue>;
+export type HopLinkIssuesList = Array<ConnectivityIssue>;
 export const HopLinkIssuesList = /*@__PURE__*/ S.Array(
   ConnectivityIssue,
 ) as any as S.Schema<HopLinkIssuesList>;
@@ -61685,19 +61737,19 @@ export const HopLink = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "HopLink" }) as any as S.Schema<HopLink>;
 
 /** List of hop links. */
-export type ConnectivityHopLinksList = ReadonlyArray<HopLink>;
+export type ConnectivityHopLinksList = Array<HopLink>;
 export const ConnectivityHopLinksList = /*@__PURE__*/ S.Array(
   HopLink,
 ) as any as S.Schema<ConnectivityHopLinksList>;
 
 /** List of previous hop links. */
-export type ConnectivityHopPreviousLinksList = ReadonlyArray<HopLink>;
+export type ConnectivityHopPreviousLinksList = Array<HopLink>;
 export const ConnectivityHopPreviousLinksList = /*@__PURE__*/ S.Array(
   HopLink,
 ) as any as S.Schema<ConnectivityHopPreviousLinksList>;
 
 /** List of issues. */
-export type ConnectivityHopIssuesList = ReadonlyArray<ConnectivityIssue>;
+export type ConnectivityHopIssuesList = Array<ConnectivityIssue>;
 export const ConnectivityHopIssuesList = /*@__PURE__*/ S.Array(
   ConnectivityIssue,
 ) as any as S.Schema<ConnectivityHopIssuesList>;
@@ -61740,7 +61792,7 @@ export const ConnectivityHop = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConnectivityHop>;
 
 /** List of hops between the source and the destination. */
-export type ConnectivityInformationHopsList = ReadonlyArray<ConnectivityHop>;
+export type ConnectivityInformationHopsList = Array<ConnectivityHop>;
 export const ConnectivityInformationHopsList = /*@__PURE__*/ S.Array(
   ConnectivityHop,
 ) as any as S.Schema<ConnectivityInformationHopsList>;
@@ -61808,7 +61860,9 @@ export const CommonNetworkWatcherPropertiesFormatProvisioningState =
 /** The network watcher properties. */
 export interface CommonNetworkWatcherPropertiesFormat {
   /** Provisioning states of a resource. */
-  provisioningState?: CommonNetworkWatcherPropertiesFormatProvisioningState;
+  provisioningState?:
+    | CommonNetworkWatcherPropertiesFormatProvisioningState
+    | (string & {});
 }
 export const CommonNetworkWatcherPropertiesFormat = /*@__PURE__*/ S.suspend(
   () =>
@@ -62017,7 +62071,7 @@ export const AzureReachabilityReportLocation = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Internet service providers. */
 export type NetworkWatchersGetAzureReachabilityReportRequestProvidersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const NetworkWatchersGetAzureReachabilityReportRequestProvidersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -62025,7 +62079,7 @@ export const NetworkWatchersGetAzureReachabilityReportRequestProvidersList =
 
 /** Optional Azure regions to scope the query to. */
 export type NetworkWatchersGetAzureReachabilityReportRequestAzureLocationsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const NetworkWatchersGetAzureReachabilityReportRequestAzureLocationsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -62094,7 +62148,7 @@ export const AzureReachabilityReportLatencyInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** List of latency details for each of the time series. */
 export type AzureReachabilityReportItemLatenciesList =
-  ReadonlyArray<AzureReachabilityReportLatencyInfo>;
+  Array<AzureReachabilityReportLatencyInfo>;
 export const AzureReachabilityReportItemLatenciesList = /*@__PURE__*/ S.Array(
   AzureReachabilityReportLatencyInfo,
 ) as any as S.Schema<AzureReachabilityReportItemLatenciesList>;
@@ -62120,7 +62174,7 @@ export const AzureReachabilityReportItem = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Azure reachability report items. */
 export type AzureReachabilityReportReachabilityReportList =
-  ReadonlyArray<AzureReachabilityReportItem>;
+  Array<AzureReachabilityReportItem>;
 export const AzureReachabilityReportReachabilityReportList =
   /*@__PURE__*/ S.Array(
     AzureReachabilityReportItem,
@@ -62274,7 +62328,7 @@ export const NetworkConfigurationDiagnosticProfileDirection =
 /** Parameters to compare with network configuration. */
 export interface NetworkConfigurationDiagnosticProfile {
   /** The direction of the traffic. */
-  direction: NetworkConfigurationDiagnosticProfileDirection;
+  direction: NetworkConfigurationDiagnosticProfileDirection | (string & {});
   /** Protocol to be verified on. Accepted values are '*', TCP, UDP. */
   protocol: string;
   /** Traffic source. Accepted values are '*', IP Address/CIDR, Service Tag. */
@@ -62299,7 +62353,7 @@ export const NetworkConfigurationDiagnosticProfile = /*@__PURE__*/ S.suspend(
 
 /** List of network configuration diagnostic profiles. */
 export type NetworkWatchersGetNetworkConfigurationDiagnosticRequestProfilesList =
-  ReadonlyArray<NetworkConfigurationDiagnosticProfile>;
+  Array<NetworkConfigurationDiagnosticProfile>;
 export const NetworkWatchersGetNetworkConfigurationDiagnosticRequestProfilesList =
   /*@__PURE__*/ S.Array(
     NetworkConfigurationDiagnosticProfile,
@@ -62397,7 +62451,7 @@ export const NetworkSecurityRulesEvaluationResult = /*@__PURE__*/ S.suspend(
 
 /** List of network security rules evaluation results. */
 export type EvaluatedNetworkSecurityGroupRulesEvaluationResultList =
-  ReadonlyArray<NetworkSecurityRulesEvaluationResult>;
+  Array<NetworkSecurityRulesEvaluationResult>;
 export const EvaluatedNetworkSecurityGroupRulesEvaluationResultList =
   /*@__PURE__*/ S.Array(
     NetworkSecurityRulesEvaluationResult,
@@ -62429,7 +62483,7 @@ export const EvaluatedNetworkSecurityGroup = /*@__PURE__*/ S.suspend(() =>
 
 /** List of results network security groups diagnostic. */
 export type NetworkSecurityGroupResultEvaluatedNetworkSecurityGroupsList =
-  ReadonlyArray<EvaluatedNetworkSecurityGroup>;
+  Array<EvaluatedNetworkSecurityGroup>;
 export const NetworkSecurityGroupResultEvaluatedNetworkSecurityGroupsList =
   /*@__PURE__*/ S.Array(
     EvaluatedNetworkSecurityGroup,
@@ -62474,7 +62528,7 @@ export const NetworkConfigurationDiagnosticResult = /*@__PURE__*/ S.suspend(
 
 /** List of network configuration diagnostic results. */
 export type NetworkConfigurationDiagnosticResponseResultsList =
-  ReadonlyArray<NetworkConfigurationDiagnosticResult>;
+  Array<NetworkConfigurationDiagnosticResult>;
 export const NetworkConfigurationDiagnosticResponseResultsList =
   /*@__PURE__*/ S.Array(
     NetworkConfigurationDiagnosticResult,
@@ -62647,8 +62701,7 @@ export const TopologyAssociation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TopologyAssociation>;
 
 /** Holds the associations the resource has with other resources in the resource group. */
-export type TopologyResourceAssociationsList =
-  ReadonlyArray<TopologyAssociation>;
+export type TopologyResourceAssociationsList = Array<TopologyAssociation>;
 export const TopologyResourceAssociationsList = /*@__PURE__*/ S.Array(
   TopologyAssociation,
 ) as any as S.Schema<TopologyResourceAssociationsList>;
@@ -62676,7 +62729,7 @@ export const TopologyResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TopologyResource>;
 
 /** A list of topology resources. */
-export type TopologyResourcesList = ReadonlyArray<TopologyResource>;
+export type TopologyResourcesList = Array<TopologyResource>;
 export const TopologyResourcesList = /*@__PURE__*/ S.Array(
   TopologyResource,
 ) as any as S.Schema<TopologyResourcesList>;
@@ -62773,7 +62826,7 @@ export const TroubleshootingRecommendedActions = /*@__PURE__*/ S.suspend(() =>
 
 /** List of recommended actions. */
 export type TroubleshootingDetailsRecommendedActionsList =
-  ReadonlyArray<TroubleshootingRecommendedActions>;
+  Array<TroubleshootingRecommendedActions>;
 export const TroubleshootingDetailsRecommendedActionsList =
   /*@__PURE__*/ S.Array(
     TroubleshootingRecommendedActions,
@@ -62807,8 +62860,7 @@ export const TroubleshootingDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TroubleshootingDetails>;
 
 /** Information from troubleshooting. */
-export type TroubleshootingResultResultsList =
-  ReadonlyArray<TroubleshootingDetails>;
+export type TroubleshootingResultResultsList = Array<TroubleshootingDetails>;
 export const TroubleshootingResultResultsList = /*@__PURE__*/ S.Array(
   TroubleshootingDetails,
 ) as any as S.Schema<TroubleshootingResultResultsList>;
@@ -62895,7 +62947,7 @@ export const NetworkWatchersGetVMSecurityRulesRequest = /*@__PURE__*/ S.suspend(
 
 /** The CIDR or source IP ranges. */
 export type CommonSecurityRulePropertiesFormatSourceAddressPrefixesList_5 =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CommonSecurityRulePropertiesFormatSourceAddressPrefixesList_5 =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -62903,7 +62955,7 @@ export const CommonSecurityRulePropertiesFormatSourceAddressPrefixesList_5 =
 
 /** The application security group specified as source. */
 export type CommonSecurityRulePropertiesFormatSourceApplicationSecurityGroupsList_5 =
-  ReadonlyArray<CommonApplicationSecurityGroup>;
+  Array<CommonApplicationSecurityGroup>;
 export const CommonSecurityRulePropertiesFormatSourceApplicationSecurityGroupsList_5 =
   /*@__PURE__*/ S.Array(
     CommonApplicationSecurityGroup,
@@ -62911,7 +62963,7 @@ export const CommonSecurityRulePropertiesFormatSourceApplicationSecurityGroupsLi
 
 /** The destination address prefixes. CIDR or destination IP ranges. */
 export type CommonSecurityRulePropertiesFormatDestinationAddressPrefixesList_5 =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CommonSecurityRulePropertiesFormatDestinationAddressPrefixesList_5 =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -62919,7 +62971,7 @@ export const CommonSecurityRulePropertiesFormatDestinationAddressPrefixesList_5 
 
 /** The application security group specified as destination. */
 export type CommonSecurityRulePropertiesFormatDestinationApplicationSecurityGroupsList_5 =
-  ReadonlyArray<CommonApplicationSecurityGroup>;
+  Array<CommonApplicationSecurityGroup>;
 export const CommonSecurityRulePropertiesFormatDestinationApplicationSecurityGroupsList_5 =
   /*@__PURE__*/ S.Array(
     CommonApplicationSecurityGroup,
@@ -62927,7 +62979,7 @@ export const CommonSecurityRulePropertiesFormatDestinationApplicationSecurityGro
 
 /** The source port ranges. */
 export type CommonSecurityRulePropertiesFormatSourcePortRangesList_5 =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CommonSecurityRulePropertiesFormatSourcePortRangesList_5 =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -62935,7 +62987,7 @@ export const CommonSecurityRulePropertiesFormatSourcePortRangesList_5 =
 
 /** The destination port ranges. */
 export type CommonSecurityRulePropertiesFormatDestinationPortRangesList_5 =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CommonSecurityRulePropertiesFormatDestinationPortRangesList_5 =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -63042,7 +63094,7 @@ export const NetworkInterfaceAssociationSecurityRulesItem =
 
 /** Collection of custom security rules. */
 export type NetworkInterfaceAssociationSecurityRulesList =
-  ReadonlyArray<NetworkInterfaceAssociationSecurityRulesItem>;
+  Array<NetworkInterfaceAssociationSecurityRulesItem>;
 export const NetworkInterfaceAssociationSecurityRulesList =
   /*@__PURE__*/ S.Array(
     NetworkInterfaceAssociationSecurityRulesItem,
@@ -63091,7 +63143,7 @@ export const SubnetAssociationSecurityRulesItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Collection of custom security rules. */
 export type SubnetAssociationSecurityRulesList =
-  ReadonlyArray<SubnetAssociationSecurityRulesItem>;
+  Array<SubnetAssociationSecurityRulesItem>;
 export const SubnetAssociationSecurityRulesList = /*@__PURE__*/ S.Array(
   SubnetAssociationSecurityRulesItem,
 ) as any as S.Schema<SubnetAssociationSecurityRulesList>;
@@ -63140,7 +63192,7 @@ export const SecurityRuleAssociationsDefaultSecurityRulesItem =
 
 /** Collection of default security rules of the network security group. */
 export type SecurityRuleAssociationsDefaultSecurityRulesList =
-  ReadonlyArray<SecurityRuleAssociationsDefaultSecurityRulesItem>;
+  Array<SecurityRuleAssociationsDefaultSecurityRulesItem>;
 export const SecurityRuleAssociationsDefaultSecurityRulesList =
   /*@__PURE__*/ S.Array(
     SecurityRuleAssociationsDefaultSecurityRulesItem,
@@ -63156,7 +63208,7 @@ export const SecurityRuleAssociationsEffectiveSecurityRulesItemProtocol =
 
 /** The source port ranges. Expected values include a single integer between 0 and 65535, a range using '-' as separator (e.g. 100-400), or an asterisk (*). */
 export type SecurityRuleAssociationsEffectiveSecurityRulesItemSourcePortRangesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const SecurityRuleAssociationsEffectiveSecurityRulesItemSourcePortRangesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -63164,7 +63216,7 @@ export const SecurityRuleAssociationsEffectiveSecurityRulesItemSourcePortRangesL
 
 /** The destination port ranges. Expected values include a single integer between 0 and 65535, a range using '-' as separator (e.g. 100-400), or an asterisk (*). */
 export type SecurityRuleAssociationsEffectiveSecurityRulesItemDestinationPortRangesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const SecurityRuleAssociationsEffectiveSecurityRulesItemDestinationPortRangesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -63172,7 +63224,7 @@ export const SecurityRuleAssociationsEffectiveSecurityRulesItemDestinationPortRa
 
 /** The source address prefixes. Expected values include CIDR IP ranges, Default Tags (VirtualNetwork, AzureLoadBalancer, Internet), System Tags, and the asterisk (*). */
 export type SecurityRuleAssociationsEffectiveSecurityRulesItemSourceAddressPrefixesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const SecurityRuleAssociationsEffectiveSecurityRulesItemSourceAddressPrefixesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -63180,7 +63232,7 @@ export const SecurityRuleAssociationsEffectiveSecurityRulesItemSourceAddressPref
 
 /** The destination address prefixes. Expected values include CIDR IP ranges, Default Tags (VirtualNetwork, AzureLoadBalancer, Internet), System Tags, and the asterisk (*). */
 export type SecurityRuleAssociationsEffectiveSecurityRulesItemDestinationAddressPrefixesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const SecurityRuleAssociationsEffectiveSecurityRulesItemDestinationAddressPrefixesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -63188,7 +63240,7 @@ export const SecurityRuleAssociationsEffectiveSecurityRulesItemDestinationAddres
 
 /** The expanded source address prefix. */
 export type SecurityRuleAssociationsEffectiveSecurityRulesItemExpandedSourceAddressPrefixList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const SecurityRuleAssociationsEffectiveSecurityRulesItemExpandedSourceAddressPrefixList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -63196,7 +63248,7 @@ export const SecurityRuleAssociationsEffectiveSecurityRulesItemExpandedSourceAdd
 
 /** Expanded destination address prefix. */
 export type SecurityRuleAssociationsEffectiveSecurityRulesItemExpandedDestinationAddressPrefixList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const SecurityRuleAssociationsEffectiveSecurityRulesItemExpandedDestinationAddressPrefixList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -63292,7 +63344,7 @@ export const SecurityRuleAssociationsEffectiveSecurityRulesItem =
 
 /** Collection of effective security rules. */
 export type SecurityRuleAssociationsEffectiveSecurityRulesList =
-  ReadonlyArray<SecurityRuleAssociationsEffectiveSecurityRulesItem>;
+  Array<SecurityRuleAssociationsEffectiveSecurityRulesItem>;
 export const SecurityRuleAssociationsEffectiveSecurityRulesList =
   /*@__PURE__*/ S.Array(
     SecurityRuleAssociationsEffectiveSecurityRulesItem,
@@ -63342,7 +63394,7 @@ export const SecurityGroupNetworkInterface = /*@__PURE__*/ S.suspend(() =>
 
 /** List of network interfaces on the specified VM. */
 export type SecurityGroupViewResultNetworkInterfacesList =
-  ReadonlyArray<SecurityGroupNetworkInterface>;
+  Array<SecurityGroupNetworkInterface>;
 export const SecurityGroupViewResultNetworkInterfacesList =
   /*@__PURE__*/ S.Array(
     SecurityGroupNetworkInterface,
@@ -63422,8 +63474,7 @@ export const CommonNetworkWatcher = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CommonNetworkWatcher>;
 
 /** List of network watcher resources. */
-export type NetworkWatcherListResultValueList =
-  ReadonlyArray<CommonNetworkWatcher>;
+export type NetworkWatcherListResultValueList = Array<CommonNetworkWatcher>;
 export const NetworkWatcherListResultValueList = /*@__PURE__*/ S.Array(
   CommonNetworkWatcher,
 ) as any as S.Schema<NetworkWatcherListResultValueList>;
@@ -63465,7 +63516,7 @@ export const NetworkWatchersListAllRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of Azure regions. */
 export type NetworkWatchersListAvailableProvidersRequestAzureLocationsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const NetworkWatchersListAvailableProvidersRequestAzureLocationsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -63512,19 +63563,19 @@ export const NetworkWatchersListAvailableProvidersRequest =
   }) as any as S.Schema<NetworkWatchersListAvailableProvidersRequest>;
 
 /** A list of Internet service providers. */
-export type AvailableProvidersListCountryProvidersList = ReadonlyArray<string>;
+export type AvailableProvidersListCountryProvidersList = Array<string>;
 export const AvailableProvidersListCountryProvidersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AvailableProvidersListCountryProvidersList>;
 
 /** A list of Internet service providers. */
-export type AvailableProvidersListStateProvidersList = ReadonlyArray<string>;
+export type AvailableProvidersListStateProvidersList = Array<string>;
 export const AvailableProvidersListStateProvidersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AvailableProvidersListStateProvidersList>;
 
 /** A list of Internet service providers. */
-export type AvailableProvidersListCityProvidersList = ReadonlyArray<string>;
+export type AvailableProvidersListCityProvidersList = Array<string>;
 export const AvailableProvidersListCityProvidersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AvailableProvidersListCityProvidersList>;
@@ -63547,7 +63598,7 @@ export const AvailableProvidersListCity = /*@__PURE__*/ S.suspend(() =>
 
 /** List of available cities or towns in the state. */
 export type AvailableProvidersListStateCitiesList =
-  ReadonlyArray<AvailableProvidersListCity>;
+  Array<AvailableProvidersListCity>;
 export const AvailableProvidersListStateCitiesList = /*@__PURE__*/ S.Array(
   AvailableProvidersListCity,
 ) as any as S.Schema<AvailableProvidersListStateCitiesList>;
@@ -63573,7 +63624,7 @@ export const AvailableProvidersListState = /*@__PURE__*/ S.suspend(() =>
 
 /** List of available states in the country. */
 export type AvailableProvidersListCountryStatesList =
-  ReadonlyArray<AvailableProvidersListState>;
+  Array<AvailableProvidersListState>;
 export const AvailableProvidersListCountryStatesList = /*@__PURE__*/ S.Array(
   AvailableProvidersListState,
 ) as any as S.Schema<AvailableProvidersListCountryStatesList>;
@@ -63599,7 +63650,7 @@ export const AvailableProvidersListCountry = /*@__PURE__*/ S.suspend(() =>
 
 /** List of available countries. */
 export type AvailableProvidersListCountriesList =
-  ReadonlyArray<AvailableProvidersListCountry>;
+  Array<AvailableProvidersListCountry>;
 export const AvailableProvidersListCountriesList = /*@__PURE__*/ S.Array(
   AvailableProvidersListCountry,
 ) as any as S.Schema<AvailableProvidersListCountriesList>;
@@ -63902,7 +63953,7 @@ export const Availability = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Availability" }) as any as S.Schema<Availability>;
 
 /** List of availability. */
-export type MetricSpecificationAvailabilitiesList = ReadonlyArray<Availability>;
+export type MetricSpecificationAvailabilitiesList = Array<Availability>;
 export const MetricSpecificationAvailabilitiesList = /*@__PURE__*/ S.Array(
   Availability,
 ) as any as S.Schema<MetricSpecificationAvailabilitiesList>;
@@ -63925,7 +63976,7 @@ export const Dimension = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Dimension" }) as any as S.Schema<Dimension>;
 
 /** List of dimensions. */
-export type MetricSpecificationDimensionsList = ReadonlyArray<Dimension>;
+export type MetricSpecificationDimensionsList = Array<Dimension>;
 export const MetricSpecificationDimensionsList = /*@__PURE__*/ S.Array(
   Dimension,
 ) as any as S.Schema<MetricSpecificationDimensionsList>;
@@ -63984,7 +64035,7 @@ export const MetricSpecification = /*@__PURE__*/ S.suspend(() =>
 
 /** Operation service specification. */
 export type OperationPropertiesFormatServiceSpecificationMetricSpecificationsList =
-  ReadonlyArray<MetricSpecification>;
+  Array<MetricSpecification>;
 export const OperationPropertiesFormatServiceSpecificationMetricSpecificationsList =
   /*@__PURE__*/ S.Array(
     MetricSpecification,
@@ -64011,7 +64062,7 @@ export const LogSpecification = /*@__PURE__*/ S.suspend(() =>
 
 /** Operation log specification. */
 export type OperationPropertiesFormatServiceSpecificationLogSpecificationsList =
-  ReadonlyArray<LogSpecification>;
+  Array<LogSpecification>;
 export const OperationPropertiesFormatServiceSpecificationLogSpecificationsList =
   /*@__PURE__*/ S.Array(
     LogSpecification,
@@ -64074,7 +64125,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** The Operation items on this page */
-export type OperationListResultValueList = ReadonlyArray<Operation>;
+export type OperationListResultValueList = Array<Operation>;
 export const OperationListResultValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationListResultValueList>;
@@ -64121,7 +64172,7 @@ export const P2SVpnGatewayPropertiesInputVirtualHub = /*@__PURE__*/ S.suspend(
 
 /** A list of address blocks reserved for this virtual network in CIDR notation. */
 export type P2SConnectionConfigurationPropertiesInputVpnClientAddressPoolAddressPrefixesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const P2SConnectionConfigurationPropertiesInputVpnClientAddressPoolAddressPrefixesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -64129,7 +64180,7 @@ export const P2SConnectionConfigurationPropertiesInputVpnClientAddressPoolAddres
 
 /** A list of IPAM Pools allocating IP address prefixes. */
 export type P2SConnectionConfigurationPropertiesInputVpnClientAddressPoolIpamPoolPrefixAllocationsList =
-  ReadonlyArray<CommonIpamPoolPrefixAllocationInput>;
+  Array<CommonIpamPoolPrefixAllocationInput>;
 export const P2SConnectionConfigurationPropertiesInputVpnClientAddressPoolIpamPoolPrefixAllocationsList =
   /*@__PURE__*/ S.Array(
     CommonIpamPoolPrefixAllocationInput,
@@ -64173,7 +64224,7 @@ export const P2SConnectionConfigurationPropertiesInputConfigurationPolicyGroupAs
 
 /** List of Configuration Policy Groups that this P2SConnectionConfiguration is attached to. */
 export type P2SConnectionConfigurationPropertiesInputConfigurationPolicyGroupAssociationsList =
-  ReadonlyArray<P2SConnectionConfigurationPropertiesInputConfigurationPolicyGroupAssociationsItem>;
+  Array<P2SConnectionConfigurationPropertiesInputConfigurationPolicyGroupAssociationsItem>;
 export const P2SConnectionConfigurationPropertiesInputConfigurationPolicyGroupAssociationsList =
   /*@__PURE__*/ S.Array(
     P2SConnectionConfigurationPropertiesInputConfigurationPolicyGroupAssociationsItem,
@@ -64245,7 +64296,7 @@ export const P2SConnectionConfigurationInput = /*@__PURE__*/ S.suspend(() =>
 
 /** List of all p2s connection configurations of the gateway. */
 export type P2SVpnGatewayPropertiesInputP2SConnectionConfigurationsList =
-  ReadonlyArray<P2SConnectionConfigurationInput>;
+  Array<P2SConnectionConfigurationInput>;
 export const P2SVpnGatewayPropertiesInputP2SConnectionConfigurationsList =
   /*@__PURE__*/ S.Array(
     P2SConnectionConfigurationInput,
@@ -64277,8 +64328,7 @@ export const P2SVpnGatewayPropertiesInputVpnServerConfiguration =
   }) as any as S.Schema<P2SVpnGatewayPropertiesInputVpnServerConfiguration>;
 
 /** List of all customer specified DNS servers IP addresses. */
-export type P2SVpnGatewayPropertiesInputCustomDnsServersList =
-  ReadonlyArray<string>;
+export type P2SVpnGatewayPropertiesInputCustomDnsServersList = Array<string>;
 export const P2SVpnGatewayPropertiesInputCustomDnsServersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -64387,7 +64437,7 @@ export const P2SVpnGatewayPropertiesVirtualHub = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of address blocks reserved for this virtual network in CIDR notation. */
 export type P2SConnectionConfigurationPropertiesVpnClientAddressPoolAddressPrefixesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const P2SConnectionConfigurationPropertiesVpnClientAddressPoolAddressPrefixesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -64395,7 +64445,7 @@ export const P2SConnectionConfigurationPropertiesVpnClientAddressPoolAddressPref
 
 /** A list of IPAM Pools allocating IP address prefixes. */
 export type P2SConnectionConfigurationPropertiesVpnClientAddressPoolIpamPoolPrefixAllocationsList =
-  ReadonlyArray<CommonIpamPoolPrefixAllocation>;
+  Array<CommonIpamPoolPrefixAllocation>;
 export const P2SConnectionConfigurationPropertiesVpnClientAddressPoolIpamPoolPrefixAllocationsList =
   /*@__PURE__*/ S.Array(
     CommonIpamPoolPrefixAllocation,
@@ -64439,7 +64489,7 @@ export const P2SConnectionConfigurationPropertiesConfigurationPolicyGroupAssocia
 
 /** List of Configuration Policy Groups that this P2SConnectionConfiguration is attached to. */
 export type P2SConnectionConfigurationPropertiesConfigurationPolicyGroupAssociationsList =
-  ReadonlyArray<P2SConnectionConfigurationPropertiesConfigurationPolicyGroupAssociationsItem>;
+  Array<P2SConnectionConfigurationPropertiesConfigurationPolicyGroupAssociationsItem>;
 export const P2SConnectionConfigurationPropertiesConfigurationPolicyGroupAssociationsList =
   /*@__PURE__*/ S.Array(
     P2SConnectionConfigurationPropertiesConfigurationPolicyGroupAssociationsItem,
@@ -64447,7 +64497,7 @@ export const P2SConnectionConfigurationPropertiesConfigurationPolicyGroupAssocia
 
 /** List of previous Configuration Policy Groups that this P2SConnectionConfiguration was attached to. */
 export type P2SConnectionConfigurationPropertiesPreviousConfigurationPolicyGroupAssociationsList =
-  ReadonlyArray<VpnServerConfigurationPolicyGroup>;
+  Array<VpnServerConfigurationPolicyGroup>;
 export const P2SConnectionConfigurationPropertiesPreviousConfigurationPolicyGroupAssociationsList =
   /*@__PURE__*/ S.Array(
     VpnServerConfigurationPolicyGroup,
@@ -64525,7 +64575,7 @@ export const P2SConnectionConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** List of all p2s connection configurations of the gateway. */
 export type P2SVpnGatewayPropertiesP2SConnectionConfigurationsList =
-  ReadonlyArray<P2SConnectionConfiguration>;
+  Array<P2SConnectionConfiguration>;
 export const P2SVpnGatewayPropertiesP2SConnectionConfigurationsList =
   /*@__PURE__*/ S.Array(
     P2SConnectionConfiguration,
@@ -64556,8 +64606,7 @@ export const P2SVpnGatewayPropertiesVpnServerConfiguration =
   }) as any as S.Schema<P2SVpnGatewayPropertiesVpnServerConfiguration>;
 
 /** List of allocated ip addresses to the connected p2s vpn clients. */
-export type VpnClientConnectionHealthAllocatedIpAddressesList =
-  ReadonlyArray<string>;
+export type VpnClientConnectionHealthAllocatedIpAddressesList = Array<string>;
 export const VpnClientConnectionHealthAllocatedIpAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -64588,7 +64637,7 @@ export const VpnClientConnectionHealth = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VpnClientConnectionHealth>;
 
 /** List of all customer specified DNS servers IP addresses. */
-export type P2SVpnGatewayPropertiesCustomDnsServersList = ReadonlyArray<string>;
+export type P2SVpnGatewayPropertiesCustomDnsServersList = Array<string>;
 export const P2SVpnGatewayPropertiesCustomDnsServersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -64697,7 +64746,7 @@ export const P2sVpnGatewaysDeleteResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** List of p2s vpn connection Ids. */
 export type P2sVpnGatewaysDisconnectP2sVpnConnectionsRequestVpnConnectionIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const P2sVpnGatewaysDisconnectP2sVpnConnectionsRequestVpnConnectionIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -64913,7 +64962,7 @@ export const P2sVpnGatewaysGetP2sVpnConnectionHealthResponse =
 
 /** The list of p2s vpn user names whose p2s vpn connection detailed health to retrieve for. */
 export type P2sVpnGatewaysGetP2sVpnConnectionHealthDetailedRequestVpnUserNamesFilterList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const P2sVpnGatewaysGetP2sVpnConnectionHealthDetailedRequestVpnUserNamesFilterList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -65022,7 +65071,7 @@ export const P2SVpnGateway = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "P2SVpnGateway" }) as any as S.Schema<P2SVpnGateway>;
 
 /** The P2SVpnGateway items on this page */
-export type ListP2SVpnGatewaysResultValueList = ReadonlyArray<P2SVpnGateway>;
+export type ListP2SVpnGatewaysResultValueList = Array<P2SVpnGateway>;
 export const ListP2SVpnGatewaysResultValueList = /*@__PURE__*/ S.Array(
   P2SVpnGateway,
 ) as any as S.Schema<ListP2SVpnGatewaysResultValueList>;
@@ -65207,13 +65256,13 @@ export const P2sVpnGatewaysUpdateTagsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<P2sVpnGatewaysUpdateTagsResponse>;
 
 /** List of AzureVMSS instances to run packet capture on. */
-export type PacketCaptureMachineScopeIncludeList = ReadonlyArray<string>;
+export type PacketCaptureMachineScopeIncludeList = Array<string>;
 export const PacketCaptureMachineScopeIncludeList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PacketCaptureMachineScopeIncludeList>;
 
 /** List of AzureVMSS instances which has to be excluded from the AzureVMSS from running packet capture. */
-export type PacketCaptureMachineScopeExcludeList = ReadonlyArray<string>;
+export type PacketCaptureMachineScopeExcludeList = Array<string>;
 export const PacketCaptureMachineScopeExcludeList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PacketCaptureMachineScopeExcludeList>;
@@ -65267,7 +65316,7 @@ export const PacketCaptureFilterProtocol = /*@__PURE__*/ S.String;
 /** Filter that is applied to packet capture request. Multiple filters can be applied. */
 export interface PacketCaptureFilter {
   /** Protocol to be filtered on. */
-  protocol?: PacketCaptureFilterProtocol;
+  protocol?: PacketCaptureFilterProtocol | (string & {});
   /** Local IP Address to be filtered on. Notation: "127.0.0.1" for single address entry. "127.0.0.1-127.0.0.255" for range. "127.0.0.1;127.0.0.5"? for multiple entries. Multiple ranges not currently supported. Mixing ranges with multiple entries not currently supported. Default = null. */
   localIPAddress?: string;
   /** Local IP Address to be filtered on. Notation: "127.0.0.1" for single address entry. "127.0.0.1-127.0.0.255" for range. "127.0.0.1;127.0.0.5;" for multiple entries. Multiple ranges not currently supported. Mixing ranges with multiple entries not currently supported. Default = null. */
@@ -65290,8 +65339,7 @@ export const PacketCaptureFilter = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PacketCaptureFilter>;
 
 /** A list of packet capture filters. */
-export type PacketCaptureParametersFiltersList =
-  ReadonlyArray<PacketCaptureFilter>;
+export type PacketCaptureParametersFiltersList = Array<PacketCaptureFilter>;
 export const PacketCaptureParametersFiltersList = /*@__PURE__*/ S.Array(
   PacketCaptureFilter,
 ) as any as S.Schema<PacketCaptureParametersFiltersList>;
@@ -65392,7 +65440,7 @@ export const PacketCaptureResultPropertiesTargetType = /*@__PURE__*/ S.String;
 
 /** A list of packet capture filters. */
 export type PacketCaptureResultPropertiesFiltersList =
-  ReadonlyArray<PacketCaptureFilter>;
+  Array<PacketCaptureFilter>;
 export const PacketCaptureResultPropertiesFiltersList = /*@__PURE__*/ S.Array(
   PacketCaptureFilter,
 ) as any as S.Schema<PacketCaptureResultPropertiesFiltersList>;
@@ -65587,7 +65635,7 @@ export const PacketCaptureQueryStatusResultPacketCaptureErrorItem =
 
 /** List of errors of packet capture session. */
 export type PacketCaptureQueryStatusResultPacketCaptureErrorList =
-  ReadonlyArray<PacketCaptureQueryStatusResultPacketCaptureErrorItem>;
+  Array<PacketCaptureQueryStatusResultPacketCaptureErrorItem>;
 export const PacketCaptureQueryStatusResultPacketCaptureErrorList =
   /*@__PURE__*/ S.Array(
     PacketCaptureQueryStatusResultPacketCaptureErrorItem,
@@ -65651,8 +65699,7 @@ export const PacketCapturesListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PacketCapturesListRequest>;
 
 /** Information about packet capture sessions. */
-export type PacketCaptureListResultValueList =
-  ReadonlyArray<PacketCaptureResult>;
+export type PacketCaptureListResultValueList = Array<PacketCaptureResult>;
 export const PacketCaptureListResultValueList = /*@__PURE__*/ S.Array(
   PacketCaptureResult,
 ) as any as S.Schema<PacketCaptureListResultValueList>;
@@ -65796,7 +65843,7 @@ export const PeerExpressRouteCircuitConnectionsListRequest =
 
 /** The PeerExpressRouteCircuitConnection items on this page */
 export type PeerExpressRouteCircuitConnectionListResultValueList =
-  ReadonlyArray<PeerExpressRouteCircuitConnection>;
+  Array<PeerExpressRouteCircuitConnection>;
 export const PeerExpressRouteCircuitConnectionListResultValueList =
   /*@__PURE__*/ S.Array(
     PeerExpressRouteCircuitConnection,
@@ -65861,7 +65908,7 @@ export const PrivateDnsZoneConfigInput = /*@__PURE__*/ S.suspend(() =>
 
 /** A collection of private dns zone configurations of the private dns zone group. */
 export type PrivateDnsZoneGroupPropertiesFormatInputPrivateDnsZoneConfigsList =
-  ReadonlyArray<PrivateDnsZoneConfigInput>;
+  Array<PrivateDnsZoneConfigInput>;
 export const PrivateDnsZoneGroupPropertiesFormatInputPrivateDnsZoneConfigsList =
   /*@__PURE__*/ S.Array(
     PrivateDnsZoneConfigInput,
@@ -65950,7 +65997,7 @@ export type RecordSetProvisioningState =
 export const RecordSetProvisioningState = /*@__PURE__*/ S.String;
 
 /** The private ip address of the private endpoint. */
-export type RecordSetIpAddressesList = ReadonlyArray<string>;
+export type RecordSetIpAddressesList = Array<string>;
 export const RecordSetIpAddressesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RecordSetIpAddressesList>;
@@ -65982,8 +66029,7 @@ export const RecordSet = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RecordSet" }) as any as S.Schema<RecordSet>;
 
 /** A collection of information regarding a recordSet, holding information to identify private resources. */
-export type PrivateDnsZonePropertiesFormatRecordSetsList =
-  ReadonlyArray<RecordSet>;
+export type PrivateDnsZonePropertiesFormatRecordSetsList = Array<RecordSet>;
 export const PrivateDnsZonePropertiesFormatRecordSetsList =
   /*@__PURE__*/ S.Array(
     RecordSet,
@@ -66023,7 +66069,7 @@ export const PrivateDnsZoneConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** A collection of private dns zone configurations of the private dns zone group. */
 export type PrivateDnsZoneGroupPropertiesFormatPrivateDnsZoneConfigsList =
-  ReadonlyArray<PrivateDnsZoneConfig>;
+  Array<PrivateDnsZoneConfig>;
 export const PrivateDnsZoneGroupPropertiesFormatPrivateDnsZoneConfigsList =
   /*@__PURE__*/ S.Array(
     PrivateDnsZoneConfig,
@@ -66203,8 +66249,7 @@ export const PrivateDnsZoneGroup = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateDnsZoneGroup>;
 
 /** The PrivateDnsZoneGroup items on this page */
-export type PrivateDnsZoneGroupListResultValueList =
-  ReadonlyArray<PrivateDnsZoneGroup>;
+export type PrivateDnsZoneGroupListResultValueList = Array<PrivateDnsZoneGroup>;
 export const PrivateDnsZoneGroupListResultValueList = /*@__PURE__*/ S.Array(
   PrivateDnsZoneGroup,
 ) as any as S.Schema<PrivateDnsZoneGroupListResultValueList>;
@@ -66559,8 +66604,7 @@ export const PrivateEndpointsListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateEndpointsListRequest>;
 
 /** The PrivateEndpoint items on this page */
-export type PrivateEndpointListResultValueList =
-  ReadonlyArray<CommonPrivateEndpoint_5>;
+export type PrivateEndpointListResultValueList = Array<CommonPrivateEndpoint_5>;
 export const PrivateEndpointListResultValueList = /*@__PURE__*/ S.Array(
   CommonPrivateEndpoint_5,
 ) as any as S.Schema<PrivateEndpointListResultValueList>;
@@ -67040,7 +67084,7 @@ export const PrivateLinkServicesListRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The PrivateLinkService items on this page */
 export type PrivateLinkServiceListResultValueList =
-  ReadonlyArray<CommonPrivateLinkService_5>;
+  Array<CommonPrivateLinkService_5>;
 export const PrivateLinkServiceListResultValueList = /*@__PURE__*/ S.Array(
   CommonPrivateLinkService_5,
 ) as any as S.Schema<PrivateLinkServiceListResultValueList>;
@@ -67099,7 +67143,7 @@ export const AutoApprovedPrivateLinkService = /*@__PURE__*/ S.suspend(() =>
 
 /** The AutoApprovedPrivateLinkService items on this page */
 export type AutoApprovedPrivateLinkServicesResultValueList =
-  ReadonlyArray<AutoApprovedPrivateLinkService>;
+  Array<AutoApprovedPrivateLinkService>;
 export const AutoApprovedPrivateLinkServicesResultValueList =
   /*@__PURE__*/ S.Array(
     AutoApprovedPrivateLinkService,
@@ -67197,7 +67241,7 @@ export const PrivateLinkServicesListPrivateEndpointConnectionsRequest =
 
 /** The PrivateEndpointConnection items on this page */
 export type PrivateEndpointConnectionListResultValueList =
-  ReadonlyArray<CommonPrivateEndpointConnection_5>;
+  Array<CommonPrivateEndpointConnection_5>;
 export const PrivateEndpointConnectionListResultValueList =
   /*@__PURE__*/ S.Array(
     CommonPrivateEndpointConnection_5,
@@ -67344,8 +67388,7 @@ export const PublicIPAddressesCreateOrUpdateRequestExtendedLocation =
   }) as any as S.Schema<PublicIPAddressesCreateOrUpdateRequestExtendedLocation>;
 
 /** A list of availability zones denoting the IP allocated for the resource needs to come from. */
-export type PublicIPAddressesCreateOrUpdateRequestZonesList =
-  ReadonlyArray<string>;
+export type PublicIPAddressesCreateOrUpdateRequestZonesList = Array<string>;
 export const PublicIPAddressesCreateOrUpdateRequestZonesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -67428,8 +67471,7 @@ export const PublicIPAddressesCreateOrUpdateResponseExtendedLocation =
   }) as any as S.Schema<PublicIPAddressesCreateOrUpdateResponseExtendedLocation>;
 
 /** A list of availability zones denoting the IP allocated for the resource needs to come from. */
-export type PublicIPAddressesCreateOrUpdateResponseZonesList =
-  ReadonlyArray<string>;
+export type PublicIPAddressesCreateOrUpdateResponseZonesList = Array<string>;
 export const PublicIPAddressesCreateOrUpdateResponseZonesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -67625,7 +67667,7 @@ export const PublicIPAddressesDisassociateCloudServiceReservedPublicIpResponseEx
 
 /** A list of availability zones denoting the IP allocated for the resource needs to come from. */
 export type PublicIPAddressesDisassociateCloudServiceReservedPublicIpResponseZonesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PublicIPAddressesDisassociateCloudServiceReservedPublicIpResponseZonesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -67733,7 +67775,7 @@ export const PublicIPAddressesGetResponseExtendedLocation =
   }) as any as S.Schema<PublicIPAddressesGetResponseExtendedLocation>;
 
 /** A list of availability zones denoting the IP allocated for the resource needs to come from. */
-export type PublicIPAddressesGetResponseZonesList = ReadonlyArray<string>;
+export type PublicIPAddressesGetResponseZonesList = Array<string>;
 export const PublicIPAddressesGetResponseZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PublicIPAddressesGetResponseZonesList>;
@@ -67848,7 +67890,7 @@ export const PublicIPAddressesGetCloudServicePublicIPAddressResponseExtendedLoca
 
 /** A list of availability zones denoting the IP allocated for the resource needs to come from. */
 export type PublicIPAddressesGetCloudServicePublicIPAddressResponseZonesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PublicIPAddressesGetCloudServicePublicIPAddressResponseZonesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -67923,8 +67965,7 @@ export const PublicIPAddressesListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PublicIPAddressesListRequest>;
 
 /** The PublicIPAddress items on this page */
-export type PublicIPAddressListResultValueList =
-  ReadonlyArray<CommonPublicIPAddress_6>;
+export type PublicIPAddressListResultValueList = Array<CommonPublicIPAddress_6>;
 export const PublicIPAddressListResultValueList = /*@__PURE__*/ S.Array(
   CommonPublicIPAddress_6,
 ) as any as S.Schema<PublicIPAddressListResultValueList>;
@@ -68093,7 +68134,7 @@ export const PublicIPAddressesReserveCloudServicePublicIpAddressResponseExtended
 
 /** A list of availability zones denoting the IP allocated for the resource needs to come from. */
 export type PublicIPAddressesReserveCloudServicePublicIpAddressResponseZonesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PublicIPAddressesReserveCloudServicePublicIpAddressResponseZonesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -68210,8 +68251,7 @@ export const PublicIPAddressesUpdateTagsResponseExtendedLocation =
   }) as any as S.Schema<PublicIPAddressesUpdateTagsResponseExtendedLocation>;
 
 /** A list of availability zones denoting the IP allocated for the resource needs to come from. */
-export type PublicIPAddressesUpdateTagsResponseZonesList =
-  ReadonlyArray<string>;
+export type PublicIPAddressesUpdateTagsResponseZonesList = Array<string>;
 export const PublicIPAddressesUpdateTagsResponseZonesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -68276,8 +68316,7 @@ export const PublicIPPrefixPropertiesFormatInputPublicIPAddressVersion =
   /*@__PURE__*/ S.String;
 
 /** The list of tags associated with the public IP prefix. */
-export type PublicIPPrefixPropertiesFormatInputIpTagsList =
-  ReadonlyArray<CommonIpTag>;
+export type PublicIPPrefixPropertiesFormatInputIpTagsList = Array<CommonIpTag>;
 export const PublicIPPrefixPropertiesFormatInputIpTagsList =
   /*@__PURE__*/ S.Array(
     CommonIpTag,
@@ -68394,9 +68433,9 @@ export const PublicIPPrefixSkuTier = /*@__PURE__*/ S.String;
 /** SKU of a public IP prefix. */
 export interface PublicIPPrefixSku {
   /** Name of a public IP prefix SKU. */
-  name?: PublicIPPrefixSkuName;
+  name?: PublicIPPrefixSkuName | (string & {});
   /** Tier of a public IP prefix SKU. */
-  tier?: PublicIPPrefixSkuTier;
+  tier?: PublicIPPrefixSkuTier | (string & {});
 }
 export const PublicIPPrefixSku = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -68408,8 +68447,7 @@ export const PublicIPPrefixSku = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PublicIPPrefixSku>;
 
 /** A list of availability zones denoting the IP allocated for the resource needs to come from. */
-export type PublicIPPrefixesCreateOrUpdateRequestZonesList =
-  ReadonlyArray<string>;
+export type PublicIPPrefixesCreateOrUpdateRequestZonesList = Array<string>;
 export const PublicIPPrefixesCreateOrUpdateRequestZonesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -68482,8 +68520,7 @@ export const PublicIPPrefixPropertiesFormatPublicIPAddressVersion =
   /*@__PURE__*/ S.String;
 
 /** The list of tags associated with the public IP prefix. */
-export type PublicIPPrefixPropertiesFormatIpTagsList =
-  ReadonlyArray<CommonIpTag>;
+export type PublicIPPrefixPropertiesFormatIpTagsList = Array<CommonIpTag>;
 export const PublicIPPrefixPropertiesFormatIpTagsList = /*@__PURE__*/ S.Array(
   CommonIpTag,
 ) as any as S.Schema<PublicIPPrefixPropertiesFormatIpTagsList>;
@@ -68503,7 +68540,7 @@ export const ReferencedPublicIpAddress = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of all referenced PublicIPAddresses. */
 export type PublicIPPrefixPropertiesFormatPublicIPAddressesList =
-  ReadonlyArray<ReferencedPublicIpAddress>;
+  Array<ReferencedPublicIpAddress>;
 export const PublicIPPrefixPropertiesFormatPublicIPAddressesList =
   /*@__PURE__*/ S.Array(
     ReferencedPublicIpAddress,
@@ -68615,8 +68652,7 @@ export const PublicIPPrefixesCreateOrUpdateResponseExtendedLocation =
   }) as any as S.Schema<PublicIPPrefixesCreateOrUpdateResponseExtendedLocation>;
 
 /** A list of availability zones denoting the IP allocated for the resource needs to come from. */
-export type PublicIPPrefixesCreateOrUpdateResponseZonesList =
-  ReadonlyArray<string>;
+export type PublicIPPrefixesCreateOrUpdateResponseZonesList = Array<string>;
 export const PublicIPPrefixesCreateOrUpdateResponseZonesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -68751,7 +68787,7 @@ export const PublicIPPrefixesGetResponseExtendedLocation =
   }) as any as S.Schema<PublicIPPrefixesGetResponseExtendedLocation>;
 
 /** A list of availability zones denoting the IP allocated for the resource needs to come from. */
-export type PublicIPPrefixesGetResponseZonesList = ReadonlyArray<string>;
+export type PublicIPPrefixesGetResponseZonesList = Array<string>;
 export const PublicIPPrefixesGetResponseZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PublicIPPrefixesGetResponseZonesList>;
@@ -68841,7 +68877,7 @@ export const PublicIPPrefixExtendedLocation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PublicIPPrefixExtendedLocation>;
 
 /** A list of availability zones denoting the IP allocated for the resource needs to come from. */
-export type PublicIPPrefixZonesList = ReadonlyArray<string>;
+export type PublicIPPrefixZonesList = Array<string>;
 export const PublicIPPrefixZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PublicIPPrefixZonesList>;
@@ -68885,7 +68921,7 @@ export const PublicIPPrefix = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PublicIPPrefix" }) as any as S.Schema<PublicIPPrefix>;
 
 /** The PublicIPPrefix items on this page */
-export type PublicIPPrefixListResultValueList = ReadonlyArray<PublicIPPrefix>;
+export type PublicIPPrefixListResultValueList = Array<PublicIPPrefix>;
 export const PublicIPPrefixListResultValueList = /*@__PURE__*/ S.Array(
   PublicIPPrefix,
 ) as any as S.Schema<PublicIPPrefixListResultValueList>;
@@ -68989,7 +69025,7 @@ export const PublicIPPrefixesUpdateTagsResponseExtendedLocation =
   }) as any as S.Schema<PublicIPPrefixesUpdateTagsResponseExtendedLocation>;
 
 /** A list of availability zones denoting the IP allocated for the resource needs to come from. */
-export type PublicIPPrefixesUpdateTagsResponseZonesList = ReadonlyArray<string>;
+export type PublicIPPrefixesUpdateTagsResponseZonesList = Array<string>;
 export const PublicIPPrefixesUpdateTagsResponseZonesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -69038,7 +69074,7 @@ export const PublicIPPrefixesUpdateTagsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** List of VM references. */
 export type PutBastionShareableLinkRequestVmsList =
-  ReadonlyArray<BastionShareableLinkInput>;
+  Array<BastionShareableLinkInput>;
 export const PutBastionShareableLinkRequestVmsList = /*@__PURE__*/ S.Array(
   BastionShareableLinkInput,
 ) as any as S.Schema<PutBastionShareableLinkRequestVmsList>;
@@ -69083,25 +69119,25 @@ export const ReachabilityAnalysisIntentPropertiesProvisioningState =
   /*@__PURE__*/ S.String;
 
 /** List of source IP addresses of the traffic.. */
-export type IPTrafficSourceIpsList = ReadonlyArray<string>;
+export type IPTrafficSourceIpsList = Array<string>;
 export const IPTrafficSourceIpsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<IPTrafficSourceIpsList>;
 
 /** List of destination IP addresses of the traffic.. */
-export type IPTrafficDestinationIpsList = ReadonlyArray<string>;
+export type IPTrafficDestinationIpsList = Array<string>;
 export const IPTrafficDestinationIpsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<IPTrafficDestinationIpsList>;
 
 /** The source ports of the traffic. */
-export type IPTrafficSourcePortsList = ReadonlyArray<string>;
+export type IPTrafficSourcePortsList = Array<string>;
 export const IPTrafficSourcePortsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<IPTrafficSourcePortsList>;
 
 /** The destination ports of the traffic. */
-export type IPTrafficDestinationPortsList = ReadonlyArray<string>;
+export type IPTrafficDestinationPortsList = Array<string>;
 export const IPTrafficDestinationPortsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<IPTrafficDestinationPortsList>;
@@ -69110,7 +69146,9 @@ export const IPTrafficDestinationPortsList = /*@__PURE__*/ S.Array(
 export type IPTrafficProtocolsItem = "Any" | "TCP" | "UDP" | "ICMP";
 export const IPTrafficProtocolsItem = /*@__PURE__*/ S.String;
 
-export type IPTrafficProtocolsList = ReadonlyArray<IPTrafficProtocolsItem>;
+export type IPTrafficProtocolsList = Array<
+  IPTrafficProtocolsItem | (string & {})
+>;
 export const IPTrafficProtocolsList = /*@__PURE__*/ S.Array(
   IPTrafficProtocolsItem,
 ) as any as S.Schema<IPTrafficProtocolsList>;
@@ -69140,7 +69178,9 @@ export const IPTraffic = /*@__PURE__*/ S.suspend(() =>
 /** Represents the Reachability Analysis Intent properties. */
 export interface ReachabilityAnalysisIntentProperties {
   /** Provisioning states of a resource. */
-  provisioningState?: ReachabilityAnalysisIntentPropertiesProvisioningState;
+  provisioningState?:
+    | ReachabilityAnalysisIntentPropertiesProvisioningState
+    | (string & {});
   description?: string;
   /** Source resource id to verify the reachability path of. */
   sourceResourceId: string;
@@ -69539,7 +69579,7 @@ export const ReachabilityAnalysisIntent = /*@__PURE__*/ S.suspend(() =>
 
 /** The ReachabilityAnalysisIntent items on this page */
 export type ReachabilityAnalysisIntentListResultValueList =
-  ReadonlyArray<ReachabilityAnalysisIntent>;
+  Array<ReachabilityAnalysisIntent>;
 export const ReachabilityAnalysisIntentListResultValueList =
   /*@__PURE__*/ S.Array(
     ReachabilityAnalysisIntent,
@@ -70024,7 +70064,7 @@ export const ReachabilityAnalysisRun = /*@__PURE__*/ S.suspend(() =>
 
 /** The ReachabilityAnalysisRun items on this page */
 export type ReachabilityAnalysisRunListResultValueList =
-  ReadonlyArray<ReachabilityAnalysisRun>;
+  Array<ReachabilityAnalysisRun>;
 export const ReachabilityAnalysisRunListResultValueList = /*@__PURE__*/ S.Array(
   ReachabilityAnalysisRun,
 ) as any as S.Schema<ReachabilityAnalysisRunListResultValueList>;
@@ -70075,7 +70115,7 @@ export const ResourceNavigationLinksListRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The ResourceNavigationLink items on this page */
 export type ResourceNavigationLinksListResultValueList =
-  ReadonlyArray<CommonResourceNavigationLink>;
+  Array<CommonResourceNavigationLink>;
 export const ResourceNavigationLinksListResultValueList = /*@__PURE__*/ S.Array(
   CommonResourceNavigationLink,
 ) as any as S.Schema<ResourceNavigationLinksListResultValueList>;
@@ -70106,8 +70146,7 @@ export const RouteFilterRulePropertiesFormatRouteFilterRuleType =
   /*@__PURE__*/ S.String;
 
 /** The collection for bgp community values to filter on. e.g. ['12076:5010','12076:5020']. */
-export type RouteFilterRulePropertiesFormatCommunitiesList =
-  ReadonlyArray<string>;
+export type RouteFilterRulePropertiesFormatCommunitiesList = Array<string>;
 export const RouteFilterRulePropertiesFormatCommunitiesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -70127,13 +70166,17 @@ export const RouteFilterRulePropertiesFormatProvisioningState =
 /** Route Filter Rule Resource. */
 export interface RouteFilterRulePropertiesFormat {
   /** Access to be allowed or denied. */
-  access: RouteFilterRulePropertiesFormatAccess;
+  access: RouteFilterRulePropertiesFormatAccess | (string & {});
   /** The rule type of the rule. */
-  routeFilterRuleType: RouteFilterRulePropertiesFormatRouteFilterRuleType;
+  routeFilterRuleType:
+    | RouteFilterRulePropertiesFormatRouteFilterRuleType
+    | (string & {});
   /** The collection for bgp community values to filter on. e.g. ['12076:5010','12076:5020']. */
   communities: RouteFilterRulePropertiesFormatCommunitiesList;
   /** Provisioning states of a resource. */
-  provisioningState?: RouteFilterRulePropertiesFormatProvisioningState;
+  provisioningState?:
+    | RouteFilterRulePropertiesFormatProvisioningState
+    | (string & {});
 }
 export const RouteFilterRulePropertiesFormat = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -70353,7 +70396,7 @@ export const RouteFilterRule = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RouteFilterRule>;
 
 /** The RouteFilterRule items on this page */
-export type RouteFilterRuleListResultValueList = ReadonlyArray<RouteFilterRule>;
+export type RouteFilterRuleListResultValueList = Array<RouteFilterRule>;
 export const RouteFilterRuleListResultValueList = /*@__PURE__*/ S.Array(
   RouteFilterRule,
 ) as any as S.Schema<RouteFilterRuleListResultValueList>;
@@ -70407,7 +70450,7 @@ export const RouteFilterRuleInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Collection of RouteFilterRules contained within a route filter. */
 export type RouteFilterPropertiesFormatInputRulesList =
-  ReadonlyArray<RouteFilterRuleInput>;
+  Array<RouteFilterRuleInput>;
 export const RouteFilterPropertiesFormatInputRulesList = /*@__PURE__*/ S.Array(
   RouteFilterRuleInput,
 ) as any as S.Schema<RouteFilterPropertiesFormatInputRulesList>;
@@ -70490,22 +70533,21 @@ export const RouteFiltersCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<RouteFiltersCreateOrUpdateResponseTagsMap>;
 
 /** Collection of RouteFilterRules contained within a route filter. */
-export type RouteFilterPropertiesFormatRulesList =
-  ReadonlyArray<RouteFilterRule>;
+export type RouteFilterPropertiesFormatRulesList = Array<RouteFilterRule>;
 export const RouteFilterPropertiesFormatRulesList = /*@__PURE__*/ S.Array(
   RouteFilterRule,
 ) as any as S.Schema<RouteFilterPropertiesFormatRulesList>;
 
 /** A collection of references to express route circuit peerings. */
 export type RouteFilterPropertiesFormatPeeringsList =
-  ReadonlyArray<ExpressRouteCircuitPeering>;
+  Array<ExpressRouteCircuitPeering>;
 export const RouteFilterPropertiesFormatPeeringsList = /*@__PURE__*/ S.Array(
   ExpressRouteCircuitPeering,
 ) as any as S.Schema<RouteFilterPropertiesFormatPeeringsList>;
 
 /** A collection of references to express route circuit ipv6 peerings. */
 export type RouteFilterPropertiesFormatIpv6PeeringsList =
-  ReadonlyArray<ExpressRouteCircuitPeering>;
+  Array<ExpressRouteCircuitPeering>;
 export const RouteFilterPropertiesFormatIpv6PeeringsList =
   /*@__PURE__*/ S.Array(
     ExpressRouteCircuitPeering,
@@ -70729,7 +70771,7 @@ export const RouteFilter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RouteFilter" }) as any as S.Schema<RouteFilter>;
 
 /** The RouteFilter items on this page */
-export type RouteFilterListResultValueList = ReadonlyArray<RouteFilter>;
+export type RouteFilterListResultValueList = Array<RouteFilter>;
 export const RouteFilterListResultValueList = /*@__PURE__*/ S.Array(
   RouteFilter,
 ) as any as S.Schema<RouteFilterListResultValueList>;
@@ -70850,35 +70892,33 @@ export const RouteFiltersUpdateTagsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RouteFiltersUpdateTagsResponse>;
 
 /** List of connections which have this RoutMap associated for inbound traffic. */
-export type RouteMapPropertiesAssociatedInboundConnectionsList =
-  ReadonlyArray<string>;
+export type RouteMapPropertiesAssociatedInboundConnectionsList = Array<string>;
 export const RouteMapPropertiesAssociatedInboundConnectionsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<RouteMapPropertiesAssociatedInboundConnectionsList>;
 
 /** List of connections which have this RoutMap associated for outbound traffic. */
-export type RouteMapPropertiesAssociatedOutboundConnectionsList =
-  ReadonlyArray<string>;
+export type RouteMapPropertiesAssociatedOutboundConnectionsList = Array<string>;
 export const RouteMapPropertiesAssociatedOutboundConnectionsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<RouteMapPropertiesAssociatedOutboundConnectionsList>;
 
 /** List of route prefixes which this criteria matches. */
-export type CriterionRoutePrefixList = ReadonlyArray<string>;
+export type CriterionRoutePrefixList = Array<string>;
 export const CriterionRoutePrefixList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CriterionRoutePrefixList>;
 
 /** List of BGP communities which this criteria matches. */
-export type CriterionCommunityList = ReadonlyArray<string>;
+export type CriterionCommunityList = Array<string>;
 export const CriterionCommunityList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CriterionCommunityList>;
 
 /** List of AS paths which this criteria matches. */
-export type CriterionAsPathList = ReadonlyArray<string>;
+export type CriterionAsPathList = Array<string>;
 export const CriterionAsPathList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CriterionAsPathList>;
@@ -70901,7 +70941,7 @@ export interface Criterion {
   /** List of AS paths which this criteria matches. */
   asPath?: CriterionAsPathList;
   /** Match condition to apply RouteMap rules. */
-  matchCondition?: CriterionMatchCondition;
+  matchCondition?: CriterionMatchCondition | (string & {});
 }
 export const Criterion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -70913,7 +70953,7 @@ export const Criterion = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Criterion" }) as any as S.Schema<Criterion>;
 
 /** List of matching criterion which will be applied to traffic. */
-export type RouteMapRuleMatchCriteriaList = ReadonlyArray<Criterion>;
+export type RouteMapRuleMatchCriteriaList = Array<Criterion>;
 export const RouteMapRuleMatchCriteriaList = /*@__PURE__*/ S.Array(
   Criterion,
 ) as any as S.Schema<RouteMapRuleMatchCriteriaList>;
@@ -70923,19 +70963,19 @@ export type ActionType = "Unknown" | "Remove" | "Add" | "Replace" | "Drop";
 export const ActionType = /*@__PURE__*/ S.String;
 
 /** List of route prefixes. */
-export type ParameterRoutePrefixList = ReadonlyArray<string>;
+export type ParameterRoutePrefixList = Array<string>;
 export const ParameterRoutePrefixList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ParameterRoutePrefixList>;
 
 /** List of BGP communities. */
-export type ParameterCommunityList = ReadonlyArray<string>;
+export type ParameterCommunityList = Array<string>;
 export const ParameterCommunityList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ParameterCommunityList>;
 
 /** List of AS paths. */
-export type ParameterAsPathList = ReadonlyArray<string>;
+export type ParameterAsPathList = Array<string>;
 export const ParameterAsPathList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ParameterAsPathList>;
@@ -70958,7 +70998,7 @@ export const Parameter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Parameter" }) as any as S.Schema<Parameter>;
 
 /** List of parameters relevant to the action.For instance if type is drop then parameters has list of prefixes to be dropped.If type is add, parameters would have list of ASN numbers to be added */
-export type ActionParametersList = ReadonlyArray<Parameter>;
+export type ActionParametersList = Array<Parameter>;
 export const ActionParametersList = /*@__PURE__*/ S.Array(
   Parameter,
 ) as any as S.Schema<ActionParametersList>;
@@ -70966,7 +71006,7 @@ export const ActionParametersList = /*@__PURE__*/ S.Array(
 /** Action to be taken on a route matching a RouteMap criterion. */
 export interface Action {
   /** Kind of actions which can be taken on a matched route. Add, Replace, Remove refer to parameters on the route, like community or prefix */
-  type?: ActionType;
+  type?: ActionType | (string & {});
   /** List of parameters relevant to the action.For instance if type is drop then parameters has list of prefixes to be dropped.If type is add, parameters would have list of ASN numbers to be added */
   parameters?: ActionParametersList;
 }
@@ -70978,7 +71018,7 @@ export const Action = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Action" }) as any as S.Schema<Action>;
 
 /** List of actions which will be applied on a match. */
-export type RouteMapRuleActionsList = ReadonlyArray<Action>;
+export type RouteMapRuleActionsList = Array<Action>;
 export const RouteMapRuleActionsList = /*@__PURE__*/ S.Array(
   Action,
 ) as any as S.Schema<RouteMapRuleActionsList>;
@@ -70999,7 +71039,7 @@ export interface RouteMapRule {
   /** List of actions which will be applied on a match. */
   actions?: RouteMapRuleActionsList;
   /** Supported next step behaviors after a rule is applied to a matched route */
-  nextStepIfMatched?: RouteMapRuleNextStepIfMatched;
+  nextStepIfMatched?: RouteMapRuleNextStepIfMatched | (string & {});
 }
 export const RouteMapRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -71011,7 +71051,7 @@ export const RouteMapRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RouteMapRule" }) as any as S.Schema<RouteMapRule>;
 
 /** List of RouteMap rules to be applied. */
-export type RouteMapPropertiesRulesList = ReadonlyArray<RouteMapRule>;
+export type RouteMapPropertiesRulesList = Array<RouteMapRule>;
 export const RouteMapPropertiesRulesList = /*@__PURE__*/ S.Array(
   RouteMapRule,
 ) as any as S.Schema<RouteMapPropertiesRulesList>;
@@ -71035,7 +71075,7 @@ export interface RouteMapProperties {
   /** List of RouteMap rules to be applied. */
   rules?: RouteMapPropertiesRulesList;
   /** Provisioning states of a resource. */
-  provisioningState?: RouteMapPropertiesProvisioningState;
+  provisioningState?: RouteMapPropertiesProvisioningState | (string & {});
 }
 export const RouteMapProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -71243,7 +71283,7 @@ export const RouteMap = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RouteMap" }) as any as S.Schema<RouteMap>;
 
 /** The RouteMap items on this page */
-export type ListRouteMapsResultValueList = ReadonlyArray<RouteMap>;
+export type ListRouteMapsResultValueList = Array<RouteMap>;
 export const ListRouteMapsResultValueList = /*@__PURE__*/ S.Array(
   RouteMap,
 ) as any as S.Schema<ListRouteMapsResultValueList>;
@@ -71438,7 +71478,7 @@ export const RoutesListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RoutesListRequest>;
 
 /** The Route items on this page */
-export type RouteListResultValueList = ReadonlyArray<CommonRoute_6>;
+export type RouteListResultValueList = Array<CommonRoute_6>;
 export const RouteListResultValueList = /*@__PURE__*/ S.Array(
   CommonRoute_6,
 ) as any as S.Schema<RouteListResultValueList>;
@@ -71666,7 +71706,7 @@ export const RouteTablesListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RouteTablesListRequest>;
 
 /** The RouteTable items on this page */
-export type RouteTableListResultValueList = ReadonlyArray<CommonRouteTable_6>;
+export type RouteTableListResultValueList = Array<CommonRouteTable_6>;
 export const RouteTableListResultValueList = /*@__PURE__*/ S.Array(
   CommonRouteTable_6,
 ) as any as S.Schema<RouteTableListResultValueList>;
@@ -71783,7 +71823,7 @@ export const RouteTablesUpdateTagsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RouteTablesUpdateTagsResponse>;
 
 /** List of all destinations which this routing policy is applicable to (for example: Internet, PrivateTraffic). */
-export type RoutingPolicyDestinationsList = ReadonlyArray<string>;
+export type RoutingPolicyDestinationsList = Array<string>;
 export const RoutingPolicyDestinationsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RoutingPolicyDestinationsList>;
@@ -71806,8 +71846,7 @@ export const RoutingPolicy = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RoutingPolicy" }) as any as S.Schema<RoutingPolicy>;
 
 /** List of routing policies. */
-export type RoutingIntentPropertiesRoutingPoliciesList =
-  ReadonlyArray<RoutingPolicy>;
+export type RoutingIntentPropertiesRoutingPoliciesList = Array<RoutingPolicy>;
 export const RoutingIntentPropertiesRoutingPoliciesList = /*@__PURE__*/ S.Array(
   RoutingPolicy,
 ) as any as S.Schema<RoutingIntentPropertiesRoutingPoliciesList>;
@@ -71827,7 +71866,7 @@ export interface RoutingIntentProperties {
   /** List of routing policies. */
   routingPolicies?: RoutingIntentPropertiesRoutingPoliciesList;
   /** Provisioning states of a resource. */
-  provisioningState?: RoutingIntentPropertiesProvisioningState;
+  provisioningState?: RoutingIntentPropertiesProvisioningState | (string & {});
 }
 export const RoutingIntentProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -72035,7 +72074,7 @@ export const RoutingIntent = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RoutingIntent" }) as any as S.Schema<RoutingIntent>;
 
 /** The RoutingIntent items on this page */
-export type ListRoutingIntentResultValueList = ReadonlyArray<RoutingIntent>;
+export type ListRoutingIntentResultValueList = Array<RoutingIntent>;
 export const ListRoutingIntentResultValueList = /*@__PURE__*/ S.Array(
   RoutingIntent,
 ) as any as S.Schema<ListRoutingIntentResultValueList>;
@@ -72082,7 +72121,7 @@ export const NetworkManagerRoutingGroupItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Groups for configuration */
 export type RoutingRuleCollectionPropertiesFormatInputAppliesToList =
-  ReadonlyArray<NetworkManagerRoutingGroupItem>;
+  Array<NetworkManagerRoutingGroupItem>;
 export const RoutingRuleCollectionPropertiesFormatInputAppliesToList =
   /*@__PURE__*/ S.Array(
     NetworkManagerRoutingGroupItem,
@@ -72173,7 +72212,7 @@ export const RoutingRuleCollectionPropertiesFormatProvisioningState =
 
 /** Groups for configuration */
 export type RoutingRuleCollectionPropertiesFormatAppliesToList =
-  ReadonlyArray<NetworkManagerRoutingGroupItem>;
+  Array<NetworkManagerRoutingGroupItem>;
 export const RoutingRuleCollectionPropertiesFormatAppliesToList =
   /*@__PURE__*/ S.Array(
     NetworkManagerRoutingGroupItem,
@@ -72553,7 +72592,7 @@ export const RoutingRuleCollection = /*@__PURE__*/ S.suspend(() =>
 
 /** The RoutingRuleCollection items on this page */
 export type RoutingRuleCollectionListResultValueList =
-  ReadonlyArray<RoutingRuleCollection>;
+  Array<RoutingRuleCollection>;
 export const RoutingRuleCollectionListResultValueList = /*@__PURE__*/ S.Array(
   RoutingRuleCollection,
 ) as any as S.Schema<RoutingRuleCollectionListResultValueList>;
@@ -72592,7 +72631,7 @@ export const RoutingRuleRouteDestinationType = /*@__PURE__*/ S.String;
 /** Route destination. */
 export interface RoutingRuleRouteDestination {
   /** Routing rule destination type. */
-  type: RoutingRuleRouteDestinationType;
+  type: RoutingRuleRouteDestinationType | (string & {});
   /** Destination address. */
   destinationAddress: string;
 }
@@ -72617,7 +72656,7 @@ export const RoutingRuleNextHopNextHopType = /*@__PURE__*/ S.String;
 /** Next hop. */
 export interface RoutingRuleNextHop {
   /** Routing rule next hop type. */
-  nextHopType: RoutingRuleNextHopNextHopType;
+  nextHopType: RoutingRuleNextHopNextHopType | (string & {});
   /** Next hop address. Only required if the next hop type is VirtualAppliance. */
   nextHopAddress?: string;
 }
@@ -73068,7 +73107,7 @@ export const RoutingRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RoutingRule" }) as any as S.Schema<RoutingRule>;
 
 /** The RoutingRule items on this page */
-export type RoutingRuleListResultValueList = ReadonlyArray<RoutingRule>;
+export type RoutingRuleListResultValueList = Array<RoutingRule>;
 export const RoutingRuleListResultValueList = /*@__PURE__*/ S.Array(
   RoutingRule,
 ) as any as S.Schema<RoutingRuleListResultValueList>;
@@ -73105,7 +73144,7 @@ export interface ScopeConnectionProperties {
   /** Resource ID. */
   resourceId?: string;
   /** The current scope connection state. */
-  connectionState?: ScopeConnectionPropertiesConnectionState;
+  connectionState?: ScopeConnectionPropertiesConnectionState | (string & {});
   /** A description of the scope connection. */
   description?: string;
 }
@@ -73474,7 +73513,7 @@ export const ScopeConnection = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScopeConnection>;
 
 /** The ScopeConnection items on this page */
-export type ScopeConnectionListResultValueList = ReadonlyArray<ScopeConnection>;
+export type ScopeConnectionListResultValueList = Array<ScopeConnection>;
 export const ScopeConnectionListResultValueList = /*@__PURE__*/ S.Array(
   ScopeConnection,
 ) as any as S.Schema<ScopeConnectionListResultValueList>;
@@ -73503,7 +73542,7 @@ export const SecurityAdminConfigurationPropertiesFormatInputApplyOnNetworkIntent
 
 /** Enum list of network intent policy based services. */
 export type SecurityAdminConfigurationPropertiesFormatInputApplyOnNetworkIntentPolicyBasedServicesList =
-  ReadonlyArray<
+  Array<
     | SecurityAdminConfigurationPropertiesFormatInputApplyOnNetworkIntentPolicyBasedServicesItem
     | (string & {})
   >;
@@ -73602,7 +73641,7 @@ export const SecurityAdminConfigurationPropertiesFormatApplyOnNetworkIntentPolic
 
 /** Enum list of network intent policy based services. */
 export type SecurityAdminConfigurationPropertiesFormatApplyOnNetworkIntentPolicyBasedServicesList =
-  ReadonlyArray<SecurityAdminConfigurationPropertiesFormatApplyOnNetworkIntentPolicyBasedServicesItem>;
+  Array<SecurityAdminConfigurationPropertiesFormatApplyOnNetworkIntentPolicyBasedServicesItem>;
 export const SecurityAdminConfigurationPropertiesFormatApplyOnNetworkIntentPolicyBasedServicesList =
   /*@__PURE__*/ S.Array(
     SecurityAdminConfigurationPropertiesFormatApplyOnNetworkIntentPolicyBasedServicesItem,
@@ -73988,7 +74027,7 @@ export const SecurityAdminConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** The SecurityAdminConfiguration items on this page */
 export type SecurityAdminConfigurationListResultValueList =
-  ReadonlyArray<SecurityAdminConfiguration>;
+  Array<SecurityAdminConfiguration>;
 export const SecurityAdminConfigurationListResultValueList =
   /*@__PURE__*/ S.Array(
     SecurityAdminConfiguration,
@@ -74066,11 +74105,17 @@ export const SecurityPartnerProviderPropertiesFormatVirtualHub =
 /** Properties of the Security Partner Provider. */
 export interface SecurityPartnerProviderPropertiesFormat {
   /** Provisioning states of a resource. */
-  provisioningState?: SecurityPartnerProviderPropertiesFormatProvisioningState;
+  provisioningState?:
+    | SecurityPartnerProviderPropertiesFormatProvisioningState
+    | (string & {});
   /** The Security Providers. */
-  securityProviderName?: SecurityPartnerProviderPropertiesFormatSecurityProviderName;
+  securityProviderName?:
+    | SecurityPartnerProviderPropertiesFormatSecurityProviderName
+    | (string & {});
   /** The current state of the connection with Security Partner Provider. */
-  connectionStatus?: SecurityPartnerProviderPropertiesFormatConnectionStatus;
+  connectionStatus?:
+    | SecurityPartnerProviderPropertiesFormatConnectionStatus
+    | (string & {});
   /** Reference to another subresource. */
   virtualHub?: SecurityPartnerProviderPropertiesFormatVirtualHub;
 }
@@ -74330,7 +74375,7 @@ export const SecurityPartnerProvider = /*@__PURE__*/ S.suspend(() =>
 
 /** The SecurityPartnerProvider items on this page */
 export type SecurityPartnerProviderListResultValueList =
-  ReadonlyArray<SecurityPartnerProvider>;
+  Array<SecurityPartnerProvider>;
 export const SecurityPartnerProviderListResultValueList = /*@__PURE__*/ S.Array(
   SecurityPartnerProvider,
 ) as any as S.Schema<SecurityPartnerProviderListResultValueList>;
@@ -75056,7 +75101,7 @@ export const SecurityUserConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** The SecurityUserConfiguration items on this page */
 export type SecurityUserConfigurationListResultValueList =
-  ReadonlyArray<SecurityUserConfiguration>;
+  Array<SecurityUserConfiguration>;
 export const SecurityUserConfigurationListResultValueList =
   /*@__PURE__*/ S.Array(
     SecurityUserConfiguration,
@@ -75093,7 +75138,7 @@ export const SecurityUserGroupItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Groups for configuration */
 export type SecurityUserRuleCollectionPropertiesFormatInputAppliesToGroupsList =
-  ReadonlyArray<SecurityUserGroupItem>;
+  Array<SecurityUserGroupItem>;
 export const SecurityUserRuleCollectionPropertiesFormatInputAppliesToGroupsList =
   /*@__PURE__*/ S.Array(
     SecurityUserGroupItem,
@@ -75172,7 +75217,7 @@ export const SecurityUserRuleCollectionsCreateOrUpdateRequest =
 
 /** Groups for configuration */
 export type SecurityUserRuleCollectionPropertiesFormatAppliesToGroupsList =
-  ReadonlyArray<SecurityUserGroupItem>;
+  Array<SecurityUserGroupItem>;
 export const SecurityUserRuleCollectionPropertiesFormatAppliesToGroupsList =
   /*@__PURE__*/ S.Array(
     SecurityUserGroupItem,
@@ -75555,7 +75600,7 @@ export const SecurityUserRuleCollection = /*@__PURE__*/ S.suspend(() =>
 
 /** The SecurityUserRuleCollection items on this page */
 export type SecurityUserRuleCollectionListResultValueList =
-  ReadonlyArray<SecurityUserRuleCollection>;
+  Array<SecurityUserRuleCollection>;
 export const SecurityUserRuleCollectionListResultValueList =
   /*@__PURE__*/ S.Array(
     SecurityUserRuleCollection,
@@ -75601,7 +75646,7 @@ export interface AddressPrefixItem {
   /** Address prefix. */
   addressPrefix?: string;
   /** Address prefix type. */
-  addressPrefixType?: AddressPrefixItemAddressPrefixType;
+  addressPrefixType?: AddressPrefixItemAddressPrefixType | (string & {});
 }
 export const AddressPrefixItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -75614,7 +75659,7 @@ export const AddressPrefixItem = /*@__PURE__*/ S.suspend(() =>
 
 /** The CIDR or source IP ranges. */
 export type SecurityUserRulePropertiesFormatInputSourcesList =
-  ReadonlyArray<AddressPrefixItem>;
+  Array<AddressPrefixItem>;
 export const SecurityUserRulePropertiesFormatInputSourcesList =
   /*@__PURE__*/ S.Array(
     AddressPrefixItem,
@@ -75622,7 +75667,7 @@ export const SecurityUserRulePropertiesFormatInputSourcesList =
 
 /** The destination address prefixes. CIDR or destination IP ranges. */
 export type SecurityUserRulePropertiesFormatInputDestinationsList =
-  ReadonlyArray<AddressPrefixItem>;
+  Array<AddressPrefixItem>;
 export const SecurityUserRulePropertiesFormatInputDestinationsList =
   /*@__PURE__*/ S.Array(
     AddressPrefixItem,
@@ -75630,7 +75675,7 @@ export const SecurityUserRulePropertiesFormatInputDestinationsList =
 
 /** The source port ranges. */
 export type SecurityUserRulePropertiesFormatInputSourcePortRangesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const SecurityUserRulePropertiesFormatInputSourcePortRangesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -75638,7 +75683,7 @@ export const SecurityUserRulePropertiesFormatInputSourcePortRangesList =
 
 /** The destination port ranges. */
 export type SecurityUserRulePropertiesFormatInputDestinationPortRangesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const SecurityUserRulePropertiesFormatInputDestinationPortRangesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -75757,7 +75802,7 @@ export const SecurityUserRulePropertiesFormatProtocol = /*@__PURE__*/ S.String;
 
 /** The CIDR or source IP ranges. */
 export type SecurityUserRulePropertiesFormatSourcesList =
-  ReadonlyArray<AddressPrefixItem>;
+  Array<AddressPrefixItem>;
 export const SecurityUserRulePropertiesFormatSourcesList =
   /*@__PURE__*/ S.Array(
     AddressPrefixItem,
@@ -75765,7 +75810,7 @@ export const SecurityUserRulePropertiesFormatSourcesList =
 
 /** The destination address prefixes. CIDR or destination IP ranges. */
 export type SecurityUserRulePropertiesFormatDestinationsList =
-  ReadonlyArray<AddressPrefixItem>;
+  Array<AddressPrefixItem>;
 export const SecurityUserRulePropertiesFormatDestinationsList =
   /*@__PURE__*/ S.Array(
     AddressPrefixItem,
@@ -75773,7 +75818,7 @@ export const SecurityUserRulePropertiesFormatDestinationsList =
 
 /** The source port ranges. */
 export type SecurityUserRulePropertiesFormatSourcePortRangesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const SecurityUserRulePropertiesFormatSourcePortRangesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -75781,7 +75826,7 @@ export const SecurityUserRulePropertiesFormatSourcePortRangesList =
 
 /** The destination port ranges. */
 export type SecurityUserRulePropertiesFormatDestinationPortRangesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const SecurityUserRulePropertiesFormatDestinationPortRangesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -76190,8 +76235,7 @@ export const SecurityUserRule = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SecurityUserRule>;
 
 /** The SecurityUserRule items on this page */
-export type SecurityUserRuleListResultValueList =
-  ReadonlyArray<SecurityUserRule>;
+export type SecurityUserRuleListResultValueList = Array<SecurityUserRule>;
 export const SecurityUserRuleListResultValueList = /*@__PURE__*/ S.Array(
   SecurityUserRule,
 ) as any as S.Schema<SecurityUserRuleListResultValueList>;
@@ -76242,7 +76286,7 @@ export const ServiceAssociationLinksListRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The ServiceAssociationLink items on this page */
 export type ServiceAssociationLinksListResultValueList =
-  ReadonlyArray<CommonServiceAssociationLink>;
+  Array<CommonServiceAssociationLink>;
 export const ServiceAssociationLinksListResultValueList = /*@__PURE__*/ S.Array(
   CommonServiceAssociationLink,
 ) as any as S.Schema<ServiceAssociationLinksListResultValueList>;
@@ -76275,7 +76319,7 @@ export const ServiceEndpointPoliciesCreateOrUpdateRequestTagsMap =
 
 /** A list of service resources. */
 export type CommonServiceEndpointPolicyDefinitionPropertiesFormatServiceResourcesList_2 =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CommonServiceEndpointPolicyDefinitionPropertiesFormatServiceResourcesList_2 =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -76290,7 +76334,9 @@ export interface CommonServiceEndpointPolicyDefinitionPropertiesFormat_2 {
   /** A list of service resources. */
   serviceResources?: CommonServiceEndpointPolicyDefinitionPropertiesFormatServiceResourcesList_2;
   /** Provisioning states of a resource. */
-  provisioningState?: CommonServiceEndpointPolicyDefinitionPropertiesFormatProvisioningState;
+  provisioningState?:
+    | CommonServiceEndpointPolicyDefinitionPropertiesFormatProvisioningState
+    | (string & {});
 }
 export const CommonServiceEndpointPolicyDefinitionPropertiesFormat_2 =
   /*@__PURE__*/ S.suspend(() =>
@@ -76332,7 +76378,7 @@ export const CommonServiceEndpointPolicyDefinitionInput_2 =
 
 /** A collection of service endpoint policy definitions of the service endpoint policy. */
 export type CommonServiceEndpointPolicyPropertiesFormatInputServiceEndpointPolicyDefinitionsList_2 =
-  ReadonlyArray<CommonServiceEndpointPolicyDefinitionInput_2>;
+  Array<CommonServiceEndpointPolicyDefinitionInput_2>;
 export const CommonServiceEndpointPolicyPropertiesFormatInputServiceEndpointPolicyDefinitionsList_2 =
   /*@__PURE__*/ S.Array(
     CommonServiceEndpointPolicyDefinitionInput_2,
@@ -76449,7 +76495,7 @@ export const CommonServiceEndpointPolicyDefinition_2 = /*@__PURE__*/ S.suspend(
 
 /** A collection of service endpoint policy definitions of the service endpoint policy. */
 export type CommonServiceEndpointPolicyPropertiesFormatServiceEndpointPolicyDefinitionsList_2 =
-  ReadonlyArray<CommonServiceEndpointPolicyDefinition_2>;
+  Array<CommonServiceEndpointPolicyDefinition_2>;
 export const CommonServiceEndpointPolicyPropertiesFormatServiceEndpointPolicyDefinitionsList_2 =
   /*@__PURE__*/ S.Array(
     CommonServiceEndpointPolicyDefinition_2,
@@ -76457,7 +76503,7 @@ export const CommonServiceEndpointPolicyPropertiesFormatServiceEndpointPolicyDef
 
 /** The CIDR or source IP ranges. */
 export type CommonSecurityRulePropertiesFormatSourceAddressPrefixesList_2 =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CommonSecurityRulePropertiesFormatSourceAddressPrefixesList_2 =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -76465,7 +76511,7 @@ export const CommonSecurityRulePropertiesFormatSourceAddressPrefixesList_2 =
 
 /** The application security group specified as source. */
 export type CommonSecurityRulePropertiesFormatSourceApplicationSecurityGroupsList_2 =
-  ReadonlyArray<CommonApplicationSecurityGroup>;
+  Array<CommonApplicationSecurityGroup>;
 export const CommonSecurityRulePropertiesFormatSourceApplicationSecurityGroupsList_2 =
   /*@__PURE__*/ S.Array(
     CommonApplicationSecurityGroup,
@@ -76473,7 +76519,7 @@ export const CommonSecurityRulePropertiesFormatSourceApplicationSecurityGroupsLi
 
 /** The destination address prefixes. CIDR or destination IP ranges. */
 export type CommonSecurityRulePropertiesFormatDestinationAddressPrefixesList_2 =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CommonSecurityRulePropertiesFormatDestinationAddressPrefixesList_2 =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -76481,7 +76527,7 @@ export const CommonSecurityRulePropertiesFormatDestinationAddressPrefixesList_2 
 
 /** The application security group specified as destination. */
 export type CommonSecurityRulePropertiesFormatDestinationApplicationSecurityGroupsList_2 =
-  ReadonlyArray<CommonApplicationSecurityGroup>;
+  Array<CommonApplicationSecurityGroup>;
 export const CommonSecurityRulePropertiesFormatDestinationApplicationSecurityGroupsList_2 =
   /*@__PURE__*/ S.Array(
     CommonApplicationSecurityGroup,
@@ -76489,7 +76535,7 @@ export const CommonSecurityRulePropertiesFormatDestinationApplicationSecurityGro
 
 /** The source port ranges. */
 export type CommonSecurityRulePropertiesFormatSourcePortRangesList_2 =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CommonSecurityRulePropertiesFormatSourcePortRangesList_2 =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -76497,7 +76543,7 @@ export const CommonSecurityRulePropertiesFormatSourcePortRangesList_2 =
 
 /** The destination port ranges. */
 export type CommonSecurityRulePropertiesFormatDestinationPortRangesList_2 =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CommonSecurityRulePropertiesFormatDestinationPortRangesList_2 =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -76603,7 +76649,7 @@ export const CommonSecurityRule_2 = /*@__PURE__*/ S.suspend(() =>
 
 /** A collection of security rules of the network security group. */
 export type CommonNetworkSecurityGroupPropertiesFormatSecurityRulesList_2 =
-  ReadonlyArray<CommonSecurityRule_2>;
+  Array<CommonSecurityRule_2>;
 export const CommonNetworkSecurityGroupPropertiesFormatSecurityRulesList_2 =
   /*@__PURE__*/ S.Array(
     CommonSecurityRule_2,
@@ -76611,7 +76657,7 @@ export const CommonNetworkSecurityGroupPropertiesFormatSecurityRulesList_2 =
 
 /** The default security rules of network security group. */
 export type CommonNetworkSecurityGroupPropertiesFormatDefaultSecurityRulesList_2 =
-  ReadonlyArray<CommonSecurityRule_2>;
+  Array<CommonSecurityRule_2>;
 export const CommonNetworkSecurityGroupPropertiesFormatDefaultSecurityRulesList_2 =
   /*@__PURE__*/ S.Array(
     CommonSecurityRule_2,
@@ -76656,7 +76702,7 @@ export const CommonSubnet_2 = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of references to the network interfaces created for this private endpoint. */
 export type CommonPrivateEndpointPropertiesNetworkInterfacesList_2 =
-  ReadonlyArray<CommonNetworkInterface_2>;
+  Array<CommonNetworkInterface_2>;
 export const CommonPrivateEndpointPropertiesNetworkInterfacesList_2 =
   /*@__PURE__*/ S.Array(
     S.suspend(() => CommonNetworkInterface_2),
@@ -76842,7 +76888,7 @@ export const CommonVirtualNetworkTapPropertiesFormatNetworkInterfaceTapConfigura
 
 /** Specifies the list of resource IDs for the network interface IP configuration that needs to be tapped. */
 export type CommonVirtualNetworkTapPropertiesFormatNetworkInterfaceTapConfigurationsList_2 =
-  ReadonlyArray<CommonVirtualNetworkTapPropertiesFormatNetworkInterfaceTapConfigurationsItem_2>;
+  Array<CommonVirtualNetworkTapPropertiesFormatNetworkInterfaceTapConfigurationsItem_2>;
 export const CommonVirtualNetworkTapPropertiesFormatNetworkInterfaceTapConfigurationsList_2 =
   /*@__PURE__*/ S.Array(
     CommonVirtualNetworkTapPropertiesFormatNetworkInterfaceTapConfigurationsItem_2,
@@ -76984,7 +77030,7 @@ export const CommonIPConfiguration_2 = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of tags associated with the public IP address. */
 export type CommonPublicIPAddressPropertiesFormatIpTagsList_2 =
-  ReadonlyArray<CommonIpTag>;
+  Array<CommonIpTag>;
 export const CommonPublicIPAddressPropertiesFormatIpTagsList_2 =
   /*@__PURE__*/ S.Array(
     CommonIpTag,
@@ -77020,7 +77066,7 @@ export const CommonNatGatewayPropertiesFormatPublicIpAddressesItem =
 
 /** An array of public ip addresses V4 associated with the nat gateway resource. */
 export type CommonNatGatewayPropertiesFormatPublicIpAddressesList =
-  ReadonlyArray<CommonNatGatewayPropertiesFormatPublicIpAddressesItem>;
+  Array<CommonNatGatewayPropertiesFormatPublicIpAddressesItem>;
 export const CommonNatGatewayPropertiesFormatPublicIpAddressesList =
   /*@__PURE__*/ S.Array(
     CommonNatGatewayPropertiesFormatPublicIpAddressesItem,
@@ -77042,7 +77088,7 @@ export const CommonNatGatewayPropertiesFormatPublicIpAddressesV6Item =
 
 /** An array of public ip addresses V6 associated with the nat gateway resource. */
 export type CommonNatGatewayPropertiesFormatPublicIpAddressesV6List =
-  ReadonlyArray<CommonNatGatewayPropertiesFormatPublicIpAddressesV6Item>;
+  Array<CommonNatGatewayPropertiesFormatPublicIpAddressesV6Item>;
 export const CommonNatGatewayPropertiesFormatPublicIpAddressesV6List =
   /*@__PURE__*/ S.Array(
     CommonNatGatewayPropertiesFormatPublicIpAddressesV6Item,
@@ -77064,7 +77110,7 @@ export const CommonNatGatewayPropertiesFormatPublicIpPrefixesItem =
 
 /** An array of public ip prefixes V4 associated with the nat gateway resource. */
 export type CommonNatGatewayPropertiesFormatPublicIpPrefixesList =
-  ReadonlyArray<CommonNatGatewayPropertiesFormatPublicIpPrefixesItem>;
+  Array<CommonNatGatewayPropertiesFormatPublicIpPrefixesItem>;
 export const CommonNatGatewayPropertiesFormatPublicIpPrefixesList =
   /*@__PURE__*/ S.Array(
     CommonNatGatewayPropertiesFormatPublicIpPrefixesItem,
@@ -77086,7 +77132,7 @@ export const CommonNatGatewayPropertiesFormatPublicIpPrefixesV6Item =
 
 /** An array of public ip prefixes V6 associated with the nat gateway resource. */
 export type CommonNatGatewayPropertiesFormatPublicIpPrefixesV6List =
-  ReadonlyArray<CommonNatGatewayPropertiesFormatPublicIpPrefixesV6Item>;
+  Array<CommonNatGatewayPropertiesFormatPublicIpPrefixesV6Item>;
 export const CommonNatGatewayPropertiesFormatPublicIpPrefixesV6List =
   /*@__PURE__*/ S.Array(
     CommonNatGatewayPropertiesFormatPublicIpPrefixesV6Item,
@@ -77108,7 +77154,7 @@ export const CommonNatGatewayPropertiesFormatSubnetsItem =
 
 /** An array of references to the subnets using this nat gateway resource. */
 export type CommonNatGatewayPropertiesFormatSubnetsList =
-  ReadonlyArray<CommonNatGatewayPropertiesFormatSubnetsItem>;
+  Array<CommonNatGatewayPropertiesFormatSubnetsItem>;
 export const CommonNatGatewayPropertiesFormatSubnetsList =
   /*@__PURE__*/ S.Array(
     CommonNatGatewayPropertiesFormatSubnetsItem,
@@ -77503,7 +77549,7 @@ export const CommonNetworkInterfaceIPConfigurationPropertiesFormatVirtualNetwork
 
 /** The reference to Virtual Network Taps. */
 export type CommonNetworkInterfaceIPConfigurationPropertiesFormatVirtualNetworkTapsList_2 =
-  ReadonlyArray<CommonNetworkInterfaceIPConfigurationPropertiesFormatVirtualNetworkTapsItem_2>;
+  Array<CommonNetworkInterfaceIPConfigurationPropertiesFormatVirtualNetworkTapsItem_2>;
 export const CommonNetworkInterfaceIPConfigurationPropertiesFormatVirtualNetworkTapsList_2 =
   /*@__PURE__*/ S.Array(
     CommonNetworkInterfaceIPConfigurationPropertiesFormatVirtualNetworkTapsItem_2,
@@ -77542,7 +77588,7 @@ export const CommonApplicationGatewayBackendAddressPoolPropertiesFormatBackendIP
 
 /** Collection of references to IPs defined in network interfaces. */
 export type CommonApplicationGatewayBackendAddressPoolPropertiesFormatBackendIPConfigurationsList_2 =
-  ReadonlyArray<CommonApplicationGatewayBackendAddressPoolPropertiesFormatBackendIPConfigurationsItem_2>;
+  Array<CommonApplicationGatewayBackendAddressPoolPropertiesFormatBackendIPConfigurationsItem_2>;
 export const CommonApplicationGatewayBackendAddressPoolPropertiesFormatBackendIPConfigurationsList_2 =
   /*@__PURE__*/ S.Array(
     CommonApplicationGatewayBackendAddressPoolPropertiesFormatBackendIPConfigurationsItem_2,
@@ -77605,7 +77651,7 @@ export const CommonNetworkInterfaceIPConfigurationPropertiesFormatApplicationGat
 
 /** The reference to ApplicationGatewayBackendAddressPool resource. */
 export type CommonNetworkInterfaceIPConfigurationPropertiesFormatApplicationGatewayBackendAddressPoolsList_2 =
-  ReadonlyArray<CommonNetworkInterfaceIPConfigurationPropertiesFormatApplicationGatewayBackendAddressPoolsItem_2>;
+  Array<CommonNetworkInterfaceIPConfigurationPropertiesFormatApplicationGatewayBackendAddressPoolsItem_2>;
 export const CommonNetworkInterfaceIPConfigurationPropertiesFormatApplicationGatewayBackendAddressPoolsList_2 =
   /*@__PURE__*/ S.Array(
     CommonNetworkInterfaceIPConfigurationPropertiesFormatApplicationGatewayBackendAddressPoolsItem_2,
@@ -77644,7 +77690,7 @@ export const CommonBackendAddressPoolPropertiesFormatBackendIPConfigurationsItem
 
 /** An array of references to IP addresses defined in network interfaces. */
 export type CommonBackendAddressPoolPropertiesFormatBackendIPConfigurationsList_2 =
-  ReadonlyArray<CommonBackendAddressPoolPropertiesFormatBackendIPConfigurationsItem_2>;
+  Array<CommonBackendAddressPoolPropertiesFormatBackendIPConfigurationsItem_2>;
 export const CommonBackendAddressPoolPropertiesFormatBackendIPConfigurationsList_2 =
   /*@__PURE__*/ S.Array(
     CommonBackendAddressPoolPropertiesFormatBackendIPConfigurationsItem_2,
@@ -77744,7 +77790,7 @@ export const CommonNetworkInterfaceIPConfigurationPropertiesFormatLoadBalancerBa
 
 /** The reference to LoadBalancerBackendAddressPool resource. */
 export type CommonNetworkInterfaceIPConfigurationPropertiesFormatLoadBalancerBackendAddressPoolsList_2 =
-  ReadonlyArray<CommonNetworkInterfaceIPConfigurationPropertiesFormatLoadBalancerBackendAddressPoolsItem_2>;
+  Array<CommonNetworkInterfaceIPConfigurationPropertiesFormatLoadBalancerBackendAddressPoolsItem_2>;
 export const CommonNetworkInterfaceIPConfigurationPropertiesFormatLoadBalancerBackendAddressPoolsList_2 =
   /*@__PURE__*/ S.Array(
     CommonNetworkInterfaceIPConfigurationPropertiesFormatLoadBalancerBackendAddressPoolsItem_2,
@@ -77864,7 +77910,7 @@ export const CommonNetworkInterfaceIPConfigurationPropertiesFormatLoadBalancerIn
 
 /** A list of references of LoadBalancerInboundNatRules. */
 export type CommonNetworkInterfaceIPConfigurationPropertiesFormatLoadBalancerInboundNatRulesList_2 =
-  ReadonlyArray<CommonNetworkInterfaceIPConfigurationPropertiesFormatLoadBalancerInboundNatRulesItem_2>;
+  Array<CommonNetworkInterfaceIPConfigurationPropertiesFormatLoadBalancerInboundNatRulesItem_2>;
 export const CommonNetworkInterfaceIPConfigurationPropertiesFormatLoadBalancerInboundNatRulesList_2 =
   /*@__PURE__*/ S.Array(
     CommonNetworkInterfaceIPConfigurationPropertiesFormatLoadBalancerInboundNatRulesItem_2,
@@ -77976,7 +78022,7 @@ export const CommonNetworkInterfaceIPConfiguration = /*@__PURE__*/ S.suspend(
 
 /** A list of IPConfigurations of the network interface. */
 export type CommonNetworkInterfacePropertiesFormatIpConfigurationsList_2 =
-  ReadonlyArray<CommonNetworkInterfaceIPConfiguration>;
+  Array<CommonNetworkInterfaceIPConfiguration>;
 export const CommonNetworkInterfacePropertiesFormatIpConfigurationsList_2 =
   /*@__PURE__*/ S.Array(
     CommonNetworkInterfaceIPConfiguration,
@@ -78012,7 +78058,7 @@ export const CommonNetworkInterfaceTapConfiguration = /*@__PURE__*/ S.suspend(
 
 /** A list of TapConfigurations of the network interface. */
 export type CommonNetworkInterfacePropertiesFormatTapConfigurationsList_2 =
-  ReadonlyArray<CommonNetworkInterfaceTapConfiguration>;
+  Array<CommonNetworkInterfaceTapConfiguration>;
 export const CommonNetworkInterfacePropertiesFormatTapConfigurationsList_2 =
   /*@__PURE__*/ S.Array(
     CommonNetworkInterfaceTapConfiguration,
@@ -78020,7 +78066,7 @@ export const CommonNetworkInterfacePropertiesFormatTapConfigurationsList_2 =
 
 /** A list of references to linked BareMetal resources. */
 export type CommonNetworkInterfacePropertiesFormatHostedWorkloadsList_2 =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CommonNetworkInterfacePropertiesFormatHostedWorkloadsList_2 =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -78074,7 +78120,7 @@ export const CommonPrivateLinkServicePropertiesLoadBalancerFrontendIpConfigurati
 
 /** An array of references to the load balancer IP configurations. */
 export type CommonPrivateLinkServicePropertiesLoadBalancerFrontendIpConfigurationsList =
-  ReadonlyArray<CommonPrivateLinkServicePropertiesLoadBalancerFrontendIpConfigurationsItem>;
+  Array<CommonPrivateLinkServicePropertiesLoadBalancerFrontendIpConfigurationsItem>;
 export const CommonPrivateLinkServicePropertiesLoadBalancerFrontendIpConfigurationsList =
   /*@__PURE__*/ S.Array(
     CommonPrivateLinkServicePropertiesLoadBalancerFrontendIpConfigurationsItem,
@@ -78143,7 +78189,7 @@ export const CommonPrivateLinkServiceIpConfiguration = /*@__PURE__*/ S.suspend(
 
 /** An array of private link service IP configurations. */
 export type CommonPrivateLinkServicePropertiesIpConfigurationsList =
-  ReadonlyArray<CommonPrivateLinkServiceIpConfiguration>;
+  Array<CommonPrivateLinkServiceIpConfiguration>;
 export const CommonPrivateLinkServicePropertiesIpConfigurationsList =
   /*@__PURE__*/ S.Array(
     CommonPrivateLinkServiceIpConfiguration,
@@ -78151,7 +78197,7 @@ export const CommonPrivateLinkServicePropertiesIpConfigurationsList =
 
 /** An array of references to the network interfaces created for this private link service. */
 export type CommonPrivateLinkServicePropertiesNetworkInterfacesList =
-  ReadonlyArray<CommonNetworkInterface_2>;
+  Array<CommonNetworkInterface_2>;
 export const CommonPrivateLinkServicePropertiesNetworkInterfacesList =
   /*@__PURE__*/ S.Array(
     S.suspend(() => CommonNetworkInterface_2),
@@ -78214,7 +78260,7 @@ export const CommonPrivateEndpointConnection = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of list about connections to the private endpoint. */
 export type CommonPrivateLinkServicePropertiesPrivateEndpointConnectionsList =
-  ReadonlyArray<CommonPrivateEndpointConnection>;
+  Array<CommonPrivateEndpointConnection>;
 export const CommonPrivateLinkServicePropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     CommonPrivateEndpointConnection,
@@ -78446,7 +78492,7 @@ export const CommonNetworkInterface_2 = /*@__PURE__*/ S.suspend(() =>
 
 /** A collection of references to network interfaces. */
 export type CommonNetworkSecurityGroupPropertiesFormatNetworkInterfacesList_2 =
-  ReadonlyArray<CommonNetworkInterface_2>;
+  Array<CommonNetworkInterface_2>;
 export const CommonNetworkSecurityGroupPropertiesFormatNetworkInterfacesList_2 =
   /*@__PURE__*/ S.Array(
     CommonNetworkInterface_2,
@@ -78454,7 +78500,7 @@ export const CommonNetworkSecurityGroupPropertiesFormatNetworkInterfacesList_2 =
 
 /** A collection of references to subnets. */
 export type CommonNetworkSecurityGroupPropertiesFormatSubnetsList_2 =
-  ReadonlyArray<CommonSubnet_2>;
+  Array<CommonSubnet_2>;
 export const CommonNetworkSecurityGroupPropertiesFormatSubnetsList_2 =
   /*@__PURE__*/ S.Array(
     CommonSubnet_2,
@@ -78625,7 +78671,7 @@ export const CommonNetworkSecurityGroupPropertiesFormatFlowLogsItem_2 =
 
 /** A collection of references to flow log resources. */
 export type CommonNetworkSecurityGroupPropertiesFormatFlowLogsList_2 =
-  ReadonlyArray<CommonNetworkSecurityGroupPropertiesFormatFlowLogsItem_2>;
+  Array<CommonNetworkSecurityGroupPropertiesFormatFlowLogsItem_2>;
 export const CommonNetworkSecurityGroupPropertiesFormatFlowLogsList_2 =
   /*@__PURE__*/ S.Array(
     CommonNetworkSecurityGroupPropertiesFormatFlowLogsItem_2,
@@ -78761,8 +78807,7 @@ export const CommonRoute_2 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CommonRoute_2" }) as any as S.Schema<CommonRoute_2>;
 
 /** Collection of routes contained within a route table. */
-export type CommonRouteTablePropertiesFormatRoutesList_2 =
-  ReadonlyArray<CommonRoute_2>;
+export type CommonRouteTablePropertiesFormatRoutesList_2 = Array<CommonRoute_2>;
 export const CommonRouteTablePropertiesFormatRoutesList_2 =
   /*@__PURE__*/ S.Array(
     CommonRoute_2,
@@ -78770,7 +78815,7 @@ export const CommonRouteTablePropertiesFormatRoutesList_2 =
 
 /** A collection of references to subnets. */
 export type CommonRouteTablePropertiesFormatSubnetsList_2 =
-  ReadonlyArray<CommonSubnet_2>;
+  Array<CommonSubnet_2>;
 export const CommonRouteTablePropertiesFormatSubnetsList_2 =
   /*@__PURE__*/ S.Array(
     CommonSubnet_2,
@@ -78880,7 +78925,7 @@ export const CommonSubnetPropertiesFormatServiceEndpointPoliciesItem_2 =
 
 /** An array of service endpoint policies. */
 export type CommonSubnetPropertiesFormatServiceEndpointPoliciesList_2 =
-  ReadonlyArray<CommonSubnetPropertiesFormatServiceEndpointPoliciesItem_2>;
+  Array<CommonSubnetPropertiesFormatServiceEndpointPoliciesItem_2>;
 export const CommonSubnetPropertiesFormatServiceEndpointPoliciesList_2 =
   /*@__PURE__*/ S.Array(
     CommonSubnetPropertiesFormatServiceEndpointPoliciesItem_2,
@@ -78888,7 +78933,7 @@ export const CommonSubnetPropertiesFormatServiceEndpointPoliciesList_2 =
 
 /** An array of references to private endpoints. */
 export type CommonSubnetPropertiesFormatPrivateEndpointsList_2 =
-  ReadonlyArray<CommonPrivateEndpoint>;
+  Array<CommonPrivateEndpoint>;
 export const CommonSubnetPropertiesFormatPrivateEndpointsList_2 =
   /*@__PURE__*/ S.Array(
     CommonPrivateEndpoint,
@@ -78896,7 +78941,7 @@ export const CommonSubnetPropertiesFormatPrivateEndpointsList_2 =
 
 /** An array of references to the network interface IP configurations using subnet. */
 export type CommonSubnetPropertiesFormatIpConfigurationsList_2 =
-  ReadonlyArray<CommonIPConfiguration_2>;
+  Array<CommonIPConfiguration_2>;
 export const CommonSubnetPropertiesFormatIpConfigurationsList_2 =
   /*@__PURE__*/ S.Array(
     CommonIPConfiguration_2,
@@ -78948,7 +78993,7 @@ export const CommonIPConfigurationProfile_2 = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of IP configuration profiles which reference this subnet. */
 export type CommonSubnetPropertiesFormatIpConfigurationProfilesList_2 =
-  ReadonlyArray<CommonIPConfigurationProfile_2>;
+  Array<CommonIPConfigurationProfile_2>;
 export const CommonSubnetPropertiesFormatIpConfigurationProfilesList_2 =
   /*@__PURE__*/ S.Array(
     CommonIPConfigurationProfile_2,
@@ -79087,7 +79132,7 @@ export const CommonServiceEndpointPolicyPropertiesFormatSubnetsItem_2 =
 
 /** A collection of references to subnets. */
 export type CommonServiceEndpointPolicyPropertiesFormatSubnetsList_2 =
-  ReadonlyArray<CommonServiceEndpointPolicyPropertiesFormatSubnetsItem_2>;
+  Array<CommonServiceEndpointPolicyPropertiesFormatSubnetsItem_2>;
 export const CommonServiceEndpointPolicyPropertiesFormatSubnetsList_2 =
   /*@__PURE__*/ S.Array(
     CommonServiceEndpointPolicyPropertiesFormatSubnetsItem_2,
@@ -79331,7 +79376,7 @@ export const CommonServiceEndpointPolicy = /*@__PURE__*/ S.suspend(() =>
 
 /** The ServiceEndpointPolicy items on this page */
 export type ServiceEndpointPolicyListResultValueList =
-  ReadonlyArray<CommonServiceEndpointPolicy>;
+  Array<CommonServiceEndpointPolicy>;
 export const ServiceEndpointPolicyListResultValueList = /*@__PURE__*/ S.Array(
   CommonServiceEndpointPolicy,
 ) as any as S.Schema<ServiceEndpointPolicyListResultValueList>;
@@ -79644,7 +79689,7 @@ export const ServiceEndpointPolicyDefinitionsListByResourceGroupRequest =
 
 /** The ServiceEndpointPolicyDefinition items on this page */
 export type ServiceEndpointPolicyDefinitionListResultValueList =
-  ReadonlyArray<CommonServiceEndpointPolicyDefinition_2>;
+  Array<CommonServiceEndpointPolicyDefinition_2>;
 export const ServiceEndpointPolicyDefinitionListResultValueList =
   /*@__PURE__*/ S.Array(
     CommonServiceEndpointPolicyDefinition_2,
@@ -79688,14 +79733,14 @@ export const ServiceGatewayPropertiesFormatInputVirtualNetworkTagsMap =
   ) as any as S.Schema<ServiceGatewayPropertiesFormatInputVirtualNetworkTagsMap>;
 
 /** A list of address blocks reserved for this virtual network in CIDR notation. */
-export type CommonAddressSpaceInputAddressPrefixesList = ReadonlyArray<string>;
+export type CommonAddressSpaceInputAddressPrefixesList = Array<string>;
 export const CommonAddressSpaceInputAddressPrefixesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CommonAddressSpaceInputAddressPrefixesList>;
 
 /** A list of IPAM Pools allocating IP address prefixes. */
 export type CommonAddressSpaceInputIpamPoolPrefixAllocationsList =
-  ReadonlyArray<CommonIpamPoolPrefixAllocationInput>;
+  Array<CommonIpamPoolPrefixAllocationInput>;
 export const CommonAddressSpaceInputIpamPoolPrefixAllocationsList =
   /*@__PURE__*/ S.Array(
     CommonIpamPoolPrefixAllocationInput,
@@ -79720,7 +79765,7 @@ export const CommonAddressSpaceInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CommonAddressSpaceInput>;
 
 /** The list of DNS servers IP addresses. */
-export type CommonDhcpOptionsDnsServersList = ReadonlyArray<string>;
+export type CommonDhcpOptionsDnsServersList = Array<string>;
 export const CommonDhcpOptionsDnsServersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CommonDhcpOptionsDnsServersList>;
@@ -79788,7 +79833,7 @@ export const CommonRouteInput_4 = /*@__PURE__*/ S.suspend(() =>
 
 /** Collection of routes contained within a route table. */
 export type CommonRouteTablePropertiesFormatInputRoutesList_4 =
-  ReadonlyArray<CommonRouteInput_4>;
+  Array<CommonRouteInput_4>;
 export const CommonRouteTablePropertiesFormatInputRoutesList_4 =
   /*@__PURE__*/ S.Array(
     CommonRouteInput_4,
@@ -79849,7 +79894,7 @@ export const CommonRouteTableInput_4 = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of service resources. */
 export type CommonServiceEndpointPolicyDefinitionPropertiesFormatServiceResourcesList_5 =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CommonServiceEndpointPolicyDefinitionPropertiesFormatServiceResourcesList_5 =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -79864,7 +79909,9 @@ export interface CommonServiceEndpointPolicyDefinitionPropertiesFormat_5 {
   /** A list of service resources. */
   serviceResources?: CommonServiceEndpointPolicyDefinitionPropertiesFormatServiceResourcesList_5;
   /** Provisioning states of a resource. */
-  provisioningState?: CommonServiceEndpointPolicyDefinitionPropertiesFormatProvisioningState;
+  provisioningState?:
+    | CommonServiceEndpointPolicyDefinitionPropertiesFormatProvisioningState
+    | (string & {});
 }
 export const CommonServiceEndpointPolicyDefinitionPropertiesFormat_5 =
   /*@__PURE__*/ S.suspend(() =>
@@ -79906,7 +79953,7 @@ export const CommonServiceEndpointPolicyDefinitionInput_5 =
 
 /** A collection of service endpoint policy definitions of the service endpoint policy. */
 export type CommonServiceEndpointPolicyPropertiesFormatInputServiceEndpointPolicyDefinitionsList_5 =
-  ReadonlyArray<CommonServiceEndpointPolicyDefinitionInput_5>;
+  Array<CommonServiceEndpointPolicyDefinitionInput_5>;
 export const CommonServiceEndpointPolicyPropertiesFormatInputServiceEndpointPolicyDefinitionsList_5 =
   /*@__PURE__*/ S.Array(
     CommonServiceEndpointPolicyDefinitionInput_5,
@@ -79973,7 +80020,7 @@ export const CommonSubnetPropertiesFormatInputServiceEndpointPoliciesItem_4 =
 
 /** An array of service endpoint policies. */
 export type CommonSubnetPropertiesFormatInputServiceEndpointPoliciesList_4 =
-  ReadonlyArray<CommonSubnetPropertiesFormatInputServiceEndpointPoliciesItem_4>;
+  Array<CommonSubnetPropertiesFormatInputServiceEndpointPoliciesItem_4>;
 export const CommonSubnetPropertiesFormatInputServiceEndpointPoliciesList_4 =
   /*@__PURE__*/ S.Array(
     CommonSubnetPropertiesFormatInputServiceEndpointPoliciesItem_4,
@@ -80085,7 +80132,7 @@ export const CommonSubnetInput_4 = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of subnets in a Virtual Network. */
 export type CommonVirtualNetworkPropertiesFormatInputSubnetsList =
-  ReadonlyArray<CommonSubnetInput_4>;
+  Array<CommonSubnetInput_4>;
 export const CommonVirtualNetworkPropertiesFormatInputSubnetsList =
   /*@__PURE__*/ S.Array(
     CommonSubnetInput_4,
@@ -80150,7 +80197,7 @@ export const CommonVirtualNetworkPeeringPropertiesFormatInputProvisioningState =
 
 /** List of local subnet names that are subnet peered with remote virtual network. */
 export type CommonVirtualNetworkPeeringPropertiesFormatInputLocalSubnetNamesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CommonVirtualNetworkPeeringPropertiesFormatInputLocalSubnetNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -80158,7 +80205,7 @@ export const CommonVirtualNetworkPeeringPropertiesFormatInputLocalSubnetNamesLis
 
 /** List of remote subnet names from remote virtual network that are subnet peered. */
 export type CommonVirtualNetworkPeeringPropertiesFormatInputRemoteSubnetNamesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CommonVirtualNetworkPeeringPropertiesFormatInputRemoteSubnetNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -80268,7 +80315,7 @@ export const CommonVirtualNetworkPeeringInput = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of peerings in a Virtual Network. */
 export type CommonVirtualNetworkPropertiesFormatInputVirtualNetworkPeeringsList =
-  ReadonlyArray<CommonVirtualNetworkPeeringInput>;
+  Array<CommonVirtualNetworkPeeringInput>;
 export const CommonVirtualNetworkPropertiesFormatInputVirtualNetworkPeeringsList =
   /*@__PURE__*/ S.Array(
     CommonVirtualNetworkPeeringInput,
@@ -80310,7 +80357,7 @@ export interface CommonVirtualNetworkEncryption {
   /** Indicates if encryption is enabled on the virtual network. */
   enabled: boolean;
   /** If the encrypted VNet allows VM that does not support encryption. This field is for future support, AllowUnencrypted is the only supported value at general availability. */
-  enforcement?: CommonVirtualNetworkEncryptionEnforcement;
+  enforcement?: CommonVirtualNetworkEncryptionEnforcement | (string & {});
 }
 export const CommonVirtualNetworkEncryption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -80337,7 +80384,7 @@ export const CommonVirtualNetworkPropertiesFormatInputIpAllocationsItem =
 
 /** Array of IpAllocation which reference this VNET. */
 export type CommonVirtualNetworkPropertiesFormatInputIpAllocationsList =
-  ReadonlyArray<CommonVirtualNetworkPropertiesFormatInputIpAllocationsItem>;
+  Array<CommonVirtualNetworkPropertiesFormatInputIpAllocationsItem>;
 export const CommonVirtualNetworkPropertiesFormatInputIpAllocationsList =
   /*@__PURE__*/ S.Array(
     CommonVirtualNetworkPropertiesFormatInputIpAllocationsItem,
@@ -80585,9 +80632,9 @@ export const ServiceGatewaySkuTier = /*@__PURE__*/ S.String;
 /** SKU of a service gateway. */
 export interface ServiceGatewaySku {
   /** Name of a service gateway SKU. */
-  name?: ServiceGatewaySkuName;
+  name?: ServiceGatewaySkuName | (string & {});
   /** Tier of a service gateway SKU. */
-  tier?: ServiceGatewaySkuTier;
+  tier?: ServiceGatewaySkuTier | (string & {});
 }
 export const ServiceGatewaySku = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -80599,8 +80646,7 @@ export const ServiceGatewaySku = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServiceGatewaySku>;
 
 /** A list of availability zones denoting the zone in which service gateway should be deployed. - The zone values must be provided as strings representing numeric identifiers like "1", "2", "3" etc. */
-export type ServiceGatewaysCreateOrUpdateRequestZonesList =
-  ReadonlyArray<string>;
+export type ServiceGatewaysCreateOrUpdateRequestZonesList = Array<string>;
 export const ServiceGatewaysCreateOrUpdateRequestZonesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -80719,14 +80765,14 @@ export const ServiceGatewayPropertiesFormatVirtualNetworkTagsMap =
   ) as any as S.Schema<ServiceGatewayPropertiesFormatVirtualNetworkTagsMap>;
 
 /** A list of address blocks reserved for this virtual network in CIDR notation. */
-export type CommonAddressSpaceAddressPrefixesList = ReadonlyArray<string>;
+export type CommonAddressSpaceAddressPrefixesList = Array<string>;
 export const CommonAddressSpaceAddressPrefixesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CommonAddressSpaceAddressPrefixesList>;
 
 /** A list of IPAM Pools allocating IP address prefixes. */
 export type CommonAddressSpaceIpamPoolPrefixAllocationsList =
-  ReadonlyArray<CommonIpamPoolPrefixAllocation>;
+  Array<CommonIpamPoolPrefixAllocation>;
 export const CommonAddressSpaceIpamPoolPrefixAllocationsList =
   /*@__PURE__*/ S.Array(
     CommonIpamPoolPrefixAllocation,
@@ -80752,7 +80798,7 @@ export const CommonAddressSpace = /*@__PURE__*/ S.suspend(() =>
 
 /** The CIDR or source IP ranges. */
 export type CommonSecurityRulePropertiesFormatSourceAddressPrefixesList_6 =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CommonSecurityRulePropertiesFormatSourceAddressPrefixesList_6 =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -80760,7 +80806,7 @@ export const CommonSecurityRulePropertiesFormatSourceAddressPrefixesList_6 =
 
 /** The application security group specified as source. */
 export type CommonSecurityRulePropertiesFormatSourceApplicationSecurityGroupsList_6 =
-  ReadonlyArray<CommonApplicationSecurityGroup>;
+  Array<CommonApplicationSecurityGroup>;
 export const CommonSecurityRulePropertiesFormatSourceApplicationSecurityGroupsList_6 =
   /*@__PURE__*/ S.Array(
     CommonApplicationSecurityGroup,
@@ -80768,7 +80814,7 @@ export const CommonSecurityRulePropertiesFormatSourceApplicationSecurityGroupsLi
 
 /** The destination address prefixes. CIDR or destination IP ranges. */
 export type CommonSecurityRulePropertiesFormatDestinationAddressPrefixesList_6 =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CommonSecurityRulePropertiesFormatDestinationAddressPrefixesList_6 =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -80776,7 +80822,7 @@ export const CommonSecurityRulePropertiesFormatDestinationAddressPrefixesList_6 
 
 /** The application security group specified as destination. */
 export type CommonSecurityRulePropertiesFormatDestinationApplicationSecurityGroupsList_6 =
-  ReadonlyArray<CommonApplicationSecurityGroup>;
+  Array<CommonApplicationSecurityGroup>;
 export const CommonSecurityRulePropertiesFormatDestinationApplicationSecurityGroupsList_6 =
   /*@__PURE__*/ S.Array(
     CommonApplicationSecurityGroup,
@@ -80784,7 +80830,7 @@ export const CommonSecurityRulePropertiesFormatDestinationApplicationSecurityGro
 
 /** The source port ranges. */
 export type CommonSecurityRulePropertiesFormatSourcePortRangesList_6 =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CommonSecurityRulePropertiesFormatSourcePortRangesList_6 =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -80792,7 +80838,7 @@ export const CommonSecurityRulePropertiesFormatSourcePortRangesList_6 =
 
 /** The destination port ranges. */
 export type CommonSecurityRulePropertiesFormatDestinationPortRangesList_6 =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CommonSecurityRulePropertiesFormatDestinationPortRangesList_6 =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -80898,7 +80944,7 @@ export const CommonSecurityRule_5 = /*@__PURE__*/ S.suspend(() =>
 
 /** A collection of security rules of the network security group. */
 export type CommonNetworkSecurityGroupPropertiesFormatSecurityRulesList_5 =
-  ReadonlyArray<CommonSecurityRule_5>;
+  Array<CommonSecurityRule_5>;
 export const CommonNetworkSecurityGroupPropertiesFormatSecurityRulesList_5 =
   /*@__PURE__*/ S.Array(
     CommonSecurityRule_5,
@@ -80906,7 +80952,7 @@ export const CommonNetworkSecurityGroupPropertiesFormatSecurityRulesList_5 =
 
 /** The default security rules of network security group. */
 export type CommonNetworkSecurityGroupPropertiesFormatDefaultSecurityRulesList_5 =
-  ReadonlyArray<CommonSecurityRule_5>;
+  Array<CommonSecurityRule_5>;
 export const CommonNetworkSecurityGroupPropertiesFormatDefaultSecurityRulesList_5 =
   /*@__PURE__*/ S.Array(
     CommonSecurityRule_5,
@@ -80928,7 +80974,7 @@ export const CommonNetworkInterfacePropertiesFormatVirtualMachine_5 =
 
 /** An array of references to the network interfaces created for this private endpoint. */
 export type CommonPrivateEndpointPropertiesNetworkInterfacesList_5 =
-  ReadonlyArray<CommonNetworkInterface_5>;
+  Array<CommonNetworkInterface_5>;
 export const CommonPrivateEndpointPropertiesNetworkInterfacesList_5 =
   /*@__PURE__*/ S.Array(
     S.suspend(() => CommonNetworkInterface_5),
@@ -81114,7 +81160,7 @@ export const CommonVirtualNetworkTapPropertiesFormatNetworkInterfaceTapConfigura
 
 /** Specifies the list of resource IDs for the network interface IP configuration that needs to be tapped. */
 export type CommonVirtualNetworkTapPropertiesFormatNetworkInterfaceTapConfigurationsList_5 =
-  ReadonlyArray<CommonVirtualNetworkTapPropertiesFormatNetworkInterfaceTapConfigurationsItem_5>;
+  Array<CommonVirtualNetworkTapPropertiesFormatNetworkInterfaceTapConfigurationsItem_5>;
 export const CommonVirtualNetworkTapPropertiesFormatNetworkInterfaceTapConfigurationsList_5 =
   /*@__PURE__*/ S.Array(
     CommonVirtualNetworkTapPropertiesFormatNetworkInterfaceTapConfigurationsItem_5,
@@ -81595,7 +81641,7 @@ export const CommonNetworkInterfaceIPConfigurationPropertiesFormatVirtualNetwork
 
 /** The reference to Virtual Network Taps. */
 export type CommonNetworkInterfaceIPConfigurationPropertiesFormatVirtualNetworkTapsList_5 =
-  ReadonlyArray<CommonNetworkInterfaceIPConfigurationPropertiesFormatVirtualNetworkTapsItem_5>;
+  Array<CommonNetworkInterfaceIPConfigurationPropertiesFormatVirtualNetworkTapsItem_5>;
 export const CommonNetworkInterfaceIPConfigurationPropertiesFormatVirtualNetworkTapsList_5 =
   /*@__PURE__*/ S.Array(
     CommonNetworkInterfaceIPConfigurationPropertiesFormatVirtualNetworkTapsItem_5,
@@ -81634,7 +81680,7 @@ export const CommonApplicationGatewayBackendAddressPoolPropertiesFormatBackendIP
 
 /** Collection of references to IPs defined in network interfaces. */
 export type CommonApplicationGatewayBackendAddressPoolPropertiesFormatBackendIPConfigurationsList_5 =
-  ReadonlyArray<CommonApplicationGatewayBackendAddressPoolPropertiesFormatBackendIPConfigurationsItem_5>;
+  Array<CommonApplicationGatewayBackendAddressPoolPropertiesFormatBackendIPConfigurationsItem_5>;
 export const CommonApplicationGatewayBackendAddressPoolPropertiesFormatBackendIPConfigurationsList_5 =
   /*@__PURE__*/ S.Array(
     CommonApplicationGatewayBackendAddressPoolPropertiesFormatBackendIPConfigurationsItem_5,
@@ -81697,7 +81743,7 @@ export const CommonNetworkInterfaceIPConfigurationPropertiesFormatApplicationGat
 
 /** The reference to ApplicationGatewayBackendAddressPool resource. */
 export type CommonNetworkInterfaceIPConfigurationPropertiesFormatApplicationGatewayBackendAddressPoolsList_5 =
-  ReadonlyArray<CommonNetworkInterfaceIPConfigurationPropertiesFormatApplicationGatewayBackendAddressPoolsItem_5>;
+  Array<CommonNetworkInterfaceIPConfigurationPropertiesFormatApplicationGatewayBackendAddressPoolsItem_5>;
 export const CommonNetworkInterfaceIPConfigurationPropertiesFormatApplicationGatewayBackendAddressPoolsList_5 =
   /*@__PURE__*/ S.Array(
     CommonNetworkInterfaceIPConfigurationPropertiesFormatApplicationGatewayBackendAddressPoolsItem_5,
@@ -81724,7 +81770,7 @@ export const CommonNatRulePortMapping_3 = /*@__PURE__*/ S.suspend(() =>
 
 /** Collection of inbound NAT rule port mappings. */
 export type CommonLoadBalancerBackendAddressPropertiesFormatInboundNatRulesPortMappingList_3 =
-  ReadonlyArray<CommonNatRulePortMapping_3>;
+  Array<CommonNatRulePortMapping_3>;
 export const CommonLoadBalancerBackendAddressPropertiesFormatInboundNatRulesPortMappingList_3 =
   /*@__PURE__*/ S.Array(
     CommonNatRulePortMapping_3,
@@ -81792,7 +81838,7 @@ export const CommonLoadBalancerBackendAddress_3 = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of backend addresses. */
 export type CommonBackendAddressPoolPropertiesFormatLoadBalancerBackendAddressesList_3 =
-  ReadonlyArray<CommonLoadBalancerBackendAddress_3>;
+  Array<CommonLoadBalancerBackendAddress_3>;
 export const CommonBackendAddressPoolPropertiesFormatLoadBalancerBackendAddressesList_3 =
   /*@__PURE__*/ S.Array(
     CommonLoadBalancerBackendAddress_3,
@@ -81831,7 +81877,7 @@ export const CommonBackendAddressPoolPropertiesFormatBackendIPConfigurationsItem
 
 /** An array of references to IP addresses defined in network interfaces. */
 export type CommonBackendAddressPoolPropertiesFormatBackendIPConfigurationsList_5 =
-  ReadonlyArray<CommonBackendAddressPoolPropertiesFormatBackendIPConfigurationsItem_5>;
+  Array<CommonBackendAddressPoolPropertiesFormatBackendIPConfigurationsItem_5>;
 export const CommonBackendAddressPoolPropertiesFormatBackendIPConfigurationsList_5 =
   /*@__PURE__*/ S.Array(
     CommonBackendAddressPoolPropertiesFormatBackendIPConfigurationsItem_5,
@@ -81931,7 +81977,7 @@ export const CommonNetworkInterfaceIPConfigurationPropertiesFormatLoadBalancerBa
 
 /** The reference to LoadBalancerBackendAddressPool resource. */
 export type CommonNetworkInterfaceIPConfigurationPropertiesFormatLoadBalancerBackendAddressPoolsList_5 =
-  ReadonlyArray<CommonNetworkInterfaceIPConfigurationPropertiesFormatLoadBalancerBackendAddressPoolsItem_5>;
+  Array<CommonNetworkInterfaceIPConfigurationPropertiesFormatLoadBalancerBackendAddressPoolsItem_5>;
 export const CommonNetworkInterfaceIPConfigurationPropertiesFormatLoadBalancerBackendAddressPoolsList_5 =
   /*@__PURE__*/ S.Array(
     CommonNetworkInterfaceIPConfigurationPropertiesFormatLoadBalancerBackendAddressPoolsItem_5,
@@ -82051,7 +82097,7 @@ export const CommonNetworkInterfaceIPConfigurationPropertiesFormatLoadBalancerIn
 
 /** A list of references of LoadBalancerInboundNatRules. */
 export type CommonNetworkInterfaceIPConfigurationPropertiesFormatLoadBalancerInboundNatRulesList_5 =
-  ReadonlyArray<CommonNetworkInterfaceIPConfigurationPropertiesFormatLoadBalancerInboundNatRulesItem_5>;
+  Array<CommonNetworkInterfaceIPConfigurationPropertiesFormatLoadBalancerInboundNatRulesItem_5>;
 export const CommonNetworkInterfaceIPConfigurationPropertiesFormatLoadBalancerInboundNatRulesList_5 =
   /*@__PURE__*/ S.Array(
     CommonNetworkInterfaceIPConfigurationPropertiesFormatLoadBalancerInboundNatRulesItem_5,
@@ -82163,7 +82209,7 @@ export const CommonNetworkInterfaceIPConfiguration_4 = /*@__PURE__*/ S.suspend(
 
 /** A list of IPConfigurations of the network interface. */
 export type CommonNetworkInterfacePropertiesFormatIpConfigurationsList_5 =
-  ReadonlyArray<CommonNetworkInterfaceIPConfiguration_4>;
+  Array<CommonNetworkInterfaceIPConfiguration_4>;
 export const CommonNetworkInterfacePropertiesFormatIpConfigurationsList_5 =
   /*@__PURE__*/ S.Array(
     CommonNetworkInterfaceIPConfiguration_4,
@@ -82199,7 +82245,7 @@ export const CommonNetworkInterfaceTapConfiguration_4 = /*@__PURE__*/ S.suspend(
 
 /** A list of TapConfigurations of the network interface. */
 export type CommonNetworkInterfacePropertiesFormatTapConfigurationsList_5 =
-  ReadonlyArray<CommonNetworkInterfaceTapConfiguration_4>;
+  Array<CommonNetworkInterfaceTapConfiguration_4>;
 export const CommonNetworkInterfacePropertiesFormatTapConfigurationsList_5 =
   /*@__PURE__*/ S.Array(
     CommonNetworkInterfaceTapConfiguration_4,
@@ -82207,7 +82253,7 @@ export const CommonNetworkInterfacePropertiesFormatTapConfigurationsList_5 =
 
 /** A list of references to linked BareMetal resources. */
 export type CommonNetworkInterfacePropertiesFormatHostedWorkloadsList_5 =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CommonNetworkInterfacePropertiesFormatHostedWorkloadsList_5 =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -82261,7 +82307,7 @@ export const CommonPrivateLinkServicePropertiesLoadBalancerFrontendIpConfigurati
 
 /** An array of references to the load balancer IP configurations. */
 export type CommonPrivateLinkServicePropertiesLoadBalancerFrontendIpConfigurationsList_4 =
-  ReadonlyArray<CommonPrivateLinkServicePropertiesLoadBalancerFrontendIpConfigurationsItem_4>;
+  Array<CommonPrivateLinkServicePropertiesLoadBalancerFrontendIpConfigurationsItem_4>;
 export const CommonPrivateLinkServicePropertiesLoadBalancerFrontendIpConfigurationsList_4 =
   /*@__PURE__*/ S.Array(
     CommonPrivateLinkServicePropertiesLoadBalancerFrontendIpConfigurationsItem_4,
@@ -82332,7 +82378,7 @@ export const CommonPrivateLinkServiceIpConfiguration_4 =
 
 /** An array of private link service IP configurations. */
 export type CommonPrivateLinkServicePropertiesIpConfigurationsList_4 =
-  ReadonlyArray<CommonPrivateLinkServiceIpConfiguration_4>;
+  Array<CommonPrivateLinkServiceIpConfiguration_4>;
 export const CommonPrivateLinkServicePropertiesIpConfigurationsList_4 =
   /*@__PURE__*/ S.Array(
     CommonPrivateLinkServiceIpConfiguration_4,
@@ -82340,7 +82386,7 @@ export const CommonPrivateLinkServicePropertiesIpConfigurationsList_4 =
 
 /** An array of references to the network interfaces created for this private link service. */
 export type CommonPrivateLinkServicePropertiesNetworkInterfacesList_4 =
-  ReadonlyArray<CommonNetworkInterface_5>;
+  Array<CommonNetworkInterface_5>;
 export const CommonPrivateLinkServicePropertiesNetworkInterfacesList_4 =
   /*@__PURE__*/ S.Array(
     S.suspend(() => CommonNetworkInterface_5),
@@ -82403,7 +82449,7 @@ export const CommonPrivateEndpointConnection_4 = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of list about connections to the private endpoint. */
 export type CommonPrivateLinkServicePropertiesPrivateEndpointConnectionsList_4 =
-  ReadonlyArray<CommonPrivateEndpointConnection_4>;
+  Array<CommonPrivateEndpointConnection_4>;
 export const CommonPrivateLinkServicePropertiesPrivateEndpointConnectionsList_4 =
   /*@__PURE__*/ S.Array(
     CommonPrivateEndpointConnection_4,
@@ -82636,7 +82682,7 @@ export const CommonNetworkInterface_5 = /*@__PURE__*/ S.suspend(() =>
 
 /** A collection of references to network interfaces. */
 export type CommonNetworkSecurityGroupPropertiesFormatNetworkInterfacesList_5 =
-  ReadonlyArray<CommonNetworkInterface_5>;
+  Array<CommonNetworkInterface_5>;
 export const CommonNetworkSecurityGroupPropertiesFormatNetworkInterfacesList_5 =
   /*@__PURE__*/ S.Array(
     CommonNetworkInterface_5,
@@ -82644,7 +82690,7 @@ export const CommonNetworkSecurityGroupPropertiesFormatNetworkInterfacesList_5 =
 
 /** A collection of references to subnets. */
 export type CommonNetworkSecurityGroupPropertiesFormatSubnetsList_5 =
-  ReadonlyArray<CommonSubnet_5>;
+  Array<CommonSubnet_5>;
 export const CommonNetworkSecurityGroupPropertiesFormatSubnetsList_5 =
   /*@__PURE__*/ S.Array(
     S.suspend(() => CommonSubnet_5),
@@ -82831,7 +82877,7 @@ export const CommonNetworkSecurityGroupPropertiesFormatFlowLogsItem_5 =
 
 /** A collection of references to flow log resources. */
 export type CommonNetworkSecurityGroupPropertiesFormatFlowLogsList_5 =
-  ReadonlyArray<CommonNetworkSecurityGroupPropertiesFormatFlowLogsItem_5>;
+  Array<CommonNetworkSecurityGroupPropertiesFormatFlowLogsItem_5>;
 export const CommonNetworkSecurityGroupPropertiesFormatFlowLogsList_5 =
   /*@__PURE__*/ S.Array(
     CommonNetworkSecurityGroupPropertiesFormatFlowLogsItem_5,
@@ -82967,8 +83013,7 @@ export const CommonRoute_5 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CommonRoute_5" }) as any as S.Schema<CommonRoute_5>;
 
 /** Collection of routes contained within a route table. */
-export type CommonRouteTablePropertiesFormatRoutesList_5 =
-  ReadonlyArray<CommonRoute_5>;
+export type CommonRouteTablePropertiesFormatRoutesList_5 = Array<CommonRoute_5>;
 export const CommonRouteTablePropertiesFormatRoutesList_5 =
   /*@__PURE__*/ S.Array(
     CommonRoute_5,
@@ -82976,7 +83021,7 @@ export const CommonRouteTablePropertiesFormatRoutesList_5 =
 
 /** A collection of references to subnets. */
 export type CommonRouteTablePropertiesFormatSubnetsList_5 =
-  ReadonlyArray<CommonSubnet_5>;
+  Array<CommonSubnet_5>;
 export const CommonRouteTablePropertiesFormatSubnetsList_5 =
   /*@__PURE__*/ S.Array(
     S.suspend(() => CommonSubnet_5),
@@ -83075,7 +83120,7 @@ export const CommonServiceEndpointPolicyDefinition_5 = /*@__PURE__*/ S.suspend(
 
 /** A collection of service endpoint policy definitions of the service endpoint policy. */
 export type CommonServiceEndpointPolicyPropertiesFormatServiceEndpointPolicyDefinitionsList_5 =
-  ReadonlyArray<CommonServiceEndpointPolicyDefinition_5>;
+  Array<CommonServiceEndpointPolicyDefinition_5>;
 export const CommonServiceEndpointPolicyPropertiesFormatServiceEndpointPolicyDefinitionsList_5 =
   /*@__PURE__*/ S.Array(
     CommonServiceEndpointPolicyDefinition_5,
@@ -83109,7 +83154,7 @@ export const CommonServiceEndpointPolicyPropertiesFormatSubnetsItem_5 =
 
 /** A collection of references to subnets. */
 export type CommonServiceEndpointPolicyPropertiesFormatSubnetsList_5 =
-  ReadonlyArray<CommonServiceEndpointPolicyPropertiesFormatSubnetsItem_5>;
+  Array<CommonServiceEndpointPolicyPropertiesFormatSubnetsItem_5>;
 export const CommonServiceEndpointPolicyPropertiesFormatSubnetsList_5 =
   /*@__PURE__*/ S.Array(
     CommonServiceEndpointPolicyPropertiesFormatSubnetsItem_5,
@@ -83191,7 +83236,7 @@ export const CommonSubnetPropertiesFormatServiceEndpointPoliciesItem_5 =
 
 /** An array of service endpoint policies. */
 export type CommonSubnetPropertiesFormatServiceEndpointPoliciesList_5 =
-  ReadonlyArray<CommonSubnetPropertiesFormatServiceEndpointPoliciesItem_5>;
+  Array<CommonSubnetPropertiesFormatServiceEndpointPoliciesItem_5>;
 export const CommonSubnetPropertiesFormatServiceEndpointPoliciesList_5 =
   /*@__PURE__*/ S.Array(
     CommonSubnetPropertiesFormatServiceEndpointPoliciesItem_5,
@@ -83199,7 +83244,7 @@ export const CommonSubnetPropertiesFormatServiceEndpointPoliciesList_5 =
 
 /** An array of references to private endpoints. */
 export type CommonSubnetPropertiesFormatPrivateEndpointsList_5 =
-  ReadonlyArray<CommonPrivateEndpoint_4>;
+  Array<CommonPrivateEndpoint_4>;
 export const CommonSubnetPropertiesFormatPrivateEndpointsList_5 =
   /*@__PURE__*/ S.Array(
     CommonPrivateEndpoint_4,
@@ -83207,7 +83252,7 @@ export const CommonSubnetPropertiesFormatPrivateEndpointsList_5 =
 
 /** An array of references to the network interface IP configurations using subnet. */
 export type CommonSubnetPropertiesFormatIpConfigurationsList_5 =
-  ReadonlyArray<CommonIPConfiguration_5>;
+  Array<CommonIPConfiguration_5>;
 export const CommonSubnetPropertiesFormatIpConfigurationsList_5 =
   /*@__PURE__*/ S.Array(
     CommonIPConfiguration_5,
@@ -83259,7 +83304,7 @@ export const CommonIPConfigurationProfile_5 = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of IP configuration profiles which reference this subnet. */
 export type CommonSubnetPropertiesFormatIpConfigurationProfilesList_5 =
-  ReadonlyArray<CommonIPConfigurationProfile_5>;
+  Array<CommonIPConfigurationProfile_5>;
 export const CommonSubnetPropertiesFormatIpConfigurationProfilesList_5 =
   /*@__PURE__*/ S.Array(
     CommonIPConfigurationProfile_5,
@@ -83395,7 +83440,7 @@ export const CommonSubnet_5 = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of subnets in a Virtual Network. */
 export type CommonVirtualNetworkPropertiesFormatSubnetsList =
-  ReadonlyArray<CommonSubnet_5>;
+  Array<CommonSubnet_5>;
 export const CommonVirtualNetworkPropertiesFormatSubnetsList =
   /*@__PURE__*/ S.Array(
     CommonSubnet_5,
@@ -83462,7 +83507,7 @@ export const CommonVirtualNetworkPeeringPropertiesFormatProvisioningState =
 
 /** List of local subnet names that are subnet peered with remote virtual network. */
 export type CommonVirtualNetworkPeeringPropertiesFormatLocalSubnetNamesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CommonVirtualNetworkPeeringPropertiesFormatLocalSubnetNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -83470,7 +83515,7 @@ export const CommonVirtualNetworkPeeringPropertiesFormatLocalSubnetNamesList =
 
 /** List of remote subnet names from remote virtual network that are subnet peered. */
 export type CommonVirtualNetworkPeeringPropertiesFormatRemoteSubnetNamesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CommonVirtualNetworkPeeringPropertiesFormatRemoteSubnetNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -83588,7 +83633,7 @@ export const CommonVirtualNetworkPeering = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of peerings in a Virtual Network. */
 export type CommonVirtualNetworkPropertiesFormatVirtualNetworkPeeringsList =
-  ReadonlyArray<CommonVirtualNetworkPeering>;
+  Array<CommonVirtualNetworkPeering>;
 export const CommonVirtualNetworkPropertiesFormatVirtualNetworkPeeringsList =
   /*@__PURE__*/ S.Array(
     CommonVirtualNetworkPeering,
@@ -83635,7 +83680,7 @@ export const CommonVirtualNetworkPropertiesFormatIpAllocationsItem =
 
 /** Array of IpAllocation which reference this VNET. */
 export type CommonVirtualNetworkPropertiesFormatIpAllocationsList =
-  ReadonlyArray<CommonVirtualNetworkPropertiesFormatIpAllocationsItem>;
+  Array<CommonVirtualNetworkPropertiesFormatIpAllocationsItem>;
 export const CommonVirtualNetworkPropertiesFormatIpAllocationsList =
   /*@__PURE__*/ S.Array(
     CommonVirtualNetworkPropertiesFormatIpAllocationsItem,
@@ -83724,7 +83769,7 @@ export const CommonVirtualNetworkPropertiesFormatFlowLogsItem =
 
 /** A collection of references to flow log resources. */
 export type CommonVirtualNetworkPropertiesFormatFlowLogsList =
-  ReadonlyArray<CommonVirtualNetworkPropertiesFormatFlowLogsItem>;
+  Array<CommonVirtualNetworkPropertiesFormatFlowLogsItem>;
 export const CommonVirtualNetworkPropertiesFormatFlowLogsList =
   /*@__PURE__*/ S.Array(
     CommonVirtualNetworkPropertiesFormatFlowLogsItem,
@@ -83972,8 +84017,7 @@ export const ServiceGatewayPropertiesFormat = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServiceGatewayPropertiesFormat>;
 
 /** A list of availability zones denoting the zone in which service gateway should be deployed. - The zone values must be provided as strings representing numeric identifiers like "1", "2", "3" etc. */
-export type ServiceGatewaysCreateOrUpdateResponseZonesList =
-  ReadonlyArray<string>;
+export type ServiceGatewaysCreateOrUpdateResponseZonesList = Array<string>;
 export const ServiceGatewaysCreateOrUpdateResponseZonesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -84137,7 +84181,7 @@ export const ServiceGatewaysGetResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ServiceGatewaysGetResponseTagsMap>;
 
 /** A list of availability zones denoting the zone in which service gateway should be deployed. - The zone values must be provided as strings representing numeric identifiers like "1", "2", "3" etc. */
-export type ServiceGatewaysGetResponseZonesList = ReadonlyArray<string>;
+export type ServiceGatewaysGetResponseZonesList = Array<string>;
 export const ServiceGatewaysGetResponseZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ServiceGatewaysGetResponseZonesList>;
@@ -84208,7 +84252,7 @@ export const ServiceGatewaysGetAddressLocationsRequest =
   }) as any as S.Schema<ServiceGatewaysGetAddressLocationsRequest>;
 
 /** Collection of services in address. */
-export type ServiceGatewayAddressServicesList = ReadonlyArray<string>;
+export type ServiceGatewayAddressServicesList = Array<string>;
 export const ServiceGatewayAddressServicesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ServiceGatewayAddressServicesList>;
@@ -84231,7 +84275,7 @@ export const ServiceGatewayAddress = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of addresses to create or update in locations. */
 export type ServiceGatewayAddressLocationResponseAddressesList =
-  ReadonlyArray<ServiceGatewayAddress>;
+  Array<ServiceGatewayAddress>;
 export const ServiceGatewayAddressLocationResponseAddressesList =
   /*@__PURE__*/ S.Array(
     ServiceGatewayAddress,
@@ -84256,7 +84300,7 @@ export const ServiceGatewayAddressLocationResponse = /*@__PURE__*/ S.suspend(
 
 /** The ServiceGatewayAddressLocationResponse items on this page */
 export type GetServiceGatewayAddressLocationsResultValueList =
-  ReadonlyArray<ServiceGatewayAddressLocationResponse>;
+  Array<ServiceGatewayAddressLocationResponse>;
 export const GetServiceGatewayAddressLocationsResultValueList =
   /*@__PURE__*/ S.Array(
     ServiceGatewayAddressLocationResponse,
@@ -84341,7 +84385,7 @@ export const ServiceGatewayServicePropertiesFormatLoadBalancerBackendPoolsItem =
 
 /** An array of load balancer backend address pools. */
 export type ServiceGatewayServicePropertiesFormatLoadBalancerBackendPoolsList =
-  ReadonlyArray<ServiceGatewayServicePropertiesFormatLoadBalancerBackendPoolsItem>;
+  Array<ServiceGatewayServicePropertiesFormatLoadBalancerBackendPoolsItem>;
 export const ServiceGatewayServicePropertiesFormatLoadBalancerBackendPoolsList =
   /*@__PURE__*/ S.Array(
     ServiceGatewayServicePropertiesFormatLoadBalancerBackendPoolsItem,
@@ -84390,7 +84434,7 @@ export const ServiceGatewayService = /*@__PURE__*/ S.suspend(() =>
 
 /** The ServiceGatewayService items on this page */
 export type GetServiceGatewayServicesResultValueList =
-  ReadonlyArray<ServiceGatewayService>;
+  Array<ServiceGatewayService>;
 export const GetServiceGatewayServicesResultValueList = /*@__PURE__*/ S.Array(
   ServiceGatewayService,
 ) as any as S.Schema<GetServiceGatewayServicesResultValueList>;
@@ -84486,7 +84530,7 @@ export const ServiceGatewayTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ServiceGatewayTagsMap>;
 
 /** A list of availability zones denoting the zone in which service gateway should be deployed. - The zone values must be provided as strings representing numeric identifiers like "1", "2", "3" etc. */
-export type ServiceGatewayZonesList = ReadonlyArray<string>;
+export type ServiceGatewayZonesList = Array<string>;
 export const ServiceGatewayZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ServiceGatewayZonesList>;
@@ -84530,7 +84574,7 @@ export const ServiceGateway = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ServiceGateway" }) as any as S.Schema<ServiceGateway>;
 
 /** The ServiceGateway items on this page */
-export type ServiceGatewayListResultValueList = ReadonlyArray<ServiceGateway>;
+export type ServiceGatewayListResultValueList = Array<ServiceGateway>;
 export const ServiceGatewayListResultValueList = /*@__PURE__*/ S.Array(
   ServiceGateway,
 ) as any as S.Schema<ServiceGatewayListResultValueList>;
@@ -84586,7 +84630,7 @@ export const ServiceGatewayAddressLocationAddressUpdateAction =
 
 /** An array of addresses to create or update in locations. */
 export type ServiceGatewayAddressLocationAddressesList =
-  ReadonlyArray<ServiceGatewayAddress>;
+  Array<ServiceGatewayAddress>;
 export const ServiceGatewayAddressLocationAddressesList = /*@__PURE__*/ S.Array(
   ServiceGatewayAddress,
 ) as any as S.Schema<ServiceGatewayAddressLocationAddressesList>;
@@ -84616,7 +84660,7 @@ export const ServiceGatewayAddressLocation = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of address locations to create or update. */
 export type ServiceGatewaysUpdateAddressLocationsRequestAddressLocationsList =
-  ReadonlyArray<ServiceGatewayAddressLocation>;
+  Array<ServiceGatewayAddressLocation>;
 export const ServiceGatewaysUpdateAddressLocationsRequestAddressLocationsList =
   /*@__PURE__*/ S.Array(
     ServiceGatewayAddressLocation,
@@ -84700,7 +84744,7 @@ export const ServiceGatewayServicePropertiesFormatInputLoadBalancerBackendPoolsI
 
 /** An array of load balancer backend address pools. */
 export type ServiceGatewayServicePropertiesFormatInputLoadBalancerBackendPoolsList =
-  ReadonlyArray<ServiceGatewayServicePropertiesFormatInputLoadBalancerBackendPoolsItem>;
+  Array<ServiceGatewayServicePropertiesFormatInputLoadBalancerBackendPoolsItem>;
 export const ServiceGatewayServicePropertiesFormatInputLoadBalancerBackendPoolsList =
   /*@__PURE__*/ S.Array(
     ServiceGatewayServicePropertiesFormatInputLoadBalancerBackendPoolsItem,
@@ -84769,7 +84813,7 @@ export const ServiceGatewayServiceRequestInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Collection of service updates. */
 export type ServiceGatewaysUpdateServicesRequestServiceRequestsList =
-  ReadonlyArray<ServiceGatewayServiceRequestInput>;
+  Array<ServiceGatewayServiceRequestInput>;
 export const ServiceGatewaysUpdateServicesRequestServiceRequestsList =
   /*@__PURE__*/ S.Array(
     ServiceGatewayServiceRequestInput,
@@ -84914,7 +84958,7 @@ export const ServiceGatewaysUpdateTagsResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ServiceGatewaysUpdateTagsResponseTagsMap>;
 
 /** A list of availability zones denoting the zone in which service gateway should be deployed. - The zone values must be provided as strings representing numeric identifiers like "1", "2", "3" etc. */
-export type ServiceGatewaysUpdateTagsResponseZonesList = ReadonlyArray<string>;
+export type ServiceGatewaysUpdateTagsResponseZonesList = Array<string>;
 export const ServiceGatewaysUpdateTagsResponseZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ServiceGatewaysUpdateTagsResponseZonesList>;
@@ -84988,7 +85032,7 @@ export const ServiceTagInformationListRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of IP address prefixes. */
 export type ServiceTagInformationPropertiesFormatAddressPrefixesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ServiceTagInformationPropertiesFormatAddressPrefixesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -85046,7 +85090,7 @@ export const ServiceTagInformation = /*@__PURE__*/ S.suspend(() =>
 
 /** The ServiceTagInformation items on this page */
 export type ServiceTagInformationListResultValueList =
-  ReadonlyArray<ServiceTagInformation>;
+  Array<ServiceTagInformation>;
 export const ServiceTagInformationListResultValueList = /*@__PURE__*/ S.Array(
   ServiceTagInformation,
 ) as any as S.Schema<ServiceTagInformationListResultValueList>;
@@ -85090,8 +85134,7 @@ export const ServiceTagsListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServiceTagsListRequest>;
 
 /** The list of service tag information resources. */
-export type ServiceTagsListResultValuesList =
-  ReadonlyArray<ServiceTagInformation>;
+export type ServiceTagsListResultValuesList = Array<ServiceTagInformation>;
 export const ServiceTagsListResultValuesList = /*@__PURE__*/ S.Array(
   ServiceTagInformation,
 ) as any as S.Schema<ServiceTagsListResultValuesList>;
@@ -85128,8 +85171,7 @@ export const ServiceTagsListResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServiceTagsListResult>;
 
 /** List of IP address prefixes of the resource. */
-export type StaticCidrPropertiesInputAddressPrefixesList =
-  ReadonlyArray<string>;
+export type StaticCidrPropertiesInputAddressPrefixesList = Array<string>;
 export const StaticCidrPropertiesInputAddressPrefixesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -85251,7 +85293,7 @@ export const StaticCidrsCreateResponseSystemData = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StaticCidrsCreateResponseSystemData>;
 
 /** List of IP address prefixes of the resource. */
-export type StaticCidrPropertiesAddressPrefixesList = ReadonlyArray<string>;
+export type StaticCidrPropertiesAddressPrefixesList = Array<string>;
 export const StaticCidrPropertiesAddressPrefixesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StaticCidrPropertiesAddressPrefixesList>;
@@ -85566,7 +85608,7 @@ export const StaticCidr = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StaticCidr" }) as any as S.Schema<StaticCidr>;
 
 /** The StaticCidr items on this page */
-export type StaticCidrListValueList = ReadonlyArray<StaticCidr>;
+export type StaticCidrListValueList = Array<StaticCidr>;
 export const StaticCidrListValueList = /*@__PURE__*/ S.Array(
   StaticCidr,
 ) as any as S.Schema<StaticCidrListValueList>;
@@ -86004,7 +86046,7 @@ export const StaticMember = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StaticMember" }) as any as S.Schema<StaticMember>;
 
 /** The StaticMember items on this page */
-export type StaticMemberListResultValueList = ReadonlyArray<StaticMember>;
+export type StaticMemberListResultValueList = Array<StaticMember>;
 export const StaticMemberListResultValueList = /*@__PURE__*/ S.Array(
   StaticMember,
 ) as any as S.Schema<StaticMemberListResultValueList>;
@@ -86100,7 +86142,7 @@ export const SubgroupsListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SubgroupsListRequest>;
 
 /** The Subgroup items on this page */
-export type SubgroupListResultValueList = ReadonlyArray<Subgroup>;
+export type SubgroupListResultValueList = Array<Subgroup>;
 export const SubgroupListResultValueList = /*@__PURE__*/ S.Array(
   Subgroup,
 ) as any as S.Schema<SubgroupListResultValueList>;
@@ -86298,7 +86340,7 @@ export const SubnetsListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SubnetsListRequest>;
 
 /** The Subnet items on this page */
-export type SubnetListResultValueList = ReadonlyArray<CommonSubnet_6>;
+export type SubnetListResultValueList = Array<CommonSubnet_6>;
 export const SubnetListResultValueList = /*@__PURE__*/ S.Array(
   CommonSubnet_6,
 ) as any as S.Schema<SubnetListResultValueList>;
@@ -86366,7 +86408,7 @@ export const NetworkIntentPolicyConfigurationInput = /*@__PURE__*/ S.suspend(
 
 /** A list of NetworkIntentPolicyConfiguration. */
 export type SubnetsPrepareNetworkPoliciesRequestNetworkIntentPolicyConfigurationsList =
-  ReadonlyArray<NetworkIntentPolicyConfigurationInput>;
+  Array<NetworkIntentPolicyConfigurationInput>;
 export const SubnetsPrepareNetworkPoliciesRequestNetworkIntentPolicyConfigurationsList =
   /*@__PURE__*/ S.Array(
     NetworkIntentPolicyConfigurationInput,
@@ -86760,7 +86802,7 @@ export const VirtualWanSecurityProvider = /*@__PURE__*/ S.suspend(() =>
 
 /** List of VirtualWAN security providers. */
 export type VirtualWanSecurityProvidersSupportedProvidersList =
-  ReadonlyArray<VirtualWanSecurityProvider>;
+  Array<VirtualWanSecurityProvider>;
 export const VirtualWanSecurityProvidersSupportedProvidersList =
   /*@__PURE__*/ S.Array(
     VirtualWanSecurityProvider,
@@ -86845,7 +86887,7 @@ export const Usage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Usage" }) as any as S.Schema<Usage>;
 
 /** The Usage items on this page */
-export type UsagesListResultValueList = ReadonlyArray<Usage>;
+export type UsagesListResultValueList = Array<Usage>;
 export const UsagesListResultValueList = /*@__PURE__*/ S.Array(
   Usage,
 ) as any as S.Schema<UsagesListResultValueList>;
@@ -86890,7 +86932,9 @@ export const VerifierWorkspacePropertiesProvisioningState =
 export interface VerifierWorkspaceProperties {
   description?: string;
   /** Provisioning states of a resource. */
-  provisioningState?: VerifierWorkspacePropertiesProvisioningState;
+  provisioningState?:
+    | VerifierWorkspacePropertiesProvisioningState
+    | (string & {});
 }
 export const VerifierWorkspaceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -87316,8 +87360,7 @@ export const VerifierWorkspace = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VerifierWorkspace>;
 
 /** The VerifierWorkspace items on this page */
-export type VerifierWorkspaceListResultValueList =
-  ReadonlyArray<VerifierWorkspace>;
+export type VerifierWorkspaceListResultValueList = Array<VerifierWorkspace>;
 export const VerifierWorkspaceListResultValueList = /*@__PURE__*/ S.Array(
   VerifierWorkspace,
 ) as any as S.Schema<VerifierWorkspaceListResultValueList>;
@@ -87496,7 +87539,7 @@ export const SwapResourcePropertiesSlotType = /*@__PURE__*/ S.String;
 /** Swap resource properties */
 export interface SwapResourceProperties {
   /** Specifies slot info on a cloud service */
-  slotType?: SwapResourcePropertiesSlotType;
+  slotType?: SwapResourcePropertiesSlotType | (string & {});
 }
 export const SwapResourceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -87638,7 +87681,7 @@ export const SwapResource = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SwapResource" }) as any as S.Schema<SwapResource>;
 
-export type SwapResourceListResultValueList = ReadonlyArray<SwapResource>;
+export type SwapResourceListResultValueList = Array<SwapResource>;
 export const SwapResourceListResultValueList = /*@__PURE__*/ S.Array(
   SwapResource,
 ) as any as S.Schema<SwapResourceListResultValueList>;
@@ -87705,7 +87748,9 @@ export interface VirtualApplianceSiteProperties {
   /** Office 365 Policy. */
   o365Policy?: Office365PolicyProperties;
   /** Provisioning states of a resource. */
-  provisioningState?: VirtualApplianceSitePropertiesProvisioningState;
+  provisioningState?:
+    | VirtualApplianceSitePropertiesProvisioningState
+    | (string & {});
 }
 export const VirtualApplianceSiteProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -87921,7 +87966,7 @@ export const VirtualApplianceSite = /*@__PURE__*/ S.suspend(() =>
 
 /** The VirtualApplianceSite items on this page */
 export type NetworkVirtualApplianceSiteListResultValueList =
-  ReadonlyArray<VirtualApplianceSite>;
+  Array<VirtualApplianceSite>;
 export const NetworkVirtualApplianceSiteListResultValueList =
   /*@__PURE__*/ S.Array(
     VirtualApplianceSite,
@@ -87977,7 +88022,7 @@ export const VirtualApplianceSkusGetResponseTagsMap = /*@__PURE__*/ S.Record(
 
 /** Available Network Virtual Appliance versions. */
 export type NetworkVirtualApplianceSkuPropertiesFormatAvailableVersionsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const NetworkVirtualApplianceSkuPropertiesFormatAvailableVersionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -88001,7 +88046,7 @@ export const NetworkVirtualApplianceSkuInstances = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of scale units available. */
 export type NetworkVirtualApplianceSkuPropertiesFormatAvailableScaleUnitsList =
-  ReadonlyArray<NetworkVirtualApplianceSkuInstances>;
+  Array<NetworkVirtualApplianceSkuInstances>;
 export const NetworkVirtualApplianceSkuPropertiesFormatAvailableScaleUnitsList =
   /*@__PURE__*/ S.Array(
     NetworkVirtualApplianceSkuInstances,
@@ -88122,7 +88167,7 @@ export const NetworkVirtualApplianceSku = /*@__PURE__*/ S.suspend(() =>
 
 /** The NetworkVirtualApplianceSku items on this page */
 export type NetworkVirtualApplianceSkuListResultValueList =
-  ReadonlyArray<NetworkVirtualApplianceSku>;
+  Array<NetworkVirtualApplianceSku>;
 export const NetworkVirtualApplianceSkuListResultValueList =
   /*@__PURE__*/ S.Array(
     NetworkVirtualApplianceSku,
@@ -88475,8 +88520,7 @@ export const BgpConnection = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BgpConnection" }) as any as S.Schema<BgpConnection>;
 
 /** The BgpConnection items on this page */
-export type ListVirtualHubBgpConnectionResultsValueList =
-  ReadonlyArray<BgpConnection>;
+export type ListVirtualHubBgpConnectionResultsValueList = Array<BgpConnection>;
 export const ListVirtualHubBgpConnectionResultsValueList =
   /*@__PURE__*/ S.Array(
     BgpConnection,
@@ -88557,7 +88601,7 @@ export const PeerRoute = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PeerRoute" }) as any as S.Schema<PeerRoute>;
 
 export type VirtualHubBgpConnectionsListAdvertisedRoutesResponseBodyValueList =
-  ReadonlyArray<PeerRoute>;
+  Array<PeerRoute>;
 export const VirtualHubBgpConnectionsListAdvertisedRoutesResponseBodyValueList =
   /*@__PURE__*/ S.Array(
     PeerRoute,
@@ -88615,7 +88659,7 @@ export const VirtualHubBgpConnectionsListLearnedRoutesRequest =
   }) as any as S.Schema<VirtualHubBgpConnectionsListLearnedRoutesRequest>;
 
 export type VirtualHubBgpConnectionsListLearnedRoutesResponseBodyValueList =
-  ReadonlyArray<PeerRoute>;
+  Array<PeerRoute>;
 export const VirtualHubBgpConnectionsListLearnedRoutesResponseBodyValueList =
   /*@__PURE__*/ S.Array(
     PeerRoute,
@@ -88700,7 +88744,7 @@ export const CommonRouteInput_7 = /*@__PURE__*/ S.suspend(() =>
 
 /** Collection of routes contained within a route table. */
 export type CommonRouteTablePropertiesFormatInputRoutesList_7 =
-  ReadonlyArray<CommonRouteInput_7>;
+  Array<CommonRouteInput_7>;
 export const CommonRouteTablePropertiesFormatInputRoutesList_7 =
   /*@__PURE__*/ S.Array(
     CommonRouteInput_7,
@@ -88761,7 +88805,7 @@ export const CommonRouteTableInput_7 = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of service resources. */
 export type CommonServiceEndpointPolicyDefinitionPropertiesFormatServiceResourcesList_8 =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CommonServiceEndpointPolicyDefinitionPropertiesFormatServiceResourcesList_8 =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -88776,7 +88820,9 @@ export interface CommonServiceEndpointPolicyDefinitionPropertiesFormat_8 {
   /** A list of service resources. */
   serviceResources?: CommonServiceEndpointPolicyDefinitionPropertiesFormatServiceResourcesList_8;
   /** Provisioning states of a resource. */
-  provisioningState?: CommonServiceEndpointPolicyDefinitionPropertiesFormatProvisioningState;
+  provisioningState?:
+    | CommonServiceEndpointPolicyDefinitionPropertiesFormatProvisioningState
+    | (string & {});
 }
 export const CommonServiceEndpointPolicyDefinitionPropertiesFormat_8 =
   /*@__PURE__*/ S.suspend(() =>
@@ -88818,7 +88864,7 @@ export const CommonServiceEndpointPolicyDefinitionInput_8 =
 
 /** A collection of service endpoint policy definitions of the service endpoint policy. */
 export type CommonServiceEndpointPolicyPropertiesFormatInputServiceEndpointPolicyDefinitionsList_8 =
-  ReadonlyArray<CommonServiceEndpointPolicyDefinitionInput_8>;
+  Array<CommonServiceEndpointPolicyDefinitionInput_8>;
 export const CommonServiceEndpointPolicyPropertiesFormatInputServiceEndpointPolicyDefinitionsList_8 =
   /*@__PURE__*/ S.Array(
     CommonServiceEndpointPolicyDefinitionInput_8,
@@ -88885,7 +88931,7 @@ export const CommonSubnetPropertiesFormatInputServiceEndpointPoliciesItem_7 =
 
 /** An array of service endpoint policies. */
 export type CommonSubnetPropertiesFormatInputServiceEndpointPoliciesList_7 =
-  ReadonlyArray<CommonSubnetPropertiesFormatInputServiceEndpointPoliciesItem_7>;
+  Array<CommonSubnetPropertiesFormatInputServiceEndpointPoliciesItem_7>;
 export const CommonSubnetPropertiesFormatInputServiceEndpointPoliciesList_7 =
   /*@__PURE__*/ S.Array(
     CommonSubnetPropertiesFormatInputServiceEndpointPoliciesItem_7,
@@ -89134,7 +89180,7 @@ export const HubIPConfigurationPropertiesFormatInputPublicIPAddressExtendedLocat
 
 /** A list of availability zones denoting the IP allocated for the resource needs to come from. */
 export type HubIPConfigurationPropertiesFormatInputPublicIPAddressZonesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const HubIPConfigurationPropertiesFormatInputPublicIPAddressZonesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -89272,7 +89318,7 @@ export const HubIPConfigurationPropertiesFormatPrivateIPAllocationMethod =
 
 /** The CIDR or source IP ranges. */
 export type CommonSecurityRulePropertiesFormatSourceAddressPrefixesList_9 =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CommonSecurityRulePropertiesFormatSourceAddressPrefixesList_9 =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -89280,7 +89326,7 @@ export const CommonSecurityRulePropertiesFormatSourceAddressPrefixesList_9 =
 
 /** The application security group specified as source. */
 export type CommonSecurityRulePropertiesFormatSourceApplicationSecurityGroupsList_9 =
-  ReadonlyArray<CommonApplicationSecurityGroup>;
+  Array<CommonApplicationSecurityGroup>;
 export const CommonSecurityRulePropertiesFormatSourceApplicationSecurityGroupsList_9 =
   /*@__PURE__*/ S.Array(
     CommonApplicationSecurityGroup,
@@ -89288,7 +89334,7 @@ export const CommonSecurityRulePropertiesFormatSourceApplicationSecurityGroupsLi
 
 /** The destination address prefixes. CIDR or destination IP ranges. */
 export type CommonSecurityRulePropertiesFormatDestinationAddressPrefixesList_9 =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CommonSecurityRulePropertiesFormatDestinationAddressPrefixesList_9 =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -89296,7 +89342,7 @@ export const CommonSecurityRulePropertiesFormatDestinationAddressPrefixesList_9 
 
 /** The application security group specified as destination. */
 export type CommonSecurityRulePropertiesFormatDestinationApplicationSecurityGroupsList_9 =
-  ReadonlyArray<CommonApplicationSecurityGroup>;
+  Array<CommonApplicationSecurityGroup>;
 export const CommonSecurityRulePropertiesFormatDestinationApplicationSecurityGroupsList_9 =
   /*@__PURE__*/ S.Array(
     CommonApplicationSecurityGroup,
@@ -89304,7 +89350,7 @@ export const CommonSecurityRulePropertiesFormatDestinationApplicationSecurityGro
 
 /** The source port ranges. */
 export type CommonSecurityRulePropertiesFormatSourcePortRangesList_9 =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CommonSecurityRulePropertiesFormatSourcePortRangesList_9 =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -89312,7 +89358,7 @@ export const CommonSecurityRulePropertiesFormatSourcePortRangesList_9 =
 
 /** The destination port ranges. */
 export type CommonSecurityRulePropertiesFormatDestinationPortRangesList_9 =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CommonSecurityRulePropertiesFormatDestinationPortRangesList_9 =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -89418,7 +89464,7 @@ export const CommonSecurityRule_8 = /*@__PURE__*/ S.suspend(() =>
 
 /** A collection of security rules of the network security group. */
 export type CommonNetworkSecurityGroupPropertiesFormatSecurityRulesList_8 =
-  ReadonlyArray<CommonSecurityRule_8>;
+  Array<CommonSecurityRule_8>;
 export const CommonNetworkSecurityGroupPropertiesFormatSecurityRulesList_8 =
   /*@__PURE__*/ S.Array(
     CommonSecurityRule_8,
@@ -89426,7 +89472,7 @@ export const CommonNetworkSecurityGroupPropertiesFormatSecurityRulesList_8 =
 
 /** The default security rules of network security group. */
 export type CommonNetworkSecurityGroupPropertiesFormatDefaultSecurityRulesList_8 =
-  ReadonlyArray<CommonSecurityRule_8>;
+  Array<CommonSecurityRule_8>;
 export const CommonNetworkSecurityGroupPropertiesFormatDefaultSecurityRulesList_8 =
   /*@__PURE__*/ S.Array(
     CommonSecurityRule_8,
@@ -89471,7 +89517,7 @@ export const CommonSubnet_8 = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of references to the network interfaces created for this private endpoint. */
 export type CommonPrivateEndpointPropertiesNetworkInterfacesList_8 =
-  ReadonlyArray<CommonNetworkInterface_8>;
+  Array<CommonNetworkInterface_8>;
 export const CommonPrivateEndpointPropertiesNetworkInterfacesList_8 =
   /*@__PURE__*/ S.Array(
     S.suspend(() => CommonNetworkInterface_8),
@@ -89657,7 +89703,7 @@ export const CommonVirtualNetworkTapPropertiesFormatNetworkInterfaceTapConfigura
 
 /** Specifies the list of resource IDs for the network interface IP configuration that needs to be tapped. */
 export type CommonVirtualNetworkTapPropertiesFormatNetworkInterfaceTapConfigurationsList_8 =
-  ReadonlyArray<CommonVirtualNetworkTapPropertiesFormatNetworkInterfaceTapConfigurationsItem_8>;
+  Array<CommonVirtualNetworkTapPropertiesFormatNetworkInterfaceTapConfigurationsItem_8>;
 export const CommonVirtualNetworkTapPropertiesFormatNetworkInterfaceTapConfigurationsList_8 =
   /*@__PURE__*/ S.Array(
     CommonVirtualNetworkTapPropertiesFormatNetworkInterfaceTapConfigurationsItem_8,
@@ -89747,7 +89793,7 @@ export const CommonPublicIPAddressExtendedLocation_4 = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CommonPublicIPAddressExtendedLocation_4>;
 
 /** A list of availability zones denoting the IP allocated for the resource needs to come from. */
-export type CommonPublicIPAddressZonesList_4 = ReadonlyArray<unknown>;
+export type CommonPublicIPAddressZonesList_4 = Array<unknown>;
 export const CommonPublicIPAddressZonesList_4 = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<CommonPublicIPAddressZonesList_4>;
@@ -89848,7 +89894,7 @@ export const CommonIPConfiguration_8 = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of tags associated with the public IP address. */
 export type CommonPublicIPAddressPropertiesFormatIpTagsList_7 =
-  ReadonlyArray<CommonIpTag>;
+  Array<CommonIpTag>;
 export const CommonPublicIPAddressPropertiesFormatIpTagsList_7 =
   /*@__PURE__*/ S.Array(
     CommonIpTag,
@@ -89884,7 +89930,7 @@ export const CommonNatGatewayPropertiesFormatPublicIpAddressesItem_6 =
 
 /** An array of public ip addresses V4 associated with the nat gateway resource. */
 export type CommonNatGatewayPropertiesFormatPublicIpAddressesList_6 =
-  ReadonlyArray<CommonNatGatewayPropertiesFormatPublicIpAddressesItem_6>;
+  Array<CommonNatGatewayPropertiesFormatPublicIpAddressesItem_6>;
 export const CommonNatGatewayPropertiesFormatPublicIpAddressesList_6 =
   /*@__PURE__*/ S.Array(
     CommonNatGatewayPropertiesFormatPublicIpAddressesItem_6,
@@ -89906,7 +89952,7 @@ export const CommonNatGatewayPropertiesFormatPublicIpAddressesV6Item_6 =
 
 /** An array of public ip addresses V6 associated with the nat gateway resource. */
 export type CommonNatGatewayPropertiesFormatPublicIpAddressesV6List_6 =
-  ReadonlyArray<CommonNatGatewayPropertiesFormatPublicIpAddressesV6Item_6>;
+  Array<CommonNatGatewayPropertiesFormatPublicIpAddressesV6Item_6>;
 export const CommonNatGatewayPropertiesFormatPublicIpAddressesV6List_6 =
   /*@__PURE__*/ S.Array(
     CommonNatGatewayPropertiesFormatPublicIpAddressesV6Item_6,
@@ -89928,7 +89974,7 @@ export const CommonNatGatewayPropertiesFormatPublicIpPrefixesItem_6 =
 
 /** An array of public ip prefixes V4 associated with the nat gateway resource. */
 export type CommonNatGatewayPropertiesFormatPublicIpPrefixesList_6 =
-  ReadonlyArray<CommonNatGatewayPropertiesFormatPublicIpPrefixesItem_6>;
+  Array<CommonNatGatewayPropertiesFormatPublicIpPrefixesItem_6>;
 export const CommonNatGatewayPropertiesFormatPublicIpPrefixesList_6 =
   /*@__PURE__*/ S.Array(
     CommonNatGatewayPropertiesFormatPublicIpPrefixesItem_6,
@@ -89950,7 +89996,7 @@ export const CommonNatGatewayPropertiesFormatPublicIpPrefixesV6Item_6 =
 
 /** An array of public ip prefixes V6 associated with the nat gateway resource. */
 export type CommonNatGatewayPropertiesFormatPublicIpPrefixesV6List_6 =
-  ReadonlyArray<CommonNatGatewayPropertiesFormatPublicIpPrefixesV6Item_6>;
+  Array<CommonNatGatewayPropertiesFormatPublicIpPrefixesV6Item_6>;
 export const CommonNatGatewayPropertiesFormatPublicIpPrefixesV6List_6 =
   /*@__PURE__*/ S.Array(
     CommonNatGatewayPropertiesFormatPublicIpPrefixesV6Item_6,
@@ -89972,7 +90018,7 @@ export const CommonNatGatewayPropertiesFormatSubnetsItem_6 =
 
 /** An array of references to the subnets using this nat gateway resource. */
 export type CommonNatGatewayPropertiesFormatSubnetsList_6 =
-  ReadonlyArray<CommonNatGatewayPropertiesFormatSubnetsItem_6>;
+  Array<CommonNatGatewayPropertiesFormatSubnetsItem_6>;
 export const CommonNatGatewayPropertiesFormatSubnetsList_6 =
   /*@__PURE__*/ S.Array(
     CommonNatGatewayPropertiesFormatSubnetsItem_6,
@@ -90367,7 +90413,7 @@ export const CommonNetworkInterfaceIPConfigurationPropertiesFormatVirtualNetwork
 
 /** The reference to Virtual Network Taps. */
 export type CommonNetworkInterfaceIPConfigurationPropertiesFormatVirtualNetworkTapsList_8 =
-  ReadonlyArray<CommonNetworkInterfaceIPConfigurationPropertiesFormatVirtualNetworkTapsItem_8>;
+  Array<CommonNetworkInterfaceIPConfigurationPropertiesFormatVirtualNetworkTapsItem_8>;
 export const CommonNetworkInterfaceIPConfigurationPropertiesFormatVirtualNetworkTapsList_8 =
   /*@__PURE__*/ S.Array(
     CommonNetworkInterfaceIPConfigurationPropertiesFormatVirtualNetworkTapsItem_8,
@@ -90406,7 +90452,7 @@ export const CommonApplicationGatewayBackendAddressPoolPropertiesFormatBackendIP
 
 /** Collection of references to IPs defined in network interfaces. */
 export type CommonApplicationGatewayBackendAddressPoolPropertiesFormatBackendIPConfigurationsList_8 =
-  ReadonlyArray<CommonApplicationGatewayBackendAddressPoolPropertiesFormatBackendIPConfigurationsItem_8>;
+  Array<CommonApplicationGatewayBackendAddressPoolPropertiesFormatBackendIPConfigurationsItem_8>;
 export const CommonApplicationGatewayBackendAddressPoolPropertiesFormatBackendIPConfigurationsList_8 =
   /*@__PURE__*/ S.Array(
     CommonApplicationGatewayBackendAddressPoolPropertiesFormatBackendIPConfigurationsItem_8,
@@ -90469,7 +90515,7 @@ export const CommonNetworkInterfaceIPConfigurationPropertiesFormatApplicationGat
 
 /** The reference to ApplicationGatewayBackendAddressPool resource. */
 export type CommonNetworkInterfaceIPConfigurationPropertiesFormatApplicationGatewayBackendAddressPoolsList_8 =
-  ReadonlyArray<CommonNetworkInterfaceIPConfigurationPropertiesFormatApplicationGatewayBackendAddressPoolsItem_8>;
+  Array<CommonNetworkInterfaceIPConfigurationPropertiesFormatApplicationGatewayBackendAddressPoolsItem_8>;
 export const CommonNetworkInterfaceIPConfigurationPropertiesFormatApplicationGatewayBackendAddressPoolsList_8 =
   /*@__PURE__*/ S.Array(
     CommonNetworkInterfaceIPConfigurationPropertiesFormatApplicationGatewayBackendAddressPoolsItem_8,
@@ -90508,7 +90554,7 @@ export const CommonBackendAddressPoolPropertiesFormatBackendIPConfigurationsItem
 
 /** An array of references to IP addresses defined in network interfaces. */
 export type CommonBackendAddressPoolPropertiesFormatBackendIPConfigurationsList_8 =
-  ReadonlyArray<CommonBackendAddressPoolPropertiesFormatBackendIPConfigurationsItem_8>;
+  Array<CommonBackendAddressPoolPropertiesFormatBackendIPConfigurationsItem_8>;
 export const CommonBackendAddressPoolPropertiesFormatBackendIPConfigurationsList_8 =
   /*@__PURE__*/ S.Array(
     CommonBackendAddressPoolPropertiesFormatBackendIPConfigurationsItem_8,
@@ -90608,7 +90654,7 @@ export const CommonNetworkInterfaceIPConfigurationPropertiesFormatLoadBalancerBa
 
 /** The reference to LoadBalancerBackendAddressPool resource. */
 export type CommonNetworkInterfaceIPConfigurationPropertiesFormatLoadBalancerBackendAddressPoolsList_8 =
-  ReadonlyArray<CommonNetworkInterfaceIPConfigurationPropertiesFormatLoadBalancerBackendAddressPoolsItem_8>;
+  Array<CommonNetworkInterfaceIPConfigurationPropertiesFormatLoadBalancerBackendAddressPoolsItem_8>;
 export const CommonNetworkInterfaceIPConfigurationPropertiesFormatLoadBalancerBackendAddressPoolsList_8 =
   /*@__PURE__*/ S.Array(
     CommonNetworkInterfaceIPConfigurationPropertiesFormatLoadBalancerBackendAddressPoolsItem_8,
@@ -90728,7 +90774,7 @@ export const CommonNetworkInterfaceIPConfigurationPropertiesFormatLoadBalancerIn
 
 /** A list of references of LoadBalancerInboundNatRules. */
 export type CommonNetworkInterfaceIPConfigurationPropertiesFormatLoadBalancerInboundNatRulesList_8 =
-  ReadonlyArray<CommonNetworkInterfaceIPConfigurationPropertiesFormatLoadBalancerInboundNatRulesItem_8>;
+  Array<CommonNetworkInterfaceIPConfigurationPropertiesFormatLoadBalancerInboundNatRulesItem_8>;
 export const CommonNetworkInterfaceIPConfigurationPropertiesFormatLoadBalancerInboundNatRulesList_8 =
   /*@__PURE__*/ S.Array(
     CommonNetworkInterfaceIPConfigurationPropertiesFormatLoadBalancerInboundNatRulesItem_8,
@@ -90840,7 +90886,7 @@ export const CommonNetworkInterfaceIPConfiguration_7 = /*@__PURE__*/ S.suspend(
 
 /** A list of IPConfigurations of the network interface. */
 export type CommonNetworkInterfacePropertiesFormatIpConfigurationsList_8 =
-  ReadonlyArray<CommonNetworkInterfaceIPConfiguration_7>;
+  Array<CommonNetworkInterfaceIPConfiguration_7>;
 export const CommonNetworkInterfacePropertiesFormatIpConfigurationsList_8 =
   /*@__PURE__*/ S.Array(
     CommonNetworkInterfaceIPConfiguration_7,
@@ -90876,7 +90922,7 @@ export const CommonNetworkInterfaceTapConfiguration_7 = /*@__PURE__*/ S.suspend(
 
 /** A list of TapConfigurations of the network interface. */
 export type CommonNetworkInterfacePropertiesFormatTapConfigurationsList_8 =
-  ReadonlyArray<CommonNetworkInterfaceTapConfiguration_7>;
+  Array<CommonNetworkInterfaceTapConfiguration_7>;
 export const CommonNetworkInterfacePropertiesFormatTapConfigurationsList_8 =
   /*@__PURE__*/ S.Array(
     CommonNetworkInterfaceTapConfiguration_7,
@@ -90884,7 +90930,7 @@ export const CommonNetworkInterfacePropertiesFormatTapConfigurationsList_8 =
 
 /** A list of references to linked BareMetal resources. */
 export type CommonNetworkInterfacePropertiesFormatHostedWorkloadsList_8 =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CommonNetworkInterfacePropertiesFormatHostedWorkloadsList_8 =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -90938,7 +90984,7 @@ export const CommonPrivateLinkServicePropertiesLoadBalancerFrontendIpConfigurati
 
 /** An array of references to the load balancer IP configurations. */
 export type CommonPrivateLinkServicePropertiesLoadBalancerFrontendIpConfigurationsList_7 =
-  ReadonlyArray<CommonPrivateLinkServicePropertiesLoadBalancerFrontendIpConfigurationsItem_7>;
+  Array<CommonPrivateLinkServicePropertiesLoadBalancerFrontendIpConfigurationsItem_7>;
 export const CommonPrivateLinkServicePropertiesLoadBalancerFrontendIpConfigurationsList_7 =
   /*@__PURE__*/ S.Array(
     CommonPrivateLinkServicePropertiesLoadBalancerFrontendIpConfigurationsItem_7,
@@ -91009,7 +91055,7 @@ export const CommonPrivateLinkServiceIpConfiguration_7 =
 
 /** An array of private link service IP configurations. */
 export type CommonPrivateLinkServicePropertiesIpConfigurationsList_7 =
-  ReadonlyArray<CommonPrivateLinkServiceIpConfiguration_7>;
+  Array<CommonPrivateLinkServiceIpConfiguration_7>;
 export const CommonPrivateLinkServicePropertiesIpConfigurationsList_7 =
   /*@__PURE__*/ S.Array(
     CommonPrivateLinkServiceIpConfiguration_7,
@@ -91017,7 +91063,7 @@ export const CommonPrivateLinkServicePropertiesIpConfigurationsList_7 =
 
 /** An array of references to the network interfaces created for this private link service. */
 export type CommonPrivateLinkServicePropertiesNetworkInterfacesList_7 =
-  ReadonlyArray<CommonNetworkInterface_8>;
+  Array<CommonNetworkInterface_8>;
 export const CommonPrivateLinkServicePropertiesNetworkInterfacesList_7 =
   /*@__PURE__*/ S.Array(
     S.suspend(() => CommonNetworkInterface_8),
@@ -91080,7 +91126,7 @@ export const CommonPrivateEndpointConnection_7 = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of list about connections to the private endpoint. */
 export type CommonPrivateLinkServicePropertiesPrivateEndpointConnectionsList_7 =
-  ReadonlyArray<CommonPrivateEndpointConnection_7>;
+  Array<CommonPrivateEndpointConnection_7>;
 export const CommonPrivateLinkServicePropertiesPrivateEndpointConnectionsList_7 =
   /*@__PURE__*/ S.Array(
     CommonPrivateEndpointConnection_7,
@@ -91313,7 +91359,7 @@ export const CommonNetworkInterface_8 = /*@__PURE__*/ S.suspend(() =>
 
 /** A collection of references to network interfaces. */
 export type CommonNetworkSecurityGroupPropertiesFormatNetworkInterfacesList_8 =
-  ReadonlyArray<CommonNetworkInterface_8>;
+  Array<CommonNetworkInterface_8>;
 export const CommonNetworkSecurityGroupPropertiesFormatNetworkInterfacesList_8 =
   /*@__PURE__*/ S.Array(
     CommonNetworkInterface_8,
@@ -91321,7 +91367,7 @@ export const CommonNetworkSecurityGroupPropertiesFormatNetworkInterfacesList_8 =
 
 /** A collection of references to subnets. */
 export type CommonNetworkSecurityGroupPropertiesFormatSubnetsList_8 =
-  ReadonlyArray<CommonSubnet_8>;
+  Array<CommonSubnet_8>;
 export const CommonNetworkSecurityGroupPropertiesFormatSubnetsList_8 =
   /*@__PURE__*/ S.Array(
     CommonSubnet_8,
@@ -91510,7 +91556,7 @@ export const CommonNetworkSecurityGroupPropertiesFormatFlowLogsItem_8 =
 
 /** A collection of references to flow log resources. */
 export type CommonNetworkSecurityGroupPropertiesFormatFlowLogsList_8 =
-  ReadonlyArray<CommonNetworkSecurityGroupPropertiesFormatFlowLogsItem_8>;
+  Array<CommonNetworkSecurityGroupPropertiesFormatFlowLogsItem_8>;
 export const CommonNetworkSecurityGroupPropertiesFormatFlowLogsList_8 =
   /*@__PURE__*/ S.Array(
     CommonNetworkSecurityGroupPropertiesFormatFlowLogsItem_8,
@@ -91646,8 +91692,7 @@ export const CommonRoute_8 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CommonRoute_8" }) as any as S.Schema<CommonRoute_8>;
 
 /** Collection of routes contained within a route table. */
-export type CommonRouteTablePropertiesFormatRoutesList_8 =
-  ReadonlyArray<CommonRoute_8>;
+export type CommonRouteTablePropertiesFormatRoutesList_8 = Array<CommonRoute_8>;
 export const CommonRouteTablePropertiesFormatRoutesList_8 =
   /*@__PURE__*/ S.Array(
     CommonRoute_8,
@@ -91655,7 +91700,7 @@ export const CommonRouteTablePropertiesFormatRoutesList_8 =
 
 /** A collection of references to subnets. */
 export type CommonRouteTablePropertiesFormatSubnetsList_8 =
-  ReadonlyArray<CommonSubnet_8>;
+  Array<CommonSubnet_8>;
 export const CommonRouteTablePropertiesFormatSubnetsList_8 =
   /*@__PURE__*/ S.Array(
     CommonSubnet_8,
@@ -91754,7 +91799,7 @@ export const CommonServiceEndpointPolicyDefinition_8 = /*@__PURE__*/ S.suspend(
 
 /** A collection of service endpoint policy definitions of the service endpoint policy. */
 export type CommonServiceEndpointPolicyPropertiesFormatServiceEndpointPolicyDefinitionsList_8 =
-  ReadonlyArray<CommonServiceEndpointPolicyDefinition_8>;
+  Array<CommonServiceEndpointPolicyDefinition_8>;
 export const CommonServiceEndpointPolicyPropertiesFormatServiceEndpointPolicyDefinitionsList_8 =
   /*@__PURE__*/ S.Array(
     CommonServiceEndpointPolicyDefinition_8,
@@ -91788,7 +91833,7 @@ export const CommonServiceEndpointPolicyPropertiesFormatSubnetsItem_8 =
 
 /** A collection of references to subnets. */
 export type CommonServiceEndpointPolicyPropertiesFormatSubnetsList_8 =
-  ReadonlyArray<CommonServiceEndpointPolicyPropertiesFormatSubnetsItem_8>;
+  Array<CommonServiceEndpointPolicyPropertiesFormatSubnetsItem_8>;
 export const CommonServiceEndpointPolicyPropertiesFormatSubnetsList_8 =
   /*@__PURE__*/ S.Array(
     CommonServiceEndpointPolicyPropertiesFormatSubnetsItem_8,
@@ -91870,7 +91915,7 @@ export const CommonSubnetPropertiesFormatServiceEndpointPoliciesItem_8 =
 
 /** An array of service endpoint policies. */
 export type CommonSubnetPropertiesFormatServiceEndpointPoliciesList_8 =
-  ReadonlyArray<CommonSubnetPropertiesFormatServiceEndpointPoliciesItem_8>;
+  Array<CommonSubnetPropertiesFormatServiceEndpointPoliciesItem_8>;
 export const CommonSubnetPropertiesFormatServiceEndpointPoliciesList_8 =
   /*@__PURE__*/ S.Array(
     CommonSubnetPropertiesFormatServiceEndpointPoliciesItem_8,
@@ -91878,7 +91923,7 @@ export const CommonSubnetPropertiesFormatServiceEndpointPoliciesList_8 =
 
 /** An array of references to private endpoints. */
 export type CommonSubnetPropertiesFormatPrivateEndpointsList_8 =
-  ReadonlyArray<CommonPrivateEndpoint_7>;
+  Array<CommonPrivateEndpoint_7>;
 export const CommonSubnetPropertiesFormatPrivateEndpointsList_8 =
   /*@__PURE__*/ S.Array(
     CommonPrivateEndpoint_7,
@@ -91886,7 +91931,7 @@ export const CommonSubnetPropertiesFormatPrivateEndpointsList_8 =
 
 /** An array of references to the network interface IP configurations using subnet. */
 export type CommonSubnetPropertiesFormatIpConfigurationsList_8 =
-  ReadonlyArray<CommonIPConfiguration_8>;
+  Array<CommonIPConfiguration_8>;
 export const CommonSubnetPropertiesFormatIpConfigurationsList_8 =
   /*@__PURE__*/ S.Array(
     CommonIPConfiguration_8,
@@ -91938,7 +91983,7 @@ export const CommonIPConfigurationProfile_8 = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of IP configuration profiles which reference this subnet. */
 export type CommonSubnetPropertiesFormatIpConfigurationProfilesList_8 =
-  ReadonlyArray<CommonIPConfigurationProfile_8>;
+  Array<CommonIPConfigurationProfile_8>;
 export const CommonSubnetPropertiesFormatIpConfigurationProfilesList_8 =
   /*@__PURE__*/ S.Array(
     CommonIPConfigurationProfile_8,
@@ -92105,7 +92150,7 @@ export const HubIPConfigurationPropertiesFormatPublicIPAddressExtendedLocation =
 
 /** A list of availability zones denoting the IP allocated for the resource needs to come from. */
 export type HubIPConfigurationPropertiesFormatPublicIPAddressZonesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const HubIPConfigurationPropertiesFormatPublicIPAddressZonesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -92367,7 +92412,7 @@ export const HubIpConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** The HubIpConfiguration items on this page */
 export type ListVirtualHubIpConfigurationResultsValueList =
-  ReadonlyArray<HubIpConfiguration>;
+  Array<HubIpConfiguration>;
 export const ListVirtualHubIpConfigurationResultsValueList =
   /*@__PURE__*/ S.Array(
     HubIpConfiguration,
@@ -92391,13 +92436,13 @@ export const ListVirtualHubIpConfigurationResults = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListVirtualHubIpConfigurationResults>;
 
 /** List of all destinations. */
-export type VirtualHubRouteV2DestinationsList = ReadonlyArray<string>;
+export type VirtualHubRouteV2DestinationsList = Array<string>;
 export const VirtualHubRouteV2DestinationsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<VirtualHubRouteV2DestinationsList>;
 
 /** NextHops ip address. */
-export type VirtualHubRouteV2NextHopsList = ReadonlyArray<string>;
+export type VirtualHubRouteV2NextHopsList = Array<string>;
 export const VirtualHubRouteV2NextHopsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<VirtualHubRouteV2NextHopsList>;
@@ -92426,14 +92471,14 @@ export const VirtualHubRouteV2 = /*@__PURE__*/ S.suspend(() =>
 
 /** List of all routes. */
 export type VirtualHubRouteTableV2PropertiesRoutesList =
-  ReadonlyArray<VirtualHubRouteV2>;
+  Array<VirtualHubRouteV2>;
 export const VirtualHubRouteTableV2PropertiesRoutesList = /*@__PURE__*/ S.Array(
   VirtualHubRouteV2,
 ) as any as S.Schema<VirtualHubRouteTableV2PropertiesRoutesList>;
 
 /** List of all connections attached to this route table v2. */
 export type VirtualHubRouteTableV2PropertiesAttachedConnectionsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const VirtualHubRouteTableV2PropertiesAttachedConnectionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -92457,7 +92502,9 @@ export interface VirtualHubRouteTableV2Properties {
   /** List of all connections attached to this route table v2. */
   attachedConnections?: VirtualHubRouteTableV2PropertiesAttachedConnectionsList;
   /** Provisioning states of a resource. */
-  provisioningState?: VirtualHubRouteTableV2PropertiesProvisioningState;
+  provisioningState?:
+    | VirtualHubRouteTableV2PropertiesProvisioningState
+    | (string & {});
 }
 export const VirtualHubRouteTableV2Properties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -92667,7 +92714,7 @@ export const VirtualHubRouteTableV2 = /*@__PURE__*/ S.suspend(() =>
 
 /** The VirtualHubRouteTableV2 items on this page */
 export type ListVirtualHubRouteTableV2sResultValueList =
-  ReadonlyArray<VirtualHubRouteTableV2>;
+  Array<VirtualHubRouteTableV2>;
 export const ListVirtualHubRouteTableV2sResultValueList = /*@__PURE__*/ S.Array(
   VirtualHubRouteTableV2,
 ) as any as S.Schema<ListVirtualHubRouteTableV2sResultValueList>;
@@ -92780,7 +92827,7 @@ export const VirtualHubPropertiesInputSecurityPartnerProvider =
   }) as any as S.Schema<VirtualHubPropertiesInputSecurityPartnerProvider>;
 
 /** List of all addressPrefixes. */
-export type VirtualHubRouteAddressPrefixesList = ReadonlyArray<string>;
+export type VirtualHubRouteAddressPrefixesList = Array<string>;
 export const VirtualHubRouteAddressPrefixesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<VirtualHubRouteAddressPrefixesList>;
@@ -92802,7 +92849,7 @@ export const VirtualHubRoute = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VirtualHubRoute>;
 
 /** List of all routes. */
-export type VirtualHubRouteTableRoutesList = ReadonlyArray<VirtualHubRoute>;
+export type VirtualHubRouteTableRoutesList = Array<VirtualHubRoute>;
 export const VirtualHubRouteTableRoutesList = /*@__PURE__*/ S.Array(
   VirtualHubRoute,
 ) as any as S.Schema<VirtualHubRouteTableRoutesList>;
@@ -92852,7 +92899,7 @@ export const VirtualHubRouteTableV2Input = /*@__PURE__*/ S.suspend(() =>
 
 /** List of all virtual hub route table v2s associated with this VirtualHub. */
 export type VirtualHubPropertiesInputVirtualHubRouteTableV2sList =
-  ReadonlyArray<VirtualHubRouteTableV2Input>;
+  Array<VirtualHubRouteTableV2Input>;
 export const VirtualHubPropertiesInputVirtualHubRouteTableV2sList =
   /*@__PURE__*/ S.Array(
     VirtualHubRouteTableV2Input,
@@ -92867,8 +92914,7 @@ export type VirtualHubPropertiesInputRoutingState =
 export const VirtualHubPropertiesInputRoutingState = /*@__PURE__*/ S.String;
 
 /** VirtualRouter IPs. */
-export type VirtualHubPropertiesInputVirtualRouterIpsList =
-  ReadonlyArray<string>;
+export type VirtualHubPropertiesInputVirtualRouterIpsList = Array<string>;
 export const VirtualHubPropertiesInputVirtualRouterIpsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -93126,7 +93172,7 @@ export const VirtualHubPropertiesProvisioningState = /*@__PURE__*/ S.String;
 
 /** List of all virtual hub route table v2s associated with this VirtualHub. */
 export type VirtualHubPropertiesVirtualHubRouteTableV2sList =
-  ReadonlyArray<VirtualHubRouteTableV2>;
+  Array<VirtualHubRouteTableV2>;
 export const VirtualHubPropertiesVirtualHubRouteTableV2sList =
   /*@__PURE__*/ S.Array(
     VirtualHubRouteTableV2,
@@ -93156,7 +93202,7 @@ export const VirtualHubPropertiesBgpConnectionsItem = /*@__PURE__*/ S.suspend(
 
 /** List of references to Bgp Connections. */
 export type VirtualHubPropertiesBgpConnectionsList =
-  ReadonlyArray<VirtualHubPropertiesBgpConnectionsItem>;
+  Array<VirtualHubPropertiesBgpConnectionsItem>;
 export const VirtualHubPropertiesBgpConnectionsList = /*@__PURE__*/ S.Array(
   VirtualHubPropertiesBgpConnectionsItem,
 ) as any as S.Schema<VirtualHubPropertiesBgpConnectionsList>;
@@ -93177,7 +93223,7 @@ export const VirtualHubPropertiesIpConfigurationsItem = /*@__PURE__*/ S.suspend(
 
 /** List of references to IpConfigurations. */
 export type VirtualHubPropertiesIpConfigurationsList =
-  ReadonlyArray<VirtualHubPropertiesIpConfigurationsItem>;
+  Array<VirtualHubPropertiesIpConfigurationsItem>;
 export const VirtualHubPropertiesIpConfigurationsList = /*@__PURE__*/ S.Array(
   VirtualHubPropertiesIpConfigurationsItem,
 ) as any as S.Schema<VirtualHubPropertiesIpConfigurationsList>;
@@ -93197,13 +93243,13 @@ export const VirtualHubPropertiesRouteMapsItem = /*@__PURE__*/ S.suspend(() =>
 
 /** List of references to RouteMaps. */
 export type VirtualHubPropertiesRouteMapsList =
-  ReadonlyArray<VirtualHubPropertiesRouteMapsItem>;
+  Array<VirtualHubPropertiesRouteMapsItem>;
 export const VirtualHubPropertiesRouteMapsList = /*@__PURE__*/ S.Array(
   VirtualHubPropertiesRouteMapsItem,
 ) as any as S.Schema<VirtualHubPropertiesRouteMapsList>;
 
 /** VirtualRouter IPs. */
-export type VirtualHubPropertiesVirtualRouterIpsList = ReadonlyArray<string>;
+export type VirtualHubPropertiesVirtualRouterIpsList = Array<string>;
 export const VirtualHubPropertiesVirtualRouterIpsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<VirtualHubPropertiesVirtualRouterIpsList>;
@@ -93472,14 +93518,14 @@ export const VirtualHubsGetEffectiveVirtualHubRoutesRequest =
   }) as any as S.Schema<VirtualHubsGetEffectiveVirtualHubRoutesRequest>;
 
 /** The list of address prefixes. */
-export type VirtualHubEffectiveRouteAddressPrefixesList = ReadonlyArray<string>;
+export type VirtualHubEffectiveRouteAddressPrefixesList = Array<string>;
 export const VirtualHubEffectiveRouteAddressPrefixesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<VirtualHubEffectiveRouteAddressPrefixesList>;
 
 /** The list of next hops. */
-export type VirtualHubEffectiveRouteNextHopsList = ReadonlyArray<string>;
+export type VirtualHubEffectiveRouteNextHopsList = Array<string>;
 export const VirtualHubEffectiveRouteNextHopsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<VirtualHubEffectiveRouteNextHopsList>;
@@ -93511,7 +93557,7 @@ export const VirtualHubEffectiveRoute = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of effective routes configured on the virtual hub or the specified resource. */
 export type VirtualHubEffectiveRouteListValueList =
-  ReadonlyArray<VirtualHubEffectiveRoute>;
+  Array<VirtualHubEffectiveRoute>;
 export const VirtualHubEffectiveRouteListValueList = /*@__PURE__*/ S.Array(
   VirtualHubEffectiveRoute,
 ) as any as S.Schema<VirtualHubEffectiveRouteListValueList>;
@@ -93580,8 +93626,7 @@ export const EffectiveRouteMapRoute = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EffectiveRouteMapRoute>;
 
 /** The list of Effective RouteMap Routes configured on the connection resource. */
-export type EffectiveRouteMapRouteListValueList =
-  ReadonlyArray<EffectiveRouteMapRoute>;
+export type EffectiveRouteMapRouteListValueList = Array<EffectiveRouteMapRoute>;
 export const EffectiveRouteMapRouteListValueList = /*@__PURE__*/ S.Array(
   EffectiveRouteMapRoute,
 ) as any as S.Schema<EffectiveRouteMapRouteListValueList>;
@@ -93689,7 +93734,7 @@ export const VirtualHub = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VirtualHub" }) as any as S.Schema<VirtualHub>;
 
 /** The VirtualHub items on this page */
-export type ListVirtualHubsResultValueList = ReadonlyArray<VirtualHub>;
+export type ListVirtualHubsResultValueList = Array<VirtualHub>;
 export const ListVirtualHubsResultValueList = /*@__PURE__*/ S.Array(
   VirtualHub,
 ) as any as S.Schema<ListVirtualHubsResultValueList>;
@@ -93889,7 +93934,7 @@ export const CommonRouteInput_6 = /*@__PURE__*/ S.suspend(() =>
 
 /** Collection of routes contained within a route table. */
 export type CommonRouteTablePropertiesFormatInputRoutesList_6 =
-  ReadonlyArray<CommonRouteInput_6>;
+  Array<CommonRouteInput_6>;
 export const CommonRouteTablePropertiesFormatInputRoutesList_6 =
   /*@__PURE__*/ S.Array(
     CommonRouteInput_6,
@@ -93950,7 +93995,7 @@ export const CommonRouteTableInput_6 = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of service resources. */
 export type CommonServiceEndpointPolicyDefinitionPropertiesFormatServiceResourcesList_7 =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CommonServiceEndpointPolicyDefinitionPropertiesFormatServiceResourcesList_7 =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -93965,7 +94010,9 @@ export interface CommonServiceEndpointPolicyDefinitionPropertiesFormat_7 {
   /** A list of service resources. */
   serviceResources?: CommonServiceEndpointPolicyDefinitionPropertiesFormatServiceResourcesList_7;
   /** Provisioning states of a resource. */
-  provisioningState?: CommonServiceEndpointPolicyDefinitionPropertiesFormatProvisioningState;
+  provisioningState?:
+    | CommonServiceEndpointPolicyDefinitionPropertiesFormatProvisioningState
+    | (string & {});
 }
 export const CommonServiceEndpointPolicyDefinitionPropertiesFormat_7 =
   /*@__PURE__*/ S.suspend(() =>
@@ -94007,7 +94054,7 @@ export const CommonServiceEndpointPolicyDefinitionInput_7 =
 
 /** A collection of service endpoint policy definitions of the service endpoint policy. */
 export type CommonServiceEndpointPolicyPropertiesFormatInputServiceEndpointPolicyDefinitionsList_7 =
-  ReadonlyArray<CommonServiceEndpointPolicyDefinitionInput_7>;
+  Array<CommonServiceEndpointPolicyDefinitionInput_7>;
 export const CommonServiceEndpointPolicyPropertiesFormatInputServiceEndpointPolicyDefinitionsList_7 =
   /*@__PURE__*/ S.Array(
     CommonServiceEndpointPolicyDefinitionInput_7,
@@ -94074,7 +94121,7 @@ export const CommonSubnetPropertiesFormatInputServiceEndpointPoliciesItem_6 =
 
 /** An array of service endpoint policies. */
 export type CommonSubnetPropertiesFormatInputServiceEndpointPoliciesList_6 =
-  ReadonlyArray<CommonSubnetPropertiesFormatInputServiceEndpointPoliciesItem_6>;
+  Array<CommonSubnetPropertiesFormatInputServiceEndpointPoliciesItem_6>;
 export const CommonSubnetPropertiesFormatInputServiceEndpointPoliciesList_6 =
   /*@__PURE__*/ S.Array(
     CommonSubnetPropertiesFormatInputServiceEndpointPoliciesItem_6,
@@ -94347,7 +94394,7 @@ export const VirtualNetworkApplianceIpConfiguration = /*@__PURE__*/ S.suspend(
 
 /** A list of IPConfigurations of the virtual network appliance. */
 export type VirtualNetworkAppliancePropertiesFormatIpConfigurationsList =
-  ReadonlyArray<VirtualNetworkApplianceIpConfiguration>;
+  Array<VirtualNetworkApplianceIpConfiguration>;
 export const VirtualNetworkAppliancePropertiesFormatIpConfigurationsList =
   /*@__PURE__*/ S.Array(
     VirtualNetworkApplianceIpConfiguration,
@@ -94373,7 +94420,7 @@ export const VirtualNetworkAppliancePropertiesFormatProvisioningState =
 
 /** The CIDR or source IP ranges. */
 export type CommonSecurityRulePropertiesFormatSourceAddressPrefixesList_8 =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CommonSecurityRulePropertiesFormatSourceAddressPrefixesList_8 =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -94381,7 +94428,7 @@ export const CommonSecurityRulePropertiesFormatSourceAddressPrefixesList_8 =
 
 /** The application security group specified as source. */
 export type CommonSecurityRulePropertiesFormatSourceApplicationSecurityGroupsList_8 =
-  ReadonlyArray<CommonApplicationSecurityGroup>;
+  Array<CommonApplicationSecurityGroup>;
 export const CommonSecurityRulePropertiesFormatSourceApplicationSecurityGroupsList_8 =
   /*@__PURE__*/ S.Array(
     CommonApplicationSecurityGroup,
@@ -94389,7 +94436,7 @@ export const CommonSecurityRulePropertiesFormatSourceApplicationSecurityGroupsLi
 
 /** The destination address prefixes. CIDR or destination IP ranges. */
 export type CommonSecurityRulePropertiesFormatDestinationAddressPrefixesList_8 =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CommonSecurityRulePropertiesFormatDestinationAddressPrefixesList_8 =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -94397,7 +94444,7 @@ export const CommonSecurityRulePropertiesFormatDestinationAddressPrefixesList_8 
 
 /** The application security group specified as destination. */
 export type CommonSecurityRulePropertiesFormatDestinationApplicationSecurityGroupsList_8 =
-  ReadonlyArray<CommonApplicationSecurityGroup>;
+  Array<CommonApplicationSecurityGroup>;
 export const CommonSecurityRulePropertiesFormatDestinationApplicationSecurityGroupsList_8 =
   /*@__PURE__*/ S.Array(
     CommonApplicationSecurityGroup,
@@ -94405,7 +94452,7 @@ export const CommonSecurityRulePropertiesFormatDestinationApplicationSecurityGro
 
 /** The source port ranges. */
 export type CommonSecurityRulePropertiesFormatSourcePortRangesList_8 =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CommonSecurityRulePropertiesFormatSourcePortRangesList_8 =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -94413,7 +94460,7 @@ export const CommonSecurityRulePropertiesFormatSourcePortRangesList_8 =
 
 /** The destination port ranges. */
 export type CommonSecurityRulePropertiesFormatDestinationPortRangesList_8 =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CommonSecurityRulePropertiesFormatDestinationPortRangesList_8 =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -94519,7 +94566,7 @@ export const CommonSecurityRule_7 = /*@__PURE__*/ S.suspend(() =>
 
 /** A collection of security rules of the network security group. */
 export type CommonNetworkSecurityGroupPropertiesFormatSecurityRulesList_7 =
-  ReadonlyArray<CommonSecurityRule_7>;
+  Array<CommonSecurityRule_7>;
 export const CommonNetworkSecurityGroupPropertiesFormatSecurityRulesList_7 =
   /*@__PURE__*/ S.Array(
     CommonSecurityRule_7,
@@ -94527,7 +94574,7 @@ export const CommonNetworkSecurityGroupPropertiesFormatSecurityRulesList_7 =
 
 /** The default security rules of network security group. */
 export type CommonNetworkSecurityGroupPropertiesFormatDefaultSecurityRulesList_7 =
-  ReadonlyArray<CommonSecurityRule_7>;
+  Array<CommonSecurityRule_7>;
 export const CommonNetworkSecurityGroupPropertiesFormatDefaultSecurityRulesList_7 =
   /*@__PURE__*/ S.Array(
     CommonSecurityRule_7,
@@ -94572,7 +94619,7 @@ export const CommonSubnet_7 = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of references to the network interfaces created for this private endpoint. */
 export type CommonPrivateEndpointPropertiesNetworkInterfacesList_7 =
-  ReadonlyArray<CommonNetworkInterface_7>;
+  Array<CommonNetworkInterface_7>;
 export const CommonPrivateEndpointPropertiesNetworkInterfacesList_7 =
   /*@__PURE__*/ S.Array(
     S.suspend(() => CommonNetworkInterface_7),
@@ -94758,7 +94805,7 @@ export const CommonVirtualNetworkTapPropertiesFormatNetworkInterfaceTapConfigura
 
 /** Specifies the list of resource IDs for the network interface IP configuration that needs to be tapped. */
 export type CommonVirtualNetworkTapPropertiesFormatNetworkInterfaceTapConfigurationsList_7 =
-  ReadonlyArray<CommonVirtualNetworkTapPropertiesFormatNetworkInterfaceTapConfigurationsItem_7>;
+  Array<CommonVirtualNetworkTapPropertiesFormatNetworkInterfaceTapConfigurationsItem_7>;
 export const CommonVirtualNetworkTapPropertiesFormatNetworkInterfaceTapConfigurationsList_7 =
   /*@__PURE__*/ S.Array(
     CommonVirtualNetworkTapPropertiesFormatNetworkInterfaceTapConfigurationsItem_7,
@@ -94848,7 +94895,7 @@ export const CommonPublicIPAddressExtendedLocation_3 = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CommonPublicIPAddressExtendedLocation_3>;
 
 /** A list of availability zones denoting the IP allocated for the resource needs to come from. */
-export type CommonPublicIPAddressZonesList_3 = ReadonlyArray<unknown>;
+export type CommonPublicIPAddressZonesList_3 = Array<unknown>;
 export const CommonPublicIPAddressZonesList_3 = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<CommonPublicIPAddressZonesList_3>;
@@ -94949,7 +94996,7 @@ export const CommonIPConfiguration_7 = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of tags associated with the public IP address. */
 export type CommonPublicIPAddressPropertiesFormatIpTagsList_6 =
-  ReadonlyArray<CommonIpTag>;
+  Array<CommonIpTag>;
 export const CommonPublicIPAddressPropertiesFormatIpTagsList_6 =
   /*@__PURE__*/ S.Array(
     CommonIpTag,
@@ -94985,7 +95032,7 @@ export const CommonNatGatewayPropertiesFormatPublicIpAddressesItem_5 =
 
 /** An array of public ip addresses V4 associated with the nat gateway resource. */
 export type CommonNatGatewayPropertiesFormatPublicIpAddressesList_5 =
-  ReadonlyArray<CommonNatGatewayPropertiesFormatPublicIpAddressesItem_5>;
+  Array<CommonNatGatewayPropertiesFormatPublicIpAddressesItem_5>;
 export const CommonNatGatewayPropertiesFormatPublicIpAddressesList_5 =
   /*@__PURE__*/ S.Array(
     CommonNatGatewayPropertiesFormatPublicIpAddressesItem_5,
@@ -95007,7 +95054,7 @@ export const CommonNatGatewayPropertiesFormatPublicIpAddressesV6Item_5 =
 
 /** An array of public ip addresses V6 associated with the nat gateway resource. */
 export type CommonNatGatewayPropertiesFormatPublicIpAddressesV6List_5 =
-  ReadonlyArray<CommonNatGatewayPropertiesFormatPublicIpAddressesV6Item_5>;
+  Array<CommonNatGatewayPropertiesFormatPublicIpAddressesV6Item_5>;
 export const CommonNatGatewayPropertiesFormatPublicIpAddressesV6List_5 =
   /*@__PURE__*/ S.Array(
     CommonNatGatewayPropertiesFormatPublicIpAddressesV6Item_5,
@@ -95029,7 +95076,7 @@ export const CommonNatGatewayPropertiesFormatPublicIpPrefixesItem_5 =
 
 /** An array of public ip prefixes V4 associated with the nat gateway resource. */
 export type CommonNatGatewayPropertiesFormatPublicIpPrefixesList_5 =
-  ReadonlyArray<CommonNatGatewayPropertiesFormatPublicIpPrefixesItem_5>;
+  Array<CommonNatGatewayPropertiesFormatPublicIpPrefixesItem_5>;
 export const CommonNatGatewayPropertiesFormatPublicIpPrefixesList_5 =
   /*@__PURE__*/ S.Array(
     CommonNatGatewayPropertiesFormatPublicIpPrefixesItem_5,
@@ -95051,7 +95098,7 @@ export const CommonNatGatewayPropertiesFormatPublicIpPrefixesV6Item_5 =
 
 /** An array of public ip prefixes V6 associated with the nat gateway resource. */
 export type CommonNatGatewayPropertiesFormatPublicIpPrefixesV6List_5 =
-  ReadonlyArray<CommonNatGatewayPropertiesFormatPublicIpPrefixesV6Item_5>;
+  Array<CommonNatGatewayPropertiesFormatPublicIpPrefixesV6Item_5>;
 export const CommonNatGatewayPropertiesFormatPublicIpPrefixesV6List_5 =
   /*@__PURE__*/ S.Array(
     CommonNatGatewayPropertiesFormatPublicIpPrefixesV6Item_5,
@@ -95073,7 +95120,7 @@ export const CommonNatGatewayPropertiesFormatSubnetsItem_5 =
 
 /** An array of references to the subnets using this nat gateway resource. */
 export type CommonNatGatewayPropertiesFormatSubnetsList_5 =
-  ReadonlyArray<CommonNatGatewayPropertiesFormatSubnetsItem_5>;
+  Array<CommonNatGatewayPropertiesFormatSubnetsItem_5>;
 export const CommonNatGatewayPropertiesFormatSubnetsList_5 =
   /*@__PURE__*/ S.Array(
     CommonNatGatewayPropertiesFormatSubnetsItem_5,
@@ -95468,7 +95515,7 @@ export const CommonNetworkInterfaceIPConfigurationPropertiesFormatVirtualNetwork
 
 /** The reference to Virtual Network Taps. */
 export type CommonNetworkInterfaceIPConfigurationPropertiesFormatVirtualNetworkTapsList_7 =
-  ReadonlyArray<CommonNetworkInterfaceIPConfigurationPropertiesFormatVirtualNetworkTapsItem_7>;
+  Array<CommonNetworkInterfaceIPConfigurationPropertiesFormatVirtualNetworkTapsItem_7>;
 export const CommonNetworkInterfaceIPConfigurationPropertiesFormatVirtualNetworkTapsList_7 =
   /*@__PURE__*/ S.Array(
     CommonNetworkInterfaceIPConfigurationPropertiesFormatVirtualNetworkTapsItem_7,
@@ -95507,7 +95554,7 @@ export const CommonApplicationGatewayBackendAddressPoolPropertiesFormatBackendIP
 
 /** Collection of references to IPs defined in network interfaces. */
 export type CommonApplicationGatewayBackendAddressPoolPropertiesFormatBackendIPConfigurationsList_7 =
-  ReadonlyArray<CommonApplicationGatewayBackendAddressPoolPropertiesFormatBackendIPConfigurationsItem_7>;
+  Array<CommonApplicationGatewayBackendAddressPoolPropertiesFormatBackendIPConfigurationsItem_7>;
 export const CommonApplicationGatewayBackendAddressPoolPropertiesFormatBackendIPConfigurationsList_7 =
   /*@__PURE__*/ S.Array(
     CommonApplicationGatewayBackendAddressPoolPropertiesFormatBackendIPConfigurationsItem_7,
@@ -95570,7 +95617,7 @@ export const CommonNetworkInterfaceIPConfigurationPropertiesFormatApplicationGat
 
 /** The reference to ApplicationGatewayBackendAddressPool resource. */
 export type CommonNetworkInterfaceIPConfigurationPropertiesFormatApplicationGatewayBackendAddressPoolsList_7 =
-  ReadonlyArray<CommonNetworkInterfaceIPConfigurationPropertiesFormatApplicationGatewayBackendAddressPoolsItem_7>;
+  Array<CommonNetworkInterfaceIPConfigurationPropertiesFormatApplicationGatewayBackendAddressPoolsItem_7>;
 export const CommonNetworkInterfaceIPConfigurationPropertiesFormatApplicationGatewayBackendAddressPoolsList_7 =
   /*@__PURE__*/ S.Array(
     CommonNetworkInterfaceIPConfigurationPropertiesFormatApplicationGatewayBackendAddressPoolsItem_7,
@@ -95609,7 +95656,7 @@ export const CommonBackendAddressPoolPropertiesFormatBackendIPConfigurationsItem
 
 /** An array of references to IP addresses defined in network interfaces. */
 export type CommonBackendAddressPoolPropertiesFormatBackendIPConfigurationsList_7 =
-  ReadonlyArray<CommonBackendAddressPoolPropertiesFormatBackendIPConfigurationsItem_7>;
+  Array<CommonBackendAddressPoolPropertiesFormatBackendIPConfigurationsItem_7>;
 export const CommonBackendAddressPoolPropertiesFormatBackendIPConfigurationsList_7 =
   /*@__PURE__*/ S.Array(
     CommonBackendAddressPoolPropertiesFormatBackendIPConfigurationsItem_7,
@@ -95709,7 +95756,7 @@ export const CommonNetworkInterfaceIPConfigurationPropertiesFormatLoadBalancerBa
 
 /** The reference to LoadBalancerBackendAddressPool resource. */
 export type CommonNetworkInterfaceIPConfigurationPropertiesFormatLoadBalancerBackendAddressPoolsList_7 =
-  ReadonlyArray<CommonNetworkInterfaceIPConfigurationPropertiesFormatLoadBalancerBackendAddressPoolsItem_7>;
+  Array<CommonNetworkInterfaceIPConfigurationPropertiesFormatLoadBalancerBackendAddressPoolsItem_7>;
 export const CommonNetworkInterfaceIPConfigurationPropertiesFormatLoadBalancerBackendAddressPoolsList_7 =
   /*@__PURE__*/ S.Array(
     CommonNetworkInterfaceIPConfigurationPropertiesFormatLoadBalancerBackendAddressPoolsItem_7,
@@ -95829,7 +95876,7 @@ export const CommonNetworkInterfaceIPConfigurationPropertiesFormatLoadBalancerIn
 
 /** A list of references of LoadBalancerInboundNatRules. */
 export type CommonNetworkInterfaceIPConfigurationPropertiesFormatLoadBalancerInboundNatRulesList_7 =
-  ReadonlyArray<CommonNetworkInterfaceIPConfigurationPropertiesFormatLoadBalancerInboundNatRulesItem_7>;
+  Array<CommonNetworkInterfaceIPConfigurationPropertiesFormatLoadBalancerInboundNatRulesItem_7>;
 export const CommonNetworkInterfaceIPConfigurationPropertiesFormatLoadBalancerInboundNatRulesList_7 =
   /*@__PURE__*/ S.Array(
     CommonNetworkInterfaceIPConfigurationPropertiesFormatLoadBalancerInboundNatRulesItem_7,
@@ -95941,7 +95988,7 @@ export const CommonNetworkInterfaceIPConfiguration_6 = /*@__PURE__*/ S.suspend(
 
 /** A list of IPConfigurations of the network interface. */
 export type CommonNetworkInterfacePropertiesFormatIpConfigurationsList_7 =
-  ReadonlyArray<CommonNetworkInterfaceIPConfiguration_6>;
+  Array<CommonNetworkInterfaceIPConfiguration_6>;
 export const CommonNetworkInterfacePropertiesFormatIpConfigurationsList_7 =
   /*@__PURE__*/ S.Array(
     CommonNetworkInterfaceIPConfiguration_6,
@@ -95977,7 +96024,7 @@ export const CommonNetworkInterfaceTapConfiguration_6 = /*@__PURE__*/ S.suspend(
 
 /** A list of TapConfigurations of the network interface. */
 export type CommonNetworkInterfacePropertiesFormatTapConfigurationsList_7 =
-  ReadonlyArray<CommonNetworkInterfaceTapConfiguration_6>;
+  Array<CommonNetworkInterfaceTapConfiguration_6>;
 export const CommonNetworkInterfacePropertiesFormatTapConfigurationsList_7 =
   /*@__PURE__*/ S.Array(
     CommonNetworkInterfaceTapConfiguration_6,
@@ -95985,7 +96032,7 @@ export const CommonNetworkInterfacePropertiesFormatTapConfigurationsList_7 =
 
 /** A list of references to linked BareMetal resources. */
 export type CommonNetworkInterfacePropertiesFormatHostedWorkloadsList_7 =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CommonNetworkInterfacePropertiesFormatHostedWorkloadsList_7 =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -96039,7 +96086,7 @@ export const CommonPrivateLinkServicePropertiesLoadBalancerFrontendIpConfigurati
 
 /** An array of references to the load balancer IP configurations. */
 export type CommonPrivateLinkServicePropertiesLoadBalancerFrontendIpConfigurationsList_6 =
-  ReadonlyArray<CommonPrivateLinkServicePropertiesLoadBalancerFrontendIpConfigurationsItem_6>;
+  Array<CommonPrivateLinkServicePropertiesLoadBalancerFrontendIpConfigurationsItem_6>;
 export const CommonPrivateLinkServicePropertiesLoadBalancerFrontendIpConfigurationsList_6 =
   /*@__PURE__*/ S.Array(
     CommonPrivateLinkServicePropertiesLoadBalancerFrontendIpConfigurationsItem_6,
@@ -96110,7 +96157,7 @@ export const CommonPrivateLinkServiceIpConfiguration_6 =
 
 /** An array of private link service IP configurations. */
 export type CommonPrivateLinkServicePropertiesIpConfigurationsList_6 =
-  ReadonlyArray<CommonPrivateLinkServiceIpConfiguration_6>;
+  Array<CommonPrivateLinkServiceIpConfiguration_6>;
 export const CommonPrivateLinkServicePropertiesIpConfigurationsList_6 =
   /*@__PURE__*/ S.Array(
     CommonPrivateLinkServiceIpConfiguration_6,
@@ -96118,7 +96165,7 @@ export const CommonPrivateLinkServicePropertiesIpConfigurationsList_6 =
 
 /** An array of references to the network interfaces created for this private link service. */
 export type CommonPrivateLinkServicePropertiesNetworkInterfacesList_6 =
-  ReadonlyArray<CommonNetworkInterface_7>;
+  Array<CommonNetworkInterface_7>;
 export const CommonPrivateLinkServicePropertiesNetworkInterfacesList_6 =
   /*@__PURE__*/ S.Array(
     S.suspend(() => CommonNetworkInterface_7),
@@ -96181,7 +96228,7 @@ export const CommonPrivateEndpointConnection_6 = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of list about connections to the private endpoint. */
 export type CommonPrivateLinkServicePropertiesPrivateEndpointConnectionsList_6 =
-  ReadonlyArray<CommonPrivateEndpointConnection_6>;
+  Array<CommonPrivateEndpointConnection_6>;
 export const CommonPrivateLinkServicePropertiesPrivateEndpointConnectionsList_6 =
   /*@__PURE__*/ S.Array(
     CommonPrivateEndpointConnection_6,
@@ -96414,7 +96461,7 @@ export const CommonNetworkInterface_7 = /*@__PURE__*/ S.suspend(() =>
 
 /** A collection of references to network interfaces. */
 export type CommonNetworkSecurityGroupPropertiesFormatNetworkInterfacesList_7 =
-  ReadonlyArray<CommonNetworkInterface_7>;
+  Array<CommonNetworkInterface_7>;
 export const CommonNetworkSecurityGroupPropertiesFormatNetworkInterfacesList_7 =
   /*@__PURE__*/ S.Array(
     CommonNetworkInterface_7,
@@ -96422,7 +96469,7 @@ export const CommonNetworkSecurityGroupPropertiesFormatNetworkInterfacesList_7 =
 
 /** A collection of references to subnets. */
 export type CommonNetworkSecurityGroupPropertiesFormatSubnetsList_7 =
-  ReadonlyArray<CommonSubnet_7>;
+  Array<CommonSubnet_7>;
 export const CommonNetworkSecurityGroupPropertiesFormatSubnetsList_7 =
   /*@__PURE__*/ S.Array(
     CommonSubnet_7,
@@ -96609,7 +96656,7 @@ export const CommonNetworkSecurityGroupPropertiesFormatFlowLogsItem_7 =
 
 /** A collection of references to flow log resources. */
 export type CommonNetworkSecurityGroupPropertiesFormatFlowLogsList_7 =
-  ReadonlyArray<CommonNetworkSecurityGroupPropertiesFormatFlowLogsItem_7>;
+  Array<CommonNetworkSecurityGroupPropertiesFormatFlowLogsItem_7>;
 export const CommonNetworkSecurityGroupPropertiesFormatFlowLogsList_7 =
   /*@__PURE__*/ S.Array(
     CommonNetworkSecurityGroupPropertiesFormatFlowLogsItem_7,
@@ -96745,8 +96792,7 @@ export const CommonRoute_7 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CommonRoute_7" }) as any as S.Schema<CommonRoute_7>;
 
 /** Collection of routes contained within a route table. */
-export type CommonRouteTablePropertiesFormatRoutesList_7 =
-  ReadonlyArray<CommonRoute_7>;
+export type CommonRouteTablePropertiesFormatRoutesList_7 = Array<CommonRoute_7>;
 export const CommonRouteTablePropertiesFormatRoutesList_7 =
   /*@__PURE__*/ S.Array(
     CommonRoute_7,
@@ -96754,7 +96800,7 @@ export const CommonRouteTablePropertiesFormatRoutesList_7 =
 
 /** A collection of references to subnets. */
 export type CommonRouteTablePropertiesFormatSubnetsList_7 =
-  ReadonlyArray<CommonSubnet_7>;
+  Array<CommonSubnet_7>;
 export const CommonRouteTablePropertiesFormatSubnetsList_7 =
   /*@__PURE__*/ S.Array(
     CommonSubnet_7,
@@ -96853,7 +96899,7 @@ export const CommonServiceEndpointPolicyDefinition_7 = /*@__PURE__*/ S.suspend(
 
 /** A collection of service endpoint policy definitions of the service endpoint policy. */
 export type CommonServiceEndpointPolicyPropertiesFormatServiceEndpointPolicyDefinitionsList_7 =
-  ReadonlyArray<CommonServiceEndpointPolicyDefinition_7>;
+  Array<CommonServiceEndpointPolicyDefinition_7>;
 export const CommonServiceEndpointPolicyPropertiesFormatServiceEndpointPolicyDefinitionsList_7 =
   /*@__PURE__*/ S.Array(
     CommonServiceEndpointPolicyDefinition_7,
@@ -96887,7 +96933,7 @@ export const CommonServiceEndpointPolicyPropertiesFormatSubnetsItem_7 =
 
 /** A collection of references to subnets. */
 export type CommonServiceEndpointPolicyPropertiesFormatSubnetsList_7 =
-  ReadonlyArray<CommonServiceEndpointPolicyPropertiesFormatSubnetsItem_7>;
+  Array<CommonServiceEndpointPolicyPropertiesFormatSubnetsItem_7>;
 export const CommonServiceEndpointPolicyPropertiesFormatSubnetsList_7 =
   /*@__PURE__*/ S.Array(
     CommonServiceEndpointPolicyPropertiesFormatSubnetsItem_7,
@@ -96969,7 +97015,7 @@ export const CommonSubnetPropertiesFormatServiceEndpointPoliciesItem_7 =
 
 /** An array of service endpoint policies. */
 export type CommonSubnetPropertiesFormatServiceEndpointPoliciesList_7 =
-  ReadonlyArray<CommonSubnetPropertiesFormatServiceEndpointPoliciesItem_7>;
+  Array<CommonSubnetPropertiesFormatServiceEndpointPoliciesItem_7>;
 export const CommonSubnetPropertiesFormatServiceEndpointPoliciesList_7 =
   /*@__PURE__*/ S.Array(
     CommonSubnetPropertiesFormatServiceEndpointPoliciesItem_7,
@@ -96977,7 +97023,7 @@ export const CommonSubnetPropertiesFormatServiceEndpointPoliciesList_7 =
 
 /** An array of references to private endpoints. */
 export type CommonSubnetPropertiesFormatPrivateEndpointsList_7 =
-  ReadonlyArray<CommonPrivateEndpoint_6>;
+  Array<CommonPrivateEndpoint_6>;
 export const CommonSubnetPropertiesFormatPrivateEndpointsList_7 =
   /*@__PURE__*/ S.Array(
     CommonPrivateEndpoint_6,
@@ -96985,7 +97031,7 @@ export const CommonSubnetPropertiesFormatPrivateEndpointsList_7 =
 
 /** An array of references to the network interface IP configurations using subnet. */
 export type CommonSubnetPropertiesFormatIpConfigurationsList_7 =
-  ReadonlyArray<CommonIPConfiguration_7>;
+  Array<CommonIPConfiguration_7>;
 export const CommonSubnetPropertiesFormatIpConfigurationsList_7 =
   /*@__PURE__*/ S.Array(
     CommonIPConfiguration_7,
@@ -97037,7 +97083,7 @@ export const CommonIPConfigurationProfile_7 = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of IP configuration profiles which reference this subnet. */
 export type CommonSubnetPropertiesFormatIpConfigurationProfilesList_7 =
-  ReadonlyArray<CommonIPConfigurationProfile_7>;
+  Array<CommonIPConfigurationProfile_7>;
 export const CommonSubnetPropertiesFormatIpConfigurationProfilesList_7 =
   /*@__PURE__*/ S.Array(
     CommonIPConfigurationProfile_7,
@@ -97402,7 +97448,7 @@ export const VirtualNetworkAppliance = /*@__PURE__*/ S.suspend(() =>
 
 /** The VirtualNetworkAppliance items on this page */
 export type VirtualNetworkApplianceListResultValueList =
-  ReadonlyArray<VirtualNetworkAppliance>;
+  Array<VirtualNetworkAppliance>;
 export const VirtualNetworkApplianceListResultValueList = /*@__PURE__*/ S.Array(
   VirtualNetworkAppliance,
 ) as any as S.Schema<VirtualNetworkApplianceListResultValueList>;
@@ -97673,7 +97719,7 @@ export const VirtualNetworkGatewayIPConfigurationInput =
 
 /** IP configurations for virtual network gateway. */
 export type VirtualNetworkGatewayPropertiesFormatInputIpConfigurationsList =
-  ReadonlyArray<VirtualNetworkGatewayIPConfigurationInput>;
+  Array<VirtualNetworkGatewayIPConfigurationInput>;
 export const VirtualNetworkGatewayPropertiesFormatInputIpConfigurationsList =
   /*@__PURE__*/ S.Array(
     VirtualNetworkGatewayIPConfigurationInput,
@@ -97726,9 +97772,9 @@ export const VirtualNetworkGatewayMigrationStatusPhase = /*@__PURE__*/ S.String;
 /** Migration status for the Virtual Network Gateway. */
 export interface VirtualNetworkGatewayMigrationStatus {
   /** Represent the current state of gateway migration. */
-  state?: VirtualNetworkGatewayMigrationStatusState;
+  state?: VirtualNetworkGatewayMigrationStatusState | (string & {});
   /** Represent the current migration phase of gateway. */
-  phase?: VirtualNetworkGatewayMigrationStatusPhase;
+  phase?: VirtualNetworkGatewayMigrationStatusPhase | (string & {});
   /** Error if any occurs during migration. */
   errorMessage?: string;
 }
@@ -97819,7 +97865,7 @@ export const VirtualNetworkGatewaySkuInput = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of address blocks reserved for this virtual network in CIDR notation. */
 export type VpnClientConfigurationInputVpnClientAddressPoolAddressPrefixesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const VpnClientConfigurationInputVpnClientAddressPoolAddressPrefixesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -97827,7 +97873,7 @@ export const VpnClientConfigurationInputVpnClientAddressPoolAddressPrefixesList 
 
 /** A list of IPAM Pools allocating IP address prefixes. */
 export type VpnClientConfigurationInputVpnClientAddressPoolIpamPoolPrefixAllocationsList =
-  ReadonlyArray<CommonIpamPoolPrefixAllocationInput>;
+  Array<CommonIpamPoolPrefixAllocationInput>;
 export const VpnClientConfigurationInputVpnClientAddressPoolIpamPoolPrefixAllocationsList =
   /*@__PURE__*/ S.Array(
     CommonIpamPoolPrefixAllocationInput,
@@ -97870,7 +97916,9 @@ export interface VpnClientRootCertificatePropertiesFormat {
   /** The certificate public data. */
   publicCertData: string;
   /** Provisioning states of a resource. */
-  provisioningState?: VpnClientRootCertificatePropertiesFormatProvisioningState;
+  provisioningState?:
+    | VpnClientRootCertificatePropertiesFormatProvisioningState
+    | (string & {});
 }
 export const VpnClientRootCertificatePropertiesFormat = /*@__PURE__*/ S.suspend(
   () =>
@@ -97905,7 +97953,7 @@ export const VpnClientRootCertificateInput = /*@__PURE__*/ S.suspend(() =>
 
 /** VpnClientRootCertificate for virtual network gateway. */
 export type VpnClientConfigurationInputVpnClientRootCertificatesList =
-  ReadonlyArray<VpnClientRootCertificateInput>;
+  Array<VpnClientRootCertificateInput>;
 export const VpnClientConfigurationInputVpnClientRootCertificatesList =
   /*@__PURE__*/ S.Array(
     VpnClientRootCertificateInput,
@@ -97927,7 +97975,9 @@ export interface VpnClientRevokedCertificatePropertiesFormat {
   /** The revoked VPN client certificate thumbprint. */
   thumbprint?: string;
   /** Provisioning states of a resource. */
-  provisioningState?: VpnClientRevokedCertificatePropertiesFormatProvisioningState;
+  provisioningState?:
+    | VpnClientRevokedCertificatePropertiesFormatProvisioningState
+    | (string & {});
 }
 export const VpnClientRevokedCertificatePropertiesFormat =
   /*@__PURE__*/ S.suspend(() =>
@@ -97962,7 +98012,7 @@ export const VpnClientRevokedCertificateInput = /*@__PURE__*/ S.suspend(() =>
 
 /** VpnClientRevokedCertificate for Virtual network gateway. */
 export type VpnClientConfigurationInputVpnClientRevokedCertificatesList =
-  ReadonlyArray<VpnClientRevokedCertificateInput>;
+  Array<VpnClientRevokedCertificateInput>;
 export const VpnClientConfigurationInputVpnClientRevokedCertificatesList =
   /*@__PURE__*/ S.Array(
     VpnClientRevokedCertificateInput,
@@ -97977,7 +98027,7 @@ export const VpnClientConfigurationInputVpnClientProtocolsItem =
   /*@__PURE__*/ S.String;
 
 /** VpnClientProtocols for Virtual network gateway. */
-export type VpnClientConfigurationInputVpnClientProtocolsList = ReadonlyArray<
+export type VpnClientConfigurationInputVpnClientProtocolsList = Array<
   VpnClientConfigurationInputVpnClientProtocolsItem | (string & {})
 >;
 export const VpnClientConfigurationInputVpnClientProtocolsList =
@@ -97994,10 +98044,9 @@ export const VpnClientConfigurationInputVpnAuthenticationTypesItem =
   /*@__PURE__*/ S.String;
 
 /** VPN authentication types for the virtual network gateway.. */
-export type VpnClientConfigurationInputVpnAuthenticationTypesList =
-  ReadonlyArray<
-    VpnClientConfigurationInputVpnAuthenticationTypesItem | (string & {})
-  >;
+export type VpnClientConfigurationInputVpnAuthenticationTypesList = Array<
+  VpnClientConfigurationInputVpnAuthenticationTypesItem | (string & {})
+>;
 export const VpnClientConfigurationInputVpnAuthenticationTypesList =
   /*@__PURE__*/ S.Array(
     VpnClientConfigurationInputVpnAuthenticationTypesItem,
@@ -98079,17 +98128,17 @@ export interface IpsecPolicy {
   /** The IPSec Security Association (also called Quick Mode or Phase 2 SA) payload size in KB for a site to site VPN tunnel. */
   saDataSizeKilobytes: number;
   /** The IPSec encryption algorithm (IKE phase 1). */
-  ipsecEncryption: IpsecPolicyIpsecEncryption;
+  ipsecEncryption: IpsecPolicyIpsecEncryption | (string & {});
   /** The IPSec integrity algorithm (IKE phase 1). */
-  ipsecIntegrity: IpsecPolicyIpsecIntegrity;
+  ipsecIntegrity: IpsecPolicyIpsecIntegrity | (string & {});
   /** The IKE encryption algorithm (IKE phase 2). */
-  ikeEncryption: IpsecPolicyIkeEncryption;
+  ikeEncryption: IpsecPolicyIkeEncryption | (string & {});
   /** The IKE integrity algorithm (IKE phase 2). */
-  ikeIntegrity: IpsecPolicyIkeIntegrity;
+  ikeIntegrity: IpsecPolicyIkeIntegrity | (string & {});
   /** The DH Groups used in IKE Phase 1 for initial SA. */
-  dhGroup: IpsecPolicyDhGroup;
+  dhGroup: IpsecPolicyDhGroup | (string & {});
   /** The Pfs Groups used in IKE Phase 2 for new child SA. */
-  pfsGroup: IpsecPolicyPfsGroup;
+  pfsGroup: IpsecPolicyPfsGroup | (string & {});
 }
 export const IpsecPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -98106,7 +98155,7 @@ export const IpsecPolicy = /*@__PURE__*/ S.suspend(() =>
 
 /** VpnClientIpsecPolicies for virtual network gateway P2S client. */
 export type VpnClientConfigurationInputVpnClientIpsecPoliciesList =
-  ReadonlyArray<IpsecPolicy>;
+  Array<IpsecPolicy>;
 export const VpnClientConfigurationInputVpnClientIpsecPoliciesList =
   /*@__PURE__*/ S.Array(
     IpsecPolicy,
@@ -98130,8 +98179,7 @@ export const RadiusServer = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RadiusServer" }) as any as S.Schema<RadiusServer>;
 
 /** The radiusServers property for multiple radius server configuration. */
-export type VpnClientConfigurationInputRadiusServersList =
-  ReadonlyArray<RadiusServer>;
+export type VpnClientConfigurationInputRadiusServersList = Array<RadiusServer>;
 export const VpnClientConfigurationInputRadiusServersList =
   /*@__PURE__*/ S.Array(
     RadiusServer,
@@ -98139,7 +98187,7 @@ export const VpnClientConfigurationInputRadiusServersList =
 
 /** A list of address blocks reserved for this virtual network in CIDR notation. */
 export type VngClientConnectionConfigurationPropertiesInputVpnClientAddressPoolAddressPrefixesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const VngClientConnectionConfigurationPropertiesInputVpnClientAddressPoolAddressPrefixesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -98147,7 +98195,7 @@ export const VngClientConnectionConfigurationPropertiesInputVpnClientAddressPool
 
 /** A list of IPAM Pools allocating IP address prefixes. */
 export type VngClientConnectionConfigurationPropertiesInputVpnClientAddressPoolIpamPoolPrefixAllocationsList =
-  ReadonlyArray<CommonIpamPoolPrefixAllocationInput>;
+  Array<CommonIpamPoolPrefixAllocationInput>;
 export const VngClientConnectionConfigurationPropertiesInputVpnClientAddressPoolIpamPoolPrefixAllocationsList =
   /*@__PURE__*/ S.Array(
     CommonIpamPoolPrefixAllocationInput,
@@ -98192,7 +98240,7 @@ export const VngClientConnectionConfigurationPropertiesInputVirtualNetworkGatewa
 
 /** List of references to virtualNetworkGatewayPolicyGroups */
 export type VngClientConnectionConfigurationPropertiesInputVirtualNetworkGatewayPolicyGroupsList =
-  ReadonlyArray<VngClientConnectionConfigurationPropertiesInputVirtualNetworkGatewayPolicyGroupsItem>;
+  Array<VngClientConnectionConfigurationPropertiesInputVirtualNetworkGatewayPolicyGroupsItem>;
 export const VngClientConnectionConfigurationPropertiesInputVirtualNetworkGatewayPolicyGroupsList =
   /*@__PURE__*/ S.Array(
     VngClientConnectionConfigurationPropertiesInputVirtualNetworkGatewayPolicyGroupsItem,
@@ -98257,7 +98305,7 @@ export const VngClientConnectionConfigurationInput = /*@__PURE__*/ S.suspend(
 
 /** per ip address pool connection policy for virtual network gateway P2S client. */
 export type VpnClientConfigurationInputVngClientConnectionConfigurationsList =
-  ReadonlyArray<VngClientConnectionConfigurationInput>;
+  Array<VngClientConnectionConfigurationInput>;
 export const VpnClientConfigurationInputVngClientConnectionConfigurationsList =
   /*@__PURE__*/ S.Array(
     VngClientConnectionConfigurationInput,
@@ -98339,7 +98387,9 @@ export interface VirtualNetworkGatewayPolicyGroupMember {
   /** Name of the VirtualNetworkGatewayPolicyGroupMember. */
   name?: string;
   /** The Vpn Policy member attribute type. */
-  attributeType?: VirtualNetworkGatewayPolicyGroupMemberAttributeType;
+  attributeType?:
+    | VirtualNetworkGatewayPolicyGroupMemberAttributeType
+    | (string & {});
   /** The value of Attribute used for this VirtualNetworkGatewayPolicyGroupMember. */
   attributeValue?: string;
 }
@@ -98358,7 +98408,7 @@ export const VirtualNetworkGatewayPolicyGroupMember = /*@__PURE__*/ S.suspend(
 
 /** Multiple PolicyMembers for VirtualNetworkGatewayPolicyGroup. */
 export type VirtualNetworkGatewayPolicyGroupPropertiesInputPolicyMembersList =
-  ReadonlyArray<VirtualNetworkGatewayPolicyGroupMember>;
+  Array<VirtualNetworkGatewayPolicyGroupMember>;
 export const VirtualNetworkGatewayPolicyGroupPropertiesInputPolicyMembersList =
   /*@__PURE__*/ S.Array(
     VirtualNetworkGatewayPolicyGroupMember,
@@ -98425,7 +98475,7 @@ export const VirtualNetworkGatewayPolicyGroupInput = /*@__PURE__*/ S.suspend(
 
 /** The reference to the VirtualNetworkGatewayPolicyGroup resource which represents the available VirtualNetworkGatewayPolicyGroup for the gateway. */
 export type VirtualNetworkGatewayPropertiesFormatInputVirtualNetworkGatewayPolicyGroupsList =
-  ReadonlyArray<VirtualNetworkGatewayPolicyGroupInput>;
+  Array<VirtualNetworkGatewayPolicyGroupInput>;
 export const VirtualNetworkGatewayPropertiesFormatInputVirtualNetworkGatewayPolicyGroupsList =
   /*@__PURE__*/ S.Array(
     VirtualNetworkGatewayPolicyGroupInput,
@@ -98433,7 +98483,7 @@ export const VirtualNetworkGatewayPropertiesFormatInputVirtualNetworkGatewayPoli
 
 /** A list of address blocks reserved for this virtual network in CIDR notation. */
 export type VirtualNetworkGatewayPropertiesFormatInputCustomRoutesAddressPrefixesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const VirtualNetworkGatewayPropertiesFormatInputCustomRoutesAddressPrefixesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -98441,7 +98491,7 @@ export const VirtualNetworkGatewayPropertiesFormatInputCustomRoutesAddressPrefix
 
 /** A list of IPAM Pools allocating IP address prefixes. */
 export type VirtualNetworkGatewayPropertiesFormatInputCustomRoutesIpamPoolPrefixAllocationsList =
-  ReadonlyArray<CommonIpamPoolPrefixAllocationInput>;
+  Array<CommonIpamPoolPrefixAllocationInput>;
 export const VirtualNetworkGatewayPropertiesFormatInputCustomRoutesIpamPoolPrefixAllocationsList =
   /*@__PURE__*/ S.Array(
     CommonIpamPoolPrefixAllocationInput,
@@ -98521,7 +98571,7 @@ export const VirtualNetworkGatewayNatRulePropertiesInternalMappingsItem =
 
 /** The private IP address internal mapping for NAT. */
 export type VirtualNetworkGatewayNatRulePropertiesInternalMappingsList =
-  ReadonlyArray<VirtualNetworkGatewayNatRulePropertiesInternalMappingsItem>;
+  Array<VirtualNetworkGatewayNatRulePropertiesInternalMappingsItem>;
 export const VirtualNetworkGatewayNatRulePropertiesInternalMappingsList =
   /*@__PURE__*/ S.Array(
     VirtualNetworkGatewayNatRulePropertiesInternalMappingsItem,
@@ -98546,7 +98596,7 @@ export const VirtualNetworkGatewayNatRulePropertiesExternalMappingsItem =
 
 /** The private IP address external mapping for NAT. */
 export type VirtualNetworkGatewayNatRulePropertiesExternalMappingsList =
-  ReadonlyArray<VirtualNetworkGatewayNatRulePropertiesExternalMappingsItem>;
+  Array<VirtualNetworkGatewayNatRulePropertiesExternalMappingsItem>;
 export const VirtualNetworkGatewayNatRulePropertiesExternalMappingsList =
   /*@__PURE__*/ S.Array(
     VirtualNetworkGatewayNatRulePropertiesExternalMappingsItem,
@@ -98555,11 +98605,13 @@ export const VirtualNetworkGatewayNatRulePropertiesExternalMappingsList =
 /** Parameters for VirtualNetworkGatewayNatRule. */
 export interface VirtualNetworkGatewayNatRuleProperties {
   /** Provisioning states of a resource. */
-  provisioningState?: VirtualNetworkGatewayNatRulePropertiesProvisioningState;
+  provisioningState?:
+    | VirtualNetworkGatewayNatRulePropertiesProvisioningState
+    | (string & {});
   /** The type of NAT rule for VPN NAT. */
-  type?: VirtualNetworkGatewayNatRulePropertiesType;
+  type?: VirtualNetworkGatewayNatRulePropertiesType | (string & {});
   /** The Source NAT direction of a VPN NAT. */
-  mode?: VirtualNetworkGatewayNatRulePropertiesMode;
+  mode?: VirtualNetworkGatewayNatRulePropertiesMode | (string & {});
   /** The private IP address internal mapping for NAT. */
   internalMappings?: VirtualNetworkGatewayNatRulePropertiesInternalMappingsList;
   /** The private IP address external mapping for NAT. */
@@ -98608,7 +98660,7 @@ export const VirtualNetworkGatewayNatRuleInput = /*@__PURE__*/ S.suspend(() =>
 
 /** NatRules for virtual network gateway. */
 export type VirtualNetworkGatewayPropertiesFormatInputNatRulesList =
-  ReadonlyArray<VirtualNetworkGatewayNatRuleInput>;
+  Array<VirtualNetworkGatewayNatRuleInput>;
 export const VirtualNetworkGatewayPropertiesFormatInputNatRulesList =
   /*@__PURE__*/ S.Array(
     VirtualNetworkGatewayNatRuleInput,
@@ -98872,7 +98924,7 @@ export const VirtualNetworkGatewayConnectionPropertiesFormatInputIngressNatRules
 
 /** List of ingress NatRules. */
 export type VirtualNetworkGatewayConnectionPropertiesFormatInputIngressNatRulesList =
-  ReadonlyArray<VirtualNetworkGatewayConnectionPropertiesFormatInputIngressNatRulesItem>;
+  Array<VirtualNetworkGatewayConnectionPropertiesFormatInputIngressNatRulesItem>;
 export const VirtualNetworkGatewayConnectionPropertiesFormatInputIngressNatRulesList =
   /*@__PURE__*/ S.Array(
     VirtualNetworkGatewayConnectionPropertiesFormatInputIngressNatRulesItem,
@@ -98895,7 +98947,7 @@ export const VirtualNetworkGatewayConnectionPropertiesFormatInputEgressNatRulesI
 
 /** List of egress NatRules. */
 export type VirtualNetworkGatewayConnectionPropertiesFormatInputEgressNatRulesList =
-  ReadonlyArray<VirtualNetworkGatewayConnectionPropertiesFormatInputEgressNatRulesItem>;
+  Array<VirtualNetworkGatewayConnectionPropertiesFormatInputEgressNatRulesItem>;
 export const VirtualNetworkGatewayConnectionPropertiesFormatInputEgressNatRulesList =
   /*@__PURE__*/ S.Array(
     VirtualNetworkGatewayConnectionPropertiesFormatInputEgressNatRulesItem,
@@ -98937,7 +98989,7 @@ export const VirtualNetworkGatewayConnectionTunnelProperties =
 
 /** Tunnel properties for virtual network gateway connection */
 export type VirtualNetworkGatewayConnectionPropertiesFormatInputTunnelPropertiesList =
-  ReadonlyArray<VirtualNetworkGatewayConnectionTunnelProperties>;
+  Array<VirtualNetworkGatewayConnectionTunnelProperties>;
 export const VirtualNetworkGatewayConnectionPropertiesFormatInputTunnelPropertiesList =
   /*@__PURE__*/ S.Array(
     VirtualNetworkGatewayConnectionTunnelProperties,
@@ -98982,7 +99034,7 @@ export const GatewayCustomBgpIpAddressIpConfiguration = /*@__PURE__*/ S.suspend(
 
 /** GatewayCustomBgpIpAddresses to be used for virtual network gateway Connection. */
 export type VirtualNetworkGatewayConnectionPropertiesFormatInputGatewayCustomBgpIpAddressesList =
-  ReadonlyArray<GatewayCustomBgpIpAddressIpConfiguration>;
+  Array<GatewayCustomBgpIpAddressIpConfiguration>;
 export const VirtualNetworkGatewayConnectionPropertiesFormatInputGatewayCustomBgpIpAddressesList =
   /*@__PURE__*/ S.Array(
     GatewayCustomBgpIpAddressIpConfiguration,
@@ -98990,22 +99042,21 @@ export const VirtualNetworkGatewayConnectionPropertiesFormatInputGatewayCustomBg
 
 /** The IPSec Policies to be considered by this connection. */
 export type VirtualNetworkGatewayConnectionPropertiesFormatInputIpsecPoliciesList =
-  ReadonlyArray<IpsecPolicy>;
+  Array<IpsecPolicy>;
 export const VirtualNetworkGatewayConnectionPropertiesFormatInputIpsecPoliciesList =
   /*@__PURE__*/ S.Array(
     IpsecPolicy,
   ) as any as S.Schema<VirtualNetworkGatewayConnectionPropertiesFormatInputIpsecPoliciesList>;
 
 /** A collection of local address spaces in CIDR format. */
-export type TrafficSelectorPolicyLocalAddressRangesList = ReadonlyArray<string>;
+export type TrafficSelectorPolicyLocalAddressRangesList = Array<string>;
 export const TrafficSelectorPolicyLocalAddressRangesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<TrafficSelectorPolicyLocalAddressRangesList>;
 
 /** A collection of remote address spaces in CIDR format. */
-export type TrafficSelectorPolicyRemoteAddressRangesList =
-  ReadonlyArray<string>;
+export type TrafficSelectorPolicyRemoteAddressRangesList = Array<string>;
 export const TrafficSelectorPolicyRemoteAddressRangesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -99029,7 +99080,7 @@ export const TrafficSelectorPolicy = /*@__PURE__*/ S.suspend(() =>
 
 /** The Traffic Selector Policies to be considered by this connection. */
 export type VirtualNetworkGatewayConnectionPropertiesFormatInputTrafficSelectorPoliciesList =
-  ReadonlyArray<TrafficSelectorPolicy>;
+  Array<TrafficSelectorPolicy>;
 export const VirtualNetworkGatewayConnectionPropertiesFormatInputTrafficSelectorPoliciesList =
   /*@__PURE__*/ S.Array(
     TrafficSelectorPolicy,
@@ -99049,7 +99100,7 @@ export const VirtualNetworkGatewayConnectionPropertiesFormatInputAuthenticationT
 
 /** Inbound authentication certificate public keys. */
 export type CertificateAuthenticationInboundAuthCertificateChainList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CertificateAuthenticationInboundAuthCertificateChainList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -99446,7 +99497,7 @@ export const VirtualNetworkGatewayIPConfiguration = /*@__PURE__*/ S.suspend(
 
 /** IP configurations for virtual network gateway. */
 export type VirtualNetworkGatewayPropertiesFormatIpConfigurationsList =
-  ReadonlyArray<VirtualNetworkGatewayIPConfiguration>;
+  Array<VirtualNetworkGatewayIPConfiguration>;
 export const VirtualNetworkGatewayPropertiesFormatIpConfigurationsList =
   /*@__PURE__*/ S.Array(
     VirtualNetworkGatewayIPConfiguration,
@@ -99554,7 +99605,7 @@ export const VirtualNetworkGatewaySku = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of address blocks reserved for this virtual network in CIDR notation. */
 export type VpnClientConfigurationVpnClientAddressPoolAddressPrefixesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const VpnClientConfigurationVpnClientAddressPoolAddressPrefixesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -99562,7 +99613,7 @@ export const VpnClientConfigurationVpnClientAddressPoolAddressPrefixesList =
 
 /** A list of IPAM Pools allocating IP address prefixes. */
 export type VpnClientConfigurationVpnClientAddressPoolIpamPoolPrefixAllocationsList =
-  ReadonlyArray<CommonIpamPoolPrefixAllocation>;
+  Array<CommonIpamPoolPrefixAllocation>;
 export const VpnClientConfigurationVpnClientAddressPoolIpamPoolPrefixAllocationsList =
   /*@__PURE__*/ S.Array(
     CommonIpamPoolPrefixAllocation,
@@ -99613,7 +99664,7 @@ export const VpnClientRootCertificate = /*@__PURE__*/ S.suspend(() =>
 
 /** VpnClientRootCertificate for virtual network gateway. */
 export type VpnClientConfigurationVpnClientRootCertificatesList =
-  ReadonlyArray<VpnClientRootCertificate>;
+  Array<VpnClientRootCertificate>;
 export const VpnClientConfigurationVpnClientRootCertificatesList =
   /*@__PURE__*/ S.Array(
     VpnClientRootCertificate,
@@ -99643,7 +99694,7 @@ export const VpnClientRevokedCertificate = /*@__PURE__*/ S.suspend(() =>
 
 /** VpnClientRevokedCertificate for Virtual network gateway. */
 export type VpnClientConfigurationVpnClientRevokedCertificatesList =
-  ReadonlyArray<VpnClientRevokedCertificate>;
+  Array<VpnClientRevokedCertificate>;
 export const VpnClientConfigurationVpnClientRevokedCertificatesList =
   /*@__PURE__*/ S.Array(
     VpnClientRevokedCertificate,
@@ -99659,7 +99710,7 @@ export const VpnClientConfigurationVpnClientProtocolsItem =
 
 /** VpnClientProtocols for Virtual network gateway. */
 export type VpnClientConfigurationVpnClientProtocolsList =
-  ReadonlyArray<VpnClientConfigurationVpnClientProtocolsItem>;
+  Array<VpnClientConfigurationVpnClientProtocolsItem>;
 export const VpnClientConfigurationVpnClientProtocolsList =
   /*@__PURE__*/ S.Array(
     VpnClientConfigurationVpnClientProtocolsItem,
@@ -99675,7 +99726,7 @@ export const VpnClientConfigurationVpnAuthenticationTypesItem =
 
 /** VPN authentication types for the virtual network gateway.. */
 export type VpnClientConfigurationVpnAuthenticationTypesList =
-  ReadonlyArray<VpnClientConfigurationVpnAuthenticationTypesItem>;
+  Array<VpnClientConfigurationVpnAuthenticationTypesItem>;
 export const VpnClientConfigurationVpnAuthenticationTypesList =
   /*@__PURE__*/ S.Array(
     VpnClientConfigurationVpnAuthenticationTypesItem,
@@ -99683,22 +99734,21 @@ export const VpnClientConfigurationVpnAuthenticationTypesList =
 
 /** VpnClientIpsecPolicies for virtual network gateway P2S client. */
 export type VpnClientConfigurationVpnClientIpsecPoliciesList =
-  ReadonlyArray<IpsecPolicy>;
+  Array<IpsecPolicy>;
 export const VpnClientConfigurationVpnClientIpsecPoliciesList =
   /*@__PURE__*/ S.Array(
     IpsecPolicy,
   ) as any as S.Schema<VpnClientConfigurationVpnClientIpsecPoliciesList>;
 
 /** The radiusServers property for multiple radius server configuration. */
-export type VpnClientConfigurationRadiusServersList =
-  ReadonlyArray<RadiusServer>;
+export type VpnClientConfigurationRadiusServersList = Array<RadiusServer>;
 export const VpnClientConfigurationRadiusServersList = /*@__PURE__*/ S.Array(
   RadiusServer,
 ) as any as S.Schema<VpnClientConfigurationRadiusServersList>;
 
 /** A list of address blocks reserved for this virtual network in CIDR notation. */
 export type VngClientConnectionConfigurationPropertiesVpnClientAddressPoolAddressPrefixesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const VngClientConnectionConfigurationPropertiesVpnClientAddressPoolAddressPrefixesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -99706,7 +99756,7 @@ export const VngClientConnectionConfigurationPropertiesVpnClientAddressPoolAddre
 
 /** A list of IPAM Pools allocating IP address prefixes. */
 export type VngClientConnectionConfigurationPropertiesVpnClientAddressPoolIpamPoolPrefixAllocationsList =
-  ReadonlyArray<CommonIpamPoolPrefixAllocation>;
+  Array<CommonIpamPoolPrefixAllocation>;
 export const VngClientConnectionConfigurationPropertiesVpnClientAddressPoolIpamPoolPrefixAllocationsList =
   /*@__PURE__*/ S.Array(
     CommonIpamPoolPrefixAllocation,
@@ -99751,7 +99801,7 @@ export const VngClientConnectionConfigurationPropertiesVirtualNetworkGatewayPoli
 
 /** List of references to virtualNetworkGatewayPolicyGroups */
 export type VngClientConnectionConfigurationPropertiesVirtualNetworkGatewayPolicyGroupsList =
-  ReadonlyArray<VngClientConnectionConfigurationPropertiesVirtualNetworkGatewayPolicyGroupsItem>;
+  Array<VngClientConnectionConfigurationPropertiesVirtualNetworkGatewayPolicyGroupsItem>;
 export const VngClientConnectionConfigurationPropertiesVirtualNetworkGatewayPolicyGroupsList =
   /*@__PURE__*/ S.Array(
     VngClientConnectionConfigurationPropertiesVirtualNetworkGatewayPolicyGroupsItem,
@@ -99816,7 +99866,7 @@ export const VngClientConnectionConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** per ip address pool connection policy for virtual network gateway P2S client. */
 export type VpnClientConfigurationVngClientConnectionConfigurationsList =
-  ReadonlyArray<VngClientConnectionConfiguration>;
+  Array<VngClientConnectionConfiguration>;
 export const VpnClientConfigurationVngClientConnectionConfigurationsList =
   /*@__PURE__*/ S.Array(
     VngClientConnectionConfiguration,
@@ -99887,7 +99937,7 @@ export const VpnClientConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** Multiple PolicyMembers for VirtualNetworkGatewayPolicyGroup. */
 export type VirtualNetworkGatewayPolicyGroupPropertiesPolicyMembersList =
-  ReadonlyArray<VirtualNetworkGatewayPolicyGroupMember>;
+  Array<VirtualNetworkGatewayPolicyGroupMember>;
 export const VirtualNetworkGatewayPolicyGroupPropertiesPolicyMembersList =
   /*@__PURE__*/ S.Array(
     VirtualNetworkGatewayPolicyGroupMember,
@@ -99910,7 +99960,7 @@ export const VirtualNetworkGatewayPolicyGroupPropertiesVngClientConnectionConfig
 
 /** List of references to vngClientConnectionConfigurations. */
 export type VirtualNetworkGatewayPolicyGroupPropertiesVngClientConnectionConfigurationsList =
-  ReadonlyArray<VirtualNetworkGatewayPolicyGroupPropertiesVngClientConnectionConfigurationsItem>;
+  Array<VirtualNetworkGatewayPolicyGroupPropertiesVngClientConnectionConfigurationsItem>;
 export const VirtualNetworkGatewayPolicyGroupPropertiesVngClientConnectionConfigurationsList =
   /*@__PURE__*/ S.Array(
     VirtualNetworkGatewayPolicyGroupPropertiesVngClientConnectionConfigurationsItem,
@@ -99982,7 +100032,7 @@ export const VirtualNetworkGatewayPolicyGroup = /*@__PURE__*/ S.suspend(() =>
 
 /** The reference to the VirtualNetworkGatewayPolicyGroup resource which represents the available VirtualNetworkGatewayPolicyGroup for the gateway. */
 export type VirtualNetworkGatewayPropertiesFormatVirtualNetworkGatewayPolicyGroupsList =
-  ReadonlyArray<VirtualNetworkGatewayPolicyGroup>;
+  Array<VirtualNetworkGatewayPolicyGroup>;
 export const VirtualNetworkGatewayPropertiesFormatVirtualNetworkGatewayPolicyGroupsList =
   /*@__PURE__*/ S.Array(
     VirtualNetworkGatewayPolicyGroup,
@@ -99990,7 +100040,7 @@ export const VirtualNetworkGatewayPropertiesFormatVirtualNetworkGatewayPolicyGro
 
 /** A list of address blocks reserved for this virtual network in CIDR notation. */
 export type VirtualNetworkGatewayPropertiesFormatCustomRoutesAddressPrefixesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const VirtualNetworkGatewayPropertiesFormatCustomRoutesAddressPrefixesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -99998,7 +100048,7 @@ export const VirtualNetworkGatewayPropertiesFormatCustomRoutesAddressPrefixesLis
 
 /** A list of IPAM Pools allocating IP address prefixes. */
 export type VirtualNetworkGatewayPropertiesFormatCustomRoutesIpamPoolPrefixAllocationsList =
-  ReadonlyArray<CommonIpamPoolPrefixAllocation>;
+  Array<CommonIpamPoolPrefixAllocation>;
 export const VirtualNetworkGatewayPropertiesFormatCustomRoutesIpamPoolPrefixAllocationsList =
   /*@__PURE__*/ S.Array(
     CommonIpamPoolPrefixAllocation,
@@ -100063,7 +100113,7 @@ export const VirtualNetworkGatewayNatRule = /*@__PURE__*/ S.suspend(() =>
 
 /** NatRules for virtual network gateway. */
 export type VirtualNetworkGatewayPropertiesFormatNatRulesList =
-  ReadonlyArray<VirtualNetworkGatewayNatRule>;
+  Array<VirtualNetworkGatewayNatRule>;
 export const VirtualNetworkGatewayPropertiesFormatNatRulesList =
   /*@__PURE__*/ S.Array(
     VirtualNetworkGatewayNatRule,
@@ -100317,7 +100367,7 @@ export const VirtualNetworkGatewayConnectionPropertiesFormatIngressNatRulesItem 
 
 /** List of ingress NatRules. */
 export type VirtualNetworkGatewayConnectionPropertiesFormatIngressNatRulesList =
-  ReadonlyArray<VirtualNetworkGatewayConnectionPropertiesFormatIngressNatRulesItem>;
+  Array<VirtualNetworkGatewayConnectionPropertiesFormatIngressNatRulesItem>;
 export const VirtualNetworkGatewayConnectionPropertiesFormatIngressNatRulesList =
   /*@__PURE__*/ S.Array(
     VirtualNetworkGatewayConnectionPropertiesFormatIngressNatRulesItem,
@@ -100340,7 +100390,7 @@ export const VirtualNetworkGatewayConnectionPropertiesFormatEgressNatRulesItem =
 
 /** List of egress NatRules. */
 export type VirtualNetworkGatewayConnectionPropertiesFormatEgressNatRulesList =
-  ReadonlyArray<VirtualNetworkGatewayConnectionPropertiesFormatEgressNatRulesItem>;
+  Array<VirtualNetworkGatewayConnectionPropertiesFormatEgressNatRulesItem>;
 export const VirtualNetworkGatewayConnectionPropertiesFormatEgressNatRulesList =
   /*@__PURE__*/ S.Array(
     VirtualNetworkGatewayConnectionPropertiesFormatEgressNatRulesItem,
@@ -100372,7 +100422,7 @@ export const VirtualNetworkGatewayConnectionPropertiesFormatConnectionMode =
 
 /** Tunnel properties for virtual network gateway connection */
 export type VirtualNetworkGatewayConnectionPropertiesFormatTunnelPropertiesList =
-  ReadonlyArray<VirtualNetworkGatewayConnectionTunnelProperties>;
+  Array<VirtualNetworkGatewayConnectionTunnelProperties>;
 export const VirtualNetworkGatewayConnectionPropertiesFormatTunnelPropertiesList =
   /*@__PURE__*/ S.Array(
     VirtualNetworkGatewayConnectionTunnelProperties,
@@ -100422,7 +100472,7 @@ export const TunnelConnectionHealth = /*@__PURE__*/ S.suspend(() =>
 
 /** Collection of all tunnels' connection health status. */
 export type VirtualNetworkGatewayConnectionPropertiesFormatTunnelConnectionStatusList =
-  ReadonlyArray<TunnelConnectionHealth>;
+  Array<TunnelConnectionHealth>;
 export const VirtualNetworkGatewayConnectionPropertiesFormatTunnelConnectionStatusList =
   /*@__PURE__*/ S.Array(
     TunnelConnectionHealth,
@@ -100444,7 +100494,7 @@ export const VirtualNetworkGatewayConnectionPropertiesFormatPeer =
 
 /** GatewayCustomBgpIpAddresses to be used for virtual network gateway Connection. */
 export type VirtualNetworkGatewayConnectionPropertiesFormatGatewayCustomBgpIpAddressesList =
-  ReadonlyArray<GatewayCustomBgpIpAddressIpConfiguration>;
+  Array<GatewayCustomBgpIpAddressIpConfiguration>;
 export const VirtualNetworkGatewayConnectionPropertiesFormatGatewayCustomBgpIpAddressesList =
   /*@__PURE__*/ S.Array(
     GatewayCustomBgpIpAddressIpConfiguration,
@@ -100452,7 +100502,7 @@ export const VirtualNetworkGatewayConnectionPropertiesFormatGatewayCustomBgpIpAd
 
 /** The IPSec Policies to be considered by this connection. */
 export type VirtualNetworkGatewayConnectionPropertiesFormatIpsecPoliciesList =
-  ReadonlyArray<IpsecPolicy>;
+  Array<IpsecPolicy>;
 export const VirtualNetworkGatewayConnectionPropertiesFormatIpsecPoliciesList =
   /*@__PURE__*/ S.Array(
     IpsecPolicy,
@@ -100460,7 +100510,7 @@ export const VirtualNetworkGatewayConnectionPropertiesFormatIpsecPoliciesList =
 
 /** The Traffic Selector Policies to be considered by this connection. */
 export type VirtualNetworkGatewayConnectionPropertiesFormatTrafficSelectorPoliciesList =
-  ReadonlyArray<TrafficSelectorPolicy>;
+  Array<TrafficSelectorPolicy>;
 export const VirtualNetworkGatewayConnectionPropertiesFormatTrafficSelectorPoliciesList =
   /*@__PURE__*/ S.Array(
     TrafficSelectorPolicy,
@@ -100964,7 +101014,7 @@ export const VirtualNetworkGatewayConnection = /*@__PURE__*/ S.suspend(() =>
 
 /** The VirtualNetworkGatewayConnection items on this page */
 export type VirtualNetworkGatewayConnectionListResultValueList =
-  ReadonlyArray<VirtualNetworkGatewayConnection>;
+  Array<VirtualNetworkGatewayConnection>;
 export const VirtualNetworkGatewayConnectionListResultValueList =
   /*@__PURE__*/ S.Array(
     VirtualNetworkGatewayConnection,
@@ -101444,7 +101494,7 @@ export const VirtualNetworkGatewayNatRulesListByVirtualNetworkGatewayRequest =
 
 /** The VirtualNetworkGatewayNatRule items on this page */
 export type ListVirtualNetworkGatewayNatRulesResultValueList =
-  ReadonlyArray<VirtualNetworkGatewayNatRule>;
+  Array<VirtualNetworkGatewayNatRule>;
 export const ListVirtualNetworkGatewayNatRulesResultValueList =
   /*@__PURE__*/ S.Array(
     VirtualNetworkGatewayNatRule,
@@ -101708,7 +101758,7 @@ export const VirtualNetworkGatewaysDeleteResponse = /*@__PURE__*/ S.suspend(
 
 /** List of p2s vpn connection Ids. */
 export type VirtualNetworkGatewaysDisconnectVirtualNetworkGatewayVpnConnectionsRequestVpnConnectionIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const VirtualNetworkGatewaysDisconnectVirtualNetworkGatewayVpnConnectionsRequestVpnConnectionIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -101767,7 +101817,7 @@ export const VirtualNetworkGatewaysGeneratevpnclientpackageRequestAuthentication
 
 /** A list of client root certificates public certificate data encoded as Base-64 strings. Optional parameter for external radius based authentication with EAPTLS. */
 export type VirtualNetworkGatewaysGeneratevpnclientpackageRequestClientRootCertificatesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const VirtualNetworkGatewaysGeneratevpnclientpackageRequestClientRootCertificatesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -101841,7 +101891,7 @@ export const VirtualNetworkGatewaysGenerateVpnProfileRequestAuthenticationMethod
 
 /** A list of client root certificates public certificate data encoded as Base-64 strings. Optional parameter for external radius based authentication with EAPTLS. */
 export type VirtualNetworkGatewaysGenerateVpnProfileRequestClientRootCertificatesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const VirtualNetworkGatewaysGenerateVpnProfileRequestClientRootCertificatesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -102083,7 +102133,7 @@ export const GatewayRoute = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GatewayRoute" }) as any as S.Schema<GatewayRoute>;
 
 /** List of gateway routes. */
-export type GatewayRouteListResultValueList = ReadonlyArray<GatewayRoute>;
+export type GatewayRouteListResultValueList = Array<GatewayRoute>;
 export const GatewayRouteListResultValueList = /*@__PURE__*/ S.Array(
   GatewayRoute,
 ) as any as S.Schema<GatewayRouteListResultValueList>;
@@ -102172,7 +102222,7 @@ export const BgpPeerStatus = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BgpPeerStatus" }) as any as S.Schema<BgpPeerStatus>;
 
 /** List of BGP peers. */
-export type BgpPeerStatusListResultValueList = ReadonlyArray<BgpPeerStatus>;
+export type BgpPeerStatusListResultValueList = Array<BgpPeerStatus>;
 export const BgpPeerStatusListResultValueList = /*@__PURE__*/ S.Array(
   BgpPeerStatus,
 ) as any as S.Schema<BgpPeerStatusListResultValueList>;
@@ -102224,7 +102274,7 @@ export const VirtualNetworkGatewaysGetFailoverAllTestDetailsRequest =
 
 /** All circuits in the peering location */
 export type ExpressRouteFailoverTestDetailsCircuitsList =
-  ReadonlyArray<ExpressRouteFailoverCircuitResourceDetails>;
+  Array<ExpressRouteFailoverCircuitResourceDetails>;
 export const ExpressRouteFailoverTestDetailsCircuitsList =
   /*@__PURE__*/ S.Array(
     ExpressRouteFailoverCircuitResourceDetails,
@@ -102245,7 +102295,7 @@ export const ExpressRouteFailoverTestDetailsStatus = /*@__PURE__*/ S.String;
 
 /** All connections to the circuits in the peering location */
 export type ExpressRouteFailoverTestDetailsConnectionsList =
-  ReadonlyArray<ExpressRouteFailoverConnectionResourceDetails>;
+  Array<ExpressRouteFailoverConnectionResourceDetails>;
 export const ExpressRouteFailoverTestDetailsConnectionsList =
   /*@__PURE__*/ S.Array(
     ExpressRouteFailoverConnectionResourceDetails,
@@ -102259,7 +102309,7 @@ export type ExpressRouteFailoverTestDetailsTestType =
 export const ExpressRouteFailoverTestDetailsTestType = /*@__PURE__*/ S.String;
 
 /** A list of all issues with the test */
-export type ExpressRouteFailoverTestDetailsIssuesList = ReadonlyArray<string>;
+export type ExpressRouteFailoverTestDetailsIssuesList = Array<string>;
 export const ExpressRouteFailoverTestDetailsIssuesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ExpressRouteFailoverTestDetailsIssuesList>;
@@ -102302,7 +102352,7 @@ export const ExpressRouteFailoverTestDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExpressRouteFailoverTestDetails>;
 
 export type VirtualNetworkGatewaysGetFailoverAllTestDetailsResponseBodyList =
-  ReadonlyArray<ExpressRouteFailoverTestDetails>;
+  Array<ExpressRouteFailoverTestDetails>;
 export const VirtualNetworkGatewaysGetFailoverAllTestDetailsResponseBodyList =
   /*@__PURE__*/ S.Array(
     ExpressRouteFailoverTestDetails,
@@ -102367,7 +102417,7 @@ export const ExpressRouteFailoverSingleTestDetailsStatus =
 
 /** List of routes received from this peering as well as some other peering location */
 export type ExpressRouteFailoverSingleTestDetailsRedundantRoutesList =
-  ReadonlyArray<ExpressRouteFailoverRedundantRoute>;
+  Array<ExpressRouteFailoverRedundantRoute>;
 export const ExpressRouteFailoverSingleTestDetailsRedundantRoutesList =
   /*@__PURE__*/ S.Array(
     ExpressRouteFailoverRedundantRoute,
@@ -102375,7 +102425,7 @@ export const ExpressRouteFailoverSingleTestDetailsRedundantRoutesList =
 
 /** List of al the routes that were received only from this peering location */
 export type ExpressRouteFailoverSingleTestDetailsNonRedundantRoutesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ExpressRouteFailoverSingleTestDetailsNonRedundantRoutesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -102383,7 +102433,7 @@ export const ExpressRouteFailoverSingleTestDetailsNonRedundantRoutesList =
 
 /** List of all the failover connections for this peering location */
 export type ExpressRouteFailoverSingleTestDetailsFailoverConnectionDetailsList =
-  ReadonlyArray<FailoverConnectionDetails>;
+  Array<FailoverConnectionDetails>;
 export const ExpressRouteFailoverSingleTestDetailsFailoverConnectionDetailsList =
   /*@__PURE__*/ S.Array(
     FailoverConnectionDetails,
@@ -102431,7 +102481,7 @@ export const ExpressRouteFailoverSingleTestDetails = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ExpressRouteFailoverSingleTestDetails>;
 
 export type VirtualNetworkGatewaysGetFailoverSingleTestDetailsResponseBodyList =
-  ReadonlyArray<ExpressRouteFailoverSingleTestDetails>;
+  Array<ExpressRouteFailoverSingleTestDetails>;
 export const VirtualNetworkGatewaysGetFailoverSingleTestDetailsResponseBodyList =
   /*@__PURE__*/ S.Array(
     ExpressRouteFailoverSingleTestDetails,
@@ -102505,7 +102555,7 @@ export const VirtualNetworkGatewaysGetResiliencyInformationRequest =
 
 /** List of Resiliency based Recommendation Components for the gateway */
 export type GatewayResiliencyInformationComponentsList =
-  ReadonlyArray<ResiliencyRecommendationComponents>;
+  Array<ResiliencyRecommendationComponents>;
 export const GatewayResiliencyInformationComponentsList = /*@__PURE__*/ S.Array(
   ResiliencyRecommendationComponents,
 ) as any as S.Schema<GatewayResiliencyInformationComponentsList>;
@@ -102571,8 +102621,7 @@ export const VirtualNetworkGatewaysGetRoutesInformationRequest =
   }) as any as S.Schema<VirtualNetworkGatewaysGetRoutesInformationRequest>;
 
 /** List of Gateway Route Sets */
-export type GatewayRouteSetsInformationRouteSetsList =
-  ReadonlyArray<GatewayRouteSet>;
+export type GatewayRouteSetsInformationRouteSetsList = Array<GatewayRouteSet>;
 export const GatewayRouteSetsInformationRouteSetsList = /*@__PURE__*/ S.Array(
   GatewayRouteSet,
 ) as any as S.Schema<GatewayRouteSetsInformationRouteSetsList>;
@@ -102688,7 +102737,7 @@ export const VpnClientConnectionHealthDetail = /*@__PURE__*/ S.suspend(() =>
 
 /** List of vpn client connection health. */
 export type VpnClientConnectionHealthDetailListResultValueList =
-  ReadonlyArray<VpnClientConnectionHealthDetail>;
+  Array<VpnClientConnectionHealthDetail>;
 export const VpnClientConnectionHealthDetailListResultValueList =
   /*@__PURE__*/ S.Array(
     VpnClientConnectionHealthDetail,
@@ -103036,7 +103085,7 @@ export const VirtualNetworkGatewaysListRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The VirtualNetworkGateway items on this page */
 export type VirtualNetworkGatewayListResultValueList =
-  ReadonlyArray<VirtualNetworkGateway>;
+  Array<VirtualNetworkGateway>;
 export const VirtualNetworkGatewayListResultValueList = /*@__PURE__*/ S.Array(
   VirtualNetworkGateway,
 ) as any as S.Schema<VirtualNetworkGatewayListResultValueList>;
@@ -103133,7 +103182,7 @@ export const VirtualNetworkGatewayConnectionListEntityPropertiesFormatConnection
 
 /** Collection of all tunnels' connection health status. */
 export type VirtualNetworkGatewayConnectionListEntityPropertiesFormatTunnelConnectionStatusList =
-  ReadonlyArray<TunnelConnectionHealth>;
+  Array<TunnelConnectionHealth>;
 export const VirtualNetworkGatewayConnectionListEntityPropertiesFormatTunnelConnectionStatusList =
   /*@__PURE__*/ S.Array(
     TunnelConnectionHealth,
@@ -103155,7 +103204,7 @@ export const VirtualNetworkGatewayConnectionListEntityPropertiesFormatPeer =
 
 /** GatewayCustomBgpIpAddresses to be used for virtual network gateway Connection. */
 export type VirtualNetworkGatewayConnectionListEntityPropertiesFormatGatewayCustomBgpIpAddressesList =
-  ReadonlyArray<GatewayCustomBgpIpAddressIpConfiguration>;
+  Array<GatewayCustomBgpIpAddressIpConfiguration>;
 export const VirtualNetworkGatewayConnectionListEntityPropertiesFormatGatewayCustomBgpIpAddressesList =
   /*@__PURE__*/ S.Array(
     GatewayCustomBgpIpAddressIpConfiguration,
@@ -103163,7 +103212,7 @@ export const VirtualNetworkGatewayConnectionListEntityPropertiesFormatGatewayCus
 
 /** The IPSec Policies to be considered by this connection. */
 export type VirtualNetworkGatewayConnectionListEntityPropertiesFormatIpsecPoliciesList =
-  ReadonlyArray<IpsecPolicy>;
+  Array<IpsecPolicy>;
 export const VirtualNetworkGatewayConnectionListEntityPropertiesFormatIpsecPoliciesList =
   /*@__PURE__*/ S.Array(
     IpsecPolicy,
@@ -103171,7 +103220,7 @@ export const VirtualNetworkGatewayConnectionListEntityPropertiesFormatIpsecPolic
 
 /** The Traffic Selector Policies to be considered by this connection. */
 export type VirtualNetworkGatewayConnectionListEntityPropertiesFormatTrafficSelectorPoliciesList =
-  ReadonlyArray<TrafficSelectorPolicy>;
+  Array<TrafficSelectorPolicy>;
 export const VirtualNetworkGatewayConnectionListEntityPropertiesFormatTrafficSelectorPoliciesList =
   /*@__PURE__*/ S.Array(
     TrafficSelectorPolicy,
@@ -103403,7 +103452,7 @@ export const VirtualNetworkGatewayConnectionListEntity =
 
 /** The VirtualNetworkGatewayConnectionListEntity items on this page */
 export type VirtualNetworkGatewayListConnectionsResultValueList =
-  ReadonlyArray<VirtualNetworkGatewayConnectionListEntity>;
+  Array<VirtualNetworkGatewayConnectionListEntity>;
 export const VirtualNetworkGatewayListConnectionsResultValueList =
   /*@__PURE__*/ S.Array(
     VirtualNetworkGatewayConnectionListEntity,
@@ -103469,8 +103518,7 @@ export const RadiusAuthServer = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RadiusAuthServer>;
 
 /** The RadiusAuthServer items on this page */
-export type RadiusAuthServerListResultValueList =
-  ReadonlyArray<RadiusAuthServer>;
+export type RadiusAuthServerListResultValueList = Array<RadiusAuthServer>;
 export const RadiusAuthServerListResultValueList = /*@__PURE__*/ S.Array(
   RadiusAuthServer,
 ) as any as S.Schema<RadiusAuthServerListResultValueList>;
@@ -103851,7 +103899,7 @@ export const VirtualNetworkGatewaysStartPacketCaptureResponse =
 
 /** List of all the failover connections for this peering location */
 export type VirtualNetworkGatewaysStopExpressRouteSiteFailoverSimulationRequestDetailsList =
-  ReadonlyArray<FailoverConnectionDetails>;
+  Array<FailoverConnectionDetails>;
 export const VirtualNetworkGatewaysStopExpressRouteSiteFailoverSimulationRequestDetailsList =
   /*@__PURE__*/ S.Array(
     FailoverConnectionDetails,
@@ -104341,7 +104389,7 @@ export const VirtualNetworkPeeringsListRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The VirtualNetworkPeering items on this page */
 export type VirtualNetworkPeeringListResultValueList =
-  ReadonlyArray<CommonVirtualNetworkPeering>;
+  Array<CommonVirtualNetworkPeering>;
 export const VirtualNetworkPeeringListResultValueList = /*@__PURE__*/ S.Array(
   CommonVirtualNetworkPeering,
 ) as any as S.Schema<VirtualNetworkPeeringListResultValueList>;
@@ -104392,8 +104440,7 @@ export const VirtualNetworksCheckIPAddressAvailabilityRequest =
   }) as any as S.Schema<VirtualNetworksCheckIPAddressAvailabilityRequest>;
 
 /** Contains other available private IP addresses if the asked for address is taken. */
-export type IPAddressAvailabilityResultAvailableIPAddressesList =
-  ReadonlyArray<string>;
+export type IPAddressAvailabilityResultAvailableIPAddressesList = Array<string>;
 export const IPAddressAvailabilityResultAvailableIPAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -104502,7 +104549,7 @@ export const VirtualNetworksCreateOrUpdateResponseTagsMap =
 
 /** A list of subnets in a Virtual Network. */
 export type CommonVirtualNetworkPropertiesFormatSubnetsList_2 =
-  ReadonlyArray<CommonSubnet_6>;
+  Array<CommonSubnet_6>;
 export const CommonVirtualNetworkPropertiesFormatSubnetsList_2 =
   /*@__PURE__*/ S.Array(
     CommonSubnet_6,
@@ -104835,8 +104882,7 @@ export const CommonVirtualNetwork = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CommonVirtualNetwork>;
 
 /** The VirtualNetwork items on this page */
-export type VirtualNetworkListResultValueList =
-  ReadonlyArray<CommonVirtualNetwork>;
+export type VirtualNetworkListResultValueList = Array<CommonVirtualNetwork>;
 export const VirtualNetworkListResultValueList = /*@__PURE__*/ S.Array(
   CommonVirtualNetwork,
 ) as any as S.Schema<VirtualNetworkListResultValueList>;
@@ -104910,7 +104956,7 @@ export const VirtualNetworksListDdosProtectionStatusRequest =
 
 /** The PublicIpDdosProtectionStatusResult items on this page */
 export type VirtualNetworkDdosProtectionStatusResultValueList =
-  ReadonlyArray<PublicIpDdosProtectionStatusResult>;
+  Array<PublicIpDdosProtectionStatusResult>;
 export const VirtualNetworkDdosProtectionStatusResultValueList =
   /*@__PURE__*/ S.Array(
     PublicIpDdosProtectionStatusResult,
@@ -105000,8 +105046,7 @@ export const VirtualNetworkUsage = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VirtualNetworkUsage>;
 
 /** The VirtualNetworkUsage items on this page */
-export type VirtualNetworkListUsageResultValueList =
-  ReadonlyArray<VirtualNetworkUsage>;
+export type VirtualNetworkListUsageResultValueList = Array<VirtualNetworkUsage>;
 export const VirtualNetworkListUsageResultValueList = /*@__PURE__*/ S.Array(
   VirtualNetworkUsage,
 ) as any as S.Schema<VirtualNetworkListUsageResultValueList>;
@@ -105160,7 +105205,7 @@ export const CommonNetworkInterfaceIPConfigurationPropertiesFormatInputVirtualNe
 
 /** The reference to Virtual Network Taps. */
 export type CommonNetworkInterfaceIPConfigurationPropertiesFormatInputVirtualNetworkTapsList_2 =
-  ReadonlyArray<CommonNetworkInterfaceIPConfigurationPropertiesFormatInputVirtualNetworkTapsItem_2>;
+  Array<CommonNetworkInterfaceIPConfigurationPropertiesFormatInputVirtualNetworkTapsItem_2>;
 export const CommonNetworkInterfaceIPConfigurationPropertiesFormatInputVirtualNetworkTapsList_2 =
   /*@__PURE__*/ S.Array(
     CommonNetworkInterfaceIPConfigurationPropertiesFormatInputVirtualNetworkTapsItem_2,
@@ -105271,7 +105316,7 @@ export const CommonNetworkInterfaceIPConfigurationPropertiesFormatInputLoadBalan
 
 /** A list of references of LoadBalancerInboundNatRules. */
 export type CommonNetworkInterfaceIPConfigurationPropertiesFormatInputLoadBalancerInboundNatRulesList_2 =
-  ReadonlyArray<CommonNetworkInterfaceIPConfigurationPropertiesFormatInputLoadBalancerInboundNatRulesItem_2>;
+  Array<CommonNetworkInterfaceIPConfigurationPropertiesFormatInputLoadBalancerInboundNatRulesItem_2>;
 export const CommonNetworkInterfaceIPConfigurationPropertiesFormatInputLoadBalancerInboundNatRulesList_2 =
   /*@__PURE__*/ S.Array(
     CommonNetworkInterfaceIPConfigurationPropertiesFormatInputLoadBalancerInboundNatRulesItem_2,
@@ -105327,7 +105372,7 @@ export const CommonRouteInput_3 = /*@__PURE__*/ S.suspend(() =>
 
 /** Collection of routes contained within a route table. */
 export type CommonRouteTablePropertiesFormatInputRoutesList_3 =
-  ReadonlyArray<CommonRouteInput_3>;
+  Array<CommonRouteInput_3>;
 export const CommonRouteTablePropertiesFormatInputRoutesList_3 =
   /*@__PURE__*/ S.Array(
     CommonRouteInput_3,
@@ -105388,7 +105433,7 @@ export const CommonRouteTableInput_3 = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of service resources. */
 export type CommonServiceEndpointPolicyDefinitionPropertiesFormatServiceResourcesList_4 =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CommonServiceEndpointPolicyDefinitionPropertiesFormatServiceResourcesList_4 =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -105403,7 +105448,9 @@ export interface CommonServiceEndpointPolicyDefinitionPropertiesFormat_4 {
   /** A list of service resources. */
   serviceResources?: CommonServiceEndpointPolicyDefinitionPropertiesFormatServiceResourcesList_4;
   /** Provisioning states of a resource. */
-  provisioningState?: CommonServiceEndpointPolicyDefinitionPropertiesFormatProvisioningState;
+  provisioningState?:
+    | CommonServiceEndpointPolicyDefinitionPropertiesFormatProvisioningState
+    | (string & {});
 }
 export const CommonServiceEndpointPolicyDefinitionPropertiesFormat_4 =
   /*@__PURE__*/ S.suspend(() =>
@@ -105445,7 +105492,7 @@ export const CommonServiceEndpointPolicyDefinitionInput_4 =
 
 /** A collection of service endpoint policy definitions of the service endpoint policy. */
 export type CommonServiceEndpointPolicyPropertiesFormatInputServiceEndpointPolicyDefinitionsList_4 =
-  ReadonlyArray<CommonServiceEndpointPolicyDefinitionInput_4>;
+  Array<CommonServiceEndpointPolicyDefinitionInput_4>;
 export const CommonServiceEndpointPolicyPropertiesFormatInputServiceEndpointPolicyDefinitionsList_4 =
   /*@__PURE__*/ S.Array(
     CommonServiceEndpointPolicyDefinitionInput_4,
@@ -105512,7 +105559,7 @@ export const CommonSubnetPropertiesFormatInputServiceEndpointPoliciesItem_3 =
 
 /** An array of service endpoint policies. */
 export type CommonSubnetPropertiesFormatInputServiceEndpointPoliciesList_3 =
-  ReadonlyArray<CommonSubnetPropertiesFormatInputServiceEndpointPoliciesItem_3>;
+  Array<CommonSubnetPropertiesFormatInputServiceEndpointPoliciesItem_3>;
 export const CommonSubnetPropertiesFormatInputServiceEndpointPoliciesList_3 =
   /*@__PURE__*/ S.Array(
     CommonSubnetPropertiesFormatInputServiceEndpointPoliciesItem_3,
@@ -106127,7 +106174,7 @@ export const CommonVirtualNetworkTapPropertiesFormatNetworkInterfaceTapConfigura
 
 /** Specifies the list of resource IDs for the network interface IP configuration that needs to be tapped. */
 export type CommonVirtualNetworkTapPropertiesFormatNetworkInterfaceTapConfigurationsList_4 =
-  ReadonlyArray<CommonVirtualNetworkTapPropertiesFormatNetworkInterfaceTapConfigurationsItem_4>;
+  Array<CommonVirtualNetworkTapPropertiesFormatNetworkInterfaceTapConfigurationsItem_4>;
 export const CommonVirtualNetworkTapPropertiesFormatNetworkInterfaceTapConfigurationsList_4 =
   /*@__PURE__*/ S.Array(
     CommonVirtualNetworkTapPropertiesFormatNetworkInterfaceTapConfigurationsItem_4,
@@ -106172,7 +106219,7 @@ export const CommonNetworkInterfaceIPConfigurationPropertiesFormatVirtualNetwork
 
 /** The reference to Virtual Network Taps. */
 export type CommonNetworkInterfaceIPConfigurationPropertiesFormatVirtualNetworkTapsList_4 =
-  ReadonlyArray<CommonNetworkInterfaceIPConfigurationPropertiesFormatVirtualNetworkTapsItem_4>;
+  Array<CommonNetworkInterfaceIPConfigurationPropertiesFormatVirtualNetworkTapsItem_4>;
 export const CommonNetworkInterfaceIPConfigurationPropertiesFormatVirtualNetworkTapsList_4 =
   /*@__PURE__*/ S.Array(
     CommonNetworkInterfaceIPConfigurationPropertiesFormatVirtualNetworkTapsItem_4,
@@ -106211,7 +106258,7 @@ export const CommonApplicationGatewayBackendAddressPoolPropertiesFormatBackendIP
 
 /** Collection of references to IPs defined in network interfaces. */
 export type CommonApplicationGatewayBackendAddressPoolPropertiesFormatBackendIPConfigurationsList_4 =
-  ReadonlyArray<CommonApplicationGatewayBackendAddressPoolPropertiesFormatBackendIPConfigurationsItem_4>;
+  Array<CommonApplicationGatewayBackendAddressPoolPropertiesFormatBackendIPConfigurationsItem_4>;
 export const CommonApplicationGatewayBackendAddressPoolPropertiesFormatBackendIPConfigurationsList_4 =
   /*@__PURE__*/ S.Array(
     CommonApplicationGatewayBackendAddressPoolPropertiesFormatBackendIPConfigurationsItem_4,
@@ -106274,7 +106321,7 @@ export const CommonNetworkInterfaceIPConfigurationPropertiesFormatApplicationGat
 
 /** The reference to ApplicationGatewayBackendAddressPool resource. */
 export type CommonNetworkInterfaceIPConfigurationPropertiesFormatApplicationGatewayBackendAddressPoolsList_4 =
-  ReadonlyArray<CommonNetworkInterfaceIPConfigurationPropertiesFormatApplicationGatewayBackendAddressPoolsItem_4>;
+  Array<CommonNetworkInterfaceIPConfigurationPropertiesFormatApplicationGatewayBackendAddressPoolsItem_4>;
 export const CommonNetworkInterfaceIPConfigurationPropertiesFormatApplicationGatewayBackendAddressPoolsList_4 =
   /*@__PURE__*/ S.Array(
     CommonNetworkInterfaceIPConfigurationPropertiesFormatApplicationGatewayBackendAddressPoolsItem_4,
@@ -106313,7 +106360,7 @@ export const CommonBackendAddressPoolPropertiesFormatBackendIPConfigurationsItem
 
 /** An array of references to IP addresses defined in network interfaces. */
 export type CommonBackendAddressPoolPropertiesFormatBackendIPConfigurationsList_4 =
-  ReadonlyArray<CommonBackendAddressPoolPropertiesFormatBackendIPConfigurationsItem_4>;
+  Array<CommonBackendAddressPoolPropertiesFormatBackendIPConfigurationsItem_4>;
 export const CommonBackendAddressPoolPropertiesFormatBackendIPConfigurationsList_4 =
   /*@__PURE__*/ S.Array(
     CommonBackendAddressPoolPropertiesFormatBackendIPConfigurationsItem_4,
@@ -106413,7 +106460,7 @@ export const CommonNetworkInterfaceIPConfigurationPropertiesFormatLoadBalancerBa
 
 /** The reference to LoadBalancerBackendAddressPool resource. */
 export type CommonNetworkInterfaceIPConfigurationPropertiesFormatLoadBalancerBackendAddressPoolsList_4 =
-  ReadonlyArray<CommonNetworkInterfaceIPConfigurationPropertiesFormatLoadBalancerBackendAddressPoolsItem_4>;
+  Array<CommonNetworkInterfaceIPConfigurationPropertiesFormatLoadBalancerBackendAddressPoolsItem_4>;
 export const CommonNetworkInterfaceIPConfigurationPropertiesFormatLoadBalancerBackendAddressPoolsList_4 =
   /*@__PURE__*/ S.Array(
     CommonNetworkInterfaceIPConfigurationPropertiesFormatLoadBalancerBackendAddressPoolsItem_4,
@@ -106533,7 +106580,7 @@ export const CommonNetworkInterfaceIPConfigurationPropertiesFormatLoadBalancerIn
 
 /** A list of references of LoadBalancerInboundNatRules. */
 export type CommonNetworkInterfaceIPConfigurationPropertiesFormatLoadBalancerInboundNatRulesList_4 =
-  ReadonlyArray<CommonNetworkInterfaceIPConfigurationPropertiesFormatLoadBalancerInboundNatRulesItem_4>;
+  Array<CommonNetworkInterfaceIPConfigurationPropertiesFormatLoadBalancerInboundNatRulesItem_4>;
 export const CommonNetworkInterfaceIPConfigurationPropertiesFormatLoadBalancerInboundNatRulesList_4 =
   /*@__PURE__*/ S.Array(
     CommonNetworkInterfaceIPConfigurationPropertiesFormatLoadBalancerInboundNatRulesItem_4,
@@ -106541,7 +106588,7 @@ export const CommonNetworkInterfaceIPConfigurationPropertiesFormatLoadBalancerIn
 
 /** The CIDR or source IP ranges. */
 export type CommonSecurityRulePropertiesFormatSourceAddressPrefixesList_4 =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CommonSecurityRulePropertiesFormatSourceAddressPrefixesList_4 =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -106549,7 +106596,7 @@ export const CommonSecurityRulePropertiesFormatSourceAddressPrefixesList_4 =
 
 /** The application security group specified as source. */
 export type CommonSecurityRulePropertiesFormatSourceApplicationSecurityGroupsList_4 =
-  ReadonlyArray<CommonApplicationSecurityGroup>;
+  Array<CommonApplicationSecurityGroup>;
 export const CommonSecurityRulePropertiesFormatSourceApplicationSecurityGroupsList_4 =
   /*@__PURE__*/ S.Array(
     CommonApplicationSecurityGroup,
@@ -106557,7 +106604,7 @@ export const CommonSecurityRulePropertiesFormatSourceApplicationSecurityGroupsLi
 
 /** The destination address prefixes. CIDR or destination IP ranges. */
 export type CommonSecurityRulePropertiesFormatDestinationAddressPrefixesList_4 =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CommonSecurityRulePropertiesFormatDestinationAddressPrefixesList_4 =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -106565,7 +106612,7 @@ export const CommonSecurityRulePropertiesFormatDestinationAddressPrefixesList_4 
 
 /** The application security group specified as destination. */
 export type CommonSecurityRulePropertiesFormatDestinationApplicationSecurityGroupsList_4 =
-  ReadonlyArray<CommonApplicationSecurityGroup>;
+  Array<CommonApplicationSecurityGroup>;
 export const CommonSecurityRulePropertiesFormatDestinationApplicationSecurityGroupsList_4 =
   /*@__PURE__*/ S.Array(
     CommonApplicationSecurityGroup,
@@ -106573,7 +106620,7 @@ export const CommonSecurityRulePropertiesFormatDestinationApplicationSecurityGro
 
 /** The source port ranges. */
 export type CommonSecurityRulePropertiesFormatSourcePortRangesList_4 =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CommonSecurityRulePropertiesFormatSourcePortRangesList_4 =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -106581,7 +106628,7 @@ export const CommonSecurityRulePropertiesFormatSourcePortRangesList_4 =
 
 /** The destination port ranges. */
 export type CommonSecurityRulePropertiesFormatDestinationPortRangesList_4 =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CommonSecurityRulePropertiesFormatDestinationPortRangesList_4 =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -106687,7 +106734,7 @@ export const CommonSecurityRule_4 = /*@__PURE__*/ S.suspend(() =>
 
 /** A collection of security rules of the network security group. */
 export type CommonNetworkSecurityGroupPropertiesFormatSecurityRulesList_4 =
-  ReadonlyArray<CommonSecurityRule_4>;
+  Array<CommonSecurityRule_4>;
 export const CommonNetworkSecurityGroupPropertiesFormatSecurityRulesList_4 =
   /*@__PURE__*/ S.Array(
     CommonSecurityRule_4,
@@ -106695,7 +106742,7 @@ export const CommonNetworkSecurityGroupPropertiesFormatSecurityRulesList_4 =
 
 /** The default security rules of network security group. */
 export type CommonNetworkSecurityGroupPropertiesFormatDefaultSecurityRulesList_4 =
-  ReadonlyArray<CommonSecurityRule_4>;
+  Array<CommonSecurityRule_4>;
 export const CommonNetworkSecurityGroupPropertiesFormatDefaultSecurityRulesList_4 =
   /*@__PURE__*/ S.Array(
     CommonSecurityRule_4,
@@ -106717,7 +106764,7 @@ export const CommonNetworkInterfacePropertiesFormatVirtualMachine_4 =
 
 /** An array of references to the network interfaces created for this private endpoint. */
 export type CommonPrivateEndpointPropertiesNetworkInterfacesList_4 =
-  ReadonlyArray<CommonNetworkInterface_4>;
+  Array<CommonNetworkInterface_4>;
 export const CommonPrivateEndpointPropertiesNetworkInterfacesList_4 =
   /*@__PURE__*/ S.Array(
     S.suspend(() => CommonNetworkInterface_4),
@@ -106846,7 +106893,7 @@ export const CommonNetworkInterfaceIPConfiguration_3 = /*@__PURE__*/ S.suspend(
 
 /** A list of IPConfigurations of the network interface. */
 export type CommonNetworkInterfacePropertiesFormatIpConfigurationsList_4 =
-  ReadonlyArray<CommonNetworkInterfaceIPConfiguration_3>;
+  Array<CommonNetworkInterfaceIPConfiguration_3>;
 export const CommonNetworkInterfacePropertiesFormatIpConfigurationsList_4 =
   /*@__PURE__*/ S.Array(
     CommonNetworkInterfaceIPConfiguration_3,
@@ -106882,7 +106929,7 @@ export const CommonNetworkInterfaceTapConfiguration_3 = /*@__PURE__*/ S.suspend(
 
 /** A list of TapConfigurations of the network interface. */
 export type CommonNetworkInterfacePropertiesFormatTapConfigurationsList_4 =
-  ReadonlyArray<CommonNetworkInterfaceTapConfiguration_3>;
+  Array<CommonNetworkInterfaceTapConfiguration_3>;
 export const CommonNetworkInterfacePropertiesFormatTapConfigurationsList_4 =
   /*@__PURE__*/ S.Array(
     CommonNetworkInterfaceTapConfiguration_3,
@@ -106890,7 +106937,7 @@ export const CommonNetworkInterfacePropertiesFormatTapConfigurationsList_4 =
 
 /** A list of references to linked BareMetal resources. */
 export type CommonNetworkInterfacePropertiesFormatHostedWorkloadsList_4 =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CommonNetworkInterfacePropertiesFormatHostedWorkloadsList_4 =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -106963,7 +107010,7 @@ export const CommonPublicIPAddressExtendedLocation_2 = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CommonPublicIPAddressExtendedLocation_2>;
 
 /** A list of availability zones denoting the IP allocated for the resource needs to come from. */
-export type CommonPublicIPAddressZonesList_2 = ReadonlyArray<unknown>;
+export type CommonPublicIPAddressZonesList_2 = Array<unknown>;
 export const CommonPublicIPAddressZonesList_2 = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<CommonPublicIPAddressZonesList_2>;
@@ -107064,7 +107111,7 @@ export const CommonIPConfiguration_4 = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of tags associated with the public IP address. */
 export type CommonPublicIPAddressPropertiesFormatIpTagsList_4 =
-  ReadonlyArray<CommonIpTag>;
+  Array<CommonIpTag>;
 export const CommonPublicIPAddressPropertiesFormatIpTagsList_4 =
   /*@__PURE__*/ S.Array(
     CommonIpTag,
@@ -107100,7 +107147,7 @@ export const CommonNatGatewayPropertiesFormatPublicIpAddressesItem_3 =
 
 /** An array of public ip addresses V4 associated with the nat gateway resource. */
 export type CommonNatGatewayPropertiesFormatPublicIpAddressesList_3 =
-  ReadonlyArray<CommonNatGatewayPropertiesFormatPublicIpAddressesItem_3>;
+  Array<CommonNatGatewayPropertiesFormatPublicIpAddressesItem_3>;
 export const CommonNatGatewayPropertiesFormatPublicIpAddressesList_3 =
   /*@__PURE__*/ S.Array(
     CommonNatGatewayPropertiesFormatPublicIpAddressesItem_3,
@@ -107122,7 +107169,7 @@ export const CommonNatGatewayPropertiesFormatPublicIpAddressesV6Item_3 =
 
 /** An array of public ip addresses V6 associated with the nat gateway resource. */
 export type CommonNatGatewayPropertiesFormatPublicIpAddressesV6List_3 =
-  ReadonlyArray<CommonNatGatewayPropertiesFormatPublicIpAddressesV6Item_3>;
+  Array<CommonNatGatewayPropertiesFormatPublicIpAddressesV6Item_3>;
 export const CommonNatGatewayPropertiesFormatPublicIpAddressesV6List_3 =
   /*@__PURE__*/ S.Array(
     CommonNatGatewayPropertiesFormatPublicIpAddressesV6Item_3,
@@ -107144,7 +107191,7 @@ export const CommonNatGatewayPropertiesFormatPublicIpPrefixesItem_3 =
 
 /** An array of public ip prefixes V4 associated with the nat gateway resource. */
 export type CommonNatGatewayPropertiesFormatPublicIpPrefixesList_3 =
-  ReadonlyArray<CommonNatGatewayPropertiesFormatPublicIpPrefixesItem_3>;
+  Array<CommonNatGatewayPropertiesFormatPublicIpPrefixesItem_3>;
 export const CommonNatGatewayPropertiesFormatPublicIpPrefixesList_3 =
   /*@__PURE__*/ S.Array(
     CommonNatGatewayPropertiesFormatPublicIpPrefixesItem_3,
@@ -107166,7 +107213,7 @@ export const CommonNatGatewayPropertiesFormatPublicIpPrefixesV6Item_3 =
 
 /** An array of public ip prefixes V6 associated with the nat gateway resource. */
 export type CommonNatGatewayPropertiesFormatPublicIpPrefixesV6List_3 =
-  ReadonlyArray<CommonNatGatewayPropertiesFormatPublicIpPrefixesV6Item_3>;
+  Array<CommonNatGatewayPropertiesFormatPublicIpPrefixesV6Item_3>;
 export const CommonNatGatewayPropertiesFormatPublicIpPrefixesV6List_3 =
   /*@__PURE__*/ S.Array(
     CommonNatGatewayPropertiesFormatPublicIpPrefixesV6Item_3,
@@ -107188,7 +107235,7 @@ export const CommonNatGatewayPropertiesFormatSubnetsItem_3 =
 
 /** An array of references to the subnets using this nat gateway resource. */
 export type CommonNatGatewayPropertiesFormatSubnetsList_3 =
-  ReadonlyArray<CommonNatGatewayPropertiesFormatSubnetsItem_3>;
+  Array<CommonNatGatewayPropertiesFormatSubnetsItem_3>;
 export const CommonNatGatewayPropertiesFormatSubnetsList_3 =
   /*@__PURE__*/ S.Array(
     CommonNatGatewayPropertiesFormatSubnetsItem_3,
@@ -107511,7 +107558,7 @@ export const CommonPrivateLinkServicePropertiesLoadBalancerFrontendIpConfigurati
 
 /** An array of references to the load balancer IP configurations. */
 export type CommonPrivateLinkServicePropertiesLoadBalancerFrontendIpConfigurationsList_3 =
-  ReadonlyArray<CommonPrivateLinkServicePropertiesLoadBalancerFrontendIpConfigurationsItem_3>;
+  Array<CommonPrivateLinkServicePropertiesLoadBalancerFrontendIpConfigurationsItem_3>;
 export const CommonPrivateLinkServicePropertiesLoadBalancerFrontendIpConfigurationsList_3 =
   /*@__PURE__*/ S.Array(
     CommonPrivateLinkServicePropertiesLoadBalancerFrontendIpConfigurationsItem_3,
@@ -107582,7 +107629,7 @@ export const CommonPrivateLinkServiceIpConfiguration_3 =
 
 /** An array of private link service IP configurations. */
 export type CommonPrivateLinkServicePropertiesIpConfigurationsList_3 =
-  ReadonlyArray<CommonPrivateLinkServiceIpConfiguration_3>;
+  Array<CommonPrivateLinkServiceIpConfiguration_3>;
 export const CommonPrivateLinkServicePropertiesIpConfigurationsList_3 =
   /*@__PURE__*/ S.Array(
     CommonPrivateLinkServiceIpConfiguration_3,
@@ -107590,7 +107637,7 @@ export const CommonPrivateLinkServicePropertiesIpConfigurationsList_3 =
 
 /** An array of references to the network interfaces created for this private link service. */
 export type CommonPrivateLinkServicePropertiesNetworkInterfacesList_3 =
-  ReadonlyArray<CommonNetworkInterface_4>;
+  Array<CommonNetworkInterface_4>;
 export const CommonPrivateLinkServicePropertiesNetworkInterfacesList_3 =
   /*@__PURE__*/ S.Array(
     S.suspend(() => CommonNetworkInterface_4),
@@ -107653,7 +107700,7 @@ export const CommonPrivateEndpointConnection_3 = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of list about connections to the private endpoint. */
 export type CommonPrivateLinkServicePropertiesPrivateEndpointConnectionsList_3 =
-  ReadonlyArray<CommonPrivateEndpointConnection_3>;
+  Array<CommonPrivateEndpointConnection_3>;
 export const CommonPrivateLinkServicePropertiesPrivateEndpointConnectionsList_3 =
   /*@__PURE__*/ S.Array(
     CommonPrivateEndpointConnection_3,
@@ -107886,7 +107933,7 @@ export const CommonNetworkInterface_4 = /*@__PURE__*/ S.suspend(() =>
 
 /** A collection of references to network interfaces. */
 export type CommonNetworkSecurityGroupPropertiesFormatNetworkInterfacesList_4 =
-  ReadonlyArray<CommonNetworkInterface_4>;
+  Array<CommonNetworkInterface_4>;
 export const CommonNetworkSecurityGroupPropertiesFormatNetworkInterfacesList_4 =
   /*@__PURE__*/ S.Array(
     CommonNetworkInterface_4,
@@ -107894,7 +107941,7 @@ export const CommonNetworkSecurityGroupPropertiesFormatNetworkInterfacesList_4 =
 
 /** A collection of references to subnets. */
 export type CommonNetworkSecurityGroupPropertiesFormatSubnetsList_4 =
-  ReadonlyArray<CommonSubnet_4>;
+  Array<CommonSubnet_4>;
 export const CommonNetworkSecurityGroupPropertiesFormatSubnetsList_4 =
   /*@__PURE__*/ S.Array(
     S.suspend(() => CommonSubnet_4),
@@ -108065,7 +108112,7 @@ export const CommonNetworkSecurityGroupPropertiesFormatFlowLogsItem_4 =
 
 /** A collection of references to flow log resources. */
 export type CommonNetworkSecurityGroupPropertiesFormatFlowLogsList_4 =
-  ReadonlyArray<CommonNetworkSecurityGroupPropertiesFormatFlowLogsItem_4>;
+  Array<CommonNetworkSecurityGroupPropertiesFormatFlowLogsItem_4>;
 export const CommonNetworkSecurityGroupPropertiesFormatFlowLogsList_4 =
   /*@__PURE__*/ S.Array(
     CommonNetworkSecurityGroupPropertiesFormatFlowLogsItem_4,
@@ -108201,8 +108248,7 @@ export const CommonRoute_4 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CommonRoute_4" }) as any as S.Schema<CommonRoute_4>;
 
 /** Collection of routes contained within a route table. */
-export type CommonRouteTablePropertiesFormatRoutesList_4 =
-  ReadonlyArray<CommonRoute_4>;
+export type CommonRouteTablePropertiesFormatRoutesList_4 = Array<CommonRoute_4>;
 export const CommonRouteTablePropertiesFormatRoutesList_4 =
   /*@__PURE__*/ S.Array(
     CommonRoute_4,
@@ -108210,7 +108256,7 @@ export const CommonRouteTablePropertiesFormatRoutesList_4 =
 
 /** A collection of references to subnets. */
 export type CommonRouteTablePropertiesFormatSubnetsList_4 =
-  ReadonlyArray<CommonSubnet_4>;
+  Array<CommonSubnet_4>;
 export const CommonRouteTablePropertiesFormatSubnetsList_4 =
   /*@__PURE__*/ S.Array(
     S.suspend(() => CommonSubnet_4),
@@ -108309,7 +108355,7 @@ export const CommonServiceEndpointPolicyDefinition_4 = /*@__PURE__*/ S.suspend(
 
 /** A collection of service endpoint policy definitions of the service endpoint policy. */
 export type CommonServiceEndpointPolicyPropertiesFormatServiceEndpointPolicyDefinitionsList_4 =
-  ReadonlyArray<CommonServiceEndpointPolicyDefinition_4>;
+  Array<CommonServiceEndpointPolicyDefinition_4>;
 export const CommonServiceEndpointPolicyPropertiesFormatServiceEndpointPolicyDefinitionsList_4 =
   /*@__PURE__*/ S.Array(
     CommonServiceEndpointPolicyDefinition_4,
@@ -108343,7 +108389,7 @@ export const CommonServiceEndpointPolicyPropertiesFormatSubnetsItem_4 =
 
 /** A collection of references to subnets. */
 export type CommonServiceEndpointPolicyPropertiesFormatSubnetsList_4 =
-  ReadonlyArray<CommonServiceEndpointPolicyPropertiesFormatSubnetsItem_4>;
+  Array<CommonServiceEndpointPolicyPropertiesFormatSubnetsItem_4>;
 export const CommonServiceEndpointPolicyPropertiesFormatSubnetsList_4 =
   /*@__PURE__*/ S.Array(
     CommonServiceEndpointPolicyPropertiesFormatSubnetsItem_4,
@@ -108425,7 +108471,7 @@ export const CommonSubnetPropertiesFormatServiceEndpointPoliciesItem_4 =
 
 /** An array of service endpoint policies. */
 export type CommonSubnetPropertiesFormatServiceEndpointPoliciesList_4 =
-  ReadonlyArray<CommonSubnetPropertiesFormatServiceEndpointPoliciesItem_4>;
+  Array<CommonSubnetPropertiesFormatServiceEndpointPoliciesItem_4>;
 export const CommonSubnetPropertiesFormatServiceEndpointPoliciesList_4 =
   /*@__PURE__*/ S.Array(
     CommonSubnetPropertiesFormatServiceEndpointPoliciesItem_4,
@@ -108433,7 +108479,7 @@ export const CommonSubnetPropertiesFormatServiceEndpointPoliciesList_4 =
 
 /** An array of references to private endpoints. */
 export type CommonSubnetPropertiesFormatPrivateEndpointsList_4 =
-  ReadonlyArray<CommonPrivateEndpoint_3>;
+  Array<CommonPrivateEndpoint_3>;
 export const CommonSubnetPropertiesFormatPrivateEndpointsList_4 =
   /*@__PURE__*/ S.Array(
     CommonPrivateEndpoint_3,
@@ -108441,7 +108487,7 @@ export const CommonSubnetPropertiesFormatPrivateEndpointsList_4 =
 
 /** An array of references to the network interface IP configurations using subnet. */
 export type CommonSubnetPropertiesFormatIpConfigurationsList_4 =
-  ReadonlyArray<CommonIPConfiguration_4>;
+  Array<CommonIPConfiguration_4>;
 export const CommonSubnetPropertiesFormatIpConfigurationsList_4 =
   /*@__PURE__*/ S.Array(
     CommonIPConfiguration_4,
@@ -108493,7 +108539,7 @@ export const CommonIPConfigurationProfile_4 = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of IP configuration profiles which reference this subnet. */
 export type CommonSubnetPropertiesFormatIpConfigurationProfilesList_4 =
-  ReadonlyArray<CommonIPConfigurationProfile_4>;
+  Array<CommonIPConfigurationProfile_4>;
 export const CommonSubnetPropertiesFormatIpConfigurationProfilesList_4 =
   /*@__PURE__*/ S.Array(
     CommonIPConfigurationProfile_4,
@@ -108989,7 +109035,7 @@ export const CommonVirtualNetworkTap = /*@__PURE__*/ S.suspend(() =>
 
 /** The VirtualNetworkTap items on this page */
 export type VirtualNetworkTapListResultValueList =
-  ReadonlyArray<CommonVirtualNetworkTap>;
+  Array<CommonVirtualNetworkTap>;
 export const VirtualNetworkTapListResultValueList = /*@__PURE__*/ S.Array(
   CommonVirtualNetworkTap,
 ) as any as S.Schema<VirtualNetworkTapListResultValueList>;
@@ -109130,7 +109176,9 @@ export interface VirtualRouterPeeringProperties {
   /** Peer IP. */
   peerIp?: string;
   /** Provisioning states of a resource. */
-  provisioningState?: VirtualRouterPeeringPropertiesProvisioningState;
+  provisioningState?:
+    | VirtualRouterPeeringPropertiesProvisioningState
+    | (string & {});
 }
 export const VirtualRouterPeeringProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -109346,7 +109394,7 @@ export const VirtualRouterPeering = /*@__PURE__*/ S.suspend(() =>
 
 /** The VirtualRouterPeering items on this page */
 export type VirtualRouterPeeringListResultValueList =
-  ReadonlyArray<VirtualRouterPeering>;
+  Array<VirtualRouterPeering>;
 export const VirtualRouterPeeringListResultValueList = /*@__PURE__*/ S.Array(
   VirtualRouterPeering,
 ) as any as S.Schema<VirtualRouterPeeringListResultValueList>;
@@ -109379,7 +109427,7 @@ export const VirtualRoutersCreateOrUpdateRequestTagsMap =
 
 /** VirtualRouter IPs. */
 export type VirtualRouterPropertiesFormatInputVirtualRouterIpsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const VirtualRouterPropertiesFormatInputVirtualRouterIpsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -109503,8 +109551,7 @@ export const VirtualRoutersCreateOrUpdateResponseTagsMap =
   ) as any as S.Schema<VirtualRoutersCreateOrUpdateResponseTagsMap>;
 
 /** VirtualRouter IPs. */
-export type VirtualRouterPropertiesFormatVirtualRouterIpsList =
-  ReadonlyArray<string>;
+export type VirtualRouterPropertiesFormatVirtualRouterIpsList = Array<string>;
 export const VirtualRouterPropertiesFormatVirtualRouterIpsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -109554,7 +109601,7 @@ export const VirtualRouterPropertiesFormatPeeringsItem =
 
 /** List of references to VirtualRouterPeerings. */
 export type VirtualRouterPropertiesFormatPeeringsList =
-  ReadonlyArray<VirtualRouterPropertiesFormatPeeringsItem>;
+  Array<VirtualRouterPropertiesFormatPeeringsItem>;
 export const VirtualRouterPropertiesFormatPeeringsList = /*@__PURE__*/ S.Array(
   VirtualRouterPropertiesFormatPeeringsItem,
 ) as any as S.Schema<VirtualRouterPropertiesFormatPeeringsList>;
@@ -109788,7 +109835,7 @@ export const VirtualRouter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VirtualRouter" }) as any as S.Schema<VirtualRouter>;
 
 /** The VirtualRouter items on this page */
-export type VirtualRouterListResultValueList = ReadonlyArray<VirtualRouter>;
+export type VirtualRouterListResultValueList = Array<VirtualRouter>;
 export const VirtualRouterListResultValueList = /*@__PURE__*/ S.Array(
   VirtualRouter,
 ) as any as S.Schema<VirtualRouterListResultValueList>;
@@ -109956,7 +110003,7 @@ export const VirtualWanPropertiesVirtualHubsItem = /*@__PURE__*/ S.suspend(() =>
 
 /** List of VirtualHubs in the VirtualWAN. */
 export type VirtualWanPropertiesVirtualHubsList =
-  ReadonlyArray<VirtualWanPropertiesVirtualHubsItem>;
+  Array<VirtualWanPropertiesVirtualHubsItem>;
 export const VirtualWanPropertiesVirtualHubsList = /*@__PURE__*/ S.Array(
   VirtualWanPropertiesVirtualHubsItem,
 ) as any as S.Schema<VirtualWanPropertiesVirtualHubsList>;
@@ -109976,7 +110023,7 @@ export const VirtualWanPropertiesVpnSitesItem = /*@__PURE__*/ S.suspend(() =>
 
 /** List of VpnSites in the VirtualWAN. */
 export type VirtualWanPropertiesVpnSitesList =
-  ReadonlyArray<VirtualWanPropertiesVpnSitesItem>;
+  Array<VirtualWanPropertiesVpnSitesItem>;
 export const VirtualWanPropertiesVpnSitesList = /*@__PURE__*/ S.Array(
   VirtualWanPropertiesVpnSitesItem,
 ) as any as S.Schema<VirtualWanPropertiesVpnSitesList>;
@@ -110218,7 +110265,7 @@ export const VirtualWAN = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VirtualWAN" }) as any as S.Schema<VirtualWAN>;
 
 /** The VirtualWAN items on this page */
-export type ListVirtualWANsResultValueList = ReadonlyArray<VirtualWAN>;
+export type ListVirtualWANsResultValueList = Array<VirtualWAN>;
 export const ListVirtualWANsResultValueList = /*@__PURE__*/ S.Array(
   VirtualWAN,
 ) as any as S.Schema<ListVirtualWANsResultValueList>;
@@ -110492,7 +110539,7 @@ export const VpnConnectionPropertiesInputIpsecPoliciesItem =
 
 /** The IPSec Policies to be considered by this connection. */
 export type VpnConnectionPropertiesInputIpsecPoliciesList =
-  ReadonlyArray<VpnConnectionPropertiesInputIpsecPoliciesItem>;
+  Array<VpnConnectionPropertiesInputIpsecPoliciesItem>;
 export const VpnConnectionPropertiesInputIpsecPoliciesList =
   /*@__PURE__*/ S.Array(
     VpnConnectionPropertiesInputIpsecPoliciesItem,
@@ -110500,7 +110547,7 @@ export const VpnConnectionPropertiesInputIpsecPoliciesList =
 
 /** A collection of local address spaces in CIDR format. */
 export type VpnConnectionPropertiesInputTrafficSelectorPoliciesItemLocalAddressRangesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const VpnConnectionPropertiesInputTrafficSelectorPoliciesItemLocalAddressRangesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -110508,7 +110555,7 @@ export const VpnConnectionPropertiesInputTrafficSelectorPoliciesItemLocalAddress
 
 /** A collection of remote address spaces in CIDR format. */
 export type VpnConnectionPropertiesInputTrafficSelectorPoliciesItemRemoteAddressRangesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const VpnConnectionPropertiesInputTrafficSelectorPoliciesItemRemoteAddressRangesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -110535,7 +110582,7 @@ export const VpnConnectionPropertiesInputTrafficSelectorPoliciesItem =
 
 /** The Traffic Selector Policies to be considered by this connection. */
 export type VpnConnectionPropertiesInputTrafficSelectorPoliciesList =
-  ReadonlyArray<VpnConnectionPropertiesInputTrafficSelectorPoliciesItem>;
+  Array<VpnConnectionPropertiesInputTrafficSelectorPoliciesItem>;
 export const VpnConnectionPropertiesInputTrafficSelectorPoliciesList =
   /*@__PURE__*/ S.Array(
     VpnConnectionPropertiesInputTrafficSelectorPoliciesItem,
@@ -110610,7 +110657,7 @@ export const VpnSiteLinkConnectionPropertiesInputVpnGatewayCustomBgpAddressesIte
 
 /** vpnGatewayCustomBgpAddresses used by this connection. */
 export type VpnSiteLinkConnectionPropertiesInputVpnGatewayCustomBgpAddressesList =
-  ReadonlyArray<VpnSiteLinkConnectionPropertiesInputVpnGatewayCustomBgpAddressesItem>;
+  Array<VpnSiteLinkConnectionPropertiesInputVpnGatewayCustomBgpAddressesItem>;
 export const VpnSiteLinkConnectionPropertiesInputVpnGatewayCustomBgpAddressesList =
   /*@__PURE__*/ S.Array(
     VpnSiteLinkConnectionPropertiesInputVpnGatewayCustomBgpAddressesItem,
@@ -110733,7 +110780,7 @@ export const VpnSiteLinkConnectionPropertiesInputIpsecPoliciesItem =
 
 /** The IPSec Policies to be considered by this connection. */
 export type VpnSiteLinkConnectionPropertiesInputIpsecPoliciesList =
-  ReadonlyArray<VpnSiteLinkConnectionPropertiesInputIpsecPoliciesItem>;
+  Array<VpnSiteLinkConnectionPropertiesInputIpsecPoliciesItem>;
 export const VpnSiteLinkConnectionPropertiesInputIpsecPoliciesList =
   /*@__PURE__*/ S.Array(
     VpnSiteLinkConnectionPropertiesInputIpsecPoliciesItem,
@@ -110766,7 +110813,7 @@ export const VpnSiteLinkConnectionPropertiesInputIngressNatRulesItem =
 
 /** List of ingress NatRules. */
 export type VpnSiteLinkConnectionPropertiesInputIngressNatRulesList =
-  ReadonlyArray<VpnSiteLinkConnectionPropertiesInputIngressNatRulesItem>;
+  Array<VpnSiteLinkConnectionPropertiesInputIngressNatRulesItem>;
 export const VpnSiteLinkConnectionPropertiesInputIngressNatRulesList =
   /*@__PURE__*/ S.Array(
     VpnSiteLinkConnectionPropertiesInputIngressNatRulesItem,
@@ -110788,7 +110835,7 @@ export const VpnSiteLinkConnectionPropertiesInputEgressNatRulesItem =
 
 /** List of egress NatRules. */
 export type VpnSiteLinkConnectionPropertiesInputEgressNatRulesList =
-  ReadonlyArray<VpnSiteLinkConnectionPropertiesInputEgressNatRulesItem>;
+  Array<VpnSiteLinkConnectionPropertiesInputEgressNatRulesItem>;
 export const VpnSiteLinkConnectionPropertiesInputEgressNatRulesList =
   /*@__PURE__*/ S.Array(
     VpnSiteLinkConnectionPropertiesInputEgressNatRulesItem,
@@ -110901,7 +110948,7 @@ export const VpnSiteLinkConnectionInput = /*@__PURE__*/ S.suspend(() =>
 
 /** List of all vpn site link connections to the gateway. */
 export type VpnConnectionPropertiesInputVpnLinkConnectionsList =
-  ReadonlyArray<VpnSiteLinkConnectionInput>;
+  Array<VpnSiteLinkConnectionInput>;
 export const VpnConnectionPropertiesInputVpnLinkConnectionsList =
   /*@__PURE__*/ S.Array(
     VpnSiteLinkConnectionInput,
@@ -111160,14 +111207,14 @@ export const VpnConnectionPropertiesIpsecPoliciesItem = /*@__PURE__*/ S.suspend(
 
 /** The IPSec Policies to be considered by this connection. */
 export type VpnConnectionPropertiesIpsecPoliciesList =
-  ReadonlyArray<VpnConnectionPropertiesIpsecPoliciesItem>;
+  Array<VpnConnectionPropertiesIpsecPoliciesItem>;
 export const VpnConnectionPropertiesIpsecPoliciesList = /*@__PURE__*/ S.Array(
   VpnConnectionPropertiesIpsecPoliciesItem,
 ) as any as S.Schema<VpnConnectionPropertiesIpsecPoliciesList>;
 
 /** A collection of local address spaces in CIDR format. */
 export type VpnConnectionPropertiesTrafficSelectorPoliciesItemLocalAddressRangesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const VpnConnectionPropertiesTrafficSelectorPoliciesItemLocalAddressRangesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -111175,7 +111222,7 @@ export const VpnConnectionPropertiesTrafficSelectorPoliciesItemLocalAddressRange
 
 /** A collection of remote address spaces in CIDR format. */
 export type VpnConnectionPropertiesTrafficSelectorPoliciesItemRemoteAddressRangesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const VpnConnectionPropertiesTrafficSelectorPoliciesItemRemoteAddressRangesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -111202,7 +111249,7 @@ export const VpnConnectionPropertiesTrafficSelectorPoliciesItem =
 
 /** The Traffic Selector Policies to be considered by this connection. */
 export type VpnConnectionPropertiesTrafficSelectorPoliciesList =
-  ReadonlyArray<VpnConnectionPropertiesTrafficSelectorPoliciesItem>;
+  Array<VpnConnectionPropertiesTrafficSelectorPoliciesItem>;
 export const VpnConnectionPropertiesTrafficSelectorPoliciesList =
   /*@__PURE__*/ S.Array(
     VpnConnectionPropertiesTrafficSelectorPoliciesItem,
@@ -111276,7 +111323,7 @@ export const VpnSiteLinkConnectionPropertiesVpnGatewayCustomBgpAddressesItem =
 
 /** vpnGatewayCustomBgpAddresses used by this connection. */
 export type VpnSiteLinkConnectionPropertiesVpnGatewayCustomBgpAddressesList =
-  ReadonlyArray<VpnSiteLinkConnectionPropertiesVpnGatewayCustomBgpAddressesItem>;
+  Array<VpnSiteLinkConnectionPropertiesVpnGatewayCustomBgpAddressesItem>;
 export const VpnSiteLinkConnectionPropertiesVpnGatewayCustomBgpAddressesList =
   /*@__PURE__*/ S.Array(
     VpnSiteLinkConnectionPropertiesVpnGatewayCustomBgpAddressesItem,
@@ -111398,7 +111445,7 @@ export const VpnSiteLinkConnectionPropertiesIpsecPoliciesItem =
 
 /** The IPSec Policies to be considered by this connection. */
 export type VpnSiteLinkConnectionPropertiesIpsecPoliciesList =
-  ReadonlyArray<VpnSiteLinkConnectionPropertiesIpsecPoliciesItem>;
+  Array<VpnSiteLinkConnectionPropertiesIpsecPoliciesItem>;
 export const VpnSiteLinkConnectionPropertiesIpsecPoliciesList =
   /*@__PURE__*/ S.Array(
     VpnSiteLinkConnectionPropertiesIpsecPoliciesItem,
@@ -111431,7 +111478,7 @@ export const VpnSiteLinkConnectionPropertiesIngressNatRulesItem =
 
 /** List of ingress NatRules. */
 export type VpnSiteLinkConnectionPropertiesIngressNatRulesList =
-  ReadonlyArray<VpnSiteLinkConnectionPropertiesIngressNatRulesItem>;
+  Array<VpnSiteLinkConnectionPropertiesIngressNatRulesItem>;
 export const VpnSiteLinkConnectionPropertiesIngressNatRulesList =
   /*@__PURE__*/ S.Array(
     VpnSiteLinkConnectionPropertiesIngressNatRulesItem,
@@ -111453,7 +111500,7 @@ export const VpnSiteLinkConnectionPropertiesEgressNatRulesItem =
 
 /** List of egress NatRules. */
 export type VpnSiteLinkConnectionPropertiesEgressNatRulesList =
-  ReadonlyArray<VpnSiteLinkConnectionPropertiesEgressNatRulesItem>;
+  Array<VpnSiteLinkConnectionPropertiesEgressNatRulesItem>;
 export const VpnSiteLinkConnectionPropertiesEgressNatRulesList =
   /*@__PURE__*/ S.Array(
     VpnSiteLinkConnectionPropertiesEgressNatRulesItem,
@@ -111567,7 +111614,7 @@ export const VpnSiteLinkConnection = /*@__PURE__*/ S.suspend(() =>
 
 /** List of all vpn site link connections to the gateway. */
 export type VpnConnectionPropertiesVpnLinkConnectionsList =
-  ReadonlyArray<VpnSiteLinkConnection>;
+  Array<VpnSiteLinkConnection>;
 export const VpnConnectionPropertiesVpnLinkConnectionsList =
   /*@__PURE__*/ S.Array(
     VpnSiteLinkConnection,
@@ -111799,7 +111846,7 @@ export const VpnConnection = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VpnConnection" }) as any as S.Schema<VpnConnection>;
 
 /** The VpnConnection items on this page */
-export type ListVpnConnectionsResultValueList = ReadonlyArray<VpnConnection>;
+export type ListVpnConnectionsResultValueList = Array<VpnConnection>;
 export const ListVpnConnectionsResultValueList = /*@__PURE__*/ S.Array(
   VpnConnection,
 ) as any as S.Schema<ListVpnConnectionsResultValueList>;
@@ -111822,7 +111869,7 @@ export const ListVpnConnectionsResult = /*@__PURE__*/ S.suspend(() =>
 
 /** List of site link connection names. */
 export type VpnConnectionsStartPacketCaptureRequestLinkConnectionNamesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const VpnConnectionsStartPacketCaptureRequestLinkConnectionNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -111874,7 +111921,7 @@ export const VpnConnectionsStartPacketCaptureResponse = /*@__PURE__*/ S.suspend(
 
 /** List of site link connection names. */
 export type VpnConnectionsStopPacketCaptureRequestLinkConnectionNamesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const VpnConnectionsStopPacketCaptureRequestLinkConnectionNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -111967,14 +112014,14 @@ export const VpnConnectionInput = /*@__PURE__*/ S.suspend(() =>
 
 /** List of all vpn connections to the gateway. */
 export type VpnGatewayPropertiesInputConnectionsList =
-  ReadonlyArray<VpnConnectionInput>;
+  Array<VpnConnectionInput>;
 export const VpnGatewayPropertiesInputConnectionsList = /*@__PURE__*/ S.Array(
   VpnConnectionInput,
 ) as any as S.Schema<VpnGatewayPropertiesInputConnectionsList>;
 
 /** BGP peering address with IP configuration ID for virtual network gateway. */
 export type VpnGatewayPropertiesInputBgpSettingsBgpPeeringAddressesList =
-  ReadonlyArray<IPConfigurationBgpPeeringAddressInput>;
+  Array<IPConfigurationBgpPeeringAddressInput>;
 export const VpnGatewayPropertiesInputBgpSettingsBgpPeeringAddressesList =
   /*@__PURE__*/ S.Array(
     IPConfigurationBgpPeeringAddressInput,
@@ -112037,7 +112084,7 @@ export const VpnGatewayNatRuleInput = /*@__PURE__*/ S.suspend(() =>
 
 /** List of all the nat Rules associated with the gateway. */
 export type VpnGatewayPropertiesInputNatRulesList =
-  ReadonlyArray<VpnGatewayNatRuleInput>;
+  Array<VpnGatewayNatRuleInput>;
 export const VpnGatewayPropertiesInputNatRulesList = /*@__PURE__*/ S.Array(
   VpnGatewayNatRuleInput,
 ) as any as S.Schema<VpnGatewayPropertiesInputNatRulesList>;
@@ -112138,14 +112185,14 @@ export const VpnGatewayPropertiesVirtualHub = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VpnGatewayPropertiesVirtualHub>;
 
 /** List of all vpn connections to the gateway. */
-export type VpnGatewayPropertiesConnectionsList = ReadonlyArray<VpnConnection>;
+export type VpnGatewayPropertiesConnectionsList = Array<VpnConnection>;
 export const VpnGatewayPropertiesConnectionsList = /*@__PURE__*/ S.Array(
   VpnConnection,
 ) as any as S.Schema<VpnGatewayPropertiesConnectionsList>;
 
 /** BGP peering address with IP configuration ID for virtual network gateway. */
 export type VpnGatewayPropertiesBgpSettingsBgpPeeringAddressesList =
-  ReadonlyArray<IPConfigurationBgpPeeringAddress>;
+  Array<IPConfigurationBgpPeeringAddress>;
 export const VpnGatewayPropertiesBgpSettingsBgpPeeringAddressesList =
   /*@__PURE__*/ S.Array(
     IPConfigurationBgpPeeringAddress,
@@ -112206,13 +112253,13 @@ export const VpnGatewayIpConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** List of all IPs configured on the gateway. */
 export type VpnGatewayPropertiesIpConfigurationsList =
-  ReadonlyArray<VpnGatewayIpConfiguration>;
+  Array<VpnGatewayIpConfiguration>;
 export const VpnGatewayPropertiesIpConfigurationsList = /*@__PURE__*/ S.Array(
   VpnGatewayIpConfiguration,
 ) as any as S.Schema<VpnGatewayPropertiesIpConfigurationsList>;
 
 /** List of all the nat Rules associated with the gateway. */
-export type VpnGatewayPropertiesNatRulesList = ReadonlyArray<VpnGatewayNatRule>;
+export type VpnGatewayPropertiesNatRulesList = Array<VpnGatewayNatRule>;
 export const VpnGatewayPropertiesNatRulesList = /*@__PURE__*/ S.Array(
   VpnGatewayNatRule,
 ) as any as S.Schema<VpnGatewayPropertiesNatRulesList>;
@@ -112436,7 +112483,7 @@ export const VpnGateway = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VpnGateway" }) as any as S.Schema<VpnGateway>;
 
 /** The VpnGateway items on this page */
-export type ListVpnGatewaysResultValueList = ReadonlyArray<VpnGateway>;
+export type ListVpnGatewaysResultValueList = Array<VpnGateway>;
 export const ListVpnGatewaysResultValueList = /*@__PURE__*/ S.Array(
   VpnGateway,
 ) as any as S.Schema<ListVpnGatewaysResultValueList>;
@@ -112743,7 +112790,7 @@ export interface SharedKeyProperties {
   /** The length of the shared key for the vpn link connection. */
   sharedKeyLength?: number;
   /** Provisioning states of a resource. */
-  provisioningState?: SharedKeyPropertiesProvisioningState;
+  provisioningState?: SharedKeyPropertiesProvisioningState | (string & {});
 }
 export const SharedKeyProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -112779,7 +112826,7 @@ export const ConnectionSharedKeyResult = /*@__PURE__*/ S.suspend(() =>
 
 /** The ConnectionSharedKeyResult items on this page */
 export type ConnectionSharedKeyResultListValueList =
-  ReadonlyArray<ConnectionSharedKeyResult>;
+  Array<ConnectionSharedKeyResult>;
 export const ConnectionSharedKeyResultListValueList = /*@__PURE__*/ S.Array(
   ConnectionSharedKeyResult,
 ) as any as S.Schema<ConnectionSharedKeyResultListValueList>;
@@ -112923,7 +112970,7 @@ export const VpnLinkConnectionsListByVpnConnectionRequest =
 
 /** The VpnSiteLinkConnection items on this page */
 export type ListVpnSiteLinkConnectionsResultValueList =
-  ReadonlyArray<VpnSiteLinkConnection>;
+  Array<VpnSiteLinkConnection>;
 export const ListVpnSiteLinkConnectionsResultValueList = /*@__PURE__*/ S.Array(
   VpnSiteLinkConnection,
 ) as any as S.Schema<ListVpnSiteLinkConnectionsResultValueList>;
@@ -113127,7 +113174,7 @@ export const VpnServerConfigurationsAssociatedWithVirtualWanListRequest =
 
 /** List of VpnServerConfigurations associated with VirtualWan. */
 export type VpnServerConfigurationsResponseVpnServerConfigurationResourceIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const VpnServerConfigurationsResponseVpnServerConfigurationResourceIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -113166,10 +113213,9 @@ export const VpnServerConfigurationPropertiesInputVpnProtocolsItem =
   /*@__PURE__*/ S.String;
 
 /** VPN protocols for the VpnServerConfiguration. */
-export type VpnServerConfigurationPropertiesInputVpnProtocolsList =
-  ReadonlyArray<
-    VpnServerConfigurationPropertiesInputVpnProtocolsItem | (string & {})
-  >;
+export type VpnServerConfigurationPropertiesInputVpnProtocolsList = Array<
+  VpnServerConfigurationPropertiesInputVpnProtocolsItem | (string & {})
+>;
 export const VpnServerConfigurationPropertiesInputVpnProtocolsList =
   /*@__PURE__*/ S.Array(
     VpnServerConfigurationPropertiesInputVpnProtocolsItem,
@@ -113185,7 +113231,7 @@ export const VpnServerConfigurationPropertiesInputVpnAuthenticationTypesItem =
 
 /** VPN authentication types for the VpnServerConfiguration. */
 export type VpnServerConfigurationPropertiesInputVpnAuthenticationTypesList =
-  ReadonlyArray<
+  Array<
     | VpnServerConfigurationPropertiesInputVpnAuthenticationTypesItem
     | (string & {})
   >;
@@ -113213,7 +113259,7 @@ export const VpnServerConfigVpnClientRootCertificate = /*@__PURE__*/ S.suspend(
 
 /** VPN client root certificate of VpnServerConfiguration. */
 export type VpnServerConfigurationPropertiesInputVpnClientRootCertificatesList =
-  ReadonlyArray<VpnServerConfigVpnClientRootCertificate>;
+  Array<VpnServerConfigVpnClientRootCertificate>;
 export const VpnServerConfigurationPropertiesInputVpnClientRootCertificatesList =
   /*@__PURE__*/ S.Array(
     VpnServerConfigVpnClientRootCertificate,
@@ -113238,7 +113284,7 @@ export const VpnServerConfigVpnClientRevokedCertificate =
 
 /** VPN client revoked certificate of VpnServerConfiguration. */
 export type VpnServerConfigurationPropertiesInputVpnClientRevokedCertificatesList =
-  ReadonlyArray<VpnServerConfigVpnClientRevokedCertificate>;
+  Array<VpnServerConfigVpnClientRevokedCertificate>;
 export const VpnServerConfigurationPropertiesInputVpnClientRevokedCertificatesList =
   /*@__PURE__*/ S.Array(
     VpnServerConfigVpnClientRevokedCertificate,
@@ -113263,7 +113309,7 @@ export const VpnServerConfigRadiusServerRootCertificate =
 
 /** Radius Server root certificate of VpnServerConfiguration. */
 export type VpnServerConfigurationPropertiesInputRadiusServerRootCertificatesList =
-  ReadonlyArray<VpnServerConfigRadiusServerRootCertificate>;
+  Array<VpnServerConfigRadiusServerRootCertificate>;
 export const VpnServerConfigurationPropertiesInputRadiusServerRootCertificatesList =
   /*@__PURE__*/ S.Array(
     VpnServerConfigRadiusServerRootCertificate,
@@ -113288,7 +113334,7 @@ export const VpnServerConfigRadiusClientRootCertificate =
 
 /** Radius client root certificate of VpnServerConfiguration. */
 export type VpnServerConfigurationPropertiesInputRadiusClientRootCertificatesList =
-  ReadonlyArray<VpnServerConfigRadiusClientRootCertificate>;
+  Array<VpnServerConfigRadiusClientRootCertificate>;
 export const VpnServerConfigurationPropertiesInputRadiusClientRootCertificatesList =
   /*@__PURE__*/ S.Array(
     VpnServerConfigRadiusClientRootCertificate,
@@ -113409,7 +113455,7 @@ export const VpnServerConfigurationPropertiesInputVpnClientIpsecPoliciesItem =
 
 /** VpnClientIpsecPolicies for VpnServerConfiguration. */
 export type VpnServerConfigurationPropertiesInputVpnClientIpsecPoliciesList =
-  ReadonlyArray<VpnServerConfigurationPropertiesInputVpnClientIpsecPoliciesItem>;
+  Array<VpnServerConfigurationPropertiesInputVpnClientIpsecPoliciesItem>;
 export const VpnServerConfigurationPropertiesInputVpnClientIpsecPoliciesList =
   /*@__PURE__*/ S.Array(
     VpnServerConfigurationPropertiesInputVpnClientIpsecPoliciesItem,
@@ -113437,7 +113483,7 @@ export const VpnServerConfigurationPropertiesInputRadiusServersItem =
 
 /** Multiple Radius Server configuration for VpnServerConfiguration. */
 export type VpnServerConfigurationPropertiesInputRadiusServersList =
-  ReadonlyArray<VpnServerConfigurationPropertiesInputRadiusServersItem>;
+  Array<VpnServerConfigurationPropertiesInputRadiusServersItem>;
 export const VpnServerConfigurationPropertiesInputRadiusServersList =
   /*@__PURE__*/ S.Array(
     VpnServerConfigurationPropertiesInputRadiusServersItem,
@@ -113484,7 +113530,7 @@ export const VpnServerConfigurationPolicyGroupInput = /*@__PURE__*/ S.suspend(
 
 /** List of all VpnServerConfigurationPolicyGroups. */
 export type VpnServerConfigurationPropertiesInputConfigurationPolicyGroupsList =
-  ReadonlyArray<VpnServerConfigurationPolicyGroupInput>;
+  Array<VpnServerConfigurationPolicyGroupInput>;
 export const VpnServerConfigurationPropertiesInputConfigurationPolicyGroupsList =
   /*@__PURE__*/ S.Array(
     VpnServerConfigurationPolicyGroupInput,
@@ -113618,7 +113664,7 @@ export const VpnServerConfigurationPropertiesVpnProtocolsItem =
 
 /** VPN protocols for the VpnServerConfiguration. */
 export type VpnServerConfigurationPropertiesVpnProtocolsList =
-  ReadonlyArray<VpnServerConfigurationPropertiesVpnProtocolsItem>;
+  Array<VpnServerConfigurationPropertiesVpnProtocolsItem>;
 export const VpnServerConfigurationPropertiesVpnProtocolsList =
   /*@__PURE__*/ S.Array(
     VpnServerConfigurationPropertiesVpnProtocolsItem,
@@ -113634,7 +113680,7 @@ export const VpnServerConfigurationPropertiesVpnAuthenticationTypesItem =
 
 /** VPN authentication types for the VpnServerConfiguration. */
 export type VpnServerConfigurationPropertiesVpnAuthenticationTypesList =
-  ReadonlyArray<VpnServerConfigurationPropertiesVpnAuthenticationTypesItem>;
+  Array<VpnServerConfigurationPropertiesVpnAuthenticationTypesItem>;
 export const VpnServerConfigurationPropertiesVpnAuthenticationTypesList =
   /*@__PURE__*/ S.Array(
     VpnServerConfigurationPropertiesVpnAuthenticationTypesItem,
@@ -113642,7 +113688,7 @@ export const VpnServerConfigurationPropertiesVpnAuthenticationTypesList =
 
 /** VPN client root certificate of VpnServerConfiguration. */
 export type VpnServerConfigurationPropertiesVpnClientRootCertificatesList =
-  ReadonlyArray<VpnServerConfigVpnClientRootCertificate>;
+  Array<VpnServerConfigVpnClientRootCertificate>;
 export const VpnServerConfigurationPropertiesVpnClientRootCertificatesList =
   /*@__PURE__*/ S.Array(
     VpnServerConfigVpnClientRootCertificate,
@@ -113650,7 +113696,7 @@ export const VpnServerConfigurationPropertiesVpnClientRootCertificatesList =
 
 /** VPN client revoked certificate of VpnServerConfiguration. */
 export type VpnServerConfigurationPropertiesVpnClientRevokedCertificatesList =
-  ReadonlyArray<VpnServerConfigVpnClientRevokedCertificate>;
+  Array<VpnServerConfigVpnClientRevokedCertificate>;
 export const VpnServerConfigurationPropertiesVpnClientRevokedCertificatesList =
   /*@__PURE__*/ S.Array(
     VpnServerConfigVpnClientRevokedCertificate,
@@ -113658,7 +113704,7 @@ export const VpnServerConfigurationPropertiesVpnClientRevokedCertificatesList =
 
 /** Radius Server root certificate of VpnServerConfiguration. */
 export type VpnServerConfigurationPropertiesRadiusServerRootCertificatesList =
-  ReadonlyArray<VpnServerConfigRadiusServerRootCertificate>;
+  Array<VpnServerConfigRadiusServerRootCertificate>;
 export const VpnServerConfigurationPropertiesRadiusServerRootCertificatesList =
   /*@__PURE__*/ S.Array(
     VpnServerConfigRadiusServerRootCertificate,
@@ -113666,7 +113712,7 @@ export const VpnServerConfigurationPropertiesRadiusServerRootCertificatesList =
 
 /** Radius client root certificate of VpnServerConfiguration. */
 export type VpnServerConfigurationPropertiesRadiusClientRootCertificatesList =
-  ReadonlyArray<VpnServerConfigRadiusClientRootCertificate>;
+  Array<VpnServerConfigRadiusClientRootCertificate>;
 export const VpnServerConfigurationPropertiesRadiusClientRootCertificatesList =
   /*@__PURE__*/ S.Array(
     VpnServerConfigRadiusClientRootCertificate,
@@ -113774,7 +113820,7 @@ export const VpnServerConfigurationPropertiesVpnClientIpsecPoliciesItem =
 
 /** VpnClientIpsecPolicies for VpnServerConfiguration. */
 export type VpnServerConfigurationPropertiesVpnClientIpsecPoliciesList =
-  ReadonlyArray<VpnServerConfigurationPropertiesVpnClientIpsecPoliciesItem>;
+  Array<VpnServerConfigurationPropertiesVpnClientIpsecPoliciesItem>;
 export const VpnServerConfigurationPropertiesVpnClientIpsecPoliciesList =
   /*@__PURE__*/ S.Array(
     VpnServerConfigurationPropertiesVpnClientIpsecPoliciesItem,
@@ -113802,7 +113848,7 @@ export const VpnServerConfigurationPropertiesRadiusServersItem =
 
 /** Multiple Radius Server configuration for VpnServerConfiguration. */
 export type VpnServerConfigurationPropertiesRadiusServersList =
-  ReadonlyArray<VpnServerConfigurationPropertiesRadiusServersItem>;
+  Array<VpnServerConfigurationPropertiesRadiusServersItem>;
 export const VpnServerConfigurationPropertiesRadiusServersList =
   /*@__PURE__*/ S.Array(
     VpnServerConfigurationPropertiesRadiusServersItem,
@@ -113810,7 +113856,7 @@ export const VpnServerConfigurationPropertiesRadiusServersList =
 
 /** List of references to P2SVpnGateways. */
 export type VpnServerConfigurationPropertiesP2SVpnGatewaysList =
-  ReadonlyArray<P2SVpnGateway>;
+  Array<P2SVpnGateway>;
 export const VpnServerConfigurationPropertiesP2SVpnGatewaysList =
   /*@__PURE__*/ S.Array(
     P2SVpnGateway,
@@ -113818,7 +113864,7 @@ export const VpnServerConfigurationPropertiesP2SVpnGatewaysList =
 
 /** List of all VpnServerConfigurationPolicyGroups. */
 export type VpnServerConfigurationPropertiesConfigurationPolicyGroupsList =
-  ReadonlyArray<VpnServerConfigurationPolicyGroup>;
+  Array<VpnServerConfigurationPolicyGroup>;
 export const VpnServerConfigurationPropertiesConfigurationPolicyGroupsList =
   /*@__PURE__*/ S.Array(
     VpnServerConfigurationPolicyGroup,
@@ -114089,7 +114135,7 @@ export const VpnServerConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** The VpnServerConfiguration items on this page */
 export type ListVpnServerConfigurationsResultValueList =
-  ReadonlyArray<VpnServerConfiguration>;
+  Array<VpnServerConfiguration>;
 export const ListVpnServerConfigurationsResultValueList = /*@__PURE__*/ S.Array(
   VpnServerConfiguration,
 ) as any as S.Schema<ListVpnServerConfigurationsResultValueList>;
@@ -114161,7 +114207,7 @@ export const VpnServerConfigurationsListRadiusSecretsRequest =
 
 /** The RadiusAuthServer items on this page */
 export type VpnServerConfigurationsListRadiusSecretsResponseValueList =
-  ReadonlyArray<RadiusAuthServer>;
+  Array<RadiusAuthServer>;
 export const VpnServerConfigurationsListRadiusSecretsResponseValueList =
   /*@__PURE__*/ S.Array(
     RadiusAuthServer,
@@ -114399,7 +114445,7 @@ export interface VpnSiteLinkProperties {
   /** The set of bgp properties. */
   bgpProperties?: VpnLinkBgpSettings;
   /** Provisioning states of a resource. */
-  provisioningState?: VpnSiteLinkPropertiesProvisioningState;
+  provisioningState?: VpnSiteLinkPropertiesProvisioningState | (string & {});
 }
 export const VpnSiteLinkProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -114486,7 +114532,7 @@ export const VpnSiteLink = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VpnSiteLink" }) as any as S.Schema<VpnSiteLink>;
 
 /** The VpnSiteLink items on this page */
-export type ListVpnSiteLinksResultValueList = ReadonlyArray<VpnSiteLink>;
+export type ListVpnSiteLinksResultValueList = Array<VpnSiteLink>;
 export const ListVpnSiteLinksResultValueList = /*@__PURE__*/ S.Array(
   VpnSiteLink,
 ) as any as S.Schema<ListVpnSiteLinksResultValueList>;
@@ -114508,8 +114554,7 @@ export const ListVpnSiteLinksResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListVpnSiteLinksResult>;
 
 /** List of resource-ids of the vpn-sites for which config is to be downloaded. */
-export type VpnSitesConfigurationDownloadRequestVpnSitesList =
-  ReadonlyArray<string>;
+export type VpnSitesConfigurationDownloadRequestVpnSitesList = Array<string>;
 export const VpnSitesConfigurationDownloadRequestVpnSitesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -114597,7 +114642,7 @@ export const DeviceProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of address blocks reserved for this virtual network in CIDR notation. */
 export type VpnSitePropertiesInputAddressSpaceAddressPrefixesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const VpnSitePropertiesInputAddressSpaceAddressPrefixesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -114605,7 +114650,7 @@ export const VpnSitePropertiesInputAddressSpaceAddressPrefixesList =
 
 /** A list of IPAM Pools allocating IP address prefixes. */
 export type VpnSitePropertiesInputAddressSpaceIpamPoolPrefixAllocationsList =
-  ReadonlyArray<CommonIpamPoolPrefixAllocationInput>;
+  Array<CommonIpamPoolPrefixAllocationInput>;
 export const VpnSitePropertiesInputAddressSpaceIpamPoolPrefixAllocationsList =
   /*@__PURE__*/ S.Array(
     CommonIpamPoolPrefixAllocationInput,
@@ -114633,7 +114678,7 @@ export const VpnSitePropertiesInputAddressSpace = /*@__PURE__*/ S.suspend(() =>
 
 /** BGP peering address with IP configuration ID for virtual network gateway. */
 export type VpnSitePropertiesInputBgpPropertiesBgpPeeringAddressesList =
-  ReadonlyArray<IPConfigurationBgpPeeringAddressInput>;
+  Array<IPConfigurationBgpPeeringAddressInput>;
 export const VpnSitePropertiesInputBgpPropertiesBgpPeeringAddressesList =
   /*@__PURE__*/ S.Array(
     IPConfigurationBgpPeeringAddressInput,
@@ -114693,8 +114738,7 @@ export const VpnSiteLinkInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VpnSiteLinkInput>;
 
 /** List of all vpn site links. */
-export type VpnSitePropertiesInputVpnSiteLinksList =
-  ReadonlyArray<VpnSiteLinkInput>;
+export type VpnSitePropertiesInputVpnSiteLinksList = Array<VpnSiteLinkInput>;
 export const VpnSitePropertiesInputVpnSiteLinksList = /*@__PURE__*/ S.Array(
   VpnSiteLinkInput,
 ) as any as S.Schema<VpnSitePropertiesInputVpnSiteLinksList>;
@@ -114831,8 +114875,7 @@ export const VpnSitePropertiesVirtualWan = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VpnSitePropertiesVirtualWan>;
 
 /** A list of address blocks reserved for this virtual network in CIDR notation. */
-export type VpnSitePropertiesAddressSpaceAddressPrefixesList =
-  ReadonlyArray<string>;
+export type VpnSitePropertiesAddressSpaceAddressPrefixesList = Array<string>;
 export const VpnSitePropertiesAddressSpaceAddressPrefixesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -114840,7 +114883,7 @@ export const VpnSitePropertiesAddressSpaceAddressPrefixesList =
 
 /** A list of IPAM Pools allocating IP address prefixes. */
 export type VpnSitePropertiesAddressSpaceIpamPoolPrefixAllocationsList =
-  ReadonlyArray<CommonIpamPoolPrefixAllocation>;
+  Array<CommonIpamPoolPrefixAllocation>;
 export const VpnSitePropertiesAddressSpaceIpamPoolPrefixAllocationsList =
   /*@__PURE__*/ S.Array(
     CommonIpamPoolPrefixAllocation,
@@ -114868,7 +114911,7 @@ export const VpnSitePropertiesAddressSpace = /*@__PURE__*/ S.suspend(() =>
 
 /** BGP peering address with IP configuration ID for virtual network gateway. */
 export type VpnSitePropertiesBgpPropertiesBgpPeeringAddressesList =
-  ReadonlyArray<IPConfigurationBgpPeeringAddress>;
+  Array<IPConfigurationBgpPeeringAddress>;
 export const VpnSitePropertiesBgpPropertiesBgpPeeringAddressesList =
   /*@__PURE__*/ S.Array(
     IPConfigurationBgpPeeringAddress,
@@ -114909,7 +114952,7 @@ export type VpnSitePropertiesProvisioningState =
 export const VpnSitePropertiesProvisioningState = /*@__PURE__*/ S.String;
 
 /** List of all vpn site links. */
-export type VpnSitePropertiesVpnSiteLinksList = ReadonlyArray<VpnSiteLink>;
+export type VpnSitePropertiesVpnSiteLinksList = Array<VpnSiteLink>;
 export const VpnSitePropertiesVpnSiteLinksList = /*@__PURE__*/ S.Array(
   VpnSiteLink,
 ) as any as S.Schema<VpnSitePropertiesVpnSiteLinksList>;
@@ -115134,7 +115177,7 @@ export const VpnSite = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VpnSite" }) as any as S.Schema<VpnSite>;
 
 /** The VpnSite items on this page */
-export type ListVpnSitesResultValueList = ReadonlyArray<VpnSite>;
+export type ListVpnSitesResultValueList = Array<VpnSite>;
 export const ListVpnSitesResultValueList = /*@__PURE__*/ S.Array(
   VpnSite,
 ) as any as S.Schema<ListVpnSitesResultValueList>;
@@ -115300,13 +115343,17 @@ export const WebApplicationFirewallScrubbingRulesState = /*@__PURE__*/ S.String;
 /** Allow certain variables to be scrubbed on WAF logs */
 export interface WebApplicationFirewallScrubbingRules {
   /** The variable to be scrubbed from the logs. */
-  matchVariable: WebApplicationFirewallScrubbingRulesMatchVariable;
+  matchVariable:
+    | WebApplicationFirewallScrubbingRulesMatchVariable
+    | (string & {});
   /** When matchVariable is a collection, operate on the selector to specify which elements in the collection this rule applies to. */
-  selectorMatchOperator: WebApplicationFirewallScrubbingRulesSelectorMatchOperator;
+  selectorMatchOperator:
+    | WebApplicationFirewallScrubbingRulesSelectorMatchOperator
+    | (string & {});
   /** When matchVariable is a collection, operator used to specify which elements in the collection this rule applies to. */
   selector?: string;
   /** Defines the state of log scrubbing rule. Default value is Enabled. */
-  state?: WebApplicationFirewallScrubbingRulesState;
+  state?: WebApplicationFirewallScrubbingRulesState | (string & {});
 }
 export const WebApplicationFirewallScrubbingRules = /*@__PURE__*/ S.suspend(
   () =>
@@ -115323,7 +115370,7 @@ export const WebApplicationFirewallScrubbingRules = /*@__PURE__*/ S.suspend(
 
 /** The rules that are applied to the logs for scrubbing. */
 export type PolicySettingsLogScrubbingScrubbingRulesList =
-  ReadonlyArray<WebApplicationFirewallScrubbingRules>;
+  Array<WebApplicationFirewallScrubbingRules>;
 export const PolicySettingsLogScrubbingScrubbingRulesList =
   /*@__PURE__*/ S.Array(
     WebApplicationFirewallScrubbingRules,
@@ -115332,7 +115379,7 @@ export const PolicySettingsLogScrubbingScrubbingRulesList =
 /** To scrub sensitive log fields */
 export interface PolicySettingsLogScrubbing {
   /** State of the log scrubbing config. Default value is Enabled. */
-  state?: PolicySettingsLogScrubbingState;
+  state?: PolicySettingsLogScrubbingState | (string & {});
   /** The rules that are applied to the logs for scrubbing. */
   scrubbingRules?: PolicySettingsLogScrubbingScrubbingRulesList;
 }
@@ -115348,9 +115395,9 @@ export const PolicySettingsLogScrubbing = /*@__PURE__*/ S.suspend(() =>
 /** Defines contents of a web application firewall global configuration. */
 export interface PolicySettings {
   /** The state of the policy. */
-  state?: PolicySettingsState;
+  state?: PolicySettingsState | (string & {});
   /** The mode of the policy. */
-  mode?: PolicySettingsMode;
+  mode?: PolicySettingsMode | (string & {});
   /** Whether to allow WAF to check request Body. */
   requestBodyCheck?: boolean;
   /** Max inspection limit in KB for request body inspection for WAF. */
@@ -115427,7 +115474,7 @@ export const MatchVariableVariableName = /*@__PURE__*/ S.String;
 /** Define match variables. */
 export interface MatchVariable {
   /** Match Variable. */
-  variableName: MatchVariableVariableName;
+  variableName: MatchVariableVariableName | (string & {});
   /** The selector of match variable. */
   selector?: string;
 }
@@ -115439,7 +115486,7 @@ export const MatchVariable = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MatchVariable" }) as any as S.Schema<MatchVariable>;
 
 /** List of match variables. */
-export type MatchConditionMatchVariablesList = ReadonlyArray<MatchVariable>;
+export type MatchConditionMatchVariablesList = Array<MatchVariable>;
 export const MatchConditionMatchVariablesList = /*@__PURE__*/ S.Array(
   MatchVariable,
 ) as any as S.Schema<MatchConditionMatchVariablesList>;
@@ -115461,7 +115508,7 @@ export type MatchConditionOperator =
 export const MatchConditionOperator = /*@__PURE__*/ S.String;
 
 /** Match value. */
-export type MatchConditionMatchValuesList = ReadonlyArray<string>;
+export type MatchConditionMatchValuesList = Array<string>;
 export const MatchConditionMatchValuesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<MatchConditionMatchValuesList>;
@@ -115478,8 +115525,9 @@ export type MatchConditionTransformsItem =
 export const MatchConditionTransformsItem = /*@__PURE__*/ S.String;
 
 /** List of transforms. */
-export type MatchConditionTransformsList =
-  ReadonlyArray<MatchConditionTransformsItem>;
+export type MatchConditionTransformsList = Array<
+  MatchConditionTransformsItem | (string & {})
+>;
 export const MatchConditionTransformsList = /*@__PURE__*/ S.Array(
   MatchConditionTransformsItem,
 ) as any as S.Schema<MatchConditionTransformsList>;
@@ -115489,7 +115537,7 @@ export interface MatchCondition {
   /** List of match variables. */
   matchVariables: MatchConditionMatchVariablesList;
   /** The operator to be matched. */
-  operator: MatchConditionOperator;
+  operator: MatchConditionOperator | (string & {});
   /** Whether this is negate condition or not. */
   negationConditon?: boolean;
   /** Match value. */
@@ -115509,7 +115557,7 @@ export const MatchCondition = /*@__PURE__*/ S.suspend(() =>
 
 /** List of match conditions. */
 export type WebApplicationFirewallCustomRuleInputMatchConditionsList =
-  ReadonlyArray<MatchCondition>;
+  Array<MatchCondition>;
 export const WebApplicationFirewallCustomRuleInputMatchConditionsList =
   /*@__PURE__*/ S.Array(
     MatchCondition,
@@ -115527,7 +115575,7 @@ export const GroupByVariableVariableName = /*@__PURE__*/ S.String;
 /** Define user session group by clause variables. */
 export interface GroupByVariable {
   /** User Session clause variable. */
-  variableName: GroupByVariableVariableName;
+  variableName: GroupByVariableVariableName | (string & {});
 }
 export const GroupByVariable = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -115538,8 +115586,7 @@ export const GroupByVariable = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GroupByVariable>;
 
 /** List of group by clause variables. */
-export type GroupByUserSessionGroupByVariablesList =
-  ReadonlyArray<GroupByVariable>;
+export type GroupByUserSessionGroupByVariablesList = Array<GroupByVariable>;
 export const GroupByUserSessionGroupByVariablesList = /*@__PURE__*/ S.Array(
   GroupByVariable,
 ) as any as S.Schema<GroupByUserSessionGroupByVariablesList>;
@@ -115559,7 +115606,7 @@ export const GroupByUserSession = /*@__PURE__*/ S.suspend(() =>
 
 /** List of user session identifier group by clauses. */
 export type WebApplicationFirewallCustomRuleInputGroupByUserSessionList =
-  ReadonlyArray<GroupByUserSession>;
+  Array<GroupByUserSession>;
 export const WebApplicationFirewallCustomRuleInputGroupByUserSessionList =
   /*@__PURE__*/ S.Array(
     GroupByUserSession,
@@ -115621,7 +115668,7 @@ export const WebApplicationFirewallCustomRuleInput = /*@__PURE__*/ S.suspend(
 
 /** The custom rules inside the policy. */
 export type WebApplicationFirewallPolicyPropertiesFormatInputCustomRulesList =
-  ReadonlyArray<WebApplicationFirewallCustomRuleInput>;
+  Array<WebApplicationFirewallCustomRuleInput>;
 export const WebApplicationFirewallPolicyPropertiesFormatInputCustomRulesList =
   /*@__PURE__*/ S.Array(
     WebApplicationFirewallCustomRuleInput,
@@ -115652,7 +115699,7 @@ export type ExceptionEntryMatchVariable =
 export const ExceptionEntryMatchVariable = /*@__PURE__*/ S.String;
 
 /** Allowed values for the matchVariable */
-export type ExceptionEntryValuesList = ReadonlyArray<string>;
+export type ExceptionEntryValuesList = Array<string>;
 export const ExceptionEntryValuesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ExceptionEntryValuesList>;
@@ -115688,8 +115735,7 @@ export const ExclusionManagedRule = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExclusionManagedRule>;
 
 /** List of rules that will be excluded. If none specified, all rules in the group will be excluded. */
-export type ExclusionManagedRuleGroupRulesList =
-  ReadonlyArray<ExclusionManagedRule>;
+export type ExclusionManagedRuleGroupRulesList = Array<ExclusionManagedRule>;
 export const ExclusionManagedRuleGroupRulesList = /*@__PURE__*/ S.Array(
   ExclusionManagedRule,
 ) as any as S.Schema<ExclusionManagedRuleGroupRulesList>;
@@ -115712,7 +115758,7 @@ export const ExclusionManagedRuleGroup = /*@__PURE__*/ S.suspend(() =>
 
 /** Defines the rule groups to apply to the rule set. */
 export type ExclusionManagedRuleSetRuleGroupsList =
-  ReadonlyArray<ExclusionManagedRuleGroup>;
+  Array<ExclusionManagedRuleGroup>;
 export const ExclusionManagedRuleSetRuleGroupsList = /*@__PURE__*/ S.Array(
   ExclusionManagedRuleGroup,
 ) as any as S.Schema<ExclusionManagedRuleSetRuleGroupsList>;
@@ -115738,7 +115784,7 @@ export const ExclusionManagedRuleSet = /*@__PURE__*/ S.suspend(() =>
 
 /** The managed rule sets that are associated with the exception. */
 export type ExceptionEntryExceptionManagedRuleSetsList =
-  ReadonlyArray<ExclusionManagedRuleSet>;
+  Array<ExclusionManagedRuleSet>;
 export const ExceptionEntryExceptionManagedRuleSetsList = /*@__PURE__*/ S.Array(
   ExclusionManagedRuleSet,
 ) as any as S.Schema<ExceptionEntryExceptionManagedRuleSetsList>;
@@ -115746,13 +115792,13 @@ export const ExceptionEntryExceptionManagedRuleSetsList = /*@__PURE__*/ S.Array(
 /** Adds exception to allow a request when the condition is satisfied. */
 export interface ExceptionEntry {
   /** The variable on which we evaluate the exception condition */
-  matchVariable: ExceptionEntryMatchVariable;
+  matchVariable: ExceptionEntryMatchVariable | (string & {});
   /** Allowed values for the matchVariable */
   values?: ExceptionEntryValuesList;
   /** Operates on the allowed values for the matchVariable */
-  valueMatchOperator: ExceptionEntryValueMatchOperator;
+  valueMatchOperator: ExceptionEntryValueMatchOperator | (string & {});
   /** When the matchVariable points to a key-value pair (e.g, RequestHeader), this operates on the selector */
-  selectorMatchOperator?: ExceptionEntrySelectorMatchOperator;
+  selectorMatchOperator?: ExceptionEntrySelectorMatchOperator | (string & {});
   /** When the matchVariable points to a key-value pair (e.g, RequestHeader), this identifies the key. */
   selector?: string;
   /** The managed rule sets that are associated with the exception. */
@@ -115772,8 +115818,7 @@ export const ExceptionEntry = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ExceptionEntry" }) as any as S.Schema<ExceptionEntry>;
 
 /** The exceptions that are applied on the policy. */
-export type ManagedRulesDefinitionInputExceptionsList =
-  ReadonlyArray<ExceptionEntry>;
+export type ManagedRulesDefinitionInputExceptionsList = Array<ExceptionEntry>;
 export const ManagedRulesDefinitionInputExceptionsList = /*@__PURE__*/ S.Array(
   ExceptionEntry,
 ) as any as S.Schema<ManagedRulesDefinitionInputExceptionsList>;
@@ -115803,7 +115848,7 @@ export const OwaspCrsExclusionEntrySelectorMatchOperator =
 
 /** The managed rule sets that are associated with the exclusion. */
 export type OwaspCrsExclusionEntryExclusionManagedRuleSetsList =
-  ReadonlyArray<ExclusionManagedRuleSet>;
+  Array<ExclusionManagedRuleSet>;
 export const OwaspCrsExclusionEntryExclusionManagedRuleSetsList =
   /*@__PURE__*/ S.Array(
     ExclusionManagedRuleSet,
@@ -115812,9 +115857,11 @@ export const OwaspCrsExclusionEntryExclusionManagedRuleSetsList =
 /** Allow to exclude some variable satisfy the condition for the WAF check. */
 export interface OwaspCrsExclusionEntry {
   /** The variable to be excluded. */
-  matchVariable: OwaspCrsExclusionEntryMatchVariable;
+  matchVariable: OwaspCrsExclusionEntryMatchVariable | (string & {});
   /** When matchVariable is a collection, operate on the selector to specify which elements in the collection this exclusion applies to. */
-  selectorMatchOperator: OwaspCrsExclusionEntrySelectorMatchOperator;
+  selectorMatchOperator:
+    | OwaspCrsExclusionEntrySelectorMatchOperator
+    | (string & {});
   /** When matchVariable is a collection, operator used to specify which elements in the collection this exclusion applies to. */
   selector: string;
   /** The managed rule sets that are associated with the exclusion. */
@@ -115835,7 +115882,7 @@ export const OwaspCrsExclusionEntry = /*@__PURE__*/ S.suspend(() =>
 
 /** The Exclusions that are applied on the policy. */
 export type ManagedRulesDefinitionInputExclusionsList =
-  ReadonlyArray<OwaspCrsExclusionEntry>;
+  Array<OwaspCrsExclusionEntry>;
 export const ManagedRulesDefinitionInputExclusionsList = /*@__PURE__*/ S.Array(
   OwaspCrsExclusionEntry,
 ) as any as S.Schema<ManagedRulesDefinitionInputExclusionsList>;
@@ -115863,11 +115910,11 @@ export interface ManagedRuleOverride {
   /** Identifier for the managed rule. */
   ruleId: string;
   /** The state of the managed rule. Defaults to Disabled if not specified. */
-  state?: ManagedRuleOverrideState;
+  state?: ManagedRuleOverrideState | (string & {});
   /** Defines the action to take on rule match. */
-  action?: ManagedRuleOverrideAction;
+  action?: ManagedRuleOverrideAction | (string & {});
   /** Defines the sensitivity for the rule. */
-  sensitivity?: ManagedRuleOverrideSensitivity;
+  sensitivity?: ManagedRuleOverrideSensitivity | (string & {});
 }
 export const ManagedRuleOverride = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -115881,8 +115928,7 @@ export const ManagedRuleOverride = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ManagedRuleOverride>;
 
 /** List of rules that will be disabled. If none specified, all rules in the group will be disabled. */
-export type ManagedRuleGroupOverrideRulesList =
-  ReadonlyArray<ManagedRuleOverride>;
+export type ManagedRuleGroupOverrideRulesList = Array<ManagedRuleOverride>;
 export const ManagedRuleGroupOverrideRulesList = /*@__PURE__*/ S.Array(
   ManagedRuleOverride,
 ) as any as S.Schema<ManagedRuleGroupOverrideRulesList>;
@@ -115905,7 +115951,7 @@ export const ManagedRuleGroupOverride = /*@__PURE__*/ S.suspend(() =>
 
 /** Defines the rule group overrides to apply to the rule set. */
 export type ManagedRuleSetInputRuleGroupOverridesList =
-  ReadonlyArray<ManagedRuleGroupOverride>;
+  Array<ManagedRuleGroupOverride>;
 export const ManagedRuleSetInputRuleGroupOverridesList = /*@__PURE__*/ S.Array(
   ManagedRuleGroupOverride,
 ) as any as S.Schema<ManagedRuleSetInputRuleGroupOverridesList>;
@@ -115931,7 +115977,7 @@ export const ManagedRuleSetInput = /*@__PURE__*/ S.suspend(() =>
 
 /** The managed rule sets that are associated with the policy. */
 export type ManagedRulesDefinitionInputManagedRuleSetsList =
-  ReadonlyArray<ManagedRuleSetInput>;
+  Array<ManagedRuleSetInput>;
 export const ManagedRulesDefinitionInputManagedRuleSetsList =
   /*@__PURE__*/ S.Array(
     ManagedRuleSetInput,
@@ -116062,7 +116108,7 @@ export const WebApplicationFirewallCustomRuleRuleType = /*@__PURE__*/ S.String;
 
 /** List of match conditions. */
 export type WebApplicationFirewallCustomRuleMatchConditionsList =
-  ReadonlyArray<MatchCondition>;
+  Array<MatchCondition>;
 export const WebApplicationFirewallCustomRuleMatchConditionsList =
   /*@__PURE__*/ S.Array(
     MatchCondition,
@@ -116070,7 +116116,7 @@ export const WebApplicationFirewallCustomRuleMatchConditionsList =
 
 /** List of user session identifier group by clauses. */
 export type WebApplicationFirewallCustomRuleGroupByUserSessionList =
-  ReadonlyArray<GroupByUserSession>;
+  Array<GroupByUserSession>;
 export const WebApplicationFirewallCustomRuleGroupByUserSessionList =
   /*@__PURE__*/ S.Array(
     GroupByUserSession,
@@ -116131,7 +116177,7 @@ export const WebApplicationFirewallCustomRule = /*@__PURE__*/ S.suspend(() =>
 
 /** The custom rules inside the policy. */
 export type WebApplicationFirewallPolicyPropertiesFormatCustomRulesList =
-  ReadonlyArray<WebApplicationFirewallCustomRule>;
+  Array<WebApplicationFirewallCustomRule>;
 export const WebApplicationFirewallPolicyPropertiesFormatCustomRulesList =
   /*@__PURE__*/ S.Array(
     WebApplicationFirewallCustomRule,
@@ -116139,7 +116185,7 @@ export const WebApplicationFirewallPolicyPropertiesFormatCustomRulesList =
 
 /** A collection of references to application gateways. */
 export type WebApplicationFirewallPolicyPropertiesFormatApplicationGatewaysList =
-  ReadonlyArray<ApplicationGateway>;
+  Array<ApplicationGateway>;
 export const WebApplicationFirewallPolicyPropertiesFormatApplicationGatewaysList =
   /*@__PURE__*/ S.Array(
     ApplicationGateway,
@@ -116168,28 +116214,27 @@ export const WebApplicationFirewallPolicyPropertiesFormatResourceState =
   /*@__PURE__*/ S.String;
 
 /** The exceptions that are applied on the policy. */
-export type ManagedRulesDefinitionExceptionsList =
-  ReadonlyArray<ExceptionEntry>;
+export type ManagedRulesDefinitionExceptionsList = Array<ExceptionEntry>;
 export const ManagedRulesDefinitionExceptionsList = /*@__PURE__*/ S.Array(
   ExceptionEntry,
 ) as any as S.Schema<ManagedRulesDefinitionExceptionsList>;
 
 /** The Exclusions that are applied on the policy. */
 export type ManagedRulesDefinitionExclusionsList =
-  ReadonlyArray<OwaspCrsExclusionEntry>;
+  Array<OwaspCrsExclusionEntry>;
 export const ManagedRulesDefinitionExclusionsList = /*@__PURE__*/ S.Array(
   OwaspCrsExclusionEntry,
 ) as any as S.Schema<ManagedRulesDefinitionExclusionsList>;
 
 /** Defines the rule group overrides to apply to the rule set. */
 export type ManagedRuleSetRuleGroupOverridesList =
-  ReadonlyArray<ManagedRuleGroupOverride>;
+  Array<ManagedRuleGroupOverride>;
 export const ManagedRuleSetRuleGroupOverridesList = /*@__PURE__*/ S.Array(
   ManagedRuleGroupOverride,
 ) as any as S.Schema<ManagedRuleSetRuleGroupOverridesList>;
 
 /** List of rules within the rule group */
-export type ManagedRuleSetRuleGroupRulesList = ReadonlyArray<string>;
+export type ManagedRuleSetRuleGroupRulesList = Array<string>;
 export const ManagedRuleSetRuleGroupRulesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ManagedRuleSetRuleGroupRulesList>;
@@ -116212,7 +116257,7 @@ export const ManagedRuleSetRuleGroup = /*@__PURE__*/ S.suspend(() =>
 
 /** Stores the final list of disabled rule groups */
 export type ManagedRuleSetComputedDisabledRulesList =
-  ReadonlyArray<ManagedRuleSetRuleGroup>;
+  Array<ManagedRuleSetRuleGroup>;
 export const ManagedRuleSetComputedDisabledRulesList = /*@__PURE__*/ S.Array(
   ManagedRuleSetRuleGroup,
 ) as any as S.Schema<ManagedRuleSetComputedDisabledRulesList>;
@@ -116238,8 +116283,7 @@ export const ManagedRuleSet = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ManagedRuleSet" }) as any as S.Schema<ManagedRuleSet>;
 
 /** The managed rule sets that are associated with the policy. */
-export type ManagedRulesDefinitionManagedRuleSetsList =
-  ReadonlyArray<ManagedRuleSet>;
+export type ManagedRulesDefinitionManagedRuleSetsList = Array<ManagedRuleSet>;
 export const ManagedRulesDefinitionManagedRuleSetsList = /*@__PURE__*/ S.Array(
   ManagedRuleSet,
 ) as any as S.Schema<ManagedRulesDefinitionManagedRuleSetsList>;
@@ -116279,7 +116323,7 @@ export const WebApplicationFirewallPolicyPropertiesFormatHttpListenersItem =
 
 /** A collection of references to application gateway http listeners. */
 export type WebApplicationFirewallPolicyPropertiesFormatHttpListenersList =
-  ReadonlyArray<WebApplicationFirewallPolicyPropertiesFormatHttpListenersItem>;
+  Array<WebApplicationFirewallPolicyPropertiesFormatHttpListenersItem>;
 export const WebApplicationFirewallPolicyPropertiesFormatHttpListenersList =
   /*@__PURE__*/ S.Array(
     WebApplicationFirewallPolicyPropertiesFormatHttpListenersItem,
@@ -116302,7 +116346,7 @@ export const WebApplicationFirewallPolicyPropertiesFormatPathBasedRulesItem =
 
 /** A collection of references to application gateway path rules. */
 export type WebApplicationFirewallPolicyPropertiesFormatPathBasedRulesList =
-  ReadonlyArray<WebApplicationFirewallPolicyPropertiesFormatPathBasedRulesItem>;
+  Array<WebApplicationFirewallPolicyPropertiesFormatPathBasedRulesItem>;
 export const WebApplicationFirewallPolicyPropertiesFormatPathBasedRulesList =
   /*@__PURE__*/ S.Array(
     WebApplicationFirewallPolicyPropertiesFormatPathBasedRulesItem,
@@ -116324,7 +116368,7 @@ export const ApplicationGatewayForContainersReferenceDefinition =
 
 /** A collection of references to application gateway for containers. */
 export type WebApplicationFirewallPolicyPropertiesFormatApplicationGatewayForContainersList =
-  ReadonlyArray<ApplicationGatewayForContainersReferenceDefinition>;
+  Array<ApplicationGatewayForContainersReferenceDefinition>;
 export const WebApplicationFirewallPolicyPropertiesFormatApplicationGatewayForContainersList =
   /*@__PURE__*/ S.Array(
     ApplicationGatewayForContainersReferenceDefinition,
@@ -116579,7 +116623,7 @@ export const WebApplicationFirewallPolicy = /*@__PURE__*/ S.suspend(() =>
 
 /** The WebApplicationFirewallPolicy items on this page */
 export type WebApplicationFirewallPolicyListResultValueList =
-  ReadonlyArray<WebApplicationFirewallPolicy>;
+  Array<WebApplicationFirewallPolicy>;
 export const WebApplicationFirewallPolicyListResultValueList =
   /*@__PURE__*/ S.Array(
     WebApplicationFirewallPolicy,
@@ -116730,8 +116774,7 @@ export const AzureWebCategory = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AzureWebCategory>;
 
 /** The AzureWebCategory items on this page */
-export type AzureWebCategoryListResultValueList =
-  ReadonlyArray<AzureWebCategory>;
+export type AzureWebCategoryListResultValueList = Array<AzureWebCategory>;
 export const AzureWebCategoryListResultValueList = /*@__PURE__*/ S.Array(
   AzureWebCategory,
 ) as any as S.Schema<AzureWebCategoryListResultValueList>;

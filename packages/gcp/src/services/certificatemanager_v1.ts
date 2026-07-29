@@ -153,7 +153,7 @@ export interface CertificateIssuanceConfig {
   /** Output only. The last update timestamp of a CertificateIssuanceConfig. */
   updateTime?: string;
   /** Required. The key algorithm to use when generating the private key. */
-  keyAlgorithm?: CertificateIssuanceConfigKeyAlgorithmEnum;
+  keyAlgorithm?: CertificateIssuanceConfigKeyAlgorithmEnum | (string & {});
   /** Required. The CA that issues the workload certificate. It includes the CA address, type, authentication to CA service, etc. */
   certificateAuthorityConfig?: CertificateAuthorityConfig;
   /** Identifier. A user-defined name of the certificate issuance config. CertificateIssuanceConfig names must be unique globally and match pattern `projects/*\/locations/*\/certificateIssuanceConfigs/*`. */
@@ -207,7 +207,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -252,7 +252,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
-export type IntegerList = ReadonlyArray<number>;
+export type IntegerList = Array<number>;
 export const IntegerList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<IntegerList>;
@@ -271,7 +271,7 @@ export const IpConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "IpConfig" }) as any as S.Schema<IpConfig>;
 
-export type IpConfigList = ReadonlyArray<IpConfig>;
+export type IpConfigList = Array<IpConfig>;
 export const IpConfigList = /*@__PURE__*/ S.Array(
   IpConfig,
 ) as any as S.Schema<IpConfigList>;
@@ -293,7 +293,7 @@ export const GclbTarget = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "GclbTarget" }) as any as S.Schema<GclbTarget>;
 
-export type GclbTargetList = ReadonlyArray<GclbTarget>;
+export type GclbTargetList = Array<GclbTarget>;
 export const GclbTargetList = /*@__PURE__*/ S.Array(
   GclbTarget,
 ) as any as S.Schema<GclbTargetList>;
@@ -352,7 +352,7 @@ export const CreateProjectsLocationsCertificateMapsRequest =
     identifier: "CreateProjectsLocationsCertificateMapsRequest",
   }) as any as S.Schema<CreateProjectsLocationsCertificateMapsRequest>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -371,13 +371,13 @@ export interface CertificateMapEntry {
   /** Optional. A set of Certificates defines for the given `hostname`. There can be defined up to four certificates in each Certificate Map Entry. Each certificate must match pattern `projects/*\/locations/*\/certificates/*`. */
   certificates?: StringList;
   /** A predefined matcher for particular cases, other than SNI selection. */
-  matcher?: CertificateMapEntryMatcherEnum;
+  matcher?: CertificateMapEntryMatcherEnum | (string & {});
   /** Identifier. A user-defined name of the Certificate Map Entry. Certificate Map Entry names must be unique globally and match pattern `projects/*\/locations/*\/certificateMaps/*\/certificateMapEntries/*`. */
   name?: string;
   /** A Hostname (FQDN, e.g. `example.com`) or a wildcard hostname expression (`*.example.com`) for a set of hostnames with common suffix. Used as Server Name Indication (SNI) for selecting a proper certificate. */
   hostname?: string;
   /** Output only. A serving state of this Certificate Map Entry. */
-  state?: CertificateMapEntryStateEnum;
+  state?: CertificateMapEntryStateEnum | (string & {});
   /** Optional. One or more paragraphs of text description of a certificate map entry. */
   description?: string;
   /** Output only. The creation timestamp of a Certificate Map Entry. */
@@ -440,7 +440,7 @@ export const UsedBy = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "UsedBy" }) as any as S.Schema<UsedBy>;
 
-export type UsedByList = ReadonlyArray<UsedBy>;
+export type UsedByList = Array<UsedBy>;
 export const UsedByList = /*@__PURE__*/ S.Array(
   UsedBy,
 ) as any as S.Schema<UsedByList>;
@@ -470,7 +470,7 @@ export const ProvisioningIssueReasonEnum = /*@__PURE__*/ S.String;
 /** Information about issues with provisioning a Managed Certificate. */
 export interface ProvisioningIssue {
   /** Output only. Reason for provisioning failures. */
-  reason?: ProvisioningIssueReasonEnum;
+  reason?: ProvisioningIssueReasonEnum | (string & {});
   /** Output only. Human readable explanation about the issue. Provided to help address the configuration issues. Not guaranteed to be stable. For programmatic access use Reason enum. */
   details?: string;
 }
@@ -497,7 +497,7 @@ export interface ManagedIdentityCertificate {
   /** Required. Immutable. SPIFFE ID of the Managed Identity used for this certificate. */
   identity?: string;
   /** Output only. State of the managed certificate resource. */
-  state?: ManagedIdentityCertificateStateEnum;
+  state?: ManagedIdentityCertificateStateEnum | (string & {});
 }
 export const ManagedIdentityCertificate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -573,8 +573,9 @@ export type TroubleshootingIssuesItemEnum =
   | "CERTIFICATE_NOT_ATTACHED";
 export const TroubleshootingIssuesItemEnum = /*@__PURE__*/ S.String;
 
-export type TroubleshootingIssuesItemEnumList =
-  ReadonlyArray<TroubleshootingIssuesItemEnum>;
+export type TroubleshootingIssuesItemEnumList = Array<
+  TroubleshootingIssuesItemEnum | (string & {})
+>;
 export const TroubleshootingIssuesItemEnumList = /*@__PURE__*/ S.Array(
   TroubleshootingIssuesItemEnum,
 ) as any as S.Schema<TroubleshootingIssuesItemEnumList>;
@@ -601,11 +602,11 @@ export const Troubleshooting = /*@__PURE__*/ S.suspend(() =>
 /** State of the latest attempt to authorize a domain for certificate issuance. */
 export interface AuthorizationAttemptInfo {
   /** Output only. Reason for failure of the authorization attempt for the domain. */
-  failureReason?: AuthorizationAttemptInfoFailureReasonEnum;
+  failureReason?: AuthorizationAttemptInfoFailureReasonEnum | (string & {});
   /** Output only. Domain name of the authorization attempt. */
   domain?: string;
   /** Output only. State of the domain for managed certificate issuance. */
-  state?: AuthorizationAttemptInfoStateEnum;
+  state?: AuthorizationAttemptInfoStateEnum | (string & {});
   /** Output only. Human readable explanation for reaching the state. Provided to help address the configuration issues. Not guaranteed to be stable. For programmatic access use FailureReason enum. */
   details?: string;
   /** Output only. The timestamp, when the authorization attempt was made. */
@@ -626,8 +627,7 @@ export const AuthorizationAttemptInfo = /*@__PURE__*/ S.suspend(() =>
   identifier: "AuthorizationAttemptInfo",
 }) as any as S.Schema<AuthorizationAttemptInfo>;
 
-export type AuthorizationAttemptInfoList =
-  ReadonlyArray<AuthorizationAttemptInfo>;
+export type AuthorizationAttemptInfoList = Array<AuthorizationAttemptInfo>;
 export const AuthorizationAttemptInfoList = /*@__PURE__*/ S.Array(
   AuthorizationAttemptInfo,
 ) as any as S.Schema<AuthorizationAttemptInfoList>;
@@ -635,7 +635,7 @@ export const AuthorizationAttemptInfoList = /*@__PURE__*/ S.Array(
 /** Configuration and state of a Managed Certificate. Certificate Manager provisions and renews Managed Certificates automatically, for as long as it's authorized to do so. */
 export interface ManagedCertificate {
   /** Output only. State of the managed certificate resource. */
-  state?: ManagedCertificateStateEnum;
+  state?: ManagedCertificateStateEnum | (string & {});
   /** Optional. Immutable. The resource name for a CertificateIssuanceConfig used to configure private PKI certificates in the format `projects/*\/locations/*\/certificateIssuanceConfigs/*`. If this field is not set, the certificates will instead be publicly signed as documented at https://cloud.google.com/load-balancing/docs/ssl-certificates/google-managed-certs#caa. */
   issuanceConfig?: string;
   /** Output only. Information about issues with provisioning a Managed Certificate. */
@@ -696,7 +696,7 @@ export interface Certificate {
   /** If set, contains configuration and state of a managed certificate. */
   managed?: ManagedCertificate;
   /** Optional. Immutable. The scope of the certificate. */
-  scope?: CertificateScopeEnum;
+  scope?: CertificateScopeEnum | (string & {});
 }
 export const Certificate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -786,7 +786,7 @@ export interface DnsAuthorization {
   /** Output only. DNS Resource Record that needs to be added to DNS configuration. */
   dnsResourceRecord?: DnsResourceRecord;
   /** Optional. Immutable. Type of DnsAuthorization. If unset during resource creation the following default will be used: - in location `global`: FIXED_RECORD, - in other locations: PER_PROJECT_RECORD. */
-  type?: DnsAuthorizationTypeEnum;
+  type?: DnsAuthorizationTypeEnum | (string & {});
 }
 export const DnsAuthorization = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -840,7 +840,7 @@ export const TrustAnchor = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TrustAnchor" }) as any as S.Schema<TrustAnchor>;
 
-export type TrustAnchorList = ReadonlyArray<TrustAnchor>;
+export type TrustAnchorList = Array<TrustAnchor>;
 export const TrustAnchorList = /*@__PURE__*/ S.Array(
   TrustAnchor,
 ) as any as S.Schema<TrustAnchorList>;
@@ -856,7 +856,7 @@ export const IntermediateCA = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "IntermediateCA" }) as any as S.Schema<IntermediateCA>;
 
-export type IntermediateCAList = ReadonlyArray<IntermediateCA>;
+export type IntermediateCAList = Array<IntermediateCA>;
 export const IntermediateCAList = /*@__PURE__*/ S.Array(
   IntermediateCA,
 ) as any as S.Schema<IntermediateCAList>;
@@ -894,12 +894,12 @@ export const AllowlistedCertificate = /*@__PURE__*/ S.suspend(() =>
   identifier: "AllowlistedCertificate",
 }) as any as S.Schema<AllowlistedCertificate>;
 
-export type AllowlistedCertificateList = ReadonlyArray<AllowlistedCertificate>;
+export type AllowlistedCertificateList = Array<AllowlistedCertificate>;
 export const AllowlistedCertificateList = /*@__PURE__*/ S.Array(
   AllowlistedCertificate,
 ) as any as S.Schema<AllowlistedCertificateList>;
 
-export type TrustStoreList = ReadonlyArray<TrustStore>;
+export type TrustStoreList = Array<TrustStore>;
 export const TrustStoreList = /*@__PURE__*/ S.Array(
   TrustStore,
 ) as any as S.Schema<TrustStoreList>;
@@ -1309,7 +1309,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = ReadonlyArray<Location>;
+export type LocationList = Array<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -1361,8 +1361,7 @@ export const ListProjectsLocationsCertificateIssuanceConfigsRequest =
     identifier: "ListProjectsLocationsCertificateIssuanceConfigsRequest",
   }) as any as S.Schema<ListProjectsLocationsCertificateIssuanceConfigsRequest>;
 
-export type CertificateIssuanceConfigList =
-  ReadonlyArray<CertificateIssuanceConfig>;
+export type CertificateIssuanceConfigList = Array<CertificateIssuanceConfig>;
 export const CertificateIssuanceConfigList = /*@__PURE__*/ S.Array(
   CertificateIssuanceConfig,
 ) as any as S.Schema<CertificateIssuanceConfigList>;
@@ -1418,7 +1417,7 @@ export const ListProjectsLocationsCertificateMapsRequest =
     identifier: "ListProjectsLocationsCertificateMapsRequest",
   }) as any as S.Schema<ListProjectsLocationsCertificateMapsRequest>;
 
-export type CertificateMapList = ReadonlyArray<CertificateMap>;
+export type CertificateMapList = Array<CertificateMap>;
 export const CertificateMapList = /*@__PURE__*/ S.Array(
   CertificateMap,
 ) as any as S.Schema<CertificateMapList>;
@@ -1474,7 +1473,7 @@ export const ListProjectsLocationsCertificateMapsCertificateMapEntriesRequest =
       "ListProjectsLocationsCertificateMapsCertificateMapEntriesRequest",
   }) as any as S.Schema<ListProjectsLocationsCertificateMapsCertificateMapEntriesRequest>;
 
-export type CertificateMapEntryList = ReadonlyArray<CertificateMapEntry>;
+export type CertificateMapEntryList = Array<CertificateMapEntry>;
 export const CertificateMapEntryList = /*@__PURE__*/ S.Array(
   CertificateMapEntry,
 ) as any as S.Schema<CertificateMapEntryList>;
@@ -1529,7 +1528,7 @@ export const ListProjectsLocationsCertificatesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsCertificatesRequest",
 }) as any as S.Schema<ListProjectsLocationsCertificatesRequest>;
 
-export type CertificateList = ReadonlyArray<Certificate>;
+export type CertificateList = Array<Certificate>;
 export const CertificateList = /*@__PURE__*/ S.Array(
   Certificate,
 ) as any as S.Schema<CertificateList>;
@@ -1584,7 +1583,7 @@ export const ListProjectsLocationsDnsAuthorizationsRequest =
     identifier: "ListProjectsLocationsDnsAuthorizationsRequest",
   }) as any as S.Schema<ListProjectsLocationsDnsAuthorizationsRequest>;
 
-export type DnsAuthorizationList = ReadonlyArray<DnsAuthorization>;
+export type DnsAuthorizationList = Array<DnsAuthorization>;
 export const DnsAuthorizationList = /*@__PURE__*/ S.Array(
   DnsAuthorization,
 ) as any as S.Schema<DnsAuthorizationList>;
@@ -1639,7 +1638,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type OperationList = ReadonlyArray<Operation>;
+export type OperationList = Array<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -1694,7 +1693,7 @@ export const ListProjectsLocationsTrustConfigsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsTrustConfigsRequest",
 }) as any as S.Schema<ListProjectsLocationsTrustConfigsRequest>;
 
-export type TrustConfigList = ReadonlyArray<TrustConfig>;
+export type TrustConfigList = Array<TrustConfig>;
 export const TrustConfigList = /*@__PURE__*/ S.Array(
   TrustConfig,
 ) as any as S.Schema<TrustConfigList>;

@@ -285,7 +285,7 @@ export const EmailPreferences = /*@__PURE__*/ S.suspend(() =>
   identifier: "EmailPreferences",
 }) as any as S.Schema<EmailPreferences>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -320,7 +320,7 @@ export interface TransferConfig {
   /** Options customizing different types of data transfer schedule. This field replaces "schedule" and "schedule_options" fields. ScheduleOptionsV2 cannot be used together with ScheduleOptions/Schedule. */
   scheduleOptionsV2?: ScheduleOptionsV2;
   /** Output only. State of the most recently updated transfer run. */
-  state?: TransferConfigStateEnum;
+  state?: TransferConfigStateEnum | (string & {});
   /** The BigQuery target dataset id. */
   destinationDatasetId?: string;
   /** Deprecated. Unique ID of the user on whose behalf transfer is done. */
@@ -340,7 +340,7 @@ export interface TransferConfig {
   /** The encryption configuration part. Currently, it is only used for the optional KMS key name. The BigQuery service account of your project must be granted permissions to use the key. Read methods will return the key name applied in effect. Write methods will apply the key if it is present, or otherwise try to apply project default keys if it is absent. */
   encryptionConfiguration?: EncryptionConfiguration;
   /** The classification of the destination table. */
-  managedTableType?: TransferConfigManagedTableTypeEnum;
+  managedTableType?: TransferConfigManagedTableTypeEnum | (string & {});
   /** Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer' section for each data source. For example the parameters for Cloud Storage transfers are listed here: https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq */
   params?: DocumentMap;
   /** Is this config disabled. When set to true, no runs will be scheduled for this transfer config. */
@@ -525,7 +525,7 @@ export const DeleteProjectsTransferConfigsRunsRequest = /*@__PURE__*/ S.suspend(
   identifier: "DeleteProjectsTransferConfigsRunsRequest",
 }) as any as S.Schema<DeleteProjectsTransferConfigsRunsRequest>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -676,7 +676,7 @@ export const DataSourceParameter = /*@__PURE__*/ S.suspend(() =>
   identifier: "DataSourceParameter",
 }) as any as S.Schema<DataSourceParameter>;
 
-export type DataSourceParameterList = ReadonlyArray<DataSourceParameter>;
+export type DataSourceParameterList = Array<DataSourceParameter>;
 export const DataSourceParameterList = /*@__PURE__*/ S.Array(
   DataSourceParameter,
 ) as any as S.Schema<DataSourceParameterList>;
@@ -1018,7 +1018,7 @@ export const TransferStatusMetric = /*@__PURE__*/ S.suspend(() =>
   identifier: "TransferStatusMetric",
 }) as any as S.Schema<TransferStatusMetric>;
 
-export type TransferStatusMetricList = ReadonlyArray<TransferStatusMetric>;
+export type TransferStatusMetricList = Array<TransferStatusMetric>;
 export const TransferStatusMetricList = /*@__PURE__*/ S.Array(
   TransferStatusMetric,
 ) as any as S.Schema<TransferStatusMetricList>;
@@ -1221,7 +1221,7 @@ export const ListProjectsDataSourcesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsDataSourcesRequest",
 }) as any as S.Schema<ListProjectsDataSourcesRequest>;
 
-export type DataSourceList = ReadonlyArray<DataSource>;
+export type DataSourceList = Array<DataSource>;
 export const DataSourceList = /*@__PURE__*/ S.Array(
   DataSource,
 ) as any as S.Schema<DataSourceList>;
@@ -1272,7 +1272,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = ReadonlyArray<Location>;
+export type LocationList = Array<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -1346,7 +1346,7 @@ export const ListProjectsLocationsTransferConfigsRequest =
     identifier: "ListProjectsLocationsTransferConfigsRequest",
   }) as any as S.Schema<ListProjectsLocationsTransferConfigsRequest>;
 
-export type TransferConfigList = ReadonlyArray<TransferConfig>;
+export type TransferConfigList = Array<TransferConfig>;
 export const TransferConfigList = /*@__PURE__*/ S.Array(
   TransferConfig,
 ) as any as S.Schema<TransferConfigList>;
@@ -1383,10 +1383,9 @@ export type ListProjectsLocationsTransferConfigsRunsStatesEnum =
 export const ListProjectsLocationsTransferConfigsRunsStatesEnum =
   /*@__PURE__*/ S.String;
 
-export type ListProjectsLocationsTransferConfigsRunsStatesEnumList =
-  ReadonlyArray<
-    ListProjectsLocationsTransferConfigsRunsStatesEnum | (string & {})
-  >;
+export type ListProjectsLocationsTransferConfigsRunsStatesEnumList = Array<
+  ListProjectsLocationsTransferConfigsRunsStatesEnum | (string & {})
+>;
 export const ListProjectsLocationsTransferConfigsRunsStatesEnumList =
   /*@__PURE__*/ S.Array(
     ListProjectsLocationsTransferConfigsRunsStatesEnum,
@@ -1429,7 +1428,7 @@ export const ListProjectsLocationsTransferConfigsRunsRequest =
     identifier: "ListProjectsLocationsTransferConfigsRunsRequest",
   }) as any as S.Schema<ListProjectsLocationsTransferConfigsRunsRequest>;
 
-export type TransferRunList = ReadonlyArray<TransferRun>;
+export type TransferRunList = Array<TransferRun>;
 export const TransferRunList = /*@__PURE__*/ S.Array(
   TransferRun,
 ) as any as S.Schema<TransferRunList>;
@@ -1456,7 +1455,7 @@ export const ListProjectsLocationsTransferConfigsRunsTransferLogsMessageTypesEnu
   /*@__PURE__*/ S.String;
 
 export type ListProjectsLocationsTransferConfigsRunsTransferLogsMessageTypesEnumList =
-  ReadonlyArray<
+  Array<
     | ListProjectsLocationsTransferConfigsRunsTransferLogsMessageTypesEnum
     | (string & {})
   >;
@@ -1523,7 +1522,7 @@ export const TransferMessage = /*@__PURE__*/ S.suspend(() =>
   identifier: "TransferMessage",
 }) as any as S.Schema<TransferMessage>;
 
-export type TransferMessageList = ReadonlyArray<TransferMessage>;
+export type TransferMessageList = Array<TransferMessage>;
 export const TransferMessageList = /*@__PURE__*/ S.Array(
   TransferMessage,
 ) as any as S.Schema<TransferMessageList>;
@@ -1572,7 +1571,7 @@ export const ListProjectsLocationsTransferConfigsTransferResourcesRequest =
     identifier: "ListProjectsLocationsTransferConfigsTransferResourcesRequest",
   }) as any as S.Schema<ListProjectsLocationsTransferConfigsTransferResourcesRequest>;
 
-export type TransferResourceList = ReadonlyArray<TransferResource>;
+export type TransferResourceList = Array<TransferResource>;
 export const TransferResourceList = /*@__PURE__*/ S.Array(
   TransferResource,
 ) as any as S.Schema<TransferResourceList>;
@@ -1635,7 +1634,7 @@ export type ListProjectsTransferConfigsRunsStatesEnum =
   | "CANCELLED";
 export const ListProjectsTransferConfigsRunsStatesEnum = /*@__PURE__*/ S.String;
 
-export type ListProjectsTransferConfigsRunsStatesEnumList = ReadonlyArray<
+export type ListProjectsTransferConfigsRunsStatesEnumList = Array<
   ListProjectsTransferConfigsRunsStatesEnum | (string & {})
 >;
 export const ListProjectsTransferConfigsRunsStatesEnumList =
@@ -1687,7 +1686,7 @@ export const ListProjectsTransferConfigsRunsTransferLogsMessageTypesEnum =
   /*@__PURE__*/ S.String;
 
 export type ListProjectsTransferConfigsRunsTransferLogsMessageTypesEnumList =
-  ReadonlyArray<
+  Array<
     ListProjectsTransferConfigsRunsTransferLogsMessageTypesEnum | (string & {})
   >;
 export const ListProjectsTransferConfigsRunsTransferLogsMessageTypesEnumList =

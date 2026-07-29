@@ -158,7 +158,7 @@ export const SyncFrequencyEnum = /*@__PURE__*/ S.String;
 
 /** Column names for primary key deduplication. */
 export type ExternalDataSchemasIncrementalFieldsCreateRequestPrimaryKeyColumnsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ExternalDataSchemasIncrementalFieldsCreateRequestPrimaryKeyColumnsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -170,7 +170,7 @@ export const CdcTableModeEnum = /*@__PURE__*/ S.String;
 
 /** Names of source columns to sync. `null` (default) syncs all columns. Primary-key columns and the active incremental field are always retained, even if not listed here. */
 export type ExternalDataSchemasIncrementalFieldsCreateRequestEnabledColumnsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ExternalDataSchemasIncrementalFieldsCreateRequestEnabledColumnsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -197,7 +197,7 @@ export const ExternalDataSchemasIncrementalFieldsCreateRequestRowFiltersItem =
 
 /** Predicates ANDed onto the source query so only matching rows sync. Each is `{column, operator, value}`; `null`/empty (default) syncs all rows. The operator must be one of `> >= < <= = != IN "NOT IN"` and the value must match the column's type (for `IN`/`NOT IN`, a comma-separated list like `1, 2, 3` or `'a','b'`). Applied on the next sync — not retroactive to already-synced rows. */
 export type ExternalDataSchemasIncrementalFieldsCreateRequestRowFiltersList =
-  ReadonlyArray<ExternalDataSchemasIncrementalFieldsCreateRequestRowFiltersItem>;
+  Array<ExternalDataSchemasIncrementalFieldsCreateRequestRowFiltersItem>;
 export const ExternalDataSchemasIncrementalFieldsCreateRequestRowFiltersList =
   /*@__PURE__*/ S.Array(
     ExternalDataSchemasIncrementalFieldsCreateRequestRowFiltersItem,
@@ -312,13 +312,13 @@ export const ExternalDataSchemaTableMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ExternalDataSchemaTableMap>;
 
 /** Column names for primary key deduplication. */
-export type ExternalDataSchemaPrimaryKeyColumnsList = ReadonlyArray<string>;
+export type ExternalDataSchemaPrimaryKeyColumnsList = Array<string>;
 export const ExternalDataSchemaPrimaryKeyColumnsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ExternalDataSchemaPrimaryKeyColumnsList>;
 
 /** Names of source columns to sync. `null` (default) syncs all columns. Primary-key columns and the active incremental field are always retained, even if not listed here. */
-export type ExternalDataSchemaEnabledColumnsList = ReadonlyArray<string>;
+export type ExternalDataSchemaEnabledColumnsList = Array<string>;
 export const ExternalDataSchemaEnabledColumnsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ExternalDataSchemaEnabledColumnsList>;
@@ -342,7 +342,7 @@ export const ExternalDataSchemaRowFiltersItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Predicates ANDed onto the source query so only matching rows sync. Each is `{column, operator, value}`; `null`/empty (default) syncs all rows. The operator must be one of `> >= < <= = != IN "NOT IN"` and the value must match the column's type (for `IN`/`NOT IN`, a comma-separated list like `1, 2, 3` or `'a','b'`). Applied on the next sync — not retroactive to already-synced rows. */
 export type ExternalDataSchemaRowFiltersList =
-  ReadonlyArray<ExternalDataSchemaRowFiltersItem>;
+  Array<ExternalDataSchemaRowFiltersItem>;
 export const ExternalDataSchemaRowFiltersList = /*@__PURE__*/ S.Array(
   ExternalDataSchemaRowFiltersItem,
 ) as any as S.Schema<ExternalDataSchemaRowFiltersList>;
@@ -365,13 +365,12 @@ export const ExternalDataSchemaAvailableColumnsItem = /*@__PURE__*/ S.suspend(
 
 /** Column metadata (name, data type, nullable) for this schema. For SQL sources this is the source-side schema discovered via `refresh_schemas`; for other sources (and once synced) it falls back to the synced table's columns. Empty only before the first successful sync/refresh. */
 export type ExternalDataSchemaAvailableColumnsList =
-  ReadonlyArray<ExternalDataSchemaAvailableColumnsItem>;
+  Array<ExternalDataSchemaAvailableColumnsItem>;
 export const ExternalDataSchemaAvailableColumnsList = /*@__PURE__*/ S.Array(
   ExternalDataSchemaAvailableColumnsItem,
 ) as any as S.Schema<ExternalDataSchemaAvailableColumnsList>;
 
-export type ExternalDataSchemaSourceSupportedApiVersionsList =
-  ReadonlyArray<string>;
+export type ExternalDataSchemaSourceSupportedApiVersionsList = Array<string>;
 export const ExternalDataSchemaSourceSupportedApiVersionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -499,7 +498,7 @@ export const ExternalDataSchema = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExternalDataSchema>;
 
 export type PaginatedExternalDataSchemaListResultsList =
-  ReadonlyArray<ExternalDataSchema>;
+  Array<ExternalDataSchema>;
 export const PaginatedExternalDataSchemaListResultsList = /*@__PURE__*/ S.Array(
   ExternalDataSchema,
 ) as any as S.Schema<PaginatedExternalDataSchemaListResultsList>;
@@ -570,7 +569,7 @@ export const ExternalDataSchemasLogsRetrieveResponse = /*@__PURE__*/ S.suspend(
 
 /** Column names for primary key deduplication. */
 export type ExternalDataSchemasPartialUpdateRequestPrimaryKeyColumnsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ExternalDataSchemasPartialUpdateRequestPrimaryKeyColumnsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -578,7 +577,7 @@ export const ExternalDataSchemasPartialUpdateRequestPrimaryKeyColumnsList =
 
 /** Names of source columns to sync. `null` (default) syncs all columns. Primary-key columns and the active incremental field are always retained, even if not listed here. */
 export type ExternalDataSchemasPartialUpdateRequestEnabledColumnsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ExternalDataSchemasPartialUpdateRequestEnabledColumnsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -604,7 +603,7 @@ export const ExternalDataSchemasPartialUpdateRequestRowFiltersItem =
 
 /** Predicates ANDed onto the source query so only matching rows sync. Each is `{column, operator, value}`; `null`/empty (default) syncs all rows. The operator must be one of `> >= < <= = != IN "NOT IN"` and the value must match the column's type (for `IN`/`NOT IN`, a comma-separated list like `1, 2, 3` or `'a','b'`). Applied on the next sync — not retroactive to already-synced rows. */
 export type ExternalDataSchemasPartialUpdateRequestRowFiltersList =
-  ReadonlyArray<ExternalDataSchemasPartialUpdateRequestRowFiltersItem>;
+  Array<ExternalDataSchemasPartialUpdateRequestRowFiltersItem>;
 export const ExternalDataSchemasPartialUpdateRequestRowFiltersList =
   /*@__PURE__*/ S.Array(
     ExternalDataSchemasPartialUpdateRequestRowFiltersItem,
@@ -675,7 +674,7 @@ export const ExternalDataSchemasPartialUpdateRequest = /*@__PURE__*/ S.suspend(
 
 /** Column names for primary key deduplication. */
 export type ExternalDataSchemasReloadCreateRequestPrimaryKeyColumnsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ExternalDataSchemasReloadCreateRequestPrimaryKeyColumnsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -683,7 +682,7 @@ export const ExternalDataSchemasReloadCreateRequestPrimaryKeyColumnsList =
 
 /** Names of source columns to sync. `null` (default) syncs all columns. Primary-key columns and the active incremental field are always retained, even if not listed here. */
 export type ExternalDataSchemasReloadCreateRequestEnabledColumnsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ExternalDataSchemasReloadCreateRequestEnabledColumnsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -709,7 +708,7 @@ export const ExternalDataSchemasReloadCreateRequestRowFiltersItem =
 
 /** Predicates ANDed onto the source query so only matching rows sync. Each is `{column, operator, value}`; `null`/empty (default) syncs all rows. The operator must be one of `> >= < <= = != IN "NOT IN"` and the value must match the column's type (for `IN`/`NOT IN`, a comma-separated list like `1, 2, 3` or `'a','b'`). Applied on the next sync — not retroactive to already-synced rows. */
 export type ExternalDataSchemasReloadCreateRequestRowFiltersList =
-  ReadonlyArray<ExternalDataSchemasReloadCreateRequestRowFiltersItem>;
+  Array<ExternalDataSchemasReloadCreateRequestRowFiltersItem>;
 export const ExternalDataSchemasReloadCreateRequestRowFiltersList =
   /*@__PURE__*/ S.Array(
     ExternalDataSchemasReloadCreateRequestRowFiltersItem,
@@ -787,7 +786,7 @@ export const ExternalDataSchemasReloadCreateResponse = /*@__PURE__*/ S.suspend(
 
 /** Column names for primary key deduplication. */
 export type ExternalDataSchemasResyncCreateRequestPrimaryKeyColumnsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ExternalDataSchemasResyncCreateRequestPrimaryKeyColumnsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -795,7 +794,7 @@ export const ExternalDataSchemasResyncCreateRequestPrimaryKeyColumnsList =
 
 /** Names of source columns to sync. `null` (default) syncs all columns. Primary-key columns and the active incremental field are always retained, even if not listed here. */
 export type ExternalDataSchemasResyncCreateRequestEnabledColumnsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ExternalDataSchemasResyncCreateRequestEnabledColumnsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -821,7 +820,7 @@ export const ExternalDataSchemasResyncCreateRequestRowFiltersItem =
 
 /** Predicates ANDed onto the source query so only matching rows sync. Each is `{column, operator, value}`; `null`/empty (default) syncs all rows. The operator must be one of `> >= < <= = != IN "NOT IN"` and the value must match the column's type (for `IN`/`NOT IN`, a comma-separated list like `1, 2, 3` or `'a','b'`). Applied on the next sync — not retroactive to already-synced rows. */
 export type ExternalDataSchemasResyncCreateRequestRowFiltersList =
-  ReadonlyArray<ExternalDataSchemasResyncCreateRequestRowFiltersItem>;
+  Array<ExternalDataSchemasResyncCreateRequestRowFiltersItem>;
 export const ExternalDataSchemasResyncCreateRequestRowFiltersList =
   /*@__PURE__*/ S.Array(
     ExternalDataSchemasResyncCreateRequestRowFiltersItem,
@@ -920,15 +919,14 @@ export const ExternalDataSchemasRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Column names for primary key deduplication. */
 export type ExternalDataSchemasUpdateRequestPrimaryKeyColumnsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ExternalDataSchemasUpdateRequestPrimaryKeyColumnsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ExternalDataSchemasUpdateRequestPrimaryKeyColumnsList>;
 
 /** Names of source columns to sync. `null` (default) syncs all columns. Primary-key columns and the active incremental field are always retained, even if not listed here. */
-export type ExternalDataSchemasUpdateRequestEnabledColumnsList =
-  ReadonlyArray<string>;
+export type ExternalDataSchemasUpdateRequestEnabledColumnsList = Array<string>;
 export const ExternalDataSchemasUpdateRequestEnabledColumnsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -954,7 +952,7 @@ export const ExternalDataSchemasUpdateRequestRowFiltersItem =
 
 /** Predicates ANDed onto the source query so only matching rows sync. Each is `{column, operator, value}`; `null`/empty (default) syncs all rows. The operator must be one of `> >= < <= = != IN "NOT IN"` and the value must match the column's type (for `IN`/`NOT IN`, a comma-separated list like `1, 2, 3` or `'a','b'`). Applied on the next sync — not retroactive to already-synced rows. */
 export type ExternalDataSchemasUpdateRequestRowFiltersList =
-  ReadonlyArray<ExternalDataSchemasUpdateRequestRowFiltersItem>;
+  Array<ExternalDataSchemasUpdateRequestRowFiltersItem>;
 export const ExternalDataSchemasUpdateRequestRowFiltersList =
   /*@__PURE__*/ S.Array(
     ExternalDataSchemasUpdateRequestRowFiltersItem,

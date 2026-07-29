@@ -120,7 +120,7 @@ export interface AgentPool {
   /** Specifies the bandwidth limit details. If this field is unspecified, the default value is set as 'No Limit'. */
   bandwidthLimit?: BandwidthLimit;
   /** Output only. Specifies the state of the AgentPool. */
-  state?: AgentPoolStateEnum;
+  state?: AgentPoolStateEnum | (string & {});
   /** Required. Specifies a unique string that identifies the agent pool. Format: `projects/{project_id}/agentPools/{agent_pool_id}` */
   name?: string;
 }
@@ -164,8 +164,9 @@ export type LoggingConfigLogActionStatesItemEnum =
   | "SKIPPED";
 export const LoggingConfigLogActionStatesItemEnum = /*@__PURE__*/ S.String;
 
-export type LoggingConfigLogActionStatesItemEnumList =
-  ReadonlyArray<LoggingConfigLogActionStatesItemEnum>;
+export type LoggingConfigLogActionStatesItemEnumList = Array<
+  LoggingConfigLogActionStatesItemEnum | (string & {})
+>;
 export const LoggingConfigLogActionStatesItemEnumList = /*@__PURE__*/ S.Array(
   LoggingConfigLogActionStatesItemEnum,
 ) as any as S.Schema<LoggingConfigLogActionStatesItemEnumList>;
@@ -177,8 +178,9 @@ export type LoggingConfigLogActionsItemEnum =
   | "COPY";
 export const LoggingConfigLogActionsItemEnum = /*@__PURE__*/ S.String;
 
-export type LoggingConfigLogActionsItemEnumList =
-  ReadonlyArray<LoggingConfigLogActionsItemEnum>;
+export type LoggingConfigLogActionsItemEnumList = Array<
+  LoggingConfigLogActionsItemEnum | (string & {})
+>;
 export const LoggingConfigLogActionsItemEnumList = /*@__PURE__*/ S.Array(
   LoggingConfigLogActionsItemEnum,
 ) as any as S.Schema<LoggingConfigLogActionsItemEnumList>;
@@ -401,23 +403,23 @@ export const MetadataOptionsTimeCreatedEnum = /*@__PURE__*/ S.String;
 /** Specifies the metadata options for running a transfer. */
 export interface MetadataOptions {
   /** Specifies the storage class to set on objects being transferred to Google Cloud Storage buckets. If unspecified, the default behavior is the same as STORAGE_CLASS_DESTINATION_BUCKET_DEFAULT. */
-  storageClass?: MetadataOptionsStorageClassEnum;
+  storageClass?: MetadataOptionsStorageClassEnum | (string & {});
   /** Specifies how each object's temporary hold status should be preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as TEMPORARY_HOLD_PRESERVE. */
-  temporaryHold?: MetadataOptionsTemporaryHoldEnum;
+  temporaryHold?: MetadataOptionsTemporaryHoldEnum | (string & {});
   /** Specifies how each file's mode attribute should be handled by the transfer. By default, mode is not preserved. Only applicable to transfers involving POSIX file systems, and ignored for other transfers. */
-  mode?: MetadataOptionsModeEnum;
+  mode?: MetadataOptionsModeEnum | (string & {});
   /** Specifies how each file's POSIX group ID (GID) attribute should be handled by the transfer. By default, GID is not preserved. Only applicable to transfers involving POSIX file systems, and ignored for other transfers. */
-  gid?: MetadataOptionsGidEnum;
+  gid?: MetadataOptionsGidEnum | (string & {});
   /** Specifies how each object's ACLs should be preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as ACL_DESTINATION_BUCKET_DEFAULT. */
-  acl?: MetadataOptionsAclEnum;
+  acl?: MetadataOptionsAclEnum | (string & {});
   /** Specifies how each object's Cloud KMS customer-managed encryption key (CMEK) is preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as KMS_KEY_DESTINATION_BUCKET_DEFAULT. */
-  kmsKey?: MetadataOptionsKmsKeyEnum;
+  kmsKey?: MetadataOptionsKmsKeyEnum | (string & {});
   /** Specifies how each file's POSIX user ID (UID) attribute should be handled by the transfer. By default, UID is not preserved. Only applicable to transfers involving POSIX file systems, and ignored for other transfers. */
-  uid?: MetadataOptionsUidEnum;
+  uid?: MetadataOptionsUidEnum | (string & {});
   /** Specifies how symlinks should be handled by the transfer. By default, symlinks are not preserved. Only applicable to transfers involving POSIX file systems, and ignored for other transfers. */
-  symlink?: MetadataOptionsSymlinkEnum;
+  symlink?: MetadataOptionsSymlinkEnum | (string & {});
   /** Specifies how each object's `timeCreated` metadata is preserved for transfers. If unspecified, the default behavior is the same as TIME_CREATED_SKIP. This behavior is supported for transfers to Cloud Storage buckets from Cloud Storage, Amazon S3, S3-compatible storage, and Azure sources. */
-  timeCreated?: MetadataOptionsTimeCreatedEnum;
+  timeCreated?: MetadataOptionsTimeCreatedEnum | (string & {});
 }
 export const MetadataOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -449,7 +451,7 @@ export interface TransferOptions {
   /** Represents the selected metadata options for a transfer job. */
   metadataOptions?: MetadataOptions;
   /** When to overwrite objects that already exist in the sink. If not set, overwrite behavior is determined by overwrite_objects_already_existing_in_sink. */
-  overwriteWhen?: TransferOptionsOverwriteWhenEnum;
+  overwriteWhen?: TransferOptionsOverwriteWhenEnum | (string & {});
   /** Whether objects should be deleted from the source after they are transferred to the sink. **Note:** This option and delete_objects_unique_in_sink are mutually exclusive. */
   deleteObjectsFromSourceAfterTransfer?: boolean;
   /** Whether objects that exist only in the sink should be deleted from the sink. **Note:** This option and delete_objects_from_source_after_transfer are mutually exclusive. */
@@ -508,7 +510,7 @@ export const HdfsData = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "HdfsData" }) as any as S.Schema<HdfsData>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -574,13 +576,13 @@ export const S3CompatibleMetadataAuthMethodEnum = /*@__PURE__*/ S.String;
 /** S3CompatibleMetadata contains the metadata fields that apply to the basic types of S3-compatible data providers. */
 export interface S3CompatibleMetadata {
   /** Specifies the network protocol of the agent. When not specified, the default value of NetworkProtocol NETWORK_PROTOCOL_HTTPS is used. */
-  protocol?: S3CompatibleMetadataProtocolEnum;
+  protocol?: S3CompatibleMetadataProtocolEnum | (string & {});
   /** The Listing API to use for discovering objects. When not specified, Transfer Service will attempt to determine the right API to use. */
-  listApi?: S3CompatibleMetadataListApiEnum;
+  listApi?: S3CompatibleMetadataListApiEnum | (string & {});
   /** Specifies the API request model used to call the storage service. When not specified, the default value of RequestModel REQUEST_MODEL_VIRTUAL_HOSTED_STYLE is used. */
-  requestModel?: S3CompatibleMetadataRequestModelEnum;
+  requestModel?: S3CompatibleMetadataRequestModelEnum | (string & {});
   /** Specifies the authentication and authorization method used by the storage service. When not specified, Transfer Service will attempt to determine right auth method to use. */
-  authMethod?: S3CompatibleMetadataAuthMethodEnum;
+  authMethod?: S3CompatibleMetadataAuthMethodEnum | (string & {});
 }
 export const S3CompatibleMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -782,8 +784,9 @@ export type NotificationConfigEventTypesItemEnum =
   | "TRANSFER_OPERATION_ABORTED";
 export const NotificationConfigEventTypesItemEnum = /*@__PURE__*/ S.String;
 
-export type NotificationConfigEventTypesItemEnumList =
-  ReadonlyArray<NotificationConfigEventTypesItemEnum>;
+export type NotificationConfigEventTypesItemEnumList = Array<
+  NotificationConfigEventTypesItemEnum | (string & {})
+>;
 export const NotificationConfigEventTypesItemEnumList = /*@__PURE__*/ S.Array(
   NotificationConfigEventTypesItemEnum,
 ) as any as S.Schema<NotificationConfigEventTypesItemEnumList>;
@@ -791,7 +794,7 @@ export const NotificationConfigEventTypesItemEnumList = /*@__PURE__*/ S.Array(
 /** Specification to configure notifications published to Pub/Sub. Notifications are published to the customer-provided topic using the following `PubsubMessage.attributes`: * `"eventType"`: one of the EventType values * `"payloadFormat"`: one of the PayloadFormat values * `"projectId"`: the project_id of the `TransferOperation` * `"transferJobName"`: the transfer_job_name of the `TransferOperation` * `"transferOperationName"`: the name of the `TransferOperation` The `PubsubMessage.data` contains a TransferOperation resource formatted according to the specified `PayloadFormat`. */
 export interface NotificationConfig {
   /** Required. The desired format of the notification message payloads. */
-  payloadFormat?: NotificationConfigPayloadFormatEnum;
+  payloadFormat?: NotificationConfigPayloadFormatEnum | (string & {});
   /** Required. The `Topic.name` of the Pub/Sub topic to which to publish notifications. Must be of the format: `projects/{project}/topics/{topic}`. Not matching this format results in an INVALID_ARGUMENT error. */
   pubsubTopic?: string;
   /** Event types for which a notification is desired. If empty, send notifications for all event types. */
@@ -824,7 +827,7 @@ export interface TransferJob {
   /** Output only. The time that the transfer job was deleted. */
   deletionTime?: string;
   /** Status of the job. This value MUST be specified for `CreateTransferJobRequests`. **Note:** The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation. */
-  status?: TransferJobStatusEnum;
+  status?: TransferJobStatusEnum | (string & {});
   /** The name of the most recently started TransferOperation of this JobConfig. Present if a TransferOperation has been created for this JobConfig. */
   latestOperationName?: string;
   /** Transfer specification. */
@@ -1014,7 +1017,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -1086,7 +1089,7 @@ export const ListProjectsAgentPoolsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsAgentPoolsRequest",
 }) as any as S.Schema<ListProjectsAgentPoolsRequest>;
 
-export type AgentPoolList = ReadonlyArray<AgentPool>;
+export type AgentPoolList = Array<AgentPool>;
 export const AgentPoolList = /*@__PURE__*/ S.Array(
   AgentPool,
 ) as any as S.Schema<AgentPoolList>;
@@ -1131,7 +1134,7 @@ export const ListTransferJobsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListTransferJobsRequest",
 }) as any as S.Schema<ListTransferJobsRequest>;
 
-export type TransferJobList = ReadonlyArray<TransferJob>;
+export type TransferJobList = Array<TransferJob>;
 export const TransferJobList = /*@__PURE__*/ S.Array(
   TransferJob,
 ) as any as S.Schema<TransferJobList>;
@@ -1182,7 +1185,7 @@ export const ListTransferOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListTransferOperationsRequest",
 }) as any as S.Schema<ListTransferOperationsRequest>;
 
-export type OperationList = ReadonlyArray<Operation>;
+export type OperationList = Array<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;

@@ -88,7 +88,7 @@ export interface MavenRepositoryConfig {
   /** The repository with this flag will allow publishing the same snapshot versions. */
   allowSnapshotOverwrites?: boolean;
   /** Version policy defines the versions that the registry will accept. */
-  versionPolicy?: MavenRepositoryConfigVersionPolicyEnum;
+  versionPolicy?: MavenRepositoryConfigVersionPolicyEnum | (string & {});
 }
 export const MavenRepositoryConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -108,7 +108,7 @@ export interface Repository {
   /** Output only. The time when the repository was created. */
   createTime?: string;
   /** Optional. The format of packages that are stored in the repository. */
-  format?: RepositoryFormatEnum;
+  format?: RepositoryFormatEnum | (string & {});
   /** Labels with user-defined metadata. This field may contain up to 64 entries. Label keys and values may be no longer than 63 characters. Label keys must begin with a lowercase letter and may only contain lowercase letters, numeric characters, underscores, and dashes. */
   labels?: StringMap;
   /** Output only. Whether or not this repository satisfies PZS. */
@@ -171,7 +171,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -389,7 +389,7 @@ export const GetIamPolicyProjectsLocationsRepositoriesRequest =
     identifier: "GetIamPolicyProjectsLocationsRepositoriesRequest",
   }) as any as S.Schema<GetIamPolicyProjectsLocationsRepositoriesRequest>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -431,7 +431,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
-export type BindingList = ReadonlyArray<Binding>;
+export type BindingList = Array<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -487,7 +487,9 @@ export interface ProjectSettings {
   /** The name of the project's settings. Always of the form: projects/{project-id}/projectSettings In update request: never set In response: always set */
   name?: string;
   /** The redirection state of the legacy repositories in this project. */
-  legacyRedirectionState?: ProjectSettingsLegacyRedirectionStateEnum;
+  legacyRedirectionState?:
+    | ProjectSettingsLegacyRedirectionStateEnum
+    | (string & {});
 }
 export const ProjectSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -620,7 +622,7 @@ export const Hash = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Hash" }) as any as S.Schema<Hash>;
 
-export type HashList = ReadonlyArray<Hash>;
+export type HashList = Array<Hash>;
 export const HashList = /*@__PURE__*/ S.Array(
   Hash,
 ) as any as S.Schema<HashList>;
@@ -750,7 +752,7 @@ export const GetProjectsLocationsRepositoriesPackagesVersionsRequest =
     identifier: "GetProjectsLocationsRepositoriesPackagesVersionsRequest",
   }) as any as S.Schema<GetProjectsLocationsRepositoriesPackagesVersionsRequest>;
 
-export type TagList = ReadonlyArray<Tag>;
+export type TagList = Array<Tag>;
 export const TagList = /*@__PURE__*/ S.Array(Tag) as any as S.Schema<TagList>;
 
 /** The body of a version resource. A version resource represents a collection of components, such as files and other data. This may correspond to a version in many package management schemes. */
@@ -911,7 +913,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = ReadonlyArray<Location>;
+export type LocationList = Array<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -960,7 +962,7 @@ export const ListProjectsLocationsRepositoriesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsRepositoriesRequest",
 }) as any as S.Schema<ListProjectsLocationsRepositoriesRequest>;
 
-export type RepositoryList = ReadonlyArray<Repository>;
+export type RepositoryList = Array<Repository>;
 export const RepositoryList = /*@__PURE__*/ S.Array(
   Repository,
 ) as any as S.Schema<RepositoryList>;
@@ -1010,7 +1012,7 @@ export const ListProjectsLocationsRepositoriesFilesRequest =
   }) as any as S.Schema<ListProjectsLocationsRepositoriesFilesRequest>;
 
 export type GoogleDevtoolsArtifactregistryV1beta2FileList =
-  ReadonlyArray<GoogleDevtoolsArtifactregistryV1beta2File>;
+  Array<GoogleDevtoolsArtifactregistryV1beta2File>;
 export const GoogleDevtoolsArtifactregistryV1beta2FileList =
   /*@__PURE__*/ S.Array(
     GoogleDevtoolsArtifactregistryV1beta2File,
@@ -1060,7 +1062,7 @@ export const ListProjectsLocationsRepositoriesPackagesRequest =
     identifier: "ListProjectsLocationsRepositoriesPackagesRequest",
   }) as any as S.Schema<ListProjectsLocationsRepositoriesPackagesRequest>;
 
-export type PackageList = ReadonlyArray<Package>;
+export type PackageList = Array<Package>;
 export const PackageList = /*@__PURE__*/ S.Array(
   Package,
 ) as any as S.Schema<PackageList>;
@@ -1169,7 +1171,7 @@ export const ListProjectsLocationsRepositoriesPackagesVersionsRequest =
     identifier: "ListProjectsLocationsRepositoriesPackagesVersionsRequest",
   }) as any as S.Schema<ListProjectsLocationsRepositoriesPackagesVersionsRequest>;
 
-export type VersionList = ReadonlyArray<Version>;
+export type VersionList = Array<Version>;
 export const VersionList = /*@__PURE__*/ S.Array(
   Version,
 ) as any as S.Schema<VersionList>;

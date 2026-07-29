@@ -197,7 +197,7 @@ export const CheckInstanceUpgradabilityResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CheckInstanceUpgradabilityResponse",
 }) as any as S.Schema<CheckInstanceUpgradabilityResponse>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -221,7 +221,9 @@ export const ReservationAffinityConsumeReservationTypeEnum =
 /** A reservation that an instance can consume from. */
 export interface ReservationAffinity {
   /** Required. Specifies the type of reservation from which this instance can consume resources: RESERVATION_ANY (default), RESERVATION_SPECIFIC, or RESERVATION_NONE. See Consuming reserved instances for examples. */
-  consumeReservationType?: ReservationAffinityConsumeReservationTypeEnum;
+  consumeReservationType?:
+    | ReservationAffinityConsumeReservationTypeEnum
+    | (string & {});
   /** Optional. Corresponds to the label key of a reservation resource. To target a RESERVATION_SPECIFIC by name, use compute.googleapis.com/reservation-name as the key and specify the name of your reservation as its value. */
   key?: string;
   /** Optional. Corresponds to the label values of a reservation resource. This can be either a name to a reservation in the same project or "projects/different-project/reservations/some-reservation-name" to target a shared reservation in the same zone but in a different project. */
@@ -288,7 +290,7 @@ export const ServiceAccount = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ServiceAccount" }) as any as S.Schema<ServiceAccount>;
 
-export type ServiceAccountList = ReadonlyArray<ServiceAccount>;
+export type ServiceAccountList = Array<ServiceAccount>;
 export const ServiceAccountList = /*@__PURE__*/ S.Array(
   ServiceAccount,
 ) as any as S.Schema<ServiceAccountList>;
@@ -352,9 +354,9 @@ export interface DataDisk {
   /** Optional. Input only. The KMS key used to encrypt the disks, only applicable if disk_encryption is CMEK. Format: `projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}` Learn more about using your own encryption keys. */
   kmsKey?: string;
   /** Optional. Input only. Indicates the type of the disk. */
-  diskType?: DataDiskDiskTypeEnum;
+  diskType?: DataDiskDiskTypeEnum | (string & {});
   /** Optional. Input only. Disk encryption method used on the boot and data disks, defaults to GMEK. */
-  diskEncryption?: DataDiskDiskEncryptionEnum;
+  diskEncryption?: DataDiskDiskEncryptionEnum | (string & {});
 }
 export const DataDisk = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -366,7 +368,7 @@ export const DataDisk = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DataDisk" }) as any as S.Schema<DataDisk>;
 
-export type DataDiskList = ReadonlyArray<DataDisk>;
+export type DataDiskList = Array<DataDisk>;
 export const DataDiskList = /*@__PURE__*/ S.Array(
   DataDisk,
 ) as any as S.Schema<DataDiskList>;
@@ -382,7 +384,7 @@ export const AccessConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AccessConfig" }) as any as S.Schema<AccessConfig>;
 
-export type AccessConfigList = ReadonlyArray<AccessConfig>;
+export type AccessConfigList = Array<AccessConfig>;
 export const AccessConfigList = /*@__PURE__*/ S.Array(
   AccessConfig,
 ) as any as S.Schema<AccessConfigList>;
@@ -402,7 +404,7 @@ export interface NetworkInterface {
   /** Optional. The name of the VPC that this VM instance is in. Format: `projects/{project_id}/global/networks/{network_id}` */
   network?: string;
   /** Optional. The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet. */
-  nicType?: NetworkInterfaceNicTypeEnum;
+  nicType?: NetworkInterfaceNicTypeEnum | (string & {});
 }
 export const NetworkInterface = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -415,7 +417,7 @@ export const NetworkInterface = /*@__PURE__*/ S.suspend(() =>
   identifier: "NetworkInterface",
 }) as any as S.Schema<NetworkInterface>;
 
-export type NetworkInterfaceList = ReadonlyArray<NetworkInterface>;
+export type NetworkInterfaceList = Array<NetworkInterface>;
 export const NetworkInterfaceList = /*@__PURE__*/ S.Array(
   NetworkInterface,
 ) as any as S.Schema<NetworkInterfaceList>;
@@ -444,7 +446,7 @@ export interface AcceleratorConfig {
   /** Optional. Count of cores of this accelerator. */
   coreCount?: string;
   /** Optional. Type of this accelerator. */
-  type?: AcceleratorConfigTypeEnum;
+  type?: AcceleratorConfigTypeEnum | (string & {});
 }
 export const AcceleratorConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -455,7 +457,7 @@ export const AcceleratorConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "AcceleratorConfig",
 }) as any as S.Schema<AcceleratorConfig>;
 
-export type AcceleratorConfigList = ReadonlyArray<AcceleratorConfig>;
+export type AcceleratorConfigList = Array<AcceleratorConfig>;
 export const AcceleratorConfigList = /*@__PURE__*/ S.Array(
   AcceleratorConfig,
 ) as any as S.Schema<AcceleratorConfigList>;
@@ -469,7 +471,9 @@ export const ConfidentialInstanceConfigConfidentialInstanceTypeEnum =
 /** A set of Confidential Instance options. */
 export interface ConfidentialInstanceConfig {
   /** Optional. Defines the type of technology used by the confidential instance. */
-  confidentialInstanceType?: ConfidentialInstanceConfigConfidentialInstanceTypeEnum;
+  confidentialInstanceType?:
+    | ConfidentialInstanceConfigConfidentialInstanceTypeEnum
+    | (string & {});
 }
 export const ConfidentialInstanceConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -503,9 +507,9 @@ export const BootDiskDiskEncryptionEnum = /*@__PURE__*/ S.String;
 /** The definition of a boot disk. */
 export interface BootDisk {
   /** Optional. Indicates the type of the disk. */
-  diskType?: BootDiskDiskTypeEnum;
+  diskType?: BootDiskDiskTypeEnum | (string & {});
   /** Optional. Input only. Disk encryption method used on the boot and data disks, defaults to GMEK. */
-  diskEncryption?: BootDiskDiskEncryptionEnum;
+  diskEncryption?: BootDiskDiskEncryptionEnum | (string & {});
   /** Optional. The size of the boot disk in GB attached to this instance, up to a maximum of 64000 GB (64 TB). If not specified, this defaults to the recommended value of 150GB. */
   diskSizeGb?: string;
   /** Optional. Input only. The KMS key used to encrypt the disks, only applicable if disk_encryption is CMEK. Format: `projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}` Learn more about using your own encryption keys. */
@@ -602,13 +606,13 @@ export interface UpgradeHistoryEntry {
   /** Optional. The VM image before this instance upgrade. */
   vmImage?: string;
   /** Output only. The state of this instance upgrade history entry. */
-  state?: UpgradeHistoryEntryStateEnum;
+  state?: UpgradeHistoryEntryStateEnum | (string & {});
   /** Optional. The snapshot of the boot disk of this notebook instance before upgrade. */
   snapshot?: string;
   /** Optional. Target VM Version, like m63. */
   targetVersion?: string;
   /** Optional. Action. Rolloback or Upgrade. */
-  action?: UpgradeHistoryEntryActionEnum;
+  action?: UpgradeHistoryEntryActionEnum | (string & {});
   /** Optional. The framework of this notebook instance. */
   framework?: string;
   /** Immutable. The time that this instance upgrade history entry is created. */
@@ -632,7 +636,7 @@ export const UpgradeHistoryEntry = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpgradeHistoryEntry",
 }) as any as S.Schema<UpgradeHistoryEntry>;
 
-export type UpgradeHistoryEntryList = ReadonlyArray<UpgradeHistoryEntry>;
+export type UpgradeHistoryEntryList = Array<UpgradeHistoryEntry>;
 export const UpgradeHistoryEntryList = /*@__PURE__*/ S.Array(
   UpgradeHistoryEntry,
 ) as any as S.Schema<UpgradeHistoryEntryList>;
@@ -664,7 +668,7 @@ export interface Instance {
   /** Optional. Flag to enable managed end user credentials for the instance. */
   enableManagedEuc?: boolean;
   /** Output only. Instance health_state. */
-  healthState?: InstanceHealthStateEnum;
+  healthState?: InstanceHealthStateEnum | (string & {});
   /** Optional. Compute Engine setup for the notebook. Uses notebook-defined fields. */
   gceSetup?: GceSetup;
   /** Output only. The proxy endpoint that is used to access the Jupyter notebook. */
@@ -690,7 +694,7 @@ export interface Instance {
   /** Output only. Email address of entity that sent original CreateInstance request. */
   creator?: string;
   /** Output only. The state of this instance. */
-  state?: InstanceStateEnum;
+  state?: InstanceStateEnum | (string & {});
   /** Output only. Instance update time. */
   updateTime?: string;
 }
@@ -753,7 +757,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -1025,7 +1029,7 @@ export const ImageRelease = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ImageRelease" }) as any as S.Schema<ImageRelease>;
 
-export type ImageReleaseList = ReadonlyArray<ImageRelease>;
+export type ImageReleaseList = Array<ImageRelease>;
 export const ImageReleaseList = /*@__PURE__*/ S.Array(
   ImageRelease,
 ) as any as S.Schema<ImageReleaseList>;
@@ -1109,7 +1113,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
-export type BindingList = ReadonlyArray<Binding>;
+export type BindingList = Array<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -1240,7 +1244,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = ReadonlyArray<Location>;
+export type LocationList = Array<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -1292,7 +1296,7 @@ export const ListProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsInstancesRequest",
 }) as any as S.Schema<ListProjectsLocationsInstancesRequest>;
 
-export type InstanceList = ReadonlyArray<Instance>;
+export type InstanceList = Array<Instance>;
 export const InstanceList = /*@__PURE__*/ S.Array(
   Instance,
 ) as any as S.Schema<InstanceList>;
@@ -1347,7 +1351,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type OperationList = ReadonlyArray<Operation>;
+export type OperationList = Array<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;

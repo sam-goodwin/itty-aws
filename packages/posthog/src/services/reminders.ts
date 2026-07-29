@@ -213,7 +213,7 @@ export const RemindersListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "RemindersListRequest",
 }) as any as S.Schema<RemindersListRequest>;
 
-export type PaginatedReminderListResultsList = ReadonlyArray<Reminder>;
+export type PaginatedReminderListResultsList = Array<Reminder>;
 export const PaginatedReminderListResultsList = /*@__PURE__*/ S.Array(
   Reminder,
 ) as any as S.Schema<PaginatedReminderListResultsList>;

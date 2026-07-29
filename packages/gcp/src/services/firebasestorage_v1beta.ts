@@ -225,7 +225,7 @@ export const ListProjectsBucketsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsBucketsRequest",
 }) as any as S.Schema<ListProjectsBucketsRequest>;
 
-export type BucketList = ReadonlyArray<Bucket>;
+export type BucketList = Array<Bucket>;
 export const BucketList = /*@__PURE__*/ S.Array(
   Bucket,
 ) as any as S.Schema<BucketList>;

@@ -19,7 +19,7 @@ export type ProductsEnum =
 export const ProductsEnum = /*@__PURE__*/ S.String;
 
 /** Products to turn on for this project, each enabled with server-owned conservative defaults. */
-export type ProductEnablementCreateRequestProductsList = ReadonlyArray<
+export type ProductEnablementCreateRequestProductsList = Array<
   ProductsEnum | (string & {})
 >;
 export const ProductEnablementCreateRequestProductsList = /*@__PURE__*/ S.Array(

@@ -175,7 +175,7 @@ export const WarehouseViewLinkListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "WarehouseViewLinkListRequest",
 }) as any as S.Schema<WarehouseViewLinkListRequest>;
 
-export type PaginatedViewLinkListResultsList = ReadonlyArray<ViewLink>;
+export type PaginatedViewLinkListResultsList = Array<ViewLink>;
 export const PaginatedViewLinkListResultsList = /*@__PURE__*/ S.Array(
   ViewLink,
 ) as any as S.Schema<PaginatedViewLinkListResultsList>;

@@ -57,7 +57,7 @@ export const DashboardTemplatesCopyBetweenProjectsCreateRequest =
     identifier: "DashboardTemplatesCopyBetweenProjectsCreateRequest",
   }) as any as S.Schema<DashboardTemplatesCopyBetweenProjectsCreateRequest>;
 
-export type DashboardTemplateTagsList = ReadonlyArray<string>;
+export type DashboardTemplateTagsList = Array<string>;
 export const DashboardTemplateTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DashboardTemplateTagsList>;
@@ -124,13 +124,13 @@ export type DashboardTemplateScope = DashboardTemplateScopeEnum | BlankEnum;
 export const DashboardTemplateScope =
   /*@__PURE__*/ S.Unknown as any as S.Schema<DashboardTemplateScope>;
 
-export type DashboardTemplateAvailabilityContextsList = ReadonlyArray<string>;
+export type DashboardTemplateAvailabilityContextsList = Array<string>;
 export const DashboardTemplateAvailabilityContextsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DashboardTemplateAvailabilityContextsList>;
 
 /** Names of data warehouse tables referenced by the template's tiles that are specific to the source project. */
-export type NonPortableReferencesWarehouseTablesList = ReadonlyArray<string>;
+export type NonPortableReferencesWarehouseTablesList = Array<string>;
 export const NonPortableReferencesWarehouseTablesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<NonPortableReferencesWarehouseTablesList>;
@@ -198,7 +198,7 @@ export const DashboardTemplate = /*@__PURE__*/ S.suspend(() =>
   identifier: "DashboardTemplate",
 }) as any as S.Schema<DashboardTemplate>;
 
-export type DashboardTemplatesCreateRequestTagsList = ReadonlyArray<string>;
+export type DashboardTemplatesCreateRequestTagsList = Array<string>;
 export const DashboardTemplatesCreateRequestTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DashboardTemplatesCreateRequestTagsList>;
@@ -210,7 +210,7 @@ export const DashboardTemplatesCreateRequestScope =
   /*@__PURE__*/ S.Unknown as any as S.Schema<DashboardTemplatesCreateRequestScope>;
 
 export type DashboardTemplatesCreateRequestAvailabilityContextsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const DashboardTemplatesCreateRequestAvailabilityContextsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -338,7 +338,7 @@ export const DashboardTemplatesListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DashboardTemplatesListRequest>;
 
 export type PaginatedDashboardTemplateListResultsList =
-  ReadonlyArray<DashboardTemplate>;
+  Array<DashboardTemplate>;
 export const PaginatedDashboardTemplateListResultsList = /*@__PURE__*/ S.Array(
   DashboardTemplate,
 ) as any as S.Schema<PaginatedDashboardTemplateListResultsList>;
@@ -360,8 +360,7 @@ export const PaginatedDashboardTemplateList = /*@__PURE__*/ S.suspend(() =>
   identifier: "PaginatedDashboardTemplateList",
 }) as any as S.Schema<PaginatedDashboardTemplateList>;
 
-export type DashboardTemplatesPartialUpdateRequestTagsList =
-  ReadonlyArray<string>;
+export type DashboardTemplatesPartialUpdateRequestTagsList = Array<string>;
 export const DashboardTemplatesPartialUpdateRequestTagsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -374,7 +373,7 @@ export const DashboardTemplatesPartialUpdateRequestScope =
   /*@__PURE__*/ S.Unknown as any as S.Schema<DashboardTemplatesPartialUpdateRequestScope>;
 
 export type DashboardTemplatesPartialUpdateRequestAvailabilityContextsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const DashboardTemplatesPartialUpdateRequestAvailabilityContextsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -452,7 +451,7 @@ export const DashboardTemplatesRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DashboardTemplatesRetrieveRequest",
 }) as any as S.Schema<DashboardTemplatesRetrieveRequest>;
 
-export type DashboardTemplatesUpdateRequestTagsList = ReadonlyArray<string>;
+export type DashboardTemplatesUpdateRequestTagsList = Array<string>;
 export const DashboardTemplatesUpdateRequestTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DashboardTemplatesUpdateRequestTagsList>;
@@ -464,7 +463,7 @@ export const DashboardTemplatesUpdateRequestScope =
   /*@__PURE__*/ S.Unknown as any as S.Schema<DashboardTemplatesUpdateRequestScope>;
 
 export type DashboardTemplatesUpdateRequestAvailabilityContextsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const DashboardTemplatesUpdateRequestAvailabilityContextsList =
   /*@__PURE__*/ S.Array(
     S.String,

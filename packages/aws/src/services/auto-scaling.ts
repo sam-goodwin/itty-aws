@@ -578,7 +578,7 @@ export const MemoryMiBRequest = /*@__PURE__*/ S.suspend(() =>
 export type CpuManufacturer = "intel" | "amd" | "amazon-web-services" | "apple";
 export const CpuManufacturer = /*@__PURE__*/ S.String;
 
-export type CpuManufacturers = CpuManufacturer[];
+export type CpuManufacturers = (CpuManufacturer | (string & {}))[];
 export const CpuManufacturers = /*@__PURE__*/ S.Array(CpuManufacturer);
 export type NullablePositiveDouble = number;
 export interface MemoryGiBPerVCpuRequest {
@@ -596,7 +596,7 @@ export const ExcludedInstanceTypes = /*@__PURE__*/ S.Array(S.String);
 export type InstanceGeneration = "current" | "previous";
 export const InstanceGeneration = /*@__PURE__*/ S.String;
 
-export type InstanceGenerations = InstanceGeneration[];
+export type InstanceGenerations = (InstanceGeneration | (string & {}))[];
 export const InstanceGenerations = /*@__PURE__*/ S.Array(InstanceGeneration);
 export type BareMetal = "included" | "excluded" | "required";
 export const BareMetal = /*@__PURE__*/ S.String;
@@ -619,7 +619,7 @@ export const LocalStorage = /*@__PURE__*/ S.String;
 export type LocalStorageType = "hdd" | "ssd";
 export const LocalStorageType = /*@__PURE__*/ S.String;
 
-export type LocalStorageTypes = LocalStorageType[];
+export type LocalStorageTypes = (LocalStorageType | (string & {}))[];
 export const LocalStorageTypes = /*@__PURE__*/ S.Array(LocalStorageType);
 export interface TotalLocalStorageGBRequest {
   Min?: number;
@@ -642,7 +642,7 @@ export const BaselineEbsBandwidthMbpsRequest = /*@__PURE__*/ S.suspend(() =>
 export type AcceleratorType = "gpu" | "fpga" | "inference";
 export const AcceleratorType = /*@__PURE__*/ S.String;
 
-export type AcceleratorTypes = AcceleratorType[];
+export type AcceleratorTypes = (AcceleratorType | (string & {}))[];
 export const AcceleratorTypes = /*@__PURE__*/ S.Array(AcceleratorType);
 export interface AcceleratorCountRequest {
   Min?: number;
@@ -660,7 +660,10 @@ export type AcceleratorManufacturer =
   | "xilinx";
 export const AcceleratorManufacturer = /*@__PURE__*/ S.String;
 
-export type AcceleratorManufacturers = AcceleratorManufacturer[];
+export type AcceleratorManufacturers = (
+  | AcceleratorManufacturer
+  | (string & {})
+)[];
 export const AcceleratorManufacturers = /*@__PURE__*/ S.Array(
   AcceleratorManufacturer,
 );
@@ -674,7 +677,7 @@ export type AcceleratorName =
   | "vu9p";
 export const AcceleratorName = /*@__PURE__*/ S.String;
 
-export type AcceleratorNames = AcceleratorName[];
+export type AcceleratorNames = (AcceleratorName | (string & {}))[];
 export const AcceleratorNames = /*@__PURE__*/ S.Array(AcceleratorName);
 export interface AcceleratorTotalMemoryMiBRequest {
   Min?: number;
@@ -742,11 +745,11 @@ export interface InstanceRequirements {
   SpotMaxPricePercentageOverLowestPrice?: number;
   MaxSpotPriceAsPercentageOfOptimalOnDemandPrice?: number;
   OnDemandMaxPricePercentageOverLowestPrice?: number;
-  BareMetal?: BareMetal;
-  BurstablePerformance?: BurstablePerformance;
+  BareMetal?: BareMetal | (string & {});
+  BurstablePerformance?: BurstablePerformance | (string & {});
   RequireHibernateSupport?: boolean;
   NetworkInterfaceCount?: NetworkInterfaceCountRequest;
-  LocalStorage?: LocalStorage;
+  LocalStorage?: LocalStorage | (string & {});
   LocalStorageTypes?: LocalStorageType[];
   TotalLocalStorageGB?: TotalLocalStorageGBRequest;
   BaselineEbsBandwidthMbps?: BaselineEbsBandwidthMbpsRequest;
@@ -949,7 +952,7 @@ export type CapacityDistributionStrategy =
 export const CapacityDistributionStrategy = /*@__PURE__*/ S.String;
 
 export interface AvailabilityZoneDistribution {
-  CapacityDistributionStrategy?: CapacityDistributionStrategy;
+  CapacityDistributionStrategy?: CapacityDistributionStrategy | (string & {});
 }
 export const AvailabilityZoneDistribution = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -966,7 +969,9 @@ export const ImpairedZoneHealthCheckBehavior = /*@__PURE__*/ S.String;
 
 export interface AvailabilityZoneImpairmentPolicy {
   ZonalShiftEnabled?: boolean;
-  ImpairedZoneHealthCheckBehavior?: ImpairedZoneHealthCheckBehavior;
+  ImpairedZoneHealthCheckBehavior?:
+    | ImpairedZoneHealthCheckBehavior
+    | (string & {});
 }
 export const AvailabilityZoneImpairmentPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1006,7 +1011,7 @@ export const CapacityReservationTarget = /*@__PURE__*/ S.suspend(() =>
   identifier: "CapacityReservationTarget",
 }) as any as S.Schema<CapacityReservationTarget>;
 export interface CapacityReservationSpecification {
-  CapacityReservationPreference?: CapacityReservationPreference;
+  CapacityReservationPreference?: CapacityReservationPreference | (string & {});
   CapacityReservationTarget?: CapacityReservationTarget;
 }
 export const CapacityReservationSpecification = /*@__PURE__*/ S.suspend(() =>
@@ -1021,7 +1026,7 @@ export type RetentionAction = "retain" | "terminate";
 export const RetentionAction = /*@__PURE__*/ S.String;
 
 export interface RetentionTriggers {
-  TerminateHookAbandon?: RetentionAction;
+  TerminateHookAbandon?: RetentionAction | (string & {});
 }
 export const RetentionTriggers = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ TerminateHookAbandon: S.optional(RetentionAction) }),
@@ -1204,9 +1209,9 @@ export type InstanceMetadataEndpointState = "disabled" | "enabled";
 export const InstanceMetadataEndpointState = /*@__PURE__*/ S.String;
 
 export interface InstanceMetadataOptions {
-  HttpTokens?: InstanceMetadataHttpTokensState;
+  HttpTokens?: InstanceMetadataHttpTokensState | (string & {});
   HttpPutResponseHopLimit?: number;
-  HttpEndpoint?: InstanceMetadataEndpointState;
+  HttpEndpoint?: InstanceMetadataEndpointState | (string & {});
 }
 export const InstanceMetadataOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2130,8 +2135,8 @@ export interface RefreshPreferences {
   CheckpointDelay?: number;
   SkipMatching?: boolean;
   AutoRollback?: boolean;
-  ScaleInProtectedInstances?: ScaleInProtectedInstances;
-  StandbyInstances?: StandbyInstances;
+  ScaleInProtectedInstances?: ScaleInProtectedInstances | (string & {});
+  StandbyInstances?: StandbyInstances | (string & {});
   AlarmSpecification?: AlarmSpecification;
   MaxHealthyPercentage?: number;
   BakeTime?: number;
@@ -2714,7 +2719,7 @@ export type MetricType =
 export const MetricType = /*@__PURE__*/ S.String;
 
 export interface PredefinedMetricSpecification {
-  PredefinedMetricType?: MetricType;
+  PredefinedMetricType?: MetricType | (string & {});
   ResourceLabel?: string;
 }
 export const PredefinedMetricSpecification = /*@__PURE__*/ S.suspend(() =>
@@ -2810,7 +2815,7 @@ export interface CustomizedMetricSpecification {
   MetricName?: string;
   Namespace?: string;
   Dimensions?: MetricDimension[];
-  Statistic?: MetricStatistic;
+  Statistic?: MetricStatistic | (string & {});
   Unit?: string;
   Period?: number;
   Metrics?: TargetTrackingMetricDataQuery[];
@@ -2854,7 +2859,7 @@ export type PredefinedMetricPairType =
 export const PredefinedMetricPairType = /*@__PURE__*/ S.String;
 
 export interface PredictiveScalingPredefinedMetricPair {
-  PredefinedMetricType?: PredefinedMetricPairType;
+  PredefinedMetricType?: PredefinedMetricPairType | (string & {});
   ResourceLabel?: string;
 }
 export const PredictiveScalingPredefinedMetricPair = /*@__PURE__*/ S.suspend(
@@ -2874,7 +2879,7 @@ export type PredefinedScalingMetricType =
 export const PredefinedScalingMetricType = /*@__PURE__*/ S.String;
 
 export interface PredictiveScalingPredefinedScalingMetric {
-  PredefinedMetricType?: PredefinedScalingMetricType;
+  PredefinedMetricType?: PredefinedScalingMetricType | (string & {});
   ResourceLabel?: string;
 }
 export const PredictiveScalingPredefinedScalingMetric = /*@__PURE__*/ S.suspend(
@@ -2894,7 +2899,7 @@ export type PredefinedLoadMetricType =
 export const PredefinedLoadMetricType = /*@__PURE__*/ S.String;
 
 export interface PredictiveScalingPredefinedLoadMetric {
-  PredefinedMetricType?: PredefinedLoadMetricType;
+  PredefinedMetricType?: PredefinedLoadMetricType | (string & {});
   ResourceLabel?: string;
 }
 export const PredictiveScalingPredefinedLoadMetric = /*@__PURE__*/ S.suspend(
@@ -3016,9 +3021,11 @@ export const PredictiveScalingMaxCapacityBreachBehavior =
 export type PredictiveScalingMaxCapacityBuffer = number;
 export interface PredictiveScalingConfiguration {
   MetricSpecifications?: PredictiveScalingMetricSpecification[];
-  Mode?: PredictiveScalingMode;
+  Mode?: PredictiveScalingMode | (string & {});
   SchedulingBufferTime?: number;
-  MaxCapacityBreachBehavior?: PredictiveScalingMaxCapacityBreachBehavior;
+  MaxCapacityBreachBehavior?:
+    | PredictiveScalingMaxCapacityBreachBehavior
+    | (string & {});
   MaxCapacityBuffer?: number;
 }
 export const PredictiveScalingConfiguration = /*@__PURE__*/ S.suspend(() =>

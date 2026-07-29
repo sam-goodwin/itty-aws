@@ -420,7 +420,7 @@ export const StringAttributeConstraintsType = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StringAttributeConstraintsType>;
 export interface SchemaAttributeType {
   Name?: string;
-  AttributeDataType?: AttributeDataType;
+  AttributeDataType?: AttributeDataType | (string & {});
   DeveloperOnlyAttribute?: boolean;
   Mutable?: boolean;
   Required?: boolean;
@@ -660,7 +660,7 @@ export type UserStatusType =
 export const UserStatusType = /*@__PURE__*/ S.String;
 
 export interface MFAOptionType {
-  DeliveryMedium?: DeliveryMediumType;
+  DeliveryMedium?: DeliveryMediumType | (string & {});
   AttributeName?: string;
 }
 export const MFAOptionType = /*@__PURE__*/ S.suspend(() =>
@@ -2206,9 +2206,9 @@ export const AssetExtensionType = /*@__PURE__*/ S.String;
 export type AssetBytesType = Uint8Array;
 export type ResourceIdType = string;
 export interface AssetType {
-  Category: AssetCategoryType;
-  ColorMode: ColorSchemeModeType;
-  Extension: AssetExtensionType;
+  Category: AssetCategoryType | (string & {});
+  ColorMode: ColorSchemeModeType | (string & {});
+  Extension: AssetExtensionType | (string & {});
   Bytes?: Uint8Array;
   ResourceId?: string;
 }
@@ -2541,7 +2541,10 @@ export const PasswordPolicyType = /*@__PURE__*/ S.suspend(() =>
 export type AuthFactorType = "PASSWORD" | "EMAIL_OTP" | "SMS_OTP" | "WEB_AUTHN";
 export const AuthFactorType = /*@__PURE__*/ S.String;
 
-export type AllowedFirstAuthFactorsListType = AuthFactorType[];
+export type AllowedFirstAuthFactorsListType = (
+  | AuthFactorType
+  | (string & {})
+)[];
 export const AllowedFirstAuthFactorsListType =
   /*@__PURE__*/ S.Array(AuthFactorType);
 export interface SignInPolicyType {
@@ -2573,7 +2576,7 @@ export type PreTokenGenerationLambdaVersionType = "V1_0" | "V2_0" | "V3_0";
 export const PreTokenGenerationLambdaVersionType = /*@__PURE__*/ S.String;
 
 export interface PreTokenGenerationVersionConfigType {
-  LambdaVersion: PreTokenGenerationLambdaVersionType;
+  LambdaVersion: PreTokenGenerationLambdaVersionType | (string & {});
   LambdaArn: string;
 }
 export const PreTokenGenerationVersionConfigType = /*@__PURE__*/ S.suspend(() =>
@@ -2588,7 +2591,7 @@ export type CustomSMSSenderLambdaVersionType = "V1_0";
 export const CustomSMSSenderLambdaVersionType = /*@__PURE__*/ S.String;
 
 export interface CustomSMSLambdaVersionConfigType {
-  LambdaVersion: CustomSMSSenderLambdaVersionType;
+  LambdaVersion: CustomSMSSenderLambdaVersionType | (string & {});
   LambdaArn: string;
 }
 export const CustomSMSLambdaVersionConfigType = /*@__PURE__*/ S.suspend(() =>
@@ -2603,7 +2606,7 @@ export type CustomEmailSenderLambdaVersionType = "V1_0";
 export const CustomEmailSenderLambdaVersionType = /*@__PURE__*/ S.String;
 
 export interface CustomEmailLambdaVersionConfigType {
-  LambdaVersion: CustomEmailSenderLambdaVersionType;
+  LambdaVersion: CustomEmailSenderLambdaVersionType | (string & {});
   LambdaArn: string;
 }
 export const CustomEmailLambdaVersionConfigType = /*@__PURE__*/ S.suspend(() =>
@@ -2618,7 +2621,7 @@ export type InboundFederationLambdaVersionType = "V1_0";
 export const InboundFederationLambdaVersionType = /*@__PURE__*/ S.String;
 
 export interface InboundFederationLambdaType {
-  LambdaVersion: InboundFederationLambdaVersionType;
+  LambdaVersion: InboundFederationLambdaVersionType | (string & {});
   LambdaArn: string;
 }
 export const InboundFederationLambdaType = /*@__PURE__*/ S.suspend(() =>
@@ -2670,7 +2673,10 @@ export const LambdaConfigType = /*@__PURE__*/ S.suspend(() =>
 export type VerifiedAttributeType = "phone_number" | "email";
 export const VerifiedAttributeType = /*@__PURE__*/ S.String;
 
-export type VerifiedAttributesListType = VerifiedAttributeType[];
+export type VerifiedAttributesListType = (
+  | VerifiedAttributeType
+  | (string & {})
+)[];
 export const VerifiedAttributesListType = /*@__PURE__*/ S.Array(
   VerifiedAttributeType,
 );
@@ -2680,13 +2686,16 @@ export type AliasAttributeType =
   | "preferred_username";
 export const AliasAttributeType = /*@__PURE__*/ S.String;
 
-export type AliasAttributesListType = AliasAttributeType[];
+export type AliasAttributesListType = (AliasAttributeType | (string & {}))[];
 export const AliasAttributesListType =
   /*@__PURE__*/ S.Array(AliasAttributeType);
 export type UsernameAttributeType = "phone_number" | "email";
 export const UsernameAttributeType = /*@__PURE__*/ S.String;
 
-export type UsernameAttributesListType = UsernameAttributeType[];
+export type UsernameAttributesListType = (
+  | UsernameAttributeType
+  | (string & {})
+)[];
 export const UsernameAttributesListType = /*@__PURE__*/ S.Array(
   UsernameAttributeType,
 );
@@ -2704,7 +2713,7 @@ export interface VerificationMessageTemplateType {
   EmailSubject?: string;
   EmailMessageByLink?: string;
   EmailSubjectByLink?: string;
-  DefaultEmailOption?: DefaultEmailOptionType;
+  DefaultEmailOption?: DefaultEmailOptionType | (string & {});
 }
 export const VerificationMessageTemplateType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2721,8 +2730,10 @@ export const VerificationMessageTemplateType = /*@__PURE__*/ S.suspend(() =>
 export type UserPoolMfaType = "OFF" | "ON" | "OPTIONAL";
 export const UserPoolMfaType = /*@__PURE__*/ S.String;
 
-export type AttributesRequireVerificationBeforeUpdateType =
-  VerifiedAttributeType[];
+export type AttributesRequireVerificationBeforeUpdateType = (
+  | VerifiedAttributeType
+  | (string & {})
+)[];
 export const AttributesRequireVerificationBeforeUpdateType =
   /*@__PURE__*/ S.Array(VerifiedAttributeType);
 export interface UserAttributeUpdateSettingsType {
@@ -2757,7 +2768,7 @@ export type SESConfigurationSet = string;
 export interface EmailConfigurationType {
   SourceArn?: string;
   ReplyToEmailAddress?: string;
-  EmailSendingAccount?: EmailSendingAccountType;
+  EmailSendingAccount?: EmailSendingAccountType | (string & {});
   From?: string;
   ConfigurationSet?: string;
 }
@@ -2835,7 +2846,7 @@ export type AdvancedSecurityEnabledModeType = "AUDIT" | "ENFORCED";
 export const AdvancedSecurityEnabledModeType = /*@__PURE__*/ S.String;
 
 export interface AdvancedSecurityAdditionalFlowsType {
-  CustomAuthMode?: AdvancedSecurityEnabledModeType;
+  CustomAuthMode?: AdvancedSecurityEnabledModeType | (string & {});
 }
 export const AdvancedSecurityAdditionalFlowsType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ CustomAuthMode: S.optional(AdvancedSecurityEnabledModeType) }),
@@ -2843,7 +2854,7 @@ export const AdvancedSecurityAdditionalFlowsType = /*@__PURE__*/ S.suspend(() =>
   identifier: "AdvancedSecurityAdditionalFlowsType",
 }) as any as S.Schema<AdvancedSecurityAdditionalFlowsType>;
 export interface UserPoolAddOnsType {
-  AdvancedSecurityMode: AdvancedSecurityModeType;
+  AdvancedSecurityMode: AdvancedSecurityModeType | (string & {});
   AdvancedSecurityAdditionalFlows?: AdvancedSecurityAdditionalFlowsType;
 }
 export const UserPoolAddOnsType = /*@__PURE__*/ S.suspend(() =>
@@ -2873,7 +2884,7 @@ export const RecoveryOptionNameType = /*@__PURE__*/ S.String;
 
 export interface RecoveryOptionType {
   Priority: number;
-  Name: RecoveryOptionNameType;
+  Name: RecoveryOptionNameType | (string & {});
 }
 export const RecoveryOptionType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Priority: S.Number, Name: RecoveryOptionNameType }),
@@ -2898,7 +2909,7 @@ export const EncryptionKeyType = /*@__PURE__*/ S.String;
 
 export type EncryptionKeyArnType = string;
 export interface KeyConfigurationType {
-  KeyType?: EncryptionKeyType;
+  KeyType?: EncryptionKeyType | (string & {});
   KmsKeyArn?: string;
 }
 export const KeyConfigurationType = /*@__PURE__*/ S.suspend(() =>
@@ -2913,7 +2924,7 @@ export type IssuerType = "ORIGINAL" | "UPDATED";
 export const IssuerType = /*@__PURE__*/ S.String;
 
 export interface IssuerConfigurationType {
-  Type?: IssuerType;
+  Type?: IssuerType | (string & {});
 }
 export const IssuerConfigurationType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Type: S.optional(IssuerType) }),
@@ -3091,9 +3102,9 @@ export type TimeUnitsType = "seconds" | "minutes" | "hours" | "days";
 export const TimeUnitsType = /*@__PURE__*/ S.String;
 
 export interface TokenValidityUnitsType {
-  AccessToken?: TimeUnitsType;
-  IdToken?: TimeUnitsType;
-  RefreshToken?: TimeUnitsType;
+  AccessToken?: TimeUnitsType | (string & {});
+  IdToken?: TimeUnitsType | (string & {});
+  RefreshToken?: TimeUnitsType | (string & {});
 }
 export const TokenValidityUnitsType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3119,7 +3130,10 @@ export type ExplicitAuthFlowsType =
   | "ALLOW_USER_AUTH";
 export const ExplicitAuthFlowsType = /*@__PURE__*/ S.String;
 
-export type ExplicitAuthFlowsListType = ExplicitAuthFlowsType[];
+export type ExplicitAuthFlowsListType = (
+  | ExplicitAuthFlowsType
+  | (string & {})
+)[];
 export const ExplicitAuthFlowsListType = /*@__PURE__*/ S.Array(
   ExplicitAuthFlowsType,
 );
@@ -3135,7 +3149,7 @@ export const LogoutURLsListType = /*@__PURE__*/ S.Array(S.String);
 export type OAuthFlowType = "code" | "implicit" | "client_credentials";
 export const OAuthFlowType = /*@__PURE__*/ S.String;
 
-export type OAuthFlowsType = OAuthFlowType[];
+export type OAuthFlowsType = (OAuthFlowType | (string & {}))[];
 export const OAuthFlowsType = /*@__PURE__*/ S.Array(OAuthFlowType);
 export type ScopeType = string;
 export type ScopeListType = string[];
@@ -3168,7 +3182,7 @@ export const FeatureType = /*@__PURE__*/ S.String;
 
 export type RetryGracePeriodSecondsType = number;
 export interface RefreshTokenRotationType {
-  Feature: FeatureType;
+  Feature: FeatureType | (string & {});
   RetryGracePeriodSeconds?: number;
 }
 export const RefreshTokenRotationType = /*@__PURE__*/ S.suspend(() =>
@@ -3321,7 +3335,7 @@ export const SecurityPolicyType = /*@__PURE__*/ S.String;
 
 export interface CustomDomainConfigType {
   CertificateArn: string;
-  SecurityPolicy?: SecurityPolicyType;
+  SecurityPolicy?: SecurityPolicyType | (string & {});
 }
 export const CustomDomainConfigType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3928,13 +3942,13 @@ export const DescribeRiskConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 export type EventFilterType = "SIGN_IN" | "PASSWORD_CHANGE" | "SIGN_UP";
 export const EventFilterType = /*@__PURE__*/ S.String;
 
-export type EventFiltersType = EventFilterType[];
+export type EventFiltersType = (EventFilterType | (string & {}))[];
 export const EventFiltersType = /*@__PURE__*/ S.Array(EventFilterType);
 export type CompromisedCredentialsEventActionType = "BLOCK" | "NO_ACTION";
 export const CompromisedCredentialsEventActionType = /*@__PURE__*/ S.String;
 
 export interface CompromisedCredentialsActionsType {
-  EventAction: CompromisedCredentialsEventActionType;
+  EventAction: CompromisedCredentialsEventActionType | (string & {});
 }
 export const CompromisedCredentialsActionsType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ EventAction: CompromisedCredentialsEventActionType }),
@@ -4000,7 +4014,7 @@ export const AccountTakeoverEventActionType = /*@__PURE__*/ S.String;
 
 export interface AccountTakeoverActionType {
   Notify: boolean;
-  EventAction: AccountTakeoverEventActionType;
+  EventAction: AccountTakeoverEventActionType | (string & {});
 }
 export const AccountTakeoverActionType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Notify: S.Boolean, EventAction: AccountTakeoverEventActionType }),
@@ -4505,8 +4519,8 @@ export const FirehoseConfigurationType = /*@__PURE__*/ S.suspend(() =>
   identifier: "FirehoseConfigurationType",
 }) as any as S.Schema<FirehoseConfigurationType>;
 export interface LogConfigurationType {
-  LogLevel: LogLevel;
-  EventSource: EventSourceName;
+  LogLevel: LogLevel | (string & {});
+  EventSource: EventSourceName | (string & {});
   CloudWatchLogsConfiguration?: CloudWatchLogsConfigurationType;
   S3Configuration?: S3ConfigurationType;
   FirehoseConfiguration?: FirehoseConfigurationType;
@@ -4835,8 +4849,8 @@ export const WebAuthnFactorConfigurationType = /*@__PURE__*/ S.String;
 
 export interface WebAuthnConfigurationType {
   RelyingPartyId?: string;
-  UserVerification?: UserVerificationType;
-  FactorConfiguration?: WebAuthnFactorConfigurationType;
+  UserVerification?: UserVerificationType | (string & {});
+  FactorConfiguration?: WebAuthnFactorConfigurationType | (string & {});
 }
 export const WebAuthnConfigurationType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

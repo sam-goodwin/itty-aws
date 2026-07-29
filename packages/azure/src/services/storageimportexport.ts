@@ -54,8 +54,7 @@ export const DriveBitLockerKey = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DriveBitLockerKey>;
 
 /** drive status */
-export type GetBitLockerKeysResponseValueList =
-  ReadonlyArray<DriveBitLockerKey>;
+export type GetBitLockerKeysResponseValueList = Array<DriveBitLockerKey>;
 export const GetBitLockerKeysResponseValueList = /*@__PURE__*/ S.Array(
   DriveBitLockerKey,
 ) as any as S.Schema<GetBitLockerKeysResponseValueList>;
@@ -224,7 +223,7 @@ export interface DriveStatus {
   /** The drive header hash value. */
   driveHeaderHash?: string;
   /** The drive's current state. */
-  state?: DriveStatusState;
+  state?: DriveStatusState | (string & {});
   /** Detailed status about the data transfer process. This field is not returned in the response until the drive is in the Transferring state. */
   copyStatus?: string;
   /** Percentage completed for the drive. */
@@ -256,19 +255,19 @@ export const DriveStatus = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DriveStatus" }) as any as S.Schema<DriveStatus>;
 
 /** List of up to ten drives that comprise the job. The drive list is a required element for an import job; it is not specified for export jobs. */
-export type JobDetailsInputDriveListList = ReadonlyArray<DriveStatus>;
+export type JobDetailsInputDriveListList = Array<DriveStatus>;
 export const JobDetailsInputDriveListList = /*@__PURE__*/ S.Array(
   DriveStatus,
 ) as any as S.Schema<JobDetailsInputDriveListList>;
 
 /** A collection of blob-path strings. */
-export type ExportBlobListBlobPathList = ReadonlyArray<string>;
+export type ExportBlobListBlobPathList = Array<string>;
 export const ExportBlobListBlobPathList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ExportBlobListBlobPathList>;
 
 /** A collection of blob-prefix strings. */
-export type ExportBlobListBlobPathPrefixList = ReadonlyArray<string>;
+export type ExportBlobListBlobPathPrefixList = Array<string>;
 export const ExportBlobListBlobPathPrefixList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ExportBlobListBlobPathPrefixList>;
@@ -310,7 +309,7 @@ export const EncryptionKeyDetailsKekType = /*@__PURE__*/ S.String;
 /** Specifies the encryption key properties */
 export interface EncryptionKeyDetails {
   /** The type of kek encryption key */
-  kekType?: EncryptionKeyDetailsKekType;
+  kekType?: EncryptionKeyDetailsKekType | (string & {});
   /** Specifies the url for kek encryption key. */
   kekUrl?: string;
   /** Specifies the keyvault resource id for kek encryption key. */
@@ -506,7 +505,7 @@ export const ShippingInformation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ShippingInformation>;
 
 /** List of up to ten drives that comprise the job. The drive list is a required element for an import job; it is not specified for export jobs. */
-export type JobDetailsDriveListList = ReadonlyArray<DriveStatus>;
+export type JobDetailsDriveListList = Array<DriveStatus>;
 export const JobDetailsDriveListList = /*@__PURE__*/ S.Array(
   DriveStatus,
 ) as any as S.Schema<JobDetailsDriveListList>;
@@ -712,7 +711,7 @@ export const JobsListByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<JobsListByResourceGroupRequest>;
 
 /** Job list */
-export type ListJobsResponseValueList = ReadonlyArray<JobResponse>;
+export type ListJobsResponseValueList = Array<JobResponse>;
 export const ListJobsResponseValueList = /*@__PURE__*/ S.Array(
   JobResponse,
 ) as any as S.Schema<ListJobsResponseValueList>;
@@ -759,8 +758,7 @@ export const JobsListBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<JobsListBySubscriptionRequest>;
 
 /** List of drives that comprise the job. */
-export type JobsUpdateRequestPropertiesDriveListList =
-  ReadonlyArray<DriveStatus>;
+export type JobsUpdateRequestPropertiesDriveListList = Array<DriveStatus>;
 export const JobsUpdateRequestPropertiesDriveListList = /*@__PURE__*/ S.Array(
   DriveStatus,
 ) as any as S.Schema<JobsUpdateRequestPropertiesDriveListList>;
@@ -850,13 +848,13 @@ export const LocationsGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LocationsGetRequest>;
 
 /** A list of carriers that are supported at this location. */
-export type LocationPropertiesSupportedCarriersList = ReadonlyArray<string>;
+export type LocationPropertiesSupportedCarriersList = Array<string>;
 export const LocationPropertiesSupportedCarriersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LocationPropertiesSupportedCarriersList>;
 
 /** A list of location IDs that should be used to ship shipping drives to for jobs created against the current location. If the current location is active, it will be part of the list. If it is temporarily closed due to maintenance, this list may contain other locations. */
-export type LocationPropertiesAlternateLocationsList = ReadonlyArray<string>;
+export type LocationPropertiesAlternateLocationsList = Array<string>;
 export const LocationPropertiesAlternateLocationsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LocationPropertiesAlternateLocationsList>;
@@ -939,7 +937,7 @@ export const LocationsListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LocationsListRequest>;
 
 /** locations */
-export type LocationsResponseValueList = ReadonlyArray<Location>;
+export type LocationsResponseValueList = Array<Location>;
 export const LocationsResponseValueList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationsResponseValueList>;
@@ -1008,7 +1006,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** operations */
-export type ListOperationsResponseValueList = ReadonlyArray<Operation>;
+export type ListOperationsResponseValueList = Array<Operation>;
 export const ListOperationsResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<ListOperationsResponseValueList>;

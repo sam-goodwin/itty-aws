@@ -231,7 +231,7 @@ export const EntitlementsGetResponseCustomEntitlementsItem =
   }) as any as S.Schema<EntitlementsGetResponseCustomEntitlementsItem>;
 
 export type EntitlementsGetResponseCustomEntitlementsList =
-  ReadonlyArray<EntitlementsGetResponseCustomEntitlementsItem>;
+  Array<EntitlementsGetResponseCustomEntitlementsItem>;
 export const EntitlementsGetResponseCustomEntitlementsList =
   /*@__PURE__*/ S.Array(
     EntitlementsGetResponseCustomEntitlementsItem,
@@ -333,7 +333,7 @@ export const GetResponseTenantContacts = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetResponseTenantContacts",
 }) as any as S.Schema<GetResponseTenantContacts>;
 
-export type GetResponseTenantLabelsList = ReadonlyArray<string>;
+export type GetResponseTenantLabelsList = Array<string>;
 export const GetResponseTenantLabelsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetResponseTenantLabelsList>;
@@ -373,8 +373,7 @@ export const GetResponseTenantMetadata = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetResponseTenantMetadata",
 }) as any as S.Schema<GetResponseTenantMetadata>;
 
-export type GetResponseTenantUnitsItemUnitMembershipsList =
-  ReadonlyArray<unknown>;
+export type GetResponseTenantUnitsItemUnitMembershipsList = Array<unknown>;
 export const GetResponseTenantUnitsItemUnitMembershipsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -401,8 +400,7 @@ export const GetResponseTenantUnitsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetResponseTenantUnitsItem",
 }) as any as S.Schema<GetResponseTenantUnitsItem>;
 
-export type GetResponseTenantUnitsList =
-  ReadonlyArray<GetResponseTenantUnitsItem>;
+export type GetResponseTenantUnitsList = Array<GetResponseTenantUnitsItem>;
 export const GetResponseTenantUnitsList = /*@__PURE__*/ S.Array(
   GetResponseTenantUnitsItem,
 ) as any as S.Schema<GetResponseTenantUnitsList>;
@@ -507,7 +505,7 @@ export const AccountsListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "AccountsListResultItem",
 }) as any as S.Schema<AccountsListResultItem>;
 
-export type AccountsListResultList = ReadonlyArray<AccountsListResultItem>;
+export type AccountsListResultList = Array<AccountsListResultItem>;
 export const AccountsListResultList = /*@__PURE__*/ S.Array(
   AccountsListResultItem,
 ) as any as S.Schema<AccountsListResultList>;
@@ -546,7 +544,7 @@ export const ListAccountTypesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAccountTypesRequest",
 }) as any as S.Schema<ListAccountTypesRequest>;
 
-export type AccountTypesListResultList = ReadonlyArray<string>;
+export type AccountTypesListResultList = Array<string>;
 export const AccountTypesListResultList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AccountTypesListResultList>;
@@ -600,8 +598,7 @@ export const MembershipsListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "MembershipsListResultItem",
 }) as any as S.Schema<MembershipsListResultItem>;
 
-export type MembershipsListResultList =
-  ReadonlyArray<MembershipsListResultItem>;
+export type MembershipsListResultList = Array<MembershipsListResultItem>;
 export const MembershipsListResultList = /*@__PURE__*/ S.Array(
   MembershipsListResultItem,
 ) as any as S.Schema<MembershipsListResultList>;

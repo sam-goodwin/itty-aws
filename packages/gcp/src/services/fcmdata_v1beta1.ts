@@ -239,7 +239,7 @@ export const GoogleFirebaseFcmDataV1beta1AndroidDeliveryData =
   }) as any as S.Schema<GoogleFirebaseFcmDataV1beta1AndroidDeliveryData>;
 
 export type GoogleFirebaseFcmDataV1beta1AndroidDeliveryDataList =
-  ReadonlyArray<GoogleFirebaseFcmDataV1beta1AndroidDeliveryData>;
+  Array<GoogleFirebaseFcmDataV1beta1AndroidDeliveryData>;
 export const GoogleFirebaseFcmDataV1beta1AndroidDeliveryDataList =
   /*@__PURE__*/ S.Array(
     GoogleFirebaseFcmDataV1beta1AndroidDeliveryData,

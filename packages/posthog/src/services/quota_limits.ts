@@ -71,8 +71,7 @@ export const QuotaLimitsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "QuotaLimitsResponse",
 }) as any as S.Schema<QuotaLimitsResponse>;
 
-export type QuotaLimitsListResponseBodyList =
-  ReadonlyArray<QuotaLimitsResponse>;
+export type QuotaLimitsListResponseBodyList = Array<QuotaLimitsResponse>;
 export const QuotaLimitsListResponseBodyList = /*@__PURE__*/ S.Array(
   QuotaLimitsResponse,
 ) as any as S.Schema<QuotaLimitsListResponseBodyList>;

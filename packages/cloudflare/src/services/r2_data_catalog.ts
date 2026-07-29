@@ -615,19 +615,18 @@ export const ListNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListNamespacesRequest",
 }) as any as S.Schema<ListNamespacesRequest>;
 
-export type NamespacesListResponseNamespacesItemList = ReadonlyArray<string>;
+export type NamespacesListResponseNamespacesItemList = Array<string>;
 export const NamespacesListResponseNamespacesItemList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<NamespacesListResponseNamespacesItemList>;
 
 export type NamespacesListResponseNamespacesList =
-  ReadonlyArray<NamespacesListResponseNamespacesItemList>;
+  Array<NamespacesListResponseNamespacesItemList>;
 export const NamespacesListResponseNamespacesList = /*@__PURE__*/ S.Array(
   NamespacesListResponseNamespacesItemList,
 ) as any as S.Schema<NamespacesListResponseNamespacesList>;
 
-export type NamespacesListResponseDetailsItemNamespaceList =
-  ReadonlyArray<string>;
+export type NamespacesListResponseDetailsItemNamespaceList = Array<string>;
 export const NamespacesListResponseDetailsItemNamespaceList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -655,12 +654,12 @@ export const NamespacesListResponseDetailsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NamespacesListResponseDetailsItem>;
 
 export type NamespacesListResponseDetailsList =
-  ReadonlyArray<NamespacesListResponseDetailsItem>;
+  Array<NamespacesListResponseDetailsItem>;
 export const NamespacesListResponseDetailsList = /*@__PURE__*/ S.Array(
   NamespacesListResponseDetailsItem,
 ) as any as S.Schema<NamespacesListResponseDetailsList>;
 
-export type NamespacesListResponseNamespaceUuidsList = ReadonlyArray<string>;
+export type NamespacesListResponseNamespaceUuidsList = Array<string>;
 export const NamespacesListResponseNamespaceUuidsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<NamespacesListResponseNamespaceUuidsList>;
@@ -727,7 +726,7 @@ export const ListNamespaceTablesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListNamespaceTablesRequest>;
 
 export type NamespacesTablesListResponseIdentifiersItemNamespaceList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const NamespacesTablesListResponseIdentifiersItemNamespaceList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -750,14 +749,14 @@ export const NamespacesTablesListResponseIdentifiersItem =
   }) as any as S.Schema<NamespacesTablesListResponseIdentifiersItem>;
 
 export type NamespacesTablesListResponseIdentifiersList =
-  ReadonlyArray<NamespacesTablesListResponseIdentifiersItem>;
+  Array<NamespacesTablesListResponseIdentifiersItem>;
 export const NamespacesTablesListResponseIdentifiersList =
   /*@__PURE__*/ S.Array(
     NamespacesTablesListResponseIdentifiersItem,
   ) as any as S.Schema<NamespacesTablesListResponseIdentifiersList>;
 
 export type NamespacesTablesListResponseDetailsItemIdentifierNamespaceList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const NamespacesTablesListResponseDetailsItemIdentifierNamespaceList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -808,12 +807,12 @@ export const NamespacesTablesListResponseDetailsItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<NamespacesTablesListResponseDetailsItem>;
 
 export type NamespacesTablesListResponseDetailsList =
-  ReadonlyArray<NamespacesTablesListResponseDetailsItem>;
+  Array<NamespacesTablesListResponseDetailsItem>;
 export const NamespacesTablesListResponseDetailsList = /*@__PURE__*/ S.Array(
   NamespacesTablesListResponseDetailsItem,
 ) as any as S.Schema<NamespacesTablesListResponseDetailsList>;
 
-export type NamespacesTablesListResponseTableUuidsList = ReadonlyArray<string>;
+export type NamespacesTablesListResponseTableUuidsList = Array<string>;
 export const NamespacesTablesListResponseTableUuidsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<NamespacesTablesListResponseTableUuidsList>;
@@ -983,8 +982,7 @@ export const ListResponseWarehousesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListResponseWarehousesItem",
 }) as any as S.Schema<ListResponseWarehousesItem>;
 
-export type ListResponseWarehousesList =
-  ReadonlyArray<ListResponseWarehousesItem>;
+export type ListResponseWarehousesList = Array<ListResponseWarehousesItem>;
 export const ListResponseWarehousesList = /*@__PURE__*/ S.Array(
   ListResponseWarehousesItem,
 ) as any as S.Schema<ListResponseWarehousesList>;

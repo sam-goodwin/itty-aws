@@ -82,8 +82,7 @@ export const ConversionGoalSummary = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConversionGoalSummary>;
 
 /** One summary entry per configured conversion goal */
-export type ConversionGoalsListResponseGoalsList =
-  ReadonlyArray<ConversionGoalSummary>;
+export type ConversionGoalsListResponseGoalsList = Array<ConversionGoalSummary>;
 export const ConversionGoalsListResponseGoalsList = /*@__PURE__*/ S.Array(
   ConversionGoalSummary,
 ) as any as S.Schema<ConversionGoalsListResponseGoalsList>;
@@ -132,8 +131,7 @@ export const MarketingAnalyticsDataSourcesRetrieveRequest =
   }) as any as S.Schema<MarketingAnalyticsDataSourcesRetrieveRequest>;
 
 /** Schema columns currently mapped for this source */
-export type DataSourceHealthEntrySchemaColumnsMappedList =
-  ReadonlyArray<string>;
+export type DataSourceHealthEntrySchemaColumnsMappedList = Array<string>;
 export const DataSourceHealthEntrySchemaColumnsMappedList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -141,7 +139,7 @@ export const DataSourceHealthEntrySchemaColumnsMappedList =
 
 /** Required schema columns that are not yet mapped */
 export type DataSourceHealthEntrySchemaColumnsRequiredMissingList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const DataSourceHealthEntrySchemaColumnsRequiredMissingList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -173,7 +171,7 @@ export const RequiredTableStatus = /*@__PURE__*/ S.suspend(() =>
 
 /** Per-required-table sync status for this integration */
 export type DataSourceHealthEntryRequiredTablesList =
-  ReadonlyArray<RequiredTableStatus>;
+  Array<RequiredTableStatus>;
 export const DataSourceHealthEntryRequiredTablesList = /*@__PURE__*/ S.Array(
   RequiredTableStatus,
 ) as any as S.Schema<DataSourceHealthEntryRequiredTablesList>;
@@ -241,13 +239,13 @@ export const DataSourceHealthEntry = /*@__PURE__*/ S.suspend(() =>
 
 /** One health entry per native integration */
 export type DataSourceHealthResponseIntegrationsList =
-  ReadonlyArray<DataSourceHealthEntry>;
+  Array<DataSourceHealthEntry>;
 export const DataSourceHealthResponseIntegrationsList = /*@__PURE__*/ S.Array(
   DataSourceHealthEntry,
 ) as any as S.Schema<DataSourceHealthResponseIntegrationsList>;
 
 /** Short human-readable summary of detected issues */
-export type DataSourceHealthResponseIssuesSummaryList = ReadonlyArray<string>;
+export type DataSourceHealthResponseIssuesSummaryList = Array<string>;
 export const DataSourceHealthResponseIssuesSummaryList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DataSourceHealthResponseIssuesSummaryList>;
@@ -321,7 +319,7 @@ export const UnmatchedUtmSample = /*@__PURE__*/ S.suspend(() =>
 
 /** Sample of likely-yours unmatched utm_source values */
 export type AttributionHealthEntrySampleUnmatchedUtmSourcesList =
-  ReadonlyArray<UnmatchedUtmSample>;
+  Array<UnmatchedUtmSample>;
 export const AttributionHealthEntrySampleUnmatchedUtmSourcesList =
   /*@__PURE__*/ S.Array(
     UnmatchedUtmSample,
@@ -384,7 +382,7 @@ export const RecommendedAction = /*@__PURE__*/ S.suspend(() =>
 
 /** Recommended next steps for this integration */
 export type IntegrationDiagnosticRecommendedActionsList =
-  ReadonlyArray<RecommendedAction>;
+  Array<RecommendedAction>;
 export const IntegrationDiagnosticRecommendedActionsList =
   /*@__PURE__*/ S.Array(
     RecommendedAction,
@@ -425,7 +423,7 @@ export const IntegrationDiagnostic = /*@__PURE__*/ S.suspend(() =>
 
 /** Per-integration cross-domain diagnostics */
 export type MarketingDiagnosticResponseIntegrationsList =
-  ReadonlyArray<IntegrationDiagnostic>;
+  Array<IntegrationDiagnostic>;
 export const MarketingDiagnosticResponseIntegrationsList =
   /*@__PURE__*/ S.Array(
     IntegrationDiagnostic,
@@ -433,7 +431,7 @@ export const MarketingDiagnosticResponseIntegrationsList =
 
 /** Top global recommended actions across all integrations */
 export type MarketingDiagnosticResponseRecommendedActionsList =
-  ReadonlyArray<RecommendedAction>;
+  Array<RecommendedAction>;
 export const MarketingDiagnosticResponseRecommendedActionsList =
   /*@__PURE__*/ S.Array(
     RecommendedAction,
@@ -506,32 +504,30 @@ export const GoalExplanationPeriod = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoalExplanationPeriod",
 }) as any as S.Schema<GoalExplanationPeriod>;
 
-export type GoalExplanationByEventItemList = ReadonlyArray<unknown>;
+export type GoalExplanationByEventItemList = Array<unknown>;
 export const GoalExplanationByEventItemList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<GoalExplanationByEventItemList>;
 
 /** List of [event_name, count] pairs */
-export type GoalExplanationByEventList =
-  ReadonlyArray<GoalExplanationByEventItemList>;
+export type GoalExplanationByEventList = Array<GoalExplanationByEventItemList>;
 export const GoalExplanationByEventList = /*@__PURE__*/ S.Array(
   GoalExplanationByEventItemList,
 ) as any as S.Schema<GoalExplanationByEventList>;
 
-export type GoalExplanationByUtmSourceItemList = ReadonlyArray<unknown>;
+export type GoalExplanationByUtmSourceItemList = Array<unknown>;
 export const GoalExplanationByUtmSourceItemList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<GoalExplanationByUtmSourceItemList>;
 
 /** List of [utm_source, count] pairs */
 export type GoalExplanationByUtmSourceList =
-  ReadonlyArray<GoalExplanationByUtmSourceItemList>;
+  Array<GoalExplanationByUtmSourceItemList>;
 export const GoalExplanationByUtmSourceList = /*@__PURE__*/ S.Array(
   GoalExplanationByUtmSourceItemList,
 ) as any as S.Schema<GoalExplanationByUtmSourceList>;
 
-export type GoalExplanationByMatchedIntegrationItemList =
-  ReadonlyArray<unknown>;
+export type GoalExplanationByMatchedIntegrationItemList = Array<unknown>;
 export const GoalExplanationByMatchedIntegrationItemList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -539,7 +535,7 @@ export const GoalExplanationByMatchedIntegrationItemList =
 
 /** List of [integration, count] pairs */
 export type GoalExplanationByMatchedIntegrationList =
-  ReadonlyArray<GoalExplanationByMatchedIntegrationItemList>;
+  Array<GoalExplanationByMatchedIntegrationItemList>;
 export const GoalExplanationByMatchedIntegrationList = /*@__PURE__*/ S.Array(
   GoalExplanationByMatchedIntegrationItemList,
 ) as any as S.Schema<GoalExplanationByMatchedIntegrationList>;
@@ -572,13 +568,13 @@ export const GoalEventSample = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoalEventSample>;
 
 /** A small sample of matching events */
-export type GoalExplanationSamplesList = ReadonlyArray<GoalEventSample>;
+export type GoalExplanationSamplesList = Array<GoalEventSample>;
 export const GoalExplanationSamplesList = /*@__PURE__*/ S.Array(
   GoalEventSample,
 ) as any as S.Schema<GoalExplanationSamplesList>;
 
 /** Caveats about the breakdown (sampling, attribution, etc.) */
-export type GoalExplanationNotesList = ReadonlyArray<string>;
+export type GoalExplanationNotesList = Array<string>;
 export const GoalExplanationNotesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GoalExplanationNotesList>;
@@ -659,14 +655,14 @@ export const MarketingAnalyticsSuggestConversionGoalsRetrieveRequest =
     identifier: "MarketingAnalyticsSuggestConversionGoalsRetrieveRequest",
   }) as any as S.Schema<MarketingAnalyticsSuggestConversionGoalsRetrieveRequest>;
 
-export type CandidateEventTopUtmSourcesItemList = ReadonlyArray<unknown>;
+export type CandidateEventTopUtmSourcesItemList = Array<unknown>;
 export const CandidateEventTopUtmSourcesItemList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<CandidateEventTopUtmSourcesItemList>;
 
 /** List of [utm_source, count] pairs */
 export type CandidateEventTopUtmSourcesList =
-  ReadonlyArray<CandidateEventTopUtmSourcesItemList>;
+  Array<CandidateEventTopUtmSourcesItemList>;
 export const CandidateEventTopUtmSourcesList = /*@__PURE__*/ S.Array(
   CandidateEventTopUtmSourcesItemList,
 ) as any as S.Schema<CandidateEventTopUtmSourcesList>;
@@ -706,8 +702,7 @@ export const CandidateEvent = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CandidateEvent" }) as any as S.Schema<CandidateEvent>;
 
 /** Ranked candidate events for conversion goals */
-export type EventSuggestionsResponseCandidatesList =
-  ReadonlyArray<CandidateEvent>;
+export type EventSuggestionsResponseCandidatesList = Array<CandidateEvent>;
 export const EventSuggestionsResponseCandidatesList = /*@__PURE__*/ S.Array(
   CandidateEvent,
 ) as any as S.Schema<EventSuggestionsResponseCandidatesList>;
@@ -778,15 +773,14 @@ export const SourceMappingSuggestion = /*@__PURE__*/ S.suspend(() =>
 
 /** Suggested custom_source_mappings entries */
 export type UtmMappingSuggestionsResponseSourceSuggestionsList =
-  ReadonlyArray<SourceMappingSuggestion>;
+  Array<SourceMappingSuggestion>;
 export const UtmMappingSuggestionsResponseSourceSuggestionsList =
   /*@__PURE__*/ S.Array(
     SourceMappingSuggestion,
   ) as any as S.Schema<UtmMappingSuggestionsResponseSourceSuggestionsList>;
 
 /** Raw campaign values clustered under this clean name */
-export type CampaignMappingSuggestionRawCampaignValuesList =
-  ReadonlyArray<string>;
+export type CampaignMappingSuggestionRawCampaignValuesList = Array<string>;
 export const CampaignMappingSuggestionRawCampaignValuesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -824,7 +818,7 @@ export const CampaignMappingSuggestion = /*@__PURE__*/ S.suspend(() =>
 
 /** Suggested campaign-name clusters (empty in v1) */
 export type UtmMappingSuggestionsResponseCampaignSuggestionsList =
-  ReadonlyArray<CampaignMappingSuggestion>;
+  Array<CampaignMappingSuggestion>;
 export const UtmMappingSuggestionsResponseCampaignSuggestionsList =
   /*@__PURE__*/ S.Array(
     CampaignMappingSuggestion,
@@ -850,7 +844,7 @@ export const RawUnmatchedSample = /*@__PURE__*/ S.suspend(() =>
 
 /** All unmatched raw utm_source values worth reviewing */
 export type UtmMappingSuggestionsResponseRawUnmatchedSamplesList =
-  ReadonlyArray<RawUnmatchedSample>;
+  Array<RawUnmatchedSample>;
 export const UtmMappingSuggestionsResponseRawUnmatchedSamplesList =
   /*@__PURE__*/ S.Array(
     RawUnmatchedSample,
@@ -880,7 +874,7 @@ export const CatalogueEntry = /*@__PURE__*/ S.suspend(() =>
 
 /** Every utm_source value seen in the window, matched or not */
 export type UtmMappingSuggestionsResponseFullUtmSourceCatalogueList =
-  ReadonlyArray<CatalogueEntry>;
+  Array<CatalogueEntry>;
 export const UtmMappingSuggestionsResponseFullUtmSourceCatalogueList =
   /*@__PURE__*/ S.Array(
     CatalogueEntry,
@@ -907,14 +901,14 @@ export const CurrentMapping = /*@__PURE__*/ S.suspend(() =>
 
 /** Mappings already in effect (canonical + team_custom) */
 export type UtmMappingSuggestionsResponseCurrentMappingsList =
-  ReadonlyArray<CurrentMapping>;
+  Array<CurrentMapping>;
 export const UtmMappingSuggestionsResponseCurrentMappingsList =
   /*@__PURE__*/ S.Array(
     CurrentMapping,
   ) as any as S.Schema<UtmMappingSuggestionsResponseCurrentMappingsList>;
 
 /** Caveats and guidance about the suggestions */
-export type UtmMappingSuggestionsResponseNotesList = ReadonlyArray<string>;
+export type UtmMappingSuggestionsResponseNotesList = Array<string>;
 export const UtmMappingSuggestionsResponseNotesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<UtmMappingSuggestionsResponseNotesList>;
@@ -1027,7 +1021,7 @@ export const UtmIssue = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UtmIssue" }) as any as S.Schema<UtmIssue>;
 
 /** List of detected UTM configuration issues */
-export type CampaignAuditResultIssuesList = ReadonlyArray<UtmIssue>;
+export type CampaignAuditResultIssuesList = Array<UtmIssue>;
 export const CampaignAuditResultIssuesList = /*@__PURE__*/ S.Array(
   UtmIssue,
 ) as any as S.Schema<CampaignAuditResultIssuesList>;
@@ -1069,7 +1063,7 @@ export const CampaignAuditResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CampaignAuditResult>;
 
 /** Audit results per campaign */
-export type UtmAuditResponseResultsList = ReadonlyArray<CampaignAuditResult>;
+export type UtmAuditResponseResultsList = Array<CampaignAuditResult>;
 export const UtmAuditResponseResultsList = /*@__PURE__*/ S.Array(
   CampaignAuditResult,
 ) as any as S.Schema<UtmAuditResponseResultsList>;
@@ -1104,7 +1098,7 @@ export const UtmEvent = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UtmEvent" }) as any as S.Schema<UtmEvent>;
 
 /** All UTM events with match status */
-export type UtmAuditResponseAllUtmEventsList = ReadonlyArray<UtmEvent>;
+export type UtmAuditResponseAllUtmEventsList = Array<UtmEvent>;
 export const UtmAuditResponseAllUtmEventsList = /*@__PURE__*/ S.Array(
   UtmEvent,
 ) as any as S.Schema<UtmAuditResponseAllUtmEventsList>;

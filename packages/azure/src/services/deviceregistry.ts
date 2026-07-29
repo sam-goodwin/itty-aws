@@ -62,7 +62,7 @@ export const X509Credentials = /*@__PURE__*/ S.suspend(() =>
 /** Definition of the client authentication mechanism to the server. */
 export interface Authentication {
   /** Defines the method to authenticate the user of the client at the server. */
-  method: AuthenticationMethod;
+  method: AuthenticationMethod | (string & {});
   /** Defines the username and password references when UsernamePassword user authentication mode is selected. */
   usernamePasswordCredentials?: UsernamePasswordCredentials;
   /** Defines the certificate reference when Certificate user authentication mode is selected. */
@@ -225,7 +225,7 @@ export const AssetEndpointProfileStatusError = /*@__PURE__*/ S.suspend(() =>
 
 /** Array object to transfer and persist errors that originate from the Edge. */
 export type AssetEndpointProfileStatusErrorsList =
-  ReadonlyArray<AssetEndpointProfileStatusError>;
+  Array<AssetEndpointProfileStatusError>;
 export const AssetEndpointProfileStatusErrorsList = /*@__PURE__*/ S.Array(
   AssetEndpointProfileStatusError,
 ) as any as S.Schema<AssetEndpointProfileStatusErrorsList>;
@@ -485,7 +485,7 @@ export const AssetEndpointProfile = /*@__PURE__*/ S.suspend(() =>
 
 /** The AssetEndpointProfile items on this page */
 export type AssetEndpointProfileListResultValueList =
-  ReadonlyArray<AssetEndpointProfile>;
+  Array<AssetEndpointProfile>;
 export const AssetEndpointProfileListResultValueList = /*@__PURE__*/ S.Array(
   AssetEndpointProfile,
 ) as any as S.Schema<AssetEndpointProfileListResultValueList>;
@@ -706,7 +706,7 @@ export const AssetPropertiesInputAttributesMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<AssetPropertiesInputAttributesMap>;
 
 /** Reference to a list of discovered assets. Populated only if the asset has been created from discovery flow. Discovered asset names must be provided. */
-export type AssetPropertiesInputDiscoveredAssetRefsList = ReadonlyArray<string>;
+export type AssetPropertiesInputDiscoveredAssetRefsList = Array<string>;
 export const AssetPropertiesInputDiscoveredAssetRefsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -721,7 +721,7 @@ export interface Topic {
   /** The topic path for messages published to an MQTT broker. */
   path: string;
   /** When set to 'Keep', messages published to an MQTT broker will have the retain flag set. Default: 'Never'. */
-  retain?: TopicRetain;
+  retain?: TopicRetain | (string & {});
 }
 export const Topic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -748,7 +748,7 @@ export interface DataPoint {
   /** Stringified JSON that contains connector-specific configuration for the data point. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize. */
   dataPointConfiguration?: string;
   /** An indication of how the data point should be mapped to OpenTelemetry. */
-  observabilityMode?: DataPointObservabilityMode;
+  observabilityMode?: DataPointObservabilityMode | (string & {});
 }
 export const DataPoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -760,7 +760,7 @@ export const DataPoint = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DataPoint" }) as any as S.Schema<DataPoint>;
 
 /** Array of data points that are part of the dataset. Each data point can have per-data point configuration. */
-export type DatasetDataPointsList = ReadonlyArray<DataPoint>;
+export type DatasetDataPointsList = Array<DataPoint>;
 export const DatasetDataPointsList = /*@__PURE__*/ S.Array(
   DataPoint,
 ) as any as S.Schema<DatasetDataPointsList>;
@@ -786,7 +786,7 @@ export const Dataset = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Dataset" }) as any as S.Schema<Dataset>;
 
 /** Array of datasets that are part of the asset. Each dataset describes the data points that make up the set. */
-export type AssetPropertiesInputDatasetsList = ReadonlyArray<Dataset>;
+export type AssetPropertiesInputDatasetsList = Array<Dataset>;
 export const AssetPropertiesInputDatasetsList = /*@__PURE__*/ S.Array(
   Dataset,
 ) as any as S.Schema<AssetPropertiesInputDatasetsList>;
@@ -806,7 +806,7 @@ export interface Event {
   /** Object that describes the topic information for the specific event. */
   topic?: Topic;
   /** An indication of how the event should be mapped to OpenTelemetry. */
-  observabilityMode?: EventObservabilityMode;
+  observabilityMode?: EventObservabilityMode | (string & {});
 }
 export const Event = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -819,7 +819,7 @@ export const Event = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Event" }) as any as S.Schema<Event>;
 
 /** Array of events that are part of the asset. Each event can have per-event configuration. */
-export type AssetPropertiesInputEventsList = ReadonlyArray<Event>;
+export type AssetPropertiesInputEventsList = Array<Event>;
 export const AssetPropertiesInputEventsList = /*@__PURE__*/ S.Array(
   Event,
 ) as any as S.Schema<AssetPropertiesInputEventsList>;
@@ -952,19 +952,19 @@ export const AssetPropertiesAttributesMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<AssetPropertiesAttributesMap>;
 
 /** Reference to a list of discovered assets. Populated only if the asset has been created from discovery flow. Discovered asset names must be provided. */
-export type AssetPropertiesDiscoveredAssetRefsList = ReadonlyArray<string>;
+export type AssetPropertiesDiscoveredAssetRefsList = Array<string>;
 export const AssetPropertiesDiscoveredAssetRefsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AssetPropertiesDiscoveredAssetRefsList>;
 
 /** Array of datasets that are part of the asset. Each dataset describes the data points that make up the set. */
-export type AssetPropertiesDatasetsList = ReadonlyArray<Dataset>;
+export type AssetPropertiesDatasetsList = Array<Dataset>;
 export const AssetPropertiesDatasetsList = /*@__PURE__*/ S.Array(
   Dataset,
 ) as any as S.Schema<AssetPropertiesDatasetsList>;
 
 /** Array of events that are part of the asset. Each event can have per-event configuration. */
-export type AssetPropertiesEventsList = ReadonlyArray<Event>;
+export type AssetPropertiesEventsList = Array<Event>;
 export const AssetPropertiesEventsList = /*@__PURE__*/ S.Array(
   Event,
 ) as any as S.Schema<AssetPropertiesEventsList>;
@@ -986,7 +986,7 @@ export const AssetStatusError = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AssetStatusError>;
 
 /** Array object to transfer and persist errors that originate from the Edge. */
-export type AssetStatusErrorsList = ReadonlyArray<AssetStatusError>;
+export type AssetStatusErrorsList = Array<AssetStatusError>;
 export const AssetStatusErrorsList = /*@__PURE__*/ S.Array(
   AssetStatusError,
 ) as any as S.Schema<AssetStatusErrorsList>;
@@ -1027,7 +1027,7 @@ export const AssetStatusDataset = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AssetStatusDataset>;
 
 /** Array of dataset statuses that describe the status of each dataset. */
-export type AssetStatusDatasetsList = ReadonlyArray<AssetStatusDataset>;
+export type AssetStatusDatasetsList = Array<AssetStatusDataset>;
 export const AssetStatusDatasetsList = /*@__PURE__*/ S.Array(
   AssetStatusDataset,
 ) as any as S.Schema<AssetStatusDatasetsList>;
@@ -1049,7 +1049,7 @@ export const AssetStatusEvent = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AssetStatusEvent>;
 
 /** Array of event statuses that describe the status of each event. */
-export type AssetStatusEventsList = ReadonlyArray<AssetStatusEvent>;
+export type AssetStatusEventsList = Array<AssetStatusEvent>;
 export const AssetStatusEventsList = /*@__PURE__*/ S.Array(
   AssetStatusEvent,
 ) as any as S.Schema<AssetStatusEventsList>;
@@ -1348,7 +1348,7 @@ export const Asset = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Asset" }) as any as S.Schema<Asset>;
 
 /** The Asset items on this page */
-export type AssetListResultValueList = ReadonlyArray<Asset>;
+export type AssetListResultValueList = Array<Asset>;
 export const AssetListResultValueList = /*@__PURE__*/ S.Array(
   Asset,
 ) as any as S.Schema<AssetListResultValueList>;
@@ -1423,13 +1423,13 @@ export const TopicUpdate = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TopicUpdate" }) as any as S.Schema<TopicUpdate>;
 
 /** Array of datasets that are part of the asset. Each dataset describes the data points that make up the set. */
-export type AssetUpdatePropertiesDatasetsList = ReadonlyArray<Dataset>;
+export type AssetUpdatePropertiesDatasetsList = Array<Dataset>;
 export const AssetUpdatePropertiesDatasetsList = /*@__PURE__*/ S.Array(
   Dataset,
 ) as any as S.Schema<AssetUpdatePropertiesDatasetsList>;
 
 /** Array of events that are part of the asset. Each event can have per-event configuration. */
-export type AssetUpdatePropertiesEventsList = ReadonlyArray<Event>;
+export type AssetUpdatePropertiesEventsList = Array<Event>;
 export const AssetUpdatePropertiesEventsList = /*@__PURE__*/ S.Array(
   Event,
 ) as any as S.Schema<AssetUpdatePropertiesEventsList>;
@@ -1677,8 +1677,7 @@ export const BillingContainer = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BillingContainer>;
 
 /** The BillingContainer items on this page */
-export type BillingContainerListResultValueList =
-  ReadonlyArray<BillingContainer>;
+export type BillingContainerListResultValueList = Array<BillingContainer>;
 export const BillingContainerListResultValueList = /*@__PURE__*/ S.Array(
   BillingContainer,
 ) as any as S.Schema<BillingContainerListResultValueList>;
@@ -1724,8 +1723,7 @@ export const DeviceRef = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeviceRef" }) as any as S.Schema<DeviceRef>;
 
 /** URIs or type definition IDs. */
-export type NamespaceAssetPropertiesInputAssetTypeRefsList =
-  ReadonlyArray<string>;
+export type NamespaceAssetPropertiesInputAssetTypeRefsList = Array<string>;
 export const NamespaceAssetPropertiesInputAssetTypeRefsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1743,7 +1741,7 @@ export const NamespaceAssetPropertiesInputAttributesMap =
 
 /** Reference to a list of discovered assets. Populated only if the asset has been created from discovery flow. Discovered asset names must be provided. */
 export type NamespaceAssetPropertiesInputDiscoveredAssetRefsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const NamespaceAssetPropertiesInputDiscoveredAssetRefsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1756,7 +1754,7 @@ export const DatasetDestinationTarget = /*@__PURE__*/ S.String;
 /** The type of the destination. */
 export interface DatasetDestination {
   /** Target destination. */
-  target: DatasetDestinationTarget;
+  target: DatasetDestinationTarget | (string & {});
 }
 export const DatasetDestination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1768,7 +1766,7 @@ export const DatasetDestination = /*@__PURE__*/ S.suspend(() =>
 
 /** Default destinations for a dataset. */
 export type NamespaceAssetPropertiesInputDefaultDatasetsDestinationsList =
-  ReadonlyArray<DatasetDestination>;
+  Array<DatasetDestination>;
 export const NamespaceAssetPropertiesInputDefaultDatasetsDestinationsList =
   /*@__PURE__*/ S.Array(
     DatasetDestination,
@@ -1781,7 +1779,7 @@ export const EventDestinationTarget = /*@__PURE__*/ S.String;
 /** The type of the destination. */
 export interface EventDestination {
   /** Target destination. */
-  target: EventDestinationTarget;
+  target: EventDestinationTarget | (string & {});
 }
 export const EventDestination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1793,7 +1791,7 @@ export const EventDestination = /*@__PURE__*/ S.suspend(() =>
 
 /** Default destinations for an event. */
 export type NamespaceAssetPropertiesInputDefaultEventsDestinationsList =
-  ReadonlyArray<EventDestination>;
+  Array<EventDestination>;
 export const NamespaceAssetPropertiesInputDefaultEventsDestinationsList =
   /*@__PURE__*/ S.Array(
     EventDestination,
@@ -1806,7 +1804,7 @@ export const StreamDestinationTarget = /*@__PURE__*/ S.String;
 /** The type of the destination. */
 export interface StreamDestination {
   /** Target destination. */
-  target: StreamDestinationTarget;
+  target: StreamDestinationTarget | (string & {});
 }
 export const StreamDestination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1818,15 +1816,14 @@ export const StreamDestination = /*@__PURE__*/ S.suspend(() =>
 
 /** Default destinations for a stream. */
 export type NamespaceAssetPropertiesInputDefaultStreamsDestinationsList =
-  ReadonlyArray<StreamDestination>;
+  Array<StreamDestination>;
 export const NamespaceAssetPropertiesInputDefaultStreamsDestinationsList =
   /*@__PURE__*/ S.Array(
     StreamDestination,
   ) as any as S.Schema<NamespaceAssetPropertiesInputDefaultStreamsDestinationsList>;
 
 /** Destinations for a dataset. */
-export type NamespaceDatasetDestinationsList =
-  ReadonlyArray<DatasetDestination>;
+export type NamespaceDatasetDestinationsList = Array<DatasetDestination>;
 export const NamespaceDatasetDestinationsList = /*@__PURE__*/ S.Array(
   DatasetDestination,
 ) as any as S.Schema<NamespaceDatasetDestinationsList>;
@@ -1854,8 +1851,7 @@ export const NamespaceDatasetDataPoint = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NamespaceDatasetDataPoint>;
 
 /** Array of data points that are part of the dataset. Each data point can have per-data point configuration. */
-export type NamespaceDatasetDataPointsList =
-  ReadonlyArray<NamespaceDatasetDataPoint>;
+export type NamespaceDatasetDataPointsList = Array<NamespaceDatasetDataPoint>;
 export const NamespaceDatasetDataPointsList = /*@__PURE__*/ S.Array(
   NamespaceDatasetDataPoint,
 ) as any as S.Schema<NamespaceDatasetDataPointsList>;
@@ -1889,21 +1885,20 @@ export const NamespaceDataset = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NamespaceDataset>;
 
 /** Array of datasets that are part of the asset. Each dataset describes the data points that make up the set. */
-export type NamespaceAssetPropertiesInputDatasetsList =
-  ReadonlyArray<NamespaceDataset>;
+export type NamespaceAssetPropertiesInputDatasetsList = Array<NamespaceDataset>;
 export const NamespaceAssetPropertiesInputDatasetsList = /*@__PURE__*/ S.Array(
   NamespaceDataset,
 ) as any as S.Schema<NamespaceAssetPropertiesInputDatasetsList>;
 
 /** Destinations for events. Default destinations when destinations is not defined at the event level. */
 export type NamespaceEventGroupDefaultDestinationsList =
-  ReadonlyArray<EventDestination>;
+  Array<EventDestination>;
 export const NamespaceEventGroupDefaultDestinationsList = /*@__PURE__*/ S.Array(
   EventDestination,
 ) as any as S.Schema<NamespaceEventGroupDefaultDestinationsList>;
 
 /** Destinations for an event. */
-export type NamespaceEventDestinationsList = ReadonlyArray<EventDestination>;
+export type NamespaceEventDestinationsList = Array<EventDestination>;
 export const NamespaceEventDestinationsList = /*@__PURE__*/ S.Array(
   EventDestination,
 ) as any as S.Schema<NamespaceEventDestinationsList>;
@@ -1932,7 +1927,7 @@ export const NamespaceEvent = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NamespaceEvent" }) as any as S.Schema<NamespaceEvent>;
 
 /** Array of events that are part of the event group. */
-export type NamespaceEventGroupEventsList = ReadonlyArray<NamespaceEvent>;
+export type NamespaceEventGroupEventsList = Array<NamespaceEvent>;
 export const NamespaceEventGroupEventsList = /*@__PURE__*/ S.Array(
   NamespaceEvent,
 ) as any as S.Schema<NamespaceEventGroupEventsList>;
@@ -1967,14 +1962,14 @@ export const NamespaceEventGroup = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of event groups that are part of the asset. Each event group can have per-event group configuration. */
 export type NamespaceAssetPropertiesInputEventGroupsList =
-  ReadonlyArray<NamespaceEventGroup>;
+  Array<NamespaceEventGroup>;
 export const NamespaceAssetPropertiesInputEventGroupsList =
   /*@__PURE__*/ S.Array(
     NamespaceEventGroup,
   ) as any as S.Schema<NamespaceAssetPropertiesInputEventGroupsList>;
 
 /** Destinations for a stream. */
-export type NamespaceStreamDestinationsList = ReadonlyArray<StreamDestination>;
+export type NamespaceStreamDestinationsList = Array<StreamDestination>;
 export const NamespaceStreamDestinationsList = /*@__PURE__*/ S.Array(
   StreamDestination,
 ) as any as S.Schema<NamespaceStreamDestinationsList>;
@@ -2002,8 +1997,7 @@ export const NamespaceStream = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NamespaceStream>;
 
 /** Array of streams that are part of the asset. Each stream can have a per-stream configuration. */
-export type NamespaceAssetPropertiesInputStreamsList =
-  ReadonlyArray<NamespaceStream>;
+export type NamespaceAssetPropertiesInputStreamsList = Array<NamespaceStream>;
 export const NamespaceAssetPropertiesInputStreamsList = /*@__PURE__*/ S.Array(
   NamespaceStream,
 ) as any as S.Schema<NamespaceAssetPropertiesInputStreamsList>;
@@ -2025,7 +2019,7 @@ export interface ManagementAction {
   /** The MQTT topic path on which a client will receive the request for the action. */
   topic?: string;
   /** The type of the action. */
-  actionType?: ManagementActionActionType;
+  actionType?: ManagementActionActionType | (string & {});
   /** Response timeout for the action. */
   timeoutInSeconds?: number;
 }
@@ -2044,7 +2038,7 @@ export const ManagementAction = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ManagementAction>;
 
 /** Array of actions that are part of the management group. Each action can have an individual configuration. */
-export type ManagementGroupActionsList = ReadonlyArray<ManagementAction>;
+export type ManagementGroupActionsList = Array<ManagementAction>;
 export const ManagementGroupActionsList = /*@__PURE__*/ S.Array(
   ManagementAction,
 ) as any as S.Schema<ManagementGroupActionsList>;
@@ -2082,7 +2076,7 @@ export const ManagementGroup = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of management groups that are part of the asset. Each management group can have a per-group configuration. */
 export type NamespaceAssetPropertiesInputManagementGroupsList =
-  ReadonlyArray<ManagementGroup>;
+  Array<ManagementGroup>;
 export const NamespaceAssetPropertiesInputManagementGroupsList =
   /*@__PURE__*/ S.Array(
     ManagementGroup,
@@ -2241,7 +2235,7 @@ export const NamespaceAssetsCreateOrReplaceResponseTagsMap =
   ) as any as S.Schema<NamespaceAssetsCreateOrReplaceResponseTagsMap>;
 
 /** URIs or type definition IDs. */
-export type NamespaceAssetPropertiesAssetTypeRefsList = ReadonlyArray<string>;
+export type NamespaceAssetPropertiesAssetTypeRefsList = Array<string>;
 export const NamespaceAssetPropertiesAssetTypeRefsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<NamespaceAssetPropertiesAssetTypeRefsList>;
@@ -2256,8 +2250,7 @@ export const NamespaceAssetPropertiesAttributesMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<NamespaceAssetPropertiesAttributesMap>;
 
 /** Reference to a list of discovered assets. Populated only if the asset has been created from discovery flow. Discovered asset names must be provided. */
-export type NamespaceAssetPropertiesDiscoveredAssetRefsList =
-  ReadonlyArray<string>;
+export type NamespaceAssetPropertiesDiscoveredAssetRefsList = Array<string>;
 export const NamespaceAssetPropertiesDiscoveredAssetRefsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2265,7 +2258,7 @@ export const NamespaceAssetPropertiesDiscoveredAssetRefsList =
 
 /** Default destinations for a dataset. */
 export type NamespaceAssetPropertiesDefaultDatasetsDestinationsList =
-  ReadonlyArray<DatasetDestination>;
+  Array<DatasetDestination>;
 export const NamespaceAssetPropertiesDefaultDatasetsDestinationsList =
   /*@__PURE__*/ S.Array(
     DatasetDestination,
@@ -2273,7 +2266,7 @@ export const NamespaceAssetPropertiesDefaultDatasetsDestinationsList =
 
 /** Default destinations for an event. */
 export type NamespaceAssetPropertiesDefaultEventsDestinationsList =
-  ReadonlyArray<EventDestination>;
+  Array<EventDestination>;
 export const NamespaceAssetPropertiesDefaultEventsDestinationsList =
   /*@__PURE__*/ S.Array(
     EventDestination,
@@ -2281,36 +2274,34 @@ export const NamespaceAssetPropertiesDefaultEventsDestinationsList =
 
 /** Default destinations for a stream. */
 export type NamespaceAssetPropertiesDefaultStreamsDestinationsList =
-  ReadonlyArray<StreamDestination>;
+  Array<StreamDestination>;
 export const NamespaceAssetPropertiesDefaultStreamsDestinationsList =
   /*@__PURE__*/ S.Array(
     StreamDestination,
   ) as any as S.Schema<NamespaceAssetPropertiesDefaultStreamsDestinationsList>;
 
 /** Array of datasets that are part of the asset. Each dataset describes the data points that make up the set. */
-export type NamespaceAssetPropertiesDatasetsList =
-  ReadonlyArray<NamespaceDataset>;
+export type NamespaceAssetPropertiesDatasetsList = Array<NamespaceDataset>;
 export const NamespaceAssetPropertiesDatasetsList = /*@__PURE__*/ S.Array(
   NamespaceDataset,
 ) as any as S.Schema<NamespaceAssetPropertiesDatasetsList>;
 
 /** Array of event groups that are part of the asset. Each event group can have per-event group configuration. */
 export type NamespaceAssetPropertiesEventGroupsList =
-  ReadonlyArray<NamespaceEventGroup>;
+  Array<NamespaceEventGroup>;
 export const NamespaceAssetPropertiesEventGroupsList = /*@__PURE__*/ S.Array(
   NamespaceEventGroup,
 ) as any as S.Schema<NamespaceAssetPropertiesEventGroupsList>;
 
 /** Array of streams that are part of the asset. Each stream can have a per-stream configuration. */
-export type NamespaceAssetPropertiesStreamsList =
-  ReadonlyArray<NamespaceStream>;
+export type NamespaceAssetPropertiesStreamsList = Array<NamespaceStream>;
 export const NamespaceAssetPropertiesStreamsList = /*@__PURE__*/ S.Array(
   NamespaceStream,
 ) as any as S.Schema<NamespaceAssetPropertiesStreamsList>;
 
 /** Array of management groups that are part of the asset. Each management group can have a per-group configuration. */
 export type NamespaceAssetPropertiesManagementGroupsList =
-  ReadonlyArray<ManagementGroup>;
+  Array<ManagementGroup>;
 export const NamespaceAssetPropertiesManagementGroupsList =
   /*@__PURE__*/ S.Array(
     ManagementGroup,
@@ -2337,7 +2328,7 @@ export const ErrorDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ErrorDetails" }) as any as S.Schema<ErrorDetails>;
 
 /** Array of error details that describe the status of each error. */
-export type StatusErrorDetailsList = ReadonlyArray<ErrorDetails>;
+export type StatusErrorDetailsList = Array<ErrorDetails>;
 export const StatusErrorDetailsList = /*@__PURE__*/ S.Array(
   ErrorDetails,
 ) as any as S.Schema<StatusErrorDetailsList>;
@@ -2416,7 +2407,7 @@ export const NamespaceAssetStatusDataset = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of dataset statuses that describe the status of each dataset. */
 export type NamespaceAssetStatusDatasetsList =
-  ReadonlyArray<NamespaceAssetStatusDataset>;
+  Array<NamespaceAssetStatusDataset>;
 export const NamespaceAssetStatusDatasetsList = /*@__PURE__*/ S.Array(
   NamespaceAssetStatusDataset,
 ) as any as S.Schema<NamespaceAssetStatusDatasetsList>;
@@ -2442,7 +2433,7 @@ export const NamespaceAssetStatusEvent = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of event statuses that describe the status of each event in the event group. */
 export type NamespaceAssetStatusEventGroupEventsList =
-  ReadonlyArray<NamespaceAssetStatusEvent>;
+  Array<NamespaceAssetStatusEvent>;
 export const NamespaceAssetStatusEventGroupEventsList = /*@__PURE__*/ S.Array(
   NamespaceAssetStatusEvent,
 ) as any as S.Schema<NamespaceAssetStatusEventGroupEventsList>;
@@ -2465,7 +2456,7 @@ export const NamespaceAssetStatusEventGroup = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of event group statuses that describe the status of each event group. */
 export type NamespaceAssetStatusEventGroupsList =
-  ReadonlyArray<NamespaceAssetStatusEventGroup>;
+  Array<NamespaceAssetStatusEventGroup>;
 export const NamespaceAssetStatusEventGroupsList = /*@__PURE__*/ S.Array(
   NamespaceAssetStatusEventGroup,
 ) as any as S.Schema<NamespaceAssetStatusEventGroupsList>;
@@ -2490,8 +2481,7 @@ export const NamespaceAssetStatusStream = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NamespaceAssetStatusStream>;
 
 /** Array of stream statuses that describe the status of each stream. */
-export type NamespaceAssetStatusStreamsList =
-  ReadonlyArray<NamespaceAssetStatusStream>;
+export type NamespaceAssetStatusStreamsList = Array<NamespaceAssetStatusStream>;
 export const NamespaceAssetStatusStreamsList = /*@__PURE__*/ S.Array(
   NamespaceAssetStatusStream,
 ) as any as S.Schema<NamespaceAssetStatusStreamsList>;
@@ -2525,7 +2515,7 @@ export const NamespaceAssetStatusManagementAction = /*@__PURE__*/ S.suspend(
 
 /** Array of action statuses that describe the status of each action. */
 export type NamespaceAssetStatusManagementGroupActionsList =
-  ReadonlyArray<NamespaceAssetStatusManagementAction>;
+  Array<NamespaceAssetStatusManagementAction>;
 export const NamespaceAssetStatusManagementGroupActionsList =
   /*@__PURE__*/ S.Array(
     NamespaceAssetStatusManagementAction,
@@ -2549,7 +2539,7 @@ export const NamespaceAssetStatusManagementGroup = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of management group statuses that describe the status of each management group. */
 export type NamespaceAssetStatusManagementGroupsList =
-  ReadonlyArray<NamespaceAssetStatusManagementGroup>;
+  Array<NamespaceAssetStatusManagementGroup>;
 export const NamespaceAssetStatusManagementGroupsList = /*@__PURE__*/ S.Array(
   NamespaceAssetStatusManagementGroup,
 ) as any as S.Schema<NamespaceAssetStatusManagementGroupsList>;
@@ -2848,7 +2838,7 @@ export type ManagementActionExecutionStatus =
 export const ManagementActionExecutionStatus = /*@__PURE__*/ S.String;
 
 /** Array of error details that describe the status of each error. */
-export type ErrorDetailsList = ReadonlyArray<ErrorDetails>;
+export type ErrorDetailsList = Array<ErrorDetails>;
 export const ErrorDetailsList = /*@__PURE__*/ S.Array(
   ErrorDetails,
 ) as any as S.Schema<ErrorDetailsList>;
@@ -3034,7 +3024,7 @@ export const NamespaceAsset = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NamespaceAsset" }) as any as S.Schema<NamespaceAsset>;
 
 /** The NamespaceAsset items on this page */
-export type NamespaceAssetListResultValueList = ReadonlyArray<NamespaceAsset>;
+export type NamespaceAssetListResultValueList = Array<NamespaceAsset>;
 export const NamespaceAssetListResultValueList = /*@__PURE__*/ S.Array(
   NamespaceAsset,
 ) as any as S.Schema<NamespaceAssetListResultValueList>;
@@ -3065,8 +3055,7 @@ export const NamespaceAssetsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<NamespaceAssetsUpdateRequestTagsMap>;
 
 /** URIs or type definition IDs. */
-export type NamespaceAssetUpdatePropertiesAssetTypeRefsList =
-  ReadonlyArray<string>;
+export type NamespaceAssetUpdatePropertiesAssetTypeRefsList = Array<string>;
 export const NamespaceAssetUpdatePropertiesAssetTypeRefsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3084,7 +3073,7 @@ export const NamespaceAssetUpdatePropertiesAttributesMap =
 
 /** Default destinations for a dataset. */
 export type NamespaceAssetUpdatePropertiesDefaultDatasetsDestinationsList =
-  ReadonlyArray<DatasetDestination>;
+  Array<DatasetDestination>;
 export const NamespaceAssetUpdatePropertiesDefaultDatasetsDestinationsList =
   /*@__PURE__*/ S.Array(
     DatasetDestination,
@@ -3092,7 +3081,7 @@ export const NamespaceAssetUpdatePropertiesDefaultDatasetsDestinationsList =
 
 /** Default destinations for an event. */
 export type NamespaceAssetUpdatePropertiesDefaultEventsDestinationsList =
-  ReadonlyArray<EventDestination>;
+  Array<EventDestination>;
 export const NamespaceAssetUpdatePropertiesDefaultEventsDestinationsList =
   /*@__PURE__*/ S.Array(
     EventDestination,
@@ -3100,7 +3089,7 @@ export const NamespaceAssetUpdatePropertiesDefaultEventsDestinationsList =
 
 /** Default destinations for a stream. */
 export type NamespaceAssetUpdatePropertiesDefaultStreamsDestinationsList =
-  ReadonlyArray<StreamDestination>;
+  Array<StreamDestination>;
 export const NamespaceAssetUpdatePropertiesDefaultStreamsDestinationsList =
   /*@__PURE__*/ S.Array(
     StreamDestination,
@@ -3108,29 +3097,28 @@ export const NamespaceAssetUpdatePropertiesDefaultStreamsDestinationsList =
 
 /** Array of datasets that are part of the asset. Each dataset describes the data points that make up the set. */
 export type NamespaceAssetUpdatePropertiesDatasetsList =
-  ReadonlyArray<NamespaceDataset>;
+  Array<NamespaceDataset>;
 export const NamespaceAssetUpdatePropertiesDatasetsList = /*@__PURE__*/ S.Array(
   NamespaceDataset,
 ) as any as S.Schema<NamespaceAssetUpdatePropertiesDatasetsList>;
 
 /** Array of event groups that are part of the asset. Each event group can have per-event group configuration. */
 export type NamespaceAssetUpdatePropertiesEventGroupsList =
-  ReadonlyArray<NamespaceEventGroup>;
+  Array<NamespaceEventGroup>;
 export const NamespaceAssetUpdatePropertiesEventGroupsList =
   /*@__PURE__*/ S.Array(
     NamespaceEventGroup,
   ) as any as S.Schema<NamespaceAssetUpdatePropertiesEventGroupsList>;
 
 /** Array of streams that are part of the asset. Each stream can have a per-stream configuration. */
-export type NamespaceAssetUpdatePropertiesStreamsList =
-  ReadonlyArray<NamespaceStream>;
+export type NamespaceAssetUpdatePropertiesStreamsList = Array<NamespaceStream>;
 export const NamespaceAssetUpdatePropertiesStreamsList = /*@__PURE__*/ S.Array(
   NamespaceStream,
 ) as any as S.Schema<NamespaceAssetUpdatePropertiesStreamsList>;
 
 /** Array of management groups that are part of the asset. Each management group can have a per-group configuration. */
 export type NamespaceAssetUpdatePropertiesManagementGroupsList =
-  ReadonlyArray<ManagementGroup>;
+  Array<ManagementGroup>;
 export const NamespaceAssetUpdatePropertiesManagementGroupsList =
   /*@__PURE__*/ S.Array(
     ManagementGroup,
@@ -3341,7 +3329,7 @@ export const X509CertificateCredentials = /*@__PURE__*/ S.suspend(() =>
 /** Definition of the client authentication mechanism to the host. */
 export interface HostAuthentication {
   /** Defines the method to authenticate the user of the client at the server. */
-  method: HostAuthenticationMethod;
+  method: HostAuthenticationMethod | (string & {});
   /** Defines the username and password references when UsernamePassword user authentication mode is selected. */
   usernamePasswordCredentials?: UsernamePasswordCredentials;
   /** Defines the certificate reference when Certificate user authentication mode is selected. */
@@ -3898,7 +3886,7 @@ export const NamespaceDevice = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NamespaceDevice>;
 
 /** The NamespaceDevice items on this page */
-export type NamespaceDeviceListResultValueList = ReadonlyArray<NamespaceDevice>;
+export type NamespaceDeviceListResultValueList = Array<NamespaceDevice>;
 export const NamespaceDeviceListResultValueList = /*@__PURE__*/ S.Array(
   NamespaceDevice,
 ) as any as S.Schema<NamespaceDeviceListResultValueList>;
@@ -4199,7 +4187,7 @@ export const NamespaceDiscoveredAssetsCreateOrReplaceRequestTagsMap =
 
 /** URIs or type definition IDs. */
 export type NamespaceDiscoveredAssetPropertiesInputAssetTypeRefsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const NamespaceDiscoveredAssetPropertiesInputAssetTypeRefsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4217,7 +4205,7 @@ export const NamespaceDiscoveredAssetPropertiesInputAttributesMap =
 
 /** Default destinations for a dataset. */
 export type NamespaceDiscoveredAssetPropertiesInputDefaultDatasetsDestinationsList =
-  ReadonlyArray<DatasetDestination>;
+  Array<DatasetDestination>;
 export const NamespaceDiscoveredAssetPropertiesInputDefaultDatasetsDestinationsList =
   /*@__PURE__*/ S.Array(
     DatasetDestination,
@@ -4225,7 +4213,7 @@ export const NamespaceDiscoveredAssetPropertiesInputDefaultDatasetsDestinationsL
 
 /** Default destinations for an event. */
 export type NamespaceDiscoveredAssetPropertiesInputDefaultEventsDestinationsList =
-  ReadonlyArray<EventDestination>;
+  Array<EventDestination>;
 export const NamespaceDiscoveredAssetPropertiesInputDefaultEventsDestinationsList =
   /*@__PURE__*/ S.Array(
     EventDestination,
@@ -4233,7 +4221,7 @@ export const NamespaceDiscoveredAssetPropertiesInputDefaultEventsDestinationsLis
 
 /** Default destinations for a stream. */
 export type NamespaceDiscoveredAssetPropertiesInputDefaultStreamsDestinationsList =
-  ReadonlyArray<StreamDestination>;
+  Array<StreamDestination>;
 export const NamespaceDiscoveredAssetPropertiesInputDefaultStreamsDestinationsList =
   /*@__PURE__*/ S.Array(
     StreamDestination,
@@ -4241,7 +4229,7 @@ export const NamespaceDiscoveredAssetPropertiesInputDefaultStreamsDestinationsLi
 
 /** Destinations for a dataset. */
 export type NamespaceDiscoveredDatasetDestinationsList =
-  ReadonlyArray<DatasetDestination>;
+  Array<DatasetDestination>;
 export const NamespaceDiscoveredDatasetDestinationsList = /*@__PURE__*/ S.Array(
   DatasetDestination,
 ) as any as S.Schema<NamespaceDiscoveredDatasetDestinationsList>;
@@ -4273,7 +4261,7 @@ export const NamespaceDiscoveredDatasetDataPoint = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of data points that are part of the dataset. Each data point can have per-data point configuration. */
 export type NamespaceDiscoveredDatasetDataPointsList =
-  ReadonlyArray<NamespaceDiscoveredDatasetDataPoint>;
+  Array<NamespaceDiscoveredDatasetDataPoint>;
 export const NamespaceDiscoveredDatasetDataPointsList = /*@__PURE__*/ S.Array(
   NamespaceDiscoveredDatasetDataPoint,
 ) as any as S.Schema<NamespaceDiscoveredDatasetDataPointsList>;
@@ -4311,7 +4299,7 @@ export const NamespaceDiscoveredDataset = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of datasets that are part of the asset. Each dataset spec describes the data points that make up the set. */
 export type NamespaceDiscoveredAssetPropertiesInputDatasetsList =
-  ReadonlyArray<NamespaceDiscoveredDataset>;
+  Array<NamespaceDiscoveredDataset>;
 export const NamespaceDiscoveredAssetPropertiesInputDatasetsList =
   /*@__PURE__*/ S.Array(
     NamespaceDiscoveredDataset,
@@ -4319,15 +4307,14 @@ export const NamespaceDiscoveredAssetPropertiesInputDatasetsList =
 
 /** Destinations for events. Default destinations when destinations is not defined at the event level. */
 export type NamespaceDiscoveredEventGroupDefaultDestinationsList =
-  ReadonlyArray<EventDestination>;
+  Array<EventDestination>;
 export const NamespaceDiscoveredEventGroupDefaultDestinationsList =
   /*@__PURE__*/ S.Array(
     EventDestination,
   ) as any as S.Schema<NamespaceDiscoveredEventGroupDefaultDestinationsList>;
 
 /** Destinations for an event. */
-export type NamespaceDiscoveredEventDestinationsList =
-  ReadonlyArray<EventDestination>;
+export type NamespaceDiscoveredEventDestinationsList = Array<EventDestination>;
 export const NamespaceDiscoveredEventDestinationsList = /*@__PURE__*/ S.Array(
   EventDestination,
 ) as any as S.Schema<NamespaceDiscoveredEventDestinationsList>;
@@ -4362,7 +4349,7 @@ export const NamespaceDiscoveredEvent = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of events that are part of the event group. */
 export type NamespaceDiscoveredEventGroupEventsList =
-  ReadonlyArray<NamespaceDiscoveredEvent>;
+  Array<NamespaceDiscoveredEvent>;
 export const NamespaceDiscoveredEventGroupEventsList = /*@__PURE__*/ S.Array(
   NamespaceDiscoveredEvent,
 ) as any as S.Schema<NamespaceDiscoveredEventGroupEventsList>;
@@ -4399,7 +4386,7 @@ export const NamespaceDiscoveredEventGroup = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of event groups that are part of the asset. Each event group can have per-event group configuration. */
 export type NamespaceDiscoveredAssetPropertiesInputEventGroupsList =
-  ReadonlyArray<NamespaceDiscoveredEventGroup>;
+  Array<NamespaceDiscoveredEventGroup>;
 export const NamespaceDiscoveredAssetPropertiesInputEventGroupsList =
   /*@__PURE__*/ S.Array(
     NamespaceDiscoveredEventGroup,
@@ -4407,7 +4394,7 @@ export const NamespaceDiscoveredAssetPropertiesInputEventGroupsList =
 
 /** Destinations for a stream. */
 export type NamespaceDiscoveredStreamDestinationsList =
-  ReadonlyArray<StreamDestination>;
+  Array<StreamDestination>;
 export const NamespaceDiscoveredStreamDestinationsList = /*@__PURE__*/ S.Array(
   StreamDestination,
 ) as any as S.Schema<NamespaceDiscoveredStreamDestinationsList>;
@@ -4439,7 +4426,7 @@ export const NamespaceDiscoveredStream = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of streams that are part of the asset. Each stream can have a per-stream configuration. */
 export type NamespaceDiscoveredAssetPropertiesInputStreamsList =
-  ReadonlyArray<NamespaceDiscoveredStream>;
+  Array<NamespaceDiscoveredStream>;
 export const NamespaceDiscoveredAssetPropertiesInputStreamsList =
   /*@__PURE__*/ S.Array(
     NamespaceDiscoveredStream,
@@ -4466,7 +4453,7 @@ export interface NamespaceDiscoveredManagementAction {
   /** The MQTT topic path on which a client will receive the request for the action. */
   topic?: string;
   /** The type of the action. */
-  actionType?: NamespaceDiscoveredManagementActionActionType;
+  actionType?: NamespaceDiscoveredManagementActionActionType | (string & {});
   /** Response timeout for the action. */
   timeoutInSeconds?: number;
   /** Timestamp (in UTC) indicating when the management action was added or modified. */
@@ -4489,7 +4476,7 @@ export const NamespaceDiscoveredManagementAction = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of actions that are part of the management group. Each action can have an individual configuration. */
 export type NamespaceDiscoveredManagementGroupActionsList =
-  ReadonlyArray<NamespaceDiscoveredManagementAction>;
+  Array<NamespaceDiscoveredManagementAction>;
 export const NamespaceDiscoveredManagementGroupActionsList =
   /*@__PURE__*/ S.Array(
     NamespaceDiscoveredManagementAction,
@@ -4531,7 +4518,7 @@ export const NamespaceDiscoveredManagementGroup = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of management groups that are part of the asset. Each management group can have a per-group configuration. */
 export type NamespaceDiscoveredAssetPropertiesInputManagementGroupsList =
-  ReadonlyArray<NamespaceDiscoveredManagementGroup>;
+  Array<NamespaceDiscoveredManagementGroup>;
 export const NamespaceDiscoveredAssetPropertiesInputManagementGroupsList =
   /*@__PURE__*/ S.Array(
     NamespaceDiscoveredManagementGroup,
@@ -4695,8 +4682,7 @@ export const NamespaceDiscoveredAssetsCreateOrReplaceResponseTagsMap =
   ) as any as S.Schema<NamespaceDiscoveredAssetsCreateOrReplaceResponseTagsMap>;
 
 /** URIs or type definition IDs. */
-export type NamespaceDiscoveredAssetPropertiesAssetTypeRefsList =
-  ReadonlyArray<string>;
+export type NamespaceDiscoveredAssetPropertiesAssetTypeRefsList = Array<string>;
 export const NamespaceDiscoveredAssetPropertiesAssetTypeRefsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4714,7 +4700,7 @@ export const NamespaceDiscoveredAssetPropertiesAttributesMap =
 
 /** Default destinations for a dataset. */
 export type NamespaceDiscoveredAssetPropertiesDefaultDatasetsDestinationsList =
-  ReadonlyArray<DatasetDestination>;
+  Array<DatasetDestination>;
 export const NamespaceDiscoveredAssetPropertiesDefaultDatasetsDestinationsList =
   /*@__PURE__*/ S.Array(
     DatasetDestination,
@@ -4722,7 +4708,7 @@ export const NamespaceDiscoveredAssetPropertiesDefaultDatasetsDestinationsList =
 
 /** Default destinations for an event. */
 export type NamespaceDiscoveredAssetPropertiesDefaultEventsDestinationsList =
-  ReadonlyArray<EventDestination>;
+  Array<EventDestination>;
 export const NamespaceDiscoveredAssetPropertiesDefaultEventsDestinationsList =
   /*@__PURE__*/ S.Array(
     EventDestination,
@@ -4730,7 +4716,7 @@ export const NamespaceDiscoveredAssetPropertiesDefaultEventsDestinationsList =
 
 /** Default destinations for a stream. */
 export type NamespaceDiscoveredAssetPropertiesDefaultStreamsDestinationsList =
-  ReadonlyArray<StreamDestination>;
+  Array<StreamDestination>;
 export const NamespaceDiscoveredAssetPropertiesDefaultStreamsDestinationsList =
   /*@__PURE__*/ S.Array(
     StreamDestination,
@@ -4738,7 +4724,7 @@ export const NamespaceDiscoveredAssetPropertiesDefaultStreamsDestinationsList =
 
 /** Array of datasets that are part of the asset. Each dataset spec describes the data points that make up the set. */
 export type NamespaceDiscoveredAssetPropertiesDatasetsList =
-  ReadonlyArray<NamespaceDiscoveredDataset>;
+  Array<NamespaceDiscoveredDataset>;
 export const NamespaceDiscoveredAssetPropertiesDatasetsList =
   /*@__PURE__*/ S.Array(
     NamespaceDiscoveredDataset,
@@ -4746,7 +4732,7 @@ export const NamespaceDiscoveredAssetPropertiesDatasetsList =
 
 /** Array of event groups that are part of the asset. Each event group can have per-event group configuration. */
 export type NamespaceDiscoveredAssetPropertiesEventGroupsList =
-  ReadonlyArray<NamespaceDiscoveredEventGroup>;
+  Array<NamespaceDiscoveredEventGroup>;
 export const NamespaceDiscoveredAssetPropertiesEventGroupsList =
   /*@__PURE__*/ S.Array(
     NamespaceDiscoveredEventGroup,
@@ -4754,7 +4740,7 @@ export const NamespaceDiscoveredAssetPropertiesEventGroupsList =
 
 /** Array of streams that are part of the asset. Each stream can have a per-stream configuration. */
 export type NamespaceDiscoveredAssetPropertiesStreamsList =
-  ReadonlyArray<NamespaceDiscoveredStream>;
+  Array<NamespaceDiscoveredStream>;
 export const NamespaceDiscoveredAssetPropertiesStreamsList =
   /*@__PURE__*/ S.Array(
     NamespaceDiscoveredStream,
@@ -4762,7 +4748,7 @@ export const NamespaceDiscoveredAssetPropertiesStreamsList =
 
 /** Array of management groups that are part of the asset. Each management group can have a per-group configuration. */
 export type NamespaceDiscoveredAssetPropertiesManagementGroupsList =
-  ReadonlyArray<NamespaceDiscoveredManagementGroup>;
+  Array<NamespaceDiscoveredManagementGroup>;
 export const NamespaceDiscoveredAssetPropertiesManagementGroupsList =
   /*@__PURE__*/ S.Array(
     NamespaceDiscoveredManagementGroup,
@@ -5085,7 +5071,7 @@ export const NamespaceDiscoveredAsset = /*@__PURE__*/ S.suspend(() =>
 
 /** The NamespaceDiscoveredAsset items on this page */
 export type NamespaceDiscoveredAssetListResultValueList =
-  ReadonlyArray<NamespaceDiscoveredAsset>;
+  Array<NamespaceDiscoveredAsset>;
 export const NamespaceDiscoveredAssetListResultValueList =
   /*@__PURE__*/ S.Array(
     NamespaceDiscoveredAsset,
@@ -5135,7 +5121,7 @@ export const DeviceRefUpdate = /*@__PURE__*/ S.suspend(() =>
 
 /** URIs or type definition IDs. */
 export type NamespaceDiscoveredAssetUpdatePropertiesAssetTypeRefsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const NamespaceDiscoveredAssetUpdatePropertiesAssetTypeRefsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5153,7 +5139,7 @@ export const NamespaceDiscoveredAssetUpdatePropertiesAttributesMap =
 
 /** Default destinations for a dataset. */
 export type NamespaceDiscoveredAssetUpdatePropertiesDefaultDatasetsDestinationsList =
-  ReadonlyArray<DatasetDestination>;
+  Array<DatasetDestination>;
 export const NamespaceDiscoveredAssetUpdatePropertiesDefaultDatasetsDestinationsList =
   /*@__PURE__*/ S.Array(
     DatasetDestination,
@@ -5161,7 +5147,7 @@ export const NamespaceDiscoveredAssetUpdatePropertiesDefaultDatasetsDestinations
 
 /** Default destinations for an event. */
 export type NamespaceDiscoveredAssetUpdatePropertiesDefaultEventsDestinationsList =
-  ReadonlyArray<EventDestination>;
+  Array<EventDestination>;
 export const NamespaceDiscoveredAssetUpdatePropertiesDefaultEventsDestinationsList =
   /*@__PURE__*/ S.Array(
     EventDestination,
@@ -5169,7 +5155,7 @@ export const NamespaceDiscoveredAssetUpdatePropertiesDefaultEventsDestinationsLi
 
 /** Default destinations for a stream. */
 export type NamespaceDiscoveredAssetUpdatePropertiesDefaultStreamsDestinationsList =
-  ReadonlyArray<StreamDestination>;
+  Array<StreamDestination>;
 export const NamespaceDiscoveredAssetUpdatePropertiesDefaultStreamsDestinationsList =
   /*@__PURE__*/ S.Array(
     StreamDestination,
@@ -5177,7 +5163,7 @@ export const NamespaceDiscoveredAssetUpdatePropertiesDefaultStreamsDestinationsL
 
 /** Array of datasets that are part of the asset. Each dataset spec describes the data points that make up the set. */
 export type NamespaceDiscoveredAssetUpdatePropertiesDatasetsList =
-  ReadonlyArray<NamespaceDiscoveredDataset>;
+  Array<NamespaceDiscoveredDataset>;
 export const NamespaceDiscoveredAssetUpdatePropertiesDatasetsList =
   /*@__PURE__*/ S.Array(
     NamespaceDiscoveredDataset,
@@ -5185,7 +5171,7 @@ export const NamespaceDiscoveredAssetUpdatePropertiesDatasetsList =
 
 /** Array of event groups that are part of the asset. Each event group can have per-event group configuration. */
 export type NamespaceDiscoveredAssetUpdatePropertiesEventGroupsList =
-  ReadonlyArray<NamespaceDiscoveredEventGroup>;
+  Array<NamespaceDiscoveredEventGroup>;
 export const NamespaceDiscoveredAssetUpdatePropertiesEventGroupsList =
   /*@__PURE__*/ S.Array(
     NamespaceDiscoveredEventGroup,
@@ -5193,7 +5179,7 @@ export const NamespaceDiscoveredAssetUpdatePropertiesEventGroupsList =
 
 /** Array of streams that are part of the asset. Each stream can have a per-stream configuration. */
 export type NamespaceDiscoveredAssetUpdatePropertiesStreamsList =
-  ReadonlyArray<NamespaceDiscoveredStream>;
+  Array<NamespaceDiscoveredStream>;
 export const NamespaceDiscoveredAssetUpdatePropertiesStreamsList =
   /*@__PURE__*/ S.Array(
     NamespaceDiscoveredStream,
@@ -5201,7 +5187,7 @@ export const NamespaceDiscoveredAssetUpdatePropertiesStreamsList =
 
 /** Array of management groups that are part of the asset. Each management group can have a per-group configuration. */
 export type NamespaceDiscoveredAssetUpdatePropertiesManagementGroupsList =
-  ReadonlyArray<NamespaceDiscoveredManagementGroup>;
+  Array<NamespaceDiscoveredManagementGroup>;
 export const NamespaceDiscoveredAssetUpdatePropertiesManagementGroupsList =
   /*@__PURE__*/ S.Array(
     NamespaceDiscoveredManagementGroup,
@@ -5410,7 +5396,7 @@ export const AuthenticationMethod2 = /*@__PURE__*/ S.String;
 
 /** List of supported authentication methods supported by device for Inbound connections. */
 export type DiscoveredInboundEndpointsSupportedAuthenticationMethodsList =
-  ReadonlyArray<AuthenticationMethod2>;
+  Array<AuthenticationMethod2 | (string & {})>;
 export const DiscoveredInboundEndpointsSupportedAuthenticationMethodsList =
   /*@__PURE__*/ S.Array(
     AuthenticationMethod2,
@@ -5860,7 +5846,7 @@ export const NamespaceDiscoveredDevice = /*@__PURE__*/ S.suspend(() =>
 
 /** The NamespaceDiscoveredDevice items on this page */
 export type NamespaceDiscoveredDeviceListResultValueList =
-  ReadonlyArray<NamespaceDiscoveredDevice>;
+  Array<NamespaceDiscoveredDevice>;
 export const NamespaceDiscoveredDeviceListResultValueList =
   /*@__PURE__*/ S.Array(
     NamespaceDiscoveredDevice,
@@ -5894,7 +5880,7 @@ export const NamespaceDiscoveredDevicesUpdateRequestTagsMap =
 
 /** List of supported authentication methods supported by device for Inbound connections. */
 export type DiscoveredInboundEndpointsUpdateSupportedAuthenticationMethodsList =
-  ReadonlyArray<AuthenticationMethod2 | (string & {})>;
+  Array<AuthenticationMethod2 | (string & {})>;
 export const DiscoveredInboundEndpointsUpdateSupportedAuthenticationMethodsList =
   /*@__PURE__*/ S.Array(
     AuthenticationMethod2,
@@ -6540,7 +6526,7 @@ export const Namespace = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Namespace" }) as any as S.Schema<Namespace>;
 
 /** The Namespace items on this page */
-export type NamespaceListResultValueList = ReadonlyArray<Namespace>;
+export type NamespaceListResultValueList = Array<Namespace>;
 export const NamespaceListResultValueList = /*@__PURE__*/ S.Array(
   Namespace,
 ) as any as S.Schema<NamespaceListResultValueList>;
@@ -6585,7 +6571,7 @@ export type Scope = "Resources";
 export const Scope = /*@__PURE__*/ S.String;
 
 /** List of asset resources to be migrated. */
-export type NamespacesMigrateRequestResourceIdsList = ReadonlyArray<string>;
+export type NamespacesMigrateRequestResourceIdsList = Array<string>;
 export const NamespacesMigrateRequestResourceIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<NamespacesMigrateRequestResourceIdsList>;
@@ -6643,8 +6629,7 @@ export const MigrateResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MigrateResult" }) as any as S.Schema<MigrateResult>;
 
 /** List of migrate results containing result of each asset migrate operation. */
-export type NamespaceMigrateResponseMigrateResultsList =
-  ReadonlyArray<MigrateResult>;
+export type NamespaceMigrateResponseMigrateResultsList = Array<MigrateResult>;
 export const NamespaceMigrateResponseMigrateResultsList = /*@__PURE__*/ S.Array(
   MigrateResult,
 ) as any as S.Schema<NamespaceMigrateResponseMigrateResultsList>;
@@ -6861,7 +6846,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = ReadonlyArray<Operation>;
+export type OperationsListResponseValueList = Array<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;
@@ -6907,14 +6892,13 @@ export const OperationStatusGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationStatusGetRequest>;
 
 /** The operations list. */
-export type OperationStatusResultOperationsList =
-  ReadonlyArray<OperationStatusResult>;
+export type OperationStatusResultOperationsList = Array<OperationStatusResult>;
 export const OperationStatusResultOperationsList = /*@__PURE__*/ S.Array(
   S.suspend(() => OperationStatusResult),
 ) as any as S.Schema<OperationStatusResultOperationsList>;
 
 /** The error details. */
-export type ErrorDetailDetailsList = ReadonlyArray<ErrorDetail>;
+export type ErrorDetailDetailsList = Array<ErrorDetail>;
 export const ErrorDetailDetailsList = /*@__PURE__*/ S.Array(
   S.suspend(() => ErrorDetail),
 ) as any as S.Schema<ErrorDetailDetailsList>;
@@ -6936,7 +6920,7 @@ export const ErrorAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ErrorAdditionalInfo>;
 
 /** The error additional info. */
-export type ErrorDetailAdditionalInfoList = ReadonlyArray<ErrorAdditionalInfo>;
+export type ErrorDetailAdditionalInfoList = Array<ErrorAdditionalInfo>;
 export const ErrorDetailAdditionalInfoList = /*@__PURE__*/ S.Array(
   ErrorAdditionalInfo,
 ) as any as S.Schema<ErrorDetailAdditionalInfoList>;
@@ -7003,7 +6987,7 @@ export const OperationStatusResult = /*@__PURE__*/ S.suspend(() =>
 
 /** The operations list. */
 export type OperationStatusGetResponseOperationsList =
-  ReadonlyArray<OperationStatusResult>;
+  Array<OperationStatusResult>;
 export const OperationStatusGetResponseOperationsList = /*@__PURE__*/ S.Array(
   OperationStatusResult,
 ) as any as S.Schema<OperationStatusGetResponseOperationsList>;
@@ -7416,7 +7400,7 @@ export const SchemaRegistry = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SchemaRegistry" }) as any as S.Schema<SchemaRegistry>;
 
 /** The SchemaRegistry items on this page */
-export type SchemaRegistryListResultValueList = ReadonlyArray<SchemaRegistry>;
+export type SchemaRegistryListResultValueList = Array<SchemaRegistry>;
 export const SchemaRegistryListResultValueList = /*@__PURE__*/ S.Array(
   SchemaRegistry,
 ) as any as S.Schema<SchemaRegistryListResultValueList>;
@@ -7861,7 +7845,7 @@ export const Schema = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Schema" }) as any as S.Schema<Schema>;
 
 /** The Schema items on this page */
-export type SchemaListResultValueList = ReadonlyArray<Schema>;
+export type SchemaListResultValueList = Array<Schema>;
 export const SchemaListResultValueList = /*@__PURE__*/ S.Array(
   Schema,
 ) as any as S.Schema<SchemaListResultValueList>;
@@ -8128,7 +8112,7 @@ export const SchemaVersion = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SchemaVersion" }) as any as S.Schema<SchemaVersion>;
 
 /** The SchemaVersion items on this page */
-export type SchemaVersionListResultValueList = ReadonlyArray<SchemaVersion>;
+export type SchemaVersionListResultValueList = Array<SchemaVersion>;
 export const SchemaVersionListResultValueList = /*@__PURE__*/ S.Array(
   SchemaVersion,
 ) as any as S.Schema<SchemaVersionListResultValueList>;

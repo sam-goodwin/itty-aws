@@ -74,7 +74,7 @@ export const ChallengeReply = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ChallengeReply" }) as any as S.Schema<ChallengeReply>;
 
-export type ChallengeReplyList = ReadonlyArray<ChallengeReply>;
+export type ChallengeReplyList = Array<ChallengeReply>;
 export const ChallengeReplyList = /*@__PURE__*/ S.Array(
   ChallengeReply,
 ) as any as S.Schema<ChallengeReplyList>;
@@ -328,7 +328,7 @@ export const AsymmetricSignResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "AsymmetricSignResponse",
 }) as any as S.Schema<AsymmetricSignResponse>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -368,7 +368,7 @@ export const Certificate = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Certificate" }) as any as S.Schema<Certificate>;
 
-export type CertificateList = ReadonlyArray<Certificate>;
+export type CertificateList = Array<Certificate>;
 export const CertificateList = /*@__PURE__*/ S.Array(
   Certificate,
 ) as any as S.Schema<CertificateList>;
@@ -395,7 +395,7 @@ export const ServiceResolver = /*@__PURE__*/ S.suspend(() =>
   identifier: "ServiceResolver",
 }) as any as S.Schema<ServiceResolver>;
 
-export type ServiceResolverList = ReadonlyArray<ServiceResolver>;
+export type ServiceResolverList = Array<ServiceResolver>;
 export const ServiceResolverList = /*@__PURE__*/ S.Array(
   ServiceResolver,
 ) as any as S.Schema<ServiceResolverList>;
@@ -419,7 +419,7 @@ export interface EkmConnection {
   /** Output only. The resource name for the EkmConnection in the format `projects/*\/locations/*\/ekmConnections/*`. */
   name?: string;
   /** Optional. Describes who can perform control plane operations on the EKM. If unset, this defaults to MANUAL. */
-  keyManagementMode?: EkmConnectionKeyManagementModeEnum;
+  keyManagementMode?: EkmConnectionKeyManagementModeEnum | (string & {});
 }
 export const EkmConnection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -505,7 +505,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -612,7 +612,9 @@ export const KeyAccessJustificationsPolicyAllowedAccessReasonsItemEnum =
   /*@__PURE__*/ S.String;
 
 export type KeyAccessJustificationsPolicyAllowedAccessReasonsItemEnumList =
-  ReadonlyArray<KeyAccessJustificationsPolicyAllowedAccessReasonsItemEnum>;
+  Array<
+    KeyAccessJustificationsPolicyAllowedAccessReasonsItemEnum | (string & {})
+  >;
 export const KeyAccessJustificationsPolicyAllowedAccessReasonsItemEnumList =
   /*@__PURE__*/ S.Array(
     KeyAccessJustificationsPolicyAllowedAccessReasonsItemEnum,
@@ -663,7 +665,7 @@ export interface KeyOperationAttestation {
   /** Output only. The certificate chains needed to validate the attestation */
   certChains?: CertificateChains;
   /** Output only. The format of the attestation data. */
-  format?: KeyOperationAttestationFormatEnum;
+  format?: KeyOperationAttestationFormatEnum | (string & {});
   /** Output only. The attestation data provided by the HSM when the key operation was performed. */
   content?: string;
 }
@@ -783,7 +785,7 @@ export interface CryptoKeyVersion {
   /** Output only. The name of the ImportJob used in the most recent import of this CryptoKeyVersion. Only present if the underlying key material was imported. */
   importJob?: string;
   /** Output only. The CryptoKeyVersionAlgorithm that this CryptoKeyVersion supports. */
-  algorithm?: CryptoKeyVersionAlgorithmEnum;
+  algorithm?: CryptoKeyVersionAlgorithmEnum | (string & {});
   /** ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels. */
   externalProtectionLevelOptions?: ExternalProtectionLevelOptions;
   /** Output only. Whether or not this key version is eligible for reimport, by being specified as a target in ImportCryptoKeyVersionRequest.crypto_key_version. */
@@ -801,9 +803,9 @@ export interface CryptoKeyVersion {
   /** Output only. The root cause of the most recent external destruction failure. Only present if state is EXTERNAL_DESTRUCTION_FAILED. */
   externalDestructionFailureReason?: string;
   /** The current state of the CryptoKeyVersion. */
-  state?: CryptoKeyVersionStateEnum;
+  state?: CryptoKeyVersionStateEnum | (string & {});
   /** Output only. The ProtectionLevel describing how crypto operations are performed with this CryptoKeyVersion. */
-  protectionLevel?: CryptoKeyVersionProtectionLevelEnum;
+  protectionLevel?: CryptoKeyVersionProtectionLevelEnum | (string & {});
   /** Output only. The time this CryptoKeyVersion's key material was generated. */
   generateTime?: string;
   /** Output only. The time at which this CryptoKeyVersion's key material was most recently imported. */
@@ -898,9 +900,9 @@ export const CryptoKeyVersionTemplateProtectionLevelEnum =
 /** A CryptoKeyVersionTemplate specifies the properties to use when creating a new CryptoKeyVersion, either manually with CreateCryptoKeyVersion or automatically as a result of auto-rotation. */
 export interface CryptoKeyVersionTemplate {
   /** Required. Algorithm to use when creating a CryptoKeyVersion based on this template. For backwards compatibility, GOOGLE_SYMMETRIC_ENCRYPTION is implied if both this field is omitted and CryptoKey.purpose is ENCRYPT_DECRYPT. */
-  algorithm?: CryptoKeyVersionTemplateAlgorithmEnum;
+  algorithm?: CryptoKeyVersionTemplateAlgorithmEnum | (string & {});
   /** ProtectionLevel to use when creating a CryptoKeyVersion based on this template. Immutable. Defaults to SOFTWARE. */
-  protectionLevel?: CryptoKeyVersionTemplateProtectionLevelEnum;
+  protectionLevel?: CryptoKeyVersionTemplateProtectionLevelEnum | (string & {});
 }
 export const CryptoKeyVersionTemplate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -941,7 +943,7 @@ export interface CryptoKey {
   /** A template describing settings for new CryptoKeyVersion instances. The properties of new CryptoKeyVersion instances created by either CreateCryptoKeyVersion or auto-rotation are controlled by this template. */
   versionTemplate?: CryptoKeyVersionTemplate;
   /** Immutable. The immutable purpose of this CryptoKey. */
-  purpose?: CryptoKeyPurposeEnum;
+  purpose?: CryptoKeyPurposeEnum | (string & {});
   /** Immutable. The resource name of the backend environment where the key material for all CryptoKeyVersions associated with this CryptoKey reside and where all related cryptographic operations are performed. Only applicable if CryptoKeyVersions have a ProtectionLevel of EXTERNAL_VPC, with the resource name in the format `projects/*\/locations/*\/ekmConnections/*`. Only applicable if CryptoKeyVersions have a ProtectionLevel of HSM_SINGLE_TENANT, with the resource name in the format `projects/*\/locations/*\/singleTenantHsmInstances/*`. Note, this list is non-exhaustive and may apply to additional ProtectionLevels in the future. */
   cryptoKeyBackend?: string;
   /** At next_rotation_time, the Key Management Service will automatically: 1. Create a new version of this CryptoKey. 2. Mark the new version as primary. Key rotations performed manually via CreateCryptoKeyVersion and UpdateCryptoKeyPrimaryVersion do not affect next_rotation_time. Keys with purpose ENCRYPT_DECRYPT support automatic rotation. For other keys, this field must be omitted. */
@@ -1086,17 +1088,17 @@ export interface ImportJob {
   /** Output only. Statement that was generated and signed by the key creator (for example, an HSM) at key creation time. Use this statement to verify attributes of the key as stored on the HSM, independently of Google. Only present if the chosen ImportMethod is one with a protection level of HSM. */
   attestation?: KeyOperationAttestation;
   /** Output only. The current state of the ImportJob, indicating if it can be used. */
-  state?: ImportJobStateEnum;
+  state?: ImportJobStateEnum | (string & {});
   /** Immutable. The resource name of the backend environment where the key material for the wrapping key resides and where all related cryptographic operations are performed. Currently, this field is only populated for keys stored in HSM_SINGLE_TENANT. Note, this list is non-exhaustive and may apply to additional ProtectionLevels in the future. Supported resources: * `"projects/*\/locations/*\/singleTenantHsmInstances/*"` */
   cryptoKeyBackend?: string;
   /** Required. Immutable. The protection level of the ImportJob. This must match the protection_level of the version_template on the CryptoKey you attempt to import into. */
-  protectionLevel?: ImportJobProtectionLevelEnum;
+  protectionLevel?: ImportJobProtectionLevelEnum | (string & {});
   /** Output only. The time this ImportJob's key material was generated. */
   generateTime?: string;
   /** Output only. Specifies the WrappingPublicKey format provided by the customer in the KeyManagementService.GetImportJob request. */
-  publicKeyFormat?: ImportJobPublicKeyFormatEnum;
+  publicKeyFormat?: ImportJobPublicKeyFormatEnum | (string & {});
   /** Required. Immutable. The wrapping method to be used for incoming key material. */
-  importMethod?: ImportJobImportMethodEnum;
+  importMethod?: ImportJobImportMethodEnum | (string & {});
   /** Output only. The time at which this ImportJob is scheduled for expiration and can no longer be used to import key material. */
   expireTime?: string;
 }
@@ -1188,7 +1190,7 @@ export interface SingleTenantHsmInstance {
   /** Optional. Immutable. Indicates whether key portability is enabled for the SingleTenantHsmInstance. This can only be set at creation time. Key portability features are disabled by default. */
   keyPortabilityEnabled?: boolean;
   /** Output only. The state of the SingleTenantHsmInstance. */
-  state?: SingleTenantHsmInstanceStateEnum;
+  state?: SingleTenantHsmInstanceStateEnum | (string & {});
 }
 export const SingleTenantHsmInstance = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1295,7 +1297,7 @@ export const Challenge = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Challenge" }) as any as S.Schema<Challenge>;
 
-export type ChallengeList = ReadonlyArray<Challenge>;
+export type ChallengeList = Array<Challenge>;
 export const ChallengeList = /*@__PURE__*/ S.Array(
   Challenge,
 ) as any as S.Schema<ChallengeList>;
@@ -1402,7 +1404,7 @@ export interface SingleTenantHsmInstanceProposal {
   /** Enable the SingleTenantHsmInstance. The SingleTenantHsmInstance must be in the DISABLED state to perform this operation. */
   enableSingleTenantHsmInstance?: EnableSingleTenantHsmInstance;
   /** Output only. The state of the SingleTenantHsmInstanceProposal. */
-  state?: SingleTenantHsmInstanceProposalStateEnum;
+  state?: SingleTenantHsmInstanceProposalStateEnum | (string & {});
   /** Output only. The quorum approval parameters for the SingleTenantHsmInstanceProposal. */
   quorumParameters?: QuorumParameters;
   /** Disable the SingleTenantHsmInstance. The SingleTenantHsmInstance must be in the ACTIVE state to perform this operation. */
@@ -1978,13 +1980,15 @@ export interface AutokeyConfig {
   /** Optional. A checksum computed by the server based on the value of other fields. This may be sent on update requests to ensure that the client has an up-to-date value before proceeding. The request will be rejected with an ABORTED error on a mismatched etag. */
   etag?: string;
   /** Optional. KeyProjectResolutionMode for the AutokeyConfig. Valid values are `DEDICATED_KEY_PROJECT`, `RESOURCE_PROJECT`, or `DISABLED`. */
-  keyProjectResolutionMode?: AutokeyConfigKeyProjectResolutionModeEnum;
+  keyProjectResolutionMode?:
+    | AutokeyConfigKeyProjectResolutionModeEnum
+    | (string & {});
   /** Identifier. Name of the AutokeyConfig resource, e.g. `folders/{FOLDER_NUMBER}/autokeyConfig`, `projects/{PROJECT_NUMBER}/autokeyConfig`, or `projects/{PROJECT_ID}/autokeyConfig`. */
   name?: string;
   /** Optional. Name of the key project, e.g. `projects/{PROJECT_ID}` or `projects/{PROJECT_NUMBER}`, where Cloud KMS Autokey will provision a new CryptoKey when a KeyHandle is created. On UpdateAutokeyConfig, the caller will require `cloudkms.cryptoKeys.setIamPolicy` permission on this key project. Once configured, for Cloud KMS Autokey to function properly, this key project must have the Cloud KMS API activated and the Cloud KMS Service Agent for this key project must be granted the `cloudkms.admin` role (or pertinent permissions). A request with an empty key project field will clear the configuration. */
   keyProject?: string;
   /** Output only. The state for the AutokeyConfig. */
-  state?: AutokeyConfigStateEnum;
+  state?: AutokeyConfigStateEnum | (string & {});
 }
 export const AutokeyConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2108,7 +2112,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
-export type BindingList = ReadonlyArray<Binding>;
+export type BindingList = Array<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -2123,7 +2127,7 @@ export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
 export interface AuditLogConfig {
   /** The log type that this config enables. */
-  logType?: AuditLogConfigLogTypeEnum;
+  logType?: AuditLogConfigLogTypeEnum | (string & {});
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
   exemptedMembers?: StringList;
 }
@@ -2134,7 +2138,7 @@ export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
-export type AuditLogConfigList = ReadonlyArray<AuditLogConfig>;
+export type AuditLogConfigList = Array<AuditLogConfig>;
 export const AuditLogConfigList = /*@__PURE__*/ S.Array(
   AuditLogConfig,
 ) as any as S.Schema<AuditLogConfigList>;
@@ -2153,7 +2157,7 @@ export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
-export type AuditConfigList = ReadonlyArray<AuditConfig>;
+export type AuditConfigList = Array<AuditConfig>;
 export const AuditConfigList = /*@__PURE__*/ S.Array(
   AuditConfig,
 ) as any as S.Schema<AuditConfigList>;
@@ -3001,7 +3005,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = ReadonlyArray<Location>;
+export type LocationList = Array<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -3053,7 +3057,7 @@ export const ListProjectsLocationsEkmConnectionsRequest =
     identifier: "ListProjectsLocationsEkmConnectionsRequest",
   }) as any as S.Schema<ListProjectsLocationsEkmConnectionsRequest>;
 
-export type EkmConnectionList = ReadonlyArray<EkmConnection>;
+export type EkmConnectionList = Array<EkmConnection>;
 export const EkmConnectionList = /*@__PURE__*/ S.Array(
   EkmConnection,
 ) as any as S.Schema<EkmConnectionList>;
@@ -3105,7 +3109,7 @@ export const ListProjectsLocationsKeyHandlesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsKeyHandlesRequest",
 }) as any as S.Schema<ListProjectsLocationsKeyHandlesRequest>;
 
-export type KeyHandleList = ReadonlyArray<KeyHandle>;
+export type KeyHandleList = Array<KeyHandle>;
 export const KeyHandleList = /*@__PURE__*/ S.Array(
   KeyHandle,
 ) as any as S.Schema<KeyHandleList>;
@@ -3157,7 +3161,7 @@ export const ListProjectsLocationsKeyRingsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsKeyRingsRequest",
 }) as any as S.Schema<ListProjectsLocationsKeyRingsRequest>;
 
-export type KeyRingList = ReadonlyArray<KeyRing>;
+export type KeyRingList = Array<KeyRing>;
 export const KeyRingList = /*@__PURE__*/ S.Array(
   KeyRing,
 ) as any as S.Schema<KeyRingList>;
@@ -3225,7 +3229,7 @@ export const ListProjectsLocationsKeyRingsCryptoKeysRequest =
     identifier: "ListProjectsLocationsKeyRingsCryptoKeysRequest",
   }) as any as S.Schema<ListProjectsLocationsKeyRingsCryptoKeysRequest>;
 
-export type CryptoKeyList = ReadonlyArray<CryptoKey>;
+export type CryptoKeyList = Array<CryptoKey>;
 export const CryptoKeyList = /*@__PURE__*/ S.Array(
   CryptoKey,
 ) as any as S.Schema<CryptoKeyList>;
@@ -3296,7 +3300,7 @@ export const ListProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest =
       "ListProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest",
   }) as any as S.Schema<ListProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest>;
 
-export type CryptoKeyVersionList = ReadonlyArray<CryptoKeyVersion>;
+export type CryptoKeyVersionList = Array<CryptoKeyVersion>;
 export const CryptoKeyVersionList = /*@__PURE__*/ S.Array(
   CryptoKeyVersion,
 ) as any as S.Schema<CryptoKeyVersionList>;
@@ -3351,7 +3355,7 @@ export const ListProjectsLocationsKeyRingsImportJobsRequest =
     identifier: "ListProjectsLocationsKeyRingsImportJobsRequest",
   }) as any as S.Schema<ListProjectsLocationsKeyRingsImportJobsRequest>;
 
-export type ImportJobList = ReadonlyArray<ImportJob>;
+export type ImportJobList = Array<ImportJob>;
 export const ImportJobList = /*@__PURE__*/ S.Array(
   ImportJob,
 ) as any as S.Schema<ImportJobList>;
@@ -3400,7 +3404,7 @@ export const ListProjectsLocationsRetiredResourcesRequest =
     identifier: "ListProjectsLocationsRetiredResourcesRequest",
   }) as any as S.Schema<ListProjectsLocationsRetiredResourcesRequest>;
 
-export type RetiredResourceList = ReadonlyArray<RetiredResource>;
+export type RetiredResourceList = Array<RetiredResource>;
 export const RetiredResourceList = /*@__PURE__*/ S.Array(
   RetiredResource,
 ) as any as S.Schema<RetiredResourceList>;
@@ -3458,8 +3462,7 @@ export const ListProjectsLocationsSingleTenantHsmInstancesRequest =
     identifier: "ListProjectsLocationsSingleTenantHsmInstancesRequest",
   }) as any as S.Schema<ListProjectsLocationsSingleTenantHsmInstancesRequest>;
 
-export type SingleTenantHsmInstanceList =
-  ReadonlyArray<SingleTenantHsmInstance>;
+export type SingleTenantHsmInstanceList = Array<SingleTenantHsmInstance>;
 export const SingleTenantHsmInstanceList = /*@__PURE__*/ S.Array(
   SingleTenantHsmInstance,
 ) as any as S.Schema<SingleTenantHsmInstanceList>;
@@ -3519,7 +3522,7 @@ export const ListProjectsLocationsSingleTenantHsmInstancesProposalsRequest =
   }) as any as S.Schema<ListProjectsLocationsSingleTenantHsmInstancesProposalsRequest>;
 
 export type SingleTenantHsmInstanceProposalList =
-  ReadonlyArray<SingleTenantHsmInstanceProposal>;
+  Array<SingleTenantHsmInstanceProposal>;
 export const SingleTenantHsmInstanceProposalList = /*@__PURE__*/ S.Array(
   SingleTenantHsmInstanceProposal,
 ) as any as S.Schema<SingleTenantHsmInstanceProposalList>;

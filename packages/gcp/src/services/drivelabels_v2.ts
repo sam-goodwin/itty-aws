@@ -78,7 +78,7 @@ export const GoogleAppsDriveLabelsV2DeleteLabelPermissionRequest =
   }) as any as S.Schema<GoogleAppsDriveLabelsV2DeleteLabelPermissionRequest>;
 
 export type GoogleAppsDriveLabelsV2DeleteLabelPermissionRequestList =
-  ReadonlyArray<GoogleAppsDriveLabelsV2DeleteLabelPermissionRequest>;
+  Array<GoogleAppsDriveLabelsV2DeleteLabelPermissionRequest>;
 export const GoogleAppsDriveLabelsV2DeleteLabelPermissionRequestList =
   /*@__PURE__*/ S.Array(
     GoogleAppsDriveLabelsV2DeleteLabelPermissionRequest,
@@ -178,7 +178,7 @@ export interface GoogleAppsDriveLabelsV2LabelPermission {
   /** Resource name of this permission. */
   name?: string;
   /** The role the principal should have. */
-  role?: GoogleAppsDriveLabelsV2LabelPermissionRoleEnum;
+  role?: GoogleAppsDriveLabelsV2LabelPermissionRoleEnum | (string & {});
   /** Person resource name. */
   person?: string;
   /** Group resource name. */
@@ -221,7 +221,7 @@ export const GoogleAppsDriveLabelsV2UpdateLabelPermissionRequest =
   }) as any as S.Schema<GoogleAppsDriveLabelsV2UpdateLabelPermissionRequest>;
 
 export type GoogleAppsDriveLabelsV2UpdateLabelPermissionRequestList =
-  ReadonlyArray<GoogleAppsDriveLabelsV2UpdateLabelPermissionRequest>;
+  Array<GoogleAppsDriveLabelsV2UpdateLabelPermissionRequest>;
 export const GoogleAppsDriveLabelsV2UpdateLabelPermissionRequestList =
   /*@__PURE__*/ S.Array(
     GoogleAppsDriveLabelsV2UpdateLabelPermissionRequest,
@@ -272,7 +272,7 @@ export const BatchUpdateLabelsPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BatchUpdateLabelsPermissionsRequest>;
 
 export type GoogleAppsDriveLabelsV2LabelPermissionList =
-  ReadonlyArray<GoogleAppsDriveLabelsV2LabelPermission>;
+  Array<GoogleAppsDriveLabelsV2LabelPermission>;
 export const GoogleAppsDriveLabelsV2LabelPermissionList = /*@__PURE__*/ S.Array(
   GoogleAppsDriveLabelsV2LabelPermission,
 ) as any as S.Schema<GoogleAppsDriveLabelsV2LabelPermissionList>;
@@ -375,7 +375,7 @@ export const GoogleAppsDriveLabelsV2LifecycleDisabledPolicy =
 /** The lifecycle state of an object, such as label, field, or choice. For more information, see [Label lifecycle](https://developers.google.com/workspace/drive/labels/guides/label-lifecycle). The lifecycle enforces the following transitions: * `UNPUBLISHED_DRAFT` (starting state) * `UNPUBLISHED_DRAFT` -> `PUBLISHED` * `UNPUBLISHED_DRAFT` -> (Deleted) * `PUBLISHED` -> `DISABLED` * `DISABLED` -> `PUBLISHED` * `DISABLED` -> (Deleted) The published and disabled states have some distinct characteristics: * `Published`: Some kinds of changes might be made to an object in this state, in which case `has_unpublished_changes` will be true. Also, some kinds of changes aren't permitted. Generally, any change that would invalidate or cause new restrictions on existing metadata related to the label are rejected. * `Disabled`: When disabled, the configured `DisabledPolicy` takes effect. */
 export interface GoogleAppsDriveLabelsV2Lifecycle {
   /** Output only. The state of the object associated with this lifecycle. */
-  state?: GoogleAppsDriveLabelsV2LifecycleStateEnum;
+  state?: GoogleAppsDriveLabelsV2LifecycleStateEnum | (string & {});
   /** The policy that governs how to show a disabled label, field, or selection choice. */
   disabledPolicy?: GoogleAppsDriveLabelsV2LifecycleDisabledPolicy;
   /** Output only. Whether the object associated with this lifecycle has unpublished changes. */
@@ -402,7 +402,9 @@ export const GoogleAppsDriveLabelsV2LabelAppliedLabelPolicyCopyModeEnum =
 /** Behavior of this label when it's applied to Drive items. */
 export interface GoogleAppsDriveLabelsV2LabelAppliedLabelPolicy {
   /** Indicates how the applied label and field values should be copied when a Drive item is copied. */
-  copyMode?: GoogleAppsDriveLabelsV2LabelAppliedLabelPolicyCopyModeEnum;
+  copyMode?:
+    | GoogleAppsDriveLabelsV2LabelAppliedLabelPolicyCopyModeEnum
+    | (string & {});
 }
 export const GoogleAppsDriveLabelsV2LabelAppliedLabelPolicy =
   /*@__PURE__*/ S.suspend(() =>
@@ -706,7 +708,7 @@ export const GoogleAppsDriveLabelsV2FieldSelectionOptionsChoice =
   }) as any as S.Schema<GoogleAppsDriveLabelsV2FieldSelectionOptionsChoice>;
 
 export type GoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceList =
-  ReadonlyArray<GoogleAppsDriveLabelsV2FieldSelectionOptionsChoice>;
+  Array<GoogleAppsDriveLabelsV2FieldSelectionOptionsChoice>;
 export const GoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceList =
   /*@__PURE__*/ S.Array(
     GoogleAppsDriveLabelsV2FieldSelectionOptionsChoice,
@@ -877,7 +879,9 @@ export interface GoogleAppsDriveLabelsV2FieldDateOptions {
   /** Output only. Minimum valid value (year, month, day). */
   minValue?: GoogleTypeDate;
   /** Localized date formatting option. Field values are rendered in this format according to their locale. */
-  dateFormatType?: GoogleAppsDriveLabelsV2FieldDateOptionsDateFormatTypeEnum;
+  dateFormatType?:
+    | GoogleAppsDriveLabelsV2FieldDateOptionsDateFormatTypeEnum
+    | (string & {});
   /** Output only. ICU date format. */
   dateFormat?: string;
   /** Output only. Maximum valid value (year, month, day). */
@@ -972,7 +976,7 @@ export const GoogleAppsDriveLabelsV2Field = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleAppsDriveLabelsV2Field>;
 
 export type GoogleAppsDriveLabelsV2FieldList =
-  ReadonlyArray<GoogleAppsDriveLabelsV2Field>;
+  Array<GoogleAppsDriveLabelsV2Field>;
 export const GoogleAppsDriveLabelsV2FieldList = /*@__PURE__*/ S.Array(
   GoogleAppsDriveLabelsV2Field,
 ) as any as S.Schema<GoogleAppsDriveLabelsV2FieldList>;
@@ -987,7 +991,9 @@ export const GoogleAppsDriveLabelsV2LabelEnabledAppSettingsEnabledAppAppEnum =
 /** An app where the label can be used. */
 export interface GoogleAppsDriveLabelsV2LabelEnabledAppSettingsEnabledApp {
   /** Optional. The name of the app. */
-  app?: GoogleAppsDriveLabelsV2LabelEnabledAppSettingsEnabledAppAppEnum;
+  app?:
+    | GoogleAppsDriveLabelsV2LabelEnabledAppSettingsEnabledAppAppEnum
+    | (string & {});
 }
 export const GoogleAppsDriveLabelsV2LabelEnabledAppSettingsEnabledApp =
   /*@__PURE__*/ S.suspend(() =>
@@ -1001,7 +1007,7 @@ export const GoogleAppsDriveLabelsV2LabelEnabledAppSettingsEnabledApp =
   }) as any as S.Schema<GoogleAppsDriveLabelsV2LabelEnabledAppSettingsEnabledApp>;
 
 export type GoogleAppsDriveLabelsV2LabelEnabledAppSettingsEnabledAppList =
-  ReadonlyArray<GoogleAppsDriveLabelsV2LabelEnabledAppSettingsEnabledApp>;
+  Array<GoogleAppsDriveLabelsV2LabelEnabledAppSettingsEnabledApp>;
 export const GoogleAppsDriveLabelsV2LabelEnabledAppSettingsEnabledAppList =
   /*@__PURE__*/ S.Array(
     GoogleAppsDriveLabelsV2LabelEnabledAppSettingsEnabledApp,
@@ -1088,7 +1094,7 @@ export interface GoogleAppsDriveLabelsV2Label {
   /** Output only. Behavior of this label when it's applied to Drive items. */
   appliedLabelPolicy?: GoogleAppsDriveLabelsV2LabelAppliedLabelPolicy;
   /** Required. The type of label. */
-  labelType?: GoogleAppsDriveLabelsV2LabelLabelTypeEnum;
+  labelType?: GoogleAppsDriveLabelsV2LabelLabelTypeEnum | (string & {});
   /** Output only. The user who published this label. This value has no meaning when the label isn't published.>> */
   publisher?: GoogleAppsDriveLabelsV2UserInfo;
   /** Output only. The time this label was disabled. This value has no meaning when the label isn't disabled. */
@@ -1618,7 +1624,7 @@ export const GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestRequest =
   }) as any as S.Schema<GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestRequest>;
 
 export type GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestRequestList =
-  ReadonlyArray<GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestRequest>;
+  Array<GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestRequest>;
 export const GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestRequestList =
   /*@__PURE__*/ S.Array(
     GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestRequest,
@@ -1896,7 +1902,7 @@ export const GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseResponse =
   }) as any as S.Schema<GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseResponse>;
 
 export type GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseResponseList =
-  ReadonlyArray<GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseResponse>;
+  Array<GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseResponse>;
 export const GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseResponseList =
   /*@__PURE__*/ S.Array(
     GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseResponse,
@@ -2347,7 +2353,7 @@ export const ListLabelsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListLabelsRequest>;
 
 export type GoogleAppsDriveLabelsV2LabelList =
-  ReadonlyArray<GoogleAppsDriveLabelsV2Label>;
+  Array<GoogleAppsDriveLabelsV2Label>;
 export const GoogleAppsDriveLabelsV2LabelList = /*@__PURE__*/ S.Array(
   GoogleAppsDriveLabelsV2Label,
 ) as any as S.Schema<GoogleAppsDriveLabelsV2LabelList>;
@@ -2448,7 +2454,7 @@ export const GoogleAppsDriveLabelsV2LabelLock = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleAppsDriveLabelsV2LabelLock>;
 
 export type GoogleAppsDriveLabelsV2LabelLockList =
-  ReadonlyArray<GoogleAppsDriveLabelsV2LabelLock>;
+  Array<GoogleAppsDriveLabelsV2LabelLock>;
 export const GoogleAppsDriveLabelsV2LabelLockList = /*@__PURE__*/ S.Array(
   GoogleAppsDriveLabelsV2LabelLock,
 ) as any as S.Schema<GoogleAppsDriveLabelsV2LabelLockList>;

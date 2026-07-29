@@ -134,7 +134,7 @@ export const TrackingIssue = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TrackingIssue" }) as any as S.Schema<TrackingIssue>;
 
-export type TrackingIssueList = ReadonlyArray<TrackingIssue>;
+export type TrackingIssueList = Array<TrackingIssue>;
 export const TrackingIssueList = /*@__PURE__*/ S.Array(
   TrackingIssue,
 ) as any as S.Schema<TrackingIssueList>;
@@ -154,7 +154,7 @@ export interface ErrorGroup {
   /** Associated tracking issues. */
   trackingIssues?: TrackingIssueList;
   /** Error group's resolution status. An unspecified resolution status will be interpreted as OPEN */
-  resolutionStatus?: ErrorGroupResolutionStatusEnum;
+  resolutionStatus?: ErrorGroupResolutionStatusEnum | (string & {});
   /** An opaque identifier of the group. This field is assigned by the Error Reporting system and always populated. In the group resource name, the `group_id` is a unique identifier for a particular error group. The identifier is derived from key parts of the error-log content and is treated as Service Data. For information about how Service Data is handled, see [Google Cloud Privacy Notice](https://cloud.google.com/terms/cloud-privacy-notice). */
   groupId?: string;
 }
@@ -313,7 +313,7 @@ export const SourceReference = /*@__PURE__*/ S.suspend(() =>
   identifier: "SourceReference",
 }) as any as S.Schema<SourceReference>;
 
-export type SourceReferenceList = ReadonlyArray<SourceReference>;
+export type SourceReferenceList = Array<SourceReference>;
 export const SourceReferenceList = /*@__PURE__*/ S.Array(
   SourceReference,
 ) as any as S.Schema<SourceReferenceList>;
@@ -358,7 +358,7 @@ export const ErrorEvent = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ErrorEvent" }) as any as S.Schema<ErrorEvent>;
 
-export type ErrorEventList = ReadonlyArray<ErrorEvent>;
+export type ErrorEventList = Array<ErrorEvent>;
 export const ErrorEventList = /*@__PURE__*/ S.Array(
   ErrorEvent,
 ) as any as S.Schema<ErrorEventList>;
@@ -390,7 +390,7 @@ export type ListProjectsGroupStatsOrderEnum =
   | "AFFECTED_USERS_DESC";
 export const ListProjectsGroupStatsOrderEnum = /*@__PURE__*/ S.String;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -483,12 +483,12 @@ export const TimedCount = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TimedCount" }) as any as S.Schema<TimedCount>;
 
-export type TimedCountList = ReadonlyArray<TimedCount>;
+export type TimedCountList = Array<TimedCount>;
 export const TimedCountList = /*@__PURE__*/ S.Array(
   TimedCount,
 ) as any as S.Schema<TimedCountList>;
 
-export type ServiceContextList = ReadonlyArray<ServiceContext>;
+export type ServiceContextList = Array<ServiceContext>;
 export const ServiceContextList = /*@__PURE__*/ S.Array(
   ServiceContext,
 ) as any as S.Schema<ServiceContextList>;
@@ -530,7 +530,7 @@ export const ErrorGroupStats = /*@__PURE__*/ S.suspend(() =>
   identifier: "ErrorGroupStats",
 }) as any as S.Schema<ErrorGroupStats>;
 
-export type ErrorGroupStatsList = ReadonlyArray<ErrorGroupStats>;
+export type ErrorGroupStatsList = Array<ErrorGroupStats>;
 export const ErrorGroupStatsList = /*@__PURE__*/ S.Array(
   ErrorGroupStats,
 ) as any as S.Schema<ErrorGroupStatsList>;

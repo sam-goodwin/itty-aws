@@ -67,7 +67,7 @@ export type ProjectLifecycleStateEnum =
   | "DELETE_IN_PROGRESS";
 export const ProjectLifecycleStateEnum = /*@__PURE__*/ S.String;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -103,7 +103,7 @@ export interface Project {
   /** Creation time. Read-only. */
   createTime?: string;
   /** The Project lifecycle state. Read-only. */
-  lifecycleState?: ProjectLifecycleStateEnum;
+  lifecycleState?: ProjectLifecycleStateEnum | (string & {});
   /** Output only. If this project is a Management Project, list of capabilities configured on the parent folder. Note, presence of any capability implies that this is a Management Project. Example: `folders/123/capabilities/app-management`. OUTPUT ONLY. */
   configuredCapabilities?: StringList;
   /** The labels associated with this Project. Label keys must be between 1 and 63 characters long and must conform to the following regular expression: a-z{0,62}. Label values must be between 0 and 63 characters long and must conform to the regular expression [a-z0-9_-]{0,63}. A label value can be empty. No more than 256 labels can be associated with a given resource. Clients should store labels in a representation such as JSON that does not depend on specific characters being disallowed. Example: `"environment" : "dev"` Read-write. */
@@ -209,7 +209,7 @@ export const Ancestor = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Ancestor" }) as any as S.Schema<Ancestor>;
 
-export type AncestorList = ReadonlyArray<Ancestor>;
+export type AncestorList = Array<Ancestor>;
 export const AncestorList = /*@__PURE__*/ S.Array(
   Ancestor,
 ) as any as S.Schema<AncestorList>;
@@ -311,7 +311,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
-export type BindingList = ReadonlyArray<Binding>;
+export type BindingList = Array<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -328,7 +328,7 @@ export interface AuditLogConfig {
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
   exemptedMembers?: StringList;
   /** The log type that this config enables. */
-  logType?: AuditLogConfigLogTypeEnum;
+  logType?: AuditLogConfigLogTypeEnum | (string & {});
 }
 export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -337,7 +337,7 @@ export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
-export type AuditLogConfigList = ReadonlyArray<AuditLogConfig>;
+export type AuditLogConfigList = Array<AuditLogConfig>;
 export const AuditLogConfigList = /*@__PURE__*/ S.Array(
   AuditLogConfig,
 ) as any as S.Schema<AuditLogConfigList>;
@@ -356,7 +356,7 @@ export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
-export type AuditConfigList = ReadonlyArray<AuditConfig>;
+export type AuditConfigList = Array<AuditConfig>;
 export const AuditConfigList = /*@__PURE__*/ S.Array(
   AuditConfig,
 ) as any as S.Schema<AuditConfigList>;
@@ -447,7 +447,7 @@ export interface Organization {
   /** Timestamp when the Organization was created. Assigned by the server. */
   creationTime?: string;
   /** The organization's current lifecycle state. Assigned by the server. */
-  lifecycleState?: OrganizationLifecycleStateEnum;
+  lifecycleState?: OrganizationLifecycleStateEnum | (string & {});
   /** An immutable id for the Organization that is assigned on creation. This should be omitted when creating a new Organization. This field is read-only. */
   organizationId?: string;
   /** A human-readable string that refers to the Organization in the Google Cloud console. This string is set by the server and cannot be changed. The string will be set to the primary domain (for example, "google.com") of the G Suite customer that owns the organization. */
@@ -510,7 +510,7 @@ export const ListOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListOrganizationsRequest",
 }) as any as S.Schema<ListOrganizationsRequest>;
 
-export type OrganizationList = ReadonlyArray<Organization>;
+export type OrganizationList = Array<Organization>;
 export const OrganizationList = /*@__PURE__*/ S.Array(
   Organization,
 ) as any as S.Schema<OrganizationList>;
@@ -555,7 +555,7 @@ export const ListProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsRequest",
 }) as any as S.Schema<ListProjectsRequest>;
 
-export type ProjectList = ReadonlyArray<Project>;
+export type ProjectList = Array<Project>;
 export const ProjectList = /*@__PURE__*/ S.Array(
   Project,
 ) as any as S.Schema<ProjectList>;

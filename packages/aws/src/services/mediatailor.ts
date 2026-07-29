@@ -125,7 +125,7 @@ export class ProgramNotFound extends S.TaggedErrorClass<ProgramNotFound>()(
 export type LogType = "AS_RUN";
 export const LogType = /*@__PURE__*/ S.String;
 
-export type LogTypes = LogType[];
+export type LogTypes = (LogType | (string & {}))[];
 export const LogTypes = /*@__PURE__*/ S.Array(LogType);
 export interface ConfigureLogsForChannelRequest {
   ChannelName: string;
@@ -160,7 +160,7 @@ export const ConfigureLogsForChannelResponse = /*@__PURE__*/ S.suspend(() =>
 export type LoggingStrategy = "VENDED_LOGS" | "LEGACY_CLOUDWATCH";
 export const LoggingStrategy = /*@__PURE__*/ S.String;
 
-export type __listOfLoggingStrategies = LoggingStrategy[];
+export type __listOfLoggingStrategies = (LoggingStrategy | (string & {}))[];
 export const __listOfLoggingStrategies = /*@__PURE__*/ S.Array(LoggingStrategy);
 export type AdsInteractionPublishOptInEventType =
   | "RAW_ADS_RESPONSE"
@@ -169,8 +169,10 @@ export type AdsInteractionPublishOptInEventType =
   | "PRE_ADS_REQUEST_FUNCTION_COMPLETED";
 export const AdsInteractionPublishOptInEventType = /*@__PURE__*/ S.String;
 
-export type __adsInteractionPublishOptInEventTypesList =
-  AdsInteractionPublishOptInEventType[];
+export type __adsInteractionPublishOptInEventTypesList = (
+  | AdsInteractionPublishOptInEventType
+  | (string & {})
+)[];
 export const __adsInteractionPublishOptInEventTypesList = /*@__PURE__*/ S.Array(
   AdsInteractionPublishOptInEventType,
 );
@@ -220,8 +222,10 @@ export type AdsInteractionExcludeEventType =
   | "PRE_ADS_REQUEST_FUNCTION_ERROR";
 export const AdsInteractionExcludeEventType = /*@__PURE__*/ S.String;
 
-export type __adsInteractionExcludeEventTypesList =
-  AdsInteractionExcludeEventType[];
+export type __adsInteractionExcludeEventTypesList = (
+  | AdsInteractionExcludeEventType
+  | (string & {})
+)[];
 export const __adsInteractionExcludeEventTypesList = /*@__PURE__*/ S.Array(
   AdsInteractionExcludeEventType,
 );
@@ -244,8 +248,10 @@ export type ManifestServicePublishOptInEventType =
   | "PRE_SESSION_INIT_FUNCTION_COMPLETED";
 export const ManifestServicePublishOptInEventType = /*@__PURE__*/ S.String;
 
-export type __manifestServicePublishOptInEventTypesList =
-  ManifestServicePublishOptInEventType[];
+export type __manifestServicePublishOptInEventTypesList = (
+  | ManifestServicePublishOptInEventType
+  | (string & {})
+)[];
 export const __manifestServicePublishOptInEventTypesList =
   /*@__PURE__*/ S.Array(ManifestServicePublishOptInEventType);
 export type ManifestServiceExcludeEventType =
@@ -285,8 +291,10 @@ export type ManifestServiceExcludeEventType =
   | "PRE_SESSION_INIT_FUNCTION_ERROR";
 export const ManifestServiceExcludeEventType = /*@__PURE__*/ S.String;
 
-export type __manifestServiceExcludeEventTypesList =
-  ManifestServiceExcludeEventType[];
+export type __manifestServiceExcludeEventTypesList = (
+  | ManifestServiceExcludeEventType
+  | (string & {})
+)[];
 export const __manifestServiceExcludeEventTypesList = /*@__PURE__*/ S.Array(
   ManifestServiceExcludeEventType,
 );
@@ -380,7 +388,7 @@ export const DashPlaylistSettings = /*@__PURE__*/ S.suspend(() =>
 export type AdMarkupType = "DATERANGE" | "SCTE35_ENHANCED";
 export const AdMarkupType = /*@__PURE__*/ S.String;
 
-export type AdMarkupTypes = AdMarkupType[];
+export type AdMarkupTypes = (AdMarkupType | (string & {}))[];
 export const AdMarkupTypes = /*@__PURE__*/ S.Array(AdMarkupType);
 export interface HlsPlaylistSettings {
   ManifestWindowSeconds?: number;
@@ -532,7 +540,7 @@ export const Type = /*@__PURE__*/ S.String;
 export interface HttpPackageConfiguration {
   Path: string;
   SourceGroup: string;
-  Type: Type;
+  Type: Type | (string & {});
 }
 export const HttpPackageConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Path: S.String, SourceGroup: S.String, Type: Type }),
@@ -602,7 +610,7 @@ export const Operator = /*@__PURE__*/ S.String;
 
 export interface AvailMatchingCriteria {
   DynamicVariable: string;
-  Operator: Operator;
+  Operator: Operator | (string & {});
 }
 export const AvailMatchingCriteria = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DynamicVariable: S.String, Operator: Operator }),
@@ -654,7 +662,7 @@ export interface PrefetchRetrieval {
   DynamicVariables?: { [key: string]: string | undefined };
   EndTime: Date;
   StartTime?: Date;
-  TrafficShapingType?: TrafficShapingType;
+  TrafficShapingType?: TrafficShapingType | (string & {});
   TrafficShapingRetrievalWindow?: TrafficShapingRetrievalWindow;
   TrafficShapingTpsConfiguration?: TrafficShapingTpsConfiguration;
 }
@@ -685,7 +693,7 @@ export const RecurringConsumption = /*@__PURE__*/ S.suspend(() =>
 export interface RecurringRetrieval {
   DynamicVariables?: { [key: string]: string | undefined };
   DelayAfterAvailEndSeconds?: number;
-  TrafficShapingType?: TrafficShapingType;
+  TrafficShapingType?: TrafficShapingType | (string & {});
   TrafficShapingRetrievalWindow?: TrafficShapingRetrievalWindow;
   TrafficShapingTpsConfiguration?: TrafficShapingTpsConfiguration;
 }
@@ -850,7 +858,7 @@ export const KeyValuePair = /*@__PURE__*/ S.suspend(() =>
 export type AdBreakMetadataList = KeyValuePair[];
 export const AdBreakMetadataList = /*@__PURE__*/ S.Array(KeyValuePair);
 export interface AdBreak {
-  MessageType?: MessageType;
+  MessageType?: MessageType | (string & {});
   OffsetMillis: number;
   Slate?: SlateSource;
   SpliceInsertMessage?: SpliceInsertMessage;
@@ -1039,7 +1047,7 @@ export const SecretsManagerAccessTokenConfiguration = /*@__PURE__*/ S.suspend(
   identifier: "SecretsManagerAccessTokenConfiguration",
 }) as any as S.Schema<SecretsManagerAccessTokenConfiguration>;
 export interface AccessConfiguration {
-  AccessType?: AccessType;
+  AccessType?: AccessType | (string & {});
   SecretsManagerAccessTokenConfiguration?: SecretsManagerAccessTokenConfiguration;
 }
 export const AccessConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -1872,9 +1880,9 @@ export type MethodType = "GET" | "POST";
 export const MethodType = /*@__PURE__*/ S.String;
 
 export interface HttpRequestConfiguration {
-  Runtime: RuntimeType;
+  Runtime: RuntimeType | (string & {});
   Output?: { [key: string]: string | undefined };
-  MethodType: MethodType;
+  MethodType: MethodType | (string & {});
   RequestTimeoutMilliseconds: number;
   Url: string;
   Body?: string;
@@ -1894,7 +1902,7 @@ export const HttpRequestConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "HttpRequestConfiguration",
 }) as any as S.Schema<HttpRequestConfiguration>;
 export interface CustomOutputConfiguration {
-  Runtime: RuntimeType;
+  Runtime: RuntimeType | (string & {});
   Output?: { [key: string]: string | undefined };
 }
 export const CustomOutputConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -1915,7 +1923,7 @@ export const FunctionRef = /*@__PURE__*/ S.suspend(() =>
 export type __listOfFunctionsRef = FunctionRef[];
 export const __listOfFunctionsRef = /*@__PURE__*/ S.Array(FunctionRef);
 export interface SequentialExecutorConfiguration {
-  Runtime: RuntimeType;
+  Runtime: RuntimeType | (string & {});
   Output?: { [key: string]: string | undefined };
   FunctionList: FunctionRef[];
   TimeoutMilliseconds: number;
@@ -1980,9 +1988,9 @@ export type FillPolicy = "FULL_AVAIL_ONLY" | "PARTIAL_AVAIL";
 export const FillPolicy = /*@__PURE__*/ S.String;
 
 export interface AvailSuppression {
-  Mode?: Mode;
+  Mode?: Mode | (string & {});
   Value?: string;
-  FillPolicy?: FillPolicy;
+  FillPolicy?: FillPolicy | (string & {});
 }
 export const AvailSuppression = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2096,7 +2104,9 @@ export type StreamingMediaFileConditioning = "TRANSCODE" | "NONE";
 export const StreamingMediaFileConditioning = /*@__PURE__*/ S.String;
 
 export interface AdConditioningConfiguration {
-  StreamingMediaFileConditioning: StreamingMediaFileConditioning;
+  StreamingMediaFileConditioning:
+    | StreamingMediaFileConditioning
+    | (string & {});
 }
 export const AdConditioningConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ StreamingMediaFileConditioning: StreamingMediaFileConditioning }),
@@ -2115,10 +2125,10 @@ export type CompressionMethod = "NONE" | "GZIP";
 export const CompressionMethod = /*@__PURE__*/ S.String;
 
 export interface HttpRequest {
-  Method?: Method;
+  Method?: Method | (string & {});
   Body?: string;
   Headers?: { [key: string]: string | undefined };
-  CompressRequest?: CompressionMethod;
+  CompressRequest?: CompressionMethod | (string & {});
 }
 export const HttpRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2139,7 +2149,7 @@ export const AdDecisionServerConfiguration = /*@__PURE__*/ S.suspend(() =>
 export type EventName = "PRE_SESSION_INITIALIZATION" | "PRE_ADS_REQUEST";
 export const EventName = /*@__PURE__*/ S.String;
 
-export type FunctionMapping = { [key in EventName]?: string };
+export type FunctionMapping = { [key in EventName | (string & {})]?: string };
 export const FunctionMapping = /*@__PURE__*/ S.Record(
   EventName,
   S.String.pipe(S.optional),

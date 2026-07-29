@@ -60,7 +60,7 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -93,7 +93,7 @@ export interface Connector {
   /** Output only. List of projects using the connector. */
   connectedProjects?: StringList;
   /** Output only. State of the VPC access connector. */
-  state?: ConnectorStateEnum;
+  state?: ConnectorStateEnum | (string & {});
   /** Output only. The last restart time of the connector. */
   lastRestartTime?: string;
   /** Minimum value of instances in autoscaling group underlying the connector. */
@@ -166,7 +166,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -327,7 +327,7 @@ export const Location = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Location" }) as any as S.Schema<Location>;
 
-export type LocationList = ReadonlyArray<Location>;
+export type LocationList = Array<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -373,7 +373,7 @@ export const ListProjectsLocationsConnectorsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsConnectorsRequest",
 }) as any as S.Schema<ListProjectsLocationsConnectorsRequest>;
 
-export type ConnectorList = ReadonlyArray<Connector>;
+export type ConnectorList = Array<Connector>;
 export const ConnectorList = /*@__PURE__*/ S.Array(
   Connector,
 ) as any as S.Schema<ConnectorList>;
@@ -425,7 +425,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type OperationList = ReadonlyArray<Operation>;
+export type OperationList = Array<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;

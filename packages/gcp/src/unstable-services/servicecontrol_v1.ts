@@ -77,7 +77,7 @@ export const Money = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Money" }) as any as S.Schema<Money>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -99,7 +99,7 @@ export const LinearBuckets = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "LinearBuckets" }) as any as S.Schema<LinearBuckets>;
 
-export type DoubleList = ReadonlyArray<number>;
+export type DoubleList = Array<number>;
 export const DoubleList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<DoubleList>;
@@ -123,7 +123,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -145,7 +145,7 @@ export const Exemplar = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Exemplar" }) as any as S.Schema<Exemplar>;
 
-export type ExemplarList = ReadonlyArray<Exemplar>;
+export type ExemplarList = Array<Exemplar>;
 export const ExemplarList = /*@__PURE__*/ S.Array(
   Exemplar,
 ) as any as S.Schema<ExemplarList>;
@@ -248,7 +248,7 @@ export const MetricValue = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MetricValue" }) as any as S.Schema<MetricValue>;
 
-export type MetricValueList = ReadonlyArray<MetricValue>;
+export type MetricValueList = Array<MetricValue>;
 export const MetricValueList = /*@__PURE__*/ S.Array(
   MetricValue,
 ) as any as S.Schema<MetricValueList>;
@@ -267,7 +267,7 @@ export const MetricValueSet = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MetricValueSet" }) as any as S.Schema<MetricValueSet>;
 
-export type MetricValueSetList = ReadonlyArray<MetricValueSet>;
+export type MetricValueSetList = Array<MetricValueSet>;
 export const MetricValueSetList = /*@__PURE__*/ S.Array(
   MetricValueSet,
 ) as any as S.Schema<MetricValueSetList>;
@@ -397,7 +397,7 @@ export const QuotaError = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "QuotaError" }) as any as S.Schema<QuotaError>;
 
-export type QuotaErrorList = ReadonlyArray<QuotaError>;
+export type QuotaErrorList = Array<QuotaError>;
 export const QuotaErrorList = /*@__PURE__*/ S.Array(
   QuotaError,
 ) as any as S.Schema<QuotaErrorList>;
@@ -609,7 +609,7 @@ export const LogEntry = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "LogEntry" }) as any as S.Schema<LogEntry>;
 
-export type LogEntryList = ReadonlyArray<LogEntry>;
+export type LogEntryList = Array<LogEntry>;
 export const LogEntryList = /*@__PURE__*/ S.Array(
   LogEntry,
 ) as any as S.Schema<LogEntryList>;
@@ -634,7 +634,7 @@ export const ResourceInfo = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ResourceInfo" }) as any as S.Schema<ResourceInfo>;
 
-export type ResourceInfoList = ReadonlyArray<ResourceInfo>;
+export type ResourceInfoList = Array<ResourceInfo>;
 export const ResourceInfoList = /*@__PURE__*/ S.Array(
   ResourceInfo,
 ) as any as S.Schema<ResourceInfoList>;
@@ -742,7 +742,7 @@ export const TraceSpan = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TraceSpan" }) as any as S.Schema<TraceSpan>;
 
-export type TraceSpanList = ReadonlyArray<TraceSpan>;
+export type TraceSpanList = Array<TraceSpan>;
 export const TraceSpanList = /*@__PURE__*/ S.Array(
   TraceSpan,
 ) as any as S.Schema<TraceSpanList>;
@@ -927,7 +927,7 @@ export const CheckError = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CheckError" }) as any as S.Schema<CheckError>;
 
-export type CheckErrorList = ReadonlyArray<CheckError>;
+export type CheckErrorList = Array<CheckError>;
 export const CheckErrorList = /*@__PURE__*/ S.Array(
   CheckError,
 ) as any as S.Schema<CheckErrorList>;
@@ -1003,7 +1003,7 @@ export const CheckResponse = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CheckResponse" }) as any as S.Schema<CheckResponse>;
 
-export type OperationList = ReadonlyArray<Operation>;
+export type OperationList = Array<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -1057,7 +1057,7 @@ export const ReportError = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ReportError" }) as any as S.Schema<ReportError>;
 
-export type ReportErrorList = ReadonlyArray<ReportError>;
+export type ReportErrorList = Array<ReportError>;
 export const ReportErrorList = /*@__PURE__*/ S.Array(
   ReportError,
 ) as any as S.Schema<ReportErrorList>;

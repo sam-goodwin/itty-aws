@@ -537,7 +537,9 @@ export type QueueAttributeName =
   | "SqsManagedSseEnabled";
 export const QueueAttributeName = /*@__PURE__*/ S.String;
 
-export type QueueAttributeMap = { [key in QueueAttributeName]?: string };
+export type QueueAttributeMap = {
+  [key in QueueAttributeName | (string & {})]?: string;
+};
 export const QueueAttributeMap = /*@__PURE__*/ S.Record(
   QueueAttributeName.pipe(T.XmlName("Name")),
   S.String.pipe(T.XmlName("Value")).pipe(S.optional),

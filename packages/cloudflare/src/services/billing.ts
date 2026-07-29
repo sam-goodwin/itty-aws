@@ -345,7 +345,7 @@ export const UsageGetResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "UsageGetResultItem",
 }) as any as S.Schema<UsageGetResultItem>;
 
-export type UsageGetResultList = ReadonlyArray<UsageGetResultItem>;
+export type UsageGetResultList = Array<UsageGetResultItem>;
 export const UsageGetResultList = /*@__PURE__*/ S.Array(
   UsageGetResultItem,
 ) as any as S.Schema<UsageGetResultList>;
@@ -437,7 +437,7 @@ export const UsagePaygoResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "UsagePaygoResultItem",
 }) as any as S.Schema<UsagePaygoResultItem>;
 
-export type UsagePaygoResultList = ReadonlyArray<UsagePaygoResultItem>;
+export type UsagePaygoResultList = Array<UsagePaygoResultItem>;
 export const UsagePaygoResultList = /*@__PURE__*/ S.Array(
   UsagePaygoResultItem,
 ) as any as S.Schema<UsagePaygoResultList>;

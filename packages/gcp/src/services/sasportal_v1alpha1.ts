@@ -60,7 +60,7 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -122,8 +122,9 @@ export type SasPortalDeviceConfigMeasurementCapabilitiesItemEnum =
 export const SasPortalDeviceConfigMeasurementCapabilitiesItemEnum =
   /*@__PURE__*/ S.String;
 
-export type SasPortalDeviceConfigMeasurementCapabilitiesItemEnumList =
-  ReadonlyArray<SasPortalDeviceConfigMeasurementCapabilitiesItemEnum>;
+export type SasPortalDeviceConfigMeasurementCapabilitiesItemEnumList = Array<
+  SasPortalDeviceConfigMeasurementCapabilitiesItemEnum | (string & {})
+>;
 export const SasPortalDeviceConfigMeasurementCapabilitiesItemEnumList =
   /*@__PURE__*/ S.Array(
     SasPortalDeviceConfigMeasurementCapabilitiesItemEnum,
@@ -152,7 +153,9 @@ export const SasPortalDeviceAirInterfaceRadioTechnologyEnum =
 /** Information about the device's air interface. */
 export interface SasPortalDeviceAirInterface {
   /** Conditional. This field specifies the radio access technology that is used for the CBSD. */
-  radioTechnology?: SasPortalDeviceAirInterfaceRadioTechnologyEnum;
+  radioTechnology?:
+    | SasPortalDeviceAirInterfaceRadioTechnologyEnum
+    | (string & {});
   /** Optional. This field is related to the `radioTechnology` and provides the air interface specification that the CBSD is compliant with at the time of registration. */
   supportedSpec?: string;
 }
@@ -182,7 +185,7 @@ export interface SasPortalInstallationParams {
   /** Antenna downtilt in degrees and is an integer with a value between -90 and +90 inclusive; a negative value means the antenna is tilted up (above horizontal). This parameter is optional for Category A devices and conditional for Category B devices. */
   antennaDowntilt?: number;
   /** Specifies how the height is measured. */
-  heightType?: SasPortalInstallationParamsHeightTypeEnum;
+  heightType?: SasPortalInstallationParamsHeightTypeEnum | (string & {});
   /** Boresight direction of the horizontal plane of the antenna in degrees with respect to true north. The value of this parameter is an integer with a value between 0 and 359 inclusive. A value of 0 degrees means true north; a value of 90 degrees means east. This parameter is optional for Category A devices and conditional for Category B devices. */
   antennaAzimuth?: number;
   /** A positive number in meters to indicate accuracy of the device antenna vertical location. This optional parameter should only be present if its value is less than the FCC requirement of 3 meters. */
@@ -259,7 +262,7 @@ export interface SasPortalDeviceConfig {
   /** Measurement reporting capabilities of the device. */
   measurementCapabilities?: SasPortalDeviceConfigMeasurementCapabilitiesItemEnumList;
   /** FCC category of the device. */
-  category?: SasPortalDeviceConfigCategoryEnum;
+  category?: SasPortalDeviceConfigCategoryEnum | (string & {});
   /** Information about this device's air interface. */
   airInterface?: SasPortalDeviceAirInterface;
   /** Installation parameters for the device. */
@@ -275,7 +278,7 @@ export interface SasPortalDeviceConfig {
   /** The call sign of the device operator. */
   callSign?: string;
   /** State of the configuration. */
-  state?: SasPortalDeviceConfigStateEnum;
+  state?: SasPortalDeviceConfigStateEnum | (string & {});
 }
 export const SasPortalDeviceConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -328,7 +331,7 @@ export const SasPortalDpaMoveList = /*@__PURE__*/ S.suspend(() =>
   identifier: "SasPortalDpaMoveList",
 }) as any as S.Schema<SasPortalDpaMoveList>;
 
-export type SasPortalDpaMoveListList = ReadonlyArray<SasPortalDpaMoveList>;
+export type SasPortalDpaMoveListList = Array<SasPortalDpaMoveList>;
 export const SasPortalDpaMoveListList = /*@__PURE__*/ S.Array(
   SasPortalDpaMoveList,
 ) as any as S.Schema<SasPortalDpaMoveListList>;
@@ -355,13 +358,13 @@ export interface SasPortalDeviceGrant {
   /** The expiration time of the grant. */
   expireTime?: string;
   /** State of the grant. */
-  state?: SasPortalDeviceGrantStateEnum;
+  state?: SasPortalDeviceGrantStateEnum | (string & {});
   /** Grant Id. */
   grantId?: string;
   /** Maximum Equivalent Isotropically Radiated Power (EIRP) permitted by the grant. The maximum EIRP is in units of dBm/MHz. The value of `maxEirp` represents the average (RMS) EIRP that would be measured by the procedure defined in FCC part 96.41(e)(3). */
   maxEirp?: number;
   /** Type of channel used. */
-  channelType?: SasPortalDeviceGrantChannelTypeEnum;
+  channelType?: SasPortalDeviceGrantChannelTypeEnum | (string & {});
   /** The transmission frequency range. */
   frequencyRange?: SasPortalFrequencyRange;
   /** If the grant is suspended, the reason(s) for suspension. */
@@ -385,7 +388,7 @@ export const SasPortalDeviceGrant = /*@__PURE__*/ S.suspend(() =>
   identifier: "SasPortalDeviceGrant",
 }) as any as S.Schema<SasPortalDeviceGrant>;
 
-export type SasPortalDeviceGrantList = ReadonlyArray<SasPortalDeviceGrant>;
+export type SasPortalDeviceGrantList = Array<SasPortalDeviceGrant>;
 export const SasPortalDeviceGrantList = /*@__PURE__*/ S.Array(
   SasPortalDeviceGrant,
 ) as any as S.Schema<SasPortalDeviceGrantList>;
@@ -401,7 +404,7 @@ export interface SasPortalNrqzValidation {
   /** Validation case ID. */
   caseId?: string;
   /** State of the NRQZ validation info. */
-  state?: SasPortalNrqzValidationStateEnum;
+  state?: SasPortalNrqzValidationStateEnum | (string & {});
   /** Device latitude that's associated with the validation. */
   latitude?: number;
   /** CPI who signed the validation. */
@@ -446,8 +449,7 @@ export const SasPortalDeviceMetadata = /*@__PURE__*/ S.suspend(() =>
   identifier: "SasPortalDeviceMetadata",
 }) as any as S.Schema<SasPortalDeviceMetadata>;
 
-export type SasPortalFrequencyRangeList =
-  ReadonlyArray<SasPortalFrequencyRange>;
+export type SasPortalFrequencyRangeList = Array<SasPortalFrequencyRange>;
 export const SasPortalFrequencyRangeList = /*@__PURE__*/ S.Array(
   SasPortalFrequencyRange,
 ) as any as S.Schema<SasPortalFrequencyRangeList>;
@@ -468,15 +470,14 @@ export const SasPortalChannelWithScore = /*@__PURE__*/ S.suspend(() =>
   identifier: "SasPortalChannelWithScore",
 }) as any as S.Schema<SasPortalChannelWithScore>;
 
-export type SasPortalChannelWithScoreList =
-  ReadonlyArray<SasPortalChannelWithScore>;
+export type SasPortalChannelWithScoreList = Array<SasPortalChannelWithScore>;
 export const SasPortalChannelWithScoreList = /*@__PURE__*/ S.Array(
   SasPortalChannelWithScore,
 ) as any as S.Schema<SasPortalChannelWithScoreList>;
 
 export interface SasPortalDevice {
   /** Output only. Device state. */
-  state?: SasPortalDeviceStateEnum;
+  state?: SasPortalDeviceStateEnum | (string & {});
   /** Output only. Current configuration of the device as registered to the SAS. */
   activeConfig?: SasPortalDeviceConfig;
   /** Configuration of the device, as specified via SAS Portal API. */
@@ -1351,7 +1352,7 @@ export const SasPortalAssignment = /*@__PURE__*/ S.suspend(() =>
   identifier: "SasPortalAssignment",
 }) as any as S.Schema<SasPortalAssignment>;
 
-export type SasPortalAssignmentList = ReadonlyArray<SasPortalAssignment>;
+export type SasPortalAssignmentList = Array<SasPortalAssignment>;
 export const SasPortalAssignmentList = /*@__PURE__*/ S.Array(
   SasPortalAssignment,
 ) as any as S.Schema<SasPortalAssignmentList>;
@@ -1393,7 +1394,7 @@ export const ListCustomersRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListCustomersRequest",
 }) as any as S.Schema<ListCustomersRequest>;
 
-export type SasPortalCustomerList = ReadonlyArray<SasPortalCustomer>;
+export type SasPortalCustomerList = Array<SasPortalCustomer>;
 export const SasPortalCustomerList = /*@__PURE__*/ S.Array(
   SasPortalCustomer,
 ) as any as S.Schema<SasPortalCustomerList>;
@@ -1441,7 +1442,7 @@ export const ListCustomersDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListCustomersDeploymentsRequest",
 }) as any as S.Schema<ListCustomersDeploymentsRequest>;
 
-export type SasPortalDeploymentList = ReadonlyArray<SasPortalDeployment>;
+export type SasPortalDeploymentList = Array<SasPortalDeployment>;
 export const SasPortalDeploymentList = /*@__PURE__*/ S.Array(
   SasPortalDeployment,
 ) as any as S.Schema<SasPortalDeploymentList>;
@@ -1490,7 +1491,7 @@ export const ListCustomersDeploymentsDevicesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListCustomersDeploymentsDevicesRequest",
 }) as any as S.Schema<ListCustomersDeploymentsDevicesRequest>;
 
-export type SasPortalDeviceList = ReadonlyArray<SasPortalDevice>;
+export type SasPortalDeviceList = Array<SasPortalDevice>;
 export const SasPortalDeviceList = /*@__PURE__*/ S.Array(
   SasPortalDevice,
 ) as any as S.Schema<SasPortalDeviceList>;
@@ -1565,7 +1566,7 @@ export const ListCustomersNodesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListCustomersNodesRequest",
 }) as any as S.Schema<ListCustomersNodesRequest>;
 
-export type SasPortalNodeList = ReadonlyArray<SasPortalNode>;
+export type SasPortalNodeList = Array<SasPortalNode>;
 export const SasPortalNodeList = /*@__PURE__*/ S.Array(
   SasPortalNode,
 ) as any as S.Schema<SasPortalNodeList>;
@@ -1699,7 +1700,7 @@ export const SasPortalGcpProjectDeployment = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SasPortalGcpProjectDeployment>;
 
 export type SasPortalGcpProjectDeploymentList =
-  ReadonlyArray<SasPortalGcpProjectDeployment>;
+  Array<SasPortalGcpProjectDeployment>;
 export const SasPortalGcpProjectDeploymentList = /*@__PURE__*/ S.Array(
   SasPortalGcpProjectDeployment,
 ) as any as S.Schema<SasPortalGcpProjectDeploymentList>;
@@ -1748,7 +1749,7 @@ export const SasPortalOrganization = /*@__PURE__*/ S.suspend(() =>
   identifier: "SasPortalOrganization",
 }) as any as S.Schema<SasPortalOrganization>;
 
-export type SasPortalOrganizationList = ReadonlyArray<SasPortalOrganization>;
+export type SasPortalOrganizationList = Array<SasPortalOrganization>;
 export const SasPortalOrganizationList = /*@__PURE__*/ S.Array(
   SasPortalOrganization,
 ) as any as S.Schema<SasPortalOrganizationList>;
@@ -1993,7 +1994,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;

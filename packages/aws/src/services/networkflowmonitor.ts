@@ -97,7 +97,7 @@ export type MonitorLocalResourceType =
 export const MonitorLocalResourceType = /*@__PURE__*/ S.String;
 
 export interface MonitorLocalResource {
-  type: MonitorLocalResourceType;
+  type: MonitorLocalResourceType | (string & {});
   identifier: string;
 }
 export const MonitorLocalResource = /*@__PURE__*/ S.suspend(() =>
@@ -117,7 +117,7 @@ export type MonitorRemoteResourceType =
 export const MonitorRemoteResourceType = /*@__PURE__*/ S.String;
 
 export interface MonitorRemoteResource {
-  type: MonitorRemoteResourceType;
+  type: MonitorRemoteResourceType | (string & {});
   identifier: string;
 }
 export const MonitorRemoteResource = /*@__PURE__*/ S.suspend(() =>
@@ -211,7 +211,7 @@ export const TargetType = /*@__PURE__*/ S.String;
 
 export interface TargetIdentifier {
   targetId: TargetId;
-  targetType: TargetType;
+  targetType: TargetType | (string & {});
 }
 export const TargetIdentifier = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ targetId: TargetId, targetType: TargetType }),

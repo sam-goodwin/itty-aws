@@ -197,7 +197,7 @@ export type ContactHandlingScope = "CROSS_CONTACTS" | "PER_CONTACT";
 export const ContactHandlingScope = /*@__PURE__*/ S.String;
 
 export interface ContactHandling {
-  Scope?: ContactHandlingScope;
+  Scope?: ContactHandlingScope | (string & {});
 }
 export const ContactHandling = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Scope: S.optional(ContactHandlingScope) }),
@@ -418,7 +418,7 @@ export const OnDemandConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "OnDemandConfiguration",
 }) as any as S.Schema<OnDemandConfiguration>;
 export interface ExecutionConfiguration {
-  ExecutionMode: ExecutionMode;
+  ExecutionMode: ExecutionMode | (string & {});
   OnDemandConfiguration?: OnDemandConfiguration;
   ScheduleConfiguration?: ScheduleConfiguration;
 }

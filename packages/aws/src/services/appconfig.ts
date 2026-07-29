@@ -197,7 +197,7 @@ export type StringWithLengthBetween0And32768 =
   | string
   | redacted.Redacted<string>;
 export interface Validator {
-  Type: ValidatorType;
+  Type: ValidatorType | (string & {});
   Content: string | redacted.Redacted<string>;
 }
 export const Validator = /*@__PURE__*/ S.suspend(() =>
@@ -626,7 +626,7 @@ export const Action = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Action" }) as any as S.Schema<Action>;
 export type ActionList = Action[];
 export const ActionList = /*@__PURE__*/ S.Array(Action);
-export type ActionsMap = { [key in ActionPoint]?: Action[] };
+export type ActionsMap = { [key in ActionPoint | (string & {})]?: Action[] };
 export const ActionsMap = /*@__PURE__*/ S.Record(
   ActionPoint,
   ActionList.pipe(S.optional),

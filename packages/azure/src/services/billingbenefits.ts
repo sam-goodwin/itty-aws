@@ -110,7 +110,7 @@ export interface Commitment {
   currencyCode?: string;
   amount?: number;
   /** The grain of the commitment. */
-  grain?: CommitmentGrain;
+  grain?: CommitmentGrain | (string & {});
 }
 export const Commitment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -205,11 +205,11 @@ export interface MaccMilestone {
   /** End date time for the milestone. Timestamp must be in the ISO date format YYYY-MM-DDT23:59:59Z. */
   endAt?: string;
   /** Setting this to 'Enable' enables automatic shortfall invoicing when milestone commitment is not met. */
-  automaticShortfall?: EnablementMode;
+  automaticShortfall?: EnablementMode | (string & {});
   /** Optional field to record suppression reason for automatic shortfall. */
   automaticShortfallSuppressReason?: AutomaticShortfallSuppressReason;
   /** Represents the current status of the Milestone. */
-  status?: MaccMilestoneStatus;
+  status?: MaccMilestoneStatus | (string & {});
   /** Details of the shortfall associated with this milestone. */
   shortfall?: Shortfall;
 }
@@ -228,7 +228,7 @@ export const MaccMilestone = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MaccMilestone" }) as any as S.Schema<MaccMilestone>;
 
 /** List of milestones associated with this MACC. */
-export type MaccModelPropertiesMilestonesList = ReadonlyArray<MaccMilestone>;
+export type MaccModelPropertiesMilestonesList = Array<MaccMilestone>;
 export const MaccModelPropertiesMilestonesList = /*@__PURE__*/ S.Array(
   MaccMilestone,
 ) as any as S.Schema<MaccModelPropertiesMilestonesList>;
@@ -361,7 +361,7 @@ export const ApplicableMacc = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ApplicableMacc" }) as any as S.Schema<ApplicableMacc>;
 
 /** List Applicable MACCs. */
-export type ApplicableMaccListValueList = ReadonlyArray<ApplicableMacc>;
+export type ApplicableMaccListValueList = Array<ApplicableMacc>;
 export const ApplicableMaccListValueList = /*@__PURE__*/ S.Array(
   ApplicableMacc,
 ) as any as S.Schema<ApplicableMaccListValueList>;
@@ -409,8 +409,7 @@ export const BenefitValidateModel = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BenefitValidateModel>;
 
 /** Defines benefits for validation. */
-export type BenefitValidateRequestBenefitsList =
-  ReadonlyArray<BenefitValidateModel>;
+export type BenefitValidateRequestBenefitsList = Array<BenefitValidateModel>;
 export const BenefitValidateRequestBenefitsList = /*@__PURE__*/ S.Array(
   BenefitValidateModel,
 ) as any as S.Schema<BenefitValidateRequestBenefitsList>;
@@ -458,7 +457,7 @@ export const BenefitValidateResponseProperty = /*@__PURE__*/ S.suspend(() =>
 
 /** Defines benefit validation response for benefits. */
 export type BenefitValidateResponseBenefitsList =
-  ReadonlyArray<BenefitValidateResponseProperty>;
+  Array<BenefitValidateResponseProperty>;
 export const BenefitValidateResponseBenefitsList = /*@__PURE__*/ S.Array(
   BenefitValidateResponseProperty,
 ) as any as S.Schema<BenefitValidateResponseBenefitsList>;
@@ -514,7 +513,7 @@ export type ResourceType =
 export const ResourceType = /*@__PURE__*/ S.String;
 
 /** Manifest-sourced array of search terms for this catalog group. Omitted when empty. */
-export type CatalogGroupPropertiesKeywordsList = ReadonlyArray<string>;
+export type CatalogGroupPropertiesKeywordsList = Array<string>;
 export const CatalogGroupPropertiesKeywordsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CatalogGroupPropertiesKeywordsList>;
@@ -537,13 +536,13 @@ export const CatalogGroupCapability = /*@__PURE__*/ S.suspend(() =>
 
 /** Capabilities of the catalog group as key-value pairs. Omitted when a benefit type has no defined capabilities. */
 export type CatalogGroupPropertiesCapabilitiesList =
-  ReadonlyArray<CatalogGroupCapability>;
+  Array<CatalogGroupCapability>;
 export const CatalogGroupPropertiesCapabilitiesList = /*@__PURE__*/ S.Array(
   CatalogGroupCapability,
 ) as any as S.Schema<CatalogGroupPropertiesCapabilitiesList>;
 
 /** Optional disclaimers (legal or eligibility caveats) for the catalog group. Included only when caveats apply. */
-export type CatalogGroupPropertiesDisclaimersList = ReadonlyArray<string>;
+export type CatalogGroupPropertiesDisclaimersList = Array<string>;
 export const CatalogGroupPropertiesDisclaimersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CatalogGroupPropertiesDisclaimersList>;
@@ -657,7 +656,7 @@ export const CatalogGroup = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CatalogGroup" }) as any as S.Schema<CatalogGroup>;
 
 /** The CatalogGroup items on this page */
-export type CatalogGroupListResultValueList = ReadonlyArray<CatalogGroup>;
+export type CatalogGroupListResultValueList = Array<CatalogGroup>;
 export const CatalogGroupListResultValueList = /*@__PURE__*/ S.Array(
   CatalogGroup,
 ) as any as S.Schema<CatalogGroupListResultValueList>;
@@ -878,7 +877,7 @@ export const ConditionalCreditMilestoneBase = /*@__PURE__*/ S.suspend(() =>
 
 /** List of milestones copied from primary conditional credit (excludes award details) */
 export type ContributorConditionalCreditPropertiesMilestonesList =
-  ReadonlyArray<ConditionalCreditMilestoneBase>;
+  Array<ConditionalCreditMilestoneBase>;
 export const ContributorConditionalCreditPropertiesMilestonesList =
   /*@__PURE__*/ S.Array(
     ConditionalCreditMilestoneBase,
@@ -1027,7 +1026,7 @@ export const ConditionalCreditContributor = /*@__PURE__*/ S.suspend(() =>
 
 /** The ConditionalCreditContributor items on this page */
 export type ConditionalCreditContributorListValueList =
-  ReadonlyArray<ConditionalCreditContributor>;
+  Array<ConditionalCreditContributor>;
 export const ConditionalCreditContributorListValueList = /*@__PURE__*/ S.Array(
   ConditionalCreditContributor,
 ) as any as S.Schema<ConditionalCreditContributorListValueList>;
@@ -1226,7 +1225,7 @@ export interface Sku {
   /** The name of the SKU. E.g. P3. It is typically a letter+number code */
   name: string;
   /** This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT. */
-  tier?: SkuTier;
+  tier?: SkuTier | (string & {});
   /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
   size?: string;
   /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
@@ -1803,7 +1802,7 @@ export const ConditionalCredit = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConditionalCredit>;
 
 /** The ConditionalCredit items on this page */
-export type ConditionalCreditListValueList = ReadonlyArray<ConditionalCredit>;
+export type ConditionalCreditListValueList = Array<ConditionalCredit>;
 export const ConditionalCreditListValueList = /*@__PURE__*/ S.Array(
   ConditionalCredit,
 ) as any as S.Schema<ConditionalCreditListValueList>;
@@ -1913,7 +1912,7 @@ export const ConditionalCreditMilestoneInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Updated milestones list (only applicable for primary conditional credits) */
 export type ConditionalCreditPatchRequestPropertiesInputMilestonesList =
-  ReadonlyArray<ConditionalCreditMilestoneInput>;
+  Array<ConditionalCreditMilestoneInput>;
 export const ConditionalCreditPatchRequestPropertiesInputMilestonesList =
   /*@__PURE__*/ S.Array(
     ConditionalCreditMilestoneInput,
@@ -2251,7 +2250,7 @@ export const ConditionalCreditTransaction = /*@__PURE__*/ S.suspend(() =>
 
 /** The ConditionalCreditTransaction items on this page */
 export type ConditionalCreditTransactionsListValueList =
-  ReadonlyArray<ConditionalCreditTransaction>;
+  Array<ConditionalCreditTransaction>;
 export const ConditionalCreditTransactionsListValueList = /*@__PURE__*/ S.Array(
   ConditionalCreditTransaction,
 ) as any as S.Schema<ConditionalCreditTransactionsListValueList>;
@@ -2371,7 +2370,7 @@ export const Contributor = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Contributor" }) as any as S.Schema<Contributor>;
 
 /** The Contributor items on this page */
-export type ContributorListValueList = ReadonlyArray<Contributor>;
+export type ContributorListValueList = Array<Contributor>;
 export const ContributorListValueList = /*@__PURE__*/ S.Array(
   Contributor,
 ) as any as S.Schema<ContributorListValueList>;
@@ -2492,9 +2491,9 @@ export const CreditExpirationPolicy = /*@__PURE__*/ S.String;
 /** Credit breakdown item representing a milestone, line-item, or no-charge service */
 export interface CreditPolicies {
   /** Redemption policy of the Credit */
-  redemption?: CreditRedemptionPolicy;
+  redemption?: CreditRedemptionPolicy | (string & {});
   /** Expiration policy of the Credit */
-  expiration?: CreditExpirationPolicy;
+  expiration?: CreditExpirationPolicy | (string & {});
 }
 export const CreditPolicies = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2520,7 +2519,7 @@ export const CreditDimension = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreditDimension>;
 
 /** Key-value pairs for additional parameters and metadata */
-export type CreditBreakdownItemDimensionsList = ReadonlyArray<CreditDimension>;
+export type CreditBreakdownItemDimensionsList = Array<CreditDimension>;
 export const CreditBreakdownItemDimensionsList = /*@__PURE__*/ S.Array(
   CreditDimension,
 ) as any as S.Schema<CreditBreakdownItemDimensionsList>;
@@ -2548,7 +2547,7 @@ export const CreditBreakdownItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreditBreakdownItem>;
 
 /** Credit line-items/milestones/no-charge services breakdown */
-export type CreditPropertiesBreakdownList = ReadonlyArray<CreditBreakdownItem>;
+export type CreditPropertiesBreakdownList = Array<CreditBreakdownItem>;
 export const CreditPropertiesBreakdownList = /*@__PURE__*/ S.Array(
   CreditBreakdownItem,
 ) as any as S.Schema<CreditPropertiesBreakdownList>;
@@ -2558,7 +2557,7 @@ export type AppliedOn = "Consumption" | "Invoice" | "External";
 export const AppliedOn = /*@__PURE__*/ S.String;
 
 /** Indicates where the credit benefit is applied (e.g., consume, invoice, or external application). */
-export type CreditProductDetailsAppliedOnList = ReadonlyArray<AppliedOn>;
+export type CreditProductDetailsAppliedOnList = Array<AppliedOn>;
 export const CreditProductDetailsAppliedOnList = /*@__PURE__*/ S.Array(
   AppliedOn,
 ) as any as S.Schema<CreditProductDetailsAppliedOnList>;
@@ -2785,8 +2784,7 @@ export const CreditsCreateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<CreditsCreateRequestTagsMap>;
 
 /** Credit line-items/milestones/no-charge services breakdown */
-export type CreditPropertiesInputBreakdownList =
-  ReadonlyArray<CreditBreakdownItem>;
+export type CreditPropertiesInputBreakdownList = Array<CreditBreakdownItem>;
 export const CreditPropertiesInputBreakdownList = /*@__PURE__*/ S.Array(
   CreditBreakdownItem,
 ) as any as S.Schema<CreditPropertiesInputBreakdownList>;
@@ -3256,7 +3254,7 @@ export const Credit = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Credit" }) as any as S.Schema<Credit>;
 
 /** The Credit items on this page */
-export type CreditsListValueList = ReadonlyArray<Credit>;
+export type CreditsListValueList = Array<Credit>;
 export const CreditsListValueList = /*@__PURE__*/ S.Array(
   Credit,
 ) as any as S.Schema<CreditsListValueList>;
@@ -3324,8 +3322,7 @@ export const CreditsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<CreditsUpdateRequestTagsMap>;
 
 /** Credit line-items/milestones/no-charge services breakdown. Entire breakdown will be replaced in a PATCH operation. */
-export type CreditPatchPropertiesBreakdownList =
-  ReadonlyArray<CreditBreakdownItem>;
+export type CreditPatchPropertiesBreakdownList = Array<CreditBreakdownItem>;
 export const CreditPatchPropertiesBreakdownList = /*@__PURE__*/ S.Array(
   CreditBreakdownItem,
 ) as any as S.Schema<CreditPatchPropertiesBreakdownList>;
@@ -3574,7 +3571,7 @@ export const CreditTransaction = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreditTransaction>;
 
 /** The CreditTransaction items on this page */
-export type TransactionsListValueList = ReadonlyArray<CreditTransaction>;
+export type TransactionsListValueList = Array<CreditTransaction>;
 export const TransactionsListValueList = /*@__PURE__*/ S.Array(
   CreditTransaction,
 ) as any as S.Schema<TransactionsListValueList>;
@@ -4171,7 +4168,7 @@ export const Discount = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Discount" }) as any as S.Schema<Discount>;
 
 /** The Discount items on this page */
-export type DiscountListValueList = ReadonlyArray<Discount>;
+export type DiscountListValueList = Array<Discount>;
 export const DiscountListValueList = /*@__PURE__*/ S.Array(
   Discount,
 ) as any as S.Schema<DiscountListValueList>;
@@ -4860,7 +4857,7 @@ export const FreeServices = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FreeServices" }) as any as S.Schema<FreeServices>;
 
 /** The list of free services */
-export type FreeServicesListValueList = ReadonlyArray<FreeServices>;
+export type FreeServicesListValueList = Array<FreeServices>;
 export const FreeServicesListValueList = /*@__PURE__*/ S.Array(
   FreeServices,
 ) as any as S.Schema<FreeServicesListValueList>;
@@ -5284,8 +5281,7 @@ export const MaccsCreateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<MaccsCreateRequestTagsMap>;
 
 /** List of milestones associated with this MACC. */
-export type MaccModelPropertiesInputMilestonesList =
-  ReadonlyArray<MaccMilestone>;
+export type MaccModelPropertiesInputMilestonesList = Array<MaccMilestone>;
 export const MaccModelPropertiesInputMilestonesList = /*@__PURE__*/ S.Array(
   MaccMilestone,
 ) as any as S.Schema<MaccModelPropertiesInputMilestonesList>;
@@ -5773,7 +5769,7 @@ export const Macc = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Macc" }) as any as S.Schema<Macc>;
 
 /** The Macc items on this page */
-export type MaccListValueList = ReadonlyArray<Macc>;
+export type MaccListValueList = Array<Macc>;
 export const MaccListValueList = /*@__PURE__*/ S.Array(
   Macc,
 ) as any as S.Schema<MaccListValueList>;
@@ -5812,8 +5808,7 @@ export const MaccsListBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MaccsListBySubscriptionRequest>;
 
 /** List of milestones to update or add. */
-export type MaccPatchRequestPropertiesMilestonesList =
-  ReadonlyArray<MaccMilestone>;
+export type MaccPatchRequestPropertiesMilestonesList = Array<MaccMilestone>;
 export const MaccPatchRequestPropertiesMilestonesList = /*@__PURE__*/ S.Array(
   MaccMilestone,
 ) as any as S.Schema<MaccPatchRequestPropertiesMilestonesList>;
@@ -6204,7 +6199,7 @@ export const MaccTransaction = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MaccTransaction>;
 
 /** The MaccTransaction items on this page */
-export type MaccTransactionsListValueList = ReadonlyArray<MaccTransaction>;
+export type MaccTransactionsListValueList = Array<MaccTransaction>;
 export const MaccTransactionsListValueList = /*@__PURE__*/ S.Array(
   MaccTransaction,
 ) as any as S.Schema<MaccTransactionsListValueList>;
@@ -6293,7 +6288,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = ReadonlyArray<Operation>;
+export type OperationsListResponseValueList = Array<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;
@@ -6721,7 +6716,7 @@ export const UtilizationAggregates = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UtilizationAggregates>;
 
 /** The array of aggregates of a savings plan's utilization */
-export type UtilizationAggregatesList = ReadonlyArray<UtilizationAggregates>;
+export type UtilizationAggregatesList = Array<UtilizationAggregates>;
 export const UtilizationAggregatesList = /*@__PURE__*/ S.Array(
   UtilizationAggregates,
 ) as any as S.Schema<UtilizationAggregatesList>;
@@ -6956,7 +6951,7 @@ export const SavingsPlanModel = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SavingsPlanModel>;
 
 /** The SavingsPlanModel items on this page */
-export type SavingsPlanModelListValueList = ReadonlyArray<SavingsPlanModel>;
+export type SavingsPlanModelListValueList = Array<SavingsPlanModel>;
 export const SavingsPlanModelListValueList = /*@__PURE__*/ S.Array(
   SavingsPlanModel,
 ) as any as S.Schema<SavingsPlanModelListValueList>;
@@ -7012,8 +7007,7 @@ export const SavingsPlanListAllRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SavingsPlanListAllRequest>;
 
 /** The list of savings plans. */
-export type SavingsPlanModelListResultValueList =
-  ReadonlyArray<SavingsPlanModel>;
+export type SavingsPlanModelListResultValueList = Array<SavingsPlanModel>;
 export const SavingsPlanModelListResultValueList = /*@__PURE__*/ S.Array(
   SavingsPlanModel,
 ) as any as S.Schema<SavingsPlanModelListResultValueList>;
@@ -7073,7 +7067,7 @@ export const SavingsPlanSummary = /*@__PURE__*/ S.suspend(() =>
 
 /** The roll out count summary of the savings plans */
 export type SavingsPlanModelListResultAdditionalPropertiesList =
-  ReadonlyArray<SavingsPlanSummary>;
+  Array<SavingsPlanSummary>;
 export const SavingsPlanModelListResultAdditionalPropertiesList =
   /*@__PURE__*/ S.Array(
     SavingsPlanSummary,
@@ -7393,8 +7387,7 @@ export const PaymentDetail = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PaymentDetail" }) as any as S.Schema<PaymentDetail>;
 
-export type BillingPlanInformationTransactionsList =
-  ReadonlyArray<PaymentDetail>;
+export type BillingPlanInformationTransactionsList = Array<PaymentDetail>;
 export const BillingPlanInformationTransactionsList = /*@__PURE__*/ S.Array(
   PaymentDetail,
 ) as any as S.Schema<BillingPlanInformationTransactionsList>;
@@ -7420,8 +7413,7 @@ export const BillingPlanInformation = /*@__PURE__*/ S.suspend(() =>
   identifier: "BillingPlanInformation",
 }) as any as S.Schema<BillingPlanInformation>;
 
-export type SavingsPlanOrderModelPropertiesSavingsPlansList =
-  ReadonlyArray<string>;
+export type SavingsPlanOrderModelPropertiesSavingsPlansList = Array<string>;
 export const SavingsPlanOrderModelPropertiesSavingsPlansList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -7544,8 +7536,7 @@ export const SavingsPlanOrderModel = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SavingsPlanOrderModel>;
 
 /** The SavingsPlanOrderModel items on this page */
-export type SavingsPlanOrderModelListValueList =
-  ReadonlyArray<SavingsPlanOrderModel>;
+export type SavingsPlanOrderModelListValueList = Array<SavingsPlanOrderModel>;
 export const SavingsPlanOrderModelListValueList = /*@__PURE__*/ S.Array(
   SavingsPlanOrderModel,
 ) as any as S.Schema<SavingsPlanOrderModelListValueList>;
@@ -7705,7 +7696,7 @@ export const SavingsPlanUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SavingsPlanUpdateResponse>;
 
 export type SavingsPlanValidateUpdateRequestBenefitsList =
-  ReadonlyArray<SavingsPlanUpdateRequestPropertiesInput>;
+  Array<SavingsPlanUpdateRequestPropertiesInput>;
 export const SavingsPlanValidateUpdateRequestBenefitsList =
   /*@__PURE__*/ S.Array(
     SavingsPlanUpdateRequestPropertiesInput,
@@ -7755,7 +7746,7 @@ export const SavingsPlanValidResponseProperty = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SavingsPlanValidResponseProperty>;
 
 export type SavingsPlanValidateResponseBenefitsList =
-  ReadonlyArray<SavingsPlanValidResponseProperty>;
+  Array<SavingsPlanValidResponseProperty>;
 export const SavingsPlanValidateResponseBenefitsList = /*@__PURE__*/ S.Array(
   SavingsPlanValidResponseProperty,
 ) as any as S.Schema<SavingsPlanValidateResponseBenefitsList>;
@@ -7818,7 +7809,7 @@ export const SellerResourceListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "SellerResourceListRequest",
 }) as any as S.Schema<SellerResourceListRequest>;
 
-export type SellerResourceListResponseBodyList = ReadonlyArray<Macc>;
+export type SellerResourceListResponseBodyList = Array<Macc>;
 export const SellerResourceListResponseBodyList = /*@__PURE__*/ S.Array(
   Macc,
 ) as any as S.Schema<SellerResourceListResponseBodyList>;
@@ -8311,7 +8302,7 @@ export const CreditSource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreditSource" }) as any as S.Schema<CreditSource>;
 
 /** The CreditSource items on this page */
-export type CreditSourcesListValueList = ReadonlyArray<CreditSource>;
+export type CreditSourcesListValueList = Array<CreditSource>;
 export const CreditSourcesListValueList = /*@__PURE__*/ S.Array(
   CreditSource,
 ) as any as S.Schema<CreditSourcesListValueList>;

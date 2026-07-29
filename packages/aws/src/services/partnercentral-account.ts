@@ -463,7 +463,7 @@ export type IndustrySegment =
   | "WHOLESALE_DISTRIBUTION";
 export const IndustrySegment = /*@__PURE__*/ S.String;
 
-export type IndustrySegmentList = IndustrySegment[];
+export type IndustrySegmentList = (IndustrySegment | (string & {}))[];
 export const IndustrySegmentList = /*@__PURE__*/ S.Array(IndustrySegment);
 export type Locale = string;
 export interface LocalizedContent {
@@ -491,7 +491,7 @@ export interface TaskDetails {
   Description: string;
   WebsiteUrl: string;
   LogoUrl: string;
-  PrimarySolutionType: PrimarySolutionType;
+  PrimarySolutionType: PrimarySolutionType | (string & {});
   IndustrySegments: IndustrySegment[];
   TranslationSourceLocale: string;
   LocalizedContents?: LocalizedContent[];

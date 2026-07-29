@@ -134,7 +134,7 @@ export const GoogleMapsAddressvalidationV1LanguageOptions =
     identifier: "GoogleMapsAddressvalidationV1LanguageOptions",
   }) as any as S.Schema<GoogleMapsAddressvalidationV1LanguageOptions>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -526,7 +526,7 @@ export const GoogleMapsAddressvalidationV1AddressComponent =
   }) as any as S.Schema<GoogleMapsAddressvalidationV1AddressComponent>;
 
 export type GoogleMapsAddressvalidationV1AddressComponentList =
-  ReadonlyArray<GoogleMapsAddressvalidationV1AddressComponent>;
+  Array<GoogleMapsAddressvalidationV1AddressComponent>;
 export const GoogleMapsAddressvalidationV1AddressComponentList =
   /*@__PURE__*/ S.Array(
     GoogleMapsAddressvalidationV1AddressComponent,

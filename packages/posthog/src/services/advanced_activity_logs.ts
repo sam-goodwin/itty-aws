@@ -61,7 +61,7 @@ export const StaticFiltersUsersItemMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<StaticFiltersUsersItemMap>;
 
 /** Users who have logged activity. */
-export type StaticFiltersUsersList = ReadonlyArray<StaticFiltersUsersItemMap>;
+export type StaticFiltersUsersList = Array<StaticFiltersUsersItemMap>;
 export const StaticFiltersUsersList = /*@__PURE__*/ S.Array(
   StaticFiltersUsersItemMap,
 ) as any as S.Schema<StaticFiltersUsersList>;
@@ -73,7 +73,7 @@ export const StaticFiltersScopesItemMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<StaticFiltersScopesItemMap>;
 
 /** Available activity scopes. */
-export type StaticFiltersScopesList = ReadonlyArray<StaticFiltersScopesItemMap>;
+export type StaticFiltersScopesList = Array<StaticFiltersScopesItemMap>;
 export const StaticFiltersScopesList = /*@__PURE__*/ S.Array(
   StaticFiltersScopesItemMap,
 ) as any as S.Schema<StaticFiltersScopesList>;
@@ -87,8 +87,7 @@ export const StaticFiltersActivitiesItemMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<StaticFiltersActivitiesItemMap>;
 
 /** Available activity types. */
-export type StaticFiltersActivitiesList =
-  ReadonlyArray<StaticFiltersActivitiesItemMap>;
+export type StaticFiltersActivitiesList = Array<StaticFiltersActivitiesItemMap>;
 export const StaticFiltersActivitiesList = /*@__PURE__*/ S.Array(
   StaticFiltersActivitiesItemMap,
 ) as any as S.Schema<StaticFiltersActivitiesList>;
@@ -102,8 +101,7 @@ export const StaticFiltersClientsItemMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<StaticFiltersClientsItemMap>;
 
 /** API clients that have generated activity (from x-posthog-client header). */
-export type StaticFiltersClientsList =
-  ReadonlyArray<StaticFiltersClientsItemMap>;
+export type StaticFiltersClientsList = Array<StaticFiltersClientsItemMap>;
 export const StaticFiltersClientsList = /*@__PURE__*/ S.Array(
   StaticFiltersClientsItemMap,
 ) as any as S.Schema<StaticFiltersClientsList>;
@@ -307,41 +305,39 @@ export const ActivityLog = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ActivityLog" }) as any as S.Schema<ActivityLog>;
 
-export type AdvancedActivityLogsListRequestActivitiesList =
-  ReadonlyArray<string>;
+export type AdvancedActivityLogsListRequestActivitiesList = Array<string>;
 export const AdvancedActivityLogsListRequestActivitiesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AdvancedActivityLogsListRequestActivitiesList>;
 
-export type AdvancedActivityLogsListRequestClientsList = ReadonlyArray<string>;
+export type AdvancedActivityLogsListRequestClientsList = Array<string>;
 export const AdvancedActivityLogsListRequestClientsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AdvancedActivityLogsListRequestClientsList>;
 
-export type AdvancedActivityLogsListRequestIpAddressesList =
-  ReadonlyArray<string>;
+export type AdvancedActivityLogsListRequestIpAddressesList = Array<string>;
 export const AdvancedActivityLogsListRequestIpAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AdvancedActivityLogsListRequestIpAddressesList>;
 
-export type AdvancedActivityLogsListRequestItemIdsList = ReadonlyArray<string>;
+export type AdvancedActivityLogsListRequestItemIdsList = Array<string>;
 export const AdvancedActivityLogsListRequestItemIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AdvancedActivityLogsListRequestItemIdsList>;
 
-export type AdvancedActivityLogsListRequestScopesList = ReadonlyArray<string>;
+export type AdvancedActivityLogsListRequestScopesList = Array<string>;
 export const AdvancedActivityLogsListRequestScopesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AdvancedActivityLogsListRequestScopesList>;
 
-export type AdvancedActivityLogsListRequestTeamIdsList = ReadonlyArray<number>;
+export type AdvancedActivityLogsListRequestTeamIdsList = Array<number>;
 export const AdvancedActivityLogsListRequestTeamIdsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<AdvancedActivityLogsListRequestTeamIdsList>;
 
-export type AdvancedActivityLogsListRequestUsersList = ReadonlyArray<string>;
+export type AdvancedActivityLogsListRequestUsersList = Array<string>;
 export const AdvancedActivityLogsListRequestUsersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AdvancedActivityLogsListRequestUsersList>;
@@ -424,7 +420,7 @@ export const AdvancedActivityLogsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "AdvancedActivityLogsListRequest",
 }) as any as S.Schema<AdvancedActivityLogsListRequest>;
 
-export type PaginatedActivityLogListResultsList = ReadonlyArray<ActivityLog>;
+export type PaginatedActivityLogListResultsList = Array<ActivityLog>;
 export const PaginatedActivityLogListResultsList = /*@__PURE__*/ S.Array(
   ActivityLog,
 ) as any as S.Schema<PaginatedActivityLogListResultsList>;

@@ -17,7 +17,7 @@ export type PermissionTypes = "Read" | "Write" | "Manage";
 export const PermissionTypes = /*@__PURE__*/ S.String;
 
 /** The permissions associated with the policy. */
-export type AuthorizationPolicyInputPermissionsList = ReadonlyArray<
+export type AuthorizationPolicyInputPermissionsList = Array<
   PermissionTypes | (string & {})
 >;
 export const AuthorizationPolicyInputPermissionsList = /*@__PURE__*/ S.Array(
@@ -75,7 +75,7 @@ export const AuthorizationPoliciesCreateOrUpdateRequest =
   }) as any as S.Schema<AuthorizationPoliciesCreateOrUpdateRequest>;
 
 /** The permissions associated with the policy. */
-export type AuthorizationPolicyPermissionsList = ReadonlyArray<PermissionTypes>;
+export type AuthorizationPolicyPermissionsList = Array<PermissionTypes>;
 export const AuthorizationPolicyPermissionsList = /*@__PURE__*/ S.Array(
   PermissionTypes,
 ) as any as S.Schema<AuthorizationPolicyPermissionsList>;
@@ -220,7 +220,7 @@ export const AuthorizationPolicyResourceFormat = /*@__PURE__*/ S.suspend(() =>
 
 /** Results of the list operation. */
 export type AuthorizationPolicyListResultValueList =
-  ReadonlyArray<AuthorizationPolicyResourceFormat>;
+  Array<AuthorizationPolicyResourceFormat>;
 export const AuthorizationPolicyListResultValueList = /*@__PURE__*/ S.Array(
   AuthorizationPolicyResourceFormat,
 ) as any as S.Schema<AuthorizationPolicyListResultValueList>;
@@ -328,7 +328,9 @@ export const ConnectorMappingErrorManagementErrorManagementType =
 /** The error management. */
 export interface ConnectorMappingErrorManagement {
   /** The type of error management to use for the mapping. */
-  errorManagementType: ConnectorMappingErrorManagementErrorManagementType;
+  errorManagementType:
+    | ConnectorMappingErrorManagementErrorManagementType
+    | (string & {});
   /** The error limit allowed while importing data. */
   errorLimit?: number;
 }
@@ -348,7 +350,7 @@ export const ConnectorMappingFormatFormatType = /*@__PURE__*/ S.String;
 /** Connector mapping property format. */
 export interface ConnectorMappingFormat {
   /** The type mapping format. */
-  formatType: ConnectorMappingFormatFormatType;
+  formatType: ConnectorMappingFormatFormatType | (string & {});
   /** The character that signifies a break between columns. */
   columnDelimiter?: string;
   /** The oData language. */
@@ -385,7 +387,7 @@ export const ConnectorMappingAvailabilityFrequency = /*@__PURE__*/ S.String;
 /** Connector mapping property availability. */
 export interface ConnectorMappingAvailability {
   /** The frequency to update. */
-  frequency?: ConnectorMappingAvailabilityFrequency;
+  frequency?: ConnectorMappingAvailabilityFrequency | (string & {});
   /** The interval of the given frequency to use. */
   interval: number;
 }
@@ -422,7 +424,7 @@ export const ConnectorMappingStructure = /*@__PURE__*/ S.suspend(() =>
 
 /** Ingestion mapping information at property level. */
 export type ConnectorMappingPropertiesStructureList =
-  ReadonlyArray<ConnectorMappingStructure>;
+  Array<ConnectorMappingStructure>;
 export const ConnectorMappingPropertiesStructureList = /*@__PURE__*/ S.Array(
   ConnectorMappingStructure,
 ) as any as S.Schema<ConnectorMappingPropertiesStructureList>;
@@ -438,7 +440,9 @@ export const ConnectorMappingCompleteOperationCompletionOperationType =
 /** The complete operation. */
 export interface ConnectorMappingCompleteOperation {
   /** The type of completion operation. */
-  completionOperationType?: ConnectorMappingCompleteOperationCompletionOperationType;
+  completionOperationType?:
+    | ConnectorMappingCompleteOperationCompletionOperationType
+    | (string & {});
   /** The destination folder where files will be moved to once the import is done. */
   destinationFolder?: string;
 }
@@ -785,7 +789,7 @@ export const ConnectorMappingResourceFormat = /*@__PURE__*/ S.suspend(() =>
 
 /** Results of the list operation. */
 export type ConnectorMappingListResultValueList =
-  ReadonlyArray<ConnectorMappingResourceFormat>;
+  Array<ConnectorMappingResourceFormat>;
 export const ConnectorMappingListResultValueList = /*@__PURE__*/ S.Array(
   ConnectorMappingResourceFormat,
 ) as any as S.Schema<ConnectorMappingListResultValueList>;
@@ -1081,8 +1085,7 @@ export const ConnectorResourceFormat = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConnectorResourceFormat>;
 
 /** Results of the list operation. */
-export type ConnectorListResultValueList =
-  ReadonlyArray<ConnectorResourceFormat>;
+export type ConnectorListResultValueList = Array<ConnectorResourceFormat>;
 export const ConnectorListResultValueList = /*@__PURE__*/ S.Array(
   ConnectorResourceFormat,
 ) as any as S.Schema<ConnectorListResultValueList>;
@@ -1380,7 +1383,7 @@ export const Hub = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Hub" }) as any as S.Schema<Hub>;
 
 /** Results of the list operation. */
-export type HubListResultValueList = ReadonlyArray<Hub>;
+export type HubListResultValueList = Array<Hub>;
 export const HubListResultValueList = /*@__PURE__*/ S.Array(
   Hub,
 ) as any as S.Schema<HubListResultValueList>;
@@ -1582,8 +1585,7 @@ export const ImagesGetUploadUrlForEntityTypeRequest = /*@__PURE__*/ S.suspend(
   identifier: "ImagesGetUploadUrlForEntityTypeRequest",
 }) as any as S.Schema<ImagesGetUploadUrlForEntityTypeRequest>;
 
-export type InteractionTypeDefinitionInputAttributesValueList =
-  ReadonlyArray<string>;
+export type InteractionTypeDefinitionInputAttributesValueList = Array<string>;
 export const InteractionTypeDefinitionInputAttributesValueList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1678,7 +1680,7 @@ export const ProfileEnumValidValuesFormat = /*@__PURE__*/ S.suspend(() =>
 
 /** Describes valid values for an enum property. */
 export type PropertyDefinitionInputEnumValidValuesList =
-  ReadonlyArray<ProfileEnumValidValuesFormat>;
+  Array<ProfileEnumValidValuesFormat>;
 export const PropertyDefinitionInputEnumValidValuesList = /*@__PURE__*/ S.Array(
   ProfileEnumValidValuesFormat,
 ) as any as S.Schema<PropertyDefinitionInputEnumValidValuesList>;
@@ -1740,14 +1742,13 @@ export const PropertyDefinitionInput = /*@__PURE__*/ S.suspend(() =>
 
 /** The properties of the Profile. */
 export type InteractionTypeDefinitionInputFieldsList =
-  ReadonlyArray<PropertyDefinitionInput>;
+  Array<PropertyDefinitionInput>;
 export const InteractionTypeDefinitionInputFieldsList = /*@__PURE__*/ S.Array(
   PropertyDefinitionInput,
 ) as any as S.Schema<InteractionTypeDefinitionInputFieldsList>;
 
 /** The id property names. Properties which uniquely identify an interaction instance. */
-export type InteractionTypeDefinitionInputIdPropertyNamesList =
-  ReadonlyArray<string>;
+export type InteractionTypeDefinitionInputIdPropertyNamesList = Array<string>;
 export const InteractionTypeDefinitionInputIdPropertyNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1771,7 +1772,7 @@ export const ParticipantPropertyReference = /*@__PURE__*/ S.suspend(() =>
 
 /** The property references. */
 export type ParticipantParticipantPropertyReferencesList =
-  ReadonlyArray<ParticipantPropertyReference>;
+  Array<ParticipantPropertyReference>;
 export const ParticipantParticipantPropertyReferencesList =
   /*@__PURE__*/ S.Array(
     ParticipantPropertyReference,
@@ -1819,7 +1820,7 @@ export const Participant = /*@__PURE__*/ S.suspend(() =>
 
 /** Profiles that participated in the interaction. */
 export type InteractionTypeDefinitionInputParticipantProfilesList =
-  ReadonlyArray<Participant>;
+  Array<Participant>;
 export const InteractionTypeDefinitionInputParticipantProfilesList =
   /*@__PURE__*/ S.Array(
     Participant,
@@ -1936,8 +1937,7 @@ export const InteractionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "InteractionsCreateOrUpdateRequest",
 }) as any as S.Schema<InteractionsCreateOrUpdateRequest>;
 
-export type InteractionTypeDefinitionAttributesValueList =
-  ReadonlyArray<string>;
+export type InteractionTypeDefinitionAttributesValueList = Array<string>;
 export const InteractionTypeDefinitionAttributesValueList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2001,7 +2001,7 @@ export const InteractionTypeDefinitionEntityType = /*@__PURE__*/ S.String;
 
 /** Describes valid values for an enum property. */
 export type PropertyDefinitionEnumValidValuesList =
-  ReadonlyArray<ProfileEnumValidValuesFormat>;
+  Array<ProfileEnumValidValuesFormat>;
 export const PropertyDefinitionEnumValidValuesList = /*@__PURE__*/ S.Array(
   ProfileEnumValidValuesFormat,
 ) as any as S.Schema<PropertyDefinitionEnumValidValuesList>;
@@ -2057,7 +2057,7 @@ export const DataSourcePrecedence = /*@__PURE__*/ S.suspend(() =>
 
 /** This is specific to interactions modeled as activities. Data sources are used to determine where data is stored and also in precedence rules. */
 export type PropertyDefinitionDataSourcePrecedenceRulesList =
-  ReadonlyArray<DataSourcePrecedence>;
+  Array<DataSourcePrecedence>;
 export const PropertyDefinitionDataSourcePrecedenceRulesList =
   /*@__PURE__*/ S.Array(
     DataSourcePrecedence,
@@ -2124,8 +2124,7 @@ export const PropertyDefinition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PropertyDefinition>;
 
 /** The properties of the Profile. */
-export type InteractionTypeDefinitionFieldsList =
-  ReadonlyArray<PropertyDefinition>;
+export type InteractionTypeDefinitionFieldsList = Array<PropertyDefinition>;
 export const InteractionTypeDefinitionFieldsList = /*@__PURE__*/ S.Array(
   PropertyDefinition,
 ) as any as S.Schema<InteractionTypeDefinitionFieldsList>;
@@ -2141,8 +2140,7 @@ export type ProvisioningState =
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** The id property names. Properties which uniquely identify an interaction instance. */
-export type InteractionTypeDefinitionIdPropertyNamesList =
-  ReadonlyArray<string>;
+export type InteractionTypeDefinitionIdPropertyNamesList = Array<string>;
 export const InteractionTypeDefinitionIdPropertyNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2150,7 +2148,7 @@ export const InteractionTypeDefinitionIdPropertyNamesList =
 
 /** Profiles that participated in the interaction. */
 export type InteractionTypeDefinitionParticipantProfilesList =
-  ReadonlyArray<Participant>;
+  Array<Participant>;
 export const InteractionTypeDefinitionParticipantProfilesList =
   /*@__PURE__*/ S.Array(
     Participant,
@@ -2158,7 +2156,7 @@ export const InteractionTypeDefinitionParticipantProfilesList =
 
 /** This is specific to interactions modeled as activities. Data sources are used to determine where data is stored and also in precedence rules. */
 export type InteractionTypeDefinitionDataSourcePrecedenceRulesList =
-  ReadonlyArray<DataSourcePrecedence>;
+  Array<DataSourcePrecedence>;
 export const InteractionTypeDefinitionDataSourcePrecedenceRulesList =
   /*@__PURE__*/ S.Array(
     DataSourcePrecedence,
@@ -2370,8 +2368,7 @@ export const InteractionResourceFormat = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InteractionResourceFormat>;
 
 /** Results of the list operation. */
-export type InteractionListResultValueList =
-  ReadonlyArray<InteractionResourceFormat>;
+export type InteractionListResultValueList = Array<InteractionResourceFormat>;
 export const InteractionListResultValueList = /*@__PURE__*/ S.Array(
   InteractionResourceFormat,
 ) as any as S.Schema<InteractionListResultValueList>;
@@ -2439,7 +2436,7 @@ export const ParticipantProfilePropertyReference = /*@__PURE__*/ S.suspend(() =>
 
 /** The property references for the profile type. */
 export type RelationshipsLookupProfilePropertyReferencesList =
-  ReadonlyArray<ParticipantProfilePropertyReference>;
+  Array<ParticipantProfilePropertyReference>;
 export const RelationshipsLookupProfilePropertyReferencesList =
   /*@__PURE__*/ S.Array(
     ParticipantProfilePropertyReference,
@@ -2447,7 +2444,7 @@ export const RelationshipsLookupProfilePropertyReferencesList =
 
 /** The property references for the related profile type. */
 export type RelationshipsLookupRelatedProfilePropertyReferencesList =
-  ReadonlyArray<ParticipantProfilePropertyReference>;
+  Array<ParticipantProfilePropertyReference>;
 export const RelationshipsLookupRelatedProfilePropertyReferencesList =
   /*@__PURE__*/ S.Array(
     ParticipantProfilePropertyReference,
@@ -2484,7 +2481,7 @@ export const RelationshipsLookup = /*@__PURE__*/ S.suspend(() =>
 
 /** Suggested relationships for the type. */
 export type SuggestRelationshipLinksResponseSuggestedRelationshipsList =
-  ReadonlyArray<RelationshipsLookup>;
+  Array<RelationshipsLookup>;
 export const SuggestRelationshipLinksResponseSuggestedRelationshipsList =
   /*@__PURE__*/ S.Array(
     RelationshipsLookup,
@@ -2556,7 +2553,7 @@ export type KpiDefinitionInputFunction =
 export const KpiDefinitionInputFunction = /*@__PURE__*/ S.String;
 
 /** the group by properties for the KPI. */
-export type KpiDefinitionInputGroupByList = ReadonlyArray<string>;
+export type KpiDefinitionInputGroupByList = Array<string>;
 export const KpiDefinitionInputGroupByList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<KpiDefinitionInputGroupByList>;
@@ -2593,7 +2590,7 @@ export const KpiAlias = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "KpiAlias" }) as any as S.Schema<KpiAlias>;
 
 /** The aliases. */
-export type KpiDefinitionInputAliasesList = ReadonlyArray<KpiAlias>;
+export type KpiDefinitionInputAliasesList = Array<KpiAlias>;
 export const KpiDefinitionInputAliasesList = /*@__PURE__*/ S.Array(
   KpiAlias,
 ) as any as S.Schema<KpiDefinitionInputAliasesList>;
@@ -2613,7 +2610,7 @@ export const KpiExtract = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "KpiExtract" }) as any as S.Schema<KpiExtract>;
 
 /** The KPI extracts. */
-export type KpiDefinitionInputExtractsList = ReadonlyArray<KpiExtract>;
+export type KpiDefinitionInputExtractsList = Array<KpiExtract>;
 export const KpiDefinitionInputExtractsList = /*@__PURE__*/ S.Array(
   KpiExtract,
 ) as any as S.Schema<KpiDefinitionInputExtractsList>;
@@ -2744,7 +2741,7 @@ export type KpiDefinitionFunction =
 export const KpiDefinitionFunction = /*@__PURE__*/ S.String;
 
 /** the group by properties for the KPI. */
-export type KpiDefinitionGroupByList = ReadonlyArray<string>;
+export type KpiDefinitionGroupByList = Array<string>;
 export const KpiDefinitionGroupByList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<KpiDefinitionGroupByList>;
@@ -2778,8 +2775,7 @@ export const KpiGroupByMetadata = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<KpiGroupByMetadata>;
 
 /** The KPI GroupByMetadata. */
-export type KpiDefinitionGroupByMetadataList =
-  ReadonlyArray<KpiGroupByMetadata>;
+export type KpiDefinitionGroupByMetadataList = Array<KpiGroupByMetadata>;
 export const KpiDefinitionGroupByMetadataList = /*@__PURE__*/ S.Array(
   KpiGroupByMetadata,
 ) as any as S.Schema<KpiDefinitionGroupByMetadataList>;
@@ -2799,20 +2795,20 @@ export const KpiParticipantProfilesMetadata = /*@__PURE__*/ S.suspend(() =>
 
 /** The participant profiles. */
 export type KpiDefinitionParticipantProfilesMetadataList =
-  ReadonlyArray<KpiParticipantProfilesMetadata>;
+  Array<KpiParticipantProfilesMetadata>;
 export const KpiDefinitionParticipantProfilesMetadataList =
   /*@__PURE__*/ S.Array(
     KpiParticipantProfilesMetadata,
   ) as any as S.Schema<KpiDefinitionParticipantProfilesMetadataList>;
 
 /** The aliases. */
-export type KpiDefinitionAliasesList = ReadonlyArray<KpiAlias>;
+export type KpiDefinitionAliasesList = Array<KpiAlias>;
 export const KpiDefinitionAliasesList = /*@__PURE__*/ S.Array(
   KpiAlias,
 ) as any as S.Schema<KpiDefinitionAliasesList>;
 
 /** The KPI extracts. */
-export type KpiDefinitionExtractsList = ReadonlyArray<KpiExtract>;
+export type KpiDefinitionExtractsList = Array<KpiExtract>;
 export const KpiDefinitionExtractsList = /*@__PURE__*/ S.Array(
   KpiExtract,
 ) as any as S.Schema<KpiDefinitionExtractsList>;
@@ -3030,7 +3026,7 @@ export const KpiResourceFormat = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<KpiResourceFormat>;
 
 /** Results of the list operation. */
-export type KpiListResultValueList = ReadonlyArray<KpiResourceFormat>;
+export type KpiListResultValueList = Array<KpiResourceFormat>;
 export const KpiListResultValueList = /*@__PURE__*/ S.Array(
   KpiResourceFormat,
 ) as any as S.Schema<KpiListResultValueList>;
@@ -3129,7 +3125,7 @@ export interface TypePropertiesMapping {
   /** Property name on the target Entity Type. */
   targetPropertyName: string;
   /** Link type. */
-  linkType?: TypePropertiesMappingLinkType;
+  linkType?: TypePropertiesMappingLinkType | (string & {});
 }
 export const TypePropertiesMapping = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3142,15 +3138,14 @@ export const TypePropertiesMapping = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TypePropertiesMapping>;
 
 /** The set of properties mappings between the source and target Types. */
-export type LinkDefinitionInputMappingsList =
-  ReadonlyArray<TypePropertiesMapping>;
+export type LinkDefinitionInputMappingsList = Array<TypePropertiesMapping>;
 export const LinkDefinitionInputMappingsList = /*@__PURE__*/ S.Array(
   TypePropertiesMapping,
 ) as any as S.Schema<LinkDefinitionInputMappingsList>;
 
 /** The properties that represent the participating profile. */
 export type LinkDefinitionInputParticipantPropertyReferencesList =
-  ReadonlyArray<ParticipantPropertyReference>;
+  Array<ParticipantPropertyReference>;
 export const LinkDefinitionInputParticipantPropertyReferencesList =
   /*@__PURE__*/ S.Array(
     ParticipantPropertyReference,
@@ -3266,14 +3261,14 @@ export const LinkDefinitionDescriptionMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<LinkDefinitionDescriptionMap>;
 
 /** The set of properties mappings between the source and target Types. */
-export type LinkDefinitionMappingsList = ReadonlyArray<TypePropertiesMapping>;
+export type LinkDefinitionMappingsList = Array<TypePropertiesMapping>;
 export const LinkDefinitionMappingsList = /*@__PURE__*/ S.Array(
   TypePropertiesMapping,
 ) as any as S.Schema<LinkDefinitionMappingsList>;
 
 /** The properties that represent the participating profile. */
 export type LinkDefinitionParticipantPropertyReferencesList =
-  ReadonlyArray<ParticipantPropertyReference>;
+  Array<ParticipantPropertyReference>;
 export const LinkDefinitionParticipantPropertyReferencesList =
   /*@__PURE__*/ S.Array(
     ParticipantPropertyReference,
@@ -3481,7 +3476,7 @@ export const LinkResourceFormat = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LinkResourceFormat>;
 
 /** Results of the list operation. */
-export type LinkListResultValueList = ReadonlyArray<LinkResourceFormat>;
+export type LinkListResultValueList = Array<LinkResourceFormat>;
 export const LinkListResultValueList = /*@__PURE__*/ S.Array(
   LinkResourceFormat,
 ) as any as S.Schema<LinkListResultValueList>;
@@ -3548,7 +3543,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of Customer Insights operations supported by the Microsoft.CustomerInsights resource provider. */
-export type OperationListResultValueList = ReadonlyArray<Operation>;
+export type OperationListResultValueList = Array<Operation>;
 export const OperationListResultValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationListResultValueList>;
@@ -3588,20 +3583,20 @@ export const PredictionInputDisplayNameMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<PredictionInputDisplayNameMap>;
 
 /** Interaction types involved in the prediction. */
-export type PredictionInputInvolvedInteractionTypesList = ReadonlyArray<string>;
+export type PredictionInputInvolvedInteractionTypesList = Array<string>;
 export const PredictionInputInvolvedInteractionTypesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PredictionInputInvolvedInteractionTypesList>;
 
 /** KPI types involved in the prediction. */
-export type PredictionInputInvolvedKpiTypesList = ReadonlyArray<string>;
+export type PredictionInputInvolvedKpiTypesList = Array<string>;
 export const PredictionInputInvolvedKpiTypesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PredictionInputInvolvedKpiTypesList>;
 
 /** Relationships involved in the prediction. */
-export type PredictionInputInvolvedRelationshipsList = ReadonlyArray<string>;
+export type PredictionInputInvolvedRelationshipsList = Array<string>;
 export const PredictionInputInvolvedRelationshipsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PredictionInputInvolvedRelationshipsList>;
@@ -3645,8 +3640,7 @@ export const PredictionInputGradesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PredictionInputGradesItem>;
 
 /** The prediction grades. */
-export type PredictionInputGradesList =
-  ReadonlyArray<PredictionInputGradesItem>;
+export type PredictionInputGradesList = Array<PredictionInputGradesItem>;
 export const PredictionInputGradesList = /*@__PURE__*/ S.Array(
   PredictionInputGradesItem,
 ) as any as S.Schema<PredictionInputGradesList>;
@@ -3750,19 +3744,19 @@ export const PredictionDisplayNameMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<PredictionDisplayNameMap>;
 
 /** Interaction types involved in the prediction. */
-export type PredictionInvolvedInteractionTypesList = ReadonlyArray<string>;
+export type PredictionInvolvedInteractionTypesList = Array<string>;
 export const PredictionInvolvedInteractionTypesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PredictionInvolvedInteractionTypesList>;
 
 /** KPI types involved in the prediction. */
-export type PredictionInvolvedKpiTypesList = ReadonlyArray<string>;
+export type PredictionInvolvedKpiTypesList = Array<string>;
 export const PredictionInvolvedKpiTypesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PredictionInvolvedKpiTypesList>;
 
 /** Relationships involved in the prediction. */
-export type PredictionInvolvedRelationshipsList = ReadonlyArray<string>;
+export type PredictionInvolvedRelationshipsList = Array<string>;
 export const PredictionInvolvedRelationshipsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PredictionInvolvedRelationshipsList>;
@@ -3806,22 +3800,21 @@ export const PredictionGradesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PredictionGradesItem>;
 
 /** The prediction grades. */
-export type PredictionGradesList = ReadonlyArray<PredictionGradesItem>;
+export type PredictionGradesList = Array<PredictionGradesItem>;
 export const PredictionGradesList = /*@__PURE__*/ S.Array(
   PredictionGradesItem,
 ) as any as S.Schema<PredictionGradesList>;
 
 /** Generated interaction types. */
 export type PredictionSystemGeneratedEntitiesGeneratedInteractionTypesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PredictionSystemGeneratedEntitiesGeneratedInteractionTypesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PredictionSystemGeneratedEntitiesGeneratedInteractionTypesList>;
 
 /** Generated links. */
-export type PredictionSystemGeneratedEntitiesGeneratedLinksList =
-  ReadonlyArray<string>;
+export type PredictionSystemGeneratedEntitiesGeneratedLinksList = Array<string>;
 export const PredictionSystemGeneratedEntitiesGeneratedLinksList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4176,7 +4169,7 @@ export const PredictionDistributionDefinitionDistributionsItem =
 
 /** Distributions of the prediction. */
 export type PredictionDistributionDefinitionDistributionsList =
-  ReadonlyArray<PredictionDistributionDefinitionDistributionsItem>;
+  Array<PredictionDistributionDefinitionDistributionsItem>;
 export const PredictionDistributionDefinitionDistributionsList =
   /*@__PURE__*/ S.Array(
     PredictionDistributionDefinitionDistributionsItem,
@@ -4240,7 +4233,7 @@ export const CanonicalProfileDefinitionPropertiesItem = /*@__PURE__*/ S.suspend(
 
 /** Properties of the canonical profile. */
 export type CanonicalProfileDefinitionPropertiesList =
-  ReadonlyArray<CanonicalProfileDefinitionPropertiesItem>;
+  Array<CanonicalProfileDefinitionPropertiesItem>;
 export const CanonicalProfileDefinitionPropertiesList = /*@__PURE__*/ S.Array(
   CanonicalProfileDefinitionPropertiesItem,
 ) as any as S.Schema<CanonicalProfileDefinitionPropertiesList>;
@@ -4263,7 +4256,7 @@ export const CanonicalProfileDefinition = /*@__PURE__*/ S.suspend(() =>
 
 /** Canonical profiles. */
 export type PredictionTrainingResultsCanonicalProfilesList =
-  ReadonlyArray<CanonicalProfileDefinition>;
+  Array<CanonicalProfileDefinition>;
 export const PredictionTrainingResultsCanonicalProfilesList =
   /*@__PURE__*/ S.Array(
     CanonicalProfileDefinition,
@@ -4343,8 +4336,7 @@ export const PredictionResourceFormat = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PredictionResourceFormat>;
 
 /** Results of the list operation. */
-export type PredictionListResultValueList =
-  ReadonlyArray<PredictionResourceFormat>;
+export type PredictionListResultValueList = Array<PredictionResourceFormat>;
 export const PredictionListResultValueList = /*@__PURE__*/ S.Array(
   PredictionResourceFormat,
 ) as any as S.Schema<PredictionListResultValueList>;
@@ -4425,8 +4417,7 @@ export const PredictionsModelStatusResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PredictionsModelStatusResponse",
 }) as any as S.Schema<PredictionsModelStatusResponse>;
 
-export type ProfileTypeDefinitionInputAttributesValueList =
-  ReadonlyArray<string>;
+export type ProfileTypeDefinitionInputAttributesValueList = Array<string>;
 export const ProfileTypeDefinitionInputAttributesValueList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4490,13 +4481,13 @@ export const ProfileTypeDefinitionInputEntityType = /*@__PURE__*/ S.String;
 
 /** The properties of the Profile. */
 export type ProfileTypeDefinitionInputFieldsList =
-  ReadonlyArray<PropertyDefinitionInput>;
+  Array<PropertyDefinitionInput>;
 export const ProfileTypeDefinitionInputFieldsList = /*@__PURE__*/ S.Array(
   PropertyDefinitionInput,
 ) as any as S.Schema<ProfileTypeDefinitionInputFieldsList>;
 
 /** The properties which make up the unique ID. */
-export type StrongIdKeyPropertyNamesList = ReadonlyArray<string>;
+export type StrongIdKeyPropertyNamesList = Array<string>;
 export const StrongIdKeyPropertyNamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StrongIdKeyPropertyNamesList>;
@@ -4536,7 +4527,7 @@ export const StrongId = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StrongId" }) as any as S.Schema<StrongId>;
 
 /** The strong IDs. */
-export type ProfileTypeDefinitionInputStrongIdsList = ReadonlyArray<StrongId>;
+export type ProfileTypeDefinitionInputStrongIdsList = Array<StrongId>;
 export const ProfileTypeDefinitionInputStrongIdsList = /*@__PURE__*/ S.Array(
   StrongId,
 ) as any as S.Schema<ProfileTypeDefinitionInputStrongIdsList>;
@@ -4628,7 +4619,7 @@ export const ProfilesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProfilesCreateOrUpdateRequest",
 }) as any as S.Schema<ProfilesCreateOrUpdateRequest>;
 
-export type ProfileTypeDefinitionAttributesValueList = ReadonlyArray<string>;
+export type ProfileTypeDefinitionAttributesValueList = Array<string>;
 export const ProfileTypeDefinitionAttributesValueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ProfileTypeDefinitionAttributesValueList>;
@@ -4688,13 +4679,13 @@ export type ProfileTypeDefinitionEntityType =
 export const ProfileTypeDefinitionEntityType = /*@__PURE__*/ S.String;
 
 /** The properties of the Profile. */
-export type ProfileTypeDefinitionFieldsList = ReadonlyArray<PropertyDefinition>;
+export type ProfileTypeDefinitionFieldsList = Array<PropertyDefinition>;
 export const ProfileTypeDefinitionFieldsList = /*@__PURE__*/ S.Array(
   PropertyDefinition,
 ) as any as S.Schema<ProfileTypeDefinitionFieldsList>;
 
 /** The strong IDs. */
-export type ProfileTypeDefinitionStrongIdsList = ReadonlyArray<StrongId>;
+export type ProfileTypeDefinitionStrongIdsList = Array<StrongId>;
 export const ProfileTypeDefinitionStrongIdsList = /*@__PURE__*/ S.Array(
   StrongId,
 ) as any as S.Schema<ProfileTypeDefinitionStrongIdsList>;
@@ -4902,8 +4893,7 @@ export const ProfilesGetEnrichingKpisRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProfilesGetEnrichingKpisRequest",
 }) as any as S.Schema<ProfilesGetEnrichingKpisRequest>;
 
-export type ProfilesGetEnrichingKpisResponseBodyList =
-  ReadonlyArray<KpiDefinition>;
+export type ProfilesGetEnrichingKpisResponseBodyList = Array<KpiDefinition>;
 export const ProfilesGetEnrichingKpisResponseBodyList = /*@__PURE__*/ S.Array(
   KpiDefinition,
 ) as any as S.Schema<ProfilesGetEnrichingKpisResponseBodyList>;
@@ -4966,7 +4956,7 @@ export const ProfileResourceFormat = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProfileResourceFormat>;
 
 /** Results of the list operation. */
-export type ProfileListResultValueList = ReadonlyArray<ProfileResourceFormat>;
+export type ProfileListResultValueList = Array<ProfileResourceFormat>;
 export const ProfileListResultValueList = /*@__PURE__*/ S.Array(
   ProfileResourceFormat,
 ) as any as S.Schema<ProfileListResultValueList>;
@@ -5018,7 +5008,7 @@ export interface RelationshipLinkFieldMapping {
   /** The field name on the Interaction Type. */
   interactionFieldName: string;
   /** Link type. */
-  linkType?: RelationshipLinkFieldMappingLinkType;
+  linkType?: RelationshipLinkFieldMappingLinkType | (string & {});
   /** The field name on the Relationship metadata. */
   relationshipFieldName: string;
 }
@@ -5034,7 +5024,7 @@ export const RelationshipLinkFieldMapping = /*@__PURE__*/ S.suspend(() =>
 
 /** The mappings between Interaction and Relationship fields. */
 export type RelationshipLinkDefinitionInputMappingsList =
-  ReadonlyArray<RelationshipLinkFieldMapping>;
+  Array<RelationshipLinkFieldMapping>;
 export const RelationshipLinkDefinitionInputMappingsList =
   /*@__PURE__*/ S.Array(
     RelationshipLinkFieldMapping,
@@ -5042,7 +5032,7 @@ export const RelationshipLinkDefinitionInputMappingsList =
 
 /** The property references for the Profile of the Relationship. */
 export type RelationshipLinkDefinitionInputProfilePropertyReferencesList =
-  ReadonlyArray<ParticipantProfilePropertyReference>;
+  Array<ParticipantProfilePropertyReference>;
 export const RelationshipLinkDefinitionInputProfilePropertyReferencesList =
   /*@__PURE__*/ S.Array(
     ParticipantProfilePropertyReference,
@@ -5050,7 +5040,7 @@ export const RelationshipLinkDefinitionInputProfilePropertyReferencesList =
 
 /** The property references for the Related Profile of the Relationship. */
 export type RelationshipLinkDefinitionInputRelatedProfilePropertyReferencesList =
-  ReadonlyArray<ParticipantProfilePropertyReference>;
+  Array<ParticipantProfilePropertyReference>;
 export const RelationshipLinkDefinitionInputRelatedProfilePropertyReferencesList =
   /*@__PURE__*/ S.Array(
     ParticipantProfilePropertyReference,
@@ -5140,14 +5130,14 @@ export const RelationshipLinkDefinitionDescriptionMap = /*@__PURE__*/ S.Record(
 
 /** The mappings between Interaction and Relationship fields. */
 export type RelationshipLinkDefinitionMappingsList =
-  ReadonlyArray<RelationshipLinkFieldMapping>;
+  Array<RelationshipLinkFieldMapping>;
 export const RelationshipLinkDefinitionMappingsList = /*@__PURE__*/ S.Array(
   RelationshipLinkFieldMapping,
 ) as any as S.Schema<RelationshipLinkDefinitionMappingsList>;
 
 /** The property references for the Profile of the Relationship. */
 export type RelationshipLinkDefinitionProfilePropertyReferencesList =
-  ReadonlyArray<ParticipantProfilePropertyReference>;
+  Array<ParticipantProfilePropertyReference>;
 export const RelationshipLinkDefinitionProfilePropertyReferencesList =
   /*@__PURE__*/ S.Array(
     ParticipantProfilePropertyReference,
@@ -5155,7 +5145,7 @@ export const RelationshipLinkDefinitionProfilePropertyReferencesList =
 
 /** The property references for the Related Profile of the Relationship. */
 export type RelationshipLinkDefinitionRelatedProfilePropertyReferencesList =
-  ReadonlyArray<ParticipantProfilePropertyReference>;
+  Array<ParticipantProfilePropertyReference>;
 export const RelationshipLinkDefinitionRelatedProfilePropertyReferencesList =
   /*@__PURE__*/ S.Array(
     ParticipantProfilePropertyReference,
@@ -5358,7 +5348,7 @@ export const RelationshipLinkResourceFormat = /*@__PURE__*/ S.suspend(() =>
 
 /** Results of the list operation. */
 export type RelationshipLinkListResultValueList =
-  ReadonlyArray<RelationshipLinkResourceFormat>;
+  Array<RelationshipLinkResourceFormat>;
 export const RelationshipLinkListResultValueList = /*@__PURE__*/ S.Array(
   RelationshipLinkResourceFormat,
 ) as any as S.Schema<RelationshipLinkListResultValueList>;
@@ -5406,7 +5396,7 @@ export const RelationshipDefinitionInputDescriptionMap = /*@__PURE__*/ S.Record(
 
 /** The properties of the Relationship. */
 export type RelationshipDefinitionInputFieldsList =
-  ReadonlyArray<PropertyDefinitionInput>;
+  Array<PropertyDefinitionInput>;
 export const RelationshipDefinitionInputFieldsList = /*@__PURE__*/ S.Array(
   PropertyDefinitionInput,
 ) as any as S.Schema<RelationshipDefinitionInputFieldsList>;
@@ -5429,7 +5419,7 @@ export const RelationshipTypeFieldMapping = /*@__PURE__*/ S.suspend(() =>
 
 /** Maps a profile property with the StrongId of related profile. This is an array to support StrongIds that are composite key as well. */
 export type RelationshipTypeMappingFieldMappingsList =
-  ReadonlyArray<RelationshipTypeFieldMapping>;
+  Array<RelationshipTypeFieldMapping>;
 export const RelationshipTypeMappingFieldMappingsList = /*@__PURE__*/ S.Array(
   RelationshipTypeFieldMapping,
 ) as any as S.Schema<RelationshipTypeMappingFieldMappingsList>;
@@ -5449,7 +5439,7 @@ export const RelationshipTypeMapping = /*@__PURE__*/ S.suspend(() =>
 
 /** Optional property to be used to map fields in profile to their strong ids in related profile. */
 export type RelationshipDefinitionInputLookupMappingsList =
-  ReadonlyArray<RelationshipTypeMapping>;
+  Array<RelationshipTypeMapping>;
 export const RelationshipDefinitionInputLookupMappingsList =
   /*@__PURE__*/ S.Array(
     RelationshipTypeMapping,
@@ -5545,15 +5535,14 @@ export const RelationshipDefinitionDescriptionMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<RelationshipDefinitionDescriptionMap>;
 
 /** The properties of the Relationship. */
-export type RelationshipDefinitionFieldsList =
-  ReadonlyArray<PropertyDefinition>;
+export type RelationshipDefinitionFieldsList = Array<PropertyDefinition>;
 export const RelationshipDefinitionFieldsList = /*@__PURE__*/ S.Array(
   PropertyDefinition,
 ) as any as S.Schema<RelationshipDefinitionFieldsList>;
 
 /** Optional property to be used to map fields in profile to their strong ids in related profile. */
 export type RelationshipDefinitionLookupMappingsList =
-  ReadonlyArray<RelationshipTypeMapping>;
+  Array<RelationshipTypeMapping>;
 export const RelationshipDefinitionLookupMappingsList = /*@__PURE__*/ S.Array(
   RelationshipTypeMapping,
 ) as any as S.Schema<RelationshipDefinitionLookupMappingsList>;
@@ -5754,8 +5743,7 @@ export const RelationshipResourceFormat = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RelationshipResourceFormat>;
 
 /** Results of the list operation. */
-export type RelationshipListResultValueList =
-  ReadonlyArray<RelationshipResourceFormat>;
+export type RelationshipListResultValueList = Array<RelationshipResourceFormat>;
 export const RelationshipListResultValueList = /*@__PURE__*/ S.Array(
   RelationshipResourceFormat,
 ) as any as S.Schema<RelationshipListResultValueList>;
@@ -5833,20 +5821,19 @@ export const AssignmentPrincipal = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AssignmentPrincipal>;
 
 /** The principals being assigned to. */
-export type RoleAssignmentInputPrincipalsList =
-  ReadonlyArray<AssignmentPrincipal>;
+export type RoleAssignmentInputPrincipalsList = Array<AssignmentPrincipal>;
 export const RoleAssignmentInputPrincipalsList = /*@__PURE__*/ S.Array(
   AssignmentPrincipal,
 ) as any as S.Schema<RoleAssignmentInputPrincipalsList>;
 
 /** The elements included in the set. */
-export type ResourceSetDescriptionElementsList = ReadonlyArray<string>;
+export type ResourceSetDescriptionElementsList = Array<string>;
 export const ResourceSetDescriptionElementsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ResourceSetDescriptionElementsList>;
 
 /** The elements that are not included in the set, in case elements contains '*' indicating 'all'. */
-export type ResourceSetDescriptionExceptionsList = ReadonlyArray<string>;
+export type ResourceSetDescriptionExceptionsList = Array<string>;
 export const ResourceSetDescriptionExceptionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ResourceSetDescriptionExceptionsList>;
@@ -5988,7 +5975,7 @@ export type RoleAssignmentRole =
 export const RoleAssignmentRole = /*@__PURE__*/ S.String;
 
 /** The principals being assigned to. */
-export type RoleAssignmentPrincipalsList = ReadonlyArray<AssignmentPrincipal>;
+export type RoleAssignmentPrincipalsList = Array<AssignmentPrincipal>;
 export const RoleAssignmentPrincipalsList = /*@__PURE__*/ S.Array(
   AssignmentPrincipal,
 ) as any as S.Schema<RoleAssignmentPrincipalsList>;
@@ -6213,7 +6200,7 @@ export const RoleAssignmentResourceFormat = /*@__PURE__*/ S.suspend(() =>
 
 /** Results of the list operation. */
 export type RoleAssignmentListResultValueList =
-  ReadonlyArray<RoleAssignmentResourceFormat>;
+  Array<RoleAssignmentResourceFormat>;
 export const RoleAssignmentListResultValueList = /*@__PURE__*/ S.Array(
   RoleAssignmentResourceFormat,
 ) as any as S.Schema<RoleAssignmentListResultValueList>;
@@ -6295,7 +6282,7 @@ export const RoleResourceFormat = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RoleResourceFormat>;
 
 /** Results of the list operation. */
-export type RoleListResultValueList = ReadonlyArray<RoleResourceFormat>;
+export type RoleListResultValueList = Array<RoleResourceFormat>;
 export const RoleListResultValueList = /*@__PURE__*/ S.Array(
   RoleResourceFormat,
 ) as any as S.Schema<RoleListResultValueList>;
@@ -6563,7 +6550,7 @@ export const ViewResourceFormat = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ViewResourceFormat>;
 
 /** Results of the list operation. */
-export type ViewListResultValueList = ReadonlyArray<ViewResourceFormat>;
+export type ViewListResultValueList = Array<ViewResourceFormat>;
 export const ViewListResultValueList = /*@__PURE__*/ S.Array(
   ViewResourceFormat,
 ) as any as S.Schema<ViewListResultValueList>;
@@ -6719,8 +6706,7 @@ export const WidgetTypeResourceFormat = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WidgetTypeResourceFormat>;
 
 /** Results of the list operation. */
-export type WidgetTypeListResultValueList =
-  ReadonlyArray<WidgetTypeResourceFormat>;
+export type WidgetTypeListResultValueList = Array<WidgetTypeResourceFormat>;
 export const WidgetTypeListResultValueList = /*@__PURE__*/ S.Array(
   WidgetTypeResourceFormat,
 ) as any as S.Schema<WidgetTypeListResultValueList>;

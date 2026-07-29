@@ -74,10 +74,9 @@ export type AggregateRequestFilteredDataQualityStandardItemEnum =
 export const AggregateRequestFilteredDataQualityStandardItemEnum =
   /*@__PURE__*/ S.String;
 
-export type AggregateRequestFilteredDataQualityStandardItemEnumList =
-  ReadonlyArray<
-    AggregateRequestFilteredDataQualityStandardItemEnum | (string & {})
-  >;
+export type AggregateRequestFilteredDataQualityStandardItemEnumList = Array<
+  AggregateRequestFilteredDataQualityStandardItemEnum | (string & {})
+>;
 export const AggregateRequestFilteredDataQualityStandardItemEnumList =
   /*@__PURE__*/ S.Array(
     AggregateRequestFilteredDataQualityStandardItemEnum,
@@ -97,7 +96,7 @@ export const AggregateBy = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AggregateBy" }) as any as S.Schema<AggregateBy>;
 
-export type AggregateByList = ReadonlyArray<AggregateBy>;
+export type AggregateByList = Array<AggregateBy>;
 export const AggregateByList = /*@__PURE__*/ S.Array(
   AggregateBy,
 ) as any as S.Schema<AggregateByList>;
@@ -303,7 +302,7 @@ export const ValueMapValEntry = /*@__PURE__*/ S.suspend(() =>
   identifier: "ValueMapValEntry",
 }) as any as S.Schema<ValueMapValEntry>;
 
-export type ValueMapValEntryList = ReadonlyArray<ValueMapValEntry>;
+export type ValueMapValEntryList = Array<ValueMapValEntry>;
 export const ValueMapValEntryList = /*@__PURE__*/ S.Array(
   ValueMapValEntry,
 ) as any as S.Schema<ValueMapValEntryList>;
@@ -328,7 +327,7 @@ export const Value = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Value" }) as any as S.Schema<Value>;
 
-export type ValueList = ReadonlyArray<Value>;
+export type ValueList = Array<Value>;
 export const ValueList = /*@__PURE__*/ S.Array(
   Value,
 ) as any as S.Schema<ValueList>;
@@ -365,7 +364,7 @@ export const DataPoint = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DataPoint" }) as any as S.Schema<DataPoint>;
 
-export type DataPointList = ReadonlyArray<DataPoint>;
+export type DataPointList = Array<DataPoint>;
 export const DataPointList = /*@__PURE__*/ S.Array(
   DataPoint,
 ) as any as S.Schema<DataPointList>;
@@ -393,7 +392,7 @@ export const Dataset = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Dataset" }) as any as S.Schema<Dataset>;
 
-export type DatasetList = ReadonlyArray<Dataset>;
+export type DatasetList = Array<Dataset>;
 export const DatasetList = /*@__PURE__*/ S.Array(
   Dataset,
 ) as any as S.Schema<DatasetList>;
@@ -425,7 +424,7 @@ export const AggregateBucket = /*@__PURE__*/ S.suspend(() =>
   identifier: "AggregateBucket",
 }) as any as S.Schema<AggregateBucket>;
 
-export type AggregateBucketList = ReadonlyArray<AggregateBucket>;
+export type AggregateBucketList = Array<AggregateBucket>;
 export const AggregateBucketList = /*@__PURE__*/ S.Array(
   AggregateBucket,
 ) as any as S.Schema<AggregateBucketList>;
@@ -457,7 +456,7 @@ export interface DataTypeField {
   /** Defines the name and format of data. Unlike data type names, field names are not namespaced, and only need to be unique within the data type. */
   name?: string;
   /** The different supported formats for each field in a data type. */
-  format?: DataTypeFieldFormatEnum;
+  format?: DataTypeFieldFormatEnum | (string & {});
   optional?: boolean;
 }
 export const DataTypeField = /*@__PURE__*/ S.suspend(() =>
@@ -468,7 +467,7 @@ export const DataTypeField = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DataTypeField" }) as any as S.Schema<DataTypeField>;
 
-export type DataTypeFieldList = ReadonlyArray<DataTypeField>;
+export type DataTypeFieldList = Array<DataTypeField>;
 export const DataTypeFieldList = /*@__PURE__*/ S.Array(
   DataTypeField,
 ) as any as S.Schema<DataTypeFieldList>;
@@ -499,8 +498,9 @@ export type DataSourceDataQualityStandardItemEnum =
   | "dataQualityBloodGlucoseIso151972013";
 export const DataSourceDataQualityStandardItemEnum = /*@__PURE__*/ S.String;
 
-export type DataSourceDataQualityStandardItemEnumList =
-  ReadonlyArray<DataSourceDataQualityStandardItemEnum>;
+export type DataSourceDataQualityStandardItemEnumList = Array<
+  DataSourceDataQualityStandardItemEnum | (string & {})
+>;
 export const DataSourceDataQualityStandardItemEnumList = /*@__PURE__*/ S.Array(
   DataSourceDataQualityStandardItemEnum,
 ) as any as S.Schema<DataSourceDataQualityStandardItemEnumList>;
@@ -527,7 +527,7 @@ export interface Device {
   /** Version string for the device hardware/software. */
   version?: string;
   /** A constant representing the type of the device. */
-  type?: DeviceTypeEnum;
+  type?: DeviceTypeEnum | (string & {});
 }
 export const Device = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -559,7 +559,7 @@ export interface DataSource {
   /** Representation of an integrated device (such as a phone or a wearable) that can hold sensors. */
   device?: Device;
   /** A constant describing the type of this data source. Indicates whether this data source produces raw or derived data. */
-  type?: DataSourceTypeEnum;
+  type?: DataSourceTypeEnum | (string & {});
 }
 export const DataSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -727,7 +727,7 @@ export const GetUsersDataSourcesDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetUsersDataSourcesDatasetsRequest",
 }) as any as S.Schema<GetUsersDataSourcesDatasetsRequest>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -753,7 +753,7 @@ export const ListUsersDataSourcesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListUsersDataSourcesRequest",
 }) as any as S.Schema<ListUsersDataSourcesRequest>;
 
-export type DataSourceList = ReadonlyArray<DataSource>;
+export type DataSourceList = Array<DataSource>;
 export const DataSourceList = /*@__PURE__*/ S.Array(
   DataSource,
 ) as any as S.Schema<DataSourceList>;
@@ -819,7 +819,7 @@ export const ListDataPointChangesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListDataPointChangesResponse",
 }) as any as S.Schema<ListDataPointChangesResponse>;
 
-export type IntegerList = ReadonlyArray<number>;
+export type IntegerList = Array<number>;
 export const IntegerList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<IntegerList>;
@@ -857,7 +857,7 @@ export const ListUsersSessionsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListUsersSessionsRequest",
 }) as any as S.Schema<ListUsersSessionsRequest>;
 
-export type SessionList = ReadonlyArray<Session>;
+export type SessionList = Array<Session>;
 export const SessionList = /*@__PURE__*/ S.Array(
   Session,
 ) as any as S.Schema<SessionList>;

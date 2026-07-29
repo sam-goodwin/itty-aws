@@ -36,7 +36,7 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -78,7 +78,7 @@ export const GoogleSecuritySafebrowsingV5HashListMetadataThreatTypesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleSecuritySafebrowsingV5HashListMetadataThreatTypesItemEnumList =
-  ReadonlyArray<GoogleSecuritySafebrowsingV5HashListMetadataThreatTypesItemEnum>;
+  Array<GoogleSecuritySafebrowsingV5HashListMetadataThreatTypesItemEnum>;
 export const GoogleSecuritySafebrowsingV5HashListMetadataThreatTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleSecuritySafebrowsingV5HashListMetadataThreatTypesItemEnum,
@@ -99,7 +99,7 @@ export const GoogleSecuritySafebrowsingV5HashListMetadataLikelySafeTypesItemEnum
   /*@__PURE__*/ S.String;
 
 export type GoogleSecuritySafebrowsingV5HashListMetadataLikelySafeTypesItemEnumList =
-  ReadonlyArray<GoogleSecuritySafebrowsingV5HashListMetadataLikelySafeTypesItemEnum>;
+  Array<GoogleSecuritySafebrowsingV5HashListMetadataLikelySafeTypesItemEnum>;
 export const GoogleSecuritySafebrowsingV5HashListMetadataLikelySafeTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleSecuritySafebrowsingV5HashListMetadataLikelySafeTypesItemEnum,
@@ -293,7 +293,7 @@ export const GoogleSecuritySafebrowsingV5HashList = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleSecuritySafebrowsingV5HashList>;
 
 export type GoogleSecuritySafebrowsingV5HashListList =
-  ReadonlyArray<GoogleSecuritySafebrowsingV5HashList>;
+  Array<GoogleSecuritySafebrowsingV5HashList>;
 export const GoogleSecuritySafebrowsingV5HashListList = /*@__PURE__*/ S.Array(
   GoogleSecuritySafebrowsingV5HashList,
 ) as any as S.Schema<GoogleSecuritySafebrowsingV5HashListList>;
@@ -410,7 +410,7 @@ export const GoogleSecuritySafebrowsingV5FullHashFullHashDetailAttributesItemEnu
   /*@__PURE__*/ S.String;
 
 export type GoogleSecuritySafebrowsingV5FullHashFullHashDetailAttributesItemEnumList =
-  ReadonlyArray<GoogleSecuritySafebrowsingV5FullHashFullHashDetailAttributesItemEnum>;
+  Array<GoogleSecuritySafebrowsingV5FullHashFullHashDetailAttributesItemEnum>;
 export const GoogleSecuritySafebrowsingV5FullHashFullHashDetailAttributesItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleSecuritySafebrowsingV5FullHashFullHashDetailAttributesItemEnum,
@@ -438,7 +438,7 @@ export const GoogleSecuritySafebrowsingV5FullHashFullHashDetail =
   }) as any as S.Schema<GoogleSecuritySafebrowsingV5FullHashFullHashDetail>;
 
 export type GoogleSecuritySafebrowsingV5FullHashFullHashDetailList =
-  ReadonlyArray<GoogleSecuritySafebrowsingV5FullHashFullHashDetail>;
+  Array<GoogleSecuritySafebrowsingV5FullHashFullHashDetail>;
 export const GoogleSecuritySafebrowsingV5FullHashFullHashDetailList =
   /*@__PURE__*/ S.Array(
     GoogleSecuritySafebrowsingV5FullHashFullHashDetail,
@@ -464,7 +464,7 @@ export const GoogleSecuritySafebrowsingV5FullHash = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleSecuritySafebrowsingV5FullHash>;
 
 export type GoogleSecuritySafebrowsingV5FullHashList =
-  ReadonlyArray<GoogleSecuritySafebrowsingV5FullHash>;
+  Array<GoogleSecuritySafebrowsingV5FullHash>;
 export const GoogleSecuritySafebrowsingV5FullHashList = /*@__PURE__*/ S.Array(
   GoogleSecuritySafebrowsingV5FullHash,
 ) as any as S.Schema<GoogleSecuritySafebrowsingV5FullHashList>;
@@ -514,7 +514,7 @@ export const GoogleSecuritySafebrowsingV5ThreatUrlThreatTypesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleSecuritySafebrowsingV5ThreatUrlThreatTypesItemEnumList =
-  ReadonlyArray<GoogleSecuritySafebrowsingV5ThreatUrlThreatTypesItemEnum>;
+  Array<GoogleSecuritySafebrowsingV5ThreatUrlThreatTypesItemEnum>;
 export const GoogleSecuritySafebrowsingV5ThreatUrlThreatTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleSecuritySafebrowsingV5ThreatUrlThreatTypesItemEnum,
@@ -540,7 +540,7 @@ export const GoogleSecuritySafebrowsingV5ThreatUrl = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleSecuritySafebrowsingV5ThreatUrl>;
 
 export type GoogleSecuritySafebrowsingV5ThreatUrlList =
-  ReadonlyArray<GoogleSecuritySafebrowsingV5ThreatUrl>;
+  Array<GoogleSecuritySafebrowsingV5ThreatUrl>;
 export const GoogleSecuritySafebrowsingV5ThreatUrlList = /*@__PURE__*/ S.Array(
   GoogleSecuritySafebrowsingV5ThreatUrl,
 ) as any as S.Schema<GoogleSecuritySafebrowsingV5ThreatUrlList>;

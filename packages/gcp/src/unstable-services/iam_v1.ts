@@ -115,7 +115,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -197,7 +197,7 @@ export const ServiceConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ServiceConfig" }) as any as S.Schema<ServiceConfig>;
 
-export type ServiceConfigList = ReadonlyArray<ServiceConfig>;
+export type ServiceConfigList = Array<ServiceConfig>;
 export const ServiceConfigList = /*@__PURE__*/ S.Array(
   ServiceConfig,
 ) as any as S.Schema<ServiceConfigList>;
@@ -221,7 +221,7 @@ export const AccessRestrictions = /*@__PURE__*/ S.suspend(() =>
 /** Represents a collection of external workforces. Provides namespaces for federated users that can be referenced in IAM policies. */
 export interface WorkforcePool {
   /** Output only. The state of the pool. */
-  state?: WorkforcePoolStateEnum;
+  state?: WorkforcePoolStateEnum | (string & {});
   /** Optional. A display name for the pool. Cannot exceed 32 characters. */
   displayName?: string;
   /** Output only. Time after which the workforce pool will be permanently purged and cannot be recovered. */
@@ -351,7 +351,9 @@ export interface GoogleIamAdminV1WorkforcePoolProviderExtraAttributesOAuth2Clien
   /** Required. The OAuth 2.0 client secret for retrieving extra attributes from the identity provider. Required to get the Access Token using client credentials grant flow. */
   clientSecret?: GoogleIamAdminV1WorkforcePoolProviderOidcClientSecret;
   /** Required. Represents the IdP and type of claims that should be fetched. */
-  attributesType?: GoogleIamAdminV1WorkforcePoolProviderExtraAttributesOAuth2ClientAttributesTypeEnum;
+  attributesType?:
+    | GoogleIamAdminV1WorkforcePoolProviderExtraAttributesOAuth2ClientAttributesTypeEnum
+    | (string & {});
 }
 export const GoogleIamAdminV1WorkforcePoolProviderExtraAttributesOAuth2Client =
   /*@__PURE__*/ S.suspend(() =>
@@ -398,7 +400,7 @@ export type GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypeEnu
 export const GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypeEnum =
   /*@__PURE__*/ S.String;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -413,11 +415,15 @@ export const GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaim
 /** Configuration for web single sign-on for the OIDC provider. */
 export interface GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfig {
   /** Required. The Response Type to request for in the OIDC Authorization Request for web sign-in. The `CODE` Response Type is recommended to avoid the Implicit Flow, for security reasons. */
-  responseType?: GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypeEnum;
+  responseType?:
+    | GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypeEnum
+    | (string & {});
   /** Optional. Additional scopes to request for in the OIDC authentication request on top of scopes requested by default. By default, the `openid`, `profile` and `email` scopes that are supported by the identity provider are requested. Each additional scope may be at most 256 characters. A maximum of 10 additional scopes may be configured. */
   additionalScopes?: StringList;
   /** Required. The behavior for how OIDC Claims are included in the `assertion` object used for attribute mapping and attribute condition. */
-  assertionClaimsBehavior?: GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorEnum;
+  assertionClaimsBehavior?:
+    | GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorEnum
+    | (string & {});
 }
 export const GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfig =
   /*@__PURE__*/ S.suspend(() =>
@@ -484,11 +490,11 @@ export interface WorkforcePoolProvider {
   /** A SAML identity provider configuration. */
   saml?: GoogleIamAdminV1WorkforcePoolProviderSaml;
   /** Output only. The state of the provider. */
-  state?: WorkforcePoolProviderStateEnum;
+  state?: WorkforcePoolProviderStateEnum | (string & {});
   /** An OpenID Connect 1.0 identity provider configuration. */
   oidc?: GoogleIamAdminV1WorkforcePoolProviderOidc;
   /** Optional. Gemini Enterprise only. Specifies whether the workforce identity pool provider uses SCIM-managed groups instead of the `google.groups` attribute mapping for authorization checks. The `scim_usage` and `extended_attributes_oauth2_client` fields are mutually exclusive. A request that enables both fields on the same workforce identity pool provider will produce an error. */
-  scimUsage?: WorkforcePoolProviderScimUsageEnum;
+  scimUsage?: WorkforcePoolProviderScimUsageEnum | (string & {});
   /** Optional. A [Common Expression Language](https://opensource.google/projects/cel) expression, in plain text, to restrict what otherwise valid authentication credentials issued by the provider should not be accepted. The expression must output a boolean representing whether to allow the federation. The following keywords may be referenced in the expressions: * `assertion`: JSON representing the authentication credential issued by the provider. * `google`: The Google attributes mapped from the assertion in the `attribute_mappings`. `google.profile_photo`, `google.display_name` and `google.posix_username` are not supported. * `attribute`: The custom attributes mapped from the assertion in the `attribute_mappings`. The maximum length of the attribute condition expression is 4096 characters. If unspecified, all valid authentication credentials will be accepted. The following example shows how to only allow credentials with a mapped `google.groups` value of `admins`: ``` "'admins' in google.groups" ``` */
   attributeCondition?: string;
   /** Optional. Defines the configuration for the OAuth 2.0 client that is used to get the additional user attributes in a separate backchannel call to the identity provider. This should be used when users can't get the required claims in authentication credentials. Currently, the OAuth 2.0 protocol is the only supported authorization method for this backchannel call. */
@@ -565,11 +571,11 @@ export interface KeyData {
   /** Output only. Latest timestamp when this key is valid. Attempts to use this key after this time will fail. Only present if the key data represents a X.509 certificate. */
   notAfterTime?: string;
   /** Required. The specifications for the key. */
-  keySpec?: KeyDataKeySpecEnum;
+  keySpec?: KeyDataKeySpecEnum | (string & {});
   /** Output only. The key data. The format of the key is represented by the format field. */
   key?: string;
   /** Output only. The format of the key. */
-  format?: KeyDataFormatEnum;
+  format?: KeyDataFormatEnum | (string & {});
   /** Output only. Earliest timestamp when this key is valid. Attempts to use this key before this time will fail. Only present if the key data represents a X.509 certificate. */
   notBeforeTime?: string;
 }
@@ -599,11 +605,11 @@ export interface WorkforcePoolProviderKey {
   /** Immutable. Public half of the asymmetric key. */
   keyData?: KeyData;
   /** Output only. The state of the key. */
-  state?: WorkforcePoolProviderKeyStateEnum;
+  state?: WorkforcePoolProviderKeyStateEnum | (string & {});
   /** Identifier. The resource name of the key. Format: `locations/{location}/workforcePools/{workforce_pool_id}/providers/{provider_id}/keys/{key_id}` */
   name?: string;
   /** Required. The purpose of the key. */
-  use?: WorkforcePoolProviderKeyUseEnum;
+  use?: WorkforcePoolProviderKeyUseEnum | (string & {});
   /** Output only. The time after which the key will be permanently deleted and cannot be recovered. Note that the key may get purged before this time if the total limit of keys per provider is exceeded. */
   expireTime?: string;
 }
@@ -659,7 +665,7 @@ export interface WorkforcePoolProviderScimTenant {
   /** Optional. Gemini Enterprise only. The display name of the SCIM tenant. Cannot exceed 32 characters. */
   displayName?: string;
   /** Output only. Gemini Enterprise only. The state of the tenant. */
-  state?: WorkforcePoolProviderScimTenantStateEnum;
+  state?: WorkforcePoolProviderScimTenantStateEnum | (string & {});
   /** Optional. Gemini Enterprise only. The description of the SCIM tenant. Cannot exceed 256 characters. */
   description?: string;
   /** Output only. Gemini Enterprise only. Represents the base URI as defined in [RFC 7644, Section 1.3](https://datatracker.ietf.org/doc/html/rfc7644#section-1.3). Clients must use this as the root address for managing resources under the tenant. Format: https://iamscim.googleapis.com/{version}/{tenant_id}/ */
@@ -722,7 +728,7 @@ export interface WorkforcePoolProviderScimToken {
   /** Optional. Gemini Enterprise only. The display name of the SCIM token. Cannot exceed 32 characters. */
   displayName?: string;
   /** Output only. Gemini Enterprise only. The state of the token. */
-  state?: WorkforcePoolProviderScimTokenStateEnum;
+  state?: WorkforcePoolProviderScimTokenStateEnum | (string & {});
   /** Identifier. Gemini Enterprise only. The resource name of the SCIM Token. Format: `locations/{location}/workforcePools/{workforce_pool}/providers/ {workforce_pool_provider}/scimTenants/{scim_tenant}/tokens/{token}` */
   name?: string;
 }
@@ -781,7 +787,7 @@ export interface Role {
   /** Optional. A human-readable description for the role. */
   description?: string;
   /** The current launch stage of the role. If the `ALPHA` launch stage has been selected for a role, the `stage` field will not be included in the returned definition for the role. */
-  stage?: RoleStageEnum;
+  stage?: RoleStageEnum | (string & {});
   /** Used to perform a consistent read-modify-write. */
   etag?: string;
   /** Optional. A human-readable title for the role. Typically this is limited to 100 UTF-8 bytes. */
@@ -853,8 +859,9 @@ export type OauthClientAllowedGrantTypesItemEnum =
   | "REFRESH_TOKEN_GRANT";
 export const OauthClientAllowedGrantTypesItemEnum = /*@__PURE__*/ S.String;
 
-export type OauthClientAllowedGrantTypesItemEnumList =
-  ReadonlyArray<OauthClientAllowedGrantTypesItemEnum>;
+export type OauthClientAllowedGrantTypesItemEnumList = Array<
+  OauthClientAllowedGrantTypesItemEnum | (string & {})
+>;
 export const OauthClientAllowedGrantTypesItemEnumList = /*@__PURE__*/ S.Array(
   OauthClientAllowedGrantTypesItemEnum,
 ) as any as S.Schema<OauthClientAllowedGrantTypesItemEnumList>;
@@ -872,9 +879,9 @@ export interface OauthClient {
   /** Required. The list of scopes that the OauthClient is allowed to request during OAuth flows. The following scopes are supported: * `https://www.googleapis.com/auth/cloud-platform`: See, edit, configure, and delete your Google Cloud data and see the email address for your Google Account. */
   allowedScopes?: StringList;
   /** Immutable. The type of OauthClient. Either public or private. For private clients, the client secret can be managed using the dedicated OauthClientCredential resource. */
-  clientType?: OauthClientClientTypeEnum;
+  clientType?: OauthClientClientTypeEnum | (string & {});
   /** Output only. The state of the OauthClient. */
-  state?: OauthClientStateEnum;
+  state?: OauthClientStateEnum | (string & {});
   /** Required. The list of OAuth grant types is allowed for the OauthClient. */
   allowedGrantTypes?: OauthClientAllowedGrantTypesItemEnumList;
   /** Optional. A user-specified display name of the OauthClient. Cannot exceed 32 characters. */
@@ -993,7 +1000,9 @@ export interface InlineCertificateIssuanceConfig {
   /** Optional. Lifetime of the workload certificates issued by the CA pool. Must be between 24 hours and 30 days. If not specified, this will be defaulted to 24 hours. */
   lifetime?: string;
   /** Optional. Key algorithm to use when generating the key pair. This key pair will be used to create the certificate. If not specified, this will default to ECDSA_P256. */
-  keyAlgorithm?: InlineCertificateIssuanceConfigKeyAlgorithmEnum;
+  keyAlgorithm?:
+    | InlineCertificateIssuanceConfigKeyAlgorithmEnum
+    | (string & {});
   /** Optional. Rotation window percentage, the percentage of remaining lifetime after which certificate rotation is initiated. Must be between 50 and 80. If no value is specified, rotation window percentage is defaulted to 50. */
   rotationWindowPercentage?: number;
   /** Optional. A required mapping of a Google Cloud region to the CA pool resource located in that region. The CA pool is used for certificate issuance, adhering to the following constraints: * Key format: A supported cloud region name equivalent to the location identifier in the corresponding map entry's value. * Value format: A valid CA pool resource path format like: "projects/{project}/locations/{location}/caPools/{ca_pool}" * Region Matching: Workloads are ONLY issued certificates from CA pools within the same region. Also the CA pool region (in value) must match the workload's region (key). */
@@ -1031,7 +1040,7 @@ export const TrustAnchor = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TrustAnchor" }) as any as S.Schema<TrustAnchor>;
 
-export type TrustAnchorList = ReadonlyArray<TrustAnchor>;
+export type TrustAnchorList = Array<TrustAnchor>;
 export const TrustAnchorList = /*@__PURE__*/ S.Array(
   TrustAnchor,
 ) as any as S.Schema<TrustAnchorList>;
@@ -1047,7 +1056,7 @@ export const IntermediateCA = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "IntermediateCA" }) as any as S.Schema<IntermediateCA>;
 
-export type IntermediateCAList = ReadonlyArray<IntermediateCA>;
+export type IntermediateCAList = Array<IntermediateCA>;
 export const IntermediateCAList = /*@__PURE__*/ S.Array(
   IntermediateCA,
 ) as any as S.Schema<IntermediateCAList>;
@@ -1091,7 +1100,7 @@ export const InlineTrustConfig = /*@__PURE__*/ S.suspend(() =>
 /** Represents a collection of workload identities. You can define IAM policies to grant these identities access to Google Cloud resources. */
 export interface WorkloadIdentityPool {
   /** Output only. The state of the pool. */
-  state?: WorkloadIdentityPoolStateEnum;
+  state?: WorkloadIdentityPoolStateEnum | (string & {});
   /** Optional. A display name for the pool. Cannot exceed 32 characters. */
   displayName?: string;
   /** Output only. Time after which the workload identity pool will be permanently purged and cannot be recovered. */
@@ -1105,7 +1114,7 @@ export interface WorkloadIdentityPool {
   /** Identifier. The resource name of the pool. */
   name?: string;
   /** Immutable. The mode the pool is operating in. */
-  mode?: WorkloadIdentityPoolModeEnum;
+  mode?: WorkloadIdentityPoolModeEnum | (string & {});
   /** Optional. Represents config to add additional trusted trust domains. */
   inlineTrustConfig?: InlineTrustConfig;
 }
@@ -1178,7 +1187,7 @@ export interface WorkloadIdentityPoolNamespace {
   /** Optional. A description of the namespace. Cannot exceed 256 characters. */
   description?: string;
   /** Output only. The state of the namespace. */
-  state?: WorkloadIdentityPoolNamespaceStateEnum;
+  state?: WorkloadIdentityPoolNamespaceStateEnum | (string & {});
   /** Output only. Time after which the namespace will be permanently purged and cannot be recovered. */
   expireTime?: string;
   /** Output only. The Google Cloud service that owns this namespace. */
@@ -1238,7 +1247,7 @@ export interface WorkloadIdentityPoolManagedIdentity {
   /** Optional. A description of the managed identity. Cannot exceed 256 characters. */
   description?: string;
   /** Output only. The state of the managed identity. */
-  state?: WorkloadIdentityPoolManagedIdentityStateEnum;
+  state?: WorkloadIdentityPoolManagedIdentityStateEnum | (string & {});
   /** Output only. Time after which the managed identity will be permanently purged and cannot be recovered. */
   expireTime?: string;
 }
@@ -1355,7 +1364,7 @@ export interface WorkloadIdentityPoolProvider {
   /** An X.509-type identity provider. */
   x509?: X509;
   /** Output only. The state of the provider. */
-  state?: WorkloadIdentityPoolProviderStateEnum;
+  state?: WorkloadIdentityPoolProviderStateEnum | (string & {});
   /** An OpenId Connect 1.0 identity provider. */
   oidc?: Oidc;
   /** Optional. A display name for the provider. Cannot exceed 32 characters. */
@@ -1425,13 +1434,13 @@ export interface WorkloadIdentityPoolProviderKey {
   /** Output only. Time after which the key will be permanently purged and cannot be recovered. Note that the key may get purged before this timestamp if the total limit of keys per provider is crossed. */
   expireTime?: string;
   /** Required. The purpose of the key. */
-  use?: WorkloadIdentityPoolProviderKeyUseEnum;
+  use?: WorkloadIdentityPoolProviderKeyUseEnum | (string & {});
   /** Identifier. The resource name of the key. */
   name?: string;
   /** Immutable. Public half of the asymmetric key. */
   keyData?: KeyData;
   /** Output only. The state of the key. */
-  state?: WorkloadIdentityPoolProviderKeyStateEnum;
+  state?: WorkloadIdentityPoolProviderKeyStateEnum | (string & {});
 }
 export const WorkloadIdentityPoolProviderKey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1647,7 +1656,7 @@ export const ExtendedStatus = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ExtendedStatus" }) as any as S.Schema<ExtendedStatus>;
 
-export type ExtendedStatusList = ReadonlyArray<ExtendedStatus>;
+export type ExtendedStatusList = Array<ExtendedStatus>;
 export const ExtendedStatusList = /*@__PURE__*/ S.Array(
   ExtendedStatus,
 ) as any as S.Schema<ExtendedStatusList>;
@@ -2287,7 +2296,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
-export type BindingList = ReadonlyArray<Binding>;
+export type BindingList = Array<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -2302,7 +2311,7 @@ export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
 export interface AuditLogConfig {
   /** The log type that this config enables. */
-  logType?: AuditLogConfigLogTypeEnum;
+  logType?: AuditLogConfigLogTypeEnum | (string & {});
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
   exemptedMembers?: StringList;
 }
@@ -2313,7 +2322,7 @@ export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
-export type AuditLogConfigList = ReadonlyArray<AuditLogConfig>;
+export type AuditLogConfigList = Array<AuditLogConfig>;
 export const AuditLogConfigList = /*@__PURE__*/ S.Array(
   AuditLogConfig,
 ) as any as S.Schema<AuditLogConfigList>;
@@ -2332,7 +2341,7 @@ export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
-export type AuditConfigList = ReadonlyArray<AuditConfig>;
+export type AuditConfigList = Array<AuditConfig>;
 export const AuditConfigList = /*@__PURE__*/ S.Array(
   AuditConfig,
 ) as any as S.Schema<AuditConfigList>;
@@ -3001,7 +3010,7 @@ export const LintResult = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "LintResult" }) as any as S.Schema<LintResult>;
 
-export type LintResultList = ReadonlyArray<LintResult>;
+export type LintResultList = Array<LintResult>;
 export const LintResultList = /*@__PURE__*/ S.Array(
   LintResult,
 ) as any as S.Schema<LintResultList>;
@@ -3048,7 +3057,7 @@ export const ListAttestationRulesProjectsLocationsWorkloadIdentityPoolsRequest =
       "ListAttestationRulesProjectsLocationsWorkloadIdentityPoolsRequest",
   }) as any as S.Schema<ListAttestationRulesProjectsLocationsWorkloadIdentityPoolsRequest>;
 
-export type AttestationRuleList = ReadonlyArray<AttestationRule>;
+export type AttestationRuleList = Array<AttestationRule>;
 export const AttestationRuleList = /*@__PURE__*/ S.Array(
   AttestationRule,
 ) as any as S.Schema<AttestationRuleList>;
@@ -3128,7 +3137,7 @@ export const ListLocationsWorkforcePoolsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListLocationsWorkforcePoolsRequest",
 }) as any as S.Schema<ListLocationsWorkforcePoolsRequest>;
 
-export type WorkforcePoolList = ReadonlyArray<WorkforcePool>;
+export type WorkforcePoolList = Array<WorkforcePool>;
 export const WorkforcePoolList = /*@__PURE__*/ S.Array(
   WorkforcePool,
 ) as any as S.Schema<WorkforcePoolList>;
@@ -3177,7 +3186,7 @@ export const ListLocationsWorkforcePoolsProvidersRequest =
     identifier: "ListLocationsWorkforcePoolsProvidersRequest",
   }) as any as S.Schema<ListLocationsWorkforcePoolsProvidersRequest>;
 
-export type WorkforcePoolProviderList = ReadonlyArray<WorkforcePoolProvider>;
+export type WorkforcePoolProviderList = Array<WorkforcePoolProvider>;
 export const WorkforcePoolProviderList = /*@__PURE__*/ S.Array(
   WorkforcePoolProvider,
 ) as any as S.Schema<WorkforcePoolProviderList>;
@@ -3226,8 +3235,7 @@ export const ListLocationsWorkforcePoolsProvidersKeysRequest =
     identifier: "ListLocationsWorkforcePoolsProvidersKeysRequest",
   }) as any as S.Schema<ListLocationsWorkforcePoolsProvidersKeysRequest>;
 
-export type WorkforcePoolProviderKeyList =
-  ReadonlyArray<WorkforcePoolProviderKey>;
+export type WorkforcePoolProviderKeyList = Array<WorkforcePoolProviderKey>;
 export const WorkforcePoolProviderKeyList = /*@__PURE__*/ S.Array(
   WorkforcePoolProviderKey,
 ) as any as S.Schema<WorkforcePoolProviderKeyList>;
@@ -3278,7 +3286,7 @@ export const ListLocationsWorkforcePoolsProvidersScimTenantsRequest =
   }) as any as S.Schema<ListLocationsWorkforcePoolsProvidersScimTenantsRequest>;
 
 export type WorkforcePoolProviderScimTenantList =
-  ReadonlyArray<WorkforcePoolProviderScimTenant>;
+  Array<WorkforcePoolProviderScimTenant>;
 export const WorkforcePoolProviderScimTenantList = /*@__PURE__*/ S.Array(
   WorkforcePoolProviderScimTenant,
 ) as any as S.Schema<WorkforcePoolProviderScimTenantList>;
@@ -3331,7 +3339,7 @@ export const ListLocationsWorkforcePoolsProvidersScimTenantsTokensRequest =
   }) as any as S.Schema<ListLocationsWorkforcePoolsProvidersScimTenantsTokensRequest>;
 
 export type WorkforcePoolProviderScimTokenList =
-  ReadonlyArray<WorkforcePoolProviderScimToken>;
+  Array<WorkforcePoolProviderScimToken>;
 export const WorkforcePoolProviderScimTokenList = /*@__PURE__*/ S.Array(
   WorkforcePoolProviderScimToken,
 ) as any as S.Schema<WorkforcePoolProviderScimTokenList>;
@@ -3388,7 +3396,7 @@ export const ListOrganizationsRolesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListOrganizationsRolesRequest",
 }) as any as S.Schema<ListOrganizationsRolesRequest>;
 
-export type RoleList = ReadonlyArray<Role>;
+export type RoleList = Array<Role>;
 export const RoleList = /*@__PURE__*/ S.Array(
   Role,
 ) as any as S.Schema<RoleList>;
@@ -3437,7 +3445,7 @@ export const ListProjectsLocationsOauthClientsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOauthClientsRequest",
 }) as any as S.Schema<ListProjectsLocationsOauthClientsRequest>;
 
-export type OauthClientList = ReadonlyArray<OauthClient>;
+export type OauthClientList = Array<OauthClient>;
 export const OauthClientList = /*@__PURE__*/ S.Array(
   OauthClient,
 ) as any as S.Schema<OauthClientList>;
@@ -3477,7 +3485,7 @@ export const ListProjectsLocationsOauthClientsCredentialsRequest =
     identifier: "ListProjectsLocationsOauthClientsCredentialsRequest",
   }) as any as S.Schema<ListProjectsLocationsOauthClientsCredentialsRequest>;
 
-export type OauthClientCredentialList = ReadonlyArray<OauthClientCredential>;
+export type OauthClientCredentialList = Array<OauthClientCredential>;
 export const OauthClientCredentialList = /*@__PURE__*/ S.Array(
   OauthClientCredential,
 ) as any as S.Schema<OauthClientCredentialList>;
@@ -3523,7 +3531,7 @@ export const ListProjectsLocationsWorkloadIdentityPoolsRequest =
     identifier: "ListProjectsLocationsWorkloadIdentityPoolsRequest",
   }) as any as S.Schema<ListProjectsLocationsWorkloadIdentityPoolsRequest>;
 
-export type WorkloadIdentityPoolList = ReadonlyArray<WorkloadIdentityPool>;
+export type WorkloadIdentityPoolList = Array<WorkloadIdentityPool>;
 export const WorkloadIdentityPoolList = /*@__PURE__*/ S.Array(
   WorkloadIdentityPool,
 ) as any as S.Schema<WorkloadIdentityPoolList>;
@@ -3573,7 +3581,7 @@ export const ListProjectsLocationsWorkloadIdentityPoolsNamespacesRequest =
   }) as any as S.Schema<ListProjectsLocationsWorkloadIdentityPoolsNamespacesRequest>;
 
 export type WorkloadIdentityPoolNamespaceList =
-  ReadonlyArray<WorkloadIdentityPoolNamespace>;
+  Array<WorkloadIdentityPoolNamespace>;
 export const WorkloadIdentityPoolNamespaceList = /*@__PURE__*/ S.Array(
   WorkloadIdentityPoolNamespace,
 ) as any as S.Schema<WorkloadIdentityPoolNamespaceList>;
@@ -3627,7 +3635,7 @@ export const ListProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentiti
   }) as any as S.Schema<ListProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesRequest>;
 
 export type WorkloadIdentityPoolManagedIdentityList =
-  ReadonlyArray<WorkloadIdentityPoolManagedIdentity>;
+  Array<WorkloadIdentityPoolManagedIdentity>;
 export const WorkloadIdentityPoolManagedIdentityList = /*@__PURE__*/ S.Array(
   WorkloadIdentityPoolManagedIdentity,
 ) as any as S.Schema<WorkloadIdentityPoolManagedIdentityList>;
@@ -3680,7 +3688,7 @@ export const ListProjectsLocationsWorkloadIdentityPoolsProvidersRequest =
   }) as any as S.Schema<ListProjectsLocationsWorkloadIdentityPoolsProvidersRequest>;
 
 export type WorkloadIdentityPoolProviderList =
-  ReadonlyArray<WorkloadIdentityPoolProvider>;
+  Array<WorkloadIdentityPoolProvider>;
 export const WorkloadIdentityPoolProviderList = /*@__PURE__*/ S.Array(
   WorkloadIdentityPoolProvider,
 ) as any as S.Schema<WorkloadIdentityPoolProviderList>;
@@ -3734,7 +3742,7 @@ export const ListProjectsLocationsWorkloadIdentityPoolsProvidersKeysRequest =
   }) as any as S.Schema<ListProjectsLocationsWorkloadIdentityPoolsProvidersKeysRequest>;
 
 export type WorkloadIdentityPoolProviderKeyList =
-  ReadonlyArray<WorkloadIdentityPoolProviderKey>;
+  Array<WorkloadIdentityPoolProviderKey>;
 export const WorkloadIdentityPoolProviderKeyList = /*@__PURE__*/ S.Array(
   WorkloadIdentityPoolProviderKey,
 ) as any as S.Schema<WorkloadIdentityPoolProviderKeyList>;
@@ -3815,7 +3823,7 @@ export const ListProjectsServiceAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsServiceAccountsRequest",
 }) as any as S.Schema<ListProjectsServiceAccountsRequest>;
 
-export type ServiceAccountList = ReadonlyArray<ServiceAccount>;
+export type ServiceAccountList = Array<ServiceAccount>;
 export const ServiceAccountList = /*@__PURE__*/ S.Array(
   ServiceAccount,
 ) as any as S.Schema<ServiceAccountList>;
@@ -3843,7 +3851,7 @@ export type ListProjectsServiceAccountsKeysKeyTypesEnum =
 export const ListProjectsServiceAccountsKeysKeyTypesEnum =
   /*@__PURE__*/ S.String;
 
-export type ListProjectsServiceAccountsKeysKeyTypesEnumList = ReadonlyArray<
+export type ListProjectsServiceAccountsKeysKeyTypesEnumList = Array<
   ListProjectsServiceAccountsKeysKeyTypesEnum | (string & {})
 >;
 export const ListProjectsServiceAccountsKeysKeyTypesEnumList =
@@ -3875,7 +3883,7 @@ export const ListProjectsServiceAccountsKeysRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsServiceAccountsKeysRequest",
 }) as any as S.Schema<ListProjectsServiceAccountsKeysRequest>;
 
-export type ServiceAccountKeyList = ReadonlyArray<ServiceAccountKey>;
+export type ServiceAccountKeyList = Array<ServiceAccountKey>;
 export const ServiceAccountKeyList = /*@__PURE__*/ S.Array(
   ServiceAccountKey,
 ) as any as S.Schema<ServiceAccountKeyList>;
@@ -4304,7 +4312,7 @@ export const AuditableService = /*@__PURE__*/ S.suspend(() =>
   identifier: "AuditableService",
 }) as any as S.Schema<AuditableService>;
 
-export type AuditableServiceList = ReadonlyArray<AuditableService>;
+export type AuditableServiceList = Array<AuditableService>;
 export const AuditableServiceList = /*@__PURE__*/ S.Array(
   AuditableService,
 ) as any as S.Schema<AuditableServiceList>;
@@ -4458,7 +4466,7 @@ export const Permission = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Permission" }) as any as S.Schema<Permission>;
 
-export type PermissionList = ReadonlyArray<Permission>;
+export type PermissionList = Array<Permission>;
 export const PermissionList = /*@__PURE__*/ S.Array(
   Permission,
 ) as any as S.Schema<PermissionList>;

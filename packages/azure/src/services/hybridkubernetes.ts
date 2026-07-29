@@ -49,7 +49,7 @@ export const ConnectedClusterPropertiesInputAzureHybridBenefit =
   /*@__PURE__*/ S.String;
 
 /** The list of AAD group object IDs that will have admin role of the cluster. */
-export type AadProfileAdminGroupObjectIDsList = ReadonlyArray<string>;
+export type AadProfileAdminGroupObjectIDsList = Array<string>;
 export const AadProfileAdminGroupObjectIDsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AadProfileAdminGroupObjectIDsList>;
@@ -96,7 +96,7 @@ export const SystemComponentInput = /*@__PURE__*/ S.suspend(() =>
 
 /** List of system extensions that are installed on the cluster resource. */
 export type ArcAgentProfileInputSystemComponentsList =
-  ReadonlyArray<SystemComponentInput>;
+  Array<SystemComponentInput>;
 export const ArcAgentProfileInputSystemComponentsList = /*@__PURE__*/ S.Array(
   SystemComponentInput,
 ) as any as S.Schema<ArcAgentProfileInputSystemComponentsList>;
@@ -110,8 +110,7 @@ export const AgentErrorInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AgentErrorInput>;
 
 /** List of arc agentry and system components errors on the cluster resource. */
-export type ArcAgentProfileInputAgentErrorsList =
-  ReadonlyArray<AgentErrorInput>;
+export type ArcAgentProfileInputAgentErrorsList = Array<AgentErrorInput>;
 export const ArcAgentProfileInputAgentErrorsList = /*@__PURE__*/ S.Array(
   AgentErrorInput,
 ) as any as S.Schema<ArcAgentProfileInputAgentErrorsList>;
@@ -231,7 +230,7 @@ export const ArcAgentryConfigurations = /*@__PURE__*/ S.suspend(() =>
 
 /** Configuration settings for customizing the behavior of the connected cluster. */
 export type ConnectedClusterPropertiesInputArcAgentryConfigurationsList =
-  ReadonlyArray<ArcAgentryConfigurations>;
+  Array<ArcAgentryConfigurations>;
 export const ConnectedClusterPropertiesInputArcAgentryConfigurationsList =
   /*@__PURE__*/ S.Array(
     ArcAgentryConfigurations,
@@ -462,8 +461,7 @@ export const SystemComponent = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SystemComponent>;
 
 /** List of system extensions that are installed on the cluster resource. */
-export type ArcAgentProfileSystemComponentsList =
-  ReadonlyArray<SystemComponent>;
+export type ArcAgentProfileSystemComponentsList = Array<SystemComponent>;
 export const ArcAgentProfileSystemComponentsList = /*@__PURE__*/ S.Array(
   SystemComponent,
 ) as any as S.Schema<ArcAgentProfileSystemComponentsList>;
@@ -489,7 +487,7 @@ export const AgentError = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AgentError" }) as any as S.Schema<AgentError>;
 
 /** List of arc agentry and system components errors on the cluster resource. */
-export type ArcAgentProfileAgentErrorsList = ReadonlyArray<AgentError>;
+export type ArcAgentProfileAgentErrorsList = Array<AgentError>;
 export const ArcAgentProfileAgentErrorsList = /*@__PURE__*/ S.Array(
   AgentError,
 ) as any as S.Schema<ArcAgentProfileAgentErrorsList>;
@@ -540,7 +538,7 @@ export const OidcIssuerProfile = /*@__PURE__*/ S.suspend(() =>
 
 /** Configuration settings for customizing the behavior of the connected cluster. */
 export type ConnectedClusterPropertiesArcAgentryConfigurationsList =
-  ReadonlyArray<ArcAgentryConfigurations>;
+  Array<ArcAgentryConfigurations>;
 export const ConnectedClusterPropertiesArcAgentryConfigurationsList =
   /*@__PURE__*/ S.Array(
     ArcAgentryConfigurations,
@@ -871,7 +869,7 @@ export const ConnectedCluster = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConnectedCluster>;
 
 /** The ConnectedCluster items on this page */
-export type ConnectedClusterListValueList = ReadonlyArray<ConnectedCluster>;
+export type ConnectedClusterListValueList = Array<ConnectedCluster>;
 export const ConnectedClusterListValueList = /*@__PURE__*/ S.Array(
   ConnectedCluster,
 ) as any as S.Schema<ConnectedClusterListValueList>;
@@ -993,7 +991,7 @@ export const CredentialResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CredentialResult>;
 
 /** Base64-encoded Kubernetes configuration file. */
-export type CredentialResultsKubeconfigsList = ReadonlyArray<CredentialResult>;
+export type CredentialResultsKubeconfigsList = Array<CredentialResult>;
 export const CredentialResultsKubeconfigsList = /*@__PURE__*/ S.Array(
   CredentialResult,
 ) as any as S.Schema<CredentialResultsKubeconfigsList>;
@@ -1195,7 +1193,7 @@ export const OperationListValueItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationListValueItem>;
 
 /** The list of connected cluster API operations. */
-export type OperationListValueList = ReadonlyArray<OperationListValueItem>;
+export type OperationListValueList = Array<OperationListValueItem>;
 export const OperationListValueList = /*@__PURE__*/ S.Array(
   OperationListValueItem,
 ) as any as S.Schema<OperationListValueList>;

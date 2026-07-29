@@ -55,17 +55,17 @@ export interface Schema {
   /** Connection ID associated with this schema */
   connectionId?: string;
   /** Status of the schema */
-  status?: SchemaStatus;
+  status?: SchemaStatus | (string & {});
   /** Name of the schema */
   name?: string;
   /** Content of the schema */
   content?: string;
   /** The direction of the schema. */
-  direction?: Direction;
+  direction?: Direction | (string & {});
   /** Uri containing SAS token for the zipped schema */
   schemaUri?: string;
   /** The Schema Type */
-  schemaType?: SchemaType;
+  schemaType?: SchemaType | (string & {});
 }
 export const Schema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -81,7 +81,7 @@ export const Schema = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Schema" }) as any as S.Schema<Schema>;
 
 /** Schemas array. */
-export type SchemasListResultValueList = ReadonlyArray<Schema>;
+export type SchemasListResultValueList = Array<Schema>;
 export const SchemasListResultValueList = /*@__PURE__*/ S.Array(
   Schema,
 ) as any as S.Schema<SchemasListResultValueList>;
@@ -188,7 +188,7 @@ export type FlowType =
 export const FlowType = /*@__PURE__*/ S.String;
 
 /** The flow types being requested for this connection. This FlowType property has reached end of life support starting version 2025-05-30-preview. Please create a FlowProfile resource instead. */
-export type ConnectionPropertiesInputFlowTypesList = ReadonlyArray<
+export type ConnectionPropertiesInputFlowTypesList = Array<
   FlowType | (string & {})
 >;
 export const ConnectionPropertiesInputFlowTypesList = /*@__PURE__*/ S.Array(
@@ -196,27 +196,26 @@ export const ConnectionPropertiesInputFlowTypesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ConnectionPropertiesInputFlowTypesList>;
 
 /** The secondary contacts for this connection request */
-export type ConnectionPropertiesInputSecondaryContactsList =
-  ReadonlyArray<string>;
+export type ConnectionPropertiesInputSecondaryContactsList = Array<string>;
 export const ConnectionPropertiesInputSecondaryContactsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ConnectionPropertiesInputSecondaryContactsList>;
 
 /** The policies for this connection. The policies property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead. */
-export type ConnectionPropertiesInputPoliciesList = ReadonlyArray<string>;
+export type ConnectionPropertiesInputPoliciesList = Array<string>;
 export const ConnectionPropertiesInputPoliciesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ConnectionPropertiesInputPoliciesList>;
 
 /** The schemas for this connection. The schemas property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead. */
-export type ConnectionPropertiesInputSchemasList = ReadonlyArray<Schema>;
+export type ConnectionPropertiesInputSchemasList = Array<Schema>;
 export const ConnectionPropertiesInputSchemasList = /*@__PURE__*/ S.Array(
   Schema,
 ) as any as S.Schema<ConnectionPropertiesInputSchemasList>;
 
 /** The schema URIs for this connection. The schemaUris property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead. */
-export type ConnectionPropertiesInputSchemaUrisList = ReadonlyArray<string>;
+export type ConnectionPropertiesInputSchemaUrisList = Array<string>;
 export const ConnectionPropertiesInputSchemaUrisList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ConnectionPropertiesInputSchemaUrisList>;
@@ -413,7 +412,7 @@ export const ForceDisabledStatus = /*@__PURE__*/ S.String;
 
 /** Force disablement status of the current connection */
 export type ConnectionPropertiesForceDisabledStatusList =
-  ReadonlyArray<ForceDisabledStatus>;
+  Array<ForceDisabledStatus>;
 export const ConnectionPropertiesForceDisabledStatusList =
   /*@__PURE__*/ S.Array(
     ForceDisabledStatus,
@@ -424,13 +423,13 @@ export type LinkStatus = "Linked" | "Unlinked";
 export const LinkStatus = /*@__PURE__*/ S.String;
 
 /** The flow types being requested for this connection. This FlowType property has reached end of life support starting version 2025-05-30-preview. Please create a FlowProfile resource instead. */
-export type ConnectionPropertiesFlowTypesList = ReadonlyArray<FlowType>;
+export type ConnectionPropertiesFlowTypesList = Array<FlowType>;
 export const ConnectionPropertiesFlowTypesList = /*@__PURE__*/ S.Array(
   FlowType,
 ) as any as S.Schema<ConnectionPropertiesFlowTypesList>;
 
 /** The secondary contacts for this connection request */
-export type ConnectionPropertiesSecondaryContactsList = ReadonlyArray<string>;
+export type ConnectionPropertiesSecondaryContactsList = Array<string>;
 export const ConnectionPropertiesSecondaryContactsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ConnectionPropertiesSecondaryContactsList>;
@@ -444,19 +443,19 @@ export type ProvisioningState =
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** The policies for this connection. The policies property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead. */
-export type ConnectionPropertiesPoliciesList = ReadonlyArray<string>;
+export type ConnectionPropertiesPoliciesList = Array<string>;
 export const ConnectionPropertiesPoliciesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ConnectionPropertiesPoliciesList>;
 
 /** The schemas for this connection. The schemas property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead. */
-export type ConnectionPropertiesSchemasList = ReadonlyArray<Schema>;
+export type ConnectionPropertiesSchemasList = Array<Schema>;
 export const ConnectionPropertiesSchemasList = /*@__PURE__*/ S.Array(
   Schema,
 ) as any as S.Schema<ConnectionPropertiesSchemasList>;
 
 /** The schema URIs for this connection. The schemaUris property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead. */
-export type ConnectionPropertiesSchemaUrisList = ReadonlyArray<string>;
+export type ConnectionPropertiesSchemaUrisList = Array<string>;
 export const ConnectionPropertiesSchemaUrisList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ConnectionPropertiesSchemaUrisList>;
@@ -907,7 +906,7 @@ export const Connection = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Connection" }) as any as S.Schema<Connection>;
 
 /** The Connection items on this page */
-export type ConnectionListResultValueList = ReadonlyArray<Connection>;
+export type ConnectionListResultValueList = Array<Connection>;
 export const ConnectionListResultValueList = /*@__PURE__*/ S.Array(
   Connection,
 ) as any as S.Schema<ConnectionListResultValueList>;
@@ -1104,7 +1103,7 @@ export type DataType = "Blob" | "Table";
 export const DataType = /*@__PURE__*/ S.String;
 
 /** The policies for this flow. The property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead. */
-export type FlowPropertiesInputPoliciesList = ReadonlyArray<string>;
+export type FlowPropertiesInputPoliciesList = Array<string>;
 export const FlowPropertiesInputPoliciesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<FlowPropertiesInputPoliciesList>;
@@ -1116,7 +1115,7 @@ export const FlowBillingTier = /*@__PURE__*/ S.String;
 /** The option associated with messaging flows. */
 export interface MessagingOptions {
   /** Billing tier for this messaging flow */
-  billingTier?: FlowBillingTier;
+  billingTier?: FlowBillingTier | (string & {});
 }
 export const MessagingOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1141,9 +1140,9 @@ export interface ApiFlowOptions {
   /** Unique CNAME to represent the Azure Data Transfer API Flow instance */
   cname?: string;
   /** Remote Calling Mode in the Azure Data Transfer API Flow, which describes how the API Flow will be invoked */
-  apiMode?: ApiMode;
+  apiMode?: ApiMode | (string & {});
   /** Determines which identity to use for extracting the user token for Azure Data Transfer API Flow. The property has reached end of life support starting version 2025-05-30-preview. Please create and use the authentication property instead. */
-  identityTranslation?: IdentityTranslation;
+  identityTranslation?: IdentityTranslation | (string & {});
   /** Sender's app user assigned Manage Identity client ID. The property has reached end of life support starting version 2025-05-30-preview. Please create and use the authentication property instead. */
   senderClientId?: string;
   /** Remote stub app registration Client ID. The property has reached end of life support starting version 2025-05-30-preview. Please create and use the authentication property instead. */
@@ -1168,7 +1167,7 @@ export type StreamProtocol = "UDP" | "SRT" | "RTP";
 export const StreamProtocol = /*@__PURE__*/ S.String;
 
 /** A source IP address or CIDR range */
-export type StreamSourceAddressesSourceAddressesList = ReadonlyArray<string>;
+export type StreamSourceAddressesSourceAddressesList = Array<string>;
 export const StreamSourceAddressesSourceAddressesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StreamSourceAddressesSourceAddressesList>;
@@ -1187,15 +1186,14 @@ export const StreamSourceAddresses = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StreamSourceAddresses>;
 
 /** The destination endpoints of the stream */
-export type FlowPropertiesInputDestinationEndpointsList = ReadonlyArray<string>;
+export type FlowPropertiesInputDestinationEndpointsList = Array<string>;
 export const FlowPropertiesInputDestinationEndpointsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<FlowPropertiesInputDestinationEndpointsList>;
 
 /** The destination endpoint ports of the stream */
-export type FlowPropertiesInputDestinationEndpointPortsList =
-  ReadonlyArray<number>;
+export type FlowPropertiesInputDestinationEndpointPortsList = Array<number>;
 export const FlowPropertiesInputDestinationEndpointPortsList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -1379,26 +1377,25 @@ export const FlowsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<FlowsCreateOrUpdateResponseTagsMap>;
 
 /** Force disablement status of the current flow */
-export type FlowPropertiesForceDisabledStatusList =
-  ReadonlyArray<ForceDisabledStatus>;
+export type FlowPropertiesForceDisabledStatusList = Array<ForceDisabledStatus>;
 export const FlowPropertiesForceDisabledStatusList = /*@__PURE__*/ S.Array(
   ForceDisabledStatus,
 ) as any as S.Schema<FlowPropertiesForceDisabledStatusList>;
 
 /** The policies for this flow. The property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead. */
-export type FlowPropertiesPoliciesList = ReadonlyArray<string>;
+export type FlowPropertiesPoliciesList = Array<string>;
 export const FlowPropertiesPoliciesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<FlowPropertiesPoliciesList>;
 
 /** The destination endpoints of the stream */
-export type FlowPropertiesDestinationEndpointsList = ReadonlyArray<string>;
+export type FlowPropertiesDestinationEndpointsList = Array<string>;
 export const FlowPropertiesDestinationEndpointsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<FlowPropertiesDestinationEndpointsList>;
 
 /** The destination endpoint ports of the stream */
-export type FlowPropertiesDestinationEndpointPortsList = ReadonlyArray<number>;
+export type FlowPropertiesDestinationEndpointPortsList = Array<number>;
 export const FlowPropertiesDestinationEndpointPortsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<FlowPropertiesDestinationEndpointPortsList>;
@@ -2113,7 +2110,7 @@ export const FlowsGetDestinationEndpointPortsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<FlowsGetDestinationEndpointPortsRequest>;
 
 /** The destination endpoint port for the flow stream */
-export type GetDestinationEndpointPortsResultPortsList = ReadonlyArray<number>;
+export type GetDestinationEndpointPortsResultPortsList = Array<number>;
 export const GetDestinationEndpointPortsResultPortsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<GetDestinationEndpointPortsResultPortsList>;
@@ -2160,7 +2157,7 @@ export const FlowsGetDestinationEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FlowsGetDestinationEndpointsRequest>;
 
 /** The destination endpoints for the flow stream */
-export type GetDestinationEndpointsResultEndpointsList = ReadonlyArray<string>;
+export type GetDestinationEndpointsResultEndpointsList = Array<string>;
 export const GetDestinationEndpointsResultEndpointsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetDestinationEndpointsResultEndpointsList>;
@@ -2479,7 +2476,7 @@ export const Flow = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Flow" }) as any as S.Schema<Flow>;
 
 /** The Flow items on this page */
-export type FlowListResultValueList = ReadonlyArray<Flow>;
+export type FlowListResultValueList = Array<Flow>;
 export const FlowListResultValueList = /*@__PURE__*/ S.Array(
   Flow,
 ) as any as S.Schema<FlowListResultValueList>;
@@ -2499,8 +2496,7 @@ export const FlowListResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FlowListResult" }) as any as S.Schema<FlowListResult>;
 
 /** The specified flow destination endpoint ports */
-export type FlowsSetDestinationEndpointPortsRequestPortsList =
-  ReadonlyArray<number>;
+export type FlowsSetDestinationEndpointPortsRequestPortsList = Array<number>;
 export const FlowsSetDestinationEndpointPortsRequestPortsList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -2633,8 +2629,7 @@ export const FlowsSetDestinationEndpointPortsResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<FlowsSetDestinationEndpointPortsResponse>;
 
 /** The specified flow destination endpoints. */
-export type FlowsSetDestinationEndpointsRequestEndpointsList =
-  ReadonlyArray<string>;
+export type FlowsSetDestinationEndpointsRequestEndpointsList = Array<string>;
 export const FlowsSetDestinationEndpointsRequestEndpointsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2887,7 +2882,7 @@ export const FlowsSetPassphraseResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FlowsSetPassphraseResponse>;
 
 /** Source addresses */
-export type FlowsSetSourceAddressesRequestValuesList = ReadonlyArray<string>;
+export type FlowsSetSourceAddressesRequestValuesList = Array<string>;
 export const FlowsSetSourceAddressesRequestValuesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<FlowsSetSourceAddressesRequestValuesList>;
@@ -3158,7 +3153,7 @@ export const FlowsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FlowsUpdateResponse>;
 
 /** Connection ID to target */
-export type ListFlowsByPipelineListRequestValueList = ReadonlyArray<string>;
+export type ListFlowsByPipelineListRequestValueList = Array<string>;
 export const ListFlowsByPipelineListRequestValueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ListFlowsByPipelineListRequestValueList>;
@@ -3192,7 +3187,7 @@ export const ListFlowsByPipelineListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListFlowsByPipelineListRequest>;
 
 /** List of flows associated with the connection. */
-export type ListFlowsByPipelineConnectionFlowsList = ReadonlyArray<Flow>;
+export type ListFlowsByPipelineConnectionFlowsList = Array<Flow>;
 export const ListFlowsByPipelineConnectionFlowsList = /*@__PURE__*/ S.Array(
   Flow,
 ) as any as S.Schema<ListFlowsByPipelineConnectionFlowsList>;
@@ -3215,7 +3210,7 @@ export const ListFlowsByPipelineConnection = /*@__PURE__*/ S.suspend(() =>
 
 /** List flows by pipeline result by connection */
 export type ListFlowsByPipelineResultValueList =
-  ReadonlyArray<ListFlowsByPipelineConnection>;
+  Array<ListFlowsByPipelineConnection>;
 export const ListFlowsByPipelineResultValueList = /*@__PURE__*/ S.Array(
   ListFlowsByPipelineConnection,
 ) as any as S.Schema<ListFlowsByPipelineResultValueList>;
@@ -3260,37 +3255,37 @@ export const ListPendingConnectionsListRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Force disablement status of the current connection */
 export type PendingConnectionForceDisabledStatusList =
-  ReadonlyArray<ForceDisabledStatus>;
+  Array<ForceDisabledStatus>;
 export const PendingConnectionForceDisabledStatusList = /*@__PURE__*/ S.Array(
   ForceDisabledStatus,
 ) as any as S.Schema<PendingConnectionForceDisabledStatusList>;
 
 /** The flow types being requested for this connection. This FlowType property has reached end of life support starting version 2025-05-30-preview. Please create a FlowProfile resource instead. */
-export type PendingConnectionFlowTypesList = ReadonlyArray<FlowType>;
+export type PendingConnectionFlowTypesList = Array<FlowType>;
 export const PendingConnectionFlowTypesList = /*@__PURE__*/ S.Array(
   FlowType,
 ) as any as S.Schema<PendingConnectionFlowTypesList>;
 
 /** The secondary contacts for this connection request */
-export type PendingConnectionSecondaryContactsList = ReadonlyArray<string>;
+export type PendingConnectionSecondaryContactsList = Array<string>;
 export const PendingConnectionSecondaryContactsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PendingConnectionSecondaryContactsList>;
 
 /** The policies for this connection. The policies property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead. */
-export type PendingConnectionPoliciesList = ReadonlyArray<string>;
+export type PendingConnectionPoliciesList = Array<string>;
 export const PendingConnectionPoliciesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PendingConnectionPoliciesList>;
 
 /** The schemas for this connection. The schemas property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead. */
-export type PendingConnectionSchemasList = ReadonlyArray<Schema>;
+export type PendingConnectionSchemasList = Array<Schema>;
 export const PendingConnectionSchemasList = /*@__PURE__*/ S.Array(
   Schema,
 ) as any as S.Schema<PendingConnectionSchemasList>;
 
 /** The schema URIs for this connection. The schemaUris property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead. */
-export type PendingConnectionSchemaUrisList = ReadonlyArray<string>;
+export type PendingConnectionSchemaUrisList = Array<string>;
 export const PendingConnectionSchemaUrisList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PendingConnectionSchemaUrisList>;
@@ -3441,8 +3436,7 @@ export const PendingConnection = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PendingConnection>;
 
 /** The items on this page */
-export type PendingConnectionListResultValueList =
-  ReadonlyArray<PendingConnection>;
+export type PendingConnectionListResultValueList = Array<PendingConnection>;
 export const PendingConnectionListResultValueList = /*@__PURE__*/ S.Array(
   PendingConnection,
 ) as any as S.Schema<PendingConnectionListResultValueList>;
@@ -3489,26 +3483,25 @@ export const ListPendingFlowsListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListPendingFlowsListRequest>;
 
 /** Force disablement status of the current flow */
-export type PendingFlowForceDisabledStatusList =
-  ReadonlyArray<ForceDisabledStatus>;
+export type PendingFlowForceDisabledStatusList = Array<ForceDisabledStatus>;
 export const PendingFlowForceDisabledStatusList = /*@__PURE__*/ S.Array(
   ForceDisabledStatus,
 ) as any as S.Schema<PendingFlowForceDisabledStatusList>;
 
 /** The policies for this flow. The property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead. */
-export type PendingFlowPoliciesList = ReadonlyArray<string>;
+export type PendingFlowPoliciesList = Array<string>;
 export const PendingFlowPoliciesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PendingFlowPoliciesList>;
 
 /** The destination endpoints of the stream */
-export type PendingFlowDestinationEndpointsList = ReadonlyArray<string>;
+export type PendingFlowDestinationEndpointsList = Array<string>;
 export const PendingFlowDestinationEndpointsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PendingFlowDestinationEndpointsList>;
 
 /** The destination endpoint ports of the stream */
-export type PendingFlowDestinationEndpointPortsList = ReadonlyArray<number>;
+export type PendingFlowDestinationEndpointPortsList = Array<number>;
 export const PendingFlowDestinationEndpointPortsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<PendingFlowDestinationEndpointPortsList>;
@@ -3686,7 +3679,7 @@ export const PendingFlow = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PendingFlow" }) as any as S.Schema<PendingFlow>;
 
 /** The items on this page */
-export type PendingFlowListResultValueList = ReadonlyArray<PendingFlow>;
+export type PendingFlowListResultValueList = Array<PendingFlow>;
 export const PendingFlowListResultValueList = /*@__PURE__*/ S.Array(
   PendingFlow,
 ) as any as S.Schema<PendingFlowListResultValueList>;
@@ -3824,7 +3817,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = ReadonlyArray<Operation>;
+export type OperationsListResponseValueList = Array<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;
@@ -3962,19 +3955,19 @@ export const Subscriber = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Subscriber" }) as any as S.Schema<Subscriber>;
 
 /** Subscribers of this resource */
-export type PipelinePropertiesInputSubscribersList = ReadonlyArray<Subscriber>;
+export type PipelinePropertiesInputSubscribersList = Array<Subscriber>;
 export const PipelinePropertiesInputSubscribersList = /*@__PURE__*/ S.Array(
   Subscriber,
 ) as any as S.Schema<PipelinePropertiesInputSubscribersList>;
 
 /** The policies for this pipeline. The policies property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead. */
-export type PipelinePropertiesInputPoliciesList = ReadonlyArray<string>;
+export type PipelinePropertiesInputPoliciesList = Array<string>;
 export const PipelinePropertiesInputPoliciesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PipelinePropertiesInputPoliciesList>;
 
 /** The flow type for this flow. The flowTypes property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead. */
-export type PipelinePropertiesInputFlowTypesList = ReadonlyArray<
+export type PipelinePropertiesInputFlowTypesList = Array<
   FlowType | (string & {})
 >;
 export const PipelinePropertiesInputFlowTypesList = /*@__PURE__*/ S.Array(
@@ -3982,7 +3975,7 @@ export const PipelinePropertiesInputFlowTypesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<PipelinePropertiesInputFlowTypesList>;
 
 /** The flow types that are disabled for this pipeline */
-export type PipelinePropertiesInputDisabledFlowTypesList = ReadonlyArray<
+export type PipelinePropertiesInputDisabledFlowTypesList = Array<
   FlowType | (string & {})
 >;
 export const PipelinePropertiesInputDisabledFlowTypesList =
@@ -4224,32 +4217,31 @@ export const ReadPipelineConnection = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReadPipelineConnection>;
 
 /** Connections associated with pipeline */
-export type PipelinePropertiesConnectionsList =
-  ReadonlyArray<ReadPipelineConnection>;
+export type PipelinePropertiesConnectionsList = Array<ReadPipelineConnection>;
 export const PipelinePropertiesConnectionsList = /*@__PURE__*/ S.Array(
   ReadPipelineConnection,
 ) as any as S.Schema<PipelinePropertiesConnectionsList>;
 
 /** Subscribers of this resource */
-export type PipelinePropertiesSubscribersList = ReadonlyArray<Subscriber>;
+export type PipelinePropertiesSubscribersList = Array<Subscriber>;
 export const PipelinePropertiesSubscribersList = /*@__PURE__*/ S.Array(
   Subscriber,
 ) as any as S.Schema<PipelinePropertiesSubscribersList>;
 
 /** The policies for this pipeline. The policies property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead. */
-export type PipelinePropertiesPoliciesList = ReadonlyArray<string>;
+export type PipelinePropertiesPoliciesList = Array<string>;
 export const PipelinePropertiesPoliciesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PipelinePropertiesPoliciesList>;
 
 /** The flow type for this flow. The flowTypes property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead. */
-export type PipelinePropertiesFlowTypesList = ReadonlyArray<FlowType>;
+export type PipelinePropertiesFlowTypesList = Array<FlowType>;
 export const PipelinePropertiesFlowTypesList = /*@__PURE__*/ S.Array(
   FlowType,
 ) as any as S.Schema<PipelinePropertiesFlowTypesList>;
 
 /** The flow types that are disabled for this pipeline */
-export type PipelinePropertiesDisabledFlowTypesList = ReadonlyArray<FlowType>;
+export type PipelinePropertiesDisabledFlowTypesList = Array<FlowType>;
 export const PipelinePropertiesDisabledFlowTypesList = /*@__PURE__*/ S.Array(
   FlowType,
 ) as any as S.Schema<PipelinePropertiesDisabledFlowTypesList>;
@@ -4392,7 +4384,7 @@ export type TargetType = "Pipeline" | "Connection" | "FlowType";
 export const TargetType = /*@__PURE__*/ S.String;
 
 /** Targets for the action */
-export type PipelinesExecuteActionRequestTargetsList = ReadonlyArray<string>;
+export type PipelinesExecuteActionRequestTargetsList = Array<string>;
 export const PipelinesExecuteActionRequestTargetsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PipelinesExecuteActionRequestTargetsList>;
@@ -4664,7 +4656,7 @@ export const Pipeline = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Pipeline" }) as any as S.Schema<Pipeline>;
 
 /** The Pipeline items on this page */
-export type PipelineListResultValueList = ReadonlyArray<Pipeline>;
+export type PipelineListResultValueList = Array<Pipeline>;
 export const PipelineListResultValueList = /*@__PURE__*/ S.Array(
   Pipeline,
 ) as any as S.Schema<PipelineListResultValueList>;
@@ -4799,7 +4791,7 @@ export const PipelinesRejectConnectionResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PipelinesRejectConnectionResponse>;
 
 /** The flow types allowed for this pipeline. FlowTypes has reached end of life support starting version 2025-05-30-preview. Please create and use the FlowProfile property instead. */
-export type PipelinesPatchPropertiesFlowTypesList = ReadonlyArray<
+export type PipelinesPatchPropertiesFlowTypesList = Array<
   FlowType | (string & {})
 >;
 export const PipelinesPatchPropertiesFlowTypesList = /*@__PURE__*/ S.Array(

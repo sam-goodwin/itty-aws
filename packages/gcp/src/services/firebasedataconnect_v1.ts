@@ -174,7 +174,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -233,7 +233,7 @@ export const File = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "File" }) as any as S.Schema<File>;
 
-export type FileList = ReadonlyArray<File>;
+export type FileList = Array<File>;
 export const FileList = /*@__PURE__*/ S.Array(
   File,
 ) as any as S.Schema<FileList>;
@@ -377,7 +377,7 @@ export const PostgreSqlSchemaValidationEnum = /*@__PURE__*/ S.String;
 /** Settings for PostgreSQL data source. */
 export interface PostgreSql {
   /** Optional. Configure how to perform automatic PostgreSQL schema migration before deploying the FDC schema. This is an additive-only operation. */
-  schemaMigration?: PostgreSqlSchemaMigrationEnum;
+  schemaMigration?: PostgreSqlSchemaMigrationEnum | (string & {});
   /** Optional. User-configured PostgreSQL schema. Defaults to "public" if not specified. */
   schema?: string;
   /** No Postgres data source is linked. If set, don't allow `database` and `schema_validation` to be configured. */
@@ -387,7 +387,7 @@ export interface PostgreSql {
   /** Required. Name of the PostgreSQL database. */
   database?: string;
   /** Optional. Configure how much PostgreSQL schema validation to perform against the live database before deploying the FDC schema. */
-  schemaValidation?: PostgreSqlSchemaValidationEnum;
+  schemaValidation?: PostgreSqlSchemaValidationEnum | (string & {});
   /** Output only. Ephemeral is true if this SQL Connect service is served from temporary in-memory emulation of Postgres. While Cloud SQL is being provisioned, the SQL Connect service provides the ephemeral service to help developers get started. Once the Cloud SQL is provisioned, SQL Connect service will transfer its data on a best-effort basis to the Cloud SQL instance. WARNING: Ephemeral data sources will expire after 24 hour. The data will be lost if they aren't transferred to the Cloud SQL instance. WARNING: When `ephemeral=true`, mutations to the database are not guaranteed to be durably persisted, even if an OK status code is returned. All or parts of the data may be lost or reverted to earlier versions. */
   ephemeral?: boolean;
 }
@@ -417,7 +417,7 @@ export const Datasource = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Datasource" }) as any as S.Schema<Datasource>;
 
-export type DatasourceList = ReadonlyArray<Datasource>;
+export type DatasourceList = Array<Datasource>;
 export const DatasourceList = /*@__PURE__*/ S.Array(
   Datasource,
 ) as any as S.Schema<DatasourceList>;
@@ -734,7 +734,7 @@ export const Workaround = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Workaround" }) as any as S.Schema<Workaround>;
 
-export type WorkaroundList = ReadonlyArray<Workaround>;
+export type WorkaroundList = Array<Workaround>;
 export const WorkaroundList = /*@__PURE__*/ S.Array(
   Workaround,
 ) as any as S.Schema<WorkaroundList>;
@@ -764,7 +764,7 @@ export const GraphqlErrorExtensions = /*@__PURE__*/ S.suspend(() =>
   identifier: "GraphqlErrorExtensions",
 }) as any as S.Schema<GraphqlErrorExtensions>;
 
-export type DocumentList = ReadonlyArray<unknown>;
+export type DocumentList = Array<unknown>;
 export const DocumentList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<DocumentList>;
@@ -783,7 +783,7 @@ export const SourceLocation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SourceLocation" }) as any as S.Schema<SourceLocation>;
 
-export type SourceLocationList = ReadonlyArray<SourceLocation>;
+export type SourceLocationList = Array<SourceLocation>;
 export const SourceLocationList = /*@__PURE__*/ S.Array(
   SourceLocation,
 ) as any as S.Schema<SourceLocationList>;
@@ -808,12 +808,12 @@ export const GraphqlError = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "GraphqlError" }) as any as S.Schema<GraphqlError>;
 
-export type GraphqlErrorList = ReadonlyArray<GraphqlError>;
+export type GraphqlErrorList = Array<GraphqlError>;
 export const GraphqlErrorList = /*@__PURE__*/ S.Array(
   GraphqlError,
 ) as any as S.Schema<GraphqlErrorList>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -840,7 +840,7 @@ export const DataConnectProperties = /*@__PURE__*/ S.suspend(() =>
   identifier: "DataConnectProperties",
 }) as any as S.Schema<DataConnectProperties>;
 
-export type DataConnectPropertiesList = ReadonlyArray<DataConnectProperties>;
+export type DataConnectPropertiesList = Array<DataConnectProperties>;
 export const DataConnectPropertiesList = /*@__PURE__*/ S.Array(
   DataConnectProperties,
 ) as any as S.Schema<DataConnectPropertiesList>;
@@ -1013,8 +1013,7 @@ export const ExecuteQueryResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ExecuteQueryResponse",
 }) as any as S.Schema<ExecuteQueryResponse>;
 
-export type Firebasedataconnect_SchemaList =
-  ReadonlyArray<Firebasedataconnect_Schema>;
+export type Firebasedataconnect_SchemaList = Array<Firebasedataconnect_Schema>;
 export const Firebasedataconnect_SchemaList = /*@__PURE__*/ S.Array(
   Firebasedataconnect_Schema,
 ) as any as S.Schema<Firebasedataconnect_SchemaList>;
@@ -1417,7 +1416,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = ReadonlyArray<Location>;
+export type LocationList = Array<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -1469,7 +1468,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type OperationList = ReadonlyArray<Operation>;
+export type OperationList = Array<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -1524,7 +1523,7 @@ export const ListProjectsLocationsServicesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsServicesRequest",
 }) as any as S.Schema<ListProjectsLocationsServicesRequest>;
 
-export type ServiceList = ReadonlyArray<Service>;
+export type ServiceList = Array<Service>;
 export const ServiceList = /*@__PURE__*/ S.Array(
   Service,
 ) as any as S.Schema<ServiceList>;
@@ -1579,7 +1578,7 @@ export const ListProjectsLocationsServicesConnectorsRequest =
     identifier: "ListProjectsLocationsServicesConnectorsRequest",
   }) as any as S.Schema<ListProjectsLocationsServicesConnectorsRequest>;
 
-export type ConnectorList = ReadonlyArray<Connector>;
+export type ConnectorList = Array<Connector>;
 export const ConnectorList = /*@__PURE__*/ S.Array(
   Connector,
 ) as any as S.Schema<ConnectorList>;

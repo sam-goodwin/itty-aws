@@ -740,8 +740,8 @@ export const SourceRepository = /*@__PURE__*/ S.String;
 
 export type SourceLocation = string;
 export interface SourceBuildInformation {
-  SourceType: SourceType;
-  SourceRepository: SourceRepository;
+  SourceType: SourceType | (string & {});
+  SourceRepository: SourceRepository | (string & {});
   SourceLocation: string;
 }
 export const SourceBuildInformation = /*@__PURE__*/ S.suspend(() =>

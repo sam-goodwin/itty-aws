@@ -447,8 +447,7 @@ export const ClusterRecord = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ClusterRecord" }) as any as S.Schema<ClusterRecord>;
 
 /** List of clusters */
-export type AccessListClusterSuccessResponseDataList =
-  ReadonlyArray<ClusterRecord>;
+export type AccessListClusterSuccessResponseDataList = Array<ClusterRecord>;
 export const AccessListClusterSuccessResponseDataList = /*@__PURE__*/ S.Array(
   ClusterRecord,
 ) as any as S.Schema<AccessListClusterSuccessResponseDataList>;
@@ -534,7 +533,7 @@ export const EnvironmentRecord = /*@__PURE__*/ S.suspend(() =>
 
 /** Environment list data */
 export type AccessListEnvironmentsSuccessResponseDataList =
-  ReadonlyArray<EnvironmentRecord>;
+  Array<EnvironmentRecord>;
 export const AccessListEnvironmentsSuccessResponseDataList =
   /*@__PURE__*/ S.Array(
     EnvironmentRecord,
@@ -600,7 +599,7 @@ export const AccessListInvitationsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Data of the invitations list */
 export type AccessListInvitationsSuccessResponseDataList =
-  ReadonlyArray<InvitationRecord>;
+  Array<InvitationRecord>;
 export const AccessListInvitationsSuccessResponseDataList =
   /*@__PURE__*/ S.Array(
     InvitationRecord,
@@ -668,8 +667,7 @@ export const AccessListRoleBindingNameListRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<AccessListRoleBindingNameListRequest>;
 
 /** List of role binding names */
-export type AccessRoleBindingNameListSuccessResponseDataList =
-  ReadonlyArray<string>;
+export type AccessRoleBindingNameListSuccessResponseDataList = Array<string>;
 export const AccessRoleBindingNameListSuccessResponseDataList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -735,7 +733,7 @@ export const AccessListRoleBindingsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of role binding */
 export type AccessListRoleBindingsSuccessResponseDataList =
-  ReadonlyArray<RoleBindingRecord>;
+  Array<RoleBindingRecord>;
 export const AccessListRoleBindingsSuccessResponseDataList =
   /*@__PURE__*/ S.Array(
     RoleBindingRecord,
@@ -826,7 +824,7 @@ export const ServiceAccountRecord = /*@__PURE__*/ S.suspend(() =>
 
 /** Data of the service accounts list */
 export type AccessListServiceAccountsSuccessResponseDataList =
-  ReadonlyArray<ServiceAccountRecord>;
+  Array<ServiceAccountRecord>;
 export const AccessListServiceAccountsSuccessResponseDataList =
   /*@__PURE__*/ S.Array(
     ServiceAccountRecord,
@@ -916,7 +914,7 @@ export const UserRecord = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UserRecord" }) as any as S.Schema<UserRecord>;
 
 /** Data of the users list */
-export type AccessListUsersSuccessResponseDataList = ReadonlyArray<UserRecord>;
+export type AccessListUsersSuccessResponseDataList = Array<UserRecord>;
 export const AccessListUsersSuccessResponseDataList = /*@__PURE__*/ S.Array(
   UserRecord,
 ) as any as S.Schema<AccessListUsersSuccessResponseDataList>;
@@ -1021,7 +1019,7 @@ export interface SCClusterSpecEntity {
   /** type of zone availability */
   zone?: string;
   /** Stream governance configuration */
-  package?: Package;
+  package?: Package | (string & {});
   /** The cloud service provider region */
   region?: string;
   /** The bootstrap endpoint used by Kafka clients to connect to the cluster */
@@ -1237,15 +1235,15 @@ export const ConnectorStatus = /*@__PURE__*/ S.String;
 /** Connector Info Base properties */
 export interface ConnectorInfoBase {
   /** Connector Type */
-  connectorType?: ConnectorType;
+  connectorType?: ConnectorType | (string & {});
   /** Connector Class */
-  connectorClass?: ConnectorClass;
+  connectorClass?: ConnectorClass | (string & {});
   /** Connector Name */
   connectorName?: string;
   /** Connector Id */
   connectorId?: string;
   /** Connector Status */
-  connectorState?: ConnectorStatus;
+  connectorState?: ConnectorStatus | (string & {});
 }
 export const ConnectorInfoBase = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1271,7 +1269,7 @@ export const ConnectorServiceType = /*@__PURE__*/ S.String;
 /** The connector service type info */
 export interface ConnectorServiceTypeInfoBase {
   /** The connector service type. */
-  connectorServiceType: ConnectorServiceType;
+  connectorServiceType: ConnectorServiceType | (string & {});
 }
 export const ConnectorServiceTypeInfoBase = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1293,7 +1291,7 @@ export const PartnerConnectorType = /*@__PURE__*/ S.String;
 /** The partner info base */
 export interface PartnerInfoBase {
   /** The partner connector type. */
-  partnerConnectorType: PartnerConnectorType;
+  partnerConnectorType: PartnerConnectorType | (string & {});
 }
 export const PartnerInfoBase = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1545,8 +1543,7 @@ export const ConnectorResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConnectorResource>;
 
 /** The ConnectorResource items on this page */
-export type ListConnectorsSuccessResponseValueList =
-  ReadonlyArray<ConnectorResource>;
+export type ListConnectorsSuccessResponseValueList = Array<ConnectorResource>;
 export const ListConnectorsSuccessResponseValueList = /*@__PURE__*/ S.Array(
   ConnectorResource,
 ) as any as S.Schema<ListConnectorsSuccessResponseValueList>;
@@ -1570,7 +1567,7 @@ export const ListConnectorsSuccessResponse = /*@__PURE__*/ S.suspend(() =>
 /** Stream governance configuration */
 export interface StreamGovernanceConfig {
   /** Stream governance configuration */
-  package?: Package;
+  package?: Package | (string & {});
 }
 export const StreamGovernanceConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1845,7 +1842,7 @@ export const MarketplaceAgreementsListRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The ConfluentAgreementResource items on this page */
 export type ConfluentAgreementResourceListResponseValueList =
-  ReadonlyArray<ConfluentAgreementResource>;
+  Array<ConfluentAgreementResource>;
 export const ConfluentAgreementResourceListResponseValueList =
   /*@__PURE__*/ S.Array(
     ConfluentAgreementResource,
@@ -1878,7 +1875,7 @@ export const OrganizationCreateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<OrganizationCreateRequestTagsMap>;
 
 /** Array of Private Offer Ids */
-export type OfferDetailInputPrivateOfferIdsList = ReadonlyArray<string>;
+export type OfferDetailInputPrivateOfferIdsList = Array<string>;
 export const OfferDetailInputPrivateOfferIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<OfferDetailInputPrivateOfferIdsList>;
@@ -2029,7 +2026,7 @@ export type ProvisionState =
 export const ProvisionState = /*@__PURE__*/ S.String;
 
 /** Array of Private Offer Ids */
-export type OfferDetailPrivateOfferIdsList = ReadonlyArray<string>;
+export type OfferDetailPrivateOfferIdsList = Array<string>;
 export const OfferDetailPrivateOfferIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<OfferDetailPrivateOfferIdsList>;
@@ -2755,7 +2752,7 @@ export const OrganizationResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The OrganizationResource items on this page */
 export type OrganizationResourceListResultValueList =
-  ReadonlyArray<OrganizationResource>;
+  Array<OrganizationResource>;
 export const OrganizationResourceListResultValueList = /*@__PURE__*/ S.Array(
   OrganizationResource,
 ) as any as S.Schema<OrganizationResourceListResultValueList>;
@@ -2859,8 +2856,7 @@ export const SCClusterRecord = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SCClusterRecord>;
 
 /** The SCClusterRecord items on this page */
-export type ListClustersSuccessResponseValueList =
-  ReadonlyArray<SCClusterRecord>;
+export type ListClustersSuccessResponseValueList = Array<SCClusterRecord>;
 export const ListClustersSuccessResponseValueList = /*@__PURE__*/ S.Array(
   SCClusterRecord,
 ) as any as S.Schema<ListClustersSuccessResponseValueList>;
@@ -2941,8 +2937,7 @@ export const SCEnvironmentRecord = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SCEnvironmentRecord>;
 
 /** The SCEnvironmentRecord items on this page */
-export type GetEnvironmentsResponseValueList =
-  ReadonlyArray<SCEnvironmentRecord>;
+export type GetEnvironmentsResponseValueList = Array<SCEnvironmentRecord>;
 export const GetEnvironmentsResponseValueList = /*@__PURE__*/ S.Array(
   SCEnvironmentRecord,
 ) as any as S.Schema<GetEnvironmentsResponseValueList>;
@@ -3001,7 +2996,7 @@ export const OrganizationListRegionsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "OrganizationListRegionsRequest",
 }) as any as S.Schema<OrganizationListRegionsRequest>;
 
-export type RegionSpecEntityPackagesList = ReadonlyArray<string>;
+export type RegionSpecEntityPackagesList = Array<string>;
 export const RegionSpecEntityPackagesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RegionSpecEntityPackagesList>;
@@ -3061,7 +3056,7 @@ export const RegionRecord = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RegionRecord" }) as any as S.Schema<RegionRecord>;
 
 /** List of regions supported by confluent */
-export type ListRegionsSuccessResponseDataList = ReadonlyArray<RegionRecord>;
+export type ListRegionsSuccessResponseDataList = Array<RegionRecord>;
 export const ListRegionsSuccessResponseDataList = /*@__PURE__*/ S.Array(
   RegionRecord,
 ) as any as S.Schema<ListRegionsSuccessResponseDataList>;
@@ -3116,7 +3111,7 @@ export const OrganizationListSchemaRegistryClustersRequest =
 
 /** The SchemaRegistryClusterRecord items on this page */
 export type ListSchemaRegistryClustersResponseValueList =
-  ReadonlyArray<SchemaRegistryClusterRecord>;
+  Array<SchemaRegistryClusterRecord>;
 export const ListSchemaRegistryClustersResponseValueList =
   /*@__PURE__*/ S.Array(
     SchemaRegistryClusterRecord,
@@ -3194,7 +3189,7 @@ export const OperationResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationResult>;
 
 /** List of Confluent operations supported by the Microsoft.Confluent provider. */
-export type OperationListResultValueList = ReadonlyArray<OperationResult>;
+export type OperationListResultValueList = Array<OperationResult>;
 export const OperationListResultValueList = /*@__PURE__*/ S.Array(
   OperationResult,
 ) as any as S.Schema<OperationListResultValueList>;
@@ -3337,7 +3332,7 @@ export const TopicsInputConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TopicsInputConfig>;
 
 /** Input Config Specification of the topic */
-export type TopicPropertiesInputConfigsList = ReadonlyArray<TopicsInputConfig>;
+export type TopicPropertiesInputConfigsList = Array<TopicsInputConfig>;
 export const TopicPropertiesInputConfigsList = /*@__PURE__*/ S.Array(
   TopicsInputConfig,
 ) as any as S.Schema<TopicPropertiesInputConfigsList>;
@@ -3600,7 +3595,7 @@ export const TopicRecord = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TopicRecord" }) as any as S.Schema<TopicRecord>;
 
 /** The TopicRecord items on this page */
-export type ListTopicsSuccessResponseValueList = ReadonlyArray<TopicRecord>;
+export type ListTopicsSuccessResponseValueList = Array<TopicRecord>;
 export const ListTopicsSuccessResponseValueList = /*@__PURE__*/ S.Array(
   TopicRecord,
 ) as any as S.Schema<ListTopicsSuccessResponseValueList>;

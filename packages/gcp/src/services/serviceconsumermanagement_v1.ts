@@ -60,7 +60,7 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -95,7 +95,7 @@ export const PolicyBinding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PolicyBinding" }) as any as S.Schema<PolicyBinding>;
 
-export type PolicyBindingList = ReadonlyArray<PolicyBinding>;
+export type PolicyBindingList = Array<PolicyBinding>;
 export const PolicyBindingList = /*@__PURE__*/ S.Array(
   PolicyBinding,
 ) as any as S.Schema<PolicyBindingList>;
@@ -202,7 +202,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -427,7 +427,7 @@ export const TenantResource = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TenantResource" }) as any as S.Schema<TenantResource>;
 
-export type TenantResourceList = ReadonlyArray<TenantResource>;
+export type TenantResourceList = Array<TenantResource>;
 export const TenantResourceList = /*@__PURE__*/ S.Array(
   TenantResource,
 ) as any as S.Schema<TenantResourceList>;
@@ -574,7 +574,7 @@ export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListOperationsRequest",
 }) as any as S.Schema<ListOperationsRequest>;
 
-export type OperationList = ReadonlyArray<Operation>;
+export type OperationList = Array<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -625,7 +625,7 @@ export const ListServicesTenancyUnitsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListServicesTenancyUnitsRequest",
 }) as any as S.Schema<ListServicesTenancyUnitsRequest>;
 
-export type TenancyUnitList = ReadonlyArray<TenancyUnit>;
+export type TenancyUnitList = Array<TenancyUnit>;
 export const TenancyUnitList = /*@__PURE__*/ S.Array(
   TenancyUnit,
 ) as any as S.Schema<TenancyUnitList>;

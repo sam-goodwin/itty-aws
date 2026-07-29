@@ -253,7 +253,7 @@ export const CommitRepositoryChangesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CommitRepositoryChangesResponse",
 }) as any as S.Schema<CommitRepositoryChangesResponse>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -468,7 +468,7 @@ export interface GitRemoteSettings {
   /** Required. The Git remote's URL. */
   url?: string;
   /** Output only. Deprecated: The field does not contain any token status information. */
-  tokenStatus?: GitRemoteSettingsTokenStatusEnum;
+  tokenStatus?: GitRemoteSettingsTokenStatusEnum | (string & {});
 }
 export const GitRemoteSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -624,7 +624,7 @@ export const CompilationError = /*@__PURE__*/ S.suspend(() =>
   identifier: "CompilationError",
 }) as any as S.Schema<CompilationError>;
 
-export type CompilationErrorList = ReadonlyArray<CompilationError>;
+export type CompilationErrorList = Array<CompilationError>;
 export const CompilationErrorList = /*@__PURE__*/ S.Array(
   CompilationError,
 ) as any as S.Schema<CompilationErrorList>;
@@ -759,7 +759,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -800,7 +800,7 @@ export const ScheduledReleaseRecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "ScheduledReleaseRecord",
 }) as any as S.Schema<ScheduledReleaseRecord>;
 
-export type ScheduledReleaseRecordList = ReadonlyArray<ScheduledReleaseRecord>;
+export type ScheduledReleaseRecordList = Array<ScheduledReleaseRecord>;
 export const ScheduledReleaseRecordList = /*@__PURE__*/ S.Array(
   ScheduledReleaseRecord,
 ) as any as S.Schema<ScheduledReleaseRecordList>;
@@ -884,13 +884,12 @@ export const ScheduledExecutionRecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "ScheduledExecutionRecord",
 }) as any as S.Schema<ScheduledExecutionRecord>;
 
-export type ScheduledExecutionRecordList =
-  ReadonlyArray<ScheduledExecutionRecord>;
+export type ScheduledExecutionRecordList = Array<ScheduledExecutionRecord>;
 export const ScheduledExecutionRecordList = /*@__PURE__*/ S.Array(
   ScheduledExecutionRecord,
 ) as any as S.Schema<ScheduledExecutionRecordList>;
 
-export type TargetList = ReadonlyArray<Target>;
+export type TargetList = Array<Target>;
 export const TargetList = /*@__PURE__*/ S.Array(
   Target,
 ) as any as S.Schema<TargetList>;
@@ -916,7 +915,7 @@ export interface InvocationConfig {
   /** Optional. The set of action identifiers to include. */
   includedTargets?: TargetList;
   /** Optional. Specifies the priority for query execution in BigQuery. More information can be found at https://cloud.google.com/bigquery/docs/running-queries#queries. */
-  queryPriority?: InvocationConfigQueryPriorityEnum;
+  queryPriority?: InvocationConfigQueryPriorityEnum | (string & {});
 }
 export const InvocationConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1035,7 +1034,7 @@ export interface WorkflowInvocation {
   /** Immutable. The name of the workflow config to invoke. Must be in the format `projects/*\/locations/*\/repositories/*\/workflowConfigs/*`. */
   workflowConfig?: string;
   /** Output only. This workflow invocation's current state. */
-  state?: WorkflowInvocationStateEnum;
+  state?: WorkflowInvocationStateEnum | (string & {});
   /** Output only. All the metadata information that is used internally to serve the resource. For example: timestamps, flags, status fields, etc. The format of this field is a JSON string. */
   internalMetadata?: string;
   /** Output only. Metadata indicating whether this resource is user-scoped. `WorkflowInvocation` resource is `user_scoped` only if it is sourced from a compilation result and the compilation result is user-scoped. */
@@ -1506,7 +1505,7 @@ export const UncommittedFileChange = /*@__PURE__*/ S.suspend(() =>
   identifier: "UncommittedFileChange",
 }) as any as S.Schema<UncommittedFileChange>;
 
-export type UncommittedFileChangeList = ReadonlyArray<UncommittedFileChange>;
+export type UncommittedFileChangeList = Array<UncommittedFileChange>;
 export const UncommittedFileChangeList = /*@__PURE__*/ S.Array(
   UncommittedFileChange,
 ) as any as S.Schema<UncommittedFileChangeList>;
@@ -1608,7 +1607,7 @@ export const CommitLogEntry = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CommitLogEntry" }) as any as S.Schema<CommitLogEntry>;
 
-export type CommitLogEntryList = ReadonlyArray<CommitLogEntry>;
+export type CommitLogEntryList = Array<CommitLogEntry>;
 export const CommitLogEntryList = /*@__PURE__*/ S.Array(
   CommitLogEntry,
 ) as any as S.Schema<CommitLogEntryList>;
@@ -1755,7 +1754,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
-export type BindingList = ReadonlyArray<Binding>;
+export type BindingList = Array<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -2123,7 +2122,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = ReadonlyArray<Location>;
+export type LocationList = Array<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -2175,7 +2174,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type OperationList = ReadonlyArray<Operation>;
+export type OperationList = Array<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -2230,7 +2229,7 @@ export const ListProjectsLocationsRepositoriesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsRepositoriesRequest",
 }) as any as S.Schema<ListProjectsLocationsRepositoriesRequest>;
 
-export type RepositoryList = ReadonlyArray<Repository>;
+export type RepositoryList = Array<Repository>;
 export const RepositoryList = /*@__PURE__*/ S.Array(
   Repository,
 ) as any as S.Schema<RepositoryList>;
@@ -2285,7 +2284,7 @@ export const ListProjectsLocationsRepositoriesCompilationResultsRequest =
     identifier: "ListProjectsLocationsRepositoriesCompilationResultsRequest",
   }) as any as S.Schema<ListProjectsLocationsRepositoriesCompilationResultsRequest>;
 
-export type CompilationResultList = ReadonlyArray<CompilationResult>;
+export type CompilationResultList = Array<CompilationResult>;
 export const CompilationResultList = /*@__PURE__*/ S.Array(
   CompilationResult,
 ) as any as S.Schema<CompilationResultList>;
@@ -2334,7 +2333,7 @@ export const ListProjectsLocationsRepositoriesReleaseConfigsRequest =
     identifier: "ListProjectsLocationsRepositoriesReleaseConfigsRequest",
   }) as any as S.Schema<ListProjectsLocationsRepositoriesReleaseConfigsRequest>;
 
-export type ReleaseConfigList = ReadonlyArray<ReleaseConfig>;
+export type ReleaseConfigList = Array<ReleaseConfig>;
 export const ReleaseConfigList = /*@__PURE__*/ S.Array(
   ReleaseConfig,
 ) as any as S.Schema<ReleaseConfigList>;
@@ -2383,7 +2382,7 @@ export const ListProjectsLocationsRepositoriesWorkflowConfigsRequest =
     identifier: "ListProjectsLocationsRepositoriesWorkflowConfigsRequest",
   }) as any as S.Schema<ListProjectsLocationsRepositoriesWorkflowConfigsRequest>;
 
-export type WorkflowConfigList = ReadonlyArray<WorkflowConfig>;
+export type WorkflowConfigList = Array<WorkflowConfig>;
 export const WorkflowConfigList = /*@__PURE__*/ S.Array(
   WorkflowConfig,
 ) as any as S.Schema<WorkflowConfigList>;
@@ -2438,7 +2437,7 @@ export const ListProjectsLocationsRepositoriesWorkflowInvocationsRequest =
     identifier: "ListProjectsLocationsRepositoriesWorkflowInvocationsRequest",
   }) as any as S.Schema<ListProjectsLocationsRepositoriesWorkflowInvocationsRequest>;
 
-export type WorkflowInvocationList = ReadonlyArray<WorkflowInvocation>;
+export type WorkflowInvocationList = Array<WorkflowInvocation>;
 export const WorkflowInvocationList = /*@__PURE__*/ S.Array(
   WorkflowInvocation,
 ) as any as S.Schema<WorkflowInvocationList>;
@@ -2493,7 +2492,7 @@ export const ListProjectsLocationsRepositoriesWorkspacesRequest =
     identifier: "ListProjectsLocationsRepositoriesWorkspacesRequest",
   }) as any as S.Schema<ListProjectsLocationsRepositoriesWorkspacesRequest>;
 
-export type WorkspaceList = ReadonlyArray<Workspace>;
+export type WorkspaceList = Array<Workspace>;
 export const WorkspaceList = /*@__PURE__*/ S.Array(
   Workspace,
 ) as any as S.Schema<WorkspaceList>;
@@ -2982,8 +2981,7 @@ export const TeamFolderContentsEntry = /*@__PURE__*/ S.suspend(() =>
   identifier: "TeamFolderContentsEntry",
 }) as any as S.Schema<TeamFolderContentsEntry>;
 
-export type TeamFolderContentsEntryList =
-  ReadonlyArray<TeamFolderContentsEntry>;
+export type TeamFolderContentsEntryList = Array<TeamFolderContentsEntry>;
 export const TeamFolderContentsEntryList = /*@__PURE__*/ S.Array(
   TeamFolderContentsEntry,
 ) as any as S.Schema<TeamFolderContentsEntryList>;
@@ -3068,7 +3066,7 @@ export const DirectoryEntry = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DirectoryEntry" }) as any as S.Schema<DirectoryEntry>;
 
-export type DirectoryEntryList = ReadonlyArray<DirectoryEntry>;
+export type DirectoryEntryList = Array<DirectoryEntry>;
 export const DirectoryEntryList = /*@__PURE__*/ S.Array(
   DirectoryEntry,
 ) as any as S.Schema<DirectoryEntryList>;
@@ -3198,7 +3196,7 @@ export const FolderContentsEntry = /*@__PURE__*/ S.suspend(() =>
   identifier: "FolderContentsEntry",
 }) as any as S.Schema<FolderContentsEntry>;
 
-export type FolderContentsEntryList = ReadonlyArray<FolderContentsEntry>;
+export type FolderContentsEntryList = Array<FolderContentsEntry>;
 export const FolderContentsEntryList = /*@__PURE__*/ S.Array(
   FolderContentsEntry,
 ) as any as S.Schema<FolderContentsEntryList>;
@@ -3266,7 +3264,7 @@ export const ColumnDescriptor = /*@__PURE__*/ S.suspend(() =>
   identifier: "ColumnDescriptor",
 }) as any as S.Schema<ColumnDescriptor>;
 
-export type ColumnDescriptorList = ReadonlyArray<ColumnDescriptor>;
+export type ColumnDescriptorList = Array<ColumnDescriptor>;
 export const ColumnDescriptorList = /*@__PURE__*/ S.Array(
   ColumnDescriptor,
 ) as any as S.Schema<ColumnDescriptorList>;
@@ -3612,8 +3610,7 @@ export const CompilationResultAction = /*@__PURE__*/ S.suspend(() =>
   identifier: "CompilationResultAction",
 }) as any as S.Schema<CompilationResultAction>;
 
-export type CompilationResultActionList =
-  ReadonlyArray<CompilationResultAction>;
+export type CompilationResultActionList = Array<CompilationResultAction>;
 export const CompilationResultActionList = /*@__PURE__*/ S.Array(
   CompilationResultAction,
 ) as any as S.Schema<CompilationResultActionList>;
@@ -3835,8 +3832,7 @@ export const WorkflowInvocationAction = /*@__PURE__*/ S.suspend(() =>
   identifier: "WorkflowInvocationAction",
 }) as any as S.Schema<WorkflowInvocationAction>;
 
-export type WorkflowInvocationActionList =
-  ReadonlyArray<WorkflowInvocationAction>;
+export type WorkflowInvocationActionList = Array<WorkflowInvocationAction>;
 export const WorkflowInvocationActionList = /*@__PURE__*/ S.Array(
   WorkflowInvocationAction,
 ) as any as S.Schema<WorkflowInvocationActionList>;
@@ -3905,7 +3901,7 @@ export const RootContentsEntry = /*@__PURE__*/ S.suspend(() =>
   identifier: "RootContentsEntry",
 }) as any as S.Schema<RootContentsEntry>;
 
-export type RootContentsEntryList = ReadonlyArray<RootContentsEntry>;
+export type RootContentsEntryList = Array<RootContentsEntry>;
 export const RootContentsEntryList = /*@__PURE__*/ S.Array(
   RootContentsEntry,
 ) as any as S.Schema<RootContentsEntryList>;
@@ -4202,7 +4198,7 @@ export const SearchResult = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SearchResult" }) as any as S.Schema<SearchResult>;
 
-export type SearchResultList = ReadonlyArray<SearchResult>;
+export type SearchResultList = Array<SearchResult>;
 export const SearchResultList = /*@__PURE__*/ S.Array(
   SearchResult,
 ) as any as S.Schema<SearchResultList>;
@@ -4267,7 +4263,7 @@ export const TeamFolderSearchResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "TeamFolderSearchResult",
 }) as any as S.Schema<TeamFolderSearchResult>;
 
-export type TeamFolderSearchResultList = ReadonlyArray<TeamFolderSearchResult>;
+export type TeamFolderSearchResultList = Array<TeamFolderSearchResult>;
 export const TeamFolderSearchResultList = /*@__PURE__*/ S.Array(
   TeamFolderSearchResult,
 ) as any as S.Schema<TeamFolderSearchResultList>;

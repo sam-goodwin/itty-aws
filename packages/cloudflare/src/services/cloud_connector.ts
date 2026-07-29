@@ -93,7 +93,7 @@ export const RulesListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "RulesListResultItem",
 }) as any as S.Schema<RulesListResultItem>;
 
-export type RulesListResultList = ReadonlyArray<RulesListResultItem>;
+export type RulesListResultList = Array<RulesListResultItem>;
 export const RulesListResultList = /*@__PURE__*/ S.Array(
   RulesListResultItem,
 ) as any as S.Schema<RulesListResultList>;
@@ -156,8 +156,7 @@ export const RulesUpdateRequestRulesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "RulesUpdateRequestRulesItem",
 }) as any as S.Schema<RulesUpdateRequestRulesItem>;
 
-export type RulesUpdateRequestRulesList =
-  ReadonlyArray<RulesUpdateRequestRulesItem>;
+export type RulesUpdateRequestRulesList = Array<RulesUpdateRequestRulesItem>;
 export const RulesUpdateRequestRulesList = /*@__PURE__*/ S.Array(
   RulesUpdateRequestRulesItem,
 ) as any as S.Schema<RulesUpdateRequestRulesList>;
@@ -222,7 +221,7 @@ export const RulesUpdateResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "RulesUpdateResultItem",
 }) as any as S.Schema<RulesUpdateResultItem>;
 
-export type RulesUpdateResultList = ReadonlyArray<RulesUpdateResultItem>;
+export type RulesUpdateResultList = Array<RulesUpdateResultItem>;
 export const RulesUpdateResultList = /*@__PURE__*/ S.Array(
   RulesUpdateResultItem,
 ) as any as S.Schema<RulesUpdateResultList>;

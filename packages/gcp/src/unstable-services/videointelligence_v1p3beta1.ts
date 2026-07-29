@@ -76,7 +76,7 @@ export const GoogleCloudVideointelligenceV1p3beta1_AnnotateVideoRequestFeaturesI
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudVideointelligenceV1p3beta1_AnnotateVideoRequestFeaturesItemEnumList =
-  ReadonlyArray<
+  Array<
     | GoogleCloudVideointelligenceV1p3beta1_AnnotateVideoRequestFeaturesItemEnum
     | (string & {})
   >;
@@ -158,7 +158,7 @@ export const GoogleCloudVideointelligenceV1p3beta1_ExplicitContentDetectionConfi
       "GoogleCloudVideointelligenceV1p3beta1_ExplicitContentDetectionConfig",
   }) as any as S.Schema<GoogleCloudVideointelligenceV1p3beta1_ExplicitContentDetectionConfig>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -212,7 +212,7 @@ export const GoogleCloudVideointelligenceV1p3beta1_VideoSegment =
   }) as any as S.Schema<GoogleCloudVideointelligenceV1p3beta1_VideoSegment>;
 
 export type GoogleCloudVideointelligenceV1p3beta1_VideoSegmentList =
-  ReadonlyArray<GoogleCloudVideointelligenceV1p3beta1_VideoSegment>;
+  Array<GoogleCloudVideointelligenceV1p3beta1_VideoSegment>;
 export const GoogleCloudVideointelligenceV1p3beta1_VideoSegmentList =
   /*@__PURE__*/ S.Array(
     GoogleCloudVideointelligenceV1p3beta1_VideoSegment,
@@ -248,13 +248,13 @@ export const GoogleCloudVideointelligenceV1p3beta1_SpeechContext =
   }) as any as S.Schema<GoogleCloudVideointelligenceV1p3beta1_SpeechContext>;
 
 export type GoogleCloudVideointelligenceV1p3beta1_SpeechContextList =
-  ReadonlyArray<GoogleCloudVideointelligenceV1p3beta1_SpeechContext>;
+  Array<GoogleCloudVideointelligenceV1p3beta1_SpeechContext>;
 export const GoogleCloudVideointelligenceV1p3beta1_SpeechContextList =
   /*@__PURE__*/ S.Array(
     GoogleCloudVideointelligenceV1p3beta1_SpeechContext,
   ) as any as S.Schema<GoogleCloudVideointelligenceV1p3beta1_SpeechContextList>;
 
-export type IntegerList = ReadonlyArray<number>;
+export type IntegerList = Array<number>;
 export const IntegerList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<IntegerList>;
@@ -440,7 +440,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;

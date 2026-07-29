@@ -520,7 +520,7 @@ export const FolderInstructionsVersion = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FolderInstructionsVersion>;
 
 export type PaginatedFolderInstructionsVersionListResultsList =
-  ReadonlyArray<FolderInstructionsVersion>;
+  Array<FolderInstructionsVersion>;
 export const PaginatedFolderInstructionsVersionListResultsList =
   /*@__PURE__*/ S.Array(
     FolderInstructionsVersion,
@@ -611,7 +611,7 @@ export const DesktopFileSystemListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DesktopFileSystemListRequest",
 }) as any as S.Schema<DesktopFileSystemListRequest>;
 
-export type PaginatedFileSystemListResultsList = ReadonlyArray<FileSystem>;
+export type PaginatedFileSystemListResultsList = Array<FileSystem>;
 export const PaginatedFileSystemListResultsList = /*@__PURE__*/ S.Array(
   FileSystem,
 ) as any as S.Schema<PaginatedFileSystemListResultsList>;

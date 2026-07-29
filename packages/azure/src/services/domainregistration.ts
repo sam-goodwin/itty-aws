@@ -70,7 +70,7 @@ export const Dimension = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Dimension" }) as any as S.Schema<Dimension>;
 
 /** Resource metric dimensions. */
-export type MetricSpecificationDimensionsList = ReadonlyArray<Dimension>;
+export type MetricSpecificationDimensionsList = Array<Dimension>;
 export const MetricSpecificationDimensionsList = /*@__PURE__*/ S.Array(
   Dimension,
 ) as any as S.Schema<MetricSpecificationDimensionsList>;
@@ -92,23 +92,20 @@ export const MetricAvailability = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MetricAvailability>;
 
 /** Resource metric availability. */
-export type MetricSpecificationAvailabilitiesList =
-  ReadonlyArray<MetricAvailability>;
+export type MetricSpecificationAvailabilitiesList = Array<MetricAvailability>;
 export const MetricSpecificationAvailabilitiesList = /*@__PURE__*/ S.Array(
   MetricAvailability,
 ) as any as S.Schema<MetricSpecificationAvailabilitiesList>;
 
 /** Resource metric supported time grain types. */
-export type MetricSpecificationSupportedTimeGrainTypesList =
-  ReadonlyArray<string>;
+export type MetricSpecificationSupportedTimeGrainTypesList = Array<string>;
 export const MetricSpecificationSupportedTimeGrainTypesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<MetricSpecificationSupportedTimeGrainTypesList>;
 
 /** Resource metric supported aggregation types. */
-export type MetricSpecificationSupportedAggregationTypesList =
-  ReadonlyArray<string>;
+export type MetricSpecificationSupportedAggregationTypesList = Array<string>;
 export const MetricSpecificationSupportedAggregationTypesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -181,7 +178,7 @@ export const MetricSpecification = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource metrics service name. */
 export type ServiceSpecificationMetricSpecificationsList =
-  ReadonlyArray<MetricSpecification>;
+  Array<MetricSpecification>;
 export const ServiceSpecificationMetricSpecificationsList =
   /*@__PURE__*/ S.Array(
     MetricSpecification,
@@ -210,8 +207,7 @@ export const LogSpecification = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LogSpecification>;
 
 /** Resource logs service provided by Microsoft.Insights resource provider. */
-export type ServiceSpecificationLogSpecificationsList =
-  ReadonlyArray<LogSpecification>;
+export type ServiceSpecificationLogSpecificationsList = Array<LogSpecification>;
 export const ServiceSpecificationLogSpecificationsList = /*@__PURE__*/ S.Array(
   LogSpecification,
 ) as any as S.Schema<ServiceSpecificationLogSpecificationsList>;
@@ -273,8 +269,7 @@ export const CsmOperationDescription = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CsmOperationDescription>;
 
 /** Collection of resources. */
-export type CsmOperationCollectionValueList =
-  ReadonlyArray<CsmOperationDescription>;
+export type CsmOperationCollectionValueList = Array<CsmOperationDescription>;
 export const CsmOperationCollectionValueList = /*@__PURE__*/ S.Array(
   CsmOperationDescription,
 ) as any as S.Schema<CsmOperationCollectionValueList>;
@@ -411,7 +406,7 @@ export const Contact = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Contact" }) as any as S.Schema<Contact>;
 
 /** List of applicable legal agreement keys. This list can be retrieved using ListLegalAgreements API under <code>TopLevelDomain</code> resource. */
-export type DomainPurchaseConsentAgreementKeysList = ReadonlyArray<string>;
+export type DomainPurchaseConsentAgreementKeysList = Array<string>;
 export const DomainPurchaseConsentAgreementKeysList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DomainPurchaseConsentAgreementKeysList>;
@@ -605,13 +600,13 @@ export type ProvisioningState =
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** Name servers. */
-export type DomainPropertiesNameServersList = ReadonlyArray<string>;
+export type DomainPropertiesNameServersList = Array<string>;
 export const DomainPropertiesNameServersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DomainPropertiesNameServersList>;
 
 /** List of apps the hostname is assigned to. This list will have more than one app only if the hostname is pointing to a Traffic Manager. */
-export type HostNameSiteNamesList = ReadonlyArray<string>;
+export type HostNameSiteNamesList = Array<string>;
 export const HostNameSiteNamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<HostNameSiteNamesList>;
@@ -655,7 +650,7 @@ export const HostName = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "HostName" }) as any as S.Schema<HostName>;
 
 /** All hostnames derived from the domain and assigned to Azure resources. */
-export type DomainPropertiesManagedHostNamesList = ReadonlyArray<HostName>;
+export type DomainPropertiesManagedHostNamesList = Array<HostName>;
 export const DomainPropertiesManagedHostNamesList = /*@__PURE__*/ S.Array(
   HostName,
 ) as any as S.Schema<DomainPropertiesManagedHostNamesList>;
@@ -669,7 +664,7 @@ export const ResourceNotRenewableReason = /*@__PURE__*/ S.String;
 
 /** Reasons why domain is not renewable. */
 export type DomainPropertiesDomainNotRenewableReasonsList =
-  ReadonlyArray<ResourceNotRenewableReason>;
+  Array<ResourceNotRenewableReason>;
 export const DomainPropertiesDomainNotRenewableReasonsList =
   /*@__PURE__*/ S.Array(
     ResourceNotRenewableReason,
@@ -1147,7 +1142,7 @@ export const Domain = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Domain" }) as any as S.Schema<Domain>;
 
 /** The Domain items on this page */
-export type DomainCollectionValueList = ReadonlyArray<Domain>;
+export type DomainCollectionValueList = Array<Domain>;
 export const DomainCollectionValueList = /*@__PURE__*/ S.Array(
   Domain,
 ) as any as S.Schema<DomainCollectionValueList>;
@@ -1246,7 +1241,7 @@ export const DomainOwnershipIdentifier = /*@__PURE__*/ S.suspend(() =>
 
 /** The DomainOwnershipIdentifier items on this page */
 export type DomainOwnershipIdentifierCollectionValueList =
-  ReadonlyArray<DomainOwnershipIdentifier>;
+  Array<DomainOwnershipIdentifier>;
 export const DomainOwnershipIdentifierCollectionValueList =
   /*@__PURE__*/ S.Array(
     DomainOwnershipIdentifier,
@@ -1305,7 +1300,7 @@ export const NameIdentifier = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NameIdentifier" }) as any as S.Schema<NameIdentifier>;
 
 /** The NameIdentifier items on this page */
-export type NameIdentifierCollectionValueList = ReadonlyArray<NameIdentifier>;
+export type NameIdentifierCollectionValueList = Array<NameIdentifier>;
 export const NameIdentifierCollectionValueList = /*@__PURE__*/ S.Array(
   NameIdentifier,
 ) as any as S.Schema<NameIdentifierCollectionValueList>;
@@ -1712,7 +1707,7 @@ export const TopLevelDomain = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TopLevelDomain" }) as any as S.Schema<TopLevelDomain>;
 
 /** The TopLevelDomain items on this page */
-export type TopLevelDomainCollectionValueList = ReadonlyArray<TopLevelDomain>;
+export type TopLevelDomainCollectionValueList = Array<TopLevelDomain>;
 export const TopLevelDomainCollectionValueList = /*@__PURE__*/ S.Array(
   TopLevelDomain,
 ) as any as S.Schema<TopLevelDomainCollectionValueList>;
@@ -1785,8 +1780,7 @@ export const TldLegalAgreement = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TldLegalAgreement>;
 
 /** The TldLegalAgreement items on this page */
-export type TldLegalAgreementCollectionValueList =
-  ReadonlyArray<TldLegalAgreement>;
+export type TldLegalAgreementCollectionValueList = Array<TldLegalAgreement>;
 export const TldLegalAgreementCollectionValueList = /*@__PURE__*/ S.Array(
   TldLegalAgreement,
 ) as any as S.Schema<TldLegalAgreementCollectionValueList>;

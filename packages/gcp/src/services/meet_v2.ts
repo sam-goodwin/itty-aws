@@ -90,7 +90,9 @@ export const TranscriptionConfigAutoTranscriptionGenerationEnum =
 /** Configuration related to transcription in a meeting space. */
 export interface TranscriptionConfig {
   /** Defines whether the content of a meeting is automatically transcribed when someone with the privilege to transcribe joins the meeting. */
-  autoTranscriptionGeneration?: TranscriptionConfigAutoTranscriptionGenerationEnum;
+  autoTranscriptionGeneration?:
+    | TranscriptionConfigAutoTranscriptionGenerationEnum
+    | (string & {});
 }
 export const TranscriptionConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -112,7 +114,9 @@ export const RecordingConfigAutoRecordingGenerationEnum =
 /** Configuration related to recording in a meeting space. */
 export interface RecordingConfig {
   /** Defines whether a meeting space is automatically recorded when someone with the privilege to record joins the meeting. */
-  autoRecordingGeneration?: RecordingConfigAutoRecordingGenerationEnum;
+  autoRecordingGeneration?:
+    | RecordingConfigAutoRecordingGenerationEnum
+    | (string & {});
 }
 export const RecordingConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -134,7 +138,9 @@ export const SmartNotesConfigAutoSmartNotesGenerationEnum =
 /** Configuration related to smart notes in a meeting space. For more information about smart notes, see ["Take notes for me" in Google Meet](https://support.google.com/meet/answer/14754931). */
 export interface SmartNotesConfig {
   /** Defines whether to automatically generate a summary and recap of the meeting for all invitees in the organization when someone with the privilege to enable smart notes joins the meeting. */
-  autoSmartNotesGeneration?: SmartNotesConfigAutoSmartNotesGenerationEnum;
+  autoSmartNotesGeneration?:
+    | SmartNotesConfigAutoSmartNotesGenerationEnum
+    | (string & {});
 }
 export const SmartNotesConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -203,13 +209,19 @@ export const ModerationRestrictionsPresentRestrictionEnum =
 /** Defines restrictions for features when the meeting is moderated. */
 export interface ModerationRestrictions {
   /** Defines who has permission to send chat messages in the meeting space. */
-  chatRestriction?: ModerationRestrictionsChatRestrictionEnum;
+  chatRestriction?: ModerationRestrictionsChatRestrictionEnum | (string & {});
   /** Defines whether to restrict the default role assigned to users as viewer. */
-  defaultJoinAsViewerType?: ModerationRestrictionsDefaultJoinAsViewerTypeEnum;
+  defaultJoinAsViewerType?:
+    | ModerationRestrictionsDefaultJoinAsViewerTypeEnum
+    | (string & {});
   /** Defines who has permission to send reactions in the meeting space. */
-  reactionRestriction?: ModerationRestrictionsReactionRestrictionEnum;
+  reactionRestriction?:
+    | ModerationRestrictionsReactionRestrictionEnum
+    | (string & {});
   /** Defines who has permission to share their screen in the meeting space. */
-  presentRestriction?: ModerationRestrictionsPresentRestrictionEnum;
+  presentRestriction?:
+    | ModerationRestrictionsPresentRestrictionEnum
+    | (string & {});
 }
 export const ModerationRestrictions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -237,17 +249,19 @@ export const SpaceConfigEntryPointAccessEnum = /*@__PURE__*/ S.String;
 /** The configuration pertaining to a meeting space. */
 export interface SpaceConfig {
   /** Whether attendance report is enabled for the meeting space. */
-  attendanceReportGenerationType?: SpaceConfigAttendanceReportGenerationTypeEnum;
+  attendanceReportGenerationType?:
+    | SpaceConfigAttendanceReportGenerationTypeEnum
+    | (string & {});
   /** Configuration pertaining to the auto-generated artifacts that the meeting supports. */
   artifactConfig?: ArtifactConfig;
   /** The pre-configured moderation mode for the Meeting. Default: Controlled by the user's policies. */
-  moderation?: SpaceConfigModerationEnum;
+  moderation?: SpaceConfigModerationEnum | (string & {});
   /** Access type of the meeting space that determines who can join without knocking. Default: The user's default access settings. Controlled by the user's admin for enterprise users or RESTRICTED. */
-  accessType?: SpaceConfigAccessTypeEnum;
+  accessType?: SpaceConfigAccessTypeEnum | (string & {});
   /** When moderation.ON, these restrictions go into effect for the meeting. When moderation.OFF, will be reset to default ModerationRestrictions. */
   moderationRestrictions?: ModerationRestrictions;
   /** Defines the entry points that can be used to join meetings hosted in this meeting space. Default: EntryPointAccess.ALL */
-  entryPointAccess?: SpaceConfigEntryPointAccessEnum;
+  entryPointAccess?: SpaceConfigEntryPointAccessEnum | (string & {});
 }
 export const SpaceConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -282,7 +296,7 @@ export const PhoneAccess = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PhoneAccess" }) as any as S.Schema<PhoneAccess>;
 
-export type PhoneAccessList = ReadonlyArray<PhoneAccess>;
+export type PhoneAccessList = Array<PhoneAccess>;
 export const PhoneAccessList = /*@__PURE__*/ S.Array(
   PhoneAccess,
 ) as any as S.Schema<PhoneAccessList>;
@@ -303,7 +317,7 @@ export const GatewaySipAccess = /*@__PURE__*/ S.suspend(() =>
   identifier: "GatewaySipAccess",
 }) as any as S.Schema<GatewaySipAccess>;
 
-export type GatewaySipAccessList = ReadonlyArray<GatewaySipAccess>;
+export type GatewaySipAccessList = Array<GatewaySipAccess>;
 export const GatewaySipAccessList = /*@__PURE__*/ S.Array(
   GatewaySipAccess,
 ) as any as S.Schema<GatewaySipAccessList>;
@@ -820,7 +834,7 @@ export const ListConferenceRecordsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListConferenceRecordsRequest",
 }) as any as S.Schema<ListConferenceRecordsRequest>;
 
-export type ConferenceRecordList = ReadonlyArray<ConferenceRecord>;
+export type ConferenceRecordList = Array<ConferenceRecord>;
 export const ConferenceRecordList = /*@__PURE__*/ S.Array(
   ConferenceRecord,
 ) as any as S.Schema<ConferenceRecordList>;
@@ -869,7 +883,7 @@ export const ListConferenceRecordsParticipantsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListConferenceRecordsParticipantsRequest",
 }) as any as S.Schema<ListConferenceRecordsParticipantsRequest>;
 
-export type ParticipantList = ReadonlyArray<Participant>;
+export type ParticipantList = Array<Participant>;
 export const ParticipantList = /*@__PURE__*/ S.Array(
   Participant,
 ) as any as S.Schema<ParticipantList>;
@@ -921,7 +935,7 @@ export const ListConferenceRecordsParticipantsParticipantSessionsRequest =
     identifier: "ListConferenceRecordsParticipantsParticipantSessionsRequest",
   }) as any as S.Schema<ListConferenceRecordsParticipantsParticipantSessionsRequest>;
 
-export type ParticipantSessionList = ReadonlyArray<ParticipantSession>;
+export type ParticipantSessionList = Array<ParticipantSession>;
 export const ParticipantSessionList = /*@__PURE__*/ S.Array(
   ParticipantSession,
 ) as any as S.Schema<ParticipantSessionList>;
@@ -967,7 +981,7 @@ export const ListConferenceRecordsRecordingsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListConferenceRecordsRecordingsRequest",
 }) as any as S.Schema<ListConferenceRecordsRecordingsRequest>;
 
-export type RecordingList = ReadonlyArray<Recording>;
+export type RecordingList = Array<Recording>;
 export const RecordingList = /*@__PURE__*/ S.Array(
   Recording,
 ) as any as S.Schema<RecordingList>;
@@ -1013,7 +1027,7 @@ export const ListConferenceRecordsSmartNotesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListConferenceRecordsSmartNotesRequest",
 }) as any as S.Schema<ListConferenceRecordsSmartNotesRequest>;
 
-export type SmartNoteList = ReadonlyArray<SmartNote>;
+export type SmartNoteList = Array<SmartNote>;
 export const SmartNoteList = /*@__PURE__*/ S.Array(
   SmartNote,
 ) as any as S.Schema<SmartNoteList>;
@@ -1059,7 +1073,7 @@ export const ListConferenceRecordsTranscriptsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListConferenceRecordsTranscriptsRequest",
 }) as any as S.Schema<ListConferenceRecordsTranscriptsRequest>;
 
-export type TranscriptList = ReadonlyArray<Transcript>;
+export type TranscriptList = Array<Transcript>;
 export const TranscriptList = /*@__PURE__*/ S.Array(
   Transcript,
 ) as any as S.Schema<TranscriptList>;
@@ -1105,7 +1119,7 @@ export const ListConferenceRecordsTranscriptsEntriesRequest =
     identifier: "ListConferenceRecordsTranscriptsEntriesRequest",
   }) as any as S.Schema<ListConferenceRecordsTranscriptsEntriesRequest>;
 
-export type TranscriptEntryList = ReadonlyArray<TranscriptEntry>;
+export type TranscriptEntryList = Array<TranscriptEntry>;
 export const TranscriptEntryList = /*@__PURE__*/ S.Array(
   TranscriptEntry,
 ) as any as S.Schema<TranscriptEntryList>;

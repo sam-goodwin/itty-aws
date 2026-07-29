@@ -86,7 +86,7 @@ export const DeploymentPreflightResource = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets the list of resources. */
 export type DeploymentPreflightPostRequestResourcesList =
-  ReadonlyArray<DeploymentPreflightResource>;
+  Array<DeploymentPreflightResource>;
 export const DeploymentPreflightPostRequestResourcesList =
   /*@__PURE__*/ S.Array(
     DeploymentPreflightResource,
@@ -122,7 +122,7 @@ export const DeploymentPreflightPostRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets the list of resources. */
 export type DeploymentPreflightModelResourcesList =
-  ReadonlyArray<DeploymentPreflightResource>;
+  Array<DeploymentPreflightResource>;
 export const DeploymentPreflightModelResourcesList = /*@__PURE__*/ S.Array(
   DeploymentPreflightResource,
 ) as any as S.Schema<DeploymentPreflightModelResourcesList>;
@@ -142,7 +142,7 @@ export const DeploymentPreflightModel = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets the custom email address for sending emails. */
 export type EmailConfigurationModelPropertiesInputCustomEmailAddressesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const EmailConfigurationModelPropertiesInputCustomEmailAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -245,7 +245,7 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets the custom email address for sending emails. */
 export type EmailConfigurationModelPropertiesCustomEmailAddressesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const EmailConfigurationModelPropertiesCustomEmailAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -414,7 +414,7 @@ export const EmailConfigurationModel = /*@__PURE__*/ S.suspend(() =>
 
 /** The EmailConfigurationModel items on this page */
 export type EmailConfigurationModelListResultValueList =
-  ReadonlyArray<EmailConfigurationModel>;
+  Array<EmailConfigurationModel>;
 export const EmailConfigurationModelListResultValueList = /*@__PURE__*/ S.Array(
   EmailConfigurationModel,
 ) as any as S.Schema<EmailConfigurationModelListResultValueList>;
@@ -464,8 +464,7 @@ export const EventGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EventGetRequest>;
 
 /** Gets or sets the list of affected resource correlation Ids. This can be used to uniquely identify the count of items affected by a specific category and severity as well as count of item affected by an specific issue. */
-export type HealthErrorModelAffectedResourceCorrelationIdsList =
-  ReadonlyArray<string>;
+export type HealthErrorModelAffectedResourceCorrelationIdsList = Array<string>;
 export const HealthErrorModelAffectedResourceCorrelationIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -515,8 +514,7 @@ export const InnerHealthErrorModel = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InnerHealthErrorModel>;
 
 /** Gets or sets a list of child health errors associated with this error. */
-export type HealthErrorModelChildErrorsList =
-  ReadonlyArray<InnerHealthErrorModel>;
+export type HealthErrorModelChildErrorsList = Array<InnerHealthErrorModel>;
 export const HealthErrorModelChildErrorsList = /*@__PURE__*/ S.Array(
   InnerHealthErrorModel,
 ) as any as S.Schema<HealthErrorModelChildErrorsList>;
@@ -576,8 +574,7 @@ export const HealthErrorModel = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HealthErrorModel>;
 
 /** Gets or sets the errors associated with this event. */
-export type EventModelPropertiesHealthErrorsList =
-  ReadonlyArray<HealthErrorModel>;
+export type EventModelPropertiesHealthErrorsList = Array<HealthErrorModel>;
 export const EventModelPropertiesHealthErrorsList = /*@__PURE__*/ S.Array(
   HealthErrorModel,
 ) as any as S.Schema<EventModelPropertiesHealthErrorsList>;
@@ -720,7 +717,7 @@ export const EventModel = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EventModel" }) as any as S.Schema<EventModel>;
 
 /** The EventModel items on this page */
-export type EventModelListResultValueList = ReadonlyArray<EventModel>;
+export type EventModelListResultValueList = Array<EventModel>;
 export const EventModelListResultValueList = /*@__PURE__*/ S.Array(
   EventModel,
 ) as any as S.Schema<EventModelListResultValueList>;
@@ -835,7 +832,7 @@ export const FabricAgentCreateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets the list of health errors. */
 export type FabricAgentModelPropertiesHealthErrorsList =
-  ReadonlyArray<HealthErrorModel>;
+  Array<HealthErrorModel>;
 export const FabricAgentModelPropertiesHealthErrorsList = /*@__PURE__*/ S.Array(
   HealthErrorModel,
 ) as any as S.Schema<FabricAgentModelPropertiesHealthErrorsList>;
@@ -1045,8 +1042,7 @@ export const FabricAgentModel = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FabricAgentModel>;
 
 /** The FabricAgentModel items on this page */
-export type FabricAgentModelListResultValueList =
-  ReadonlyArray<FabricAgentModel>;
+export type FabricAgentModelListResultValueList = Array<FabricAgentModel>;
 export const FabricAgentModelListResultValueList = /*@__PURE__*/ S.Array(
   FabricAgentModel,
 ) as any as S.Schema<FabricAgentModelListResultValueList>;
@@ -1146,8 +1142,7 @@ export type HealthStatus = "Normal" | "Warning" | "Critical";
 export const HealthStatus = /*@__PURE__*/ S.String;
 
 /** Gets or sets the list of health errors. */
-export type FabricModelPropertiesHealthErrorsList =
-  ReadonlyArray<HealthErrorModel>;
+export type FabricModelPropertiesHealthErrorsList = Array<HealthErrorModel>;
 export const FabricModelPropertiesHealthErrorsList = /*@__PURE__*/ S.Array(
   HealthErrorModel,
 ) as any as S.Schema<FabricModelPropertiesHealthErrorsList>;
@@ -1366,7 +1361,7 @@ export const FabricModel = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FabricModel" }) as any as S.Schema<FabricModel>;
 
 /** The FabricModel items on this page */
-export type FabricModelListResultValueList = ReadonlyArray<FabricModel>;
+export type FabricModelListResultValueList = Array<FabricModel>;
 export const FabricModelListResultValueList = /*@__PURE__*/ S.Array(
   FabricModel,
 ) as any as S.Schema<FabricModelListResultValueList>;
@@ -1533,7 +1528,7 @@ export type JobObjectType =
 export const JobObjectType = /*@__PURE__*/ S.String;
 
 /** Gets or sets the list of allowed actions on the job. */
-export type JobModelPropertiesAllowedActionsList = ReadonlyArray<string>;
+export type JobModelPropertiesAllowedActionsList = Array<string>;
 export const JobModelPropertiesAllowedActionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<JobModelPropertiesAllowedActionsList>;
@@ -1585,7 +1580,7 @@ export const JobModel = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "JobModel" }) as any as S.Schema<JobModel>;
 
 /** Gets or sets the list of children job models. */
-export type TaskModelChildrenJobsList = ReadonlyArray<JobModel>;
+export type TaskModelChildrenJobsList = Array<JobModel>;
 export const TaskModelChildrenJobsList = /*@__PURE__*/ S.Array(
   JobModel,
 ) as any as S.Schema<TaskModelChildrenJobsList>;
@@ -1617,7 +1612,7 @@ export const TaskModel = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TaskModel" }) as any as S.Schema<TaskModel>;
 
 /** Gets or sets the list of tasks. */
-export type JobModelPropertiesTasksList = ReadonlyArray<TaskModel>;
+export type JobModelPropertiesTasksList = Array<TaskModel>;
 export const JobModelPropertiesTasksList = /*@__PURE__*/ S.Array(
   TaskModel,
 ) as any as S.Schema<JobModelPropertiesTasksList>;
@@ -1652,7 +1647,7 @@ export const ErrorModel = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ErrorModel" }) as any as S.Schema<ErrorModel>;
 
 /** Gets or sets the list of errors. */
-export type JobModelPropertiesErrorsList = ReadonlyArray<ErrorModel>;
+export type JobModelPropertiesErrorsList = Array<ErrorModel>;
 export const JobModelPropertiesErrorsList = /*@__PURE__*/ S.Array(
   ErrorModel,
 ) as any as S.Schema<JobModelPropertiesErrorsList>;
@@ -1812,7 +1807,7 @@ export const JobListRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "JobListRequest" }) as any as S.Schema<JobListRequest>;
 
 /** The JobModel items on this page */
-export type JobModelListResultValueList = ReadonlyArray<JobModel>;
+export type JobModelListResultValueList = Array<JobModel>;
 export const JobModelListResultValueList = /*@__PURE__*/ S.Array(
   JobModel,
 ) as any as S.Schema<JobModelListResultValueList>;
@@ -1980,7 +1975,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = ReadonlyArray<Operation>;
+export type OperationsListResponseValueList = Array<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;
@@ -2233,7 +2228,7 @@ export const PolicyModel = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PolicyModel" }) as any as S.Schema<PolicyModel>;
 
 /** The PolicyModel items on this page */
-export type PolicyModelListResultValueList = ReadonlyArray<PolicyModel>;
+export type PolicyModelListResultValueList = Array<PolicyModel>;
 export const PolicyModelListResultValueList = /*@__PURE__*/ S.Array(
   PolicyModel,
 ) as any as S.Schema<PolicyModelListResultValueList>;
@@ -2343,7 +2338,7 @@ export const PrivateEndpointConnectionStatus = /*@__PURE__*/ S.String;
 /** Represents Private link service connection state. */
 export interface PrivateLinkServiceConnectionState {
   /** Gets or sets the status. */
-  status?: PrivateEndpointConnectionStatus;
+  status?: PrivateEndpointConnectionStatus | (string & {});
   /** Gets or sets description. */
   description?: string;
   /** Gets or sets actions required. */
@@ -2459,7 +2454,7 @@ export const PrivateEndpointConnection = /*@__PURE__*/ S.suspend(() =>
 
 /** The PrivateEndpointConnection items on this page */
 export type PrivateEndpointConnectionListResultValueList =
-  ReadonlyArray<PrivateEndpointConnection>;
+  Array<PrivateEndpointConnection>;
 export const PrivateEndpointConnectionListResultValueList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection,
@@ -2586,16 +2581,14 @@ export const PrivateLinkResourcesGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateLinkResourcesGetRequest>;
 
 /** Gets or sets the required member. This translates to how many Private IPs should be created for each privately linkable resource. */
-export type PrivateLinkResourcePropertiesRequiredMembersList =
-  ReadonlyArray<string>;
+export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
 export const PrivateLinkResourcePropertiesRequiredMembersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
 
 /** Gets or sets the private DNS zone names. */
-export type PrivateLinkResourcePropertiesRequiredZoneNamesList =
-  ReadonlyArray<string>;
+export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
 export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2702,8 +2695,7 @@ export const PrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateLinkResource>;
 
 /** The PrivateLinkResource items on this page */
-export type PrivateLinkResourceListResultValueList =
-  ReadonlyArray<PrivateLinkResource>;
+export type PrivateLinkResourceListResultValueList = Array<PrivateLinkResource>;
 export const PrivateLinkResourceListResultValueList = /*@__PURE__*/ S.Array(
   PrivateLinkResource,
 ) as any as S.Schema<PrivateLinkResourceListResultValueList>;
@@ -2896,7 +2888,7 @@ export const ProtectedItemJobProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProtectedItemJobProperties>;
 
 /** Gets or sets the allowed scenarios on the protected item. */
-export type ProtectedItemModelPropertiesAllowedJobsList = ReadonlyArray<string>;
+export type ProtectedItemModelPropertiesAllowedJobsList = Array<string>;
 export const ProtectedItemModelPropertiesAllowedJobsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2904,7 +2896,7 @@ export const ProtectedItemModelPropertiesAllowedJobsList =
 
 /** Gets or sets the list of health errors. */
 export type ProtectedItemModelPropertiesHealthErrorsList =
-  ReadonlyArray<HealthErrorModel>;
+  Array<HealthErrorModel>;
 export const ProtectedItemModelPropertiesHealthErrorsList =
   /*@__PURE__*/ S.Array(
     HealthErrorModel,
@@ -3181,8 +3173,7 @@ export const ProtectedItemModel = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProtectedItemModel>;
 
 /** The ProtectedItemModel items on this page */
-export type ProtectedItemModelListResultValueList =
-  ReadonlyArray<ProtectedItemModel>;
+export type ProtectedItemModelListResultValueList = Array<ProtectedItemModel>;
 export const ProtectedItemModelListResultValueList = /*@__PURE__*/ S.Array(
   ProtectedItemModel,
 ) as any as S.Schema<ProtectedItemModelListResultValueList>;
@@ -3504,8 +3495,7 @@ export const RecoveryPointModel = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RecoveryPointModel>;
 
 /** The RecoveryPointModel items on this page */
-export type RecoveryPointModelListResultValueList =
-  ReadonlyArray<RecoveryPointModel>;
+export type RecoveryPointModelListResultValueList = Array<RecoveryPointModel>;
 export const RecoveryPointModelListResultValueList = /*@__PURE__*/ S.Array(
   RecoveryPointModel,
 ) as any as S.Schema<RecoveryPointModelListResultValueList>;
@@ -3764,7 +3754,7 @@ export const ReplicationExtensionModel = /*@__PURE__*/ S.suspend(() =>
 
 /** The ReplicationExtensionModel items on this page */
 export type ReplicationExtensionModelListResultValueList =
-  ReadonlyArray<ReplicationExtensionModel>;
+  Array<ReplicationExtensionModel>;
 export const ReplicationExtensionModelListResultValueList =
   /*@__PURE__*/ S.Array(
     ReplicationExtensionModel,
@@ -3916,7 +3906,7 @@ export const VaultPrivateEndpointState = /*@__PURE__*/ S.String;
 
 /** List of private endpoint connection. */
 export type VaultModelPropertiesPrivateEndpointConnectionsList =
-  ReadonlyArray<PrivateEndpointConnection>;
+  Array<PrivateEndpointConnection>;
 export const VaultModelPropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection,
@@ -4262,7 +4252,7 @@ export const VaultModel = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VaultModel" }) as any as S.Schema<VaultModel>;
 
 /** The VaultModel items on this page */
-export type VaultModelListResultValueList = ReadonlyArray<VaultModel>;
+export type VaultModelListResultValueList = Array<VaultModel>;
 export const VaultModelListResultValueList = /*@__PURE__*/ S.Array(
   VaultModel,
 ) as any as S.Schema<VaultModelListResultValueList>;

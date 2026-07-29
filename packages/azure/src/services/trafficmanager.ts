@@ -35,7 +35,7 @@ export type EndpointMonitorStatus =
 export const EndpointMonitorStatus = /*@__PURE__*/ S.String;
 
 /** The list of countries/regions mapped to this endpoint when using the 'Geographic' traffic routing method. Please consult Traffic Manager Geographic documentation for a full list of accepted values. */
-export type EndpointPropertiesGeoMappingList = ReadonlyArray<string>;
+export type EndpointPropertiesGeoMappingList = Array<string>;
 export const EndpointPropertiesGeoMappingList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EndpointPropertiesGeoMappingList>;
@@ -61,7 +61,7 @@ export const EndpointPropertiesSubnetsItem = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of subnets, IP addresses, and/or address ranges mapped to this endpoint when using the 'Subnet' traffic routing method. An empty list will match all ranges not covered by other endpoints. */
 export type EndpointPropertiesSubnetsList =
-  ReadonlyArray<EndpointPropertiesSubnetsItem>;
+  Array<EndpointPropertiesSubnetsItem>;
 export const EndpointPropertiesSubnetsList = /*@__PURE__*/ S.Array(
   EndpointPropertiesSubnetsItem,
 ) as any as S.Schema<EndpointPropertiesSubnetsList>;
@@ -84,7 +84,7 @@ export const EndpointPropertiesCustomHeadersItem = /*@__PURE__*/ S.suspend(() =>
 
 /** List of custom headers. */
 export type EndpointPropertiesCustomHeadersList =
-  ReadonlyArray<EndpointPropertiesCustomHeadersItem>;
+  Array<EndpointPropertiesCustomHeadersItem>;
 export const EndpointPropertiesCustomHeadersList = /*@__PURE__*/ S.Array(
   EndpointPropertiesCustomHeadersItem,
 ) as any as S.Schema<EndpointPropertiesCustomHeadersList>;
@@ -100,7 +100,7 @@ export interface EndpointProperties {
   /** The fully-qualified DNS name or IP address of the endpoint. Traffic Manager returns this value in DNS responses to direct traffic to this endpoint. */
   target?: string;
   /** The status of the endpoint. If the endpoint is Enabled, it is probed for endpoint health and is included in the traffic routing method. */
-  endpointStatus?: EndpointStatus;
+  endpointStatus?: EndpointStatus | (string & {});
   /** The weight of this endpoint when using the 'Weighted' traffic routing method. Possible values are from 1 to 1000. */
   weight?: number;
   /** The priority of this endpoint when using the 'Priority' traffic routing method. Possible values are from 1 to 1000, lower values represent higher priority. This is an optional parameter. If specified, it must be specified on all endpoints, and no two endpoints can share the same priority value. */
@@ -108,7 +108,7 @@ export interface EndpointProperties {
   /** Specifies the location of the external or nested endpoints when using the 'Performance' traffic routing method. */
   endpointLocation?: string;
   /** The monitoring status of the endpoint. */
-  endpointMonitorStatus?: EndpointMonitorStatus;
+  endpointMonitorStatus?: EndpointMonitorStatus | (string & {});
   /** The minimum number of endpoints that must be available in the child profile in order for the parent profile to be considered available. Only applicable to endpoint of type 'NestedEndpoints'. */
   minChildEndpoints?: number;
   /** The minimum number of IPv4 (DNS record type A) endpoints that must be available in the child profile in order for the parent profile to be considered available. Only applicable to endpoint of type 'NestedEndpoints'. */
@@ -122,7 +122,7 @@ export interface EndpointProperties {
   /** List of custom headers. */
   customHeaders?: EndpointPropertiesCustomHeadersList;
   /** If Always Serve is enabled, probing for endpoint health will be disabled and endpoints will be included in the traffic routing method. */
-  alwaysServe?: AlwaysServe;
+  alwaysServe?: AlwaysServe | (string & {});
 }
 export const EndpointProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -403,7 +403,7 @@ export const GeographicHierarchiesGetDefaultRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GeographicHierarchiesGetDefaultRequest>;
 
 /** The list of Regions grouped under this Region in the Geographic Hierarchy. */
-export type RegionRegionsList = ReadonlyArray<Region>;
+export type RegionRegionsList = Array<Region>;
 export const RegionRegionsList = /*@__PURE__*/ S.Array(
   S.suspend(() => Region),
 ) as any as S.Schema<RegionRegionsList>;
@@ -463,12 +463,12 @@ export const GeographicHierarchiesGetDefaultResponse = /*@__PURE__*/ S.suspend(
 export type HeatMapGetRequestHeatMapType = "default";
 export const HeatMapGetRequestHeatMapType = /*@__PURE__*/ S.String;
 
-export type HeatMapGetRequestTopLeftList = ReadonlyArray<number>;
+export type HeatMapGetRequestTopLeftList = Array<number>;
 export const HeatMapGetRequestTopLeftList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<HeatMapGetRequestTopLeftList>;
 
-export type HeatMapGetRequestBotRightList = ReadonlyArray<number>;
+export type HeatMapGetRequestBotRightList = Array<number>;
 export const HeatMapGetRequestBotRightList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<HeatMapGetRequestBotRightList>;
@@ -524,7 +524,7 @@ export const HeatMapEndpoint = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HeatMapEndpoint>;
 
 /** The endpoints used in this HeatMap calculation. */
-export type HeatMapPropertiesEndpointsList = ReadonlyArray<HeatMapEndpoint>;
+export type HeatMapPropertiesEndpointsList = Array<HeatMapEndpoint>;
 export const HeatMapPropertiesEndpointsList = /*@__PURE__*/ S.Array(
   HeatMapEndpoint,
 ) as any as S.Schema<HeatMapPropertiesEndpointsList>;
@@ -549,7 +549,7 @@ export const QueryExperience = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<QueryExperience>;
 
 /** The query experiences produced in this HeatMap calculation. */
-export type TrafficFlowQueryExperiencesList = ReadonlyArray<QueryExperience>;
+export type TrafficFlowQueryExperiencesList = Array<QueryExperience>;
 export const TrafficFlowQueryExperiencesList = /*@__PURE__*/ S.Array(
   QueryExperience,
 ) as any as S.Schema<TrafficFlowQueryExperiencesList>;
@@ -575,7 +575,7 @@ export const TrafficFlow = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TrafficFlow" }) as any as S.Schema<TrafficFlow>;
 
 /** The traffic flows produced in this HeatMap calculation. */
-export type HeatMapPropertiesTrafficFlowsList = ReadonlyArray<TrafficFlow>;
+export type HeatMapPropertiesTrafficFlowsList = Array<TrafficFlow>;
 export const HeatMapPropertiesTrafficFlowsList = /*@__PURE__*/ S.Array(
   TrafficFlow,
 ) as any as S.Schema<HeatMapPropertiesTrafficFlowsList>;
@@ -765,7 +765,7 @@ export const MonitorConfigCustomHeadersItem = /*@__PURE__*/ S.suspend(() =>
 
 /** List of custom headers. */
 export type MonitorConfigCustomHeadersList =
-  ReadonlyArray<MonitorConfigCustomHeadersItem>;
+  Array<MonitorConfigCustomHeadersItem>;
 export const MonitorConfigCustomHeadersList = /*@__PURE__*/ S.Array(
   MonitorConfigCustomHeadersItem,
 ) as any as S.Schema<MonitorConfigCustomHeadersList>;
@@ -789,7 +789,7 @@ export const MonitorConfigExpectedStatusCodeRangesItem =
 
 /** List of expected status code ranges. */
 export type MonitorConfigExpectedStatusCodeRangesList =
-  ReadonlyArray<MonitorConfigExpectedStatusCodeRangesItem>;
+  Array<MonitorConfigExpectedStatusCodeRangesItem>;
 export const MonitorConfigExpectedStatusCodeRangesList = /*@__PURE__*/ S.Array(
   MonitorConfigExpectedStatusCodeRangesItem,
 ) as any as S.Schema<MonitorConfigExpectedStatusCodeRangesList>;
@@ -797,9 +797,9 @@ export const MonitorConfigExpectedStatusCodeRangesList = /*@__PURE__*/ S.Array(
 /** Class containing endpoint monitoring settings in a Traffic Manager profile. */
 export interface MonitorConfig {
   /** The profile-level monitoring status of the Traffic Manager profile. */
-  profileMonitorStatus?: ProfileMonitorStatus;
+  profileMonitorStatus?: ProfileMonitorStatus | (string & {});
   /** The protocol (HTTP, HTTPS or TCP) used to probe for endpoint health. */
-  protocol?: MonitorProtocol;
+  protocol?: MonitorProtocol | (string & {});
   /** The TCP port used to probe for endpoint health. */
   port?: number;
   /** The path relative to the endpoint domain name used to probe for endpoint health. */
@@ -852,7 +852,7 @@ export const Endpoint = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Endpoint" }) as any as S.Schema<Endpoint>;
 
 /** The list of endpoints in the Traffic Manager profile. */
-export type ProfilePropertiesInputEndpointsList = ReadonlyArray<Endpoint>;
+export type ProfilePropertiesInputEndpointsList = Array<Endpoint>;
 export const ProfilePropertiesInputEndpointsList = /*@__PURE__*/ S.Array(
   Endpoint,
 ) as any as S.Schema<ProfilePropertiesInputEndpointsList>;
@@ -870,8 +870,9 @@ export type AllowedEndpointRecordType =
 export const AllowedEndpointRecordType = /*@__PURE__*/ S.String;
 
 /** The list of allowed endpoint record types. */
-export type ProfilePropertiesInputAllowedEndpointRecordTypesList =
-  ReadonlyArray<AllowedEndpointRecordType | (string & {})>;
+export type ProfilePropertiesInputAllowedEndpointRecordTypesList = Array<
+  AllowedEndpointRecordType | (string & {})
+>;
 export const ProfilePropertiesInputAllowedEndpointRecordTypesList =
   /*@__PURE__*/ S.Array(
     AllowedEndpointRecordType,
@@ -983,14 +984,14 @@ export const DnsConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DnsConfig" }) as any as S.Schema<DnsConfig>;
 
 /** The list of endpoints in the Traffic Manager profile. */
-export type ProfilePropertiesEndpointsList = ReadonlyArray<Endpoint>;
+export type ProfilePropertiesEndpointsList = Array<Endpoint>;
 export const ProfilePropertiesEndpointsList = /*@__PURE__*/ S.Array(
   Endpoint,
 ) as any as S.Schema<ProfilePropertiesEndpointsList>;
 
 /** The list of allowed endpoint record types. */
 export type ProfilePropertiesAllowedEndpointRecordTypesList =
-  ReadonlyArray<AllowedEndpointRecordType>;
+  Array<AllowedEndpointRecordType>;
 export const ProfilePropertiesAllowedEndpointRecordTypesList =
   /*@__PURE__*/ S.Array(
     AllowedEndpointRecordType,
@@ -1199,7 +1200,7 @@ export const Profile = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Profile" }) as any as S.Schema<Profile>;
 
 /** The Profile items on this page */
-export type ProfileListResultValueList = ReadonlyArray<Profile>;
+export type ProfileListResultValueList = Array<Profile>;
 export const ProfileListResultValueList = /*@__PURE__*/ S.Array(
   Profile,
 ) as any as S.Schema<ProfileListResultValueList>;

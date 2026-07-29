@@ -235,9 +235,9 @@ export const DayOfWeek = /*@__PURE__*/ S.String;
 
 export type Hour = number;
 export interface TimeAlignmentBoundary {
-  Month?: Month;
+  Month?: Month | (string & {});
   DayOfMonth?: number;
-  DayOfWeek?: DayOfWeek;
+  DayOfWeek?: DayOfWeek | (string & {});
   Hour?: number;
 }
 export const TimeAlignmentBoundary = /*@__PURE__*/ S.suspend(() =>
@@ -320,7 +320,7 @@ export const AttributeType = /*@__PURE__*/ S.String;
 
 export interface SchemaAttribute {
   AttributeName?: string;
-  AttributeType?: AttributeType;
+  AttributeType?: AttributeType | (string & {});
 }
 export const SchemaAttribute = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -470,8 +470,8 @@ export type TimePointGranularity = "ALL" | "SPECIFIC";
 export const TimePointGranularity = /*@__PURE__*/ S.String;
 
 export interface ExplainabilityConfig {
-  TimeSeriesGranularity: TimeSeriesGranularity;
-  TimePointGranularity: TimePointGranularity;
+  TimeSeriesGranularity: TimeSeriesGranularity | (string & {});
+  TimePointGranularity: TimePointGranularity | (string & {});
 }
 export const ExplainabilityConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -702,7 +702,7 @@ export interface ContinuousParameterRange {
   Name: string;
   MaxValue: number;
   MinValue: number;
-  ScalingType?: ScalingType;
+  ScalingType?: ScalingType | (string & {});
 }
 export const ContinuousParameterRange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -722,7 +722,7 @@ export interface IntegerParameterRange {
   Name: string;
   MaxValue: number;
   MinValue: number;
-  ScalingType?: ScalingType;
+  ScalingType?: ScalingType | (string & {});
 }
 export const IntegerParameterRange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -795,7 +795,7 @@ export const FeaturizationMethodParameters = /*@__PURE__*/ S.Record(
   S.String.pipe(S.optional),
 );
 export interface FeaturizationMethod {
-  FeaturizationMethodName: FeaturizationMethodName;
+  FeaturizationMethodName: FeaturizationMethodName | (string & {});
   FeaturizationMethodParameters?: { [key: string]: string | undefined };
 }
 export const FeaturizationMethod = /*@__PURE__*/ S.suspend(() =>
@@ -942,7 +942,7 @@ export const Operation = /*@__PURE__*/ S.String;
 
 export interface Action {
   AttributeName: string;
-  Operation: Operation;
+  Operation: Operation | (string & {});
   Value: number;
 }
 export const Action = /*@__PURE__*/ S.suspend(() =>
@@ -955,7 +955,7 @@ export const Condition = /*@__PURE__*/ S.String;
 export interface TimeSeriesCondition {
   AttributeName: string;
   AttributeValue: string;
-  Condition: Condition;
+  Condition: Condition | (string & {});
 }
 export const TimeSeriesCondition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

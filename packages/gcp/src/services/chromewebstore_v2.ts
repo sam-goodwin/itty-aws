@@ -132,7 +132,7 @@ export const DistributionChannel = /*@__PURE__*/ S.suspend(() =>
   identifier: "DistributionChannel",
 }) as any as S.Schema<DistributionChannel>;
 
-export type DistributionChannelList = ReadonlyArray<DistributionChannel>;
+export type DistributionChannelList = Array<DistributionChannel>;
 export const DistributionChannelList = /*@__PURE__*/ S.Array(
   DistributionChannel,
 ) as any as S.Schema<DistributionChannelList>;
@@ -225,7 +225,7 @@ export const DeployInfo = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DeployInfo" }) as any as S.Schema<DeployInfo>;
 
-export type DeployInfoList = ReadonlyArray<DeployInfo>;
+export type DeployInfoList = Array<DeployInfo>;
 export const DeployInfoList = /*@__PURE__*/ S.Array(
   DeployInfo,
 ) as any as S.Schema<DeployInfoList>;
@@ -287,7 +287,7 @@ export const Warning = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Warning" }) as any as S.Schema<Warning>;
 
-export type WarningList = ReadonlyArray<Warning>;
+export type WarningList = Array<Warning>;
 export const WarningList = /*@__PURE__*/ S.Array(
   Warning,
 ) as any as S.Schema<WarningList>;

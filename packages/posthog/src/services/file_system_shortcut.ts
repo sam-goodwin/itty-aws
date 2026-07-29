@@ -152,7 +152,7 @@ export const FileSystemShortcutListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FileSystemShortcutListRequest>;
 
 export type PaginatedFileSystemShortcutListResultsList =
-  ReadonlyArray<FileSystemShortcut2>;
+  Array<FileSystemShortcut2>;
 export const PaginatedFileSystemShortcutListResultsList = /*@__PURE__*/ S.Array(
   FileSystemShortcut2,
 ) as any as S.Schema<PaginatedFileSystemShortcutListResultsList>;
@@ -213,7 +213,7 @@ export const FileSystemShortcutPartialUpdateRequest = /*@__PURE__*/ S.suspend(
 
 /** IDs of the current user's shortcuts in the desired display order. */
 export type FileSystemShortcutReorderCreateRequestOrderedIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const FileSystemShortcutReorderCreateRequestOrderedIdsList =
   /*@__PURE__*/ S.Array(
     S.String,

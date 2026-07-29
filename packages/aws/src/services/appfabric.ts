@@ -532,8 +532,8 @@ export type Format = "json" | "parquet";
 export const Format = /*@__PURE__*/ S.String;
 
 export interface AuditLogProcessingConfiguration {
-  schema: Schema;
-  format: Format;
+  schema: Schema | (string & {});
+  format: Format | (string & {});
 }
 export const AuditLogProcessingConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ schema: Schema, format: Format }),

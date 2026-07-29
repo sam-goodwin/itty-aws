@@ -544,7 +544,10 @@ export type ParticipantRecordingMediaType =
   | "NONE";
 export const ParticipantRecordingMediaType = /*@__PURE__*/ S.String;
 
-export type ParticipantRecordingMediaTypeList = ParticipantRecordingMediaType[];
+export type ParticipantRecordingMediaTypeList = (
+  | ParticipantRecordingMediaType
+  | (string & {})
+)[];
 export const ParticipantRecordingMediaTypeList = /*@__PURE__*/ S.Array(
   ParticipantRecordingMediaType,
 );
@@ -552,7 +555,7 @@ export type ThumbnailIntervalSeconds = number;
 export type ThumbnailStorageType = "SEQUENTIAL" | "LATEST";
 export const ThumbnailStorageType = /*@__PURE__*/ S.String;
 
-export type ThumbnailStorageTypeList = ThumbnailStorageType[];
+export type ThumbnailStorageTypeList = (ThumbnailStorageType | (string & {}))[];
 export const ThumbnailStorageTypeList =
   /*@__PURE__*/ S.Array(ThumbnailStorageType);
 export type ThumbnailRecordingMode = "INTERVAL" | "DISABLED";
@@ -561,7 +564,7 @@ export const ThumbnailRecordingMode = /*@__PURE__*/ S.String;
 export interface ParticipantThumbnailConfiguration {
   targetIntervalSeconds?: number;
   storage?: ThumbnailStorageType[];
-  recordingMode?: ThumbnailRecordingMode;
+  recordingMode?: ThumbnailRecordingMode | (string & {});
 }
 export const ParticipantThumbnailConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -917,8 +920,8 @@ export type GridGap = number;
 export interface GridConfiguration {
   featuredParticipantAttribute?: string;
   omitStoppedVideo?: boolean;
-  videoAspectRatio?: VideoAspectRatio;
-  videoFillMode?: VideoFillMode;
+  videoAspectRatio?: VideoAspectRatio | (string & {});
+  videoFillMode?: VideoFillMode | (string & {});
   gridGap?: number;
   participantOrderAttribute?: string;
 }
@@ -950,12 +953,12 @@ export type PipHeight = number;
 export interface PipConfiguration {
   featuredParticipantAttribute?: string;
   omitStoppedVideo?: boolean;
-  videoFillMode?: VideoFillMode;
+  videoFillMode?: VideoFillMode | (string & {});
   gridGap?: number;
   pipParticipantAttribute?: string;
-  pipBehavior?: PipBehavior;
+  pipBehavior?: PipBehavior | (string & {});
   pipOffset?: number;
-  pipPosition?: PipPosition;
+  pipPosition?: PipPosition | (string & {});
   pipWidth?: number;
   pipHeight?: number;
   participantOrderAttribute?: string;

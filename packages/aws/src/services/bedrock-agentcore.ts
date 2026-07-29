@@ -634,7 +634,7 @@ export const Role = /*@__PURE__*/ S.String;
 
 export interface Conversational {
   content: Content;
-  role: Role;
+  role: Role | (string & {});
 }
 export const Conversational = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ content: Content, role: Role }),
@@ -866,7 +866,7 @@ export const LinkedAccount = /*@__PURE__*/ S.Union([
 export type LinkedAccountList = LinkedAccount[];
 export const LinkedAccountList = /*@__PURE__*/ S.Array(LinkedAccount);
 export interface EmbeddedCryptoWallet {
-  network: CryptoWalletNetwork;
+  network: CryptoWalletNetwork | (string & {});
   linkedAccounts: LinkedAccount[];
   walletAddress?: string;
   redirectUrl?: string;
@@ -969,7 +969,7 @@ export const Currency = /*@__PURE__*/ S.String;
 
 export interface Amount {
   value: string;
-  currency: Currency;
+  currency: Currency | (string & {});
 }
 export const Amount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ value: S.String, currency: Currency }),
@@ -2188,7 +2188,7 @@ export const BrowserEnterprisePolicyType = /*@__PURE__*/ S.String;
 
 export interface BrowserEnterprisePolicy {
   location: ResourceLocation;
-  type?: BrowserEnterprisePolicyType;
+  type?: BrowserEnterprisePolicyType | (string & {});
 }
 export const BrowserEnterprisePolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2716,7 +2716,7 @@ export const FilterValue = /*@__PURE__*/ S.Union([
 ]);
 export interface CloudWatchLogsFilter {
   key: string;
-  operator: CloudWatchLogsFilterOperator;
+  operator: CloudWatchLogsFilterOperator | (string & {});
   value: FilterValue;
 }
 export const CloudWatchLogsFilter = /*@__PURE__*/ S.suspend(() =>

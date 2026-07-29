@@ -152,7 +152,7 @@ export const SnsChannelConfig = /*@__PURE__*/ S.suspend(() =>
 export type InsightSeverity = "LOW" | "MEDIUM" | "HIGH";
 export const InsightSeverity = /*@__PURE__*/ S.String;
 
-export type InsightSeverities = InsightSeverity[];
+export type InsightSeverities = (InsightSeverity | (string & {}))[];
 export const InsightSeverities = /*@__PURE__*/ S.Array(InsightSeverity);
 export type NotificationMessageType =
   | "NEW_INSIGHT"
@@ -162,7 +162,10 @@ export type NotificationMessageType =
   | "NEW_RECOMMENDATION";
 export const NotificationMessageType = /*@__PURE__*/ S.String;
 
-export type NotificationMessageTypes = NotificationMessageType[];
+export type NotificationMessageTypes = (
+  | NotificationMessageType
+  | (string & {})
+)[];
 export const NotificationMessageTypes = /*@__PURE__*/ S.Array(
   NotificationMessageType,
 );
@@ -790,7 +793,7 @@ export type EventSourceOptInStatus = "ENABLED" | "DISABLED";
 export const EventSourceOptInStatus = /*@__PURE__*/ S.String;
 
 export interface AmazonCodeGuruProfilerIntegration {
-  Status?: EventSourceOptInStatus;
+  Status?: EventSourceOptInStatus | (string & {});
 }
 export const AmazonCodeGuruProfilerIntegration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Status: S.optional(EventSourceOptInStatus) }),
@@ -842,7 +845,7 @@ export const InsightFeedbackOption = /*@__PURE__*/ S.String;
 
 export interface InsightFeedback {
   Id?: string;
-  Feedback?: InsightFeedbackOption;
+  Feedback?: InsightFeedbackOption | (string & {});
 }
 export const InsightFeedback = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1549,7 +1552,7 @@ export const StartTimeRange = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "StartTimeRange" }) as any as S.Schema<StartTimeRange>;
 export type ListAnomaliesForInsightMaxResults = number;
-export type ServiceNames = ServiceName[];
+export type ServiceNames = (ServiceName | (string & {}))[];
 export const ServiceNames = /*@__PURE__*/ S.Array(ServiceName);
 export interface ServiceCollection {
   ServiceNames?: ServiceName[];

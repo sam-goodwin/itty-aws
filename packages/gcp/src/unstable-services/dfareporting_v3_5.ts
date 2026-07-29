@@ -130,8 +130,9 @@ export type CreativeAssetMetadataDetectedFeaturesItemEnum =
 export const CreativeAssetMetadataDetectedFeaturesItemEnum =
   /*@__PURE__*/ S.String;
 
-export type CreativeAssetMetadataDetectedFeaturesItemEnumList =
-  ReadonlyArray<CreativeAssetMetadataDetectedFeaturesItemEnum>;
+export type CreativeAssetMetadataDetectedFeaturesItemEnumList = Array<
+  CreativeAssetMetadataDetectedFeaturesItemEnum | (string & {})
+>;
 export const CreativeAssetMetadataDetectedFeaturesItemEnumList =
   /*@__PURE__*/ S.Array(
     CreativeAssetMetadataDetectedFeaturesItemEnum,
@@ -196,7 +197,7 @@ export interface PopupWindowProperties {
   /** Whether to display the browser tool bar. */
   showToolBar?: boolean;
   /** Popup window position either centered or at specific coordinate. */
-  positionType?: PopupWindowPropertiesPositionTypeEnum;
+  positionType?: PopupWindowPropertiesPositionTypeEnum | (string & {});
   /** Whether to display the browser menu bar. */
   showMenuBar?: boolean;
   /** Whether to display the browser address bar. */
@@ -260,7 +261,7 @@ export interface CreativeCustomEvent {
   /** Video reporting ID, used to differentiate multiple videos in a single creative. This is a read-only field. */
   videoReportingId?: string;
   /** Target type used by the event. */
-  targetType?: CreativeCustomEventTargetTypeEnum;
+  targetType?: CreativeCustomEventTargetTypeEnum | (string & {});
   /** User-entered name for the event. */
   advertiserCustomEventName?: string;
   /** Properties for rich media popup windows. This field is used only for exit events. */
@@ -270,9 +271,11 @@ export interface CreativeCustomEvent {
   /** Artwork label column, used to link events in Campaign Manager back to events in Studio. This is a required field and should not be modified after insertion. */
   artworkLabel?: string;
   /** Type of the event. This is a read-only field. */
-  advertiserCustomEventType?: CreativeCustomEventAdvertiserCustomEventTypeEnum;
+  advertiserCustomEventType?:
+    | CreativeCustomEventAdvertiserCustomEventTypeEnum
+    | (string & {});
   /** Artwork type used by the creative.This is a read-only field. */
-  artworkType?: CreativeCustomEventArtworkTypeEnum;
+  artworkType?: CreativeCustomEventArtworkTypeEnum | (string & {});
   /** ID of this event. This is a required field and should not be modified after insertion. */
   id?: string;
   /** Exit click-through URL for the event. This field is used only for exit events. */
@@ -297,7 +300,7 @@ export const CreativeCustomEvent = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreativeCustomEvent",
 }) as any as S.Schema<CreativeCustomEvent>;
 
-export type CreativeCustomEventList = ReadonlyArray<CreativeCustomEvent>;
+export type CreativeCustomEventList = Array<CreativeCustomEvent>;
 export const CreativeCustomEventList = /*@__PURE__*/ S.Array(
   CreativeCustomEvent,
 ) as any as S.Schema<CreativeCustomEventList>;
@@ -319,7 +322,7 @@ export const ClickTag = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ClickTag" }) as any as S.Schema<ClickTag>;
 
-export type ClickTagList = ReadonlyArray<ClickTag>;
+export type ClickTagList = Array<ClickTag>;
 export const ClickTagList = /*@__PURE__*/ S.Array(
   ClickTag,
 ) as any as S.Schema<ClickTagList>;
@@ -338,7 +341,7 @@ export interface CreativeAssetId {
   /** Name of the creative asset. This is a required field while inserting an asset. After insertion, this assetIdentifier is used to identify the uploaded asset. Characters in the name must be alphanumeric or one of the following: ".-_ ". Spaces are allowed. */
   name?: string;
   /** Type of asset to upload. This is a required field. FLASH and IMAGE are no longer supported for new uploads. All image assets should use HTML_IMAGE. */
-  type?: CreativeAssetIdTypeEnum;
+  type?: CreativeAssetIdTypeEnum | (string & {});
 }
 export const CreativeAssetId = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -367,7 +370,7 @@ export interface DimensionValue {
   /** The name of the dimension. */
   dimensionName?: string;
   /** Determines how the 'value' field is matched when filtering. If not specified, defaults to EXACT. If set to WILDCARD_EXPRESSION, '*' is allowed as a placeholder for variable length character sequences, and it can be escaped with a backslash. Note, only paid search dimensions ('dfa:paidSearch*') allow a matchType other than EXACT. */
-  matchType?: DimensionValueMatchTypeEnum;
+  matchType?: DimensionValueMatchTypeEnum | (string & {});
   /** The ID associated with the value if available. */
   id?: string;
 }
@@ -412,8 +415,9 @@ export type CreativeAssetMetadataWarnedValidationRulesItemEnum =
 export const CreativeAssetMetadataWarnedValidationRulesItemEnum =
   /*@__PURE__*/ S.String;
 
-export type CreativeAssetMetadataWarnedValidationRulesItemEnumList =
-  ReadonlyArray<CreativeAssetMetadataWarnedValidationRulesItemEnum>;
+export type CreativeAssetMetadataWarnedValidationRulesItemEnumList = Array<
+  CreativeAssetMetadataWarnedValidationRulesItemEnum | (string & {})
+>;
 export const CreativeAssetMetadataWarnedValidationRulesItemEnumList =
   /*@__PURE__*/ S.Array(
     CreativeAssetMetadataWarnedValidationRulesItemEnum,

@@ -234,7 +234,7 @@ export const SandboxCustomImagesListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SandboxCustomImagesListRequest>;
 
 export type PaginatedSandboxCustomImageDTOListResultsList =
-  ReadonlyArray<SandboxCustomImageDTO>;
+  Array<SandboxCustomImageDTO>;
 export const PaginatedSandboxCustomImageDTOListResultsList =
   /*@__PURE__*/ S.Array(
     SandboxCustomImageDTO,

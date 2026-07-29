@@ -82,7 +82,7 @@ export interface DaprMetadata {
   /** The description of the metadata, returned from configuration api */
   description?: string;
   /** The value indicating whether the metadata is required or not */
-  required?: DaprMetadataRequired;
+  required?: DaprMetadataRequired | (string & {});
 }
 export const DaprMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -95,13 +95,13 @@ export const DaprMetadata = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DaprMetadata" }) as any as S.Schema<DaprMetadata>;
 
 /** Additional dapr metadata */
-export type DaprPropertiesMetadataList = ReadonlyArray<DaprMetadata>;
+export type DaprPropertiesMetadataList = Array<DaprMetadata>;
 export const DaprPropertiesMetadataList = /*@__PURE__*/ S.Array(
   DaprMetadata,
 ) as any as S.Schema<DaprPropertiesMetadataList>;
 
 /** The dapr component scopes */
-export type DaprPropertiesScopesList = ReadonlyArray<string>;
+export type DaprPropertiesScopesList = Array<string>;
 export const DaprPropertiesScopesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DaprPropertiesScopesList>;
@@ -160,7 +160,7 @@ export const ConfigurationName = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConfigurationName>;
 
 /** The configuration names to be set in compute service environment. */
-export type ConfigurationNamesNamesList = ReadonlyArray<ConfigurationName>;
+export type ConfigurationNamesNamesList = Array<ConfigurationName>;
 export const ConfigurationNamesNamesList = /*@__PURE__*/ S.Array(
   ConfigurationName,
 ) as any as S.Schema<ConfigurationNamesNamesList>;
@@ -206,8 +206,7 @@ export const ConfigurationNameItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConfigurationNameItem>;
 
 /** Expected configuration names for each target service. */
-export type ConfigurationNameResultValueList =
-  ReadonlyArray<ConfigurationNameItem>;
+export type ConfigurationNameResultValueList = Array<ConfigurationNameItem>;
 export const ConfigurationNameResultValueList = /*@__PURE__*/ S.Array(
   ConfigurationNameItem,
 ) as any as S.Schema<ConfigurationNameResultValueList>;
@@ -234,7 +233,7 @@ export const DryrunActionName = /*@__PURE__*/ S.String;
 
 /** The parameters of the dryrun */
 export interface DryrunParameters {
-  actionName: DryrunActionName;
+  actionName: DryrunActionName | (string & {});
 }
 export const DryrunParameters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -348,7 +347,7 @@ export const DryrunPrerequisiteResult = /*@__PURE__*/ S.suspend(() =>
 
 /** the result of the dryrun */
 export type DryrunPropertiesPrerequisiteResultsList =
-  ReadonlyArray<DryrunPrerequisiteResult>;
+  Array<DryrunPrerequisiteResult>;
 export const DryrunPropertiesPrerequisiteResultsList = /*@__PURE__*/ S.Array(
   DryrunPrerequisiteResult,
 ) as any as S.Schema<DryrunPropertiesPrerequisiteResultsList>;
@@ -387,7 +386,7 @@ export const DryrunOperationPreview = /*@__PURE__*/ S.suspend(() =>
 
 /** the preview of the operations for creation */
 export type DryrunPropertiesOperationPreviewsList =
-  ReadonlyArray<DryrunOperationPreview>;
+  Array<DryrunOperationPreview>;
 export const DryrunPropertiesOperationPreviewsList = /*@__PURE__*/ S.Array(
   DryrunOperationPreview,
 ) as any as S.Schema<DryrunPropertiesOperationPreviewsList>;
@@ -449,7 +448,7 @@ export const TargetServiceType = /*@__PURE__*/ S.String;
 /** The target service properties */
 export interface TargetServiceBase {
   /** The target service type. */
-  type: TargetServiceType;
+  type: TargetServiceType | (string & {});
 }
 export const TargetServiceBase = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -466,9 +465,9 @@ export const AuthMode = /*@__PURE__*/ S.String;
 /** The authentication info */
 export interface AuthInfoBase {
   /** The authentication type. */
-  authType: AuthType;
+  authType: AuthType | (string & {});
   /** Optional. Indicates how to configure authentication. If optInAllAuth, service linker configures authentication such as enabling identity on source resource and granting RBAC roles. If optOutAllAuth, opt out authentication setup. Default is optInAllAuth. */
-  authMode?: AuthMode;
+  authMode?: AuthMode | (string & {});
 }
 export const AuthInfoBase = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -488,9 +487,9 @@ export const DeleteOrUpdateBehavior = /*@__PURE__*/ S.String;
 /** The VNet solution for linker */
 export interface VNetSolution {
   /** Type of VNet solution. */
-  type?: VNetSolutionType | null;
+  type?: VNetSolutionType | (string & {}) | null;
   /** Indicates whether to clean up previous operation when Linker is updating or deleting */
-  deleteOrUpdateBehavior?: DeleteOrUpdateBehavior;
+  deleteOrUpdateBehavior?: DeleteOrUpdateBehavior | (string & {});
 }
 export const VNetSolution = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -518,7 +517,7 @@ export type ActionType = "enable" | "optOut";
 export const ActionType = /*@__PURE__*/ S.String;
 
 /** This value specifies the set of IP addresses or IP address ranges in CIDR form to be included as the allowed list of client IPs for a given database account. */
-export type FirewallRulesIpRangesList = ReadonlyArray<string>;
+export type FirewallRulesIpRangesList = Array<string>;
 export const FirewallRulesIpRangesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<FirewallRulesIpRangesList>;
@@ -532,9 +531,9 @@ export interface FirewallRules {
   /** This value specifies the set of IP addresses or IP address ranges in CIDR form to be included as the allowed list of client IPs for a given database account. */
   ipRanges?: FirewallRulesIpRangesList;
   /** Allow Azure services to access the target service if true. */
-  azureServices?: AllowType;
+  azureServices?: AllowType | (string & {});
   /** Allow caller client IP to access the target service if true. the property is used when connecting local application to target service. */
-  callerClientIP?: AllowType;
+  callerClientIP?: AllowType | (string & {});
 }
 export const FirewallRules = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -547,9 +546,9 @@ export const FirewallRules = /*@__PURE__*/ S.suspend(() =>
 /** Indicates public network solution, include firewall rules */
 export interface PublicNetworkSolution {
   /** Indicates whether to clean up previous operation(such as firewall rules) when Linker is updating or deleting */
-  deleteOrUpdateBehavior?: DeleteOrUpdateBehavior;
+  deleteOrUpdateBehavior?: DeleteOrUpdateBehavior | (string & {});
   /** Optional. Indicates public network solution. If enable, enable public network access of target service with best try. Default is enable. If optOut, opt out public network access configuration. */
-  action?: ActionType;
+  action?: ActionType | (string & {});
   /** Describe firewall rules of target service to make sure source application could connect to the target. */
   firewallRules?: FirewallRules;
 }
@@ -573,13 +572,13 @@ export const ConfigurationInfoInputCustomizedKeysMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ConfigurationInfoInputCustomizedKeysMap>;
 
 /** Additional dapr metadata */
-export type DaprPropertiesInputMetadataList = ReadonlyArray<DaprMetadata>;
+export type DaprPropertiesInputMetadataList = Array<DaprMetadata>;
 export const DaprPropertiesInputMetadataList = /*@__PURE__*/ S.Array(
   DaprMetadata,
 ) as any as S.Schema<DaprPropertiesInputMetadataList>;
 
 /** The dapr component scopes */
-export type DaprPropertiesInputScopesList = ReadonlyArray<string>;
+export type DaprPropertiesInputScopesList = Array<string>;
 export const DaprPropertiesInputScopesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DaprPropertiesInputScopesList>;
@@ -1051,8 +1050,7 @@ export const SourceConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SourceConfiguration>;
 
 /** The configuration properties for source resource. */
-export type ConfigurationResultConfigurationsList =
-  ReadonlyArray<SourceConfiguration>;
+export type ConfigurationResultConfigurationsList = Array<SourceConfiguration>;
 export const ConfigurationResultConfigurationsList = /*@__PURE__*/ S.Array(
   SourceConfiguration,
 ) as any as S.Schema<ConfigurationResultConfigurationsList>;
@@ -1223,7 +1221,7 @@ export const LinkerResource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LinkerResource" }) as any as S.Schema<LinkerResource>;
 
 /** The list of Linkers. */
-export type ResourceListValueList = ReadonlyArray<LinkerResource>;
+export type ResourceListValueList = Array<LinkerResource>;
 export const ResourceListValueList = /*@__PURE__*/ S.Array(
   LinkerResource,
 ) as any as S.Schema<ResourceListValueList>;
@@ -1291,7 +1289,7 @@ export const DryrunResource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DryrunResource" }) as any as S.Schema<DryrunResource>;
 
 /** The list of dryrun. */
-export type DryrunListValueList = ReadonlyArray<DryrunResource>;
+export type DryrunListValueList = Array<DryrunResource>;
 export const DryrunListValueList = /*@__PURE__*/ S.Array(
   DryrunResource,
 ) as any as S.Schema<DryrunListValueList>;
@@ -1478,8 +1476,7 @@ export const ValidationResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ValidationResultItem>;
 
 /** The detail of validation result */
-export type ValidateResultValidationDetailList =
-  ReadonlyArray<ValidationResultItem>;
+export type ValidateResultValidationDetailList = Array<ValidationResultItem>;
 export const ValidateResultValidationDetailList = /*@__PURE__*/ S.Array(
   ValidationResultItem,
 ) as any as S.Schema<ValidateResultValidationDetailList>;
@@ -1953,8 +1950,7 @@ export const DaprConfigurationResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DaprConfigurationResource>;
 
 /** The list of dapr configurations */
-export type DaprConfigurationListValueList =
-  ReadonlyArray<DaprConfigurationResource>;
+export type DaprConfigurationListValueList = Array<DaprConfigurationResource>;
 export const DaprConfigurationListValueList = /*@__PURE__*/ S.Array(
   DaprConfigurationResource,
 ) as any as S.Schema<DaprConfigurationListValueList>;
@@ -2182,7 +2178,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = ReadonlyArray<Operation>;
+export type OperationsListResponseValueList = Array<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;

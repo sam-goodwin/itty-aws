@@ -101,7 +101,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -347,7 +347,7 @@ export const CheckTransitiveMembershipResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CheckTransitiveMembershipResponse",
 }) as any as S.Schema<CheckTransitiveMembershipResponse>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -369,7 +369,9 @@ export interface WindowsSpecificDeviceAttributes {
   /** Output only. The domain of the user account that is logged into the machine. */
   windowsUserDomain?: string;
   /** Output only. Secure boot mode of the device. */
-  secureBootMode?: WindowsSpecificDeviceAttributesSecureBootModeEnum;
+  secureBootMode?:
+    | WindowsSpecificDeviceAttributesSecureBootModeEnum
+    | (string & {});
 }
 export const WindowsSpecificDeviceAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -399,7 +401,7 @@ export interface AntivirusInfo {
   /** Output only. The GUID of the anti-virus product. */
   productGuid?: string;
   /** Output only. The state of the anti-virus. */
-  productState?: AntivirusInfoProductStateEnum;
+  productState?: AntivirusInfoProductStateEnum | (string & {});
 }
 export const AntivirusInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -409,7 +411,7 @@ export const AntivirusInfo = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AntivirusInfo" }) as any as S.Schema<AntivirusInfo>;
 
-export type AntivirusInfoList = ReadonlyArray<AntivirusInfo>;
+export type AntivirusInfoList = Array<AntivirusInfo>;
 export const AntivirusInfoList = /*@__PURE__*/ S.Array(
   AntivirusInfo,
 ) as any as S.Schema<AntivirusInfoList>;
@@ -466,7 +468,7 @@ export interface CertificateAttributes {
   /** Certificate not valid before this timestamp. */
   validityStartTime?: string;
   /** Validation state of this certificate. */
-  validationState?: CertificateAttributesValidationStateEnum;
+  validationState?: CertificateAttributesValidationStateEnum | (string & {});
   /** The certificate thumbprint. */
   thumbprint?: string;
   /** Serial number of the certificate, Example: "123456789". */
@@ -494,7 +496,7 @@ export const CertificateAttributes = /*@__PURE__*/ S.suspend(() =>
   identifier: "CertificateAttributes",
 }) as any as S.Schema<CertificateAttributes>;
 
-export type CertificateAttributesList = ReadonlyArray<CertificateAttributes>;
+export type CertificateAttributesList = Array<CertificateAttributes>;
 export const CertificateAttributesList = /*@__PURE__*/ S.Array(
   CertificateAttributes,
 ) as any as S.Schema<CertificateAttributesList>;
@@ -560,9 +562,9 @@ export const PolicyConflictSourceEnum = /*@__PURE__*/ S.String;
 /** Represents a policy value from a source that was not applied because a higher-priority source took precedence. */
 export interface PolicyConflict {
   /** Output only. The scope at which this lower-priority policy is set (USER or MACHINE). */
-  scope?: PolicyConflictScopeEnum;
+  scope?: PolicyConflictScopeEnum | (string & {});
   /** Output only. The source from which this lower-priority policy value originated. */
-  source?: PolicyConflictSourceEnum;
+  source?: PolicyConflictSourceEnum | (string & {});
   /** Output only. The policy value from this lower-priority source. */
   value?: string;
 }
@@ -574,7 +576,7 @@ export const PolicyConflict = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PolicyConflict" }) as any as S.Schema<PolicyConflict>;
 
-export type PolicyConflictList = ReadonlyArray<PolicyConflict>;
+export type PolicyConflictList = Array<PolicyConflict>;
 export const PolicyConflictList = /*@__PURE__*/ S.Array(
   PolicyConflict,
 ) as any as S.Schema<PolicyConflictList>;
@@ -586,9 +588,9 @@ export interface ChromePolicy {
   /** Output only. The currently applied value of the policy. The format depends on the policy type (e.g., boolean, string, JSON array/object). */
   value?: string;
   /** Output only. The scope at which the *applied* policy value is set (USER or MACHINE). */
-  scope?: ChromePolicyScopeEnum;
+  scope?: ChromePolicyScopeEnum | (string & {});
   /** Output only. The source from which the *applied* policy value originated. */
-  source?: ChromePolicySourceEnum;
+  source?: ChromePolicySourceEnum | (string & {});
   /** Output only. A list of other policy values for the same policy name that were not applied due to lower precedence. This field is empty if there were no conflicts. */
   conflicts?: PolicyConflictList;
 }
@@ -602,7 +604,7 @@ export const ChromePolicy = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ChromePolicy" }) as any as S.Schema<ChromePolicy>;
 
-export type ChromePolicyList = ReadonlyArray<ChromePolicy>;
+export type ChromePolicyList = Array<ChromePolicy>;
 export const ChromePolicyList = /*@__PURE__*/ S.Array(
   ChromePolicy,
 ) as any as S.Schema<ChromePolicyList>;
@@ -624,17 +626,23 @@ export interface BrowserInfo {
   /** Deprecated: This field is not used for Chrome version 118 and later. Current state of [Chrome Cleanup](https://chromeenterprise.google/policies/#ChromeCleanupEnabled). */
   isChromeCleanupEnabled?: boolean;
   /** Output only. Browser's management state. */
-  browserManagementState?: BrowserInfoBrowserManagementStateEnum;
+  browserManagementState?:
+    | BrowserInfoBrowserManagementStateEnum
+    | (string & {});
   /** Current state of [Chrome Remote Desktop app](https://chromeenterprise.google/policies/#URLBlocklist). */
   isChromeRemoteDesktopAppBlocked?: boolean;
   /** Current state of [password protection trigger](https://chromeenterprise.google/policies/#PasswordProtectionWarningTrigger). */
-  passwordProtectionWarningTrigger?: BrowserInfoPasswordProtectionWarningTriggerEnum;
+  passwordProtectionWarningTrigger?:
+    | BrowserInfoPasswordProtectionWarningTriggerEnum
+    | (string & {});
   /** Current state of [third-party blocking](https://chromeenterprise.google/policies/#ThirdPartyBlockingEnabled). */
   isThirdPartyBlockingEnabled?: boolean;
   /** Current state of [file download analysis](https://chromeenterprise.google/policies/#OnFileDownloadedEnterpriseConnector). Set to true if provider list from Chrome is non-empty. */
   isFileDownloadAnalysisEnabled?: boolean;
   /** Current state of [Safe Browsing protection level](https://chromeenterprise.google/policies/#SafeBrowsingProtectionLevel). */
-  safeBrowsingProtectionLevel?: BrowserInfoSafeBrowsingProtectionLevelEnum;
+  safeBrowsingProtectionLevel?:
+    | BrowserInfoSafeBrowsingProtectionLevelEnum
+    | (string & {});
   /** Current state of [built-in DNS client](https://chromeenterprise.google/policies/#BuiltInDnsClientEnabled). */
   isBuiltInDnsClientEnabled?: boolean;
   /** Output only. Chrome policies information for the browser as can be seen in chrome://policy. Full possibilities of policies can be consulted in [Chrome Enterprise Policy List](https://chromeenterprise.google/policies/). */
@@ -683,7 +691,7 @@ export const BrowserAttributes = /*@__PURE__*/ S.suspend(() =>
   identifier: "BrowserAttributes",
 }) as any as S.Schema<BrowserAttributes>;
 
-export type BrowserAttributesList = ReadonlyArray<BrowserAttributes>;
+export type BrowserAttributesList = Array<BrowserAttributes>;
 export const BrowserAttributesList = /*@__PURE__*/ S.Array(
   BrowserAttributes,
 ) as any as S.Schema<BrowserAttributesList>;
@@ -731,7 +739,7 @@ export interface AndroidAttributes {
   /** Whether any potentially harmful apps were detected on the device. */
   hasPotentiallyHarmfulApps?: boolean;
   /** Ownership privileges on device. */
-  ownershipPrivilege?: AndroidAttributesOwnershipPrivilegeEnum;
+  ownershipPrivilege?: AndroidAttributesOwnershipPrivilegeEnum | (string & {});
   /** Whether Android verified boot status is GREEN. */
   verifiedBoot?: boolean;
   /** Whether the device passes Android CTS compliance. */
@@ -787,8 +795,9 @@ export type DeviceClientTypesItemEnum =
   | "GOOGLE_CREDENTIALS_PROVIDER_FOR_WINDOWS";
 export const DeviceClientTypesItemEnum = /*@__PURE__*/ S.String;
 
-export type DeviceClientTypesItemEnumList =
-  ReadonlyArray<DeviceClientTypesItemEnum>;
+export type DeviceClientTypesItemEnumList = Array<
+  DeviceClientTypesItemEnum | (string & {})
+>;
 export const DeviceClientTypesItemEnumList = /*@__PURE__*/ S.Array(
   DeviceClientTypesItemEnum,
 ) as any as S.Schema<DeviceClientTypesItemEnumList>;
@@ -816,7 +825,7 @@ export interface Device {
   /** Output only. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Device in format: `devices/{device_id}`, where device_id is the unique id assigned to the Device. */
   name?: string;
   /** Output only. Type of device. */
-  deviceType?: DeviceDeviceTypeEnum;
+  deviceType?: DeviceDeviceTypeEnum | (string & {});
   /** Output only. Mobile or network operator of device, if available. */
   networkOperator?: string;
   /** WiFi MAC addresses of device. */
@@ -826,11 +835,11 @@ export interface Device {
   /** Output only. Whether developer options is enabled on device. */
   enabledDeveloperOptions?: boolean;
   /** Output only. Device encryption state. */
-  encryptionState?: DeviceEncryptionStateEnum;
+  encryptionState?: DeviceEncryptionStateEnum | (string & {});
   /** Output only. Attributes specific to [Endpoint Verification](https://cloud.google.com/endpoint-verification/docs/overview) devices. */
   endpointVerificationSpecificAttributes?: EndpointVerificationSpecificAttributes;
   /** Output only. OS firewall status of the device. */
-  osFirewallStatus?: DeviceOsFirewallStatusEnum;
+  osFirewallStatus?: DeviceOsFirewallStatusEnum | (string & {});
   /** Browser profiles on the device. This is a copy of the BrowserAttributes message defined in EndpointVerificationSpecificAttributes. We are replicating it here since EndpointVerification isn't the only client reporting browser profiles. */
   browserProfiles?: BrowserAttributesList;
   /** Output only. Whether USB debugging is enabled on device. */
@@ -842,13 +851,13 @@ export interface Device {
   /** Output only. Domain name for Google accounts on device. Type for other accounts on device. On Android, will only be populated if |ownership_privilege| is |PROFILE_OWNER| or |DEVICE_OWNER|. Does not include the account signed in to the device policy app if that account's domain has only one account. Examples: "com.example", "xyz.com". */
   otherAccounts?: StringList;
   /** Output only. Whether the device is owned by the company or an individual */
-  ownerType?: DeviceOwnerTypeEnum;
+  ownerType?: DeviceOwnerTypeEnum | (string & {});
   /** Most recent time when device synced with this service. */
   lastSyncTime?: string;
   /** Host name of the device. */
   hostname?: string;
   /** Output only. Management state of the device */
-  managementState?: DeviceManagementStateEnum;
+  managementState?: DeviceManagementStateEnum | (string & {});
   /** Output only. Unified device id of the device. */
   unifiedDeviceId?: string;
   /** Output only. IMEI number of device if GSM device; empty otherwise. */
@@ -862,7 +871,7 @@ export interface Device {
   /** Output only. OS version of the device. Example: Android 8.1.0. */
   osVersion?: string;
   /** Output only. Represents whether the Device is compromised. */
-  compromisedState?: DeviceCompromisedStateEnum;
+  compromisedState?: DeviceCompromisedStateEnum | (string & {});
   /** Output only. Baseband version of the device. */
   basebandVersion?: string;
   /** Output only. Device bootloader version. Example: 0.6.7. */
@@ -963,7 +972,7 @@ export const DynamicGroupQueryResourceTypeEnum = /*@__PURE__*/ S.String;
 
 /** Defines a query on a resource. */
 export interface DynamicGroupQuery {
-  resourceType?: DynamicGroupQueryResourceTypeEnum;
+  resourceType?: DynamicGroupQueryResourceTypeEnum | (string & {});
   /** Query that determines the memberships of the dynamic group. Examples: All users with at least one `organizations.department` of engineering. `user.organizations.exists(org, org.department=='engineering')` All users with at least one location that has `area` of `foo` and `building_id` of `bar`. `user.locations.exists(loc, loc.area=='foo' && loc.building_id=='bar')` All users with any variation of the name John Doe (case-insensitive queries add `equalsIgnoreCase()` to the value being queried). `user.name.value.equalsIgnoreCase('jOhn DoE')` */
   query?: string;
 }
@@ -976,7 +985,7 @@ export const DynamicGroupQuery = /*@__PURE__*/ S.suspend(() =>
   identifier: "DynamicGroupQuery",
 }) as any as S.Schema<DynamicGroupQuery>;
 
-export type DynamicGroupQueryList = ReadonlyArray<DynamicGroupQuery>;
+export type DynamicGroupQueryList = Array<DynamicGroupQuery>;
 export const DynamicGroupQueryList = /*@__PURE__*/ S.Array(
   DynamicGroupQuery,
 ) as any as S.Schema<DynamicGroupQueryList>;
@@ -991,7 +1000,7 @@ export const DynamicGroupStatusStatusEnum = /*@__PURE__*/ S.String;
 /** The current status of a dynamic group along with timestamp. */
 export interface DynamicGroupStatus {
   /** Status of the dynamic group. */
-  status?: DynamicGroupStatusStatusEnum;
+  status?: DynamicGroupStatusStatusEnum | (string & {});
   /** The latest time at which the dynamic group is guaranteed to be in the given status. If status is `UP_TO_DATE`, the latest time at which the dynamic group was confirmed to be up-to-date. If status is `UPDATING_MEMBERSHIPS`, the time at which dynamic group was created. */
   statusTime?: string;
 }
@@ -1040,7 +1049,7 @@ export const ExternalId = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ExternalId" }) as any as S.Schema<ExternalId>;
 
-export type ExternalIdList = ReadonlyArray<ExternalId>;
+export type ExternalIdList = Array<ExternalId>;
 export const ExternalIdList = /*@__PURE__*/ S.Array(
   ExternalId,
 ) as any as S.Schema<ExternalIdList>;
@@ -1062,7 +1071,7 @@ export const PosixGroup = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PosixGroup" }) as any as S.Schema<PosixGroup>;
 
-export type PosixGroupList = ReadonlyArray<PosixGroup>;
+export type PosixGroupList = Array<PosixGroup>;
 export const PosixGroupList = /*@__PURE__*/ S.Array(
   PosixGroup,
 ) as any as S.Schema<PosixGroupList>;
@@ -1081,7 +1090,7 @@ export const EntityKey = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "EntityKey" }) as any as S.Schema<EntityKey>;
 
-export type EntityKeyList = ReadonlyArray<EntityKey>;
+export type EntityKeyList = Array<EntityKey>;
 export const EntityKeyList = /*@__PURE__*/ S.Array(
   EntityKey,
 ) as any as S.Schema<EntityKeyList>;
@@ -1176,7 +1185,7 @@ export const MembershipRoleRestrictionEvaluationStateEnum =
 /** The evaluated state of this restriction. */
 export interface MembershipRoleRestrictionEvaluation {
   /** Output only. The current state of the restriction */
-  state?: MembershipRoleRestrictionEvaluationStateEnum;
+  state?: MembershipRoleRestrictionEvaluationStateEnum | (string & {});
 }
 export const MembershipRoleRestrictionEvaluation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1229,7 +1238,7 @@ export const MembershipRole = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MembershipRole" }) as any as S.Schema<MembershipRole>;
 
-export type MembershipRoleList = ReadonlyArray<MembershipRole>;
+export type MembershipRoleList = Array<MembershipRole>;
 export const MembershipRoleList = /*@__PURE__*/ S.Array(
   MembershipRole,
 ) as any as S.Schema<MembershipRoleList>;
@@ -1246,7 +1255,7 @@ export const MembershipDeliverySettingEnum = /*@__PURE__*/ S.String;
 /** A membership within the Cloud Identity Groups API. A `Membership` defines a relationship between a `Group` and an entity belonging to that `Group`, referred to as a "member". */
 export interface Membership {
   /** Output only. The type of the membership. */
-  type?: MembershipTypeEnum;
+  type?: MembershipTypeEnum | (string & {});
   /** Output only. The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Membership`. Shall be of the form `groups/{group_id}/memberships/{membership_id}`. */
   name?: string;
   /** Output only. The time when the `Membership` was last updated. */
@@ -1258,7 +1267,7 @@ export interface Membership {
   /** Required. Immutable. The `EntityKey` of the member. Either `member_key` or `preferred_member_key` must be set when calling MembershipsService.CreateMembership but not both; both shall be set when returned. */
   preferredMemberKey?: EntityKey;
   /** Output only. Delivery setting associated with the membership. */
-  deliverySetting?: MembershipDeliverySettingEnum;
+  deliverySetting?: MembershipDeliverySettingEnum | (string & {});
   /** Output only. The time when the `Membership` was created. */
   createTime?: string;
 }
@@ -1463,7 +1472,7 @@ export const SignInBehaviorRedirectConditionEnum = /*@__PURE__*/ S.String;
 /** Controls sign-in behavior. */
 export interface SignInBehavior {
   /** When to redirect sign-ins to the IdP. */
-  redirectCondition?: SignInBehaviorRedirectConditionEnum;
+  redirectCondition?: SignInBehaviorRedirectConditionEnum | (string & {});
 }
 export const SignInBehavior = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1496,7 +1505,7 @@ export const SamlSsoInfo = /*@__PURE__*/ S.suspend(() =>
 /** Targets with "set" SSO assignments and their respective assignments. */
 export interface InboundSsoAssignment {
   /** Inbound SSO behavior. */
-  ssoMode?: InboundSsoAssignmentSsoModeEnum;
+  ssoMode?: InboundSsoAssignmentSsoModeEnum | (string & {});
   /** Immutable. Must be of the form `orgUnits/{org_unit}`. */
   targetOrgUnit?: string;
   /** Assertions about users assigned to an IdP will always be accepted from that IdP. This controls whether/when Google should redirect a user to the IdP. Unset (defaults) is the recommended configuration. */
@@ -1596,7 +1605,7 @@ export interface Policy {
   /** Output only. Identifier. The [resource name](https://cloud.google.com/apis/design/resource_names) of the Policy. Format: policies/{policy}. */
   name?: string;
   /** Output only. The type of the policy. */
-  type?: PolicyTypeEnum;
+  type?: PolicyTypeEnum | (string & {});
 }
 export const Policy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2022,11 +2031,11 @@ export const ClientStateComplianceStateEnum = /*@__PURE__*/ S.String;
 /** Represents the state associated with an API client calling the Devices API. Resource representing ClientState and supports updates from API users */
 export interface ClientState {
   /** Output only. The owner of the ClientState */
-  ownerType?: ClientStateOwnerTypeEnum;
+  ownerType?: ClientStateOwnerTypeEnum | (string & {});
   /** The caller can specify asset tags for this resource */
   assetTags?: StringList;
   /** The Health score of the resource */
-  healthScore?: ClientStateHealthScoreEnum;
+  healthScore?: ClientStateHealthScoreEnum | (string & {});
   /** The map of key-value attributes stored by callers specific to a device. The total serialized length of this map may not exceed 10KB. No limit is placed on the number of attributes in a map. */
   keyValuePairs?: CustomAttributeValueMap;
   /** The token that needs to be passed back for concurrency control in updates. Token needs to be passed back in UpdateRequest */
@@ -2034,9 +2043,9 @@ export interface ClientState {
   /** Output only. The time the client state data was created. */
   createTime?: string;
   /** The management state of the resource as specified by the API client. */
-  managed?: ClientStateManagedEnum;
+  managed?: ClientStateManagedEnum | (string & {});
   /** The compliance state of the resource as specified by the API client. */
-  complianceState?: ClientStateComplianceStateEnum;
+  complianceState?: ClientStateComplianceStateEnum | (string & {});
   /** Output only. [Resource name](https://cloud.google.com/apis/design/resource_names) of the ClientState in format: `devices/{device_id}/deviceUsers/{device_user_id}/clientState/{partner_id}`, where partner_id corresponds to the partner storing the data. */
   name?: string;
   /** A descriptive cause of the health score. */
@@ -2290,7 +2299,7 @@ export const RestrictionEvaluationStateEnum = /*@__PURE__*/ S.String;
 /** The evaluated state of this restriction. */
 export interface RestrictionEvaluation {
   /** Output only. The current state of the restriction */
-  state?: RestrictionEvaluationStateEnum;
+  state?: RestrictionEvaluationStateEnum | (string & {});
 }
 export const RestrictionEvaluation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2394,7 +2403,7 @@ export const ListCustomersUserinvitationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListCustomersUserinvitationsRequest",
 }) as any as S.Schema<ListCustomersUserinvitationsRequest>;
 
-export type UserInvitationList = ReadonlyArray<UserInvitation>;
+export type UserInvitationList = Array<UserInvitation>;
 export const UserInvitationList = /*@__PURE__*/ S.Array(
   UserInvitation,
 ) as any as S.Schema<UserInvitationList>;
@@ -2454,7 +2463,7 @@ export const ListDevicesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListDevicesRequest",
 }) as any as S.Schema<ListDevicesRequest>;
 
-export type DeviceList = ReadonlyArray<Device>;
+export type DeviceList = Array<Device>;
 export const DeviceList = /*@__PURE__*/ S.Array(
   Device,
 ) as any as S.Schema<DeviceList>;
@@ -2508,7 +2517,7 @@ export const ListDevicesDeviceUsersRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListDevicesDeviceUsersRequest",
 }) as any as S.Schema<ListDevicesDeviceUsersRequest>;
 
-export type DeviceUserList = ReadonlyArray<DeviceUser>;
+export type DeviceUserList = Array<DeviceUser>;
 export const DeviceUserList = /*@__PURE__*/ S.Array(
   DeviceUser,
 ) as any as S.Schema<DeviceUserList>;
@@ -2559,7 +2568,7 @@ export const ListGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListGroupsRequest",
 }) as any as S.Schema<ListGroupsRequest>;
 
-export type GroupList = ReadonlyArray<Group>;
+export type GroupList = Array<Group>;
 export const GroupList = /*@__PURE__*/ S.Array(
   Group,
 ) as any as S.Schema<GroupList>;
@@ -2610,7 +2619,7 @@ export const ListGroupsMembershipsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListGroupsMembershipsRequest",
 }) as any as S.Schema<ListGroupsMembershipsRequest>;
 
-export type MembershipList = ReadonlyArray<Membership>;
+export type MembershipList = Array<Membership>;
 export const MembershipList = /*@__PURE__*/ S.Array(
   Membership,
 ) as any as S.Schema<MembershipList>;
@@ -2655,7 +2664,7 @@ export const ListInboundOidcSsoProfilesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListInboundOidcSsoProfilesRequest",
 }) as any as S.Schema<ListInboundOidcSsoProfilesRequest>;
 
-export type InboundOidcSsoProfileList = ReadonlyArray<InboundOidcSsoProfile>;
+export type InboundOidcSsoProfileList = Array<InboundOidcSsoProfile>;
 export const InboundOidcSsoProfileList = /*@__PURE__*/ S.Array(
   InboundOidcSsoProfile,
 ) as any as S.Schema<InboundOidcSsoProfileList>;
@@ -2700,7 +2709,7 @@ export const ListInboundSamlSsoProfilesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListInboundSamlSsoProfilesRequest",
 }) as any as S.Schema<ListInboundSamlSsoProfilesRequest>;
 
-export type InboundSamlSsoProfileList = ReadonlyArray<InboundSamlSsoProfile>;
+export type InboundSamlSsoProfileList = Array<InboundSamlSsoProfile>;
 export const InboundSamlSsoProfileList = /*@__PURE__*/ S.Array(
   InboundSamlSsoProfile,
 ) as any as S.Schema<InboundSamlSsoProfileList>;
@@ -2746,7 +2755,7 @@ export const ListInboundSamlSsoProfilesIdpCredentialsRequest =
     identifier: "ListInboundSamlSsoProfilesIdpCredentialsRequest",
   }) as any as S.Schema<ListInboundSamlSsoProfilesIdpCredentialsRequest>;
 
-export type IdpCredentialList = ReadonlyArray<IdpCredential>;
+export type IdpCredentialList = Array<IdpCredential>;
 export const IdpCredentialList = /*@__PURE__*/ S.Array(
   IdpCredential,
 ) as any as S.Schema<IdpCredentialList>;
@@ -2791,7 +2800,7 @@ export const ListInboundSsoAssignmentsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListInboundSsoAssignmentsRequest",
 }) as any as S.Schema<ListInboundSsoAssignmentsRequest>;
 
-export type InboundSsoAssignmentList = ReadonlyArray<InboundSsoAssignment>;
+export type InboundSsoAssignmentList = Array<InboundSsoAssignment>;
 export const InboundSsoAssignmentList = /*@__PURE__*/ S.Array(
   InboundSsoAssignment,
 ) as any as S.Schema<InboundSsoAssignmentList>;
@@ -2865,7 +2874,7 @@ export const OrgMembership = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "OrgMembership" }) as any as S.Schema<OrgMembership>;
 
-export type OrgMembershipList = ReadonlyArray<OrgMembership>;
+export type OrgMembershipList = Array<OrgMembership>;
 export const OrgMembershipList = /*@__PURE__*/ S.Array(
   OrgMembership,
 ) as any as S.Schema<OrgMembershipList>;
@@ -2910,7 +2919,7 @@ export const ListPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListPoliciesRequest",
 }) as any as S.Schema<ListPoliciesRequest>;
 
-export type PolicyList = ReadonlyArray<Policy>;
+export type PolicyList = Array<Policy>;
 export const PolicyList = /*@__PURE__*/ S.Array(
   Policy,
 ) as any as S.Schema<PolicyList>;
@@ -3077,7 +3086,7 @@ export const UpdateMembershipRolesParams = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateMembershipRolesParams>;
 
 export type UpdateMembershipRolesParamsList =
-  ReadonlyArray<UpdateMembershipRolesParams>;
+  Array<UpdateMembershipRolesParams>;
 export const UpdateMembershipRolesParamsList = /*@__PURE__*/ S.Array(
   UpdateMembershipRolesParams,
 ) as any as S.Schema<UpdateMembershipRolesParamsList>;
@@ -3380,7 +3389,7 @@ export const MembershipRelation = /*@__PURE__*/ S.suspend(() =>
   identifier: "MembershipRelation",
 }) as any as S.Schema<MembershipRelation>;
 
-export type MembershipRelationList = ReadonlyArray<MembershipRelation>;
+export type MembershipRelationList = Array<MembershipRelation>;
 export const MembershipRelationList = /*@__PURE__*/ S.Array(
   MembershipRelation,
 ) as any as S.Schema<MembershipRelationList>;
@@ -3498,8 +3507,7 @@ export const TransitiveMembershipRole = /*@__PURE__*/ S.suspend(() =>
   identifier: "TransitiveMembershipRole",
 }) as any as S.Schema<TransitiveMembershipRole>;
 
-export type TransitiveMembershipRoleList =
-  ReadonlyArray<TransitiveMembershipRole>;
+export type TransitiveMembershipRoleList = Array<TransitiveMembershipRole>;
 export const TransitiveMembershipRoleList = /*@__PURE__*/ S.Array(
   TransitiveMembershipRole,
 ) as any as S.Schema<TransitiveMembershipRoleList>;
@@ -3530,7 +3538,7 @@ export const GroupRelation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "GroupRelation" }) as any as S.Schema<GroupRelation>;
 
-export type GroupRelationList = ReadonlyArray<GroupRelation>;
+export type GroupRelationList = Array<GroupRelation>;
 export const GroupRelationList = /*@__PURE__*/ S.Array(
   GroupRelation,
 ) as any as S.Schema<GroupRelationList>;
@@ -3603,7 +3611,7 @@ export const MemberRelation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MemberRelation" }) as any as S.Schema<MemberRelation>;
 
-export type MemberRelationList = ReadonlyArray<MemberRelation>;
+export type MemberRelationList = Array<MemberRelation>;
 export const MemberRelationList = /*@__PURE__*/ S.Array(
   MemberRelation,
 ) as any as S.Schema<MemberRelationList>;

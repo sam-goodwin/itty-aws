@@ -69,7 +69,7 @@ export const DateRange = /*@__PURE__*/ S.suspend(() =>
 
 /** List of subscription IDs for which carbon emissions data is requested. Required. Each subscription ID should be in lowercase format. The max length of list is 100. */
 export type CarbonServiceQueryCarbonEmissionReportsRequestSubscriptionListList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CarbonServiceQueryCarbonEmissionReportsRequestSubscriptionListList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -77,7 +77,7 @@ export const CarbonServiceQueryCarbonEmissionReportsRequestSubscriptionListList 
 
 /** List of resource group URLs for carbon emissions data. Optional. Each URL must follow the format '/subscriptions/{subscriptionId}/resourcegroups/{resourceGroup}', and should be in all lowercase. */
 export type CarbonServiceQueryCarbonEmissionReportsRequestResourceGroupUrlListList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CarbonServiceQueryCarbonEmissionReportsRequestResourceGroupUrlListList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -85,7 +85,7 @@ export const CarbonServiceQueryCarbonEmissionReportsRequestResourceGroupUrlListL
 
 /** List of resource types for carbon emissions data. Optional. Each resource type should be specified in lowercase, following the format 'microsoft.{service}/{resourceType}', e.g., 'microsoft.storage/storageaccounts'. */
 export type CarbonServiceQueryCarbonEmissionReportsRequestResourceTypeListList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CarbonServiceQueryCarbonEmissionReportsRequestResourceTypeListList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -93,7 +93,7 @@ export const CarbonServiceQueryCarbonEmissionReportsRequestResourceTypeListList 
 
 /** List of locations(Azure Region Display Name) for carbon emissions data, with each location specified in lowercase (e.g., 'east us'). Optional. You can use the command 'az account list-locations -o table' to find Azure Region Display Names. */
 export type CarbonServiceQueryCarbonEmissionReportsRequestLocationListList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CarbonServiceQueryCarbonEmissionReportsRequestLocationListList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -105,7 +105,7 @@ export const EmissionScopeEnum = /*@__PURE__*/ S.String;
 
 /** List of carbon emission scopes. Required. Accepts one or more values from EmissionScopeEnum (e.g., Scope1, Scope2, Scope3) in list form. The output will include the total emissions for the specified scopes. */
 export type CarbonServiceQueryCarbonEmissionReportsRequestCarbonScopeListList =
-  ReadonlyArray<EmissionScopeEnum | (string & {})>;
+  Array<EmissionScopeEnum | (string & {})>;
 export const CarbonServiceQueryCarbonEmissionReportsRequestCarbonScopeListList =
   /*@__PURE__*/ S.Array(
     EmissionScopeEnum,
@@ -198,8 +198,7 @@ export const CarbonEmissionData = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CarbonEmissionData>;
 
 /** The CarbonEmissionData items on this page */
-export type CarbonEmissionDataListResultValueList =
-  ReadonlyArray<CarbonEmissionData>;
+export type CarbonEmissionDataListResultValueList = Array<CarbonEmissionData>;
 export const CarbonEmissionDataListResultValueList = /*@__PURE__*/ S.Array(
   CarbonEmissionData,
 ) as any as S.Schema<CarbonEmissionDataListResultValueList>;
@@ -229,7 +228,7 @@ export const SubscriptionAccessDecision = /*@__PURE__*/ S.suspend(() =>
 
 /** The access decision list for each input subscription */
 export type CarbonEmissionDataListResultSubscriptionAccessDecisionListList =
-  ReadonlyArray<SubscriptionAccessDecision>;
+  Array<SubscriptionAccessDecision>;
 export const CarbonEmissionDataListResultSubscriptionAccessDecisionListList =
   /*@__PURE__*/ S.Array(
     SubscriptionAccessDecision,
@@ -324,7 +323,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = ReadonlyArray<Operation>;
+export type OperationsListResponseValueList = Array<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;

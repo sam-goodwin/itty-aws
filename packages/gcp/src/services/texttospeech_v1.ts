@@ -138,7 +138,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -214,12 +214,12 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type OperationList = ReadonlyArray<Operation>;
+export type OperationList = Array<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -288,7 +288,7 @@ export const Voice = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Voice" }) as any as S.Schema<Voice>;
 
-export type VoiceList = ReadonlyArray<Voice>;
+export type VoiceList = Array<Voice>;
 export const VoiceList = /*@__PURE__*/ S.Array(
   Voice,
 ) as any as S.Schema<VoiceList>;
@@ -322,8 +322,7 @@ export const MultispeakerPrebuiltVoice = /*@__PURE__*/ S.suspend(() =>
   identifier: "MultispeakerPrebuiltVoice",
 }) as any as S.Schema<MultispeakerPrebuiltVoice>;
 
-export type MultispeakerPrebuiltVoiceList =
-  ReadonlyArray<MultispeakerPrebuiltVoice>;
+export type MultispeakerPrebuiltVoiceList = Array<MultispeakerPrebuiltVoice>;
 export const MultispeakerPrebuiltVoiceList = /*@__PURE__*/ S.Array(
   MultispeakerPrebuiltVoice,
 ) as any as S.Schema<MultispeakerPrebuiltVoiceList>;
@@ -428,7 +427,7 @@ export const Turn = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Turn" }) as any as S.Schema<Turn>;
 
-export type TurnList = ReadonlyArray<Turn>;
+export type TurnList = Array<Turn>;
 export const TurnList = /*@__PURE__*/ S.Array(
   Turn,
 ) as any as S.Schema<TurnList>;
@@ -476,8 +475,7 @@ export const CustomPronunciationParams = /*@__PURE__*/ S.suspend(() =>
   identifier: "CustomPronunciationParams",
 }) as any as S.Schema<CustomPronunciationParams>;
 
-export type CustomPronunciationParamsList =
-  ReadonlyArray<CustomPronunciationParams>;
+export type CustomPronunciationParamsList = Array<CustomPronunciationParams>;
 export const CustomPronunciationParamsList = /*@__PURE__*/ S.Array(
   CustomPronunciationParams,
 ) as any as S.Schema<CustomPronunciationParamsList>;
@@ -633,7 +631,7 @@ export const SafetySetting = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SafetySetting" }) as any as S.Schema<SafetySetting>;
 
-export type SafetySettingList = ReadonlyArray<SafetySetting>;
+export type SafetySettingList = Array<SafetySetting>;
 export const SafetySettingList = /*@__PURE__*/ S.Array(
   SafetySetting,
 ) as any as S.Schema<SafetySettingList>;

@@ -30,7 +30,7 @@ export const PrivateEndpointServiceConnectionStatus = /*@__PURE__*/ S.String;
 /** A collection of information about the state of the connection between service consumer and provider. */
 export interface PrivateLinkServiceConnectionState {
   /** Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service. */
-  status?: PrivateEndpointServiceConnectionStatus;
+  status?: PrivateEndpointServiceConnectionStatus | (string & {});
   /** The reason for approval/rejection of the connection. */
   description?: string;
   /** A message indicating if changes on the service provider require any updates on the consumer. */
@@ -142,7 +142,7 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 
 /** The group ids for the private endpoint resource. */
 export type BookshelfPrivateEndpointConnectionsCreateOrUpdateResponsePropertiesGroupIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const BookshelfPrivateEndpointConnectionsCreateOrUpdateResponsePropertiesGroupIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -289,7 +289,7 @@ export const BookshelfPrivateEndpointConnectionsGetRequest =
 
 /** The group ids for the private endpoint resource. */
 export type BookshelfPrivateEndpointConnectionsGetResponsePropertiesGroupIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const BookshelfPrivateEndpointConnectionsGetResponsePropertiesGroupIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -375,7 +375,7 @@ export const BookshelfPrivateEndpointConnectionsListByBookshelfRequest =
 
 /** The group ids for the private endpoint resource. */
 export type BookshelfPrivateEndpointConnectionPropertiesGroupIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const BookshelfPrivateEndpointConnectionPropertiesGroupIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -433,7 +433,7 @@ export const BookshelfPrivateEndpointConnection = /*@__PURE__*/ S.suspend(() =>
 
 /** The BookshelfPrivateEndpointConnection items on this page */
 export type BookshelfPrivateEndpointConnectionListResultValueList =
-  ReadonlyArray<BookshelfPrivateEndpointConnection>;
+  Array<BookshelfPrivateEndpointConnection>;
 export const BookshelfPrivateEndpointConnectionListResultValueList =
   /*@__PURE__*/ S.Array(
     BookshelfPrivateEndpointConnection,
@@ -487,7 +487,7 @@ export const BookshelfPrivateLinkResourcesGetRequest = /*@__PURE__*/ S.suspend(
 
 /** The private link resource required member names. */
 export type BookshelfPrivateLinkResourcesGetResponsePropertiesRequiredMembersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const BookshelfPrivateLinkResourcesGetResponsePropertiesRequiredMembersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -495,7 +495,7 @@ export const BookshelfPrivateLinkResourcesGetResponsePropertiesRequiredMembersLi
 
 /** The private link resource private link DNS zone name. */
 export type BookshelfPrivateLinkResourcesGetResponsePropertiesRequiredZoneNamesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const BookshelfPrivateLinkResourcesGetResponsePropertiesRequiredZoneNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -580,7 +580,7 @@ export const BookshelfPrivateLinkResourcesListByBookshelfRequest =
 
 /** The private link resource required member names. */
 export type BookshelfPrivateLinkResourcePropertiesRequiredMembersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const BookshelfPrivateLinkResourcePropertiesRequiredMembersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -588,7 +588,7 @@ export const BookshelfPrivateLinkResourcePropertiesRequiredMembersList =
 
 /** The private link resource private link DNS zone name. */
 export type BookshelfPrivateLinkResourcePropertiesRequiredZoneNamesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const BookshelfPrivateLinkResourcePropertiesRequiredZoneNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -645,7 +645,7 @@ export const BookshelfPrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The BookshelfPrivateLinkResource items on this page */
 export type BookshelfPrivateLinkResourceListResultValueList =
-  ReadonlyArray<BookshelfPrivateLinkResource>;
+  Array<BookshelfPrivateLinkResource>;
 export const BookshelfPrivateLinkResourceListResultValueList =
   /*@__PURE__*/ S.Array(
     BookshelfPrivateLinkResource,
@@ -838,8 +838,7 @@ export const BookshelfPropertiesWorkloadIdentitiesMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<BookshelfPropertiesWorkloadIdentitiesMap>;
 
 /** The group ids for the private endpoint resource. */
-export type PrivateEndpointConnectionPropertiesGroupIdsList =
-  ReadonlyArray<string>;
+export type PrivateEndpointConnectionPropertiesGroupIdsList = Array<string>;
 export const PrivateEndpointConnectionPropertiesGroupIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -895,7 +894,7 @@ export const BookshelfPropertiesPrivateEndpointConnectionsItem =
 
 /** List of private endpoint connections. */
 export type BookshelfPropertiesPrivateEndpointConnectionsList =
-  ReadonlyArray<BookshelfPropertiesPrivateEndpointConnectionsItem>;
+  Array<BookshelfPropertiesPrivateEndpointConnectionsItem>;
 export const BookshelfPropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     BookshelfPropertiesPrivateEndpointConnectionsItem,
@@ -917,7 +916,7 @@ export const WithMoboBrokerResourcesMoboBrokerResourcesItem =
 
 /** Managed-On-Behalf-Of broker resources */
 export type WithMoboBrokerResourcesMoboBrokerResourcesList =
-  ReadonlyArray<WithMoboBrokerResourcesMoboBrokerResourcesItem>;
+  Array<WithMoboBrokerResourcesMoboBrokerResourcesItem>;
 export const WithMoboBrokerResourcesMoboBrokerResourcesList =
   /*@__PURE__*/ S.Array(
     WithMoboBrokerResourcesMoboBrokerResourcesItem,
@@ -1172,7 +1171,7 @@ export const Bookshelf = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Bookshelf" }) as any as S.Schema<Bookshelf>;
 
 /** The Bookshelf items on this page */
-export type BookshelfListResultValueList = ReadonlyArray<Bookshelf>;
+export type BookshelfListResultValueList = Array<Bookshelf>;
 export const BookshelfListResultValueList = /*@__PURE__*/ S.Array(
   Bookshelf,
 ) as any as S.Schema<BookshelfListResultValueList>;
@@ -1633,8 +1632,7 @@ export const ChatModelDeployment = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ChatModelDeployment>;
 
 /** The ChatModelDeployment items on this page */
-export type ChatModelDeploymentListResultValueList =
-  ReadonlyArray<ChatModelDeployment>;
+export type ChatModelDeploymentListResultValueList = Array<ChatModelDeployment>;
 export const ChatModelDeploymentListResultValueList = /*@__PURE__*/ S.Array(
   ChatModelDeployment,
 ) as any as S.Schema<ChatModelDeploymentListResultValueList>;
@@ -2094,7 +2092,7 @@ export const NodePool = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NodePool" }) as any as S.Schema<NodePool>;
 
 /** The NodePool items on this page */
-export type NodePoolListResultValueList = ReadonlyArray<NodePool>;
+export type NodePoolListResultValueList = Array<NodePool>;
 export const NodePoolListResultValueList = /*@__PURE__*/ S.Array(
   NodePool,
 ) as any as S.Schema<NodePoolListResultValueList>;
@@ -2281,7 +2279,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = ReadonlyArray<Operation>;
+export type OperationsListResponseValueList = Array<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;
@@ -2311,8 +2309,7 @@ export const ProjectsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ProjectsCreateOrUpdateRequestTagsMap>;
 
 /** Allowed StorageContainers (Control plane resource references). */
-export type ProjectPropertiesInputStorageContainerIdsList =
-  ReadonlyArray<string>;
+export type ProjectPropertiesInputStorageContainerIdsList = Array<string>;
 export const ProjectPropertiesInputStorageContainerIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2396,7 +2393,7 @@ export const ProjectsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ProjectsCreateOrUpdateResponseTagsMap>;
 
 /** Allowed StorageContainers (Control plane resource references). */
-export type ProjectPropertiesStorageContainerIdsList = ReadonlyArray<string>;
+export type ProjectPropertiesStorageContainerIdsList = Array<string>;
 export const ProjectPropertiesStorageContainerIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ProjectPropertiesStorageContainerIdsList>;
@@ -2615,7 +2612,7 @@ export const Project = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Project" }) as any as S.Schema<Project>;
 
 /** The Project items on this page */
-export type ProjectListResultValueList = ReadonlyArray<Project>;
+export type ProjectListResultValueList = Array<Project>;
 export const ProjectListResultValueList = /*@__PURE__*/ S.Array(
   Project,
 ) as any as S.Schema<ProjectListResultValueList>;
@@ -3004,7 +3001,7 @@ export const StorageAsset = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StorageAsset" }) as any as S.Schema<StorageAsset>;
 
 /** The StorageAsset items on this page */
-export type StorageAssetListResultValueList = ReadonlyArray<StorageAsset>;
+export type StorageAssetListResultValueList = Array<StorageAsset>;
 export const StorageAssetListResultValueList = /*@__PURE__*/ S.Array(
   StorageAsset,
 ) as any as S.Schema<StorageAssetListResultValueList>;
@@ -3137,7 +3134,7 @@ export const StorageStoreType = /*@__PURE__*/ S.String;
 /** An abstract representation of storage store kind. */
 export interface StorageStore {
   /** The storage store kind. */
-  kind: StorageStoreType;
+  kind: StorageStoreType | (string & {});
 }
 export const StorageStore = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3408,8 +3405,7 @@ export const StorageContainer = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StorageContainer>;
 
 /** The StorageContainer items on this page */
-export type StorageContainerListResultValueList =
-  ReadonlyArray<StorageContainer>;
+export type StorageContainerListResultValueList = Array<StorageContainer>;
 export const StorageContainerListResultValueList = /*@__PURE__*/ S.Array(
   StorageContainer,
 ) as any as S.Schema<StorageContainerListResultValueList>;
@@ -4051,7 +4047,7 @@ export const Supercomputer = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Supercomputer" }) as any as S.Schema<Supercomputer>;
 
 /** The Supercomputer items on this page */
-export type SupercomputerListResultValueList = ReadonlyArray<Supercomputer>;
+export type SupercomputerListResultValueList = Array<Supercomputer>;
 export const SupercomputerListResultValueList = /*@__PURE__*/ S.Array(
   Supercomputer,
 ) as any as S.Schema<SupercomputerListResultValueList>;
@@ -4583,7 +4579,7 @@ export const Tool = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tool" }) as any as S.Schema<Tool>;
 
 /** The Tool items on this page */
-export type ToolListResultValueList = ReadonlyArray<Tool>;
+export type ToolListResultValueList = Array<Tool>;
 export const ToolListResultValueList = /*@__PURE__*/ S.Array(
   Tool,
 ) as any as S.Schema<ToolListResultValueList>;
@@ -4790,7 +4786,7 @@ export const WorkspacePrivateEndpointConnectionsCreateOrUpdateRequest =
 
 /** The group ids for the private endpoint resource. */
 export type WorkspacePrivateEndpointConnectionsCreateOrUpdateResponsePropertiesGroupIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const WorkspacePrivateEndpointConnectionsCreateOrUpdateResponsePropertiesGroupIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4915,7 +4911,7 @@ export const WorkspacePrivateEndpointConnectionsGetRequest =
 
 /** The group ids for the private endpoint resource. */
 export type WorkspacePrivateEndpointConnectionsGetResponsePropertiesGroupIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const WorkspacePrivateEndpointConnectionsGetResponsePropertiesGroupIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5001,7 +4997,7 @@ export const WorkspacePrivateEndpointConnectionsListByWorkspaceRequest =
 
 /** The group ids for the private endpoint resource. */
 export type WorkspacePrivateEndpointConnectionPropertiesGroupIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const WorkspacePrivateEndpointConnectionPropertiesGroupIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5059,7 +5055,7 @@ export const WorkspacePrivateEndpointConnection = /*@__PURE__*/ S.suspend(() =>
 
 /** The WorkspacePrivateEndpointConnection items on this page */
 export type WorkspacePrivateEndpointConnectionListResultValueList =
-  ReadonlyArray<WorkspacePrivateEndpointConnection>;
+  Array<WorkspacePrivateEndpointConnection>;
 export const WorkspacePrivateEndpointConnectionListResultValueList =
   /*@__PURE__*/ S.Array(
     WorkspacePrivateEndpointConnection,
@@ -5113,7 +5109,7 @@ export const WorkspacePrivateLinkResourcesGetRequest = /*@__PURE__*/ S.suspend(
 
 /** The private link resource required member names. */
 export type WorkspacePrivateLinkResourcesGetResponsePropertiesRequiredMembersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const WorkspacePrivateLinkResourcesGetResponsePropertiesRequiredMembersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5121,7 +5117,7 @@ export const WorkspacePrivateLinkResourcesGetResponsePropertiesRequiredMembersLi
 
 /** The private link resource private link DNS zone name. */
 export type WorkspacePrivateLinkResourcesGetResponsePropertiesRequiredZoneNamesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const WorkspacePrivateLinkResourcesGetResponsePropertiesRequiredZoneNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5206,7 +5202,7 @@ export const WorkspacePrivateLinkResourcesListByWorkspaceRequest =
 
 /** The private link resource required member names. */
 export type WorkspacePrivateLinkResourcePropertiesRequiredMembersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const WorkspacePrivateLinkResourcePropertiesRequiredMembersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5214,7 +5210,7 @@ export const WorkspacePrivateLinkResourcePropertiesRequiredMembersList =
 
 /** The private link resource private link DNS zone name. */
 export type WorkspacePrivateLinkResourcePropertiesRequiredZoneNamesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const WorkspacePrivateLinkResourcePropertiesRequiredZoneNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5271,7 +5267,7 @@ export const WorkspacePrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The WorkspacePrivateLinkResource items on this page */
 export type WorkspacePrivateLinkResourceListResultValueList =
-  ReadonlyArray<WorkspacePrivateLinkResource>;
+  Array<WorkspacePrivateLinkResource>;
 export const WorkspacePrivateLinkResourceListResultValueList =
   /*@__PURE__*/ S.Array(
     WorkspacePrivateLinkResource,
@@ -5304,8 +5300,7 @@ export const WorkspacesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<WorkspacesCreateOrUpdateRequestTagsMap>;
 
 /** List of linked SuperComputers. */
-export type WorkspacePropertiesInputSupercomputerIdsList =
-  ReadonlyArray<string>;
+export type WorkspacePropertiesInputSupercomputerIdsList = Array<string>;
 export const WorkspacePropertiesInputSupercomputerIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5411,7 +5406,7 @@ export const WorkspacesCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<WorkspacesCreateOrUpdateResponseTagsMap>;
 
 /** List of linked SuperComputers. */
-export type WorkspacePropertiesSupercomputerIdsList = ReadonlyArray<string>;
+export type WorkspacePropertiesSupercomputerIdsList = Array<string>;
 export const WorkspacePropertiesSupercomputerIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<WorkspacePropertiesSupercomputerIdsList>;
@@ -5444,7 +5439,7 @@ export const WorkspacePropertiesPrivateEndpointConnectionsItem =
 
 /** List of private endpoint connections. */
 export type WorkspacePropertiesPrivateEndpointConnectionsList =
-  ReadonlyArray<WorkspacePropertiesPrivateEndpointConnectionsItem>;
+  Array<WorkspacePropertiesPrivateEndpointConnectionsItem>;
 export const WorkspacePropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     WorkspacePropertiesPrivateEndpointConnectionsItem,
@@ -5693,7 +5688,7 @@ export const Workspace = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Workspace" }) as any as S.Schema<Workspace>;
 
 /** The Workspace items on this page */
-export type WorkspaceListResultValueList = ReadonlyArray<Workspace>;
+export type WorkspaceListResultValueList = Array<Workspace>;
 export const WorkspaceListResultValueList = /*@__PURE__*/ S.Array(
   Workspace,
 ) as any as S.Schema<WorkspaceListResultValueList>;
@@ -5743,8 +5738,7 @@ export const WorkspacesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<WorkspacesUpdateRequestTagsMap>;
 
 /** List of linked SuperComputers. */
-export type WorkspacePropertiesUpdateSupercomputerIdsList =
-  ReadonlyArray<string>;
+export type WorkspacePropertiesUpdateSupercomputerIdsList = Array<string>;
 export const WorkspacePropertiesUpdateSupercomputerIdsList =
   /*@__PURE__*/ S.Array(
     S.String,

@@ -340,8 +340,8 @@ export const Order = /*@__PURE__*/ S.String;
 
 export interface FilesLimit {
   MaxFiles: number;
-  OrderedBy?: OrderedBy;
-  Order?: Order;
+  OrderedBy?: OrderedBy | (string & {});
+  Order?: Order | (string & {});
 }
 export const FilesLimit = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -374,7 +374,7 @@ export const DatetimeOptions = /*@__PURE__*/ S.suspend(() =>
 export type CreateColumn = boolean;
 export interface DatasetParameter {
   Name: string;
-  Type: ParameterType;
+  Type: ParameterType | (string & {});
   DatetimeOptions?: DatetimeOptions;
   CreateColumn?: boolean;
   Filter?: FilterExpression;
@@ -568,7 +568,7 @@ export const ValidationMode = /*@__PURE__*/ S.String;
 
 export interface ValidationConfiguration {
   RulesetArn: string;
-  ValidationMode?: ValidationMode;
+  ValidationMode?: ValidationMode | (string & {});
 }
 export const ValidationConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -588,7 +588,7 @@ export const SampleMode = /*@__PURE__*/ S.String;
 
 export type JobSize = number;
 export interface JobSample {
-  Mode?: SampleMode;
+  Mode?: SampleMode | (string & {});
   Size?: number;
 }
 export const JobSample = /*@__PURE__*/ S.suspend(() =>
@@ -654,7 +654,7 @@ export const SampleType = /*@__PURE__*/ S.String;
 
 export interface Sample {
   Size?: number;
-  Type: SampleType;
+  Type: SampleType | (string & {});
 }
 export const Sample = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Size: S.optional(S.Number), Type: SampleType }),
@@ -813,8 +813,8 @@ export const OutputFormatOptions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OutputFormatOptions>;
 export type MaxOutputFiles = number;
 export interface Output {
-  CompressionFormat?: CompressionFormat;
-  Format?: OutputFormat;
+  CompressionFormat?: CompressionFormat | (string & {});
+  Format?: OutputFormat | (string & {});
   PartitionColumns?: string[];
   Location: S3Location;
   Overwrite?: boolean;
@@ -879,7 +879,7 @@ export const DatabaseOutputMode = /*@__PURE__*/ S.String;
 export interface DatabaseOutput {
   GlueConnectionName: string;
   DatabaseOptions: DatabaseTableOutputOptions;
-  DatabaseOutputMode?: DatabaseOutputMode;
+  DatabaseOutputMode?: DatabaseOutputMode | (string & {});
 }
 export const DatabaseOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -971,8 +971,8 @@ export const ThresholdUnit = /*@__PURE__*/ S.String;
 
 export interface Threshold {
   Value: number;
-  Type?: ThresholdType;
-  Unit?: ThresholdUnit;
+  Type?: ThresholdType | (string & {});
+  Unit?: ThresholdUnit | (string & {});
 }
 export const Threshold = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

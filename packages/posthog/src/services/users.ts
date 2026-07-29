@@ -402,7 +402,7 @@ export const UsersIntegrationsGithubBranchesRetrieveRequest =
   }) as any as S.Schema<UsersIntegrationsGithubBranchesRetrieveRequest>;
 
 /** List of branch names */
-export type GitHubBranchesResponseBranchesList = ReadonlyArray<string>;
+export type GitHubBranchesResponseBranchesList = Array<string>;
 export const GitHubBranchesResponseBranchesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GitHubBranchesResponseBranchesList>;
@@ -534,8 +534,7 @@ export const GitHubRepo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GitHubRepo" }) as any as S.Schema<GitHubRepo>;
 
 /** The refreshed repository cache. */
-export type GitHubReposRefreshResponseRepositoriesList =
-  ReadonlyArray<GitHubRepo>;
+export type GitHubReposRefreshResponseRepositoriesList = Array<GitHubRepo>;
 export const GitHubReposRefreshResponseRepositoriesList = /*@__PURE__*/ S.Array(
   GitHubRepo,
 ) as any as S.Schema<GitHubReposRefreshResponseRepositoriesList>;
@@ -581,7 +580,7 @@ export const UsersIntegrationsGithubReposRetrieveRequest =
     identifier: "UsersIntegrationsGithubReposRetrieveRequest",
   }) as any as S.Schema<UsersIntegrationsGithubReposRetrieveRequest>;
 
-export type GitHubReposResponseRepositoriesList = ReadonlyArray<GitHubRepo>;
+export type GitHubReposResponseRepositoriesList = Array<GitHubRepo>;
 export const GitHubReposResponseRepositoriesList = /*@__PURE__*/ S.Array(
   GitHubRepo,
 ) as any as S.Schema<GitHubReposResponseRepositoriesList>;
@@ -715,7 +714,7 @@ export const UserGitHubIntegrationItem = /*@__PURE__*/ S.suspend(() =>
 
 /** GitHub personal integrations for the authenticated user. */
 export type UserGitHubIntegrationListResponseResultsList =
-  ReadonlyArray<UserGitHubIntegrationItem>;
+  Array<UserGitHubIntegrationItem>;
 export const UserGitHubIntegrationListResponseResultsList =
   /*@__PURE__*/ S.Array(
     UserGitHubIntegrationItem,
@@ -734,7 +733,7 @@ export const UserGitHubIntegrationListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UserGitHubIntegrationListResponse>;
 
 export type PaginatedUserGitHubIntegrationListResponseListResultsList =
-  ReadonlyArray<UserGitHubIntegrationListResponse>;
+  Array<UserGitHubIntegrationListResponse>;
 export const PaginatedUserGitHubIntegrationListResponseListResultsList =
   /*@__PURE__*/ S.Array(
     UserGitHubIntegrationListResponse,
@@ -829,7 +828,7 @@ export const UserSlackLinkableWorkspaceItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Slack workspaces the user could link to but hasn't yet. */
 export type UserSlackLinkableWorkspaceListResponseResultsList =
-  ReadonlyArray<UserSlackLinkableWorkspaceItem>;
+  Array<UserSlackLinkableWorkspaceItem>;
 export const UserSlackLinkableWorkspaceListResponseResultsList =
   /*@__PURE__*/ S.Array(
     UserSlackLinkableWorkspaceItem,
@@ -1561,7 +1560,7 @@ export const OrganizationTeamsItemMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<OrganizationTeamsItemMap>;
 
-export type OrganizationTeamsList = ReadonlyArray<OrganizationTeamsItemMap>;
+export type OrganizationTeamsList = Array<OrganizationTeamsItemMap>;
 export const OrganizationTeamsList = /*@__PURE__*/ S.Array(
   OrganizationTeamsItemMap,
 ) as any as S.Schema<OrganizationTeamsList>;
@@ -1574,13 +1573,12 @@ export const OrganizationProjectsItemMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<OrganizationProjectsItemMap>;
 
-export type OrganizationProjectsList =
-  ReadonlyArray<OrganizationProjectsItemMap>;
+export type OrganizationProjectsList = Array<OrganizationProjectsItemMap>;
 export const OrganizationProjectsList = /*@__PURE__*/ S.Array(
   OrganizationProjectsItemMap,
 ) as any as S.Schema<OrganizationProjectsList>;
 
-export type OrganizationAvailableProductFeaturesList = ReadonlyArray<unknown>;
+export type OrganizationAvailableProductFeaturesList = Array<unknown>;
 export const OrganizationAvailableProductFeaturesList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<OrganizationAvailableProductFeaturesList>;
@@ -1720,7 +1718,7 @@ export const OrganizationBasic = /*@__PURE__*/ S.suspend(() =>
   identifier: "OrganizationBasic",
 }) as any as S.Schema<OrganizationBasic>;
 
-export type UserOutputOrganizationsList = ReadonlyArray<OrganizationBasic>;
+export type UserOutputOrganizationsList = Array<OrganizationBasic>;
 export const UserOutputOrganizationsList = /*@__PURE__*/ S.Array(
   OrganizationBasic,
 ) as any as S.Schema<UserOutputOrganizationsList>;
@@ -1739,7 +1737,7 @@ export const ScenePersonalisationBasic = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScenePersonalisationBasic>;
 
 export type UserOutputScenePersonalisationList =
-  ReadonlyArray<ScenePersonalisationBasic>;
+  Array<ScenePersonalisationBasic>;
 export const UserOutputScenePersonalisationList = /*@__PURE__*/ S.Array(
   ScenePersonalisationBasic,
 ) as any as S.Schema<UserOutputScenePersonalisationList>;
@@ -1761,8 +1759,7 @@ export type OnboardingSkippedReasonEnum =
 export const OnboardingSkippedReasonEnum = /*@__PURE__*/ S.String;
 
 /** Real-time notification types that currently have a live dispatch site. Drives the in-app notifications settings UI. Read-only. */
-export type UserOutputActiveRealtimeNotificationTypesList =
-  ReadonlyArray<string>;
+export type UserOutputActiveRealtimeNotificationTypesList = Array<string>;
 export const UserOutputActiveRealtimeNotificationTypesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1786,7 +1783,7 @@ export const PendingInvite = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PendingInvite" }) as any as S.Schema<PendingInvite>;
 
-export type UserOutputPendingInvitesList = ReadonlyArray<PendingInvite>;
+export type UserOutputPendingInvitesList = Array<PendingInvite>;
 export const UserOutputPendingInvitesList = /*@__PURE__*/ S.Array(
   PendingInvite,
 ) as any as S.Schema<UserOutputPendingInvitesList>;
@@ -1903,7 +1900,7 @@ export const UserOutput = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "UserOutput" }) as any as S.Schema<UserOutput>;
 
-export type PaginatedUserListOutputResultsList = ReadonlyArray<UserOutput>;
+export type PaginatedUserListOutputResultsList = Array<UserOutput>;
 export const PaginatedUserListOutputResultsList = /*@__PURE__*/ S.Array(
   UserOutput,
 ) as any as S.Schema<PaginatedUserListOutputResultsList>;
@@ -2003,8 +2000,7 @@ export const UserAuthSession = /*@__PURE__*/ S.suspend(() =>
   identifier: "UserAuthSession",
 }) as any as S.Schema<UserAuthSession>;
 
-export type UsersLoginSessionsListResponseBodyList =
-  ReadonlyArray<UserAuthSession>;
+export type UsersLoginSessionsListResponseBodyList = Array<UserAuthSession>;
 export const UsersLoginSessionsListResponseBodyList = /*@__PURE__*/ S.Array(
   UserAuthSession,
 ) as any as S.Schema<UsersLoginSessionsListResponseBodyList>;

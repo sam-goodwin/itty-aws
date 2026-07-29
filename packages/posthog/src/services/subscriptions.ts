@@ -37,7 +37,7 @@ export class NotFound extends T.applyErrorMatchers(
 
 /** List of insight IDs from the dashboard to include. Required for dashboard subscriptions, max 6. */
 export type SubscriptionsCreateRequestDashboardExportInsightsList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const SubscriptionsCreateRequestDashboardExportInsightsList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -52,7 +52,7 @@ export const AIWindowConfigModeEnum = /*@__PURE__*/ S.String;
 
 export interface AIWindowConfig {
   /** What the report analyzes each run: * `since_last_sent` (default) — everything since the previous successful scheduled delivery (gap-free; test/manual sends don't move the anchor) * `last_n_days` — a fixed trailing window of start_days_ago days * `days_ago_range` — the explicit range from start_days_ago to end_days_ago days ago * `since_last_sent` - Since last report * `last_n_days` - Last N days * `days_ago_range` - Between X and Y days ago */
-  mode?: AIWindowConfigModeEnum;
+  mode?: AIWindowConfigModeEnum | (string & {});
   /** Lower bound of the analysis window, in days before the run. Required for 'last_n_days' (the N) and 'days_ago_range'; ignored for 'since_last_sent'. 1-365. */
   start_days_ago?: number | null;
   /** Upper bound of the analysis window, in days before the run (0 = now). Required for 'days_ago_range' and must be less than start_days_ago; ignored for other modes. 0-365. */
@@ -96,7 +96,7 @@ export type SubscriptionsCreateRequestByweekdayItem =
 export const SubscriptionsCreateRequestByweekdayItem = /*@__PURE__*/ S.String;
 
 /** Days of week for weekly subscriptions: monday, tuesday, wednesday, thursday, friday, saturday, sunday. */
-export type SubscriptionsCreateRequestByweekdayList = ReadonlyArray<
+export type SubscriptionsCreateRequestByweekdayList = Array<
   SubscriptionsCreateRequestByweekdayItem | (string & {})
 >;
 export const SubscriptionsCreateRequestByweekdayList = /*@__PURE__*/ S.Array(
@@ -194,8 +194,7 @@ export type ResourceTypeEnum = "insight" | "dashboard" | "ai_prompt";
 export const ResourceTypeEnum = /*@__PURE__*/ S.String;
 
 /** List of insight IDs from the dashboard to include. Required for dashboard subscriptions, max 6. */
-export type SubscriptionOutputDashboardExportInsightsList =
-  ReadonlyArray<number>;
+export type SubscriptionOutputDashboardExportInsightsList = Array<number>;
 export const SubscriptionOutputDashboardExportInsightsList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -214,7 +213,7 @@ export const SubscriptionOutputByweekdayItem = /*@__PURE__*/ S.String;
 
 /** Days of week for weekly subscriptions: monday, tuesday, wednesday, thursday, friday, saturday, sunday. */
 export type SubscriptionOutputByweekdayList =
-  ReadonlyArray<SubscriptionOutputByweekdayItem>;
+  Array<SubscriptionOutputByweekdayItem>;
 export const SubscriptionOutputByweekdayList = /*@__PURE__*/ S.Array(
   SubscriptionOutputByweekdayItem,
 ) as any as S.Schema<SubscriptionOutputByweekdayList>;
@@ -398,7 +397,7 @@ export const SubscriptionsDeliveriesListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SubscriptionsDeliveriesListRequest>;
 
 /** ExportedAsset ids generated for this send. */
-export type SubscriptionDeliveryExportedAssetIdsList = ReadonlyArray<number>;
+export type SubscriptionDeliveryExportedAssetIdsList = Array<number>;
 export const SubscriptionDeliveryExportedAssetIdsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<SubscriptionDeliveryExportedAssetIdsList>;
@@ -437,7 +436,7 @@ export const AIReportQueryDiagnostic = /*@__PURE__*/ S.suspend(() =>
 
 /** Per-step query diagnostics (generated HogQL + failure type) for this report. Null for non-AI deliveries or runs without persisted diagnostics. */
 export type SubscriptionDeliveryAiReportDiagnosticsList =
-  ReadonlyArray<AIReportQueryDiagnostic>;
+  Array<AIReportQueryDiagnostic>;
 export const SubscriptionDeliveryAiReportDiagnosticsList =
   /*@__PURE__*/ S.Array(
     AIReportQueryDiagnostic,
@@ -515,7 +514,7 @@ export const SubscriptionDelivery = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SubscriptionDelivery>;
 
 export type PaginatedSubscriptionDeliveryListResultsList =
-  ReadonlyArray<SubscriptionDelivery>;
+  Array<SubscriptionDelivery>;
 export const PaginatedSubscriptionDeliveryListResultsList =
   /*@__PURE__*/ S.Array(
     SubscriptionDelivery,
@@ -651,7 +650,7 @@ export const SubscriptionsListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SubscriptionsListRequest>;
 
 export type PaginatedSubscriptionListOutputResultsList =
-  ReadonlyArray<SubscriptionOutput>;
+  Array<SubscriptionOutput>;
 export const PaginatedSubscriptionListOutputResultsList = /*@__PURE__*/ S.Array(
   SubscriptionOutput,
 ) as any as S.Schema<PaginatedSubscriptionListOutputResultsList>;
@@ -675,7 +674,7 @@ export const PaginatedSubscriptionListOutput = /*@__PURE__*/ S.suspend(() =>
 
 /** List of insight IDs from the dashboard to include. Required for dashboard subscriptions, max 6. */
 export type SubscriptionsPartialUpdateRequestDashboardExportInsightsList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const SubscriptionsPartialUpdateRequestDashboardExportInsightsList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -694,7 +693,7 @@ export const SubscriptionsPartialUpdateRequestByweekdayItem =
   /*@__PURE__*/ S.String;
 
 /** Days of week for weekly subscriptions: monday, tuesday, wednesday, thursday, friday, saturday, sunday. */
-export type SubscriptionsPartialUpdateRequestByweekdayList = ReadonlyArray<
+export type SubscriptionsPartialUpdateRequestByweekdayList = Array<
   SubscriptionsPartialUpdateRequestByweekdayItem | (string & {})
 >;
 export const SubscriptionsPartialUpdateRequestByweekdayList =
@@ -880,7 +879,7 @@ export const SubscriptionsTestDeliveryCreateResponse = /*@__PURE__*/ S.suspend(
 
 /** List of insight IDs from the dashboard to include. Required for dashboard subscriptions, max 6. */
 export type SubscriptionsUpdateRequestDashboardExportInsightsList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const SubscriptionsUpdateRequestDashboardExportInsightsList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -898,7 +897,7 @@ export type SubscriptionsUpdateRequestByweekdayItem =
 export const SubscriptionsUpdateRequestByweekdayItem = /*@__PURE__*/ S.String;
 
 /** Days of week for weekly subscriptions: monday, tuesday, wednesday, thursday, friday, saturday, sunday. */
-export type SubscriptionsUpdateRequestByweekdayList = ReadonlyArray<
+export type SubscriptionsUpdateRequestByweekdayList = Array<
   SubscriptionsUpdateRequestByweekdayItem | (string & {})
 >;
 export const SubscriptionsUpdateRequestByweekdayList = /*@__PURE__*/ S.Array(

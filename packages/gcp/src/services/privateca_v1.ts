@@ -60,7 +60,7 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -141,7 +141,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -235,7 +235,7 @@ export interface PublishingOptions {
   /** Optional. When true, publishes each CertificateAuthority's CRL and includes its URL in the "CRL Distribution Points" X.509 extension in all issued Certificates. If this is false, CRLs will not be published and the corresponding X.509 extension will not be written in issued certificates. CRLs will expire 7 days from their creation. However, we will rebuild daily. CRLs are also rebuilt shortly after a certificate is revoked. */
   publishCrl?: boolean;
   /** Optional. Specifies the encoding format of each CertificateAuthority resource's CA certificate and CRLs. If this is omitted, CA certificates and CRLs will be published in PEM. */
-  encodingFormat?: PublishingOptionsEncodingFormatEnum;
+  encodingFormat?: PublishingOptionsEncodingFormatEnum | (string & {});
 }
 export const PublishingOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -261,7 +261,7 @@ export const IssuanceModes = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "IssuanceModes" }) as any as S.Schema<IssuanceModes>;
 
-export type IntegerList = ReadonlyArray<number>;
+export type IntegerList = Array<number>;
 export const IntegerList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<IntegerList>;
@@ -277,7 +277,7 @@ export const ObjectId = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ObjectId" }) as any as S.Schema<ObjectId>;
 
-export type ObjectIdList = ReadonlyArray<ObjectId>;
+export type ObjectIdList = Array<ObjectId>;
 export const ObjectIdList = /*@__PURE__*/ S.Array(
   ObjectId,
 ) as any as S.Schema<ObjectIdList>;
@@ -299,7 +299,7 @@ export const X509Extension = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "X509Extension" }) as any as S.Schema<X509Extension>;
 
-export type X509ExtensionList = ReadonlyArray<X509Extension>;
+export type X509ExtensionList = Array<X509Extension>;
 export const X509ExtensionList = /*@__PURE__*/ S.Array(
   X509Extension,
 ) as any as S.Schema<X509ExtensionList>;
@@ -474,8 +474,9 @@ export type CertificateExtensionConstraintsKnownExtensionsItemEnum =
 export const CertificateExtensionConstraintsKnownExtensionsItemEnum =
   /*@__PURE__*/ S.String;
 
-export type CertificateExtensionConstraintsKnownExtensionsItemEnumList =
-  ReadonlyArray<CertificateExtensionConstraintsKnownExtensionsItemEnum>;
+export type CertificateExtensionConstraintsKnownExtensionsItemEnumList = Array<
+  CertificateExtensionConstraintsKnownExtensionsItemEnum | (string & {})
+>;
 export const CertificateExtensionConstraintsKnownExtensionsItemEnumList =
   /*@__PURE__*/ S.Array(
     CertificateExtensionConstraintsKnownExtensionsItemEnum,
@@ -509,7 +510,7 @@ export const EcKeyTypeSignatureAlgorithmEnum = /*@__PURE__*/ S.String;
 /** Describes an Elliptic Curve key that may be used in a Certificate issued from a CaPool. */
 export interface EcKeyType {
   /** Optional. A signature algorithm that must be used. If this is omitted, any EC-based signature algorithm will be allowed. */
-  signatureAlgorithm?: EcKeyTypeSignatureAlgorithmEnum;
+  signatureAlgorithm?: EcKeyTypeSignatureAlgorithmEnum | (string & {});
 }
 export const EcKeyType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -545,7 +546,7 @@ export const AllowedKeyType = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AllowedKeyType" }) as any as S.Schema<AllowedKeyType>;
 
-export type AllowedKeyTypeList = ReadonlyArray<AllowedKeyType>;
+export type AllowedKeyTypeList = Array<AllowedKeyType>;
 export const AllowedKeyTypeList = /*@__PURE__*/ S.Array(
   AllowedKeyType,
 ) as any as S.Schema<AllowedKeyTypeList>;
@@ -650,7 +651,7 @@ export interface CaPool {
   /** Optional. The IssuancePolicy to control how Certificates will be issued from this CaPool. */
   issuancePolicy?: IssuancePolicy;
   /** Required. Immutable. The Tier of this CaPool. */
-  tier?: CaPoolTierEnum;
+  tier?: CaPoolTierEnum | (string & {});
   /** Optional. When EncryptionSpec is provided, the Subject, SubjectAltNames, and the PEM-encoded certificate fields will be encrypted at rest. */
   encryptionSpec?: EncryptionSpec;
   /** Optional. Labels with user-defined metadata. */
@@ -737,7 +738,7 @@ export interface KeyVersionSpec {
   /** The resource name for an existing Cloud KMS CryptoKeyVersion in the format `projects/*\/locations/*\/keyRings/*\/cryptoKeys/*\/cryptoKeyVersions/*`. This option enables full flexibility in the key's capabilities and properties. */
   cloudKmsKeyVersion?: string;
   /** The algorithm to use for creating a managed Cloud KMS key for a for a simplified experience. All managed keys will be have their ProtectionLevel as `HSM`. */
-  algorithm?: KeyVersionSpecAlgorithmEnum;
+  algorithm?: KeyVersionSpecAlgorithmEnum | (string & {});
 }
 export const KeyVersionSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -777,7 +778,7 @@ export interface PublicKey {
   /** Required. A public key. The padding and encoding must match with the `KeyFormat` value specified for the `format` field. */
   key?: string;
   /** Required. The format of the public key. */
-  format?: PublicKeyFormatEnum;
+  format?: PublicKeyFormatEnum | (string & {});
 }
 export const PublicKey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -843,7 +844,7 @@ export interface AttributeTypeAndValue {
   /** The value for the attribute type. */
   value?: string;
   /** The attribute type of the attribute and value pair. */
-  type?: AttributeTypeAndValueTypeEnum;
+  type?: AttributeTypeAndValueTypeEnum | (string & {});
 }
 export const AttributeTypeAndValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -855,7 +856,7 @@ export const AttributeTypeAndValue = /*@__PURE__*/ S.suspend(() =>
   identifier: "AttributeTypeAndValue",
 }) as any as S.Schema<AttributeTypeAndValue>;
 
-export type AttributeTypeAndValueList = ReadonlyArray<AttributeTypeAndValue>;
+export type AttributeTypeAndValueList = Array<AttributeTypeAndValue>;
 export const AttributeTypeAndValueList = /*@__PURE__*/ S.Array(
   AttributeTypeAndValue,
 ) as any as S.Schema<AttributeTypeAndValueList>;
@@ -873,8 +874,7 @@ export const RelativeDistinguishedName = /*@__PURE__*/ S.suspend(() =>
   identifier: "RelativeDistinguishedName",
 }) as any as S.Schema<RelativeDistinguishedName>;
 
-export type RelativeDistinguishedNameList =
-  ReadonlyArray<RelativeDistinguishedName>;
+export type RelativeDistinguishedNameList = Array<RelativeDistinguishedName>;
 export const RelativeDistinguishedNameList = /*@__PURE__*/ S.Array(
   RelativeDistinguishedName,
 ) as any as S.Schema<RelativeDistinguishedNameList>;
@@ -979,7 +979,7 @@ export const CertificateDescription = /*@__PURE__*/ S.suspend(() =>
   identifier: "CertificateDescription",
 }) as any as S.Schema<CertificateDescription>;
 
-export type CertificateDescriptionList = ReadonlyArray<CertificateDescription>;
+export type CertificateDescriptionList = Array<CertificateDescription>;
 export const CertificateDescriptionList = /*@__PURE__*/ S.Array(
   CertificateDescription,
 ) as any as S.Schema<CertificateDescriptionList>;
@@ -1062,11 +1062,11 @@ export interface CertificateAuthority {
   /** Output only. The time at which this CertificateAuthority was soft deleted, if it is in the DELETED state. */
   deleteTime?: string;
   /** Output only. The State for this CertificateAuthority. */
-  state?: CertificateAuthorityStateEnum;
+  state?: CertificateAuthorityStateEnum | (string & {});
   /** Required. Immutable. Used when issuing certificates for this CertificateAuthority. If this CertificateAuthority is a self-signed CertificateAuthority, this key is also used to sign the self-signed CA certificate. Otherwise, it is used to sign a CSR. */
   keySpec?: KeyVersionSpec;
   /** Required. Immutable. The Type of this CertificateAuthority. */
-  type?: CertificateAuthorityTypeEnum;
+  type?: CertificateAuthorityTypeEnum | (string & {});
   /** Output only. This CertificateAuthority's certificate chain, including the current CertificateAuthority's certificate. Ordered such that the root issuer is the final element (consistent with RFC 5246). For a self-signed CA, this will only list the current CertificateAuthority's certificate. */
   pemCaCertificates?: StringList;
   /** Output only. The time at which this CertificateAuthority was created. */
@@ -1076,7 +1076,7 @@ export interface CertificateAuthority {
   /** Optional. Labels with user-defined metadata. */
   labels?: StringMap;
   /** Output only. The CaPool.Tier of the CaPool that includes this CertificateAuthority. */
-  tier?: CertificateAuthorityTierEnum;
+  tier?: CertificateAuthorityTierEnum | (string & {});
   /** Output only. A structured description of this CertificateAuthority's CA certificate and its issuers. Ordered as self-to-root. */
   caCertificateDescriptions?: CertificateDescriptionList;
   /** Immutable. The name of a Cloud Storage bucket where this CertificateAuthority will publish content, such as the CA certificate and CRLs. This must be a bucket name, without any prefixes (such as `gs://`) or suffixes (such as `.googleapis.com`). For example, to use a bucket named `my-bucket`, you would simply specify `my-bucket`. If not specified, a managed bucket will be created. */
@@ -1160,7 +1160,7 @@ export const RevocationDetailsRevocationStateEnum = /*@__PURE__*/ S.String;
 /** Describes fields that are relavent to the revocation of a Certificate. */
 export interface RevocationDetails {
   /** Indicates why a Certificate was revoked. */
-  revocationState?: RevocationDetailsRevocationStateEnum;
+  revocationState?: RevocationDetailsRevocationStateEnum | (string & {});
   /** The time at which this Certificate was revoked. */
   revocationTime?: string;
 }
@@ -1197,7 +1197,7 @@ export interface Certificate {
   /** Immutable. A pem-encoded X.509 certificate signing request (CSR). */
   pemCsr?: string;
   /** Immutable. Specifies how the Certificate's identity fields are to be decided. If this is omitted, the `DEFAULT` subject mode will be used. */
-  subjectMode?: CertificateSubjectModeEnum;
+  subjectMode?: CertificateSubjectModeEnum | (string & {});
   /** Output only. The resource name of the issuing CertificateAuthority in the format `projects/*\/locations/*\/caPools/*\/certificateAuthorities/*`. */
   issuerCertificateAuthority?: string;
   /** Output only. The time at which this Certificate was created. */
@@ -1547,7 +1547,7 @@ export const CertChain = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CertChain" }) as any as S.Schema<CertChain>;
 
-export type CertChainList = ReadonlyArray<CertChain>;
+export type CertChainList = Array<CertChain>;
 export const CertChainList = /*@__PURE__*/ S.Array(
   CertChain,
 ) as any as S.Schema<CertChainList>;
@@ -1630,7 +1630,7 @@ export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
 export interface AuditLogConfig {
   /** The log type that this config enables. */
-  logType?: AuditLogConfigLogTypeEnum;
+  logType?: AuditLogConfigLogTypeEnum | (string & {});
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
   exemptedMembers?: StringList;
 }
@@ -1641,7 +1641,7 @@ export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
-export type AuditLogConfigList = ReadonlyArray<AuditLogConfig>;
+export type AuditLogConfigList = Array<AuditLogConfig>;
 export const AuditLogConfigList = /*@__PURE__*/ S.Array(
   AuditLogConfig,
 ) as any as S.Schema<AuditLogConfigList>;
@@ -1660,7 +1660,7 @@ export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
-export type AuditConfigList = ReadonlyArray<AuditConfig>;
+export type AuditConfigList = Array<AuditConfig>;
 export const AuditConfigList = /*@__PURE__*/ S.Array(
   AuditConfig,
 ) as any as S.Schema<AuditConfigList>;
@@ -1682,7 +1682,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
-export type BindingList = ReadonlyArray<Binding>;
+export type BindingList = Array<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -1875,7 +1875,7 @@ export interface RevokedCertificate {
   /** The resource name for the Certificate in the format `projects/*\/locations/*\/caPools/*\/certificates/*`. */
   certificate?: string;
   /** The reason the Certificate was revoked. */
-  revocationReason?: RevokedCertificateRevocationReasonEnum;
+  revocationReason?: RevokedCertificateRevocationReasonEnum | (string & {});
 }
 export const RevokedCertificate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1887,7 +1887,7 @@ export const RevokedCertificate = /*@__PURE__*/ S.suspend(() =>
   identifier: "RevokedCertificate",
 }) as any as S.Schema<RevokedCertificate>;
 
-export type RevokedCertificateList = ReadonlyArray<RevokedCertificate>;
+export type RevokedCertificateList = Array<RevokedCertificate>;
 export const RevokedCertificateList = /*@__PURE__*/ S.Array(
   RevokedCertificate,
 ) as any as S.Schema<RevokedCertificateList>;
@@ -1897,7 +1897,7 @@ export interface CertificateRevocationList {
   /** Output only. The PEM-encoded X.509 CRL. */
   pemCrl?: string;
   /** Output only. The State for this CertificateRevocationList. */
-  state?: CertificateRevocationListStateEnum;
+  state?: CertificateRevocationListStateEnum | (string & {});
   /** Output only. The CRL sequence number that appears in pem_crl. */
   sequenceNumber?: string;
   /** Output only. The revision ID of this CertificateRevocationList. A new revision is committed whenever a new CRL is published. The format is an 8-character hexadecimal string. */
@@ -2019,7 +2019,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = ReadonlyArray<Location>;
+export type LocationList = Array<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -2070,7 +2070,7 @@ export const ListProjectsLocationsCaPoolsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsCaPoolsRequest",
 }) as any as S.Schema<ListProjectsLocationsCaPoolsRequest>;
 
-export type CaPoolList = ReadonlyArray<CaPool>;
+export type CaPoolList = Array<CaPool>;
 export const CaPoolList = /*@__PURE__*/ S.Array(
   CaPool,
 ) as any as S.Schema<CaPoolList>;
@@ -2125,7 +2125,7 @@ export const ListProjectsLocationsCaPoolsCertificateAuthoritiesRequest =
     identifier: "ListProjectsLocationsCaPoolsCertificateAuthoritiesRequest",
   }) as any as S.Schema<ListProjectsLocationsCaPoolsCertificateAuthoritiesRequest>;
 
-export type CertificateAuthorityList = ReadonlyArray<CertificateAuthority>;
+export type CertificateAuthorityList = Array<CertificateAuthority>;
 export const CertificateAuthorityList = /*@__PURE__*/ S.Array(
   CertificateAuthority,
 ) as any as S.Schema<CertificateAuthorityList>;
@@ -2181,8 +2181,7 @@ export const ListProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevoca
       "ListProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsRequest",
   }) as any as S.Schema<ListProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsRequest>;
 
-export type CertificateRevocationListList =
-  ReadonlyArray<CertificateRevocationList>;
+export type CertificateRevocationListList = Array<CertificateRevocationList>;
 export const CertificateRevocationListList = /*@__PURE__*/ S.Array(
   CertificateRevocationList,
 ) as any as S.Schema<CertificateRevocationListList>;
@@ -2238,7 +2237,7 @@ export const ListProjectsLocationsCaPoolsCertificatesRequest =
     identifier: "ListProjectsLocationsCaPoolsCertificatesRequest",
   }) as any as S.Schema<ListProjectsLocationsCaPoolsCertificatesRequest>;
 
-export type CertificateList = ReadonlyArray<Certificate>;
+export type CertificateList = Array<Certificate>;
 export const CertificateList = /*@__PURE__*/ S.Array(
   Certificate,
 ) as any as S.Schema<CertificateList>;
@@ -2293,7 +2292,7 @@ export const ListProjectsLocationsCertificateTemplatesRequest =
     identifier: "ListProjectsLocationsCertificateTemplatesRequest",
   }) as any as S.Schema<ListProjectsLocationsCertificateTemplatesRequest>;
 
-export type CertificateTemplateList = ReadonlyArray<CertificateTemplate>;
+export type CertificateTemplateList = Array<CertificateTemplate>;
 export const CertificateTemplateList = /*@__PURE__*/ S.Array(
   CertificateTemplate,
 ) as any as S.Schema<CertificateTemplateList>;
@@ -2348,7 +2347,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type OperationList = ReadonlyArray<Operation>;
+export type OperationList = Array<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;

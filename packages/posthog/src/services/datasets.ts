@@ -164,7 +164,7 @@ export const DatasetsDestroyResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DatasetsDestroyResponse",
 }) as any as S.Schema<DatasetsDestroyResponse>;
 
-export type DatasetsListRequestIdInList = ReadonlyArray<string>;
+export type DatasetsListRequestIdInList = Array<string>;
 export const DatasetsListRequestIdInList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DatasetsListRequestIdInList>;
@@ -176,7 +176,7 @@ export type DatasetsListRequestOrderByItem =
   | "updated_at";
 export const DatasetsListRequestOrderByItem = /*@__PURE__*/ S.String;
 
-export type DatasetsListRequestOrderByList = ReadonlyArray<
+export type DatasetsListRequestOrderByList = Array<
   DatasetsListRequestOrderByItem | (string & {})
 >;
 export const DatasetsListRequestOrderByList = /*@__PURE__*/ S.Array(
@@ -216,7 +216,7 @@ export const DatasetsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DatasetsListRequest",
 }) as any as S.Schema<DatasetsListRequest>;
 
-export type PaginatedDatasetListResultsList = ReadonlyArray<Dataset>;
+export type PaginatedDatasetListResultsList = Array<Dataset>;
 export const PaginatedDatasetListResultsList = /*@__PURE__*/ S.Array(
   Dataset,
 ) as any as S.Schema<PaginatedDatasetListResultsList>;

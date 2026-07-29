@@ -36,7 +36,7 @@ export class NotFound extends T.applyErrorMatchers(
 ) {}
 
 /** Viewport widths (px, 100-3000) to render the heatmap screenshot at — one render per width. Defaults to [320, 375, 425, 768, 1024, 1440, 1920] when omitted. At most 16 widths. */
-export type SavedCreateRequestWidthsList = ReadonlyArray<number>;
+export type SavedCreateRequestWidthsList = Array<number>;
 export const SavedCreateRequestWidthsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<SavedCreateRequestWidthsList>;
@@ -108,7 +108,7 @@ export const HeatmapSnapshotMetadata = /*@__PURE__*/ S.suspend(() =>
 
 /** Per-width render metadata. Fetch the actual image bytes for a width from the content endpoint. */
 export type HeatmapScreenshotResponseSnapshotsList =
-  ReadonlyArray<HeatmapSnapshotMetadata>;
+  Array<HeatmapSnapshotMetadata>;
 export const HeatmapScreenshotResponseSnapshotsList = /*@__PURE__*/ S.Array(
   HeatmapSnapshotMetadata,
 ) as any as S.Schema<HeatmapScreenshotResponseSnapshotsList>;
@@ -283,7 +283,7 @@ export const SavedListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SavedListRequest>;
 
 export type SavedHeatmapListResponseResultsList =
-  ReadonlyArray<HeatmapScreenshotResponse>;
+  Array<HeatmapScreenshotResponse>;
 export const SavedHeatmapListResponseResultsList = /*@__PURE__*/ S.Array(
   HeatmapScreenshotResponse,
 ) as any as S.Schema<SavedHeatmapListResponseResultsList>;
@@ -302,7 +302,7 @@ export const SavedHeatmapListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "SavedHeatmapListResponse",
 }) as any as S.Schema<SavedHeatmapListResponse>;
 
-export type SavedListResponseBodyList = ReadonlyArray<SavedHeatmapListResponse>;
+export type SavedListResponseBodyList = Array<SavedHeatmapListResponse>;
 export const SavedListResponseBodyList = /*@__PURE__*/ S.Array(
   SavedHeatmapListResponse,
 ) as any as S.Schema<SavedListResponseBodyList>;
@@ -315,7 +315,7 @@ export const SavedListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SavedListResponse>;
 
 /** Viewport widths (px, 100-3000) to render the heatmap screenshot at — one render per width. Defaults to [320, 375, 425, 768, 1024, 1440, 1920] when omitted. At most 16 widths. */
-export type SavedPartialUpdateRequestWidthsList = ReadonlyArray<number>;
+export type SavedPartialUpdateRequestWidthsList = Array<number>;
 export const SavedPartialUpdateRequestWidthsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<SavedPartialUpdateRequestWidthsList>;

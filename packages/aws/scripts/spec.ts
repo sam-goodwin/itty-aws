@@ -1375,28 +1375,20 @@ export const awsSpec = (
   };
 
   // --- Direction classification (enum openness) ------------------------------
-  // Enum/intEnum ALIASES are emitted CLOSED (`type X = "a" | "b"`); shapes
-  // reachable ONLY from operation inputs re-open enum references inline
-  // (`X | (string & {})`) so consumers can send tomorrow's values without an
-  // SDK update. Anything reachable from an output or error shape is
-  // response-side — closed, so reads stay exhaustively matchable.
-  const requestOnlyNames = (() => {
+  // Enum/intEnum ALIASES are emitted CLOSED (`type X = "a" | "b"`);
+  // request-reachable shapes — including shapes shared with responses —
+  // re-open enum references inline (`X | (string & {})`) so consumers can
+  // send tomorrow's values without an SDK update. Only references inside
+  // pure response/error shapes stay the plain closed alias.
+  const requestReachableNames = (() => {
     const inputRoots: string[] = [];
-    const responseRoots: string[] = [];
     for (const shape of Object.values(shapes)) {
       if (shape.type !== "operation") continue;
       if (shape.input?.target) inputRoots.push(shape.input.target);
-      if (shape.output?.target) responseRoots.push(shape.output.target);
-      for (const e of (shape.errors ?? []) as Array<{ target: string }>) {
-        responseRoots.push(e.target);
-      }
     }
     const requestReachable = reachableFrom(shapes, inputRoots, shapeDeps);
-    const responseReachable = reachableFrom(shapes, responseRoots, shapeDeps);
     const names = new Set<string>();
-    for (const id of requestReachable) {
-      if (!responseReachable.has(id)) names.add(formatName(id));
-    }
+    for (const id of requestReachable) names.add(formatName(id));
     return names;
   })();
 
@@ -1412,12 +1404,12 @@ export const awsSpec = (
 
   /**
    * TS type of a member/element reference as seen from inside the shape
-   * named `ownerName`: enum references from request-only shapes gain the
-   * inline open arm; everything else is the plain (closed) alias.
+   * named `ownerName`: enum references from request-reachable shapes gain
+   * the inline open arm; everything else is the plain (closed) alias.
    */
   const tsTypeAt = (target: string, ownerName: string): string => {
     const base = tsTypeOf(target);
-    if (!requestOnlyNames.has(ownerName)) return base;
+    if (!requestReachableNames.has(ownerName)) return base;
     const arm = openEnumArm(target);
     return arm ? `${base} | ${arm}` : base;
   };
@@ -1920,9 +1912,9 @@ export const awsSpec = (
           // Value piped through S.optional so undefined values are accepted
           // (and dropped during serialization).
           const recordExpr = `S.Record(${wrappedKey}, ${wrappedValue}.pipe(S.optional))${sparsePipe}`;
-          // Request-only enum-key maps re-open the key inline so callers
-          // can send undocumented keys.
-          const keyArm = requestOnlyNames.has(name)
+          // Request-reachable enum-key maps re-open the key inline so
+          // callers can send undocumented keys.
+          const keyArm = requestReachableNames.has(name)
             ? openEnumArm(def.key.target)
             : undefined;
           const typeAlias = isKeyEnum

@@ -960,7 +960,7 @@ export const DestinationType = /*@__PURE__*/ S.String;
 
 export type Location = string;
 export interface Destination {
-  Type: DestinationType;
+  Type: DestinationType | (string & {});
   Location: string;
 }
 export const Destination = /*@__PURE__*/ S.suspend(() =>
@@ -1019,7 +1019,7 @@ export const RefreshScheduleFrequencyUnit = /*@__PURE__*/ S.String;
 
 export type RefreshScheduleFrequencyValue = number;
 export interface RefreshScheduleFrequency {
-  Unit?: RefreshScheduleFrequencyUnit;
+  Unit?: RefreshScheduleFrequencyUnit | (string & {});
   Value?: number;
 }
 export const RefreshScheduleFrequency = /*@__PURE__*/ S.suspend(() =>
@@ -1036,7 +1036,7 @@ export const RefreshScheduleStatus = /*@__PURE__*/ S.String;
 export type TimeOfDay = string;
 export interface RefreshSchedule {
   Frequency?: RefreshScheduleFrequency;
-  Status?: RefreshScheduleStatus;
+  Status?: RefreshScheduleStatus | (string & {});
   TimeOfDay?: string;
 }
 export const RefreshSchedule = /*@__PURE__*/ S.suspend(() =>
@@ -1932,7 +1932,7 @@ export type OperatorTargetListMember = string;
 export type OperatorTargetList = string[];
 export const OperatorTargetList = /*@__PURE__*/ S.Array(S.String);
 export interface ContextKeySelector {
-  Type: Type;
+  Type: Type | (string & {});
   Equals: string[];
 }
 export const ContextKeySelector = /*@__PURE__*/ S.suspend(() =>
@@ -1945,14 +1945,14 @@ export const ContextKeySelectors = /*@__PURE__*/ S.Array(ContextKeySelector);
 export type Template = "API_ACTIVITY" | "RESOURCE_ACCESS" | "USER_ACTIONS";
 export const Template = /*@__PURE__*/ S.String;
 
-export type Templates = Template[];
+export type Templates = (Template | (string & {}))[];
 export const Templates = /*@__PURE__*/ S.Array(Template);
 export type EventCategoryAggregation = "Data";
 export const EventCategoryAggregation = /*@__PURE__*/ S.String;
 
 export interface AggregationConfiguration {
   Templates: Template[];
-  EventCategory: EventCategoryAggregation;
+  EventCategory: EventCategoryAggregation | (string & {});
 }
 export const AggregationConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Templates: Templates, EventCategory: EventCategoryAggregation }),
@@ -2090,7 +2090,7 @@ export const DataResources = /*@__PURE__*/ S.Array(DataResource);
 export type ExcludeManagementEventSources = string[];
 export const ExcludeManagementEventSources = /*@__PURE__*/ S.Array(S.String);
 export interface EventSelector {
-  ReadWriteType?: ReadWriteType;
+  ReadWriteType?: ReadWriteType | (string & {});
   IncludeManagementEvents?: boolean;
   DataResources?: DataResource[];
   ExcludeManagementEventSources?: string[];
@@ -2241,10 +2241,10 @@ export const InsightType = /*@__PURE__*/ S.String;
 export type SourceEventCategory = "Management" | "Data";
 export const SourceEventCategory = /*@__PURE__*/ S.String;
 
-export type SourceEventCategories = SourceEventCategory[];
+export type SourceEventCategories = (SourceEventCategory | (string & {}))[];
 export const SourceEventCategories = /*@__PURE__*/ S.Array(SourceEventCategory);
 export interface InsightSelector {
-  InsightType?: InsightType;
+  InsightType?: InsightType | (string & {});
   EventCategories?: SourceEventCategory[];
 }
 export const InsightSelector = /*@__PURE__*/ S.suspend(() =>

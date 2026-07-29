@@ -90,7 +90,7 @@ export const AchievementStage = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AchievementStage>;
 
 /** The five stages of this track, in ascending threshold order. */
-export type AchievementDefinitionStagesList = ReadonlyArray<AchievementStage>;
+export type AchievementDefinitionStagesList = Array<AchievementStage>;
 export const AchievementDefinitionStagesList = /*@__PURE__*/ S.Array(
   AchievementStage,
 ) as any as S.Schema<AchievementDefinitionStagesList>;
@@ -124,7 +124,7 @@ export const AchievementDefinition = /*@__PURE__*/ S.suspend(() =>
 
 /** All Wave-1 track definitions, thresholds resolved for the user's streak arm. */
 export type AchievementsListResponseDefinitionsList =
-  ReadonlyArray<AchievementDefinition>;
+  Array<AchievementDefinition>;
 export const AchievementsListResponseDefinitionsList = /*@__PURE__*/ S.Array(
   AchievementDefinition,
 ) as any as S.Schema<AchievementsListResponseDefinitionsList>;
@@ -164,14 +164,14 @@ export const AchievementProgress = /*@__PURE__*/ S.suspend(() =>
 
 /** The requesting user's progress on per-user tracks. */
 export type AchievementsListResponseUserProgressList =
-  ReadonlyArray<AchievementProgress>;
+  Array<AchievementProgress>;
 export const AchievementsListResponseUserProgressList = /*@__PURE__*/ S.Array(
   AchievementProgress,
 ) as any as S.Schema<AchievementsListResponseUserProgressList>;
 
 /** The team's progress on per-team tracks. */
 export type AchievementsListResponseTeamProgressList =
-  ReadonlyArray<AchievementProgress>;
+  Array<AchievementProgress>;
 export const AchievementsListResponseTeamProgressList = /*@__PURE__*/ S.Array(
   AchievementProgress,
 ) as any as S.Schema<AchievementsListResponseTeamProgressList>;
@@ -196,7 +196,7 @@ export const PendingCelebration = /*@__PURE__*/ S.suspend(() =>
 
 /** Newly unlocked stages awaiting an in-session celebration; acknowledge each to clear it. */
 export type AchievementsListResponsePendingCelebrationsList =
-  ReadonlyArray<PendingCelebration>;
+  Array<PendingCelebration>;
 export const AchievementsListResponsePendingCelebrationsList =
   /*@__PURE__*/ S.Array(
     PendingCelebration,

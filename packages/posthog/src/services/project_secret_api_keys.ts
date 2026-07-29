@@ -36,7 +36,7 @@ export class NotFound extends T.applyErrorMatchers(
 ) {}
 
 /** Project-wide API scopes granted to this key. Project secret API keys do not honor object-level access controls, so a scope can access resources of that type even when per-resource RBAC would hide them from an individual user. */
-export type ProjectSecretApiKeysCreateRequestScopesList = ReadonlyArray<string>;
+export type ProjectSecretApiKeysCreateRequestScopesList = Array<string>;
 export const ProjectSecretApiKeysCreateRequestScopesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -116,7 +116,7 @@ export const UserBasic = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UserBasic" }) as any as S.Schema<UserBasic>;
 
 /** Project-wide API scopes granted to this key. Project secret API keys do not honor object-level access controls, so a scope can access resources of that type even when per-resource RBAC would hide them from an individual user. */
-export type ProjectSecretAPIKeyScopesList = ReadonlyArray<string>;
+export type ProjectSecretAPIKeyScopesList = Array<string>;
 export const ProjectSecretAPIKeyScopesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ProjectSecretAPIKeyScopesList>;
@@ -202,7 +202,7 @@ export const ProjectSecretApiKeysListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProjectSecretApiKeysListRequest>;
 
 export type PaginatedProjectSecretAPIKeyListResultsList =
-  ReadonlyArray<ProjectSecretAPIKey>;
+  Array<ProjectSecretAPIKey>;
 export const PaginatedProjectSecretAPIKeyListResultsList =
   /*@__PURE__*/ S.Array(
     ProjectSecretAPIKey,
@@ -226,8 +226,7 @@ export const PaginatedProjectSecretAPIKeyList = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PaginatedProjectSecretAPIKeyList>;
 
 /** Project-wide API scopes granted to this key. Project secret API keys do not honor object-level access controls, so a scope can access resources of that type even when per-resource RBAC would hide them from an individual user. */
-export type ProjectSecretApiKeysPartialUpdateRequestScopesList =
-  ReadonlyArray<string>;
+export type ProjectSecretApiKeysPartialUpdateRequestScopesList = Array<string>;
 export const ProjectSecretApiKeysPartialUpdateRequestScopesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -304,7 +303,7 @@ export const ProjectSecretApiKeysRollCreateRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ProjectSecretApiKeysRollCreateRequest>;
 
 /** Project-wide API scopes granted to this key. Project secret API keys do not honor object-level access controls, so a scope can access resources of that type even when per-resource RBAC would hide them from an individual user. */
-export type ProjectSecretApiKeysUpdateRequestScopesList = ReadonlyArray<string>;
+export type ProjectSecretApiKeysUpdateRequestScopesList = Array<string>;
 export const ProjectSecretApiKeysUpdateRequestScopesList =
   /*@__PURE__*/ S.Array(
     S.String,

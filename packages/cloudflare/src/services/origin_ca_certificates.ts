@@ -68,7 +68,7 @@ export class HostnameNotAuthorized extends T.applyErrorMatchers(
   [{ code: 1010 }],
 ) {}
 
-export type CreateRequestHostnamesList = ReadonlyArray<string>;
+export type CreateRequestHostnamesList = Array<string>;
 export const CreateRequestHostnamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateRequestHostnamesList>;
@@ -114,7 +114,7 @@ export const CreateOriginCaCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateOriginCaCertificateRequest",
 }) as any as S.Schema<CreateOriginCaCertificateRequest>;
 
-export type CreateResponseHostnamesList = ReadonlyArray<string>;
+export type CreateResponseHostnamesList = Array<string>;
 export const CreateResponseHostnamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateResponseHostnamesList>;
@@ -227,7 +227,7 @@ export const GetOriginCaCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetOriginCaCertificateRequest",
 }) as any as S.Schema<GetOriginCaCertificateRequest>;
 
-export type GetResponseHostnamesList = ReadonlyArray<string>;
+export type GetResponseHostnamesList = Array<string>;
 export const GetResponseHostnamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetResponseHostnamesList>;
@@ -310,7 +310,7 @@ export const ListOriginCaCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListOriginCaCertificatesRequest",
 }) as any as S.Schema<ListOriginCaCertificatesRequest>;
 
-export type ListResultItemHostnamesList = ReadonlyArray<string>;
+export type ListResultItemHostnamesList = Array<string>;
 export const ListResultItemHostnamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ListResultItemHostnamesList>;
@@ -364,7 +364,7 @@ export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ListResultItem" }) as any as S.Schema<ListResultItem>;
 
-export type ListResultList = ReadonlyArray<ListResultItem>;
+export type ListResultList = Array<ListResultItem>;
 export const ListResultList = /*@__PURE__*/ S.Array(
   ListResultItem,
 ) as any as S.Schema<ListResultList>;

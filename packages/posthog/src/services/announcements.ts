@@ -51,7 +51,7 @@ export const AnnouncementChannel = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AnnouncementChannel>;
 
 export type AnnouncementsChannelsListResponseBodyList =
-  ReadonlyArray<AnnouncementChannel>;
+  Array<AnnouncementChannel>;
 export const AnnouncementsChannelsListResponseBodyList = /*@__PURE__*/ S.Array(
   AnnouncementChannel,
 ) as any as S.Schema<AnnouncementsChannelsListResponseBodyList>;
@@ -65,7 +65,7 @@ export const AnnouncementsChannelsListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AnnouncementsChannelsListResponse>;
 
 /** Slack channel IDs to send to. Each must be a channel the SupportHog bot is a member of; names are resolved server-side. */
-export type AnnouncementsCreateRequestChannelsList = ReadonlyArray<string>;
+export type AnnouncementsCreateRequestChannelsList = Array<string>;
 export const AnnouncementsCreateRequestChannelsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AnnouncementsCreateRequestChannelsList>;
@@ -187,8 +187,7 @@ export const AnnouncementDelivery = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AnnouncementDelivery>;
 
 /** Per-channel delivery rows, one per selected Slack channel. */
-export type AnnouncementOutputDeliveriesList =
-  ReadonlyArray<AnnouncementDelivery>;
+export type AnnouncementOutputDeliveriesList = Array<AnnouncementDelivery>;
 export const AnnouncementOutputDeliveriesList = /*@__PURE__*/ S.Array(
   AnnouncementDelivery,
 ) as any as S.Schema<AnnouncementOutputDeliveriesList>;
@@ -258,7 +257,7 @@ export const AnnouncementsListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AnnouncementsListRequest>;
 
 export type PaginatedAnnouncementListOutputResultsList =
-  ReadonlyArray<AnnouncementOutput>;
+  Array<AnnouncementOutput>;
 export const PaginatedAnnouncementListOutputResultsList = /*@__PURE__*/ S.Array(
   AnnouncementOutput,
 ) as any as S.Schema<PaginatedAnnouncementListOutputResultsList>;

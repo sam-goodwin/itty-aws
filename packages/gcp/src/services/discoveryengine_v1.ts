@@ -107,7 +107,7 @@ export const GoogleCloudDiscoveryengineV1AnswerQueryRequestSafetySpecSafetySetti
   }) as any as S.Schema<GoogleCloudDiscoveryengineV1AnswerQueryRequestSafetySpecSafetySetting>;
 
 export type GoogleCloudDiscoveryengineV1AnswerQueryRequestSafetySpecSafetySettingList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1AnswerQueryRequestSafetySpecSafetySetting>;
+  Array<GoogleCloudDiscoveryengineV1AnswerQueryRequestSafetySpecSafetySetting>;
 export const GoogleCloudDiscoveryengineV1AnswerQueryRequestSafetySpecSafetySettingList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1AnswerQueryRequestSafetySpecSafetySetting,
@@ -211,7 +211,7 @@ export const GoogleCloudDiscoveryengineV1SearchRequestBoostSpecConditionBoostSpe
   }) as any as S.Schema<GoogleCloudDiscoveryengineV1SearchRequestBoostSpecConditionBoostSpecBoostControlSpecControlPoint>;
 
 export type GoogleCloudDiscoveryengineV1SearchRequestBoostSpecConditionBoostSpecBoostControlSpecControlPointList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1SearchRequestBoostSpecConditionBoostSpecBoostControlSpecControlPoint>;
+  Array<GoogleCloudDiscoveryengineV1SearchRequestBoostSpecConditionBoostSpecBoostControlSpecControlPoint>;
 export const GoogleCloudDiscoveryengineV1SearchRequestBoostSpecConditionBoostSpecBoostControlSpecControlPointList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1SearchRequestBoostSpecConditionBoostSpecBoostControlSpecControlPoint,
@@ -275,7 +275,7 @@ export const GoogleCloudDiscoveryengineV1SearchRequestBoostSpecConditionBoostSpe
   }) as any as S.Schema<GoogleCloudDiscoveryengineV1SearchRequestBoostSpecConditionBoostSpec>;
 
 export type GoogleCloudDiscoveryengineV1SearchRequestBoostSpecConditionBoostSpecList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1SearchRequestBoostSpecConditionBoostSpec>;
+  Array<GoogleCloudDiscoveryengineV1SearchRequestBoostSpecConditionBoostSpec>;
 export const GoogleCloudDiscoveryengineV1SearchRequestBoostSpecConditionBoostSpecList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1SearchRequestBoostSpecConditionBoostSpec,
@@ -329,7 +329,7 @@ export const GoogleCloudDiscoveryengineV1SearchRequestDataStoreSpec =
   }) as any as S.Schema<GoogleCloudDiscoveryengineV1SearchRequestDataStoreSpec>;
 
 export type GoogleCloudDiscoveryengineV1SearchRequestDataStoreSpecList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1SearchRequestDataStoreSpec>;
+  Array<GoogleCloudDiscoveryengineV1SearchRequestDataStoreSpec>;
 export const GoogleCloudDiscoveryengineV1SearchRequestDataStoreSpecList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1SearchRequestDataStoreSpec,
@@ -431,7 +431,7 @@ export const GoogleCloudDiscoveryengineV1AnswerQueryRequestSearchSpecSearchResul
   }) as any as S.Schema<GoogleCloudDiscoveryengineV1AnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoDocumentContext>;
 
 export type GoogleCloudDiscoveryengineV1AnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoDocumentContextList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1AnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoDocumentContext>;
+  Array<GoogleCloudDiscoveryengineV1AnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoDocumentContext>;
 export const GoogleCloudDiscoveryengineV1AnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoDocumentContextList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1AnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoDocumentContext,
@@ -456,7 +456,7 @@ export const GoogleCloudDiscoveryengineV1AnswerQueryRequestSearchSpecSearchResul
   }) as any as S.Schema<GoogleCloudDiscoveryengineV1AnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoExtractiveAnswer>;
 
 export type GoogleCloudDiscoveryengineV1AnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoExtractiveAnswerList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1AnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoExtractiveAnswer>;
+  Array<GoogleCloudDiscoveryengineV1AnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoExtractiveAnswer>;
 export const GoogleCloudDiscoveryengineV1AnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoExtractiveAnswerList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1AnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoExtractiveAnswer,
@@ -481,7 +481,7 @@ export const GoogleCloudDiscoveryengineV1AnswerQueryRequestSearchSpecSearchResul
   }) as any as S.Schema<GoogleCloudDiscoveryengineV1AnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoExtractiveSegment>;
 
 export type GoogleCloudDiscoveryengineV1AnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoExtractiveSegmentList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1AnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoExtractiveSegment>;
+  Array<GoogleCloudDiscoveryengineV1AnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoExtractiveSegment>;
 export const GoogleCloudDiscoveryengineV1AnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoExtractiveSegmentList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1AnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoExtractiveSegment,
@@ -546,7 +546,7 @@ export const GoogleCloudDiscoveryengineV1AnswerQueryRequestSearchSpecSearchResul
   }) as any as S.Schema<GoogleCloudDiscoveryengineV1AnswerQueryRequestSearchSpecSearchResultListSearchResult>;
 
 export type GoogleCloudDiscoveryengineV1AnswerQueryRequestSearchSpecSearchResultListSearchResultList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1AnswerQueryRequestSearchSpecSearchResultListSearchResult>;
+  Array<GoogleCloudDiscoveryengineV1AnswerQueryRequestSearchSpecSearchResultListSearchResult>;
 export const GoogleCloudDiscoveryengineV1AnswerQueryRequestSearchSpecSearchResultListSearchResultList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1AnswerQueryRequestSearchSpecSearchResultListSearchResult,
@@ -601,7 +601,7 @@ export const GoogleCloudDiscoveryengineV1AnswerQueryRequestQueryUnderstandingSpe
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudDiscoveryengineV1AnswerQueryRequestQueryUnderstandingSpecQueryClassificationSpecTypesItemEnumList =
-  ReadonlyArray<
+  Array<
     | GoogleCloudDiscoveryengineV1AnswerQueryRequestQueryUnderstandingSpecQueryClassificationSpecTypesItemEnum
     | (string & {})
   >;
@@ -837,7 +837,7 @@ export const GoogleCloudDiscoveryengineV1AnswerQueryRequestEndUserSpecEndUserMet
   }) as any as S.Schema<GoogleCloudDiscoveryengineV1AnswerQueryRequestEndUserSpecEndUserMetaData>;
 
 export type GoogleCloudDiscoveryengineV1AnswerQueryRequestEndUserSpecEndUserMetaDataList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1AnswerQueryRequestEndUserSpecEndUserMetaData>;
+  Array<GoogleCloudDiscoveryengineV1AnswerQueryRequestEndUserSpecEndUserMetaData>;
 export const GoogleCloudDiscoveryengineV1AnswerQueryRequestEndUserSpecEndUserMetaDataList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1AnswerQueryRequestEndUserSpecEndUserMetaData,
@@ -945,7 +945,7 @@ export const AnswerProjectsLocationsCollectionsDataStoresServingConfigsRequest =
       "AnswerProjectsLocationsCollectionsDataStoresServingConfigsRequest",
   }) as any as S.Schema<AnswerProjectsLocationsCollectionsDataStoresServingConfigsRequest>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -965,7 +965,9 @@ export interface GoogleCloudDiscoveryengineV1AnswerQueryUnderstandingInfoQueryCl
   /** Classification output. */
   positive?: boolean;
   /** Query classification type. */
-  type?: GoogleCloudDiscoveryengineV1AnswerQueryUnderstandingInfoQueryClassificationInfoTypeEnum;
+  type?:
+    | GoogleCloudDiscoveryengineV1AnswerQueryUnderstandingInfoQueryClassificationInfoTypeEnum
+    | (string & {});
 }
 export const GoogleCloudDiscoveryengineV1AnswerQueryUnderstandingInfoQueryClassificationInfo =
   /*@__PURE__*/ S.suspend(() =>
@@ -981,7 +983,7 @@ export const GoogleCloudDiscoveryengineV1AnswerQueryUnderstandingInfoQueryClassi
   }) as any as S.Schema<GoogleCloudDiscoveryengineV1AnswerQueryUnderstandingInfoQueryClassificationInfo>;
 
 export type GoogleCloudDiscoveryengineV1AnswerQueryUnderstandingInfoQueryClassificationInfoList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1AnswerQueryUnderstandingInfoQueryClassificationInfo>;
+  Array<GoogleCloudDiscoveryengineV1AnswerQueryUnderstandingInfoQueryClassificationInfo>;
 export const GoogleCloudDiscoveryengineV1AnswerQueryUnderstandingInfoQueryClassificationInfoList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1AnswerQueryUnderstandingInfoQueryClassificationInfo,
@@ -1018,7 +1020,7 @@ export const GoogleCloudDiscoveryengineV1AnswerCitationSource =
   }) as any as S.Schema<GoogleCloudDiscoveryengineV1AnswerCitationSource>;
 
 export type GoogleCloudDiscoveryengineV1AnswerCitationSourceList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1AnswerCitationSource>;
+  Array<GoogleCloudDiscoveryengineV1AnswerCitationSource>;
 export const GoogleCloudDiscoveryengineV1AnswerCitationSourceList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1AnswerCitationSource,
@@ -1051,7 +1053,7 @@ export const GoogleCloudDiscoveryengineV1AnswerGroundingSupport =
   }) as any as S.Schema<GoogleCloudDiscoveryengineV1AnswerGroundingSupport>;
 
 export type GoogleCloudDiscoveryengineV1AnswerGroundingSupportList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1AnswerGroundingSupport>;
+  Array<GoogleCloudDiscoveryengineV1AnswerGroundingSupport>;
 export const GoogleCloudDiscoveryengineV1AnswerGroundingSupportList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1AnswerGroundingSupport,
@@ -1101,7 +1103,7 @@ export const GoogleCloudDiscoveryengineV1AnswerStepActionObservationSearchResult
   }) as any as S.Schema<GoogleCloudDiscoveryengineV1AnswerStepActionObservationSearchResultChunkInfo>;
 
 export type GoogleCloudDiscoveryengineV1AnswerStepActionObservationSearchResultChunkInfoList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1AnswerStepActionObservationSearchResultChunkInfo>;
+  Array<GoogleCloudDiscoveryengineV1AnswerStepActionObservationSearchResultChunkInfo>;
 export const GoogleCloudDiscoveryengineV1AnswerStepActionObservationSearchResultChunkInfoList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1AnswerStepActionObservationSearchResultChunkInfo,
@@ -1132,7 +1134,7 @@ export const GoogleCloudDiscoveryengineV1AnswerStepActionObservationSearchResult
   }) as any as S.Schema<GoogleCloudDiscoveryengineV1AnswerStepActionObservationSearchResultSnippetInfo>;
 
 export type GoogleCloudDiscoveryengineV1AnswerStepActionObservationSearchResultSnippetInfoList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1AnswerStepActionObservationSearchResultSnippetInfo>;
+  Array<GoogleCloudDiscoveryengineV1AnswerStepActionObservationSearchResultSnippetInfo>;
 export const GoogleCloudDiscoveryengineV1AnswerStepActionObservationSearchResultSnippetInfoList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1AnswerStepActionObservationSearchResultSnippetInfo,
@@ -1172,7 +1174,7 @@ export const GoogleCloudDiscoveryengineV1AnswerStepActionObservationSearchResult
   }) as any as S.Schema<GoogleCloudDiscoveryengineV1AnswerStepActionObservationSearchResult>;
 
 export type GoogleCloudDiscoveryengineV1AnswerStepActionObservationSearchResultList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1AnswerStepActionObservationSearchResult>;
+  Array<GoogleCloudDiscoveryengineV1AnswerStepActionObservationSearchResult>;
 export const GoogleCloudDiscoveryengineV1AnswerStepActionObservationSearchResultList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1AnswerStepActionObservationSearchResult,
@@ -1216,7 +1218,7 @@ export const GoogleCloudDiscoveryengineV1AnswerStepAction =
   }) as any as S.Schema<GoogleCloudDiscoveryengineV1AnswerStepAction>;
 
 export type GoogleCloudDiscoveryengineV1AnswerStepActionList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1AnswerStepAction>;
+  Array<GoogleCloudDiscoveryengineV1AnswerStepAction>;
 export const GoogleCloudDiscoveryengineV1AnswerStepActionList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1AnswerStepAction,
@@ -1225,7 +1227,7 @@ export const GoogleCloudDiscoveryengineV1AnswerStepActionList =
 /** Step information. */
 export interface GoogleCloudDiscoveryengineV1AnswerStep {
   /** The state of the step. */
-  state?: GoogleCloudDiscoveryengineV1AnswerStepStateEnum;
+  state?: GoogleCloudDiscoveryengineV1AnswerStepStateEnum | (string & {});
   /** The description of the step. */
   description?: string;
   /** The thought of the step. */
@@ -1246,7 +1248,7 @@ export const GoogleCloudDiscoveryengineV1AnswerStep = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudDiscoveryengineV1AnswerStep>;
 
 export type GoogleCloudDiscoveryengineV1AnswerStepList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1AnswerStep>;
+  Array<GoogleCloudDiscoveryengineV1AnswerStep>;
 export const GoogleCloudDiscoveryengineV1AnswerStepList = /*@__PURE__*/ S.Array(
   GoogleCloudDiscoveryengineV1AnswerStep,
 ) as any as S.Schema<GoogleCloudDiscoveryengineV1AnswerStepList>;
@@ -1358,7 +1360,7 @@ export const GoogleCloudDiscoveryengineV1AnswerReferenceUnstructuredDocumentInfo
   }) as any as S.Schema<GoogleCloudDiscoveryengineV1AnswerReferenceUnstructuredDocumentInfoChunkContent>;
 
 export type GoogleCloudDiscoveryengineV1AnswerReferenceUnstructuredDocumentInfoChunkContentList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1AnswerReferenceUnstructuredDocumentInfoChunkContent>;
+  Array<GoogleCloudDiscoveryengineV1AnswerReferenceUnstructuredDocumentInfoChunkContent>;
 export const GoogleCloudDiscoveryengineV1AnswerReferenceUnstructuredDocumentInfoChunkContentList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1AnswerReferenceUnstructuredDocumentInfoChunkContent,
@@ -1420,7 +1422,7 @@ export const GoogleCloudDiscoveryengineV1AnswerReference =
   }) as any as S.Schema<GoogleCloudDiscoveryengineV1AnswerReference>;
 
 export type GoogleCloudDiscoveryengineV1AnswerReferenceList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1AnswerReference>;
+  Array<GoogleCloudDiscoveryengineV1AnswerReference>;
 export const GoogleCloudDiscoveryengineV1AnswerReferenceList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1AnswerReference,
@@ -1461,13 +1463,19 @@ export interface GoogleCloudDiscoveryengineV1SafetyRating {
   /** Output only. Indicates whether the content was filtered out because of this rating. */
   blocked?: boolean;
   /** Output only. Harm category. */
-  category?: GoogleCloudDiscoveryengineV1SafetyRatingCategoryEnum;
+  category?:
+    | GoogleCloudDiscoveryengineV1SafetyRatingCategoryEnum
+    | (string & {});
   /** Output only. Harm probability levels in the content. */
-  probability?: GoogleCloudDiscoveryengineV1SafetyRatingProbabilityEnum;
+  probability?:
+    | GoogleCloudDiscoveryengineV1SafetyRatingProbabilityEnum
+    | (string & {});
   /** Output only. Harm probability score. */
   probabilityScore?: number;
   /** Output only. Harm severity levels in the content. */
-  severity?: GoogleCloudDiscoveryengineV1SafetyRatingSeverityEnum;
+  severity?:
+    | GoogleCloudDiscoveryengineV1SafetyRatingSeverityEnum
+    | (string & {});
 }
 export const GoogleCloudDiscoveryengineV1SafetyRating = /*@__PURE__*/ S.suspend(
   () =>
@@ -1490,7 +1498,7 @@ export const GoogleCloudDiscoveryengineV1SafetyRating = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudDiscoveryengineV1SafetyRating>;
 
 export type GoogleCloudDiscoveryengineV1SafetyRatingList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1SafetyRating>;
+  Array<GoogleCloudDiscoveryengineV1SafetyRating>;
 export const GoogleCloudDiscoveryengineV1SafetyRatingList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1SafetyRating,
@@ -1513,7 +1521,10 @@ export const GoogleCloudDiscoveryengineV1AnswerAnswerSkippedReasonsItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudDiscoveryengineV1AnswerAnswerSkippedReasonsItemEnumList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1AnswerAnswerSkippedReasonsItemEnum>;
+  Array<
+    | GoogleCloudDiscoveryengineV1AnswerAnswerSkippedReasonsItemEnum
+    | (string & {})
+  >;
 export const GoogleCloudDiscoveryengineV1AnswerAnswerSkippedReasonsItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1AnswerAnswerSkippedReasonsItemEnum,
@@ -1540,7 +1551,7 @@ export const GoogleCloudDiscoveryengineV1AnswerCitation =
   }) as any as S.Schema<GoogleCloudDiscoveryengineV1AnswerCitation>;
 
 export type GoogleCloudDiscoveryengineV1AnswerCitationList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1AnswerCitation>;
+  Array<GoogleCloudDiscoveryengineV1AnswerCitation>;
 export const GoogleCloudDiscoveryengineV1AnswerCitationList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1AnswerCitation,
@@ -1559,7 +1570,7 @@ export interface GoogleCloudDiscoveryengineV1Answer {
   /** Answer generation steps. */
   steps?: GoogleCloudDiscoveryengineV1AnswerStepList;
   /** The state of the answer generation. */
-  state?: GoogleCloudDiscoveryengineV1AnswerStateEnum;
+  state?: GoogleCloudDiscoveryengineV1AnswerStateEnum | (string & {});
   /** A score in the range of [0, 1] describing how grounded the answer is by the reference chunks. */
   groundingScore?: number;
   /** References. */
@@ -1618,7 +1629,10 @@ export const GoogleCloudDiscoveryengineV1AssistAnswerAssistSkippedReasonsItemEnu
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudDiscoveryengineV1AssistAnswerAssistSkippedReasonsItemEnumList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1AssistAnswerAssistSkippedReasonsItemEnum>;
+  Array<
+    | GoogleCloudDiscoveryengineV1AssistAnswerAssistSkippedReasonsItemEnum
+    | (string & {})
+  >;
 export const GoogleCloudDiscoveryengineV1AssistAnswerAssistSkippedReasonsItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1AssistAnswerAssistSkippedReasonsItemEnum,
@@ -1634,7 +1648,7 @@ export type GoogleCloudDiscoveryengineV1AssistAnswerStateEnum =
 export const GoogleCloudDiscoveryengineV1AssistAnswerStateEnum =
   /*@__PURE__*/ S.String;
 
-export type IntegerList = ReadonlyArray<number>;
+export type IntegerList = Array<number>;
 export const IntegerList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<IntegerList>;
@@ -1667,7 +1681,7 @@ export const GoogleCloudDiscoveryengineV1AssistantGroundedContentTextGroundingMe
   }) as any as S.Schema<GoogleCloudDiscoveryengineV1AssistantGroundedContentTextGroundingMetadataSegment>;
 
 export type GoogleCloudDiscoveryengineV1AssistantGroundedContentTextGroundingMetadataSegmentList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1AssistantGroundedContentTextGroundingMetadataSegment>;
+  Array<GoogleCloudDiscoveryengineV1AssistantGroundedContentTextGroundingMetadataSegment>;
 export const GoogleCloudDiscoveryengineV1AssistantGroundedContentTextGroundingMetadataSegmentList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1AssistantGroundedContentTextGroundingMetadataSegment,
@@ -1692,7 +1706,7 @@ export const GoogleCloudDiscoveryengineV1AssistantGroundedContentTextGroundingMe
   }) as any as S.Schema<GoogleCloudDiscoveryengineV1AssistantGroundedContentTextGroundingMetadataVisualSegment>;
 
 export type GoogleCloudDiscoveryengineV1AssistantGroundedContentTextGroundingMetadataVisualSegmentList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1AssistantGroundedContentTextGroundingMetadataVisualSegment>;
+  Array<GoogleCloudDiscoveryengineV1AssistantGroundedContentTextGroundingMetadataVisualSegment>;
 export const GoogleCloudDiscoveryengineV1AssistantGroundedContentTextGroundingMetadataVisualSegmentList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1AssistantGroundedContentTextGroundingMetadataVisualSegment,
@@ -1709,7 +1723,9 @@ export interface GoogleCloudDiscoveryengineV1AssistantGroundedContentTextGroundi
   pageIdentifier?: string;
   /** URI for the document. It may contain a URL that redirects to the actual website. */
   uri?: string;
-  language?: GoogleCloudDiscoveryengineV1AssistantGroundedContentTextGroundingMetadataReferenceDocumentMetadataLanguageEnum;
+  language?:
+    | GoogleCloudDiscoveryengineV1AssistantGroundedContentTextGroundingMetadataReferenceDocumentMetadataLanguageEnum
+    | (string & {});
   /** Document resource name. */
   document?: string;
   /** Title. */
@@ -1761,7 +1777,7 @@ export const GoogleCloudDiscoveryengineV1AssistantGroundedContentTextGroundingMe
   }) as any as S.Schema<GoogleCloudDiscoveryengineV1AssistantGroundedContentTextGroundingMetadataReference>;
 
 export type GoogleCloudDiscoveryengineV1AssistantGroundedContentTextGroundingMetadataReferenceList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1AssistantGroundedContentTextGroundingMetadataReference>;
+  Array<GoogleCloudDiscoveryengineV1AssistantGroundedContentTextGroundingMetadataReference>;
 export const GoogleCloudDiscoveryengineV1AssistantGroundedContentTextGroundingMetadataReferenceList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1AssistantGroundedContentTextGroundingMetadataReference,
@@ -1853,7 +1869,9 @@ export const GoogleCloudDiscoveryengineV1AssistantContentCodeExecutionResultOutc
 /** Result of executing ExecutableCode. */
 export interface GoogleCloudDiscoveryengineV1AssistantContentCodeExecutionResult {
   /** Required. Outcome of the code execution. */
-  outcome?: GoogleCloudDiscoveryengineV1AssistantContentCodeExecutionResultOutcomeEnum;
+  outcome?:
+    | GoogleCloudDiscoveryengineV1AssistantContentCodeExecutionResultOutcomeEnum
+    | (string & {});
   /** Optional. Contains stdout when code execution is successful, stderr or other description otherwise. */
   output?: string;
 }
@@ -1953,7 +1971,7 @@ export const GoogleCloudDiscoveryengineV1Citation = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudDiscoveryengineV1Citation>;
 
 export type GoogleCloudDiscoveryengineV1CitationList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1Citation>;
+  Array<GoogleCloudDiscoveryengineV1Citation>;
 export const GoogleCloudDiscoveryengineV1CitationList = /*@__PURE__*/ S.Array(
   GoogleCloudDiscoveryengineV1Citation,
 ) as any as S.Schema<GoogleCloudDiscoveryengineV1CitationList>;
@@ -2016,7 +2034,7 @@ export const GoogleCloudDiscoveryengineV1AssistAnswerReply =
   }) as any as S.Schema<GoogleCloudDiscoveryengineV1AssistAnswerReply>;
 
 export type GoogleCloudDiscoveryengineV1AssistAnswerReplyList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1AssistAnswerReply>;
+  Array<GoogleCloudDiscoveryengineV1AssistAnswerReply>;
 export const GoogleCloudDiscoveryengineV1AssistAnswerReplyList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1AssistAnswerReply,
@@ -2037,7 +2055,7 @@ export const GoogleCloudDiscoveryengineV1AssistAnswerCustomerPolicyEnforcementRe
       "GoogleCloudDiscoveryengineV1AssistAnswerCustomerPolicyEnforcementResultBannedPhraseEnforcementResult",
   }) as any as S.Schema<GoogleCloudDiscoveryengineV1AssistAnswerCustomerPolicyEnforcementResultBannedPhraseEnforcementResult>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -2102,7 +2120,7 @@ export const GoogleCloudDiscoveryengineV1AssistAnswerCustomerPolicyEnforcementRe
   }) as any as S.Schema<GoogleCloudDiscoveryengineV1AssistAnswerCustomerPolicyEnforcementResultPolicyEnforcementResult>;
 
 export type GoogleCloudDiscoveryengineV1AssistAnswerCustomerPolicyEnforcementResultPolicyEnforcementResultList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1AssistAnswerCustomerPolicyEnforcementResultPolicyEnforcementResult>;
+  Array<GoogleCloudDiscoveryengineV1AssistAnswerCustomerPolicyEnforcementResultPolicyEnforcementResult>;
 export const GoogleCloudDiscoveryengineV1AssistAnswerCustomerPolicyEnforcementResultPolicyEnforcementResultList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1AssistAnswerCustomerPolicyEnforcementResultPolicyEnforcementResult,
@@ -2118,7 +2136,9 @@ export interface GoogleCloudDiscoveryengineV1AssistAnswerCustomerPolicyEnforceme
   /** Customer policy enforcement results. Populated only if the assist call was skipped due to a policy violation. It contains results from those filters that blocked the processing of the query. */
   policyResults?: GoogleCloudDiscoveryengineV1AssistAnswerCustomerPolicyEnforcementResultPolicyEnforcementResultList;
   /** Final verdict of the customer policy enforcement. If only one policy blocked the processing, the verdict is BLOCK. */
-  verdict?: GoogleCloudDiscoveryengineV1AssistAnswerCustomerPolicyEnforcementResultVerdictEnum;
+  verdict?:
+    | GoogleCloudDiscoveryengineV1AssistAnswerCustomerPolicyEnforcementResultVerdictEnum
+    | (string & {});
 }
 export const GoogleCloudDiscoveryengineV1AssistAnswerCustomerPolicyEnforcementResult =
   /*@__PURE__*/ S.suspend(() =>
@@ -2140,7 +2160,7 @@ export interface GoogleCloudDiscoveryengineV1AssistAnswer {
   /** Reasons for not answering the assist call. */
   assistSkippedReasons?: GoogleCloudDiscoveryengineV1AssistAnswerAssistSkippedReasonsItemEnumList;
   /** State of the answer generation. */
-  state?: GoogleCloudDiscoveryengineV1AssistAnswerStateEnum;
+  state?: GoogleCloudDiscoveryengineV1AssistAnswerStateEnum | (string & {});
   /** Immutable. Identifier. Resource name of the `AssistAnswer`. Format: `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/sessions/{session}/assistAnswers/{assist_answer}` This field must be a UTF-8 encoded string with a length limit of 1024 characters. */
   name?: string;
   /** Replies of the assistant. */
@@ -2197,7 +2217,7 @@ export const GoogleCloudDiscoveryengineV1SessionTurn = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudDiscoveryengineV1SessionTurn>;
 
 export type GoogleCloudDiscoveryengineV1SessionTurnList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1SessionTurn>;
+  Array<GoogleCloudDiscoveryengineV1SessionTurn>;
 export const GoogleCloudDiscoveryengineV1SessionTurnList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1SessionTurn,
@@ -2206,7 +2226,7 @@ export const GoogleCloudDiscoveryengineV1SessionTurnList =
 /** External session proto definition. */
 export interface GoogleCloudDiscoveryengineV1Session {
   /** The state of the session. */
-  state?: GoogleCloudDiscoveryengineV1SessionStateEnum;
+  state?: GoogleCloudDiscoveryengineV1SessionStateEnum | (string & {});
   /** Turns. */
   turns?: GoogleCloudDiscoveryengineV1SessionTurnList;
   /** Output only. The time the session finished. */
@@ -2323,7 +2343,9 @@ export const GoogleCloudDiscoveryengineV1SiteVerificationInfoSiteVerificationSta
 /** Verification information for target sites in advanced site search. */
 export interface GoogleCloudDiscoveryengineV1SiteVerificationInfo {
   /** Site verification state indicating the ownership and validity. */
-  siteVerificationState?: GoogleCloudDiscoveryengineV1SiteVerificationInfoSiteVerificationStateEnum;
+  siteVerificationState?:
+    | GoogleCloudDiscoveryengineV1SiteVerificationInfoSiteVerificationStateEnum
+    | (string & {});
   /** Latest site verification time. */
   verifyTime?: string;
 }
@@ -2405,9 +2427,11 @@ export interface GoogleCloudDiscoveryengineV1TargetSite {
   /** Output only. This is system-generated based on the provided_uri_pattern. */
   generatedUriPattern?: string;
   /** The type of the target site, e.g., whether the site is to be included or excluded. */
-  type?: GoogleCloudDiscoveryengineV1TargetSiteTypeEnum;
+  type?: GoogleCloudDiscoveryengineV1TargetSiteTypeEnum | (string & {});
   /** Output only. Indexing status. */
-  indexingStatus?: GoogleCloudDiscoveryengineV1TargetSiteIndexingStatusEnum;
+  indexingStatus?:
+    | GoogleCloudDiscoveryengineV1TargetSiteIndexingStatusEnum
+    | (string & {});
   /** Output only. The fully qualified resource name of the target site. `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/siteSearchEngine/targetSites/{target_site}` The `target_site_id` is system-generated. */
   name?: string;
 }
@@ -2453,7 +2477,7 @@ export const GoogleCloudDiscoveryengineV1CreateTargetSiteRequest =
   }) as any as S.Schema<GoogleCloudDiscoveryengineV1CreateTargetSiteRequest>;
 
 export type GoogleCloudDiscoveryengineV1CreateTargetSiteRequestList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1CreateTargetSiteRequest>;
+  Array<GoogleCloudDiscoveryengineV1CreateTargetSiteRequest>;
 export const GoogleCloudDiscoveryengineV1CreateTargetSiteRequestList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1CreateTargetSiteRequest,
@@ -2634,7 +2658,7 @@ export const GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponseDocume
   }) as any as S.Schema<GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponseDocumentMetadata>;
 
 export type GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponseDocumentMetadataList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponseDocumentMetadata>;
+  Array<GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponseDocumentMetadata>;
 export const GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponseDocumentMetadataList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponseDocumentMetadata,
@@ -2707,7 +2731,9 @@ export interface GoogleCloudDiscoveryengineV1UserLicense {
   /** Optional. The full resource name of the Subscription(LicenseConfig) assigned to the user. */
   licenseConfig?: string;
   /** Output only. License assignment state of the user. If the user is assigned with a license config, the user login will be assigned with the license; If the user's license assignment state is unassigned or unspecified, no license config will be associated to the user; */
-  licenseAssignmentState?: GoogleCloudDiscoveryengineV1UserLicenseLicenseAssignmentStateEnum;
+  licenseAssignmentState?:
+    | GoogleCloudDiscoveryengineV1UserLicenseLicenseAssignmentStateEnum
+    | (string & {});
   /** Output only. User update timestamp. */
   updateTime?: string;
 }
@@ -2729,7 +2755,7 @@ export const GoogleCloudDiscoveryengineV1UserLicense = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudDiscoveryengineV1UserLicense>;
 
 export type GoogleCloudDiscoveryengineV1UserLicenseList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1UserLicense>;
+  Array<GoogleCloudDiscoveryengineV1UserLicense>;
 export const GoogleCloudDiscoveryengineV1UserLicenseList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1UserLicense,
@@ -2949,7 +2975,7 @@ export const A2aV1Part = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "A2aV1Part" }) as any as S.Schema<A2aV1Part>;
 
-export type A2aV1PartList = ReadonlyArray<A2aV1Part>;
+export type A2aV1PartList = Array<A2aV1Part>;
 export const A2aV1PartList = /*@__PURE__*/ S.Array(
   A2aV1Part,
 ) as any as S.Schema<A2aV1PartList>;
@@ -2973,7 +2999,7 @@ export interface A2aV1Message {
   /** The URIs of extensions that are present or contributed to this Message. */
   extensions?: StringList;
   /** A role for the message. */
-  role?: A2aV1MessageRoleEnum;
+  role?: A2aV1MessageRoleEnum | (string & {});
   /** protolint:enable REPEATED_FIELD_NAMES_PLURALIZED Any optional metadata to provide along with the message. */
   metadata?: DocumentMap;
 }
@@ -2989,7 +3015,7 @@ export const A2aV1Message = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "A2aV1Message" }) as any as S.Schema<A2aV1Message>;
 
-export type A2aV1MessageList = ReadonlyArray<A2aV1Message>;
+export type A2aV1MessageList = Array<A2aV1Message>;
 export const A2aV1MessageList = /*@__PURE__*/ S.Array(
   A2aV1Message,
 ) as any as S.Schema<A2aV1MessageList>;
@@ -3020,7 +3046,7 @@ export const A2aV1Artifact = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "A2aV1Artifact" }) as any as S.Schema<A2aV1Artifact>;
 
-export type A2aV1ArtifactList = ReadonlyArray<A2aV1Artifact>;
+export type A2aV1ArtifactList = Array<A2aV1Artifact>;
 export const A2aV1ArtifactList = /*@__PURE__*/ S.Array(
   A2aV1Artifact,
 ) as any as S.Schema<A2aV1ArtifactList>;
@@ -3171,7 +3197,7 @@ export const GoogleCloudDiscoveryengineV1GroundingFact =
   }) as any as S.Schema<GoogleCloudDiscoveryengineV1GroundingFact>;
 
 export type GoogleCloudDiscoveryengineV1GroundingFactList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1GroundingFact>;
+  Array<GoogleCloudDiscoveryengineV1GroundingFact>;
 export const GoogleCloudDiscoveryengineV1GroundingFactList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1GroundingFact,
@@ -3257,7 +3283,7 @@ export const GoogleCloudDiscoveryengineV1CheckGroundingResponseCheckGroundingFac
   }) as any as S.Schema<GoogleCloudDiscoveryengineV1CheckGroundingResponseCheckGroundingFactChunk>;
 
 export type GoogleCloudDiscoveryengineV1CheckGroundingResponseCheckGroundingFactChunkList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1CheckGroundingResponseCheckGroundingFactChunk>;
+  Array<GoogleCloudDiscoveryengineV1CheckGroundingResponseCheckGroundingFactChunk>;
 export const GoogleCloudDiscoveryengineV1CheckGroundingResponseCheckGroundingFactChunkList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1CheckGroundingResponseCheckGroundingFactChunk,
@@ -3293,7 +3319,7 @@ export const GoogleCloudDiscoveryengineV1CheckGroundingResponseClaim =
   }) as any as S.Schema<GoogleCloudDiscoveryengineV1CheckGroundingResponseClaim>;
 
 export type GoogleCloudDiscoveryengineV1CheckGroundingResponseClaimList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1CheckGroundingResponseClaim>;
+  Array<GoogleCloudDiscoveryengineV1CheckGroundingResponseClaim>;
 export const GoogleCloudDiscoveryengineV1CheckGroundingResponseClaimList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1CheckGroundingResponseClaim,
@@ -3332,7 +3358,7 @@ export const GoogleCloudDiscoveryengineV1FactChunk = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudDiscoveryengineV1FactChunk>;
 
 export type GoogleCloudDiscoveryengineV1FactChunkList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1FactChunk>;
+  Array<GoogleCloudDiscoveryengineV1FactChunk>;
 export const GoogleCloudDiscoveryengineV1FactChunkList = /*@__PURE__*/ S.Array(
   GoogleCloudDiscoveryengineV1FactChunk,
 ) as any as S.Schema<GoogleCloudDiscoveryengineV1FactChunkList>;
@@ -3518,7 +3544,7 @@ export const GoogleCloudDiscoveryengineV1CompleteQueryResponseQuerySuggestion =
   }) as any as S.Schema<GoogleCloudDiscoveryengineV1CompleteQueryResponseQuerySuggestion>;
 
 export type GoogleCloudDiscoveryengineV1CompleteQueryResponseQuerySuggestionList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1CompleteQueryResponseQuerySuggestion>;
+  Array<GoogleCloudDiscoveryengineV1CompleteQueryResponseQuerySuggestion>;
 export const GoogleCloudDiscoveryengineV1CompleteQueryResponseQuerySuggestionList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1CompleteQueryResponseQuerySuggestion,
@@ -3554,7 +3580,7 @@ export const GoogleCloudDiscoveryengineV1AdvancedCompleteQueryRequestSuggestionT
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudDiscoveryengineV1AdvancedCompleteQueryRequestSuggestionTypesItemEnumList =
-  ReadonlyArray<
+  Array<
     | GoogleCloudDiscoveryengineV1AdvancedCompleteQueryRequestSuggestionTypesItemEnum
     | (string & {})
   >;
@@ -3582,7 +3608,7 @@ export const GoogleCloudDiscoveryengineV1AdvancedCompleteQueryRequestBoostSpecCo
   }) as any as S.Schema<GoogleCloudDiscoveryengineV1AdvancedCompleteQueryRequestBoostSpecConditionBoostSpec>;
 
 export type GoogleCloudDiscoveryengineV1AdvancedCompleteQueryRequestBoostSpecConditionBoostSpecList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1AdvancedCompleteQueryRequestBoostSpecConditionBoostSpec>;
+  Array<GoogleCloudDiscoveryengineV1AdvancedCompleteQueryRequestBoostSpecConditionBoostSpec>;
 export const GoogleCloudDiscoveryengineV1AdvancedCompleteQueryRequestBoostSpecConditionBoostSpecList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1AdvancedCompleteQueryRequestBoostSpecConditionBoostSpec,
@@ -3696,7 +3722,7 @@ export const GoogleCloudDiscoveryengineV1AdvancedCompleteQueryRequestSuggestionT
   }) as any as S.Schema<GoogleCloudDiscoveryengineV1AdvancedCompleteQueryRequestSuggestionTypeSpec>;
 
 export type GoogleCloudDiscoveryengineV1AdvancedCompleteQueryRequestSuggestionTypeSpecList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1AdvancedCompleteQueryRequestSuggestionTypeSpec>;
+  Array<GoogleCloudDiscoveryengineV1AdvancedCompleteQueryRequestSuggestionTypeSpec>;
 export const GoogleCloudDiscoveryengineV1AdvancedCompleteQueryRequestSuggestionTypeSpecList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1AdvancedCompleteQueryRequestSuggestionTypeSpec,
@@ -3798,7 +3824,7 @@ export const GoogleCloudDiscoveryengineV1AdvancedCompleteQueryResponseQuerySugge
   }) as any as S.Schema<GoogleCloudDiscoveryengineV1AdvancedCompleteQueryResponseQuerySuggestion>;
 
 export type GoogleCloudDiscoveryengineV1AdvancedCompleteQueryResponseQuerySuggestionList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1AdvancedCompleteQueryResponseQuerySuggestion>;
+  Array<GoogleCloudDiscoveryengineV1AdvancedCompleteQueryResponseQuerySuggestion>;
 export const GoogleCloudDiscoveryengineV1AdvancedCompleteQueryResponseQuerySuggestionList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1AdvancedCompleteQueryResponseQuerySuggestion,
@@ -3826,7 +3852,7 @@ export const GoogleCloudDiscoveryengineV1AdvancedCompleteQueryResponseRecentSear
   }) as any as S.Schema<GoogleCloudDiscoveryengineV1AdvancedCompleteQueryResponseRecentSearchSuggestion>;
 
 export type GoogleCloudDiscoveryengineV1AdvancedCompleteQueryResponseRecentSearchSuggestionList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1AdvancedCompleteQueryResponseRecentSearchSuggestion>;
+  Array<GoogleCloudDiscoveryengineV1AdvancedCompleteQueryResponseRecentSearchSuggestion>;
 export const GoogleCloudDiscoveryengineV1AdvancedCompleteQueryResponseRecentSearchSuggestionList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1AdvancedCompleteQueryResponseRecentSearchSuggestion,
@@ -3853,7 +3879,7 @@ export const GoogleCloudDiscoveryengineV1Principal = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudDiscoveryengineV1Principal>;
 
 export type GoogleCloudDiscoveryengineV1PrincipalList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1Principal>;
+  Array<GoogleCloudDiscoveryengineV1Principal>;
 export const GoogleCloudDiscoveryengineV1PrincipalList = /*@__PURE__*/ S.Array(
   GoogleCloudDiscoveryengineV1Principal,
 ) as any as S.Schema<GoogleCloudDiscoveryengineV1PrincipalList>;
@@ -3876,7 +3902,7 @@ export const GoogleCloudDiscoveryengineV1DocumentAclInfoAccessRestriction =
   }) as any as S.Schema<GoogleCloudDiscoveryengineV1DocumentAclInfoAccessRestriction>;
 
 export type GoogleCloudDiscoveryengineV1DocumentAclInfoAccessRestrictionList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1DocumentAclInfoAccessRestriction>;
+  Array<GoogleCloudDiscoveryengineV1DocumentAclInfoAccessRestriction>;
 export const GoogleCloudDiscoveryengineV1DocumentAclInfoAccessRestrictionList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1DocumentAclInfoAccessRestriction,
@@ -3918,7 +3944,7 @@ export const GoogleCloudDiscoveryengineV1DocumentContent =
     identifier: "GoogleCloudDiscoveryengineV1DocumentContent",
   }) as any as S.Schema<GoogleCloudDiscoveryengineV1DocumentContent>;
 
-export type GoogleRpcStatusList = ReadonlyArray<GoogleRpcStatus>;
+export type GoogleRpcStatusList = Array<GoogleRpcStatus>;
 export const GoogleRpcStatusList = /*@__PURE__*/ S.Array(
   GoogleRpcStatus,
 ) as any as S.Schema<GoogleRpcStatusList>;
@@ -4028,7 +4054,7 @@ export const GoogleCloudDiscoveryengineV1AdvancedCompleteQueryResponseContentSug
   }) as any as S.Schema<GoogleCloudDiscoveryengineV1AdvancedCompleteQueryResponseContentSuggestion>;
 
 export type GoogleCloudDiscoveryengineV1AdvancedCompleteQueryResponseContentSuggestionList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1AdvancedCompleteQueryResponseContentSuggestion>;
+  Array<GoogleCloudDiscoveryengineV1AdvancedCompleteQueryResponseContentSuggestion>;
 export const GoogleCloudDiscoveryengineV1AdvancedCompleteQueryResponseContentSuggestionList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1AdvancedCompleteQueryResponseContentSuggestion,
@@ -4075,7 +4101,7 @@ export const GoogleCloudDiscoveryengineV1AdvancedCompleteQueryResponsePersonSugg
   }) as any as S.Schema<GoogleCloudDiscoveryengineV1AdvancedCompleteQueryResponsePersonSuggestion>;
 
 export type GoogleCloudDiscoveryengineV1AdvancedCompleteQueryResponsePersonSuggestionList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1AdvancedCompleteQueryResponsePersonSuggestion>;
+  Array<GoogleCloudDiscoveryengineV1AdvancedCompleteQueryResponsePersonSuggestion>;
 export const GoogleCloudDiscoveryengineV1AdvancedCompleteQueryResponsePersonSuggestionList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1AdvancedCompleteQueryResponsePersonSuggestion,
@@ -4292,7 +4318,10 @@ export const GoogleCloudDiscoveryengineV1SearchResponseSummarySummarySkippedReas
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudDiscoveryengineV1SearchResponseSummarySummarySkippedReasonsItemEnumList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1SearchResponseSummarySummarySkippedReasonsItemEnum>;
+  Array<
+    | GoogleCloudDiscoveryengineV1SearchResponseSummarySummarySkippedReasonsItemEnum
+    | (string & {})
+  >;
 export const GoogleCloudDiscoveryengineV1SearchResponseSummarySummarySkippedReasonsItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1SearchResponseSummarySummarySkippedReasonsItemEnum,
@@ -4314,7 +4343,7 @@ export const GoogleCloudDiscoveryengineV1SearchResponseSummaryCitationSource =
   }) as any as S.Schema<GoogleCloudDiscoveryengineV1SearchResponseSummaryCitationSource>;
 
 export type GoogleCloudDiscoveryengineV1SearchResponseSummaryCitationSourceList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1SearchResponseSummaryCitationSource>;
+  Array<GoogleCloudDiscoveryengineV1SearchResponseSummaryCitationSource>;
 export const GoogleCloudDiscoveryengineV1SearchResponseSummaryCitationSourceList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1SearchResponseSummaryCitationSource,
@@ -4343,7 +4372,7 @@ export const GoogleCloudDiscoveryengineV1SearchResponseSummaryCitation =
   }) as any as S.Schema<GoogleCloudDiscoveryengineV1SearchResponseSummaryCitation>;
 
 export type GoogleCloudDiscoveryengineV1SearchResponseSummaryCitationList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1SearchResponseSummaryCitation>;
+  Array<GoogleCloudDiscoveryengineV1SearchResponseSummaryCitation>;
 export const GoogleCloudDiscoveryengineV1SearchResponseSummaryCitationList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1SearchResponseSummaryCitation,
@@ -4385,7 +4414,7 @@ export const GoogleCloudDiscoveryengineV1SearchResponseSummaryReferenceChunkCont
   }) as any as S.Schema<GoogleCloudDiscoveryengineV1SearchResponseSummaryReferenceChunkContent>;
 
 export type GoogleCloudDiscoveryengineV1SearchResponseSummaryReferenceChunkContentList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1SearchResponseSummaryReferenceChunkContent>;
+  Array<GoogleCloudDiscoveryengineV1SearchResponseSummaryReferenceChunkContent>;
 export const GoogleCloudDiscoveryengineV1SearchResponseSummaryReferenceChunkContentList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1SearchResponseSummaryReferenceChunkContent,
@@ -4417,7 +4446,7 @@ export const GoogleCloudDiscoveryengineV1SearchResponseSummaryReference =
   }) as any as S.Schema<GoogleCloudDiscoveryengineV1SearchResponseSummaryReference>;
 
 export type GoogleCloudDiscoveryengineV1SearchResponseSummaryReferenceList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1SearchResponseSummaryReference>;
+  Array<GoogleCloudDiscoveryengineV1SearchResponseSummaryReference>;
 export const GoogleCloudDiscoveryengineV1SearchResponseSummaryReferenceList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1SearchResponseSummaryReference,
@@ -4448,7 +4477,7 @@ export const GoogleCloudDiscoveryengineV1SearchResponseSummarySummaryWithMetadat
       "GoogleCloudDiscoveryengineV1SearchResponseSummarySummaryWithMetadata",
   }) as any as S.Schema<GoogleCloudDiscoveryengineV1SearchResponseSummarySummaryWithMetadata>;
 
-export type DoubleList = ReadonlyArray<number>;
+export type DoubleList = Array<number>;
 export const DoubleList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<DoubleList>;
@@ -4568,7 +4597,7 @@ export const GoogleCloudDiscoveryengineV1ConversationMessage =
   }) as any as S.Schema<GoogleCloudDiscoveryengineV1ConversationMessage>;
 
 export type GoogleCloudDiscoveryengineV1ConversationMessageList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1ConversationMessage>;
+  Array<GoogleCloudDiscoveryengineV1ConversationMessage>;
 export const GoogleCloudDiscoveryengineV1ConversationMessageList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1ConversationMessage,
@@ -4594,7 +4623,7 @@ export interface GoogleCloudDiscoveryengineV1Conversation {
   /** Output only. The time the conversation finished. */
   endTime?: string;
   /** The state of the Conversation. */
-  state?: GoogleCloudDiscoveryengineV1ConversationStateEnum;
+  state?: GoogleCloudDiscoveryengineV1ConversationStateEnum | (string & {});
 }
 export const GoogleCloudDiscoveryengineV1Conversation = /*@__PURE__*/ S.suspend(
   () =>
@@ -4693,7 +4722,7 @@ export const GoogleCloudDiscoveryengineV1SearchResponseSearchResultRankSignalsCu
   }) as any as S.Schema<GoogleCloudDiscoveryengineV1SearchResponseSearchResultRankSignalsCustomSignal>;
 
 export type GoogleCloudDiscoveryengineV1SearchResponseSearchResultRankSignalsCustomSignalList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1SearchResponseSearchResultRankSignalsCustomSignal>;
+  Array<GoogleCloudDiscoveryengineV1SearchResponseSearchResultRankSignalsCustomSignal>;
 export const GoogleCloudDiscoveryengineV1SearchResponseSearchResultRankSignalsCustomSignalList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1SearchResponseSearchResultRankSignalsCustomSignal,
@@ -4744,7 +4773,7 @@ export const GoogleCloudDiscoveryengineV1SearchResponseSearchResultRankSignals =
   }) as any as S.Schema<GoogleCloudDiscoveryengineV1SearchResponseSearchResultRankSignals>;
 
 export type GoogleCloudDiscoveryengineV1ChunkList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1Chunk>;
+  Array<GoogleCloudDiscoveryengineV1Chunk>;
 export const GoogleCloudDiscoveryengineV1ChunkList = /*@__PURE__*/ S.Array(
   S.suspend(() => GoogleCloudDiscoveryengineV1Chunk),
 ) as any as S.Schema<GoogleCloudDiscoveryengineV1ChunkList>;
@@ -4853,7 +4882,7 @@ export const GoogleCloudDiscoveryengineV1ChunkAnnotationMetadata =
   }) as any as S.Schema<GoogleCloudDiscoveryengineV1ChunkAnnotationMetadata>;
 
 export type GoogleCloudDiscoveryengineV1ChunkAnnotationMetadataList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1ChunkAnnotationMetadata>;
+  Array<GoogleCloudDiscoveryengineV1ChunkAnnotationMetadata>;
 export const GoogleCloudDiscoveryengineV1ChunkAnnotationMetadataList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1ChunkAnnotationMetadata,
@@ -4957,7 +4986,7 @@ export const GoogleCloudDiscoveryengineV1SearchResponseSearchResult =
   }) as any as S.Schema<GoogleCloudDiscoveryengineV1SearchResponseSearchResult>;
 
 export type GoogleCloudDiscoveryengineV1SearchResponseSearchResultList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1SearchResponseSearchResult>;
+  Array<GoogleCloudDiscoveryengineV1SearchResponseSearchResult>;
 export const GoogleCloudDiscoveryengineV1SearchResponseSearchResultList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1SearchResponseSearchResult,
@@ -5059,7 +5088,7 @@ export interface GoogleCloudDiscoveryengineV1WorkspaceConfig {
   /** Optional. The super admin service account for the workspace that will be used for access token generation. For now we only use it for Native Google Drive connector data ingestion. */
   superAdminServiceAccount?: string;
   /** The Google Workspace data source. */
-  type?: GoogleCloudDiscoveryengineV1WorkspaceConfigTypeEnum;
+  type?: GoogleCloudDiscoveryengineV1WorkspaceConfigTypeEnum | (string & {});
   /** Optional. The super admin email address for the workspace that will be used for access token generation. For now we only use it for Native Google Drive connector data ingestion. */
   superAdminEmailAddress?: string;
 }
@@ -5083,7 +5112,9 @@ export const GoogleCloudDiscoveryengineV1NaturalLanguageQueryUnderstandingConfig
 /** Configuration for Natural Language Query Understanding. */
 export interface GoogleCloudDiscoveryengineV1NaturalLanguageQueryUnderstandingConfig {
   /** Mode of Natural Language Query Understanding. If this field is unset, the behavior defaults to NaturalLanguageQueryUnderstandingConfig.Mode.DISABLED. */
-  mode?: GoogleCloudDiscoveryengineV1NaturalLanguageQueryUnderstandingConfigModeEnum;
+  mode?:
+    | GoogleCloudDiscoveryengineV1NaturalLanguageQueryUnderstandingConfigModeEnum
+    | (string & {});
 }
 export const GoogleCloudDiscoveryengineV1NaturalLanguageQueryUnderstandingConfig =
   /*@__PURE__*/ S.suspend(() =>
@@ -5108,7 +5139,9 @@ export const GoogleCloudDiscoveryengineV1DataStoreSolutionTypesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudDiscoveryengineV1DataStoreSolutionTypesItemEnumList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1DataStoreSolutionTypesItemEnum>;
+  Array<
+    GoogleCloudDiscoveryengineV1DataStoreSolutionTypesItemEnum | (string & {})
+  >;
 export const GoogleCloudDiscoveryengineV1DataStoreSolutionTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1DataStoreSolutionTypesItemEnum,
@@ -5167,7 +5200,7 @@ export const GoogleCloudDiscoveryengineV1SingleRegionKey =
   }) as any as S.Schema<GoogleCloudDiscoveryengineV1SingleRegionKey>;
 
 export type GoogleCloudDiscoveryengineV1SingleRegionKeyList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1SingleRegionKey>;
+  Array<GoogleCloudDiscoveryengineV1SingleRegionKey>;
 export const GoogleCloudDiscoveryengineV1SingleRegionKeyList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1SingleRegionKey,
@@ -5188,7 +5221,7 @@ export interface GoogleCloudDiscoveryengineV1CmekConfig {
   /** Output only. KMS key version resource name which will be used to encrypt resources `/cryptoKeyVersions/{keyVersion}`. */
   kmsKeyVersion?: string;
   /** Output only. The states of the CmekConfig. */
-  state?: GoogleCloudDiscoveryengineV1CmekConfigStateEnum;
+  state?: GoogleCloudDiscoveryengineV1CmekConfigStateEnum | (string & {});
   /** Output only. The timestamp of the last key rotation. */
   lastRotationTimestampMicros?: string;
   /** Optional. Single-regional CMEKs that are required for some VAIS features. */
@@ -5196,7 +5229,9 @@ export interface GoogleCloudDiscoveryengineV1CmekConfig {
   /** Output only. The default CmekConfig for the Customer. */
   isDefault?: boolean;
   /** Output only. Whether the NotebookLM Corpus is ready to be used. */
-  notebooklmState?: GoogleCloudDiscoveryengineV1CmekConfigNotebooklmStateEnum;
+  notebooklmState?:
+    | GoogleCloudDiscoveryengineV1CmekConfigNotebooklmStateEnum
+    | (string & {});
   /** Required. The name of the CmekConfig of the form `projects/{project}/locations/{location}/cmekConfig` or `projects/{project}/locations/{location}/cmekConfigs/{cmek_config}`. */
   name?: string;
 }
@@ -5531,7 +5566,9 @@ export interface GoogleCloudDiscoveryengineV1DataStoreFederatedSearchConfigAlloy
   /** Required. Database password. If auth_mode = END_USER_ACCOUNT, it can be unset. In that case, the password will be inferred on the AlloyDB side, based on the authenticated user. */
   password?: string;
   /** Optional. Auth mode. */
-  authMode?: GoogleCloudDiscoveryengineV1DataStoreFederatedSearchConfigAlloyDbConfigAlloyDbConnectionConfigAuthModeEnum;
+  authMode?:
+    | GoogleCloudDiscoveryengineV1DataStoreFederatedSearchConfigAlloyDbConfigAlloyDbConnectionConfigAuthModeEnum
+    | (string & {});
   /** Required. The AlloyDB database to connect to. */
   database?: string;
   /** Required. The AlloyDB instance to connect to. */
@@ -5639,7 +5676,9 @@ export interface GoogleCloudDiscoveryengineV1DataStore {
   /** The solutions that the data store enrolls. Available solutions for each industry_vertical: * `MEDIA`: `SOLUTION_TYPE_RECOMMENDATION` and `SOLUTION_TYPE_SEARCH`. * `SITE_SEARCH`: `SOLUTION_TYPE_SEARCH` is automatically enrolled. Other solutions cannot be enrolled. */
   solutionTypes?: GoogleCloudDiscoveryengineV1DataStoreSolutionTypesItemEnumList;
   /** Optional. Configuration for configurable billing approach. See */
-  configurableBillingApproach?: GoogleCloudDiscoveryengineV1DataStoreConfigurableBillingApproachEnum;
+  configurableBillingApproach?:
+    | GoogleCloudDiscoveryengineV1DataStoreConfigurableBillingApproachEnum
+    | (string & {});
   /** Optional. If set, this DataStore is an Infobot FAQ DataStore. */
   isInfobotFaqDataStore?: boolean;
   /** Immutable. The fully qualified resource name of the associated IdentityMappingStore. This field can only be set for acl_enabled DataStores with `THIRD_PARTY` or `GSUITE` IdP. Format: `projects/{project}/locations/{location}/identityMappingStores/{identity_mapping_store}`. */
@@ -5649,7 +5688,9 @@ export interface GoogleCloudDiscoveryengineV1DataStore {
   /** Output only. CMEK-related information for the DataStore. */
   cmekConfig?: GoogleCloudDiscoveryengineV1CmekConfig;
   /** Immutable. The content config of the data store. If this field is unset, the server behavior defaults to ContentConfig.NO_CONTENT. */
-  contentConfig?: GoogleCloudDiscoveryengineV1DataStoreContentConfigEnum;
+  contentConfig?:
+    | GoogleCloudDiscoveryengineV1DataStoreContentConfigEnum
+    | (string & {});
   /** Immutable. Identifier. The full resource name of the data store. Format: `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`. This field must be a UTF-8 encoded string with a length limit of 1024 characters. */
   name?: string;
   /** Optional. Stores serving config at DataStore level. */
@@ -5667,7 +5708,9 @@ export interface GoogleCloudDiscoveryengineV1DataStore {
   /** The start schema to use for this DataStore when provisioning it. If unset, a default vertical specialized schema will be used. This field is only used by CreateDataStore API, and will be ignored if used in other APIs. This field will be omitted from all API responses including CreateDataStore API. To retrieve a schema of a DataStore, use SchemaService.GetSchema API instead. The provided schema will be validated against certain rules on schema. Learn more from [this doc](https://cloud.google.com/generative-ai-app-builder/docs/provide-schema). */
   startingSchema?: GoogleCloudDiscoveryengineV1Schema;
   /** Immutable. The industry vertical that the data store registers. */
-  industryVertical?: GoogleCloudDiscoveryengineV1DataStoreIndustryVerticalEnum;
+  industryVertical?:
+    | GoogleCloudDiscoveryengineV1DataStoreIndustryVerticalEnum
+    | (string & {});
   /** Optional. If set, this DataStore is a federated search DataStore. */
   federatedSearchConfig?: GoogleCloudDiscoveryengineV1DataStoreFederatedSearchConfig;
 }
@@ -5818,7 +5861,7 @@ export const GoogleCloudDiscoveryengineV1ControlBoostActionInterpolationBoostSpe
   }) as any as S.Schema<GoogleCloudDiscoveryengineV1ControlBoostActionInterpolationBoostSpecControlPoint>;
 
 export type GoogleCloudDiscoveryengineV1ControlBoostActionInterpolationBoostSpecControlPointList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1ControlBoostActionInterpolationBoostSpecControlPoint>;
+  Array<GoogleCloudDiscoveryengineV1ControlBoostActionInterpolationBoostSpecControlPoint>;
 export const GoogleCloudDiscoveryengineV1ControlBoostActionInterpolationBoostSpecControlPointList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1ControlBoostActionInterpolationBoostSpecControlPoint,
@@ -5827,9 +5870,13 @@ export const GoogleCloudDiscoveryengineV1ControlBoostActionInterpolationBoostSpe
 /** Specification for custom ranking based on customer specified attribute value. It provides more controls for customized ranking than the simple (condition, boost) combination above. */
 export interface GoogleCloudDiscoveryengineV1ControlBoostActionInterpolationBoostSpec {
   /** Optional. The attribute type to be used to determine the boost amount. The attribute value can be derived from the field value of the specified field_name. In the case of numerical it is straightforward i.e. attribute_value = numerical_field_value. In the case of freshness however, attribute_value = (time.now() - datetime_field_value). */
-  attributeType?: GoogleCloudDiscoveryengineV1ControlBoostActionInterpolationBoostSpecAttributeTypeEnum;
+  attributeType?:
+    | GoogleCloudDiscoveryengineV1ControlBoostActionInterpolationBoostSpecAttributeTypeEnum
+    | (string & {});
   /** Optional. The interpolation type to be applied to connect the control points listed below. */
-  interpolationType?: GoogleCloudDiscoveryengineV1ControlBoostActionInterpolationBoostSpecInterpolationTypeEnum;
+  interpolationType?:
+    | GoogleCloudDiscoveryengineV1ControlBoostActionInterpolationBoostSpecInterpolationTypeEnum
+    | (string & {});
   /** Optional. The name of the field whose value will be used to determine the boost amount. */
   fieldName?: string;
   /** Optional. The control points used to define the curve. The monotonic function (defined through the interpolation_type above) passes through the control points listed here. */
@@ -5889,8 +5936,9 @@ export type GoogleCloudDiscoveryengineV1ControlUseCasesItemEnum =
 export const GoogleCloudDiscoveryengineV1ControlUseCasesItemEnum =
   /*@__PURE__*/ S.String;
 
-export type GoogleCloudDiscoveryengineV1ControlUseCasesItemEnumList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1ControlUseCasesItemEnum>;
+export type GoogleCloudDiscoveryengineV1ControlUseCasesItemEnumList = Array<
+  GoogleCloudDiscoveryengineV1ControlUseCasesItemEnum | (string & {})
+>;
 export const GoogleCloudDiscoveryengineV1ControlUseCasesItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1ControlUseCasesItemEnum,
@@ -5928,7 +5976,7 @@ export const GoogleCloudDiscoveryengineV1ConditionQueryTerm =
   }) as any as S.Schema<GoogleCloudDiscoveryengineV1ConditionQueryTerm>;
 
 export type GoogleCloudDiscoveryengineV1ConditionQueryTermList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1ConditionQueryTerm>;
+  Array<GoogleCloudDiscoveryengineV1ConditionQueryTerm>;
 export const GoogleCloudDiscoveryengineV1ConditionQueryTermList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1ConditionQueryTerm,
@@ -5952,7 +6000,7 @@ export const GoogleCloudDiscoveryengineV1ConditionTimeRange =
   }) as any as S.Schema<GoogleCloudDiscoveryengineV1ConditionTimeRange>;
 
 export type GoogleCloudDiscoveryengineV1ConditionTimeRangeList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1ConditionTimeRange>;
+  Array<GoogleCloudDiscoveryengineV1ConditionTimeRange>;
 export const GoogleCloudDiscoveryengineV1ConditionTimeRangeList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1ConditionTimeRange,
@@ -5983,7 +6031,7 @@ export const GoogleCloudDiscoveryengineV1Condition = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudDiscoveryengineV1Condition>;
 
 export type GoogleCloudDiscoveryengineV1ConditionList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1Condition>;
+  Array<GoogleCloudDiscoveryengineV1Condition>;
 export const GoogleCloudDiscoveryengineV1ConditionList = /*@__PURE__*/ S.Array(
   GoogleCloudDiscoveryengineV1Condition,
 ) as any as S.Schema<GoogleCloudDiscoveryengineV1ConditionList>;
@@ -6096,7 +6144,9 @@ export interface GoogleCloudDiscoveryengineV1Control {
   /** Output only. List of all ServingConfig IDs this control is attached to. May take up to 10 minutes to update after changes. */
   associatedServingConfigIds?: StringList;
   /** Required. Immutable. What solution the control belongs to. Must be compatible with vertical of resource. Otherwise an INVALID ARGUMENT error is thrown. */
-  solutionType?: GoogleCloudDiscoveryengineV1ControlSolutionTypeEnum;
+  solutionType?:
+    | GoogleCloudDiscoveryengineV1ControlSolutionTypeEnum
+    | (string & {});
   /** Promote certain links based on predefined trigger queries. */
   promoteAction?: GoogleCloudDiscoveryengineV1ControlPromoteAction;
   /** Defines a filter-type control Currently not supported by Recommendation */
@@ -6281,7 +6331,9 @@ export interface GoogleCloudDiscoveryengineV1SearchRequestContentSearchSpec {
   /** If there is no extractive_content_spec provided, there will be no extractive answer in the search response. */
   extractiveContentSpec?: GoogleCloudDiscoveryengineV1SearchRequestContentSearchSpecExtractiveContentSpec;
   /** Specifies the search result mode. If unspecified, the search result mode defaults to `DOCUMENTS`. */
-  searchResultMode?: GoogleCloudDiscoveryengineV1SearchRequestContentSearchSpecSearchResultModeEnum;
+  searchResultMode?:
+    | GoogleCloudDiscoveryengineV1SearchRequestContentSearchSpecSearchResultModeEnum
+    | (string & {});
   /** If `summarySpec` is not specified, summaries are not included in the search response. */
   summarySpec?: GoogleCloudDiscoveryengineV1SearchRequestContentSearchSpecSummarySpec;
   /** If `snippetSpec` is not specified, snippets are not included in the search response. */
@@ -6431,7 +6483,9 @@ export interface GoogleCloudDiscoveryengineV1ServingConfig {
   /** Boost controls to use in serving path. All triggered boost controls will be applied. Boost controls must be in the same data store as the serving config. Maximum of 20 boost controls. */
   boostControlIds?: StringList;
   /** Required. Immutable. Specifies the solution type that a serving config can be associated with. */
-  solutionType?: GoogleCloudDiscoveryengineV1ServingConfigSolutionTypeEnum;
+  solutionType?:
+    | GoogleCloudDiscoveryengineV1ServingConfigSolutionTypeEnum
+    | (string & {});
   /** The id of the model to use at serving time. Currently only RecommendationModels are supported. Can be changed but only to a compatible model (e.g. others-you-may-like CTR to others-you-may-like CVR). Required when SolutionType is SOLUTION_TYPE_RECOMMENDATION. */
   modelId?: string;
   /** Condition ignore specifications. If multiple ignore conditions match, all matching ignore controls in the list will execute. Order does not matter. Maximum number of specifications is 100. */
@@ -6699,7 +6753,9 @@ export interface GoogleCloudDiscoveryengineV1EngineMediaRecommendationEngineConf
   /** The optimization objective. e.g., `cvr`. This field together with optimization_objective describe engine metadata to use to control engine training and serving. Currently supported values: `ctr`, `cvr`. If not specified, we choose default based on engine type. Default depends on type of recommendation: `recommended-for-you` => `ctr` `others-you-may-like` => `ctr` */
   optimizationObjective?: string;
   /** The training state that the engine is in (e.g. `TRAINING` or `PAUSED`). Since part of the cost of running the service is frequency of training - this can be used to determine when to train engine in order to control cost. If not specified: the default value for `CreateEngine` method is `TRAINING`. The default value for `UpdateEngine` method is to keep the state the same as before. */
-  trainingState?: GoogleCloudDiscoveryengineV1EngineMediaRecommendationEngineConfigTrainingStateEnum;
+  trainingState?:
+    | GoogleCloudDiscoveryengineV1EngineMediaRecommendationEngineConfigTrainingStateEnum
+    | (string & {});
 }
 export const GoogleCloudDiscoveryengineV1EngineMediaRecommendationEngineConfig =
   /*@__PURE__*/ S.suspend(() =>
@@ -6754,6 +6810,7 @@ export const GoogleCloudDiscoveryengineV1EngineFeaturesValueEnum =
 export type GoogleCloudDiscoveryengineV1EngineFeaturesValueEnumMap = {
   [key: string]:
     | GoogleCloudDiscoveryengineV1EngineFeaturesValueEnum
+    | (string & {})
     | undefined;
 };
 export const GoogleCloudDiscoveryengineV1EngineFeaturesValueEnumMap =
@@ -6824,6 +6881,7 @@ export const GoogleCloudDiscoveryengineV1EngineModelConfigsValueEnum =
 export type GoogleCloudDiscoveryengineV1EngineModelConfigsValueEnumMap = {
   [key: string]:
     | GoogleCloudDiscoveryengineV1EngineModelConfigsValueEnum
+    | (string & {})
     | undefined;
 };
 export const GoogleCloudDiscoveryengineV1EngineModelConfigsValueEnumMap =
@@ -7001,7 +7059,10 @@ export const GoogleCloudDiscoveryengineV1EngineSearchEngineConfigSearchAddOnsIte
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudDiscoveryengineV1EngineSearchEngineConfigSearchAddOnsItemEnumList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1EngineSearchEngineConfigSearchAddOnsItemEnum>;
+  Array<
+    | GoogleCloudDiscoveryengineV1EngineSearchEngineConfigSearchAddOnsItemEnum
+    | (string & {})
+  >;
 export const GoogleCloudDiscoveryengineV1EngineSearchEngineConfigSearchAddOnsItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1EngineSearchEngineConfigSearchAddOnsItemEnum,
@@ -7010,9 +7071,13 @@ export const GoogleCloudDiscoveryengineV1EngineSearchEngineConfigSearchAddOnsIte
 /** Configurations for a Search Engine. */
 export interface GoogleCloudDiscoveryengineV1EngineSearchEngineConfig {
   /** Optional. The required subscription tier of this engine. If the required subscription tier is search, user with higher license tier like assist can still access the standalone app associated with this engine. Web grounding feature is only available on the app if it is set as SubscriptionTier.SUBSCRIPTION_TIER_SEARCH_AND_ASSISTANT. */
-  requiredSubscriptionTier?: GoogleCloudDiscoveryengineV1EngineSearchEngineConfigRequiredSubscriptionTierEnum;
+  requiredSubscriptionTier?:
+    | GoogleCloudDiscoveryengineV1EngineSearchEngineConfigRequiredSubscriptionTierEnum
+    | (string & {});
   /** The search feature tier of this engine. Different tiers might have different pricing. To learn more, check the pricing documentation. Defaults to SearchTier.SEARCH_TIER_STANDARD if not specified. */
-  searchTier?: GoogleCloudDiscoveryengineV1EngineSearchEngineConfigSearchTierEnum;
+  searchTier?:
+    | GoogleCloudDiscoveryengineV1EngineSearchEngineConfigSearchTierEnum
+    | (string & {});
   /** The add-on that this search engine enables. */
   searchAddOns?: GoogleCloudDiscoveryengineV1EngineSearchEngineConfigSearchAddOnsItemEnumList;
 }
@@ -7040,7 +7105,7 @@ export interface GoogleCloudDiscoveryengineV1Engine {
   /** Configurations for the Media Engine. Only applicable on the data stores with solution_type SOLUTION_TYPE_RECOMMENDATION and IndustryVertical.MEDIA vertical. */
   mediaRecommendationEngineConfig?: GoogleCloudDiscoveryengineV1EngineMediaRecommendationEngineConfig;
   /** Optional. Immutable. This the application type which this engine resource represents. NOTE: this is a new concept independ of existing industry vertical or solution type. */
-  appType?: GoogleCloudDiscoveryengineV1EngineAppTypeEnum;
+  appType?: GoogleCloudDiscoveryengineV1EngineAppTypeEnum | (string & {});
   /** Optional. Observability config for the engine. */
   observabilityConfig?: GoogleCloudDiscoveryengineV1ObservabilityConfig;
   /** Optional. The data stores associated with this engine. For SOLUTION_TYPE_SEARCH and SOLUTION_TYPE_RECOMMENDATION type of engines, they can only associate with at most one data store. If solution_type is SOLUTION_TYPE_CHAT, multiple DataStores in the same Collection can be associated here. Note that when used in CreateEngineRequest, one DataStore id must be provided as the system will use it for necessary initializations. */
@@ -7058,13 +7123,17 @@ export interface GoogleCloudDiscoveryengineV1Engine {
   /** Output only. CMEK-related information for the Engine. */
   cmekConfig?: GoogleCloudDiscoveryengineV1CmekConfig;
   /** Required. The solutions of the engine. */
-  solutionType?: GoogleCloudDiscoveryengineV1EngineSolutionTypeEnum;
+  solutionType?:
+    | GoogleCloudDiscoveryengineV1EngineSolutionTypeEnum
+    | (string & {});
   /** Optional. Whether to disable analytics for searches performed on this engine. */
   disableAnalytics?: boolean;
   /** Optional. The agent gateway setting for the engine. */
   agentGatewaySetting?: GoogleCloudDiscoveryengineV1AgentGatewaySetting;
   /** Optional. Configuration for configurable billing approach. */
-  configurableBillingApproach?: GoogleCloudDiscoveryengineV1EngineConfigurableBillingApproachEnum;
+  configurableBillingApproach?:
+    | GoogleCloudDiscoveryengineV1EngineConfigurableBillingApproachEnum
+    | (string & {});
   /** Optional. Maps a connector ID (e.g., "hybrid-github", "shopify") to tenant-specific information required for that connector. The structure of the tenant information string is connector-dependent. */
   connectorTenantInfo?: StringMap;
   /** Configurations for the Chat Engine. Only applicable if solution_type is SOLUTION_TYPE_CHAT. */
@@ -7080,9 +7149,13 @@ export interface GoogleCloudDiscoveryengineV1Engine {
   /** Immutable. Identifier. The fully qualified resource name of the engine. This field must be a UTF-8 encoded string with a length limit of 1024 characters. Format: `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}` engine should be 1-63 characters, and valid characters are /a-z0-9*\/. Otherwise, an INVALID_ARGUMENT error is returned. */
   name?: string;
   /** Optional. The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore: Vertical on Engine has to match vertical of the DataStore linked to the engine. */
-  industryVertical?: GoogleCloudDiscoveryengineV1EngineIndustryVerticalEnum;
+  industryVertical?:
+    | GoogleCloudDiscoveryengineV1EngineIndustryVerticalEnum
+    | (string & {});
   /** Optional. The visibility of marketplace agents in the agent gallery. */
-  marketplaceAgentVisibility?: GoogleCloudDiscoveryengineV1EngineMarketplaceAgentVisibilityEnum;
+  marketplaceAgentVisibility?:
+    | GoogleCloudDiscoveryengineV1EngineMarketplaceAgentVisibilityEnum
+    | (string & {});
   /** Configurations for the Search Engine. Only applicable if solution_type is SOLUTION_TYPE_SEARCH. */
   searchEngineConfig?: GoogleCloudDiscoveryengineV1EngineSearchEngineConfig;
 }
@@ -7227,7 +7300,9 @@ export const GoogleCloudDiscoveryengineV1AssistantCustomerPolicyBannedPhraseMatc
 /** Definition of a customer-defined banned phrase. A banned phrase is not allowed to appear in the user query or the LLM response, or else the answer will be refused. */
 export interface GoogleCloudDiscoveryengineV1AssistantCustomerPolicyBannedPhrase {
   /** Optional. Match type for the banned phrase. */
-  matchType?: GoogleCloudDiscoveryengineV1AssistantCustomerPolicyBannedPhraseMatchTypeEnum;
+  matchType?:
+    | GoogleCloudDiscoveryengineV1AssistantCustomerPolicyBannedPhraseMatchTypeEnum
+    | (string & {});
   /** Required. The raw string content to be banned. */
   phrase?: string;
   /** Optional. If true, diacritical marks (e.g., accents, umlauts) are ignored when matching banned phrases. For example, "cafe" would match "café". */
@@ -7248,7 +7323,7 @@ export const GoogleCloudDiscoveryengineV1AssistantCustomerPolicyBannedPhrase =
   }) as any as S.Schema<GoogleCloudDiscoveryengineV1AssistantCustomerPolicyBannedPhrase>;
 
 export type GoogleCloudDiscoveryengineV1AssistantCustomerPolicyBannedPhraseList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1AssistantCustomerPolicyBannedPhrase>;
+  Array<GoogleCloudDiscoveryengineV1AssistantCustomerPolicyBannedPhrase>;
 export const GoogleCloudDiscoveryengineV1AssistantCustomerPolicyBannedPhraseList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1AssistantCustomerPolicyBannedPhrase,
@@ -7266,7 +7341,9 @@ export interface GoogleCloudDiscoveryengineV1AssistantCustomerPolicyModelArmorCo
   /** Optional. The resource name of the Model Armor template for sanitizing user prompts. Format: `projects/{project}/locations/{location}/templates/{template_id}` If not specified, no sanitization will be applied to the user prompt. */
   userPromptTemplate?: string;
   /** Optional. Defines the failure mode for Model Armor sanitization. */
-  failureMode?: GoogleCloudDiscoveryengineV1AssistantCustomerPolicyModelArmorConfigFailureModeEnum;
+  failureMode?:
+    | GoogleCloudDiscoveryengineV1AssistantCustomerPolicyModelArmorConfigFailureModeEnum
+    | (string & {});
 }
 export const GoogleCloudDiscoveryengineV1AssistantCustomerPolicyModelArmorConfig =
   /*@__PURE__*/ S.suspend(() =>
@@ -7321,7 +7398,7 @@ export const GoogleCloudDiscoveryengineV1AssistantToolInfo =
   }) as any as S.Schema<GoogleCloudDiscoveryengineV1AssistantToolInfo>;
 
 export type GoogleCloudDiscoveryengineV1AssistantToolInfoList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1AssistantToolInfo>;
+  Array<GoogleCloudDiscoveryengineV1AssistantToolInfo>;
 export const GoogleCloudDiscoveryengineV1AssistantToolInfoList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1AssistantToolInfo,
@@ -7355,7 +7432,9 @@ export interface GoogleCloudDiscoveryengineV1Assistant {
   /** Optional. Configuration for the generation of the assistant response. */
   generationConfig?: GoogleCloudDiscoveryengineV1AssistantGenerationConfig;
   /** Optional. The type of web grounding to use. */
-  webGroundingType?: GoogleCloudDiscoveryengineV1AssistantWebGroundingTypeEnum;
+  webGroundingType?:
+    | GoogleCloudDiscoveryengineV1AssistantWebGroundingTypeEnum
+    | (string & {});
   /** Output only. Represents the time when this Assistant was most recently updated. */
   updateTime?: string;
   /** Required. The assistant display name. It must be a UTF-8 encoded string with a length limit of 128 characters. */
@@ -7955,7 +8034,9 @@ export interface GoogleCloudDiscoveryengineV1LicenseConfig {
   /** Optional. Timestamp of the most recent user-initiated update (seat count change or subscription term change). Unlike `update_time`, this field is only stamped when a customer explicitly updates the license (e.g. via the UI), and is not touched by system-driven writes (subscription pipeline, BALC propagation, etc.). */
   lastUserUpdateTime?: string;
   /** Required. Subscription tier information for the license config. */
-  subscriptionTier?: GoogleCloudDiscoveryengineV1LicenseConfigSubscriptionTierEnum;
+  subscriptionTier?:
+    | GoogleCloudDiscoveryengineV1LicenseConfigSubscriptionTierEnum
+    | (string & {});
   /** Required. The start date. */
   startDate?: GoogleTypeDate;
   /** Output only. Whether the license config is for Gemini bundle. */
@@ -7963,9 +8044,11 @@ export interface GoogleCloudDiscoveryengineV1LicenseConfig {
   /** Output only. The date when the subscription is terminated earlier than the expiration date. */
   earlyTerminationDate?: GoogleTypeDate;
   /** Output only. The state of the license config. */
-  state?: GoogleCloudDiscoveryengineV1LicenseConfigStateEnum;
+  state?: GoogleCloudDiscoveryengineV1LicenseConfigStateEnum | (string & {});
   /** Required. Subscription term. */
-  subscriptionTerm?: GoogleCloudDiscoveryengineV1LicenseConfigSubscriptionTermEnum;
+  subscriptionTerm?:
+    | GoogleCloudDiscoveryengineV1LicenseConfigSubscriptionTermEnum
+    | (string & {});
   /** Optional. The planed end date. */
   endDate?: GoogleTypeDate;
 }
@@ -8778,7 +8861,7 @@ export const FetchDomainVerificationStatusProjectsLocationsCollectionsDataStores
   }) as any as S.Schema<FetchDomainVerificationStatusProjectsLocationsCollectionsDataStoresSiteSearchEngineRequest>;
 
 export type GoogleCloudDiscoveryengineV1TargetSiteList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1TargetSite>;
+  Array<GoogleCloudDiscoveryengineV1TargetSite>;
 export const GoogleCloudDiscoveryengineV1TargetSiteList = /*@__PURE__*/ S.Array(
   GoogleCloudDiscoveryengineV1TargetSite,
 ) as any as S.Schema<GoogleCloudDiscoveryengineV1TargetSiteList>;
@@ -8843,7 +8926,7 @@ export const GoogleCloudDiscoveryengineV1FetchSitemapsResponseSitemapMetadata =
   }) as any as S.Schema<GoogleCloudDiscoveryengineV1FetchSitemapsResponseSitemapMetadata>;
 
 export type GoogleCloudDiscoveryengineV1FetchSitemapsResponseSitemapMetadataList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1FetchSitemapsResponseSitemapMetadata>;
+  Array<GoogleCloudDiscoveryengineV1FetchSitemapsResponseSitemapMetadata>;
 export const GoogleCloudDiscoveryengineV1FetchSitemapsResponseSitemapMetadataList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1FetchSitemapsResponseSitemapMetadata,
@@ -8931,7 +9014,7 @@ export const GoogleCloudDiscoveryengineV1IdpConfigExternalIdpConfig =
 /** Identity Provider Config. */
 export interface GoogleCloudDiscoveryengineV1IdpConfig {
   /** Identity provider type configured. */
-  idpType?: GoogleCloudDiscoveryengineV1IdpConfigIdpTypeEnum;
+  idpType?: GoogleCloudDiscoveryengineV1IdpConfigIdpTypeEnum | (string & {});
   /** External Identity provider config. */
   externalIdpConfig?: GoogleCloudDiscoveryengineV1IdpConfigExternalIdpConfig;
 }
@@ -9011,7 +9094,7 @@ export const A2aV1Security = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "A2aV1Security" }) as any as S.Schema<A2aV1Security>;
 
-export type A2aV1SecurityList = ReadonlyArray<A2aV1Security>;
+export type A2aV1SecurityList = Array<A2aV1Security>;
 export const A2aV1SecurityList = /*@__PURE__*/ S.Array(
   A2aV1Security,
 ) as any as S.Schema<A2aV1SecurityList>;
@@ -9251,8 +9334,7 @@ export const A2aV1AgentCardSignature = /*@__PURE__*/ S.suspend(() =>
   identifier: "A2aV1AgentCardSignature",
 }) as any as S.Schema<A2aV1AgentCardSignature>;
 
-export type A2aV1AgentCardSignatureList =
-  ReadonlyArray<A2aV1AgentCardSignature>;
+export type A2aV1AgentCardSignatureList = Array<A2aV1AgentCardSignature>;
 export const A2aV1AgentCardSignatureList = /*@__PURE__*/ S.Array(
   A2aV1AgentCardSignature,
 ) as any as S.Schema<A2aV1AgentCardSignatureList>;
@@ -9291,7 +9373,7 @@ export const A2aV1AgentSkill = /*@__PURE__*/ S.suspend(() =>
   identifier: "A2aV1AgentSkill",
 }) as any as S.Schema<A2aV1AgentSkill>;
 
-export type A2aV1AgentSkillList = ReadonlyArray<A2aV1AgentSkill>;
+export type A2aV1AgentSkillList = Array<A2aV1AgentSkill>;
 export const A2aV1AgentSkillList = /*@__PURE__*/ S.Array(
   A2aV1AgentSkill,
 ) as any as S.Schema<A2aV1AgentSkillList>;
@@ -9315,7 +9397,7 @@ export const A2aV1AgentInterface = /*@__PURE__*/ S.suspend(() =>
   identifier: "A2aV1AgentInterface",
 }) as any as S.Schema<A2aV1AgentInterface>;
 
-export type A2aV1AgentInterfaceList = ReadonlyArray<A2aV1AgentInterface>;
+export type A2aV1AgentInterfaceList = Array<A2aV1AgentInterface>;
 export const A2aV1AgentInterfaceList = /*@__PURE__*/ S.Array(
   A2aV1AgentInterface,
 ) as any as S.Schema<A2aV1AgentInterfaceList>;
@@ -9342,7 +9424,7 @@ export const A2aV1AgentExtension = /*@__PURE__*/ S.suspend(() =>
   identifier: "A2aV1AgentExtension",
 }) as any as S.Schema<A2aV1AgentExtension>;
 
-export type A2aV1AgentExtensionList = ReadonlyArray<A2aV1AgentExtension>;
+export type A2aV1AgentExtensionList = Array<A2aV1AgentExtension>;
 export const A2aV1AgentExtensionList = /*@__PURE__*/ S.Array(
   A2aV1AgentExtension,
 ) as any as S.Schema<A2aV1AgentExtensionList>;
@@ -9475,7 +9557,10 @@ export const GoogleCloudDiscoveryengineV1DataConnectorBlockingReasonsItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudDiscoveryengineV1DataConnectorBlockingReasonsItemEnumList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1DataConnectorBlockingReasonsItemEnum>;
+  Array<
+    | GoogleCloudDiscoveryengineV1DataConnectorBlockingReasonsItemEnum
+    | (string & {})
+  >;
 export const GoogleCloudDiscoveryengineV1DataConnectorBlockingReasonsItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1DataConnectorBlockingReasonsItemEnum,
@@ -9499,7 +9584,7 @@ export const GoogleCloudDiscoveryengineV1DestinationConfigDestination =
   }) as any as S.Schema<GoogleCloudDiscoveryengineV1DestinationConfigDestination>;
 
 export type GoogleCloudDiscoveryengineV1DestinationConfigDestinationList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1DestinationConfigDestination>;
+  Array<GoogleCloudDiscoveryengineV1DestinationConfigDestination>;
 export const GoogleCloudDiscoveryengineV1DestinationConfigDestinationList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1DestinationConfigDestination,
@@ -9531,7 +9616,7 @@ export const GoogleCloudDiscoveryengineV1DestinationConfig =
   }) as any as S.Schema<GoogleCloudDiscoveryengineV1DestinationConfig>;
 
 export type GoogleCloudDiscoveryengineV1DestinationConfigList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1DestinationConfig>;
+  Array<GoogleCloudDiscoveryengineV1DestinationConfig>;
 export const GoogleCloudDiscoveryengineV1DestinationConfigList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1DestinationConfig,
@@ -9561,7 +9646,7 @@ export const GoogleCloudDiscoveryengineV1DynamicTool = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudDiscoveryengineV1DynamicTool>;
 
 export type GoogleCloudDiscoveryengineV1DynamicToolList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1DynamicTool>;
+  Array<GoogleCloudDiscoveryengineV1DynamicTool>;
 export const GoogleCloudDiscoveryengineV1DynamicToolList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1DynamicTool,
@@ -9635,7 +9720,7 @@ export const GoogleCloudDiscoveryengineV1DataConnectorSourceEntity =
   }) as any as S.Schema<GoogleCloudDiscoveryengineV1DataConnectorSourceEntity>;
 
 export type GoogleCloudDiscoveryengineV1DataConnectorSourceEntityList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1DataConnectorSourceEntity>;
+  Array<GoogleCloudDiscoveryengineV1DataConnectorSourceEntity>;
 export const GoogleCloudDiscoveryengineV1DataConnectorSourceEntityList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1DataConnectorSourceEntity,
@@ -9734,7 +9819,10 @@ export const GoogleCloudDiscoveryengineV1DataConnectorConnectorModesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudDiscoveryengineV1DataConnectorConnectorModesItemEnumList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1DataConnectorConnectorModesItemEnum>;
+  Array<
+    | GoogleCloudDiscoveryengineV1DataConnectorConnectorModesItemEnum
+    | (string & {})
+  >;
 export const GoogleCloudDiscoveryengineV1DataConnectorConnectorModesItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1DataConnectorConnectorModesItemEnum,
@@ -9750,7 +9838,9 @@ export interface GoogleCloudDiscoveryengineV1AlertPolicyConfigAlertEnrollment {
   /** Immutable. The id of an alert. */
   alertId?: string;
   /** Required. The enrollment status of a customer. */
-  enrollState?: GoogleCloudDiscoveryengineV1AlertPolicyConfigAlertEnrollmentEnrollStateEnum;
+  enrollState?:
+    | GoogleCloudDiscoveryengineV1AlertPolicyConfigAlertEnrollmentEnrollStateEnum
+    | (string & {});
 }
 export const GoogleCloudDiscoveryengineV1AlertPolicyConfigAlertEnrollment =
   /*@__PURE__*/ S.suspend(() =>
@@ -9765,7 +9855,7 @@ export const GoogleCloudDiscoveryengineV1AlertPolicyConfigAlertEnrollment =
   }) as any as S.Schema<GoogleCloudDiscoveryengineV1AlertPolicyConfigAlertEnrollment>;
 
 export type GoogleCloudDiscoveryengineV1AlertPolicyConfigAlertEnrollmentList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1AlertPolicyConfigAlertEnrollment>;
+  Array<GoogleCloudDiscoveryengineV1AlertPolicyConfigAlertEnrollment>;
 export const GoogleCloudDiscoveryengineV1AlertPolicyConfigAlertEnrollmentList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1AlertPolicyConfigAlertEnrollment,
@@ -9791,7 +9881,7 @@ export const GoogleCloudDiscoveryengineV1AlertPolicyConfig =
   }) as any as S.Schema<GoogleCloudDiscoveryengineV1AlertPolicyConfig>;
 
 export type GoogleCloudDiscoveryengineV1AlertPolicyConfigList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1AlertPolicyConfig>;
+  Array<GoogleCloudDiscoveryengineV1AlertPolicyConfig>;
 export const GoogleCloudDiscoveryengineV1AlertPolicyConfigList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1AlertPolicyConfig,
@@ -9810,7 +9900,9 @@ export interface GoogleCloudDiscoveryengineV1DataConnectorRealtimeSyncConfigStre
   /** Optional. Error details. */
   error?: GoogleRpcStatus;
   /** Optional. Streaming error. */
-  streamingErrorReason?: GoogleCloudDiscoveryengineV1DataConnectorRealtimeSyncConfigStreamingErrorStreamingErrorReasonEnum;
+  streamingErrorReason?:
+    | GoogleCloudDiscoveryengineV1DataConnectorRealtimeSyncConfigStreamingErrorStreamingErrorReasonEnum
+    | (string & {});
 }
 export const GoogleCloudDiscoveryengineV1DataConnectorRealtimeSyncConfigStreamingError =
   /*@__PURE__*/ S.suspend(() =>
@@ -9930,7 +10022,10 @@ export const GoogleCloudDiscoveryengineV1BAPConfigSupportedConnectorModesItemEnu
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudDiscoveryengineV1BAPConfigSupportedConnectorModesItemEnumList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1BAPConfigSupportedConnectorModesItemEnum>;
+  Array<
+    | GoogleCloudDiscoveryengineV1BAPConfigSupportedConnectorModesItemEnum
+    | (string & {})
+  >;
 export const GoogleCloudDiscoveryengineV1BAPConfigSupportedConnectorModesItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1BAPConfigSupportedConnectorModesItemEnum,
@@ -10077,17 +10172,21 @@ export interface GoogleCloudDiscoveryengineV1DataConnector {
   /** Optional. The configuration for establishing a CLI connection. */
   cliConfig?: GoogleCloudDiscoveryengineV1CliConfig;
   /** Output only. State of the connector. */
-  state?: GoogleCloudDiscoveryengineV1DataConnectorStateEnum;
+  state?: GoogleCloudDiscoveryengineV1DataConnectorStateEnum | (string & {});
   /** Required. The refresh interval for data sync. If duration is set to 0, the data will be synced in real time. The streaming feature is not supported yet. The minimum is 30 minutes and maximum is 7 days. When the refresh interval is set to the same value as the incremental refresh interval, incremental sync will be disabled. */
   refreshInterval?: string;
   /** Output only. The tenant project ID associated with private connectivity connectors. This project must be allowlisted by in order for the connector to function. */
   privateConnectivityProjectId?: string;
   /** The data synchronization mode supported by the data connector. */
-  syncMode?: GoogleCloudDiscoveryengineV1DataConnectorSyncModeEnum;
+  syncMode?:
+    | GoogleCloudDiscoveryengineV1DataConnectorSyncModeEnum
+    | (string & {});
   /** List of entities from the connected data source to ingest. */
   entities?: GoogleCloudDiscoveryengineV1DataConnectorSourceEntityList;
   /** Output only. The type of connector. Each source can only map to one type. For example, salesforce, confluence and jira have THIRD_PARTY connector type. It is not mutable once set by system. */
-  connectorType?: GoogleCloudDiscoveryengineV1DataConnectorConnectorTypeEnum;
+  connectorType?:
+    | GoogleCloudDiscoveryengineV1DataConnectorConnectorTypeEnum
+    | (string & {});
   /** Optional. If the connector is a hybrid connector, determines whether ingestion is enabled and appropriate resources are provisioned during connector creation. If the connector is not a hybrid connector, this field is ignored. */
   hybridIngestionDisabled?: boolean;
   /** Optional. Any params and credentials used specifically for hybrid connectors supporting FEDERATED mode. This field should only be set if the connector is a hybrid connector and we want to enable FEDERATED mode. */
@@ -10121,7 +10220,9 @@ export interface GoogleCloudDiscoveryengineV1DataConnector {
   /** Output only. Whether the connector is created with VPC-SC enabled. */
   vpcscEnabled?: boolean;
   /** Output only. real-time sync state */
-  realtimeState?: GoogleCloudDiscoveryengineV1DataConnectorRealtimeStateEnum;
+  realtimeState?:
+    | GoogleCloudDiscoveryengineV1DataConnectorRealtimeStateEnum
+    | (string & {});
   /** Required. The identifier for the data source. This is a partial list of supported connectors. Please refer to the [documentation](https://docs.cloud.google.com/gemini/enterprise/docs/connectors/introduction-to-connectors-and-data-stores) for the full list of connectors. Supported first-party connectors include: * `gcs` * `bigquery` * `gcp_fhir` * `google_mail` * `google_drive` * `google_calendar` * `google_chat` Supported third-party connectors include: Generally available (GA) connectors: * `onedrive` * `outlook` * `confluence` * `jira` * `servicenow` * `sharepoint` Preview connectors: * `asana` * `azure_active_directory` * `box` * `canva` * `confluence_server` * `custom_connector` * `docusign` * `dropbox` * `dynamics365` * `github` * `gitlab` * `hubspot` * `jira_server` * `linear` * `native_cloud_identity` * `notion` * `okta` * `pagerduty` * `peoplesoft` * `salesforce` * `shopify` * `slack` * `snowflake` * `teams` * `trello` * `workday` * `zendesk` */
   dataSource?: string;
   /** Output only. Timestamp the DataConnector was last updated. */
@@ -10141,7 +10242,9 @@ export interface GoogleCloudDiscoveryengineV1DataConnector {
   /** Optional. Whether customer has enabled static IP addresses for this connector. */
   staticIpEnabled?: boolean;
   /** Output only. State of the action connector. This reflects whether the action connector is initializing, active or has encountered errors. */
-  actionState?: GoogleCloudDiscoveryengineV1DataConnectorActionStateEnum;
+  actionState?:
+    | GoogleCloudDiscoveryengineV1DataConnectorActionStateEnum
+    | (string & {});
   /** Optional. Indicates whether the connector is disabled for auto run. It can be used to pause periodical and real time sync. Update: with the introduction of incremental_sync_disabled, auto_run_disabled is used to pause/disable only full syncs */
   autoRunDisabled?: boolean;
   /** Output only. The errors from initialization or from the latest connector run. */
@@ -10290,7 +10393,7 @@ export const GoogleIamV1Binding = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleIamV1Binding",
 }) as any as S.Schema<GoogleIamV1Binding>;
 
-export type GoogleIamV1BindingList = ReadonlyArray<GoogleIamV1Binding>;
+export type GoogleIamV1BindingList = Array<GoogleIamV1Binding>;
 export const GoogleIamV1BindingList = /*@__PURE__*/ S.Array(
   GoogleIamV1Binding,
 ) as any as S.Schema<GoogleIamV1BindingList>;
@@ -10711,7 +10814,7 @@ export const GoogleCloudDiscoveryengineV1WidgetConfigFacetField =
   }) as any as S.Schema<GoogleCloudDiscoveryengineV1WidgetConfigFacetField>;
 
 export type GoogleCloudDiscoveryengineV1WidgetConfigFacetFieldList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1WidgetConfigFacetField>;
+  Array<GoogleCloudDiscoveryengineV1WidgetConfigFacetField>;
 export const GoogleCloudDiscoveryengineV1WidgetConfigFacetFieldList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1WidgetConfigFacetField,
@@ -10769,7 +10872,9 @@ export interface GoogleCloudDiscoveryengineV1WidgetConfigAssistantSettings {
   /** Output only. This field controls the default web grounding toggle for end users if `web_grounding_type` is set to `WEB_GROUNDING_TYPE_GOOGLE_SEARCH` or `WEB_GROUNDING_TYPE_ENTERPRISE_WEB_SEARCH`. By default, this field is set to false. If `web_grounding_type` is `WEB_GROUNDING_TYPE_GOOGLE_SEARCH` or `WEB_GROUNDING_TYPE_ENTERPRISE_WEB_SEARCH`, end users will have web grounding enabled by default on UI. If true, grounding toggle will be disabled by default on UI. End users can still enable web grounding in the UI if web grounding is enabled. */
   defaultWebGroundingToggleOff?: boolean;
   /** Optional. The type of web grounding to use. */
-  webGroundingType?: GoogleCloudDiscoveryengineV1WidgetConfigAssistantSettingsWebGroundingTypeEnum;
+  webGroundingType?:
+    | GoogleCloudDiscoveryengineV1WidgetConfigAssistantSettingsWebGroundingTypeEnum
+    | (string & {});
   /** Optional. Output only. Whether to disable user location context. */
   disableLocationContext?: boolean;
 }
@@ -10849,7 +10954,7 @@ export const GoogleCloudDiscoveryengineV1WidgetConfigUiSettingsModelConfigInfoRe
   }) as any as S.Schema<GoogleCloudDiscoveryengineV1WidgetConfigUiSettingsModelConfigInfoResolvedModel>;
 
 export type GoogleCloudDiscoveryengineV1WidgetConfigUiSettingsModelConfigInfoResolvedModelList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1WidgetConfigUiSettingsModelConfigInfoResolvedModel>;
+  Array<GoogleCloudDiscoveryengineV1WidgetConfigUiSettingsModelConfigInfoResolvedModel>;
 export const GoogleCloudDiscoveryengineV1WidgetConfigUiSettingsModelConfigInfoResolvedModelList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1WidgetConfigUiSettingsModelConfigInfoResolvedModel,
@@ -10881,7 +10986,10 @@ export const GoogleCloudDiscoveryengineV1WidgetConfigUIComponentFieldDeviceVisib
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudDiscoveryengineV1WidgetConfigUIComponentFieldDeviceVisibilityItemEnumList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1WidgetConfigUIComponentFieldDeviceVisibilityItemEnum>;
+  Array<
+    | GoogleCloudDiscoveryengineV1WidgetConfigUIComponentFieldDeviceVisibilityItemEnum
+    | (string & {})
+  >;
 export const GoogleCloudDiscoveryengineV1WidgetConfigUIComponentFieldDeviceVisibilityItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1WidgetConfigUIComponentFieldDeviceVisibilityItemEnum,
@@ -10948,7 +11056,7 @@ export const GoogleCloudDiscoveryengineV1WidgetConfigDataStoreUiConfig =
   }) as any as S.Schema<GoogleCloudDiscoveryengineV1WidgetConfigDataStoreUiConfig>;
 
 export type GoogleCloudDiscoveryengineV1WidgetConfigDataStoreUiConfigList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1WidgetConfigDataStoreUiConfig>;
+  Array<GoogleCloudDiscoveryengineV1WidgetConfigDataStoreUiConfig>;
 export const GoogleCloudDiscoveryengineV1WidgetConfigDataStoreUiConfigList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1WidgetConfigDataStoreUiConfig,
@@ -10968,6 +11076,7 @@ export type GoogleCloudDiscoveryengineV1WidgetConfigUiSettingsFeaturesValueEnumM
   {
     [key: string]:
       | GoogleCloudDiscoveryengineV1WidgetConfigUiSettingsFeaturesValueEnum
+      | (string & {})
       | undefined;
   };
 export const GoogleCloudDiscoveryengineV1WidgetConfigUiSettingsFeaturesValueEnumMap =
@@ -11005,7 +11114,9 @@ export interface GoogleCloudDiscoveryengineV1WidgetConfigUiSettingsGenerativeAns
   /** Max rephrase steps. The max number is 5 steps. If not set or set to < 1, it will be set to 1 by default. */
   maxRephraseSteps?: number;
   /** Optional. Source of image returned in the answer. */
-  imageSource?: GoogleCloudDiscoveryengineV1WidgetConfigUiSettingsGenerativeAnswerConfigImageSourceEnum;
+  imageSource?:
+    | GoogleCloudDiscoveryengineV1WidgetConfigUiSettingsGenerativeAnswerConfigImageSourceEnum
+    | (string & {});
 }
 export const GoogleCloudDiscoveryengineV1WidgetConfigUiSettingsGenerativeAnswerConfig =
   /*@__PURE__*/ S.suspend(() =>
@@ -11037,6 +11148,7 @@ export type GoogleCloudDiscoveryengineV1WidgetConfigUiSettingsModelConfigsValueE
   {
     [key: string]:
       | GoogleCloudDiscoveryengineV1WidgetConfigUiSettingsModelConfigsValueEnum
+      | (string & {})
       | undefined;
   };
 export const GoogleCloudDiscoveryengineV1WidgetConfigUiSettingsModelConfigsValueEnumMap =
@@ -11054,7 +11166,9 @@ export interface GoogleCloudDiscoveryengineV1WidgetConfigUiSettings {
   /** Whether to enable search-as-you-type behavior for the search widget. */
   enableSearchAsYouType?: boolean;
   /** Describes widget (or web app) interaction type */
-  interactionType?: GoogleCloudDiscoveryengineV1WidgetConfigUiSettingsInteractionTypeEnum;
+  interactionType?:
+    | GoogleCloudDiscoveryengineV1WidgetConfigUiSettingsInteractionTypeEnum
+    | (string & {});
   /** Output only. The resolved, server-side view of model selector configuration. Holds both the ordered list of models that should appear in the model selector dropdown and the model that should be selected by default. Clients should render this directly without applying their own filtering, ordering, or localization. The legacy `model_configs` map above is retained for backward compatibility with clients that have not yet migrated to consuming this field. */
   modelConfigInfo?: GoogleCloudDiscoveryengineV1WidgetConfigUiSettingsModelConfigInfo;
   /** Per data store configuration. */
@@ -11070,7 +11184,9 @@ export interface GoogleCloudDiscoveryengineV1WidgetConfigUiSettings {
   /** If set to true, the widget will not collect user events. */
   disableUserEventsCollection?: boolean;
   /** Controls whether result extract is display and how (snippet or extractive answer). Default to no result if unspecified. */
-  resultDescriptionType?: GoogleCloudDiscoveryengineV1WidgetConfigUiSettingsResultDescriptionTypeEnum;
+  resultDescriptionType?:
+    | GoogleCloudDiscoveryengineV1WidgetConfigUiSettingsResultDescriptionTypeEnum
+    | (string & {});
   /** Optional. If set to true, the widget will enable the create agent button. */
   enableCreateAgentButton?: boolean;
   /** Output only. Feature config for the engine to opt in or opt out of features. Supported keys: * `agent-gallery` * `no-code-agent-builder` * `prompt-gallery` * `model-selector` * `notebook-lm` * `people-search` * `people-search-org-chart` * `bi-directional-audio` * `feedback` * `session-sharing` * `personalization-memory` * `personalization-suggested-highlights` * `mobile-app-access` * `disable-agent-sharing` * `disable-image-generation` * `disable-video-generation` * `disable-onedrive-upload` * `disable-talk-to-content` * `disable-google-drive-upload` * `disable-welcome-emails` * `disable-canvas` * `canvas-workspace` * `disable-skills` * `disable-projects` * `enable-end-user-sharing-with-groups` * `single-agent-orchestration` * `multi-agent-orchestration` * `cross-product-intelligence` */
@@ -11141,7 +11257,9 @@ export interface GoogleCloudDiscoveryengineV1WidgetConfigDataStoreComponent {
   /** Output only. the identifier of the data store, used for widget service. For now it refers to data_store_id, in the future we will migrate the field to encrypted data store name UUID. */
   id?: string;
   /** Output only. The type of the data store config. */
-  dataStoreConfigType?: GoogleCloudDiscoveryengineV1WidgetConfigDataStoreComponentDataStoreConfigTypeEnum;
+  dataStoreConfigType?:
+    | GoogleCloudDiscoveryengineV1WidgetConfigDataStoreComponentDataStoreConfigTypeEnum
+    | (string & {});
   /** The display name of the data store. */
   displayName?: string;
 }
@@ -11161,7 +11279,7 @@ export const GoogleCloudDiscoveryengineV1WidgetConfigDataStoreComponent =
   }) as any as S.Schema<GoogleCloudDiscoveryengineV1WidgetConfigDataStoreComponent>;
 
 export type GoogleCloudDiscoveryengineV1WidgetConfigDataStoreComponentList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1WidgetConfigDataStoreComponent>;
+  Array<GoogleCloudDiscoveryengineV1WidgetConfigDataStoreComponent>;
 export const GoogleCloudDiscoveryengineV1WidgetConfigDataStoreComponentList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1WidgetConfigDataStoreComponent,
@@ -11183,7 +11301,9 @@ export interface GoogleCloudDiscoveryengineV1WidgetConfigConnectorAuthState {
   /** Output only. The authorization uri for the data connector. For synthetic placeholder `CollectionComponent` entries (returned by `LookupWidgetConfig` with `view = WITH_AVAILABLE_CONNECTORS` on SaaS / Business engines), this field is left empty. The widget should call `WidgetService.WidgetBuildAuthorizationUrl` on the user's "Connect" click to obtain a freshly-built authorization URL. */
   authorizationUri?: string;
   /** Output only. The authorization state of the data connector. */
-  authState?: GoogleCloudDiscoveryengineV1WidgetConfigConnectorAuthStateAuthStateEnum;
+  authState?:
+    | GoogleCloudDiscoveryengineV1WidgetConfigConnectorAuthStateAuthStateEnum
+    | (string & {});
 }
 export const GoogleCloudDiscoveryengineV1WidgetConfigConnectorAuthState =
   /*@__PURE__*/ S.suspend(() =>
@@ -11238,7 +11358,7 @@ export const GoogleCloudDiscoveryengineV1WidgetConfigCollectionComponent =
   }) as any as S.Schema<GoogleCloudDiscoveryengineV1WidgetConfigCollectionComponent>;
 
 export type GoogleCloudDiscoveryengineV1WidgetConfigCollectionComponentList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1WidgetConfigCollectionComponent>;
+  Array<GoogleCloudDiscoveryengineV1WidgetConfigCollectionComponent>;
 export const GoogleCloudDiscoveryengineV1WidgetConfigCollectionComponentList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1WidgetConfigCollectionComponent,
@@ -11300,7 +11420,7 @@ export const GoogleCloudDiscoveryengineV1WidgetConfigBatchAuthStatus =
   }) as any as S.Schema<GoogleCloudDiscoveryengineV1WidgetConfigBatchAuthStatus>;
 
 export type GoogleCloudDiscoveryengineV1WidgetConfigBatchAuthStatusList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1WidgetConfigBatchAuthStatus>;
+  Array<GoogleCloudDiscoveryengineV1WidgetConfigBatchAuthStatus>;
 export const GoogleCloudDiscoveryengineV1WidgetConfigBatchAuthStatusList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1WidgetConfigBatchAuthStatus,
@@ -11329,7 +11449,7 @@ export interface GoogleCloudDiscoveryengineV1WidgetConfigNode {
   /** Output only. An identifier or URL pointing to an icon representing this node type. */
   iconUrl?: string;
   /** Output only. The type of the node. */
-  type?: GoogleCloudDiscoveryengineV1WidgetConfigNodeTypeEnum;
+  type?: GoogleCloudDiscoveryengineV1WidgetConfigNodeTypeEnum | (string & {});
   /** Output only. A human readable name for the node. */
   displayName?: string;
   /** Output only. The parameter schema of the tool. This schema is expected to conform to the OpenAPI Schema standard (see https://spec.openapis.org/oas/v3.0.3.html and AIP-146). It describes the expected structure of the parameters that this node accepts. */
@@ -11354,7 +11474,7 @@ export const GoogleCloudDiscoveryengineV1WidgetConfigNode =
   }) as any as S.Schema<GoogleCloudDiscoveryengineV1WidgetConfigNode>;
 
 export type GoogleCloudDiscoveryengineV1WidgetConfigNodeList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1WidgetConfigNode>;
+  Array<GoogleCloudDiscoveryengineV1WidgetConfigNode>;
 export const GoogleCloudDiscoveryengineV1WidgetConfigNodeList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1WidgetConfigNode,
@@ -11376,7 +11496,9 @@ export const GoogleCloudDiscoveryengineV1WidgetConfigCustomerProvidedConfigCusto
 /** Customer provided configurations. */
 export interface GoogleCloudDiscoveryengineV1WidgetConfigCustomerProvidedConfig {
   /** Customer type. */
-  customerType?: GoogleCloudDiscoveryengineV1WidgetConfigCustomerProvidedConfigCustomerTypeEnum;
+  customerType?:
+    | GoogleCloudDiscoveryengineV1WidgetConfigCustomerProvidedConfigCustomerTypeEnum
+    | (string & {});
 }
 export const GoogleCloudDiscoveryengineV1WidgetConfigCustomerProvidedConfig =
   /*@__PURE__*/ S.suspend(() =>
@@ -11412,7 +11534,7 @@ export const GoogleCloudDiscoveryengineV1WidgetConfigHomepageSettingShortcut =
   }) as any as S.Schema<GoogleCloudDiscoveryengineV1WidgetConfigHomepageSettingShortcut>;
 
 export type GoogleCloudDiscoveryengineV1WidgetConfigHomepageSettingShortcutList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1WidgetConfigHomepageSettingShortcut>;
+  Array<GoogleCloudDiscoveryengineV1WidgetConfigHomepageSettingShortcut>;
 export const GoogleCloudDiscoveryengineV1WidgetConfigHomepageSettingShortcutList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1WidgetConfigHomepageSettingShortcut,
@@ -11451,7 +11573,9 @@ export interface GoogleCloudDiscoveryengineV1WidgetConfig {
   /** Describes search widget UI branding settings, such as the widget title, logo, favicons, and colors. */
   uiBranding?: GoogleCloudDiscoveryengineV1WidgetConfigUiBrandingSettings;
   /** Output only. The type of the parent data store. */
-  dataStoreType?: GoogleCloudDiscoveryengineV1WidgetConfigDataStoreTypeEnum;
+  dataStoreType?:
+    | GoogleCloudDiscoveryengineV1WidgetConfigDataStoreTypeEnum
+    | (string & {});
   /** Whether allow no-auth integration with widget. If set true, public access to search or other solutions from widget is allowed without authenication token provided by customer hosted backend server. */
   allowPublicAccess?: boolean;
   /** Optional. Output only. Describes the assistant settings of the widget. */
@@ -11481,13 +11605,17 @@ export interface GoogleCloudDiscoveryengineV1WidgetConfig {
   /** Configurable UI configurations per data store. */
   dataStoreUiConfigs?: GoogleCloudDiscoveryengineV1WidgetConfigDataStoreUiConfigList;
   /** The type of snippet to display in UCS widget. - RESULT_DISPLAY_TYPE_UNSPECIFIED for existing users. - SNIPPET for new non-enterprise search users. - EXTRACTIVE_ANSWER for new enterprise search users. */
-  resultDisplayType?: GoogleCloudDiscoveryengineV1WidgetConfigResultDisplayTypeEnum;
+  resultDisplayType?:
+    | GoogleCloudDiscoveryengineV1WidgetConfigResultDisplayTypeEnum
+    | (string & {});
   /** Whether to enable safe search. */
   enableSafeSearch?: boolean;
   /** Output only. The batch authorization statuses for the widget's connectors. */
   batchAuthStatuses?: GoogleCloudDiscoveryengineV1WidgetConfigBatchAuthStatusList;
   /** Required. Immutable. Specifies the solution type that this WidgetConfig can be used for. */
-  solutionType?: GoogleCloudDiscoveryengineV1WidgetConfigSolutionTypeEnum;
+  solutionType?:
+    | GoogleCloudDiscoveryengineV1WidgetConfigSolutionTypeEnum
+    | (string & {});
   /** Turn on or off summarization for the search response. */
   enableSummarization?: boolean;
   /** Output only. Whether the customer accepted data use terms. */
@@ -11503,7 +11631,9 @@ export interface GoogleCloudDiscoveryengineV1WidgetConfig {
   /** Output only. Whether LLM is enabled in the corresponding data store. */
   llmEnabled?: boolean;
   /** Output only. The industry vertical that the WidgetConfig registers. The WidgetConfig industry vertical is based on the associated Engine. */
-  industryVertical?: GoogleCloudDiscoveryengineV1WidgetConfigIndustryVerticalEnum;
+  industryVertical?:
+    | GoogleCloudDiscoveryengineV1WidgetConfigIndustryVerticalEnum
+    | (string & {});
   /** Optional. Output only. Describes the customer related configurations, currently only used for government customers. This field cannot be modified after project onboarding. */
   customerProvidedConfig?: GoogleCloudDiscoveryengineV1WidgetConfigCustomerProvidedConfig;
   /** Immutable. The full resource name of the widget config. Format: `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}/widgetConfigs/{widget_config_id}`. This field must be a UTF-8 encoded string with a length limit of 1024 characters. */
@@ -12391,7 +12521,7 @@ export const GoogleCloudDiscoveryengineV1IdentityMappingEntry =
   }) as any as S.Schema<GoogleCloudDiscoveryengineV1IdentityMappingEntry>;
 
 export type GoogleCloudDiscoveryengineV1IdentityMappingEntryList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1IdentityMappingEntry>;
+  Array<GoogleCloudDiscoveryengineV1IdentityMappingEntry>;
 export const GoogleCloudDiscoveryengineV1IdentityMappingEntryList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1IdentityMappingEntry,
@@ -12506,7 +12636,7 @@ export const GoogleCloudDiscoveryengineV1BigtableOptionsBigtableColumn =
   }) as any as S.Schema<GoogleCloudDiscoveryengineV1BigtableOptionsBigtableColumn>;
 
 export type GoogleCloudDiscoveryengineV1BigtableOptionsBigtableColumnList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1BigtableOptionsBigtableColumn>;
+  Array<GoogleCloudDiscoveryengineV1BigtableOptionsBigtableColumn>;
 export const GoogleCloudDiscoveryengineV1BigtableOptionsBigtableColumnList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1BigtableOptionsBigtableColumn,
@@ -12623,7 +12753,7 @@ export const GoogleCloudDiscoveryengineV1ImportDocumentsRequestReconciliationMod
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudDiscoveryengineV1DocumentList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1Document>;
+  Array<GoogleCloudDiscoveryengineV1Document>;
 export const GoogleCloudDiscoveryengineV1DocumentList = /*@__PURE__*/ S.Array(
   GoogleCloudDiscoveryengineV1Document,
 ) as any as S.Schema<GoogleCloudDiscoveryengineV1DocumentList>;
@@ -12953,7 +13083,7 @@ export const GoogleCloudDiscoveryengineV1CompletionSuggestion =
   }) as any as S.Schema<GoogleCloudDiscoveryengineV1CompletionSuggestion>;
 
 export type GoogleCloudDiscoveryengineV1CompletionSuggestionList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1CompletionSuggestion>;
+  Array<GoogleCloudDiscoveryengineV1CompletionSuggestion>;
 export const GoogleCloudDiscoveryengineV1CompletionSuggestionList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1CompletionSuggestion,
@@ -13056,7 +13186,7 @@ export const GoogleCloudDiscoveryengineV1SuggestionDenyListEntry =
   }) as any as S.Schema<GoogleCloudDiscoveryengineV1SuggestionDenyListEntry>;
 
 export type GoogleCloudDiscoveryengineV1SuggestionDenyListEntryList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1SuggestionDenyListEntry>;
+  Array<GoogleCloudDiscoveryengineV1SuggestionDenyListEntry>;
 export const GoogleCloudDiscoveryengineV1SuggestionDenyListEntryList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1SuggestionDenyListEntry,
@@ -13211,8 +13341,9 @@ export type GoogleCloudDiscoveryengineV1FeedbackReasonsItemEnum =
 export const GoogleCloudDiscoveryengineV1FeedbackReasonsItemEnum =
   /*@__PURE__*/ S.String;
 
-export type GoogleCloudDiscoveryengineV1FeedbackReasonsItemEnumList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1FeedbackReasonsItemEnum>;
+export type GoogleCloudDiscoveryengineV1FeedbackReasonsItemEnumList = Array<
+  GoogleCloudDiscoveryengineV1FeedbackReasonsItemEnum | (string & {})
+>;
 export const GoogleCloudDiscoveryengineV1FeedbackReasonsItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1FeedbackReasonsItemEnum,
@@ -13223,7 +13354,9 @@ export interface GoogleCloudDiscoveryengineV1Feedback {
   /** Optional. The additional user comment of the feedback if user gives a thumb down. */
   comment?: string;
   /** Required. Indicate whether the user gives a positive or negative feedback. If the user gives a negative feedback, there might be more feedback details. */
-  feedbackType?: GoogleCloudDiscoveryengineV1FeedbackFeedbackTypeEnum;
+  feedbackType?:
+    | GoogleCloudDiscoveryengineV1FeedbackFeedbackTypeEnum
+    | (string & {});
   /** The version of the LLM model that was used to generate the response. */
   llmModelVersion?: string;
   /** Optional. Whether the customer accepted data use terms. */
@@ -13231,7 +13364,9 @@ export interface GoogleCloudDiscoveryengineV1Feedback {
   /** The related conversation information when user gives feedback. */
   conversationInfo?: GoogleCloudDiscoveryengineV1FeedbackConversationInfo;
   /** Optional. The UI component the user feedback comes from, which could be GOOGLE_CONSOLE, GOOGLE_WIDGET, GOOGLE_WEBAPP. */
-  feedbackSource?: GoogleCloudDiscoveryengineV1FeedbackFeedbackSourceEnum;
+  feedbackSource?:
+    | GoogleCloudDiscoveryengineV1FeedbackFeedbackSourceEnum
+    | (string & {});
   /** Optional. The version of the component that this report is being sent from. */
   componentVersion?: string;
   /** Optional. The reason if user gives a thumb down. */
@@ -13363,7 +13498,7 @@ export const GoogleCloudDiscoveryengineV1DocumentInfo = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudDiscoveryengineV1DocumentInfo>;
 
 export type GoogleCloudDiscoveryengineV1DocumentInfoList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1DocumentInfo>;
+  Array<GoogleCloudDiscoveryengineV1DocumentInfo>;
 export const GoogleCloudDiscoveryengineV1DocumentInfoList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1DocumentInfo,
@@ -13396,7 +13531,7 @@ export const GoogleCloudDiscoveryengineV1PanelInfo = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudDiscoveryengineV1PanelInfo>;
 
 export type GoogleCloudDiscoveryengineV1PanelInfoList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1PanelInfo>;
+  Array<GoogleCloudDiscoveryengineV1PanelInfo>;
 export const GoogleCloudDiscoveryengineV1PanelInfoList = /*@__PURE__*/ S.Array(
   GoogleCloudDiscoveryengineV1PanelInfo,
 ) as any as S.Schema<GoogleCloudDiscoveryengineV1PanelInfoList>;
@@ -13519,7 +13654,7 @@ export const GoogleCloudDiscoveryengineV1UserEvent = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudDiscoveryengineV1UserEvent>;
 
 export type GoogleCloudDiscoveryengineV1UserEventList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1UserEvent>;
+  Array<GoogleCloudDiscoveryengineV1UserEvent>;
 export const GoogleCloudDiscoveryengineV1UserEventList = /*@__PURE__*/ S.Array(
   GoogleCloudDiscoveryengineV1UserEvent,
 ) as any as S.Schema<GoogleCloudDiscoveryengineV1UserEventList>;
@@ -13778,7 +13913,7 @@ export const ListProjectsLocationsCmekConfigsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListProjectsLocationsCmekConfigsRequest>;
 
 export type GoogleCloudDiscoveryengineV1CmekConfigList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1CmekConfig>;
+  Array<GoogleCloudDiscoveryengineV1CmekConfig>;
 export const GoogleCloudDiscoveryengineV1CmekConfigList = /*@__PURE__*/ S.Array(
   GoogleCloudDiscoveryengineV1CmekConfig,
 ) as any as S.Schema<GoogleCloudDiscoveryengineV1CmekConfigList>;
@@ -13829,8 +13964,7 @@ export const ListProjectsLocationsCollectionsDataConnectorOperationsRequest =
       "ListProjectsLocationsCollectionsDataConnectorOperationsRequest",
   }) as any as S.Schema<ListProjectsLocationsCollectionsDataConnectorOperationsRequest>;
 
-export type GoogleLongrunningOperationList =
-  ReadonlyArray<GoogleLongrunningOperation>;
+export type GoogleLongrunningOperationList = Array<GoogleLongrunningOperation>;
 export const GoogleLongrunningOperationList = /*@__PURE__*/ S.Array(
   GoogleLongrunningOperation,
 ) as any as S.Schema<GoogleLongrunningOperationList>;
@@ -13884,7 +14018,7 @@ export const ListProjectsLocationsCollectionsDataStoresRequest =
   }) as any as S.Schema<ListProjectsLocationsCollectionsDataStoresRequest>;
 
 export type GoogleCloudDiscoveryengineV1DataStoreList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1DataStore>;
+  Array<GoogleCloudDiscoveryengineV1DataStore>;
 export const GoogleCloudDiscoveryengineV1DataStoreList = /*@__PURE__*/ S.Array(
   GoogleCloudDiscoveryengineV1DataStore,
 ) as any as S.Schema<GoogleCloudDiscoveryengineV1DataStoreList>;
@@ -14010,7 +14144,7 @@ export const ListProjectsLocationsCollectionsDataStoresControlsRequest =
   }) as any as S.Schema<ListProjectsLocationsCollectionsDataStoresControlsRequest>;
 
 export type GoogleCloudDiscoveryengineV1ControlList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1Control>;
+  Array<GoogleCloudDiscoveryengineV1Control>;
 export const GoogleCloudDiscoveryengineV1ControlList = /*@__PURE__*/ S.Array(
   GoogleCloudDiscoveryengineV1Control,
 ) as any as S.Schema<GoogleCloudDiscoveryengineV1ControlList>;
@@ -14065,7 +14199,7 @@ export const ListProjectsLocationsCollectionsDataStoresConversationsRequest =
   }) as any as S.Schema<ListProjectsLocationsCollectionsDataStoresConversationsRequest>;
 
 export type GoogleCloudDiscoveryengineV1ConversationList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1Conversation>;
+  Array<GoogleCloudDiscoveryengineV1Conversation>;
 export const GoogleCloudDiscoveryengineV1ConversationList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1Conversation,
@@ -14163,7 +14297,7 @@ export const GoogleCloudDiscoveryengineV1CustomTuningModel =
   }) as any as S.Schema<GoogleCloudDiscoveryengineV1CustomTuningModel>;
 
 export type GoogleCloudDiscoveryengineV1CustomTuningModelList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1CustomTuningModel>;
+  Array<GoogleCloudDiscoveryengineV1CustomTuningModel>;
 export const GoogleCloudDiscoveryengineV1CustomTuningModelList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1CustomTuningModel,
@@ -14272,7 +14406,7 @@ export const ListProjectsLocationsCollectionsDataStoresSchemasRequest =
   }) as any as S.Schema<ListProjectsLocationsCollectionsDataStoresSchemasRequest>;
 
 export type GoogleCloudDiscoveryengineV1SchemaList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1Schema>;
+  Array<GoogleCloudDiscoveryengineV1Schema>;
 export const GoogleCloudDiscoveryengineV1SchemaList = /*@__PURE__*/ S.Array(
   GoogleCloudDiscoveryengineV1Schema,
 ) as any as S.Schema<GoogleCloudDiscoveryengineV1SchemaList>;
@@ -14353,7 +14487,7 @@ export const ListProjectsLocationsCollectionsDataStoresServingConfigsRequest =
   }) as any as S.Schema<ListProjectsLocationsCollectionsDataStoresServingConfigsRequest>;
 
 export type GoogleCloudDiscoveryengineV1ServingConfigList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1ServingConfig>;
+  Array<GoogleCloudDiscoveryengineV1ServingConfig>;
 export const GoogleCloudDiscoveryengineV1ServingConfigList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1ServingConfig,
@@ -14408,7 +14542,7 @@ export const ListProjectsLocationsCollectionsDataStoresSessionsRequest =
   }) as any as S.Schema<ListProjectsLocationsCollectionsDataStoresSessionsRequest>;
 
 export type GoogleCloudDiscoveryengineV1SessionList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1Session>;
+  Array<GoogleCloudDiscoveryengineV1Session>;
 export const GoogleCloudDiscoveryengineV1SessionList = /*@__PURE__*/ S.Array(
   GoogleCloudDiscoveryengineV1Session,
 ) as any as S.Schema<GoogleCloudDiscoveryengineV1SessionList>;
@@ -14569,7 +14703,7 @@ export const ListProjectsLocationsCollectionsEnginesRequest =
   }) as any as S.Schema<ListProjectsLocationsCollectionsEnginesRequest>;
 
 export type GoogleCloudDiscoveryengineV1EngineList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1Engine>;
+  Array<GoogleCloudDiscoveryengineV1Engine>;
 export const GoogleCloudDiscoveryengineV1EngineList = /*@__PURE__*/ S.Array(
   GoogleCloudDiscoveryengineV1Engine,
 ) as any as S.Schema<GoogleCloudDiscoveryengineV1EngineList>;
@@ -14617,7 +14751,7 @@ export const ListProjectsLocationsCollectionsEnginesAssistantsRequest =
   }) as any as S.Schema<ListProjectsLocationsCollectionsEnginesAssistantsRequest>;
 
 export type GoogleCloudDiscoveryengineV1AssistantList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1Assistant>;
+  Array<GoogleCloudDiscoveryengineV1Assistant>;
 export const GoogleCloudDiscoveryengineV1AssistantList = /*@__PURE__*/ S.Array(
   GoogleCloudDiscoveryengineV1Assistant,
 ) as any as S.Schema<GoogleCloudDiscoveryengineV1AssistantList>;
@@ -14669,7 +14803,7 @@ export const ListProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1TasksPu
   }) as any as S.Schema<ListProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1TasksPushNotificationConfigsRequest>;
 
 export type A2aV1TaskPushNotificationConfigList =
-  ReadonlyArray<A2aV1TaskPushNotificationConfig>;
+  Array<A2aV1TaskPushNotificationConfig>;
 export const A2aV1TaskPushNotificationConfigList = /*@__PURE__*/ S.Array(
   A2aV1TaskPushNotificationConfig,
 ) as any as S.Schema<A2aV1TaskPushNotificationConfigList>;
@@ -15205,7 +15339,7 @@ export const ListProjectsLocationsIdentityMappingStoresRequest =
   }) as any as S.Schema<ListProjectsLocationsIdentityMappingStoresRequest>;
 
 export type GoogleCloudDiscoveryengineV1IdentityMappingStoreList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1IdentityMappingStore>;
+  Array<GoogleCloudDiscoveryengineV1IdentityMappingStore>;
 export const GoogleCloudDiscoveryengineV1IdentityMappingStoreList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1IdentityMappingStore,
@@ -15290,7 +15424,7 @@ export const ListProjectsLocationsLicenseConfigsRequest =
   }) as any as S.Schema<ListProjectsLocationsLicenseConfigsRequest>;
 
 export type GoogleCloudDiscoveryengineV1LicenseConfigList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1LicenseConfig>;
+  Array<GoogleCloudDiscoveryengineV1LicenseConfig>;
 export const GoogleCloudDiscoveryengineV1LicenseConfigList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1LicenseConfig,
@@ -15382,7 +15516,7 @@ export const GoogleCloudDiscoveryengineV1LicenseConfigUsageStats =
   }) as any as S.Schema<GoogleCloudDiscoveryengineV1LicenseConfigUsageStats>;
 
 export type GoogleCloudDiscoveryengineV1LicenseConfigUsageStatsList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1LicenseConfigUsageStats>;
+  Array<GoogleCloudDiscoveryengineV1LicenseConfigUsageStats>;
 export const GoogleCloudDiscoveryengineV1LicenseConfigUsageStatsList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1LicenseConfigUsageStats,
@@ -16698,7 +16832,7 @@ export const GoogleCloudDiscoveryengineV1RankingRecord =
   }) as any as S.Schema<GoogleCloudDiscoveryengineV1RankingRecord>;
 
 export type GoogleCloudDiscoveryengineV1RankingRecordList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1RankingRecord>;
+  Array<GoogleCloudDiscoveryengineV1RankingRecord>;
 export const GoogleCloudDiscoveryengineV1RankingRecordList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1RankingRecord,
@@ -16847,7 +16981,7 @@ export const GoogleCloudDiscoveryengineV1RecommendResponseRecommendationResult =
   }) as any as S.Schema<GoogleCloudDiscoveryengineV1RecommendResponseRecommendationResult>;
 
 export type GoogleCloudDiscoveryengineV1RecommendResponseRecommendationResultList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1RecommendResponseRecommendationResult>;
+  Array<GoogleCloudDiscoveryengineV1RecommendResponseRecommendationResult>;
 export const GoogleCloudDiscoveryengineV1RecommendResponseRecommendationResultList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1RecommendResponseRecommendationResult,
@@ -17112,7 +17246,7 @@ export const GoogleCloudDiscoveryengineV1SearchRequestCrowdingSpec =
   }) as any as S.Schema<GoogleCloudDiscoveryengineV1SearchRequestCrowdingSpec>;
 
 export type GoogleCloudDiscoveryengineV1SearchRequestCrowdingSpecList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1SearchRequestCrowdingSpec>;
+  Array<GoogleCloudDiscoveryengineV1SearchRequestCrowdingSpec>;
 export const GoogleCloudDiscoveryengineV1SearchRequestCrowdingSpecList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1SearchRequestCrowdingSpec,
@@ -17281,7 +17415,7 @@ export const GoogleCloudDiscoveryengineV1Interval = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudDiscoveryengineV1Interval>;
 
 export type GoogleCloudDiscoveryengineV1IntervalList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1Interval>;
+  Array<GoogleCloudDiscoveryengineV1Interval>;
 export const GoogleCloudDiscoveryengineV1IntervalList = /*@__PURE__*/ S.Array(
   GoogleCloudDiscoveryengineV1Interval,
 ) as any as S.Schema<GoogleCloudDiscoveryengineV1IntervalList>;
@@ -17344,7 +17478,7 @@ export const GoogleCloudDiscoveryengineV1SearchRequestFacetSpec =
   }) as any as S.Schema<GoogleCloudDiscoveryengineV1SearchRequestFacetSpec>;
 
 export type GoogleCloudDiscoveryengineV1SearchRequestFacetSpecList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1SearchRequestFacetSpec>;
+  Array<GoogleCloudDiscoveryengineV1SearchRequestFacetSpec>;
 export const GoogleCloudDiscoveryengineV1SearchRequestFacetSpecList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1SearchRequestFacetSpec,
@@ -17625,7 +17759,7 @@ export const GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnder
   }) as any as S.Schema<GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterStringConstraint>;
 
 export type GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterExpressionList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterExpression>;
+  Array<GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterExpression>;
 export const GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterExpressionList =
   /*@__PURE__*/ S.Array(
     S.suspend(
@@ -17829,7 +17963,7 @@ export const GoogleCloudDiscoveryengineV1SearchResponseSessionInfo =
   }) as any as S.Schema<GoogleCloudDiscoveryengineV1SearchResponseSessionInfo>;
 
 export type GoogleCloudDiscoveryengineV1SearchLinkPromotionList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1SearchLinkPromotion>;
+  Array<GoogleCloudDiscoveryengineV1SearchLinkPromotion>;
 export const GoogleCloudDiscoveryengineV1SearchLinkPromotionList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1SearchLinkPromotion,
@@ -17856,7 +17990,7 @@ export const GoogleCloudDiscoveryengineV1SearchResponseFacetFacetValue =
   }) as any as S.Schema<GoogleCloudDiscoveryengineV1SearchResponseFacetFacetValue>;
 
 export type GoogleCloudDiscoveryengineV1SearchResponseFacetFacetValueList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1SearchResponseFacetFacetValue>;
+  Array<GoogleCloudDiscoveryengineV1SearchResponseFacetFacetValue>;
 export const GoogleCloudDiscoveryengineV1SearchResponseFacetFacetValueList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1SearchResponseFacetFacetValue,
@@ -17885,7 +18019,7 @@ export const GoogleCloudDiscoveryengineV1SearchResponseFacet =
   }) as any as S.Schema<GoogleCloudDiscoveryengineV1SearchResponseFacet>;
 
 export type GoogleCloudDiscoveryengineV1SearchResponseFacetList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1SearchResponseFacet>;
+  Array<GoogleCloudDiscoveryengineV1SearchResponseFacet>;
 export const GoogleCloudDiscoveryengineV1SearchResponseFacetList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1SearchResponseFacet,
@@ -18518,7 +18652,7 @@ export const GoogleCloudDiscoveryengineV1StreamAssistResponseInvokedSkill =
   }) as any as S.Schema<GoogleCloudDiscoveryengineV1StreamAssistResponseInvokedSkill>;
 
 export type GoogleCloudDiscoveryengineV1StreamAssistResponseInvokedSkillList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1StreamAssistResponseInvokedSkill>;
+  Array<GoogleCloudDiscoveryengineV1StreamAssistResponseInvokedSkill>;
 export const GoogleCloudDiscoveryengineV1StreamAssistResponseInvokedSkillList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1StreamAssistResponseInvokedSkill,
@@ -18557,7 +18691,7 @@ export const GoogleCloudDiscoveryengineV1StreamAssistResponseConnectorAuthError 
   }) as any as S.Schema<GoogleCloudDiscoveryengineV1StreamAssistResponseConnectorAuthError>;
 
 export type GoogleCloudDiscoveryengineV1StreamAssistResponseConnectorAuthErrorList =
-  ReadonlyArray<GoogleCloudDiscoveryengineV1StreamAssistResponseConnectorAuthError>;
+  Array<GoogleCloudDiscoveryengineV1StreamAssistResponseConnectorAuthError>;
 export const GoogleCloudDiscoveryengineV1StreamAssistResponseConnectorAuthErrorList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1StreamAssistResponseConnectorAuthError,

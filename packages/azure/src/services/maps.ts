@@ -95,13 +95,13 @@ export const LinkedResource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LinkedResource" }) as any as S.Schema<LinkedResource>;
 
 /** The array of associated resources to the Map account. Linked resource in the array cannot individually update, you must update all linked resources in the array together. These resources may be used on operations on the Azure Maps REST API. Access is controlled by the Map Account Managed Identity(s) permissions to those resource(s). */
-export type LinkedResources = ReadonlyArray<LinkedResource>;
+export type LinkedResources = Array<LinkedResource>;
 export const LinkedResources = /*@__PURE__*/ S.Array(
   LinkedResource,
 ) as any as S.Schema<LinkedResources>;
 
 /** Required if CorsRule element is present. A list of origin domains that will be allowed via CORS, or "*" to allow all domains */
-export type CorsRuleAllowedOriginsList = ReadonlyArray<string>;
+export type CorsRuleAllowedOriginsList = Array<string>;
 export const CorsRuleAllowedOriginsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CorsRuleAllowedOriginsList>;
@@ -118,7 +118,7 @@ export const CorsRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CorsRule" }) as any as S.Schema<CorsRule>;
 
 /** The list of CORS rules. You can include up to five CorsRule elements in the request. */
-export type CorsRulesCorsRulesList = ReadonlyArray<CorsRule>;
+export type CorsRulesCorsRulesList = Array<CorsRule>;
 export const CorsRulesCorsRulesList = /*@__PURE__*/ S.Array(
   CorsRule,
 ) as any as S.Schema<CorsRulesCorsRulesList>;
@@ -152,7 +152,9 @@ export const CustomerManagedKeyEncryptionKeyEncryptionKeyIdentityIdentityType =
 /** All identity configuration for Customer-managed key settings defining which identity should be used to auth to Key Vault. */
 export interface CustomerManagedKeyEncryptionKeyEncryptionKeyIdentity {
   /** Values can be systemAssignedIdentity or userAssignedIdentity */
-  identityType?: CustomerManagedKeyEncryptionKeyEncryptionKeyIdentityIdentityType;
+  identityType?:
+    | CustomerManagedKeyEncryptionKeyEncryptionKeyIdentityIdentityType
+    | (string & {});
   /** user assigned identity to use for accessing key encryption key Url. Ex: /subscriptions/fa5fc227-a624-475e-b696-cdd604c735bc/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId. Mutually exclusive with identityType systemAssignedIdentity and delegatedResourceIdentity. */
   userAssignedIdentityResourceId?: string;
   /** delegated identity to use for accessing key encryption key Url. Ex: /subscriptions/fa5fc227-a624-475e-b696-cdd604c735bc/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId. Mutually exclusive with identityType systemAssignedIdentity and userAssignedIdentity - internal use only. */
@@ -792,7 +794,7 @@ export const MapsAccount = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MapsAccount" }) as any as S.Schema<MapsAccount>;
 
 /** a Maps Account. */
-export type MapsAccountsValueList = ReadonlyArray<MapsAccount>;
+export type MapsAccountsValueList = Array<MapsAccount>;
 export const MapsAccountsValueList = /*@__PURE__*/ S.Array(
   MapsAccount,
 ) as any as S.Schema<MapsAccountsValueList>;
@@ -885,7 +887,7 @@ export type AccountsListSasRequestSigningKey =
 export const AccountsListSasRequestSigningKey = /*@__PURE__*/ S.String;
 
 /** Optional, allows control of which region locations are permitted access to Azure Maps REST APIs with the SAS token. Example: "eastus", "westus2". Omitting this parameter will allow all region locations to be accessible. */
-export type AccountsListSasRequestRegionsList = ReadonlyArray<string>;
+export type AccountsListSasRequestRegionsList = Array<string>;
 export const AccountsListSasRequestRegionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AccountsListSasRequestRegionsList>;
@@ -1576,7 +1578,7 @@ export const Creator = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Creator" }) as any as S.Schema<Creator>;
 
 /** a Creator account. */
-export type CreatorListValueList = ReadonlyArray<Creator>;
+export type CreatorListValueList = Array<Creator>;
 export const CreatorListValueList = /*@__PURE__*/ S.Array(
   Creator,
 ) as any as S.Schema<CreatorListValueList>;
@@ -1788,7 +1790,7 @@ export const Dimension = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Dimension" }) as any as S.Schema<Dimension>;
 
 /** Dimensions of map account. */
-export type MetricSpecificationDimensionsList = ReadonlyArray<Dimension>;
+export type MetricSpecificationDimensionsList = Array<Dimension>;
 export const MetricSpecificationDimensionsList = /*@__PURE__*/ S.Array(
   Dimension,
 ) as any as S.Schema<MetricSpecificationDimensionsList>;
@@ -1847,7 +1849,7 @@ export const MetricSpecification = /*@__PURE__*/ S.suspend(() =>
 
 /** Metric specifications of operation. */
 export type ServiceSpecificationMetricSpecificationsList =
-  ReadonlyArray<MetricSpecification>;
+  Array<MetricSpecification>;
 export const ServiceSpecificationMetricSpecificationsList =
   /*@__PURE__*/ S.Array(
     MetricSpecification,
@@ -1907,7 +1909,7 @@ export const OperationDetail = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDetail>;
 
 /** An operation available for Maps. */
-export type MapsOperationsValueList = ReadonlyArray<OperationDetail>;
+export type MapsOperationsValueList = Array<OperationDetail>;
 export const MapsOperationsValueList = /*@__PURE__*/ S.Array(
   OperationDetail,
 ) as any as S.Schema<MapsOperationsValueList>;

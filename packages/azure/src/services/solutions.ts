@@ -71,7 +71,7 @@ export const ApplicationAuthorization = /*@__PURE__*/ S.suspend(() =>
 
 /** The managed application provider authorizations. */
 export type ApplicationDefinitionPropertiesAuthorizationsList =
-  ReadonlyArray<ApplicationAuthorization>;
+  Array<ApplicationAuthorization>;
 export const ApplicationDefinitionPropertiesAuthorizationsList =
   /*@__PURE__*/ S.Array(
     ApplicationAuthorization,
@@ -92,11 +92,11 @@ export const ApplicationArtifactType = /*@__PURE__*/ S.String;
 /** Application definition artifact. */
 export interface ApplicationDefinitionArtifact {
   /** The managed application definition artifact name. */
-  name: ApplicationDefinitionArtifactName;
+  name: ApplicationDefinitionArtifactName | (string & {});
   /** The managed application definition artifact blob uri. */
   uri: string;
   /** The managed application definition artifact type. */
-  type: ApplicationArtifactType;
+  type: ApplicationArtifactType | (string & {});
 }
 export const ApplicationDefinitionArtifact = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -110,7 +110,7 @@ export const ApplicationDefinitionArtifact = /*@__PURE__*/ S.suspend(() =>
 
 /** The collection of managed application artifacts. The portal will use the files specified as artifacts to construct the user experience of creating a managed application from a managed application definition. */
 export type ApplicationDefinitionPropertiesArtifactsList =
-  ReadonlyArray<ApplicationDefinitionArtifact>;
+  Array<ApplicationDefinitionArtifact>;
 export const ApplicationDefinitionPropertiesArtifactsList =
   /*@__PURE__*/ S.Array(
     ApplicationDefinitionArtifact,
@@ -131,7 +131,7 @@ export const ApplicationNotificationEndpoint = /*@__PURE__*/ S.suspend(() =>
 
 /** The managed application notification endpoint. */
 export type ApplicationNotificationPolicyNotificationEndpointsList =
-  ReadonlyArray<ApplicationNotificationEndpoint>;
+  Array<ApplicationNotificationEndpoint>;
 export const ApplicationNotificationPolicyNotificationEndpointsList =
   /*@__PURE__*/ S.Array(
     ApplicationNotificationEndpoint,
@@ -153,7 +153,7 @@ export const ApplicationNotificationPolicy = /*@__PURE__*/ S.suspend(() =>
 
 /** The deny assignment excluded actions. */
 export type ApplicationPackageLockingPolicyDefinitionAllowedActionsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ApplicationPackageLockingPolicyDefinitionAllowedActionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -161,7 +161,7 @@ export const ApplicationPackageLockingPolicyDefinitionAllowedActionsList =
 
 /** The deny assignment excluded data actions. */
 export type ApplicationPackageLockingPolicyDefinitionAllowedDataActionsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ApplicationPackageLockingPolicyDefinitionAllowedDataActionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -195,7 +195,7 @@ export const DeploymentMode = /*@__PURE__*/ S.String;
 /** Managed application deployment policy. */
 export interface ApplicationDeploymentPolicy {
   /** The managed application deployment mode. */
-  deploymentMode: DeploymentMode;
+  deploymentMode: DeploymentMode | (string & {});
 }
 export const ApplicationDeploymentPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -215,7 +215,7 @@ export const ApplicationManagementMode = /*@__PURE__*/ S.String;
 /** Managed application management policy. */
 export interface ApplicationManagementPolicy {
   /** The managed application management mode. */
-  mode?: ApplicationManagementMode;
+  mode?: ApplicationManagementMode | (string & {});
 }
 export const ApplicationManagementPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -246,7 +246,7 @@ export const ApplicationPolicy = /*@__PURE__*/ S.suspend(() =>
 
 /** The managed application provider policies. */
 export type ApplicationDefinitionPropertiesPoliciesList =
-  ReadonlyArray<ApplicationPolicy>;
+  Array<ApplicationPolicy>;
 export const ApplicationDefinitionPropertiesPoliciesList =
   /*@__PURE__*/ S.Array(
     ApplicationPolicy,
@@ -255,7 +255,7 @@ export const ApplicationDefinitionPropertiesPoliciesList =
 /** The managed application definition properties. */
 export interface ApplicationDefinitionProperties {
   /** The managed application lock level. */
-  lockLevel: ApplicationLockLevel;
+  lockLevel: ApplicationLockLevel | (string & {});
   /** The managed application definition display name. */
   displayName?: string;
   /** A value indicating whether the package is enabled or not. */
@@ -716,7 +716,7 @@ export const ApplicationDefinition = /*@__PURE__*/ S.suspend(() =>
 
 /** The array of managed application definitions. */
 export type ApplicationDefinitionListResultValueList =
-  ReadonlyArray<ApplicationDefinition>;
+  Array<ApplicationDefinition>;
 export const ApplicationDefinitionListResultValueList = /*@__PURE__*/ S.Array(
   ApplicationDefinition,
 ) as any as S.Schema<ApplicationDefinitionListResultValueList>;
@@ -915,7 +915,7 @@ export interface JitApproverDefinition {
   /** The approver service principal Id. */
   id: string;
   /** The approver type. */
-  type?: JitApproverDefinitionType;
+  type?: JitApproverDefinitionType | (string & {});
   /** The approver display name. */
   displayName?: string;
 }
@@ -931,7 +931,7 @@ export const JitApproverDefinition = /*@__PURE__*/ S.suspend(() =>
 
 /** The JIT approvers */
 export type ApplicationJitAccessPolicyJitApproversList =
-  ReadonlyArray<JitApproverDefinition>;
+  Array<JitApproverDefinition>;
 export const ApplicationJitAccessPolicyJitApproversList = /*@__PURE__*/ S.Array(
   JitApproverDefinition,
 ) as any as S.Schema<ApplicationJitAccessPolicyJitApproversList>;
@@ -941,7 +941,7 @@ export interface ApplicationJitAccessPolicy {
   /** Whether the JIT access is enabled. */
   jitAccessEnabled: boolean;
   /** JIT approval mode. */
-  jitApprovalMode?: JitApprovalMode;
+  jitApprovalMode?: JitApprovalMode | (string & {});
   /** The JIT approvers */
   jitApprovers?: ApplicationJitAccessPolicyJitApproversList;
   /** The maximum duration JIT access is granted. This is an ISO8601 time period value. */
@@ -1179,7 +1179,7 @@ export const ApplicationBillingDetailsDefinition = /*@__PURE__*/ S.suspend(() =>
 
 /** The read-only authorizations property that is retrieved from the application package. */
 export type ApplicationPropertiesAuthorizationsList =
-  ReadonlyArray<ApplicationAuthorization>;
+  Array<ApplicationAuthorization>;
 export const ApplicationPropertiesAuthorizationsList = /*@__PURE__*/ S.Array(
   ApplicationAuthorization,
 ) as any as S.Schema<ApplicationPropertiesAuthorizationsList>;
@@ -1247,8 +1247,7 @@ export const ApplicationArtifact = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ApplicationArtifact>;
 
 /** The collection of managed application artifacts. */
-export type ApplicationPropertiesArtifactsList =
-  ReadonlyArray<ApplicationArtifact>;
+export type ApplicationPropertiesArtifactsList = Array<ApplicationArtifact>;
 export const ApplicationPropertiesArtifactsList = /*@__PURE__*/ S.Array(
   ApplicationArtifact,
 ) as any as S.Schema<ApplicationPropertiesArtifactsList>;
@@ -1919,7 +1918,7 @@ export const ApplicationsListAllowedUpgradePlansRequest =
   }) as any as S.Schema<ApplicationsListAllowedUpgradePlansRequest>;
 
 /** The array of plans. */
-export type AllowedUpgradePlansResultValueList = ReadonlyArray<Plan>;
+export type AllowedUpgradePlansResultValueList = Array<Plan>;
 export const AllowedUpgradePlansResultValueList = /*@__PURE__*/ S.Array(
   Plan,
 ) as any as S.Schema<AllowedUpgradePlansResultValueList>;
@@ -2056,7 +2055,7 @@ export const Application = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Application" }) as any as S.Schema<Application>;
 
 /** The array of managed applications. */
-export type ApplicationListResultValueList = ReadonlyArray<Application>;
+export type ApplicationListResultValueList = Array<Application>;
 export const ApplicationListResultValueList = /*@__PURE__*/ S.Array(
   Application,
 ) as any as S.Schema<ApplicationListResultValueList>;
@@ -2099,7 +2098,7 @@ export const ApplicationsListBySubscriptionRequest = /*@__PURE__*/ S.suspend(
 
 /** The user assigned identities. */
 export type ApplicationsListTokensRequestUserAssignedIdentitiesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ApplicationsListTokensRequestUserAssignedIdentitiesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2170,8 +2169,7 @@ export const ManagedIdentityToken = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ManagedIdentityToken>;
 
 /** The array of managed identity tokens. */
-export type ManagedIdentityTokenResultValueList =
-  ReadonlyArray<ManagedIdentityToken>;
+export type ManagedIdentityTokenResultValueList = Array<ManagedIdentityToken>;
 export const ManagedIdentityTokenResultValueList = /*@__PURE__*/ S.Array(
   ManagedIdentityToken,
 ) as any as S.Schema<ManagedIdentityTokenResultValueList>;
@@ -2672,7 +2670,7 @@ export const JitAuthorizationPolicies = /*@__PURE__*/ S.suspend(() =>
 
 /** The JIT authorization policies. */
 export type JitRequestPropertiesInputJitAuthorizationPoliciesList =
-  ReadonlyArray<JitAuthorizationPolicies>;
+  Array<JitAuthorizationPolicies>;
 export const JitRequestPropertiesInputJitAuthorizationPoliciesList =
   /*@__PURE__*/ S.Array(
     JitAuthorizationPolicies,
@@ -2685,7 +2683,7 @@ export const JitSchedulingType = /*@__PURE__*/ S.String;
 /** The JIT scheduling policies. */
 export interface JitSchedulingPolicy {
   /** The type of JIT schedule. */
-  type: JitSchedulingType;
+  type: JitSchedulingType | (string & {});
   duration: string;
   /** The start time of the request. */
   startTime: string;
@@ -2816,7 +2814,7 @@ export const JitRequestsCreateOrUpdateResponseSystemData =
 
 /** The JIT authorization policies. */
 export type JitRequestPropertiesJitAuthorizationPoliciesList =
-  ReadonlyArray<JitAuthorizationPolicies>;
+  Array<JitAuthorizationPolicies>;
 export const JitRequestPropertiesJitAuthorizationPoliciesList =
   /*@__PURE__*/ S.Array(
     JitAuthorizationPolicies,
@@ -3153,7 +3151,7 @@ export const JitRequestDefinition = /*@__PURE__*/ S.suspend(() =>
 
 /** The array of Jit request definition. */
 export type JitRequestDefinitionListResultValueList =
-  ReadonlyArray<JitRequestDefinition>;
+  Array<JitRequestDefinition>;
 export const JitRequestDefinitionListResultValueList = /*@__PURE__*/ S.Array(
   JitRequestDefinition,
 ) as any as S.Schema<JitRequestDefinitionListResultValueList>;
@@ -3386,7 +3384,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type ListOperationsResponseValueList = ReadonlyArray<Operation>;
+export type ListOperationsResponseValueList = Array<Operation>;
 export const ListOperationsResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<ListOperationsResponseValueList>;

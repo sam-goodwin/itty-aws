@@ -398,9 +398,9 @@ export const PubSubConfig = /*@__PURE__*/ S.suspend(() =>
 /** Configuration for a Pub/Sub Lite subscription that writes messages to a destination. User subscriber clients must not connect to this subscription. */
 export interface ExportConfig {
   /** Output only. The current state of the export, which may be different to the desired state due to errors. This field is output only. */
-  currentState?: ExportConfigCurrentStateEnum;
+  currentState?: ExportConfigCurrentStateEnum | (string & {});
   /** The desired state of this export. Setting this to values other than `ACTIVE` and `PAUSED` will result in an error. */
-  desiredState?: ExportConfigDesiredStateEnum;
+  desiredState?: ExportConfigDesiredStateEnum | (string & {});
   /** Optional. The name of an optional Pub/Sub Lite topic to publish messages that can not be exported to the destination. For example, the message can not be published to the Pub/Sub service because it does not satisfy the constraints documented at https://cloud.google.com/pubsub/docs/publisher. Structured like: projects/{project_number}/locations/{location}/topics/{topic_id}. Must be within the same project and location as the subscription. The topic may be changed or removed. */
   deadLetterTopic?: string;
   /** Messages are automatically written from the Pub/Sub Lite topic associated with this subscription to a Pub/Sub topic. */
@@ -424,7 +424,7 @@ export const DeliveryConfigDeliveryRequirementEnum = /*@__PURE__*/ S.String;
 /** The settings for a subscription's message delivery. */
 export interface DeliveryConfig {
   /** The DeliveryRequirement for this subscription. */
-  deliveryRequirement?: DeliveryConfigDeliveryRequirementEnum;
+  deliveryRequirement?: DeliveryConfigDeliveryRequirementEnum | (string & {});
 }
 export const DeliveryConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -688,7 +688,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -853,12 +853,12 @@ export const ListAdminProjectsLocationsOperationsRequest =
     identifier: "ListAdminProjectsLocationsOperationsRequest",
   }) as any as S.Schema<ListAdminProjectsLocationsOperationsRequest>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
 
-export type OperationList = ReadonlyArray<Operation>;
+export type OperationList = Array<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -907,7 +907,7 @@ export const ListAdminProjectsLocationsReservationsRequest =
     identifier: "ListAdminProjectsLocationsReservationsRequest",
   }) as any as S.Schema<ListAdminProjectsLocationsReservationsRequest>;
 
-export type ReservationList = ReadonlyArray<Reservation>;
+export type ReservationList = Array<Reservation>;
 export const ReservationList = /*@__PURE__*/ S.Array(
   Reservation,
 ) as any as S.Schema<ReservationList>;
@@ -994,7 +994,7 @@ export const ListAdminProjectsLocationsSubscriptionsRequest =
     identifier: "ListAdminProjectsLocationsSubscriptionsRequest",
   }) as any as S.Schema<ListAdminProjectsLocationsSubscriptionsRequest>;
 
-export type SubscriptionList = ReadonlyArray<Subscription>;
+export type SubscriptionList = Array<Subscription>;
 export const SubscriptionList = /*@__PURE__*/ S.Array(
   Subscription,
 ) as any as S.Schema<SubscriptionList>;
@@ -1040,7 +1040,7 @@ export const ListAdminProjectsLocationsTopicsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListAdminProjectsLocationsTopicsRequest",
 }) as any as S.Schema<ListAdminProjectsLocationsTopicsRequest>;
 
-export type TopicList = ReadonlyArray<Topic>;
+export type TopicList = Array<Topic>;
 export const TopicList = /*@__PURE__*/ S.Array(
   Topic,
 ) as any as S.Schema<TopicList>;
@@ -1143,7 +1143,7 @@ export const PartitionCursor = /*@__PURE__*/ S.suspend(() =>
   identifier: "PartitionCursor",
 }) as any as S.Schema<PartitionCursor>;
 
-export type PartitionCursorList = ReadonlyArray<PartitionCursor>;
+export type PartitionCursorList = Array<PartitionCursor>;
 export const PartitionCursorList = /*@__PURE__*/ S.Array(
   PartitionCursor,
 ) as any as S.Schema<PartitionCursorList>;

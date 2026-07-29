@@ -96,7 +96,7 @@ export const CustomLocalAqi = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CustomLocalAqi" }) as any as S.Schema<CustomLocalAqi>;
 
-export type CustomLocalAqiList = ReadonlyArray<CustomLocalAqi>;
+export type CustomLocalAqiList = Array<CustomLocalAqi>;
 export const CustomLocalAqiList = /*@__PURE__*/ S.Array(
   CustomLocalAqi,
 ) as any as S.Schema<CustomLocalAqiList>;
@@ -111,10 +111,9 @@ export type LookupCurrentConditionsRequestExtraComputationsItemEnum =
 export const LookupCurrentConditionsRequestExtraComputationsItemEnum =
   /*@__PURE__*/ S.String;
 
-export type LookupCurrentConditionsRequestExtraComputationsItemEnumList =
-  ReadonlyArray<
-    LookupCurrentConditionsRequestExtraComputationsItemEnum | (string & {})
-  >;
+export type LookupCurrentConditionsRequestExtraComputationsItemEnumList = Array<
+  LookupCurrentConditionsRequestExtraComputationsItemEnum | (string & {})
+>;
 export const LookupCurrentConditionsRequestExtraComputationsItemEnumList =
   /*@__PURE__*/ S.Array(
     LookupCurrentConditionsRequestExtraComputationsItemEnum,
@@ -223,7 +222,7 @@ export const AirQualityIndex = /*@__PURE__*/ S.suspend(() =>
   identifier: "AirQualityIndex",
 }) as any as S.Schema<AirQualityIndex>;
 
-export type AirQualityIndexList = ReadonlyArray<AirQualityIndex>;
+export type AirQualityIndexList = Array<AirQualityIndex>;
 export const AirQualityIndexList = /*@__PURE__*/ S.Array(
   AirQualityIndex,
 ) as any as S.Schema<AirQualityIndexList>;
@@ -285,7 +284,7 @@ export const Pollutant = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Pollutant" }) as any as S.Schema<Pollutant>;
 
-export type PollutantList = ReadonlyArray<Pollutant>;
+export type PollutantList = Array<Pollutant>;
 export const PollutantList = /*@__PURE__*/ S.Array(
   Pollutant,
 ) as any as S.Schema<PollutantList>;
@@ -355,7 +354,7 @@ export type LookupForecastRequestExtraComputationsItemEnum =
 export const LookupForecastRequestExtraComputationsItemEnum =
   /*@__PURE__*/ S.String;
 
-export type LookupForecastRequestExtraComputationsItemEnumList = ReadonlyArray<
+export type LookupForecastRequestExtraComputationsItemEnumList = Array<
   LookupForecastRequestExtraComputationsItemEnum | (string & {})
 >;
 export const LookupForecastRequestExtraComputationsItemEnumList =
@@ -464,7 +463,7 @@ export const HourlyForecast = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "HourlyForecast" }) as any as S.Schema<HourlyForecast>;
 
-export type HourlyForecastList = ReadonlyArray<HourlyForecast>;
+export type HourlyForecastList = Array<HourlyForecast>;
 export const HourlyForecastList = /*@__PURE__*/ S.Array(
   HourlyForecast,
 ) as any as S.Schema<HourlyForecastList>;
@@ -535,7 +534,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -574,7 +573,7 @@ export type LookupHistoryRequestExtraComputationsItemEnum =
 export const LookupHistoryRequestExtraComputationsItemEnum =
   /*@__PURE__*/ S.String;
 
-export type LookupHistoryRequestExtraComputationsItemEnumList = ReadonlyArray<
+export type LookupHistoryRequestExtraComputationsItemEnumList = Array<
   LookupHistoryRequestExtraComputationsItemEnum | (string & {})
 >;
 export const LookupHistoryRequestExtraComputationsItemEnumList =
@@ -665,7 +664,7 @@ export const HourInfo = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "HourInfo" }) as any as S.Schema<HourInfo>;
 
-export type HourInfoList = ReadonlyArray<HourInfo>;
+export type HourInfoList = Array<HourInfo>;
 export const HourInfoList = /*@__PURE__*/ S.Array(
   HourInfo,
 ) as any as S.Schema<HourInfoList>;

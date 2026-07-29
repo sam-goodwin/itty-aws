@@ -128,7 +128,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** A list of service operations supported by the Microsoft.SecurityAndCompliance resource provider. */
-export type OperationListResultValueList = ReadonlyArray<Operation>;
+export type OperationListResultValueList = Array<Operation>;
 export const OperationListResultValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationListResultValueList>;
@@ -167,7 +167,7 @@ export const PrivateEndpointServiceConnectionStatus = /*@__PURE__*/ S.String;
 /** A collection of information about the state of the connection between service consumer and provider. */
 export interface PrivateLinkServiceConnectionState {
   /** Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service. */
-  status?: PrivateEndpointServiceConnectionStatus;
+  status?: PrivateEndpointServiceConnectionStatus | (string & {});
   /** The reason for approval/rejection of the connection. */
   description?: string;
   /** A message indicating if changes on the service provider require any updates on the consumer. */
@@ -583,7 +583,7 @@ export const PrivateEndpointConnection = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of private endpoint connections */
 export type PrivateEndpointConnectionsAdtAPIListByServiceResponseValueList =
-  ReadonlyArray<PrivateEndpointConnection>;
+  Array<PrivateEndpointConnection>;
 export const PrivateEndpointConnectionsAdtAPIListByServiceResponseValueList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection,
@@ -879,7 +879,7 @@ export const PrivateEndpointConnectionsCompListByServiceRequest =
 
 /** Array of private endpoint connections */
 export type PrivateEndpointConnectionsCompListByServiceResponseValueList =
-  ReadonlyArray<PrivateEndpointConnection>;
+  Array<PrivateEndpointConnection>;
 export const PrivateEndpointConnectionsCompListByServiceResponseValueList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection,
@@ -1172,7 +1172,7 @@ export const PrivateEndpointConnectionsForEDMListByServiceRequest =
 
 /** Array of private endpoint connections */
 export type PrivateEndpointConnectionsForEDMListByServiceResponseValueList =
-  ReadonlyArray<PrivateEndpointConnection>;
+  Array<PrivateEndpointConnection>;
 export const PrivateEndpointConnectionsForEDMListByServiceResponseValueList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection,
@@ -1469,7 +1469,7 @@ export const PrivateEndpointConnectionsForMIPPolicySyncListByServiceRequest =
 
 /** Array of private endpoint connections */
 export type PrivateEndpointConnectionsForMIPPolicySyncListByServiceResponseValueList =
-  ReadonlyArray<PrivateEndpointConnection>;
+  Array<PrivateEndpointConnection>;
 export const PrivateEndpointConnectionsForMIPPolicySyncListByServiceResponseValueList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection,
@@ -1767,7 +1767,7 @@ export const PrivateEndpointConnectionsForSCCPowershellListByServiceRequest =
 
 /** Array of private endpoint connections */
 export type PrivateEndpointConnectionsForSCCPowershellListByServiceResponseValueList =
-  ReadonlyArray<PrivateEndpointConnection>;
+  Array<PrivateEndpointConnection>;
 export const PrivateEndpointConnectionsForSCCPowershellListByServiceResponseValueList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection,
@@ -2063,7 +2063,7 @@ export const PrivateEndpointConnectionsSecListByServiceRequest =
 
 /** Array of private endpoint connections */
 export type PrivateEndpointConnectionsSecListByServiceResponseValueList =
-  ReadonlyArray<PrivateEndpointConnection>;
+  Array<PrivateEndpointConnection>;
 export const PrivateEndpointConnectionsSecListByServiceResponseValueList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection,
@@ -2168,16 +2168,14 @@ export const PrivateLinkResourcesAdtAPIGetResponseSystemData =
   }) as any as S.Schema<PrivateLinkResourcesAdtAPIGetResponseSystemData>;
 
 /** The private link resource required member names. */
-export type PrivateLinkResourcePropertiesRequiredMembersList =
-  ReadonlyArray<string>;
+export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
 export const PrivateLinkResourcePropertiesRequiredMembersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
 
 /** The private link resource Private link DNS zone name. */
-export type PrivateLinkResourcePropertiesRequiredZoneNamesList =
-  ReadonlyArray<string>;
+export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
 export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2332,7 +2330,7 @@ export const PrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of private link resources */
 export type PrivateLinkResourcesAdtAPIListByServiceResponseValueList =
-  ReadonlyArray<PrivateLinkResource>;
+  Array<PrivateLinkResource>;
 export const PrivateLinkResourcesAdtAPIListByServiceResponseValueList =
   /*@__PURE__*/ S.Array(
     PrivateLinkResource,
@@ -2487,7 +2485,7 @@ export const PrivateLinkResourcesCompListByServiceRequest =
 
 /** Array of private link resources */
 export type PrivateLinkResourcesCompListByServiceResponseValueList =
-  ReadonlyArray<PrivateLinkResource>;
+  Array<PrivateLinkResource>;
 export const PrivateLinkResourcesCompListByServiceResponseValueList =
   /*@__PURE__*/ S.Array(
     PrivateLinkResource,
@@ -2638,7 +2636,7 @@ export const PrivateLinkResourcesForMIPPolicySyncListByServiceRequest =
 
 /** Array of private link resources */
 export type PrivateLinkResourcesForMIPPolicySyncListByServiceResponseValueList =
-  ReadonlyArray<PrivateLinkResource>;
+  Array<PrivateLinkResource>;
 export const PrivateLinkResourcesForMIPPolicySyncListByServiceResponseValueList =
   /*@__PURE__*/ S.Array(
     PrivateLinkResource,
@@ -2791,7 +2789,7 @@ export const PrivateLinkResourcesForSCCPowershellListByServiceRequest =
 
 /** Array of private link resources */
 export type PrivateLinkResourcesForSCCPowershellListByServiceResponseValueList =
-  ReadonlyArray<PrivateLinkResource>;
+  Array<PrivateLinkResource>;
 export const PrivateLinkResourcesForSCCPowershellListByServiceResponseValueList =
   /*@__PURE__*/ S.Array(
     PrivateLinkResource,
@@ -2946,7 +2944,7 @@ export const PrivateLinkResourcesListByServiceRequest = /*@__PURE__*/ S.suspend(
 
 /** Array of private link resources */
 export type PrivateLinkResourcesListByServiceResponseValueList =
-  ReadonlyArray<PrivateLinkResource>;
+  Array<PrivateLinkResource>;
 export const PrivateLinkResourcesListByServiceResponseValueList =
   /*@__PURE__*/ S.Array(
     PrivateLinkResource,
@@ -3099,7 +3097,7 @@ export const PrivateLinkResourcesSecListByServiceRequest =
 
 /** Array of private link resources */
 export type PrivateLinkResourcesSecListByServiceResponseValueList =
-  ReadonlyArray<PrivateLinkResource>;
+  Array<PrivateLinkResource>;
 export const PrivateLinkResourcesSecListByServiceResponseValueList =
   /*@__PURE__*/ S.Array(
     PrivateLinkResource,
@@ -3178,7 +3176,7 @@ export const ServiceAccessPolicyEntry = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServiceAccessPolicyEntry>;
 
 /** The access policies of the service instance. */
-export type ServiceAccessPoliciesInfo = ReadonlyArray<ServiceAccessPolicyEntry>;
+export type ServiceAccessPoliciesInfo = Array<ServiceAccessPolicyEntry>;
 export const ServiceAccessPoliciesInfo = /*@__PURE__*/ S.Array(
   ServiceAccessPolicyEntry,
 ) as any as S.Schema<ServiceAccessPoliciesInfo>;
@@ -3220,19 +3218,19 @@ export const ServiceAuthenticationConfigurationInfo = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ServiceAuthenticationConfigurationInfo>;
 
 /** The origins to be allowed via CORS. */
-export type ServiceCorsConfigurationInfoOriginsList = ReadonlyArray<string>;
+export type ServiceCorsConfigurationInfoOriginsList = Array<string>;
 export const ServiceCorsConfigurationInfoOriginsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ServiceCorsConfigurationInfoOriginsList>;
 
 /** The headers to be allowed via CORS. */
-export type ServiceCorsConfigurationInfoHeadersList = ReadonlyArray<string>;
+export type ServiceCorsConfigurationInfoHeadersList = Array<string>;
 export const ServiceCorsConfigurationInfoHeadersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ServiceCorsConfigurationInfoHeadersList>;
 
 /** The methods to be allowed via CORS. */
-export type ServiceCorsConfigurationInfoMethodsList = ReadonlyArray<string>;
+export type ServiceCorsConfigurationInfoMethodsList = Array<string>;
 export const ServiceCorsConfigurationInfoMethodsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ServiceCorsConfigurationInfoMethodsList>;
@@ -3290,7 +3288,7 @@ export const PrivateEndpointConnectionInput = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of private endpoint connections that are set up for this resource. */
 export type PrivateLinkServicesForEDMUploadCreateOrUpdateRequestPropertiesPrivateEndpointConnectionsList =
-  ReadonlyArray<PrivateEndpointConnectionInput>;
+  Array<PrivateEndpointConnectionInput>;
 export const PrivateLinkServicesForEDMUploadCreateOrUpdateRequestPropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnectionInput,
@@ -3504,7 +3502,7 @@ export const PrivateLinkServicesForEDMUploadCreateOrUpdateResponsePropertiesProv
 
 /** The list of private endpoint connections that are set up for this resource. */
 export type PrivateLinkServicesForEDMUploadCreateOrUpdateResponsePropertiesPrivateEndpointConnectionsList =
-  ReadonlyArray<PrivateEndpointConnection>;
+  Array<PrivateEndpointConnection>;
 export const PrivateLinkServicesForEDMUploadCreateOrUpdateResponsePropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection,
@@ -3743,7 +3741,7 @@ export const PrivateLinkServicesForEDMUploadGetResponsePropertiesProvisioningSta
 
 /** The list of private endpoint connections that are set up for this resource. */
 export type PrivateLinkServicesForEDMUploadGetResponsePropertiesPrivateEndpointConnectionsList =
-  ReadonlyArray<PrivateEndpointConnection>;
+  Array<PrivateEndpointConnection>;
 export const PrivateLinkServicesForEDMUploadGetResponsePropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection,
@@ -3971,7 +3969,7 @@ export const PrivateLinkServicesForEDMUploadDescriptionPropertiesProvisioningSta
 
 /** The list of private endpoint connections that are set up for this resource. */
 export type PrivateLinkServicesForEDMUploadDescriptionPropertiesPrivateEndpointConnectionsList =
-  ReadonlyArray<PrivateEndpointConnection>;
+  Array<PrivateEndpointConnection>;
 export const PrivateLinkServicesForEDMUploadDescriptionPropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection,
@@ -4073,7 +4071,7 @@ export const PrivateLinkServicesForEDMUploadDescription =
 
 /** A list of service description objects. */
 export type PrivateLinkServicesForEDMUploadDescriptionListResultValueList =
-  ReadonlyArray<PrivateLinkServicesForEDMUploadDescription>;
+  Array<PrivateLinkServicesForEDMUploadDescription>;
 export const PrivateLinkServicesForEDMUploadDescriptionListResultValueList =
   /*@__PURE__*/ S.Array(
     PrivateLinkServicesForEDMUploadDescription,
@@ -4295,7 +4293,7 @@ export const PrivateLinkServicesForEDMUploadUpdateResponsePropertiesProvisioning
 
 /** The list of private endpoint connections that are set up for this resource. */
 export type PrivateLinkServicesForEDMUploadUpdateResponsePropertiesPrivateEndpointConnectionsList =
-  ReadonlyArray<PrivateEndpointConnection>;
+  Array<PrivateEndpointConnection>;
 export const PrivateLinkServicesForEDMUploadUpdateResponsePropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection,
@@ -4438,7 +4436,7 @@ export const PrivateLinkServicesForM365ComplianceCenterCreateOrUpdateRequestIden
 
 /** The list of private endpoint connections that are set up for this resource. */
 export type PrivateLinkServicesForM365ComplianceCenterCreateOrUpdateRequestPropertiesPrivateEndpointConnectionsList =
-  ReadonlyArray<PrivateEndpointConnectionInput>;
+  Array<PrivateEndpointConnectionInput>;
 export const PrivateLinkServicesForM365ComplianceCenterCreateOrUpdateRequestPropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnectionInput,
@@ -4650,7 +4648,7 @@ export const PrivateLinkServicesForM365ComplianceCenterCreateOrUpdateResponsePro
 
 /** The list of private endpoint connections that are set up for this resource. */
 export type PrivateLinkServicesForM365ComplianceCenterCreateOrUpdateResponsePropertiesPrivateEndpointConnectionsList =
-  ReadonlyArray<PrivateEndpointConnection>;
+  Array<PrivateEndpointConnection>;
 export const PrivateLinkServicesForM365ComplianceCenterCreateOrUpdateResponsePropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection,
@@ -4922,7 +4920,7 @@ export const PrivateLinkServicesForM365ComplianceCenterGetResponsePropertiesProv
 
 /** The list of private endpoint connections that are set up for this resource. */
 export type PrivateLinkServicesForM365ComplianceCenterGetResponsePropertiesPrivateEndpointConnectionsList =
-  ReadonlyArray<PrivateEndpointConnection>;
+  Array<PrivateEndpointConnection>;
 export const PrivateLinkServicesForM365ComplianceCenterGetResponsePropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection,
@@ -5155,7 +5153,7 @@ export const PrivateLinkServicesForM365ComplianceCenterDescriptionPropertiesProv
 
 /** The list of private endpoint connections that are set up for this resource. */
 export type PrivateLinkServicesForM365ComplianceCenterDescriptionPropertiesPrivateEndpointConnectionsList =
-  ReadonlyArray<PrivateEndpointConnection>;
+  Array<PrivateEndpointConnection>;
 export const PrivateLinkServicesForM365ComplianceCenterDescriptionPropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection,
@@ -5262,7 +5260,7 @@ export const PrivateLinkServicesForM365ComplianceCenterDescription =
 
 /** A list of service description objects. */
 export type PrivateLinkServicesForM365ComplianceCenterDescriptionListResultValueList =
-  ReadonlyArray<PrivateLinkServicesForM365ComplianceCenterDescription>;
+  Array<PrivateLinkServicesForM365ComplianceCenterDescription>;
 export const PrivateLinkServicesForM365ComplianceCenterDescriptionListResultValueList =
   /*@__PURE__*/ S.Array(
     PrivateLinkServicesForM365ComplianceCenterDescription,
@@ -5465,7 +5463,7 @@ export const PrivateLinkServicesForM365ComplianceCenterUpdateResponsePropertiesP
 
 /** The list of private endpoint connections that are set up for this resource. */
 export type PrivateLinkServicesForM365ComplianceCenterUpdateResponsePropertiesPrivateEndpointConnectionsList =
-  ReadonlyArray<PrivateEndpointConnection>;
+  Array<PrivateEndpointConnection>;
 export const PrivateLinkServicesForM365ComplianceCenterUpdateResponsePropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection,
@@ -5613,7 +5611,7 @@ export const PrivateLinkServicesForM365SecurityCenterCreateOrUpdateRequestIdenti
 
 /** The list of private endpoint connections that are set up for this resource. */
 export type PrivateLinkServicesForM365SecurityCenterCreateOrUpdateRequestPropertiesPrivateEndpointConnectionsList =
-  ReadonlyArray<PrivateEndpointConnectionInput>;
+  Array<PrivateEndpointConnectionInput>;
 export const PrivateLinkServicesForM365SecurityCenterCreateOrUpdateRequestPropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnectionInput,
@@ -5824,7 +5822,7 @@ export const PrivateLinkServicesForM365SecurityCenterCreateOrUpdateResponsePrope
 
 /** The list of private endpoint connections that are set up for this resource. */
 export type PrivateLinkServicesForM365SecurityCenterCreateOrUpdateResponsePropertiesPrivateEndpointConnectionsList =
-  ReadonlyArray<PrivateEndpointConnection>;
+  Array<PrivateEndpointConnection>;
 export const PrivateLinkServicesForM365SecurityCenterCreateOrUpdateResponsePropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection,
@@ -6095,7 +6093,7 @@ export const PrivateLinkServicesForM365SecurityCenterGetResponsePropertiesProvis
 
 /** The list of private endpoint connections that are set up for this resource. */
 export type PrivateLinkServicesForM365SecurityCenterGetResponsePropertiesPrivateEndpointConnectionsList =
-  ReadonlyArray<PrivateEndpointConnection>;
+  Array<PrivateEndpointConnection>;
 export const PrivateLinkServicesForM365SecurityCenterGetResponsePropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection,
@@ -6326,7 +6324,7 @@ export const PrivateLinkServicesForM365SecurityCenterDescriptionPropertiesProvis
 
 /** The list of private endpoint connections that are set up for this resource. */
 export type PrivateLinkServicesForM365SecurityCenterDescriptionPropertiesPrivateEndpointConnectionsList =
-  ReadonlyArray<PrivateEndpointConnection>;
+  Array<PrivateEndpointConnection>;
 export const PrivateLinkServicesForM365SecurityCenterDescriptionPropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection,
@@ -6432,7 +6430,7 @@ export const PrivateLinkServicesForM365SecurityCenterDescription =
 
 /** A list of service description objects. */
 export type PrivateLinkServicesForM365SecurityCenterDescriptionListResultValueList =
-  ReadonlyArray<PrivateLinkServicesForM365SecurityCenterDescription>;
+  Array<PrivateLinkServicesForM365SecurityCenterDescription>;
 export const PrivateLinkServicesForM365SecurityCenterDescriptionListResultValueList =
   /*@__PURE__*/ S.Array(
     PrivateLinkServicesForM365SecurityCenterDescription,
@@ -6634,7 +6632,7 @@ export const PrivateLinkServicesForM365SecurityCenterUpdateResponsePropertiesPro
 
 /** The list of private endpoint connections that are set up for this resource. */
 export type PrivateLinkServicesForM365SecurityCenterUpdateResponsePropertiesPrivateEndpointConnectionsList =
-  ReadonlyArray<PrivateEndpointConnection>;
+  Array<PrivateEndpointConnection>;
 export const PrivateLinkServicesForM365SecurityCenterUpdateResponsePropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection,
@@ -6783,7 +6781,7 @@ export const PrivateLinkServicesForMIPPolicySyncCreateOrUpdateRequestIdentity =
 
 /** The list of private endpoint connections that are set up for this resource. */
 export type PrivateLinkServicesForMIPPolicySyncCreateOrUpdateRequestPropertiesPrivateEndpointConnectionsList =
-  ReadonlyArray<PrivateEndpointConnectionInput>;
+  Array<PrivateEndpointConnectionInput>;
 export const PrivateLinkServicesForMIPPolicySyncCreateOrUpdateRequestPropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnectionInput,
@@ -6997,7 +6995,7 @@ export const PrivateLinkServicesForMIPPolicySyncCreateOrUpdateResponseProperties
 
 /** The list of private endpoint connections that are set up for this resource. */
 export type PrivateLinkServicesForMIPPolicySyncCreateOrUpdateResponsePropertiesPrivateEndpointConnectionsList =
-  ReadonlyArray<PrivateEndpointConnection>;
+  Array<PrivateEndpointConnection>;
 export const PrivateLinkServicesForMIPPolicySyncCreateOrUpdateResponsePropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection,
@@ -7267,7 +7265,7 @@ export const PrivateLinkServicesForMIPPolicySyncGetResponsePropertiesProvisionin
 
 /** The list of private endpoint connections that are set up for this resource. */
 export type PrivateLinkServicesForMIPPolicySyncGetResponsePropertiesPrivateEndpointConnectionsList =
-  ReadonlyArray<PrivateEndpointConnection>;
+  Array<PrivateEndpointConnection>;
 export const PrivateLinkServicesForMIPPolicySyncGetResponsePropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection,
@@ -7496,7 +7494,7 @@ export const PrivateLinkServicesForMIPPolicySyncDescriptionPropertiesProvisionin
 
 /** The list of private endpoint connections that are set up for this resource. */
 export type PrivateLinkServicesForMIPPolicySyncDescriptionPropertiesPrivateEndpointConnectionsList =
-  ReadonlyArray<PrivateEndpointConnection>;
+  Array<PrivateEndpointConnection>;
 export const PrivateLinkServicesForMIPPolicySyncDescriptionPropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection,
@@ -7600,7 +7598,7 @@ export const PrivateLinkServicesForMIPPolicySyncDescription =
 
 /** A list of service description objects. */
 export type PrivateLinkServicesForMIPPolicySyncDescriptionListResultValueList =
-  ReadonlyArray<PrivateLinkServicesForMIPPolicySyncDescription>;
+  Array<PrivateLinkServicesForMIPPolicySyncDescription>;
 export const PrivateLinkServicesForMIPPolicySyncDescriptionListResultValueList =
   /*@__PURE__*/ S.Array(
     PrivateLinkServicesForMIPPolicySyncDescription,
@@ -7798,7 +7796,7 @@ export const PrivateLinkServicesForMIPPolicySyncUpdateResponsePropertiesProvisio
 
 /** The list of private endpoint connections that are set up for this resource. */
 export type PrivateLinkServicesForMIPPolicySyncUpdateResponsePropertiesPrivateEndpointConnectionsList =
-  ReadonlyArray<PrivateEndpointConnection>;
+  Array<PrivateEndpointConnection>;
 export const PrivateLinkServicesForMIPPolicySyncUpdateResponsePropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection,
@@ -7943,7 +7941,7 @@ export const PrivateLinkServicesForO365ManagementActivityAPICreateOrUpdateReques
 
 /** The list of private endpoint connections that are set up for this resource. */
 export type PrivateLinkServicesForO365ManagementActivityAPICreateOrUpdateRequestPropertiesPrivateEndpointConnectionsList =
-  ReadonlyArray<PrivateEndpointConnectionInput>;
+  Array<PrivateEndpointConnectionInput>;
 export const PrivateLinkServicesForO365ManagementActivityAPICreateOrUpdateRequestPropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnectionInput,
@@ -8155,7 +8153,7 @@ export const PrivateLinkServicesForO365ManagementActivityAPICreateOrUpdateRespon
 
 /** The list of private endpoint connections that are set up for this resource. */
 export type PrivateLinkServicesForO365ManagementActivityAPICreateOrUpdateResponsePropertiesPrivateEndpointConnectionsList =
-  ReadonlyArray<PrivateEndpointConnection>;
+  Array<PrivateEndpointConnection>;
 export const PrivateLinkServicesForO365ManagementActivityAPICreateOrUpdateResponsePropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection,
@@ -8426,7 +8424,7 @@ export const PrivateLinkServicesForO365ManagementActivityAPIGetResponsePropertie
 
 /** The list of private endpoint connections that are set up for this resource. */
 export type PrivateLinkServicesForO365ManagementActivityAPIGetResponsePropertiesPrivateEndpointConnectionsList =
-  ReadonlyArray<PrivateEndpointConnection>;
+  Array<PrivateEndpointConnection>;
 export const PrivateLinkServicesForO365ManagementActivityAPIGetResponsePropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection,
@@ -8658,7 +8656,7 @@ export const PrivateLinkServicesForO365ManagementActivityAPIDescriptionPropertie
 
 /** The list of private endpoint connections that are set up for this resource. */
 export type PrivateLinkServicesForO365ManagementActivityAPIDescriptionPropertiesPrivateEndpointConnectionsList =
-  ReadonlyArray<PrivateEndpointConnection>;
+  Array<PrivateEndpointConnection>;
 export const PrivateLinkServicesForO365ManagementActivityAPIDescriptionPropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection,
@@ -8765,7 +8763,7 @@ export const PrivateLinkServicesForO365ManagementActivityAPIDescription =
 
 /** A list of service description objects. */
 export type PrivateLinkServicesForO365ManagementActivityAPIDescriptionListResultValueList =
-  ReadonlyArray<PrivateLinkServicesForO365ManagementActivityAPIDescription>;
+  Array<PrivateLinkServicesForO365ManagementActivityAPIDescription>;
 export const PrivateLinkServicesForO365ManagementActivityAPIDescriptionListResultValueList =
   /*@__PURE__*/ S.Array(
     PrivateLinkServicesForO365ManagementActivityAPIDescription,
@@ -8966,7 +8964,7 @@ export const PrivateLinkServicesForO365ManagementActivityAPIUpdateResponseProper
 
 /** The list of private endpoint connections that are set up for this resource. */
 export type PrivateLinkServicesForO365ManagementActivityAPIUpdateResponsePropertiesPrivateEndpointConnectionsList =
-  ReadonlyArray<PrivateEndpointConnection>;
+  Array<PrivateEndpointConnection>;
 export const PrivateLinkServicesForO365ManagementActivityAPIUpdateResponsePropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection,
@@ -9115,7 +9113,7 @@ export const PrivateLinkServicesForSCCPowershellCreateOrUpdateRequestIdentity =
 
 /** The list of private endpoint connections that are set up for this resource. */
 export type PrivateLinkServicesForSCCPowershellCreateOrUpdateRequestPropertiesPrivateEndpointConnectionsList =
-  ReadonlyArray<PrivateEndpointConnectionInput>;
+  Array<PrivateEndpointConnectionInput>;
 export const PrivateLinkServicesForSCCPowershellCreateOrUpdateRequestPropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnectionInput,
@@ -9329,7 +9327,7 @@ export const PrivateLinkServicesForSCCPowershellCreateOrUpdateResponseProperties
 
 /** The list of private endpoint connections that are set up for this resource. */
 export type PrivateLinkServicesForSCCPowershellCreateOrUpdateResponsePropertiesPrivateEndpointConnectionsList =
-  ReadonlyArray<PrivateEndpointConnection>;
+  Array<PrivateEndpointConnection>;
 export const PrivateLinkServicesForSCCPowershellCreateOrUpdateResponsePropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection,
@@ -9599,7 +9597,7 @@ export const PrivateLinkServicesForSCCPowershellGetResponsePropertiesProvisionin
 
 /** The list of private endpoint connections that are set up for this resource. */
 export type PrivateLinkServicesForSCCPowershellGetResponsePropertiesPrivateEndpointConnectionsList =
-  ReadonlyArray<PrivateEndpointConnection>;
+  Array<PrivateEndpointConnection>;
 export const PrivateLinkServicesForSCCPowershellGetResponsePropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection,
@@ -9828,7 +9826,7 @@ export const PrivateLinkServicesForSCCPowershellDescriptionPropertiesProvisionin
 
 /** The list of private endpoint connections that are set up for this resource. */
 export type PrivateLinkServicesForSCCPowershellDescriptionPropertiesPrivateEndpointConnectionsList =
-  ReadonlyArray<PrivateEndpointConnection>;
+  Array<PrivateEndpointConnection>;
 export const PrivateLinkServicesForSCCPowershellDescriptionPropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection,
@@ -9932,7 +9930,7 @@ export const PrivateLinkServicesForSCCPowershellDescription =
 
 /** A list of service description objects. */
 export type PrivateLinkServicesForSCCPowershellDescriptionListResultValueList =
-  ReadonlyArray<PrivateLinkServicesForSCCPowershellDescription>;
+  Array<PrivateLinkServicesForSCCPowershellDescription>;
 export const PrivateLinkServicesForSCCPowershellDescriptionListResultValueList =
   /*@__PURE__*/ S.Array(
     PrivateLinkServicesForSCCPowershellDescription,
@@ -10130,7 +10128,7 @@ export const PrivateLinkServicesForSCCPowershellUpdateResponsePropertiesProvisio
 
 /** The list of private endpoint connections that are set up for this resource. */
 export type PrivateLinkServicesForSCCPowershellUpdateResponsePropertiesPrivateEndpointConnectionsList =
-  ReadonlyArray<PrivateEndpointConnection>;
+  Array<PrivateEndpointConnection>;
 export const PrivateLinkServicesForSCCPowershellUpdateResponsePropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection,

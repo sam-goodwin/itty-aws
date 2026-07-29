@@ -99,52 +99,52 @@ export const DismissInsightForZoneResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DismissInsightForZoneResponse",
 }) as any as S.Schema<DismissInsightForZoneResponse>;
 
-export type InsightsClassGetRequestIssueClassList = ReadonlyArray<string>;
+export type InsightsClassGetRequestIssueClassList = Array<string>;
 export const InsightsClassGetRequestIssueClassList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<InsightsClassGetRequestIssueClassList>;
 
-export type InsightsClassGetRequestIssueClassNeqList = ReadonlyArray<string>;
+export type InsightsClassGetRequestIssueClassNeqList = Array<string>;
 export const InsightsClassGetRequestIssueClassNeqList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<InsightsClassGetRequestIssueClassNeqList>;
 
-export type InsightsClassGetRequestIssueTypeList = ReadonlyArray<string>;
+export type InsightsClassGetRequestIssueTypeList = Array<string>;
 export const InsightsClassGetRequestIssueTypeList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<InsightsClassGetRequestIssueTypeList>;
 
-export type InsightsClassGetRequestIssueTypeNeqList = ReadonlyArray<string>;
+export type InsightsClassGetRequestIssueTypeNeqList = Array<string>;
 export const InsightsClassGetRequestIssueTypeNeqList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<InsightsClassGetRequestIssueTypeNeqList>;
 
-export type InsightsClassGetRequestProductList = ReadonlyArray<string>;
+export type InsightsClassGetRequestProductList = Array<string>;
 export const InsightsClassGetRequestProductList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<InsightsClassGetRequestProductList>;
 
-export type InsightsClassGetRequestProductNeqList = ReadonlyArray<string>;
+export type InsightsClassGetRequestProductNeqList = Array<string>;
 export const InsightsClassGetRequestProductNeqList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<InsightsClassGetRequestProductNeqList>;
 
-export type InsightsClassGetRequestSeverityList = ReadonlyArray<string>;
+export type InsightsClassGetRequestSeverityList = Array<string>;
 export const InsightsClassGetRequestSeverityList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<InsightsClassGetRequestSeverityList>;
 
-export type InsightsClassGetRequestSeverityNeqList = ReadonlyArray<string>;
+export type InsightsClassGetRequestSeverityNeqList = Array<string>;
 export const InsightsClassGetRequestSeverityNeqList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<InsightsClassGetRequestSeverityNeqList>;
 
-export type InsightsClassGetRequestSubjectList = ReadonlyArray<string>;
+export type InsightsClassGetRequestSubjectList = Array<string>;
 export const InsightsClassGetRequestSubjectList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<InsightsClassGetRequestSubjectList>;
 
-export type InsightsClassGetRequestSubjectNeqList = ReadonlyArray<string>;
+export type InsightsClassGetRequestSubjectNeqList = Array<string>;
 export const InsightsClassGetRequestSubjectNeqList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<InsightsClassGetRequestSubjectNeqList>;
@@ -218,8 +218,7 @@ export const InsightsClassGetResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "InsightsClassGetResultItem",
 }) as any as S.Schema<InsightsClassGetResultItem>;
 
-export type InsightsClassGetResultList =
-  ReadonlyArray<InsightsClassGetResultItem>;
+export type InsightsClassGetResultList = Array<InsightsClassGetResultItem>;
 export const InsightsClassGetResultList = /*@__PURE__*/ S.Array(
   InsightsClassGetResultItem,
 ) as any as S.Schema<InsightsClassGetResultList>;
@@ -324,53 +323,53 @@ export const GetInsightContextResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetInsightContextResponse",
 }) as any as S.Schema<GetInsightContextResponse>;
 
-export type InsightsSeverityGetRequestIssueClassList = ReadonlyArray<string>;
+export type InsightsSeverityGetRequestIssueClassList = Array<string>;
 export const InsightsSeverityGetRequestIssueClassList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<InsightsSeverityGetRequestIssueClassList>;
 
-export type InsightsSeverityGetRequestIssueClassNeqList = ReadonlyArray<string>;
+export type InsightsSeverityGetRequestIssueClassNeqList = Array<string>;
 export const InsightsSeverityGetRequestIssueClassNeqList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<InsightsSeverityGetRequestIssueClassNeqList>;
 
-export type InsightsSeverityGetRequestIssueTypeList = ReadonlyArray<string>;
+export type InsightsSeverityGetRequestIssueTypeList = Array<string>;
 export const InsightsSeverityGetRequestIssueTypeList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<InsightsSeverityGetRequestIssueTypeList>;
 
-export type InsightsSeverityGetRequestIssueTypeNeqList = ReadonlyArray<string>;
+export type InsightsSeverityGetRequestIssueTypeNeqList = Array<string>;
 export const InsightsSeverityGetRequestIssueTypeNeqList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<InsightsSeverityGetRequestIssueTypeNeqList>;
 
-export type InsightsSeverityGetRequestProductList = ReadonlyArray<string>;
+export type InsightsSeverityGetRequestProductList = Array<string>;
 export const InsightsSeverityGetRequestProductList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<InsightsSeverityGetRequestProductList>;
 
-export type InsightsSeverityGetRequestProductNeqList = ReadonlyArray<string>;
+export type InsightsSeverityGetRequestProductNeqList = Array<string>;
 export const InsightsSeverityGetRequestProductNeqList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<InsightsSeverityGetRequestProductNeqList>;
 
-export type InsightsSeverityGetRequestSeverityList = ReadonlyArray<string>;
+export type InsightsSeverityGetRequestSeverityList = Array<string>;
 export const InsightsSeverityGetRequestSeverityList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<InsightsSeverityGetRequestSeverityList>;
 
-export type InsightsSeverityGetRequestSeverityNeqList = ReadonlyArray<string>;
+export type InsightsSeverityGetRequestSeverityNeqList = Array<string>;
 export const InsightsSeverityGetRequestSeverityNeqList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<InsightsSeverityGetRequestSeverityNeqList>;
 
-export type InsightsSeverityGetRequestSubjectList = ReadonlyArray<string>;
+export type InsightsSeverityGetRequestSubjectList = Array<string>;
 export const InsightsSeverityGetRequestSubjectList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<InsightsSeverityGetRequestSubjectList>;
 
-export type InsightsSeverityGetRequestSubjectNeqList = ReadonlyArray<string>;
+export type InsightsSeverityGetRequestSubjectNeqList = Array<string>;
 export const InsightsSeverityGetRequestSubjectNeqList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<InsightsSeverityGetRequestSubjectNeqList>;
@@ -451,7 +450,7 @@ export const InsightsSeverityGetResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InsightsSeverityGetResultItem>;
 
 export type InsightsSeverityGetResultList =
-  ReadonlyArray<InsightsSeverityGetResultItem>;
+  Array<InsightsSeverityGetResultItem>;
 export const InsightsSeverityGetResultList = /*@__PURE__*/ S.Array(
   InsightsSeverityGetResultItem,
 ) as any as S.Schema<InsightsSeverityGetResultList>;
@@ -525,52 +524,52 @@ export const GetInsightSeverityForZoneRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetInsightSeverityForZoneRequest",
 }) as any as S.Schema<GetInsightSeverityForZoneRequest>;
 
-export type InsightsTypeGetRequestIssueClassList = ReadonlyArray<string>;
+export type InsightsTypeGetRequestIssueClassList = Array<string>;
 export const InsightsTypeGetRequestIssueClassList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<InsightsTypeGetRequestIssueClassList>;
 
-export type InsightsTypeGetRequestIssueClassNeqList = ReadonlyArray<string>;
+export type InsightsTypeGetRequestIssueClassNeqList = Array<string>;
 export const InsightsTypeGetRequestIssueClassNeqList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<InsightsTypeGetRequestIssueClassNeqList>;
 
-export type InsightsTypeGetRequestIssueTypeList = ReadonlyArray<string>;
+export type InsightsTypeGetRequestIssueTypeList = Array<string>;
 export const InsightsTypeGetRequestIssueTypeList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<InsightsTypeGetRequestIssueTypeList>;
 
-export type InsightsTypeGetRequestIssueTypeNeqList = ReadonlyArray<string>;
+export type InsightsTypeGetRequestIssueTypeNeqList = Array<string>;
 export const InsightsTypeGetRequestIssueTypeNeqList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<InsightsTypeGetRequestIssueTypeNeqList>;
 
-export type InsightsTypeGetRequestProductList = ReadonlyArray<string>;
+export type InsightsTypeGetRequestProductList = Array<string>;
 export const InsightsTypeGetRequestProductList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<InsightsTypeGetRequestProductList>;
 
-export type InsightsTypeGetRequestProductNeqList = ReadonlyArray<string>;
+export type InsightsTypeGetRequestProductNeqList = Array<string>;
 export const InsightsTypeGetRequestProductNeqList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<InsightsTypeGetRequestProductNeqList>;
 
-export type InsightsTypeGetRequestSeverityList = ReadonlyArray<string>;
+export type InsightsTypeGetRequestSeverityList = Array<string>;
 export const InsightsTypeGetRequestSeverityList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<InsightsTypeGetRequestSeverityList>;
 
-export type InsightsTypeGetRequestSeverityNeqList = ReadonlyArray<string>;
+export type InsightsTypeGetRequestSeverityNeqList = Array<string>;
 export const InsightsTypeGetRequestSeverityNeqList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<InsightsTypeGetRequestSeverityNeqList>;
 
-export type InsightsTypeGetRequestSubjectList = ReadonlyArray<string>;
+export type InsightsTypeGetRequestSubjectList = Array<string>;
 export const InsightsTypeGetRequestSubjectList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<InsightsTypeGetRequestSubjectList>;
 
-export type InsightsTypeGetRequestSubjectNeqList = ReadonlyArray<string>;
+export type InsightsTypeGetRequestSubjectNeqList = Array<string>;
 export const InsightsTypeGetRequestSubjectNeqList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<InsightsTypeGetRequestSubjectNeqList>;
@@ -644,8 +643,7 @@ export const InsightsTypeGetResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "InsightsTypeGetResultItem",
 }) as any as S.Schema<InsightsTypeGetResultItem>;
 
-export type InsightsTypeGetResultList =
-  ReadonlyArray<InsightsTypeGetResultItem>;
+export type InsightsTypeGetResultList = Array<InsightsTypeGetResultItem>;
 export const InsightsTypeGetResultList = /*@__PURE__*/ S.Array(
   InsightsTypeGetResultItem,
 ) as any as S.Schema<InsightsTypeGetResultList>;
@@ -823,7 +821,7 @@ export const InsightsAuditLogsListByInsightResultItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<InsightsAuditLogsListByInsightResultItem>;
 
 export type InsightsAuditLogsListByInsightResultList =
-  ReadonlyArray<InsightsAuditLogsListByInsightResultItem>;
+  Array<InsightsAuditLogsListByInsightResultItem>;
 export const InsightsAuditLogsListByInsightResultList = /*@__PURE__*/ S.Array(
   InsightsAuditLogsListByInsightResultItem,
 ) as any as S.Schema<InsightsAuditLogsListByInsightResultList>;
@@ -995,7 +993,7 @@ export const InsightsAuditLogsListResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InsightsAuditLogsListResultItem>;
 
 export type InsightsAuditLogsListResultList =
-  ReadonlyArray<InsightsAuditLogsListResultItem>;
+  Array<InsightsAuditLogsListResultItem>;
 export const InsightsAuditLogsListResultList = /*@__PURE__*/ S.Array(
   InsightsAuditLogsListResultItem,
 ) as any as S.Schema<InsightsAuditLogsListResultList>;
@@ -1058,52 +1056,52 @@ export const ListInsightAuditLogsForZoneRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListInsightAuditLogsForZoneRequest",
 }) as any as S.Schema<ListInsightAuditLogsForZoneRequest>;
 
-export type InsightsListRequestIssueClassList = ReadonlyArray<string>;
+export type InsightsListRequestIssueClassList = Array<string>;
 export const InsightsListRequestIssueClassList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<InsightsListRequestIssueClassList>;
 
-export type InsightsListRequestIssueClassNeqList = ReadonlyArray<string>;
+export type InsightsListRequestIssueClassNeqList = Array<string>;
 export const InsightsListRequestIssueClassNeqList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<InsightsListRequestIssueClassNeqList>;
 
-export type InsightsListRequestIssueTypeList = ReadonlyArray<string>;
+export type InsightsListRequestIssueTypeList = Array<string>;
 export const InsightsListRequestIssueTypeList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<InsightsListRequestIssueTypeList>;
 
-export type InsightsListRequestIssueTypeNeqList = ReadonlyArray<string>;
+export type InsightsListRequestIssueTypeNeqList = Array<string>;
 export const InsightsListRequestIssueTypeNeqList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<InsightsListRequestIssueTypeNeqList>;
 
-export type InsightsListRequestProductList = ReadonlyArray<string>;
+export type InsightsListRequestProductList = Array<string>;
 export const InsightsListRequestProductList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<InsightsListRequestProductList>;
 
-export type InsightsListRequestProductNeqList = ReadonlyArray<string>;
+export type InsightsListRequestProductNeqList = Array<string>;
 export const InsightsListRequestProductNeqList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<InsightsListRequestProductNeqList>;
 
-export type InsightsListRequestSeverityList = ReadonlyArray<string>;
+export type InsightsListRequestSeverityList = Array<string>;
 export const InsightsListRequestSeverityList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<InsightsListRequestSeverityList>;
 
-export type InsightsListRequestSeverityNeqList = ReadonlyArray<string>;
+export type InsightsListRequestSeverityNeqList = Array<string>;
 export const InsightsListRequestSeverityNeqList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<InsightsListRequestSeverityNeqList>;
 
-export type InsightsListRequestSubjectList = ReadonlyArray<string>;
+export type InsightsListRequestSubjectList = Array<string>;
 export const InsightsListRequestSubjectList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<InsightsListRequestSubjectList>;
 
-export type InsightsListRequestSubjectNeqList = ReadonlyArray<string>;
+export type InsightsListRequestSubjectNeqList = Array<string>;
 export const InsightsListRequestSubjectNeqList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<InsightsListRequestSubjectNeqList>;
@@ -1259,7 +1257,7 @@ export const InsightsListResponseIssuesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InsightsListResponseIssuesItem>;
 
 export type InsightsListResponseIssuesList =
-  ReadonlyArray<InsightsListResponseIssuesItem>;
+  Array<InsightsListResponseIssuesItem>;
 export const InsightsListResponseIssuesList = /*@__PURE__*/ S.Array(
   InsightsListResponseIssuesItem,
 ) as any as S.Schema<InsightsListResponseIssuesList>;

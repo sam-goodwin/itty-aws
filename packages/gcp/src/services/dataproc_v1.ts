@@ -153,7 +153,7 @@ export const ResourceProfileInfo = /*@__PURE__*/ S.suspend(() =>
   identifier: "ResourceProfileInfo",
 }) as any as S.Schema<ResourceProfileInfo>;
 
-export type ResourceProfileInfoList = ReadonlyArray<ResourceProfileInfo>;
+export type ResourceProfileInfoList = Array<ResourceProfileInfo>;
 export const ResourceProfileInfoList = /*@__PURE__*/ S.Array(
   ResourceProfileInfo,
 ) as any as S.Schema<ResourceProfileInfoList>;
@@ -273,7 +273,7 @@ export const AccessJobProjectsLocationsBatchesSparkApplicationsRequest =
     identifier: "AccessJobProjectsLocationsBatchesSparkApplicationsRequest",
   }) as any as S.Schema<AccessJobProjectsLocationsBatchesSparkApplicationsRequest>;
 
-export type IntegerList = ReadonlyArray<number>;
+export type IntegerList = Array<number>;
 export const IntegerList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<IntegerList>;
@@ -286,7 +286,7 @@ export type JobDataStatusEnum =
   | "JOB_EXECUTION_STATUS_UNKNOWN";
 export const JobDataStatusEnum = /*@__PURE__*/ S.String;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -305,7 +305,7 @@ export interface JobData {
   submissionTime?: string;
   numCompletedIndices?: number;
   numFailedStages?: number;
-  status?: JobDataStatusEnum;
+  status?: JobDataStatusEnum | (string & {});
   name?: string;
   numTasks?: number;
   sqlExecutionId?: string;
@@ -461,7 +461,7 @@ export const ApplicationAttemptInfo = /*@__PURE__*/ S.suspend(() =>
   identifier: "ApplicationAttemptInfo",
 }) as any as S.Schema<ApplicationAttemptInfo>;
 
-export type ApplicationAttemptInfoList = ReadonlyArray<ApplicationAttemptInfo>;
+export type ApplicationAttemptInfoList = Array<ApplicationAttemptInfo>;
 export const ApplicationAttemptInfoList = /*@__PURE__*/ S.Array(
   ApplicationAttemptInfo,
 ) as any as S.Schema<ApplicationAttemptInfoList>;
@@ -472,9 +472,11 @@ export interface ApplicationInfo {
   maxCores?: number;
   memoryPerExecutorMb?: number;
   coresPerExecutor?: number;
-  quantileDataStatus?: ApplicationInfoQuantileDataStatusEnum;
+  quantileDataStatus?: ApplicationInfoQuantileDataStatusEnum | (string & {});
   applicationId?: string;
-  applicationContextIngestionStatus?: ApplicationInfoApplicationContextIngestionStatusEnum;
+  applicationContextIngestionStatus?:
+    | ApplicationInfoApplicationContextIngestionStatusEnum
+    | (string & {});
   attempts?: ApplicationAttemptInfoList;
   coresGranted?: number;
 }
@@ -584,7 +586,7 @@ export const SqlPlanMetric = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SqlPlanMetric" }) as any as S.Schema<SqlPlanMetric>;
 
-export type SqlPlanMetricList = ReadonlyArray<SqlPlanMetric>;
+export type SqlPlanMetricList = Array<SqlPlanMetric>;
 export const SqlPlanMetricList = /*@__PURE__*/ S.Array(
   SqlPlanMetric,
 ) as any as S.Schema<SqlPlanMetricList>;
@@ -647,8 +649,7 @@ export const SparkPlanGraphNodeWrapper = /*@__PURE__*/ S.suspend(() =>
   identifier: "SparkPlanGraphNodeWrapper",
 }) as any as S.Schema<SparkPlanGraphNodeWrapper>;
 
-export type SparkPlanGraphNodeWrapperList =
-  ReadonlyArray<SparkPlanGraphNodeWrapper>;
+export type SparkPlanGraphNodeWrapperList = Array<SparkPlanGraphNodeWrapper>;
 export const SparkPlanGraphNodeWrapperList = /*@__PURE__*/ S.Array(
   SparkPlanGraphNodeWrapper,
 ) as any as S.Schema<SparkPlanGraphNodeWrapperList>;
@@ -667,7 +668,7 @@ export const SparkPlanGraphEdge = /*@__PURE__*/ S.suspend(() =>
   identifier: "SparkPlanGraphEdge",
 }) as any as S.Schema<SparkPlanGraphEdge>;
 
-export type SparkPlanGraphEdgeList = ReadonlyArray<SparkPlanGraphEdge>;
+export type SparkPlanGraphEdgeList = Array<SparkPlanGraphEdge>;
 export const SparkPlanGraphEdgeList = /*@__PURE__*/ S.Array(
   SparkPlanGraphEdge,
 ) as any as S.Schema<SparkPlanGraphEdgeList>;
@@ -781,7 +782,7 @@ export type SqlExecutionUiDataJobsValueEnum =
 export const SqlExecutionUiDataJobsValueEnum = /*@__PURE__*/ S.String;
 
 export type SqlExecutionUiDataJobsValueEnumMap = {
-  [key: string]: SqlExecutionUiDataJobsValueEnum | undefined;
+  [key: string]: SqlExecutionUiDataJobsValueEnum | (string & {}) | undefined;
 };
 export const SqlExecutionUiDataJobsValueEnumMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -1245,7 +1246,7 @@ export const AccumulableInfo = /*@__PURE__*/ S.suspend(() =>
   identifier: "AccumulableInfo",
 }) as any as S.Schema<AccumulableInfo>;
 
-export type AccumulableInfoList = ReadonlyArray<AccumulableInfo>;
+export type AccumulableInfoList = Array<AccumulableInfo>;
 export const AccumulableInfoList = /*@__PURE__*/ S.Array(
   AccumulableInfo,
 ) as any as S.Schema<AccumulableInfoList>;
@@ -1502,12 +1503,12 @@ export const ExecutorStageSummaryMap = /*@__PURE__*/ S.Record(
   ExecutorStageSummary,
 ) as any as S.Schema<ExecutorStageSummaryMap>;
 
-export type DoubleList = ReadonlyArray<number>;
+export type DoubleList = Array<number>;
 export const DoubleList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<DoubleList>;
 
-export type ExecutorMetricsList = ReadonlyArray<ExecutorMetrics>;
+export type ExecutorMetricsList = Array<ExecutorMetrics>;
 export const ExecutorMetricsList = /*@__PURE__*/ S.Array(
   ExecutorMetrics,
 ) as any as S.Schema<ExecutorMetricsList>;
@@ -1614,7 +1615,7 @@ export interface StageData {
   killedTasksSummary?: IntegerMap;
   accumulatorUpdates?: AccumulableInfoList;
   shuffleMergersCount?: number;
-  status?: StageDataStatusEnum;
+  status?: StageDataStatusEnum | (string & {});
   failureReason?: string;
   stageId?: string;
   schedulingPool?: string;
@@ -1751,7 +1752,7 @@ export const AccessStageRddGraphProjectsLocationsBatchesSparkApplicationsRequest
       "AccessStageRddGraphProjectsLocationsBatchesSparkApplicationsRequest",
   }) as any as S.Schema<AccessStageRddGraphProjectsLocationsBatchesSparkApplicationsRequest>;
 
-export type RddOperationClusterList = ReadonlyArray<RddOperationCluster>;
+export type RddOperationClusterList = Array<RddOperationCluster>;
 export const RddOperationClusterList = /*@__PURE__*/ S.Array(
   S.suspend(() => RddOperationCluster),
 ) as any as S.Schema<RddOperationClusterList>;
@@ -1766,7 +1767,9 @@ export const RddOperationNodeOutputDeterministicLevelEnum =
 
 /** A node in the RDD operation graph. Corresponds to a single RDD. */
 export interface RddOperationNode {
-  outputDeterministicLevel?: RddOperationNodeOutputDeterministicLevelEnum;
+  outputDeterministicLevel?:
+    | RddOperationNodeOutputDeterministicLevelEnum
+    | (string & {});
   name?: string;
   callsite?: string;
   nodeId?: number;
@@ -1788,7 +1791,7 @@ export const RddOperationNode = /*@__PURE__*/ S.suspend(() =>
   identifier: "RddOperationNode",
 }) as any as S.Schema<RddOperationNode>;
 
-export type RddOperationNodeList = ReadonlyArray<RddOperationNode>;
+export type RddOperationNodeList = Array<RddOperationNode>;
 export const RddOperationNodeList = /*@__PURE__*/ S.Array(
   RddOperationNode,
 ) as any as S.Schema<RddOperationNodeList>;
@@ -1825,7 +1828,7 @@ export const RddOperationEdge = /*@__PURE__*/ S.suspend(() =>
   identifier: "RddOperationEdge",
 }) as any as S.Schema<RddOperationEdge>;
 
-export type RddOperationEdgeList = ReadonlyArray<RddOperationEdge>;
+export type RddOperationEdgeList = Array<RddOperationEdge>;
 export const RddOperationEdgeList = /*@__PURE__*/ S.Array(
   RddOperationEdge,
 ) as any as S.Schema<RddOperationEdgeList>;
@@ -1948,7 +1951,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -2103,7 +2106,10 @@ export type LoggingConfigDriverLogLevelsValueEnum =
 export const LoggingConfigDriverLogLevelsValueEnum = /*@__PURE__*/ S.String;
 
 export type LoggingConfigDriverLogLevelsValueEnumMap = {
-  [key: string]: LoggingConfigDriverLogLevelsValueEnum | undefined;
+  [key: string]:
+    | LoggingConfigDriverLogLevelsValueEnum
+    | (string & {})
+    | undefined;
 };
 export const LoggingConfigDriverLogLevelsValueEnumMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -2302,9 +2308,9 @@ export const JobStatusStateEnum = /*@__PURE__*/ S.String;
 /** Dataproc job status. */
 export interface JobStatus {
   /** Output only. Additional state information, which includes status reported by the agent. */
-  substate?: JobStatusSubstateEnum;
+  substate?: JobStatusSubstateEnum | (string & {});
   /** Output only. A state message specifying the overall job state. */
-  state?: JobStatusStateEnum;
+  state?: JobStatusStateEnum | (string & {});
   /** Optional. Output only. Job state details, such as an error description if the state is ERROR. */
   details?: string;
   /** Output only. The time when this state was entered. */
@@ -2319,7 +2325,7 @@ export const JobStatus = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "JobStatus" }) as any as S.Schema<JobStatus>;
 
-export type JobStatusList = ReadonlyArray<JobStatus>;
+export type JobStatusList = Array<JobStatus>;
 export const JobStatusList = /*@__PURE__*/ S.Array(
   JobStatus,
 ) as any as S.Schema<JobStatusList>;
@@ -2500,7 +2506,7 @@ export interface YarnApplication {
   /** Optional. The cumulative CPU time consumed by the application for a job, measured in vcore-seconds. */
   vcoreSeconds?: string;
   /** Required. The application state. */
-  state?: YarnApplicationStateEnum;
+  state?: YarnApplicationStateEnum | (string & {});
   /** Required. The numerical progress of the application, from 1 to 100. */
   progress?: number;
 }
@@ -2517,7 +2523,7 @@ export const YarnApplication = /*@__PURE__*/ S.suspend(() =>
   identifier: "YarnApplication",
 }) as any as S.Schema<YarnApplication>;
 
-export type YarnApplicationList = ReadonlyArray<YarnApplication>;
+export type YarnApplicationList = Array<YarnApplication>;
 export const YarnApplicationList = /*@__PURE__*/ S.Array(
   YarnApplication,
 ) as any as S.Schema<YarnApplicationList>;
@@ -2735,7 +2741,7 @@ export interface AutoscalingPolicy {
   /** Optional. The labels to associate with this autoscaling policy. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with an autoscaling policy. */
   labels?: StringMap;
   /** Optional. The type of the clusters for which this autoscaling policy is to be configured. */
-  clusterType?: AutoscalingPolicyClusterTypeEnum;
+  clusterType?: AutoscalingPolicyClusterTypeEnum | (string & {});
   /** Required. The policy id.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters. */
   id?: string;
   /** Optional. Describes how the autoscaler will operate for secondary workers. */
@@ -2858,7 +2864,7 @@ export interface StateHistory {
   /** Output only. Details about the state at this point in history. */
   stateMessage?: string;
   /** Output only. The state of the batch at this point in history. */
-  state?: StateHistoryStateEnum;
+  state?: StateHistoryStateEnum | (string & {});
   /** Output only. The time when the batch entered the historical state. */
   stateStartTime?: string;
 }
@@ -2870,7 +2876,7 @@ export const StateHistory = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "StateHistory" }) as any as S.Schema<StateHistory>;
 
-export type StateHistoryList = ReadonlyArray<StateHistory>;
+export type StateHistoryList = Array<StateHistory>;
 export const StateHistoryList = /*@__PURE__*/ S.Array(
   StateHistory,
 ) as any as S.Schema<StateHistoryList>;
@@ -2884,8 +2890,9 @@ export type AutotuningConfigScenariosItemEnum =
   | "AUTO";
 export const AutotuningConfigScenariosItemEnum = /*@__PURE__*/ S.String;
 
-export type AutotuningConfigScenariosItemEnumList =
-  ReadonlyArray<AutotuningConfigScenariosItemEnum>;
+export type AutotuningConfigScenariosItemEnumList = Array<
+  AutotuningConfigScenariosItemEnum | (string & {})
+>;
 export const AutotuningConfigScenariosItemEnumList = /*@__PURE__*/ S.Array(
   AutotuningConfigScenariosItemEnum,
 ) as any as S.Schema<AutotuningConfigScenariosItemEnumList>;
@@ -2965,7 +2972,9 @@ export const AuthenticationConfigUserWorkloadAuthenticationTypeEnum =
 /** Authentication configuration for a workload is used to set the default identity for the workload execution. The config specifies the type of identity (service account or user) that will be used by workloads to access resources on the project(s). */
 export interface AuthenticationConfig {
   /** Optional. Authentication type for the user workload running in containers. */
-  userWorkloadAuthenticationType?: AuthenticationConfigUserWorkloadAuthenticationTypeEnum;
+  userWorkloadAuthenticationType?:
+    | AuthenticationConfigUserWorkloadAuthenticationTypeEnum
+    | (string & {});
 }
 export const AuthenticationConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3143,7 +3152,7 @@ export interface CohortInfo {
   /** Output only. Final cohort that was used to tune the workload. */
   cohort?: string;
   /** Output only. Source of the cohort. */
-  cohortSource?: CohortInfoCohortSourceEnum;
+  cohortSource?: CohortInfoCohortSourceEnum | (string & {});
 }
 export const CohortInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3285,7 +3294,7 @@ export interface Batch {
   /** Optional. PySpark notebook batch config. */
   pysparkNotebookBatch?: PySparkNotebookBatch;
   /** Output only. The state of the batch. */
-  state?: BatchStateEnum;
+  state?: BatchStateEnum | (string & {});
   /** Output only. The time when the batch was created. */
   createTime?: string;
   /** Optional. PySpark batch config. */
@@ -3388,7 +3397,7 @@ export const SessionStateHistoryStateEnum = /*@__PURE__*/ S.String;
 /** Historical state information. */
 export interface SessionStateHistory {
   /** Output only. The state of the session at this point in the session history. */
-  state?: SessionStateHistoryStateEnum;
+  state?: SessionStateHistoryStateEnum | (string & {});
   /** Output only. The time when the session entered the historical state. */
   stateStartTime?: string;
   /** Output only. Details about the state at this point in the session history. */
@@ -3404,7 +3413,7 @@ export const SessionStateHistory = /*@__PURE__*/ S.suspend(() =>
   identifier: "SessionStateHistory",
 }) as any as S.Schema<SessionStateHistory>;
 
-export type SessionStateHistoryList = ReadonlyArray<SessionStateHistory>;
+export type SessionStateHistoryList = Array<SessionStateHistory>;
 export const SessionStateHistoryList = /*@__PURE__*/ S.Array(
   SessionStateHistory,
 ) as any as S.Schema<SessionStateHistoryList>;
@@ -3415,7 +3424,7 @@ export const JupyterConfigKernelEnum = /*@__PURE__*/ S.String;
 /** Jupyter configuration for an interactive session. */
 export interface JupyterConfig {
   /** Optional. Kernel */
-  kernel?: JupyterConfigKernelEnum;
+  kernel?: JupyterConfigKernelEnum | (string & {});
   /** Optional. Display name, shown in the Jupyter kernelspec card. */
   displayName?: string;
 }
@@ -3468,7 +3477,7 @@ export interface Session {
   /** Output only. The time when the session was created. */
   createTime?: string;
   /** Output only. A state of the session. */
-  state?: SessionStateEnum;
+  state?: SessionStateEnum | (string & {});
 }
 export const Session = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3648,7 +3657,7 @@ export const TemplateParameter = /*@__PURE__*/ S.suspend(() =>
   identifier: "TemplateParameter",
 }) as any as S.Schema<TemplateParameter>;
 
-export type TemplateParameterList = ReadonlyArray<TemplateParameter>;
+export type TemplateParameterList = Array<TemplateParameter>;
 export const TemplateParameterList = /*@__PURE__*/ S.Array(
   TemplateParameter,
 ) as any as S.Schema<TemplateParameterList>;
@@ -3685,7 +3694,7 @@ export const AcceleratorConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "AcceleratorConfig",
 }) as any as S.Schema<AcceleratorConfig>;
 
-export type AcceleratorConfigList = ReadonlyArray<AcceleratorConfig>;
+export type AcceleratorConfigList = Array<AcceleratorConfig>;
 export const AcceleratorConfigList = /*@__PURE__*/ S.Array(
   AcceleratorConfig,
 ) as any as S.Schema<AcceleratorConfigList>;
@@ -3717,8 +3726,7 @@ export const InstanceSelectionResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "InstanceSelectionResult",
 }) as any as S.Schema<InstanceSelectionResult>;
 
-export type InstanceSelectionResultList =
-  ReadonlyArray<InstanceSelectionResult>;
+export type InstanceSelectionResultList = Array<InstanceSelectionResult>;
 export const InstanceSelectionResultList = /*@__PURE__*/ S.Array(
   InstanceSelectionResult,
 ) as any as S.Schema<InstanceSelectionResultList>;
@@ -3750,7 +3758,7 @@ export const AttachedDiskConfigDiskTypeEnum = /*@__PURE__*/ S.String;
 /** Specifies the config of attached disk options for single VM instance. */
 export interface AttachedDiskConfig {
   /** Optional. Disk type. */
-  diskType?: AttachedDiskConfigDiskTypeEnum;
+  diskType?: AttachedDiskConfigDiskTypeEnum | (string & {});
   /** Optional. Disk size in GB. */
   diskSizeGb?: number;
   /** Optional. Indicates how many IOPS to provision for the attached disk. This sets the number of I/O operations per second that the disk can handle. See https://cloud.google.com/compute/docs/disks/hyperdisks#hyperdisk-features */
@@ -3769,7 +3777,7 @@ export const AttachedDiskConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "AttachedDiskConfig",
 }) as any as S.Schema<AttachedDiskConfig>;
 
-export type AttachedDiskConfigList = ReadonlyArray<AttachedDiskConfig>;
+export type AttachedDiskConfigList = Array<AttachedDiskConfig>;
 export const AttachedDiskConfigList = /*@__PURE__*/ S.Array(
   AttachedDiskConfig,
 ) as any as S.Schema<AttachedDiskConfigList>;
@@ -3822,7 +3830,7 @@ export const InstanceSelection = /*@__PURE__*/ S.suspend(() =>
   identifier: "InstanceSelection",
 }) as any as S.Schema<InstanceSelection>;
 
-export type InstanceSelectionList = ReadonlyArray<InstanceSelection>;
+export type InstanceSelectionList = Array<InstanceSelection>;
 export const InstanceSelectionList = /*@__PURE__*/ S.Array(
   InstanceSelection,
 ) as any as S.Schema<InstanceSelectionList>;
@@ -3871,7 +3879,7 @@ export const InstanceReference = /*@__PURE__*/ S.suspend(() =>
   identifier: "InstanceReference",
 }) as any as S.Schema<InstanceReference>;
 
-export type InstanceReferenceList = ReadonlyArray<InstanceReference>;
+export type InstanceReferenceList = Array<InstanceReference>;
 export const InstanceReferenceList = /*@__PURE__*/ S.Array(
   InstanceReference,
 ) as any as S.Schema<InstanceReferenceList>;
@@ -3925,7 +3933,7 @@ export interface InstanceGroupConfig {
   /** Optional. The Compute Engine image resource used for cluster instances.The URI can represent an image or image family.Image examples: https://www.googleapis.com/compute/v1/projects/[project_id]/global/images/[image-id] projects/[project_id]/global/images/[image-id] image-idImage family examples. The service will use the most recent image from the family: https://www.googleapis.com/compute/v1/projects/[project_id]/global/images/family/[custom-image-family-name] projects/[project_id]/global/images/family/[custom-image-family-name]If the URI is unspecified, it will be inferred from SoftwareConfig.image_version or the system default. */
   imageUri?: string;
   /** Optional. Specifies the preemptibility of the instance group.The default value for master and worker groups is NON_PREEMPTIBLE. This default cannot be changed.The default value for secondary instances is PREEMPTIBLE. */
-  preemptibility?: InstanceGroupConfigPreemptibilityEnum;
+  preemptibility?: InstanceGroupConfigPreemptibilityEnum | (string & {});
   /** Output only. Specifies that this instance group contains preemptible instances. */
   isPreemptible?: boolean;
   /** Optional. Disk option config settings. */
@@ -3970,8 +3978,7 @@ export const NodeInitializationAction = /*@__PURE__*/ S.suspend(() =>
   identifier: "NodeInitializationAction",
 }) as any as S.Schema<NodeInitializationAction>;
 
-export type NodeInitializationActionList =
-  ReadonlyArray<NodeInitializationAction>;
+export type NodeInitializationActionList = Array<NodeInitializationAction>;
 export const NodeInitializationActionList = /*@__PURE__*/ S.Array(
   NodeInitializationAction,
 ) as any as S.Schema<NodeInitializationActionList>;
@@ -4004,7 +4011,7 @@ export const MetricMetricSourceEnum = /*@__PURE__*/ S.String;
 /** A custom metric. */
 export interface Metric {
   /** Required. A standard set of metrics is collected unless metricOverrides are specified for the metric source (see Custom metrics (https://cloud.google.com/dataproc/docs/guides/dataproc-metrics#custom_metrics) for more information). */
-  metricSource?: MetricMetricSourceEnum;
+  metricSource?: MetricMetricSourceEnum | (string & {});
   /** Optional. Specify one or more Custom metrics (https://cloud.google.com/dataproc/docs/guides/dataproc-metrics#custom_metrics) to collect for the metric course (for the SPARK metric source (any Spark metric (https://spark.apache.org/docs/latest/monitoring.html#metrics) can be specified).Provide metrics in the following format: METRIC_SOURCE: INSTANCE:GROUP:METRIC Use camelcase as appropriate.Examples: yarn:ResourceManager:QueueMetrics:AppsCompleted spark:driver:DAGScheduler:job.allJobs sparkHistoryServer:JVM:Memory:NonHeapMemoryUsage.committed hiveserver2:JVM:Memory:NonHeapMemoryUsage.used Notes: Only the specified overridden metrics are collected for the metric source. For example, if one or more spark:executive metrics are listed as metric overrides, other SPARK metrics are not collected. The collection of the metrics for other enabled custom metric sources is unaffected. For example, if both SPARK and YARN metric sources are enabled, and overrides are provided for Spark metrics only, all YARN metrics are collected. */
   metricOverrides?: StringList;
 }
@@ -4015,7 +4022,7 @@ export const Metric = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Metric" }) as any as S.Schema<Metric>;
 
-export type MetricList = ReadonlyArray<Metric>;
+export type MetricList = Array<Metric>;
 export const MetricList = /*@__PURE__*/ S.Array(
   Metric,
 ) as any as S.Schema<MetricList>;
@@ -4059,7 +4066,9 @@ export interface ConfidentialInstanceConfig {
   /** Optional. Deprecated: Use 'confidential_instance_type' instead. Defines whether the instance should have confidential compute enabled. */
   enableConfidentialCompute?: boolean;
   /** Optional. Defines the type of Confidential Compute technology to use. */
-  confidentialInstanceType?: ConfidentialInstanceConfigConfidentialInstanceTypeEnum;
+  confidentialInstanceType?:
+    | ConfidentialInstanceConfigConfidentialInstanceTypeEnum
+    | (string & {});
 }
 export const ConfidentialInstanceConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4083,7 +4092,9 @@ export const ReservationAffinityConsumeReservationTypeEnum =
 /** Reservation Affinity for consuming Zonal reservation. */
 export interface ReservationAffinity {
   /** Optional. Type of reservation to consume */
-  consumeReservationType?: ReservationAffinityConsumeReservationTypeEnum;
+  consumeReservationType?:
+    | ReservationAffinityConsumeReservationTypeEnum
+    | (string & {});
   /** Optional. Corresponds to the label key of reservation resource. */
   key?: string;
   /** Optional. Corresponds to the label values of reservation resource. */
@@ -4143,7 +4154,9 @@ export interface GceClusterConfig {
   /** Optional. The Compute Engine zone where the cluster will be located. If omitted, the service will pick a zone in the cluster's Compute Engine region. On a get request, zone will always be present.A full URL, partial URI, or short name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/zones/[zone] projects/[project_id]/zones/[zone] [zone] */
   zoneUri?: string;
   /** Optional. The type of IPv6 access for a cluster. */
-  privateIpv6GoogleAccess?: GceClusterConfigPrivateIpv6GoogleAccessEnum;
+  privateIpv6GoogleAccess?:
+    | GceClusterConfigPrivateIpv6GoogleAccessEnum
+    | (string & {});
   /** Optional. An optional list of Compute Engine zones where the cluster will not be located when Auto Zone is enabled. Only one of zone_uri or auto_zone_exclude_zone_uris can be set. If both are omitted, the service will pick a zone in the cluster Compute Engine region. If auto_zone_exclude_zone_uris is set and there is more than one non-excluded zone, the service will pick one of the non-excluded zones. Otherwise, cluster creation will fail with INVALID_ARGUMENT error.A full URL, partial URI, or short name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/zones/[zone] projects/[project_id]/zones/[zone] [zone] */
   autoZoneExcludeZoneUris?: StringList;
   /** Optional. The VM service account (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/service-accounts#service_accounts_in_dataproc) (also see VM Data Plane identity (https://cloud.google.com/dataproc/docs/concepts/iam/dataproc-principals#vm_service_account_data_plane_identity)) used by cluster VM instances to access Google Cloud Platform services.If not specified, the Compute Engine default service account (https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used. */
@@ -4219,7 +4232,9 @@ export const LifecycleConfig = /*@__PURE__*/ S.suspend(() =>
 export type NodeGroupRolesItemEnum = "ROLE_UNSPECIFIED" | "DRIVER";
 export const NodeGroupRolesItemEnum = /*@__PURE__*/ S.String;
 
-export type NodeGroupRolesItemEnumList = ReadonlyArray<NodeGroupRolesItemEnum>;
+export type NodeGroupRolesItemEnumList = Array<
+  NodeGroupRolesItemEnum | (string & {})
+>;
 export const NodeGroupRolesItemEnumList = /*@__PURE__*/ S.Array(
   NodeGroupRolesItemEnum,
 ) as any as S.Schema<NodeGroupRolesItemEnumList>;
@@ -4260,7 +4275,7 @@ export const AuxiliaryNodeGroup = /*@__PURE__*/ S.suspend(() =>
   identifier: "AuxiliaryNodeGroup",
 }) as any as S.Schema<AuxiliaryNodeGroup>;
 
-export type AuxiliaryNodeGroupList = ReadonlyArray<AuxiliaryNodeGroup>;
+export type AuxiliaryNodeGroupList = Array<AuxiliaryNodeGroup>;
 export const AuxiliaryNodeGroupList = /*@__PURE__*/ S.Array(
   AuxiliaryNodeGroup,
 ) as any as S.Schema<AuxiliaryNodeGroupList>;
@@ -4287,8 +4302,9 @@ export type SoftwareConfigOptionalComponentsItemEnum =
   | "JUPYTER_KERNEL_GATEWAY";
 export const SoftwareConfigOptionalComponentsItemEnum = /*@__PURE__*/ S.String;
 
-export type SoftwareConfigOptionalComponentsItemEnumList =
-  ReadonlyArray<SoftwareConfigOptionalComponentsItemEnum>;
+export type SoftwareConfigOptionalComponentsItemEnumList = Array<
+  SoftwareConfigOptionalComponentsItemEnum | (string & {})
+>;
 export const SoftwareConfigOptionalComponentsItemEnumList =
   /*@__PURE__*/ S.Array(
     SoftwareConfigOptionalComponentsItemEnum,
@@ -4399,8 +4415,9 @@ export type GkeNodePoolTargetRolesItemEnum =
   | "SPARK_EXECUTOR";
 export const GkeNodePoolTargetRolesItemEnum = /*@__PURE__*/ S.String;
 
-export type GkeNodePoolTargetRolesItemEnumList =
-  ReadonlyArray<GkeNodePoolTargetRolesItemEnum>;
+export type GkeNodePoolTargetRolesItemEnumList = Array<
+  GkeNodePoolTargetRolesItemEnum | (string & {})
+>;
 export const GkeNodePoolTargetRolesItemEnumList = /*@__PURE__*/ S.Array(
   GkeNodePoolTargetRolesItemEnum,
 ) as any as S.Schema<GkeNodePoolTargetRolesItemEnumList>;
@@ -4441,7 +4458,7 @@ export const GkeNodePoolAcceleratorConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GkeNodePoolAcceleratorConfig>;
 
 export type GkeNodePoolAcceleratorConfigList =
-  ReadonlyArray<GkeNodePoolAcceleratorConfig>;
+  Array<GkeNodePoolAcceleratorConfig>;
 export const GkeNodePoolAcceleratorConfigList = /*@__PURE__*/ S.Array(
   GkeNodePoolAcceleratorConfig,
 ) as any as S.Schema<GkeNodePoolAcceleratorConfigList>;
@@ -4516,7 +4533,7 @@ export const GkeNodePoolTarget = /*@__PURE__*/ S.suspend(() =>
   identifier: "GkeNodePoolTarget",
 }) as any as S.Schema<GkeNodePoolTarget>;
 
-export type GkeNodePoolTargetList = ReadonlyArray<GkeNodePoolTarget>;
+export type GkeNodePoolTargetList = Array<GkeNodePoolTarget>;
 export const GkeNodePoolTargetList = /*@__PURE__*/ S.Array(
   GkeNodePoolTarget,
 ) as any as S.Schema<GkeNodePoolTargetList>;
@@ -4625,9 +4642,9 @@ export interface ClusterConfig {
   /** Optional. Commands to execute on each node after config is completed. By default, executables are run on master and all worker nodes. You can test a node's role metadata to run an executable on a master or worker node, as shown below using curl (you can also use wget): ROLE=$(curl -H Metadata-Flavor:Google http://metadata/computeMetadata/v1/instance/attributes/dataproc-role) if [[ "${ROLE}" == 'Master' ]]; then ... master specific actions ... else ... worker specific actions ... fi */
   initializationActions?: NodeInitializationActionList;
   /** Optional. The cluster engine. */
-  engine?: ClusterConfigEngineEnum;
+  engine?: ClusterConfigEngineEnum | (string & {});
   /** Optional. The type of the cluster. */
-  clusterType?: ClusterConfigClusterTypeEnum;
+  clusterType?: ClusterConfigClusterTypeEnum | (string & {});
   /** Optional. The config for metrics. */
   dataprocMetricConfig?: DataprocMetricConfig;
   /** Optional. The Compute Engine config settings for the cluster's master instance. */
@@ -4647,7 +4664,7 @@ export interface ClusterConfig {
   /** Optional. A Cloud Storage bucket used to store ephemeral cluster and jobs data, such as Spark and MapReduce history files. If you do not specify a temp bucket, the service will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's temp bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket. The default bucket has a TTL of 90 days, but you can use any TTL (or none) if you specify a bucket (see staging and temp buckets (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)). This field requires a Cloud Storage bucket name, not a gs://... URI to a Cloud Storage bucket. */
   tempBucket?: string;
   /** Optional. The cluster tier. */
-  clusterTier?: ClusterConfigClusterTierEnum;
+  clusterTier?: ClusterConfigClusterTierEnum | (string & {});
   /** Optional. Encryption settings for the cluster. */
   encryptionConfig?: EncryptionConfig;
   /** Optional. Autoscaling config for the policy associated with the cluster. Cluster does not autoscale if this field is unset. */
@@ -4772,7 +4789,7 @@ export const OrderedJob = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "OrderedJob" }) as any as S.Schema<OrderedJob>;
 
-export type OrderedJobList = ReadonlyArray<OrderedJob>;
+export type OrderedJobList = Array<OrderedJob>;
 export const OrderedJobList = /*@__PURE__*/ S.Array(
   OrderedJob,
 ) as any as S.Schema<OrderedJobList>;
@@ -4910,11 +4927,11 @@ export const ClusterStatusStateEnum = /*@__PURE__*/ S.String;
 /** The status of a cluster and its instances. */
 export interface ClusterStatus {
   /** Output only. Additional state information that includes status reported by the agent. */
-  substate?: ClusterStatusSubstateEnum;
+  substate?: ClusterStatusSubstateEnum | (string & {});
   /** Optional. Output only. Details of cluster's state. */
   detail?: string;
   /** Output only. The cluster's state. */
-  state?: ClusterStatusStateEnum;
+  state?: ClusterStatusStateEnum | (string & {});
   /** Output only. Time when this state was entered (see JSON representation of Timestamp (https://developers.google.com/protocol-buffers/docs/proto3#json)). */
   stateStartTime?: string;
 }
@@ -4997,7 +5014,7 @@ export const VirtualClusterConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "VirtualClusterConfig",
 }) as any as S.Schema<VirtualClusterConfig>;
 
-export type ClusterStatusList = ReadonlyArray<ClusterStatus>;
+export type ClusterStatusList = Array<ClusterStatus>;
 export const ClusterStatusList = /*@__PURE__*/ S.Array(
   ClusterStatus,
 ) as any as S.Schema<ClusterStatusList>;
@@ -5543,7 +5560,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
-export type BindingList = ReadonlyArray<Binding>;
+export type BindingList = Array<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -6120,7 +6137,7 @@ export const ListProjectsLocationsAutoscalingPoliciesRequest =
     identifier: "ListProjectsLocationsAutoscalingPoliciesRequest",
   }) as any as S.Schema<ListProjectsLocationsAutoscalingPoliciesRequest>;
 
-export type AutoscalingPolicyList = ReadonlyArray<AutoscalingPolicy>;
+export type AutoscalingPolicyList = Array<AutoscalingPolicy>;
 export const AutoscalingPolicyList = /*@__PURE__*/ S.Array(
   AutoscalingPolicy,
 ) as any as S.Schema<AutoscalingPolicyList>;
@@ -6171,7 +6188,7 @@ export const ListProjectsLocationsBatchesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsBatchesRequest",
 }) as any as S.Schema<ListProjectsLocationsBatchesRequest>;
 
-export type BatchList = ReadonlyArray<Batch>;
+export type BatchList = Array<Batch>;
 export const BatchList = /*@__PURE__*/ S.Array(
   Batch,
 ) as any as S.Schema<BatchList>;
@@ -6226,7 +6243,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type OperationList = ReadonlyArray<Operation>;
+export type OperationList = Array<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -6278,7 +6295,7 @@ export const ListProjectsLocationsSessionsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsSessionsRequest",
 }) as any as S.Schema<ListProjectsLocationsSessionsRequest>;
 
-export type SessionList = ReadonlyArray<Session>;
+export type SessionList = Array<Session>;
 export const SessionList = /*@__PURE__*/ S.Array(
   Session,
 ) as any as S.Schema<SessionList>;
@@ -6327,7 +6344,7 @@ export const ListProjectsLocationsSessionTemplatesRequest =
     identifier: "ListProjectsLocationsSessionTemplatesRequest",
   }) as any as S.Schema<ListProjectsLocationsSessionTemplatesRequest>;
 
-export type SessionTemplateList = ReadonlyArray<SessionTemplate>;
+export type SessionTemplateList = Array<SessionTemplate>;
 export const SessionTemplateList = /*@__PURE__*/ S.Array(
   SessionTemplate,
 ) as any as S.Schema<SessionTemplateList>;
@@ -6373,7 +6390,7 @@ export const ListProjectsLocationsWorkflowTemplatesRequest =
     identifier: "ListProjectsLocationsWorkflowTemplatesRequest",
   }) as any as S.Schema<ListProjectsLocationsWorkflowTemplatesRequest>;
 
-export type WorkflowTemplateList = ReadonlyArray<WorkflowTemplate>;
+export type WorkflowTemplateList = Array<WorkflowTemplate>;
 export const WorkflowTemplateList = /*@__PURE__*/ S.Array(
   WorkflowTemplate,
 ) as any as S.Schema<WorkflowTemplateList>;
@@ -6452,7 +6469,7 @@ export const ListProjectsRegionsClustersRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsRegionsClustersRequest",
 }) as any as S.Schema<ListProjectsRegionsClustersRequest>;
 
-export type ClusterList = ReadonlyArray<Cluster>;
+export type ClusterList = Array<Cluster>;
 export const ClusterList = /*@__PURE__*/ S.Array(
   Cluster,
 ) as any as S.Schema<ClusterList>;
@@ -6518,7 +6535,7 @@ export const ListProjectsRegionsJobsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsRegionsJobsRequest",
 }) as any as S.Schema<ListProjectsRegionsJobsRequest>;
 
-export type JobList = ReadonlyArray<Job>;
+export type JobList = Array<Job>;
 export const JobList = /*@__PURE__*/ S.Array(Job) as any as S.Schema<JobList>;
 
 /** A list of jobs in a project. */
@@ -6704,7 +6721,7 @@ export const NodePool = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "NodePool" }) as any as S.Schema<NodePool>;
 
-export type NodePoolList = ReadonlyArray<NodePool>;
+export type NodePoolList = Array<NodePool>;
 export const NodePoolList = /*@__PURE__*/ S.Array(
   NodePool,
 ) as any as S.Schema<NodePoolList>;
@@ -7024,7 +7041,7 @@ export const ExecutorSummary = /*@__PURE__*/ S.suspend(() =>
   identifier: "ExecutorSummary",
 }) as any as S.Schema<ExecutorSummary>;
 
-export type ExecutorSummaryList = ReadonlyArray<ExecutorSummary>;
+export type ExecutorSummaryList = Array<ExecutorSummary>;
 export const ExecutorSummaryList = /*@__PURE__*/ S.Array(
   ExecutorSummary,
 ) as any as S.Schema<ExecutorSummaryList>;
@@ -7143,7 +7160,7 @@ export const SearchExecutorStageSummaryProjectsLocationsBatchesSparkApplications
       "SearchExecutorStageSummaryProjectsLocationsBatchesSparkApplicationsRequest",
   }) as any as S.Schema<SearchExecutorStageSummaryProjectsLocationsBatchesSparkApplicationsRequest>;
 
-export type ExecutorStageSummaryList = ReadonlyArray<ExecutorStageSummary>;
+export type ExecutorStageSummaryList = Array<ExecutorStageSummary>;
 export const ExecutorStageSummaryList = /*@__PURE__*/ S.Array(
   ExecutorStageSummary,
 ) as any as S.Schema<ExecutorStageSummaryList>;
@@ -7263,7 +7280,7 @@ export const SearchJobsProjectsLocationsBatchesSparkApplicationsRequest =
     identifier: "SearchJobsProjectsLocationsBatchesSparkApplicationsRequest",
   }) as any as S.Schema<SearchJobsProjectsLocationsBatchesSparkApplicationsRequest>;
 
-export type JobDataList = ReadonlyArray<JobData>;
+export type JobDataList = Array<JobData>;
 export const JobDataList = /*@__PURE__*/ S.Array(
   JobData,
 ) as any as S.Schema<JobDataList>;
@@ -7419,7 +7436,7 @@ export const SparkApplication = /*@__PURE__*/ S.suspend(() =>
   identifier: "SparkApplication",
 }) as any as S.Schema<SparkApplication>;
 
-export type SparkApplicationList = ReadonlyArray<SparkApplication>;
+export type SparkApplicationList = Array<SparkApplication>;
 export const SparkApplicationList = /*@__PURE__*/ S.Array(
   SparkApplication,
 ) as any as S.Schema<SparkApplicationList>;
@@ -7545,7 +7562,7 @@ export const SearchSqlQueriesProjectsLocationsBatchesSparkApplicationsRequest =
       "SearchSqlQueriesProjectsLocationsBatchesSparkApplicationsRequest",
   }) as any as S.Schema<SearchSqlQueriesProjectsLocationsBatchesSparkApplicationsRequest>;
 
-export type SqlExecutionUiDataList = ReadonlyArray<SqlExecutionUiData>;
+export type SqlExecutionUiDataList = Array<SqlExecutionUiData>;
 export const SqlExecutionUiDataList = /*@__PURE__*/ S.Array(
   SqlExecutionUiData,
 ) as any as S.Schema<SqlExecutionUiDataList>;
@@ -7657,7 +7674,7 @@ export const SearchStageAttemptsProjectsLocationsBatchesSparkApplicationsRequest
       "SearchStageAttemptsProjectsLocationsBatchesSparkApplicationsRequest",
   }) as any as S.Schema<SearchStageAttemptsProjectsLocationsBatchesSparkApplicationsRequest>;
 
-export type StageDataList = ReadonlyArray<StageData>;
+export type StageDataList = Array<StageData>;
 export const StageDataList = /*@__PURE__*/ S.Array(
   StageData,
 ) as any as S.Schema<StageDataList>;
@@ -7788,7 +7805,7 @@ export const SearchStageAttemptTasksProjectsLocationsBatchesSparkApplicationsReq
       "SearchStageAttemptTasksProjectsLocationsBatchesSparkApplicationsRequest",
   }) as any as S.Schema<SearchStageAttemptTasksProjectsLocationsBatchesSparkApplicationsRequest>;
 
-export type TaskDataList = ReadonlyArray<TaskData>;
+export type TaskDataList = Array<TaskData>;
 export const TaskDataList = /*@__PURE__*/ S.Array(
   TaskData,
 ) as any as S.Schema<TaskDataList>;
@@ -9105,7 +9122,7 @@ export const FallbackReason = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "FallbackReason" }) as any as S.Schema<FallbackReason>;
 
-export type FallbackReasonList = ReadonlyArray<FallbackReason>;
+export type FallbackReasonList = Array<FallbackReason>;
 export const FallbackReasonList = /*@__PURE__*/ S.Array(
   FallbackReason,
 ) as any as S.Schema<FallbackReasonList>;
@@ -9183,7 +9200,7 @@ export const RddPartitionInfo = /*@__PURE__*/ S.suspend(() =>
   identifier: "RddPartitionInfo",
 }) as any as S.Schema<RddPartitionInfo>;
 
-export type RddPartitionInfoList = ReadonlyArray<RddPartitionInfo>;
+export type RddPartitionInfoList = Array<RddPartitionInfo>;
 export const RddPartitionInfoList = /*@__PURE__*/ S.Array(
   RddPartitionInfo,
 ) as any as S.Schema<RddPartitionInfoList>;
@@ -9214,7 +9231,7 @@ export const RddDataDistribution = /*@__PURE__*/ S.suspend(() =>
   identifier: "RddDataDistribution",
 }) as any as S.Schema<RddDataDistribution>;
 
-export type RddDataDistributionList = ReadonlyArray<RddDataDistribution>;
+export type RddDataDistributionList = Array<RddDataDistribution>;
 export const RddDataDistributionList = /*@__PURE__*/ S.Array(
   RddDataDistribution,
 ) as any as S.Schema<RddDataDistributionList>;
@@ -9278,7 +9295,7 @@ export const StateOperatorProgress = /*@__PURE__*/ S.suspend(() =>
   identifier: "StateOperatorProgress",
 }) as any as S.Schema<StateOperatorProgress>;
 
-export type StateOperatorProgressList = ReadonlyArray<StateOperatorProgress>;
+export type StateOperatorProgressList = Array<StateOperatorProgress>;
 export const StateOperatorProgressList = /*@__PURE__*/ S.Array(
   StateOperatorProgress,
 ) as any as S.Schema<StateOperatorProgressList>;
@@ -9306,7 +9323,7 @@ export const SourceProgress = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SourceProgress" }) as any as S.Schema<SourceProgress>;
 
-export type SourceProgressList = ReadonlyArray<SourceProgress>;
+export type SourceProgressList = Array<SourceProgress>;
 export const SourceProgressList = /*@__PURE__*/ S.Array(
   SourceProgress,
 ) as any as S.Schema<SourceProgressList>;
@@ -9468,7 +9485,7 @@ export const BuildInfo = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "BuildInfo" }) as any as S.Schema<BuildInfo>;
 
-export type BuildInfoList = ReadonlyArray<BuildInfo>;
+export type BuildInfoList = Array<BuildInfo>;
 export const BuildInfoList = /*@__PURE__*/ S.Array(
   BuildInfo,
 ) as any as S.Schema<BuildInfoList>;
@@ -9614,7 +9631,7 @@ export const SparkWrapperObject = /*@__PURE__*/ S.suspend(() =>
   identifier: "SparkWrapperObject",
 }) as any as S.Schema<SparkWrapperObject>;
 
-export type SparkWrapperObjectList = ReadonlyArray<SparkWrapperObject>;
+export type SparkWrapperObjectList = Array<SparkWrapperObject>;
 export const SparkWrapperObjectList = /*@__PURE__*/ S.Array(
   SparkWrapperObject,
 ) as any as S.Schema<SparkWrapperObjectList>;

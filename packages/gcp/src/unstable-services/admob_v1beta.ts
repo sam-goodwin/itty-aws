@@ -72,7 +72,7 @@ export const StringMap = /*@__PURE__*/ S.Record(
 /** Settings to map an AdMob ad unit to a 3rd party ad unit. */
 export interface AdUnitMapping {
   /** Output only. The status of this ad unit mapping. */
-  state?: AdUnitMappingStateEnum;
+  state?: AdUnitMappingStateEnum | (string & {});
   /** Settings for the specified ad unit to make an ad request to 3rd party ad network. Key-value pairs with values set by the user for the keys requested by the ad network. Please see https://support.google.com/admob/answer/3245073 for details on how to configure the network settings. */
   adUnitConfigurations?: StringMap;
   /** The ID of mediation ad source adapter used by this ad unit mapping. The adapter determines the information needed in the ad_network_settings. */
@@ -108,8 +108,7 @@ export const CreateAdUnitMappingRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateAdUnitMappingRequest",
 }) as any as S.Schema<CreateAdUnitMappingRequest>;
 
-export type CreateAdUnitMappingRequestList =
-  ReadonlyArray<CreateAdUnitMappingRequest>;
+export type CreateAdUnitMappingRequestList = Array<CreateAdUnitMappingRequest>;
 export const CreateAdUnitMappingRequestList = /*@__PURE__*/ S.Array(
   CreateAdUnitMappingRequest,
 ) as any as S.Schema<CreateAdUnitMappingRequestList>;
@@ -149,7 +148,7 @@ export const BatchCreateAccountsAdUnitMappingsRequest = /*@__PURE__*/ S.suspend(
   identifier: "BatchCreateAccountsAdUnitMappingsRequest",
 }) as any as S.Schema<BatchCreateAccountsAdUnitMappingsRequest>;
 
-export type AdUnitMappingList = ReadonlyArray<AdUnitMapping>;
+export type AdUnitMappingList = Array<AdUnitMapping>;
 export const AdUnitMappingList = /*@__PURE__*/ S.Array(
   AdUnitMapping,
 ) as any as S.Schema<AdUnitMappingList>;
@@ -167,7 +166,7 @@ export const BatchCreateAdUnitMappingsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "BatchCreateAdUnitMappingsResponse",
 }) as any as S.Schema<BatchCreateAdUnitMappingsResponse>;
 
-export type StringList_ = ReadonlyArray<string>;
+export type StringList_ = Array<string>;
 export const StringList_ = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList_>;
@@ -290,8 +289,9 @@ export type AppLinkedAppInfoAndroidAppStoresItemEnum =
   | "XIAOMI_APP_STORE";
 export const AppLinkedAppInfoAndroidAppStoresItemEnum = /*@__PURE__*/ S.String;
 
-export type AppLinkedAppInfoAndroidAppStoresItemEnumList =
-  ReadonlyArray<AppLinkedAppInfoAndroidAppStoresItemEnum>;
+export type AppLinkedAppInfoAndroidAppStoresItemEnumList = Array<
+  AppLinkedAppInfoAndroidAppStoresItemEnum | (string & {})
+>;
 export const AppLinkedAppInfoAndroidAppStoresItemEnumList =
   /*@__PURE__*/ S.Array(
     AppLinkedAppInfoAndroidAppStoresItemEnum,
@@ -323,7 +323,7 @@ export interface App {
   /** Resource name for this app. Format is accounts/{publisher_id}/apps/{app_id_fragment} Example: accounts/pub-9876543210987654/apps/0123456789 */
   name?: string;
   /** Output only. The approval state for the app. The field is read-only. */
-  appApprovalState?: AppAppApprovalStateEnum;
+  appApprovalState?: AppAppApprovalStateEnum | (string & {});
   /** The information for an app that is not linked to any app store. After an app is linked, this information is still retrivable. If no name is provided for the app upon creation, a placeholder name will be used. */
   manualAppInfo?: AppManualAppInfo;
   /** The externally visible ID of the app which can be used to integrate with AdMob. This is a read only property. Example: ca-app-pub-9876543210987654~0123456789 */
@@ -373,7 +373,7 @@ export const MediationGroupTargetingIdfaTargetingEnum = /*@__PURE__*/ S.String;
 /** Set of criteria targeted by this mediation group. For example, a mediation group can target specific ad unit IDs, platform, format and geo location. */
 export interface MediationGroupTargeting {
   /** The parameter can be used to target ad requests based on the availability of the IDFA. If set to ALL, the mediation group applies to all ad requests (with or without IDFA). If set to AVAILABLE, the mediation group applies to ad requests with IDFA. If set to NOT_AVAILABLE, the mediation group applies to ad requests without IDFA. Doesn't need to be specified for an ANDROID device. */
-  idfaTargeting?: MediationGroupTargetingIdfaTargetingEnum;
+  idfaTargeting?: MediationGroupTargetingIdfaTargetingEnum | (string & {});
   /** The Unicode country/region code (CLDR) of a location, such as "US". Unset if this mediation group does not exclude any region. */
   excludedRegionCodes?: StringList_;
   /** Ad format targeted by this mediation group. Examples: "BANNER", "NATIVE". */
@@ -441,13 +441,15 @@ export interface MediationGroupMediationGroupLine {
   /** User-provided label for this mediation line. The maximum length allowed is 255 characters. */
   displayName?: string;
   /** Indicates how the CPM for this mediation line is provided. Note that `MANUAL` and `LIVE` are the only fully-supported mode at the moment. Please use the AdMob UI (https://admob.google.com) if you wish to create or update to other cpm modes. */
-  cpmMode?: MediationGroupMediationGroupLineCpmModeEnum;
+  cpmMode?: MediationGroupMediationGroupLineCpmModeEnum | (string & {});
   /** Output only. The Mediation A/B experiment variant to which the mediation group line belongs to. */
-  experimentVariant?: MediationGroupMediationGroupLineExperimentVariantEnum;
+  experimentVariant?:
+    | MediationGroupMediationGroupLineExperimentVariantEnum
+    | (string & {});
   /** The ID of the ad source this mediation line is associated with. */
   adSourceId?: string;
   /** The status of the mediation group line. Only enabled mediation group lines will be served. */
-  state?: MediationGroupMediationGroupLineStateEnum;
+  state?: MediationGroupMediationGroupLineStateEnum | (string & {});
   /** The CPM for this allocation line. $0.01 is the minimum allowed amount. For LIVE CPM modes, the default amount is $0.01. This value is ignored if `cpm_mode` is `LIVE`. **Warning:** "USD" is the only supported currency at the moment. The unit is in micros. */
   cpmMicros?: string;
   /** References of the ad unit mappings for each ad unit associated with this mediation line. Key is the ad unit ID, value is resource name of the ad unit mapping. For mediation lines where the ad source id is the AdMob Network, ad unit mappings will be ignored. */
@@ -485,11 +487,13 @@ export interface MediationGroup {
   /** Set of criteria targeted by this mediation group, such as ad units and geo locations. */
   targeting?: MediationGroupTargeting;
   /** Output only. The state of the mediation a/b experiment that belongs to this mediation group. */
-  mediationAbExperimentState?: MediationGroupMediationAbExperimentStateEnum;
+  mediationAbExperimentState?:
+    | MediationGroupMediationAbExperimentStateEnum
+    | (string & {});
   /** User provided name for the mediation group. The maximum length allowed is 120 characters. */
   displayName?: string;
   /** The status of the mediation group. Only enabled mediation groups will be served. */
-  state?: MediationGroupStateEnum;
+  state?: MediationGroupStateEnum | (string & {});
   /** The ID of the mediation group. Example: "0123456789". This is a read only property. */
   mediationGroupId?: string;
   /** The mediation lines used for serving for this mediation group. Key is the ID of the mediation group line. For creation, use distinct negative values as placeholder. */
@@ -546,7 +550,7 @@ export const MediationAbExperimentExperimentMediationLine =
   }) as any as S.Schema<MediationAbExperimentExperimentMediationLine>;
 
 export type MediationAbExperimentExperimentMediationLineList =
-  ReadonlyArray<MediationAbExperimentExperimentMediationLine>;
+  Array<MediationAbExperimentExperimentMediationLine>;
 export const MediationAbExperimentExperimentMediationLineList =
   /*@__PURE__*/ S.Array(
     MediationAbExperimentExperimentMediationLine,
@@ -577,7 +581,7 @@ export interface MediationAbExperiment {
   /** Output only. The experiment mediation lines for control. They are inherited from the parent mediation group. It is an output only field. */
   controlMediationLines?: MediationAbExperimentExperimentMediationLineList;
   /** Output only. The state of the experiment. It is an output only field. */
-  state?: MediationAbExperimentStateEnum;
+  state?: MediationAbExperimentStateEnum | (string & {});
   /** Output only. The mediation group id this experiment belongs to. This can be used for filtering the experiments in the list experiments API. */
   mediationGroupId?: string;
   /** Resource name for this experiment. The format is accounts/{publisher_id}/ mediationGroups/{mediation_group_id}/mediationAbExperiment/ {mediation_group_experiment_id}. For example: accounts/pub-9876543210987654/mediationGroups/0123456789/ mediationAbExperiment/12345 */
@@ -587,7 +591,7 @@ export interface MediationAbExperiment {
   /** The display name for the mediation A/B experiment. */
   displayName?: string;
   /** Output only. The variant leader for the experiment according to some key metrics. */
-  variantLeader?: MediationAbExperimentVariantLeaderEnum;
+  variantLeader?: MediationAbExperimentVariantLeaderEnum | (string & {});
   /** Output only. The time at which the experiment was ended or target to end (in UTC). */
   endTime?: string;
   /** Output only. The time at which the experiment was started (in UTC). */
@@ -682,7 +686,7 @@ export type CampaignReportSpecDimensionsItemEnum =
   | "FORMAT";
 export const CampaignReportSpecDimensionsItemEnum = /*@__PURE__*/ S.String;
 
-export type CampaignReportSpecDimensionsItemEnumList = ReadonlyArray<
+export type CampaignReportSpecDimensionsItemEnumList = Array<
   CampaignReportSpecDimensionsItemEnum | (string & {})
 >;
 export const CampaignReportSpecDimensionsItemEnumList = /*@__PURE__*/ S.Array(
@@ -700,7 +704,7 @@ export type CampaignReportSpecMetricsItemEnum =
   | "INTERACTIONS";
 export const CampaignReportSpecMetricsItemEnum = /*@__PURE__*/ S.String;
 
-export type CampaignReportSpecMetricsItemEnumList = ReadonlyArray<
+export type CampaignReportSpecMetricsItemEnumList = Array<
   CampaignReportSpecMetricsItemEnum | (string & {})
 >;
 export const CampaignReportSpecMetricsItemEnumList = /*@__PURE__*/ S.Array(
@@ -829,7 +833,7 @@ export const ReportRow = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ReportRow" }) as any as S.Schema<ReportRow>;
 
-export type ReportRowList = ReadonlyArray<ReportRow>;
+export type ReportRowList = Array<ReportRow>;
 export const ReportRowList = /*@__PURE__*/ S.Array(
   ReportRow,
 ) as any as S.Schema<ReportRowList>;
@@ -859,7 +863,7 @@ export type MediationReportSpecMetricsItemEnum =
   | "OBSERVED_ECPM";
 export const MediationReportSpecMetricsItemEnum = /*@__PURE__*/ S.String;
 
-export type MediationReportSpecMetricsItemEnumList = ReadonlyArray<
+export type MediationReportSpecMetricsItemEnumList = Array<
   MediationReportSpecMetricsItemEnum | (string & {})
 >;
 export const MediationReportSpecMetricsItemEnumList = /*@__PURE__*/ S.Array(
@@ -914,7 +918,7 @@ export const MediationReportSpecDimensionFilter = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MediationReportSpecDimensionFilter>;
 
 export type MediationReportSpecDimensionFilterList =
-  ReadonlyArray<MediationReportSpecDimensionFilter>;
+  Array<MediationReportSpecDimensionFilter>;
 export const MediationReportSpecDimensionFilterList = /*@__PURE__*/ S.Array(
   MediationReportSpecDimensionFilter,
 ) as any as S.Schema<MediationReportSpecDimensionFilterList>;
@@ -938,7 +942,7 @@ export type MediationReportSpecDimensionsItemEnum =
   | "SERVING_RESTRICTION";
 export const MediationReportSpecDimensionsItemEnum = /*@__PURE__*/ S.String;
 
-export type MediationReportSpecDimensionsItemEnumList = ReadonlyArray<
+export type MediationReportSpecDimensionsItemEnumList = Array<
   MediationReportSpecDimensionsItemEnum | (string & {})
 >;
 export const MediationReportSpecDimensionsItemEnumList = /*@__PURE__*/ S.Array(
@@ -1004,7 +1008,7 @@ export const MediationReportSpecSortCondition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MediationReportSpecSortCondition>;
 
 export type MediationReportSpecSortConditionList =
-  ReadonlyArray<MediationReportSpecSortCondition>;
+  Array<MediationReportSpecSortCondition>;
 export const MediationReportSpecSortConditionList = /*@__PURE__*/ S.Array(
   MediationReportSpecSortCondition,
 ) as any as S.Schema<MediationReportSpecSortConditionList>;
@@ -1133,7 +1137,7 @@ export const ReportWarning = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ReportWarning" }) as any as S.Schema<ReportWarning>;
 
-export type ReportWarningList = ReadonlyArray<ReportWarning>;
+export type ReportWarningList = Array<ReportWarning>;
 export const ReportWarningList = /*@__PURE__*/ S.Array(
   ReportWarning,
 ) as any as S.Schema<ReportWarningList>;
@@ -1228,7 +1232,7 @@ export const NetworkReportSpecSortCondition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NetworkReportSpecSortCondition>;
 
 export type NetworkReportSpecSortConditionList =
-  ReadonlyArray<NetworkReportSpecSortCondition>;
+  Array<NetworkReportSpecSortCondition>;
 export const NetworkReportSpecSortConditionList = /*@__PURE__*/ S.Array(
   NetworkReportSpecSortCondition,
 ) as any as S.Schema<NetworkReportSpecSortConditionList>;
@@ -1250,7 +1254,7 @@ export type NetworkReportSpecDimensionsItemEnum =
   | "SERVING_RESTRICTION";
 export const NetworkReportSpecDimensionsItemEnum = /*@__PURE__*/ S.String;
 
-export type NetworkReportSpecDimensionsItemEnumList = ReadonlyArray<
+export type NetworkReportSpecDimensionsItemEnumList = Array<
   NetworkReportSpecDimensionsItemEnum | (string & {})
 >;
 export const NetworkReportSpecDimensionsItemEnumList = /*@__PURE__*/ S.Array(
@@ -1270,7 +1274,7 @@ export type NetworkReportSpecMetricsItemEnum =
   | "SHOW_RATE";
 export const NetworkReportSpecMetricsItemEnum = /*@__PURE__*/ S.String;
 
-export type NetworkReportSpecMetricsItemEnumList = ReadonlyArray<
+export type NetworkReportSpecMetricsItemEnumList = Array<
   NetworkReportSpecMetricsItemEnum | (string & {})
 >;
 export const NetworkReportSpecMetricsItemEnumList = /*@__PURE__*/ S.Array(
@@ -1312,7 +1316,7 @@ export const NetworkReportSpecDimensionFilter = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NetworkReportSpecDimensionFilter>;
 
 export type NetworkReportSpecDimensionFilterList =
-  ReadonlyArray<NetworkReportSpecDimensionFilter>;
+  Array<NetworkReportSpecDimensionFilter>;
 export const NetworkReportSpecDimensionFilterList = /*@__PURE__*/ S.Array(
   NetworkReportSpecDimensionFilter,
 ) as any as S.Schema<NetworkReportSpecDimensionFilterList>;
@@ -1466,7 +1470,7 @@ export const ListAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAccountsRequest",
 }) as any as S.Schema<ListAccountsRequest>;
 
-export type PublisherAccountList = ReadonlyArray<PublisherAccount>;
+export type PublisherAccountList = Array<PublisherAccount>;
 export const PublisherAccountList = /*@__PURE__*/ S.Array(
   PublisherAccount,
 ) as any as S.Schema<PublisherAccountList>;
@@ -1528,7 +1532,7 @@ export const AdSource = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AdSource" }) as any as S.Schema<AdSource>;
 
-export type AdSourceList = ReadonlyArray<AdSource>;
+export type AdSourceList = Array<AdSource>;
 export const AdSourceList = /*@__PURE__*/ S.Array(
   AdSource,
 ) as any as S.Schema<AdSourceList>;
@@ -1594,7 +1598,7 @@ export const AdapterAdapterConfigMetadata = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AdapterAdapterConfigMetadata>;
 
 export type AdapterAdapterConfigMetadataList =
-  ReadonlyArray<AdapterAdapterConfigMetadata>;
+  Array<AdapterAdapterConfigMetadata>;
 export const AdapterAdapterConfigMetadataList = /*@__PURE__*/ S.Array(
   AdapterAdapterConfigMetadata,
 ) as any as S.Schema<AdapterAdapterConfigMetadataList>;
@@ -1625,7 +1629,7 @@ export const Adapter = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Adapter" }) as any as S.Schema<Adapter>;
 
-export type AdapterList = ReadonlyArray<Adapter>;
+export type AdapterList = Array<Adapter>;
 export const AdapterList = /*@__PURE__*/ S.Array(
   Adapter,
 ) as any as S.Schema<AdapterList>;
@@ -1670,7 +1674,7 @@ export const ListAccountsAdUnitsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAccountsAdUnitsRequest",
 }) as any as S.Schema<ListAccountsAdUnitsRequest>;
 
-export type AdUnitList = ReadonlyArray<AdUnit>;
+export type AdUnitList = Array<AdUnit>;
 export const AdUnitList = /*@__PURE__*/ S.Array(
   AdUnit,
 ) as any as S.Schema<AdUnitList>;
@@ -1759,7 +1763,7 @@ export const ListAccountsAppsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAccountsAppsRequest",
 }) as any as S.Schema<ListAccountsAppsRequest>;
 
-export type AppList = ReadonlyArray<App>;
+export type AppList = Array<App>;
 export const AppList = /*@__PURE__*/ S.Array(App) as any as S.Schema<AppList>;
 
 /** Response for the apps list request. */
@@ -1805,7 +1809,7 @@ export const ListAccountsMediationGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAccountsMediationGroupsRequest",
 }) as any as S.Schema<ListAccountsMediationGroupsRequest>;
 
-export type MediationGroupList = ReadonlyArray<MediationGroup>;
+export type MediationGroupList = Array<MediationGroup>;
 export const MediationGroupList = /*@__PURE__*/ S.Array(
   MediationGroup,
 ) as any as S.Schema<MediationGroupList>;

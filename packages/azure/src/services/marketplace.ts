@@ -77,7 +77,7 @@ export const SingleOperation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SingleOperation>;
 
 /** List of Microsoft.Marketplace operations supported by the Microsoft.Marketplace resource provider. */
-export type OperationListResultValueList = ReadonlyArray<SingleOperation>;
+export type OperationListResultValueList = Array<SingleOperation>;
 export const OperationListResultValueList = /*@__PURE__*/ S.Array(
   SingleOperation,
 ) as any as S.Schema<OperationListResultValueList>;
@@ -99,16 +99,14 @@ export const OperationListResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationListResult>;
 
 /** Gets or sets added plans */
-export type AcknowledgeOfferNotificationDetailsAddPlansList =
-  ReadonlyArray<string>;
+export type AcknowledgeOfferNotificationDetailsAddPlansList = Array<string>;
 export const AcknowledgeOfferNotificationDetailsAddPlansList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AcknowledgeOfferNotificationDetailsAddPlansList>;
 
 /** Gets or sets remove plans */
-export type AcknowledgeOfferNotificationDetailsRemovePlansList =
-  ReadonlyArray<string>;
+export type AcknowledgeOfferNotificationDetailsRemovePlansList = Array<string>;
 export const AcknowledgeOfferNotificationDetailsRemovePlansList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -226,8 +224,7 @@ export type AdminAction = "Approved" | "Rejected";
 export const AdminAction = /*@__PURE__*/ S.String;
 
 /** Gets or sets Approved plans ids, empty in case of rejected */
-export type AdminRequestApprovalPropertiesApprovedPlansList =
-  ReadonlyArray<string>;
+export type AdminRequestApprovalPropertiesApprovedPlansList = Array<string>;
 export const AdminRequestApprovalPropertiesApprovedPlansList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -259,8 +256,7 @@ export const UserRequestDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UserRequestDetails>;
 
 /** Gets requesters details list */
-export type PlanRequesterDetailsRequestersList =
-  ReadonlyArray<UserRequestDetails>;
+export type PlanRequesterDetailsRequestersList = Array<UserRequestDetails>;
 export const PlanRequesterDetailsRequestersList = /*@__PURE__*/ S.Array(
   UserRequestDetails,
 ) as any as S.Schema<PlanRequesterDetailsRequestersList>;
@@ -286,14 +282,13 @@ export const PlanRequesterDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets list of plans with requesters details */
 export type AdminRequestApprovalPropertiesPlansList =
-  ReadonlyArray<PlanRequesterDetails>;
+  Array<PlanRequesterDetails>;
 export const AdminRequestApprovalPropertiesPlansList = /*@__PURE__*/ S.Array(
   PlanRequesterDetails,
 ) as any as S.Schema<AdminRequestApprovalPropertiesPlansList>;
 
 /** Gets or sets list of associated collection ids */
-export type AdminRequestApprovalPropertiesCollectionIdsList =
-  ReadonlyArray<string>;
+export type AdminRequestApprovalPropertiesCollectionIdsList = Array<string>;
 export const AdminRequestApprovalPropertiesCollectionIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -365,7 +360,7 @@ export const AdminRequestApprovalsResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AdminRequestApprovalsResource>;
 
 export type AdminRequestApprovalsListValueList =
-  ReadonlyArray<AdminRequestApprovalsResource>;
+  Array<AdminRequestApprovalsResource>;
 export const AdminRequestApprovalsListValueList = /*@__PURE__*/ S.Array(
   AdminRequestApprovalsResource,
 ) as any as S.Schema<AdminRequestApprovalsListValueList>;
@@ -439,7 +434,7 @@ export const PrivateStoreBillingAccountsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateStoreBillingAccountsRequest>;
 
 /** Billing accounts list */
-export type BillingAccountsResponseBillingAccountsList = ReadonlyArray<string>;
+export type BillingAccountsResponseBillingAccountsList = Array<string>;
 export const BillingAccountsResponseBillingAccountsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BillingAccountsResponseBillingAccountsList>;
@@ -458,7 +453,7 @@ export const BillingAccountsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BillingAccountsResponse>;
 
 /** collection ids list that the action is performed on */
-export type BulkCollectionsDetailsCollectionIdsList = ReadonlyArray<string>;
+export type BulkCollectionsDetailsCollectionIdsList = Array<string>;
 export const BulkCollectionsDetailsCollectionIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BulkCollectionsDetailsCollectionIdsList>;
@@ -519,15 +514,13 @@ export const CollectionsDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CollectionsDetails>;
 
 /** Succeeded collections */
-export type BulkCollectionsResponseSucceededList =
-  ReadonlyArray<CollectionsDetails>;
+export type BulkCollectionsResponseSucceededList = Array<CollectionsDetails>;
 export const BulkCollectionsResponseSucceededList = /*@__PURE__*/ S.Array(
   CollectionsDetails,
 ) as any as S.Schema<BulkCollectionsResponseSucceededList>;
 
 /** Failed collections */
-export type BulkCollectionsResponseFailedList =
-  ReadonlyArray<CollectionsDetails>;
+export type BulkCollectionsResponseFailedList = Array<CollectionsDetails>;
 export const BulkCollectionsResponseFailedList = /*@__PURE__*/ S.Array(
   CollectionsDetails,
 ) as any as S.Schema<BulkCollectionsResponseFailedList>;
@@ -572,7 +565,7 @@ export const PrivateStoreCollectionApproveAllItemsRequest =
   }) as any as S.Schema<PrivateStoreCollectionApproveAllItemsRequest>;
 
 /** Gets or sets subscription ids list. Empty list indicates all subscriptions are selected, null indicates no update is done, explicit list indicates the explicit selected subscriptions. On insert, null is considered as bad request */
-export type CollectionPropertiesSubscriptionsListList = ReadonlyArray<string>;
+export type CollectionPropertiesSubscriptionsListList = Array<string>;
 export const CollectionPropertiesSubscriptionsListList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CollectionPropertiesSubscriptionsListList>;
@@ -581,14 +574,14 @@ export const CollectionPropertiesSubscriptionsListList = /*@__PURE__*/ S.Array(
 export type RuleType = "PrivateProducts" | "TermsAndCondition";
 export const RuleType = /*@__PURE__*/ S.String;
 
-export type RuleValueList = ReadonlyArray<string>;
+export type RuleValueList = Array<string>;
 export const RuleValueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RuleValueList>;
 
 export interface Rule {
   /** Rule type */
-  type?: RuleType;
+  type?: RuleType | (string & {});
   value?: RuleValueList;
 }
 export const Rule = /*@__PURE__*/ S.suspend(() =>
@@ -599,7 +592,7 @@ export const Rule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Rule" }) as any as S.Schema<Rule>;
 
 /** Gets list of collection rules */
-export type CollectionPropertiesAppliedRulesList = ReadonlyArray<Rule>;
+export type CollectionPropertiesAppliedRulesList = Array<Rule>;
 export const CollectionPropertiesAppliedRulesList = /*@__PURE__*/ S.Array(
   Rule,
 ) as any as S.Schema<CollectionPropertiesAppliedRulesList>;
@@ -670,8 +663,7 @@ export const PrivateStoreCollectionApproveAllItemsResponse =
   }) as any as S.Schema<PrivateStoreCollectionApproveAllItemsResponse>;
 
 /** Gets or sets subscription ids list. Empty list indicates all subscriptions are selected, null indicates no update is done, explicit list indicates the explicit selected subscriptions. On insert, null is considered as bad request */
-export type CollectionPropertiesInputSubscriptionsListList =
-  ReadonlyArray<string>;
+export type CollectionPropertiesInputSubscriptionsListList = Array<string>;
 export const CollectionPropertiesInputSubscriptionsListList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -920,7 +912,7 @@ export const Collection = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Collection" }) as any as S.Schema<Collection>;
 
-export type CollectionsListValueList = ReadonlyArray<Collection>;
+export type CollectionsListValueList = Array<Collection>;
 export const CollectionsListValueList = /*@__PURE__*/ S.Array(
   Collection,
 ) as any as S.Schema<CollectionsListValueList>;
@@ -941,7 +933,7 @@ export const CollectionsList = /*@__PURE__*/ S.suspend(() =>
 
 /** Subscription ids list */
 export type CollectionOffersByAllContextsPropertiesSubscriptionIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CollectionOffersByAllContextsPropertiesSubscriptionIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -993,8 +985,7 @@ export const PrivateStoreCollectionOfferContextsViewRequest =
   }) as any as S.Schema<PrivateStoreCollectionOfferContextsViewRequest>;
 
 /** Plan ids limitation for this offer */
-export type OfferPropertiesSpecificPlanIdsLimitationList =
-  ReadonlyArray<string>;
+export type OfferPropertiesSpecificPlanIdsLimitationList = Array<string>;
 export const OfferPropertiesSpecificPlanIdsLimitationList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1046,7 +1037,7 @@ export const Plan = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Plan" }) as any as S.Schema<Plan>;
 
 /** Offer plans */
-export type OfferPropertiesPlansList = ReadonlyArray<Plan>;
+export type OfferPropertiesPlansList = Array<Plan>;
 export const OfferPropertiesPlansList = /*@__PURE__*/ S.Array(
   Plan,
 ) as any as S.Schema<OfferPropertiesPlansList>;
@@ -1124,8 +1115,7 @@ export const PrivateStoreCollectionOfferContextsViewResponse =
   }) as any as S.Schema<PrivateStoreCollectionOfferContextsViewResponse>;
 
 /** Plan ids limitation for this offer */
-export type OfferPropertiesInputSpecificPlanIdsLimitationList =
-  ReadonlyArray<string>;
+export type OfferPropertiesInputSpecificPlanIdsLimitationList = Array<string>;
 export const OfferPropertiesInputSpecificPlanIdsLimitationList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1151,7 +1141,7 @@ export const PlanInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PlanInput" }) as any as S.Schema<PlanInput>;
 
 /** Offer plans */
-export type OfferPropertiesInputPlansList = ReadonlyArray<PlanInput>;
+export type OfferPropertiesInputPlansList = Array<PlanInput>;
 export const OfferPropertiesInputPlansList = /*@__PURE__*/ S.Array(
   PlanInput,
 ) as any as S.Schema<OfferPropertiesInputPlansList>;
@@ -1366,7 +1356,7 @@ export const Offer = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Offer" }) as any as S.Schema<Offer>;
 
 /** The Offer items on this page */
-export type OfferListResponseValueList = ReadonlyArray<Offer>;
+export type OfferListResponseValueList = Array<Offer>;
 export const OfferListResponseValueList = /*@__PURE__*/ S.Array(
   Offer,
 ) as any as S.Schema<OfferListResponseValueList>;
@@ -1413,8 +1403,7 @@ export const PrivateStoreCollectionOfferListByContextsRequest =
     identifier: "PrivateStoreCollectionOfferListByContextsRequest",
   }) as any as S.Schema<PrivateStoreCollectionOfferListByContextsRequest>;
 
-export type CollectionOffersByContextOffersValueList =
-  ReadonlyArray<OfferProperties>;
+export type CollectionOffersByContextOffersValueList = Array<OfferProperties>;
 export const CollectionOffersByContextOffersValueList = /*@__PURE__*/ S.Array(
   OfferProperties,
 ) as any as S.Schema<CollectionOffersByContextOffersValueList>;
@@ -1448,7 +1437,7 @@ export const CollectionOffersByContext = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CollectionOffersByContext>;
 
 export type CollectionOffersByContextListValueList =
-  ReadonlyArray<CollectionOffersByContext>;
+  Array<CollectionOffersByContext>;
 export const CollectionOffersByContextListValueList = /*@__PURE__*/ S.Array(
   CollectionOffersByContext,
 ) as any as S.Schema<CollectionOffersByContextListValueList>;
@@ -1512,7 +1501,7 @@ export const PrivateStoreCollectionOfferPostResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PrivateStoreCollectionOfferPostResponse>;
 
 /** List of plan IDs. */
-export type ContextAndPlansDetailsPlanIdsList = ReadonlyArray<string>;
+export type ContextAndPlansDetailsPlanIdsList = Array<string>;
 export const ContextAndPlansDetailsPlanIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ContextAndPlansDetailsPlanIdsList>;
@@ -1534,7 +1523,7 @@ export const ContextAndPlansDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ContextAndPlansDetails>;
 
 export type MultiContextAndPlansPropertiesPlansContextList =
-  ReadonlyArray<ContextAndPlansDetails>;
+  Array<ContextAndPlansDetails>;
 export const MultiContextAndPlansPropertiesPlansContextList =
   /*@__PURE__*/ S.Array(
     ContextAndPlansDetails,
@@ -1646,7 +1635,7 @@ export const PrivateStoreCollectionPostResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Subscriptions ids list */
 export type CollectionsToSubscriptionsMappingPropertiesSubscriptionIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CollectionsToSubscriptionsMappingPropertiesSubscriptionIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1693,7 +1682,7 @@ export const PrivateStoreCollectionsToSubscriptionsMappingRequest =
 
 /** Subscriptions ids list */
 export type CollectionsSubscriptionsMappingDetailsSubscriptionsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CollectionsSubscriptionsMappingDetailsSubscriptionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1743,13 +1732,13 @@ export const CollectionsToSubscriptionsMappingResponse =
   }) as any as S.Schema<CollectionsToSubscriptionsMappingResponse>;
 
 /** Target collections ids */
-export type TransferOffersDetailsTargetCollectionsList = ReadonlyArray<string>;
+export type TransferOffersDetailsTargetCollectionsList = Array<string>;
 export const TransferOffersDetailsTargetCollectionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<TransferOffersDetailsTargetCollectionsList>;
 
 /** Offers ids list to transfer from source collection to target collection(s) */
-export type TransferOffersDetailsOfferIdsListList = ReadonlyArray<string>;
+export type TransferOffersDetailsOfferIdsListList = Array<string>;
 export const TransferOffersDetailsOfferIdsListList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<TransferOffersDetailsOfferIdsListList>;
@@ -1800,15 +1789,13 @@ export const PrivateStoreCollectionTransferOffersRequest =
   }) as any as S.Schema<PrivateStoreCollectionTransferOffersRequest>;
 
 /** Succeeded collections */
-export type TransferOffersResponseSucceededList =
-  ReadonlyArray<CollectionsDetails>;
+export type TransferOffersResponseSucceededList = Array<CollectionsDetails>;
 export const TransferOffersResponseSucceededList = /*@__PURE__*/ S.Array(
   CollectionsDetails,
 ) as any as S.Schema<TransferOffersResponseSucceededList>;
 
 /** Failed collections */
-export type TransferOffersResponseFailedList =
-  ReadonlyArray<CollectionsDetails>;
+export type TransferOffersResponseFailedList = Array<CollectionsDetails>;
 export const TransferOffersResponseFailedList = /*@__PURE__*/ S.Array(
   CollectionsDetails,
 ) as any as S.Schema<TransferOffersResponseFailedList>;
@@ -1853,7 +1840,7 @@ export const PlanDetailsInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets the plans details */
 export type RequestApprovalPropertiesInputPlansDetailsList =
-  ReadonlyArray<PlanDetailsInput>;
+  Array<PlanDetailsInput>;
 export const RequestApprovalPropertiesInputPlansDetailsList =
   /*@__PURE__*/ S.Array(
     PlanDetailsInput,
@@ -1938,8 +1925,7 @@ export const PlanDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PlanDetails" }) as any as S.Schema<PlanDetails>;
 
 /** Gets or sets the plans details */
-export type RequestApprovalPropertiesPlansDetailsList =
-  ReadonlyArray<PlanDetails>;
+export type RequestApprovalPropertiesPlansDetailsList = Array<PlanDetails>;
 export const RequestApprovalPropertiesPlansDetailsList = /*@__PURE__*/ S.Array(
   PlanDetails,
 ) as any as S.Schema<RequestApprovalPropertiesPlansDetailsList>;
@@ -2023,7 +2009,7 @@ export const RecipientInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets list of notified recipients for new requests */
 export type NotificationsSettingsPropertiesInputRecipientsList =
-  ReadonlyArray<RecipientInput>;
+  Array<RecipientInput>;
 export const NotificationsSettingsPropertiesInputRecipientsList =
   /*@__PURE__*/ S.Array(
     RecipientInput,
@@ -2184,7 +2170,7 @@ export const Subscription = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Subscription" }) as any as S.Schema<Subscription>;
 
 /** An array of subscriptions. */
-export type SubscriptionsResponseValueList = ReadonlyArray<Subscription>;
+export type SubscriptionsResponseValueList = Array<Subscription>;
 export const SubscriptionsResponseValueList = /*@__PURE__*/ S.Array(
   Subscription,
 ) as any as S.Schema<SubscriptionsResponseValueList>;
@@ -2228,7 +2214,7 @@ export const PrivateStoreGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateStoreGetRequest>;
 
 /** Gets list of associated collection ids */
-export type PrivateStorePropertiesCollectionIdsList = ReadonlyArray<string>;
+export type PrivateStorePropertiesCollectionIdsList = Array<string>;
 export const PrivateStorePropertiesCollectionIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PrivateStorePropertiesCollectionIdsList>;
@@ -2260,8 +2246,7 @@ export const Recipient = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Recipient" }) as any as S.Schema<Recipient>;
 
 /** Gets or sets list of notified recipients for new requests */
-export type NotificationsSettingsPropertiesRecipientsList =
-  ReadonlyArray<Recipient>;
+export type NotificationsSettingsPropertiesRecipientsList = Array<Recipient>;
 export const NotificationsSettingsPropertiesRecipientsList =
   /*@__PURE__*/ S.Array(
     Recipient,
@@ -2440,8 +2425,7 @@ export const RequestApprovalResource = /*@__PURE__*/ S.suspend(() =>
   identifier: "RequestApprovalResource",
 }) as any as S.Schema<RequestApprovalResource>;
 
-export type RequestApprovalsListValueList =
-  ReadonlyArray<RequestApprovalResource>;
+export type RequestApprovalsListValueList = Array<RequestApprovalResource>;
 export const RequestApprovalsListValueList = /*@__PURE__*/ S.Array(
   RequestApprovalResource,
 ) as any as S.Schema<RequestApprovalsListValueList>;
@@ -2552,7 +2536,7 @@ export const PrivateStore = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PrivateStore" }) as any as S.Schema<PrivateStore>;
 
 /** The PrivateStore items on this page */
-export type PrivateStoreListValueList = ReadonlyArray<PrivateStore>;
+export type PrivateStoreListValueList = Array<PrivateStore>;
 export const PrivateStoreListValueList = /*@__PURE__*/ S.Array(
   PrivateStore,
 ) as any as S.Schema<PrivateStoreListValueList>;
@@ -2610,7 +2594,7 @@ export const PlanNotificationDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PlanNotificationDetails>;
 
 /** Gets or sets removed plans notifications */
-export type NewNotificationsPlansList = ReadonlyArray<PlanNotificationDetails>;
+export type NewNotificationsPlansList = Array<PlanNotificationDetails>;
 export const NewNotificationsPlansList = /*@__PURE__*/ S.Array(
   PlanNotificationDetails,
 ) as any as S.Schema<NewNotificationsPlansList>;
@@ -2644,7 +2628,7 @@ export const NewNotifications = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NewNotifications>;
 
 export type NewPlansNotificationsListNewPlansNotificationsList =
-  ReadonlyArray<NewNotifications>;
+  Array<NewNotifications>;
 export const NewPlansNotificationsListNewPlansNotificationsList =
   /*@__PURE__*/ S.Array(
     NewNotifications,
@@ -2665,7 +2649,7 @@ export const NewPlansNotificationsList = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NewPlansNotificationsList>;
 
 export type PrivateStoreListStopSellOffersPlansNotificationsRequestSubscriptionsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PrivateStoreListStopSellOffersPlansNotificationsRequestSubscriptionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2697,7 +2681,7 @@ export const PrivateStoreListStopSellOffersPlansNotificationsRequest =
 
 /** The list of removed plans notifications */
 export type StopSellOffersPlansNotificationsListPropertiesPlansList =
-  ReadonlyArray<PlanNotificationDetails>;
+  Array<PlanNotificationDetails>;
 export const StopSellOffersPlansNotificationsListPropertiesPlansList =
   /*@__PURE__*/ S.Array(
     PlanNotificationDetails,
@@ -2705,7 +2689,7 @@ export const StopSellOffersPlansNotificationsListPropertiesPlansList =
 
 /** The subscriptions related to private plans */
 export type StopSellOffersPlansNotificationsListPropertiesSubscriptionsIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const StopSellOffersPlansNotificationsListPropertiesSubscriptionsIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2751,7 +2735,7 @@ export const StopSellOffersPlansNotificationsListProperties =
   }) as any as S.Schema<StopSellOffersPlansNotificationsListProperties>;
 
 export type StopSellOffersPlansNotificationsListStopSellNotificationsList =
-  ReadonlyArray<StopSellOffersPlansNotificationsListProperties>;
+  Array<StopSellOffersPlansNotificationsListProperties>;
 export const StopSellOffersPlansNotificationsListStopSellNotificationsList =
   /*@__PURE__*/ S.Array(
     StopSellOffersPlansNotificationsListProperties,
@@ -2792,8 +2776,7 @@ export const PrivateStoreListSubscriptionsContextRequest =
     identifier: "PrivateStoreListSubscriptionsContextRequest",
   }) as any as S.Schema<PrivateStoreListSubscriptionsContextRequest>;
 
-export type SubscriptionsContextListSubscriptionsIdsList =
-  ReadonlyArray<string>;
+export type SubscriptionsContextListSubscriptionsIdsList = Array<string>;
 export const SubscriptionsContextListSubscriptionsIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2812,13 +2795,13 @@ export const SubscriptionsContextList = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SubscriptionsContextList>;
 
 /** Offer plan ids */
-export type QueryApprovedPlansPlanIdsList = ReadonlyArray<string>;
+export type QueryApprovedPlansPlanIdsList = Array<string>;
 export const QueryApprovedPlansPlanIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<QueryApprovedPlansPlanIdsList>;
 
 /** List of subscription IDs */
-export type QueryApprovedPlansSubscriptionIdsList = ReadonlyArray<string>;
+export type QueryApprovedPlansSubscriptionIdsList = Array<string>;
 export const QueryApprovedPlansSubscriptionIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<QueryApprovedPlansSubscriptionIdsList>;
@@ -2866,8 +2849,7 @@ export const PrivateStoreQueryApprovedPlansRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PrivateStoreQueryApprovedPlansRequest>;
 
 /** Approved subscription ids list. In case all subscriptions are approved for a plan, allSubscriptions flag is true and list is empty ( else flag is set to false). In case both subscriptions list is empty and allSubscriptions flag is false, the plan is not approved for any subscription. */
-export type QueryApprovedPlansDetailsSubscriptionIdsList =
-  ReadonlyArray<string>;
+export type QueryApprovedPlansDetailsSubscriptionIdsList = Array<string>;
 export const QueryApprovedPlansDetailsSubscriptionIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2894,7 +2876,7 @@ export const QueryApprovedPlansDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** A list indicating for each plan which subscriptions are approved. Plan Id is unique */
 export type QueryApprovedPlansResponseDetailsList =
-  ReadonlyArray<QueryApprovedPlansDetails>;
+  Array<QueryApprovedPlansDetails>;
 export const QueryApprovedPlansResponseDetailsList = /*@__PURE__*/ S.Array(
   QueryApprovedPlansDetails,
 ) as any as S.Schema<QueryApprovedPlansResponseDetailsList>;
@@ -2933,8 +2915,7 @@ export const PrivateStoreQueryNotificationsStateRequest =
   }) as any as S.Schema<PrivateStoreQueryNotificationsStateRequest>;
 
 /** Gets or sets removed plans notifications */
-export type StopSellNotificationsPlansList =
-  ReadonlyArray<PlanNotificationDetails>;
+export type StopSellNotificationsPlansList = Array<PlanNotificationDetails>;
 export const StopSellNotificationsPlansList = /*@__PURE__*/ S.Array(
   PlanNotificationDetails,
 ) as any as S.Schema<StopSellNotificationsPlansList>;
@@ -2968,22 +2949,21 @@ export const StopSellNotifications = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StopSellNotifications>;
 
 export type PrivateStoreNotificationsStateStopSellNotificationsList =
-  ReadonlyArray<StopSellNotifications>;
+  Array<StopSellNotifications>;
 export const PrivateStoreNotificationsStateStopSellNotificationsList =
   /*@__PURE__*/ S.Array(
     StopSellNotifications,
   ) as any as S.Schema<PrivateStoreNotificationsStateStopSellNotificationsList>;
 
 export type PrivateStoreNotificationsStateNewNotificationsList =
-  ReadonlyArray<NewNotifications>;
+  Array<NewNotifications>;
 export const PrivateStoreNotificationsStateNewNotificationsList =
   /*@__PURE__*/ S.Array(
     NewNotifications,
   ) as any as S.Schema<PrivateStoreNotificationsStateNewNotificationsList>;
 
 /** Gets or sets removed plans notifications */
-export type RequestApprovalsDetailsPlansList =
-  ReadonlyArray<PlanNotificationDetails>;
+export type RequestApprovalsDetailsPlansList = Array<PlanNotificationDetails>;
 export const RequestApprovalsDetailsPlansList = /*@__PURE__*/ S.Array(
   PlanNotificationDetails,
 ) as any as S.Schema<RequestApprovalsDetailsPlansList>;
@@ -3017,7 +2997,7 @@ export const RequestApprovalsDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RequestApprovalsDetails>;
 
 export type PrivateStoreNotificationsStateApprovalRequestsList =
-  ReadonlyArray<RequestApprovalsDetails>;
+  Array<RequestApprovalsDetails>;
 export const PrivateStoreNotificationsStateApprovalRequestsList =
   /*@__PURE__*/ S.Array(
     RequestApprovalsDetails,
@@ -3064,7 +3044,7 @@ export const PrivateStoreQueryOffersRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PrivateStoreQueryOffersRequest",
 }) as any as S.Schema<PrivateStoreQueryOffersRequest>;
 
-export type QueryOffersValueList = ReadonlyArray<OfferProperties>;
+export type QueryOffersValueList = Array<OfferProperties>;
 export const QueryOffersValueList = /*@__PURE__*/ S.Array(
   OfferProperties,
 ) as any as S.Schema<QueryOffersValueList>;
@@ -3083,7 +3063,7 @@ export const QueryOffers = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "QueryOffers" }) as any as S.Schema<QueryOffers>;
 
 /** Current plans list */
-export type RequestDetailsPlanIdsList = ReadonlyArray<string>;
+export type RequestDetailsPlanIdsList = Array<string>;
 export const RequestDetailsPlanIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RequestDetailsPlanIdsList>;
@@ -3163,13 +3143,13 @@ export const QueryRequestApproval = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<QueryRequestApproval>;
 
 /** List of offer IDs */
-export type QueryUserOffersDetailsOfferIdsList = ReadonlyArray<string>;
+export type QueryUserOffersDetailsOfferIdsList = Array<string>;
 export const QueryUserOffersDetailsOfferIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<QueryUserOffersDetailsOfferIdsList>;
 
 /** List of subscription IDs */
-export type QueryUserOffersDetailsSubscriptionIdsList = ReadonlyArray<string>;
+export type QueryUserOffersDetailsSubscriptionIdsList = Array<string>;
 export const QueryUserOffersDetailsSubscriptionIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<QueryUserOffersDetailsSubscriptionIdsList>;
@@ -3214,7 +3194,7 @@ export const PrivateStoreQueryUserOffersRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets Approved plans ids, empty in case of rejected */
 export type AdminRequestApprovalPropertiesInputApprovedPlansList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const AdminRequestApprovalPropertiesInputApprovedPlansList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3222,7 +3202,7 @@ export const AdminRequestApprovalPropertiesInputApprovedPlansList =
 
 /** Gets or sets list of associated collection ids */
 export type AdminRequestApprovalPropertiesInputCollectionIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const AdminRequestApprovalPropertiesInputCollectionIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3384,7 +3364,7 @@ export const QueryRulesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "QueryRulesRequest",
 }) as any as S.Schema<QueryRulesRequest>;
 
-export type RuleListResponseValueList = ReadonlyArray<Rule>;
+export type RuleListResponseValueList = Array<Rule>;
 export const RuleListResponseValueList = /*@__PURE__*/ S.Array(
   Rule,
 ) as any as S.Schema<RuleListResponseValueList>;
@@ -3404,7 +3384,7 @@ export const RuleListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RuleListResponse>;
 
 /** List of subscription IDs */
-export type QueryUserRulesDetailsSubscriptionIdsList = ReadonlyArray<string>;
+export type QueryUserRulesDetailsSubscriptionIdsList = Array<string>;
 export const QueryUserRulesDetailsSubscriptionIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<QueryUserRulesDetailsSubscriptionIdsList>;
@@ -3444,7 +3424,7 @@ export const QueryUserRulesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "QueryUserRulesRequest",
 }) as any as S.Schema<QueryUserRulesRequest>;
 
-export type SetCollectionRulesRequestValueList = ReadonlyArray<Rule>;
+export type SetCollectionRulesRequestValueList = Array<Rule>;
 export const SetCollectionRulesRequestValueList = /*@__PURE__*/ S.Array(
   Rule,
 ) as any as S.Schema<SetCollectionRulesRequestValueList>;

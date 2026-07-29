@@ -116,7 +116,7 @@ export const ImageVersion = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ImageVersion" }) as any as S.Schema<ImageVersion>;
 
 /** The ImageVersion items on this page */
-export type ImageVersionListResultValueList = ReadonlyArray<ImageVersion>;
+export type ImageVersionListResultValueList = Array<ImageVersion>;
 export const ImageVersionListResultValueList = /*@__PURE__*/ S.Array(
   ImageVersion,
 ) as any as S.Schema<ImageVersionListResultValueList>;
@@ -205,7 +205,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = ReadonlyArray<Operation>;
+export type OperationsListResponseValueList = Array<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;
@@ -325,7 +325,7 @@ export const ResourcePredictionsProfileType = /*@__PURE__*/ S.String;
 /** Determines how the stand-by scheme should be provided. */
 export interface ResourcePredictionsProfile {
   /** Determines how the stand-by scheme should be provided. */
-  kind: ResourcePredictionsProfileType;
+  kind: ResourcePredictionsProfileType | (string & {});
 }
 export const ResourcePredictionsProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -379,7 +379,7 @@ export const RuntimeConfiguration = /*@__PURE__*/ S.suspend(() =>
 /** Pool properties */
 export interface PoolProperties {
   /** The status of the current operation. */
-  provisioningState?: ProvisioningState;
+  provisioningState?: ProvisioningState | (string & {});
   /** Defines how many resources can there be created at any given time. */
   maximumConcurrency: number;
   /** Defines the organization in which the pool will be used. */
@@ -609,7 +609,7 @@ export const PoolsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PoolsDeleteResponse>;
 
 /** List of resource IDs to delete. */
-export type PoolsDeleteResourcesRequestResourceIdsList = ReadonlyArray<string>;
+export type PoolsDeleteResourcesRequestResourceIdsList = Array<string>;
 export const PoolsDeleteResourcesRequestResourceIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoolsDeleteResourcesRequestResourceIdsList>;
@@ -837,7 +837,7 @@ export const Pool = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Pool" }) as any as S.Schema<Pool>;
 
 /** The Pool items on this page */
-export type PoolListResultValueList = ReadonlyArray<Pool>;
+export type PoolListResultValueList = Array<Pool>;
 export const PoolListResultValueList = /*@__PURE__*/ S.Array(
   Pool,
 ) as any as S.Schema<PoolListResultValueList>;
@@ -1133,7 +1133,7 @@ export const ResourceDetailsObject = /*@__PURE__*/ S.suspend(() =>
 
 /** The ResourceDetailsObject items on this page */
 export type ResourceDetailsObjectListResultValueList =
-  ReadonlyArray<ResourceDetailsObject>;
+  Array<ResourceDetailsObject>;
 export const ResourceDetailsObjectListResultValueList = /*@__PURE__*/ S.Array(
   ResourceDetailsObject,
 ) as any as S.Schema<ResourceDetailsObjectListResultValueList>;
@@ -1177,19 +1177,19 @@ export const SkuListByLocationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SkuListByLocationRequest>;
 
 /** The set of locations that the SKU is available. */
-export type ResourceSkuPropertiesLocationsList = ReadonlyArray<string>;
+export type ResourceSkuPropertiesLocationsList = Array<string>;
 export const ResourceSkuPropertiesLocationsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ResourceSkuPropertiesLocationsList>;
 
 /** List of availability zones where the SKU is supported. */
-export type ResourceSkuLocationInfoZonesList = ReadonlyArray<string>;
+export type ResourceSkuLocationInfoZonesList = Array<string>;
 export const ResourceSkuLocationInfoZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ResourceSkuLocationInfoZonesList>;
 
 /** Gets the set of zones that the SKU is available in with the specified capabilities. */
-export type ResourceSkuZoneDetailsNameList = ReadonlyArray<string>;
+export type ResourceSkuZoneDetailsNameList = Array<string>;
 export const ResourceSkuZoneDetailsNameList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ResourceSkuZoneDetailsNameList>;
@@ -1212,7 +1212,7 @@ export const ResourceSkuCapabilities = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of capabilities that are available for the SKU in the specified list of zones. */
 export type ResourceSkuZoneDetailsCapabilitiesList =
-  ReadonlyArray<ResourceSkuCapabilities>;
+  Array<ResourceSkuCapabilities>;
 export const ResourceSkuZoneDetailsCapabilitiesList = /*@__PURE__*/ S.Array(
   ResourceSkuCapabilities,
 ) as any as S.Schema<ResourceSkuZoneDetailsCapabilitiesList>;
@@ -1235,7 +1235,7 @@ export const ResourceSkuZoneDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets details of capabilities available to a SKU in specific zones. */
 export type ResourceSkuLocationInfoZoneDetailsList =
-  ReadonlyArray<ResourceSkuZoneDetails>;
+  Array<ResourceSkuZoneDetails>;
 export const ResourceSkuLocationInfoZoneDetailsList = /*@__PURE__*/ S.Array(
   ResourceSkuZoneDetails,
 ) as any as S.Schema<ResourceSkuLocationInfoZoneDetailsList>;
@@ -1261,14 +1261,14 @@ export const ResourceSkuLocationInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of locations and availability zones in those locations where the SKU is available */
 export type ResourceSkuPropertiesLocationInfoList =
-  ReadonlyArray<ResourceSkuLocationInfo>;
+  Array<ResourceSkuLocationInfo>;
 export const ResourceSkuPropertiesLocationInfoList = /*@__PURE__*/ S.Array(
   ResourceSkuLocationInfo,
 ) as any as S.Schema<ResourceSkuPropertiesLocationInfoList>;
 
 /** Name value pairs to describe the capability. */
 export type ResourceSkuPropertiesCapabilitiesList =
-  ReadonlyArray<ResourceSkuCapabilities>;
+  Array<ResourceSkuCapabilities>;
 export const ResourceSkuPropertiesCapabilitiesList = /*@__PURE__*/ S.Array(
   ResourceSkuCapabilities,
 ) as any as S.Schema<ResourceSkuPropertiesCapabilitiesList>;
@@ -1278,19 +1278,19 @@ export type ResourceSkuRestrictionsType = "Location" | "Zone";
 export const ResourceSkuRestrictionsType = /*@__PURE__*/ S.String;
 
 /** The value of restrictions. If the restriction type is set to location. This would be different locations where the SKU is restricted. */
-export type ResourceSkuRestrictionsValuesList = ReadonlyArray<string>;
+export type ResourceSkuRestrictionsValuesList = Array<string>;
 export const ResourceSkuRestrictionsValuesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ResourceSkuRestrictionsValuesList>;
 
 /** Locations where the SKU is restricted */
-export type ResourceSkuRestrictionInfoLocationsList = ReadonlyArray<string>;
+export type ResourceSkuRestrictionInfoLocationsList = Array<string>;
 export const ResourceSkuRestrictionInfoLocationsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ResourceSkuRestrictionInfoLocationsList>;
 
 /** List of availability zones where the SKU is restricted. */
-export type ResourceSkuRestrictionInfoZonesList = ReadonlyArray<string>;
+export type ResourceSkuRestrictionInfoZonesList = Array<string>;
 export const ResourceSkuRestrictionInfoZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ResourceSkuRestrictionInfoZonesList>;
@@ -1341,7 +1341,7 @@ export const ResourceSkuRestrictions = /*@__PURE__*/ S.suspend(() =>
 
 /** The restrictions of the SKU. */
 export type ResourceSkuPropertiesRestrictionsList =
-  ReadonlyArray<ResourceSkuRestrictions>;
+  Array<ResourceSkuRestrictions>;
 export const ResourceSkuPropertiesRestrictionsList = /*@__PURE__*/ S.Array(
   ResourceSkuRestrictions,
 ) as any as S.Schema<ResourceSkuPropertiesRestrictionsList>;
@@ -1404,7 +1404,7 @@ export const ResourceSku = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResourceSku" }) as any as S.Schema<ResourceSku>;
 
 /** The ResourceSku items on this page */
-export type ResourceSkuListResultValueList = ReadonlyArray<ResourceSku>;
+export type ResourceSkuListResultValueList = Array<ResourceSku>;
 export const ResourceSkuListResultValueList = /*@__PURE__*/ S.Array(
   ResourceSku,
 ) as any as S.Schema<ResourceSkuListResultValueList>;
@@ -1485,7 +1485,7 @@ export const Quota = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Quota" }) as any as S.Schema<Quota>;
 
 /** The Quota items on this page */
-export type PagedQuotaValueList = ReadonlyArray<Quota>;
+export type PagedQuotaValueList = Array<Quota>;
 export const PagedQuotaValueList = /*@__PURE__*/ S.Array(
   Quota,
 ) as any as S.Schema<PagedQuotaValueList>;

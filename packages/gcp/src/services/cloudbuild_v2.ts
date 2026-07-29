@@ -208,8 +208,7 @@ export const CreateRepositoryRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateRepositoryRequest",
 }) as any as S.Schema<CreateRepositoryRequest>;
 
-export type CreateRepositoryRequestList =
-  ReadonlyArray<CreateRepositoryRequest>;
+export type CreateRepositoryRequestList = Array<CreateRepositoryRequest>;
 export const CreateRepositoryRequestList = /*@__PURE__*/ S.Array(
   CreateRepositoryRequest,
 ) as any as S.Schema<CreateRepositoryRequestList>;
@@ -255,7 +254,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -462,7 +461,7 @@ export interface InstallationState {
   /** Output only. Message of what the user should do next to continue the installation. Empty string if the installation is already complete. */
   message?: string;
   /** Output only. Current step of the installation process. */
-  stage?: InstallationStateStageEnum;
+  stage?: InstallationStateStageEnum | (string & {});
   /** Output only. Link to follow for next action. Empty string if the installation is already complete. */
   actionUri?: string;
 }
@@ -743,7 +742,7 @@ export const FetchGitRefsProjectsLocationsConnectionsRepositoriesRequest =
     identifier: "FetchGitRefsProjectsLocationsConnectionsRepositoriesRequest",
   }) as any as S.Schema<FetchGitRefsProjectsLocationsConnectionsRepositoriesRequest>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -789,7 +788,7 @@ export const FetchLinkableRepositoriesProjectsLocationsConnectionsRequest =
     identifier: "FetchLinkableRepositoriesProjectsLocationsConnectionsRequest",
   }) as any as S.Schema<FetchLinkableRepositoriesProjectsLocationsConnectionsRequest>;
 
-export type RepositoryList = ReadonlyArray<Repository>;
+export type RepositoryList = Array<Repository>;
 export const RepositoryList = /*@__PURE__*/ S.Array(
   Repository,
 ) as any as S.Schema<RepositoryList>;
@@ -869,7 +868,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
-export type BindingList = ReadonlyArray<Binding>;
+export type BindingList = Array<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -884,7 +883,7 @@ export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
 export interface AuditLogConfig {
   /** The log type that this config enables. */
-  logType?: AuditLogConfigLogTypeEnum;
+  logType?: AuditLogConfigLogTypeEnum | (string & {});
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
   exemptedMembers?: StringList;
 }
@@ -895,7 +894,7 @@ export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
-export type AuditLogConfigList = ReadonlyArray<AuditLogConfig>;
+export type AuditLogConfigList = Array<AuditLogConfig>;
 export const AuditLogConfigList = /*@__PURE__*/ S.Array(
   AuditLogConfig,
 ) as any as S.Schema<AuditLogConfigList>;
@@ -914,7 +913,7 @@ export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
-export type AuditConfigList = ReadonlyArray<AuditConfig>;
+export type AuditConfigList = Array<AuditConfig>;
 export const AuditConfigList = /*@__PURE__*/ S.Array(
   AuditConfig,
 ) as any as S.Schema<AuditConfigList>;
@@ -1067,7 +1066,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = ReadonlyArray<Location>;
+export type LocationList = Array<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -1116,7 +1115,7 @@ export const ListProjectsLocationsConnectionsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsConnectionsRequest",
 }) as any as S.Schema<ListProjectsLocationsConnectionsRequest>;
 
-export type ConnectionList = ReadonlyArray<Connection>;
+export type ConnectionList = Array<Connection>;
 export const ConnectionList = /*@__PURE__*/ S.Array(
   Connection,
 ) as any as S.Schema<ConnectionList>;

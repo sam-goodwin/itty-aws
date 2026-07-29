@@ -244,7 +244,7 @@ export const AnnotationsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "AnnotationsListRequest",
 }) as any as S.Schema<AnnotationsListRequest>;
 
-export type PaginatedAnnotationListResultsList = ReadonlyArray<Annotation>;
+export type PaginatedAnnotationListResultsList = Array<Annotation>;
 export const PaginatedAnnotationListResultsList = /*@__PURE__*/ S.Array(
   Annotation,
 ) as any as S.Schema<PaginatedAnnotationListResultsList>;

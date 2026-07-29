@@ -89,7 +89,7 @@ export class MnmRuleNotFound extends T.applyErrorMatchers(
   [{ code: 1009 }],
 ) {}
 
-export type ConfigsCreateRequestRouterIpsList = ReadonlyArray<string>;
+export type ConfigsCreateRequestRouterIpsList = Array<string>;
 export const ConfigsCreateRequestRouterIpsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ConfigsCreateRequestRouterIpsList>;
@@ -113,7 +113,7 @@ export const ConfigsCreateRequestWarpDevicesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConfigsCreateRequestWarpDevicesItem>;
 
 export type ConfigsCreateRequestWarpDevicesList =
-  ReadonlyArray<ConfigsCreateRequestWarpDevicesItem>;
+  Array<ConfigsCreateRequestWarpDevicesItem>;
 export const ConfigsCreateRequestWarpDevicesList = /*@__PURE__*/ S.Array(
   ConfigsCreateRequestWarpDevicesItem,
 ) as any as S.Schema<ConfigsCreateRequestWarpDevicesList>;
@@ -151,7 +151,7 @@ export const CreateConfigRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateConfigRequest",
 }) as any as S.Schema<CreateConfigRequest>;
 
-export type ConfigsCreateResponseRouterIpsList = ReadonlyArray<string>;
+export type ConfigsCreateResponseRouterIpsList = Array<string>;
 export const ConfigsCreateResponseRouterIpsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ConfigsCreateResponseRouterIpsList>;
@@ -176,7 +176,7 @@ export const ConfigsCreateResponseWarpDevicesItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ConfigsCreateResponseWarpDevicesItem>;
 
 export type ConfigsCreateResponseWarpDevicesList =
-  ReadonlyArray<ConfigsCreateResponseWarpDevicesItem>;
+  Array<ConfigsCreateResponseWarpDevicesItem>;
 export const ConfigsCreateResponseWarpDevicesList = /*@__PURE__*/ S.Array(
   ConfigsCreateResponseWarpDevicesItem,
 ) as any as S.Schema<ConfigsCreateResponseWarpDevicesList>;
@@ -203,7 +203,7 @@ export const CreateConfigResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateConfigResponse",
 }) as any as S.Schema<CreateConfigResponse>;
 
-export type RulesCreateRequestPrefixesList = ReadonlyArray<string>;
+export type RulesCreateRequestPrefixesList = Array<string>;
 export const RulesCreateRequestPrefixesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RulesCreateRequestPrefixesList>;
@@ -287,7 +287,7 @@ export const CreateRuleRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateRuleRequest",
 }) as any as S.Schema<CreateRuleRequest>;
 
-export type RulesCreateResponsePrefixesList = ReadonlyArray<string>;
+export type RulesCreateResponsePrefixesList = Array<string>;
 export const RulesCreateResponsePrefixesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RulesCreateResponsePrefixesList>;
@@ -410,7 +410,7 @@ export const DeleteConfigRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteConfigRequest",
 }) as any as S.Schema<DeleteConfigRequest>;
 
-export type ConfigsDeleteResponseRouterIpsList = ReadonlyArray<string>;
+export type ConfigsDeleteResponseRouterIpsList = Array<string>;
 export const ConfigsDeleteResponseRouterIpsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ConfigsDeleteResponseRouterIpsList>;
@@ -435,7 +435,7 @@ export const ConfigsDeleteResponseWarpDevicesItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ConfigsDeleteResponseWarpDevicesItem>;
 
 export type ConfigsDeleteResponseWarpDevicesList =
-  ReadonlyArray<ConfigsDeleteResponseWarpDevicesItem>;
+  Array<ConfigsDeleteResponseWarpDevicesItem>;
 export const ConfigsDeleteResponseWarpDevicesList = /*@__PURE__*/ S.Array(
   ConfigsDeleteResponseWarpDevicesItem,
 ) as any as S.Schema<ConfigsDeleteResponseWarpDevicesList>;
@@ -484,7 +484,7 @@ export const DeleteRuleRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteRuleRequest",
 }) as any as S.Schema<DeleteRuleRequest>;
 
-export type RulesDeleteResponsePrefixesList = ReadonlyArray<string>;
+export type RulesDeleteResponsePrefixesList = Array<string>;
 export const RulesDeleteResponsePrefixesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RulesDeleteResponsePrefixesList>;
@@ -581,7 +581,7 @@ export const GetConfigRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetConfigRequest",
 }) as any as S.Schema<GetConfigRequest>;
 
-export type ConfigsGetResponseRouterIpsList = ReadonlyArray<string>;
+export type ConfigsGetResponseRouterIpsList = Array<string>;
 export const ConfigsGetResponseRouterIpsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ConfigsGetResponseRouterIpsList>;
@@ -605,7 +605,7 @@ export const ConfigsGetResponseWarpDevicesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConfigsGetResponseWarpDevicesItem>;
 
 export type ConfigsGetResponseWarpDevicesList =
-  ReadonlyArray<ConfigsGetResponseWarpDevicesItem>;
+  Array<ConfigsGetResponseWarpDevicesItem>;
 export const ConfigsGetResponseWarpDevicesList = /*@__PURE__*/ S.Array(
   ConfigsGetResponseWarpDevicesItem,
 ) as any as S.Schema<ConfigsGetResponseWarpDevicesList>;
@@ -649,7 +649,7 @@ export const GetConfigFullRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetConfigFullRequest",
 }) as any as S.Schema<GetConfigFullRequest>;
 
-export type ConfigsFullGetResponseRouterIpsList = ReadonlyArray<string>;
+export type ConfigsFullGetResponseRouterIpsList = Array<string>;
 export const ConfigsFullGetResponseRouterIpsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ConfigsFullGetResponseRouterIpsList>;
@@ -674,7 +674,7 @@ export const ConfigsFullGetResponseWarpDevicesItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ConfigsFullGetResponseWarpDevicesItem>;
 
 export type ConfigsFullGetResponseWarpDevicesList =
-  ReadonlyArray<ConfigsFullGetResponseWarpDevicesItem>;
+  Array<ConfigsFullGetResponseWarpDevicesItem>;
 export const ConfigsFullGetResponseWarpDevicesList = /*@__PURE__*/ S.Array(
   ConfigsFullGetResponseWarpDevicesItem,
 ) as any as S.Schema<ConfigsFullGetResponseWarpDevicesList>;
@@ -721,7 +721,7 @@ export const GetRuleRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "GetRuleRequest" }) as any as S.Schema<GetRuleRequest>;
 
-export type RulesGetResponsePrefixesList = ReadonlyArray<string>;
+export type RulesGetResponsePrefixesList = Array<string>;
 export const RulesGetResponsePrefixesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RulesGetResponsePrefixesList>;
@@ -818,7 +818,7 @@ export const ListRulesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListRulesRequest",
 }) as any as S.Schema<ListRulesRequest>;
 
-export type RulesListResultItemPrefixesList = ReadonlyArray<string>;
+export type RulesListResultItemPrefixesList = Array<string>;
 export const RulesListResultItemPrefixesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RulesListResultItemPrefixesList>;
@@ -895,7 +895,7 @@ export const RulesListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "RulesListResultItem",
 }) as any as S.Schema<RulesListResultItem>;
 
-export type RulesListResultList = ReadonlyArray<RulesListResultItem>;
+export type RulesListResultList = Array<RulesListResultItem>;
 export const RulesListResultList = /*@__PURE__*/ S.Array(
   RulesListResultItem,
 ) as any as S.Schema<RulesListResultList>;
@@ -915,7 +915,7 @@ export const ListRulesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListRulesResponse",
 }) as any as S.Schema<ListRulesResponse>;
 
-export type ConfigsEditRequestRouterIpsList = ReadonlyArray<string>;
+export type ConfigsEditRequestRouterIpsList = Array<string>;
 export const ConfigsEditRequestRouterIpsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ConfigsEditRequestRouterIpsList>;
@@ -939,7 +939,7 @@ export const ConfigsEditRequestWarpDevicesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConfigsEditRequestWarpDevicesItem>;
 
 export type ConfigsEditRequestWarpDevicesList =
-  ReadonlyArray<ConfigsEditRequestWarpDevicesItem>;
+  Array<ConfigsEditRequestWarpDevicesItem>;
 export const ConfigsEditRequestWarpDevicesList = /*@__PURE__*/ S.Array(
   ConfigsEditRequestWarpDevicesItem,
 ) as any as S.Schema<ConfigsEditRequestWarpDevicesList>;
@@ -977,7 +977,7 @@ export const PatchConfigRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchConfigRequest",
 }) as any as S.Schema<PatchConfigRequest>;
 
-export type ConfigsEditResponseRouterIpsList = ReadonlyArray<string>;
+export type ConfigsEditResponseRouterIpsList = Array<string>;
 export const ConfigsEditResponseRouterIpsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ConfigsEditResponseRouterIpsList>;
@@ -1001,7 +1001,7 @@ export const ConfigsEditResponseWarpDevicesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConfigsEditResponseWarpDevicesItem>;
 
 export type ConfigsEditResponseWarpDevicesList =
-  ReadonlyArray<ConfigsEditResponseWarpDevicesItem>;
+  Array<ConfigsEditResponseWarpDevicesItem>;
 export const ConfigsEditResponseWarpDevicesList = /*@__PURE__*/ S.Array(
   ConfigsEditResponseWarpDevicesItem,
 ) as any as S.Schema<ConfigsEditResponseWarpDevicesList>;
@@ -1028,7 +1028,7 @@ export const PatchConfigResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchConfigResponse",
 }) as any as S.Schema<PatchConfigResponse>;
 
-export type RulesEditRequestPrefixesList = ReadonlyArray<string>;
+export type RulesEditRequestPrefixesList = Array<string>;
 export const RulesEditRequestPrefixesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RulesEditRequestPrefixesList>;
@@ -1115,7 +1115,7 @@ export const PatchRuleRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchRuleRequest",
 }) as any as S.Schema<PatchRuleRequest>;
 
-export type RulesEditResponsePrefixesList = ReadonlyArray<string>;
+export type RulesEditResponsePrefixesList = Array<string>;
 export const RulesEditResponsePrefixesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RulesEditResponsePrefixesList>;
@@ -1228,7 +1228,7 @@ export const PatchRuleAdvertisementResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchRuleAdvertisementResponse",
 }) as any as S.Schema<PatchRuleAdvertisementResponse>;
 
-export type ConfigsUpdateRequestRouterIpsList = ReadonlyArray<string>;
+export type ConfigsUpdateRequestRouterIpsList = Array<string>;
 export const ConfigsUpdateRequestRouterIpsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ConfigsUpdateRequestRouterIpsList>;
@@ -1252,7 +1252,7 @@ export const ConfigsUpdateRequestWarpDevicesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConfigsUpdateRequestWarpDevicesItem>;
 
 export type ConfigsUpdateRequestWarpDevicesList =
-  ReadonlyArray<ConfigsUpdateRequestWarpDevicesItem>;
+  Array<ConfigsUpdateRequestWarpDevicesItem>;
 export const ConfigsUpdateRequestWarpDevicesList = /*@__PURE__*/ S.Array(
   ConfigsUpdateRequestWarpDevicesItem,
 ) as any as S.Schema<ConfigsUpdateRequestWarpDevicesList>;
@@ -1290,7 +1290,7 @@ export const UpdateConfigRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateConfigRequest",
 }) as any as S.Schema<UpdateConfigRequest>;
 
-export type ConfigsUpdateResponseRouterIpsList = ReadonlyArray<string>;
+export type ConfigsUpdateResponseRouterIpsList = Array<string>;
 export const ConfigsUpdateResponseRouterIpsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ConfigsUpdateResponseRouterIpsList>;
@@ -1315,7 +1315,7 @@ export const ConfigsUpdateResponseWarpDevicesItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ConfigsUpdateResponseWarpDevicesItem>;
 
 export type ConfigsUpdateResponseWarpDevicesList =
-  ReadonlyArray<ConfigsUpdateResponseWarpDevicesItem>;
+  Array<ConfigsUpdateResponseWarpDevicesItem>;
 export const ConfigsUpdateResponseWarpDevicesList = /*@__PURE__*/ S.Array(
   ConfigsUpdateResponseWarpDevicesItem,
 ) as any as S.Schema<ConfigsUpdateResponseWarpDevicesList>;
@@ -1342,7 +1342,7 @@ export const UpdateConfigResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateConfigResponse",
 }) as any as S.Schema<UpdateConfigResponse>;
 
-export type RulesUpdateRequestPrefixesList = ReadonlyArray<string>;
+export type RulesUpdateRequestPrefixesList = Array<string>;
 export const RulesUpdateRequestPrefixesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RulesUpdateRequestPrefixesList>;
@@ -1426,7 +1426,7 @@ export const UpdateRuleRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateRuleRequest",
 }) as any as S.Schema<UpdateRuleRequest>;
 
-export type RulesUpdateResponsePrefixesList = ReadonlyArray<string>;
+export type RulesUpdateResponsePrefixesList = Array<string>;
 export const RulesUpdateResponsePrefixesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RulesUpdateResponsePrefixesList>;

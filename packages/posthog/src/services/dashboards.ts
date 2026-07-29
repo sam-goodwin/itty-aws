@@ -187,7 +187,7 @@ export const DashboardsCollaboratorsListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DashboardsCollaboratorsListRequest>;
 
 export type DashboardsCollaboratorsListResponseBodyList =
-  ReadonlyArray<DashboardCollaboratorOutput>;
+  Array<DashboardCollaboratorOutput>;
 export const DashboardsCollaboratorsListResponseBodyList =
   /*@__PURE__*/ S.Array(
     DashboardCollaboratorOutput,
@@ -255,7 +255,7 @@ export const DashboardOutputVariablesMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DashboardOutputVariablesMap>;
 
-export type DashboardOutputTagsList = ReadonlyArray<unknown>;
+export type DashboardOutputTagsList = Array<unknown>;
 export const DashboardOutputTagsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<DashboardOutputTagsList>;
@@ -280,7 +280,7 @@ export const DashboardOutputPersistedVariablesMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<DashboardOutputPersistedVariablesMap>;
 
 /** List of quick filter IDs associated with this dashboard */
-export type DashboardOutputQuickFilterIdsList = ReadonlyArray<string>;
+export type DashboardOutputQuickFilterIdsList = Array<string>;
 export const DashboardOutputQuickFilterIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DashboardOutputQuickFilterIdsList>;
@@ -293,8 +293,7 @@ export const DashboardOutputTilesItemMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DashboardOutputTilesItemMap>;
 
-export type DashboardOutputTilesList =
-  ReadonlyArray<DashboardOutputTilesItemMap>;
+export type DashboardOutputTilesList = Array<DashboardOutputTilesItemMap>;
 export const DashboardOutputTilesList = /*@__PURE__*/ S.Array(
   DashboardOutputTilesItemMap,
 ) as any as S.Schema<DashboardOutputTilesList>;
@@ -375,13 +374,13 @@ export const DashboardOutput = /*@__PURE__*/ S.suspend(() =>
 export type DashboardsCreateRequestFormat = "json" | "txt";
 export const DashboardsCreateRequestFormat = /*@__PURE__*/ S.String;
 
-export type DashboardsCreateRequestTagsList = ReadonlyArray<unknown>;
+export type DashboardsCreateRequestTagsList = Array<unknown>;
 export const DashboardsCreateRequestTagsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<DashboardsCreateRequestTagsList>;
 
 /** List of quick filter IDs associated with this dashboard */
-export type DashboardsCreateRequestQuickFilterIdsList = ReadonlyArray<string>;
+export type DashboardsCreateRequestQuickFilterIdsList = Array<string>;
 export const DashboardsCreateRequestQuickFilterIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DashboardsCreateRequestQuickFilterIdsList>;
@@ -523,7 +522,7 @@ export const BreakdownFilterBreakdownCase1Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<BreakdownFilterBreakdownCase1Item>;
 
 export type BreakdownFilterBreakdownCase1List =
-  ReadonlyArray<BreakdownFilterBreakdownCase1Item>;
+  Array<BreakdownFilterBreakdownCase1Item>;
 export const BreakdownFilterBreakdownCase1List = /*@__PURE__*/ S.Array(
   BreakdownFilterBreakdownCase1Item,
 ) as any as S.Schema<BreakdownFilterBreakdownCase1List>;
@@ -582,7 +581,7 @@ export const Breakdown = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Breakdown" }) as any as S.Schema<Breakdown>;
 
-export type BreakdownFilterBreakdownsList = ReadonlyArray<Breakdown>;
+export type BreakdownFilterBreakdownsList = Array<Breakdown>;
 export const BreakdownFilterBreakdownsList = /*@__PURE__*/ S.Array(
   Breakdown,
 ) as any as S.Schema<BreakdownFilterBreakdownsList>;
@@ -678,7 +677,7 @@ export const TrendsQueryConversionGoal = /*@__PURE__*/ S.suspend(() =>
 export type DaysOfWeekEnum = 1 | 2 | 3 | 4 | 5 | 6 | 7;
 export const DaysOfWeekEnum = /*@__PURE__*/ S.Number;
 
-export type DateRangeDaysOfWeekList = ReadonlyArray<DaysOfWeekEnum>;
+export type DateRangeDaysOfWeekList = Array<DaysOfWeekEnum>;
 export const DateRangeDaysOfWeekList = /*@__PURE__*/ S.Array(
   DaysOfWeekEnum,
 ) as any as S.Schema<DateRangeDaysOfWeekList>;
@@ -746,7 +745,7 @@ export type CustomChannelOperator =
   | "not_regex";
 export const CustomChannelOperator = /*@__PURE__*/ S.String;
 
-export type CustomChannelConditionValueCase1List = ReadonlyArray<string>;
+export type CustomChannelConditionValueCase1List = Array<string>;
 export const CustomChannelConditionValueCase1List = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CustomChannelConditionValueCase1List>;
@@ -774,7 +773,7 @@ export const CustomChannelCondition = /*@__PURE__*/ S.suspend(() =>
   identifier: "CustomChannelCondition",
 }) as any as S.Schema<CustomChannelCondition>;
 
-export type CustomChannelRuleItemsList = ReadonlyArray<CustomChannelCondition>;
+export type CustomChannelRuleItemsList = Array<CustomChannelCondition>;
 export const CustomChannelRuleItemsList = /*@__PURE__*/ S.Array(
   CustomChannelCondition,
 ) as any as S.Schema<CustomChannelRuleItemsList>;
@@ -797,7 +796,7 @@ export const CustomChannelRule = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CustomChannelRule>;
 
 export type HogQLQueryModifiersCustomChannelTypeRulesList =
-  ReadonlyArray<CustomChannelRule>;
+  Array<CustomChannelRule>;
 export const HogQLQueryModifiersCustomChannelTypeRulesList =
   /*@__PURE__*/ S.Array(
     CustomChannelRule,
@@ -821,14 +820,14 @@ export const DataWarehouseEventsModifier = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DataWarehouseEventsModifier>;
 
 export type HogQLQueryModifiersDataWarehouseEventsModifiersList =
-  ReadonlyArray<DataWarehouseEventsModifier>;
+  Array<DataWarehouseEventsModifier>;
 export const HogQLQueryModifiersDataWarehouseEventsModifiersList =
   /*@__PURE__*/ S.Array(
     DataWarehouseEventsModifier,
   ) as any as S.Schema<HogQLQueryModifiersDataWarehouseEventsModifiersList>;
 
 export type HogQLQueryModifiersForceClickhouseDataSkippingIndexesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const HogQLQueryModifiersForceClickhouseDataSkippingIndexesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1010,7 +1009,7 @@ export const EventPropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<EventPropertyFilterValueCase0Item>;
 
 export type EventPropertyFilterValueCase0List =
-  ReadonlyArray<EventPropertyFilterValueCase0Item>;
+  Array<EventPropertyFilterValueCase0Item>;
 export const EventPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
   EventPropertyFilterValueCase0Item,
 ) as any as S.Schema<EventPropertyFilterValueCase0List>;
@@ -1048,7 +1047,7 @@ export const PersonPropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<PersonPropertyFilterValueCase0Item>;
 
 export type PersonPropertyFilterValueCase0List =
-  ReadonlyArray<PersonPropertyFilterValueCase0Item>;
+  Array<PersonPropertyFilterValueCase0Item>;
 export const PersonPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
   PersonPropertyFilterValueCase0Item,
 ) as any as S.Schema<PersonPropertyFilterValueCase0List>;
@@ -1089,7 +1088,7 @@ export const PersonMetadataPropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<PersonMetadataPropertyFilterValueCase0Item>;
 
 export type PersonMetadataPropertyFilterValueCase0List =
-  ReadonlyArray<PersonMetadataPropertyFilterValueCase0Item>;
+  Array<PersonMetadataPropertyFilterValueCase0Item>;
 export const PersonMetadataPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
   PersonMetadataPropertyFilterValueCase0Item,
 ) as any as S.Schema<PersonMetadataPropertyFilterValueCase0List>;
@@ -1130,7 +1129,7 @@ export const ElementPropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<ElementPropertyFilterValueCase0Item>;
 
 export type ElementPropertyFilterValueCase0List =
-  ReadonlyArray<ElementPropertyFilterValueCase0Item>;
+  Array<ElementPropertyFilterValueCase0Item>;
 export const ElementPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
   ElementPropertyFilterValueCase0Item,
 ) as any as S.Schema<ElementPropertyFilterValueCase0List>;
@@ -1170,7 +1169,7 @@ export const EventMetadataPropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<EventMetadataPropertyFilterValueCase0Item>;
 
 export type EventMetadataPropertyFilterValueCase0List =
-  ReadonlyArray<EventMetadataPropertyFilterValueCase0Item>;
+  Array<EventMetadataPropertyFilterValueCase0Item>;
 export const EventMetadataPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
   EventMetadataPropertyFilterValueCase0Item,
 ) as any as S.Schema<EventMetadataPropertyFilterValueCase0List>;
@@ -1207,7 +1206,7 @@ export const SessionPropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<SessionPropertyFilterValueCase0Item>;
 
 export type SessionPropertyFilterValueCase0List =
-  ReadonlyArray<SessionPropertyFilterValueCase0Item>;
+  Array<SessionPropertyFilterValueCase0Item>;
 export const SessionPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
   SessionPropertyFilterValueCase0Item,
 ) as any as S.Schema<SessionPropertyFilterValueCase0List>;
@@ -1272,7 +1271,7 @@ export const RecordingPropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<RecordingPropertyFilterValueCase0Item>;
 
 export type RecordingPropertyFilterValueCase0List =
-  ReadonlyArray<RecordingPropertyFilterValueCase0Item>;
+  Array<RecordingPropertyFilterValueCase0Item>;
 export const RecordingPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
   RecordingPropertyFilterValueCase0Item,
 ) as any as S.Schema<RecordingPropertyFilterValueCase0List>;
@@ -1309,7 +1308,7 @@ export const LogEntryPropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<LogEntryPropertyFilterValueCase0Item>;
 
 export type LogEntryPropertyFilterValueCase0List =
-  ReadonlyArray<LogEntryPropertyFilterValueCase0Item>;
+  Array<LogEntryPropertyFilterValueCase0Item>;
 export const LogEntryPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
   LogEntryPropertyFilterValueCase0Item,
 ) as any as S.Schema<LogEntryPropertyFilterValueCase0List>;
@@ -1354,7 +1353,7 @@ export const GroupPropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<GroupPropertyFilterValueCase0Item>;
 
 export type GroupPropertyFilterValueCase0List =
-  ReadonlyArray<GroupPropertyFilterValueCase0Item>;
+  Array<GroupPropertyFilterValueCase0Item>;
 export const GroupPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
   GroupPropertyFilterValueCase0Item,
 ) as any as S.Schema<GroupPropertyFilterValueCase0List>;
@@ -1395,7 +1394,7 @@ export const FeaturePropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<FeaturePropertyFilterValueCase0Item>;
 
 export type FeaturePropertyFilterValueCase0List =
-  ReadonlyArray<FeaturePropertyFilterValueCase0Item>;
+  Array<FeaturePropertyFilterValueCase0Item>;
 export const FeaturePropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
   FeaturePropertyFilterValueCase0Item,
 ) as any as S.Schema<FeaturePropertyFilterValueCase0List>;
@@ -1461,7 +1460,7 @@ export const HogQLPropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<HogQLPropertyFilterValueCase0Item>;
 
 export type HogQLPropertyFilterValueCase0List =
-  ReadonlyArray<HogQLPropertyFilterValueCase0Item>;
+  Array<HogQLPropertyFilterValueCase0Item>;
 export const HogQLPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
   HogQLPropertyFilterValueCase0Item,
 ) as any as S.Schema<HogQLPropertyFilterValueCase0List>;
@@ -1510,7 +1509,7 @@ export const DataWarehousePropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<DataWarehousePropertyFilterValueCase0Item>;
 
 export type DataWarehousePropertyFilterValueCase0List =
-  ReadonlyArray<DataWarehousePropertyFilterValueCase0Item>;
+  Array<DataWarehousePropertyFilterValueCase0Item>;
 export const DataWarehousePropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
   DataWarehousePropertyFilterValueCase0Item,
 ) as any as S.Schema<DataWarehousePropertyFilterValueCase0List>;
@@ -1550,7 +1549,7 @@ export const DataWarehousePersonPropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<DataWarehousePersonPropertyFilterValueCase0Item>;
 
 export type DataWarehousePersonPropertyFilterValueCase0List =
-  ReadonlyArray<DataWarehousePersonPropertyFilterValueCase0Item>;
+  Array<DataWarehousePersonPropertyFilterValueCase0Item>;
 export const DataWarehousePersonPropertyFilterValueCase0List =
   /*@__PURE__*/ S.Array(
     DataWarehousePersonPropertyFilterValueCase0Item,
@@ -1588,7 +1587,7 @@ export const ErrorTrackingIssueFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<ErrorTrackingIssueFilterValueCase0Item>;
 
 export type ErrorTrackingIssueFilterValueCase0List =
-  ReadonlyArray<ErrorTrackingIssueFilterValueCase0Item>;
+  Array<ErrorTrackingIssueFilterValueCase0Item>;
 export const ErrorTrackingIssueFilterValueCase0List = /*@__PURE__*/ S.Array(
   ErrorTrackingIssueFilterValueCase0Item,
 ) as any as S.Schema<ErrorTrackingIssueFilterValueCase0List>;
@@ -1631,7 +1630,7 @@ export const LogPropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<LogPropertyFilterValueCase0Item>;
 
 export type LogPropertyFilterValueCase0List =
-  ReadonlyArray<LogPropertyFilterValueCase0Item>;
+  Array<LogPropertyFilterValueCase0Item>;
 export const LogPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
   LogPropertyFilterValueCase0Item,
 ) as any as S.Schema<LogPropertyFilterValueCase0List>;
@@ -1668,7 +1667,7 @@ export const MetricPropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<MetricPropertyFilterValueCase0Item>;
 
 export type MetricPropertyFilterValueCase0List =
-  ReadonlyArray<MetricPropertyFilterValueCase0Item>;
+  Array<MetricPropertyFilterValueCase0Item>;
 export const MetricPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
   MetricPropertyFilterValueCase0Item,
 ) as any as S.Schema<MetricPropertyFilterValueCase0List>;
@@ -1711,7 +1710,7 @@ export const SpanPropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<SpanPropertyFilterValueCase0Item>;
 
 export type SpanPropertyFilterValueCase0List =
-  ReadonlyArray<SpanPropertyFilterValueCase0Item>;
+  Array<SpanPropertyFilterValueCase0Item>;
 export const SpanPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
   SpanPropertyFilterValueCase0Item,
 ) as any as S.Schema<SpanPropertyFilterValueCase0List>;
@@ -1751,7 +1750,7 @@ export const RevenueAnalyticsPropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<RevenueAnalyticsPropertyFilterValueCase0Item>;
 
 export type RevenueAnalyticsPropertyFilterValueCase0List =
-  ReadonlyArray<RevenueAnalyticsPropertyFilterValueCase0Item>;
+  Array<RevenueAnalyticsPropertyFilterValueCase0Item>;
 export const RevenueAnalyticsPropertyFilterValueCase0List =
   /*@__PURE__*/ S.Array(
     RevenueAnalyticsPropertyFilterValueCase0Item,
@@ -1792,7 +1791,7 @@ export const AccountCustomPropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<AccountCustomPropertyFilterValueCase0Item>;
 
 export type AccountCustomPropertyFilterValueCase0List =
-  ReadonlyArray<AccountCustomPropertyFilterValueCase0Item>;
+  Array<AccountCustomPropertyFilterValueCase0Item>;
 export const AccountCustomPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
   AccountCustomPropertyFilterValueCase0Item,
 ) as any as S.Schema<AccountCustomPropertyFilterValueCase0List>;
@@ -1833,7 +1832,7 @@ export const WorkflowVariablePropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<WorkflowVariablePropertyFilterValueCase0Item>;
 
 export type WorkflowVariablePropertyFilterValueCase0List =
-  ReadonlyArray<WorkflowVariablePropertyFilterValueCase0Item>;
+  Array<WorkflowVariablePropertyFilterValueCase0Item>;
 export const WorkflowVariablePropertyFilterValueCase0List =
   /*@__PURE__*/ S.Array(
     WorkflowVariablePropertyFilterValueCase0Item,
@@ -1948,7 +1947,7 @@ export const TrendsQueryPropertiesCase0Item = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TrendsQueryPropertiesCase0Item>;
 
 export type TrendsQueryPropertiesCase0List =
-  ReadonlyArray<TrendsQueryPropertiesCase0Item>;
+  Array<TrendsQueryPropertiesCase0Item>;
 export const TrendsQueryPropertiesCase0List = /*@__PURE__*/ S.Array(
   TrendsQueryPropertiesCase0Item,
 ) as any as S.Schema<TrendsQueryPropertiesCase0List>;
@@ -2046,7 +2045,7 @@ export const PropertyGroupFilterValueValuesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PropertyGroupFilterValueValuesItem>;
 
 export type PropertyGroupFilterValueValuesList =
-  ReadonlyArray<PropertyGroupFilterValueValuesItem>;
+  Array<PropertyGroupFilterValueValuesItem>;
 export const PropertyGroupFilterValueValuesList = /*@__PURE__*/ S.Array(
   PropertyGroupFilterValueValuesItem,
 ) as any as S.Schema<PropertyGroupFilterValueValuesList>;
@@ -2064,8 +2063,7 @@ export const PropertyGroupFilterValue = /*@__PURE__*/ S.suspend(() =>
   identifier: "PropertyGroupFilterValue",
 }) as any as S.Schema<PropertyGroupFilterValue>;
 
-export type PropertyGroupFilterValuesList =
-  ReadonlyArray<PropertyGroupFilterValue>;
+export type PropertyGroupFilterValuesList = Array<PropertyGroupFilterValue>;
 export const PropertyGroupFilterValuesList = /*@__PURE__*/ S.Array(
   PropertyGroupFilterValue,
 ) as any as S.Schema<PropertyGroupFilterValuesList>;
@@ -2117,12 +2115,12 @@ export const BoxPlotDatum = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "BoxPlotDatum" }) as any as S.Schema<BoxPlotDatum>;
 
-export type TrendsQueryResponseBoxplotDataList = ReadonlyArray<BoxPlotDatum>;
+export type TrendsQueryResponseBoxplotDataList = Array<BoxPlotDatum>;
 export const TrendsQueryResponseBoxplotDataList = /*@__PURE__*/ S.Array(
   BoxPlotDatum,
 ) as any as S.Schema<TrendsQueryResponseBoxplotDataList>;
 
-export type QueryStatusLabelsList = ReadonlyArray<string>;
+export type QueryStatusLabelsList = Array<string>;
 export const QueryStatusLabelsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<QueryStatusLabelsList>;
@@ -2216,7 +2214,7 @@ export const TrendsQueryResponseResultsItemMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<TrendsQueryResponseResultsItemMap>;
 
 export type TrendsQueryResponseResultsList =
-  ReadonlyArray<TrendsQueryResponseResultsItemMap>;
+  Array<TrendsQueryResponseResultsItemMap>;
 export const TrendsQueryResponseResultsList = /*@__PURE__*/ S.Array(
   TrendsQueryResponseResultsItemMap,
 ) as any as S.Schema<TrendsQueryResponseResultsList>;
@@ -2234,7 +2232,7 @@ export const QueryTiming = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "QueryTiming" }) as any as S.Schema<QueryTiming>;
 
-export type TrendsQueryResponseTimingsList = ReadonlyArray<QueryTiming>;
+export type TrendsQueryResponseTimingsList = Array<QueryTiming>;
 export const TrendsQueryResponseTimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<TrendsQueryResponseTimingsList>;
@@ -2258,7 +2256,7 @@ export const DataWarehouseSourceUsage = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DataWarehouseSourceUsage>;
 
 export type TrendsQueryResponseUsedDataWarehouseSourcesList =
-  ReadonlyArray<DataWarehouseSourceUsage>;
+  Array<DataWarehouseSourceUsage>;
 export const TrendsQueryResponseUsedDataWarehouseSourcesList =
   /*@__PURE__*/ S.Array(
     DataWarehouseSourceUsage,
@@ -2295,7 +2293,7 @@ export const DataWarehouseSyncWarning = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DataWarehouseSyncWarning>;
 
 /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
-export type AccessControlFilterWarningResourcesList = ReadonlyArray<string>;
+export type AccessControlFilterWarningResourcesList = Array<string>;
 export const AccessControlFilterWarningResourcesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AccessControlFilterWarningResourcesList>;
@@ -2352,7 +2350,7 @@ export const TrendsQueryResponseWarningsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TrendsQueryResponseWarningsItem>;
 
 export type TrendsQueryResponseWarningsList =
-  ReadonlyArray<TrendsQueryResponseWarningsItem>;
+  Array<TrendsQueryResponseWarningsItem>;
 export const TrendsQueryResponseWarningsList = /*@__PURE__*/ S.Array(
   TrendsQueryResponseWarningsItem,
 ) as any as S.Schema<TrendsQueryResponseWarningsList>;
@@ -2486,7 +2484,7 @@ export const EventsNodeFixedPropertiesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EventsNodeFixedPropertiesItem>;
 
 export type EventsNodeFixedPropertiesList =
-  ReadonlyArray<EventsNodeFixedPropertiesItem>;
+  Array<EventsNodeFixedPropertiesItem>;
 export const EventsNodeFixedPropertiesList = /*@__PURE__*/ S.Array(
   EventsNodeFixedPropertiesItem,
 ) as any as S.Schema<EventsNodeFixedPropertiesList>;
@@ -2727,7 +2725,7 @@ export const RevenueCurrencyPropertyConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "RevenueCurrencyPropertyConfig",
 }) as any as S.Schema<RevenueCurrencyPropertyConfig>;
 
-export type EventsNodeOrderByList = ReadonlyArray<string>;
+export type EventsNodeOrderByList = Array<string>;
 export const EventsNodeOrderByList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EventsNodeOrderByList>;
@@ -2813,7 +2811,7 @@ export const EventsNodePropertiesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "EventsNodePropertiesItem",
 }) as any as S.Schema<EventsNodePropertiesItem>;
 
-export type EventsNodePropertiesList = ReadonlyArray<EventsNodePropertiesItem>;
+export type EventsNodePropertiesList = Array<EventsNodePropertiesItem>;
 export const EventsNodePropertiesList = /*@__PURE__*/ S.Array(
   EventsNodePropertiesItem,
 ) as any as S.Schema<EventsNodePropertiesList>;
@@ -2956,7 +2954,7 @@ export const ActionsNodeFixedPropertiesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ActionsNodeFixedPropertiesItem>;
 
 export type ActionsNodeFixedPropertiesList =
-  ReadonlyArray<ActionsNodeFixedPropertiesItem>;
+  Array<ActionsNodeFixedPropertiesItem>;
 export const ActionsNodeFixedPropertiesList = /*@__PURE__*/ S.Array(
   ActionsNodeFixedPropertiesItem,
 ) as any as S.Schema<ActionsNodeFixedPropertiesList>;
@@ -3053,8 +3051,7 @@ export const ActionsNodePropertiesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "ActionsNodePropertiesItem",
 }) as any as S.Schema<ActionsNodePropertiesItem>;
 
-export type ActionsNodePropertiesList =
-  ReadonlyArray<ActionsNodePropertiesItem>;
+export type ActionsNodePropertiesList = Array<ActionsNodePropertiesItem>;
 export const ActionsNodePropertiesList = /*@__PURE__*/ S.Array(
   ActionsNodePropertiesItem,
 ) as any as S.Schema<ActionsNodePropertiesList>;
@@ -3194,7 +3191,7 @@ export const DataWarehouseNodeFixedPropertiesItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DataWarehouseNodeFixedPropertiesItem>;
 
 export type DataWarehouseNodeFixedPropertiesList =
-  ReadonlyArray<DataWarehouseNodeFixedPropertiesItem>;
+  Array<DataWarehouseNodeFixedPropertiesItem>;
 export const DataWarehouseNodeFixedPropertiesList = /*@__PURE__*/ S.Array(
   DataWarehouseNodeFixedPropertiesItem,
 ) as any as S.Schema<DataWarehouseNodeFixedPropertiesList>;
@@ -3292,7 +3289,7 @@ export const DataWarehouseNodePropertiesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DataWarehouseNodePropertiesItem>;
 
 export type DataWarehouseNodePropertiesList =
-  ReadonlyArray<DataWarehouseNodePropertiesItem>;
+  Array<DataWarehouseNodePropertiesItem>;
 export const DataWarehouseNodePropertiesList = /*@__PURE__*/ S.Array(
   DataWarehouseNodePropertiesItem,
 ) as any as S.Schema<DataWarehouseNodePropertiesList>;
@@ -3442,8 +3439,7 @@ export const GroupNodeFixedPropertiesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "GroupNodeFixedPropertiesItem",
 }) as any as S.Schema<GroupNodeFixedPropertiesItem>;
 
-export type GroupNodeFixedPropertiesList =
-  ReadonlyArray<GroupNodeFixedPropertiesItem>;
+export type GroupNodeFixedPropertiesList = Array<GroupNodeFixedPropertiesItem>;
 export const GroupNodeFixedPropertiesList = /*@__PURE__*/ S.Array(
   GroupNodeFixedPropertiesItem,
 ) as any as S.Schema<GroupNodeFixedPropertiesList>;
@@ -3562,12 +3558,12 @@ export const GroupNodeNodesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GroupNodeNodesItem>;
 
 /** Entities to combine in this group */
-export type GroupNodeNodesList = ReadonlyArray<GroupNodeNodesItem>;
+export type GroupNodeNodesList = Array<GroupNodeNodesItem>;
 export const GroupNodeNodesList = /*@__PURE__*/ S.Array(
   GroupNodeNodesItem,
 ) as any as S.Schema<GroupNodeNodesList>;
 
-export type GroupNodeOrderByList = ReadonlyArray<string>;
+export type GroupNodeOrderByList = Array<string>;
 export const GroupNodeOrderByList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GroupNodeOrderByList>;
@@ -3653,7 +3649,7 @@ export const GroupNodePropertiesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "GroupNodePropertiesItem",
 }) as any as S.Schema<GroupNodePropertiesItem>;
 
-export type GroupNodePropertiesList = ReadonlyArray<GroupNodePropertiesItem>;
+export type GroupNodePropertiesList = Array<GroupNodePropertiesItem>;
 export const GroupNodePropertiesList = /*@__PURE__*/ S.Array(
   GroupNodePropertiesItem,
 ) as any as S.Schema<GroupNodePropertiesList>;
@@ -3846,7 +3842,7 @@ export const TrendsQuerySeriesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TrendsQuerySeriesItem>;
 
 /** Events and actions to include */
-export type TrendsQuerySeriesList = ReadonlyArray<TrendsQuerySeriesItem>;
+export type TrendsQuerySeriesList = Array<TrendsQuerySeriesItem>;
 export const TrendsQuerySeriesList = /*@__PURE__*/ S.Array(
   TrendsQuerySeriesItem,
 ) as any as S.Schema<TrendsQuerySeriesList>;
@@ -3928,12 +3924,12 @@ export const TrendsFormulaNode = /*@__PURE__*/ S.suspend(() =>
   identifier: "TrendsFormulaNode",
 }) as any as S.Schema<TrendsFormulaNode>;
 
-export type TrendsFilterFormulaNodesList = ReadonlyArray<TrendsFormulaNode>;
+export type TrendsFilterFormulaNodesList = Array<TrendsFormulaNode>;
 export const TrendsFilterFormulaNodesList = /*@__PURE__*/ S.Array(
   TrendsFormulaNode,
 ) as any as S.Schema<TrendsFilterFormulaNodesList>;
 
-export type TrendsFilterFormulasList = ReadonlyArray<string>;
+export type TrendsFilterFormulasList = Array<string>;
 export const TrendsFilterFormulasList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<TrendsFilterFormulasList>;
@@ -3960,12 +3956,12 @@ export const GoalLine = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "GoalLine" }) as any as S.Schema<GoalLine>;
 
-export type TrendsFilterGoalLinesList = ReadonlyArray<GoalLine>;
+export type TrendsFilterGoalLinesList = Array<GoalLine>;
 export const TrendsFilterGoalLinesList = /*@__PURE__*/ S.Array(
   GoalLine,
 ) as any as S.Schema<TrendsFilterGoalLinesList>;
 
-export type TrendsFilterHiddenLegendIndexesList = ReadonlyArray<number>;
+export type TrendsFilterHiddenLegendIndexesList = Array<number>;
 export const TrendsFilterHiddenLegendIndexesList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<TrendsFilterHiddenLegendIndexesList>;
@@ -4324,7 +4320,7 @@ export const FunnelExclusionEventsNodeFixedPropertiesItem =
   }) as any as S.Schema<FunnelExclusionEventsNodeFixedPropertiesItem>;
 
 export type FunnelExclusionEventsNodeFixedPropertiesList =
-  ReadonlyArray<FunnelExclusionEventsNodeFixedPropertiesItem>;
+  Array<FunnelExclusionEventsNodeFixedPropertiesItem>;
 export const FunnelExclusionEventsNodeFixedPropertiesList =
   /*@__PURE__*/ S.Array(
     FunnelExclusionEventsNodeFixedPropertiesItem,
@@ -4341,7 +4337,7 @@ export type FunnelExclusionEventsNodeMath =
 export const FunnelExclusionEventsNodeMath =
   /*@__PURE__*/ S.Unknown as any as S.Schema<FunnelExclusionEventsNodeMath>;
 
-export type FunnelExclusionEventsNodeOrderByList = ReadonlyArray<string>;
+export type FunnelExclusionEventsNodeOrderByList = Array<string>;
 export const FunnelExclusionEventsNodeOrderByList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<FunnelExclusionEventsNodeOrderByList>;
@@ -4431,7 +4427,7 @@ export const FunnelExclusionEventsNodePropertiesItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<FunnelExclusionEventsNodePropertiesItem>;
 
 export type FunnelExclusionEventsNodePropertiesList =
-  ReadonlyArray<FunnelExclusionEventsNodePropertiesItem>;
+  Array<FunnelExclusionEventsNodePropertiesItem>;
 export const FunnelExclusionEventsNodePropertiesList = /*@__PURE__*/ S.Array(
   FunnelExclusionEventsNodePropertiesItem,
 ) as any as S.Schema<FunnelExclusionEventsNodePropertiesList>;
@@ -4587,7 +4583,7 @@ export const FunnelExclusionActionsNodeFixedPropertiesItem =
   }) as any as S.Schema<FunnelExclusionActionsNodeFixedPropertiesItem>;
 
 export type FunnelExclusionActionsNodeFixedPropertiesList =
-  ReadonlyArray<FunnelExclusionActionsNodeFixedPropertiesItem>;
+  Array<FunnelExclusionActionsNodeFixedPropertiesItem>;
 export const FunnelExclusionActionsNodeFixedPropertiesList =
   /*@__PURE__*/ S.Array(
     FunnelExclusionActionsNodeFixedPropertiesItem,
@@ -4689,7 +4685,7 @@ export const FunnelExclusionActionsNodePropertiesItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<FunnelExclusionActionsNodePropertiesItem>;
 
 export type FunnelExclusionActionsNodePropertiesList =
-  ReadonlyArray<FunnelExclusionActionsNodePropertiesItem>;
+  Array<FunnelExclusionActionsNodePropertiesItem>;
 export const FunnelExclusionActionsNodePropertiesList = /*@__PURE__*/ S.Array(
   FunnelExclusionActionsNodePropertiesItem,
 ) as any as S.Schema<FunnelExclusionActionsNodePropertiesList>;
@@ -4846,8 +4842,7 @@ export const FunnelsFilterExclusionsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "FunnelsFilterExclusionsItem",
 }) as any as S.Schema<FunnelsFilterExclusionsItem>;
 
-export type FunnelsFilterExclusionsList =
-  ReadonlyArray<FunnelsFilterExclusionsItem>;
+export type FunnelsFilterExclusionsList = Array<FunnelsFilterExclusionsItem>;
 export const FunnelsFilterExclusionsList = /*@__PURE__*/ S.Array(
   FunnelsFilterExclusionsItem,
 ) as any as S.Schema<FunnelsFilterExclusionsList>;
@@ -4870,12 +4865,12 @@ export type FunnelConversionWindowTimeUnit =
   | "month";
 export const FunnelConversionWindowTimeUnit = /*@__PURE__*/ S.String;
 
-export type FunnelsFilterGoalLinesList = ReadonlyArray<GoalLine>;
+export type FunnelsFilterGoalLinesList = Array<GoalLine>;
 export const FunnelsFilterGoalLinesList = /*@__PURE__*/ S.Array(
   GoalLine,
 ) as any as S.Schema<FunnelsFilterGoalLinesList>;
 
-export type FunnelsFilterHiddenLegendBreakdownsList = ReadonlyArray<string>;
+export type FunnelsFilterHiddenLegendBreakdownsList = Array<string>;
 export const FunnelsFilterHiddenLegendBreakdownsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<FunnelsFilterHiddenLegendBreakdownsList>;
@@ -5049,7 +5044,7 @@ export const FunnelsQueryPropertiesCase0Item = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FunnelsQueryPropertiesCase0Item>;
 
 export type FunnelsQueryPropertiesCase0List =
-  ReadonlyArray<FunnelsQueryPropertiesCase0Item>;
+  Array<FunnelsQueryPropertiesCase0Item>;
 export const FunnelsQueryPropertiesCase0List = /*@__PURE__*/ S.Array(
   FunnelsQueryPropertiesCase0Item,
 ) as any as S.Schema<FunnelsQueryPropertiesCase0List>;
@@ -5061,13 +5056,13 @@ export type FunnelsQueryProperties =
 export const FunnelsQueryProperties =
   /*@__PURE__*/ S.Unknown as any as S.Schema<FunnelsQueryProperties>;
 
-export type FunnelsQueryResponseTimingsList = ReadonlyArray<QueryTiming>;
+export type FunnelsQueryResponseTimingsList = Array<QueryTiming>;
 export const FunnelsQueryResponseTimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<FunnelsQueryResponseTimingsList>;
 
 export type FunnelsQueryResponseUsedDataWarehouseSourcesList =
-  ReadonlyArray<DataWarehouseSourceUsage>;
+  Array<DataWarehouseSourceUsage>;
 export const FunnelsQueryResponseUsedDataWarehouseSourcesList =
   /*@__PURE__*/ S.Array(
     DataWarehouseSourceUsage,
@@ -5107,7 +5102,7 @@ export const FunnelsQueryResponseWarningsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FunnelsQueryResponseWarningsItem>;
 
 export type FunnelsQueryResponseWarningsList =
-  ReadonlyArray<FunnelsQueryResponseWarningsItem>;
+  Array<FunnelsQueryResponseWarningsItem>;
 export const FunnelsQueryResponseWarningsList = /*@__PURE__*/ S.Array(
   FunnelsQueryResponseWarningsItem,
 ) as any as S.Schema<FunnelsQueryResponseWarningsList>;
@@ -5242,7 +5237,7 @@ export const FunnelsDataWarehouseNodeFixedPropertiesItem =
   }) as any as S.Schema<FunnelsDataWarehouseNodeFixedPropertiesItem>;
 
 export type FunnelsDataWarehouseNodeFixedPropertiesList =
-  ReadonlyArray<FunnelsDataWarehouseNodeFixedPropertiesItem>;
+  Array<FunnelsDataWarehouseNodeFixedPropertiesItem>;
 export const FunnelsDataWarehouseNodeFixedPropertiesList =
   /*@__PURE__*/ S.Array(
     FunnelsDataWarehouseNodeFixedPropertiesItem,
@@ -5344,7 +5339,7 @@ export const FunnelsDataWarehouseNodePropertiesItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<FunnelsDataWarehouseNodePropertiesItem>;
 
 export type FunnelsDataWarehouseNodePropertiesList =
-  ReadonlyArray<FunnelsDataWarehouseNodePropertiesItem>;
+  Array<FunnelsDataWarehouseNodePropertiesItem>;
 export const FunnelsDataWarehouseNodePropertiesList = /*@__PURE__*/ S.Array(
   FunnelsDataWarehouseNodePropertiesItem,
 ) as any as S.Schema<FunnelsDataWarehouseNodePropertiesList>;
@@ -5544,7 +5539,7 @@ export const FunnelsQuerySeriesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FunnelsQuerySeriesItem>;
 
 /** Events and actions to include */
-export type FunnelsQuerySeriesList = ReadonlyArray<FunnelsQuerySeriesItem>;
+export type FunnelsQuerySeriesList = Array<FunnelsQuerySeriesItem>;
 export const FunnelsQuerySeriesList = /*@__PURE__*/ S.Array(
   FunnelsQuerySeriesItem,
 ) as any as S.Schema<FunnelsQuerySeriesList>;
@@ -5684,7 +5679,7 @@ export const RetentionQueryPropertiesCase0Item = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RetentionQueryPropertiesCase0Item>;
 
 export type RetentionQueryPropertiesCase0List =
-  ReadonlyArray<RetentionQueryPropertiesCase0Item>;
+  Array<RetentionQueryPropertiesCase0Item>;
 export const RetentionQueryPropertiesCase0List = /*@__PURE__*/ S.Array(
   RetentionQueryPropertiesCase0Item,
 ) as any as S.Schema<RetentionQueryPropertiesCase0List>;
@@ -5714,7 +5709,7 @@ export const RetentionValue = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "RetentionValue" }) as any as S.Schema<RetentionValue>;
 
-export type RetentionResultValuesList = ReadonlyArray<RetentionValue>;
+export type RetentionResultValuesList = Array<RetentionValue>;
 export const RetentionResultValuesList = /*@__PURE__*/ S.Array(
   RetentionValue,
 ) as any as S.Schema<RetentionResultValuesList>;
@@ -5737,18 +5732,18 @@ export const RetentionResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "RetentionResult",
 }) as any as S.Schema<RetentionResult>;
 
-export type RetentionQueryResponseResultsList = ReadonlyArray<RetentionResult>;
+export type RetentionQueryResponseResultsList = Array<RetentionResult>;
 export const RetentionQueryResponseResultsList = /*@__PURE__*/ S.Array(
   RetentionResult,
 ) as any as S.Schema<RetentionQueryResponseResultsList>;
 
-export type RetentionQueryResponseTimingsList = ReadonlyArray<QueryTiming>;
+export type RetentionQueryResponseTimingsList = Array<QueryTiming>;
 export const RetentionQueryResponseTimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<RetentionQueryResponseTimingsList>;
 
 export type RetentionQueryResponseUsedDataWarehouseSourcesList =
-  ReadonlyArray<DataWarehouseSourceUsage>;
+  Array<DataWarehouseSourceUsage>;
 export const RetentionQueryResponseUsedDataWarehouseSourcesList =
   /*@__PURE__*/ S.Array(
     DataWarehouseSourceUsage,
@@ -5788,7 +5783,7 @@ export const RetentionQueryResponseWarningsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RetentionQueryResponseWarningsItem>;
 
 export type RetentionQueryResponseWarningsList =
-  ReadonlyArray<RetentionQueryResponseWarningsItem>;
+  Array<RetentionQueryResponseWarningsItem>;
 export const RetentionQueryResponseWarningsList = /*@__PURE__*/ S.Array(
   RetentionQueryResponseWarningsItem,
 ) as any as S.Schema<RetentionQueryResponseWarningsList>;
@@ -5844,7 +5839,7 @@ export const AggregationType = /*@__PURE__*/ S.String;
 export type RetentionDashboardDisplayType = "table_only" | "graph_only" | "all";
 export const RetentionDashboardDisplayType = /*@__PURE__*/ S.String;
 
-export type RetentionFilterGoalLinesList = ReadonlyArray<GoalLine>;
+export type RetentionFilterGoalLinesList = Array<GoalLine>;
 export const RetentionFilterGoalLinesList = /*@__PURE__*/ S.Array(
   GoalLine,
 ) as any as S.Schema<RetentionFilterGoalLinesList>;
@@ -5855,7 +5850,7 @@ export const MeanRetentionCalculation = /*@__PURE__*/ S.String;
 export type RetentionPeriod = "Hour" | "Day" | "Week" | "Month";
 export const RetentionPeriod = /*@__PURE__*/ S.String;
 
-export type RetentionFilterRetentionCustomBracketsList = ReadonlyArray<number>;
+export type RetentionFilterRetentionCustomBracketsList = Array<number>;
 export const RetentionFilterRetentionCustomBracketsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<RetentionFilterRetentionCustomBracketsList>;
@@ -5958,7 +5953,7 @@ export const RetentionEntityPropertiesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RetentionEntityPropertiesItem>;
 
 export type RetentionEntityPropertiesList =
-  ReadonlyArray<RetentionEntityPropertiesItem>;
+  Array<RetentionEntityPropertiesItem>;
 export const RetentionEntityPropertiesList = /*@__PURE__*/ S.Array(
   RetentionEntityPropertiesItem,
 ) as any as S.Schema<RetentionEntityPropertiesList>;
@@ -6140,7 +6135,7 @@ export const FunnelPathsFilter = /*@__PURE__*/ S.suspend(() =>
   identifier: "FunnelPathsFilter",
 }) as any as S.Schema<FunnelPathsFilter>;
 
-export type PathsFilterExcludeEventsList = ReadonlyArray<string>;
+export type PathsFilterExcludeEventsList = Array<string>;
 export const PathsFilterExcludeEventsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PathsFilterExcludeEventsList>;
@@ -6148,7 +6143,7 @@ export const PathsFilterExcludeEventsList = /*@__PURE__*/ S.Array(
 export type PathType = "$pageview" | "$screen" | "custom_event" | "hogql";
 export const PathType = /*@__PURE__*/ S.String;
 
-export type PathsFilterIncludeEventTypesList = ReadonlyArray<PathType>;
+export type PathsFilterIncludeEventTypesList = Array<PathType>;
 export const PathsFilterIncludeEventTypesList = /*@__PURE__*/ S.Array(
   PathType,
 ) as any as S.Schema<PathsFilterIncludeEventTypesList>;
@@ -6168,13 +6163,12 @@ export const PathCleaningFilter = /*@__PURE__*/ S.suspend(() =>
   identifier: "PathCleaningFilter",
 }) as any as S.Schema<PathCleaningFilter>;
 
-export type PathsFilterLocalPathCleaningFiltersList =
-  ReadonlyArray<PathCleaningFilter>;
+export type PathsFilterLocalPathCleaningFiltersList = Array<PathCleaningFilter>;
 export const PathsFilterLocalPathCleaningFiltersList = /*@__PURE__*/ S.Array(
   PathCleaningFilter,
 ) as any as S.Schema<PathsFilterLocalPathCleaningFiltersList>;
 
-export type PathsFilterPathGroupingsList = ReadonlyArray<string>;
+export type PathsFilterPathGroupingsList = Array<string>;
 export const PathsFilterPathGroupingsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PathsFilterPathGroupingsList>;
@@ -6305,7 +6299,7 @@ export const PathsQueryPropertiesCase0Item = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PathsQueryPropertiesCase0Item>;
 
 export type PathsQueryPropertiesCase0List =
-  ReadonlyArray<PathsQueryPropertiesCase0Item>;
+  Array<PathsQueryPropertiesCase0Item>;
 export const PathsQueryPropertiesCase0List = /*@__PURE__*/ S.Array(
   PathsQueryPropertiesCase0Item,
 ) as any as S.Schema<PathsQueryPropertiesCase0List>;
@@ -6332,18 +6326,18 @@ export const PathsLink = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PathsLink" }) as any as S.Schema<PathsLink>;
 
-export type PathsQueryResponseResultsList = ReadonlyArray<PathsLink>;
+export type PathsQueryResponseResultsList = Array<PathsLink>;
 export const PathsQueryResponseResultsList = /*@__PURE__*/ S.Array(
   PathsLink,
 ) as any as S.Schema<PathsQueryResponseResultsList>;
 
-export type PathsQueryResponseTimingsList = ReadonlyArray<QueryTiming>;
+export type PathsQueryResponseTimingsList = Array<QueryTiming>;
 export const PathsQueryResponseTimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<PathsQueryResponseTimingsList>;
 
 export type PathsQueryResponseUsedDataWarehouseSourcesList =
-  ReadonlyArray<DataWarehouseSourceUsage>;
+  Array<DataWarehouseSourceUsage>;
 export const PathsQueryResponseUsedDataWarehouseSourcesList =
   /*@__PURE__*/ S.Array(
     DataWarehouseSourceUsage,
@@ -6383,7 +6377,7 @@ export const PathsQueryResponseWarningsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PathsQueryResponseWarningsItem>;
 
 export type PathsQueryResponseWarningsList =
-  ReadonlyArray<PathsQueryResponseWarningsItem>;
+  Array<PathsQueryResponseWarningsItem>;
 export const PathsQueryResponseWarningsList = /*@__PURE__*/ S.Array(
   PathsQueryResponseWarningsItem,
 ) as any as S.Schema<PathsQueryResponseWarningsList>;
@@ -6556,7 +6550,7 @@ export const StickinessQueryPropertiesCase0Item = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StickinessQueryPropertiesCase0Item>;
 
 export type StickinessQueryPropertiesCase0List =
-  ReadonlyArray<StickinessQueryPropertiesCase0Item>;
+  Array<StickinessQueryPropertiesCase0Item>;
 export const StickinessQueryPropertiesCase0List = /*@__PURE__*/ S.Array(
   StickinessQueryPropertiesCase0Item,
 ) as any as S.Schema<StickinessQueryPropertiesCase0List>;
@@ -6577,18 +6571,18 @@ export const StickinessQueryResponseResultsItemMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<StickinessQueryResponseResultsItemMap>;
 
 export type StickinessQueryResponseResultsList =
-  ReadonlyArray<StickinessQueryResponseResultsItemMap>;
+  Array<StickinessQueryResponseResultsItemMap>;
 export const StickinessQueryResponseResultsList = /*@__PURE__*/ S.Array(
   StickinessQueryResponseResultsItemMap,
 ) as any as S.Schema<StickinessQueryResponseResultsList>;
 
-export type StickinessQueryResponseTimingsList = ReadonlyArray<QueryTiming>;
+export type StickinessQueryResponseTimingsList = Array<QueryTiming>;
 export const StickinessQueryResponseTimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<StickinessQueryResponseTimingsList>;
 
 export type StickinessQueryResponseUsedDataWarehouseSourcesList =
-  ReadonlyArray<DataWarehouseSourceUsage>;
+  Array<DataWarehouseSourceUsage>;
 export const StickinessQueryResponseUsedDataWarehouseSourcesList =
   /*@__PURE__*/ S.Array(
     DataWarehouseSourceUsage,
@@ -6628,7 +6622,7 @@ export const StickinessQueryResponseWarningsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StickinessQueryResponseWarningsItem>;
 
 export type StickinessQueryResponseWarningsList =
-  ReadonlyArray<StickinessQueryResponseWarningsItem>;
+  Array<StickinessQueryResponseWarningsItem>;
 export const StickinessQueryResponseWarningsList = /*@__PURE__*/ S.Array(
   StickinessQueryResponseWarningsItem,
 ) as any as S.Schema<StickinessQueryResponseWarningsList>;
@@ -6778,8 +6772,7 @@ export const StickinessQuerySeriesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StickinessQuerySeriesItem>;
 
 /** Events and actions to include */
-export type StickinessQuerySeriesList =
-  ReadonlyArray<StickinessQuerySeriesItem>;
+export type StickinessQuerySeriesList = Array<StickinessQuerySeriesItem>;
 export const StickinessQuerySeriesList = /*@__PURE__*/ S.Array(
   StickinessQuerySeriesItem,
 ) as any as S.Schema<StickinessQuerySeriesList>;
@@ -6787,7 +6780,7 @@ export const StickinessQuerySeriesList = /*@__PURE__*/ S.Array(
 export type StickinessComputationMode = "non_cumulative" | "cumulative";
 export const StickinessComputationMode = /*@__PURE__*/ S.String;
 
-export type StickinessFilterHiddenLegendIndexesList = ReadonlyArray<number>;
+export type StickinessFilterHiddenLegendIndexesList = Array<number>;
 export const StickinessFilterHiddenLegendIndexesList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<StickinessFilterHiddenLegendIndexesList>;
@@ -6927,8 +6920,7 @@ export const StickinessQuery = /*@__PURE__*/ S.suspend(() =>
 export type LifecycleToggle = "new" | "resurrecting" | "returning" | "dormant";
 export const LifecycleToggle = /*@__PURE__*/ S.String;
 
-export type LifecycleFilterToggledLifecyclesList =
-  ReadonlyArray<LifecycleToggle>;
+export type LifecycleFilterToggledLifecyclesList = Array<LifecycleToggle>;
 export const LifecycleFilterToggledLifecyclesList = /*@__PURE__*/ S.Array(
   LifecycleToggle,
 ) as any as S.Schema<LifecycleFilterToggledLifecyclesList>;
@@ -7040,7 +7032,7 @@ export const LifecycleQueryPropertiesCase0Item = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LifecycleQueryPropertiesCase0Item>;
 
 export type LifecycleQueryPropertiesCase0List =
-  ReadonlyArray<LifecycleQueryPropertiesCase0Item>;
+  Array<LifecycleQueryPropertiesCase0Item>;
 export const LifecycleQueryPropertiesCase0List = /*@__PURE__*/ S.Array(
   LifecycleQueryPropertiesCase0Item,
 ) as any as S.Schema<LifecycleQueryPropertiesCase0List>;
@@ -7061,18 +7053,18 @@ export const LifecycleQueryResponseResultsItemMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<LifecycleQueryResponseResultsItemMap>;
 
 export type LifecycleQueryResponseResultsList =
-  ReadonlyArray<LifecycleQueryResponseResultsItemMap>;
+  Array<LifecycleQueryResponseResultsItemMap>;
 export const LifecycleQueryResponseResultsList = /*@__PURE__*/ S.Array(
   LifecycleQueryResponseResultsItemMap,
 ) as any as S.Schema<LifecycleQueryResponseResultsList>;
 
-export type LifecycleQueryResponseTimingsList = ReadonlyArray<QueryTiming>;
+export type LifecycleQueryResponseTimingsList = Array<QueryTiming>;
 export const LifecycleQueryResponseTimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<LifecycleQueryResponseTimingsList>;
 
 export type LifecycleQueryResponseUsedDataWarehouseSourcesList =
-  ReadonlyArray<DataWarehouseSourceUsage>;
+  Array<DataWarehouseSourceUsage>;
 export const LifecycleQueryResponseUsedDataWarehouseSourcesList =
   /*@__PURE__*/ S.Array(
     DataWarehouseSourceUsage,
@@ -7112,7 +7104,7 @@ export const LifecycleQueryResponseWarningsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LifecycleQueryResponseWarningsItem>;
 
 export type LifecycleQueryResponseWarningsList =
-  ReadonlyArray<LifecycleQueryResponseWarningsItem>;
+  Array<LifecycleQueryResponseWarningsItem>;
 export const LifecycleQueryResponseWarningsList = /*@__PURE__*/ S.Array(
   LifecycleQueryResponseWarningsItem,
 ) as any as S.Schema<LifecycleQueryResponseWarningsList>;
@@ -7244,7 +7236,7 @@ export const LifecycleDataWarehouseNodeFixedPropertiesItem =
   }) as any as S.Schema<LifecycleDataWarehouseNodeFixedPropertiesItem>;
 
 export type LifecycleDataWarehouseNodeFixedPropertiesList =
-  ReadonlyArray<LifecycleDataWarehouseNodeFixedPropertiesItem>;
+  Array<LifecycleDataWarehouseNodeFixedPropertiesItem>;
 export const LifecycleDataWarehouseNodeFixedPropertiesList =
   /*@__PURE__*/ S.Array(
     LifecycleDataWarehouseNodeFixedPropertiesItem,
@@ -7346,7 +7338,7 @@ export const LifecycleDataWarehouseNodePropertiesItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<LifecycleDataWarehouseNodePropertiesItem>;
 
 export type LifecycleDataWarehouseNodePropertiesList =
-  ReadonlyArray<LifecycleDataWarehouseNodePropertiesItem>;
+  Array<LifecycleDataWarehouseNodePropertiesItem>;
 export const LifecycleDataWarehouseNodePropertiesList = /*@__PURE__*/ S.Array(
   LifecycleDataWarehouseNodePropertiesItem,
 ) as any as S.Schema<LifecycleDataWarehouseNodePropertiesList>;
@@ -7526,7 +7518,7 @@ export const LifecycleQuerySeriesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LifecycleQuerySeriesItem>;
 
 /** Events and actions to include */
-export type LifecycleQuerySeriesList = ReadonlyArray<LifecycleQuerySeriesItem>;
+export type LifecycleQuerySeriesList = Array<LifecycleQuerySeriesItem>;
 export const LifecycleQuerySeriesList = /*@__PURE__*/ S.Array(
   LifecycleQuerySeriesItem,
 ) as any as S.Schema<LifecycleQuerySeriesList>;
@@ -7649,7 +7641,7 @@ export const WebStatsTableQueryOrderByItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<WebStatsTableQueryOrderByItem>;
 
 export type WebStatsTableQueryOrderByList =
-  ReadonlyArray<WebStatsTableQueryOrderByItem>;
+  Array<WebStatsTableQueryOrderByItem>;
 export const WebStatsTableQueryOrderByList = /*@__PURE__*/ S.Array(
   WebStatsTableQueryOrderByItem,
 ) as any as S.Schema<WebStatsTableQueryOrderByList>;
@@ -7691,12 +7683,12 @@ export const WebStatsTableQueryPropertiesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WebStatsTableQueryPropertiesItem>;
 
 export type WebStatsTableQueryPropertiesList =
-  ReadonlyArray<WebStatsTableQueryPropertiesItem>;
+  Array<WebStatsTableQueryPropertiesItem>;
 export const WebStatsTableQueryPropertiesList = /*@__PURE__*/ S.Array(
   WebStatsTableQueryPropertiesItem,
 ) as any as S.Schema<WebStatsTableQueryPropertiesList>;
 
-export type WebStatsTableQueryResponseColumnsList = ReadonlyArray<unknown>;
+export type WebStatsTableQueryResponseColumnsList = Array<unknown>;
 export const WebStatsTableQueryResponseColumnsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<WebStatsTableQueryResponseColumnsList>;
@@ -7707,7 +7699,7 @@ export type WebAnalyticsPreComputeStrategy =
   | "live";
 export const WebAnalyticsPreComputeStrategy = /*@__PURE__*/ S.String;
 
-export type WebStatsTableQueryResponseResultsList = ReadonlyArray<unknown>;
+export type WebStatsTableQueryResponseResultsList = Array<unknown>;
 export const WebStatsTableQueryResponseResultsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<WebStatsTableQueryResponseResultsList>;
@@ -7723,18 +7715,18 @@ export const SamplingRate = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SamplingRate" }) as any as S.Schema<SamplingRate>;
 
-export type WebStatsTableQueryResponseTimingsList = ReadonlyArray<QueryTiming>;
+export type WebStatsTableQueryResponseTimingsList = Array<QueryTiming>;
 export const WebStatsTableQueryResponseTimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<WebStatsTableQueryResponseTimingsList>;
 
-export type WebStatsTableQueryResponseTypesList = ReadonlyArray<unknown>;
+export type WebStatsTableQueryResponseTypesList = Array<unknown>;
 export const WebStatsTableQueryResponseTypesList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<WebStatsTableQueryResponseTypesList>;
 
 export type WebStatsTableQueryResponseUsedDataWarehouseSourcesList =
-  ReadonlyArray<DataWarehouseSourceUsage>;
+  Array<DataWarehouseSourceUsage>;
 export const WebStatsTableQueryResponseUsedDataWarehouseSourcesList =
   /*@__PURE__*/ S.Array(
     DataWarehouseSourceUsage,
@@ -7775,7 +7767,7 @@ export const WebStatsTableQueryResponseWarningsItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<WebStatsTableQueryResponseWarningsItem>;
 
 export type WebStatsTableQueryResponseWarningsList =
-  ReadonlyArray<WebStatsTableQueryResponseWarningsItem>;
+  Array<WebStatsTableQueryResponseWarningsItem>;
 export const WebStatsTableQueryResponseWarningsList = /*@__PURE__*/ S.Array(
   WebStatsTableQueryResponseWarningsItem,
 ) as any as S.Schema<WebStatsTableQueryResponseWarningsList>;
@@ -7941,8 +7933,7 @@ export type WebOverviewQueryOrderByItem =
 export const WebOverviewQueryOrderByItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<WebOverviewQueryOrderByItem>;
 
-export type WebOverviewQueryOrderByList =
-  ReadonlyArray<WebOverviewQueryOrderByItem>;
+export type WebOverviewQueryOrderByList = Array<WebOverviewQueryOrderByItem>;
 export const WebOverviewQueryOrderByList = /*@__PURE__*/ S.Array(
   WebOverviewQueryOrderByItem,
 ) as any as S.Schema<WebOverviewQueryOrderByList>;
@@ -7984,7 +7975,7 @@ export const WebOverviewQueryPropertiesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WebOverviewQueryPropertiesItem>;
 
 export type WebOverviewQueryPropertiesList =
-  ReadonlyArray<WebOverviewQueryPropertiesItem>;
+  Array<WebOverviewQueryPropertiesItem>;
 export const WebOverviewQueryPropertiesList = /*@__PURE__*/ S.Array(
   WebOverviewQueryPropertiesItem,
 ) as any as S.Schema<WebOverviewQueryPropertiesList>;
@@ -8017,19 +8008,18 @@ export const WebOverviewItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "WebOverviewItem",
 }) as any as S.Schema<WebOverviewItem>;
 
-export type WebOverviewQueryResponseResultsList =
-  ReadonlyArray<WebOverviewItem>;
+export type WebOverviewQueryResponseResultsList = Array<WebOverviewItem>;
 export const WebOverviewQueryResponseResultsList = /*@__PURE__*/ S.Array(
   WebOverviewItem,
 ) as any as S.Schema<WebOverviewQueryResponseResultsList>;
 
-export type WebOverviewQueryResponseTimingsList = ReadonlyArray<QueryTiming>;
+export type WebOverviewQueryResponseTimingsList = Array<QueryTiming>;
 export const WebOverviewQueryResponseTimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<WebOverviewQueryResponseTimingsList>;
 
 export type WebOverviewQueryResponseUsedDataWarehouseSourcesList =
-  ReadonlyArray<DataWarehouseSourceUsage>;
+  Array<DataWarehouseSourceUsage>;
 export const WebOverviewQueryResponseUsedDataWarehouseSourcesList =
   /*@__PURE__*/ S.Array(
     DataWarehouseSourceUsage,
@@ -8070,7 +8060,7 @@ export const WebOverviewQueryResponseWarningsItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<WebOverviewQueryResponseWarningsItem>;
 
 export type WebOverviewQueryResponseWarningsList =
-  ReadonlyArray<WebOverviewQueryResponseWarningsItem>;
+  Array<WebOverviewQueryResponseWarningsItem>;
 export const WebOverviewQueryResponseWarningsList = /*@__PURE__*/ S.Array(
   WebOverviewQueryResponseWarningsItem,
 ) as any as S.Schema<WebOverviewQueryResponseWarningsList>;
@@ -8443,7 +8433,7 @@ export const InsightVizNode = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "InsightVizNode" }) as any as S.Schema<InsightVizNode>;
 
-export type DataTableNodeColumnsList = ReadonlyArray<string>;
+export type DataTableNodeColumnsList = Array<string>;
 export const DataTableNodeColumnsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DataTableNodeColumnsList>;
@@ -8466,17 +8456,17 @@ export const DataTableNodeViewPropsContext = /*@__PURE__*/ S.suspend(() =>
   identifier: "DataTableNodeViewPropsContext",
 }) as any as S.Schema<DataTableNodeViewPropsContext>;
 
-export type DataTableNodeDefaultColumnsList = ReadonlyArray<string>;
+export type DataTableNodeDefaultColumnsList = Array<string>;
 export const DataTableNodeDefaultColumnsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DataTableNodeDefaultColumnsList>;
 
-export type DataTableNodeHiddenColumnsList = ReadonlyArray<string>;
+export type DataTableNodeHiddenColumnsList = Array<string>;
 export const DataTableNodeHiddenColumnsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DataTableNodeHiddenColumnsList>;
 
-export type DataTableNodePinnedColumnsList = ReadonlyArray<string>;
+export type DataTableNodePinnedColumnsList = Array<string>;
 export const DataTableNodePinnedColumnsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DataTableNodePinnedColumnsList>;
@@ -8489,33 +8479,33 @@ export const DataTableNodeResponseCase0Map = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DataTableNodeResponseCase0Map>;
 
-export type ResponseColumnsList = ReadonlyArray<unknown>;
+export type ResponseColumnsList = Array<unknown>;
 export const ResponseColumnsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<ResponseColumnsList>;
 
-export type ResponseResultsItemList = ReadonlyArray<unknown>;
+export type ResponseResultsItemList = Array<unknown>;
 export const ResponseResultsItemList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<ResponseResultsItemList>;
 
-export type ResponseResultsList = ReadonlyArray<ResponseResultsItemList>;
+export type ResponseResultsList = Array<ResponseResultsItemList>;
 export const ResponseResultsList = /*@__PURE__*/ S.Array(
   ResponseResultsItemList,
 ) as any as S.Schema<ResponseResultsList>;
 
-export type ResponseTimingsList = ReadonlyArray<QueryTiming>;
+export type ResponseTimingsList = Array<QueryTiming>;
 export const ResponseTimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<ResponseTimingsList>;
 
-export type ResponseTypesList = ReadonlyArray<string>;
+export type ResponseTypesList = Array<string>;
 export const ResponseTypesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ResponseTypesList>;
 
 export type ResponseUsedDataWarehouseSourcesList =
-  ReadonlyArray<DataWarehouseSourceUsage>;
+  Array<DataWarehouseSourceUsage>;
 export const ResponseUsedDataWarehouseSourcesList = /*@__PURE__*/ S.Array(
   DataWarehouseSourceUsage,
 ) as any as S.Schema<ResponseUsedDataWarehouseSourcesList>;
@@ -8553,7 +8543,7 @@ export const ResponseWarningsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "ResponseWarningsItem",
 }) as any as S.Schema<ResponseWarningsItem>;
 
-export type ResponseWarningsList = ReadonlyArray<ResponseWarningsItem>;
+export type ResponseWarningsList = Array<ResponseWarningsItem>;
 export const ResponseWarningsList = /*@__PURE__*/ S.Array(
   ResponseWarningsItem,
 ) as any as S.Schema<ResponseWarningsList>;
@@ -8611,33 +8601,33 @@ export const Response = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Response" }) as any as S.Schema<Response>;
 
-export type Response1ColumnsList = ReadonlyArray<unknown>;
+export type Response1ColumnsList = Array<unknown>;
 export const Response1ColumnsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<Response1ColumnsList>;
 
-export type Response1ResultsItemList = ReadonlyArray<unknown>;
+export type Response1ResultsItemList = Array<unknown>;
 export const Response1ResultsItemList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<Response1ResultsItemList>;
 
-export type Response1ResultsList = ReadonlyArray<Response1ResultsItemList>;
+export type Response1ResultsList = Array<Response1ResultsItemList>;
 export const Response1ResultsList = /*@__PURE__*/ S.Array(
   Response1ResultsItemList,
 ) as any as S.Schema<Response1ResultsList>;
 
-export type Response1TimingsList = ReadonlyArray<QueryTiming>;
+export type Response1TimingsList = Array<QueryTiming>;
 export const Response1TimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<Response1TimingsList>;
 
-export type Response1TypesList = ReadonlyArray<string>;
+export type Response1TypesList = Array<string>;
 export const Response1TypesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<Response1TypesList>;
 
 export type Response1UsedDataWarehouseSourcesList =
-  ReadonlyArray<DataWarehouseSourceUsage>;
+  Array<DataWarehouseSourceUsage>;
 export const Response1UsedDataWarehouseSourcesList = /*@__PURE__*/ S.Array(
   DataWarehouseSourceUsage,
 ) as any as S.Schema<Response1UsedDataWarehouseSourcesList>;
@@ -8675,7 +8665,7 @@ export const Response1WarningsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "Response1WarningsItem",
 }) as any as S.Schema<Response1WarningsItem>;
 
-export type Response1WarningsList = ReadonlyArray<Response1WarningsItem>;
+export type Response1WarningsList = Array<Response1WarningsItem>;
 export const Response1WarningsList = /*@__PURE__*/ S.Array(
   Response1WarningsItem,
 ) as any as S.Schema<Response1WarningsList>;
@@ -8732,33 +8722,33 @@ export const Response1 = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Response1" }) as any as S.Schema<Response1>;
 
-export type Response2ColumnsList = ReadonlyArray<unknown>;
+export type Response2ColumnsList = Array<unknown>;
 export const Response2ColumnsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<Response2ColumnsList>;
 
-export type Response2ResultsItemList = ReadonlyArray<unknown>;
+export type Response2ResultsItemList = Array<unknown>;
 export const Response2ResultsItemList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<Response2ResultsItemList>;
 
-export type Response2ResultsList = ReadonlyArray<Response2ResultsItemList>;
+export type Response2ResultsList = Array<Response2ResultsItemList>;
 export const Response2ResultsList = /*@__PURE__*/ S.Array(
   Response2ResultsItemList,
 ) as any as S.Schema<Response2ResultsList>;
 
-export type Response2TimingsList = ReadonlyArray<QueryTiming>;
+export type Response2TimingsList = Array<QueryTiming>;
 export const Response2TimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<Response2TimingsList>;
 
-export type Response2TypesList = ReadonlyArray<string>;
+export type Response2TypesList = Array<string>;
 export const Response2TypesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<Response2TypesList>;
 
 export type Response2UsedDataWarehouseSourcesList =
-  ReadonlyArray<DataWarehouseSourceUsage>;
+  Array<DataWarehouseSourceUsage>;
 export const Response2UsedDataWarehouseSourcesList = /*@__PURE__*/ S.Array(
   DataWarehouseSourceUsage,
 ) as any as S.Schema<Response2UsedDataWarehouseSourcesList>;
@@ -8796,7 +8786,7 @@ export const Response2WarningsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "Response2WarningsItem",
 }) as any as S.Schema<Response2WarningsItem>;
 
-export type Response2WarningsList = ReadonlyArray<Response2WarningsItem>;
+export type Response2WarningsList = Array<Response2WarningsItem>;
 export const Response2WarningsList = /*@__PURE__*/ S.Array(
   Response2WarningsItem,
 ) as any as S.Schema<Response2WarningsList>;
@@ -8853,17 +8843,17 @@ export const Response2 = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Response2" }) as any as S.Schema<Response2>;
 
-export type Response3ColumnsList = ReadonlyArray<unknown>;
+export type Response3ColumnsList = Array<unknown>;
 export const Response3ColumnsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<Response3ColumnsList>;
 
-export type Response3ExplainList = ReadonlyArray<string>;
+export type Response3ExplainList = Array<string>;
 export const Response3ExplainList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<Response3ExplainList>;
 
-export type HogQLMetadataResponseChTableNamesList = ReadonlyArray<string>;
+export type HogQLMetadataResponseChTableNamesList = Array<string>;
 export const HogQLMetadataResponseChTableNamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<HogQLMetadataResponseChTableNamesList>;
@@ -8883,7 +8873,7 @@ export const HogQLNotice = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "HogQLNotice" }) as any as S.Schema<HogQLNotice>;
 
-export type HogQLMetadataResponseErrorsList = ReadonlyArray<HogQLNotice>;
+export type HogQLMetadataResponseErrorsList = Array<HogQLNotice>;
 export const HogQLMetadataResponseErrorsList = /*@__PURE__*/ S.Array(
   HogQLNotice,
 ) as any as S.Schema<HogQLMetadataResponseErrorsList>;
@@ -8891,17 +8881,17 @@ export const HogQLMetadataResponseErrorsList = /*@__PURE__*/ S.Array(
 export type QueryIndexUsage = "undecisive" | "no" | "partial" | "yes";
 export const QueryIndexUsage = /*@__PURE__*/ S.String;
 
-export type HogQLMetadataResponseNoticesList = ReadonlyArray<HogQLNotice>;
+export type HogQLMetadataResponseNoticesList = Array<HogQLNotice>;
 export const HogQLMetadataResponseNoticesList = /*@__PURE__*/ S.Array(
   HogQLNotice,
 ) as any as S.Schema<HogQLMetadataResponseNoticesList>;
 
-export type HogQLMetadataResponseTableNamesList = ReadonlyArray<string>;
+export type HogQLMetadataResponseTableNamesList = Array<string>;
 export const HogQLMetadataResponseTableNamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<HogQLMetadataResponseTableNamesList>;
 
-export type HogQLMetadataResponseWarningsList = ReadonlyArray<HogQLNotice>;
+export type HogQLMetadataResponseWarningsList = Array<HogQLNotice>;
 export const HogQLMetadataResponseWarningsList = /*@__PURE__*/ S.Array(
   HogQLNotice,
 ) as any as S.Schema<HogQLMetadataResponseWarningsList>;
@@ -8931,23 +8921,23 @@ export const HogQLMetadataResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "HogQLMetadataResponse",
 }) as any as S.Schema<HogQLMetadataResponse>;
 
-export type Response3ResultsList = ReadonlyArray<unknown>;
+export type Response3ResultsList = Array<unknown>;
 export const Response3ResultsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<Response3ResultsList>;
 
-export type Response3TimingsList = ReadonlyArray<QueryTiming>;
+export type Response3TimingsList = Array<QueryTiming>;
 export const Response3TimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<Response3TimingsList>;
 
-export type Response3TypesList = ReadonlyArray<unknown>;
+export type Response3TypesList = Array<unknown>;
 export const Response3TypesList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<Response3TypesList>;
 
 export type Response3UsedDataWarehouseSourcesList =
-  ReadonlyArray<DataWarehouseSourceUsage>;
+  Array<DataWarehouseSourceUsage>;
 export const Response3UsedDataWarehouseSourcesList = /*@__PURE__*/ S.Array(
   DataWarehouseSourceUsage,
 ) as any as S.Schema<Response3UsedDataWarehouseSourcesList>;
@@ -8985,7 +8975,7 @@ export const Response3WarningsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "Response3WarningsItem",
 }) as any as S.Schema<Response3WarningsItem>;
 
-export type Response3WarningsList = ReadonlyArray<Response3WarningsItem>;
+export type Response3WarningsList = Array<Response3WarningsItem>;
 export const Response3WarningsList = /*@__PURE__*/ S.Array(
   Response3WarningsItem,
 ) as any as S.Schema<Response3WarningsList>;
@@ -9054,18 +9044,18 @@ export const Response3 = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Response3" }) as any as S.Schema<Response3>;
 
-export type Response4ResultsList = ReadonlyArray<WebOverviewItem>;
+export type Response4ResultsList = Array<WebOverviewItem>;
 export const Response4ResultsList = /*@__PURE__*/ S.Array(
   WebOverviewItem,
 ) as any as S.Schema<Response4ResultsList>;
 
-export type Response4TimingsList = ReadonlyArray<QueryTiming>;
+export type Response4TimingsList = Array<QueryTiming>;
 export const Response4TimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<Response4TimingsList>;
 
 export type Response4UsedDataWarehouseSourcesList =
-  ReadonlyArray<DataWarehouseSourceUsage>;
+  Array<DataWarehouseSourceUsage>;
 export const Response4UsedDataWarehouseSourcesList = /*@__PURE__*/ S.Array(
   DataWarehouseSourceUsage,
 ) as any as S.Schema<Response4UsedDataWarehouseSourcesList>;
@@ -9103,7 +9093,7 @@ export const Response4WarningsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "Response4WarningsItem",
 }) as any as S.Schema<Response4WarningsItem>;
 
-export type Response4WarningsList = ReadonlyArray<Response4WarningsItem>;
+export type Response4WarningsList = Array<Response4WarningsItem>;
 export const Response4WarningsList = /*@__PURE__*/ S.Array(
   Response4WarningsItem,
 ) as any as S.Schema<Response4WarningsList>;
@@ -9156,28 +9146,28 @@ export const Response4 = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Response4" }) as any as S.Schema<Response4>;
 
-export type Response5ColumnsList = ReadonlyArray<unknown>;
+export type Response5ColumnsList = Array<unknown>;
 export const Response5ColumnsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<Response5ColumnsList>;
 
-export type Response5ResultsList = ReadonlyArray<unknown>;
+export type Response5ResultsList = Array<unknown>;
 export const Response5ResultsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<Response5ResultsList>;
 
-export type Response5TimingsList = ReadonlyArray<QueryTiming>;
+export type Response5TimingsList = Array<QueryTiming>;
 export const Response5TimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<Response5TimingsList>;
 
-export type Response5TypesList = ReadonlyArray<unknown>;
+export type Response5TypesList = Array<unknown>;
 export const Response5TypesList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<Response5TypesList>;
 
 export type Response5UsedDataWarehouseSourcesList =
-  ReadonlyArray<DataWarehouseSourceUsage>;
+  Array<DataWarehouseSourceUsage>;
 export const Response5UsedDataWarehouseSourcesList = /*@__PURE__*/ S.Array(
   DataWarehouseSourceUsage,
 ) as any as S.Schema<Response5UsedDataWarehouseSourcesList>;
@@ -9215,7 +9205,7 @@ export const Response5WarningsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "Response5WarningsItem",
 }) as any as S.Schema<Response5WarningsItem>;
 
-export type Response5WarningsList = ReadonlyArray<Response5WarningsItem>;
+export type Response5WarningsList = Array<Response5WarningsItem>;
 export const Response5WarningsList = /*@__PURE__*/ S.Array(
   Response5WarningsItem,
 ) as any as S.Schema<Response5WarningsList>;
@@ -9277,28 +9267,28 @@ export const Response5 = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Response5" }) as any as S.Schema<Response5>;
 
-export type Response6ColumnsList = ReadonlyArray<unknown>;
+export type Response6ColumnsList = Array<unknown>;
 export const Response6ColumnsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<Response6ColumnsList>;
 
-export type Response6ResultsList = ReadonlyArray<unknown>;
+export type Response6ResultsList = Array<unknown>;
 export const Response6ResultsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<Response6ResultsList>;
 
-export type Response6TimingsList = ReadonlyArray<QueryTiming>;
+export type Response6TimingsList = Array<QueryTiming>;
 export const Response6TimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<Response6TimingsList>;
 
-export type Response6TypesList = ReadonlyArray<unknown>;
+export type Response6TypesList = Array<unknown>;
 export const Response6TypesList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<Response6TypesList>;
 
 export type Response6UsedDataWarehouseSourcesList =
-  ReadonlyArray<DataWarehouseSourceUsage>;
+  Array<DataWarehouseSourceUsage>;
 export const Response6UsedDataWarehouseSourcesList = /*@__PURE__*/ S.Array(
   DataWarehouseSourceUsage,
 ) as any as S.Schema<Response6UsedDataWarehouseSourcesList>;
@@ -9336,7 +9326,7 @@ export const Response6WarningsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "Response6WarningsItem",
 }) as any as S.Schema<Response6WarningsItem>;
 
-export type Response6WarningsList = ReadonlyArray<Response6WarningsItem>;
+export type Response6WarningsList = Array<Response6WarningsItem>;
 export const Response6WarningsList = /*@__PURE__*/ S.Array(
   Response6WarningsItem,
 ) as any as S.Schema<Response6WarningsList>;
@@ -9393,28 +9383,28 @@ export const Response6 = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Response6" }) as any as S.Schema<Response6>;
 
-export type Response7ColumnsList = ReadonlyArray<unknown>;
+export type Response7ColumnsList = Array<unknown>;
 export const Response7ColumnsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<Response7ColumnsList>;
 
-export type Response7ResultsList = ReadonlyArray<unknown>;
+export type Response7ResultsList = Array<unknown>;
 export const Response7ResultsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<Response7ResultsList>;
 
-export type Response7TimingsList = ReadonlyArray<QueryTiming>;
+export type Response7TimingsList = Array<QueryTiming>;
 export const Response7TimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<Response7TimingsList>;
 
-export type Response7TypesList = ReadonlyArray<unknown>;
+export type Response7TypesList = Array<unknown>;
 export const Response7TypesList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<Response7TypesList>;
 
 export type Response7UsedDataWarehouseSourcesList =
-  ReadonlyArray<DataWarehouseSourceUsage>;
+  Array<DataWarehouseSourceUsage>;
 export const Response7UsedDataWarehouseSourcesList = /*@__PURE__*/ S.Array(
   DataWarehouseSourceUsage,
 ) as any as S.Schema<Response7UsedDataWarehouseSourcesList>;
@@ -9452,7 +9442,7 @@ export const Response7WarningsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "Response7WarningsItem",
 }) as any as S.Schema<Response7WarningsItem>;
 
-export type Response7WarningsList = ReadonlyArray<Response7WarningsItem>;
+export type Response7WarningsList = Array<Response7WarningsItem>;
 export const Response7WarningsList = /*@__PURE__*/ S.Array(
   Response7WarningsItem,
 ) as any as S.Schema<Response7WarningsList>;
@@ -9525,20 +9515,20 @@ export const WebVitalsPathBreakdownResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WebVitalsPathBreakdownResultItem>;
 
 export type WebVitalsPathBreakdownResultGoodList =
-  ReadonlyArray<WebVitalsPathBreakdownResultItem>;
+  Array<WebVitalsPathBreakdownResultItem>;
 export const WebVitalsPathBreakdownResultGoodList = /*@__PURE__*/ S.Array(
   WebVitalsPathBreakdownResultItem,
 ) as any as S.Schema<WebVitalsPathBreakdownResultGoodList>;
 
 export type WebVitalsPathBreakdownResultNeedsImprovementsList =
-  ReadonlyArray<WebVitalsPathBreakdownResultItem>;
+  Array<WebVitalsPathBreakdownResultItem>;
 export const WebVitalsPathBreakdownResultNeedsImprovementsList =
   /*@__PURE__*/ S.Array(
     WebVitalsPathBreakdownResultItem,
   ) as any as S.Schema<WebVitalsPathBreakdownResultNeedsImprovementsList>;
 
 export type WebVitalsPathBreakdownResultPoorList =
-  ReadonlyArray<WebVitalsPathBreakdownResultItem>;
+  Array<WebVitalsPathBreakdownResultItem>;
 export const WebVitalsPathBreakdownResultPoorList = /*@__PURE__*/ S.Array(
   WebVitalsPathBreakdownResultItem,
 ) as any as S.Schema<WebVitalsPathBreakdownResultPoorList>;
@@ -9560,18 +9550,18 @@ export const WebVitalsPathBreakdownResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "WebVitalsPathBreakdownResult",
 }) as any as S.Schema<WebVitalsPathBreakdownResult>;
 
-export type Response8ResultsList = ReadonlyArray<WebVitalsPathBreakdownResult>;
+export type Response8ResultsList = Array<WebVitalsPathBreakdownResult>;
 export const Response8ResultsList = /*@__PURE__*/ S.Array(
   WebVitalsPathBreakdownResult,
 ) as any as S.Schema<Response8ResultsList>;
 
-export type Response8TimingsList = ReadonlyArray<QueryTiming>;
+export type Response8TimingsList = Array<QueryTiming>;
 export const Response8TimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<Response8TimingsList>;
 
 export type Response8UsedDataWarehouseSourcesList =
-  ReadonlyArray<DataWarehouseSourceUsage>;
+  Array<DataWarehouseSourceUsage>;
 export const Response8UsedDataWarehouseSourcesList = /*@__PURE__*/ S.Array(
   DataWarehouseSourceUsage,
 ) as any as S.Schema<Response8UsedDataWarehouseSourcesList>;
@@ -9609,7 +9599,7 @@ export const Response8WarningsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "Response8WarningsItem",
 }) as any as S.Schema<Response8WarningsItem>;
 
-export type Response8WarningsList = ReadonlyArray<Response8WarningsItem>;
+export type Response8WarningsList = Array<Response8WarningsItem>;
 export const Response8WarningsList = /*@__PURE__*/ S.Array(
   Response8WarningsItem,
 ) as any as S.Schema<Response8WarningsList>;
@@ -9656,23 +9646,23 @@ export const Response8 = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Response8" }) as any as S.Schema<Response8>;
 
-export type Response9ColumnsList = ReadonlyArray<unknown>;
+export type Response9ColumnsList = Array<unknown>;
 export const Response9ColumnsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<Response9ColumnsList>;
 
-export type Response9TimingsList = ReadonlyArray<QueryTiming>;
+export type Response9TimingsList = Array<QueryTiming>;
 export const Response9TimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<Response9TimingsList>;
 
-export type Response9TypesList = ReadonlyArray<unknown>;
+export type Response9TypesList = Array<unknown>;
 export const Response9TypesList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<Response9TypesList>;
 
 export type Response9UsedDataWarehouseSourcesList =
-  ReadonlyArray<DataWarehouseSourceUsage>;
+  Array<DataWarehouseSourceUsage>;
 export const Response9UsedDataWarehouseSourcesList = /*@__PURE__*/ S.Array(
   DataWarehouseSourceUsage,
 ) as any as S.Schema<Response9UsedDataWarehouseSourcesList>;
@@ -9710,7 +9700,7 @@ export const Response9WarningsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "Response9WarningsItem",
 }) as any as S.Schema<Response9WarningsItem>;
 
-export type Response9WarningsList = ReadonlyArray<Response9WarningsItem>;
+export type Response9WarningsList = Array<Response9WarningsItem>;
 export const Response9WarningsList = /*@__PURE__*/ S.Array(
   Response9WarningsItem,
 ) as any as S.Schema<Response9WarningsList>;
@@ -9765,33 +9755,33 @@ export const Response9 = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Response9" }) as any as S.Schema<Response9>;
 
-export type Response10ColumnsList = ReadonlyArray<unknown>;
+export type Response10ColumnsList = Array<unknown>;
 export const Response10ColumnsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<Response10ColumnsList>;
 
-export type Response10ResultsItemList = ReadonlyArray<unknown>;
+export type Response10ResultsItemList = Array<unknown>;
 export const Response10ResultsItemList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<Response10ResultsItemList>;
 
-export type Response10ResultsList = ReadonlyArray<Response10ResultsItemList>;
+export type Response10ResultsList = Array<Response10ResultsItemList>;
 export const Response10ResultsList = /*@__PURE__*/ S.Array(
   Response10ResultsItemList,
 ) as any as S.Schema<Response10ResultsList>;
 
-export type Response10TimingsList = ReadonlyArray<QueryTiming>;
+export type Response10TimingsList = Array<QueryTiming>;
 export const Response10TimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<Response10TimingsList>;
 
-export type Response10TypesList = ReadonlyArray<string>;
+export type Response10TypesList = Array<string>;
 export const Response10TypesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<Response10TypesList>;
 
 export type Response10UsedDataWarehouseSourcesList =
-  ReadonlyArray<DataWarehouseSourceUsage>;
+  Array<DataWarehouseSourceUsage>;
 export const Response10UsedDataWarehouseSourcesList = /*@__PURE__*/ S.Array(
   DataWarehouseSourceUsage,
 ) as any as S.Schema<Response10UsedDataWarehouseSourcesList>;
@@ -9829,7 +9819,7 @@ export const Response10WarningsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "Response10WarningsItem",
 }) as any as S.Schema<Response10WarningsItem>;
 
-export type Response10WarningsList = ReadonlyArray<Response10WarningsItem>;
+export type Response10WarningsList = Array<Response10WarningsItem>;
 export const Response10WarningsList = /*@__PURE__*/ S.Array(
   Response10WarningsItem,
 ) as any as S.Schema<Response10WarningsList>;
@@ -9884,23 +9874,23 @@ export const Response10 = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Response10" }) as any as S.Schema<Response10>;
 
-export type Response11ColumnsList = ReadonlyArray<string>;
+export type Response11ColumnsList = Array<string>;
 export const Response11ColumnsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<Response11ColumnsList>;
 
-export type Response11ResultsList = ReadonlyArray<unknown>;
+export type Response11ResultsList = Array<unknown>;
 export const Response11ResultsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<Response11ResultsList>;
 
-export type Response11TimingsList = ReadonlyArray<QueryTiming>;
+export type Response11TimingsList = Array<QueryTiming>;
 export const Response11TimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<Response11TimingsList>;
 
 export type Response11UsedDataWarehouseSourcesList =
-  ReadonlyArray<DataWarehouseSourceUsage>;
+  Array<DataWarehouseSourceUsage>;
 export const Response11UsedDataWarehouseSourcesList = /*@__PURE__*/ S.Array(
   DataWarehouseSourceUsage,
 ) as any as S.Schema<Response11UsedDataWarehouseSourcesList>;
@@ -9938,7 +9928,7 @@ export const Response11WarningsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "Response11WarningsItem",
 }) as any as S.Schema<Response11WarningsItem>;
 
-export type Response11WarningsList = ReadonlyArray<Response11WarningsItem>;
+export type Response11WarningsList = Array<Response11WarningsItem>;
 export const Response11WarningsList = /*@__PURE__*/ S.Array(
   Response11WarningsItem,
 ) as any as S.Schema<Response11WarningsList>;
@@ -9985,18 +9975,18 @@ export const Response11 = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Response11" }) as any as S.Schema<Response11>;
 
-export type Response12ColumnsList = ReadonlyArray<string>;
+export type Response12ColumnsList = Array<string>;
 export const Response12ColumnsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<Response12ColumnsList>;
 
-export type Response12TimingsList = ReadonlyArray<QueryTiming>;
+export type Response12TimingsList = Array<QueryTiming>;
 export const Response12TimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<Response12TimingsList>;
 
 export type Response12UsedDataWarehouseSourcesList =
-  ReadonlyArray<DataWarehouseSourceUsage>;
+  Array<DataWarehouseSourceUsage>;
 export const Response12UsedDataWarehouseSourcesList = /*@__PURE__*/ S.Array(
   DataWarehouseSourceUsage,
 ) as any as S.Schema<Response12UsedDataWarehouseSourcesList>;
@@ -10034,7 +10024,7 @@ export const Response12WarningsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "Response12WarningsItem",
 }) as any as S.Schema<Response12WarningsItem>;
 
-export type Response12WarningsList = ReadonlyArray<Response12WarningsItem>;
+export type Response12WarningsList = Array<Response12WarningsItem>;
 export const Response12WarningsList = /*@__PURE__*/ S.Array(
   Response12WarningsItem,
 ) as any as S.Schema<Response12WarningsList>;
@@ -10081,7 +10071,7 @@ export const Response12 = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Response12" }) as any as S.Schema<Response12>;
 
-export type Response13ColumnsList = ReadonlyArray<string>;
+export type Response13ColumnsList = Array<string>;
 export const Response13ColumnsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<Response13ColumnsList>;
@@ -10105,19 +10095,18 @@ export const RevenueAnalyticsMRRQueryResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "RevenueAnalyticsMRRQueryResultItem",
 }) as any as S.Schema<RevenueAnalyticsMRRQueryResultItem>;
 
-export type Response13ResultsList =
-  ReadonlyArray<RevenueAnalyticsMRRQueryResultItem>;
+export type Response13ResultsList = Array<RevenueAnalyticsMRRQueryResultItem>;
 export const Response13ResultsList = /*@__PURE__*/ S.Array(
   RevenueAnalyticsMRRQueryResultItem,
 ) as any as S.Schema<Response13ResultsList>;
 
-export type Response13TimingsList = ReadonlyArray<QueryTiming>;
+export type Response13TimingsList = Array<QueryTiming>;
 export const Response13TimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<Response13TimingsList>;
 
 export type Response13UsedDataWarehouseSourcesList =
-  ReadonlyArray<DataWarehouseSourceUsage>;
+  Array<DataWarehouseSourceUsage>;
 export const Response13UsedDataWarehouseSourcesList = /*@__PURE__*/ S.Array(
   DataWarehouseSourceUsage,
 ) as any as S.Schema<Response13UsedDataWarehouseSourcesList>;
@@ -10155,7 +10144,7 @@ export const Response13WarningsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "Response13WarningsItem",
 }) as any as S.Schema<Response13WarningsItem>;
 
-export type Response13WarningsList = ReadonlyArray<Response13WarningsItem>;
+export type Response13WarningsList = Array<Response13WarningsItem>;
 export const Response13WarningsList = /*@__PURE__*/ S.Array(
   Response13WarningsItem,
 ) as any as S.Schema<Response13WarningsList>;
@@ -10221,18 +10210,18 @@ export const RevenueAnalyticsOverviewItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "RevenueAnalyticsOverviewItem",
 }) as any as S.Schema<RevenueAnalyticsOverviewItem>;
 
-export type Response14ResultsList = ReadonlyArray<RevenueAnalyticsOverviewItem>;
+export type Response14ResultsList = Array<RevenueAnalyticsOverviewItem>;
 export const Response14ResultsList = /*@__PURE__*/ S.Array(
   RevenueAnalyticsOverviewItem,
 ) as any as S.Schema<Response14ResultsList>;
 
-export type Response14TimingsList = ReadonlyArray<QueryTiming>;
+export type Response14TimingsList = Array<QueryTiming>;
 export const Response14TimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<Response14TimingsList>;
 
 export type Response14UsedDataWarehouseSourcesList =
-  ReadonlyArray<DataWarehouseSourceUsage>;
+  Array<DataWarehouseSourceUsage>;
 export const Response14UsedDataWarehouseSourcesList = /*@__PURE__*/ S.Array(
   DataWarehouseSourceUsage,
 ) as any as S.Schema<Response14UsedDataWarehouseSourcesList>;
@@ -10270,7 +10259,7 @@ export const Response14WarningsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "Response14WarningsItem",
 }) as any as S.Schema<Response14WarningsItem>;
 
-export type Response14WarningsList = ReadonlyArray<Response14WarningsItem>;
+export type Response14WarningsList = Array<Response14WarningsItem>;
 export const Response14WarningsList = /*@__PURE__*/ S.Array(
   Response14WarningsItem,
 ) as any as S.Schema<Response14WarningsList>;
@@ -10315,18 +10304,18 @@ export const Response14 = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Response14" }) as any as S.Schema<Response14>;
 
-export type Response15ColumnsList = ReadonlyArray<string>;
+export type Response15ColumnsList = Array<string>;
 export const Response15ColumnsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<Response15ColumnsList>;
 
-export type Response15TimingsList = ReadonlyArray<QueryTiming>;
+export type Response15TimingsList = Array<QueryTiming>;
 export const Response15TimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<Response15TimingsList>;
 
 export type Response15UsedDataWarehouseSourcesList =
-  ReadonlyArray<DataWarehouseSourceUsage>;
+  Array<DataWarehouseSourceUsage>;
 export const Response15UsedDataWarehouseSourcesList = /*@__PURE__*/ S.Array(
   DataWarehouseSourceUsage,
 ) as any as S.Schema<Response15UsedDataWarehouseSourcesList>;
@@ -10364,7 +10353,7 @@ export const Response15WarningsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "Response15WarningsItem",
 }) as any as S.Schema<Response15WarningsItem>;
 
-export type Response15WarningsList = ReadonlyArray<Response15WarningsItem>;
+export type Response15WarningsList = Array<Response15WarningsItem>;
 export const Response15WarningsList = /*@__PURE__*/ S.Array(
   Response15WarningsItem,
 ) as any as S.Schema<Response15WarningsList>;
@@ -10411,23 +10400,23 @@ export const Response15 = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Response15" }) as any as S.Schema<Response15>;
 
-export type Response16ColumnsList = ReadonlyArray<unknown>;
+export type Response16ColumnsList = Array<unknown>;
 export const Response16ColumnsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<Response16ColumnsList>;
 
-export type Response16TimingsList = ReadonlyArray<QueryTiming>;
+export type Response16TimingsList = Array<QueryTiming>;
 export const Response16TimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<Response16TimingsList>;
 
-export type Response16TypesList = ReadonlyArray<unknown>;
+export type Response16TypesList = Array<unknown>;
 export const Response16TypesList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<Response16TypesList>;
 
 export type Response16UsedDataWarehouseSourcesList =
-  ReadonlyArray<DataWarehouseSourceUsage>;
+  Array<DataWarehouseSourceUsage>;
 export const Response16UsedDataWarehouseSourcesList = /*@__PURE__*/ S.Array(
   DataWarehouseSourceUsage,
 ) as any as S.Schema<Response16UsedDataWarehouseSourcesList>;
@@ -10465,7 +10454,7 @@ export const Response16WarningsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "Response16WarningsItem",
 }) as any as S.Schema<Response16WarningsItem>;
 
-export type Response16WarningsList = ReadonlyArray<Response16WarningsItem>;
+export type Response16WarningsList = Array<Response16WarningsItem>;
 export const Response16WarningsList = /*@__PURE__*/ S.Array(
   Response16WarningsItem,
 ) as any as S.Schema<Response16WarningsList>;
@@ -10520,7 +10509,7 @@ export const Response16 = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Response16" }) as any as S.Schema<Response16>;
 
-export type Response18ColumnsList = ReadonlyArray<unknown>;
+export type Response18ColumnsList = Array<unknown>;
 export const Response18ColumnsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<Response18ColumnsList>;
@@ -10556,28 +10545,28 @@ export const MarketingAnalyticsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "MarketingAnalyticsItem",
 }) as any as S.Schema<MarketingAnalyticsItem>;
 
-export type Response18ResultsItemList = ReadonlyArray<MarketingAnalyticsItem>;
+export type Response18ResultsItemList = Array<MarketingAnalyticsItem>;
 export const Response18ResultsItemList = /*@__PURE__*/ S.Array(
   MarketingAnalyticsItem,
 ) as any as S.Schema<Response18ResultsItemList>;
 
-export type Response18ResultsList = ReadonlyArray<Response18ResultsItemList>;
+export type Response18ResultsList = Array<Response18ResultsItemList>;
 export const Response18ResultsList = /*@__PURE__*/ S.Array(
   Response18ResultsItemList,
 ) as any as S.Schema<Response18ResultsList>;
 
-export type Response18TimingsList = ReadonlyArray<QueryTiming>;
+export type Response18TimingsList = Array<QueryTiming>;
 export const Response18TimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<Response18TimingsList>;
 
-export type Response18TypesList = ReadonlyArray<unknown>;
+export type Response18TypesList = Array<unknown>;
 export const Response18TypesList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<Response18TypesList>;
 
 export type Response18UsedDataWarehouseSourcesList =
-  ReadonlyArray<DataWarehouseSourceUsage>;
+  Array<DataWarehouseSourceUsage>;
 export const Response18UsedDataWarehouseSourcesList = /*@__PURE__*/ S.Array(
   DataWarehouseSourceUsage,
 ) as any as S.Schema<Response18UsedDataWarehouseSourcesList>;
@@ -10615,7 +10604,7 @@ export const Response18WarningsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "Response18WarningsItem",
 }) as any as S.Schema<Response18WarningsItem>;
 
-export type Response18WarningsList = ReadonlyArray<Response18WarningsItem>;
+export type Response18WarningsList = Array<Response18WarningsItem>;
 export const Response18WarningsList = /*@__PURE__*/ S.Array(
   Response18WarningsItem,
 ) as any as S.Schema<Response18WarningsList>;
@@ -10680,13 +10669,13 @@ export const Response19ResultsMap = /*@__PURE__*/ S.Record(
   MarketingAnalyticsItem,
 ) as any as S.Schema<Response19ResultsMap>;
 
-export type Response19TimingsList = ReadonlyArray<QueryTiming>;
+export type Response19TimingsList = Array<QueryTiming>;
 export const Response19TimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<Response19TimingsList>;
 
 export type Response19UsedDataWarehouseSourcesList =
-  ReadonlyArray<DataWarehouseSourceUsage>;
+  Array<DataWarehouseSourceUsage>;
 export const Response19UsedDataWarehouseSourcesList = /*@__PURE__*/ S.Array(
   DataWarehouseSourceUsage,
 ) as any as S.Schema<Response19UsedDataWarehouseSourcesList>;
@@ -10724,7 +10713,7 @@ export const Response19WarningsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "Response19WarningsItem",
 }) as any as S.Schema<Response19WarningsItem>;
 
-export type Response19WarningsList = ReadonlyArray<Response19WarningsItem>;
+export type Response19WarningsList = Array<Response19WarningsItem>;
 export const Response19WarningsList = /*@__PURE__*/ S.Array(
   Response19WarningsItem,
 ) as any as S.Schema<Response19WarningsList>;
@@ -10771,33 +10760,33 @@ export const Response19 = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Response19" }) as any as S.Schema<Response19>;
 
-export type Response20ColumnsList = ReadonlyArray<unknown>;
+export type Response20ColumnsList = Array<unknown>;
 export const Response20ColumnsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<Response20ColumnsList>;
 
-export type Response20ResultsItemList = ReadonlyArray<MarketingAnalyticsItem>;
+export type Response20ResultsItemList = Array<MarketingAnalyticsItem>;
 export const Response20ResultsItemList = /*@__PURE__*/ S.Array(
   MarketingAnalyticsItem,
 ) as any as S.Schema<Response20ResultsItemList>;
 
-export type Response20ResultsList = ReadonlyArray<Response20ResultsItemList>;
+export type Response20ResultsList = Array<Response20ResultsItemList>;
 export const Response20ResultsList = /*@__PURE__*/ S.Array(
   Response20ResultsItemList,
 ) as any as S.Schema<Response20ResultsList>;
 
-export type Response20TimingsList = ReadonlyArray<QueryTiming>;
+export type Response20TimingsList = Array<QueryTiming>;
 export const Response20TimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<Response20TimingsList>;
 
-export type Response20TypesList = ReadonlyArray<unknown>;
+export type Response20TypesList = Array<unknown>;
 export const Response20TypesList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<Response20TypesList>;
 
 export type Response20UsedDataWarehouseSourcesList =
-  ReadonlyArray<DataWarehouseSourceUsage>;
+  Array<DataWarehouseSourceUsage>;
 export const Response20UsedDataWarehouseSourcesList = /*@__PURE__*/ S.Array(
   DataWarehouseSourceUsage,
 ) as any as S.Schema<Response20UsedDataWarehouseSourcesList>;
@@ -10835,7 +10824,7 @@ export const Response20WarningsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "Response20WarningsItem",
 }) as any as S.Schema<Response20WarningsItem>;
 
-export type Response20WarningsList = ReadonlyArray<Response20WarningsItem>;
+export type Response20WarningsList = Array<Response20WarningsItem>;
 export const Response20WarningsList = /*@__PURE__*/ S.Array(
   Response20WarningsItem,
 ) as any as S.Schema<Response20WarningsList>;
@@ -10892,13 +10881,12 @@ export const Response20 = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Response20" }) as any as S.Schema<Response20>;
 
-export type Response21ColumnsList = ReadonlyArray<string>;
+export type Response21ColumnsList = Array<string>;
 export const Response21ColumnsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<Response21ColumnsList>;
 
-export type ErrorTrackingIssueAggregationsVolumeRangeList =
-  ReadonlyArray<number>;
+export type ErrorTrackingIssueAggregationsVolumeRangeList = Array<number>;
 export const ErrorTrackingIssueAggregationsVolumeRangeList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -10916,7 +10904,7 @@ export const VolumeBucket = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VolumeBucket" }) as any as S.Schema<VolumeBucket>;
 
 export type ErrorTrackingIssueAggregationsVolumeBucketsList =
-  ReadonlyArray<VolumeBucket>;
+  Array<VolumeBucket>;
 export const ErrorTrackingIssueAggregationsVolumeBucketsList =
   /*@__PURE__*/ S.Array(
     VolumeBucket,
@@ -11049,7 +11037,7 @@ export const ErrorTrackingExternalReference = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ErrorTrackingExternalReference>;
 
 export type ErrorTrackingIssueExternalIssuesList =
-  ReadonlyArray<ErrorTrackingExternalReference>;
+  Array<ErrorTrackingExternalReference>;
 export const ErrorTrackingIssueExternalIssuesList = /*@__PURE__*/ S.Array(
   ErrorTrackingExternalReference,
 ) as any as S.Schema<ErrorTrackingIssueExternalIssuesList>;
@@ -11131,18 +11119,18 @@ export const ErrorTrackingIssue = /*@__PURE__*/ S.suspend(() =>
   identifier: "ErrorTrackingIssue",
 }) as any as S.Schema<ErrorTrackingIssue>;
 
-export type Response21ResultsList = ReadonlyArray<ErrorTrackingIssue>;
+export type Response21ResultsList = Array<ErrorTrackingIssue>;
 export const Response21ResultsList = /*@__PURE__*/ S.Array(
   ErrorTrackingIssue,
 ) as any as S.Schema<Response21ResultsList>;
 
-export type Response21TimingsList = ReadonlyArray<QueryTiming>;
+export type Response21TimingsList = Array<QueryTiming>;
 export const Response21TimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<Response21TimingsList>;
 
 export type Response21UsedDataWarehouseSourcesList =
-  ReadonlyArray<DataWarehouseSourceUsage>;
+  Array<DataWarehouseSourceUsage>;
 export const Response21UsedDataWarehouseSourcesList = /*@__PURE__*/ S.Array(
   DataWarehouseSourceUsage,
 ) as any as S.Schema<Response21UsedDataWarehouseSourcesList>;
@@ -11180,7 +11168,7 @@ export const Response21WarningsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "Response21WarningsItem",
 }) as any as S.Schema<Response21WarningsItem>;
 
-export type Response21WarningsList = ReadonlyArray<Response21WarningsItem>;
+export type Response21WarningsList = Array<Response21WarningsItem>;
 export const Response21WarningsList = /*@__PURE__*/ S.Array(
   Response21WarningsItem,
 ) as any as S.Schema<Response21WarningsList>;
@@ -11233,13 +11221,13 @@ export const Response21 = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Response21" }) as any as S.Schema<Response21>;
 
-export type Response22ColumnsList = ReadonlyArray<string>;
+export type Response22ColumnsList = Array<string>;
 export const Response22ColumnsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<Response22ColumnsList>;
 
 export type ErrorTrackingCorrelatedIssueExternalIssuesList =
-  ReadonlyArray<ErrorTrackingExternalReference>;
+  Array<ErrorTrackingExternalReference>;
 export const ErrorTrackingCorrelatedIssueExternalIssuesList =
   /*@__PURE__*/ S.Array(
     ErrorTrackingExternalReference,
@@ -11297,18 +11285,18 @@ export const ErrorTrackingCorrelatedIssue = /*@__PURE__*/ S.suspend(() =>
   identifier: "ErrorTrackingCorrelatedIssue",
 }) as any as S.Schema<ErrorTrackingCorrelatedIssue>;
 
-export type Response22ResultsList = ReadonlyArray<ErrorTrackingCorrelatedIssue>;
+export type Response22ResultsList = Array<ErrorTrackingCorrelatedIssue>;
 export const Response22ResultsList = /*@__PURE__*/ S.Array(
   ErrorTrackingCorrelatedIssue,
 ) as any as S.Schema<Response22ResultsList>;
 
-export type Response22TimingsList = ReadonlyArray<QueryTiming>;
+export type Response22TimingsList = Array<QueryTiming>;
 export const Response22TimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<Response22TimingsList>;
 
 export type Response22UsedDataWarehouseSourcesList =
-  ReadonlyArray<DataWarehouseSourceUsage>;
+  Array<DataWarehouseSourceUsage>;
 export const Response22UsedDataWarehouseSourcesList = /*@__PURE__*/ S.Array(
   DataWarehouseSourceUsage,
 ) as any as S.Schema<Response22UsedDataWarehouseSourcesList>;
@@ -11346,7 +11334,7 @@ export const Response22WarningsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "Response22WarningsItem",
 }) as any as S.Schema<Response22WarningsItem>;
 
-export type Response22WarningsList = ReadonlyArray<Response22WarningsItem>;
+export type Response22WarningsList = Array<Response22WarningsItem>;
 export const Response22WarningsList = /*@__PURE__*/ S.Array(
   Response22WarningsItem,
 ) as any as S.Schema<Response22WarningsList>;
@@ -11399,7 +11387,7 @@ export const Response22 = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Response22" }) as any as S.Schema<Response22>;
 
-export type Response23CredibleIntervalsValueList = ReadonlyArray<number>;
+export type Response23CredibleIntervalsValueList = Array<number>;
 export const Response23CredibleIntervalsValueList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<Response23CredibleIntervalsValueList>;
@@ -11420,13 +11408,12 @@ export const Response23InsightItemItemMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<Response23InsightItemItemMap>;
 
-export type Response23InsightItemList =
-  ReadonlyArray<Response23InsightItemItemMap>;
+export type Response23InsightItemList = Array<Response23InsightItemItemMap>;
 export const Response23InsightItemList = /*@__PURE__*/ S.Array(
   Response23InsightItemItemMap,
 ) as any as S.Schema<Response23InsightItemList>;
 
-export type Response23InsightList = ReadonlyArray<Response23InsightItemList>;
+export type Response23InsightList = Array<Response23InsightItemList>;
 export const Response23InsightList = /*@__PURE__*/ S.Array(
   Response23InsightItemList,
 ) as any as S.Schema<Response23InsightList>;
@@ -11460,13 +11447,12 @@ export const ExperimentVariantFunnelsBaseStats = /*@__PURE__*/ S.suspend(() =>
   identifier: "ExperimentVariantFunnelsBaseStats",
 }) as any as S.Schema<ExperimentVariantFunnelsBaseStats>;
 
-export type Response23VariantsList =
-  ReadonlyArray<ExperimentVariantFunnelsBaseStats>;
+export type Response23VariantsList = Array<ExperimentVariantFunnelsBaseStats>;
 export const Response23VariantsList = /*@__PURE__*/ S.Array(
   ExperimentVariantFunnelsBaseStats,
 ) as any as S.Schema<Response23VariantsList>;
 
-export type Response23WarningsList = ReadonlyArray<DataWarehouseSyncWarning>;
+export type Response23WarningsList = Array<DataWarehouseSyncWarning>;
 export const Response23WarningsList = /*@__PURE__*/ S.Array(
   DataWarehouseSyncWarning,
 ) as any as S.Schema<Response23WarningsList>;
@@ -11501,7 +11487,7 @@ export const Response23 = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Response23" }) as any as S.Schema<Response23>;
 
-export type Response24CredibleIntervalsValueList = ReadonlyArray<number>;
+export type Response24CredibleIntervalsValueList = Array<number>;
 export const Response24CredibleIntervalsValueList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<Response24CredibleIntervalsValueList>;
@@ -11520,7 +11506,7 @@ export const Response24InsightItemMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<Response24InsightItemMap>;
 
-export type Response24InsightList = ReadonlyArray<Response24InsightItemMap>;
+export type Response24InsightList = Array<Response24InsightItemMap>;
 export const Response24InsightList = /*@__PURE__*/ S.Array(
   Response24InsightItemMap,
 ) as any as S.Schema<Response24InsightList>;
@@ -11548,13 +11534,12 @@ export const ExperimentVariantTrendsBaseStats = /*@__PURE__*/ S.suspend(() =>
   identifier: "ExperimentVariantTrendsBaseStats",
 }) as any as S.Schema<ExperimentVariantTrendsBaseStats>;
 
-export type Response24VariantsList =
-  ReadonlyArray<ExperimentVariantTrendsBaseStats>;
+export type Response24VariantsList = Array<ExperimentVariantTrendsBaseStats>;
 export const Response24VariantsList = /*@__PURE__*/ S.Array(
   ExperimentVariantTrendsBaseStats,
 ) as any as S.Schema<Response24VariantsList>;
 
-export type Response24WarningsList = ReadonlyArray<DataWarehouseSyncWarning>;
+export type Response24WarningsList = Array<DataWarehouseSyncWarning>;
 export const Response24WarningsList = /*@__PURE__*/ S.Array(
   DataWarehouseSyncWarning,
 ) as any as S.Schema<Response24WarningsList>;
@@ -11591,7 +11576,7 @@ export const Response24 = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Response24" }) as any as S.Schema<Response24>;
 
-export type Response25ColumnsList = ReadonlyArray<string>;
+export type Response25ColumnsList = Array<string>;
 export const Response25ColumnsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<Response25ColumnsList>;
@@ -11694,7 +11679,7 @@ export const LLMTraceEvent = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "LLMTraceEvent" }) as any as S.Schema<LLMTraceEvent>;
 
-export type LLMTraceEventsList = ReadonlyArray<LLMTraceEvent>;
+export type LLMTraceEventsList = Array<LLMTraceEvent>;
 export const LLMTraceEventsList = /*@__PURE__*/ S.Array(
   LLMTraceEvent,
 ) as any as S.Schema<LLMTraceEventsList>;
@@ -11722,7 +11707,7 @@ export const LLMTracePerson = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "LLMTracePerson" }) as any as S.Schema<LLMTracePerson>;
 
-export type LLMTraceToolsList = ReadonlyArray<string>;
+export type LLMTraceToolsList = Array<string>;
 export const LLMTraceToolsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LLMTraceToolsList>;
@@ -11776,18 +11761,18 @@ export const LLMTrace = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "LLMTrace" }) as any as S.Schema<LLMTrace>;
 
-export type Response25ResultsList = ReadonlyArray<LLMTrace>;
+export type Response25ResultsList = Array<LLMTrace>;
 export const Response25ResultsList = /*@__PURE__*/ S.Array(
   LLMTrace,
 ) as any as S.Schema<Response25ResultsList>;
 
-export type Response25TimingsList = ReadonlyArray<QueryTiming>;
+export type Response25TimingsList = Array<QueryTiming>;
 export const Response25TimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<Response25TimingsList>;
 
 export type Response25UsedDataWarehouseSourcesList =
-  ReadonlyArray<DataWarehouseSourceUsage>;
+  Array<DataWarehouseSourceUsage>;
 export const Response25UsedDataWarehouseSourcesList = /*@__PURE__*/ S.Array(
   DataWarehouseSourceUsage,
 ) as any as S.Schema<Response25UsedDataWarehouseSourcesList>;
@@ -11825,7 +11810,7 @@ export const Response25WarningsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "Response25WarningsItem",
 }) as any as S.Schema<Response25WarningsItem>;
 
-export type Response25WarningsList = ReadonlyArray<Response25WarningsItem>;
+export type Response25WarningsList = Array<Response25WarningsItem>;
 export const Response25WarningsList = /*@__PURE__*/ S.Array(
   Response25WarningsItem,
 ) as any as S.Schema<Response25WarningsList>;
@@ -11878,28 +11863,28 @@ export const Response25 = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Response25" }) as any as S.Schema<Response25>;
 
-export type Response27ColumnsList = ReadonlyArray<unknown>;
+export type Response27ColumnsList = Array<unknown>;
 export const Response27ColumnsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<Response27ColumnsList>;
 
-export type Response27ResultsList = ReadonlyArray<unknown>;
+export type Response27ResultsList = Array<unknown>;
 export const Response27ResultsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<Response27ResultsList>;
 
-export type Response27TimingsList = ReadonlyArray<QueryTiming>;
+export type Response27TimingsList = Array<QueryTiming>;
 export const Response27TimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<Response27TimingsList>;
 
-export type Response27TypesList = ReadonlyArray<unknown>;
+export type Response27TypesList = Array<unknown>;
 export const Response27TypesList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<Response27TypesList>;
 
 export type Response27UsedDataWarehouseSourcesList =
-  ReadonlyArray<DataWarehouseSourceUsage>;
+  Array<DataWarehouseSourceUsage>;
 export const Response27UsedDataWarehouseSourcesList = /*@__PURE__*/ S.Array(
   DataWarehouseSourceUsage,
 ) as any as S.Schema<Response27UsedDataWarehouseSourcesList>;
@@ -11937,7 +11922,7 @@ export const Response27WarningsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "Response27WarningsItem",
 }) as any as S.Schema<Response27WarningsItem>;
 
-export type Response27WarningsList = ReadonlyArray<Response27WarningsItem>;
+export type Response27WarningsList = Array<Response27WarningsItem>;
 export const Response27WarningsList = /*@__PURE__*/ S.Array(
   Response27WarningsItem,
 ) as any as S.Schema<Response27WarningsList>;
@@ -11992,38 +11977,38 @@ export const Response27 = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Response27" }) as any as S.Schema<Response27>;
 
-export type Response28ColumnsList = ReadonlyArray<unknown>;
+export type Response28ColumnsList = Array<unknown>;
 export const Response28ColumnsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<Response28ColumnsList>;
 
-export type Response28MetricsResultsList = ReadonlyArray<number>;
+export type Response28MetricsResultsList = Array<number>;
 export const Response28MetricsResultsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<Response28MetricsResultsList>;
 
-export type Response28ResultsItemList = ReadonlyArray<unknown>;
+export type Response28ResultsItemList = Array<unknown>;
 export const Response28ResultsItemList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<Response28ResultsItemList>;
 
-export type Response28ResultsList = ReadonlyArray<Response28ResultsItemList>;
+export type Response28ResultsList = Array<Response28ResultsItemList>;
 export const Response28ResultsList = /*@__PURE__*/ S.Array(
   Response28ResultsItemList,
 ) as any as S.Schema<Response28ResultsList>;
 
-export type Response28TimingsList = ReadonlyArray<QueryTiming>;
+export type Response28TimingsList = Array<QueryTiming>;
 export const Response28TimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<Response28TimingsList>;
 
-export type Response28TypesList = ReadonlyArray<string>;
+export type Response28TypesList = Array<string>;
 export const Response28TypesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<Response28TypesList>;
 
 export type Response28UsedDataWarehouseSourcesList =
-  ReadonlyArray<DataWarehouseSourceUsage>;
+  Array<DataWarehouseSourceUsage>;
 export const Response28UsedDataWarehouseSourcesList = /*@__PURE__*/ S.Array(
   DataWarehouseSourceUsage,
 ) as any as S.Schema<Response28UsedDataWarehouseSourcesList>;
@@ -12061,7 +12046,7 @@ export const Response28WarningsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "Response28WarningsItem",
 }) as any as S.Schema<Response28WarningsItem>;
 
-export type Response28WarningsList = ReadonlyArray<Response28WarningsItem>;
+export type Response28WarningsList = Array<Response28WarningsItem>;
 export const Response28WarningsList = /*@__PURE__*/ S.Array(
   Response28WarningsItem,
 ) as any as S.Schema<Response28WarningsList>;
@@ -12217,7 +12202,7 @@ export type TaxonomicFilterGroupType =
 export const TaxonomicFilterGroupType = /*@__PURE__*/ S.String;
 
 export type DataTableNodeShowPropertyFilterCase1List =
-  ReadonlyArray<TaxonomicFilterGroupType>;
+  Array<TaxonomicFilterGroupType>;
 export const DataTableNodeShowPropertyFilterCase1List = /*@__PURE__*/ S.Array(
   TaxonomicFilterGroupType,
 ) as any as S.Schema<DataTableNodeShowPropertyFilterCase1List>;
@@ -12314,7 +12299,7 @@ export const EventsQueryActionStepPropertiesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EventsQueryActionStepPropertiesItem>;
 
 export type EventsQueryActionStepPropertiesList =
-  ReadonlyArray<EventsQueryActionStepPropertiesItem>;
+  Array<EventsQueryActionStepPropertiesItem>;
 export const EventsQueryActionStepPropertiesList = /*@__PURE__*/ S.Array(
   EventsQueryActionStepPropertiesItem,
 ) as any as S.Schema<EventsQueryActionStepPropertiesList>;
@@ -12354,12 +12339,12 @@ export const EventsQueryActionStep = /*@__PURE__*/ S.suspend(() =>
   identifier: "EventsQueryActionStep",
 }) as any as S.Schema<EventsQueryActionStep>;
 
-export type EventsQueryActionStepsList = ReadonlyArray<EventsQueryActionStep>;
+export type EventsQueryActionStepsList = Array<EventsQueryActionStep>;
 export const EventsQueryActionStepsList = /*@__PURE__*/ S.Array(
   EventsQueryActionStep,
 ) as any as S.Schema<EventsQueryActionStepsList>;
 
-export type EventsQueryEventsList = ReadonlyArray<string>;
+export type EventsQueryEventsList = Array<string>;
 export const EventsQueryEventsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EventsQueryEventsList>;
@@ -12453,12 +12438,12 @@ export const EventsQueryFixedPropertiesItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<EventsQueryFixedPropertiesItem>;
 
 export type EventsQueryFixedPropertiesList =
-  ReadonlyArray<EventsQueryFixedPropertiesItem>;
+  Array<EventsQueryFixedPropertiesItem>;
 export const EventsQueryFixedPropertiesList = /*@__PURE__*/ S.Array(
   EventsQueryFixedPropertiesItem,
 ) as any as S.Schema<EventsQueryFixedPropertiesList>;
 
-export type EventsQueryOrderByList = ReadonlyArray<string>;
+export type EventsQueryOrderByList = Array<string>;
 export const EventsQueryOrderByList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EventsQueryOrderByList>;
@@ -12544,40 +12529,39 @@ export const EventsQueryPropertiesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "EventsQueryPropertiesItem",
 }) as any as S.Schema<EventsQueryPropertiesItem>;
 
-export type EventsQueryPropertiesList =
-  ReadonlyArray<EventsQueryPropertiesItem>;
+export type EventsQueryPropertiesList = Array<EventsQueryPropertiesItem>;
 export const EventsQueryPropertiesList = /*@__PURE__*/ S.Array(
   EventsQueryPropertiesItem,
 ) as any as S.Schema<EventsQueryPropertiesList>;
 
-export type EventsQueryResponseColumnsList = ReadonlyArray<unknown>;
+export type EventsQueryResponseColumnsList = Array<unknown>;
 export const EventsQueryResponseColumnsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<EventsQueryResponseColumnsList>;
 
-export type EventsQueryResponseResultsItemList = ReadonlyArray<unknown>;
+export type EventsQueryResponseResultsItemList = Array<unknown>;
 export const EventsQueryResponseResultsItemList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<EventsQueryResponseResultsItemList>;
 
 export type EventsQueryResponseResultsList =
-  ReadonlyArray<EventsQueryResponseResultsItemList>;
+  Array<EventsQueryResponseResultsItemList>;
 export const EventsQueryResponseResultsList = /*@__PURE__*/ S.Array(
   EventsQueryResponseResultsItemList,
 ) as any as S.Schema<EventsQueryResponseResultsList>;
 
-export type EventsQueryResponseTimingsList = ReadonlyArray<QueryTiming>;
+export type EventsQueryResponseTimingsList = Array<QueryTiming>;
 export const EventsQueryResponseTimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<EventsQueryResponseTimingsList>;
 
-export type EventsQueryResponseTypesList = ReadonlyArray<string>;
+export type EventsQueryResponseTypesList = Array<string>;
 export const EventsQueryResponseTypesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EventsQueryResponseTypesList>;
 
 export type EventsQueryResponseUsedDataWarehouseSourcesList =
-  ReadonlyArray<DataWarehouseSourceUsage>;
+  Array<DataWarehouseSourceUsage>;
 export const EventsQueryResponseUsedDataWarehouseSourcesList =
   /*@__PURE__*/ S.Array(
     DataWarehouseSourceUsage,
@@ -12617,7 +12601,7 @@ export const EventsQueryResponseWarningsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EventsQueryResponseWarningsItem>;
 
 export type EventsQueryResponseWarningsList =
-  ReadonlyArray<EventsQueryResponseWarningsItem>;
+  Array<EventsQueryResponseWarningsItem>;
 export const EventsQueryResponseWarningsList = /*@__PURE__*/ S.Array(
   EventsQueryResponseWarningsItem,
 ) as any as S.Schema<EventsQueryResponseWarningsList>;
@@ -12678,12 +12662,12 @@ export const EventsQueryResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EventsQueryResponse>;
 
 /** Return a limited set of data. Required. */
-export type EventsQuerySelectList = ReadonlyArray<string>;
+export type EventsQuerySelectList = Array<string>;
 export const EventsQuerySelectList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EventsQuerySelectList>;
 
-export type InsightActorsQueryBreakdownCase1List = ReadonlyArray<string>;
+export type InsightActorsQueryBreakdownCase1List = Array<string>;
 export const InsightActorsQueryBreakdownCase1List = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<InsightActorsQueryBreakdownCase1List>;
@@ -12702,34 +12686,34 @@ export type InsightActorsQueryDay = string | number;
 export const InsightActorsQueryDay =
   /*@__PURE__*/ S.Unknown as any as S.Schema<InsightActorsQueryDay>;
 
-export type ActorsQueryResponseColumnsList = ReadonlyArray<unknown>;
+export type ActorsQueryResponseColumnsList = Array<unknown>;
 export const ActorsQueryResponseColumnsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<ActorsQueryResponseColumnsList>;
 
-export type ActorsQueryResponseResultsItemList = ReadonlyArray<unknown>;
+export type ActorsQueryResponseResultsItemList = Array<unknown>;
 export const ActorsQueryResponseResultsItemList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<ActorsQueryResponseResultsItemList>;
 
 export type ActorsQueryResponseResultsList =
-  ReadonlyArray<ActorsQueryResponseResultsItemList>;
+  Array<ActorsQueryResponseResultsItemList>;
 export const ActorsQueryResponseResultsList = /*@__PURE__*/ S.Array(
   ActorsQueryResponseResultsItemList,
 ) as any as S.Schema<ActorsQueryResponseResultsList>;
 
-export type ActorsQueryResponseTimingsList = ReadonlyArray<QueryTiming>;
+export type ActorsQueryResponseTimingsList = Array<QueryTiming>;
 export const ActorsQueryResponseTimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<ActorsQueryResponseTimingsList>;
 
-export type ActorsQueryResponseTypesList = ReadonlyArray<string>;
+export type ActorsQueryResponseTypesList = Array<string>;
 export const ActorsQueryResponseTypesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ActorsQueryResponseTypesList>;
 
 export type ActorsQueryResponseUsedDataWarehouseSourcesList =
-  ReadonlyArray<DataWarehouseSourceUsage>;
+  Array<DataWarehouseSourceUsage>;
 export const ActorsQueryResponseUsedDataWarehouseSourcesList =
   /*@__PURE__*/ S.Array(
     DataWarehouseSourceUsage,
@@ -12769,7 +12753,7 @@ export const ActorsQueryResponseWarningsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ActorsQueryResponseWarningsItem>;
 
 export type ActorsQueryResponseWarningsList =
-  ReadonlyArray<ActorsQueryResponseWarningsItem>;
+  Array<ActorsQueryResponseWarningsItem>;
 export const ActorsQueryResponseWarningsList = /*@__PURE__*/ S.Array(
   ActorsQueryResponseWarningsItem,
 ) as any as S.Schema<ActorsQueryResponseWarningsList>;
@@ -13049,7 +13033,7 @@ export const InsightActorsQuery = /*@__PURE__*/ S.suspend(() =>
   identifier: "InsightActorsQuery",
 }) as any as S.Schema<InsightActorsQuery>;
 
-export type EventsQueryWhereList = ReadonlyArray<string>;
+export type EventsQueryWhereList = Array<string>;
 export const EventsQueryWhereList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EventsQueryWhereList>;
@@ -13203,7 +13187,7 @@ export const PersonsNodeFixedPropertiesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PersonsNodeFixedPropertiesItem>;
 
 export type PersonsNodeFixedPropertiesList =
-  ReadonlyArray<PersonsNodeFixedPropertiesItem>;
+  Array<PersonsNodeFixedPropertiesItem>;
 export const PersonsNodeFixedPropertiesList = /*@__PURE__*/ S.Array(
   PersonsNodeFixedPropertiesItem,
 ) as any as S.Schema<PersonsNodeFixedPropertiesList>;
@@ -13289,8 +13273,7 @@ export const PersonsNodePropertiesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "PersonsNodePropertiesItem",
 }) as any as S.Schema<PersonsNodePropertiesItem>;
 
-export type PersonsNodePropertiesList =
-  ReadonlyArray<PersonsNodePropertiesItem>;
+export type PersonsNodePropertiesList = Array<PersonsNodePropertiesItem>;
 export const PersonsNodePropertiesList = /*@__PURE__*/ S.Array(
   PersonsNodePropertiesItem,
 ) as any as S.Schema<PersonsNodePropertiesList>;
@@ -13373,12 +13356,12 @@ export const ActorsQueryFixedPropertiesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ActorsQueryFixedPropertiesItem>;
 
 export type ActorsQueryFixedPropertiesList =
-  ReadonlyArray<ActorsQueryFixedPropertiesItem>;
+  Array<ActorsQueryFixedPropertiesItem>;
 export const ActorsQueryFixedPropertiesList = /*@__PURE__*/ S.Array(
   ActorsQueryFixedPropertiesItem,
 ) as any as S.Schema<ActorsQueryFixedPropertiesList>;
 
-export type ActorsQueryOrderByList = ReadonlyArray<string>;
+export type ActorsQueryOrderByList = Array<string>;
 export const ActorsQueryOrderByList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ActorsQueryOrderByList>;
@@ -13420,7 +13403,7 @@ export const ActorsQueryPropertiesCase0Item = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ActorsQueryPropertiesCase0Item>;
 
 export type ActorsQueryPropertiesCase0List =
-  ReadonlyArray<ActorsQueryPropertiesCase0Item>;
+  Array<ActorsQueryPropertiesCase0Item>;
 export const ActorsQueryPropertiesCase0List = /*@__PURE__*/ S.Array(
   ActorsQueryPropertiesCase0Item,
 ) as any as S.Schema<ActorsQueryPropertiesCase0List>;
@@ -13432,7 +13415,7 @@ export type ActorsQueryProperties =
 export const ActorsQueryProperties =
   /*@__PURE__*/ S.Unknown as any as S.Schema<ActorsQueryProperties>;
 
-export type ActorsQuerySelectList = ReadonlyArray<string>;
+export type ActorsQuerySelectList = Array<string>;
 export const ActorsQuerySelectList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ActorsQuerySelectList>;
@@ -13445,7 +13428,7 @@ export const FunnelsActorsQueryFunnelStepBreakdownCase3Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<FunnelsActorsQueryFunnelStepBreakdownCase3Item>;
 
 export type FunnelsActorsQueryFunnelStepBreakdownCase3List =
-  ReadonlyArray<FunnelsActorsQueryFunnelStepBreakdownCase3Item>;
+  Array<FunnelsActorsQueryFunnelStepBreakdownCase3Item>;
 export const FunnelsActorsQueryFunnelStepBreakdownCase3List =
   /*@__PURE__*/ S.Array(
     FunnelsActorsQueryFunnelStepBreakdownCase3Item,
@@ -13692,42 +13675,41 @@ export const FunnelCorrelationActorsQueryFunnelCorrelationPropertyValuesItem =
   }) as any as S.Schema<FunnelCorrelationActorsQueryFunnelCorrelationPropertyValuesItem>;
 
 export type FunnelCorrelationActorsQueryFunnelCorrelationPropertyValuesList =
-  ReadonlyArray<FunnelCorrelationActorsQueryFunnelCorrelationPropertyValuesItem>;
+  Array<FunnelCorrelationActorsQueryFunnelCorrelationPropertyValuesItem>;
 export const FunnelCorrelationActorsQueryFunnelCorrelationPropertyValuesList =
   /*@__PURE__*/ S.Array(
     FunnelCorrelationActorsQueryFunnelCorrelationPropertyValuesItem,
   ) as any as S.Schema<FunnelCorrelationActorsQueryFunnelCorrelationPropertyValuesList>;
 
 export type FunnelCorrelationQueryFunnelCorrelationEventExcludePropertyNamesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const FunnelCorrelationQueryFunnelCorrelationEventExcludePropertyNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<FunnelCorrelationQueryFunnelCorrelationEventExcludePropertyNamesList>;
 
 export type FunnelCorrelationQueryFunnelCorrelationEventNamesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const FunnelCorrelationQueryFunnelCorrelationEventNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<FunnelCorrelationQueryFunnelCorrelationEventNamesList>;
 
 export type FunnelCorrelationQueryFunnelCorrelationExcludeEventNamesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const FunnelCorrelationQueryFunnelCorrelationExcludeEventNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<FunnelCorrelationQueryFunnelCorrelationExcludeEventNamesList>;
 
 export type FunnelCorrelationQueryFunnelCorrelationExcludeNamesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const FunnelCorrelationQueryFunnelCorrelationExcludeNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<FunnelCorrelationQueryFunnelCorrelationExcludeNamesList>;
 
-export type FunnelCorrelationQueryFunnelCorrelationNamesList =
-  ReadonlyArray<string>;
+export type FunnelCorrelationQueryFunnelCorrelationNamesList = Array<string>;
 export const FunnelCorrelationQueryFunnelCorrelationNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -13739,7 +13721,7 @@ export type FunnelCorrelationResultsType =
   | "event_with_properties";
 export const FunnelCorrelationResultsType = /*@__PURE__*/ S.String;
 
-export type FunnelCorrelationResponseColumnsList = ReadonlyArray<unknown>;
+export type FunnelCorrelationResponseColumnsList = Array<unknown>;
 export const FunnelCorrelationResponseColumnsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<FunnelCorrelationResponseColumnsList>;
@@ -13747,7 +13729,7 @@ export const FunnelCorrelationResponseColumnsList = /*@__PURE__*/ S.Array(
 export type CorrelationType = "success" | "failure";
 export const CorrelationType = /*@__PURE__*/ S.String;
 
-export type EventDefinitionElementsList = ReadonlyArray<unknown>;
+export type EventDefinitionElementsList = Array<unknown>;
 export const EventDefinitionElementsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<EventDefinitionElementsList>;
@@ -13794,8 +13776,7 @@ export const EventOddsRatioSerialized = /*@__PURE__*/ S.suspend(() =>
   identifier: "EventOddsRatioSerialized",
 }) as any as S.Schema<EventOddsRatioSerialized>;
 
-export type FunnelCorrelationResultEventsList =
-  ReadonlyArray<EventOddsRatioSerialized>;
+export type FunnelCorrelationResultEventsList = Array<EventOddsRatioSerialized>;
 export const FunnelCorrelationResultEventsList = /*@__PURE__*/ S.Array(
   EventOddsRatioSerialized,
 ) as any as S.Schema<FunnelCorrelationResultEventsList>;
@@ -13813,18 +13794,18 @@ export const FunnelCorrelationResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "FunnelCorrelationResult",
 }) as any as S.Schema<FunnelCorrelationResult>;
 
-export type FunnelCorrelationResponseTimingsList = ReadonlyArray<QueryTiming>;
+export type FunnelCorrelationResponseTimingsList = Array<QueryTiming>;
 export const FunnelCorrelationResponseTimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<FunnelCorrelationResponseTimingsList>;
 
-export type FunnelCorrelationResponseTypesList = ReadonlyArray<unknown>;
+export type FunnelCorrelationResponseTypesList = Array<unknown>;
 export const FunnelCorrelationResponseTypesList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<FunnelCorrelationResponseTypesList>;
 
 export type FunnelCorrelationResponseUsedDataWarehouseSourcesList =
-  ReadonlyArray<DataWarehouseSourceUsage>;
+  Array<DataWarehouseSourceUsage>;
 export const FunnelCorrelationResponseUsedDataWarehouseSourcesList =
   /*@__PURE__*/ S.Array(
     DataWarehouseSourceUsage,
@@ -13865,7 +13846,7 @@ export const FunnelCorrelationResponseWarningsItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<FunnelCorrelationResponseWarningsItem>;
 
 export type FunnelCorrelationResponseWarningsList =
-  ReadonlyArray<FunnelCorrelationResponseWarningsItem>;
+  Array<FunnelCorrelationResponseWarningsItem>;
 export const FunnelCorrelationResponseWarningsList = /*@__PURE__*/ S.Array(
   FunnelCorrelationResponseWarningsItem,
 ) as any as S.Schema<FunnelCorrelationResponseWarningsList>;
@@ -14084,7 +14065,7 @@ export const ExperimentEventExposureConfigPropertiesItem =
   }) as any as S.Schema<ExperimentEventExposureConfigPropertiesItem>;
 
 export type ExperimentEventExposureConfigPropertiesList =
-  ReadonlyArray<ExperimentEventExposureConfigPropertiesItem>;
+  Array<ExperimentEventExposureConfigPropertiesItem>;
 export const ExperimentEventExposureConfigPropertiesList =
   /*@__PURE__*/ S.Array(
     ExperimentEventExposureConfigPropertiesItem,
@@ -14195,7 +14176,7 @@ export const ExperimentActorsQueryFunnelStepBreakdownCase3Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<ExperimentActorsQueryFunnelStepBreakdownCase3Item>;
 
 export type ExperimentActorsQueryFunnelStepBreakdownCase3List =
-  ReadonlyArray<ExperimentActorsQueryFunnelStepBreakdownCase3Item>;
+  Array<ExperimentActorsQueryFunnelStepBreakdownCase3Item>;
 export const ExperimentActorsQueryFunnelStepBreakdownCase3List =
   /*@__PURE__*/ S.Array(
     ExperimentActorsQueryFunnelStepBreakdownCase3Item,
@@ -14309,7 +14290,7 @@ export const ExperimentDataWarehouseNodeFixedPropertiesItem =
   }) as any as S.Schema<ExperimentDataWarehouseNodeFixedPropertiesItem>;
 
 export type ExperimentDataWarehouseNodeFixedPropertiesList =
-  ReadonlyArray<ExperimentDataWarehouseNodeFixedPropertiesItem>;
+  Array<ExperimentDataWarehouseNodeFixedPropertiesItem>;
 export const ExperimentDataWarehouseNodeFixedPropertiesList =
   /*@__PURE__*/ S.Array(
     ExperimentDataWarehouseNodeFixedPropertiesItem,
@@ -14411,7 +14392,7 @@ export const ExperimentDataWarehouseNodePropertiesItem =
   }) as any as S.Schema<ExperimentDataWarehouseNodePropertiesItem>;
 
 export type ExperimentDataWarehouseNodePropertiesList =
-  ReadonlyArray<ExperimentDataWarehouseNodePropertiesItem>;
+  Array<ExperimentDataWarehouseNodePropertiesItem>;
 export const ExperimentDataWarehouseNodePropertiesList = /*@__PURE__*/ S.Array(
   ExperimentDataWarehouseNodePropertiesItem,
 ) as any as S.Schema<ExperimentDataWarehouseNodePropertiesList>;
@@ -14758,7 +14739,7 @@ export const ExperimentFunnelMetricSeriesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExperimentFunnelMetricSeriesItem>;
 
 export type ExperimentFunnelMetricSeriesList =
-  ReadonlyArray<ExperimentFunnelMetricSeriesItem>;
+  Array<ExperimentFunnelMetricSeriesItem>;
 export const ExperimentFunnelMetricSeriesList = /*@__PURE__*/ S.Array(
   ExperimentFunnelMetricSeriesItem,
 ) as any as S.Schema<ExperimentFunnelMetricSeriesList>;
@@ -15478,7 +15459,7 @@ export const ExperimentQueryMetric = /*@__PURE__*/ S.suspend(() =>
 export type PrecomputationMode = "precomputed" | "direct";
 export const PrecomputationMode = /*@__PURE__*/ S.String;
 
-export type ExperimentStatsBaseValidatedStepCountsList = ReadonlyArray<number>;
+export type ExperimentStatsBaseValidatedStepCountsList = Array<number>;
 export const ExperimentStatsBaseValidatedStepCountsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<ExperimentStatsBaseValidatedStepCountsList>;
@@ -15499,14 +15480,14 @@ export const SessionData = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SessionData" }) as any as S.Schema<SessionData>;
 
 export type ExperimentStatsBaseValidatedStepSessionsItemList =
-  ReadonlyArray<SessionData>;
+  Array<SessionData>;
 export const ExperimentStatsBaseValidatedStepSessionsItemList =
   /*@__PURE__*/ S.Array(
     SessionData,
   ) as any as S.Schema<ExperimentStatsBaseValidatedStepSessionsItemList>;
 
 export type ExperimentStatsBaseValidatedStepSessionsList =
-  ReadonlyArray<ExperimentStatsBaseValidatedStepSessionsItemList>;
+  Array<ExperimentStatsBaseValidatedStepSessionsItemList>;
 export const ExperimentStatsBaseValidatedStepSessionsList =
   /*@__PURE__*/ S.Array(
     ExperimentStatsBaseValidatedStepSessionsItemList,
@@ -15519,7 +15500,7 @@ export type ExperimentStatsValidationFailure =
 export const ExperimentStatsValidationFailure = /*@__PURE__*/ S.String;
 
 export type ExperimentStatsBaseValidatedValidationFailuresList =
-  ReadonlyArray<ExperimentStatsValidationFailure>;
+  Array<ExperimentStatsValidationFailure>;
 export const ExperimentStatsBaseValidatedValidationFailuresList =
   /*@__PURE__*/ S.Array(
     ExperimentStatsValidationFailure,
@@ -15575,42 +15556,41 @@ export const ExperimentBreakdownResultBreakdownValueItem =
 
 /** The breakdown values as an array (e.g., ["MacOS", "Chrome"] for multi-breakdown, ["Chrome"] for single) Although `BreakdownKeyType` could be an array, we only use the array form for the breakdown_value. The way `BreakdownKeyType` is defined is problematic. It should be treated as a primitive and allow for the types using it to define if it's and array or an optional value. */
 export type ExperimentBreakdownResultBreakdownValueList =
-  ReadonlyArray<ExperimentBreakdownResultBreakdownValueItem>;
+  Array<ExperimentBreakdownResultBreakdownValueItem>;
 export const ExperimentBreakdownResultBreakdownValueList =
   /*@__PURE__*/ S.Array(
     ExperimentBreakdownResultBreakdownValueItem,
   ) as any as S.Schema<ExperimentBreakdownResultBreakdownValueList>;
 
 export type ExperimentVariantResultFrequentistConfidenceIntervalList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const ExperimentVariantResultFrequentistConfidenceIntervalList =
   /*@__PURE__*/ S.Array(
     S.Number,
   ) as any as S.Schema<ExperimentVariantResultFrequentistConfidenceIntervalList>;
 
-export type ExperimentVariantResultFrequentistStepCountsList =
-  ReadonlyArray<number>;
+export type ExperimentVariantResultFrequentistStepCountsList = Array<number>;
 export const ExperimentVariantResultFrequentistStepCountsList =
   /*@__PURE__*/ S.Array(
     S.Number,
   ) as any as S.Schema<ExperimentVariantResultFrequentistStepCountsList>;
 
 export type ExperimentVariantResultFrequentistStepSessionsItemList =
-  ReadonlyArray<SessionData>;
+  Array<SessionData>;
 export const ExperimentVariantResultFrequentistStepSessionsItemList =
   /*@__PURE__*/ S.Array(
     SessionData,
   ) as any as S.Schema<ExperimentVariantResultFrequentistStepSessionsItemList>;
 
 export type ExperimentVariantResultFrequentistStepSessionsList =
-  ReadonlyArray<ExperimentVariantResultFrequentistStepSessionsItemList>;
+  Array<ExperimentVariantResultFrequentistStepSessionsItemList>;
 export const ExperimentVariantResultFrequentistStepSessionsList =
   /*@__PURE__*/ S.Array(
     ExperimentVariantResultFrequentistStepSessionsItemList,
   ) as any as S.Schema<ExperimentVariantResultFrequentistStepSessionsList>;
 
 export type ExperimentVariantResultFrequentistValidationFailuresList =
-  ReadonlyArray<ExperimentStatsValidationFailure>;
+  Array<ExperimentStatsValidationFailure>;
 export const ExperimentVariantResultFrequentistValidationFailuresList =
   /*@__PURE__*/ S.Array(
     ExperimentStatsValidationFailure,
@@ -15668,41 +15648,39 @@ export const ExperimentVariantResultFrequentist = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExperimentVariantResultFrequentist>;
 
 export type ExperimentBreakdownResultVariantsCase0List =
-  ReadonlyArray<ExperimentVariantResultFrequentist>;
+  Array<ExperimentVariantResultFrequentist>;
 export const ExperimentBreakdownResultVariantsCase0List = /*@__PURE__*/ S.Array(
   ExperimentVariantResultFrequentist,
 ) as any as S.Schema<ExperimentBreakdownResultVariantsCase0List>;
 
-export type ExperimentVariantResultBayesianCredibleIntervalList =
-  ReadonlyArray<number>;
+export type ExperimentVariantResultBayesianCredibleIntervalList = Array<number>;
 export const ExperimentVariantResultBayesianCredibleIntervalList =
   /*@__PURE__*/ S.Array(
     S.Number,
   ) as any as S.Schema<ExperimentVariantResultBayesianCredibleIntervalList>;
 
-export type ExperimentVariantResultBayesianStepCountsList =
-  ReadonlyArray<number>;
+export type ExperimentVariantResultBayesianStepCountsList = Array<number>;
 export const ExperimentVariantResultBayesianStepCountsList =
   /*@__PURE__*/ S.Array(
     S.Number,
   ) as any as S.Schema<ExperimentVariantResultBayesianStepCountsList>;
 
 export type ExperimentVariantResultBayesianStepSessionsItemList =
-  ReadonlyArray<SessionData>;
+  Array<SessionData>;
 export const ExperimentVariantResultBayesianStepSessionsItemList =
   /*@__PURE__*/ S.Array(
     SessionData,
   ) as any as S.Schema<ExperimentVariantResultBayesianStepSessionsItemList>;
 
 export type ExperimentVariantResultBayesianStepSessionsList =
-  ReadonlyArray<ExperimentVariantResultBayesianStepSessionsItemList>;
+  Array<ExperimentVariantResultBayesianStepSessionsItemList>;
 export const ExperimentVariantResultBayesianStepSessionsList =
   /*@__PURE__*/ S.Array(
     ExperimentVariantResultBayesianStepSessionsItemList,
   ) as any as S.Schema<ExperimentVariantResultBayesianStepSessionsList>;
 
 export type ExperimentVariantResultBayesianValidationFailuresList =
-  ReadonlyArray<ExperimentStatsValidationFailure>;
+  Array<ExperimentStatsValidationFailure>;
 export const ExperimentVariantResultBayesianValidationFailuresList =
   /*@__PURE__*/ S.Array(
     ExperimentStatsValidationFailure,
@@ -15760,7 +15738,7 @@ export const ExperimentVariantResultBayesian = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExperimentVariantResultBayesian>;
 
 export type ExperimentBreakdownResultVariantsCase1List =
-  ReadonlyArray<ExperimentVariantResultBayesian>;
+  Array<ExperimentVariantResultBayesian>;
 export const ExperimentBreakdownResultVariantsCase1List = /*@__PURE__*/ S.Array(
   ExperimentVariantResultBayesian,
 ) as any as S.Schema<ExperimentBreakdownResultVariantsCase1List>;
@@ -15791,14 +15769,13 @@ export const ExperimentBreakdownResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExperimentBreakdownResult>;
 
 export type ExperimentQueryResponseBreakdownResultsList =
-  ReadonlyArray<ExperimentBreakdownResult>;
+  Array<ExperimentBreakdownResult>;
 export const ExperimentQueryResponseBreakdownResultsList =
   /*@__PURE__*/ S.Array(
     ExperimentBreakdownResult,
   ) as any as S.Schema<ExperimentQueryResponseBreakdownResultsList>;
 
-export type ExperimentQueryResponseCredibleIntervalsValueList =
-  ReadonlyArray<number>;
+export type ExperimentQueryResponseCredibleIntervalsValueList = Array<number>;
 export const ExperimentQueryResponseCredibleIntervalsValueList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -15822,7 +15799,7 @@ export const ExperimentQueryResponseInsightItemMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ExperimentQueryResponseInsightItemMap>;
 
 export type ExperimentQueryResponseInsightList =
-  ReadonlyArray<ExperimentQueryResponseInsightItemMap>;
+  Array<ExperimentQueryResponseInsightItemMap>;
 export const ExperimentQueryResponseInsightList = /*@__PURE__*/ S.Array(
   ExperimentQueryResponseInsightItemMap,
 ) as any as S.Schema<ExperimentQueryResponseInsightList>;
@@ -15929,14 +15906,14 @@ export const ExperimentQueryResponseProbabilityMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ExperimentQueryResponseProbabilityMap>;
 
 export type ExperimentQueryResponseVariantResultsCase0List =
-  ReadonlyArray<ExperimentVariantResultFrequentist>;
+  Array<ExperimentVariantResultFrequentist>;
 export const ExperimentQueryResponseVariantResultsCase0List =
   /*@__PURE__*/ S.Array(
     ExperimentVariantResultFrequentist,
   ) as any as S.Schema<ExperimentQueryResponseVariantResultsCase0List>;
 
 export type ExperimentQueryResponseVariantResultsCase1List =
-  ReadonlyArray<ExperimentVariantResultBayesian>;
+  Array<ExperimentVariantResultBayesian>;
 export const ExperimentQueryResponseVariantResultsCase1List =
   /*@__PURE__*/ S.Array(
     ExperimentVariantResultBayesian,
@@ -15949,13 +15926,13 @@ export const ExperimentQueryResponseVariantResults =
   /*@__PURE__*/ S.Unknown as any as S.Schema<ExperimentQueryResponseVariantResults>;
 
 export type ExperimentQueryResponseVariantsCase0List =
-  ReadonlyArray<ExperimentVariantTrendsBaseStats>;
+  Array<ExperimentVariantTrendsBaseStats>;
 export const ExperimentQueryResponseVariantsCase0List = /*@__PURE__*/ S.Array(
   ExperimentVariantTrendsBaseStats,
 ) as any as S.Schema<ExperimentQueryResponseVariantsCase0List>;
 
 export type ExperimentQueryResponseVariantsCase1List =
-  ReadonlyArray<ExperimentVariantFunnelsBaseStats>;
+  Array<ExperimentVariantFunnelsBaseStats>;
 export const ExperimentQueryResponseVariantsCase1List = /*@__PURE__*/ S.Array(
   ExperimentVariantFunnelsBaseStats,
 ) as any as S.Schema<ExperimentQueryResponseVariantsCase1List>;
@@ -15967,7 +15944,7 @@ export const ExperimentQueryResponseVariants =
   /*@__PURE__*/ S.Unknown as any as S.Schema<ExperimentQueryResponseVariants>;
 
 export type ExperimentQueryResponseWarningsList =
-  ReadonlyArray<DataWarehouseSyncWarning>;
+  Array<DataWarehouseSyncWarning>;
 export const ExperimentQueryResponseWarningsList = /*@__PURE__*/ S.Array(
   DataWarehouseSyncWarning,
 ) as any as S.Schema<ExperimentQueryResponseWarningsList>;
@@ -16213,8 +16190,7 @@ export const HogQLFiltersPropertiesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "HogQLFiltersPropertiesItem",
 }) as any as S.Schema<HogQLFiltersPropertiesItem>;
 
-export type HogQLFiltersPropertiesList =
-  ReadonlyArray<HogQLFiltersPropertiesItem>;
+export type HogQLFiltersPropertiesList = Array<HogQLFiltersPropertiesItem>;
 export const HogQLFiltersPropertiesList = /*@__PURE__*/ S.Array(
   HogQLFiltersPropertiesItem,
 ) as any as S.Schema<HogQLFiltersPropertiesList>;
@@ -16232,33 +16208,33 @@ export const HogQLFilters = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "HogQLFilters" }) as any as S.Schema<HogQLFilters>;
 
-export type HogQLQueryResponseColumnsList = ReadonlyArray<unknown>;
+export type HogQLQueryResponseColumnsList = Array<unknown>;
 export const HogQLQueryResponseColumnsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<HogQLQueryResponseColumnsList>;
 
-export type HogQLQueryResponseExplainList = ReadonlyArray<string>;
+export type HogQLQueryResponseExplainList = Array<string>;
 export const HogQLQueryResponseExplainList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<HogQLQueryResponseExplainList>;
 
-export type HogQLQueryResponseResultsList = ReadonlyArray<unknown>;
+export type HogQLQueryResponseResultsList = Array<unknown>;
 export const HogQLQueryResponseResultsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<HogQLQueryResponseResultsList>;
 
-export type HogQLQueryResponseTimingsList = ReadonlyArray<QueryTiming>;
+export type HogQLQueryResponseTimingsList = Array<QueryTiming>;
 export const HogQLQueryResponseTimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<HogQLQueryResponseTimingsList>;
 
-export type HogQLQueryResponseTypesList = ReadonlyArray<unknown>;
+export type HogQLQueryResponseTypesList = Array<unknown>;
 export const HogQLQueryResponseTypesList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<HogQLQueryResponseTypesList>;
 
 export type HogQLQueryResponseUsedDataWarehouseSourcesList =
-  ReadonlyArray<DataWarehouseSourceUsage>;
+  Array<DataWarehouseSourceUsage>;
 export const HogQLQueryResponseUsedDataWarehouseSourcesList =
   /*@__PURE__*/ S.Array(
     DataWarehouseSourceUsage,
@@ -16298,7 +16274,7 @@ export const HogQLQueryResponseWarningsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HogQLQueryResponseWarningsItem>;
 
 export type HogQLQueryResponseWarningsList =
-  ReadonlyArray<HogQLQueryResponseWarningsItem>;
+  Array<HogQLQueryResponseWarningsItem>;
 export const HogQLQueryResponseWarningsList = /*@__PURE__*/ S.Array(
   HogQLQueryResponseWarningsItem,
 ) as any as S.Schema<HogQLQueryResponseWarningsList>;
@@ -16594,7 +16570,7 @@ export const ActorsQuery = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ActorsQuery" }) as any as S.Schema<ActorsQuery>;
 
-export type GroupsQueryOrderByList = ReadonlyArray<string>;
+export type GroupsQueryOrderByList = Array<string>;
 export const GroupsQueryOrderByList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GroupsQueryOrderByList>;
@@ -16624,40 +16600,39 @@ export const GroupsQueryPropertiesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "GroupsQueryPropertiesItem",
 }) as any as S.Schema<GroupsQueryPropertiesItem>;
 
-export type GroupsQueryPropertiesList =
-  ReadonlyArray<GroupsQueryPropertiesItem>;
+export type GroupsQueryPropertiesList = Array<GroupsQueryPropertiesItem>;
 export const GroupsQueryPropertiesList = /*@__PURE__*/ S.Array(
   GroupsQueryPropertiesItem,
 ) as any as S.Schema<GroupsQueryPropertiesList>;
 
-export type GroupsQueryResponseColumnsList = ReadonlyArray<unknown>;
+export type GroupsQueryResponseColumnsList = Array<unknown>;
 export const GroupsQueryResponseColumnsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<GroupsQueryResponseColumnsList>;
 
-export type GroupsQueryResponseResultsItemList = ReadonlyArray<unknown>;
+export type GroupsQueryResponseResultsItemList = Array<unknown>;
 export const GroupsQueryResponseResultsItemList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<GroupsQueryResponseResultsItemList>;
 
 export type GroupsQueryResponseResultsList =
-  ReadonlyArray<GroupsQueryResponseResultsItemList>;
+  Array<GroupsQueryResponseResultsItemList>;
 export const GroupsQueryResponseResultsList = /*@__PURE__*/ S.Array(
   GroupsQueryResponseResultsItemList,
 ) as any as S.Schema<GroupsQueryResponseResultsList>;
 
-export type GroupsQueryResponseTimingsList = ReadonlyArray<QueryTiming>;
+export type GroupsQueryResponseTimingsList = Array<QueryTiming>;
 export const GroupsQueryResponseTimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<GroupsQueryResponseTimingsList>;
 
-export type GroupsQueryResponseTypesList = ReadonlyArray<string>;
+export type GroupsQueryResponseTypesList = Array<string>;
 export const GroupsQueryResponseTypesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GroupsQueryResponseTypesList>;
 
 export type GroupsQueryResponseUsedDataWarehouseSourcesList =
-  ReadonlyArray<DataWarehouseSourceUsage>;
+  Array<DataWarehouseSourceUsage>;
 export const GroupsQueryResponseUsedDataWarehouseSourcesList =
   /*@__PURE__*/ S.Array(
     DataWarehouseSourceUsage,
@@ -16697,7 +16672,7 @@ export const GroupsQueryResponseWarningsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GroupsQueryResponseWarningsItem>;
 
 export type GroupsQueryResponseWarningsList =
-  ReadonlyArray<GroupsQueryResponseWarningsItem>;
+  Array<GroupsQueryResponseWarningsItem>;
 export const GroupsQueryResponseWarningsList = /*@__PURE__*/ S.Array(
   GroupsQueryResponseWarningsItem,
 ) as any as S.Schema<GroupsQueryResponseWarningsList>;
@@ -16756,7 +16731,7 @@ export const GroupsQueryResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GroupsQueryResponse",
 }) as any as S.Schema<GroupsQueryResponse>;
 
-export type GroupsQuerySelectList = ReadonlyArray<string>;
+export type GroupsQuerySelectList = Array<string>;
 export const GroupsQuerySelectList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GroupsQuerySelectList>;
@@ -16815,7 +16790,7 @@ export const WebExternalClicksTableQueryOrderByItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<WebExternalClicksTableQueryOrderByItem>;
 
 export type WebExternalClicksTableQueryOrderByList =
-  ReadonlyArray<WebExternalClicksTableQueryOrderByItem>;
+  Array<WebExternalClicksTableQueryOrderByItem>;
 export const WebExternalClicksTableQueryOrderByList = /*@__PURE__*/ S.Array(
   WebExternalClicksTableQueryOrderByItem,
 ) as any as S.Schema<WebExternalClicksTableQueryOrderByList>;
@@ -16858,41 +16833,37 @@ export const WebExternalClicksTableQueryPropertiesItem =
   }) as any as S.Schema<WebExternalClicksTableQueryPropertiesItem>;
 
 export type WebExternalClicksTableQueryPropertiesList =
-  ReadonlyArray<WebExternalClicksTableQueryPropertiesItem>;
+  Array<WebExternalClicksTableQueryPropertiesItem>;
 export const WebExternalClicksTableQueryPropertiesList = /*@__PURE__*/ S.Array(
   WebExternalClicksTableQueryPropertiesItem,
 ) as any as S.Schema<WebExternalClicksTableQueryPropertiesList>;
 
-export type WebExternalClicksTableQueryResponseColumnsList =
-  ReadonlyArray<unknown>;
+export type WebExternalClicksTableQueryResponseColumnsList = Array<unknown>;
 export const WebExternalClicksTableQueryResponseColumnsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<WebExternalClicksTableQueryResponseColumnsList>;
 
-export type WebExternalClicksTableQueryResponseResultsList =
-  ReadonlyArray<unknown>;
+export type WebExternalClicksTableQueryResponseResultsList = Array<unknown>;
 export const WebExternalClicksTableQueryResponseResultsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<WebExternalClicksTableQueryResponseResultsList>;
 
-export type WebExternalClicksTableQueryResponseTimingsList =
-  ReadonlyArray<QueryTiming>;
+export type WebExternalClicksTableQueryResponseTimingsList = Array<QueryTiming>;
 export const WebExternalClicksTableQueryResponseTimingsList =
   /*@__PURE__*/ S.Array(
     QueryTiming,
   ) as any as S.Schema<WebExternalClicksTableQueryResponseTimingsList>;
 
-export type WebExternalClicksTableQueryResponseTypesList =
-  ReadonlyArray<unknown>;
+export type WebExternalClicksTableQueryResponseTypesList = Array<unknown>;
 export const WebExternalClicksTableQueryResponseTypesList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<WebExternalClicksTableQueryResponseTypesList>;
 
 export type WebExternalClicksTableQueryResponseUsedDataWarehouseSourcesList =
-  ReadonlyArray<DataWarehouseSourceUsage>;
+  Array<DataWarehouseSourceUsage>;
 export const WebExternalClicksTableQueryResponseUsedDataWarehouseSourcesList =
   /*@__PURE__*/ S.Array(
     DataWarehouseSourceUsage,
@@ -16933,7 +16904,7 @@ export const WebExternalClicksTableQueryResponseWarningsItem =
   }) as any as S.Schema<WebExternalClicksTableQueryResponseWarningsItem>;
 
 export type WebExternalClicksTableQueryResponseWarningsList =
-  ReadonlyArray<WebExternalClicksTableQueryResponseWarningsItem>;
+  Array<WebExternalClicksTableQueryResponseWarningsItem>;
 export const WebExternalClicksTableQueryResponseWarningsList =
   /*@__PURE__*/ S.Array(
     WebExternalClicksTableQueryResponseWarningsItem,
@@ -17077,7 +17048,7 @@ export type WebGoalsQueryOrderByItem =
 export const WebGoalsQueryOrderByItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<WebGoalsQueryOrderByItem>;
 
-export type WebGoalsQueryOrderByList = ReadonlyArray<WebGoalsQueryOrderByItem>;
+export type WebGoalsQueryOrderByList = Array<WebGoalsQueryOrderByItem>;
 export const WebGoalsQueryOrderByList = /*@__PURE__*/ S.Array(
   WebGoalsQueryOrderByItem,
 ) as any as S.Schema<WebGoalsQueryOrderByList>;
@@ -17118,34 +17089,33 @@ export const WebGoalsQueryPropertiesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "WebGoalsQueryPropertiesItem",
 }) as any as S.Schema<WebGoalsQueryPropertiesItem>;
 
-export type WebGoalsQueryPropertiesList =
-  ReadonlyArray<WebGoalsQueryPropertiesItem>;
+export type WebGoalsQueryPropertiesList = Array<WebGoalsQueryPropertiesItem>;
 export const WebGoalsQueryPropertiesList = /*@__PURE__*/ S.Array(
   WebGoalsQueryPropertiesItem,
 ) as any as S.Schema<WebGoalsQueryPropertiesList>;
 
-export type WebGoalsQueryResponseColumnsList = ReadonlyArray<unknown>;
+export type WebGoalsQueryResponseColumnsList = Array<unknown>;
 export const WebGoalsQueryResponseColumnsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<WebGoalsQueryResponseColumnsList>;
 
-export type WebGoalsQueryResponseResultsList = ReadonlyArray<unknown>;
+export type WebGoalsQueryResponseResultsList = Array<unknown>;
 export const WebGoalsQueryResponseResultsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<WebGoalsQueryResponseResultsList>;
 
-export type WebGoalsQueryResponseTimingsList = ReadonlyArray<QueryTiming>;
+export type WebGoalsQueryResponseTimingsList = Array<QueryTiming>;
 export const WebGoalsQueryResponseTimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<WebGoalsQueryResponseTimingsList>;
 
-export type WebGoalsQueryResponseTypesList = ReadonlyArray<unknown>;
+export type WebGoalsQueryResponseTypesList = Array<unknown>;
 export const WebGoalsQueryResponseTypesList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<WebGoalsQueryResponseTypesList>;
 
 export type WebGoalsQueryResponseUsedDataWarehouseSourcesList =
-  ReadonlyArray<DataWarehouseSourceUsage>;
+  Array<DataWarehouseSourceUsage>;
 export const WebGoalsQueryResponseUsedDataWarehouseSourcesList =
   /*@__PURE__*/ S.Array(
     DataWarehouseSourceUsage,
@@ -17185,7 +17155,7 @@ export const WebGoalsQueryResponseWarningsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WebGoalsQueryResponseWarningsItem>;
 
 export type WebGoalsQueryResponseWarningsList =
-  ReadonlyArray<WebGoalsQueryResponseWarningsItem>;
+  Array<WebGoalsQueryResponseWarningsItem>;
 export const WebGoalsQueryResponseWarningsList = /*@__PURE__*/ S.Array(
   WebGoalsQueryResponseWarningsItem,
 ) as any as S.Schema<WebGoalsQueryResponseWarningsList>;
@@ -17321,8 +17291,7 @@ export type WebVitalsQueryOrderByItem =
 export const WebVitalsQueryOrderByItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<WebVitalsQueryOrderByItem>;
 
-export type WebVitalsQueryOrderByList =
-  ReadonlyArray<WebVitalsQueryOrderByItem>;
+export type WebVitalsQueryOrderByList = Array<WebVitalsQueryOrderByItem>;
 export const WebVitalsQueryOrderByList = /*@__PURE__*/ S.Array(
   WebVitalsQueryOrderByItem,
 ) as any as S.Schema<WebVitalsQueryOrderByList>;
@@ -17363,8 +17332,7 @@ export const WebVitalsQueryPropertiesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "WebVitalsQueryPropertiesItem",
 }) as any as S.Schema<WebVitalsQueryPropertiesItem>;
 
-export type WebVitalsQueryPropertiesList =
-  ReadonlyArray<WebVitalsQueryPropertiesItem>;
+export type WebVitalsQueryPropertiesList = Array<WebVitalsQueryPropertiesItem>;
 export const WebVitalsQueryPropertiesList = /*@__PURE__*/ S.Array(
   WebVitalsQueryPropertiesItem,
 ) as any as S.Schema<WebVitalsQueryPropertiesList>;
@@ -17629,7 +17597,7 @@ export const WebVitalsPathBreakdownQueryOrderByItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<WebVitalsPathBreakdownQueryOrderByItem>;
 
 export type WebVitalsPathBreakdownQueryOrderByList =
-  ReadonlyArray<WebVitalsPathBreakdownQueryOrderByItem>;
+  Array<WebVitalsPathBreakdownQueryOrderByItem>;
 export const WebVitalsPathBreakdownQueryOrderByList = /*@__PURE__*/ S.Array(
   WebVitalsPathBreakdownQueryOrderByItem,
 ) as any as S.Schema<WebVitalsPathBreakdownQueryOrderByList>;
@@ -17675,27 +17643,26 @@ export const WebVitalsPathBreakdownQueryPropertiesItem =
   }) as any as S.Schema<WebVitalsPathBreakdownQueryPropertiesItem>;
 
 export type WebVitalsPathBreakdownQueryPropertiesList =
-  ReadonlyArray<WebVitalsPathBreakdownQueryPropertiesItem>;
+  Array<WebVitalsPathBreakdownQueryPropertiesItem>;
 export const WebVitalsPathBreakdownQueryPropertiesList = /*@__PURE__*/ S.Array(
   WebVitalsPathBreakdownQueryPropertiesItem,
 ) as any as S.Schema<WebVitalsPathBreakdownQueryPropertiesList>;
 
 export type WebVitalsPathBreakdownQueryResponseResultsList =
-  ReadonlyArray<WebVitalsPathBreakdownResult>;
+  Array<WebVitalsPathBreakdownResult>;
 export const WebVitalsPathBreakdownQueryResponseResultsList =
   /*@__PURE__*/ S.Array(
     WebVitalsPathBreakdownResult,
   ) as any as S.Schema<WebVitalsPathBreakdownQueryResponseResultsList>;
 
-export type WebVitalsPathBreakdownQueryResponseTimingsList =
-  ReadonlyArray<QueryTiming>;
+export type WebVitalsPathBreakdownQueryResponseTimingsList = Array<QueryTiming>;
 export const WebVitalsPathBreakdownQueryResponseTimingsList =
   /*@__PURE__*/ S.Array(
     QueryTiming,
   ) as any as S.Schema<WebVitalsPathBreakdownQueryResponseTimingsList>;
 
 export type WebVitalsPathBreakdownQueryResponseUsedDataWarehouseSourcesList =
-  ReadonlyArray<DataWarehouseSourceUsage>;
+  Array<DataWarehouseSourceUsage>;
 export const WebVitalsPathBreakdownQueryResponseUsedDataWarehouseSourcesList =
   /*@__PURE__*/ S.Array(
     DataWarehouseSourceUsage,
@@ -17736,7 +17703,7 @@ export const WebVitalsPathBreakdownQueryResponseWarningsItem =
   }) as any as S.Schema<WebVitalsPathBreakdownQueryResponseWarningsItem>;
 
 export type WebVitalsPathBreakdownQueryResponseWarningsList =
-  ReadonlyArray<WebVitalsPathBreakdownQueryResponseWarningsItem>;
+  Array<WebVitalsPathBreakdownQueryResponseWarningsItem>;
 export const WebVitalsPathBreakdownQueryResponseWarningsList =
   /*@__PURE__*/ S.Array(
     WebVitalsPathBreakdownQueryResponseWarningsItem,
@@ -17790,7 +17757,7 @@ export const WebVitalsPathBreakdownQueryResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "WebVitalsPathBreakdownQueryResponse",
 }) as any as S.Schema<WebVitalsPathBreakdownQueryResponse>;
 
-export type WebVitalsPathBreakdownQueryThresholdsList = ReadonlyArray<number>;
+export type WebVitalsPathBreakdownQueryThresholdsList = Array<number>;
 export const WebVitalsPathBreakdownQueryThresholdsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<WebVitalsPathBreakdownQueryThresholdsList>;
@@ -17859,7 +17826,7 @@ export const WebVitalsPathBreakdownQuery = /*@__PURE__*/ S.suspend(() =>
   identifier: "WebVitalsPathBreakdownQuery",
 }) as any as S.Schema<WebVitalsPathBreakdownQuery>;
 
-export type FiltersPropertiesList = ReadonlyArray<SessionPropertyFilter>;
+export type FiltersPropertiesList = Array<SessionPropertyFilter>;
 export const FiltersPropertiesList = /*@__PURE__*/ S.Array(
   SessionPropertyFilter,
 ) as any as S.Schema<FiltersPropertiesList>;
@@ -17886,34 +17853,32 @@ export type SessionAttributionGroupBy =
 export const SessionAttributionGroupBy = /*@__PURE__*/ S.String;
 
 export type SessionAttributionExplorerQueryGroupByList =
-  ReadonlyArray<SessionAttributionGroupBy>;
+  Array<SessionAttributionGroupBy>;
 export const SessionAttributionExplorerQueryGroupByList = /*@__PURE__*/ S.Array(
   SessionAttributionGroupBy,
 ) as any as S.Schema<SessionAttributionExplorerQueryGroupByList>;
 
-export type SessionAttributionExplorerQueryResponseColumnsList =
-  ReadonlyArray<unknown>;
+export type SessionAttributionExplorerQueryResponseColumnsList = Array<unknown>;
 export const SessionAttributionExplorerQueryResponseColumnsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<SessionAttributionExplorerQueryResponseColumnsList>;
 
 export type SessionAttributionExplorerQueryResponseTimingsList =
-  ReadonlyArray<QueryTiming>;
+  Array<QueryTiming>;
 export const SessionAttributionExplorerQueryResponseTimingsList =
   /*@__PURE__*/ S.Array(
     QueryTiming,
   ) as any as S.Schema<SessionAttributionExplorerQueryResponseTimingsList>;
 
-export type SessionAttributionExplorerQueryResponseTypesList =
-  ReadonlyArray<unknown>;
+export type SessionAttributionExplorerQueryResponseTypesList = Array<unknown>;
 export const SessionAttributionExplorerQueryResponseTypesList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<SessionAttributionExplorerQueryResponseTypesList>;
 
 export type SessionAttributionExplorerQueryResponseUsedDataWarehouseSourcesList =
-  ReadonlyArray<DataWarehouseSourceUsage>;
+  Array<DataWarehouseSourceUsage>;
 export const SessionAttributionExplorerQueryResponseUsedDataWarehouseSourcesList =
   /*@__PURE__*/ S.Array(
     DataWarehouseSourceUsage,
@@ -17954,7 +17919,7 @@ export const SessionAttributionExplorerQueryResponseWarningsItem =
   }) as any as S.Schema<SessionAttributionExplorerQueryResponseWarningsItem>;
 
 export type SessionAttributionExplorerQueryResponseWarningsList =
-  ReadonlyArray<SessionAttributionExplorerQueryResponseWarningsItem>;
+  Array<SessionAttributionExplorerQueryResponseWarningsItem>;
 export const SessionAttributionExplorerQueryResponseWarningsList =
   /*@__PURE__*/ S.Array(
     SessionAttributionExplorerQueryResponseWarningsItem,
@@ -18134,7 +18099,7 @@ export const SessionsQueryEventPropertiesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SessionsQueryEventPropertiesItem>;
 
 export type SessionsQueryEventPropertiesList =
-  ReadonlyArray<SessionsQueryEventPropertiesItem>;
+  Array<SessionsQueryEventPropertiesItem>;
 export const SessionsQueryEventPropertiesList = /*@__PURE__*/ S.Array(
   SessionsQueryEventPropertiesItem,
 ) as any as S.Schema<SessionsQueryEventPropertiesList>;
@@ -18231,12 +18196,12 @@ export const SessionsQueryFixedPropertiesItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<SessionsQueryFixedPropertiesItem>;
 
 export type SessionsQueryFixedPropertiesList =
-  ReadonlyArray<SessionsQueryFixedPropertiesItem>;
+  Array<SessionsQueryFixedPropertiesItem>;
 export const SessionsQueryFixedPropertiesList = /*@__PURE__*/ S.Array(
   SessionsQueryFixedPropertiesItem,
 ) as any as S.Schema<SessionsQueryFixedPropertiesList>;
 
-export type SessionsQueryOrderByList = ReadonlyArray<string>;
+export type SessionsQueryOrderByList = Array<string>;
 export const SessionsQueryOrderByList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SessionsQueryOrderByList>;
@@ -18322,40 +18287,39 @@ export const SessionsQueryPropertiesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "SessionsQueryPropertiesItem",
 }) as any as S.Schema<SessionsQueryPropertiesItem>;
 
-export type SessionsQueryPropertiesList =
-  ReadonlyArray<SessionsQueryPropertiesItem>;
+export type SessionsQueryPropertiesList = Array<SessionsQueryPropertiesItem>;
 export const SessionsQueryPropertiesList = /*@__PURE__*/ S.Array(
   SessionsQueryPropertiesItem,
 ) as any as S.Schema<SessionsQueryPropertiesList>;
 
-export type SessionsQueryResponseColumnsList = ReadonlyArray<unknown>;
+export type SessionsQueryResponseColumnsList = Array<unknown>;
 export const SessionsQueryResponseColumnsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<SessionsQueryResponseColumnsList>;
 
-export type SessionsQueryResponseResultsItemList = ReadonlyArray<unknown>;
+export type SessionsQueryResponseResultsItemList = Array<unknown>;
 export const SessionsQueryResponseResultsItemList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<SessionsQueryResponseResultsItemList>;
 
 export type SessionsQueryResponseResultsList =
-  ReadonlyArray<SessionsQueryResponseResultsItemList>;
+  Array<SessionsQueryResponseResultsItemList>;
 export const SessionsQueryResponseResultsList = /*@__PURE__*/ S.Array(
   SessionsQueryResponseResultsItemList,
 ) as any as S.Schema<SessionsQueryResponseResultsList>;
 
-export type SessionsQueryResponseTimingsList = ReadonlyArray<QueryTiming>;
+export type SessionsQueryResponseTimingsList = Array<QueryTiming>;
 export const SessionsQueryResponseTimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<SessionsQueryResponseTimingsList>;
 
-export type SessionsQueryResponseTypesList = ReadonlyArray<string>;
+export type SessionsQueryResponseTypesList = Array<string>;
 export const SessionsQueryResponseTypesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SessionsQueryResponseTypesList>;
 
 export type SessionsQueryResponseUsedDataWarehouseSourcesList =
-  ReadonlyArray<DataWarehouseSourceUsage>;
+  Array<DataWarehouseSourceUsage>;
 export const SessionsQueryResponseUsedDataWarehouseSourcesList =
   /*@__PURE__*/ S.Array(
     DataWarehouseSourceUsage,
@@ -18395,7 +18359,7 @@ export const SessionsQueryResponseWarningsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SessionsQueryResponseWarningsItem>;
 
 export type SessionsQueryResponseWarningsList =
-  ReadonlyArray<SessionsQueryResponseWarningsItem>;
+  Array<SessionsQueryResponseWarningsItem>;
 export const SessionsQueryResponseWarningsList = /*@__PURE__*/ S.Array(
   SessionsQueryResponseWarningsItem,
 ) as any as S.Schema<SessionsQueryResponseWarningsList>;
@@ -18453,12 +18417,12 @@ export const SessionsQueryResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SessionsQueryResponse>;
 
 /** Return a limited set of data. Required. */
-export type SessionsQuerySelectList = ReadonlyArray<string>;
+export type SessionsQuerySelectList = Array<string>;
 export const SessionsQuerySelectList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SessionsQuerySelectList>;
 
-export type SessionsQueryWhereList = ReadonlyArray<string>;
+export type SessionsQueryWhereList = Array<string>;
 export const SessionsQueryWhereList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SessionsQueryWhereList>;
@@ -18538,7 +18502,7 @@ export const RevenueAnalyticsBreakdown = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RevenueAnalyticsBreakdown>;
 
 export type RevenueAnalyticsGrossRevenueQueryBreakdownList =
-  ReadonlyArray<RevenueAnalyticsBreakdown>;
+  Array<RevenueAnalyticsBreakdown>;
 export const RevenueAnalyticsGrossRevenueQueryBreakdownList =
   /*@__PURE__*/ S.Array(
     RevenueAnalyticsBreakdown,
@@ -18548,35 +18512,35 @@ export type SimpleIntervalType = "day" | "month";
 export const SimpleIntervalType = /*@__PURE__*/ S.String;
 
 export type RevenueAnalyticsGrossRevenueQueryPropertiesList =
-  ReadonlyArray<RevenueAnalyticsPropertyFilter>;
+  Array<RevenueAnalyticsPropertyFilter>;
 export const RevenueAnalyticsGrossRevenueQueryPropertiesList =
   /*@__PURE__*/ S.Array(
     RevenueAnalyticsPropertyFilter,
   ) as any as S.Schema<RevenueAnalyticsGrossRevenueQueryPropertiesList>;
 
 export type RevenueAnalyticsGrossRevenueQueryResponseColumnsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RevenueAnalyticsGrossRevenueQueryResponseColumnsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<RevenueAnalyticsGrossRevenueQueryResponseColumnsList>;
 
 export type RevenueAnalyticsGrossRevenueQueryResponseResultsList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const RevenueAnalyticsGrossRevenueQueryResponseResultsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<RevenueAnalyticsGrossRevenueQueryResponseResultsList>;
 
 export type RevenueAnalyticsGrossRevenueQueryResponseTimingsList =
-  ReadonlyArray<QueryTiming>;
+  Array<QueryTiming>;
 export const RevenueAnalyticsGrossRevenueQueryResponseTimingsList =
   /*@__PURE__*/ S.Array(
     QueryTiming,
   ) as any as S.Schema<RevenueAnalyticsGrossRevenueQueryResponseTimingsList>;
 
 export type RevenueAnalyticsGrossRevenueQueryResponseUsedDataWarehouseSourcesList =
-  ReadonlyArray<DataWarehouseSourceUsage>;
+  Array<DataWarehouseSourceUsage>;
 export const RevenueAnalyticsGrossRevenueQueryResponseUsedDataWarehouseSourcesList =
   /*@__PURE__*/ S.Array(
     DataWarehouseSourceUsage,
@@ -18617,7 +18581,7 @@ export const RevenueAnalyticsGrossRevenueQueryResponseWarningsItem =
   }) as any as S.Schema<RevenueAnalyticsGrossRevenueQueryResponseWarningsItem>;
 
 export type RevenueAnalyticsGrossRevenueQueryResponseWarningsList =
-  ReadonlyArray<RevenueAnalyticsGrossRevenueQueryResponseWarningsItem>;
+  Array<RevenueAnalyticsGrossRevenueQueryResponseWarningsItem>;
 export const RevenueAnalyticsGrossRevenueQueryResponseWarningsList =
   /*@__PURE__*/ S.Array(
     RevenueAnalyticsGrossRevenueQueryResponseWarningsItem,
@@ -18706,33 +18670,32 @@ export const RevenueAnalyticsGrossRevenueQuery = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RevenueAnalyticsGrossRevenueQuery>;
 
 export type RevenueAnalyticsMetricsQueryBreakdownList =
-  ReadonlyArray<RevenueAnalyticsBreakdown>;
+  Array<RevenueAnalyticsBreakdown>;
 export const RevenueAnalyticsMetricsQueryBreakdownList = /*@__PURE__*/ S.Array(
   RevenueAnalyticsBreakdown,
 ) as any as S.Schema<RevenueAnalyticsMetricsQueryBreakdownList>;
 
 export type RevenueAnalyticsMetricsQueryPropertiesList =
-  ReadonlyArray<RevenueAnalyticsPropertyFilter>;
+  Array<RevenueAnalyticsPropertyFilter>;
 export const RevenueAnalyticsMetricsQueryPropertiesList = /*@__PURE__*/ S.Array(
   RevenueAnalyticsPropertyFilter,
 ) as any as S.Schema<RevenueAnalyticsMetricsQueryPropertiesList>;
 
-export type RevenueAnalyticsMetricsQueryResponseColumnsList =
-  ReadonlyArray<string>;
+export type RevenueAnalyticsMetricsQueryResponseColumnsList = Array<string>;
 export const RevenueAnalyticsMetricsQueryResponseColumnsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<RevenueAnalyticsMetricsQueryResponseColumnsList>;
 
 export type RevenueAnalyticsMetricsQueryResponseTimingsList =
-  ReadonlyArray<QueryTiming>;
+  Array<QueryTiming>;
 export const RevenueAnalyticsMetricsQueryResponseTimingsList =
   /*@__PURE__*/ S.Array(
     QueryTiming,
   ) as any as S.Schema<RevenueAnalyticsMetricsQueryResponseTimingsList>;
 
 export type RevenueAnalyticsMetricsQueryResponseUsedDataWarehouseSourcesList =
-  ReadonlyArray<DataWarehouseSourceUsage>;
+  Array<DataWarehouseSourceUsage>;
 export const RevenueAnalyticsMetricsQueryResponseUsedDataWarehouseSourcesList =
   /*@__PURE__*/ S.Array(
     DataWarehouseSourceUsage,
@@ -18773,7 +18736,7 @@ export const RevenueAnalyticsMetricsQueryResponseWarningsItem =
   }) as any as S.Schema<RevenueAnalyticsMetricsQueryResponseWarningsItem>;
 
 export type RevenueAnalyticsMetricsQueryResponseWarningsList =
-  ReadonlyArray<RevenueAnalyticsMetricsQueryResponseWarningsItem>;
+  Array<RevenueAnalyticsMetricsQueryResponseWarningsItem>;
 export const RevenueAnalyticsMetricsQueryResponseWarningsList =
   /*@__PURE__*/ S.Array(
     RevenueAnalyticsMetricsQueryResponseWarningsItem,
@@ -18862,39 +18825,38 @@ export const RevenueAnalyticsMetricsQuery = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RevenueAnalyticsMetricsQuery>;
 
 export type RevenueAnalyticsMRRQueryBreakdownList =
-  ReadonlyArray<RevenueAnalyticsBreakdown>;
+  Array<RevenueAnalyticsBreakdown>;
 export const RevenueAnalyticsMRRQueryBreakdownList = /*@__PURE__*/ S.Array(
   RevenueAnalyticsBreakdown,
 ) as any as S.Schema<RevenueAnalyticsMRRQueryBreakdownList>;
 
 export type RevenueAnalyticsMRRQueryPropertiesList =
-  ReadonlyArray<RevenueAnalyticsPropertyFilter>;
+  Array<RevenueAnalyticsPropertyFilter>;
 export const RevenueAnalyticsMRRQueryPropertiesList = /*@__PURE__*/ S.Array(
   RevenueAnalyticsPropertyFilter,
 ) as any as S.Schema<RevenueAnalyticsMRRQueryPropertiesList>;
 
-export type RevenueAnalyticsMRRQueryResponseColumnsList = ReadonlyArray<string>;
+export type RevenueAnalyticsMRRQueryResponseColumnsList = Array<string>;
 export const RevenueAnalyticsMRRQueryResponseColumnsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<RevenueAnalyticsMRRQueryResponseColumnsList>;
 
 export type RevenueAnalyticsMRRQueryResponseResultsList =
-  ReadonlyArray<RevenueAnalyticsMRRQueryResultItem>;
+  Array<RevenueAnalyticsMRRQueryResultItem>;
 export const RevenueAnalyticsMRRQueryResponseResultsList =
   /*@__PURE__*/ S.Array(
     RevenueAnalyticsMRRQueryResultItem,
   ) as any as S.Schema<RevenueAnalyticsMRRQueryResponseResultsList>;
 
-export type RevenueAnalyticsMRRQueryResponseTimingsList =
-  ReadonlyArray<QueryTiming>;
+export type RevenueAnalyticsMRRQueryResponseTimingsList = Array<QueryTiming>;
 export const RevenueAnalyticsMRRQueryResponseTimingsList =
   /*@__PURE__*/ S.Array(
     QueryTiming,
   ) as any as S.Schema<RevenueAnalyticsMRRQueryResponseTimingsList>;
 
 export type RevenueAnalyticsMRRQueryResponseUsedDataWarehouseSourcesList =
-  ReadonlyArray<DataWarehouseSourceUsage>;
+  Array<DataWarehouseSourceUsage>;
 export const RevenueAnalyticsMRRQueryResponseUsedDataWarehouseSourcesList =
   /*@__PURE__*/ S.Array(
     DataWarehouseSourceUsage,
@@ -18935,7 +18897,7 @@ export const RevenueAnalyticsMRRQueryResponseWarningsItem =
   }) as any as S.Schema<RevenueAnalyticsMRRQueryResponseWarningsItem>;
 
 export type RevenueAnalyticsMRRQueryResponseWarningsList =
-  ReadonlyArray<RevenueAnalyticsMRRQueryResponseWarningsItem>;
+  Array<RevenueAnalyticsMRRQueryResponseWarningsItem>;
 export const RevenueAnalyticsMRRQueryResponseWarningsList =
   /*@__PURE__*/ S.Array(
     RevenueAnalyticsMRRQueryResponseWarningsItem,
@@ -19017,28 +18979,28 @@ export const RevenueAnalyticsMRRQuery = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RevenueAnalyticsMRRQuery>;
 
 export type RevenueAnalyticsOverviewQueryPropertiesList =
-  ReadonlyArray<RevenueAnalyticsPropertyFilter>;
+  Array<RevenueAnalyticsPropertyFilter>;
 export const RevenueAnalyticsOverviewQueryPropertiesList =
   /*@__PURE__*/ S.Array(
     RevenueAnalyticsPropertyFilter,
   ) as any as S.Schema<RevenueAnalyticsOverviewQueryPropertiesList>;
 
 export type RevenueAnalyticsOverviewQueryResponseResultsList =
-  ReadonlyArray<RevenueAnalyticsOverviewItem>;
+  Array<RevenueAnalyticsOverviewItem>;
 export const RevenueAnalyticsOverviewQueryResponseResultsList =
   /*@__PURE__*/ S.Array(
     RevenueAnalyticsOverviewItem,
   ) as any as S.Schema<RevenueAnalyticsOverviewQueryResponseResultsList>;
 
 export type RevenueAnalyticsOverviewQueryResponseTimingsList =
-  ReadonlyArray<QueryTiming>;
+  Array<QueryTiming>;
 export const RevenueAnalyticsOverviewQueryResponseTimingsList =
   /*@__PURE__*/ S.Array(
     QueryTiming,
   ) as any as S.Schema<RevenueAnalyticsOverviewQueryResponseTimingsList>;
 
 export type RevenueAnalyticsOverviewQueryResponseUsedDataWarehouseSourcesList =
-  ReadonlyArray<DataWarehouseSourceUsage>;
+  Array<DataWarehouseSourceUsage>;
 export const RevenueAnalyticsOverviewQueryResponseUsedDataWarehouseSourcesList =
   /*@__PURE__*/ S.Array(
     DataWarehouseSourceUsage,
@@ -19079,7 +19041,7 @@ export const RevenueAnalyticsOverviewQueryResponseWarningsItem =
   }) as any as S.Schema<RevenueAnalyticsOverviewQueryResponseWarningsItem>;
 
 export type RevenueAnalyticsOverviewQueryResponseWarningsList =
-  ReadonlyArray<RevenueAnalyticsOverviewQueryResponseWarningsItem>;
+  Array<RevenueAnalyticsOverviewQueryResponseWarningsItem>;
 export const RevenueAnalyticsOverviewQueryResponseWarningsList =
   /*@__PURE__*/ S.Array(
     RevenueAnalyticsOverviewQueryResponseWarningsItem,
@@ -19163,28 +19125,28 @@ export type RevenueAnalyticsTopCustomersGroupBy = "month" | "all";
 export const RevenueAnalyticsTopCustomersGroupBy = /*@__PURE__*/ S.String;
 
 export type RevenueAnalyticsTopCustomersQueryPropertiesList =
-  ReadonlyArray<RevenueAnalyticsPropertyFilter>;
+  Array<RevenueAnalyticsPropertyFilter>;
 export const RevenueAnalyticsTopCustomersQueryPropertiesList =
   /*@__PURE__*/ S.Array(
     RevenueAnalyticsPropertyFilter,
   ) as any as S.Schema<RevenueAnalyticsTopCustomersQueryPropertiesList>;
 
 export type RevenueAnalyticsTopCustomersQueryResponseColumnsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RevenueAnalyticsTopCustomersQueryResponseColumnsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<RevenueAnalyticsTopCustomersQueryResponseColumnsList>;
 
 export type RevenueAnalyticsTopCustomersQueryResponseTimingsList =
-  ReadonlyArray<QueryTiming>;
+  Array<QueryTiming>;
 export const RevenueAnalyticsTopCustomersQueryResponseTimingsList =
   /*@__PURE__*/ S.Array(
     QueryTiming,
   ) as any as S.Schema<RevenueAnalyticsTopCustomersQueryResponseTimingsList>;
 
 export type RevenueAnalyticsTopCustomersQueryResponseUsedDataWarehouseSourcesList =
-  ReadonlyArray<DataWarehouseSourceUsage>;
+  Array<DataWarehouseSourceUsage>;
 export const RevenueAnalyticsTopCustomersQueryResponseUsedDataWarehouseSourcesList =
   /*@__PURE__*/ S.Array(
     DataWarehouseSourceUsage,
@@ -19225,7 +19187,7 @@ export const RevenueAnalyticsTopCustomersQueryResponseWarningsItem =
   }) as any as S.Schema<RevenueAnalyticsTopCustomersQueryResponseWarningsItem>;
 
 export type RevenueAnalyticsTopCustomersQueryResponseWarningsList =
-  ReadonlyArray<RevenueAnalyticsTopCustomersQueryResponseWarningsItem>;
+  Array<RevenueAnalyticsTopCustomersQueryResponseWarningsItem>;
 export const RevenueAnalyticsTopCustomersQueryResponseWarningsList =
   /*@__PURE__*/ S.Array(
     RevenueAnalyticsTopCustomersQueryResponseWarningsItem,
@@ -19311,27 +19273,25 @@ export const RevenueAnalyticsTopCustomersQuery = /*@__PURE__*/ S.suspend(() =>
   identifier: "RevenueAnalyticsTopCustomersQuery",
 }) as any as S.Schema<RevenueAnalyticsTopCustomersQuery>;
 
-export type RevenueExampleEventsQueryResponseColumnsList =
-  ReadonlyArray<unknown>;
+export type RevenueExampleEventsQueryResponseColumnsList = Array<unknown>;
 export const RevenueExampleEventsQueryResponseColumnsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<RevenueExampleEventsQueryResponseColumnsList>;
 
-export type RevenueExampleEventsQueryResponseTimingsList =
-  ReadonlyArray<QueryTiming>;
+export type RevenueExampleEventsQueryResponseTimingsList = Array<QueryTiming>;
 export const RevenueExampleEventsQueryResponseTimingsList =
   /*@__PURE__*/ S.Array(
     QueryTiming,
   ) as any as S.Schema<RevenueExampleEventsQueryResponseTimingsList>;
 
-export type RevenueExampleEventsQueryResponseTypesList = ReadonlyArray<unknown>;
+export type RevenueExampleEventsQueryResponseTypesList = Array<unknown>;
 export const RevenueExampleEventsQueryResponseTypesList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<RevenueExampleEventsQueryResponseTypesList>;
 
 export type RevenueExampleEventsQueryResponseUsedDataWarehouseSourcesList =
-  ReadonlyArray<DataWarehouseSourceUsage>;
+  Array<DataWarehouseSourceUsage>;
 export const RevenueExampleEventsQueryResponseUsedDataWarehouseSourcesList =
   /*@__PURE__*/ S.Array(
     DataWarehouseSourceUsage,
@@ -19372,7 +19332,7 @@ export const RevenueExampleEventsQueryResponseWarningsItem =
   }) as any as S.Schema<RevenueExampleEventsQueryResponseWarningsItem>;
 
 export type RevenueExampleEventsQueryResponseWarningsList =
-  ReadonlyArray<RevenueExampleEventsQueryResponseWarningsItem>;
+  Array<RevenueExampleEventsQueryResponseWarningsItem>;
 export const RevenueExampleEventsQueryResponseWarningsList =
   /*@__PURE__*/ S.Array(
     RevenueExampleEventsQueryResponseWarningsItem,
@@ -19458,28 +19418,28 @@ export const RevenueExampleEventsQuery = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RevenueExampleEventsQuery>;
 
 export type RevenueExampleDataWarehouseTablesQueryResponseColumnsList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const RevenueExampleDataWarehouseTablesQueryResponseColumnsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<RevenueExampleDataWarehouseTablesQueryResponseColumnsList>;
 
 export type RevenueExampleDataWarehouseTablesQueryResponseTimingsList =
-  ReadonlyArray<QueryTiming>;
+  Array<QueryTiming>;
 export const RevenueExampleDataWarehouseTablesQueryResponseTimingsList =
   /*@__PURE__*/ S.Array(
     QueryTiming,
   ) as any as S.Schema<RevenueExampleDataWarehouseTablesQueryResponseTimingsList>;
 
 export type RevenueExampleDataWarehouseTablesQueryResponseTypesList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const RevenueExampleDataWarehouseTablesQueryResponseTypesList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<RevenueExampleDataWarehouseTablesQueryResponseTypesList>;
 
 export type RevenueExampleDataWarehouseTablesQueryResponseUsedDataWarehouseSourcesList =
-  ReadonlyArray<DataWarehouseSourceUsage>;
+  Array<DataWarehouseSourceUsage>;
 export const RevenueExampleDataWarehouseTablesQueryResponseUsedDataWarehouseSourcesList =
   /*@__PURE__*/ S.Array(
     DataWarehouseSourceUsage,
@@ -19520,7 +19480,7 @@ export const RevenueExampleDataWarehouseTablesQueryResponseWarningsItem =
   }) as any as S.Schema<RevenueExampleDataWarehouseTablesQueryResponseWarningsItem>;
 
 export type RevenueExampleDataWarehouseTablesQueryResponseWarningsList =
-  ReadonlyArray<RevenueExampleDataWarehouseTablesQueryResponseWarningsItem>;
+  Array<RevenueExampleDataWarehouseTablesQueryResponseWarningsItem>;
 export const RevenueExampleDataWarehouseTablesQueryResponseWarningsList =
   /*@__PURE__*/ S.Array(
     RevenueExampleDataWarehouseTablesQueryResponseWarningsItem,
@@ -19716,7 +19676,7 @@ export const ConversionGoalFilter1FixedPropertiesItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ConversionGoalFilter1FixedPropertiesItem>;
 
 export type ConversionGoalFilter1FixedPropertiesList =
-  ReadonlyArray<ConversionGoalFilter1FixedPropertiesItem>;
+  Array<ConversionGoalFilter1FixedPropertiesItem>;
 export const ConversionGoalFilter1FixedPropertiesList = /*@__PURE__*/ S.Array(
   ConversionGoalFilter1FixedPropertiesItem,
 ) as any as S.Schema<ConversionGoalFilter1FixedPropertiesList>;
@@ -19732,7 +19692,7 @@ export type ConversionGoalFilter1Math =
 export const ConversionGoalFilter1Math =
   /*@__PURE__*/ S.Unknown as any as S.Schema<ConversionGoalFilter1Math>;
 
-export type ConversionGoalFilter1OrderByList = ReadonlyArray<string>;
+export type ConversionGoalFilter1OrderByList = Array<string>;
 export const ConversionGoalFilter1OrderByList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ConversionGoalFilter1OrderByList>;
@@ -19819,7 +19779,7 @@ export const ConversionGoalFilter1PropertiesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConversionGoalFilter1PropertiesItem>;
 
 export type ConversionGoalFilter1PropertiesList =
-  ReadonlyArray<ConversionGoalFilter1PropertiesItem>;
+  Array<ConversionGoalFilter1PropertiesItem>;
 export const ConversionGoalFilter1PropertiesList = /*@__PURE__*/ S.Array(
   ConversionGoalFilter1PropertiesItem,
 ) as any as S.Schema<ConversionGoalFilter1PropertiesList>;
@@ -19989,7 +19949,7 @@ export const ConversionGoalFilter2FixedPropertiesItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ConversionGoalFilter2FixedPropertiesItem>;
 
 export type ConversionGoalFilter2FixedPropertiesList =
-  ReadonlyArray<ConversionGoalFilter2FixedPropertiesItem>;
+  Array<ConversionGoalFilter2FixedPropertiesItem>;
 export const ConversionGoalFilter2FixedPropertiesList = /*@__PURE__*/ S.Array(
   ConversionGoalFilter2FixedPropertiesItem,
 ) as any as S.Schema<ConversionGoalFilter2FixedPropertiesList>;
@@ -20087,7 +20047,7 @@ export const ConversionGoalFilter2PropertiesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConversionGoalFilter2PropertiesItem>;
 
 export type ConversionGoalFilter2PropertiesList =
-  ReadonlyArray<ConversionGoalFilter2PropertiesItem>;
+  Array<ConversionGoalFilter2PropertiesItem>;
 export const ConversionGoalFilter2PropertiesList = /*@__PURE__*/ S.Array(
   ConversionGoalFilter2PropertiesItem,
 ) as any as S.Schema<ConversionGoalFilter2PropertiesList>;
@@ -20251,7 +20211,7 @@ export const ConversionGoalFilter3FixedPropertiesItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ConversionGoalFilter3FixedPropertiesItem>;
 
 export type ConversionGoalFilter3FixedPropertiesList =
-  ReadonlyArray<ConversionGoalFilter3FixedPropertiesItem>;
+  Array<ConversionGoalFilter3FixedPropertiesItem>;
 export const ConversionGoalFilter3FixedPropertiesList = /*@__PURE__*/ S.Array(
   ConversionGoalFilter3FixedPropertiesItem,
 ) as any as S.Schema<ConversionGoalFilter3FixedPropertiesList>;
@@ -20349,7 +20309,7 @@ export const ConversionGoalFilter3PropertiesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConversionGoalFilter3PropertiesItem>;
 
 export type ConversionGoalFilter3PropertiesList =
-  ReadonlyArray<ConversionGoalFilter3PropertiesItem>;
+  Array<ConversionGoalFilter3PropertiesItem>;
 export const ConversionGoalFilter3PropertiesList = /*@__PURE__*/ S.Array(
   ConversionGoalFilter3PropertiesItem,
 ) as any as S.Schema<ConversionGoalFilter3PropertiesList>;
@@ -20578,7 +20538,7 @@ export type MarketingAnalyticsDrillDownLevel =
   | "term";
 export const MarketingAnalyticsDrillDownLevel = /*@__PURE__*/ S.String;
 
-export type IntegrationFilterIntegrationSourceIdsList = ReadonlyArray<string>;
+export type IntegrationFilterIntegrationSourceIdsList = Array<string>;
 export const IntegrationFilterIntegrationSourceIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<IntegrationFilterIntegrationSourceIdsList>;
@@ -20607,14 +20567,14 @@ export const MarketingAnalyticsTableQueryOrderByItemItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<MarketingAnalyticsTableQueryOrderByItemItem>;
 
 export type MarketingAnalyticsTableQueryOrderByItemList =
-  ReadonlyArray<MarketingAnalyticsTableQueryOrderByItemItem>;
+  Array<MarketingAnalyticsTableQueryOrderByItemItem>;
 export const MarketingAnalyticsTableQueryOrderByItemList =
   /*@__PURE__*/ S.Array(
     MarketingAnalyticsTableQueryOrderByItemItem,
   ) as any as S.Schema<MarketingAnalyticsTableQueryOrderByItemList>;
 
 export type MarketingAnalyticsTableQueryOrderByList =
-  ReadonlyArray<MarketingAnalyticsTableQueryOrderByItemList>;
+  Array<MarketingAnalyticsTableQueryOrderByItemList>;
 export const MarketingAnalyticsTableQueryOrderByList = /*@__PURE__*/ S.Array(
   MarketingAnalyticsTableQueryOrderByItemList,
 ) as any as S.Schema<MarketingAnalyticsTableQueryOrderByList>;
@@ -20657,48 +20617,46 @@ export const MarketingAnalyticsTableQueryPropertiesItem =
   }) as any as S.Schema<MarketingAnalyticsTableQueryPropertiesItem>;
 
 export type MarketingAnalyticsTableQueryPropertiesList =
-  ReadonlyArray<MarketingAnalyticsTableQueryPropertiesItem>;
+  Array<MarketingAnalyticsTableQueryPropertiesItem>;
 export const MarketingAnalyticsTableQueryPropertiesList = /*@__PURE__*/ S.Array(
   MarketingAnalyticsTableQueryPropertiesItem,
 ) as any as S.Schema<MarketingAnalyticsTableQueryPropertiesList>;
 
-export type MarketingAnalyticsTableQueryResponseColumnsList =
-  ReadonlyArray<unknown>;
+export type MarketingAnalyticsTableQueryResponseColumnsList = Array<unknown>;
 export const MarketingAnalyticsTableQueryResponseColumnsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<MarketingAnalyticsTableQueryResponseColumnsList>;
 
 export type MarketingAnalyticsTableQueryResponseResultsItemList =
-  ReadonlyArray<MarketingAnalyticsItem>;
+  Array<MarketingAnalyticsItem>;
 export const MarketingAnalyticsTableQueryResponseResultsItemList =
   /*@__PURE__*/ S.Array(
     MarketingAnalyticsItem,
   ) as any as S.Schema<MarketingAnalyticsTableQueryResponseResultsItemList>;
 
 export type MarketingAnalyticsTableQueryResponseResultsList =
-  ReadonlyArray<MarketingAnalyticsTableQueryResponseResultsItemList>;
+  Array<MarketingAnalyticsTableQueryResponseResultsItemList>;
 export const MarketingAnalyticsTableQueryResponseResultsList =
   /*@__PURE__*/ S.Array(
     MarketingAnalyticsTableQueryResponseResultsItemList,
   ) as any as S.Schema<MarketingAnalyticsTableQueryResponseResultsList>;
 
 export type MarketingAnalyticsTableQueryResponseTimingsList =
-  ReadonlyArray<QueryTiming>;
+  Array<QueryTiming>;
 export const MarketingAnalyticsTableQueryResponseTimingsList =
   /*@__PURE__*/ S.Array(
     QueryTiming,
   ) as any as S.Schema<MarketingAnalyticsTableQueryResponseTimingsList>;
 
-export type MarketingAnalyticsTableQueryResponseTypesList =
-  ReadonlyArray<unknown>;
+export type MarketingAnalyticsTableQueryResponseTypesList = Array<unknown>;
 export const MarketingAnalyticsTableQueryResponseTypesList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<MarketingAnalyticsTableQueryResponseTypesList>;
 
 export type MarketingAnalyticsTableQueryResponseUsedDataWarehouseSourcesList =
-  ReadonlyArray<DataWarehouseSourceUsage>;
+  Array<DataWarehouseSourceUsage>;
 export const MarketingAnalyticsTableQueryResponseUsedDataWarehouseSourcesList =
   /*@__PURE__*/ S.Array(
     DataWarehouseSourceUsage,
@@ -20739,7 +20697,7 @@ export const MarketingAnalyticsTableQueryResponseWarningsItem =
   }) as any as S.Schema<MarketingAnalyticsTableQueryResponseWarningsItem>;
 
 export type MarketingAnalyticsTableQueryResponseWarningsList =
-  ReadonlyArray<MarketingAnalyticsTableQueryResponseWarningsItem>;
+  Array<MarketingAnalyticsTableQueryResponseWarningsItem>;
 export const MarketingAnalyticsTableQueryResponseWarningsList =
   /*@__PURE__*/ S.Array(
     MarketingAnalyticsTableQueryResponseWarningsItem,
@@ -20810,7 +20768,7 @@ export const MarketingAnalyticsTableQueryResponse = /*@__PURE__*/ S.suspend(
   identifier: "MarketingAnalyticsTableQueryResponse",
 }) as any as S.Schema<MarketingAnalyticsTableQueryResponse>;
 
-export type MarketingAnalyticsTableQuerySelectList = ReadonlyArray<string>;
+export type MarketingAnalyticsTableQuerySelectList = Array<string>;
 export const MarketingAnalyticsTableQuerySelectList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<MarketingAnalyticsTableQuerySelectList>;
@@ -21074,7 +21032,7 @@ export const MarketingAnalyticsAggregatedQueryPropertiesItem =
   }) as any as S.Schema<MarketingAnalyticsAggregatedQueryPropertiesItem>;
 
 export type MarketingAnalyticsAggregatedQueryPropertiesList =
-  ReadonlyArray<MarketingAnalyticsAggregatedQueryPropertiesItem>;
+  Array<MarketingAnalyticsAggregatedQueryPropertiesItem>;
 export const MarketingAnalyticsAggregatedQueryPropertiesList =
   /*@__PURE__*/ S.Array(
     MarketingAnalyticsAggregatedQueryPropertiesItem,
@@ -21090,14 +21048,14 @@ export const MarketingAnalyticsAggregatedQueryResponseResultsMap =
   ) as any as S.Schema<MarketingAnalyticsAggregatedQueryResponseResultsMap>;
 
 export type MarketingAnalyticsAggregatedQueryResponseTimingsList =
-  ReadonlyArray<QueryTiming>;
+  Array<QueryTiming>;
 export const MarketingAnalyticsAggregatedQueryResponseTimingsList =
   /*@__PURE__*/ S.Array(
     QueryTiming,
   ) as any as S.Schema<MarketingAnalyticsAggregatedQueryResponseTimingsList>;
 
 export type MarketingAnalyticsAggregatedQueryResponseUsedDataWarehouseSourcesList =
-  ReadonlyArray<DataWarehouseSourceUsage>;
+  Array<DataWarehouseSourceUsage>;
 export const MarketingAnalyticsAggregatedQueryResponseUsedDataWarehouseSourcesList =
   /*@__PURE__*/ S.Array(
     DataWarehouseSourceUsage,
@@ -21138,7 +21096,7 @@ export const MarketingAnalyticsAggregatedQueryResponseWarningsItem =
   }) as any as S.Schema<MarketingAnalyticsAggregatedQueryResponseWarningsItem>;
 
 export type MarketingAnalyticsAggregatedQueryResponseWarningsList =
-  ReadonlyArray<MarketingAnalyticsAggregatedQueryResponseWarningsItem>;
+  Array<MarketingAnalyticsAggregatedQueryResponseWarningsItem>;
 export const MarketingAnalyticsAggregatedQueryResponseWarningsList =
   /*@__PURE__*/ S.Array(
     MarketingAnalyticsAggregatedQueryResponseWarningsItem,
@@ -21195,7 +21153,7 @@ export const MarketingAnalyticsAggregatedQueryResponse =
     identifier: "MarketingAnalyticsAggregatedQueryResponse",
   }) as any as S.Schema<MarketingAnalyticsAggregatedQueryResponse>;
 
-export type MarketingAnalyticsAggregatedQuerySelectList = ReadonlyArray<string>;
+export type MarketingAnalyticsAggregatedQuerySelectList = Array<string>;
 export const MarketingAnalyticsAggregatedQuerySelectList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -21418,14 +21376,14 @@ export const NonIntegratedConversionsTableQueryOrderByItemItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<NonIntegratedConversionsTableQueryOrderByItemItem>;
 
 export type NonIntegratedConversionsTableQueryOrderByItemList =
-  ReadonlyArray<NonIntegratedConversionsTableQueryOrderByItemItem>;
+  Array<NonIntegratedConversionsTableQueryOrderByItemItem>;
 export const NonIntegratedConversionsTableQueryOrderByItemList =
   /*@__PURE__*/ S.Array(
     NonIntegratedConversionsTableQueryOrderByItemItem,
   ) as any as S.Schema<NonIntegratedConversionsTableQueryOrderByItemList>;
 
 export type NonIntegratedConversionsTableQueryOrderByList =
-  ReadonlyArray<NonIntegratedConversionsTableQueryOrderByItemList>;
+  Array<NonIntegratedConversionsTableQueryOrderByItemList>;
 export const NonIntegratedConversionsTableQueryOrderByList =
   /*@__PURE__*/ S.Array(
     NonIntegratedConversionsTableQueryOrderByItemList,
@@ -21469,49 +21427,49 @@ export const NonIntegratedConversionsTableQueryPropertiesItem =
   }) as any as S.Schema<NonIntegratedConversionsTableQueryPropertiesItem>;
 
 export type NonIntegratedConversionsTableQueryPropertiesList =
-  ReadonlyArray<NonIntegratedConversionsTableQueryPropertiesItem>;
+  Array<NonIntegratedConversionsTableQueryPropertiesItem>;
 export const NonIntegratedConversionsTableQueryPropertiesList =
   /*@__PURE__*/ S.Array(
     NonIntegratedConversionsTableQueryPropertiesItem,
   ) as any as S.Schema<NonIntegratedConversionsTableQueryPropertiesList>;
 
 export type NonIntegratedConversionsTableQueryResponseColumnsList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const NonIntegratedConversionsTableQueryResponseColumnsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<NonIntegratedConversionsTableQueryResponseColumnsList>;
 
 export type NonIntegratedConversionsTableQueryResponseResultsItemList =
-  ReadonlyArray<MarketingAnalyticsItem>;
+  Array<MarketingAnalyticsItem>;
 export const NonIntegratedConversionsTableQueryResponseResultsItemList =
   /*@__PURE__*/ S.Array(
     MarketingAnalyticsItem,
   ) as any as S.Schema<NonIntegratedConversionsTableQueryResponseResultsItemList>;
 
 export type NonIntegratedConversionsTableQueryResponseResultsList =
-  ReadonlyArray<NonIntegratedConversionsTableQueryResponseResultsItemList>;
+  Array<NonIntegratedConversionsTableQueryResponseResultsItemList>;
 export const NonIntegratedConversionsTableQueryResponseResultsList =
   /*@__PURE__*/ S.Array(
     NonIntegratedConversionsTableQueryResponseResultsItemList,
   ) as any as S.Schema<NonIntegratedConversionsTableQueryResponseResultsList>;
 
 export type NonIntegratedConversionsTableQueryResponseTimingsList =
-  ReadonlyArray<QueryTiming>;
+  Array<QueryTiming>;
 export const NonIntegratedConversionsTableQueryResponseTimingsList =
   /*@__PURE__*/ S.Array(
     QueryTiming,
   ) as any as S.Schema<NonIntegratedConversionsTableQueryResponseTimingsList>;
 
 export type NonIntegratedConversionsTableQueryResponseTypesList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const NonIntegratedConversionsTableQueryResponseTypesList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<NonIntegratedConversionsTableQueryResponseTypesList>;
 
 export type NonIntegratedConversionsTableQueryResponseUsedDataWarehouseSourcesList =
-  ReadonlyArray<DataWarehouseSourceUsage>;
+  Array<DataWarehouseSourceUsage>;
 export const NonIntegratedConversionsTableQueryResponseUsedDataWarehouseSourcesList =
   /*@__PURE__*/ S.Array(
     DataWarehouseSourceUsage,
@@ -21552,7 +21510,7 @@ export const NonIntegratedConversionsTableQueryResponseWarningsItem =
   }) as any as S.Schema<NonIntegratedConversionsTableQueryResponseWarningsItem>;
 
 export type NonIntegratedConversionsTableQueryResponseWarningsList =
-  ReadonlyArray<NonIntegratedConversionsTableQueryResponseWarningsItem>;
+  Array<NonIntegratedConversionsTableQueryResponseWarningsItem>;
 export const NonIntegratedConversionsTableQueryResponseWarningsList =
   /*@__PURE__*/ S.Array(
     NonIntegratedConversionsTableQueryResponseWarningsItem,
@@ -21625,8 +21583,7 @@ export const NonIntegratedConversionsTableQueryResponse =
     identifier: "NonIntegratedConversionsTableQueryResponse",
   }) as any as S.Schema<NonIntegratedConversionsTableQueryResponse>;
 
-export type NonIntegratedConversionsTableQuerySelectList =
-  ReadonlyArray<string>;
+export type NonIntegratedConversionsTableQuerySelectList = Array<string>;
 export const NonIntegratedConversionsTableQuerySelectList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -21750,30 +21707,29 @@ export const ErrorTrackingPendingFingerprintIssueStateUpdate =
   }) as any as S.Schema<ErrorTrackingPendingFingerprintIssueStateUpdate>;
 
 export type ErrorTrackingQueryPendingFingerprintIssueStateUpdatesList =
-  ReadonlyArray<ErrorTrackingPendingFingerprintIssueStateUpdate>;
+  Array<ErrorTrackingPendingFingerprintIssueStateUpdate>;
 export const ErrorTrackingQueryPendingFingerprintIssueStateUpdatesList =
   /*@__PURE__*/ S.Array(
     ErrorTrackingPendingFingerprintIssueStateUpdate,
   ) as any as S.Schema<ErrorTrackingQueryPendingFingerprintIssueStateUpdatesList>;
 
-export type ErrorTrackingQueryResponseColumnsList = ReadonlyArray<string>;
+export type ErrorTrackingQueryResponseColumnsList = Array<string>;
 export const ErrorTrackingQueryResponseColumnsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ErrorTrackingQueryResponseColumnsList>;
 
-export type ErrorTrackingQueryResponseResultsList =
-  ReadonlyArray<ErrorTrackingIssue>;
+export type ErrorTrackingQueryResponseResultsList = Array<ErrorTrackingIssue>;
 export const ErrorTrackingQueryResponseResultsList = /*@__PURE__*/ S.Array(
   ErrorTrackingIssue,
 ) as any as S.Schema<ErrorTrackingQueryResponseResultsList>;
 
-export type ErrorTrackingQueryResponseTimingsList = ReadonlyArray<QueryTiming>;
+export type ErrorTrackingQueryResponseTimingsList = Array<QueryTiming>;
 export const ErrorTrackingQueryResponseTimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<ErrorTrackingQueryResponseTimingsList>;
 
 export type ErrorTrackingQueryResponseUsedDataWarehouseSourcesList =
-  ReadonlyArray<DataWarehouseSourceUsage>;
+  Array<DataWarehouseSourceUsage>;
 export const ErrorTrackingQueryResponseUsedDataWarehouseSourcesList =
   /*@__PURE__*/ S.Array(
     DataWarehouseSourceUsage,
@@ -21814,7 +21770,7 @@ export const ErrorTrackingQueryResponseWarningsItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ErrorTrackingQueryResponseWarningsItem>;
 
 export type ErrorTrackingQueryResponseWarningsList =
-  ReadonlyArray<ErrorTrackingQueryResponseWarningsItem>;
+  Array<ErrorTrackingQueryResponseWarningsItem>;
 export const ErrorTrackingQueryResponseWarningsList = /*@__PURE__*/ S.Array(
   ErrorTrackingQueryResponseWarningsItem,
 ) as any as S.Schema<ErrorTrackingQueryResponseWarningsList>;
@@ -21947,36 +21903,35 @@ export const ErrorTrackingQuery = /*@__PURE__*/ S.suspend(() =>
   identifier: "ErrorTrackingQuery",
 }) as any as S.Schema<ErrorTrackingQuery>;
 
-export type ErrorTrackingIssueCorrelationQueryEventsList =
-  ReadonlyArray<string>;
+export type ErrorTrackingIssueCorrelationQueryEventsList = Array<string>;
 export const ErrorTrackingIssueCorrelationQueryEventsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ErrorTrackingIssueCorrelationQueryEventsList>;
 
 export type ErrorTrackingIssueCorrelationQueryResponseColumnsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ErrorTrackingIssueCorrelationQueryResponseColumnsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ErrorTrackingIssueCorrelationQueryResponseColumnsList>;
 
 export type ErrorTrackingIssueCorrelationQueryResponseResultsList =
-  ReadonlyArray<ErrorTrackingCorrelatedIssue>;
+  Array<ErrorTrackingCorrelatedIssue>;
 export const ErrorTrackingIssueCorrelationQueryResponseResultsList =
   /*@__PURE__*/ S.Array(
     ErrorTrackingCorrelatedIssue,
   ) as any as S.Schema<ErrorTrackingIssueCorrelationQueryResponseResultsList>;
 
 export type ErrorTrackingIssueCorrelationQueryResponseTimingsList =
-  ReadonlyArray<QueryTiming>;
+  Array<QueryTiming>;
 export const ErrorTrackingIssueCorrelationQueryResponseTimingsList =
   /*@__PURE__*/ S.Array(
     QueryTiming,
   ) as any as S.Schema<ErrorTrackingIssueCorrelationQueryResponseTimingsList>;
 
 export type ErrorTrackingIssueCorrelationQueryResponseUsedDataWarehouseSourcesList =
-  ReadonlyArray<DataWarehouseSourceUsage>;
+  Array<DataWarehouseSourceUsage>;
 export const ErrorTrackingIssueCorrelationQueryResponseUsedDataWarehouseSourcesList =
   /*@__PURE__*/ S.Array(
     DataWarehouseSourceUsage,
@@ -22017,7 +21972,7 @@ export const ErrorTrackingIssueCorrelationQueryResponseWarningsItem =
   }) as any as S.Schema<ErrorTrackingIssueCorrelationQueryResponseWarningsItem>;
 
 export type ErrorTrackingIssueCorrelationQueryResponseWarningsList =
-  ReadonlyArray<ErrorTrackingIssueCorrelationQueryResponseWarningsItem>;
+  Array<ErrorTrackingIssueCorrelationQueryResponseWarningsItem>;
 export const ErrorTrackingIssueCorrelationQueryResponseWarningsList =
   /*@__PURE__*/ S.Array(
     ErrorTrackingIssueCorrelationQueryResponseWarningsItem,
@@ -22108,7 +22063,7 @@ export const ErrorTrackingIssueCorrelationQuery = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ErrorTrackingIssueCorrelationQuery>;
 
 export type ExperimentFunnelsQueryResponseCredibleIntervalsValueList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const ExperimentFunnelsQueryResponseCredibleIntervalsValueList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -22135,14 +22090,14 @@ export const ExperimentFunnelsQueryResponseInsightItemItemMap =
   ) as any as S.Schema<ExperimentFunnelsQueryResponseInsightItemItemMap>;
 
 export type ExperimentFunnelsQueryResponseInsightItemList =
-  ReadonlyArray<ExperimentFunnelsQueryResponseInsightItemItemMap>;
+  Array<ExperimentFunnelsQueryResponseInsightItemItemMap>;
 export const ExperimentFunnelsQueryResponseInsightItemList =
   /*@__PURE__*/ S.Array(
     ExperimentFunnelsQueryResponseInsightItemItemMap,
   ) as any as S.Schema<ExperimentFunnelsQueryResponseInsightItemList>;
 
 export type ExperimentFunnelsQueryResponseInsightList =
-  ReadonlyArray<ExperimentFunnelsQueryResponseInsightItemList>;
+  Array<ExperimentFunnelsQueryResponseInsightItemList>;
 export const ExperimentFunnelsQueryResponseInsightList = /*@__PURE__*/ S.Array(
   ExperimentFunnelsQueryResponseInsightItemList,
 ) as any as S.Schema<ExperimentFunnelsQueryResponseInsightList>;
@@ -22157,13 +22112,13 @@ export const ExperimentFunnelsQueryResponseProbabilityMap =
   ) as any as S.Schema<ExperimentFunnelsQueryResponseProbabilityMap>;
 
 export type ExperimentFunnelsQueryResponseVariantsList =
-  ReadonlyArray<ExperimentVariantFunnelsBaseStats>;
+  Array<ExperimentVariantFunnelsBaseStats>;
 export const ExperimentFunnelsQueryResponseVariantsList = /*@__PURE__*/ S.Array(
   ExperimentVariantFunnelsBaseStats,
 ) as any as S.Schema<ExperimentFunnelsQueryResponseVariantsList>;
 
 export type ExperimentFunnelsQueryResponseWarningsList =
-  ReadonlyArray<DataWarehouseSyncWarning>;
+  Array<DataWarehouseSyncWarning>;
 export const ExperimentFunnelsQueryResponseWarningsList = /*@__PURE__*/ S.Array(
   DataWarehouseSyncWarning,
 ) as any as S.Schema<ExperimentFunnelsQueryResponseWarningsList>;
@@ -22234,7 +22189,7 @@ export const ExperimentFunnelsQuery = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExperimentFunnelsQuery>;
 
 export type ExperimentTrendsQueryResponseCredibleIntervalsValueList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const ExperimentTrendsQueryResponseCredibleIntervalsValueList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -22261,7 +22216,7 @@ export const ExperimentTrendsQueryResponseInsightItemMap =
   ) as any as S.Schema<ExperimentTrendsQueryResponseInsightItemMap>;
 
 export type ExperimentTrendsQueryResponseInsightList =
-  ReadonlyArray<ExperimentTrendsQueryResponseInsightItemMap>;
+  Array<ExperimentTrendsQueryResponseInsightItemMap>;
 export const ExperimentTrendsQueryResponseInsightList = /*@__PURE__*/ S.Array(
   ExperimentTrendsQueryResponseInsightItemMap,
 ) as any as S.Schema<ExperimentTrendsQueryResponseInsightList>;
@@ -22276,13 +22231,13 @@ export const ExperimentTrendsQueryResponseProbabilityMap =
   ) as any as S.Schema<ExperimentTrendsQueryResponseProbabilityMap>;
 
 export type ExperimentTrendsQueryResponseVariantsList =
-  ReadonlyArray<ExperimentVariantTrendsBaseStats>;
+  Array<ExperimentVariantTrendsBaseStats>;
 export const ExperimentTrendsQueryResponseVariantsList = /*@__PURE__*/ S.Array(
   ExperimentVariantTrendsBaseStats,
 ) as any as S.Schema<ExperimentTrendsQueryResponseVariantsList>;
 
 export type ExperimentTrendsQueryResponseWarningsList =
-  ReadonlyArray<DataWarehouseSyncWarning>;
+  Array<DataWarehouseSyncWarning>;
 export const ExperimentTrendsQueryResponseWarningsList = /*@__PURE__*/ S.Array(
   DataWarehouseSyncWarning,
 ) as any as S.Schema<ExperimentTrendsQueryResponseWarningsList>;
@@ -22437,29 +22392,28 @@ export const TracesQueryPropertiesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "TracesQueryPropertiesItem",
 }) as any as S.Schema<TracesQueryPropertiesItem>;
 
-export type TracesQueryPropertiesList =
-  ReadonlyArray<TracesQueryPropertiesItem>;
+export type TracesQueryPropertiesList = Array<TracesQueryPropertiesItem>;
 export const TracesQueryPropertiesList = /*@__PURE__*/ S.Array(
   TracesQueryPropertiesItem,
 ) as any as S.Schema<TracesQueryPropertiesList>;
 
-export type TracesQueryResponseColumnsList = ReadonlyArray<string>;
+export type TracesQueryResponseColumnsList = Array<string>;
 export const TracesQueryResponseColumnsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<TracesQueryResponseColumnsList>;
 
-export type TracesQueryResponseResultsList = ReadonlyArray<LLMTrace>;
+export type TracesQueryResponseResultsList = Array<LLMTrace>;
 export const TracesQueryResponseResultsList = /*@__PURE__*/ S.Array(
   LLMTrace,
 ) as any as S.Schema<TracesQueryResponseResultsList>;
 
-export type TracesQueryResponseTimingsList = ReadonlyArray<QueryTiming>;
+export type TracesQueryResponseTimingsList = Array<QueryTiming>;
 export const TracesQueryResponseTimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<TracesQueryResponseTimingsList>;
 
 export type TracesQueryResponseUsedDataWarehouseSourcesList =
-  ReadonlyArray<DataWarehouseSourceUsage>;
+  Array<DataWarehouseSourceUsage>;
 export const TracesQueryResponseUsedDataWarehouseSourcesList =
   /*@__PURE__*/ S.Array(
     DataWarehouseSourceUsage,
@@ -22499,7 +22453,7 @@ export const TracesQueryResponseWarningsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TracesQueryResponseWarningsItem>;
 
 export type TracesQueryResponseWarningsList =
-  ReadonlyArray<TracesQueryResponseWarningsItem>;
+  Array<TracesQueryResponseWarningsItem>;
 export const TracesQueryResponseWarningsList = /*@__PURE__*/ S.Array(
   TracesQueryResponseWarningsItem,
 ) as any as S.Schema<TracesQueryResponseWarningsList>;
@@ -22684,28 +22638,28 @@ export const TraceQueryPropertiesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "TraceQueryPropertiesItem",
 }) as any as S.Schema<TraceQueryPropertiesItem>;
 
-export type TraceQueryPropertiesList = ReadonlyArray<TraceQueryPropertiesItem>;
+export type TraceQueryPropertiesList = Array<TraceQueryPropertiesItem>;
 export const TraceQueryPropertiesList = /*@__PURE__*/ S.Array(
   TraceQueryPropertiesItem,
 ) as any as S.Schema<TraceQueryPropertiesList>;
 
-export type TraceQueryResponseColumnsList = ReadonlyArray<string>;
+export type TraceQueryResponseColumnsList = Array<string>;
 export const TraceQueryResponseColumnsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<TraceQueryResponseColumnsList>;
 
-export type TraceQueryResponseResultsList = ReadonlyArray<LLMTrace>;
+export type TraceQueryResponseResultsList = Array<LLMTrace>;
 export const TraceQueryResponseResultsList = /*@__PURE__*/ S.Array(
   LLMTrace,
 ) as any as S.Schema<TraceQueryResponseResultsList>;
 
-export type TraceQueryResponseTimingsList = ReadonlyArray<QueryTiming>;
+export type TraceQueryResponseTimingsList = Array<QueryTiming>;
 export const TraceQueryResponseTimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<TraceQueryResponseTimingsList>;
 
 export type TraceQueryResponseUsedDataWarehouseSourcesList =
-  ReadonlyArray<DataWarehouseSourceUsage>;
+  Array<DataWarehouseSourceUsage>;
 export const TraceQueryResponseUsedDataWarehouseSourcesList =
   /*@__PURE__*/ S.Array(
     DataWarehouseSourceUsage,
@@ -22745,7 +22699,7 @@ export const TraceQueryResponseWarningsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TraceQueryResponseWarningsItem>;
 
 export type TraceQueryResponseWarningsList =
-  ReadonlyArray<TraceQueryResponseWarningsItem>;
+  Array<TraceQueryResponseWarningsItem>;
 export const TraceQueryResponseWarningsList = /*@__PURE__*/ S.Array(
   TraceQueryResponseWarningsItem,
 ) as any as S.Schema<TraceQueryResponseWarningsList>;
@@ -22829,23 +22783,23 @@ export const TraceQuery = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TraceQuery" }) as any as S.Schema<TraceQuery>;
 
-export type SessionQueryResponseColumnsList = ReadonlyArray<string>;
+export type SessionQueryResponseColumnsList = Array<string>;
 export const SessionQueryResponseColumnsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SessionQueryResponseColumnsList>;
 
-export type SessionQueryResponseResultsList = ReadonlyArray<LLMTrace>;
+export type SessionQueryResponseResultsList = Array<LLMTrace>;
 export const SessionQueryResponseResultsList = /*@__PURE__*/ S.Array(
   LLMTrace,
 ) as any as S.Schema<SessionQueryResponseResultsList>;
 
-export type SessionQueryResponseTimingsList = ReadonlyArray<QueryTiming>;
+export type SessionQueryResponseTimingsList = Array<QueryTiming>;
 export const SessionQueryResponseTimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<SessionQueryResponseTimingsList>;
 
 export type SessionQueryResponseUsedDataWarehouseSourcesList =
-  ReadonlyArray<DataWarehouseSourceUsage>;
+  Array<DataWarehouseSourceUsage>;
 export const SessionQueryResponseUsedDataWarehouseSourcesList =
   /*@__PURE__*/ S.Array(
     DataWarehouseSourceUsage,
@@ -22885,7 +22839,7 @@ export const SessionQueryResponseWarningsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SessionQueryResponseWarningsItem>;
 
 export type SessionQueryResponseWarningsList =
-  ReadonlyArray<SessionQueryResponseWarningsItem>;
+  Array<SessionQueryResponseWarningsItem>;
 export const SessionQueryResponseWarningsList = /*@__PURE__*/ S.Array(
   SessionQueryResponseWarningsItem,
 ) as any as S.Schema<SessionQueryResponseWarningsList>;
@@ -22977,7 +22931,7 @@ export type EndpointsUsageBreakdown =
   | "Status";
 export const EndpointsUsageBreakdown = /*@__PURE__*/ S.String;
 
-export type EndpointsUsageTableQueryEndpointNamesList = ReadonlyArray<string>;
+export type EndpointsUsageTableQueryEndpointNamesList = Array<string>;
 export const EndpointsUsageTableQueryEndpointNamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EndpointsUsageTableQueryEndpointNamesList>;
@@ -23003,39 +22957,36 @@ export const EndpointsUsageTableQueryOrderByItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<EndpointsUsageTableQueryOrderByItem>;
 
 export type EndpointsUsageTableQueryOrderByList =
-  ReadonlyArray<EndpointsUsageTableQueryOrderByItem>;
+  Array<EndpointsUsageTableQueryOrderByItem>;
 export const EndpointsUsageTableQueryOrderByList = /*@__PURE__*/ S.Array(
   EndpointsUsageTableQueryOrderByItem,
 ) as any as S.Schema<EndpointsUsageTableQueryOrderByList>;
 
-export type EndpointsUsageTableQueryResponseColumnsList =
-  ReadonlyArray<unknown>;
+export type EndpointsUsageTableQueryResponseColumnsList = Array<unknown>;
 export const EndpointsUsageTableQueryResponseColumnsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<EndpointsUsageTableQueryResponseColumnsList>;
 
-export type EndpointsUsageTableQueryResponseResultsList =
-  ReadonlyArray<unknown>;
+export type EndpointsUsageTableQueryResponseResultsList = Array<unknown>;
 export const EndpointsUsageTableQueryResponseResultsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<EndpointsUsageTableQueryResponseResultsList>;
 
-export type EndpointsUsageTableQueryResponseTimingsList =
-  ReadonlyArray<QueryTiming>;
+export type EndpointsUsageTableQueryResponseTimingsList = Array<QueryTiming>;
 export const EndpointsUsageTableQueryResponseTimingsList =
   /*@__PURE__*/ S.Array(
     QueryTiming,
   ) as any as S.Schema<EndpointsUsageTableQueryResponseTimingsList>;
 
-export type EndpointsUsageTableQueryResponseTypesList = ReadonlyArray<unknown>;
+export type EndpointsUsageTableQueryResponseTypesList = Array<unknown>;
 export const EndpointsUsageTableQueryResponseTypesList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<EndpointsUsageTableQueryResponseTypesList>;
 
 export type EndpointsUsageTableQueryResponseUsedDataWarehouseSourcesList =
-  ReadonlyArray<DataWarehouseSourceUsage>;
+  Array<DataWarehouseSourceUsage>;
 export const EndpointsUsageTableQueryResponseUsedDataWarehouseSourcesList =
   /*@__PURE__*/ S.Array(
     DataWarehouseSourceUsage,
@@ -23076,7 +23027,7 @@ export const EndpointsUsageTableQueryResponseWarningsItem =
   }) as any as S.Schema<EndpointsUsageTableQueryResponseWarningsItem>;
 
 export type EndpointsUsageTableQueryResponseWarningsList =
-  ReadonlyArray<EndpointsUsageTableQueryResponseWarningsItem>;
+  Array<EndpointsUsageTableQueryResponseWarningsItem>;
 export const EndpointsUsageTableQueryResponseWarningsList =
   /*@__PURE__*/ S.Array(
     EndpointsUsageTableQueryResponseWarningsItem,
@@ -23175,54 +23126,54 @@ export const EndpointsUsageTableQuery = /*@__PURE__*/ S.suspend(() =>
   identifier: "EndpointsUsageTableQuery",
 }) as any as S.Schema<EndpointsUsageTableQuery>;
 
-export type AccountsQueryAssignedToUserIdsList = ReadonlyArray<number>;
+export type AccountsQueryAssignedToUserIdsList = Array<number>;
 export const AccountsQueryAssignedToUserIdsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<AccountsQueryAssignedToUserIdsList>;
 
-export type AccountsQueryMetricsList = ReadonlyArray<string>;
+export type AccountsQueryMetricsList = Array<string>;
 export const AccountsQueryMetricsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AccountsQueryMetricsList>;
 
-export type AccountsQueryOrderByList = ReadonlyArray<string>;
+export type AccountsQueryOrderByList = Array<string>;
 export const AccountsQueryOrderByList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AccountsQueryOrderByList>;
 
-export type AccountsQueryResponseColumnsList = ReadonlyArray<unknown>;
+export type AccountsQueryResponseColumnsList = Array<unknown>;
 export const AccountsQueryResponseColumnsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<AccountsQueryResponseColumnsList>;
 
-export type AccountsQueryResponseMetricsResultsList = ReadonlyArray<number>;
+export type AccountsQueryResponseMetricsResultsList = Array<number>;
 export const AccountsQueryResponseMetricsResultsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<AccountsQueryResponseMetricsResultsList>;
 
-export type AccountsQueryResponseResultsItemList = ReadonlyArray<unknown>;
+export type AccountsQueryResponseResultsItemList = Array<unknown>;
 export const AccountsQueryResponseResultsItemList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<AccountsQueryResponseResultsItemList>;
 
 export type AccountsQueryResponseResultsList =
-  ReadonlyArray<AccountsQueryResponseResultsItemList>;
+  Array<AccountsQueryResponseResultsItemList>;
 export const AccountsQueryResponseResultsList = /*@__PURE__*/ S.Array(
   AccountsQueryResponseResultsItemList,
 ) as any as S.Schema<AccountsQueryResponseResultsList>;
 
-export type AccountsQueryResponseTimingsList = ReadonlyArray<QueryTiming>;
+export type AccountsQueryResponseTimingsList = Array<QueryTiming>;
 export const AccountsQueryResponseTimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<AccountsQueryResponseTimingsList>;
 
-export type AccountsQueryResponseTypesList = ReadonlyArray<string>;
+export type AccountsQueryResponseTypesList = Array<string>;
 export const AccountsQueryResponseTypesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AccountsQueryResponseTypesList>;
 
 export type AccountsQueryResponseUsedDataWarehouseSourcesList =
-  ReadonlyArray<DataWarehouseSourceUsage>;
+  Array<DataWarehouseSourceUsage>;
 export const AccountsQueryResponseUsedDataWarehouseSourcesList =
   /*@__PURE__*/ S.Array(
     DataWarehouseSourceUsage,
@@ -23262,7 +23213,7 @@ export const AccountsQueryResponseWarningsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccountsQueryResponseWarningsItem>;
 
 export type AccountsQueryResponseWarningsList =
-  ReadonlyArray<AccountsQueryResponseWarningsItem>;
+  Array<AccountsQueryResponseWarningsItem>;
 export const AccountsQueryResponseWarningsList = /*@__PURE__*/ S.Array(
   AccountsQueryResponseWarningsItem,
 ) as any as S.Schema<AccountsQueryResponseWarningsList>;
@@ -23326,12 +23277,12 @@ export const AccountsQueryResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "AccountsQueryResponse",
 }) as any as S.Schema<AccountsQueryResponse>;
 
-export type AccountsQuerySelectList = ReadonlyArray<string>;
+export type AccountsQuerySelectList = Array<string>;
 export const AccountsQuerySelectList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AccountsQuerySelectList>;
 
-export type AccountsQueryTagNamesList = ReadonlyArray<string>;
+export type AccountsQueryTagNamesList = Array<string>;
 export const AccountsQueryTagNamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AccountsQueryTagNamesList>;
@@ -24037,7 +23988,7 @@ export const DataTableNode = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DataTableNode" }) as any as S.Schema<DataTableNode>;
 
-export type ChartSettingsGoalLinesList = ReadonlyArray<GoalLine>;
+export type ChartSettingsGoalLinesList = Array<GoalLine>;
 export const ChartSettingsGoalLinesList = /*@__PURE__*/ S.Array(
   GoalLine,
 ) as any as S.Schema<ChartSettingsGoalLinesList>;
@@ -24055,7 +24006,7 @@ export const HeatmapGradientStop = /*@__PURE__*/ S.suspend(() =>
   identifier: "HeatmapGradientStop",
 }) as any as S.Schema<HeatmapGradientStop>;
 
-export type HeatmapSettingsGradientList = ReadonlyArray<HeatmapGradientStop>;
+export type HeatmapSettingsGradientList = Array<HeatmapGradientStop>;
 export const HeatmapSettingsGradientList = /*@__PURE__*/ S.Array(
   HeatmapGradientStop,
 ) as any as S.Schema<HeatmapSettingsGradientList>;
@@ -24219,7 +24170,7 @@ export const ChartAxis = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ChartAxis" }) as any as S.Schema<ChartAxis>;
 
-export type ChartSettingsYAxisList = ReadonlyArray<ChartAxis>;
+export type ChartSettingsYAxisList = Array<ChartAxis>;
 export const ChartSettingsYAxisList = /*@__PURE__*/ S.Array(
   ChartAxis,
 ) as any as S.Schema<ChartSettingsYAxisList>;
@@ -24276,12 +24227,12 @@ export const ChartSettings = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ChartSettings" }) as any as S.Schema<ChartSettings>;
 
-export type TableSettingsColumnsList = ReadonlyArray<ChartAxis>;
+export type TableSettingsColumnsList = Array<ChartAxis>;
 export const TableSettingsColumnsList = /*@__PURE__*/ S.Array(
   ChartAxis,
 ) as any as S.Schema<TableSettingsColumnsList>;
 
-export type ConditionalFormattingRuleBytecodeList = ReadonlyArray<unknown>;
+export type ConditionalFormattingRuleBytecodeList = Array<unknown>;
 export const ConditionalFormattingRuleBytecodeList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<ConditionalFormattingRuleBytecodeList>;
@@ -24313,12 +24264,12 @@ export const ConditionalFormattingRule = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConditionalFormattingRule>;
 
 export type TableSettingsConditionalFormattingList =
-  ReadonlyArray<ConditionalFormattingRule>;
+  Array<ConditionalFormattingRule>;
 export const TableSettingsConditionalFormattingList = /*@__PURE__*/ S.Array(
   ConditionalFormattingRule,
 ) as any as S.Schema<TableSettingsConditionalFormattingList>;
 
-export type TableSettingsPinnedColumnsList = ReadonlyArray<string>;
+export type TableSettingsPinnedColumnsList = Array<string>;
 export const TableSettingsPinnedColumnsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<TableSettingsPinnedColumnsList>;
@@ -24362,12 +24313,12 @@ export const DataVisualizationNode = /*@__PURE__*/ S.suspend(() =>
   identifier: "DataVisualizationNode",
 }) as any as S.Schema<DataVisualizationNode>;
 
-export type HogQueryResponseBytecodeList = ReadonlyArray<unknown>;
+export type HogQueryResponseBytecodeList = Array<unknown>;
 export const HogQueryResponseBytecodeList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<HogQueryResponseBytecodeList>;
 
-export type HogQueryResponseColoredBytecodeList = ReadonlyArray<unknown>;
+export type HogQueryResponseColoredBytecodeList = Array<unknown>;
 export const HogQueryResponseColoredBytecodeList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<HogQueryResponseColoredBytecodeList>;
@@ -24572,7 +24523,7 @@ export const InsightQuerySchema = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InsightQuerySchema>;
 
 /** DEPRECATED. Will be removed in a future release. Use dashboard_tiles instead. A dashboard ID for each of the dashboards that this insight is displayed on. This field may be omitted from responses: once opt-in enforcement is enabled, API-token callers (personal API keys, OAuth) only receive it when passing the `include_dashboards=true` query parameter. Do not rely on it being present. */
-export type InsightOutputDashboardsList = ReadonlyArray<number>;
+export type InsightOutputDashboardsList = Array<number>;
 export const InsightOutputDashboardsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<InsightOutputDashboardsList>;
@@ -24593,22 +24544,22 @@ export const DashboardTileBasic = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DashboardTileBasic>;
 
 /** A dashboard tile ID and dashboard_id for each of the dashboards that this insight is displayed on. */
-export type InsightOutputDashboardTilesList = ReadonlyArray<DashboardTileBasic>;
+export type InsightOutputDashboardTilesList = Array<DashboardTileBasic>;
 export const InsightOutputDashboardTilesList = /*@__PURE__*/ S.Array(
   DashboardTileBasic,
 ) as any as S.Schema<InsightOutputDashboardTilesList>;
 
-export type InsightOutputColumnsList = ReadonlyArray<string>;
+export type InsightOutputColumnsList = Array<string>;
 export const InsightOutputColumnsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<InsightOutputColumnsList>;
 
-export type InsightOutputTagsList = ReadonlyArray<unknown>;
+export type InsightOutputTagsList = Array<unknown>;
 export const InsightOutputTagsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<InsightOutputTagsList>;
 
-export type InsightOutputTypesList = ReadonlyArray<unknown>;
+export type InsightOutputTypesList = Array<unknown>;
 export const InsightOutputTypesList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<InsightOutputTypesList>;
@@ -24626,7 +24577,7 @@ export const InsightOutputResolvedDateRange = /*@__PURE__*/ S.suspend(() =>
   identifier: "InsightOutputResolvedDateRange",
 }) as any as S.Schema<InsightOutputResolvedDateRange>;
 
-export type InsightOutputAlertsList = ReadonlyArray<unknown>;
+export type InsightOutputAlertsList = Array<unknown>;
 export const InsightOutputAlertsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<InsightOutputAlertsList>;
@@ -24713,7 +24664,7 @@ export const DashboardFilterPropertiesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DashboardFilterPropertiesItem>;
 
 export type DashboardFilterPropertiesList =
-  ReadonlyArray<DashboardFilterPropertiesItem>;
+  Array<DashboardFilterPropertiesItem>;
 export const DashboardFilterPropertiesList = /*@__PURE__*/ S.Array(
   DashboardFilterPropertiesItem,
 ) as any as S.Schema<DashboardFilterPropertiesList>;
@@ -24824,8 +24775,7 @@ export const TileFiltersPropertiesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "TileFiltersPropertiesItem",
 }) as any as S.Schema<TileFiltersPropertiesItem>;
 
-export type TileFiltersPropertiesList =
-  ReadonlyArray<TileFiltersPropertiesItem>;
+export type TileFiltersPropertiesList = Array<TileFiltersPropertiesItem>;
 export const TileFiltersPropertiesList = /*@__PURE__*/ S.Array(
   TileFiltersPropertiesItem,
 ) as any as S.Schema<TileFiltersPropertiesList>;
@@ -24966,7 +24916,7 @@ export const InsightOutput = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "InsightOutput" }) as any as S.Schema<InsightOutput>;
 
-export type TextDashboardTilesList = ReadonlyArray<DashboardTileBasic>;
+export type TextDashboardTilesList = Array<DashboardTileBasic>;
 export const TextDashboardTilesList = /*@__PURE__*/ S.Array(
   DashboardTileBasic,
 ) as any as S.Schema<TextDashboardTilesList>;
@@ -24996,7 +24946,7 @@ export const Text = /*@__PURE__*/ S.suspend(() =>
 export type PlacementEnum = "left" | "right";
 export const PlacementEnum = /*@__PURE__*/ S.String;
 
-export type ButtonTileDashboardTilesList = ReadonlyArray<DashboardTileBasic>;
+export type ButtonTileDashboardTilesList = Array<DashboardTileBasic>;
 export const ButtonTileDashboardTilesList = /*@__PURE__*/ S.Array(
   DashboardTileBasic,
 ) as any as S.Schema<ButtonTileDashboardTilesList>;
@@ -25045,7 +24995,7 @@ export type WidgetDateRangeDateFrom =
 export const WidgetDateRangeDateFrom = /*@__PURE__*/ S.String;
 
 export interface WidgetDateRange {
-  date_from?: WidgetDateRangeDateFrom | null;
+  date_from?: WidgetDateRangeDateFrom | (string & {}) | null;
 }
 export const WidgetDateRange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -25055,7 +25005,7 @@ export const WidgetDateRange = /*@__PURE__*/ S.suspend(() =>
   identifier: "WidgetDateRange",
 }) as any as S.Schema<WidgetDateRange>;
 
-export type WidgetFilterEntryValueCase1List = ReadonlyArray<string>;
+export type WidgetFilterEntryValueCase1List = Array<string>;
 export const WidgetFilterEntryValueCase1List = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<WidgetFilterEntryValueCase1List>;
@@ -25068,7 +25018,7 @@ export interface WidgetFilterEntry {
   filterId: string;
   propertyName: string;
   optionId: string;
-  operator: PropertyOperator;
+  operator: PropertyOperator | (string & {});
   value?: WidgetFilterEntryValue | null;
 }
 export const WidgetFilterEntry = /*@__PURE__*/ S.suspend(() =>
@@ -25103,7 +25053,7 @@ export const ActivityEventsPropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<ActivityEventsPropertyFilterValueCase0Item>;
 
 export type ActivityEventsPropertyFilterValueCase0List =
-  ReadonlyArray<ActivityEventsPropertyFilterValueCase0Item>;
+  Array<ActivityEventsPropertyFilterValueCase0Item>;
 export const ActivityEventsPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
   ActivityEventsPropertyFilterValueCase0Item,
 ) as any as S.Schema<ActivityEventsPropertyFilterValueCase0List>;
@@ -25119,8 +25069,8 @@ export const ActivityEventsPropertyFilterValue =
 export interface ActivityEventsPropertyFilter {
   key: string;
   label?: string | null;
-  operator: PropertyOperator;
-  type: ActivityEventsPropertyFilterType;
+  operator: PropertyOperator | (string & {});
+  type: ActivityEventsPropertyFilterType | (string & {});
   value?: ActivityEventsPropertyFilterValue | null;
 }
 export const ActivityEventsPropertyFilter = /*@__PURE__*/ S.suspend(() =>
@@ -25136,7 +25086,7 @@ export const ActivityEventsPropertyFilter = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ActivityEventsPropertyFilter>;
 
 export type ActivityEventsListWidgetConfigPropertiesList =
-  ReadonlyArray<ActivityEventsPropertyFilter>;
+  Array<ActivityEventsPropertyFilter>;
 export const ActivityEventsListWidgetConfigPropertiesList =
   /*@__PURE__*/ S.Array(
     ActivityEventsPropertyFilter,
@@ -25212,7 +25162,7 @@ export const WidgetAssigneeFilterType = /*@__PURE__*/ S.String;
 
 export interface WidgetAssigneeFilter {
   id: WidgetAssigneeFilterId;
-  type: WidgetAssigneeFilterType;
+  type: WidgetAssigneeFilterType | (string & {});
 }
 export const WidgetAssigneeFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -25230,11 +25180,11 @@ export interface ErrorTrackingListWidgetConfig {
   /** Maximum number of issues to return. */
   limit?: number;
   /** Issue ranking column. */
-  orderBy?: ErrorTrackingListWidgetConfigOrderBy;
+  orderBy?: ErrorTrackingListWidgetConfigOrderBy | (string & {});
   /** Sort direction for orderBy. */
-  orderDirection?: ErrorTrackingListWidgetConfigOrderDirection;
+  orderDirection?: ErrorTrackingListWidgetConfigOrderDirection | (string & {});
   /** Issue status filter. */
-  status?: ErrorTrackingListWidgetConfigStatus;
+  status?: ErrorTrackingListWidgetConfigStatus | (string & {});
   /** Filter by assignee ({type: user|role, id}). Omit for any assignee. */
   assignee?: WidgetAssigneeFilter | null;
 }
@@ -25286,9 +25236,9 @@ export interface SessionReplayListWidgetConfig {
   /** Maximum number of recordings to return. */
   limit?: number;
   /** Recording ranking column. */
-  orderBy?: SessionReplayListWidgetConfigOrderBy;
+  orderBy?: SessionReplayListWidgetConfigOrderBy | (string & {});
   /** Sort direction for orderBy. */
-  orderDirection?: SessionReplayListWidgetConfigOrderDirection;
+  orderDirection?: SessionReplayListWidgetConfigOrderDirection | (string & {});
   /** short_id of a saved session replay filter to refine the recordings shown. When set, the saved filter owns the date range and property filters; only orderBy, orderDirection, and limit still apply. Combine with collectionId to filter within a collection. */
   savedFilterId?: string | null;
   /** short_id of a session replay collection to scope the widget to its pinned recordings. Combine with savedFilterId or property filters to narrow within the collection; orderBy, orderDirection, and limit still apply. */
@@ -25336,11 +25286,11 @@ export interface ExperimentsListWidgetConfig {
   /** Maximum number of experiments to return. */
   limit?: number;
   /** Experiment list sort column. */
-  orderBy?: ExperimentsListWidgetConfigOrderBy;
+  orderBy?: ExperimentsListWidgetConfigOrderBy | (string & {});
   /** Sort direction for orderBy. */
-  orderDirection?: ExperimentsListWidgetConfigOrderDirection;
+  orderDirection?: ExperimentsListWidgetConfigOrderDirection | (string & {});
   /** Experiment status filter. */
-  status?: ExperimentsListWidgetConfigStatus;
+  status?: ExperimentsListWidgetConfigStatus | (string & {});
   /** Filter by creator (user id). Omit for any creator. */
   createdBy?: number | null;
 }
@@ -25400,14 +25350,15 @@ export type LogsListWidgetConfigSeverityLevelsItem =
 export const LogsListWidgetConfigSeverityLevelsItem = /*@__PURE__*/ S.String;
 
 /** Only show logs at these severity levels. Empty shows all levels. */
-export type LogsListWidgetConfigSeverityLevelsList =
-  ReadonlyArray<LogsListWidgetConfigSeverityLevelsItem>;
+export type LogsListWidgetConfigSeverityLevelsList = Array<
+  LogsListWidgetConfigSeverityLevelsItem | (string & {})
+>;
 export const LogsListWidgetConfigSeverityLevelsList = /*@__PURE__*/ S.Array(
   LogsListWidgetConfigSeverityLevelsItem,
 ) as any as S.Schema<LogsListWidgetConfigSeverityLevelsList>;
 
 /** Only show logs from these services. Empty shows all services. */
-export type LogsListWidgetConfigServiceNamesList = ReadonlyArray<string>;
+export type LogsListWidgetConfigServiceNamesList = Array<string>;
 export const LogsListWidgetConfigServiceNamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LogsListWidgetConfigServiceNamesList>;
@@ -25421,7 +25372,7 @@ export interface LogsListWidgetConfig {
   /** Maximum number of log lines to return. */
   limit?: number;
   /** Sort by newest (latest) or oldest (earliest) first. */
-  orderBy?: LogsListWidgetConfigOrderBy;
+  orderBy?: LogsListWidgetConfigOrderBy | (string & {});
   /** Only show logs at these severity levels. Empty shows all levels. */
   severityLevels?: LogsListWidgetConfigSeverityLevelsList;
   /** Only show logs from these services. Empty shows all services. */
@@ -25429,7 +25380,7 @@ export interface LogsListWidgetConfig {
   /** Wrap long log lines instead of truncating them to a single row. */
   wrapLines?: boolean;
   /** Render log timestamps in UTC or in each viewer's local timezone. */
-  timezone?: LogsListWidgetConfigTimezone;
+  timezone?: LogsListWidgetConfigTimezone | (string & {});
   /** short_id of a saved logs view to use as the source. When set, the saved view owns the date range, severity, service, and property filters; only orderBy and limit still apply. */
   savedViewId?: string | null;
 }
@@ -25466,18 +25417,27 @@ export interface DashboardWidgetConfig {
   /** Issue ranking column. */
   orderBy?:
     | ErrorTrackingListWidgetConfigOrderBy
+    | (string & {})
     | SessionReplayListWidgetConfigOrderBy
+    | (string & {})
     | ExperimentsListWidgetConfigOrderBy
-    | LogsListWidgetConfigOrderBy;
+    | (string & {})
+    | LogsListWidgetConfigOrderBy
+    | (string & {});
   /** Sort direction for orderBy. */
   orderDirection?:
     | ErrorTrackingListWidgetConfigOrderDirection
+    | (string & {})
     | SessionReplayListWidgetConfigOrderDirection
-    | ExperimentsListWidgetConfigOrderDirection;
+    | (string & {})
+    | ExperimentsListWidgetConfigOrderDirection
+    | (string & {});
   /** Issue status filter. */
   status?:
     | ErrorTrackingListWidgetConfigStatus
-    | ExperimentsListWidgetConfigStatus;
+    | (string & {})
+    | ExperimentsListWidgetConfigStatus
+    | (string & {});
   /** Filter by assignee ({type: user|role, id}). Omit for any assignee. */
   assignee?: WidgetAssigneeFilter | null;
   /** short_id of a saved session replay filter to refine the recordings shown. When set, the saved filter owns the date range and property filters; only orderBy, orderDirection, and limit still apply. Combine with collectionId to filter within a collection. */
@@ -25497,7 +25457,7 @@ export interface DashboardWidgetConfig {
   /** Wrap long log lines instead of truncating them to a single row. */
   wrapLines?: boolean;
   /** Render log timestamps in UTC or in each viewer's local timezone. */
-  timezone?: LogsListWidgetConfigTimezone;
+  timezone?: LogsListWidgetConfigTimezone | (string & {});
   /** short_id of a saved logs view to use as the source. When set, the saved view owns the date range, severity, service, and property filters; only orderBy and limit still apply. */
   savedViewId?: string | null;
 }
@@ -25556,8 +25516,7 @@ export const DashboardWidgetConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "DashboardWidgetConfig",
 }) as any as S.Schema<DashboardWidgetConfig>;
 
-export type DashboardWidgetDashboardTilesList =
-  ReadonlyArray<DashboardTileBasic>;
+export type DashboardWidgetDashboardTilesList = Array<DashboardTileBasic>;
 export const DashboardWidgetDashboardTilesList = /*@__PURE__*/ S.Array(
   DashboardTileBasic,
 ) as any as S.Schema<DashboardWidgetDashboardTilesList>;
@@ -25728,7 +25687,7 @@ export const DashboardsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DashboardsListRequest",
 }) as any as S.Schema<DashboardsListRequest>;
 
-export type DashboardBasicTagsList = ReadonlyArray<unknown>;
+export type DashboardBasicTagsList = Array<unknown>;
 export const DashboardBasicTagsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<DashboardBasicTagsList>;
@@ -25790,8 +25749,7 @@ export const DashboardBasic = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DashboardBasic" }) as any as S.Schema<DashboardBasic>;
 
-export type PaginatedDashboardBasicListResultsList =
-  ReadonlyArray<DashboardBasic>;
+export type PaginatedDashboardBasicListResultsList = Array<DashboardBasic>;
 export const PaginatedDashboardBasicListResultsList = /*@__PURE__*/ S.Array(
   DashboardBasic,
 ) as any as S.Schema<PaginatedDashboardBasicListResultsList>;
@@ -25877,14 +25835,13 @@ export const DashboardFiltersOpenApi = /*@__PURE__*/ S.suspend(() =>
   identifier: "DashboardFiltersOpenApi",
 }) as any as S.Schema<DashboardFiltersOpenApi>;
 
-export type DashboardsPartialUpdateRequestTagsList = ReadonlyArray<string>;
+export type DashboardsPartialUpdateRequestTagsList = Array<string>;
 export const DashboardsPartialUpdateRequestTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DashboardsPartialUpdateRequestTagsList>;
 
 /** List of quick filter IDs associated with this dashboard. */
-export type DashboardsPartialUpdateRequestQuickFilterIdsList =
-  ReadonlyArray<string>;
+export type DashboardsPartialUpdateRequestQuickFilterIdsList = Array<string>;
 export const DashboardsPartialUpdateRequestQuickFilterIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -25942,7 +25899,7 @@ export const DashboardPatchTileOpenApi = /*@__PURE__*/ S.suspend(() =>
 
 /** Dashboard tiles to update. Widget tiles accept nested widget.config patches. */
 export type DashboardsPartialUpdateRequestTilesList =
-  ReadonlyArray<DashboardPatchTileOpenApi>;
+  Array<DashboardPatchTileOpenApi>;
 export const DashboardsPartialUpdateRequestTilesList = /*@__PURE__*/ S.Array(
   DashboardPatchTileOpenApi,
 ) as any as S.Schema<DashboardsPartialUpdateRequestTilesList>;
@@ -26013,8 +25970,7 @@ export type DashboardsReorderTilesCreateRequestFormat = "json" | "txt";
 export const DashboardsReorderTilesCreateRequestFormat = /*@__PURE__*/ S.String;
 
 /** Array of tile IDs in the desired display order (top to bottom, left to right). */
-export type DashboardsReorderTilesCreateRequestTileOrderList =
-  ReadonlyArray<number>;
+export type DashboardsReorderTilesCreateRequestTileOrderList = Array<number>;
 export const DashboardsReorderTilesCreateRequestTileOrderList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -26184,7 +26140,7 @@ export const DashboardTileResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DashboardTileResult>;
 
 /** Results for each insight tile on the dashboard. */
-export type RunInsightsResponseResultsList = ReadonlyArray<DashboardTileResult>;
+export type RunInsightsResponseResultsList = Array<DashboardTileResult>;
 export const RunInsightsResponseResultsList = /*@__PURE__*/ S.Array(
   DashboardTileResult,
 ) as any as S.Schema<RunInsightsResponseResultsList>;
@@ -26254,8 +26210,7 @@ export const DashboardWidgetRunResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DashboardWidgetRunResult>;
 
 /** Per-tile widget run results. */
-export type RunWidgetsResponseResultsList =
-  ReadonlyArray<DashboardWidgetRunResult>;
+export type RunWidgetsResponseResultsList = Array<DashboardWidgetRunResult>;
 export const RunWidgetsResponseResultsList = /*@__PURE__*/ S.Array(
   DashboardWidgetRunResult,
 ) as any as S.Schema<RunWidgetsResponseResultsList>;
@@ -26309,8 +26264,7 @@ export const SharePassword = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SharePassword" }) as any as S.Schema<SharePassword>;
 
-export type SharingConfigurationSharePasswordsList =
-  ReadonlyArray<SharePassword>;
+export type SharingConfigurationSharePasswordsList = Array<SharePassword>;
 export const SharingConfigurationSharePasswordsList = /*@__PURE__*/ S.Array(
   SharePassword,
 ) as any as S.Schema<SharingConfigurationSharePasswordsList>;
@@ -26340,8 +26294,7 @@ export const SharingConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "SharingConfiguration",
 }) as any as S.Schema<SharingConfiguration>;
 
-export type DashboardsSharingListResponseBodyList =
-  ReadonlyArray<SharingConfiguration>;
+export type DashboardsSharingListResponseBodyList = Array<SharingConfiguration>;
 export const DashboardsSharingListResponseBodyList = /*@__PURE__*/ S.Array(
   SharingConfiguration,
 ) as any as S.Schema<DashboardsSharingListResponseBodyList>;
@@ -26534,13 +26487,13 @@ export const DashboardSubscribeNudgeResponse = /*@__PURE__*/ S.suspend(() =>
 export type DashboardsUpdateRequestFormat = "json" | "txt";
 export const DashboardsUpdateRequestFormat = /*@__PURE__*/ S.String;
 
-export type DashboardsUpdateRequestTagsList = ReadonlyArray<unknown>;
+export type DashboardsUpdateRequestTagsList = Array<unknown>;
 export const DashboardsUpdateRequestTagsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<DashboardsUpdateRequestTagsList>;
 
 /** List of quick filter IDs associated with this dashboard */
-export type DashboardsUpdateRequestQuickFilterIdsList = ReadonlyArray<string>;
+export type DashboardsUpdateRequestQuickFilterIdsList = Array<string>;
 export const DashboardsUpdateRequestQuickFilterIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DashboardsUpdateRequestQuickFilterIdsList>;
@@ -26913,7 +26866,7 @@ export const UpdateDashboardWidgetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Widget tiles to update atomically, each identified by its tile_id. config shape is per widget_type; see dashboard-widget-catalog-list for per-type config_schema (1–10 per request). */
 export type DashboardsUpdateWidgetsBatchRequestWidgetsList =
-  ReadonlyArray<UpdateDashboardWidgetRequest>;
+  Array<UpdateDashboardWidgetRequest>;
 export const DashboardsUpdateWidgetsBatchRequestWidgetsList =
   /*@__PURE__*/ S.Array(
     UpdateDashboardWidgetRequest,
@@ -26949,7 +26902,7 @@ export const DashboardsUpdateWidgetsBatchRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Updated dashboard widget tiles in request order. */
 export type UpdateDashboardWidgetsBatchResponseOutputTilesList =
-  ReadonlyArray<DashboardTileOutput>;
+  Array<DashboardTileOutput>;
 export const UpdateDashboardWidgetsBatchResponseOutputTilesList =
   /*@__PURE__*/ S.Array(
     DashboardTileOutput,
@@ -27224,8 +27177,7 @@ export const WidgetCatalogEntry = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WidgetCatalogEntry>;
 
 /** Registered dashboard widget types available when dashboard-widgets is enabled. */
-export type WidgetCatalogResponseResultsList =
-  ReadonlyArray<WidgetCatalogEntry>;
+export type WidgetCatalogResponseResultsList = Array<WidgetCatalogEntry>;
 export const WidgetCatalogResponseResultsList = /*@__PURE__*/ S.Array(
   WidgetCatalogEntry,
 ) as any as S.Schema<WidgetCatalogResponseResultsList>;
@@ -27534,7 +27486,7 @@ export const AddDashboardWidgetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Widget tiles to add atomically. Supported widget_type values: activity_events_list, error_tracking_list, experiment_results, experiments_list, logs_list, session_replay_list, survey_results. Use dashboard-widget-catalog-list for per-type config_schema documentation. (1–10 per request). */
 export type DashboardsWidgetsBatchCreateRequestWidgetsList =
-  ReadonlyArray<AddDashboardWidgetRequest>;
+  Array<AddDashboardWidgetRequest>;
 export const DashboardsWidgetsBatchCreateRequestWidgetsList =
   /*@__PURE__*/ S.Array(
     AddDashboardWidgetRequest,
@@ -27570,7 +27522,7 @@ export const DashboardsWidgetsBatchCreateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Created dashboard widget tiles in request order. */
 export type AddDashboardWidgetsBatchResponseOutputTilesList =
-  ReadonlyArray<DashboardTileOutput>;
+  Array<DashboardTileOutput>;
 export const AddDashboardWidgetsBatchResponseOutputTilesList =
   /*@__PURE__*/ S.Array(
     DashboardTileOutput,

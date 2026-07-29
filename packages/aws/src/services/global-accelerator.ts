@@ -641,7 +641,7 @@ export const CreateCustomRoutingAcceleratorResponse = /*@__PURE__*/ S.suspend(
 export type CustomRoutingProtocol = "TCP" | "UDP";
 export const CustomRoutingProtocol = /*@__PURE__*/ S.String;
 
-export type CustomRoutingProtocols = CustomRoutingProtocol[];
+export type CustomRoutingProtocols = (CustomRoutingProtocol | (string & {}))[];
 export const CustomRoutingProtocols = /*@__PURE__*/ S.Array(
   CustomRoutingProtocol,
 );

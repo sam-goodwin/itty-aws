@@ -292,7 +292,7 @@ export const FirewallRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FirewallRule" }) as any as S.Schema<FirewallRule>;
 
 /** The FirewallRule items on this page */
-export type FirewallRuleListResultValueList = ReadonlyArray<FirewallRule>;
+export type FirewallRuleListResultValueList = Array<FirewallRule>;
 export const FirewallRuleListResultValueList = /*@__PURE__*/ S.Array(
   FirewallRule,
 ) as any as S.Schema<FirewallRuleListResultValueList>;
@@ -447,7 +447,7 @@ export const HighAvailabilityMode = /*@__PURE__*/ S.String;
 /** The high availability properties of the cluster. */
 export interface HighAvailabilityProperties {
   /** The target high availability mode requested for the cluster. */
-  targetMode?: HighAvailabilityMode;
+  targetMode?: HighAvailabilityMode | (string & {});
 }
 export const HighAvailabilityProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -466,7 +466,7 @@ export interface StorageProperties {
   /** The size of the data disk assigned to each server. */
   sizeGb?: number;
   /** The type of storage to provision the cluster servers with. */
-  type?: StorageType;
+  type?: StorageType | (string & {});
 }
 export const StorageProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -518,7 +518,7 @@ export const DataApiMode = /*@__PURE__*/ S.String;
 /** Data API properties. */
 export interface DataApiProperties {
   /** The mode to indicate whether the Mongo Data API is enabled for a cluster. */
-  mode?: DataApiMode;
+  mode?: DataApiMode | (string & {});
 }
 export const DataApiProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -533,7 +533,7 @@ export type PreviewFeature = "GeoReplicas";
 export const PreviewFeature = /*@__PURE__*/ S.String;
 
 /** List of private endpoint connections. */
-export type MongoClusterPropertiesInputPreviewFeaturesList = ReadonlyArray<
+export type MongoClusterPropertiesInputPreviewFeaturesList = Array<
   PreviewFeature | (string & {})
 >;
 export const MongoClusterPropertiesInputPreviewFeaturesList =
@@ -546,8 +546,9 @@ export type AuthenticationMode = "NativeAuth" | "MicrosoftEntraID";
 export const AuthenticationMode = /*@__PURE__*/ S.String;
 
 /** Allowed authentication modes for data access on the cluster. */
-export type AuthConfigPropertiesAllowedModesList =
-  ReadonlyArray<AuthenticationMode>;
+export type AuthConfigPropertiesAllowedModesList = Array<
+  AuthenticationMode | (string & {})
+>;
 export const AuthConfigPropertiesAllowedModesList = /*@__PURE__*/ S.Array(
   AuthenticationMode,
 ) as any as S.Schema<AuthConfigPropertiesAllowedModesList>;
@@ -572,7 +573,7 @@ export const KeyEncryptionKeyIdentityType = /*@__PURE__*/ S.String;
 /** The identity used for key encryption key. */
 export interface KeyEncryptionKeyIdentity {
   /** The type of identity. Only 'UserAssignedIdentity' is supported. */
-  identityType?: KeyEncryptionKeyIdentityType;
+  identityType?: KeyEncryptionKeyIdentityType | (string & {});
   /** The user assigned identity resource id. */
   userAssignedIdentityResourceId?: string;
 }
@@ -791,8 +792,7 @@ export const BackupProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BackupProperties>;
 
 /** The group ids for the private endpoint resource. */
-export type PrivateEndpointConnectionPropertiesGroupIdsList =
-  ReadonlyArray<string>;
+export type PrivateEndpointConnectionPropertiesGroupIdsList = Array<string>;
 export const PrivateEndpointConnectionPropertiesGroupIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -821,7 +821,7 @@ export const PrivateEndpointServiceConnectionStatus = /*@__PURE__*/ S.String;
 /** A collection of information about the state of the connection between service consumer and provider. */
 export interface PrivateLinkServiceConnectionState {
   /** Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service. */
-  status?: PrivateEndpointServiceConnectionStatus;
+  status?: PrivateEndpointServiceConnectionStatus | (string & {});
   /** The reason for approval/rejection of the connection. */
   description?: string;
   /** A message indicating if changes on the service provider require any updates on the consumer. */
@@ -896,15 +896,14 @@ export const MongoClusterPropertiesPrivateEndpointConnectionsItem =
 
 /** List of private endpoint connections. */
 export type MongoClusterPropertiesPrivateEndpointConnectionsList =
-  ReadonlyArray<MongoClusterPropertiesPrivateEndpointConnectionsItem>;
+  Array<MongoClusterPropertiesPrivateEndpointConnectionsItem>;
 export const MongoClusterPropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     MongoClusterPropertiesPrivateEndpointConnectionsItem,
   ) as any as S.Schema<MongoClusterPropertiesPrivateEndpointConnectionsList>;
 
 /** List of private endpoint connections. */
-export type MongoClusterPropertiesPreviewFeaturesList =
-  ReadonlyArray<PreviewFeature>;
+export type MongoClusterPropertiesPreviewFeaturesList = Array<PreviewFeature>;
 export const MongoClusterPropertiesPreviewFeaturesList = /*@__PURE__*/ S.Array(
   PreviewFeature,
 ) as any as S.Schema<MongoClusterPropertiesPreviewFeaturesList>;
@@ -1297,7 +1296,7 @@ export const MongoCluster = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MongoCluster" }) as any as S.Schema<MongoCluster>;
 
 /** The MongoCluster items on this page */
-export type MongoClusterListResultValueList = ReadonlyArray<MongoCluster>;
+export type MongoClusterListResultValueList = Array<MongoCluster>;
 export const MongoClusterListResultValueList = /*@__PURE__*/ S.Array(
   MongoCluster,
 ) as any as S.Schema<MongoClusterListResultValueList>;
@@ -1388,7 +1387,7 @@ export const ConnectionString = /*@__PURE__*/ S.suspend(() =>
 
 /** An array that contains the connection strings for a mongo cluster. */
 export type ListConnectionStringsResultConnectionStringsList =
-  ReadonlyArray<ConnectionString>;
+  Array<ConnectionString>;
 export const ListConnectionStringsResultConnectionStringsList =
   /*@__PURE__*/ S.Array(
     ConnectionString,
@@ -1479,8 +1478,9 @@ export const MongoClustersUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<MongoClustersUpdateRequestTagsMap>;
 
 /** List of private endpoint connections. */
-export type MongoClusterUpdatePropertiesInputPreviewFeaturesList =
-  ReadonlyArray<PreviewFeature | (string & {})>;
+export type MongoClusterUpdatePropertiesInputPreviewFeaturesList = Array<
+  PreviewFeature | (string & {})
+>;
 export const MongoClusterUpdatePropertiesInputPreviewFeaturesList =
   /*@__PURE__*/ S.Array(
     PreviewFeature,
@@ -1701,7 +1701,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = ReadonlyArray<Operation>;
+export type OperationsListResponseValueList = Array<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;
@@ -1780,7 +1780,7 @@ export const PrivateEndpointConnectionsCreateRequest = /*@__PURE__*/ S.suspend(
 
 /** The group ids for the private endpoint resource. */
 export type PrivateEndpointConnectionsCreateResponsePropertiesGroupIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PrivateEndpointConnectionsCreateResponsePropertiesGroupIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1905,7 +1905,7 @@ export const PrivateEndpointConnectionsGetRequest = /*@__PURE__*/ S.suspend(
 
 /** The group ids for the private endpoint resource. */
 export type PrivateEndpointConnectionsGetResponsePropertiesGroupIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PrivateEndpointConnectionsGetResponsePropertiesGroupIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1989,7 +1989,7 @@ export const PrivateEndpointConnectionsListByMongoClusterRequest =
 
 /** The group ids for the private endpoint resource. */
 export type PrivateEndpointConnectionResourcePropertiesGroupIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PrivateEndpointConnectionResourcePropertiesGroupIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2047,7 +2047,7 @@ export const PrivateEndpointConnectionResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The PrivateEndpointConnectionResource items on this page */
 export type PrivateEndpointConnectionResourceListResultValueList =
-  ReadonlyArray<PrivateEndpointConnectionResource>;
+  Array<PrivateEndpointConnectionResource>;
 export const PrivateEndpointConnectionResourceListResultValueList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnectionResource,
@@ -2097,16 +2097,14 @@ export const PrivateLinksListByMongoClusterRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PrivateLinksListByMongoClusterRequest>;
 
 /** The private link resource required member names. */
-export type PrivateLinkResourcePropertiesRequiredMembersList =
-  ReadonlyArray<string>;
+export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
 export const PrivateLinkResourcePropertiesRequiredMembersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
 
 /** The private link resource private link DNS zone name. */
-export type PrivateLinkResourcePropertiesRequiredZoneNamesList =
-  ReadonlyArray<string>;
+export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
 export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2161,8 +2159,7 @@ export const PrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateLinkResource>;
 
 /** The PrivateLinkResource items on this page */
-export type PrivateLinkResourceListResultValueList =
-  ReadonlyArray<PrivateLinkResource>;
+export type PrivateLinkResourceListResultValueList = Array<PrivateLinkResource>;
 export const PrivateLinkResourceListResultValueList = /*@__PURE__*/ S.Array(
   PrivateLinkResource,
 ) as any as S.Schema<PrivateLinkResourceListResultValueList>;
@@ -2232,7 +2229,7 @@ export const Replica = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Replica" }) as any as S.Schema<Replica>;
 
 /** The Replica items on this page */
-export type ReplicaListResultValueList = ReadonlyArray<Replica>;
+export type ReplicaListResultValueList = Array<Replica>;
 export const ReplicaListResultValueList = /*@__PURE__*/ S.Array(
   Replica,
 ) as any as S.Schema<ReplicaListResultValueList>;
@@ -2260,7 +2257,7 @@ export const IdentityProviderType = /*@__PURE__*/ S.String;
 /** Defines a user's identity provider definition. */
 export interface IdentityProvider {
   /** The type of identity provider that the user belongs to. */
-  type: IdentityProviderType;
+  type: IdentityProviderType | (string & {});
 }
 export const IdentityProvider = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2279,7 +2276,7 @@ export interface DatabaseRole {
   /** Database scope that the role is assigned to. */
   db: string;
   /** The role that is assigned to the user on the database scope. */
-  role: UserRole;
+  role: UserRole | (string & {});
 }
 export const DatabaseRole = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2289,7 +2286,7 @@ export const DatabaseRole = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DatabaseRole" }) as any as S.Schema<DatabaseRole>;
 
 /** Database roles that are assigned to the user. */
-export type UserPropertiesInputRolesList = ReadonlyArray<DatabaseRole>;
+export type UserPropertiesInputRolesList = Array<DatabaseRole>;
 export const UserPropertiesInputRolesList = /*@__PURE__*/ S.Array(
   DatabaseRole,
 ) as any as S.Schema<UserPropertiesInputRolesList>;
@@ -2342,7 +2339,7 @@ export const UsersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UsersCreateOrUpdateRequest>;
 
 /** Database roles that are assigned to the user. */
-export type UserPropertiesRolesList = ReadonlyArray<DatabaseRole>;
+export type UserPropertiesRolesList = Array<DatabaseRole>;
 export const UserPropertiesRolesList = /*@__PURE__*/ S.Array(
   DatabaseRole,
 ) as any as S.Schema<UserPropertiesRolesList>;
@@ -2524,7 +2521,7 @@ export const User = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "User" }) as any as S.Schema<User>;
 
 /** The User items on this page */
-export type UserListResultValueList = ReadonlyArray<User>;
+export type UserListResultValueList = Array<User>;
 export const UserListResultValueList = /*@__PURE__*/ S.Array(
   User,
 ) as any as S.Schema<UserListResultValueList>;

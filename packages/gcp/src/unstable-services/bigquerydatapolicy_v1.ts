@@ -75,7 +75,9 @@ export const DataMaskingPolicyPredefinedExpressionEnum = /*@__PURE__*/ S.String;
 /** The data masking policy that is used to specify data masking rule. */
 export interface DataMaskingPolicy {
   /** A predefined masking expression. */
-  predefinedExpression?: DataMaskingPolicyPredefinedExpressionEnum;
+  predefinedExpression?:
+    | DataMaskingPolicyPredefinedExpressionEnum
+    | (string & {});
   /** The name of the BigQuery routine that contains the custom masking routine, in the format of `projects/{project_number}/datasets/{dataset_id}/routines/{routine_id}`. */
   routine?: string;
 }
@@ -103,7 +105,7 @@ export interface DataPolicy {
   /** Output only. Resource name of this data policy, in the format of `projects/{project_number}/locations/{location_id}/dataPolicies/{data_policy_id}`. */
   name?: string;
   /** Required. Data policy type. Type of data policy. */
-  dataPolicyType?: DataPolicyDataPolicyTypeEnum;
+  dataPolicyType?: DataPolicyDataPolicyTypeEnum | (string & {});
   /** Policy tag resource name, in the format of `projects/{project_number}/locations/{location_id}/taxonomies/{taxonomy_id}/policyTags/{policyTag_id}`. */
   policyTag?: string;
 }
@@ -215,7 +217,7 @@ export const GetIamPolicyProjectsLocationsDataPoliciesRequest =
     identifier: "GetIamPolicyProjectsLocationsDataPoliciesRequest",
   }) as any as S.Schema<GetIamPolicyProjectsLocationsDataPoliciesRequest>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -257,7 +259,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
-export type BindingList = ReadonlyArray<Binding>;
+export type BindingList = Array<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -272,7 +274,7 @@ export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
 export interface AuditLogConfig {
   /** The log type that this config enables. */
-  logType?: AuditLogConfigLogTypeEnum;
+  logType?: AuditLogConfigLogTypeEnum | (string & {});
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
   exemptedMembers?: StringList;
 }
@@ -283,7 +285,7 @@ export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
-export type AuditLogConfigList = ReadonlyArray<AuditLogConfig>;
+export type AuditLogConfigList = Array<AuditLogConfig>;
 export const AuditLogConfigList = /*@__PURE__*/ S.Array(
   AuditLogConfig,
 ) as any as S.Schema<AuditLogConfigList>;
@@ -302,7 +304,7 @@ export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
-export type AuditConfigList = ReadonlyArray<AuditConfig>;
+export type AuditConfigList = Array<AuditConfig>;
 export const AuditConfigList = /*@__PURE__*/ S.Array(
   AuditConfig,
 ) as any as S.Schema<AuditConfigList>;
@@ -374,7 +376,7 @@ export const ListProjectsLocationsDataPoliciesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsDataPoliciesRequest",
 }) as any as S.Schema<ListProjectsLocationsDataPoliciesRequest>;
 
-export type DataPolicyList = ReadonlyArray<DataPolicy>;
+export type DataPolicyList = Array<DataPolicy>;
 export const DataPolicyList = /*@__PURE__*/ S.Array(
   DataPolicy,
 ) as any as S.Schema<DataPolicyList>;

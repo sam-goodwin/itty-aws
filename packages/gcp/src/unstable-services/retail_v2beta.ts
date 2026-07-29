@@ -81,7 +81,7 @@ export type GoogleCloudRetailV2betaCatalogAttributeRecommendationsFilteringOptio
 export const GoogleCloudRetailV2betaCatalogAttributeRecommendationsFilteringOptionEnum =
   /*@__PURE__*/ S.String;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -105,7 +105,7 @@ export const GoogleCloudRetailV2betaCatalogAttributeFacetConfigMergedFacetValue 
   }) as any as S.Schema<GoogleCloudRetailV2betaCatalogAttributeFacetConfigMergedFacetValue>;
 
 export type GoogleCloudRetailV2betaCatalogAttributeFacetConfigMergedFacetValueList =
-  ReadonlyArray<GoogleCloudRetailV2betaCatalogAttributeFacetConfigMergedFacetValue>;
+  Array<GoogleCloudRetailV2betaCatalogAttributeFacetConfigMergedFacetValue>;
 export const GoogleCloudRetailV2betaCatalogAttributeFacetConfigMergedFacetValueList =
   /*@__PURE__*/ S.Array(
     GoogleCloudRetailV2betaCatalogAttributeFacetConfigMergedFacetValue,
@@ -148,7 +148,7 @@ export const GoogleCloudRetailV2betaInterval = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudRetailV2betaInterval>;
 
 export type GoogleCloudRetailV2betaIntervalList =
-  ReadonlyArray<GoogleCloudRetailV2betaInterval>;
+  Array<GoogleCloudRetailV2betaInterval>;
 export const GoogleCloudRetailV2betaIntervalList = /*@__PURE__*/ S.Array(
   GoogleCloudRetailV2betaInterval,
 ) as any as S.Schema<GoogleCloudRetailV2betaIntervalList>;
@@ -175,7 +175,7 @@ export const GoogleCloudRetailV2betaCatalogAttributeFacetConfigIgnoredFacetValue
   }) as any as S.Schema<GoogleCloudRetailV2betaCatalogAttributeFacetConfigIgnoredFacetValues>;
 
 export type GoogleCloudRetailV2betaCatalogAttributeFacetConfigIgnoredFacetValuesList =
-  ReadonlyArray<GoogleCloudRetailV2betaCatalogAttributeFacetConfigIgnoredFacetValues>;
+  Array<GoogleCloudRetailV2betaCatalogAttributeFacetConfigIgnoredFacetValues>;
 export const GoogleCloudRetailV2betaCatalogAttributeFacetConfigIgnoredFacetValuesList =
   /*@__PURE__*/ S.Array(
     GoogleCloudRetailV2betaCatalogAttributeFacetConfigIgnoredFacetValues,
@@ -264,23 +264,35 @@ export const GoogleCloudRetailV2betaCatalogAttributeExactSearchableOptionEnum =
 /** Catalog level attribute config for an attribute. For example, if customers want to enable/disable facet for a specific attribute. */
 export interface GoogleCloudRetailV2betaCatalogAttribute {
   /** If RETRIEVABLE_ENABLED, attribute values are retrievable in the search results. If unset, the server behavior defaults to RETRIEVABLE_DISABLED. */
-  retrievableOption?: GoogleCloudRetailV2betaCatalogAttributeRetrievableOptionEnum;
+  retrievableOption?:
+    | GoogleCloudRetailV2betaCatalogAttributeRetrievableOptionEnum
+    | (string & {});
   /** Output only. The type of this attribute. This is derived from the attribute in Product.attributes. */
-  type?: GoogleCloudRetailV2betaCatalogAttributeTypeEnum;
+  type?: GoogleCloudRetailV2betaCatalogAttributeTypeEnum | (string & {});
   /** When AttributesConfig.attribute_config_level is CATALOG_LEVEL_ATTRIBUTE_CONFIG, if RECOMMENDATIONS_FILTERING_ENABLED, attribute values are filterable for recommendations. This option works for categorical features only, does not work for numerical features, inventory filtering. */
-  recommendationsFilteringOption?: GoogleCloudRetailV2betaCatalogAttributeRecommendationsFilteringOptionEnum;
+  recommendationsFilteringOption?:
+    | GoogleCloudRetailV2betaCatalogAttributeRecommendationsFilteringOptionEnum
+    | (string & {});
   /** Contains facet options. */
   facetConfig?: GoogleCloudRetailV2betaCatalogAttributeFacetConfig;
   /** Output only. Indicates whether this attribute has been used by any products. `True` if at least one Product is using this attribute in Product.attributes. Otherwise, this field is `False`. CatalogAttribute can be pre-loaded by using CatalogService.AddCatalogAttribute or CatalogService.UpdateAttributesConfig APIs. This field is `False` for pre-loaded CatalogAttributes. Only pre-loaded catalog attributes that are neither in use by products nor predefined can be deleted. Catalog attributes that are either in use by products or are predefined attributes cannot be deleted; however, their configuration properties will reset to default values upon removal request. After catalog changes, it takes about 10 minutes for this field to update. */
   inUse?: boolean;
   /** When AttributesConfig.attribute_config_level is CATALOG_LEVEL_ATTRIBUTE_CONFIG, if INDEXABLE_ENABLED attribute values are indexed so that it can be filtered, faceted, or boosted in SearchService.Search. Must be specified when AttributesConfig.attribute_config_level is CATALOG_LEVEL_ATTRIBUTE_CONFIG, otherwise throws INVALID_FORMAT error. */
-  indexableOption?: GoogleCloudRetailV2betaCatalogAttributeIndexableOptionEnum;
+  indexableOption?:
+    | GoogleCloudRetailV2betaCatalogAttributeIndexableOptionEnum
+    | (string & {});
   /** If DYNAMIC_FACETABLE_ENABLED, attribute values are available for dynamic facet. Could only be DYNAMIC_FACETABLE_DISABLED if CatalogAttribute.indexable_option is INDEXABLE_DISABLED. Otherwise, an INVALID_ARGUMENT error is returned. Must be specified, otherwise throws INVALID_FORMAT error. */
-  dynamicFacetableOption?: GoogleCloudRetailV2betaCatalogAttributeDynamicFacetableOptionEnum;
+  dynamicFacetableOption?:
+    | GoogleCloudRetailV2betaCatalogAttributeDynamicFacetableOptionEnum
+    | (string & {});
   /** When AttributesConfig.attribute_config_level is CATALOG_LEVEL_ATTRIBUTE_CONFIG, if SEARCHABLE_ENABLED, attribute values are searchable by text queries in SearchService.Search. If SEARCHABLE_ENABLED but attribute type is numerical, attribute values will not be searchable by text queries in SearchService.Search, as there are no text values associated to numerical attributes. Must be specified, when AttributesConfig.attribute_config_level is CATALOG_LEVEL_ATTRIBUTE_CONFIG, otherwise throws INVALID_FORMAT error. */
-  searchableOption?: GoogleCloudRetailV2betaCatalogAttributeSearchableOptionEnum;
+  searchableOption?:
+    | GoogleCloudRetailV2betaCatalogAttributeSearchableOptionEnum
+    | (string & {});
   /** If EXACT_SEARCHABLE_ENABLED, attribute values will be exact searchable. This property only applies to textual custom attributes and requires indexable set to enabled to enable exact-searchable. If unset, the server behavior defaults to EXACT_SEARCHABLE_DISABLED. */
-  exactSearchableOption?: GoogleCloudRetailV2betaCatalogAttributeExactSearchableOptionEnum;
+  exactSearchableOption?:
+    | GoogleCloudRetailV2betaCatalogAttributeExactSearchableOptionEnum
+    | (string & {});
   /** Required. Attribute name. For example: `color`, `brands`, `attributes.custom_attribute`, such as `attributes.xyz`. To be indexable, the attribute name can contain only alpha-numeric characters and underscores. For example, an attribute named `attributes.abc_xyz` can be indexed, but an attribute named `attributes.abc-xyz` cannot be indexed. If the attribute key starts with `attributes.`, then the attribute is a custom attribute. Attributes such as `brands`, `patterns`, and `title` are built-in and called system attributes. */
   key?: string;
 }
@@ -376,7 +388,9 @@ export interface GoogleCloudRetailV2betaAttributesConfig {
   /** Required. Immutable. The fully qualified resource name of the attribute config. Format: `projects/*\/locations/*\/catalogs/*\/attributesConfig` */
   name?: string;
   /** Output only. The AttributeConfigLevel used for this catalog. */
-  attributeConfigLevel?: GoogleCloudRetailV2betaAttributesConfigAttributeConfigLevelEnum;
+  attributeConfigLevel?:
+    | GoogleCloudRetailV2betaAttributesConfigAttributeConfigLevelEnum
+    | (string & {});
   /** Enable attribute(s) config at catalog level. For example, indexable, dynamic_facetable, or searchable for each attribute. The key is catalog attribute's name. For example: `color`, `brands`, `attributes.custom_attribute`, such as `attributes.xyz`. The maximum number of catalog attributes allowed in a request is 1000. */
   catalogAttributes?: GoogleCloudRetailV2betaCatalogAttributeMap;
 }
@@ -441,7 +455,9 @@ export const GoogleCloudRetailV2betaSearchRequestPersonalizationSpecModeEnum =
 /** The specification for personalization. */
 export interface GoogleCloudRetailV2betaSearchRequestPersonalizationSpec {
   /** Defaults to Mode.AUTO. */
-  mode?: GoogleCloudRetailV2betaSearchRequestPersonalizationSpecModeEnum;
+  mode?:
+    | GoogleCloudRetailV2betaSearchRequestPersonalizationSpecModeEnum
+    | (string & {});
 }
 export const GoogleCloudRetailV2betaSearchRequestPersonalizationSpec =
   /*@__PURE__*/ S.suspend(() =>
@@ -462,7 +478,9 @@ export const GoogleCloudRetailV2betaServingConfigSolutionTypesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudRetailV2betaServingConfigSolutionTypesItemEnumList =
-  ReadonlyArray<GoogleCloudRetailV2betaServingConfigSolutionTypesItemEnum>;
+  Array<
+    GoogleCloudRetailV2betaServingConfigSolutionTypesItemEnum | (string & {})
+  >;
 export const GoogleCloudRetailV2betaServingConfigSolutionTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleCloudRetailV2betaServingConfigSolutionTypesItemEnum,
@@ -485,7 +503,9 @@ export const GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecModeEnum =
 /** The specifications of dynamically generated facets. */
 export interface GoogleCloudRetailV2betaSearchRequestDynamicFacetSpec {
   /** Mode of the DynamicFacet feature. Defaults to Mode.DISABLED if it's unset. */
-  mode?: GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecModeEnum;
+  mode?:
+    | GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecModeEnum
+    | (string & {});
 }
 export const GoogleCloudRetailV2betaSearchRequestDynamicFacetSpec =
   /*@__PURE__*/ S.suspend(() =>
@@ -535,7 +555,9 @@ export interface GoogleCloudRetailV2betaServingConfig {
   /** Condition boost specifications. If a product matches multiple conditions in the specifications, boost scores from these specifications are all applied and combined in a non-linear way. Maximum number of specifications is 100. Notice that if both ServingConfig.boost_control_ids and SearchRequest.boost_spec are set, the boost conditions from both places are evaluated. If a search request matches multiple boost conditions, the final boost score is equal to the sum of the boost scores from all matched boost conditions. Can only be set if solution_types is SOLUTION_TYPE_SEARCH. */
   boostControlIds?: StringList;
   /** What kind of diversity to use - data driven or rule based. If unset, the server behavior defaults to RULE_BASED_DIVERSITY. */
-  diversityType?: GoogleCloudRetailV2betaServingConfigDiversityTypeEnum;
+  diversityType?:
+    | GoogleCloudRetailV2betaServingConfigDiversityTypeEnum
+    | (string & {});
   /** Condition ignore specifications. If multiple ignore conditions match, all matching ignore controls in the list will execute. - Order does not matter. - Maximum number of specifications is 100. Can only be set if solution_types is SOLUTION_TYPE_SEARCH. */
   ignoreControlIds?: StringList;
   /** The specification for dynamically generated facets. Notice that only textual facets can be dynamically generated. Can only be set if solution_types is SOLUTION_TYPE_SEARCH. */
@@ -631,7 +653,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -680,7 +702,7 @@ export const GoogleLongrunningOperation = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleLongrunningOperation",
 }) as any as S.Schema<GoogleLongrunningOperation>;
 
-export type DoubleList = ReadonlyArray<number>;
+export type DoubleList = Array<number>;
 export const DoubleList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<DoubleList>;
@@ -788,7 +810,7 @@ export const GoogleCloudRetailV2betaLocalInventory = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudRetailV2betaLocalInventory>;
 
 export type GoogleCloudRetailV2betaLocalInventoryList =
-  ReadonlyArray<GoogleCloudRetailV2betaLocalInventory>;
+  Array<GoogleCloudRetailV2betaLocalInventory>;
 export const GoogleCloudRetailV2betaLocalInventoryList = /*@__PURE__*/ S.Array(
   GoogleCloudRetailV2betaLocalInventory,
 ) as any as S.Schema<GoogleCloudRetailV2betaLocalInventoryList>;
@@ -951,7 +973,7 @@ export const GoogleCloudRetailV2betaUpdateGenerativeQuestionConfigRequest =
   }) as any as S.Schema<GoogleCloudRetailV2betaUpdateGenerativeQuestionConfigRequest>;
 
 export type GoogleCloudRetailV2betaUpdateGenerativeQuestionConfigRequestList =
-  ReadonlyArray<GoogleCloudRetailV2betaUpdateGenerativeQuestionConfigRequest>;
+  Array<GoogleCloudRetailV2betaUpdateGenerativeQuestionConfigRequest>;
 export const GoogleCloudRetailV2betaUpdateGenerativeQuestionConfigRequestList =
   /*@__PURE__*/ S.Array(
     GoogleCloudRetailV2betaUpdateGenerativeQuestionConfigRequest,
@@ -1001,7 +1023,7 @@ export const BatchUpdateProjectsLocationsCatalogsGenerativeQuestionRequest =
   }) as any as S.Schema<BatchUpdateProjectsLocationsCatalogsGenerativeQuestionRequest>;
 
 export type GoogleCloudRetailV2betaGenerativeQuestionConfigList =
-  ReadonlyArray<GoogleCloudRetailV2betaGenerativeQuestionConfig>;
+  Array<GoogleCloudRetailV2betaGenerativeQuestionConfig>;
 export const GoogleCloudRetailV2betaGenerativeQuestionConfigList =
   /*@__PURE__*/ S.Array(
     GoogleCloudRetailV2betaGenerativeQuestionConfig,
@@ -1152,7 +1174,7 @@ export const GoogleCloudRetailV2betaCompleteQueryResponseRecentSearchResult =
   }) as any as S.Schema<GoogleCloudRetailV2betaCompleteQueryResponseRecentSearchResult>;
 
 export type GoogleCloudRetailV2betaCompleteQueryResponseRecentSearchResultList =
-  ReadonlyArray<GoogleCloudRetailV2betaCompleteQueryResponseRecentSearchResult>;
+  Array<GoogleCloudRetailV2betaCompleteQueryResponseRecentSearchResult>;
 export const GoogleCloudRetailV2betaCompleteQueryResponseRecentSearchResultList =
   /*@__PURE__*/ S.Array(
     GoogleCloudRetailV2betaCompleteQueryResponseRecentSearchResult,
@@ -1176,7 +1198,7 @@ export const GoogleCloudRetailV2betaCompleteQueryResponseCompletionResult =
   }) as any as S.Schema<GoogleCloudRetailV2betaCompleteQueryResponseCompletionResult>;
 
 export type GoogleCloudRetailV2betaCompleteQueryResponseCompletionResultList =
-  ReadonlyArray<GoogleCloudRetailV2betaCompleteQueryResponseCompletionResult>;
+  Array<GoogleCloudRetailV2betaCompleteQueryResponseCompletionResult>;
 export const GoogleCloudRetailV2betaCompleteQueryResponseCompletionResultList =
   /*@__PURE__*/ S.Array(
     GoogleCloudRetailV2betaCompleteQueryResponseCompletionResult,
@@ -1255,7 +1277,7 @@ export const GoogleCloudRetailV2betaSearchRequestBoostSpecConditionBoostSpec =
   }) as any as S.Schema<GoogleCloudRetailV2betaSearchRequestBoostSpecConditionBoostSpec>;
 
 export type GoogleCloudRetailV2betaSearchRequestBoostSpecConditionBoostSpecList =
-  ReadonlyArray<GoogleCloudRetailV2betaSearchRequestBoostSpecConditionBoostSpec>;
+  Array<GoogleCloudRetailV2betaSearchRequestBoostSpecConditionBoostSpec>;
 export const GoogleCloudRetailV2betaSearchRequestBoostSpecConditionBoostSpecList =
   /*@__PURE__*/ S.Array(
     GoogleCloudRetailV2betaSearchRequestBoostSpecConditionBoostSpec,
@@ -1465,7 +1487,7 @@ export const GoogleCloudRetailV2betaSafetySetting = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudRetailV2betaSafetySetting>;
 
 export type GoogleCloudRetailV2betaSafetySettingList =
-  ReadonlyArray<GoogleCloudRetailV2betaSafetySetting>;
+  Array<GoogleCloudRetailV2betaSafetySetting>;
 export const GoogleCloudRetailV2betaSafetySettingList = /*@__PURE__*/ S.Array(
   GoogleCloudRetailV2betaSafetySetting,
 ) as any as S.Schema<GoogleCloudRetailV2betaSafetySettingList>;
@@ -1556,7 +1578,7 @@ export const GoogleCloudRetailV2betaConversationalSearchResponseRefinedSearch =
   }) as any as S.Schema<GoogleCloudRetailV2betaConversationalSearchResponseRefinedSearch>;
 
 export type GoogleCloudRetailV2betaConversationalSearchResponseRefinedSearchList =
-  ReadonlyArray<GoogleCloudRetailV2betaConversationalSearchResponseRefinedSearch>;
+  Array<GoogleCloudRetailV2betaConversationalSearchResponseRefinedSearch>;
 export const GoogleCloudRetailV2betaConversationalSearchResponseRefinedSearchList =
   /*@__PURE__*/ S.Array(
     GoogleCloudRetailV2betaConversationalSearchResponseRefinedSearch,
@@ -1597,7 +1619,7 @@ export const GoogleCloudRetailV2betaConversationalSearchResponseFollowupQuestion
   }) as any as S.Schema<GoogleCloudRetailV2betaConversationalSearchResponseFollowupQuestionSuggestedAnswer>;
 
 export type GoogleCloudRetailV2betaConversationalSearchResponseFollowupQuestionSuggestedAnswerList =
-  ReadonlyArray<GoogleCloudRetailV2betaConversationalSearchResponseFollowupQuestionSuggestedAnswer>;
+  Array<GoogleCloudRetailV2betaConversationalSearchResponseFollowupQuestionSuggestedAnswer>;
 export const GoogleCloudRetailV2betaConversationalSearchResponseFollowupQuestionSuggestedAnswerList =
   /*@__PURE__*/ S.Array(
     GoogleCloudRetailV2betaConversationalSearchResponseFollowupQuestionSuggestedAnswer,
@@ -1731,12 +1753,12 @@ export const GoogleCloudRetailV2betaPromotion = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudRetailV2betaPromotion>;
 
 export type GoogleCloudRetailV2betaPromotionList =
-  ReadonlyArray<GoogleCloudRetailV2betaPromotion>;
+  Array<GoogleCloudRetailV2betaPromotion>;
 export const GoogleCloudRetailV2betaPromotionList = /*@__PURE__*/ S.Array(
   GoogleCloudRetailV2betaPromotion,
 ) as any as S.Schema<GoogleCloudRetailV2betaPromotionList>;
 
-export type IntegerList = ReadonlyArray<number>;
+export type IntegerList = Array<number>;
 export const IntegerList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<IntegerList>;
@@ -1785,13 +1807,13 @@ export const GoogleCloudRetailV2betaFulfillmentInfo = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudRetailV2betaFulfillmentInfo>;
 
 export type GoogleCloudRetailV2betaFulfillmentInfoList =
-  ReadonlyArray<GoogleCloudRetailV2betaFulfillmentInfo>;
+  Array<GoogleCloudRetailV2betaFulfillmentInfo>;
 export const GoogleCloudRetailV2betaFulfillmentInfoList = /*@__PURE__*/ S.Array(
   GoogleCloudRetailV2betaFulfillmentInfo,
 ) as any as S.Schema<GoogleCloudRetailV2betaFulfillmentInfoList>;
 
 export type GoogleCloudRetailV2betaProductList =
-  ReadonlyArray<GoogleCloudRetailV2betaProduct>;
+  Array<GoogleCloudRetailV2betaProduct>;
 export const GoogleCloudRetailV2betaProductList = /*@__PURE__*/ S.Array(
   S.suspend(() => GoogleCloudRetailV2betaProduct),
 ) as any as S.Schema<GoogleCloudRetailV2betaProductList>;
@@ -1841,7 +1863,7 @@ export const GoogleCloudRetailV2betaImage = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudRetailV2betaImage>;
 
 export type GoogleCloudRetailV2betaImageList =
-  ReadonlyArray<GoogleCloudRetailV2betaImage>;
+  Array<GoogleCloudRetailV2betaImage>;
 export const GoogleCloudRetailV2betaImageList = /*@__PURE__*/ S.Array(
   GoogleCloudRetailV2betaImage,
 ) as any as S.Schema<GoogleCloudRetailV2betaImageList>;
@@ -1873,7 +1895,7 @@ export interface GoogleCloudRetailV2betaProduct {
   /** The rating of this product. */
   rating?: GoogleCloudRetailV2betaRating;
   /** Immutable. The type of the product. Default to Catalog.product_level_config.ingestion_product_type if unset. */
-  type?: GoogleCloudRetailV2betaProductTypeEnum;
+  type?: GoogleCloudRetailV2betaProductTypeEnum | (string & {});
   /** Fulfillment information, such as the store IDs for in-store pickup or region IDs for different shipping methods. All the elements must have distinct FulfillmentInfo.type. Otherwise, an INVALID_ARGUMENT error is returned. */
   fulfillmentInfo?: GoogleCloudRetailV2betaFulfillmentInfoList;
   /** The material of the product. For example, "leather", "wooden". A maximum of 20 values are allowed. Each value must be a UTF-8 encoded string with a length limit of 200 characters. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google Merchant Center property [material](https://support.google.com/merchants/answer/6324410). Schema.org property [Product.material](https://schema.org/material). */
@@ -1887,7 +1909,7 @@ export interface GoogleCloudRetailV2betaProduct {
   /** Note that this field is applied in the following ways: * If the Product is already expired when it is uploaded, this product is not indexed for search. * If the Product is not expired when it is uploaded, only the Type.PRIMARY's and Type.COLLECTION's expireTime is respected, and Type.VARIANT's expireTime is not used. In general, we suggest the users to delete the stale products explicitly, instead of using this field to determine staleness. expire_time must be later than available_time and publish_time, otherwise an INVALID_ARGUMENT error is thrown. Corresponding properties: Google Merchant Center property [expiration_date](https://support.google.com/merchants/answer/6324499). */
   expireTime?: string;
   /** The online availability of the Product. Default to Availability.IN_STOCK. For primary products with variants set the availability of the primary as Availability.OUT_OF_STOCK and set the true availability at the variant level. This way the primary product will be considered "in stock" as long as it has at least one variant in stock. For primary products with no variants set the true availability at the primary level. Corresponding properties: Google Merchant Center property [availability](https://support.google.com/merchants/answer/6324448). Schema.org property [Offer.availability](https://schema.org/availability). */
-  availability?: GoogleCloudRetailV2betaProductAvailabilityEnum;
+  availability?: GoogleCloudRetailV2betaProductAvailabilityEnum | (string & {});
   /** Language of the title/description and other string attributes. Use language tags defined by [BCP 47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt). For product prediction, this field is ignored and the model automatically detects the text language. The Product can include text in different languages, but duplicating Products to provide text in multiple languages can result in degraded model performance. For product search this field is in use. It defaults to "en-US" if unset. */
   languageCode?: string;
   /** The Global Trade Item Number (GTIN) of the product. This field must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. This field must be a Unigram. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google Merchant Center property [gtin](https://support.google.com/merchants/answer/6324461). Schema.org property [Product.isbn](https://schema.org/isbn), [Product.gtin8](https://schema.org/gtin8), [Product.gtin12](https://schema.org/gtin12), [Product.gtin13](https://schema.org/gtin13), or [Product.gtin14](https://schema.org/gtin14). If the value is not a valid GTIN, an INVALID_ARGUMENT error is returned. */
@@ -2048,7 +2070,7 @@ export const GoogleCloudRetailV2betaConditionQueryTerm =
   }) as any as S.Schema<GoogleCloudRetailV2betaConditionQueryTerm>;
 
 export type GoogleCloudRetailV2betaConditionQueryTermList =
-  ReadonlyArray<GoogleCloudRetailV2betaConditionQueryTerm>;
+  Array<GoogleCloudRetailV2betaConditionQueryTerm>;
 export const GoogleCloudRetailV2betaConditionQueryTermList =
   /*@__PURE__*/ S.Array(
     GoogleCloudRetailV2betaConditionQueryTerm,
@@ -2072,7 +2094,7 @@ export const GoogleCloudRetailV2betaConditionTimeRange =
   }) as any as S.Schema<GoogleCloudRetailV2betaConditionTimeRange>;
 
 export type GoogleCloudRetailV2betaConditionTimeRangeList =
-  ReadonlyArray<GoogleCloudRetailV2betaConditionTimeRange>;
+  Array<GoogleCloudRetailV2betaConditionTimeRange>;
 export const GoogleCloudRetailV2betaConditionTimeRangeList =
   /*@__PURE__*/ S.Array(
     GoogleCloudRetailV2betaConditionTimeRange,
@@ -2246,7 +2268,7 @@ export const GoogleCloudRetailV2betaRuleForceReturnFacetActionFacetPositionAdjus
   }) as any as S.Schema<GoogleCloudRetailV2betaRuleForceReturnFacetActionFacetPositionAdjustment>;
 
 export type GoogleCloudRetailV2betaRuleForceReturnFacetActionFacetPositionAdjustmentList =
-  ReadonlyArray<GoogleCloudRetailV2betaRuleForceReturnFacetActionFacetPositionAdjustment>;
+  Array<GoogleCloudRetailV2betaRuleForceReturnFacetActionFacetPositionAdjustment>;
 export const GoogleCloudRetailV2betaRuleForceReturnFacetActionFacetPositionAdjustmentList =
   /*@__PURE__*/ S.Array(
     GoogleCloudRetailV2betaRuleForceReturnFacetActionFacetPositionAdjustment,
@@ -2330,7 +2352,9 @@ export const GoogleCloudRetailV2betaControlSearchSolutionUseCaseItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudRetailV2betaControlSearchSolutionUseCaseItemEnumList =
-  ReadonlyArray<GoogleCloudRetailV2betaControlSearchSolutionUseCaseItemEnum>;
+  Array<
+    GoogleCloudRetailV2betaControlSearchSolutionUseCaseItemEnum | (string & {})
+  >;
 export const GoogleCloudRetailV2betaControlSearchSolutionUseCaseItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleCloudRetailV2betaControlSearchSolutionUseCaseItemEnum,
@@ -2343,8 +2367,9 @@ export type GoogleCloudRetailV2betaControlSolutionTypesItemEnum =
 export const GoogleCloudRetailV2betaControlSolutionTypesItemEnum =
   /*@__PURE__*/ S.String;
 
-export type GoogleCloudRetailV2betaControlSolutionTypesItemEnumList =
-  ReadonlyArray<GoogleCloudRetailV2betaControlSolutionTypesItemEnum>;
+export type GoogleCloudRetailV2betaControlSolutionTypesItemEnumList = Array<
+  GoogleCloudRetailV2betaControlSolutionTypesItemEnum | (string & {})
+>;
 export const GoogleCloudRetailV2betaControlSolutionTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleCloudRetailV2betaControlSolutionTypesItemEnum,
@@ -2430,7 +2455,7 @@ export const GoogleCloudRetailV2betaModelServingConfigList =
   }) as any as S.Schema<GoogleCloudRetailV2betaModelServingConfigList>;
 
 export type GoogleCloudRetailV2betaModelServingConfigListList =
-  ReadonlyArray<GoogleCloudRetailV2betaModelServingConfigList>;
+  Array<GoogleCloudRetailV2betaModelServingConfigList>;
 export const GoogleCloudRetailV2betaModelServingConfigListList =
   /*@__PURE__*/ S.Array(
     GoogleCloudRetailV2betaModelServingConfigList,
@@ -2453,7 +2478,9 @@ export const GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigC
 /** Additional configs for the frequently-bought-together model type. */
 export interface GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfig {
   /** Optional. Specifies the context of the model when it is used in predict requests. Can only be set for the `frequently-bought-together` type. If it isn't specified, it defaults to MULTIPLE_CONTEXT_PRODUCTS. */
-  contextProductsType?: GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigContextProductsTypeEnum;
+  contextProductsType?:
+    | GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigContextProductsTypeEnum
+    | (string & {});
 }
 export const GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfig =
   /*@__PURE__*/ S.suspend(() =>
@@ -2507,7 +2534,7 @@ export const GoogleCloudRetailV2betaModelDataStateEnum = /*@__PURE__*/ S.String;
 /** Metadata that describes the training and serving parameters of a Model. A Model can be associated with a ServingConfig and then queried through the Predict API. */
 export interface GoogleCloudRetailV2betaModel {
   /** Output only. The serving state of the model: `ACTIVE`, `NOT_ACTIVE`. */
-  servingState?: GoogleCloudRetailV2betaModelServingStateEnum;
+  servingState?: GoogleCloudRetailV2betaModelServingStateEnum | (string & {});
   /** Output only. The tune operation associated with the model. Can be used to determine if there is an ongoing tune for this recommendation. Empty field implies no tune is goig on. */
   tuningOperation?: string;
   /** Output only. The timestamp when the latest successful tune finished. */
@@ -2515,7 +2542,9 @@ export interface GoogleCloudRetailV2betaModel {
   /** Output only. The list of valid serving configs associated with the PageOptimizationConfig. */
   servingConfigLists?: GoogleCloudRetailV2betaModelServingConfigListList;
   /** Optional. If `RECOMMENDATIONS_FILTERING_ENABLED`, recommendation filtering by attributes is enabled for the model. */
-  filteringOption?: GoogleCloudRetailV2betaModelFilteringOptionEnum;
+  filteringOption?:
+    | GoogleCloudRetailV2betaModelFilteringOptionEnum
+    | (string & {});
   /** Optional. Additional model features config. */
   modelFeaturesConfig?: GoogleCloudRetailV2betaModelModelFeaturesConfig;
   /** Required. The fully qualified resource name of the model. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/models/{model_id}` catalog_id has char limit of 50. recommendation_model_id has char limit of 40. */
@@ -2523,15 +2552,17 @@ export interface GoogleCloudRetailV2betaModel {
   /** Optional. The optimization objective e.g. `cvr`. Currently supported values: `ctr`, `cvr`, `revenue-per-order`. If not specified, we choose default based on model type. Default depends on type of recommendation: `recommended-for-you` => `ctr` `others-you-may-like` => `ctr` `frequently-bought-together` => `revenue_per_order` This field together with optimization_objective describe model metadata to use to control model training and serving. See https://cloud.google.com/retail/docs/models for more details on what the model metadata control and which combination of parameters are valid. For invalid combinations of parameters (e.g. type = `frequently-bought-together` and optimization_objective = `ctr`), you receive an error 400 if you try to create/update a recommendation with this set of knobs. */
   optimizationObjective?: string;
   /** Optional. The state of periodic tuning. The period we use is 3 months - to do a one-off tune earlier use the `TuneModel` method. Default value is `PERIODIC_TUNING_ENABLED`. */
-  periodicTuningState?: GoogleCloudRetailV2betaModelPeriodicTuningStateEnum;
+  periodicTuningState?:
+    | GoogleCloudRetailV2betaModelPeriodicTuningStateEnum
+    | (string & {});
   /** Optional. The training state that the model is in (e.g. `TRAINING` or `PAUSED`). Since part of the cost of running the service is frequency of training - this can be used to determine when to train model in order to control cost. If not specified: the default value for `CreateModel` method is `TRAINING`. The default value for `UpdateModel` method is to keep the state the same as before. */
-  trainingState?: GoogleCloudRetailV2betaModelTrainingStateEnum;
+  trainingState?: GoogleCloudRetailV2betaModelTrainingStateEnum | (string & {});
   /** Output only. Timestamp the Recommendation Model was created at. */
   createTime?: string;
   /** Required. The type of model e.g. `home-page`. Currently supported values: `recommended-for-you`, `others-you-may-like`, `frequently-bought-together`, `page-optimization`, `similar-items`, `buy-it-again`, `on-sale-items`, and `recently-viewed`(readonly value). This field together with optimization_objective describe model metadata to use to control model training and serving. See https://cloud.google.com/retail/docs/models for more details on what the model metadata control and which combination of parameters are valid. For invalid combinations of parameters (e.g. type = `frequently-bought-together` and optimization_objective = `ctr`), you receive an error 400 if you try to create/update a recommendation with this set of knobs. */
   type?: string;
   /** Output only. The state of data requirements for this model: `DATA_OK` and `DATA_ERROR`. Recommendation model cannot be trained if the data is in `DATA_ERROR` state. Recommendation model can have `DATA_ERROR` state even if serving state is `ACTIVE`: models were trained successfully before, but cannot be refreshed because model no longer has sufficient data for training. */
-  dataState?: GoogleCloudRetailV2betaModelDataStateEnum;
+  dataState?: GoogleCloudRetailV2betaModelDataStateEnum | (string & {});
   /** Required. The display name of the model. Should be human readable, used to display Recommendation Models in the Retail Cloud Console Dashboard. UTF-8 encoded string with limit of 1024 characters. */
   displayName?: string;
   /** Output only. Timestamp the Recommendation Model was last updated. E.g. if a Recommendation Model was paused - this would be the time the pause was initiated. */
@@ -2911,7 +2942,7 @@ export const GoogleCloudRetailV2betaAlertConfigAlertPolicyRecipient =
   }) as any as S.Schema<GoogleCloudRetailV2betaAlertConfigAlertPolicyRecipient>;
 
 export type GoogleCloudRetailV2betaAlertConfigAlertPolicyRecipientList =
-  ReadonlyArray<GoogleCloudRetailV2betaAlertConfigAlertPolicyRecipient>;
+  Array<GoogleCloudRetailV2betaAlertConfigAlertPolicyRecipient>;
 export const GoogleCloudRetailV2betaAlertConfigAlertPolicyRecipientList =
   /*@__PURE__*/ S.Array(
     GoogleCloudRetailV2betaAlertConfigAlertPolicyRecipient,
@@ -2931,7 +2962,9 @@ export interface GoogleCloudRetailV2betaAlertConfigAlertPolicy {
   /** The feature that provides alerting capability. Supported value: - `search-data-quality` for retail search customers. - `conv-data-quality` for retail conversation customers. */
   alertGroup?: string;
   /** The enrollment status of a customer. */
-  enrollStatus?: GoogleCloudRetailV2betaAlertConfigAlertPolicyEnrollStatusEnum;
+  enrollStatus?:
+    | GoogleCloudRetailV2betaAlertConfigAlertPolicyEnrollStatusEnum
+    | (string & {});
 }
 export const GoogleCloudRetailV2betaAlertConfigAlertPolicy =
   /*@__PURE__*/ S.suspend(() =>
@@ -2949,7 +2982,7 @@ export const GoogleCloudRetailV2betaAlertConfigAlertPolicy =
   }) as any as S.Schema<GoogleCloudRetailV2betaAlertConfigAlertPolicy>;
 
 export type GoogleCloudRetailV2betaAlertConfigAlertPolicyList =
-  ReadonlyArray<GoogleCloudRetailV2betaAlertConfigAlertPolicy>;
+  Array<GoogleCloudRetailV2betaAlertConfigAlertPolicy>;
 export const GoogleCloudRetailV2betaAlertConfigAlertPolicyList =
   /*@__PURE__*/ S.Array(
     GoogleCloudRetailV2betaAlertConfigAlertPolicy,
@@ -3165,7 +3198,7 @@ export const GoogleCloudRetailV2betaIntentClassificationConfigExample =
   }) as any as S.Schema<GoogleCloudRetailV2betaIntentClassificationConfigExample>;
 
 export type GoogleCloudRetailV2betaIntentClassificationConfigExampleList =
-  ReadonlyArray<GoogleCloudRetailV2betaIntentClassificationConfigExample>;
+  Array<GoogleCloudRetailV2betaIntentClassificationConfigExample>;
 export const GoogleCloudRetailV2betaIntentClassificationConfigExampleList =
   /*@__PURE__*/ S.Array(
     GoogleCloudRetailV2betaIntentClassificationConfigExample,
@@ -3183,7 +3216,9 @@ export interface GoogleCloudRetailV2betaIntentClassificationConfigInlineForceInt
   /** Optional. A example query. */
   query?: string;
   /** Optional. The operation to perform for the query. */
-  operation?: GoogleCloudRetailV2betaIntentClassificationConfigInlineForceIntentOperationEnum;
+  operation?:
+    | GoogleCloudRetailV2betaIntentClassificationConfigInlineForceIntentOperationEnum
+    | (string & {});
 }
 export const GoogleCloudRetailV2betaIntentClassificationConfigInlineForceIntent =
   /*@__PURE__*/ S.suspend(() =>
@@ -3200,7 +3235,7 @@ export const GoogleCloudRetailV2betaIntentClassificationConfigInlineForceIntent 
   }) as any as S.Schema<GoogleCloudRetailV2betaIntentClassificationConfigInlineForceIntent>;
 
 export type GoogleCloudRetailV2betaIntentClassificationConfigInlineForceIntentList =
-  ReadonlyArray<GoogleCloudRetailV2betaIntentClassificationConfigInlineForceIntent>;
+  Array<GoogleCloudRetailV2betaIntentClassificationConfigInlineForceIntent>;
 export const GoogleCloudRetailV2betaIntentClassificationConfigInlineForceIntentList =
   /*@__PURE__*/ S.Array(
     GoogleCloudRetailV2betaIntentClassificationConfigInlineForceIntent,
@@ -3691,7 +3726,7 @@ export const GoogleCloudRetailV2betaProductDetail = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudRetailV2betaProductDetail>;
 
 export type GoogleCloudRetailV2betaProductDetailList =
-  ReadonlyArray<GoogleCloudRetailV2betaProductDetail>;
+  Array<GoogleCloudRetailV2betaProductDetail>;
 export const GoogleCloudRetailV2betaProductDetailList = /*@__PURE__*/ S.Array(
   GoogleCloudRetailV2betaProductDetail,
 ) as any as S.Schema<GoogleCloudRetailV2betaProductDetailList>;
@@ -3725,7 +3760,7 @@ export const GoogleCloudRetailV2betaPanelInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudRetailV2betaPanelInfo>;
 
 export type GoogleCloudRetailV2betaPanelInfoList =
-  ReadonlyArray<GoogleCloudRetailV2betaPanelInfo>;
+  Array<GoogleCloudRetailV2betaPanelInfo>;
 export const GoogleCloudRetailV2betaPanelInfoList = /*@__PURE__*/ S.Array(
   GoogleCloudRetailV2betaPanelInfo,
 ) as any as S.Schema<GoogleCloudRetailV2betaPanelInfoList>;
@@ -3853,7 +3888,7 @@ export const GoogleCloudRetailV2betaUserEvent = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudRetailV2betaUserEvent>;
 
 export type GoogleCloudRetailV2betaUserEventList =
-  ReadonlyArray<GoogleCloudRetailV2betaUserEvent>;
+  Array<GoogleCloudRetailV2betaUserEvent>;
 export const GoogleCloudRetailV2betaUserEventList = /*@__PURE__*/ S.Array(
   GoogleCloudRetailV2betaUserEvent,
 ) as any as S.Schema<GoogleCloudRetailV2betaUserEventList>;
@@ -3998,7 +4033,7 @@ export const GoogleCloudRetailV2betaMerchantCenterFeedFilter =
   }) as any as S.Schema<GoogleCloudRetailV2betaMerchantCenterFeedFilter>;
 
 export type GoogleCloudRetailV2betaMerchantCenterFeedFilterList =
-  ReadonlyArray<GoogleCloudRetailV2betaMerchantCenterFeedFilter>;
+  Array<GoogleCloudRetailV2betaMerchantCenterFeedFilter>;
 export const GoogleCloudRetailV2betaMerchantCenterFeedFilterList =
   /*@__PURE__*/ S.Array(
     GoogleCloudRetailV2betaMerchantCenterFeedFilter,
@@ -4034,7 +4069,7 @@ export const GoogleCloudRetailV2betaMerchantCenterLink =
   }) as any as S.Schema<GoogleCloudRetailV2betaMerchantCenterLink>;
 
 export type GoogleCloudRetailV2betaMerchantCenterLinkList =
-  ReadonlyArray<GoogleCloudRetailV2betaMerchantCenterLink>;
+  Array<GoogleCloudRetailV2betaMerchantCenterLink>;
 export const GoogleCloudRetailV2betaMerchantCenterLinkList =
   /*@__PURE__*/ S.Array(
     GoogleCloudRetailV2betaMerchantCenterLink,
@@ -4079,7 +4114,7 @@ export const GoogleCloudRetailV2betaCatalog = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudRetailV2betaCatalog>;
 
 export type GoogleCloudRetailV2betaCatalogList =
-  ReadonlyArray<GoogleCloudRetailV2betaCatalog>;
+  Array<GoogleCloudRetailV2betaCatalog>;
 export const GoogleCloudRetailV2betaCatalogList = /*@__PURE__*/ S.Array(
   GoogleCloudRetailV2betaCatalog,
 ) as any as S.Schema<GoogleCloudRetailV2betaCatalogList>;
@@ -4178,7 +4213,7 @@ export const ListProjectsLocationsCatalogsControlsRequest =
   }) as any as S.Schema<ListProjectsLocationsCatalogsControlsRequest>;
 
 export type GoogleCloudRetailV2betaControlList =
-  ReadonlyArray<GoogleCloudRetailV2betaControl>;
+  Array<GoogleCloudRetailV2betaControl>;
 export const GoogleCloudRetailV2betaControlList = /*@__PURE__*/ S.Array(
   GoogleCloudRetailV2betaControl,
 ) as any as S.Schema<GoogleCloudRetailV2betaControlList>;
@@ -4261,7 +4296,7 @@ export const ListProjectsLocationsCatalogsModelsRequest =
   }) as any as S.Schema<ListProjectsLocationsCatalogsModelsRequest>;
 
 export type GoogleCloudRetailV2betaModelList =
-  ReadonlyArray<GoogleCloudRetailV2betaModel>;
+  Array<GoogleCloudRetailV2betaModel>;
 export const GoogleCloudRetailV2betaModelList = /*@__PURE__*/ S.Array(
   GoogleCloudRetailV2betaModel,
 ) as any as S.Schema<GoogleCloudRetailV2betaModelList>;
@@ -4314,8 +4349,7 @@ export const ListProjectsLocationsCatalogsOperationsRequest =
     identifier: "ListProjectsLocationsCatalogsOperationsRequest",
   }) as any as S.Schema<ListProjectsLocationsCatalogsOperationsRequest>;
 
-export type GoogleLongrunningOperationList =
-  ReadonlyArray<GoogleLongrunningOperation>;
+export type GoogleLongrunningOperationList = Array<GoogleLongrunningOperation>;
 export const GoogleLongrunningOperationList = /*@__PURE__*/ S.Array(
   GoogleLongrunningOperation,
 ) as any as S.Schema<GoogleLongrunningOperationList>;
@@ -4366,7 +4400,7 @@ export const ListProjectsLocationsCatalogsServingConfigsRequest =
   }) as any as S.Schema<ListProjectsLocationsCatalogsServingConfigsRequest>;
 
 export type GoogleCloudRetailV2betaServingConfigList =
-  ReadonlyArray<GoogleCloudRetailV2betaServingConfig>;
+  Array<GoogleCloudRetailV2betaServingConfig>;
 export const GoogleCloudRetailV2betaServingConfigList = /*@__PURE__*/ S.Array(
   GoogleCloudRetailV2betaServingConfig,
 ) as any as S.Schema<GoogleCloudRetailV2betaServingConfigList>;
@@ -4683,7 +4717,7 @@ export const GoogleCloudRetailV2betaPredictResponsePredictionResult =
   }) as any as S.Schema<GoogleCloudRetailV2betaPredictResponsePredictionResult>;
 
 export type GoogleCloudRetailV2betaPredictResponsePredictionResultList =
-  ReadonlyArray<GoogleCloudRetailV2betaPredictResponsePredictionResult>;
+  Array<GoogleCloudRetailV2betaPredictResponsePredictionResult>;
 export const GoogleCloudRetailV2betaPredictResponsePredictionResultList =
   /*@__PURE__*/ S.Array(
     GoogleCloudRetailV2betaPredictResponsePredictionResult,
@@ -5178,7 +5212,7 @@ export const GoogleCloudRetailV2betaSearchRequestFacetSpec =
   }) as any as S.Schema<GoogleCloudRetailV2betaSearchRequestFacetSpec>;
 
 export type GoogleCloudRetailV2betaSearchRequestFacetSpecList =
-  ReadonlyArray<GoogleCloudRetailV2betaSearchRequestFacetSpec>;
+  Array<GoogleCloudRetailV2betaSearchRequestFacetSpec>;
 export const GoogleCloudRetailV2betaSearchRequestFacetSpecList =
   /*@__PURE__*/ S.Array(
     GoogleCloudRetailV2betaSearchRequestFacetSpec,
@@ -5272,7 +5306,7 @@ export const GoogleCloudRetailV2betaTile = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudRetailV2betaTile>;
 
 export type GoogleCloudRetailV2betaTileList =
-  ReadonlyArray<GoogleCloudRetailV2betaTile>;
+  Array<GoogleCloudRetailV2betaTile>;
 export const GoogleCloudRetailV2betaTileList = /*@__PURE__*/ S.Array(
   GoogleCloudRetailV2betaTile,
 ) as any as S.Schema<GoogleCloudRetailV2betaTileList>;
@@ -5295,7 +5329,7 @@ export const GoogleCloudRetailV2betaSearchRequestTileNavigationSpec =
   }) as any as S.Schema<GoogleCloudRetailV2betaSearchRequestTileNavigationSpec>;
 
 export type GoogleCloudRetailV2betaProductAttributeValueList =
-  ReadonlyArray<GoogleCloudRetailV2betaProductAttributeValue>;
+  Array<GoogleCloudRetailV2betaProductAttributeValue>;
 export const GoogleCloudRetailV2betaProductAttributeValueList =
   /*@__PURE__*/ S.Array(
     GoogleCloudRetailV2betaProductAttributeValue,
@@ -5554,7 +5588,7 @@ export const GoogleCloudRetailV2betaSearchResponseFacetFacetValue =
   }) as any as S.Schema<GoogleCloudRetailV2betaSearchResponseFacetFacetValue>;
 
 export type GoogleCloudRetailV2betaSearchResponseFacetFacetValueList =
-  ReadonlyArray<GoogleCloudRetailV2betaSearchResponseFacetFacetValue>;
+  Array<GoogleCloudRetailV2betaSearchResponseFacetFacetValue>;
 export const GoogleCloudRetailV2betaSearchResponseFacetFacetValueList =
   /*@__PURE__*/ S.Array(
     GoogleCloudRetailV2betaSearchResponseFacetFacetValue,
@@ -5583,7 +5617,7 @@ export const GoogleCloudRetailV2betaSearchResponseFacet =
   }) as any as S.Schema<GoogleCloudRetailV2betaSearchResponseFacet>;
 
 export type GoogleCloudRetailV2betaSearchResponseFacetList =
-  ReadonlyArray<GoogleCloudRetailV2betaSearchResponseFacet>;
+  Array<GoogleCloudRetailV2betaSearchResponseFacet>;
 export const GoogleCloudRetailV2betaSearchResponseFacetList =
   /*@__PURE__*/ S.Array(
     GoogleCloudRetailV2betaSearchResponseFacet,
@@ -5626,7 +5660,7 @@ export const GoogleCloudRetailV2betaExperimentInfo = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudRetailV2betaExperimentInfo>;
 
 export type GoogleCloudRetailV2betaExperimentInfoList =
-  ReadonlyArray<GoogleCloudRetailV2betaExperimentInfo>;
+  Array<GoogleCloudRetailV2betaExperimentInfo>;
 export const GoogleCloudRetailV2betaExperimentInfoList = /*@__PURE__*/ S.Array(
   GoogleCloudRetailV2betaExperimentInfo,
 ) as any as S.Schema<GoogleCloudRetailV2betaExperimentInfoList>;
@@ -5649,7 +5683,7 @@ export const GoogleCloudRetailV2betaSearchResponseConversationalSearchResultAddi
   }) as any as S.Schema<GoogleCloudRetailV2betaSearchResponseConversationalSearchResultAdditionalFilter>;
 
 export type GoogleCloudRetailV2betaSearchResponseConversationalSearchResultAdditionalFilterList =
-  ReadonlyArray<GoogleCloudRetailV2betaSearchResponseConversationalSearchResultAdditionalFilter>;
+  Array<GoogleCloudRetailV2betaSearchResponseConversationalSearchResultAdditionalFilter>;
 export const GoogleCloudRetailV2betaSearchResponseConversationalSearchResultAdditionalFilterList =
   /*@__PURE__*/ S.Array(
     GoogleCloudRetailV2betaSearchResponseConversationalSearchResultAdditionalFilter,
@@ -5673,7 +5707,7 @@ export const GoogleCloudRetailV2betaSearchResponseConversationalSearchResultSugg
   }) as any as S.Schema<GoogleCloudRetailV2betaSearchResponseConversationalSearchResultSuggestedAnswer>;
 
 export type GoogleCloudRetailV2betaSearchResponseConversationalSearchResultSuggestedAnswerList =
-  ReadonlyArray<GoogleCloudRetailV2betaSearchResponseConversationalSearchResultSuggestedAnswer>;
+  Array<GoogleCloudRetailV2betaSearchResponseConversationalSearchResultSuggestedAnswer>;
 export const GoogleCloudRetailV2betaSearchResponseConversationalSearchResultSuggestedAnswerList =
   /*@__PURE__*/ S.Array(
     GoogleCloudRetailV2betaSearchResponseConversationalSearchResultSuggestedAnswer,
@@ -5769,7 +5803,7 @@ export const GoogleCloudRetailV2betaSearchResponseSearchResult =
   }) as any as S.Schema<GoogleCloudRetailV2betaSearchResponseSearchResult>;
 
 export type GoogleCloudRetailV2betaSearchResponseSearchResultList =
-  ReadonlyArray<GoogleCloudRetailV2betaSearchResponseSearchResult>;
+  Array<GoogleCloudRetailV2betaSearchResponseSearchResult>;
 export const GoogleCloudRetailV2betaSearchResponseSearchResultList =
   /*@__PURE__*/ S.Array(
     GoogleCloudRetailV2betaSearchResponseSearchResult,

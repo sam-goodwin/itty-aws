@@ -87,7 +87,7 @@ export const Change = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Change" }) as any as S.Schema<Change>;
 
-export type DetailChangesList = ReadonlyArray<Change>;
+export type DetailChangesList = Array<Change>;
 export const DetailChangesList = /*@__PURE__*/ S.Array(
   Change,
 ) as any as S.Schema<DetailChangesList>;
@@ -162,8 +162,7 @@ export const ActivityLogEntry = /*@__PURE__*/ S.suspend(() =>
   identifier: "ActivityLogEntry",
 }) as any as S.Schema<ActivityLogEntry>;
 
-export type ActivityLogPaginatedResponseResultsList =
-  ReadonlyArray<ActivityLogEntry>;
+export type ActivityLogPaginatedResponseResultsList = Array<ActivityLogEntry>;
 export const ActivityLogPaginatedResponseResultsList = /*@__PURE__*/ S.Array(
   ActivityLogEntry,
 ) as any as S.Schema<ActivityLogPaginatedResponseResultsList>;
@@ -228,13 +227,13 @@ export type EvaluationRuntimeEnum = "server" | "client" | "all";
 export const EvaluationRuntimeEnum = /*@__PURE__*/ S.String;
 
 /** Tag names to filter by. Flags carrying at least one of these tags match. */
-export type BulkDeleteFiltersTagsList = ReadonlyArray<string>;
+export type BulkDeleteFiltersTagsList = Array<string>;
 export const BulkDeleteFiltersTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BulkDeleteFiltersTagsList>;
 
 /** Tag names to exclude. Flags carrying any of these tags are filtered out. */
-export type BulkDeleteFiltersExcludedTagsList = ReadonlyArray<string>;
+export type BulkDeleteFiltersExcludedTagsList = Array<string>;
 export const BulkDeleteFiltersExcludedTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BulkDeleteFiltersExcludedTagsList>;
@@ -280,7 +279,7 @@ export const BulkDeleteFilters = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BulkDeleteFilters>;
 
 /** Explicit feature flag IDs to soft-delete. Mutually exclusive with `filters`. */
-export type FeatureFlagsBulkDeleteCreateRequestIdsList = ReadonlyArray<number>;
+export type FeatureFlagsBulkDeleteCreateRequestIdsList = Array<number>;
 export const FeatureFlagsBulkDeleteCreateRequestIdsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<FeatureFlagsBulkDeleteCreateRequestIdsList>;
@@ -338,8 +337,7 @@ export const BulkDeleteDeletedItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BulkDeleteDeletedItem>;
 
 /** Flags successfully soft-deleted. */
-export type BulkDeleteResponseDeletedList =
-  ReadonlyArray<BulkDeleteDeletedItem>;
+export type BulkDeleteResponseDeletedList = Array<BulkDeleteDeletedItem>;
 export const BulkDeleteResponseDeletedList = /*@__PURE__*/ S.Array(
   BulkDeleteDeletedItem,
 ) as any as S.Schema<BulkDeleteResponseDeletedList>;
@@ -363,7 +361,7 @@ export const BulkDeleteErrorItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BulkDeleteErrorItem>;
 
 /** Flags that could not be deleted, with reasons. */
-export type BulkDeleteResponseErrorsList = ReadonlyArray<BulkDeleteErrorItem>;
+export type BulkDeleteResponseErrorsList = Array<BulkDeleteErrorItem>;
 export const BulkDeleteResponseErrorsList = /*@__PURE__*/ S.Array(
   BulkDeleteErrorItem,
 ) as any as S.Schema<BulkDeleteResponseErrorsList>;
@@ -385,7 +383,7 @@ export const BulkDeleteResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BulkDeleteResponse>;
 
 /** Feature flag IDs to look up keys for. Strings of digits are also accepted; any other value is reported in the response `warning` field and otherwise ignored. */
-export type FeatureFlagsBulkKeysRetrieveRequestIdsList = ReadonlyArray<unknown>;
+export type FeatureFlagsBulkKeysRetrieveRequestIdsList = Array<unknown>;
 export const FeatureFlagsBulkKeysRetrieveRequestIdsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<FeatureFlagsBulkKeysRetrieveRequestIdsList>;
@@ -434,8 +432,7 @@ export const BulkKeysResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BulkKeysResponse>;
 
 /** List of object IDs to update tags on. */
-export type FeatureFlagsBulkUpdateTagsCreateRequestIdsList =
-  ReadonlyArray<number>;
+export type FeatureFlagsBulkUpdateTagsCreateRequestIdsList = Array<number>;
 export const FeatureFlagsBulkUpdateTagsCreateRequestIdsList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -446,8 +443,7 @@ export type BulkUpdateTagsActionEnum = "add" | "remove" | "set";
 export const BulkUpdateTagsActionEnum = /*@__PURE__*/ S.String;
 
 /** Tag names to add, remove, or set. */
-export type FeatureFlagsBulkUpdateTagsCreateRequestTagsList =
-  ReadonlyArray<string>;
+export type FeatureFlagsBulkUpdateTagsCreateRequestTagsList = Array<string>;
 export const FeatureFlagsBulkUpdateTagsCreateRequestTagsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -481,7 +477,7 @@ export const FeatureFlagsBulkUpdateTagsCreateRequest = /*@__PURE__*/ S.suspend(
   identifier: "FeatureFlagsBulkUpdateTagsCreateRequest",
 }) as any as S.Schema<FeatureFlagsBulkUpdateTagsCreateRequest>;
 
-export type BulkUpdateTagsItemTagsList = ReadonlyArray<string>;
+export type BulkUpdateTagsItemTagsList = Array<string>;
 export const BulkUpdateTagsItemTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BulkUpdateTagsItemTagsList>;
@@ -499,8 +495,7 @@ export const BulkUpdateTagsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "BulkUpdateTagsItem",
 }) as any as S.Schema<BulkUpdateTagsItem>;
 
-export type BulkUpdateTagsResponseUpdatedList =
-  ReadonlyArray<BulkUpdateTagsItem>;
+export type BulkUpdateTagsResponseUpdatedList = Array<BulkUpdateTagsItem>;
 export const BulkUpdateTagsResponseUpdatedList = /*@__PURE__*/ S.Array(
   BulkUpdateTagsItem,
 ) as any as S.Schema<BulkUpdateTagsResponseUpdatedList>;
@@ -518,8 +513,7 @@ export const BulkUpdateTagsError = /*@__PURE__*/ S.suspend(() =>
   identifier: "BulkUpdateTagsError",
 }) as any as S.Schema<BulkUpdateTagsError>;
 
-export type BulkUpdateTagsResponseSkippedList =
-  ReadonlyArray<BulkUpdateTagsError>;
+export type BulkUpdateTagsResponseSkippedList = Array<BulkUpdateTagsError>;
 export const BulkUpdateTagsResponseSkippedList = /*@__PURE__*/ S.Array(
   BulkUpdateTagsError,
 ) as any as S.Schema<BulkUpdateTagsResponseSkippedList>;
@@ -701,7 +695,7 @@ export const FeatureFlagFilterPropertyMultiContainsSchemaOperatorEnum =
 
 /** List of strings to evaluate against. */
 export type FeatureFlagFilterPropertyMultiContainsSchemaValueList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const FeatureFlagFilterPropertyMultiContainsSchemaValueList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -898,7 +892,7 @@ export const FeatureFlagFilterPropertySchema = /*@__PURE__*/ S.suspend(() =>
 
 /** Property conditions for this release condition group. */
 export type FeatureFlagConditionGroupSchemaPropertiesList =
-  ReadonlyArray<FeatureFlagFilterPropertySchema>;
+  Array<FeatureFlagFilterPropertySchema>;
 export const FeatureFlagConditionGroupSchemaPropertiesList =
   /*@__PURE__*/ S.Array(
     FeatureFlagFilterPropertySchema,
@@ -927,7 +921,7 @@ export const FeatureFlagConditionGroupSchema = /*@__PURE__*/ S.suspend(() =>
 
 /** Release condition groups for the feature flag. */
 export type FeatureFlagFiltersSchemaGroupsList =
-  ReadonlyArray<FeatureFlagConditionGroupSchema>;
+  Array<FeatureFlagConditionGroupSchema>;
 export const FeatureFlagFiltersSchemaGroupsList = /*@__PURE__*/ S.Array(
   FeatureFlagConditionGroupSchema,
 ) as any as S.Schema<FeatureFlagFiltersSchemaGroupsList>;
@@ -953,7 +947,7 @@ export const FeatureFlagMultivariateVariantSchema = /*@__PURE__*/ S.suspend(
 
 /** Variant definitions for multivariate feature flags. */
 export type FeatureFlagMultivariateSchemaVariantsList =
-  ReadonlyArray<FeatureFlagMultivariateVariantSchema>;
+  Array<FeatureFlagMultivariateVariantSchema>;
 export const FeatureFlagMultivariateSchemaVariantsList = /*@__PURE__*/ S.Array(
   FeatureFlagMultivariateVariantSchema,
 ) as any as S.Schema<FeatureFlagMultivariateSchemaVariantsList>;
@@ -1007,14 +1001,13 @@ export const FeatureFlagFiltersSchema = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FeatureFlagFiltersSchema>;
 
 /** Organizational tags for this feature flag. */
-export type FeatureFlagsCreateRequestTagsList = ReadonlyArray<string>;
+export type FeatureFlagsCreateRequestTagsList = Array<string>;
 export const FeatureFlagsCreateRequestTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<FeatureFlagsCreateRequestTagsList>;
 
 /** Evaluation contexts that control where this flag evaluates at runtime. */
-export type FeatureFlagsCreateRequestEvaluationContextsList =
-  ReadonlyArray<string>;
+export type FeatureFlagsCreateRequestEvaluationContextsList = Array<string>;
 export const FeatureFlagsCreateRequestEvaluationContextsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1135,7 +1128,7 @@ export const UserBasic = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "UserBasic" }) as any as S.Schema<UserBasic>;
 
-export type FeatureFlagOutputExperimentSetList = ReadonlyArray<number>;
+export type FeatureFlagOutputExperimentSetList = Array<number>;
 export const FeatureFlagOutputExperimentSetList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<FeatureFlagOutputExperimentSetList>;
@@ -1159,7 +1152,7 @@ export const FeatureFlagExperimentSetMetadata = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FeatureFlagExperimentSetMetadata>;
 
 export type FeatureFlagOutputExperimentSetMetadataList =
-  ReadonlyArray<FeatureFlagExperimentSetMetadata>;
+  Array<FeatureFlagExperimentSetMetadata>;
 export const FeatureFlagOutputExperimentSetMetadataList = /*@__PURE__*/ S.Array(
   FeatureFlagExperimentSetMetadata,
 ) as any as S.Schema<FeatureFlagOutputExperimentSetMetadataList>;
@@ -1180,12 +1173,12 @@ export const FeatureFlagOutputFeaturesMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<FeatureFlagOutputFeaturesMap>;
 
-export type FeatureFlagOutputTagsList = ReadonlyArray<unknown>;
+export type FeatureFlagOutputTagsList = Array<unknown>;
 export const FeatureFlagOutputTagsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<FeatureFlagOutputTagsList>;
 
-export type FeatureFlagOutputAnalyticsDashboardsList = ReadonlyArray<number>;
+export type FeatureFlagOutputAnalyticsDashboardsList = Array<number>;
 export const FeatureFlagOutputAnalyticsDashboardsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<FeatureFlagOutputAnalyticsDashboardsList>;
@@ -1300,21 +1293,21 @@ export const FeatureFlagsCreateStaticCohortForFlagCreateRequestFiltersMap =
   ) as any as S.Schema<FeatureFlagsCreateStaticCohortForFlagCreateRequestFiltersMap>;
 
 export type FeatureFlagsCreateStaticCohortForFlagCreateRequestTagsList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const FeatureFlagsCreateStaticCohortForFlagCreateRequestTagsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<FeatureFlagsCreateStaticCohortForFlagCreateRequestTagsList>;
 
 export type FeatureFlagsCreateStaticCohortForFlagCreateRequestEvaluationContextsList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const FeatureFlagsCreateStaticCohortForFlagCreateRequestEvaluationContextsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<FeatureFlagsCreateStaticCohortForFlagCreateRequestEvaluationContextsList>;
 
 export type FeatureFlagsCreateStaticCohortForFlagCreateRequestAnalyticsDashboardsList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const FeatureFlagsCreateStaticCohortForFlagCreateRequestAnalyticsDashboardsList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -1443,20 +1436,20 @@ export const FeatureFlagsDashboardCreateRequestFiltersMap =
     S.Unknown,
   ) as any as S.Schema<FeatureFlagsDashboardCreateRequestFiltersMap>;
 
-export type FeatureFlagsDashboardCreateRequestTagsList = ReadonlyArray<unknown>;
+export type FeatureFlagsDashboardCreateRequestTagsList = Array<unknown>;
 export const FeatureFlagsDashboardCreateRequestTagsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<FeatureFlagsDashboardCreateRequestTagsList>;
 
 export type FeatureFlagsDashboardCreateRequestEvaluationContextsList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const FeatureFlagsDashboardCreateRequestEvaluationContextsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<FeatureFlagsDashboardCreateRequestEvaluationContextsList>;
 
 export type FeatureFlagsDashboardCreateRequestAnalyticsDashboardsList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const FeatureFlagsDashboardCreateRequestAnalyticsDashboardsList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -1599,7 +1592,7 @@ export const DependentFlag = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DependentFlag" }) as any as S.Schema<DependentFlag>;
 
 export type FeatureFlagsDependentFlagsListResponseBodyList =
-  ReadonlyArray<DependentFlag>;
+  Array<DependentFlag>;
 export const FeatureFlagsDependentFlagsListResponseBodyList =
   /*@__PURE__*/ S.Array(
     DependentFlag,
@@ -1652,21 +1645,21 @@ export const FeatureFlagsEnrichUsageDashboardCreateRequestFiltersMap =
   ) as any as S.Schema<FeatureFlagsEnrichUsageDashboardCreateRequestFiltersMap>;
 
 export type FeatureFlagsEnrichUsageDashboardCreateRequestTagsList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const FeatureFlagsEnrichUsageDashboardCreateRequestTagsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<FeatureFlagsEnrichUsageDashboardCreateRequestTagsList>;
 
 export type FeatureFlagsEnrichUsageDashboardCreateRequestEvaluationContextsList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const FeatureFlagsEnrichUsageDashboardCreateRequestEvaluationContextsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<FeatureFlagsEnrichUsageDashboardCreateRequestEvaluationContextsList>;
 
 export type FeatureFlagsEnrichUsageDashboardCreateRequestAnalyticsDashboardsList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const FeatureFlagsEnrichUsageDashboardCreateRequestAnalyticsDashboardsList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -1777,7 +1770,7 @@ export const FeatureFlagsEnrichUsageDashboardCreateResponse =
   }) as any as S.Schema<FeatureFlagsEnrichUsageDashboardCreateResponse>;
 
 export type FeatureFlagsEvaluationReasonsRetrieveRequestFlagKeysList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const FeatureFlagsEvaluationReasonsRetrieveRequestFlagKeysList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1917,7 +1910,7 @@ export const FeatureFlagsListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FeatureFlagsListRequest>;
 
 export type PaginatedFeatureFlagListOutputResultsList =
-  ReadonlyArray<FeatureFlagOutput>;
+  Array<FeatureFlagOutput>;
 export const PaginatedFeatureFlagListOutputResultsList = /*@__PURE__*/ S.Array(
   FeatureFlagOutput,
 ) as any as S.Schema<PaginatedFeatureFlagListOutputResultsList>;
@@ -2008,7 +2001,7 @@ export type MinimalFeatureFlagBucketingIdentifier =
 export const MinimalFeatureFlagBucketingIdentifier =
   /*@__PURE__*/ S.Unknown as any as S.Schema<MinimalFeatureFlagBucketingIdentifier>;
 
-export type MinimalFeatureFlagEvaluationContextsList = ReadonlyArray<string>;
+export type MinimalFeatureFlagEvaluationContextsList = Array<string>;
 export const MinimalFeatureFlagEvaluationContextsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<MinimalFeatureFlagEvaluationContextsList>;
@@ -2066,7 +2059,7 @@ export const MyFlagsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MyFlagsResponse>;
 
 export type FeatureFlagsMyFlagsRetrieveResponseBodyList =
-  ReadonlyArray<MyFlagsResponse>;
+  Array<MyFlagsResponse>;
 export const FeatureFlagsMyFlagsRetrieveResponseBodyList =
   /*@__PURE__*/ S.Array(
     MyFlagsResponse,
@@ -2081,14 +2074,14 @@ export const FeatureFlagsMyFlagsRetrieveResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FeatureFlagsMyFlagsRetrieveResponse>;
 
 /** Organizational tags for this feature flag. */
-export type FeatureFlagsPartialUpdateRequestTagsList = ReadonlyArray<string>;
+export type FeatureFlagsPartialUpdateRequestTagsList = Array<string>;
 export const FeatureFlagsPartialUpdateRequestTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<FeatureFlagsPartialUpdateRequestTagsList>;
 
 /** Evaluation contexts that control where this flag evaluates at runtime. */
 export type FeatureFlagsPartialUpdateRequestEvaluationContextsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const FeatureFlagsPartialUpdateRequestEvaluationContextsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2337,7 +2330,7 @@ export const FeatureFlagConditionPropertyAnalysis = /*@__PURE__*/ S.suspend(
 
 /** Analysis of each property in this condition */
 export type FeatureFlagConditionAnalysisPropertiesList =
-  ReadonlyArray<FeatureFlagConditionPropertyAnalysis>;
+  Array<FeatureFlagConditionPropertyAnalysis>;
 export const FeatureFlagConditionAnalysisPropertiesList = /*@__PURE__*/ S.Array(
   FeatureFlagConditionPropertyAnalysis,
 ) as any as S.Schema<FeatureFlagConditionAnalysisPropertiesList>;
@@ -2377,7 +2370,7 @@ export const FeatureFlagConditionAnalysis = /*@__PURE__*/ S.suspend(() =>
 
 /** Detailed analysis of each condition in the feature flag */
 export type FeatureFlagTestEvaluationResponseConditionsList =
-  ReadonlyArray<FeatureFlagConditionAnalysis>;
+  Array<FeatureFlagConditionAnalysis>;
 export const FeatureFlagTestEvaluationResponseConditionsList =
   /*@__PURE__*/ S.Array(
     FeatureFlagConditionAnalysis,
@@ -2424,20 +2417,18 @@ export const FeatureFlagsUpdateRequestFiltersMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<FeatureFlagsUpdateRequestFiltersMap>;
 
-export type FeatureFlagsUpdateRequestTagsList = ReadonlyArray<unknown>;
+export type FeatureFlagsUpdateRequestTagsList = Array<unknown>;
 export const FeatureFlagsUpdateRequestTagsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<FeatureFlagsUpdateRequestTagsList>;
 
-export type FeatureFlagsUpdateRequestEvaluationContextsList =
-  ReadonlyArray<unknown>;
+export type FeatureFlagsUpdateRequestEvaluationContextsList = Array<unknown>;
 export const FeatureFlagsUpdateRequestEvaluationContextsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<FeatureFlagsUpdateRequestEvaluationContextsList>;
 
-export type FeatureFlagsUpdateRequestAnalyticsDashboardsList =
-  ReadonlyArray<number>;
+export type FeatureFlagsUpdateRequestAnalyticsDashboardsList = Array<number>;
 export const FeatureFlagsUpdateRequestAnalyticsDashboardsList =
   /*@__PURE__*/ S.Array(
     S.Number,

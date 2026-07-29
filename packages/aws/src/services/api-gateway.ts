@@ -439,7 +439,7 @@ export const DocumentationPartType = /*@__PURE__*/ S.String;
 
 export type DocumentationPartLocationStatusCode = string;
 export interface DocumentationPartLocation {
-  type: DocumentationPartType;
+  type: DocumentationPartType | (string & {});
   path?: string;
   method?: string;
   statusCode?: string;
@@ -541,14 +541,14 @@ export const DocumentationVersion = /*@__PURE__*/ S.suspend(() =>
 export type EndpointType = "REGIONAL" | "EDGE" | "PRIVATE";
 export const EndpointType = /*@__PURE__*/ S.String;
 
-export type ListOfEndpointType = EndpointType[];
+export type ListOfEndpointType = (EndpointType | (string & {}))[];
 export const ListOfEndpointType = /*@__PURE__*/ S.Array(EndpointType);
 export type IpAddressType = "ipv4" | "dualstack";
 export const IpAddressType = /*@__PURE__*/ S.String;
 
 export interface EndpointConfiguration {
   types?: EndpointType[];
-  ipAddressType?: IpAddressType;
+  ipAddressType?: IpAddressType | (string & {});
   vpcEndpointIds?: string[];
 }
 export const EndpointConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -1326,7 +1326,7 @@ export const QuotaPeriodType = /*@__PURE__*/ S.String;
 export interface QuotaSettings {
   limit?: number;
   offset?: number;
-  period?: QuotaPeriodType;
+  period?: QuotaPeriodType | (string & {});
 }
 export const QuotaSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

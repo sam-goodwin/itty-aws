@@ -756,7 +756,7 @@ export type StreamMode = "PROVISIONED" | "ON_DEMAND";
 export const StreamMode = /*@__PURE__*/ S.String;
 
 export interface StreamModeDetails {
-  StreamMode: StreamMode;
+  StreamMode: StreamMode | (string & {});
 }
 export const StreamModeDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ StreamMode: StreamMode }),
@@ -1106,7 +1106,7 @@ export type MetricsName =
   | "ALL";
 export const MetricsName = /*@__PURE__*/ S.String;
 
-export type MetricsNameList = MetricsName[];
+export type MetricsNameList = (MetricsName | (string & {}))[];
 export const MetricsNameList = /*@__PURE__*/ S.Array(MetricsName);
 export interface EnhancedMetrics {
   ShardLevelMetrics?: MetricsName[];

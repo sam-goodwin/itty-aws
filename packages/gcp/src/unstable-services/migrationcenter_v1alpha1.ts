@@ -60,7 +60,7 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -123,7 +123,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -190,7 +190,7 @@ export const AggregationFrequency = /*@__PURE__*/ S.suspend(() =>
   identifier: "AggregationFrequency",
 }) as any as S.Schema<AggregationFrequency>;
 
-export type DoubleList = ReadonlyArray<number>;
+export type DoubleList = Array<number>;
 export const DoubleList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<DoubleList>;
@@ -231,7 +231,7 @@ export const Aggregation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Aggregation" }) as any as S.Schema<Aggregation>;
 
-export type AggregationList = ReadonlyArray<Aggregation>;
+export type AggregationList = Array<Aggregation>;
 export const AggregationList = /*@__PURE__*/ S.Array(
   Aggregation,
 ) as any as S.Schema<AggregationList>;
@@ -297,7 +297,7 @@ export const AggregationResultHistogramBucket = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AggregationResultHistogramBucket>;
 
 export type AggregationResultHistogramBucketList =
-  ReadonlyArray<AggregationResultHistogramBucket>;
+  Array<AggregationResultHistogramBucket>;
 export const AggregationResultHistogramBucketList = /*@__PURE__*/ S.Array(
   AggregationResultHistogramBucket,
 ) as any as S.Schema<AggregationResultHistogramBucketList>;
@@ -377,7 +377,7 @@ export const AggregationResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "AggregationResult",
 }) as any as S.Schema<AggregationResult>;
 
-export type AggregationResultList = ReadonlyArray<AggregationResult>;
+export type AggregationResultList = Array<AggregationResult>;
 export const AggregationResultList = /*@__PURE__*/ S.Array(
   AggregationResult,
 ) as any as S.Schema<AggregationResultList>;
@@ -414,7 +414,7 @@ export const CascadingRule = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CascadingRule" }) as any as S.Schema<CascadingRule>;
 
-export type CascadingRuleList = ReadonlyArray<CascadingRule>;
+export type CascadingRuleList = Array<CascadingRule>;
 export const CascadingRuleList = /*@__PURE__*/ S.Array(
   CascadingRule,
 ) as any as S.Schema<CascadingRuleList>;
@@ -482,7 +482,7 @@ export const AwsS3BucketDetailsStorageClassTypeEnum = /*@__PURE__*/ S.String;
 /** Details about storage class. */
 export interface AwsS3BucketDetailsStorageClass {
   /** Required. Type of the storage class. */
-  type?: AwsS3BucketDetailsStorageClassTypeEnum;
+  type?: AwsS3BucketDetailsStorageClassTypeEnum | (string & {});
   /** Optional. The total size of the storage class in bytes. */
   totalBytes?: string;
 }
@@ -496,7 +496,7 @@ export const AwsS3BucketDetailsStorageClass = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AwsS3BucketDetailsStorageClass>;
 
 export type AwsS3BucketDetailsStorageClassList =
-  ReadonlyArray<AwsS3BucketDetailsStorageClass>;
+  Array<AwsS3BucketDetailsStorageClass>;
 export const AwsS3BucketDetailsStorageClassList = /*@__PURE__*/ S.Array(
   AwsS3BucketDetailsStorageClass,
 ) as any as S.Schema<AwsS3BucketDetailsStorageClassList>;
@@ -688,7 +688,7 @@ export const FitDescriptorFitLevelEnum = /*@__PURE__*/ S.String;
 /** Describes the fit level of an asset for migration to a specific target. */
 export interface FitDescriptor {
   /** Output only. Fit level. */
-  fitLevel?: FitDescriptorFitLevelEnum;
+  fitLevel?: FitDescriptorFitLevelEnum | (string & {});
 }
 export const FitDescriptor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -715,9 +715,11 @@ export interface IssueCompatibilityIssue {
   /** Output only. Name of the object associated with this compatibility issue relative to the relevant asset. Does not represent a fully qualified resource name and is not intended for programmatic use. */
   associatedObject?: string;
   /** Output only. Category of this compatibility issue. */
-  category?: IssueCompatibilityIssueCategoryEnum;
+  category?: IssueCompatibilityIssueCategoryEnum | (string & {});
   /** Output only. Type of object associated with this migration compatibility issue. */
-  associatedObjectType?: IssueCompatibilityIssueAssociatedObjectTypeEnum;
+  associatedObjectType?:
+    | IssueCompatibilityIssueAssociatedObjectTypeEnum
+    | (string & {});
   /** Output only. A string representation of actual value associated with this issue. Some values may contain aggregated information, such as a flag name and the actual value assigned to it. */
   associatedValue?: string;
 }
@@ -751,7 +753,7 @@ export const Issue = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Issue" }) as any as S.Schema<Issue>;
 
-export type IssueList = ReadonlyArray<Issue>;
+export type IssueList = Array<Issue>;
 export const IssueList = /*@__PURE__*/ S.Array(
   Issue,
 ) as any as S.Schema<IssueList>;
@@ -766,7 +768,7 @@ export const ComputeStorageDescriptorTypeEnum = /*@__PURE__*/ S.String;
 /** Compute Engine storage option descriptor. */
 export interface ComputeStorageDescriptor {
   /** Output only. Disk type backing the storage. */
-  type?: ComputeStorageDescriptorTypeEnum;
+  type?: ComputeStorageDescriptorTypeEnum | (string & {});
   /** Disk size in GiB. */
   sizeGb?: number;
 }
@@ -779,8 +781,7 @@ export const ComputeStorageDescriptor = /*@__PURE__*/ S.suspend(() =>
   identifier: "ComputeStorageDescriptor",
 }) as any as S.Schema<ComputeStorageDescriptor>;
 
-export type ComputeStorageDescriptorList =
-  ReadonlyArray<ComputeStorageDescriptor>;
+export type ComputeStorageDescriptorList = Array<ComputeStorageDescriptor>;
 export const ComputeStorageDescriptorList = /*@__PURE__*/ S.Array(
   ComputeStorageDescriptor,
 ) as any as S.Schema<ComputeStorageDescriptorList>;
@@ -871,7 +872,7 @@ export interface CloudSqlForSqlServerShape {
   /** Output only. Whether simultaneous multithreading is enabled (see https://cloud.google.com/sql/docs/sqlserver/create-instance#smt-create-instance). */
   smtEnabled?: boolean;
   /** Output only. Microsoft SQL Server version to be used on the Cloud SQL for SQL server instance. */
-  version?: CloudSqlForSqlServerShapeVersionEnum;
+  version?: CloudSqlForSqlServerShapeVersionEnum | (string & {});
   /** Output only. Predicted storage shape. */
   storage?: ComputeStorageDescriptor;
   /** Output only. Predicted Network Out traffic GiB per month. */
@@ -881,9 +882,11 @@ export interface CloudSqlForSqlServerShape {
   /** Output only. Predicted amount of memory in MiB. */
   memoryMb?: number;
   /** Output only. Cloud SQL zone availability. */
-  zoneAvailability?: CloudSqlForSqlServerShapeZoneAvailabilityEnum;
+  zoneAvailability?:
+    | CloudSqlForSqlServerShapeZoneAvailabilityEnum
+    | (string & {});
   /** Output only. Cloud SQL edition. */
-  edition?: CloudSqlForSqlServerShapeEditionEnum;
+  edition?: CloudSqlForSqlServerShapeEditionEnum | (string & {});
   /** Output only. Predicted backup storage size in GiB. */
   backupStorageGb?: number;
 }
@@ -931,15 +934,15 @@ export interface CloudSqlForMySqlShape {
   /** Output only. Predicted amount of memory in MiB. */
   memoryMb?: number;
   /** Output only. Cloud SQL zone availability. */
-  zoneAvailability?: CloudSqlForMySqlShapeZoneAvailabilityEnum;
+  zoneAvailability?: CloudSqlForMySqlShapeZoneAvailabilityEnum | (string & {});
   /** Output only. Predicted storage shape. */
   storage?: ComputeStorageDescriptor;
   /** Output only. Predicted backup storage size in GiB. */
   backupStorageGb?: number;
   /** Output only. Cloud SQL edition. */
-  edition?: CloudSqlForMySqlShapeEditionEnum;
+  edition?: CloudSqlForMySqlShapeEditionEnum | (string & {});
   /** Output only. MySQL version to be used on the Cloud SQL for MySQL instance. */
-  version?: CloudSqlForMySqlShapeVersionEnum;
+  version?: CloudSqlForMySqlShapeVersionEnum | (string & {});
 }
 export const CloudSqlForMySqlShape = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -987,13 +990,15 @@ export interface CloudSqlForPostgreSqlShape {
   /** Output only. Predicted amount of memory in MiB. */
   memoryMb?: number;
   /** Output only. Cloud SQL zone availability. */
-  zoneAvailability?: CloudSqlForPostgreSqlShapeZoneAvailabilityEnum;
+  zoneAvailability?:
+    | CloudSqlForPostgreSqlShapeZoneAvailabilityEnum
+    | (string & {});
   /** Output only. Predicted Network Out traffic GiB per month. */
   egressGbPerMonth?: string;
   /** Output only. Cloud SQL edition. */
-  edition?: CloudSqlForPostgreSqlShapeEditionEnum;
+  edition?: CloudSqlForPostgreSqlShapeEditionEnum | (string & {});
   /** Output only. PostgreSql version to be used on the Cloud SQL for PostgreSql instance. */
-  version?: CloudSqlForPostgreSqlShapeVersionEnum;
+  version?: CloudSqlForPostgreSqlShapeVersionEnum | (string & {});
   /** Output only. Predicted storage shape. */
   storage?: ComputeStorageDescriptor;
   /** Output only. Predicted backup storage size in GiB. */
@@ -1102,7 +1107,7 @@ export const Insight = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Insight" }) as any as S.Schema<Insight>;
 
-export type InsightList_ = ReadonlyArray<Insight>;
+export type InsightList_ = Array<Insight>;
 export const InsightList_ = /*@__PURE__*/ S.Array(
   Insight,
 ) as any as S.Schema<InsightList_>;
@@ -1190,7 +1195,7 @@ export const PostgreSqlExtension = /*@__PURE__*/ S.suspend(() =>
   identifier: "PostgreSqlExtension",
 }) as any as S.Schema<PostgreSqlExtension>;
 
-export type PostgreSqlExtensionList = ReadonlyArray<PostgreSqlExtension>;
+export type PostgreSqlExtensionList = Array<PostgreSqlExtension>;
 export const PostgreSqlExtensionList = /*@__PURE__*/ S.Array(
   PostgreSqlExtension,
 ) as any as S.Schema<PostgreSqlExtensionList>;
@@ -1224,7 +1229,7 @@ export const DatabaseObjectsCategoryEnum = /*@__PURE__*/ S.String;
 /** Details of a group of database objects. */
 export interface DatabaseObjects {
   /** The category of the objects. */
-  category?: DatabaseObjectsCategoryEnum;
+  category?: DatabaseObjectsCategoryEnum | (string & {});
   /** The number of objects. */
   count?: string;
 }
@@ -1237,7 +1242,7 @@ export const DatabaseObjects = /*@__PURE__*/ S.suspend(() =>
   identifier: "DatabaseObjects",
 }) as any as S.Schema<DatabaseObjects>;
 
-export type DatabaseObjectsList = ReadonlyArray<DatabaseObjects>;
+export type DatabaseObjectsList = Array<DatabaseObjects>;
 export const DatabaseObjectsList = /*@__PURE__*/ S.Array(
   DatabaseObjects,
 ) as any as S.Schema<DatabaseObjectsList>;
@@ -1260,7 +1265,7 @@ export const MySqlStorageEngineDetailsEngineEnum = /*@__PURE__*/ S.String;
 /** Mysql storage engine tables. */
 export interface MySqlStorageEngineDetails {
   /** Required. The storage engine. */
-  engine?: MySqlStorageEngineDetailsEngineEnum;
+  engine?: MySqlStorageEngineDetailsEngineEnum | (string & {});
   /** Optional. The number of tables. */
   tableCount?: number;
   /** Optional. The number of encrypted tables. */
@@ -1276,8 +1281,7 @@ export const MySqlStorageEngineDetails = /*@__PURE__*/ S.suspend(() =>
   identifier: "MySqlStorageEngineDetails",
 }) as any as S.Schema<MySqlStorageEngineDetails>;
 
-export type MySqlStorageEngineDetailsList =
-  ReadonlyArray<MySqlStorageEngineDetails>;
+export type MySqlStorageEngineDetailsList = Array<MySqlStorageEngineDetails>;
 export const MySqlStorageEngineDetailsList = /*@__PURE__*/ S.Array(
   MySqlStorageEngineDetails,
 ) as any as S.Schema<MySqlStorageEngineDetailsList>;
@@ -1321,7 +1325,7 @@ export const DatabaseSchema = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DatabaseSchema" }) as any as S.Schema<DatabaseSchema>;
 
-export type DatabaseSchemaList = ReadonlyArray<DatabaseSchema>;
+export type DatabaseSchemaList = Array<DatabaseSchema>;
 export const DatabaseSchemaList = /*@__PURE__*/ S.Array(
   DatabaseSchema,
 ) as any as S.Schema<DatabaseSchemaList>;
@@ -1520,7 +1524,7 @@ export const DailyResourceUsageAggregation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DailyResourceUsageAggregation>;
 
 export type DailyResourceUsageAggregationList =
-  ReadonlyArray<DailyResourceUsageAggregation>;
+  Array<DailyResourceUsageAggregation>;
 export const DailyResourceUsageAggregationList = /*@__PURE__*/ S.Array(
   DailyResourceUsageAggregation,
 ) as any as S.Schema<DailyResourceUsageAggregationList>;
@@ -1613,7 +1617,7 @@ export const NetworkAddressAssignmentEnum = /*@__PURE__*/ S.String;
 /** Details of network address. */
 export interface NetworkAddress {
   /** Whether DHCP is used to assign addresses. */
-  assignment?: NetworkAddressAssignmentEnum;
+  assignment?: NetworkAddressAssignmentEnum | (string & {});
   /** Fully qualified domain name. */
   fqdn?: string;
   /** Assigned or configured IP Address. */
@@ -1633,7 +1637,7 @@ export const NetworkAddress = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "NetworkAddress" }) as any as S.Schema<NetworkAddress>;
 
-export type NetworkAddressList_ = ReadonlyArray<NetworkAddress>;
+export type NetworkAddressList_ = Array<NetworkAddress>;
 export const NetworkAddressList_ = /*@__PURE__*/ S.Array(
   NetworkAddress,
 ) as any as S.Schema<NetworkAddressList_>;
@@ -1673,7 +1677,7 @@ export const NetworkAdapterDetails = /*@__PURE__*/ S.suspend(() =>
   identifier: "NetworkAdapterDetails",
 }) as any as S.Schema<NetworkAdapterDetails>;
 
-export type NetworkAdapterDetailsList = ReadonlyArray<NetworkAdapterDetails>;
+export type NetworkAdapterDetailsList = Array<NetworkAdapterDetails>;
 export const NetworkAdapterDetailsList = /*@__PURE__*/ S.Array(
   NetworkAdapterDetails,
 ) as any as S.Schema<NetworkAdapterDetailsList>;
@@ -1748,7 +1752,7 @@ export const DiskPartition = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DiskPartition" }) as any as S.Schema<DiskPartition>;
 
-export type DiskPartitionList_ = ReadonlyArray<DiskPartition>;
+export type DiskPartitionList_ = Array<DiskPartition>;
 export const DiskPartitionList_ = /*@__PURE__*/ S.Array(
   DiskPartition,
 ) as any as S.Schema<DiskPartitionList_>;
@@ -1798,7 +1802,7 @@ export interface AwsEc2PlatformDetails {
   /** The location of the machine in the AWS format. */
   location?: string;
   /** Optional. Whether the machine is hyperthreaded. */
-  hyperthreading?: AwsEc2PlatformDetailsHyperthreadingEnum;
+  hyperthreading?: AwsEc2PlatformDetailsHyperthreadingEnum | (string & {});
 }
 export const AwsEc2PlatformDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1819,7 +1823,7 @@ export const PhysicalPlatformDetailsHyperthreadingEnum = /*@__PURE__*/ S.String;
 /** Platform specific details for Physical Machines. */
 export interface PhysicalPlatformDetails {
   /** Whether the machine is hyperthreaded. */
-  hyperthreading?: PhysicalPlatformDetailsHyperthreadingEnum;
+  hyperthreading?: PhysicalPlatformDetailsHyperthreadingEnum | (string & {});
   /** Free text representation of the machine location. The format of this field should not be relied on. Different machines in the same location may have different string values for this field. */
   location?: string;
 }
@@ -1854,7 +1858,9 @@ export interface VmwarePlatformDetails {
   /** vCenter VM ID. */
   vcenterVmId?: string;
   /** Whether the ESX is hyperthreaded. */
-  esxHyperthreading?: VmwarePlatformDetailsEsxHyperthreadingEnum;
+  esxHyperthreading?:
+    | VmwarePlatformDetailsEsxHyperthreadingEnum
+    | (string & {});
 }
 export const VmwarePlatformDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1881,7 +1887,7 @@ export interface AzureVmPlatformDetails {
   /** Azure platform's provisioning state. */
   provisioningState?: string;
   /** Whether the machine is hyperthreaded. */
-  hyperthreading?: AzureVmPlatformDetailsHyperthreadingEnum;
+  hyperthreading?: AzureVmPlatformDetailsHyperthreadingEnum | (string & {});
   /** Azure platform's machine type label. */
   machineTypeLabel?: string;
   /** The location of the machine in the Azure format. */
@@ -1909,7 +1915,7 @@ export interface GenericPlatformDetails {
   /** Free text representation of the machine location. The format of this field should not be relied on. Different VMs in the same location may have different string values for this field. */
   location?: string;
   /** Whether the machine is hyperthreaded. */
-  hyperthreading?: GenericPlatformDetailsHyperthreadingEnum;
+  hyperthreading?: GenericPlatformDetailsHyperthreadingEnum | (string & {});
 }
 export const GenericPlatformDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1993,7 +1999,7 @@ export const DiskEntry = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DiskEntry" }) as any as S.Schema<DiskEntry>;
 
-export type DiskEntryList_ = ReadonlyArray<DiskEntry>;
+export type DiskEntryList_ = Array<DiskEntry>;
 export const DiskEntryList_ = /*@__PURE__*/ S.Array(
   DiskEntry,
 ) as any as S.Schema<DiskEntryList_>;
@@ -2085,9 +2091,9 @@ export interface MachineArchitectureDetails {
   /** CPU name, e.g., "Intel Xeon E5-2690", "AMD EPYC 7571" etc. */
   cpuName?: string;
   /** Firmware type. */
-  firmwareType?: MachineArchitectureDetailsFirmwareTypeEnum;
+  firmwareType?: MachineArchitectureDetailsFirmwareTypeEnum | (string & {});
   /** CPU hyper-threading support. */
-  hyperthreading?: MachineArchitectureDetailsHyperthreadingEnum;
+  hyperthreading?: MachineArchitectureDetailsHyperthreadingEnum | (string & {});
   /** CPU architecture, e.g., "x64-based PC", "x86_64", "i686" etc. */
   cpuArchitecture?: string;
   /** BIOS Details. */
@@ -2142,7 +2148,7 @@ export const HostsEntry = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "HostsEntry" }) as any as S.Schema<HostsEntry>;
 
-export type HostsEntryList_ = ReadonlyArray<HostsEntry>;
+export type HostsEntryList_ = Array<HostsEntry>;
 export const HostsEntryList_ = /*@__PURE__*/ S.Array(
   HostsEntry,
 ) as any as S.Schema<HostsEntryList_>;
@@ -2184,7 +2190,7 @@ export const FstabEntry = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "FstabEntry" }) as any as S.Schema<FstabEntry>;
 
-export type FstabEntryList_ = ReadonlyArray<FstabEntry>;
+export type FstabEntryList_ = Array<FstabEntry>;
 export const FstabEntryList_ = /*@__PURE__*/ S.Array(
   FstabEntry,
 ) as any as S.Schema<FstabEntryList_>;
@@ -2214,7 +2220,7 @@ export const NfsExport = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "NfsExport" }) as any as S.Schema<NfsExport>;
 
-export type NfsExportList_ = ReadonlyArray<NfsExport>;
+export type NfsExportList_ = Array<NfsExport>;
 export const NfsExportList_ = /*@__PURE__*/ S.Array(
   NfsExport,
 ) as any as S.Schema<NfsExportList_>;
@@ -2247,7 +2253,7 @@ export const Selinux = /*@__PURE__*/ S.suspend(() =>
 /** Guest OS config information. */
 export interface GuestConfigDetails {
   /** Security-Enhanced Linux (SELinux) mode. */
-  selinuxMode?: GuestConfigDetailsSelinuxModeEnum;
+  selinuxMode?: GuestConfigDetailsSelinuxModeEnum | (string & {});
   /** Output only. Hosts file (/etc/hosts). */
   hosts?: HostsEntryList;
   /** Mount list (Linux fstab). */
@@ -2295,7 +2301,7 @@ export const RunningProcess = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "RunningProcess" }) as any as S.Schema<RunningProcess>;
 
-export type RunningProcessList_ = ReadonlyArray<RunningProcess>;
+export type RunningProcessList_ = Array<RunningProcess>;
 export const RunningProcessList_ = /*@__PURE__*/ S.Array(
   RunningProcess,
 ) as any as S.Schema<RunningProcessList_>;
@@ -2350,8 +2356,7 @@ export const GuestInstalledApplication = /*@__PURE__*/ S.suspend(() =>
   identifier: "GuestInstalledApplication",
 }) as any as S.Schema<GuestInstalledApplication>;
 
-export type GuestInstalledApplicationList_ =
-  ReadonlyArray<GuestInstalledApplication>;
+export type GuestInstalledApplicationList_ = Array<GuestInstalledApplication>;
 export const GuestInstalledApplicationList_ = /*@__PURE__*/ S.Array(
   GuestInstalledApplication,
 ) as any as S.Schema<GuestInstalledApplicationList_>;
@@ -2391,7 +2396,7 @@ export const OpenFileDetails = /*@__PURE__*/ S.suspend(() =>
   identifier: "OpenFileDetails",
 }) as any as S.Schema<OpenFileDetails>;
 
-export type OpenFileDetailsList = ReadonlyArray<OpenFileDetails>;
+export type OpenFileDetailsList = Array<OpenFileDetails>;
 export const OpenFileDetailsList = /*@__PURE__*/ S.Array(
   OpenFileDetails,
 ) as any as S.Schema<OpenFileDetailsList>;
@@ -2439,7 +2444,7 @@ export const RunningService = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "RunningService" }) as any as S.Schema<RunningService>;
 
-export type RunningServiceList_ = ReadonlyArray<RunningService>;
+export type RunningServiceList_ = Array<RunningService>;
 export const RunningServiceList_ = /*@__PURE__*/ S.Array(
   RunningService,
 ) as any as S.Schema<RunningServiceList_>;
@@ -2493,7 +2498,7 @@ export const NetworkConnection = /*@__PURE__*/ S.suspend(() =>
   identifier: "NetworkConnection",
 }) as any as S.Schema<NetworkConnection>;
 
-export type NetworkConnectionList_ = ReadonlyArray<NetworkConnection>;
+export type NetworkConnectionList_ = Array<NetworkConnection>;
 export const NetworkConnectionList_ = /*@__PURE__*/ S.Array(
   NetworkConnection,
 ) as any as S.Schema<NetworkConnectionList_>;
@@ -2625,7 +2630,7 @@ export const GuestRuntimeDetails = /*@__PURE__*/ S.suspend(() =>
 /** Information from Guest-level collections. */
 export interface GuestOsDetails {
   /** What family the OS belong to, if known. */
-  family?: GuestOsDetailsFamilyEnum;
+  family?: GuestOsDetailsFamilyEnum | (string & {});
   /** OS and app configuration. */
   config?: GuestConfigDetails;
   /** The name of the operating system. */
@@ -2662,7 +2667,7 @@ export interface MachineDetails {
   /** Machine creation time. */
   createTime?: string;
   /** Power state of the machine. */
-  powerState?: MachineDetailsPowerStateEnum;
+  powerState?: MachineDetailsPowerStateEnum | (string & {});
   /** Disk details. */
   disks?: MachineDiskDetails;
   /** Machine name. */
@@ -2708,7 +2713,7 @@ export const SqlServerServerFlag = /*@__PURE__*/ S.suspend(() =>
   identifier: "SqlServerServerFlag",
 }) as any as S.Schema<SqlServerServerFlag>;
 
-export type SqlServerServerFlagList = ReadonlyArray<SqlServerServerFlag>;
+export type SqlServerServerFlagList = Array<SqlServerServerFlag>;
 export const SqlServerServerFlagList = /*@__PURE__*/ S.Array(
   SqlServerServerFlag,
 ) as any as S.Schema<SqlServerServerFlagList>;
@@ -2729,7 +2734,7 @@ export const SqlServerFeature = /*@__PURE__*/ S.suspend(() =>
   identifier: "SqlServerFeature",
 }) as any as S.Schema<SqlServerFeature>;
 
-export type SqlServerFeatureList = ReadonlyArray<SqlServerFeature>;
+export type SqlServerFeatureList = Array<SqlServerFeature>;
 export const SqlServerFeatureList = /*@__PURE__*/ S.Array(
   SqlServerFeature,
 ) as any as S.Schema<SqlServerFeatureList>;
@@ -2744,7 +2749,7 @@ export const SqlServerTraceFlagScopeEnum = /*@__PURE__*/ S.String;
 /** SQL Server trace flag details. */
 export interface SqlServerTraceFlag {
   /** Required. The trace flag scope. */
-  scope?: SqlServerTraceFlagScopeEnum;
+  scope?: SqlServerTraceFlagScopeEnum | (string & {});
   /** Required. The trace flag name. */
   traceFlagName?: string;
 }
@@ -2757,7 +2762,7 @@ export const SqlServerTraceFlag = /*@__PURE__*/ S.suspend(() =>
   identifier: "SqlServerTraceFlag",
 }) as any as S.Schema<SqlServerTraceFlag>;
 
-export type SqlServerTraceFlagList = ReadonlyArray<SqlServerTraceFlag>;
+export type SqlServerTraceFlagList = Array<SqlServerTraceFlag>;
 export const SqlServerTraceFlagList = /*@__PURE__*/ S.Array(
   SqlServerTraceFlag,
 ) as any as S.Schema<SqlServerTraceFlagList>;
@@ -2812,7 +2817,7 @@ export interface DatabaseInstance {
   /** The instance's name. */
   instanceName?: string;
   /** The instance role in the database engine. */
-  role?: DatabaseInstanceRoleEnum;
+  role?: DatabaseInstanceRoleEnum | (string & {});
   /** Optional. Networking details. */
   network?: DatabaseInstanceNetwork;
 }
@@ -2826,7 +2831,7 @@ export const DatabaseInstance = /*@__PURE__*/ S.suspend(() =>
   identifier: "DatabaseInstance",
 }) as any as S.Schema<DatabaseInstance>;
 
-export type DatabaseInstanceList = ReadonlyArray<DatabaseInstance>;
+export type DatabaseInstanceList = Array<DatabaseInstance>;
 export const DatabaseInstanceList = /*@__PURE__*/ S.Array(
   DatabaseInstance,
 ) as any as S.Schema<DatabaseInstanceList>;
@@ -2885,7 +2890,7 @@ export const MySqlProperty = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MySqlProperty" }) as any as S.Schema<MySqlProperty>;
 
-export type MySqlPropertyList = ReadonlyArray<MySqlProperty>;
+export type MySqlPropertyList = Array<MySqlProperty>;
 export const MySqlPropertyList = /*@__PURE__*/ S.Array(
   MySqlProperty,
 ) as any as S.Schema<MySqlPropertyList>;
@@ -2907,7 +2912,7 @@ export const MySqlPlugin = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MySqlPlugin" }) as any as S.Schema<MySqlPlugin>;
 
-export type MySqlPluginList = ReadonlyArray<MySqlPlugin>;
+export type MySqlPluginList = Array<MySqlPlugin>;
 export const MySqlPluginList = /*@__PURE__*/ S.Array(
   MySqlPlugin,
 ) as any as S.Schema<MySqlPluginList>;
@@ -2929,7 +2934,7 @@ export const MySqlVariable = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MySqlVariable" }) as any as S.Schema<MySqlVariable>;
 
-export type MySqlVariableList = ReadonlyArray<MySqlVariable>;
+export type MySqlVariableList = Array<MySqlVariable>;
 export const MySqlVariableList = /*@__PURE__*/ S.Array(
   MySqlVariable,
 ) as any as S.Schema<MySqlVariableList>;
@@ -2995,7 +3000,7 @@ export const PostgreSqlProperty = /*@__PURE__*/ S.suspend(() =>
   identifier: "PostgreSqlProperty",
 }) as any as S.Schema<PostgreSqlProperty>;
 
-export type PostgreSqlPropertyList = ReadonlyArray<PostgreSqlProperty>;
+export type PostgreSqlPropertyList = Array<PostgreSqlProperty>;
 export const PostgreSqlPropertyList = /*@__PURE__*/ S.Array(
   PostgreSqlProperty,
 ) as any as S.Schema<PostgreSqlPropertyList>;
@@ -3031,7 +3036,7 @@ export const PostgreSqlSetting = /*@__PURE__*/ S.suspend(() =>
   identifier: "PostgreSqlSetting",
 }) as any as S.Schema<PostgreSqlSetting>;
 
-export type PostgreSqlSettingList = ReadonlyArray<PostgreSqlSetting>;
+export type PostgreSqlSettingList = Array<PostgreSqlSetting>;
 export const PostgreSqlSettingList = /*@__PURE__*/ S.Array(
   PostgreSqlSetting,
 ) as any as S.Schema<PostgreSqlSettingList>;
@@ -3197,7 +3202,9 @@ export interface VirtualMachineArchitectureDetails {
   /** BIOS Details. */
   bios?: BiosDetails;
   /** CPU hyperthreading support. */
-  hyperthreading?: VirtualMachineArchitectureDetailsHyperthreadingEnum;
+  hyperthreading?:
+    | VirtualMachineArchitectureDetailsHyperthreadingEnum
+    | (string & {});
   /** Hardware vendor. */
   vendor?: string;
 }
@@ -3275,7 +3282,7 @@ export interface VirtualMachineDetails {
   /** Folder name in vCenter where asset resides. */
   vcenterFolder?: string;
   /** What family the OS belong to, if known. */
-  osFamily?: VirtualMachineDetailsOsFamilyEnum;
+  osFamily?: VirtualMachineDetailsOsFamilyEnum | (string & {});
   /** Power state of VM (poweredOn or poweredOff). */
   powerState?: string;
   /** VM creation timestamp. */
@@ -3507,7 +3514,7 @@ export const UpdateAssetRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateAssetRequest",
 }) as any as S.Schema<UpdateAssetRequest>;
 
-export type UpdateAssetRequestList = ReadonlyArray<UpdateAssetRequest>;
+export type UpdateAssetRequestList = Array<UpdateAssetRequest>;
 export const UpdateAssetRequestList = /*@__PURE__*/ S.Array(
   UpdateAssetRequest,
 ) as any as S.Schema<UpdateAssetRequestList>;
@@ -3547,7 +3554,7 @@ export const BatchUpdateProjectsLocationsAssetsRequest =
     identifier: "BatchUpdateProjectsLocationsAssetsRequest",
   }) as any as S.Schema<BatchUpdateProjectsLocationsAssetsRequest>;
 
-export type AssetList_ = ReadonlyArray<Asset>;
+export type AssetList_ = Array<Asset>;
 export const AssetList_ = /*@__PURE__*/ S.Array(
   Asset,
 ) as any as S.Schema<AssetList_>;
@@ -3612,7 +3619,7 @@ export const SignedUriDestinationFileFormatEnum = /*@__PURE__*/ S.String;
 /** Signed URI destination configuration. */
 export interface SignedUriDestination {
   /** Required. The file format to export. */
-  fileFormat?: SignedUriDestinationFileFormatEnum;
+  fileFormat?: SignedUriDestinationFileFormatEnum | (string & {});
 }
 export const SignedUriDestination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3694,7 +3701,7 @@ export const OutputFile = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "OutputFile" }) as any as S.Schema<OutputFile>;
 
-export type OutputFileList_ = ReadonlyArray<OutputFile>;
+export type OutputFileList_ = Array<OutputFile>;
 export const OutputFileList_ = /*@__PURE__*/ S.Array(
   OutputFile,
 ) as any as S.Schema<OutputFileList_>;
@@ -3710,7 +3717,7 @@ export const OutputFileList = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "OutputFileList" }) as any as S.Schema<OutputFileList>;
 
-export type SignedUriList = ReadonlyArray<SignedUri>;
+export type SignedUriList = Array<SignedUri>;
 export const SignedUriList = /*@__PURE__*/ S.Array(
   SignedUri,
 ) as any as S.Schema<SignedUriList>;
@@ -3773,8 +3780,7 @@ export const AssetsExportJobExecution = /*@__PURE__*/ S.suspend(() =>
   identifier: "AssetsExportJobExecution",
 }) as any as S.Schema<AssetsExportJobExecution>;
 
-export type AssetsExportJobExecutionList =
-  ReadonlyArray<AssetsExportJobExecution>;
+export type AssetsExportJobExecutionList = Array<AssetsExportJobExecution>;
 export const AssetsExportJobExecutionList = /*@__PURE__*/ S.Array(
   AssetsExportJobExecution,
 ) as any as S.Schema<AssetsExportJobExecutionList>;
@@ -3889,13 +3895,13 @@ export const DiscoveryClientDiscoveryClientRecommendedVersion =
   }) as any as S.Schema<DiscoveryClientDiscoveryClientRecommendedVersion>;
 
 export type DiscoveryClientDiscoveryClientRecommendedVersionList =
-  ReadonlyArray<DiscoveryClientDiscoveryClientRecommendedVersion>;
+  Array<DiscoveryClientDiscoveryClientRecommendedVersion>;
 export const DiscoveryClientDiscoveryClientRecommendedVersionList =
   /*@__PURE__*/ S.Array(
     DiscoveryClientDiscoveryClientRecommendedVersion,
   ) as any as S.Schema<DiscoveryClientDiscoveryClientRecommendedVersionList>;
 
-export type StatusList = ReadonlyArray<Status>;
+export type StatusList = Array<Status>;
 export const StatusList = /*@__PURE__*/ S.Array(
   Status,
 ) as any as S.Schema<StatusList>;
@@ -3927,7 +3933,7 @@ export interface DiscoveryClient {
   /** Output only. Errors affecting client functionality. */
   errors?: StatusList;
   /** Output only. Current state of the discovery client. */
-  state?: DiscoveryClientStateEnum;
+  state?: DiscoveryClientStateEnum | (string & {});
   /** Optional. Input only. Client time-to-live. If specified, the backend will not accept new frames after this time. This field is input only. The derived expiration time is provided as output through the `expire_time` field. */
   ttl?: string;
   /** Output only. Time when the discovery client was first created. */
@@ -4064,7 +4070,7 @@ export const GCSPayloadInfoFormatEnum = /*@__PURE__*/ S.String;
 /** A resource that represents a payload hosted on Google Cloud Storage. */
 export interface GCSPayloadInfo {
   /** The import job format. */
-  format?: GCSPayloadInfoFormatEnum;
+  format?: GCSPayloadInfoFormatEnum | (string & {});
   /** The payload path in Google Cloud Storage. */
   path?: string;
 }
@@ -4098,7 +4104,7 @@ export interface ImportError {
   /** The error information. */
   errorDetails?: string;
   /** The severity of the error. */
-  severity?: ImportErrorSeverityEnum;
+  severity?: ImportErrorSeverityEnum | (string & {});
 }
 export const ImportError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4107,7 +4113,7 @@ export const ImportError = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ImportError" }) as any as S.Schema<ImportError>;
 
-export type ImportErrorList = ReadonlyArray<ImportError>;
+export type ImportErrorList = Array<ImportError>;
 export const ImportErrorList = /*@__PURE__*/ S.Array(
   ImportError,
 ) as any as S.Schema<ImportErrorList>;
@@ -4189,7 +4195,7 @@ export const ImportRowError = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ImportRowError" }) as any as S.Schema<ImportRowError>;
 
-export type ImportRowErrorList = ReadonlyArray<ImportRowError>;
+export type ImportRowErrorList = Array<ImportRowError>;
 export const ImportRowErrorList = /*@__PURE__*/ S.Array(
   ImportRowError,
 ) as any as S.Schema<ImportRowErrorList>;
@@ -4216,7 +4222,7 @@ export const FileValidationReport = /*@__PURE__*/ S.suspend(() =>
   identifier: "FileValidationReport",
 }) as any as S.Schema<FileValidationReport>;
 
-export type FileValidationReportList = ReadonlyArray<FileValidationReport>;
+export type FileValidationReportList = Array<FileValidationReport>;
 export const FileValidationReportList = /*@__PURE__*/ S.Array(
   FileValidationReport,
 ) as any as S.Schema<FileValidationReportList>;
@@ -4284,7 +4290,7 @@ export const PayloadFile = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PayloadFile" }) as any as S.Schema<PayloadFile>;
 
-export type PayloadFileList = ReadonlyArray<PayloadFile>;
+export type PayloadFileList = Array<PayloadFile>;
 export const PayloadFileList = /*@__PURE__*/ S.Array(
   PayloadFile,
 ) as any as S.Schema<PayloadFileList>;
@@ -4292,7 +4298,7 @@ export const PayloadFileList = /*@__PURE__*/ S.Array(
 /** A resource that represents the inline import job payload. */
 export interface InlinePayloadInfo {
   /** The import job format. */
-  format?: InlinePayloadInfoFormatEnum;
+  format?: InlinePayloadInfoFormatEnum | (string & {});
   /** List of payload files. */
   payload?: PayloadFileList;
 }
@@ -4314,7 +4320,7 @@ export interface ImportJob {
   /** The payload is in Google Cloud Storage. */
   gcsPayload?: GCSPayloadInfo;
   /** Output only. The state of the import job. */
-  state?: ImportJobStateEnum;
+  state?: ImportJobStateEnum | (string & {});
   /** Output only. The full name of the import job. */
   name?: string;
   /** Output only. The report with the validation results of the import job. */
@@ -4418,13 +4424,13 @@ export interface ImportDataFile {
   /** Optional. User-friendly display name. Maximum length is 256 characters. */
   displayName?: string;
   /** Output only. The state of the import data file. */
-  state?: ImportDataFileStateEnum;
+  state?: ImportDataFileStateEnum | (string & {});
   /** Output only. The timestamp when the file was created. */
   createTime?: string;
   /** Output only. The name of the file. */
   name?: string;
   /** Required. The payload format. */
-  format?: ImportDataFileFormatEnum;
+  format?: ImportDataFileFormatEnum | (string & {});
 }
 export const ImportDataFile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4517,7 +4523,9 @@ export const VirtualMachinePreferencesSizingOptimizationCustomParametersAggregat
 /** Custom data to use for sizing optimizations. */
 export interface VirtualMachinePreferencesSizingOptimizationCustomParameters {
   /** Optional. Type of statistical aggregation of a resource utilization data, on which to base the sizing metrics. */
-  aggregationMethod?: VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethodEnum;
+  aggregationMethod?:
+    | VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethodEnum
+    | (string & {});
   /** Optional. Desired percentage of memory usage. Must be in the interval [1, 100] (or 0 for default value). */
   memoryUsagePercentage?: number;
   /** Optional. Desired increase factor of storage, relative to currently used storage. Must be in the interval [1.0, 2.0] (or 0 for default value). */
@@ -4578,7 +4586,7 @@ export const MachineSeries = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MachineSeries" }) as any as S.Schema<MachineSeries>;
 
-export type MachineSeriesList = ReadonlyArray<MachineSeries>;
+export type MachineSeriesList = Array<MachineSeries>;
 export const MachineSeriesList = /*@__PURE__*/ S.Array(
   MachineSeries,
 ) as any as S.Schema<MachineSeriesList>;
@@ -4586,9 +4594,13 @@ export const MachineSeriesList = /*@__PURE__*/ S.Array(
 /** The type of machines to consider when calculating virtual machine migration insights and recommendations for VMware Engine. Not all machine types are available in all zones and regions. */
 export interface VMwareEngineMachinePreferences {
   /** Optional. Whether to use storage-only nodes, if those are available. */
-  storageOnlyNodes?: VMwareEngineMachinePreferencesStorageOnlyNodesEnum;
+  storageOnlyNodes?:
+    | VMwareEngineMachinePreferencesStorageOnlyNodesEnum
+    | (string & {});
   /** Optional. Whether to use VMware Engine Protected offering. */
-  protectedNodes?: VMwareEngineMachinePreferencesProtectedNodesEnum;
+  protectedNodes?:
+    | VMwareEngineMachinePreferencesProtectedNodesEnum
+    | (string & {});
   /** Optional. VMware Engine on Google Cloud machine series to consider for insights and recommendations. If empty, no restriction is applied on the machine series. */
   allowedMachineSeries?: MachineSeriesList;
 }
@@ -4632,13 +4644,13 @@ export interface VmwareEnginePreferences {
   /** The Deduplication and Compression ratio is based on the logical (Used Before) space required to store data before applying deduplication and compression, in relation to the physical (Used After) space required after applying deduplication and compression. Specifically, the ratio is the Used Before space divided by the Used After space. For example, if the Used Before space is 3 GB, but the physical Used After space is 1 GB, the deduplication and compression ratio is 3x. Acceptable values are between 1.0 and 4.0. */
   storageDeduplicationCompressionRatio?: number;
   /** Optional. GCVE service type (fully licensed or portable license). */
-  serviceType?: VmwareEnginePreferencesServiceTypeEnum;
+  serviceType?: VmwareEnginePreferencesServiceTypeEnum | (string & {});
   /** Optional. Discount percentage for the license offered to you by Broadcom. Must be between 0 and 100. Only valid when service_type is set to SERVICE_TYPE_PORTABLE_LICENSE. */
   licenseDiscountPercentage?: number;
   /** CPU overcommit ratio. Acceptable values are between 1.0 and 8.0, with 0.1 increment. */
   cpuOvercommitRatio?: number;
   /** Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with. */
-  commitmentPlan?: VmwareEnginePreferencesCommitmentPlanEnum;
+  commitmentPlan?: VmwareEnginePreferencesCommitmentPlanEnum | (string & {});
 }
 export const VmwareEnginePreferences = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4689,9 +4701,13 @@ export const OperatingSystemPricingPreferencesOperatingSystemPricingLicenseTypeE
 /** Pricing options of an OS image. */
 export interface OperatingSystemPricingPreferencesOperatingSystemPricing {
   /** Optional. The plan of commitments for committed use discounts (CUD). */
-  commitmentPlan?: OperatingSystemPricingPreferencesOperatingSystemPricingCommitmentPlanEnum;
+  commitmentPlan?:
+    | OperatingSystemPricingPreferencesOperatingSystemPricingCommitmentPlanEnum
+    | (string & {});
   /** Optional. License type for premium images (RHEL, RHEL for SAP, SLES, SLES for SAP, Windows Server). */
-  licenseType?: OperatingSystemPricingPreferencesOperatingSystemPricingLicenseTypeEnum;
+  licenseType?:
+    | OperatingSystemPricingPreferencesOperatingSystemPricingLicenseTypeEnum
+    | (string & {});
 }
 export const OperatingSystemPricingPreferencesOperatingSystemPricing =
   /*@__PURE__*/ S.suspend(() =>
@@ -4763,7 +4779,7 @@ export const SoleTenantNodeType = /*@__PURE__*/ S.suspend(() =>
   identifier: "SoleTenantNodeType",
 }) as any as S.Schema<SoleTenantNodeType>;
 
-export type SoleTenantNodeTypeList = ReadonlyArray<SoleTenantNodeType>;
+export type SoleTenantNodeTypeList = Array<SoleTenantNodeType>;
 export const SoleTenantNodeTypeList = /*@__PURE__*/ S.Array(
   SoleTenantNodeType,
 ) as any as S.Schema<SoleTenantNodeTypeList>;
@@ -4773,11 +4789,13 @@ export interface SoleTenancyPreferences {
   /** Optional. Pricing options for OS images. */
   osPricingPreferences?: OperatingSystemPricingPreferences;
   /** Sole Tenancy nodes maintenance policy. */
-  hostMaintenancePolicy?: SoleTenancyPreferencesHostMaintenancePolicyEnum;
+  hostMaintenancePolicy?:
+    | SoleTenancyPreferencesHostMaintenancePolicyEnum
+    | (string & {});
   /** CPU overcommit ratio. Acceptable values are between 1.0 and 2.0 inclusive. */
   cpuOvercommitRatio?: number;
   /** Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with. */
-  commitmentPlan?: SoleTenancyPreferencesCommitmentPlanEnum;
+  commitmentPlan?: SoleTenancyPreferencesCommitmentPlanEnum | (string & {});
   /** A list of sole tenant node types. An empty list means that all possible node types will be considered. */
   nodeTypes?: SoleTenantNodeTypeList;
 }
@@ -4833,15 +4851,17 @@ export const ComputeEnginePreferencesMultithreadingEnum =
 /** The user preferences relating to Compute Engine target platform. */
 export interface ComputeEnginePreferences {
   /** Persistent disk type to use. If unspecified (default), all types are considered, based on available usage data. */
-  persistentDiskType?: ComputeEnginePreferencesPersistentDiskTypeEnum;
+  persistentDiskType?:
+    | ComputeEnginePreferencesPersistentDiskTypeEnum
+    | (string & {});
   /** License type to consider when calculating costs for operating systems. If unspecified, costs are calculated based on the default licensing plan. If os_pricing_preferences is specified, it overrides this field. */
-  licenseType?: ComputeEnginePreferencesLicenseTypeEnum;
+  licenseType?: ComputeEnginePreferencesLicenseTypeEnum | (string & {});
   /** Preferences concerning the machine types to consider on Compute Engine. */
   machinePreferences?: MachinePreferences;
   /** Optional. Pricing options for OS images. */
   osPricingPreferences?: OperatingSystemPricingPreferences;
   /** Optional. Preferences for multithreading support on Windows Server. */
-  multithreading?: ComputeEnginePreferencesMultithreadingEnum;
+  multithreading?: ComputeEnginePreferencesMultithreadingEnum | (string & {});
 }
 export const ComputeEnginePreferences = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4860,7 +4880,7 @@ export const ComputeEnginePreferences = /*@__PURE__*/ S.suspend(() =>
 /** VirtualMachinePreferences enables you to create sets of preferences, for example, a geographical location and pricing track, for your migrated virtual machines. The set of preferences influence recommendations for migrating virtual machine assets. */
 export interface VirtualMachinePreferences {
   /** Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with. */
-  commitmentPlan?: VirtualMachinePreferencesCommitmentPlanEnum;
+  commitmentPlan?: VirtualMachinePreferencesCommitmentPlanEnum | (string & {});
   /** Optional. Estimated usage data for missing usage data. If performance data is available, it overrides this field. If not set, default values will be used for the usage data. */
   estimatedUsage?: EstimatedUsage;
   /** Region preferences for assets using this preference set. If you are unsure which value to set, the migration service API region is often a good value to start with. If PreferenceSet.RegionPreferences is specified, it overrides this field. */
@@ -4872,9 +4892,11 @@ export interface VirtualMachinePreferences {
   /** Preferences concerning insights and recommendations for Google Cloud VMware Engine. */
   vmwareEnginePreferences?: VmwareEnginePreferences;
   /** Target product for assets using this preference set. Specify either target product or business goal, but not both. */
-  targetProduct?: VirtualMachinePreferencesTargetProductEnum;
+  targetProduct?: VirtualMachinePreferencesTargetProductEnum | (string & {});
   /** Sizing optimization strategy specifies the preferred strategy used when extrapolating usage data to calculate insights and recommendations for a virtual machine. If you are unsure which value to set, a moderate sizing optimization strategy is often a good value to start with. */
-  sizingOptimizationStrategy?: VirtualMachinePreferencesSizingOptimizationStrategyEnum;
+  sizingOptimizationStrategy?:
+    | VirtualMachinePreferencesSizingOptimizationStrategyEnum
+    | (string & {});
   /** Preferences concerning Sole Tenant nodes and virtual machines. */
   soleTenancyPreferences?: SoleTenancyPreferences;
   /** Optional. Compute Engine preferences concern insights and recommendations for Compute Engine target. */
@@ -4913,7 +4935,9 @@ export const DatabasePreferencesCloudSqlCommonBackupBackupModeEnum =
 /** Preferences for database backups. */
 export interface DatabasePreferencesCloudSqlCommonBackup {
   /** Optional. Automated backup mode. */
-  backupMode?: DatabasePreferencesCloudSqlCommonBackupBackupModeEnum;
+  backupMode?:
+    | DatabasePreferencesCloudSqlCommonBackupBackupModeEnum
+    | (string & {});
 }
 export const DatabasePreferencesCloudSqlCommonBackup = /*@__PURE__*/ S.suspend(
   () =>
@@ -4972,15 +4996,23 @@ export interface DatabasePreferencesCloudSqlCommon {
   /** Optional. Preferences for database backups. */
   backup?: DatabasePreferencesCloudSqlCommonBackup;
   /** Optional. Sizing optimization strategy of the database. Currently supported for Cloud SQL are just two values: SIZING_OPTIMIZATION_STRATEGY_MODERATE and SIZING_OPTIMIZATION_STRATEGY_SAME_AS_SOURCE. SIZING_OPTIMIZATION_STRATEGY_UNSPECIFIED will behave like SIZING_OPTIMIZATION_STRATEGY_MODERATE. */
-  sizingOptimizationStrategy?: DatabasePreferencesCloudSqlCommonSizingOptimizationStrategyEnum;
+  sizingOptimizationStrategy?:
+    | DatabasePreferencesCloudSqlCommonSizingOptimizationStrategyEnum
+    | (string & {});
   /** Optional. Commitment plan to consider when calculating costs. Only regular CUDs (not flexible) are currently available. */
-  commitmentPlan?: DatabasePreferencesCloudSqlCommonCommitmentPlanEnum;
+  commitmentPlan?:
+    | DatabasePreferencesCloudSqlCommonCommitmentPlanEnum
+    | (string & {});
   /** Optional. Preferred Cloud SQL edition. */
-  edition?: DatabasePreferencesCloudSqlCommonEditionEnum;
+  edition?: DatabasePreferencesCloudSqlCommonEditionEnum | (string & {});
   /** Optional. Persistent disk type to use. If unspecified, a disk type is recommended based on available usage data. For SQL Server, only SSD is available. For MySQL and PostgreSQL, only STANDARD (HDD) and SSD types are available. */
-  persistentDiskType?: DatabasePreferencesCloudSqlCommonPersistentDiskTypeEnum;
+  persistentDiskType?:
+    | DatabasePreferencesCloudSqlCommonPersistentDiskTypeEnum
+    | (string & {});
   /** Optional. Preferred zone availability. */
-  zoneAvailability?: DatabasePreferencesCloudSqlCommonZoneAvailabilityEnum;
+  zoneAvailability?:
+    | DatabasePreferencesCloudSqlCommonZoneAvailabilityEnum
+    | (string & {});
 }
 export const DatabasePreferencesCloudSqlCommon = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5037,11 +5069,15 @@ export const DatabasePreferencesCloudSqlSqlServerVersionTypeEnum =
 /** Preferences for SQL Server on Cloud SQL. */
 export interface DatabasePreferencesCloudSqlSqlServer {
   /** Optional. Preferences for multithreading support. */
-  multithreading?: DatabasePreferencesCloudSqlSqlServerMultithreadingEnum;
+  multithreading?:
+    | DatabasePreferencesCloudSqlSqlServerMultithreadingEnum
+    | (string & {});
   /** Optional. Preferences to Cloud SQL databases. */
   common?: DatabasePreferencesCloudSqlCommon;
   /** Optional. Edition of Microsoft SQL version that is used on a Cloud SQL for SQL server instance. */
-  versionType?: DatabasePreferencesCloudSqlSqlServerVersionTypeEnum;
+  versionType?:
+    | DatabasePreferencesCloudSqlSqlServerVersionTypeEnum
+    | (string & {});
 }
 export const DatabasePreferencesCloudSqlSqlServer = /*@__PURE__*/ S.suspend(
   () =>
@@ -5174,7 +5210,7 @@ export const ReportConfigGroupPreferenceSetAssignment = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ReportConfigGroupPreferenceSetAssignment>;
 
 export type ReportConfigGroupPreferenceSetAssignmentList =
-  ReadonlyArray<ReportConfigGroupPreferenceSetAssignment>;
+  Array<ReportConfigGroupPreferenceSetAssignment>;
 export const ReportConfigGroupPreferenceSetAssignmentList =
   /*@__PURE__*/ S.Array(
     ReportConfigGroupPreferenceSetAssignment,
@@ -5267,7 +5303,7 @@ export const ReportSummaryHistogramChartDataBucket = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ReportSummaryHistogramChartDataBucket>;
 
 export type ReportSummaryHistogramChartDataBucketList =
-  ReadonlyArray<ReportSummaryHistogramChartDataBucket>;
+  Array<ReportSummaryHistogramChartDataBucket>;
 export const ReportSummaryHistogramChartDataBucketList = /*@__PURE__*/ S.Array(
   ReportSummaryHistogramChartDataBucket,
 ) as any as S.Schema<ReportSummaryHistogramChartDataBucketList>;
@@ -5302,7 +5338,7 @@ export const ReportSummaryChartDataDataPoint = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReportSummaryChartDataDataPoint>;
 
 export type ReportSummaryChartDataDataPointList =
-  ReadonlyArray<ReportSummaryChartDataDataPoint>;
+  Array<ReportSummaryChartDataDataPoint>;
 export const ReportSummaryChartDataDataPointList = /*@__PURE__*/ S.Array(
   ReportSummaryChartDataDataPoint,
 ) as any as S.Schema<ReportSummaryChartDataDataPointList>;
@@ -5477,7 +5513,7 @@ export const ReportSummaryMachineSeriesAllocation = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ReportSummaryMachineSeriesAllocation>;
 
 export type ReportSummaryMachineSeriesAllocationList =
-  ReadonlyArray<ReportSummaryMachineSeriesAllocation>;
+  Array<ReportSummaryMachineSeriesAllocation>;
 export const ReportSummaryMachineSeriesAllocationList = /*@__PURE__*/ S.Array(
   ReportSummaryMachineSeriesAllocation,
 ) as any as S.Schema<ReportSummaryMachineSeriesAllocationList>;
@@ -5490,8 +5526,9 @@ export type ReportSummaryMachineFindingAllocatedDiskTypesItemEnum =
 export const ReportSummaryMachineFindingAllocatedDiskTypesItemEnum =
   /*@__PURE__*/ S.String;
 
-export type ReportSummaryMachineFindingAllocatedDiskTypesItemEnumList =
-  ReadonlyArray<ReportSummaryMachineFindingAllocatedDiskTypesItemEnum>;
+export type ReportSummaryMachineFindingAllocatedDiskTypesItemEnumList = Array<
+  ReportSummaryMachineFindingAllocatedDiskTypesItemEnum | (string & {})
+>;
 export const ReportSummaryMachineFindingAllocatedDiskTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     ReportSummaryMachineFindingAllocatedDiskTypesItemEnum,
@@ -5544,7 +5581,7 @@ export const ReportSummarySoleTenantNodeAllocation = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ReportSummarySoleTenantNodeAllocation>;
 
 export type ReportSummarySoleTenantNodeAllocationList =
-  ReadonlyArray<ReportSummarySoleTenantNodeAllocation>;
+  Array<ReportSummarySoleTenantNodeAllocation>;
 export const ReportSummarySoleTenantNodeAllocationList = /*@__PURE__*/ S.Array(
   ReportSummarySoleTenantNodeAllocation,
 ) as any as S.Schema<ReportSummarySoleTenantNodeAllocationList>;
@@ -5601,7 +5638,7 @@ export const ReportSummaryVMWareNodeAllocation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReportSummaryVMWareNodeAllocation>;
 
 export type ReportSummaryVMWareNodeAllocationList =
-  ReadonlyArray<ReportSummaryVMWareNodeAllocation>;
+  Array<ReportSummaryVMWareNodeAllocation>;
 export const ReportSummaryVMWareNodeAllocationList = /*@__PURE__*/ S.Array(
   ReportSummaryVMWareNodeAllocation,
 ) as any as S.Schema<ReportSummaryVMWareNodeAllocationList>;
@@ -5700,7 +5737,7 @@ export const ReportSummaryGroupPreferenceSetFinding = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ReportSummaryGroupPreferenceSetFinding>;
 
 export type ReportSummaryGroupPreferenceSetFindingList =
-  ReadonlyArray<ReportSummaryGroupPreferenceSetFinding>;
+  Array<ReportSummaryGroupPreferenceSetFinding>;
 export const ReportSummaryGroupPreferenceSetFindingList = /*@__PURE__*/ S.Array(
   ReportSummaryGroupPreferenceSetFinding,
 ) as any as S.Schema<ReportSummaryGroupPreferenceSetFindingList>;
@@ -5710,7 +5747,7 @@ export interface ReportSummaryGroupFinding {
   /** This field is deprecated, do not rely on it having a value. */
   overlappingAssetCount?: string;
   /** Output only. Asset type for the group finding. */
-  assetType?: ReportSummaryGroupFindingAssetTypeEnum;
+  assetType?: ReportSummaryGroupFindingAssetTypeEnum | (string & {});
   /** Display Name for this group finding. */
   displayName?: string;
   /** Summary statistics for all the assets in this group. */
@@ -5718,7 +5755,7 @@ export interface ReportSummaryGroupFinding {
   /** Output only. Full name of the group. */
   group?: string;
   /** Output only. Source asset database type for the group finding. Only present for databases. */
-  databaseType?: ReportSummaryGroupFindingDatabaseTypeEnum;
+  databaseType?: ReportSummaryGroupFindingDatabaseTypeEnum | (string & {});
   /** Findings for each of the PreferenceSets for this group. */
   preferenceSetFindings?: ReportSummaryGroupPreferenceSetFindingList;
   /** Description for this group finding. */
@@ -5741,8 +5778,7 @@ export const ReportSummaryGroupFinding = /*@__PURE__*/ S.suspend(() =>
   identifier: "ReportSummaryGroupFinding",
 }) as any as S.Schema<ReportSummaryGroupFinding>;
 
-export type ReportSummaryGroupFindingList =
-  ReadonlyArray<ReportSummaryGroupFinding>;
+export type ReportSummaryGroupFindingList = Array<ReportSummaryGroupFinding>;
 export const ReportSummaryGroupFindingList = /*@__PURE__*/ S.Array(
   ReportSummaryGroupFinding,
 ) as any as S.Schema<ReportSummaryGroupFindingList>;
@@ -5776,9 +5812,9 @@ export interface Report {
   /** User-friendly display name. Maximum length is 63 characters. */
   displayName?: string;
   /** Report type. */
-  type?: ReportTypeEnum;
+  type?: ReportTypeEnum | (string & {});
   /** Report creation state. */
-  state?: ReportStateEnum;
+  state?: ReportStateEnum | (string & {});
   /** Output only. Summary view of the Report. */
   summary?: ReportSummary;
   /** Output only. Name of resource. */
@@ -5874,7 +5910,7 @@ export const ReportExportExecution = /*@__PURE__*/ S.suspend(() =>
   identifier: "ReportExportExecution",
 }) as any as S.Schema<ReportExportExecution>;
 
-export type ReportExportExecutionList = ReadonlyArray<ReportExportExecution>;
+export type ReportExportExecutionList = Array<ReportExportExecution>;
 export const ReportExportExecutionList = /*@__PURE__*/ S.Array(
   ReportExportExecution,
 ) as any as S.Schema<ReportExportExecutionList>;
@@ -5952,7 +5988,7 @@ export interface Source {
   /** The information confidence of the source. The higher the value, the higher the confidence. */
   priority?: number;
   /** Output only. The state of the source. */
-  state?: SourceStateEnum;
+  state?: SourceStateEnum | (string & {});
   /** Free-text description. */
   description?: string;
   /** If `true`, the source is managed by other service(s). */
@@ -5966,7 +6002,7 @@ export interface Source {
   /** User-friendly display name. */
   displayName?: string;
   /** Data source type. */
-  type?: SourceTypeEnum;
+  type?: SourceTypeEnum | (string & {});
 }
 export const Source = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6739,7 +6775,7 @@ export const PerformanceSample = /*@__PURE__*/ S.suspend(() =>
   identifier: "PerformanceSample",
 }) as any as S.Schema<PerformanceSample>;
 
-export type PerformanceSampleList = ReadonlyArray<PerformanceSample>;
+export type PerformanceSampleList = Array<PerformanceSample>;
 export const PerformanceSampleList = /*@__PURE__*/ S.Array(
   PerformanceSample,
 ) as any as S.Schema<PerformanceSampleList>;
@@ -6828,7 +6864,7 @@ export interface AssetFrame {
   /** Optional. Asset information specific for AWS SNS Topics. */
   awsSnsTopicDetails?: AwsSnsTopicDetails;
   /** Optional. Frame collection type, if not specified the collection type will be based on the source type of the source the frame was reported on. */
-  collectionType?: AssetFrameCollectionTypeEnum;
+  collectionType?: AssetFrameCollectionTypeEnum | (string & {});
   /** Asset information specific for AWS ECS clusters. */
   awsEcsClusterDetails?: AwsEcsClusterDetails;
   /** Asset information specific for AwsEcrRepositoryDetails */
@@ -6908,7 +6944,7 @@ export const FrameViolationEntry = /*@__PURE__*/ S.suspend(() =>
   identifier: "FrameViolationEntry",
 }) as any as S.Schema<FrameViolationEntry>;
 
-export type FrameViolationEntryList = ReadonlyArray<FrameViolationEntry>;
+export type FrameViolationEntryList = Array<FrameViolationEntry>;
 export const FrameViolationEntryList = /*@__PURE__*/ S.Array(
   FrameViolationEntry,
 ) as any as S.Schema<FrameViolationEntryList>;
@@ -7001,7 +7037,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = ReadonlyArray<Location>;
+export type LocationList = Array<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -7109,7 +7145,7 @@ export const ListProjectsLocationsAssetsExportJobsRequest =
     identifier: "ListProjectsLocationsAssetsExportJobsRequest",
   }) as any as S.Schema<ListProjectsLocationsAssetsExportJobsRequest>;
 
-export type AssetsExportJobList = ReadonlyArray<AssetsExportJob>;
+export type AssetsExportJobList = Array<AssetsExportJob>;
 export const AssetsExportJobList = /*@__PURE__*/ S.Array(
   AssetsExportJob,
 ) as any as S.Schema<AssetsExportJobList>;
@@ -7161,7 +7197,7 @@ export const ListProjectsLocationsDiscoveryClientsRequest =
     identifier: "ListProjectsLocationsDiscoveryClientsRequest",
   }) as any as S.Schema<ListProjectsLocationsDiscoveryClientsRequest>;
 
-export type DiscoveryClientList = ReadonlyArray<DiscoveryClient>;
+export type DiscoveryClientList = Array<DiscoveryClient>;
 export const DiscoveryClientList = /*@__PURE__*/ S.Array(
   DiscoveryClient,
 ) as any as S.Schema<DiscoveryClientList>;
@@ -7215,7 +7251,7 @@ export const ListProjectsLocationsGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsGroupsRequest",
 }) as any as S.Schema<ListProjectsLocationsGroupsRequest>;
 
-export type GroupList = ReadonlyArray<Group>;
+export type GroupList = Array<Group>;
 export const GroupList = /*@__PURE__*/ S.Array(
   Group,
 ) as any as S.Schema<GroupList>;
@@ -7279,7 +7315,7 @@ export const ListProjectsLocationsImportJobsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsImportJobsRequest",
 }) as any as S.Schema<ListProjectsLocationsImportJobsRequest>;
 
-export type ImportJobList = ReadonlyArray<ImportJob>;
+export type ImportJobList = Array<ImportJob>;
 export const ImportJobList = /*@__PURE__*/ S.Array(
   ImportJob,
 ) as any as S.Schema<ImportJobList>;
@@ -7334,7 +7370,7 @@ export const ListProjectsLocationsImportJobsImportDataFilesRequest =
     identifier: "ListProjectsLocationsImportJobsImportDataFilesRequest",
   }) as any as S.Schema<ListProjectsLocationsImportJobsImportDataFilesRequest>;
 
-export type ImportDataFileList = ReadonlyArray<ImportDataFile>;
+export type ImportDataFileList = Array<ImportDataFile>;
 export const ImportDataFileList = /*@__PURE__*/ S.Array(
   ImportDataFile,
 ) as any as S.Schema<ImportDataFileList>;
@@ -7389,7 +7425,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type OperationList = ReadonlyArray<Operation>;
+export type OperationList = Array<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -7441,7 +7477,7 @@ export const ListProjectsLocationsPreferenceSetsRequest =
     identifier: "ListProjectsLocationsPreferenceSetsRequest",
   }) as any as S.Schema<ListProjectsLocationsPreferenceSetsRequest>;
 
-export type PreferenceSetList = ReadonlyArray<PreferenceSet>;
+export type PreferenceSetList = Array<PreferenceSet>;
 export const PreferenceSetList = /*@__PURE__*/ S.Array(
   PreferenceSet,
 ) as any as S.Schema<PreferenceSetList>;
@@ -7496,7 +7532,7 @@ export const ListProjectsLocationsRelationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsRelationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRelationsRequest>;
 
-export type RelationList = ReadonlyArray<Relation>;
+export type RelationList = Array<Relation>;
 export const RelationList = /*@__PURE__*/ S.Array(
   Relation,
 ) as any as S.Schema<RelationList>;
@@ -7548,7 +7584,7 @@ export const ListProjectsLocationsReportConfigsRequest =
     identifier: "ListProjectsLocationsReportConfigsRequest",
   }) as any as S.Schema<ListProjectsLocationsReportConfigsRequest>;
 
-export type ReportConfigList = ReadonlyArray<ReportConfig>;
+export type ReportConfigList = Array<ReportConfig>;
 export const ReportConfigList = /*@__PURE__*/ S.Array(
   ReportConfig,
 ) as any as S.Schema<ReportConfigList>;
@@ -7616,7 +7652,7 @@ export const ListProjectsLocationsReportConfigsReportsRequest =
     identifier: "ListProjectsLocationsReportConfigsReportsRequest",
   }) as any as S.Schema<ListProjectsLocationsReportConfigsReportsRequest>;
 
-export type ReportList = ReadonlyArray<Report>;
+export type ReportList = Array<Report>;
 export const ReportList = /*@__PURE__*/ S.Array(
   Report,
 ) as any as S.Schema<ReportList>;
@@ -7666,7 +7702,7 @@ export const ListProjectsLocationsReportConfigsReportsReportExportJobsRequest =
       "ListProjectsLocationsReportConfigsReportsReportExportJobsRequest",
   }) as any as S.Schema<ListProjectsLocationsReportConfigsReportsReportExportJobsRequest>;
 
-export type ReportExportJobList = ReadonlyArray<ReportExportJob>;
+export type ReportExportJobList = Array<ReportExportJob>;
 export const ReportExportJobList = /*@__PURE__*/ S.Array(
   ReportExportJob,
 ) as any as S.Schema<ReportExportJobList>;
@@ -7717,7 +7753,7 @@ export const ListProjectsLocationsSourcesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsSourcesRequest",
 }) as any as S.Schema<ListProjectsLocationsSourcesRequest>;
 
-export type SourceList = ReadonlyArray<Source>;
+export type SourceList = Array<Source>;
 export const SourceList = /*@__PURE__*/ S.Array(
   Source,
 ) as any as S.Schema<SourceList>;
@@ -7778,7 +7814,7 @@ export const ListProjectsLocationsSourcesErrorFramesRequest =
     identifier: "ListProjectsLocationsSourcesErrorFramesRequest",
   }) as any as S.Schema<ListProjectsLocationsSourcesErrorFramesRequest>;
 
-export type ErrorFrameList = ReadonlyArray<ErrorFrame>;
+export type ErrorFrameList = Array<ErrorFrame>;
 export const ErrorFrameList = /*@__PURE__*/ S.Array(
   ErrorFrame,
 ) as any as S.Schema<ErrorFrameList>;
@@ -8009,7 +8045,7 @@ export const RemoveAssetsProjectsLocationsGroupsRequest =
     identifier: "RemoveAssetsProjectsLocationsGroupsRequest",
   }) as any as S.Schema<RemoveAssetsProjectsLocationsGroupsRequest>;
 
-export type AssetFrameList = ReadonlyArray<AssetFrame>;
+export type AssetFrameList = Array<AssetFrame>;
 export const AssetFrameList = /*@__PURE__*/ S.Array(
   AssetFrame,
 ) as any as S.Schema<AssetFrameList>;

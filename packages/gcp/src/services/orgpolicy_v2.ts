@@ -60,7 +60,7 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -140,7 +140,7 @@ export const GoogleCloudOrgpolicyV2PolicySpecPolicyRule =
   }) as any as S.Schema<GoogleCloudOrgpolicyV2PolicySpecPolicyRule>;
 
 export type GoogleCloudOrgpolicyV2PolicySpecPolicyRuleList =
-  ReadonlyArray<GoogleCloudOrgpolicyV2PolicySpecPolicyRule>;
+  Array<GoogleCloudOrgpolicyV2PolicySpecPolicyRule>;
 export const GoogleCloudOrgpolicyV2PolicySpecPolicyRuleList =
   /*@__PURE__*/ S.Array(
     GoogleCloudOrgpolicyV2PolicySpecPolicyRule,
@@ -245,7 +245,9 @@ export const GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemEnumList =
-  ReadonlyArray<GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemEnum>;
+  Array<
+    GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemEnum | (string & {})
+  >;
 export const GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemEnum,
@@ -275,7 +277,9 @@ export interface GoogleCloudOrgpolicyV2CustomConstraint {
   /** Immutable. The resource instance type on which this policy applies. Format will be of the form : `/` Example: * `compute.googleapis.com/Instance`. */
   resourceTypes?: StringList;
   /** Allow or deny type. */
-  actionType?: GoogleCloudOrgpolicyV2CustomConstraintActionTypeEnum;
+  actionType?:
+    | GoogleCloudOrgpolicyV2CustomConstraintActionTypeEnum
+    | (string & {});
 }
 export const GoogleCloudOrgpolicyV2CustomConstraint = /*@__PURE__*/ S.suspend(
   () =>
@@ -618,7 +622,7 @@ export const GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionMethodTyp
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionMethodTypesItemEnumList =
-  ReadonlyArray<GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionMethodTypesItemEnum>;
+  Array<GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionMethodTypesItemEnum>;
 export const GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionMethodTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionMethodTypesItemEnum,
@@ -813,7 +817,7 @@ export const GoogleCloudOrgpolicyV2Constraint = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudOrgpolicyV2Constraint>;
 
 export type GoogleCloudOrgpolicyV2ConstraintList =
-  ReadonlyArray<GoogleCloudOrgpolicyV2Constraint>;
+  Array<GoogleCloudOrgpolicyV2Constraint>;
 export const GoogleCloudOrgpolicyV2ConstraintList = /*@__PURE__*/ S.Array(
   GoogleCloudOrgpolicyV2Constraint,
 ) as any as S.Schema<GoogleCloudOrgpolicyV2ConstraintList>;
@@ -860,7 +864,7 @@ export const ListFoldersPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListFoldersPoliciesRequest>;
 
 export type GoogleCloudOrgpolicyV2PolicyList =
-  ReadonlyArray<GoogleCloudOrgpolicyV2Policy>;
+  Array<GoogleCloudOrgpolicyV2Policy>;
 export const GoogleCloudOrgpolicyV2PolicyList = /*@__PURE__*/ S.Array(
   GoogleCloudOrgpolicyV2Policy,
 ) as any as S.Schema<GoogleCloudOrgpolicyV2PolicyList>;
@@ -932,7 +936,7 @@ export const ListOrganizationsCustomConstraintsRequest =
   }) as any as S.Schema<ListOrganizationsCustomConstraintsRequest>;
 
 export type GoogleCloudOrgpolicyV2CustomConstraintList =
-  ReadonlyArray<GoogleCloudOrgpolicyV2CustomConstraint>;
+  Array<GoogleCloudOrgpolicyV2CustomConstraint>;
 export const GoogleCloudOrgpolicyV2CustomConstraintList = /*@__PURE__*/ S.Array(
   GoogleCloudOrgpolicyV2CustomConstraint,
 ) as any as S.Schema<GoogleCloudOrgpolicyV2CustomConstraintList>;

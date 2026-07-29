@@ -32,7 +32,7 @@ export interface AutoScaleVCoreProperties {
   /** The object ID of the capacity resource associated with the auto scale v-core resource. */
   capacityObjectId?: string;
   /** The current deployment state of an auto scale v-core resource. The provisioningState is to indicate states for resource provisioning. */
-  provisioningState?: VCoreProvisioningState;
+  provisioningState?: VCoreProvisioningState | (string & {});
 }
 export const AutoScaleVCoreProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -53,7 +53,7 @@ export interface AutoScaleVCoreSku {
   /** Name of the SKU level. */
   name: string;
   /** The name of the Azure pricing tier to which the SKU applies. */
-  tier?: VCoreSkuTier;
+  tier?: VCoreSkuTier | (string & {});
   /** The capacity of an auto scale v-core resource. */
   capacity?: number;
 }
@@ -350,7 +350,7 @@ export const AutoScaleVCore = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AutoScaleVCore" }) as any as S.Schema<AutoScaleVCore>;
 
 /** An array of auto scale v-core resources. */
-export type AutoScaleVCoreListResultValueList = ReadonlyArray<AutoScaleVCore>;
+export type AutoScaleVCoreListResultValueList = Array<AutoScaleVCore>;
 export const AutoScaleVCoreListResultValueList = /*@__PURE__*/ S.Array(
   AutoScaleVCore,
 ) as any as S.Schema<AutoScaleVCoreListResultValueList>;
@@ -546,7 +546,7 @@ export const CapacitiesCreateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<CapacitiesCreateRequestTagsMap>;
 
 /** An array of administrator user identities. */
-export type DedicatedCapacityAdministratorsMembersList = ReadonlyArray<string>;
+export type DedicatedCapacityAdministratorsMembersList = Array<string>;
 export const DedicatedCapacityAdministratorsMembersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DedicatedCapacityAdministratorsMembersList>;
@@ -593,7 +593,7 @@ export interface CapacitySku {
   /** Name of the SKU level. */
   name: string;
   /** The name of the Azure pricing tier to which the SKU applies. */
-  tier?: CapacitySkuTier;
+  tier?: CapacitySkuTier | (string & {});
   /** The capacity of the SKU. */
   capacity?: number;
 }
@@ -904,7 +904,7 @@ export const DedicatedCapacity = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DedicatedCapacity>;
 
 /** An array of Dedicated capacities resources. */
-export type DedicatedCapacitiesValueList = ReadonlyArray<DedicatedCapacity>;
+export type DedicatedCapacitiesValueList = Array<DedicatedCapacity>;
 export const DedicatedCapacitiesValueList = /*@__PURE__*/ S.Array(
   DedicatedCapacity,
 ) as any as S.Schema<DedicatedCapacitiesValueList>;
@@ -968,8 +968,7 @@ export const CapacitiesListSkusRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CapacitiesListSkusRequest>;
 
 /** The collection of available SKUs for new resources */
-export type SkuEnumerationForNewResourceResultValueList =
-  ReadonlyArray<CapacitySku>;
+export type SkuEnumerationForNewResourceResultValueList = Array<CapacitySku>;
 export const SkuEnumerationForNewResourceResultValueList =
   /*@__PURE__*/ S.Array(
     CapacitySku,
@@ -1032,7 +1031,7 @@ export const SkuDetailsForExistingResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The collection of available SKUs for existing resources */
 export type SkuEnumerationForExistingResourceResultValueList =
-  ReadonlyArray<SkuDetailsForExistingResource>;
+  Array<SkuDetailsForExistingResource>;
 export const SkuEnumerationForExistingResourceResultValueList =
   /*@__PURE__*/ S.Array(
     SkuDetailsForExistingResource,
@@ -1271,7 +1270,7 @@ export const MetricSpecificationDimensionsItem = /*@__PURE__*/ S.suspend(() =>
 
 /** For describing multi dimensional metrics */
 export type MetricSpecificationDimensionsList =
-  ReadonlyArray<MetricSpecificationDimensionsItem>;
+  Array<MetricSpecificationDimensionsItem>;
 export const MetricSpecificationDimensionsList = /*@__PURE__*/ S.Array(
   MetricSpecificationDimensionsItem,
 ) as any as S.Schema<MetricSpecificationDimensionsList>;
@@ -1309,7 +1308,7 @@ export const MetricSpecification = /*@__PURE__*/ S.suspend(() =>
 
 /** Metric specifications for exposing performance metrics to shoebox. */
 export type ServiceSpecificationMetricSpecificationsList =
-  ReadonlyArray<MetricSpecification>;
+  Array<MetricSpecification>;
 export const ServiceSpecificationMetricSpecificationsList =
   /*@__PURE__*/ S.Array(
     MetricSpecification,
@@ -1335,8 +1334,7 @@ export const LogSpecification = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LogSpecification>;
 
 /** Log specifications for exposing diagnostic logs to shoebox. */
-export type ServiceSpecificationLogSpecificationsList =
-  ReadonlyArray<LogSpecification>;
+export type ServiceSpecificationLogSpecificationsList = Array<LogSpecification>;
 export const ServiceSpecificationLogSpecificationsList = /*@__PURE__*/ S.Array(
   LogSpecification,
 ) as any as S.Schema<ServiceSpecificationLogSpecificationsList>;
@@ -1393,7 +1391,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of capacities supported by the Microsoft.PowerBIDedicated resource provider. */
-export type OperationListResultValueList = ReadonlyArray<Operation>;
+export type OperationListResultValueList = Array<Operation>;
 export const OperationListResultValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationListResultValueList>;

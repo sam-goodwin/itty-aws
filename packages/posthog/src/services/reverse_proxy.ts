@@ -200,8 +200,7 @@ export const DiagnosticDnsRecord = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DiagnosticDnsRecord>;
 
 /** DNS records the customer should add (empty when remediation is not DNS-based). */
-export type DiagnosticRemediationRecordsList =
-  ReadonlyArray<DiagnosticDnsRecord>;
+export type DiagnosticRemediationRecordsList = Array<DiagnosticDnsRecord>;
 export const DiagnosticRemediationRecordsList = /*@__PURE__*/ S.Array(
   DiagnosticDnsRecord,
 ) as any as S.Schema<DiagnosticRemediationRecordsList>;
@@ -249,7 +248,7 @@ export const DiagnosticCheckResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DiagnosticCheckResult>;
 
 /** Per-check results in execution order. */
-export type DiagnosticReportChecksList = ReadonlyArray<DiagnosticCheckResult>;
+export type DiagnosticReportChecksList = Array<DiagnosticCheckResult>;
 export const DiagnosticReportChecksList = /*@__PURE__*/ S.Array(
   DiagnosticCheckResult,
 ) as any as S.Schema<DiagnosticReportChecksList>;
@@ -290,7 +289,7 @@ export const ProxyRecordsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProxyRecordsListRequest",
 }) as any as S.Schema<ProxyRecordsListRequest>;
 
-export type ProxyRecordListResponseResultsList = ReadonlyArray<ProxyRecord>;
+export type ProxyRecordListResponseResultsList = Array<ProxyRecord>;
 export const ProxyRecordListResponseResultsList = /*@__PURE__*/ S.Array(
   ProxyRecord,
 ) as any as S.Schema<ProxyRecordListResponseResultsList>;
@@ -309,8 +308,7 @@ export const ProxyRecordListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProxyRecordListResponse",
 }) as any as S.Schema<ProxyRecordListResponse>;
 
-export type ProxyRecordsListResponseBodyList =
-  ReadonlyArray<ProxyRecordListResponse>;
+export type ProxyRecordsListResponseBodyList = Array<ProxyRecordListResponse>;
 export const ProxyRecordsListResponseBodyList = /*@__PURE__*/ S.Array(
   ProxyRecordListResponse,
 ) as any as S.Schema<ProxyRecordsListResponseBodyList>;

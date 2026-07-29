@@ -216,7 +216,7 @@ export interface LaunchTemplateSpecificationOverride {
   launchTemplateName?: string;
   version?: string;
   targetInstanceTypes?: string[];
-  userdataType?: UserdataType;
+  userdataType?: UserdataType | (string & {});
 }
 export const LaunchTemplateSpecificationOverride = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -239,7 +239,7 @@ export interface LaunchTemplateSpecification {
   launchTemplateName?: string;
   version?: string;
   overrides?: LaunchTemplateSpecificationOverride[];
-  userdataType?: UserdataType;
+  userdataType?: UserdataType | (string & {});
 }
 export const LaunchTemplateSpecification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -282,8 +282,8 @@ export const ComputeScalingPolicy = /*@__PURE__*/ S.suspend(() =>
   identifier: "ComputeScalingPolicy",
 }) as any as S.Schema<ComputeScalingPolicy>;
 export interface ComputeResource {
-  type?: CRType;
-  allocationStrategy?: CRAllocationStrategy;
+  type?: CRType | (string & {});
+  allocationStrategy?: CRAllocationStrategy | (string & {});
   minvCpus?: number;
   maxvCpus?: number;
   desiredvCpus?: number;
@@ -476,9 +476,9 @@ export const JobStateTimeLimitActionsAction = /*@__PURE__*/ S.String;
 
 export interface JobStateTimeLimitAction {
   reason?: string;
-  state?: JobStateTimeLimitActionsState;
+  state?: JobStateTimeLimitActionsState | (string & {});
   maxTimeSeconds?: number;
-  action?: JobStateTimeLimitActionsAction;
+  action?: JobStateTimeLimitActionsAction | (string & {});
 }
 export const JobStateTimeLimitAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -565,7 +565,7 @@ export type QuotaShareResourceSharingStrategy =
 export const QuotaShareResourceSharingStrategy = /*@__PURE__*/ S.String;
 
 export interface QuotaShareResourceSharingConfiguration {
-  strategy?: QuotaShareResourceSharingStrategy;
+  strategy?: QuotaShareResourceSharingStrategy | (string & {});
   borrowLimit?: number;
 }
 export const QuotaShareResourceSharingConfiguration = /*@__PURE__*/ S.suspend(
@@ -581,7 +581,7 @@ export type QuotaShareInSharePreemptionState = "ENABLED" | "DISABLED";
 export const QuotaShareInSharePreemptionState = /*@__PURE__*/ S.String;
 
 export interface QuotaSharePreemptionConfiguration {
-  inSharePreemption?: QuotaShareInSharePreemptionState;
+  inSharePreemption?: QuotaShareInSharePreemptionState | (string & {});
 }
 export const QuotaSharePreemptionConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ inSharePreemption: S.optional(QuotaShareInSharePreemptionState) }),
@@ -641,7 +641,9 @@ export type QuotaShareIdleResourceAssignmentStrategy = "FIFO";
 export const QuotaShareIdleResourceAssignmentStrategy = /*@__PURE__*/ S.String;
 
 export interface QuotaSharePolicy {
-  idleResourceAssignmentStrategy?: QuotaShareIdleResourceAssignmentStrategy;
+  idleResourceAssignmentStrategy?:
+    | QuotaShareIdleResourceAssignmentStrategy
+    | (string & {});
 }
 export const QuotaSharePolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1138,7 +1140,7 @@ export interface EvaluateOnExit {
   onStatusReason?: string;
   onReason?: string;
   onExitCode?: string;
-  action?: RetryAction;
+  action?: RetryAction | (string & {});
 }
 export const EvaluateOnExit = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1174,7 +1176,7 @@ export const EFSAuthorizationConfigIAM = /*@__PURE__*/ S.String;
 
 export interface EFSAuthorizationConfig {
   accessPointId?: string;
-  iam?: EFSAuthorizationConfigIAM;
+  iam?: EFSAuthorizationConfigIAM | (string & {});
 }
 export const EFSAuthorizationConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1187,7 +1189,7 @@ export const EFSAuthorizationConfig = /*@__PURE__*/ S.suspend(() =>
 export interface EFSVolumeConfiguration {
   fileSystemId?: string;
   rootDirectory?: string;
-  transitEncryption?: EFSTransitEncryption;
+  transitEncryption?: EFSTransitEncryption | (string & {});
   transitEncryptionPort?: number;
   authorizationConfig?: EFSAuthorizationConfig;
 }
@@ -1276,7 +1278,7 @@ export const ResourceType = /*@__PURE__*/ S.String;
 
 export interface ResourceRequirement {
   value?: string;
-  type?: ResourceType;
+  type?: ResourceType | (string & {});
 }
 export const ResourceRequirement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ value: S.optional(S.String), type: S.optional(ResourceType) }),
@@ -1288,7 +1290,10 @@ export const ResourceRequirements = /*@__PURE__*/ S.Array(ResourceRequirement);
 export type DeviceCgroupPermission = "READ" | "WRITE" | "MKNOD";
 export const DeviceCgroupPermission = /*@__PURE__*/ S.String;
 
-export type DeviceCgroupPermissions = DeviceCgroupPermission[];
+export type DeviceCgroupPermissions = (
+  | DeviceCgroupPermission
+  | (string & {})
+)[];
 export const DeviceCgroupPermissions = /*@__PURE__*/ S.Array(
   DeviceCgroupPermission,
 );
@@ -1366,7 +1371,7 @@ export const Secret = /*@__PURE__*/ S.suspend(() =>
 export type SecretList = Secret[];
 export const SecretList = /*@__PURE__*/ S.Array(Secret);
 export interface LogConfiguration {
-  logDriver?: LogDriver;
+  logDriver?: LogDriver | (string & {});
   options?: { [key: string]: string | undefined };
   secretOptions?: Secret[];
 }
@@ -1383,7 +1388,7 @@ export type AssignPublicIp = "ENABLED" | "DISABLED";
 export const AssignPublicIp = /*@__PURE__*/ S.String;
 
 export interface NetworkConfiguration {
-  assignPublicIp?: AssignPublicIp;
+  assignPublicIp?: AssignPublicIp | (string & {});
 }
 export const NetworkConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ assignPublicIp: S.optional(AssignPublicIp) }),
@@ -1515,7 +1520,7 @@ export const FirelensConfigurationOptionsMap = /*@__PURE__*/ S.Record(
   S.String.pipe(S.optional),
 );
 export interface FirelensConfiguration {
-  type?: FirelensConfigurationType;
+  type?: FirelensConfigurationType | (string & {});
   options?: { [key: string]: string | undefined };
 }
 export const FirelensConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -1895,7 +1900,7 @@ export const NodeProperties = /*@__PURE__*/ S.suspend(() =>
 export type PlatformCapability = "EC2" | "FARGATE";
 export const PlatformCapability = /*@__PURE__*/ S.String;
 
-export type PlatformCapabilityList = PlatformCapability[];
+export type PlatformCapabilityList = (PlatformCapability | (string & {}))[];
 export const PlatformCapabilityList = /*@__PURE__*/ S.Array(PlatformCapability);
 export interface JobDefinition {
   jobDefinitionName?: string;
@@ -2375,7 +2380,7 @@ export const ArrayJobDependency = /*@__PURE__*/ S.String;
 
 export interface JobDependency {
   jobId?: string;
-  type?: ArrayJobDependency;
+  type?: ArrayJobDependency | (string & {});
 }
 export const JobDependency = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3252,7 +3257,7 @@ export type ServiceJobRetryAction = "RETRY" | "EXIT";
 export const ServiceJobRetryAction = /*@__PURE__*/ S.String;
 
 export interface ServiceJobEvaluateOnExit {
-  action?: ServiceJobRetryAction;
+  action?: ServiceJobRetryAction | (string & {});
   onStatusReason?: string;
 }
 export const ServiceJobEvaluateOnExit = /*@__PURE__*/ S.suspend(() =>

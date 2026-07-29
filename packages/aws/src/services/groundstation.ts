@@ -152,7 +152,7 @@ export const FrequencyUnits = /*@__PURE__*/ S.String;
 
 export interface Frequency {
   value: number;
-  units: FrequencyUnits;
+  units: FrequencyUnits | (string & {});
 }
 export const Frequency = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ value: S.Number, units: FrequencyUnits }),
@@ -162,7 +162,7 @@ export const BandwidthUnits = /*@__PURE__*/ S.String;
 
 export interface FrequencyBandwidth {
   value: number;
-  units: BandwidthUnits;
+  units: BandwidthUnits | (string & {});
 }
 export const FrequencyBandwidth = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ value: S.Number, units: BandwidthUnits }),
@@ -175,7 +175,7 @@ export const Polarization = /*@__PURE__*/ S.String;
 export interface SpectrumConfig {
   centerFrequency: Frequency;
   bandwidth: FrequencyBandwidth;
-  polarization?: Polarization;
+  polarization?: Polarization | (string & {});
 }
 export const SpectrumConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -196,7 +196,7 @@ export type Criticality = "REQUIRED" | "PREFERRED" | "REMOVED";
 export const Criticality = /*@__PURE__*/ S.String;
 
 export interface TrackingConfig {
-  autotrack: Criticality;
+  autotrack: Criticality | (string & {});
 }
 export const TrackingConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ autotrack: Criticality }),
@@ -244,7 +244,7 @@ export const AntennaDownlinkDemodDecodeConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AntennaDownlinkDemodDecodeConfig>;
 export interface UplinkSpectrumConfig {
   centerFrequency: Frequency;
-  polarization?: Polarization;
+  polarization?: Polarization | (string & {});
 }
 export const UplinkSpectrumConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -259,7 +259,7 @@ export const EirpUnits = /*@__PURE__*/ S.String;
 
 export interface Eirp {
   value: number;
-  units: EirpUnits;
+  units: EirpUnits | (string & {});
 }
 export const Eirp = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ value: S.Number, units: EirpUnits }),
@@ -325,7 +325,7 @@ export const TelemetrySinkData = /*@__PURE__*/ S.Union([
   S.Struct({ kinesisDataStreamData: KinesisDataStreamData }),
 ]);
 export interface TelemetrySinkConfig {
-  telemetrySinkType: TelemetrySinkType;
+  telemetrySinkType: TelemetrySinkType | (string & {});
   telemetrySinkData: TelemetrySinkData;
 }
 export const TelemetrySinkConfig = /*@__PURE__*/ S.suspend(() =>
@@ -518,7 +518,7 @@ export const EndpointStatus = /*@__PURE__*/ S.String;
 export interface DataflowEndpoint {
   name?: string;
   address?: SocketAddress;
-  status?: EndpointStatus;
+  status?: EndpointStatus | (string & {});
   mtu?: number;
 }
 export const DataflowEndpoint = /*@__PURE__*/ S.suspend(() =>
@@ -576,8 +576,8 @@ export interface AwsGroundStationAgentEndpoint {
   name: string;
   egressAddress: ConnectionDetails;
   ingressAddress: RangedConnectionDetails;
-  agentStatus?: AgentStatus;
-  auditResults?: AuditResults;
+  agentStatus?: AgentStatus | (string & {});
+  auditResults?: AuditResults | (string & {});
 }
 export const AwsGroundStationAgentEndpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -611,8 +611,8 @@ export const UplinkDataflowDetails = /*@__PURE__*/ S.Union([
 export interface UplinkAwsGroundStationAgentEndpointDetails {
   name: string;
   dataflowDetails: UplinkDataflowDetails;
-  agentStatus?: AgentStatus;
-  auditResults?: AuditResults;
+  agentStatus?: AgentStatus | (string & {});
+  auditResults?: AuditResults | (string & {});
 }
 export const UplinkAwsGroundStationAgentEndpointDetails =
   /*@__PURE__*/ S.suspend(() =>
@@ -646,8 +646,8 @@ export const DownlinkDataflowDetails = /*@__PURE__*/ S.Union([
 export interface DownlinkAwsGroundStationAgentEndpointDetails {
   name: string;
   dataflowDetails: DownlinkDataflowDetails;
-  agentStatus?: AgentStatus;
-  auditResults?: AuditResults;
+  agentStatus?: AgentStatus | (string & {});
+  auditResults?: AuditResults | (string & {});
 }
 export const DownlinkAwsGroundStationAgentEndpointDetails =
   /*@__PURE__*/ S.suspend(() =>
@@ -673,7 +673,10 @@ export type CapabilityHealthReason =
   | "HEALTHY";
 export const CapabilityHealthReason = /*@__PURE__*/ S.String;
 
-export type CapabilityHealthReasonList = CapabilityHealthReason[];
+export type CapabilityHealthReasonList = (
+  | CapabilityHealthReason
+  | (string & {})
+)[];
 export const CapabilityHealthReasonList = /*@__PURE__*/ S.Array(
   CapabilityHealthReason,
 );
@@ -683,7 +686,7 @@ export interface EndpointDetails {
   awsGroundStationAgentEndpoint?: AwsGroundStationAgentEndpoint;
   uplinkAwsGroundStationAgentEndpoint?: UplinkAwsGroundStationAgentEndpointDetails;
   downlinkAwsGroundStationAgentEndpoint?: DownlinkAwsGroundStationAgentEndpointDetails;
-  healthStatus?: CapabilityHealth;
+  healthStatus?: CapabilityHealth | (string & {});
   healthReasons?: CapabilityHealthReason[];
 }
 export const EndpointDetails = /*@__PURE__*/ S.suspend(() =>

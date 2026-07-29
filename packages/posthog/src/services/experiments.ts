@@ -92,7 +92,7 @@ export type MinimalFeatureFlagBucketingIdentifier =
 export const MinimalFeatureFlagBucketingIdentifier =
   /*@__PURE__*/ S.Unknown as any as S.Schema<MinimalFeatureFlagBucketingIdentifier>;
 
-export type MinimalFeatureFlagEvaluationContextsList = ReadonlyArray<string>;
+export type MinimalFeatureFlagEvaluationContextsList = Array<string>;
 export const MinimalFeatureFlagEvaluationContextsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<MinimalFeatureFlagEvaluationContextsList>;
@@ -300,7 +300,7 @@ export const FeatureFlagFilterPropertyMultiContainsSchemaOperatorEnum =
 
 /** List of strings to evaluate against. */
 export type FeatureFlagFilterPropertyMultiContainsSchemaValueList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const FeatureFlagFilterPropertyMultiContainsSchemaValueList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -481,7 +481,7 @@ export const FeatureFlagFilterPropertySchema = /*@__PURE__*/ S.suspend(() =>
 
 /** Property conditions for this release condition group. */
 export type FeatureFlagConditionGroupSchemaPropertiesList =
-  ReadonlyArray<FeatureFlagFilterPropertySchema>;
+  Array<FeatureFlagFilterPropertySchema>;
 export const FeatureFlagConditionGroupSchemaPropertiesList =
   /*@__PURE__*/ S.Array(
     FeatureFlagFilterPropertySchema,
@@ -510,7 +510,7 @@ export const FeatureFlagConditionGroupSchema = /*@__PURE__*/ S.suspend(() =>
 
 /** Non-empty list of release-condition groups defining the held-out population, using the same shape as feature-flag release conditions. Each element's `rollout_percentage` (0–100, may be fractional) is the **exclusion** percentage — the share of users held back from all experiments that reference this holdout. `properties` optionally narrows the group by person/group properties. Do not set `variant`: the server normalizes it to `holdout-{id}`. Note that only the first element's `rollout_percentage` is embedded into each linked experiment's feature flag, and this population is shared across every experiment using the holdout. */
 export type ExperimentHoldoutFiltersList =
-  ReadonlyArray<FeatureFlagConditionGroupSchema>;
+  Array<FeatureFlagConditionGroupSchema>;
 export const ExperimentHoldoutFiltersList = /*@__PURE__*/ S.Array(
   FeatureFlagConditionGroupSchema,
 ) as any as S.Schema<ExperimentHoldoutFiltersList>;
@@ -623,13 +623,13 @@ export const ManualMetricType = /*@__PURE__*/ S.String;
 
 export interface ExperimentExposureEstimateConfig {
   /** 'manual' when the baseline value and exposure rate were entered by hand, 'automatic' when derived from live experiment data. */
-  conversionRateInputType: ConversionRateInputType;
+  conversionRateInputType: ConversionRateInputType | (string & {});
   /** Manually entered baseline metric value (a conversion percentage for funnel metrics). Only used in manual mode. */
   manualBaselineValue?: number | null;
   /** Manually entered estimate of users exposed to the experiment per day. Only used in manual mode. */
   manualExposureRate?: number | null;
   /** Metric type the manual baseline value refers to. Only used in manual mode. */
-  manualMetricType?: ManualMetricType | null;
+  manualMetricType?: ManualMetricType | (string & {}) | null;
 }
 export const ExperimentExposureEstimateConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -666,7 +666,7 @@ export const ExperimentRunningTimeCalculation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExperimentRunningTimeCalculation>;
 
 /** Variant keys to exclude from metric result calculations. Excluded variants are still served to users but omitted from statistical analysis. The baseline variant and holdout pseudo-variants cannot be excluded. Canonical home for what historically lived in `parameters.excluded_variants`. */
-export type ExperimentOutputExcludedVariantsList = ReadonlyArray<string>;
+export type ExperimentOutputExcludedVariantsList = Array<string>;
 export const ExperimentOutputExcludedVariantsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ExperimentOutputExcludedVariantsList>;
@@ -694,14 +694,13 @@ export const ExperimentToSavedMetric = /*@__PURE__*/ S.suspend(() =>
   identifier: "ExperimentToSavedMetric",
 }) as any as S.Schema<ExperimentToSavedMetric>;
 
-export type ExperimentOutputSavedMetricsList =
-  ReadonlyArray<ExperimentToSavedMetric>;
+export type ExperimentOutputSavedMetricsList = Array<ExperimentToSavedMetric>;
 export const ExperimentOutputSavedMetricsList = /*@__PURE__*/ S.Array(
   ExperimentToSavedMetric,
 ) as any as S.Schema<ExperimentOutputSavedMetricsList>;
 
 /** IDs of shared saved metrics to attach to this experiment. Each item has 'id' (saved metric ID) and 'metadata' with 'type' (primary or secondary). */
-export type ExperimentOutputSavedMetricsIdsList = ReadonlyArray<unknown>;
+export type ExperimentOutputSavedMetricsIdsList = Array<unknown>;
 export const ExperimentOutputSavedMetricsIdsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<ExperimentOutputSavedMetricsIdsList>;
@@ -755,7 +754,7 @@ export const EventPropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<EventPropertyFilterValueCase0Item>;
 
 export type EventPropertyFilterValueCase0List =
-  ReadonlyArray<EventPropertyFilterValueCase0Item>;
+  Array<EventPropertyFilterValueCase0Item>;
 export const EventPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
   EventPropertyFilterValueCase0Item,
 ) as any as S.Schema<EventPropertyFilterValueCase0List>;
@@ -771,7 +770,7 @@ export const EventPropertyFilterValue =
 export interface EventPropertyFilter {
   key?: string;
   label?: string | null;
-  operator?: PropertyOperator | null;
+  operator?: PropertyOperator | (string & {}) | null;
   /** Event properties */
   type?: string;
   value?: EventPropertyFilterValue | null;
@@ -793,7 +792,7 @@ export const PersonPropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<PersonPropertyFilterValueCase0Item>;
 
 export type PersonPropertyFilterValueCase0List =
-  ReadonlyArray<PersonPropertyFilterValueCase0Item>;
+  Array<PersonPropertyFilterValueCase0Item>;
 export const PersonPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
   PersonPropertyFilterValueCase0Item,
 ) as any as S.Schema<PersonPropertyFilterValueCase0List>;
@@ -809,7 +808,7 @@ export const PersonPropertyFilterValue =
 export interface PersonPropertyFilter {
   key?: string;
   label?: string | null;
-  operator?: PropertyOperator;
+  operator?: PropertyOperator | (string & {});
   /** Person properties */
   type?: string;
   value?: PersonPropertyFilterValue | null;
@@ -834,7 +833,7 @@ export const PersonMetadataPropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<PersonMetadataPropertyFilterValueCase0Item>;
 
 export type PersonMetadataPropertyFilterValueCase0List =
-  ReadonlyArray<PersonMetadataPropertyFilterValueCase0Item>;
+  Array<PersonMetadataPropertyFilterValueCase0Item>;
 export const PersonMetadataPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
   PersonMetadataPropertyFilterValueCase0Item,
 ) as any as S.Schema<PersonMetadataPropertyFilterValueCase0List>;
@@ -850,7 +849,7 @@ export const PersonMetadataPropertyFilterValue =
 export interface PersonMetadataPropertyFilter {
   key: string;
   label?: string | null;
-  operator: PropertyOperator;
+  operator: PropertyOperator | (string & {});
   /** Top-level columns on the persons table (e.g. created_at), not properties JSON */
   type?: string;
   value?: PersonMetadataPropertyFilterValue | null;
@@ -875,7 +874,7 @@ export const ElementPropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<ElementPropertyFilterValueCase0Item>;
 
 export type ElementPropertyFilterValueCase0List =
-  ReadonlyArray<ElementPropertyFilterValueCase0Item>;
+  Array<ElementPropertyFilterValueCase0Item>;
 export const ElementPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
   ElementPropertyFilterValueCase0Item,
 ) as any as S.Schema<ElementPropertyFilterValueCase0List>;
@@ -889,9 +888,9 @@ export const ElementPropertyFilterValue =
   /*@__PURE__*/ S.Unknown as any as S.Schema<ElementPropertyFilterValue>;
 
 export interface ElementPropertyFilter {
-  key?: Key10;
+  key?: Key10 | (string & {});
   label?: string | null;
-  operator?: PropertyOperator;
+  operator?: PropertyOperator | (string & {});
   type?: string;
   value?: ElementPropertyFilterValue | null;
 }
@@ -915,7 +914,7 @@ export const EventMetadataPropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<EventMetadataPropertyFilterValueCase0Item>;
 
 export type EventMetadataPropertyFilterValueCase0List =
-  ReadonlyArray<EventMetadataPropertyFilterValueCase0Item>;
+  Array<EventMetadataPropertyFilterValueCase0Item>;
 export const EventMetadataPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
   EventMetadataPropertyFilterValueCase0Item,
 ) as any as S.Schema<EventMetadataPropertyFilterValueCase0List>;
@@ -931,7 +930,7 @@ export const EventMetadataPropertyFilterValue =
 export interface EventMetadataPropertyFilter {
   key?: string;
   label?: string | null;
-  operator?: PropertyOperator;
+  operator?: PropertyOperator | (string & {});
   type?: string;
   value?: EventMetadataPropertyFilterValue | null;
 }
@@ -952,7 +951,7 @@ export const SessionPropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<SessionPropertyFilterValueCase0Item>;
 
 export type SessionPropertyFilterValueCase0List =
-  ReadonlyArray<SessionPropertyFilterValueCase0Item>;
+  Array<SessionPropertyFilterValueCase0Item>;
 export const SessionPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
   SessionPropertyFilterValueCase0Item,
 ) as any as S.Schema<SessionPropertyFilterValueCase0List>;
@@ -968,7 +967,7 @@ export const SessionPropertyFilterValue =
 export interface SessionPropertyFilter {
   key?: string;
   label?: string | null;
-  operator?: PropertyOperator;
+  operator?: PropertyOperator | (string & {});
   type?: string;
   value?: SessionPropertyFilterValue | null;
 }
@@ -988,7 +987,7 @@ export interface CohortPropertyFilter {
   cohort_name?: string | null;
   key?: string;
   label?: string | null;
-  operator?: PropertyOperator | null;
+  operator?: PropertyOperator | (string & {}) | null;
   type?: string;
   value?: number;
 }
@@ -1017,7 +1016,7 @@ export const RecordingPropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<RecordingPropertyFilterValueCase0Item>;
 
 export type RecordingPropertyFilterValueCase0List =
-  ReadonlyArray<RecordingPropertyFilterValueCase0Item>;
+  Array<RecordingPropertyFilterValueCase0Item>;
 export const RecordingPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
   RecordingPropertyFilterValueCase0Item,
 ) as any as S.Schema<RecordingPropertyFilterValueCase0List>;
@@ -1033,7 +1032,7 @@ export const RecordingPropertyFilterValue =
 export interface RecordingPropertyFilter {
   key?: RecordingPropertyFilterKey;
   label?: string | null;
-  operator?: PropertyOperator;
+  operator?: PropertyOperator | (string & {});
   type?: string;
   value?: RecordingPropertyFilterValue | null;
 }
@@ -1054,7 +1053,7 @@ export const LogEntryPropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<LogEntryPropertyFilterValueCase0Item>;
 
 export type LogEntryPropertyFilterValueCase0List =
-  ReadonlyArray<LogEntryPropertyFilterValueCase0Item>;
+  Array<LogEntryPropertyFilterValueCase0Item>;
 export const LogEntryPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
   LogEntryPropertyFilterValueCase0Item,
 ) as any as S.Schema<LogEntryPropertyFilterValueCase0List>;
@@ -1070,7 +1069,7 @@ export const LogEntryPropertyFilterValue =
 export interface LogEntryPropertyFilter {
   key?: string;
   label?: string | null;
-  operator?: PropertyOperator;
+  operator?: PropertyOperator | (string & {});
   type?: string;
   value?: LogEntryPropertyFilterValue | null;
 }
@@ -1099,7 +1098,7 @@ export const GroupPropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<GroupPropertyFilterValueCase0Item>;
 
 export type GroupPropertyFilterValueCase0List =
-  ReadonlyArray<GroupPropertyFilterValueCase0Item>;
+  Array<GroupPropertyFilterValueCase0Item>;
 export const GroupPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
   GroupPropertyFilterValueCase0Item,
 ) as any as S.Schema<GroupPropertyFilterValueCase0List>;
@@ -1117,7 +1116,7 @@ export interface GroupPropertyFilter {
   group_type_index?: number | null;
   key?: string;
   label?: string | null;
-  operator?: PropertyOperator;
+  operator?: PropertyOperator | (string & {});
   type?: string;
   value?: GroupPropertyFilterValue | null;
 }
@@ -1140,7 +1139,7 @@ export const FeaturePropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<FeaturePropertyFilterValueCase0Item>;
 
 export type FeaturePropertyFilterValueCase0List =
-  ReadonlyArray<FeaturePropertyFilterValueCase0Item>;
+  Array<FeaturePropertyFilterValueCase0Item>;
 export const FeaturePropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
   FeaturePropertyFilterValueCase0Item,
 ) as any as S.Schema<FeaturePropertyFilterValueCase0List>;
@@ -1156,7 +1155,7 @@ export const FeaturePropertyFilterValue =
 export interface FeaturePropertyFilter {
   key?: string;
   label?: string | null;
-  operator?: PropertyOperator;
+  operator?: PropertyOperator | (string & {});
   /** Event property with "$feature/" prepended */
   type?: string;
   value?: FeaturePropertyFilterValue | null;
@@ -1206,7 +1205,7 @@ export const HogQLPropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<HogQLPropertyFilterValueCase0Item>;
 
 export type HogQLPropertyFilterValueCase0List =
-  ReadonlyArray<HogQLPropertyFilterValueCase0Item>;
+  Array<HogQLPropertyFilterValueCase0Item>;
 export const HogQLPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
   HogQLPropertyFilterValueCase0Item,
 ) as any as S.Schema<HogQLPropertyFilterValueCase0List>;
@@ -1255,7 +1254,7 @@ export const DataWarehousePropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<DataWarehousePropertyFilterValueCase0Item>;
 
 export type DataWarehousePropertyFilterValueCase0List =
-  ReadonlyArray<DataWarehousePropertyFilterValueCase0Item>;
+  Array<DataWarehousePropertyFilterValueCase0Item>;
 export const DataWarehousePropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
   DataWarehousePropertyFilterValueCase0Item,
 ) as any as S.Schema<DataWarehousePropertyFilterValueCase0List>;
@@ -1271,7 +1270,7 @@ export const DataWarehousePropertyFilterValue =
 export interface DataWarehousePropertyFilter {
   key?: string;
   label?: string | null;
-  operator?: PropertyOperator;
+  operator?: PropertyOperator | (string & {});
   type?: string;
   value?: DataWarehousePropertyFilterValue | null;
 }
@@ -1295,7 +1294,7 @@ export const DataWarehousePersonPropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<DataWarehousePersonPropertyFilterValueCase0Item>;
 
 export type DataWarehousePersonPropertyFilterValueCase0List =
-  ReadonlyArray<DataWarehousePersonPropertyFilterValueCase0Item>;
+  Array<DataWarehousePersonPropertyFilterValueCase0Item>;
 export const DataWarehousePersonPropertyFilterValueCase0List =
   /*@__PURE__*/ S.Array(
     DataWarehousePersonPropertyFilterValueCase0Item,
@@ -1312,7 +1311,7 @@ export const DataWarehousePersonPropertyFilterValue =
 export interface DataWarehousePersonPropertyFilter {
   key?: string;
   label?: string | null;
-  operator?: PropertyOperator;
+  operator?: PropertyOperator | (string & {});
   type?: string;
   value?: DataWarehousePersonPropertyFilterValue | null;
 }
@@ -1333,7 +1332,7 @@ export const ErrorTrackingIssueFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<ErrorTrackingIssueFilterValueCase0Item>;
 
 export type ErrorTrackingIssueFilterValueCase0List =
-  ReadonlyArray<ErrorTrackingIssueFilterValueCase0Item>;
+  Array<ErrorTrackingIssueFilterValueCase0Item>;
 export const ErrorTrackingIssueFilterValueCase0List = /*@__PURE__*/ S.Array(
   ErrorTrackingIssueFilterValueCase0Item,
 ) as any as S.Schema<ErrorTrackingIssueFilterValueCase0List>;
@@ -1349,7 +1348,7 @@ export const ErrorTrackingIssueFilterValue =
 export interface ErrorTrackingIssueFilter {
   key?: string;
   label?: string | null;
-  operator?: PropertyOperator;
+  operator?: PropertyOperator | (string & {});
   type?: string;
   value?: ErrorTrackingIssueFilterValue | null;
 }
@@ -1376,7 +1375,7 @@ export const LogPropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<LogPropertyFilterValueCase0Item>;
 
 export type LogPropertyFilterValueCase0List =
-  ReadonlyArray<LogPropertyFilterValueCase0Item>;
+  Array<LogPropertyFilterValueCase0Item>;
 export const LogPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
   LogPropertyFilterValueCase0Item,
 ) as any as S.Schema<LogPropertyFilterValueCase0List>;
@@ -1392,8 +1391,8 @@ export const LogPropertyFilterValue =
 export interface LogPropertyFilter {
   key?: string;
   label?: string | null;
-  operator?: PropertyOperator;
-  type?: LogPropertyFilterType;
+  operator?: PropertyOperator | (string & {});
+  type?: LogPropertyFilterType | (string & {});
   value?: LogPropertyFilterValue | null;
 }
 export const LogPropertyFilter = /*@__PURE__*/ S.suspend(() =>
@@ -1413,7 +1412,7 @@ export const MetricPropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<MetricPropertyFilterValueCase0Item>;
 
 export type MetricPropertyFilterValueCase0List =
-  ReadonlyArray<MetricPropertyFilterValueCase0Item>;
+  Array<MetricPropertyFilterValueCase0Item>;
 export const MetricPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
   MetricPropertyFilterValueCase0Item,
 ) as any as S.Schema<MetricPropertyFilterValueCase0List>;
@@ -1429,7 +1428,7 @@ export const MetricPropertyFilterValue =
 export interface MetricPropertyFilter {
   key: string;
   label?: string | null;
-  operator: PropertyOperator;
+  operator: PropertyOperator | (string & {});
   type?: string;
   value?: MetricPropertyFilterValue | null;
 }
@@ -1456,7 +1455,7 @@ export const SpanPropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<SpanPropertyFilterValueCase0Item>;
 
 export type SpanPropertyFilterValueCase0List =
-  ReadonlyArray<SpanPropertyFilterValueCase0Item>;
+  Array<SpanPropertyFilterValueCase0Item>;
 export const SpanPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
   SpanPropertyFilterValueCase0Item,
 ) as any as S.Schema<SpanPropertyFilterValueCase0List>;
@@ -1472,8 +1471,8 @@ export const SpanPropertyFilterValue =
 export interface SpanPropertyFilter {
   key?: string;
   label?: string | null;
-  operator?: PropertyOperator;
-  type?: SpanPropertyFilterType;
+  operator?: PropertyOperator | (string & {});
+  type?: SpanPropertyFilterType | (string & {});
   value?: SpanPropertyFilterValue | null;
 }
 export const SpanPropertyFilter = /*@__PURE__*/ S.suspend(() =>
@@ -1496,7 +1495,7 @@ export const RevenueAnalyticsPropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<RevenueAnalyticsPropertyFilterValueCase0Item>;
 
 export type RevenueAnalyticsPropertyFilterValueCase0List =
-  ReadonlyArray<RevenueAnalyticsPropertyFilterValueCase0Item>;
+  Array<RevenueAnalyticsPropertyFilterValueCase0Item>;
 export const RevenueAnalyticsPropertyFilterValueCase0List =
   /*@__PURE__*/ S.Array(
     RevenueAnalyticsPropertyFilterValueCase0Item,
@@ -1513,7 +1512,7 @@ export const RevenueAnalyticsPropertyFilterValue =
 export interface RevenueAnalyticsPropertyFilter {
   key?: string;
   label?: string | null;
-  operator?: PropertyOperator;
+  operator?: PropertyOperator | (string & {});
   type?: string;
   value?: RevenueAnalyticsPropertyFilterValue | null;
 }
@@ -1537,7 +1536,7 @@ export const AccountCustomPropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<AccountCustomPropertyFilterValueCase0Item>;
 
 export type AccountCustomPropertyFilterValueCase0List =
-  ReadonlyArray<AccountCustomPropertyFilterValueCase0Item>;
+  Array<AccountCustomPropertyFilterValueCase0Item>;
 export const AccountCustomPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
   AccountCustomPropertyFilterValueCase0Item,
 ) as any as S.Schema<AccountCustomPropertyFilterValueCase0List>;
@@ -1553,7 +1552,7 @@ export const AccountCustomPropertyFilterValue =
 export interface AccountCustomPropertyFilter {
   key: string;
   label?: string | null;
-  operator: PropertyOperator;
+  operator: PropertyOperator | (string & {});
   /** Customer analytics account custom property — the key is the property definition id */
   type?: string;
   value?: AccountCustomPropertyFilterValue | null;
@@ -1578,7 +1577,7 @@ export const WorkflowVariablePropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<WorkflowVariablePropertyFilterValueCase0Item>;
 
 export type WorkflowVariablePropertyFilterValueCase0List =
-  ReadonlyArray<WorkflowVariablePropertyFilterValueCase0Item>;
+  Array<WorkflowVariablePropertyFilterValueCase0Item>;
 export const WorkflowVariablePropertyFilterValueCase0List =
   /*@__PURE__*/ S.Array(
     WorkflowVariablePropertyFilterValueCase0Item,
@@ -1595,7 +1594,7 @@ export const WorkflowVariablePropertyFilterValue =
 export interface WorkflowVariablePropertyFilter {
   key?: string;
   label?: string | null;
-  operator?: PropertyOperator;
+  operator?: PropertyOperator | (string & {});
   type?: string;
   value?: WorkflowVariablePropertyFilterValue | null;
 }
@@ -1613,12 +1612,17 @@ export const WorkflowVariablePropertyFilter = /*@__PURE__*/ S.suspend(() =>
 
 export interface ExperimentApiExposureConfigPropertiesItem {
   /** The key should be the flag ID */
-  key?: string | Key10 | RecordingPropertyFilterKey;
+  key?: string | Key10 | (string & {}) | RecordingPropertyFilterKey;
   label?: string | null;
   /** Only flag_evaluates_to operator is allowed for flag dependencies */
-  operator?: PropertyOperator | string | null;
+  operator?: PropertyOperator | (string & {}) | string | null;
   /** Event properties */
-  type?: string | LogPropertyFilterType | SpanPropertyFilterType;
+  type?:
+    | string
+    | LogPropertyFilterType
+    | (string & {})
+    | SpanPropertyFilterType
+    | (string & {});
   /** The value can be true, false, or a variant name */
   value?:
     | EventPropertyFilterValue
@@ -1697,7 +1701,7 @@ export const ExperimentApiExposureConfigPropertiesItem =
 
 /** Property filters (event, person, and other supported types). Pass an empty array if no filters needed. */
 export type ExperimentApiExposureConfigPropertiesList =
-  ReadonlyArray<ExperimentApiExposureConfigPropertiesItem>;
+  Array<ExperimentApiExposureConfigPropertiesItem>;
 export const ExperimentApiExposureConfigPropertiesList = /*@__PURE__*/ S.Array(
   ExperimentApiExposureConfigPropertiesItem,
 ) as any as S.Schema<ExperimentApiExposureConfigPropertiesList>;
@@ -1708,7 +1712,7 @@ export interface ExperimentApiExposureConfig {
   /** Action ID. Required when kind is 'ActionsNode'. */
   id?: number | null;
   /** Defaults to 'ExperimentEventExposureConfig' when omitted. Pass 'ActionsNode' for an action-based exposure. */
-  kind?: Kind1 | null;
+  kind?: Kind1 | (string & {}) | null;
   /** Property filters (event, person, and other supported types). Pass an empty array if no filters needed. */
   properties?: ExperimentApiExposureConfigPropertiesList;
 }
@@ -1730,7 +1734,7 @@ export interface ExperimentApiExposureCriteria {
   exposure_config?: ExperimentApiExposureConfig | null;
   filterTestAccounts?: boolean | null;
   /** How to handle entities exposed to multiple variants. 'exclude' (default) drops them from the analysis; 'first_seen' assigns them to the variant from their earliest exposure. */
-  multiple_variant_handling?: MultipleVariantHandling | null;
+  multiple_variant_handling?: MultipleVariantHandling | (string & {}) | null;
 }
 export const ExperimentApiExposureCriteria = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1760,8 +1764,7 @@ export const ExperimentMetricMathType = /*@__PURE__*/ S.String;
 export type MathGroupTypeIndex = 0 | 1 | 2 | 3 | 4;
 export const MathGroupTypeIndex = /*@__PURE__*/ S.Number;
 
-export type ExperimentApiEventSourcePropertiesList =
-  ReadonlyArray<EventPropertyFilter>;
+export type ExperimentApiEventSourcePropertiesList = Array<EventPropertyFilter>;
 export const ExperimentApiEventSourcePropertiesList = /*@__PURE__*/ S.Array(
   EventPropertyFilter,
 ) as any as S.Schema<ExperimentApiEventSourcePropertiesList>;
@@ -1771,11 +1774,11 @@ export interface ExperimentApiEventSource {
   event?: string | null;
   /** Action ID. Required for ActionsNode. */
   id?: number | null;
-  kind?: Kind;
+  kind?: Kind | (string & {});
   /** How to aggregate this source. Defaults to 'total' (event count). Use 'sum' together with math_property to aggregate a numeric property — e.g. a ratio numerator of revenue per order. Other options: 'avg', 'min', 'max', 'unique_session', 'dau', 'unique_group', 'hogql'. */
-  math?: ExperimentMetricMathType | null;
+  math?: ExperimentMetricMathType | (string & {}) | null;
   /** Group type index to aggregate over. Required when math is 'unique_group'. */
-  math_group_type_index?: MathGroupTypeIndex | null;
+  math_group_type_index?: MathGroupTypeIndex | (number & {}) | null;
   /** HogQL aggregation expression. Required when math is 'hogql' — without it the metric silently falls back to a plain count/sum. */
   math_hogql?: string | null;
   /** Numeric event property to aggregate when math is 'sum', 'avg', 'min', or 'max' (e.g. 'revenue'). */
@@ -1830,8 +1833,7 @@ export type FunnelConversionWindowTimeUnit =
   | "month";
 export const FunnelConversionWindowTimeUnit = /*@__PURE__*/ S.String;
 
-export type ExperimentApiMetricSeriesList =
-  ReadonlyArray<ExperimentApiEventSource>;
+export type ExperimentApiMetricSeriesList = Array<ExperimentApiEventSource>;
 export const ExperimentApiMetricSeriesList = /*@__PURE__*/ S.Array(
   ExperimentApiEventSource,
 ) as any as S.Schema<ExperimentApiMetricSeriesList>;
@@ -1849,13 +1851,13 @@ export interface ExperimentApiMetric {
   /** For ratio metrics: winsorization applied to the denominator aggregate. Leave unset for a binomial-style denominator, which is never clamped. */
   denominator_outlier_handling?: ExperimentMetricOutlierHandling | null;
   /** Whether higher or lower values indicate success. */
-  goal?: ExperimentMetricGoal | null;
+  goal?: ExperimentMetricGoal | (string & {}) | null;
   /** For mean metrics: exclude zero values when computing the winsorization percentile thresholds. */
   ignore_zeros?: boolean | null;
   kind?: string;
   /** For mean metrics: winsorization lower percentile bound, as a fraction in [0, 1] (e.g. 0.01 for the 1st percentile). Per-user values below this percentile are clamped to it before aggregation. */
   lower_bound_percentile?: number | null;
-  metric_type?: ExperimentMetricType;
+  metric_type?: ExperimentMetricType | (string & {});
   /** Human-readable metric name. */
   name?: string | null;
   /** For ratio metrics: numerator source. */
@@ -1864,14 +1866,14 @@ export interface ExperimentApiMetric {
   numerator_outlier_handling?: ExperimentMetricOutlierHandling | null;
   retention_window_end?: number | null;
   retention_window_start?: number | null;
-  retention_window_unit?: FunnelConversionWindowTimeUnit | null;
+  retention_window_unit?: FunnelConversionWindowTimeUnit | (string & {}) | null;
   /** For funnel metrics: array of EventsNode/ActionsNode steps. */
   series?: ExperimentApiMetricSeriesList | null;
   /** For mean metrics: event source. */
   source?: ExperimentApiEventSource | null;
   /** For retention metrics: start event. */
   start_event?: ExperimentApiEventSource | null;
-  start_handling?: StartHandling | null;
+  start_handling?: StartHandling | (string & {}) | null;
   /** For mean metrics: when set, reports the percentage of users whose per-user summed/counted value reaches or exceeds this threshold. Only meaningful for sum/count math types. */
   threshold?: number | null;
   /** For mean metrics: winsorization upper percentile bound, as a fraction in [0, 1] (e.g. 0.99 for the 99th percentile). Per-user values above this percentile are clamped to it before aggregation. */
@@ -1913,7 +1915,7 @@ export const ExperimentApiMetric = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExperimentApiMetric>;
 
 /** List wrapper for OpenAPI schema generation — the field stores an array of metrics. */
-export type ExperimentApiMetricsList = ReadonlyArray<ExperimentApiMetric>;
+export type ExperimentApiMetricsList = Array<ExperimentApiMetric>;
 export const ExperimentApiMetricsList = /*@__PURE__*/ S.Array(
   ExperimentApiMetric,
 ) as any as S.Schema<ExperimentApiMetricsList>;
@@ -2057,7 +2059,7 @@ export type MetricTypeEnum =
 export const MetricTypeEnum = /*@__PURE__*/ S.String;
 
 /** Per-step counts for funnel metrics; the last entry is the final-step count. */
-export type RunningTimeBaselineStatsStepCountsList = ReadonlyArray<number>;
+export type RunningTimeBaselineStatsStepCountsList = Array<number>;
 export const RunningTimeBaselineStatsStepCountsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<RunningTimeBaselineStatsStepCountsList>;
@@ -2187,7 +2189,7 @@ export const ExperimentsCopyToProjectCreateRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ExperimentsCopyToProjectCreateRequest>;
 
 /** Must be empty or omitted: release-condition properties are not supported via the experiment input. Edit the feature flag directly for targeting. */
-export type ExperimentFlagRolloutGroupPropertiesList = ReadonlyArray<unknown>;
+export type ExperimentFlagRolloutGroupPropertiesList = Array<unknown>;
 export const ExperimentFlagRolloutGroupPropertiesList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<ExperimentFlagRolloutGroupPropertiesList>;
@@ -2210,7 +2212,7 @@ export const ExperimentFlagRolloutGroup = /*@__PURE__*/ S.suspend(() =>
 
 /** Overall rollout as a single group: [{"properties": [], "rollout_percentage": N}]. */
 export type ExperimentFeatureFlagFiltersGroupsList =
-  ReadonlyArray<ExperimentFlagRolloutGroup>;
+  Array<ExperimentFlagRolloutGroup>;
 export const ExperimentFeatureFlagFiltersGroupsList = /*@__PURE__*/ S.Array(
   ExperimentFlagRolloutGroup,
 ) as any as S.Schema<ExperimentFeatureFlagFiltersGroupsList>;
@@ -2236,7 +2238,7 @@ export const ExperimentFlagVariant = /*@__PURE__*/ S.suspend(() =>
 
 /** Variant definitions (2 to 20). The baseline defaults to the variant keyed 'control' when present, else the first variant. */
 export type ExperimentFlagMultivariateVariantsList =
-  ReadonlyArray<ExperimentFlagVariant>;
+  Array<ExperimentFlagVariant>;
 export const ExperimentFlagMultivariateVariantsList = /*@__PURE__*/ S.Array(
   ExperimentFlagVariant,
 ) as any as S.Schema<ExperimentFlagMultivariateVariantsList>;
@@ -2302,16 +2304,14 @@ export const ExperimentFeatureFlagInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExperimentFeatureFlagInput>;
 
 /** Variant keys to exclude from metric result calculations. Excluded variants are still served to users but omitted from statistical analysis. The baseline variant and holdout pseudo-variants cannot be excluded. Canonical home for what historically lived in `parameters.excluded_variants`. */
-export type ExperimentsCreateRequestExcludedVariantsList =
-  ReadonlyArray<string>;
+export type ExperimentsCreateRequestExcludedVariantsList = Array<string>;
 export const ExperimentsCreateRequestExcludedVariantsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ExperimentsCreateRequestExcludedVariantsList>;
 
 /** IDs of shared saved metrics to attach to this experiment. Each item has 'id' (saved metric ID) and 'metadata' with 'type' (primary or secondary). */
-export type ExperimentsCreateRequestSavedMetricsIdsList =
-  ReadonlyArray<unknown>;
+export type ExperimentsCreateRequestSavedMetricsIdsList = Array<unknown>;
 export const ExperimentsCreateRequestSavedMetricsIdsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -2419,7 +2419,7 @@ export const ExperimentsCreateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Variant keys to exclude from metric result calculations. Excluded variants are still served to users but omitted from statistical analysis. The baseline variant and holdout pseudo-variants cannot be excluded. Canonical home for what historically lived in `parameters.excluded_variants`. */
 export type ExperimentsCreateExposureCohortForExperimentCreateRequestExcludedVariantsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ExperimentsCreateExposureCohortForExperimentCreateRequestExcludedVariantsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2427,7 +2427,7 @@ export const ExperimentsCreateExposureCohortForExperimentCreateRequestExcludedVa
 
 /** IDs of shared saved metrics to attach to this experiment. Each item has 'id' (saved metric ID) and 'metadata' with 'type' (primary or secondary). */
 export type ExperimentsCreateExposureCohortForExperimentCreateRequestSavedMetricsIdsList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const ExperimentsCreateExposureCohortForExperimentCreateRequestSavedMetricsIdsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -2546,7 +2546,7 @@ export const ExperimentsCreateExposureCohortForExperimentCreateResponse =
 
 /** Ordered list of prompt version numbers to assign to experiment variants. The first entry is the control variant. Must contain between 2 and 10 distinct versions. */
 export type ExperimentsCreateFromPromptCreateRequestVersionsList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const ExperimentsCreateFromPromptCreateRequestVersionsList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -2557,8 +2557,9 @@ export type TemplatesEnum = "cost" | "latency" | "eval_pass_rate";
 export const TemplatesEnum = /*@__PURE__*/ S.String;
 
 /** One or more metric templates to attach as primary metrics. Each template becomes one metric on the experiment. Allowed values: cost, latency, eval_pass_rate. */
-export type ExperimentsCreateFromPromptCreateRequestTemplatesList =
-  ReadonlyArray<TemplatesEnum | (string & {})>;
+export type ExperimentsCreateFromPromptCreateRequestTemplatesList = Array<
+  TemplatesEnum | (string & {})
+>;
 export const ExperimentsCreateFromPromptCreateRequestTemplatesList =
   /*@__PURE__*/ S.Array(
     TemplatesEnum,
@@ -2631,7 +2632,7 @@ export const ExperimentsDestroyResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Variant keys to exclude from metric result calculations. Excluded variants are still served to users but omitted from statistical analysis. The baseline variant and holdout pseudo-variants cannot be excluded. Canonical home for what historically lived in `parameters.excluded_variants`. */
 export type ExperimentsDuplicateCreateRequestExcludedVariantsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ExperimentsDuplicateCreateRequestExcludedVariantsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2639,7 +2640,7 @@ export const ExperimentsDuplicateCreateRequestExcludedVariantsList =
 
 /** IDs of shared saved metrics to attach to this experiment. Each item has 'id' (saved metric ID) and 'metadata' with 'type' (primary or secondary). */
 export type ExperimentsDuplicateCreateRequestSavedMetricsIdsList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const ExperimentsDuplicateCreateRequestSavedMetricsIdsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -2940,7 +2941,7 @@ export const ExperimentsListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExperimentsListRequest>;
 
 /** Variant keys to exclude from metric result calculations. Excluded variants are still served to users but omitted from statistical analysis. The baseline variant and holdout pseudo-variants cannot be excluded. Canonical home for what historically lived in `parameters.excluded_variants`. */
-export type ExperimentBasicExcludedVariantsList = ReadonlyArray<string>;
+export type ExperimentBasicExcludedVariantsList = Array<string>;
 export const ExperimentBasicExcludedVariantsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ExperimentBasicExcludedVariantsList>;
@@ -3018,8 +3019,7 @@ export const ExperimentBasic = /*@__PURE__*/ S.suspend(() =>
   identifier: "ExperimentBasic",
 }) as any as S.Schema<ExperimentBasic>;
 
-export type PaginatedExperimentBasicListResultsList =
-  ReadonlyArray<ExperimentBasic>;
+export type PaginatedExperimentBasicListResultsList = Array<ExperimentBasic>;
 export const PaginatedExperimentBasicListResultsList = /*@__PURE__*/ S.Array(
   ExperimentBasic,
 ) as any as S.Schema<PaginatedExperimentBasicListResultsList>;
@@ -3137,7 +3137,7 @@ export const MetricRecalculationResult = /*@__PURE__*/ S.suspend(() =>
 
 /** Per-metric results computed by this run, scoped by the run's recalc fingerprint */
 export type ExperimentMetricsRecalculationResultsList =
-  ReadonlyArray<MetricRecalculationResult>;
+  Array<MetricRecalculationResult>;
 export const ExperimentMetricsRecalculationResultsList = /*@__PURE__*/ S.Array(
   MetricRecalculationResult,
 ) as any as S.Schema<ExperimentMetricsRecalculationResultsList>;
@@ -3256,16 +3256,14 @@ export const ExperimentsMetricsRecalculationRetrieveRequest =
   }) as any as S.Schema<ExperimentsMetricsRecalculationRetrieveRequest>;
 
 /** Variant keys to exclude from metric result calculations. Excluded variants are still served to users but omitted from statistical analysis. The baseline variant and holdout pseudo-variants cannot be excluded. Canonical home for what historically lived in `parameters.excluded_variants`. */
-export type ExperimentsPartialUpdateRequestExcludedVariantsList =
-  ReadonlyArray<string>;
+export type ExperimentsPartialUpdateRequestExcludedVariantsList = Array<string>;
 export const ExperimentsPartialUpdateRequestExcludedVariantsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ExperimentsPartialUpdateRequestExcludedVariantsList>;
 
 /** IDs of shared saved metrics to attach to this experiment. Each item has 'id' (saved metric ID) and 'metadata' with 'type' (primary or secondary). */
-export type ExperimentsPartialUpdateRequestSavedMetricsIdsList =
-  ReadonlyArray<unknown>;
+export type ExperimentsPartialUpdateRequestSavedMetricsIdsList = Array<unknown>;
 export const ExperimentsPartialUpdateRequestSavedMetricsIdsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -3431,7 +3429,7 @@ export const ExperimentsPromptTemplatesRetrieveResponseBodyItem =
   }) as any as S.Schema<ExperimentsPromptTemplatesRetrieveResponseBodyItem>;
 
 export type ExperimentsPromptTemplatesRetrieveResponseBodyList =
-  ReadonlyArray<ExperimentsPromptTemplatesRetrieveResponseBodyItem>;
+  Array<ExperimentsPromptTemplatesRetrieveResponseBodyItem>;
 export const ExperimentsPromptTemplatesRetrieveResponseBodyList =
   /*@__PURE__*/ S.Array(
     ExperimentsPromptTemplatesRetrieveResponseBodyItem,
@@ -3450,7 +3448,7 @@ export const ExperimentsPromptTemplatesRetrieveResponse =
 
 /** Variant keys to exclude from metric result calculations. Excluded variants are still served to users but omitted from statistical analysis. The baseline variant and holdout pseudo-variants cannot be excluded. Canonical home for what historically lived in `parameters.excluded_variants`. */
 export type ExperimentsRecalculateTimeseriesCreateRequestExcludedVariantsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ExperimentsRecalculateTimeseriesCreateRequestExcludedVariantsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3458,7 +3456,7 @@ export const ExperimentsRecalculateTimeseriesCreateRequestExcludedVariantsList =
 
 /** IDs of shared saved metrics to attach to this experiment. Each item has 'id' (saved metric ID) and 'metadata' with 'type' (primary or secondary). */
 export type ExperimentsRecalculateTimeseriesCreateRequestSavedMetricsIdsList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const ExperimentsRecalculateTimeseriesCreateRequestSavedMetricsIdsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -3661,15 +3659,14 @@ export const ExperimentsSessionContextRetrieveRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ExperimentsSessionContextRetrieveRequest>;
 
 /** All distinct variant values observed for this flag during the session, sorted alphabetically. Only the flag's defined variant keys count; non-enrollment responses (false) are ignored. More than one value means the session saw multiple variants — a signal of multi-exposure bias. */
-export type ExperimentSessionContextItemVariantsSeenList =
-  ReadonlyArray<string>;
+export type ExperimentSessionContextItemVariantsSeenList = Array<string>;
 export const ExperimentSessionContextItemVariantsSeenList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ExperimentSessionContextItemVariantsSeenList>;
 
 /** Ascending timestamps of the metric's matching events in the session, capped at the first 50. event_count is the true total, so this list may be shorter — treat these as seek points, not a count. */
-export type ExperimentSessionMetricHitTimestampsList = ReadonlyArray<string>;
+export type ExperimentSessionMetricHitTimestampsList = Array<string>;
 export const ExperimentSessionMetricHitTimestampsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ExperimentSessionMetricHitTimestampsList>;
@@ -3701,7 +3698,7 @@ export const ExperimentSessionMetricHit = /*@__PURE__*/ S.suspend(() =>
 
 /** This experiment's metrics with at least one matching event in the session, sorted by first occurrence. Empty when none of the experiment's metric events fired during the session. */
 export type ExperimentSessionContextItemMetricsInSessionList =
-  ReadonlyArray<ExperimentSessionMetricHit>;
+  Array<ExperimentSessionMetricHit>;
 export const ExperimentSessionContextItemMetricsInSessionList =
   /*@__PURE__*/ S.Array(
     ExperimentSessionMetricHit,
@@ -3749,7 +3746,7 @@ export const ExperimentSessionContextItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Experiments (and variants) the session saw, sorted by experiment name. Empty when no launched experiment's run window overlaps the recording or no flag data was observed in the session. */
 export type ExperimentSessionContextResponseResultsList =
-  ReadonlyArray<ExperimentSessionContextItem>;
+  Array<ExperimentSessionContextItem>;
 export const ExperimentSessionContextResponseResultsList =
   /*@__PURE__*/ S.Array(
     ExperimentSessionContextItem,
@@ -3910,16 +3907,14 @@ export const ExperimentsUnfreezeExposureCreateRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ExperimentsUnfreezeExposureCreateRequest>;
 
 /** Variant keys to exclude from metric result calculations. Excluded variants are still served to users but omitted from statistical analysis. The baseline variant and holdout pseudo-variants cannot be excluded. Canonical home for what historically lived in `parameters.excluded_variants`. */
-export type ExperimentsUpdateRequestExcludedVariantsList =
-  ReadonlyArray<string>;
+export type ExperimentsUpdateRequestExcludedVariantsList = Array<string>;
 export const ExperimentsUpdateRequestExcludedVariantsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ExperimentsUpdateRequestExcludedVariantsList>;
 
 /** IDs of shared saved metrics to attach to this experiment. Each item has 'id' (saved metric ID) and 'metadata' with 'type' (primary or secondary). */
-export type ExperimentsUpdateRequestSavedMetricsIdsList =
-  ReadonlyArray<unknown>;
+export type ExperimentsUpdateRequestSavedMetricsIdsList = Array<unknown>;
 export const ExperimentsUpdateRequestSavedMetricsIdsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,

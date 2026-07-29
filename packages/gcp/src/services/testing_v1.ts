@@ -159,7 +159,7 @@ export interface SessionStateEvent {
   /** Output only. The time that the session_state first encountered that state. */
   eventTime?: string;
   /** Output only. The session_state tracked by this event */
-  sessionState?: SessionStateEventSessionStateEnum;
+  sessionState?: SessionStateEventSessionStateEnum | (string & {});
   /** Output only. A human-readable message to explain the state. */
   stateMessage?: string;
 }
@@ -173,7 +173,7 @@ export const SessionStateEvent = /*@__PURE__*/ S.suspend(() =>
   identifier: "SessionStateEvent",
 }) as any as S.Schema<SessionStateEvent>;
 
-export type SessionStateEventList = ReadonlyArray<SessionStateEvent>;
+export type SessionStateEventList = Array<SessionStateEvent>;
 export const SessionStateEventList = /*@__PURE__*/ S.Array(
   SessionStateEvent,
 ) as any as S.Schema<SessionStateEventList>;
@@ -224,7 +224,7 @@ export interface DeviceSession {
   /** Optional. If the device is still in use at this time, any connections will be ended and the SessionState will transition from ACTIVE to FINISHED. */
   expireTime?: string;
   /** Output only. Current state of the DeviceSession. */
-  state?: DeviceSessionStateEnum;
+  state?: DeviceSessionStateEnum | (string & {});
   /** Output only. The time that the Session was created. */
   createTime?: string;
   /** Output only. The interval of time that this device must be interacted with before it transitions from ACTIVE to TIMEOUT_INACTIVITY. */
@@ -321,7 +321,7 @@ export const FileReference = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "FileReference" }) as any as S.Schema<FileReference>;
 
-export type IntegerList = ReadonlyArray<number>;
+export type IntegerList = Array<number>;
 export const IntegerList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<IntegerList>;
@@ -374,7 +374,7 @@ export const SmartSharding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SmartSharding" }) as any as S.Schema<SmartSharding>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -392,7 +392,7 @@ export const TestTargetsForShard = /*@__PURE__*/ S.suspend(() =>
   identifier: "TestTargetsForShard",
 }) as any as S.Schema<TestTargetsForShard>;
 
-export type TestTargetsForShardList = ReadonlyArray<TestTargetsForShard>;
+export type TestTargetsForShardList = Array<TestTargetsForShard>;
 export const TestTargetsForShardList = /*@__PURE__*/ S.Array(
   TestTargetsForShard,
 ) as any as S.Schema<TestTargetsForShardList>;
@@ -425,7 +425,7 @@ export const ShardingOption = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ShardingOption" }) as any as S.Schema<ShardingOption>;
 
-export type FileReferenceList = ReadonlyArray<FileReference>;
+export type FileReferenceList = Array<FileReference>;
 export const FileReferenceList = /*@__PURE__*/ S.Array(
   FileReference,
 ) as any as S.Schema<FileReferenceList>;
@@ -464,7 +464,9 @@ export interface AndroidInstrumentationTest {
   /** Required. The APK containing the test code to be executed. */
   testApk?: FileReference;
   /** The option of whether running each test within its own invocation of instrumentation with Android Test Orchestrator or not. ** Orchestrator is only compatible with AndroidJUnitRunner version 1.1 or higher! ** Orchestrator offers the following benefits: - No shared state - Crashes are isolated - Logs are scoped per test See for more information about Android Test Orchestrator. If not set, the test will be run without the orchestrator. */
-  orchestratorOption?: AndroidInstrumentationTestOrchestratorOptionEnum;
+  orchestratorOption?:
+    | AndroidInstrumentationTestOrchestratorOptionEnum
+    | (string & {});
   /** The option to run tests in multiple shards in parallel. */
   shardingOption?: ShardingOption;
   /** Each target must be fully qualified with the package name or class name, in one of these formats: - "package package_name" - "class package_name.class_name" - "class package_name.class_name#method_name" If empty, all targets in the module will be run. */
@@ -510,7 +512,7 @@ export const EnvironmentVariable = /*@__PURE__*/ S.suspend(() =>
   identifier: "EnvironmentVariable",
 }) as any as S.Schema<EnvironmentVariable>;
 
-export type EnvironmentVariableList = ReadonlyArray<EnvironmentVariable>;
+export type EnvironmentVariableList = Array<EnvironmentVariable>;
 export const EnvironmentVariableList = /*@__PURE__*/ S.Array(
   EnvironmentVariable,
 ) as any as S.Schema<EnvironmentVariableList>;
@@ -584,7 +586,7 @@ export const DeviceFile = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DeviceFile" }) as any as S.Schema<DeviceFile>;
 
-export type DeviceFileList = ReadonlyArray<DeviceFile>;
+export type DeviceFileList = Array<DeviceFile>;
 export const DeviceFileList = /*@__PURE__*/ S.Array(
   DeviceFile,
 ) as any as S.Schema<DeviceFileList>;
@@ -603,7 +605,7 @@ export const Apk = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Apk" }) as any as S.Schema<Apk>;
 
-export type ApkList = ReadonlyArray<Apk>;
+export type ApkList = Array<Apk>;
 export const ApkList = /*@__PURE__*/ S.Array(Apk) as any as S.Schema<ApkList>;
 
 /** A description of how to set up the Android device prior to running the test. */
@@ -678,7 +680,7 @@ export interface RoboDirective {
   /** The text that Robo is directed to set. If left empty, the directive will be treated as a CLICK on the element matching the resource_name. */
   inputText?: string;
   /** Required. The type of action that Robo should perform on the specified element. */
-  actionType?: RoboDirectiveActionTypeEnum;
+  actionType?: RoboDirectiveActionTypeEnum | (string & {});
   /** Required. The android resource name of the target UI element. For example, in Java: R.string.foo in xml: @string/foo Only the "foo" part is needed. Reference doc: https://developer.android.com/guide/topics/resources/accessing-resources.html */
   resourceName?: string;
 }
@@ -690,7 +692,7 @@ export const RoboDirective = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "RoboDirective" }) as any as S.Schema<RoboDirective>;
 
-export type RoboDirectiveList = ReadonlyArray<RoboDirective>;
+export type RoboDirectiveList = Array<RoboDirective>;
 export const RoboDirectiveList = /*@__PURE__*/ S.Array(
   RoboDirective,
 ) as any as S.Schema<RoboDirectiveList>;
@@ -752,7 +754,7 @@ export const RoboStartingIntent = /*@__PURE__*/ S.suspend(() =>
   identifier: "RoboStartingIntent",
 }) as any as S.Schema<RoboStartingIntent>;
 
-export type RoboStartingIntentList = ReadonlyArray<RoboStartingIntent>;
+export type RoboStartingIntentList = Array<RoboStartingIntent>;
 export const RoboStartingIntentList = /*@__PURE__*/ S.Array(
   RoboStartingIntent,
 ) as any as S.Schema<RoboStartingIntentList>;
@@ -782,7 +784,7 @@ export interface AndroidRoboTest {
   /** The max number of steps Robo can execute. Default is no limit. */
   maxSteps?: number;
   /** The mode in which Robo should run. Most clients should allow the server to populate this field automatically. */
-  roboMode?: AndroidRoboTestRoboModeEnum;
+  roboMode?: AndroidRoboTestRoboModeEnum | (string & {});
   /** The initial activity that should be used to start the app. */
   appInitialActivity?: string;
 }
@@ -820,7 +822,7 @@ export const IosDeviceFile = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "IosDeviceFile" }) as any as S.Schema<IosDeviceFile>;
 
-export type IosDeviceFileList = ReadonlyArray<IosDeviceFile>;
+export type IosDeviceFileList = Array<IosDeviceFile>;
 export const IosDeviceFileList = /*@__PURE__*/ S.Array(
   IosDeviceFile,
 ) as any as S.Schema<IosDeviceFileList>;
@@ -966,12 +968,12 @@ export const MatrixErrorDetail = /*@__PURE__*/ S.suspend(() =>
   identifier: "MatrixErrorDetail",
 }) as any as S.Schema<MatrixErrorDetail>;
 
-export type MatrixErrorDetailList = ReadonlyArray<MatrixErrorDetail>;
+export type MatrixErrorDetailList = Array<MatrixErrorDetail>;
 export const MatrixErrorDetailList = /*@__PURE__*/ S.Array(
   MatrixErrorDetail,
 ) as any as S.Schema<MatrixErrorDetailList>;
 
-export type AndroidDeviceList_ = ReadonlyArray<AndroidDevice>;
+export type AndroidDeviceList_ = Array<AndroidDevice>;
 export const AndroidDeviceList_ = /*@__PURE__*/ S.Array(
   AndroidDevice,
 ) as any as S.Schema<AndroidDeviceList_>;
@@ -1029,7 +1031,7 @@ export const IosDevice = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "IosDevice" }) as any as S.Schema<IosDevice>;
 
-export type IosDeviceList_ = ReadonlyArray<IosDevice>;
+export type IosDeviceList_ = Array<IosDevice>;
 export const IosDeviceList_ = /*@__PURE__*/ S.Array(
   IosDevice,
 ) as any as S.Schema<IosDeviceList_>;
@@ -1223,7 +1225,7 @@ export interface TestExecution {
   /** Output only. Unique id set by the service. */
   id?: string;
   /** Output only. Indicates the current progress of the test execution (e.g., FINISHED). */
-  state?: TestExecutionStateEnum;
+  state?: TestExecutionStateEnum | (string & {});
   /** Output only. The time this test execution was initially created. */
   timestamp?: string;
   /** Output only. The cloud project that owns the test execution. */
@@ -1254,7 +1256,7 @@ export const TestExecution = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TestExecution" }) as any as S.Schema<TestExecution>;
 
-export type TestExecutionList = ReadonlyArray<TestExecution>;
+export type TestExecutionList = Array<TestExecution>;
 export const TestExecutionList = /*@__PURE__*/ S.Array(
   TestExecution,
 ) as any as S.Schema<TestExecutionList>;
@@ -1275,7 +1277,7 @@ export const ClientInfoDetail = /*@__PURE__*/ S.suspend(() =>
   identifier: "ClientInfoDetail",
 }) as any as S.Schema<ClientInfoDetail>;
 
-export type ClientInfoDetailList = ReadonlyArray<ClientInfoDetail>;
+export type ClientInfoDetailList = Array<ClientInfoDetail>;
 export const ClientInfoDetailList = /*@__PURE__*/ S.Array(
   ClientInfoDetail,
 ) as any as S.Schema<ClientInfoDetailList>;
@@ -1297,13 +1299,13 @@ export const ClientInfo = /*@__PURE__*/ S.suspend(() =>
 /** TestMatrix captures all details about a test. It contains the environment configuration, test specification, test executions and overall state and outcome. */
 export interface TestMatrix {
   /** Output only. Describes why the matrix is considered invalid. Only useful for matrices in the INVALID state. */
-  invalidMatrixDetails?: TestMatrixInvalidMatrixDetailsEnum;
+  invalidMatrixDetails?: TestMatrixInvalidMatrixDetailsEnum | (string & {});
   /** Required. How to run the test. */
   testSpecification?: TestSpecification;
   /** Output Only. The overall outcome of the test. Only set when the test matrix state is FINISHED. */
-  outcomeSummary?: TestMatrixOutcomeSummaryEnum;
+  outcomeSummary?: TestMatrixOutcomeSummaryEnum | (string & {});
   /** Output only. Indicates the current progress of the test matrix. */
-  state?: TestMatrixStateEnum;
+  state?: TestMatrixStateEnum | (string & {});
   /** Output only. Details about why a matrix was deemed invalid. If multiple checks can be safely performed, they will be reported but no assumptions should be made about the length of this list. */
   extendedInvalidMatrixDetails?: MatrixErrorDetailList;
   /** The cloud project that owns the test matrix. */
@@ -1404,7 +1406,7 @@ export const Metadata = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Metadata" }) as any as S.Schema<Metadata>;
 
-export type MetadataList = ReadonlyArray<Metadata>;
+export type MetadataList = Array<Metadata>;
 export const MetadataList = /*@__PURE__*/ S.Array(
   Metadata,
 ) as any as S.Schema<MetadataList>;
@@ -1423,7 +1425,7 @@ export const UsesFeature = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "UsesFeature" }) as any as S.Schema<UsesFeature>;
 
-export type UsesFeatureList = ReadonlyArray<UsesFeature>;
+export type UsesFeatureList = Array<UsesFeature>;
 export const UsesFeatureList = /*@__PURE__*/ S.Array(
   UsesFeature,
 ) as any as S.Schema<UsesFeatureList>;
@@ -1444,7 +1446,7 @@ export const UsesPermissionTag = /*@__PURE__*/ S.suspend(() =>
   identifier: "UsesPermissionTag",
 }) as any as S.Schema<UsesPermissionTag>;
 
-export type UsesPermissionTagList = ReadonlyArray<UsesPermissionTag>;
+export type UsesPermissionTagList = Array<UsesPermissionTag>;
 export const UsesPermissionTagList = /*@__PURE__*/ S.Array(
   UsesPermissionTag,
 ) as any as S.Schema<UsesPermissionTagList>;
@@ -1466,7 +1468,7 @@ export const IntentFilter = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "IntentFilter" }) as any as S.Schema<IntentFilter>;
 
-export type IntentFilterList = ReadonlyArray<IntentFilter>;
+export type IntentFilterList = Array<IntentFilter>;
 export const IntentFilterList = /*@__PURE__*/ S.Array(
   IntentFilter,
 ) as any as S.Schema<IntentFilterList>;
@@ -1485,7 +1487,7 @@ export const Service = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Service" }) as any as S.Schema<Service>;
 
-export type ServiceList = ReadonlyArray<Service>;
+export type ServiceList = Array<Service>;
 export const ServiceList = /*@__PURE__*/ S.Array(
   Service,
 ) as any as S.Schema<ServiceList>;
@@ -1639,7 +1641,7 @@ export type AndroidModelAccessDeniedReasonsItemEnum =
 export const AndroidModelAccessDeniedReasonsItemEnum = /*@__PURE__*/ S.String;
 
 export type AndroidModelAccessDeniedReasonsItemEnumList =
-  ReadonlyArray<AndroidModelAccessDeniedReasonsItemEnum>;
+  Array<AndroidModelAccessDeniedReasonsItemEnum>;
 export const AndroidModelAccessDeniedReasonsItemEnumList =
   /*@__PURE__*/ S.Array(
     AndroidModelAccessDeniedReasonsItemEnum,
@@ -1691,7 +1693,7 @@ export const PerAndroidVersionInfo = /*@__PURE__*/ S.suspend(() =>
   identifier: "PerAndroidVersionInfo",
 }) as any as S.Schema<PerAndroidVersionInfo>;
 
-export type PerAndroidVersionInfoList = ReadonlyArray<PerAndroidVersionInfo>;
+export type PerAndroidVersionInfoList = Array<PerAndroidVersionInfo>;
 export const PerAndroidVersionInfoList = /*@__PURE__*/ S.Array(
   PerAndroidVersionInfo,
 ) as any as S.Schema<PerAndroidVersionInfoList>;
@@ -1792,7 +1794,7 @@ export const AndroidModel = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AndroidModel" }) as any as S.Schema<AndroidModel>;
 
-export type AndroidModelList = ReadonlyArray<AndroidModel>;
+export type AndroidModelList = Array<AndroidModel>;
 export const AndroidModelList = /*@__PURE__*/ S.Array(
   AndroidModel,
 ) as any as S.Schema<AndroidModelList>;
@@ -1817,7 +1819,7 @@ export const Locale = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Locale" }) as any as S.Schema<Locale>;
 
-export type LocaleList = ReadonlyArray<Locale>;
+export type LocaleList = Array<Locale>;
 export const LocaleList = /*@__PURE__*/ S.Array(
   Locale,
 ) as any as S.Schema<LocaleList>;
@@ -1839,7 +1841,7 @@ export const Orientation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Orientation" }) as any as S.Schema<Orientation>;
 
-export type OrientationList = ReadonlyArray<Orientation>;
+export type OrientationList = Array<Orientation>;
 export const OrientationList = /*@__PURE__*/ S.Array(
   Orientation,
 ) as any as S.Schema<OrientationList>;
@@ -1920,7 +1922,7 @@ export const AndroidVersion = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AndroidVersion" }) as any as S.Schema<AndroidVersion>;
 
-export type AndroidVersionList = ReadonlyArray<AndroidVersion>;
+export type AndroidVersionList = Array<AndroidVersion>;
 export const AndroidVersionList = /*@__PURE__*/ S.Array(
   AndroidVersion,
 ) as any as S.Schema<AndroidVersionList>;
@@ -1985,7 +1987,7 @@ export const NetworkConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "NetworkConfiguration",
 }) as any as S.Schema<NetworkConfiguration>;
 
-export type NetworkConfigurationList = ReadonlyArray<NetworkConfiguration>;
+export type NetworkConfigurationList = Array<NetworkConfiguration>;
 export const NetworkConfigurationList = /*@__PURE__*/ S.Array(
   NetworkConfiguration,
 ) as any as S.Schema<NetworkConfigurationList>;
@@ -2025,7 +2027,7 @@ export const DeviceIpBlock = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DeviceIpBlock" }) as any as S.Schema<DeviceIpBlock>;
 
-export type DeviceIpBlockList = ReadonlyArray<DeviceIpBlock>;
+export type DeviceIpBlockList = Array<DeviceIpBlock>;
 export const DeviceIpBlockList = /*@__PURE__*/ S.Array(
   DeviceIpBlock,
 ) as any as S.Schema<DeviceIpBlockList>;
@@ -2078,7 +2080,7 @@ export const PerIosVersionInfo = /*@__PURE__*/ S.suspend(() =>
   identifier: "PerIosVersionInfo",
 }) as any as S.Schema<PerIosVersionInfo>;
 
-export type PerIosVersionInfoList = ReadonlyArray<PerIosVersionInfo>;
+export type PerIosVersionInfoList = Array<PerIosVersionInfo>;
 export const PerIosVersionInfoList = /*@__PURE__*/ S.Array(
   PerIosVersionInfo,
 ) as any as S.Schema<PerIosVersionInfoList>;
@@ -2121,7 +2123,7 @@ export const IosModel = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "IosModel" }) as any as S.Schema<IosModel>;
 
-export type IosModelList = ReadonlyArray<IosModel>;
+export type IosModelList = Array<IosModel>;
 export const IosModelList = /*@__PURE__*/ S.Array(
   IosModel,
 ) as any as S.Schema<IosModelList>;
@@ -2140,7 +2142,7 @@ export const XcodeVersion = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "XcodeVersion" }) as any as S.Schema<XcodeVersion>;
 
-export type XcodeVersionList = ReadonlyArray<XcodeVersion>;
+export type XcodeVersionList = Array<XcodeVersion>;
 export const XcodeVersionList = /*@__PURE__*/ S.Array(
   XcodeVersion,
 ) as any as S.Schema<XcodeVersionList>;
@@ -2168,7 +2170,7 @@ export const IosVersion = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "IosVersion" }) as any as S.Schema<IosVersion>;
 
-export type IosVersionList = ReadonlyArray<IosVersion>;
+export type IosVersionList = Array<IosVersion>;
 export const IosVersionList = /*@__PURE__*/ S.Array(
   IosVersion,
 ) as any as S.Schema<IosVersionList>;
@@ -2279,7 +2281,7 @@ export const ListProjectsDeviceSessionsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsDeviceSessionsRequest",
 }) as any as S.Schema<ListProjectsDeviceSessionsRequest>;
 
-export type DeviceSessionList = ReadonlyArray<DeviceSession>;
+export type DeviceSessionList = Array<DeviceSession>;
 export const DeviceSessionList = /*@__PURE__*/ S.Array(
   DeviceSession,
 ) as any as S.Schema<DeviceSessionList>;

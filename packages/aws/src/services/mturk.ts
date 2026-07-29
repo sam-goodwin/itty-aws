@@ -263,11 +263,11 @@ export const HITAccessActions = /*@__PURE__*/ S.String;
 
 export interface QualificationRequirement {
   QualificationTypeId: string;
-  Comparator: Comparator;
+  Comparator: Comparator | (string & {});
   IntegerValues?: number[];
   LocaleValues?: Locale[];
   RequiredToPreview?: boolean;
-  ActionsGuarded?: HITAccessActions;
+  ActionsGuarded?: HITAccessActions | (string & {});
 }
 export const QualificationRequirement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

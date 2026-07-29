@@ -105,7 +105,7 @@ export const GetAccountsProductsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetAccountsProductsRequest",
 }) as any as S.Schema<GetAccountsProductsRequest>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -175,7 +175,7 @@ export const ItemLevelIssue = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ItemLevelIssue" }) as any as S.Schema<ItemLevelIssue>;
 
-export type ItemLevelIssueList = ReadonlyArray<ItemLevelIssue>;
+export type ItemLevelIssueList = Array<ItemLevelIssue>;
 export const ItemLevelIssueList = /*@__PURE__*/ S.Array(
   ItemLevelIssue,
 ) as any as S.Schema<ItemLevelIssueList>;
@@ -225,7 +225,7 @@ export const DestinationStatus = /*@__PURE__*/ S.suspend(() =>
   identifier: "DestinationStatus",
 }) as any as S.Schema<DestinationStatus>;
 
-export type DestinationStatusList = ReadonlyArray<DestinationStatus>;
+export type DestinationStatusList = Array<DestinationStatus>;
 export const DestinationStatusList = /*@__PURE__*/ S.Array(
   DestinationStatus,
 ) as any as S.Schema<DestinationStatusList>;
@@ -295,7 +295,7 @@ export const ProductSustainabilityIncentiveTypeEnum = /*@__PURE__*/ S.String;
 /** Information regarding sustainability-related incentive programs such as rebates or tax relief. */
 export interface ProductSustainabilityIncentive {
   /** Sustainability incentive program. */
-  type?: ProductSustainabilityIncentiveTypeEnum;
+  type?: ProductSustainabilityIncentiveTypeEnum | (string & {});
   /** The fixed amount of the incentive. */
   amount?: Price;
   /** The percentage of the sale price that the incentive is applied to. */
@@ -312,7 +312,7 @@ export const ProductSustainabilityIncentive = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProductSustainabilityIncentive>;
 
 export type ProductSustainabilityIncentiveList =
-  ReadonlyArray<ProductSustainabilityIncentive>;
+  Array<ProductSustainabilityIncentive>;
 export const ProductSustainabilityIncentiveList = /*@__PURE__*/ S.Array(
   ProductSustainabilityIncentive,
 ) as any as S.Schema<ProductSustainabilityIncentiveList>;
@@ -323,7 +323,7 @@ export const Co2EmissionsUnitEnum = /*@__PURE__*/ S.String;
 /** The co2 emission of the vehicle. */
 export interface Co2Emissions {
   /** The unit of the co2 emission. */
-  unit?: Co2EmissionsUnitEnum;
+  unit?: Co2EmissionsUnitEnum | (string & {});
   /** The co2 emission value. */
   value?: string;
 }
@@ -355,8 +355,9 @@ export type ReturnsItemConditionsItemEnum =
   | "DEFECTIVE_ONLY";
 export const ReturnsItemConditionsItemEnum = /*@__PURE__*/ S.String;
 
-export type ReturnsItemConditionsItemEnumList =
-  ReadonlyArray<ReturnsItemConditionsItemEnum>;
+export type ReturnsItemConditionsItemEnumList = Array<
+  ReturnsItemConditionsItemEnum | (string & {})
+>;
 export const ReturnsItemConditionsItemEnumList = /*@__PURE__*/ S.Array(
   ReturnsItemConditionsItemEnum,
 ) as any as S.Schema<ReturnsItemConditionsItemEnumList>;
@@ -368,8 +369,9 @@ export type ReturnsOutcomesItemEnum =
   | "STORE_CREDIT";
 export const ReturnsOutcomesItemEnum = /*@__PURE__*/ S.String;
 
-export type ReturnsOutcomesItemEnumList =
-  ReadonlyArray<ReturnsOutcomesItemEnum>;
+export type ReturnsOutcomesItemEnumList = Array<
+  ReturnsOutcomesItemEnum | (string & {})
+>;
 export const ReturnsOutcomesItemEnumList = /*@__PURE__*/ S.Array(
   ReturnsOutcomesItemEnum,
 ) as any as S.Schema<ReturnsOutcomesItemEnumList>;
@@ -382,7 +384,9 @@ export type ReturnsMethodsItemEnum =
   | "DROP_OFF_LOCATION";
 export const ReturnsMethodsItemEnum = /*@__PURE__*/ S.String;
 
-export type ReturnsMethodsItemEnumList = ReadonlyArray<ReturnsMethodsItemEnum>;
+export type ReturnsMethodsItemEnumList = Array<
+  ReturnsMethodsItemEnum | (string & {})
+>;
 export const ReturnsMethodsItemEnumList = /*@__PURE__*/ S.Array(
   ReturnsMethodsItemEnum,
 ) as any as S.Schema<ReturnsMethodsItemEnumList>;
@@ -400,11 +404,11 @@ export interface Returns {
   /** The duration of the return window in days. */
   windowDays?: string;
   /** The type of return shipping fee. */
-  shippingFeeType?: ReturnsShippingFeeTypeEnum;
+  shippingFeeType?: ReturnsShippingFeeTypeEnum | (string & {});
   /** A percentage restocking fee penalty. */
   restockingPercentageFee?: number;
   /** Special return window behavior. */
-  windowType?: ReturnsWindowTypeEnum;
+  windowType?: ReturnsWindowTypeEnum | (string & {});
   /** The condition the item must be in to be accepted. */
   itemConditions?: ReturnsItemConditionsItemEnumList;
   /** The financial outcomes available for a return. */
@@ -428,7 +432,7 @@ export const Returns = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Returns" }) as any as S.Schema<Returns>;
 
-export type ReturnsList = ReadonlyArray<Returns>;
+export type ReturnsList = Array<Returns>;
 export const ReturnsList = /*@__PURE__*/ S.Array(
   Returns,
 ) as any as S.Schema<ReturnsList>;
@@ -481,8 +485,7 @@ export const ShippingBusinessDaysConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "ShippingBusinessDaysConfig",
 }) as any as S.Schema<ShippingBusinessDaysConfig>;
 
-export type ShippingBusinessDaysConfigList =
-  ReadonlyArray<ShippingBusinessDaysConfig>;
+export type ShippingBusinessDaysConfigList = Array<ShippingBusinessDaysConfig>;
 export const ShippingBusinessDaysConfigList = /*@__PURE__*/ S.Array(
   ShippingBusinessDaysConfig,
 ) as any as S.Schema<ShippingBusinessDaysConfigList>;
@@ -496,7 +499,7 @@ export const FuelConsumptionUnitEnum = /*@__PURE__*/ S.String;
 /** The fuel consumption of the vehicle. */
 export interface FuelConsumption {
   /** The unit of the fuel consumption. */
-  unit?: FuelConsumptionUnitEnum;
+  unit?: FuelConsumptionUnitEnum | (string & {});
   /** The fuel consumption value. */
   value?: number;
 }
@@ -515,7 +518,7 @@ export const MileageUnitEnum = /*@__PURE__*/ S.String;
 /** The mileage of the vehicle. */
 export interface Mileage {
   /** The unit of the mileage. */
-  unit?: MileageUnitEnum;
+  unit?: MileageUnitEnum | (string & {});
   /** The distance value. */
   value?: string;
 }
@@ -542,11 +545,11 @@ export const RelatedProductIdTypeEnum = /*@__PURE__*/ S.String;
 /** Specifies how other products are related to this product. */
 export interface RelatedProduct {
   /** Required. The type of the relationship between this product and the related product. */
-  relationshipType?: RelatedProductRelationshipTypeEnum;
+  relationshipType?: RelatedProductRelationshipTypeEnum | (string & {});
   /** Required. The identifier of the related product. */
   id?: string;
   /** Required. The type of the identifier of the related product. For example, [GTIN](https://support.google.com/merchants/answer/6219078) or [product ID](https://support.google.com/merchants/answer/6324405). */
-  idType?: RelatedProductIdTypeEnum;
+  idType?: RelatedProductIdTypeEnum | (string & {});
 }
 export const RelatedProduct = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -556,7 +559,7 @@ export const RelatedProduct = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "RelatedProduct" }) as any as S.Schema<RelatedProduct>;
 
-export type RelatedProductList = ReadonlyArray<RelatedProduct>;
+export type RelatedProductList = Array<RelatedProduct>;
 export const RelatedProductList = /*@__PURE__*/ S.Array(
   RelatedProduct,
 ) as any as S.Schema<RelatedProductList>;
@@ -593,7 +596,7 @@ export interface UnitArea {
   /** The area value. */
   value?: number;
   /** The unit of area. */
-  unit?: UnitAreaUnitEnum;
+  unit?: UnitAreaUnitEnum | (string & {});
 }
 export const UnitArea = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -614,7 +617,7 @@ export interface ProductFee {
   /** The amount of product fee. */
   amount?: Price;
   /** The type of product fee. */
-  type?: ProductFeeTypeEnum;
+  type?: ProductFeeTypeEnum | (string & {});
 }
 export const ProductFee = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -623,7 +626,7 @@ export const ProductFee = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ProductFee" }) as any as S.Schema<ProductFee>;
 
-export type ProductFeeList = ReadonlyArray<ProductFee>;
+export type ProductFeeList = Array<ProductFee>;
 export const ProductFeeList = /*@__PURE__*/ S.Array(
   ProductFee,
 ) as any as S.Schema<ProductFeeList>;
@@ -650,13 +653,15 @@ export const ProductCertificationCertificationNameEnum = /*@__PURE__*/ S.String;
 /** Product [certification](https://support.google.com/merchants/answer/13528839), initially introduced for EU energy efficiency labeling compliance using the EU EPREL database. */
 export interface ProductCertification {
   /** The certification authority. */
-  certificationAuthority?: ProductCertificationCertificationAuthorityEnum;
+  certificationAuthority?:
+    | ProductCertificationCertificationAuthorityEnum
+    | (string & {});
   /** The certification code. Maximum length is 2000 characters. */
   certificationCode?: string;
   /** The certification value (also known as class, level or grade), for example "A+", "C", "gold". Maximum length is 2000 characters. */
   certificationValue?: string;
   /** The name of the certification. */
-  certificationName?: ProductCertificationCertificationNameEnum;
+  certificationName?: ProductCertificationCertificationNameEnum | (string & {});
 }
 export const ProductCertification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -671,7 +676,7 @@ export const ProductCertification = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProductCertification",
 }) as any as S.Schema<ProductCertification>;
 
-export type ProductCertificationList = ReadonlyArray<ProductCertification>;
+export type ProductCertificationList = Array<ProductCertification>;
 export const ProductCertificationList = /*@__PURE__*/ S.Array(
   ProductCertification,
 ) as any as S.Schema<ProductCertificationList>;
@@ -729,7 +734,7 @@ export const Shipping = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Shipping" }) as any as S.Schema<Shipping>;
 
-export type ShippingList = ReadonlyArray<Shipping>;
+export type ShippingList = Array<Shipping>;
 export const ShippingList = /*@__PURE__*/ S.Array(
   Shipping,
 ) as any as S.Schema<ShippingList>;
@@ -754,7 +759,9 @@ export const StructuredDescriptionDigitalSourceTypeEnum =
 /** Structured description, for algorithmically (AI)-generated descriptions. */
 export interface StructuredDescription {
   /** The digital source type. Following [IPTC](https://cv.iptc.org/newscodes/digitalsourcetype). */
-  digitalSourceType?: StructuredDescriptionDigitalSourceTypeEnum;
+  digitalSourceType?:
+    | StructuredDescriptionDigitalSourceTypeEnum
+    | (string & {});
   /** The description text Maximum length is 5000 characters */
   content?: string;
 }
@@ -805,7 +812,7 @@ export const ProductInstallmentCreditTypeEnum = /*@__PURE__*/ S.String;
 /** A message that represents installment. */
 export interface ProductInstallment {
   /** Type of installment payments. */
-  creditType?: ProductInstallmentCreditTypeEnum;
+  creditType?: ProductInstallmentCreditTypeEnum | (string & {});
   /** The amount the buyer has to pay per month. */
   amount?: Price;
   /** Optional. Annual percentage rate for `credit_type` finance */
@@ -869,7 +876,7 @@ export const FreeShippingThreshold = /*@__PURE__*/ S.suspend(() =>
   identifier: "FreeShippingThreshold",
 }) as any as S.Schema<FreeShippingThreshold>;
 
-export type FreeShippingThresholdList = ReadonlyArray<FreeShippingThreshold>;
+export type FreeShippingThresholdList = Array<FreeShippingThreshold>;
 export const FreeShippingThresholdList = /*@__PURE__*/ S.Array(
   FreeShippingThreshold,
 ) as any as S.Schema<FreeShippingThresholdList>;
@@ -921,8 +928,9 @@ export type ProductAttributesIncludedDestinationsItemEnum =
 export const ProductAttributesIncludedDestinationsItemEnum =
   /*@__PURE__*/ S.String;
 
-export type ProductAttributesIncludedDestinationsItemEnumList =
-  ReadonlyArray<ProductAttributesIncludedDestinationsItemEnum>;
+export type ProductAttributesIncludedDestinationsItemEnumList = Array<
+  ProductAttributesIncludedDestinationsItemEnum | (string & {})
+>;
 export const ProductAttributesIncludedDestinationsItemEnumList =
   /*@__PURE__*/ S.Array(
     ProductAttributesIncludedDestinationsItemEnum,
@@ -959,7 +967,7 @@ export const ProductDetail = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ProductDetail" }) as any as S.Schema<ProductDetail>;
 
-export type ProductDetailList = ReadonlyArray<ProductDetail>;
+export type ProductDetailList = Array<ProductDetail>;
 export const ProductDetailList = /*@__PURE__*/ S.Array(
   ProductDetail,
 ) as any as S.Schema<ProductDetailList>;
@@ -993,7 +1001,7 @@ export interface SubscriptionCost {
   /** The amount the buyer has to pay per subscription period. */
   amount?: Price;
   /** The type of subscription period. Supported values are: * "`month`" * "`year`" * "`week`" */
-  period?: SubscriptionCostPeriodEnum;
+  period?: SubscriptionCostPeriodEnum | (string & {});
 }
 export const SubscriptionCost = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1041,7 +1049,7 @@ export const HandlingCutoffTime = /*@__PURE__*/ S.suspend(() =>
   identifier: "HandlingCutoffTime",
 }) as any as S.Schema<HandlingCutoffTime>;
 
-export type HandlingCutoffTimeList = ReadonlyArray<HandlingCutoffTime>;
+export type HandlingCutoffTimeList = Array<HandlingCutoffTime>;
 export const HandlingCutoffTimeList = /*@__PURE__*/ S.Array(
   HandlingCutoffTime,
 ) as any as S.Schema<HandlingCutoffTimeList>;
@@ -1100,14 +1108,15 @@ export type ProductAttributesAmenityFeatureItemEnum =
   | "WHEELCHAIR_ACCESS";
 export const ProductAttributesAmenityFeatureItemEnum = /*@__PURE__*/ S.String;
 
-export type ProductAttributesAmenityFeatureItemEnumList =
-  ReadonlyArray<ProductAttributesAmenityFeatureItemEnum>;
+export type ProductAttributesAmenityFeatureItemEnumList = Array<
+  ProductAttributesAmenityFeatureItemEnum | (string & {})
+>;
 export const ProductAttributesAmenityFeatureItemEnumList =
   /*@__PURE__*/ S.Array(
     ProductAttributesAmenityFeatureItemEnum,
   ) as any as S.Schema<ProductAttributesAmenityFeatureItemEnumList>;
 
-export type DoubleList = ReadonlyArray<number>;
+export type DoubleList = Array<number>;
 export const DoubleList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<DoubleList>;
@@ -1147,7 +1156,7 @@ export const CloudExportAdditionalProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CloudExportAdditionalProperties>;
 
 export type CloudExportAdditionalPropertiesList =
-  ReadonlyArray<CloudExportAdditionalProperties>;
+  Array<CloudExportAdditionalProperties>;
 export const CloudExportAdditionalPropertiesList = /*@__PURE__*/ S.Array(
   CloudExportAdditionalProperties,
 ) as any as S.Schema<CloudExportAdditionalPropertiesList>;
@@ -1178,7 +1187,7 @@ export interface EnergyConsumption {
   /** The energy consumption value. */
   value?: number;
   /** The unit of the energy consumption. */
-  unit?: EnergyConsumptionUnitEnum;
+  unit?: EnergyConsumptionUnitEnum | (string & {});
 }
 export const EnergyConsumption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1205,7 +1214,7 @@ export const QuestionAndAnswer = /*@__PURE__*/ S.suspend(() =>
   identifier: "QuestionAndAnswer",
 }) as any as S.Schema<QuestionAndAnswer>;
 
-export type QuestionAndAnswerList = ReadonlyArray<QuestionAndAnswer>;
+export type QuestionAndAnswerList = Array<QuestionAndAnswer>;
 export const QuestionAndAnswerList = /*@__PURE__*/ S.Array(
   QuestionAndAnswer,
 ) as any as S.Schema<QuestionAndAnswerList>;
@@ -1239,7 +1248,7 @@ export const LoyaltyProgram = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "LoyaltyProgram" }) as any as S.Schema<LoyaltyProgram>;
 
-export type LoyaltyProgramList = ReadonlyArray<LoyaltyProgram>;
+export type LoyaltyProgramList = Array<LoyaltyProgram>;
 export const LoyaltyProgramList = /*@__PURE__*/ S.Array(
   LoyaltyProgram,
 ) as any as S.Schema<LoyaltyProgramList>;
@@ -1254,8 +1263,9 @@ export type ProductAttributesSizeTypesItemEnum =
   | "PLUS";
 export const ProductAttributesSizeTypesItemEnum = /*@__PURE__*/ S.String;
 
-export type ProductAttributesSizeTypesItemEnumList =
-  ReadonlyArray<ProductAttributesSizeTypesItemEnum>;
+export type ProductAttributesSizeTypesItemEnumList = Array<
+  ProductAttributesSizeTypesItemEnum | (string & {})
+>;
 export const ProductAttributesSizeTypesItemEnumList = /*@__PURE__*/ S.Array(
   ProductAttributesSizeTypesItemEnum,
 ) as any as S.Schema<ProductAttributesSizeTypesItemEnumList>;
@@ -1396,7 +1406,7 @@ export interface CarrierShipping {
   /** A flat adjustment on the carrier price. Can be either positive or negative. Cannot be zero. Requires `carrier_price` to be present. Cannot be set together with flatPrice and carrierPricePercentageAdjustment. */
   carrierPriceFlatAdjustment?: Price;
   /** Selected carrier to calculate the shipping speed from. Select a carrier from the [available carriers list](https://support.google.com/merchants/answer/15449142#Supported), for example `AUSTRALIA_POST_REGULAR`. Speed will be calculated by this selected carrier, the location expressed in originPostalCode, along with the user location to determine the accurate delivery speed. Carrier is represented by a carrier service name or a carrier service ID. Cannot be set together with fixedMaxTransitTime or fixedMinTransitTime. */
-  carrierTransitTime?: CarrierShippingCarrierTransitTimeEnum;
+  carrierTransitTime?: CarrierShippingCarrierTransitTimeEnum | (string & {});
   /** The source location postal code from which this offer ships. Represented only by a full-length postal code. */
   originPostalCode?: string;
   /** Minimum transit time (inclusive) between when the order has shipped and when it is delivered in business days. 0 means that the order is delivered on the same day as it ships. fixedMinTransitTime can only be set if fixedMaxTransitTime is set. Cannot be set if carrierTransitTime is present. */
@@ -1412,7 +1422,7 @@ export interface CarrierShipping {
   /** The postal code range that the shipping rate applies to, represented by a postal code (eg. `94043`), a postal code prefix followed by a * wildcard (eg. `94*`), a range between two postal codes (eg. `94043-98033`) or two postal code prefixes of equal length (eg. `94*-98*`). */
   postalCode?: string;
   /** Selected carrier to calculate the shipping price from. Select a carrier from the [available carriers list](https://support.google.com/merchants/answer/15449142#Supported), for example `AUSTRALIA_POST_REGULAR`. Price will be calculated by this selected carrier, the location expressed in originPostalCode, along with the user location to determine the accurate shipping price. Carrier is represented by a carrier service name or a carrier service ID. Cannot be set together with flatPrice. */
-  carrierPrice?: CarrierShippingCarrierPriceEnum;
+  carrierPrice?: CarrierShippingCarrierPriceEnum | (string & {});
   /** The geographic region to which a shipping rate applies. See [region](https://support.google.com/merchants/answer/6324484) for more information. */
   region?: string;
   /** Fixed shipping price, represented as a number with currency. Cannot be set together with carrierPrice or its adjustments (carrierPriceFlatAdjustment, carrierPricePercentageAdjustment). */
@@ -1440,7 +1450,7 @@ export const CarrierShipping = /*@__PURE__*/ S.suspend(() =>
   identifier: "CarrierShipping",
 }) as any as S.Schema<CarrierShipping>;
 
-export type CarrierShippingList = ReadonlyArray<CarrierShipping>;
+export type CarrierShippingList = Array<CarrierShipping>;
 export const CarrierShippingList = /*@__PURE__*/ S.Array(
   CarrierShipping,
 ) as any as S.Schema<CarrierShippingList>;
@@ -1492,7 +1502,7 @@ export const StructuredTitleDigitalSourceTypeEnum = /*@__PURE__*/ S.String;
 /** Structured title, for algorithmically (AI)-generated titles. */
 export interface StructuredTitle {
   /** The digital source type. Following [IPTC](https://cv.iptc.org/newscodes/digitalsourcetype). */
-  digitalSourceType?: StructuredTitleDigitalSourceTypeEnum;
+  digitalSourceType?: StructuredTitleDigitalSourceTypeEnum | (string & {});
   /** The title text Maximum length is 150 characters */
   content?: string;
 }
@@ -1515,8 +1525,9 @@ export type ProductAttributesUtilitiesIncludedItemEnum =
 export const ProductAttributesUtilitiesIncludedItemEnum =
   /*@__PURE__*/ S.String;
 
-export type ProductAttributesUtilitiesIncludedItemEnumList =
-  ReadonlyArray<ProductAttributesUtilitiesIncludedItemEnum>;
+export type ProductAttributesUtilitiesIncludedItemEnumList = Array<
+  ProductAttributesUtilitiesIncludedItemEnum | (string & {})
+>;
 export const ProductAttributesUtilitiesIncludedItemEnumList =
   /*@__PURE__*/ S.Array(
     ProductAttributesUtilitiesIncludedItemEnum,
@@ -1539,8 +1550,9 @@ export type ProductAttributesExcludedDestinationsItemEnum =
 export const ProductAttributesExcludedDestinationsItemEnum =
   /*@__PURE__*/ S.String;
 
-export type ProductAttributesExcludedDestinationsItemEnumList =
-  ReadonlyArray<ProductAttributesExcludedDestinationsItemEnum>;
+export type ProductAttributesExcludedDestinationsItemEnumList = Array<
+  ProductAttributesExcludedDestinationsItemEnum | (string & {})
+>;
 export const ProductAttributesExcludedDestinationsItemEnumList =
   /*@__PURE__*/ S.Array(
     ProductAttributesExcludedDestinationsItemEnum,
@@ -1615,7 +1627,7 @@ export const VariantOption = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "VariantOption" }) as any as S.Schema<VariantOption>;
 
-export type VariantOptionList = ReadonlyArray<VariantOption>;
+export type VariantOptionList = Array<VariantOption>;
 export const VariantOptionList = /*@__PURE__*/ S.Array(
   VariantOption,
 ) as any as S.Schema<VariantOptionList>;
@@ -1627,8 +1639,9 @@ export type PetPolicyPetTypesItemEnum =
   | "SMALL_DOGS";
 export const PetPolicyPetTypesItemEnum = /*@__PURE__*/ S.String;
 
-export type PetPolicyPetTypesItemEnumList =
-  ReadonlyArray<PetPolicyPetTypesItemEnum>;
+export type PetPolicyPetTypesItemEnumList = Array<
+  PetPolicyPetTypesItemEnum | (string & {})
+>;
 export const PetPolicyPetTypesItemEnumList = /*@__PURE__*/ S.Array(
   PetPolicyPetTypesItemEnum,
 ) as any as S.Schema<PetPolicyPetTypesItemEnumList>;
@@ -1659,7 +1672,7 @@ export interface ProductMinimumOrderValue {
   /** A free-form description of the service class or delivery speed. This should match the service value set for the Shipping attribute. See service. */
   service?: string;
   /** The surface to which the minimum order value applies. Defaults to `ONLINE_LOCAL` if not configured. */
-  surface?: ProductMinimumOrderValueSurfaceEnum;
+  surface?: ProductMinimumOrderValueSurfaceEnum | (string & {});
   /** Required. The minimum cart or basket value before the checkout is permitted. */
   price?: Price;
   /** Required. The [CLDR territory code](http://www.unicode.org/repos/cldr/tags/latest/common/main/en.xml) of the country to which an item will ship. */
@@ -1676,8 +1689,7 @@ export const ProductMinimumOrderValue = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProductMinimumOrderValue",
 }) as any as S.Schema<ProductMinimumOrderValue>;
 
-export type ProductMinimumOrderValueList =
-  ReadonlyArray<ProductMinimumOrderValue>;
+export type ProductMinimumOrderValueList = Array<ProductMinimumOrderValue>;
 export const ProductMinimumOrderValueList = /*@__PURE__*/ S.Array(
   ProductMinimumOrderValue,
 ) as any as S.Schema<ProductMinimumOrderValueList>;
@@ -1741,7 +1753,9 @@ export interface ProductAttributes {
   /** Loyalty points that users receive after purchasing the item. Japan only. */
   loyaltyPoints?: LoyaltyPoints;
   /** The [energy efficiency class](https://support.google.com/merchants/answer/7562785) as defined in EU directive 2010/30/EU. */
-  minEnergyEfficiencyClass?: ProductAttributesMinEnergyEfficiencyClassEnum;
+  minEnergyEfficiencyClass?:
+    | ProductAttributesMinEnergyEfficiencyClassEnum
+    | (string & {});
   /** Maximum retail price (MRP) of the item. Applicable to India only. */
   maximumRetailPrice?: Price;
   /** The shipping label of the product, used to group products in account-level shipping rules. Max. 100 characters. For more information, see [Shipping label](https://support.google.com/merchants/answer/6324504). */
@@ -1765,9 +1779,9 @@ export interface ProductAttributes {
   /** The [Model](https://support.google.com/google-ads/answer/14154511) of the vehicle, such as `LX`, `EX`, and others. */
   model?: string;
   /** The [emission standard](https://support.google.com/google-ads/answer/14869021) of the vehicle. */
-  emissionsStandard?: ProductAttributesEmissionsStandardEnum;
+  emissionsStandard?: ProductAttributesEmissionsStandardEnum | (string & {});
   /** The [pickup](https://support.google.com/merchants/answer/14634021) option for the item. */
-  pickupMethod?: ProductAttributesPickupMethodEnum;
+  pickupMethod?: ProductAttributesPickupMethodEnum | (string & {});
   /** The unit area of the property, such as `1000 sqft`. */
   unitArea?: UnitArea;
   /** URL for the mobile-optimized version of your item's landing page. */
@@ -1801,7 +1815,9 @@ export interface ProductAttributes {
   /** [Custom label 4](https://support.google.com/merchants/answer/6324473) for custom grouping of items in a Shopping campaign. */
   customLabel4?: string;
   /** The specialty housing type for the property. */
-  specialtyHousingType?: ProductAttributesSpecialtyHousingTypeEnum;
+  specialtyHousingType?:
+    | ProductAttributesSpecialtyHousingTypeEnum
+    | (string & {});
   /** The item's [pattern](https://support.google.com/merchants/answer/6324483). For example, polka dots. */
   pattern?: string;
   /** Categories of the item (formatted as in [product data specification](https://support.google.com/merchants/answer/7052112#product_category)). */
@@ -1815,7 +1831,7 @@ export interface ProductAttributes {
   /** The preference of the denominator of the unit price. */
   unitPricingBaseMeasure?: UnitPricingBaseMeasure;
   /** The [engine](https://support.google.com/google-ads/answer/14156068) type of the vehicle. */
-  engine?: ProductAttributesEngineEnum;
+  engine?: ProductAttributesEngineEnum | (string & {});
   /** Optional. Represents the [title of the product group](https://support.google.com/merchants/answer/17085146) to which this variant product belongs. This can be used along with the [item group id](https://support.google.com/merchants/answer/6324507) attribute. It lets you perform better grouping of variant products, and helps identifying common product characteristics more efficiently. */
   itemGroupTitle?: string;
   /** Number and amount of installments to pay for an item. */
@@ -1855,7 +1871,9 @@ export interface ProductAttributes {
   /** Technical specification or additional product details. */
   productDetails?: ProductDetailList;
   /** The [energy efficiency class](https://support.google.com/merchants/answer/7562785) as defined in EU directive 2010/30/EU. */
-  energyEfficiencyClass?: ProductAttributesEnergyEfficiencyClassEnum;
+  energyEfficiencyClass?:
+    | ProductAttributesEnergyEfficiencyClassEnum
+    | (string & {});
   /** Minimal product handling time (in business days). */
   minHandlingTime?: string;
   /** Maximal product handling time (in business days). */
@@ -1907,13 +1925,15 @@ export interface ProductAttributes {
   /** [Custom label 0](https://support.google.com/merchants/answer/6324473) for custom grouping of items in a Shopping campaign. */
   customLabel0?: string;
   /** Publication of this item will be temporarily [paused](https://support.google.com/merchants/answer/11909930). */
-  pause?: ProductAttributesPauseEnum;
+  pause?: ProductAttributesPauseEnum | (string & {});
   /** URL directly linking to your item's page on your online store. */
   link?: string;
   /** Date on which the item should expire, as specified upon insertion, in [ISO 8601](http://en.wikipedia.org/wiki/ISO_8601) format. The actual expiration date is exposed in `productstatuses` as [googleExpirationDate](https://support.google.com/merchants/answer/6324499) and might be earlier if `expirationDate` is too far in the future. */
   expirationDate?: string;
   /** The [energy efficiency class](https://support.google.com/merchants/answer/7562785) as defined in EU directive 2010/30/EU. */
-  maxEnergyEfficiencyClass?: ProductAttributesMaxEnergyEfficiencyClassEnum;
+  maxEnergyEfficiencyClass?:
+    | ProductAttributesMaxEnergyEfficiencyClassEnum
+    | (string & {});
   /** [Custom label 3](https://support.google.com/merchants/answer/6324473) for custom grouping of items in a Shopping campaign. */
   customLabel3?: string;
   /** The [energy consumption](https://support.google.com/google-ads/answer/14546149) of the vehicle. */
@@ -1941,7 +1961,7 @@ export interface ProductAttributes {
   /** The cut of the item. It can be used to represent combined size types for apparel items. Maximum two of size types can be provided, see [Size type](https://support.google.com/merchants/answer/6324497). */
   sizeTypes?: ProductAttributesSizeTypesItemEnumList;
   /** Target [age group](https://support.google.com/merchants/answer/6324463) of the item. */
-  ageGroup?: ProductAttributesAgeGroupEnum;
+  ageGroup?: ProductAttributesAgeGroupEnum | (string & {});
   /** [Brand](https://support.google.com/merchants/answer/6324351) of the item. For example, "Google". */
   brand?: string;
   /** Weight of the item for shipping. */
@@ -1955,11 +1975,11 @@ export interface ProductAttributes {
   /** Advertised sale price of the item. */
   salePrice?: Price;
   /** System in which the size is specified. Recommended for apparel items. For more information, see [Size system](https://support.google.com/merchants/answer/6324502). */
-  sizeSystem?: ProductAttributesSizeSystemEnum;
+  sizeSystem?: ProductAttributesSizeSystemEnum | (string & {});
   /** Title of an item for dynamic remarketing campaigns. */
   displayAdsTitle?: string;
   /** Target [gender](https://support.google.com/merchants/answer/6324479) of the item. */
-  gender?: ProductAttributesGenderEnum;
+  gender?: ProductAttributesGenderEnum | (string & {});
   /** The height of the product in the units provided. The value must be between 0 (exclusive) and 3000 (inclusive). */
   productHeight?: ProductDimension;
   /** Offer margin for dynamic remarketing campaigns. For more information, see [Display ads attribute](https://support.google.com/merchants/answer/6069387). */
@@ -1979,13 +1999,13 @@ export interface ProductAttributes {
   /** The list of destinations to exclude for this target (corresponds to unchecked check boxes in Merchant Center). For more information, see [Excluded destination](https://support.google.com/merchants/answer/6324486). Note: We recommend setting destinations on datasources level for most use cases. Use this field within products to only setup exceptions. */
   excludedDestinations?: ProductAttributesExcludedDestinationsItemEnumList;
   /** Item store pickup timeline. For more information, see [Pickup SLA](https://support.google.com/merchants/answer/14635400). */
-  pickupSla?: ProductAttributesPickupSlaEnum;
+  pickupSla?: ProductAttributesPickupSlaEnum | (string & {});
   /** The type of property. */
-  propertyType?: ProductAttributesPropertyTypeEnum;
+  propertyType?: ProductAttributesPropertyTypeEnum | (string & {});
   /** [Condition](https://support.google.com/merchants/answer/6324469) or state of the item. */
-  condition?: ProductAttributesConditionEnum;
+  condition?: ProductAttributesConditionEnum | (string & {});
   /** The [price type](https://support.google.com/google-ads/answer/14592783) of the vehicle. */
-  vehiclePriceType?: ProductAttributesVehiclePriceTypeEnum;
+  vehiclePriceType?: ProductAttributesVehiclePriceTypeEnum | (string & {});
   /** The [warranty](https://support.google.com/google-ads/answer/15957626) of the vehicle. */
   warranty?: Warranty;
   /** The fuel consumption of the vehicle when the hybrid battery is discharged. See the [Help Center article](https://support.google.com/google-ads/answer/15162033) for more information. */
@@ -2013,9 +2033,9 @@ export interface ProductAttributes {
   /** Price of the item. */
   price?: Price;
   /** [Availability](https://support.google.com/merchants/answer/6324448) status of the item. */
-  availability?: ProductAttributesAvailabilityEnum;
+  availability?: ProductAttributesAvailabilityEnum | (string & {});
   /** The [body style](https://support.google.com/google-ads/answer/14157085) of the vehicle. */
-  bodyStyle?: ProductAttributesBodyStyleEnum;
+  bodyStyle?: ProductAttributesBodyStyleEnum | (string & {});
 }
 export const ProductAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2201,7 +2221,7 @@ export const CustomAttribute = /*@__PURE__*/ S.suspend(() =>
   identifier: "CustomAttribute",
 }) as any as S.Schema<CustomAttribute>;
 
-export type CustomAttributeList = ReadonlyArray<CustomAttribute>;
+export type CustomAttributeList = Array<CustomAttribute>;
 export const CustomAttributeList = /*@__PURE__*/ S.Array(
   CustomAttribute,
 ) as any as S.Schema<CustomAttributeList>;
@@ -2342,7 +2362,7 @@ export const ListAccountsProductsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAccountsProductsRequest",
 }) as any as S.Schema<ListAccountsProductsRequest>;
 
-export type ProductList = ReadonlyArray<Product>;
+export type ProductList = Array<Product>;
 export const ProductList = /*@__PURE__*/ S.Array(
   Product,
 ) as any as S.Schema<ProductList>;

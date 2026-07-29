@@ -28,7 +28,7 @@ export const SkuName = /*@__PURE__*/ S.String;
 
 export interface Sku {
   /** Gets or set the SKU. */
-  name?: SkuName;
+  name?: SkuName | (string & {});
 }
 export const Sku = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -55,7 +55,7 @@ export const JobMaxRecurrenceFrequency = /*@__PURE__*/ S.String;
 
 export interface JobMaxRecurrence {
   /** Gets or sets the frequency of recurrence (second, minute, hour, day, week, month). */
-  frequency?: JobMaxRecurrenceFrequency;
+  frequency?: JobMaxRecurrenceFrequency | (string & {});
   /** Gets or sets the interval between retries. */
   interval?: number;
 }
@@ -90,7 +90,7 @@ export interface JobCollectionProperties {
   /** Gets or sets the SKU. */
   sku?: Sku;
   /** Gets or sets the state. */
-  state?: JobCollectionPropertiesState;
+  state?: JobCollectionPropertiesState | (string & {});
   /** Gets or sets the job collection quota. */
   quota?: JobCollectionQuota;
 }
@@ -322,8 +322,7 @@ export const JobCollectionsListByResourceGroupRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<JobCollectionsListByResourceGroupRequest>;
 
 /** Gets the job collections. */
-export type JobCollectionListResultValueList =
-  ReadonlyArray<JobCollectionDefinition>;
+export type JobCollectionListResultValueList = Array<JobCollectionDefinition>;
 export const JobCollectionListResultValueList = /*@__PURE__*/ S.Array(
   JobCollectionDefinition,
 ) as any as S.Schema<JobCollectionListResultValueList>;
@@ -428,7 +427,7 @@ export const HttpAuthenticationType = /*@__PURE__*/ S.String;
 
 export interface HttpAuthentication {
   /** Gets or sets the HTTP authentication type. */
-  type: HttpAuthenticationType;
+  type: HttpAuthenticationType | (string & {});
 }
 export const HttpAuthentication = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -498,7 +497,7 @@ export interface ServiceBusAuthentication {
   /** Gets or sets the SAS key name. */
   sasKeyName?: string;
   /** Gets or sets the authentication type. */
-  type?: ServiceBusAuthenticationType;
+  type?: ServiceBusAuthenticationType | (string & {});
 }
 export const ServiceBusAuthentication = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -587,7 +586,7 @@ export interface ServiceBusQueueMessage {
   /** Gets or sets the namespace. */
   namespace?: string;
   /** Gets or sets the transport type. */
-  transportType?: ServiceBusQueueMessageTransportType;
+  transportType?: ServiceBusQueueMessageTransportType | (string & {});
   /** Gets or sets the queue name. */
   queueName?: string;
 }
@@ -636,7 +635,7 @@ export interface ServiceBusTopicMessage {
   /** Gets or sets the namespace. */
   namespace?: string;
   /** Gets or sets the transport type. */
-  transportType?: ServiceBusTopicMessageTransportType;
+  transportType?: ServiceBusTopicMessageTransportType | (string & {});
   /** Gets or sets the topic path. */
   topicPath?: string;
 }
@@ -662,7 +661,7 @@ export const RetryPolicyRetryType = /*@__PURE__*/ S.String;
 
 export interface RetryPolicy {
   /** Gets or sets the retry strategy to be used. */
-  retryType?: RetryPolicyRetryType;
+  retryType?: RetryPolicyRetryType | (string & {});
   /** Gets or sets the retry interval between retries, specify duration in ISO 8601 format. */
   retryInterval?: string;
   /** Gets or sets the number of times a retry should be attempted. */
@@ -687,7 +686,7 @@ export const JobErrorActionType = /*@__PURE__*/ S.String;
 
 export interface JobErrorAction {
   /** Gets or sets the job error action type. */
-  type?: JobErrorActionType;
+  type?: JobErrorActionType | (string & {});
   /** Gets or sets the http requests. */
   request?: HttpRequest;
   /** Gets or sets the storage queue message. */
@@ -712,7 +711,7 @@ export const JobErrorAction = /*@__PURE__*/ S.suspend(() =>
 
 export interface JobAction {
   /** Gets or sets the job action type. */
-  type?: JobActionType;
+  type?: JobActionType | (string & {});
   /** Gets or sets the http requests. */
   request?: HttpRequest;
   /** Gets or sets the storage queue message. */
@@ -758,26 +757,27 @@ export type JobRecurrenceScheduleWeekDaysItem =
 export const JobRecurrenceScheduleWeekDaysItem = /*@__PURE__*/ S.String;
 
 /** Gets or sets the days of the week that the job should execute on. */
-export type JobRecurrenceScheduleWeekDaysList =
-  ReadonlyArray<JobRecurrenceScheduleWeekDaysItem>;
+export type JobRecurrenceScheduleWeekDaysList = Array<
+  JobRecurrenceScheduleWeekDaysItem | (string & {})
+>;
 export const JobRecurrenceScheduleWeekDaysList = /*@__PURE__*/ S.Array(
   JobRecurrenceScheduleWeekDaysItem,
 ) as any as S.Schema<JobRecurrenceScheduleWeekDaysList>;
 
 /** Gets or sets the hours of the day that the job should execute at. */
-export type JobRecurrenceScheduleHoursList = ReadonlyArray<number>;
+export type JobRecurrenceScheduleHoursList = Array<number>;
 export const JobRecurrenceScheduleHoursList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<JobRecurrenceScheduleHoursList>;
 
 /** Gets or sets the minutes of the hour that the job should execute at. */
-export type JobRecurrenceScheduleMinutesList = ReadonlyArray<number>;
+export type JobRecurrenceScheduleMinutesList = Array<number>;
 export const JobRecurrenceScheduleMinutesList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<JobRecurrenceScheduleMinutesList>;
 
 /** Gets or sets the days of the month that the job should execute on. Must be between 1 and 31. */
-export type JobRecurrenceScheduleMonthDaysList = ReadonlyArray<number>;
+export type JobRecurrenceScheduleMonthDaysList = Array<number>;
 export const JobRecurrenceScheduleMonthDaysList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<JobRecurrenceScheduleMonthDaysList>;
@@ -795,7 +795,7 @@ export const JobRecurrenceScheduleMonthlyOccurrenceDay = /*@__PURE__*/ S.String;
 
 export interface JobRecurrenceScheduleMonthlyOccurrence {
   /** Gets or sets the day. Must be one of monday, tuesday, wednesday, thursday, friday, saturday, sunday. */
-  day?: JobRecurrenceScheduleMonthlyOccurrenceDay;
+  day?: JobRecurrenceScheduleMonthlyOccurrenceDay | (string & {});
   /** Gets or sets the occurrence. Must be between -5 and 5. */
   Occurrence?: number;
 }
@@ -811,7 +811,7 @@ export const JobRecurrenceScheduleMonthlyOccurrence = /*@__PURE__*/ S.suspend(
 
 /** Gets or sets the occurrences of days within a month. */
 export type JobRecurrenceScheduleMonthlyOccurrencesList =
-  ReadonlyArray<JobRecurrenceScheduleMonthlyOccurrence>;
+  Array<JobRecurrenceScheduleMonthlyOccurrence>;
 export const JobRecurrenceScheduleMonthlyOccurrencesList =
   /*@__PURE__*/ S.Array(
     JobRecurrenceScheduleMonthlyOccurrence,
@@ -843,7 +843,7 @@ export const JobRecurrenceSchedule = /*@__PURE__*/ S.suspend(() =>
 
 export interface JobRecurrence {
   /** Gets or sets the frequency of recurrence (second, minute, hour, day, week, month). */
-  frequency?: JobRecurrenceFrequency;
+  frequency?: JobRecurrenceFrequency | (string & {});
   /** Gets or sets the interval between retries. */
   interval?: number;
   /** Gets or sets the maximum number of times that the job should run. */
@@ -1077,7 +1077,7 @@ export const JobsListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<JobsListRequest>;
 
 /** Gets or sets all jobs under job collection. */
-export type JobListResultValueList = ReadonlyArray<JobDefinition>;
+export type JobListResultValueList = Array<JobDefinition>;
 export const JobListResultValueList = /*@__PURE__*/ S.Array(
   JobDefinition,
 ) as any as S.Schema<JobListResultValueList>;
@@ -1197,7 +1197,7 @@ export const JobHistoryDefinition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<JobHistoryDefinition>;
 
 /** Gets or sets the job histories under job. */
-export type JobHistoryListResultValueList = ReadonlyArray<JobHistoryDefinition>;
+export type JobHistoryListResultValueList = Array<JobHistoryDefinition>;
 export const JobHistoryListResultValueList = /*@__PURE__*/ S.Array(
   JobHistoryDefinition,
 ) as any as S.Schema<JobHistoryListResultValueList>;

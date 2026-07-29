@@ -74,19 +74,19 @@ export type CreateRequestCheckRegionsItem =
   | "ALL_REGIONS";
 export const CreateRequestCheckRegionsItem = /*@__PURE__*/ S.String;
 
-export type CreateRequestCheckRegionsList = ReadonlyArray<
+export type CreateRequestCheckRegionsList = Array<
   CreateRequestCheckRegionsItem | (string & {})
 >;
 export const CreateRequestCheckRegionsList = /*@__PURE__*/ S.Array(
   CreateRequestCheckRegionsItem,
 ) as any as S.Schema<CreateRequestCheckRegionsList>;
 
-export type CreateRequestHttpConfigExpectedCodesList = ReadonlyArray<string>;
+export type CreateRequestHttpConfigExpectedCodesList = Array<string>;
 export const CreateRequestHttpConfigExpectedCodesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateRequestHttpConfigExpectedCodesList>;
 
-export type CreateRequestHttpConfigHeaderValueList = ReadonlyArray<string>;
+export type CreateRequestHttpConfigHeaderValueList = Array<string>;
 export const CreateRequestHttpConfigHeaderValueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateRequestHttpConfigHeaderValueList>;
@@ -236,17 +236,17 @@ export type CreateResponseCheckRegionsItem =
 export const CreateResponseCheckRegionsItem = /*@__PURE__*/ S.String;
 
 export type CreateResponseCheckRegionsList =
-  ReadonlyArray<CreateResponseCheckRegionsItem>;
+  Array<CreateResponseCheckRegionsItem>;
 export const CreateResponseCheckRegionsList = /*@__PURE__*/ S.Array(
   CreateResponseCheckRegionsItem,
 ) as any as S.Schema<CreateResponseCheckRegionsList>;
 
-export type CreateResponseHttpConfigExpectedCodesList = ReadonlyArray<string>;
+export type CreateResponseHttpConfigExpectedCodesList = Array<string>;
 export const CreateResponseHttpConfigExpectedCodesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateResponseHttpConfigExpectedCodesList>;
 
-export type CreateResponseHttpConfigHeaderValueList = ReadonlyArray<string>;
+export type CreateResponseHttpConfigHeaderValueList = Array<string>;
 export const CreateResponseHttpConfigHeaderValueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateResponseHttpConfigHeaderValueList>;
@@ -407,22 +407,20 @@ export type PreviewsCreateRequestCheckRegionsItem =
   | "ALL_REGIONS";
 export const PreviewsCreateRequestCheckRegionsItem = /*@__PURE__*/ S.String;
 
-export type PreviewsCreateRequestCheckRegionsList = ReadonlyArray<
+export type PreviewsCreateRequestCheckRegionsList = Array<
   PreviewsCreateRequestCheckRegionsItem | (string & {})
 >;
 export const PreviewsCreateRequestCheckRegionsList = /*@__PURE__*/ S.Array(
   PreviewsCreateRequestCheckRegionsItem,
 ) as any as S.Schema<PreviewsCreateRequestCheckRegionsList>;
 
-export type PreviewsCreateRequestHttpConfigExpectedCodesList =
-  ReadonlyArray<string>;
+export type PreviewsCreateRequestHttpConfigExpectedCodesList = Array<string>;
 export const PreviewsCreateRequestHttpConfigExpectedCodesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PreviewsCreateRequestHttpConfigExpectedCodesList>;
 
-export type PreviewsCreateRequestHttpConfigHeaderValueList =
-  ReadonlyArray<string>;
+export type PreviewsCreateRequestHttpConfigHeaderValueList = Array<string>;
 export const PreviewsCreateRequestHttpConfigHeaderValueList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -579,20 +577,18 @@ export type PreviewsCreateResponseCheckRegionsItem =
 export const PreviewsCreateResponseCheckRegionsItem = /*@__PURE__*/ S.String;
 
 export type PreviewsCreateResponseCheckRegionsList =
-  ReadonlyArray<PreviewsCreateResponseCheckRegionsItem>;
+  Array<PreviewsCreateResponseCheckRegionsItem>;
 export const PreviewsCreateResponseCheckRegionsList = /*@__PURE__*/ S.Array(
   PreviewsCreateResponseCheckRegionsItem,
 ) as any as S.Schema<PreviewsCreateResponseCheckRegionsList>;
 
-export type PreviewsCreateResponseHttpConfigExpectedCodesList =
-  ReadonlyArray<string>;
+export type PreviewsCreateResponseHttpConfigExpectedCodesList = Array<string>;
 export const PreviewsCreateResponseHttpConfigExpectedCodesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PreviewsCreateResponseHttpConfigExpectedCodesList>;
 
-export type PreviewsCreateResponseHttpConfigHeaderValueList =
-  ReadonlyArray<string>;
+export type PreviewsCreateResponseHttpConfigHeaderValueList = Array<string>;
 export const PreviewsCreateResponseHttpConfigHeaderValueList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -853,18 +849,17 @@ export type GetResponseCheckRegionsItem =
   | "ALL_REGIONS";
 export const GetResponseCheckRegionsItem = /*@__PURE__*/ S.String;
 
-export type GetResponseCheckRegionsList =
-  ReadonlyArray<GetResponseCheckRegionsItem>;
+export type GetResponseCheckRegionsList = Array<GetResponseCheckRegionsItem>;
 export const GetResponseCheckRegionsList = /*@__PURE__*/ S.Array(
   GetResponseCheckRegionsItem,
 ) as any as S.Schema<GetResponseCheckRegionsList>;
 
-export type GetResponseHttpConfigExpectedCodesList = ReadonlyArray<string>;
+export type GetResponseHttpConfigExpectedCodesList = Array<string>;
 export const GetResponseHttpConfigExpectedCodesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetResponseHttpConfigExpectedCodesList>;
 
-export type GetResponseHttpConfigHeaderValueList = ReadonlyArray<string>;
+export type GetResponseHttpConfigHeaderValueList = Array<string>;
 export const GetResponseHttpConfigHeaderValueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetResponseHttpConfigHeaderValueList>;
@@ -1047,20 +1042,18 @@ export type PreviewsGetResponseCheckRegionsItem =
 export const PreviewsGetResponseCheckRegionsItem = /*@__PURE__*/ S.String;
 
 export type PreviewsGetResponseCheckRegionsList =
-  ReadonlyArray<PreviewsGetResponseCheckRegionsItem>;
+  Array<PreviewsGetResponseCheckRegionsItem>;
 export const PreviewsGetResponseCheckRegionsList = /*@__PURE__*/ S.Array(
   PreviewsGetResponseCheckRegionsItem,
 ) as any as S.Schema<PreviewsGetResponseCheckRegionsList>;
 
-export type PreviewsGetResponseHttpConfigExpectedCodesList =
-  ReadonlyArray<string>;
+export type PreviewsGetResponseHttpConfigExpectedCodesList = Array<string>;
 export const PreviewsGetResponseHttpConfigExpectedCodesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PreviewsGetResponseHttpConfigExpectedCodesList>;
 
-export type PreviewsGetResponseHttpConfigHeaderValueList =
-  ReadonlyArray<string>;
+export type PreviewsGetResponseHttpConfigHeaderValueList = Array<string>;
 export const PreviewsGetResponseHttpConfigHeaderValueList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1253,17 +1246,17 @@ export type ListResultItemCheckRegionsItem =
 export const ListResultItemCheckRegionsItem = /*@__PURE__*/ S.String;
 
 export type ListResultItemCheckRegionsList =
-  ReadonlyArray<ListResultItemCheckRegionsItem>;
+  Array<ListResultItemCheckRegionsItem>;
 export const ListResultItemCheckRegionsList = /*@__PURE__*/ S.Array(
   ListResultItemCheckRegionsItem,
 ) as any as S.Schema<ListResultItemCheckRegionsList>;
 
-export type ListResultItemHttpConfigExpectedCodesList = ReadonlyArray<string>;
+export type ListResultItemHttpConfigExpectedCodesList = Array<string>;
 export const ListResultItemHttpConfigExpectedCodesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ListResultItemHttpConfigExpectedCodesList>;
 
-export type ListResultItemHttpConfigHeaderValueList = ReadonlyArray<string>;
+export type ListResultItemHttpConfigHeaderValueList = Array<string>;
 export const ListResultItemHttpConfigHeaderValueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ListResultItemHttpConfigHeaderValueList>;
@@ -1404,7 +1397,7 @@ export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ListResultItem" }) as any as S.Schema<ListResultItem>;
 
-export type ListResultList = ReadonlyArray<ListResultItem>;
+export type ListResultList = Array<ListResultItem>;
 export const ListResultList = /*@__PURE__*/ S.Array(
   ListResultItem,
 ) as any as S.Schema<ListResultList>;
@@ -1441,19 +1434,19 @@ export type EditRequestCheckRegionsItem =
   | "ALL_REGIONS";
 export const EditRequestCheckRegionsItem = /*@__PURE__*/ S.String;
 
-export type EditRequestCheckRegionsList = ReadonlyArray<
+export type EditRequestCheckRegionsList = Array<
   EditRequestCheckRegionsItem | (string & {})
 >;
 export const EditRequestCheckRegionsList = /*@__PURE__*/ S.Array(
   EditRequestCheckRegionsItem,
 ) as any as S.Schema<EditRequestCheckRegionsList>;
 
-export type EditRequestHttpConfigExpectedCodesList = ReadonlyArray<string>;
+export type EditRequestHttpConfigExpectedCodesList = Array<string>;
 export const EditRequestHttpConfigExpectedCodesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EditRequestHttpConfigExpectedCodesList>;
 
-export type EditRequestHttpConfigHeaderValueList = ReadonlyArray<string>;
+export type EditRequestHttpConfigHeaderValueList = Array<string>;
 export const EditRequestHttpConfigHeaderValueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EditRequestHttpConfigHeaderValueList>;
@@ -1605,18 +1598,17 @@ export type EditResponseCheckRegionsItem =
   | "ALL_REGIONS";
 export const EditResponseCheckRegionsItem = /*@__PURE__*/ S.String;
 
-export type EditResponseCheckRegionsList =
-  ReadonlyArray<EditResponseCheckRegionsItem>;
+export type EditResponseCheckRegionsList = Array<EditResponseCheckRegionsItem>;
 export const EditResponseCheckRegionsList = /*@__PURE__*/ S.Array(
   EditResponseCheckRegionsItem,
 ) as any as S.Schema<EditResponseCheckRegionsList>;
 
-export type EditResponseHttpConfigExpectedCodesList = ReadonlyArray<string>;
+export type EditResponseHttpConfigExpectedCodesList = Array<string>;
 export const EditResponseHttpConfigExpectedCodesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EditResponseHttpConfigExpectedCodesList>;
 
-export type EditResponseHttpConfigHeaderValueList = ReadonlyArray<string>;
+export type EditResponseHttpConfigHeaderValueList = Array<string>;
 export const EditResponseHttpConfigHeaderValueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EditResponseHttpConfigHeaderValueList>;
@@ -1775,19 +1767,19 @@ export type UpdateRequestCheckRegionsItem =
   | "ALL_REGIONS";
 export const UpdateRequestCheckRegionsItem = /*@__PURE__*/ S.String;
 
-export type UpdateRequestCheckRegionsList = ReadonlyArray<
+export type UpdateRequestCheckRegionsList = Array<
   UpdateRequestCheckRegionsItem | (string & {})
 >;
 export const UpdateRequestCheckRegionsList = /*@__PURE__*/ S.Array(
   UpdateRequestCheckRegionsItem,
 ) as any as S.Schema<UpdateRequestCheckRegionsList>;
 
-export type UpdateRequestHttpConfigExpectedCodesList = ReadonlyArray<string>;
+export type UpdateRequestHttpConfigExpectedCodesList = Array<string>;
 export const UpdateRequestHttpConfigExpectedCodesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<UpdateRequestHttpConfigExpectedCodesList>;
 
-export type UpdateRequestHttpConfigHeaderValueList = ReadonlyArray<string>;
+export type UpdateRequestHttpConfigHeaderValueList = Array<string>;
 export const UpdateRequestHttpConfigHeaderValueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<UpdateRequestHttpConfigHeaderValueList>;
@@ -1940,17 +1932,17 @@ export type UpdateResponseCheckRegionsItem =
 export const UpdateResponseCheckRegionsItem = /*@__PURE__*/ S.String;
 
 export type UpdateResponseCheckRegionsList =
-  ReadonlyArray<UpdateResponseCheckRegionsItem>;
+  Array<UpdateResponseCheckRegionsItem>;
 export const UpdateResponseCheckRegionsList = /*@__PURE__*/ S.Array(
   UpdateResponseCheckRegionsItem,
 ) as any as S.Schema<UpdateResponseCheckRegionsList>;
 
-export type UpdateResponseHttpConfigExpectedCodesList = ReadonlyArray<string>;
+export type UpdateResponseHttpConfigExpectedCodesList = Array<string>;
 export const UpdateResponseHttpConfigExpectedCodesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<UpdateResponseHttpConfigExpectedCodesList>;
 
-export type UpdateResponseHttpConfigHeaderValueList = ReadonlyArray<string>;
+export type UpdateResponseHttpConfigHeaderValueList = Array<string>;
 export const UpdateResponseHttpConfigHeaderValueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<UpdateResponseHttpConfigHeaderValueList>;

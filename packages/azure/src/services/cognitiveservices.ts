@@ -23,7 +23,7 @@ export const CapabilityHostPropertiesInputTagsMap = /*@__PURE__*/ S.Record(
 
 /** List of AI services connections. */
 export type CapabilityHostPropertiesInputAiServicesConnectionsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CapabilityHostPropertiesInputAiServicesConnectionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -33,8 +33,7 @@ export type CapabilityHostKind = "Agents";
 export const CapabilityHostKind = /*@__PURE__*/ S.String;
 
 /** List of connection names from those available in the account or project to be used as a storage resource. */
-export type CapabilityHostPropertiesInputStorageConnectionsList =
-  ReadonlyArray<string>;
+export type CapabilityHostPropertiesInputStorageConnectionsList = Array<string>;
 export const CapabilityHostPropertiesInputStorageConnectionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -42,7 +41,7 @@ export const CapabilityHostPropertiesInputStorageConnectionsList =
 
 /** List of connection names from those available in the account or project to be used for Thread storage. */
 export type CapabilityHostPropertiesInputThreadStorageConnectionsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CapabilityHostPropertiesInputThreadStorageConnectionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -50,7 +49,7 @@ export const CapabilityHostPropertiesInputThreadStorageConnectionsList =
 
 /** List of connection names from those available in the account or project to be used for vector database (e.g. CosmosDB). */
 export type CapabilityHostPropertiesInputVectorStoreConnectionsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CapabilityHostPropertiesInputVectorStoreConnectionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -184,8 +183,7 @@ export const CapabilityHostPropertiesTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<CapabilityHostPropertiesTagsMap>;
 
 /** List of AI services connections. */
-export type CapabilityHostPropertiesAiServicesConnectionsList =
-  ReadonlyArray<string>;
+export type CapabilityHostPropertiesAiServicesConnectionsList = Array<string>;
 export const CapabilityHostPropertiesAiServicesConnectionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -202,8 +200,7 @@ export type CapabilityHostProvisioningState =
 export const CapabilityHostProvisioningState = /*@__PURE__*/ S.String;
 
 /** List of connection names from those available in the account or project to be used as a storage resource. */
-export type CapabilityHostPropertiesStorageConnectionsList =
-  ReadonlyArray<string>;
+export type CapabilityHostPropertiesStorageConnectionsList = Array<string>;
 export const CapabilityHostPropertiesStorageConnectionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -211,15 +208,14 @@ export const CapabilityHostPropertiesStorageConnectionsList =
 
 /** List of connection names from those available in the account or project to be used for Thread storage. */
 export type CapabilityHostPropertiesThreadStorageConnectionsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CapabilityHostPropertiesThreadStorageConnectionsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<CapabilityHostPropertiesThreadStorageConnectionsList>;
 
 /** List of connection names from those available in the account or project to be used for vector database (e.g. CosmosDB). */
-export type CapabilityHostPropertiesVectorStoreConnectionsList =
-  ReadonlyArray<string>;
+export type CapabilityHostPropertiesVectorStoreConnectionsList = Array<string>;
 export const CapabilityHostPropertiesVectorStoreConnectionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -434,7 +430,7 @@ export const CapabilityHost = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of objects of type Capability Host. */
 export type CapabilityHostResourceArmPaginatedResultValueList =
-  ReadonlyArray<CapabilityHost>;
+  Array<CapabilityHost>;
 export const CapabilityHostResourceArmPaginatedResultValueList =
   /*@__PURE__*/ S.Array(
     CapabilityHost,
@@ -619,8 +615,7 @@ export const ManagedPERequirement = /*@__PURE__*/ S.String;
 export type ManagedPEStatus = "Inactive" | "Active" | "NotApplicable";
 export const ManagedPEStatus = /*@__PURE__*/ S.String;
 
-export type ConnectionPropertiesV2InputSharedUserListList =
-  ReadonlyArray<string>;
+export type ConnectionPropertiesV2InputSharedUserListList = Array<string>;
 export const ConnectionPropertiesV2InputSharedUserListList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -716,7 +711,7 @@ export const ConnectionPropertiesV2MetadataMap = /*@__PURE__*/ S.Record(
   S.String,
 ) as any as S.Schema<ConnectionPropertiesV2MetadataMap>;
 
-export type ConnectionPropertiesV2SharedUserListList = ReadonlyArray<string>;
+export type ConnectionPropertiesV2SharedUserListList = Array<string>;
 export const ConnectionPropertiesV2SharedUserListList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ConnectionPropertiesV2SharedUserListList>;
@@ -937,7 +932,7 @@ export const ConnectionPropertiesV2BasicResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConnectionPropertiesV2BasicResource>;
 
 export type ConnectionPropertiesV2BasicResourceArmPaginatedResultValueList =
-  ReadonlyArray<ConnectionPropertiesV2BasicResource>;
+  Array<ConnectionPropertiesV2BasicResource>;
 export const ConnectionPropertiesV2BasicResourceArmPaginatedResultValueList =
   /*@__PURE__*/ S.Array(
     ConnectionPropertiesV2BasicResource,
@@ -1034,7 +1029,7 @@ export const IpRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IpRule" }) as any as S.Schema<IpRule>;
 
 /** The list of IP address rules. */
-export type NetworkRuleSetIpRulesList = ReadonlyArray<IpRule>;
+export type NetworkRuleSetIpRulesList = Array<IpRule>;
 export const NetworkRuleSetIpRulesList = /*@__PURE__*/ S.Array(
   IpRule,
 ) as any as S.Schema<NetworkRuleSetIpRulesList>;
@@ -1059,8 +1054,7 @@ export const VirtualNetworkRule = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VirtualNetworkRule>;
 
 /** The list of virtual network rules. */
-export type NetworkRuleSetVirtualNetworkRulesList =
-  ReadonlyArray<VirtualNetworkRule>;
+export type NetworkRuleSetVirtualNetworkRulesList = Array<VirtualNetworkRule>;
 export const NetworkRuleSetVirtualNetworkRulesList = /*@__PURE__*/ S.Array(
   VirtualNetworkRule,
 ) as any as S.Schema<NetworkRuleSetVirtualNetworkRulesList>;
@@ -1068,9 +1062,9 @@ export const NetworkRuleSetVirtualNetworkRulesList = /*@__PURE__*/ S.Array(
 /** A set of rules governing the network accessibility. */
 export interface NetworkRuleSet {
   /** The default action when no rule from ipRules and from virtualNetworkRules match. This is only used after the bypass property has been evaluated. */
-  defaultAction?: NetworkRuleAction;
+  defaultAction?: NetworkRuleAction | (string & {});
   /** Setting for trusted services. */
-  bypass?: ByPassSelection;
+  bypass?: ByPassSelection | (string & {});
   /** The list of IP address rules. */
   ipRules?: NetworkRuleSetIpRulesList;
   /** The list of virtual network rules. */
@@ -1117,7 +1111,7 @@ export interface Encryption {
   /** Properties of KeyVault */
   keyVaultProperties?: KeyVaultProperties;
   /** Enumerates the possible value of keySource for Encryption */
-  keySource?: EncryptionKeySource;
+  keySource?: EncryptionKeySource | (string & {});
 }
 export const Encryption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1143,7 +1137,7 @@ export const UserOwnedStorage = /*@__PURE__*/ S.suspend(() =>
 
 /** The storage accounts for this resource. */
 export type AccountPropertiesInputUserOwnedStorageList =
-  ReadonlyArray<UserOwnedStorage>;
+  Array<UserOwnedStorage>;
 export const AccountPropertiesInputUserOwnedStorageList = /*@__PURE__*/ S.Array(
   UserOwnedStorage,
 ) as any as S.Schema<AccountPropertiesInputUserOwnedStorageList>;
@@ -1206,7 +1200,7 @@ export const ApiProperties = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ApiProperties" }) as any as S.Schema<ApiProperties>;
 
-export type AccountPropertiesInputAllowedFqdnListList = ReadonlyArray<string>;
+export type AccountPropertiesInputAllowedFqdnListList = Array<string>;
 export const AccountPropertiesInputAllowedFqdnListList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AccountPropertiesInputAllowedFqdnListList>;
@@ -1232,7 +1226,7 @@ export const RegionSetting = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "RegionSetting" }) as any as S.Schema<RegionSetting>;
 
-export type MultiRegionSettingsRegionsList = ReadonlyArray<RegionSetting>;
+export type MultiRegionSettingsRegionsList = Array<RegionSetting>;
 export const MultiRegionSettingsRegionsList = /*@__PURE__*/ S.Array(
   RegionSetting,
 ) as any as S.Schema<MultiRegionSettingsRegionsList>;
@@ -1240,7 +1234,7 @@ export const MultiRegionSettingsRegionsList = /*@__PURE__*/ S.Array(
 /** The multiregion settings Cognitive Services account. */
 export interface MultiRegionSettings {
   /** Multiregion routing methods. */
-  routingMethod?: RoutingMethods;
+  routingMethod?: RoutingMethods | (string & {});
   regions?: MultiRegionSettingsRegionsList;
 }
 export const MultiRegionSettings = /*@__PURE__*/ S.suspend(() =>
@@ -1275,7 +1269,7 @@ export const ScenarioType = /*@__PURE__*/ S.String;
 /** Specifies in AI Foundry where virtual network injection occurs to secure scenarios like Agents entirely within the user's private network, eliminating public internet exposure while maintaining control over network configurations and resources. */
 export interface NetworkInjection {
   /** Specifies what features in AI Foundry network injection applies to. Currently only supports 'agent' for agent scenarios. 'none' means no network injection. */
-  scenario?: ScenarioType;
+  scenario?: ScenarioType | (string & {});
   /** Specify the subnet for which your Agent Client is injected into. */
   subnetArmId?: string;
   /** Boolean to enable Microsoft Managed Network for subnet delegation */
@@ -1292,15 +1286,14 @@ export const NetworkInjection = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NetworkInjection>;
 
 export type AccountPropertiesInputNetworkInjectionsList =
-  ReadonlyArray<NetworkInjection>;
+  Array<NetworkInjection>;
 export const AccountPropertiesInputNetworkInjectionsList =
   /*@__PURE__*/ S.Array(
     NetworkInjection,
   ) as any as S.Schema<AccountPropertiesInputNetworkInjectionsList>;
 
 /** Specifies the projects, by project name, that are associated with this resource. */
-export type AccountPropertiesInputAssociatedProjectsList =
-  ReadonlyArray<string>;
+export type AccountPropertiesInputAssociatedProjectsList = Array<string>;
 export const AccountPropertiesInputAssociatedProjectsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1391,7 +1384,7 @@ export interface Sku {
   /** The name of the SKU. Ex - P3. It is typically a letter+number code */
   name: string;
   /** This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT. */
-  tier?: SkuTier;
+  tier?: SkuTier | (string & {});
   /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
   size?: string;
   /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
@@ -1518,7 +1511,7 @@ export const SkuCapability = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SkuCapability" }) as any as S.Schema<SkuCapability>;
 
 /** Gets the capabilities of the cognitive services account. Each item indicates the capability of a specific feature. The values are read-only and for reference only. */
-export type AccountPropertiesCapabilitiesList = ReadonlyArray<SkuCapability>;
+export type AccountPropertiesCapabilitiesList = Array<SkuCapability>;
 export const AccountPropertiesCapabilitiesList = /*@__PURE__*/ S.Array(
   SkuCapability,
 ) as any as S.Schema<AccountPropertiesCapabilitiesList>;
@@ -1541,8 +1534,7 @@ export const SkuChangeInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SkuChangeInfo" }) as any as S.Schema<SkuChangeInfo>;
 
 /** The storage accounts for this resource. */
-export type AccountPropertiesUserOwnedStorageList =
-  ReadonlyArray<UserOwnedStorage>;
+export type AccountPropertiesUserOwnedStorageList = Array<UserOwnedStorage>;
 export const AccountPropertiesUserOwnedStorageList = /*@__PURE__*/ S.Array(
   UserOwnedStorage,
 ) as any as S.Schema<AccountPropertiesUserOwnedStorageList>;
@@ -1599,8 +1591,7 @@ export const PrivateEndpointConnectionPropertiesProvisioningState =
   /*@__PURE__*/ S.String;
 
 /** The private link resource group ids. */
-export type PrivateEndpointConnectionPropertiesGroupIdsList =
-  ReadonlyArray<string>;
+export type PrivateEndpointConnectionPropertiesGroupIdsList = Array<string>;
 export const PrivateEndpointConnectionPropertiesGroupIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1666,7 +1657,7 @@ export const PrivateEndpointConnection = /*@__PURE__*/ S.suspend(() =>
 
 /** The private endpoint connection associated with the Cognitive Services account. */
 export type AccountPropertiesPrivateEndpointConnectionsList =
-  ReadonlyArray<PrivateEndpointConnection>;
+  Array<PrivateEndpointConnection>;
 export const AccountPropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection,
@@ -1685,8 +1676,7 @@ export const RequestMatchPattern = /*@__PURE__*/ S.suspend(() =>
   identifier: "RequestMatchPattern",
 }) as any as S.Schema<RequestMatchPattern>;
 
-export type ThrottlingRuleMatchPatternsList =
-  ReadonlyArray<RequestMatchPattern>;
+export type ThrottlingRuleMatchPatternsList = Array<RequestMatchPattern>;
 export const ThrottlingRuleMatchPatternsList = /*@__PURE__*/ S.Array(
   RequestMatchPattern,
 ) as any as S.Schema<ThrottlingRuleMatchPatternsList>;
@@ -1710,7 +1700,7 @@ export const ThrottlingRule = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ThrottlingRule" }) as any as S.Schema<ThrottlingRule>;
 
-export type CallRateLimitRulesList = ReadonlyArray<ThrottlingRule>;
+export type CallRateLimitRulesList = Array<ThrottlingRule>;
 export const CallRateLimitRulesList = /*@__PURE__*/ S.Array(
   ThrottlingRule,
 ) as any as S.Schema<CallRateLimitRulesList>;
@@ -1731,7 +1721,7 @@ export const CallRateLimit = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CallRateLimit" }) as any as S.Schema<CallRateLimit>;
 
-export type QuotaLimitRulesList = ReadonlyArray<ThrottlingRule>;
+export type QuotaLimitRulesList = Array<ThrottlingRule>;
 export const QuotaLimitRulesList = /*@__PURE__*/ S.Array(
   ThrottlingRule,
 ) as any as S.Schema<QuotaLimitRulesList>;
@@ -1749,7 +1739,7 @@ export const QuotaLimit = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "QuotaLimit" }) as any as S.Schema<QuotaLimit>;
 
-export type AccountPropertiesAllowedFqdnListList = ReadonlyArray<string>;
+export type AccountPropertiesAllowedFqdnListList = Array<string>;
 export const AccountPropertiesAllowedFqdnListList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AccountPropertiesAllowedFqdnListList>;
@@ -1781,7 +1771,7 @@ export const CommitmentPlanAssociation = /*@__PURE__*/ S.suspend(() =>
 
 /** The commitment plan associations of Cognitive Services account. */
 export type AccountPropertiesCommitmentPlanAssociationsList =
-  ReadonlyArray<CommitmentPlanAssociation>;
+  Array<CommitmentPlanAssociation>;
 export const AccountPropertiesCommitmentPlanAssociationsList =
   /*@__PURE__*/ S.Array(
     CommitmentPlanAssociation,
@@ -1808,14 +1798,13 @@ export const AbusePenalty = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AbusePenalty" }) as any as S.Schema<AbusePenalty>;
 
-export type AccountPropertiesNetworkInjectionsList =
-  ReadonlyArray<NetworkInjection>;
+export type AccountPropertiesNetworkInjectionsList = Array<NetworkInjection>;
 export const AccountPropertiesNetworkInjectionsList = /*@__PURE__*/ S.Array(
   NetworkInjection,
 ) as any as S.Schema<AccountPropertiesNetworkInjectionsList>;
 
 /** Specifies the projects, by project name, that are associated with this resource. */
-export type AccountPropertiesAssociatedProjectsList = ReadonlyArray<string>;
+export type AccountPropertiesAssociatedProjectsList = Array<string>;
 export const AccountPropertiesAssociatedProjectsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AccountPropertiesAssociatedProjectsList>;
@@ -2203,7 +2192,7 @@ export const Account = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Account" }) as any as S.Schema<Account>;
 
 /** Gets the list of Cognitive Services accounts and their properties. */
-export type AccountListResultValueList = ReadonlyArray<Account>;
+export type AccountListResultValueList = Array<Account>;
 export const AccountListResultValueList = /*@__PURE__*/ S.Array(
   Account,
 ) as any as S.Schema<AccountListResultValueList>;
@@ -2339,7 +2328,7 @@ export const DeploymentModel = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeploymentModel>;
 
 /** The array of allowed values for capacity. */
-export type CapacityConfigAllowedValuesList = ReadonlyArray<number>;
+export type CapacityConfigAllowedValuesList = Array<number>;
 export const CapacityConfigAllowedValuesList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<CapacityConfigAllowedValuesList>;
@@ -2368,7 +2357,7 @@ export const CapacityConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CapacityConfig" }) as any as S.Schema<CapacityConfig>;
 
 /** The list of rateLimit. */
-export type ModelSkuRateLimitsList = ReadonlyArray<CallRateLimit>;
+export type ModelSkuRateLimitsList = Array<CallRateLimit>;
 export const ModelSkuRateLimitsList = /*@__PURE__*/ S.Array(
   CallRateLimit,
 ) as any as S.Schema<ModelSkuRateLimitsList>;
@@ -2389,7 +2378,7 @@ export const BillingMeterInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BillingMeterInfo>;
 
 /** The list of billing meter info. */
-export type ModelSkuCostList = ReadonlyArray<BillingMeterInfo>;
+export type ModelSkuCostList = Array<BillingMeterInfo>;
 export const ModelSkuCostList = /*@__PURE__*/ S.Array(
   BillingMeterInfo,
 ) as any as S.Schema<ModelSkuCostList>;
@@ -2421,7 +2410,7 @@ export const ModelSku = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ModelSku" }) as any as S.Schema<ModelSku>;
 
 /** The list of Model Sku. */
-export type AccountModelSkusList = ReadonlyArray<ModelSku>;
+export type AccountModelSkusList = Array<ModelSku>;
 export const AccountModelSkusList = /*@__PURE__*/ S.Array(
   ModelSku,
 ) as any as S.Schema<AccountModelSkusList>;
@@ -2604,7 +2593,7 @@ export const AccountModel = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AccountModel" }) as any as S.Schema<AccountModel>;
 
 /** Gets the list of Cognitive Services accounts Model and their properties. */
-export type AccountModelListResultValueList = ReadonlyArray<AccountModel>;
+export type AccountModelListResultValueList = Array<AccountModel>;
 export const AccountModelListResultValueList = /*@__PURE__*/ S.Array(
   AccountModel,
 ) as any as S.Schema<AccountModelListResultValueList>;
@@ -2665,7 +2654,7 @@ export const AccountSku = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AccountSku" }) as any as S.Schema<AccountSku>;
 
 /** Gets the list of Cognitive Services accounts and their properties. */
-export type AccountSkuListResultValueList = ReadonlyArray<AccountSku>;
+export type AccountSkuListResultValueList = Array<AccountSku>;
 export const AccountSkuListResultValueList = /*@__PURE__*/ S.Array(
   AccountSku,
 ) as any as S.Schema<AccountSkuListResultValueList>;
@@ -2770,7 +2759,7 @@ export const Usage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Usage" }) as any as S.Schema<Usage>;
 
 /** The list of usages for Cognitive Service account. */
-export type UsageListResultValueList = ReadonlyArray<Usage>;
+export type UsageListResultValueList = Array<Usage>;
 export const UsageListResultValueList = /*@__PURE__*/ S.Array(
   Usage,
 ) as any as S.Schema<UsageListResultValueList>;
@@ -2953,7 +2942,7 @@ export const AgentReferenceProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of agent definitions comprising this application, returned as references to the objects under the parent project; use this to obtain a flat list of all agent-version pairs represented by this application. */
 export type AgenticApplicationPropertiesInputAgentsList =
-  ReadonlyArray<AgentReferenceProperties>;
+  Array<AgentReferenceProperties>;
 export const AgenticApplicationPropertiesInputAgentsList =
   /*@__PURE__*/ S.Array(
     AgentReferenceProperties,
@@ -3011,7 +3000,7 @@ export const BuiltInAuthorizationScheme = /*@__PURE__*/ S.String;
 /** Represents a policy for authorizing applications based on specified authentication and authorization schemes. */
 export interface ApplicationAuthorizationPolicy {
   /** Authorization scheme type. */
-  type: BuiltInAuthorizationScheme;
+  type: BuiltInAuthorizationScheme | (string & {});
 }
 export const ApplicationAuthorizationPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3049,7 +3038,7 @@ export const TrafficRoutingRule = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets the collection of traffic routing rules. */
 export type ApplicationTrafficRoutingPolicyRulesList =
-  ReadonlyArray<TrafficRoutingRule>;
+  Array<TrafficRoutingRule>;
 export const ApplicationTrafficRoutingPolicyRulesList = /*@__PURE__*/ S.Array(
   TrafficRoutingRule,
 ) as any as S.Schema<ApplicationTrafficRoutingPolicyRulesList>;
@@ -3057,7 +3046,7 @@ export const ApplicationTrafficRoutingPolicyRulesList = /*@__PURE__*/ S.Array(
 /** Type representing an application traffic policy as a property of an agentic application. */
 export interface ApplicationTrafficRoutingPolicy {
   /** Methodology used to route traffic to the application's deployments. */
-  protocol?: TrafficRoutingProtocol;
+  protocol?: TrafficRoutingProtocol | (string & {});
   /** Gets or sets the collection of traffic routing rules. */
   rules?: ApplicationTrafficRoutingPolicyRulesList | null;
 }
@@ -3153,7 +3142,7 @@ export const AgenticApplicationPropertiesTagsMap = /*@__PURE__*/ S.Record(
 
 /** The list of agent definitions comprising this application, returned as references to the objects under the parent project; use this to obtain a flat list of all agent-version pairs represented by this application. */
 export type AgenticApplicationPropertiesAgentsList =
-  ReadonlyArray<AgentReferenceProperties>;
+  Array<AgentReferenceProperties>;
 export const AgenticApplicationPropertiesAgentsList = /*@__PURE__*/ S.Array(
   AgentReferenceProperties,
 ) as any as S.Schema<AgenticApplicationPropertiesAgentsList>;
@@ -3446,7 +3435,7 @@ export const AgentApplicationsGetResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "AgentApplicationsGetResponse",
 }) as any as S.Schema<AgentApplicationsGetResponse>;
 
-export type AgentApplicationsListRequestNamesList = ReadonlyArray<string>;
+export type AgentApplicationsListRequestNamesList = Array<string>;
 export const AgentApplicationsListRequestNamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AgentApplicationsListRequestNamesList>;
@@ -3527,7 +3516,7 @@ export const AgentApplication = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of objects of type Agent Application. */
 export type AgentApplicationResourceArmPaginatedResultValueList =
-  ReadonlyArray<AgentApplication>;
+  Array<AgentApplication>;
 export const AgentApplicationResourceArmPaginatedResultValueList =
   /*@__PURE__*/ S.Array(
     AgentApplication,
@@ -3606,7 +3595,7 @@ export const AgentReference = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of objects of type Agent Reference. */
 export type AgentReferenceResourceArmPaginatedResultValueList =
-  ReadonlyArray<AgentReference>;
+  Array<AgentReference>;
 export const AgentReferenceResourceArmPaginatedResultValueList =
   /*@__PURE__*/ S.Array(
     AgentReference,
@@ -3659,7 +3648,7 @@ export const AgentProtocol = /*@__PURE__*/ S.String;
 /** Type modeling the protocol and version used by an agent/exposed by a deployment. */
 export interface AgentProtocolVersion {
   /** The protocol used by the agent/exposed by a deployment. */
-  protocol?: AgentProtocol;
+  protocol?: AgentProtocol | (string & {});
   /** The version of the protocol. */
   version?: string | null;
 }
@@ -3674,7 +3663,7 @@ export const AgentProtocolVersion = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets the supported protocol types and versions exposed by this deployment. */
 export type AgentDeploymentPropertiesInputProtocolsList =
-  ReadonlyArray<AgentProtocolVersion>;
+  Array<AgentProtocolVersion>;
 export const AgentDeploymentPropertiesInputProtocolsList =
   /*@__PURE__*/ S.Array(
     AgentProtocolVersion,
@@ -3701,7 +3690,7 @@ export const VersionedAgentReference = /*@__PURE__*/ S.suspend(() =>
 
 /** Returns a flat list of agent:version deployed in this deployment. */
 export type AgentDeploymentPropertiesInputAgentsList =
-  ReadonlyArray<VersionedAgentReference>;
+  Array<VersionedAgentReference>;
 export const AgentDeploymentPropertiesInputAgentsList = /*@__PURE__*/ S.Array(
   VersionedAgentReference,
 ) as any as S.Schema<AgentDeploymentPropertiesInputAgentsList>;
@@ -3795,14 +3784,14 @@ export const AgentDeploymentPropertiesTagsMap = /*@__PURE__*/ S.Record(
 
 /** Gets or sets the supported protocol types and versions exposed by this deployment. */
 export type AgentDeploymentPropertiesProtocolsList =
-  ReadonlyArray<AgentProtocolVersion>;
+  Array<AgentProtocolVersion>;
 export const AgentDeploymentPropertiesProtocolsList = /*@__PURE__*/ S.Array(
   AgentProtocolVersion,
 ) as any as S.Schema<AgentDeploymentPropertiesProtocolsList>;
 
 /** Returns a flat list of agent:version deployed in this deployment. */
 export type AgentDeploymentPropertiesAgentsList =
-  ReadonlyArray<VersionedAgentReference>;
+  Array<VersionedAgentReference>;
 export const AgentDeploymentPropertiesAgentsList = /*@__PURE__*/ S.Array(
   VersionedAgentReference,
 ) as any as S.Schema<AgentDeploymentPropertiesAgentsList>;
@@ -3978,7 +3967,7 @@ export const AgentDeploymentsGetResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "AgentDeploymentsGetResponse",
 }) as any as S.Schema<AgentDeploymentsGetResponse>;
 
-export type AgentDeploymentsListRequestNamesList = ReadonlyArray<string>;
+export type AgentDeploymentsListRequestNamesList = Array<string>;
 export const AgentDeploymentsListRequestNamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AgentDeploymentsListRequestNamesList>;
@@ -4056,7 +4045,7 @@ export const AgentDeployment = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of objects of type Agent Deployment. */
 export type AgentDeploymentResourceArmPaginatedResultValueList =
-  ReadonlyArray<AgentDeployment>;
+  Array<AgentDeployment>;
 export const AgentDeploymentResourceArmPaginatedResultValueList =
   /*@__PURE__*/ S.Array(
     AgentDeployment,
@@ -4196,7 +4185,7 @@ export const ModelCapacityCalculatorWorkload = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Model Capacity Calculator Workload. */
 export type CalculateModelCapacityRequestWorkloadsList =
-  ReadonlyArray<ModelCapacityCalculatorWorkload>;
+  Array<ModelCapacityCalculatorWorkload>;
 export const CalculateModelCapacityRequestWorkloadsList = /*@__PURE__*/ S.Array(
   ModelCapacityCalculatorWorkload,
 ) as any as S.Schema<CalculateModelCapacityRequestWorkloadsList>;
@@ -4318,7 +4307,7 @@ export const DomainAvailability = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DomainAvailability>;
 
 /** The SKU of the resource. */
-export type CheckSkuAvailabilityRequestSkusList = ReadonlyArray<string>;
+export type CheckSkuAvailabilityRequestSkusList = Array<string>;
 export const CheckSkuAvailabilityRequestSkusList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CheckSkuAvailabilityRequestSkusList>;
@@ -4383,7 +4372,7 @@ export const SkuAvailability = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SkuAvailability>;
 
 /** Check SKU availability result list. */
-export type SkuAvailabilityListResultValueList = ReadonlyArray<SkuAvailability>;
+export type SkuAvailabilityListResultValueList = Array<SkuAvailability>;
 export const SkuAvailabilityListResultValueList = /*@__PURE__*/ S.Array(
   SkuAvailability,
 ) as any as S.Schema<SkuAvailabilityListResultValueList>;
@@ -4560,8 +4549,7 @@ export const CommitmentPeriod = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CommitmentPeriod>;
 
 /** The list of ProvisioningIssue. */
-export type CommitmentPlanPropertiesProvisioningIssuesList =
-  ReadonlyArray<string>;
+export type CommitmentPlanPropertiesProvisioningIssuesList = Array<string>;
 export const CommitmentPlanPropertiesProvisioningIssuesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5250,7 +5238,7 @@ export const CommitmentPlan = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CommitmentPlan" }) as any as S.Schema<CommitmentPlan>;
 
 /** Gets the list of Cognitive Services accounts CommitmentPlan and their properties. */
-export type CommitmentPlanListResultValueList = ReadonlyArray<CommitmentPlan>;
+export type CommitmentPlanListResultValueList = Array<CommitmentPlan>;
 export const CommitmentPlanListResultValueList = /*@__PURE__*/ S.Array(
   CommitmentPlan,
 ) as any as S.Schema<CommitmentPlanListResultValueList>;
@@ -5339,7 +5327,7 @@ export const CommitmentPlanAccountAssociation = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets the list of Cognitive Services Commitment Plan Account Association and their properties. */
 export type CommitmentPlanAccountAssociationListResultValueList =
-  ReadonlyArray<CommitmentPlanAccountAssociation>;
+  Array<CommitmentPlanAccountAssociation>;
 export const CommitmentPlanAccountAssociationListResultValueList =
   /*@__PURE__*/ S.Array(
     CommitmentPlanAccountAssociation,
@@ -5562,7 +5550,7 @@ export const CommitmentTier = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CommitmentTier" }) as any as S.Schema<CommitmentTier>;
 
 /** Gets the list of Cognitive Services accounts CommitmentTier and their properties. */
-export type CommitmentTierListResultValueList = ReadonlyArray<CommitmentTier>;
+export type CommitmentTierListResultValueList = Array<CommitmentTier>;
 export const CommitmentTierListResultValueList = /*@__PURE__*/ S.Array(
   CommitmentTier,
 ) as any as S.Schema<CommitmentTierListResultValueList>;
@@ -5590,7 +5578,7 @@ export const DefenderForAISettingState = /*@__PURE__*/ S.String;
 /** The Defender for AI resource properties. */
 export interface DefenderForAISettingProperties {
   /** Defender for AI state on the AI resource. */
-  state?: DefenderForAISettingState;
+  state?: DefenderForAISettingState | (string & {});
 }
 export const DefenderForAISettingProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5817,8 +5805,7 @@ export const DefenderForAISetting = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DefenderForAISetting>;
 
 /** The list of Defender for AI Settings. */
-export type DefenderForAISettingResultValueList =
-  ReadonlyArray<DefenderForAISetting>;
+export type DefenderForAISettingResultValueList = Array<DefenderForAISetting>;
 export const DefenderForAISettingResultValueList = /*@__PURE__*/ S.Array(
   DefenderForAISetting,
 ) as any as S.Schema<DefenderForAISettingResultValueList>;
@@ -6111,7 +6098,7 @@ export type DeploymentRoutingMode = "cost" | "balanced" | "quality";
 export const DeploymentRoutingMode = /*@__PURE__*/ S.String;
 
 /** Optional. The list of model-router supported models that the model router can use to route requests across. If not specified, the model router will route to all available models specified in the model-router version. */
-export type DeploymentRoutingModelsList = ReadonlyArray<DeploymentModel>;
+export type DeploymentRoutingModelsList = Array<DeploymentModel>;
 export const DeploymentRoutingModelsList = /*@__PURE__*/ S.Array(
   DeploymentModel,
 ) as any as S.Schema<DeploymentRoutingModelsList>;
@@ -6119,7 +6106,7 @@ export const DeploymentRoutingModelsList = /*@__PURE__*/ S.Array(
 /** Routing configuration for the model-router deployment. Specifies how requests are routed across multiple models. */
 export interface DeploymentRouting {
   /** The model-router routing mode that determines how requests are distributed across models. */
-  mode?: DeploymentRoutingMode;
+  mode?: DeploymentRoutingMode | (string & {});
   /** Optional. The list of model-router supported models that the model router can use to route requests across. If not specified, the model router will route to all available models specified in the model-router version. */
   models?: DeploymentRoutingModelsList;
 }
@@ -6261,7 +6248,7 @@ export const DeploymentPropertiesCapabilitiesMap = /*@__PURE__*/ S.Record(
   S.String,
 ) as any as S.Schema<DeploymentPropertiesCapabilitiesMap>;
 
-export type DeploymentPropertiesRateLimitsList = ReadonlyArray<ThrottlingRule>;
+export type DeploymentPropertiesRateLimitsList = Array<ThrottlingRule>;
 export const DeploymentPropertiesRateLimitsList = /*@__PURE__*/ S.Array(
   ThrottlingRule,
 ) as any as S.Schema<DeploymentPropertiesRateLimitsList>;
@@ -6535,7 +6522,7 @@ export const Deployment = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Deployment" }) as any as S.Schema<Deployment>;
 
 /** Gets the list of Cognitive Services accounts Deployment and their properties. */
-export type DeploymentListResultValueList = ReadonlyArray<Deployment>;
+export type DeploymentListResultValueList = Array<Deployment>;
 export const DeploymentListResultValueList = /*@__PURE__*/ S.Array(
   Deployment,
 ) as any as S.Schema<DeploymentListResultValueList>;
@@ -6602,7 +6589,7 @@ export const SkuResource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SkuResource" }) as any as S.Schema<SkuResource>;
 
 /** Gets the list of Cognitive Services accounts deployment skus. */
-export type DeploymentSkuListResultValueList = ReadonlyArray<SkuResource>;
+export type DeploymentSkuListResultValueList = Array<SkuResource>;
 export const DeploymentSkuListResultValueList = /*@__PURE__*/ S.Array(
   SkuResource,
 ) as any as S.Schema<DeploymentSkuListResultValueList>;
@@ -7168,7 +7155,7 @@ export const EncryptionScope = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EncryptionScope>;
 
 /** The list of EncryptionScope. */
-export type EncryptionScopeListResultValueList = ReadonlyArray<EncryptionScope>;
+export type EncryptionScopeListResultValueList = Array<EncryptionScope>;
 export const EncryptionScopeListResultValueList = /*@__PURE__*/ S.Array(
   EncryptionScope,
 ) as any as S.Schema<EncryptionScopeListResultValueList>;
@@ -7271,7 +7258,7 @@ export const ModelCapacityListResultValueItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets the list of Cognitive Services accounts ModelSkuCapacity. */
 export type ModelCapacityListResultValueList =
-  ReadonlyArray<ModelCapacityListResultValueItem>;
+  Array<ModelCapacityListResultValueItem>;
 export const ModelCapacityListResultValueList = /*@__PURE__*/ S.Array(
   ModelCapacityListResultValueItem,
 ) as any as S.Schema<ModelCapacityListResultValueList>;
@@ -7328,7 +7315,7 @@ export const ManagedNetworkStatus = /*@__PURE__*/ S.String;
 /** Status of the Provisioning for the managed network of a cognitive services account. */
 export interface ManagedNetworkProvisionStatus {
   /** Status for the managed network of a cognitive services account. */
-  status?: ManagedNetworkStatus;
+  status?: ManagedNetworkStatus | (string & {});
 }
 export const ManagedNetworkProvisionStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -7429,7 +7416,7 @@ export const RuleStatus = /*@__PURE__*/ S.String;
 export type RuleType = "FQDN" | "PrivateEndpoint" | "ServiceTag";
 export const RuleType = /*@__PURE__*/ S.String;
 
-export type OutboundRuleParentRuleNamesList = ReadonlyArray<string>;
+export type OutboundRuleParentRuleNamesList = Array<string>;
 export const OutboundRuleParentRuleNamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<OutboundRuleParentRuleNamesList>;
@@ -7483,7 +7470,7 @@ export type ManagedNetworkProvisioningState =
 export const ManagedNetworkProvisioningState = /*@__PURE__*/ S.String;
 
 export type ManagedNetworkSettingsExChangeableIsolationModesList =
-  ReadonlyArray<IsolationMode>;
+  Array<IsolationMode>;
 export const ManagedNetworkSettingsExChangeableIsolationModesList =
   /*@__PURE__*/ S.Array(
     IsolationMode,
@@ -7620,7 +7607,7 @@ export const ManagedNetworkSettingsPropertiesBasicResource =
 
 /** The list of managed network settings of an account. Since this list may be incomplete, the nextLink field should be used to request the next list of cognitive services accounts. */
 export type ManagedNetworkListResultValueList =
-  ReadonlyArray<ManagedNetworkSettingsPropertiesBasicResource>;
+  Array<ManagedNetworkSettingsPropertiesBasicResource>;
 export const ManagedNetworkListResultValueList = /*@__PURE__*/ S.Array(
   ManagedNetworkSettingsPropertiesBasicResource,
 ) as any as S.Schema<ManagedNetworkListResultValueList>;
@@ -7891,7 +7878,7 @@ export const Model = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Model" }) as any as S.Schema<Model>;
 
 /** Gets the list of Cognitive Services accounts Model and their properties. */
-export type ModelListResultValueList = ReadonlyArray<Model>;
+export type ModelListResultValueList = Array<Model>;
 export const ModelListResultValueList = /*@__PURE__*/ S.Array(
   Model,
 ) as any as S.Schema<ModelListResultValueList>;
@@ -7942,8 +7929,7 @@ export const NetworkSecurityPerimeterConfigurationsGetRequest =
   }) as any as S.Schema<NetworkSecurityPerimeterConfigurationsGetRequest>;
 
 /** IDs of resources that can be associated to the same perimeter to remediate the issue. */
-export type ProvisioningIssuePropertiesSuggestedResourceIdsList =
-  ReadonlyArray<string>;
+export type ProvisioningIssuePropertiesSuggestedResourceIdsList = Array<string>;
 export const ProvisioningIssuePropertiesSuggestedResourceIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -7955,7 +7941,7 @@ export const NspAccessRuleDirection = /*@__PURE__*/ S.String;
 
 /** Address prefixes for inbound rules */
 export type NetworkSecurityPerimeterAccessRulePropertiesAddressPrefixesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const NetworkSecurityPerimeterAccessRulePropertiesAddressPrefixesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -7977,7 +7963,7 @@ export const NetworkSecurityPerimeterAccessRulePropertiesSubscriptionsItem =
 
 /** Subscriptions for inbound rules */
 export type NetworkSecurityPerimeterAccessRulePropertiesSubscriptionsList =
-  ReadonlyArray<NetworkSecurityPerimeterAccessRulePropertiesSubscriptionsItem>;
+  Array<NetworkSecurityPerimeterAccessRulePropertiesSubscriptionsItem>;
 export const NetworkSecurityPerimeterAccessRulePropertiesSubscriptionsList =
   /*@__PURE__*/ S.Array(
     NetworkSecurityPerimeterAccessRulePropertiesSubscriptionsItem,
@@ -8004,7 +7990,7 @@ export const NetworkSecurityPerimeter = /*@__PURE__*/ S.suspend(() =>
 
 /** NetworkSecurityPerimeters for inbound rules */
 export type NetworkSecurityPerimeterAccessRulePropertiesNetworkSecurityPerimetersList =
-  ReadonlyArray<NetworkSecurityPerimeter>;
+  Array<NetworkSecurityPerimeter>;
 export const NetworkSecurityPerimeterAccessRulePropertiesNetworkSecurityPerimetersList =
   /*@__PURE__*/ S.Array(
     NetworkSecurityPerimeter,
@@ -8012,7 +7998,7 @@ export const NetworkSecurityPerimeterAccessRulePropertiesNetworkSecurityPerimete
 
 /** Fully qualified domain name for outbound rules */
 export type NetworkSecurityPerimeterAccessRulePropertiesFullyQualifiedDomainNamesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const NetworkSecurityPerimeterAccessRulePropertiesFullyQualifiedDomainNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -8070,7 +8056,7 @@ export const NetworkSecurityPerimeterAccessRule = /*@__PURE__*/ S.suspend(() =>
 
 /** Optional array, suggested access rules */
 export type ProvisioningIssuePropertiesSuggestedAccessRulesList =
-  ReadonlyArray<NetworkSecurityPerimeterAccessRule>;
+  Array<NetworkSecurityPerimeterAccessRule>;
 export const ProvisioningIssuePropertiesSuggestedAccessRulesList =
   /*@__PURE__*/ S.Array(
     NetworkSecurityPerimeterAccessRule,
@@ -8122,7 +8108,7 @@ export const ProvisioningIssue = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Provisioning Issues */
 export type NetworkSecurityPerimeterConfigurationPropertiesProvisioningIssuesList =
-  ReadonlyArray<ProvisioningIssue>;
+  Array<ProvisioningIssue>;
 export const NetworkSecurityPerimeterConfigurationPropertiesProvisioningIssuesList =
   /*@__PURE__*/ S.Array(
     ProvisioningIssue,
@@ -8146,7 +8132,7 @@ export const NetworkSecurityPerimeterConfigurationAssociationInfo =
   }) as any as S.Schema<NetworkSecurityPerimeterConfigurationAssociationInfo>;
 
 export type NetworkSecurityPerimeterProfileInfoAccessRulesList =
-  ReadonlyArray<NetworkSecurityPerimeterAccessRule>;
+  Array<NetworkSecurityPerimeterAccessRule>;
 export const NetworkSecurityPerimeterProfileInfoAccessRulesList =
   /*@__PURE__*/ S.Array(
     NetworkSecurityPerimeterAccessRule,
@@ -8154,7 +8140,7 @@ export const NetworkSecurityPerimeterProfileInfoAccessRulesList =
 
 /** List of enabled log categories */
 export type NetworkSecurityPerimeterProfileInfoEnabledLogCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const NetworkSecurityPerimeterProfileInfoEnabledLogCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -8295,7 +8281,7 @@ export const NetworkSecurityPerimeterConfiguration = /*@__PURE__*/ S.suspend(
 
 /** Array of NSP configurations List Result for an Cognitive Services account. */
 export type NetworkSecurityPerimeterConfigurationListValueList =
-  ReadonlyArray<NetworkSecurityPerimeterConfiguration>;
+  Array<NetworkSecurityPerimeterConfiguration>;
 export const NetworkSecurityPerimeterConfigurationListValueList =
   /*@__PURE__*/ S.Array(
     NetworkSecurityPerimeterConfiguration,
@@ -8440,7 +8426,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = ReadonlyArray<Operation>;
+export type OperationsListResponseValueList = Array<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;
@@ -8665,8 +8651,7 @@ export const OutboundRuleBasicResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OutboundRuleBasicResource>;
 
 /** The list of cognitive services accounts. Since this list may be incomplete, the nextLink field should be used to request the next list of cognitive services accounts. */
-export type OutboundRuleListResultValueList =
-  ReadonlyArray<OutboundRuleBasicResource>;
+export type OutboundRuleListResultValueList = Array<OutboundRuleBasicResource>;
 export const OutboundRuleListResultValueList = /*@__PURE__*/ S.Array(
   OutboundRuleBasicResource,
 ) as any as S.Schema<OutboundRuleListResultValueList>;
@@ -8785,7 +8770,7 @@ export const PrivateEndpointConnectionPropertiesInputPrivateLinkServiceConnectio
 
 /** The private link resource group ids. */
 export type PrivateEndpointConnectionPropertiesInputGroupIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PrivateEndpointConnectionPropertiesInputGroupIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -9006,7 +8991,7 @@ export const PrivateEndpointConnectionsListRequest = /*@__PURE__*/ S.suspend(
 
 /** Array of private endpoint connections */
 export type PrivateEndpointConnectionListResultValueList =
-  ReadonlyArray<PrivateEndpointConnection>;
+  Array<PrivateEndpointConnection>;
 export const PrivateEndpointConnectionListResultValueList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection,
@@ -9051,16 +9036,14 @@ export const PrivateLinkResourcesListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateLinkResourcesListRequest>;
 
 /** The private link resource required member names. */
-export type PrivateLinkResourcePropertiesRequiredMembersList =
-  ReadonlyArray<string>;
+export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
 export const PrivateLinkResourcePropertiesRequiredMembersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
 
 /** The private link resource Private link DNS zone name. */
-export type PrivateLinkResourcePropertiesRequiredZoneNamesList =
-  ReadonlyArray<string>;
+export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
 export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -9118,8 +9101,7 @@ export const PrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateLinkResource>;
 
 /** Array of private link resources */
-export type PrivateLinkResourceListResultValueList =
-  ReadonlyArray<PrivateLinkResource>;
+export type PrivateLinkResourceListResultValueList = Array<PrivateLinkResource>;
 export const PrivateLinkResourceListResultValueList = /*@__PURE__*/ S.Array(
   PrivateLinkResource,
 ) as any as S.Schema<PrivateLinkResourceListResultValueList>;
@@ -9139,7 +9121,7 @@ export const PrivateLinkResourceListResult = /*@__PURE__*/ S.suspend(() =>
 
 /** List of AI services connections. */
 export type ProjectCapabilityHostPropertiesInputAiServicesConnectionsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ProjectCapabilityHostPropertiesInputAiServicesConnectionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -9147,7 +9129,7 @@ export const ProjectCapabilityHostPropertiesInputAiServicesConnectionsList =
 
 /** List of connection names from those available in the account or project to be used for vector database (e.g. CosmosDB). */
 export type ProjectCapabilityHostPropertiesInputVectorStoreConnectionsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ProjectCapabilityHostPropertiesInputVectorStoreConnectionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -9155,7 +9137,7 @@ export const ProjectCapabilityHostPropertiesInputVectorStoreConnectionsList =
 
 /** List of connection names from those available in the account or project to be used as a storage resource. */
 export type ProjectCapabilityHostPropertiesInputStorageConnectionsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ProjectCapabilityHostPropertiesInputStorageConnectionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -9163,7 +9145,7 @@ export const ProjectCapabilityHostPropertiesInputStorageConnectionsList =
 
 /** List of connection names from those available in the account or project to be used for Thread storage. */
 export type ProjectCapabilityHostPropertiesInputThreadStorageConnectionsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ProjectCapabilityHostPropertiesInputThreadStorageConnectionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -9240,7 +9222,7 @@ export const ProjectCapabilityHostsCreateOrUpdateRequest =
 
 /** List of AI services connections. */
 export type ProjectCapabilityHostPropertiesAiServicesConnectionsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ProjectCapabilityHostPropertiesAiServicesConnectionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -9248,7 +9230,7 @@ export const ProjectCapabilityHostPropertiesAiServicesConnectionsList =
 
 /** List of connection names from those available in the account or project to be used for vector database (e.g. CosmosDB). */
 export type ProjectCapabilityHostPropertiesVectorStoreConnectionsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ProjectCapabilityHostPropertiesVectorStoreConnectionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -9256,7 +9238,7 @@ export const ProjectCapabilityHostPropertiesVectorStoreConnectionsList =
 
 /** List of connection names from those available in the account or project to be used as a storage resource. */
 export type ProjectCapabilityHostPropertiesStorageConnectionsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ProjectCapabilityHostPropertiesStorageConnectionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -9264,7 +9246,7 @@ export const ProjectCapabilityHostPropertiesStorageConnectionsList =
 
 /** List of connection names from those available in the account or project to be used for Thread storage. */
 export type ProjectCapabilityHostPropertiesThreadStorageConnectionsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ProjectCapabilityHostPropertiesThreadStorageConnectionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -9475,7 +9457,7 @@ export const ProjectCapabilityHost = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of objects of type Project Capability Host. */
 export type ProjectCapabilityHostResourceArmPaginatedResultValueList =
-  ReadonlyArray<ProjectCapabilityHost>;
+  Array<ProjectCapabilityHost>;
 export const ProjectCapabilityHostResourceArmPaginatedResultValueList =
   /*@__PURE__*/ S.Array(
     ProjectCapabilityHost,
@@ -10064,7 +10046,7 @@ export const Project = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Project" }) as any as S.Schema<Project>;
 
 /** Gets the list of Cognitive Services projects and their properties. */
-export type ProjectListResultValueList = ReadonlyArray<Project>;
+export type ProjectListResultValueList = Array<Project>;
 export const ProjectListResultValueList = /*@__PURE__*/ S.Array(
   Project,
 ) as any as S.Schema<ProjectListResultValueList>;
@@ -10384,7 +10366,7 @@ export const QuotaTier = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "QuotaTier" }) as any as S.Schema<QuotaTier>;
 
 /** Gets the list of Quota Tiers and their properties. */
-export type QuotaTierListResultValueList = ReadonlyArray<QuotaTier>;
+export type QuotaTierListResultValueList = Array<QuotaTier>;
 export const QuotaTierListResultValueList = /*@__PURE__*/ S.Array(
   QuotaTier,
 ) as any as S.Schema<QuotaTierListResultValueList>;
@@ -10487,7 +10469,7 @@ export const RaiBlocklistItemBulkRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of Cognitive Services RaiBlocklist Items for batch add. */
 export type RaiBlocklistItemsBulkAddRequest =
-  ReadonlyArray<RaiBlocklistItemBulkRequest>;
+  Array<RaiBlocklistItemBulkRequest>;
 export const RaiBlocklistItemsBulkAddRequest = /*@__PURE__*/ S.Array(
   RaiBlocklistItemBulkRequest,
 ) as any as S.Schema<RaiBlocklistItemsBulkAddRequest>;
@@ -10575,7 +10557,7 @@ export const RaiBlocklistItemsBatchAddResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RaiBlocklistItemsBatchAddResponse>;
 
 /** The list of Cognitive Services RaiBlocklist Items Names. */
-export type RaiBlocklistItemsBulkDeleteRequest = ReadonlyArray<string>;
+export type RaiBlocklistItemsBulkDeleteRequest = Array<string>;
 export const RaiBlocklistItemsBulkDeleteRequest = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RaiBlocklistItemsBulkDeleteRequest>;
@@ -10881,7 +10863,7 @@ export const RaiBlocklistItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RaiBlocklistItem>;
 
 /** The list of RaiBlocklistItems. */
-export type RaiBlockListItemsResultValueList = ReadonlyArray<RaiBlocklistItem>;
+export type RaiBlockListItemsResultValueList = Array<RaiBlocklistItem>;
 export const RaiBlockListItemsResultValueList = /*@__PURE__*/ S.Array(
   RaiBlocklistItem,
 ) as any as S.Schema<RaiBlockListItemsResultValueList>;
@@ -11149,7 +11131,7 @@ export const RaiBlocklist = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RaiBlocklist" }) as any as S.Schema<RaiBlocklist>;
 
 /** The list of RaiBlocklist. */
-export type RaiBlockListResultValueList = ReadonlyArray<RaiBlocklist>;
+export type RaiBlockListResultValueList = Array<RaiBlocklist>;
 export const RaiBlockListResultValueList = /*@__PURE__*/ S.Array(
   RaiBlocklist,
 ) as any as S.Schema<RaiBlockListResultValueList>;
@@ -11296,8 +11278,7 @@ export const RaiContentFilter = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RaiContentFilter>;
 
 /** The list of RaiContentFilter. */
-export type RaiContentFilterListResultValueList =
-  ReadonlyArray<RaiContentFilter>;
+export type RaiContentFilterListResultValueList = Array<RaiContentFilter>;
 export const RaiContentFilterListResultValueList = /*@__PURE__*/ S.Array(
   RaiContentFilter,
 ) as any as S.Schema<RaiContentFilterListResultValueList>;
@@ -11610,7 +11591,7 @@ export const RaiExternalSafetyProviderSchema = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of RaiExternalSafetyProvider. */
 export type RaiExternalSafetyProviderResultValueList =
-  ReadonlyArray<RaiExternalSafetyProviderSchema>;
+  Array<RaiExternalSafetyProviderSchema>;
 export const RaiExternalSafetyProviderResultValueList = /*@__PURE__*/ S.Array(
   RaiExternalSafetyProviderSchema,
 ) as any as S.Schema<RaiExternalSafetyProviderResultValueList>;
@@ -11663,13 +11644,13 @@ export interface RaiPolicyContentFilter {
   /** If the ContentFilter is enabled. */
   enabled?: boolean;
   /** Level at which content is filtered. */
-  severityThreshold?: ContentLevel;
+  severityThreshold?: ContentLevel | (string & {});
   /** If blocking would occur. */
   blocking?: boolean;
   /** Content source to apply the Content Filters. */
-  source?: RaiPolicyContentSource;
+  source?: RaiPolicyContentSource | (string & {});
   /** The action types to apply to the content filters */
-  action?: RaiActionType;
+  action?: RaiActionType | (string & {});
 }
 export const RaiPolicyContentFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -11686,7 +11667,7 @@ export const RaiPolicyContentFilter = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of Content Filters. */
 export type RaiPolicyPropertiesContentFiltersList =
-  ReadonlyArray<RaiPolicyContentFilter>;
+  Array<RaiPolicyContentFilter>;
 export const RaiPolicyPropertiesContentFiltersList = /*@__PURE__*/ S.Array(
   RaiPolicyContentFilter,
 ) as any as S.Schema<RaiPolicyPropertiesContentFiltersList>;
@@ -11698,7 +11679,7 @@ export interface CustomBlocklistConfig {
   /** If blocking would occur. */
   blocking?: boolean;
   /** Content source to apply the Content Filters. */
-  source?: RaiPolicyContentSource;
+  source?: RaiPolicyContentSource | (string & {});
 }
 export const CustomBlocklistConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -11712,7 +11693,7 @@ export const CustomBlocklistConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of custom Blocklist. */
 export type RaiPolicyPropertiesCustomBlocklistsList =
-  ReadonlyArray<CustomBlocklistConfig>;
+  Array<CustomBlocklistConfig>;
 export const RaiPolicyPropertiesCustomBlocklistsList = /*@__PURE__*/ S.Array(
   CustomBlocklistConfig,
 ) as any as S.Schema<RaiPolicyPropertiesCustomBlocklistsList>;
@@ -11724,7 +11705,7 @@ export interface SafetyProviderConfig {
   /** If blocking would occur. */
   blocking?: boolean;
   /** Content source to apply the Content Filters. */
-  source?: RaiPolicyContentSource;
+  source?: RaiPolicyContentSource | (string & {});
 }
 export const SafetyProviderConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -11738,7 +11719,7 @@ export const SafetyProviderConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of Safety Providers. */
 export type RaiPolicyPropertiesSafetyProvidersList =
-  ReadonlyArray<SafetyProviderConfig>;
+  Array<SafetyProviderConfig>;
 export const RaiPolicyPropertiesSafetyProvidersList = /*@__PURE__*/ S.Array(
   SafetyProviderConfig,
 ) as any as S.Schema<RaiPolicyPropertiesSafetyProvidersList>;
@@ -11746,9 +11727,9 @@ export const RaiPolicyPropertiesSafetyProvidersList = /*@__PURE__*/ S.Array(
 /** Azure OpenAI Content Filters properties. */
 export interface RaiPolicyProperties {
   /** Content Filters policy type. */
-  type?: RaiPolicyType;
+  type?: RaiPolicyType | (string & {});
   /** Rai policy mode. The enum value mapping is as below: Default = 0, Deferred=1, Blocking=2, Asynchronous_filter =3. Please use 'Asynchronous_filter' after 2025-06-01. It is the same as 'Deferred' in previous version. */
-  mode?: RaiPolicyMode;
+  mode?: RaiPolicyMode | (string & {});
   /** Name of Rai policy. */
   basePolicyName?: string;
   /** The list of Content Filters. */
@@ -12017,7 +11998,7 @@ export const RaiPolicy = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RaiPolicy" }) as any as S.Schema<RaiPolicy>;
 
 /** The list of RaiPolicy. */
-export type RaiPolicyListResultValueList = ReadonlyArray<RaiPolicy>;
+export type RaiPolicyListResultValueList = Array<RaiPolicy>;
 export const RaiPolicyListResultValueList = /*@__PURE__*/ S.Array(
   RaiPolicy,
 ) as any as S.Schema<RaiPolicyListResultValueList>;
@@ -12089,7 +12070,7 @@ export const RaiToolLabelPropertiesProjectScopesItem = /*@__PURE__*/ S.suspend(
 
 /** List of project-level tool label definitions. */
 export type RaiToolLabelPropertiesProjectScopesList =
-  ReadonlyArray<RaiToolLabelPropertiesProjectScopesItem>;
+  Array<RaiToolLabelPropertiesProjectScopesItem>;
 export const RaiToolLabelPropertiesProjectScopesList = /*@__PURE__*/ S.Array(
   RaiToolLabelPropertiesProjectScopesItem,
 ) as any as S.Schema<RaiToolLabelPropertiesProjectScopesList>;
@@ -12360,7 +12341,7 @@ export const RaiToolLabel = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RaiToolLabel" }) as any as S.Schema<RaiToolLabel>;
 
 /** The list of RAI Tool Labels. */
-export type RaiToolLabelResultValueList = ReadonlyArray<RaiToolLabel>;
+export type RaiToolLabelResultValueList = Array<RaiToolLabel>;
 export const RaiToolLabelResultValueList = /*@__PURE__*/ S.Array(
   RaiToolLabel,
 ) as any as S.Schema<RaiToolLabelResultValueList>;
@@ -12659,7 +12640,7 @@ export const RaiTopic = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RaiTopic" }) as any as S.Schema<RaiTopic>;
 
 /** The list of RaiTopic. */
-export type RaiTopicResultValueList = ReadonlyArray<RaiTopic>;
+export type RaiTopicResultValueList = Array<RaiTopic>;
 export const RaiTopicResultValueList = /*@__PURE__*/ S.Array(
   RaiTopic,
 ) as any as S.Schema<RaiTopicResultValueList>;
@@ -12698,7 +12679,7 @@ export const ResourceSkusListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourceSkusListRequest>;
 
 /** The set of locations that the SKU is available. */
-export type ResourceSkuLocationsList = ReadonlyArray<string>;
+export type ResourceSkuLocationsList = Array<string>;
 export const ResourceSkuLocationsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ResourceSkuLocationsList>;
@@ -12708,19 +12689,19 @@ export type ResourceSkuRestrictionsType = "Location" | "Zone";
 export const ResourceSkuRestrictionsType = /*@__PURE__*/ S.String;
 
 /** The value of restrictions. If the restriction type is set to location. This would be different locations where the SKU is restricted. */
-export type ResourceSkuRestrictionsValuesList = ReadonlyArray<string>;
+export type ResourceSkuRestrictionsValuesList = Array<string>;
 export const ResourceSkuRestrictionsValuesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ResourceSkuRestrictionsValuesList>;
 
 /** Locations where the SKU is restricted */
-export type ResourceSkuRestrictionInfoLocationsList = ReadonlyArray<string>;
+export type ResourceSkuRestrictionInfoLocationsList = Array<string>;
 export const ResourceSkuRestrictionInfoLocationsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ResourceSkuRestrictionInfoLocationsList>;
 
 /** List of availability zones where the SKU is restricted. */
-export type ResourceSkuRestrictionInfoZonesList = ReadonlyArray<string>;
+export type ResourceSkuRestrictionInfoZonesList = Array<string>;
 export const ResourceSkuRestrictionInfoZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ResourceSkuRestrictionInfoZonesList>;
@@ -12769,8 +12750,7 @@ export const ResourceSkuRestrictions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourceSkuRestrictions>;
 
 /** The restrictions because of which SKU cannot be used. This is empty if there are no restrictions. */
-export type ResourceSkuRestrictionsList =
-  ReadonlyArray<ResourceSkuRestrictions>;
+export type ResourceSkuRestrictionsList = Array<ResourceSkuRestrictions>;
 export const ResourceSkuRestrictionsList = /*@__PURE__*/ S.Array(
   ResourceSkuRestrictions,
 ) as any as S.Schema<ResourceSkuRestrictionsList>;
@@ -12802,7 +12782,7 @@ export const ResourceSku = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResourceSku" }) as any as S.Schema<ResourceSku>;
 
 /** The ResourceSku items on this page */
-export type ResourceSkuListResultValueList = ReadonlyArray<ResourceSku>;
+export type ResourceSkuListResultValueList = Array<ResourceSku>;
 export const ResourceSkuListResultValueList = /*@__PURE__*/ S.Array(
   ResourceSku,
 ) as any as S.Schema<ResourceSkuListResultValueList>;

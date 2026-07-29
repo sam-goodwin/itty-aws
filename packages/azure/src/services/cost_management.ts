@@ -48,11 +48,11 @@ export const AlertCriteria = /*@__PURE__*/ S.String;
 /** defines the type of alert */
 export interface AlertPropertiesDefinition {
   /** type of alert */
-  type?: AlertType;
+  type?: AlertType | (string & {});
   /** Alert category */
-  category?: AlertCategory;
+  category?: AlertCategory | (string & {});
   /** Criteria that triggered alert */
-  criteria?: AlertCriteria;
+  criteria?: AlertCriteria | (string & {});
 }
 export const AlertPropertiesDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -80,21 +80,20 @@ export type AlertTimeGrainType =
 export const AlertTimeGrainType = /*@__PURE__*/ S.String;
 
 /** array of resourceGroups to filter by */
-export type AlertPropertiesDetailsResourceGroupFilterList =
-  ReadonlyArray<unknown>;
+export type AlertPropertiesDetailsResourceGroupFilterList = Array<unknown>;
 export const AlertPropertiesDetailsResourceGroupFilterList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<AlertPropertiesDetailsResourceGroupFilterList>;
 
 /** array of resources to filter by */
-export type AlertPropertiesDetailsResourceFilterList = ReadonlyArray<unknown>;
+export type AlertPropertiesDetailsResourceFilterList = Array<unknown>;
 export const AlertPropertiesDetailsResourceFilterList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<AlertPropertiesDetailsResourceFilterList>;
 
 /** array of meters to filter by */
-export type AlertPropertiesDetailsMeterFilterList = ReadonlyArray<unknown>;
+export type AlertPropertiesDetailsMeterFilterList = Array<unknown>;
 export const AlertPropertiesDetailsMeterFilterList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<AlertPropertiesDetailsMeterFilterList>;
@@ -110,19 +109,19 @@ export type AlertOperator =
 export const AlertOperator = /*@__PURE__*/ S.String;
 
 /** list of emails to contact */
-export type AlertPropertiesDetailsContactEmailsList = ReadonlyArray<string>;
+export type AlertPropertiesDetailsContactEmailsList = Array<string>;
 export const AlertPropertiesDetailsContactEmailsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AlertPropertiesDetailsContactEmailsList>;
 
 /** list of action groups to broadcast to */
-export type AlertPropertiesDetailsContactGroupsList = ReadonlyArray<string>;
+export type AlertPropertiesDetailsContactGroupsList = Array<string>;
 export const AlertPropertiesDetailsContactGroupsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AlertPropertiesDetailsContactGroupsList>;
 
 /** list of contact roles */
-export type AlertPropertiesDetailsContactRolesList = ReadonlyArray<string>;
+export type AlertPropertiesDetailsContactRolesList = Array<string>;
 export const AlertPropertiesDetailsContactRolesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AlertPropertiesDetailsContactRolesList>;
@@ -130,7 +129,7 @@ export const AlertPropertiesDetailsContactRolesList = /*@__PURE__*/ S.Array(
 /** Alert details */
 export interface AlertPropertiesDetails {
   /** Type of timegrain cadence */
-  timeGrainType?: AlertTimeGrainType;
+  timeGrainType?: AlertTimeGrainType | (string & {});
   /** datetime of periodStartDate */
   periodStartDate?: string;
   /** notificationId that triggered this alert */
@@ -146,7 +145,7 @@ export interface AlertPropertiesDetails {
   /** notification threshold percentage as a decimal which activated this alert */
   threshold?: number;
   /** operator used to compare currentSpend with amount */
-  operator?: AlertOperator;
+  operator?: AlertOperator | (string & {});
   /** budget threshold amount */
   amount?: number;
   /** unit of currency being used */
@@ -221,13 +220,13 @@ export interface AlertProperties {
   /** Alert description */
   description?: string;
   /** Source of alert */
-  source?: AlertSource;
+  source?: AlertSource | (string & {});
   /** Alert details */
   details?: AlertPropertiesDetails;
   /** related budget */
   costEntityId?: string;
   /** alert status */
-  status?: AlertStatus;
+  status?: AlertStatus | (string & {});
   /** dateTime in which alert was created */
   creationTime?: string;
   /** dateTime in which alert was closed */
@@ -446,7 +445,7 @@ export const Alert = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Alert" }) as any as S.Schema<Alert>;
 
 /** List of alerts. */
-export type AlertsResultValueList = ReadonlyArray<Alert>;
+export type AlertsResultValueList = Array<Alert>;
 export const AlertsResultValueList = /*@__PURE__*/ S.Array(
   Alert,
 ) as any as S.Schema<AlertsResultValueList>;
@@ -537,7 +536,7 @@ export type Grain = "Hourly" | "Daily" | "Monthly";
 export const Grain = /*@__PURE__*/ S.String;
 
 /** On-demand charges for each hour between firstConsumptionDate and lastConsumptionDate that were used for computing benefit recommendations. */
-export type RecommendationUsageDetailsChargesList = ReadonlyArray<number>;
+export type RecommendationUsageDetailsChargesList = Array<number>;
 export const RecommendationUsageDetailsChargesList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<RecommendationUsageDetailsChargesList>;
@@ -600,7 +599,7 @@ export const AllSavingsBenefitDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AllSavingsBenefitDetails>;
 
 /** The list of benefit recommendations with the recommendation details.. */
-export type AllSavingsListValueList = ReadonlyArray<AllSavingsBenefitDetails>;
+export type AllSavingsListValueList = Array<AllSavingsBenefitDetails>;
 export const AllSavingsListValueList = /*@__PURE__*/ S.Array(
   AllSavingsBenefitDetails,
 ) as any as S.Schema<AllSavingsListValueList>;
@@ -702,7 +701,7 @@ export const BenefitRecommendationModel = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of benefit recommendations. */
 export type BenefitRecommendationsListResultValueList =
-  ReadonlyArray<BenefitRecommendationModel>;
+  Array<BenefitRecommendationModel>;
 export const BenefitRecommendationsListResultValueList = /*@__PURE__*/ S.Array(
   BenefitRecommendationModel,
 ) as any as S.Schema<BenefitRecommendationsListResultValueList>;
@@ -787,7 +786,7 @@ export const BenefitUtilizationSummary = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of benefit utilization summaries. */
 export type BenefitUtilizationSummariesListResultValueList =
-  ReadonlyArray<BenefitUtilizationSummary>;
+  Array<BenefitUtilizationSummary>;
 export const BenefitUtilizationSummariesListResultValueList =
   /*@__PURE__*/ S.Array(
     BenefitUtilizationSummary,
@@ -964,7 +963,7 @@ export type BudgetOperatorType = "In";
 export const BudgetOperatorType = /*@__PURE__*/ S.String;
 
 /** Array of values to use for comparison */
-export type BudgetComparisonExpressionValuesList = ReadonlyArray<string>;
+export type BudgetComparisonExpressionValuesList = Array<string>;
 export const BudgetComparisonExpressionValuesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BudgetComparisonExpressionValuesList>;
@@ -974,7 +973,7 @@ export interface BudgetComparisonExpression {
   /** The name of the column to use in comparison. */
   name: string;
   /** The operator to use for comparison. */
-  operator: BudgetOperatorType;
+  operator: BudgetOperatorType | (string & {});
   /** Array of values to use for comparison */
   values: BudgetComparisonExpressionValuesList;
 }
@@ -1005,7 +1004,7 @@ export const BudgetFilterProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BudgetFilterProperties>;
 
 /** The logical "AND" expression. Must have at least 2 items. Supported for CategoryType(s): Cost. */
-export type BudgetFilterAndList = ReadonlyArray<BudgetFilterProperties>;
+export type BudgetFilterAndList = Array<BudgetFilterProperties>;
 export const BudgetFilterAndList = /*@__PURE__*/ S.Array(
   BudgetFilterProperties,
 ) as any as S.Schema<BudgetFilterAndList>;
@@ -1040,19 +1039,19 @@ export type Frequency = "Daily" | "Weekly" | "Monthly";
 export const Frequency = /*@__PURE__*/ S.String;
 
 /** Email addresses to send the notification to when the threshold is breached. Must have at least one contact email or contact group specified at the Subscription or Resource Group scopes. All other scopes must have at least one contact email specified. Supported for CategoryType(s): Cost, ReservationUtilization. */
-export type NotificationContactEmailsList = ReadonlyArray<string>;
+export type NotificationContactEmailsList = Array<string>;
 export const NotificationContactEmailsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<NotificationContactEmailsList>;
 
 /** Subscription or Resource Group scopes only. Contact roles to send the notification to when the threshold is breached. Supported for CategoryType(s): Cost. */
-export type NotificationContactRolesList = ReadonlyArray<string>;
+export type NotificationContactRolesList = Array<string>;
 export const NotificationContactRolesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<NotificationContactRolesList>;
 
 /** Subscription or Resource Group scopes only. Action groups to send the notification to when the threshold is exceeded. Must be provided as a fully qualified Azure resource id. Supported for CategoryType(s): Cost. */
-export type NotificationContactGroupsList = ReadonlyArray<string>;
+export type NotificationContactGroupsList = Array<string>;
 export const NotificationContactGroupsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<NotificationContactGroupsList>;
@@ -1091,11 +1090,11 @@ export interface Notification {
   /** The notification is enabled or not. Supported for CategoryType(s): Cost, ReservationUtilization. */
   enabled: boolean;
   /** The comparison operator. Supported for CategoryType(s): Cost, ReservationUtilization. Supported operators for **CategoryType: Cost** - GreaterThan - GreaterThanOrEqualTo Supported operators for **CategoryType: ReservationUtilization** - LessThan */
-  operator: BudgetNotificationOperatorType;
+  operator: BudgetNotificationOperatorType | (string & {});
   /** Threshold value associated with a notification. It is always percent with a maximum of 2 decimal places. Supported for CategoryType(s): Cost, ReservationUtilization. **CategoryType: Cost** - Must be between 0 and 1000. Notification is sent when the cost exceeded the threshold. **CategoryType: ReservationUtilization** - Must be between 0 and 100. Notification is sent when a reservation has a utilization percentage below the threshold. */
   threshold: number;
   /** Frequency of a notification. Represents how long the notification will be silent after triggering an alert for a threshold breach. If not specified, the frequency will be set by default based on the timeGrain (Weekly when timeGrain: Last7Days, Monthly when timeGrain: Last30Days). Supported for CategoryType(s): ReservationUtilization. */
-  frequency?: Frequency;
+  frequency?: Frequency | (string & {});
   /** Email addresses to send the notification to when the threshold is breached. Must have at least one contact email or contact group specified at the Subscription or Resource Group scopes. All other scopes must have at least one contact email specified. Supported for CategoryType(s): Cost, ReservationUtilization. */
   contactEmails: NotificationContactEmailsList;
   /** Subscription or Resource Group scopes only. Contact roles to send the notification to when the threshold is breached. Supported for CategoryType(s): Cost. */
@@ -1103,9 +1102,9 @@ export interface Notification {
   /** Subscription or Resource Group scopes only. Action groups to send the notification to when the threshold is exceeded. Must be provided as a fully qualified Azure resource id. Supported for CategoryType(s): Cost. */
   contactGroups?: NotificationContactGroupsList;
   /** The type of threshold. Supported for CategoryType(s): Cost. */
-  thresholdType?: NotificationThresholdType;
+  thresholdType?: NotificationThresholdType | (string & {});
   /** Language in which the recipient will receive the notification, Supported for CategoryType(s): Cost, ReservationUtilization. */
-  locale?: CultureCode;
+  locale?: CultureCode | (string & {});
 }
 export const Notification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1411,7 +1410,7 @@ export const Budget = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Budget" }) as any as S.Schema<Budget>;
 
 /** The list of budgets. */
-export type BudgetsListResultValueList = ReadonlyArray<Budget>;
+export type BudgetsListResultValueList = Array<Budget>;
 export const BudgetsListResultValueList = /*@__PURE__*/ S.Array(
   Budget,
 ) as any as S.Schema<BudgetsListResultValueList>;
@@ -1487,7 +1486,7 @@ export type CostAllocationResourceType = "Dimension" | "Tag";
 export const CostAllocationResourceType = /*@__PURE__*/ S.String;
 
 /** Source Resources for cost allocation. This list cannot contain more than 25 values. */
-export type SourceCostAllocationResourceValuesList = ReadonlyArray<string>;
+export type SourceCostAllocationResourceValuesList = Array<string>;
 export const SourceCostAllocationResourceValuesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SourceCostAllocationResourceValuesList>;
@@ -1495,7 +1494,7 @@ export const SourceCostAllocationResourceValuesList = /*@__PURE__*/ S.Array(
 /** Source resources for cost allocation */
 export interface SourceCostAllocationResource {
   /** Type of resources contained in this cost allocation rule */
-  resourceType: CostAllocationResourceType;
+  resourceType: CostAllocationResourceType | (string & {});
   /** If resource type is dimension, this must be either ResourceGroupName or SubscriptionId. If resource type is tag, this must be a valid Azure tag */
   name: string;
   /** Source Resources for cost allocation. This list cannot contain more than 25 values. */
@@ -1513,7 +1512,7 @@ export const SourceCostAllocationResource = /*@__PURE__*/ S.suspend(() =>
 
 /** Source resources for cost allocation. At this time, this list can contain no more than one element. */
 export type CostAllocationRuleDetailsSourceResourcesList =
-  ReadonlyArray<SourceCostAllocationResource>;
+  Array<SourceCostAllocationResource>;
 export const CostAllocationRuleDetailsSourceResourcesList =
   /*@__PURE__*/ S.Array(
     SourceCostAllocationResource,
@@ -1537,7 +1536,7 @@ export const CostAllocationProportion = /*@__PURE__*/ S.suspend(() =>
 
 /** Target resources for cost allocation. This list cannot contain more than 25 values. */
 export type TargetCostAllocationResourceValuesList =
-  ReadonlyArray<CostAllocationProportion>;
+  Array<CostAllocationProportion>;
 export const TargetCostAllocationResourceValuesList = /*@__PURE__*/ S.Array(
   CostAllocationProportion,
 ) as any as S.Schema<TargetCostAllocationResourceValuesList>;
@@ -1549,13 +1548,13 @@ export const CostAllocationPolicyType = /*@__PURE__*/ S.String;
 /** Target resources for cost allocation. */
 export interface TargetCostAllocationResource {
   /** Type of resources contained in this cost allocation rule */
-  resourceType: CostAllocationResourceType;
+  resourceType: CostAllocationResourceType | (string & {});
   /** If resource type is dimension, this must be either ResourceGroupName or SubscriptionId. If resource type is tag, this must be a valid Azure tag */
   name: string;
   /** Target resources for cost allocation. This list cannot contain more than 25 values. */
   values: TargetCostAllocationResourceValuesList;
   /** Method of cost allocation for the rule */
-  policyType: CostAllocationPolicyType;
+  policyType: CostAllocationPolicyType | (string & {});
 }
 export const TargetCostAllocationResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1570,7 +1569,7 @@ export const TargetCostAllocationResource = /*@__PURE__*/ S.suspend(() =>
 
 /** Target resources for cost allocation. At this time, this list can contain no more than one element. */
 export type CostAllocationRuleDetailsTargetResourcesList =
-  ReadonlyArray<TargetCostAllocationResource>;
+  Array<TargetCostAllocationResource>;
 export const CostAllocationRuleDetailsTargetResourcesList =
   /*@__PURE__*/ S.Array(
     TargetCostAllocationResource,
@@ -1812,7 +1811,7 @@ export const CostAllocationRuleDefinition = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of cost allocation rules. */
 export type CostAllocationRuleListValueList =
-  ReadonlyArray<CostAllocationRuleDefinition>;
+  Array<CostAllocationRuleDefinition>;
 export const CostAllocationRuleListValueList = /*@__PURE__*/ S.Array(
   CostAllocationRuleDefinition,
 ) as any as S.Schema<CostAllocationRuleListValueList>;
@@ -1886,7 +1885,7 @@ export const DimensionTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<DimensionTagsMap>;
 
 /** Dimension data. */
-export type DimensionPropertiesDataList = ReadonlyArray<string>;
+export type DimensionPropertiesDataList = Array<string>;
 export const DimensionPropertiesDataList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DimensionPropertiesDataList>;
@@ -1961,7 +1960,7 @@ export const Dimension = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Dimension" }) as any as S.Schema<Dimension>;
 
 /** The list of dimensions. */
-export type DimensionsListResultValueList = ReadonlyArray<Dimension>;
+export type DimensionsListResultValueList = Array<Dimension>;
 export const DimensionsListResultValueList = /*@__PURE__*/ S.Array(
   Dimension,
 ) as any as S.Schema<DimensionsListResultValueList>;
@@ -2024,7 +2023,7 @@ export const DestinationType = /*@__PURE__*/ S.String;
 /** This represents the blob storage account location where exports of costs will be delivered. There are two ways to configure the destination. The approach recommended for most customers is to specify the resourceId of the storage account. This requires a one-time registration of the account's subscription with the Microsoft.CostManagementExports resource provider in order to give Cost Management services access to the storage. When creating an export in the Azure portal this registration is performed automatically but API users may need to register the subscription explicitly (for more information see https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-supported-services ). Another way to configure the destination is available ONLY to Partners with a Microsoft Partner Agreement plan who are global admins of their billing account. These Partners, instead of specifying the resourceId of a storage account, can specify the storage account name along with a SAS token for the account. This allows exports of costs to a storage account in any tenant. The SAS token should be created for the blob service with Service/Container/Object resource types and with Read/Write/Delete/List/Add/Create permissions (for more information see https://docs.microsoft.com/en-us/azure/cost-management-billing/costs/export-cost-data-storage-account-sas-key ). */
 export interface ExportDeliveryDestination {
   /** The export delivery destination type. Currently only 'AzureBlob' is supported. */
-  type?: DestinationType;
+  type?: DestinationType | (string & {});
   /** The resource id of the storage account where exports will be delivered. This is not required if a sasToken and storageAccount are specified. */
   resourceId?: string;
   /** The name of the container where exports will be uploaded. If the container does not exist it will be created. */
@@ -2106,7 +2105,7 @@ export type GranularityType = "Daily" | "Monthly";
 export const GranularityType = /*@__PURE__*/ S.String;
 
 /** Array of column names to be included in the export. If not provided then the export will include all available columns. The available columns can vary by customer channel (see examples). */
-export type ExportDatasetConfigurationColumnsList = ReadonlyArray<string>;
+export type ExportDatasetConfigurationColumnsList = Array<string>;
 export const ExportDatasetConfigurationColumnsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ExportDatasetConfigurationColumnsList>;
@@ -2121,7 +2120,7 @@ export const FilterItemNames = /*@__PURE__*/ S.String;
 /** Will contain the filter name and value to operate on. This is currently only supported for Export Definition type of ReservationRecommendations. */
 export interface FilterItems {
   /** The name of the filter. This is currently only supported for Export Definition type of ReservationRecommendations. Supported names are ['ReservationScope', 'LookBackPeriod', 'ResourceType'] */
-  name?: FilterItemNames;
+  name?: FilterItemNames | (string & {});
   /** Value to filter by. Currently values supported per name are, for 'ReservationScope' supported values are ['Single', 'Shared'], for 'LookBackPeriod' supported values are ['Last7Days', 'Last30Days', 'Last60Days'] and for 'ResourceType' supported values are ['VirtualMachines', 'SQLDatabases', 'PostgreSQL', 'ManagedDisk', 'MySQL', 'RedHat', 'MariaDB', 'RedisCache', 'CosmosDB', 'SqlDataWarehouse', 'SUSELinux', 'AppService', 'BlockBlob', 'AzureDataExplorer', 'VMwareCloudSimple']. */
   value?: string;
 }
@@ -2133,7 +2132,7 @@ export const FilterItems = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FilterItems" }) as any as S.Schema<FilterItems>;
 
 /** Filters associated with the data sets. */
-export type ExportDatasetConfigurationFiltersList = ReadonlyArray<FilterItems>;
+export type ExportDatasetConfigurationFiltersList = Array<FilterItems>;
 export const ExportDatasetConfigurationFiltersList = /*@__PURE__*/ S.Array(
   FilterItems,
 ) as any as S.Schema<ExportDatasetConfigurationFiltersList>;
@@ -2160,7 +2159,7 @@ export const ExportDatasetConfiguration = /*@__PURE__*/ S.suspend(() =>
 /** The definition for data in the export. */
 export interface ExportDataset {
   /** The granularity of rows in the export. Currently 'Daily' is supported for most cases. */
-  granularity?: GranularityType;
+  granularity?: GranularityType | (string & {});
   /** The export dataset configuration. */
   configuration?: ExportDatasetConfiguration;
 }
@@ -2174,9 +2173,9 @@ export const ExportDataset = /*@__PURE__*/ S.suspend(() =>
 /** The definition of an export. */
 export interface ExportDefinition {
   /** The type of the export. Note that 'Usage' is equivalent to 'ActualCost' and is applicable to exports that do not yet provide data for charges or amortization for service reservations. */
-  type: ExportType;
+  type: ExportType | (string & {});
   /** The time frame for pulling data for the export. If custom, then a specific time period must be provided. */
-  timeframe: TimeframeType;
+  timeframe: TimeframeType | (string & {});
   /** Has time period for pulling data for the export. */
   timePeriod?: ExportTimePeriod;
   /** The definition for data in the export. */
@@ -2238,9 +2237,9 @@ export const ExportRecurrencePeriod = /*@__PURE__*/ S.suspend(() =>
 /** The schedule associated with the export. */
 export interface ExportSchedule {
   /** The status of the export's schedule. If 'Inactive', the export's schedule is paused. To enable export set the status to be Active and then make a PUT request. */
-  status?: StatusType;
+  status?: StatusType | (string & {});
   /** The schedule recurrence. */
-  recurrence?: RecurrenceType;
+  recurrence?: RecurrenceType | (string & {});
   /** Has start and end date of the recurrence. The start date must be in future. If present, the end date must be greater than start date. */
   recurrencePeriod?: ExportRecurrencePeriod;
 }
@@ -2498,7 +2497,7 @@ export const ExportRun = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ExportRun" }) as any as S.Schema<ExportRun>;
 
 /** A list of export runs. */
-export type ExportExecutionListResultValueList = ReadonlyArray<ExportRun>;
+export type ExportExecutionListResultValueList = Array<ExportRun>;
 export const ExportExecutionListResultValueList = /*@__PURE__*/ S.Array(
   ExportRun,
 ) as any as S.Schema<ExportExecutionListResultValueList>;
@@ -2841,7 +2840,7 @@ export const Export = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Export" }) as any as S.Schema<Export>;
 
 /** The list of exports. */
-export type ExportListResultValueList = ReadonlyArray<Export>;
+export type ExportListResultValueList = Array<Export>;
 export const ExportListResultValueList = /*@__PURE__*/ S.Array(
   Export,
 ) as any as S.Schema<ExportListResultValueList>;
@@ -2889,7 +2888,7 @@ export const ForecastTimePeriod = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ForecastTimePeriod>;
 
 /** Array of column names to be included in the forecast. Any valid forecast column name is allowed. If not provided, then forecast includes all columns. */
-export type ForecastDatasetConfigurationColumnsList = ReadonlyArray<string>;
+export type ForecastDatasetConfigurationColumnsList = Array<string>;
 export const ForecastDatasetConfigurationColumnsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ForecastDatasetConfigurationColumnsList>;
@@ -2941,13 +2940,13 @@ export const ForecastDatasetAggregationMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ForecastDatasetAggregationMap>;
 
 /** The logical "AND" expression. Must have at least 2 items. */
-export type ForecastFilterAndList = ReadonlyArray<ForecastFilter>;
+export type ForecastFilterAndList = Array<ForecastFilter>;
 export const ForecastFilterAndList = /*@__PURE__*/ S.Array(
   S.suspend(() => ForecastFilter),
 ) as any as S.Schema<ForecastFilterAndList>;
 
 /** The logical "OR" expression. Must have at least 2 items. */
-export type ForecastFilterOrList = ReadonlyArray<ForecastFilter>;
+export type ForecastFilterOrList = Array<ForecastFilter>;
 export const ForecastFilterOrList = /*@__PURE__*/ S.Array(
   S.suspend(() => ForecastFilter),
 ) as any as S.Schema<ForecastFilterOrList>;
@@ -2957,7 +2956,7 @@ export type ForecastOperatorType = "In";
 export const ForecastOperatorType = /*@__PURE__*/ S.String;
 
 /** Array of values to use for comparison */
-export type ForecastComparisonExpressionValuesList = ReadonlyArray<string>;
+export type ForecastComparisonExpressionValuesList = Array<string>;
 export const ForecastComparisonExpressionValuesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ForecastComparisonExpressionValuesList>;
@@ -3097,19 +3096,18 @@ export const ForecastColumn = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ForecastColumn" }) as any as S.Schema<ForecastColumn>;
 
 /** Array of columns */
-export type ForecastPropertiesColumnsList = ReadonlyArray<ForecastColumn>;
+export type ForecastPropertiesColumnsList = Array<ForecastColumn>;
 export const ForecastPropertiesColumnsList = /*@__PURE__*/ S.Array(
   ForecastColumn,
 ) as any as S.Schema<ForecastPropertiesColumnsList>;
 
-export type ForecastPropertiesRowsItemList = ReadonlyArray<unknown>;
+export type ForecastPropertiesRowsItemList = Array<unknown>;
 export const ForecastPropertiesRowsItemList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<ForecastPropertiesRowsItemList>;
 
 /** Array of rows */
-export type ForecastPropertiesRowsList =
-  ReadonlyArray<ForecastPropertiesRowsItemList>;
+export type ForecastPropertiesRowsList = Array<ForecastPropertiesRowsItemList>;
 export const ForecastPropertiesRowsList = /*@__PURE__*/ S.Array(
   ForecastPropertiesRowsItemList,
 ) as any as S.Schema<ForecastPropertiesRowsList>;
@@ -3721,7 +3719,7 @@ export const BlobInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BlobInfo" }) as any as S.Schema<BlobInfo>;
 
 /** List of blob information generated by this operation. */
-export type ReportManifestBlobsList = ReadonlyArray<BlobInfo>;
+export type ReportManifestBlobsList = Array<BlobInfo>;
 export const ReportManifestBlobsList = /*@__PURE__*/ S.Array(
   BlobInfo,
 ) as any as S.Schema<ReportManifestBlobsList>;
@@ -4212,8 +4210,7 @@ export const CostManagementOperation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CostManagementOperation>;
 
 /** List of cost management operations supported by the Microsoft.CostManagement resource provider. */
-export type OperationListResultValueList =
-  ReadonlyArray<CostManagementOperation>;
+export type OperationListResultValueList = Array<CostManagementOperation>;
 export const OperationListResultValueList = /*@__PURE__*/ S.Array(
   CostManagementOperation,
 ) as any as S.Schema<OperationListResultValueList>;
@@ -4429,7 +4426,7 @@ export const QueryTimePeriod = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<QueryTimePeriod>;
 
 /** Array of column names to be included in the query. Any valid query column name is allowed. If not provided, then query includes all columns. */
-export type QueryDatasetConfigurationColumnsList = ReadonlyArray<string>;
+export type QueryDatasetConfigurationColumnsList = Array<string>;
 export const QueryDatasetConfigurationColumnsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<QueryDatasetConfigurationColumnsList>;
@@ -4491,19 +4488,19 @@ export const QueryGrouping = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "QueryGrouping" }) as any as S.Schema<QueryGrouping>;
 
 /** Array of group by expression to use in the query. Query can have up to 2 group by clauses. */
-export type QueryDatasetGroupingList = ReadonlyArray<QueryGrouping>;
+export type QueryDatasetGroupingList = Array<QueryGrouping>;
 export const QueryDatasetGroupingList = /*@__PURE__*/ S.Array(
   QueryGrouping,
 ) as any as S.Schema<QueryDatasetGroupingList>;
 
 /** The logical "AND" expression. Must have at least 2 items. */
-export type QueryFilterAndList = ReadonlyArray<QueryFilter>;
+export type QueryFilterAndList = Array<QueryFilter>;
 export const QueryFilterAndList = /*@__PURE__*/ S.Array(
   S.suspend(() => QueryFilter),
 ) as any as S.Schema<QueryFilterAndList>;
 
 /** The logical "OR" expression. Must have at least 2 items. */
-export type QueryFilterOrList = ReadonlyArray<QueryFilter>;
+export type QueryFilterOrList = Array<QueryFilter>;
 export const QueryFilterOrList = /*@__PURE__*/ S.Array(
   S.suspend(() => QueryFilter),
 ) as any as S.Schema<QueryFilterOrList>;
@@ -4513,7 +4510,7 @@ export type QueryOperatorType = "In";
 export const QueryOperatorType = /*@__PURE__*/ S.String;
 
 /** Array of values to use for comparison */
-export type QueryComparisonExpressionValuesList = ReadonlyArray<string>;
+export type QueryComparisonExpressionValuesList = Array<string>;
 export const QueryComparisonExpressionValuesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<QueryComparisonExpressionValuesList>;
@@ -4633,19 +4630,18 @@ export const QueryColumn = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "QueryColumn" }) as any as S.Schema<QueryColumn>;
 
 /** Array of columns */
-export type QueryPropertiesColumnsList = ReadonlyArray<QueryColumn>;
+export type QueryPropertiesColumnsList = Array<QueryColumn>;
 export const QueryPropertiesColumnsList = /*@__PURE__*/ S.Array(
   QueryColumn,
 ) as any as S.Schema<QueryPropertiesColumnsList>;
 
-export type QueryPropertiesRowsItemList = ReadonlyArray<unknown>;
+export type QueryPropertiesRowsItemList = Array<unknown>;
 export const QueryPropertiesRowsItemList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<QueryPropertiesRowsItemList>;
 
 /** Array of rows */
-export type QueryPropertiesRowsList =
-  ReadonlyArray<QueryPropertiesRowsItemList>;
+export type QueryPropertiesRowsList = Array<QueryPropertiesRowsItemList>;
 export const QueryPropertiesRowsList = /*@__PURE__*/ S.Array(
   QueryPropertiesRowsItemList,
 ) as any as S.Schema<QueryPropertiesRowsList>;
@@ -4899,7 +4895,7 @@ export type FileFormat = "Csv";
 export const FileFormat = /*@__PURE__*/ S.String;
 
 /** Destination of the view data. Currently only CSV format is supported. */
-export type FileDestinationFileFormatsList = ReadonlyArray<FileFormat>;
+export type FileDestinationFileFormatsList = Array<FileFormat | (string & {})>;
 export const FileDestinationFileFormatsList = /*@__PURE__*/ S.Array(
   FileFormat,
 ) as any as S.Schema<FileDestinationFileFormatsList>;
@@ -4918,7 +4914,7 @@ export const FileDestination = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FileDestination>;
 
 /** Array of email addresses. */
-export type NotificationPropertiesToList = ReadonlyArray<string>;
+export type NotificationPropertiesToList = Array<string>;
 export const NotificationPropertiesToList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<NotificationPropertiesToList>;
@@ -4964,7 +4960,9 @@ export type DaysOfWeek =
 export const DaysOfWeek = /*@__PURE__*/ S.String;
 
 /** Day names in english on which cost analysis data will be emailed. This property is applicable when frequency is Weekly or Monthly. */
-export type SchedulePropertiesDaysOfWeekList = ReadonlyArray<DaysOfWeek>;
+export type SchedulePropertiesDaysOfWeekList = Array<
+  DaysOfWeek | (string & {})
+>;
 export const SchedulePropertiesDaysOfWeekList = /*@__PURE__*/ S.Array(
   DaysOfWeek,
 ) as any as S.Schema<SchedulePropertiesDaysOfWeekList>;
@@ -4974,7 +4972,9 @@ export type WeeksOfMonth = "First" | "Second" | "Third" | "Fourth" | "Last";
 export const WeeksOfMonth = /*@__PURE__*/ S.String;
 
 /** Weeks in which cost analysis data will be emailed. This property is applicable when frequency is Monthly and used in combination with daysOfWeek. */
-export type SchedulePropertiesWeeksOfMonthList = ReadonlyArray<WeeksOfMonth>;
+export type SchedulePropertiesWeeksOfMonthList = Array<
+  WeeksOfMonth | (string & {})
+>;
 export const SchedulePropertiesWeeksOfMonthList = /*@__PURE__*/ S.Array(
   WeeksOfMonth,
 ) as any as S.Schema<SchedulePropertiesWeeksOfMonthList>;
@@ -4982,7 +4982,7 @@ export const SchedulePropertiesWeeksOfMonthList = /*@__PURE__*/ S.Array(
 /** The properties of the schedule. */
 export interface ScheduleProperties {
   /** Frequency of the schedule. */
-  frequency: ScheduleFrequency;
+  frequency: ScheduleFrequency | (string & {});
   /** UTC time at which cost analysis data will be emailed. */
   hourOfDay?: number;
   /** Day names in english on which cost analysis data will be emailed. This property is applicable when frequency is Weekly or Monthly. */
@@ -5029,7 +5029,7 @@ export interface ScheduledActionProperties {
   /** For private scheduled action(Create or Update), scope will be empty.<br /> For shared scheduled action(Create or Update By Scope), Cost Management scope can be 'subscriptions/{subscriptionId}' for subscription scope, 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resourceGroup scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}' for Department scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}' for EnrollmentAccount scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for BillingProfile scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/invoiceSections/{invoiceSectionId}' for InvoiceSection scope, '/providers/Microsoft.CostManagement/externalBillingAccounts/{externalBillingAccountName}' for ExternalBillingAccount scope, and '/providers/Microsoft.CostManagement/externalSubscriptions/{externalSubscriptionName}' for ExternalSubscription scope. */
   scope?: string;
   /** Status of the scheduled action. */
-  status: ScheduledActionStatus;
+  status: ScheduledActionStatus | (string & {});
   /** Cost analysis viewId used for scheduled action. For example, '/providers/Microsoft.CostManagement/views/swaggerExample' */
   viewId: string;
 }
@@ -5383,7 +5383,7 @@ export const ScheduledAction = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScheduledAction>;
 
 /** The list of scheduled actions. */
-export type ScheduledActionListResultValueList = ReadonlyArray<ScheduledAction>;
+export type ScheduledActionListResultValueList = Array<ScheduledAction>;
 export const ScheduledActionListResultValueList = /*@__PURE__*/ S.Array(
   ScheduledAction,
 ) as any as S.Schema<ScheduledActionListResultValueList>;
@@ -5663,7 +5663,7 @@ export const Setting = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Setting" }) as any as S.Schema<Setting>;
 
 /** The list of settings. */
-export type SettingsListResultValueList = ReadonlyArray<Setting>;
+export type SettingsListResultValueList = Array<Setting>;
 export const SettingsListResultValueList = /*@__PURE__*/ S.Array(
   Setting,
 ) as any as S.Schema<SettingsListResultValueList>;
@@ -5714,7 +5714,7 @@ export type ReportGranularityType = "Daily" | "Monthly";
 export const ReportGranularityType = /*@__PURE__*/ S.String;
 
 /** Array of column names to be included in the report. Any valid report column name is allowed. If not provided, then report includes all columns. */
-export type ReportConfigDatasetConfigurationColumnsList = ReadonlyArray<string>;
+export type ReportConfigDatasetConfigurationColumnsList = Array<string>;
 export const ReportConfigDatasetConfigurationColumnsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5738,7 +5738,7 @@ export interface ReportConfigAggregation {
   /** The name of the column to aggregate. */
   name: string;
   /** The name of the aggregation function to use. */
-  function: FunctionType;
+  function: FunctionType | (string & {});
 }
 export const ReportConfigAggregation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5761,7 +5761,7 @@ export const ReportConfigDatasetAggregationMap = /*@__PURE__*/ S.Record(
 /** The group by expression to be used in the report. */
 export interface ReportConfigGrouping {
   /** Has type of the column to group. */
-  type: QueryColumnType;
+  type: QueryColumnType | (string & {});
   /** The name of the column to group. This version supports subscription lowest possible grain. */
   name: string;
 }
@@ -5775,8 +5775,7 @@ export const ReportConfigGrouping = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReportConfigGrouping>;
 
 /** Array of group by expression to use in the report. Report can have up to 2 group by clauses. */
-export type ReportConfigDatasetGroupingList =
-  ReadonlyArray<ReportConfigGrouping>;
+export type ReportConfigDatasetGroupingList = Array<ReportConfigGrouping>;
 export const ReportConfigDatasetGroupingList = /*@__PURE__*/ S.Array(
   ReportConfigGrouping,
 ) as any as S.Schema<ReportConfigDatasetGroupingList>;
@@ -5788,7 +5787,7 @@ export const ReportConfigSortingType = /*@__PURE__*/ S.String;
 /** The order by expression to be used in the report. */
 export interface ReportConfigSorting {
   /** Direction of sort. */
-  direction?: ReportConfigSortingType;
+  direction?: ReportConfigSortingType | (string & {});
   /** The name of the column to sort. */
   name: string;
 }
@@ -5802,19 +5801,19 @@ export const ReportConfigSorting = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReportConfigSorting>;
 
 /** Array of order by expression to use in the report. */
-export type ReportConfigDatasetSortingList = ReadonlyArray<ReportConfigSorting>;
+export type ReportConfigDatasetSortingList = Array<ReportConfigSorting>;
 export const ReportConfigDatasetSortingList = /*@__PURE__*/ S.Array(
   ReportConfigSorting,
 ) as any as S.Schema<ReportConfigDatasetSortingList>;
 
 /** The logical "AND" expression. Must have at least 2 items. */
-export type ReportConfigFilterAndList = ReadonlyArray<ReportConfigFilter>;
+export type ReportConfigFilterAndList = Array<ReportConfigFilter>;
 export const ReportConfigFilterAndList = /*@__PURE__*/ S.Array(
   S.suspend(() => ReportConfigFilter),
 ) as any as S.Schema<ReportConfigFilterAndList>;
 
 /** The logical "OR" expression. Must have at least 2 items. */
-export type ReportConfigFilterOrList = ReadonlyArray<ReportConfigFilter>;
+export type ReportConfigFilterOrList = Array<ReportConfigFilter>;
 export const ReportConfigFilterOrList = /*@__PURE__*/ S.Array(
   S.suspend(() => ReportConfigFilter),
 ) as any as S.Schema<ReportConfigFilterOrList>;
@@ -5824,7 +5823,7 @@ export type OperatorType = "In" | "Contains";
 export const OperatorType = /*@__PURE__*/ S.String;
 
 /** Array of values to use for comparison */
-export type ReportConfigComparisonExpressionValuesList = ReadonlyArray<string>;
+export type ReportConfigComparisonExpressionValuesList = Array<string>;
 export const ReportConfigComparisonExpressionValuesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ReportConfigComparisonExpressionValuesList>;
@@ -5834,7 +5833,7 @@ export interface ReportConfigComparisonExpression {
   /** The name of the column to use in comparison. */
   name: string;
   /** The operator to use for comparison. */
-  operator: OperatorType;
+  operator: OperatorType | (string & {});
   /** Array of values to use for comparison */
   values: ReportConfigComparisonExpressionValuesList;
 }
@@ -5873,7 +5872,7 @@ export const ReportConfigFilter = /*@__PURE__*/ S.suspend(() =>
 /** The definition of data present in the report. */
 export interface ReportConfigDataset {
   /** The granularity of rows in the report. */
-  granularity?: ReportGranularityType;
+  granularity?: ReportGranularityType | (string & {});
   /** Has configuration information for the data in the report. The configuration will be ignored if aggregation and grouping are provided. */
   configuration?: ReportConfigDatasetConfiguration;
   /** Dictionary of aggregation expression to use in the report. The key of each item in the dictionary is the alias for the aggregated column. Report can have up to 2 aggregation clauses. */
@@ -5901,9 +5900,9 @@ export const ReportConfigDataset = /*@__PURE__*/ S.suspend(() =>
 /** The definition of a report config. */
 export interface ReportConfigDefinition {
   /** The type of the report. Usage represents actual usage, forecast represents forecasted data and UsageAndForecast represents both usage and forecasted data. Actual usage and forecasted data can be differentiated based on dates. */
-  type: ReportType;
+  type: ReportType | (string & {});
   /** The time frame for pulling data for the report. If custom, then a specific time period must be provided. */
-  timeframe: ReportTimeframeType;
+  timeframe: ReportTimeframeType | (string & {});
   /** Has time period for pulling data for the report. */
   timePeriod?: ReportConfigTimePeriod;
   /** Has definition for data in this report config. */
@@ -5947,7 +5946,7 @@ export const KpiTypeType = /*@__PURE__*/ S.String;
 /** Each KPI must contain a 'type' and 'enabled' key. */
 export interface KpiProperties {
   /** KPI type (Forecast, Budget). */
-  type?: KpiTypeType;
+  type?: KpiTypeType | (string & {});
   /** ID of resource related to metric (budget). */
   id?: string;
   /** show the KPI in the UI? */
@@ -5962,7 +5961,7 @@ export const KpiProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "KpiProperties" }) as any as S.Schema<KpiProperties>;
 
 /** List of KPIs to show in Cost Analysis UI. */
-export type ViewPropertiesInputKpisList = ReadonlyArray<KpiProperties>;
+export type ViewPropertiesInputKpisList = Array<KpiProperties>;
 export const ViewPropertiesInputKpisList = /*@__PURE__*/ S.Array(
   KpiProperties,
 ) as any as S.Schema<ViewPropertiesInputKpisList>;
@@ -5974,7 +5973,7 @@ export const PivotTypeType = /*@__PURE__*/ S.String;
 /** Each pivot must contain a 'type' and 'name'. */
 export interface PivotProperties {
   /** Data type to show in view. */
-  type?: PivotTypeType;
+  type?: PivotTypeType | (string & {});
   /** Data field to show in view. */
   name?: string;
 }
@@ -5988,7 +5987,7 @@ export const PivotProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PivotProperties>;
 
 /** Configuration of 3 sub-views in the Cost Analysis UI. */
-export type ViewPropertiesInputPivotsList = ReadonlyArray<PivotProperties>;
+export type ViewPropertiesInputPivotsList = Array<PivotProperties>;
 export const ViewPropertiesInputPivotsList = /*@__PURE__*/ S.Array(
   PivotProperties,
 ) as any as S.Schema<ViewPropertiesInputPivotsList>;
@@ -6059,13 +6058,13 @@ export const ViewsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ViewsCreateOrUpdateRequest>;
 
 /** List of KPIs to show in Cost Analysis UI. */
-export type ViewPropertiesKpisList = ReadonlyArray<KpiProperties>;
+export type ViewPropertiesKpisList = Array<KpiProperties>;
 export const ViewPropertiesKpisList = /*@__PURE__*/ S.Array(
   KpiProperties,
 ) as any as S.Schema<ViewPropertiesKpisList>;
 
 /** Configuration of 3 sub-views in the Cost Analysis UI. */
-export type ViewPropertiesPivotsList = ReadonlyArray<PivotProperties>;
+export type ViewPropertiesPivotsList = Array<PivotProperties>;
 export const ViewPropertiesPivotsList = /*@__PURE__*/ S.Array(
   PivotProperties,
 ) as any as S.Schema<ViewPropertiesPivotsList>;
@@ -6387,7 +6386,7 @@ export const View = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "View" }) as any as S.Schema<View>;
 
 /** The list of views. */
-export type ViewListResultValueList = ReadonlyArray<View>;
+export type ViewListResultValueList = Array<View>;
 export const ViewListResultValueList = /*@__PURE__*/ S.Array(
   View,
 ) as any as S.Schema<ViewListResultValueList>;

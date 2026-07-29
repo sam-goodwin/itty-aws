@@ -45,23 +45,21 @@ export const DataCollectionRuleConfigurationMetadataFetchRequest =
   }) as any as S.Schema<DataCollectionRuleConfigurationMetadataFetchRequest>;
 
 /** List of supported destination resource types. */
-export type TelemetryTypeMetadataSupportedDestinationsList =
-  ReadonlyArray<string>;
+export type TelemetryTypeMetadataSupportedDestinationsList = Array<string>;
 export const TelemetryTypeMetadataSupportedDestinationsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<TelemetryTypeMetadataSupportedDestinationsList>;
 
 /** List of supported source resource types. */
-export type TelemetryTypeMetadataSupportedResourceTypesList =
-  ReadonlyArray<string>;
+export type TelemetryTypeMetadataSupportedResourceTypesList = Array<string>;
 export const TelemetryTypeMetadataSupportedResourceTypesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<TelemetryTypeMetadataSupportedResourceTypesList>;
 
 /** Categorization groups for the logs stream. */
-export type LogsSpecificationGroupsList = ReadonlyArray<string>;
+export type LogsSpecificationGroupsList = Array<string>;
 export const LogsSpecificationGroupsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LogsSpecificationGroupsList>;
@@ -86,7 +84,7 @@ export const LogsSpecification = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LogsSpecification>;
 
 /** Categorization groups for the metric. */
-export type MetricsSpecificationGroupsList = ReadonlyArray<string>;
+export type MetricsSpecificationGroupsList = Array<string>;
 export const MetricsSpecificationGroupsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<MetricsSpecificationGroupsList>;
@@ -150,8 +148,7 @@ export const StreamMetadata = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StreamMetadata" }) as any as S.Schema<StreamMetadata>;
 
 /** Detailed stream information. Only returned when withStreamMetadata is true in the request. */
-export type TelemetryTypeMetadataSupportedStreamsList =
-  ReadonlyArray<StreamMetadata>;
+export type TelemetryTypeMetadataSupportedStreamsList = Array<StreamMetadata>;
 export const TelemetryTypeMetadataSupportedStreamsList = /*@__PURE__*/ S.Array(
   StreamMetadata,
 ) as any as S.Schema<TelemetryTypeMetadataSupportedStreamsList>;
@@ -290,7 +287,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = ReadonlyArray<Operation>;
+export type OperationsListResponseValueList = Array<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;
@@ -368,7 +365,7 @@ export type ScheduledQueryRulePropertiesInputSeverity = 0 | 1 | 2 | 3 | 4;
 export const ScheduledQueryRulePropertiesInputSeverity = /*@__PURE__*/ S.Number;
 
 /** The list of resource id's that this scheduled query rule is scoped to. */
-export type ScheduledQueryRulePropertiesInputScopesList = ReadonlyArray<string>;
+export type ScheduledQueryRulePropertiesInputScopesList = Array<string>;
 export const ScheduledQueryRulePropertiesInputScopesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -376,7 +373,7 @@ export const ScheduledQueryRulePropertiesInputScopesList =
 
 /** List of resource type of the target resource(s) on which the alert is created/updated. For example if the scope is a resource group and targetResourceTypes is Microsoft.Compute/virtualMachines, then a different alert will be fired for each virtual machine in the resource group which meet the alert criteria. Relevant only for rules of the kind LogAlert */
 export type ScheduledQueryRulePropertiesInputTargetResourceTypesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ScheduledQueryRulePropertiesInputTargetResourceTypesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -402,7 +399,7 @@ export type DimensionOperator = "Include" | "Exclude";
 export const DimensionOperator = /*@__PURE__*/ S.String;
 
 /** List of dimension values */
-export type DimensionValuesList = ReadonlyArray<string>;
+export type DimensionValuesList = Array<string>;
 export const DimensionValuesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DimensionValuesList>;
@@ -412,7 +409,7 @@ export interface Dimension {
   /** Name of the dimension */
   name: string;
   /** Operator for dimension values */
-  operator: DimensionOperator;
+  operator: DimensionOperator | (string & {});
   /** List of dimension values */
   values: DimensionValuesList;
 }
@@ -425,7 +422,7 @@ export const Dimension = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Dimension" }) as any as S.Schema<Dimension>;
 
 /** List of Dimensions conditions. Relevant only for rules of the kind LogAlert and LogToMetric. */
-export type ConditionDimensionsList = ReadonlyArray<Dimension>;
+export type ConditionDimensionsList = Array<Dimension>;
 export const ConditionDimensionsList = /*@__PURE__*/ S.Array(
   Dimension,
 ) as any as S.Schema<ConditionDimensionsList>;
@@ -459,11 +456,11 @@ export const ConditionFailingPeriods = /*@__PURE__*/ S.suspend(() =>
 /** A condition of the scheduled query rule. */
 export interface Condition {
   /** Specifies the type of threshold criteria */
-  criterionType?: ConditionCriterionType;
+  criterionType?: ConditionCriterionType | (string & {});
   /** Log query alert */
   query?: string;
   /** Aggregation type. Relevant and required only for rules of the kind LogAlert. */
-  timeAggregation?: ConditionTimeAggregation;
+  timeAggregation?: ConditionTimeAggregation | (string & {});
   /** The column containing the metric measure number. Relevant only for rules of the kind LogAlert. */
   metricMeasureColumn?: string;
   /** The column containing the resource id. The content of the column must be a uri formatted as resource id. Relevant only for rules of the kind LogAlert. */
@@ -471,7 +468,7 @@ export interface Condition {
   /** List of Dimensions conditions. Relevant only for rules of the kind LogAlert and LogToMetric. */
   dimensions?: ConditionDimensionsList;
   /** The criteria operator. Relevant and required only for rules of the kind LogAlert. */
-  operator?: ConditionOperator;
+  operator?: ConditionOperator | (string & {});
   /** the criteria threshold value that activates the alert. Relevant and required only for static threshold rules of the kind LogAlert. */
   threshold?: number;
   /** The extent of deviation required to trigger an alert. Allowed values are 'Low', 'Medium' and 'High'. This will affect how tight the threshold is to the metric series pattern. Relevant only for dynamic threshold rules of the kind LogAlert. */
@@ -504,7 +501,7 @@ export const Condition = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Condition" }) as any as S.Schema<Condition>;
 
 /** A list of conditions to evaluate against the specified scopes */
-export type ScheduledQueryRuleCriteriaAllOfList = ReadonlyArray<Condition>;
+export type ScheduledQueryRuleCriteriaAllOfList = Array<Condition>;
 export const ScheduledQueryRuleCriteriaAllOfList = /*@__PURE__*/ S.Array(
   Condition,
 ) as any as S.Schema<ScheduledQueryRuleCriteriaAllOfList>;
@@ -523,7 +520,7 @@ export const ScheduledQueryRuleCriteria = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScheduledQueryRuleCriteria>;
 
 /** Action Group resource Ids to invoke when the alert fires. */
-export type ActionsActionGroupsList = ReadonlyArray<string>;
+export type ActionsActionGroupsList = Array<string>;
 export const ActionsActionGroupsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ActionsActionGroupsList>;
@@ -797,14 +794,13 @@ export type ScheduledQueryRulePropertiesSeverity = 0 | 1 | 2 | 3 | 4;
 export const ScheduledQueryRulePropertiesSeverity = /*@__PURE__*/ S.Number;
 
 /** The list of resource id's that this scheduled query rule is scoped to. */
-export type ScheduledQueryRulePropertiesScopesList = ReadonlyArray<string>;
+export type ScheduledQueryRulePropertiesScopesList = Array<string>;
 export const ScheduledQueryRulePropertiesScopesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ScheduledQueryRulePropertiesScopesList>;
 
 /** List of resource type of the target resource(s) on which the alert is created/updated. For example if the scope is a resource group and targetResourceTypes is Microsoft.Compute/virtualMachines, then a different alert will be fired for each virtual machine in the resource group which meet the alert criteria. Relevant only for rules of the kind LogAlert */
-export type ScheduledQueryRulePropertiesTargetResourceTypesList =
-  ReadonlyArray<string>;
+export type ScheduledQueryRulePropertiesTargetResourceTypesList = Array<string>;
 export const ScheduledQueryRulePropertiesTargetResourceTypesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1001,7 +997,7 @@ export const ScheduledQueryRulesListByResourceGroupRequest =
 
 /** The values for the scheduled query rule resources. */
 export type ScheduledQueryRuleResourceCollectionValueList =
-  ReadonlyArray<ScheduledQueryRuleResource>;
+  Array<ScheduledQueryRuleResource>;
 export const ScheduledQueryRuleResourceCollectionValueList =
   /*@__PURE__*/ S.Array(
     ScheduledQueryRuleResource,

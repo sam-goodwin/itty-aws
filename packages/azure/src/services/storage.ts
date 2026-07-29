@@ -26,8 +26,7 @@ export type AdvancedPlatformMetricsFilterType =
 export const AdvancedPlatformMetricsFilterType = /*@__PURE__*/ S.String;
 
 /** The values for the filter applied to the rule. If filter type is AllContainersFilter, filter values should be empty. If filter type is ContainerPrefixFilter, filter values should contain a list of container prefixes. If filter type is ContainerListFilter, filter values should contain a list of container names. */
-export type AdvancedPlatformMetricsRuleConfigFilterValuesList =
-  ReadonlyArray<string>;
+export type AdvancedPlatformMetricsRuleConfigFilterValuesList = Array<string>;
 export const AdvancedPlatformMetricsRuleConfigFilterValuesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -36,7 +35,7 @@ export const AdvancedPlatformMetricsRuleConfigFilterValuesList =
 /** Configuration for the advanced platform metrics rule. */
 export interface AdvancedPlatformMetricsRuleConfig {
   /** The type of filter applied to the rule. Possible values include: AllContainersFilter, ContainerPrefixFilter, ContainerListFilter. */
-  filterType?: AdvancedPlatformMetricsFilterType;
+  filterType?: AdvancedPlatformMetricsFilterType | (string & {});
   /** The values for the filter applied to the rule. If filter type is AllContainersFilter, filter values should be empty. If filter type is ContainerPrefixFilter, filter values should contain a list of container prefixes. If filter type is ContainerListFilter, filter values should contain a list of container names. */
   filterValues?: AdvancedPlatformMetricsRuleConfigFilterValuesList;
 }
@@ -155,7 +154,7 @@ export const MetricsEmitted = /*@__PURE__*/ S.String;
 
 /** The metrics emitted by the rule. Metrics are mapped according to the rule type from RuleTypeProperty. Rule type to metrics mapping: ContainerLevelCapacityMetrics => {ContainerUsedSize, ContainerBlobCount}. */
 export type AdvancedPlatformMetricsRulePropertiesMetricsEmittedList =
-  ReadonlyArray<MetricsEmitted>;
+  Array<MetricsEmitted>;
 export const AdvancedPlatformMetricsRulePropertiesMetricsEmittedList =
   /*@__PURE__*/ S.Array(
     MetricsEmitted,
@@ -374,7 +373,7 @@ export const AdvancedPlatformMetricsRule = /*@__PURE__*/ S.suspend(() =>
 
 /** The AdvancedPlatformMetricsRule items on this page */
 export type AdvancedPlatformMetricsRuleListResultValueList =
-  ReadonlyArray<AdvancedPlatformMetricsRule>;
+  Array<AdvancedPlatformMetricsRule>;
 export const AdvancedPlatformMetricsRuleListResultValueList =
   /*@__PURE__*/ S.Array(
     AdvancedPlatformMetricsRule,
@@ -398,7 +397,7 @@ export const AdvancedPlatformMetricsRuleListResult = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<AdvancedPlatformMetricsRuleListResult>;
 
 /** Each tag should be 3 to 23 alphanumeric characters and is normalized to lower case at SRP. */
-export type BlobContainersClearLegalHoldRequestTagsList = ReadonlyArray<string>;
+export type BlobContainersClearLegalHoldRequestTagsList = Array<string>;
 export const BlobContainersClearLegalHoldRequestTagsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -439,7 +438,7 @@ export const BlobContainersClearLegalHoldRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BlobContainersClearLegalHoldRequest>;
 
 /** Each tag should be 3 to 23 alphanumeric characters and is normalized to lower case at SRP. */
-export type LegalHoldTagsList = ReadonlyArray<string>;
+export type LegalHoldTagsList = Array<string>;
 export const LegalHoldTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LegalHoldTagsList>;
@@ -586,7 +585,7 @@ export interface ImmutabilityPolicyProperty {
   /** The immutability period for the blobs in the container since the policy creation, in days. */
   immutabilityPeriodSinceCreationInDays?: number;
   /** The ImmutabilityPolicy state of a blob container, possible values include: Locked and Unlocked. */
-  state?: ImmutabilityPolicyState;
+  state?: ImmutabilityPolicyState | (string & {});
   /** This property can only be changed for unlocked time-based retention policies. When enabled, new blocks can be written to an append blob while maintaining immutability protection and compliance. Only new blocks can be added and any existing blocks cannot be modified or deleted. This property cannot be changed with ExtendImmutabilityPolicy API. */
   allowProtectedAppendWrites?: boolean;
   /** This property can only be changed for unlocked time-based retention policies. When enabled, new blocks can be written to both 'Append and Bock Blobs' while maintaining immutability protection and compliance. Only new blocks can be added and any existing blocks cannot be modified or deleted. This property cannot be changed with ExtendImmutabilityPolicy API. The 'allowProtectedAppendWrites' and 'allowProtectedAppendWritesAll' properties are mutually exclusive. */
@@ -643,7 +642,7 @@ export const UpdateHistoryProperty = /*@__PURE__*/ S.suspend(() =>
 
 /** The ImmutabilityPolicy update history of the blob container. */
 export type ImmutabilityPolicyPropertiesUpdateHistoryList =
-  ReadonlyArray<UpdateHistoryProperty>;
+  Array<UpdateHistoryProperty>;
 export const ImmutabilityPolicyPropertiesUpdateHistoryList =
   /*@__PURE__*/ S.Array(
     UpdateHistoryProperty,
@@ -692,7 +691,7 @@ export const TagProperty = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TagProperty" }) as any as S.Schema<TagProperty>;
 
 /** The list of LegalHold tags of a blob container. */
-export type LegalHoldPropertiesTagsList = ReadonlyArray<TagProperty>;
+export type LegalHoldPropertiesTagsList = Array<TagProperty>;
 export const LegalHoldPropertiesTagsList = /*@__PURE__*/ S.Array(
   TagProperty,
 ) as any as S.Schema<LegalHoldPropertiesTagsList>;
@@ -1309,7 +1308,7 @@ export const ListContainerItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListContainerItem>;
 
 /** The ListContainerItem items on this page */
-export type ListContainerItemsValueList = ReadonlyArray<ListContainerItem>;
+export type ListContainerItemsValueList = Array<ListContainerItem>;
 export const ListContainerItemsValueList = /*@__PURE__*/ S.Array(
   ListContainerItem,
 ) as any as S.Schema<ListContainerItemsValueList>;
@@ -1424,7 +1423,7 @@ export const BlobContainersObjectLevelWormResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<BlobContainersObjectLevelWormResponse>;
 
 /** Each tag should be 3 to 23 alphanumeric characters and is normalized to lower case at SRP. */
-export type BlobContainersSetLegalHoldRequestTagsList = ReadonlyArray<string>;
+export type BlobContainersSetLegalHoldRequestTagsList = Array<string>;
 export const BlobContainersSetLegalHoldRequestTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BlobContainersSetLegalHoldRequestTagsList>;
@@ -1531,19 +1530,19 @@ export type InventoryRuleType = "Inventory";
 export const InventoryRuleType = /*@__PURE__*/ S.String;
 
 /** An array of strings with maximum 10 blob prefixes to be included in the inventory. */
-export type BlobInventoryPolicyFilterPrefixMatchList = ReadonlyArray<string>;
+export type BlobInventoryPolicyFilterPrefixMatchList = Array<string>;
 export const BlobInventoryPolicyFilterPrefixMatchList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BlobInventoryPolicyFilterPrefixMatchList>;
 
 /** An array of strings with maximum 10 blob prefixes to be excluded from the inventory. */
-export type BlobInventoryPolicyFilterExcludePrefixList = ReadonlyArray<string>;
+export type BlobInventoryPolicyFilterExcludePrefixList = Array<string>;
 export const BlobInventoryPolicyFilterExcludePrefixList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BlobInventoryPolicyFilterExcludePrefixList>;
 
 /** An array of predefined enum values. Valid values include blockBlob, appendBlob, pageBlob. Hns accounts does not support pageBlobs. This field is required when definition.objectType property is set to 'Blob'. */
-export type BlobInventoryPolicyFilterBlobTypesList = ReadonlyArray<string>;
+export type BlobInventoryPolicyFilterBlobTypesList = Array<string>;
 export const BlobInventoryPolicyFilterBlobTypesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BlobInventoryPolicyFilterBlobTypesList>;
@@ -1605,8 +1604,7 @@ export type ObjectType = "Blob" | "Container";
 export const ObjectType = /*@__PURE__*/ S.String;
 
 /** This is a required field. This field specifies the fields and properties of the object to be included in the inventory. The Schema field value 'Name' is always required. The valid values for this field for the 'Blob' definition.objectType include 'Name, Creation-Time, Last-Modified, Content-Length, Content-MD5, BlobType, AccessTier, AccessTierChangeTime, AccessTierInferred, Tags, Expiry-Time, hdi_isfolder, Owner, Group, Permissions, Acl, Snapshot, VersionId, IsCurrentVersion, Metadata, LastAccessTime, Tags, Etag, ContentType, ContentEncoding, ContentLanguage, ContentCRC64, CacheControl, ContentDisposition, LeaseStatus, LeaseState, LeaseDuration, ServerEncrypted, Deleted, DeletionId, DeletedTime, RemainingRetentionDays, ImmutabilityPolicyUntilDate, ImmutabilityPolicyMode, LegalHold, CopyId, CopyStatus, CopySource, CopyProgress, CopyCompletionTime, CopyStatusDescription, CustomerProvidedKeySha256, RehydratePriority, ArchiveStatus, XmsBlobSequenceNumber, EncryptionScope, IncrementalCopy, TagCount'. For Blob object type schema field value 'DeletedTime' is applicable only for Hns enabled accounts. The valid values for 'Container' definition.objectType include 'Name, Last-Modified, Metadata, LeaseStatus, LeaseState, LeaseDuration, PublicAccess, HasImmutabilityPolicy, HasLegalHold, Etag, DefaultEncryptionScope, DenyEncryptionScopeOverride, ImmutableStorageWithVersioningEnabled, Deleted, Version, DeletedTime, RemainingRetentionDays'. Schema field values 'Expiry-Time, hdi_isfolder, Owner, Group, Permissions, Acl, DeletionId' are valid only for Hns enabled accounts.Schema field values 'Tags, TagCount' are only valid for Non-Hns accounts. */
-export type BlobInventoryPolicyDefinitionSchemaFieldsList =
-  ReadonlyArray<string>;
+export type BlobInventoryPolicyDefinitionSchemaFieldsList = Array<string>;
 export const BlobInventoryPolicyDefinitionSchemaFieldsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1617,11 +1615,11 @@ export interface BlobInventoryPolicyDefinition {
   /** An object that defines the filter set. */
   filters?: BlobInventoryPolicyFilter;
   /** This is a required field, it specifies the format for the inventory files. */
-  format: Format;
+  format: Format | (string & {});
   /** This is a required field. This field is used to schedule an inventory formation. */
-  schedule: Schedule;
+  schedule: Schedule | (string & {});
   /** This is a required field. This field specifies the scope of the inventory created either at the blob or container level. */
-  objectType: ObjectType;
+  objectType: ObjectType | (string & {});
   /** This is a required field. This field specifies the fields and properties of the object to be included in the inventory. The Schema field value 'Name' is always required. The valid values for this field for the 'Blob' definition.objectType include 'Name, Creation-Time, Last-Modified, Content-Length, Content-MD5, BlobType, AccessTier, AccessTierChangeTime, AccessTierInferred, Tags, Expiry-Time, hdi_isfolder, Owner, Group, Permissions, Acl, Snapshot, VersionId, IsCurrentVersion, Metadata, LastAccessTime, Tags, Etag, ContentType, ContentEncoding, ContentLanguage, ContentCRC64, CacheControl, ContentDisposition, LeaseStatus, LeaseState, LeaseDuration, ServerEncrypted, Deleted, DeletionId, DeletedTime, RemainingRetentionDays, ImmutabilityPolicyUntilDate, ImmutabilityPolicyMode, LegalHold, CopyId, CopyStatus, CopySource, CopyProgress, CopyCompletionTime, CopyStatusDescription, CustomerProvidedKeySha256, RehydratePriority, ArchiveStatus, XmsBlobSequenceNumber, EncryptionScope, IncrementalCopy, TagCount'. For Blob object type schema field value 'DeletedTime' is applicable only for Hns enabled accounts. The valid values for 'Container' definition.objectType include 'Name, Last-Modified, Metadata, LeaseStatus, LeaseState, LeaseDuration, PublicAccess, HasImmutabilityPolicy, HasLegalHold, Etag, DefaultEncryptionScope, DenyEncryptionScopeOverride, ImmutableStorageWithVersioningEnabled, Deleted, Version, DeletedTime, RemainingRetentionDays'. Schema field values 'Expiry-Time, hdi_isfolder, Owner, Group, Permissions, Acl, DeletionId' are valid only for Hns enabled accounts.Schema field values 'Tags, TagCount' are only valid for Non-Hns accounts. */
   schemaFields: BlobInventoryPolicyDefinitionSchemaFieldsList;
 }
@@ -1661,7 +1659,7 @@ export const BlobInventoryPolicyRule = /*@__PURE__*/ S.suspend(() =>
 
 /** The storage account blob inventory policy rules. The rule is applied when it is enabled. */
 export type BlobInventoryPolicySchemaInputRulesList =
-  ReadonlyArray<BlobInventoryPolicyRule>;
+  Array<BlobInventoryPolicyRule>;
 export const BlobInventoryPolicySchemaInputRulesList = /*@__PURE__*/ S.Array(
   BlobInventoryPolicyRule,
 ) as any as S.Schema<BlobInventoryPolicySchemaInputRulesList>;
@@ -1736,8 +1734,7 @@ export const BlobInventoryPoliciesCreateOrUpdateRequest =
   }) as any as S.Schema<BlobInventoryPoliciesCreateOrUpdateRequest>;
 
 /** The storage account blob inventory policy rules. The rule is applied when it is enabled. */
-export type BlobInventoryPolicySchemaRulesList =
-  ReadonlyArray<BlobInventoryPolicyRule>;
+export type BlobInventoryPolicySchemaRulesList = Array<BlobInventoryPolicyRule>;
 export const BlobInventoryPolicySchemaRulesList = /*@__PURE__*/ S.Array(
   BlobInventoryPolicyRule,
 ) as any as S.Schema<BlobInventoryPolicySchemaRulesList>;
@@ -1958,8 +1955,7 @@ export const BlobInventoryPolicy = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BlobInventoryPolicy>;
 
 /** List of blob inventory policies. */
-export type ListBlobInventoryPolicyValueList =
-  ReadonlyArray<BlobInventoryPolicy>;
+export type ListBlobInventoryPolicyValueList = Array<BlobInventoryPolicy>;
 export const ListBlobInventoryPolicyValueList = /*@__PURE__*/ S.Array(
   BlobInventoryPolicy,
 ) as any as S.Schema<ListBlobInventoryPolicyValueList>;
@@ -2006,7 +2002,7 @@ export const BlobServicesGetServicePropertiesRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<BlobServicesGetServicePropertiesRequest>;
 
 /** Required if CorsRule element is present. A list of origin domains that will be allowed via CORS, or "*" to allow all domains */
-export type CorsRuleAllowedOriginsList = ReadonlyArray<string>;
+export type CorsRuleAllowedOriginsList = Array<string>;
 export const CorsRuleAllowedOriginsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CorsRuleAllowedOriginsList>;
@@ -2025,19 +2021,19 @@ export type AllowedMethods =
 export const AllowedMethods = /*@__PURE__*/ S.String;
 
 /** Required if CorsRule element is present. A list of HTTP methods that are allowed to be executed by the origin. */
-export type CorsRuleAllowedMethodsList = ReadonlyArray<AllowedMethods>;
+export type CorsRuleAllowedMethodsList = Array<AllowedMethods | (string & {})>;
 export const CorsRuleAllowedMethodsList = /*@__PURE__*/ S.Array(
   AllowedMethods,
 ) as any as S.Schema<CorsRuleAllowedMethodsList>;
 
 /** Required if CorsRule element is present. A list of response headers to expose to CORS clients. */
-export type CorsRuleExposedHeadersList = ReadonlyArray<string>;
+export type CorsRuleExposedHeadersList = Array<string>;
 export const CorsRuleExposedHeadersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CorsRuleExposedHeadersList>;
 
 /** Required if CorsRule element is present. A list of headers allowed to be part of the cross-origin request. */
-export type CorsRuleAllowedHeadersList = ReadonlyArray<string>;
+export type CorsRuleAllowedHeadersList = Array<string>;
 export const CorsRuleAllowedHeadersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CorsRuleAllowedHeadersList>;
@@ -2066,7 +2062,7 @@ export const CorsRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CorsRule" }) as any as S.Schema<CorsRule>;
 
 /** The List of CORS rules. You can include up to five CorsRule elements in the request. */
-export type CorsRulesCorsRulesList = ReadonlyArray<CorsRule>;
+export type CorsRulesCorsRulesList = Array<CorsRule>;
 export const CorsRulesCorsRulesList = /*@__PURE__*/ S.Array(
   CorsRule,
 ) as any as S.Schema<CorsRulesCorsRulesList>;
@@ -2162,7 +2158,7 @@ export type Name = "AccessTimeTracking";
 export const Name = /*@__PURE__*/ S.String;
 
 /** An array of predefined supported blob types. Only blockBlob is the supported value. This field is currently read only */
-export type LastAccessTimeTrackingPolicyBlobTypeList = ReadonlyArray<string>;
+export type LastAccessTimeTrackingPolicyBlobTypeList = Array<string>;
 export const LastAccessTimeTrackingPolicyBlobTypeList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LastAccessTimeTrackingPolicyBlobTypeList>;
@@ -2172,7 +2168,7 @@ export interface LastAccessTimeTrackingPolicy {
   /** When set to true last access time based tracking is enabled. */
   enable: boolean;
   /** Name of the policy. The valid value is AccessTimeTracking. This field is currently read only */
-  name?: Name;
+  name?: Name | (string & {});
   /** The field specifies blob object tracking granularity in days, typically how often the blob object should be tracked.This field is currently read only with value as 1 */
   trackingGranularityInDays?: number;
   /** An array of predefined supported blob types. Only blockBlob is the supported value. This field is currently read only */
@@ -2254,9 +2250,9 @@ export const SkuTier = /*@__PURE__*/ S.String;
 /** The SKU of the storage account. */
 export interface Sku {
   /** The SKU name. Required for account creation; optional for update. Note that in older versions, SKU name was called accountType. */
-  name: SkuName;
+  name: SkuName | (string & {});
   /** The SKU tier. This is based on the SKU name. */
-  tier?: SkuTier;
+  tier?: SkuTier | (string & {});
 }
 export const Sku = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2347,7 +2343,7 @@ export const BlobServiceProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BlobServiceProperties>;
 
 /** List of blob services returned. */
-export type BlobServiceItemsValueList = ReadonlyArray<BlobServiceProperties>;
+export type BlobServiceItemsValueList = Array<BlobServiceProperties>;
 export const BlobServiceItemsValueList = /*@__PURE__*/ S.Array(
   BlobServiceProperties,
 ) as any as S.Schema<BlobServiceItemsValueList>;
@@ -2504,7 +2500,7 @@ export const StorageConnectorSourceType = /*@__PURE__*/ S.String;
 /** The storage connector backing data source information */
 export interface StorageConnectorSource {
   /** Type of the Storage Connector. Not mutable once the Storage Connector is created." */
-  type: StorageConnectorSourceType;
+  type: StorageConnectorSourceType | (string & {});
 }
 export const StorageConnectorSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2828,7 +2824,7 @@ export const Connector = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Connector" }) as any as S.Schema<Connector>;
 
 /** The Connector items on this page */
-export type ConnectorListResultValueList = ReadonlyArray<Connector>;
+export type ConnectorListResultValueList = Array<Connector>;
 export const ConnectorListResultValueList = /*@__PURE__*/ S.Array(
   Connector,
 ) as any as S.Schema<ConnectorListResultValueList>;
@@ -3041,7 +3037,7 @@ export interface StorageDataShareAccessPolicy {
   /** The AAD tenant ID of the Managed Identity. */
   tenantId: string;
   /** Allowed permissions. Currently, only supported value is Read. */
-  permission: StorageDataShareAccessPolicyPermission;
+  permission: StorageDataShareAccessPolicyPermission | (string & {});
 }
 export const StorageDataShareAccessPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3055,7 +3051,7 @@ export const StorageDataShareAccessPolicy = /*@__PURE__*/ S.suspend(() =>
 
 /** List of access policies that specify the permission allowed to a managed identity. For Create - This property is required and cannot be null. If no access policies are provided at creation time, specify an empty array. For Update - This property is optional. If set to null or not passed, the existing access policies are left unchanged. If provided with a non-null value, the existing access policies are replaced with the specified list. */
 export type StorageDataSharePropertiesInputAccessPoliciesList =
-  ReadonlyArray<StorageDataShareAccessPolicy>;
+  Array<StorageDataShareAccessPolicy>;
 export const StorageDataSharePropertiesInputAccessPoliciesList =
   /*@__PURE__*/ S.Array(
     StorageDataShareAccessPolicy,
@@ -3079,7 +3075,7 @@ export const StorageDataShareAsset = /*@__PURE__*/ S.suspend(() =>
 
 /** List of assets that specify the properties of the shared resources. For Create - This property is required and cannot be null. If no assets are provided at creation time, specify an empty array. For Update - This property is optional. If set to null or not passed, the existing assets are left unchanged. If provided with a non-null value, the existing assets are replaced with the specified list. */
 export type StorageDataSharePropertiesInputAssetsList =
-  ReadonlyArray<StorageDataShareAsset>;
+  Array<StorageDataShareAsset>;
 export const StorageDataSharePropertiesInputAssetsList = /*@__PURE__*/ S.Array(
   StorageDataShareAsset,
 ) as any as S.Schema<StorageDataSharePropertiesInputAssetsList>;
@@ -3151,15 +3147,14 @@ export const DataSharesCreateResponseTagsMap = /*@__PURE__*/ S.Record(
 
 /** List of access policies that specify the permission allowed to a managed identity. For Create - This property is required and cannot be null. If no access policies are provided at creation time, specify an empty array. For Update - This property is optional. If set to null or not passed, the existing access policies are left unchanged. If provided with a non-null value, the existing access policies are replaced with the specified list. */
 export type StorageDataSharePropertiesAccessPoliciesList =
-  ReadonlyArray<StorageDataShareAccessPolicy>;
+  Array<StorageDataShareAccessPolicy>;
 export const StorageDataSharePropertiesAccessPoliciesList =
   /*@__PURE__*/ S.Array(
     StorageDataShareAccessPolicy,
   ) as any as S.Schema<StorageDataSharePropertiesAccessPoliciesList>;
 
 /** List of assets that specify the properties of the shared resources. For Create - This property is required and cannot be null. If no assets are provided at creation time, specify an empty array. For Update - This property is optional. If set to null or not passed, the existing assets are left unchanged. If provided with a non-null value, the existing assets are replaced with the specified list. */
-export type StorageDataSharePropertiesAssetsList =
-  ReadonlyArray<StorageDataShareAsset>;
+export type StorageDataSharePropertiesAssetsList = Array<StorageDataShareAsset>;
 export const StorageDataSharePropertiesAssetsList = /*@__PURE__*/ S.Array(
   StorageDataShareAsset,
 ) as any as S.Schema<StorageDataSharePropertiesAssetsList>;
@@ -3387,7 +3382,7 @@ export const DataShare = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DataShare" }) as any as S.Schema<DataShare>;
 
 /** The DataShare items on this page */
-export type DataShareListResultValueList = ReadonlyArray<DataShare>;
+export type DataShareListResultValueList = Array<DataShare>;
 export const DataShareListResultValueList = /*@__PURE__*/ S.Array(
   DataShare,
 ) as any as S.Schema<DataShareListResultValueList>;
@@ -3419,7 +3414,7 @@ export const DataSharesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 
 /** List of access policies that specify the permission allowed to a managed identity. For Create - This property is required and cannot be null. If no access policies are provided at creation time, specify an empty array. For Update - This property is optional. If set to null or not passed, the existing access policies are left unchanged. If provided with a non-null value, the existing access policies are replaced with the specified list. */
 export type StorageDataSharePropertiesUpdateAccessPoliciesList =
-  ReadonlyArray<StorageDataShareAccessPolicy>;
+  Array<StorageDataShareAccessPolicy>;
 export const StorageDataSharePropertiesUpdateAccessPoliciesList =
   /*@__PURE__*/ S.Array(
     StorageDataShareAccessPolicy,
@@ -3427,7 +3422,7 @@ export const StorageDataSharePropertiesUpdateAccessPoliciesList =
 
 /** List of assets that specify the properties of the shared resources. For Create - This property is required and cannot be null. If no assets are provided at creation time, specify an empty array. For Update - This property is optional. If set to null or not passed, the existing assets are left unchanged. If provided with a non-null value, the existing assets are replaced with the specified list. */
 export type StorageDataSharePropertiesUpdateAssetsList =
-  ReadonlyArray<StorageDataShareAsset>;
+  Array<StorageDataShareAsset>;
 export const StorageDataSharePropertiesUpdateAssetsList = /*@__PURE__*/ S.Array(
   StorageDataShareAsset,
 ) as any as S.Schema<StorageDataSharePropertiesUpdateAssetsList>;
@@ -3643,7 +3638,7 @@ export const DeletedAccount = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeletedAccount" }) as any as S.Schema<DeletedAccount>;
 
 /** The DeletedAccount items on this page */
-export type DeletedAccountListResultValueList = ReadonlyArray<DeletedAccount>;
+export type DeletedAccountListResultValueList = Array<DeletedAccount>;
 export const DeletedAccountListResultValueList = /*@__PURE__*/ S.Array(
   DeletedAccount,
 ) as any as S.Schema<DeletedAccountListResultValueList>;
@@ -3836,7 +3831,7 @@ export const EncryptionScope = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EncryptionScope>;
 
 /** The EncryptionScope items on this page */
-export type EncryptionScopeListResultValueList = ReadonlyArray<EncryptionScope>;
+export type EncryptionScopeListResultValueList = Array<EncryptionScope>;
 export const EncryptionScopeListResultValueList = /*@__PURE__*/ S.Array(
   EncryptionScope,
 ) as any as S.Schema<EncryptionScopeListResultValueList>;
@@ -4412,7 +4407,7 @@ export const FileServiceProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FileServiceProperties>;
 
 /** List of file services returned. */
-export type FileServiceItemsValueList = ReadonlyArray<FileServiceProperties>;
+export type FileServiceItemsValueList = Array<FileServiceProperties>;
 export const FileServiceItemsValueList = /*@__PURE__*/ S.Array(
   FileServiceProperties,
 ) as any as S.Schema<FileServiceItemsValueList>;
@@ -4484,7 +4479,7 @@ export const FileServiceUsage = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FileServiceUsage>;
 
 /** The FileServiceUsage items on this page */
-export type FileServiceUsagesValueList = ReadonlyArray<FileServiceUsage>;
+export type FileServiceUsagesValueList = Array<FileServiceUsage>;
 export const FileServiceUsagesValueList = /*@__PURE__*/ S.Array(
   FileServiceUsage,
 ) as any as S.Schema<FileServiceUsagesValueList>;
@@ -4620,7 +4615,7 @@ export const SignedIdentifier = /*@__PURE__*/ S.suspend(() =>
 
 /** List of stored access policies specified on the share. */
 export type FileSharePropertiesInputSignedIdentifiersList =
-  ReadonlyArray<SignedIdentifier>;
+  Array<SignedIdentifier>;
 export const FileSharePropertiesInputSignedIdentifiersList =
   /*@__PURE__*/ S.Array(
     SignedIdentifier,
@@ -4729,8 +4724,7 @@ export const FileSharePropertiesMetadataMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<FileSharePropertiesMetadataMap>;
 
 /** List of stored access policies specified on the share. */
-export type FileSharePropertiesSignedIdentifiersList =
-  ReadonlyArray<SignedIdentifier>;
+export type FileSharePropertiesSignedIdentifiersList = Array<SignedIdentifier>;
 export const FileSharePropertiesSignedIdentifiersList = /*@__PURE__*/ S.Array(
   SignedIdentifier,
 ) as any as S.Schema<FileSharePropertiesSignedIdentifiersList>;
@@ -5075,7 +5069,7 @@ export const FileShareItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FileShareItem" }) as any as S.Schema<FileShareItem>;
 
 /** The FileShareItem items on this page */
-export type FileShareItemsValueList = ReadonlyArray<FileShareItem>;
+export type FileShareItemsValueList = Array<FileShareItem>;
 export const FileShareItemsValueList = /*@__PURE__*/ S.Array(
   FileShareItem,
 ) as any as S.Schema<FileShareItemsValueList>;
@@ -5213,7 +5207,7 @@ export const PermissionScope = /*@__PURE__*/ S.suspend(() =>
 
 /** The permission scopes of the local user. */
 export type LocalUserPropertiesInputPermissionScopesList =
-  ReadonlyArray<PermissionScope>;
+  Array<PermissionScope>;
 export const LocalUserPropertiesInputPermissionScopesList =
   /*@__PURE__*/ S.Array(
     PermissionScope,
@@ -5233,15 +5227,14 @@ export const SshPublicKey = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SshPublicKey" }) as any as S.Schema<SshPublicKey>;
 
 /** Optional, local user ssh authorized keys for SFTP. */
-export type LocalUserPropertiesInputSshAuthorizedKeysList =
-  ReadonlyArray<SshPublicKey>;
+export type LocalUserPropertiesInputSshAuthorizedKeysList = Array<SshPublicKey>;
 export const LocalUserPropertiesInputSshAuthorizedKeysList =
   /*@__PURE__*/ S.Array(
     SshPublicKey,
   ) as any as S.Schema<LocalUserPropertiesInputSshAuthorizedKeysList>;
 
 /** Supplementary group membership. Only applicable for local users enabled for NFSv3 access. */
-export type LocalUserPropertiesInputExtendedGroupsList = ReadonlyArray<number>;
+export type LocalUserPropertiesInputExtendedGroupsList = Array<number>;
 export const LocalUserPropertiesInputExtendedGroupsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<LocalUserPropertiesInputExtendedGroupsList>;
@@ -5320,21 +5313,19 @@ export const LocalUsersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LocalUsersCreateOrUpdateRequest>;
 
 /** The permission scopes of the local user. */
-export type LocalUserPropertiesPermissionScopesList =
-  ReadonlyArray<PermissionScope>;
+export type LocalUserPropertiesPermissionScopesList = Array<PermissionScope>;
 export const LocalUserPropertiesPermissionScopesList = /*@__PURE__*/ S.Array(
   PermissionScope,
 ) as any as S.Schema<LocalUserPropertiesPermissionScopesList>;
 
 /** Optional, local user ssh authorized keys for SFTP. */
-export type LocalUserPropertiesSshAuthorizedKeysList =
-  ReadonlyArray<SshPublicKey>;
+export type LocalUserPropertiesSshAuthorizedKeysList = Array<SshPublicKey>;
 export const LocalUserPropertiesSshAuthorizedKeysList = /*@__PURE__*/ S.Array(
   SshPublicKey,
 ) as any as S.Schema<LocalUserPropertiesSshAuthorizedKeysList>;
 
 /** Supplementary group membership. Only applicable for local users enabled for NFSv3 access. */
-export type LocalUserPropertiesExtendedGroupsList = ReadonlyArray<number>;
+export type LocalUserPropertiesExtendedGroupsList = Array<number>;
 export const LocalUserPropertiesExtendedGroupsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<LocalUserPropertiesExtendedGroupsList>;
@@ -5559,7 +5550,7 @@ export const LocalUser = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LocalUser" }) as any as S.Schema<LocalUser>;
 
 /** The LocalUser items on this page */
-export type LocalUsersValueList = ReadonlyArray<LocalUser>;
+export type LocalUsersValueList = Array<LocalUser>;
 export const LocalUsersValueList = /*@__PURE__*/ S.Array(
   LocalUser,
 ) as any as S.Schema<LocalUsersValueList>;
@@ -5607,7 +5598,7 @@ export const LocalUsersListKeysRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LocalUsersListKeysRequest>;
 
 /** Optional, local user ssh authorized keys for SFTP. */
-export type LocalUserKeysSshAuthorizedKeysList = ReadonlyArray<SshPublicKey>;
+export type LocalUserKeysSshAuthorizedKeysList = Array<SshPublicKey>;
 export const LocalUserKeysSshAuthorizedKeysList = /*@__PURE__*/ S.Array(
   SshPublicKey,
 ) as any as S.Schema<LocalUserKeysSshAuthorizedKeysList>;
@@ -5812,13 +5803,13 @@ export const ManagementPolicyAction = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ManagementPolicyAction>;
 
 /** An array of strings for prefixes to be match. */
-export type ManagementPolicyFilterPrefixMatchList = ReadonlyArray<string>;
+export type ManagementPolicyFilterPrefixMatchList = Array<string>;
 export const ManagementPolicyFilterPrefixMatchList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ManagementPolicyFilterPrefixMatchList>;
 
 /** An array of predefined enum values. Currently blockBlob supports all tiering and delete actions. Only delete actions are supported for appendBlob. */
-export type ManagementPolicyFilterBlobTypesList = ReadonlyArray<string>;
+export type ManagementPolicyFilterBlobTypesList = Array<string>;
 export const ManagementPolicyFilterBlobTypesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ManagementPolicyFilterBlobTypesList>;
@@ -5841,7 +5832,7 @@ export const TagFilter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TagFilter" }) as any as S.Schema<TagFilter>;
 
 /** An array of blob index tag based filters, there can be at most 10 tag filters */
-export type ManagementPolicyFilterBlobIndexMatchList = ReadonlyArray<TagFilter>;
+export type ManagementPolicyFilterBlobIndexMatchList = Array<TagFilter>;
 export const ManagementPolicyFilterBlobIndexMatchList = /*@__PURE__*/ S.Array(
   TagFilter,
 ) as any as S.Schema<ManagementPolicyFilterBlobIndexMatchList>;
@@ -5888,7 +5879,7 @@ export interface ManagementPolicyRule {
   /** A rule name can contain any combination of alpha numeric characters. Rule name is case-sensitive. It must be unique within a policy. */
   name: string;
   /** The valid value is Lifecycle */
-  type: RuleType;
+  type: RuleType | (string & {});
   /** An object that defines the Lifecycle rule. */
   definition: ManagementPolicyDefinition;
 }
@@ -5904,8 +5895,7 @@ export const ManagementPolicyRule = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ManagementPolicyRule>;
 
 /** The Storage Account ManagementPolicies Rules. See more details in: https://learn.microsoft.com/azure/storage/blobs/lifecycle-management-overview. */
-export type ManagementPolicySchemaRulesList =
-  ReadonlyArray<ManagementPolicyRule>;
+export type ManagementPolicySchemaRulesList = Array<ManagementPolicyRule>;
 export const ManagementPolicySchemaRulesList = /*@__PURE__*/ S.Array(
   ManagementPolicyRule,
 ) as any as S.Schema<ManagementPolicySchemaRulesList>;
@@ -6200,7 +6190,7 @@ export const ProvisioningIssue = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Provisioning Issues if any */
 export type NetworkSecurityPerimeterConfigurationPropertiesProvisioningIssuesList =
-  ReadonlyArray<ProvisioningIssue>;
+  Array<ProvisioningIssue>;
 export const NetworkSecurityPerimeterConfigurationPropertiesProvisioningIssuesList =
   /*@__PURE__*/ S.Array(
     ProvisioningIssue,
@@ -6252,7 +6242,7 @@ export type NspAccessRuleDirection = "Inbound" | "Outbound";
 export const NspAccessRuleDirection = /*@__PURE__*/ S.String;
 
 /** Address prefixes in the CIDR format for inbound rules */
-export type NspAccessRulePropertiesAddressPrefixesList = ReadonlyArray<string>;
+export type NspAccessRulePropertiesAddressPrefixesList = Array<string>;
 export const NspAccessRulePropertiesAddressPrefixesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<NspAccessRulePropertiesAddressPrefixesList>;
@@ -6273,14 +6263,14 @@ export const NspAccessRulePropertiesSubscriptionsItem = /*@__PURE__*/ S.suspend(
 
 /** Subscriptions for inbound rules */
 export type NspAccessRulePropertiesSubscriptionsList =
-  ReadonlyArray<NspAccessRulePropertiesSubscriptionsItem>;
+  Array<NspAccessRulePropertiesSubscriptionsItem>;
 export const NspAccessRulePropertiesSubscriptionsList = /*@__PURE__*/ S.Array(
   NspAccessRulePropertiesSubscriptionsItem,
 ) as any as S.Schema<NspAccessRulePropertiesSubscriptionsList>;
 
 /** NetworkSecurityPerimeters for inbound rules */
 export type NspAccessRulePropertiesNetworkSecurityPerimetersList =
-  ReadonlyArray<NetworkSecurityPerimeter>;
+  Array<NetworkSecurityPerimeter>;
 export const NspAccessRulePropertiesNetworkSecurityPerimetersList =
   /*@__PURE__*/ S.Array(
     NetworkSecurityPerimeter,
@@ -6288,7 +6278,7 @@ export const NspAccessRulePropertiesNetworkSecurityPerimetersList =
 
 /** FQDN for outbound rules */
 export type NspAccessRulePropertiesFullyQualifiedDomainNamesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const NspAccessRulePropertiesFullyQualifiedDomainNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6339,7 +6329,7 @@ export const NspAccessRule = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Access Rules */
 export type NetworkSecurityPerimeterConfigurationPropertiesProfileAccessRulesList =
-  ReadonlyArray<NspAccessRule>;
+  Array<NspAccessRule>;
 export const NetworkSecurityPerimeterConfigurationPropertiesProfileAccessRulesList =
   /*@__PURE__*/ S.Array(
     NspAccessRule,
@@ -6347,7 +6337,7 @@ export const NetworkSecurityPerimeterConfigurationPropertiesProfileAccessRulesLi
 
 /** Enabled logging categories */
 export type NetworkSecurityPerimeterConfigurationPropertiesProfileEnabledLogCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const NetworkSecurityPerimeterConfigurationPropertiesProfileEnabledLogCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6496,7 +6486,7 @@ export const NetworkSecurityPerimeterConfiguration = /*@__PURE__*/ S.suspend(
 
 /** The NetworkSecurityPerimeterConfiguration items on this page */
 export type NetworkSecurityPerimeterConfigurationListValueList =
-  ReadonlyArray<NetworkSecurityPerimeterConfiguration>;
+  Array<NetworkSecurityPerimeterConfiguration>;
 export const NetworkSecurityPerimeterConfigurationListValueList =
   /*@__PURE__*/ S.Array(
     NetworkSecurityPerimeterConfiguration,
@@ -6555,8 +6545,7 @@ export const NetworkSecurityPerimeterConfigurationsReconcileResponse =
   }) as any as S.Schema<NetworkSecurityPerimeterConfigurationsReconcileResponse>;
 
 /** Optional. Filters the results to replicate only blobs whose names begin with the specified prefix. */
-export type ObjectReplicationPolicyFilterPrefixMatchList =
-  ReadonlyArray<string>;
+export type ObjectReplicationPolicyFilterPrefixMatchList = Array<string>;
 export const ObjectReplicationPolicyFilterPrefixMatchList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6602,7 +6591,7 @@ export const ObjectReplicationPolicyRule = /*@__PURE__*/ S.suspend(() =>
 
 /** The storage account object replication rules. */
 export type ObjectReplicationPolicyPropertiesInputRulesList =
-  ReadonlyArray<ObjectReplicationPolicyRule>;
+  Array<ObjectReplicationPolicyRule>;
 export const ObjectReplicationPolicyPropertiesInputRulesList =
   /*@__PURE__*/ S.Array(
     ObjectReplicationPolicyRule,
@@ -6717,7 +6706,7 @@ export const ObjectReplicationPoliciesCreateOrUpdateRequest =
 
 /** The storage account object replication rules. */
 export type ObjectReplicationPolicyPropertiesRulesList =
-  ReadonlyArray<ObjectReplicationPolicyRule>;
+  Array<ObjectReplicationPolicyRule>;
 export const ObjectReplicationPolicyPropertiesRulesList = /*@__PURE__*/ S.Array(
   ObjectReplicationPolicyRule,
 ) as any as S.Schema<ObjectReplicationPolicyPropertiesRulesList>;
@@ -6926,8 +6915,7 @@ export const ObjectReplicationPolicy = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ObjectReplicationPolicy>;
 
 /** The replication policy between two storage accounts. */
-export type ObjectReplicationPoliciesValueList =
-  ReadonlyArray<ObjectReplicationPolicy>;
+export type ObjectReplicationPoliciesValueList = Array<ObjectReplicationPolicy>;
 export const ObjectReplicationPoliciesValueList = /*@__PURE__*/ S.Array(
   ObjectReplicationPolicy,
 ) as any as S.Schema<ObjectReplicationPoliciesValueList>;
@@ -6998,7 +6986,7 @@ export const Dimension = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Dimension" }) as any as S.Schema<Dimension>;
 
 /** Dimensions of blobs, including blob type and access tier. */
-export type MetricSpecificationDimensionsList = ReadonlyArray<Dimension>;
+export type MetricSpecificationDimensionsList = Array<Dimension>;
 export const MetricSpecificationDimensionsList = /*@__PURE__*/ S.Array(
   Dimension,
 ) as any as S.Schema<MetricSpecificationDimensionsList>;
@@ -7042,7 +7030,7 @@ export const MetricSpecification = /*@__PURE__*/ S.suspend(() =>
 
 /** Metric specifications of operation. */
 export type ServiceSpecificationMetricSpecificationsList =
-  ReadonlyArray<MetricSpecification>;
+  Array<MetricSpecification>;
 export const ServiceSpecificationMetricSpecificationsList =
   /*@__PURE__*/ S.Array(
     MetricSpecification,
@@ -7097,7 +7085,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider. */
-export type OperationListResultValueList = ReadonlyArray<Operation>;
+export type OperationListResultValueList = Array<Operation>;
 export const OperationListResultValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationListResultValueList>;
@@ -7205,7 +7193,7 @@ export const PrivateEndpointServiceConnectionStatus = /*@__PURE__*/ S.String;
 /** A collection of information about the state of the connection between service consumer and provider. */
 export interface PrivateLinkServiceConnectionState {
   /** Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service. */
-  status?: PrivateEndpointServiceConnectionStatus;
+  status?: PrivateEndpointServiceConnectionStatus | (string & {});
   /** The reason for approval/rejection of the connection. */
   description?: string;
   /** A message indicating if changes on the service provider require any updates on the consumer. */
@@ -7327,7 +7315,7 @@ export const PrivateEndpointConnection = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of private endpoint connections */
 export type PrivateEndpointConnectionListResultValueList =
-  ReadonlyArray<PrivateEndpointConnection>;
+  Array<PrivateEndpointConnection>;
 export const PrivateEndpointConnectionListResultValueList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection,
@@ -7457,16 +7445,14 @@ export const PrivateLinkResourcesListByStorageAccountRequest =
   }) as any as S.Schema<PrivateLinkResourcesListByStorageAccountRequest>;
 
 /** The private link resource required member names. */
-export type PrivateLinkResourcePropertiesRequiredMembersList =
-  ReadonlyArray<string>;
+export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
 export const PrivateLinkResourcePropertiesRequiredMembersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
 
 /** The private link resource Private link DNS zone name. */
-export type PrivateLinkResourcePropertiesRequiredZoneNamesList =
-  ReadonlyArray<string>;
+export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
 export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -7521,8 +7507,7 @@ export const PrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateLinkResource>;
 
 /** Array of private link resources */
-export type PrivateLinkResourceListResultValueList =
-  ReadonlyArray<PrivateLinkResource>;
+export type PrivateLinkResourceListResultValueList = Array<PrivateLinkResource>;
 export const PrivateLinkResourceListResultValueList = /*@__PURE__*/ S.Array(
   PrivateLinkResource,
 ) as any as S.Schema<PrivateLinkResourceListResultValueList>;
@@ -7800,7 +7785,7 @@ export const ListQueue = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListQueue" }) as any as S.Schema<ListQueue>;
 
 /** The ListQueue items on this page */
-export type ListQueueResourceValueList = ReadonlyArray<ListQueue>;
+export type ListQueueResourceValueList = Array<ListQueue>;
 export const ListQueueResourceValueList = /*@__PURE__*/ S.Array(
   ListQueue,
 ) as any as S.Schema<ListQueueResourceValueList>;
@@ -7936,7 +7921,7 @@ export const QueueServiceProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<QueueServiceProperties>;
 
 /** List of queue services returned. */
-export type ListQueueServicesValueList = ReadonlyArray<QueueServiceProperties>;
+export type ListQueueServicesValueList = Array<QueueServiceProperties>;
 export const ListQueueServicesValueList = /*@__PURE__*/ S.Array(
   QueueServiceProperties,
 ) as any as S.Schema<ListQueueServicesValueList>;
@@ -8091,13 +8076,13 @@ export type Kind =
 export const Kind = /*@__PURE__*/ S.String;
 
 /** The set of locations that the SKU is available. This will be supported and registered Azure Geo Regions (e.g. West US, East US, Southeast Asia, etc.). */
-export type SkuInformationLocationsList = ReadonlyArray<string>;
+export type SkuInformationLocationsList = Array<string>;
 export const SkuInformationLocationsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SkuInformationLocationsList>;
 
 /** Describes the available zones for the product where storage account resource can be created. */
-export type SkuInformationLocationInfoItemZonesList = ReadonlyArray<string>;
+export type SkuInformationLocationInfoItemZonesList = Array<string>;
 export const SkuInformationLocationInfoItemZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SkuInformationLocationInfoItemZonesList>;
@@ -8118,7 +8103,7 @@ export const SkuInformationLocationInfoItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SkuInformationLocationInfoItem>;
 
 export type SkuInformationLocationInfoList =
-  ReadonlyArray<SkuInformationLocationInfoItem>;
+  Array<SkuInformationLocationInfoItem>;
 export const SkuInformationLocationInfoList = /*@__PURE__*/ S.Array(
   SkuInformationLocationInfoItem,
 ) as any as S.Schema<SkuInformationLocationInfoList>;
@@ -8138,13 +8123,13 @@ export const SKUCapability = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SKUCapability" }) as any as S.Schema<SKUCapability>;
 
 /** The capability information in the specified SKU, including file encryption, network ACLs, change notification, etc. */
-export type SkuInformationCapabilitiesList = ReadonlyArray<SKUCapability>;
+export type SkuInformationCapabilitiesList = Array<SKUCapability>;
 export const SkuInformationCapabilitiesList = /*@__PURE__*/ S.Array(
   SKUCapability,
 ) as any as S.Schema<SkuInformationCapabilitiesList>;
 
 /** The value of restrictions. If the restriction type is set to location. This would be different locations where the SKU is restricted. */
-export type RestrictionValuesList = ReadonlyArray<string>;
+export type RestrictionValuesList = Array<string>;
 export const RestrictionValuesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RestrictionValuesList>;
@@ -8171,7 +8156,7 @@ export const Restriction = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Restriction" }) as any as S.Schema<Restriction>;
 
 /** The restrictions because of which SKU cannot be used. This is empty if there are no restrictions. */
-export type SkuInformationRestrictionsList = ReadonlyArray<Restriction>;
+export type SkuInformationRestrictionsList = Array<Restriction>;
 export const SkuInformationRestrictionsList = /*@__PURE__*/ S.Array(
   Restriction,
 ) as any as S.Schema<SkuInformationRestrictionsList>;
@@ -8208,7 +8193,7 @@ export const SkuInformation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SkuInformation" }) as any as S.Schema<SkuInformation>;
 
 /** Get the list result of storage SKUs and their properties. */
-export type StorageSkuListResultValueList = ReadonlyArray<SkuInformation>;
+export type StorageSkuListResultValueList = Array<SkuInformation>;
 export const StorageSkuListResultValueList = /*@__PURE__*/ S.Array(
   SkuInformation,
 ) as any as S.Schema<StorageSkuListResultValueList>;
@@ -8324,7 +8309,7 @@ export interface ExtendedLocation {
   /** The name of the extended location. */
   name?: string;
   /** The type of the extended location. */
-  type?: ExtendedLocationTypes;
+  type?: ExtendedLocationTypes | (string & {});
 }
 export const ExtendedLocation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -8336,7 +8321,7 @@ export const ExtendedLocation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExtendedLocation>;
 
 /** Optional. Gets or sets the pinned logical availability zone for the storage account. */
-export type StorageAccountsCreateRequestZonesList = ReadonlyArray<string>;
+export type StorageAccountsCreateRequestZonesList = Array<string>;
 export const StorageAccountsCreateRequestZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StorageAccountsCreateRequestZonesList>;
@@ -8348,7 +8333,7 @@ export const ZonePlacementPolicy = /*@__PURE__*/ S.String;
 /** The complex type of the zonal placement details. */
 export interface Placement {
   /** The availability zone pinning policy for the storage account. */
-  zonePlacementPolicy?: ZonePlacementPolicy;
+  zonePlacementPolicy?: ZonePlacementPolicy | (string & {});
 }
 export const Placement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -8421,7 +8406,7 @@ export interface SasPolicy {
   /** The SAS expiration period, DD.HH:MM:SS. */
   sasExpirationPeriod: string;
   /** The SAS Expiration Action defines the action to be performed when sasPolicy.sasExpirationPeriod is violated. The 'Log' action can be used for audit purposes and the 'Block' action can be used to block and deny the usage of SAS tokens that do not adhere to the sas policy expiration period. */
-  expirationAction: SasPolicyExpirationAction;
+  expirationAction: SasPolicyExpirationAction | (string & {});
 }
 export const SasPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -8589,7 +8574,7 @@ export const ResourceAccessRule = /*@__PURE__*/ S.suspend(() =>
 
 /** Sets the resource access rules */
 export type NetworkRuleSetInputResourceAccessRulesList =
-  ReadonlyArray<ResourceAccessRule>;
+  Array<ResourceAccessRule>;
 export const NetworkRuleSetInputResourceAccessRulesList = /*@__PURE__*/ S.Array(
   ResourceAccessRule,
 ) as any as S.Schema<NetworkRuleSetInputResourceAccessRulesList>;
@@ -8616,7 +8601,7 @@ export const VirtualNetworkRuleInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Sets the virtual network rules */
 export type NetworkRuleSetInputVirtualNetworkRulesList =
-  ReadonlyArray<VirtualNetworkRuleInput>;
+  Array<VirtualNetworkRuleInput>;
 export const NetworkRuleSetInputVirtualNetworkRulesList = /*@__PURE__*/ S.Array(
   VirtualNetworkRuleInput,
 ) as any as S.Schema<NetworkRuleSetInputVirtualNetworkRulesList>;
@@ -8630,7 +8615,7 @@ export interface IPRule {
   /** Specifies the IP or IP range in CIDR format. */
   value: string;
   /** The action of IP ACL rule. */
-  action?: IPRuleAction;
+  action?: IPRuleAction | (string & {});
 }
 export const IPRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -8640,13 +8625,13 @@ export const IPRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IPRule" }) as any as S.Schema<IPRule>;
 
 /** Sets the IP ACL rules */
-export type NetworkRuleSetInputIpRulesList = ReadonlyArray<IPRule>;
+export type NetworkRuleSetInputIpRulesList = Array<IPRule>;
 export const NetworkRuleSetInputIpRulesList = /*@__PURE__*/ S.Array(
   IPRule,
 ) as any as S.Schema<NetworkRuleSetInputIpRulesList>;
 
 /** Sets the IPv6 ACL rules. */
-export type NetworkRuleSetInputIpv6RulesList = ReadonlyArray<IPRule>;
+export type NetworkRuleSetInputIpv6RulesList = Array<IPRule>;
 export const NetworkRuleSetInputIpv6RulesList = /*@__PURE__*/ S.Array(
   IPRule,
 ) as any as S.Schema<NetworkRuleSetInputIpv6RulesList>;
@@ -8712,7 +8697,7 @@ export interface ActiveDirectoryProperties {
   /** Specifies the Active Directory SAMAccountName for Azure Storage. If directoryServiceOptions is set to AD (AD DS authentication), this property is optional. If provided, accountType should also be provided. For directoryServiceOptions AADDS (Entra DS authentication) or AADKERB (Entra authentication), this property can be omitted. */
   samAccountName?: string;
   /** Specifies the Active Directory account type for Azure Storage. If directoryServiceOptions is set to AD (AD DS authentication), this property is optional. If provided, samAccountName should also be provided. For directoryServiceOptions AADDS (Entra DS authentication) or AADKERB (Entra authentication), this property can be omitted. */
-  accountType?: AccountType;
+  accountType?: AccountType | (string & {});
 }
 export const ActiveDirectoryProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -8753,11 +8738,11 @@ export const SmbOAuthSettings = /*@__PURE__*/ S.suspend(() =>
 /** Settings for Azure Files identity based authentication. */
 export interface AzureFilesIdentityBasedAuthentication {
   /** Indicates the directory service used. Note that this enum may be extended in the future. */
-  directoryServiceOptions: DirectoryServiceOptions;
+  directoryServiceOptions: DirectoryServiceOptions | (string & {});
   /** Additional information about the directory service. Required if directoryServiceOptions is AD (AD DS authentication). Optional for directoryServiceOptions AADDS (Entra DS authentication) and AADKERB (Entra authentication). */
   activeDirectoryProperties?: ActiveDirectoryProperties;
   /** Default share permission for users using Kerberos authentication if RBAC role is not assigned. */
-  defaultSharePermission?: DefaultSharePermission;
+  defaultSharePermission?: DefaultSharePermission | (string & {});
   /** Required for Managed Identities access using OAuth over SMB. */
   smbOAuthSettings?: SmbOAuthSettings;
 }
@@ -8784,7 +8769,7 @@ export const RoutingChoice = /*@__PURE__*/ S.String;
 /** Routing preference defines the type of network, either microsoft or internet routing to be used to deliver the user data, the default option is microsoft routing */
 export interface RoutingPreference {
   /** Routing Choice defines the kind of network routing opted by the user. */
-  routingChoice?: RoutingChoice;
+  routingChoice?: RoutingChoice | (string & {});
   /** A boolean flag which indicates whether microsoft routing storage endpoints are to be published */
   publishMicrosoftEndpoints?: boolean;
   /** A boolean flag which indicates whether internet routing storage endpoints are to be published */
@@ -8826,7 +8811,7 @@ export interface AccountImmutabilityPolicyProperties {
   /** The immutability period for the blobs in the container since the policy creation, in days. */
   immutabilityPeriodSinceCreationInDays?: number;
   /** The ImmutabilityPolicy state defines the mode of the policy. Disabled state disables the policy, Unlocked state allows increase and decrease of immutability retention time and also allows toggling allowProtectedAppendWrites property, Locked state only allows the increase of the immutability retention time. A policy can only be created in a Disabled or Unlocked state and can be toggled between the two states. Only a policy in an Unlocked state can transition to a Locked state which cannot be reverted. */
-  state?: AccountImmutabilityPolicyState;
+  state?: AccountImmutabilityPolicyState | (string & {});
   /** This property can only be changed for disabled and unlocked time-based retention policies. When enabled, new blocks can be written to an append blob while maintaining immutability protection and compliance. Only new blocks can be added and any existing blocks cannot be modified or deleted. */
   allowProtectedAppendWrites?: boolean;
 }
@@ -9337,8 +9322,7 @@ export type NetworkRuleSetBypass =
 export const NetworkRuleSetBypass = /*@__PURE__*/ S.String;
 
 /** Sets the resource access rules */
-export type NetworkRuleSetResourceAccessRulesList =
-  ReadonlyArray<ResourceAccessRule>;
+export type NetworkRuleSetResourceAccessRulesList = Array<ResourceAccessRule>;
 export const NetworkRuleSetResourceAccessRulesList = /*@__PURE__*/ S.Array(
   ResourceAccessRule,
 ) as any as S.Schema<NetworkRuleSetResourceAccessRulesList>;
@@ -9376,20 +9360,19 @@ export const VirtualNetworkRule = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VirtualNetworkRule>;
 
 /** Sets the virtual network rules */
-export type NetworkRuleSetVirtualNetworkRulesList =
-  ReadonlyArray<VirtualNetworkRule>;
+export type NetworkRuleSetVirtualNetworkRulesList = Array<VirtualNetworkRule>;
 export const NetworkRuleSetVirtualNetworkRulesList = /*@__PURE__*/ S.Array(
   VirtualNetworkRule,
 ) as any as S.Schema<NetworkRuleSetVirtualNetworkRulesList>;
 
 /** Sets the IP ACL rules */
-export type NetworkRuleSetIpRulesList = ReadonlyArray<IPRule>;
+export type NetworkRuleSetIpRulesList = Array<IPRule>;
 export const NetworkRuleSetIpRulesList = /*@__PURE__*/ S.Array(
   IPRule,
 ) as any as S.Schema<NetworkRuleSetIpRulesList>;
 
 /** Sets the IPv6 ACL rules. */
-export type NetworkRuleSetIpv6RulesList = ReadonlyArray<IPRule>;
+export type NetworkRuleSetIpv6RulesList = Array<IPRule>;
 export const NetworkRuleSetIpv6RulesList = /*@__PURE__*/ S.Array(
   IPRule,
 ) as any as S.Schema<NetworkRuleSetIpv6RulesList>;
@@ -9470,7 +9453,7 @@ export const GeoReplicationStats = /*@__PURE__*/ S.suspend(() =>
 
 /** List of private endpoint connection associated with the specified storage account */
 export type StorageAccountPropertiesPrivateEndpointConnectionsList =
-  ReadonlyArray<PrivateEndpointConnection>;
+  Array<PrivateEndpointConnection>;
 export const StorageAccountPropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection,
@@ -9497,8 +9480,7 @@ export const BlobRestoreRange = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BlobRestoreRange>;
 
 /** Blob ranges to restore. */
-export type BlobRestoreParametersBlobRangesList =
-  ReadonlyArray<BlobRestoreRange>;
+export type BlobRestoreParametersBlobRangesList = Array<BlobRestoreRange>;
 export const BlobRestoreParametersBlobRangesList = /*@__PURE__*/ S.Array(
   BlobRestoreRange,
 ) as any as S.Schema<BlobRestoreParametersBlobRangesList>;
@@ -9768,7 +9750,7 @@ export const Identity = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Identity" }) as any as S.Schema<Identity>;
 
 /** The availability zones. */
-export type StorageAccountsCreateResponseZonesList = ReadonlyArray<string>;
+export type StorageAccountsCreateResponseZonesList = Array<string>;
 export const StorageAccountsCreateResponseZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StorageAccountsCreateResponseZonesList>;
@@ -10084,8 +10066,7 @@ export const StorageAccountsGetPropertiesResponseTagsMap =
   ) as any as S.Schema<StorageAccountsGetPropertiesResponseTagsMap>;
 
 /** The availability zones. */
-export type StorageAccountsGetPropertiesResponseZonesList =
-  ReadonlyArray<string>;
+export type StorageAccountsGetPropertiesResponseZonesList = Array<string>;
 export const StorageAccountsGetPropertiesResponseZonesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -10202,7 +10183,7 @@ export const StorageAccountTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<StorageAccountTagsMap>;
 
 /** The availability zones. */
-export type StorageAccountZonesList = ReadonlyArray<string>;
+export type StorageAccountZonesList = Array<string>;
 export const StorageAccountZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StorageAccountZonesList>;
@@ -10255,7 +10236,7 @@ export const StorageAccount = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StorageAccount" }) as any as S.Schema<StorageAccount>;
 
 /** The StorageAccount items on this page */
-export type StorageAccountListResultValueList = ReadonlyArray<StorageAccount>;
+export type StorageAccountListResultValueList = Array<StorageAccount>;
 export const StorageAccountListResultValueList = /*@__PURE__*/ S.Array(
   StorageAccount,
 ) as any as S.Schema<StorageAccountListResultValueList>;
@@ -10438,8 +10419,7 @@ export const StorageAccountKey = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StorageAccountKey>;
 
 /** Gets the list of storage account keys and their properties for the specified storage account. */
-export type StorageAccountListKeysResultKeysList =
-  ReadonlyArray<StorageAccountKey>;
+export type StorageAccountListKeysResultKeysList = Array<StorageAccountKey>;
 export const StorageAccountListKeysResultKeysList = /*@__PURE__*/ S.Array(
   StorageAccountKey,
 ) as any as S.Schema<StorageAccountListKeysResultKeysList>;
@@ -10584,7 +10564,7 @@ export const StorageAccountsRegenerateKeyRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Blob ranges to restore. */
 export type StorageAccountsRestoreBlobRangesRequestBlobRangesList =
-  ReadonlyArray<BlobRestoreRange>;
+  Array<BlobRestoreRange>;
 export const StorageAccountsRestoreBlobRangesRequestBlobRangesList =
   /*@__PURE__*/ S.Array(
     BlobRestoreRange,
@@ -10759,7 +10739,7 @@ export const StorageAccountPropertiesUpdateParametersInput =
   }) as any as S.Schema<StorageAccountPropertiesUpdateParametersInput>;
 
 /** Optional. Gets or sets the pinned logical availability zone for the storage account. */
-export type StorageAccountsUpdateRequestZonesList = ReadonlyArray<string>;
+export type StorageAccountsUpdateRequestZonesList = Array<string>;
 export const StorageAccountsUpdateRequestZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StorageAccountsUpdateRequestZonesList>;
@@ -10820,7 +10800,7 @@ export const StorageAccountsUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<StorageAccountsUpdateResponseTagsMap>;
 
 /** The availability zones. */
-export type StorageAccountsUpdateResponseZonesList = ReadonlyArray<string>;
+export type StorageAccountsUpdateResponseZonesList = Array<string>;
 export const StorageAccountsUpdateResponseZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StorageAccountsUpdateResponseZonesList>;
@@ -10995,7 +10975,7 @@ export const StorageTaskReportInstance = /*@__PURE__*/ S.suspend(() =>
 
 /** The StorageTaskReportInstance items on this page */
 export type StorageTaskReportSummaryValueList =
-  ReadonlyArray<StorageTaskReportInstance>;
+  Array<StorageTaskReportInstance>;
 export const StorageTaskReportSummaryValueList = /*@__PURE__*/ S.Array(
   StorageTaskReportInstance,
 ) as any as S.Schema<StorageTaskReportSummaryValueList>;
@@ -11017,13 +10997,13 @@ export const StorageTaskReportSummary = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StorageTaskReportSummary>;
 
 /** Required list of object prefixes to be included for task execution */
-export type ExecutionTargetPrefixList = ReadonlyArray<string>;
+export type ExecutionTargetPrefixList = Array<string>;
 export const ExecutionTargetPrefixList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ExecutionTargetPrefixList>;
 
 /** List of object prefixes to be excluded from task execution. If there is a conflict between include and exclude prefixes, the exclude prefix will be the determining factor */
-export type ExecutionTargetExcludePrefixList = ReadonlyArray<string>;
+export type ExecutionTargetExcludePrefixList = Array<string>;
 export const ExecutionTargetExcludePrefixList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ExecutionTargetExcludePrefixList>;
@@ -11059,7 +11039,7 @@ export interface TriggerParameters {
   /** Run interval of task execution. This is a required field when ExecutionTrigger.properties.type is 'OnSchedule'; this property should not be present when ExecutionTrigger.properties.type is 'RunOnce' */
   interval?: number;
   /** Run interval unit of task execution. This is a required field when ExecutionTrigger.properties.type is 'OnSchedule'; this property should not be present when ExecutionTrigger.properties.type is 'RunOnce' */
-  intervalUnit?: IntervalUnit;
+  intervalUnit?: IntervalUnit | (string & {});
   /** When to end task execution. This is a required field when ExecutionTrigger.properties.type is 'OnSchedule'; this property should not be present when ExecutionTrigger.properties.type is 'RunOnce' */
   endBy?: string;
   /** When to start task execution. This is a required field when ExecutionTrigger.properties.type is 'RunOnce'; this property should not be present when ExecutionTrigger.properties.type is 'OnSchedule' */
@@ -11080,7 +11060,7 @@ export const TriggerParameters = /*@__PURE__*/ S.suspend(() =>
 /** Execution trigger for storage task assignment */
 export interface ExecutionTrigger {
   /** The trigger type of the storage task assignment execution */
-  type: TriggerType;
+  type: TriggerType | (string & {});
   /** The trigger parameters of the storage task assignment execution */
   parameters: TriggerParameters;
 }
@@ -11432,8 +11412,7 @@ export const StorageTaskAssignment = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StorageTaskAssignment>;
 
 /** The StorageTaskAssignment items on this page */
-export type StorageTaskAssignmentsListValueList =
-  ReadonlyArray<StorageTaskAssignment>;
+export type StorageTaskAssignmentsListValueList = Array<StorageTaskAssignment>;
 export const StorageTaskAssignmentsListValueList = /*@__PURE__*/ S.Array(
   StorageTaskAssignment,
 ) as any as S.Schema<StorageTaskAssignmentsListValueList>;
@@ -11679,7 +11658,7 @@ export const TableSignedIdentifier = /*@__PURE__*/ S.suspend(() =>
 
 /** List of stored access policies specified on the table. */
 export type TablePropertiesInputSignedIdentifiersList =
-  ReadonlyArray<TableSignedIdentifier>;
+  Array<TableSignedIdentifier>;
 export const TablePropertiesInputSignedIdentifiersList = /*@__PURE__*/ S.Array(
   TableSignedIdentifier,
 ) as any as S.Schema<TablePropertiesInputSignedIdentifiersList>;
@@ -11728,8 +11707,7 @@ export const TableCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TableCreateRequest>;
 
 /** List of stored access policies specified on the table. */
-export type TablePropertiesSignedIdentifiersList =
-  ReadonlyArray<TableSignedIdentifier>;
+export type TablePropertiesSignedIdentifiersList = Array<TableSignedIdentifier>;
 export const TablePropertiesSignedIdentifiersList = /*@__PURE__*/ S.Array(
   TableSignedIdentifier,
 ) as any as S.Schema<TablePropertiesSignedIdentifiersList>;
@@ -11909,7 +11887,7 @@ export const Table = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Table" }) as any as S.Schema<Table>;
 
 /** The Table items on this page */
-export type ListTableResourceValueList = ReadonlyArray<Table>;
+export type ListTableResourceValueList = Array<Table>;
 export const ListTableResourceValueList = /*@__PURE__*/ S.Array(
   Table,
 ) as any as S.Schema<ListTableResourceValueList>;
@@ -12045,7 +12023,7 @@ export const TableServiceProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TableServiceProperties>;
 
 /** List of table services returned. */
-export type ListTableServicesValueList = ReadonlyArray<TableServiceProperties>;
+export type ListTableServicesValueList = Array<TableServiceProperties>;
 export const ListTableServicesValueList = /*@__PURE__*/ S.Array(
   TableServiceProperties,
 ) as any as S.Schema<ListTableServicesValueList>;
@@ -12238,7 +12216,7 @@ export const Usage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Usage" }) as any as S.Schema<Usage>;
 
 /** Gets or sets the list of Storage Resource Usages. */
-export type UsageListResultValueList = ReadonlyArray<Usage>;
+export type UsageListResultValueList = Array<Usage>;
 export const UsageListResultValueList = /*@__PURE__*/ S.Array(
   Usage,
 ) as any as S.Schema<UsageListResultValueList>;

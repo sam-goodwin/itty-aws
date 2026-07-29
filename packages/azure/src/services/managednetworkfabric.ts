@@ -36,27 +36,26 @@ export type IPAddressType = "IPv4" | "IPv6";
 export const IPAddressType = /*@__PURE__*/ S.String;
 
 /** List of the protocols that need to be matched. */
-export type AccessControlListMatchConditionProtocolTypesList =
-  ReadonlyArray<string>;
+export type AccessControlListMatchConditionProtocolTypesList = Array<string>;
 export const AccessControlListMatchConditionProtocolTypesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AccessControlListMatchConditionProtocolTypesList>;
 
 /** List of vlans that need to be matched. Inputs can be single vlan or the range of vlans. */
-export type VlanMatchConditionVlansList = ReadonlyArray<string>;
+export type VlanMatchConditionVlansList = Array<string>;
 export const VlanMatchConditionVlansList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<VlanMatchConditionVlansList>;
 
 /** List of inner vlans that need to be matched.Inputs can be single vlan or the range of vlans. */
-export type VlanMatchConditionInnerVlansList = ReadonlyArray<string>;
+export type VlanMatchConditionInnerVlansList = Array<string>;
 export const VlanMatchConditionInnerVlansList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<VlanMatchConditionInnerVlansList>;
 
 /** List of vlan group names that need to be matched. */
-export type VlanMatchConditionVlanGroupNamesList = ReadonlyArray<string>;
+export type VlanMatchConditionVlanGroupNamesList = Array<string>;
 export const VlanMatchConditionVlanGroupNamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<VlanMatchConditionVlanGroupNamesList>;
@@ -92,13 +91,13 @@ export type PrefixType = "Prefix" | "LongestPrefix";
 export const PrefixType = /*@__PURE__*/ S.String;
 
 /** The list of IP Prefixes that need to be matched. */
-export type IpMatchConditionIpPrefixValuesList = ReadonlyArray<string>;
+export type IpMatchConditionIpPrefixValuesList = Array<string>;
 export const IpMatchConditionIpPrefixValuesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<IpMatchConditionIpPrefixValuesList>;
 
 /** The List of IP Group Names that need to be matched. */
-export type IpMatchConditionIpGroupNamesList = ReadonlyArray<string>;
+export type IpMatchConditionIpGroupNamesList = Array<string>;
 export const IpMatchConditionIpGroupNamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<IpMatchConditionIpGroupNamesList>;
@@ -106,9 +105,9 @@ export const IpMatchConditionIpGroupNamesList = /*@__PURE__*/ S.Array(
 /** Defines the condition that can be filtered using the selected IPs. */
 export interface IpMatchCondition {
   /** IP Address type that needs to be matched. */
-  type?: SourceDestinationType;
+  type?: SourceDestinationType | (string & {});
   /** IP Prefix Type that needs to be matched. */
-  prefixType?: PrefixType;
+  prefixType?: PrefixType | (string & {});
   /** The list of IP Prefixes that need to be matched. */
   ipPrefixValues?: IpMatchConditionIpPrefixValuesList;
   /** The List of IP Group Names that need to be matched. */
@@ -126,40 +125,35 @@ export const IpMatchCondition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IpMatchCondition>;
 
 /** List of ether type values that need to be matched. */
-export type AccessControlListMatchConditionEtherTypesList =
-  ReadonlyArray<string>;
+export type AccessControlListMatchConditionEtherTypesList = Array<string>;
 export const AccessControlListMatchConditionEtherTypesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AccessControlListMatchConditionEtherTypesList>;
 
 /** List of IP fragment packets that need to be matched. */
-export type AccessControlListMatchConditionFragmentsList =
-  ReadonlyArray<string>;
+export type AccessControlListMatchConditionFragmentsList = Array<string>;
 export const AccessControlListMatchConditionFragmentsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AccessControlListMatchConditionFragmentsList>;
 
 /** List of IP Lengths that need to be matched. */
-export type AccessControlListMatchConditionIpLengthsList =
-  ReadonlyArray<string>;
+export type AccessControlListMatchConditionIpLengthsList = Array<string>;
 export const AccessControlListMatchConditionIpLengthsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AccessControlListMatchConditionIpLengthsList>;
 
 /** List of TTL [Time To Live] values that need to be matched. */
-export type AccessControlListMatchConditionTtlValuesList =
-  ReadonlyArray<string>;
+export type AccessControlListMatchConditionTtlValuesList = Array<string>;
 export const AccessControlListMatchConditionTtlValuesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AccessControlListMatchConditionTtlValuesList>;
 
 /** List of DSCP Markings that need to be matched. */
-export type AccessControlListMatchConditionDscpMarkingsList =
-  ReadonlyArray<string>;
+export type AccessControlListMatchConditionDscpMarkingsList = Array<string>;
 export const AccessControlListMatchConditionDscpMarkingsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -167,7 +161,7 @@ export const AccessControlListMatchConditionDscpMarkingsList =
 
 /** Protocol neighbors that need to be matched. */
 export type AccessControlListMatchConditionProtocolNeighborsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const AccessControlListMatchConditionProtocolNeighborsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -182,21 +176,20 @@ export type Layer4Protocol = "TCP" | "UDP" | "SCTP";
 export const Layer4Protocol = /*@__PURE__*/ S.String;
 
 /** List of the Ports that need to be matched. */
-export type AccessControlListPortConditionPortsList = ReadonlyArray<string>;
+export type AccessControlListPortConditionPortsList = Array<string>;
 export const AccessControlListPortConditionPortsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AccessControlListPortConditionPortsList>;
 
 /** List of the port Group Names that need to be matched. */
-export type AccessControlListPortConditionPortGroupNamesList =
-  ReadonlyArray<string>;
+export type AccessControlListPortConditionPortGroupNamesList = Array<string>;
 export const AccessControlListPortConditionPortGroupNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AccessControlListPortConditionPortGroupNamesList>;
 
 /** List of protocol flags that need to be matched. Example: established | initial | <List-of-TCP-flags>. List of eligible TCP Flags are ack, fin, not-ack, not-fin, not-psh, not-rst, not-syn, not-urg, psh, rst, syn, urg */
-export type AccessControlListPortConditionFlagsList = ReadonlyArray<string>;
+export type AccessControlListPortConditionFlagsList = Array<string>;
 export const AccessControlListPortConditionFlagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AccessControlListPortConditionFlagsList>;
@@ -204,9 +197,9 @@ export const AccessControlListPortConditionFlagsList = /*@__PURE__*/ S.Array(
 /** Defines the port condition that needs to be matched. */
 export interface AccessControlListPortCondition {
   /** Port type that needs to be matched. */
-  portType?: PortType;
+  portType?: PortType | (string & {});
   /** Layer4 protocol type that needs to be matched. */
-  layer4Protocol: Layer4Protocol;
+  layer4Protocol: Layer4Protocol | (string & {});
   /** List of the Ports that need to be matched. */
   ports?: AccessControlListPortConditionPortsList;
   /** List of the port Group Names that need to be matched. */
@@ -229,7 +222,7 @@ export const AccessControlListPortCondition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccessControlListPortCondition>;
 
 /** Internet Control Message Protocol (ICMP) types */
-export type IcmpConfigurationPropertiesIcmpTypesList = ReadonlyArray<string>;
+export type IcmpConfigurationPropertiesIcmpTypesList = Array<string>;
 export const IcmpConfigurationPropertiesIcmpTypesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<IcmpConfigurationPropertiesIcmpTypesList>;
@@ -294,7 +287,7 @@ export const AccessControlListMatchCondition = /*@__PURE__*/ S.suspend(() =>
 
 /** List of the match conditions. */
 export type AccessControlListMatchConfigurationMatchConditionsList =
-  ReadonlyArray<AccessControlListMatchCondition>;
+  Array<AccessControlListMatchCondition>;
 export const AccessControlListMatchConfigurationMatchConditionsList =
   /*@__PURE__*/ S.Array(
     AccessControlListMatchCondition,
@@ -313,7 +306,7 @@ export interface BitRate {
   /** Bitrate. */
   rate?: number;
   /** Bitrate unit. */
-  unit?: BitRateUnit;
+  unit?: BitRateUnit | (string & {});
 }
 export const BitRate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -336,7 +329,7 @@ export interface BurstSize {
   /** Burst size. */
   size?: number;
   /** Burst size unit. */
-  unit?: BurstSizeUnit;
+  unit?: BurstSizeUnit | (string & {});
 }
 export const BurstSize = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -364,7 +357,7 @@ export const PoliceRateConfigurationProperties = /*@__PURE__*/ S.suspend(() =>
 /** Action that need to performed. */
 export interface AccessControlListAction {
   /** Type of actions that can be performed. */
-  type?: AclActionType;
+  type?: AclActionType | (string & {});
   /** Name of the counter block to get match count information. */
   counterName?: string;
   /** Remark comment */
@@ -385,7 +378,7 @@ export const AccessControlListAction = /*@__PURE__*/ S.suspend(() =>
 
 /** List of actions that need to be performed for the matched conditions. */
 export type AccessControlListMatchConfigurationActionsList =
-  ReadonlyArray<AccessControlListAction>;
+  Array<AccessControlListAction>;
 export const AccessControlListMatchConfigurationActionsList =
   /*@__PURE__*/ S.Array(
     AccessControlListAction,
@@ -398,7 +391,7 @@ export interface AccessControlListMatchConfiguration {
   /** Sequence Number of the match configuration. */
   sequenceNumber?: number;
   /** Type of IP Address. IPv4 or IPv6 */
-  ipAddressType?: IPAddressType;
+  ipAddressType?: IPAddressType | (string & {});
   /** List of the match conditions. */
   matchConditions?: AccessControlListMatchConfigurationMatchConditionsList;
   /** List of actions that need to be performed for the matched conditions. */
@@ -420,14 +413,14 @@ export const AccessControlListMatchConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** List of match configurations. */
 export type AccessControlListPropertiesInputMatchConfigurationsList =
-  ReadonlyArray<AccessControlListMatchConfiguration>;
+  Array<AccessControlListMatchConfiguration>;
 export const AccessControlListPropertiesInputMatchConfigurationsList =
   /*@__PURE__*/ S.Array(
     AccessControlListMatchConfiguration,
   ) as any as S.Schema<AccessControlListPropertiesInputMatchConfigurationsList>;
 
 /** List of IP Prefixes. */
-export type IpGroupPropertiesIpPrefixesList = ReadonlyArray<string>;
+export type IpGroupPropertiesIpPrefixesList = Array<string>;
 export const IpGroupPropertiesIpPrefixesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<IpGroupPropertiesIpPrefixesList>;
@@ -437,7 +430,7 @@ export interface IpGroupProperties {
   /** IP Group name. */
   name?: string;
   /** IP Address type. */
-  ipAddressType?: IPAddressType;
+  ipAddressType?: IPAddressType | (string & {});
   /** List of IP Prefixes. */
   ipPrefixes?: IpGroupPropertiesIpPrefixesList;
 }
@@ -453,14 +446,14 @@ export const IpGroupProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** List of IP Groups. */
 export type CommonDynamicMatchConfigurationIpGroupsList =
-  ReadonlyArray<IpGroupProperties>;
+  Array<IpGroupProperties>;
 export const CommonDynamicMatchConfigurationIpGroupsList =
   /*@__PURE__*/ S.Array(
     IpGroupProperties,
   ) as any as S.Schema<CommonDynamicMatchConfigurationIpGroupsList>;
 
 /** List of vlans. */
-export type VlanGroupPropertiesVlansList = ReadonlyArray<string>;
+export type VlanGroupPropertiesVlansList = Array<string>;
 export const VlanGroupPropertiesVlansList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<VlanGroupPropertiesVlansList>;
@@ -483,14 +476,14 @@ export const VlanGroupProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** List of vlan groups. */
 export type CommonDynamicMatchConfigurationVlanGroupsList =
-  ReadonlyArray<VlanGroupProperties>;
+  Array<VlanGroupProperties>;
 export const CommonDynamicMatchConfigurationVlanGroupsList =
   /*@__PURE__*/ S.Array(
     VlanGroupProperties,
   ) as any as S.Schema<CommonDynamicMatchConfigurationVlanGroupsList>;
 
 /** List of the ports that need to be matched. */
-export type PortGroupPropertiesPortsList = ReadonlyArray<string>;
+export type PortGroupPropertiesPortsList = Array<string>;
 export const PortGroupPropertiesPortsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PortGroupPropertiesPortsList>;
@@ -513,7 +506,7 @@ export const PortGroupProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** List of the port groups. */
 export type CommonDynamicMatchConfigurationPortGroupsList =
-  ReadonlyArray<PortGroupProperties>;
+  Array<PortGroupProperties>;
 export const CommonDynamicMatchConfigurationPortGroupsList =
   /*@__PURE__*/ S.Array(
     PortGroupProperties,
@@ -540,7 +533,7 @@ export const CommonDynamicMatchConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** List of dynamic match configurations. */
 export type AccessControlListPropertiesInputDynamicMatchConfigurationsList =
-  ReadonlyArray<CommonDynamicMatchConfiguration>;
+  Array<CommonDynamicMatchConfiguration>;
 export const AccessControlListPropertiesInputDynamicMatchConfigurationsList =
   /*@__PURE__*/ S.Array(
     CommonDynamicMatchConfiguration,
@@ -568,7 +561,9 @@ export const GlobalAccessControlListActionPropertiesEnableCount =
 /** Global Access Control List actions properties */
 export interface GlobalAccessControlListActionProperties {
   /** Configuration to enable or disable ACL action count. */
-  enableCount?: GlobalAccessControlListActionPropertiesEnableCount;
+  enableCount?:
+    | GlobalAccessControlListActionPropertiesEnableCount
+    | (string & {});
 }
 export const GlobalAccessControlListActionProperties = /*@__PURE__*/ S.suspend(
   () =>
@@ -606,7 +601,7 @@ export interface ControlPlaneAclTtlMatchCondition {
   /** TTL [Time To Live] values that need to be matched. */
   ttlValue?: string;
   /** TTL [Time To Live] match type. Example: eq | neq | gt | lt | range */
-  ttlMatchType?: ControlPlaneAclTtlMatchType;
+  ttlMatchType?: ControlPlaneAclTtlMatchType | (string & {});
 }
 export const ControlPlaneAclTtlMatchCondition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -618,7 +613,7 @@ export const ControlPlaneAclTtlMatchCondition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ControlPlaneAclTtlMatchCondition>;
 
 /** List of the ports that need to be matched. Possible values: 1234, 1234-1235, 1234,1235,1236 */
-export type ControlPlaneAclPortConditionPortsList = ReadonlyArray<string>;
+export type ControlPlaneAclPortConditionPortsList = Array<string>;
 export const ControlPlaneAclPortConditionPortsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ControlPlaneAclPortConditionPortsList>;
@@ -632,7 +627,7 @@ export interface ControlPlaneAclPortCondition {
   /** List of the ports that need to be matched. Possible values: 1234, 1234-1235, 1234,1235,1236 */
   ports?: ControlPlaneAclPortConditionPortsList;
   /** Port match type. Example: eq | neq | gt | lt | range */
-  portMatchType?: ControlPlaneAclPortMatchType;
+  portMatchType?: ControlPlaneAclPortMatchType | (string & {});
 }
 export const ControlPlaneAclPortCondition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -660,7 +655,7 @@ export const ControlPlaneAclPortMatchCondition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ControlPlaneAclPortMatchCondition>;
 
 /** Flags that need to be matched. Example: established | initial | <List-of-TCP-flags>. List of eligible TCP Flags are ack, cwr, ece, fin, psh, rst, syn, urg, established */
-export type ControlPlaneAclMatchConditionFlagsList = ReadonlyArray<string>;
+export type ControlPlaneAclMatchConditionFlagsList = Array<string>;
 export const ControlPlaneAclMatchConditionFlagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ControlPlaneAclMatchConditionFlagsList>;
@@ -700,7 +695,7 @@ export const ControlPlaneAclActionType = /*@__PURE__*/ S.String;
 /** Control Plane Access Control List (ACL) Actions */
 export interface ControlPlaneAclAction {
   /** Type of actions that can be performed. */
-  type?: ControlPlaneAclActionType;
+  type?: ControlPlaneAclActionType | (string & {});
   /** Remark comment */
   remarkComment?: string;
 }
@@ -738,7 +733,7 @@ export const ControlPlaneAclMatchConfigurationProperties =
 
 /** Access Control List (ACL) match configurations. */
 export type ControlPlaneAclPropertiesMatchConfigurationsList =
-  ReadonlyArray<ControlPlaneAclMatchConfigurationProperties>;
+  Array<ControlPlaneAclMatchConfigurationProperties>;
 export const ControlPlaneAclPropertiesMatchConfigurationsList =
   /*@__PURE__*/ S.Array(
     ControlPlaneAclMatchConfigurationProperties,
@@ -747,7 +742,7 @@ export const ControlPlaneAclPropertiesMatchConfigurationsList =
 /** Access Control List (ACL) configurations properties */
 export interface ControlPlaneAclProperties {
   /** IP Address Type. IPv4 or IPv6 */
-  ipAddressType?: IPAddressType;
+  ipAddressType?: IPAddressType | (string & {});
   /** Access Control List (ACL) match configurations. */
   matchConfigurations?: ControlPlaneAclPropertiesMatchConfigurationsList;
 }
@@ -764,7 +759,7 @@ export const ControlPlaneAclProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Access Control List (ACL) configurations. */
 export type AccessControlListPropertiesInputControlPlaneAclConfigurationList =
-  ReadonlyArray<ControlPlaneAclProperties>;
+  Array<ControlPlaneAclProperties>;
 export const AccessControlListPropertiesInputControlPlaneAclConfigurationList =
   /*@__PURE__*/ S.Array(
     ControlPlaneAclProperties,
@@ -909,7 +904,7 @@ export const AccessControlListPropertiesDefaultAction = /*@__PURE__*/ S.String;
 
 /** List of match configurations. */
 export type AccessControlListPropertiesMatchConfigurationsList =
-  ReadonlyArray<AccessControlListMatchConfiguration>;
+  Array<AccessControlListMatchConfiguration>;
 export const AccessControlListPropertiesMatchConfigurationsList =
   /*@__PURE__*/ S.Array(
     AccessControlListMatchConfiguration,
@@ -917,7 +912,7 @@ export const AccessControlListPropertiesMatchConfigurationsList =
 
 /** List of dynamic match configurations. */
 export type AccessControlListPropertiesDynamicMatchConfigurationsList =
-  ReadonlyArray<CommonDynamicMatchConfiguration>;
+  Array<CommonDynamicMatchConfiguration>;
 export const AccessControlListPropertiesDynamicMatchConfigurationsList =
   /*@__PURE__*/ S.Array(
     CommonDynamicMatchConfiguration,
@@ -937,8 +932,7 @@ export const LastOperationProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LastOperationProperties>;
 
 /** Associated Network Fabric Resource IDs */
-export type AccessControlListPropertiesNetworkFabricIdsList =
-  ReadonlyArray<string>;
+export type AccessControlListPropertiesNetworkFabricIdsList = Array<string>;
 export const AccessControlListPropertiesNetworkFabricIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -946,7 +940,7 @@ export const AccessControlListPropertiesNetworkFabricIdsList =
 
 /** Access Control List (ACL) configurations. */
 export type AccessControlListPropertiesControlPlaneAclConfigurationList =
-  ReadonlyArray<ControlPlaneAclProperties>;
+  Array<ControlPlaneAclProperties>;
 export const AccessControlListPropertiesControlPlaneAclConfigurationList =
   /*@__PURE__*/ S.Array(
     ControlPlaneAclProperties,
@@ -1245,8 +1239,7 @@ export const AccessControlList = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccessControlList>;
 
 /** The AccessControlList items on this page */
-export type AccessControlListsListResultValueList =
-  ReadonlyArray<AccessControlList>;
+export type AccessControlListsListResultValueList = Array<AccessControlList>;
 export const AccessControlListsListResultValueList = /*@__PURE__*/ S.Array(
   AccessControlList,
 ) as any as S.Schema<AccessControlListsListResultValueList>;
@@ -1313,7 +1306,7 @@ export const AccessControlListsResyncRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccessControlListsResyncRequest>;
 
 /** The error details. */
-export type ErrorDetailDetailsList = ReadonlyArray<ErrorDetail>;
+export type ErrorDetailDetailsList = Array<ErrorDetail>;
 export const ErrorDetailDetailsList = /*@__PURE__*/ S.Array(
   S.suspend(() => ErrorDetail),
 ) as any as S.Schema<ErrorDetailDetailsList>;
@@ -1335,7 +1328,7 @@ export const ErrorAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ErrorAdditionalInfo>;
 
 /** The error additional info. */
-export type ErrorDetailAdditionalInfoList = ReadonlyArray<ErrorAdditionalInfo>;
+export type ErrorDetailAdditionalInfoList = Array<ErrorAdditionalInfo>;
 export const ErrorDetailAdditionalInfoList = /*@__PURE__*/ S.Array(
   ErrorAdditionalInfo,
 ) as any as S.Schema<ErrorDetailAdditionalInfoList>;
@@ -1393,26 +1386,26 @@ export const CommunityActionTypes = /*@__PURE__*/ S.String;
 
 /** List of the protocols that need to be matched. */
 export type AccessControlListMatchConditionPatchProtocolTypesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const AccessControlListMatchConditionPatchProtocolTypesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AccessControlListMatchConditionPatchProtocolTypesList>;
 
 /** List of vlans that need to be matched. Inputs can be single vlan or the range of vlans. */
-export type VlanMatchConditionPatchVlansList = ReadonlyArray<string>;
+export type VlanMatchConditionPatchVlansList = Array<string>;
 export const VlanMatchConditionPatchVlansList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<VlanMatchConditionPatchVlansList>;
 
 /** List of inner vlans that need to be matched.Inputs can be single vlan or the range of vlans. */
-export type VlanMatchConditionPatchInnerVlansList = ReadonlyArray<string>;
+export type VlanMatchConditionPatchInnerVlansList = Array<string>;
 export const VlanMatchConditionPatchInnerVlansList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<VlanMatchConditionPatchInnerVlansList>;
 
 /** List of vlan group names that need to be matched. */
-export type VlanMatchConditionPatchVlanGroupNamesList = ReadonlyArray<string>;
+export type VlanMatchConditionPatchVlanGroupNamesList = Array<string>;
 export const VlanMatchConditionPatchVlanGroupNamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<VlanMatchConditionPatchVlanGroupNamesList>;
@@ -1437,13 +1430,13 @@ export const VlanMatchConditionPatch = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VlanMatchConditionPatch>;
 
 /** The list of IP Prefixes that need to be matched. */
-export type IpMatchConditionPatchIpPrefixValuesList = ReadonlyArray<string>;
+export type IpMatchConditionPatchIpPrefixValuesList = Array<string>;
 export const IpMatchConditionPatchIpPrefixValuesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<IpMatchConditionPatchIpPrefixValuesList>;
 
 /** The List of IP Group Names that need to be matched. */
-export type IpMatchConditionPatchIpGroupNamesList = ReadonlyArray<string>;
+export type IpMatchConditionPatchIpGroupNamesList = Array<string>;
 export const IpMatchConditionPatchIpGroupNamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<IpMatchConditionPatchIpGroupNamesList>;
@@ -1471,32 +1464,28 @@ export const IpMatchConditionPatch = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IpMatchConditionPatch>;
 
 /** List of ether type values that need to be matched. */
-export type AccessControlListMatchConditionPatchEtherTypesList =
-  ReadonlyArray<string>;
+export type AccessControlListMatchConditionPatchEtherTypesList = Array<string>;
 export const AccessControlListMatchConditionPatchEtherTypesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AccessControlListMatchConditionPatchEtherTypesList>;
 
 /** List of IP fragment packets that need to be matched. */
-export type AccessControlListMatchConditionPatchFragmentsList =
-  ReadonlyArray<string>;
+export type AccessControlListMatchConditionPatchFragmentsList = Array<string>;
 export const AccessControlListMatchConditionPatchFragmentsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AccessControlListMatchConditionPatchFragmentsList>;
 
 /** List of IP Lengths that need to be matched. */
-export type AccessControlListMatchConditionPatchIpLengthsList =
-  ReadonlyArray<string>;
+export type AccessControlListMatchConditionPatchIpLengthsList = Array<string>;
 export const AccessControlListMatchConditionPatchIpLengthsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AccessControlListMatchConditionPatchIpLengthsList>;
 
 /** List of TTL [Time To Live] values that need to be matched. */
-export type AccessControlListMatchConditionPatchTtlValuesList =
-  ReadonlyArray<string>;
+export type AccessControlListMatchConditionPatchTtlValuesList = Array<string>;
 export const AccessControlListMatchConditionPatchTtlValuesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1504,15 +1493,14 @@ export const AccessControlListMatchConditionPatchTtlValuesList =
 
 /** List of DSCP Markings that need to be matched. */
 export type AccessControlListMatchConditionPatchDscpMarkingsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const AccessControlListMatchConditionPatchDscpMarkingsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AccessControlListMatchConditionPatchDscpMarkingsList>;
 
 /** List of the Ports that need to be matched. */
-export type AccessControlListPortConditionPatchPortsList =
-  ReadonlyArray<string>;
+export type AccessControlListPortConditionPatchPortsList = Array<string>;
 export const AccessControlListPortConditionPatchPortsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1520,15 +1508,14 @@ export const AccessControlListPortConditionPatchPortsList =
 
 /** List of the port Group Names that need to be matched. */
 export type AccessControlListPortConditionPatchPortGroupNamesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const AccessControlListPortConditionPatchPortGroupNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AccessControlListPortConditionPatchPortGroupNamesList>;
 
 /** List of protocol flags that need to be matched. Example: established | initial | <List-of-TCP-flags>. List of eligible TCP Flags are ack, fin, not-ack, not-fin, not-psh, not-rst, not-syn, not-urg, psh, rst, syn, urg */
-export type AccessControlListPortConditionPatchFlagsList =
-  ReadonlyArray<string>;
+export type AccessControlListPortConditionPatchFlagsList = Array<string>;
 export const AccessControlListPortConditionPatchFlagsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1563,15 +1550,14 @@ export const AccessControlListPortConditionPatch = /*@__PURE__*/ S.suspend(() =>
 
 /** Protocol neighbors that need to be matched. */
 export type AccessControlListMatchConditionPatchProtocolNeighborsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const AccessControlListMatchConditionPatchProtocolNeighborsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AccessControlListMatchConditionPatchProtocolNeighborsList>;
 
 /** Internet Control Message Protocol (ICMP) types */
-export type IcmpConfigurationPatchPropertiesIcmpTypesList =
-  ReadonlyArray<string>;
+export type IcmpConfigurationPatchPropertiesIcmpTypesList = Array<string>;
 export const IcmpConfigurationPatchPropertiesIcmpTypesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1644,7 +1630,7 @@ export const AccessControlListMatchConditionPatch = /*@__PURE__*/ S.suspend(
 
 /** List of the match conditions. */
 export type AccessControlListMatchConfigurationPatchMatchConditionsList =
-  ReadonlyArray<AccessControlListMatchConditionPatch>;
+  Array<AccessControlListMatchConditionPatch>;
 export const AccessControlListMatchConfigurationPatchMatchConditionsList =
   /*@__PURE__*/ S.Array(
     AccessControlListMatchConditionPatch,
@@ -1674,7 +1660,7 @@ export const AccessControlListActionPatch = /*@__PURE__*/ S.suspend(() =>
 
 /** List of actions that need to be performed for the matched conditions. */
 export type AccessControlListMatchConfigurationPatchActionsList =
-  ReadonlyArray<AccessControlListActionPatch>;
+  Array<AccessControlListActionPatch>;
 export const AccessControlListMatchConfigurationPatchActionsList =
   /*@__PURE__*/ S.Array(
     AccessControlListActionPatch,
@@ -1710,14 +1696,14 @@ export const AccessControlListMatchConfigurationPatch = /*@__PURE__*/ S.suspend(
 
 /** List of match configurations. */
 export type AccessControlListPatchPropertiesMatchConfigurationsList =
-  ReadonlyArray<AccessControlListMatchConfigurationPatch>;
+  Array<AccessControlListMatchConfigurationPatch>;
 export const AccessControlListPatchPropertiesMatchConfigurationsList =
   /*@__PURE__*/ S.Array(
     AccessControlListMatchConfigurationPatch,
   ) as any as S.Schema<AccessControlListPatchPropertiesMatchConfigurationsList>;
 
 /** List of IP Prefixes. */
-export type IpGroupPatchPropertiesIpPrefixesList = ReadonlyArray<string>;
+export type IpGroupPatchPropertiesIpPrefixesList = Array<string>;
 export const IpGroupPatchPropertiesIpPrefixesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<IpGroupPatchPropertiesIpPrefixesList>;
@@ -1743,14 +1729,14 @@ export const IpGroupPatchProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** List of IP Groups. */
 export type CommonDynamicMatchConfigurationPatchIpGroupsList =
-  ReadonlyArray<IpGroupPatchProperties>;
+  Array<IpGroupPatchProperties>;
 export const CommonDynamicMatchConfigurationPatchIpGroupsList =
   /*@__PURE__*/ S.Array(
     IpGroupPatchProperties,
   ) as any as S.Schema<CommonDynamicMatchConfigurationPatchIpGroupsList>;
 
 /** List of vlans. */
-export type VlanGroupPatchPropertiesVlansList = ReadonlyArray<string>;
+export type VlanGroupPatchPropertiesVlansList = Array<string>;
 export const VlanGroupPatchPropertiesVlansList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<VlanGroupPatchPropertiesVlansList>;
@@ -1773,14 +1759,14 @@ export const VlanGroupPatchProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** List of vlan groups. */
 export type CommonDynamicMatchConfigurationPatchVlanGroupsList =
-  ReadonlyArray<VlanGroupPatchProperties>;
+  Array<VlanGroupPatchProperties>;
 export const CommonDynamicMatchConfigurationPatchVlanGroupsList =
   /*@__PURE__*/ S.Array(
     VlanGroupPatchProperties,
   ) as any as S.Schema<CommonDynamicMatchConfigurationPatchVlanGroupsList>;
 
 /** List of the ports that need to be matched. */
-export type PortGroupPatchPropertiesPortsList = ReadonlyArray<string>;
+export type PortGroupPatchPropertiesPortsList = Array<string>;
 export const PortGroupPatchPropertiesPortsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PortGroupPatchPropertiesPortsList>;
@@ -1803,7 +1789,7 @@ export const PortGroupPatchProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** List of the port groups. */
 export type CommonDynamicMatchConfigurationPatchPortGroupsList =
-  ReadonlyArray<PortGroupPatchProperties>;
+  Array<PortGroupPatchProperties>;
 export const CommonDynamicMatchConfigurationPatchPortGroupsList =
   /*@__PURE__*/ S.Array(
     PortGroupPatchProperties,
@@ -1835,7 +1821,7 @@ export const CommonDynamicMatchConfigurationPatch = /*@__PURE__*/ S.suspend(
 
 /** List of dynamic match configurations. */
 export type AccessControlListPatchPropertiesDynamicMatchConfigurationsList =
-  ReadonlyArray<CommonDynamicMatchConfigurationPatch>;
+  Array<CommonDynamicMatchConfigurationPatch>;
 export const AccessControlListPatchPropertiesDynamicMatchConfigurationsList =
   /*@__PURE__*/ S.Array(
     CommonDynamicMatchConfigurationPatch,
@@ -1893,7 +1879,7 @@ export const ControlPlaneAclPortMatchConditionPatch = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ControlPlaneAclPortMatchConditionPatch>;
 
 /** Flags that need to be matched. Example: established | initial | <List-of-TCP-flags>. List of eligible TCP Flags are ack, cwr, ece, fin, psh, rst, syn, urg, established */
-export type ControlPlaneAclMatchConditionPatchFlagsList = ReadonlyArray<string>;
+export type ControlPlaneAclMatchConditionPatchFlagsList = Array<string>;
 export const ControlPlaneAclMatchConditionPatchFlagsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1968,7 +1954,7 @@ export const ControlPlaneAclMatchConfigurationPatchProperties =
 
 /** Access Control List (ACL) match configurations. */
 export type ControlPlaneAclPatchPropertiesMatchConfigurationsList =
-  ReadonlyArray<ControlPlaneAclMatchConfigurationPatchProperties>;
+  Array<ControlPlaneAclMatchConfigurationPatchProperties>;
 export const ControlPlaneAclPatchPropertiesMatchConfigurationsList =
   /*@__PURE__*/ S.Array(
     ControlPlaneAclMatchConfigurationPatchProperties,
@@ -1994,7 +1980,7 @@ export const ControlPlaneAclPatchProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Access Control List (ACL) configurations. */
 export type AccessControlListPatchPropertiesControlPlaneAclConfigurationList =
-  ReadonlyArray<ControlPlaneAclPatchProperties>;
+  Array<ControlPlaneAclPatchProperties>;
 export const AccessControlListPatchPropertiesControlPlaneAclConfigurationList =
   /*@__PURE__*/ S.Array(
     ControlPlaneAclPatchProperties,
@@ -2138,7 +2124,7 @@ export const AccessControlListsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Network Fabrics or Network Rack resource Id. */
 export type AccessControlListsUpdateAdministrativeStateRequestResourceIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const AccessControlListsUpdateAdministrativeStateRequestResourceIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2183,8 +2169,7 @@ export const AccessControlListsUpdateAdministrativeStateRequest =
   }) as any as S.Schema<AccessControlListsUpdateAdministrativeStateRequest>;
 
 /** The operations list. */
-export type OperationStatusResultOperationsList =
-  ReadonlyArray<OperationStatusResult>;
+export type OperationStatusResultOperationsList = Array<OperationStatusResult>;
 export const OperationStatusResultOperationsList = /*@__PURE__*/ S.Array(
   S.suspend(() => OperationStatusResult),
 ) as any as S.Schema<OperationStatusResultOperationsList>;
@@ -2228,7 +2213,7 @@ export const OperationStatusResult = /*@__PURE__*/ S.suspend(() =>
 
 /** The operations list. */
 export type UpdateAdministrativeStateResponseOperationsItemOperationsList =
-  ReadonlyArray<OperationStatusResult>;
+  Array<OperationStatusResult>;
 export const UpdateAdministrativeStateResponseOperationsItemOperationsList =
   /*@__PURE__*/ S.Array(
     OperationStatusResult,
@@ -2276,7 +2261,7 @@ export const UpdateAdministrativeStateResponseOperationsItem =
 
 /** The operations list. */
 export type UpdateAdministrativeStateResponseOperationsList =
-  ReadonlyArray<UpdateAdministrativeStateResponseOperationsItem>;
+  Array<UpdateAdministrativeStateResponseOperationsItem>;
 export const UpdateAdministrativeStateResponseOperationsList =
   /*@__PURE__*/ S.Array(
     UpdateAdministrativeStateResponseOperationsItem,
@@ -2284,7 +2269,7 @@ export const UpdateAdministrativeStateResponseOperationsList =
 
 /** The error details. */
 export type UpdateAdministrativeStateResponseErrorDetailsList =
-  ReadonlyArray<ErrorDetail>;
+  Array<ErrorDetail>;
 export const UpdateAdministrativeStateResponseErrorDetailsList =
   /*@__PURE__*/ S.Array(
     ErrorDetail,
@@ -2292,7 +2277,7 @@ export const UpdateAdministrativeStateResponseErrorDetailsList =
 
 /** The error additional info. */
 export type UpdateAdministrativeStateResponseErrorAdditionalInfoList =
-  ReadonlyArray<ErrorAdditionalInfo>;
+  Array<ErrorAdditionalInfo>;
 export const UpdateAdministrativeStateResponseErrorAdditionalInfoList =
   /*@__PURE__*/ S.Array(
     ErrorAdditionalInfo,
@@ -2328,7 +2313,7 @@ export const UpdateAdministrativeStateResponseError = /*@__PURE__*/ S.suspend(
 
 /** List of ARM Resource IDs for which the given action applied successfully. */
 export type UpdateAdministrativeStateResponsePropertiesSuccessfulResourcesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const UpdateAdministrativeStateResponsePropertiesSuccessfulResourcesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2336,7 +2321,7 @@ export const UpdateAdministrativeStateResponsePropertiesSuccessfulResourcesList 
 
 /** List of ARM Resource IDs for which the given action failed to apply. */
 export type UpdateAdministrativeStateResponsePropertiesFailedResourcesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const UpdateAdministrativeStateResponsePropertiesFailedResourcesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2485,44 +2470,40 @@ export type PeeringOption = "OptionA" | "OptionB";
 export const PeeringOption = /*@__PURE__*/ S.String;
 
 /** RouteTargets to be applied. This is used for the backward compatibility. */
-export type L3OptionBPropertiesImportRouteTargetsList = ReadonlyArray<string>;
+export type L3OptionBPropertiesImportRouteTargetsList = Array<string>;
 export const L3OptionBPropertiesImportRouteTargetsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<L3OptionBPropertiesImportRouteTargetsList>;
 
 /** RouteTargets to be applied. This is used for the backward compatibility. */
-export type L3OptionBPropertiesExportRouteTargetsList = ReadonlyArray<string>;
+export type L3OptionBPropertiesExportRouteTargetsList = Array<string>;
 export const L3OptionBPropertiesExportRouteTargetsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<L3OptionBPropertiesExportRouteTargetsList>;
 
 /** Route Targets to be applied for incoming routes into CE. */
-export type RouteTargetInformationImportIpv4RouteTargetsList =
-  ReadonlyArray<string>;
+export type RouteTargetInformationImportIpv4RouteTargetsList = Array<string>;
 export const RouteTargetInformationImportIpv4RouteTargetsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<RouteTargetInformationImportIpv4RouteTargetsList>;
 
 /** Route Targets to be applied for incoming routes from CE. */
-export type RouteTargetInformationImportIpv6RouteTargetsList =
-  ReadonlyArray<string>;
+export type RouteTargetInformationImportIpv6RouteTargetsList = Array<string>;
 export const RouteTargetInformationImportIpv6RouteTargetsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<RouteTargetInformationImportIpv6RouteTargetsList>;
 
 /** Route Targets to be applied for outgoing routes into CE. */
-export type RouteTargetInformationExportIpv4RouteTargetsList =
-  ReadonlyArray<string>;
+export type RouteTargetInformationExportIpv4RouteTargetsList = Array<string>;
 export const RouteTargetInformationExportIpv4RouteTargetsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<RouteTargetInformationExportIpv4RouteTargetsList>;
 
 /** Route Targets to be applied for outgoing routes from CE. */
-export type RouteTargetInformationExportIpv6RouteTargetsList =
-  ReadonlyArray<string>;
+export type RouteTargetInformationExportIpv6RouteTargetsList = Array<string>;
 export const RouteTargetInformationExportIpv6RouteTargetsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2603,7 +2584,9 @@ export const ExternalNetworkBmpPropertiesConfigurationState =
 /** BGP Monitoring Protocol (BMP) Configuration properties. */
 export interface ExternalNetworkBmpProperties {
   /** BMP Configuration State. */
-  configurationState?: ExternalNetworkBmpPropertiesConfigurationState;
+  configurationState?:
+    | ExternalNetworkBmpPropertiesConfigurationState
+    | (string & {});
 }
 export const ExternalNetworkBmpProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2650,7 +2633,7 @@ export const PrefixLimitProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Prefix limits */
 export type NativeIpv4PrefixLimitPropertiesPrefixLimitsList =
-  ReadonlyArray<PrefixLimitProperties>;
+  Array<PrefixLimitProperties>;
 export const NativeIpv4PrefixLimitPropertiesPrefixLimitsList =
   /*@__PURE__*/ S.Array(
     PrefixLimitProperties,
@@ -2671,7 +2654,7 @@ export const NativeIpv4PrefixLimitProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Prefix limits */
 export type NativeIpv6PrefixLimitPropertiesPrefixLimitsList =
-  ReadonlyArray<PrefixLimitProperties>;
+  Array<PrefixLimitProperties>;
 export const NativeIpv6PrefixLimitPropertiesPrefixLimitsList =
   /*@__PURE__*/ S.Array(
     PrefixLimitProperties,
@@ -2755,7 +2738,7 @@ export const ExternalNetworkPropertiesOptionAPropertiesInput =
   }) as any as S.Schema<ExternalNetworkPropertiesOptionAPropertiesInput>;
 
 /** List of next hop addresses. */
-export type StaticRoutePropertiesNextHopList = ReadonlyArray<string>;
+export type StaticRoutePropertiesNextHopList = Array<string>;
 export const StaticRoutePropertiesNextHopList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StaticRoutePropertiesNextHopList>;
@@ -2778,7 +2761,7 @@ export const StaticRouteProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** List of IPv4 Routes. */
 export type ExternalNetworkStaticRouteConfigurationInputIpv4RoutesList =
-  ReadonlyArray<StaticRouteProperties>;
+  Array<StaticRouteProperties>;
 export const ExternalNetworkStaticRouteConfigurationInputIpv4RoutesList =
   /*@__PURE__*/ S.Array(
     StaticRouteProperties,
@@ -2786,7 +2769,7 @@ export const ExternalNetworkStaticRouteConfigurationInputIpv4RoutesList =
 
 /** List of IPv6 Routes. */
 export type ExternalNetworkStaticRouteConfigurationInputIpv6RoutesList =
-  ReadonlyArray<StaticRouteProperties>;
+  Array<StaticRouteProperties>;
 export const ExternalNetworkStaticRouteConfigurationInputIpv6RoutesList =
   /*@__PURE__*/ S.Array(
     StaticRouteProperties,
@@ -2991,7 +2974,7 @@ export const ExternalNetworkPropertiesOptionAProperties =
 
 /** List of IPv4 Routes. */
 export type ExternalNetworkStaticRouteConfigurationIpv4RoutesList =
-  ReadonlyArray<StaticRouteProperties>;
+  Array<StaticRouteProperties>;
 export const ExternalNetworkStaticRouteConfigurationIpv4RoutesList =
   /*@__PURE__*/ S.Array(
     StaticRouteProperties,
@@ -2999,7 +2982,7 @@ export const ExternalNetworkStaticRouteConfigurationIpv4RoutesList =
 
 /** List of IPv6 Routes. */
 export type ExternalNetworkStaticRouteConfigurationIpv6RoutesList =
-  ReadonlyArray<StaticRouteProperties>;
+  Array<StaticRouteProperties>;
 export const ExternalNetworkStaticRouteConfigurationIpv6RoutesList =
   /*@__PURE__*/ S.Array(
     StaticRouteProperties,
@@ -3243,7 +3226,7 @@ export const ExternalNetwork = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExternalNetwork>;
 
 /** The ExternalNetwork items on this page */
-export type ExternalNetworksListValueList = ReadonlyArray<ExternalNetwork>;
+export type ExternalNetworksListValueList = Array<ExternalNetwork>;
 export const ExternalNetworksListValueList = /*@__PURE__*/ S.Array(
   ExternalNetwork,
 ) as any as S.Schema<ExternalNetworksListValueList>;
@@ -3297,16 +3280,14 @@ export const ExportRoutePolicyPatch = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExportRoutePolicyPatch>;
 
 /** RouteTargets to be applied. This is used for the backward compatibility. */
-export type L3OptionBPatchPropertiesImportRouteTargetsList =
-  ReadonlyArray<string>;
+export type L3OptionBPatchPropertiesImportRouteTargetsList = Array<string>;
 export const L3OptionBPatchPropertiesImportRouteTargetsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<L3OptionBPatchPropertiesImportRouteTargetsList>;
 
 /** RouteTargets to be applied. This is used for the backward compatibility. */
-export type L3OptionBPatchPropertiesExportRouteTargetsList =
-  ReadonlyArray<string>;
+export type L3OptionBPatchPropertiesExportRouteTargetsList = Array<string>;
 export const L3OptionBPatchPropertiesExportRouteTargetsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3314,7 +3295,7 @@ export const L3OptionBPatchPropertiesExportRouteTargetsList =
 
 /** Route Targets to be applied for incoming routes into CE. */
 export type RouteTargetPatchInformationImportIpv4RouteTargetsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RouteTargetPatchInformationImportIpv4RouteTargetsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3322,7 +3303,7 @@ export const RouteTargetPatchInformationImportIpv4RouteTargetsList =
 
 /** Route Targets to be applied for incoming routes from CE. */
 export type RouteTargetPatchInformationImportIpv6RouteTargetsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RouteTargetPatchInformationImportIpv6RouteTargetsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3330,7 +3311,7 @@ export const RouteTargetPatchInformationImportIpv6RouteTargetsList =
 
 /** Route Targets to be applied for outgoing routes into CE. */
 export type RouteTargetPatchInformationExportIpv4RouteTargetsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RouteTargetPatchInformationExportIpv4RouteTargetsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3338,7 +3319,7 @@ export const RouteTargetPatchInformationExportIpv4RouteTargetsList =
 
 /** Route Targets to be applied for outgoing routes from CE. */
 export type RouteTargetPatchInformationExportIpv6RouteTargetsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RouteTargetPatchInformationExportIpv6RouteTargetsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3459,7 +3440,7 @@ export const PrefixLimitPatchProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Prefix limits */
 export type NativeIpv4PrefixLimitPatchPropertiesPrefixLimitsList =
-  ReadonlyArray<PrefixLimitPatchProperties>;
+  Array<PrefixLimitPatchProperties>;
 export const NativeIpv4PrefixLimitPatchPropertiesPrefixLimitsList =
   /*@__PURE__*/ S.Array(
     PrefixLimitPatchProperties,
@@ -3483,7 +3464,7 @@ export const NativeIpv4PrefixLimitPatchProperties = /*@__PURE__*/ S.suspend(
 
 /** Prefix limits */
 export type NativeIpv6PrefixLimitPatchPropertiesPrefixLimitsList =
-  ReadonlyArray<PrefixLimitPatchProperties>;
+  Array<PrefixLimitPatchProperties>;
 export const NativeIpv6PrefixLimitPatchPropertiesPrefixLimitsList =
   /*@__PURE__*/ S.Array(
     PrefixLimitPatchProperties,
@@ -3562,7 +3543,7 @@ export const ExternalNetworkPatchPropertiesOptionAPropertiesInput =
   }) as any as S.Schema<ExternalNetworkPatchPropertiesOptionAPropertiesInput>;
 
 /** List of next hop addresses. */
-export type StaticRoutePatchPropertiesNextHopList = ReadonlyArray<string>;
+export type StaticRoutePatchPropertiesNextHopList = Array<string>;
 export const StaticRoutePatchPropertiesNextHopList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StaticRoutePatchPropertiesNextHopList>;
@@ -3585,7 +3566,7 @@ export const StaticRoutePatchProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** List of IPv4 Routes. */
 export type ExternalNetworkStaticRoutePatchConfigurationIpv4RoutesList =
-  ReadonlyArray<StaticRoutePatchProperties>;
+  Array<StaticRoutePatchProperties>;
 export const ExternalNetworkStaticRoutePatchConfigurationIpv4RoutesList =
   /*@__PURE__*/ S.Array(
     StaticRoutePatchProperties,
@@ -3593,7 +3574,7 @@ export const ExternalNetworkStaticRoutePatchConfigurationIpv4RoutesList =
 
 /** List of IPv6 Routes. */
 export type ExternalNetworkStaticRoutePatchConfigurationIpv6RoutesList =
-  ReadonlyArray<StaticRoutePatchProperties>;
+  Array<StaticRoutePatchProperties>;
 export const ExternalNetworkStaticRoutePatchConfigurationIpv6RoutesList =
   /*@__PURE__*/ S.Array(
     StaticRoutePatchProperties,
@@ -3718,7 +3699,7 @@ export const ExternalNetworksUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Network Fabrics or Network Rack resource Id. */
 export type ExternalNetworksUpdateAdministrativeStateRequestResourceIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ExternalNetworksUpdateAdministrativeStateRequestResourceIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3806,7 +3787,7 @@ export const ExternalNetworksUpdateBfdAdministrativeStateRequest =
 
 /** The operations list. */
 export type ExternalNetworkUpdateBfdAdministrativeStateResponseOperationsItemOperationsList =
-  ReadonlyArray<OperationStatusResult>;
+  Array<OperationStatusResult>;
 export const ExternalNetworkUpdateBfdAdministrativeStateResponseOperationsItemOperationsList =
   /*@__PURE__*/ S.Array(
     OperationStatusResult,
@@ -3855,7 +3836,7 @@ export const ExternalNetworkUpdateBfdAdministrativeStateResponseOperationsItem =
 
 /** The operations list. */
 export type ExternalNetworkUpdateBfdAdministrativeStateResponseOperationsList =
-  ReadonlyArray<ExternalNetworkUpdateBfdAdministrativeStateResponseOperationsItem>;
+  Array<ExternalNetworkUpdateBfdAdministrativeStateResponseOperationsItem>;
 export const ExternalNetworkUpdateBfdAdministrativeStateResponseOperationsList =
   /*@__PURE__*/ S.Array(
     ExternalNetworkUpdateBfdAdministrativeStateResponseOperationsItem,
@@ -3863,7 +3844,7 @@ export const ExternalNetworkUpdateBfdAdministrativeStateResponseOperationsList =
 
 /** The error details. */
 export type ExternalNetworkUpdateBfdAdministrativeStateResponseErrorDetailsList =
-  ReadonlyArray<ErrorDetail>;
+  Array<ErrorDetail>;
 export const ExternalNetworkUpdateBfdAdministrativeStateResponseErrorDetailsList =
   /*@__PURE__*/ S.Array(
     ErrorDetail,
@@ -3871,7 +3852,7 @@ export const ExternalNetworkUpdateBfdAdministrativeStateResponseErrorDetailsList
 
 /** The error additional info. */
 export type ExternalNetworkUpdateBfdAdministrativeStateResponseErrorAdditionalInfoList =
-  ReadonlyArray<ErrorAdditionalInfo>;
+  Array<ErrorAdditionalInfo>;
 export const ExternalNetworkUpdateBfdAdministrativeStateResponseErrorAdditionalInfoList =
   /*@__PURE__*/ S.Array(
     ErrorAdditionalInfo,
@@ -3973,7 +3954,7 @@ export const ExternalNetworkUpdateBfdAdministrativeStateResponse =
 
 /** Network Fabrics or Network Rack resource Id. */
 export type ExternalNetworksUpdateStaticRouteBfdAdministrativeStateRequestResourceIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ExternalNetworksUpdateStaticRouteBfdAdministrativeStateRequestResourceIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4039,7 +4020,7 @@ export const ConnectedSubnet = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Connected IPv4 Subnets. */
 export type InternalNetworkPropertiesInputConnectedIPv4SubnetsList =
-  ReadonlyArray<ConnectedSubnet>;
+  Array<ConnectedSubnet>;
 export const InternalNetworkPropertiesInputConnectedIPv4SubnetsList =
   /*@__PURE__*/ S.Array(
     ConnectedSubnet,
@@ -4047,7 +4028,7 @@ export const InternalNetworkPropertiesInputConnectedIPv4SubnetsList =
 
 /** List of connected IPv6 Subnets. */
 export type InternalNetworkPropertiesInputConnectedIPv6SubnetsList =
-  ReadonlyArray<ConnectedSubnet>;
+  Array<ConnectedSubnet>;
 export const InternalNetworkPropertiesInputConnectedIPv6SubnetsList =
   /*@__PURE__*/ S.Array(
     ConnectedSubnet,
@@ -4065,16 +4046,14 @@ export type AllowASOverride = "Enable" | "Disable";
 export const AllowASOverride = /*@__PURE__*/ S.String;
 
 /** List of BGP IPv4 Listen Range prefixes. */
-export type BgpConfigurationInputIpv4ListenRangePrefixesList =
-  ReadonlyArray<string>;
+export type BgpConfigurationInputIpv4ListenRangePrefixesList = Array<string>;
 export const BgpConfigurationInputIpv4ListenRangePrefixesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<BgpConfigurationInputIpv4ListenRangePrefixesList>;
 
 /** List of BGP IPv6 Listen Ranges prefixes. */
-export type BgpConfigurationInputIpv6ListenRangePrefixesList =
-  ReadonlyArray<string>;
+export type BgpConfigurationInputIpv6ListenRangePrefixesList = Array<string>;
 export const BgpConfigurationInputIpv6ListenRangePrefixesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4095,7 +4074,7 @@ export const NeighborAddressInput = /*@__PURE__*/ S.suspend(() =>
 
 /** List with stringified IPv4 Neighbor Addresses. */
 export type BgpConfigurationInputIpv4NeighborAddressList =
-  ReadonlyArray<NeighborAddressInput>;
+  Array<NeighborAddressInput>;
 export const BgpConfigurationInputIpv4NeighborAddressList =
   /*@__PURE__*/ S.Array(
     NeighborAddressInput,
@@ -4103,7 +4082,7 @@ export const BgpConfigurationInputIpv4NeighborAddressList =
 
 /** List with stringified IPv6 Neighbor Address. */
 export type BgpConfigurationInputIpv6NeighborAddressList =
-  ReadonlyArray<NeighborAddressInput>;
+  Array<NeighborAddressInput>;
 export const BgpConfigurationInputIpv6NeighborAddressList =
   /*@__PURE__*/ S.Array(
     NeighborAddressInput,
@@ -4111,7 +4090,7 @@ export const BgpConfigurationInputIpv6NeighborAddressList =
 
 /** BMP Collector Address. */
 export type InternalNetworkBmpPropertiesNeighborIpExclusionsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const InternalNetworkBmpPropertiesNeighborIpExclusionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4122,8 +4101,9 @@ export type BmpExportPolicy = "Pre-Policy" | "Post-Policy" | "All" | "LocalRib";
 export const BmpExportPolicy = /*@__PURE__*/ S.String;
 
 /** Export Policy for the BGP Monitoring Protocol (BMP) Configuration. */
-export type BmpExportPolicyPropertiesExportPoliciesList =
-  ReadonlyArray<BmpExportPolicy>;
+export type BmpExportPolicyPropertiesExportPoliciesList = Array<
+  BmpExportPolicy | (string & {})
+>;
 export const BmpExportPolicyPropertiesExportPoliciesList =
   /*@__PURE__*/ S.Array(
     BmpExportPolicy,
@@ -4147,7 +4127,7 @@ export interface InternalNetworkBmpProperties {
   /** BMP Collector Address. */
   neighborIpExclusions?: InternalNetworkBmpPropertiesNeighborIpExclusionsList;
   /** BMP Monitoring configuration state. */
-  bmpConfigurationState?: BmpConfigurationState;
+  bmpConfigurationState?: BmpConfigurationState | (string & {});
   /** BMP Export Policy configuration. */
   exportPolicyConfiguration?: BmpExportPolicyProperties;
 }
@@ -4230,7 +4210,7 @@ export const BgpConfigurationInput = /*@__PURE__*/ S.suspend(() =>
 
 /** List of IPv4 Routes. */
 export type StaticRouteConfigurationInputIpv4RoutesList =
-  ReadonlyArray<StaticRouteProperties>;
+  Array<StaticRouteProperties>;
 export const StaticRouteConfigurationInputIpv4RoutesList =
   /*@__PURE__*/ S.Array(
     StaticRouteProperties,
@@ -4238,7 +4218,7 @@ export const StaticRouteConfigurationInputIpv4RoutesList =
 
 /** List of IPv6 Routes. */
 export type StaticRouteConfigurationInputIpv6RoutesList =
-  ReadonlyArray<StaticRouteProperties>;
+  Array<StaticRouteProperties>;
 export const StaticRouteConfigurationInputIpv6RoutesList =
   /*@__PURE__*/ S.Array(
     StaticRouteProperties,
@@ -4370,7 +4350,7 @@ export const InternalNetworkPropertiesExtension = /*@__PURE__*/ S.String;
 
 /** List of Connected IPv4 Subnets. */
 export type InternalNetworkPropertiesConnectedIPv4SubnetsList =
-  ReadonlyArray<ConnectedSubnet>;
+  Array<ConnectedSubnet>;
 export const InternalNetworkPropertiesConnectedIPv4SubnetsList =
   /*@__PURE__*/ S.Array(
     ConnectedSubnet,
@@ -4378,7 +4358,7 @@ export const InternalNetworkPropertiesConnectedIPv4SubnetsList =
 
 /** List of connected IPv6 Subnets. */
 export type InternalNetworkPropertiesConnectedIPv6SubnetsList =
-  ReadonlyArray<ConnectedSubnet>;
+  Array<ConnectedSubnet>;
 export const InternalNetworkPropertiesConnectedIPv6SubnetsList =
   /*@__PURE__*/ S.Array(
     ConnectedSubnet,
@@ -4390,14 +4370,14 @@ export const InternalNetworkPropertiesIsMonitoringEnabled =
   /*@__PURE__*/ S.String;
 
 /** List of BGP IPv4 Listen Range prefixes. */
-export type BgpConfigurationIpv4ListenRangePrefixesList = ReadonlyArray<string>;
+export type BgpConfigurationIpv4ListenRangePrefixesList = Array<string>;
 export const BgpConfigurationIpv4ListenRangePrefixesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<BgpConfigurationIpv4ListenRangePrefixesList>;
 
 /** List of BGP IPv6 Listen Ranges prefixes. */
-export type BgpConfigurationIpv6ListenRangePrefixesList = ReadonlyArray<string>;
+export type BgpConfigurationIpv6ListenRangePrefixesList = Array<string>;
 export const BgpConfigurationIpv6ListenRangePrefixesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4430,15 +4410,13 @@ export const NeighborAddress = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NeighborAddress>;
 
 /** List with stringified IPv4 Neighbor Addresses. */
-export type BgpConfigurationIpv4NeighborAddressList =
-  ReadonlyArray<NeighborAddress>;
+export type BgpConfigurationIpv4NeighborAddressList = Array<NeighborAddress>;
 export const BgpConfigurationIpv4NeighborAddressList = /*@__PURE__*/ S.Array(
   NeighborAddress,
 ) as any as S.Schema<BgpConfigurationIpv4NeighborAddressList>;
 
 /** List with stringified IPv6 Neighbor Address. */
-export type BgpConfigurationIpv6NeighborAddressList =
-  ReadonlyArray<NeighborAddress>;
+export type BgpConfigurationIpv6NeighborAddressList = Array<NeighborAddress>;
 export const BgpConfigurationIpv6NeighborAddressList = /*@__PURE__*/ S.Array(
   NeighborAddress,
 ) as any as S.Schema<BgpConfigurationIpv6NeighborAddressList>;
@@ -4509,14 +4487,14 @@ export const BgpConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** List of IPv4 Routes. */
 export type StaticRouteConfigurationIpv4RoutesList =
-  ReadonlyArray<StaticRouteProperties>;
+  Array<StaticRouteProperties>;
 export const StaticRouteConfigurationIpv4RoutesList = /*@__PURE__*/ S.Array(
   StaticRouteProperties,
 ) as any as S.Schema<StaticRouteConfigurationIpv4RoutesList>;
 
 /** List of IPv6 Routes. */
 export type StaticRouteConfigurationIpv6RoutesList =
-  ReadonlyArray<StaticRouteProperties>;
+  Array<StaticRouteProperties>;
 export const StaticRouteConfigurationIpv6RoutesList = /*@__PURE__*/ S.Array(
   StaticRouteProperties,
 ) as any as S.Schema<StaticRouteConfigurationIpv6RoutesList>;
@@ -4786,7 +4764,7 @@ export const InternalNetwork = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InternalNetwork>;
 
 /** The InternalNetwork items on this page */
-export type InternalNetworksListValueList = ReadonlyArray<InternalNetwork>;
+export type InternalNetworksListValueList = Array<InternalNetwork>;
 export const InternalNetworksListValueList = /*@__PURE__*/ S.Array(
   InternalNetwork,
 ) as any as S.Schema<InternalNetworksListValueList>;
@@ -4825,7 +4803,7 @@ export const ConnectedSubnetPatch = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Connected IPv4 Subnets. */
 export type InternalNetworkPatchPropertiesInputConnectedIPv4SubnetsList =
-  ReadonlyArray<ConnectedSubnetPatch>;
+  Array<ConnectedSubnetPatch>;
 export const InternalNetworkPatchPropertiesInputConnectedIPv4SubnetsList =
   /*@__PURE__*/ S.Array(
     ConnectedSubnetPatch,
@@ -4833,7 +4811,7 @@ export const InternalNetworkPatchPropertiesInputConnectedIPv4SubnetsList =
 
 /** List of connected IPv6 Subnets. */
 export type InternalNetworkPatchPropertiesInputConnectedIPv6SubnetsList =
-  ReadonlyArray<ConnectedSubnetPatch>;
+  Array<ConnectedSubnetPatch>;
 export const InternalNetworkPatchPropertiesInputConnectedIPv6SubnetsList =
   /*@__PURE__*/ S.Array(
     ConnectedSubnetPatch,
@@ -4845,7 +4823,7 @@ export const IsMonitoringEnabled = /*@__PURE__*/ S.String;
 
 /** List of BGP IPv4 Listen Range prefixes. */
 export type BgpPatchConfigurationInputIpv4ListenRangePrefixesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const BgpPatchConfigurationInputIpv4ListenRangePrefixesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4853,7 +4831,7 @@ export const BgpPatchConfigurationInputIpv4ListenRangePrefixesList =
 
 /** List of BGP IPv6 Listen Ranges prefixes. */
 export type BgpPatchConfigurationInputIpv6ListenRangePrefixesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const BgpPatchConfigurationInputIpv6ListenRangePrefixesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4874,7 +4852,7 @@ export const NeighborAddressPatchInput = /*@__PURE__*/ S.suspend(() =>
 
 /** List with stringified IPv4 Neighbor Addresses. */
 export type BgpPatchConfigurationInputIpv4NeighborAddressList =
-  ReadonlyArray<NeighborAddressPatchInput>;
+  Array<NeighborAddressPatchInput>;
 export const BgpPatchConfigurationInputIpv4NeighborAddressList =
   /*@__PURE__*/ S.Array(
     NeighborAddressPatchInput,
@@ -4882,7 +4860,7 @@ export const BgpPatchConfigurationInputIpv4NeighborAddressList =
 
 /** List with stringified IPv6 Neighbor Address. */
 export type BgpPatchConfigurationInputIpv6NeighborAddressList =
-  ReadonlyArray<NeighborAddressPatchInput>;
+  Array<NeighborAddressPatchInput>;
 export const BgpPatchConfigurationInputIpv6NeighborAddressList =
   /*@__PURE__*/ S.Array(
     NeighborAddressPatchInput,
@@ -4890,7 +4868,7 @@ export const BgpPatchConfigurationInputIpv6NeighborAddressList =
 
 /** Neighbor IP Address exclusions for BMP. */
 export type InternalNetworkBmpPatchPropertiesNeighborIpExclusionsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const InternalNetworkBmpPatchPropertiesNeighborIpExclusionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4973,7 +4951,7 @@ export const BgpPatchConfigurationInput = /*@__PURE__*/ S.suspend(() =>
 
 /** List of IPv4 Routes. */
 export type StaticRoutePatchConfigurationIpv4RoutesList =
-  ReadonlyArray<StaticRoutePatchProperties>;
+  Array<StaticRoutePatchProperties>;
 export const StaticRoutePatchConfigurationIpv4RoutesList =
   /*@__PURE__*/ S.Array(
     StaticRoutePatchProperties,
@@ -4981,7 +4959,7 @@ export const StaticRoutePatchConfigurationIpv4RoutesList =
 
 /** List of IPv6 Routes. */
 export type StaticRoutePatchConfigurationIpv6RoutesList =
-  ReadonlyArray<StaticRoutePatchProperties>;
+  Array<StaticRoutePatchProperties>;
 export const StaticRoutePatchConfigurationIpv6RoutesList =
   /*@__PURE__*/ S.Array(
     StaticRoutePatchProperties,
@@ -5116,7 +5094,7 @@ export const InternalNetworksUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Network Fabrics or Network Rack resource Id. */
 export type InternalNetworksUpdateAdministrativeStateRequestResourceIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const InternalNetworksUpdateAdministrativeStateRequestResourceIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5203,7 +5181,7 @@ export const InternalNetworksUpdateBfdAdministrativeStateRequest =
 
 /** The operations list. */
 export type InternalNetworkUpdateBfdAdministrativeStateResponseOperationsItemOperationsList =
-  ReadonlyArray<OperationStatusResult>;
+  Array<OperationStatusResult>;
 export const InternalNetworkUpdateBfdAdministrativeStateResponseOperationsItemOperationsList =
   /*@__PURE__*/ S.Array(
     OperationStatusResult,
@@ -5252,7 +5230,7 @@ export const InternalNetworkUpdateBfdAdministrativeStateResponseOperationsItem =
 
 /** The operations list. */
 export type InternalNetworkUpdateBfdAdministrativeStateResponseOperationsList =
-  ReadonlyArray<InternalNetworkUpdateBfdAdministrativeStateResponseOperationsItem>;
+  Array<InternalNetworkUpdateBfdAdministrativeStateResponseOperationsItem>;
 export const InternalNetworkUpdateBfdAdministrativeStateResponseOperationsList =
   /*@__PURE__*/ S.Array(
     InternalNetworkUpdateBfdAdministrativeStateResponseOperationsItem,
@@ -5260,7 +5238,7 @@ export const InternalNetworkUpdateBfdAdministrativeStateResponseOperationsList =
 
 /** The error details. */
 export type InternalNetworkUpdateBfdAdministrativeStateResponseErrorDetailsList =
-  ReadonlyArray<ErrorDetail>;
+  Array<ErrorDetail>;
 export const InternalNetworkUpdateBfdAdministrativeStateResponseErrorDetailsList =
   /*@__PURE__*/ S.Array(
     ErrorDetail,
@@ -5268,7 +5246,7 @@ export const InternalNetworkUpdateBfdAdministrativeStateResponseErrorDetailsList
 
 /** The error additional info. */
 export type InternalNetworkUpdateBfdAdministrativeStateResponseErrorAdditionalInfoList =
-  ReadonlyArray<ErrorAdditionalInfo>;
+  Array<ErrorAdditionalInfo>;
 export const InternalNetworkUpdateBfdAdministrativeStateResponseErrorAdditionalInfoList =
   /*@__PURE__*/ S.Array(
     ErrorAdditionalInfo,
@@ -5326,7 +5304,7 @@ export const NeighborAddressBfdAdministrativeStatus = /*@__PURE__*/ S.suspend(
 
 /** NeighborAddress administrative status */
 export type InternalNetworkUpdateBfdAdministrativeStateResponsePropertiesNeighborAddressAdministrativeStatusList =
-  ReadonlyArray<NeighborAddressBfdAdministrativeStatus>;
+  Array<NeighborAddressBfdAdministrativeStatus>;
 export const InternalNetworkUpdateBfdAdministrativeStateResponsePropertiesNeighborAddressAdministrativeStatusList =
   /*@__PURE__*/ S.Array(
     NeighborAddressBfdAdministrativeStatus,
@@ -5432,7 +5410,7 @@ export const InternalNetworksUpdateBgpAdministrativeStateRequest =
 
 /** The operations list. */
 export type InternalNetworkUpdateBgpAdministrativeStateResponseOperationsItemOperationsList =
-  ReadonlyArray<OperationStatusResult>;
+  Array<OperationStatusResult>;
 export const InternalNetworkUpdateBgpAdministrativeStateResponseOperationsItemOperationsList =
   /*@__PURE__*/ S.Array(
     OperationStatusResult,
@@ -5481,7 +5459,7 @@ export const InternalNetworkUpdateBgpAdministrativeStateResponseOperationsItem =
 
 /** The operations list. */
 export type InternalNetworkUpdateBgpAdministrativeStateResponseOperationsList =
-  ReadonlyArray<InternalNetworkUpdateBgpAdministrativeStateResponseOperationsItem>;
+  Array<InternalNetworkUpdateBgpAdministrativeStateResponseOperationsItem>;
 export const InternalNetworkUpdateBgpAdministrativeStateResponseOperationsList =
   /*@__PURE__*/ S.Array(
     InternalNetworkUpdateBgpAdministrativeStateResponseOperationsItem,
@@ -5489,7 +5467,7 @@ export const InternalNetworkUpdateBgpAdministrativeStateResponseOperationsList =
 
 /** The error details. */
 export type InternalNetworkUpdateBgpAdministrativeStateResponseErrorDetailsList =
-  ReadonlyArray<ErrorDetail>;
+  Array<ErrorDetail>;
 export const InternalNetworkUpdateBgpAdministrativeStateResponseErrorDetailsList =
   /*@__PURE__*/ S.Array(
     ErrorDetail,
@@ -5497,7 +5475,7 @@ export const InternalNetworkUpdateBgpAdministrativeStateResponseErrorDetailsList
 
 /** The error additional info. */
 export type InternalNetworkUpdateBgpAdministrativeStateResponseErrorAdditionalInfoList =
-  ReadonlyArray<ErrorAdditionalInfo>;
+  Array<ErrorAdditionalInfo>;
 export const InternalNetworkUpdateBgpAdministrativeStateResponseErrorAdditionalInfoList =
   /*@__PURE__*/ S.Array(
     ErrorAdditionalInfo,
@@ -5555,7 +5533,7 @@ export const NeighborAddressBgpAdministrativeStatus = /*@__PURE__*/ S.suspend(
 
 /** NeighborAddress administrative status */
 export type InternalNetworkUpdateBgpAdministrativeStateResponsePropertiesNeighborAddressAdministrativeStatusList =
-  ReadonlyArray<NeighborAddressBgpAdministrativeStatus>;
+  Array<NeighborAddressBgpAdministrativeStatus>;
 export const InternalNetworkUpdateBgpAdministrativeStateResponsePropertiesNeighborAddressAdministrativeStatusList =
   /*@__PURE__*/ S.Array(
     NeighborAddressBgpAdministrativeStatus,
@@ -5626,7 +5604,7 @@ export const InternalNetworkUpdateBgpAdministrativeStateResponse =
 
 /** Network Fabrics or Network Rack resource Id. */
 export type InternalNetworksUpdateStaticRouteBfdAdministrativeStateRequestResourceIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const InternalNetworksUpdateStaticRouteBfdAdministrativeStateRequestResourceIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5684,7 +5662,7 @@ export type Action = "Allow" | "Deny";
 export const Action = /*@__PURE__*/ S.String;
 
 /** List of Addresses to be allowed or denied. */
-export type RulePropertiesAddressListList = ReadonlyArray<string>;
+export type RulePropertiesAddressListList = Array<string>;
 export const RulePropertiesAddressListList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RulePropertiesAddressListList>;
@@ -5694,19 +5672,19 @@ export type RuleCondition = "And" | "Or";
 export const RuleCondition = /*@__PURE__*/ S.String;
 
 /** List of Addresses to be allowed or denied. */
-export type RulePropertiesDestinationAddressListList = ReadonlyArray<string>;
+export type RulePropertiesDestinationAddressListList = Array<string>;
 export const RulePropertiesDestinationAddressListList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RulePropertiesDestinationAddressListList>;
 
 /** List of source IPv4 and IPv6 address to be allowed or denied. */
-export type RulePropertiesSourceAddressListList = ReadonlyArray<string>;
+export type RulePropertiesSourceAddressListList = Array<string>;
 export const RulePropertiesSourceAddressListList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RulePropertiesSourceAddressListList>;
 
 /** List of source remote IP to be allowed or denied. */
-export type HeaderAddressPropertiesAddressListList = ReadonlyArray<string>;
+export type HeaderAddressPropertiesAddressListList = Array<string>;
 export const HeaderAddressPropertiesAddressListList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<HeaderAddressPropertiesAddressListList>;
@@ -5729,7 +5707,7 @@ export const HeaderAddressProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** List of header Name and source addresses associated with the header. */
 export type RulePropertiesHeaderAddressListList =
-  ReadonlyArray<HeaderAddressProperties>;
+  Array<HeaderAddressProperties>;
 export const RulePropertiesHeaderAddressListList = /*@__PURE__*/ S.Array(
   HeaderAddressProperties,
 ) as any as S.Schema<RulePropertiesHeaderAddressListList>;
@@ -5737,11 +5715,11 @@ export const RulePropertiesHeaderAddressListList = /*@__PURE__*/ S.Array(
 /** Rules for the InternetGateways */
 export interface RuleProperties {
   /** Specify action. */
-  action: Action;
+  action: Action | (string & {});
   /** List of Addresses to be allowed or denied. */
   addressList?: RulePropertiesAddressListList;
   /** Specify rule condition. */
-  condition?: RuleCondition;
+  condition?: RuleCondition | (string & {});
   /** List of Addresses to be allowed or denied. */
   destinationAddressList?: RulePropertiesDestinationAddressListList;
   /** List of source IPv4 and IPv6 address to be allowed or denied. */
@@ -5822,8 +5800,7 @@ export const InternetGatewayRulesCreateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<InternetGatewayRulesCreateResponseTagsMap>;
 
 /** List of Internet Gateway resource Id. */
-export type InternetGatewayRulePropertiesInternetGatewayIdsList =
-  ReadonlyArray<string>;
+export type InternetGatewayRulePropertiesInternetGatewayIdsList = Array<string>;
 export const InternetGatewayRulePropertiesInternetGatewayIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6045,7 +6022,7 @@ export const InternetGatewayRule = /*@__PURE__*/ S.suspend(() =>
 
 /** The InternetGatewayRule items on this page */
 export type InternetGatewayRulesListResultValueList =
-  ReadonlyArray<InternetGatewayRule>;
+  Array<InternetGatewayRule>;
 export const InternetGatewayRulesListResultValueList = /*@__PURE__*/ S.Array(
   InternetGatewayRule,
 ) as any as S.Schema<InternetGatewayRulesListResultValueList>;
@@ -6468,8 +6445,7 @@ export const InternetGateway = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InternetGateway>;
 
 /** The InternetGateway items on this page */
-export type InternetGatewaysListResultValueList =
-  ReadonlyArray<InternetGateway>;
+export type InternetGatewaysListResultValueList = Array<InternetGateway>;
 export const InternetGatewaysListResultValueList = /*@__PURE__*/ S.Array(
   InternetGateway,
 ) as any as S.Schema<InternetGatewaysListResultValueList>;
@@ -6621,14 +6597,15 @@ export type WellKnownCommunities =
 export const WellKnownCommunities = /*@__PURE__*/ S.String;
 
 /** Supported well known Community List. */
-export type IpCommunityRuleWellKnownCommunitiesList =
-  ReadonlyArray<WellKnownCommunities>;
+export type IpCommunityRuleWellKnownCommunitiesList = Array<
+  WellKnownCommunities | (string & {})
+>;
 export const IpCommunityRuleWellKnownCommunitiesList = /*@__PURE__*/ S.Array(
   WellKnownCommunities,
 ) as any as S.Schema<IpCommunityRuleWellKnownCommunitiesList>;
 
 /** List the community members of IP Community. */
-export type IpCommunityRuleCommunityMembersList = ReadonlyArray<string>;
+export type IpCommunityRuleCommunityMembersList = Array<string>;
 export const IpCommunityRuleCommunityMembersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<IpCommunityRuleCommunityMembersList>;
@@ -6636,7 +6613,7 @@ export const IpCommunityRuleCommunityMembersList = /*@__PURE__*/ S.Array(
 /** IP Community patchable properties. */
 export interface IpCommunityRule {
   /** Action to be taken on the configuration. Example: Permit | Deny. */
-  action: CommunityActionTypes;
+  action: CommunityActionTypes | (string & {});
   /** Sequence to insert to/delete from existing route. Prefix lists are evaluated starting with the lowest sequence number and continue down the list until a match is made. Once a match is made, the permit or deny statement is applied to that network and the rest of the list is ignored. */
   sequenceNumber: number;
   /** Supported well known Community List. */
@@ -6657,7 +6634,7 @@ export const IpCommunityRule = /*@__PURE__*/ S.suspend(() =>
 
 /** List of IP Community Rules. */
 export type IpCommunityPropertiesInputIpCommunityRulesList =
-  ReadonlyArray<IpCommunityRule>;
+  Array<IpCommunityRule>;
 export const IpCommunityPropertiesInputIpCommunityRulesList =
   /*@__PURE__*/ S.Array(
     IpCommunityRule,
@@ -6723,8 +6700,7 @@ export const IpCommunitiesCreateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<IpCommunitiesCreateResponseTagsMap>;
 
 /** List of IP Community Rules. */
-export type IpCommunityPropertiesIpCommunityRulesList =
-  ReadonlyArray<IpCommunityRule>;
+export type IpCommunityPropertiesIpCommunityRulesList = Array<IpCommunityRule>;
 export const IpCommunityPropertiesIpCommunityRulesList = /*@__PURE__*/ S.Array(
   IpCommunityRule,
 ) as any as S.Schema<IpCommunityPropertiesIpCommunityRulesList>;
@@ -6946,7 +6922,7 @@ export const IpCommunity = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IpCommunity" }) as any as S.Schema<IpCommunity>;
 
 /** The IpCommunity items on this page */
-export type IpCommunitiesListResultValueList = ReadonlyArray<IpCommunity>;
+export type IpCommunitiesListResultValueList = Array<IpCommunity>;
 export const IpCommunitiesListResultValueList = /*@__PURE__*/ S.Array(
   IpCommunity,
 ) as any as S.Schema<IpCommunitiesListResultValueList>;
@@ -6998,7 +6974,7 @@ export const IpCommunitiesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 
 /** List of IP Community Rules. */
 export type IpCommunityPatchablePropertiesIpCommunityRulesList =
-  ReadonlyArray<IpCommunityRule>;
+  Array<IpCommunityRule>;
 export const IpCommunityPatchablePropertiesIpCommunityRulesList =
   /*@__PURE__*/ S.Array(
     IpCommunityRule,
@@ -7099,7 +7075,7 @@ export const IpExtendedCommunitiesCreateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<IpExtendedCommunitiesCreateRequestTagsMap>;
 
 /** Route Target List.The expected formats are ASN(plain):NN >> example 4294967294:50, ASN.ASN:NN >> example 65533.65333:40, IP-address:NN >> example 10.10.10.10:65535. The possible values of ASN,NN are in range of 0-65535, ASN(plain) is in range of 0-4294967295. */
-export type IpExtendedCommunityRuleRouteTargetsList = ReadonlyArray<string>;
+export type IpExtendedCommunityRuleRouteTargetsList = Array<string>;
 export const IpExtendedCommunityRuleRouteTargetsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<IpExtendedCommunityRuleRouteTargetsList>;
@@ -7107,7 +7083,7 @@ export const IpExtendedCommunityRuleRouteTargetsList = /*@__PURE__*/ S.Array(
 /** List of IP Extended Community Rules. */
 export interface IpExtendedCommunityRule {
   /** Action to be taken on the configuration. Example: Permit | Deny. */
-  action: CommunityActionTypes;
+  action: CommunityActionTypes | (string & {});
   /** Sequence to insert to/delete from existing route. Prefix lists are evaluated starting with the lowest sequence number and continue down the list until a match is made. Once a match is made, the permit or deny statement is applied to that network and the rest of the list is ignored. */
   sequenceNumber: number;
   /** Route Target List.The expected formats are ASN(plain):NN >> example 4294967294:50, ASN.ASN:NN >> example 65533.65333:40, IP-address:NN >> example 10.10.10.10:65535. The possible values of ASN,NN are in range of 0-65535, ASN(plain) is in range of 0-4294967295. */
@@ -7125,7 +7101,7 @@ export const IpExtendedCommunityRule = /*@__PURE__*/ S.suspend(() =>
 
 /** List of IP Extended Community Rules. */
 export type IpExtendedCommunityPropertiesInputIpExtendedCommunityRulesList =
-  ReadonlyArray<IpExtendedCommunityRule>;
+  Array<IpExtendedCommunityRule>;
 export const IpExtendedCommunityPropertiesInputIpExtendedCommunityRulesList =
   /*@__PURE__*/ S.Array(
     IpExtendedCommunityRule,
@@ -7194,7 +7170,7 @@ export const IpExtendedCommunitiesCreateResponseTagsMap =
 
 /** List of IP Extended Community Rules. */
 export type IpExtendedCommunityPropertiesIpExtendedCommunityRulesList =
-  ReadonlyArray<IpExtendedCommunityRule>;
+  Array<IpExtendedCommunityRule>;
 export const IpExtendedCommunityPropertiesIpExtendedCommunityRulesList =
   /*@__PURE__*/ S.Array(
     IpExtendedCommunityRule,
@@ -7420,8 +7396,7 @@ export const IpExtendedCommunity = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IpExtendedCommunity>;
 
 /** The IpExtendedCommunity items on this page */
-export type IpExtendedCommunityListResultValueList =
-  ReadonlyArray<IpExtendedCommunity>;
+export type IpExtendedCommunityListResultValueList = Array<IpExtendedCommunity>;
 export const IpExtendedCommunityListResultValueList = /*@__PURE__*/ S.Array(
   IpExtendedCommunity,
 ) as any as S.Schema<IpExtendedCommunityListResultValueList>;
@@ -7473,7 +7448,7 @@ export const IpExtendedCommunitiesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 
 /** List of IP Extended Community Rules. */
 export type IpExtendedCommunityPatchPropertiesIpExtendedCommunityRulesList =
-  ReadonlyArray<IpExtendedCommunityRule>;
+  Array<IpExtendedCommunityRule>;
 export const IpExtendedCommunityPatchPropertiesIpExtendedCommunityRulesList =
   /*@__PURE__*/ S.Array(
     IpExtendedCommunityRule,
@@ -7588,13 +7563,13 @@ export const Condition = /*@__PURE__*/ S.String;
 /** IP Prefix Rule properties. */
 export interface IpPrefixRule {
   /** Action to be taken on the configuration. Example: Permit | Deny. */
-  action: CommunityActionTypes;
+  action: CommunityActionTypes | (string & {});
   /** Sequence to insert to/delete from existing route. Prefix lists are evaluated starting with the lowest sequence number and continue down the list until a match is made. Once a match is made, the permit or deny statement is applied to that network and the rest of the list is ignored. */
   sequenceNumber: number;
   /** Network Prefix specifying IPv4/IPv6 packets to be permitted or denied. Example: 1.1.1.0/24 | 3FFE:FFFF:0:CD30::/126 */
   networkPrefix: string;
   /** Specify prefix-list bounds. */
-  condition?: Condition;
+  condition?: Condition | (string & {});
   /** SubnetMaskLength gives the minimum NetworkPrefix length to be matched. Possible values for IPv4 are 1 - 32 . Possible values of IPv6 are 1 - 128. */
   subnetMaskLength?: string;
 }
@@ -7609,8 +7584,7 @@ export const IpPrefixRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IpPrefixRule" }) as any as S.Schema<IpPrefixRule>;
 
 /** The list of IP Prefix Rules. */
-export type IpPrefixPropertiesInputIpPrefixRulesList =
-  ReadonlyArray<IpPrefixRule>;
+export type IpPrefixPropertiesInputIpPrefixRulesList = Array<IpPrefixRule>;
 export const IpPrefixPropertiesInputIpPrefixRulesList = /*@__PURE__*/ S.Array(
   IpPrefixRule,
 ) as any as S.Schema<IpPrefixPropertiesInputIpPrefixRulesList>;
@@ -7675,7 +7649,7 @@ export const IpPrefixesCreateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<IpPrefixesCreateResponseTagsMap>;
 
 /** The list of IP Prefix Rules. */
-export type IpPrefixPropertiesIpPrefixRulesList = ReadonlyArray<IpPrefixRule>;
+export type IpPrefixPropertiesIpPrefixRulesList = Array<IpPrefixRule>;
 export const IpPrefixPropertiesIpPrefixRulesList = /*@__PURE__*/ S.Array(
   IpPrefixRule,
 ) as any as S.Schema<IpPrefixPropertiesIpPrefixRulesList>;
@@ -7897,7 +7871,7 @@ export const IpPrefix = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IpPrefix" }) as any as S.Schema<IpPrefix>;
 
 /** The IpPrefix items on this page */
-export type IpPrefixesListResultValueList = ReadonlyArray<IpPrefix>;
+export type IpPrefixesListResultValueList = Array<IpPrefix>;
 export const IpPrefixesListResultValueList = /*@__PURE__*/ S.Array(
   IpPrefix,
 ) as any as S.Schema<IpPrefixesListResultValueList>;
@@ -7947,8 +7921,7 @@ export const IpPrefixesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<IpPrefixesUpdateRequestTagsMap>;
 
 /** The list of IP Prefix Rules. */
-export type IpPrefixPatchPropertiesIpPrefixRulesList =
-  ReadonlyArray<IpPrefixRule>;
+export type IpPrefixPatchPropertiesIpPrefixRulesList = Array<IpPrefixRule>;
 export const IpPrefixPatchPropertiesIpPrefixRulesList = /*@__PURE__*/ S.Array(
   IpPrefixRule,
 ) as any as S.Schema<IpPrefixPatchPropertiesIpPrefixRulesList>;
@@ -8539,8 +8512,7 @@ export const L2IsolationDomain = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<L2IsolationDomain>;
 
 /** The L2IsolationDomain items on this page */
-export type L2IsolationDomainsListResultValueList =
-  ReadonlyArray<L2IsolationDomain>;
+export type L2IsolationDomainsListResultValueList = Array<L2IsolationDomain>;
 export const L2IsolationDomainsListResultValueList = /*@__PURE__*/ S.Array(
   L2IsolationDomain,
 ) as any as S.Schema<L2IsolationDomainsListResultValueList>;
@@ -8760,7 +8732,7 @@ export const L2IsolationDomainsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Network Fabrics or Network Rack resource Id. */
 export type L2IsolationDomainsUpdateAdministrativeStateRequestResourceIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const L2IsolationDomainsUpdateAdministrativeStateRequestResourceIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -8922,15 +8894,13 @@ export const AggregateRoute = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AggregateRoute" }) as any as S.Schema<AggregateRoute>;
 
 /** List of IPv4 Route prefixes. */
-export type AggregateRouteConfigurationIpv4RoutesList =
-  ReadonlyArray<AggregateRoute>;
+export type AggregateRouteConfigurationIpv4RoutesList = Array<AggregateRoute>;
 export const AggregateRouteConfigurationIpv4RoutesList = /*@__PURE__*/ S.Array(
   AggregateRoute,
 ) as any as S.Schema<AggregateRouteConfigurationIpv4RoutesList>;
 
 /** List of Ipv6Routes prefixes. */
-export type AggregateRouteConfigurationIpv6RoutesList =
-  ReadonlyArray<AggregateRoute>;
+export type AggregateRouteConfigurationIpv6RoutesList = Array<AggregateRoute>;
 export const AggregateRouteConfigurationIpv6RoutesList = /*@__PURE__*/ S.Array(
   AggregateRoute,
 ) as any as S.Schema<AggregateRouteConfigurationIpv6RoutesList>;
@@ -9145,8 +9115,7 @@ export const L3IsolationDomainPropertiesRedistributeStaticRoutes =
   /*@__PURE__*/ S.String;
 
 /** List of Unique Route Distinguisher addresses. */
-export type L3UniqueRouteDistinguisherPropertiesUniqueRdsList =
-  ReadonlyArray<string>;
+export type L3UniqueRouteDistinguisherPropertiesUniqueRdsList = Array<string>;
 export const L3UniqueRouteDistinguisherPropertiesUniqueRdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -9484,8 +9453,7 @@ export const L3IsolationDomain = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<L3IsolationDomain>;
 
 /** The L3IsolationDomain items on this page */
-export type L3IsolationDomainsListResultValueList =
-  ReadonlyArray<L3IsolationDomain>;
+export type L3IsolationDomainsListResultValueList = Array<L3IsolationDomain>;
 export const L3IsolationDomainsListResultValueList = /*@__PURE__*/ S.Array(
   L3IsolationDomain,
 ) as any as S.Schema<L3IsolationDomainsListResultValueList>;
@@ -9545,7 +9513,7 @@ export const RedistributeStaticRoutes = /*@__PURE__*/ S.String;
 
 /** List of IPv4 Route prefixes. */
 export type AggregateRoutePatchConfigurationIpv4RoutesList =
-  ReadonlyArray<AggregateRoute>;
+  Array<AggregateRoute>;
 export const AggregateRoutePatchConfigurationIpv4RoutesList =
   /*@__PURE__*/ S.Array(
     AggregateRoute,
@@ -9553,7 +9521,7 @@ export const AggregateRoutePatchConfigurationIpv4RoutesList =
 
 /** List of Ipv6Routes prefixes. */
 export type AggregateRoutePatchConfigurationIpv6RoutesList =
-  ReadonlyArray<AggregateRoute>;
+  Array<AggregateRoute>;
 export const AggregateRoutePatchConfigurationIpv6RoutesList =
   /*@__PURE__*/ S.Array(
     AggregateRoute,
@@ -9634,7 +9602,7 @@ export const RoutePrefixLimitPatchProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RoutePrefixLimitPatchProperties>;
 
 /** Export Policy for the BGP Monitoring Protocol (BMP) Configuration. */
-export type BmpExportPolicyPatchPropertiesExportPoliciesList = ReadonlyArray<
+export type BmpExportPolicyPatchPropertiesExportPoliciesList = Array<
   BmpExportPolicy | (string & {})
 >;
 export const BmpExportPolicyPatchPropertiesExportPoliciesList =
@@ -9793,7 +9761,7 @@ export const L3IsolationDomainsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Network Fabrics or Network Rack resource Id. */
 export type L3IsolationDomainsUpdateAdministrativeStateRequestResourceIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const L3IsolationDomainsUpdateAdministrativeStateRequestResourceIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -9888,13 +9856,13 @@ export const NeighborGroupsCreateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<NeighborGroupsCreateRequestTagsMap>;
 
 /** Array of IPv4 Addresses. */
-export type NeighborGroupDestinationIpv4AddressesList = ReadonlyArray<string>;
+export type NeighborGroupDestinationIpv4AddressesList = Array<string>;
 export const NeighborGroupDestinationIpv4AddressesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<NeighborGroupDestinationIpv4AddressesList>;
 
 /** Array of IPv6 Addresses. */
-export type NeighborGroupDestinationIpv6AddressesList = ReadonlyArray<string>;
+export type NeighborGroupDestinationIpv6AddressesList = Array<string>;
 export const NeighborGroupDestinationIpv6AddressesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<NeighborGroupDestinationIpv6AddressesList>;
@@ -9992,21 +9960,20 @@ export const NeighborGroupsCreateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<NeighborGroupsCreateResponseTagsMap>;
 
 /** List of NetworkTap IDs where neighbor group is associated. */
-export type NeighborGroupPropertiesNetworkTapIdsList = ReadonlyArray<string>;
+export type NeighborGroupPropertiesNetworkTapIdsList = Array<string>;
 export const NeighborGroupPropertiesNetworkTapIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<NeighborGroupPropertiesNetworkTapIdsList>;
 
 /** List of Network Tap Rule IDs where neighbor group is associated. */
-export type NeighborGroupPropertiesNetworkTapRuleIdsList =
-  ReadonlyArray<string>;
+export type NeighborGroupPropertiesNetworkTapRuleIdsList = Array<string>;
 export const NeighborGroupPropertiesNetworkTapRuleIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<NeighborGroupPropertiesNetworkTapRuleIdsList>;
 
 /** Associated Network Fabric Resource IDs */
-export type NeighborGroupPropertiesNetworkFabricIdsList = ReadonlyArray<string>;
+export type NeighborGroupPropertiesNetworkFabricIdsList = Array<string>;
 export const NeighborGroupPropertiesNetworkFabricIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -10302,7 +10269,7 @@ export const NeighborGroup = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NeighborGroup" }) as any as S.Schema<NeighborGroup>;
 
 /** The NeighborGroup items on this page */
-export type NeighborGroupsListResultValueList = ReadonlyArray<NeighborGroup>;
+export type NeighborGroupsListResultValueList = Array<NeighborGroup>;
 export const NeighborGroupsListResultValueList = /*@__PURE__*/ S.Array(
   NeighborGroup,
 ) as any as S.Schema<NeighborGroupsListResultValueList>;
@@ -10370,7 +10337,7 @@ export const NeighborGroupsResyncRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The operations list. */
 export type NeighborGroupResyncResponseOperationsItemOperationsList =
-  ReadonlyArray<OperationStatusResult>;
+  Array<OperationStatusResult>;
 export const NeighborGroupResyncResponseOperationsItemOperationsList =
   /*@__PURE__*/ S.Array(
     OperationStatusResult,
@@ -10418,14 +10385,13 @@ export const NeighborGroupResyncResponseOperationsItem =
 
 /** The operations list. */
 export type NeighborGroupResyncResponseOperationsList =
-  ReadonlyArray<NeighborGroupResyncResponseOperationsItem>;
+  Array<NeighborGroupResyncResponseOperationsItem>;
 export const NeighborGroupResyncResponseOperationsList = /*@__PURE__*/ S.Array(
   NeighborGroupResyncResponseOperationsItem,
 ) as any as S.Schema<NeighborGroupResyncResponseOperationsList>;
 
 /** The error details. */
-export type NeighborGroupResyncResponseErrorDetailsList =
-  ReadonlyArray<ErrorDetail>;
+export type NeighborGroupResyncResponseErrorDetailsList = Array<ErrorDetail>;
 export const NeighborGroupResyncResponseErrorDetailsList =
   /*@__PURE__*/ S.Array(
     ErrorDetail,
@@ -10433,7 +10399,7 @@ export const NeighborGroupResyncResponseErrorDetailsList =
 
 /** The error additional info. */
 export type NeighborGroupResyncResponseErrorAdditionalInfoList =
-  ReadonlyArray<ErrorAdditionalInfo>;
+  Array<ErrorAdditionalInfo>;
 export const NeighborGroupResyncResponseErrorAdditionalInfoList =
   /*@__PURE__*/ S.Array(
     ErrorAdditionalInfo,
@@ -10513,16 +10479,14 @@ export const NeighborGroupsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<NeighborGroupsUpdateRequestTagsMap>;
 
 /** Array of IPv4 Addresses. */
-export type NeighborGroupDestinationPatchIpv4AddressesList =
-  ReadonlyArray<string>;
+export type NeighborGroupDestinationPatchIpv4AddressesList = Array<string>;
 export const NeighborGroupDestinationPatchIpv4AddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<NeighborGroupDestinationPatchIpv4AddressesList>;
 
 /** Array of IPv6 Addresses. */
-export type NeighborGroupDestinationPatchIpv6AddressesList =
-  ReadonlyArray<string>;
+export type NeighborGroupDestinationPatchIpv6AddressesList = Array<string>;
 export const NeighborGroupDestinationPatchIpv6AddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -11069,7 +11033,7 @@ export const NetworkBootstrapDevice = /*@__PURE__*/ S.suspend(() =>
 
 /** The NetworkBootstrapDevice items on this page */
 export type NetworkBootstrapDeviceListResultValueList =
-  ReadonlyArray<NetworkBootstrapDevice>;
+  Array<NetworkBootstrapDevice>;
 export const NetworkBootstrapDeviceListResultValueList = /*@__PURE__*/ S.Array(
   NetworkBootstrapDevice,
 ) as any as S.Schema<NetworkBootstrapDeviceListResultValueList>;
@@ -11138,7 +11102,7 @@ export const NetworkBootstrapDevicesRebootRequest = /*@__PURE__*/ S.suspend(
 
 /** The operations list. */
 export type NetworkBootstrapDeviceRebootResponseOperationsItemOperationsList =
-  ReadonlyArray<OperationStatusResult>;
+  Array<OperationStatusResult>;
 export const NetworkBootstrapDeviceRebootResponseOperationsItemOperationsList =
   /*@__PURE__*/ S.Array(
     OperationStatusResult,
@@ -11186,7 +11150,7 @@ export const NetworkBootstrapDeviceRebootResponseOperationsItem =
 
 /** The operations list. */
 export type NetworkBootstrapDeviceRebootResponseOperationsList =
-  ReadonlyArray<NetworkBootstrapDeviceRebootResponseOperationsItem>;
+  Array<NetworkBootstrapDeviceRebootResponseOperationsItem>;
 export const NetworkBootstrapDeviceRebootResponseOperationsList =
   /*@__PURE__*/ S.Array(
     NetworkBootstrapDeviceRebootResponseOperationsItem,
@@ -11194,7 +11158,7 @@ export const NetworkBootstrapDeviceRebootResponseOperationsList =
 
 /** The error details. */
 export type NetworkBootstrapDeviceRebootResponseErrorDetailsList =
-  ReadonlyArray<ErrorDetail>;
+  Array<ErrorDetail>;
 export const NetworkBootstrapDeviceRebootResponseErrorDetailsList =
   /*@__PURE__*/ S.Array(
     ErrorDetail,
@@ -11202,7 +11166,7 @@ export const NetworkBootstrapDeviceRebootResponseErrorDetailsList =
 
 /** The error additional info. */
 export type NetworkBootstrapDeviceRebootResponseErrorAdditionalInfoList =
-  ReadonlyArray<ErrorAdditionalInfo>;
+  Array<ErrorAdditionalInfo>;
 export const NetworkBootstrapDeviceRebootResponseErrorAdditionalInfoList =
   /*@__PURE__*/ S.Array(
     ErrorAdditionalInfo,
@@ -11304,7 +11268,7 @@ export const NetworkBootstrapDevicesRefreshConfigurationRequest =
 
 /** The operations list. */
 export type NetworkBootstrapDeviceRefreshConfigurationResponseOperationsItemOperationsList =
-  ReadonlyArray<OperationStatusResult>;
+  Array<OperationStatusResult>;
 export const NetworkBootstrapDeviceRefreshConfigurationResponseOperationsItemOperationsList =
   /*@__PURE__*/ S.Array(
     OperationStatusResult,
@@ -11353,7 +11317,7 @@ export const NetworkBootstrapDeviceRefreshConfigurationResponseOperationsItem =
 
 /** The operations list. */
 export type NetworkBootstrapDeviceRefreshConfigurationResponseOperationsList =
-  ReadonlyArray<NetworkBootstrapDeviceRefreshConfigurationResponseOperationsItem>;
+  Array<NetworkBootstrapDeviceRefreshConfigurationResponseOperationsItem>;
 export const NetworkBootstrapDeviceRefreshConfigurationResponseOperationsList =
   /*@__PURE__*/ S.Array(
     NetworkBootstrapDeviceRefreshConfigurationResponseOperationsItem,
@@ -11361,7 +11325,7 @@ export const NetworkBootstrapDeviceRefreshConfigurationResponseOperationsList =
 
 /** The error details. */
 export type NetworkBootstrapDeviceRefreshConfigurationResponseErrorDetailsList =
-  ReadonlyArray<ErrorDetail>;
+  Array<ErrorDetail>;
 export const NetworkBootstrapDeviceRefreshConfigurationResponseErrorDetailsList =
   /*@__PURE__*/ S.Array(
     ErrorDetail,
@@ -11369,7 +11333,7 @@ export const NetworkBootstrapDeviceRefreshConfigurationResponseErrorDetailsList 
 
 /** The error additional info. */
 export type NetworkBootstrapDeviceRefreshConfigurationResponseErrorAdditionalInfoList =
-  ReadonlyArray<ErrorAdditionalInfo>;
+  Array<ErrorAdditionalInfo>;
 export const NetworkBootstrapDeviceRefreshConfigurationResponseErrorAdditionalInfoList =
   /*@__PURE__*/ S.Array(
     ErrorAdditionalInfo,
@@ -11475,7 +11439,7 @@ export const NetworkBootstrapDevicesResyncPasswordsRequest =
 
 /** The operations list. */
 export type NetworkBootstrapDeviceResyncPasswordsResponseOperationsItemOperationsList =
-  ReadonlyArray<OperationStatusResult>;
+  Array<OperationStatusResult>;
 export const NetworkBootstrapDeviceResyncPasswordsResponseOperationsItemOperationsList =
   /*@__PURE__*/ S.Array(
     OperationStatusResult,
@@ -11523,7 +11487,7 @@ export const NetworkBootstrapDeviceResyncPasswordsResponseOperationsItem =
 
 /** The operations list. */
 export type NetworkBootstrapDeviceResyncPasswordsResponseOperationsList =
-  ReadonlyArray<NetworkBootstrapDeviceResyncPasswordsResponseOperationsItem>;
+  Array<NetworkBootstrapDeviceResyncPasswordsResponseOperationsItem>;
 export const NetworkBootstrapDeviceResyncPasswordsResponseOperationsList =
   /*@__PURE__*/ S.Array(
     NetworkBootstrapDeviceResyncPasswordsResponseOperationsItem,
@@ -11531,7 +11495,7 @@ export const NetworkBootstrapDeviceResyncPasswordsResponseOperationsList =
 
 /** The error details. */
 export type NetworkBootstrapDeviceResyncPasswordsResponseErrorDetailsList =
-  ReadonlyArray<ErrorDetail>;
+  Array<ErrorDetail>;
 export const NetworkBootstrapDeviceResyncPasswordsResponseErrorDetailsList =
   /*@__PURE__*/ S.Array(
     ErrorDetail,
@@ -11539,7 +11503,7 @@ export const NetworkBootstrapDeviceResyncPasswordsResponseErrorDetailsList =
 
 /** The error additional info. */
 export type NetworkBootstrapDeviceResyncPasswordsResponseErrorAdditionalInfoList =
-  ReadonlyArray<ErrorAdditionalInfo>;
+  Array<ErrorAdditionalInfo>;
 export const NetworkBootstrapDeviceResyncPasswordsResponseErrorAdditionalInfoList =
   /*@__PURE__*/ S.Array(
     ErrorAdditionalInfo,
@@ -11747,7 +11711,7 @@ export const NetworkBootstrapDevicesUpdateResponse = /*@__PURE__*/ S.suspend(
 
 /** Network Fabrics or Network Rack resource Id. */
 export type NetworkBootstrapDevicesUpdateAdministrativeStateRequestResourceIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const NetworkBootstrapDevicesUpdateAdministrativeStateRequestResourceIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -11802,7 +11766,7 @@ export const NetworkBootstrapDevicesUpdateAdministrativeStateRequest =
 
 /** The operations list. */
 export type NetworkBootstrapDeviceUpdateAdministrativeStateResponseOperationsItemOperationsList =
-  ReadonlyArray<OperationStatusResult>;
+  Array<OperationStatusResult>;
 export const NetworkBootstrapDeviceUpdateAdministrativeStateResponseOperationsItemOperationsList =
   /*@__PURE__*/ S.Array(
     OperationStatusResult,
@@ -11851,7 +11815,7 @@ export const NetworkBootstrapDeviceUpdateAdministrativeStateResponseOperationsIt
 
 /** The operations list. */
 export type NetworkBootstrapDeviceUpdateAdministrativeStateResponseOperationsList =
-  ReadonlyArray<NetworkBootstrapDeviceUpdateAdministrativeStateResponseOperationsItem>;
+  Array<NetworkBootstrapDeviceUpdateAdministrativeStateResponseOperationsItem>;
 export const NetworkBootstrapDeviceUpdateAdministrativeStateResponseOperationsList =
   /*@__PURE__*/ S.Array(
     NetworkBootstrapDeviceUpdateAdministrativeStateResponseOperationsItem,
@@ -11859,7 +11823,7 @@ export const NetworkBootstrapDeviceUpdateAdministrativeStateResponseOperationsLi
 
 /** The error details. */
 export type NetworkBootstrapDeviceUpdateAdministrativeStateResponseErrorDetailsList =
-  ReadonlyArray<ErrorDetail>;
+  Array<ErrorDetail>;
 export const NetworkBootstrapDeviceUpdateAdministrativeStateResponseErrorDetailsList =
   /*@__PURE__*/ S.Array(
     ErrorDetail,
@@ -11867,7 +11831,7 @@ export const NetworkBootstrapDeviceUpdateAdministrativeStateResponseErrorDetails
 
 /** The error additional info. */
 export type NetworkBootstrapDeviceUpdateAdministrativeStateResponseErrorAdditionalInfoList =
-  ReadonlyArray<ErrorAdditionalInfo>;
+  Array<ErrorAdditionalInfo>;
 export const NetworkBootstrapDeviceUpdateAdministrativeStateResponseErrorAdditionalInfoList =
   /*@__PURE__*/ S.Array(
     ErrorAdditionalInfo,
@@ -11976,7 +11940,7 @@ export const NetworkBootstrapDevicesUpgradeRequest = /*@__PURE__*/ S.suspend(
 
 /** The operations list. */
 export type NetworkBootstrapDeviceUpgradeResponseOperationsItemOperationsList =
-  ReadonlyArray<OperationStatusResult>;
+  Array<OperationStatusResult>;
 export const NetworkBootstrapDeviceUpgradeResponseOperationsItemOperationsList =
   /*@__PURE__*/ S.Array(
     OperationStatusResult,
@@ -12024,7 +11988,7 @@ export const NetworkBootstrapDeviceUpgradeResponseOperationsItem =
 
 /** The operations list. */
 export type NetworkBootstrapDeviceUpgradeResponseOperationsList =
-  ReadonlyArray<NetworkBootstrapDeviceUpgradeResponseOperationsItem>;
+  Array<NetworkBootstrapDeviceUpgradeResponseOperationsItem>;
 export const NetworkBootstrapDeviceUpgradeResponseOperationsList =
   /*@__PURE__*/ S.Array(
     NetworkBootstrapDeviceUpgradeResponseOperationsItem,
@@ -12032,7 +11996,7 @@ export const NetworkBootstrapDeviceUpgradeResponseOperationsList =
 
 /** The error details. */
 export type NetworkBootstrapDeviceUpgradeResponseErrorDetailsList =
-  ReadonlyArray<ErrorDetail>;
+  Array<ErrorDetail>;
 export const NetworkBootstrapDeviceUpgradeResponseErrorDetailsList =
   /*@__PURE__*/ S.Array(
     ErrorDetail,
@@ -12040,7 +12004,7 @@ export const NetworkBootstrapDeviceUpgradeResponseErrorDetailsList =
 
 /** The error additional info. */
 export type NetworkBootstrapDeviceUpgradeResponseErrorAdditionalInfoList =
-  ReadonlyArray<ErrorAdditionalInfo>;
+  Array<ErrorAdditionalInfo>;
 export const NetworkBootstrapDeviceUpgradeResponseErrorAdditionalInfoList =
   /*@__PURE__*/ S.Array(
     ErrorAdditionalInfo,
@@ -12386,7 +12350,7 @@ export const NetworkBootstrapInterface = /*@__PURE__*/ S.suspend(() =>
 
 /** The NetworkBootstrapInterface items on this page */
 export type NetworkBootstrapInterfaceListResultValueList =
-  ReadonlyArray<NetworkBootstrapInterface>;
+  Array<NetworkBootstrapInterface>;
 export const NetworkBootstrapInterfaceListResultValueList =
   /*@__PURE__*/ S.Array(
     NetworkBootstrapInterface,
@@ -12487,7 +12451,7 @@ export const NetworkBootstrapInterfacesUpdateResponse = /*@__PURE__*/ S.suspend(
 
 /** Network Fabrics or Network Rack resource Id. */
 export type NetworkBootstrapInterfacesUpdateAdministrativeStateRequestResourceIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const NetworkBootstrapInterfacesUpdateAdministrativeStateRequestResourceIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -12564,7 +12528,7 @@ export const ManagedServiceIdentitySelectorType = /*@__PURE__*/ S.String;
 /** IdentitySelector represents the selection of a managed identity for use. */
 export interface IdentitySelector {
   /** The type of managed identity that is being selected. */
-  identityType: ManagedServiceIdentitySelectorType;
+  identityType: ManagedServiceIdentitySelectorType | (string & {});
   /** The user assigned managed identity resource ID to use. Mutually exclusive with a system assigned identity type. */
   userAssignedIdentityResourceId?: string;
 }
@@ -12716,7 +12680,7 @@ export const SecretRotationStatus = /*@__PURE__*/ S.suspend(() =>
 
 /** Secret rotation status for the device's secrets. */
 export type NetworkDevicePropertiesSecretRotationStatusList =
-  ReadonlyArray<SecretRotationStatus>;
+  Array<SecretRotationStatus>;
 export const NetworkDevicePropertiesSecretRotationStatusList =
   /*@__PURE__*/ S.Array(
     SecretRotationStatus,
@@ -12771,7 +12735,7 @@ export const CertificateRotationStatus = /*@__PURE__*/ S.suspend(() =>
 
 /** Certificate rotation status for the device's certificates. */
 export type NetworkDevicePropertiesCertificateRotationStatusList =
-  ReadonlyArray<CertificateRotationStatus>;
+  Array<CertificateRotationStatus>;
 export const NetworkDevicePropertiesCertificateRotationStatusList =
   /*@__PURE__*/ S.Array(
     CertificateRotationStatus,
@@ -13064,7 +13028,7 @@ export const SupportedVersionProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** List of supported version details of network device. */
 export type NetworkDeviceSkuPropertiesSupportedVersionsList =
-  ReadonlyArray<SupportedVersionProperties>;
+  Array<SupportedVersionProperties>;
 export const NetworkDeviceSkuPropertiesSupportedVersionsList =
   /*@__PURE__*/ S.Array(
     SupportedVersionProperties,
@@ -13076,7 +13040,7 @@ export const NetworkDeviceRoleName = /*@__PURE__*/ S.String;
 
 /** Available roles for the network device. */
 export type NetworkDeviceSkuPropertiesSupportedRoleTypesList =
-  ReadonlyArray<NetworkDeviceRoleName>;
+  Array<NetworkDeviceRoleName>;
 export const NetworkDeviceSkuPropertiesSupportedRoleTypesList =
   /*@__PURE__*/ S.Array(
     NetworkDeviceRoleName,
@@ -13100,7 +13064,7 @@ export const SupportedConnectorProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** List of supported connector types. */
 export type DeviceInterfacePropertiesSupportedConnectorTypesList =
-  ReadonlyArray<SupportedConnectorProperties>;
+  Array<SupportedConnectorProperties>;
 export const DeviceInterfacePropertiesSupportedConnectorTypesList =
   /*@__PURE__*/ S.Array(
     SupportedConnectorProperties,
@@ -13129,7 +13093,7 @@ export const DeviceInterfaceProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** List of network device interfaces. */
 export type NetworkDeviceSkuPropertiesInterfacesList =
-  ReadonlyArray<DeviceInterfaceProperties>;
+  Array<DeviceInterfaceProperties>;
 export const NetworkDeviceSkuPropertiesInterfacesList = /*@__PURE__*/ S.Array(
   DeviceInterfaceProperties,
 ) as any as S.Schema<NetworkDeviceSkuPropertiesInterfacesList>;
@@ -13236,8 +13200,7 @@ export const NetworkDeviceSku = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NetworkDeviceSku>;
 
 /** The NetworkDeviceSku items on this page */
-export type NetworkDeviceSkusListResultValueList =
-  ReadonlyArray<NetworkDeviceSku>;
+export type NetworkDeviceSkusListResultValueList = Array<NetworkDeviceSku>;
 export const NetworkDeviceSkusListResultValueList = /*@__PURE__*/ S.Array(
   NetworkDeviceSku,
 ) as any as S.Schema<NetworkDeviceSkusListResultValueList>;
@@ -13341,7 +13304,7 @@ export const NetworkDevice = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NetworkDevice" }) as any as S.Schema<NetworkDevice>;
 
 /** The NetworkDevice items on this page */
-export type NetworkDevicesListResultValueList = ReadonlyArray<NetworkDevice>;
+export type NetworkDevicesListResultValueList = Array<NetworkDevice>;
 export const NetworkDevicesListResultValueList = /*@__PURE__*/ S.Array(
   NetworkDevice,
 ) as any as S.Schema<NetworkDevicesListResultValueList>;
@@ -13420,7 +13383,7 @@ export const NetworkDevicesRebootRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The operations list. */
 export type NetworkDevicesRebootResponseOperationsList =
-  ReadonlyArray<OperationStatusResult>;
+  Array<OperationStatusResult>;
 export const NetworkDevicesRebootResponseOperationsList = /*@__PURE__*/ S.Array(
   OperationStatusResult,
 ) as any as S.Schema<NetworkDevicesRebootResponseOperationsList>;
@@ -13489,7 +13452,7 @@ export const NetworkDevicesRefreshConfigurationRequest =
 
 /** The operations list. */
 export type NetworkDeviceRefreshConfigurationResponseOperationsItemOperationsList =
-  ReadonlyArray<OperationStatusResult>;
+  Array<OperationStatusResult>;
 export const NetworkDeviceRefreshConfigurationResponseOperationsItemOperationsList =
   /*@__PURE__*/ S.Array(
     OperationStatusResult,
@@ -13537,7 +13500,7 @@ export const NetworkDeviceRefreshConfigurationResponseOperationsItem =
 
 /** The operations list. */
 export type NetworkDeviceRefreshConfigurationResponseOperationsList =
-  ReadonlyArray<NetworkDeviceRefreshConfigurationResponseOperationsItem>;
+  Array<NetworkDeviceRefreshConfigurationResponseOperationsItem>;
 export const NetworkDeviceRefreshConfigurationResponseOperationsList =
   /*@__PURE__*/ S.Array(
     NetworkDeviceRefreshConfigurationResponseOperationsItem,
@@ -13545,7 +13508,7 @@ export const NetworkDeviceRefreshConfigurationResponseOperationsList =
 
 /** The error details. */
 export type NetworkDeviceRefreshConfigurationResponseErrorDetailsList =
-  ReadonlyArray<ErrorDetail>;
+  Array<ErrorDetail>;
 export const NetworkDeviceRefreshConfigurationResponseErrorDetailsList =
   /*@__PURE__*/ S.Array(
     ErrorDetail,
@@ -13553,7 +13516,7 @@ export const NetworkDeviceRefreshConfigurationResponseErrorDetailsList =
 
 /** The error additional info. */
 export type NetworkDeviceRefreshConfigurationResponseErrorAdditionalInfoList =
-  ReadonlyArray<ErrorAdditionalInfo>;
+  Array<ErrorAdditionalInfo>;
 export const NetworkDeviceRefreshConfigurationResponseErrorAdditionalInfoList =
   /*@__PURE__*/ S.Array(
     ErrorAdditionalInfo,
@@ -13657,7 +13620,7 @@ export const NetworkDevicesResyncCertificatesRequest = /*@__PURE__*/ S.suspend(
 
 /** The operations list. */
 export type NetworkFabricResyncCertificatesResponseOperationsItemOperationsList =
-  ReadonlyArray<OperationStatusResult>;
+  Array<OperationStatusResult>;
 export const NetworkFabricResyncCertificatesResponseOperationsItemOperationsList =
   /*@__PURE__*/ S.Array(
     OperationStatusResult,
@@ -13705,7 +13668,7 @@ export const NetworkFabricResyncCertificatesResponseOperationsItem =
 
 /** The operations list. */
 export type NetworkFabricResyncCertificatesResponseOperationsList =
-  ReadonlyArray<NetworkFabricResyncCertificatesResponseOperationsItem>;
+  Array<NetworkFabricResyncCertificatesResponseOperationsItem>;
 export const NetworkFabricResyncCertificatesResponseOperationsList =
   /*@__PURE__*/ S.Array(
     NetworkFabricResyncCertificatesResponseOperationsItem,
@@ -13713,7 +13676,7 @@ export const NetworkFabricResyncCertificatesResponseOperationsList =
 
 /** The error details. */
 export type NetworkFabricResyncCertificatesResponseErrorDetailsList =
-  ReadonlyArray<ErrorDetail>;
+  Array<ErrorDetail>;
 export const NetworkFabricResyncCertificatesResponseErrorDetailsList =
   /*@__PURE__*/ S.Array(
     ErrorDetail,
@@ -13721,7 +13684,7 @@ export const NetworkFabricResyncCertificatesResponseErrorDetailsList =
 
 /** The error additional info. */
 export type NetworkFabricResyncCertificatesResponseErrorAdditionalInfoList =
-  ReadonlyArray<ErrorAdditionalInfo>;
+  Array<ErrorAdditionalInfo>;
 export const NetworkFabricResyncCertificatesResponseErrorAdditionalInfoList =
   /*@__PURE__*/ S.Array(
     ErrorAdditionalInfo,
@@ -13825,7 +13788,7 @@ export const NetworkDevicesResyncPasswordsRequest = /*@__PURE__*/ S.suspend(
 
 /** The operations list. */
 export type NetworkDeviceResyncPasswordsResponseOperationsItemOperationsList =
-  ReadonlyArray<OperationStatusResult>;
+  Array<OperationStatusResult>;
 export const NetworkDeviceResyncPasswordsResponseOperationsItemOperationsList =
   /*@__PURE__*/ S.Array(
     OperationStatusResult,
@@ -13873,7 +13836,7 @@ export const NetworkDeviceResyncPasswordsResponseOperationsItem =
 
 /** The operations list. */
 export type NetworkDeviceResyncPasswordsResponseOperationsList =
-  ReadonlyArray<NetworkDeviceResyncPasswordsResponseOperationsItem>;
+  Array<NetworkDeviceResyncPasswordsResponseOperationsItem>;
 export const NetworkDeviceResyncPasswordsResponseOperationsList =
   /*@__PURE__*/ S.Array(
     NetworkDeviceResyncPasswordsResponseOperationsItem,
@@ -13881,7 +13844,7 @@ export const NetworkDeviceResyncPasswordsResponseOperationsList =
 
 /** The error details. */
 export type NetworkDeviceResyncPasswordsResponseErrorDetailsList =
-  ReadonlyArray<ErrorDetail>;
+  Array<ErrorDetail>;
 export const NetworkDeviceResyncPasswordsResponseErrorDetailsList =
   /*@__PURE__*/ S.Array(
     ErrorDetail,
@@ -13889,7 +13852,7 @@ export const NetworkDeviceResyncPasswordsResponseErrorDetailsList =
 
 /** The error additional info. */
 export type NetworkDeviceResyncPasswordsResponseErrorAdditionalInfoList =
-  ReadonlyArray<ErrorAdditionalInfo>;
+  Array<ErrorAdditionalInfo>;
 export const NetworkDeviceResyncPasswordsResponseErrorAdditionalInfoList =
   /*@__PURE__*/ S.Array(
     ErrorAdditionalInfo,
@@ -14077,7 +14040,7 @@ export const NetworkDevicesRunRwCommandRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The operations list. */
 export type NetworkDeviceRunRwCommandResponseOperationsItemOperationsList =
-  ReadonlyArray<OperationStatusResult>;
+  Array<OperationStatusResult>;
 export const NetworkDeviceRunRwCommandResponseOperationsItemOperationsList =
   /*@__PURE__*/ S.Array(
     OperationStatusResult,
@@ -14125,7 +14088,7 @@ export const NetworkDeviceRunRwCommandResponseOperationsItem =
 
 /** The operations list. */
 export type NetworkDeviceRunRwCommandResponseOperationsList =
-  ReadonlyArray<NetworkDeviceRunRwCommandResponseOperationsItem>;
+  Array<NetworkDeviceRunRwCommandResponseOperationsItem>;
 export const NetworkDeviceRunRwCommandResponseOperationsList =
   /*@__PURE__*/ S.Array(
     NetworkDeviceRunRwCommandResponseOperationsItem,
@@ -14133,7 +14096,7 @@ export const NetworkDeviceRunRwCommandResponseOperationsList =
 
 /** The error details. */
 export type NetworkDeviceRunRwCommandResponseErrorDetailsList =
-  ReadonlyArray<ErrorDetail>;
+  Array<ErrorDetail>;
 export const NetworkDeviceRunRwCommandResponseErrorDetailsList =
   /*@__PURE__*/ S.Array(
     ErrorDetail,
@@ -14141,7 +14104,7 @@ export const NetworkDeviceRunRwCommandResponseErrorDetailsList =
 
 /** The error additional info. */
 export type NetworkDeviceRunRwCommandResponseErrorAdditionalInfoList =
-  ReadonlyArray<ErrorAdditionalInfo>;
+  Array<ErrorAdditionalInfo>;
 export const NetworkDeviceRunRwCommandResponseErrorAdditionalInfoList =
   /*@__PURE__*/ S.Array(
     ErrorAdditionalInfo,
@@ -14379,7 +14342,7 @@ export const NetworkDevicesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Network Fabrics or Network Rack resource Id. */
 export type NetworkDevicesUpdateAdministrativeStateRequestResourceIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const NetworkDevicesUpdateAdministrativeStateRequestResourceIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -14421,7 +14384,7 @@ export const NetworkDevicesUpdateAdministrativeStateRequest =
 
 /** The operations list. */
 export type NetworkDeviceUpdateAdministrativeStateResponseOperationsItemOperationsList =
-  ReadonlyArray<OperationStatusResult>;
+  Array<OperationStatusResult>;
 export const NetworkDeviceUpdateAdministrativeStateResponseOperationsItemOperationsList =
   /*@__PURE__*/ S.Array(
     OperationStatusResult,
@@ -14469,7 +14432,7 @@ export const NetworkDeviceUpdateAdministrativeStateResponseOperationsItem =
 
 /** The operations list. */
 export type NetworkDeviceUpdateAdministrativeStateResponseOperationsList =
-  ReadonlyArray<NetworkDeviceUpdateAdministrativeStateResponseOperationsItem>;
+  Array<NetworkDeviceUpdateAdministrativeStateResponseOperationsItem>;
 export const NetworkDeviceUpdateAdministrativeStateResponseOperationsList =
   /*@__PURE__*/ S.Array(
     NetworkDeviceUpdateAdministrativeStateResponseOperationsItem,
@@ -14477,7 +14440,7 @@ export const NetworkDeviceUpdateAdministrativeStateResponseOperationsList =
 
 /** The error details. */
 export type NetworkDeviceUpdateAdministrativeStateResponseErrorDetailsList =
-  ReadonlyArray<ErrorDetail>;
+  Array<ErrorDetail>;
 export const NetworkDeviceUpdateAdministrativeStateResponseErrorDetailsList =
   /*@__PURE__*/ S.Array(
     ErrorDetail,
@@ -14485,7 +14448,7 @@ export const NetworkDeviceUpdateAdministrativeStateResponseErrorDetailsList =
 
 /** The error additional info. */
 export type NetworkDeviceUpdateAdministrativeStateResponseErrorAdditionalInfoList =
-  ReadonlyArray<ErrorAdditionalInfo>;
+  Array<ErrorAdditionalInfo>;
 export const NetworkDeviceUpdateAdministrativeStateResponseErrorAdditionalInfoList =
   /*@__PURE__*/ S.Array(
     ErrorAdditionalInfo,
@@ -14594,7 +14557,7 @@ export const NetworkDevicesUpgradeRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The operations list. */
 export type NetworkDeviceUpgradeResponseOperationsItemOperationsList =
-  ReadonlyArray<OperationStatusResult>;
+  Array<OperationStatusResult>;
 export const NetworkDeviceUpgradeResponseOperationsItemOperationsList =
   /*@__PURE__*/ S.Array(
     OperationStatusResult,
@@ -14642,14 +14605,13 @@ export const NetworkDeviceUpgradeResponseOperationsItem =
 
 /** The operations list. */
 export type NetworkDeviceUpgradeResponseOperationsList =
-  ReadonlyArray<NetworkDeviceUpgradeResponseOperationsItem>;
+  Array<NetworkDeviceUpgradeResponseOperationsItem>;
 export const NetworkDeviceUpgradeResponseOperationsList = /*@__PURE__*/ S.Array(
   NetworkDeviceUpgradeResponseOperationsItem,
 ) as any as S.Schema<NetworkDeviceUpgradeResponseOperationsList>;
 
 /** The error details. */
-export type NetworkDeviceUpgradeResponseErrorDetailsList =
-  ReadonlyArray<ErrorDetail>;
+export type NetworkDeviceUpgradeResponseErrorDetailsList = Array<ErrorDetail>;
 export const NetworkDeviceUpgradeResponseErrorDetailsList =
   /*@__PURE__*/ S.Array(
     ErrorDetail,
@@ -14657,7 +14619,7 @@ export const NetworkDeviceUpgradeResponseErrorDetailsList =
 
 /** The error additional info. */
 export type NetworkDeviceUpgradeResponseErrorAdditionalInfoList =
-  ReadonlyArray<ErrorAdditionalInfo>;
+  Array<ErrorAdditionalInfo>;
 export const NetworkDeviceUpgradeResponseErrorAdditionalInfoList =
   /*@__PURE__*/ S.Array(
     ErrorAdditionalInfo,
@@ -14755,7 +14717,7 @@ export const ExpressRouteConnectionInformation = /*@__PURE__*/ S.suspend(() =>
 
 /** As part of an update, the Infrastructure ExpressRoute CircuitID should be provided to create and Provision a NFC. This Express route is dedicated for Infrastructure services. (This is a Mandatory attribute) */
 export type NetworkFabricControllerPropertiesInputInfrastructureExpressRouteConnectionsList =
-  ReadonlyArray<ExpressRouteConnectionInformation>;
+  Array<ExpressRouteConnectionInformation>;
 export const NetworkFabricControllerPropertiesInputInfrastructureExpressRouteConnectionsList =
   /*@__PURE__*/ S.Array(
     ExpressRouteConnectionInformation,
@@ -14763,7 +14725,7 @@ export const NetworkFabricControllerPropertiesInputInfrastructureExpressRouteCon
 
 /** As part of an update, the workload ExpressRoute CircuitID should be provided to create and Provision a NFC. This Express route is dedicated for Workload services. (This is a Mandatory attribute). */
 export type NetworkFabricControllerPropertiesInputWorkloadExpressRouteConnectionsList =
-  ReadonlyArray<ExpressRouteConnectionInformation>;
+  Array<ExpressRouteConnectionInformation>;
 export const NetworkFabricControllerPropertiesInputWorkloadExpressRouteConnectionsList =
   /*@__PURE__*/ S.Array(
     ExpressRouteConnectionInformation,
@@ -14909,7 +14871,7 @@ export const NetworkFabricControllersCreateResponseTagsMap =
 
 /** As part of an update, the Infrastructure ExpressRoute CircuitID should be provided to create and Provision a NFC. This Express route is dedicated for Infrastructure services. (This is a Mandatory attribute) */
 export type NetworkFabricControllerPropertiesInfrastructureExpressRouteConnectionsList =
-  ReadonlyArray<ExpressRouteConnectionInformation>;
+  Array<ExpressRouteConnectionInformation>;
 export const NetworkFabricControllerPropertiesInfrastructureExpressRouteConnectionsList =
   /*@__PURE__*/ S.Array(
     ExpressRouteConnectionInformation,
@@ -14917,20 +14879,20 @@ export const NetworkFabricControllerPropertiesInfrastructureExpressRouteConnecti
 
 /** As part of an update, the workload ExpressRoute CircuitID should be provided to create and Provision a NFC. This Express route is dedicated for Workload services. (This is a Mandatory attribute). */
 export type NetworkFabricControllerPropertiesWorkloadExpressRouteConnectionsList =
-  ReadonlyArray<ExpressRouteConnectionInformation>;
+  Array<ExpressRouteConnectionInformation>;
 export const NetworkFabricControllerPropertiesWorkloadExpressRouteConnectionsList =
   /*@__PURE__*/ S.Array(
     ExpressRouteConnectionInformation,
   ) as any as S.Schema<NetworkFabricControllerPropertiesWorkloadExpressRouteConnectionsList>;
 
 /** The IPv4 Address space is optional, if the value is not defined at the time of NFC creation, then the default value 10.0.0.0/19 is considered. The IPV4 address subnet is an optional attribute. */
-export type ControllerServicesIpv4AddressSpacesList = ReadonlyArray<string>;
+export type ControllerServicesIpv4AddressSpacesList = Array<string>;
 export const ControllerServicesIpv4AddressSpacesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ControllerServicesIpv4AddressSpacesList>;
 
 /** The IPv6 is not supported right now. */
-export type ControllerServicesIpv6AddressSpacesList = ReadonlyArray<string>;
+export type ControllerServicesIpv6AddressSpacesList = Array<string>;
 export const ControllerServicesIpv6AddressSpacesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ControllerServicesIpv6AddressSpacesList>;
@@ -14953,7 +14915,7 @@ export const ControllerServices = /*@__PURE__*/ S.suspend(() =>
 
 /** The NF-ID will be an input parameter used by the NF to link and get associated with the parent NFC Service. */
 export type NetworkFabricControllerPropertiesNetworkFabricIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const NetworkFabricControllerPropertiesNetworkFabricIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -14967,7 +14929,7 @@ export const NetworkFabricControllerPropertiesIsWorkloadManagementNetworkEnabled
 
 /** List of tenant InternetGateway resource IDs */
 export type NetworkFabricControllerPropertiesTenantInternetGatewayIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const NetworkFabricControllerPropertiesTenantInternetGatewayIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -15309,7 +15271,7 @@ export const NetworkFabricController = /*@__PURE__*/ S.suspend(() =>
 
 /** The NetworkFabricController items on this page */
 export type NetworkFabricControllersListResultValueList =
-  ReadonlyArray<NetworkFabricController>;
+  Array<NetworkFabricController>;
 export const NetworkFabricControllersListResultValueList =
   /*@__PURE__*/ S.Array(
     NetworkFabricController,
@@ -15363,7 +15325,7 @@ export const NetworkFabricControllersUpdateRequestTagsMap =
 
 /** As part of an update, the Infrastructure ExpressRoute CircuitID should be provided to create and Provision a NFC. This Express route is dedicated for Infrastructure services. (This is a Mandatory attribute) */
 export type NetworkFabricControllerPatchPropertiesInfrastructureExpressRouteConnectionsList =
-  ReadonlyArray<ExpressRouteConnectionInformation>;
+  Array<ExpressRouteConnectionInformation>;
 export const NetworkFabricControllerPatchPropertiesInfrastructureExpressRouteConnectionsList =
   /*@__PURE__*/ S.Array(
     ExpressRouteConnectionInformation,
@@ -15371,7 +15333,7 @@ export const NetworkFabricControllerPatchPropertiesInfrastructureExpressRouteCon
 
 /** As part of an update, the workload ExpressRoute CircuitID should be provided to create and Provision a NFC. This Express route is dedicated for Workload services. (This is a Mandatory attribute). */
 export type NetworkFabricControllerPatchPropertiesWorkloadExpressRouteConnectionsList =
-  ReadonlyArray<ExpressRouteConnectionInformation>;
+  Array<ExpressRouteConnectionInformation>;
 export const NetworkFabricControllerPatchPropertiesWorkloadExpressRouteConnectionsList =
   /*@__PURE__*/ S.Array(
     ExpressRouteConnectionInformation,
@@ -15526,7 +15488,7 @@ export const NetworkFabricsArmConfigurationDiffRequest =
 
 /** The operations list. */
 export type ArmConfigurationDiffOperationResponseOperationsItemOperationsList =
-  ReadonlyArray<OperationStatusResult>;
+  Array<OperationStatusResult>;
 export const ArmConfigurationDiffOperationResponseOperationsItemOperationsList =
   /*@__PURE__*/ S.Array(
     OperationStatusResult,
@@ -15574,7 +15536,7 @@ export const ArmConfigurationDiffOperationResponseOperationsItem =
 
 /** The operations list. */
 export type ArmConfigurationDiffOperationResponseOperationsList =
-  ReadonlyArray<ArmConfigurationDiffOperationResponseOperationsItem>;
+  Array<ArmConfigurationDiffOperationResponseOperationsItem>;
 export const ArmConfigurationDiffOperationResponseOperationsList =
   /*@__PURE__*/ S.Array(
     ArmConfigurationDiffOperationResponseOperationsItem,
@@ -15582,7 +15544,7 @@ export const ArmConfigurationDiffOperationResponseOperationsList =
 
 /** The error details. */
 export type ArmConfigurationDiffOperationResponseErrorDetailsList =
-  ReadonlyArray<ErrorDetail>;
+  Array<ErrorDetail>;
 export const ArmConfigurationDiffOperationResponseErrorDetailsList =
   /*@__PURE__*/ S.Array(
     ErrorDetail,
@@ -15590,7 +15552,7 @@ export const ArmConfigurationDiffOperationResponseErrorDetailsList =
 
 /** The error additional info. */
 export type ArmConfigurationDiffOperationResponseErrorAdditionalInfoList =
-  ReadonlyArray<ErrorAdditionalInfo>;
+  Array<ErrorAdditionalInfo>;
 export const ArmConfigurationDiffOperationResponseErrorAdditionalInfoList =
   /*@__PURE__*/ S.Array(
     ErrorAdditionalInfo,
@@ -15714,7 +15676,7 @@ export const NetworkFabricsCommitBatchStatusRequest = /*@__PURE__*/ S.suspend(
 
 /** The operations list. */
 export type CommitBatchStatusOperationResponseOperationsItemOperationsList =
-  ReadonlyArray<OperationStatusResult>;
+  Array<OperationStatusResult>;
 export const CommitBatchStatusOperationResponseOperationsItemOperationsList =
   /*@__PURE__*/ S.Array(
     OperationStatusResult,
@@ -15762,7 +15724,7 @@ export const CommitBatchStatusOperationResponseOperationsItem =
 
 /** The operations list. */
 export type CommitBatchStatusOperationResponseOperationsList =
-  ReadonlyArray<CommitBatchStatusOperationResponseOperationsItem>;
+  Array<CommitBatchStatusOperationResponseOperationsItem>;
 export const CommitBatchStatusOperationResponseOperationsList =
   /*@__PURE__*/ S.Array(
     CommitBatchStatusOperationResponseOperationsItem,
@@ -15770,7 +15732,7 @@ export const CommitBatchStatusOperationResponseOperationsList =
 
 /** The error details. */
 export type CommitBatchStatusOperationResponseErrorDetailsList =
-  ReadonlyArray<ErrorDetail>;
+  Array<ErrorDetail>;
 export const CommitBatchStatusOperationResponseErrorDetailsList =
   /*@__PURE__*/ S.Array(
     ErrorDetail,
@@ -15778,7 +15740,7 @@ export const CommitBatchStatusOperationResponseErrorDetailsList =
 
 /** The error additional info. */
 export type CommitBatchStatusOperationResponseErrorAdditionalInfoList =
-  ReadonlyArray<ErrorAdditionalInfo>;
+  Array<ErrorAdditionalInfo>;
 export const CommitBatchStatusOperationResponseErrorAdditionalInfoList =
   /*@__PURE__*/ S.Array(
     ErrorAdditionalInfo,
@@ -15817,7 +15779,7 @@ export type CommitBatchState = "Processing" | "Succeeded" | "Failed";
 export const CommitBatchState = /*@__PURE__*/ S.String;
 
 /** List of devices for which the commit operation failed. */
-export type CommitBatchDetailsFailedDevicesList = ReadonlyArray<string>;
+export type CommitBatchDetailsFailedDevicesList = Array<string>;
 export const CommitBatchDetailsFailedDevicesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CommitBatchDetailsFailedDevicesList>;
@@ -15903,8 +15865,7 @@ export type CommitConfigurationPolicy = "StageCEConfiguration";
 export const CommitConfigurationPolicy = /*@__PURE__*/ S.String;
 
 /** List of ARM resource IDs of devices to be included in the commit operation. Either CE1 or CE2 is allowed. */
-export type NetworkFabricsCommitConfigurationRequestDevicesList =
-  ReadonlyArray<string>;
+export type NetworkFabricsCommitConfigurationRequestDevicesList = Array<string>;
 export const NetworkFabricsCommitConfigurationRequestDevicesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -15947,7 +15908,7 @@ export const NetworkFabricsCommitConfigurationRequest = /*@__PURE__*/ S.suspend(
 
 /** The operations list. */
 export type CommitConfigurationResponseOperationsItemOperationsList =
-  ReadonlyArray<OperationStatusResult>;
+  Array<OperationStatusResult>;
 export const CommitConfigurationResponseOperationsItemOperationsList =
   /*@__PURE__*/ S.Array(
     OperationStatusResult,
@@ -15995,14 +15956,13 @@ export const CommitConfigurationResponseOperationsItem =
 
 /** The operations list. */
 export type CommitConfigurationResponseOperationsList =
-  ReadonlyArray<CommitConfigurationResponseOperationsItem>;
+  Array<CommitConfigurationResponseOperationsItem>;
 export const CommitConfigurationResponseOperationsList = /*@__PURE__*/ S.Array(
   CommitConfigurationResponseOperationsItem,
 ) as any as S.Schema<CommitConfigurationResponseOperationsList>;
 
 /** The error details. */
-export type CommitConfigurationResponseErrorDetailsList =
-  ReadonlyArray<ErrorDetail>;
+export type CommitConfigurationResponseErrorDetailsList = Array<ErrorDetail>;
 export const CommitConfigurationResponseErrorDetailsList =
   /*@__PURE__*/ S.Array(
     ErrorDetail,
@@ -16010,7 +15970,7 @@ export const CommitConfigurationResponseErrorDetailsList =
 
 /** The error additional info. */
 export type CommitConfigurationResponseErrorAdditionalInfoList =
-  ReadonlyArray<ErrorAdditionalInfo>;
+  Array<ErrorAdditionalInfo>;
 export const CommitConfigurationResponseErrorAdditionalInfoList =
   /*@__PURE__*/ S.Array(
     ErrorAdditionalInfo,
@@ -16137,13 +16097,13 @@ export const TerminalServerConfigurationInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TerminalServerConfigurationInput>;
 
 /** Route Targets to be applied for incoming routes into CE. This is for backward compatibility. */
-export type VpnOptionBPropertiesImportRouteTargetsList = ReadonlyArray<string>;
+export type VpnOptionBPropertiesImportRouteTargetsList = Array<string>;
 export const VpnOptionBPropertiesImportRouteTargetsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<VpnOptionBPropertiesImportRouteTargetsList>;
 
 /** Route Targets to be applied for outgoing routes from CE. This is for backward compatibility. */
-export type VpnOptionBPropertiesExportRouteTargetsList = ReadonlyArray<string>;
+export type VpnOptionBPropertiesExportRouteTargetsList = Array<string>;
 export const VpnOptionBPropertiesExportRouteTargetsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<VpnOptionBPropertiesExportRouteTargetsList>;
@@ -16241,8 +16201,7 @@ export const ManagementNetworkConfigurationPropertiesInput =
   }) as any as S.Schema<ManagementNetworkConfigurationPropertiesInput>;
 
 /** Control Plane Access Control List ARM resource IDs. */
-export type NetworkFabricPropertiesInputControlPlaneAclsList =
-  ReadonlyArray<string>;
+export type NetworkFabricPropertiesInputControlPlaneAclsList = Array<string>;
 export const NetworkFabricPropertiesInputControlPlaneAclsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -16266,15 +16225,14 @@ export const FeatureFlagProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** NetworkFabric feature flag configuration information */
 export type NetworkFabricPropertiesInputFeatureFlagsList =
-  ReadonlyArray<FeatureFlagProperties>;
+  Array<FeatureFlagProperties>;
 export const NetworkFabricPropertiesInputFeatureFlagsList =
   /*@__PURE__*/ S.Array(
     FeatureFlagProperties,
   ) as any as S.Schema<NetworkFabricPropertiesInputFeatureFlagsList>;
 
 /** Trusted IP Prefixes ARM resource IDs. */
-export type NetworkFabricPropertiesInputTrustedIpPrefixesList =
-  ReadonlyArray<string>;
+export type NetworkFabricPropertiesInputTrustedIpPrefixesList = Array<string>;
 export const NetworkFabricPropertiesInputTrustedIpPrefixesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -16341,7 +16299,7 @@ export const QosPropertiesQosConfigurationState = /*@__PURE__*/ S.String;
 /** NetworkFabric QoS Properties. */
 export interface QosProperties {
   /** QoS configuration state. Default is Disabled. */
-  qosConfigurationState?: QosPropertiesQosConfigurationState;
+  qosConfigurationState?: QosPropertiesQosConfigurationState | (string & {});
 }
 export const QosProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -16485,7 +16443,7 @@ export const NetworkFabricsCreateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<NetworkFabricsCreateResponseTagsMap>;
 
 /** Array of router IDs. */
-export type NetworkFabricPropertiesRouterIdsList = ReadonlyArray<string>;
+export type NetworkFabricPropertiesRouterIdsList = Array<string>;
 export const NetworkFabricPropertiesRouterIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<NetworkFabricPropertiesRouterIdsList>;
@@ -16516,14 +16474,14 @@ export const FabricLockProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Network Fabric Lock details */
 export type NetworkFabricPropertiesFabricLocksList =
-  ReadonlyArray<FabricLockProperties>;
+  Array<FabricLockProperties>;
 export const NetworkFabricPropertiesFabricLocksList = /*@__PURE__*/ S.Array(
   FabricLockProperties,
 ) as any as S.Schema<NetworkFabricPropertiesFabricLocksList>;
 
 /** Secret rotation status for the terminal server's secrets. */
 export type TerminalServerConfigurationSecretRotationStatusList =
-  ReadonlyArray<SecretRotationStatus>;
+  Array<SecretRotationStatus>;
 export const TerminalServerConfigurationSecretRotationStatusList =
   /*@__PURE__*/ S.Array(
     SecretRotationStatus,
@@ -16645,29 +16603,27 @@ export const ManagementNetworkConfigurationProperties = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ManagementNetworkConfigurationProperties>;
 
 /** List of NetworkRack resource IDs under the Network Fabric. The number of racks allowed depends on the Network Fabric SKU. */
-export type NetworkFabricPropertiesRacksList = ReadonlyArray<string>;
+export type NetworkFabricPropertiesRacksList = Array<string>;
 export const NetworkFabricPropertiesRacksList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<NetworkFabricPropertiesRacksList>;
 
 /** List of L2 Isolation Domain resource IDs under the Network Fabric. */
-export type NetworkFabricPropertiesL2IsolationDomainsList =
-  ReadonlyArray<string>;
+export type NetworkFabricPropertiesL2IsolationDomainsList = Array<string>;
 export const NetworkFabricPropertiesL2IsolationDomainsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<NetworkFabricPropertiesL2IsolationDomainsList>;
 
 /** List of L3 Isolation Domain resource IDs under the Network Fabric. */
-export type NetworkFabricPropertiesL3IsolationDomainsList =
-  ReadonlyArray<string>;
+export type NetworkFabricPropertiesL3IsolationDomainsList = Array<string>;
 export const NetworkFabricPropertiesL3IsolationDomainsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<NetworkFabricPropertiesL3IsolationDomainsList>;
 
 /** Control Plane Access Control List ARM resource IDs. */
-export type NetworkFabricPropertiesControlPlaneAclsList = ReadonlyArray<string>;
+export type NetworkFabricPropertiesControlPlaneAclsList = Array<string>;
 export const NetworkFabricPropertiesControlPlaneAclsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -16675,14 +16631,13 @@ export const NetworkFabricPropertiesControlPlaneAclsList =
 
 /** NetworkFabric feature flag configuration information */
 export type NetworkFabricPropertiesFeatureFlagsList =
-  ReadonlyArray<FeatureFlagProperties>;
+  Array<FeatureFlagProperties>;
 export const NetworkFabricPropertiesFeatureFlagsList = /*@__PURE__*/ S.Array(
   FeatureFlagProperties,
 ) as any as S.Schema<NetworkFabricPropertiesFeatureFlagsList>;
 
 /** Trusted IP Prefixes ARM resource IDs. */
-export type NetworkFabricPropertiesTrustedIpPrefixesList =
-  ReadonlyArray<string>;
+export type NetworkFabricPropertiesTrustedIpPrefixesList = Array<string>;
 export const NetworkFabricPropertiesTrustedIpPrefixesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -16696,8 +16651,7 @@ export const UniqueRouteDistinguisherPropertiesUniqueRdConfigurationState =
   /*@__PURE__*/ S.String;
 
 /** List of Unique Route Distinguisher addresses. */
-export type UniqueRouteDistinguisherPropertiesUniqueRdsList =
-  ReadonlyArray<string>;
+export type UniqueRouteDistinguisherPropertiesUniqueRdsList = Array<string>;
 export const UniqueRouteDistinguisherPropertiesUniqueRdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -16733,8 +16687,7 @@ export const UniqueRouteDistinguisherProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UniqueRouteDistinguisherProperties>;
 
 /** Active commit batch identifiers */
-export type NetworkFabricPropertiesActiveCommitBatchesList =
-  ReadonlyArray<string>;
+export type NetworkFabricPropertiesActiveCommitBatchesList = Array<string>;
 export const NetworkFabricPropertiesActiveCommitBatchesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -16975,7 +16928,7 @@ export const NetworkFabricsDeprovisionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The operations list. */
 export type NetworkFabricsDeprovisionResponseOperationsList =
-  ReadonlyArray<OperationStatusResult>;
+  Array<OperationStatusResult>;
 export const NetworkFabricsDeprovisionResponseOperationsList =
   /*@__PURE__*/ S.Array(
     OperationStatusResult,
@@ -17048,7 +17001,7 @@ export const NetworkFabricsDiscardCommitBatchRequest = /*@__PURE__*/ S.suspend(
 
 /** The operations list. */
 export type DiscardCommitBatchOperationResponseOperationsItemOperationsList =
-  ReadonlyArray<OperationStatusResult>;
+  Array<OperationStatusResult>;
 export const DiscardCommitBatchOperationResponseOperationsItemOperationsList =
   /*@__PURE__*/ S.Array(
     OperationStatusResult,
@@ -17096,7 +17049,7 @@ export const DiscardCommitBatchOperationResponseOperationsItem =
 
 /** The operations list. */
 export type DiscardCommitBatchOperationResponseOperationsList =
-  ReadonlyArray<DiscardCommitBatchOperationResponseOperationsItem>;
+  Array<DiscardCommitBatchOperationResponseOperationsItem>;
 export const DiscardCommitBatchOperationResponseOperationsList =
   /*@__PURE__*/ S.Array(
     DiscardCommitBatchOperationResponseOperationsItem,
@@ -17104,7 +17057,7 @@ export const DiscardCommitBatchOperationResponseOperationsList =
 
 /** The error details. */
 export type DiscardCommitBatchOperationResponseErrorDetailsList =
-  ReadonlyArray<ErrorDetail>;
+  Array<ErrorDetail>;
 export const DiscardCommitBatchOperationResponseErrorDetailsList =
   /*@__PURE__*/ S.Array(
     ErrorDetail,
@@ -17112,7 +17065,7 @@ export const DiscardCommitBatchOperationResponseErrorDetailsList =
 
 /** The error additional info. */
 export type DiscardCommitBatchOperationResponseErrorAdditionalInfoList =
-  ReadonlyArray<ErrorAdditionalInfo>;
+  Array<ErrorAdditionalInfo>;
 export const DiscardCommitBatchOperationResponseErrorAdditionalInfoList =
   /*@__PURE__*/ S.Array(
     ErrorAdditionalInfo,
@@ -17314,7 +17267,7 @@ export const NetworkFabricsGetTopologyRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The operations list. */
 export type GetTopologyResponseOperationsItemOperationsList =
-  ReadonlyArray<OperationStatusResult>;
+  Array<OperationStatusResult>;
 export const GetTopologyResponseOperationsItemOperationsList =
   /*@__PURE__*/ S.Array(
     OperationStatusResult,
@@ -17359,20 +17312,20 @@ export const GetTopologyResponseOperationsItem = /*@__PURE__*/ S.suspend(() =>
 
 /** The operations list. */
 export type GetTopologyResponseOperationsList =
-  ReadonlyArray<GetTopologyResponseOperationsItem>;
+  Array<GetTopologyResponseOperationsItem>;
 export const GetTopologyResponseOperationsList = /*@__PURE__*/ S.Array(
   GetTopologyResponseOperationsItem,
 ) as any as S.Schema<GetTopologyResponseOperationsList>;
 
 /** The error details. */
-export type GetTopologyResponseErrorDetailsList = ReadonlyArray<ErrorDetail>;
+export type GetTopologyResponseErrorDetailsList = Array<ErrorDetail>;
 export const GetTopologyResponseErrorDetailsList = /*@__PURE__*/ S.Array(
   ErrorDetail,
 ) as any as S.Schema<GetTopologyResponseErrorDetailsList>;
 
 /** The error additional info. */
 export type GetTopologyResponseErrorAdditionalInfoList =
-  ReadonlyArray<ErrorAdditionalInfo>;
+  Array<ErrorAdditionalInfo>;
 export const GetTopologyResponseErrorAdditionalInfoList = /*@__PURE__*/ S.Array(
   ErrorAdditionalInfo,
 ) as any as S.Schema<GetTopologyResponseErrorAdditionalInfoList>;
@@ -17482,8 +17435,7 @@ export type FabricSkuType = "SingleRack" | "MultiRack";
 export const FabricSkuType = /*@__PURE__*/ S.String;
 
 /** List of supported Network Fabric SKU versions. */
-export type NetworkFabricSkuPropertiesSupportedVersionsList =
-  ReadonlyArray<string>;
+export type NetworkFabricSkuPropertiesSupportedVersionsList = Array<string>;
 export const NetworkFabricSkuPropertiesSupportedVersionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -17589,8 +17541,7 @@ export const NetworkFabricSku = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NetworkFabricSku>;
 
 /** The NetworkFabricSku items on this page */
-export type NetworkFabricSkusListResultValueList =
-  ReadonlyArray<NetworkFabricSku>;
+export type NetworkFabricSkusListResultValueList = Array<NetworkFabricSku>;
 export const NetworkFabricSkusListResultValueList = /*@__PURE__*/ S.Array(
   NetworkFabricSku,
 ) as any as S.Schema<NetworkFabricSkusListResultValueList>;
@@ -17694,7 +17645,7 @@ export const NetworkFabric = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NetworkFabric" }) as any as S.Schema<NetworkFabric>;
 
 /** The NetworkFabric items on this page */
-export type NetworkFabricsListResultValueList = ReadonlyArray<NetworkFabric>;
+export type NetworkFabricsListResultValueList = Array<NetworkFabric>;
 export const NetworkFabricsListResultValueList = /*@__PURE__*/ S.Array(
   NetworkFabric,
 ) as any as S.Schema<NetworkFabricsListResultValueList>;
@@ -17772,7 +17723,7 @@ export const NetworkFabricsLockFabricRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The operations list. */
 export type NetworkFabricsLockFabricResponseOperationsList =
-  ReadonlyArray<OperationStatusResult>;
+  Array<OperationStatusResult>;
 export const NetworkFabricsLockFabricResponseOperationsList =
   /*@__PURE__*/ S.Array(
     OperationStatusResult,
@@ -17841,7 +17792,7 @@ export const NetworkFabricsProvisionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The operations list. */
 export type NetworkFabricsProvisionResponseOperationsList =
-  ReadonlyArray<OperationStatusResult>;
+  Array<OperationStatusResult>;
 export const NetworkFabricsProvisionResponseOperationsList =
   /*@__PURE__*/ S.Array(
     OperationStatusResult,
@@ -17911,7 +17862,7 @@ export const NetworkFabricsRefreshConfigurationRequest =
 
 /** The operations list. */
 export type NetworkFabricsRefreshConfigurationResponseOperationsList =
-  ReadonlyArray<OperationStatusResult>;
+  Array<OperationStatusResult>;
 export const NetworkFabricsRefreshConfigurationResponseOperationsList =
   /*@__PURE__*/ S.Array(
     OperationStatusResult,
@@ -18010,7 +17961,7 @@ export const NetworkFabricsResyncPasswordsRequest = /*@__PURE__*/ S.suspend(
 
 /** The operations list. */
 export type NetworkFabricResyncPasswordsResponseOperationsItemOperationsList =
-  ReadonlyArray<OperationStatusResult>;
+  Array<OperationStatusResult>;
 export const NetworkFabricResyncPasswordsResponseOperationsItemOperationsList =
   /*@__PURE__*/ S.Array(
     OperationStatusResult,
@@ -18058,7 +18009,7 @@ export const NetworkFabricResyncPasswordsResponseOperationsItem =
 
 /** The operations list. */
 export type NetworkFabricResyncPasswordsResponseOperationsList =
-  ReadonlyArray<NetworkFabricResyncPasswordsResponseOperationsItem>;
+  Array<NetworkFabricResyncPasswordsResponseOperationsItem>;
 export const NetworkFabricResyncPasswordsResponseOperationsList =
   /*@__PURE__*/ S.Array(
     NetworkFabricResyncPasswordsResponseOperationsItem,
@@ -18066,7 +18017,7 @@ export const NetworkFabricResyncPasswordsResponseOperationsList =
 
 /** The error details. */
 export type NetworkFabricResyncPasswordsResponseErrorDetailsList =
-  ReadonlyArray<ErrorDetail>;
+  Array<ErrorDetail>;
 export const NetworkFabricResyncPasswordsResponseErrorDetailsList =
   /*@__PURE__*/ S.Array(
     ErrorDetail,
@@ -18074,7 +18025,7 @@ export const NetworkFabricResyncPasswordsResponseErrorDetailsList =
 
 /** The error additional info. */
 export type NetworkFabricResyncPasswordsResponseErrorAdditionalInfoList =
-  ReadonlyArray<ErrorAdditionalInfo>;
+  Array<ErrorAdditionalInfo>;
 export const NetworkFabricResyncPasswordsResponseErrorAdditionalInfoList =
   /*@__PURE__*/ S.Array(
     ErrorAdditionalInfo,
@@ -18176,7 +18127,7 @@ export const NetworkFabricsRotateCertificatesRequest = /*@__PURE__*/ S.suspend(
 
 /** The operations list. */
 export type NetworkFabricRotateCertificatesResponseOperationsItemOperationsList =
-  ReadonlyArray<OperationStatusResult>;
+  Array<OperationStatusResult>;
 export const NetworkFabricRotateCertificatesResponseOperationsItemOperationsList =
   /*@__PURE__*/ S.Array(
     OperationStatusResult,
@@ -18224,7 +18175,7 @@ export const NetworkFabricRotateCertificatesResponseOperationsItem =
 
 /** The operations list. */
 export type NetworkFabricRotateCertificatesResponseOperationsList =
-  ReadonlyArray<NetworkFabricRotateCertificatesResponseOperationsItem>;
+  Array<NetworkFabricRotateCertificatesResponseOperationsItem>;
 export const NetworkFabricRotateCertificatesResponseOperationsList =
   /*@__PURE__*/ S.Array(
     NetworkFabricRotateCertificatesResponseOperationsItem,
@@ -18232,7 +18183,7 @@ export const NetworkFabricRotateCertificatesResponseOperationsList =
 
 /** The error details. */
 export type NetworkFabricRotateCertificatesResponseErrorDetailsList =
-  ReadonlyArray<ErrorDetail>;
+  Array<ErrorDetail>;
 export const NetworkFabricRotateCertificatesResponseErrorDetailsList =
   /*@__PURE__*/ S.Array(
     ErrorDetail,
@@ -18240,7 +18191,7 @@ export const NetworkFabricRotateCertificatesResponseErrorDetailsList =
 
 /** The error additional info. */
 export type NetworkFabricRotateCertificatesResponseErrorAdditionalInfoList =
-  ReadonlyArray<ErrorAdditionalInfo>;
+  Array<ErrorAdditionalInfo>;
 export const NetworkFabricRotateCertificatesResponseErrorAdditionalInfoList =
   /*@__PURE__*/ S.Array(
     ErrorAdditionalInfo,
@@ -18344,7 +18295,7 @@ export const NetworkFabricsRotatePasswordsRequest = /*@__PURE__*/ S.suspend(
 
 /** The operations list. */
 export type NetworkFabricRotatePasswordsResponseOperationsItemOperationsList =
-  ReadonlyArray<OperationStatusResult>;
+  Array<OperationStatusResult>;
 export const NetworkFabricRotatePasswordsResponseOperationsItemOperationsList =
   /*@__PURE__*/ S.Array(
     OperationStatusResult,
@@ -18392,7 +18343,7 @@ export const NetworkFabricRotatePasswordsResponseOperationsItem =
 
 /** The operations list. */
 export type NetworkFabricRotatePasswordsResponseOperationsList =
-  ReadonlyArray<NetworkFabricRotatePasswordsResponseOperationsItem>;
+  Array<NetworkFabricRotatePasswordsResponseOperationsItem>;
 export const NetworkFabricRotatePasswordsResponseOperationsList =
   /*@__PURE__*/ S.Array(
     NetworkFabricRotatePasswordsResponseOperationsItem,
@@ -18400,7 +18351,7 @@ export const NetworkFabricRotatePasswordsResponseOperationsList =
 
 /** The error details. */
 export type NetworkFabricRotatePasswordsResponseErrorDetailsList =
-  ReadonlyArray<ErrorDetail>;
+  Array<ErrorDetail>;
 export const NetworkFabricRotatePasswordsResponseErrorDetailsList =
   /*@__PURE__*/ S.Array(
     ErrorDetail,
@@ -18408,7 +18359,7 @@ export const NetworkFabricRotatePasswordsResponseErrorDetailsList =
 
 /** The error additional info. */
 export type NetworkFabricRotatePasswordsResponseErrorAdditionalInfoList =
-  ReadonlyArray<ErrorAdditionalInfo>;
+  Array<ErrorAdditionalInfo>;
 export const NetworkFabricRotatePasswordsResponseErrorAdditionalInfoList =
   /*@__PURE__*/ S.Array(
     ErrorAdditionalInfo,
@@ -18523,16 +18474,14 @@ export const TerminalServerPatchConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TerminalServerPatchConfiguration>;
 
 /** Route Targets to be applied for incoming routes into CE. This is for backward compatibility. */
-export type VpnOptionBPatchPropertiesImportRouteTargetsList =
-  ReadonlyArray<string>;
+export type VpnOptionBPatchPropertiesImportRouteTargetsList = Array<string>;
 export const VpnOptionBPatchPropertiesImportRouteTargetsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<VpnOptionBPatchPropertiesImportRouteTargetsList>;
 
 /** Route Targets to be applied for outgoing routes from CE. This is for backward compatibility. */
-export type VpnOptionBPatchPropertiesExportRouteTargetsList =
-  ReadonlyArray<string>;
+export type VpnOptionBPatchPropertiesExportRouteTargetsList = Array<string>;
 export const VpnOptionBPatchPropertiesExportRouteTargetsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -18652,16 +18601,14 @@ export const StorageAccountPatchConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StorageAccountPatchConfiguration>;
 
 /** Control Plane Access Control List ARM resource IDs. */
-export type NetworkFabricPatchPropertiesControlPlaneAclsList =
-  ReadonlyArray<string>;
+export type NetworkFabricPatchPropertiesControlPlaneAclsList = Array<string>;
 export const NetworkFabricPatchPropertiesControlPlaneAclsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<NetworkFabricPatchPropertiesControlPlaneAclsList>;
 
 /** Trusted IP Prefix ARM resource IDs. */
-export type NetworkFabricPatchPropertiesTrustedIpPrefixesList =
-  ReadonlyArray<string>;
+export type NetworkFabricPatchPropertiesTrustedIpPrefixesList = Array<string>;
 export const NetworkFabricPatchPropertiesTrustedIpPrefixesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -18723,7 +18670,7 @@ export const QosPatchProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** NetworkFabric feature flag configuration information */
 export type NetworkFabricPatchPropertiesFeatureFlagsList =
-  ReadonlyArray<FeatureFlagProperties>;
+  Array<FeatureFlagProperties>;
 export const NetworkFabricPatchPropertiesFeatureFlagsList =
   /*@__PURE__*/ S.Array(
     FeatureFlagProperties,
@@ -18909,7 +18856,7 @@ export const NetworkFabricsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Network Fabrics or Network Rack resource Id. */
 export type NetworkFabricsUpdateInfraManagementBfdConfigurationRequestResourceIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const NetworkFabricsUpdateInfraManagementBfdConfigurationRequestResourceIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -18951,7 +18898,7 @@ export const NetworkFabricsUpdateInfraManagementBfdConfigurationRequest =
 
 /** Network Fabrics or Network Rack resource Id. */
 export type NetworkFabricsUpdateWorkloadManagementBfdConfigurationRequestResourceIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const NetworkFabricsUpdateWorkloadManagementBfdConfigurationRequestResourceIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -19028,7 +18975,7 @@ export const NetworkFabricsUpgradeRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The operations list. */
 export type NetworkFabricsUpgradeResponseOperationsList =
-  ReadonlyArray<OperationStatusResult>;
+  Array<OperationStatusResult>;
 export const NetworkFabricsUpgradeResponseOperationsList =
   /*@__PURE__*/ S.Array(
     OperationStatusResult,
@@ -19150,7 +19097,7 @@ export const NetworkFabricsViewDeviceConfigurationRequest =
 
 /** The operations list. */
 export type ViewDeviceConfigurationOperationResponseOperationsItemOperationsList =
-  ReadonlyArray<OperationStatusResult>;
+  Array<OperationStatusResult>;
 export const ViewDeviceConfigurationOperationResponseOperationsItemOperationsList =
   /*@__PURE__*/ S.Array(
     OperationStatusResult,
@@ -19198,7 +19145,7 @@ export const ViewDeviceConfigurationOperationResponseOperationsItem =
 
 /** The operations list. */
 export type ViewDeviceConfigurationOperationResponseOperationsList =
-  ReadonlyArray<ViewDeviceConfigurationOperationResponseOperationsItem>;
+  Array<ViewDeviceConfigurationOperationResponseOperationsItem>;
 export const ViewDeviceConfigurationOperationResponseOperationsList =
   /*@__PURE__*/ S.Array(
     ViewDeviceConfigurationOperationResponseOperationsItem,
@@ -19206,7 +19153,7 @@ export const ViewDeviceConfigurationOperationResponseOperationsList =
 
 /** The error details. */
 export type ViewDeviceConfigurationOperationResponseErrorDetailsList =
-  ReadonlyArray<ErrorDetail>;
+  Array<ErrorDetail>;
 export const ViewDeviceConfigurationOperationResponseErrorDetailsList =
   /*@__PURE__*/ S.Array(
     ErrorDetail,
@@ -19214,7 +19161,7 @@ export const ViewDeviceConfigurationOperationResponseErrorDetailsList =
 
 /** The error additional info. */
 export type ViewDeviceConfigurationOperationResponseErrorAdditionalInfoList =
-  ReadonlyArray<ErrorAdditionalInfo>;
+  Array<ErrorAdditionalInfo>;
 export const ViewDeviceConfigurationOperationResponseErrorAdditionalInfoList =
   /*@__PURE__*/ S.Array(
     ErrorAdditionalInfo,
@@ -19655,7 +19602,7 @@ export const NetworkInterface = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NetworkInterface>;
 
 /** The NetworkInterface items on this page */
-export type NetworkInterfacesListValueList = ReadonlyArray<NetworkInterface>;
+export type NetworkInterfacesListValueList = Array<NetworkInterface>;
 export const NetworkInterfacesListValueList = /*@__PURE__*/ S.Array(
   NetworkInterface,
 ) as any as S.Schema<NetworkInterfacesListValueList>;
@@ -19776,7 +19723,7 @@ export const NetworkInterfacesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Network Fabrics or Network Rack resource Id. */
 export type NetworkInterfacesUpdateAdministrativeStateRequestResourceIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const NetworkInterfacesUpdateAdministrativeStateRequestResourceIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -19856,8 +19803,7 @@ export const StationConnectionProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StationConnectionProperties>;
 
 /** The List of Network ID's that need to be monitored. */
-export type BmpConfigurationPropertiesMonitoredNetworksList =
-  ReadonlyArray<string>;
+export type BmpConfigurationPropertiesMonitoredNetworksList = Array<string>;
 export const BmpConfigurationPropertiesMonitoredNetworksList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -19881,8 +19827,9 @@ export type BmpMonitoredAddressFamily =
 export const BmpMonitoredAddressFamily = /*@__PURE__*/ S.String;
 
 /** Monitored Address Families for the BMP Configuration. */
-export type BmpConfigurationPropertiesMonitoredAddressFamiliesList =
-  ReadonlyArray<BmpMonitoredAddressFamily>;
+export type BmpConfigurationPropertiesMonitoredAddressFamiliesList = Array<
+  BmpMonitoredAddressFamily | (string & {})
+>;
 export const BmpConfigurationPropertiesMonitoredAddressFamiliesList =
   /*@__PURE__*/ S.Array(
     BmpMonitoredAddressFamily,
@@ -19891,7 +19838,7 @@ export const BmpConfigurationPropertiesMonitoredAddressFamiliesList =
 /** BGP Monitoring Protocol (BMP) Configuration properties. */
 export interface BmpConfigurationProperties {
   /** Enabling a station. Either True/False. */
-  stationConfigurationState?: StationConfigurationState;
+  stationConfigurationState?: StationConfigurationState | (string & {});
   /** Scope resource ARM Identifier. */
   scopeResourceId?: string;
   /** Name of the station. */
@@ -19901,7 +19848,7 @@ export interface BmpConfigurationProperties {
   /** Port of the station. Default value is 5000. */
   stationPort?: number;
   /** Station Connection Mode. */
-  stationConnectionMode?: StationConnectionMode;
+  stationConnectionMode?: StationConnectionMode | (string & {});
   /** Station Connection Properties. */
   stationConnectionProperties?: StationConnectionProperties;
   /** Network of the station */
@@ -19909,7 +19856,7 @@ export interface BmpConfigurationProperties {
   /** The List of Network ID's that need to be monitored. */
   monitoredNetworks?: BmpConfigurationPropertiesMonitoredNetworksList;
   /** Export Policy for the BMP Configuration. */
-  exportPolicy?: BmpConfigurationPropertiesExportPolicy;
+  exportPolicy?: BmpConfigurationPropertiesExportPolicy | (string & {});
   /** Export Policy configuration properties for the BMP. */
   exportPolicyConfiguration?: BmpExportPolicyProperties;
   /** Monitored Address Families for the BMP Configuration. */
@@ -20211,7 +20158,7 @@ export const NetworkMonitor = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NetworkMonitor" }) as any as S.Schema<NetworkMonitor>;
 
 /** The NetworkMonitor items on this page */
-export type NetworkMonitorListResultValueList = ReadonlyArray<NetworkMonitor>;
+export type NetworkMonitorListResultValueList = Array<NetworkMonitor>;
 export const NetworkMonitorListResultValueList = /*@__PURE__*/ S.Array(
   NetworkMonitor,
 ) as any as S.Schema<NetworkMonitorListResultValueList>;
@@ -20282,15 +20229,16 @@ export const StationConnectionPatchProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** The List of Network ID's that need to be monitored. */
 export type BmpConfigurationPatchPropertiesMonitoredNetworksList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const BmpConfigurationPatchPropertiesMonitoredNetworksList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<BmpConfigurationPatchPropertiesMonitoredNetworksList>;
 
 /** Monitored Address Families for the BMP Configuration. */
-export type BmpConfigurationPatchPropertiesMonitoredAddressFamiliesList =
-  ReadonlyArray<BmpMonitoredAddressFamily | (string & {})>;
+export type BmpConfigurationPatchPropertiesMonitoredAddressFamiliesList = Array<
+  BmpMonitoredAddressFamily | (string & {})
+>;
 export const BmpConfigurationPatchPropertiesMonitoredAddressFamiliesList =
   /*@__PURE__*/ S.Array(
     BmpMonitoredAddressFamily,
@@ -20431,7 +20379,7 @@ export const NetworkMonitorsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Network Fabrics or Network Rack resource Id. */
 export type NetworkMonitorsUpdateAdministrativeStateRequestResourceIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const NetworkMonitorsUpdateAdministrativeStateRequestResourceIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -20473,7 +20421,7 @@ export const NetworkMonitorsUpdateAdministrativeStateRequest =
 
 /** List of ARM Resource IDs for which the given action applied successfully. */
 export type NetworkMonitorsUpdateAdministrativeStateResponseSuccessfulDevicesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const NetworkMonitorsUpdateAdministrativeStateResponseSuccessfulDevicesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -20481,7 +20429,7 @@ export const NetworkMonitorsUpdateAdministrativeStateResponseSuccessfulDevicesLi
 
 /** List of ARM Resource IDs for which the given action failed to apply. */
 export type NetworkMonitorsUpdateAdministrativeStateResponseFailedDevicesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const NetworkMonitorsUpdateAdministrativeStateResponseFailedDevicesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -20597,32 +20545,28 @@ export const NetworkPacketBrokersCreateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<NetworkPacketBrokersCreateResponseTagsMap>;
 
 /** List of ARM resource IDs of Network Devices [NPB]. */
-export type NetworkPacketBrokerPropertiesNetworkDeviceIdsList =
-  ReadonlyArray<string>;
+export type NetworkPacketBrokerPropertiesNetworkDeviceIdsList = Array<string>;
 export const NetworkPacketBrokerPropertiesNetworkDeviceIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<NetworkPacketBrokerPropertiesNetworkDeviceIdsList>;
 
 /** List of network interfaces across NPB devices that are used to mirror source traffic. */
-export type NetworkPacketBrokerPropertiesSourceInterfaceIdsList =
-  ReadonlyArray<string>;
+export type NetworkPacketBrokerPropertiesSourceInterfaceIdsList = Array<string>;
 export const NetworkPacketBrokerPropertiesSourceInterfaceIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<NetworkPacketBrokerPropertiesSourceInterfaceIdsList>;
 
 /** List of network Tap IDs configured on NPB. */
-export type NetworkPacketBrokerPropertiesNetworkTapIdsList =
-  ReadonlyArray<string>;
+export type NetworkPacketBrokerPropertiesNetworkTapIdsList = Array<string>;
 export const NetworkPacketBrokerPropertiesNetworkTapIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<NetworkPacketBrokerPropertiesNetworkTapIdsList>;
 
 /** List of neighbor group IDs configured on NPB. */
-export type NetworkPacketBrokerPropertiesNeighborGroupIdsList =
-  ReadonlyArray<string>;
+export type NetworkPacketBrokerPropertiesNeighborGroupIdsList = Array<string>;
 export const NetworkPacketBrokerPropertiesNeighborGroupIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -20928,7 +20872,7 @@ export const NetworkPacketBroker = /*@__PURE__*/ S.suspend(() =>
 
 /** The NetworkPacketBroker items on this page */
 export type NetworkPacketBrokersListResultValueList =
-  ReadonlyArray<NetworkPacketBroker>;
+  Array<NetworkPacketBroker>;
 export const NetworkPacketBrokersListResultValueList = /*@__PURE__*/ S.Array(
   NetworkPacketBroker,
 ) as any as S.Schema<NetworkPacketBrokersListResultValueList>;
@@ -21148,7 +21092,7 @@ export const NetworkRacksCreateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<NetworkRacksCreateResponseTagsMap>;
 
 /** List of network device ARM resource IDs. */
-export type NetworkRackPropertiesNetworkDevicesList = ReadonlyArray<string>;
+export type NetworkRackPropertiesNetworkDevicesList = Array<string>;
 export const NetworkRackPropertiesNetworkDevicesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<NetworkRackPropertiesNetworkDevicesList>;
@@ -21370,7 +21314,7 @@ export const NetworkRack = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NetworkRack" }) as any as S.Schema<NetworkRack>;
 
 /** The NetworkRack items on this page */
-export type NetworkRacksListResultValueList = ReadonlyArray<NetworkRack>;
+export type NetworkRacksListResultValueList = Array<NetworkRack>;
 export const NetworkRacksListResultValueList = /*@__PURE__*/ S.Array(
   NetworkRack,
 ) as any as S.Schema<NetworkRacksListResultValueList>;
@@ -21497,8 +21441,7 @@ export const NetworkTapRulesCreateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<NetworkTapRulesCreateRequestTagsMap>;
 
 /** List of the protocols that need to be matched. */
-export type NetworkTapRuleMatchConditionProtocolTypesList =
-  ReadonlyArray<string>;
+export type NetworkTapRuleMatchConditionProtocolTypesList = Array<string>;
 export const NetworkTapRuleMatchConditionProtocolTypesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -21510,13 +21453,13 @@ export const NetworkTapRuleMatchConditionEncapsulationType =
   /*@__PURE__*/ S.String;
 
 /** List of the Ports that need to be matched. */
-export type PortConditionPortsList = ReadonlyArray<string>;
+export type PortConditionPortsList = Array<string>;
 export const PortConditionPortsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PortConditionPortsList>;
 
 /** List of the port Group Names that need to be matched. */
-export type PortConditionPortGroupNamesList = ReadonlyArray<string>;
+export type PortConditionPortGroupNamesList = Array<string>;
 export const PortConditionPortGroupNamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PortConditionPortGroupNamesList>;
@@ -21524,9 +21467,9 @@ export const PortConditionPortGroupNamesList = /*@__PURE__*/ S.Array(
 /** Port condition that needs to be matched. */
 export interface PortCondition {
   /** Port type that needs to be matched. */
-  portType?: PortType;
+  portType?: PortType | (string & {});
   /** Layer4 protocol type that needs to be matched. */
-  layer4Protocol: Layer4Protocol;
+  layer4Protocol: Layer4Protocol | (string & {});
   /** List of the Ports that need to be matched. */
   ports?: PortConditionPortsList;
   /** List of the port Group Names that need to be matched. */
@@ -21550,7 +21493,9 @@ export interface NetworkTapRuleMatchCondition {
   /** IP condition that needs to be matched. */
   ipCondition?: IpMatchCondition;
   /** Encapsulation Type that needs to be matched. */
-  encapsulationType?: NetworkTapRuleMatchConditionEncapsulationType;
+  encapsulationType?:
+    | NetworkTapRuleMatchConditionEncapsulationType
+    | (string & {});
   /** Defines the port condition that needs to be matched. */
   portCondition?: PortCondition;
 }
@@ -21570,7 +21515,7 @@ export const NetworkTapRuleMatchCondition = /*@__PURE__*/ S.suspend(() =>
 
 /** List of the match conditions. */
 export type NetworkTapRuleMatchConfigurationMatchConditionsList =
-  ReadonlyArray<NetworkTapRuleMatchCondition>;
+  Array<NetworkTapRuleMatchCondition>;
 export const NetworkTapRuleMatchConfigurationMatchConditionsList =
   /*@__PURE__*/ S.Array(
     NetworkTapRuleMatchCondition,
@@ -21590,11 +21535,11 @@ export const TapRuleActionType = /*@__PURE__*/ S.String;
 /** Action that need to performed. */
 export interface NetworkTapRuleAction {
   /** Type of actions that can be performed. */
-  type?: TapRuleActionType;
+  type?: TapRuleActionType | (string & {});
   /** Truncate. 0 indicates do not truncate. */
   truncate?: string;
   /** The parameter to enable or disable the timestamp. */
-  isTimestampEnabled?: BooleanEnumProperty;
+  isTimestampEnabled?: BooleanEnumProperty | (string & {});
   /** Destination Id. The ARM resource Id may be either Network To Network Interconnect or NeighborGroup. */
   destinationId?: string;
   /** The name of the match configuration. This is used when Goto type is provided. */
@@ -21614,7 +21559,7 @@ export const NetworkTapRuleAction = /*@__PURE__*/ S.suspend(() =>
 
 /** List of actions that need to be performed for the matched conditions. */
 export type NetworkTapRuleMatchConfigurationActionsList =
-  ReadonlyArray<NetworkTapRuleAction>;
+  Array<NetworkTapRuleAction>;
 export const NetworkTapRuleMatchConfigurationActionsList =
   /*@__PURE__*/ S.Array(
     NetworkTapRuleAction,
@@ -21627,7 +21572,7 @@ export interface NetworkTapRuleMatchConfiguration {
   /** Sequence Number of the match configuration.. */
   sequenceNumber?: number;
   /** Type of IP Address. IPv4 or IPv6 */
-  ipAddressType?: IPAddressType;
+  ipAddressType?: IPAddressType | (string & {});
   /** List of the match conditions. */
   matchConditions?: NetworkTapRuleMatchConfigurationMatchConditionsList;
   /** List of actions that need to be performed for the matched conditions. */
@@ -21649,7 +21594,7 @@ export const NetworkTapRuleMatchConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** List of match configurations. */
 export type NetworkTapRulePropertiesInputMatchConfigurationsList =
-  ReadonlyArray<NetworkTapRuleMatchConfiguration>;
+  Array<NetworkTapRuleMatchConfiguration>;
 export const NetworkTapRulePropertiesInputMatchConfigurationsList =
   /*@__PURE__*/ S.Array(
     NetworkTapRuleMatchConfiguration,
@@ -21657,7 +21602,7 @@ export const NetworkTapRulePropertiesInputMatchConfigurationsList =
 
 /** List of dynamic match configurations. */
 export type NetworkTapRulePropertiesInputDynamicMatchConfigurationsList =
-  ReadonlyArray<CommonDynamicMatchConfiguration>;
+  Array<CommonDynamicMatchConfiguration>;
 export const NetworkTapRulePropertiesInputDynamicMatchConfigurationsList =
   /*@__PURE__*/ S.Array(
     CommonDynamicMatchConfiguration,
@@ -21671,7 +21616,7 @@ export const GlobalNetworkTapRuleActionPropertiesEnableCount =
 /** Global network tap rule actions properties */
 export interface GlobalNetworkTapRuleActionProperties {
   /** Configuration to enable network tap rule counter. */
-  enableCount?: GlobalNetworkTapRuleActionPropertiesEnableCount;
+  enableCount?: GlobalNetworkTapRuleActionPropertiesEnableCount | (string & {});
   /** Truncate. 0 indicates do not truncate. */
   truncate?: string;
 }
@@ -21788,7 +21733,7 @@ export const NetworkTapRulesCreateResponseTagsMap = /*@__PURE__*/ S.Record(
 
 /** List of match configurations. */
 export type NetworkTapRulePropertiesMatchConfigurationsList =
-  ReadonlyArray<NetworkTapRuleMatchConfiguration>;
+  Array<NetworkTapRuleMatchConfiguration>;
 export const NetworkTapRulePropertiesMatchConfigurationsList =
   /*@__PURE__*/ S.Array(
     NetworkTapRuleMatchConfiguration,
@@ -21796,21 +21741,20 @@ export const NetworkTapRulePropertiesMatchConfigurationsList =
 
 /** List of dynamic match configurations. */
 export type NetworkTapRulePropertiesDynamicMatchConfigurationsList =
-  ReadonlyArray<CommonDynamicMatchConfiguration>;
+  Array<CommonDynamicMatchConfiguration>;
 export const NetworkTapRulePropertiesDynamicMatchConfigurationsList =
   /*@__PURE__*/ S.Array(
     CommonDynamicMatchConfiguration,
   ) as any as S.Schema<NetworkTapRulePropertiesDynamicMatchConfigurationsList>;
 
 /** The ARM resource Id of the NetworkTap Rules. */
-export type NetworkTapRulePropertiesNetworkTapIdsList = ReadonlyArray<string>;
+export type NetworkTapRulePropertiesNetworkTapIdsList = Array<string>;
 export const NetworkTapRulePropertiesNetworkTapIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<NetworkTapRulePropertiesNetworkTapIdsList>;
 
 /** Associated Network Fabric Resource IDs */
-export type NetworkTapRulePropertiesNetworkFabricIdsList =
-  ReadonlyArray<string>;
+export type NetworkTapRulePropertiesNetworkFabricIdsList = Array<string>;
 export const NetworkTapRulePropertiesNetworkFabricIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -22136,7 +22080,7 @@ export const NetworkTapRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NetworkTapRule" }) as any as S.Schema<NetworkTapRule>;
 
 /** The NetworkTapRule items on this page */
-export type NetworkTapRulesListResultValueList = ReadonlyArray<NetworkTapRule>;
+export type NetworkTapRulesListResultValueList = Array<NetworkTapRule>;
 export const NetworkTapRulesListResultValueList = /*@__PURE__*/ S.Array(
   NetworkTapRule,
 ) as any as S.Schema<NetworkTapRulesListResultValueList>;
@@ -22204,7 +22148,7 @@ export const NetworkTapRulesResyncRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The operations list. */
 export type NetworkTapRuleResyncResponseOperationsItemOperationsList =
-  ReadonlyArray<OperationStatusResult>;
+  Array<OperationStatusResult>;
 export const NetworkTapRuleResyncResponseOperationsItemOperationsList =
   /*@__PURE__*/ S.Array(
     OperationStatusResult,
@@ -22252,14 +22196,13 @@ export const NetworkTapRuleResyncResponseOperationsItem =
 
 /** The operations list. */
 export type NetworkTapRuleResyncResponseOperationsList =
-  ReadonlyArray<NetworkTapRuleResyncResponseOperationsItem>;
+  Array<NetworkTapRuleResyncResponseOperationsItem>;
 export const NetworkTapRuleResyncResponseOperationsList = /*@__PURE__*/ S.Array(
   NetworkTapRuleResyncResponseOperationsItem,
 ) as any as S.Schema<NetworkTapRuleResyncResponseOperationsList>;
 
 /** The error details. */
-export type NetworkTapRuleResyncResponseErrorDetailsList =
-  ReadonlyArray<ErrorDetail>;
+export type NetworkTapRuleResyncResponseErrorDetailsList = Array<ErrorDetail>;
 export const NetworkTapRuleResyncResponseErrorDetailsList =
   /*@__PURE__*/ S.Array(
     ErrorDetail,
@@ -22267,7 +22210,7 @@ export const NetworkTapRuleResyncResponseErrorDetailsList =
 
 /** The error additional info. */
 export type NetworkTapRuleResyncResponseErrorAdditionalInfoList =
-  ReadonlyArray<ErrorAdditionalInfo>;
+  Array<ErrorAdditionalInfo>;
 export const NetworkTapRuleResyncResponseErrorAdditionalInfoList =
   /*@__PURE__*/ S.Array(
     ErrorAdditionalInfo,
@@ -22347,8 +22290,7 @@ export const NetworkTapRulesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<NetworkTapRulesUpdateRequestTagsMap>;
 
 /** List of the protocols that need to be matched. */
-export type NetworkTapRuleMatchConditionPatchProtocolTypesList =
-  ReadonlyArray<string>;
+export type NetworkTapRuleMatchConditionPatchProtocolTypesList = Array<string>;
 export const NetworkTapRuleMatchConditionPatchProtocolTypesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -22359,13 +22301,13 @@ export type EncapsulationType = "None" | "GTPv1";
 export const EncapsulationType = /*@__PURE__*/ S.String;
 
 /** List of the Ports that need to be matched. */
-export type PortConditionPatchPortsList = ReadonlyArray<string>;
+export type PortConditionPatchPortsList = Array<string>;
 export const PortConditionPatchPortsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PortConditionPatchPortsList>;
 
 /** List of the port Group Names that need to be matched. */
-export type PortConditionPatchPortGroupNamesList = ReadonlyArray<string>;
+export type PortConditionPatchPortGroupNamesList = Array<string>;
 export const PortConditionPatchPortGroupNamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PortConditionPatchPortGroupNamesList>;
@@ -22421,7 +22363,7 @@ export const NetworkTapRuleMatchConditionPatch = /*@__PURE__*/ S.suspend(() =>
 
 /** List of the match conditions. */
 export type NetworkTapRuleMatchConfigurationPatchMatchConditionsList =
-  ReadonlyArray<NetworkTapRuleMatchConditionPatch>;
+  Array<NetworkTapRuleMatchConditionPatch>;
 export const NetworkTapRuleMatchConfigurationPatchMatchConditionsList =
   /*@__PURE__*/ S.Array(
     NetworkTapRuleMatchConditionPatch,
@@ -22454,7 +22396,7 @@ export const NetworkTapRuleActionPatch = /*@__PURE__*/ S.suspend(() =>
 
 /** List of actions that need to be performed for the matched conditions. */
 export type NetworkTapRuleMatchConfigurationPatchActionsList =
-  ReadonlyArray<NetworkTapRuleActionPatch>;
+  Array<NetworkTapRuleActionPatch>;
 export const NetworkTapRuleMatchConfigurationPatchActionsList =
   /*@__PURE__*/ S.Array(
     NetworkTapRuleActionPatch,
@@ -22490,7 +22432,7 @@ export const NetworkTapRuleMatchConfigurationPatch = /*@__PURE__*/ S.suspend(
 
 /** List of match configurations. */
 export type NetworkTapRulePatchPropertiesMatchConfigurationsList =
-  ReadonlyArray<NetworkTapRuleMatchConfigurationPatch>;
+  Array<NetworkTapRuleMatchConfigurationPatch>;
 export const NetworkTapRulePatchPropertiesMatchConfigurationsList =
   /*@__PURE__*/ S.Array(
     NetworkTapRuleMatchConfigurationPatch,
@@ -22498,7 +22440,7 @@ export const NetworkTapRulePatchPropertiesMatchConfigurationsList =
 
 /** List of dynamic match configurations. */
 export type NetworkTapRulePatchPropertiesDynamicMatchConfigurationsList =
-  ReadonlyArray<CommonDynamicMatchConfigurationPatch>;
+  Array<CommonDynamicMatchConfigurationPatch>;
 export const NetworkTapRulePatchPropertiesDynamicMatchConfigurationsList =
   /*@__PURE__*/ S.Array(
     CommonDynamicMatchConfigurationPatch,
@@ -22657,7 +22599,7 @@ export const NetworkTapRulesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Network Fabrics or Network Rack resource Id. */
 export type NetworkTapRulesUpdateAdministrativeStateRequestResourceIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const NetworkTapRulesUpdateAdministrativeStateRequestResourceIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -22776,8 +22718,7 @@ export type Encapsulation = "None" | "GRE";
 export const Encapsulation = /*@__PURE__*/ S.String;
 
 /** List of Neighbor Group IDs. */
-export type IsolationDomainPropertiesNeighborGroupIdsList =
-  ReadonlyArray<string>;
+export type IsolationDomainPropertiesNeighborGroupIdsList = Array<string>;
 export const IsolationDomainPropertiesNeighborGroupIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -22786,7 +22727,7 @@ export const IsolationDomainPropertiesNeighborGroupIdsList =
 /** Isolation Domain Properties. */
 export interface IsolationDomainProperties {
   /** Type of encapsulation. */
-  encapsulation?: Encapsulation;
+  encapsulation?: Encapsulation | (string & {});
   /** List of Neighbor Group IDs. */
   neighborGroupIds?: IsolationDomainPropertiesNeighborGroupIdsList;
 }
@@ -22804,7 +22745,7 @@ export interface DestinationProperties {
   /** Destination name. */
   name: string;
   /** Type of destination. Input can be IsolationDomain or Direct. */
-  destinationType: DestinationType;
+  destinationType: DestinationType | (string & {});
   /** The destination Id. ARM Resource ID of either NNI or Internal Networks. */
   destinationId: string;
   /** Isolation Domain Properties. */
@@ -22826,7 +22767,7 @@ export const DestinationProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** List of destinations to send the filter traffic. */
 export type NetworkTapPropertiesInputDestinationsList =
-  ReadonlyArray<DestinationProperties>;
+  Array<DestinationProperties>;
 export const NetworkTapPropertiesInputDestinationsList = /*@__PURE__*/ S.Array(
   DestinationProperties,
 ) as any as S.Schema<NetworkTapPropertiesInputDestinationsList>;
@@ -22918,14 +22859,13 @@ export const NetworkTapsCreateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<NetworkTapsCreateResponseTagsMap>;
 
 /** Associated Network Fabric Resource IDs */
-export type NetworkTapPropertiesNetworkFabricIdsList = ReadonlyArray<string>;
+export type NetworkTapPropertiesNetworkFabricIdsList = Array<string>;
 export const NetworkTapPropertiesNetworkFabricIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<NetworkTapPropertiesNetworkFabricIdsList>;
 
 /** List of destinations to send the filter traffic. */
-export type NetworkTapPropertiesDestinationsList =
-  ReadonlyArray<DestinationProperties>;
+export type NetworkTapPropertiesDestinationsList = Array<DestinationProperties>;
 export const NetworkTapPropertiesDestinationsList = /*@__PURE__*/ S.Array(
   DestinationProperties,
 ) as any as S.Schema<NetworkTapPropertiesDestinationsList>;
@@ -23229,7 +23169,7 @@ export const NetworkTap = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NetworkTap" }) as any as S.Schema<NetworkTap>;
 
 /** The NetworkTap items on this page */
-export type NetworkTapsListResultValueList = ReadonlyArray<NetworkTap>;
+export type NetworkTapsListResultValueList = Array<NetworkTap>;
 export const NetworkTapsListResultValueList = /*@__PURE__*/ S.Array(
   NetworkTap,
 ) as any as S.Schema<NetworkTapsListResultValueList>;
@@ -23297,7 +23237,7 @@ export const NetworkTapsResyncRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The operations list. */
 export type NetworkTapResyncResponseOperationsItemOperationsList =
-  ReadonlyArray<OperationStatusResult>;
+  Array<OperationStatusResult>;
 export const NetworkTapResyncResponseOperationsItemOperationsList =
   /*@__PURE__*/ S.Array(
     OperationStatusResult,
@@ -23345,21 +23285,20 @@ export const NetworkTapResyncResponseOperationsItem = /*@__PURE__*/ S.suspend(
 
 /** The operations list. */
 export type NetworkTapResyncResponseOperationsList =
-  ReadonlyArray<NetworkTapResyncResponseOperationsItem>;
+  Array<NetworkTapResyncResponseOperationsItem>;
 export const NetworkTapResyncResponseOperationsList = /*@__PURE__*/ S.Array(
   NetworkTapResyncResponseOperationsItem,
 ) as any as S.Schema<NetworkTapResyncResponseOperationsList>;
 
 /** The error details. */
-export type NetworkTapResyncResponseErrorDetailsList =
-  ReadonlyArray<ErrorDetail>;
+export type NetworkTapResyncResponseErrorDetailsList = Array<ErrorDetail>;
 export const NetworkTapResyncResponseErrorDetailsList = /*@__PURE__*/ S.Array(
   ErrorDetail,
 ) as any as S.Schema<NetworkTapResyncResponseErrorDetailsList>;
 
 /** The error additional info. */
 export type NetworkTapResyncResponseErrorAdditionalInfoList =
-  ReadonlyArray<ErrorAdditionalInfo>;
+  Array<ErrorAdditionalInfo>;
 export const NetworkTapResyncResponseErrorAdditionalInfoList =
   /*@__PURE__*/ S.Array(
     ErrorAdditionalInfo,
@@ -23441,8 +23380,7 @@ export type PollingType = "Pull" | "Push";
 export const PollingType = /*@__PURE__*/ S.String;
 
 /** List of Neighbor Group IDs. */
-export type IsolationDomainPatchPropertiesNeighborGroupIdsList =
-  ReadonlyArray<string>;
+export type IsolationDomainPatchPropertiesNeighborGroupIdsList = Array<string>;
 export const IsolationDomainPatchPropertiesNeighborGroupIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -23493,7 +23431,7 @@ export const DestinationPatchProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** List of destination properties to send the filter traffic. */
 export type NetworkTapPatchPropertiesDestinationsList =
-  ReadonlyArray<DestinationPatchProperties>;
+  Array<DestinationPatchProperties>;
 export const NetworkTapPatchPropertiesDestinationsList = /*@__PURE__*/ S.Array(
   DestinationPatchProperties,
 ) as any as S.Schema<NetworkTapPatchPropertiesDestinationsList>;
@@ -23615,7 +23553,7 @@ export const NetworkTapsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Network Fabrics or Network Rack resource Id. */
 export type NetworkTapsUpdateAdministrativeStateRequestResourceIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const NetworkTapsUpdateAdministrativeStateRequestResourceIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -23668,7 +23606,7 @@ export const NetworkToNetworkInterconnectPropertiesInputIsManagementType =
   /*@__PURE__*/ S.String;
 
 /** List of network device interfaces resource IDs. */
-export type Layer2ConfigurationInterfacesList = ReadonlyArray<string>;
+export type Layer2ConfigurationInterfacesList = Array<string>;
 export const Layer2ConfigurationInterfacesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<Layer2ConfigurationInterfacesList>;
@@ -23691,7 +23629,7 @@ export const Layer2Configuration = /*@__PURE__*/ S.suspend(() =>
 
 /** Provider Edge (PE) Loopback IP Address. */
 export type OptionBLayer3ConfigurationInputPeLoopbackIpAddressList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const OptionBLayer3ConfigurationInputPeLoopbackIpAddressList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -23704,7 +23642,7 @@ export const NniBmpPropertiesConfigurationState = /*@__PURE__*/ S.String;
 /** BGP Monitoring Protocol (BMP) properties. */
 export interface NniBmpProperties {
   /** BGP Monitoring Protocol (BMP) Configuration State. */
-  configurationState: NniBmpPropertiesConfigurationState;
+  configurationState: NniBmpPropertiesConfigurationState | (string & {});
 }
 export const NniBmpProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -23729,7 +23667,7 @@ export const OptionBLayer3PrefixLimitProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** OptionB Layer3 prefix limit configuration. */
 export type OptionBLayer3ConfigurationInputPrefixLimitsList =
-  ReadonlyArray<OptionBLayer3PrefixLimitProperties>;
+  Array<OptionBLayer3PrefixLimitProperties>;
 export const OptionBLayer3ConfigurationInputPrefixLimitsList =
   /*@__PURE__*/ S.Array(
     OptionBLayer3PrefixLimitProperties,
@@ -23776,7 +23714,7 @@ export const OptionBLayer3ConfigurationInput = /*@__PURE__*/ S.suspend(() =>
 
 /** List of IPv4 Routes. */
 export type NpbStaticRouteConfigurationInputIpv4RoutesList =
-  ReadonlyArray<StaticRouteProperties>;
+  Array<StaticRouteProperties>;
 export const NpbStaticRouteConfigurationInputIpv4RoutesList =
   /*@__PURE__*/ S.Array(
     StaticRouteProperties,
@@ -23784,7 +23722,7 @@ export const NpbStaticRouteConfigurationInputIpv4RoutesList =
 
 /** List of IPv6 Routes. */
 export type NpbStaticRouteConfigurationInputIpv6RoutesList =
-  ReadonlyArray<StaticRouteProperties>;
+  Array<StaticRouteProperties>;
 export const NpbStaticRouteConfigurationInputIpv6RoutesList =
   /*@__PURE__*/ S.Array(
     StaticRouteProperties,
@@ -23811,7 +23749,7 @@ export const NpbStaticRouteConfigurationInput = /*@__PURE__*/ S.suspend(() =>
 
 /** List of IPv4 Routes. */
 export type NniStaticRouteConfigurationInputIpv4RoutesList =
-  ReadonlyArray<StaticRouteProperties>;
+  Array<StaticRouteProperties>;
 export const NniStaticRouteConfigurationInputIpv4RoutesList =
   /*@__PURE__*/ S.Array(
     StaticRouteProperties,
@@ -23819,7 +23757,7 @@ export const NniStaticRouteConfigurationInputIpv4RoutesList =
 
 /** List of IPv6 Routes. */
 export type NniStaticRouteConfigurationInputIpv6RoutesList =
-  ReadonlyArray<StaticRouteProperties>;
+  Array<StaticRouteProperties>;
 export const NniStaticRouteConfigurationInputIpv6RoutesList =
   /*@__PURE__*/ S.Array(
     StaticRouteProperties,
@@ -23882,7 +23820,7 @@ export const MicroBfdState = /*@__PURE__*/ S.String;
 
 /** List of IPv4 Routes. */
 export type ConditionalDefaultRoutePropertiesIpv4RoutesList =
-  ReadonlyArray<StaticRouteProperties>;
+  Array<StaticRouteProperties>;
 export const ConditionalDefaultRoutePropertiesIpv4RoutesList =
   /*@__PURE__*/ S.Array(
     StaticRouteProperties,
@@ -23890,7 +23828,7 @@ export const ConditionalDefaultRoutePropertiesIpv4RoutesList =
 
 /** List of IPv6 Routes. */
 export type ConditionalDefaultRoutePropertiesIpv6RoutesList =
-  ReadonlyArray<StaticRouteProperties>;
+  Array<StaticRouteProperties>;
 export const ConditionalDefaultRoutePropertiesIpv6RoutesList =
   /*@__PURE__*/ S.Array(
     StaticRouteProperties,
@@ -24013,8 +23951,7 @@ export const NetworkToNetworkInterconnectPropertiesIsManagementType =
   /*@__PURE__*/ S.String;
 
 /** Provider Edge (PE) Loopback IP Address. */
-export type OptionBLayer3ConfigurationPeLoopbackIpAddressList =
-  ReadonlyArray<string>;
+export type OptionBLayer3ConfigurationPeLoopbackIpAddressList = Array<string>;
 export const OptionBLayer3ConfigurationPeLoopbackIpAddressList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -24022,7 +23959,7 @@ export const OptionBLayer3ConfigurationPeLoopbackIpAddressList =
 
 /** OptionB Layer3 prefix limit configuration. */
 export type OptionBLayer3ConfigurationPrefixLimitsList =
-  ReadonlyArray<OptionBLayer3PrefixLimitProperties>;
+  Array<OptionBLayer3PrefixLimitProperties>;
 export const OptionBLayer3ConfigurationPrefixLimitsList = /*@__PURE__*/ S.Array(
   OptionBLayer3PrefixLimitProperties,
 ) as any as S.Schema<OptionBLayer3ConfigurationPrefixLimitsList>;
@@ -24071,14 +24008,14 @@ export const OptionBLayer3Configuration = /*@__PURE__*/ S.suspend(() =>
 
 /** List of IPv4 Routes. */
 export type NpbStaticRouteConfigurationIpv4RoutesList =
-  ReadonlyArray<StaticRouteProperties>;
+  Array<StaticRouteProperties>;
 export const NpbStaticRouteConfigurationIpv4RoutesList = /*@__PURE__*/ S.Array(
   StaticRouteProperties,
 ) as any as S.Schema<NpbStaticRouteConfigurationIpv4RoutesList>;
 
 /** List of IPv6 Routes. */
 export type NpbStaticRouteConfigurationIpv6RoutesList =
-  ReadonlyArray<StaticRouteProperties>;
+  Array<StaticRouteProperties>;
 export const NpbStaticRouteConfigurationIpv6RoutesList = /*@__PURE__*/ S.Array(
   StaticRouteProperties,
 ) as any as S.Schema<NpbStaticRouteConfigurationIpv6RoutesList>;
@@ -24104,14 +24041,14 @@ export const NpbStaticRouteConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** List of IPv4 Routes. */
 export type NniStaticRouteConfigurationIpv4RoutesList =
-  ReadonlyArray<StaticRouteProperties>;
+  Array<StaticRouteProperties>;
 export const NniStaticRouteConfigurationIpv4RoutesList = /*@__PURE__*/ S.Array(
   StaticRouteProperties,
 ) as any as S.Schema<NniStaticRouteConfigurationIpv4RoutesList>;
 
 /** List of IPv6 Routes. */
 export type NniStaticRouteConfigurationIpv6RoutesList =
-  ReadonlyArray<StaticRouteProperties>;
+  Array<StaticRouteProperties>;
 export const NniStaticRouteConfigurationIpv6RoutesList = /*@__PURE__*/ S.Array(
   StaticRouteProperties,
 ) as any as S.Schema<NniStaticRouteConfigurationIpv6RoutesList>;
@@ -24368,7 +24305,7 @@ export const NetworkToNetworkInterconnect = /*@__PURE__*/ S.suspend(() =>
 
 /** The NetworkToNetworkInterconnect items on this page */
 export type NetworkToNetworkInterconnectsListValueList =
-  ReadonlyArray<NetworkToNetworkInterconnect>;
+  Array<NetworkToNetworkInterconnect>;
 export const NetworkToNetworkInterconnectsListValueList = /*@__PURE__*/ S.Array(
   NetworkToNetworkInterconnect,
 ) as any as S.Schema<NetworkToNetworkInterconnectsListValueList>;
@@ -24390,7 +24327,7 @@ export const NetworkToNetworkInterconnectsList = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NetworkToNetworkInterconnectsList>;
 
 /** List of network device interfaces resource IDs. */
-export type Layer2ConfigurationPatchInterfacesList = ReadonlyArray<string>;
+export type Layer2ConfigurationPatchInterfacesList = Array<string>;
 export const Layer2ConfigurationPatchInterfacesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<Layer2ConfigurationPatchInterfacesList>;
@@ -24413,7 +24350,7 @@ export const Layer2ConfigurationPatch = /*@__PURE__*/ S.suspend(() =>
 
 /** Provider Edge (PE) Loopback IP Address. */
 export type OptionBLayer3ConfigurationPatchPropertiesInputPeLoopbackIpAddressList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const OptionBLayer3ConfigurationPatchPropertiesInputPeLoopbackIpAddressList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -24448,7 +24385,7 @@ export const OptionBLayer3PrefixLimitPatchProperties = /*@__PURE__*/ S.suspend(
 
 /** OptionB Layer3 prefix limit configuration. */
 export type OptionBLayer3ConfigurationPatchPropertiesInputPrefixLimitsList =
-  ReadonlyArray<OptionBLayer3PrefixLimitPatchProperties>;
+  Array<OptionBLayer3PrefixLimitPatchProperties>;
 export const OptionBLayer3ConfigurationPatchPropertiesInputPrefixLimitsList =
   /*@__PURE__*/ S.Array(
     OptionBLayer3PrefixLimitPatchProperties,
@@ -24498,7 +24435,7 @@ export const OptionBLayer3ConfigurationPatchPropertiesInput =
 
 /** List of IPv4 Routes. */
 export type NpbStaticRouteConfigurationPatchIpv4RoutesList =
-  ReadonlyArray<StaticRoutePatchProperties>;
+  Array<StaticRoutePatchProperties>;
 export const NpbStaticRouteConfigurationPatchIpv4RoutesList =
   /*@__PURE__*/ S.Array(
     StaticRoutePatchProperties,
@@ -24506,7 +24443,7 @@ export const NpbStaticRouteConfigurationPatchIpv4RoutesList =
 
 /** List of IPv6 Routes. */
 export type NpbStaticRouteConfigurationPatchIpv6RoutesList =
-  ReadonlyArray<StaticRoutePatchProperties>;
+  Array<StaticRoutePatchProperties>;
 export const NpbStaticRouteConfigurationPatchIpv6RoutesList =
   /*@__PURE__*/ S.Array(
     StaticRoutePatchProperties,
@@ -24533,7 +24470,7 @@ export const NpbStaticRouteConfigurationPatch = /*@__PURE__*/ S.suspend(() =>
 
 /** List of IPv4 Routes. */
 export type NniStaticRoutePatchConfigurationIpv4RoutesList =
-  ReadonlyArray<StaticRoutePatchProperties>;
+  Array<StaticRoutePatchProperties>;
 export const NniStaticRoutePatchConfigurationIpv4RoutesList =
   /*@__PURE__*/ S.Array(
     StaticRoutePatchProperties,
@@ -24541,7 +24478,7 @@ export const NniStaticRoutePatchConfigurationIpv4RoutesList =
 
 /** List of IPv6 Routes. */
 export type NniStaticRoutePatchConfigurationIpv6RoutesList =
-  ReadonlyArray<StaticRoutePatchProperties>;
+  Array<StaticRoutePatchProperties>;
 export const NniStaticRoutePatchConfigurationIpv6RoutesList =
   /*@__PURE__*/ S.Array(
     StaticRoutePatchProperties,
@@ -24697,7 +24634,7 @@ export const NetworkToNetworkInterconnectsUpdateResponse =
 
 /** Network Fabrics or Network Rack resource Id. */
 export type NetworkToNetworkInterconnectsUpdateAdministrativeStateRequestResourceIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const NetworkToNetworkInterconnectsUpdateAdministrativeStateRequestResourceIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -24782,7 +24719,7 @@ export const NetworkToNetworkInterconnectsUpdateBfdAdministrativeStateRequest =
 
 /** The operations list. */
 export type NniUpdateBfdAdministrativeStateResponseOperationsItemOperationsList =
-  ReadonlyArray<OperationStatusResult>;
+  Array<OperationStatusResult>;
 export const NniUpdateBfdAdministrativeStateResponseOperationsItemOperationsList =
   /*@__PURE__*/ S.Array(
     OperationStatusResult,
@@ -24830,7 +24767,7 @@ export const NniUpdateBfdAdministrativeStateResponseOperationsItem =
 
 /** The operations list. */
 export type NniUpdateBfdAdministrativeStateResponseOperationsList =
-  ReadonlyArray<NniUpdateBfdAdministrativeStateResponseOperationsItem>;
+  Array<NniUpdateBfdAdministrativeStateResponseOperationsItem>;
 export const NniUpdateBfdAdministrativeStateResponseOperationsList =
   /*@__PURE__*/ S.Array(
     NniUpdateBfdAdministrativeStateResponseOperationsItem,
@@ -24838,7 +24775,7 @@ export const NniUpdateBfdAdministrativeStateResponseOperationsList =
 
 /** The error details. */
 export type NniUpdateBfdAdministrativeStateResponseErrorDetailsList =
-  ReadonlyArray<ErrorDetail>;
+  Array<ErrorDetail>;
 export const NniUpdateBfdAdministrativeStateResponseErrorDetailsList =
   /*@__PURE__*/ S.Array(
     ErrorDetail,
@@ -24846,7 +24783,7 @@ export const NniUpdateBfdAdministrativeStateResponseErrorDetailsList =
 
 /** The error additional info. */
 export type NniUpdateBfdAdministrativeStateResponseErrorAdditionalInfoList =
-  ReadonlyArray<ErrorAdditionalInfo>;
+  Array<ErrorAdditionalInfo>;
 export const NniUpdateBfdAdministrativeStateResponseErrorAdditionalInfoList =
   /*@__PURE__*/ S.Array(
     ErrorAdditionalInfo,
@@ -24944,7 +24881,7 @@ export const NniUpdateBfdAdministrativeStateResponse = /*@__PURE__*/ S.suspend(
 
 /** Network Fabrics or Network Rack resource Id. */
 export type NetworkToNetworkInterconnectsUpdateNpbStaticRouteBfdAdministrativeStateRequestResourceIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const NetworkToNetworkInterconnectsUpdateNpbStaticRouteBfdAdministrativeStateRequestResourceIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -25056,7 +24993,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = ReadonlyArray<Operation>;
+export type OperationsListResponseValueList = Array<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;
@@ -25132,8 +25069,7 @@ export type RoutePolicyPropertiesInputDefaultAction = "Permit" | "Deny";
 export const RoutePolicyPropertiesInputDefaultAction = /*@__PURE__*/ S.String;
 
 /** List of IP Community resource IDs. */
-export type StatementConditionPropertiesIpCommunityIdsList =
-  ReadonlyArray<string>;
+export type StatementConditionPropertiesIpCommunityIdsList = Array<string>;
 export const StatementConditionPropertiesIpCommunityIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -25141,7 +25077,7 @@ export const StatementConditionPropertiesIpCommunityIdsList =
 
 /** List of IP Extended Community resource IDs. */
 export type StatementConditionPropertiesIpExtendedCommunityIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const StatementConditionPropertiesIpExtendedCommunityIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -25158,7 +25094,7 @@ export interface StatementConditionProperties {
   /** List of IP Extended Community resource IDs. */
   ipExtendedCommunityIds?: StatementConditionPropertiesIpExtendedCommunityIdsList;
   /** Type of the condition used. */
-  type?: StatementConditionPropertiesType;
+  type?: StatementConditionPropertiesType | (string & {});
   /** Arm Resource Id of IpPrefix. */
   ipPrefixId?: string;
 }
@@ -25180,7 +25116,7 @@ export type RoutePolicyActionType = "Permit" | "Deny" | "Continue";
 export const RoutePolicyActionType = /*@__PURE__*/ S.String;
 
 /** List of IP Community resource IDs. */
-export type IpCommunityIdListIpCommunityIdsList = ReadonlyArray<string>;
+export type IpCommunityIdListIpCommunityIdsList = Array<string>;
 export const IpCommunityIdListIpCommunityIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<IpCommunityIdListIpCommunityIdsList>;
@@ -25218,8 +25154,7 @@ export const ActionIpCommunityProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ActionIpCommunityProperties>;
 
 /** List of IP Extended Community resource IDs. */
-export type IpExtendedCommunityIdListIpExtendedCommunityIdsList =
-  ReadonlyArray<string>;
+export type IpExtendedCommunityIdListIpExtendedCommunityIdsList = Array<string>;
 export const IpExtendedCommunityIdListIpExtendedCommunityIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -25264,7 +25199,7 @@ export interface StatementActionProperties {
   /** Local Preference of the route policy. */
   localPreference?: number;
   /** Action type. Example: Permit | Deny | Continue. */
-  actionType: RoutePolicyActionType;
+  actionType: RoutePolicyActionType | (string & {});
   /** IP Community Properties. */
   ipCommunityProperties?: ActionIpCommunityProperties;
   /** IP Extended Community Properties. */
@@ -25307,7 +25242,7 @@ export const RoutePolicyStatementProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Route Policy statements. */
 export type RoutePolicyPropertiesInputStatementsList =
-  ReadonlyArray<RoutePolicyStatementProperties>;
+  Array<RoutePolicyStatementProperties>;
 export const RoutePolicyPropertiesInputStatementsList = /*@__PURE__*/ S.Array(
   RoutePolicyStatementProperties,
 ) as any as S.Schema<RoutePolicyPropertiesInputStatementsList>;
@@ -25393,7 +25328,7 @@ export const RoutePolicyPropertiesDefaultAction = /*@__PURE__*/ S.String;
 
 /** Route Policy statements. */
 export type RoutePolicyPropertiesStatementsList =
-  ReadonlyArray<RoutePolicyStatementProperties>;
+  Array<RoutePolicyStatementProperties>;
 export const RoutePolicyPropertiesStatementsList = /*@__PURE__*/ S.Array(
   RoutePolicyStatementProperties,
 ) as any as S.Schema<RoutePolicyPropertiesStatementsList>;
@@ -25625,7 +25560,7 @@ export const RoutePolicy = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RoutePolicy" }) as any as S.Schema<RoutePolicy>;
 
 /** The RoutePolicy items on this page */
-export type RoutePoliciesListResultValueList = ReadonlyArray<RoutePolicy>;
+export type RoutePoliciesListResultValueList = Array<RoutePolicy>;
 export const RoutePoliciesListResultValueList = /*@__PURE__*/ S.Array(
   RoutePolicy,
 ) as any as S.Schema<RoutePoliciesListResultValueList>;
@@ -25676,8 +25611,7 @@ export const RoutePoliciesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<RoutePoliciesUpdateRequestTagsMap>;
 
 /** List of IP Community resource IDs. */
-export type StatementConditionPatchPropertiesIpCommunityIdsList =
-  ReadonlyArray<string>;
+export type StatementConditionPatchPropertiesIpCommunityIdsList = Array<string>;
 export const StatementConditionPatchPropertiesIpCommunityIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -25685,7 +25619,7 @@ export const StatementConditionPatchPropertiesIpCommunityIdsList =
 
 /** List of IP Extended Community resource IDs. */
 export type StatementConditionPatchPropertiesIpExtendedCommunityIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const StatementConditionPatchPropertiesIpExtendedCommunityIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -25808,7 +25742,7 @@ export const RoutePolicyStatementPatchProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Route Policy statements. */
 export type RoutePolicyPatchablePropertiesStatementsList =
-  ReadonlyArray<RoutePolicyStatementPatchProperties>;
+  Array<RoutePolicyStatementPatchProperties>;
 export const RoutePolicyPatchablePropertiesStatementsList =
   /*@__PURE__*/ S.Array(
     RoutePolicyStatementPatchProperties,
@@ -25902,7 +25836,7 @@ export const RoutePoliciesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Network Fabrics or Network Rack resource Id. */
 export type RoutePoliciesUpdateAdministrativeStateRequestResourceIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RoutePoliciesUpdateAdministrativeStateRequestResourceIdsList =
   /*@__PURE__*/ S.Array(
     S.String,

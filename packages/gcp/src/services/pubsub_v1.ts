@@ -60,7 +60,7 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -117,7 +117,7 @@ export interface Pubsub_Schema {
   /** Required. Name of the schema. Format is `projects/{project}/schemas/{schema}`. */
   name?: string;
   /** The type of the schema definition. */
-  type?: Pubsub_SchemaTypeEnum;
+  type?: Pubsub_SchemaTypeEnum | (string & {});
   /** Output only. Immutable. The revision ID of the schema. */
   revisionId?: string;
   /** The definition of the schema. This should contain a string representing the full definition of the schema that is a valid schema definition of the type specified in `type`. */
@@ -312,7 +312,7 @@ export interface CloudStorageConfig {
   /** Optional. If set, message data will be written to Cloud Storage in Avro format. */
   avroConfig?: AvroConfig;
   /** Output only. An output-only field that indicates whether or not the subscription can receive messages. */
-  state?: CloudStorageConfigStateEnum;
+  state?: CloudStorageConfigStateEnum | (string & {});
 }
 export const CloudStorageConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -422,7 +422,7 @@ export interface BigQueryConfig {
   /** Optional. The service account to use to write to BigQuery. The subscription creator or updater that specifies this field must have `iam.serviceAccounts.actAs` permission on the service account. If not specified, the Pub/Sub [service agent](https://cloud.google.com/iam/docs/service-agents), service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used. */
   serviceAccountEmail?: string;
   /** Output only. An output-only field that indicates whether or not the subscription can receive messages. */
-  state?: BigQueryConfigStateEnum;
+  state?: BigQueryConfigStateEnum | (string & {});
 }
 export const BigQueryConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -464,9 +464,9 @@ export const CompressionCompressionModeEnum = /*@__PURE__*/ S.String;
 /** Configuration for compressing/decompressing message data using a user-specified compression algorithm. */
 export interface Compression {
   /** Required. Specifies the compression algorithm to use. */
-  compressionAlgorithm?: CompressionCompressionAlgorithmEnum;
+  compressionAlgorithm?: CompressionCompressionAlgorithmEnum | (string & {});
   /** Required. Specifies whether to compress or decompress the message. */
-  compressionMode?: CompressionCompressionModeEnum;
+  compressionMode?: CompressionCompressionModeEnum | (string & {});
 }
 export const Compression = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -536,7 +536,7 @@ export const MessageTransform = /*@__PURE__*/ S.suspend(() =>
   identifier: "MessageTransform",
 }) as any as S.Schema<MessageTransform>;
 
-export type MessageTransformList = ReadonlyArray<MessageTransform>;
+export type MessageTransformList = Array<MessageTransform>;
 export const MessageTransformList = /*@__PURE__*/ S.Array(
   MessageTransform,
 ) as any as S.Schema<MessageTransformList>;
@@ -609,7 +609,7 @@ export const BigtableConfigStateEnum = /*@__PURE__*/ S.String;
 /** Configuration for a Bigtable subscription. The Pub/Sub message will be written to a Bigtable row as follows: - row key: subscription name, message ID hash, and message ID delimited by `#`. - columns: message bytes written to a single column family `data` with an empty-string column qualifier. - cell timestamp: the message publish timestamp. */
 export interface BigtableConfig {
   /** Output only. An output-only field that indicates whether or not the subscription can receive messages. */
-  state?: BigtableConfigStateEnum;
+  state?: BigtableConfigStateEnum | (string & {});
   /** Optional. The app profile to use for the Bigtable writes. If not specified, the "default" application profile will be used. The app profile must use single-cluster routing. */
   appProfileId?: string;
   /** Optional. The service account to use to write to Bigtable. The subscription creator or updater that specifies this field must have `iam.serviceAccounts.actAs` permission on the service account. If not specified, the Pub/Sub [service agent](https://cloud.google.com/iam/docs/service-agents), service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used. */
@@ -654,7 +654,7 @@ export interface Subscription {
   /** Optional. An expression written in the Pub/Sub [filter language](https://cloud.google.com/pubsub/docs/filtering). If non-empty, then only `PubsubMessage`s whose `attributes` field matches the filter are delivered on this subscription. If empty, then no messages are filtered out. */
   filter?: string;
   /** Output only. An output-only field indicating whether or not the subscription can receive messages. */
-  state?: SubscriptionStateEnum;
+  state?: SubscriptionStateEnum | (string & {});
   /** Optional. A policy that specifies the conditions for this subscription's expiration. A subscription is considered active as long as any connected subscriber is successfully consuming messages from the subscription or is issuing operations on the subscription. If `expiration_policy` is not set, a *default policy* with `ttl` of 31 days will be used. The minimum allowed value for `expiration_policy.ttl` is 1 day. If `expiration_policy` is set, but `expiration_policy.ttl` is not set, the subscription never expires. */
   expirationPolicy?: ExpirationPolicy;
   /** Optional. Indicates whether to retain acknowledged messages. If true, then messages are not expunged from the subscription's backlog, even if they are acknowledged, until they fall out of the `message_retention_duration` window. This must be true if you would like to [`Seek` to a timestamp] (https://cloud.google.com/pubsub/docs/replay-overview#seek_to_a_time) in the past to replay previously-acknowledged messages. */
@@ -743,7 +743,7 @@ export interface SchemaSettings {
   /** Required. The name of the schema that messages published should be validated against. Format is `projects/{project}/schemas/{schema}`. The value of this field will be `_deleted-schema_` if the schema has been deleted. */
   schema?: string;
   /** Optional. The encoding of messages validated against `schema`. */
-  encoding?: SchemaSettingsEncodingEnum;
+  encoding?: SchemaSettingsEncodingEnum | (string & {});
   /** Optional. The minimum (inclusive) revision allowed for validating messages. If empty or not present, allow any revision to be validated against last_revision or any revision created before. */
   firstRevisionId?: string;
 }
@@ -768,7 +768,7 @@ export const PlatformLogsSettingsSeverityEnum = /*@__PURE__*/ S.String;
 /** Settings for Platform Logs produced by Pub/Sub. */
 export interface PlatformLogsSettings {
   /** Optional. The minimum severity level of Platform Logs that will be written. */
-  severity?: PlatformLogsSettingsSeverityEnum;
+  severity?: PlatformLogsSettingsSeverityEnum | (string & {});
 }
 export const PlatformLogsSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -802,7 +802,7 @@ export interface ConfluentCloud {
   /** Required. The GCP service account to be used for Federated Identity authentication with `identity_pool_id`. */
   gcpServiceAccount?: string;
   /** Output only. An output-only field that indicates the state of the Confluent Cloud ingestion source. */
-  state?: ConfluentCloudStateEnum;
+  state?: ConfluentCloudStateEnum | (string & {});
 }
 export const ConfluentCloud = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -836,7 +836,7 @@ export interface AzureEventHubs {
   /** Optional. The name of the Event Hub. */
   eventHub?: string;
   /** Output only. An output-only field that indicates the state of the Event Hubs ingestion source. */
-  state?: AzureEventHubsStateEnum;
+  state?: AzureEventHubsStateEnum | (string & {});
   /** Optional. The client id of the Azure application that is being used to authenticate Pub/Sub. */
   clientId?: string;
   /** Optional. The tenant id of the Azure application that is being used to authenticate Pub/Sub. */
@@ -874,7 +874,7 @@ export interface AwsKinesis {
   /** Required. The GCP service account to be used for Federated Identity authentication with Kinesis (via a `AssumeRoleWithWebIdentity` call for the provided role). The `aws_role_arn` must be set up with `accounts.google.com:sub` equals to this service account number. */
   gcpServiceAccount?: string;
   /** Output only. An output-only field that indicates the state of the Kinesis ingestion source. */
-  state?: AwsKinesisStateEnum;
+  state?: AwsKinesisStateEnum | (string & {});
   /** Required. The Kinesis consumer ARN to used for ingestion in Enhanced Fan-Out mode. The consumer must be already created and ready to be used. */
   consumerArn?: string;
   /** Required. AWS role ARN to be used for Federated Identity authentication with Kinesis. Check the Pub/Sub docs for how to set up this role and the required permissions that need to be attached to it. */
@@ -940,7 +940,7 @@ export interface CloudStorage {
   /** Optional. Cloud Storage bucket. The bucket name must be without any prefix like "gs://". See the [bucket naming requirements] (https://cloud.google.com/storage/docs/buckets#naming). */
   bucket?: string;
   /** Output only. An output-only field that indicates the state of the Cloud Storage ingestion source. */
-  state?: CloudStorageStateEnum;
+  state?: CloudStorageStateEnum | (string & {});
   /** Optional. It will be assumed data from Cloud Storage was written via [Cloud Storage subscriptions](https://cloud.google.com/pubsub/docs/cloudstorage). */
   pubsubAvroFormat?: PubSubAvroFormat;
 }
@@ -969,7 +969,7 @@ export const AwsMskStateEnum = /*@__PURE__*/ S.String;
 /** Ingestion settings for Amazon MSK. */
 export interface AwsMsk {
   /** Output only. An output-only field that indicates the state of the Amazon MSK ingestion source. */
-  state?: AwsMskStateEnum;
+  state?: AwsMskStateEnum | (string & {});
   /** Required. The GCP service account to be used for Federated Identity authentication with Amazon MSK (via a `AssumeRoleWithWebIdentity` call for the provided role). The `aws_role_arn` must be set up with `accounts.google.com:sub` equals to this service account number. */
   gcpServiceAccount?: string;
   /** Required. The Amazon Resource Name (ARN) that uniquely identifies the cluster. */
@@ -1050,7 +1050,7 @@ export interface Topic {
   /** Optional. The resource name of the Cloud KMS CryptoKey to be used to protect access to messages published on this topic. The expected format is `projects/*\/locations/*\/keyRings/*\/cryptoKeys/*`. */
   kmsKeyName?: string;
   /** Output only. An output-only field indicating the state of the topic. */
-  state?: TopicStateEnum;
+  state?: TopicStateEnum | (string & {});
   /** Optional. Settings for validating messages published against a schema. */
   schemaSettings?: SchemaSettings;
   /** Optional. Settings for ingestion from a data source into this topic. */
@@ -1273,7 +1273,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
-export type BindingList = ReadonlyArray<Binding>;
+export type BindingList = Array<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -1474,7 +1474,7 @@ export const ListProjectsSchemasRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsSchemasRequest",
 }) as any as S.Schema<ListProjectsSchemasRequest>;
 
-export type Pubsub_SchemaList = ReadonlyArray<Pubsub_Schema>;
+export type Pubsub_SchemaList = Array<Pubsub_Schema>;
 export const Pubsub_SchemaList = /*@__PURE__*/ S.Array(
   Pubsub_Schema,
 ) as any as S.Schema<Pubsub_SchemaList>;
@@ -1519,7 +1519,7 @@ export const ListProjectsSnapshotsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsSnapshotsRequest",
 }) as any as S.Schema<ListProjectsSnapshotsRequest>;
 
-export type SnapshotList = ReadonlyArray<Snapshot>;
+export type SnapshotList = Array<Snapshot>;
 export const SnapshotList = /*@__PURE__*/ S.Array(
   Snapshot,
 ) as any as S.Schema<SnapshotList>;
@@ -1564,7 +1564,7 @@ export const ListProjectsSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsSubscriptionsRequest",
 }) as any as S.Schema<ListProjectsSubscriptionsRequest>;
 
-export type SubscriptionList = ReadonlyArray<Subscription>;
+export type SubscriptionList = Array<Subscription>;
 export const SubscriptionList = /*@__PURE__*/ S.Array(
   Subscription,
 ) as any as S.Schema<SubscriptionList>;
@@ -1609,7 +1609,7 @@ export const ListProjectsTopicsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsTopicsRequest",
 }) as any as S.Schema<ListProjectsTopicsRequest>;
 
-export type TopicList = ReadonlyArray<Topic>;
+export type TopicList = Array<Topic>;
 export const TopicList = /*@__PURE__*/ S.Array(
   Topic,
 ) as any as S.Schema<TopicList>;
@@ -1967,7 +1967,7 @@ export const PubsubMessage = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PubsubMessage" }) as any as S.Schema<PubsubMessage>;
 
-export type PubsubMessageList = ReadonlyArray<PubsubMessage>;
+export type PubsubMessageList = Array<PubsubMessage>;
 export const PubsubMessageList = /*@__PURE__*/ S.Array(
   PubsubMessage,
 ) as any as S.Schema<PubsubMessageList>;
@@ -2071,7 +2071,7 @@ export const ReceivedMessage = /*@__PURE__*/ S.suspend(() =>
   identifier: "ReceivedMessage",
 }) as any as S.Schema<ReceivedMessage>;
 
-export type ReceivedMessageList = ReadonlyArray<ReceivedMessage>;
+export type ReceivedMessageList = Array<ReceivedMessage>;
 export const ReceivedMessageList = /*@__PURE__*/ S.Array(
   ReceivedMessage,
 ) as any as S.Schema<ReceivedMessageList>;

@@ -104,7 +104,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -301,7 +301,7 @@ export type CheckConsumerConfigResponseErrorsItemEnum =
 export const CheckConsumerConfigResponseErrorsItemEnum = /*@__PURE__*/ S.String;
 
 export type CheckConsumerConfigResponseErrorsItemEnumList =
-  ReadonlyArray<CheckConsumerConfigResponseErrorsItemEnum>;
+  Array<CheckConsumerConfigResponseErrorsItemEnum>;
 export const CheckConsumerConfigResponseErrorsItemEnumList =
   /*@__PURE__*/ S.Array(
     CheckConsumerConfigResponseErrorsItemEnum,
@@ -355,7 +355,7 @@ export type AutomatedDnsRecordRecordTypeEnum =
   | "CNAME";
 export const AutomatedDnsRecordRecordTypeEnum = /*@__PURE__*/ S.String;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -383,7 +383,7 @@ export interface AutomatedDnsRecord {
   /** Output only. The timestamp of when the record was created. */
   createTime?: string;
   /** Output only. The current operational state of this AutomatedDnsRecord as managed by Service Connectivity Automation. */
-  state?: AutomatedDnsRecordStateEnum;
+  state?: AutomatedDnsRecordStateEnum | (string & {});
   /** Immutable. Identifier. The name of an AutomatedDnsRecord. Format: projects/{project}/locations/{location}/automatedDnsRecords/{automated_dns_record} See: https://google.aip.dev/122#fields-representing-resource-names */
   name?: string;
   /** Required. Immutable. The hostname for the DNS record. This value will be prepended to the `dns_suffix` to create the full domain name (FQDN) for the record. For example, if `hostname` is "corp.db" and `dns_suffix` is "example.com.", the resulting record will be "corp.db.example.com.". Should not include a trailing dot. */
@@ -397,13 +397,13 @@ export interface AutomatedDnsRecord {
   /** Required. Immutable. The dns suffix for this record to use in longest-suffix matching. Requires a trailing dot. Example: "example.com." */
   dnsSuffix?: string;
   /** Required. Immutable. The creation mode of the AutomatedDnsRecord. This field is immutable. */
-  creationMode?: AutomatedDnsRecordCreationModeEnum;
+  creationMode?: AutomatedDnsRecordCreationModeEnum | (string & {});
   /** Required. Immutable. The service class identifier which authorizes this AutomatedDnsRecord. Any API calls targeting this AutomatedDnsRecord must have `networkconnectivity.serviceClasses.use` IAM permission for the provided service class. */
   serviceClass?: string;
   /** Output only. A human-readable message providing more context about the current state, such as an error description if the state is `FAILED_DEPROGRAMMING`. */
   stateDetails?: string;
   /** Required. Immutable. The identifier of a supported record type. */
-  recordType?: AutomatedDnsRecordRecordTypeEnum;
+  recordType?: AutomatedDnsRecordRecordTypeEnum | (string & {});
   /** Output only. DnsZone is the DNS zone managed by automation. Format: projects/{project}/managedZones/{managedZone} */
   dnsZone?: string;
   /** A human-readable description of the record. */
@@ -488,7 +488,7 @@ export const SpokeTypeCountSpokeTypeEnum = /*@__PURE__*/ S.String;
 /** The number of spokes of a given type that are associated with a specific hub. The type indicates what kind of resource is associated with the spoke. */
 export interface SpokeTypeCount {
   /** Output only. The type of the spokes. */
-  spokeType?: SpokeTypeCountSpokeTypeEnum;
+  spokeType?: SpokeTypeCountSpokeTypeEnum | (string & {});
   /** Output only. The total number of spokes of this type that are associated with the hub. */
   count?: string;
 }
@@ -499,7 +499,7 @@ export const SpokeTypeCount = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SpokeTypeCount" }) as any as S.Schema<SpokeTypeCount>;
 
-export type SpokeTypeCountList = ReadonlyArray<SpokeTypeCount>;
+export type SpokeTypeCountList = Array<SpokeTypeCount>;
 export const SpokeTypeCountList = /*@__PURE__*/ S.Array(
   SpokeTypeCount,
 ) as any as S.Schema<SpokeTypeCountList>;
@@ -520,7 +520,7 @@ export const SpokeStateCountStateEnum = /*@__PURE__*/ S.String;
 /** The number of spokes that are in a particular state and associated with a given hub. */
 export interface SpokeStateCount {
   /** Output only. The state of the spokes. */
-  state?: SpokeStateCountStateEnum;
+  state?: SpokeStateCountStateEnum | (string & {});
   /** Output only. The total number of spokes that are in this state and associated with a given hub. */
   count?: string;
 }
@@ -533,7 +533,7 @@ export const SpokeStateCount = /*@__PURE__*/ S.suspend(() =>
   identifier: "SpokeStateCount",
 }) as any as S.Schema<SpokeStateCount>;
 
-export type SpokeStateCountList = ReadonlyArray<SpokeStateCount>;
+export type SpokeStateCountList = Array<SpokeStateCount>;
 export const SpokeStateCountList = /*@__PURE__*/ S.Array(
   SpokeStateCount,
 ) as any as S.Schema<SpokeStateCountList>;
@@ -554,7 +554,7 @@ export interface SpokeStateReasonCount {
   /** Output only. The total number of spokes that are inactive for a particular reason and associated with a given hub. */
   count?: string;
   /** Output only. The reason that a spoke is inactive. */
-  stateReasonCode?: SpokeStateReasonCountStateReasonCodeEnum;
+  stateReasonCode?: SpokeStateReasonCountStateReasonCodeEnum | (string & {});
 }
 export const SpokeStateReasonCount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -565,7 +565,7 @@ export const SpokeStateReasonCount = /*@__PURE__*/ S.suspend(() =>
   identifier: "SpokeStateReasonCount",
 }) as any as S.Schema<SpokeStateReasonCount>;
 
-export type SpokeStateReasonCountList = ReadonlyArray<SpokeStateReasonCount>;
+export type SpokeStateReasonCountList = Array<SpokeStateReasonCount>;
 export const SpokeStateReasonCountList = /*@__PURE__*/ S.Array(
   SpokeStateReasonCount,
 ) as any as S.Schema<SpokeStateReasonCountList>;
@@ -611,7 +611,7 @@ export const RoutingVPC = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "RoutingVPC" }) as any as S.Schema<RoutingVPC>;
 
-export type RoutingVPCList = ReadonlyArray<RoutingVPC>;
+export type RoutingVPCList = Array<RoutingVPC>;
 export const RoutingVPCList = /*@__PURE__*/ S.Array(
   RoutingVPC,
 ) as any as S.Schema<RoutingVPCList>;
@@ -636,11 +636,11 @@ export interface Hub {
   /** Output only. A summary of the spokes associated with a hub. The summary includes a count of spokes according to type and according to state. If any spokes are inactive, the summary also lists the reasons they are inactive, including a count for each reason. */
   spokeSummary?: SpokeSummary;
   /** Optional. The policy mode of this hub. This field can be either PRESET or CUSTOM. If unspecified, the policy_mode defaults to PRESET. */
-  policyMode?: HubPolicyModeEnum;
+  policyMode?: HubPolicyModeEnum | (string & {});
   /** Output only. The route tables that belong to this hub. They use the following form: `projects/{project_number}/locations/global/hubs/{hub_id}/routeTables/{route_table_id}` This field is read-only. Network Connectivity Center automatically populates it based on the route tables nested under the hub. */
   routeTables?: StringList;
   /** Optional. The topology implemented in this hub. Currently, this field is only used when policy_mode = PRESET. The available preset topologies are MESH and STAR. If preset_topology is unspecified and policy_mode = PRESET, the preset_topology defaults to MESH. When policy_mode = CUSTOM, the preset_topology is set to PRESET_TOPOLOGY_UNSPECIFIED. */
-  presetTopology?: HubPresetTopologyEnum;
+  presetTopology?: HubPresetTopologyEnum | (string & {});
   /** Optional. An optional description of the hub. */
   description?: string;
   /** Output only. The VPC networks associated with this hub's spokes. This field is read-only. Network Connectivity Center automatically populates it based on the set of spokes attached to the hub. */
@@ -652,7 +652,7 @@ export interface Hub {
   /** Output only. The time the hub was created. */
   createTime?: string;
   /** Output only. The current lifecycle state of this hub. */
-  state?: HubStateEnum;
+  state?: HubStateEnum | (string & {});
   /** Optional labels in key-value pair format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements). */
   labels?: StringMap;
   /** Output only. The time the hub was last updated. */
@@ -715,7 +715,7 @@ export interface Filter {
   /** Optional. The source IP range of outgoing packets that this policy-based route applies to. Default is "0.0.0.0/0" if protocol version is IPv4 and "::/0" if protocol version is IPv6. */
   srcRange?: string;
   /** Required. Internet protocol versions this policy-based route applies to. IPV4 and IPV6 is supported. */
-  protocolVersion?: FilterProtocolVersionEnum;
+  protocolVersion?: FilterProtocolVersionEnum | (string & {});
   /** Optional. The IP protocol that this policy-based route applies to. Valid values are 'TCP', 'UDP', and 'ALL'. Default is 'ALL'. */
   ipProtocol?: string;
   /** Optional. The destination IP range of outgoing packets that this policy-based route applies to. Default is "0.0.0.0/0" if protocol version is IPv4 and "::/0" if protocol version is IPv6. */
@@ -741,7 +741,7 @@ export interface Warnings {
   /** Output only. Metadata about this warning in key: value format. The key should provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement. */
   data?: StringMap;
   /** Output only. A warning code, if applicable. */
-  code?: WarningsCodeEnum;
+  code?: WarningsCodeEnum | (string & {});
   /** Output only. A human-readable description of the warning code. */
   warningMessage?: string;
 }
@@ -753,7 +753,7 @@ export const Warnings = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Warnings" }) as any as S.Schema<Warnings>;
 
-export type WarningsList = ReadonlyArray<Warnings>;
+export type WarningsList = Array<Warnings>;
 export const WarningsList = /*@__PURE__*/ S.Array(
   Warnings,
 ) as any as S.Schema<WarningsList>;
@@ -800,7 +800,7 @@ export interface PolicyBasedRoute {
   /** Output only. If potential misconfigurations are detected for this route, this field will be populated with warning messages. */
   warnings?: WarningsList;
   /** Optional. Other routes that will be referenced to determine the next hop of the packet. */
-  nextHopOtherRoutes?: PolicyBasedRouteNextHopOtherRoutesEnum;
+  nextHopOtherRoutes?: PolicyBasedRouteNextHopOtherRoutesEnum | (string & {});
   /** Optional. The priority of this policy-based route. Priority is used to break ties in cases where there are more than one matching policy-based routes found. In cases where multiple policy-based routes are matched, the one with the lowest-numbered priority value wins. The default value is 1000. The priority value must be from 1 to 65535, inclusive. */
   priority?: number;
   /** Optional. The interconnect attachments that this policy-based route applies to. */
@@ -904,8 +904,9 @@ export type InternalRangeOverlapsItemEnum =
   | "OVERLAP_EXISTING_SUBNET_RANGE";
 export const InternalRangeOverlapsItemEnum = /*@__PURE__*/ S.String;
 
-export type InternalRangeOverlapsItemEnumList =
-  ReadonlyArray<InternalRangeOverlapsItemEnum>;
+export type InternalRangeOverlapsItemEnumList = Array<
+  InternalRangeOverlapsItemEnum | (string & {})
+>;
 export const InternalRangeOverlapsItemEnumList = /*@__PURE__*/ S.Array(
   InternalRangeOverlapsItemEnum,
 ) as any as S.Schema<InternalRangeOverlapsItemEnumList>;
@@ -921,7 +922,7 @@ export const AllocationOptionsAllocationStrategyEnum = /*@__PURE__*/ S.String;
 /** Range auto-allocation options, to be optionally used when CIDR block is not explicitly set. */
 export interface AllocationOptions {
   /** Optional. Allocation strategy Not setting this field when the allocation is requested means an implementation defined strategy is used. */
-  allocationStrategy?: AllocationOptionsAllocationStrategyEnum;
+  allocationStrategy?: AllocationOptionsAllocationStrategyEnum | (string & {});
   /** Optional. This field must be set only when allocation_strategy is set to RANDOM_FIRST_N_AVAILABLE. The value should be the maximum expected parallelism of range creation requests issued to the same space of peered netwroks. */
   firstAvailableRangesLookupSize?: number;
 }
@@ -941,7 +942,7 @@ export interface InternalRange {
   /** Output only. The list of resources that refer to this internal range. Resources that use the internal range for their range allocation are referred to as users of the range. Other resources mark themselves as users while doing so by creating a reference to this internal range. Having a user, based on this reference, prevents deletion of the internal range referred to. Can be empty. */
   users?: StringList;
   /** Optional. The type of peering set for this internal range. */
-  peering?: InternalRangePeeringEnum;
+  peering?: InternalRangePeeringEnum | (string & {});
   /** Optional. Immutable ranges cannot have their fields modified, except for labels and description. */
   immutable?: boolean;
   /** Optional. Can be set to narrow down or pick a different address space while searching for a free range. If not set, defaults to the ["10.0.0.0/8", "172.16.0.0/12", "192.168.0.0/16"] address space (for auto-mode networks, the "10.0.0.0/9" range is used instead of "10.0.0.0/8"). This can be used to target the search in other rfc-1918 address spaces like "172.16.0.0/12" and "192.168.0.0/16" or non-rfc-1918 address spaces used in the VPC. */
@@ -951,7 +952,7 @@ export interface InternalRange {
   /** Optional. The IP range that this internal range defines. NOTE: IPv6 ranges are limited to usage=EXTERNAL_TO_VPC and peering=FOR_SELF. NOTE: For IPv6 Ranges this field is compulsory, i.e. the address range must be specified explicitly. */
   ipCidrRange?: string;
   /** Optional. The type of usage set for this InternalRange. */
-  usage?: InternalRangeUsageEnum;
+  usage?: InternalRangeUsageEnum | (string & {});
   /** Optional. ExcludeCidrRanges flag. Specifies a set of CIDR blocks that allows exclusion of particular CIDR ranges from the auto-allocation process, without having to reserve these blocks */
   excludeCidrRanges?: StringList;
   /** Optional. Must be present if usage is set to FOR_MIGRATION. */
@@ -1033,7 +1034,7 @@ export const StateMetadataStateEnum = /*@__PURE__*/ S.String;
 /** The state and activation time details of the resource state. */
 export interface StateMetadata {
   /** Output only. The state of the resource. */
-  state?: StateMetadataStateEnum;
+  state?: StateMetadataStateEnum | (string & {});
   /** Output only. Accompanies only the transient states, which include `ADDING`, `DELETING`, and `SUSPENDING`, to denote the time until which the transient state of the resource will be effective. For instance, if the state is `ADDING`, this field shows the time when the resource state transitions to `ACTIVE`. */
   effectiveTime?: string;
 }
@@ -1044,7 +1045,7 @@ export const StateMetadata = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "StateMetadata" }) as any as S.Schema<StateMetadata>;
 
-export type StateMetadataList = ReadonlyArray<StateMetadata>;
+export type StateMetadataList = Array<StateMetadata>;
 export const StateMetadataList = /*@__PURE__*/ S.Array(
   StateMetadata,
 ) as any as S.Schema<StateMetadataList>;
@@ -1145,7 +1146,7 @@ export interface DestinationEndpoint {
   /** Required. The ASN of the remote IP prefix. */
   asn?: string;
   /** Output only. The state of the `DestinationEndpoint` resource. */
-  state?: DestinationEndpointStateEnum;
+  state?: DestinationEndpointStateEnum | (string & {});
   /** Required. The CSP of the remote IP prefix. */
   csp?: string;
   /** Output only. Time when the `DestinationEndpoint` resource was updated. */
@@ -1162,7 +1163,7 @@ export const DestinationEndpoint = /*@__PURE__*/ S.suspend(() =>
   identifier: "DestinationEndpoint",
 }) as any as S.Schema<DestinationEndpoint>;
 
-export type DestinationEndpointList = ReadonlyArray<DestinationEndpoint>;
+export type DestinationEndpointList = Array<DestinationEndpoint>;
 export const DestinationEndpointList = /*@__PURE__*/ S.Array(
   DestinationEndpoint,
 ) as any as S.Schema<DestinationEndpointList>;
@@ -1251,7 +1252,9 @@ export interface PscAuthorizationPolicy {
   /** Optional. User-defined labels. */
   labels?: StringMap;
   /** Required. The authorization mode. */
-  authorizationMode?: PscAuthorizationPolicyAuthorizationModeEnum;
+  authorizationMode?:
+    | PscAuthorizationPolicyAuthorizationModeEnum
+    | (string & {});
   /** Output only. The unique identifier of the PscAuthorizationPolicy. */
   uid?: string;
   /** Output only. The time when the PscAuthorizationPolicy was created. */
@@ -1339,7 +1342,7 @@ export interface RegionalEndpoint {
   /** Required. The service endpoint this private regional endpoint connects to. Format: `{apiname}.{region}.p.rep.googleapis.com` Example: "cloudkms.us-central1.p.rep.googleapis.com". */
   targetGoogleApi?: string;
   /** Required. The access type of this regional endpoint. This field is reflected in the PSC Forwarding Rule configuration to enable global access. */
-  accessType?: RegionalEndpointAccessTypeEnum;
+  accessType?: RegionalEndpointAccessTypeEnum | (string & {});
 }
 export const RegionalEndpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1451,7 +1454,7 @@ export interface DnsAutomationStatus {
   /** Output only. The error details if the state is CREATE_FAILED or DELETE_FAILED. */
   error?: GoogleRpcStatus;
   /** Output only. The current state of DNS automation. */
-  state?: DnsAutomationStatusStateEnum;
+  state?: DnsAutomationStatusStateEnum | (string & {});
 }
 export const DnsAutomationStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1470,15 +1473,15 @@ export interface ConsumerPscConnection {
   /** Immutable. An immutable map for the producer instance metadata. */
   producerInstanceMetadata?: StringMap;
   /** The state of the PSC connection. */
-  state?: ConsumerPscConnectionStateEnum;
+  state?: ConsumerPscConnectionStateEnum | (string & {});
   /** The IP literal allocated on the consumer network for the PSC forwarding rule that is created to connect to the producer service attachment in this service connection map. */
   ip?: string;
   /** The error type indicates whether the error is consumer facing, producer facing or system internal. */
-  errorType?: ConsumerPscConnectionErrorTypeEnum;
+  errorType?: ConsumerPscConnectionErrorTypeEnum | (string & {});
   /** The consumer network whose PSC forwarding rule is connected to the service attachments in this service connection map. Note that the network could be on a different project (shared VPC). */
   network?: string;
   /** The requested IP version for the PSC connection. */
-  ipVersion?: ConsumerPscConnectionIpVersionEnum;
+  ipVersion?: ConsumerPscConnectionIpVersionEnum | (string & {});
   /** The consumer project whose PSC forwarding rule is connected to the service attachments in this service connection map. */
   project?: string;
   /** Output only. The URI of the selected subnetwork selected to allocate IP address for this connection. */
@@ -1521,7 +1524,7 @@ export const ConsumerPscConnection = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConsumerPscConnection",
 }) as any as S.Schema<ConsumerPscConnection>;
 
-export type ConsumerPscConnectionList = ReadonlyArray<ConsumerPscConnection>;
+export type ConsumerPscConnectionList = Array<ConsumerPscConnection>;
 export const ConsumerPscConnectionList = /*@__PURE__*/ S.Array(
   ConsumerPscConnection,
 ) as any as S.Schema<ConsumerPscConnectionList>;
@@ -1545,7 +1548,7 @@ export interface ConsumerPscConfig {
   /** This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region. */
   disableGlobalAccess?: boolean;
   /** Output only. Overall state of PSC Connections management for this consumer psc config. */
-  state?: ConsumerPscConfigStateEnum;
+  state?: ConsumerPscConfigStateEnum | (string & {});
   /** Immutable. An immutable map for the producer instance metadata. */
   producerInstanceMetadata?: StringMap;
   /** Required. The project ID or project number of the consumer project. This project is the one that the consumer uses to interact with the producer instance. From the perspective of a consumer who's created a producer instance, this is the project of the producer instance. Format: 'projects/' Eg. 'projects/consumer-project' or 'projects/1234' */
@@ -1559,7 +1562,7 @@ export interface ConsumerPscConfig {
   /** Immutable. Deprecated. Use producer_instance_metadata instead. An immutable identifier for the producer instance. */
   producerInstanceId?: string;
   /** The requested IP version for the PSC connection. */
-  ipVersion?: ConsumerPscConfigIpVersionEnum;
+  ipVersion?: ConsumerPscConfigIpVersionEnum | (string & {});
 }
 export const ConsumerPscConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1577,7 +1580,7 @@ export const ConsumerPscConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConsumerPscConfig",
 }) as any as S.Schema<ConsumerPscConfig>;
 
-export type ConsumerPscConfigList = ReadonlyArray<ConsumerPscConfig>;
+export type ConsumerPscConfigList = Array<ConsumerPscConfig>;
 export const ConsumerPscConfigList = /*@__PURE__*/ S.Array(
   ConsumerPscConfig,
 ) as any as S.Schema<ConsumerPscConfigList>;
@@ -1617,7 +1620,7 @@ export const ProducerPscConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProducerPscConfig",
 }) as any as S.Schema<ProducerPscConfig>;
 
-export type ProducerPscConfigList = ReadonlyArray<ProducerPscConfig>;
+export type ProducerPscConfigList = Array<ProducerPscConfig>;
 export const ProducerPscConfigList = /*@__PURE__*/ S.Array(
   ProducerPscConfig,
 ) as any as S.Schema<ProducerPscConfigList>;
@@ -1627,7 +1630,7 @@ export interface ServiceConnectionMap {
   /** Output only. Time when the ServiceConnectionMap was updated. */
   updateTime?: string;
   /** Output only. The infrastructure used for connections between consumers/producers. */
-  infrastructure?: ServiceConnectionMapInfrastructureEnum;
+  infrastructure?: ServiceConnectionMapInfrastructureEnum | (string & {});
   /** Output only. PSC connection details on consumer side. */
   consumerPscConnections?: ConsumerPscConnectionList;
   /** The token provided by the consumer. This token authenticates that the consumer can create a connection within the specified project and network. */
@@ -1719,7 +1722,9 @@ export interface PscConfig {
   /** The resource paths of subnetworks to use for IP address management. Example: projects/{projectNumOrId}/regions/{region}/subnetworks/{resourceId}. */
   subnetworks?: StringList;
   /** Optional. ProducerInstanceLocation is used to specify which authorization mechanism to use to determine which projects the Producer instance can be within. */
-  producerInstanceLocation?: PscConfigProducerInstanceLocationEnum;
+  producerInstanceLocation?:
+    | PscConfigProducerInstanceLocationEnum
+    | (string & {});
   /** Optional. Max number of PSC connections for this policy. */
   limit?: string;
   /** Optional. List of Projects, Folders, or Organizations from where the Producer instance can be within. For example, a network administrator can provide both 'organizations/foo' and 'projects/bar' as allowed_google_producers_resource_hierarchy_levels. This allowlists this network to connect with any Producer instance within the 'foo' organization or the 'bar' project. By default, allowed_google_producers_resource_hierarchy_level is empty. The format for each allowed_google_producers_resource_hierarchy_level is / where is one of 'projects', 'folders', or 'organizations' and is either the ID or the number of the resource type. Format for each allowed_google_producers_resource_hierarchy_level value: 'projects/' or 'folders/' or 'organizations/' Eg. [projects/my-project-id, projects/567, folders/891, organizations/123] */
@@ -1764,11 +1769,11 @@ export interface PscConnection {
   /** Immutable. An immutable map for the producer instance metadata. */
   producerInstanceMetadata?: StringMap;
   /** State of the PSC Connection */
-  state?: PscConnectionStateEnum;
+  state?: PscConnectionStateEnum | (string & {});
   /** The error type indicates whether the error is consumer facing, producer facing or system internal. */
-  errorType?: PscConnectionErrorTypeEnum;
+  errorType?: PscConnectionErrorTypeEnum | (string & {});
   /** The requested IP version for the PSC connection. */
-  ipVersion?: PscConnectionIpVersionEnum;
+  ipVersion?: PscConnectionIpVersionEnum | (string & {});
   /** Output only. The URI of the subnetwork selected to allocate IP address for this connection. */
   selectedSubnetwork?: string;
   /** The PSC connection id of the PSC forwarding rule. */
@@ -1807,7 +1812,7 @@ export const PscConnection = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PscConnection" }) as any as S.Schema<PscConnection>;
 
-export type PscConnectionList = ReadonlyArray<PscConnection>;
+export type PscConnectionList = Array<PscConnection>;
 export const PscConnectionList = /*@__PURE__*/ S.Array(
   PscConnection,
 ) as any as S.Schema<PscConnectionList>;
@@ -1865,7 +1870,7 @@ export interface ServiceConnectionPolicy {
   /** A description of this resource. */
   description?: string;
   /** Output only. The type of underlying resources used to create the connection. */
-  infrastructure?: ServiceConnectionPolicyInfrastructureEnum;
+  infrastructure?: ServiceConnectionPolicyInfrastructureEnum | (string & {});
   /** Output only. Information for the automatically created subnetwork and its associated IR. */
   autoCreatedSubnetInfo?: AutoCreatedSubnetworkInfo;
 }
@@ -2033,8 +2038,7 @@ export const RouterApplianceInstance = /*@__PURE__*/ S.suspend(() =>
   identifier: "RouterApplianceInstance",
 }) as any as S.Schema<RouterApplianceInstance>;
 
-export type RouterApplianceInstanceList =
-  ReadonlyArray<RouterApplianceInstance>;
+export type RouterApplianceInstanceList = Array<RouterApplianceInstance>;
 export const RouterApplianceInstanceList = /*@__PURE__*/ S.Array(
   RouterApplianceInstance,
 ) as any as S.Schema<RouterApplianceInstanceList>;
@@ -2114,7 +2118,7 @@ export const IpRangeReservation = /*@__PURE__*/ S.suspend(() =>
   identifier: "IpRangeReservation",
 }) as any as S.Schema<IpRangeReservation>;
 
-export type IpRangeReservationList = ReadonlyArray<IpRangeReservation>;
+export type IpRangeReservationList = Array<IpRangeReservation>;
 export const IpRangeReservationList = /*@__PURE__*/ S.Array(
   IpRangeReservation,
 ) as any as S.Schema<IpRangeReservationList>;
@@ -2132,7 +2136,7 @@ export interface Gateway {
   /** Output only. The URI of the connected SACAttachment. Should be in the form: projects/{project}/locations/{location}/sacAttachments/{sac_attachment} */
   sacAttachment?: string;
   /** Optional. The aggregate processing capacity of this gateway. */
-  capacity?: GatewayCapacityEnum;
+  capacity?: GatewayCapacityEnum | (string & {});
   /** Output only. The list of Cloud Routers that are connected to this gateway. Should be in the form: https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/routers/{router} */
   cloudRouters?: StringList;
 }
@@ -2174,7 +2178,7 @@ export interface StateReason {
   /** Human-readable details about this reason. */
   message?: string;
   /** The code associated with this reason. */
-  code?: StateReasonCodeEnum;
+  code?: StateReasonCodeEnum | (string & {});
   /** Additional information provided by the user in the RejectSpoke call. */
   userDetails?: string;
 }
@@ -2186,7 +2190,7 @@ export const StateReason = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "StateReason" }) as any as S.Schema<StateReason>;
 
-export type StateReasonList = ReadonlyArray<StateReason>;
+export type StateReasonList = Array<StateReason>;
 export const StateReasonList = /*@__PURE__*/ S.Array(
   StateReason,
 ) as any as S.Schema<StateReasonList>;
@@ -2286,7 +2290,7 @@ export const LinkedVpcNetwork = /*@__PURE__*/ S.suspend(() =>
 /** A Network Connectivity Center spoke represents one or more network connectivity resources. When you create a spoke, you associate it with a hub. You must also identify a value for exactly one of the following fields: * linked_vpn_tunnels * linked_interconnect_attachments * linked_router_appliance_instances * linked_vpc_network */
 export interface Spoke {
   /** Output only. The type of resource associated with the spoke. */
-  spokeType?: SpokeSpokeTypeEnum;
+  spokeType?: SpokeSpokeTypeEnum | (string & {});
   /** Output only. The time the spoke was last updated. */
   updateTime?: string;
   /** Optional. Router appliance instances that are associated with the spoke. */
@@ -2300,7 +2304,7 @@ export interface Spoke {
   /** Output only. The time the spoke was created. */
   createTime?: string;
   /** Output only. The current lifecycle state of this spoke. */
-  state?: SpokeStateEnum;
+  state?: SpokeStateEnum | (string & {});
   /** Optional labels in key-value pair format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements). */
   labels?: StringMap;
   /** Immutable. The name of the hub that this spoke is attached to. */
@@ -2403,7 +2407,7 @@ export interface GatewayAdvertisedRoute {
   /** An optional description of the gateway advertised route. */
   description?: string;
   /** Optional. The recipient of this advertised route. */
-  recipient?: GatewayAdvertisedRouteRecipientEnum;
+  recipient?: GatewayAdvertisedRouteRecipientEnum | (string & {});
   /** Output only. The Google-generated UUID for the gateway advertised route. This value is unique across all gateway advertised route resources. If a gateway advertised route is deleted and another with the same name is created, the new route is assigned a different `unique_id`. */
   uniqueId?: string;
   /** Identifier. The name of the gateway advertised route. Route names must be unique and use the following form: `projects/{project_number}/locations/{region}/spokes/{spoke}/gatewayAdvertisedRoutes/{gateway_advertised_route_id}` */
@@ -2413,7 +2417,7 @@ export interface GatewayAdvertisedRoute {
   /** Output only. The time the gateway advertised route was created. */
   createTime?: string;
   /** Output only. The current lifecycle state of this gateway advertised route. */
-  state?: GatewayAdvertisedRouteStateEnum;
+  state?: GatewayAdvertisedRouteStateEnum | (string & {});
   /** Optional labels in key-value pair format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements). */
   labels?: StringMap;
 }
@@ -2498,7 +2502,7 @@ export const TransportStateEnum = /*@__PURE__*/ S.String;
 /** Message describing Transport object. */
 export interface Transport {
   /** Optional. Bandwidth of the Transport. This must be one of the supported bandwidths for the remote profile, and must be set when no activation key is being provided. */
-  bandwidth?: TransportBandwidthEnum;
+  bandwidth?: TransportBandwidthEnum | (string & {});
   /** Optional. Description of the Transport. */
   description?: string;
   /** Optional. Immutable. The user supplied account id for the CSP associated with the remote profile. */
@@ -2514,7 +2518,7 @@ export interface Transport {
   /** Output only. Update time stamp. */
   updateTime?: string;
   /** Optional. IP version stack for the established connectivity. */
-  stackType?: TransportStackTypeEnum;
+  stackType?: TransportStackTypeEnum | (string & {});
   /** Optional. Immutable. Name of the remoteTransportProfile that this Transport is connecting to. */
   remoteProfile?: string;
   /** Optional. Immutable. Key used for establishing a connection with the remote transport. This key can only be provided if the profile supports an INPUT key flow and the resource is in the PENDING_KEY state. */
@@ -2528,7 +2532,7 @@ export interface Transport {
   /** Output only. Google-generated activation key. This is only output if the selected profile supports an OUTPUT key flow. Inputting this to the provider is only valid while the resource is in a PENDING_KEY state. Once the provider has accepted the key, the resource will move to the CONFIGURING state. */
   generatedActivationKey?: string;
   /** Output only. State of the underlying connectivity. */
-  state?: TransportStateEnum;
+  state?: TransportStateEnum | (string & {});
 }
 export const Transport = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3028,7 +3032,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
-export type BindingList = ReadonlyArray<Binding>;
+export type BindingList = Array<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -3043,7 +3047,7 @@ export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
 export interface AuditLogConfig {
   /** The log type that this config enables. */
-  logType?: AuditLogConfigLogTypeEnum;
+  logType?: AuditLogConfigLogTypeEnum | (string & {});
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
   exemptedMembers?: StringList;
 }
@@ -3054,7 +3058,7 @@ export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
-export type AuditLogConfigList = ReadonlyArray<AuditLogConfig>;
+export type AuditLogConfigList = Array<AuditLogConfig>;
 export const AuditLogConfigList = /*@__PURE__*/ S.Array(
   AuditLogConfig,
 ) as any as S.Schema<AuditLogConfigList>;
@@ -3073,7 +3077,7 @@ export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
-export type AuditConfigList = ReadonlyArray<AuditConfig>;
+export type AuditConfigList = Array<AuditConfig>;
 export const AuditConfigList = /*@__PURE__*/ S.Array(
   AuditConfig,
 ) as any as S.Schema<AuditConfigList>;
@@ -3325,7 +3329,7 @@ export interface Group {
   /** Output only. The Google-generated UUID for the group. This value is unique across all group resources. If a group is deleted and another with the same name is created, the new route table is assigned a different unique_id. */
   uid?: string;
   /** Output only. The current lifecycle state of this group. */
-  state?: GroupStateEnum;
+  state?: GroupStateEnum | (string & {});
   /** Optional. Labels in key-value pair format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements). */
   labels?: StringMap;
 }
@@ -3702,7 +3706,7 @@ export const ServiceConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ServiceConfig" }) as any as S.Schema<ServiceConfig>;
 
-export type ServiceConfigList = ReadonlyArray<ServiceConfig>;
+export type ServiceConfigList = Array<ServiceConfig>;
 export const ServiceConfigList = /*@__PURE__*/ S.Array(
   ServiceConfig,
 ) as any as S.Schema<ServiceConfigList>;
@@ -3838,7 +3842,7 @@ export const RemoteTransportProfileSupportedBandwidthsItemEnum =
   /*@__PURE__*/ S.String;
 
 export type RemoteTransportProfileSupportedBandwidthsItemEnumList =
-  ReadonlyArray<RemoteTransportProfileSupportedBandwidthsItemEnum>;
+  Array<RemoteTransportProfileSupportedBandwidthsItemEnum>;
 export const RemoteTransportProfileSupportedBandwidthsItemEnumList =
   /*@__PURE__*/ S.Array(
     RemoteTransportProfileSupportedBandwidthsItemEnum,
@@ -4077,7 +4081,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = ReadonlyArray<Location>;
+export type LocationList = Array<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -4129,7 +4133,7 @@ export const ListProjectsLocationsAutomatedDnsRecordsRequest =
     identifier: "ListProjectsLocationsAutomatedDnsRecordsRequest",
   }) as any as S.Schema<ListProjectsLocationsAutomatedDnsRecordsRequest>;
 
-export type AutomatedDnsRecordList = ReadonlyArray<AutomatedDnsRecord>;
+export type AutomatedDnsRecordList = Array<AutomatedDnsRecord>;
 export const AutomatedDnsRecordList = /*@__PURE__*/ S.Array(
   AutomatedDnsRecord,
 ) as any as S.Schema<AutomatedDnsRecordList>;
@@ -4184,7 +4188,7 @@ export const ListProjectsLocationsGlobalHubsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsGlobalHubsRequest",
 }) as any as S.Schema<ListProjectsLocationsGlobalHubsRequest>;
 
-export type HubList = ReadonlyArray<Hub>;
+export type HubList = Array<Hub>;
 export const HubList = /*@__PURE__*/ S.Array(Hub) as any as S.Schema<HubList>;
 
 /** Response for HubService.ListHubs method. */
@@ -4237,7 +4241,7 @@ export const ListProjectsLocationsGlobalHubsGroupsRequest =
     identifier: "ListProjectsLocationsGlobalHubsGroupsRequest",
   }) as any as S.Schema<ListProjectsLocationsGlobalHubsGroupsRequest>;
 
-export type GroupList = ReadonlyArray<Group>;
+export type GroupList = Array<Group>;
 export const GroupList = /*@__PURE__*/ S.Array(
   Group,
 ) as any as S.Schema<GroupList>;
@@ -4292,7 +4296,7 @@ export const ListProjectsLocationsGlobalHubsRouteTablesRequest =
     identifier: "ListProjectsLocationsGlobalHubsRouteTablesRequest",
   }) as any as S.Schema<ListProjectsLocationsGlobalHubsRouteTablesRequest>;
 
-export type RouteTableList = ReadonlyArray<RouteTable>;
+export type RouteTableList = Array<RouteTable>;
 export const RouteTableList = /*@__PURE__*/ S.Array(
   RouteTable,
 ) as any as S.Schema<RouteTableList>;
@@ -4347,7 +4351,7 @@ export const ListProjectsLocationsGlobalHubsRouteTablesRoutesRequest =
     identifier: "ListProjectsLocationsGlobalHubsRouteTablesRoutesRequest",
   }) as any as S.Schema<ListProjectsLocationsGlobalHubsRouteTablesRoutesRequest>;
 
-export type RouteList = ReadonlyArray<Route>;
+export type RouteList = Array<Route>;
 export const RouteList = /*@__PURE__*/ S.Array(
   Route,
 ) as any as S.Schema<RouteList>;
@@ -4402,7 +4406,7 @@ export const ListProjectsLocationsGlobalPolicyBasedRoutesRequest =
     identifier: "ListProjectsLocationsGlobalPolicyBasedRoutesRequest",
   }) as any as S.Schema<ListProjectsLocationsGlobalPolicyBasedRoutesRequest>;
 
-export type PolicyBasedRouteList = ReadonlyArray<PolicyBasedRoute>;
+export type PolicyBasedRouteList = Array<PolicyBasedRoute>;
 export const PolicyBasedRouteList = /*@__PURE__*/ S.Array(
   PolicyBasedRoute,
 ) as any as S.Schema<PolicyBasedRouteList>;
@@ -4457,7 +4461,7 @@ export const ListProjectsLocationsInternalRangesRequest =
     identifier: "ListProjectsLocationsInternalRangesRequest",
   }) as any as S.Schema<ListProjectsLocationsInternalRangesRequest>;
 
-export type InternalRangeList = ReadonlyArray<InternalRange>;
+export type InternalRangeList = Array<InternalRange>;
 export const InternalRangeList = /*@__PURE__*/ S.Array(
   InternalRange,
 ) as any as S.Schema<InternalRangeList>;
@@ -4516,7 +4520,7 @@ export const ListProjectsLocationsMulticloudDataTransferConfigsRequest =
   }) as any as S.Schema<ListProjectsLocationsMulticloudDataTransferConfigsRequest>;
 
 export type MulticloudDataTransferConfigList =
-  ReadonlyArray<MulticloudDataTransferConfig>;
+  Array<MulticloudDataTransferConfig>;
 export const MulticloudDataTransferConfigList = /*@__PURE__*/ S.Array(
   MulticloudDataTransferConfig,
 ) as any as S.Schema<MulticloudDataTransferConfigList>;
@@ -4578,7 +4582,7 @@ export const ListProjectsLocationsMulticloudDataTransferConfigsDestinationsReque
       "ListProjectsLocationsMulticloudDataTransferConfigsDestinationsRequest",
   }) as any as S.Schema<ListProjectsLocationsMulticloudDataTransferConfigsDestinationsRequest>;
 
-export type DestinationList = ReadonlyArray<Destination>;
+export type DestinationList = Array<Destination>;
 export const DestinationList = /*@__PURE__*/ S.Array(
   Destination,
 ) as any as S.Schema<DestinationList>;
@@ -4629,7 +4633,7 @@ export const ListProjectsLocationsMulticloudDataTransferSupportedServicesRequest
   }) as any as S.Schema<ListProjectsLocationsMulticloudDataTransferSupportedServicesRequest>;
 
 export type MulticloudDataTransferSupportedServiceList =
-  ReadonlyArray<MulticloudDataTransferSupportedService>;
+  Array<MulticloudDataTransferSupportedService>;
 export const MulticloudDataTransferSupportedServiceList = /*@__PURE__*/ S.Array(
   MulticloudDataTransferSupportedService,
 ) as any as S.Schema<MulticloudDataTransferSupportedServiceList>;
@@ -4684,8 +4688,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type GoogleLongrunningOperationList =
-  ReadonlyArray<GoogleLongrunningOperation>;
+export type GoogleLongrunningOperationList = Array<GoogleLongrunningOperation>;
 export const GoogleLongrunningOperationList = /*@__PURE__*/ S.Array(
   GoogleLongrunningOperation,
 ) as any as S.Schema<GoogleLongrunningOperationList>;
@@ -4741,7 +4744,7 @@ export const ListProjectsLocationsPscAuthorizationPoliciesRequest =
     identifier: "ListProjectsLocationsPscAuthorizationPoliciesRequest",
   }) as any as S.Schema<ListProjectsLocationsPscAuthorizationPoliciesRequest>;
 
-export type PscAuthorizationPolicyList = ReadonlyArray<PscAuthorizationPolicy>;
+export type PscAuthorizationPolicyList = Array<PscAuthorizationPolicy>;
 export const PscAuthorizationPolicyList = /*@__PURE__*/ S.Array(
   PscAuthorizationPolicy,
 ) as any as S.Schema<PscAuthorizationPolicyList>;
@@ -4797,7 +4800,7 @@ export const ListProjectsLocationsRegionalEndpointsRequest =
     identifier: "ListProjectsLocationsRegionalEndpointsRequest",
   }) as any as S.Schema<ListProjectsLocationsRegionalEndpointsRequest>;
 
-export type RegionalEndpointList = ReadonlyArray<RegionalEndpoint>;
+export type RegionalEndpointList = Array<RegionalEndpoint>;
 export const RegionalEndpointList = /*@__PURE__*/ S.Array(
   RegionalEndpoint,
 ) as any as S.Schema<RegionalEndpointList>;
@@ -4852,7 +4855,7 @@ export const ListProjectsLocationsRemoteTransportProfilesRequest =
     identifier: "ListProjectsLocationsRemoteTransportProfilesRequest",
   }) as any as S.Schema<ListProjectsLocationsRemoteTransportProfilesRequest>;
 
-export type RemoteTransportProfileList = ReadonlyArray<RemoteTransportProfile>;
+export type RemoteTransportProfileList = Array<RemoteTransportProfile>;
 export const RemoteTransportProfileList = /*@__PURE__*/ S.Array(
   RemoteTransportProfile,
 ) as any as S.Schema<RemoteTransportProfileList>;
@@ -4907,7 +4910,7 @@ export const ListProjectsLocationsServiceClassesRequest =
     identifier: "ListProjectsLocationsServiceClassesRequest",
   }) as any as S.Schema<ListProjectsLocationsServiceClassesRequest>;
 
-export type ServiceClassList = ReadonlyArray<ServiceClass>;
+export type ServiceClassList = Array<ServiceClass>;
 export const ServiceClassList = /*@__PURE__*/ S.Array(
   ServiceClass,
 ) as any as S.Schema<ServiceClassList>;
@@ -4962,7 +4965,7 @@ export const ListProjectsLocationsServiceConnectionMapsRequest =
     identifier: "ListProjectsLocationsServiceConnectionMapsRequest",
   }) as any as S.Schema<ListProjectsLocationsServiceConnectionMapsRequest>;
 
-export type ServiceConnectionMapList = ReadonlyArray<ServiceConnectionMap>;
+export type ServiceConnectionMapList = Array<ServiceConnectionMap>;
 export const ServiceConnectionMapList = /*@__PURE__*/ S.Array(
   ServiceConnectionMap,
 ) as any as S.Schema<ServiceConnectionMapList>;
@@ -5017,8 +5020,7 @@ export const ListProjectsLocationsServiceConnectionPoliciesRequest =
     identifier: "ListProjectsLocationsServiceConnectionPoliciesRequest",
   }) as any as S.Schema<ListProjectsLocationsServiceConnectionPoliciesRequest>;
 
-export type ServiceConnectionPolicyList =
-  ReadonlyArray<ServiceConnectionPolicy>;
+export type ServiceConnectionPolicyList = Array<ServiceConnectionPolicy>;
 export const ServiceConnectionPolicyList = /*@__PURE__*/ S.Array(
   ServiceConnectionPolicy,
 ) as any as S.Schema<ServiceConnectionPolicyList>;
@@ -5074,7 +5076,7 @@ export const ListProjectsLocationsServiceConnectionTokensRequest =
     identifier: "ListProjectsLocationsServiceConnectionTokensRequest",
   }) as any as S.Schema<ListProjectsLocationsServiceConnectionTokensRequest>;
 
-export type ServiceConnectionTokenList = ReadonlyArray<ServiceConnectionToken>;
+export type ServiceConnectionTokenList = Array<ServiceConnectionToken>;
 export const ServiceConnectionTokenList = /*@__PURE__*/ S.Array(
   ServiceConnectionToken,
 ) as any as S.Schema<ServiceConnectionTokenList>;
@@ -5128,7 +5130,7 @@ export const ListProjectsLocationsSpokesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsSpokesRequest",
 }) as any as S.Schema<ListProjectsLocationsSpokesRequest>;
 
-export type SpokeList = ReadonlyArray<Spoke>;
+export type SpokeList = Array<Spoke>;
 export const SpokeList = /*@__PURE__*/ S.Array(
   Spoke,
 ) as any as S.Schema<SpokeList>;
@@ -5183,7 +5185,7 @@ export const ListProjectsLocationsSpokesGatewayAdvertisedRoutesRequest =
     identifier: "ListProjectsLocationsSpokesGatewayAdvertisedRoutesRequest",
   }) as any as S.Schema<ListProjectsLocationsSpokesGatewayAdvertisedRoutesRequest>;
 
-export type GatewayAdvertisedRouteList = ReadonlyArray<GatewayAdvertisedRoute>;
+export type GatewayAdvertisedRouteList = Array<GatewayAdvertisedRoute>;
 export const GatewayAdvertisedRouteList = /*@__PURE__*/ S.Array(
   GatewayAdvertisedRoute,
 ) as any as S.Schema<GatewayAdvertisedRouteList>;
@@ -5238,7 +5240,7 @@ export const ListProjectsLocationsTransportsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsTransportsRequest",
 }) as any as S.Schema<ListProjectsLocationsTransportsRequest>;
 
-export type TransportList = ReadonlyArray<Transport>;
+export type TransportList = Array<Transport>;
 export const TransportList = /*@__PURE__*/ S.Array(
   Transport,
 ) as any as S.Schema<TransportList>;
@@ -5727,7 +5729,7 @@ export const HubStatusEntry = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "HubStatusEntry" }) as any as S.Schema<HubStatusEntry>;
 
-export type HubStatusEntryList = ReadonlyArray<HubStatusEntry>;
+export type HubStatusEntryList = Array<HubStatusEntry>;
 export const HubStatusEntryList = /*@__PURE__*/ S.Array(
   HubStatusEntry,
 ) as any as S.Schema<HubStatusEntryList>;

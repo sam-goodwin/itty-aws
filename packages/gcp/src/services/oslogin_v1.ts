@@ -214,7 +214,7 @@ export const PosixAccount = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PosixAccount" }) as any as S.Schema<PosixAccount>;
 
-export type PosixAccountList = ReadonlyArray<PosixAccount>;
+export type PosixAccountList = Array<PosixAccount>;
 export const PosixAccountList = /*@__PURE__*/ S.Array(
   PosixAccount,
 ) as any as S.Schema<PosixAccountList>;
@@ -260,7 +260,7 @@ export const GetUsersSshPublicKeysRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetUsersSshPublicKeysRequest",
 }) as any as S.Schema<GetUsersSshPublicKeysRequest>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;

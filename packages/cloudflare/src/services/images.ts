@@ -104,7 +104,7 @@ export const CreateV1Request = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateV1Request",
 }) as any as S.Schema<CreateV1Request>;
 
-export type V1CreateResponseVariantsList = ReadonlyArray<string>;
+export type V1CreateResponseVariantsList = Array<string>;
 export const V1CreateResponseVariantsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<V1CreateResponseVariantsList>;
@@ -372,8 +372,7 @@ export const V1KeysDeleteResponseKeysItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "V1KeysDeleteResponseKeysItem",
 }) as any as S.Schema<V1KeysDeleteResponseKeysItem>;
 
-export type V1KeysDeleteResponseKeysList =
-  ReadonlyArray<V1KeysDeleteResponseKeysItem>;
+export type V1KeysDeleteResponseKeysList = Array<V1KeysDeleteResponseKeysItem>;
 export const V1KeysDeleteResponseKeysList = /*@__PURE__*/ S.Array(
   V1KeysDeleteResponseKeysItem,
 ) as any as S.Schema<V1KeysDeleteResponseKeysList>;
@@ -440,7 +439,7 @@ export const GetV1Request = /*@__PURE__*/ S.suspend(() =>
     .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "GetV1Request" }) as any as S.Schema<GetV1Request>;
 
-export type V1GetResponseVariantsList = ReadonlyArray<string>;
+export type V1GetResponseVariantsList = Array<string>;
 export const V1GetResponseVariantsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<V1GetResponseVariantsList>;
@@ -673,8 +672,7 @@ export const V1KeysListResponseKeysItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "V1KeysListResponseKeysItem",
 }) as any as S.Schema<V1KeysListResponseKeysItem>;
 
-export type V1KeysListResponseKeysList =
-  ReadonlyArray<V1KeysListResponseKeysItem>;
+export type V1KeysListResponseKeysList = Array<V1KeysListResponseKeysItem>;
 export const V1KeysListResponseKeysList = /*@__PURE__*/ S.Array(
   V1KeysListResponseKeysItem,
 ) as any as S.Schema<V1KeysListResponseKeysList>;
@@ -718,7 +716,7 @@ export const ListV1sRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "ListV1sRequest" }) as any as S.Schema<ListV1sRequest>;
 
-export type V1ListResponseImagesItemVariantsList = ReadonlyArray<string>;
+export type V1ListResponseImagesItemVariantsList = Array<string>;
 export const V1ListResponseImagesItemVariantsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<V1ListResponseImagesItemVariantsList>;
@@ -753,7 +751,7 @@ export const V1ListResponseImagesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "V1ListResponseImagesItem",
 }) as any as S.Schema<V1ListResponseImagesItem>;
 
-export type V1ListResponseImagesList = ReadonlyArray<V1ListResponseImagesItem>;
+export type V1ListResponseImagesList = Array<V1ListResponseImagesItem>;
 export const V1ListResponseImagesList = /*@__PURE__*/ S.Array(
   V1ListResponseImagesItem,
 ) as any as S.Schema<V1ListResponseImagesList>;
@@ -915,7 +913,7 @@ export const ListV2sRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "ListV2sRequest" }) as any as S.Schema<ListV2sRequest>;
 
-export type V2ListResponseImagesItemVariantsList = ReadonlyArray<string>;
+export type V2ListResponseImagesItemVariantsList = Array<string>;
 export const V2ListResponseImagesItemVariantsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<V2ListResponseImagesItemVariantsList>;
@@ -950,7 +948,7 @@ export const V2ListResponseImagesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "V2ListResponseImagesItem",
 }) as any as S.Schema<V2ListResponseImagesItem>;
 
-export type V2ListResponseImagesList = ReadonlyArray<V2ListResponseImagesItem>;
+export type V2ListResponseImagesList = Array<V2ListResponseImagesItem>;
 export const V2ListResponseImagesList = /*@__PURE__*/ S.Array(
   V2ListResponseImagesItem,
 ) as any as S.Schema<V2ListResponseImagesList>;
@@ -1000,7 +998,7 @@ export const PatchV1Request = /*@__PURE__*/ S.suspend(() =>
     .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "PatchV1Request" }) as any as S.Schema<PatchV1Request>;
 
-export type V1EditResponseVariantsList = ReadonlyArray<string>;
+export type V1EditResponseVariantsList = Array<string>;
 export const V1EditResponseVariantsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<V1EditResponseVariantsList>;
@@ -1202,8 +1200,7 @@ export const V1KeysUpdateResponseKeysItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "V1KeysUpdateResponseKeysItem",
 }) as any as S.Schema<V1KeysUpdateResponseKeysItem>;
 
-export type V1KeysUpdateResponseKeysList =
-  ReadonlyArray<V1KeysUpdateResponseKeysItem>;
+export type V1KeysUpdateResponseKeysList = Array<V1KeysUpdateResponseKeysItem>;
 export const V1KeysUpdateResponseKeysList = /*@__PURE__*/ S.Array(
   V1KeysUpdateResponseKeysItem,
 ) as any as S.Schema<V1KeysUpdateResponseKeysList>;

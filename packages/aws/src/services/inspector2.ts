@@ -926,7 +926,7 @@ export const DailySchedule = /*@__PURE__*/ S.suspend(() =>
 export type Day = "SUN" | "MON" | "TUE" | "WED" | "THU" | "FRI" | "SAT";
 export const Day = /*@__PURE__*/ S.String;
 
-export type DaysList = Day[];
+export type DaysList = (Day | (string & {}))[];
 export const DaysList = /*@__PURE__*/ S.Array(Day);
 export interface WeeklySchedule {
   startTime: Time;
@@ -937,7 +937,7 @@ export const WeeklySchedule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "WeeklySchedule" }) as any as S.Schema<WeeklySchedule>;
 export interface MonthlySchedule {
   startTime: Time;
-  day: Day;
+  day: Day | (string & {});
 }
 export const MonthlySchedule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ startTime: Time, day: Day }),
@@ -1114,7 +1114,7 @@ export const PeriodicScanFrequency = /*@__PURE__*/ S.String;
 
 export type FrequencyExpression = string;
 export interface PeriodicScanConfiguration {
-  frequency?: PeriodicScanFrequency;
+  frequency?: PeriodicScanFrequency | (string & {});
   frequencyExpression?: string;
 }
 export const PeriodicScanConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -1128,8 +1128,10 @@ export const PeriodicScanConfiguration = /*@__PURE__*/ S.suspend(() =>
 export type ContinuousIntegrationScanEvent = "PULL_REQUEST" | "PUSH";
 export const ContinuousIntegrationScanEvent = /*@__PURE__*/ S.String;
 
-export type ContinuousIntegrationScanSupportedEvents =
-  ContinuousIntegrationScanEvent[];
+export type ContinuousIntegrationScanSupportedEvents = (
+  | ContinuousIntegrationScanEvent
+  | (string & {})
+)[];
 export const ContinuousIntegrationScanSupportedEvents = /*@__PURE__*/ S.Array(
   ContinuousIntegrationScanEvent,
 );
@@ -1144,7 +1146,7 @@ export const ContinuousIntegrationScanConfiguration = /*@__PURE__*/ S.suspend(
 export type RuleSetCategory = "SAST" | "IAC" | "SCA";
 export const RuleSetCategory = /*@__PURE__*/ S.String;
 
-export type RuleSetCategories = RuleSetCategory[];
+export type RuleSetCategories = (RuleSetCategory | (string & {}))[];
 export const RuleSetCategories = /*@__PURE__*/ S.Array(RuleSetCategory);
 export interface CodeSecurityScanConfiguration {
   periodicScanConfiguration?: PeriodicScanConfiguration;
@@ -1166,7 +1168,7 @@ export type ProjectSelectionScope = "ALL";
 export const ProjectSelectionScope = /*@__PURE__*/ S.String;
 
 export interface ScopeSettings {
-  projectSelectionScope?: ProjectSelectionScope;
+  projectSelectionScope?: ProjectSelectionScope | (string & {});
 }
 export const ScopeSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ projectSelectionScope: S.optional(ProjectSelectionScope) }),

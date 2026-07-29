@@ -382,7 +382,7 @@ export type NfsVersion = "AUTOMATIC" | "NFS3" | "NFS4_0" | "NFS4_1";
 export const NfsVersion = /*@__PURE__*/ S.String;
 
 export interface NfsMountOptions {
-  Version?: NfsVersion;
+  Version?: NfsVersion | (string & {});
 }
 export const NfsMountOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Version: S.optional(NfsVersion) }),
@@ -400,7 +400,7 @@ export type SmbVersion = "AUTOMATIC" | "SMB2" | "SMB3" | "SMB1" | "SMB2_0";
 export const SmbVersion = /*@__PURE__*/ S.String;
 
 export interface SmbMountOptions {
-  Version?: SmbVersion;
+  Version?: SmbVersion | (string & {});
 }
 export const SmbMountOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Version: S.optional(SmbVersion) }),
@@ -573,8 +573,8 @@ export type HdfsDataTransferProtection =
 export const HdfsDataTransferProtection = /*@__PURE__*/ S.String;
 
 export interface QopConfiguration {
-  RpcProtection?: HdfsRpcProtection;
-  DataTransferProtection?: HdfsDataTransferProtection;
+  RpcProtection?: HdfsRpcProtection | (string & {});
+  DataTransferProtection?: HdfsDataTransferProtection | (string & {});
 }
 export const QopConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -880,21 +880,21 @@ export type ObjectTags = "PRESERVE" | "NONE";
 export const ObjectTags = /*@__PURE__*/ S.String;
 
 export interface Options {
-  VerifyMode?: VerifyMode;
-  OverwriteMode?: OverwriteMode;
-  Atime?: Atime;
-  Mtime?: Mtime;
-  Uid?: Uid;
-  Gid?: Gid;
-  PreserveDeletedFiles?: PreserveDeletedFiles;
-  PreserveDevices?: PreserveDevices;
-  PosixPermissions?: PosixPermissions;
+  VerifyMode?: VerifyMode | (string & {});
+  OverwriteMode?: OverwriteMode | (string & {});
+  Atime?: Atime | (string & {});
+  Mtime?: Mtime | (string & {});
+  Uid?: Uid | (string & {});
+  Gid?: Gid | (string & {});
+  PreserveDeletedFiles?: PreserveDeletedFiles | (string & {});
+  PreserveDevices?: PreserveDevices | (string & {});
+  PosixPermissions?: PosixPermissions | (string & {});
   BytesPerSecond?: number;
-  TaskQueueing?: TaskQueueing;
-  LogLevel?: LogLevel;
-  TransferMode?: TransferMode;
-  SecurityDescriptorCopyFlags?: SmbSecurityDescriptorCopyFlags;
-  ObjectTags?: ObjectTags;
+  TaskQueueing?: TaskQueueing | (string & {});
+  LogLevel?: LogLevel | (string & {});
+  TransferMode?: TransferMode | (string & {});
+  SecurityDescriptorCopyFlags?: SmbSecurityDescriptorCopyFlags | (string & {});
+  ObjectTags?: ObjectTags | (string & {});
 }
 export const Options = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -920,7 +920,7 @@ export const FilterType = /*@__PURE__*/ S.String;
 
 export type FilterValue = string;
 export interface FilterRule {
-  FilterType?: FilterType;
+  FilterType?: FilterType | (string & {});
   Value?: string;
 }
 export const FilterRule = /*@__PURE__*/ S.suspend(() =>
@@ -934,7 +934,7 @@ export const ScheduleStatus = /*@__PURE__*/ S.String;
 
 export interface TaskSchedule {
   ScheduleExpression: string;
-  Status?: ScheduleStatus;
+  Status?: ScheduleStatus | (string & {});
 }
 export const TaskSchedule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -974,8 +974,8 @@ export const SourceManifestConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "SourceManifestConfig",
 }) as any as S.Schema<SourceManifestConfig>;
 export interface ManifestConfig {
-  Action?: ManifestAction;
-  Format?: ManifestFormat;
+  Action?: ManifestAction | (string & {});
+  Format?: ManifestFormat | (string & {});
   Source?: SourceManifestConfig;
 }
 export const ManifestConfig = /*@__PURE__*/ S.suspend(() =>
@@ -1017,7 +1017,7 @@ export type ObjectVersionIds = "INCLUDE" | "NONE";
 export const ObjectVersionIds = /*@__PURE__*/ S.String;
 
 export interface ReportOverride {
-  ReportLevel?: ReportLevel;
+  ReportLevel?: ReportLevel | (string & {});
 }
 export const ReportOverride = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ReportLevel: S.optional(ReportLevel) }),
@@ -1040,9 +1040,9 @@ export const ReportOverrides = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReportOverrides>;
 export interface TaskReportConfig {
   Destination?: ReportDestination;
-  OutputType?: ReportOutputType;
-  ReportLevel?: ReportLevel;
-  ObjectVersionIds?: ObjectVersionIds;
+  OutputType?: ReportOutputType | (string & {});
+  ReportLevel?: ReportLevel | (string & {});
+  ObjectVersionIds?: ObjectVersionIds | (string & {});
   Overrides?: ReportOverrides;
 }
 export const TaskReportConfig = /*@__PURE__*/ S.suspend(() =>

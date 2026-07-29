@@ -425,7 +425,7 @@ export type TargetSamplingRate =
 export const TargetSamplingRate = /*@__PURE__*/ S.String;
 
 export interface DataPreProcessingConfiguration {
-  TargetSamplingRate?: TargetSamplingRate;
+  TargetSamplingRate?: TargetSamplingRate | (string & {});
 }
 export const DataPreProcessingConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ TargetSamplingRate: S.optional(TargetSamplingRate) }),

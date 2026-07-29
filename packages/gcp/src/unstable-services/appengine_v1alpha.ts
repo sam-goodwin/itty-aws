@@ -76,7 +76,7 @@ export interface ManagedCertificate {
   /** Time at which the certificate was last renewed. The renewal process is fully managed. Certificate renewal will automatically occur before the certificate expires. Renewal errors can be tracked via ManagementStatus.@OutputOnly */
   lastRenewalTime?: string;
   /** Status of certificate management. Refers to the most recent certificate acquisition or renewal attempt.@OutputOnly */
-  status?: ManagedCertificateStatusEnum;
+  status?: ManagedCertificateStatusEnum | (string & {});
 }
 export const ManagedCertificate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -87,7 +87,7 @@ export const ManagedCertificate = /*@__PURE__*/ S.suspend(() =>
   identifier: "ManagedCertificate",
 }) as any as S.Schema<ManagedCertificate>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -194,7 +194,7 @@ export const ResourceRecordTypeEnum = /*@__PURE__*/ S.String;
 /** A DNS resource record. */
 export interface ResourceRecord {
   /** Resource record type. Example: AAAA. */
-  type?: ResourceRecordTypeEnum;
+  type?: ResourceRecordTypeEnum | (string & {});
   /** Relative name of the object affected by this record. Only applicable for CNAME records. Example: 'www'. */
   name?: string;
   /** Data for this record. Values vary by record type, as defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1). */
@@ -208,7 +208,7 @@ export const ResourceRecord = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ResourceRecord" }) as any as S.Schema<ResourceRecord>;
 
-export type ResourceRecordList = ReadonlyArray<ResourceRecord>;
+export type ResourceRecordList = Array<ResourceRecord>;
 export const ResourceRecordList = /*@__PURE__*/ S.Array(
   ResourceRecord,
 ) as any as S.Schema<ResourceRecordList>;
@@ -270,7 +270,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -767,7 +767,7 @@ export const ListAppsAuthorizedCertificatesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListAppsAuthorizedCertificatesRequest",
 }) as any as S.Schema<ListAppsAuthorizedCertificatesRequest>;
 
-export type AuthorizedCertificateList = ReadonlyArray<AuthorizedCertificate>;
+export type AuthorizedCertificateList = Array<AuthorizedCertificate>;
 export const AuthorizedCertificateList = /*@__PURE__*/ S.Array(
   AuthorizedCertificate,
 ) as any as S.Schema<AuthorizedCertificateList>;
@@ -828,7 +828,7 @@ export const AuthorizedDomain = /*@__PURE__*/ S.suspend(() =>
   identifier: "AuthorizedDomain",
 }) as any as S.Schema<AuthorizedDomain>;
 
-export type AuthorizedDomainList = ReadonlyArray<AuthorizedDomain>;
+export type AuthorizedDomainList = Array<AuthorizedDomain>;
 export const AuthorizedDomainList = /*@__PURE__*/ S.Array(
   AuthorizedDomain,
 ) as any as S.Schema<AuthorizedDomainList>;
@@ -873,7 +873,7 @@ export const ListAppsDomainMappingsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAppsDomainMappingsRequest",
 }) as any as S.Schema<ListAppsDomainMappingsRequest>;
 
-export type DomainMappingList = ReadonlyArray<DomainMapping>;
+export type DomainMappingList = Array<DomainMapping>;
 export const DomainMappingList = /*@__PURE__*/ S.Array(
   DomainMapping,
 ) as any as S.Schema<DomainMappingList>;
@@ -924,7 +924,7 @@ export const ListAppsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAppsLocationsRequest",
 }) as any as S.Schema<ListAppsLocationsRequest>;
 
-export type LocationList = ReadonlyArray<Location>;
+export type LocationList = Array<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -975,7 +975,7 @@ export const ListAppsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAppsOperationsRequest",
 }) as any as S.Schema<ListAppsOperationsRequest>;
 
-export type OperationList = ReadonlyArray<Operation>;
+export type OperationList = Array<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;

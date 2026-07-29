@@ -147,7 +147,7 @@ export const DataWarehouseSavedQueryOutputColumnsItemMap =
   ) as any as S.Schema<DataWarehouseSavedQueryOutputColumnsItemMap>;
 
 export type DataWarehouseSavedQueryOutputColumnsList =
-  ReadonlyArray<DataWarehouseSavedQueryOutputColumnsItemMap>;
+  Array<DataWarehouseSavedQueryOutputColumnsItemMap>;
 export const DataWarehouseSavedQueryOutputColumnsList = /*@__PURE__*/ S.Array(
   DataWarehouseSavedQueryOutputColumnsItemMap,
 ) as any as S.Schema<DataWarehouseSavedQueryOutputColumnsList>;
@@ -589,7 +589,7 @@ export const DataWarehouseSavedQueryMinimalColumnsItemMap =
   ) as any as S.Schema<DataWarehouseSavedQueryMinimalColumnsItemMap>;
 
 export type DataWarehouseSavedQueryMinimalColumnsList =
-  ReadonlyArray<DataWarehouseSavedQueryMinimalColumnsItemMap>;
+  Array<DataWarehouseSavedQueryMinimalColumnsItemMap>;
 export const DataWarehouseSavedQueryMinimalColumnsList = /*@__PURE__*/ S.Array(
   DataWarehouseSavedQueryMinimalColumnsItemMap,
 ) as any as S.Schema<DataWarehouseSavedQueryMinimalColumnsList>;
@@ -649,7 +649,7 @@ export const DataWarehouseSavedQueryMinimal = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DataWarehouseSavedQueryMinimal>;
 
 export type PaginatedDataWarehouseSavedQueryMinimalListResultsList =
-  ReadonlyArray<DataWarehouseSavedQueryMinimal>;
+  Array<DataWarehouseSavedQueryMinimal>;
 export const PaginatedDataWarehouseSavedQueryMinimalListResultsList =
   /*@__PURE__*/ S.Array(
     DataWarehouseSavedQueryMinimal,

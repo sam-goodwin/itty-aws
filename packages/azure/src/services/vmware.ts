@@ -290,7 +290,7 @@ export const Addon = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Addon" }) as any as S.Schema<Addon>;
 
 /** The Addon items on this page */
-export type AddonListValueList = ReadonlyArray<Addon>;
+export type AddonListValueList = Array<Addon>;
 export const AddonListValueList = /*@__PURE__*/ S.Array(
   Addon,
 ) as any as S.Schema<AddonListValueList>;
@@ -549,7 +549,7 @@ export const ExpressRouteAuthorization = /*@__PURE__*/ S.suspend(() =>
 
 /** The ExpressRouteAuthorization items on this page */
 export type ExpressRouteAuthorizationListValueList =
-  ReadonlyArray<ExpressRouteAuthorization>;
+  Array<ExpressRouteAuthorization>;
 export const ExpressRouteAuthorizationListValueList = /*@__PURE__*/ S.Array(
   ExpressRouteAuthorization,
 ) as any as S.Schema<ExpressRouteAuthorizationListValueList>;
@@ -806,7 +806,7 @@ export const CloudLink = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CloudLink" }) as any as S.Schema<CloudLink>;
 
 /** The CloudLink items on this page */
-export type CloudLinkListValueList = ReadonlyArray<CloudLink>;
+export type CloudLinkListValueList = Array<CloudLink>;
 export const CloudLinkListValueList = /*@__PURE__*/ S.Array(
   CloudLink,
 ) as any as S.Schema<CloudLinkListValueList>;
@@ -826,7 +826,7 @@ export const CloudLinkList = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CloudLinkList" }) as any as S.Schema<CloudLinkList>;
 
 /** The hosts */
-export type ClusterPropertiesInputHostsList = ReadonlyArray<string>;
+export type ClusterPropertiesInputHostsList = Array<string>;
 export const ClusterPropertiesInputHostsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ClusterPropertiesInputHostsList>;
@@ -923,7 +923,7 @@ export type ClusterProvisioningState =
 export const ClusterProvisioningState = /*@__PURE__*/ S.String;
 
 /** The hosts */
-export type ClusterPropertiesHostsList = ReadonlyArray<string>;
+export type ClusterPropertiesHostsList = Array<string>;
 export const ClusterPropertiesHostsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ClusterPropertiesHostsList>;
@@ -1192,7 +1192,7 @@ export const Cluster = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Cluster" }) as any as S.Schema<Cluster>;
 
 /** The Cluster items on this page */
-export type ClusterListValueList = ReadonlyArray<Cluster>;
+export type ClusterListValueList = Array<Cluster>;
 export const ClusterListValueList = /*@__PURE__*/ S.Array(
   Cluster,
 ) as any as S.Schema<ClusterListValueList>;
@@ -1240,7 +1240,7 @@ export const ClustersListZonesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ClustersListZonesRequest>;
 
 /** List of hosts belonging to the availability zone in a cluster */
-export type ClusterZoneHostsList = ReadonlyArray<string>;
+export type ClusterZoneHostsList = Array<string>;
 export const ClusterZoneHostsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ClusterZoneHostsList>;
@@ -1260,7 +1260,7 @@ export const ClusterZone = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ClusterZone" }) as any as S.Schema<ClusterZone>;
 
 /** Zone and associated hosts info */
-export type ClusterZoneListZonesList = ReadonlyArray<ClusterZone>;
+export type ClusterZoneListZonesList = Array<ClusterZone>;
 export const ClusterZoneListZonesList = /*@__PURE__*/ S.Array(
   ClusterZone,
 ) as any as S.Schema<ClusterZoneListZonesList>;
@@ -1303,7 +1303,7 @@ export const ClustersUpdateRequestSku = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ClustersUpdateRequestSku>;
 
 /** The hosts */
-export type ClusterUpdatePropertiesHostsList = ReadonlyArray<string>;
+export type ClusterUpdatePropertiesHostsList = Array<string>;
 export const ClusterUpdatePropertiesHostsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ClusterUpdatePropertiesHostsList>;
@@ -1772,7 +1772,7 @@ export const Datastore = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Datastore" }) as any as S.Schema<Datastore>;
 
 /** The Datastore items on this page */
-export type DatastoreListValueList = ReadonlyArray<Datastore>;
+export type DatastoreListValueList = Array<Datastore>;
 export const DatastoreListValueList = /*@__PURE__*/ S.Array(
   Datastore,
 ) as any as S.Schema<DatastoreListValueList>;
@@ -2049,8 +2049,7 @@ export const GlobalReachConnection = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GlobalReachConnection>;
 
 /** The GlobalReachConnection items on this page */
-export type GlobalReachConnectionListValueList =
-  ReadonlyArray<GlobalReachConnection>;
+export type GlobalReachConnectionListValueList = Array<GlobalReachConnection>;
 export const GlobalReachConnectionListValueList = /*@__PURE__*/ S.Array(
   GlobalReachConnection,
 ) as any as S.Schema<GlobalReachConnectionListValueList>;
@@ -2308,7 +2307,7 @@ export const HcxEnterpriseSite = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HcxEnterpriseSite>;
 
 /** The HcxEnterpriseSite items on this page */
-export type HcxEnterpriseSiteListValueList = ReadonlyArray<HcxEnterpriseSite>;
+export type HcxEnterpriseSiteListValueList = Array<HcxEnterpriseSite>;
 export const HcxEnterpriseSiteListValueList = /*@__PURE__*/ S.Array(
   HcxEnterpriseSite,
 ) as any as S.Schema<HcxEnterpriseSiteListValueList>;
@@ -2401,7 +2400,7 @@ export const HostProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "HostProperties" }) as any as S.Schema<HostProperties>;
 
 /** The availability zones. */
-export type HostsGetResponseZonesList = ReadonlyArray<string>;
+export type HostsGetResponseZonesList = Array<string>;
 export const HostsGetResponseZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<HostsGetResponseZonesList>;
@@ -2489,7 +2488,7 @@ export const HostsListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HostsListRequest>;
 
 /** The availability zones. */
-export type HostZonesList = ReadonlyArray<string>;
+export type HostZonesList = Array<string>;
 export const HostZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<HostZonesList>;
@@ -2546,7 +2545,7 @@ export const Host = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Host" }) as any as S.Schema<Host>;
 
 /** The Host items on this page */
-export type HostListResultValueList = ReadonlyArray<Host>;
+export type HostListResultValueList = Array<Host>;
 export const HostListResultValueList = /*@__PURE__*/ S.Array(
   Host,
 ) as any as S.Schema<HostListResultValueList>;
@@ -2787,7 +2786,7 @@ export const IscsiPath = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IscsiPath" }) as any as S.Schema<IscsiPath>;
 
 /** The IscsiPath items on this page */
-export type IscsiPathListResultValueList = ReadonlyArray<IscsiPath>;
+export type IscsiPathListResultValueList = Array<IscsiPath>;
 export const IscsiPathListResultValueList = /*@__PURE__*/ S.Array(
   IscsiPath,
 ) as any as S.Schema<IscsiPathListResultValueList>;
@@ -3076,7 +3075,7 @@ export const License = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "License" }) as any as S.Schema<License>;
 
 /** The License items on this page */
-export type LicenseListResultValueList = ReadonlyArray<License>;
+export type LicenseListResultValueList = Array<License>;
 export const LicenseListResultValueList = /*@__PURE__*/ S.Array(
   License,
 ) as any as S.Schema<LicenseListResultValueList>;
@@ -3294,7 +3293,7 @@ export const MaintenanceManagementOperation = /*@__PURE__*/ S.suspend(() =>
 
 /** Operations on maintenance */
 export type MaintenancePropertiesOperationsList =
-  ReadonlyArray<MaintenanceManagementOperation>;
+  Array<MaintenanceManagementOperation>;
 export const MaintenancePropertiesOperationsList = /*@__PURE__*/ S.Array(
   MaintenanceManagementOperation,
 ) as any as S.Schema<MaintenancePropertiesOperationsList>;
@@ -3312,8 +3311,7 @@ export type MaintenanceReadinessStatus =
 export const MaintenanceReadinessStatus = /*@__PURE__*/ S.String;
 
 /** Steps to resolve the error */
-export type ImpactedMaintenanceResourceErrorResolutionStepsList =
-  ReadonlyArray<string>;
+export type ImpactedMaintenanceResourceErrorResolutionStepsList = Array<string>;
 export const ImpactedMaintenanceResourceErrorResolutionStepsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3348,7 +3346,7 @@ export const ImpactedMaintenanceResourceError = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of errors associated with the impacted resource */
 export type ImpactedMaintenanceResourceErrorsList =
-  ReadonlyArray<ImpactedMaintenanceResourceError>;
+  Array<ImpactedMaintenanceResourceError>;
 export const ImpactedMaintenanceResourceErrorsList = /*@__PURE__*/ S.Array(
   ImpactedMaintenanceResourceError,
 ) as any as S.Schema<ImpactedMaintenanceResourceErrorsList>;
@@ -3371,7 +3369,7 @@ export const ImpactedMaintenanceResource = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of resources impacted by the failed check */
 export type MaintenanceFailedCheckImpactedResourcesList =
-  ReadonlyArray<ImpactedMaintenanceResource>;
+  Array<ImpactedMaintenanceResource>;
 export const MaintenanceFailedCheckImpactedResourcesList =
   /*@__PURE__*/ S.Array(
     ImpactedMaintenanceResource,
@@ -3395,7 +3393,7 @@ export const MaintenanceFailedCheck = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of failed checks, if any */
 export type MaintenanceReadinessFailedChecksList =
-  ReadonlyArray<MaintenanceFailedCheck>;
+  Array<MaintenanceFailedCheck>;
 export const MaintenanceReadinessFailedChecksList = /*@__PURE__*/ S.Array(
   MaintenanceFailedCheck,
 ) as any as S.Schema<MaintenanceReadinessFailedChecksList>;
@@ -3620,7 +3618,7 @@ export const Maintenance = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Maintenance" }) as any as S.Schema<Maintenance>;
 
 /** The Maintenance items on this page */
-export type MaintenanceListResultValueList = ReadonlyArray<Maintenance>;
+export type MaintenanceListResultValueList = Array<Maintenance>;
 export const MaintenanceListResultValueList = /*@__PURE__*/ S.Array(
   Maintenance,
 ) as any as S.Schema<MaintenanceListResultValueList>;
@@ -3825,7 +3823,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = ReadonlyArray<Operation>;
+export type OperationsListResponseValueList = Array<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;
@@ -4111,7 +4109,7 @@ export const PlacementPolicy = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PlacementPolicy>;
 
 /** The PlacementPolicy items on this page */
-export type PlacementPoliciesListValueList = ReadonlyArray<PlacementPolicy>;
+export type PlacementPoliciesListValueList = Array<PlacementPolicy>;
 export const PlacementPoliciesListValueList = /*@__PURE__*/ S.Array(
   PlacementPolicy,
 ) as any as S.Schema<PlacementPoliciesListValueList>;
@@ -4133,16 +4131,14 @@ export const PlacementPoliciesList = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PlacementPoliciesList>;
 
 /** Virtual machine members list */
-export type PlacementPolicyUpdatePropertiesVmMembersList =
-  ReadonlyArray<string>;
+export type PlacementPolicyUpdatePropertiesVmMembersList = Array<string>;
 export const PlacementPolicyUpdatePropertiesVmMembersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PlacementPolicyUpdatePropertiesVmMembersList>;
 
 /** Host members list */
-export type PlacementPolicyUpdatePropertiesHostMembersList =
-  ReadonlyArray<string>;
+export type PlacementPolicyUpdatePropertiesHostMembersList = Array<string>;
 export const PlacementPolicyUpdatePropertiesHostMembersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4249,7 +4245,7 @@ export const PrivateCloudsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<PrivateCloudsCreateOrUpdateRequestTagsMap>;
 
 /** The hosts */
-export type ManagementClusterInputHostsList = ReadonlyArray<string>;
+export type ManagementClusterInputHostsList = Array<string>;
 export const ManagementClusterInputHostsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ManagementClusterInputHostsList>;
@@ -4298,7 +4294,7 @@ export interface IdentitySource {
   /** Secondary server URL */
   secondaryServer?: string;
   /** Protect LDAP communication using SSL certificate (LDAPS) */
-  ssl?: SslEnum;
+  ssl?: SslEnum | (string & {});
   /** The ID of an Active Directory user with a minimum of read-only access to Base DN for users and group */
   username?: string;
   /** The password of the Active Directory user with a minimum of read-only access to Base DN for users and groups. */
@@ -4321,7 +4317,7 @@ export const IdentitySource = /*@__PURE__*/ S.suspend(() =>
 
 /** vCenter Single Sign On Identity Sources */
 export type PrivateCloudPropertiesInputIdentitySourcesList =
-  ReadonlyArray<IdentitySource>;
+  Array<IdentitySource>;
 export const PrivateCloudPropertiesInputIdentitySourcesList =
   /*@__PURE__*/ S.Array(
     IdentitySource,
@@ -4334,7 +4330,7 @@ export const AvailabilityStrategy = /*@__PURE__*/ S.String;
 /** The properties describing private cloud availability zone distribution */
 export interface AvailabilityProperties {
   /** The availability strategy for the private cloud */
-  strategy?: AvailabilityStrategy;
+  strategy?: AvailabilityStrategy | (string & {});
   /** The primary availability zone for the private cloud */
   zone?: number;
   /** The secondary availability zone for the private cloud */
@@ -4391,7 +4387,7 @@ export const EncryptionInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of additional networks noncontiguous with networkBlock. Networks must be unique and non-overlapping across VNet in your subscription, on-premise, and this privateCloud networkBlock attribute. Make sure the CIDR format conforms to (A.B.C.D/X). */
 export type PrivateCloudPropertiesInputExtendedNetworkBlocksList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PrivateCloudPropertiesInputExtendedNetworkBlocksList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4521,7 +4517,7 @@ export const PrivateCloudsCreateOrUpdateRequestIdentity =
   }) as any as S.Schema<PrivateCloudsCreateOrUpdateRequestIdentity>;
 
 /** The availability zones. */
-export type PrivateCloudsCreateOrUpdateRequestZonesList = ReadonlyArray<string>;
+export type PrivateCloudsCreateOrUpdateRequestZonesList = Array<string>;
 export const PrivateCloudsCreateOrUpdateRequestZonesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4581,7 +4577,7 @@ export const PrivateCloudsCreateOrUpdateResponseTagsMap =
   ) as any as S.Schema<PrivateCloudsCreateOrUpdateResponseTagsMap>;
 
 /** The hosts */
-export type ManagementClusterHostsList = ReadonlyArray<string>;
+export type ManagementClusterHostsList = Array<string>;
 export const ManagementClusterHostsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ManagementClusterHostsList>;
@@ -4616,8 +4612,7 @@ export type PrivateCloudPropertiesInternet = "Enabled" | "Disabled";
 export const PrivateCloudPropertiesInternet = /*@__PURE__*/ S.String;
 
 /** vCenter Single Sign On Identity Sources */
-export type PrivateCloudPropertiesIdentitySourcesList =
-  ReadonlyArray<IdentitySource>;
+export type PrivateCloudPropertiesIdentitySourcesList = Array<IdentitySource>;
 export const PrivateCloudPropertiesIdentitySourcesList = /*@__PURE__*/ S.Array(
   IdentitySource,
 ) as any as S.Schema<PrivateCloudPropertiesIdentitySourcesList>;
@@ -4673,8 +4668,7 @@ export const Encryption = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Encryption" }) as any as S.Schema<Encryption>;
 
 /** Array of additional networks noncontiguous with networkBlock. Networks must be unique and non-overlapping across VNet in your subscription, on-premise, and this privateCloud networkBlock attribute. Make sure the CIDR format conforms to (A.B.C.D/X). */
-export type PrivateCloudPropertiesExtendedNetworkBlocksList =
-  ReadonlyArray<string>;
+export type PrivateCloudPropertiesExtendedNetworkBlocksList = Array<string>;
 export const PrivateCloudPropertiesExtendedNetworkBlocksList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4739,8 +4733,7 @@ export const Endpoints = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Endpoints" }) as any as S.Schema<Endpoints>;
 
 /** Array of cloud link IDs from other clouds that connect to this one */
-export type PrivateCloudPropertiesExternalCloudLinksList =
-  ReadonlyArray<string>;
+export type PrivateCloudPropertiesExternalCloudLinksList = Array<string>;
 export const PrivateCloudPropertiesExternalCloudLinksList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4892,8 +4885,7 @@ export const PrivateCloudsCreateOrUpdateResponseIdentity =
   }) as any as S.Schema<PrivateCloudsCreateOrUpdateResponseIdentity>;
 
 /** The availability zones. */
-export type PrivateCloudsCreateOrUpdateResponseZonesList =
-  ReadonlyArray<string>;
+export type PrivateCloudsCreateOrUpdateResponseZonesList = Array<string>;
 export const PrivateCloudsCreateOrUpdateResponseZonesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5047,7 +5039,7 @@ export const PrivateCloudsGetResponseIdentity = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateCloudsGetResponseIdentity>;
 
 /** The availability zones. */
-export type PrivateCloudsGetResponseZonesList = ReadonlyArray<string>;
+export type PrivateCloudsGetResponseZonesList = Array<string>;
 export const PrivateCloudsGetResponseZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PrivateCloudsGetResponseZonesList>;
@@ -5188,7 +5180,7 @@ export const PrivateCloudIdentity = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateCloudIdentity>;
 
 /** The availability zones. */
-export type PrivateCloudZonesList = ReadonlyArray<string>;
+export type PrivateCloudZonesList = Array<string>;
 export const PrivateCloudZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PrivateCloudZonesList>;
@@ -5232,7 +5224,7 @@ export const PrivateCloud = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PrivateCloud" }) as any as S.Schema<PrivateCloud>;
 
 /** The PrivateCloud items on this page */
-export type PrivateCloudListValueList = ReadonlyArray<PrivateCloud>;
+export type PrivateCloudListValueList = Array<PrivateCloud>;
 export const PrivateCloudListValueList = /*@__PURE__*/ S.Array(
   PrivateCloud,
 ) as any as S.Schema<PrivateCloudListValueList>;
@@ -5437,7 +5429,7 @@ export const InternetEnum = /*@__PURE__*/ S.String;
 
 /** vCenter Single Sign On Identity Sources */
 export type PrivateCloudUpdatePropertiesInputIdentitySourcesList =
-  ReadonlyArray<IdentitySource>;
+  Array<IdentitySource>;
 export const PrivateCloudUpdatePropertiesInputIdentitySourcesList =
   /*@__PURE__*/ S.Array(
     IdentitySource,
@@ -5445,7 +5437,7 @@ export const PrivateCloudUpdatePropertiesInputIdentitySourcesList =
 
 /** Array of additional networks noncontiguous with networkBlock. Networks must be unique and non-overlapping across VNet in your subscription, on-premise, and this privateCloud networkBlock attribute. Make sure the CIDR format conforms to (A.B.C.D/X). */
 export type PrivateCloudUpdatePropertiesInputExtendedNetworkBlocksList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PrivateCloudUpdatePropertiesInputExtendedNetworkBlocksList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5575,7 +5567,7 @@ export const PrivateCloudsUpdateResponseIdentity = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateCloudsUpdateResponseIdentity>;
 
 /** The availability zones. */
-export type PrivateCloudsUpdateResponseZonesList = ReadonlyArray<string>;
+export type PrivateCloudsUpdateResponseZonesList = Array<string>;
 export const PrivateCloudsUpdateResponseZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PrivateCloudsUpdateResponseZonesList>;
@@ -5759,8 +5751,7 @@ export const ProvisionedNetwork = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProvisionedNetwork>;
 
 /** The ProvisionedNetwork items on this page */
-export type ProvisionedNetworkListResultValueList =
-  ReadonlyArray<ProvisionedNetwork>;
+export type ProvisionedNetworkListResultValueList = Array<ProvisionedNetwork>;
 export const ProvisionedNetworkListResultValueList = /*@__PURE__*/ S.Array(
   ProvisionedNetwork,
 ) as any as S.Schema<ProvisionedNetworkListResultValueList>;
@@ -6020,8 +6011,7 @@ export const PureStoragePolicy = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PureStoragePolicy>;
 
 /** The PureStoragePolicy items on this page */
-export type PureStoragePolicyListResultValueList =
-  ReadonlyArray<PureStoragePolicy>;
+export type PureStoragePolicyListResultValueList = Array<PureStoragePolicy>;
 export const PureStoragePolicyListResultValueList = /*@__PURE__*/ S.Array(
   PureStoragePolicy,
 ) as any as S.Schema<PureStoragePolicyListResultValueList>;
@@ -6125,8 +6115,7 @@ export const ScriptParameter = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScriptParameter>;
 
 /** Parameters the script will accept */
-export type ScriptCmdletPropertiesParametersList =
-  ReadonlyArray<ScriptParameter>;
+export type ScriptCmdletPropertiesParametersList = Array<ScriptParameter>;
 export const ScriptCmdletPropertiesParametersList = /*@__PURE__*/ S.Array(
   ScriptParameter,
 ) as any as S.Schema<ScriptCmdletPropertiesParametersList>;
@@ -6232,7 +6221,7 @@ export const ScriptCmdlet = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ScriptCmdlet" }) as any as S.Schema<ScriptCmdlet>;
 
 /** The ScriptCmdlet items on this page */
-export type ScriptCmdletsListValueList = ReadonlyArray<ScriptCmdlet>;
+export type ScriptCmdletsListValueList = Array<ScriptCmdlet>;
 export const ScriptCmdletsListValueList = /*@__PURE__*/ S.Array(
   ScriptCmdlet,
 ) as any as S.Schema<ScriptCmdletsListValueList>;
@@ -6263,7 +6252,7 @@ export const ScriptExecutionParameterType = /*@__PURE__*/ S.String;
 /** The arguments passed in to the execution */
 export interface ScriptExecutionParameter {
   /** script execution parameter type */
-  type: ScriptExecutionParameterType;
+  type: ScriptExecutionParameterType | (string & {});
   /** The parameter name */
   name: string;
 }
@@ -6278,7 +6267,7 @@ export const ScriptExecutionParameter = /*@__PURE__*/ S.suspend(() =>
 
 /** Parameters the script will accept */
 export type ScriptExecutionPropertiesInputParametersList =
-  ReadonlyArray<ScriptExecutionParameter>;
+  Array<ScriptExecutionParameter>;
 export const ScriptExecutionPropertiesInputParametersList =
   /*@__PURE__*/ S.Array(
     ScriptExecutionParameter,
@@ -6286,14 +6275,14 @@ export const ScriptExecutionPropertiesInputParametersList =
 
 /** Parameters that will be hidden/not visible to ARM, such as passwords and credentials */
 export type ScriptExecutionPropertiesInputHiddenParametersList =
-  ReadonlyArray<ScriptExecutionParameter>;
+  Array<ScriptExecutionParameter>;
 export const ScriptExecutionPropertiesInputHiddenParametersList =
   /*@__PURE__*/ S.Array(
     ScriptExecutionParameter,
   ) as any as S.Schema<ScriptExecutionPropertiesInputHiddenParametersList>;
 
 /** Standard output stream from the powershell execution */
-export type ScriptExecutionPropertiesInputOutputList = ReadonlyArray<string>;
+export type ScriptExecutionPropertiesInputOutputList = Array<string>;
 export const ScriptExecutionPropertiesInputOutputList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ScriptExecutionPropertiesInputOutputList>;
@@ -6378,14 +6367,14 @@ export const ScriptExecutionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
 
 /** Parameters the script will accept */
 export type ScriptExecutionPropertiesParametersList =
-  ReadonlyArray<ScriptExecutionParameter>;
+  Array<ScriptExecutionParameter>;
 export const ScriptExecutionPropertiesParametersList = /*@__PURE__*/ S.Array(
   ScriptExecutionParameter,
 ) as any as S.Schema<ScriptExecutionPropertiesParametersList>;
 
 /** Parameters that will be hidden/not visible to ARM, such as passwords and credentials */
 export type ScriptExecutionPropertiesHiddenParametersList =
-  ReadonlyArray<ScriptExecutionParameter>;
+  Array<ScriptExecutionParameter>;
 export const ScriptExecutionPropertiesHiddenParametersList =
   /*@__PURE__*/ S.Array(
     ScriptExecutionParameter,
@@ -6404,7 +6393,7 @@ export type ScriptExecutionProvisioningState =
 export const ScriptExecutionProvisioningState = /*@__PURE__*/ S.String;
 
 /** Standard output stream from the powershell execution */
-export type ScriptExecutionPropertiesOutputList = ReadonlyArray<string>;
+export type ScriptExecutionPropertiesOutputList = Array<string>;
 export const ScriptExecutionPropertiesOutputList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ScriptExecutionPropertiesOutputList>;
@@ -6419,19 +6408,19 @@ export const ScriptExecutionPropertiesNamedOutputsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ScriptExecutionPropertiesNamedOutputsMap>;
 
 /** Standard information out stream from the powershell execution */
-export type ScriptExecutionPropertiesInformationList = ReadonlyArray<string>;
+export type ScriptExecutionPropertiesInformationList = Array<string>;
 export const ScriptExecutionPropertiesInformationList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ScriptExecutionPropertiesInformationList>;
 
 /** Standard warning out stream from the powershell execution */
-export type ScriptExecutionPropertiesWarningsList = ReadonlyArray<string>;
+export type ScriptExecutionPropertiesWarningsList = Array<string>;
 export const ScriptExecutionPropertiesWarningsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ScriptExecutionPropertiesWarningsList>;
 
 /** Standard error output stream from the powershell execution */
-export type ScriptExecutionPropertiesErrorsList = ReadonlyArray<string>;
+export type ScriptExecutionPropertiesErrorsList = Array<string>;
 export const ScriptExecutionPropertiesErrorsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ScriptExecutionPropertiesErrorsList>;
@@ -6611,7 +6600,7 @@ export type ScriptOutputStreamType =
   | "Error";
 export const ScriptOutputStreamType = /*@__PURE__*/ S.String;
 
-export type ScriptExecutionsGetExecutionLogsRequestBodyList = ReadonlyArray<
+export type ScriptExecutionsGetExecutionLogsRequestBodyList = Array<
   ScriptOutputStreamType | (string & {})
 >;
 export const ScriptExecutionsGetExecutionLogsRequestBodyList =
@@ -6728,7 +6717,7 @@ export const ScriptExecution = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScriptExecution>;
 
 /** The ScriptExecution items on this page */
-export type ScriptExecutionsListValueList = ReadonlyArray<ScriptExecution>;
+export type ScriptExecutionsListValueList = Array<ScriptExecution>;
 export const ScriptExecutionsListValueList = /*@__PURE__*/ S.Array(
   ScriptExecution,
 ) as any as S.Schema<ScriptExecutionsListValueList>;
@@ -6882,7 +6871,7 @@ export const ScriptPackage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ScriptPackage" }) as any as S.Schema<ScriptPackage>;
 
 /** The ScriptPackage items on this page */
-export type ScriptPackagesListValueList = ReadonlyArray<ScriptPackage>;
+export type ScriptPackagesListValueList = Array<ScriptPackage>;
 export const ScriptPackagesListValueList = /*@__PURE__*/ S.Array(
   ScriptPackage,
 ) as any as S.Schema<ScriptPackagesListValueList>;
@@ -6961,19 +6950,19 @@ export type ResourceSkuResourceType =
 export const ResourceSkuResourceType = /*@__PURE__*/ S.String;
 
 /** The set of locations that the SKU is available. */
-export type ResourceSkuLocationsList = ReadonlyArray<string>;
+export type ResourceSkuLocationsList = Array<string>;
 export const ResourceSkuLocationsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ResourceSkuLocationsList>;
 
 /** List of availability zones where the SKU is supported. */
-export type ResourceSkuLocationInfoZonesList = ReadonlyArray<string>;
+export type ResourceSkuLocationInfoZonesList = Array<string>;
 export const ResourceSkuLocationInfoZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ResourceSkuLocationInfoZonesList>;
 
 /** Gets the set of zones that the SKU is available in with the specified capabilities. */
-export type ResourceSkuZoneDetailsNameList = ReadonlyArray<string>;
+export type ResourceSkuZoneDetailsNameList = Array<string>;
 export const ResourceSkuZoneDetailsNameList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ResourceSkuZoneDetailsNameList>;
@@ -6996,7 +6985,7 @@ export const ResourceSkuCapabilities = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of capabilities that are available for the SKU in the specified list of zones. */
 export type ResourceSkuZoneDetailsCapabilitiesList =
-  ReadonlyArray<ResourceSkuCapabilities>;
+  Array<ResourceSkuCapabilities>;
 export const ResourceSkuZoneDetailsCapabilitiesList = /*@__PURE__*/ S.Array(
   ResourceSkuCapabilities,
 ) as any as S.Schema<ResourceSkuZoneDetailsCapabilitiesList>;
@@ -7019,7 +7008,7 @@ export const ResourceSkuZoneDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets details of capabilities available to a SKU in specific zones. */
 export type ResourceSkuLocationInfoZoneDetailsList =
-  ReadonlyArray<ResourceSkuZoneDetails>;
+  Array<ResourceSkuZoneDetails>;
 export const ResourceSkuLocationInfoZoneDetailsList = /*@__PURE__*/ S.Array(
   ResourceSkuZoneDetails,
 ) as any as S.Schema<ResourceSkuLocationInfoZoneDetailsList>;
@@ -7044,15 +7033,13 @@ export const ResourceSkuLocationInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourceSkuLocationInfo>;
 
 /** A list of locations and availability zones in those locations where the SKU is available */
-export type ResourceSkuLocationInfoList =
-  ReadonlyArray<ResourceSkuLocationInfo>;
+export type ResourceSkuLocationInfoList = Array<ResourceSkuLocationInfo>;
 export const ResourceSkuLocationInfoList = /*@__PURE__*/ S.Array(
   ResourceSkuLocationInfo,
 ) as any as S.Schema<ResourceSkuLocationInfoList>;
 
 /** Name value pairs to describe the capability. */
-export type ResourceSkuCapabilitiesList =
-  ReadonlyArray<ResourceSkuCapabilities>;
+export type ResourceSkuCapabilitiesList = Array<ResourceSkuCapabilities>;
 export const ResourceSkuCapabilitiesList = /*@__PURE__*/ S.Array(
   ResourceSkuCapabilities,
 ) as any as S.Schema<ResourceSkuCapabilitiesList>;
@@ -7062,19 +7049,19 @@ export type ResourceSkuRestrictionsType = "Location" | "Zone";
 export const ResourceSkuRestrictionsType = /*@__PURE__*/ S.String;
 
 /** The value of restrictions. If the restriction type is set to location. This would be different locations where the SKU is restricted. */
-export type ResourceSkuRestrictionsValuesList = ReadonlyArray<string>;
+export type ResourceSkuRestrictionsValuesList = Array<string>;
 export const ResourceSkuRestrictionsValuesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ResourceSkuRestrictionsValuesList>;
 
 /** Locations where the SKU is restricted */
-export type ResourceSkuRestrictionInfoLocationsList = ReadonlyArray<string>;
+export type ResourceSkuRestrictionInfoLocationsList = Array<string>;
 export const ResourceSkuRestrictionInfoLocationsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ResourceSkuRestrictionInfoLocationsList>;
 
 /** List of availability zones where the SKU is restricted. */
-export type ResourceSkuRestrictionInfoZonesList = ReadonlyArray<string>;
+export type ResourceSkuRestrictionInfoZonesList = Array<string>;
 export const ResourceSkuRestrictionInfoZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ResourceSkuRestrictionInfoZonesList>;
@@ -7124,8 +7111,7 @@ export const ResourceSkuRestrictions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourceSkuRestrictions>;
 
 /** The restrictions of the SKU. */
-export type ResourceSkuRestrictionsList =
-  ReadonlyArray<ResourceSkuRestrictions>;
+export type ResourceSkuRestrictionsList = Array<ResourceSkuRestrictions>;
 export const ResourceSkuRestrictionsList = /*@__PURE__*/ S.Array(
   ResourceSkuRestrictions,
 ) as any as S.Schema<ResourceSkuRestrictionsList>;
@@ -7166,7 +7152,7 @@ export const ResourceSku = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResourceSku" }) as any as S.Schema<ResourceSku>;
 
 /** The ResourceSku items on this page */
-export type PagedResourceSkuValueList = ReadonlyArray<ResourceSku>;
+export type PagedResourceSkuValueList = Array<ResourceSku>;
 export const PagedResourceSkuValueList = /*@__PURE__*/ S.Array(
   ResourceSku,
 ) as any as S.Schema<PagedResourceSkuValueList>;
@@ -7330,7 +7316,7 @@ export const VirtualMachine = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VirtualMachine" }) as any as S.Schema<VirtualMachine>;
 
 /** The VirtualMachine items on this page */
-export type VirtualMachinesListValueList = ReadonlyArray<VirtualMachine>;
+export type VirtualMachinesListValueList = Array<VirtualMachine>;
 export const VirtualMachinesListValueList = /*@__PURE__*/ S.Array(
   VirtualMachine,
 ) as any as S.Schema<VirtualMachinesListValueList>;
@@ -7448,7 +7434,7 @@ export const WorkloadNetworksCreateDhcpRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WorkloadNetworksCreateDhcpRequest>;
 
 /** NSX Segments consuming DHCP. */
-export type WorkloadNetworkDhcpEntitySegmentsList = ReadonlyArray<string>;
+export type WorkloadNetworkDhcpEntitySegmentsList = Array<string>;
 export const WorkloadNetworkDhcpEntitySegmentsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<WorkloadNetworkDhcpEntitySegmentsList>;
@@ -7514,7 +7500,7 @@ export const WorkloadNetworksCreateDhcpResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** FQDN zones of the DNS Service. */
 export type WorkloadNetworkDnsServicePropertiesInputFqdnZonesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const WorkloadNetworkDnsServicePropertiesInputFqdnZonesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -7593,8 +7579,7 @@ export const WorkloadNetworksCreateDnsServiceRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<WorkloadNetworksCreateDnsServiceRequest>;
 
 /** FQDN zones of the DNS Service. */
-export type WorkloadNetworkDnsServicePropertiesFqdnZonesList =
-  ReadonlyArray<string>;
+export type WorkloadNetworkDnsServicePropertiesFqdnZonesList = Array<string>;
 export const WorkloadNetworkDnsServicePropertiesFqdnZonesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -7675,8 +7660,7 @@ export const WorkloadNetworksCreateDnsServiceResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<WorkloadNetworksCreateDnsServiceResponse>;
 
 /** Domain names of the DNS Zone. */
-export type WorkloadNetworkDnsZonePropertiesInputDomainList =
-  ReadonlyArray<string>;
+export type WorkloadNetworkDnsZonePropertiesInputDomainList = Array<string>;
 export const WorkloadNetworkDnsZonePropertiesInputDomainList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -7684,7 +7668,7 @@ export const WorkloadNetworkDnsZonePropertiesInputDomainList =
 
 /** DNS Server IP array of the DNS Zone. */
 export type WorkloadNetworkDnsZonePropertiesInputDnsServerIpsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const WorkloadNetworkDnsZonePropertiesInputDnsServerIpsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -7754,14 +7738,13 @@ export const WorkloadNetworksCreateDnsZoneRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<WorkloadNetworksCreateDnsZoneRequest>;
 
 /** Domain names of the DNS Zone. */
-export type WorkloadNetworkDnsZonePropertiesDomainList = ReadonlyArray<string>;
+export type WorkloadNetworkDnsZonePropertiesDomainList = Array<string>;
 export const WorkloadNetworkDnsZonePropertiesDomainList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<WorkloadNetworkDnsZonePropertiesDomainList>;
 
 /** DNS Server IP array of the DNS Zone. */
-export type WorkloadNetworkDnsZonePropertiesDnsServerIpsList =
-  ReadonlyArray<string>;
+export type WorkloadNetworkDnsZonePropertiesDnsServerIpsList = Array<string>;
 export const WorkloadNetworkDnsZonePropertiesDnsServerIpsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -8076,7 +8059,7 @@ export const WorkloadNetworksCreatePublicIPResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<WorkloadNetworksCreatePublicIPResponse>;
 
 /** DHCP Range assigned for subnet. */
-export type WorkloadNetworkSegmentSubnetDhcpRangesList = ReadonlyArray<string>;
+export type WorkloadNetworkSegmentSubnetDhcpRangesList = Array<string>;
 export const WorkloadNetworkSegmentSubnetDhcpRangesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<WorkloadNetworkSegmentSubnetDhcpRangesList>;
@@ -8167,7 +8150,7 @@ export const WorkloadNetworkSegmentPortVif = /*@__PURE__*/ S.suspend(() =>
 
 /** Port Vif which segment is associated with. */
 export type WorkloadNetworkSegmentPropertiesPortVifList =
-  ReadonlyArray<WorkloadNetworkSegmentPortVif>;
+  Array<WorkloadNetworkSegmentPortVif>;
 export const WorkloadNetworkSegmentPropertiesPortVifList =
   /*@__PURE__*/ S.Array(
     WorkloadNetworkSegmentPortVif,
@@ -8244,8 +8227,7 @@ export const WorkloadNetworksCreateSegmentsResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<WorkloadNetworksCreateSegmentsResponse>;
 
 /** Virtual machine members of this group. */
-export type WorkloadNetworkVMGroupPropertiesInputMembersList =
-  ReadonlyArray<string>;
+export type WorkloadNetworkVMGroupPropertiesInputMembersList = Array<string>;
 export const WorkloadNetworkVMGroupPropertiesInputMembersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -8304,7 +8286,7 @@ export const WorkloadNetworksCreateVMGroupRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<WorkloadNetworksCreateVMGroupRequest>;
 
 /** Virtual machine members of this group. */
-export type WorkloadNetworkVMGroupPropertiesMembersList = ReadonlyArray<string>;
+export type WorkloadNetworkVMGroupPropertiesMembersList = Array<string>;
 export const WorkloadNetworkVMGroupPropertiesMembersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -9264,7 +9246,7 @@ export const WorkloadNetwork = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WorkloadNetwork>;
 
 /** The WorkloadNetwork items on this page */
-export type WorkloadNetworkListValueList = ReadonlyArray<WorkloadNetwork>;
+export type WorkloadNetworkListValueList = Array<WorkloadNetwork>;
 export const WorkloadNetworkListValueList = /*@__PURE__*/ S.Array(
   WorkloadNetwork,
 ) as any as S.Schema<WorkloadNetworkListValueList>;
@@ -9336,8 +9318,7 @@ export const WorkloadNetworkDhcp = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WorkloadNetworkDhcp>;
 
 /** The WorkloadNetworkDhcp items on this page */
-export type WorkloadNetworkDhcpListValueList =
-  ReadonlyArray<WorkloadNetworkDhcp>;
+export type WorkloadNetworkDhcpListValueList = Array<WorkloadNetworkDhcp>;
 export const WorkloadNetworkDhcpListValueList = /*@__PURE__*/ S.Array(
   WorkloadNetworkDhcp,
 ) as any as S.Schema<WorkloadNetworkDhcpListValueList>;
@@ -9411,7 +9392,7 @@ export const WorkloadNetworkDnsService = /*@__PURE__*/ S.suspend(() =>
 
 /** The WorkloadNetworkDnsService items on this page */
 export type WorkloadNetworkDnsServicesListValueList =
-  ReadonlyArray<WorkloadNetworkDnsService>;
+  Array<WorkloadNetworkDnsService>;
 export const WorkloadNetworkDnsServicesListValueList = /*@__PURE__*/ S.Array(
   WorkloadNetworkDnsService,
 ) as any as S.Schema<WorkloadNetworkDnsServicesListValueList>;
@@ -9484,7 +9465,7 @@ export const WorkloadNetworkDnsZone = /*@__PURE__*/ S.suspend(() =>
 
 /** The WorkloadNetworkDnsZone items on this page */
 export type WorkloadNetworkDnsZonesListValueList =
-  ReadonlyArray<WorkloadNetworkDnsZone>;
+  Array<WorkloadNetworkDnsZone>;
 export const WorkloadNetworkDnsZonesListValueList = /*@__PURE__*/ S.Array(
   WorkloadNetworkDnsZone,
 ) as any as S.Schema<WorkloadNetworkDnsZonesListValueList>;
@@ -9556,8 +9537,7 @@ export const WorkloadNetworkGateway = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WorkloadNetworkGateway>;
 
 /** The WorkloadNetworkGateway items on this page */
-export type WorkloadNetworkGatewayListValueList =
-  ReadonlyArray<WorkloadNetworkGateway>;
+export type WorkloadNetworkGatewayListValueList = Array<WorkloadNetworkGateway>;
 export const WorkloadNetworkGatewayListValueList = /*@__PURE__*/ S.Array(
   WorkloadNetworkGateway,
 ) as any as S.Schema<WorkloadNetworkGatewayListValueList>;
@@ -9631,7 +9611,7 @@ export const WorkloadNetworkPortMirroring = /*@__PURE__*/ S.suspend(() =>
 
 /** The WorkloadNetworkPortMirroring items on this page */
 export type WorkloadNetworkPortMirroringListValueList =
-  ReadonlyArray<WorkloadNetworkPortMirroring>;
+  Array<WorkloadNetworkPortMirroring>;
 export const WorkloadNetworkPortMirroringListValueList = /*@__PURE__*/ S.Array(
   WorkloadNetworkPortMirroring,
 ) as any as S.Schema<WorkloadNetworkPortMirroringListValueList>;
@@ -9705,7 +9685,7 @@ export const WorkloadNetworkPublicIP = /*@__PURE__*/ S.suspend(() =>
 
 /** The WorkloadNetworkPublicIP items on this page */
 export type WorkloadNetworkPublicIPsListValueList =
-  ReadonlyArray<WorkloadNetworkPublicIP>;
+  Array<WorkloadNetworkPublicIP>;
 export const WorkloadNetworkPublicIPsListValueList = /*@__PURE__*/ S.Array(
   WorkloadNetworkPublicIP,
 ) as any as S.Schema<WorkloadNetworkPublicIPsListValueList>;
@@ -9778,7 +9758,7 @@ export const WorkloadNetworkSegment = /*@__PURE__*/ S.suspend(() =>
 
 /** The WorkloadNetworkSegment items on this page */
 export type WorkloadNetworkSegmentsListValueList =
-  ReadonlyArray<WorkloadNetworkSegment>;
+  Array<WorkloadNetworkSegment>;
 export const WorkloadNetworkSegmentsListValueList = /*@__PURE__*/ S.Array(
   WorkloadNetworkSegment,
 ) as any as S.Schema<WorkloadNetworkSegmentsListValueList>;
@@ -9852,7 +9832,7 @@ export const WorkloadNetworkVirtualMachine = /*@__PURE__*/ S.suspend(() =>
 
 /** The WorkloadNetworkVirtualMachine items on this page */
 export type WorkloadNetworkVirtualMachinesListValueList =
-  ReadonlyArray<WorkloadNetworkVirtualMachine>;
+  Array<WorkloadNetworkVirtualMachine>;
 export const WorkloadNetworkVirtualMachinesListValueList =
   /*@__PURE__*/ S.Array(
     WorkloadNetworkVirtualMachine,
@@ -9926,7 +9906,7 @@ export const WorkloadNetworkVMGroup = /*@__PURE__*/ S.suspend(() =>
 
 /** The WorkloadNetworkVMGroup items on this page */
 export type WorkloadNetworkVMGroupsListValueList =
-  ReadonlyArray<WorkloadNetworkVMGroup>;
+  Array<WorkloadNetworkVMGroup>;
 export const WorkloadNetworkVMGroupsListValueList = /*@__PURE__*/ S.Array(
   WorkloadNetworkVMGroup,
 ) as any as S.Schema<WorkloadNetworkVMGroupsListValueList>;

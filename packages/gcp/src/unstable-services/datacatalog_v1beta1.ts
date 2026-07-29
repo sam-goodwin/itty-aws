@@ -148,7 +148,7 @@ export type GoogleCloudDatacatalogV1beta1EntryIntegratedSystemEnum =
 export const GoogleCloudDatacatalogV1beta1EntryIntegratedSystemEnum =
   /*@__PURE__*/ S.String;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -174,7 +174,7 @@ export const GoogleCloudDatacatalogV1beta1GcsFileSpec = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudDatacatalogV1beta1GcsFileSpec>;
 
 export type GoogleCloudDatacatalogV1beta1GcsFileSpecList =
-  ReadonlyArray<GoogleCloudDatacatalogV1beta1GcsFileSpec>;
+  Array<GoogleCloudDatacatalogV1beta1GcsFileSpec>;
 export const GoogleCloudDatacatalogV1beta1GcsFileSpecList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDatacatalogV1beta1GcsFileSpec,
@@ -238,7 +238,9 @@ export const GoogleCloudDatacatalogV1beta1TableSpec = /*@__PURE__*/ S.suspend(
 /** Describes a BigQuery table. */
 export interface GoogleCloudDatacatalogV1beta1BigQueryTableSpec {
   /** Output only. The table source type. */
-  tableSourceType?: GoogleCloudDatacatalogV1beta1BigQueryTableSpecTableSourceTypeEnum;
+  tableSourceType?:
+    | GoogleCloudDatacatalogV1beta1BigQueryTableSpecTableSourceTypeEnum
+    | (string & {});
   /** Table view specification. This field should only be populated if `table_source_type` is `BIGQUERY_VIEW`. */
   viewSpec?: GoogleCloudDatacatalogV1beta1ViewSpec;
   /** Spec of a BigQuery table. This field should only be populated if `table_source_type` is `BIGQUERY_TABLE`. */
@@ -306,7 +308,7 @@ export const GoogleCloudDatacatalogV1beta1ColumnSchema =
   }) as any as S.Schema<GoogleCloudDatacatalogV1beta1ColumnSchema>;
 
 export type GoogleCloudDatacatalogV1beta1ColumnSchemaList =
-  ReadonlyArray<GoogleCloudDatacatalogV1beta1ColumnSchema>;
+  Array<GoogleCloudDatacatalogV1beta1ColumnSchema>;
 export const GoogleCloudDatacatalogV1beta1ColumnSchemaList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDatacatalogV1beta1ColumnSchema,
@@ -383,11 +385,13 @@ export interface GoogleCloudDatacatalogV1beta1Entry {
   /** The resource this metadata entry refers to. For Google Cloud Platform resources, `linked_resource` is the [full name of the resource](https://cloud.google.com/apis/design/resource_names#full_resource_name). For example, the `linked_resource` for a table resource from BigQuery is: * //bigquery.googleapis.com/projects/projectId/datasets/datasetId/tables/tableId Output only when Entry is of type in the EntryType enum. For entries with user_specified_type, this field is optional and defaults to an empty string. */
   linkedResource?: string;
   /** The type of the entry. Only used for Entries with types in the EntryType enum. */
-  type?: GoogleCloudDatacatalogV1beta1EntryTypeEnum;
+  type?: GoogleCloudDatacatalogV1beta1EntryTypeEnum | (string & {});
   /** Entry type if it does not fit any of the input-allowed values listed in `EntryType` enum above. When creating an entry, users should check the enum values first, if nothing matches the entry to be created, then provide a custom value, for example "my_special_type". `user_specified_type` strings must begin with a letter or underscore and can only contain letters, numbers, and underscores; are case insensitive; must be at least 1 character and at most 64 characters long. Currently, only FILESET enum value is allowed. All other entries created through Data Catalog must use `user_specified_type`. */
   userSpecifiedType?: string;
   /** Output only. This field indicates the entry's source system that Data Catalog integrates with, such as BigQuery or Pub/Sub. */
-  integratedSystem?: GoogleCloudDatacatalogV1beta1EntryIntegratedSystemEnum;
+  integratedSystem?:
+    | GoogleCloudDatacatalogV1beta1EntryIntegratedSystemEnum
+    | (string & {});
   /** This field indicates the entry's source system that Data Catalog does not integrate with. `user_specified_system` strings must begin with a letter or underscore and can only contain letters, numbers, and underscores; are case insensitive; must be at least 1 character and at most 64 characters long. */
   userSpecifiedSystem?: string;
   /** Specification that applies to a Cloud Storage fileset. This is only valid on entries of type FILESET. */
@@ -607,7 +611,7 @@ export const GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue =
   }) as any as S.Schema<GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue>;
 
 export type GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueList =
-  ReadonlyArray<GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue>;
+  Array<GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue>;
 export const GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue,
@@ -629,7 +633,9 @@ export const GoogleCloudDatacatalogV1beta1FieldTypeEnumType =
 
 export interface GoogleCloudDatacatalogV1beta1FieldType {
   /** Represents primitive types - string, bool etc. */
-  primitiveType?: GoogleCloudDatacatalogV1beta1FieldTypePrimitiveTypeEnum;
+  primitiveType?:
+    | GoogleCloudDatacatalogV1beta1FieldTypePrimitiveTypeEnum
+    | (string & {});
   /** Represents an enum type. */
   enumType?: GoogleCloudDatacatalogV1beta1FieldTypeEnumType;
 }
@@ -697,7 +703,9 @@ export interface GoogleCloudDatacatalogV1beta1TagTemplate {
   /** Required. Map of tag template field IDs to the settings for the field. This map is an exhaustive list of the allowed fields. This map must contain at least one field and at most 500 fields. The keys to this map are tag template field IDs. Field IDs can contain letters (both uppercase and lowercase), numbers (0-9) and underscores (_). Field IDs must be at least 1 character long and at most 64 characters long. Field IDs must start with a letter or underscore. */
   fields?: GoogleCloudDatacatalogV1beta1TagTemplateFieldMap;
   /** Output only. Transfer status of the TagTemplate */
-  dataplexTransferStatus?: GoogleCloudDatacatalogV1beta1TagTemplateDataplexTransferStatusEnum;
+  dataplexTransferStatus?:
+    | GoogleCloudDatacatalogV1beta1TagTemplateDataplexTransferStatusEnum
+    | (string & {});
 }
 export const GoogleCloudDatacatalogV1beta1TagTemplate = /*@__PURE__*/ S.suspend(
   () =>
@@ -774,7 +782,10 @@ export const GoogleCloudDatacatalogV1beta1TaxonomyActivatedPolicyTypesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudDatacatalogV1beta1TaxonomyActivatedPolicyTypesItemEnumList =
-  ReadonlyArray<GoogleCloudDatacatalogV1beta1TaxonomyActivatedPolicyTypesItemEnum>;
+  Array<
+    | GoogleCloudDatacatalogV1beta1TaxonomyActivatedPolicyTypesItemEnum
+    | (string & {})
+  >;
 export const GoogleCloudDatacatalogV1beta1TaxonomyActivatedPolicyTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDatacatalogV1beta1TaxonomyActivatedPolicyTypesItemEnum,
@@ -790,7 +801,7 @@ export const GoogleCloudDatacatalogV1beta1TaxonomyServiceNameEnum =
 /** The source system of the Taxonomy. */
 export interface GoogleCloudDatacatalogV1beta1TaxonomyService {
   /** The Google Cloud service name. */
-  name?: GoogleCloudDatacatalogV1beta1TaxonomyServiceNameEnum;
+  name?: GoogleCloudDatacatalogV1beta1TaxonomyServiceNameEnum | (string & {});
   /** The service agent for the service. */
   identity?: string;
 }
@@ -1132,7 +1143,7 @@ export const GoogleCloudDatacatalogV1beta1SerializedPolicyTag =
   }) as any as S.Schema<GoogleCloudDatacatalogV1beta1SerializedPolicyTag>;
 
 export type GoogleCloudDatacatalogV1beta1SerializedPolicyTagList =
-  ReadonlyArray<GoogleCloudDatacatalogV1beta1SerializedPolicyTag>;
+  Array<GoogleCloudDatacatalogV1beta1SerializedPolicyTag>;
 export const GoogleCloudDatacatalogV1beta1SerializedPolicyTagList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDatacatalogV1beta1SerializedPolicyTag,
@@ -1144,7 +1155,10 @@ export const GoogleCloudDatacatalogV1beta1SerializedTaxonomyActivatedPolicyTypes
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudDatacatalogV1beta1SerializedTaxonomyActivatedPolicyTypesItemEnumList =
-  ReadonlyArray<GoogleCloudDatacatalogV1beta1SerializedTaxonomyActivatedPolicyTypesItemEnum>;
+  Array<
+    | GoogleCloudDatacatalogV1beta1SerializedTaxonomyActivatedPolicyTypesItemEnum
+    | (string & {})
+  >;
 export const GoogleCloudDatacatalogV1beta1SerializedTaxonomyActivatedPolicyTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDatacatalogV1beta1SerializedTaxonomyActivatedPolicyTypesItemEnum,
@@ -1178,7 +1192,7 @@ export const GoogleCloudDatacatalogV1beta1SerializedTaxonomy =
   }) as any as S.Schema<GoogleCloudDatacatalogV1beta1SerializedTaxonomy>;
 
 export type GoogleCloudDatacatalogV1beta1SerializedTaxonomyList =
-  ReadonlyArray<GoogleCloudDatacatalogV1beta1SerializedTaxonomy>;
+  Array<GoogleCloudDatacatalogV1beta1SerializedTaxonomy>;
 export const GoogleCloudDatacatalogV1beta1SerializedTaxonomyList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDatacatalogV1beta1SerializedTaxonomy,
@@ -1285,7 +1299,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
-export type BindingList = ReadonlyArray<Binding>;
+export type BindingList = Array<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -1548,7 +1562,7 @@ export const ImportProjectsLocationsTaxonomiesRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ImportProjectsLocationsTaxonomiesRequest>;
 
 export type GoogleCloudDatacatalogV1beta1TaxonomyList =
-  ReadonlyArray<GoogleCloudDatacatalogV1beta1Taxonomy>;
+  Array<GoogleCloudDatacatalogV1beta1Taxonomy>;
 export const GoogleCloudDatacatalogV1beta1TaxonomyList = /*@__PURE__*/ S.Array(
   GoogleCloudDatacatalogV1beta1Taxonomy,
 ) as any as S.Schema<GoogleCloudDatacatalogV1beta1TaxonomyList>;
@@ -1593,7 +1607,7 @@ export const ListProjectsLocationsEntryGroupsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListProjectsLocationsEntryGroupsRequest>;
 
 export type GoogleCloudDatacatalogV1beta1EntryGroupList =
-  ReadonlyArray<GoogleCloudDatacatalogV1beta1EntryGroup>;
+  Array<GoogleCloudDatacatalogV1beta1EntryGroup>;
 export const GoogleCloudDatacatalogV1beta1EntryGroupList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDatacatalogV1beta1EntryGroup,
@@ -1645,7 +1659,7 @@ export const ListProjectsLocationsEntryGroupsEntriesRequest =
   }) as any as S.Schema<ListProjectsLocationsEntryGroupsEntriesRequest>;
 
 export type GoogleCloudDatacatalogV1beta1EntryList =
-  ReadonlyArray<GoogleCloudDatacatalogV1beta1Entry>;
+  Array<GoogleCloudDatacatalogV1beta1Entry>;
 export const GoogleCloudDatacatalogV1beta1EntryList = /*@__PURE__*/ S.Array(
   GoogleCloudDatacatalogV1beta1Entry,
 ) as any as S.Schema<GoogleCloudDatacatalogV1beta1EntryList>;
@@ -1693,7 +1707,7 @@ export const ListProjectsLocationsEntryGroupsEntriesTagsRequest =
   }) as any as S.Schema<ListProjectsLocationsEntryGroupsEntriesTagsRequest>;
 
 export type GoogleCloudDatacatalogV1beta1TagList =
-  ReadonlyArray<GoogleCloudDatacatalogV1beta1Tag>;
+  Array<GoogleCloudDatacatalogV1beta1Tag>;
 export const GoogleCloudDatacatalogV1beta1TagList = /*@__PURE__*/ S.Array(
   GoogleCloudDatacatalogV1beta1Tag,
 ) as any as S.Schema<GoogleCloudDatacatalogV1beta1TagList>;
@@ -1811,7 +1825,7 @@ export const ListProjectsLocationsTaxonomiesPolicyTagsRequest =
   }) as any as S.Schema<ListProjectsLocationsTaxonomiesPolicyTagsRequest>;
 
 export type GoogleCloudDatacatalogV1beta1PolicyTagList =
-  ReadonlyArray<GoogleCloudDatacatalogV1beta1PolicyTag>;
+  Array<GoogleCloudDatacatalogV1beta1PolicyTag>;
 export const GoogleCloudDatacatalogV1beta1PolicyTagList = /*@__PURE__*/ S.Array(
   GoogleCloudDatacatalogV1beta1PolicyTag,
 ) as any as S.Schema<GoogleCloudDatacatalogV1beta1PolicyTagList>;
@@ -2248,7 +2262,7 @@ export const GoogleCloudDatacatalogV1beta1SearchCatalogResult =
   }) as any as S.Schema<GoogleCloudDatacatalogV1beta1SearchCatalogResult>;
 
 export type GoogleCloudDatacatalogV1beta1SearchCatalogResultList =
-  ReadonlyArray<GoogleCloudDatacatalogV1beta1SearchCatalogResult>;
+  Array<GoogleCloudDatacatalogV1beta1SearchCatalogResult>;
 export const GoogleCloudDatacatalogV1beta1SearchCatalogResultList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDatacatalogV1beta1SearchCatalogResult,

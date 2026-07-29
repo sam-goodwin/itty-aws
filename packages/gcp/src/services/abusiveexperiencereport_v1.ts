@@ -112,7 +112,7 @@ export const ListViolatingSitesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListViolatingSitesRequest",
 }) as any as S.Schema<ListViolatingSitesRequest>;
 
-export type SiteSummaryResponseList = ReadonlyArray<SiteSummaryResponse>;
+export type SiteSummaryResponseList = Array<SiteSummaryResponse>;
 export const SiteSummaryResponseList = /*@__PURE__*/ S.Array(
   SiteSummaryResponse,
 ) as any as S.Schema<SiteSummaryResponseList>;

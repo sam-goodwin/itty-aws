@@ -238,7 +238,7 @@ export const Approval = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Approval" }) as any as S.Schema<Approval>;
 
-export type ApprovalList = ReadonlyArray<Approval>;
+export type ApprovalList = Array<Approval>;
 export const ApprovalList = /*@__PURE__*/ S.Array(
   Approval,
 ) as any as S.Schema<ApprovalList>;
@@ -316,7 +316,7 @@ export type EntitlementStateEnum =
   | "ENTITLEMENT_SUSPENDED";
 export const EntitlementStateEnum = /*@__PURE__*/ S.String;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -332,7 +332,7 @@ export const Consumer = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Consumer" }) as any as S.Schema<Consumer>;
 
-export type ConsumerList = ReadonlyArray<Consumer>;
+export type ConsumerList = Array<Consumer>;
 export const ConsumerList = /*@__PURE__*/ S.Array(
   Consumer,
 ) as any as S.Schema<ConsumerList>;
@@ -340,7 +340,7 @@ export const ConsumerList = /*@__PURE__*/ S.Array(
 /** Represents a procured product of a customer. */
 export interface Entitlement {
   /** Output only. The state of the entitlement. */
-  state?: EntitlementStateEnum;
+  state?: EntitlementStateEnum | (string & {});
   /** Output only. The consumerId to use when reporting usage through the Service Control API. See the consumerId field at [Reporting Metrics](https://cloud.google.com/service-control/reporting-metrics) for more details. This field is present only if the product has usage-based billing configured. */
   usageReportingId?: string;
   /** Output only. The custom properties that were collected from the user to create this entitlement. */
@@ -447,7 +447,7 @@ export const ListProvidersAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProvidersAccountsRequest",
 }) as any as S.Schema<ListProvidersAccountsRequest>;
 
-export type AccountList = ReadonlyArray<Account>;
+export type AccountList = Array<Account>;
 export const AccountList = /*@__PURE__*/ S.Array(
   Account,
 ) as any as S.Schema<AccountList>;
@@ -495,7 +495,7 @@ export const ListProvidersEntitlementsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProvidersEntitlementsRequest",
 }) as any as S.Schema<ListProvidersEntitlementsRequest>;
 
-export type EntitlementList = ReadonlyArray<Entitlement>;
+export type EntitlementList = Array<Entitlement>;
 export const EntitlementList = /*@__PURE__*/ S.Array(
   Entitlement,
 ) as any as S.Schema<EntitlementList>;

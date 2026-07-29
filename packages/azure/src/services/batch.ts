@@ -323,7 +323,7 @@ export const Application = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Application" }) as any as S.Schema<Application>;
 
 /** The Application items on this page */
-export type ListApplicationsResultValueList = ReadonlyArray<Application>;
+export type ListApplicationsResultValueList = Array<Application>;
 export const ListApplicationsResultValueList = /*@__PURE__*/ S.Array(
   Application,
 ) as any as S.Schema<ListApplicationsResultValueList>;
@@ -717,8 +717,7 @@ export const ApplicationPackage = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ApplicationPackage>;
 
 /** The ApplicationPackage items on this page */
-export type ListApplicationPackagesResultValueList =
-  ReadonlyArray<ApplicationPackage>;
+export type ListApplicationPackagesResultValueList = Array<ApplicationPackage>;
 export const ListApplicationPackagesResultValueList = /*@__PURE__*/ S.Array(
   ApplicationPackage,
 ) as any as S.Schema<ListApplicationPackagesResultValueList>;
@@ -910,7 +909,7 @@ export const IPRuleAction = /*@__PURE__*/ S.String;
 /** Rule to filter client IP address. */
 export interface IPRule {
   /** Action when client IP address is matched. */
-  action: IPRuleAction;
+  action: IPRuleAction | (string & {});
   /** IPv4 address, or IPv4 address range in CIDR format. */
   value: string;
 }
@@ -922,7 +921,7 @@ export const IPRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IPRule" }) as any as S.Schema<IPRule>;
 
 /** Array of IP ranges to filter client IP address. */
-export type EndpointAccessProfileIpRulesList = ReadonlyArray<IPRule>;
+export type EndpointAccessProfileIpRulesList = Array<IPRule>;
 export const EndpointAccessProfileIpRulesList = /*@__PURE__*/ S.Array(
   IPRule,
 ) as any as S.Schema<EndpointAccessProfileIpRulesList>;
@@ -930,7 +929,7 @@ export const EndpointAccessProfileIpRulesList = /*@__PURE__*/ S.Array(
 /** Network access profile for Batch endpoint. */
 export interface EndpointAccessProfile {
   /** Default action for endpoint access. It is only applicable when publicNetworkAccess is enabled. */
-  defaultAction: EndpointAccessDefaultAction;
+  defaultAction: EndpointAccessDefaultAction | (string & {});
   /** Array of IP ranges to filter client IP address. */
   ipRules?: EndpointAccessProfileIpRulesList;
 }
@@ -977,7 +976,7 @@ export const KeyVaultProperties = /*@__PURE__*/ S.suspend(() =>
 /** Configures how customer data is encrypted inside the Batch account. By default, accounts are encrypted using a Microsoft managed key. For additional control, a customer-managed key can be used instead. */
 export interface EncryptionProperties {
   /** Type of the key source. */
-  keySource?: KeySource;
+  keySource?: KeySource | (string & {});
   /** Additional details when using Microsoft.KeyVault */
   keyVaultProperties?: KeyVaultProperties;
 }
@@ -998,8 +997,9 @@ export type AuthenticationMode =
 export const AuthenticationMode = /*@__PURE__*/ S.String;
 
 /** List of allowed authentication modes for the Batch account that can be used to authenticate with the data plane. This does not affect authentication with the control plane. */
-export type BatchAccountCreatePropertiesAllowedAuthenticationModesList =
-  ReadonlyArray<AuthenticationMode | (string & {})>;
+export type BatchAccountCreatePropertiesAllowedAuthenticationModesList = Array<
+  AuthenticationMode | (string & {})
+>;
 export const BatchAccountCreatePropertiesAllowedAuthenticationModesList =
   /*@__PURE__*/ S.Array(
     AuthenticationMode,
@@ -1170,8 +1170,7 @@ export const PrivateEndpoint = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateEndpoint>;
 
 /** The value has one and only one group id. */
-export type PrivateEndpointConnectionPropertiesGroupIdsList =
-  ReadonlyArray<string>;
+export type PrivateEndpointConnectionPropertiesGroupIdsList = Array<string>;
 export const PrivateEndpointConnectionPropertiesGroupIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1270,7 +1269,7 @@ export const PrivateEndpointConnection = /*@__PURE__*/ S.suspend(() =>
 
 /** List of private endpoint connections associated with the Batch account */
 export type BatchAccountPropertiesPrivateEndpointConnectionsList =
-  ReadonlyArray<PrivateEndpointConnection>;
+  Array<PrivateEndpointConnection>;
 export const BatchAccountPropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection,
@@ -1322,7 +1321,7 @@ export const VirtualMachineFamilyCoreQuota = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of the dedicated core quota per Virtual Machine family for the Batch account. For accounts with PoolAllocationMode set to UserSubscription, quota is managed on the subscription so this value is not returned. */
 export type BatchAccountPropertiesDedicatedCoreQuotaPerVMFamilyList =
-  ReadonlyArray<VirtualMachineFamilyCoreQuota>;
+  Array<VirtualMachineFamilyCoreQuota>;
 export const BatchAccountPropertiesDedicatedCoreQuotaPerVMFamilyList =
   /*@__PURE__*/ S.Array(
     VirtualMachineFamilyCoreQuota,
@@ -1330,7 +1329,7 @@ export const BatchAccountPropertiesDedicatedCoreQuotaPerVMFamilyList =
 
 /** List of allowed authentication modes for the Batch account that can be used to authenticate with the data plane. This does not affect authentication with the control plane. */
 export type BatchAccountPropertiesAllowedAuthenticationModesList =
-  ReadonlyArray<AuthenticationMode>;
+  Array<AuthenticationMode>;
 export const BatchAccountPropertiesAllowedAuthenticationModesList =
   /*@__PURE__*/ S.Array(
     AuthenticationMode,
@@ -1770,7 +1769,7 @@ export const BatchAccount = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BatchAccount" }) as any as S.Schema<BatchAccount>;
 
 /** The BatchAccount items on this page */
-export type BatchAccountListResultValueList = ReadonlyArray<BatchAccount>;
+export type BatchAccountListResultValueList = Array<BatchAccount>;
 export const BatchAccountListResultValueList = /*@__PURE__*/ S.Array(
   BatchAccount,
 ) as any as S.Schema<BatchAccountListResultValueList>;
@@ -1878,7 +1877,7 @@ export const DetectorResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DetectorResponse>;
 
 /** The DetectorResponse items on this page */
-export type DetectorListResultValueList = ReadonlyArray<DetectorResponse>;
+export type DetectorListResultValueList = Array<DetectorResponse>;
 export const DetectorListResultValueList = /*@__PURE__*/ S.Array(
   DetectorResponse,
 ) as any as S.Schema<DetectorListResultValueList>;
@@ -1937,8 +1936,7 @@ export const EndpointDetail = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EndpointDetail" }) as any as S.Schema<EndpointDetail>;
 
 /** The list of connection details for this endpoint. */
-export type EndpointDependencyEndpointDetailsList =
-  ReadonlyArray<EndpointDetail>;
+export type EndpointDependencyEndpointDetailsList = Array<EndpointDetail>;
 export const EndpointDependencyEndpointDetailsList = /*@__PURE__*/ S.Array(
   EndpointDetail,
 ) as any as S.Schema<EndpointDependencyEndpointDetailsList>;
@@ -1964,7 +1962,7 @@ export const EndpointDependency = /*@__PURE__*/ S.suspend(() =>
 
 /** The endpoints for this service to which the Batch service makes outbound calls. */
 export type OutboundEnvironmentEndpointEndpointsList =
-  ReadonlyArray<EndpointDependency>;
+  Array<EndpointDependency>;
 export const OutboundEnvironmentEndpointEndpointsList = /*@__PURE__*/ S.Array(
   EndpointDependency,
 ) as any as S.Schema<OutboundEnvironmentEndpointEndpointsList>;
@@ -1987,7 +1985,7 @@ export const OutboundEnvironmentEndpoint = /*@__PURE__*/ S.suspend(() =>
 
 /** The OutboundEnvironmentEndpoint items on this page */
 export type OutboundEnvironmentEndpointCollectionValueList =
-  ReadonlyArray<OutboundEnvironmentEndpoint>;
+  Array<OutboundEnvironmentEndpoint>;
 export const OutboundEnvironmentEndpointCollectionValueList =
   /*@__PURE__*/ S.Array(
     OutboundEnvironmentEndpoint,
@@ -2084,8 +2082,9 @@ export const BatchAccountUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<BatchAccountUpdateRequestTagsMap>;
 
 /** List of allowed authentication modes for the Batch account that can be used to authenticate with the data plane. This does not affect authentication with the control plane. */
-export type BatchAccountUpdatePropertiesAllowedAuthenticationModesList =
-  ReadonlyArray<AuthenticationMode | (string & {})>;
+export type BatchAccountUpdatePropertiesAllowedAuthenticationModesList = Array<
+  AuthenticationMode | (string & {})
+>;
 export const BatchAccountUpdatePropertiesAllowedAuthenticationModesList =
   /*@__PURE__*/ S.Array(
     AuthenticationMode,
@@ -2341,7 +2340,7 @@ export const SkuCapability = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SkuCapability" }) as any as S.Schema<SkuCapability>;
 
 /** A collection of capabilities which this SKU supports. */
-export type SupportedSkuCapabilitiesList = ReadonlyArray<SkuCapability>;
+export type SupportedSkuCapabilitiesList = Array<SkuCapability>;
 export const SupportedSkuCapabilitiesList = /*@__PURE__*/ S.Array(
   SkuCapability,
 ) as any as S.Schema<SupportedSkuCapabilitiesList>;
@@ -2367,7 +2366,7 @@ export const SupportedSku = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SupportedSku" }) as any as S.Schema<SupportedSku>;
 
 /** The SupportedSku items on this page */
-export type SupportedSkusResultValueList = ReadonlyArray<SupportedSku>;
+export type SupportedSkusResultValueList = Array<SupportedSku>;
 export const SupportedSkusResultValueList = /*@__PURE__*/ S.Array(
   SupportedSku,
 ) as any as S.Schema<SupportedSkusResultValueList>;
@@ -2442,8 +2441,7 @@ export type ProvisioningIssuePropertiesSeverity = "Warning" | "Error";
 export const ProvisioningIssuePropertiesSeverity = /*@__PURE__*/ S.String;
 
 /** Fully qualified resource IDs of suggested resources that can be associated to the network security perimeter (NSP) to remediate the issue. */
-export type ProvisioningIssuePropertiesSuggestedResourceIdsList =
-  ReadonlyArray<string>;
+export type ProvisioningIssuePropertiesSuggestedResourceIdsList = Array<string>;
 export const ProvisioningIssuePropertiesSuggestedResourceIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2454,7 +2452,7 @@ export type AccessRuleDirection = "Inbound" | "Outbound";
 export const AccessRuleDirection = /*@__PURE__*/ S.String;
 
 /** Address prefixes in the CIDR format for inbound rules */
-export type AccessRulePropertiesAddressPrefixesList = ReadonlyArray<string>;
+export type AccessRulePropertiesAddressPrefixesList = Array<string>;
 export const AccessRulePropertiesAddressPrefixesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AccessRulePropertiesAddressPrefixesList>;
@@ -2475,7 +2473,7 @@ export const AccessRulePropertiesSubscriptionsItem = /*@__PURE__*/ S.suspend(
 
 /** Subscriptions for inbound rules */
 export type AccessRulePropertiesSubscriptionsList =
-  ReadonlyArray<AccessRulePropertiesSubscriptionsItem>;
+  Array<AccessRulePropertiesSubscriptionsItem>;
 export const AccessRulePropertiesSubscriptionsList = /*@__PURE__*/ S.Array(
   AccessRulePropertiesSubscriptionsItem,
 ) as any as S.Schema<AccessRulePropertiesSubscriptionsList>;
@@ -2501,28 +2499,27 @@ export const NetworkSecurityPerimeter = /*@__PURE__*/ S.suspend(() =>
 
 /** Network security perimeters for inbound rules */
 export type AccessRulePropertiesNetworkSecurityPerimetersList =
-  ReadonlyArray<NetworkSecurityPerimeter>;
+  Array<NetworkSecurityPerimeter>;
 export const AccessRulePropertiesNetworkSecurityPerimetersList =
   /*@__PURE__*/ S.Array(
     NetworkSecurityPerimeter,
   ) as any as S.Schema<AccessRulePropertiesNetworkSecurityPerimetersList>;
 
 /** Fully qualified domain names (FQDN) for outbound rules */
-export type AccessRulePropertiesFullyQualifiedDomainNamesList =
-  ReadonlyArray<string>;
+export type AccessRulePropertiesFullyQualifiedDomainNamesList = Array<string>;
 export const AccessRulePropertiesFullyQualifiedDomainNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AccessRulePropertiesFullyQualifiedDomainNamesList>;
 
 /** Email addresses for outbound rules */
-export type AccessRulePropertiesEmailAddressesList = ReadonlyArray<string>;
+export type AccessRulePropertiesEmailAddressesList = Array<string>;
 export const AccessRulePropertiesEmailAddressesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AccessRulePropertiesEmailAddressesList>;
 
 /** Phone numbers for outbound rules */
-export type AccessRulePropertiesPhoneNumbersList = ReadonlyArray<string>;
+export type AccessRulePropertiesPhoneNumbersList = Array<string>;
 export const AccessRulePropertiesPhoneNumbersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AccessRulePropertiesPhoneNumbersList>;
@@ -2576,7 +2573,7 @@ export const AccessRule = /*@__PURE__*/ S.suspend(() =>
 
 /** Access rules that can be added to the network security profile (NSP) to remediate the issue. */
 export type ProvisioningIssuePropertiesSuggestedAccessRulesList =
-  ReadonlyArray<AccessRule>;
+  Array<AccessRule>;
 export const ProvisioningIssuePropertiesSuggestedAccessRulesList =
   /*@__PURE__*/ S.Array(
     AccessRule,
@@ -2628,7 +2625,7 @@ export const ProvisioningIssue = /*@__PURE__*/ S.suspend(() =>
 
 /** List of provisioning issues, if any */
 export type NetworkSecurityPerimeterConfigurationPropertiesProvisioningIssuesList =
-  ReadonlyArray<ProvisioningIssue>;
+  Array<ProvisioningIssue>;
 export const NetworkSecurityPerimeterConfigurationPropertiesProvisioningIssuesList =
   /*@__PURE__*/ S.Array(
     ProvisioningIssue,
@@ -2654,14 +2651,13 @@ export const ResourceAssociation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourceAssociation>;
 
 /** List of Access Rules */
-export type NetworkSecurityProfileAccessRulesList = ReadonlyArray<AccessRule>;
+export type NetworkSecurityProfileAccessRulesList = Array<AccessRule>;
 export const NetworkSecurityProfileAccessRulesList = /*@__PURE__*/ S.Array(
   AccessRule,
 ) as any as S.Schema<NetworkSecurityProfileAccessRulesList>;
 
 /** List of log categories that are enabled */
-export type NetworkSecurityProfileEnabledLogCategoriesList =
-  ReadonlyArray<string>;
+export type NetworkSecurityProfileEnabledLogCategoriesList = Array<string>;
 export const NetworkSecurityProfileEnabledLogCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2797,7 +2793,7 @@ export const NetworkSecurityPerimeterConfigurationListResultValueItem =
 
 /** The NetworkSecurityPerimeterConfiguration items on this page */
 export type NetworkSecurityPerimeterConfigurationListResultValueList =
-  ReadonlyArray<NetworkSecurityPerimeterConfigurationListResultValueItem>;
+  Array<NetworkSecurityPerimeterConfigurationListResultValueItem>;
 export const NetworkSecurityPerimeterConfigurationListResultValueList =
   /*@__PURE__*/ S.Array(
     NetworkSecurityPerimeterConfigurationListResultValueItem,
@@ -2915,7 +2911,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** The Operation items on this page */
-export type OperationListResultValueList = ReadonlyArray<Operation>;
+export type OperationListResultValueList = Array<Operation>;
 export const OperationListResultValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationListResultValueList>;
@@ -3012,7 +3008,7 @@ export const DiskEncryptionSetParameters = /*@__PURE__*/ S.suspend(() =>
 /** Specifies the security profile settings for the managed disk. **Note**: It can only be set for Confidential VMs and is required when using Confidential VMs. */
 export interface VMDiskSecurityProfile {
   /** Specifies the EncryptionType of the managed disk. It is set to VMGuestStateOnly for encryption of just the VMGuestState blob, and NonPersistedTPM for not persisting firmware state in the VMGuestState blob. **Note**: It can be set for only Confidential VMs and required when using Confidential VMs. */
-  securityEncryptionType?: SecurityEncryptionTypes;
+  securityEncryptionType?: SecurityEncryptionTypes | (string & {});
   /** Specifies the customer managed disk encryption set resource id for the managed disk that is used for Customer Managed Key encrypted ConfidentialVM OS Disk and VMGuest blob. It can be set only in UserSubscription mode. */
   diskEncryptionSet?: DiskEncryptionSetParameters;
 }
@@ -3028,7 +3024,7 @@ export const VMDiskSecurityProfile = /*@__PURE__*/ S.suspend(() =>
 /** The managed disk parameters. */
 export interface ManagedDisk {
   /** The storage account type for use in creating data disks or OS disk. */
-  storageAccountType?: StorageAccountType;
+  storageAccountType?: StorageAccountType | (string & {});
   /** Specifies the security profile settings for the managed disk. **Note**: It can only be set for Confidential VMs and is required when using Confidential VMs. */
   securityProfile?: VMDiskSecurityProfile;
   /** Specifies the customer managed disk encryption set resource id for the managed disk. It can be set only in UserSubscription mode. */
@@ -3047,7 +3043,7 @@ export interface DataDisk {
   /** The lun is used to uniquely identify each data disk. If attaching multiple disks, each should have a distinct lun. The value must be between 0 and 63, inclusive. */
   lun: number;
   /** Values are: none - The caching mode for the disk is not enabled. readOnly - The caching mode for the disk is read only. readWrite - The caching mode for the disk is read and write. The default value for caching is none. For information about the caching options see: https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/. */
-  caching?: CachingType;
+  caching?: CachingType | (string & {});
   /** The initial disk size in GB when creating new data disk. */
   diskSizeGB: number;
   /** The managed disk parameters. */
@@ -3063,7 +3059,7 @@ export const DataDisk = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DataDisk" }) as any as S.Schema<DataDisk>;
 
 /** This property must be specified if the compute nodes in the pool need to have empty data disks attached to them. */
-export type VirtualMachineConfigurationDataDisksList = ReadonlyArray<DataDisk>;
+export type VirtualMachineConfigurationDataDisksList = Array<DataDisk>;
 export const VirtualMachineConfigurationDataDisksList = /*@__PURE__*/ S.Array(
   DataDisk,
 ) as any as S.Schema<VirtualMachineConfigurationDataDisksList>;
@@ -3073,8 +3069,7 @@ export type ContainerType = "DockerCompatible" | "CriCompatible";
 export const ContainerType = /*@__PURE__*/ S.String;
 
 /** This is the full image reference, as would be specified to "docker pull". An image will be sourced from the default Docker registry unless the image is fully qualified with an alternative registry. */
-export type ContainerConfigurationContainerImageNamesList =
-  ReadonlyArray<string>;
+export type ContainerConfigurationContainerImageNamesList = Array<string>;
 export const ContainerConfigurationContainerImageNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3104,7 +3099,7 @@ export const ContainerRegistry = /*@__PURE__*/ S.suspend(() =>
 
 /** If any images must be downloaded from a private registry which requires credentials, then those credentials must be provided here. */
 export type ContainerConfigurationContainerRegistriesList =
-  ReadonlyArray<ContainerRegistry>;
+  Array<ContainerRegistry>;
 export const ContainerConfigurationContainerRegistriesList =
   /*@__PURE__*/ S.Array(
     ContainerRegistry,
@@ -3113,7 +3108,7 @@ export const ContainerConfigurationContainerRegistriesList =
 /** The configuration for container-enabled pools. */
 export interface ContainerConfiguration {
   /** The container technology to be used. */
-  type: ContainerType;
+  type: ContainerType | (string & {});
   /** This is the full image reference, as would be specified to "docker pull". An image will be sourced from the default Docker registry unless the image is fully qualified with an alternative registry. */
   containerImageNames?: ContainerConfigurationContainerImageNamesList;
   /** If any images must be downloaded from a private registry which requires credentials, then those credentials must be provided here. */
@@ -3138,8 +3133,9 @@ export type DiskEncryptionTarget = "OsDisk" | "TemporaryDisk";
 export const DiskEncryptionTarget = /*@__PURE__*/ S.String;
 
 /** On Linux pool, only "TemporaryDisk" is supported; on Windows pool, "OsDisk" and "TemporaryDisk" must be specified. */
-export type DiskEncryptionConfigurationTargetsList =
-  ReadonlyArray<DiskEncryptionTarget>;
+export type DiskEncryptionConfigurationTargetsList = Array<
+  DiskEncryptionTarget | (string & {})
+>;
 export const DiskEncryptionConfigurationTargetsList = /*@__PURE__*/ S.Array(
   DiskEncryptionTarget,
 ) as any as S.Schema<DiskEncryptionConfigurationTargetsList>;
@@ -3186,7 +3182,7 @@ export const NodePlacementPolicyType = /*@__PURE__*/ S.String;
 /** Allocation configuration used by Batch Service to provision the nodes. */
 export interface NodePlacementConfiguration {
   /** Allocation policy used by Batch Service to provision the nodes. If not specified, Batch will use the regional policy. */
-  policy?: NodePlacementPolicyType;
+  policy?: NodePlacementPolicyType | (string & {});
 }
 export const NodePlacementConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3197,7 +3193,7 @@ export const NodePlacementConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NodePlacementConfiguration>;
 
 /** Collection of extension names after which this extension needs to be provisioned. */
-export type VMExtensionProvisionAfterExtensionsList = ReadonlyArray<string>;
+export type VMExtensionProvisionAfterExtensionsList = Array<string>;
 export const VMExtensionProvisionAfterExtensionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<VMExtensionProvisionAfterExtensionsList>;
@@ -3240,8 +3236,7 @@ export const VMExtension = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VMExtension" }) as any as S.Schema<VMExtension>;
 
 /** If specified, the extensions mentioned in this configuration will be installed on each node. */
-export type VirtualMachineConfigurationExtensionsList =
-  ReadonlyArray<VMExtension>;
+export type VirtualMachineConfigurationExtensionsList = Array<VMExtension>;
 export const VirtualMachineConfigurationExtensionsList = /*@__PURE__*/ S.Array(
   VMExtension,
 ) as any as S.Schema<VirtualMachineConfigurationExtensionsList>;
@@ -3253,7 +3248,7 @@ export const DiffDiskPlacement = /*@__PURE__*/ S.String;
 /** Specifies the ephemeral Disk Settings for the operating system disk used by the virtual machine. */
 export interface DiffDiskSettings {
   /** This property can be used by user in the request to choose which location the operating system should be in. e.g., cache disk space for Ephemeral OS disk provisioning. For more information on Ephemeral OS disk size requirements, please refer to Ephemeral OS disk size requirements for Windows VMs at https://learn.microsoft.com/azure/virtual-machines/windows/ephemeral-os-disks#size-requirements and Linux VMs at https://learn.microsoft.com/azure/virtual-machines/linux/ephemeral-os-disks#size-requirements. */
-  placement?: DiffDiskPlacement;
+  placement?: DiffDiskPlacement | (string & {});
 }
 export const DiffDiskSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3268,7 +3263,7 @@ export interface OSDisk {
   /** Specifies the ephemeral Disk Settings for the operating system disk used by the virtual machine. */
   ephemeralOSDiskSettings?: DiffDiskSettings;
   /** The type of caching to enable for the disk. */
-  caching?: CachingType;
+  caching?: CachingType | (string & {});
   /** The managed disk parameters. */
   managedDisk?: ManagedDisk;
   /** The initial disk size in GB when creating new OS disk. */
@@ -3311,7 +3306,7 @@ export const HostEndpointSettingsModeTypes = /*@__PURE__*/ S.String;
 /** Specifies particular host endpoint settings. */
 export interface HostEndpointSettings {
   /** Specifies the access control policy execution mode. */
-  mode?: HostEndpointSettingsModeTypes;
+  mode?: HostEndpointSettingsModeTypes | (string & {});
   /** Specifies the reference to the InVMAccessControlProfileVersion resource id in the form of /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/inVMAccessControlProfiles/{profile}/versions/{version}. */
   inVMAccessControlProfileReferenceId?: string;
 }
@@ -3346,7 +3341,7 @@ export const ProxyAgentSettings = /*@__PURE__*/ S.suspend(() =>
 /** Specifies the security profile settings for the virtual machine or virtual machine scale set. */
 export interface SecurityProfile {
   /** Specifies the SecurityType of the virtual machine. It has to be set to any specified value to enable UefiSettings. */
-  securityType?: SecurityTypes;
+  securityType?: SecurityTypes | (string & {});
   /** This property can be used by user in the request to enable or disable the Host Encryption for the virtual machine or virtual machine scale set. This will enable the encryption for all the disks including Resource/Temp disk at host itself. */
   encryptionAtHost?: boolean;
   /** Specifies the security settings like secure boot and vTPM used while creating the virtual machine. */
@@ -3454,7 +3449,7 @@ export interface FixedScaleSettings {
   /** At least one of targetDedicatedNodes, targetLowPriorityNodes must be set. */
   targetLowPriorityNodes?: number;
   /** If omitted, the default value is Requeue. */
-  nodeDeallocationOption?: ComputeNodeDeallocationOption;
+  nodeDeallocationOption?: ComputeNodeDeallocationOption | (string & {});
 }
 export const FixedScaleSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3515,8 +3510,7 @@ export type NetworkSecurityGroupRuleAccess = "Allow" | "Deny";
 export const NetworkSecurityGroupRuleAccess = /*@__PURE__*/ S.String;
 
 /** Valid values are '*' (for all ports 0 - 65535) or arrays of ports or port ranges (i.e. 100-200). The ports should in the range of 0 to 65535 and the port ranges or ports can't overlap. If any other values are provided the request fails with HTTP status code 400. Default value will be *. */
-export type NetworkSecurityGroupRuleSourcePortRangesList =
-  ReadonlyArray<string>;
+export type NetworkSecurityGroupRuleSourcePortRangesList = Array<string>;
 export const NetworkSecurityGroupRuleSourcePortRangesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3527,7 +3521,7 @@ export interface NetworkSecurityGroupRule {
   /** Priorities within a pool must be unique and are evaluated in order of priority. The lower the number the higher the priority. For example, rules could be specified with order numbers of 150, 250, and 350. The rule with the order number of 150 takes precedence over the rule that has an order of 250. Allowed priorities are 150 to 4096. If any reserved or duplicate values are provided the request fails with HTTP status code 400. */
   priority: number;
   /** The action that should be taken for a specified IP address, subnet range or tag. */
-  access: NetworkSecurityGroupRuleAccess;
+  access: NetworkSecurityGroupRuleAccess | (string & {});
   /** Valid values are a single IP address (i.e. 10.10.10.10), IP subnet (i.e. 192.168.1.0/24), default tag, or * (for all addresses). If any other values are provided the request fails with HTTP status code 400. */
   sourceAddressPrefix: string;
   /** Valid values are '*' (for all ports 0 - 65535) or arrays of ports or port ranges (i.e. 100-200). The ports should in the range of 0 to 65535 and the port ranges or ports can't overlap. If any other values are provided the request fails with HTTP status code 400. Default value will be *. */
@@ -3546,7 +3540,7 @@ export const NetworkSecurityGroupRule = /*@__PURE__*/ S.suspend(() =>
 
 /** The maximum number of rules that can be specified across all the endpoints on a Batch pool is 25. If no network security group rules are specified, a default rule will be created to allow inbound access to the specified backendPort. If the maximum number of network security group rules is exceeded the request fails with HTTP status code 400. */
 export type InboundNatPoolNetworkSecurityGroupRulesList =
-  ReadonlyArray<NetworkSecurityGroupRule>;
+  Array<NetworkSecurityGroupRule>;
 export const InboundNatPoolNetworkSecurityGroupRulesList =
   /*@__PURE__*/ S.Array(
     NetworkSecurityGroupRule,
@@ -3557,7 +3551,7 @@ export interface InboundNatPool {
   /** The name must be unique within a Batch pool, can contain letters, numbers, underscores, periods, and hyphens. Names must start with a letter or number, must end with a letter, number, or underscore, and cannot exceed 77 characters. If any invalid values are provided the request fails with HTTP status code 400. */
   name: string;
   /** The protocol of the endpoint. */
-  protocol: InboundEndpointProtocol;
+  protocol: InboundEndpointProtocol | (string & {});
   /** This must be unique within a Batch pool. Acceptable values are between 1 and 65535 except for 29876 and 29877 as these are reserved. If any reserved values are provided the request fails with HTTP status code 400. */
   backendPort: number;
   /** Acceptable values range between 1 and 65534 except ports from 50000 to 55000 which are reserved. All ranges within a pool must be distinct and cannot overlap. If any reserved or overlapping values are provided the request fails with HTTP status code 400. */
@@ -3582,7 +3576,7 @@ export const InboundNatPool = /*@__PURE__*/ S.suspend(() =>
 
 /** The maximum number of inbound NAT pools per Batch pool is 5. If the maximum number of inbound NAT pools is exceeded the request fails with HTTP status code 400. This cannot be specified if the IPAddressProvisioningType is NoPublicIPAddresses. */
 export type PoolEndpointConfigurationInboundNatPoolsList =
-  ReadonlyArray<InboundNatPool>;
+  Array<InboundNatPool>;
 export const PoolEndpointConfigurationInboundNatPoolsList =
   /*@__PURE__*/ S.Array(
     InboundNatPool,
@@ -3609,8 +3603,7 @@ export type IPAddressProvisioningType =
 export const IPAddressProvisioningType = /*@__PURE__*/ S.String;
 
 /** The number of IPs specified here limits the maximum size of the Pool - 100 dedicated nodes or 100 Spot/low-priority nodes can be allocated for each public IP. For example, a pool needing 250 dedicated VMs would need at least 3 public IPs specified. Each element of this collection is of the form: /subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.Network/publicIPAddresses/{ip}. */
-export type PublicIPAddressConfigurationIpAddressIdsList =
-  ReadonlyArray<string>;
+export type PublicIPAddressConfigurationIpAddressIdsList = Array<string>;
 export const PublicIPAddressConfigurationIpAddressIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3621,8 +3614,9 @@ export type IPFamily = "IPv4" | "IPv6";
 export const IPFamily = /*@__PURE__*/ S.String;
 
 /** IP families are used to determine single-stack or dual-stack pools. For single-stack, the expected value is IPv4. For dual-stack, the expected values are IPv4 and IPv6. */
-export type PublicIPAddressConfigurationIpFamiliesList =
-  ReadonlyArray<IPFamily>;
+export type PublicIPAddressConfigurationIpFamiliesList = Array<
+  IPFamily | (string & {})
+>;
 export const PublicIPAddressConfigurationIpFamiliesList = /*@__PURE__*/ S.Array(
   IPFamily,
 ) as any as S.Schema<PublicIPAddressConfigurationIpFamiliesList>;
@@ -3642,7 +3636,7 @@ export const IPTag = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IPTag" }) as any as S.Schema<IPTag>;
 
 /** IP Tags that will applied to new Public IPs that Batch creates. */
-export type PublicIPAddressConfigurationIpTagsList = ReadonlyArray<IPTag>;
+export type PublicIPAddressConfigurationIpTagsList = Array<IPTag>;
 export const PublicIPAddressConfigurationIpTagsList = /*@__PURE__*/ S.Array(
   IPTag,
 ) as any as S.Schema<PublicIPAddressConfigurationIpTagsList>;
@@ -3650,7 +3644,7 @@ export const PublicIPAddressConfigurationIpTagsList = /*@__PURE__*/ S.Array(
 /** The public IP Address configuration of the networking configuration of a Pool. */
 export interface PublicIPAddressConfiguration {
   /** The default value is BatchManaged */
-  provision?: IPAddressProvisioningType;
+  provision?: IPAddressProvisioningType | (string & {});
   /** The number of IPs specified here limits the maximum size of the Pool - 100 dedicated nodes or 100 Spot/low-priority nodes can be allocated for each public IP. For example, a pool needing 250 dedicated VMs would need at least 3 public IPs specified. Each element of this collection is of the form: /subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.Network/publicIPAddresses/{ip}. */
   ipAddressIds?: PublicIPAddressConfigurationIpAddressIdsList;
   /** IP families are used to determine single-stack or dual-stack pools. For single-stack, the expected value is IPv4. For dual-stack, the expected values are IPv4 and IPv6. */
@@ -3674,7 +3668,9 @@ export interface NetworkConfiguration {
   /** The virtual network must be in the same region and subscription as the Azure Batch account. The specified subnet should have enough free IP addresses to accommodate the number of nodes in the pool. If the subnet doesn't have enough free IP addresses, the pool will partially allocate compute nodes and a resize error will occur. The 'MicrosoftAzureBatch' service principal must have the 'Classic Virtual Machine Contributor' Role-Based Access Control (RBAC) role for the specified VNet. The specified subnet must allow communication from the Azure Batch service to be able to schedule tasks on the compute nodes. This can be verified by checking if the specified VNet has any associated Network Security Groups (NSG). If communication to the compute nodes in the specified subnet is denied by an NSG, then the Batch service will set the state of the compute nodes to unusable. If the specified VNet has any associated Network Security Groups (NSG), then a few reserved system ports must be enabled for inbound communication，including ports 29876 and 29877. Also enable outbound connections to Azure Storage on port 443. For more details see: https://learn.microsoft.com/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration */
   subnetId?: string;
   /** The scope of dynamic vnet assignment. */
-  dynamicVnetAssignmentScope?: NetworkConfigurationDynamicVnetAssignmentScope;
+  dynamicVnetAssignmentScope?:
+    | NetworkConfigurationDynamicVnetAssignmentScope
+    | (string & {});
   /** The endpoint configuration for a pool. */
   endpointConfiguration?: PoolEndpointConfiguration;
   /** The public IP Address configuration of the networking configuration of a Pool. */
@@ -3707,9 +3703,9 @@ export const TaskSchedulingPolicyNodeFillType = /*@__PURE__*/ S.String;
 /** Specifies how tasks should be distributed across compute nodes. */
 export interface TaskSchedulingPolicy {
   /** The order for scheduling tasks from different jobs with the same priority. */
-  jobDefaultOrder?: JobDefaultOrder;
+  jobDefaultOrder?: JobDefaultOrder | (string & {});
   /** How tasks should be distributed across compute nodes. */
-  nodeFillType: TaskSchedulingPolicyNodeFillType;
+  nodeFillType: TaskSchedulingPolicyNodeFillType | (string & {});
 }
 export const TaskSchedulingPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3750,7 +3746,7 @@ export const LoginMode = /*@__PURE__*/ S.String;
 /** Properties used to create a user account on a Windows node. */
 export interface WindowsUserConfiguration {
   /** Specifies login mode for the user. The default value is Interactive. */
-  loginMode?: LoginMode;
+  loginMode?: LoginMode | (string & {});
 }
 export const WindowsUserConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3767,7 +3763,7 @@ export interface UserAccount {
   /** The password for the user account. */
   password: string | Redacted.Redacted<string>;
   /** nonAdmin - The auto user is a standard user without elevated access. admin - The auto user is a user with elevated access and operates with full Administrator permissions. The default value is nonAdmin. */
-  elevationLevel?: ElevationLevel;
+  elevationLevel?: ElevationLevel | (string & {});
   /** This property is ignored if specified on a Windows pool. If not specified, the user is created with the default options. */
   linuxUserConfiguration?: LinuxUserConfiguration;
   /** This property can only be specified if the user is on a Windows pool. If not specified and on a Windows pool, the user is created with the default options. */
@@ -3784,7 +3780,7 @@ export const UserAccount = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UserAccount" }) as any as S.Schema<UserAccount>;
 
 /** The list of user accounts to be created on each node in the pool. */
-export type PoolPropertiesInputUserAccountsList = ReadonlyArray<UserAccount>;
+export type PoolPropertiesInputUserAccountsList = Array<UserAccount>;
 export const PoolPropertiesInputUserAccountsList = /*@__PURE__*/ S.Array(
   UserAccount,
 ) as any as S.Schema<PoolPropertiesInputUserAccountsList>;
@@ -3804,7 +3800,7 @@ export const MetadataItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MetadataItem" }) as any as S.Schema<MetadataItem>;
 
 /** The Batch service does not assign any meaning to metadata; it is solely for the use of user code. */
-export type PoolPropertiesInputMetadataList = ReadonlyArray<MetadataItem>;
+export type PoolPropertiesInputMetadataList = Array<MetadataItem>;
 export const PoolPropertiesInputMetadataList = /*@__PURE__*/ S.Array(
   MetadataItem,
 ) as any as S.Schema<PoolPropertiesInputMetadataList>;
@@ -3839,7 +3835,7 @@ export const ResourceFile = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResourceFile" }) as any as S.Schema<ResourceFile>;
 
 /** A list of files that the Batch service will download to the compute node before running the command line. */
-export type StartTaskResourceFilesList = ReadonlyArray<ResourceFile>;
+export type StartTaskResourceFilesList = Array<ResourceFile>;
 export const StartTaskResourceFilesList = /*@__PURE__*/ S.Array(
   ResourceFile,
 ) as any as S.Schema<StartTaskResourceFilesList>;
@@ -3861,8 +3857,7 @@ export const EnvironmentSetting = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EnvironmentSetting>;
 
 /** A list of environment variable settings for the start task. */
-export type StartTaskEnvironmentSettingsList =
-  ReadonlyArray<EnvironmentSetting>;
+export type StartTaskEnvironmentSettingsList = Array<EnvironmentSetting>;
 export const StartTaskEnvironmentSettingsList = /*@__PURE__*/ S.Array(
   EnvironmentSetting,
 ) as any as S.Schema<StartTaskEnvironmentSettingsList>;
@@ -3874,9 +3869,9 @@ export const AutoUserScope = /*@__PURE__*/ S.String;
 /** Specifies the parameters for the auto user that runs a task on the Batch service. */
 export interface AutoUserSpecification {
   /** The default value is Pool. If the pool is running Windows a value of Task should be specified if stricter isolation between tasks is required. For example, if the task mutates the registry in a way which could impact other tasks, or if certificates have been specified on the pool which should not be accessible by normal tasks but should be accessible by start tasks. */
-  scope?: AutoUserScope;
+  scope?: AutoUserScope | (string & {});
   /** The default value is nonAdmin. */
-  elevationLevel?: ElevationLevel;
+  elevationLevel?: ElevationLevel | (string & {});
 }
 export const AutoUserSpecification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3920,7 +3915,7 @@ export const ContainerHostDataPath = /*@__PURE__*/ S.String;
 /** The entry of path and mount mode you want to mount into task container. */
 export interface ContainerHostBatchBindMountEntry {
   /** The paths which will be mounted to container task's container. */
-  source?: ContainerHostDataPath;
+  source?: ContainerHostDataPath | (string & {});
   /** For Linux, if you mount this path as a read/write mode, this does not mean that all users in container have the read/write access for the path, it depends on the access in host VM. If this path is mounted read-only, all users within the container will not be able to modify the path. */
   isReadOnly?: boolean;
 }
@@ -3935,7 +3930,7 @@ export const ContainerHostBatchBindMountEntry = /*@__PURE__*/ S.suspend(() =>
 
 /** If this array is null or be not present, container task will mount entire temporary disk drive in windows (or AZ_BATCH_NODE_ROOT_DIR in Linux). It won't' mount any data paths into container if this array is set as empty. */
 export type TaskContainerSettingsContainerHostBatchBindMountsList =
-  ReadonlyArray<ContainerHostBatchBindMountEntry>;
+  Array<ContainerHostBatchBindMountEntry>;
 export const TaskContainerSettingsContainerHostBatchBindMountsList =
   /*@__PURE__*/ S.Array(
     ContainerHostBatchBindMountEntry,
@@ -3950,7 +3945,7 @@ export interface TaskContainerSettings {
   /** This setting can be omitted if was already provided at pool creation. */
   registry?: ContainerRegistry;
   /** A flag to indicate where the container task working directory is. The default is 'taskWorkingDirectory'. */
-  workingDirectory?: ContainerWorkingDirectory;
+  workingDirectory?: ContainerWorkingDirectory | (string & {});
   /** If this array is null or be not present, container task will mount entire temporary disk drive in windows (or AZ_BATCH_NODE_ROOT_DIR in Linux). It won't' mount any data paths into container if this array is set as empty. */
   containerHostBatchBindMounts?: TaskContainerSettingsContainerHostBatchBindMountsList;
 }
@@ -4015,7 +4010,7 @@ export const ApplicationPackageReference = /*@__PURE__*/ S.suspend(() =>
 
 /** Changes to application package references affect all new compute nodes joining the pool, but do not affect compute nodes that are already in the pool until they are rebooted or reimaged. There is a maximum of 10 application package references on any given pool. */
 export type PoolPropertiesInputApplicationPackagesList =
-  ReadonlyArray<ApplicationPackageReference>;
+  Array<ApplicationPackageReference>;
 export const PoolPropertiesInputApplicationPackagesList = /*@__PURE__*/ S.Array(
   ApplicationPackageReference,
 ) as any as S.Schema<PoolPropertiesInputApplicationPackagesList>;
@@ -4146,7 +4141,7 @@ export const MountConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** This supports Azure Files, NFS, CIFS/SMB, and Blobfuse. */
 export type PoolPropertiesInputMountConfigurationList =
-  ReadonlyArray<MountConfiguration>;
+  Array<MountConfiguration>;
 export const PoolPropertiesInputMountConfigurationList = /*@__PURE__*/ S.Array(
   MountConfiguration,
 ) as any as S.Schema<PoolPropertiesInputMountConfigurationList>;
@@ -4211,7 +4206,7 @@ export const RollingUpgradePolicy = /*@__PURE__*/ S.suspend(() =>
 /** Describes an upgrade policy - automatic, manual, or rolling. */
 export interface UpgradePolicy {
   /** Specifies the mode of an upgrade to virtual machines in the scale set.<br /><br /> Possible values are:<br /><br /> **Manual** - You control the application of updates to virtual machines in the scale set. You do this by using the manualUpgrade action.<br /><br /> **Automatic** - All virtual machines in the scale set are automatically updated at the same time.<br /><br /> **Rolling** - Scale set performs updates in batches with an optional pause time in between. */
-  mode: UpgradeMode;
+  mode: UpgradeMode | (string & {});
   /** The configuration parameters used for performing automatic OS upgrade. */
   automaticOSUpgradePolicy?: AutomaticOSUpgradePolicy;
   /** The configuration parameters used while performing a rolling upgrade. */
@@ -4362,7 +4357,7 @@ export type AllocationState = "Steady" | "Resizing" | "Stopping";
 export const AllocationState = /*@__PURE__*/ S.String;
 
 /** Additional details about the error. */
-export type AutoScaleRunErrorDetailsList = ReadonlyArray<AutoScaleRunError>;
+export type AutoScaleRunErrorDetailsList = Array<AutoScaleRunError>;
 export const AutoScaleRunErrorDetailsList = /*@__PURE__*/ S.Array(
   S.suspend(() => AutoScaleRunError),
 ) as any as S.Schema<AutoScaleRunErrorDetailsList>;
@@ -4404,26 +4399,26 @@ export const AutoScaleRun = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AutoScaleRun" }) as any as S.Schema<AutoScaleRun>;
 
 /** The list of user accounts to be created on each node in the pool. */
-export type PoolPropertiesUserAccountsList = ReadonlyArray<UserAccount>;
+export type PoolPropertiesUserAccountsList = Array<UserAccount>;
 export const PoolPropertiesUserAccountsList = /*@__PURE__*/ S.Array(
   UserAccount,
 ) as any as S.Schema<PoolPropertiesUserAccountsList>;
 
 /** The Batch service does not assign any meaning to metadata; it is solely for the use of user code. */
-export type PoolPropertiesMetadataList = ReadonlyArray<MetadataItem>;
+export type PoolPropertiesMetadataList = Array<MetadataItem>;
 export const PoolPropertiesMetadataList = /*@__PURE__*/ S.Array(
   MetadataItem,
 ) as any as S.Schema<PoolPropertiesMetadataList>;
 
 /** Changes to application package references affect all new compute nodes joining the pool, but do not affect compute nodes that are already in the pool until they are rebooted or reimaged. There is a maximum of 10 application package references on any given pool. */
 export type PoolPropertiesApplicationPackagesList =
-  ReadonlyArray<ApplicationPackageReference>;
+  Array<ApplicationPackageReference>;
 export const PoolPropertiesApplicationPackagesList = /*@__PURE__*/ S.Array(
   ApplicationPackageReference,
 ) as any as S.Schema<PoolPropertiesApplicationPackagesList>;
 
 /** Additional details about the error. */
-export type ResizeErrorDetailsList = ReadonlyArray<ResizeError>;
+export type ResizeErrorDetailsList = Array<ResizeError>;
 export const ResizeErrorDetailsList = /*@__PURE__*/ S.Array(
   S.suspend(() => ResizeError),
 ) as any as S.Schema<ResizeErrorDetailsList>;
@@ -4446,7 +4441,7 @@ export const ResizeError = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResizeError" }) as any as S.Schema<ResizeError>;
 
 /** This property is set only if an error occurred during the last pool resize, and only when the pool allocationState is Steady. */
-export type ResizeOperationStatusErrorsList = ReadonlyArray<ResizeError>;
+export type ResizeOperationStatusErrorsList = Array<ResizeError>;
 export const ResizeOperationStatusErrorsList = /*@__PURE__*/ S.Array(
   ResizeError,
 ) as any as S.Schema<ResizeOperationStatusErrorsList>;
@@ -4480,8 +4475,7 @@ export const ResizeOperationStatus = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResizeOperationStatus>;
 
 /** This supports Azure Files, NFS, CIFS/SMB, and Blobfuse. */
-export type PoolPropertiesMountConfigurationList =
-  ReadonlyArray<MountConfiguration>;
+export type PoolPropertiesMountConfigurationList = Array<MountConfiguration>;
 export const PoolPropertiesMountConfigurationList = /*@__PURE__*/ S.Array(
   MountConfiguration,
 ) as any as S.Schema<PoolPropertiesMountConfigurationList>;
@@ -4879,7 +4873,7 @@ export const Pool = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Pool" }) as any as S.Schema<Pool>;
 
 /** The Pool items on this page */
-export type ListPoolsResultValueList = ReadonlyArray<Pool>;
+export type ListPoolsResultValueList = Array<Pool>;
 export const ListPoolsResultValueList = /*@__PURE__*/ S.Array(
   Pool,
 ) as any as S.Schema<ListPoolsResultValueList>;
@@ -5190,7 +5184,7 @@ export const PrivateEndpointConnectionListByBatchAccountRequest =
 
 /** The PrivateEndpointConnection items on this page */
 export type ListPrivateEndpointConnectionsResultValueList =
-  ReadonlyArray<PrivateEndpointConnection>;
+  Array<PrivateEndpointConnection>;
 export const ListPrivateEndpointConnectionsResultValueList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection,
@@ -5361,16 +5355,14 @@ export const PrivateLinkResourceGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateLinkResourceGetRequest>;
 
 /** The list of required members that are used to establish the private link connection. */
-export type PrivateLinkResourcePropertiesRequiredMembersList =
-  ReadonlyArray<string>;
+export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
 export const PrivateLinkResourcePropertiesRequiredMembersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
 
 /** The list of required zone names for the private DNS resource name */
-export type PrivateLinkResourcePropertiesRequiredZoneNamesList =
-  ReadonlyArray<string>;
+export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
 export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5507,7 +5499,7 @@ export const PrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The PrivateLinkResource items on this page */
 export type ListPrivateLinkResourcesResultValueList =
-  ReadonlyArray<PrivateLinkResource>;
+  Array<PrivateLinkResource>;
 export const ListPrivateLinkResourcesResultValueList = /*@__PURE__*/ S.Array(
   PrivateLinkResource,
 ) as any as S.Schema<ListPrivateLinkResourcesResultValueList>;

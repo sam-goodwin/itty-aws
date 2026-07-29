@@ -275,7 +275,7 @@ export const GetCustomPageForAccountRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetCustomPageForAccountRequest",
 }) as any as S.Schema<GetCustomPageForAccountRequest>;
 
-export type GetResponseRequiredTokensList = ReadonlyArray<string>;
+export type GetResponseRequiredTokensList = Array<string>;
 export const GetResponseRequiredTokensList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetResponseRequiredTokensList>;
@@ -383,7 +383,7 @@ export const AssetsListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "AssetsListResultItem",
 }) as any as S.Schema<AssetsListResultItem>;
 
-export type AssetsListResultList = ReadonlyArray<AssetsListResultItem>;
+export type AssetsListResultList = Array<AssetsListResultItem>;
 export const AssetsListResultList = /*@__PURE__*/ S.Array(
   AssetsListResultItem,
 ) as any as S.Schema<AssetsListResultList>;
@@ -447,7 +447,7 @@ export const ListCustomPagesForAccountRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListCustomPagesForAccountRequest",
 }) as any as S.Schema<ListCustomPagesForAccountRequest>;
 
-export type ListResultItemRequiredTokensList = ReadonlyArray<string>;
+export type ListResultItemRequiredTokensList = Array<string>;
 export const ListResultItemRequiredTokensList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ListResultItemRequiredTokensList>;
@@ -482,7 +482,7 @@ export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ListResultItem" }) as any as S.Schema<ListResultItem>;
 
-export type ListResultList = ReadonlyArray<ListResultItem>;
+export type ListResultList = Array<ListResultItem>;
 export const ListResultList = /*@__PURE__*/ S.Array(
   ListResultItem,
 ) as any as S.Schema<ListResultList>;
@@ -567,7 +567,7 @@ export const PutCustomPageForAccountRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutCustomPageForAccountRequest",
 }) as any as S.Schema<PutCustomPageForAccountRequest>;
 
-export type UpdateResponseRequiredTokensList = ReadonlyArray<string>;
+export type UpdateResponseRequiredTokensList = Array<string>;
 export const UpdateResponseRequiredTokensList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<UpdateResponseRequiredTokensList>;

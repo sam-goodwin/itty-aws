@@ -42,7 +42,7 @@ export const AfdCustomizedCipherSuiteForTls12 = /*@__PURE__*/ S.String;
 
 /** Cipher suites for TLS 1.2. Required at least one in minimumTlsVersion TLS 1.2. */
 export type AFDDomainHttpsCustomizedCipherSuiteSetCipherSuiteSetForTls12List =
-  ReadonlyArray<AfdCustomizedCipherSuiteForTls12>;
+  Array<AfdCustomizedCipherSuiteForTls12 | (string & {})>;
 export const AFDDomainHttpsCustomizedCipherSuiteSetCipherSuiteSetForTls12List =
   /*@__PURE__*/ S.Array(
     AfdCustomizedCipherSuiteForTls12,
@@ -55,7 +55,7 @@ export const AfdCustomizedCipherSuiteForTls13 = /*@__PURE__*/ S.String;
 
 /** Cipher suites for TLS 1.3. Required at least one in minimumTlsVersion TLS 1.2, TLS 1.3. */
 export type AFDDomainHttpsCustomizedCipherSuiteSetCipherSuiteSetForTls13List =
-  ReadonlyArray<AfdCustomizedCipherSuiteForTls13>;
+  Array<AfdCustomizedCipherSuiteForTls13 | (string & {})>;
 export const AFDDomainHttpsCustomizedCipherSuiteSetCipherSuiteSetForTls13List =
   /*@__PURE__*/ S.Array(
     AfdCustomizedCipherSuiteForTls13,
@@ -98,11 +98,11 @@ export const ResourceReference = /*@__PURE__*/ S.suspend(() =>
 /** The JSON object that contains the properties to secure a domain. */
 export interface AFDDomainHttpsParameters {
   /** Defines the source of the SSL certificate. */
-  certificateType: AfdCertificateType;
+  certificateType: AfdCertificateType | (string & {});
   /** cipher suite set type that will be used for Https */
-  cipherSuiteSetType?: AfdCipherSuiteSetType;
+  cipherSuiteSetType?: AfdCipherSuiteSetType | (string & {});
   /** TLS protocol version that will be used for Https when cipherSuiteSetType is Customized. */
-  minimumTlsVersion?: AfdMinimumTlsVersion;
+  minimumTlsVersion?: AfdMinimumTlsVersion | (string & {});
   /** Customized cipher suites object that will be used for Https when cipherSuiteSetType is Customized. */
   customizedCipherSuiteSet?: AFDDomainHttpsCustomizedCipherSuiteSet;
   /** Resource reference to the secret. ie. subs/rg/profile/secret */
@@ -486,7 +486,7 @@ export const AFDDomain = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AFDDomain" }) as any as S.Schema<AFDDomain>;
 
 /** The AFDDomain items on this page */
-export type AFDDomainListResultValueList = ReadonlyArray<AFDDomain>;
+export type AFDDomainListResultValueList = Array<AFDDomain>;
 export const AFDDomainListResultValueList = /*@__PURE__*/ S.Array(
   AFDDomain,
 ) as any as S.Schema<AFDDomainListResultValueList>;
@@ -927,7 +927,7 @@ export const AFDEndpoint = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AFDEndpoint" }) as any as S.Schema<AFDEndpoint>;
 
 /** The AFDEndpoint items on this page */
-export type AFDEndpointListResultValueList = ReadonlyArray<AFDEndpoint>;
+export type AFDEndpointListResultValueList = Array<AFDEndpoint>;
 export const AFDEndpointListResultValueList = /*@__PURE__*/ S.Array(
   AFDEndpoint,
 ) as any as S.Schema<AFDEndpointListResultValueList>;
@@ -1019,7 +1019,7 @@ export const Usage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Usage" }) as any as S.Schema<Usage>;
 
 /** The Usage items on this page */
-export type UsagesListResultValueList = ReadonlyArray<Usage>;
+export type UsagesListResultValueList = Array<Usage>;
 export const UsagesListResultValueList = /*@__PURE__*/ S.Array(
   Usage,
 ) as any as S.Schema<UsagesListResultValueList>;
@@ -1041,15 +1041,14 @@ export const UsagesListResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UsagesListResult>;
 
 /** The path to the content to be purged. Can describe a file path or a wild card directory. */
-export type AFDEndpointsPurgeContentRequestContentPathsList =
-  ReadonlyArray<string>;
+export type AFDEndpointsPurgeContentRequestContentPathsList = Array<string>;
 export const AFDEndpointsPurgeContentRequestContentPathsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AFDEndpointsPurgeContentRequestContentPathsList>;
 
 /** List of domains. */
-export type AFDEndpointsPurgeContentRequestDomainsList = ReadonlyArray<string>;
+export type AFDEndpointsPurgeContentRequestDomainsList = Array<string>;
 export const AFDEndpointsPurgeContentRequestDomainsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AFDEndpointsPurgeContentRequestDomainsList>;
@@ -1274,9 +1273,9 @@ export interface HealthProbeParameters {
   /** The path relative to the origin that is used to determine the health of the origin. */
   probePath?: string;
   /** The type of health probe request that is made. */
-  probeRequestType?: HealthProbeRequestType;
+  probeRequestType?: HealthProbeRequestType | (string & {});
   /** Protocol to use for health probe. */
-  probeProtocol?: ProbeProtocol;
+  probeProtocol?: ProbeProtocol | (string & {});
   /** The number of seconds between health probes.Default is 240sec. */
   probeIntervalInSeconds?: number;
 }
@@ -1300,7 +1299,7 @@ export const OriginAuthenticationType = /*@__PURE__*/ S.String;
 /** The JSON object that contains the properties of the origin authentication settings. */
 export interface OriginAuthenticationProperties {
   /** The type of the authentication for the origin. */
-  type?: OriginAuthenticationType;
+  type?: OriginAuthenticationType | (string & {});
   /** The user assigned managed identity to use for the origin authentication if type is UserAssignedIdentity. */
   userAssignedIdentity?: ResourceReference;
   /** The scope used when requesting token from Microsoft Entra. For example, for Azure Blob Storage, scope could be "https://storage.azure.com/.default". */
@@ -1565,7 +1564,7 @@ export const AFDOriginGroup = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AFDOriginGroup" }) as any as S.Schema<AFDOriginGroup>;
 
 /** The AFDOriginGroup items on this page */
-export type AFDOriginGroupListResultValueList = ReadonlyArray<AFDOriginGroup>;
+export type AFDOriginGroupListResultValueList = Array<AFDOriginGroup>;
 export const AFDOriginGroupListResultValueList = /*@__PURE__*/ S.Array(
   AFDOriginGroup,
 ) as any as S.Schema<AFDOriginGroupListResultValueList>;
@@ -1718,7 +1717,7 @@ export interface SharedPrivateLinkResourceProperties {
   /** The request message for requesting approval of the shared private link resource. */
   requestMessage?: string;
   /** Status of the shared private link resource. Can be Pending, Approved, Rejected, Disconnected, or Timeout. */
-  status?: SharedPrivateLinkResourceStatus;
+  status?: SharedPrivateLinkResourceStatus | (string & {});
 }
 export const SharedPrivateLinkResourceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2023,7 +2022,7 @@ export const AFDOrigin = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AFDOrigin" }) as any as S.Schema<AFDOrigin>;
 
 /** The AFDOrigin items on this page */
-export type AFDOriginListResultValueList = ReadonlyArray<AFDOrigin>;
+export type AFDOriginListResultValueList = Array<AFDOrigin>;
 export const AFDOriginListResultValueList = /*@__PURE__*/ S.Array(
   AFDOrigin,
 ) as any as S.Schema<AFDOriginListResultValueList>;
@@ -2303,7 +2302,7 @@ export const ProfileChangeSkuWafMapping = /*@__PURE__*/ S.suspend(() =>
 
 /** Web Application Firewall (WAF) and security policy mapping for the profile upgrade */
 export type AFDProfilesUpgradeRequestWafMappingListList =
-  ReadonlyArray<ProfileChangeSkuWafMapping>;
+  Array<ProfileChangeSkuWafMapping>;
 export const AFDProfilesUpgradeRequestWafMappingListList =
   /*@__PURE__*/ S.Array(
     ProfileChangeSkuWafMapping,
@@ -2399,13 +2398,13 @@ export const ScrubbingRuleEntryState = /*@__PURE__*/ S.String;
 /** Defines the contents of the log scrubbing rules. */
 export interface ProfileScrubbingRules {
   /** The variable to be scrubbed from the logs. */
-  matchVariable: ScrubbingRuleEntryMatchVariable;
+  matchVariable: ScrubbingRuleEntryMatchVariable | (string & {});
   /** When matchVariable is a collection, operate on the selector to specify which elements in the collection this rule applies to. */
-  selectorMatchOperator: ScrubbingRuleEntryMatchOperator;
+  selectorMatchOperator: ScrubbingRuleEntryMatchOperator | (string & {});
   /** When matchVariable is a collection, operator used to specify which elements in the collection this rule applies to. */
   selector?: string;
   /** Defines the state of a log scrubbing rule. Default value is enabled. */
-  state?: ScrubbingRuleEntryState;
+  state?: ScrubbingRuleEntryState | (string & {});
 }
 export const ProfileScrubbingRules = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2420,7 +2419,7 @@ export const ProfileScrubbingRules = /*@__PURE__*/ S.suspend(() =>
 
 /** List of log scrubbing rules applied to the Azure Front Door profile logs. */
 export type ProfileLogScrubbingScrubbingRulesList =
-  ReadonlyArray<ProfileScrubbingRules>;
+  Array<ProfileScrubbingRules>;
 export const ProfileLogScrubbingScrubbingRulesList = /*@__PURE__*/ S.Array(
   ProfileScrubbingRules,
 ) as any as S.Schema<ProfileLogScrubbingScrubbingRulesList>;
@@ -2428,7 +2427,7 @@ export const ProfileLogScrubbingScrubbingRulesList = /*@__PURE__*/ S.Array(
 /** Defines rules that scrub sensitive fields in the Azure Front Door profile logs. */
 export interface ProfileLogScrubbing {
   /** State of the log scrubbing config. Default value is Enabled. */
-  state?: ProfileScrubbingState;
+  state?: ProfileScrubbingState | (string & {});
   /** List of log scrubbing rules applied to the Azure Front Door profile logs. */
   scrubbingRules?: ProfileLogScrubbingScrubbingRulesList;
 }
@@ -2489,7 +2488,7 @@ export const SkuName = /*@__PURE__*/ S.String;
 /** Standard_Verizon = The SKU name for a Standard Verizon CDN profile. Premium_Verizon = The SKU name for a Premium Verizon CDN profile. Custom_Verizon = The SKU name for a Custom Verizon CDN profile. Standard_Akamai = The SKU name for an Akamai CDN profile. Standard_ChinaCdn = The SKU name for a China CDN profile for VOD, Web and download scenarios using GB based billing model. Standard_Microsoft = The SKU name for a Standard Microsoft CDN profile. Standard_AzureFrontDoor = The SKU name for an Azure Front Door Standard profile. Premium_AzureFrontDoor = The SKU name for an Azure Front Door Premium profile. Standard_955BandWidth_ChinaCdn = The SKU name for a China CDN profile for VOD, Web and download scenarios using 95-5 peak bandwidth billing model. Standard_AvgBandWidth_ChinaCdn = The SKU name for a China CDN profile for VOD, Web and download scenarios using monthly average peak bandwidth billing model. StandardPlus_ChinaCdn = The SKU name for a China CDN profile for live-streaming using GB based billing model. StandardPlus_955BandWidth_ChinaCdn = The SKU name for a China CDN live-streaming profile using 95-5 peak bandwidth billing model. StandardPlus_AvgBandWidth_ChinaCdn = The SKU name for a China CDN live-streaming profile using monthly average peak bandwidth billing model. */
 export interface Sku {
   /** Name of the pricing tier. */
-  name?: SkuName;
+  name?: SkuName | (string & {});
 }
 export const Sku = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3173,7 +3172,7 @@ export const CustomDomain = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CustomDomain" }) as any as S.Schema<CustomDomain>;
 
 /** The CustomDomain items on this page */
-export type CustomDomainListResultValueList = ReadonlyArray<CustomDomain>;
+export type CustomDomainListResultValueList = Array<CustomDomain>;
 export const CustomDomainListResultValueList = /*@__PURE__*/ S.Array(
   CustomDomain,
 ) as any as S.Schema<CustomDomainListResultValueList>;
@@ -3223,13 +3222,13 @@ export const CidrIpAddress = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CidrIpAddress" }) as any as S.Schema<CidrIpAddress>;
 
 /** The list of ip v4 addresses. */
-export type IpAddressGroupIpv4AddressesList = ReadonlyArray<CidrIpAddress>;
+export type IpAddressGroupIpv4AddressesList = Array<CidrIpAddress>;
 export const IpAddressGroupIpv4AddressesList = /*@__PURE__*/ S.Array(
   CidrIpAddress,
 ) as any as S.Schema<IpAddressGroupIpv4AddressesList>;
 
 /** The list of ip v6 addresses. */
-export type IpAddressGroupIpv6AddressesList = ReadonlyArray<CidrIpAddress>;
+export type IpAddressGroupIpv6AddressesList = Array<CidrIpAddress>;
 export const IpAddressGroupIpv6AddressesList = /*@__PURE__*/ S.Array(
   CidrIpAddress,
 ) as any as S.Schema<IpAddressGroupIpv6AddressesList>;
@@ -3252,8 +3251,7 @@ export const IpAddressGroup = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IpAddressGroup" }) as any as S.Schema<IpAddressGroup>;
 
 /** List of ip address groups. */
-export type EdgeNodePropertiesIpAddressGroupsList =
-  ReadonlyArray<IpAddressGroup>;
+export type EdgeNodePropertiesIpAddressGroupsList = Array<IpAddressGroup>;
 export const EdgeNodePropertiesIpAddressGroupsList = /*@__PURE__*/ S.Array(
   IpAddressGroup,
 ) as any as S.Schema<EdgeNodePropertiesIpAddressGroupsList>;
@@ -3295,7 +3293,7 @@ export const EdgeNode = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EdgeNode" }) as any as S.Schema<EdgeNode>;
 
 /** The EdgeNode items on this page */
-export type EdgenodeResultValueList = ReadonlyArray<EdgeNode>;
+export type EdgenodeResultValueList = Array<EdgeNode>;
 export const EdgenodeResultValueList = /*@__PURE__*/ S.Array(
   EdgeNode,
 ) as any as S.Schema<EdgenodeResultValueList>;
@@ -3324,8 +3322,7 @@ export const EndpointsCreateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<EndpointsCreateRequestTagsMap>;
 
 /** List of content types on which compression applies. The value should be a valid MIME type. */
-export type EndpointPropertiesInputContentTypesToCompressList =
-  ReadonlyArray<string>;
+export type EndpointPropertiesInputContentTypesToCompressList = Array<string>;
 export const EndpointPropertiesInputContentTypesToCompressList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3354,7 +3351,7 @@ export type GeoFilterActions = "Block" | "Allow";
 export const GeoFilterActions = /*@__PURE__*/ S.String;
 
 /** Two letter country or region codes defining user country or region access in a geo filter, e.g. AU, MX, US. */
-export type GeoFilterCountryCodesList = ReadonlyArray<string>;
+export type GeoFilterCountryCodesList = Array<string>;
 export const GeoFilterCountryCodesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GeoFilterCountryCodesList>;
@@ -3364,7 +3361,7 @@ export interface GeoFilter {
   /** Relative path applicable to geo filter. (e.g. '/mypictures', '/mypicture/kitty.jpg', and etc.) */
   relativePath: string;
   /** Action of the geo filter, i.e. allow or block access. */
-  action: GeoFilterActions;
+  action: GeoFilterActions | (string & {});
   /** Two letter country or region codes defining user country or region access in a geo filter, e.g. AU, MX, US. */
   countryCodes: GeoFilterCountryCodesList;
 }
@@ -3377,7 +3374,7 @@ export const GeoFilter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GeoFilter" }) as any as S.Schema<GeoFilter>;
 
 /** List of rules defining the user's geo access within a CDN endpoint. Each geo filter defines an access rule to a specified path or content, e.g. block APAC for path /pictures/ */
-export type EndpointPropertiesInputGeoFiltersList = ReadonlyArray<GeoFilter>;
+export type EndpointPropertiesInputGeoFiltersList = Array<GeoFilter>;
 export const EndpointPropertiesInputGeoFiltersList = /*@__PURE__*/ S.Array(
   GeoFilter,
 ) as any as S.Schema<EndpointPropertiesInputGeoFiltersList>;
@@ -3387,7 +3384,7 @@ export const KeyVaultSigningKeyParametersType = /*@__PURE__*/ S.String;
 
 /** Describes the parameters for using a user's KeyVault for URL Signing Key. */
 export interface KeyVaultSigningKeyParameters {
-  typeName: KeyVaultSigningKeyParametersType;
+  typeName: KeyVaultSigningKeyParametersType | (string & {});
   /** Subscription Id of the user's Key Vault containing the secret */
   subscriptionId: string;
   /** Resource group of the user's Key Vault containing the secret */
@@ -3427,8 +3424,7 @@ export const UrlSigningKey = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UrlSigningKey" }) as any as S.Schema<UrlSigningKey>;
 
 /** List of keys used to validate the signed URL hashes. */
-export type EndpointPropertiesInputUrlSigningKeysList =
-  ReadonlyArray<UrlSigningKey>;
+export type EndpointPropertiesInputUrlSigningKeysList = Array<UrlSigningKey>;
 export const EndpointPropertiesInputUrlSigningKeysList = /*@__PURE__*/ S.Array(
   UrlSigningKey,
 ) as any as S.Schema<EndpointPropertiesInputUrlSigningKeysList>;
@@ -3459,7 +3455,7 @@ export const MatchVariable = /*@__PURE__*/ S.String;
 /** A condition for the delivery rule. */
 export interface DeliveryRuleCondition {
   /** The name of the condition for the delivery rule. */
-  name: MatchVariable;
+  name: MatchVariable | (string & {});
 }
 export const DeliveryRuleCondition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3470,7 +3466,7 @@ export const DeliveryRuleCondition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeliveryRuleCondition>;
 
 /** A list of conditions that must be matched for the actions to be executed */
-export type DeliveryRuleConditionsList = ReadonlyArray<DeliveryRuleCondition>;
+export type DeliveryRuleConditionsList = Array<DeliveryRuleCondition>;
 export const DeliveryRuleConditionsList = /*@__PURE__*/ S.Array(
   DeliveryRuleCondition,
 ) as any as S.Schema<DeliveryRuleConditionsList>;
@@ -3491,7 +3487,7 @@ export const DeliveryRuleActionName = /*@__PURE__*/ S.String;
 /** An action for the delivery rule. */
 export interface DeliveryRuleAction {
   /** The name of the action for the delivery rule. */
-  name: DeliveryRuleActionName;
+  name: DeliveryRuleActionName | (string & {});
 }
 export const DeliveryRuleAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3502,7 +3498,7 @@ export const DeliveryRuleAction = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeliveryRuleAction>;
 
 /** A list of actions that are executed when all the conditions of a rule are satisfied. */
-export type DeliveryRuleActionsList = ReadonlyArray<DeliveryRuleAction>;
+export type DeliveryRuleActionsList = Array<DeliveryRuleAction>;
 export const DeliveryRuleActionsList = /*@__PURE__*/ S.Array(
   DeliveryRuleAction,
 ) as any as S.Schema<DeliveryRuleActionsList>;
@@ -3529,7 +3525,7 @@ export const DeliveryRule = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of the delivery rules. */
 export type EndpointPropertiesUpdateParametersDeliveryPolicyRulesList =
-  ReadonlyArray<DeliveryRule>;
+  Array<DeliveryRule>;
 export const EndpointPropertiesUpdateParametersDeliveryPolicyRulesList =
   /*@__PURE__*/ S.Array(
     DeliveryRule,
@@ -3601,7 +3597,7 @@ export interface DeepCreatedOriginProperties {
   /** A custom message to be included in the approval request to connect to the Private Link. */
   privateLinkApprovalMessage?: string;
   /** The approval status for the connection to the Private Link */
-  privateEndpointStatus?: PrivateEndpointStatus;
+  privateEndpointStatus?: PrivateEndpointStatus | (string & {});
 }
 export const DeepCreatedOriginProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3639,15 +3635,14 @@ export const DeepCreatedOrigin = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeepCreatedOrigin>;
 
 /** The source of the content being delivered via CDN. */
-export type EndpointPropertiesInputOriginsList =
-  ReadonlyArray<DeepCreatedOrigin>;
+export type EndpointPropertiesInputOriginsList = Array<DeepCreatedOrigin>;
 export const EndpointPropertiesInputOriginsList = /*@__PURE__*/ S.Array(
   DeepCreatedOrigin,
 ) as any as S.Schema<EndpointPropertiesInputOriginsList>;
 
 /** The source of the content being delivered via CDN within given origin group. */
 export type DeepCreatedOriginGroupPropertiesOriginsList =
-  ReadonlyArray<ResourceReference>;
+  Array<ResourceReference>;
 export const DeepCreatedOriginGroupPropertiesOriginsList =
   /*@__PURE__*/ S.Array(
     ResourceReference,
@@ -3678,7 +3673,7 @@ export const HttpErrorRangeParameters = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of Http status code ranges that are considered as server errors for origin and it is marked as unhealthy. */
 export type ResponseBasedOriginErrorDetectionParametersHttpErrorRangesList =
-  ReadonlyArray<HttpErrorRangeParameters>;
+  Array<HttpErrorRangeParameters>;
 export const ResponseBasedOriginErrorDetectionParametersHttpErrorRangesList =
   /*@__PURE__*/ S.Array(
     HttpErrorRangeParameters,
@@ -3687,7 +3682,9 @@ export const ResponseBasedOriginErrorDetectionParametersHttpErrorRangesList =
 /** The JSON object that contains the properties to determine origin health using real requests/responses. */
 export interface ResponseBasedOriginErrorDetectionParameters {
   /** Type of response errors for real user requests for which origin will be deemed unhealthy */
-  responseBasedDetectedErrorTypes?: ResponseBasedDetectedErrorTypes;
+  responseBasedDetectedErrorTypes?:
+    | ResponseBasedDetectedErrorTypes
+    | (string & {});
   /** The percentage of failed requests in the sample where failover should trigger. */
   responseBasedFailoverThresholdPercentage?: number;
   /** The list of Http status code ranges that are considered as server errors for origin and it is marked as unhealthy. */
@@ -3750,7 +3747,7 @@ export const DeepCreatedOriginGroup = /*@__PURE__*/ S.suspend(() =>
 
 /** The origin groups comprising of origins that are used for load balancing the traffic based on availability. */
 export type EndpointPropertiesInputOriginGroupsList =
-  ReadonlyArray<DeepCreatedOriginGroup>;
+  Array<DeepCreatedOriginGroup>;
 export const EndpointPropertiesInputOriginGroupsList = /*@__PURE__*/ S.Array(
   DeepCreatedOriginGroup,
 ) as any as S.Schema<EndpointPropertiesInputOriginGroupsList>;
@@ -3870,8 +3867,7 @@ export const EndpointsCreateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<EndpointsCreateResponseTagsMap>;
 
 /** List of content types on which compression applies. The value should be a valid MIME type. */
-export type EndpointPropertiesContentTypesToCompressList =
-  ReadonlyArray<string>;
+export type EndpointPropertiesContentTypesToCompressList = Array<string>;
 export const EndpointPropertiesContentTypesToCompressList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3887,26 +3883,25 @@ export const EndpointPropertiesQueryStringCachingBehavior =
   /*@__PURE__*/ S.String;
 
 /** List of rules defining the user's geo access within a CDN endpoint. Each geo filter defines an access rule to a specified path or content, e.g. block APAC for path /pictures/ */
-export type EndpointPropertiesGeoFiltersList = ReadonlyArray<GeoFilter>;
+export type EndpointPropertiesGeoFiltersList = Array<GeoFilter>;
 export const EndpointPropertiesGeoFiltersList = /*@__PURE__*/ S.Array(
   GeoFilter,
 ) as any as S.Schema<EndpointPropertiesGeoFiltersList>;
 
 /** List of keys used to validate the signed URL hashes. */
-export type EndpointPropertiesUrlSigningKeysList = ReadonlyArray<UrlSigningKey>;
+export type EndpointPropertiesUrlSigningKeysList = Array<UrlSigningKey>;
 export const EndpointPropertiesUrlSigningKeysList = /*@__PURE__*/ S.Array(
   UrlSigningKey,
 ) as any as S.Schema<EndpointPropertiesUrlSigningKeysList>;
 
 /** The source of the content being delivered via CDN. */
-export type EndpointPropertiesOriginsList = ReadonlyArray<DeepCreatedOrigin>;
+export type EndpointPropertiesOriginsList = Array<DeepCreatedOrigin>;
 export const EndpointPropertiesOriginsList = /*@__PURE__*/ S.Array(
   DeepCreatedOrigin,
 ) as any as S.Schema<EndpointPropertiesOriginsList>;
 
 /** The origin groups comprising of origins that are used for load balancing the traffic based on availability. */
-export type EndpointPropertiesOriginGroupsList =
-  ReadonlyArray<DeepCreatedOriginGroup>;
+export type EndpointPropertiesOriginGroupsList = Array<DeepCreatedOriginGroup>;
 export const EndpointPropertiesOriginGroupsList = /*@__PURE__*/ S.Array(
   DeepCreatedOriginGroup,
 ) as any as S.Schema<EndpointPropertiesOriginGroupsList>;
@@ -3945,7 +3940,7 @@ export const DeepCreatedCustomDomain = /*@__PURE__*/ S.suspend(() =>
 
 /** The custom domains under the endpoint. */
 export type EndpointPropertiesCustomDomainsList =
-  ReadonlyArray<DeepCreatedCustomDomain>;
+  Array<DeepCreatedCustomDomain>;
 export const EndpointPropertiesCustomDomainsList = /*@__PURE__*/ S.Array(
   DeepCreatedCustomDomain,
 ) as any as S.Schema<EndpointPropertiesCustomDomainsList>;
@@ -4239,7 +4234,7 @@ export const Endpoint = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Endpoint" }) as any as S.Schema<Endpoint>;
 
 /** The Endpoint items on this page */
-export type EndpointListResultValueList = ReadonlyArray<Endpoint>;
+export type EndpointListResultValueList = Array<Endpoint>;
 export const EndpointListResultValueList = /*@__PURE__*/ S.Array(
   Endpoint,
 ) as any as S.Schema<EndpointListResultValueList>;
@@ -4313,7 +4308,7 @@ export const ResourceUsage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResourceUsage" }) as any as S.Schema<ResourceUsage>;
 
 /** The ResourceUsage items on this page */
-export type ResourceUsageListResultValueList = ReadonlyArray<ResourceUsage>;
+export type ResourceUsageListResultValueList = Array<ResourceUsage>;
 export const ResourceUsageListResultValueList = /*@__PURE__*/ S.Array(
   ResourceUsage,
 ) as any as S.Schema<ResourceUsageListResultValueList>;
@@ -4335,7 +4330,7 @@ export const ResourceUsageListResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourceUsageListResult>;
 
 /** The path to the content to be loaded. Path should be a relative file URL of the origin. */
-export type EndpointsLoadContentRequestContentPathsList = ReadonlyArray<string>;
+export type EndpointsLoadContentRequestContentPathsList = Array<string>;
 export const EndpointsLoadContentRequestContentPathsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4380,8 +4375,7 @@ export const EndpointsLoadContentResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EndpointsLoadContentResponse>;
 
 /** The path to the content to be purged. Can describe a file path or a wild card directory. */
-export type EndpointsPurgeContentRequestContentPathsList =
-  ReadonlyArray<string>;
+export type EndpointsPurgeContentRequestContentPathsList = Array<string>;
 export const EndpointsPurgeContentRequestContentPathsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4570,7 +4564,7 @@ export const EndpointsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 
 /** List of content types on which compression applies. The value should be a valid MIME type. */
 export type EndpointPropertiesUpdateParametersContentTypesToCompressList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const EndpointPropertiesUpdateParametersContentTypesToCompressList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4586,8 +4580,7 @@ export const EndpointPropertiesUpdateParametersQueryStringCachingBehavior =
   /*@__PURE__*/ S.String;
 
 /** List of rules defining the user's geo access within a CDN endpoint. Each geo filter defines an access rule to a specified path or content, e.g. block APAC for path /pictures/ */
-export type EndpointPropertiesUpdateParametersGeoFiltersList =
-  ReadonlyArray<GeoFilter>;
+export type EndpointPropertiesUpdateParametersGeoFiltersList = Array<GeoFilter>;
 export const EndpointPropertiesUpdateParametersGeoFiltersList =
   /*@__PURE__*/ S.Array(
     GeoFilter,
@@ -4595,7 +4588,7 @@ export const EndpointPropertiesUpdateParametersGeoFiltersList =
 
 /** List of keys used to validate the signed URL hashes. */
 export type EndpointPropertiesUpdateParametersUrlSigningKeysList =
-  ReadonlyArray<UrlSigningKey>;
+  Array<UrlSigningKey>;
 export const EndpointPropertiesUpdateParametersUrlSigningKeysList =
   /*@__PURE__*/ S.Array(
     UrlSigningKey,
@@ -4808,7 +4801,7 @@ export const ContinentsResponseContinentsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ContinentsResponseContinentsItem>;
 
 export type ContinentsResponseContinentsList =
-  ReadonlyArray<ContinentsResponseContinentsItem>;
+  Array<ContinentsResponseContinentsItem>;
 export const ContinentsResponseContinentsList = /*@__PURE__*/ S.Array(
   ContinentsResponseContinentsItem,
 ) as any as S.Schema<ContinentsResponseContinentsList>;
@@ -4828,7 +4821,7 @@ export const ContinentsResponseCountryOrRegionsItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ContinentsResponseCountryOrRegionsItem>;
 
 export type ContinentsResponseCountryOrRegionsList =
-  ReadonlyArray<ContinentsResponseCountryOrRegionsItem>;
+  Array<ContinentsResponseCountryOrRegionsItem>;
 export const ContinentsResponseCountryOrRegionsList = /*@__PURE__*/ S.Array(
   ContinentsResponseCountryOrRegionsItem,
 ) as any as S.Schema<ContinentsResponseCountryOrRegionsList>;
@@ -4857,10 +4850,9 @@ export type LogAnalyticsGetLogAnalyticsMetricsRequestMetricsItem =
 export const LogAnalyticsGetLogAnalyticsMetricsRequestMetricsItem =
   /*@__PURE__*/ S.String;
 
-export type LogAnalyticsGetLogAnalyticsMetricsRequestMetricsList =
-  ReadonlyArray<
-    LogAnalyticsGetLogAnalyticsMetricsRequestMetricsItem | (string & {})
-  >;
+export type LogAnalyticsGetLogAnalyticsMetricsRequestMetricsList = Array<
+  LogAnalyticsGetLogAnalyticsMetricsRequestMetricsItem | (string & {})
+>;
 export const LogAnalyticsGetLogAnalyticsMetricsRequestMetricsList =
   /*@__PURE__*/ S.Array(
     LogAnalyticsGetLogAnalyticsMetricsRequestMetricsItem,
@@ -4882,38 +4874,37 @@ export type LogAnalyticsGetLogAnalyticsMetricsRequestGroupByItem =
 export const LogAnalyticsGetLogAnalyticsMetricsRequestGroupByItem =
   /*@__PURE__*/ S.String;
 
-export type LogAnalyticsGetLogAnalyticsMetricsRequestGroupByList =
-  ReadonlyArray<
-    LogAnalyticsGetLogAnalyticsMetricsRequestGroupByItem | (string & {})
-  >;
+export type LogAnalyticsGetLogAnalyticsMetricsRequestGroupByList = Array<
+  LogAnalyticsGetLogAnalyticsMetricsRequestGroupByItem | (string & {})
+>;
 export const LogAnalyticsGetLogAnalyticsMetricsRequestGroupByList =
   /*@__PURE__*/ S.Array(
     LogAnalyticsGetLogAnalyticsMetricsRequestGroupByItem,
   ) as any as S.Schema<LogAnalyticsGetLogAnalyticsMetricsRequestGroupByList>;
 
 export type LogAnalyticsGetLogAnalyticsMetricsRequestContinentsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const LogAnalyticsGetLogAnalyticsMetricsRequestContinentsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<LogAnalyticsGetLogAnalyticsMetricsRequestContinentsList>;
 
 export type LogAnalyticsGetLogAnalyticsMetricsRequestCountryOrRegionsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const LogAnalyticsGetLogAnalyticsMetricsRequestCountryOrRegionsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<LogAnalyticsGetLogAnalyticsMetricsRequestCountryOrRegionsList>;
 
 export type LogAnalyticsGetLogAnalyticsMetricsRequestCustomDomainsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const LogAnalyticsGetLogAnalyticsMetricsRequestCustomDomainsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<LogAnalyticsGetLogAnalyticsMetricsRequestCustomDomainsList>;
 
 export type LogAnalyticsGetLogAnalyticsMetricsRequestProtocolsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const LogAnalyticsGetLogAnalyticsMetricsRequestProtocolsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5007,7 +4998,7 @@ export const MetricsResponseSeriesPropertiesItemsItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<MetricsResponseSeriesPropertiesItemsItem>;
 
 export type MetricsResponseSeriesItemGroupsList =
-  ReadonlyArray<MetricsResponseSeriesPropertiesItemsItem>;
+  Array<MetricsResponseSeriesPropertiesItemsItem>;
 export const MetricsResponseSeriesItemGroupsList = /*@__PURE__*/ S.Array(
   MetricsResponseSeriesPropertiesItemsItem,
 ) as any as S.Schema<MetricsResponseSeriesItemGroupsList>;
@@ -5028,7 +5019,7 @@ export const Components1Gs0LlpSchemasMetricsresponsePropertiesSeriesItemsPropert
   }) as any as S.Schema<Components1Gs0LlpSchemasMetricsresponsePropertiesSeriesItemsPropertiesDataItems>;
 
 export type MetricsResponseSeriesItemDataList =
-  ReadonlyArray<Components1Gs0LlpSchemasMetricsresponsePropertiesSeriesItemsPropertiesDataItems>;
+  Array<Components1Gs0LlpSchemasMetricsresponsePropertiesSeriesItemsPropertiesDataItems>;
 export const MetricsResponseSeriesItemDataList = /*@__PURE__*/ S.Array(
   Components1Gs0LlpSchemasMetricsresponsePropertiesSeriesItemsPropertiesDataItems,
 ) as any as S.Schema<MetricsResponseSeriesItemDataList>;
@@ -5050,8 +5041,7 @@ export const MetricsResponseSeriesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "MetricsResponseSeriesItem",
 }) as any as S.Schema<MetricsResponseSeriesItem>;
 
-export type MetricsResponseSeriesList =
-  ReadonlyArray<MetricsResponseSeriesItem>;
+export type MetricsResponseSeriesList = Array<MetricsResponseSeriesItem>;
 export const MetricsResponseSeriesList = /*@__PURE__*/ S.Array(
   MetricsResponseSeriesItem,
 ) as any as S.Schema<MetricsResponseSeriesList>;
@@ -5083,10 +5073,9 @@ export type LogAnalyticsGetLogAnalyticsRankingsRequestRankingsItem =
 export const LogAnalyticsGetLogAnalyticsRankingsRequestRankingsItem =
   /*@__PURE__*/ S.String;
 
-export type LogAnalyticsGetLogAnalyticsRankingsRequestRankingsList =
-  ReadonlyArray<
-    LogAnalyticsGetLogAnalyticsRankingsRequestRankingsItem | (string & {})
-  >;
+export type LogAnalyticsGetLogAnalyticsRankingsRequestRankingsList = Array<
+  LogAnalyticsGetLogAnalyticsRankingsRequestRankingsItem | (string & {})
+>;
 export const LogAnalyticsGetLogAnalyticsRankingsRequestRankingsList =
   /*@__PURE__*/ S.Array(
     LogAnalyticsGetLogAnalyticsRankingsRequestRankingsItem,
@@ -5102,17 +5091,16 @@ export type LogAnalyticsGetLogAnalyticsRankingsRequestMetricsItem =
 export const LogAnalyticsGetLogAnalyticsRankingsRequestMetricsItem =
   /*@__PURE__*/ S.String;
 
-export type LogAnalyticsGetLogAnalyticsRankingsRequestMetricsList =
-  ReadonlyArray<
-    LogAnalyticsGetLogAnalyticsRankingsRequestMetricsItem | (string & {})
-  >;
+export type LogAnalyticsGetLogAnalyticsRankingsRequestMetricsList = Array<
+  LogAnalyticsGetLogAnalyticsRankingsRequestMetricsItem | (string & {})
+>;
 export const LogAnalyticsGetLogAnalyticsRankingsRequestMetricsList =
   /*@__PURE__*/ S.Array(
     LogAnalyticsGetLogAnalyticsRankingsRequestMetricsItem,
   ) as any as S.Schema<LogAnalyticsGetLogAnalyticsRankingsRequestMetricsList>;
 
 export type LogAnalyticsGetLogAnalyticsRankingsRequestCustomDomainsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const LogAnalyticsGetLogAnalyticsRankingsRequestCustomDomainsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5181,7 +5169,7 @@ export const RankingsResponseTablesPropertiesItemsMetricsItem =
   }) as any as S.Schema<RankingsResponseTablesPropertiesItemsMetricsItem>;
 
 export type RankingsResponseTablesPropertiesItemsItemMetricsList =
-  ReadonlyArray<RankingsResponseTablesPropertiesItemsMetricsItem>;
+  Array<RankingsResponseTablesPropertiesItemsMetricsItem>;
 export const RankingsResponseTablesPropertiesItemsItemMetricsList =
   /*@__PURE__*/ S.Array(
     RankingsResponseTablesPropertiesItemsMetricsItem,
@@ -5202,7 +5190,7 @@ export const RankingsResponseTablesPropertiesItemsItem =
   }) as any as S.Schema<RankingsResponseTablesPropertiesItemsItem>;
 
 export type RankingsResponseTablesItemDataList =
-  ReadonlyArray<RankingsResponseTablesPropertiesItemsItem>;
+  Array<RankingsResponseTablesPropertiesItemsItem>;
 export const RankingsResponseTablesItemDataList = /*@__PURE__*/ S.Array(
   RankingsResponseTablesPropertiesItemsItem,
 ) as any as S.Schema<RankingsResponseTablesItemDataList>;
@@ -5220,8 +5208,7 @@ export const RankingsResponseTablesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "RankingsResponseTablesItem",
 }) as any as S.Schema<RankingsResponseTablesItem>;
 
-export type RankingsResponseTablesList =
-  ReadonlyArray<RankingsResponseTablesItem>;
+export type RankingsResponseTablesList = Array<RankingsResponseTablesItem>;
 export const RankingsResponseTablesList = /*@__PURE__*/ S.Array(
   RankingsResponseTablesItem,
 ) as any as S.Schema<RankingsResponseTablesList>;
@@ -5287,7 +5274,7 @@ export const ResourcesResponseEndpointsPropertiesItemsItem =
   }) as any as S.Schema<ResourcesResponseEndpointsPropertiesItemsItem>;
 
 export type ResourcesResponseEndpointsItemCustomDomainsList =
-  ReadonlyArray<ResourcesResponseEndpointsPropertiesItemsItem>;
+  Array<ResourcesResponseEndpointsPropertiesItemsItem>;
 export const ResourcesResponseEndpointsItemCustomDomainsList =
   /*@__PURE__*/ S.Array(
     ResourcesResponseEndpointsPropertiesItemsItem,
@@ -5311,7 +5298,7 @@ export const ResourcesResponseEndpointsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourcesResponseEndpointsItem>;
 
 export type ResourcesResponseEndpointsList =
-  ReadonlyArray<ResourcesResponseEndpointsItem>;
+  Array<ResourcesResponseEndpointsItem>;
 export const ResourcesResponseEndpointsList = /*@__PURE__*/ S.Array(
   ResourcesResponseEndpointsItem,
 ) as any as S.Schema<ResourcesResponseEndpointsList>;
@@ -5334,7 +5321,7 @@ export const ResourcesResponseCustomDomainsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourcesResponseCustomDomainsItem>;
 
 export type ResourcesResponseCustomDomainsList =
-  ReadonlyArray<ResourcesResponseCustomDomainsItem>;
+  Array<ResourcesResponseCustomDomainsItem>;
 export const ResourcesResponseCustomDomainsList = /*@__PURE__*/ S.Array(
   ResourcesResponseCustomDomainsItem,
 ) as any as S.Schema<ResourcesResponseCustomDomainsList>;
@@ -5358,10 +5345,9 @@ export type LogAnalyticsGetWafLogAnalyticsMetricsRequestMetricsItem =
 export const LogAnalyticsGetWafLogAnalyticsMetricsRequestMetricsItem =
   /*@__PURE__*/ S.String;
 
-export type LogAnalyticsGetWafLogAnalyticsMetricsRequestMetricsList =
-  ReadonlyArray<
-    LogAnalyticsGetWafLogAnalyticsMetricsRequestMetricsItem | (string & {})
-  >;
+export type LogAnalyticsGetWafLogAnalyticsMetricsRequestMetricsList = Array<
+  LogAnalyticsGetWafLogAnalyticsMetricsRequestMetricsItem | (string & {})
+>;
 export const LogAnalyticsGetWafLogAnalyticsMetricsRequestMetricsList =
   /*@__PURE__*/ S.Array(
     LogAnalyticsGetWafLogAnalyticsMetricsRequestMetricsItem,
@@ -5382,10 +5368,9 @@ export type LogAnalyticsGetWafLogAnalyticsMetricsRequestActionsItem =
 export const LogAnalyticsGetWafLogAnalyticsMetricsRequestActionsItem =
   /*@__PURE__*/ S.String;
 
-export type LogAnalyticsGetWafLogAnalyticsMetricsRequestActionsList =
-  ReadonlyArray<
-    LogAnalyticsGetWafLogAnalyticsMetricsRequestActionsItem | (string & {})
-  >;
+export type LogAnalyticsGetWafLogAnalyticsMetricsRequestActionsList = Array<
+  LogAnalyticsGetWafLogAnalyticsMetricsRequestActionsItem | (string & {})
+>;
 export const LogAnalyticsGetWafLogAnalyticsMetricsRequestActionsList =
   /*@__PURE__*/ S.Array(
     LogAnalyticsGetWafLogAnalyticsMetricsRequestActionsItem,
@@ -5397,10 +5382,9 @@ export type LogAnalyticsGetWafLogAnalyticsMetricsRequestGroupByItem =
 export const LogAnalyticsGetWafLogAnalyticsMetricsRequestGroupByItem =
   /*@__PURE__*/ S.String;
 
-export type LogAnalyticsGetWafLogAnalyticsMetricsRequestGroupByList =
-  ReadonlyArray<
-    LogAnalyticsGetWafLogAnalyticsMetricsRequestGroupByItem | (string & {})
-  >;
+export type LogAnalyticsGetWafLogAnalyticsMetricsRequestGroupByList = Array<
+  LogAnalyticsGetWafLogAnalyticsMetricsRequestGroupByItem | (string & {})
+>;
 export const LogAnalyticsGetWafLogAnalyticsMetricsRequestGroupByList =
   /*@__PURE__*/ S.Array(
     LogAnalyticsGetWafLogAnalyticsMetricsRequestGroupByItem,
@@ -5413,10 +5397,9 @@ export type LogAnalyticsGetWafLogAnalyticsMetricsRequestRuleTypesItem =
 export const LogAnalyticsGetWafLogAnalyticsMetricsRequestRuleTypesItem =
   /*@__PURE__*/ S.String;
 
-export type LogAnalyticsGetWafLogAnalyticsMetricsRequestRuleTypesList =
-  ReadonlyArray<
-    LogAnalyticsGetWafLogAnalyticsMetricsRequestRuleTypesItem | (string & {})
-  >;
+export type LogAnalyticsGetWafLogAnalyticsMetricsRequestRuleTypesList = Array<
+  LogAnalyticsGetWafLogAnalyticsMetricsRequestRuleTypesItem | (string & {})
+>;
 export const LogAnalyticsGetWafLogAnalyticsMetricsRequestRuleTypesList =
   /*@__PURE__*/ S.Array(
     LogAnalyticsGetWafLogAnalyticsMetricsRequestRuleTypesItem,
@@ -5497,7 +5480,7 @@ export const WafMetricsResponseSeriesPropertiesItemsItem =
   }) as any as S.Schema<WafMetricsResponseSeriesPropertiesItemsItem>;
 
 export type WafMetricsResponseSeriesItemGroupsList =
-  ReadonlyArray<WafMetricsResponseSeriesPropertiesItemsItem>;
+  Array<WafMetricsResponseSeriesPropertiesItemsItem>;
 export const WafMetricsResponseSeriesItemGroupsList = /*@__PURE__*/ S.Array(
   WafMetricsResponseSeriesPropertiesItemsItem,
 ) as any as S.Schema<WafMetricsResponseSeriesItemGroupsList>;
@@ -5518,7 +5501,7 @@ export const Components18OrqelSchemasWafmetricsresponsePropertiesSeriesItemsProp
   }) as any as S.Schema<Components18OrqelSchemasWafmetricsresponsePropertiesSeriesItemsPropertiesDataItems>;
 
 export type WafMetricsResponseSeriesItemDataList =
-  ReadonlyArray<Components18OrqelSchemasWafmetricsresponsePropertiesSeriesItemsPropertiesDataItems>;
+  Array<Components18OrqelSchemasWafmetricsresponsePropertiesSeriesItemsPropertiesDataItems>;
 export const WafMetricsResponseSeriesItemDataList = /*@__PURE__*/ S.Array(
   Components18OrqelSchemasWafmetricsresponsePropertiesSeriesItemsPropertiesDataItems,
 ) as any as S.Schema<WafMetricsResponseSeriesItemDataList>;
@@ -5540,8 +5523,7 @@ export const WafMetricsResponseSeriesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "WafMetricsResponseSeriesItem",
 }) as any as S.Schema<WafMetricsResponseSeriesItem>;
 
-export type WafMetricsResponseSeriesList =
-  ReadonlyArray<WafMetricsResponseSeriesItem>;
+export type WafMetricsResponseSeriesList = Array<WafMetricsResponseSeriesItem>;
 export const WafMetricsResponseSeriesList = /*@__PURE__*/ S.Array(
   WafMetricsResponseSeriesItem,
 ) as any as S.Schema<WafMetricsResponseSeriesList>;
@@ -5569,10 +5551,9 @@ export type LogAnalyticsGetWafLogAnalyticsRankingsRequestMetricsItem =
 export const LogAnalyticsGetWafLogAnalyticsRankingsRequestMetricsItem =
   /*@__PURE__*/ S.String;
 
-export type LogAnalyticsGetWafLogAnalyticsRankingsRequestMetricsList =
-  ReadonlyArray<
-    LogAnalyticsGetWafLogAnalyticsRankingsRequestMetricsItem | (string & {})
-  >;
+export type LogAnalyticsGetWafLogAnalyticsRankingsRequestMetricsList = Array<
+  LogAnalyticsGetWafLogAnalyticsRankingsRequestMetricsItem | (string & {})
+>;
 export const LogAnalyticsGetWafLogAnalyticsRankingsRequestMetricsList =
   /*@__PURE__*/ S.Array(
     LogAnalyticsGetWafLogAnalyticsRankingsRequestMetricsItem,
@@ -5590,10 +5571,9 @@ export type LogAnalyticsGetWafLogAnalyticsRankingsRequestRankingsItem =
 export const LogAnalyticsGetWafLogAnalyticsRankingsRequestRankingsItem =
   /*@__PURE__*/ S.String;
 
-export type LogAnalyticsGetWafLogAnalyticsRankingsRequestRankingsList =
-  ReadonlyArray<
-    LogAnalyticsGetWafLogAnalyticsRankingsRequestRankingsItem | (string & {})
-  >;
+export type LogAnalyticsGetWafLogAnalyticsRankingsRequestRankingsList = Array<
+  LogAnalyticsGetWafLogAnalyticsRankingsRequestRankingsItem | (string & {})
+>;
 export const LogAnalyticsGetWafLogAnalyticsRankingsRequestRankingsList =
   /*@__PURE__*/ S.Array(
     LogAnalyticsGetWafLogAnalyticsRankingsRequestRankingsItem,
@@ -5607,10 +5587,9 @@ export type LogAnalyticsGetWafLogAnalyticsRankingsRequestActionsItem =
 export const LogAnalyticsGetWafLogAnalyticsRankingsRequestActionsItem =
   /*@__PURE__*/ S.String;
 
-export type LogAnalyticsGetWafLogAnalyticsRankingsRequestActionsList =
-  ReadonlyArray<
-    LogAnalyticsGetWafLogAnalyticsRankingsRequestActionsItem | (string & {})
-  >;
+export type LogAnalyticsGetWafLogAnalyticsRankingsRequestActionsList = Array<
+  LogAnalyticsGetWafLogAnalyticsRankingsRequestActionsItem | (string & {})
+>;
 export const LogAnalyticsGetWafLogAnalyticsRankingsRequestActionsList =
   /*@__PURE__*/ S.Array(
     LogAnalyticsGetWafLogAnalyticsRankingsRequestActionsItem,
@@ -5623,10 +5602,9 @@ export type LogAnalyticsGetWafLogAnalyticsRankingsRequestRuleTypesItem =
 export const LogAnalyticsGetWafLogAnalyticsRankingsRequestRuleTypesItem =
   /*@__PURE__*/ S.String;
 
-export type LogAnalyticsGetWafLogAnalyticsRankingsRequestRuleTypesList =
-  ReadonlyArray<
-    LogAnalyticsGetWafLogAnalyticsRankingsRequestRuleTypesItem | (string & {})
-  >;
+export type LogAnalyticsGetWafLogAnalyticsRankingsRequestRuleTypesList = Array<
+  LogAnalyticsGetWafLogAnalyticsRankingsRequestRuleTypesItem | (string & {})
+>;
 export const LogAnalyticsGetWafLogAnalyticsRankingsRequestRuleTypesList =
   /*@__PURE__*/ S.Array(
     LogAnalyticsGetWafLogAnalyticsRankingsRequestRuleTypesItem,
@@ -5684,12 +5662,12 @@ export const LogAnalyticsGetWafLogAnalyticsRankingsRequest =
     identifier: "LogAnalyticsGetWafLogAnalyticsRankingsRequest",
   }) as any as S.Schema<LogAnalyticsGetWafLogAnalyticsRankingsRequest>;
 
-export type WafRankingsResponseGroupsList = ReadonlyArray<string>;
+export type WafRankingsResponseGroupsList = Array<string>;
 export const WafRankingsResponseGroupsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<WafRankingsResponseGroupsList>;
 
-export type WafRankingsResponseDataItemGroupValuesList = ReadonlyArray<string>;
+export type WafRankingsResponseDataItemGroupValuesList = Array<string>;
 export const WafRankingsResponseDataItemGroupValuesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<WafRankingsResponseDataItemGroupValuesList>;
@@ -5712,7 +5690,7 @@ export const ComponentsKpo1PjSchemasWafrankingsresponsePropertiesDataItemsProper
   }) as any as S.Schema<ComponentsKpo1PjSchemasWafrankingsresponsePropertiesDataItemsPropertiesMetricsItems>;
 
 export type WafRankingsResponseDataItemMetricsList =
-  ReadonlyArray<ComponentsKpo1PjSchemasWafrankingsresponsePropertiesDataItemsPropertiesMetricsItems>;
+  Array<ComponentsKpo1PjSchemasWafrankingsresponsePropertiesDataItemsPropertiesMetricsItems>;
 export const WafRankingsResponseDataItemMetricsList = /*@__PURE__*/ S.Array(
   ComponentsKpo1PjSchemasWafrankingsresponsePropertiesDataItemsPropertiesMetricsItems,
 ) as any as S.Schema<WafRankingsResponseDataItemMetricsList>;
@@ -5730,8 +5708,7 @@ export const WafRankingsResponseDataItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "WafRankingsResponseDataItem",
 }) as any as S.Schema<WafRankingsResponseDataItem>;
 
-export type WafRankingsResponseDataList =
-  ReadonlyArray<WafRankingsResponseDataItem>;
+export type WafRankingsResponseDataList = Array<WafRankingsResponseDataItem>;
 export const WafRankingsResponseDataList = /*@__PURE__*/ S.Array(
   WafRankingsResponseDataItem,
 ) as any as S.Schema<WafRankingsResponseDataList>;
@@ -5790,8 +5767,7 @@ export const ManagedRuleDefinition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ManagedRuleDefinition>;
 
 /** List of rules within the managed rule group. */
-export type ManagedRuleGroupDefinitionRulesList =
-  ReadonlyArray<ManagedRuleDefinition>;
+export type ManagedRuleGroupDefinitionRulesList = Array<ManagedRuleDefinition>;
 export const ManagedRuleGroupDefinitionRulesList = /*@__PURE__*/ S.Array(
   ManagedRuleDefinition,
 ) as any as S.Schema<ManagedRuleGroupDefinitionRulesList>;
@@ -5817,7 +5793,7 @@ export const ManagedRuleGroupDefinition = /*@__PURE__*/ S.suspend(() =>
 
 /** Rule groups of the managed rule set. */
 export type ManagedRuleSetDefinitionPropertiesRuleGroupsList =
-  ReadonlyArray<ManagedRuleGroupDefinition>;
+  Array<ManagedRuleGroupDefinition>;
 export const ManagedRuleSetDefinitionPropertiesRuleGroupsList =
   /*@__PURE__*/ S.Array(
     ManagedRuleGroupDefinition,
@@ -5875,7 +5851,7 @@ export const ManagedRuleSetDefinition = /*@__PURE__*/ S.suspend(() =>
 
 /** The ManagedRuleSetDefinition items on this page */
 export type ManagedRuleSetDefinitionListValueList =
-  ReadonlyArray<ManagedRuleSetDefinition>;
+  Array<ManagedRuleSetDefinition>;
 export const ManagedRuleSetDefinitionListValueList = /*@__PURE__*/ S.Array(
   ManagedRuleSetDefinition,
 ) as any as S.Schema<ManagedRuleSetDefinitionListValueList>;
@@ -5955,8 +5931,7 @@ export const LogSpecification = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LogSpecification>;
 
 /** Log specifications of operation. */
-export type ServiceSpecificationLogSpecificationsList =
-  ReadonlyArray<LogSpecification>;
+export type ServiceSpecificationLogSpecificationsList = Array<LogSpecification>;
 export const ServiceSpecificationLogSpecificationsList = /*@__PURE__*/ S.Array(
   LogSpecification,
 ) as any as S.Schema<ServiceSpecificationLogSpecificationsList>;
@@ -5976,15 +5951,13 @@ export const MetricAvailability = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MetricAvailability>;
 
 /** Retention policies of a resource metric. */
-export type MetricSpecificationAvailabilitiesList =
-  ReadonlyArray<MetricAvailability>;
+export type MetricSpecificationAvailabilitiesList = Array<MetricAvailability>;
 export const MetricSpecificationAvailabilitiesList = /*@__PURE__*/ S.Array(
   MetricAvailability,
 ) as any as S.Schema<MetricSpecificationAvailabilitiesList>;
 
 /** The supported time grain types for the metrics. */
-export type MetricSpecificationSupportedTimeGrainTypesList =
-  ReadonlyArray<string>;
+export type MetricSpecificationSupportedTimeGrainTypesList = Array<string>;
 export const MetricSpecificationSupportedTimeGrainTypesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6010,8 +5983,7 @@ export const DimensionProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DimensionProperties>;
 
 /** The dimensions of metric */
-export type MetricSpecificationDimensionsList =
-  ReadonlyArray<DimensionProperties>;
+export type MetricSpecificationDimensionsList = Array<DimensionProperties>;
 export const MetricSpecificationDimensionsList = /*@__PURE__*/ S.Array(
   DimensionProperties,
 ) as any as S.Schema<MetricSpecificationDimensionsList>;
@@ -6063,7 +6035,7 @@ export const MetricSpecification = /*@__PURE__*/ S.suspend(() =>
 
 /** Metric specifications of operation. */
 export type ServiceSpecificationMetricSpecificationsList =
-  ReadonlyArray<MetricSpecification>;
+  Array<MetricSpecification>;
 export const ServiceSpecificationMetricSpecificationsList =
   /*@__PURE__*/ S.Array(
     MetricSpecification,
@@ -6124,7 +6096,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of CDN operations supported by the CDN resource provider. */
-export type OperationsListResultValueList = ReadonlyArray<Operation>;
+export type OperationsListResultValueList = Array<Operation>;
 export const OperationsListResultValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResultValueList>;
@@ -6146,7 +6118,7 @@ export const OperationsListResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationsListResult>;
 
 /** The source of the content being delivered via CDN within given origin group. */
-export type OriginGroupPropertiesOriginsList = ReadonlyArray<ResourceReference>;
+export type OriginGroupPropertiesOriginsList = Array<ResourceReference>;
 export const OriginGroupPropertiesOriginsList = /*@__PURE__*/ S.Array(
   ResourceReference,
 ) as any as S.Schema<OriginGroupPropertiesOriginsList>;
@@ -6175,9 +6147,9 @@ export interface OriginGroupProperties {
   /** The JSON object that contains the properties to determine origin health using real requests/responses. This property is currently not supported. */
   responseBasedOriginErrorDetectionSettings?: ResponseBasedOriginErrorDetectionParameters;
   /** Resource status of the origin group. */
-  resourceState?: OriginGroupResourceState;
+  resourceState?: OriginGroupResourceState | (string & {});
   /** Provisioning status of the origin group. */
-  provisioningState?: OriginGroupProvisioningState;
+  provisioningState?: OriginGroupProvisioningState | (string & {});
 }
 export const OriginGroupProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6397,7 +6369,7 @@ export const OriginGroup = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "OriginGroup" }) as any as S.Schema<OriginGroup>;
 
 /** The OriginGroup items on this page */
-export type OriginGroupListResultValueList = ReadonlyArray<OriginGroup>;
+export type OriginGroupListResultValueList = Array<OriginGroup>;
 export const OriginGroupListResultValueList = /*@__PURE__*/ S.Array(
   OriginGroup,
 ) as any as S.Schema<OriginGroupListResultValueList>;
@@ -6420,7 +6392,7 @@ export const OriginGroupListResult = /*@__PURE__*/ S.suspend(() =>
 
 /** The source of the content being delivered via CDN within given origin group. */
 export type OriginGroupUpdatePropertiesParametersOriginsList =
-  ReadonlyArray<ResourceReference>;
+  Array<ResourceReference>;
 export const OriginGroupUpdatePropertiesParametersOriginsList =
   /*@__PURE__*/ S.Array(
     ResourceReference,
@@ -6549,11 +6521,11 @@ export interface OriginProperties {
   /** A custom message to be included in the approval request to connect to the Private Link. */
   privateLinkApprovalMessage?: string;
   /** Resource status of the origin. */
-  resourceState?: OriginResourceState;
+  resourceState?: OriginResourceState | (string & {});
   /** Provisioning status of the origin. */
-  provisioningState?: OriginProvisioningState;
+  provisioningState?: OriginProvisioningState | (string & {});
   /** The approval status for the connection to the Private Link */
-  privateEndpointStatus?: PrivateEndpointStatus;
+  privateEndpointStatus?: PrivateEndpointStatus | (string & {});
 }
 export const OriginProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6779,7 +6751,7 @@ export const Origin = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Origin" }) as any as S.Schema<Origin>;
 
 /** The Origin items on this page */
-export type OriginListResultValueList = ReadonlyArray<Origin>;
+export type OriginListResultValueList = Array<Origin>;
 export const OriginListResultValueList = /*@__PURE__*/ S.Array(
   Origin,
 ) as any as S.Schema<OriginListResultValueList>;
@@ -6931,13 +6903,15 @@ export const PolicySettingsDefaultCustomBlockResponseStatusCode =
 /** Defines contents of a web application firewall global configuration */
 export interface PolicySettings {
   /** describes if the policy is in enabled state or disabled state */
-  enabledState?: PolicyEnabledState;
+  enabledState?: PolicyEnabledState | (string & {});
   /** Describes if it is in detection mode or prevention mode at policy level. */
-  mode?: PolicyMode;
+  mode?: PolicyMode | (string & {});
   /** If action type is redirect, this field represents the default redirect URL for the client. */
   defaultRedirectUrl?: string;
   /** If the action type is block, this field defines the default customer overridable http response status code. */
-  defaultCustomBlockResponseStatusCode?: PolicySettingsDefaultCustomBlockResponseStatusCode;
+  defaultCustomBlockResponseStatusCode?:
+    | PolicySettingsDefaultCustomBlockResponseStatusCode
+    | (number & {});
   /** If the action type is block, customer can override the response body. The body must be specified in base64 encoding. */
   defaultCustomBlockResponseBody?: string;
 }
@@ -6987,7 +6961,7 @@ export type Operator =
 export const Operator = /*@__PURE__*/ S.String;
 
 /** List of possible match values. */
-export type MatchConditionMatchValueList = ReadonlyArray<string>;
+export type MatchConditionMatchValueList = Array<string>;
 export const MatchConditionMatchValueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<MatchConditionMatchValueList>;
@@ -7003,7 +6977,7 @@ export type TransformType =
 export const TransformType = /*@__PURE__*/ S.String;
 
 /** List of transforms. */
-export type MatchConditionTransformsList = ReadonlyArray<TransformType>;
+export type MatchConditionTransformsList = Array<TransformType | (string & {})>;
 export const MatchConditionTransformsList = /*@__PURE__*/ S.Array(
   TransformType,
 ) as any as S.Schema<MatchConditionTransformsList>;
@@ -7011,11 +6985,11 @@ export const MatchConditionTransformsList = /*@__PURE__*/ S.Array(
 /** Define match conditions */
 export interface MatchCondition {
   /** Match variable to compare against. */
-  matchVariable: WafMatchVariable;
+  matchVariable: WafMatchVariable | (string & {});
   /** Selector can used to match a specific key for QueryString, Cookies, RequestHeader or PostArgs. */
   selector?: string;
   /** Describes operator to be matched */
-  operator: Operator;
+  operator: Operator | (string & {});
   /** Describes if the result of this condition should be negated. */
   negateCondition?: boolean;
   /** List of possible match values. */
@@ -7035,7 +7009,7 @@ export const MatchCondition = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MatchCondition" }) as any as S.Schema<MatchCondition>;
 
 /** List of match conditions. */
-export type RateLimitRuleMatchConditionsList = ReadonlyArray<MatchCondition>;
+export type RateLimitRuleMatchConditionsList = Array<MatchCondition>;
 export const RateLimitRuleMatchConditionsList = /*@__PURE__*/ S.Array(
   MatchCondition,
 ) as any as S.Schema<RateLimitRuleMatchConditionsList>;
@@ -7049,13 +7023,13 @@ export interface RateLimitRule {
   /** Defines the name of the custom rule */
   name: string;
   /** Describes if the custom rule is in enabled or disabled state. Defaults to Enabled if not specified. */
-  enabledState?: CustomRuleEnabledState;
+  enabledState?: CustomRuleEnabledState | (string & {});
   /** Defines in what order this rule be evaluated in the overall list of custom rules */
   priority: number;
   /** List of match conditions. */
   matchConditions: RateLimitRuleMatchConditionsList;
   /** Describes what action to be applied when rule matches */
-  action: ActionType;
+  action: ActionType | (string & {});
   /** Defines rate limit threshold. */
   rateLimitThreshold: number;
   /** Defines rate limit duration. Default is 1 minute. */
@@ -7074,7 +7048,7 @@ export const RateLimitRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RateLimitRule" }) as any as S.Schema<RateLimitRule>;
 
 /** List of rules */
-export type RateLimitRuleListRulesList = ReadonlyArray<RateLimitRule>;
+export type RateLimitRuleListRulesList = Array<RateLimitRule>;
 export const RateLimitRuleListRulesList = /*@__PURE__*/ S.Array(
   RateLimitRule,
 ) as any as S.Schema<RateLimitRuleListRulesList>;
@@ -7093,7 +7067,7 @@ export const RateLimitRuleList = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RateLimitRuleList>;
 
 /** List of match conditions. */
-export type CustomRuleMatchConditionsList = ReadonlyArray<MatchCondition>;
+export type CustomRuleMatchConditionsList = Array<MatchCondition>;
 export const CustomRuleMatchConditionsList = /*@__PURE__*/ S.Array(
   MatchCondition,
 ) as any as S.Schema<CustomRuleMatchConditionsList>;
@@ -7103,13 +7077,13 @@ export interface CustomRule {
   /** Defines the name of the custom rule */
   name: string;
   /** Describes if the custom rule is in enabled or disabled state. Defaults to Enabled if not specified. */
-  enabledState?: CustomRuleEnabledState;
+  enabledState?: CustomRuleEnabledState | (string & {});
   /** Defines in what order this rule be evaluated in the overall list of custom rules */
   priority: number;
   /** List of match conditions. */
   matchConditions: CustomRuleMatchConditionsList;
   /** Describes what action to be applied when rule matches */
-  action: ActionType;
+  action: ActionType | (string & {});
 }
 export const CustomRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -7122,7 +7096,7 @@ export const CustomRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CustomRule" }) as any as S.Schema<CustomRule>;
 
 /** List of rules */
-export type CustomRuleListRulesList = ReadonlyArray<CustomRule>;
+export type CustomRuleListRulesList = Array<CustomRule>;
 export const CustomRuleListRulesList = /*@__PURE__*/ S.Array(
   CustomRule,
 ) as any as S.Schema<CustomRuleListRulesList>;
@@ -7147,9 +7121,9 @@ export interface ManagedRuleOverride {
   /** Identifier for the managed rule. */
   ruleId: string;
   /** Describes if the managed rule is in enabled or disabled state. Defaults to Disabled if not specified. */
-  enabledState?: ManagedRuleEnabledState;
+  enabledState?: ManagedRuleEnabledState | (string & {});
   /** Describes the override action to be applied when rule matches. */
-  action?: ActionType;
+  action?: ActionType | (string & {});
 }
 export const ManagedRuleOverride = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -7162,8 +7136,7 @@ export const ManagedRuleOverride = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ManagedRuleOverride>;
 
 /** List of rules that will be enabled. If none specified, all rules in the group will be disabled. */
-export type ManagedRuleGroupOverrideRulesList =
-  ReadonlyArray<ManagedRuleOverride>;
+export type ManagedRuleGroupOverrideRulesList = Array<ManagedRuleOverride>;
 export const ManagedRuleGroupOverrideRulesList = /*@__PURE__*/ S.Array(
   ManagedRuleOverride,
 ) as any as S.Schema<ManagedRuleGroupOverrideRulesList>;
@@ -7186,7 +7159,7 @@ export const ManagedRuleGroupOverride = /*@__PURE__*/ S.suspend(() =>
 
 /** Defines the rule overrides to apply to the rule set. */
 export type ManagedRuleSetRuleGroupOverridesList =
-  ReadonlyArray<ManagedRuleGroupOverride>;
+  Array<ManagedRuleGroupOverride>;
 export const ManagedRuleSetRuleGroupOverridesList = /*@__PURE__*/ S.Array(
   ManagedRuleGroupOverride,
 ) as any as S.Schema<ManagedRuleSetRuleGroupOverridesList>;
@@ -7212,8 +7185,7 @@ export const ManagedRuleSet = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ManagedRuleSet" }) as any as S.Schema<ManagedRuleSet>;
 
 /** List of rule sets. */
-export type ManagedRuleSetListManagedRuleSetsList =
-  ReadonlyArray<ManagedRuleSet>;
+export type ManagedRuleSetListManagedRuleSetsList = Array<ManagedRuleSet>;
 export const ManagedRuleSetListManagedRuleSetsList = /*@__PURE__*/ S.Array(
   ManagedRuleSet,
 ) as any as S.Schema<ManagedRuleSetListManagedRuleSetsList>;
@@ -7330,7 +7302,7 @@ export const CdnEndpoint = /*@__PURE__*/ S.suspend(() =>
 
 /** Describes Azure CDN endpoints associated with this Web Application Firewall policy. */
 export type CdnWebApplicationFirewallPolicyPropertiesEndpointLinksList =
-  ReadonlyArray<CdnEndpoint>;
+  Array<CdnEndpoint>;
 export const CdnWebApplicationFirewallPolicyPropertiesEndpointLinksList =
   /*@__PURE__*/ S.Array(
     CdnEndpoint,
@@ -7605,7 +7577,7 @@ export const CdnWebApplicationFirewallPolicy = /*@__PURE__*/ S.suspend(() =>
 
 /** The CdnWebApplicationFirewallPolicy items on this page */
 export type CdnWebApplicationFirewallPolicyListValueList =
-  ReadonlyArray<CdnWebApplicationFirewallPolicy>;
+  Array<CdnWebApplicationFirewallPolicy>;
 export const CdnWebApplicationFirewallPolicyListValueList =
   /*@__PURE__*/ S.Array(
     CdnWebApplicationFirewallPolicy,
@@ -7762,7 +7734,7 @@ export const MigrationErrorType = /*@__PURE__*/ S.suspend(() =>
   identifier: "MigrationErrorType",
 }) as any as S.Schema<MigrationErrorType>;
 
-export type CanMigratePropertiesErrorsList = ReadonlyArray<MigrationErrorType>;
+export type CanMigratePropertiesErrorsList = Array<MigrationErrorType>;
 export const CanMigratePropertiesErrorsList = /*@__PURE__*/ S.Array(
   MigrationErrorType,
 ) as any as S.Schema<CanMigratePropertiesErrorsList>;
@@ -7845,7 +7817,7 @@ export const MigrationEndpointMapping = /*@__PURE__*/ S.suspend(() =>
 
 /** A name map between classic CDN endpoints and AFD Premium/Standard endpoints. */
 export type ProfilesCdnMigrateToAfdRequestMigrationEndpointMappingsList =
-  ReadonlyArray<MigrationEndpointMapping>;
+  Array<MigrationEndpointMapping>;
 export const ProfilesCdnMigrateToAfdRequestMigrationEndpointMappingsList =
   /*@__PURE__*/ S.Array(
     MigrationEndpointMapping,
@@ -8362,7 +8334,7 @@ export const Profile = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Profile" }) as any as S.Schema<Profile>;
 
 /** The Profile items on this page */
-export type ProfileListResultValueList = ReadonlyArray<Profile>;
+export type ProfileListResultValueList = Array<Profile>;
 export const ProfileListResultValueList = /*@__PURE__*/ S.Array(
   Profile,
 ) as any as S.Schema<ProfileListResultValueList>;
@@ -8458,7 +8430,7 @@ export const ProfilesListSupportedOptimizationTypesRequest =
 
 /** Supported optimization types for a profile. */
 export type SupportedOptimizationTypesListResultSupportedOptimizationTypesList =
-  ReadonlyArray<OptimizationType>;
+  Array<OptimizationType>;
 export const SupportedOptimizationTypesListResultSupportedOptimizationTypesList =
   /*@__PURE__*/ S.Array(
     OptimizationType,
@@ -8499,7 +8471,7 @@ export const MigrationWebApplicationFirewallMapping = /*@__PURE__*/ S.suspend(
 
 /** Waf mapping for the migrated profile */
 export type ProfilesMigrateRequestMigrationWebApplicationFirewallMappingsList =
-  ReadonlyArray<MigrationWebApplicationFirewallMapping>;
+  Array<MigrationWebApplicationFirewallMapping>;
 export const ProfilesMigrateRequestMigrationWebApplicationFirewallMappingsList =
   /*@__PURE__*/ S.Array(
     MigrationWebApplicationFirewallMapping,
@@ -8806,13 +8778,13 @@ export const ActivatedResourceReferenceInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Domains referenced by this endpoint. */
 export type RoutePropertiesInputCustomDomainsList =
-  ReadonlyArray<ActivatedResourceReferenceInput>;
+  Array<ActivatedResourceReferenceInput>;
 export const RoutePropertiesInputCustomDomainsList = /*@__PURE__*/ S.Array(
   ActivatedResourceReferenceInput,
 ) as any as S.Schema<RoutePropertiesInputCustomDomainsList>;
 
 /** rule sets referenced by this endpoint. */
-export type RoutePropertiesInputRuleSetsList = ReadonlyArray<ResourceReference>;
+export type RoutePropertiesInputRuleSetsList = Array<ResourceReference>;
 export const RoutePropertiesInputRuleSetsList = /*@__PURE__*/ S.Array(
   ResourceReference,
 ) as any as S.Schema<RoutePropertiesInputRuleSetsList>;
@@ -8822,7 +8794,7 @@ export type AFDEndpointProtocols = "Http" | "Https";
 export const AFDEndpointProtocols = /*@__PURE__*/ S.String;
 
 /** List of supported protocols for this route. */
-export type RoutePropertiesInputSupportedProtocolsList = ReadonlyArray<
+export type RoutePropertiesInputSupportedProtocolsList = Array<
   AFDEndpointProtocols | (string & {})
 >;
 export const RoutePropertiesInputSupportedProtocolsList = /*@__PURE__*/ S.Array(
@@ -8830,7 +8802,7 @@ export const RoutePropertiesInputSupportedProtocolsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<RoutePropertiesInputSupportedProtocolsList>;
 
 /** The route patterns of the rule. */
-export type RoutePropertiesInputPatternsToMatchList = ReadonlyArray<string>;
+export type RoutePropertiesInputPatternsToMatchList = Array<string>;
 export const RoutePropertiesInputPatternsToMatchList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RoutePropertiesInputPatternsToMatchList>;
@@ -8844,8 +8816,7 @@ export type AfdQueryStringCachingBehavior =
 export const AfdQueryStringCachingBehavior = /*@__PURE__*/ S.String;
 
 /** List of content types on which compression applies. The value should be a valid MIME type. */
-export type CompressionSettingsContentTypesToCompressList =
-  ReadonlyArray<string>;
+export type CompressionSettingsContentTypesToCompressList = Array<string>;
 export const CompressionSettingsContentTypesToCompressList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -8872,7 +8843,7 @@ export const CompressionSettings = /*@__PURE__*/ S.suspend(() =>
 /** Caching settings for a caching-type route. To disable caching, do not provide a cacheConfiguration object. */
 export interface AfdRouteCacheConfiguration {
   /** Defines how Frontdoor caches requests that include query strings. You can ignore any query strings when caching, ignore specific query strings, cache every request with a unique URL, or cache specific query strings. */
-  queryStringCachingBehavior?: AfdQueryStringCachingBehavior;
+  queryStringCachingBehavior?: AfdQueryStringCachingBehavior | (string & {});
   /** query parameters to include or exclude (comma separated). */
   queryParameters?: string;
   /** compression settings. */
@@ -8998,26 +8969,25 @@ export const ActivatedResourceReference = /*@__PURE__*/ S.suspend(() =>
 
 /** Domains referenced by this endpoint. */
 export type RoutePropertiesCustomDomainsList =
-  ReadonlyArray<ActivatedResourceReference>;
+  Array<ActivatedResourceReference>;
 export const RoutePropertiesCustomDomainsList = /*@__PURE__*/ S.Array(
   ActivatedResourceReference,
 ) as any as S.Schema<RoutePropertiesCustomDomainsList>;
 
 /** rule sets referenced by this endpoint. */
-export type RoutePropertiesRuleSetsList = ReadonlyArray<ResourceReference>;
+export type RoutePropertiesRuleSetsList = Array<ResourceReference>;
 export const RoutePropertiesRuleSetsList = /*@__PURE__*/ S.Array(
   ResourceReference,
 ) as any as S.Schema<RoutePropertiesRuleSetsList>;
 
 /** List of supported protocols for this route. */
-export type RoutePropertiesSupportedProtocolsList =
-  ReadonlyArray<AFDEndpointProtocols>;
+export type RoutePropertiesSupportedProtocolsList = Array<AFDEndpointProtocols>;
 export const RoutePropertiesSupportedProtocolsList = /*@__PURE__*/ S.Array(
   AFDEndpointProtocols,
 ) as any as S.Schema<RoutePropertiesSupportedProtocolsList>;
 
 /** The route patterns of the rule. */
-export type RoutePropertiesPatternsToMatchList = ReadonlyArray<string>;
+export type RoutePropertiesPatternsToMatchList = Array<string>;
 export const RoutePropertiesPatternsToMatchList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RoutePropertiesPatternsToMatchList>;
@@ -9257,7 +9227,7 @@ export const Route = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Route" }) as any as S.Schema<Route>;
 
 /** The Route items on this page */
-export type RouteListResultValueList = ReadonlyArray<Route>;
+export type RouteListResultValueList = Array<Route>;
 export const RouteListResultValueList = /*@__PURE__*/ S.Array(
   Route,
 ) as any as S.Schema<RouteListResultValueList>;
@@ -9280,7 +9250,7 @@ export const RouteListResult = /*@__PURE__*/ S.suspend(() =>
 
 /** Domains referenced by this endpoint. */
 export type RouteUpdatePropertiesParametersInputCustomDomainsList =
-  ReadonlyArray<ActivatedResourceReferenceInput>;
+  Array<ActivatedResourceReferenceInput>;
 export const RouteUpdatePropertiesParametersInputCustomDomainsList =
   /*@__PURE__*/ S.Array(
     ActivatedResourceReferenceInput,
@@ -9288,15 +9258,16 @@ export const RouteUpdatePropertiesParametersInputCustomDomainsList =
 
 /** rule sets referenced by this endpoint. */
 export type RouteUpdatePropertiesParametersInputRuleSetsList =
-  ReadonlyArray<ResourceReference>;
+  Array<ResourceReference>;
 export const RouteUpdatePropertiesParametersInputRuleSetsList =
   /*@__PURE__*/ S.Array(
     ResourceReference,
   ) as any as S.Schema<RouteUpdatePropertiesParametersInputRuleSetsList>;
 
 /** List of supported protocols for this route. */
-export type RouteUpdatePropertiesParametersInputSupportedProtocolsList =
-  ReadonlyArray<AFDEndpointProtocols | (string & {})>;
+export type RouteUpdatePropertiesParametersInputSupportedProtocolsList = Array<
+  AFDEndpointProtocols | (string & {})
+>;
 export const RouteUpdatePropertiesParametersInputSupportedProtocolsList =
   /*@__PURE__*/ S.Array(
     AFDEndpointProtocols,
@@ -9304,7 +9275,7 @@ export const RouteUpdatePropertiesParametersInputSupportedProtocolsList =
 
 /** The route patterns of the rule. */
 export type RouteUpdatePropertiesParametersInputPatternsToMatchList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RouteUpdatePropertiesParametersInputPatternsToMatchList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -9453,14 +9424,13 @@ export const RoutesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RoutesUpdateResponse>;
 
 /** A list of conditions that must be matched for the actions to be executed */
-export type RulePropertiesInputConditionsList =
-  ReadonlyArray<DeliveryRuleCondition>;
+export type RulePropertiesInputConditionsList = Array<DeliveryRuleCondition>;
 export const RulePropertiesInputConditionsList = /*@__PURE__*/ S.Array(
   DeliveryRuleCondition,
 ) as any as S.Schema<RulePropertiesInputConditionsList>;
 
 /** A list of actions that are executed when all the conditions of a rule are satisfied. */
-export type RulePropertiesInputActionsList = ReadonlyArray<DeliveryRuleAction>;
+export type RulePropertiesInputActionsList = Array<DeliveryRuleAction>;
 export const RulePropertiesInputActionsList = /*@__PURE__*/ S.Array(
   DeliveryRuleAction,
 ) as any as S.Schema<RulePropertiesInputActionsList>;
@@ -9531,13 +9501,13 @@ export const RulesCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RulesCreateRequest>;
 
 /** A list of conditions that must be matched for the actions to be executed */
-export type RulePropertiesConditionsList = ReadonlyArray<DeliveryRuleCondition>;
+export type RulePropertiesConditionsList = Array<DeliveryRuleCondition>;
 export const RulePropertiesConditionsList = /*@__PURE__*/ S.Array(
   DeliveryRuleCondition,
 ) as any as S.Schema<RulePropertiesConditionsList>;
 
 /** A list of actions that are executed when all the conditions of a rule are satisfied. */
-export type RulePropertiesActionsList = ReadonlyArray<DeliveryRuleAction>;
+export type RulePropertiesActionsList = Array<DeliveryRuleAction>;
 export const RulePropertiesActionsList = /*@__PURE__*/ S.Array(
   DeliveryRuleAction,
 ) as any as S.Schema<RulePropertiesActionsList>;
@@ -9638,14 +9608,13 @@ export const RulesDeleteResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of conditions that must be matched for the actions to be executed */
 export type BatchRulePropertiesInputConditionsList =
-  ReadonlyArray<DeliveryRuleCondition>;
+  Array<DeliveryRuleCondition>;
 export const BatchRulePropertiesInputConditionsList = /*@__PURE__*/ S.Array(
   DeliveryRuleCondition,
 ) as any as S.Schema<BatchRulePropertiesInputConditionsList>;
 
 /** A list of actions that are executed when all the conditions of a rule are satisfied. */
-export type BatchRulePropertiesInputActionsList =
-  ReadonlyArray<DeliveryRuleAction>;
+export type BatchRulePropertiesInputActionsList = Array<DeliveryRuleAction>;
 export const BatchRulePropertiesInputActionsList = /*@__PURE__*/ S.Array(
   DeliveryRuleAction,
 ) as any as S.Schema<BatchRulePropertiesInputActionsList>;
@@ -9687,8 +9656,7 @@ export const BatchRulePropertiesInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BatchRulePropertiesInput>;
 
 /** A list of rules that are part of this rule set provided the rule set is in batch mode. This property will be ignored if the rule set is not in batch mode. */
-export type RuleSetPropertiesInputRulesList =
-  ReadonlyArray<BatchRulePropertiesInput>;
+export type RuleSetPropertiesInputRulesList = Array<BatchRulePropertiesInput>;
 export const RuleSetPropertiesInputRulesList = /*@__PURE__*/ S.Array(
   BatchRulePropertiesInput,
 ) as any as S.Schema<RuleSetPropertiesInputRulesList>;
@@ -9741,14 +9709,13 @@ export const RuleSetsCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RuleSetsCreateRequest>;
 
 /** A list of conditions that must be matched for the actions to be executed */
-export type BatchRulePropertiesConditionsList =
-  ReadonlyArray<DeliveryRuleCondition>;
+export type BatchRulePropertiesConditionsList = Array<DeliveryRuleCondition>;
 export const BatchRulePropertiesConditionsList = /*@__PURE__*/ S.Array(
   DeliveryRuleCondition,
 ) as any as S.Schema<BatchRulePropertiesConditionsList>;
 
 /** A list of actions that are executed when all the conditions of a rule are satisfied. */
-export type BatchRulePropertiesActionsList = ReadonlyArray<DeliveryRuleAction>;
+export type BatchRulePropertiesActionsList = Array<DeliveryRuleAction>;
 export const BatchRulePropertiesActionsList = /*@__PURE__*/ S.Array(
   DeliveryRuleAction,
 ) as any as S.Schema<BatchRulePropertiesActionsList>;
@@ -9789,7 +9756,7 @@ export const BatchRuleProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BatchRuleProperties>;
 
 /** A list of rules that are part of this rule set provided the rule set is in batch mode. This property will be ignored if the rule set is not in batch mode. */
-export type RuleSetPropertiesRulesList = ReadonlyArray<BatchRuleProperties>;
+export type RuleSetPropertiesRulesList = Array<BatchRuleProperties>;
 export const RuleSetPropertiesRulesList = /*@__PURE__*/ S.Array(
   BatchRuleProperties,
 ) as any as S.Schema<RuleSetPropertiesRulesList>;
@@ -9978,7 +9945,7 @@ export const RuleSet = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RuleSet" }) as any as S.Schema<RuleSet>;
 
 /** The RuleSet items on this page */
-export type RuleSetListResultValueList = ReadonlyArray<RuleSet>;
+export type RuleSetListResultValueList = Array<RuleSet>;
 export const RuleSetListResultValueList = /*@__PURE__*/ S.Array(
   RuleSet,
 ) as any as S.Schema<RuleSetListResultValueList>;
@@ -10134,7 +10101,7 @@ export const Rule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Rule" }) as any as S.Schema<Rule>;
 
 /** The Rule items on this page */
-export type RuleListResultValueList = ReadonlyArray<Rule>;
+export type RuleListResultValueList = Array<Rule>;
 export const RuleListResultValueList = /*@__PURE__*/ S.Array(
   Rule,
 ) as any as S.Schema<RuleListResultValueList>;
@@ -10155,7 +10122,7 @@ export const RuleListResult = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of conditions that must be matched for the actions to be executed */
 export type RuleUpdatePropertiesParametersInputConditionsList =
-  ReadonlyArray<DeliveryRuleCondition>;
+  Array<DeliveryRuleCondition>;
 export const RuleUpdatePropertiesParametersInputConditionsList =
   /*@__PURE__*/ S.Array(
     DeliveryRuleCondition,
@@ -10163,7 +10130,7 @@ export const RuleUpdatePropertiesParametersInputConditionsList =
 
 /** A list of actions that are executed when all the conditions of a rule are satisfied. */
 export type RuleUpdatePropertiesParametersInputActionsList =
-  ReadonlyArray<DeliveryRuleAction>;
+  Array<DeliveryRuleAction>;
 export const RuleUpdatePropertiesParametersInputActionsList =
   /*@__PURE__*/ S.Array(
     DeliveryRuleAction,
@@ -10263,7 +10230,7 @@ export const RulesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 /** The json object containing secret parameters */
 export interface SecretParameters {
   /** The type of the secret resource. */
-  type: SecretType;
+  type: SecretType | (string & {});
 }
 export const SecretParameters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -10498,7 +10465,7 @@ export const Secret = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Secret" }) as any as S.Schema<Secret>;
 
 /** The Secret items on this page */
-export type SecretListResultValueList = ReadonlyArray<Secret>;
+export type SecretListResultValueList = Array<Secret>;
 export const SecretListResultValueList = /*@__PURE__*/ S.Array(
   Secret,
 ) as any as S.Schema<SecretListResultValueList>;
@@ -10526,7 +10493,7 @@ export const SecurityPolicyType = /*@__PURE__*/ S.String;
 /** The json object containing security policy parameters */
 export interface SecurityPolicyPropertiesParameters {
   /** The type of the Security policy to create. */
-  type: SecurityPolicyType;
+  type: SecurityPolicyType | (string & {});
 }
 export const SecurityPolicyPropertiesParameters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -10762,7 +10729,7 @@ export const SecurityPolicy = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SecurityPolicy" }) as any as S.Schema<SecurityPolicy>;
 
 /** The SecurityPolicy items on this page */
-export type SecurityPolicyListResultValueList = ReadonlyArray<SecurityPolicy>;
+export type SecurityPolicyListResultValueList = Array<SecurityPolicy>;
 export const SecurityPolicyListResultValueList = /*@__PURE__*/ S.Array(
   SecurityPolicy,
 ) as any as S.Schema<SecurityPolicyListResultValueList>;

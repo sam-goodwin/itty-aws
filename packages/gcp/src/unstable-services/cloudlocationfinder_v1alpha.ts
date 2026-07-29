@@ -152,7 +152,7 @@ export const CloudLocation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CloudLocation" }) as any as S.Schema<CloudLocation>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -187,7 +187,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = ReadonlyArray<Location>;
+export type LocationList = Array<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -236,7 +236,7 @@ export const ListProjectsLocationsCloudLocationsRequest =
     identifier: "ListProjectsLocationsCloudLocationsRequest",
   }) as any as S.Schema<ListProjectsLocationsCloudLocationsRequest>;
 
-export type CloudLocationList = ReadonlyArray<CloudLocation>;
+export type CloudLocationList = Array<CloudLocation>;
 export const CloudLocationList = /*@__PURE__*/ S.Array(
   CloudLocation,
 ) as any as S.Schema<CloudLocationList>;

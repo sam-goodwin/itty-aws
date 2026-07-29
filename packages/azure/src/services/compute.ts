@@ -35,7 +35,9 @@ export const ContainerServiceOrchestratorProfileOrchestratorType =
 /** Profile for the container service orchestrator. */
 export interface ContainerServiceOrchestratorProfile {
   /** The orchestrator to use to manage container service cluster resources. Valid values are Swarm, DCOS, and Custom. */
-  orchestratorType: ContainerServiceOrchestratorProfileOrchestratorType;
+  orchestratorType:
+    | ContainerServiceOrchestratorProfileOrchestratorType
+    | (string & {});
 }
 export const ContainerServiceOrchestratorProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -172,7 +174,7 @@ export const ContainerServiceAgentPoolProfileInput = /*@__PURE__*/ S.suspend(
 
 /** Properties of the agent pool. */
 export type ContainerServicePropertiesInputAgentPoolProfilesList =
-  ReadonlyArray<ContainerServiceAgentPoolProfileInput>;
+  Array<ContainerServiceAgentPoolProfileInput>;
 export const ContainerServicePropertiesInputAgentPoolProfilesList =
   /*@__PURE__*/ S.Array(
     ContainerServiceAgentPoolProfileInput,
@@ -209,7 +211,7 @@ export const ContainerServiceSshPublicKey = /*@__PURE__*/ S.suspend(() =>
 
 /** the list of SSH public keys used to authenticate with Linux-based VMs. */
 export type ContainerServiceSshConfigurationPublicKeysList =
-  ReadonlyArray<ContainerServiceSshPublicKey>;
+  Array<ContainerServiceSshPublicKey>;
 export const ContainerServiceSshConfigurationPublicKeysList =
   /*@__PURE__*/ S.Array(
     ContainerServiceSshPublicKey,
@@ -451,7 +453,7 @@ export const ContainerServiceAgentPoolProfile = /*@__PURE__*/ S.suspend(() =>
 
 /** Properties of the agent pool. */
 export type ContainerServicePropertiesAgentPoolProfilesList =
-  ReadonlyArray<ContainerServiceAgentPoolProfile>;
+  Array<ContainerServiceAgentPoolProfile>;
 export const ContainerServicePropertiesAgentPoolProfilesList =
   /*@__PURE__*/ S.Array(
     ContainerServiceAgentPoolProfile,
@@ -697,8 +699,7 @@ export const ContainerService = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ContainerService>;
 
 /** the list of container services. */
-export type ContainerServiceListResultValueList =
-  ReadonlyArray<ContainerService>;
+export type ContainerServiceListResultValueList = Array<ContainerService>;
 export const ContainerServiceListResultValueList = /*@__PURE__*/ S.Array(
   ContainerService,
 ) as any as S.Schema<ContainerServiceListResultValueList>;
@@ -891,7 +892,7 @@ export const PrivateEndpointServiceConnectionStatus = /*@__PURE__*/ S.String;
 /** A collection of information about the state of the connection between service consumer and provider. */
 export interface PrivateLinkServiceConnectionState {
   /** Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service. */
-  status?: PrivateEndpointServiceConnectionStatus;
+  status?: PrivateEndpointServiceConnectionStatus | (string & {});
   /** The reason for approval/rejection of the connection. */
   description?: string;
   /** A message indicating if changes on the service provider require any updates on the consumer. */
@@ -962,7 +963,7 @@ export const PrivateEndpointConnection = /*@__PURE__*/ S.suspend(() =>
 
 /** A readonly collection of private endpoint connections created on the disk. Currently only one endpoint connection is supported. */
 export type DiskAccessPropertiesPrivateEndpointConnectionsList =
-  ReadonlyArray<PrivateEndpointConnection>;
+  Array<PrivateEndpointConnection>;
 export const DiskAccessPropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection,
@@ -1270,16 +1271,14 @@ export const DiskAccessesGetPrivateLinkResourcesRequest =
   }) as any as S.Schema<DiskAccessesGetPrivateLinkResourcesRequest>;
 
 /** The private link resource required member names. */
-export type PrivateLinkResourcePropertiesRequiredMembersList =
-  ReadonlyArray<string>;
+export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
 export const PrivateLinkResourcePropertiesRequiredMembersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
 
 /** The private link resource DNS zone name. */
-export type PrivateLinkResourcePropertiesRequiredZoneNamesList =
-  ReadonlyArray<string>;
+export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
 export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1331,8 +1330,7 @@ export const PrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateLinkResource>;
 
 /** Array of private link resources */
-export type PrivateLinkResourceListResultValueList =
-  ReadonlyArray<PrivateLinkResource>;
+export type PrivateLinkResourceListResultValueList = Array<PrivateLinkResource>;
 export const PrivateLinkResourceListResultValueList = /*@__PURE__*/ S.Array(
   PrivateLinkResource,
 ) as any as S.Schema<PrivateLinkResourceListResultValueList>;
@@ -1424,7 +1422,7 @@ export const DiskAccess = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DiskAccess" }) as any as S.Schema<DiskAccess>;
 
 /** The DiskAccess items on this page */
-export type DiskAccessListValueList = ReadonlyArray<DiskAccess>;
+export type DiskAccessListValueList = Array<DiskAccess>;
 export const DiskAccessListValueList = /*@__PURE__*/ S.Array(
   DiskAccess,
 ) as any as S.Schema<DiskAccessListValueList>;
@@ -1494,7 +1492,7 @@ export const DiskAccessesListPrivateEndpointConnectionsRequest =
 
 /** The PrivateEndpointConnection items on this page */
 export type PrivateEndpointConnectionListResultValueList =
-  ReadonlyArray<PrivateEndpointConnection>;
+  Array<PrivateEndpointConnection>;
 export const PrivateEndpointConnectionListResultValueList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection,
@@ -1745,7 +1743,7 @@ export const ApiErrorBase = /*@__PURE__*/ S.suspend(() =>
 
 /** The Api error details */
 export type EncryptionSetPropertiesInputAutoKeyRotationErrorDetailsList =
-  ReadonlyArray<ApiErrorBase>;
+  Array<ApiErrorBase>;
 export const EncryptionSetPropertiesInputAutoKeyRotationErrorDetailsList =
   /*@__PURE__*/ S.Array(
     ApiErrorBase,
@@ -1911,14 +1909,14 @@ export const DiskEncryptionSetsCreateOrUpdateResponseTagsMap =
 
 /** A readonly collection of key vault keys previously used by this disk encryption set while a key rotation is in progress. It will be empty if there is no ongoing key rotation. */
 export type EncryptionSetPropertiesPreviousKeysList =
-  ReadonlyArray<KeyForDiskEncryptionSet>;
+  Array<KeyForDiskEncryptionSet>;
 export const EncryptionSetPropertiesPreviousKeysList = /*@__PURE__*/ S.Array(
   KeyForDiskEncryptionSet,
 ) as any as S.Schema<EncryptionSetPropertiesPreviousKeysList>;
 
 /** The Api error details */
 export type EncryptionSetPropertiesAutoKeyRotationErrorDetailsList =
-  ReadonlyArray<ApiErrorBase>;
+  Array<ApiErrorBase>;
 export const EncryptionSetPropertiesAutoKeyRotationErrorDetailsList =
   /*@__PURE__*/ S.Array(
     ApiErrorBase,
@@ -2227,7 +2225,7 @@ export const DiskEncryptionSet = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DiskEncryptionSet>;
 
 /** The DiskEncryptionSet items on this page */
-export type DiskEncryptionSetListValueList = ReadonlyArray<DiskEncryptionSet>;
+export type DiskEncryptionSetListValueList = Array<DiskEncryptionSet>;
 export const DiskEncryptionSetListValueList = /*@__PURE__*/ S.Array(
   DiskEncryptionSet,
 ) as any as S.Schema<DiskEncryptionSetListValueList>;
@@ -2275,7 +2273,7 @@ export const DiskEncryptionSetsListAssociatedResourcesRequest =
   }) as any as S.Schema<DiskEncryptionSetsListAssociatedResourcesRequest>;
 
 /** A list of IDs or Owner IDs of resources which are encrypted with the disk encryption set. */
-export type ResourceUriListValueList = ReadonlyArray<string>;
+export type ResourceUriListValueList = Array<string>;
 export const ResourceUriListValueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ResourceUriListValueList>;
@@ -2503,9 +2501,9 @@ export interface SupportedCapabilities {
   /** True if the image from which the OS disk is created supports accelerated networking. */
   acceleratedNetwork?: boolean;
   /** CPU architecture supported by an OS disk. */
-  architecture?: CommonArchitecture;
+  architecture?: CommonArchitecture | (string & {});
   /** Refers to the security capability of the disk supported to create a Trusted launch or Confidential VM */
-  supportedSecurityOption?: SupportedSecurityOption;
+  supportedSecurityOption?: SupportedSecurityOption | (string & {});
 }
 export const SupportedCapabilities = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2530,7 +2528,7 @@ export interface Encryption {
   /** ResourceId of the disk encryption set to use for enabling encryption at rest. */
   diskEncryptionSetId?: string;
   /** The type of key used to encrypt the data of the disk. */
-  type?: EncryptionType;
+  type?: EncryptionType | (string & {});
 }
 export const Encryption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2563,11 +2561,11 @@ export const ConfidentialVMVersion = /*@__PURE__*/ S.String;
 /** Contains the security related information for the resource. */
 export interface DiskSecurityProfile {
   /** Specifies the SecurityType of the VM. Applicable for OS disks only. */
-  securityType?: DiskSecurityTypes;
+  securityType?: DiskSecurityTypes | (string & {});
   /** ResourceId of the disk encryption set associated to Confidential VM supported disk encrypted with customer managed key */
   secureVMDiskEncryptionSetId?: string;
   /** Indicates the version of Confidential VM for the resource. */
-  confidentialVMVersion?: ConfidentialVMVersion;
+  confidentialVMVersion?: ConfidentialVMVersion | (string & {});
 }
 export const DiskSecurityProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2802,7 +2800,7 @@ export const DiskRestorePoint = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DiskRestorePoint>;
 
 /** The DiskRestorePoint items on this page */
-export type DiskRestorePointListValueList = ReadonlyArray<DiskRestorePoint>;
+export type DiskRestorePointListValueList = Array<DiskRestorePoint>;
 export const DiskRestorePointListValueList = /*@__PURE__*/ S.Array(
   DiskRestorePoint,
 ) as any as S.Schema<DiskRestorePointListValueList>;
@@ -3015,7 +3013,7 @@ export const EncryptionSettingsElement = /*@__PURE__*/ S.suspend(() =>
 
 /** A collection of encryption settings, one for each disk volume. */
 export type EncryptionSettingsCollectionEncryptionSettingsList =
-  ReadonlyArray<EncryptionSettingsElement>;
+  Array<EncryptionSettingsElement>;
 export const EncryptionSettingsCollectionEncryptionSettingsList =
   /*@__PURE__*/ S.Array(
     EncryptionSettingsElement,
@@ -3053,7 +3051,7 @@ export const AvailabilityPolicyDiskDelay = /*@__PURE__*/ S.String;
 /** In the case of an availability or connectivity issue with the data disk, specify the behavior of your VM */
 export interface AvailabilityPolicy {
   /** Determines on how to handle disks with slow I/O. */
-  actionOnDiskDelay?: AvailabilityPolicyDiskDelay;
+  actionOnDiskDelay?: AvailabilityPolicyDiskDelay | (string & {});
 }
 export const AvailabilityPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3168,7 +3166,7 @@ export const DiskSkuInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DiskSkuInput" }) as any as S.Schema<DiskSkuInput>;
 
 /** The Logical zone list for Disk. */
-export type DisksCreateOrUpdateRequestZonesList = ReadonlyArray<string>;
+export type DisksCreateOrUpdateRequestZonesList = Array<string>;
 export const DisksCreateOrUpdateRequestZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DisksCreateOrUpdateRequestZonesList>;
@@ -3320,7 +3318,7 @@ export const ShareInfoElement = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ShareInfoElement>;
 
 /** Details of the list of all VMs that have the disk attached. maxShares should be set to a value greater than one for disks to allow attaching them to multiple VMs. */
-export type DiskPropertiesShareInfoList = ReadonlyArray<ShareInfoElement>;
+export type DiskPropertiesShareInfoList = Array<ShareInfoElement>;
 export const DiskPropertiesShareInfoList = /*@__PURE__*/ S.Array(
   ShareInfoElement,
 ) as any as S.Schema<DiskPropertiesShareInfoList>;
@@ -3446,8 +3444,7 @@ export const DiskProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DiskProperties" }) as any as S.Schema<DiskProperties>;
 
 /** List of relative URIs containing the IDs of the VMs that have the disk attached. maxShares should be set to a value greater than one for disks to allow attaching them to multiple VMs. */
-export type DisksCreateOrUpdateResponseManagedByExtendedList =
-  ReadonlyArray<string>;
+export type DisksCreateOrUpdateResponseManagedByExtendedList = Array<string>;
 export const DisksCreateOrUpdateResponseManagedByExtendedList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3468,7 +3465,7 @@ export const DiskSku = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DiskSku" }) as any as S.Schema<DiskSku>;
 
 /** The Logical zone list for Disk. */
-export type DisksCreateOrUpdateResponseZonesList = ReadonlyArray<string>;
+export type DisksCreateOrUpdateResponseZonesList = Array<string>;
 export const DisksCreateOrUpdateResponseZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DisksCreateOrUpdateResponseZonesList>;
@@ -3602,13 +3599,13 @@ export const DisksGetResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<DisksGetResponseTagsMap>;
 
 /** List of relative URIs containing the IDs of the VMs that have the disk attached. maxShares should be set to a value greater than one for disks to allow attaching them to multiple VMs. */
-export type DisksGetResponseManagedByExtendedList = ReadonlyArray<string>;
+export type DisksGetResponseManagedByExtendedList = Array<string>;
 export const DisksGetResponseManagedByExtendedList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DisksGetResponseManagedByExtendedList>;
 
 /** The Logical zone list for Disk. */
-export type DisksGetResponseZonesList = ReadonlyArray<string>;
+export type DisksGetResponseZonesList = Array<string>;
 export const DisksGetResponseZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DisksGetResponseZonesList>;
@@ -3738,13 +3735,13 @@ export const DiskTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<DiskTagsMap>;
 
 /** List of relative URIs containing the IDs of the VMs that have the disk attached. maxShares should be set to a value greater than one for disks to allow attaching them to multiple VMs. */
-export type DiskManagedByExtendedList = ReadonlyArray<string>;
+export type DiskManagedByExtendedList = Array<string>;
 export const DiskManagedByExtendedList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DiskManagedByExtendedList>;
 
 /** The Logical zone list for Disk. */
-export type DiskZonesList = ReadonlyArray<string>;
+export type DiskZonesList = Array<string>;
 export const DiskZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DiskZonesList>;
@@ -3810,7 +3807,7 @@ export const Disk = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Disk" }) as any as S.Schema<Disk>;
 
 /** The Disk items on this page */
-export type DiskListValueList = ReadonlyArray<Disk>;
+export type DiskListValueList = Array<Disk>;
 export const DiskListValueList = /*@__PURE__*/ S.Array(
   Disk,
 ) as any as S.Schema<DiskListValueList>;
@@ -4002,13 +3999,13 @@ export const DisksUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<DisksUpdateResponseTagsMap>;
 
 /** List of relative URIs containing the IDs of the VMs that have the disk attached. maxShares should be set to a value greater than one for disks to allow attaching them to multiple VMs. */
-export type DisksUpdateResponseManagedByExtendedList = ReadonlyArray<string>;
+export type DisksUpdateResponseManagedByExtendedList = Array<string>;
 export const DisksUpdateResponseManagedByExtendedList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DisksUpdateResponseManagedByExtendedList>;
 
 /** The Logical zone list for Disk. */
-export type DisksUpdateResponseZonesList = ReadonlyArray<string>;
+export type DisksUpdateResponseZonesList = Array<string>;
 export const DisksUpdateResponseZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DisksUpdateResponseZonesList>;
@@ -4142,7 +4139,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = ReadonlyArray<Operation>;
+export type OperationsListResponseValueList = Array<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;
@@ -4178,7 +4175,7 @@ export const CopyCompletionErrorReason = /*@__PURE__*/ S.String;
 /** Indicates the error details if the background copy of a resource created via the CopyStart operation fails. */
 export interface CopyCompletionError {
   /** Indicates the error code if the background copy of a resource created via the CopyStart operation fails. */
-  errorCode: CopyCompletionErrorReason;
+  errorCode: CopyCompletionErrorReason | (string & {});
   /** Indicates the error message if the background copy of a resource created via the CopyStart operation fails. */
   errorMessage: string;
 }
@@ -4764,7 +4761,7 @@ export const Snapshot = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Snapshot" }) as any as S.Schema<Snapshot>;
 
 /** A list of snapshots. */
-export type SnapshotListValueList = ReadonlyArray<Snapshot>;
+export type SnapshotListValueList = Array<Snapshot>;
 export const SnapshotListValueList = /*@__PURE__*/ S.Array(
   Snapshot,
 ) as any as S.Schema<SnapshotListValueList>;
@@ -5210,8 +5207,7 @@ export const SpotPlacementScoresGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SpotPlacementScoresGetRequest>;
 
 /** Describes what are the supported resource types for a diagnostic. */
-export type DiagnosticPropertiesSupportedResourceTypesList =
-  ReadonlyArray<string>;
+export type DiagnosticPropertiesSupportedResourceTypesList = Array<string>;
 export const DiagnosticPropertiesSupportedResourceTypesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5257,8 +5253,7 @@ export const SpotPlacementScoresGetResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SpotPlacementScoresGetResponse>;
 
 /** The desired regions */
-export type SpotPlacementScoresPostRequestDesiredLocationsList =
-  ReadonlyArray<string>;
+export type SpotPlacementScoresPostRequestDesiredLocationsList = Array<string>;
 export const SpotPlacementScoresPostRequestDesiredLocationsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5277,7 +5272,7 @@ export const ResourceSize = /*@__PURE__*/ S.suspend(() =>
 
 /** The desired virtual machine SKU sizes. */
 export type SpotPlacementScoresPostRequestDesiredSizesList =
-  ReadonlyArray<ResourceSize>;
+  Array<ResourceSize>;
 export const SpotPlacementScoresPostRequestDesiredSizesList =
   /*@__PURE__*/ S.Array(
     ResourceSize,
@@ -5320,16 +5315,14 @@ export const SpotPlacementScoresPostRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SpotPlacementScoresPostRequest>;
 
 /** The desired regions */
-export type SpotPlacementScoresResponseDesiredLocationsList =
-  ReadonlyArray<string>;
+export type SpotPlacementScoresResponseDesiredLocationsList = Array<string>;
 export const SpotPlacementScoresResponseDesiredLocationsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<SpotPlacementScoresResponseDesiredLocationsList>;
 
 /** The desired virtual machine SKU sizes. */
-export type SpotPlacementScoresResponseDesiredSizesList =
-  ReadonlyArray<ResourceSize>;
+export type SpotPlacementScoresResponseDesiredSizesList = Array<ResourceSize>;
 export const SpotPlacementScoresResponseDesiredSizesList =
   /*@__PURE__*/ S.Array(
     ResourceSize,
@@ -5360,7 +5353,7 @@ export const PlacementScore = /*@__PURE__*/ S.suspend(() =>
 
 /** A placement score indicating the likelihood of successfully allocating the specified Spot VM(s), as well as the expected lifetimes of the Spot VM(s) after allocation. */
 export type SpotPlacementScoresResponsePlacementScoresList =
-  ReadonlyArray<PlacementScore>;
+  Array<PlacementScore>;
 export const SpotPlacementScoresResponsePlacementScoresList =
   /*@__PURE__*/ S.Array(
     PlacementScore,
@@ -5395,7 +5388,7 @@ export const SpotPlacementScoresResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of operation ids to cancel operations on */
 export type VirtualMachineBulkOperationsBulkCancelRequestOperationIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const VirtualMachineBulkOperationsBulkCancelRequestOperationIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5513,7 +5506,7 @@ export interface RetryPolicy {
   /** Retry window in minutes for user request */
   retryWindowInMinutes?: number;
   /** Action to take on failure */
-  onFailureAction?: ResourceOperationType;
+  onFailureAction?: ResourceOperationType | (string & {});
 }
 export const RetryPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5592,8 +5585,7 @@ export const ResourceOperation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourceOperation>;
 
 /** An array of resource operations that were successfully cancelled */
-export type CancelOperationsResponseResultsList =
-  ReadonlyArray<ResourceOperation>;
+export type CancelOperationsResponseResultsList = Array<ResourceOperation>;
 export const CancelOperationsResponseResultsList = /*@__PURE__*/ S.Array(
   ResourceOperation,
 ) as any as S.Schema<CancelOperationsResponseResultsList>;
@@ -5625,7 +5617,7 @@ export const ExecutionParameters = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExecutionParameters>;
 
 /** The resource ids used for the request */
-export type ResourcesIdsList = ReadonlyArray<string>;
+export type ResourcesIdsList = Array<string>;
 export const ResourcesIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ResourcesIdsList>;
@@ -5675,7 +5667,7 @@ export const VirtualMachineBulkOperationsBulkDeallocateRequest =
 
 /** The results from the deallocate request if no errors exist */
 export type DeallocateResourceOperationResponseResultsList =
-  ReadonlyArray<ResourceOperation>;
+  Array<ResourceOperation>;
 export const DeallocateResourceOperationResponseResultsList =
   /*@__PURE__*/ S.Array(
     ResourceOperation,
@@ -5740,7 +5732,7 @@ export const VirtualMachineBulkOperationsBulkDeleteRequest =
 
 /** The results from the delete request if no errors exist */
 export type DeleteResourceOperationResponseResultsList =
-  ReadonlyArray<ResourceOperation>;
+  Array<ResourceOperation>;
 export const DeleteResourceOperationResponseResultsList = /*@__PURE__*/ S.Array(
   ResourceOperation,
 ) as any as S.Schema<DeleteResourceOperationResponseResultsList>;
@@ -5769,7 +5761,7 @@ export const DeleteResourceOperationResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of operation ids to get the status of */
 export type VirtualMachineBulkOperationsBulkGetOperationsStatusRequestOperationIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const VirtualMachineBulkOperationsBulkGetOperationsStatusRequestOperationIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5806,8 +5798,7 @@ export const VirtualMachineBulkOperationsBulkGetOperationsStatusRequest =
   }) as any as S.Schema<VirtualMachineBulkOperationsBulkGetOperationsStatusRequest>;
 
 /** An array of resource operations based on their operation ids */
-export type GetOperationStatusResponseResultsList =
-  ReadonlyArray<ResourceOperation>;
+export type GetOperationStatusResponseResultsList = Array<ResourceOperation>;
 export const GetOperationStatusResponseResultsList = /*@__PURE__*/ S.Array(
   ResourceOperation,
 ) as any as S.Schema<GetOperationStatusResponseResultsList>;
@@ -5859,7 +5850,7 @@ export const VirtualMachineBulkOperationsBulkHibernateRequest =
 
 /** The results from the Hibernate request if no errors exist */
 export type HibernateResourceOperationResponseResultsList =
-  ReadonlyArray<ResourceOperation>;
+  Array<ResourceOperation>;
 export const HibernateResourceOperationResponseResultsList =
   /*@__PURE__*/ S.Array(
     ResourceOperation,
@@ -5921,7 +5912,7 @@ export const VirtualMachineBulkOperationsBulkStartRequest =
 
 /** The results from the start request if no errors exist */
 export type StartResourceOperationResponseResultsList =
-  ReadonlyArray<ResourceOperation>;
+  Array<ResourceOperation>;
 export const StartResourceOperationResponseResultsList = /*@__PURE__*/ S.Array(
   ResourceOperation,
 ) as any as S.Schema<StartResourceOperationResponseResultsList>;

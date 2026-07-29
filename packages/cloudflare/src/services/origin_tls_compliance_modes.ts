@@ -82,7 +82,7 @@ export const GetOriginTlsComplianceModeRequest = /*@__PURE__*/ S.suspend(() =>
 export type GetResponseId = "origin_tls_compliance_modes";
 export const GetResponseId = /*@__PURE__*/ S.String;
 
-export type GetResponseValueList = ReadonlyArray<string>;
+export type GetResponseValueList = Array<string>;
 export const GetResponseValueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetResponseValueList>;
@@ -109,7 +109,7 @@ export const GetOriginTlsComplianceModeResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetOriginTlsComplianceModeResponse",
 }) as any as S.Schema<GetOriginTlsComplianceModeResponse>;
 
-export type EditRequestValueList = ReadonlyArray<string>;
+export type EditRequestValueList = Array<string>;
 export const EditRequestValueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EditRequestValueList>;
@@ -140,7 +140,7 @@ export const PatchOriginTlsComplianceModeRequest = /*@__PURE__*/ S.suspend(() =>
 export type EditResponseId = "origin_tls_compliance_modes";
 export const EditResponseId = /*@__PURE__*/ S.String;
 
-export type EditResponseValueList = ReadonlyArray<string>;
+export type EditResponseValueList = Array<string>;
 export const EditResponseValueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EditResponseValueList>;
@@ -168,7 +168,7 @@ export const PatchOriginTlsComplianceModeResponse = /*@__PURE__*/ S.suspend(
   identifier: "PatchOriginTlsComplianceModeResponse",
 }) as any as S.Schema<PatchOriginTlsComplianceModeResponse>;
 
-export type UpdateRequestValueList = ReadonlyArray<string>;
+export type UpdateRequestValueList = Array<string>;
 export const UpdateRequestValueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<UpdateRequestValueList>;
@@ -199,7 +199,7 @@ export const PutOriginTlsComplianceModeRequest = /*@__PURE__*/ S.suspend(() =>
 export type UpdateResponseId = "origin_tls_compliance_modes";
 export const UpdateResponseId = /*@__PURE__*/ S.String;
 
-export type UpdateResponseValueList = ReadonlyArray<string>;
+export type UpdateResponseValueList = Array<string>;
 export const UpdateResponseValueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<UpdateResponseValueList>;

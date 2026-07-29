@@ -316,7 +316,7 @@ export const AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1C
   ) as any as S.Schema<AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase3Map>;
 
 export type AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase4List =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase4List =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -392,7 +392,7 @@ export const AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1C
   }) as any as S.Schema<AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem>;
 
 export type AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesList =
-  ReadonlyArray<AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem>;
+  Array<AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem>;
 export const AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesList =
   /*@__PURE__*/ S.Array(
     AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem,
@@ -459,7 +459,7 @@ export const AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1C
   }) as any as S.Schema<AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem>;
 
 export type AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesList =
-  ReadonlyArray<AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem>;
+  Array<AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem>;
 export const AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesList =
   /*@__PURE__*/ S.Array(
     AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem,
@@ -526,7 +526,7 @@ export const AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1C
   }) as any as S.Schema<AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItem>;
 
 export type AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesList =
-  ReadonlyArray<AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItem>;
+  Array<AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItem>;
 export const AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesList =
   /*@__PURE__*/ S.Array(
     AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItem,
@@ -593,7 +593,7 @@ export const AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1C
   }) as any as S.Schema<AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItem>;
 
 export type AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesList =
-  ReadonlyArray<AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItem>;
+  Array<AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItem>;
 export const AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesList =
   /*@__PURE__*/ S.Array(
     AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItem,
@@ -659,7 +659,7 @@ export const AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItem =
   }) as any as S.Schema<AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItem>;
 
 export type AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesList =
-  ReadonlyArray<AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItem>;
+  Array<AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItem>;
 export const AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesList =
   /*@__PURE__*/ S.Array(
     AppsFlagsCreateRequestRulesItemConditionsItemCase1ClausesItem,
@@ -724,7 +724,7 @@ export const AppsFlagsCreateRequestRulesItemConditionsItem =
   }) as any as S.Schema<AppsFlagsCreateRequestRulesItemConditionsItem>;
 
 export type AppsFlagsCreateRequestRulesItemConditionsList =
-  ReadonlyArray<AppsFlagsCreateRequestRulesItemConditionsItem>;
+  Array<AppsFlagsCreateRequestRulesItemConditionsItem>;
 export const AppsFlagsCreateRequestRulesItemConditionsList =
   /*@__PURE__*/ S.Array(
     AppsFlagsCreateRequestRulesItemConditionsItem,
@@ -767,7 +767,7 @@ export const AppsFlagsCreateRequestRulesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AppsFlagsCreateRequestRulesItem>;
 
 export type AppsFlagsCreateRequestRulesList =
-  ReadonlyArray<AppsFlagsCreateRequestRulesItem>;
+  Array<AppsFlagsCreateRequestRulesItem>;
 export const AppsFlagsCreateRequestRulesList = /*@__PURE__*/ S.Array(
   AppsFlagsCreateRequestRulesItem,
 ) as any as S.Schema<AppsFlagsCreateRequestRulesList>;
@@ -780,7 +780,7 @@ export const AppsFlagsCreateRequestVariationsCase3Map = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<AppsFlagsCreateRequestVariationsCase3Map>;
 
-export type AppsFlagsCreateRequestVariationsCase4List = ReadonlyArray<unknown>;
+export type AppsFlagsCreateRequestVariationsCase4List = Array<unknown>;
 export const AppsFlagsCreateRequestVariationsCase4List = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<AppsFlagsCreateRequestVariationsCase4List>;
@@ -1056,7 +1056,7 @@ export const AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1
   ) as any as S.Schema<AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase3Map>;
 
 export type AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase4List =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase4List =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -1126,7 +1126,7 @@ export const AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1
   }) as any as S.Schema<AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem>;
 
 export type AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesList =
-  ReadonlyArray<AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem>;
+  Array<AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem>;
 export const AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesList =
   /*@__PURE__*/ S.Array(
     AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem,
@@ -1187,7 +1187,7 @@ export const AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1
   }) as any as S.Schema<AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem>;
 
 export type AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesList =
-  ReadonlyArray<AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem>;
+  Array<AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem>;
 export const AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesList =
   /*@__PURE__*/ S.Array(
     AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem,
@@ -1248,7 +1248,7 @@ export const AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1
   }) as any as S.Schema<AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItem>;
 
 export type AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesList =
-  ReadonlyArray<AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItem>;
+  Array<AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItem>;
 export const AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesList =
   /*@__PURE__*/ S.Array(
     AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItem,
@@ -1309,7 +1309,7 @@ export const AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1
   }) as any as S.Schema<AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItem>;
 
 export type AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesList =
-  ReadonlyArray<AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItem>;
+  Array<AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItem>;
 export const AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesList =
   /*@__PURE__*/ S.Array(
     AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItem,
@@ -1370,7 +1370,7 @@ export const AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItem =
   }) as any as S.Schema<AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItem>;
 
 export type AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesList =
-  ReadonlyArray<AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItem>;
+  Array<AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItem>;
 export const AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesList =
   /*@__PURE__*/ S.Array(
     AppsFlagsCreateResponseRulesItemConditionsItemCase1ClausesItem,
@@ -1428,7 +1428,7 @@ export const AppsFlagsCreateResponseRulesItemConditionsItem =
   }) as any as S.Schema<AppsFlagsCreateResponseRulesItemConditionsItem>;
 
 export type AppsFlagsCreateResponseRulesItemConditionsList =
-  ReadonlyArray<AppsFlagsCreateResponseRulesItemConditionsItem>;
+  Array<AppsFlagsCreateResponseRulesItemConditionsItem>;
 export const AppsFlagsCreateResponseRulesItemConditionsList =
   /*@__PURE__*/ S.Array(
     AppsFlagsCreateResponseRulesItemConditionsItem,
@@ -1471,7 +1471,7 @@ export const AppsFlagsCreateResponseRulesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AppsFlagsCreateResponseRulesItem>;
 
 export type AppsFlagsCreateResponseRulesList =
-  ReadonlyArray<AppsFlagsCreateResponseRulesItem>;
+  Array<AppsFlagsCreateResponseRulesItem>;
 export const AppsFlagsCreateResponseRulesList = /*@__PURE__*/ S.Array(
   AppsFlagsCreateResponseRulesItem,
 ) as any as S.Schema<AppsFlagsCreateResponseRulesList>;
@@ -1484,7 +1484,7 @@ export const AppsFlagsCreateResponseVariationsCase3Map = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<AppsFlagsCreateResponseVariationsCase3Map>;
 
-export type AppsFlagsCreateResponseVariationsCase4List = ReadonlyArray<unknown>;
+export type AppsFlagsCreateResponseVariationsCase4List = Array<unknown>;
 export const AppsFlagsCreateResponseVariationsCase4List = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<AppsFlagsCreateResponseVariationsCase4List>;
@@ -1697,7 +1697,7 @@ export const AppsEvaluateGetResponseValueCase3Map = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<AppsEvaluateGetResponseValueCase3Map>;
 
-export type AppsEvaluateGetResponseValueCase4List = ReadonlyArray<unknown>;
+export type AppsEvaluateGetResponseValueCase4List = Array<unknown>;
 export const AppsEvaluateGetResponseValueCase4List = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<AppsEvaluateGetResponseValueCase4List>;
@@ -1967,7 +1967,7 @@ export const AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1Cla
   ) as any as S.Schema<AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase3Map>;
 
 export type AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase4List =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase4List =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -2037,7 +2037,7 @@ export const AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1Cla
   }) as any as S.Schema<AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem>;
 
 export type AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesList =
-  ReadonlyArray<AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem>;
+  Array<AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem>;
 export const AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesList =
   /*@__PURE__*/ S.Array(
     AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem,
@@ -2098,7 +2098,7 @@ export const AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1Cla
   }) as any as S.Schema<AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem>;
 
 export type AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesList =
-  ReadonlyArray<AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem>;
+  Array<AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem>;
 export const AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesList =
   /*@__PURE__*/ S.Array(
     AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem,
@@ -2159,7 +2159,7 @@ export const AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1Cla
   }) as any as S.Schema<AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItem>;
 
 export type AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesList =
-  ReadonlyArray<AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItem>;
+  Array<AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItem>;
 export const AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesList =
   /*@__PURE__*/ S.Array(
     AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItem,
@@ -2220,7 +2220,7 @@ export const AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1Cla
   }) as any as S.Schema<AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItem>;
 
 export type AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesList =
-  ReadonlyArray<AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItem>;
+  Array<AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItem>;
 export const AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesList =
   /*@__PURE__*/ S.Array(
     AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItem,
@@ -2280,7 +2280,7 @@ export const AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItem =
   }) as any as S.Schema<AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItem>;
 
 export type AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesList =
-  ReadonlyArray<AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItem>;
+  Array<AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItem>;
 export const AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesList =
   /*@__PURE__*/ S.Array(
     AppsFlagsGetResponseRulesItemConditionsItemCase1ClausesItem,
@@ -2339,7 +2339,7 @@ export const AppsFlagsGetResponseRulesItemConditionsItem =
   }) as any as S.Schema<AppsFlagsGetResponseRulesItemConditionsItem>;
 
 export type AppsFlagsGetResponseRulesItemConditionsList =
-  ReadonlyArray<AppsFlagsGetResponseRulesItemConditionsItem>;
+  Array<AppsFlagsGetResponseRulesItemConditionsItem>;
 export const AppsFlagsGetResponseRulesItemConditionsList =
   /*@__PURE__*/ S.Array(
     AppsFlagsGetResponseRulesItemConditionsItem,
@@ -2382,7 +2382,7 @@ export const AppsFlagsGetResponseRulesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AppsFlagsGetResponseRulesItem>;
 
 export type AppsFlagsGetResponseRulesList =
-  ReadonlyArray<AppsFlagsGetResponseRulesItem>;
+  Array<AppsFlagsGetResponseRulesItem>;
 export const AppsFlagsGetResponseRulesList = /*@__PURE__*/ S.Array(
   AppsFlagsGetResponseRulesItem,
 ) as any as S.Schema<AppsFlagsGetResponseRulesList>;
@@ -2395,7 +2395,7 @@ export const AppsFlagsGetResponseVariationsCase3Map = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<AppsFlagsGetResponseVariationsCase3Map>;
 
-export type AppsFlagsGetResponseVariationsCase4List = ReadonlyArray<unknown>;
+export type AppsFlagsGetResponseVariationsCase4List = Array<unknown>;
 export const AppsFlagsGetResponseVariationsCase4List = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<AppsFlagsGetResponseVariationsCase4List>;
@@ -2692,7 +2692,7 @@ export const AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCa
   ) as any as S.Schema<AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase3Map>;
 
 export type AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase4List =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase4List =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -2762,7 +2762,7 @@ export const AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCa
   }) as any as S.Schema<AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem>;
 
 export type AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesList =
-  ReadonlyArray<AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem>;
+  Array<AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem>;
 export const AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesList =
   /*@__PURE__*/ S.Array(
     AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem,
@@ -2823,7 +2823,7 @@ export const AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCa
   }) as any as S.Schema<AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem>;
 
 export type AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesList =
-  ReadonlyArray<AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem>;
+  Array<AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem>;
 export const AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesList =
   /*@__PURE__*/ S.Array(
     AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem,
@@ -2884,7 +2884,7 @@ export const AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCa
   }) as any as S.Schema<AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItem>;
 
 export type AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesList =
-  ReadonlyArray<AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItem>;
+  Array<AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItem>;
 export const AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesList =
   /*@__PURE__*/ S.Array(
     AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItem,
@@ -2945,7 +2945,7 @@ export const AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCa
   }) as any as S.Schema<AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItem>;
 
 export type AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesList =
-  ReadonlyArray<AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItem>;
+  Array<AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItem>;
 export const AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesList =
   /*@__PURE__*/ S.Array(
     AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItem,
@@ -3006,7 +3006,7 @@ export const AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCa
   }) as any as S.Schema<AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItem>;
 
 export type AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesList =
-  ReadonlyArray<AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItem>;
+  Array<AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItem>;
 export const AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesList =
   /*@__PURE__*/ S.Array(
     AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase1ClausesItem,
@@ -3067,7 +3067,7 @@ export const AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItem =
   }) as any as S.Schema<AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItem>;
 
 export type AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsList =
-  ReadonlyArray<AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItem>;
+  Array<AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItem>;
 export const AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsList =
   /*@__PURE__*/ S.Array(
     AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItem,
@@ -3114,7 +3114,7 @@ export const AppsFlagsChangelogListResultItemCase0AfterRulesItem =
   }) as any as S.Schema<AppsFlagsChangelogListResultItemCase0AfterRulesItem>;
 
 export type AppsFlagsChangelogListResultItemCase0AfterRulesList =
-  ReadonlyArray<AppsFlagsChangelogListResultItemCase0AfterRulesItem>;
+  Array<AppsFlagsChangelogListResultItemCase0AfterRulesItem>;
 export const AppsFlagsChangelogListResultItemCase0AfterRulesList =
   /*@__PURE__*/ S.Array(
     AppsFlagsChangelogListResultItemCase0AfterRulesItem,
@@ -3130,7 +3130,7 @@ export const AppsFlagsChangelogListResultItemCase0AfterVariationsCase3Map =
   ) as any as S.Schema<AppsFlagsChangelogListResultItemCase0AfterVariationsCase3Map>;
 
 export type AppsFlagsChangelogListResultItemCase0AfterVariationsCase4List =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const AppsFlagsChangelogListResultItemCase0AfterVariationsCase4List =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -3420,7 +3420,7 @@ export const AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCa
   ) as any as S.Schema<AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase3Map>;
 
 export type AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase4List =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase4List =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -3490,7 +3490,7 @@ export const AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCa
   }) as any as S.Schema<AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem>;
 
 export type AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesList =
-  ReadonlyArray<AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem>;
+  Array<AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem>;
 export const AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesList =
   /*@__PURE__*/ S.Array(
     AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem,
@@ -3551,7 +3551,7 @@ export const AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCa
   }) as any as S.Schema<AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem>;
 
 export type AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesList =
-  ReadonlyArray<AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem>;
+  Array<AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem>;
 export const AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesList =
   /*@__PURE__*/ S.Array(
     AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem,
@@ -3612,7 +3612,7 @@ export const AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCa
   }) as any as S.Schema<AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItem>;
 
 export type AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesList =
-  ReadonlyArray<AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItem>;
+  Array<AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItem>;
 export const AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesList =
   /*@__PURE__*/ S.Array(
     AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItem,
@@ -3673,7 +3673,7 @@ export const AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCa
   }) as any as S.Schema<AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItem>;
 
 export type AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesList =
-  ReadonlyArray<AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItem>;
+  Array<AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItem>;
 export const AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesList =
   /*@__PURE__*/ S.Array(
     AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItem,
@@ -3734,7 +3734,7 @@ export const AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCa
   }) as any as S.Schema<AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItem>;
 
 export type AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesList =
-  ReadonlyArray<AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItem>;
+  Array<AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItem>;
 export const AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesList =
   /*@__PURE__*/ S.Array(
     AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItemCase1ClausesItem,
@@ -3795,7 +3795,7 @@ export const AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItem =
   }) as any as S.Schema<AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItem>;
 
 export type AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsList =
-  ReadonlyArray<AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItem>;
+  Array<AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItem>;
 export const AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsList =
   /*@__PURE__*/ S.Array(
     AppsFlagsChangelogListResultItemCase1AfterRulesItemConditionsItem,
@@ -3842,7 +3842,7 @@ export const AppsFlagsChangelogListResultItemCase1AfterRulesItem =
   }) as any as S.Schema<AppsFlagsChangelogListResultItemCase1AfterRulesItem>;
 
 export type AppsFlagsChangelogListResultItemCase1AfterRulesList =
-  ReadonlyArray<AppsFlagsChangelogListResultItemCase1AfterRulesItem>;
+  Array<AppsFlagsChangelogListResultItemCase1AfterRulesItem>;
 export const AppsFlagsChangelogListResultItemCase1AfterRulesList =
   /*@__PURE__*/ S.Array(
     AppsFlagsChangelogListResultItemCase1AfterRulesItem,
@@ -3858,7 +3858,7 @@ export const AppsFlagsChangelogListResultItemCase1AfterVariationsCase3Map =
   ) as any as S.Schema<AppsFlagsChangelogListResultItemCase1AfterVariationsCase3Map>;
 
 export type AppsFlagsChangelogListResultItemCase1AfterVariationsCase4List =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const AppsFlagsChangelogListResultItemCase1AfterVariationsCase4List =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -4148,7 +4148,7 @@ export const AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCa
   ) as any as S.Schema<AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase3Map>;
 
 export type AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase4List =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase4List =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -4218,7 +4218,7 @@ export const AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCa
   }) as any as S.Schema<AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem>;
 
 export type AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesList =
-  ReadonlyArray<AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem>;
+  Array<AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem>;
 export const AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesList =
   /*@__PURE__*/ S.Array(
     AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem,
@@ -4279,7 +4279,7 @@ export const AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCa
   }) as any as S.Schema<AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem>;
 
 export type AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesList =
-  ReadonlyArray<AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem>;
+  Array<AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem>;
 export const AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesList =
   /*@__PURE__*/ S.Array(
     AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem,
@@ -4340,7 +4340,7 @@ export const AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCa
   }) as any as S.Schema<AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItem>;
 
 export type AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesList =
-  ReadonlyArray<AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItem>;
+  Array<AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItem>;
 export const AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesList =
   /*@__PURE__*/ S.Array(
     AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItem,
@@ -4401,7 +4401,7 @@ export const AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCa
   }) as any as S.Schema<AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItem>;
 
 export type AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesList =
-  ReadonlyArray<AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItem>;
+  Array<AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItem>;
 export const AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesList =
   /*@__PURE__*/ S.Array(
     AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItemCase1ClausesItem,
@@ -4462,7 +4462,7 @@ export const AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCa
   }) as any as S.Schema<AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItem>;
 
 export type AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesList =
-  ReadonlyArray<AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItem>;
+  Array<AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItem>;
 export const AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesList =
   /*@__PURE__*/ S.Array(
     AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItemCase1ClausesItem,
@@ -4523,7 +4523,7 @@ export const AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItem =
   }) as any as S.Schema<AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItem>;
 
 export type AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsList =
-  ReadonlyArray<AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItem>;
+  Array<AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItem>;
 export const AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsList =
   /*@__PURE__*/ S.Array(
     AppsFlagsChangelogListResultItemCase2AfterRulesItemConditionsItem,
@@ -4570,7 +4570,7 @@ export const AppsFlagsChangelogListResultItemCase2AfterRulesItem =
   }) as any as S.Schema<AppsFlagsChangelogListResultItemCase2AfterRulesItem>;
 
 export type AppsFlagsChangelogListResultItemCase2AfterRulesList =
-  ReadonlyArray<AppsFlagsChangelogListResultItemCase2AfterRulesItem>;
+  Array<AppsFlagsChangelogListResultItemCase2AfterRulesItem>;
 export const AppsFlagsChangelogListResultItemCase2AfterRulesList =
   /*@__PURE__*/ S.Array(
     AppsFlagsChangelogListResultItemCase2AfterRulesItem,
@@ -4586,7 +4586,7 @@ export const AppsFlagsChangelogListResultItemCase2AfterVariationsCase3Map =
   ) as any as S.Schema<AppsFlagsChangelogListResultItemCase2AfterVariationsCase3Map>;
 
 export type AppsFlagsChangelogListResultItemCase2AfterVariationsCase4List =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const AppsFlagsChangelogListResultItemCase2AfterVariationsCase4List =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -4653,7 +4653,7 @@ export const AppsFlagsChangelogListResultItemCase2DiffValueFromCase3Map =
   ) as any as S.Schema<AppsFlagsChangelogListResultItemCase2DiffValueFromCase3Map>;
 
 export type AppsFlagsChangelogListResultItemCase2DiffValueFromCase4List =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const AppsFlagsChangelogListResultItemCase2DiffValueFromCase4List =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -4678,7 +4678,7 @@ export const AppsFlagsChangelogListResultItemCase2DiffValueToCase3Map =
   ) as any as S.Schema<AppsFlagsChangelogListResultItemCase2DiffValueToCase3Map>;
 
 export type AppsFlagsChangelogListResultItemCase2DiffValueToCase4List =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const AppsFlagsChangelogListResultItemCase2DiffValueToCase4List =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -4770,7 +4770,7 @@ export const AppsFlagsChangelogListResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AppsFlagsChangelogListResultItem>;
 
 export type AppsFlagsChangelogListResultList =
-  ReadonlyArray<AppsFlagsChangelogListResultItem>;
+  Array<AppsFlagsChangelogListResultItem>;
 export const AppsFlagsChangelogListResultList = /*@__PURE__*/ S.Array(
   AppsFlagsChangelogListResultItem,
 ) as any as S.Schema<AppsFlagsChangelogListResultList>;
@@ -5030,7 +5030,7 @@ export const AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1
   ) as any as S.Schema<AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase3Map>;
 
 export type AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase4List =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase4List =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -5100,7 +5100,7 @@ export const AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1
   }) as any as S.Schema<AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem>;
 
 export type AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesList =
-  ReadonlyArray<AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem>;
+  Array<AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem>;
 export const AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesList =
   /*@__PURE__*/ S.Array(
     AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem,
@@ -5161,7 +5161,7 @@ export const AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1
   }) as any as S.Schema<AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem>;
 
 export type AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesList =
-  ReadonlyArray<AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem>;
+  Array<AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem>;
 export const AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesList =
   /*@__PURE__*/ S.Array(
     AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem,
@@ -5222,7 +5222,7 @@ export const AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1
   }) as any as S.Schema<AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItem>;
 
 export type AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesList =
-  ReadonlyArray<AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItem>;
+  Array<AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItem>;
 export const AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesList =
   /*@__PURE__*/ S.Array(
     AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItem,
@@ -5283,7 +5283,7 @@ export const AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1
   }) as any as S.Schema<AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItem>;
 
 export type AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesList =
-  ReadonlyArray<AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItem>;
+  Array<AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItem>;
 export const AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesList =
   /*@__PURE__*/ S.Array(
     AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItemCase1ClausesItem,
@@ -5344,7 +5344,7 @@ export const AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItem =
   }) as any as S.Schema<AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItem>;
 
 export type AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesList =
-  ReadonlyArray<AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItem>;
+  Array<AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItem>;
 export const AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesList =
   /*@__PURE__*/ S.Array(
     AppsFlagsListResultItemRulesItemConditionsItemCase1ClausesItem,
@@ -5402,7 +5402,7 @@ export const AppsFlagsListResultItemRulesItemConditionsItem =
   }) as any as S.Schema<AppsFlagsListResultItemRulesItemConditionsItem>;
 
 export type AppsFlagsListResultItemRulesItemConditionsList =
-  ReadonlyArray<AppsFlagsListResultItemRulesItemConditionsItem>;
+  Array<AppsFlagsListResultItemRulesItemConditionsItem>;
 export const AppsFlagsListResultItemRulesItemConditionsList =
   /*@__PURE__*/ S.Array(
     AppsFlagsListResultItemRulesItemConditionsItem,
@@ -5445,7 +5445,7 @@ export const AppsFlagsListResultItemRulesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AppsFlagsListResultItemRulesItem>;
 
 export type AppsFlagsListResultItemRulesList =
-  ReadonlyArray<AppsFlagsListResultItemRulesItem>;
+  Array<AppsFlagsListResultItemRulesItem>;
 export const AppsFlagsListResultItemRulesList = /*@__PURE__*/ S.Array(
   AppsFlagsListResultItemRulesItem,
 ) as any as S.Schema<AppsFlagsListResultItemRulesList>;
@@ -5458,7 +5458,7 @@ export const AppsFlagsListResultItemVariationsCase3Map = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<AppsFlagsListResultItemVariationsCase3Map>;
 
-export type AppsFlagsListResultItemVariationsCase4List = ReadonlyArray<unknown>;
+export type AppsFlagsListResultItemVariationsCase4List = Array<unknown>;
 export const AppsFlagsListResultItemVariationsCase4List = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<AppsFlagsListResultItemVariationsCase4List>;
@@ -5513,7 +5513,7 @@ export const AppsFlagsListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "AppsFlagsListResultItem",
 }) as any as S.Schema<AppsFlagsListResultItem>;
 
-export type AppsFlagsListResultList = ReadonlyArray<AppsFlagsListResultItem>;
+export type AppsFlagsListResultList = Array<AppsFlagsListResultItem>;
 export const AppsFlagsListResultList = /*@__PURE__*/ S.Array(
   AppsFlagsListResultItem,
 ) as any as S.Schema<AppsFlagsListResultList>;
@@ -5573,7 +5573,7 @@ export const AppsListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "AppsListResultItem",
 }) as any as S.Schema<AppsListResultItem>;
 
-export type AppsListResultList = ReadonlyArray<AppsListResultItem>;
+export type AppsListResultList = Array<AppsListResultItem>;
 export const AppsListResultList = /*@__PURE__*/ S.Array(
   AppsListResultItem,
 ) as any as S.Schema<AppsListResultList>;
@@ -5862,7 +5862,7 @@ export const AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1C
   ) as any as S.Schema<AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase3Map>;
 
 export type AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase4List =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase4List =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -5938,7 +5938,7 @@ export const AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1C
   }) as any as S.Schema<AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem>;
 
 export type AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesList =
-  ReadonlyArray<AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem>;
+  Array<AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem>;
 export const AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesList =
   /*@__PURE__*/ S.Array(
     AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem,
@@ -6005,7 +6005,7 @@ export const AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1C
   }) as any as S.Schema<AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem>;
 
 export type AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesList =
-  ReadonlyArray<AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem>;
+  Array<AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem>;
 export const AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesList =
   /*@__PURE__*/ S.Array(
     AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem,
@@ -6072,7 +6072,7 @@ export const AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1C
   }) as any as S.Schema<AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItem>;
 
 export type AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesList =
-  ReadonlyArray<AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItem>;
+  Array<AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItem>;
 export const AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesList =
   /*@__PURE__*/ S.Array(
     AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItem,
@@ -6139,7 +6139,7 @@ export const AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1C
   }) as any as S.Schema<AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItem>;
 
 export type AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesList =
-  ReadonlyArray<AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItem>;
+  Array<AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItem>;
 export const AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesList =
   /*@__PURE__*/ S.Array(
     AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItemCase1ClausesItem,
@@ -6205,7 +6205,7 @@ export const AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItem =
   }) as any as S.Schema<AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItem>;
 
 export type AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesList =
-  ReadonlyArray<AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItem>;
+  Array<AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItem>;
 export const AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesList =
   /*@__PURE__*/ S.Array(
     AppsFlagsUpdateRequestRulesItemConditionsItemCase1ClausesItem,
@@ -6270,7 +6270,7 @@ export const AppsFlagsUpdateRequestRulesItemConditionsItem =
   }) as any as S.Schema<AppsFlagsUpdateRequestRulesItemConditionsItem>;
 
 export type AppsFlagsUpdateRequestRulesItemConditionsList =
-  ReadonlyArray<AppsFlagsUpdateRequestRulesItemConditionsItem>;
+  Array<AppsFlagsUpdateRequestRulesItemConditionsItem>;
 export const AppsFlagsUpdateRequestRulesItemConditionsList =
   /*@__PURE__*/ S.Array(
     AppsFlagsUpdateRequestRulesItemConditionsItem,
@@ -6313,7 +6313,7 @@ export const AppsFlagsUpdateRequestRulesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AppsFlagsUpdateRequestRulesItem>;
 
 export type AppsFlagsUpdateRequestRulesList =
-  ReadonlyArray<AppsFlagsUpdateRequestRulesItem>;
+  Array<AppsFlagsUpdateRequestRulesItem>;
 export const AppsFlagsUpdateRequestRulesList = /*@__PURE__*/ S.Array(
   AppsFlagsUpdateRequestRulesItem,
 ) as any as S.Schema<AppsFlagsUpdateRequestRulesList>;
@@ -6326,7 +6326,7 @@ export const AppsFlagsUpdateRequestVariationsCase3Map = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<AppsFlagsUpdateRequestVariationsCase3Map>;
 
-export type AppsFlagsUpdateRequestVariationsCase4List = ReadonlyArray<unknown>;
+export type AppsFlagsUpdateRequestVariationsCase4List = Array<unknown>;
 export const AppsFlagsUpdateRequestVariationsCase4List = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<AppsFlagsUpdateRequestVariationsCase4List>;
@@ -6605,7 +6605,7 @@ export const AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1
   ) as any as S.Schema<AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase3Map>;
 
 export type AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase4List =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesCase4List =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -6675,7 +6675,7 @@ export const AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1
   }) as any as S.Schema<AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem>;
 
 export type AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesList =
-  ReadonlyArray<AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem>;
+  Array<AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem>;
 export const AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesList =
   /*@__PURE__*/ S.Array(
     AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem,
@@ -6736,7 +6736,7 @@ export const AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1
   }) as any as S.Schema<AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem>;
 
 export type AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesList =
-  ReadonlyArray<AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem>;
+  Array<AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem>;
 export const AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesList =
   /*@__PURE__*/ S.Array(
     AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItemCase1ClausesItem,
@@ -6797,7 +6797,7 @@ export const AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1
   }) as any as S.Schema<AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItem>;
 
 export type AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesList =
-  ReadonlyArray<AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItem>;
+  Array<AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItem>;
 export const AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesList =
   /*@__PURE__*/ S.Array(
     AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItemCase1ClausesItem,
@@ -6858,7 +6858,7 @@ export const AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1
   }) as any as S.Schema<AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItem>;
 
 export type AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesList =
-  ReadonlyArray<AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItem>;
+  Array<AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItem>;
 export const AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesList =
   /*@__PURE__*/ S.Array(
     AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItemCase1ClausesItem,
@@ -6919,7 +6919,7 @@ export const AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItem =
   }) as any as S.Schema<AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItem>;
 
 export type AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesList =
-  ReadonlyArray<AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItem>;
+  Array<AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItem>;
 export const AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesList =
   /*@__PURE__*/ S.Array(
     AppsFlagsUpdateResponseRulesItemConditionsItemCase1ClausesItem,
@@ -6977,7 +6977,7 @@ export const AppsFlagsUpdateResponseRulesItemConditionsItem =
   }) as any as S.Schema<AppsFlagsUpdateResponseRulesItemConditionsItem>;
 
 export type AppsFlagsUpdateResponseRulesItemConditionsList =
-  ReadonlyArray<AppsFlagsUpdateResponseRulesItemConditionsItem>;
+  Array<AppsFlagsUpdateResponseRulesItemConditionsItem>;
 export const AppsFlagsUpdateResponseRulesItemConditionsList =
   /*@__PURE__*/ S.Array(
     AppsFlagsUpdateResponseRulesItemConditionsItem,
@@ -7020,7 +7020,7 @@ export const AppsFlagsUpdateResponseRulesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AppsFlagsUpdateResponseRulesItem>;
 
 export type AppsFlagsUpdateResponseRulesList =
-  ReadonlyArray<AppsFlagsUpdateResponseRulesItem>;
+  Array<AppsFlagsUpdateResponseRulesItem>;
 export const AppsFlagsUpdateResponseRulesList = /*@__PURE__*/ S.Array(
   AppsFlagsUpdateResponseRulesItem,
 ) as any as S.Schema<AppsFlagsUpdateResponseRulesList>;
@@ -7033,7 +7033,7 @@ export const AppsFlagsUpdateResponseVariationsCase3Map = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<AppsFlagsUpdateResponseVariationsCase3Map>;
 
-export type AppsFlagsUpdateResponseVariationsCase4List = ReadonlyArray<unknown>;
+export type AppsFlagsUpdateResponseVariationsCase4List = Array<unknown>;
 export const AppsFlagsUpdateResponseVariationsCase4List = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<AppsFlagsUpdateResponseVariationsCase4List>;

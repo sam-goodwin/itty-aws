@@ -421,7 +421,7 @@ export interface MetricStat {
   Metric?: Metric;
   Period?: number;
   Stat?: string;
-  Unit?: StandardUnit;
+  Unit?: StandardUnit | (string & {});
 }
 export const MetricStat = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

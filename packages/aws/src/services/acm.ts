@@ -428,8 +428,10 @@ export type CertificateExport = "ENABLED" | "DISABLED";
 export const CertificateExport = /*@__PURE__*/ S.String;
 
 export interface CertificateOptions {
-  CertificateTransparencyLoggingPreference?: CertificateTransparencyLoggingPreference;
-  Export?: CertificateExport;
+  CertificateTransparencyLoggingPreference?:
+    | CertificateTransparencyLoggingPreference
+    | (string & {});
+  Export?: CertificateExport | (string & {});
 }
 export const CertificateOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

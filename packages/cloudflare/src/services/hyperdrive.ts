@@ -1176,7 +1176,7 @@ export const ConfigsListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConfigsListResultItem",
 }) as any as S.Schema<ConfigsListResultItem>;
 
-export type ConfigsListResultList = ReadonlyArray<ConfigsListResultItem>;
+export type ConfigsListResultList = Array<ConfigsListResultItem>;
 export const ConfigsListResultList = /*@__PURE__*/ S.Array(
   ConfigsListResultItem,
 ) as any as S.Schema<ConfigsListResultList>;

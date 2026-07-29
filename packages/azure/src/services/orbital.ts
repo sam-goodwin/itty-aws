@@ -105,7 +105,7 @@ export const AvailableGroundStation = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of ground station resources. */
 export type AvailableGroundStationListResultValueList =
-  ReadonlyArray<AvailableGroundStation>;
+  Array<AvailableGroundStation>;
 export const AvailableGroundStationListResultValueList = /*@__PURE__*/ S.Array(
   AvailableGroundStation,
 ) as any as S.Schema<AvailableGroundStationListResultValueList>;
@@ -187,7 +187,7 @@ export const ContactProfileThirdPartyConfiguration = /*@__PURE__*/ S.suspend(
 
 /** Third-party mission configuration of the Contact Profile. Describes RF links, modem processing, and IP endpoints. */
 export type ContactProfilesPropertiesInputThirdPartyConfigurationsList =
-  ReadonlyArray<ContactProfileThirdPartyConfiguration>;
+  Array<ContactProfileThirdPartyConfiguration>;
 export const ContactProfilesPropertiesInputThirdPartyConfigurationsList =
   /*@__PURE__*/ S.Array(
     ContactProfileThirdPartyConfiguration,
@@ -218,7 +218,7 @@ export interface EndPoint {
   /** TCP port to listen on to receive data. */
   port: string;
   /** Protocol either UDP or TCP. */
-  protocol: EndPointProtocol;
+  protocol: EndPointProtocol | (string & {});
 }
 export const EndPoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -263,8 +263,7 @@ export const ContactProfileLinkChannel = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ContactProfileLinkChannel>;
 
 /** Contact Profile Link Channel. */
-export type ContactProfileLinkChannelsList =
-  ReadonlyArray<ContactProfileLinkChannel>;
+export type ContactProfileLinkChannelsList = Array<ContactProfileLinkChannel>;
 export const ContactProfileLinkChannelsList = /*@__PURE__*/ S.Array(
   ContactProfileLinkChannel,
 ) as any as S.Schema<ContactProfileLinkChannelsList>;
@@ -274,9 +273,9 @@ export interface ContactProfileLink {
   /** Link name. */
   name: string;
   /** Polarization. e.g. (RHCP, LHCP). */
-  polarization: ContactProfileLinkPolarization;
+  polarization: ContactProfileLinkPolarization | (string & {});
   /** Direction (Uplink or Downlink). */
-  direction: ContactProfileLinkDirection;
+  direction: ContactProfileLinkDirection | (string & {});
   /** Gain to noise temperature in db/K. It is the required G/T by the customer. Not used yet. */
   gainOverTemperature?: number;
   /** Effective Isotropic Radiated Power (EIRP) in dBW. It is the required EIRP by the customer. Not used yet. */
@@ -298,8 +297,7 @@ export const ContactProfileLink = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ContactProfileLink>;
 
 /** Links of the Contact Profile. Describes RF links, modem processing, and IP endpoints. */
-export type ContactProfilesPropertiesInputLinksList =
-  ReadonlyArray<ContactProfileLink>;
+export type ContactProfilesPropertiesInputLinksList = Array<ContactProfileLink>;
 export const ContactProfilesPropertiesInputLinksList = /*@__PURE__*/ S.Array(
   ContactProfileLink,
 ) as any as S.Schema<ContactProfilesPropertiesInputLinksList>;
@@ -465,15 +463,14 @@ export const ContactProfilesPropertiesNetworkConfiguration =
 
 /** Third-party mission configuration of the Contact Profile. Describes RF links, modem processing, and IP endpoints. */
 export type ContactProfilesPropertiesThirdPartyConfigurationsList =
-  ReadonlyArray<ContactProfileThirdPartyConfiguration>;
+  Array<ContactProfileThirdPartyConfiguration>;
 export const ContactProfilesPropertiesThirdPartyConfigurationsList =
   /*@__PURE__*/ S.Array(
     ContactProfileThirdPartyConfiguration,
   ) as any as S.Schema<ContactProfilesPropertiesThirdPartyConfigurationsList>;
 
 /** Links of the Contact Profile. Describes RF links, modem processing, and IP endpoints. */
-export type ContactProfilesPropertiesLinksList =
-  ReadonlyArray<ContactProfileLink>;
+export type ContactProfilesPropertiesLinksList = Array<ContactProfileLink>;
 export const ContactProfilesPropertiesLinksList = /*@__PURE__*/ S.Array(
   ContactProfileLink,
 ) as any as S.Schema<ContactProfilesPropertiesLinksList>;
@@ -705,7 +702,7 @@ export const ContactProfile = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ContactProfile" }) as any as S.Schema<ContactProfile>;
 
 /** A list of contact profile resources in a resource group. */
-export type ContactProfileListResultValueList = ReadonlyArray<ContactProfile>;
+export type ContactProfileListResultValueList = Array<ContactProfile>;
 export const ContactProfileListResultValueList = /*@__PURE__*/ S.Array(
   ContactProfile,
 ) as any as S.Schema<ContactProfileListResultValueList>;
@@ -903,8 +900,7 @@ export type ContactsPropertiesStatus =
 export const ContactsPropertiesStatus = /*@__PURE__*/ S.String;
 
 /** List of Source IP */
-export type ContactsPropertiesAntennaConfigurationSourceIpsList =
-  ReadonlyArray<string>;
+export type ContactsPropertiesAntennaConfigurationSourceIpsList = Array<string>;
 export const ContactsPropertiesAntennaConfigurationSourceIpsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1150,7 +1146,7 @@ export const Contact = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Contact" }) as any as S.Schema<Contact>;
 
 /** A list of contact resources in a resource group. */
-export type ContactListResultValueList = ReadonlyArray<Contact>;
+export type ContactListResultValueList = Array<Contact>;
 export const ContactListResultValueList = /*@__PURE__*/ S.Array(
   Contact,
 ) as any as S.Schema<ContactListResultValueList>;
@@ -1422,7 +1418,7 @@ export const EdgeSite = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EdgeSite" }) as any as S.Schema<EdgeSite>;
 
 /** A list of edge site resources. */
-export type EdgeSiteListResultValueList = ReadonlyArray<EdgeSite>;
+export type EdgeSiteListResultValueList = Array<EdgeSite>;
 export const EdgeSiteListResultValueList = /*@__PURE__*/ S.Array(
   EdgeSite,
 ) as any as S.Schema<EdgeSiteListResultValueList>;
@@ -1504,7 +1500,7 @@ export const ResourceIdListResultValueItem = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of Azure Resource IDs. */
 export type ResourceIdListResultValueList =
-  ReadonlyArray<ResourceIdListResultValueItem>;
+  Array<ResourceIdListResultValueItem>;
 export const ResourceIdListResultValueList = /*@__PURE__*/ S.Array(
   ResourceIdListResultValueItem,
 ) as any as S.Schema<ResourceIdListResultValueList>;
@@ -1661,7 +1657,7 @@ export const PartnerRouter = /*@__PURE__*/ S.suspend(() =>
 
 /** Partner routers connected to this site. */
 export type GlobalCommunicationsSitesPropertiesPartnerRoutersList =
-  ReadonlyArray<PartnerRouter>;
+  Array<PartnerRouter>;
 export const GlobalCommunicationsSitesPropertiesPartnerRoutersList =
   /*@__PURE__*/ S.Array(
     PartnerRouter,
@@ -1718,7 +1714,7 @@ export const GlobalCommunicationsSite = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of global communications sites. */
 export type GlobalCommunicationsSiteListResultValueList =
-  ReadonlyArray<GlobalCommunicationsSite>;
+  Array<GlobalCommunicationsSite>;
 export const GlobalCommunicationsSiteListResultValueList =
   /*@__PURE__*/ S.Array(
     GlobalCommunicationsSite,
@@ -1755,7 +1751,7 @@ export type Capability = "EarthObservation" | "Communication";
 export const Capability = /*@__PURE__*/ S.String;
 
 /** Ground station capabilities. */
-export type GroundStationsPropertiesInputCapabilitiesList = ReadonlyArray<
+export type GroundStationsPropertiesInputCapabilitiesList = Array<
   Capability | (string & {})
 >;
 export const GroundStationsPropertiesInputCapabilitiesList =
@@ -1839,8 +1835,7 @@ export const GroundStationsCreateOrUpdateResponseTagsMap =
   ) as any as S.Schema<GroundStationsCreateOrUpdateResponseTagsMap>;
 
 /** Ground station capabilities. */
-export type GroundStationsPropertiesCapabilitiesList =
-  ReadonlyArray<Capability>;
+export type GroundStationsPropertiesCapabilitiesList = Array<Capability>;
 export const GroundStationsPropertiesCapabilitiesList = /*@__PURE__*/ S.Array(
   Capability,
 ) as any as S.Schema<GroundStationsPropertiesCapabilitiesList>;
@@ -2072,7 +2067,7 @@ export const GroundStation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GroundStation" }) as any as S.Schema<GroundStation>;
 
 /** A list of ground station resources. */
-export type GroundStationListResultValueList = ReadonlyArray<GroundStation>;
+export type GroundStationListResultValueList = Array<GroundStation>;
 export const GroundStationListResultValueList = /*@__PURE__*/ S.Array(
   GroundStation,
 ) as any as S.Schema<GroundStationListResultValueList>;
@@ -2583,7 +2578,7 @@ export const L2Connection = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "L2Connection" }) as any as S.Schema<L2Connection>;
 
 /** A list of L2 Connection resources. */
-export type L2ConnectionListResultValueList = ReadonlyArray<L2Connection>;
+export type L2ConnectionListResultValueList = Array<L2Connection>;
 export const L2ConnectionListResultValueList = /*@__PURE__*/ S.Array(
   L2Connection,
 ) as any as S.Schema<L2ConnectionListResultValueList>;
@@ -2771,7 +2766,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = ReadonlyArray<Operation>;
+export type OperationsListResponseValueList = Array<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;
@@ -2821,7 +2816,7 @@ export type Status = "Succeeded" | "Canceled" | "Failed" | "Running";
 export const Status = /*@__PURE__*/ S.String;
 
 /** A list of results when the operation returns multiple results. */
-export type OperationResultValueList = ReadonlyArray<unknown>;
+export type OperationResultValueList = Array<unknown>;
 export const OperationResultValueList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<OperationResultValueList>;
@@ -2926,8 +2921,7 @@ export const SpacecraftLinkInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SpacecraftLinkInput>;
 
 /** Immutable list of Spacecraft links. */
-export type SpacecraftsPropertiesInputLinksList =
-  ReadonlyArray<SpacecraftLinkInput>;
+export type SpacecraftsPropertiesInputLinksList = Array<SpacecraftLinkInput>;
 export const SpacecraftsPropertiesInputLinksList = /*@__PURE__*/ S.Array(
   SpacecraftLinkInput,
 ) as any as S.Schema<SpacecraftsPropertiesInputLinksList>;
@@ -3032,8 +3026,7 @@ export const AuthorizedGroundstation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AuthorizedGroundstation>;
 
 /** Authorized Ground Stations */
-export type SpacecraftLinkAuthorizationsList =
-  ReadonlyArray<AuthorizedGroundstation>;
+export type SpacecraftLinkAuthorizationsList = Array<AuthorizedGroundstation>;
 export const SpacecraftLinkAuthorizationsList = /*@__PURE__*/ S.Array(
   AuthorizedGroundstation,
 ) as any as S.Schema<SpacecraftLinkAuthorizationsList>;
@@ -3065,7 +3058,7 @@ export const SpacecraftLink = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SpacecraftLink" }) as any as S.Schema<SpacecraftLink>;
 
 /** Immutable list of Spacecraft links. */
-export type SpacecraftsPropertiesLinksList = ReadonlyArray<SpacecraftLink>;
+export type SpacecraftsPropertiesLinksList = Array<SpacecraftLink>;
 export const SpacecraftsPropertiesLinksList = /*@__PURE__*/ S.Array(
   SpacecraftLink,
 ) as any as S.Schema<SpacecraftsPropertiesLinksList>;
@@ -3286,7 +3279,7 @@ export const Spacecraft = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Spacecraft" }) as any as S.Schema<Spacecraft>;
 
 /** A list of spacecraft resources in a resource group. */
-export type SpacecraftListResultValueList = ReadonlyArray<Spacecraft>;
+export type SpacecraftListResultValueList = Array<Spacecraft>;
 export const SpacecraftListResultValueList = /*@__PURE__*/ S.Array(
   Spacecraft,
 ) as any as S.Schema<SpacecraftListResultValueList>;
@@ -3402,8 +3395,7 @@ export const AvailableContacts = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AvailableContacts>;
 
 /** A list of available contacts. */
-export type AvailableContactsListResultValueList =
-  ReadonlyArray<AvailableContacts>;
+export type AvailableContactsListResultValueList = Array<AvailableContacts>;
 export const AvailableContactsListResultValueList = /*@__PURE__*/ S.Array(
   AvailableContacts,
 ) as any as S.Schema<AvailableContactsListResultValueList>;

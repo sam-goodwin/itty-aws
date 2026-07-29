@@ -162,7 +162,7 @@ export const QueryType = /*@__PURE__*/ S.String;
 
 export type Query = string;
 export interface ResourceQuery {
-  Type: QueryType;
+  Type: QueryType | (string & {});
   Query: string;
 }
 export const ResourceQuery = /*@__PURE__*/ S.suspend(() =>

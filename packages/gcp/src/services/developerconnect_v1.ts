@@ -108,7 +108,7 @@ export type ProviderOAuthConfigSystemProviderIdEnum =
   | "DYNATRACE";
 export const ProviderOAuthConfigSystemProviderIdEnum = /*@__PURE__*/ S.String;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -116,7 +116,7 @@ export const StringList = /*@__PURE__*/ S.Array(
 /** ProviderOAuthConfig is the OAuth config for a provider. */
 export interface ProviderOAuthConfig {
   /** Optional. Immutable. Developer Connect provided OAuth. */
-  systemProviderId?: ProviderOAuthConfigSystemProviderIdEnum;
+  systemProviderId?: ProviderOAuthConfigSystemProviderIdEnum | (string & {});
   /** Required. User selected scopes to apply to the Oauth config In the event of changing scopes, user records under AccountConnector will be deleted and users will re-auth again. */
   scopes?: StringList;
 }
@@ -172,7 +172,7 @@ export const ServiceDirectoryConfig = /*@__PURE__*/ S.suspend(() =>
 /** Message for a customized OAuth config. */
 export interface CustomOAuthConfig {
   /** Required. The type of the SCM provider. */
-  scmProvider?: CustomOAuthConfigScmProviderEnum;
+  scmProvider?: CustomOAuthConfigScmProviderEnum | (string & {});
   /** Required. The host URI of the OAuth application. */
   hostUri?: string;
   /** Optional. Configuration for using Service Directory to connect to a private service. */
@@ -292,7 +292,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -445,7 +445,7 @@ export const InstallationStateStageEnum = /*@__PURE__*/ S.String;
 /** Describes stage and necessary actions to be taken by the user to complete the installation. Used for GitHub and GitHub Enterprise based connections. */
 export interface InstallationState {
   /** Output only. Current step of the installation process. */
-  stage?: InstallationStateStageEnum;
+  stage?: InstallationStateStageEnum | (string & {});
   /** Output only. Link to follow for next action. Empty string if the installation is already complete. */
   actionUri?: string;
   /** Output only. Message of what the user should do next to continue the installation. Empty string if the installation is already complete. */
@@ -490,7 +490,7 @@ export interface GitHubConfig {
   /** Output only. The URI to navigate to in order to manage the installation associated with this GitHubConfig. */
   installationUri?: string;
   /** Required. Immutable. The GitHub Application that was installed to the GitHub user or organization. */
-  githubApp?: GitHubConfigGithubAppEnum;
+  githubApp?: GitHubConfigGithubAppEnum | (string & {});
   /** Optional. GitHub App installation id. */
   appInstallationId?: string;
   /** Optional. OAuth credential of the account that authorized the GitHub App. It is recommended to use a robot account instead of a human user account. The OAuth token must be tied to the GitHub App of this config. */
@@ -905,7 +905,7 @@ export const ArtifactConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ArtifactConfig" }) as any as S.Schema<ArtifactConfig>;
 
-export type ArtifactConfigList = ReadonlyArray<ArtifactConfig>;
+export type ArtifactConfigList = Array<ArtifactConfig>;
 export const ArtifactConfigList = /*@__PURE__*/ S.Array(
   ArtifactConfig,
 ) as any as S.Schema<ArtifactConfigList>;
@@ -986,7 +986,7 @@ export interface RuntimeConfig {
   /** Required. Immutable. The URI of the runtime configuration. For GKE, this is the cluster name. For Cloud Run, this is the service name. */
   uri?: string;
   /** Output only. The state of the Runtime. */
-  state?: RuntimeConfigStateEnum;
+  state?: RuntimeConfigStateEnum | (string & {});
   /** Output only. App Hub Workload. */
   appHubWorkload?: AppHubWorkload;
 }
@@ -1001,12 +1001,12 @@ export const RuntimeConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "RuntimeConfig" }) as any as S.Schema<RuntimeConfig>;
 
-export type RuntimeConfigList = ReadonlyArray<RuntimeConfig>;
+export type RuntimeConfigList = Array<RuntimeConfig>;
 export const RuntimeConfigList = /*@__PURE__*/ S.Array(
   RuntimeConfig,
 ) as any as S.Schema<RuntimeConfigList>;
 
-export type StatusList = ReadonlyArray<Status>;
+export type StatusList = Array<Status>;
 export const StatusList = /*@__PURE__*/ S.Array(
   Status,
 ) as any as S.Schema<StatusList>;
@@ -1022,7 +1022,7 @@ export interface InsightsConfig {
   /** Output only. Update timestamp. */
   updateTime?: string;
   /** Optional. Output only. The state of the InsightsConfig. */
-  state?: InsightsConfigStateEnum;
+  state?: InsightsConfigStateEnum | (string & {});
   /** Optional. The artifact configurations of the artifacts that are deployed. */
   artifactConfigs?: ArtifactConfigList;
   /** Identifier. The name of the InsightsConfig. Format: projects/{project}/locations/{location}/insightsConfigs/{insightsConfig} */
@@ -1367,7 +1367,7 @@ export const Installation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Installation" }) as any as S.Schema<Installation>;
 
-export type InstallationList = ReadonlyArray<Installation>;
+export type InstallationList = Array<Installation>;
 export const InstallationList = /*@__PURE__*/ S.Array(
   Installation,
 ) as any as S.Schema<InstallationList>;
@@ -1480,7 +1480,7 @@ export const LinkableGitRepository = /*@__PURE__*/ S.suspend(() =>
   identifier: "LinkableGitRepository",
 }) as any as S.Schema<LinkableGitRepository>;
 
-export type LinkableGitRepositoryList = ReadonlyArray<LinkableGitRepository>;
+export type LinkableGitRepositoryList = Array<LinkableGitRepository>;
 export const LinkableGitRepositoryList = /*@__PURE__*/ S.Array(
   LinkableGitRepository,
 ) as any as S.Schema<LinkableGitRepositoryList>;
@@ -1687,7 +1687,7 @@ export const UserRepository = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "UserRepository" }) as any as S.Schema<UserRepository>;
 
-export type UserRepositoryList = ReadonlyArray<UserRepository>;
+export type UserRepositoryList = Array<UserRepository>;
 export const UserRepositoryList = /*@__PURE__*/ S.Array(
   UserRepository,
 ) as any as S.Schema<UserRepositoryList>;
@@ -1931,7 +1931,7 @@ export const ArtifactDeployment = /*@__PURE__*/ S.suspend(() =>
   identifier: "ArtifactDeployment",
 }) as any as S.Schema<ArtifactDeployment>;
 
-export type ArtifactDeploymentList = ReadonlyArray<ArtifactDeployment>;
+export type ArtifactDeploymentList = Array<ArtifactDeployment>;
 export const ArtifactDeploymentList = /*@__PURE__*/ S.Array(
   ArtifactDeployment,
 ) as any as S.Schema<ArtifactDeploymentList>;
@@ -2022,7 +2022,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = ReadonlyArray<Location>;
+export type LocationList = Array<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -2074,7 +2074,7 @@ export const ListProjectsLocationsAccountConnectorsRequest =
     identifier: "ListProjectsLocationsAccountConnectorsRequest",
   }) as any as S.Schema<ListProjectsLocationsAccountConnectorsRequest>;
 
-export type AccountConnectorList = ReadonlyArray<AccountConnector>;
+export type AccountConnectorList = Array<AccountConnector>;
 export const AccountConnectorList = /*@__PURE__*/ S.Array(
   AccountConnector,
 ) as any as S.Schema<AccountConnectorList>;
@@ -2129,7 +2129,7 @@ export const ListProjectsLocationsAccountConnectorsUsersRequest =
     identifier: "ListProjectsLocationsAccountConnectorsUsersRequest",
   }) as any as S.Schema<ListProjectsLocationsAccountConnectorsUsersRequest>;
 
-export type UserList = ReadonlyArray<User>;
+export type UserList = Array<User>;
 export const UserList = /*@__PURE__*/ S.Array(
   User,
 ) as any as S.Schema<UserList>;
@@ -2184,7 +2184,7 @@ export const ListProjectsLocationsConnectionsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsConnectionsRequest",
 }) as any as S.Schema<ListProjectsLocationsConnectionsRequest>;
 
-export type ConnectionList = ReadonlyArray<Connection>;
+export type ConnectionList = Array<Connection>;
 export const ConnectionList = /*@__PURE__*/ S.Array(
   Connection,
 ) as any as S.Schema<ConnectionList>;
@@ -2239,7 +2239,7 @@ export const ListProjectsLocationsConnectionsGitRepositoryLinksRequest =
     identifier: "ListProjectsLocationsConnectionsGitRepositoryLinksRequest",
   }) as any as S.Schema<ListProjectsLocationsConnectionsGitRepositoryLinksRequest>;
 
-export type GitRepositoryLinkList = ReadonlyArray<GitRepositoryLink>;
+export type GitRepositoryLinkList = Array<GitRepositoryLink>;
 export const GitRepositoryLinkList = /*@__PURE__*/ S.Array(
   GitRepositoryLink,
 ) as any as S.Schema<GitRepositoryLinkList>;
@@ -2294,7 +2294,7 @@ export const ListProjectsLocationsInsightsConfigsRequest =
     identifier: "ListProjectsLocationsInsightsConfigsRequest",
   }) as any as S.Schema<ListProjectsLocationsInsightsConfigsRequest>;
 
-export type InsightsConfigList = ReadonlyArray<InsightsConfig>;
+export type InsightsConfigList = Array<InsightsConfig>;
 export const InsightsConfigList = /*@__PURE__*/ S.Array(
   InsightsConfig,
 ) as any as S.Schema<InsightsConfigList>;
@@ -2349,7 +2349,7 @@ export const ListProjectsLocationsInsightsConfigsDeploymentEventsRequest =
     identifier: "ListProjectsLocationsInsightsConfigsDeploymentEventsRequest",
   }) as any as S.Schema<ListProjectsLocationsInsightsConfigsDeploymentEventsRequest>;
 
-export type DeploymentEventList = ReadonlyArray<DeploymentEvent>;
+export type DeploymentEventList = Array<DeploymentEvent>;
 export const DeploymentEventList = /*@__PURE__*/ S.Array(
   DeploymentEvent,
 ) as any as S.Schema<DeploymentEventList>;
@@ -2401,7 +2401,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type OperationList = ReadonlyArray<Operation>;
+export type OperationList = Array<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;

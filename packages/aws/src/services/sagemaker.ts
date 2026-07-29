@@ -468,7 +468,7 @@ export type ClusterInstanceType =
   | "ml.p6-b300.48xlarge";
 export const ClusterInstanceType = /*@__PURE__*/ S.String;
 
-export type ClusterInstanceTypes = ClusterInstanceType[];
+export type ClusterInstanceTypes = (ClusterInstanceType | (string & {}))[];
 export const ClusterInstanceTypes = /*@__PURE__*/ S.Array(ClusterInstanceType);
 export interface AddClusterNodeSpecification {
   InstanceGroupName: string;
@@ -742,8 +742,8 @@ export const InferenceHubAccessConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InferenceHubAccessConfig>;
 export interface S3ModelDataSource {
   S3Uri?: string;
-  S3DataType?: S3ModelDataType;
-  CompressionType?: ModelCompressionType;
+  S3DataType?: S3ModelDataType | (string & {});
+  CompressionType?: ModelCompressionType | (string & {});
   ModelAccessConfig?: ModelAccessConfig;
   HubAccessConfig?: InferenceHubAccessConfig;
   ManifestS3Uri?: string;
@@ -813,9 +813,9 @@ export type CompressionType = "None" | "Gzip";
 export const CompressionType = /*@__PURE__*/ S.String;
 
 export interface AdditionalS3DataSource {
-  S3DataType?: AdditionalS3DataSourceDataType;
+  S3DataType?: AdditionalS3DataSourceDataType | (string & {});
   S3Uri?: string;
-  CompressionType?: CompressionType;
+  CompressionType?: CompressionType | (string & {});
   ETag?: string;
 }
 export const AdditionalS3DataSource = /*@__PURE__*/ S.suspend(() =>
@@ -999,7 +999,7 @@ export type TransformInstanceType =
   | "ml.g6.48xlarge";
 export const TransformInstanceType = /*@__PURE__*/ S.String;
 
-export type TransformInstanceTypes = TransformInstanceType[];
+export type TransformInstanceTypes = (TransformInstanceType | (string & {}))[];
 export const TransformInstanceTypes = /*@__PURE__*/ S.Array(
   TransformInstanceType,
 );
@@ -1277,7 +1277,10 @@ export type ProductionVariantInstanceType =
   | "ml.p5.4xlarge";
 export const ProductionVariantInstanceType = /*@__PURE__*/ S.String;
 
-export type RealtimeInferenceInstanceTypes = ProductionVariantInstanceType[];
+export type RealtimeInferenceInstanceTypes = (
+  | ProductionVariantInstanceType
+  | (string & {})
+)[];
 export const RealtimeInferenceInstanceTypes = /*@__PURE__*/ S.Array(
   ProductionVariantInstanceType,
 );
@@ -1873,7 +1876,7 @@ export type AIRecommendationMetric = "ttft-ms" | "throughput" | "cost";
 export const AIRecommendationMetric = /*@__PURE__*/ S.String;
 
 export interface AIRecommendationConstraint {
-  Metric?: AIRecommendationMetric;
+  Metric?: AIRecommendationMetric | (string & {});
 }
 export const AIRecommendationConstraint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Metric: S.optional(AIRecommendationMetric) }),
@@ -1896,7 +1899,7 @@ export type AIRecommendationInferenceFramework = "LMI" | "VLLM";
 export const AIRecommendationInferenceFramework = /*@__PURE__*/ S.String;
 
 export interface AIRecommendationInferenceSpecification {
-  Framework?: AIRecommendationInferenceFramework;
+  Framework?: AIRecommendationInferenceFramework | (string & {});
 }
 export const AIRecommendationInferenceSpecification = /*@__PURE__*/ S.suspend(
   () => S.Struct({ Framework: S.optional(AIRecommendationInferenceFramework) }),
@@ -1947,7 +1950,10 @@ export type AIRecommendationInstanceType =
   | "ml.p6-b200.48xlarge";
 export const AIRecommendationInstanceType = /*@__PURE__*/ S.String;
 
-export type AIRecommendationInstanceTypeList = AIRecommendationInstanceType[];
+export type AIRecommendationInstanceTypeList = (
+  | AIRecommendationInstanceType
+  | (string & {})
+)[];
 export const AIRecommendationInstanceTypeList = /*@__PURE__*/ S.Array(
   AIRecommendationInstanceType,
 );
@@ -1958,7 +1964,9 @@ export type AIMlReservationArn = string;
 export type AIMlReservationArnList = string[];
 export const AIMlReservationArnList = /*@__PURE__*/ S.Array(S.String);
 export interface AICapacityReservationConfig {
-  CapacityReservationPreference?: AICapacityReservationPreference;
+  CapacityReservationPreference?:
+    | AICapacityReservationPreference
+    | (string & {});
   MlReservationArns?: string[];
 }
 export const AICapacityReservationConfig = /*@__PURE__*/ S.suspend(() =>
@@ -2175,7 +2183,7 @@ export type HyperParameterValue = string;
 export interface HyperParameterSpecification {
   Name?: string;
   Description?: string;
-  Type?: ParameterType;
+  Type?: ParameterType | (string & {});
   Range?: ParameterRange;
   IsTunable?: boolean;
   IsRequired?: boolean;
@@ -2346,7 +2354,7 @@ export type TrainingInstanceType =
   | "ml.g7e.48xlarge";
 export const TrainingInstanceType = /*@__PURE__*/ S.String;
 
-export type TrainingInstanceTypes = TrainingInstanceType[];
+export type TrainingInstanceTypes = (TrainingInstanceType | (string & {}))[];
 export const TrainingInstanceTypes =
   /*@__PURE__*/ S.Array(TrainingInstanceType);
 export type MetricName = string;
@@ -2363,12 +2371,12 @@ export const MetricDefinition = /*@__PURE__*/ S.suspend(() =>
 export type MetricDefinitionList = MetricDefinition[];
 export const MetricDefinitionList = /*@__PURE__*/ S.Array(MetricDefinition);
 export type ChannelName = string;
-export type CompressionTypes = CompressionType[];
+export type CompressionTypes = (CompressionType | (string & {}))[];
 export const CompressionTypes = /*@__PURE__*/ S.Array(CompressionType);
 export type TrainingInputMode = "Pipe" | "File" | "FastFile";
 export const TrainingInputMode = /*@__PURE__*/ S.String;
 
-export type InputModes = TrainingInputMode[];
+export type InputModes = (TrainingInputMode | (string & {}))[];
 export const InputModes = /*@__PURE__*/ S.Array(TrainingInputMode);
 export interface ChannelSpecification {
   Name?: string;
@@ -2397,7 +2405,7 @@ export type HyperParameterTuningJobObjectiveType = "Maximize" | "Minimize";
 export const HyperParameterTuningJobObjectiveType = /*@__PURE__*/ S.String;
 
 export interface HyperParameterTuningJobObjective {
-  Type?: HyperParameterTuningJobObjectiveType;
+  Type?: HyperParameterTuningJobObjectiveType | (string & {});
   MetricName?: string;
 }
 export const HyperParameterTuningJobObjective = /*@__PURE__*/ S.suspend(() =>
@@ -2471,9 +2479,9 @@ export const HubAccessConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "HubAccessConfig",
 }) as any as S.Schema<HubAccessConfig>;
 export interface S3DataSource {
-  S3DataType?: S3DataType;
+  S3DataType?: S3DataType | (string & {});
   S3Uri?: string;
-  S3DataDistributionType?: S3DataDistribution;
+  S3DataDistributionType?: S3DataDistribution | (string & {});
   AttributeNames?: string[];
   InstanceGroupNames?: string[];
   ModelAccessConfig?: ModelAccessConfig;
@@ -2500,8 +2508,8 @@ export const FileSystemType = /*@__PURE__*/ S.String;
 export type DirectoryPath = string;
 export interface FileSystemDataSource {
   FileSystemId?: string;
-  FileSystemAccessMode?: FileSystemAccessMode;
-  FileSystemType?: FileSystemType;
+  FileSystemAccessMode?: FileSystemAccessMode | (string & {});
+  FileSystemType?: FileSystemType | (string & {});
   DirectoryPath?: string;
 }
 export const FileSystemDataSource = /*@__PURE__*/ S.suspend(() =>
@@ -2547,9 +2555,9 @@ export interface Channel {
   ChannelName?: string;
   DataSource?: DataSource;
   ContentType?: string;
-  CompressionType?: CompressionType;
-  RecordWrapperType?: RecordWrapper;
-  InputMode?: TrainingInputMode;
+  CompressionType?: CompressionType | (string & {});
+  RecordWrapperType?: RecordWrapper | (string & {});
+  InputMode?: TrainingInputMode | (string & {});
   ShuffleConfig?: ShuffleConfig;
 }
 export const Channel = /*@__PURE__*/ S.suspend(() =>
@@ -2572,7 +2580,7 @@ export const OutputCompressionType = /*@__PURE__*/ S.String;
 export interface OutputDataConfig {
   KmsKeyId?: string;
   S3OutputPath?: string;
-  CompressionType?: OutputCompressionType;
+  CompressionType?: OutputCompressionType | (string & {});
 }
 export const OutputDataConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2587,7 +2595,7 @@ export type TrainingInstanceCount = number;
 export type OptionalVolumeSizeInGB = number;
 export type KeepAlivePeriodInSeconds = number;
 export interface InstanceGroup {
-  InstanceType?: TrainingInstanceType;
+  InstanceType?: TrainingInstanceType | (string & {});
   InstanceCount?: number;
   InstanceGroupName?: string;
 }
@@ -2630,7 +2638,7 @@ export const InstancePlacementConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "InstancePlacementConfig",
 }) as any as S.Schema<InstancePlacementConfig>;
 export interface ResourceConfig {
-  InstanceType?: TrainingInstanceType;
+  InstanceType?: TrainingInstanceType | (string & {});
   InstanceCount?: number;
   VolumeSizeInGB?: number;
   VolumeKmsKeyId?: string;
@@ -2669,7 +2677,7 @@ export const StoppingCondition = /*@__PURE__*/ S.suspend(() =>
   identifier: "StoppingCondition",
 }) as any as S.Schema<StoppingCondition>;
 export interface TrainingJobDefinition {
-  TrainingInputMode?: TrainingInputMode;
+  TrainingInputMode?: TrainingInputMode | (string & {});
   HyperParameters?: { [key: string]: string | undefined };
   InputDataConfig?: Channel[];
   OutputDataConfig?: OutputDataConfig;
@@ -2701,7 +2709,7 @@ export const TransformEnvironmentMap = /*@__PURE__*/ S.Record(
   S.String.pipe(S.optional),
 );
 export interface TransformS3DataSource {
-  S3DataType?: S3DataType;
+  S3DataType?: S3DataType | (string & {});
   S3Uri?: string;
 }
 export const TransformS3DataSource = /*@__PURE__*/ S.suspend(() =>
@@ -2723,8 +2731,8 @@ export const SplitType = /*@__PURE__*/ S.String;
 export interface TransformInput {
   DataSource?: TransformDataSource;
   ContentType?: string;
-  CompressionType?: CompressionType;
-  SplitType?: SplitType;
+  CompressionType?: CompressionType | (string & {});
+  SplitType?: SplitType | (string & {});
 }
 export const TransformInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2741,7 +2749,7 @@ export const AssemblyType = /*@__PURE__*/ S.String;
 export interface TransformOutput {
   S3OutputPath?: string;
   Accept?: string;
-  AssembleWith?: AssemblyType;
+  AssembleWith?: AssemblyType | (string & {});
   KmsKeyId?: string;
 }
 export const TransformOutput = /*@__PURE__*/ S.suspend(() =>
@@ -2757,7 +2765,7 @@ export const TransformOutput = /*@__PURE__*/ S.suspend(() =>
 export type TransformInstanceCount = number;
 export type TransformAmiVersion = string;
 export interface TransformResources {
-  InstanceType?: TransformInstanceType;
+  InstanceType?: TransformInstanceType | (string & {});
   InstanceCount?: number;
   VolumeKmsKeyId?: string;
   TransformAmiVersion?: string;
@@ -2775,7 +2783,7 @@ export const TransformResources = /*@__PURE__*/ S.suspend(() =>
 export interface TransformJobDefinition {
   MaxConcurrentTransforms?: number;
   MaxPayloadInMB?: number;
-  BatchStrategy?: BatchStrategy;
+  BatchStrategy?: BatchStrategy | (string & {});
   Environment?: { [key: string]: string | undefined };
   TransformInput?: TransformInput;
   TransformOutput?: TransformOutput;
@@ -3064,7 +3072,7 @@ export interface ResourceSpec {
   SageMakerImageArn?: string;
   SageMakerImageVersionArn?: string;
   SageMakerImageVersionAlias?: string;
-  InstanceType?: AppInstanceType;
+  InstanceType?: AppInstanceType | (string & {});
   LifecycleConfigArn?: string;
   TrainingPlanArn?: string;
 }
@@ -3260,7 +3268,7 @@ export type ArtifactSourceIdType =
 export const ArtifactSourceIdType = /*@__PURE__*/ S.String;
 
 export interface ArtifactSourceType {
-  SourceIdType?: ArtifactSourceIdType;
+  SourceIdType?: ArtifactSourceIdType | (string & {});
   Value?: string;
 }
 export const ArtifactSourceType = /*@__PURE__*/ S.suspend(() =>
@@ -3336,7 +3344,7 @@ export type AutoMLS3DataType =
 export const AutoMLS3DataType = /*@__PURE__*/ S.String;
 
 export interface AutoMLS3DataSource {
-  S3DataType?: AutoMLS3DataType;
+  S3DataType?: AutoMLS3DataType | (string & {});
   S3Uri?: string;
 }
 export const AutoMLS3DataSource = /*@__PURE__*/ S.suspend(() =>
@@ -3362,10 +3370,10 @@ export const AutoMLChannelType = /*@__PURE__*/ S.String;
 export type SampleWeightAttributeName = string;
 export interface AutoMLChannel {
   DataSource?: AutoMLDataSource;
-  CompressionType?: CompressionType;
+  CompressionType?: CompressionType | (string & {});
   TargetAttributeName?: string;
   ContentType?: string;
-  ChannelType?: AutoMLChannelType;
+  ChannelType?: AutoMLChannelType | (string & {});
   SampleWeightAttributeName?: string;
 }
 export const AutoMLChannel = /*@__PURE__*/ S.suspend(() =>
@@ -3419,7 +3427,7 @@ export type AutoMLMetricEnum =
 export const AutoMLMetricEnum = /*@__PURE__*/ S.String;
 
 export interface AutoMLJobObjective {
-  MetricName?: AutoMLMetricEnum;
+  MetricName?: AutoMLMetricEnum | (string & {});
 }
 export const AutoMLJobObjective = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ MetricName: S.optional(AutoMLMetricEnum) }),
@@ -3475,7 +3483,7 @@ export type AutoMLAlgorithm =
   | "ets";
 export const AutoMLAlgorithm = /*@__PURE__*/ S.String;
 
-export type AutoMLAlgorithms = AutoMLAlgorithm[];
+export type AutoMLAlgorithms = (AutoMLAlgorithm | (string & {}))[];
 export const AutoMLAlgorithms = /*@__PURE__*/ S.Array(AutoMLAlgorithm);
 export interface AutoMLAlgorithmConfig {
   AutoMLAlgorithms?: AutoMLAlgorithm[];
@@ -3518,7 +3526,7 @@ export interface AutoMLJobConfig {
   SecurityConfig?: AutoMLSecurityConfig;
   CandidateGenerationConfig?: AutoMLCandidateGenerationConfig;
   DataSplitConfig?: AutoMLDataSplitConfig;
-  Mode?: AutoMLMode;
+  Mode?: AutoMLMode | (string & {});
 }
 export const AutoMLJobConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3594,9 +3602,9 @@ export const CreateAutoMLJobResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateAutoMLJobResponse",
 }) as any as S.Schema<CreateAutoMLJobResponse>;
 export interface AutoMLJobChannel {
-  ChannelType?: AutoMLChannelType;
+  ChannelType?: AutoMLChannelType | (string & {});
   ContentType?: string;
-  CompressionType?: CompressionType;
+  CompressionType?: CompressionType | (string & {});
   DataSource?: AutoMLDataSource;
 }
 export const AutoMLJobChannel = /*@__PURE__*/ S.suspend(() =>
@@ -3653,7 +3661,9 @@ export type FillingType =
 export const FillingType = /*@__PURE__*/ S.String;
 
 export type FillingTransformationValue = string;
-export type FillingTransformationMap = { [key in FillingType]?: string };
+export type FillingTransformationMap = {
+  [key in FillingType | (string & {})]?: string;
+};
 export const FillingTransformationMap = /*@__PURE__*/ S.Record(
   FillingType,
   S.String.pipe(S.optional),
@@ -3674,7 +3684,7 @@ export type AggregationTransformationValue =
 export const AggregationTransformationValue = /*@__PURE__*/ S.String;
 
 export type AggregationTransformations = {
-  [key: string]: AggregationTransformationValue | undefined;
+  [key: string]: AggregationTransformationValue | (string & {}) | undefined;
 };
 export const AggregationTransformations = /*@__PURE__*/ S.Record(
   S.String,
@@ -3764,9 +3774,9 @@ export interface TabularJobConfig {
   CandidateGenerationConfig?: CandidateGenerationConfig;
   CompletionCriteria?: AutoMLJobCompletionCriteria;
   FeatureSpecificationS3Uri?: string;
-  Mode?: AutoMLMode;
+  Mode?: AutoMLMode | (string & {});
   GenerateCandidateDefinitionsOnly?: boolean;
-  ProblemType?: ProblemType;
+  ProblemType?: ProblemType | (string & {});
   TargetAttributeName?: string;
   SampleWeightAttributeName?: string;
 }
@@ -4014,7 +4024,7 @@ export const ClusterInstanceStorageConfigs = /*@__PURE__*/ S.Array(
 export type DeepHealthCheckType = "InstanceStress" | "InstanceConnectivity";
 export const DeepHealthCheckType = /*@__PURE__*/ S.String;
 
-export type OnStartDeepHealthChecks = DeepHealthCheckType[];
+export type OnStartDeepHealthChecks = (DeepHealthCheckType | (string & {}))[];
 export const OnStartDeepHealthChecks =
   /*@__PURE__*/ S.Array(DeepHealthCheckType);
 export type CronScheduleExpression = string;
@@ -4023,7 +4033,7 @@ export const NodeUnavailabilityType = /*@__PURE__*/ S.String;
 
 export type NodeUnavailabilityValue = number;
 export interface CapacitySizeConfig {
-  Type?: NodeUnavailabilityType;
+  Type?: NodeUnavailabilityType | (string & {});
   Value?: number;
 }
 export const CapacitySizeConfig = /*@__PURE__*/ S.suspend(() =>
@@ -4129,7 +4139,7 @@ export const ClusterKubernetesTaintEffect = /*@__PURE__*/ S.String;
 export interface ClusterKubernetesTaint {
   Key: string;
   Value?: string;
-  Effect: ClusterKubernetesTaintEffect;
+  Effect: ClusterKubernetesTaintEffect | (string & {});
 }
 export const ClusterKubernetesTaint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4358,7 +4368,7 @@ export type ClusterSlurmConfigStrategy = "Overwrite" | "Managed" | "Merge";
 export const ClusterSlurmConfigStrategy = /*@__PURE__*/ S.String;
 
 export interface ClusterOrchestratorSlurmConfig {
-  SlurmConfigStrategy?: ClusterSlurmConfigStrategy;
+  SlurmConfigStrategy?: ClusterSlurmConfigStrategy | (string & {});
 }
 export const ClusterOrchestratorSlurmConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ SlurmConfigStrategy: S.optional(ClusterSlurmConfigStrategy) }),
@@ -4385,7 +4395,7 @@ export const ClusterConfigMode = /*@__PURE__*/ S.String;
 
 export type ClusterInstanceMemoryAllocationPercentage = number;
 export interface ClusterTieredStorageConfig {
-  Mode?: ClusterConfigMode;
+  Mode?: ClusterConfigMode | (string & {});
   InstanceMemoryAllocationPercentage?: number;
 }
 export const ClusterTieredStorageConfig = /*@__PURE__*/ S.suspend(() =>
@@ -4490,8 +4500,8 @@ export const IdleResourceSharing = /*@__PURE__*/ S.String;
 
 export interface SchedulerConfig {
   PriorityClasses?: PriorityClass[];
-  FairShare?: FairShare;
-  IdleResourceSharing?: IdleResourceSharing;
+  FairShare?: FairShare | (string & {});
+  IdleResourceSharing?: IdleResourceSharing | (string & {});
 }
 export const SchedulerConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4609,7 +4619,7 @@ export type FrameworkVersion = string;
 export interface InputConfig {
   S3Uri?: string;
   DataInputConfig?: string;
-  Framework?: Framework;
+  Framework?: Framework | (string & {});
   FrameworkVersion?: string;
 }
 export const InputConfig = /*@__PURE__*/ S.suspend(() =>
@@ -4679,9 +4689,9 @@ export type TargetPlatformAccelerator =
 export const TargetPlatformAccelerator = /*@__PURE__*/ S.String;
 
 export interface TargetPlatform {
-  Os?: TargetPlatformOs;
-  Arch?: TargetPlatformArch;
-  Accelerator?: TargetPlatformAccelerator;
+  Os?: TargetPlatformOs | (string & {});
+  Arch?: TargetPlatformArch | (string & {});
+  Accelerator?: TargetPlatformAccelerator | (string & {});
 }
 export const TargetPlatform = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4693,7 +4703,7 @@ export const TargetPlatform = /*@__PURE__*/ S.suspend(() =>
 export type CompilerOptions = string;
 export interface OutputConfig {
   S3OutputLocation?: string;
-  TargetDevice?: TargetDevice;
+  TargetDevice?: TargetDevice | (string & {});
   TargetPlatform?: TargetPlatform;
   CompilerOptions?: string;
   KmsKeyId?: string;
@@ -4802,7 +4812,7 @@ export type MIGProfileType =
 export const MIGProfileType = /*@__PURE__*/ S.String;
 
 export interface AcceleratorPartitionConfig {
-  Type?: MIGProfileType;
+  Type?: MIGProfileType | (string & {});
   Count?: number;
 }
 export const AcceleratorPartitionConfig = /*@__PURE__*/ S.suspend(() =>
@@ -4811,7 +4821,7 @@ export const AcceleratorPartitionConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "AcceleratorPartitionConfig",
 }) as any as S.Schema<AcceleratorPartitionConfig>;
 export interface ComputeQuotaResourceConfig {
-  InstanceType?: ClusterInstanceType;
+  InstanceType?: ClusterInstanceType | (string & {});
   Count?: number;
   Accelerators?: number;
   VCpu?: number;
@@ -4843,7 +4853,7 @@ export const AbsoluteBorrowLimitResourceList = /*@__PURE__*/ S.Array(
   ComputeQuotaResourceConfig,
 );
 export interface ResourceSharingConfig {
-  Strategy?: ResourceSharingStrategy;
+  Strategy?: ResourceSharingStrategy | (string & {});
   BorrowLimit?: number;
   AbsoluteBorrowLimits?: ComputeQuotaResourceConfig[];
 }
@@ -4862,7 +4872,7 @@ export const PreemptTeamTasks = /*@__PURE__*/ S.String;
 export interface ComputeQuotaConfig {
   ComputeQuotaResources?: ComputeQuotaResourceConfig[];
   ResourceSharingConfig?: ResourceSharingConfig;
-  PreemptTeamTasks?: PreemptTeamTasks;
+  PreemptTeamTasks?: PreemptTeamTasks | (string & {});
 }
 export const ComputeQuotaConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5069,8 +5079,8 @@ export type ExcludeFeaturesAttribute = string;
 export interface EndpointInput {
   EndpointName?: string;
   LocalPath?: string;
-  S3InputMode?: ProcessingS3InputMode;
-  S3DataDistributionType?: ProcessingS3DataDistributionType;
+  S3InputMode?: ProcessingS3InputMode | (string & {});
+  S3DataDistributionType?: ProcessingS3DataDistributionType | (string & {});
   FeaturesAttribute?: string;
   InferenceAttribute?: string;
   ProbabilityAttribute?: string;
@@ -5135,8 +5145,8 @@ export interface BatchTransformInput {
   DataCapturedDestinationS3Uri?: string;
   DatasetFormat?: MonitoringDatasetFormat;
   LocalPath?: string;
-  S3InputMode?: ProcessingS3InputMode;
-  S3DataDistributionType?: ProcessingS3DataDistributionType;
+  S3InputMode?: ProcessingS3InputMode | (string & {});
+  S3DataDistributionType?: ProcessingS3DataDistributionType | (string & {});
   FeaturesAttribute?: string;
   InferenceAttribute?: string;
   ProbabilityAttribute?: string;
@@ -5182,7 +5192,7 @@ export const ProcessingS3UploadMode = /*@__PURE__*/ S.String;
 export interface MonitoringS3Output {
   S3Uri?: string;
   LocalPath?: string;
-  S3UploadMode?: ProcessingS3UploadMode;
+  S3UploadMode?: ProcessingS3UploadMode | (string & {});
 }
 export const MonitoringS3Output = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5349,7 +5359,7 @@ export const ProcessingInstanceType = /*@__PURE__*/ S.String;
 export type ProcessingVolumeSizeInGB = number;
 export interface MonitoringClusterConfig {
   InstanceCount?: number;
-  InstanceType?: ProcessingInstanceType;
+  InstanceType?: ProcessingInstanceType | (string & {});
   VolumeSizeInGB?: number;
   VolumeKmsKeyId?: string;
 }
@@ -5449,7 +5459,7 @@ export const EdgePresetDeploymentType = /*@__PURE__*/ S.String;
 export interface EdgeOutputConfig {
   S3OutputLocation?: string;
   KmsKeyId?: string;
-  PresetDeploymentType?: EdgePresetDeploymentType;
+  PresetDeploymentType?: EdgePresetDeploymentType | (string & {});
   PresetDeploymentConfig?: string;
 }
 export const EdgeOutputConfig = /*@__PURE__*/ S.suspend(() =>
@@ -5509,7 +5519,7 @@ export type NotebookOutputOption = "Allowed" | "Disabled";
 export const NotebookOutputOption = /*@__PURE__*/ S.String;
 
 export interface SharingSettings {
-  NotebookOutputOption?: NotebookOutputOption;
+  NotebookOutputOption?: NotebookOutputOption | (string & {});
   S3OutputPath?: string;
   S3KmsKeyId?: string;
 }
@@ -5592,8 +5602,8 @@ export type RStudioServerProUserGroup = "R_STUDIO_ADMIN" | "R_STUDIO_USER";
 export const RStudioServerProUserGroup = /*@__PURE__*/ S.String;
 
 export interface RStudioServerProAppSettings {
-  AccessStatus?: RStudioServerProAccessStatus;
-  UserGroup?: RStudioServerProUserGroup;
+  AccessStatus?: RStudioServerProAccessStatus | (string & {});
+  UserGroup?: RStudioServerProUserGroup | (string & {});
 }
 export const RStudioServerProAppSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5619,7 +5629,7 @@ export type FeatureStatus = "ENABLED" | "DISABLED";
 export const FeatureStatus = /*@__PURE__*/ S.String;
 
 export interface TimeSeriesForecastingSettings {
-  Status?: FeatureStatus;
+  Status?: FeatureStatus | (string & {});
   AmazonForecastRoleArn?: string;
 }
 export const TimeSeriesForecastingSettings = /*@__PURE__*/ S.suspend(() =>
@@ -5631,7 +5641,7 @@ export const TimeSeriesForecastingSettings = /*@__PURE__*/ S.suspend(() =>
   identifier: "TimeSeriesForecastingSettings",
 }) as any as S.Schema<TimeSeriesForecastingSettings>;
 export interface ModelRegisterSettings {
-  Status?: FeatureStatus;
+  Status?: FeatureStatus | (string & {});
   CrossAccountModelRegisterRoleArn?: string;
 }
 export const ModelRegisterSettings = /*@__PURE__*/ S.suspend(() =>
@@ -5658,8 +5668,8 @@ export type DataSourceName = "SalesforceGenie" | "Snowflake";
 export const DataSourceName = /*@__PURE__*/ S.String;
 
 export interface IdentityProviderOAuthSetting {
-  DataSourceName?: DataSourceName;
-  Status?: FeatureStatus;
+  DataSourceName?: DataSourceName | (string & {});
+  Status?: FeatureStatus | (string & {});
   SecretArn?: string;
 }
 export const IdentityProviderOAuthSetting = /*@__PURE__*/ S.suspend(() =>
@@ -5676,7 +5686,7 @@ export const IdentityProviderOAuthSettings = /*@__PURE__*/ S.Array(
   IdentityProviderOAuthSetting,
 );
 export interface DirectDeploySettings {
-  Status?: FeatureStatus;
+  Status?: FeatureStatus | (string & {});
 }
 export const DirectDeploySettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Status: S.optional(FeatureStatus) }),
@@ -5684,7 +5694,7 @@ export const DirectDeploySettings = /*@__PURE__*/ S.suspend(() =>
   identifier: "DirectDeploySettings",
 }) as any as S.Schema<DirectDeploySettings>;
 export interface KendraSettings {
-  Status?: FeatureStatus;
+  Status?: FeatureStatus | (string & {});
 }
 export const KendraSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Status: S.optional(FeatureStatus) }),
@@ -5699,7 +5709,7 @@ export const GenerativeAiSettings = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GenerativeAiSettings>;
 export interface EmrServerlessSettings {
   ExecutionRoleArn?: string;
-  Status?: FeatureStatus;
+  Status?: FeatureStatus | (string & {});
 }
 export const EmrServerlessSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5738,7 +5748,7 @@ export const LifecycleManagement = /*@__PURE__*/ S.String;
 
 export type IdleTimeoutInMinutes = number;
 export interface IdleSettings {
-  LifecycleManagement?: LifecycleManagement;
+  LifecycleManagement?: LifecycleManagement | (string & {});
   IdleTimeoutInMinutes?: number;
   MinIdleTimeoutInMinutes?: number;
   MaxIdleTimeoutInMinutes?: number;
@@ -5938,11 +5948,11 @@ export type MlTools =
   | "Evaluators";
 export const MlTools = /*@__PURE__*/ S.String;
 
-export type HiddenMlToolsList = MlTools[];
+export type HiddenMlToolsList = (MlTools | (string & {}))[];
 export const HiddenMlToolsList = /*@__PURE__*/ S.Array(MlTools);
-export type HiddenAppTypesList = AppType[];
+export type HiddenAppTypesList = (AppType | (string & {}))[];
 export const HiddenAppTypesList = /*@__PURE__*/ S.Array(AppType);
-export type HiddenInstanceTypesList = AppInstanceType[];
+export type HiddenInstanceTypesList = (AppInstanceType | (string & {}))[];
 export const HiddenInstanceTypesList = /*@__PURE__*/ S.Array(AppInstanceType);
 export type SageMakerImageName = "sagemaker_distribution";
 export const SageMakerImageName = /*@__PURE__*/ S.String;
@@ -5951,7 +5961,7 @@ export type ImageVersionAliasPattern = string;
 export type VersionAliasesList = string[];
 export const VersionAliasesList = /*@__PURE__*/ S.Array(S.String);
 export interface HiddenSageMakerImage {
-  SageMakerImageName?: SageMakerImageName;
+  SageMakerImageName?: SageMakerImageName | (string & {});
   VersionAliases?: string[];
 }
 export const HiddenSageMakerImage = /*@__PURE__*/ S.suspend(() =>
@@ -5973,7 +5983,7 @@ export interface StudioWebPortalSettings {
   HiddenAppTypes?: AppType[];
   HiddenInstanceTypes?: AppInstanceType[];
   HiddenSageMakerImageVersionAliases?: HiddenSageMakerImage[];
-  ExecutionRoleSessionNameMode?: ExecutionRoleSessionNameMode;
+  ExecutionRoleSessionNameMode?: ExecutionRoleSessionNameMode | (string & {});
 }
 export const StudioWebPortalSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6005,11 +6015,11 @@ export interface UserSettings {
   JupyterLabAppSettings?: JupyterLabAppSettings;
   SpaceStorageSettings?: DefaultSpaceStorageSettings;
   DefaultLandingUri?: string;
-  StudioWebPortal?: StudioWebPortal;
+  StudioWebPortal?: StudioWebPortal | (string & {});
   CustomPosixUserConfig?: CustomPosixUserConfig;
   CustomFileSystemConfigs?: CustomFileSystemConfig[];
   StudioWebPortalSettings?: StudioWebPortalSettings;
-  AutoMountHomeEFS?: AutoMountHomeEFS;
+  AutoMountHomeEFS?: AutoMountHomeEFS | (string & {});
 }
 export const UserSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6055,7 +6065,7 @@ export type ExecutionRoleIdentityConfig = "USER_PROFILE_NAME" | "DISABLED";
 export const ExecutionRoleIdentityConfig = /*@__PURE__*/ S.String;
 
 export interface TrustedIdentityPropagationSettings {
-  Status?: FeatureStatus;
+  Status?: FeatureStatus | (string & {});
 }
 export const TrustedIdentityPropagationSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Status: S.optional(FeatureStatus) }),
@@ -6066,9 +6076,9 @@ export type AccountId = string;
 export type VpcOnlyTrustedAccounts = string[];
 export const VpcOnlyTrustedAccounts = /*@__PURE__*/ S.Array(S.String);
 export interface DockerSettings {
-  EnableDockerAccess?: FeatureStatus;
+  EnableDockerAccess?: FeatureStatus | (string & {});
   VpcOnlyTrustedAccounts?: string[];
-  RootlessDocker?: FeatureStatus;
+  RootlessDocker?: FeatureStatus | (string & {});
 }
 export const DockerSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6079,7 +6089,7 @@ export const DockerSettings = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DockerSettings" }) as any as S.Schema<DockerSettings>;
 export type QProfileArn = string;
 export interface AmazonQSettings {
-  Status?: FeatureStatus;
+  Status?: FeatureStatus | (string & {});
   QProfileArn?: string;
 }
 export const AmazonQSettings = /*@__PURE__*/ S.suspend(() =>
@@ -6096,7 +6106,7 @@ export type UnifiedStudioProjectId = string;
 export type UnifiedStudioEnvironmentId = string;
 export type SingleSignOnApplicationArn = string;
 export interface UnifiedStudioSettings {
-  StudioWebPortalAccess?: FeatureStatus;
+  StudioWebPortalAccess?: FeatureStatus | (string & {});
   DomainAccountId?: string;
   DomainRegion?: string;
   DomainId?: string;
@@ -6125,12 +6135,12 @@ export const IPAddressType = /*@__PURE__*/ S.String;
 export interface DomainSettings {
   SecurityGroupIds?: string[];
   RStudioServerProDomainSettings?: RStudioServerProDomainSettings;
-  ExecutionRoleIdentityConfig?: ExecutionRoleIdentityConfig;
+  ExecutionRoleIdentityConfig?: ExecutionRoleIdentityConfig | (string & {});
   TrustedIdentityPropagationSettings?: TrustedIdentityPropagationSettings;
   DockerSettings?: DockerSettings;
   AmazonQSettings?: AmazonQSettings;
   UnifiedStudioSettings?: UnifiedStudioSettings;
-  IpAddressType?: IPAddressType;
+  IpAddressType?: IPAddressType | (string & {});
 }
 export const DomainSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6268,7 +6278,7 @@ export type DeviceName = string;
 export type DeviceNames = string[];
 export const DeviceNames = /*@__PURE__*/ S.Array(S.String);
 export interface DeviceSelectionConfig {
-  DeviceSubsetType?: DeviceSubsetType;
+  DeviceSubsetType?: DeviceSubsetType | (string & {});
   Percentage?: number;
   DeviceNames?: string[];
   DeviceNameContains?: string;
@@ -6287,7 +6297,7 @@ export type FailureHandlingPolicy = "ROLLBACK_ON_FAILURE" | "DO_NOTHING";
 export const FailureHandlingPolicy = /*@__PURE__*/ S.String;
 
 export interface EdgeDeploymentConfig {
-  FailureHandlingPolicy?: FailureHandlingPolicy;
+  FailureHandlingPolicy?: FailureHandlingPolicy | (string & {});
 }
 export const EdgeDeploymentConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ FailureHandlingPolicy: S.optional(FailureHandlingPolicy) }),
@@ -6426,14 +6436,14 @@ export const CapacitySizeType = /*@__PURE__*/ S.String;
 
 export type CapacitySizeValue = number;
 export interface CapacitySize {
-  Type?: CapacitySizeType;
+  Type?: CapacitySizeType | (string & {});
   Value?: number;
 }
 export const CapacitySize = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Type: S.optional(CapacitySizeType), Value: S.optional(S.Number) }),
 ).annotate({ identifier: "CapacitySize" }) as any as S.Schema<CapacitySize>;
 export interface TrafficRoutingConfig {
-  Type?: TrafficRoutingConfigType;
+  Type?: TrafficRoutingConfigType | (string & {});
   WaitIntervalInSeconds?: number;
   CanarySize?: CapacitySize;
   LinearStepSize?: CapacitySize;
@@ -6550,7 +6560,7 @@ export type ModelName = string;
 export type InitialTaskCount = number;
 export type InstancePoolPriority = number;
 export interface InstancePool {
-  InstanceType?: ProductionVariantInstanceType;
+  InstanceType?: ProductionVariantInstanceType | (string & {});
   ModelNameOverride?: string;
   Priority?: number;
 }
@@ -6621,7 +6631,7 @@ export const ManagedInstanceScalingScaleInStrategy = /*@__PURE__*/ S.String;
 export type ManagedInstanceScalingMaximumStepSize = number;
 export type ManagedInstanceScalingCooldownInMinutes = number;
 export interface ProductionVariantManagedInstanceScalingScaleInPolicy {
-  Strategy?: ManagedInstanceScalingScaleInStrategy;
+  Strategy?: ManagedInstanceScalingScaleInStrategy | (string & {});
   MaximumStepSize?: number;
   CooldownInMinutes?: number;
 }
@@ -6636,7 +6646,7 @@ export const ProductionVariantManagedInstanceScalingScaleInPolicy =
     identifier: "ProductionVariantManagedInstanceScalingScaleInPolicy",
   }) as any as S.Schema<ProductionVariantManagedInstanceScalingScaleInPolicy>;
 export interface ProductionVariantManagedInstanceScaling {
-  Status?: ManagedInstanceScalingStatus;
+  Status?: ManagedInstanceScalingStatus | (string & {});
   MinInstanceCount?: number;
   MaxInstanceCount?: number;
   ScaleInPolicy?: ProductionVariantManagedInstanceScalingScaleInPolicy;
@@ -6658,7 +6668,7 @@ export type RoutingStrategy = "LEAST_OUTSTANDING_REQUESTS" | "RANDOM";
 export const RoutingStrategy = /*@__PURE__*/ S.String;
 
 export interface ProductionVariantRoutingConfig {
-  RoutingStrategy?: RoutingStrategy;
+  RoutingStrategy?: RoutingStrategy | (string & {});
 }
 export const ProductionVariantRoutingConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ RoutingStrategy: S.optional(RoutingStrategy) }),
@@ -6678,7 +6688,7 @@ export const CapacityReservationPreference = /*@__PURE__*/ S.String;
 
 export type MlReservationArn = string;
 export interface ProductionVariantCapacityReservationConfig {
-  CapacityReservationPreference?: CapacityReservationPreference;
+  CapacityReservationPreference?: CapacityReservationPreference | (string & {});
   MlReservationArn?: string;
 }
 export const ProductionVariantCapacityReservationConfig =
@@ -6694,11 +6704,11 @@ export interface ProductionVariant {
   VariantName?: string;
   ModelName?: string;
   InitialInstanceCount?: number;
-  InstanceType?: ProductionVariantInstanceType;
+  InstanceType?: ProductionVariantInstanceType | (string & {});
   InstancePools?: InstancePool[];
   VariantInstanceProvisionTimeoutInSeconds?: number;
   InitialVariantWeight?: number;
-  AcceleratorType?: ProductionVariantAcceleratorType;
+  AcceleratorType?: ProductionVariantAcceleratorType | (string & {});
   CoreDumpConfig?: ProductionVariantCoreDumpConfig;
   ServerlessConfig?: ProductionVariantServerlessConfig;
   VolumeSizeInGB?: number;
@@ -6707,7 +6717,7 @@ export interface ProductionVariant {
   EnableSSMAccess?: boolean;
   ManagedInstanceScaling?: ProductionVariantManagedInstanceScaling;
   RoutingConfig?: ProductionVariantRoutingConfig;
-  InferenceAmiVersion?: ProductionVariantInferenceAmiVersion;
+  InferenceAmiVersion?: ProductionVariantInferenceAmiVersion | (string & {});
   CapacityReservationConfig?: ProductionVariantCapacityReservationConfig;
 }
 export const ProductionVariant = /*@__PURE__*/ S.suspend(() =>
@@ -6744,7 +6754,7 @@ export type CaptureMode = "Input" | "Output" | "InputAndOutput";
 export const CaptureMode = /*@__PURE__*/ S.String;
 
 export interface CaptureOption {
-  CaptureMode?: CaptureMode;
+  CaptureMode?: CaptureMode | (string & {});
 }
 export const CaptureOption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ CaptureMode: S.optional(CaptureMode) }),
@@ -6804,7 +6814,10 @@ export type AsyncNotificationTopicTypes =
   | "ERROR_NOTIFICATION_TOPIC";
 export const AsyncNotificationTopicTypes = /*@__PURE__*/ S.String;
 
-export type AsyncNotificationTopicTypeList = AsyncNotificationTopicTypes[];
+export type AsyncNotificationTopicTypeList = (
+  | AsyncNotificationTopicTypes
+  | (string & {})
+)[];
 export const AsyncNotificationTopicTypeList = /*@__PURE__*/ S.Array(
   AsyncNotificationTopicTypes,
 );
@@ -6867,7 +6880,7 @@ export const ClarifyFeatureHeaders = /*@__PURE__*/ S.Array(S.String);
 export type ClarifyFeatureType = "numerical" | "categorical" | "text";
 export const ClarifyFeatureType = /*@__PURE__*/ S.String;
 
-export type ClarifyFeatureTypes = ClarifyFeatureType[];
+export type ClarifyFeatureTypes = (ClarifyFeatureType | (string & {}))[];
 export const ClarifyFeatureTypes = /*@__PURE__*/ S.Array(ClarifyFeatureType);
 export interface ClarifyInferenceConfig {
   FeaturesAttribute?: string;
@@ -6985,8 +6998,8 @@ export type ClarifyTextGranularity = "token" | "sentence" | "paragraph";
 export const ClarifyTextGranularity = /*@__PURE__*/ S.String;
 
 export interface ClarifyTextConfig {
-  Language?: ClarifyTextLanguage;
-  Granularity?: ClarifyTextGranularity;
+  Language?: ClarifyTextLanguage | (string & {});
+  Granularity?: ClarifyTextGranularity | (string & {});
 }
 export const ClarifyTextConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -7052,7 +7065,9 @@ export const MetricPublishFrequencyInSeconds = /*@__PURE__*/ S.Literals([
 export interface MetricsConfig {
   EnableEnhancedMetrics?: boolean;
   EnableDetailedObservability?: boolean;
-  MetricPublishFrequencyInSeconds?: MetricPublishFrequencyInSeconds;
+  MetricPublishFrequencyInSeconds?:
+    | MetricPublishFrequencyInSeconds
+    | (number & {});
 }
 export const MetricsConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -7170,8 +7185,8 @@ export const CollectionConfig = /*@__PURE__*/ S.Union([
 ]);
 export interface FeatureDefinition {
   FeatureName?: string;
-  FeatureType?: FeatureType;
-  CollectionType?: CollectionType;
+  FeatureType?: FeatureType | (string & {});
+  CollectionType?: CollectionType | (string & {});
   CollectionConfig?: CollectionConfig;
 }
 export const FeatureDefinition = /*@__PURE__*/ S.suspend(() =>
@@ -7204,7 +7219,7 @@ export const TtlDurationUnit = /*@__PURE__*/ S.String;
 
 export type TtlDurationValue = number;
 export interface TtlDuration {
-  Unit?: TtlDurationUnit;
+  Unit?: TtlDurationUnit | (string & {});
   Value?: number;
 }
 export const TtlDuration = /*@__PURE__*/ S.suspend(() =>
@@ -7217,7 +7232,7 @@ export interface OnlineStoreConfig {
   SecurityConfig?: OnlineStoreSecurityConfig;
   EnableOnlineStore?: boolean;
   TtlDuration?: TtlDuration;
-  StorageType?: StorageType;
+  StorageType?: StorageType | (string & {});
 }
 export const OnlineStoreConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -7267,7 +7282,7 @@ export interface OfflineStoreConfig {
   S3StorageConfig?: S3StorageConfig;
   DisableGlueTableCreation?: boolean;
   DataCatalogConfig?: DataCatalogConfig;
-  TableFormat?: TableFormat;
+  TableFormat?: TableFormat | (string & {});
 }
 export const OfflineStoreConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -7352,7 +7367,9 @@ export type AwsManagedHumanLoopRequestSource =
 export const AwsManagedHumanLoopRequestSource = /*@__PURE__*/ S.String;
 
 export interface HumanLoopRequestSource {
-  AwsManagedHumanLoopRequestSource?: AwsManagedHumanLoopRequestSource;
+  AwsManagedHumanLoopRequestSource?:
+    | AwsManagedHumanLoopRequestSource
+    | (string & {});
 }
 export const HumanLoopRequestSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -7769,7 +7786,7 @@ export interface IntegerParameterRange {
   Name?: string;
   MinValue?: string;
   MaxValue?: string;
-  ScalingType?: HyperParameterScalingType;
+  ScalingType?: HyperParameterScalingType | (string & {});
 }
 export const IntegerParameterRange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -7789,7 +7806,7 @@ export interface ContinuousParameterRange {
   Name?: string;
   MinValue?: string;
   MaxValue?: string;
-  ScalingType?: HyperParameterScalingType;
+  ScalingType?: HyperParameterScalingType | (string & {});
 }
 export const ContinuousParameterRange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -7860,7 +7877,7 @@ export type CompleteOnConvergence = "Disabled" | "Enabled";
 export const CompleteOnConvergence = /*@__PURE__*/ S.String;
 
 export interface ConvergenceDetected {
-  CompleteOnConvergence?: CompleteOnConvergence;
+  CompleteOnConvergence?: CompleteOnConvergence | (string & {});
 }
 export const ConvergenceDetected = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ CompleteOnConvergence: S.optional(CompleteOnConvergence) }),
@@ -7883,12 +7900,12 @@ export const TuningJobCompletionCriteria = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TuningJobCompletionCriteria>;
 export type RandomSeed = number;
 export interface HyperParameterTuningJobConfig {
-  Strategy?: HyperParameterTuningJobStrategyType;
+  Strategy?: HyperParameterTuningJobStrategyType | (string & {});
   StrategyConfig?: HyperParameterTuningJobStrategyConfig;
   HyperParameterTuningJobObjective?: HyperParameterTuningJobObjective;
   ResourceLimits?: ResourceLimits;
   ParameterRanges?: ParameterRanges;
-  TrainingJobEarlyStoppingType?: TrainingJobEarlyStoppingType;
+  TrainingJobEarlyStoppingType?: TrainingJobEarlyStoppingType | (string & {});
   TuningJobCompletionCriteria?: TuningJobCompletionCriteria;
   RandomSeed?: number;
 }
@@ -7913,7 +7930,7 @@ export type AlgorithmImage = string;
 export type ArnOrName = string;
 export interface HyperParameterAlgorithmSpecification {
   TrainingImage?: string;
-  TrainingInputMode?: TrainingInputMode;
+  TrainingInputMode?: TrainingInputMode | (string & {});
   AlgorithmName?: string;
   MetricDefinitions?: MetricDefinition[];
 }
@@ -7933,7 +7950,7 @@ export const HyperParameterTuningAllocationStrategy = /*@__PURE__*/ S.String;
 
 export type VolumeSizeInGB = number;
 export interface HyperParameterTuningInstanceConfig {
-  InstanceType?: TrainingInstanceType;
+  InstanceType?: TrainingInstanceType | (string & {});
   InstanceCount?: number;
   VolumeSizeInGB?: number;
 }
@@ -7952,11 +7969,11 @@ export const HyperParameterTuningInstanceConfigs = /*@__PURE__*/ S.Array(
   HyperParameterTuningInstanceConfig,
 );
 export interface HyperParameterTuningResourceConfig {
-  InstanceType?: TrainingInstanceType;
+  InstanceType?: TrainingInstanceType | (string & {});
   InstanceCount?: number;
   VolumeSizeInGB?: number;
   VolumeKmsKeyId?: string;
-  AllocationStrategy?: HyperParameterTuningAllocationStrategy;
+  AllocationStrategy?: HyperParameterTuningAllocationStrategy | (string & {});
   InstanceConfigs?: HyperParameterTuningInstanceConfig[];
 }
 export const HyperParameterTuningResourceConfig = /*@__PURE__*/ S.suspend(() =>
@@ -8066,7 +8083,7 @@ export const HyperParameterTuningJobWarmStartType = /*@__PURE__*/ S.String;
 
 export interface HyperParameterTuningJobWarmStartConfig {
   ParentHyperParameterTuningJobs?: ParentHyperParameterTuningJob[];
-  WarmStartType?: HyperParameterTuningJobWarmStartType;
+  WarmStartType?: HyperParameterTuningJobWarmStartType | (string & {});
 }
 export const HyperParameterTuningJobWarmStartConfig = /*@__PURE__*/ S.suspend(
   () =>
@@ -8083,7 +8100,7 @@ export type AutotuneMode = "Enabled";
 export const AutotuneMode = /*@__PURE__*/ S.String;
 
 export interface Autotune {
-  Mode?: AutotuneMode;
+  Mode?: AutotuneMode | (string & {});
 }
 export const Autotune = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Mode: S.optional(AutotuneMode) }),
@@ -8242,7 +8259,9 @@ export type InferenceComponentName = string;
 export type MetricsEndpointPath = string;
 export interface MetricsEndpoint {
   MetricsEndpointPath?: string;
-  MetricPublishFrequencyInSeconds?: MetricPublishFrequencyInSeconds;
+  MetricPublishFrequencyInSeconds?:
+    | MetricPublishFrequencyInSeconds
+    | (number & {});
 }
 export const MetricsEndpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -8330,7 +8349,7 @@ export const AvailabilityZoneBalanceEnforcementMode = /*@__PURE__*/ S.String;
 
 export type AvailabilityZoneBalanceMaxImbalance = number;
 export interface InferenceComponentAvailabilityZoneBalance {
-  EnforcementMode?: AvailabilityZoneBalanceEnforcementMode;
+  EnforcementMode?: AvailabilityZoneBalanceEnforcementMode | (string & {});
   MaxImbalance?: number;
 }
 export const InferenceComponentAvailabilityZoneBalance =
@@ -8343,7 +8362,7 @@ export const InferenceComponentAvailabilityZoneBalance =
     identifier: "InferenceComponentAvailabilityZoneBalance",
   }) as any as S.Schema<InferenceComponentAvailabilityZoneBalance>;
 export interface InferenceComponentSchedulingConfig {
-  PlacementStrategy?: InferenceComponentPlacementStrategy;
+  PlacementStrategy?: InferenceComponentPlacementStrategy | (string & {});
   AvailabilityZoneBalance?: InferenceComponentAvailabilityZoneBalance;
 }
 export const InferenceComponentSchedulingConfig = /*@__PURE__*/ S.suspend(() =>
@@ -8460,7 +8479,7 @@ export const ModelInfrastructureType = /*@__PURE__*/ S.String;
 
 export type TaskCount = number;
 export interface RealTimeInferenceConfig {
-  InstanceType?: ProductionVariantInstanceType;
+  InstanceType?: ProductionVariantInstanceType | (string & {});
   InstanceCount?: number;
 }
 export const RealTimeInferenceConfig = /*@__PURE__*/ S.suspend(() =>
@@ -8472,7 +8491,7 @@ export const RealTimeInferenceConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "RealTimeInferenceConfig",
 }) as any as S.Schema<RealTimeInferenceConfig>;
 export interface ModelInfrastructureConfig {
-  InfrastructureType?: ModelInfrastructureType;
+  InfrastructureType?: ModelInfrastructureType | (string & {});
   RealTimeInferenceConfig?: RealTimeInferenceConfig;
 }
 export const ModelInfrastructureConfig = /*@__PURE__*/ S.suspend(() =>
@@ -8631,7 +8650,7 @@ export const Stairs = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Stairs" }) as any as S.Schema<Stairs>;
 export interface TrafficPattern {
-  TrafficType?: TrafficType;
+  TrafficType?: TrafficType | (string & {});
   Phases?: Phase[];
   Stairs?: Stairs;
 }
@@ -8685,7 +8704,7 @@ export const EnvironmentParameterRanges = /*@__PURE__*/ S.suspend(() =>
   identifier: "EnvironmentParameterRanges",
 }) as any as S.Schema<EnvironmentParameterRanges>;
 export interface EndpointInputConfiguration {
-  InstanceType?: ProductionVariantInstanceType;
+  InstanceType?: ProductionVariantInstanceType | (string & {});
   ServerlessConfig?: ProductionVariantServerlessConfig;
   InferenceSpecificationName?: string;
   EnvironmentParameterRanges?: EnvironmentParameterRanges;
@@ -8742,7 +8761,9 @@ export interface RecommendationJobContainerConfig {
   PayloadConfig?: RecommendationJobPayloadConfig;
   NearestModelName?: string;
   SupportedInstanceTypes?: string[];
-  SupportedEndpointType?: RecommendationJobSupportedEndpointType;
+  SupportedEndpointType?:
+    | RecommendationJobSupportedEndpointType
+    | (string & {});
   DataInputConfig?: string;
   SupportedResponseMIMETypes?: string[];
 }
@@ -8843,7 +8864,7 @@ export const FlatInvocations = /*@__PURE__*/ S.String;
 export interface RecommendationJobStoppingConditions {
   MaxInvocations?: number;
   ModelLatencyThresholds?: ModelLatencyThreshold[];
-  FlatInvocations?: FlatInvocations;
+  FlatInvocations?: FlatInvocations | (string & {});
 }
 export const RecommendationJobStoppingConditions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -8999,7 +9020,7 @@ export type ContentClassifier =
   | "FreeOfAdultContent";
 export const ContentClassifier = /*@__PURE__*/ S.String;
 
-export type ContentClassifiers = ContentClassifier[];
+export type ContentClassifiers = (ContentClassifier | (string & {}))[];
 export const ContentClassifiers = /*@__PURE__*/ S.Array(ContentClassifier);
 export interface LabelingJobDataAttributes {
   ContentClassifiers?: ContentClassifier[];
@@ -9304,7 +9325,7 @@ export const RepositoryAuthConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "RepositoryAuthConfig",
 }) as any as S.Schema<RepositoryAuthConfig>;
 export interface ImageConfig {
-  RepositoryAccessMode?: RepositoryAccessMode;
+  RepositoryAccessMode?: RepositoryAccessMode | (string & {});
   RepositoryAuthConfig?: RepositoryAuthConfig;
 }
 export const ImageConfig = /*@__PURE__*/ S.suspend(() =>
@@ -9321,7 +9342,7 @@ export type ModelCacheSetting = "Enabled" | "Disabled";
 export const ModelCacheSetting = /*@__PURE__*/ S.String;
 
 export interface MultiModelConfig {
-  ModelCacheSetting?: ModelCacheSetting;
+  ModelCacheSetting?: ModelCacheSetting | (string & {});
 }
 export const MultiModelConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ModelCacheSetting: S.optional(ModelCacheSetting) }),
@@ -9332,7 +9353,7 @@ export interface ContainerDefinition {
   ContainerHostname?: string;
   Image?: string;
   ImageConfig?: ImageConfig;
-  Mode?: ContainerMode;
+  Mode?: ContainerMode | (string & {});
   ModelDataUrl?: string;
   ModelDataSource?: ModelDataSource;
   AdditionalModelDataSources?: AdditionalModelDataSource[];
@@ -9367,7 +9388,7 @@ export type InferenceExecutionMode = "Serial" | "Direct";
 export const InferenceExecutionMode = /*@__PURE__*/ S.String;
 
 export interface InferenceExecutionConfig {
-  Mode?: InferenceExecutionMode;
+  Mode?: InferenceExecutionMode | (string & {});
 }
 export const InferenceExecutionConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Mode: S.optional(InferenceExecutionMode) }),
@@ -9945,7 +9966,7 @@ export const ModelPackageSecurityConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ModelPackageSecurityConfig>;
 export interface ModelPackageModelCard {
   ModelCardContent?: string | redacted.Redacted<string>;
-  ModelCardStatus?: ModelCardStatus;
+  ModelCardStatus?: ModelCardStatus | (string & {});
 }
 export const ModelPackageModelCard = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -10050,7 +10071,7 @@ export const CreateModelPackageOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateModelPackageOutput",
 }) as any as S.Schema<CreateModelPackageOutput>;
 export interface ManagedConfiguration {
-  ManagedStorageType?: ManagedStorageType;
+  ManagedStorageType?: ManagedStorageType | (string & {});
 }
 export const ManagedConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ManagedStorageType: S.optional(ManagedStorageType) }),
@@ -10116,7 +10137,7 @@ export interface ModelQualityAppSpecification {
   ContainerArguments?: string[];
   RecordPreprocessorSourceUri?: string;
   PostAnalyticsProcessorSourceUri?: string;
-  ProblemType?: MonitoringProblemType;
+  ProblemType?: MonitoringProblemType | (string & {});
   Environment?: { [key: string]: string | undefined };
 }
 export const ModelQualityAppSpecification = /*@__PURE__*/ S.suspend(() =>
@@ -10302,7 +10323,7 @@ export interface MonitoringScheduleConfig {
   ScheduleConfig?: ScheduleConfig;
   MonitoringJobDefinition?: MonitoringJobDefinition;
   MonitoringJobDefinitionName?: string;
-  MonitoringType?: MonitoringType;
+  MonitoringType?: MonitoringType | (string & {});
 }
 export const MonitoringScheduleConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -10548,8 +10569,10 @@ export type NotebookInstanceAcceleratorType =
   | "ml.eia2.xlarge";
 export const NotebookInstanceAcceleratorType = /*@__PURE__*/ S.String;
 
-export type NotebookInstanceAcceleratorTypes =
-  NotebookInstanceAcceleratorType[];
+export type NotebookInstanceAcceleratorTypes = (
+  | NotebookInstanceAcceleratorType
+  | (string & {})
+)[];
 export const NotebookInstanceAcceleratorTypes = /*@__PURE__*/ S.Array(
   NotebookInstanceAcceleratorType,
 );
@@ -10827,7 +10850,7 @@ export const ModelSpeculativeDecodingS3DataType = /*@__PURE__*/ S.String;
 
 export interface ModelSpeculativeDecodingTrainingDataSource {
   S3Uri?: string;
-  S3DataType?: ModelSpeculativeDecodingS3DataType;
+  S3DataType?: ModelSpeculativeDecodingS3DataType | (string & {});
 }
 export const ModelSpeculativeDecodingTrainingDataSource =
   /*@__PURE__*/ S.suspend(() =>
@@ -10839,7 +10862,7 @@ export const ModelSpeculativeDecodingTrainingDataSource =
     identifier: "ModelSpeculativeDecodingTrainingDataSource",
   }) as any as S.Schema<ModelSpeculativeDecodingTrainingDataSource>;
 export interface ModelSpeculativeDecodingConfig {
-  Technique?: ModelSpeculativeDecodingTechnique;
+  Technique?: ModelSpeculativeDecodingTechnique | (string & {});
   TrainingDataSource?: ModelSpeculativeDecodingTrainingDataSource;
 }
 export const ModelSpeculativeDecodingConfig = /*@__PURE__*/ S.suspend(() =>
@@ -11336,10 +11359,10 @@ export const ProcessingS3CompressionType = /*@__PURE__*/ S.String;
 export interface ProcessingS3Input {
   S3Uri?: string;
   LocalPath?: string;
-  S3DataType?: ProcessingS3DataType;
-  S3InputMode?: ProcessingS3InputMode;
-  S3DataDistributionType?: ProcessingS3DataDistributionType;
-  S3CompressionType?: ProcessingS3CompressionType;
+  S3DataType?: ProcessingS3DataType | (string & {});
+  S3InputMode?: ProcessingS3InputMode | (string & {});
+  S3DataDistributionType?: ProcessingS3DataDistributionType | (string & {});
+  S3CompressionType?: ProcessingS3CompressionType | (string & {});
 }
 export const ProcessingS3Input = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -11375,8 +11398,8 @@ export interface AthenaDatasetDefinition {
   WorkGroup?: string;
   OutputS3Uri?: string;
   KmsKeyId?: string;
-  OutputFormat?: AthenaResultFormat;
-  OutputCompression?: AthenaResultCompressionType;
+  OutputFormat?: AthenaResultFormat | (string & {});
+  OutputCompression?: AthenaResultCompressionType | (string & {});
 }
 export const AthenaDatasetDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -11415,8 +11438,8 @@ export interface RedshiftDatasetDefinition {
   ClusterRoleArn?: string;
   OutputS3Uri?: string;
   KmsKeyId?: string;
-  OutputFormat?: RedshiftResultFormat;
-  OutputCompression?: RedshiftResultCompressionType;
+  OutputFormat?: RedshiftResultFormat | (string & {});
+  OutputCompression?: RedshiftResultCompressionType | (string & {});
 }
 export const RedshiftDatasetDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -11443,8 +11466,8 @@ export interface DatasetDefinition {
   AthenaDatasetDefinition?: AthenaDatasetDefinition;
   RedshiftDatasetDefinition?: RedshiftDatasetDefinition;
   LocalPath?: string;
-  DataDistributionType?: DataDistributionType;
-  InputMode?: InputMode;
+  DataDistributionType?: DataDistributionType | (string & {});
+  InputMode?: InputMode | (string & {});
 }
 export const DatasetDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -11478,7 +11501,7 @@ export const ProcessingInputs = /*@__PURE__*/ S.Array(ProcessingInput);
 export interface ProcessingS3Output {
   S3Uri?: string;
   LocalPath?: string;
-  S3UploadMode?: ProcessingS3UploadMode;
+  S3UploadMode?: ProcessingS3UploadMode | (string & {});
 }
 export const ProcessingS3Output = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -11529,7 +11552,7 @@ export const ProcessingOutputConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProcessingOutputConfig>;
 export interface ProcessingClusterConfig {
   InstanceCount?: number;
-  InstanceType?: ProcessingInstanceType;
+  InstanceType?: ProcessingInstanceType | (string & {});
   VolumeSizeInGB?: number;
   VolumeKmsKeyId?: string;
 }
@@ -11874,11 +11897,11 @@ export interface SpaceSettings {
   KernelGatewayAppSettings?: KernelGatewayAppSettings;
   CodeEditorAppSettings?: SpaceCodeEditorAppSettings;
   JupyterLabAppSettings?: SpaceJupyterLabAppSettings;
-  AppType?: AppType;
+  AppType?: AppType | (string & {});
   SpaceStorageSettings?: SpaceStorageSettings;
-  SpaceManagedResources?: FeatureStatus;
+  SpaceManagedResources?: FeatureStatus | (string & {});
   CustomFileSystems?: CustomFileSystem[];
-  RemoteAccess?: FeatureStatus;
+  RemoteAccess?: FeatureStatus | (string & {});
 }
 export const SpaceSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -11905,7 +11928,7 @@ export type SharingType = "Private" | "Shared";
 export const SharingType = /*@__PURE__*/ S.String;
 
 export interface SpaceSharingSettings {
-  SharingType?: SharingType;
+  SharingType?: SharingType | (string & {});
 }
 export const SpaceSharingSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ SharingType: S.optional(SharingType) }),
@@ -12016,7 +12039,7 @@ export const TrainingRepositoryAuthConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "TrainingRepositoryAuthConfig",
 }) as any as S.Schema<TrainingRepositoryAuthConfig>;
 export interface TrainingImageConfig {
-  TrainingRepositoryAccessMode?: TrainingRepositoryAccessMode;
+  TrainingRepositoryAccessMode?: TrainingRepositoryAccessMode | (string & {});
   TrainingRepositoryAuthConfig?: TrainingRepositoryAuthConfig;
 }
 export const TrainingImageConfig = /*@__PURE__*/ S.suspend(() =>
@@ -12030,7 +12053,7 @@ export const TrainingImageConfig = /*@__PURE__*/ S.suspend(() =>
 export interface AlgorithmSpecification {
   TrainingImage?: string;
   AlgorithmName?: string;
-  TrainingInputMode?: TrainingInputMode;
+  TrainingInputMode?: TrainingInputMode | (string & {});
   MetricDefinitions?: MetricDefinition[];
   EnableSageMakerMetricsTimeSeries?: boolean;
   ContainerEntrypoint?: string[];
@@ -12107,7 +12130,7 @@ export interface DebugRuleConfiguration {
   LocalPath?: string;
   S3OutputPath?: string;
   RuleEvaluatorImage?: string;
-  InstanceType?: ProcessingInstanceType;
+  InstanceType?: ProcessingInstanceType | (string & {});
   VolumeSizeInGB?: number;
   RuleParameters?: { [key: string]: string | undefined };
 }
@@ -12166,7 +12189,7 @@ export interface ProfilerRuleConfiguration {
   LocalPath?: string;
   S3OutputPath?: string;
   RuleEvaluatorImage?: string;
-  InstanceType?: ProcessingInstanceType;
+  InstanceType?: ProcessingInstanceType | (string & {});
   VolumeSizeInGB?: number;
   RuleParameters?: { [key: string]: string | undefined };
 }
@@ -12241,10 +12264,10 @@ export type EvaluatorArn = string;
 export interface ServerlessJobConfig {
   BaseModelArn: string;
   AcceptEula?: boolean;
-  JobType: ServerlessJobType;
-  CustomizationTechnique?: CustomizationTechnique;
-  Peft?: Peft;
-  EvaluationType?: EvaluationType;
+  JobType: ServerlessJobType | (string & {});
+  CustomizationTechnique?: CustomizationTechnique | (string & {});
+  Peft?: Peft | (string & {});
+  EvaluationType?: EvaluationType | (string & {});
   EvaluatorArn?: string;
 }
 export const ServerlessJobConfig = /*@__PURE__*/ S.suspend(() =>
@@ -12443,7 +12466,7 @@ export const JoinSource = /*@__PURE__*/ S.String;
 export interface DataProcessing {
   InputFilter?: string;
   OutputFilter?: string;
-  JoinSource?: JoinSource;
+  JoinSource?: JoinSource | (string & {});
 }
 export const DataProcessing = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -12553,7 +12576,7 @@ export const TrialComponentPrimaryStatus = /*@__PURE__*/ S.String;
 
 export type TrialComponentStatusMessage = string;
 export interface TrialComponentStatus {
-  PrimaryStatus?: TrialComponentPrimaryStatus;
+  PrimaryStatus?: TrialComponentPrimaryStatus | (string & {});
   Message?: string;
 }
 export const TrialComponentStatus = /*@__PURE__*/ S.suspend(() =>
@@ -12864,8 +12887,8 @@ export type EnabledOrDisabled = "Enabled" | "Disabled";
 export const EnabledOrDisabled = /*@__PURE__*/ S.String;
 
 export interface IamPolicyConstraints {
-  SourceIp?: EnabledOrDisabled;
-  VpcSourceIp?: EnabledOrDisabled;
+  SourceIp?: EnabledOrDisabled | (string & {});
+  VpcSourceIp?: EnabledOrDisabled | (string & {});
 }
 export const IamPolicyConstraints = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -19573,7 +19596,7 @@ export type InferenceComponentCapacitySizeType =
 export const InferenceComponentCapacitySizeType = /*@__PURE__*/ S.String;
 
 export interface InferenceComponentCapacitySize {
-  Type?: InferenceComponentCapacitySizeType;
+  Type?: InferenceComponentCapacitySizeType | (string & {});
   Value?: number;
 }
 export const InferenceComponentCapacitySize = /*@__PURE__*/ S.suspend(() =>
@@ -23112,7 +23135,7 @@ export type SageMakerResourceName =
   | "studio-apps";
 export const SageMakerResourceName = /*@__PURE__*/ S.String;
 
-export type SageMakerResourceNames = SageMakerResourceName[];
+export type SageMakerResourceNames = (SageMakerResourceName | (string & {}))[];
 export const SageMakerResourceNames = /*@__PURE__*/ S.Array(
   SageMakerResourceName,
 );

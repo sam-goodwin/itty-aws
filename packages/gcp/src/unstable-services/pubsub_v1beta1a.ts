@@ -60,7 +60,7 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -279,7 +279,7 @@ export const ListSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListSubscriptionsRequest",
 }) as any as S.Schema<ListSubscriptionsRequest>;
 
-export type SubscriptionList = ReadonlyArray<Subscription>;
+export type SubscriptionList = Array<Subscription>;
 export const SubscriptionList = /*@__PURE__*/ S.Array(
   Subscription,
 ) as any as S.Schema<SubscriptionList>;
@@ -324,7 +324,7 @@ export const ListTopicsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListTopicsRequest",
 }) as any as S.Schema<ListTopicsRequest>;
 
-export type TopicList = ReadonlyArray<Topic>;
+export type TopicList = Array<Topic>;
 export const TopicList = /*@__PURE__*/ S.Array(
   Topic,
 ) as any as S.Schema<TopicList>;
@@ -438,7 +438,7 @@ export const Label = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Label" }) as any as S.Schema<Label>;
 
-export type LabelList = ReadonlyArray<Label>;
+export type LabelList = Array<Label>;
 export const LabelList = /*@__PURE__*/ S.Array(
   Label,
 ) as any as S.Schema<LabelList>;
@@ -463,7 +463,7 @@ export const PubsubMessage = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PubsubMessage" }) as any as S.Schema<PubsubMessage>;
 
-export type PubsubMessageList = ReadonlyArray<PubsubMessage>;
+export type PubsubMessageList = Array<PubsubMessage>;
 export const PubsubMessageList = /*@__PURE__*/ S.Array(
   PubsubMessage,
 ) as any as S.Schema<PubsubMessageList>;
@@ -618,7 +618,7 @@ export const PullResponse = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PullResponse" }) as any as S.Schema<PullResponse>;
 
-export type PullResponseList = ReadonlyArray<PullResponse>;
+export type PullResponseList = Array<PullResponse>;
 export const PullResponseList = /*@__PURE__*/ S.Array(
   PullResponse,
 ) as any as S.Schema<PullResponseList>;

@@ -136,7 +136,7 @@ export interface Backup {
   /** Resource labels to represent user provided metadata. */
   labels?: StringMap;
   /** Output only. The file system protocol of the source Filestore instance that this backup is created from. */
-  fileSystemProtocol?: BackupFileSystemProtocolEnum;
+  fileSystemProtocol?: BackupFileSystemProtocolEnum | (string & {});
   /** The resource name of the source Filestore instance, in the format `projects/{project_number}/locations/{location_id}/instances/{instance_id}`, used to create this backup. */
   sourceInstance?: string;
   /** A description of the backup with 2048 characters or less. Requests with longer descriptions will be rejected. */
@@ -146,9 +146,9 @@ export interface Backup {
   /** Immutable. KMS key name used for data encryption. */
   kmsKey?: string;
   /** Output only. The service tier of the source Filestore instance that this backup is created from. */
-  sourceInstanceTier?: BackupSourceInstanceTierEnum;
+  sourceInstanceTier?: BackupSourceInstanceTierEnum | (string & {});
   /** Output only. The backup state. */
-  state?: BackupStateEnum;
+  state?: BackupStateEnum | (string & {});
   /** Output only. The time when the backup was created. */
   createTime?: string;
   /** Output only. Capacity of the source file share when the backup was created. */
@@ -216,7 +216,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -274,8 +274,9 @@ export type NetworkConfigModesItemEnum =
   | "MODE_IPV6";
 export const NetworkConfigModesItemEnum = /*@__PURE__*/ S.String;
 
-export type NetworkConfigModesItemEnumList =
-  ReadonlyArray<NetworkConfigModesItemEnum>;
+export type NetworkConfigModesItemEnumList = Array<
+  NetworkConfigModesItemEnum | (string & {})
+>;
 export const NetworkConfigModesItemEnumList = /*@__PURE__*/ S.Array(
   NetworkConfigModesItemEnum,
 ) as any as S.Schema<NetworkConfigModesItemEnumList>;
@@ -291,7 +292,7 @@ export const PscConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PscConfig" }) as any as S.Schema<PscConfig>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -299,7 +300,7 @@ export const StringList = /*@__PURE__*/ S.Array(
 /** Network configuration for the instance. */
 export interface NetworkConfig {
   /** The network connect mode of the Filestore instance. If not provided, the connect mode defaults to DIRECT_PEERING. */
-  connectMode?: NetworkConfigConnectModeEnum;
+  connectMode?: NetworkConfigConnectModeEnum | (string & {});
   /** Optional, reserved_ip_range can have one of the following two types of values. * CIDR range value when using DIRECT_PEERING connect mode. * [Allocated IP address range](https://cloud.google.com/compute/docs/ip-addresses/reserve-static-internal-ip-address) when using PRIVATE_SERVICE_ACCESS connect mode. When the name of an allocated IP address range is specified, it must be one of the ranges associated with the private service access connection. When specified as a direct CIDR value, it must be a /29 CIDR block for Basic tier, a /24 CIDR block for High Scale tier, or a /26 CIDR block for Enterprise tier in one of the [internal IP address ranges](https://www.arin.net/reference/research/statistics/address_filters/) that identifies the range of IP addresses reserved for this instance. For example, 10.0.0.0/29, 192.168.0.0/24 or 192.168.0.0/26, respectively. The range you specify can't overlap with either existing subnets or assigned IP address ranges for other Filestore instances in the selected VPC network. */
   reservedIpRange?: string;
   /** The name of the Google Compute Engine [VPC network](https://cloud.google.com/vpc/docs/vpc) to which the instance is connected. */
@@ -322,7 +323,7 @@ export const NetworkConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "NetworkConfig" }) as any as S.Schema<NetworkConfig>;
 
-export type NetworkConfigList = ReadonlyArray<NetworkConfig>;
+export type NetworkConfigList = Array<NetworkConfig>;
 export const NetworkConfigList = /*@__PURE__*/ S.Array(
   NetworkConfig,
 ) as any as S.Schema<NetworkConfigList>;
@@ -417,8 +418,9 @@ export type InstanceSuspensionReasonsItemEnum =
   | "KMS_KEY_ISSUE";
 export const InstanceSuspensionReasonsItemEnum = /*@__PURE__*/ S.String;
 
-export type InstanceSuspensionReasonsItemEnumList =
-  ReadonlyArray<InstanceSuspensionReasonsItemEnum>;
+export type InstanceSuspensionReasonsItemEnumList = Array<
+  InstanceSuspensionReasonsItemEnum | (string & {})
+>;
 export const InstanceSuspensionReasonsItemEnumList = /*@__PURE__*/ S.Array(
   InstanceSuspensionReasonsItemEnum,
 ) as any as S.Schema<InstanceSuspensionReasonsItemEnumList>;
@@ -442,9 +444,9 @@ export interface NfsExportOptions {
   /** Optional. The source VPC network for ip_ranges. Required for instances using Private Service Connect, optional otherwise. If provided, must be the same network specified in the `NetworkConfig.network` field. */
   network?: string;
   /** Either READ_ONLY, for allowing only read requests on the exported directory, or READ_WRITE, for allowing both read and write requests. The default is READ_WRITE. */
-  accessMode?: NfsExportOptionsAccessModeEnum;
+  accessMode?: NfsExportOptionsAccessModeEnum | (string & {});
   /** Either NO_ROOT_SQUASH, for allowing root access on the exported directory, or ROOT_SQUASH, for not allowing root access. The default is NO_ROOT_SQUASH. */
-  squashMode?: NfsExportOptionsSquashModeEnum;
+  squashMode?: NfsExportOptionsSquashModeEnum | (string & {});
   /** An integer representing the anonymous user id with a default value of 65534. Anon_uid may only be set with squash_mode of ROOT_SQUASH. An error will be returned if this field is specified for other squash_mode settings. */
   anonUid?: string;
   /** An integer representing the anonymous group id with a default value of 65534. Anon_gid may only be set with squash_mode of ROOT_SQUASH. An error will be returned if this field is specified for other squash_mode settings. */
@@ -463,7 +465,7 @@ export const NfsExportOptions = /*@__PURE__*/ S.suspend(() =>
   identifier: "NfsExportOptions",
 }) as any as S.Schema<NfsExportOptions>;
 
-export type NfsExportOptionsList = ReadonlyArray<NfsExportOptions>;
+export type NfsExportOptionsList = Array<NfsExportOptions>;
 export const NfsExportOptionsList = /*@__PURE__*/ S.Array(
   NfsExportOptions,
 ) as any as S.Schema<NfsExportOptionsList>;
@@ -493,7 +495,7 @@ export const FileShareConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "FileShareConfig",
 }) as any as S.Schema<FileShareConfig>;
 
-export type FileShareConfigList = ReadonlyArray<FileShareConfig>;
+export type FileShareConfigList = Array<FileShareConfig>;
 export const FileShareConfigList = /*@__PURE__*/ S.Array(
   FileShareConfig,
 ) as any as S.Schema<FileShareConfigList>;
@@ -527,8 +529,9 @@ export type ReplicaConfigStateReasonsItemEnum =
   | "RESUME_FAILED";
 export const ReplicaConfigStateReasonsItemEnum = /*@__PURE__*/ S.String;
 
-export type ReplicaConfigStateReasonsItemEnumList =
-  ReadonlyArray<ReplicaConfigStateReasonsItemEnum>;
+export type ReplicaConfigStateReasonsItemEnumList = Array<
+  ReplicaConfigStateReasonsItemEnum | (string & {})
+>;
 export const ReplicaConfigStateReasonsItemEnumList = /*@__PURE__*/ S.Array(
   ReplicaConfigStateReasonsItemEnum,
 ) as any as S.Schema<ReplicaConfigStateReasonsItemEnumList>;
@@ -540,7 +543,7 @@ export interface ReplicaConfig {
   /** Output only. The timestamp of the latest replication snapshot taken on the active instance and is already replicated safely. */
   lastActiveSyncTime?: string;
   /** Output only. The replica state. */
-  state?: ReplicaConfigStateEnum;
+  state?: ReplicaConfigStateEnum | (string & {});
   /** Output only. Additional information about the replication state, if available. */
   stateReasons?: ReplicaConfigStateReasonsItemEnumList;
   /** Output only. The time when the replica state was updated. */
@@ -556,7 +559,7 @@ export const ReplicaConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ReplicaConfig" }) as any as S.Schema<ReplicaConfig>;
 
-export type ReplicaConfigList = ReadonlyArray<ReplicaConfig>;
+export type ReplicaConfigList = Array<ReplicaConfig>;
 export const ReplicaConfigList = /*@__PURE__*/ S.Array(
   ReplicaConfig,
 ) as any as S.Schema<ReplicaConfigList>;
@@ -564,7 +567,7 @@ export const ReplicaConfigList = /*@__PURE__*/ S.Array(
 /** Optional. The configuration used to replicate an instance. */
 export interface Replication {
   /** Optional. The replication role. When creating a new replica, this field must be set to `STANDBY`. */
-  role?: ReplicationRoleEnum;
+  role?: ReplicationRoleEnum | (string & {});
   /** Optional. Replication configuration for the replica instance associated with this instance. Only a single replica is supported. */
   replicas?: ReplicaConfigList;
 }
@@ -620,7 +623,7 @@ export interface Instance {
   /** Output only. Indicates whether this instance supports configuring its performance. If true, the user can configure the instance's performance by using the 'performance_config' field. */
   customPerformanceSupported?: boolean;
   /** The service tier of the instance. */
-  tier?: InstanceTierEnum;
+  tier?: InstanceTierEnum | (string & {});
   /** Output only. The maximum capacity of the instance in GB. */
   maxCapacityGb?: string;
   /** The description of the instance (2048 characters or less). */
@@ -642,7 +645,7 @@ export interface Instance {
   /** Optional. Directory Services configuration for Kerberos-based authentication. Should only be set if protocol is "NFS_V4_1". */
   directoryServices?: DirectoryServicesConfig;
   /** Output only. The instance state. */
-  state?: InstanceStateEnum;
+  state?: InstanceStateEnum | (string & {});
   /** Optional. Indicates whether the instance is protected against deletion. */
   deletionProtectionEnabled?: boolean;
   /** Output only. The incremental increase or decrease in capacity, designated in some number of GB. */
@@ -662,7 +665,7 @@ export interface Instance {
   /** Output only. Reserved for future use. */
   satisfiesPzs?: boolean;
   /** Immutable. The protocol indicates the access protocol for all shares in the instance. This field is immutable and it cannot be changed after the instance has been created. Default value: `NFS_V3`. */
-  protocol?: InstanceProtocolEnum;
+  protocol?: InstanceProtocolEnum | (string & {});
   /** Optional. Replication configuration. */
   replication?: Replication;
   /** Optional. Used to configure performance. */
@@ -736,7 +739,7 @@ export interface Snapshot {
   /** A description of the snapshot with 2048 characters or less. Requests with longer descriptions will be rejected. */
   description?: string;
   /** Output only. The snapshot state. */
-  state?: SnapshotStateEnum;
+  state?: SnapshotStateEnum | (string & {});
   /** Output only. The amount of bytes needed to allocate a full copy of the snapshot content */
   filesystemUsedBytes?: string;
   /** Output only. The resource name of the snapshot, in the format `projects/{project_id}/locations/{location_id}/instances/{instance_id}/snapshots/{snapshot_id}`. */
@@ -1010,7 +1013,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = ReadonlyArray<Location>;
+export type LocationList = Array<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -1061,7 +1064,7 @@ export const ListProjectsLocationsBackupsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsBackupsRequest",
 }) as any as S.Schema<ListProjectsLocationsBackupsRequest>;
 
-export type BackupList = ReadonlyArray<Backup>;
+export type BackupList = Array<Backup>;
 export const BackupList = /*@__PURE__*/ S.Array(
   Backup,
 ) as any as S.Schema<BackupList>;
@@ -1116,7 +1119,7 @@ export const ListProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsInstancesRequest",
 }) as any as S.Schema<ListProjectsLocationsInstancesRequest>;
 
-export type InstanceList = ReadonlyArray<Instance>;
+export type InstanceList = Array<Instance>;
 export const InstanceList = /*@__PURE__*/ S.Array(
   Instance,
 ) as any as S.Schema<InstanceList>;
@@ -1174,7 +1177,7 @@ export const ListProjectsLocationsInstancesSnapshotsRequest =
     identifier: "ListProjectsLocationsInstancesSnapshotsRequest",
   }) as any as S.Schema<ListProjectsLocationsInstancesSnapshotsRequest>;
 
-export type SnapshotList = ReadonlyArray<Snapshot>;
+export type SnapshotList = Array<Snapshot>;
 export const SnapshotList = /*@__PURE__*/ S.Array(
   Snapshot,
 ) as any as S.Schema<SnapshotList>;
@@ -1229,7 +1232,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type OperationList = ReadonlyArray<Operation>;
+export type OperationList = Array<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;

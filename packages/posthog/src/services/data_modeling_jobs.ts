@@ -75,8 +75,7 @@ export const DataModelingJob = /*@__PURE__*/ S.suspend(() =>
   identifier: "DataModelingJob",
 }) as any as S.Schema<DataModelingJob>;
 
-export type PaginatedDataModelingJobListResultsList =
-  ReadonlyArray<DataModelingJob>;
+export type PaginatedDataModelingJobListResultsList = Array<DataModelingJob>;
 export const PaginatedDataModelingJobListResultsList = /*@__PURE__*/ S.Array(
   DataModelingJob,
 ) as any as S.Schema<PaginatedDataModelingJobListResultsList>;

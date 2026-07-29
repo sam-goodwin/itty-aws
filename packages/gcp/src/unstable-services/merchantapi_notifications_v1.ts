@@ -72,7 +72,7 @@ export interface NotificationSubscription {
   /** The `name` of the account you want to receive notifications for. Format: `accounts/{account}` */
   targetAccount?: string;
   /** The event that the merchant wants to be notified about. */
-  registeredEvent?: NotificationSubscriptionRegisteredEventEnum;
+  registeredEvent?: NotificationSubscriptionRegisteredEventEnum | (string & {});
   /** URL to be used to push the notification to the merchant. */
   callBackUri?: string;
   /** If this value is true, the requesting account is notified of the specified event for all managed accounts (can be subaccounts or other linked accounts) including newly added accounts on a daily basis. */
@@ -183,8 +183,7 @@ export const ListAccountsNotificationsubscriptionsRequest =
     identifier: "ListAccountsNotificationsubscriptionsRequest",
   }) as any as S.Schema<ListAccountsNotificationsubscriptionsRequest>;
 
-export type NotificationSubscriptionList =
-  ReadonlyArray<NotificationSubscription>;
+export type NotificationSubscriptionList = Array<NotificationSubscription>;
 export const NotificationSubscriptionList = /*@__PURE__*/ S.Array(
   NotificationSubscription,
 ) as any as S.Schema<NotificationSubscriptionList>;

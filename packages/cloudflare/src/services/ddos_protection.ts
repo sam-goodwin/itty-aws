@@ -115,7 +115,7 @@ export const AdvancedTcpProtectionPrefixesBulkCreateRequestBodyItem =
   }) as any as S.Schema<AdvancedTcpProtectionPrefixesBulkCreateRequestBodyItem>;
 
 export type AdvancedTcpProtectionPrefixesBulkCreateRequestBodyList =
-  ReadonlyArray<AdvancedTcpProtectionPrefixesBulkCreateRequestBodyItem>;
+  Array<AdvancedTcpProtectionPrefixesBulkCreateRequestBodyItem>;
 export const AdvancedTcpProtectionPrefixesBulkCreateRequestBodyList =
   /*@__PURE__*/ S.Array(
     AdvancedTcpProtectionPrefixesBulkCreateRequestBodyItem,
@@ -175,7 +175,7 @@ export const AdvancedTcpProtectionPrefixesBulkCreateResultItem =
   }) as any as S.Schema<AdvancedTcpProtectionPrefixesBulkCreateResultItem>;
 
 export type AdvancedTcpProtectionPrefixesBulkCreateResultList =
-  ReadonlyArray<AdvancedTcpProtectionPrefixesBulkCreateResultItem>;
+  Array<AdvancedTcpProtectionPrefixesBulkCreateResultItem>;
 export const AdvancedTcpProtectionPrefixesBulkCreateResultList =
   /*@__PURE__*/ S.Array(
     AdvancedTcpProtectionPrefixesBulkCreateResultItem,
@@ -1363,7 +1363,7 @@ export const AdvancedTcpProtectionAllowlistListResultItem =
   }) as any as S.Schema<AdvancedTcpProtectionAllowlistListResultItem>;
 
 export type AdvancedTcpProtectionAllowlistListResultList =
-  ReadonlyArray<AdvancedTcpProtectionAllowlistListResultItem>;
+  Array<AdvancedTcpProtectionAllowlistListResultItem>;
 export const AdvancedTcpProtectionAllowlistListResultList =
   /*@__PURE__*/ S.Array(
     AdvancedTcpProtectionAllowlistListResultItem,
@@ -1449,7 +1449,7 @@ export const AdvancedTcpProtectionPrefixesListResultItem =
   }) as any as S.Schema<AdvancedTcpProtectionPrefixesListResultItem>;
 
 export type AdvancedTcpProtectionPrefixesListResultList =
-  ReadonlyArray<AdvancedTcpProtectionPrefixesListResultItem>;
+  Array<AdvancedTcpProtectionPrefixesListResultItem>;
 export const AdvancedTcpProtectionPrefixesListResultList =
   /*@__PURE__*/ S.Array(
     AdvancedTcpProtectionPrefixesListResultItem,
@@ -1535,7 +1535,7 @@ export const AdvancedTcpProtectionSynProtectionFiltersListResultItem =
   }) as any as S.Schema<AdvancedTcpProtectionSynProtectionFiltersListResultItem>;
 
 export type AdvancedTcpProtectionSynProtectionFiltersListResultList =
-  ReadonlyArray<AdvancedTcpProtectionSynProtectionFiltersListResultItem>;
+  Array<AdvancedTcpProtectionSynProtectionFiltersListResultItem>;
 export const AdvancedTcpProtectionSynProtectionFiltersListResultList =
   /*@__PURE__*/ S.Array(
     AdvancedTcpProtectionSynProtectionFiltersListResultItem,
@@ -1630,7 +1630,7 @@ export const AdvancedTcpProtectionSynProtectionRulesListResultItem =
   }) as any as S.Schema<AdvancedTcpProtectionSynProtectionRulesListResultItem>;
 
 export type AdvancedTcpProtectionSynProtectionRulesListResultList =
-  ReadonlyArray<AdvancedTcpProtectionSynProtectionRulesListResultItem>;
+  Array<AdvancedTcpProtectionSynProtectionRulesListResultItem>;
 export const AdvancedTcpProtectionSynProtectionRulesListResultList =
   /*@__PURE__*/ S.Array(
     AdvancedTcpProtectionSynProtectionRulesListResultItem,
@@ -1716,7 +1716,7 @@ export const AdvancedTcpProtectionTcpFlowProtectionFiltersListResultItem =
   }) as any as S.Schema<AdvancedTcpProtectionTcpFlowProtectionFiltersListResultItem>;
 
 export type AdvancedTcpProtectionTcpFlowProtectionFiltersListResultList =
-  ReadonlyArray<AdvancedTcpProtectionTcpFlowProtectionFiltersListResultItem>;
+  Array<AdvancedTcpProtectionTcpFlowProtectionFiltersListResultItem>;
 export const AdvancedTcpProtectionTcpFlowProtectionFiltersListResultList =
   /*@__PURE__*/ S.Array(
     AdvancedTcpProtectionTcpFlowProtectionFiltersListResultItem,
@@ -1808,7 +1808,7 @@ export const AdvancedTcpProtectionTcpFlowProtectionRulesListResultItem =
   }) as any as S.Schema<AdvancedTcpProtectionTcpFlowProtectionRulesListResultItem>;
 
 export type AdvancedTcpProtectionTcpFlowProtectionRulesListResultList =
-  ReadonlyArray<AdvancedTcpProtectionTcpFlowProtectionRulesListResultItem>;
+  Array<AdvancedTcpProtectionTcpFlowProtectionRulesListResultItem>;
 export const AdvancedTcpProtectionTcpFlowProtectionRulesListResultList =
   /*@__PURE__*/ S.Array(
     AdvancedTcpProtectionTcpFlowProtectionRulesListResultItem,

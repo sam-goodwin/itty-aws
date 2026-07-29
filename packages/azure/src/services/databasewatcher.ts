@@ -318,8 +318,7 @@ export const AlertRuleResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AlertRuleResource>;
 
 /** The AlertRuleResource items on this page */
-export type AlertRuleResourceListResultValueList =
-  ReadonlyArray<AlertRuleResource>;
+export type AlertRuleResourceListResultValueList = Array<AlertRuleResource>;
 export const AlertRuleResourceListResultValueList = /*@__PURE__*/ S.Array(
   AlertRuleResource,
 ) as any as S.Schema<AlertRuleResourceListResultValueList>;
@@ -410,8 +409,7 @@ export const ValidationIssue = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ValidationIssue>;
 
 /** The list of issues found by health validation. */
-export type HealthValidationPropertiesIssuesList =
-  ReadonlyArray<ValidationIssue>;
+export type HealthValidationPropertiesIssuesList = Array<ValidationIssue>;
 export const HealthValidationPropertiesIssuesList = /*@__PURE__*/ S.Array(
   ValidationIssue,
 ) as any as S.Schema<HealthValidationPropertiesIssuesList>;
@@ -519,8 +517,7 @@ export const HealthValidation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HealthValidation>;
 
 /** The HealthValidation items on this page */
-export type HealthValidationListResultValueList =
-  ReadonlyArray<HealthValidation>;
+export type HealthValidationListResultValueList = Array<HealthValidation>;
 export const HealthValidationListResultValueList = /*@__PURE__*/ S.Array(
   HealthValidation,
 ) as any as S.Schema<HealthValidationListResultValueList>;
@@ -663,7 +660,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = ReadonlyArray<Operation>;
+export type OperationsListResponseValueList = Array<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;
@@ -944,7 +941,7 @@ export const SharedPrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The SharedPrivateLinkResource items on this page */
 export type SharedPrivateLinkResourceListResultValueList =
-  ReadonlyArray<SharedPrivateLinkResource>;
+  Array<SharedPrivateLinkResource>;
 export const SharedPrivateLinkResourceListResultValueList =
   /*@__PURE__*/ S.Array(
     SharedPrivateLinkResource,
@@ -1227,7 +1224,7 @@ export const Target = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Target" }) as any as S.Schema<Target>;
 
 /** The Target items on this page */
-export type TargetListResultValueList = ReadonlyArray<Target>;
+export type TargetListResultValueList = Array<Target>;
 export const TargetListResultValueList = /*@__PURE__*/ S.Array(
   Target,
 ) as any as S.Schema<TargetListResultValueList>;
@@ -1276,7 +1273,7 @@ export interface Datastore {
   /** The Kusto management URL. */
   kustoManagementUrl: string;
   /** The type of a Kusto offering. */
-  kustoOfferingType: KustoOfferingType;
+  kustoOfferingType: KustoOfferingType | (string & {});
 }
 export const Datastore = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1708,7 +1705,7 @@ export const Watcher = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Watcher" }) as any as S.Schema<Watcher>;
 
 /** The Watcher items on this page */
-export type WatcherListResultValueList = ReadonlyArray<Watcher>;
+export type WatcherListResultValueList = Array<Watcher>;
 export const WatcherListResultValueList = /*@__PURE__*/ S.Array(
   Watcher,
 ) as any as S.Schema<WatcherListResultValueList>;

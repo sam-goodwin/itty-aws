@@ -98,7 +98,7 @@ export const ItemError = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ItemError" }) as any as S.Schema<ItemError>;
 
-export type ItemErrorList = ReadonlyArray<ItemError>;
+export type ItemErrorList = Array<ItemError>;
 export const ItemErrorList = /*@__PURE__*/ S.Array(
   ItemError,
 ) as any as S.Schema<ItemErrorList>;
@@ -192,7 +192,7 @@ export const PublishItemsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PublishItemsRequest",
 }) as any as S.Schema<PublishItemsRequest>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;

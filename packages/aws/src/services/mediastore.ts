@@ -369,7 +369,7 @@ export const AllowedOrigins = /*@__PURE__*/ S.Array(S.String);
 export type MethodName = "PUT" | "GET" | "DELETE" | "HEAD";
 export const MethodName = /*@__PURE__*/ S.String;
 
-export type AllowedMethods = MethodName[];
+export type AllowedMethods = (MethodName | (string & {}))[];
 export const AllowedMethods = /*@__PURE__*/ S.Array(MethodName);
 export type Header = string;
 export type AllowedHeaders = string[];
@@ -465,7 +465,7 @@ export const MetricPolicyRule = /*@__PURE__*/ S.suspend(() =>
 export type MetricPolicyRules = MetricPolicyRule[];
 export const MetricPolicyRules = /*@__PURE__*/ S.Array(MetricPolicyRule);
 export interface MetricPolicy {
-  ContainerLevelMetrics: ContainerLevelMetrics;
+  ContainerLevelMetrics: ContainerLevelMetrics | (string & {});
   MetricPolicyRules?: MetricPolicyRule[];
 }
 export const MetricPolicy = /*@__PURE__*/ S.suspend(() =>

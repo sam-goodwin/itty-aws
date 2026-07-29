@@ -98,7 +98,7 @@ export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "Empty",
 }) as any as S.Schema<Empty>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -127,7 +127,7 @@ export interface Hub {
   /** Output only. Google-generated UUID for this resource. This is unique across all Hub resources. If a Hub resource is deleted and another with the same name is created, it gets a different unique_id. */
   uniqueId?: string;
   /** Output only. The current lifecycle state of this Hub. */
-  state?: HubStateEnum;
+  state?: HubStateEnum | (string & {});
   /** Time when the Hub was created. */
   createTime?: string;
   /** Time when the Hub was updated. */
@@ -184,7 +184,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -239,8 +239,9 @@ export type InternalRangeOverlapsItemEnum =
   | "OVERLAP_EXISTING_SUBNET_RANGE";
 export const InternalRangeOverlapsItemEnum = /*@__PURE__*/ S.String;
 
-export type InternalRangeOverlapsItemEnumList =
-  ReadonlyArray<InternalRangeOverlapsItemEnum>;
+export type InternalRangeOverlapsItemEnumList = Array<
+  InternalRangeOverlapsItemEnum | (string & {})
+>;
 export const InternalRangeOverlapsItemEnumList = /*@__PURE__*/ S.Array(
   InternalRangeOverlapsItemEnum,
 ) as any as S.Schema<InternalRangeOverlapsItemEnumList>;
@@ -256,7 +257,7 @@ export const AllocationOptionsAllocationStrategyEnum = /*@__PURE__*/ S.String;
 /** Range auto-allocation options, to be optionally used when CIDR block is not explicitly set. */
 export interface AllocationOptions {
   /** Optional. Allocation strategy. Not setting this field when the allocation is requested means an implementation defined strategy is used. */
-  allocationStrategy?: AllocationOptionsAllocationStrategyEnum;
+  allocationStrategy?: AllocationOptionsAllocationStrategyEnum | (string & {});
   /** Optional. This field must be set only when allocation_strategy is set to RANDOM_FIRST_N_AVAILABLE. The value should be the maximum expected parallelism of range creation requests issued to the same space of peered netwroks. */
   firstAvailableRangesLookupSize?: number;
 }
@@ -326,9 +327,9 @@ export interface InternalRange {
   /** Optional. ExcludeCidrRanges flag. Specifies a set of CIDR blocks that allows exclusion of particular CIDR ranges from the auto-allocation process, without having to reserve these blocks */
   excludeCidrRanges?: StringList;
   /** Optional. The type of peering set for this internal range. */
-  peering?: InternalRangePeeringEnum;
+  peering?: InternalRangePeeringEnum | (string & {});
   /** Optional. The type of usage set for this internal range. */
-  usage?: InternalRangeUsageEnum;
+  usage?: InternalRangeUsageEnum | (string & {});
   /** Output only. The list of resources that refer to this internal range. Resources that use the internal range for their range allocation are referred to as users of the range. Other resources mark themselves as users while doing so by creating a reference to this internal range. Having a user, based on this reference, prevents deletion of the internal range that is referred to. Can be empty. */
   users?: StringList;
   /** Optional. IP range that this internal range defines. NOTE: IPv6 ranges are limited to usage=EXTERNAL_TO_VPC and peering=FOR_SELF. NOTE: For IPv6 Ranges this field is compulsory, i.e. the address range must be specified explicitly. */
@@ -340,7 +341,7 @@ export interface InternalRange {
   /** Output only. Time when the internal range was created. */
   createTime?: string;
   /** Output only. Status of the Internal Range. */
-  rangeStatus?: InternalRangeRangeStatusEnum;
+  rangeStatus?: InternalRangeRangeStatusEnum | (string & {});
   /** Identifier. The name of an internal range. Format: projects/{project}/locations/{location}/internalRanges/{internal_range} See: https://google.aip.dev/122#fields-representing-resource-names */
   name?: string;
 }
@@ -422,8 +423,7 @@ export const RouterApplianceInstance = /*@__PURE__*/ S.suspend(() =>
   identifier: "RouterApplianceInstance",
 }) as any as S.Schema<RouterApplianceInstance>;
 
-export type RouterApplianceInstanceList =
-  ReadonlyArray<RouterApplianceInstance>;
+export type RouterApplianceInstanceList = Array<RouterApplianceInstance>;
 export const RouterApplianceInstanceList = /*@__PURE__*/ S.Array(
   RouterApplianceInstance,
 ) as any as S.Schema<RouterApplianceInstanceList>;
@@ -433,7 +433,7 @@ export interface Spoke {
   /** Immutable. The name of a Spoke resource. */
   name?: string;
   /** Output only. The current lifecycle state of this Hub. */
-  state?: SpokeStateEnum;
+  state?: SpokeStateEnum | (string & {});
   /** The time when the Spoke was created. */
   createTime?: string;
   /** The URIs of linked interconnect attachment resources */
@@ -614,7 +614,7 @@ export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
 export interface AuditLogConfig {
   /** The log type that this config enables. */
-  logType?: AuditLogConfigLogTypeEnum;
+  logType?: AuditLogConfigLogTypeEnum | (string & {});
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
   exemptedMembers?: StringList;
 }
@@ -625,7 +625,7 @@ export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
-export type AuditLogConfigList = ReadonlyArray<AuditLogConfig>;
+export type AuditLogConfigList = Array<AuditLogConfig>;
 export const AuditLogConfigList = /*@__PURE__*/ S.Array(
   AuditLogConfig,
 ) as any as S.Schema<AuditLogConfigList>;
@@ -644,7 +644,7 @@ export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
-export type AuditConfigList = ReadonlyArray<AuditConfig>;
+export type AuditConfigList = Array<AuditConfig>;
 export const AuditConfigList = /*@__PURE__*/ S.Array(
   AuditConfig,
 ) as any as S.Schema<AuditConfigList>;
@@ -686,7 +686,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
-export type BindingList = ReadonlyArray<Binding>;
+export type BindingList = Array<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -901,7 +901,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = ReadonlyArray<Location>;
+export type LocationList = Array<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -953,7 +953,7 @@ export const ListProjectsLocationsGlobalHubsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsGlobalHubsRequest",
 }) as any as S.Schema<ListProjectsLocationsGlobalHubsRequest>;
 
-export type HubList = ReadonlyArray<Hub>;
+export type HubList = Array<Hub>;
 export const HubList = /*@__PURE__*/ S.Array(Hub) as any as S.Schema<HubList>;
 
 /** Response for HubService.ListHubs method. */
@@ -1006,7 +1006,7 @@ export const ListProjectsLocationsInternalRangesRequest =
     identifier: "ListProjectsLocationsInternalRangesRequest",
   }) as any as S.Schema<ListProjectsLocationsInternalRangesRequest>;
 
-export type InternalRangeList = ReadonlyArray<InternalRange>;
+export type InternalRangeList = Array<InternalRange>;
 export const InternalRangeList = /*@__PURE__*/ S.Array(
   InternalRange,
 ) as any as S.Schema<InternalRangeList>;
@@ -1061,8 +1061,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type GoogleLongrunningOperationList =
-  ReadonlyArray<GoogleLongrunningOperation>;
+export type GoogleLongrunningOperationList = Array<GoogleLongrunningOperation>;
 export const GoogleLongrunningOperationList = /*@__PURE__*/ S.Array(
   GoogleLongrunningOperation,
 ) as any as S.Schema<GoogleLongrunningOperationList>;
@@ -1117,7 +1116,7 @@ export const ListProjectsLocationsSpokesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsSpokesRequest",
 }) as any as S.Schema<ListProjectsLocationsSpokesRequest>;
 
-export type SpokeList = ReadonlyArray<Spoke>;
+export type SpokeList = Array<Spoke>;
 export const SpokeList = /*@__PURE__*/ S.Array(
   Spoke,
 ) as any as S.Schema<SpokeList>;

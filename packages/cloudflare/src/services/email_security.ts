@@ -217,12 +217,12 @@ export type InvestigateMoveBulkRequestExpectedDisposition =
 export const InvestigateMoveBulkRequestExpectedDisposition =
   /*@__PURE__*/ S.String;
 
-export type InvestigateMoveBulkRequestIdsList = ReadonlyArray<string>;
+export type InvestigateMoveBulkRequestIdsList = Array<string>;
 export const InvestigateMoveBulkRequestIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<InvestigateMoveBulkRequestIdsList>;
 
-export type InvestigateMoveBulkRequestPostfixIdsList = ReadonlyArray<string>;
+export type InvestigateMoveBulkRequestPostfixIdsList = Array<string>;
 export const InvestigateMoveBulkRequestPostfixIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<InvestigateMoveBulkRequestPostfixIdsList>;
@@ -304,7 +304,7 @@ export const InvestigateMoveBulkResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InvestigateMoveBulkResultItem>;
 
 export type InvestigateMoveBulkResultList =
-  ReadonlyArray<InvestigateMoveBulkResultItem>;
+  Array<InvestigateMoveBulkResultItem>;
 export const InvestigateMoveBulkResultList = /*@__PURE__*/ S.Array(
   InvestigateMoveBulkResultItem,
 ) as any as S.Schema<InvestigateMoveBulkResultList>;
@@ -324,7 +324,7 @@ export const BulkInvestigateMoveResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "BulkInvestigateMoveResponse",
 }) as any as S.Schema<BulkInvestigateMoveResponse>;
 
-export type InvestigateReleaseBulkRequestBodyList = ReadonlyArray<string>;
+export type InvestigateReleaseBulkRequestBodyList = Array<string>;
 export const InvestigateReleaseBulkRequestBodyList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<InvestigateReleaseBulkRequestBodyList>;
@@ -351,20 +351,18 @@ export const BulkInvestigateReleaseRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "BulkInvestigateReleaseRequest",
 }) as any as S.Schema<BulkInvestigateReleaseRequest>;
 
-export type InvestigateReleaseBulkResultItemDeliveredList =
-  ReadonlyArray<string>;
+export type InvestigateReleaseBulkResultItemDeliveredList = Array<string>;
 export const InvestigateReleaseBulkResultItemDeliveredList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<InvestigateReleaseBulkResultItemDeliveredList>;
 
-export type InvestigateReleaseBulkResultItemFailedList = ReadonlyArray<string>;
+export type InvestigateReleaseBulkResultItemFailedList = Array<string>;
 export const InvestigateReleaseBulkResultItemFailedList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<InvestigateReleaseBulkResultItemFailedList>;
 
-export type InvestigateReleaseBulkResultItemUndeliveredList =
-  ReadonlyArray<string>;
+export type InvestigateReleaseBulkResultItemUndeliveredList = Array<string>;
 export const InvestigateReleaseBulkResultItemUndeliveredList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -392,7 +390,7 @@ export const InvestigateReleaseBulkResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InvestigateReleaseBulkResultItem>;
 
 export type InvestigateReleaseBulkResultList =
-  ReadonlyArray<InvestigateReleaseBulkResultItem>;
+  Array<InvestigateReleaseBulkResultItem>;
 export const InvestigateReleaseBulkResultList = /*@__PURE__*/ S.Array(
   InvestigateReleaseBulkResultItem,
 ) as any as S.Schema<InvestigateReleaseBulkResultList>;
@@ -1170,7 +1168,7 @@ export const InvestigateMoveCreateResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InvestigateMoveCreateResultItem>;
 
 export type InvestigateMoveCreateResultList =
-  ReadonlyArray<InvestigateMoveCreateResultItem>;
+  Array<InvestigateMoveCreateResultItem>;
 export const InvestigateMoveCreateResultList = /*@__PURE__*/ S.Array(
   InvestigateMoveCreateResultItem,
 ) as any as S.Schema<InvestigateMoveCreateResultList>;
@@ -1587,7 +1585,7 @@ export const CreateSettingImpersonationRegistryResponse =
   }) as any as S.Schema<CreateSettingImpersonationRegistryResponse>;
 
 export type SettingsSendingDomainRestrictionsCreateRequestExcludeList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const SettingsSendingDomainRestrictionsCreateRequestExcludeList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1623,7 +1621,7 @@ export const CreateSettingSendingDomainRestrictionRequest =
   }) as any as S.Schema<CreateSettingSendingDomainRestrictionRequest>;
 
 export type SettingsSendingDomainRestrictionsCreateResponseExcludeList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const SettingsSendingDomainRestrictionsCreateResponseExcludeList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2153,17 +2151,17 @@ export const InvestigateGetResponseActionLogItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InvestigateGetResponseActionLogItem>;
 
 export type InvestigateGetResponseActionLogList =
-  ReadonlyArray<InvestigateGetResponseActionLogItem>;
+  Array<InvestigateGetResponseActionLogItem>;
 export const InvestigateGetResponseActionLogList = /*@__PURE__*/ S.Array(
   InvestigateGetResponseActionLogItem,
 ) as any as S.Schema<InvestigateGetResponseActionLogList>;
 
-export type InvestigateGetResponseClientRecipientsList = ReadonlyArray<string>;
+export type InvestigateGetResponseClientRecipientsList = Array<string>;
 export const InvestigateGetResponseClientRecipientsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<InvestigateGetResponseClientRecipientsList>;
 
-export type InvestigateGetResponseDetectionReasonsList = ReadonlyArray<string>;
+export type InvestigateGetResponseDetectionReasonsList = Array<string>;
 export const InvestigateGetResponseDetectionReasonsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<InvestigateGetResponseDetectionReasonsList>;
@@ -2255,12 +2253,12 @@ export type InvestigateGetResponseDeliveryStatusItem =
 export const InvestigateGetResponseDeliveryStatusItem = /*@__PURE__*/ S.String;
 
 export type InvestigateGetResponseDeliveryStatusList =
-  ReadonlyArray<InvestigateGetResponseDeliveryStatusItem>;
+  Array<InvestigateGetResponseDeliveryStatusItem>;
 export const InvestigateGetResponseDeliveryStatusList = /*@__PURE__*/ S.Array(
   InvestigateGetResponseDeliveryStatusItem,
 ) as any as S.Schema<InvestigateGetResponseDeliveryStatusList>;
 
-export type InvestigateGetResponseEnvelopeToList = ReadonlyArray<string>;
+export type InvestigateGetResponseEnvelopeToList = Array<string>;
 export const InvestigateGetResponseEnvelopeToList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<InvestigateGetResponseEnvelopeToList>;
@@ -2320,7 +2318,7 @@ export const InvestigateGetResponseFindingsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InvestigateGetResponseFindingsItem>;
 
 export type InvestigateGetResponseFindingsList =
-  ReadonlyArray<InvestigateGetResponseFindingsItem>;
+  Array<InvestigateGetResponseFindingsItem>;
 export const InvestigateGetResponseFindingsList = /*@__PURE__*/ S.Array(
   InvestigateGetResponseFindingsItem,
 ) as any as S.Schema<InvestigateGetResponseFindingsList>;
@@ -2334,23 +2332,23 @@ export const InvestigateGetResponsePostDeliveryOperationsItem =
   /*@__PURE__*/ S.String;
 
 export type InvestigateGetResponsePostDeliveryOperationsList =
-  ReadonlyArray<InvestigateGetResponsePostDeliveryOperationsItem>;
+  Array<InvestigateGetResponsePostDeliveryOperationsItem>;
 export const InvestigateGetResponsePostDeliveryOperationsList =
   /*@__PURE__*/ S.Array(
     InvestigateGetResponsePostDeliveryOperationsItem,
   ) as any as S.Schema<InvestigateGetResponsePostDeliveryOperationsList>;
 
-export type InvestigateGetResponseThreatCategoriesList = ReadonlyArray<string>;
+export type InvestigateGetResponseThreatCategoriesList = Array<string>;
 export const InvestigateGetResponseThreatCategoriesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<InvestigateGetResponseThreatCategoriesList>;
 
-export type InvestigateGetResponseToList = ReadonlyArray<string>;
+export type InvestigateGetResponseToList = Array<string>;
 export const InvestigateGetResponseToList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<InvestigateGetResponseToList>;
 
-export type InvestigateGetResponseToNameList = ReadonlyArray<string>;
+export type InvestigateGetResponseToNameList = Array<string>;
 export const InvestigateGetResponseToNameList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<InvestigateGetResponseToNameList>;
@@ -2849,7 +2847,7 @@ export const InvestigateDetectionsGetResponseAttachmentsItem =
   }) as any as S.Schema<InvestigateDetectionsGetResponseAttachmentsItem>;
 
 export type InvestigateDetectionsGetResponseAttachmentsList =
-  ReadonlyArray<InvestigateDetectionsGetResponseAttachmentsItem>;
+  Array<InvestigateDetectionsGetResponseAttachmentsItem>;
 export const InvestigateDetectionsGetResponseAttachmentsList =
   /*@__PURE__*/ S.Array(
     InvestigateDetectionsGetResponseAttachmentsItem,
@@ -2900,7 +2898,7 @@ export const InvestigateDetectionsGetResponseFindingsItem =
   }) as any as S.Schema<InvestigateDetectionsGetResponseFindingsItem>;
 
 export type InvestigateDetectionsGetResponseFindingsList =
-  ReadonlyArray<InvestigateDetectionsGetResponseFindingsItem>;
+  Array<InvestigateDetectionsGetResponseFindingsItem>;
 export const InvestigateDetectionsGetResponseFindingsList =
   /*@__PURE__*/ S.Array(
     InvestigateDetectionsGetResponseFindingsItem,
@@ -2921,7 +2919,7 @@ export const InvestigateDetectionsGetResponseHeadersItem =
   }) as any as S.Schema<InvestigateDetectionsGetResponseHeadersItem>;
 
 export type InvestigateDetectionsGetResponseHeadersList =
-  ReadonlyArray<InvestigateDetectionsGetResponseHeadersItem>;
+  Array<InvestigateDetectionsGetResponseHeadersItem>;
 export const InvestigateDetectionsGetResponseHeadersList =
   /*@__PURE__*/ S.Array(
     InvestigateDetectionsGetResponseHeadersItem,
@@ -2942,7 +2940,7 @@ export const InvestigateDetectionsGetResponseLinksItem =
   }) as any as S.Schema<InvestigateDetectionsGetResponseLinksItem>;
 
 export type InvestigateDetectionsGetResponseLinksList =
-  ReadonlyArray<InvestigateDetectionsGetResponseLinksItem>;
+  Array<InvestigateDetectionsGetResponseLinksItem>;
 export const InvestigateDetectionsGetResponseLinksList = /*@__PURE__*/ S.Array(
   InvestigateDetectionsGetResponseLinksItem,
 ) as any as S.Schema<InvestigateDetectionsGetResponseLinksList>;
@@ -2986,7 +2984,7 @@ export const InvestigateDetectionsGetResponseThreatCategoriesItem =
   }) as any as S.Schema<InvestigateDetectionsGetResponseThreatCategoriesItem>;
 
 export type InvestigateDetectionsGetResponseThreatCategoriesList =
-  ReadonlyArray<InvestigateDetectionsGetResponseThreatCategoriesItem>;
+  Array<InvestigateDetectionsGetResponseThreatCategoriesItem>;
 export const InvestigateDetectionsGetResponseThreatCategoriesList =
   /*@__PURE__*/ S.Array(
     InvestigateDetectionsGetResponseThreatCategoriesItem,
@@ -3203,7 +3201,7 @@ export const InvestigateTraceGetResponseInboundLinesItem =
   }) as any as S.Schema<InvestigateTraceGetResponseInboundLinesItem>;
 
 export type InvestigateTraceGetResponseInboundLinesList =
-  ReadonlyArray<InvestigateTraceGetResponseInboundLinesItem>;
+  Array<InvestigateTraceGetResponseInboundLinesItem>;
 export const InvestigateTraceGetResponseInboundLinesList =
   /*@__PURE__*/ S.Array(
     InvestigateTraceGetResponseInboundLinesItem,
@@ -3243,7 +3241,7 @@ export const InvestigateTraceGetResponseOutboundLinesItem =
   }) as any as S.Schema<InvestigateTraceGetResponseOutboundLinesItem>;
 
 export type InvestigateTraceGetResponseOutboundLinesList =
-  ReadonlyArray<InvestigateTraceGetResponseOutboundLinesItem>;
+  Array<InvestigateTraceGetResponseOutboundLinesItem>;
 export const InvestigateTraceGetResponseOutboundLinesList =
   /*@__PURE__*/ S.Array(
     InvestigateTraceGetResponseOutboundLinesItem,
@@ -3458,7 +3456,7 @@ export const SettingsDomainsGetResponseAllowedDeliveryModesItem =
   /*@__PURE__*/ S.String;
 
 export type SettingsDomainsGetResponseAllowedDeliveryModesList =
-  ReadonlyArray<SettingsDomainsGetResponseAllowedDeliveryModesItem>;
+  Array<SettingsDomainsGetResponseAllowedDeliveryModesItem>;
 export const SettingsDomainsGetResponseAllowedDeliveryModesList =
   /*@__PURE__*/ S.Array(
     SettingsDomainsGetResponseAllowedDeliveryModesItem,
@@ -3498,7 +3496,7 @@ export const SettingsDomainsGetResponseDropDispositionsItem =
   /*@__PURE__*/ S.String;
 
 export type SettingsDomainsGetResponseDropDispositionsList =
-  ReadonlyArray<SettingsDomainsGetResponseDropDispositionsItem>;
+  Array<SettingsDomainsGetResponseDropDispositionsItem>;
 export const SettingsDomainsGetResponseDropDispositionsList =
   /*@__PURE__*/ S.Array(
     SettingsDomainsGetResponseDropDispositionsItem,
@@ -3528,8 +3526,7 @@ export const SettingsDomainsGetResponseFolder = /*@__PURE__*/ S.String;
 export type SettingsDomainsGetResponseInboxProvider = "Microsoft" | "Google";
 export const SettingsDomainsGetResponseInboxProvider = /*@__PURE__*/ S.String;
 
-export type SettingsDomainsGetResponseIpRestrictionsList =
-  ReadonlyArray<string>;
+export type SettingsDomainsGetResponseIpRestrictionsList = Array<string>;
 export const SettingsDomainsGetResponseIpRestrictionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3544,7 +3541,7 @@ export type SettingsDomainsGetResponseRegionsItem =
 export const SettingsDomainsGetResponseRegionsItem = /*@__PURE__*/ S.String;
 
 export type SettingsDomainsGetResponseRegionsList =
-  ReadonlyArray<SettingsDomainsGetResponseRegionsItem>;
+  Array<SettingsDomainsGetResponseRegionsItem>;
 export const SettingsDomainsGetResponseRegionsList = /*@__PURE__*/ S.Array(
   SettingsDomainsGetResponseRegionsItem,
 ) as any as S.Schema<SettingsDomainsGetResponseRegionsList>;
@@ -3748,7 +3745,7 @@ export const GetSettingSendingDomainRestrictionRequest =
   }) as any as S.Schema<GetSettingSendingDomainRestrictionRequest>;
 
 export type SettingsSendingDomainRestrictionsGetResponseExcludeList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const SettingsSendingDomainRestrictionsGetResponseExcludeList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4086,7 +4083,7 @@ export const InvestigateBulkMessagesListResultItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<InvestigateBulkMessagesListResultItem>;
 
 export type InvestigateBulkMessagesListResultList =
-  ReadonlyArray<InvestigateBulkMessagesListResultItem>;
+  Array<InvestigateBulkMessagesListResultItem>;
 export const InvestigateBulkMessagesListResultList = /*@__PURE__*/ S.Array(
   InvestigateBulkMessagesListResultItem,
 ) as any as S.Schema<InvestigateBulkMessagesListResultList>;
@@ -4390,7 +4387,7 @@ export const InvestigateBulkListResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InvestigateBulkListResultItem>;
 
 export type InvestigateBulkListResultList =
-  ReadonlyArray<InvestigateBulkListResultItem>;
+  Array<InvestigateBulkListResultItem>;
 export const InvestigateBulkListResultList = /*@__PURE__*/ S.Array(
   InvestigateBulkListResultItem,
 ) as any as S.Schema<InvestigateBulkListResultList>;
@@ -4559,20 +4556,18 @@ export const InvestigateListResultItemActionLogItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<InvestigateListResultItemActionLogItem>;
 
 export type InvestigateListResultItemActionLogList =
-  ReadonlyArray<InvestigateListResultItemActionLogItem>;
+  Array<InvestigateListResultItemActionLogItem>;
 export const InvestigateListResultItemActionLogList = /*@__PURE__*/ S.Array(
   InvestigateListResultItemActionLogItem,
 ) as any as S.Schema<InvestigateListResultItemActionLogList>;
 
-export type InvestigateListResultItemClientRecipientsList =
-  ReadonlyArray<string>;
+export type InvestigateListResultItemClientRecipientsList = Array<string>;
 export const InvestigateListResultItemClientRecipientsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<InvestigateListResultItemClientRecipientsList>;
 
-export type InvestigateListResultItemDetectionReasonsList =
-  ReadonlyArray<string>;
+export type InvestigateListResultItemDetectionReasonsList = Array<string>;
 export const InvestigateListResultItemDetectionReasonsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4666,13 +4661,13 @@ export const InvestigateListResultItemDeliveryStatusItem =
   /*@__PURE__*/ S.String;
 
 export type InvestigateListResultItemDeliveryStatusList =
-  ReadonlyArray<InvestigateListResultItemDeliveryStatusItem>;
+  Array<InvestigateListResultItemDeliveryStatusItem>;
 export const InvestigateListResultItemDeliveryStatusList =
   /*@__PURE__*/ S.Array(
     InvestigateListResultItemDeliveryStatusItem,
   ) as any as S.Schema<InvestigateListResultItemDeliveryStatusList>;
 
-export type InvestigateListResultItemEnvelopeToList = ReadonlyArray<string>;
+export type InvestigateListResultItemEnvelopeToList = Array<string>;
 export const InvestigateListResultItemEnvelopeToList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<InvestigateListResultItemEnvelopeToList>;
@@ -4733,7 +4728,7 @@ export const InvestigateListResultItemFindingsItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<InvestigateListResultItemFindingsItem>;
 
 export type InvestigateListResultItemFindingsList =
-  ReadonlyArray<InvestigateListResultItemFindingsItem>;
+  Array<InvestigateListResultItemFindingsItem>;
 export const InvestigateListResultItemFindingsList = /*@__PURE__*/ S.Array(
   InvestigateListResultItemFindingsItem,
 ) as any as S.Schema<InvestigateListResultItemFindingsList>;
@@ -4747,25 +4742,24 @@ export const InvestigateListResultItemPostDeliveryOperationsItem =
   /*@__PURE__*/ S.String;
 
 export type InvestigateListResultItemPostDeliveryOperationsList =
-  ReadonlyArray<InvestigateListResultItemPostDeliveryOperationsItem>;
+  Array<InvestigateListResultItemPostDeliveryOperationsItem>;
 export const InvestigateListResultItemPostDeliveryOperationsList =
   /*@__PURE__*/ S.Array(
     InvestigateListResultItemPostDeliveryOperationsItem,
   ) as any as S.Schema<InvestigateListResultItemPostDeliveryOperationsList>;
 
-export type InvestigateListResultItemThreatCategoriesList =
-  ReadonlyArray<string>;
+export type InvestigateListResultItemThreatCategoriesList = Array<string>;
 export const InvestigateListResultItemThreatCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<InvestigateListResultItemThreatCategoriesList>;
 
-export type InvestigateListResultItemToList = ReadonlyArray<string>;
+export type InvestigateListResultItemToList = Array<string>;
 export const InvestigateListResultItemToList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<InvestigateListResultItemToList>;
 
-export type InvestigateListResultItemToNameList = ReadonlyArray<string>;
+export type InvestigateListResultItemToNameList = Array<string>;
 export const InvestigateListResultItemToNameList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<InvestigateListResultItemToNameList>;
@@ -4931,8 +4925,7 @@ export const InvestigateListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "InvestigateListResultItem",
 }) as any as S.Schema<InvestigateListResultItem>;
 
-export type InvestigateListResultList =
-  ReadonlyArray<InvestigateListResultItem>;
+export type InvestigateListResultList = Array<InvestigateListResultItem>;
 export const InvestigateListResultList = /*@__PURE__*/ S.Array(
   InvestigateListResultItem,
 ) as any as S.Schema<InvestigateListResultList>;
@@ -4998,7 +4991,7 @@ export type PhishguardReportsListResultItemDisposition =
 export const PhishguardReportsListResultItemDisposition =
   /*@__PURE__*/ S.String;
 
-export type PhishguardReportsListResultItemFieldsToList = ReadonlyArray<string>;
+export type PhishguardReportsListResultItemFieldsToList = Array<string>;
 export const PhishguardReportsListResultItemFieldsToList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5040,7 +5033,7 @@ export const PhishguardReportsListResultItemTagsItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PhishguardReportsListResultItemTagsItem>;
 
 export type PhishguardReportsListResultItemTagsList =
-  ReadonlyArray<PhishguardReportsListResultItemTagsItem>;
+  Array<PhishguardReportsListResultItemTagsItem>;
 export const PhishguardReportsListResultItemTagsList = /*@__PURE__*/ S.Array(
   PhishguardReportsListResultItemTagsItem,
 ) as any as S.Schema<PhishguardReportsListResultItemTagsList>;
@@ -5076,7 +5069,7 @@ export const PhishguardReportsListResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PhishguardReportsListResultItem>;
 
 export type PhishguardReportsListResultList =
-  ReadonlyArray<PhishguardReportsListResultItem>;
+  Array<PhishguardReportsListResultItem>;
 export const PhishguardReportsListResultList = /*@__PURE__*/ S.Array(
   PhishguardReportsListResultItem,
 ) as any as S.Schema<PhishguardReportsListResultList>;
@@ -5236,7 +5229,7 @@ export const SettingsAllowPoliciesListResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SettingsAllowPoliciesListResultItem>;
 
 export type SettingsAllowPoliciesListResultList =
-  ReadonlyArray<SettingsAllowPoliciesListResultItem>;
+  Array<SettingsAllowPoliciesListResultItem>;
 export const SettingsAllowPoliciesListResultList = /*@__PURE__*/ S.Array(
   SettingsAllowPoliciesListResultItem,
 ) as any as S.Schema<SettingsAllowPoliciesListResultList>;
@@ -5356,7 +5349,7 @@ export const SettingsBlockSendersListResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SettingsBlockSendersListResultItem>;
 
 export type SettingsBlockSendersListResultList =
-  ReadonlyArray<SettingsBlockSendersListResultItem>;
+  Array<SettingsBlockSendersListResultItem>;
 export const SettingsBlockSendersListResultList = /*@__PURE__*/ S.Array(
   SettingsBlockSendersListResultItem,
 ) as any as S.Schema<SettingsBlockSendersListResultList>;
@@ -5397,7 +5390,7 @@ export const SettingsDomainsListRequestAllowedDeliveryMode =
 export type SettingsDomainsListRequestDirection = "asc" | "desc";
 export const SettingsDomainsListRequestDirection = /*@__PURE__*/ S.String;
 
-export type SettingsDomainsListRequestDomainList = ReadonlyArray<string>;
+export type SettingsDomainsListRequestDomainList = Array<string>;
 export const SettingsDomainsListRequestDomainList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SettingsDomainsListRequestDomainList>;
@@ -5484,7 +5477,7 @@ export const SettingsDomainsListResultItemAllowedDeliveryModesItem =
   /*@__PURE__*/ S.String;
 
 export type SettingsDomainsListResultItemAllowedDeliveryModesList =
-  ReadonlyArray<SettingsDomainsListResultItemAllowedDeliveryModesItem>;
+  Array<SettingsDomainsListResultItemAllowedDeliveryModesItem>;
 export const SettingsDomainsListResultItemAllowedDeliveryModesList =
   /*@__PURE__*/ S.Array(
     SettingsDomainsListResultItemAllowedDeliveryModesItem,
@@ -5527,7 +5520,7 @@ export const SettingsDomainsListResultItemDropDispositionsItem =
   /*@__PURE__*/ S.String;
 
 export type SettingsDomainsListResultItemDropDispositionsList =
-  ReadonlyArray<SettingsDomainsListResultItemDropDispositionsItem>;
+  Array<SettingsDomainsListResultItemDropDispositionsItem>;
 export const SettingsDomainsListResultItemDropDispositionsList =
   /*@__PURE__*/ S.Array(
     SettingsDomainsListResultItemDropDispositionsItem,
@@ -5558,8 +5551,7 @@ export type SettingsDomainsListResultItemInboxProvider = "Microsoft" | "Google";
 export const SettingsDomainsListResultItemInboxProvider =
   /*@__PURE__*/ S.String;
 
-export type SettingsDomainsListResultItemIpRestrictionsList =
-  ReadonlyArray<string>;
+export type SettingsDomainsListResultItemIpRestrictionsList = Array<string>;
 export const SettingsDomainsListResultItemIpRestrictionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5574,7 +5566,7 @@ export type SettingsDomainsListResultItemRegionsItem =
 export const SettingsDomainsListResultItemRegionsItem = /*@__PURE__*/ S.String;
 
 export type SettingsDomainsListResultItemRegionsList =
-  ReadonlyArray<SettingsDomainsListResultItemRegionsItem>;
+  Array<SettingsDomainsListResultItemRegionsItem>;
 export const SettingsDomainsListResultItemRegionsList = /*@__PURE__*/ S.Array(
   SettingsDomainsListResultItemRegionsItem,
 ) as any as S.Schema<SettingsDomainsListResultItemRegionsList>;
@@ -5676,7 +5668,7 @@ export const SettingsDomainsListResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SettingsDomainsListResultItem>;
 
 export type SettingsDomainsListResultList =
-  ReadonlyArray<SettingsDomainsListResultItem>;
+  Array<SettingsDomainsListResultItem>;
 export const SettingsDomainsListResultList = /*@__PURE__*/ S.Array(
   SettingsDomainsListResultItem,
 ) as any as S.Schema<SettingsDomainsListResultList>;
@@ -5810,7 +5802,7 @@ export const SettingsImpersonationRegistryListResultItem =
   }) as any as S.Schema<SettingsImpersonationRegistryListResultItem>;
 
 export type SettingsImpersonationRegistryListResultList =
-  ReadonlyArray<SettingsImpersonationRegistryListResultItem>;
+  Array<SettingsImpersonationRegistryListResultItem>;
 export const SettingsImpersonationRegistryListResultList =
   /*@__PURE__*/ S.Array(
     SettingsImpersonationRegistryListResultItem,
@@ -5889,7 +5881,7 @@ export const ListSettingSendingDomainRestrictionsRequest =
   }) as any as S.Schema<ListSettingSendingDomainRestrictionsRequest>;
 
 export type SettingsSendingDomainRestrictionsListResultItemExcludeList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const SettingsSendingDomainRestrictionsListResultItemExcludeList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5926,7 +5918,7 @@ export const SettingsSendingDomainRestrictionsListResultItem =
   }) as any as S.Schema<SettingsSendingDomainRestrictionsListResultItem>;
 
 export type SettingsSendingDomainRestrictionsListResultList =
-  ReadonlyArray<SettingsSendingDomainRestrictionsListResultItem>;
+  Array<SettingsSendingDomainRestrictionsListResultItem>;
 export const SettingsSendingDomainRestrictionsListResultList =
   /*@__PURE__*/ S.Array(
     SettingsSendingDomainRestrictionsListResultItem,
@@ -6035,7 +6027,7 @@ export const SettingsTrustedDomainsListResultItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<SettingsTrustedDomainsListResultItem>;
 
 export type SettingsTrustedDomainsListResultList =
-  ReadonlyArray<SettingsTrustedDomainsListResultItem>;
+  Array<SettingsTrustedDomainsListResultItem>;
 export const SettingsTrustedDomainsListResultList = /*@__PURE__*/ S.Array(
   SettingsTrustedDomainsListResultItem,
 ) as any as S.Schema<SettingsTrustedDomainsListResultList>;
@@ -6108,7 +6100,7 @@ export const SettingsUrlIgnorePatternsListResultItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<SettingsUrlIgnorePatternsListResultItem>;
 
 export type SettingsUrlIgnorePatternsListResultList =
-  ReadonlyArray<SettingsUrlIgnorePatternsListResultItem>;
+  Array<SettingsUrlIgnorePatternsListResultItem>;
 export const SettingsUrlIgnorePatternsListResultList = /*@__PURE__*/ S.Array(
   SettingsUrlIgnorePatternsListResultItem,
 ) as any as S.Schema<SettingsUrlIgnorePatternsListResultList>;
@@ -6342,8 +6334,7 @@ export const SubmissionsListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "SubmissionsListResultItem",
 }) as any as S.Schema<SubmissionsListResultItem>;
 
-export type SubmissionsListResultList =
-  ReadonlyArray<SubmissionsListResultItem>;
+export type SubmissionsListResultList = Array<SubmissionsListResultItem>;
 export const SubmissionsListResultList = /*@__PURE__*/ S.Array(
   SubmissionsListResultItem,
 ) as any as S.Schema<SubmissionsListResultList>;
@@ -6584,7 +6575,7 @@ export type SettingsDomainsEditRequestAllowedDeliveryModesItem =
 export const SettingsDomainsEditRequestAllowedDeliveryModesItem =
   /*@__PURE__*/ S.String;
 
-export type SettingsDomainsEditRequestAllowedDeliveryModesList = ReadonlyArray<
+export type SettingsDomainsEditRequestAllowedDeliveryModesList = Array<
   SettingsDomainsEditRequestAllowedDeliveryModesItem | (string & {})
 >;
 export const SettingsDomainsEditRequestAllowedDeliveryModesList =
@@ -6606,7 +6597,7 @@ export type SettingsDomainsEditRequestDropDispositionsItem =
 export const SettingsDomainsEditRequestDropDispositionsItem =
   /*@__PURE__*/ S.String;
 
-export type SettingsDomainsEditRequestDropDispositionsList = ReadonlyArray<
+export type SettingsDomainsEditRequestDropDispositionsList = Array<
   SettingsDomainsEditRequestDropDispositionsItem | (string & {})
 >;
 export const SettingsDomainsEditRequestDropDispositionsList =
@@ -6617,8 +6608,7 @@ export const SettingsDomainsEditRequestDropDispositionsList =
 export type SettingsDomainsEditRequestFolder = "AllItems" | "Inbox";
 export const SettingsDomainsEditRequestFolder = /*@__PURE__*/ S.String;
 
-export type SettingsDomainsEditRequestIpRestrictionsList =
-  ReadonlyArray<string>;
+export type SettingsDomainsEditRequestIpRestrictionsList = Array<string>;
 export const SettingsDomainsEditRequestIpRestrictionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6632,7 +6622,7 @@ export type SettingsDomainsEditRequestRegionsItem =
   | "US";
 export const SettingsDomainsEditRequestRegionsItem = /*@__PURE__*/ S.String;
 
-export type SettingsDomainsEditRequestRegionsList = ReadonlyArray<
+export type SettingsDomainsEditRequestRegionsList = Array<
   SettingsDomainsEditRequestRegionsItem | (string & {})
 >;
 export const SettingsDomainsEditRequestRegionsList = /*@__PURE__*/ S.Array(
@@ -6710,7 +6700,7 @@ export const SettingsDomainsEditResponseAllowedDeliveryModesItem =
   /*@__PURE__*/ S.String;
 
 export type SettingsDomainsEditResponseAllowedDeliveryModesList =
-  ReadonlyArray<SettingsDomainsEditResponseAllowedDeliveryModesItem>;
+  Array<SettingsDomainsEditResponseAllowedDeliveryModesItem>;
 export const SettingsDomainsEditResponseAllowedDeliveryModesList =
   /*@__PURE__*/ S.Array(
     SettingsDomainsEditResponseAllowedDeliveryModesItem,
@@ -6753,7 +6743,7 @@ export const SettingsDomainsEditResponseDropDispositionsItem =
   /*@__PURE__*/ S.String;
 
 export type SettingsDomainsEditResponseDropDispositionsList =
-  ReadonlyArray<SettingsDomainsEditResponseDropDispositionsItem>;
+  Array<SettingsDomainsEditResponseDropDispositionsItem>;
 export const SettingsDomainsEditResponseDropDispositionsList =
   /*@__PURE__*/ S.Array(
     SettingsDomainsEditResponseDropDispositionsItem,
@@ -6783,8 +6773,7 @@ export const SettingsDomainsEditResponseFolder = /*@__PURE__*/ S.String;
 export type SettingsDomainsEditResponseInboxProvider = "Microsoft" | "Google";
 export const SettingsDomainsEditResponseInboxProvider = /*@__PURE__*/ S.String;
 
-export type SettingsDomainsEditResponseIpRestrictionsList =
-  ReadonlyArray<string>;
+export type SettingsDomainsEditResponseIpRestrictionsList = Array<string>;
 export const SettingsDomainsEditResponseIpRestrictionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6799,7 +6788,7 @@ export type SettingsDomainsEditResponseRegionsItem =
 export const SettingsDomainsEditResponseRegionsItem = /*@__PURE__*/ S.String;
 
 export type SettingsDomainsEditResponseRegionsList =
-  ReadonlyArray<SettingsDomainsEditResponseRegionsItem>;
+  Array<SettingsDomainsEditResponseRegionsItem>;
 export const SettingsDomainsEditResponseRegionsList = /*@__PURE__*/ S.Array(
   SettingsDomainsEditResponseRegionsItem,
 ) as any as S.Schema<SettingsDomainsEditResponseRegionsList>;
@@ -7007,7 +6996,7 @@ export const PatchSettingImpersonationRegistryResponse =
   }) as any as S.Schema<PatchSettingImpersonationRegistryResponse>;
 
 export type SettingsSendingDomainRestrictionsEditRequestExcludeList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const SettingsSendingDomainRestrictionsEditRequestExcludeList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -7050,7 +7039,7 @@ export const PatchSettingSendingDomainRestrictionRequest =
   }) as any as S.Schema<PatchSettingSendingDomainRestrictionRequest>;
 
 export type SettingsSendingDomainRestrictionsEditResponseExcludeList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const SettingsSendingDomainRestrictionsEditResponseExcludeList =
   /*@__PURE__*/ S.Array(
     S.String,

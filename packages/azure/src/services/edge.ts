@@ -196,7 +196,7 @@ export const Artifact = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Artifact" }) as any as S.Schema<Artifact>;
 
 /** The Artifact items on this page */
-export type ArtifactListResultValueList = ReadonlyArray<Artifact>;
+export type ArtifactListResultValueList = Array<Artifact>;
 export const ArtifactListResultValueList = /*@__PURE__*/ S.Array(
   Artifact,
 ) as any as S.Schema<ArtifactListResultValueList>;
@@ -282,7 +282,7 @@ export const ArtifactDownloadResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ArtifactDownloadResult>;
 
 /** Hierarchy Ids */
-export type HierarchyMetadataHierarchyIdsList = ReadonlyArray<string>;
+export type HierarchyMetadataHierarchyIdsList = Array<string>;
 export const HierarchyMetadataHierarchyIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<HierarchyMetadataHierarchyIdsList>;
@@ -305,7 +305,7 @@ export const HierarchyMetadata = /*@__PURE__*/ S.suspend(() =>
 
 /** Hierarchy ARM Ids */
 export type ConfigTemplateMetadataPropertiesInputLinkedHierarchiesList =
-  ReadonlyArray<HierarchyMetadata>;
+  Array<HierarchyMetadata>;
 export const ConfigTemplateMetadataPropertiesInputLinkedHierarchiesList =
   /*@__PURE__*/ S.Array(
     HierarchyMetadata,
@@ -313,7 +313,7 @@ export const ConfigTemplateMetadataPropertiesInputLinkedHierarchiesList =
 
 /** Hierarchy ARM Ids */
 export type ConfigTemplateMetadataPropertiesInputUnLinkedHierarchiesList =
-  ReadonlyArray<HierarchyMetadata>;
+  Array<HierarchyMetadata>;
 export const ConfigTemplateMetadataPropertiesInputUnLinkedHierarchiesList =
   /*@__PURE__*/ S.Array(
     HierarchyMetadata,
@@ -377,7 +377,7 @@ export const ConfigTemplateMetadatasCreateOrUpdateRequest =
 
 /** Hierarchy ARM Ids */
 export type ConfigTemplateMetadataPropertiesLinkedHierarchiesList =
-  ReadonlyArray<HierarchyMetadata>;
+  Array<HierarchyMetadata>;
 export const ConfigTemplateMetadataPropertiesLinkedHierarchiesList =
   /*@__PURE__*/ S.Array(
     HierarchyMetadata,
@@ -385,7 +385,7 @@ export const ConfigTemplateMetadataPropertiesLinkedHierarchiesList =
 
 /** Hierarchy ARM Ids */
 export type ConfigTemplateMetadataPropertiesUnLinkedHierarchiesList =
-  ReadonlyArray<HierarchyMetadata>;
+  Array<HierarchyMetadata>;
 export const ConfigTemplateMetadataPropertiesUnLinkedHierarchiesList =
   /*@__PURE__*/ S.Array(
     HierarchyMetadata,
@@ -605,7 +605,7 @@ export const ConfigTemplateMetadata = /*@__PURE__*/ S.suspend(() =>
 
 /** The ConfigTemplateMetadata items on this page */
 export type ConfigTemplateMetadataListResultValueList =
-  ReadonlyArray<ConfigTemplateMetadata>;
+  Array<ConfigTemplateMetadata>;
 export const ConfigTemplateMetadataListResultValueList = /*@__PURE__*/ S.Array(
   ConfigTemplateMetadata,
 ) as any as S.Schema<ConfigTemplateMetadataListResultValueList>;
@@ -628,7 +628,7 @@ export const ConfigTemplateMetadataListResult = /*@__PURE__*/ S.suspend(() =>
 
 /** Hierarchy ARM Ids */
 export type ConfigTemplateMetadataUpdatePropertiesLinkedHierarchiesList =
-  ReadonlyArray<HierarchyMetadata>;
+  Array<HierarchyMetadata>;
 export const ConfigTemplateMetadataUpdatePropertiesLinkedHierarchiesList =
   /*@__PURE__*/ S.Array(
     HierarchyMetadata,
@@ -636,7 +636,7 @@ export const ConfigTemplateMetadataUpdatePropertiesLinkedHierarchiesList =
 
 /** Hierarchy ARM Ids */
 export type ConfigTemplateMetadataUpdatePropertiesUnLinkedHierarchiesList =
-  ReadonlyArray<HierarchyMetadata>;
+  Array<HierarchyMetadata>;
 export const ConfigTemplateMetadataUpdatePropertiesUnLinkedHierarchiesList =
   /*@__PURE__*/ S.Array(
     HierarchyMetadata,
@@ -862,7 +862,7 @@ export const ConfigTemplateSchema = /*@__PURE__*/ S.suspend(() =>
 
 /** The ConfigTemplateSchema items on this page */
 export type ConfigTemplateSchemaListResultValueList =
-  ReadonlyArray<ConfigTemplateSchema>;
+  Array<ConfigTemplateSchema>;
 export const ConfigTemplateSchemaListResultValueList = /*@__PURE__*/ S.Array(
   ConfigTemplateSchema,
 ) as any as S.Schema<ConfigTemplateSchemaListResultValueList>;
@@ -1217,7 +1217,7 @@ export const ConfigTemplatesGetResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Hierarchy Ids */
 export type ConfigTemplatesLinkToHierarchiesRequestHierarchyIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ConfigTemplatesLinkToHierarchiesRequestHierarchyIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1330,7 +1330,7 @@ export const ConfigTemplate = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ConfigTemplate" }) as any as S.Schema<ConfigTemplate>;
 
 /** The ConfigTemplate items on this page */
-export type ConfigTemplateListResultValueList = ReadonlyArray<ConfigTemplate>;
+export type ConfigTemplateListResultValueList = Array<ConfigTemplate>;
 export const ConfigTemplateListResultValueList = /*@__PURE__*/ S.Array(
   ConfigTemplate,
 ) as any as S.Schema<ConfigTemplateListResultValueList>;
@@ -1414,7 +1414,7 @@ export const RemoveVersionResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Hierarchy Ids */
 export type ConfigTemplatesUnLinkFromHierarchiesRequestHierarchyIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ConfigTemplatesUnLinkFromHierarchiesRequestHierarchyIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1764,7 +1764,7 @@ export const ConfigTemplateVersion = /*@__PURE__*/ S.suspend(() =>
 
 /** The ConfigTemplateVersion items on this page */
 export type ConfigTemplateVersionListResultValueList =
-  ReadonlyArray<ConfigTemplateVersion>;
+  Array<ConfigTemplateVersion>;
 export const ConfigTemplateVersionListResultValueList = /*@__PURE__*/ S.Array(
   ConfigTemplateVersion,
 ) as any as S.Schema<ConfigTemplateVersionListResultValueList>;
@@ -2063,7 +2063,7 @@ export const ConfigurationReference = /*@__PURE__*/ S.suspend(() =>
 
 /** The ConfigurationReference items on this page */
 export type ConfigurationReferenceListResultValueList =
-  ReadonlyArray<ConfigurationReference>;
+  Array<ConfigurationReference>;
 export const ConfigurationReferenceListResultValueList = /*@__PURE__*/ S.Array(
   ConfigurationReference,
 ) as any as S.Schema<ConfigurationReferenceListResultValueList>;
@@ -2399,7 +2399,7 @@ export const Configuration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Configuration" }) as any as S.Schema<Configuration>;
 
 /** The Configuration items on this page */
-export type ConfigurationListResultValueList = ReadonlyArray<Configuration>;
+export type ConfigurationListResultValueList = Array<Configuration>;
 export const ConfigurationListResultValueList = /*@__PURE__*/ S.Array(
   Configuration,
 ) as any as S.Schema<ConfigurationListResultValueList>;
@@ -2539,7 +2539,7 @@ export interface Capability {
   /** Description of Capability */
   description: string;
   /** State of resource */
-  state?: ResourceState;
+  state?: ResourceState | (string & {});
 }
 export const Capability = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2550,7 +2550,7 @@ export const Capability = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Capability" }) as any as S.Schema<Capability>;
 
 /** List of Capabilities */
-export type ContextPropertiesInputCapabilitiesList = ReadonlyArray<Capability>;
+export type ContextPropertiesInputCapabilitiesList = Array<Capability>;
 export const ContextPropertiesInputCapabilitiesList = /*@__PURE__*/ S.Array(
   Capability,
 ) as any as S.Schema<ContextPropertiesInputCapabilitiesList>;
@@ -2570,7 +2570,7 @@ export const Hierarchy = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Hierarchy" }) as any as S.Schema<Hierarchy>;
 
 /** List of Hierarchies */
-export type ContextPropertiesInputHierarchiesList = ReadonlyArray<Hierarchy>;
+export type ContextPropertiesInputHierarchiesList = Array<Hierarchy>;
 export const ContextPropertiesInputHierarchiesList = /*@__PURE__*/ S.Array(
   Hierarchy,
 ) as any as S.Schema<ContextPropertiesInputHierarchiesList>;
@@ -2635,13 +2635,13 @@ export const ContextsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ContextsCreateOrUpdateResponseTagsMap>;
 
 /** List of Capabilities */
-export type ContextPropertiesCapabilitiesList = ReadonlyArray<Capability>;
+export type ContextPropertiesCapabilitiesList = Array<Capability>;
 export const ContextPropertiesCapabilitiesList = /*@__PURE__*/ S.Array(
   Capability,
 ) as any as S.Schema<ContextPropertiesCapabilitiesList>;
 
 /** List of Hierarchies */
-export type ContextPropertiesHierarchiesList = ReadonlyArray<Hierarchy>;
+export type ContextPropertiesHierarchiesList = Array<Hierarchy>;
 export const ContextPropertiesHierarchiesList = /*@__PURE__*/ S.Array(
   Hierarchy,
 ) as any as S.Schema<ContextPropertiesHierarchiesList>;
@@ -2851,7 +2851,7 @@ export const Context = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Context" }) as any as S.Schema<Context>;
 
 /** The Context items on this page */
-export type ContextListResultValueList = ReadonlyArray<Context>;
+export type ContextListResultValueList = Array<Context>;
 export const ContextListResultValueList = /*@__PURE__*/ S.Array(
   Context,
 ) as any as S.Schema<ContextListResultValueList>;
@@ -2901,13 +2901,13 @@ export const ContextsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ContextsUpdateRequestTagsMap>;
 
 /** List of Capabilities */
-export type ContextUpdatePropertiesCapabilitiesList = ReadonlyArray<Capability>;
+export type ContextUpdatePropertiesCapabilitiesList = Array<Capability>;
 export const ContextUpdatePropertiesCapabilitiesList = /*@__PURE__*/ S.Array(
   Capability,
 ) as any as S.Schema<ContextUpdatePropertiesCapabilitiesList>;
 
 /** List of Hierarchies */
-export type ContextUpdatePropertiesHierarchiesList = ReadonlyArray<Hierarchy>;
+export type ContextUpdatePropertiesHierarchiesList = Array<Hierarchy>;
 export const ContextUpdatePropertiesHierarchiesList = /*@__PURE__*/ S.Array(
   Hierarchy,
 ) as any as S.Schema<ContextUpdatePropertiesHierarchiesList>;
@@ -3027,7 +3027,7 @@ export interface AzureResourceManagerCommonTypesExtendedLocation {
   /** The name of the extended location. */
   name: string;
   /** The type of the extended location. */
-  type: AzureResourceManagerCommonTypesExtendedLocationType;
+  type: AzureResourceManagerCommonTypesExtendedLocationType | (string & {});
 }
 export const AzureResourceManagerCommonTypesExtendedLocation =
   /*@__PURE__*/ S.suspend(() =>
@@ -3306,7 +3306,7 @@ export const Diagnostic = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Diagnostic" }) as any as S.Schema<Diagnostic>;
 
 /** The Diagnostic items on this page */
-export type DiagnosticListResultValueList = ReadonlyArray<Diagnostic>;
+export type DiagnosticListResultValueList = Array<Diagnostic>;
 export const DiagnosticListResultValueList = /*@__PURE__*/ S.Array(
   Diagnostic,
 ) as any as S.Schema<DiagnosticListResultValueList>;
@@ -3509,7 +3509,7 @@ export const BenefitPlanStatus = /*@__PURE__*/ S.String;
 /** The benefit plans */
 export interface BenefitPlans {
   /** Azure Hybrid Windows Server Benefit plan */
-  azureHybridWindowsServerBenefit?: BenefitPlanStatus;
+  azureHybridWindowsServerBenefit?: BenefitPlanStatus | (string & {});
   /** Number of Windows Server VMs to license under the Azure Hybrid Benefit plan */
   windowsServerVmCount?: number;
 }
@@ -3876,7 +3876,7 @@ export const DisconnectedOperation = /*@__PURE__*/ S.suspend(() =>
 
 /** The DisconnectedOperation items on this page */
 export type DisconnectedOperationListResultValueList =
-  ReadonlyArray<DisconnectedOperation>;
+  Array<DisconnectedOperation>;
 export const DisconnectedOperationListResultValueList = /*@__PURE__*/ S.Array(
   DisconnectedOperation,
 ) as any as S.Schema<DisconnectedOperationListResultValueList>;
@@ -4367,7 +4367,7 @@ export const DynamicConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** The DynamicConfiguration items on this page */
 export type DynamicConfigurationListResultValueList =
-  ReadonlyArray<DynamicConfiguration>;
+  Array<DynamicConfiguration>;
 export const DynamicConfigurationListResultValueList = /*@__PURE__*/ S.Array(
   DynamicConfiguration,
 ) as any as S.Schema<DynamicConfigurationListResultValueList>;
@@ -4717,7 +4717,7 @@ export const DynamicConfigurationVersion = /*@__PURE__*/ S.suspend(() =>
 
 /** The DynamicConfigurationVersion items on this page */
 export type DynamicConfigurationVersionListResultValueList =
-  ReadonlyArray<DynamicConfigurationVersion>;
+  Array<DynamicConfigurationVersion>;
 export const DynamicConfigurationVersionListResultValueList =
   /*@__PURE__*/ S.Array(
     DynamicConfigurationVersion,
@@ -5045,7 +5045,7 @@ export const DynamicSchema = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DynamicSchema" }) as any as S.Schema<DynamicSchema>;
 
 /** The DynamicSchema items on this page */
-export type DynamicSchemaListResultValueList = ReadonlyArray<DynamicSchema>;
+export type DynamicSchemaListResultValueList = Array<DynamicSchema>;
 export const DynamicSchemaListResultValueList = /*@__PURE__*/ S.Array(
   DynamicSchema,
 ) as any as S.Schema<DynamicSchemaListResultValueList>;
@@ -5371,7 +5371,7 @@ export const DynamicSchemaVersion = /*@__PURE__*/ S.suspend(() =>
 
 /** The DynamicSchemaVersion items on this page */
 export type DynamicSchemaVersionListResultValueList =
-  ReadonlyArray<DynamicSchemaVersion>;
+  Array<DynamicSchemaVersion>;
 export const DynamicSchemaVersionListResultValueList = /*@__PURE__*/ S.Array(
   DynamicSchemaVersion,
 ) as any as S.Schema<DynamicSchemaVersionListResultValueList>;
@@ -5592,7 +5592,7 @@ export const StageStatus = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StageStatus" }) as any as S.Schema<StageStatus>;
 
 /** target resource statuses */
-export type ExecutionStatusStageHistoryList = ReadonlyArray<StageStatus>;
+export type ExecutionStatusStageHistoryList = Array<StageStatus>;
 export const ExecutionStatusStageHistoryList = /*@__PURE__*/ S.Array(
   StageStatus,
 ) as any as S.Schema<ExecutionStatusStageHistoryList>;
@@ -5841,7 +5841,7 @@ export const Execution = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Execution" }) as any as S.Schema<Execution>;
 
 /** The Execution items on this page */
-export type ExecutionListResultValueList = ReadonlyArray<Execution>;
+export type ExecutionListResultValueList = Array<Execution>;
 export const ExecutionListResultValueList = /*@__PURE__*/ S.Array(
   Execution,
 ) as any as S.Schema<ExecutionListResultValueList>;
@@ -6229,7 +6229,7 @@ export const HardwareSetting = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HardwareSetting>;
 
 /** The HardwareSetting items on this page */
-export type HardwareSettingListResultValueList = ReadonlyArray<HardwareSetting>;
+export type HardwareSettingListResultValueList = Array<HardwareSetting>;
 export const HardwareSettingListResultValueList = /*@__PURE__*/ S.Array(
   HardwareSetting,
 ) as any as S.Schema<HardwareSettingListResultValueList>;
@@ -6362,7 +6362,7 @@ export const HierarchyConfigurationMetadata = /*@__PURE__*/ S.suspend(() =>
 
 /** The HierarchyConfigurationMetadata items on this page */
 export type HierarchyConfigurationMetadataListResultValueList =
-  ReadonlyArray<HierarchyConfigurationMetadata>;
+  Array<HierarchyConfigurationMetadata>;
 export const HierarchyConfigurationMetadataListResultValueList =
   /*@__PURE__*/ S.Array(
     HierarchyConfigurationMetadata,
@@ -6519,7 +6519,7 @@ export const HierarchyConfigurationMetadataVersion = /*@__PURE__*/ S.suspend(
 
 /** The HierarchyConfigurationMetadataVersion items on this page */
 export type HierarchyConfigurationMetadataVersionListResultValueList =
-  ReadonlyArray<HierarchyConfigurationMetadataVersion>;
+  Array<HierarchyConfigurationMetadataVersion>;
 export const HierarchyConfigurationMetadataVersionListResultValueList =
   /*@__PURE__*/ S.Array(
     HierarchyConfigurationMetadataVersion,
@@ -6575,7 +6575,7 @@ export type ReleaseType = "Install" | "Update";
 export const ReleaseType = /*@__PURE__*/ S.String;
 
 /** The versions that are compatible for this update package. */
-export type ImagePropertiesCompatibleVersionsList = ReadonlyArray<string>;
+export type ImagePropertiesCompatibleVersionsList = Array<string>;
 export const ImagePropertiesCompatibleVersionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ImagePropertiesCompatibleVersionsList>;
@@ -6728,7 +6728,7 @@ export const Image = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Image" }) as any as S.Schema<Image>;
 
 /** The Image items on this page */
-export type ImageListResultValueList = ReadonlyArray<Image>;
+export type ImageListResultValueList = Array<Image>;
 export const ImageListResultValueList = /*@__PURE__*/ S.Array(
   Image,
 ) as any as S.Schema<ImageListResultValueList>;
@@ -6778,7 +6778,7 @@ export const ImagesListDownloadUriRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ImagesListDownloadUriRequest>;
 
 /** The versions that are compatible for this update package. */
-export type ImageDownloadResultCompatibleVersionsList = ReadonlyArray<string>;
+export type ImageDownloadResultCompatibleVersionsList = Array<string>;
 export const ImageDownloadResultCompatibleVersionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ImageDownloadResultCompatibleVersionsList>;
@@ -6920,7 +6920,7 @@ export const ReconciliationState = /*@__PURE__*/ S.String;
 /** Defines a ReconciliationPolicy */
 export interface ReconciliationPolicyProperties {
   /** The state of the ReconciliationPolicy */
-  state: ReconciliationState;
+  state: ReconciliationState | (string & {});
   /** Policy interval */
   interval: string;
 }
@@ -6950,7 +6950,7 @@ export const ComponentStatus = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ComponentStatus>;
 
 /** Component statuses */
-export type TargetStatusComponentStatusesList = ReadonlyArray<ComponentStatus>;
+export type TargetStatusComponentStatusesList = Array<ComponentStatus>;
 export const TargetStatusComponentStatusesList = /*@__PURE__*/ S.Array(
   ComponentStatus,
 ) as any as S.Schema<TargetStatusComponentStatusesList>;
@@ -6973,7 +6973,7 @@ export const TargetStatus = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TargetStatus" }) as any as S.Schema<TargetStatus>;
 
 /** Target resource statuses */
-export type DeploymentStatusTargetStatusesList = ReadonlyArray<TargetStatus>;
+export type DeploymentStatusTargetStatusesList = Array<TargetStatus>;
 export const DeploymentStatusTargetStatusesList = /*@__PURE__*/ S.Array(
   TargetStatus,
 ) as any as S.Schema<DeploymentStatusTargetStatusesList>;
@@ -7139,7 +7139,7 @@ export const InstanceHistory = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InstanceHistory>;
 
 /** The InstanceHistory items on this page */
-export type InstanceHistoryListResultValueList = ReadonlyArray<InstanceHistory>;
+export type InstanceHistoryListResultValueList = Array<InstanceHistory>;
 export const InstanceHistoryListResultValueList = /*@__PURE__*/ S.Array(
   InstanceHistory,
 ) as any as S.Schema<InstanceHistoryListResultValueList>;
@@ -7447,7 +7447,7 @@ export const Instance = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Instance" }) as any as S.Schema<Instance>;
 
 /** The Instance items on this page */
-export type InstanceListResultValueList = ReadonlyArray<Instance>;
+export type InstanceListResultValueList = Array<Instance>;
 export const InstanceListResultValueList = /*@__PURE__*/ S.Array(
   Instance,
 ) as any as S.Schema<InstanceListResultValueList>;
@@ -7635,13 +7635,13 @@ export const JobStepStatisticsBase = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<JobStepStatisticsBase>;
 
 /** Nested substeps for this step */
-export type JobStepStepsList = ReadonlyArray<JobStep>;
+export type JobStepStepsList = Array<JobStep>;
 export const JobStepStepsList = /*@__PURE__*/ S.Array(
   S.suspend(() => JobStep),
 ) as any as S.Schema<JobStepStepsList>;
 
 /** The error details. */
-export type ErrorDetailDetailsList = ReadonlyArray<ErrorDetail>;
+export type ErrorDetailDetailsList = Array<ErrorDetail>;
 export const ErrorDetailDetailsList = /*@__PURE__*/ S.Array(
   S.suspend(() => ErrorDetail),
 ) as any as S.Schema<ErrorDetailDetailsList>;
@@ -7663,7 +7663,7 @@ export const ErrorAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ErrorAdditionalInfo>;
 
 /** The error additional info. */
-export type ErrorDetailAdditionalInfoList = ReadonlyArray<ErrorAdditionalInfo>;
+export type ErrorDetailAdditionalInfoList = Array<ErrorAdditionalInfo>;
 export const ErrorDetailAdditionalInfoList = /*@__PURE__*/ S.Array(
   ErrorAdditionalInfo,
 ) as any as S.Schema<ErrorDetailAdditionalInfoList>;
@@ -7692,14 +7692,13 @@ export const ErrorDetail = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ErrorDetail" }) as any as S.Schema<ErrorDetail>;
 
 /** The error details. */
-export type JobStepErrorDetailsDetailsList = ReadonlyArray<ErrorDetail>;
+export type JobStepErrorDetailsDetailsList = Array<ErrorDetail>;
 export const JobStepErrorDetailsDetailsList = /*@__PURE__*/ S.Array(
   ErrorDetail,
 ) as any as S.Schema<JobStepErrorDetailsDetailsList>;
 
 /** The error additional info. */
-export type JobStepErrorDetailsAdditionalInfoList =
-  ReadonlyArray<ErrorAdditionalInfo>;
+export type JobStepErrorDetailsAdditionalInfoList = Array<ErrorAdditionalInfo>;
 export const JobStepErrorDetailsAdditionalInfoList = /*@__PURE__*/ S.Array(
   ErrorAdditionalInfo,
 ) as any as S.Schema<JobStepErrorDetailsAdditionalInfoList>;
@@ -7762,20 +7761,20 @@ export const JobStep = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "JobStep" }) as any as S.Schema<JobStep>;
 
 /** Steps and substatuses for the job. */
-export type JobPropertiesStepsList = ReadonlyArray<JobStep>;
+export type JobPropertiesStepsList = Array<JobStep>;
 export const JobPropertiesStepsList = /*@__PURE__*/ S.Array(
   JobStep,
 ) as any as S.Schema<JobPropertiesStepsList>;
 
 /** The error details. */
-export type JobPropertiesErrorDetailsDetailsList = ReadonlyArray<ErrorDetail>;
+export type JobPropertiesErrorDetailsDetailsList = Array<ErrorDetail>;
 export const JobPropertiesErrorDetailsDetailsList = /*@__PURE__*/ S.Array(
   ErrorDetail,
 ) as any as S.Schema<JobPropertiesErrorDetailsDetailsList>;
 
 /** The error additional info. */
 export type JobPropertiesErrorDetailsAdditionalInfoList =
-  ReadonlyArray<ErrorAdditionalInfo>;
+  Array<ErrorAdditionalInfo>;
 export const JobPropertiesErrorDetailsAdditionalInfoList =
   /*@__PURE__*/ S.Array(
     ErrorAdditionalInfo,
@@ -7931,7 +7930,7 @@ export const Job = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Job" }) as any as S.Schema<Job>;
 
 /** The Job items on this page */
-export type JobListResultValueList = ReadonlyArray<Job>;
+export type JobListResultValueList = Array<Job>;
 export const JobListResultValueList = /*@__PURE__*/ S.Array(
   Job,
 ) as any as S.Schema<JobListResultValueList>;
@@ -8018,7 +8017,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = ReadonlyArray<Operation>;
+export type OperationsListResponseValueList = Array<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;
@@ -8248,7 +8247,7 @@ export const SchemaReference = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SchemaReference>;
 
 /** The SchemaReference items on this page */
-export type SchemaReferenceListResultValueList = ReadonlyArray<SchemaReference>;
+export type SchemaReferenceListResultValueList = Array<SchemaReference>;
 export const SchemaReferenceListResultValueList = /*@__PURE__*/ S.Array(
   SchemaReference,
 ) as any as S.Schema<SchemaReferenceListResultValueList>;
@@ -8676,7 +8675,7 @@ export const Schema = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Schema" }) as any as S.Schema<Schema>;
 
 /** The Schema items on this page */
-export type SchemaListResultValueList = ReadonlyArray<Schema>;
+export type SchemaListResultValueList = Array<Schema>;
 export const SchemaListResultValueList = /*@__PURE__*/ S.Array(
   Schema,
 ) as any as S.Schema<SchemaListResultValueList>;
@@ -9033,7 +9032,7 @@ export const SchemaVersion = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SchemaVersion" }) as any as S.Schema<SchemaVersion>;
 
 /** The SchemaVersion items on this page */
-export type SchemaVersionListResultValueList = ReadonlyArray<SchemaVersion>;
+export type SchemaVersionListResultValueList = Array<SchemaVersion>;
 export const SchemaVersionListResultValueList = /*@__PURE__*/ S.Array(
   SchemaVersion,
 ) as any as S.Schema<SchemaVersionListResultValueList>;
@@ -9333,7 +9332,7 @@ export const SiteReference = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SiteReference" }) as any as S.Schema<SiteReference>;
 
 /** The SiteReference items on this page */
-export type SiteReferenceListResultValueList = ReadonlyArray<SiteReference>;
+export type SiteReferenceListResultValueList = Array<SiteReference>;
 export const SiteReferenceListResultValueList = /*@__PURE__*/ S.Array(
   SiteReference,
 ) as any as S.Schema<SiteReferenceListResultValueList>;
@@ -9683,7 +9682,7 @@ export const Site = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Site" }) as any as S.Schema<Site>;
 
 /** The Site items on this page */
-export type SiteListResultValueList = ReadonlyArray<Site>;
+export type SiteListResultValueList = Array<Site>;
 export const SiteListResultValueList = /*@__PURE__*/ S.Array(
   Site,
 ) as any as S.Schema<SiteListResultValueList>;
@@ -10297,8 +10296,7 @@ export const SolutionMetadata = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SolutionMetadata>;
 
 /** The SolutionMetadata items on this page */
-export type SolutionMetadataListResultValueList =
-  ReadonlyArray<SolutionMetadata>;
+export type SolutionMetadataListResultValueList = Array<SolutionMetadata>;
 export const SolutionMetadataListResultValueList = /*@__PURE__*/ S.Array(
   SolutionMetadata,
 ) as any as S.Schema<SolutionMetadataListResultValueList>;
@@ -10443,7 +10441,7 @@ export const SolutionMetadataVersion = /*@__PURE__*/ S.suspend(() =>
 
 /** The SolutionMetadataVersion items on this page */
 export type SolutionMetadataVersionListResultValueList =
-  ReadonlyArray<SolutionMetadataVersion>;
+  Array<SolutionMetadataVersion>;
 export const SolutionMetadataVersionListResultValueList = /*@__PURE__*/ S.Array(
   SolutionMetadataVersion,
 ) as any as S.Schema<SolutionMetadataVersionListResultValueList>;
@@ -10600,7 +10598,7 @@ export const SolutionSchema = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SolutionSchema" }) as any as S.Schema<SolutionSchema>;
 
 /** The SolutionSchema items on this page */
-export type SolutionSchemaListResultValueList = ReadonlyArray<SolutionSchema>;
+export type SolutionSchemaListResultValueList = Array<SolutionSchema>;
 export const SolutionSchemaListResultValueList = /*@__PURE__*/ S.Array(
   SolutionSchema,
 ) as any as S.Schema<SolutionSchemaListResultValueList>;
@@ -10685,7 +10683,7 @@ export const AvailableSolutionTemplateVersion = /*@__PURE__*/ S.suspend(() =>
 
 /** List of latest revisions for available solution template versions */
 export type SolutionPropertiesAvailableSolutionTemplateVersionsList =
-  ReadonlyArray<AvailableSolutionTemplateVersion>;
+  Array<AvailableSolutionTemplateVersion>;
 export const SolutionPropertiesAvailableSolutionTemplateVersionsList =
   /*@__PURE__*/ S.Array(
     AvailableSolutionTemplateVersion,
@@ -10896,7 +10894,7 @@ export const Solution = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Solution" }) as any as S.Schema<Solution>;
 
 /** The Solution items on this page */
-export type SolutionListResultValueList = ReadonlyArray<Solution>;
+export type SolutionListResultValueList = Array<Solution>;
 export const SolutionListResultValueList = /*@__PURE__*/ S.Array(
   Solution,
 ) as any as S.Schema<SolutionListResultValueList>;
@@ -10998,8 +10996,7 @@ export const SolutionTemplatesCreateOrUpdateRequestTagsMap =
   ) as any as S.Schema<SolutionTemplatesCreateOrUpdateRequestTagsMap>;
 
 /** List of capabilities */
-export type SolutionTemplatePropertiesInputCapabilitiesList =
-  ReadonlyArray<string>;
+export type SolutionTemplatePropertiesInputCapabilitiesList = Array<string>;
 export const SolutionTemplatePropertiesInputCapabilitiesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -11073,7 +11070,7 @@ export const SolutionTemplatesCreateOrUpdateResponseTagsMap =
   ) as any as S.Schema<SolutionTemplatesCreateOrUpdateResponseTagsMap>;
 
 /** List of capabilities */
-export type SolutionTemplatePropertiesCapabilitiesList = ReadonlyArray<string>;
+export type SolutionTemplatePropertiesCapabilitiesList = Array<string>;
 export const SolutionTemplatePropertiesCapabilitiesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SolutionTemplatePropertiesCapabilitiesList>;
@@ -11460,8 +11457,7 @@ export const SolutionTemplate = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SolutionTemplate>;
 
 /** The SolutionTemplate items on this page */
-export type SolutionTemplateListResultValueList =
-  ReadonlyArray<SolutionTemplate>;
+export type SolutionTemplateListResultValueList = Array<SolutionTemplate>;
 export const SolutionTemplateListResultValueList = /*@__PURE__*/ S.Array(
   SolutionTemplate,
 ) as any as S.Schema<SolutionTemplateListResultValueList>;
@@ -11548,8 +11544,7 @@ export const SolutionTemplatesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<SolutionTemplatesUpdateRequestTagsMap>;
 
 /** List of capabilities */
-export type SolutionTemplateUpdatePropertiesCapabilitiesList =
-  ReadonlyArray<string>;
+export type SolutionTemplateUpdatePropertiesCapabilitiesList = Array<string>;
 export const SolutionTemplateUpdatePropertiesCapabilitiesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -11665,7 +11660,7 @@ export const BulkDeployTargetDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** Targets to which solution needs to be deployed */
 export type SolutionTemplateVersionsBulkDeploySolutionRequestTargetsList =
-  ReadonlyArray<BulkDeployTargetDetails>;
+  Array<BulkDeployTargetDetails>;
 export const SolutionTemplateVersionsBulkDeploySolutionRequestTargetsList =
   /*@__PURE__*/ S.Array(
     BulkDeployTargetDetails,
@@ -11711,7 +11706,7 @@ export const SolutionTemplateVersionsBulkDeploySolutionResponse =
 
 /** Solution dependencies */
 export type SolutionDependencyParameterDependenciesList =
-  ReadonlyArray<SolutionDependencyParameter>;
+  Array<SolutionDependencyParameter>;
 export const SolutionDependencyParameterDependenciesList =
   /*@__PURE__*/ S.Array(
     S.suspend(() => SolutionDependencyParameter),
@@ -11747,7 +11742,7 @@ export const SolutionDependencyParameter = /*@__PURE__*/ S.suspend(() =>
 
 /** Solution dependencies */
 export type BulkPublishTargetDetailsSolutionDependenciesList =
-  ReadonlyArray<SolutionDependencyParameter>;
+  Array<SolutionDependencyParameter>;
 export const BulkPublishTargetDetailsSolutionDependenciesList =
   /*@__PURE__*/ S.Array(
     SolutionDependencyParameter,
@@ -11782,7 +11777,7 @@ export const BulkPublishTargetDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** Targets to which solution needs to be published */
 export type SolutionTemplateVersionsBulkPublishSolutionRequestTargetsList =
-  ReadonlyArray<BulkPublishTargetDetails>;
+  Array<BulkPublishTargetDetails>;
 export const SolutionTemplateVersionsBulkPublishSolutionRequestTargetsList =
   /*@__PURE__*/ S.Array(
     BulkPublishTargetDetails,
@@ -11790,7 +11785,7 @@ export const SolutionTemplateVersionsBulkPublishSolutionRequestTargetsList =
 
 /** Solution dependencies */
 export type SolutionTemplateVersionsBulkPublishSolutionRequestSolutionDependenciesList =
-  ReadonlyArray<SolutionDependencyParameter>;
+  Array<SolutionDependencyParameter>;
 export const SolutionTemplateVersionsBulkPublishSolutionRequestSolutionDependenciesList =
   /*@__PURE__*/ S.Array(
     SolutionDependencyParameter,
@@ -11847,7 +11842,7 @@ export const SolutionTemplateVersionsBulkPublishSolutionResponse =
 
 /** Solution dependencies */
 export type BulkReviewTargetDetailsSolutionDependenciesList =
-  ReadonlyArray<SolutionDependencyParameter>;
+  Array<SolutionDependencyParameter>;
 export const BulkReviewTargetDetailsSolutionDependenciesList =
   /*@__PURE__*/ S.Array(
     SolutionDependencyParameter,
@@ -11879,7 +11874,7 @@ export const BulkReviewTargetDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** Targets to which solution needs to be published */
 export type SolutionTemplateVersionsBulkReviewSolutionRequestTargetsList =
-  ReadonlyArray<BulkReviewTargetDetails>;
+  Array<BulkReviewTargetDetails>;
 export const SolutionTemplateVersionsBulkReviewSolutionRequestTargetsList =
   /*@__PURE__*/ S.Array(
     BulkReviewTargetDetails,
@@ -11887,7 +11882,7 @@ export const SolutionTemplateVersionsBulkReviewSolutionRequestTargetsList =
 
 /** Solution dependencies */
 export type SolutionTemplateVersionsBulkReviewSolutionRequestSolutionDependenciesList =
-  ReadonlyArray<SolutionDependencyParameter>;
+  Array<SolutionDependencyParameter>;
 export const SolutionTemplateVersionsBulkReviewSolutionRequestSolutionDependenciesList =
   /*@__PURE__*/ S.Array(
     SolutionDependencyParameter,
@@ -12149,7 +12144,7 @@ export const SolutionTemplateVersion = /*@__PURE__*/ S.suspend(() =>
 
 /** The SolutionTemplateVersion items on this page */
 export type SolutionTemplateVersionListResultValueList =
-  ReadonlyArray<SolutionTemplateVersion>;
+  Array<SolutionTemplateVersion>;
 export const SolutionTemplateVersionListResultValueList = /*@__PURE__*/ S.Array(
   SolutionTemplateVersion,
 ) as any as S.Schema<SolutionTemplateVersionListResultValueList>;
@@ -12380,7 +12375,7 @@ export type StateCategory =
 export const StateCategory = /*@__PURE__*/ S.String;
 
 /** Child stages which represents more granular level stage status if any */
-export type StageMapChildStagesList = ReadonlyArray<StageMap>;
+export type StageMapChildStagesList = Array<StageMap>;
 export const StageMapChildStagesList = /*@__PURE__*/ S.Array(
   S.suspend(() => StageMap),
 ) as any as S.Schema<StageMapChildStagesList>;
@@ -12412,14 +12407,13 @@ export const StageMap = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StageMap" }) as any as S.Schema<StageMap>;
 
 /** Stages of revision */
-export type SolutionVersionPropertiesStagesList = ReadonlyArray<StageMap>;
+export type SolutionVersionPropertiesStagesList = Array<StageMap>;
 export const SolutionVersionPropertiesStagesList = /*@__PURE__*/ S.Array(
   StageMap,
 ) as any as S.Schema<SolutionVersionPropertiesStagesList>;
 
 /** Solution dependencies */
-export type SolutionDependencyDependenciesList =
-  ReadonlyArray<SolutionDependency>;
+export type SolutionDependencyDependenciesList = Array<SolutionDependency>;
 export const SolutionDependencyDependenciesList = /*@__PURE__*/ S.Array(
   S.suspend(() => SolutionDependency),
 ) as any as S.Schema<SolutionDependencyDependenciesList>;
@@ -12451,7 +12445,7 @@ export const SolutionDependency = /*@__PURE__*/ S.suspend(() =>
 
 /** Solution Dependency Context */
 export type SolutionVersionPropertiesSolutionDependenciesList =
-  ReadonlyArray<SolutionDependency>;
+  Array<SolutionDependency>;
 export const SolutionVersionPropertiesSolutionDependenciesList =
   /*@__PURE__*/ S.Array(
     SolutionDependency,
@@ -12459,7 +12453,7 @@ export const SolutionVersionPropertiesSolutionDependenciesList =
 
 /** The error details. */
 export type SolutionVersionPropertiesErrorDetailsDetailsList =
-  ReadonlyArray<ErrorDetail>;
+  Array<ErrorDetail>;
 export const SolutionVersionPropertiesErrorDetailsDetailsList =
   /*@__PURE__*/ S.Array(
     ErrorDetail,
@@ -12467,7 +12461,7 @@ export const SolutionVersionPropertiesErrorDetailsDetailsList =
 
 /** The error additional info. */
 export type SolutionVersionPropertiesErrorDetailsAdditionalInfoList =
-  ReadonlyArray<ErrorAdditionalInfo>;
+  Array<ErrorAdditionalInfo>;
 export const SolutionVersionPropertiesErrorDetailsAdditionalInfoList =
   /*@__PURE__*/ S.Array(
     ErrorAdditionalInfo,
@@ -12761,7 +12755,7 @@ export const SolutionVersion = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SolutionVersion>;
 
 /** The SolutionVersion items on this page */
-export type SolutionVersionListResultValueList = ReadonlyArray<SolutionVersion>;
+export type SolutionVersionListResultValueList = Array<SolutionVersion>;
 export const SolutionVersionListResultValueList = /*@__PURE__*/ S.Array(
   SolutionVersion,
 ) as any as S.Schema<SolutionVersionListResultValueList>;
@@ -12890,7 +12884,7 @@ export const TargetPropertiesInputTargetSpecificationMap =
   ) as any as S.Schema<TargetPropertiesInputTargetSpecificationMap>;
 
 /** List of capabilities */
-export type TargetPropertiesInputCapabilitiesList = ReadonlyArray<string>;
+export type TargetPropertiesInputCapabilitiesList = Array<string>;
 export const TargetPropertiesInputCapabilitiesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<TargetPropertiesInputCapabilitiesList>;
@@ -12986,7 +12980,7 @@ export const TargetPropertiesTargetSpecificationMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<TargetPropertiesTargetSpecificationMap>;
 
 /** List of capabilities */
-export type TargetPropertiesCapabilitiesList = ReadonlyArray<string>;
+export type TargetPropertiesCapabilitiesList = Array<string>;
 export const TargetPropertiesCapabilitiesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<TargetPropertiesCapabilitiesList>;
@@ -13273,7 +13267,7 @@ export const Target = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Target" }) as any as S.Schema<Target>;
 
 /** The Target items on this page */
-export type TargetListResultValueList = ReadonlyArray<Target>;
+export type TargetListResultValueList = Array<Target>;
 export const TargetListResultValueList = /*@__PURE__*/ S.Array(
   Target,
 ) as any as S.Schema<TargetListResultValueList>;
@@ -13414,7 +13408,7 @@ export const TargetsRemoveRevisionResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Solution Dependencies */
 export type TargetsResolveConfigurationRequestSolutionDependenciesList =
-  ReadonlyArray<SolutionDependencyParameter>;
+  Array<SolutionDependencyParameter>;
 export const TargetsResolveConfigurationRequestSolutionDependenciesList =
   /*@__PURE__*/ S.Array(
     SolutionDependencyParameter,
@@ -13471,7 +13465,7 @@ export const ResolvedConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** Solution Dependencies */
 export type TargetsReviewSolutionVersionRequestSolutionDependenciesList =
-  ReadonlyArray<SolutionDependencyParameter>;
+  Array<SolutionDependencyParameter>;
 export const TargetsReviewSolutionVersionRequestSolutionDependenciesList =
   /*@__PURE__*/ S.Array(
     SolutionDependencyParameter,
@@ -13662,7 +13656,7 @@ export const TargetUpdatePropertiesTargetSpecificationMap =
   ) as any as S.Schema<TargetUpdatePropertiesTargetSpecificationMap>;
 
 /** List of capabilities */
-export type TargetUpdatePropertiesCapabilitiesList = ReadonlyArray<string>;
+export type TargetUpdatePropertiesCapabilitiesList = Array<string>;
 export const TargetUpdatePropertiesCapabilitiesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<TargetUpdatePropertiesCapabilitiesList>;
@@ -14103,7 +14097,7 @@ export const Workflow = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Workflow" }) as any as S.Schema<Workflow>;
 
 /** The Workflow items on this page */
-export type WorkflowListResultValueList = ReadonlyArray<Workflow>;
+export type WorkflowListResultValueList = Array<Workflow>;
 export const WorkflowListResultValueList = /*@__PURE__*/ S.Array(
   Workflow,
 ) as any as S.Schema<WorkflowListResultValueList>;
@@ -14218,7 +14212,7 @@ export const TaskSpec = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TaskSpec" }) as any as S.Schema<TaskSpec>;
 
 /** List of tasks in the stage */
-export type StageSpecTasksList = ReadonlyArray<TaskSpec>;
+export type StageSpecTasksList = Array<TaskSpec>;
 export const StageSpecTasksList = /*@__PURE__*/ S.Array(
   TaskSpec,
 ) as any as S.Schema<StageSpecTasksList>;
@@ -14233,7 +14227,7 @@ export const ErrorActionMode = /*@__PURE__*/ S.String;
 /** Error Action Properties */
 export interface ErrorAction {
   /** Error action mode */
-  mode?: ErrorActionMode;
+  mode?: ErrorActionMode | (string & {});
   /** Max tolerated failures */
   maxToleratedFailures?: number;
 }
@@ -14279,8 +14273,7 @@ export const StageSpec = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StageSpec" }) as any as S.Schema<StageSpec>;
 
 /** A list of stage specs */
-export type WorkflowVersionPropertiesInputStageSpecList =
-  ReadonlyArray<StageSpec>;
+export type WorkflowVersionPropertiesInputStageSpecList = Array<StageSpec>;
 export const WorkflowVersionPropertiesInputStageSpecList =
   /*@__PURE__*/ S.Array(
     StageSpec,
@@ -14352,7 +14345,7 @@ export const WorkflowVersionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<WorkflowVersionsCreateOrUpdateRequest>;
 
 /** A list of stage specs */
-export type WorkflowVersionPropertiesStageSpecList = ReadonlyArray<StageSpec>;
+export type WorkflowVersionPropertiesStageSpecList = Array<StageSpec>;
 export const WorkflowVersionPropertiesStageSpecList = /*@__PURE__*/ S.Array(
   StageSpec,
 ) as any as S.Schema<WorkflowVersionPropertiesStageSpecList>;
@@ -14591,7 +14584,7 @@ export const WorkflowVersion = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WorkflowVersion>;
 
 /** The WorkflowVersion items on this page */
-export type WorkflowVersionListResultValueList = ReadonlyArray<WorkflowVersion>;
+export type WorkflowVersionListResultValueList = Array<WorkflowVersion>;
 export const WorkflowVersionListResultValueList = /*@__PURE__*/ S.Array(
   WorkflowVersion,
 ) as any as S.Schema<WorkflowVersionListResultValueList>;
@@ -14613,8 +14606,7 @@ export const WorkflowVersionListResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WorkflowVersionListResult>;
 
 /** A list of stage specs */
-export type WorkflowVersionPropertiesUpdateStageSpecList =
-  ReadonlyArray<StageSpec>;
+export type WorkflowVersionPropertiesUpdateStageSpecList = Array<StageSpec>;
 export const WorkflowVersionPropertiesUpdateStageSpecList =
   /*@__PURE__*/ S.Array(
     StageSpec,

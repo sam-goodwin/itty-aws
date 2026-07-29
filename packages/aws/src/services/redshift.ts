@@ -3602,7 +3602,7 @@ export type ServiceAuthorization = "Enabled" | "Disabled";
 export const ServiceAuthorization = /*@__PURE__*/ S.String;
 
 export interface LakeFormationQuery {
-  Authorization?: ServiceAuthorization;
+  Authorization?: ServiceAuthorization | (string & {});
 }
 export const LakeFormationQuery = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Authorization: S.optional(ServiceAuthorization) }),
@@ -3620,7 +3620,7 @@ export const LakeFormationServiceIntegrations = /*@__PURE__*/ S.Array(
   LakeFormationScopeUnion,
 );
 export interface ReadWriteAccess {
-  Authorization?: ServiceAuthorization;
+  Authorization?: ServiceAuthorization | (string & {});
 }
 export const ReadWriteAccess = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Authorization: S.optional(ServiceAuthorization) }),
@@ -3636,7 +3636,7 @@ export const S3AccessGrantsServiceIntegrations = /*@__PURE__*/ S.Array(
   S3AccessGrantsScopeUnion,
 );
 export interface Connect {
-  Authorization?: ServiceAuthorization;
+  Authorization?: ServiceAuthorization | (string & {});
 }
 export const Connect = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Authorization: S.optional(ServiceAuthorization) }),
@@ -4959,7 +4959,7 @@ export interface Parameter {
   Source?: string;
   DataType?: string;
   AllowedValues?: string;
-  ApplyType?: ParameterApplyType;
+  ApplyType?: ParameterApplyType | (string & {});
   IsModifiable?: boolean;
   MinimumEngineVersion?: string;
 }

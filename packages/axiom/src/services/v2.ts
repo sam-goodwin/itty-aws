@@ -54,7 +54,7 @@ export class UnprocessableEntity extends T.applyErrorMatchers(
 ) {}
 
 /** array<string> of dataset names for which the annotation appears on charts */
-export type CreateAnnotationRequestDatasetsList = ReadonlyArray<string>;
+export type CreateAnnotationRequestDatasetsList = Array<string>;
 export const CreateAnnotationRequestDatasetsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateAnnotationRequestDatasetsList>;
@@ -90,7 +90,7 @@ export const CreateAnnotationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateAnnotationRequest>;
 
 /** array<string> of dataset names for which the annotation appears on charts */
-export type AnnotationDatasetsList = ReadonlyArray<string>;
+export type AnnotationDatasetsList = Array<string>;
 export const AnnotationDatasetsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AnnotationDatasetsList>;
@@ -129,8 +129,9 @@ export type DatasetCapabilitiesValueDataItem = "delete";
 export const DatasetCapabilitiesValueDataItem = /*@__PURE__*/ S.String;
 
 /** Data Management capability */
-export type DatasetCapabilitiesValueDataList =
-  ReadonlyArray<DatasetCapabilitiesValueDataItem>;
+export type DatasetCapabilitiesValueDataList = Array<
+  DatasetCapabilitiesValueDataItem | (string & {})
+>;
 export const DatasetCapabilitiesValueDataList = /*@__PURE__*/ S.Array(
   DatasetCapabilitiesValueDataItem,
 ) as any as S.Schema<DatasetCapabilitiesValueDataList>;
@@ -139,8 +140,9 @@ export type DatasetCapabilitiesValueIngestItem = "create";
 export const DatasetCapabilitiesValueIngestItem = /*@__PURE__*/ S.String;
 
 /** Ingest capability */
-export type DatasetCapabilitiesValueIngestList =
-  ReadonlyArray<DatasetCapabilitiesValueIngestItem>;
+export type DatasetCapabilitiesValueIngestList = Array<
+  DatasetCapabilitiesValueIngestItem | (string & {})
+>;
 export const DatasetCapabilitiesValueIngestList = /*@__PURE__*/ S.Array(
   DatasetCapabilitiesValueIngestItem,
 ) as any as S.Schema<DatasetCapabilitiesValueIngestList>;
@@ -149,8 +151,9 @@ export type DatasetCapabilitiesValueQueryItem = "read";
 export const DatasetCapabilitiesValueQueryItem = /*@__PURE__*/ S.String;
 
 /** Query capability */
-export type DatasetCapabilitiesValueQueryList =
-  ReadonlyArray<DatasetCapabilitiesValueQueryItem>;
+export type DatasetCapabilitiesValueQueryList = Array<
+  DatasetCapabilitiesValueQueryItem | (string & {})
+>;
 export const DatasetCapabilitiesValueQueryList = /*@__PURE__*/ S.Array(
   DatasetCapabilitiesValueQueryItem,
 ) as any as S.Schema<DatasetCapabilitiesValueQueryList>;
@@ -159,8 +162,9 @@ export type DatasetCapabilitiesValueShareItem = "create" | "read" | "delete";
 export const DatasetCapabilitiesValueShareItem = /*@__PURE__*/ S.String;
 
 /** Sharing dataset capability */
-export type DatasetCapabilitiesValueShareList =
-  ReadonlyArray<DatasetCapabilitiesValueShareItem>;
+export type DatasetCapabilitiesValueShareList = Array<
+  DatasetCapabilitiesValueShareItem | (string & {})
+>;
 export const DatasetCapabilitiesValueShareList = /*@__PURE__*/ S.Array(
   DatasetCapabilitiesValueShareItem,
 ) as any as S.Schema<DatasetCapabilitiesValueShareList>;
@@ -174,8 +178,9 @@ export const DatasetCapabilitiesValueStarredQueriesItem =
   /*@__PURE__*/ S.String;
 
 /** Starred queries capability */
-export type DatasetCapabilitiesValueStarredQueriesList =
-  ReadonlyArray<DatasetCapabilitiesValueStarredQueriesItem>;
+export type DatasetCapabilitiesValueStarredQueriesList = Array<
+  DatasetCapabilitiesValueStarredQueriesItem | (string & {})
+>;
 export const DatasetCapabilitiesValueStarredQueriesList = /*@__PURE__*/ S.Array(
   DatasetCapabilitiesValueStarredQueriesItem,
 ) as any as S.Schema<DatasetCapabilitiesValueStarredQueriesList>;
@@ -184,8 +189,9 @@ export type DatasetCapabilitiesValueTrimItem = "update";
 export const DatasetCapabilitiesValueTrimItem = /*@__PURE__*/ S.String;
 
 /** Data Trimming capability */
-export type DatasetCapabilitiesValueTrimList =
-  ReadonlyArray<DatasetCapabilitiesValueTrimItem>;
+export type DatasetCapabilitiesValueTrimList = Array<
+  DatasetCapabilitiesValueTrimItem | (string & {})
+>;
 export const DatasetCapabilitiesValueTrimList = /*@__PURE__*/ S.Array(
   DatasetCapabilitiesValueTrimItem,
 ) as any as S.Schema<DatasetCapabilitiesValueTrimList>;
@@ -194,8 +200,9 @@ export type DatasetCapabilitiesValueVacuumItem = "update";
 export const DatasetCapabilitiesValueVacuumItem = /*@__PURE__*/ S.String;
 
 /** Field Vacuuming capability */
-export type DatasetCapabilitiesValueVacuumList =
-  ReadonlyArray<DatasetCapabilitiesValueVacuumItem>;
+export type DatasetCapabilitiesValueVacuumList = Array<
+  DatasetCapabilitiesValueVacuumItem | (string & {})
+>;
 export const DatasetCapabilitiesValueVacuumList = /*@__PURE__*/ S.Array(
   DatasetCapabilitiesValueVacuumItem,
 ) as any as S.Schema<DatasetCapabilitiesValueVacuumList>;
@@ -208,8 +215,9 @@ export type DatasetCapabilitiesValueVirtualFieldsItem =
 export const DatasetCapabilitiesValueVirtualFieldsItem = /*@__PURE__*/ S.String;
 
 /** Virtual fields capability */
-export type DatasetCapabilitiesValueVirtualFieldsList =
-  ReadonlyArray<DatasetCapabilitiesValueVirtualFieldsItem>;
+export type DatasetCapabilitiesValueVirtualFieldsList = Array<
+  DatasetCapabilitiesValueVirtualFieldsItem | (string & {})
+>;
 export const DatasetCapabilitiesValueVirtualFieldsList = /*@__PURE__*/ S.Array(
   DatasetCapabilitiesValueVirtualFieldsItem,
 ) as any as S.Schema<DatasetCapabilitiesValueVirtualFieldsList>;
@@ -263,8 +271,9 @@ export type OrgCapabilitiesAnnotationsItem =
 export const OrgCapabilitiesAnnotationsItem = /*@__PURE__*/ S.String;
 
 /** Annotations capability */
-export type OrgCapabilitiesAnnotationsList =
-  ReadonlyArray<OrgCapabilitiesAnnotationsItem>;
+export type OrgCapabilitiesAnnotationsList = Array<
+  OrgCapabilitiesAnnotationsItem | (string & {})
+>;
 export const OrgCapabilitiesAnnotationsList = /*@__PURE__*/ S.Array(
   OrgCapabilitiesAnnotationsItem,
 ) as any as S.Schema<OrgCapabilitiesAnnotationsList>;
@@ -277,8 +286,9 @@ export type OrgCapabilitiesApiTokensItem =
 export const OrgCapabilitiesApiTokensItem = /*@__PURE__*/ S.String;
 
 /** API tokens capability */
-export type OrgCapabilitiesApiTokensList =
-  ReadonlyArray<OrgCapabilitiesApiTokensItem>;
+export type OrgCapabilitiesApiTokensList = Array<
+  OrgCapabilitiesApiTokensItem | (string & {})
+>;
 export const OrgCapabilitiesApiTokensList = /*@__PURE__*/ S.Array(
   OrgCapabilitiesApiTokensItem,
 ) as any as S.Schema<OrgCapabilitiesApiTokensList>;
@@ -287,8 +297,9 @@ export type OrgCapabilitiesAuditLogItem = "read";
 export const OrgCapabilitiesAuditLogItem = /*@__PURE__*/ S.String;
 
 /** Audit Log capability */
-export type OrgCapabilitiesAuditLogList =
-  ReadonlyArray<OrgCapabilitiesAuditLogItem>;
+export type OrgCapabilitiesAuditLogList = Array<
+  OrgCapabilitiesAuditLogItem | (string & {})
+>;
 export const OrgCapabilitiesAuditLogList = /*@__PURE__*/ S.Array(
   OrgCapabilitiesAuditLogItem,
 ) as any as S.Schema<OrgCapabilitiesAuditLogList>;
@@ -297,8 +308,9 @@ export type OrgCapabilitiesBillingItem = "read" | "update";
 export const OrgCapabilitiesBillingItem = /*@__PURE__*/ S.String;
 
 /** Billing capability */
-export type OrgCapabilitiesBillingList =
-  ReadonlyArray<OrgCapabilitiesBillingItem>;
+export type OrgCapabilitiesBillingList = Array<
+  OrgCapabilitiesBillingItem | (string & {})
+>;
 export const OrgCapabilitiesBillingList = /*@__PURE__*/ S.Array(
   OrgCapabilitiesBillingItem,
 ) as any as S.Schema<OrgCapabilitiesBillingList>;
@@ -311,8 +323,9 @@ export type OrgCapabilitiesDashboardsItem =
 export const OrgCapabilitiesDashboardsItem = /*@__PURE__*/ S.String;
 
 /** Dashboards capability */
-export type OrgCapabilitiesDashboardsList =
-  ReadonlyArray<OrgCapabilitiesDashboardsItem>;
+export type OrgCapabilitiesDashboardsList = Array<
+  OrgCapabilitiesDashboardsItem | (string & {})
+>;
 export const OrgCapabilitiesDashboardsList = /*@__PURE__*/ S.Array(
   OrgCapabilitiesDashboardsItem,
 ) as any as S.Schema<OrgCapabilitiesDashboardsList>;
@@ -325,8 +338,9 @@ export type OrgCapabilitiesDatasetsItem =
 export const OrgCapabilitiesDatasetsItem = /*@__PURE__*/ S.String;
 
 /** Datasets capability */
-export type OrgCapabilitiesDatasetsList =
-  ReadonlyArray<OrgCapabilitiesDatasetsItem>;
+export type OrgCapabilitiesDatasetsList = Array<
+  OrgCapabilitiesDatasetsItem | (string & {})
+>;
 export const OrgCapabilitiesDatasetsList = /*@__PURE__*/ S.Array(
   OrgCapabilitiesDatasetsItem,
 ) as any as S.Schema<OrgCapabilitiesDatasetsList>;
@@ -339,8 +353,9 @@ export type OrgCapabilitiesEndpointsItem =
 export const OrgCapabilitiesEndpointsItem = /*@__PURE__*/ S.String;
 
 /** Endpoints capability */
-export type OrgCapabilitiesEndpointsList =
-  ReadonlyArray<OrgCapabilitiesEndpointsItem>;
+export type OrgCapabilitiesEndpointsList = Array<
+  OrgCapabilitiesEndpointsItem | (string & {})
+>;
 export const OrgCapabilitiesEndpointsList = /*@__PURE__*/ S.Array(
   OrgCapabilitiesEndpointsItem,
 ) as any as S.Schema<OrgCapabilitiesEndpointsList>;
@@ -349,7 +364,9 @@ export type OrgCapabilitiesFlowsItem = "create" | "read" | "update" | "delete";
 export const OrgCapabilitiesFlowsItem = /*@__PURE__*/ S.String;
 
 /** Flows capability */
-export type OrgCapabilitiesFlowsList = ReadonlyArray<OrgCapabilitiesFlowsItem>;
+export type OrgCapabilitiesFlowsList = Array<
+  OrgCapabilitiesFlowsItem | (string & {})
+>;
 export const OrgCapabilitiesFlowsList = /*@__PURE__*/ S.Array(
   OrgCapabilitiesFlowsItem,
 ) as any as S.Schema<OrgCapabilitiesFlowsList>;
@@ -362,8 +379,9 @@ export type OrgCapabilitiesIntegrationsItem =
 export const OrgCapabilitiesIntegrationsItem = /*@__PURE__*/ S.String;
 
 /** Integrations capability */
-export type OrgCapabilitiesIntegrationsList =
-  ReadonlyArray<OrgCapabilitiesIntegrationsItem>;
+export type OrgCapabilitiesIntegrationsList = Array<
+  OrgCapabilitiesIntegrationsItem | (string & {})
+>;
 export const OrgCapabilitiesIntegrationsList = /*@__PURE__*/ S.Array(
   OrgCapabilitiesIntegrationsItem,
 ) as any as S.Schema<OrgCapabilitiesIntegrationsList>;
@@ -376,8 +394,9 @@ export type OrgCapabilitiesMonitorsItem =
 export const OrgCapabilitiesMonitorsItem = /*@__PURE__*/ S.String;
 
 /** Monitors capability */
-export type OrgCapabilitiesMonitorsList =
-  ReadonlyArray<OrgCapabilitiesMonitorsItem>;
+export type OrgCapabilitiesMonitorsList = Array<
+  OrgCapabilitiesMonitorsItem | (string & {})
+>;
 export const OrgCapabilitiesMonitorsList = /*@__PURE__*/ S.Array(
   OrgCapabilitiesMonitorsItem,
 ) as any as S.Schema<OrgCapabilitiesMonitorsList>;
@@ -390,8 +409,9 @@ export type OrgCapabilitiesNotifiersItem =
 export const OrgCapabilitiesNotifiersItem = /*@__PURE__*/ S.String;
 
 /** Notifiers capability */
-export type OrgCapabilitiesNotifiersList =
-  ReadonlyArray<OrgCapabilitiesNotifiersItem>;
+export type OrgCapabilitiesNotifiersList = Array<
+  OrgCapabilitiesNotifiersItem | (string & {})
+>;
 export const OrgCapabilitiesNotifiersList = /*@__PURE__*/ S.Array(
   OrgCapabilitiesNotifiersItem,
 ) as any as S.Schema<OrgCapabilitiesNotifiersList>;
@@ -400,7 +420,9 @@ export type OrgCapabilitiesRbacItem = "create" | "read" | "update" | "delete";
 export const OrgCapabilitiesRbacItem = /*@__PURE__*/ S.String;
 
 /** Access control capability */
-export type OrgCapabilitiesRbacList = ReadonlyArray<OrgCapabilitiesRbacItem>;
+export type OrgCapabilitiesRbacList = Array<
+  OrgCapabilitiesRbacItem | (string & {})
+>;
 export const OrgCapabilitiesRbacList = /*@__PURE__*/ S.Array(
   OrgCapabilitiesRbacItem,
 ) as any as S.Schema<OrgCapabilitiesRbacList>;
@@ -409,8 +431,9 @@ export type OrgCapabilitiesSharedAccessKeysItem = "read" | "update";
 export const OrgCapabilitiesSharedAccessKeysItem = /*@__PURE__*/ S.String;
 
 /** Shared access keys capability */
-export type OrgCapabilitiesSharedAccessKeysList =
-  ReadonlyArray<OrgCapabilitiesSharedAccessKeysItem>;
+export type OrgCapabilitiesSharedAccessKeysList = Array<
+  OrgCapabilitiesSharedAccessKeysItem | (string & {})
+>;
 export const OrgCapabilitiesSharedAccessKeysList = /*@__PURE__*/ S.Array(
   OrgCapabilitiesSharedAccessKeysItem,
 ) as any as S.Schema<OrgCapabilitiesSharedAccessKeysList>;
@@ -419,7 +442,9 @@ export type OrgCapabilitiesUsersItem = "create" | "read" | "update" | "delete";
 export const OrgCapabilitiesUsersItem = /*@__PURE__*/ S.String;
 
 /** Users capability */
-export type OrgCapabilitiesUsersList = ReadonlyArray<OrgCapabilitiesUsersItem>;
+export type OrgCapabilitiesUsersList = Array<
+  OrgCapabilitiesUsersItem | (string & {})
+>;
 export const OrgCapabilitiesUsersList = /*@__PURE__*/ S.Array(
   OrgCapabilitiesUsersItem,
 ) as any as S.Schema<OrgCapabilitiesUsersList>;
@@ -428,7 +453,9 @@ export type OrgCapabilitiesViewsItem = "create" | "read" | "update" | "delete";
 export const OrgCapabilitiesViewsItem = /*@__PURE__*/ S.String;
 
 /** Views capability */
-export type OrgCapabilitiesViewsList = ReadonlyArray<OrgCapabilitiesViewsItem>;
+export type OrgCapabilitiesViewsList = Array<
+  OrgCapabilitiesViewsItem | (string & {})
+>;
 export const OrgCapabilitiesViewsList = /*@__PURE__*/ S.Array(
   OrgCapabilitiesViewsItem,
 ) as any as S.Schema<OrgCapabilitiesViewsList>;
@@ -491,8 +518,9 @@ export type ViewCapabilitiesValueQueryItem = "read";
 export const ViewCapabilitiesValueQueryItem = /*@__PURE__*/ S.String;
 
 /** Query capability */
-export type ViewCapabilitiesValueQueryList =
-  ReadonlyArray<ViewCapabilitiesValueQueryItem>;
+export type ViewCapabilitiesValueQueryList = Array<
+  ViewCapabilitiesValueQueryItem | (string & {})
+>;
 export const ViewCapabilitiesValueQueryList = /*@__PURE__*/ S.Array(
   ViewCapabilitiesValueQueryItem,
 ) as any as S.Schema<ViewCapabilitiesValueQueryList>;
@@ -501,8 +529,9 @@ export type ViewCapabilitiesValueShareItem = "create" | "read" | "delete";
 export const ViewCapabilitiesValueShareItem = /*@__PURE__*/ S.String;
 
 /** Sharing view capability */
-export type ViewCapabilitiesValueShareList =
-  ReadonlyArray<ViewCapabilitiesValueShareItem>;
+export type ViewCapabilitiesValueShareList = Array<
+  ViewCapabilitiesValueShareItem | (string & {})
+>;
 export const ViewCapabilitiesValueShareList = /*@__PURE__*/ S.Array(
   ViewCapabilitiesValueShareItem,
 ) as any as S.Schema<ViewCapabilitiesValueShareList>;
@@ -617,12 +646,12 @@ export const TimeSeriesQueryOptionsTimeSeriesView = /*@__PURE__*/ S.String;
 
 export interface TimeSeriesQueryOptions {
   /** Controls how empty intervals are rendered in time series charts. `auto` infers from the query, `null` leaves gaps, `span` connects adjacent points, `zero` fills with zero. */
-  displayNull?: TimeSeriesQueryOptionsDisplayNull;
+  displayNull?: TimeSeriesQueryOptionsDisplayNull | (string & {});
   /** When enabled, charts are overlaid on a single chart instead of stacked separately. */
-  overlayCharts?: BooleanString;
+  overlayCharts?: BooleanString | (string & {});
   shownColumns?: string;
-  timeSeriesVariant?: TimeSeriesQueryOptionsTimeSeriesVariant;
-  timeSeriesView?: TimeSeriesQueryOptionsTimeSeriesView;
+  timeSeriesVariant?: TimeSeriesQueryOptionsTimeSeriesVariant | (string & {});
+  timeSeriesView?: TimeSeriesQueryOptionsTimeSeriesView | (string & {});
 }
 export const TimeSeriesQueryOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -679,7 +708,7 @@ export const TimeSeriesChartQuery = /*@__PURE__*/ S.suspend(() =>
 
 export interface TimeSeriesChart {
   id: string;
-  type: TimeSeriesChartType;
+  type: TimeSeriesChartType | (string & {});
   name?: string;
   query: TimeSeriesChartQuery;
 }
@@ -705,7 +734,7 @@ export type HeatmapQueryOptionsTimeSeriesView =
 export const HeatmapQueryOptionsTimeSeriesView = /*@__PURE__*/ S.String;
 
 export interface HeatmapQueryOptions {
-  timeSeriesView?: HeatmapQueryOptionsTimeSeriesView;
+  timeSeriesView?: HeatmapQueryOptionsTimeSeriesView | (string & {});
 }
 export const HeatmapQueryOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -758,7 +787,7 @@ export const HeatmapChartQuery = /*@__PURE__*/ S.suspend(() =>
 
 export interface HeatmapChart {
   id: string;
-  type: HeatmapChartType;
+  type: HeatmapChartType | (string & {});
   name?: string;
   query: HeatmapChartQuery;
 }
@@ -826,7 +855,7 @@ export type ColumnSetting = string | AdvancedColumnSetting;
 export const ColumnSetting =
   /*@__PURE__*/ S.Unknown as any as S.Schema<ColumnSetting>;
 
-export type TableSettingsColumnsList = ReadonlyArray<ColumnSetting>;
+export type TableSettingsColumnsList = Array<ColumnSetting>;
 export const TableSettingsColumnsList = /*@__PURE__*/ S.Array(
   ColumnSetting,
 ) as any as S.Schema<TableSettingsColumnsList>;
@@ -869,7 +898,7 @@ export const TableSettings = /*@__PURE__*/ S.suspend(() =>
 
 export interface LogStreamChart {
   id: string;
-  type: LogStreamChartType;
+  type: LogStreamChartType | (string & {});
   name?: string;
   query: SimpleChartQuery;
   tableSettings?: TableSettings;
@@ -889,7 +918,7 @@ export const PieChartType = /*@__PURE__*/ S.String;
 
 export interface PieChart {
   id: string;
-  type: PieChartType;
+  type: PieChartType | (string & {});
   name?: string;
   query: SimpleChartQuery;
 }
@@ -907,7 +936,7 @@ export const ScatterChartType = /*@__PURE__*/ S.String;
 
 export interface ScatterChart {
   id: string;
-  type: ScatterChartType;
+  type: ScatterChartType | (string & {});
   name?: string;
   query: SimpleChartQuery;
 }
@@ -925,7 +954,7 @@ export const TableChartType = /*@__PURE__*/ S.String;
 
 export interface TableChart {
   id: string;
-  type: TableChartType;
+  type: TableChartType | (string & {});
   name?: string;
   query: SimpleChartQuery;
   tableSettings?: TableSettings;
@@ -945,7 +974,7 @@ export const TopKChartType = /*@__PURE__*/ S.String;
 
 export interface TopKChart {
   id: string;
-  type: TopKChartType;
+  type: TopKChartType | (string & {});
   name?: string;
   query: SimpleChartQuery;
 }
@@ -1017,17 +1046,17 @@ export const StatisticChartColorProps = /*@__PURE__*/ S.suspend(() =>
 
 export interface StatisticChart {
   id: string;
-  type: StatisticChartType;
+  type: StatisticChartType | (string & {});
   name?: string;
   query: SimpleChartQuery;
-  colorScheme?: StatisticChartColorScheme;
+  colorScheme?: StatisticChartColorScheme | (string & {});
   customUnits?: string;
   showChart?: StatisticChartShowChart;
   hideValue?: boolean;
   chartHeight?: StatisticChartChartHeight;
-  errorThreshold?: StatisticChartErrorThreshold;
+  errorThreshold?: StatisticChartErrorThreshold | (string & {});
   errorThresholdValue?: string;
-  warningThreshold?: StatisticChartWarningThreshold;
+  warningThreshold?: StatisticChartWarningThreshold | (string & {});
   warningThresholdValue?: string;
   invertTheme?: boolean;
   background?: string;
@@ -1072,9 +1101,9 @@ export const NoteChartVariant = /*@__PURE__*/ S.String;
 
 export interface NoteChart {
   id: string;
-  type: NoteChartType;
+  type: NoteChartType | (string & {});
   text: string;
-  variant?: NoteChartVariant;
+  variant?: NoteChartVariant | (string & {});
 }
 export const NoteChart = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1088,7 +1117,7 @@ export const NoteChart = /*@__PURE__*/ S.suspend(() =>
 export type MonitorListChartType = "MonitorList";
 export const MonitorListChartType = /*@__PURE__*/ S.String;
 
-export type MonitorListChartSelectedMonitorsList = ReadonlyArray<string>;
+export type MonitorListChartSelectedMonitorsList = Array<string>;
 export const MonitorListChartSelectedMonitorsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<MonitorListChartSelectedMonitorsList>;
@@ -1114,7 +1143,7 @@ export const MonitorListColumns = /*@__PURE__*/ S.suspend(() =>
 
 export interface MonitorListChart {
   id: string;
-  type: MonitorListChartType;
+  type: MonitorListChartType | (string & {});
   name?: string;
   selectedMonitors: MonitorListChartSelectedMonitorsList;
   columns: MonitorListColumns;
@@ -1141,7 +1170,7 @@ export interface SmartFilterSearch {
   id: string;
   name: string;
   active?: boolean;
-  type: SmartFilterSearchType;
+  type: SmartFilterSearchType | (string & {});
 }
 export const SmartFilterSearch = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1171,7 +1200,7 @@ export const SmartFilterOption = /*@__PURE__*/ S.suspend(() =>
   identifier: "SmartFilterOption",
 }) as any as S.Schema<SmartFilterOption>;
 
-export type SmartFilterOptionsCase0List = ReadonlyArray<SmartFilterOption>;
+export type SmartFilterOptionsCase0List = Array<SmartFilterOption>;
 export const SmartFilterOptionsCase0List = /*@__PURE__*/ S.Array(
   SmartFilterOption,
 ) as any as S.Schema<SmartFilterOptionsCase0List>;
@@ -1196,8 +1225,8 @@ export interface SmartFilterSelectList {
   name: string;
   active?: boolean;
   options?: SmartFilterOptions | null;
-  type: SmartFilterSelectListType;
-  selectType: SmartFilterSelectListSelectType;
+  type: SmartFilterSelectListType | (string & {});
+  selectType: SmartFilterSelectListSelectType | (string & {});
 }
 export const SmartFilterSelectList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1212,8 +1241,7 @@ export const SmartFilterSelectList = /*@__PURE__*/ S.suspend(() =>
   identifier: "SmartFilterSelectList",
 }) as any as S.Schema<SmartFilterSelectList>;
 
-export type SmartFilterSelectQueryOptionsCase0List =
-  ReadonlyArray<SmartFilterOption>;
+export type SmartFilterSelectQueryOptionsCase0List = Array<SmartFilterOption>;
 export const SmartFilterSelectQueryOptionsCase0List = /*@__PURE__*/ S.Array(
   SmartFilterOption,
 ) as any as S.Schema<SmartFilterSelectQueryOptionsCase0List>;
@@ -1278,8 +1306,8 @@ export interface SmartFilterSelectQuery {
   active?: boolean;
   /** Pre-defined options merged with the dynamic options returned by `query` at runtime. Typically used to seed a default option (for example an "All" entry with `unset: true`) so the filter has a sensible initial selection before — or independent of — query results. */
   options?: SmartFilterSelectQueryOptions | null;
-  type: SmartFilterSelectQueryType;
-  selectType: SmartFilterSelectQuerySelectType;
+  type: SmartFilterSelectQueryType | (string & {});
+  selectType: SmartFilterSelectQuerySelectType | (string & {});
   query?: SmartFilterQuery;
 }
 export const SmartFilterSelectQuery = /*@__PURE__*/ S.suspend(() =>
@@ -1302,10 +1330,16 @@ export interface SmartFilterSelect {
   active?: boolean;
   /** Pre-defined options merged with the dynamic options returned by `query` at runtime. Typically used to seed a default option (for example an "All" entry with `unset: true`) so the filter has a sensible initial selection before — or independent of — query results. */
   options?: SmartFilterOptions | SmartFilterSelectQueryOptions | null;
-  type: SmartFilterSelectListType | SmartFilterSelectQueryType;
+  type:
+    | SmartFilterSelectListType
+    | (string & {})
+    | SmartFilterSelectQueryType
+    | (string & {});
   selectType:
     | SmartFilterSelectListSelectType
-    | SmartFilterSelectQuerySelectType;
+    | (string & {})
+    | SmartFilterSelectQuerySelectType
+    | (string & {});
   query?: SmartFilterQuery;
 }
 export const SmartFilterSelect = /*@__PURE__*/ S.suspend(() =>
@@ -1331,14 +1365,14 @@ export type SmartFilterConfig = SmartFilterSearch | SmartFilterSelect;
 export const SmartFilterConfig =
   /*@__PURE__*/ S.Unknown as any as S.Schema<SmartFilterConfig>;
 
-export type SmartFilterChartFiltersList = ReadonlyArray<SmartFilterConfig>;
+export type SmartFilterChartFiltersList = Array<SmartFilterConfig>;
 export const SmartFilterChartFiltersList = /*@__PURE__*/ S.Array(
   SmartFilterConfig,
 ) as any as S.Schema<SmartFilterChartFiltersList>;
 
 export interface SmartFilterChart {
   id: string;
-  type: SmartFilterChartType;
+  type: SmartFilterChartType | (string & {});
   name?: string;
   filters: SmartFilterChartFiltersList;
   logo?: string;
@@ -1362,7 +1396,7 @@ export const SpacerChartType = /*@__PURE__*/ S.String;
 
 export interface SpacerChart {
   id: string;
-  type: SpacerChartType;
+  type: SpacerChartType | (string & {});
   name?: string;
 }
 export const SpacerChart = /*@__PURE__*/ S.suspend(() =>
@@ -1377,28 +1411,40 @@ export interface Chart {
   id: string;
   type:
     | TimeSeriesChartType
+    | (string & {})
     | HeatmapChartType
+    | (string & {})
     | LogStreamChartType
+    | (string & {})
     | PieChartType
+    | (string & {})
     | ScatterChartType
+    | (string & {})
     | TableChartType
+    | (string & {})
     | TopKChartType
+    | (string & {})
     | StatisticChartType
+    | (string & {})
     | NoteChartType
+    | (string & {})
     | MonitorListChartType
+    | (string & {})
     | SmartFilterChartType
-    | SpacerChartType;
+    | (string & {})
+    | SpacerChartType
+    | (string & {});
   name?: string;
   query?: TimeSeriesChartQuery | HeatmapChartQuery | SimpleChartQuery;
   tableSettings?: TableSettings;
-  colorScheme?: StatisticChartColorScheme;
+  colorScheme?: StatisticChartColorScheme | (string & {});
   customUnits?: string;
   showChart?: StatisticChartShowChart;
   hideValue?: boolean;
   chartHeight?: StatisticChartChartHeight;
-  errorThreshold?: StatisticChartErrorThreshold;
+  errorThreshold?: StatisticChartErrorThreshold | (string & {});
   errorThresholdValue?: string;
-  warningThreshold?: StatisticChartWarningThreshold;
+  warningThreshold?: StatisticChartWarningThreshold | (string & {});
   warningThresholdValue?: string;
   invertTheme?: boolean;
   background?: string;
@@ -1409,7 +1455,7 @@ export interface Chart {
   warningColorProps?: StatisticChartColorProps;
   errorColorProps?: StatisticChartColorProps;
   text?: string;
-  variant?: NoteChartVariant;
+  variant?: NoteChartVariant | (string & {});
   selectedMonitors?: MonitorListChartSelectedMonitorsList;
   columns?: MonitorListColumns;
   filters?: SmartFilterChartFiltersList;
@@ -1465,7 +1511,7 @@ export const Chart = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Chart" }) as any as S.Schema<Chart>;
 
-export type DashboardChartsList = ReadonlyArray<Chart>;
+export type DashboardChartsList = Array<Chart>;
 export const DashboardChartsList = /*@__PURE__*/ S.Array(
   Chart,
 ) as any as S.Schema<DashboardChartsList>;
@@ -1497,7 +1543,7 @@ export const LayoutItem = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "LayoutItem" }) as any as S.Schema<LayoutItem>;
 
-export type DashboardLayoutList = ReadonlyArray<LayoutItem>;
+export type DashboardLayoutList = Array<LayoutItem>;
 export const DashboardLayoutList = /*@__PURE__*/ S.Array(
   LayoutItem,
 ) as any as S.Schema<DashboardLayoutList>;
@@ -1531,10 +1577,10 @@ export interface Dashboard {
   description?: string;
   charts: DashboardChartsList;
   layout: DashboardLayoutList;
-  refreshTime: DashboardRefreshTime;
-  schemaVersion: SchemaVersion;
+  refreshTime: DashboardRefreshTime | (number & {});
+  schemaVersion: SchemaVersion | (number & {});
   /** Relative time comparison offset. Compares the current time window against a previous period offset by this duration. Mutually exclusive with `againstTimestamp` — setting one clears the other. Use an empty string or omit to disable comparison. */
-  against?: DashboardAgainst;
+  against?: DashboardAgainst | (string & {});
   /** Absolute or relative timestamp to compare against. Mutually exclusive with `against` — setting one clears the other. Accepts ISO 8601, `now-{duration}` (e.g. `now-1h`), or epoch milliseconds as a string. */
   againstTimestamp?: string;
   timeWindowStart: string;
@@ -1679,7 +1725,7 @@ export type DatasetKind =
   | "axiom:events:v1";
 export const DatasetKind = /*@__PURE__*/ S.String;
 
-export type DatasetMapFieldsList = ReadonlyArray<string>;
+export type DatasetMapFieldsList = Array<string>;
 export const DatasetMapFieldsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DatasetMapFieldsList>;
@@ -1733,13 +1779,13 @@ export const Dataset = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Dataset" }) as any as S.Schema<Dataset>;
 
 /** List of user IDs that are assigned to this group */
-export type CreateGroupRequestMembersList = ReadonlyArray<string>;
+export type CreateGroupRequestMembersList = Array<string>;
 export const CreateGroupRequestMembersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateGroupRequestMembersList>;
 
 /** List of role IDs that are assigned to this group */
-export type CreateGroupRequestRolesList = ReadonlyArray<string>;
+export type CreateGroupRequestRolesList = Array<string>;
 export const CreateGroupRequestRolesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateGroupRequestRolesList>;
@@ -1766,13 +1812,13 @@ export const CreateGroupRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateGroupRequest>;
 
 /** List of user IDs that are assigned to this group */
-export type CreateGroupResponseMembersList = ReadonlyArray<string>;
+export type CreateGroupResponseMembersList = Array<string>;
 export const CreateGroupResponseMembersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateGroupResponseMembersList>;
 
 /** List of role IDs that are assigned to this group */
-export type CreateGroupResponseRolesList = ReadonlyArray<string>;
+export type CreateGroupResponseRolesList = Array<string>;
 export const CreateGroupResponseRolesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateGroupResponseRolesList>;
@@ -1834,7 +1880,7 @@ export const MapField = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MapField" }) as any as S.Schema<MapField>;
 
 /** List of notifier IDs that will receive alerts. Notifiers can be email, Slack, webhook endpoints, etc. */
-export type CreateMonitorRequestNotifierIdsList = ReadonlyArray<string>;
+export type CreateMonitorRequestNotifierIdsList = Array<string>;
 export const CreateMonitorRequestNotifierIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateMonitorRequestNotifierIdsList>;
@@ -1943,7 +1989,7 @@ export const CreateMonitorRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateMonitorRequest>;
 
 /** List of notifier IDs that will receive alerts. Notifiers can be email, Slack, webhook endpoints, etc. */
-export type CreateMonitorResponseNotifierIdsList = ReadonlyArray<string>;
+export type CreateMonitorResponseNotifierIdsList = Array<string>;
 export const CreateMonitorResponseNotifierIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateMonitorResponseNotifierIdsList>;
@@ -2122,7 +2168,7 @@ export const DiscordWebhookConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DiscordWebhookConfig>;
 
 /** List of email addresses to receive notifications */
-export type EmailConfigEmailsList = ReadonlyArray<string>;
+export type EmailConfigEmailsList = Array<string>;
 export const EmailConfigEmailsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EmailConfigEmailsList>;
@@ -2291,7 +2337,7 @@ export const CreateOrgRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateOrgRequest",
 }) as any as S.Schema<CreateOrgRequest>;
 
-export type LicenseEdgeDeploymentsList = ReadonlyArray<string>;
+export type LicenseEdgeDeploymentsList = Array<string>;
 export const LicenseEdgeDeploymentsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LicenseEdgeDeploymentsList>;
@@ -2312,7 +2358,7 @@ export type LicenseTier =
   | "accelerator";
 export const LicenseTier = /*@__PURE__*/ S.String;
 
-export type LicenseWithAuthsList = ReadonlyArray<string>;
+export type LicenseWithAuthsList = Array<string>;
 export const LicenseWithAuthsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LicenseWithAuthsList>;
@@ -2424,8 +2470,9 @@ export type RoleDatasetCapabilitiesValueDataItem = "delete";
 export const RoleDatasetCapabilitiesValueDataItem = /*@__PURE__*/ S.String;
 
 /** Controls data management operations like deletion */
-export type RoleDatasetCapabilitiesValueDataList =
-  ReadonlyArray<RoleDatasetCapabilitiesValueDataItem>;
+export type RoleDatasetCapabilitiesValueDataList = Array<
+  RoleDatasetCapabilitiesValueDataItem | (string & {})
+>;
 export const RoleDatasetCapabilitiesValueDataList = /*@__PURE__*/ S.Array(
   RoleDatasetCapabilitiesValueDataItem,
 ) as any as S.Schema<RoleDatasetCapabilitiesValueDataList>;
@@ -2434,8 +2481,9 @@ export type RoleDatasetCapabilitiesValueIngestItem = "create";
 export const RoleDatasetCapabilitiesValueIngestItem = /*@__PURE__*/ S.String;
 
 /** Controls the ability to ingest data into datasets */
-export type RoleDatasetCapabilitiesValueIngestList =
-  ReadonlyArray<RoleDatasetCapabilitiesValueIngestItem>;
+export type RoleDatasetCapabilitiesValueIngestList = Array<
+  RoleDatasetCapabilitiesValueIngestItem | (string & {})
+>;
 export const RoleDatasetCapabilitiesValueIngestList = /*@__PURE__*/ S.Array(
   RoleDatasetCapabilitiesValueIngestItem,
 ) as any as S.Schema<RoleDatasetCapabilitiesValueIngestList>;
@@ -2444,8 +2492,9 @@ export type RoleDatasetCapabilitiesValueQueryItem = "read";
 export const RoleDatasetCapabilitiesValueQueryItem = /*@__PURE__*/ S.String;
 
 /** Controls the ability to query and read data from datasets */
-export type RoleDatasetCapabilitiesValueQueryList =
-  ReadonlyArray<RoleDatasetCapabilitiesValueQueryItem>;
+export type RoleDatasetCapabilitiesValueQueryList = Array<
+  RoleDatasetCapabilitiesValueQueryItem | (string & {})
+>;
 export const RoleDatasetCapabilitiesValueQueryList = /*@__PURE__*/ S.Array(
   RoleDatasetCapabilitiesValueQueryItem,
 ) as any as S.Schema<RoleDatasetCapabilitiesValueQueryList>;
@@ -2457,8 +2506,9 @@ export type RoleDatasetCapabilitiesValueShareItem =
 export const RoleDatasetCapabilitiesValueShareItem = /*@__PURE__*/ S.String;
 
 /** Controls the ability to share datasets with other users */
-export type RoleDatasetCapabilitiesValueShareList =
-  ReadonlyArray<RoleDatasetCapabilitiesValueShareItem>;
+export type RoleDatasetCapabilitiesValueShareList = Array<
+  RoleDatasetCapabilitiesValueShareItem | (string & {})
+>;
 export const RoleDatasetCapabilitiesValueShareList = /*@__PURE__*/ S.Array(
   RoleDatasetCapabilitiesValueShareItem,
 ) as any as S.Schema<RoleDatasetCapabilitiesValueShareList>;
@@ -2472,8 +2522,9 @@ export const RoleDatasetCapabilitiesValueStarredQueriesItem =
   /*@__PURE__*/ S.String;
 
 /** Controls the management of starred/saved queries */
-export type RoleDatasetCapabilitiesValueStarredQueriesList =
-  ReadonlyArray<RoleDatasetCapabilitiesValueStarredQueriesItem>;
+export type RoleDatasetCapabilitiesValueStarredQueriesList = Array<
+  RoleDatasetCapabilitiesValueStarredQueriesItem | (string & {})
+>;
 export const RoleDatasetCapabilitiesValueStarredQueriesList =
   /*@__PURE__*/ S.Array(
     RoleDatasetCapabilitiesValueStarredQueriesItem,
@@ -2483,8 +2534,9 @@ export type RoleDatasetCapabilitiesValueTrimItem = "update";
 export const RoleDatasetCapabilitiesValueTrimItem = /*@__PURE__*/ S.String;
 
 /** Controls data trimming operations for storage optimization */
-export type RoleDatasetCapabilitiesValueTrimList =
-  ReadonlyArray<RoleDatasetCapabilitiesValueTrimItem>;
+export type RoleDatasetCapabilitiesValueTrimList = Array<
+  RoleDatasetCapabilitiesValueTrimItem | (string & {})
+>;
 export const RoleDatasetCapabilitiesValueTrimList = /*@__PURE__*/ S.Array(
   RoleDatasetCapabilitiesValueTrimItem,
 ) as any as S.Schema<RoleDatasetCapabilitiesValueTrimList>;
@@ -2493,8 +2545,9 @@ export type RoleDatasetCapabilitiesValueVacuumItem = "update";
 export const RoleDatasetCapabilitiesValueVacuumItem = /*@__PURE__*/ S.String;
 
 /** Controls field vacuuming operations for storage optimization */
-export type RoleDatasetCapabilitiesValueVacuumList =
-  ReadonlyArray<RoleDatasetCapabilitiesValueVacuumItem>;
+export type RoleDatasetCapabilitiesValueVacuumList = Array<
+  RoleDatasetCapabilitiesValueVacuumItem | (string & {})
+>;
 export const RoleDatasetCapabilitiesValueVacuumList = /*@__PURE__*/ S.Array(
   RoleDatasetCapabilitiesValueVacuumItem,
 ) as any as S.Schema<RoleDatasetCapabilitiesValueVacuumList>;
@@ -2508,8 +2561,9 @@ export const RoleDatasetCapabilitiesValueVirtualFieldsItem =
   /*@__PURE__*/ S.String;
 
 /** Controls the management of virtual fields in datasets */
-export type RoleDatasetCapabilitiesValueVirtualFieldsList =
-  ReadonlyArray<RoleDatasetCapabilitiesValueVirtualFieldsItem>;
+export type RoleDatasetCapabilitiesValueVirtualFieldsList = Array<
+  RoleDatasetCapabilitiesValueVirtualFieldsItem | (string & {})
+>;
 export const RoleDatasetCapabilitiesValueVirtualFieldsList =
   /*@__PURE__*/ S.Array(
     RoleDatasetCapabilitiesValueVirtualFieldsItem,
@@ -2558,7 +2612,7 @@ export const RoleDatasetCapabilities = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<RoleDatasetCapabilities>;
 
 /** List of user IDs that are assigned to this role */
-export type CreateRoleRequestMembersList = ReadonlyArray<string>;
+export type CreateRoleRequestMembersList = Array<string>;
 export const CreateRoleRequestMembersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateRoleRequestMembersList>;
@@ -2571,8 +2625,9 @@ export type RoleOrgCapabilitiesAnnotationsItem =
 export const RoleOrgCapabilitiesAnnotationsItem = /*@__PURE__*/ S.String;
 
 /** Controls the management of annotations across the organization */
-export type RoleOrgCapabilitiesAnnotationsList =
-  ReadonlyArray<RoleOrgCapabilitiesAnnotationsItem>;
+export type RoleOrgCapabilitiesAnnotationsList = Array<
+  RoleOrgCapabilitiesAnnotationsItem | (string & {})
+>;
 export const RoleOrgCapabilitiesAnnotationsList = /*@__PURE__*/ S.Array(
   RoleOrgCapabilitiesAnnotationsItem,
 ) as any as S.Schema<RoleOrgCapabilitiesAnnotationsList>;
@@ -2585,8 +2640,9 @@ export type RoleOrgCapabilitiesApiTokensItem =
 export const RoleOrgCapabilitiesApiTokensItem = /*@__PURE__*/ S.String;
 
 /** Controls the management of API tokens for authentication */
-export type RoleOrgCapabilitiesApiTokensList =
-  ReadonlyArray<RoleOrgCapabilitiesApiTokensItem>;
+export type RoleOrgCapabilitiesApiTokensList = Array<
+  RoleOrgCapabilitiesApiTokensItem | (string & {})
+>;
 export const RoleOrgCapabilitiesApiTokensList = /*@__PURE__*/ S.Array(
   RoleOrgCapabilitiesApiTokensItem,
 ) as any as S.Schema<RoleOrgCapabilitiesApiTokensList>;
@@ -2595,8 +2651,9 @@ export type RoleOrgCapabilitiesAuditLogItem = "read";
 export const RoleOrgCapabilitiesAuditLogItem = /*@__PURE__*/ S.String;
 
 /** Controls access to organization audit logs */
-export type RoleOrgCapabilitiesAuditLogList =
-  ReadonlyArray<RoleOrgCapabilitiesAuditLogItem>;
+export type RoleOrgCapabilitiesAuditLogList = Array<
+  RoleOrgCapabilitiesAuditLogItem | (string & {})
+>;
 export const RoleOrgCapabilitiesAuditLogList = /*@__PURE__*/ S.Array(
   RoleOrgCapabilitiesAuditLogItem,
 ) as any as S.Schema<RoleOrgCapabilitiesAuditLogList>;
@@ -2605,8 +2662,9 @@ export type RoleOrgCapabilitiesBillingItem = "read" | "update";
 export const RoleOrgCapabilitiesBillingItem = /*@__PURE__*/ S.String;
 
 /** Controls access to billing information and settings */
-export type RoleOrgCapabilitiesBillingList =
-  ReadonlyArray<RoleOrgCapabilitiesBillingItem>;
+export type RoleOrgCapabilitiesBillingList = Array<
+  RoleOrgCapabilitiesBillingItem | (string & {})
+>;
 export const RoleOrgCapabilitiesBillingList = /*@__PURE__*/ S.Array(
   RoleOrgCapabilitiesBillingItem,
 ) as any as S.Schema<RoleOrgCapabilitiesBillingList>;
@@ -2619,8 +2677,9 @@ export type RoleOrgCapabilitiesDashboardsItem =
 export const RoleOrgCapabilitiesDashboardsItem = /*@__PURE__*/ S.String;
 
 /** Controls the management of organization dashboards */
-export type RoleOrgCapabilitiesDashboardsList =
-  ReadonlyArray<RoleOrgCapabilitiesDashboardsItem>;
+export type RoleOrgCapabilitiesDashboardsList = Array<
+  RoleOrgCapabilitiesDashboardsItem | (string & {})
+>;
 export const RoleOrgCapabilitiesDashboardsList = /*@__PURE__*/ S.Array(
   RoleOrgCapabilitiesDashboardsItem,
 ) as any as S.Schema<RoleOrgCapabilitiesDashboardsList>;
@@ -2633,8 +2692,9 @@ export type RoleOrgCapabilitiesDatasetsItem =
 export const RoleOrgCapabilitiesDatasetsItem = /*@__PURE__*/ S.String;
 
 /** Controls the management of organization datasets */
-export type RoleOrgCapabilitiesDatasetsList =
-  ReadonlyArray<RoleOrgCapabilitiesDatasetsItem>;
+export type RoleOrgCapabilitiesDatasetsList = Array<
+  RoleOrgCapabilitiesDatasetsItem | (string & {})
+>;
 export const RoleOrgCapabilitiesDatasetsList = /*@__PURE__*/ S.Array(
   RoleOrgCapabilitiesDatasetsItem,
 ) as any as S.Schema<RoleOrgCapabilitiesDatasetsList>;
@@ -2647,8 +2707,9 @@ export type RoleOrgCapabilitiesEndpointsItem =
 export const RoleOrgCapabilitiesEndpointsItem = /*@__PURE__*/ S.String;
 
 /** Controls the management of API endpoints */
-export type RoleOrgCapabilitiesEndpointsList =
-  ReadonlyArray<RoleOrgCapabilitiesEndpointsItem>;
+export type RoleOrgCapabilitiesEndpointsList = Array<
+  RoleOrgCapabilitiesEndpointsItem | (string & {})
+>;
 export const RoleOrgCapabilitiesEndpointsList = /*@__PURE__*/ S.Array(
   RoleOrgCapabilitiesEndpointsItem,
 ) as any as S.Schema<RoleOrgCapabilitiesEndpointsList>;
@@ -2661,8 +2722,9 @@ export type RoleOrgCapabilitiesFlowsItem =
 export const RoleOrgCapabilitiesFlowsItem = /*@__PURE__*/ S.String;
 
 /** Controls the management of data flows and pipelines */
-export type RoleOrgCapabilitiesFlowsList =
-  ReadonlyArray<RoleOrgCapabilitiesFlowsItem>;
+export type RoleOrgCapabilitiesFlowsList = Array<
+  RoleOrgCapabilitiesFlowsItem | (string & {})
+>;
 export const RoleOrgCapabilitiesFlowsList = /*@__PURE__*/ S.Array(
   RoleOrgCapabilitiesFlowsItem,
 ) as any as S.Schema<RoleOrgCapabilitiesFlowsList>;
@@ -2675,8 +2737,9 @@ export type RoleOrgCapabilitiesIntegrationsItem =
 export const RoleOrgCapabilitiesIntegrationsItem = /*@__PURE__*/ S.String;
 
 /** Controls the management of third-party integrations */
-export type RoleOrgCapabilitiesIntegrationsList =
-  ReadonlyArray<RoleOrgCapabilitiesIntegrationsItem>;
+export type RoleOrgCapabilitiesIntegrationsList = Array<
+  RoleOrgCapabilitiesIntegrationsItem | (string & {})
+>;
 export const RoleOrgCapabilitiesIntegrationsList = /*@__PURE__*/ S.Array(
   RoleOrgCapabilitiesIntegrationsItem,
 ) as any as S.Schema<RoleOrgCapabilitiesIntegrationsList>;
@@ -2689,8 +2752,9 @@ export type RoleOrgCapabilitiesMonitorsItem =
 export const RoleOrgCapabilitiesMonitorsItem = /*@__PURE__*/ S.String;
 
 /** Controls the management of monitoring */
-export type RoleOrgCapabilitiesMonitorsList =
-  ReadonlyArray<RoleOrgCapabilitiesMonitorsItem>;
+export type RoleOrgCapabilitiesMonitorsList = Array<
+  RoleOrgCapabilitiesMonitorsItem | (string & {})
+>;
 export const RoleOrgCapabilitiesMonitorsList = /*@__PURE__*/ S.Array(
   RoleOrgCapabilitiesMonitorsItem,
 ) as any as S.Schema<RoleOrgCapabilitiesMonitorsList>;
@@ -2703,8 +2767,9 @@ export type RoleOrgCapabilitiesNotifiersItem =
 export const RoleOrgCapabilitiesNotifiersItem = /*@__PURE__*/ S.String;
 
 /** Controls the management of notification settings */
-export type RoleOrgCapabilitiesNotifiersList =
-  ReadonlyArray<RoleOrgCapabilitiesNotifiersItem>;
+export type RoleOrgCapabilitiesNotifiersList = Array<
+  RoleOrgCapabilitiesNotifiersItem | (string & {})
+>;
 export const RoleOrgCapabilitiesNotifiersList = /*@__PURE__*/ S.Array(
   RoleOrgCapabilitiesNotifiersItem,
 ) as any as S.Schema<RoleOrgCapabilitiesNotifiersList>;
@@ -2717,8 +2782,9 @@ export type RoleOrgCapabilitiesRbacItem =
 export const RoleOrgCapabilitiesRbacItem = /*@__PURE__*/ S.String;
 
 /** Controls access to role-based access control settings */
-export type RoleOrgCapabilitiesRbacList =
-  ReadonlyArray<RoleOrgCapabilitiesRbacItem>;
+export type RoleOrgCapabilitiesRbacList = Array<
+  RoleOrgCapabilitiesRbacItem | (string & {})
+>;
 export const RoleOrgCapabilitiesRbacList = /*@__PURE__*/ S.Array(
   RoleOrgCapabilitiesRbacItem,
 ) as any as S.Schema<RoleOrgCapabilitiesRbacList>;
@@ -2727,8 +2793,9 @@ export type RoleOrgCapabilitiesSharedAccessKeysItem = "read" | "update";
 export const RoleOrgCapabilitiesSharedAccessKeysItem = /*@__PURE__*/ S.String;
 
 /** Controls the management of shared access keys */
-export type RoleOrgCapabilitiesSharedAccessKeysList =
-  ReadonlyArray<RoleOrgCapabilitiesSharedAccessKeysItem>;
+export type RoleOrgCapabilitiesSharedAccessKeysList = Array<
+  RoleOrgCapabilitiesSharedAccessKeysItem | (string & {})
+>;
 export const RoleOrgCapabilitiesSharedAccessKeysList = /*@__PURE__*/ S.Array(
   RoleOrgCapabilitiesSharedAccessKeysItem,
 ) as any as S.Schema<RoleOrgCapabilitiesSharedAccessKeysList>;
@@ -2741,8 +2808,9 @@ export type RoleOrgCapabilitiesUsersItem =
 export const RoleOrgCapabilitiesUsersItem = /*@__PURE__*/ S.String;
 
 /** Controls user management within the organization */
-export type RoleOrgCapabilitiesUsersList =
-  ReadonlyArray<RoleOrgCapabilitiesUsersItem>;
+export type RoleOrgCapabilitiesUsersList = Array<
+  RoleOrgCapabilitiesUsersItem | (string & {})
+>;
 export const RoleOrgCapabilitiesUsersList = /*@__PURE__*/ S.Array(
   RoleOrgCapabilitiesUsersItem,
 ) as any as S.Schema<RoleOrgCapabilitiesUsersList>;
@@ -2755,8 +2823,9 @@ export type RoleOrgCapabilitiesViewsItem =
 export const RoleOrgCapabilitiesViewsItem = /*@__PURE__*/ S.String;
 
 /** Controls the management of data views */
-export type RoleOrgCapabilitiesViewsList =
-  ReadonlyArray<RoleOrgCapabilitiesViewsItem>;
+export type RoleOrgCapabilitiesViewsList = Array<
+  RoleOrgCapabilitiesViewsItem | (string & {})
+>;
 export const RoleOrgCapabilitiesViewsList = /*@__PURE__*/ S.Array(
   RoleOrgCapabilitiesViewsItem,
 ) as any as S.Schema<RoleOrgCapabilitiesViewsList>;
@@ -2820,8 +2889,9 @@ export type RoleViewCapabilitiesValueQueryItem = "read";
 export const RoleViewCapabilitiesValueQueryItem = /*@__PURE__*/ S.String;
 
 /** Controls the ability to query and read data from views */
-export type RoleViewCapabilitiesValueQueryList =
-  ReadonlyArray<RoleViewCapabilitiesValueQueryItem>;
+export type RoleViewCapabilitiesValueQueryList = Array<
+  RoleViewCapabilitiesValueQueryItem | (string & {})
+>;
 export const RoleViewCapabilitiesValueQueryList = /*@__PURE__*/ S.Array(
   RoleViewCapabilitiesValueQueryItem,
 ) as any as S.Schema<RoleViewCapabilitiesValueQueryList>;
@@ -2830,8 +2900,9 @@ export type RoleViewCapabilitiesValueShareItem = "create" | "read" | "delete";
 export const RoleViewCapabilitiesValueShareItem = /*@__PURE__*/ S.String;
 
 /** Controls the ability to share views with other users */
-export type RoleViewCapabilitiesValueShareList =
-  ReadonlyArray<RoleViewCapabilitiesValueShareItem>;
+export type RoleViewCapabilitiesValueShareList = Array<
+  RoleViewCapabilitiesValueShareItem | (string & {})
+>;
 export const RoleViewCapabilitiesValueShareList = /*@__PURE__*/ S.Array(
   RoleViewCapabilitiesValueShareItem,
 ) as any as S.Schema<RoleViewCapabilitiesValueShareList>;
@@ -2885,7 +2956,7 @@ export const CreateRoleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateRoleRequest>;
 
 /** List of user IDs that are assigned to this role */
-export type CreateRoleResponseMembersList = ReadonlyArray<string>;
+export type CreateRoleResponseMembersList = Array<string>;
 export const CreateRoleResponseMembersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateRoleResponseMembersList>;
@@ -2942,12 +3013,12 @@ export const APLRequestWithOptionsDefaultOrder = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<APLRequestWithOptionsDefaultOrder>;
 
 export type APLRequestWithOptionsDefaultOrderList =
-  ReadonlyArray<APLRequestWithOptionsDefaultOrder>;
+  Array<APLRequestWithOptionsDefaultOrder>;
 export const APLRequestWithOptionsDefaultOrderList = /*@__PURE__*/ S.Array(
   APLRequestWithOptionsDefaultOrder,
 ) as any as S.Schema<APLRequestWithOptionsDefaultOrderList>;
 
-export type APLRequestWithOptionsLibrariesList = ReadonlyArray<string>;
+export type APLRequestWithOptionsLibrariesList = Array<string>;
 export const APLRequestWithOptionsLibrariesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<APLRequestWithOptionsLibrariesList>;
@@ -2983,15 +3054,15 @@ export interface QueryOptions {
   noAggregation?: boolean;
   noFill?: boolean;
   noInterpolation?: boolean;
-  priority?: QueryOptionsPriority;
+  priority?: QueryOptionsPriority | (string & {});
   resolution?: string;
   /** Controls how empty intervals are rendered in time series charts. `auto` infers from the query, `null` leaves gaps, `span` connects adjacent points, `zero` fills with zero. */
-  displayNull?: QueryOptionsDisplayNull;
+  displayNull?: QueryOptionsDisplayNull | (string & {});
   /** When enabled, charts are overlaid on a single chart instead of stacked separately. */
-  overlayCharts?: BooleanString;
+  overlayCharts?: BooleanString | (string & {});
   shownColumns?: string;
-  timeSeriesVariant?: QueryOptionsTimeSeriesVariant;
-  timeSeriesView?: QueryOptionsTimeSeriesView;
+  timeSeriesVariant?: QueryOptionsTimeSeriesVariant | (string & {});
+  timeSeriesView?: QueryOptionsTimeSeriesView | (string & {});
 }
 export const QueryOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3154,7 +3225,7 @@ export const User = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "User" }) as any as S.Schema<User>;
 
-export type CreateViewRequestDatasetsList = ReadonlyArray<string>;
+export type CreateViewRequestDatasetsList = Array<string>;
 export const CreateViewRequestDatasetsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateViewRequestDatasetsList>;
@@ -3182,7 +3253,7 @@ export const CreateViewRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateViewRequest",
 }) as any as S.Schema<CreateViewRequest>;
 
-export type ViewDatasetsList = ReadonlyArray<string>;
+export type ViewDatasetsList = Array<string>;
 export const ViewDatasetsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ViewDatasetsList>;
@@ -3501,7 +3572,7 @@ export const GetAnnotationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetAnnotationRequest",
 }) as any as S.Schema<GetAnnotationRequest>;
 
-export type GetAnnotationsRequestDatasetsList = ReadonlyArray<string>;
+export type GetAnnotationsRequestDatasetsList = Array<string>;
 export const GetAnnotationsRequestDatasetsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetAnnotationsRequestDatasetsList>;
@@ -3524,7 +3595,7 @@ export const GetAnnotationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetAnnotationsRequest",
 }) as any as S.Schema<GetAnnotationsRequest>;
 
-export type GetAnnotationsResponseBodyList = ReadonlyArray<Annotation>;
+export type GetAnnotationsResponseBodyList = Array<Annotation>;
 export const GetAnnotationsResponseBodyList = /*@__PURE__*/ S.Array(
   Annotation,
 ) as any as S.Schema<GetAnnotationsResponseBodyList>;
@@ -3581,7 +3652,7 @@ export const GetAPITokensRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetAPITokensRequest",
 }) as any as S.Schema<GetAPITokensRequest>;
 
-export type GetAPITokensResponseBodyList = ReadonlyArray<APIToken>;
+export type GetAPITokensResponseBodyList = Array<APIToken>;
 export const GetAPITokensResponseBodyList = /*@__PURE__*/ S.Array(
   APIToken,
 ) as any as S.Schema<GetAPITokensResponseBodyList>;
@@ -3633,7 +3704,7 @@ export const GetDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetDatasetsRequest",
 }) as any as S.Schema<GetDatasetsRequest>;
 
-export type GetDatasetsResponseBodyList = ReadonlyArray<Dataset>;
+export type GetDatasetsResponseBodyList = Array<Dataset>;
 export const GetDatasetsResponseBodyList = /*@__PURE__*/ S.Array(
   Dataset,
 ) as any as S.Schema<GetDatasetsResponseBodyList>;
@@ -3703,7 +3774,7 @@ export const GetFieldsForDatasetRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetFieldsForDatasetRequest",
 }) as any as S.Schema<GetFieldsForDatasetRequest>;
 
-export type GetFieldsForDatasetResponseBodyList = ReadonlyArray<DatasetField>;
+export type GetFieldsForDatasetResponseBodyList = Array<DatasetField>;
 export const GetFieldsForDatasetResponseBodyList = /*@__PURE__*/ S.Array(
   DatasetField,
 ) as any as S.Schema<GetFieldsForDatasetResponseBodyList>;
@@ -3728,13 +3799,13 @@ export const GetGroupByIdRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetGroupByIdRequest>;
 
 /** List of user IDs that are assigned to this group */
-export type GetGroupByIdResponseMembersList = ReadonlyArray<string>;
+export type GetGroupByIdResponseMembersList = Array<string>;
 export const GetGroupByIdResponseMembersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetGroupByIdResponseMembersList>;
 
 /** List of role IDs that are assigned to this group */
-export type GetGroupByIdResponseRolesList = ReadonlyArray<string>;
+export type GetGroupByIdResponseRolesList = Array<string>;
 export const GetGroupByIdResponseRolesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetGroupByIdResponseRolesList>;
@@ -3784,7 +3855,7 @@ export const GetMapFieldsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetMapFieldsRequest>;
 
 /** A list of map field names */
-export type MapFields = ReadonlyArray<string>;
+export type MapFields = Array<string>;
 export const MapFields = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<MapFields>;
@@ -3809,7 +3880,7 @@ export const GetMonitorRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetMonitorRequest>;
 
 /** List of notifier IDs that will receive alerts. Notifiers can be email, Slack, webhook endpoints, etc. */
-export type GetMonitorResponseNotifierIdsList = ReadonlyArray<string>;
+export type GetMonitorResponseNotifierIdsList = Array<string>;
 export const GetMonitorResponseNotifierIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetMonitorResponseNotifierIdsList>;
@@ -3963,7 +4034,7 @@ export const AlertHistory = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AlertHistory" }) as any as S.Schema<AlertHistory>;
 
-export type GetMonitorHistoryResponseBodyList = ReadonlyArray<AlertHistory>;
+export type GetMonitorHistoryResponseBodyList = Array<AlertHistory>;
 export const GetMonitorHistoryResponseBodyList = /*@__PURE__*/ S.Array(
   AlertHistory,
 ) as any as S.Schema<GetMonitorHistoryResponseBodyList>;
@@ -3983,7 +4054,7 @@ export const GetMonitorsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetMonitorsRequest>;
 
 /** List of notifier IDs that will receive alerts. Notifiers can be email, Slack, webhook endpoints, etc. */
-export type MonitorWithIdNotifierIdsList = ReadonlyArray<string>;
+export type MonitorWithIdNotifierIdsList = Array<string>;
 export const MonitorWithIdNotifierIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<MonitorWithIdNotifierIdsList>;
@@ -4090,7 +4161,7 @@ export const MonitorWithId = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MonitorWithId" }) as any as S.Schema<MonitorWithId>;
 
-export type GetMonitorsResponseBodyList = ReadonlyArray<MonitorWithId>;
+export type GetMonitorsResponseBodyList = Array<MonitorWithId>;
 export const GetMonitorsResponseBodyList = /*@__PURE__*/ S.Array(
   MonitorWithId,
 ) as any as S.Schema<GetMonitorsResponseBodyList>;
@@ -4178,7 +4249,7 @@ export const NotifierWithId = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "NotifierWithId" }) as any as S.Schema<NotifierWithId>;
 
-export type GetNotifiersResponseBodyList = ReadonlyArray<NotifierWithId>;
+export type GetNotifiersResponseBodyList = Array<NotifierWithId>;
 export const GetNotifiersResponseBodyList = /*@__PURE__*/ S.Array(
   NotifierWithId,
 ) as any as S.Schema<GetNotifiersResponseBodyList>;
@@ -4204,7 +4275,7 @@ export const GetOrgsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v2/orgs", code: 200 })),
 ).annotate({ identifier: "GetOrgsRequest" }) as any as S.Schema<GetOrgsRequest>;
 
-export type GetOrgsResponseBodyList = ReadonlyArray<Org>;
+export type GetOrgsResponseBodyList = Array<Org>;
 export const GetOrgsResponseBodyList = /*@__PURE__*/ S.Array(
   Org,
 ) as any as S.Schema<GetOrgsResponseBodyList>;
@@ -4229,7 +4300,7 @@ export const GetRoleByIdRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetRoleByIdRequest>;
 
 /** List of user IDs that are assigned to this role */
-export type GetRoleByIdResponseMembersList = ReadonlyArray<string>;
+export type GetRoleByIdResponseMembersList = Array<string>;
 export const GetRoleByIdResponseMembersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetRoleByIdResponseMembersList>;
@@ -4362,8 +4433,7 @@ export const StarredQueryWithId = /*@__PURE__*/ S.suspend(() =>
   identifier: "StarredQueryWithId",
 }) as any as S.Schema<StarredQueryWithId>;
 
-export type GetStarredQueriesResponseBodyList =
-  ReadonlyArray<StarredQueryWithId>;
+export type GetStarredQueriesResponseBodyList = Array<StarredQueryWithId>;
 export const GetStarredQueriesResponseBodyList = /*@__PURE__*/ S.Array(
   StarredQueryWithId,
 ) as any as S.Schema<GetStarredQueriesResponseBodyList>;
@@ -4391,7 +4461,7 @@ export const GetUsersRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetUsersRequest",
 }) as any as S.Schema<GetUsersRequest>;
 
-export type GetUsersResponseBodyList = ReadonlyArray<User>;
+export type GetUsersResponseBodyList = Array<User>;
 export const GetUsersResponseBodyList = /*@__PURE__*/ S.Array(
   User,
 ) as any as S.Schema<GetUsersResponseBodyList>;
@@ -4419,7 +4489,7 @@ export const GetViewsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetViewsRequest",
 }) as any as S.Schema<GetViewsRequest>;
 
-export type GetViewsResponseBodyList = ReadonlyArray<View>;
+export type GetViewsResponseBodyList = Array<View>;
 export const GetViewsResponseBodyList = /*@__PURE__*/ S.Array(
   View,
 ) as any as S.Schema<GetViewsResponseBodyList>;
@@ -4499,8 +4569,7 @@ export const VirtualFieldWithId = /*@__PURE__*/ S.suspend(() =>
   identifier: "VirtualFieldWithId",
 }) as any as S.Schema<VirtualFieldWithId>;
 
-export type GetVirtualFieldsResponseBodyList =
-  ReadonlyArray<VirtualFieldWithId>;
+export type GetVirtualFieldsResponseBodyList = Array<VirtualFieldWithId>;
 export const GetVirtualFieldsResponseBodyList = /*@__PURE__*/ S.Array(
   VirtualFieldWithId,
 ) as any as S.Schema<GetVirtualFieldsResponseBodyList>;
@@ -4525,7 +4594,7 @@ export const ListDashboardsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListDashboardsRequest",
 }) as any as S.Schema<ListDashboardsRequest>;
 
-export type ListDashboardsResponseBodyList = ReadonlyArray<DashboardResource>;
+export type ListDashboardsResponseBodyList = Array<DashboardResource>;
 export const ListDashboardsResponseBodyList = /*@__PURE__*/ S.Array(
   DashboardResource,
 ) as any as S.Schema<ListDashboardsResponseBodyList>;
@@ -4547,13 +4616,13 @@ export const ListGroupsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListGroupsRequest>;
 
 /** List of user IDs that are assigned to this group */
-export type GroupWithIDMembersList = ReadonlyArray<string>;
+export type GroupWithIDMembersList = Array<string>;
 export const GroupWithIDMembersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GroupWithIDMembersList>;
 
 /** List of role IDs that are assigned to this group */
-export type GroupWithIDRolesList = ReadonlyArray<string>;
+export type GroupWithIDRolesList = Array<string>;
 export const GroupWithIDRolesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GroupWithIDRolesList>;
@@ -4584,7 +4653,7 @@ export const GroupWithID = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "GroupWithID" }) as any as S.Schema<GroupWithID>;
 
-export type ListGroupsResponseBodyList = ReadonlyArray<GroupWithID>;
+export type ListGroupsResponseBodyList = Array<GroupWithID>;
 export const ListGroupsResponseBodyList = /*@__PURE__*/ S.Array(
   GroupWithID,
 ) as any as S.Schema<ListGroupsResponseBodyList>;
@@ -4606,7 +4675,7 @@ export const ListRolesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListRolesRequest>;
 
 /** List of user IDs that are assigned to this role */
-export type RoleWithIDMembersList = ReadonlyArray<string>;
+export type RoleWithIDMembersList = Array<string>;
 export const RoleWithIDMembersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RoleWithIDMembersList>;
@@ -4637,7 +4706,7 @@ export const RoleWithID = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "RoleWithID" }) as any as S.Schema<RoleWithID>;
 
-export type ListRolesResponseBodyList = ReadonlyArray<RoleWithID>;
+export type ListRolesResponseBodyList = Array<RoleWithID>;
 export const ListRolesResponseBodyList = /*@__PURE__*/ S.Array(
   RoleWithID,
 ) as any as S.Schema<ListRolesResponseBodyList>;
@@ -4807,7 +4876,7 @@ export const TrimDatasetResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TrimDatasetResponse>;
 
 /** array<string> of dataset names for which the annotation appears on charts */
-export type UpdateAnnotationRequestDatasetsList = ReadonlyArray<string>;
+export type UpdateAnnotationRequestDatasetsList = Array<string>;
 export const UpdateAnnotationRequestDatasetsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<UpdateAnnotationRequestDatasetsList>;
@@ -4940,13 +5009,13 @@ export const UpdateFieldForDatasetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateFieldForDatasetRequest>;
 
 /** List of user IDs that are assigned to this group */
-export type UpdateGroupRequestMembersList = ReadonlyArray<string>;
+export type UpdateGroupRequestMembersList = Array<string>;
 export const UpdateGroupRequestMembersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<UpdateGroupRequestMembersList>;
 
 /** List of role IDs that are assigned to this group */
-export type UpdateGroupRequestRolesList = ReadonlyArray<string>;
+export type UpdateGroupRequestRolesList = Array<string>;
 export const UpdateGroupRequestRolesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<UpdateGroupRequestRolesList>;
@@ -4976,13 +5045,13 @@ export const UpdateGroupRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateGroupRequest>;
 
 /** List of user IDs that are assigned to this group */
-export type UpdateGroupResponseMembersList = ReadonlyArray<string>;
+export type UpdateGroupResponseMembersList = Array<string>;
 export const UpdateGroupResponseMembersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<UpdateGroupResponseMembersList>;
 
 /** List of role IDs that are assigned to this group */
-export type UpdateGroupResponseRolesList = ReadonlyArray<string>;
+export type UpdateGroupResponseRolesList = Array<string>;
 export const UpdateGroupResponseRolesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<UpdateGroupResponseRolesList>;
@@ -5041,7 +5110,7 @@ export const UpdateMapFieldsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateMapFieldsResponse>;
 
 /** List of notifier IDs that will receive alerts. Notifiers can be email, Slack, webhook endpoints, etc. */
-export type UpdateMonitorRequestNotifierIdsList = ReadonlyArray<string>;
+export type UpdateMonitorRequestNotifierIdsList = Array<string>;
 export const UpdateMonitorRequestNotifierIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<UpdateMonitorRequestNotifierIdsList>;
@@ -5152,7 +5221,7 @@ export const UpdateMonitorRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateMonitorRequest>;
 
 /** List of notifier IDs that will receive alerts. Notifiers can be email, Slack, webhook endpoints, etc. */
-export type UpdateMonitorResponseNotifierIdsList = ReadonlyArray<string>;
+export type UpdateMonitorResponseNotifierIdsList = Array<string>;
 export const UpdateMonitorResponseNotifierIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<UpdateMonitorResponseNotifierIdsList>;
@@ -5325,7 +5394,7 @@ export const UpdateOrgRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateOrgRequest>;
 
 /** List of user IDs that are assigned to this role */
-export type UpdateRoleRequestMembersList = ReadonlyArray<string>;
+export type UpdateRoleRequestMembersList = Array<string>;
 export const UpdateRoleRequestMembersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<UpdateRoleRequestMembersList>;
@@ -5358,7 +5427,7 @@ export const UpdateRoleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateRoleRequest>;
 
 /** List of user IDs that are assigned to this role */
-export type UpdateRoleResponseMembersList = ReadonlyArray<string>;
+export type UpdateRoleResponseMembersList = Array<string>;
 export const UpdateRoleResponseMembersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<UpdateRoleResponseMembersList>;
@@ -5474,7 +5543,7 @@ export const UpdateUserRoleRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateUserRoleRequest",
 }) as any as S.Schema<UpdateUserRoleRequest>;
 
-export type UpdateViewRequestDatasetsList = ReadonlyArray<string>;
+export type UpdateViewRequestDatasetsList = Array<string>;
 export const UpdateViewRequestDatasetsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<UpdateViewRequestDatasetsList>;

@@ -64,7 +64,7 @@ export const EnvironmentsActivityRetrieveResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<EnvironmentsActivityRetrieveResponse>;
 
 export type EnvironmentsAddProductIntentPartialUpdateRequestAppUrlsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const EnvironmentsAddProductIntentPartialUpdateRequestAppUrlsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -671,28 +671,28 @@ export type TimezoneEnum =
 export const TimezoneEnum = /*@__PURE__*/ S.String;
 
 export type EnvironmentsAddProductIntentPartialUpdateRequestPersonDisplayNamePropertiesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const EnvironmentsAddProductIntentPartialUpdateRequestPersonDisplayNamePropertiesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<EnvironmentsAddProductIntentPartialUpdateRequestPersonDisplayNamePropertiesList>;
 
 export type EnvironmentsAddProductIntentPartialUpdateRequestSessionRecordingUrlTriggerConfigList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const EnvironmentsAddProductIntentPartialUpdateRequestSessionRecordingUrlTriggerConfigList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<EnvironmentsAddProductIntentPartialUpdateRequestSessionRecordingUrlTriggerConfigList>;
 
 export type EnvironmentsAddProductIntentPartialUpdateRequestSessionRecordingUrlBlocklistConfigList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const EnvironmentsAddProductIntentPartialUpdateRequestSessionRecordingUrlBlocklistConfigList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<EnvironmentsAddProductIntentPartialUpdateRequestSessionRecordingUrlBlocklistConfigList>;
 
 export type EnvironmentsAddProductIntentPartialUpdateRequestSessionRecordingEventTriggerConfigList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const EnvironmentsAddProductIntentPartialUpdateRequestSessionRecordingEventTriggerConfigList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -707,14 +707,14 @@ export type WeekStartDayEnum = 0 | 1;
 export const WeekStartDayEnum = /*@__PURE__*/ S.Number;
 
 export type EnvironmentsAddProductIntentPartialUpdateRequestLiveEventsColumnsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const EnvironmentsAddProductIntentPartialUpdateRequestLiveEventsColumnsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<EnvironmentsAddProductIntentPartialUpdateRequestLiveEventsColumnsList>;
 
 export type EnvironmentsAddProductIntentPartialUpdateRequestRecordingDomainsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const EnvironmentsAddProductIntentPartialUpdateRequestRecordingDomainsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1191,49 +1191,49 @@ export const EnvironmentsAddProductIntentPartialUpdateResponse =
   }) as any as S.Schema<EnvironmentsAddProductIntentPartialUpdateResponse>;
 
 export type EnvironmentsCompleteProductOnboardingPartialUpdateRequestAppUrlsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const EnvironmentsCompleteProductOnboardingPartialUpdateRequestAppUrlsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<EnvironmentsCompleteProductOnboardingPartialUpdateRequestAppUrlsList>;
 
 export type EnvironmentsCompleteProductOnboardingPartialUpdateRequestPersonDisplayNamePropertiesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const EnvironmentsCompleteProductOnboardingPartialUpdateRequestPersonDisplayNamePropertiesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<EnvironmentsCompleteProductOnboardingPartialUpdateRequestPersonDisplayNamePropertiesList>;
 
 export type EnvironmentsCompleteProductOnboardingPartialUpdateRequestSessionRecordingUrlTriggerConfigList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const EnvironmentsCompleteProductOnboardingPartialUpdateRequestSessionRecordingUrlTriggerConfigList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<EnvironmentsCompleteProductOnboardingPartialUpdateRequestSessionRecordingUrlTriggerConfigList>;
 
 export type EnvironmentsCompleteProductOnboardingPartialUpdateRequestSessionRecordingUrlBlocklistConfigList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const EnvironmentsCompleteProductOnboardingPartialUpdateRequestSessionRecordingUrlBlocklistConfigList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<EnvironmentsCompleteProductOnboardingPartialUpdateRequestSessionRecordingUrlBlocklistConfigList>;
 
 export type EnvironmentsCompleteProductOnboardingPartialUpdateRequestSessionRecordingEventTriggerConfigList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const EnvironmentsCompleteProductOnboardingPartialUpdateRequestSessionRecordingEventTriggerConfigList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<EnvironmentsCompleteProductOnboardingPartialUpdateRequestSessionRecordingEventTriggerConfigList>;
 
 export type EnvironmentsCompleteProductOnboardingPartialUpdateRequestLiveEventsColumnsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const EnvironmentsCompleteProductOnboardingPartialUpdateRequestLiveEventsColumnsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<EnvironmentsCompleteProductOnboardingPartialUpdateRequestLiveEventsColumnsList>;
 
 export type EnvironmentsCompleteProductOnboardingPartialUpdateRequestRecordingDomainsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const EnvironmentsCompleteProductOnboardingPartialUpdateRequestRecordingDomainsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1456,49 +1456,49 @@ export const EnvironmentsCompleteProductOnboardingPartialUpdateResponse =
   }) as any as S.Schema<EnvironmentsCompleteProductOnboardingPartialUpdateResponse>;
 
 export type EnvironmentsDefaultEvaluationContextsCreateRequestAppUrlsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const EnvironmentsDefaultEvaluationContextsCreateRequestAppUrlsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<EnvironmentsDefaultEvaluationContextsCreateRequestAppUrlsList>;
 
 export type EnvironmentsDefaultEvaluationContextsCreateRequestPersonDisplayNamePropertiesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const EnvironmentsDefaultEvaluationContextsCreateRequestPersonDisplayNamePropertiesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<EnvironmentsDefaultEvaluationContextsCreateRequestPersonDisplayNamePropertiesList>;
 
 export type EnvironmentsDefaultEvaluationContextsCreateRequestSessionRecordingUrlTriggerConfigList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const EnvironmentsDefaultEvaluationContextsCreateRequestSessionRecordingUrlTriggerConfigList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<EnvironmentsDefaultEvaluationContextsCreateRequestSessionRecordingUrlTriggerConfigList>;
 
 export type EnvironmentsDefaultEvaluationContextsCreateRequestSessionRecordingUrlBlocklistConfigList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const EnvironmentsDefaultEvaluationContextsCreateRequestSessionRecordingUrlBlocklistConfigList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<EnvironmentsDefaultEvaluationContextsCreateRequestSessionRecordingUrlBlocklistConfigList>;
 
 export type EnvironmentsDefaultEvaluationContextsCreateRequestSessionRecordingEventTriggerConfigList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const EnvironmentsDefaultEvaluationContextsCreateRequestSessionRecordingEventTriggerConfigList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<EnvironmentsDefaultEvaluationContextsCreateRequestSessionRecordingEventTriggerConfigList>;
 
 export type EnvironmentsDefaultEvaluationContextsCreateRequestLiveEventsColumnsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const EnvironmentsDefaultEvaluationContextsCreateRequestLiveEventsColumnsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<EnvironmentsDefaultEvaluationContextsCreateRequestLiveEventsColumnsList>;
 
 export type EnvironmentsDefaultEvaluationContextsCreateRequestRecordingDomainsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const EnvironmentsDefaultEvaluationContextsCreateRequestRecordingDomainsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1806,49 +1806,49 @@ export const EnvironmentsDefaultReleaseConditionsRetrieveResponse =
   }) as any as S.Schema<EnvironmentsDefaultReleaseConditionsRetrieveResponse>;
 
 export type EnvironmentsDefaultReleaseConditionsUpdateRequestAppUrlsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const EnvironmentsDefaultReleaseConditionsUpdateRequestAppUrlsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<EnvironmentsDefaultReleaseConditionsUpdateRequestAppUrlsList>;
 
 export type EnvironmentsDefaultReleaseConditionsUpdateRequestPersonDisplayNamePropertiesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const EnvironmentsDefaultReleaseConditionsUpdateRequestPersonDisplayNamePropertiesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<EnvironmentsDefaultReleaseConditionsUpdateRequestPersonDisplayNamePropertiesList>;
 
 export type EnvironmentsDefaultReleaseConditionsUpdateRequestSessionRecordingUrlTriggerConfigList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const EnvironmentsDefaultReleaseConditionsUpdateRequestSessionRecordingUrlTriggerConfigList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<EnvironmentsDefaultReleaseConditionsUpdateRequestSessionRecordingUrlTriggerConfigList>;
 
 export type EnvironmentsDefaultReleaseConditionsUpdateRequestSessionRecordingUrlBlocklistConfigList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const EnvironmentsDefaultReleaseConditionsUpdateRequestSessionRecordingUrlBlocklistConfigList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<EnvironmentsDefaultReleaseConditionsUpdateRequestSessionRecordingUrlBlocklistConfigList>;
 
 export type EnvironmentsDefaultReleaseConditionsUpdateRequestSessionRecordingEventTriggerConfigList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const EnvironmentsDefaultReleaseConditionsUpdateRequestSessionRecordingEventTriggerConfigList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<EnvironmentsDefaultReleaseConditionsUpdateRequestSessionRecordingEventTriggerConfigList>;
 
 export type EnvironmentsDefaultReleaseConditionsUpdateRequestLiveEventsColumnsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const EnvironmentsDefaultReleaseConditionsUpdateRequestLiveEventsColumnsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<EnvironmentsDefaultReleaseConditionsUpdateRequestLiveEventsColumnsList>;
 
 export type EnvironmentsDefaultReleaseConditionsUpdateRequestRecordingDomainsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const EnvironmentsDefaultReleaseConditionsUpdateRequestRecordingDomainsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2072,49 +2072,49 @@ export const EnvironmentsDefaultReleaseConditionsUpdateResponse =
   }) as any as S.Schema<EnvironmentsDefaultReleaseConditionsUpdateResponse>;
 
 export type EnvironmentsDeleteSecretTokenBackupPartialUpdateRequestAppUrlsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const EnvironmentsDeleteSecretTokenBackupPartialUpdateRequestAppUrlsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<EnvironmentsDeleteSecretTokenBackupPartialUpdateRequestAppUrlsList>;
 
 export type EnvironmentsDeleteSecretTokenBackupPartialUpdateRequestPersonDisplayNamePropertiesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const EnvironmentsDeleteSecretTokenBackupPartialUpdateRequestPersonDisplayNamePropertiesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<EnvironmentsDeleteSecretTokenBackupPartialUpdateRequestPersonDisplayNamePropertiesList>;
 
 export type EnvironmentsDeleteSecretTokenBackupPartialUpdateRequestSessionRecordingUrlTriggerConfigList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const EnvironmentsDeleteSecretTokenBackupPartialUpdateRequestSessionRecordingUrlTriggerConfigList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<EnvironmentsDeleteSecretTokenBackupPartialUpdateRequestSessionRecordingUrlTriggerConfigList>;
 
 export type EnvironmentsDeleteSecretTokenBackupPartialUpdateRequestSessionRecordingUrlBlocklistConfigList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const EnvironmentsDeleteSecretTokenBackupPartialUpdateRequestSessionRecordingUrlBlocklistConfigList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<EnvironmentsDeleteSecretTokenBackupPartialUpdateRequestSessionRecordingUrlBlocklistConfigList>;
 
 export type EnvironmentsDeleteSecretTokenBackupPartialUpdateRequestSessionRecordingEventTriggerConfigList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const EnvironmentsDeleteSecretTokenBackupPartialUpdateRequestSessionRecordingEventTriggerConfigList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<EnvironmentsDeleteSecretTokenBackupPartialUpdateRequestSessionRecordingEventTriggerConfigList>;
 
 export type EnvironmentsDeleteSecretTokenBackupPartialUpdateRequestLiveEventsColumnsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const EnvironmentsDeleteSecretTokenBackupPartialUpdateRequestLiveEventsColumnsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<EnvironmentsDeleteSecretTokenBackupPartialUpdateRequestLiveEventsColumnsList>;
 
 export type EnvironmentsDeleteSecretTokenBackupPartialUpdateRequestRecordingDomainsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const EnvironmentsDeleteSecretTokenBackupPartialUpdateRequestRecordingDomainsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2433,49 +2433,49 @@ export const EnvironmentsEventIngestionRestrictionsRetrieveResponse =
   }) as any as S.Schema<EnvironmentsEventIngestionRestrictionsRetrieveResponse>;
 
 export type EnvironmentsExperimentsConfigPartialUpdateRequestAppUrlsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const EnvironmentsExperimentsConfigPartialUpdateRequestAppUrlsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<EnvironmentsExperimentsConfigPartialUpdateRequestAppUrlsList>;
 
 export type EnvironmentsExperimentsConfigPartialUpdateRequestPersonDisplayNamePropertiesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const EnvironmentsExperimentsConfigPartialUpdateRequestPersonDisplayNamePropertiesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<EnvironmentsExperimentsConfigPartialUpdateRequestPersonDisplayNamePropertiesList>;
 
 export type EnvironmentsExperimentsConfigPartialUpdateRequestSessionRecordingUrlTriggerConfigList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const EnvironmentsExperimentsConfigPartialUpdateRequestSessionRecordingUrlTriggerConfigList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<EnvironmentsExperimentsConfigPartialUpdateRequestSessionRecordingUrlTriggerConfigList>;
 
 export type EnvironmentsExperimentsConfigPartialUpdateRequestSessionRecordingUrlBlocklistConfigList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const EnvironmentsExperimentsConfigPartialUpdateRequestSessionRecordingUrlBlocklistConfigList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<EnvironmentsExperimentsConfigPartialUpdateRequestSessionRecordingUrlBlocklistConfigList>;
 
 export type EnvironmentsExperimentsConfigPartialUpdateRequestSessionRecordingEventTriggerConfigList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const EnvironmentsExperimentsConfigPartialUpdateRequestSessionRecordingEventTriggerConfigList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<EnvironmentsExperimentsConfigPartialUpdateRequestSessionRecordingEventTriggerConfigList>;
 
 export type EnvironmentsExperimentsConfigPartialUpdateRequestLiveEventsColumnsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const EnvironmentsExperimentsConfigPartialUpdateRequestLiveEventsColumnsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<EnvironmentsExperimentsConfigPartialUpdateRequestLiveEventsColumnsList>;
 
 export type EnvironmentsExperimentsConfigPartialUpdateRequestRecordingDomainsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const EnvironmentsExperimentsConfigPartialUpdateRequestRecordingDomainsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2727,49 +2727,49 @@ export const EnvironmentsExperimentsConfigRetrieveResponse =
   }) as any as S.Schema<EnvironmentsExperimentsConfigRetrieveResponse>;
 
 export type EnvironmentsGenerateConversationsPublicTokenCreateRequestAppUrlsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const EnvironmentsGenerateConversationsPublicTokenCreateRequestAppUrlsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<EnvironmentsGenerateConversationsPublicTokenCreateRequestAppUrlsList>;
 
 export type EnvironmentsGenerateConversationsPublicTokenCreateRequestPersonDisplayNamePropertiesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const EnvironmentsGenerateConversationsPublicTokenCreateRequestPersonDisplayNamePropertiesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<EnvironmentsGenerateConversationsPublicTokenCreateRequestPersonDisplayNamePropertiesList>;
 
 export type EnvironmentsGenerateConversationsPublicTokenCreateRequestSessionRecordingUrlTriggerConfigList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const EnvironmentsGenerateConversationsPublicTokenCreateRequestSessionRecordingUrlTriggerConfigList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<EnvironmentsGenerateConversationsPublicTokenCreateRequestSessionRecordingUrlTriggerConfigList>;
 
 export type EnvironmentsGenerateConversationsPublicTokenCreateRequestSessionRecordingUrlBlocklistConfigList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const EnvironmentsGenerateConversationsPublicTokenCreateRequestSessionRecordingUrlBlocklistConfigList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<EnvironmentsGenerateConversationsPublicTokenCreateRequestSessionRecordingUrlBlocklistConfigList>;
 
 export type EnvironmentsGenerateConversationsPublicTokenCreateRequestSessionRecordingEventTriggerConfigList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const EnvironmentsGenerateConversationsPublicTokenCreateRequestSessionRecordingEventTriggerConfigList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<EnvironmentsGenerateConversationsPublicTokenCreateRequestSessionRecordingEventTriggerConfigList>;
 
 export type EnvironmentsGenerateConversationsPublicTokenCreateRequestLiveEventsColumnsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const EnvironmentsGenerateConversationsPublicTokenCreateRequestLiveEventsColumnsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<EnvironmentsGenerateConversationsPublicTokenCreateRequestLiveEventsColumnsList>;
 
 export type EnvironmentsGenerateConversationsPublicTokenCreateRequestRecordingDomainsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const EnvironmentsGenerateConversationsPublicTokenCreateRequestRecordingDomainsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3020,49 +3020,49 @@ export const EnvironmentsIsGeneratingDemoDataRetrieveResponse =
   }) as any as S.Schema<EnvironmentsIsGeneratingDemoDataRetrieveResponse>;
 
 export type EnvironmentsLogsConfigPartialUpdateRequestAppUrlsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const EnvironmentsLogsConfigPartialUpdateRequestAppUrlsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<EnvironmentsLogsConfigPartialUpdateRequestAppUrlsList>;
 
 export type EnvironmentsLogsConfigPartialUpdateRequestPersonDisplayNamePropertiesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const EnvironmentsLogsConfigPartialUpdateRequestPersonDisplayNamePropertiesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<EnvironmentsLogsConfigPartialUpdateRequestPersonDisplayNamePropertiesList>;
 
 export type EnvironmentsLogsConfigPartialUpdateRequestSessionRecordingUrlTriggerConfigList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const EnvironmentsLogsConfigPartialUpdateRequestSessionRecordingUrlTriggerConfigList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<EnvironmentsLogsConfigPartialUpdateRequestSessionRecordingUrlTriggerConfigList>;
 
 export type EnvironmentsLogsConfigPartialUpdateRequestSessionRecordingUrlBlocklistConfigList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const EnvironmentsLogsConfigPartialUpdateRequestSessionRecordingUrlBlocklistConfigList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<EnvironmentsLogsConfigPartialUpdateRequestSessionRecordingUrlBlocklistConfigList>;
 
 export type EnvironmentsLogsConfigPartialUpdateRequestSessionRecordingEventTriggerConfigList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const EnvironmentsLogsConfigPartialUpdateRequestSessionRecordingEventTriggerConfigList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<EnvironmentsLogsConfigPartialUpdateRequestSessionRecordingEventTriggerConfigList>;
 
 export type EnvironmentsLogsConfigPartialUpdateRequestLiveEventsColumnsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const EnvironmentsLogsConfigPartialUpdateRequestLiveEventsColumnsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<EnvironmentsLogsConfigPartialUpdateRequestLiveEventsColumnsList>;
 
 export type EnvironmentsLogsConfigPartialUpdateRequestRecordingDomainsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const EnvironmentsLogsConfigPartialUpdateRequestRecordingDomainsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3313,49 +3313,49 @@ export const EnvironmentsLogsConfigRetrieveResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<EnvironmentsLogsConfigRetrieveResponse>;
 
 export type EnvironmentsResetTokenPartialUpdateRequestAppUrlsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const EnvironmentsResetTokenPartialUpdateRequestAppUrlsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<EnvironmentsResetTokenPartialUpdateRequestAppUrlsList>;
 
 export type EnvironmentsResetTokenPartialUpdateRequestPersonDisplayNamePropertiesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const EnvironmentsResetTokenPartialUpdateRequestPersonDisplayNamePropertiesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<EnvironmentsResetTokenPartialUpdateRequestPersonDisplayNamePropertiesList>;
 
 export type EnvironmentsResetTokenPartialUpdateRequestSessionRecordingUrlTriggerConfigList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const EnvironmentsResetTokenPartialUpdateRequestSessionRecordingUrlTriggerConfigList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<EnvironmentsResetTokenPartialUpdateRequestSessionRecordingUrlTriggerConfigList>;
 
 export type EnvironmentsResetTokenPartialUpdateRequestSessionRecordingUrlBlocklistConfigList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const EnvironmentsResetTokenPartialUpdateRequestSessionRecordingUrlBlocklistConfigList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<EnvironmentsResetTokenPartialUpdateRequestSessionRecordingUrlBlocklistConfigList>;
 
 export type EnvironmentsResetTokenPartialUpdateRequestSessionRecordingEventTriggerConfigList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const EnvironmentsResetTokenPartialUpdateRequestSessionRecordingEventTriggerConfigList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<EnvironmentsResetTokenPartialUpdateRequestSessionRecordingEventTriggerConfigList>;
 
 export type EnvironmentsResetTokenPartialUpdateRequestLiveEventsColumnsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const EnvironmentsResetTokenPartialUpdateRequestLiveEventsColumnsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<EnvironmentsResetTokenPartialUpdateRequestLiveEventsColumnsList>;
 
 export type EnvironmentsResetTokenPartialUpdateRequestRecordingDomainsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const EnvironmentsResetTokenPartialUpdateRequestRecordingDomainsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3577,49 +3577,49 @@ export const EnvironmentsResetTokenPartialUpdateResponse =
   }) as any as S.Schema<EnvironmentsResetTokenPartialUpdateResponse>;
 
 export type EnvironmentsRotateSecretTokenPartialUpdateRequestAppUrlsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const EnvironmentsRotateSecretTokenPartialUpdateRequestAppUrlsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<EnvironmentsRotateSecretTokenPartialUpdateRequestAppUrlsList>;
 
 export type EnvironmentsRotateSecretTokenPartialUpdateRequestPersonDisplayNamePropertiesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const EnvironmentsRotateSecretTokenPartialUpdateRequestPersonDisplayNamePropertiesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<EnvironmentsRotateSecretTokenPartialUpdateRequestPersonDisplayNamePropertiesList>;
 
 export type EnvironmentsRotateSecretTokenPartialUpdateRequestSessionRecordingUrlTriggerConfigList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const EnvironmentsRotateSecretTokenPartialUpdateRequestSessionRecordingUrlTriggerConfigList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<EnvironmentsRotateSecretTokenPartialUpdateRequestSessionRecordingUrlTriggerConfigList>;
 
 export type EnvironmentsRotateSecretTokenPartialUpdateRequestSessionRecordingUrlBlocklistConfigList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const EnvironmentsRotateSecretTokenPartialUpdateRequestSessionRecordingUrlBlocklistConfigList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<EnvironmentsRotateSecretTokenPartialUpdateRequestSessionRecordingUrlBlocklistConfigList>;
 
 export type EnvironmentsRotateSecretTokenPartialUpdateRequestSessionRecordingEventTriggerConfigList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const EnvironmentsRotateSecretTokenPartialUpdateRequestSessionRecordingEventTriggerConfigList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<EnvironmentsRotateSecretTokenPartialUpdateRequestSessionRecordingEventTriggerConfigList>;
 
 export type EnvironmentsRotateSecretTokenPartialUpdateRequestLiveEventsColumnsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const EnvironmentsRotateSecretTokenPartialUpdateRequestLiveEventsColumnsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<EnvironmentsRotateSecretTokenPartialUpdateRequestLiveEventsColumnsList>;
 
 export type EnvironmentsRotateSecretTokenPartialUpdateRequestRecordingDomainsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const EnvironmentsRotateSecretTokenPartialUpdateRequestRecordingDomainsList =
   /*@__PURE__*/ S.Array(
     S.String,

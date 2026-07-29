@@ -109,8 +109,7 @@ export const CustomerJourneysListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CustomerJourneysListRequest",
 }) as any as S.Schema<CustomerJourneysListRequest>;
 
-export type PaginatedCustomerJourneyListResultsList =
-  ReadonlyArray<CustomerJourney>;
+export type PaginatedCustomerJourneyListResultsList = Array<CustomerJourney>;
 export const PaginatedCustomerJourneyListResultsList = /*@__PURE__*/ S.Array(
   CustomerJourney,
 ) as any as S.Schema<PaginatedCustomerJourneyListResultsList>;

@@ -218,7 +218,7 @@ export type MergeType = "MANUAL_MERGE" | "AUTO_MERGE";
 export const MergeType = /*@__PURE__*/ S.String;
 
 export interface SourceApiAssociationConfig {
-  mergeType?: MergeType;
+  mergeType?: MergeType | (string & {});
 }
 export const SourceApiAssociationConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ mergeType: S.optional(MergeType) }),
@@ -402,7 +402,7 @@ export const LambdaAuthorizerConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "LambdaAuthorizerConfig",
 }) as any as S.Schema<LambdaAuthorizerConfig>;
 export interface AuthProvider {
-  authType: AuthenticationType;
+  authType: AuthenticationType | (string & {});
   cognitoConfig?: CognitoConfig;
   openIDConnectConfig?: OpenIDConnectConfig;
   lambdaAuthorizerConfig?: LambdaAuthorizerConfig;
@@ -418,7 +418,7 @@ export const AuthProvider = /*@__PURE__*/ S.suspend(() =>
 export type AuthProviders = AuthProvider[];
 export const AuthProviders = /*@__PURE__*/ S.Array(AuthProvider);
 export interface AuthMode {
-  authType: AuthenticationType;
+  authType: AuthenticationType | (string & {});
 }
 export const AuthMode = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ authType: AuthenticationType }),
@@ -429,7 +429,7 @@ export type EventLogLevel = "NONE" | "ERROR" | "ALL" | "INFO" | "DEBUG";
 export const EventLogLevel = /*@__PURE__*/ S.String;
 
 export interface EventLogConfig {
-  logLevel: EventLogLevel;
+  logLevel: EventLogLevel | (string & {});
   cloudWatchLogsRoleArn: string;
 }
 export const EventLogConfig = /*@__PURE__*/ S.suspend(() =>
@@ -667,7 +667,7 @@ export type InvokeType = "REQUEST_RESPONSE" | "EVENT";
 export const InvokeType = /*@__PURE__*/ S.String;
 
 export interface LambdaConfig {
-  invokeType?: InvokeType;
+  invokeType?: InvokeType | (string & {});
 }
 export const LambdaConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ invokeType: S.optional(InvokeType) }),
@@ -683,7 +683,7 @@ export const Integration = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Integration" }) as any as S.Schema<Integration>;
 export interface HandlerConfig {
-  behavior: HandlerBehavior;
+  behavior: HandlerBehavior | (string & {});
   integration: Integration;
 }
 export const HandlerConfig = /*@__PURE__*/ S.suspend(() =>
@@ -852,7 +852,7 @@ export const AwsIamConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AwsIamConfig" }) as any as S.Schema<AwsIamConfig>;
 export interface AuthorizationConfig {
-  authorizationType: AuthorizationType;
+  authorizationType: AuthorizationType | (string & {});
   awsIamConfig?: AwsIamConfig;
 }
 export const AuthorizationConfig = /*@__PURE__*/ S.suspend(() =>
@@ -897,7 +897,7 @@ export const RdsHttpEndpointConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "RdsHttpEndpointConfig",
 }) as any as S.Schema<RdsHttpEndpointConfig>;
 export interface RelationalDatabaseDataSourceConfig {
-  relationalDatabaseSourceType?: RelationalDatabaseSourceType;
+  relationalDatabaseSourceType?: RelationalDatabaseSourceType | (string & {});
   rdsHttpEndpointConfig?: RdsHttpEndpointConfig;
 }
 export const RelationalDatabaseDataSourceConfig = /*@__PURE__*/ S.suspend(() =>
@@ -1081,8 +1081,8 @@ export const LambdaConflictHandlerConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "LambdaConflictHandlerConfig",
 }) as any as S.Schema<LambdaConflictHandlerConfig>;
 export interface SyncConfig {
-  conflictHandler?: ConflictHandlerType;
-  conflictDetection?: ConflictDetectionType;
+  conflictHandler?: ConflictHandlerType | (string & {});
+  conflictDetection?: ConflictDetectionType | (string & {});
   lambdaConflictHandlerConfig?: LambdaConflictHandlerConfig;
 }
 export const SyncConfig = /*@__PURE__*/ S.suspend(() =>
@@ -1097,7 +1097,7 @@ export type RuntimeName = "APPSYNC_JS";
 export const RuntimeName = /*@__PURE__*/ S.String;
 
 export interface AppSyncRuntime {
-  name: RuntimeName;
+  name: RuntimeName | (string & {});
   runtimeVersion: string;
 }
 export const AppSyncRuntime = /*@__PURE__*/ S.suspend(() =>
@@ -1189,7 +1189,7 @@ export type FieldLogLevel = "NONE" | "ERROR" | "ALL" | "INFO" | "DEBUG";
 export const FieldLogLevel = /*@__PURE__*/ S.String;
 
 export interface LogConfig {
-  fieldLogLevel: FieldLogLevel;
+  fieldLogLevel: FieldLogLevel | (string & {});
   cloudWatchLogsRoleArn: string;
   excludeVerboseContent?: boolean;
 }
@@ -1206,7 +1206,7 @@ export const DefaultAction = /*@__PURE__*/ S.String;
 export interface UserPoolConfig {
   userPoolId: string;
   awsRegion: string;
-  defaultAction: DefaultAction;
+  defaultAction: DefaultAction | (string & {});
   appIdClientRegex?: string;
 }
 export const UserPoolConfig = /*@__PURE__*/ S.suspend(() =>
@@ -1232,7 +1232,7 @@ export const CognitoUserPoolConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "CognitoUserPoolConfig",
 }) as any as S.Schema<CognitoUserPoolConfig>;
 export interface AdditionalAuthenticationProvider {
-  authenticationType?: AuthenticationType;
+  authenticationType?: AuthenticationType | (string & {});
   openIDConnectConfig?: OpenIDConnectConfig;
   userPoolConfig?: CognitoUserPoolConfig;
   lambdaAuthorizerConfig?: LambdaAuthorizerConfig;
@@ -1277,9 +1277,11 @@ export type OperationLevelMetricsConfig = "ENABLED" | "DISABLED";
 export const OperationLevelMetricsConfig = /*@__PURE__*/ S.String;
 
 export interface EnhancedMetricsConfig {
-  resolverLevelMetricsBehavior: ResolverLevelMetricsBehavior;
-  dataSourceLevelMetricsBehavior: DataSourceLevelMetricsBehavior;
-  operationLevelMetricsConfig: OperationLevelMetricsConfig;
+  resolverLevelMetricsBehavior: ResolverLevelMetricsBehavior | (string & {});
+  dataSourceLevelMetricsBehavior:
+    | DataSourceLevelMetricsBehavior
+    | (string & {});
+  operationLevelMetricsConfig: OperationLevelMetricsConfig | (string & {});
 }
 export const EnhancedMetricsConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

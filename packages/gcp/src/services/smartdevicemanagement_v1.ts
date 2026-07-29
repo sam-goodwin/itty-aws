@@ -157,7 +157,7 @@ export const GoogleHomeEnterpriseSdmV1ParentRelation = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleHomeEnterpriseSdmV1ParentRelation>;
 
 export type GoogleHomeEnterpriseSdmV1ParentRelationList =
-  ReadonlyArray<GoogleHomeEnterpriseSdmV1ParentRelation>;
+  Array<GoogleHomeEnterpriseSdmV1ParentRelation>;
 export const GoogleHomeEnterpriseSdmV1ParentRelationList =
   /*@__PURE__*/ S.Array(
     GoogleHomeEnterpriseSdmV1ParentRelation,
@@ -276,7 +276,7 @@ export const ListEnterprisesDevicesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListEnterprisesDevicesRequest>;
 
 export type GoogleHomeEnterpriseSdmV1DeviceList =
-  ReadonlyArray<GoogleHomeEnterpriseSdmV1Device>;
+  Array<GoogleHomeEnterpriseSdmV1Device>;
 export const GoogleHomeEnterpriseSdmV1DeviceList = /*@__PURE__*/ S.Array(
   GoogleHomeEnterpriseSdmV1Device,
 ) as any as S.Schema<GoogleHomeEnterpriseSdmV1DeviceList>;
@@ -317,7 +317,7 @@ export const ListEnterprisesStructuresRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListEnterprisesStructuresRequest>;
 
 export type GoogleHomeEnterpriseSdmV1StructureList =
-  ReadonlyArray<GoogleHomeEnterpriseSdmV1Structure>;
+  Array<GoogleHomeEnterpriseSdmV1Structure>;
 export const GoogleHomeEnterpriseSdmV1StructureList = /*@__PURE__*/ S.Array(
   GoogleHomeEnterpriseSdmV1Structure,
 ) as any as S.Schema<GoogleHomeEnterpriseSdmV1StructureList>;
@@ -356,7 +356,7 @@ export const ListEnterprisesStructuresRoomsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListEnterprisesStructuresRoomsRequest>;
 
 export type GoogleHomeEnterpriseSdmV1RoomList =
-  ReadonlyArray<GoogleHomeEnterpriseSdmV1Room>;
+  Array<GoogleHomeEnterpriseSdmV1Room>;
 export const GoogleHomeEnterpriseSdmV1RoomList = /*@__PURE__*/ S.Array(
   GoogleHomeEnterpriseSdmV1Room,
 ) as any as S.Schema<GoogleHomeEnterpriseSdmV1RoomList>;

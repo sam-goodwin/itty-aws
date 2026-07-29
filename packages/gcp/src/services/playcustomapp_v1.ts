@@ -74,7 +74,7 @@ export const Organization = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Organization" }) as any as S.Schema<Organization>;
 
-export type OrganizationList = ReadonlyArray<Organization>;
+export type OrganizationList = Array<Organization>;
 export const OrganizationList = /*@__PURE__*/ S.Array(
   Organization,
 ) as any as S.Schema<OrganizationList>;

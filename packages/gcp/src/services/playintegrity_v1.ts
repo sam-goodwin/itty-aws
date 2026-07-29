@@ -101,7 +101,7 @@ export type AppIntegrityAppRecognitionVerdictEnum =
   | "UNEVALUATED";
 export const AppIntegrityAppRecognitionVerdictEnum = /*@__PURE__*/ S.String;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -149,7 +149,7 @@ export const DeviceIntegrityLegacyDeviceRecognitionVerdictItemEnum =
   /*@__PURE__*/ S.String;
 
 export type DeviceIntegrityLegacyDeviceRecognitionVerdictItemEnumList =
-  ReadonlyArray<DeviceIntegrityLegacyDeviceRecognitionVerdictItemEnum>;
+  Array<DeviceIntegrityLegacyDeviceRecognitionVerdictItemEnum>;
 export const DeviceIntegrityLegacyDeviceRecognitionVerdictItemEnumList =
   /*@__PURE__*/ S.Array(
     DeviceIntegrityLegacyDeviceRecognitionVerdictItemEnum,
@@ -238,7 +238,7 @@ export const DeviceIntegrityDeviceRecognitionVerdictItemEnum =
   /*@__PURE__*/ S.String;
 
 export type DeviceIntegrityDeviceRecognitionVerdictItemEnumList =
-  ReadonlyArray<DeviceIntegrityDeviceRecognitionVerdictItemEnum>;
+  Array<DeviceIntegrityDeviceRecognitionVerdictItemEnum>;
 export const DeviceIntegrityDeviceRecognitionVerdictItemEnumList =
   /*@__PURE__*/ S.Array(
     DeviceIntegrityDeviceRecognitionVerdictItemEnum,
@@ -370,7 +370,7 @@ export type AppAccessRiskVerdictAppsDetectedItemEnum =
 export const AppAccessRiskVerdictAppsDetectedItemEnum = /*@__PURE__*/ S.String;
 
 export type AppAccessRiskVerdictAppsDetectedItemEnumList =
-  ReadonlyArray<AppAccessRiskVerdictAppsDetectedItemEnum>;
+  Array<AppAccessRiskVerdictAppsDetectedItemEnum>;
 export const AppAccessRiskVerdictAppsDetectedItemEnumList =
   /*@__PURE__*/ S.Array(
     AppAccessRiskVerdictAppsDetectedItemEnum,
@@ -506,7 +506,7 @@ export const PcDeviceIntegrityDeviceRecognitionVerdictItemEnum =
   /*@__PURE__*/ S.String;
 
 export type PcDeviceIntegrityDeviceRecognitionVerdictItemEnumList =
-  ReadonlyArray<PcDeviceIntegrityDeviceRecognitionVerdictItemEnum>;
+  Array<PcDeviceIntegrityDeviceRecognitionVerdictItemEnum>;
 export const PcDeviceIntegrityDeviceRecognitionVerdictItemEnumList =
   /*@__PURE__*/ S.Array(
     PcDeviceIntegrityDeviceRecognitionVerdictItemEnum,

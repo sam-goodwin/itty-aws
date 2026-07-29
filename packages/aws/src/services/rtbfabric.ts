@@ -130,14 +130,16 @@ export const ResponderErrorMaskingAction = /*@__PURE__*/ S.String;
 export type ResponderErrorMaskingLoggingType = "NONE" | "METRIC" | "RESPONSE";
 export const ResponderErrorMaskingLoggingType = /*@__PURE__*/ S.String;
 
-export type ResponderErrorMaskingLoggingTypes =
-  ResponderErrorMaskingLoggingType[];
+export type ResponderErrorMaskingLoggingTypes = (
+  | ResponderErrorMaskingLoggingType
+  | (string & {})
+)[];
 export const ResponderErrorMaskingLoggingTypes = /*@__PURE__*/ S.Array(
   ResponderErrorMaskingLoggingType,
 );
 export interface ResponderErrorMaskingForHttpCode {
   httpCode: string;
-  action: ResponderErrorMaskingAction;
+  action: ResponderErrorMaskingAction | (string & {});
   loggingTypes: ResponderErrorMaskingLoggingType[];
   responseLoggingPercentage?: number;
 }
@@ -306,7 +308,7 @@ export const Action = /*@__PURE__*/ S.Union([
   S.Struct({ headerTag: HeaderTagAction }),
 ]);
 export interface OpenRtbAttributeModuleParameters {
-  filterType: FilterType;
+  filterType: FilterType | (string & {});
   filterConfiguration: Filter[];
   action: Action;
   holdbackPercentage: number;
@@ -768,7 +770,7 @@ export const CreateRequesterGatewayResponse = /*@__PURE__*/ S.suspend(() =>
 export type Protocol = "HTTP" | "HTTPS";
 export const Protocol = /*@__PURE__*/ S.String;
 
-export type ProtocolList = Protocol[];
+export type ProtocolList = (Protocol | (string & {}))[];
 export const ProtocolList = /*@__PURE__*/ S.Array(Protocol);
 export interface ListenerConfig {
   protocols: Protocol[];
@@ -800,7 +802,7 @@ export type StatusCodeMatcher = string;
 export interface HealthCheckConfig {
   port: number;
   path: string;
-  protocol?: Protocol;
+  protocol?: Protocol | (string & {});
   timeoutMs?: number;
   intervalSeconds?: number;
   statusCodeMatcher?: string;

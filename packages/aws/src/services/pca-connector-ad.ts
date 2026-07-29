@@ -146,7 +146,7 @@ export type SecurityGroupId = string;
 export type SecurityGroupIdList = string[];
 export const SecurityGroupIdList = /*@__PURE__*/ S.Array(S.String);
 export interface VpcInformation {
-  IpAddressType?: IpAddressType;
+  IpAddressType?: IpAddressType | (string & {});
   SecurityGroupIds: string[];
 }
 export const VpcInformation = /*@__PURE__*/ S.suspend(() =>
@@ -270,7 +270,7 @@ export type ValidityPeriodType =
 export const ValidityPeriodType = /*@__PURE__*/ S.String;
 
 export interface ValidityPeriod {
-  PeriodType: ValidityPeriodType;
+  PeriodType: ValidityPeriodType | (string & {});
   Period: number;
 }
 export const ValidityPeriod = /*@__PURE__*/ S.suspend(() =>
@@ -294,7 +294,7 @@ export type CryptoProvidersList = string[];
 export const CryptoProvidersList = /*@__PURE__*/ S.Array(S.String);
 export interface PrivateKeyAttributesV2 {
   MinimalKeyLength: number;
-  KeySpec: KeySpec;
+  KeySpec: KeySpec | (string & {});
   CryptoProviders?: string[];
 }
 export const PrivateKeyAttributesV2 = /*@__PURE__*/ S.suspend(() =>
@@ -318,7 +318,7 @@ export const ClientCompatibilityV2 = /*@__PURE__*/ S.String;
 export interface PrivateKeyFlagsV2 {
   ExportableKey?: boolean;
   StrongKeyProtectionRequired?: boolean;
-  ClientVersion: ClientCompatibilityV2;
+  ClientVersion: ClientCompatibilityV2 | (string & {});
 }
 export const PrivateKeyFlagsV2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -480,7 +480,10 @@ export const ApplicationPolicyType = /*@__PURE__*/ S.String;
 
 export type CustomObjectIdentifier = string;
 export type ApplicationPolicy =
-  | { PolicyType: ApplicationPolicyType; PolicyObjectIdentifier?: never }
+  | {
+      PolicyType: ApplicationPolicyType | (string & {});
+      PolicyObjectIdentifier?: never;
+    }
   | { PolicyType?: never; PolicyObjectIdentifier: string };
 export const ApplicationPolicy = /*@__PURE__*/ S.Union([
   S.Struct({ PolicyType: ApplicationPolicyType }),
@@ -550,7 +553,10 @@ export const KeyUsagePropertyFlags = /*@__PURE__*/ S.suspend(() =>
   identifier: "KeyUsagePropertyFlags",
 }) as any as S.Schema<KeyUsagePropertyFlags>;
 export type KeyUsageProperty =
-  | { PropertyType: KeyUsagePropertyType; PropertyFlags?: never }
+  | {
+      PropertyType: KeyUsagePropertyType | (string & {});
+      PropertyFlags?: never;
+    }
   | { PropertyType?: never; PropertyFlags: KeyUsagePropertyFlags };
 export const KeyUsageProperty = /*@__PURE__*/ S.Union([
   S.Struct({ PropertyType: KeyUsagePropertyType }),
@@ -565,10 +571,10 @@ export const PrivateKeyAlgorithm = /*@__PURE__*/ S.String;
 
 export interface PrivateKeyAttributesV3 {
   MinimalKeyLength: number;
-  KeySpec: KeySpec;
+  KeySpec: KeySpec | (string & {});
   CryptoProviders?: string[];
   KeyUsageProperty: KeyUsageProperty;
-  Algorithm: PrivateKeyAlgorithm;
+  Algorithm: PrivateKeyAlgorithm | (string & {});
 }
 export const PrivateKeyAttributesV3 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -593,7 +599,7 @@ export interface PrivateKeyFlagsV3 {
   ExportableKey?: boolean;
   StrongKeyProtectionRequired?: boolean;
   RequireAlternateSignatureAlgorithm?: boolean;
-  ClientVersion: ClientCompatibilityV3;
+  ClientVersion: ClientCompatibilityV3 | (string & {});
 }
 export const PrivateKeyFlagsV3 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -682,7 +688,7 @@ export interface TemplateV3 {
   EnrollmentFlags: EnrollmentFlagsV3;
   SubjectNameFlags: SubjectNameFlagsV3;
   GeneralFlags: GeneralFlagsV3;
-  HashAlgorithm: HashAlgorithm;
+  HashAlgorithm: HashAlgorithm | (string & {});
   Extensions: ExtensionsV3;
 }
 export const TemplateV3 = /*@__PURE__*/ S.suspend(() =>
@@ -700,10 +706,10 @@ export const TemplateV3 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TemplateV3" }) as any as S.Schema<TemplateV3>;
 export interface PrivateKeyAttributesV4 {
   MinimalKeyLength: number;
-  KeySpec: KeySpec;
+  KeySpec: KeySpec | (string & {});
   CryptoProviders?: string[];
   KeyUsageProperty?: KeyUsageProperty;
-  Algorithm?: PrivateKeyAlgorithm;
+  Algorithm?: PrivateKeyAlgorithm | (string & {});
 }
 export const PrivateKeyAttributesV4 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -728,7 +734,7 @@ export interface PrivateKeyFlagsV4 {
   RequireAlternateSignatureAlgorithm?: boolean;
   RequireSameKeyRenewal?: boolean;
   UseLegacyProvider?: boolean;
-  ClientVersion: ClientCompatibilityV4;
+  ClientVersion: ClientCompatibilityV4 | (string & {});
 }
 export const PrivateKeyFlagsV4 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -816,7 +822,7 @@ export interface TemplateV4 {
   EnrollmentFlags: EnrollmentFlagsV4;
   SubjectNameFlags: SubjectNameFlagsV4;
   GeneralFlags: GeneralFlagsV4;
-  HashAlgorithm?: HashAlgorithm;
+  HashAlgorithm?: HashAlgorithm | (string & {});
   Extensions: ExtensionsV4;
 }
 export const TemplateV4 = /*@__PURE__*/ S.suspend(() =>
@@ -883,8 +889,8 @@ export type AccessRight = "ALLOW" | "DENY";
 export const AccessRight = /*@__PURE__*/ S.String;
 
 export interface AccessRights {
-  Enroll?: AccessRight;
-  AutoEnroll?: AccessRight;
+  Enroll?: AccessRight | (string & {});
+  AutoEnroll?: AccessRight | (string & {});
 }
 export const AccessRights = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

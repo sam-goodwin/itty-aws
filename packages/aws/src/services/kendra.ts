@@ -498,8 +498,8 @@ export const ReadAccessType = /*@__PURE__*/ S.String;
 
 export interface Principal {
   Name: string;
-  Type: PrincipalType;
-  Access: ReadAccessType;
+  Type: PrincipalType | (string & {});
+  Access: ReadAccessType | (string & {});
   DataSourceId?: string;
 }
 export const Principal = /*@__PURE__*/ S.suspend(() =>
@@ -582,7 +582,7 @@ export const ConditionOperator = /*@__PURE__*/ S.String;
 
 export interface DocumentAttributeCondition {
   ConditionDocumentAttributeKey: string;
-  Operator: ConditionOperator;
+  Operator: ConditionOperator | (string & {});
   ConditionOnValue?: DocumentAttributeValue;
 }
 export const DocumentAttributeCondition = /*@__PURE__*/ S.suspend(() =>
@@ -894,7 +894,7 @@ export const ProxyConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProxyConfiguration",
 }) as any as S.Schema<ProxyConfiguration>;
 export interface SharePointConfiguration {
-  SharePointVersion: SharePointVersion;
+  SharePointVersion: SharePointVersion | (string & {});
   Urls: string[];
   SecretArn: string;
   CrawlAttachments?: boolean;
@@ -906,7 +906,7 @@ export interface SharePointConfiguration {
   DocumentTitleFieldName?: string;
   DisableLocalGroups?: boolean;
   SslCertificateS3Path?: S3Path;
-  AuthenticationType?: SharePointOnlineAuthenticationType;
+  AuthenticationType?: SharePointOnlineAuthenticationType | (string & {});
   ProxyConfiguration?: ProxyConfiguration;
 }
 export const SharePointConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -991,7 +991,9 @@ export type QueryIdentifiersEnclosingOption = "DOUBLE_QUOTES" | "NONE";
 export const QueryIdentifiersEnclosingOption = /*@__PURE__*/ S.String;
 
 export interface SqlConfiguration {
-  QueryIdentifiersEnclosingOption?: QueryIdentifiersEnclosingOption;
+  QueryIdentifiersEnclosingOption?:
+    | QueryIdentifiersEnclosingOption
+    | (string & {});
 }
 export const SqlConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1003,7 +1005,7 @@ export const SqlConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "SqlConfiguration",
 }) as any as S.Schema<SqlConfiguration>;
 export interface DatabaseConfiguration {
-  DatabaseEngineType: DatabaseEngineType;
+  DatabaseEngineType: DatabaseEngineType | (string & {});
   ConnectionConfiguration: ConnectionConfiguration;
   VpcConfiguration?: DataSourceVpcConfiguration;
   ColumnConfiguration: ColumnConfiguration;
@@ -1043,7 +1045,7 @@ export type SalesforceStandardObjectName =
 export const SalesforceStandardObjectName = /*@__PURE__*/ S.String;
 
 export interface SalesforceStandardObjectConfiguration {
-  Name: SalesforceStandardObjectName;
+  Name: SalesforceStandardObjectName | (string & {});
   DocumentDataFieldName: string;
   DocumentTitleFieldName?: string;
   FieldMappings?: DataSourceToIndexFieldMapping[];
@@ -1070,8 +1072,10 @@ export type SalesforceKnowledgeArticleState =
   | "ARCHIVED";
 export const SalesforceKnowledgeArticleState = /*@__PURE__*/ S.String;
 
-export type SalesforceKnowledgeArticleStateList =
-  SalesforceKnowledgeArticleState[];
+export type SalesforceKnowledgeArticleStateList = (
+  | SalesforceKnowledgeArticleState
+  | (string & {})
+)[];
 export const SalesforceKnowledgeArticleStateList = /*@__PURE__*/ S.Array(
   SalesforceKnowledgeArticleState,
 );
@@ -1136,8 +1140,10 @@ export type SalesforceChatterFeedIncludeFilterType =
   | "STANDARD_USER";
 export const SalesforceChatterFeedIncludeFilterType = /*@__PURE__*/ S.String;
 
-export type SalesforceChatterFeedIncludeFilterTypes =
-  SalesforceChatterFeedIncludeFilterType[];
+export type SalesforceChatterFeedIncludeFilterTypes = (
+  | SalesforceChatterFeedIncludeFilterType
+  | (string & {})
+)[];
 export const SalesforceChatterFeedIncludeFilterTypes = /*@__PURE__*/ S.Array(
   SalesforceChatterFeedIncludeFilterType,
 );
@@ -1305,10 +1311,10 @@ export const ServiceNowAuthenticationType = /*@__PURE__*/ S.String;
 export interface ServiceNowConfiguration {
   HostUrl: string;
   SecretArn: string;
-  ServiceNowBuildVersion: ServiceNowBuildVersionType;
+  ServiceNowBuildVersion: ServiceNowBuildVersionType | (string & {});
   KnowledgeArticleConfiguration?: ServiceNowKnowledgeArticleConfiguration;
   ServiceCatalogConfiguration?: ServiceNowServiceCatalogConfiguration;
-  AuthenticationType?: ServiceNowAuthenticationType;
+  AuthenticationType?: ServiceNowAuthenticationType | (string & {});
 }
 export const ServiceNowConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1340,7 +1346,7 @@ export type ConfluenceSpaceFieldName =
 export const ConfluenceSpaceFieldName = /*@__PURE__*/ S.String;
 
 export interface ConfluenceSpaceToIndexFieldMapping {
-  DataSourceFieldName?: ConfluenceSpaceFieldName;
+  DataSourceFieldName?: ConfluenceSpaceFieldName | (string & {});
   DateFieldFormat?: string;
   IndexFieldName?: string;
 }
@@ -1392,7 +1398,7 @@ export type ConfluencePageFieldName =
 export const ConfluencePageFieldName = /*@__PURE__*/ S.String;
 
 export interface ConfluencePageToIndexFieldMapping {
-  DataSourceFieldName?: ConfluencePageFieldName;
+  DataSourceFieldName?: ConfluencePageFieldName | (string & {});
   DateFieldFormat?: string;
   IndexFieldName?: string;
 }
@@ -1431,7 +1437,7 @@ export type ConfluenceBlogFieldName =
 export const ConfluenceBlogFieldName = /*@__PURE__*/ S.String;
 
 export interface ConfluenceBlogToIndexFieldMapping {
-  DataSourceFieldName?: ConfluenceBlogFieldName;
+  DataSourceFieldName?: ConfluenceBlogFieldName | (string & {});
   DateFieldFormat?: string;
   IndexFieldName?: string;
 }
@@ -1472,7 +1478,7 @@ export type ConfluenceAttachmentFieldName =
 export const ConfluenceAttachmentFieldName = /*@__PURE__*/ S.String;
 
 export interface ConfluenceAttachmentToIndexFieldMapping {
-  DataSourceFieldName?: ConfluenceAttachmentFieldName;
+  DataSourceFieldName?: ConfluenceAttachmentFieldName | (string & {});
   DateFieldFormat?: string;
   IndexFieldName?: string;
 }
@@ -1509,7 +1515,7 @@ export const ConfluenceAuthenticationType = /*@__PURE__*/ S.String;
 export interface ConfluenceConfiguration {
   ServerUrl: string;
   SecretArn: string;
-  Version: ConfluenceVersion;
+  Version: ConfluenceVersion | (string & {});
   SpaceConfiguration?: ConfluenceSpaceConfiguration;
   PageConfiguration?: ConfluencePageConfiguration;
   BlogConfiguration?: ConfluenceBlogConfiguration;
@@ -1518,7 +1524,7 @@ export interface ConfluenceConfiguration {
   InclusionPatterns?: string[];
   ExclusionPatterns?: string[];
   ProxyConfiguration?: ProxyConfiguration;
-  AuthenticationType?: ConfluenceAuthenticationType;
+  AuthenticationType?: ConfluenceAuthenticationType | (string & {});
 }
 export const ConfluenceConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1577,7 +1583,7 @@ export const WebCrawlerMode = /*@__PURE__*/ S.String;
 
 export interface SeedUrlConfiguration {
   SeedUrls: string[];
-  WebCrawlerMode?: WebCrawlerMode;
+  WebCrawlerMode?: WebCrawlerMode | (string & {});
 }
 export const SeedUrlConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1690,7 +1696,7 @@ export const FsxFileSystemType = /*@__PURE__*/ S.String;
 
 export interface FsxConfiguration {
   FileSystemId: string;
-  FileSystemType: FsxFileSystemType;
+  FileSystemType: FsxFileSystemType | (string & {});
   VpcConfiguration: DataSourceVpcConfiguration;
   SecretArn?: string;
   InclusionPatterns?: string[];
@@ -1718,7 +1724,7 @@ export type SlackEntity =
   | "DIRECT_MESSAGE";
 export const SlackEntity = /*@__PURE__*/ S.String;
 
-export type SlackEntityList = SlackEntity[];
+export type SlackEntityList = (SlackEntity | (string & {}))[];
 export const SlackEntityList = /*@__PURE__*/ S.Array(SlackEntity);
 export type SinceCrawlDate = string;
 export type LookBackPeriod = number;
@@ -1843,7 +1849,7 @@ export const JiraStatus = /*@__PURE__*/ S.Array(S.String);
 export type IssueSubEntity = "COMMENTS" | "ATTACHMENTS" | "WORKLOGS";
 export const IssueSubEntity = /*@__PURE__*/ S.String;
 
-export type IssueSubEntityFilter = IssueSubEntity[];
+export type IssueSubEntityFilter = (IssueSubEntity | (string & {}))[];
 export const IssueSubEntityFilter = /*@__PURE__*/ S.Array(IssueSubEntity);
 export interface JiraConfiguration {
   JiraAccountUrl: string;
@@ -1940,7 +1946,7 @@ export const StringList = /*@__PURE__*/ S.Array(S.String);
 export interface GitHubConfiguration {
   SaaSConfiguration?: SaaSConfiguration;
   OnPremiseConfiguration?: OnPremiseConfiguration;
-  Type?: Type;
+  Type?: Type | (string & {});
   SecretArn: string;
   UseChangeLog?: boolean;
   GitHubDocumentCrawlProperties?: GitHubDocumentCrawlProperties;
@@ -2010,7 +2016,7 @@ export type SiteId = string;
 export type AlfrescoEntity = "wiki" | "blog" | "documentLibrary";
 export const AlfrescoEntity = /*@__PURE__*/ S.String;
 
-export type EntityFilter = AlfrescoEntity[];
+export type EntityFilter = (AlfrescoEntity | (string & {}))[];
 export const EntityFilter = /*@__PURE__*/ S.Array(AlfrescoEntity);
 export interface AlfrescoConfiguration {
   SiteUrl: string;
@@ -2367,7 +2373,7 @@ export type GroupAttributeField = string;
 export type Issuer = string;
 export type ClaimRegex = string;
 export interface JwtTokenTypeConfiguration {
-  KeyLocation: KeyLocation;
+  KeyLocation: KeyLocation | (string & {});
   URL?: string;
   SecretManagerArn?: string;
   UserNameAttributeField?: string;
@@ -2420,7 +2426,7 @@ export type UserGroupResolutionMode = "AWS_SSO" | "NONE";
 export const UserGroupResolutionMode = /*@__PURE__*/ S.String;
 
 export interface UserGroupResolutionConfiguration {
-  UserGroupResolutionMode: UserGroupResolutionMode;
+  UserGroupResolutionMode: UserGroupResolutionMode | (string & {});
 }
 export const UserGroupResolutionConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ UserGroupResolutionMode: UserGroupResolutionMode }),
@@ -2997,7 +3003,7 @@ export interface Relevance {
   Freshness?: boolean;
   Importance?: number;
   Duration?: string;
-  RankOrder?: Order;
+  RankOrder?: Order | (string & {});
   ValueImportanceMap?: { [key: string]: number | undefined };
 }
 export const Relevance = /*@__PURE__*/ S.suspend(() =>
@@ -3025,7 +3031,7 @@ export const Search = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Search" }) as any as S.Schema<Search>;
 export interface DocumentMetadataConfiguration {
   Name: string;
-  Type: DocumentAttributeValueType;
+  Type: DocumentAttributeValueType | (string & {});
   Relevance?: Relevance;
   Search?: Search;
 }

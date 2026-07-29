@@ -444,7 +444,7 @@ export const OldAgreementTerms = /*@__PURE__*/ S.suspend(() =>
   identifier: "OldAgreementTerms",
 }) as any as S.Schema<OldAgreementTerms>;
 
-export type OldAgreementTermsListValueList = ReadonlyArray<OldAgreementTerms>;
+export type OldAgreementTermsListValueList = Array<OldAgreementTerms>;
 export const OldAgreementTermsListValueList = /*@__PURE__*/ S.Array(
   OldAgreementTerms,
 ) as any as S.Schema<OldAgreementTermsListValueList>;
@@ -561,7 +561,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of Microsoft.MarketplaceOrdering operations supported by the Microsoft.MarketplaceOrdering resource provider. */
-export type OperationListResultValueList = ReadonlyArray<Operation>;
+export type OperationListResultValueList = Array<Operation>;
 export const OperationListResultValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationListResultValueList>;

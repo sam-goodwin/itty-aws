@@ -60,7 +60,7 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -127,7 +127,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -266,7 +266,7 @@ export const OperationWarningsItemDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationWarningsItemDataItem>;
 
 export type OperationWarningsItemDataItemList =
-  ReadonlyArray<OperationWarningsItemDataItem>;
+  Array<OperationWarningsItemDataItem>;
 export const OperationWarningsItemDataItemList = /*@__PURE__*/ S.Array(
   OperationWarningsItemDataItem,
 ) as any as S.Schema<OperationWarningsItemDataItemList>;
@@ -321,7 +321,7 @@ export const OperationWarningsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "OperationWarningsItem",
 }) as any as S.Schema<OperationWarningsItem>;
 
-export type OperationWarningsItemList = ReadonlyArray<OperationWarningsItem>;
+export type OperationWarningsItemList = Array<OperationWarningsItem>;
 export const OperationWarningsItemList = /*@__PURE__*/ S.Array(
   OperationWarningsItem,
 ) as any as S.Schema<OperationWarningsItemList>;
@@ -402,7 +402,7 @@ export interface QuotaExceededInfo {
   /** Future quota limit being rolled out. The limit's unit depends on the quota type or metric. */
   futureLimit?: number;
   /** Rollout status of the future quota limit. */
-  rolloutStatus?: QuotaExceededInfoRolloutStatusEnum;
+  rolloutStatus?: QuotaExceededInfoRolloutStatusEnum | (string & {});
   /** The Compute Engine quota metric name. */
   metricName?: string;
   /** The map holding related quota dimensions. */
@@ -454,7 +454,7 @@ export const HelpLink = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "HelpLink" }) as any as S.Schema<HelpLink>;
 
-export type HelpLinkList = ReadonlyArray<HelpLink>;
+export type HelpLinkList = Array<HelpLink>;
 export const HelpLinkList = /*@__PURE__*/ S.Array(
   HelpLink,
 ) as any as S.Schema<HelpLinkList>;
@@ -493,7 +493,7 @@ export const OperationErrorErrorsItemErrorDetailsItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<OperationErrorErrorsItemErrorDetailsItem>;
 
 export type OperationErrorErrorsItemErrorDetailsItemList =
-  ReadonlyArray<OperationErrorErrorsItemErrorDetailsItem>;
+  Array<OperationErrorErrorsItemErrorDetailsItem>;
 export const OperationErrorErrorsItemErrorDetailsItemList =
   /*@__PURE__*/ S.Array(
     OperationErrorErrorsItemErrorDetailsItem,
@@ -520,8 +520,7 @@ export const OperationErrorErrorsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "OperationErrorErrorsItem",
 }) as any as S.Schema<OperationErrorErrorsItem>;
 
-export type OperationErrorErrorsItemList =
-  ReadonlyArray<OperationErrorErrorsItem>;
+export type OperationErrorErrorsItemList = Array<OperationErrorErrorsItem>;
 export const OperationErrorErrorsItemList = /*@__PURE__*/ S.Array(
   OperationErrorErrorsItem,
 ) as any as S.Schema<OperationErrorErrorsItemList>;
@@ -709,7 +708,7 @@ export interface AccessConfig {
   /** The resource URL for the security policy associated with this access config. */
   securityPolicy?: string;
   /** This signifies the networking tier used for configuring this access configuration and can only take the following values: PREMIUM,STANDARD. If an AccessConfig is specified without a valid external IP address, an ephemeral IP will be created with this networkTier. If an AccessConfig with a valid external IP address is specified, it must match that of the networkTier associated with the Address resource owning that IP. */
-  networkTier?: AccessConfigNetworkTierEnum;
+  networkTier?: AccessConfigNetworkTierEnum | (string & {});
   /** Specifies whether a public DNS 'PTR' record should be created to map the external IP address of the instance to a DNS domain name. This field is not used in ipv6AccessConfig. A default PTR record will be created if the VM has external IPv6 range associated. */
   setPublicPtr?: boolean;
   /** The DNS domain name for the public PTR record. You can set this field only if the `setPublicPtr` field is enabled inaccessConfig. If this field is unspecified inipv6AccessConfig, a default PTR record will be created for first IP in associated external IPv6 range. */
@@ -717,7 +716,7 @@ export interface AccessConfig {
   /** Output only. [Output Only] The public DNS domain name for the instance. */
   publicDnsName?: string;
   /** The type of configuration. In accessConfigs (IPv4), the default and only option is ONE_TO_ONE_NAT. Inipv6AccessConfigs, the default and only option isDIRECT_IPV6. */
-  type?: AccessConfigTypeEnum;
+  type?: AccessConfigTypeEnum | (string & {});
 }
 export const AccessConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1011,7 +1010,7 @@ export const HealthCheckReference = /*@__PURE__*/ S.suspend(() =>
   identifier: "HealthCheckReference",
 }) as any as S.Schema<HealthCheckReference>;
 
-export type HealthCheckReferenceList = ReadonlyArray<HealthCheckReference>;
+export type HealthCheckReferenceList = Array<HealthCheckReference>;
 export const HealthCheckReferenceList = /*@__PURE__*/ S.Array(
   HealthCheckReference,
 ) as any as S.Schema<HealthCheckReferenceList>;
@@ -1070,7 +1069,7 @@ export const InstanceReference = /*@__PURE__*/ S.suspend(() =>
   identifier: "InstanceReference",
 }) as any as S.Schema<InstanceReference>;
 
-export type InstanceReferenceList = ReadonlyArray<InstanceReference>;
+export type InstanceReferenceList = Array<InstanceReference>;
 export const InstanceReferenceList = /*@__PURE__*/ S.Array(
   InstanceReference,
 ) as any as S.Schema<InstanceReferenceList>;
@@ -1179,7 +1178,7 @@ export const AliasIpRange = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AliasIpRange" }) as any as S.Schema<AliasIpRange>;
 
-export type AliasIpRangeList = ReadonlyArray<AliasIpRange>;
+export type AliasIpRangeList = Array<AliasIpRange>;
 export const AliasIpRangeList = /*@__PURE__*/ S.Array(
   AliasIpRange,
 ) as any as S.Schema<AliasIpRangeList>;
@@ -1187,7 +1186,7 @@ export const AliasIpRangeList = /*@__PURE__*/ S.Array(
 export type NetworkInterfaceIpv6AccessTypeEnum = "EXTERNAL" | "INTERNAL";
 export const NetworkInterfaceIpv6AccessTypeEnum = /*@__PURE__*/ S.String;
 
-export type AccessConfigList = ReadonlyArray<AccessConfig>;
+export type AccessConfigList = Array<AccessConfig>;
 export const AccessConfigList = /*@__PURE__*/ S.Array(
   AccessConfig,
 ) as any as S.Schema<AccessConfigList>;
@@ -1210,7 +1209,9 @@ export interface NetworkInterfaceSubInterface {
   subnetwork?: string;
   /** VLAN tag. Should match the VLAN(s) supported by the subnetwork to which this subinterface is connecting. */
   vlan?: number;
-  ipAllocationMode?: NetworkInterfaceSubInterfaceIpAllocationModeEnum;
+  ipAllocationMode?:
+    | NetworkInterfaceSubInterfaceIpAllocationModeEnum
+    | (string & {});
   /** An IPv4 internal IP address to assign to the instance for this subinterface. If specified, ip_allocation_mode should be set to ALLOCATE_IP. */
   ipAddress?: string;
 }
@@ -1228,7 +1229,7 @@ export const NetworkInterfaceSubInterface = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NetworkInterfaceSubInterface>;
 
 export type NetworkInterfaceSubInterfaceList =
-  ReadonlyArray<NetworkInterfaceSubInterface>;
+  Array<NetworkInterfaceSubInterface>;
 export const NetworkInterfaceSubInterfaceList = /*@__PURE__*/ S.Array(
   NetworkInterfaceSubInterface,
 ) as any as S.Schema<NetworkInterfaceSubInterfaceList>;
@@ -1254,7 +1255,7 @@ export interface NetworkInterface {
   /** URL of the VPC network resource for this instance. When creating an instance, if neither the network nor the subnetwork is specified, the default network global/networks/default is used. If the selected project doesn't have the default network, you must specify a network or subnet. If the network is not specified but the subnetwork is specified, the network is inferred. If you specify this property, you can specify the network as a full or partial URL. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/global/networks/network - projects/project/global/networks/network - global/networks/default */
   network?: string;
   /** Output only. [Output Only] One of EXTERNAL, INTERNAL to indicate whether the IP can be accessed from the Internet. This field is always inherited from its subnetwork. Valid only if stackType is IPV4_IPV6. */
-  ipv6AccessType?: NetworkInterfaceIpv6AccessTypeEnum;
+  ipv6AccessType?: NetworkInterfaceIpv6AccessTypeEnum | (string & {});
   /** Optional. Producer Service's Service class Id for the region of this network interface. Can only be used with network_attachment. It is not possible to use on its own however, network_attachment can be used without service_class_id. */
   serviceClassId?: string;
   /** The URL of the Subnetwork resource for this instance. If the network resource is inlegacy mode, do not specify this field. If the network is in auto subnet mode, specifying the subnetwork is optional. If the network is in custom subnet mode, specifying the subnetwork is required. If you specify this field, you can specify the subnetwork as a full or partial URL. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/regions/region/subnetworks/subnetwork - regions/region/subnetworks/subnetwork */
@@ -1272,7 +1273,7 @@ export interface NetworkInterface {
   /** Name of the parent network interface of a dynamic network interface. */
   parentNicName?: string;
   /** The stack type for this network interface. To assign only IPv4 addresses, use IPV4_ONLY. To assign both IPv4 and IPv6 addresses, useIPV4_IPV6. If not specified, IPV4_ONLY is used. This field can be both set at instance creation and update network interface operations. */
-  stackType?: NetworkInterfaceStackTypeEnum;
+  stackType?: NetworkInterfaceStackTypeEnum | (string & {});
   /** Output only. [Output Only] Type of the resource. Alwayscompute#networkInterface for network interfaces. */
   kind?: string;
   /** Fingerprint hash of contents stored in this network interface. This field will be ignored when inserting an Instance or adding a NetworkInterface. An up-to-date fingerprint must be provided in order to update theNetworkInterface. The request will fail with error400 Bad Request if the fingerprint is not provided, or412 Precondition Failed if the fingerprint is out of date. */
@@ -1296,11 +1297,11 @@ export interface NetworkInterface {
   /** The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It'll be empty if not specified by the users. */
   queueCount?: number;
   /** The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet. */
-  nicType?: NetworkInterfaceNicTypeEnum;
+  nicType?: NetworkInterfaceNicTypeEnum | (string & {});
   /** If true, this network interface is eligible for DNS64. This field is only supported for dual-stack (IPV4_IPV6) network interfaces. */
   dns64Eligible?: boolean;
   /** Indicate whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported. */
-  igmpQuery?: NetworkInterfaceIgmpQueryEnum;
+  igmpQuery?: NetworkInterfaceIgmpQueryEnum | (string & {});
 }
 export const NetworkInterface = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1436,7 +1437,7 @@ export const FirewallPolicyRuleMatcherLayer4Config = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<FirewallPolicyRuleMatcherLayer4Config>;
 
 export type FirewallPolicyRuleMatcherLayer4ConfigList =
-  ReadonlyArray<FirewallPolicyRuleMatcherLayer4Config>;
+  Array<FirewallPolicyRuleMatcherLayer4Config>;
 export const FirewallPolicyRuleMatcherLayer4ConfigList = /*@__PURE__*/ S.Array(
   FirewallPolicyRuleMatcherLayer4Config,
 ) as any as S.Schema<FirewallPolicyRuleMatcherLayer4ConfigList>;
@@ -1473,7 +1474,7 @@ export const FirewallPolicyRuleSecureTagStateEnum = /*@__PURE__*/ S.String;
 
 export interface FirewallPolicyRuleSecureTag {
   /** Output only. [Output Only] State of the secure tag, either `EFFECTIVE` or `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted or its network is deleted. */
-  state?: FirewallPolicyRuleSecureTagStateEnum;
+  state?: FirewallPolicyRuleSecureTagStateEnum | (string & {});
   /** Name of the secure tag, created with TagManager's TagValue API. */
   name?: string;
 }
@@ -1487,7 +1488,7 @@ export const FirewallPolicyRuleSecureTag = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FirewallPolicyRuleSecureTag>;
 
 export type FirewallPolicyRuleSecureTagList =
-  ReadonlyArray<FirewallPolicyRuleSecureTag>;
+  Array<FirewallPolicyRuleSecureTag>;
 export const FirewallPolicyRuleSecureTagList = /*@__PURE__*/ S.Array(
   FirewallPolicyRuleSecureTag,
 ) as any as S.Schema<FirewallPolicyRuleSecureTagList>;
@@ -1517,11 +1518,13 @@ export interface FirewallPolicyRuleMatcher {
   /** Fully Qualified Domain Name (FQDN) which should be matched against traffic source. Maximum number of source fqdn allowed is 100. */
   srcFqdns?: StringList;
   /** Network type of the traffic destination. Allowed values are: - UNSPECIFIED - INTERNET - NON_INTERNET */
-  destNetworkType?: FirewallPolicyRuleMatcherDestNetworkTypeEnum;
+  destNetworkType?:
+    | FirewallPolicyRuleMatcherDestNetworkTypeEnum
+    | (string & {});
   /** Pairs of IP protocols and ports that the rule should match. */
   layer4Configs?: FirewallPolicyRuleMatcherLayer4ConfigList;
   /** Network type of the traffic source. Allowed values are: - UNSPECIFIED - INTERNET - INTRA_VPC - NON_INTERNET - VPC_NETWORKS */
-  srcNetworkType?: FirewallPolicyRuleMatcherSrcNetworkTypeEnum;
+  srcNetworkType?: FirewallPolicyRuleMatcherSrcNetworkTypeEnum | (string & {});
   /** Fully Qualified Domain Name (FQDN) which should be matched against traffic destination. Maximum number of destination fqdn allowed is 100. */
   destFqdns?: StringList;
   /** Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic source. */
@@ -1529,11 +1532,15 @@ export interface FirewallPolicyRuleMatcher {
   /** CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000. */
   srcIpRanges?: StringList;
   /** Network scope of the traffic source. */
-  srcNetworkScope?: FirewallPolicyRuleMatcherSrcNetworkScopeEnum;
+  srcNetworkScope?:
+    | FirewallPolicyRuleMatcherSrcNetworkScopeEnum
+    | (string & {});
   /** CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000. */
   destIpRanges?: StringList;
   /** Network context of the traffic source. Allowed values are: - UNSPECIFIED - INTERNET - INTRA_VPC - NON_INTERNET - VPC_NETWORKS */
-  srcNetworkContext?: FirewallPolicyRuleMatcherSrcNetworkContextEnum;
+  srcNetworkContext?:
+    | FirewallPolicyRuleMatcherSrcNetworkContextEnum
+    | (string & {});
   /** Region codes whose IP addresses will be used to match for destination of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of dest region codes allowed is 5000. */
   destRegionCodes?: StringList;
   /** List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the srcSecureTag are INEFFECTIVE, and there is no srcIpRange, this rule will be ignored. Maximum number of source tag values allowed is 256. */
@@ -1545,9 +1552,13 @@ export interface FirewallPolicyRuleMatcher {
   /** Region codes whose IP addresses will be used to match for source of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of source region codes allowed is 5000. */
   srcRegionCodes?: StringList;
   /** Network scope of the traffic destination. */
-  destNetworkScope?: FirewallPolicyRuleMatcherDestNetworkScopeEnum;
+  destNetworkScope?:
+    | FirewallPolicyRuleMatcherDestNetworkScopeEnum
+    | (string & {});
   /** Network context of the traffic destination. Allowed values are: - UNSPECIFIED - INTERNET - NON_INTERNET */
-  destNetworkContext?: FirewallPolicyRuleMatcherDestNetworkContextEnum;
+  destNetworkContext?:
+    | FirewallPolicyRuleMatcherDestNetworkContextEnum
+    | (string & {});
   /** Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10. */
   destAddressGroups?: StringList;
 }
@@ -1593,7 +1604,7 @@ export interface FirewallPolicyRule {
   /** The Action to perform when the client connection triggers the rule. Valid actions for firewall rules are: "allow", "deny", "apply_security_profile_group" and "goto_next" ( "apply_security_profile_group" can be specified only for global network firewall policies or hierarchical firewall policies). Valid actions for packet mirroring rules are: "mirror", "do_not_mirror" and "goto_next". */
   action?: string;
   /** The direction in which this rule applies. */
-  direction?: FirewallPolicyRuleDirectionEnum;
+  direction?: FirewallPolicyRuleDirectionEnum | (string & {});
   /** Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on "goto_next" rules. */
   enableLogging?: boolean;
   /** A list of service accounts indicating the sets of instances that are applied with this rule. */
@@ -1615,7 +1626,7 @@ export interface FirewallPolicyRule {
   /** A list of secure tags that controls which instances the firewall rule applies to. If targetSecureTag are specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the target_secure_tag are in INEFFECTIVE state, then this rule will be ignored.targetSecureTag may not be set at the same time astargetServiceAccounts. If neither targetServiceAccounts nortargetSecureTag are specified, the firewall rule applies to all instances on the specified network. Maximum number of target label tags allowed is 256. */
   targetSecureTags?: FirewallPolicyRuleSecureTagList;
   /** Target types of the firewall policy rule. Default value is INSTANCES. */
-  targetType?: FirewallPolicyRuleTargetTypeEnum;
+  targetType?: FirewallPolicyRuleTargetTypeEnum | (string & {});
   /** An optional name for the rule. This field is not a unique identifier and can be updated. */
   ruleName?: string;
   /** An optional description for this resource. */
@@ -1743,7 +1754,9 @@ export interface NetworkPeeringConnectionStatusTrafficConfiguration {
   /** Whether custom routes are being exported to the peer network. */
   exportCustomRoutesToPeer?: boolean;
   /** Which IP version(s) of traffic and routes are being imported or exported between peer networks. */
-  stackType?: NetworkPeeringConnectionStatusTrafficConfigurationStackTypeEnum;
+  stackType?:
+    | NetworkPeeringConnectionStatusTrafficConfigurationStackTypeEnum
+    | (string & {});
   /** Whether subnet routes with public IP ranges are being exported to the peer network. */
   exportSubnetRoutesWithPublicIpToPeer?: boolean;
 }
@@ -1783,9 +1796,13 @@ export const NetworkPeeringConnectionStatusConsensusStateUpdateStatusEnum =
 /** The status of update/delete for a consensus peering connection. Only set when connection_status.update_strategy isCONSENSUS or a network peering is proposing to update the strategy to CONSENSUS. */
 export interface NetworkPeeringConnectionStatusConsensusState {
   /** The status of the delete request. */
-  deleteStatus?: NetworkPeeringConnectionStatusConsensusStateDeleteStatusEnum;
+  deleteStatus?:
+    | NetworkPeeringConnectionStatusConsensusStateDeleteStatusEnum
+    | (string & {});
   /** The status of the update request. */
-  updateStatus?: NetworkPeeringConnectionStatusConsensusStateUpdateStatusEnum;
+  updateStatus?:
+    | NetworkPeeringConnectionStatusConsensusStateUpdateStatusEnum
+    | (string & {});
 }
 export const NetworkPeeringConnectionStatusConsensusState =
   /*@__PURE__*/ S.suspend(() =>
@@ -1804,7 +1821,9 @@ export const NetworkPeeringConnectionStatusConsensusState =
 /** [Output Only] Describes the state of a peering connection, not just the local peering. This field provides information about the effective settings for the connection as a whole, including pending delete/update requests for CONSENSUS peerings. */
 export interface NetworkPeeringConnectionStatus {
   /** The update strategy determines the update/delete semantics for this peering connection. */
-  updateStrategy?: NetworkPeeringConnectionStatusUpdateStrategyEnum;
+  updateStrategy?:
+    | NetworkPeeringConnectionStatusUpdateStrategyEnum
+    | (string & {});
   /** The active connectivity settings for the peering connection based on the settings of the network peerings. */
   trafficConfiguration?: NetworkPeeringConnectionStatusTrafficConfiguration;
   /** The consensus state contains information about the status of update and delete for a consensus peering connection. */
@@ -1827,13 +1846,13 @@ export const NetworkPeeringConnectionStatus = /*@__PURE__*/ S.suspend(() =>
 /** A network peering attached to a network resource. The message includes the peering name, peer network, peering state, and a flag indicating whether Google Compute Engine should automatically create routes for the peering. */
 export interface NetworkPeering {
   /** Output only. [Output Only] State for the peering. */
-  state?: NetworkPeeringStateEnum;
+  state?: NetworkPeeringStateEnum | (string & {});
   /** Output only. [Output Only] Maximum Transmission Unit in bytes of the peer network. */
   peerMtu?: number;
   /** Which IP version(s) of traffic and routes are allowed to be imported or exported between peer networks. The default value is IPV4_ONLY. */
-  stackType?: NetworkPeeringStackTypeEnum;
+  stackType?: NetworkPeeringStackTypeEnum | (string & {});
   /** The update strategy determines the semantics for updates and deletes to the peering connection configuration. */
-  updateStrategy?: NetworkPeeringUpdateStrategyEnum;
+  updateStrategy?: NetworkPeeringUpdateStrategyEnum | (string & {});
   /** The URL of the peer network. It can be either full URL or partial URL. The peer network may belong to a different project. If the partial URL does not contain project, it is assumed that the peer network is in the same project as the current network. */
   network?: string;
   /** Whether to export the custom routes to peer network. The default value is false. */
@@ -2136,7 +2155,7 @@ export const SecurityPolicyRuleHttpHeaderActionHttpHeaderOption =
   }) as any as S.Schema<SecurityPolicyRuleHttpHeaderActionHttpHeaderOption>;
 
 export type SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionList =
-  ReadonlyArray<SecurityPolicyRuleHttpHeaderActionHttpHeaderOption>;
+  Array<SecurityPolicyRuleHttpHeaderActionHttpHeaderOption>;
 export const SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionList =
   /*@__PURE__*/ S.Array(
     SecurityPolicyRuleHttpHeaderActionHttpHeaderOption,
@@ -2181,7 +2200,7 @@ export interface SecurityPolicyRuleRedirectOptions {
   /** Target for the redirect action. This is required if the type is EXTERNAL_302 and cannot be specified for GOOGLE_RECAPTCHA. */
   target?: string;
   /** Type of the redirect action. Possible values are: - GOOGLE_RECAPTCHA: redirect to reCAPTCHA for manual challenge assessment. - EXTERNAL_302: redirect to a different URL via a 302 response. */
-  type?: SecurityPolicyRuleRedirectOptionsTypeEnum;
+  type?: SecurityPolicyRuleRedirectOptionsTypeEnum | (string & {});
 }
 export const SecurityPolicyRuleRedirectOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2210,7 +2229,9 @@ export const SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyTyp
 
 export interface SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig {
   /** Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKeyConfigs" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults toALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults toALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates. - TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL. - USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults toIP. - TLS_JA4_FINGERPRINT: JA4 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL. */
-  enforceOnKeyType?: SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyTypeEnum;
+  enforceOnKeyType?:
+    | SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyTypeEnum
+    | (string & {});
   /** Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value. */
   enforceOnKeyName?: string;
 }
@@ -2227,7 +2248,7 @@ export const SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig =
   }) as any as S.Schema<SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig>;
 
 export type SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigList =
-  ReadonlyArray<SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig>;
+  Array<SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig>;
 export const SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigList =
   /*@__PURE__*/ S.Array(
     SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig,
@@ -2284,7 +2305,9 @@ export interface SecurityPolicyRuleRateLimitOptions {
   /** Can only be specified if the action for the rule is "rate_based_ban". If specified, determines the time (in seconds) the traffic will continue to be banned by the rate limit after the rate falls below the threshold. */
   banDurationSec?: number;
   /** Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKey" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults toALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults toALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates. - TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL. - USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults toIP. - TLS_JA4_FINGERPRINT: JA4 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL. For "fairshare" action, this value is limited to ALL i.e. a single rate limit threshold is enforced for all the requests matching the rule. */
-  enforceOnKey?: SecurityPolicyRuleRateLimitOptionsEnforceOnKeyEnum;
+  enforceOnKey?:
+    | SecurityPolicyRuleRateLimitOptionsEnforceOnKeyEnum
+    | (string & {});
   /** Can only be specified if the action for the rule is "rate_based_ban". If specified, the key will be banned for the configured 'ban_duration_sec' when the number of requests that exceed the 'rate_limit_threshold' also exceed this 'ban_threshold'. */
   banThreshold?: SecurityPolicyRuleRateLimitOptionsThreshold;
 }
@@ -2328,13 +2351,13 @@ export const SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatch =
   }) as any as S.Schema<SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatch>;
 
 export type SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchList =
-  ReadonlyArray<SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatch>;
+  Array<SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatch>;
 export const SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchList =
   /*@__PURE__*/ S.Array(
     SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatch,
   ) as any as S.Schema<SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchList>;
 
-export type IntegerList = ReadonlyArray<number>;
+export type IntegerList = Array<number>;
 export const IntegerList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<IntegerList>;
@@ -2418,7 +2441,7 @@ export const SecurityPolicyRuleMatcherConfigLayer4Config =
   }) as any as S.Schema<SecurityPolicyRuleMatcherConfigLayer4Config>;
 
 export type SecurityPolicyRuleMatcherConfigLayer4ConfigList =
-  ReadonlyArray<SecurityPolicyRuleMatcherConfigLayer4Config>;
+  Array<SecurityPolicyRuleMatcherConfigLayer4Config>;
 export const SecurityPolicyRuleMatcherConfigLayer4ConfigList =
   /*@__PURE__*/ S.Array(
     SecurityPolicyRuleMatcherConfigLayer4Config,
@@ -2441,7 +2464,7 @@ export const SecurityPolicyRuleMatcherConfigDestinationPort =
   }) as any as S.Schema<SecurityPolicyRuleMatcherConfigDestinationPort>;
 
 export type SecurityPolicyRuleMatcherConfigDestinationPortList =
-  ReadonlyArray<SecurityPolicyRuleMatcherConfigDestinationPort>;
+  Array<SecurityPolicyRuleMatcherConfigDestinationPort>;
 export const SecurityPolicyRuleMatcherConfigDestinationPortList =
   /*@__PURE__*/ S.Array(
     SecurityPolicyRuleMatcherConfigDestinationPort,
@@ -2502,7 +2525,7 @@ export const SecurityPolicyRuleMatcherExprOptions = /*@__PURE__*/ S.suspend(
 /** Represents a match condition that incoming traffic is evaluated against. Exactly one field must be specified. */
 export interface SecurityPolicyRuleMatcher {
   /** Preconfigured versioned expression. If this field is specified, config must also be specified. Available preconfigured expressions along with their requirements are: SRC_IPS_V1 - must specify the corresponding src_ip_range field in config. */
-  versionedExpr?: SecurityPolicyRuleMatcherVersionedExprEnum;
+  versionedExpr?: SecurityPolicyRuleMatcherVersionedExprEnum | (string & {});
   /** User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header. Expressions containing `evaluateThreatIntelligence` require a Cloud Armor Enterprise subscription and are not supported in Edge Policies nor in Regional Policies. Expressions containing `evaluatePreconfiguredExpr('sourceiplist-*')` require a Cloud Armor Enterprise subscription and are only supported in Global Security Policies. */
   expr?: Expr;
   /** The configuration options available when specifying versioned_expr. This field must be specified if versioned_expr is specified and cannot be specified if versioned_expr is not specified. */
@@ -2530,7 +2553,9 @@ export interface SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams {
   /** The value of the field. */
   val?: string;
   /** The match operator for the field. */
-  op?: SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpEnum;
+  op?:
+    | SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpEnum
+    | (string & {});
 }
 export const SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams =
   /*@__PURE__*/ S.suspend(() =>
@@ -2545,7 +2570,7 @@ export const SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams =
   }) as any as S.Schema<SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams>;
 
 export type SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsList =
-  ReadonlyArray<SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams>;
+  Array<SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams>;
 export const SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsList =
   /*@__PURE__*/ S.Array(
     SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams,
@@ -2593,7 +2618,7 @@ export const SecurityPolicyRulePreconfiguredWafConfigExclusion =
   }) as any as S.Schema<SecurityPolicyRulePreconfiguredWafConfigExclusion>;
 
 export type SecurityPolicyRulePreconfiguredWafConfigExclusionList =
-  ReadonlyArray<SecurityPolicyRulePreconfiguredWafConfigExclusion>;
+  Array<SecurityPolicyRulePreconfiguredWafConfigExclusion>;
 export const SecurityPolicyRulePreconfiguredWafConfigExclusionList =
   /*@__PURE__*/ S.Array(
     SecurityPolicyRulePreconfiguredWafConfigExclusion,
@@ -2661,9 +2686,11 @@ export interface SecurityPolicyRule {
   /** The Action to perform when the rule is matched. The following are the valid actions: - allow: allow access to target. - deny(STATUS): deny access to target, returns the HTTP response code specified. Valid values for `STATUS` are 403, 404, and 502. - rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rate_limit_options to be set. - redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. This action is only supported in Global Security Policies of type CLOUD_ARMOR. - throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rate_limit_options to be set for this. - fairshare (preview only): when traffic reaches the threshold limit, requests from the clients matching this rule begin to be rate-limited using the Fair Share algorithm. This action is only allowed in security policies of type `CLOUD_ARMOR_INTERNAL_SERVICE`. */
   action?: string;
   /** The direction in which this rule applies. This field may only be specified when versioned_expr is set to FIREWALL. */
-  direction?: SecurityPolicyRuleDirectionEnum;
+  direction?: SecurityPolicyRuleDirectionEnum | (string & {});
   /** Output only. [Output Only] The minimum Cloud Armor subscription required for this rule. [Deprecated] Use requiredManagedProtectionTiers instead. */
-  ruleManagedProtectionTier?: SecurityPolicyRuleRuleManagedProtectionTierEnum;
+  ruleManagedProtectionTier?:
+    | SecurityPolicyRuleRuleManagedProtectionTierEnum
+    | (string & {});
 }
 export const SecurityPolicyRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2903,13 +2930,17 @@ export const NetworkPolicyTrafficClassificationRuleActionTrafficClassEnum =
 
 export interface NetworkPolicyTrafficClassificationRuleAction {
   /** DSCP mode. When set to AUTO, the DSCP value will be picked automatically based on selected trafficClass. Otherwise,dscpValue needs to be explicitly specified. */
-  dscpMode?: NetworkPolicyTrafficClassificationRuleActionDscpModeEnum;
+  dscpMode?:
+    | NetworkPolicyTrafficClassificationRuleActionDscpModeEnum
+    | (string & {});
   /** Custom DSCP value from 0-63 range. */
   dscpValue?: number;
   /** Always "apply_traffic_classification" for traffic classification rules. */
   type?: string;
   /** The traffic class that should be applied to the matching packet. */
-  trafficClass?: NetworkPolicyTrafficClassificationRuleActionTrafficClassEnum;
+  trafficClass?:
+    | NetworkPolicyTrafficClassificationRuleActionTrafficClassEnum
+    | (string & {});
 }
 export const NetworkPolicyTrafficClassificationRuleAction =
   /*@__PURE__*/ S.suspend(() =>
@@ -2938,7 +2969,9 @@ export interface NetworkPolicyTrafficClassificationRuleSecureTag {
   /** Name of the secure tag, created with TagManager's TagValue API. */
   name?: string;
   /** Output only. [Output Only] State of the secure tag, either `EFFECTIVE` or `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted or its network is deleted. */
-  state?: NetworkPolicyTrafficClassificationRuleSecureTagStateEnum;
+  state?:
+    | NetworkPolicyTrafficClassificationRuleSecureTagStateEnum
+    | (string & {});
 }
 export const NetworkPolicyTrafficClassificationRuleSecureTag =
   /*@__PURE__*/ S.suspend(() =>
@@ -2953,7 +2986,7 @@ export const NetworkPolicyTrafficClassificationRuleSecureTag =
   }) as any as S.Schema<NetworkPolicyTrafficClassificationRuleSecureTag>;
 
 export type NetworkPolicyTrafficClassificationRuleSecureTagList =
-  ReadonlyArray<NetworkPolicyTrafficClassificationRuleSecureTag>;
+  Array<NetworkPolicyTrafficClassificationRuleSecureTag>;
 export const NetworkPolicyTrafficClassificationRuleSecureTagList =
   /*@__PURE__*/ S.Array(
     NetworkPolicyTrafficClassificationRuleSecureTag,
@@ -2976,7 +3009,7 @@ export const NetworkPolicyTrafficClassificationRuleMatcherLayer4Config =
   }) as any as S.Schema<NetworkPolicyTrafficClassificationRuleMatcherLayer4Config>;
 
 export type NetworkPolicyTrafficClassificationRuleMatcherLayer4ConfigList =
-  ReadonlyArray<NetworkPolicyTrafficClassificationRuleMatcherLayer4Config>;
+  Array<NetworkPolicyTrafficClassificationRuleMatcherLayer4Config>;
 export const NetworkPolicyTrafficClassificationRuleMatcherLayer4ConfigList =
   /*@__PURE__*/ S.Array(
     NetworkPolicyTrafficClassificationRuleMatcherLayer4Config,
@@ -3116,7 +3149,7 @@ export const PreservedStatePreservedNetworkIpIpAddress =
 
 export interface PreservedStatePreservedNetworkIp {
   /** These stateful IPs will never be released during autohealing, update or VM instance recreate operations. This flag is used to configure if the IP reservation should be deleted after it is no longer used by the group, e.g. when the given instance or the whole group is deleted. */
-  autoDelete?: PreservedStatePreservedNetworkIpAutoDeleteEnum;
+  autoDelete?: PreservedStatePreservedNetworkIpAutoDeleteEnum | (string & {});
   /** Ip address representation */
   ipAddress?: PreservedStatePreservedNetworkIpIpAddress;
 }
@@ -3147,9 +3180,9 @@ export const PreservedStatePreservedDiskModeEnum = /*@__PURE__*/ S.String;
 
 export interface PreservedStatePreservedDisk {
   /** These stateful disks will never be deleted during autohealing, update, instance recreate operations. This flag is used to configure if the disk should be deleted after it is no longer used by the group, e.g. when the given instance or the whole MIG is deleted. Note: disks attached in READ_ONLY mode cannot be auto-deleted. */
-  autoDelete?: PreservedStatePreservedDiskAutoDeleteEnum;
+  autoDelete?: PreservedStatePreservedDiskAutoDeleteEnum | (string & {});
   /** The mode in which to attach this disk, either READ_WRITE orREAD_ONLY. If not specified, the default is to attach the disk in READ_WRITE mode. */
-  mode?: PreservedStatePreservedDiskModeEnum;
+  mode?: PreservedStatePreservedDiskModeEnum | (string & {});
   /** The URL of the disk resource that is stateful and should be attached to the VM instance. */
   source?: string;
 }
@@ -3193,7 +3226,7 @@ export const PreservedState = /*@__PURE__*/ S.suspend(() =>
 
 export interface PerInstanceConfig {
   /** The status of applying this per-instance configuration on the corresponding managed instance. */
-  status?: PerInstanceConfigStatusEnum;
+  status?: PerInstanceConfigStatusEnum | (string & {});
   /** The name of a per-instance configuration and its corresponding instance. Serves as a merge key during UpdatePerInstanceConfigs operations, that is, if a per-instance configuration with the same name exists then it will be updated, otherwise a new one will be created for the VM instance with the same name. An attempt to create a per-instance configuration for a VM instance that either doesn't exist or is not part of the group will result in an error. */
   name?: string;
   /** The intended preserved state for the given instance. Does not contain preserved state generated from a stateful policy. */
@@ -3212,7 +3245,7 @@ export const PerInstanceConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "PerInstanceConfig",
 }) as any as S.Schema<PerInstanceConfig>;
 
-export type PerInstanceConfigList = ReadonlyArray<PerInstanceConfig>;
+export type PerInstanceConfigList = Array<PerInstanceConfig>;
 export const PerInstanceConfigList = /*@__PURE__*/ S.Array(
   PerInstanceConfig,
 ) as any as S.Schema<PerInstanceConfigList>;
@@ -3381,7 +3414,7 @@ export const RolloutPolicy = /*@__PURE__*/ S.suspend(() =>
 /** Deprecation status for a public resource. */
 export interface DeprecationStatus {
   /** The deprecation state of this resource. This can be ACTIVE,DEPRECATED, OBSOLETE, or DELETED. Operations which communicate the end of life date for an image, can useACTIVE. Operations which create a new resource using aDEPRECATED resource will return successfully, but with a warning indicating the deprecated resource and recommending its replacement. Operations which use OBSOLETE orDELETED resources will be rejected and result in an error. */
-  state?: DeprecationStatusStateEnum;
+  state?: DeprecationStatusStateEnum | (string & {});
   /** An optional RFC3339 timestamp on or after which the state of this resource is intended to change to DEPRECATED. This is only informational and the status will not change unless the client explicitly changes it. */
   deprecated?: string;
   /** An optional RFC3339 timestamp on or after which the state of this resource is intended to change to OBSOLETE. This is only informational and the status will not change unless the client explicitly changes it. */
@@ -3446,7 +3479,7 @@ export const AcceleratorType = /*@__PURE__*/ S.suspend(() =>
   identifier: "AcceleratorType",
 }) as any as S.Schema<AcceleratorType>;
 
-export type AcceleratorTypeList_ = ReadonlyArray<AcceleratorType>;
+export type AcceleratorTypeList_ = Array<AcceleratorType>;
 export const AcceleratorTypeList_ = /*@__PURE__*/ S.Array(
   AcceleratorType,
 ) as any as S.Schema<AcceleratorTypeList_>;
@@ -3500,7 +3533,7 @@ export const AcceleratorTypesScopedListWarningDataItem =
   }) as any as S.Schema<AcceleratorTypesScopedListWarningDataItem>;
 
 export type AcceleratorTypesScopedListWarningDataItemList =
-  ReadonlyArray<AcceleratorTypesScopedListWarningDataItem>;
+  Array<AcceleratorTypesScopedListWarningDataItem>;
 export const AcceleratorTypesScopedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     AcceleratorTypesScopedListWarningDataItem,
@@ -3597,7 +3630,7 @@ export const AcceleratorTypeAggregatedListWarningDataItem =
   }) as any as S.Schema<AcceleratorTypeAggregatedListWarningDataItem>;
 
 export type AcceleratorTypeAggregatedListWarningDataItemList =
-  ReadonlyArray<AcceleratorTypeAggregatedListWarningDataItem>;
+  Array<AcceleratorTypeAggregatedListWarningDataItem>;
 export const AcceleratorTypeAggregatedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     AcceleratorTypeAggregatedListWarningDataItem,
@@ -3708,7 +3741,7 @@ export const AddressAggregatedListWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<AddressAggregatedListWarningDataItem>;
 
 export type AddressAggregatedListWarningDataItemList =
-  ReadonlyArray<AddressAggregatedListWarningDataItem>;
+  Array<AddressAggregatedListWarningDataItem>;
 export const AddressAggregatedListWarningDataItemList = /*@__PURE__*/ S.Array(
   AddressAggregatedListWarningDataItem,
 ) as any as S.Schema<AddressAggregatedListWarningDataItemList>;
@@ -3815,7 +3848,7 @@ export interface Address {
   /** A fingerprint for the labels being applied to this Address, which is essentially a hash of the labels set used for optimistic locking. The fingerprint is initially generated by Compute Engine and changes after every request to modify or update labels. You must always provide an up-to-date fingerprint hash in order to update or change labels, otherwise the request will fail with error412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve an Address. */
   labelFingerprint?: string;
   /** The purpose of this resource, which can be one of the following values: - GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, load balancers, and similar resources. - DNS_RESOLVER for a DNS resolver address in a subnetwork for a Cloud DNS inbound forwarder IP addresses (regional internal IP address in a subnet of a VPC network) - VPC_PEERING for global internal IP addresses used for private services access allocated ranges. - NAT_AUTO for the regional external IP addresses used by Cloud NAT when allocating addresses using automatic NAT IP address allocation. - IPSEC_INTERCONNECT for addresses created from a private IP range that are reserved for a VLAN attachment in an *HA VPN over Cloud Interconnect* configuration. These addresses are regional resources. - `SHARED_LOADBALANCER_VIP` for an internal IP address that is assigned to multiple internal forwarding rules. - `PRIVATE_SERVICE_CONNECT` for a private network address that is used to configure Private Service Connect. Only global internal addresses can use this purpose. */
-  purpose?: AddressPurposeEnum;
+  purpose?: AddressPurposeEnum | (string & {});
   /** Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply withRFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`. The first character must be a lowercase letter, and all following characters (except for the last character) must be a dash, lowercase letter, or digit. The last character must be a lowercase letter or digit. */
   name?: string;
   /** Reference to the source of IP addresses. It supports the following cases: - Case 1: PublicDelegatedPrefix (PDP) for BYOIP external IPv4 addresses. The PDP must support enhanced IPv4 allocations. - Case 2: Internal Range for global internal addresses. Use one of the following formats to specify the resource: For a Public Delegated Prefix: - Full resource URL:https://www.googleapis.com/compute/v1/projects/projectId/regions/region/publicDelegatedPrefixes/pdp - Partial URL: - projects/projectId/regions/region/publicDelegatedPrefixes/pdp-name - regions/region/publicDelegatedPrefixes/pdp-name For an Internal Range: - Full URL:https://networkconnectivity.googleapis.com/v1/projects/project/locations/global/internalRanges/internal-range - Partial URL:projects/project/locations/global/internalRanges/internal-range */
@@ -3829,21 +3862,21 @@ export interface Address {
   /** The URL of the network in which to reserve the address. This field can only be used with INTERNAL type with theVPC_PEERING purpose. */
   network?: string;
   /** The IP version that will be used by this address. Valid options areIPV4 or IPV6. */
-  ipVersion?: AddressIpVersionEnum;
+  ipVersion?: AddressIpVersionEnum | (string & {});
   /** Output only. [Output Only] Creation timestamp inRFC3339 text format. */
   creationTimestamp?: string;
   /** [Output Only] Server-defined URL for the resource. */
   selfLink?: string;
   /** The type of address to reserve, either INTERNAL orEXTERNAL. If unspecified, defaults to EXTERNAL. */
-  addressType?: AddressAddressTypeEnum;
+  addressType?: AddressAddressTypeEnum | (string & {});
   /** Output only. [Output Only] Type of the resource. Always compute#address for addresses. */
   kind?: string;
   /** This signifies the networking tier used for configuring this address and can only take the following values: PREMIUM orSTANDARD. Internal IP addresses are always Premium Tier; global external IP addresses are always Premium Tier; regional external IP addresses can be either Standard or Premium Tier. If this field is not specified, it is assumed to be PREMIUM. */
-  networkTier?: AddressNetworkTierEnum;
+  networkTier?: AddressNetworkTierEnum | (string & {});
   /** The endpoint type of this address, which should be VM or NETLB. This is used for deciding which type of endpoint this address can be used after the external IPv6 address reservation. */
-  ipv6EndpointType?: AddressIpv6EndpointTypeEnum;
+  ipv6EndpointType?: AddressIpv6EndpointTypeEnum | (string & {});
   /** Output only. [Output Only] The status of the address, which can be one ofRESERVING, RESERVED, or IN_USE. An address that is RESERVING is currently in the process of being reserved. A RESERVED address is currently reserved and available to use. An IN_USE address is currently being used by another resource and is not available. */
-  status?: AddressStatusEnum;
+  status?: AddressStatusEnum | (string & {});
   /** The static IP address represented by this resource. */
   address?: string;
   /** Output only. [Output Only] Server-defined URL for this resource with the resource id. */
@@ -3876,7 +3909,7 @@ export const Address = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Address" }) as any as S.Schema<Address>;
 
-export type AddressList_ = ReadonlyArray<Address>;
+export type AddressList_ = Array<Address>;
 export const AddressList_ = /*@__PURE__*/ S.Array(
   Address,
 ) as any as S.Schema<AddressList_>;
@@ -3897,7 +3930,7 @@ export const AddressesScopedListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AddressesScopedListWarningDataItem>;
 
 export type AddressesScopedListWarningDataItemList =
-  ReadonlyArray<AddressesScopedListWarningDataItem>;
+  Array<AddressesScopedListWarningDataItem>;
 export const AddressesScopedListWarningDataItemList = /*@__PURE__*/ S.Array(
   AddressesScopedListWarningDataItem,
 ) as any as S.Schema<AddressesScopedListWarningDataItemList>;
@@ -4057,7 +4090,7 @@ export interface ScalingScheduleStatus {
   /** [Output Only] The next time the scaling schedule is to become active. Note: this is a timestamp when a schedule is planned to run, but the actual time might be slightly different. The timestamp is in RFC3339 text format. */
   nextStartTime?: string;
   /** [Output Only] The current state of a scaling schedule. */
-  state?: ScalingScheduleStatusStateEnum;
+  state?: ScalingScheduleStatusStateEnum | (string & {});
 }
 export const ScalingScheduleStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4104,7 +4137,7 @@ export interface AutoscalerStatusDetails {
   /** The status message. */
   message?: string;
   /** The type of error, warning, or notice returned. Current set of possible values: - ALL_INSTANCES_UNHEALTHY (WARNING): All instances in the instance group are unhealthy (not in RUNNING state). - BACKEND_SERVICE_DOES_NOT_EXIST (ERROR): There is no backend service attached to the instance group. - CAPPED_AT_MAX_NUM_REPLICAS (WARNING): Autoscaler recommends a size greater than maxNumReplicas. - CUSTOM_METRIC_DATA_POINTS_TOO_SPARSE (WARNING): The custom metric samples are not exported often enough to be a credible base for autoscaling. - CUSTOM_METRIC_INVALID (ERROR): The custom metric that was specified does not exist or does not have the necessary labels. - MIN_EQUALS_MAX (WARNING): The minNumReplicas is equal to maxNumReplicas. This means the autoscaler cannot add or remove instances from the instance group. - MISSING_CUSTOM_METRIC_DATA_POINTS (WARNING): The autoscaler did not receive any data from the custom metric configured for autoscaling. - MISSING_LOAD_BALANCING_DATA_POINTS (WARNING): The autoscaler is configured to scale based on a load balancing signal but the instance group has not received any requests from the load balancer. - MODE_OFF (WARNING): Autoscaling is turned off. The number of instances in the group won't change automatically. The autoscaling configuration is preserved. - MODE_ONLY_UP (WARNING): Autoscaling is in the "Autoscale only out" mode. The autoscaler can add instances but not remove any. - MORE_THAN_ONE_BACKEND_SERVICE (ERROR): The instance group cannot be autoscaled because it has more than one backend service attached to it. - NOT_ENOUGH_QUOTA_AVAILABLE (ERROR): There is insufficient quota for the necessary resources, such as CPU or number of instances. - REGION_RESOURCE_STOCKOUT (ERROR): Shown only for regional autoscalers: there is a resource stockout in the chosen region. - SCALING_TARGET_DOES_NOT_EXIST (ERROR): The target to be scaled does not exist. - UNSUPPORTED_MAX_RATE_LOAD_BALANCING_CONFIGURATION (ERROR): Autoscaling does not work with an HTTP/S load balancer that has been configured for maxRate. - ZONE_RESOURCE_STOCKOUT (ERROR): For zonal autoscalers: there is a resource stockout in the chosen zone. For regional autoscalers: in at least one of the zones you're using there is a resource stockout. New values might be added in the future. Some of the values might not be available in all API versions. */
-  type?: AutoscalerStatusDetailsTypeEnum;
+  type?: AutoscalerStatusDetailsTypeEnum | (string & {});
 }
 export const AutoscalerStatusDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4115,8 +4148,7 @@ export const AutoscalerStatusDetails = /*@__PURE__*/ S.suspend(() =>
   identifier: "AutoscalerStatusDetails",
 }) as any as S.Schema<AutoscalerStatusDetails>;
 
-export type AutoscalerStatusDetailsList =
-  ReadonlyArray<AutoscalerStatusDetails>;
+export type AutoscalerStatusDetailsList = Array<AutoscalerStatusDetails>;
 export const AutoscalerStatusDetailsList = /*@__PURE__*/ S.Array(
   AutoscalerStatusDetails,
 ) as any as S.Schema<AutoscalerStatusDetailsList>;
@@ -4134,7 +4166,9 @@ export interface AutoscalingPolicyCpuUtilization {
   /** The target CPU utilization that the autoscaler maintains. Must be a float value in the range (0, 1]. If not specified, the default is0.6. If the CPU level is below the target utilization, the autoscaler scales in the number of instances until it reaches the minimum number of instances you specified or until the average CPU of your instances reaches the target utilization. If the average CPU is above the target utilization, the autoscaler scales out until it reaches the maximum number of instances you specified or until the average utilization reaches the target utilization. */
   utilizationTarget?: number;
   /** Indicates whether predictive autoscaling based on CPU metric is enabled. Valid values are: * NONE (default). No predictive method is used. The autoscaler scales the group to meet current demand based on real-time metrics. * OPTIMIZE_AVAILABILITY. Predictive autoscaling improves availability by monitoring daily and weekly load patterns and scaling out ahead of anticipated demand. */
-  predictiveMethod?: AutoscalingPolicyCpuUtilizationPredictiveMethodEnum;
+  predictiveMethod?:
+    | AutoscalingPolicyCpuUtilizationPredictiveMethodEnum
+    | (string & {});
 }
 export const AutoscalingPolicyCpuUtilization = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4199,7 +4233,9 @@ export interface AutoscalingPolicyCustomMetricUtilization {
   /** The identifier (type) of the Stackdriver Monitoring metric. The metric cannot have negative values. The metric must have a value type of INT64 orDOUBLE. */
   metric?: string;
   /** Defines how target utilization value is expressed for a Stackdriver Monitoring metric. Either GAUGE,DELTA_PER_SECOND, or DELTA_PER_MINUTE. */
-  utilizationTargetType?: AutoscalingPolicyCustomMetricUtilizationUtilizationTargetTypeEnum;
+  utilizationTargetType?:
+    | AutoscalingPolicyCustomMetricUtilizationUtilizationTargetTypeEnum
+    | (string & {});
   /** If scaling is based on a per-group metric value that represents the total amount of work to be done or resource usage, set this value to an amount assigned for a single instance of the scaled group. Autoscaler keeps the number of instances proportional to the value of this metric. The metric itself does not change value due to group resizing. A good metric to use with the target is for examplepubsub.googleapis.com/subscription/num_undelivered_messages or a custom metric exporting the total number of requests coming to your instances. A bad example would be a metric exporting an average or median latency, since this value can't include a chunk assignable to a single instance, it could be better used with utilization_target instead. */
   singleInstanceAssignment?: number;
 }
@@ -4219,7 +4255,7 @@ export const AutoscalingPolicyCustomMetricUtilization = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<AutoscalingPolicyCustomMetricUtilization>;
 
 export type AutoscalingPolicyCustomMetricUtilizationList =
-  ReadonlyArray<AutoscalingPolicyCustomMetricUtilization>;
+  Array<AutoscalingPolicyCustomMetricUtilization>;
 export const AutoscalingPolicyCustomMetricUtilizationList =
   /*@__PURE__*/ S.Array(
     AutoscalingPolicyCustomMetricUtilization,
@@ -4308,7 +4344,7 @@ export interface AutoscalingPolicy {
   /** Configuration parameters of autoscaling based on a custom metric. */
   customMetricUtilizations?: AutoscalingPolicyCustomMetricUtilizationList;
   /** Defines the operating mode for this policy. The following modes are available: - OFF: Disables the autoscaler but maintains its configuration. - ONLY_SCALE_OUT: Restricts the autoscaler to add VM instances only. - ON: Enables all autoscaler activities according to its policy. For more information, see "Turning off or restricting an autoscaler" */
-  mode?: AutoscalingPolicyModeEnum;
+  mode?: AutoscalingPolicyModeEnum | (string & {});
   scaleInControl?: AutoscalingPolicyScaleInControl;
   /** The minimum number of replicas that the autoscaler can scale in to. This cannot be less than 0. If not provided, autoscaler chooses a default value depending on maximum number of instances allowed. */
   minNumReplicas?: number;
@@ -4360,7 +4396,7 @@ export interface Autoscaler {
   /** The configuration parameters for the autoscaling algorithm. You can define one or more signals for an autoscaler: cpuUtilization,customMetricUtilizations, andloadBalancingUtilization. If none of these are specified, the default will be to autoscale based oncpuUtilization to 0.6 or 60%. */
   autoscalingPolicy?: AutoscalingPolicy;
   /** [Output Only] The status of the autoscaler configuration. Current set of possible values: - PENDING: Autoscaler backend hasn't read new/updated configuration. - DELETING: Configuration is being deleted. - ACTIVE: Configuration is acknowledged to be effective. Some warnings might be present in the statusDetails field. - ERROR: Configuration has errors. Actionable for users. Details are present in the statusDetails field. New values might be added in the future. */
-  status?: AutoscalerStatusEnum;
+  status?: AutoscalerStatusEnum | (string & {});
   /** Output only. [Output Only] Server-defined URL for this resource with the resource id. */
   selfLinkWithId?: string;
   /** Output only. [Output Only] Target recommended MIG size (number of instances) computed by autoscaler. Autoscaler calculates the recommended MIG size even when the autoscaling policy mode is different from ON. This field is empty when autoscaler is not connected to an existing managed instance group or autoscaler did not generate its prediction. */
@@ -4396,7 +4432,7 @@ export const Autoscaler = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Autoscaler" }) as any as S.Schema<Autoscaler>;
 
-export type AutoscalerList_ = ReadonlyArray<Autoscaler>;
+export type AutoscalerList_ = Array<Autoscaler>;
 export const AutoscalerList_ = /*@__PURE__*/ S.Array(
   Autoscaler,
 ) as any as S.Schema<AutoscalerList_>;
@@ -4418,7 +4454,7 @@ export const AutoscalersScopedListWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<AutoscalersScopedListWarningDataItem>;
 
 export type AutoscalersScopedListWarningDataItemList =
-  ReadonlyArray<AutoscalersScopedListWarningDataItem>;
+  Array<AutoscalersScopedListWarningDataItem>;
 export const AutoscalersScopedListWarningDataItemList = /*@__PURE__*/ S.Array(
   AutoscalersScopedListWarningDataItem,
 ) as any as S.Schema<AutoscalersScopedListWarningDataItemList>;
@@ -4513,7 +4549,7 @@ export const AutoscalerAggregatedListWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<AutoscalerAggregatedListWarningDataItem>;
 
 export type AutoscalerAggregatedListWarningDataItemList =
-  ReadonlyArray<AutoscalerAggregatedListWarningDataItem>;
+  Array<AutoscalerAggregatedListWarningDataItem>;
 export const AutoscalerAggregatedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     AutoscalerAggregatedListWarningDataItem,
@@ -4688,7 +4724,7 @@ export const BackendBucketAggregatedListWarningDataItem =
   }) as any as S.Schema<BackendBucketAggregatedListWarningDataItem>;
 
 export type BackendBucketAggregatedListWarningDataItemList =
-  ReadonlyArray<BackendBucketAggregatedListWarningDataItem>;
+  Array<BackendBucketAggregatedListWarningDataItem>;
 export const BackendBucketAggregatedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     BackendBucketAggregatedListWarningDataItem,
@@ -4732,7 +4768,7 @@ export const BackendBucketCdnPolicyBypassCacheOnRequestHeader =
   }) as any as S.Schema<BackendBucketCdnPolicyBypassCacheOnRequestHeader>;
 
 export type BackendBucketCdnPolicyBypassCacheOnRequestHeaderList =
-  ReadonlyArray<BackendBucketCdnPolicyBypassCacheOnRequestHeader>;
+  Array<BackendBucketCdnPolicyBypassCacheOnRequestHeader>;
 export const BackendBucketCdnPolicyBypassCacheOnRequestHeaderList =
   /*@__PURE__*/ S.Array(
     BackendBucketCdnPolicyBypassCacheOnRequestHeader,
@@ -4756,7 +4792,7 @@ export const BackendBucketCdnPolicyNegativeCachingPolicy =
   }) as any as S.Schema<BackendBucketCdnPolicyNegativeCachingPolicy>;
 
 export type BackendBucketCdnPolicyNegativeCachingPolicyList =
-  ReadonlyArray<BackendBucketCdnPolicyNegativeCachingPolicy>;
+  Array<BackendBucketCdnPolicyNegativeCachingPolicy>;
 export const BackendBucketCdnPolicyNegativeCachingPolicyList =
   /*@__PURE__*/ S.Array(
     BackendBucketCdnPolicyNegativeCachingPolicy,
@@ -4801,7 +4837,7 @@ export interface BackendBucketCdnPolicy {
   /** Sets a cache TTL for the specified HTTP status code. negative_caching must be enabled to configure negative_caching_policy. Omitting the policy and leaving negative_caching enabled will use Cloud CDN's default cache TTLs. Note that when specifying an explicit negative_caching_policy, you should take care to specify a cache TTL for all response codes that you wish to cache. Cloud CDN will not apply any default negative caching when a policy exists. */
   negativeCachingPolicy?: BackendBucketCdnPolicyNegativeCachingPolicyList;
   /** Specifies the cache setting for all responses from this backend. The possible values are:USE_ORIGIN_HEADERS Requires the origin to set valid caching headers to cache content. Responses without these headers will not be cached at Google's edge, and will require a full trip to the origin on every request, potentially impacting performance and increasing load on the origin server.FORCE_CACHE_ALL Cache all content, ignoring any "private", "no-store" or "no-cache" directives in Cache-Control response headers. Warning: this may result in Cloud CDN caching private, per-user (user identifiable) content.CACHE_ALL_STATIC Automatically cache static content, including common image formats, media (video and audio), and web assets (JavaScript and CSS). Requests and responses that are marked as uncacheable, as well as dynamic content (including HTML), will not be cached. If no value is provided for cdnPolicy.cacheMode, it defaults to CACHE_ALL_STATIC. */
-  cacheMode?: BackendBucketCdnPolicyCacheModeEnum;
+  cacheMode?: BackendBucketCdnPolicyCacheModeEnum | (string & {});
   /** Specifies the maximum allowed TTL for cached content served by this origin. Cache directives that attempt to set a max-age or s-maxage higher than this, or an Expires header more than maxTTL seconds in the future will be capped at the value of maxTTL, as if it were the value of an s-maxage Cache-Control directive. Headers sent to the client will not be modified. Setting a TTL of "0" means "always revalidate". The maximum allowed value is 31,622,400s (1 year), noting that infrequently accessed objects may be evicted from the cache before the defined TTL. */
   maxTtl?: number;
   /** Specifies a separate client (e.g. browser client) maximum TTL. This is used to clamp the max-age (or Expires) value sent to the client. With FORCE_CACHE_ALL, the lesser of client_ttl and default_ttl is used for the response max-age directive, along with a "public" directive. For cacheable content in CACHE_ALL_STATIC mode, client_ttl clamps the max-age from the origin (if specified), or else sets the response max-age directive to the lesser of the client_ttl and default_ttl, and also ensures a "public" cache-control directive is present. If a client TTL is not specified, a default value (1 hour) will be used. The maximum allowed value is 31,622,400s (1 year). */
@@ -4861,7 +4897,7 @@ export const BackendBucketUsedBy = /*@__PURE__*/ S.suspend(() =>
   identifier: "BackendBucketUsedBy",
 }) as any as S.Schema<BackendBucketUsedBy>;
 
-export type BackendBucketUsedByList = ReadonlyArray<BackendBucketUsedBy>;
+export type BackendBucketUsedByList = Array<BackendBucketUsedBy>;
 export const BackendBucketUsedByList = /*@__PURE__*/ S.Array(
   BackendBucketUsedBy,
 ) as any as S.Schema<BackendBucketUsedByList>;
@@ -4874,7 +4910,7 @@ export interface BackendBucket {
   /** Output only. [Output Only] Server-defined URL for this resource with the resource id. */
   selfLinkWithId?: string;
   /** The value can only be INTERNAL_MANAGED for cross-region internal layer 7 load balancer. If loadBalancingScheme is not specified, the backend bucket can be used by classic global external load balancers, or global application external load balancers, or both. */
-  loadBalancingScheme?: BackendBucketLoadBalancingSchemeEnum;
+  loadBalancingScheme?: BackendBucketLoadBalancingSchemeEnum | (string & {});
   /** [Output Only] Server-defined URL for the resource. */
   selfLink?: string;
   /** Output only. Type of the resource. */
@@ -4904,7 +4940,7 @@ export interface BackendBucket {
   /** If true, enable Cloud CDN for this BackendBucket. */
   enableCdn?: boolean;
   /** Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header. */
-  compressionMode?: BackendBucketCompressionModeEnum;
+  compressionMode?: BackendBucketCompressionModeEnum | (string & {});
 }
 export const BackendBucket = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4928,7 +4964,7 @@ export const BackendBucket = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "BackendBucket" }) as any as S.Schema<BackendBucket>;
 
-export type BackendBucketList_ = ReadonlyArray<BackendBucket>;
+export type BackendBucketList_ = Array<BackendBucket>;
 export const BackendBucketList_ = /*@__PURE__*/ S.Array(
   BackendBucket,
 ) as any as S.Schema<BackendBucketList_>;
@@ -4982,7 +5018,7 @@ export const BackendBucketsScopedListWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<BackendBucketsScopedListWarningDataItem>;
 
 export type BackendBucketsScopedListWarningDataItemList =
-  ReadonlyArray<BackendBucketsScopedListWarningDataItem>;
+  Array<BackendBucketsScopedListWarningDataItem>;
 export const BackendBucketsScopedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     BackendBucketsScopedListWarningDataItem,
@@ -5121,7 +5157,9 @@ export interface BackendServiceDynamicForwardingForwardProxy {
   /** A boolean flag enabling dynamic forwarding proxy. */
   enabled?: boolean;
   /** Determines the dynamic forwarding proxy mode. */
-  proxyMode?: BackendServiceDynamicForwardingForwardProxyProxyModeEnum;
+  proxyMode?:
+    | BackendServiceDynamicForwardingForwardProxyProxyModeEnum
+    | (string & {});
 }
 export const BackendServiceDynamicForwardingForwardProxy =
   /*@__PURE__*/ S.suspend(() =>
@@ -5169,7 +5207,7 @@ export const SubsettingPolicyEnum = /*@__PURE__*/ S.String;
 
 /** Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing, Internal HTTP(S) load balancing and Traffic Director. */
 export interface Subsetting {
-  policy?: SubsettingPolicyEnum;
+  policy?: SubsettingPolicyEnum | (string & {});
   /** The number of backends per backend group assigned to each proxy instance or each service mesh client. An input parameter to the `CONSISTENT_HASH_SUBSETTING` algorithm. Can only be set if `policy` is set to `CONSISTENT_HASH_SUBSETTING`. Can only be set if load balancing scheme is `INTERNAL_MANAGED` or `INTERNAL_SELF_MANAGED`. `subset_size` is optional for Internal HTTP(S) load balancing and required for Traffic Director. If you do not provide this value, Cloud Load Balancing will calculate it dynamically to optimize the number of proxies/clients visible to each backend and vice versa. Must be greater than 0. If `subset_size` is larger than the number of backends/endpoints, then subsetting is disabled. */
   subsetSize?: number;
 }
@@ -5196,8 +5234,7 @@ export const BackendServiceCustomMetric = /*@__PURE__*/ S.suspend(() =>
   identifier: "BackendServiceCustomMetric",
 }) as any as S.Schema<BackendServiceCustomMetric>;
 
-export type BackendServiceCustomMetricList =
-  ReadonlyArray<BackendServiceCustomMetric>;
+export type BackendServiceCustomMetricList = Array<BackendServiceCustomMetric>;
 export const BackendServiceCustomMetricList = /*@__PURE__*/ S.Array(
   BackendServiceCustomMetric,
 ) as any as S.Schema<BackendServiceCustomMetricList>;
@@ -5284,7 +5321,9 @@ export const BackendServiceLocalityLoadBalancingPolicyConfigPolicyNameEnum =
 /** The configuration for a built-in load balancing policy. */
 export interface BackendServiceLocalityLoadBalancingPolicyConfigPolicy {
   /** The name of a locality load-balancing policy. Valid values include ROUND_ROBIN and, for Java clients, LEAST_REQUEST. For information about these values, see the description of localityLbPolicy. Do not specify the same policy more than once for a backend. If you do, the configuration is rejected. */
-  name?: BackendServiceLocalityLoadBalancingPolicyConfigPolicyNameEnum;
+  name?:
+    | BackendServiceLocalityLoadBalancingPolicyConfigPolicyNameEnum
+    | (string & {});
 }
 export const BackendServiceLocalityLoadBalancingPolicyConfigPolicy =
   /*@__PURE__*/ S.suspend(() =>
@@ -5332,7 +5371,7 @@ export const BackendServiceLocalityLoadBalancingPolicyConfig =
   }) as any as S.Schema<BackendServiceLocalityLoadBalancingPolicyConfig>;
 
 export type BackendServiceLocalityLoadBalancingPolicyConfigList =
-  ReadonlyArray<BackendServiceLocalityLoadBalancingPolicyConfig>;
+  Array<BackendServiceLocalityLoadBalancingPolicyConfig>;
 export const BackendServiceLocalityLoadBalancingPolicyConfigList =
   /*@__PURE__*/ S.Array(
     BackendServiceLocalityLoadBalancingPolicyConfig,
@@ -5367,7 +5406,7 @@ export const BackendServiceLogConfigLoggingHttpHeader = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<BackendServiceLogConfigLoggingHttpHeader>;
 
 export type BackendServiceLogConfigLoggingHttpHeaderList =
-  ReadonlyArray<BackendServiceLogConfigLoggingHttpHeader>;
+  Array<BackendServiceLogConfigLoggingHttpHeader>;
 export const BackendServiceLogConfigLoggingHttpHeaderList =
   /*@__PURE__*/ S.Array(
     BackendServiceLogConfigLoggingHttpHeader,
@@ -5378,11 +5417,11 @@ export interface BackendServiceLogConfig {
   /** This field can only be specified if logging is enabled for this backend service. The value of the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported. The default value is 1.0. */
   sampleRate?: number;
   /** This field can only be specified if logging is enabled for this backend service. Configures whether all, none or a subset of optional fields should be added to the reported logs. One of [INCLUDE_ALL_OPTIONAL, EXCLUDE_ALL_OPTIONAL, CUSTOM]. Default is EXCLUDE_ALL_OPTIONAL. */
-  optionalMode?: BackendServiceLogConfigOptionalModeEnum;
+  optionalMode?: BackendServiceLogConfigOptionalModeEnum | (string & {});
   /** Denotes whether to enable logging for the load balancer traffic served by this backend service. The default value is false. */
   enable?: boolean;
   /** Deprecated in favor of optionalMode. This field can only be specified if logging is enabled for this backend service. Configures whether all, none or a subset of optional fields should be added to the reported logs. One of [INCLUDE_ALL_OPTIONAL, EXCLUDE_ALL_OPTIONAL, CUSTOM]. Default is EXCLUDE_ALL_OPTIONAL. */
-  optional?: BackendServiceLogConfigOptionalEnum;
+  optional?: BackendServiceLogConfigOptionalEnum | (string & {});
   /** This field can only be specified if logging is enabled for this backend service and "logConfig.optionalMode" was set to CUSTOM. Contains a list of optional fields you want to include in the logs. For example: serverInstance, serverGkeDetails.cluster, serverGkeDetails.pod.podNamespace */
   optionalFields?: StringList;
   /** The list of request headers that will be logged to Stackdriver. */
@@ -5457,9 +5496,13 @@ export interface BackendServiceConnectionTrackingPolicy {
   /** Specifies how long to keep a Connection Tracking entry while there is no matching traffic (in seconds). For internal passthrough Network Load Balancers: - The minimum (default) is 10 minutes and the maximum is 16 hours. - It can be set only if Connection Tracking is less than 5-tuple (i.e. Session Affinity is CLIENT_IP_NO_DESTINATION,CLIENT_IP or CLIENT_IP_PROTO, and Tracking Mode is PER_SESSION). For external passthrough Network Load Balancers the default is 60 seconds. This option is not available publicly. */
   idleTimeoutSec?: number;
   /** Specifies the key used for connection tracking. There are two options: - PER_CONNECTION: This is the default mode. The Connection Tracking is performed as per the Connection Key (default Hash Method) for the specific protocol. - PER_SESSION: The Connection Tracking is performed as per the configured Session Affinity. It matches the configured Session Affinity. For more details, see [Tracking Mode for Network Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-backend-service#tracking-mode) and [Tracking Mode for Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal#tracking-mode). */
-  trackingMode?: BackendServiceConnectionTrackingPolicyTrackingModeEnum;
+  trackingMode?:
+    | BackendServiceConnectionTrackingPolicyTrackingModeEnum
+    | (string & {});
   /** Specifies connection persistence when backends are unhealthy. The default value is DEFAULT_FOR_PROTOCOL. If set to DEFAULT_FOR_PROTOCOL, the existing connections persist on unhealthy backends only for connection-oriented protocols (TCP and SCTP) and only if the Tracking Mode isPER_CONNECTION (default tracking mode) or the Session Affinity is configured for 5-tuple. They do not persist forUDP. If set to NEVER_PERSIST, after a backend becomes unhealthy, the existing connections on the unhealthy backend are never persisted on the unhealthy backend. They are always diverted to newly selected healthy backends (unless all backends are unhealthy). If set to ALWAYS_PERSIST, existing connections always persist on unhealthy backends regardless of protocol and session affinity. It is generally not recommended to use this mode overriding the default. For more details, see [Connection Persistence for Network Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-backend-service#connection-persistence) and [Connection Persistence for Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal#connection-persistence). */
-  connectionPersistenceOnUnhealthyBackends?: BackendServiceConnectionTrackingPolicyConnectionPersistenceOnUnhealthyBackendsEnum;
+  connectionPersistenceOnUnhealthyBackends?:
+    | BackendServiceConnectionTrackingPolicyConnectionPersistenceOnUnhealthyBackendsEnum
+    | (string & {});
   /** Enable Strong Session Affinity for external passthrough Network Load Balancers. This option is not available publicly. */
   enableStrongAffinity?: boolean;
 }
@@ -5549,7 +5592,7 @@ export const BackendServiceUsedBy = /*@__PURE__*/ S.suspend(() =>
   identifier: "BackendServiceUsedBy",
 }) as any as S.Schema<BackendServiceUsedBy>;
 
-export type BackendServiceUsedByList = ReadonlyArray<BackendServiceUsedBy>;
+export type BackendServiceUsedByList = Array<BackendServiceUsedBy>;
 export const BackendServiceUsedByList = /*@__PURE__*/ S.Array(
   BackendServiceUsedBy,
 ) as any as S.Schema<BackendServiceUsedByList>;
@@ -5624,7 +5667,7 @@ export const BackendServiceCdnPolicyBypassCacheOnRequestHeader =
   }) as any as S.Schema<BackendServiceCdnPolicyBypassCacheOnRequestHeader>;
 
 export type BackendServiceCdnPolicyBypassCacheOnRequestHeaderList =
-  ReadonlyArray<BackendServiceCdnPolicyBypassCacheOnRequestHeader>;
+  Array<BackendServiceCdnPolicyBypassCacheOnRequestHeader>;
 export const BackendServiceCdnPolicyBypassCacheOnRequestHeaderList =
   /*@__PURE__*/ S.Array(
     BackendServiceCdnPolicyBypassCacheOnRequestHeader,
@@ -5648,7 +5691,7 @@ export const BackendServiceCdnPolicyNegativeCachingPolicy =
   }) as any as S.Schema<BackendServiceCdnPolicyNegativeCachingPolicy>;
 
 export type BackendServiceCdnPolicyNegativeCachingPolicyList =
-  ReadonlyArray<BackendServiceCdnPolicyNegativeCachingPolicy>;
+  Array<BackendServiceCdnPolicyNegativeCachingPolicy>;
 export const BackendServiceCdnPolicyNegativeCachingPolicyList =
   /*@__PURE__*/ S.Array(
     BackendServiceCdnPolicyNegativeCachingPolicy,
@@ -5667,7 +5710,7 @@ export interface BackendServiceCdnPolicy {
   /** Maximum number of seconds the response to a signed URL request will be considered fresh. After this time period, the response will be revalidated before being served. Defaults to 1hr (3600s). When serving responses to signed URL requests, Cloud CDN will internally behave as though all responses from this backend had a "Cache-Control: public, max-age=[TTL]" header, regardless of any existing Cache-Control header. The actual headers served in responses will not be altered. */
   signedUrlCacheMaxAgeSec?: string;
   /** Specifies the cache setting for all responses from this backend. The possible values are:USE_ORIGIN_HEADERS Requires the origin to set valid caching headers to cache content. Responses without these headers will not be cached at Google's edge, and will require a full trip to the origin on every request, potentially impacting performance and increasing load on the origin server.FORCE_CACHE_ALL Cache all content, ignoring any "private", "no-store" or "no-cache" directives in Cache-Control response headers. Warning: this may result in Cloud CDN caching private, per-user (user identifiable) content.CACHE_ALL_STATIC Automatically cache static content, including common image formats, media (video and audio), and web assets (JavaScript and CSS). Requests and responses that are marked as uncacheable, as well as dynamic content (including HTML), will not be cached. If no value is provided for cdnPolicy.cacheMode, it defaults to CACHE_ALL_STATIC. */
-  cacheMode?: BackendServiceCdnPolicyCacheModeEnum;
+  cacheMode?: BackendServiceCdnPolicyCacheModeEnum | (string & {});
   /** Bypass the cache when the specified request headers are matched - e.g. Pragma or Authorization headers. Up to 5 headers can be specified. The cache is bypassed for all cdnPolicy.cacheMode settings. */
   bypassCacheOnRequestHeaders?: BackendServiceCdnPolicyBypassCacheOnRequestHeaderList;
   /** Serve existing content from the cache (if available) when revalidating content with the origin, or when an error is encountered when refreshing the cache. This setting defines the default "max-stale" duration for any cached responses that do not specify a max-stale directive. Stale responses that exceed the TTL configured here will not be served. The default limit (max-stale) is 86400s (1 day), which will allow stale content to be served up to this limit beyond the max-age (or s-maxage) of a cached response. The maximum allowed value is 604800 (1 week). Set this to zero (0) to disable serve-while-stale. */
@@ -5735,7 +5778,7 @@ export const BackendServiceTlsSettingsSubjectAltName = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<BackendServiceTlsSettingsSubjectAltName>;
 
 export type BackendServiceTlsSettingsSubjectAltNameList =
-  ReadonlyArray<BackendServiceTlsSettingsSubjectAltName>;
+  Array<BackendServiceTlsSettingsSubjectAltName>;
 export const BackendServiceTlsSettingsSubjectAltNameList =
   /*@__PURE__*/ S.Array(
     BackendServiceTlsSettingsSubjectAltName,
@@ -5806,7 +5849,7 @@ export const BackendCustomMetric = /*@__PURE__*/ S.suspend(() =>
   identifier: "BackendCustomMetric",
 }) as any as S.Schema<BackendCustomMetric>;
 
-export type BackendCustomMetricList = ReadonlyArray<BackendCustomMetric>;
+export type BackendCustomMetricList = Array<BackendCustomMetric>;
 export const BackendCustomMetricList = /*@__PURE__*/ S.Array(
   BackendCustomMetric,
 ) as any as S.Schema<BackendCustomMetricList>;
@@ -5824,7 +5867,7 @@ export interface Backend {
   /** Optional parameter to define a target capacity for theUTILIZATION balancing mode. The valid range is[0.0, 1.0]. For usage guidelines, seeUtilization balancing mode. */
   maxUtilization?: number;
   /** This field indicates whether this backend should be fully utilized before sending traffic to backends with default preference. The possible values are: - PREFERRED: Backends with this preference level will be filled up to their capacity limits first, based on RTT. - DEFAULT: If preferred backends don't have enough capacity, backends in this layer would be used and traffic would be assigned based on the load balancing algorithm you use. This is the default */
-  preference?: BackendPreferenceEnum;
+  preference?: BackendPreferenceEnum | (string & {});
   /** Defines a target maximum number of simultaneous connections. For usage guidelines, seeConnection balancing mode and Utilization balancing mode. Not available if the backend'sbalancingMode is RATE. */
   maxConnections?: number;
   /** Defines a target maximum number of simultaneous connections. For usage guidelines, seeConnection balancing mode and Utilization balancing mode. Not available if the backend's balancingMode isRATE. */
@@ -5839,7 +5882,7 @@ export interface Backend {
   maxInFlightRequestsPerEndpoint?: number;
   /** The fully-qualified URL of aninstance group or network endpoint group (NEG) resource. To determine what types of backends a load balancer supports, see the [Backend services overview](https://cloud.google.com/load-balancing/docs/backend-service#backends). You must use the *fully-qualified* URL (starting withhttps://www.googleapis.com/) to specify the instance group or NEG. Partial URLs are not supported. If haPolicy is specified, backends must refer to NEG resources of type GCE_VM_IP. */
   group?: string;
-  trafficDuration?: BackendTrafficDurationEnum;
+  trafficDuration?: BackendTrafficDurationEnum | (string & {});
   /** Defines a maximum target for requests per second (RPS). For usage guidelines, seeRate balancing mode and Utilization balancing mode. Not available if the backend's balancingMode isCONNECTION. */
   maxRatePerEndpoint?: number;
   /** An optional description of this resource. Provide this property when you create the resource. */
@@ -5851,7 +5894,7 @@ export interface Backend {
   /** This field designates whether this is a failover backend. More than one failover backend can be configured for a given BackendService. */
   failover?: boolean;
   /** Specifies how to determine whether the backend of a load balancer can handle additional traffic or is fully loaded. For usage guidelines, see Connection balancing mode. Backends must use compatible balancing modes. For more information, see Supported balancing modes and target capacity settings and Restrictions and guidance for instance groups. Note: Currently, if you use the API to configure incompatible balancing modes, the configuration might be accepted even though it has no impact and is ignored. Specifically, Backend.maxUtilization is ignored when Backend.balancingMode is RATE. In the future, this incompatible combination will be rejected. */
-  balancingMode?: BackendBalancingModeEnum;
+  balancingMode?: BackendBalancingModeEnum | (string & {});
   /** Defines a target maximum number of simultaneous connections. For usage guidelines, seeConnection balancing mode and Utilization balancing mode. Not available if the backend's balancingMode isRATE. */
   maxConnectionsPerEndpoint?: number;
   /** Defines a maximum number of HTTP requests per second (RPS). For usage guidelines, seeRate balancing mode and Utilization balancing mode. Not available if the backend's balancingMode isCONNECTION. */
@@ -5886,7 +5929,7 @@ export const Backend = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Backend" }) as any as S.Schema<Backend>;
 
-export type BackendList = ReadonlyArray<Backend>;
+export type BackendList = Array<Backend>;
 export const BackendList = /*@__PURE__*/ S.Array(
   Backend,
 ) as any as S.Schema<BackendList>;
@@ -5954,7 +5997,9 @@ export const BackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinitySpillov
 
 export interface BackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity {
   /** This field indicates whether zonal affinity is enabled or not. The possible values are: - ZONAL_AFFINITY_DISABLED: Default Value. Zonal Affinity is disabled. The load balancer distributes new connections to all healthy backend endpoints across all zones. - ZONAL_AFFINITY_STAY_WITHIN_ZONE: Zonal Affinity is enabled. The load balancer distributes new connections to all healthy backend endpoints in the local zone only. If there are no healthy backend endpoints in the local zone, the load balancer distributes new connections to all backend endpoints in the local zone. - ZONAL_AFFINITY_SPILL_CROSS_ZONE: Zonal Affinity is enabled. The load balancer distributes new connections to all healthy backend endpoints in the local zone only. If there aren't enough healthy backend endpoints in the local zone, the load balancer distributes new connections to all healthy backend endpoints across all zones. */
-  spillover?: BackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinitySpilloverEnum;
+  spillover?:
+    | BackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinitySpilloverEnum
+    | (string & {});
   /** The value of the field must be in [0, 1]. When the ratio of the count of healthy backend endpoints in a zone to the count of backend endpoints in that same zone is equal to or above this threshold, the load balancer distributes new connections to all healthy endpoints in the local zone only. When the ratio of the count of healthy backend endpoints in a zone to the count of backend endpoints in that same zone is below this threshold, the load balancer distributes all new connections to all healthy endpoints across all zones. */
   spilloverRatio?: number;
 }
@@ -6031,7 +6076,7 @@ export const BackendServiceHAPolicyLeader = /*@__PURE__*/ S.suspend(() =>
 
 export interface BackendServiceHAPolicy {
   /** Specifies whether fast IP move is enabled, and if so, the mechanism to achieve it. Supported values are: - DISABLED: Fast IP Move is disabled. You can only use the haPolicy.leader API to update the leader. - >GARP_RA: Provides a method to very quickly define a new network endpoint as the leader. This method is faster than updating the leader using the haPolicy.leader API. Fast IP move works as follows: The VM hosting the network endpoint that should become the new leader sends either a Gratuitous ARP (GARP) packet (IPv4) or an ICMPv6 Router Advertisement(RA) packet (IPv6). Google Cloud immediately but temporarily associates the forwarding rule IP address with that VM, and both new and in-flight packets are quickly delivered to that VM. Note the important properties of the Fast IP Move functionality: - The GARP/RA-initiated re-routing stays active for approximately 20 minutes. After triggering fast failover, you must also appropriately set the haPolicy.leader. - The new leader instance should continue to send GARP/RA packets periodically every 10 seconds until at least 10 minutes after updating the haPolicy.leader (but stop immediately if it is no longer the leader). - After triggering a fast failover, we recommend that you wait at least 3 seconds before sending another GARP/RA packet from a different VM instance to avoid race conditions. - Don't send GARP/RA packets from different VM instances at the same time. If multiple instances continue to send GARP/RA packets, traffic might be routed to different destinations in an alternating order. This condition ceases when a single instance issues a GARP/RA packet. - The GARP/RA request always takes priority over the leader API. Using the haPolicy.leader API to change the leader to a different instance will have no effect until the GARP/RA request becomes inactive. - The GARP/RA packets should follow the GARP/RA Packet Specifications.. - When multiple forwarding rules refer to a regional backend service, you need only send a GARP or RA packet for a single forwarding rule virtual IP. The virtual IPs for all forwarding rules targeting the same backend service will also be moved to the sender of the GARP or RA packet. The following are the Fast IP Move limitations (that is, when fastIPMove is not DISABLED): - Multiple forwarding rules cannot use the same IP address if one of them refers to a regional backend service with fastIPMove. - The regional backend service must set the network field, and all NEGs must belong to that network. However, individual NEGs can belong to different subnetworks of that network. - The maximum number of network endpoints across all backends of a backend service with fastIPMove is 32. - The maximum number of backend services with fastIPMove that can have the same network endpoint attached to one of its backends is 64. - The maximum number of backend services with fastIPMove in a VPC in a region is 64. - The network endpoints that are attached to a backend of a backend service with fastIPMove cannot resolve to Gen3+ machines for IPv6. - Traffic directed to the leader by a static route next hop will not be redirected to a new leader by fast failover. Such traffic will only be redirected once an haPolicy.leader update has taken effect. Only traffic to the forwarding rule's virtual IP will be redirected to a new leader by fast failover. haPolicy.fastIPMove can be set only at backend service creation time. Once set, it cannot be updated. By default, fastIpMove is set to DISABLED. */
-  fastIPMove?: BackendServiceHAPolicyFastIPMoveEnum;
+  fastIPMove?: BackendServiceHAPolicyFastIPMoveEnum | (string & {});
   /** Selects one of the network endpoints attached to the backend NEGs of this service as the active endpoint (the leader) that receives all traffic. When the leader changes, there is no connection draining to persist existing connections on the old leader. You are responsible for selecting a suitable endpoint as the leader. For example, preferring a healthy endpoint over unhealthy ones. Note that this service does not track backend endpoint health, and selects the configured leader unconditionally. */
   leader?: BackendServiceHAPolicyLeader;
 }
@@ -6146,7 +6191,9 @@ export const TlsCertificatePaths = /*@__PURE__*/ S.suspend(() =>
 /** [Deprecated] gRPC channel credentials to access the SDS server. gRPC channel credentials to access the SDS server. */
 export interface ChannelCredentials {
   /** The channel credentials to access the SDS server. This field can be set to one of the following: CERTIFICATES: Use TLS certificates to access the SDS server. GCE_VM: Use local GCE VM credentials to access the SDS server. */
-  channelCredentialType?: ChannelCredentialsChannelCredentialTypeEnum;
+  channelCredentialType?:
+    | ChannelCredentialsChannelCredentialTypeEnum
+    | (string & {});
   /** The call credentials to access the SDS server. */
   certificates?: TlsCertificatePaths;
 }
@@ -6186,7 +6233,7 @@ export const MetadataCredentialsFromPlugin = /*@__PURE__*/ S.suspend(() =>
 /** [Deprecated] gRPC call credentials to access the SDS server. gRPC call credentials to access the SDS server. */
 export interface CallCredentials {
   /** The type of call credentials to use for GRPC requests to the SDS server. This field can be set to one of the following: - GCE_VM: The local GCE VM service account credentials are used to access the SDS server. - FROM_PLUGIN: Custom authenticator credentials are used to access the SDS server. */
-  callCredentialType?: CallCredentialsCallCredentialTypeEnum;
+  callCredentialType?: CallCredentialsCallCredentialTypeEnum | (string & {});
   /** Custom authenticator credentials. Valid if callCredentialType is FROM_PLUGIN. */
   fromPlugin?: MetadataCredentialsFromPlugin;
 }
@@ -6232,7 +6279,7 @@ export const SdsConfig = /*@__PURE__*/ S.suspend(() =>
 /** [Deprecated] Defines the mechanism to obtain the Certificate Authority certificate to validate the client/server certificate. validate the client/server certificate. */
 export interface TlsValidationContext {
   /** Defines how TLS certificates are obtained. */
-  validationSource?: TlsValidationContextValidationSourceEnum;
+  validationSource?: TlsValidationContextValidationSourceEnum | (string & {});
   /** Specifies the config to retrieve certificates through SDS. This field is applicable only if tlsCertificateSource is set to USE_SDS. */
   sdsConfig?: SdsConfig;
   /** The path to the file holding the CA certificate to validate the client or server certificate. */
@@ -6262,7 +6309,9 @@ export interface TlsCertificateContext {
   /** Specifies the certificate and private key paths. This field is applicable only if tlsCertificateSource is set to USE_PATH. */
   certificatePaths?: TlsCertificatePaths;
   /** Defines how TLS certificates are obtained. */
-  certificateSource?: TlsCertificateContextCertificateSourceEnum;
+  certificateSource?:
+    | TlsCertificateContextCertificateSourceEnum
+    | (string & {});
 }
 export const TlsCertificateContext = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6291,7 +6340,7 @@ export const TlsContext = /*@__PURE__*/ S.suspend(() =>
 /** [Deprecated] The client side authentication settings for connection originating from the backend service. the backend service. */
 export interface ClientTlsSettings {
   /** Indicates whether connections to this port should be secured using TLS. The value of this field determines how TLS is enforced. This can be set to one of the following values: DISABLE: Do not setup a TLS connection to the backends. SIMPLE: Originate a TLS connection to the backends. MUTUAL: Secure connections to the backends using mutual TLS by presenting client certificates for authentication. */
-  mode?: ClientTlsSettingsModeEnum;
+  mode?: ClientTlsSettingsModeEnum | (string & {});
   /** Configures the mechanism to obtain client-side security certificates and identity information. This field is only applicable when mode is set to MUTUAL. */
   clientTlsContext?: TlsContext;
   /** A list of alternate names to verify the subject identity in the certificate.If specified, the proxy will verify that the server certificate's subject alt name matches one of the specified values. This field is applicable only when mode is SIMPLE or MUTUAL. */
@@ -6322,7 +6371,7 @@ export const MutualTlsModeEnum = /*@__PURE__*/ S.String;
 /** [Deprecated] Configuration for the mutual Tls mode for peer authentication. Configuration for the mutual Tls mode for peer authentication. */
 export interface MutualTls {
   /** Specifies if the server TLS is configured to be strict or permissive. This field can be set to one of the following: STRICT: Client certificate must be presented, connection is in TLS. PERMISSIVE: Client certificate can be omitted, connection can be either plaintext or TLS. */
-  mode?: MutualTlsModeEnum;
+  mode?: MutualTlsModeEnum | (string & {});
 }
 export const MutualTls = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6343,8 +6392,7 @@ export const PeerAuthenticationMethod = /*@__PURE__*/ S.suspend(() =>
   identifier: "PeerAuthenticationMethod",
 }) as any as S.Schema<PeerAuthenticationMethod>;
 
-export type PeerAuthenticationMethodList =
-  ReadonlyArray<PeerAuthenticationMethod>;
+export type PeerAuthenticationMethodList = Array<PeerAuthenticationMethod>;
 export const PeerAuthenticationMethodList = /*@__PURE__*/ S.Array(
   PeerAuthenticationMethod,
 ) as any as S.Schema<PeerAuthenticationMethodList>;
@@ -6363,7 +6411,7 @@ export const JwtHeader = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "JwtHeader" }) as any as S.Schema<JwtHeader>;
 
-export type JwtHeaderList = ReadonlyArray<JwtHeader>;
+export type JwtHeaderList = Array<JwtHeader>;
 export const JwtHeaderList = /*@__PURE__*/ S.Array(
   JwtHeader,
 ) as any as S.Schema<JwtHeaderList>;
@@ -6403,8 +6451,7 @@ export const OriginAuthenticationMethod = /*@__PURE__*/ S.suspend(() =>
   identifier: "OriginAuthenticationMethod",
 }) as any as S.Schema<OriginAuthenticationMethod>;
 
-export type OriginAuthenticationMethodList =
-  ReadonlyArray<OriginAuthenticationMethod>;
+export type OriginAuthenticationMethodList = Array<OriginAuthenticationMethod>;
 export const OriginAuthenticationMethodList = /*@__PURE__*/ S.Array(
   OriginAuthenticationMethod,
 ) as any as S.Schema<OriginAuthenticationMethodList>;
@@ -6412,7 +6459,7 @@ export const OriginAuthenticationMethodList = /*@__PURE__*/ S.Array(
 /** [Deprecated] The authentication settings for the backend service. The authentication settings for the backend service. */
 export interface AuthenticationPolicy {
   /** Define whether peer or origin identity should be used for principal. Default value is USE_PEER. If peer (or origin) identity is not available, either because peer/origin authentication is not defined, or failed, principal will be left unset. In other words, binding rule does not affect the decision to accept or reject request. This field can be set to one of the following: USE_PEER: Principal will be set to the identity from peer authentication. USE_ORIGIN: Principal will be set to the identity from origin authentication. */
-  principalBinding?: AuthenticationPolicyPrincipalBindingEnum;
+  principalBinding?: AuthenticationPolicyPrincipalBindingEnum | (string & {});
   /** List of authentication methods that can be used for peer authentication. They will be evaluated in order the first valid one will be used to set peer identity. If none of these methods pass, the request will be rejected with authentication failed error (401). Leave the list empty if peer authentication is not required. */
   peers?: PeerAuthenticationMethodList;
   /** List of authentication methods that can be used for origin authentication. Similar to peers, these will be evaluated in order the first valid one will be used to set origin identity. If none of these methods pass, the request will be rejected with authentication failed error (401). Leave the list empty if origin authentication is not required. */
@@ -6447,7 +6494,7 @@ export const PermissionConstraint = /*@__PURE__*/ S.suspend(() =>
   identifier: "PermissionConstraint",
 }) as any as S.Schema<PermissionConstraint>;
 
-export type PermissionConstraintList = ReadonlyArray<PermissionConstraint>;
+export type PermissionConstraintList = Array<PermissionConstraint>;
 export const PermissionConstraintList = /*@__PURE__*/ S.Array(
   PermissionConstraint,
 ) as any as S.Schema<PermissionConstraintList>;
@@ -6487,7 +6534,7 @@ export const Permission = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Permission" }) as any as S.Schema<Permission>;
 
-export type PermissionList = ReadonlyArray<Permission>;
+export type PermissionList = Array<Permission>;
 export const PermissionList = /*@__PURE__*/ S.Array(
   Permission,
 ) as any as S.Schema<PermissionList>;
@@ -6530,7 +6577,7 @@ export const Principal = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Principal" }) as any as S.Schema<Principal>;
 
-export type PrincipalList = ReadonlyArray<Principal>;
+export type PrincipalList = Array<Principal>;
 export const PrincipalList = /*@__PURE__*/ S.Array(
   Principal,
 ) as any as S.Schema<PrincipalList>;
@@ -6551,7 +6598,7 @@ export const RbacPolicy = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "RbacPolicy" }) as any as S.Schema<RbacPolicy>;
 
-export type RbacPolicyList = ReadonlyArray<RbacPolicy>;
+export type RbacPolicyList = Array<RbacPolicy>;
 export const RbacPolicyList = /*@__PURE__*/ S.Array(
   RbacPolicy,
 ) as any as S.Schema<RbacPolicyList>;
@@ -6623,7 +6670,7 @@ export interface BackendService {
   /** A named port on a backend instance group representing the port for communication to the backend VMs in that group. The named port must be [defined on each backend instance group](https://cloud.google.com/load-balancing/docs/backend-service#named_ports). This parameter has no meaning if the backends are NEGs. For internal passthrough Network Load Balancers and external passthrough Network Load Balancers, omit port_name. */
   portName?: string;
   /** Type of session affinity to use. The default is NONE. Only NONE and HEADER_FIELD are supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true. For more details, see: [Session Affinity](https://cloud.google.com/load-balancing/docs/backend-service#session_affinity). sessionAffinity cannot be specified with haPolicy. */
-  sessionAffinity?: BackendServiceSessionAffinityEnum;
+  sessionAffinity?: BackendServiceSessionAffinityEnum | (string & {});
   /** A list of locality load-balancing policies to be used in order of preference. When you use localityLbPolicies, you must set at least one value for either the localityLbPolicies[].policy or the localityLbPolicies[].customPolicy field. localityLbPolicies overrides any value set in the localityLbPolicy field. For an example of how to use this field, seeDefine a list of preferred policies. Caution: This field and its children are intended for use in a service mesh that includes gRPC clients only. Envoy proxies can't use backend services that have this configuration. */
   localityLbPolicies?: BackendServiceLocalityLoadBalancingPolicyConfigList;
   /** Lifetime of cookies in seconds. This setting is applicable to Application Load Balancers and Traffic Director and requires GENERATED_COOKIE or HTTP_COOKIE session affinity. If set to 0, the cookie is non-persistent and lasts only until the end of the browser session (or equivalent). The maximum allowed value is two weeks (1,209,600). Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true. */
@@ -6633,7 +6680,7 @@ export interface BackendService {
   /** This field denotes the logging options for the load balancer traffic served by this backend service. If logging is enabled, logs will be exported to Stackdriver. */
   logConfig?: BackendServiceLogConfig;
   /** The load balancing algorithm used within the scope of the locality. The possible values are: - ROUND_ROBIN: This is a simple policy in which each healthy backend is selected in round robin order. This is the default. - LEAST_REQUEST: An O(1) algorithm which selects two random healthy hosts and picks the host which has fewer active requests. - RING_HASH: The ring/modulo hash load balancer implements consistent hashing to backends. The algorithm has the property that the addition/removal of a host from a set of N hosts only affects 1/N of the requests. - RANDOM: The load balancer selects a random healthy host. - ORIGINAL_DESTINATION: Backend host is selected based on the client connection metadata, i.e., connections are opened to the same address as the destination address of the incoming connection before the connection was redirected to the load balancer. - MAGLEV: used as a drop in replacement for the ring hash load balancer. Maglev is not as stable as ring hash but has faster table lookup build times and host selection times. For more information about Maglev, see Maglev: A Fast and Reliable Software Network Load Balancer. - WEIGHTED_ROUND_ROBIN: Per-endpoint Weighted Round Robin Load Balancing using weights computed from Backend reported Custom Metrics. If set, the Backend Service responses are expected to contain non-standard HTTP response header field Endpoint-Load-Metrics. The reported metrics to use for computing the weights are specified via thecustomMetrics field. This field is applicable to either: - A regional backend service with the service protocol set to HTTP, HTTPS, HTTP2 or H2C, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED, INTERNAL_MANAGED, or EXTERNAL_MANAGED. If sessionAffinity is not configured—that is, if session affinity remains at the default value of NONE—then the default value for localityLbPolicy is ROUND_ROBIN. If session affinity is set to a value other than NONE, then the default value for localityLbPolicy isMAGLEV. Only ROUND_ROBIN and RING_HASH are supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true. localityLbPolicy cannot be specified with haPolicy. */
-  localityLbPolicy?: BackendServiceLocalityLbPolicyEnum;
+  localityLbPolicy?: BackendServiceLocalityLbPolicyEnum | (string & {});
   /** Deployment metadata associated with the resource to be set by a GKE hub controller and read by the backend RCTH */
   metadatas?: StringMap;
   /** Describes the HTTP cookie used for stateful session affinity. This field is applicable and required if the sessionAffinity is set toSTRONG_COOKIE_AFFINITY. */
@@ -6641,13 +6688,17 @@ export interface BackendService {
   /** Connection Tracking configuration for this BackendService. Connection tracking policy settings are only available for external passthrough Network Load Balancers and internal passthrough Network Load Balancers. connectionTrackingPolicy cannot be specified with haPolicy. */
   connectionTrackingPolicy?: BackendServiceConnectionTrackingPolicy;
   /** Specifies a preference for traffic sent from the proxy to the backend (or from the client to the backend for proxyless gRPC). The possible values are: - IPV4_ONLY: Only send IPv4 traffic to the backends of the backend service (Instance Group, Managed Instance Group, Network Endpoint Group), regardless of traffic from the client to the proxy. Only IPv4 health checks are used to check the health of the backends. This is the default setting. - PREFER_IPV6: Prioritize the connection to the endpoint's IPv6 address over its IPv4 address (provided there is a healthy IPv6 address). - IPV6_ONLY: Only send IPv6 traffic to the backends of the backend service (Instance Group, Managed Instance Group, Network Endpoint Group), regardless of traffic from the client to the proxy. Only IPv6 health checks are used to check the health of the backends. This field is applicable to either: - Advanced global external Application Load Balancer (load balancing scheme EXTERNAL_MANAGED), - Regional external Application Load Balancer, - Internal proxy Network Load Balancer (load balancing scheme INTERNAL_MANAGED), - Regional internal Application Load Balancer (load balancing scheme INTERNAL_MANAGED), - Traffic Director with Envoy proxies and proxyless gRPC (load balancing scheme INTERNAL_SELF_MANAGED). */
-  ipAddressSelectionPolicy?: BackendServiceIpAddressSelectionPolicyEnum;
+  ipAddressSelectionPolicy?:
+    | BackendServiceIpAddressSelectionPolicyEnum
+    | (string & {});
   /** Output only. [Output Only] URL of the region where the regional backend service resides. This field is not applicable to global backend services. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body. */
   region?: string;
   /** Deprecated in favor of portName. The TCP port to connect on the backend. The default value is 80. For internal passthrough Network Load Balancers and external passthrough Network Load Balancers, omit port. */
   port?: number;
   /** Specifies the canary migration state. Possible values are PREPARE, TEST_BY_PERCENTAGE, and TEST_ALL_TRAFFIC. To begin the migration from EXTERNAL to EXTERNAL_MANAGED, the state must be changed to PREPARE. The state must be changed to TEST_ALL_TRAFFIC before the loadBalancingScheme can be changed to EXTERNAL_MANAGED. Optionally, the TEST_BY_PERCENTAGE state can be used to migrate traffic by percentage using externalManagedMigrationTestingPercentage. Rolling back a migration requires the states to be set in reverse order. So changing the scheme from EXTERNAL_MANAGED to EXTERNAL requires the state to be set to TEST_ALL_TRAFFIC at the same time. Optionally, the TEST_BY_PERCENTAGE state can be used to migrate some traffic back to EXTERNAL or PREPARE can be used to migrate all traffic back to EXTERNAL. */
-  externalManagedMigrationState?: BackendServiceExternalManagedMigrationStateEnum;
+  externalManagedMigrationState?:
+    | BackendServiceExternalManagedMigrationStateEnum
+    | (string & {});
   /** The configurations for Identity-Aware Proxy on this resource. Not available for internal passthrough Network Load Balancers and external passthrough Network Load Balancers. */
   iap?: BackendServiceIAP;
   /** Output only. [Output Only] List of resources referencing given backend service. */
@@ -6675,11 +6726,11 @@ export interface BackendService {
   /** Output only. [Output Only] Server-defined URL for this resource with the resource id. */
   selfLinkWithId?: string;
   /** Specifies the load balancer type. A backend service created for one type of load balancer cannot be used with another. For more information, refer toChoosing a load balancer. */
-  loadBalancingScheme?: BackendServiceLoadBalancingSchemeEnum;
+  loadBalancingScheme?: BackendServiceLoadBalancingSchemeEnum | (string & {});
   /** [Output Only] The unique identifier for the resource. This identifier is defined by the server. */
   id?: string;
   /** Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header. */
-  compressionMode?: BackendServiceCompressionModeEnum;
+  compressionMode?: BackendServiceCompressionModeEnum | (string & {});
   /** Configuration for Backend Authenticated TLS and mTLS. May only be specified when the backend protocol is SSL, HTTPS or HTTP2. */
   tlsSettings?: BackendServiceTlsSettings;
   /** The list of backends that serve this BackendService. */
@@ -6696,7 +6747,7 @@ export interface BackendService {
   /** Configures traffic steering properties of internal passthrough Network Load Balancers. networkPassThroughLbTrafficPolicy cannot be specified with haPolicy. */
   networkPassThroughLbTrafficPolicy?: BackendServiceNetworkPassThroughLbTrafficPolicy;
   /** The protocol this BackendService uses to communicate with backends. Possible values are HTTP, HTTPS, HTTP2, H2C, TCP, SSL, UDP or GRPC. depending on the chosen load balancer or Traffic Director configuration. Refer to the documentation for the load balancers or for Traffic Director for more information. Must be set to GRPC when the backend service is referenced by a URL map that is bound to target gRPC proxy. */
-  protocol?: BackendServiceProtocolEnum;
+  protocol?: BackendServiceProtocolEnum | (string & {});
   /** Specifies the default maximum duration (timeout) for streams to this service. Duration is computed from the beginning of the stream until the response has been completely processed, including all retries. A stream that does not complete in this duration is closed. If not specified, there will be no timeout limit, i.e. the maximum duration is infinite. This value can be overridden in the PathMatcher configuration of the UrlMap that references this backend service. This field is only allowed when the loadBalancingScheme of the backend service is INTERNAL_SELF_MANAGED. */
   maxStreamDuration?: Duration;
   /** Configures self-managed High Availability (HA) for External and Internal Protocol Forwarding. The backends of this regional backend service must only specify zonal network endpoint groups (NEGs) of type GCE_VM_IP. When haPolicy is set for an Internal Passthrough Network Load Balancer, the regional backend service must set the network field. All zonal NEGs must belong to the same network. However, individual NEGs can belong to different subnetworks of that network. When haPolicy is specified, the set of attached network endpoints across all backends comprise an High Availability domain from which one endpoint is selected as the active endpoint (the leader) that receives all traffic. haPolicy can be added only at backend service creation time. Once set up, it cannot be deleted. Note that haPolicy is not for load balancing, and therefore cannot be specified with sessionAffinity, connectionTrackingPolicy, and failoverPolicy. haPolicy requires customers to be responsible for tracking backend endpoint health and electing a leader among the healthy endpoints. Therefore, haPolicy cannot be specified with healthChecks. haPolicy can only be specified for External Passthrough Network Load Balancers and Internal Passthrough Network Load Balancers. */
@@ -6782,7 +6833,7 @@ export const BackendService = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "BackendService" }) as any as S.Schema<BackendService>;
 
-export type BackendServiceList_ = ReadonlyArray<BackendService>;
+export type BackendServiceList_ = Array<BackendService>;
 export const BackendServiceList_ = /*@__PURE__*/ S.Array(
   BackendService,
 ) as any as S.Schema<BackendServiceList_>;
@@ -6804,7 +6855,7 @@ export const BackendServicesScopedListWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<BackendServicesScopedListWarningDataItem>;
 
 export type BackendServicesScopedListWarningDataItemList =
-  ReadonlyArray<BackendServicesScopedListWarningDataItem>;
+  Array<BackendServicesScopedListWarningDataItem>;
 export const BackendServicesScopedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     BackendServicesScopedListWarningDataItem,
@@ -6933,7 +6984,7 @@ export const BackendServiceAggregatedListWarningDataItem =
   }) as any as S.Schema<BackendServiceAggregatedListWarningDataItem>;
 
 export type BackendServiceAggregatedListWarningDataItemList =
-  ReadonlyArray<BackendServiceAggregatedListWarningDataItem>;
+  Array<BackendServiceAggregatedListWarningDataItem>;
 export const BackendServiceAggregatedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     BackendServiceAggregatedListWarningDataItem,
@@ -7089,7 +7140,7 @@ export const GuestOsFeatureTypeEnum = /*@__PURE__*/ S.String;
 /** Guest OS features. */
 export interface GuestOsFeature {
   /** The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_LIVE_MIGRATABLE_V2 - SEV_SNP_CAPABLE - TDX_CAPABLE - IDPF - SNP_SVSM_CAPABLE - CCA_CAPABLE For more information, see Enabling guest operating system features. */
-  type?: GuestOsFeatureTypeEnum;
+  type?: GuestOsFeatureTypeEnum | (string & {});
 }
 export const GuestOsFeature = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -7097,7 +7148,7 @@ export const GuestOsFeature = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "GuestOsFeature" }) as any as S.Schema<GuestOsFeature>;
 
-export type GuestOsFeatureList = ReadonlyArray<GuestOsFeature>;
+export type GuestOsFeatureList = Array<GuestOsFeature>;
 export const GuestOsFeatureList = /*@__PURE__*/ S.Array(
   GuestOsFeature,
 ) as any as S.Schema<GuestOsFeatureList>;
@@ -7161,7 +7212,7 @@ export const DiskResourceStatusAsyncReplicationStatusStateEnum =
   /*@__PURE__*/ S.String;
 
 export interface DiskResourceStatusAsyncReplicationStatus {
-  state?: DiskResourceStatusAsyncReplicationStatusStateEnum;
+  state?: DiskResourceStatusAsyncReplicationStatusStateEnum | (string & {});
 }
 export const DiskResourceStatusAsyncReplicationStatus = /*@__PURE__*/ S.suspend(
   () =>
@@ -7247,7 +7298,7 @@ export interface Disk {
   /** Disk asynchronously replicated into this disk. */
   asyncPrimaryDisk?: DiskAsyncReplication;
   /** [Deprecated] Storage type of the persistent disk. */
-  storageType?: DiskStorageTypeEnum;
+  storageType?: DiskStorageTypeEnum | (string & {});
   /** A fingerprint for the labels being applied to this disk, which is essentially a hash of the labels set used for optimistic locking. The fingerprint is initially generated by Compute Engine and changes after every request to modify or update labels. You must always provide an up-to-date fingerprint hash in order to update or change labels, otherwise the request will fail with error412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve a disk. */
   labelFingerprint?: string;
   /** Specifies whether the disk restored from a source snapshot should erase Windows specific VSS signature. */
@@ -7271,7 +7322,7 @@ export interface Disk {
   /** URL of the disk type resource describing which disk type to use to create the disk. Provide this when creating the disk. For example:projects/project/zones/zone/diskTypes/pd-ssd. See Persistent disk types. */
   type?: string;
   /** The access mode of the disk. - READ_WRITE_SINGLE: The default AccessMode, means the disk can be attached to single instance in RW mode. - READ_WRITE_MANY: The AccessMode means the disk can be attached to multiple instances in RW mode. - READ_ONLY_MANY: The AccessMode means the disk can be attached to multiple instances in RO mode. The AccessMode is only valid for Hyperdisk disk types. */
-  accessMode?: DiskAccessModeEnum;
+  accessMode?: DiskAccessModeEnum | (string & {});
   /** Output only. [Output Only] Reserved for future use. */
   satisfiesPzs?: boolean;
   /** Output only. [Output Only] The ID value of the image used to create this disk. This value identifies the exact image that was used to create this persistent disk. For example, if you created the persistent disk from an image that was later deleted and recreated under the same name, the source image ID would identify the exact version of the image that was used. */
@@ -7287,7 +7338,7 @@ export interface Disk {
   /** Output only. [Output Only] The unique ID of the machine image used to create this disk. This value identifies the exact machine image that was used to create this persistent disk. For example, if you created the persistent disk from a machine image that was later deleted and recreated under the same name, the source machine image ID would identify the exact version of the machine image that was used. */
   sourceMachineImageId?: string;
   /** The architecture of the disk. Valid values are ARM64 or X86_64. */
-  architecture?: DiskArchitectureEnum;
+  architecture?: DiskArchitectureEnum | (string & {});
   /** An optional description of this resource. Provide this property when you create the resource. */
   description?: string;
   /** Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be greater than or equal to 1. */
@@ -7303,7 +7354,7 @@ export interface Disk {
   /** Output only. [Output Only] Server-defined fully-qualified URL for this resource. */
   selfLink?: string;
   /** Output only. [Output Only] The status of disk creation. - CREATING: Disk is provisioning. - RESTORING: Source data is being copied into the disk. - FAILED: Disk creation failed. - READY: Disk is ready for use. - DELETING: Disk is deleting. */
-  status?: DiskStatusEnum;
+  status?: DiskStatusEnum | (string & {});
   /** Output only. [Output Only] Server-defined URL for this resource's resource id. */
   selfLinkWithId?: string;
   /** Output only. [Output Only] The unique identifier for the resource. This identifier is defined by the server. */
@@ -7327,7 +7378,7 @@ export interface Disk {
   /** Resource policies applied to this disk for automatic snapshot creations. */
   resourcePolicies?: StringList;
   /** [Deprecated] Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default isSCSI. */
-  interface?: DiskInterfaceEnum;
+  interface?: DiskInterfaceEnum | (string & {});
   /** The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot - projects/project/global/snapshots/snapshot - global/snapshots/snapshot */
   sourceSnapshot?: string;
   /** Thecustomer-supplied encryption key of the source machine image. Required if the source machine image is protected by a customer-supplied encryption key. */
@@ -7402,7 +7453,7 @@ export const Disk = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Disk" }) as any as S.Schema<Disk>;
 
-export type DiskList_ = ReadonlyArray<Disk>;
+export type DiskList_ = Array<Disk>;
 export const DiskList_ = /*@__PURE__*/ S.Array(
   Disk,
 ) as any as S.Schema<DiskList_>;
@@ -7423,7 +7474,7 @@ export const DisksScopedListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DisksScopedListWarningDataItem>;
 
 export type DisksScopedListWarningDataItemList =
-  ReadonlyArray<DisksScopedListWarningDataItem>;
+  Array<DisksScopedListWarningDataItem>;
 export const DisksScopedListWarningDataItemList = /*@__PURE__*/ S.Array(
   DisksScopedListWarningDataItem,
 ) as any as S.Schema<DisksScopedListWarningDataItemList>;
@@ -7515,7 +7566,7 @@ export const DiskAggregatedListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DiskAggregatedListWarningDataItem>;
 
 export type DiskAggregatedListWarningDataItemList =
-  ReadonlyArray<DiskAggregatedListWarningDataItem>;
+  Array<DiskAggregatedListWarningDataItem>;
 export const DiskAggregatedListWarningDataItemList = /*@__PURE__*/ S.Array(
   DiskAggregatedListWarningDataItem,
 ) as any as S.Schema<DiskAggregatedListWarningDataItemList>;
@@ -7683,7 +7734,7 @@ export const DiskType = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DiskType" }) as any as S.Schema<DiskType>;
 
-export type DiskTypeList_ = ReadonlyArray<DiskType>;
+export type DiskTypeList_ = Array<DiskType>;
 export const DiskTypeList_ = /*@__PURE__*/ S.Array(
   DiskType,
 ) as any as S.Schema<DiskTypeList_>;
@@ -7704,7 +7755,7 @@ export const DiskTypesScopedListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DiskTypesScopedListWarningDataItem>;
 
 export type DiskTypesScopedListWarningDataItemList =
-  ReadonlyArray<DiskTypesScopedListWarningDataItem>;
+  Array<DiskTypesScopedListWarningDataItem>;
 export const DiskTypesScopedListWarningDataItemList = /*@__PURE__*/ S.Array(
   DiskTypesScopedListWarningDataItem,
 ) as any as S.Schema<DiskTypesScopedListWarningDataItemList>;
@@ -7831,7 +7882,7 @@ export const DiskTypeAggregatedListWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DiskTypeAggregatedListWarningDataItem>;
 
 export type DiskTypeAggregatedListWarningDataItemList =
-  ReadonlyArray<DiskTypeAggregatedListWarningDataItem>;
+  Array<DiskTypeAggregatedListWarningDataItem>;
 export const DiskTypeAggregatedListWarningDataItemList = /*@__PURE__*/ S.Array(
   DiskTypeAggregatedListWarningDataItem,
 ) as any as S.Schema<DiskTypeAggregatedListWarningDataItemList>;
@@ -7941,7 +7992,7 @@ export const FolderVmExtensionPolicyAggregatedListResponseWarningDataItem =
   }) as any as S.Schema<FolderVmExtensionPolicyAggregatedListResponseWarningDataItem>;
 
 export type FolderVmExtensionPolicyAggregatedListResponseWarningDataItemList =
-  ReadonlyArray<FolderVmExtensionPolicyAggregatedListResponseWarningDataItem>;
+  Array<FolderVmExtensionPolicyAggregatedListResponseWarningDataItem>;
 export const FolderVmExtensionPolicyAggregatedListResponseWarningDataItemList =
   /*@__PURE__*/ S.Array(
     FolderVmExtensionPolicyAggregatedListResponseWarningDataItem,
@@ -8020,7 +8071,7 @@ export const VmExtensionPoliciesScopedListWarningDataItem =
   }) as any as S.Schema<VmExtensionPoliciesScopedListWarningDataItem>;
 
 export type VmExtensionPoliciesScopedListWarningDataItemList =
-  ReadonlyArray<VmExtensionPoliciesScopedListWarningDataItem>;
+  Array<VmExtensionPoliciesScopedListWarningDataItem>;
 export const VmExtensionPoliciesScopedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     VmExtensionPoliciesScopedListWarningDataItem,
@@ -8111,7 +8162,7 @@ export const VmExtensionPolicyInstanceSelector = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VmExtensionPolicyInstanceSelector>;
 
 export type VmExtensionPolicyInstanceSelectorList =
-  ReadonlyArray<VmExtensionPolicyInstanceSelector>;
+  Array<VmExtensionPolicyInstanceSelector>;
 export const VmExtensionPolicyInstanceSelectorList = /*@__PURE__*/ S.Array(
   VmExtensionPolicyInstanceSelector,
 ) as any as S.Schema<VmExtensionPolicyInstanceSelectorList>;
@@ -8145,7 +8196,7 @@ export interface VmExtensionPolicy {
   /** Output only. [Output Only] Server-defined URL for this resource's resource id. */
   selfLinkWithId?: string;
   /** Optional. Output only. [Output Only] Current state of the policy: ACTIVE or DELETING. */
-  state?: VmExtensionPolicyStateEnum;
+  state?: VmExtensionPolicyStateEnum | (string & {});
   /** Output only. [Output Only] Type of the resource. Alwayscompute#vmExtensionPolicy. */
   kind?: string;
   /** Output only. [Output Only] Server-defined fully-qualified URL for this resource. */
@@ -8192,7 +8243,7 @@ export const VmExtensionPolicy = /*@__PURE__*/ S.suspend(() =>
   identifier: "VmExtensionPolicy",
 }) as any as S.Schema<VmExtensionPolicy>;
 
-export type VmExtensionPolicyList_ = ReadonlyArray<VmExtensionPolicy>;
+export type VmExtensionPolicyList_ = Array<VmExtensionPolicy>;
 export const VmExtensionPolicyList_ = /*@__PURE__*/ S.Array(
   VmExtensionPolicy,
 ) as any as S.Schema<VmExtensionPolicyList_>;
@@ -8310,7 +8361,7 @@ export const ForwardingRuleAggregatedListWarningDataItem =
   }) as any as S.Schema<ForwardingRuleAggregatedListWarningDataItem>;
 
 export type ForwardingRuleAggregatedListWarningDataItemList =
-  ReadonlyArray<ForwardingRuleAggregatedListWarningDataItem>;
+  Array<ForwardingRuleAggregatedListWarningDataItem>;
 export const ForwardingRuleAggregatedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     ForwardingRuleAggregatedListWarningDataItem,
@@ -8384,7 +8435,7 @@ export const ForwardingRulesScopedListWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ForwardingRulesScopedListWarningDataItem>;
 
 export type ForwardingRulesScopedListWarningDataItemList =
-  ReadonlyArray<ForwardingRulesScopedListWarningDataItem>;
+  Array<ForwardingRulesScopedListWarningDataItem>;
 export const ForwardingRulesScopedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     ForwardingRulesScopedListWarningDataItem,
@@ -8468,7 +8519,7 @@ export const ForwardingRuleServiceDirectoryRegistration =
   }) as any as S.Schema<ForwardingRuleServiceDirectoryRegistration>;
 
 export type ForwardingRuleServiceDirectoryRegistrationList =
-  ReadonlyArray<ForwardingRuleServiceDirectoryRegistration>;
+  Array<ForwardingRuleServiceDirectoryRegistration>;
 export const ForwardingRuleServiceDirectoryRegistrationList =
   /*@__PURE__*/ S.Array(
     ForwardingRuleServiceDirectoryRegistration,
@@ -8522,7 +8573,7 @@ export const ForwardingRuleAttachedExtension = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ForwardingRuleAttachedExtension>;
 
 export type ForwardingRuleAttachedExtensionList =
-  ReadonlyArray<ForwardingRuleAttachedExtension>;
+  Array<ForwardingRuleAttachedExtension>;
 export const ForwardingRuleAttachedExtensionList = /*@__PURE__*/ S.Array(
   ForwardingRuleAttachedExtension,
 ) as any as S.Schema<ForwardingRuleAttachedExtensionList>;
@@ -8549,8 +8600,7 @@ export const MetadataFilterLabelMatch = /*@__PURE__*/ S.suspend(() =>
   identifier: "MetadataFilterLabelMatch",
 }) as any as S.Schema<MetadataFilterLabelMatch>;
 
-export type MetadataFilterLabelMatchList =
-  ReadonlyArray<MetadataFilterLabelMatch>;
+export type MetadataFilterLabelMatchList = Array<MetadataFilterLabelMatch>;
 export const MetadataFilterLabelMatchList = /*@__PURE__*/ S.Array(
   MetadataFilterLabelMatch,
 ) as any as S.Schema<MetadataFilterLabelMatchList>;
@@ -8558,7 +8608,7 @@ export const MetadataFilterLabelMatchList = /*@__PURE__*/ S.Array(
 /** Opaque filter criteria used by load balancers to restrict routing configuration to a limited set of load balancing proxies. Proxies and sidecars involved in load balancing would typically present metadata to the load balancers that need to match criteria specified here. If a match takes place, the relevant configuration is made available to those proxies. For each metadataFilter in this list, if itsfilterMatchCriteria is set to MATCH_ANY, at least one of thefilterLabels must match the corresponding label provided in the metadata. If its filterMatchCriteria is set to MATCH_ALL, then all of its filterLabels must match with corresponding labels provided in the metadata. An example for using metadataFilters would be: if load balancing involves Envoys, they receive routing configuration when values inmetadataFilters match values supplied in of their XDS requests to loadbalancers. */
 export interface MetadataFilter {
   /** Specifies how individual filter label matches within the list of filterLabels and contributes toward the overall metadataFilter match. Supported values are: - MATCH_ANY: at least one of the filterLabels must have a matching label in the provided metadata. - MATCH_ALL: all filterLabels must have matching labels in the provided metadata. */
-  filterMatchCriteria?: MetadataFilterFilterMatchCriteriaEnum;
+  filterMatchCriteria?: MetadataFilterFilterMatchCriteriaEnum | (string & {});
   /** The list of label value pairs that must match labels in the provided metadata based on filterMatchCriteria This list must not be empty and can have at the most 64 entries. */
   filterLabels?: MetadataFilterLabelMatchList;
 }
@@ -8569,7 +8619,7 @@ export const MetadataFilter = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MetadataFilter" }) as any as S.Schema<MetadataFilter>;
 
-export type MetadataFilterList = ReadonlyArray<MetadataFilter>;
+export type MetadataFilterList = Array<MetadataFilter>;
 export const MetadataFilterList = /*@__PURE__*/ S.Array(
   MetadataFilter,
 ) as any as S.Schema<MetadataFilterList>;
@@ -8615,7 +8665,9 @@ export interface ForwardingRule {
   /** This field identifies the subnetwork that the load balanced IP should belong to for this forwarding rule, used with internal load balancers and external passthrough Network Load Balancers with IPv6. If the network specified is in auto subnet mode, this field is optional. However, a subnetwork must be specified if the network is in custom subnet mode or when creating external forwarding rule with IPv6. */
   subnetwork?: string;
   /** Specifies the canary migration state for the backend buckets attached to this forwarding rule. Possible values are PREPARE, TEST_BY_PERCENTAGE, and TEST_ALL_TRAFFIC. To begin the migration from EXTERNAL to EXTERNAL_MANAGED, the state must be changed to PREPARE. The state must be changed to TEST_ALL_TRAFFIC before the loadBalancingScheme can be changed to EXTERNAL_MANAGED. Optionally, the TEST_BY_PERCENTAGE state can be used to migrate traffic to backend buckets attached to this forwarding rule by percentage using externalManagedBackendBucketMigrationTestingPercentage. Rolling back a migration requires the states to be set in reverse order. So changing the scheme from EXTERNAL_MANAGED to EXTERNAL requires the state to be set to TEST_ALL_TRAFFIC at the same time. Optionally, the TEST_BY_PERCENTAGE state can be used to migrate some traffic back to EXTERNAL or PREPARE can be used to migrate all traffic back to EXTERNAL. */
-  externalManagedBackendBucketMigrationState?: ForwardingRuleExternalManagedBackendBucketMigrationStateEnum;
+  externalManagedBackendBucketMigrationState?:
+    | ForwardingRuleExternalManagedBackendBucketMigrationStateEnum
+    | (string & {});
   /** [Output Only] The unique identifier for the resource. This identifier is defined by the server. */
   id?: string;
   /** A fingerprint for the labels being applied to this resource, which is essentially a hash of the labels set used for optimistic locking. The fingerprint is initially generated by Compute Engine and changes after every request to modify or update labels. You must always provide an up-to-date fingerprint hash in order to update or change labels, otherwise the request will fail with error412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve a ForwardingRule. */
@@ -8639,7 +8691,7 @@ export interface ForwardingRule {
   /** The ports, portRange, and allPorts fields are mutually exclusive. Only packets addressed to ports in the specified range will be forwarded to the backends configured with this forwarding rule. The allPorts field has the following limitations: - It requires that the forwarding rule IPProtocol be TCP, UDP, SCTP, or L3_DEFAULT. - It's applicable only to the following products: internal passthrough Network Load Balancers, backend service-based external passthrough Network Load Balancers, and internal and external protocol forwarding. - Set this field to true to allow packets addressed to any port or packets lacking destination port information (for example, UDP fragments after the first fragment) to be forwarded to the backends configured with this forwarding rule. The L3_DEFAULT protocol requiresallPorts be set to true. */
   allPorts?: boolean;
   /** The IP Version that will be used by this forwarding rule. Valid options are IPV4 or IPV6. */
-  ipVersion?: ForwardingRuleIpVersionEnum;
+  ipVersion?: ForwardingRuleIpVersionEnum | (string & {});
   /** Output only. [Output Only] Creation timestamp inRFC3339 text format. */
   creationTimestamp?: string;
   /** IP address for which this forwarding rule accepts traffic. When a client sends traffic to this IP address, the forwarding rule directs the traffic to the referenced target or backendService. While creating a forwarding rule, specifying an IPAddress is required under the following circumstances: - When the target is set to targetGrpcProxy andvalidateForProxyless is set to true, theIPAddress should be set to 0.0.0.0. - When the target is a Private Service Connect Google APIs bundle, you must specify an IPAddress. Otherwise, you can optionally specify an IP address that references an existing static (reserved) IP address resource. When omitted, Google Cloud assigns an ephemeral IP address. Use one of the following formats to specify an IP address while creating a forwarding rule: * IP address number, as in `100.1.2.3` * IPv6 address range, as in `2600:1234::/96` * Full resource URL, as inhttps://www.googleapis.com/compute/v1/projects/project_id/regions/region/addresses/address-name * Partial URL or by name, as in: - projects/project_id/regions/region/addresses/address-name - regions/region/addresses/address-name - global/addresses/address-name - address-name The forwarding rule's target or backendService, and in most cases, also the loadBalancingScheme, determine the type of IP address that you can use. For detailed information, see [IP address specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications). When reading an IPAddress, the API always returns the IP address number. */
@@ -8653,12 +8705,12 @@ export interface ForwardingRule {
   /** Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a ForwardingRule. Include the fingerprint in patch request to ensure that you do not overwrite changes that were applied from another concurrent request. To see the latest fingerprint, make a get() request to retrieve a ForwardingRule. */
   fingerprint?: string;
   /** Specifies the forwarding rule type. For more information about forwarding rules, refer to Forwarding rule concepts. */
-  loadBalancingScheme?: ForwardingRuleLoadBalancingSchemeEnum;
+  loadBalancingScheme?: ForwardingRuleLoadBalancingSchemeEnum | (string & {});
   /** This signifies the networking tier used for configuring this load balancer and can only take the following values:PREMIUM, STANDARD. For regional ForwardingRule, the valid values are PREMIUM andSTANDARD. For GlobalForwardingRule, the valid value isPREMIUM. If this field is not specified, it is assumed to be PREMIUM. If IPAddress is specified, this value must be equal to the networkTier of the Address. */
-  networkTier?: ForwardingRuleNetworkTierEnum;
+  networkTier?: ForwardingRuleNetworkTierEnum | (string & {});
   /** Output only. [Output Only] Server-defined URL for this resource with the resource id. */
   selfLinkWithId?: string;
-  pscConnectionStatus?: ForwardingRulePscConnectionStatusEnum;
+  pscConnectionStatus?: ForwardingRulePscConnectionStatusEnum | (string & {});
   /** Output only. [Output Only] Applicable only to the parent forwarding rule of global external passthrough load balancers. This field contains the list of child forwarding rule URLs associated with the parent forwarding rule: one for each availability group. AVAILABILITY_GROUP0 will be the first element, and AVAILABILITY_GROUP1 will be the second element. */
   childForwardingRules?: StringList;
   /** Output only. [Output Only]. The extensions that are attached to this ForwardingRule. */
@@ -8670,13 +8722,13 @@ export interface ForwardingRule {
   /** Opaque filter criteria used by load balancer to restrict routing configuration to a limited set of xDS compliant clients. In their xDS requests to load balancer, xDS clients present node metadata. When there is a match, the relevant configuration is made available to those proxies. Otherwise, all the resources (e.g.TargetHttpProxy, UrlMap) referenced by the ForwardingRule are not visible to those proxies. For each metadataFilter in this list, if itsfilterMatchCriteria is set to MATCH_ANY, at least one of thefilterLabels must match the corresponding label provided in the metadata. If its filterMatchCriteria is set to MATCH_ALL, then all of its filterLabels must match with corresponding labels provided in the metadata. If multiplemetadataFilters are specified, all of them need to be satisfied in order to be considered a match. metadataFilters specified here will be applifed before those specified in the UrlMap that thisForwardingRule references. metadataFilters only applies to Loadbalancers that have their loadBalancingScheme set toINTERNAL_SELF_MANAGED. */
   metadataFilters?: MetadataFilterList;
   /** The IP protocol to which this rule applies. For protocol forwarding, valid options are TCP, UDP, ESP,AH, SCTP, ICMP andL3_DEFAULT. The valid IP protocols are different for different load balancing products as described in [Load balancing features](https://cloud.google.com/load-balancing/docs/features#protocols_from_the_load_balancer_to_the_backends). */
-  IPProtocol?: ForwardingRuleIPProtocolEnum;
+  IPProtocol?: ForwardingRuleIPProtocolEnum | (string & {});
   /** Identifies the backend service to which the forwarding rule sends traffic. Required for internal and external passthrough Network Load Balancers; must be omitted for all other load balancer types. */
   backendService?: string;
   /** Resource reference of a PublicDelegatedPrefix. The PDP must be a sub-PDP in EXTERNAL_IPV6_FORWARDING_RULE_CREATION mode. Use one of the following formats to specify a sub-PDP when creating an IPv6 NetLB forwarding rule using BYOIP: Full resource URL, as inhttps://www.googleapis.com/compute/v1/projects/project_id/regions/region/publicDelegatedPrefixes/sub-pdp-name Partial URL, as in: - projects/project_id/regions/region/publicDelegatedPrefixes/sub-pdp-name - regions/region/publicDelegatedPrefixes/sub-pdp-name */
   ipCollection?: string;
   /** [Output Only] Specifies the availability group of the forwarding rule. This field is for use by global external passthrough load balancers (load balancing scheme EXTERNAL_PASSTHROUGH) and is set for the child forwarding rules only. */
-  availabilityGroup?: ForwardingRuleAvailabilityGroupEnum;
+  availabilityGroup?: ForwardingRuleAvailabilityGroupEnum | (string & {});
 }
 export const ForwardingRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -8732,7 +8784,7 @@ export const ForwardingRule = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ForwardingRule" }) as any as S.Schema<ForwardingRule>;
 
-export type ForwardingRuleList_ = ReadonlyArray<ForwardingRule>;
+export type ForwardingRuleList_ = Array<ForwardingRule>;
 export const ForwardingRuleList_ = /*@__PURE__*/ S.Array(
   ForwardingRule,
 ) as any as S.Schema<ForwardingRuleList_>;
@@ -8880,7 +8932,7 @@ export const FutureReservationsScopedListWarningDataItem =
   }) as any as S.Schema<FutureReservationsScopedListWarningDataItem>;
 
 export type FutureReservationsScopedListWarningDataItemList =
-  ReadonlyArray<FutureReservationsScopedListWarningDataItem>;
+  Array<FutureReservationsScopedListWarningDataItem>;
 export const FutureReservationsScopedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     FutureReservationsScopedListWarningDataItem,
@@ -8988,7 +9040,7 @@ export const ShareSettingsFolderConfigMap = /*@__PURE__*/ S.Record(
 /** The share setting for reservations and sole tenancy node groups. */
 export interface ShareSettings {
   /** Type of sharing for this shared-reservation */
-  shareType?: ShareSettingsShareTypeEnum;
+  shareType?: ShareSettingsShareTypeEnum | (string & {});
   /** A map of project id and project config. This is only valid when share_type's value is SPECIFIC_PROJECTS. */
   projectMap?: ShareSettingsProjectConfigMap;
   /** A map of folder id and folder config to specify consumer projects for this shared-reservation. This is only valid when share_type's value is DIRECT_PROJECTS_UNDER_SPECIFIC_FOLDERS. Folder id should be a string of number, and without "folders/" prefix. */
@@ -9015,7 +9067,9 @@ export const ReservationAdvancedDeploymentControlReservationOperationalModeEnum 
 /** Advance control for cluster management, applicable only to DENSE deployment type reservations. */
 export interface ReservationAdvancedDeploymentControl {
   /** Indicates chosen reservation operational mode for the reservation. */
-  reservationOperationalMode?: ReservationAdvancedDeploymentControlReservationOperationalModeEnum;
+  reservationOperationalMode?:
+    | ReservationAdvancedDeploymentControlReservationOperationalModeEnum
+    | (string & {});
 }
 export const ReservationAdvancedDeploymentControl = /*@__PURE__*/ S.suspend(
   () =>
@@ -9060,7 +9114,7 @@ export const AllocationAggregateReservationReservedResourceInfo =
   }) as any as S.Schema<AllocationAggregateReservationReservedResourceInfo>;
 
 export type AllocationAggregateReservationReservedResourceInfoList =
-  ReadonlyArray<AllocationAggregateReservationReservedResourceInfo>;
+  Array<AllocationAggregateReservationReservedResourceInfo>;
 export const AllocationAggregateReservationReservedResourceInfoList =
   /*@__PURE__*/ S.Array(
     AllocationAggregateReservationReservedResourceInfo,
@@ -9092,7 +9146,7 @@ export interface AllocationAggregateReservation {
   /** Output only. [Output only] List of resources currently in use. */
   inUseResources?: AllocationAggregateReservationReservedResourceInfoList;
   /** The workload type of the instances that will target this reservation. */
-  workloadType?: AllocationAggregateReservationWorkloadTypeEnum;
+  workloadType?: AllocationAggregateReservationWorkloadTypeEnum | (string & {});
   /** List of reserved resources (CPUs, memory, accelerators). */
   reservedResources?: AllocationAggregateReservationReservedResourceInfoList;
   /** Output only. Number of hosts currently in use. If there is one or more Instances running on the host, it is considered in use. */
@@ -9100,7 +9154,7 @@ export interface AllocationAggregateReservation {
   /** Output only. Number of instances currently in use in this reservation. */
   inUseInstanceCount?: number;
   /** The VM family that all instances scheduled against this reservation must belong to. */
-  vmFamily?: AllocationAggregateReservationVmFamilyEnum;
+  vmFamily?: AllocationAggregateReservationVmFamilyEnum | (string & {});
   /** Count of reserved hosts of specified VM family. The host has fixed number of accelerators based on the accelerator/vm-family selected. */
   hostCount?: number;
 }
@@ -9218,7 +9272,9 @@ export interface AllocationSpecificSKUAllocationAllocatedInstancePropertiesReser
   /** Specifies the size of the disk in base-2 GB. */
   diskSizeGb?: string;
   /** Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default isSCSI. For performance characteristics of SCSI over NVMe, seeLocal SSD performance. */
-  interface?: AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterfaceEnum;
+  interface?:
+    | AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterfaceEnum
+    | (string & {});
 }
 export const AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDisk =
   /*@__PURE__*/ S.suspend(() =>
@@ -9234,7 +9290,7 @@ export const AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedD
   }) as any as S.Schema<AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDisk>;
 
 export type AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskList =
-  ReadonlyArray<AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDisk>;
+  Array<AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDisk>;
 export const AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskList =
   /*@__PURE__*/ S.Array(
     AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDisk,
@@ -9256,7 +9312,7 @@ export const AcceleratorConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "AcceleratorConfig",
 }) as any as S.Schema<AcceleratorConfig>;
 
-export type AcceleratorConfigList = ReadonlyArray<AcceleratorConfig>;
+export type AcceleratorConfigList = Array<AcceleratorConfig>;
 export const AcceleratorConfigList = /*@__PURE__*/ S.Array(
   AcceleratorConfig,
 ) as any as S.Schema<AcceleratorConfigList>;
@@ -9270,7 +9326,9 @@ export interface AllocationSpecificSKUAllocationReservedInstanceProperties {
   /** Minimum cpu platform the reservation. */
   minCpuPlatform?: string;
   /** Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`. */
-  maintenanceInterval?: AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceIntervalEnum;
+  maintenanceInterval?:
+    | AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceIntervalEnum
+    | (string & {});
   /** Specifies amount of local ssd to reserve with each instance. The type of disk is local-ssd. */
   localSsds?: AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskList;
   /** Specifies accelerator type and count. */
@@ -9397,7 +9455,9 @@ export interface FutureReservationStatusLastKnownGoodState {
   /** Output only. [Output Only] Represents the matching usage for the future reservation before an amendment was requested. */
   existingMatchingUsageInfo?: FutureReservationStatusExistingMatchingUsageInfo;
   /** Output only. [Output Only] The status of the last known good state for the Future Reservation. */
-  procurementStatus?: FutureReservationStatusLastKnownGoodStateProcurementStatusEnum;
+  procurementStatus?:
+    | FutureReservationStatusLastKnownGoodStateProcurementStatusEnum
+    | (string & {});
   /** Output only. [Output Only] The description of the FutureReservation before an amendment was requested. */
   description?: string;
   /** Output only. [Output Only] The lock time of the FutureReservation before an amendment was requested. */
@@ -9475,14 +9535,16 @@ export interface FutureReservationStatus {
   /** Output only. Storage pool provisioned capacities for each SKU type. */
   storagePoolProvisionedCapacity?: FutureReservationStoragePoolProvisionedCapacity;
   /** Output only. [Output Only] The current status of the requested amendment. */
-  amendmentStatus?: FutureReservationStatusAmendmentStatusEnum;
+  amendmentStatus?: FutureReservationStatusAmendmentStatusEnum | (string & {});
   /** Output only. Time when Future Reservation would become LOCKED, after which no modifications to Future Reservation will be allowed. Applicable only after the Future Reservation is in the APPROVED state. The lock_time is an RFC3339 string. The procurement_status will transition to PROCURING state at this time. */
   lockTime?: string;
   /** Output only. This count indicates the fulfilled capacity so far. This is set during "PROVISIONING" state. This count also includes capacity delivered as part of existing matching reservations. */
   fulfilledCount?: string;
   specificSkuProperties?: FutureReservationStatusSpecificSKUProperties;
   /** Output only. Current state of this Future Reservation */
-  procurementStatus?: FutureReservationStatusProcurementStatusEnum;
+  procurementStatus?:
+    | FutureReservationStatusProcurementStatusEnum
+    | (string & {});
 }
 export const FutureReservationStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -9526,11 +9588,15 @@ export const FutureReservationCommitmentInfoPreviousCommitmentTermsEnum =
 
 export interface FutureReservationCommitmentInfo {
   /** Indicates if a Commitment needs to be created as part of FR delivery. If this field is not present, then no commitment needs to be created. */
-  commitmentPlan?: FutureReservationCommitmentInfoCommitmentPlanEnum;
+  commitmentPlan?:
+    | FutureReservationCommitmentInfoCommitmentPlanEnum
+    | (string & {});
   /** name of the commitment where capacity is being delivered to. */
   commitmentName?: string;
   /** Only applicable if FR is delivering to the same reservation. If set, all parent commitments will be extended to match the end date of the plan for this commitment. */
-  previousCommitmentTerms?: FutureReservationCommitmentInfoPreviousCommitmentTermsEnum;
+  previousCommitmentTerms?:
+    | FutureReservationCommitmentInfoPreviousCommitmentTermsEnum
+    | (string & {});
 }
 export const FutureReservationCommitmentInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -9551,15 +9617,17 @@ export interface FutureReservation {
   autoCreatedReservationsDuration?: Duration;
   /** The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply withRFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash. */
   name?: string;
-  confidentialComputeType?: FutureReservationConfidentialComputeTypeEnum;
+  confidentialComputeType?:
+    | FutureReservationConfidentialComputeTypeEnum
+    | (string & {});
   /** Name of reservations where the capacity is provisioned at the time of delivery of future reservations. If the reservation with the given name does not exist already, it is created automatically at the time of Approval with INACTIVE state till specified start-time. Either provide the reservation_name or a name_prefix. */
   reservationName?: string;
   /** Input only. Additional params passed with the request, but not persisted as part of resource payload. */
   params?: FutureReservationParams;
   /** Protection tier for the workload. */
-  protectionTier?: FutureReservationProtectionTierEnum;
+  protectionTier?: FutureReservationProtectionTierEnum | (string & {});
   /** Type of the deployment requested as part of future reservation. */
-  deploymentType?: FutureReservationDeploymentTypeEnum;
+  deploymentType?: FutureReservationDeploymentTypeEnum | (string & {});
   /** List of Projects/Folders to share with. */
   shareSettings?: ShareSettings;
   /** Output only. [Output Only] A unique identifier for this future reservation. The server defines this identifier. */
@@ -9571,15 +9639,15 @@ export interface FutureReservation {
   /** Aggregate reservation details for the future reservation. */
   aggregateReservation?: AllocationAggregateReservation;
   /** The reservation mode which determines reservation-termination behavior and expected pricing. */
-  reservationMode?: FutureReservationReservationModeEnum;
+  reservationMode?: FutureReservationReservationModeEnum | (string & {});
   /** Storage pool details for the future reservation. */
   storagePoolProperties?: FutureReservationStoragePoolProperties;
   /** Maintenance information for this reservation */
-  schedulingType?: FutureReservationSchedulingTypeEnum;
+  schedulingType?: FutureReservationSchedulingTypeEnum | (string & {});
   /** Setting for enabling or disabling automatic deletion for auto-created reservation. If set to true, auto-created reservations will be deleted at Future Reservation's end time (default) or at user's defined timestamp if any of the [auto_created_reservations_delete_time, auto_created_reservations_duration] values is specified. For keeping auto-created reservation indefinitely, this value should be set to false. */
   autoDeleteAutoCreatedReservations?: boolean;
   /** Planning state before being submitted for evaluation */
-  planningStatus?: FutureReservationPlanningStatusEnum;
+  planningStatus?: FutureReservationPlanningStatusEnum | (string & {});
   /** Future Reservation configuration to indicate instance properties and total count. */
   specificSkuProperties?: FutureReservationSpecificSKUProperties;
   /** Time window for this Future Reservation. */
@@ -9652,7 +9720,7 @@ export const FutureReservation = /*@__PURE__*/ S.suspend(() =>
   identifier: "FutureReservation",
 }) as any as S.Schema<FutureReservation>;
 
-export type FutureReservationList = ReadonlyArray<FutureReservation>;
+export type FutureReservationList = Array<FutureReservation>;
 export const FutureReservationList = /*@__PURE__*/ S.Array(
   FutureReservation,
 ) as any as S.Schema<FutureReservationList>;
@@ -9697,7 +9765,7 @@ export const FutureReservationsAggregatedListResponseWarningDataItem =
   }) as any as S.Schema<FutureReservationsAggregatedListResponseWarningDataItem>;
 
 export type FutureReservationsAggregatedListResponseWarningDataItemList =
-  ReadonlyArray<FutureReservationsAggregatedListResponseWarningDataItem>;
+  Array<FutureReservationsAggregatedListResponseWarningDataItem>;
 export const FutureReservationsAggregatedListResponseWarningDataItemList =
   /*@__PURE__*/ S.Array(
     FutureReservationsAggregatedListResponseWarningDataItem,
@@ -9848,7 +9916,7 @@ export const OperationAggregatedListWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<OperationAggregatedListWarningDataItem>;
 
 export type OperationAggregatedListWarningDataItemList =
-  ReadonlyArray<OperationAggregatedListWarningDataItem>;
+  Array<OperationAggregatedListWarningDataItem>;
 export const OperationAggregatedListWarningDataItemList = /*@__PURE__*/ S.Array(
   OperationAggregatedListWarningDataItem,
 ) as any as S.Schema<OperationAggregatedListWarningDataItemList>;
@@ -9903,7 +9971,7 @@ export const OperationAggregatedListWarning = /*@__PURE__*/ S.suspend(() =>
   identifier: "OperationAggregatedListWarning",
 }) as any as S.Schema<OperationAggregatedListWarning>;
 
-export type OperationList_ = ReadonlyArray<Operation>;
+export type OperationList_ = Array<Operation>;
 export const OperationList_ = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList_>;
@@ -9924,7 +9992,7 @@ export const OperationsScopedListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationsScopedListWarningDataItem>;
 
 export type OperationsScopedListWarningDataItemList =
-  ReadonlyArray<OperationsScopedListWarningDataItem>;
+  Array<OperationsScopedListWarningDataItem>;
 export const OperationsScopedListWarningDataItemList = /*@__PURE__*/ S.Array(
   OperationsScopedListWarningDataItem,
 ) as any as S.Schema<OperationsScopedListWarningDataItemList>;
@@ -10089,7 +10157,7 @@ export const VmExtensionPolicyAggregatedListResponseWarningDataItem =
   }) as any as S.Schema<VmExtensionPolicyAggregatedListResponseWarningDataItem>;
 
 export type VmExtensionPolicyAggregatedListResponseWarningDataItemList =
-  ReadonlyArray<VmExtensionPolicyAggregatedListResponseWarningDataItem>;
+  Array<VmExtensionPolicyAggregatedListResponseWarningDataItem>;
 export const VmExtensionPolicyAggregatedListResponseWarningDataItemList =
   /*@__PURE__*/ S.Array(
     VmExtensionPolicyAggregatedListResponseWarningDataItem,
@@ -10239,7 +10307,7 @@ export const HaControllersAggregatedListWarningDataItem =
   }) as any as S.Schema<HaControllersAggregatedListWarningDataItem>;
 
 export type HaControllersAggregatedListWarningDataItemList =
-  ReadonlyArray<HaControllersAggregatedListWarningDataItem>;
+  Array<HaControllersAggregatedListWarningDataItem>;
 export const HaControllersAggregatedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     HaControllersAggregatedListWarningDataItem,
@@ -10320,7 +10388,9 @@ export const HaControllerZoneConfigurationReservationAffinityConsumeReservationT
 /** Specifies the reservations that this instance can consume from. This message should be an exact copy of the Instances representation of AllocationAffinity. */
 export interface HaControllerZoneConfigurationReservationAffinity {
   /** Specifies the type of reservation from which this instance can consume resources: ANY_RESERVATION (default),SPECIFIC_RESERVATION, or NO_RESERVATION. See Consuming reserved instances for examples. */
-  consumeReservationType?: HaControllerZoneConfigurationReservationAffinityConsumeReservationTypeEnum;
+  consumeReservationType?:
+    | HaControllerZoneConfigurationReservationAffinityConsumeReservationTypeEnum
+    | (string & {});
   /** Corresponds to the label key of a reservation resource. To target aSPECIFIC_RESERVATION by name, specifygoogleapis.com/reservation-name as the key and specify the name of your reservation as its value. */
   key?: string;
   /** Corresponds to the label values of a reservation resource. This can be either a name to a reservation in the same project or "projects/different-project/reservations/some-reservation-name" to target a shared reservation in the same zone but in a different project. */
@@ -10349,7 +10419,9 @@ export const HaControllerZoneConfigurationNodeAffinityOperatorEnum =
 /** Node Affinity: the configuration of desired nodes onto which the Instance could be scheduled. This message should be an exact copy of the Instances representation of NodeAffinity. */
 export interface HaControllerZoneConfigurationNodeAffinity {
   /** Defines the operation of node selection. Valid operators areIN for affinity and NOT_IN for anti-affinity. */
-  operator?: HaControllerZoneConfigurationNodeAffinityOperatorEnum;
+  operator?:
+    | HaControllerZoneConfigurationNodeAffinityOperatorEnum
+    | (string & {});
   /** Corresponds to the label key of Node resource. */
   key?: string;
   /** Corresponds to the label values of Node resource. */
@@ -10369,7 +10441,7 @@ export const HaControllerZoneConfigurationNodeAffinity =
   }) as any as S.Schema<HaControllerZoneConfigurationNodeAffinity>;
 
 export type HaControllerZoneConfigurationNodeAffinityList =
-  ReadonlyArray<HaControllerZoneConfigurationNodeAffinity>;
+  Array<HaControllerZoneConfigurationNodeAffinity>;
 export const HaControllerZoneConfigurationNodeAffinityList =
   /*@__PURE__*/ S.Array(
     HaControllerZoneConfigurationNodeAffinity,
@@ -10432,7 +10504,7 @@ export const HaControllerStatusFailoverProgressLastFailoverAttemptErrorsErrorsIt
   }) as any as S.Schema<HaControllerStatusFailoverProgressLastFailoverAttemptErrorsErrorsItemErrorDetailsItem>;
 
 export type HaControllerStatusFailoverProgressLastFailoverAttemptErrorsErrorsItemErrorDetailsItemList =
-  ReadonlyArray<HaControllerStatusFailoverProgressLastFailoverAttemptErrorsErrorsItemErrorDetailsItem>;
+  Array<HaControllerStatusFailoverProgressLastFailoverAttemptErrorsErrorsItemErrorDetailsItem>;
 export const HaControllerStatusFailoverProgressLastFailoverAttemptErrorsErrorsItemErrorDetailsItemList =
   /*@__PURE__*/ S.Array(
     HaControllerStatusFailoverProgressLastFailoverAttemptErrorsErrorsItemErrorDetailsItem,
@@ -10464,7 +10536,7 @@ export const HaControllerStatusFailoverProgressLastFailoverAttemptErrorsErrorsIt
   }) as any as S.Schema<HaControllerStatusFailoverProgressLastFailoverAttemptErrorsErrorsItem>;
 
 export type HaControllerStatusFailoverProgressLastFailoverAttemptErrorsErrorsItemList =
-  ReadonlyArray<HaControllerStatusFailoverProgressLastFailoverAttemptErrorsErrorsItem>;
+  Array<HaControllerStatusFailoverProgressLastFailoverAttemptErrorsErrorsItem>;
 export const HaControllerStatusFailoverProgressLastFailoverAttemptErrorsErrorsItemList =
   /*@__PURE__*/ S.Array(
     HaControllerStatusFailoverProgressLastFailoverAttemptErrorsErrorsItem,
@@ -10510,7 +10582,9 @@ export interface HaControllerStatusFailoverProgress {
   /** Output only. [Output Only] Timestamp of the failover completion. Filled only if the failover is completed, in lastFailoverInfo. */
   failoverCompleteTimestamp?: string;
   /** Output only. [Output Only] Indicates if failover has been triggered automatically or manually. */
-  failoverTrigger?: HaControllerStatusFailoverProgressFailoverTriggerEnum;
+  failoverTrigger?:
+    | HaControllerStatusFailoverProgressFailoverTriggerEnum
+    | (string & {});
   /** Output only. [Output Only] Contains details of the last failed failover. This field is filled only if the current failover is failing */
   lastFailoverAttempt?: HaControllerStatusFailoverProgressLastFailoverAttempt;
 }
@@ -10553,7 +10627,7 @@ export const HaControllerStatusZoneStatusLastErrorErrorsErrorsItemErrorDetailsIt
   }) as any as S.Schema<HaControllerStatusZoneStatusLastErrorErrorsErrorsItemErrorDetailsItem>;
 
 export type HaControllerStatusZoneStatusLastErrorErrorsErrorsItemErrorDetailsItemList =
-  ReadonlyArray<HaControllerStatusZoneStatusLastErrorErrorsErrorsItemErrorDetailsItem>;
+  Array<HaControllerStatusZoneStatusLastErrorErrorsErrorsItemErrorDetailsItem>;
 export const HaControllerStatusZoneStatusLastErrorErrorsErrorsItemErrorDetailsItemList =
   /*@__PURE__*/ S.Array(
     HaControllerStatusZoneStatusLastErrorErrorsErrorsItemErrorDetailsItem,
@@ -10584,7 +10658,7 @@ export const HaControllerStatusZoneStatusLastErrorErrorsErrorsItem =
   }) as any as S.Schema<HaControllerStatusZoneStatusLastErrorErrorsErrorsItem>;
 
 export type HaControllerStatusZoneStatusLastErrorErrorsErrorsItemList =
-  ReadonlyArray<HaControllerStatusZoneStatusLastErrorErrorsErrorsItem>;
+  Array<HaControllerStatusZoneStatusLastErrorErrorsErrorsItem>;
 export const HaControllerStatusZoneStatusLastErrorErrorsErrorsItemList =
   /*@__PURE__*/ S.Array(
     HaControllerStatusZoneStatusLastErrorErrorsErrorsItem,
@@ -10698,7 +10772,9 @@ export interface HaControllerNetworkingAutoConfigurationInternal {
   ipAddress?: string;
   ipv6Address?: string;
   /** Determine which IP addresses to automatically create. Field and option naming consistent with NetworkInterface configuration on Instances. */
-  stackType?: HaControllerNetworkingAutoConfigurationInternalStackTypeEnum;
+  stackType?:
+    | HaControllerNetworkingAutoConfigurationInternalStackTypeEnum
+    | (string & {});
 }
 export const HaControllerNetworkingAutoConfigurationInternal =
   /*@__PURE__*/ S.suspend(() =>
@@ -10730,7 +10806,7 @@ export const HaControllerNetworkingAutoConfiguration = /*@__PURE__*/ S.suspend(
 /** HaController handles failover for a VM Instance. */
 export interface HaController {
   /** Indicates the capacity guarantees in the secondary zone. */
-  secondaryZoneCapacity?: HaControllerSecondaryZoneCapacityEnum;
+  secondaryZoneCapacity?: HaControllerSecondaryZoneCapacityEnum | (string & {});
   /** An optional description of this resource. Provide this property when you create the resource. */
   description?: string;
   /** Output only. [Output Only] Creation timestamp in RFC3339 text format. */
@@ -10742,7 +10818,7 @@ export interface HaController {
   /** Advanced configuration option. If specified, these Backend Services need to be pre-created. Currently, only one backend service can be specified, and it must be L4 Internal Load Balancer (ILB). */
   backendServices?: StringList;
   /** Indicates how failover should be initiated. */
-  failoverInitiation?: HaControllerFailoverInitiationEnum;
+  failoverInitiation?: HaControllerFailoverInitiationEnum | (string & {});
   /** Output only. [Output Only] Server-defined URL for this resource with the resource id. */
   selfLinkWithId?: string;
   /** Map of zone configurations Key: name of the zone Value: ZoneConfiguration */
@@ -10752,7 +10828,7 @@ export interface HaController {
   /** Output only. [Output Only] The unique identifier for the resource. This identifier is defined by the server. */
   id?: string;
   /** Capacity guarantee settings for the event of a failover. This determines whether capacity is guaranteed to be available in the zones used by the HaController. Deprecated: This field is deprecated and has no effect. */
-  failoverCapacity?: HaControllerFailoverCapacityEnum;
+  failoverCapacity?: HaControllerFailoverCapacityEnum | (string & {});
   /** Basic networking configuration. Required backend services and forwarding rules will be automatically created with default parameters. */
   networkingAutoConfiguration?: HaControllerNetworkingAutoConfiguration;
   /** Output only. [Output Only] URL of the region where the resource resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body. */
@@ -10785,7 +10861,7 @@ export const HaController = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "HaController" }) as any as S.Schema<HaController>;
 
-export type HaControllerList = ReadonlyArray<HaController>;
+export type HaControllerList = Array<HaController>;
 export const HaControllerList = /*@__PURE__*/ S.Array(
   HaController,
 ) as any as S.Schema<HaControllerList>;
@@ -10839,7 +10915,7 @@ export const HaControllersScopedListWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<HaControllersScopedListWarningDataItem>;
 
 export type HaControllersScopedListWarningDataItemList =
-  ReadonlyArray<HaControllersScopedListWarningDataItem>;
+  Array<HaControllersScopedListWarningDataItem>;
 export const HaControllersScopedListWarningDataItemList = /*@__PURE__*/ S.Array(
   HaControllersScopedListWarningDataItem,
 ) as any as S.Schema<HaControllersScopedListWarningDataItemList>;
@@ -11005,7 +11081,7 @@ export const HealthChecksAggregatedListWarningDataItem =
   }) as any as S.Schema<HealthChecksAggregatedListWarningDataItem>;
 
 export type HealthChecksAggregatedListWarningDataItemList =
-  ReadonlyArray<HealthChecksAggregatedListWarningDataItem>;
+  Array<HealthChecksAggregatedListWarningDataItem>;
 export const HealthChecksAggregatedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     HealthChecksAggregatedListWarningDataItem,
@@ -11042,7 +11118,7 @@ export interface SSLHealthCheck {
   /** Not supported. */
   portName?: string;
   /** Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE. */
-  proxyHeader?: SSLHealthCheckProxyHeaderEnum;
+  proxyHeader?: SSLHealthCheckProxyHeaderEnum | (string & {});
   /** Instructs the health check prober to send this exact ASCII string, up to 1024 bytes in length, after establishing the TCP connection and SSL handshake. */
   request?: string;
   /** Creates a content-based SSL health check. In addition to establishing a TCP connection and the TLS handshake, you can configure the health check to pass only when the backend sends this exact response ASCII string, up to 1024 bytes in length. For details, see: https://cloud.google.com/load-balancing/docs/health-check-concepts#criteria-protocol-ssl-tcp */
@@ -11050,7 +11126,7 @@ export interface SSLHealthCheck {
   /** The TCP port number to which the health check prober sends packets. The default value is 443. Valid values are 1 through65535. */
   port?: number;
   /** Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using theport field in the health check. Supported by backend services for passthrough load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for passthrough load balancers. Supports all backends that can be health checked; for example,GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports. */
-  portSpecification?: SSLHealthCheckPortSpecificationEnum;
+  portSpecification?: SSLHealthCheckPortSpecificationEnum | (string & {});
 }
 export const SSLHealthCheck = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -11071,7 +11147,7 @@ export const GRPCHealthCheckPortSpecificationEnum = /*@__PURE__*/ S.String;
 
 export interface GRPCHealthCheck {
   /** Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using theport field in the health check. Supported by backend services for passthrough load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for passthrough load balancers. Supports all backends that can be health checked; for example,GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports. */
-  portSpecification?: GRPCHealthCheckPortSpecificationEnum;
+  portSpecification?: GRPCHealthCheckPortSpecificationEnum | (string & {});
   /** The gRPC service name for the health check. This field is optional. The value of grpc_service_name has the following meanings by convention: - Empty service_name means the overall status of all services at the backend. - Non-empty service_name means the health of that gRPC service, as defined by the owner of the service. The grpc_service_name can only be ASCII. */
   grpcServiceName?: string;
   /** The TCP port number to which the health check prober sends packets. Valid values are 1 through 65535. */
@@ -11139,15 +11215,15 @@ export const HTTP2HealthCheckPortSpecificationEnum = /*@__PURE__*/ S.String;
 
 export interface HTTP2HealthCheck {
   /** Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE. */
-  proxyHeader?: HTTP2HealthCheckProxyHeaderEnum;
+  proxyHeader?: HTTP2HealthCheckProxyHeaderEnum | (string & {});
   /** Weight report mode. used for weighted Load Balancing. */
-  weightReportMode?: HTTP2HealthCheckWeightReportModeEnum;
+  weightReportMode?: HTTP2HealthCheckWeightReportModeEnum | (string & {});
   /** Not supported. */
   portName?: string;
   /** The value of the host header in the HTTP/2 health check request. If left empty (default value), the host header is set to the destination IP address to which health check packets are sent. The destination IP address depends on the type of load balancer. For details, see: https://cloud.google.com/load-balancing/docs/health-check-concepts#hc-packet-dest */
   host?: string;
   /** Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using theport field in the health check. Supported by backend services for passthrough load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for passthrough load balancers. Supports all backends that can be health checked; for example,GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports. */
-  portSpecification?: HTTP2HealthCheckPortSpecificationEnum;
+  portSpecification?: HTTP2HealthCheckPortSpecificationEnum | (string & {});
   /** The TCP port number to which the health check prober sends packets. The default value is 443. Valid values are 1 through65535. */
   port?: number;
   /** The request path of the HTTP/2 health check request. The default value is/. Must comply withRFC3986. */
@@ -11187,13 +11263,13 @@ export const HTTPHealthCheckPortSpecificationEnum = /*@__PURE__*/ S.String;
 
 export interface HTTPHealthCheck {
   /** Weight report mode. used for weighted Load Balancing. */
-  weightReportMode?: HTTPHealthCheckWeightReportModeEnum;
+  weightReportMode?: HTTPHealthCheckWeightReportModeEnum | (string & {});
   /** Not supported. */
   portName?: string;
   /** The value of the host header in the HTTP health check request. If left empty (default value), the host header is set to the destination IP address to which health check packets are sent. The destination IP address depends on the type of load balancer. For details, see: https://cloud.google.com/load-balancing/docs/health-check-concepts#hc-packet-dest */
   host?: string;
   /** Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE. */
-  proxyHeader?: HTTPHealthCheckProxyHeaderEnum;
+  proxyHeader?: HTTPHealthCheckProxyHeaderEnum | (string & {});
   /** The TCP port number to which the health check prober sends packets. The default value is 80. Valid values are 1 through65535. */
   port?: number;
   /** The request path of the HTTP health check request. The default value is/. Must comply withRFC3986. */
@@ -11201,7 +11277,7 @@ export interface HTTPHealthCheck {
   /** Creates a content-based HTTP health check. In addition to the required HTTP 200 (OK) status code, you can configure the health check to pass only when the backend sends this specific ASCII response string within the first 1024 bytes of the HTTP response body. For details, see: https://cloud.google.com/load-balancing/docs/health-check-concepts#criteria-protocol-http */
   response?: string;
   /** Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using theport field in the health check. Supported by backend services for passthrough load balancers and backend services for proxy load balancers. Also supported in legacy HTTP health checks for target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example,GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example,GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports. */
-  portSpecification?: HTTPHealthCheckPortSpecificationEnum;
+  portSpecification?: HTTPHealthCheckPortSpecificationEnum | (string & {});
 }
 export const HTTPHealthCheck = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -11226,7 +11302,7 @@ export const GRPCTLSHealthCheckPortSpecificationEnum = /*@__PURE__*/ S.String;
 
 export interface GRPCTLSHealthCheck {
   /** Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using theport field in the health check. Supported by backend services for passthrough load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for passthrough load balancers. Supports all backends that can be health checked; for example,GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports. */
-  portSpecification?: GRPCTLSHealthCheckPortSpecificationEnum;
+  portSpecification?: GRPCTLSHealthCheckPortSpecificationEnum | (string & {});
   /** The gRPC service name for the health check. This field is optional. The value of grpc_service_name has the following meanings by convention: - Empty service_name means the overall status of all services at the backend. - Non-empty service_name means the health of that gRPC service, as defined by the owner of the service. The grpc_service_name can only be ASCII. */
   grpcServiceName?: string;
   /** The TCP port number to which the health check prober sends packets. Valid values are 1 through 65535. */
@@ -11271,15 +11347,15 @@ export const HTTPSHealthCheckPortSpecificationEnum = /*@__PURE__*/ S.String;
 
 export interface HTTPSHealthCheck {
   /** Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE. */
-  proxyHeader?: HTTPSHealthCheckProxyHeaderEnum;
+  proxyHeader?: HTTPSHealthCheckProxyHeaderEnum | (string & {});
   /** Not supported. */
   portName?: string;
   /** The value of the host header in the HTTPS health check request. If left empty (default value), the host header is set to the destination IP address to which health check packets are sent. The destination IP address depends on the type of load balancer. For details, see: https://cloud.google.com/load-balancing/docs/health-check-concepts#hc-packet-dest */
   host?: string;
   /** Weight report mode. used for weighted Load Balancing. */
-  weightReportMode?: HTTPSHealthCheckWeightReportModeEnum;
+  weightReportMode?: HTTPSHealthCheckWeightReportModeEnum | (string & {});
   /** Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using theport field in the health check. Supported by backend services for passthrough load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for passthrough load balancers. Supports all backends that can be health checked; for example,GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports. */
-  portSpecification?: HTTPSHealthCheckPortSpecificationEnum;
+  portSpecification?: HTTPSHealthCheckPortSpecificationEnum | (string & {});
   /** Creates a content-based HTTPS health check. In addition to the required HTTP 200 (OK) status code, you can configure the health check to pass only when the backend sends this specific ASCII response string within the first 1024 bytes of the HTTP response body. For details, see: https://cloud.google.com/load-balancing/docs/health-check-concepts#criteria-protocol-http */
   response?: string;
   /** The TCP port number to which the health check prober sends packets. The default value is 443. Valid values are 1 through65535. */
@@ -11313,7 +11389,7 @@ export const TCPHealthCheckProxyHeaderEnum = /*@__PURE__*/ S.String;
 
 export interface TCPHealthCheck {
   /** Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using theport field in the health check. Supported by backend services for passthrough load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for passthrough load balancers. Supports all backends that can be health checked; for example,GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports. */
-  portSpecification?: TCPHealthCheckPortSpecificationEnum;
+  portSpecification?: TCPHealthCheckPortSpecificationEnum | (string & {});
   /** The TCP port number to which the health check prober sends packets. The default value is 80. Valid values are 1 through65535. */
   port?: number;
   /** Instructs the health check prober to send this exact ASCII string, up to 1024 bytes in length, after establishing the TCP connection. */
@@ -11321,7 +11397,7 @@ export interface TCPHealthCheck {
   /** Creates a content-based TCP health check. In addition to establishing a TCP connection, you can configure the health check to pass only when the backend sends this exact response ASCII string, up to 1024 bytes in length. For details, see: https://cloud.google.com/load-balancing/docs/health-check-concepts#criteria-protocol-ssl-tcp */
   response?: string;
   /** Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE. */
-  proxyHeader?: TCPHealthCheckProxyHeaderEnum;
+  proxyHeader?: TCPHealthCheckProxyHeaderEnum | (string & {});
   /** Not supported. */
   portName?: string;
 }
@@ -11359,7 +11435,7 @@ export interface HealthCheck {
   httpHealthCheck?: HTTPHealthCheck;
   grpcTlsHealthCheck?: GRPCTLSHealthCheck;
   /** Specifies the type of the healthCheck, either TCP,SSL, HTTP, HTTPS,HTTP2 or GRPC. Exactly one of the protocol-specific health check fields must be specified, which must matchtype field. */
-  type?: HealthCheckTypeEnum;
+  type?: HealthCheckTypeEnum | (string & {});
   httpsHealthCheck?: HTTPSHealthCheck;
   /** The list of cloud regions from which health checks are performed. If any regions are specified, then exactly 3 regions should be specified. The region names must be valid names of Google Cloud regions. This can only be set for global health check. If this list is non-empty, then there are restrictions on what other health check fields are supported and what other resources can use this health check: - SSL, HTTP2, and GRPC protocols are not supported. - The TCP request field is not supported. - The proxyHeader field for HTTP, HTTPS, and TCP is not supported. - The checkIntervalSec field must be at least 30. - The health check cannot be used with BackendService nor with managed instance group auto-healing. */
   sourceRegions?: StringList;
@@ -11405,7 +11481,7 @@ export const HealthCheck = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "HealthCheck" }) as any as S.Schema<HealthCheck>;
 
-export type HealthCheckList_ = ReadonlyArray<HealthCheck>;
+export type HealthCheckList_ = Array<HealthCheck>;
 export const HealthCheckList_ = /*@__PURE__*/ S.Array(
   HealthCheck,
 ) as any as S.Schema<HealthCheckList_>;
@@ -11427,7 +11503,7 @@ export const HealthChecksScopedListWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<HealthChecksScopedListWarningDataItem>;
 
 export type HealthChecksScopedListWarningDataItemList =
-  ReadonlyArray<HealthChecksScopedListWarningDataItem>;
+  Array<HealthChecksScopedListWarningDataItem>;
 export const HealthChecksScopedListWarningDataItemList = /*@__PURE__*/ S.Array(
   HealthChecksScopedListWarningDataItem,
 ) as any as S.Schema<HealthChecksScopedListWarningDataItemList>;
@@ -11592,7 +11668,7 @@ export const InstanceGroupManagerAggregatedListWarningDataItem =
   }) as any as S.Schema<InstanceGroupManagerAggregatedListWarningDataItem>;
 
 export type InstanceGroupManagerAggregatedListWarningDataItemList =
-  ReadonlyArray<InstanceGroupManagerAggregatedListWarningDataItem>;
+  Array<InstanceGroupManagerAggregatedListWarningDataItem>;
 export const InstanceGroupManagerAggregatedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     InstanceGroupManagerAggregatedListWarningDataItem,
@@ -11689,7 +11765,7 @@ export interface AttachedDiskInitializeParams {
   /** Labels to apply to this disk. These can be later modified by thedisks.setLabels method. This field is only applicable for persistent disks. */
   labels?: StringMap;
   /** The architecture of the attached disk. Valid values are arm64 or x86_64. */
-  architecture?: AttachedDiskInitializeParamsArchitectureEnum;
+  architecture?: AttachedDiskInitializeParamsArchitectureEnum | (string & {});
   /** Resource policies applied to this disk for automatic snapshot creations. Specified using the full or partial URL. For instance template, specify only the resource policy name. */
   resourcePolicies?: StringList;
   /** Specifies the size of the disk in base-2 GB. The size must be at least 10 GB. If you specify a sourceImage, which is required for boot disks, the default size is the size of the sourceImage. If you do not specify a sourceImage, the default disk size is 500 GB. */
@@ -11697,7 +11773,7 @@ export interface AttachedDiskInitializeParams {
   /** An optional description. Provide this property when creating the disk. */
   description?: string;
   /** [Deprecated] Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default isSCSI. */
-  interface?: AttachedDiskInitializeParamsInterfaceEnum;
+  interface?: AttachedDiskInitializeParamsInterfaceEnum | (string & {});
   /** Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must greater than or equal to 1. */
   provisionedThroughput?: string;
   /** The source snapshot to create this disk. When creating a new instance boot disk, one of initializeParams.sourceSnapshot orinitializeParams.sourceImage or disks.source is required. To create a disk with a snapshot that you created, specify the snapshot name in the following format: global/snapshots/my-backup If the source snapshot is deleted later, this field will not be set. Note: You cannot create VMs in bulk using a snapshot as the source. Use an image instead when you create VMs using the bulk insert method. */
@@ -11709,7 +11785,9 @@ export interface AttachedDiskInitializeParams {
   /** Thecustomer-supplied encryption key of the source snapshot. */
   sourceSnapshotEncryptionKey?: CustomerEncryptionKey;
   /** Specifies which action to take on instance update with this disk. Default is to use the existing disk. */
-  onUpdateAction?: AttachedDiskInitializeParamsOnUpdateActionEnum;
+  onUpdateAction?:
+    | AttachedDiskInitializeParamsOnUpdateActionEnum
+    | (string & {});
   /** Integer license codes indicating which licenses are attached to this disk. */
   licenseCodes?: StringList;
   /** Whether this disk is using confidential compute mode. */
@@ -11778,7 +11856,7 @@ export interface FileContentBuffer {
   /** The raw content in the secure keys file. */
   content?: string;
   /** The file type of source file. */
-  fileType?: FileContentBufferFileTypeEnum;
+  fileType?: FileContentBufferFileTypeEnum | (string & {});
 }
 export const FileContentBuffer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -11789,7 +11867,7 @@ export const FileContentBuffer = /*@__PURE__*/ S.suspend(() =>
   identifier: "FileContentBuffer",
 }) as any as S.Schema<FileContentBuffer>;
 
-export type FileContentBufferList = ReadonlyArray<FileContentBuffer>;
+export type FileContentBufferList = Array<FileContentBuffer>;
 export const FileContentBufferList = /*@__PURE__*/ S.Array(
   FileContentBuffer,
 ) as any as S.Schema<FileContentBufferList>;
@@ -11819,11 +11897,11 @@ export const InitialStateConfig = /*@__PURE__*/ S.suspend(() =>
 /** An instance-attached disk resource. */
 export interface AttachedDisk {
   /** The mode in which to attach this disk, either READ_WRITE orREAD_ONLY. If not specified, the default is to attach the disk in READ_WRITE mode. */
-  mode?: AttachedDiskModeEnum;
+  mode?: AttachedDiskModeEnum | (string & {});
   /** Output only. [Output Only] Any valid publicly visible licenses. */
   licenses?: StringList;
   /** Output only. For LocalSSD disks on VM Instances in STOPPED or SUSPENDED state, this field is set to PRESERVED if the LocalSSD data has been saved to a persistent location by customer request. (see the discard_local_ssd option on Stop/Suspend). Read-only in the api. */
-  savedState?: AttachedDiskSavedStateEnum;
+  savedState?: AttachedDiskSavedStateEnum | (string & {});
   /** Output only. [Output Only] A zero-based index to this disk, where 0 is reserved for the boot disk. If you have many disks attached to an instance, each disk would have a unique index number. */
   index?: number;
   /** Encrypts or decrypts a disk using acustomer-supplied encryption key. If you are creating a new disk, this field encrypts the new disk using an encryption key that you provide. If you are attaching an existing disk that is already encrypted, this field decrypts the disk using the customer-supplied encryption key. If you encrypt a disk using a customer-supplied key, you must provide the same key again when you attempt to use this resource at a later time. For example, you must provide the key when you create a snapshot or an image from the disk or when you attach the disk to a virtual machine instance. If you do not provide an encryption key, then the disk will be encrypted using an automatically generated key and you do not need to provide a key to use the disk later. Note: Instance templates do not storecustomer-supplied encryption keys, so you cannot use your own keys to encrypt disks in amanaged instance group. You cannot create VMs that have disks with customer-supplied keys using the bulk insert method. */
@@ -11835,7 +11913,7 @@ export interface AttachedDisk {
   /** A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options. */
   guestOsFeatures?: GuestOsFeatureList;
   /** Output only. [Output Only] The architecture of the attached disk. Valid values are ARM64 or X86_64. */
-  architecture?: AttachedDiskArchitectureEnum;
+  architecture?: AttachedDiskArchitectureEnum | (string & {});
   /** Indicates that this is a boot disk. The virtual machine will use the first partition of the disk for its root filesystem. */
   boot?: boolean;
   /** [Input Only] Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new instance. This property is mutually exclusive with the source property; you can only define one or the other, but not both. */
@@ -11843,13 +11921,13 @@ export interface AttachedDisk {
   /** The size of the disk in GB. */
   diskSizeGb?: string;
   /** Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. For most machine types, the default is SCSI. Local SSDs can use either NVME or SCSI. In certain configurations, persistent disks can use NVMe. For more information, seeAbout persistent disks. */
-  interface?: AttachedDiskInterfaceEnum;
+  interface?: AttachedDiskInterfaceEnum | (string & {});
   /** Output only. [Output Only] Whether to indicate the attached disk is locked. The locked disk is not allowed to be detached from the instance, or to be used as the source of the snapshot creation, and the image creation. The instance with at least one locked attached disk is not allow to be used as source of machine image creation, instant snapshot creation, and not allowed to be deleted with --keep-disk parameter set to true for locked disks. */
   locked?: boolean;
   /** Specifies whether the disk will be auto-deleted when the instance is deleted (but not when the disk is detached from the instance). */
   autoDelete?: boolean;
   /** Specifies the type of the disk, either SCRATCH orPERSISTENT. If not specified, the default isPERSISTENT. */
-  type?: AttachedDiskTypeEnum;
+  type?: AttachedDiskTypeEnum | (string & {});
   /** Specifies a unique device name of your choice that is reflected into the/dev/disk/by-id/google-* tree of a Linux operating system running within the instance. This name can be used to reference the device for mounting, resizing, and so on, from within the instance. If not specified, the server chooses a default device name to apply to this disk, in the form persistent-disk-x, where x is a number assigned by Google Compute Engine. This field is only applicable for persistent disks. */
   deviceName?: string;
   /** Output only. [Output Only] Type of the resource. Alwayscompute#attachedDisk for attached disks. */
@@ -11881,7 +11959,7 @@ export const AttachedDisk = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AttachedDisk" }) as any as S.Schema<AttachedDisk>;
 
-export type AttachedDiskList = ReadonlyArray<AttachedDisk>;
+export type AttachedDiskList = Array<AttachedDisk>;
 export const AttachedDiskList = /*@__PURE__*/ S.Array(
   AttachedDisk,
 ) as any as S.Schema<AttachedDiskList>;
@@ -11990,7 +12068,9 @@ export const InstanceGroupManagerInstanceLifecyclePolicyOnRepairAllowChangingZon
 /** Configuration for VM repairs in the MIG. */
 export interface InstanceGroupManagerInstanceLifecyclePolicyOnRepair {
   /** Specifies whether the MIG can change a VM's zone during a repair. Valid values are: - NO (default): MIG cannot change a VM's zone during a repair. - YES: MIG can select a different zone for the VM during a repair. */
-  allowChangingZone?: InstanceGroupManagerInstanceLifecyclePolicyOnRepairAllowChangingZoneEnum;
+  allowChangingZone?:
+    | InstanceGroupManagerInstanceLifecyclePolicyOnRepairAllowChangingZoneEnum
+    | (string & {});
 }
 export const InstanceGroupManagerInstanceLifecyclePolicyOnRepair =
   /*@__PURE__*/ S.suspend(() =>
@@ -12015,15 +12095,21 @@ export const InstanceGroupManagerInstanceLifecyclePolicyOnFailedHealthCheckEnum 
 
 export interface InstanceGroupManagerInstanceLifecyclePolicy {
   /** A bit indicating whether to forcefully apply the group's latest configuration when repairing a VM. Valid options are: - NO (default): If configuration updates are available, they are not forcefully applied during repair. Instead, configuration updates are applied according to the group's update policy. - YES: If configuration updates are available, they are applied during repair. */
-  forceUpdateOnRepair?: InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairEnum;
+  forceUpdateOnRepair?:
+    | InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairEnum
+    | (string & {});
   /** The configuration for metadata based readiness signal sent by the instance during initialization when stopping / suspending an instance. The Instance Group Manager will wait for a signal that indicates successful initialization before stopping / suspending an instance. If a successful readiness signal is not sent before timeout, the corresponding instance will not be stopped / suspended. Instead, an error will be visible in the lastAttempt.errors field of the managed instance in the listmanagedinstances method. If metadataBasedReadinessSignal.timeoutSec is unset, the Instance Group Manager will directly proceed to suspend / stop instances, skipping initialization on them. */
   metadataBasedReadinessSignal?: InstanceGroupManagerInstanceLifecyclePolicyMetadataBasedReadinessSignal;
   /** Configuration for VM repairs in the MIG. */
   onRepair?: InstanceGroupManagerInstanceLifecyclePolicyOnRepair;
   /** The action that a MIG performs on a failed VM. If the value of the onFailedHealthCheck field is `DEFAULT_ACTION`, then the same action also applies to the VMs on which your application fails a health check. Valid values are - REPAIR (default): MIG automatically repairs a failed VM by recreating it. For more information, see About repairing VMs in a MIG. - DO_NOTHING: MIG does not repair a failed VM. */
-  defaultActionOnFailure?: InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailureEnum;
+  defaultActionOnFailure?:
+    | InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailureEnum
+    | (string & {});
   /** The action that a MIG performs on an unhealthy VM. A VM is marked as unhealthy when the application running on that VM fails a health check. Valid values are: - DEFAULT_ACTION (default): MIG uses the same action configured for instanceLifecyclePolicy.defaultActionOnFailure field. - REPAIR: MIG automatically repairs an unhealthy VM by recreating it. - DO_NOTHING: MIG doesn't repair an unhealthy VM. For more information, see About repairing VMs in a MIG. */
-  onFailedHealthCheck?: InstanceGroupManagerInstanceLifecyclePolicyOnFailedHealthCheckEnum;
+  onFailedHealthCheck?:
+    | InstanceGroupManagerInstanceLifecyclePolicyOnFailedHealthCheckEnum
+    | (string & {});
 }
 export const InstanceGroupManagerInstanceLifecyclePolicy =
   /*@__PURE__*/ S.suspend(() =>
@@ -12070,7 +12156,7 @@ export const InstanceGroupManagerStatusAcceleratorTopologyAcceleratorTopologySta
   }) as any as S.Schema<InstanceGroupManagerStatusAcceleratorTopologyAcceleratorTopologyStateDetailsErrorErrorsItemErrorDetailsItem>;
 
 export type InstanceGroupManagerStatusAcceleratorTopologyAcceleratorTopologyStateDetailsErrorErrorsItemErrorDetailsItemList =
-  ReadonlyArray<InstanceGroupManagerStatusAcceleratorTopologyAcceleratorTopologyStateDetailsErrorErrorsItemErrorDetailsItem>;
+  Array<InstanceGroupManagerStatusAcceleratorTopologyAcceleratorTopologyStateDetailsErrorErrorsItemErrorDetailsItem>;
 export const InstanceGroupManagerStatusAcceleratorTopologyAcceleratorTopologyStateDetailsErrorErrorsItemErrorDetailsItemList =
   /*@__PURE__*/ S.Array(
     InstanceGroupManagerStatusAcceleratorTopologyAcceleratorTopologyStateDetailsErrorErrorsItemErrorDetailsItem,
@@ -12102,7 +12188,7 @@ export const InstanceGroupManagerStatusAcceleratorTopologyAcceleratorTopologySta
   }) as any as S.Schema<InstanceGroupManagerStatusAcceleratorTopologyAcceleratorTopologyStateDetailsErrorErrorsItem>;
 
 export type InstanceGroupManagerStatusAcceleratorTopologyAcceleratorTopologyStateDetailsErrorErrorsItemList =
-  ReadonlyArray<InstanceGroupManagerStatusAcceleratorTopologyAcceleratorTopologyStateDetailsErrorErrorsItem>;
+  Array<InstanceGroupManagerStatusAcceleratorTopologyAcceleratorTopologyStateDetailsErrorErrorsItem>;
 export const InstanceGroupManagerStatusAcceleratorTopologyAcceleratorTopologyStateDetailsErrorErrorsItemList =
   /*@__PURE__*/ S.Array(
     InstanceGroupManagerStatusAcceleratorTopologyAcceleratorTopologyStateDetailsErrorErrorsItem,
@@ -12160,7 +12246,9 @@ export interface InstanceGroupManagerStatusAcceleratorTopology {
   /** Output only. Topology in the format of: "16x16", "4x4x4", etc. The value is the same as configured in the WorkloadPolicy. */
   acceleratorTopology?: string;
   /** Output only. The state of the accelerator topology. */
-  state?: InstanceGroupManagerStatusAcceleratorTopologyStateEnum;
+  state?:
+    | InstanceGroupManagerStatusAcceleratorTopologyStateEnum
+    | (string & {});
 }
 export const InstanceGroupManagerStatusAcceleratorTopology =
   /*@__PURE__*/ S.suspend(() =>
@@ -12176,7 +12264,7 @@ export const InstanceGroupManagerStatusAcceleratorTopology =
   }) as any as S.Schema<InstanceGroupManagerStatusAcceleratorTopology>;
 
 export type InstanceGroupManagerStatusAcceleratorTopologyList =
-  ReadonlyArray<InstanceGroupManagerStatusAcceleratorTopology>;
+  Array<InstanceGroupManagerStatusAcceleratorTopology>;
 export const InstanceGroupManagerStatusAcceleratorTopologyList =
   /*@__PURE__*/ S.Array(
     InstanceGroupManagerStatusAcceleratorTopology,
@@ -12268,7 +12356,7 @@ export const InstanceGroupManagerStatusBulkInstanceOperationLastProgressCheckErr
   }) as any as S.Schema<InstanceGroupManagerStatusBulkInstanceOperationLastProgressCheckErrorErrorsItemErrorDetailsItem>;
 
 export type InstanceGroupManagerStatusBulkInstanceOperationLastProgressCheckErrorErrorsItemErrorDetailsItemList =
-  ReadonlyArray<InstanceGroupManagerStatusBulkInstanceOperationLastProgressCheckErrorErrorsItemErrorDetailsItem>;
+  Array<InstanceGroupManagerStatusBulkInstanceOperationLastProgressCheckErrorErrorsItemErrorDetailsItem>;
 export const InstanceGroupManagerStatusBulkInstanceOperationLastProgressCheckErrorErrorsItemErrorDetailsItemList =
   /*@__PURE__*/ S.Array(
     InstanceGroupManagerStatusBulkInstanceOperationLastProgressCheckErrorErrorsItemErrorDetailsItem,
@@ -12300,7 +12388,7 @@ export const InstanceGroupManagerStatusBulkInstanceOperationLastProgressCheckErr
   }) as any as S.Schema<InstanceGroupManagerStatusBulkInstanceOperationLastProgressCheckErrorErrorsItem>;
 
 export type InstanceGroupManagerStatusBulkInstanceOperationLastProgressCheckErrorErrorsItemList =
-  ReadonlyArray<InstanceGroupManagerStatusBulkInstanceOperationLastProgressCheckErrorErrorsItem>;
+  Array<InstanceGroupManagerStatusBulkInstanceOperationLastProgressCheckErrorErrorsItem>;
 export const InstanceGroupManagerStatusBulkInstanceOperationLastProgressCheckErrorErrorsItemList =
   /*@__PURE__*/ S.Array(
     InstanceGroupManagerStatusBulkInstanceOperationLastProgressCheckErrorErrorsItem,
@@ -12458,7 +12546,9 @@ export const InstanceGroupManagerAutoHealingPolicyAutoHealingTriggersOnHealthChe
 
 export interface InstanceGroupManagerAutoHealingPolicyAutoHealingTriggers {
   /** If you have configured an application-based health check for the group, this field controls whether to trigger VM autohealing based on a failed health check. Valid values are: - ON (default): The group recreates running VMs that fail the application-based health check. - OFF: When set to OFF, you can still observe instance health state, but the group does not recreate VMs that fail the application-based health check. This is useful for troubleshooting and setting up your health check configuration. */
-  onHealthCheck?: InstanceGroupManagerAutoHealingPolicyAutoHealingTriggersOnHealthCheckEnum;
+  onHealthCheck?:
+    | InstanceGroupManagerAutoHealingPolicyAutoHealingTriggersOnHealthCheckEnum
+    | (string & {});
 }
 export const InstanceGroupManagerAutoHealingPolicyAutoHealingTriggers =
   /*@__PURE__*/ S.suspend(() =>
@@ -12496,7 +12586,7 @@ export const InstanceGroupManagerAutoHealingPolicy = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<InstanceGroupManagerAutoHealingPolicy>;
 
 export type InstanceGroupManagerAutoHealingPolicyList =
-  ReadonlyArray<InstanceGroupManagerAutoHealingPolicy>;
+  Array<InstanceGroupManagerAutoHealingPolicy>;
 export const InstanceGroupManagerAutoHealingPolicyList = /*@__PURE__*/ S.Array(
   InstanceGroupManagerAutoHealingPolicy,
 ) as any as S.Schema<InstanceGroupManagerAutoHealingPolicyList>;
@@ -12523,7 +12613,7 @@ export const InstanceGroupManagerVersion = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InstanceGroupManagerVersion>;
 
 export type InstanceGroupManagerVersionList =
-  ReadonlyArray<InstanceGroupManagerVersion>;
+  Array<InstanceGroupManagerVersion>;
 export const InstanceGroupManagerVersionList = /*@__PURE__*/ S.Array(
   InstanceGroupManagerVersion,
 ) as any as S.Schema<InstanceGroupManagerVersionList>;
@@ -12596,7 +12686,9 @@ export const StatefulPolicyPreservedStateDiskDeviceAutoDeleteEnum =
 
 export interface StatefulPolicyPreservedStateDiskDevice {
   /** These stateful disks will never be deleted during autohealing, update or VM instance recreate operations. This flag is used to configure if the disk should be deleted after it is no longer used by the group, e.g. when the given instance or the whole group is deleted. Note: disks attached inREAD_ONLY mode cannot be auto-deleted. */
-  autoDelete?: StatefulPolicyPreservedStateDiskDeviceAutoDeleteEnum;
+  autoDelete?:
+    | StatefulPolicyPreservedStateDiskDeviceAutoDeleteEnum
+    | (string & {});
 }
 export const StatefulPolicyPreservedStateDiskDevice = /*@__PURE__*/ S.suspend(
   () =>
@@ -12625,7 +12717,9 @@ export const StatefulPolicyPreservedStateNetworkIpAutoDeleteEnum =
 
 export interface StatefulPolicyPreservedStateNetworkIp {
   /** These stateful IPs will never be released during autohealing, update or VM instance recreate operations. This flag is used to configure if the IP reservation should be deleted after it is no longer used by the group, e.g. when the given instance or the whole group is deleted. */
-  autoDelete?: StatefulPolicyPreservedStateNetworkIpAutoDeleteEnum;
+  autoDelete?:
+    | StatefulPolicyPreservedStateNetworkIpAutoDeleteEnum
+    | (string & {});
 }
 export const StatefulPolicyPreservedStateNetworkIp = /*@__PURE__*/ S.suspend(
   () =>
@@ -12726,7 +12820,7 @@ export const InstanceGroupManagerStandbyPolicyModeEnum = /*@__PURE__*/ S.String;
 
 export interface InstanceGroupManagerStandbyPolicy {
   /** Defines how a MIG resumes or starts VMs from a standby pool when the group scales out. The default mode is `MANUAL`. */
-  mode?: InstanceGroupManagerStandbyPolicyModeEnum;
+  mode?: InstanceGroupManagerStandbyPolicyModeEnum | (string & {});
   /** Specifies the number of seconds that the MIG should wait to suspend or stop a VM after that VM was created. The initial delay gives the initialization script the time to prepare your VM for a quick scale out. The value of initial delay must be between 0 and 3600 seconds. The default value is 0. */
   initialDelaySec?: number;
 }
@@ -12752,7 +12846,7 @@ export const DistributionPolicyZoneConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DistributionPolicyZoneConfiguration>;
 
 export type DistributionPolicyZoneConfigurationList =
-  ReadonlyArray<DistributionPolicyZoneConfiguration>;
+  Array<DistributionPolicyZoneConfiguration>;
 export const DistributionPolicyZoneConfigurationList = /*@__PURE__*/ S.Array(
   DistributionPolicyZoneConfiguration,
 ) as any as S.Schema<DistributionPolicyZoneConfigurationList>;
@@ -12768,7 +12862,7 @@ export interface DistributionPolicy {
   /** Zones where the regional managed instance group will create and manage its instances. By default, a regional MIG doesn't automatically select an AI zone to create instances, even if an AI zone is available in the specified region. To create instances in an AI zone in the selected region, you must explicitly specify it in the distribution policy together with the other preferred zones. */
   zones?: DistributionPolicyZoneConfigurationList;
   /** The distribution shape to which the group converges either proactively or on resize events (depending on the value set inupdatePolicy.instanceRedistributionType). */
-  targetShape?: DistributionPolicyTargetShapeEnum;
+  targetShape?: DistributionPolicyTargetShapeEnum | (string & {});
 }
 export const DistributionPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -12793,7 +12887,7 @@ export const NamedPort = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "NamedPort" }) as any as S.Schema<NamedPort>;
 
-export type NamedPortList = ReadonlyArray<NamedPort>;
+export type NamedPortList = Array<NamedPort>;
 export const NamedPortList = /*@__PURE__*/ S.Array(
   NamedPort,
 ) as any as S.Schema<NamedPortList>;
@@ -12810,7 +12904,7 @@ export const InstanceGroupManagerTargetSizePolicyModeEnum =
 
 export interface InstanceGroupManagerTargetSizePolicy {
   /** The mode of target size policy based on which the MIG creates its VMs individually or all at once. */
-  mode?: InstanceGroupManagerTargetSizePolicyModeEnum;
+  mode?: InstanceGroupManagerTargetSizePolicyModeEnum | (string & {});
 }
 export const InstanceGroupManagerTargetSizePolicy = /*@__PURE__*/ S.suspend(
   () =>
@@ -12871,8 +12965,9 @@ export type InstanceGroupManagerUpdatePolicyAllowedActionsItemEnum =
 export const InstanceGroupManagerUpdatePolicyAllowedActionsItemEnum =
   /*@__PURE__*/ S.String;
 
-export type InstanceGroupManagerUpdatePolicyAllowedActionsItemEnumList =
-  ReadonlyArray<InstanceGroupManagerUpdatePolicyAllowedActionsItemEnum>;
+export type InstanceGroupManagerUpdatePolicyAllowedActionsItemEnumList = Array<
+  InstanceGroupManagerUpdatePolicyAllowedActionsItemEnum | (string & {})
+>;
 export const InstanceGroupManagerUpdatePolicyAllowedActionsItemEnumList =
   /*@__PURE__*/ S.Array(
     InstanceGroupManagerUpdatePolicyAllowedActionsItemEnum,
@@ -12880,23 +12975,33 @@ export const InstanceGroupManagerUpdatePolicyAllowedActionsItemEnumList =
 
 export interface InstanceGroupManagerUpdatePolicy {
   /** The instance redistribution policy for regional managed instance groups. Valid values are: - PROACTIVE (default): The group attempts to maintain an even distribution of VM instances across zones in the region. - NONE: For non-autoscaled groups, proactive redistribution is disabled. */
-  instanceRedistributionType?: InstanceGroupManagerUpdatePolicyInstanceRedistributionTypeEnum;
+  instanceRedistributionType?:
+    | InstanceGroupManagerUpdatePolicyInstanceRedistributionTypeEnum
+    | (string & {});
   /** Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions,REFRESH to avoid restarting the VM and to limit disruption as much as possible. RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all. */
-  mostDisruptiveAllowedAction?: InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedActionEnum;
+  mostDisruptiveAllowedAction?:
+    | InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedActionEnum
+    | (string & {});
   /** Whether the boot disk is allowed to be updated with restart. */
-  disruptionMode?: InstanceGroupManagerUpdatePolicyDisruptionModeEnum;
+  disruptionMode?:
+    | InstanceGroupManagerUpdatePolicyDisruptionModeEnum
+    | (string & {});
   /** The maximum number of instances that can be created above the specifiedtargetSize during the update process. This value can be either a fixed number or, if the group has 10 or more instances, a percentage. If you set a percentage, the number of instances is rounded if necessary. The default value for maxSurge is a fixed value equal to the number of zones in which the managed instance group operates. At least one of either maxSurge ormaxUnavailable must be greater than 0. Learn more about maxSurge. */
   maxSurge?: FixedOrPercent;
   /** Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600]. */
   minReadySec?: number;
   /** Minimal action to be taken on an instance. Use this option to minimize disruption as much as possible or to apply a more disruptive action than is necessary. - To limit disruption as much as possible, set the minimal action toREFRESH. If your update requires a more disruptive action, Compute Engine performs the necessary action to execute the update. - To apply a more disruptive action than is strictly necessary, set the minimal action to RESTART or REPLACE. For example, Compute Engine does not need to restart a VM to change its metadata. But if your application reads instance metadata only when a VM is restarted, you can set the minimal action to RESTART in order to pick up metadata changes. */
-  minimalAction?: InstanceGroupManagerUpdatePolicyMinimalActionEnum;
+  minimalAction?:
+    | InstanceGroupManagerUpdatePolicyMinimalActionEnum
+    | (string & {});
   /** The maximum number of instances that can be unavailable during the update process. An instance is considered available if all of the following conditions are satisfied: - The instance's status is RUNNING. - If there is a health check on the instance group, the instance's health check status must be HEALTHY at least once. If there is no health check on the group, then the instance only needs to have a status of RUNNING to be considered available. This value can be either a fixed number or, if the group has 10 or more instances, a percentage. If you set a percentage, the number of instances is rounded if necessary. The default value formaxUnavailable is a fixed value equal to the number of zones in which the managed instance group operates. At least one of either maxSurge ormaxUnavailable must be greater than 0. Learn more about maxUnavailable. */
   maxUnavailable?: FixedOrPercent;
   /** The type of update process. You can specify either PROACTIVE so that the MIG automatically updates VMs to the latest configurations orOPPORTUNISTIC so that you can select the VMs that you want to update. */
-  type?: InstanceGroupManagerUpdatePolicyTypeEnum;
+  type?: InstanceGroupManagerUpdatePolicyTypeEnum | (string & {});
   /** What action should be used to replace instances. See minimal_action.REPLACE */
-  replacementMethod?: InstanceGroupManagerUpdatePolicyReplacementMethodEnum;
+  replacementMethod?:
+    | InstanceGroupManagerUpdatePolicyReplacementMethodEnum
+    | (string & {});
   /** Actions that are allowed to update instances within MIG. */
   allowedActions?: InstanceGroupManagerUpdatePolicyAllowedActionsItemEnumList;
 }
@@ -12999,7 +13104,7 @@ export interface InstanceGroupManager {
   /** Resource policies for this managed instance group. */
   resourcePolicies?: InstanceGroupManagerResourcePolicies;
   /** The unit of measure for the target size. */
-  targetSizeUnit?: InstanceGroupManagerTargetSizeUnitEnum;
+  targetSizeUnit?: InstanceGroupManagerTargetSizeUnitEnum | (string & {});
   /** Standby policy for stopped and suspended instances. */
   standbyPolicy?: InstanceGroupManagerStandbyPolicy;
   /** Policy specifying the intended distribution of managed instances across zones in a regional managed instance group. */
@@ -13013,7 +13118,7 @@ export interface InstanceGroupManager {
   /** Output only. The URL of the Instance Group resource. */
   instanceGroup?: string;
   /** The action to perform in case of zone failure. Only one value is supported,NO_FAILOVER. The default is NO_FAILOVER. */
-  failoverAction?: InstanceGroupManagerFailoverActionEnum;
+  failoverAction?: InstanceGroupManagerFailoverActionEnum | (string & {});
   /** Output only. A unique identifier for this resource type. The server generates this identifier. */
   id?: string;
   /** The policy that specifies how the MIG creates its VMs to achieve the target size. */
@@ -13025,7 +13130,9 @@ export interface InstanceGroupManager {
   /** The target number of stopped instances for this managed instance group. This number changes when you: - Stop instance using the stopInstances method or start instances using the startInstances method. - Manually change the targetStoppedSize using the update method. */
   targetStoppedSize?: number;
   /** Pagination behavior of the listManagedInstances API method for this managed instance group. */
-  listManagedInstancesResults?: InstanceGroupManagerListManagedInstancesResultsEnum;
+  listManagedInstancesResults?:
+    | InstanceGroupManagerListManagedInstancesResultsEnum
+    | (string & {});
   /** Input only. Additional params passed with the request, but not persisted as part of resource payload. */
   params?: InstanceGroupManagerParams;
 }
@@ -13081,7 +13188,7 @@ export const InstanceGroupManager = /*@__PURE__*/ S.suspend(() =>
   identifier: "InstanceGroupManager",
 }) as any as S.Schema<InstanceGroupManager>;
 
-export type InstanceGroupManagerList_ = ReadonlyArray<InstanceGroupManager>;
+export type InstanceGroupManagerList_ = Array<InstanceGroupManager>;
 export const InstanceGroupManagerList_ = /*@__PURE__*/ S.Array(
   InstanceGroupManager,
 ) as any as S.Schema<InstanceGroupManagerList_>;
@@ -13136,7 +13243,7 @@ export const InstanceGroupManagersScopedListWarningDataItem =
   }) as any as S.Schema<InstanceGroupManagersScopedListWarningDataItem>;
 
 export type InstanceGroupManagersScopedListWarningDataItemList =
-  ReadonlyArray<InstanceGroupManagersScopedListWarningDataItem>;
+  Array<InstanceGroupManagersScopedListWarningDataItem>;
 export const InstanceGroupManagersScopedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     InstanceGroupManagersScopedListWarningDataItem,
@@ -13303,7 +13410,7 @@ export const InstanceGroupAggregatedListWarningDataItem =
   }) as any as S.Schema<InstanceGroupAggregatedListWarningDataItem>;
 
 export type InstanceGroupAggregatedListWarningDataItemList =
-  ReadonlyArray<InstanceGroupAggregatedListWarningDataItem>;
+  Array<InstanceGroupAggregatedListWarningDataItem>;
 export const InstanceGroupAggregatedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     InstanceGroupAggregatedListWarningDataItem,
@@ -13377,7 +13484,7 @@ export const InstanceGroup = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "InstanceGroup" }) as any as S.Schema<InstanceGroup>;
 
-export type InstanceGroupList_ = ReadonlyArray<InstanceGroup>;
+export type InstanceGroupList_ = Array<InstanceGroup>;
 export const InstanceGroupList_ = /*@__PURE__*/ S.Array(
   InstanceGroup,
 ) as any as S.Schema<InstanceGroupList_>;
@@ -13399,7 +13506,7 @@ export const InstanceGroupsScopedListWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<InstanceGroupsScopedListWarningDataItem>;
 
 export type InstanceGroupsScopedListWarningDataItemList =
-  ReadonlyArray<InstanceGroupsScopedListWarningDataItem>;
+  Array<InstanceGroupsScopedListWarningDataItem>;
 export const InstanceGroupsScopedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     InstanceGroupsScopedListWarningDataItem,
@@ -13660,7 +13767,7 @@ export const ServiceAccount = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ServiceAccount" }) as any as S.Schema<ServiceAccount>;
 
-export type ServiceAccountList = ReadonlyArray<ServiceAccount>;
+export type ServiceAccountList = Array<ServiceAccount>;
 export const ServiceAccountList = /*@__PURE__*/ S.Array(
   ServiceAccount,
 ) as any as S.Schema<ServiceAccountList>;
@@ -13679,7 +13786,7 @@ export const SchedulingVsockModeModeEnum = /*@__PURE__*/ S.String;
 
 /** Message to control the enablement of the vsock device. */
 export interface SchedulingVsockMode {
-  mode?: SchedulingVsockModeModeEnum;
+  mode?: SchedulingVsockModeModeEnum | (string & {});
 }
 export const SchedulingVsockMode = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -13756,7 +13863,7 @@ export interface SchedulingNodeAffinity {
   /** Corresponds to the label values of Node resource. */
   values?: StringList;
   /** Defines the operation of node selection. Valid operators areIN for affinity and NOT_IN for anti-affinity. */
-  operator?: SchedulingNodeAffinityOperatorEnum;
+  operator?: SchedulingNodeAffinityOperatorEnum | (string & {});
   /** Corresponds to the label key of Node resource. */
   key?: string;
 }
@@ -13770,7 +13877,7 @@ export const SchedulingNodeAffinity = /*@__PURE__*/ S.suspend(() =>
   identifier: "SchedulingNodeAffinity",
 }) as any as S.Schema<SchedulingNodeAffinity>;
 
-export type SchedulingNodeAffinityList = ReadonlyArray<SchedulingNodeAffinity>;
+export type SchedulingNodeAffinityList = Array<SchedulingNodeAffinity>;
 export const SchedulingNodeAffinityList = /*@__PURE__*/ S.Array(
   SchedulingNodeAffinity,
 ) as any as S.Schema<SchedulingNodeAffinityList>;
@@ -13780,7 +13887,9 @@ export interface Scheduling {
   /** Current number of vCPUs available for VM. 0 or unset means default vCPUs of the current machine type. */
   currentCpus?: number;
   /** Specifies the termination action for the instance. */
-  instanceTerminationAction?: SchedulingInstanceTerminationActionEnum;
+  instanceTerminationAction?:
+    | SchedulingInstanceTerminationActionEnum
+    | (string & {});
   /** Specifies whether the instance should be automatically restarted if it is terminated by Compute Engine (not terminated by a user). You can only set the automatic restart option for standard instances.Preemptible instances cannot be automatically restarted. By default, this is set to true so an instance is automatically restarted if it is terminated by Compute Engine. */
   automaticRestart?: boolean;
   /** Specifies the Metadata Service preemption notice duration before the GCE ACPI G2 Soft Off signal is triggered for Spot VMs only. If not specified, there will be no wait before the G2 Soft Off signal is triggered. */
@@ -13793,7 +13902,9 @@ export interface Scheduling {
   vsockMode?: SchedulingVsockMode;
   gracefulShutdown?: SchedulingGracefulShutdown;
   /** Represents the Windows Server License Optimization Mode of the VM. If unspecified, the default mode is `OFF`. */
-  windowsLicenseOptimizationMode?: SchedulingWindowsLicenseOptimizationModeEnum;
+  windowsLicenseOptimizationMode?:
+    | SchedulingWindowsLicenseOptimizationModeEnum
+    | (string & {});
   /** Specifies the number of hours after VM instance creation where the VM won't be scheduled for maintenance. */
   maintenanceFreezeDurationHours?: number;
   /** Specifies the max run duration for the given instance. If specified, the instance termination action will be performed at the end of the run duration. */
@@ -13803,13 +13914,13 @@ export interface Scheduling {
   /** Specifies the maximum amount of time a Local Ssd Vm should wait while recovery of the Local Ssd state is attempted. Its value should be in between 0 and 168 hours with hour granularity and the default value being 1 hour. */
   localSsdRecoveryTimeout?: Duration;
   /** Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. Forpreemptible instances, the default and only possible behavior is TERMINATE. For more information, see Set VM host maintenance policy. */
-  onHostMaintenance?: SchedulingOnHostMaintenanceEnum;
+  onHostMaintenance?: SchedulingOnHostMaintenanceEnum | (string & {});
   /** Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`. */
-  maintenanceInterval?: SchedulingMaintenanceIntervalEnum;
+  maintenanceInterval?: SchedulingMaintenanceIntervalEnum | (string & {});
   /** Specifies the availability domain to place the instance in. The value must be a number between 1 and the number of availability domains specified in the spread placement policy attached to the instance. */
   availabilityDomain?: number;
   /** Specifies the provisioning model of the instance. */
-  provisioningModel?: SchedulingProvisioningModelEnum;
+  provisioningModel?: SchedulingProvisioningModelEnum | (string & {});
   /** Default is false and there will be 120 seconds between GCE ACPI G2 Soft Off and ACPI G3 Mechanical Off for Standard VMs and 30 seconds for Spot VMs. */
   skipGuestOsShutdown?: boolean;
   /** DEPRECATED: please use skipGuestOsShutdown. Timeout between GCE ACPI G2 Soft Off and ACPI G3 Mechanical Off during shutdown operation of VM. For Standard VMs values between 0s and 120s are allowed. For Spot and Preemptible VMs supported values are between 0s and 30s. If no value is specified for shutdownDuration, default values are 90s for Standard VMs and 30s for Spot/Preemptible VMs. */
@@ -13909,8 +14020,12 @@ export const NetworkPerformanceConfigTotalEgressBandwidthTierEnum =
   /*@__PURE__*/ S.String;
 
 export interface NetworkPerformanceConfig {
-  externalIpEgressBandwidthTier?: NetworkPerformanceConfigExternalIpEgressBandwidthTierEnum;
-  totalEgressBandwidthTier?: NetworkPerformanceConfigTotalEgressBandwidthTierEnum;
+  externalIpEgressBandwidthTier?:
+    | NetworkPerformanceConfigExternalIpEgressBandwidthTierEnum
+    | (string & {});
+  totalEgressBandwidthTier?:
+    | NetworkPerformanceConfigTotalEgressBandwidthTierEnum
+    | (string & {});
 }
 export const NetworkPerformanceConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -13972,7 +14087,7 @@ export type WorkloadIdentityConfigIdentityTypeEnum =
 export const WorkloadIdentityConfigIdentityTypeEnum = /*@__PURE__*/ S.String;
 
 export interface WorkloadIdentityConfig {
-  identityType?: WorkloadIdentityConfigIdentityTypeEnum;
+  identityType?: WorkloadIdentityConfigIdentityTypeEnum | (string & {});
   identityCertificateEnabled?: boolean;
   identity?: string;
 }
@@ -14001,7 +14116,7 @@ export const MetadataItemsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "MetadataItemsItem",
 }) as any as S.Schema<MetadataItemsItem>;
 
-export type MetadataItemsItemList = ReadonlyArray<MetadataItemsItem>;
+export type MetadataItemsItemList = Array<MetadataItemsItem>;
 export const MetadataItemsItemList = /*@__PURE__*/ S.Array(
   MetadataItemsItem,
 ) as any as S.Schema<MetadataItemsItemList>;
@@ -14048,8 +14163,10 @@ export const ConfidentialParavisorConfigSevSnpIrqModeEnum =
 
 /** A set of Confidential Paravisor (SVSM) options. */
 export interface ConfidentialParavisorConfig {
-  confidentialTpmType?: ConfidentialParavisorConfigConfidentialTpmTypeEnum;
-  sevSnpIrqMode?: ConfidentialParavisorConfigSevSnpIrqModeEnum;
+  confidentialTpmType?:
+    | ConfidentialParavisorConfigConfidentialTpmTypeEnum
+    | (string & {});
+  sevSnpIrqMode?: ConfidentialParavisorConfigSevSnpIrqModeEnum | (string & {});
 }
 export const ConfidentialParavisorConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -14067,7 +14184,9 @@ export interface ConfidentialInstanceConfig {
   /** Defines whether the instance should have confidential compute enabled. */
   enableConfidentialCompute?: boolean;
   /** Defines the type of technology used by the confidential instance. */
-  confidentialInstanceType?: ConfidentialInstanceConfigConfidentialInstanceTypeEnum;
+  confidentialInstanceType?:
+    | ConfidentialInstanceConfigConfidentialInstanceTypeEnum
+    | (string & {});
   /** Defines a set of Confidential Paravisor (SVSM) options. */
   confidentialParavisorConfig?: ConfidentialParavisorConfig;
 }
@@ -14100,7 +14219,9 @@ export interface AdvancedMachineFeatures {
   /** Whether to enable nested virtualization or not (default is false). */
   enableNestedVirtualization?: boolean;
   /** Type of Performance Monitoring Unit requested on instance. */
-  performanceMonitoringUnit?: AdvancedMachineFeaturesPerformanceMonitoringUnitEnum;
+  performanceMonitoringUnit?:
+    | AdvancedMachineFeaturesPerformanceMonitoringUnitEnum
+    | (string & {});
   /** The number of vNUMA nodes. */
   numaNodeCount?: number;
   /** Whether to enable UEFI networking for instance creation. */
@@ -14144,7 +14265,7 @@ export const ResourceStatusAcceleratorStatusRecommendedScan =
   }) as any as S.Schema<ResourceStatusAcceleratorStatusRecommendedScan>;
 
 export type ResourceStatusAcceleratorStatusRecommendedScanList =
-  ReadonlyArray<ResourceStatusAcceleratorStatusRecommendedScan>;
+  Array<ResourceStatusAcceleratorStatusRecommendedScan>;
 export const ResourceStatusAcceleratorStatusRecommendedScanList =
   /*@__PURE__*/ S.Array(
     ResourceStatusAcceleratorStatusRecommendedScan,
@@ -14171,7 +14292,7 @@ export const ResourceStatusAcceleratorStatusPassedScan =
   }) as any as S.Schema<ResourceStatusAcceleratorStatusPassedScan>;
 
 export type ResourceStatusAcceleratorStatusPassedScanList =
-  ReadonlyArray<ResourceStatusAcceleratorStatusPassedScan>;
+  Array<ResourceStatusAcceleratorStatusPassedScan>;
 export const ResourceStatusAcceleratorStatusPassedScanList =
   /*@__PURE__*/ S.Array(
     ResourceStatusAcceleratorStatusPassedScan,
@@ -14202,7 +14323,7 @@ export const ResourceStatusAcceleratorStatus = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourceStatusAcceleratorStatus>;
 
 export type ResourceStatusAcceleratorStatusList =
-  ReadonlyArray<ResourceStatusAcceleratorStatus>;
+  Array<ResourceStatusAcceleratorStatus>;
 export const ResourceStatusAcceleratorStatusList = /*@__PURE__*/ S.Array(
   ResourceStatusAcceleratorStatus,
 ) as any as S.Schema<ResourceStatusAcceleratorStatusList>;
@@ -14240,9 +14361,9 @@ export const ResourceStatusShutdownDetailsTargetStateEnum =
 /** Specifies if the instance is in `PENDING_STOP` state or there is a programmed stop scheduled. */
 export interface ResourceStatusShutdownDetails {
   /** Current stopping state of the instance. */
-  stopState?: ResourceStatusShutdownDetailsStopStateEnum;
+  stopState?: ResourceStatusShutdownDetailsStopStateEnum | (string & {});
   /** Target instance state. */
-  targetState?: ResourceStatusShutdownDetailsTargetStateEnum;
+  targetState?: ResourceStatusShutdownDetailsTargetStateEnum | (string & {});
   /** Past timestamp indicating the beginning of current `stopState` in RFC3339 text format. */
   requestTimestamp?: string;
   /** The duration for graceful shutdown. Only applicable when `stop_state=PENDING_STOP`. */
@@ -14412,8 +14533,9 @@ export type UpcomingMaintenanceMaintenanceReasonsItemEnum =
 export const UpcomingMaintenanceMaintenanceReasonsItemEnum =
   /*@__PURE__*/ S.String;
 
-export type UpcomingMaintenanceMaintenanceReasonsItemEnumList =
-  ReadonlyArray<UpcomingMaintenanceMaintenanceReasonsItemEnum>;
+export type UpcomingMaintenanceMaintenanceReasonsItemEnumList = Array<
+  UpcomingMaintenanceMaintenanceReasonsItemEnum | (string & {})
+>;
 export const UpcomingMaintenanceMaintenanceReasonsItemEnumList =
   /*@__PURE__*/ S.Array(
     UpcomingMaintenanceMaintenanceReasonsItemEnum,
@@ -14426,8 +14548,8 @@ export interface UpcomingMaintenance {
   /** The latest time for the planned maintenance window to start. This timestamp value is in RFC3339 text format. */
   latestWindowStartTime?: string;
   /** Defines the type of maintenance. */
-  type?: UpcomingMaintenanceTypeEnum;
-  maintenanceStatus?: UpcomingMaintenanceMaintenanceStatusEnum;
+  type?: UpcomingMaintenanceTypeEnum | (string & {});
+  maintenanceStatus?: UpcomingMaintenanceMaintenanceStatusEnum | (string & {});
   /** The time by which the maintenance disruption will be completed. This timestamp value is in RFC3339 text format. */
   windowEndTime?: string;
   /** [Output Only] The time when the maintenance will take place. This value is inRFC3339 text format. DEPRECATED: Use window_start_time instead. */
@@ -14437,7 +14559,7 @@ export interface UpcomingMaintenance {
   /** Indicates if the maintenance can be customer triggered. */
   canReschedule?: boolean;
   /** Output only. Maintenance method for the upcoming maintenance. */
-  maintenanceMethod?: UpcomingMaintenanceMaintenanceMethodEnum;
+  maintenanceMethod?: UpcomingMaintenanceMaintenanceMethodEnum | (string & {});
   /** The current start time of the maintenance window. This timestamp value is in RFC3339 text format. */
   windowStartTime?: string;
   /** The reasons for the maintenance. Only valid for vms. */
@@ -14487,7 +14609,9 @@ export const ResourceStatusLastInstanceTerminationDetailsTerminationReasonEnum =
 
 export interface ResourceStatusLastInstanceTerminationDetails {
   /** Reason for termination */
-  terminationReason?: ResourceStatusLastInstanceTerminationDetailsTerminationReasonEnum;
+  terminationReason?:
+    | ResourceStatusLastInstanceTerminationDetailsTerminationReasonEnum
+    | (string & {});
 }
 export const ResourceStatusLastInstanceTerminationDetails =
   /*@__PURE__*/ S.suspend(() =>
@@ -14512,7 +14636,9 @@ export const ResourceStatusServiceIntegrationStatusBackupDRStatusStateEnum =
 /** Message defining compute perspective of the result of integration with Backup and DR. FAILED status indicates that the operation specified did not complete correctly and should be retried with the same value. */
 export interface ResourceStatusServiceIntegrationStatusBackupDRStatus {
   /** Enum representing the registration state of a Backup and DR backup plan for the instance. */
-  state?: ResourceStatusServiceIntegrationStatusBackupDRStatusStateEnum;
+  state?:
+    | ResourceStatusServiceIntegrationStatusBackupDRStatusStateEnum
+    | (string & {});
   /** The PlanReference object created by Backup and DR to maintain the actual status of backups. May still be present if removing the backup plan fails. */
   integrationDetails?: string;
 }
@@ -14621,7 +14747,7 @@ export type InstanceKeyRevocationActionTypeEnum =
   | "STOP";
 export const InstanceKeyRevocationActionTypeEnum = /*@__PURE__*/ S.String;
 
-export type NetworkInterfaceList = ReadonlyArray<NetworkInterface>;
+export type NetworkInterfaceList = Array<NetworkInterface>;
 export const NetworkInterfaceList = /*@__PURE__*/ S.Array(
   NetworkInterface,
 ) as any as S.Schema<NetworkInterfaceList>;
@@ -14642,7 +14768,9 @@ export interface ReservationAffinity {
   /** Corresponds to the label values of a reservation resource. This can be either a name to a reservation in the same project or "projects/different-project/reservations/some-reservation-name" to target a shared reservation in the same zone but in a different project. */
   values?: StringList;
   /** Specifies the type of reservation from which this instance can consume resources: ANY_RESERVATION (default),SPECIFIC_RESERVATION, or NO_RESERVATION. See Consuming reserved instances for examples. */
-  consumeReservationType?: ReservationAffinityConsumeReservationTypeEnum;
+  consumeReservationType?:
+    | ReservationAffinityConsumeReservationTypeEnum
+    | (string & {});
   /** Corresponds to the label key of a reservation resource. To target aSPECIFIC_RESERVATION by name, specifygoogleapis.com/reservation-name as the key and specify the name of your reservation as its value. */
   key?: string;
 }
@@ -14710,9 +14838,11 @@ export interface Instance {
   /** Enables display device for the instance. */
   displayDevice?: DisplayDevice;
   /** Specifies which method should be used for encrypting the Local SSDs attached to the VM. */
-  localSsdEncryptionMode?: InstanceLocalSsdEncryptionModeEnum;
+  localSsdEncryptionMode?: InstanceLocalSsdEncryptionModeEnum | (string & {});
   /** PostKeyRevocationActionType of the instance. */
-  postKeyRevocationActionType?: InstancePostKeyRevocationActionTypeEnum;
+  postKeyRevocationActionType?:
+    | InstancePostKeyRevocationActionTypeEnum
+    | (string & {});
   networkPerformanceConfig?: NetworkPerformanceConfig;
   /** Output only. [Output Only] Reserved for future use. */
   satisfiesPzi?: boolean;
@@ -14721,7 +14851,7 @@ export interface Instance {
   /** Array of disks associated with this instance. Persistent disks must be created before you can assign them. */
   disks?: AttachedDiskList;
   /** Output only. [Output Only] The status of the instance. One of the following values: PROVISIONING, STAGING,RUNNING, STOPPING, SUSPENDING,SUSPENDED, REPAIRING, andTERMINATED. For more information about the status of the instance, see Instance life cycle. */
-  status?: InstanceStatusEnum;
+  status?: InstanceStatusEnum | (string & {});
   /** Allows this instance to send and receive packets with non-matching destination or source IPs. This is required if you plan to use this instance to forward routes. For more information, seeEnabling IP Forwarding. */
   canIpForward?: boolean;
   /** Output only. [Output Only] Server-defined URL for this resource with the resource id. */
@@ -14731,7 +14861,7 @@ export interface Instance {
   /** Specifies a fingerprint for this resource, which is essentially a hash of the instance's contents and used for optimistic locking. The fingerprint is initially generated by Compute Engine and changes after every request to modify or update the instance. You must always provide an up-to-date fingerprint hash in order to update the instance. To see the latest fingerprint, make get() request to the instance. */
   fingerprint?: string;
   /** The private IPv6 google access type for the VM. If not specified, use INHERIT_FROM_SUBNETWORK as default. */
-  privateIpv6GoogleAccess?: InstancePrivateIpv6GoogleAccessEnum;
+  privateIpv6GoogleAccess?: InstancePrivateIpv6GoogleAccessEnum | (string & {});
   shieldedInstanceConfig?: ShieldedInstanceConfig;
   workloadIdentityConfig?: WorkloadIdentityConfig;
   /** The metadata key/value pairs assigned to this instance. This includes metadata keys that were explicitly defined for the instance. */
@@ -14756,7 +14886,7 @@ export interface Instance {
   /** Source machine image encryption key when creating an instance from a machine image. */
   sourceMachineImageEncryptionKey?: CustomerEncryptionKey;
   /** KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified. */
-  keyRevocationActionType?: InstanceKeyRevocationActionTypeEnum;
+  keyRevocationActionType?: InstanceKeyRevocationActionTypeEnum | (string & {});
   /** Source machine image */
   sourceMachineImage?: string;
   /** Output only. [Output Only] DEPRECATED: Please useresource_status.upcoming_maintenance instead. Specifies upcoming maintenance for the instance. */
@@ -14843,7 +14973,7 @@ export const Instance = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Instance" }) as any as S.Schema<Instance>;
 
-export type InstanceList_ = ReadonlyArray<Instance>;
+export type InstanceList_ = Array<Instance>;
 export const InstanceList_ = /*@__PURE__*/ S.Array(
   Instance,
 ) as any as S.Schema<InstanceList_>;
@@ -14896,7 +15026,7 @@ export const InstancesScopedListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InstancesScopedListWarningDataItem>;
 
 export type InstancesScopedListWarningDataItemList =
-  ReadonlyArray<InstancesScopedListWarningDataItem>;
+  Array<InstancesScopedListWarningDataItem>;
 export const InstancesScopedListWarningDataItemList = /*@__PURE__*/ S.Array(
   InstancesScopedListWarningDataItem,
 ) as any as S.Schema<InstancesScopedListWarningDataItemList>;
@@ -14959,7 +15089,7 @@ export const InstanceAggregatedListWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<InstanceAggregatedListWarningDataItem>;
 
 export type InstanceAggregatedListWarningDataItemList =
-  ReadonlyArray<InstanceAggregatedListWarningDataItem>;
+  Array<InstanceAggregatedListWarningDataItem>;
 export const InstanceAggregatedListWarningDataItemList = /*@__PURE__*/ S.Array(
   InstanceAggregatedListWarningDataItem,
 ) as any as S.Schema<InstanceAggregatedListWarningDataItemList>;
@@ -15102,7 +15232,7 @@ export interface DiskInstantiationConfig {
   /** Specifies the device name of the disk to which the configurations apply to. */
   deviceName?: string;
   /** Specifies whether to include the disk and what image to use. Possible values are: - source-image: to use the same image that was used to create the source instance's corresponding disk. Applicable to the boot disk and additional read-write disks. - source-image-family: to use the same image family that was used to create the source instance's corresponding disk. Applicable to the boot disk and additional read-write disks. - custom-image: to use a user-provided image url for disk creation. Applicable to the boot disk and additional read-write disks. - attach-read-only: to attach a read-only disk. Applicable to read-only disks. - do-not-include: to exclude a disk from the template. Applicable to additional read-write disks, local SSDs, and read-only disks. */
-  instantiateFrom?: DiskInstantiationConfigInstantiateFromEnum;
+  instantiateFrom?: DiskInstantiationConfigInstantiateFromEnum | (string & {});
   /** Specifies whether the disk will be auto-deleted when the instance is deleted (but not when the disk is detached from the instance). */
   autoDelete?: boolean;
 }
@@ -15117,8 +15247,7 @@ export const DiskInstantiationConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "DiskInstantiationConfig",
 }) as any as S.Schema<DiskInstantiationConfig>;
 
-export type DiskInstantiationConfigList =
-  ReadonlyArray<DiskInstantiationConfig>;
+export type DiskInstantiationConfigList = Array<DiskInstantiationConfig>;
 export const DiskInstantiationConfigList = /*@__PURE__*/ S.Array(
   DiskInstantiationConfig,
 ) as any as S.Schema<DiskInstantiationConfigList>;
@@ -15175,17 +15304,23 @@ export interface InstanceProperties {
   /** Controls for advanced machine-related behavior features. Note that for MachineImage, this is not supported yet. */
   advancedMachineFeatures?: AdvancedMachineFeatures;
   /** Specifies which method should be used for encrypting the Local SSDs attached to the VM. */
-  localSsdEncryptionMode?: InstancePropertiesLocalSsdEncryptionModeEnum;
+  localSsdEncryptionMode?:
+    | InstancePropertiesLocalSsdEncryptionModeEnum
+    | (string & {});
   /** The machine type to use for instances that are created from these properties. This field only accepts a machine type name, for example `n2-standard-4`. If you use the machine type full or partial URL, for example `projects/my-l7ilb-project/zones/us-central1-a/machineTypes/n2-standard-4`, the request will result in an `INTERNAL_ERROR`. */
   machineType?: string;
   /** PostKeyRevocationActionType of the instance. */
-  postKeyRevocationActionType?: InstancePropertiesPostKeyRevocationActionTypeEnum;
+  postKeyRevocationActionType?:
+    | InstancePropertiesPostKeyRevocationActionTypeEnum
+    | (string & {});
   /** Resource policies (names, not URLs) applied to instances created from these properties. Note that for MachineImage, this is not supported yet. */
   resourcePolicies?: StringList;
   /** Minimum cpu/platform to be used by instances. The instance may be scheduled on the specified or newer cpu/platform. Applicable values are the friendly names of CPU platforms, such asminCpuPlatform: "Intel Haswell" orminCpuPlatform: "Intel Sandy Bridge". For more information, read Specifying a Minimum CPU Platform. */
   minCpuPlatform?: string;
   /** KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified. */
-  keyRevocationActionType?: InstancePropertiesKeyRevocationActionTypeEnum;
+  keyRevocationActionType?:
+    | InstancePropertiesKeyRevocationActionTypeEnum
+    | (string & {});
   /** Display Device properties to enable support for remote display products like: Teradici, VNC and TeamViewer Note that for MachineImage, this is not supported yet. */
   displayDevice?: DisplayDevice;
   /** [Input Only] Secure tags to apply to this instance. Maximum number of secure tags allowed is 50. Note that for MachineImage, this is not supported yet. */
@@ -15208,7 +15343,9 @@ export interface InstanceProperties {
   /** A list of tags to apply to the instances that are created from these properties. The tags identify valid sources or targets for network firewalls. The setTags method can modify this list of tags. Each tag within the list must comply with RFC1035. */
   tags?: Tags;
   /** The private IPv6 google access type for VMs. If not specified, use INHERIT_FROM_SUBNETWORK as default. Note that for MachineImage, this is not supported yet. */
-  privateIpv6GoogleAccess?: InstancePropertiesPrivateIpv6GoogleAccessEnum;
+  privateIpv6GoogleAccess?:
+    | InstancePropertiesPrivateIpv6GoogleAccessEnum
+    | (string & {});
   /** Mapping of user defined keys to ServiceIntegrationSpec. */
   serviceIntegrationSpecs?: ServiceIntegrationSpecMap;
   /** Note that for MachineImage, this is not supported yet. */
@@ -15314,7 +15451,7 @@ export const InstanceTemplate = /*@__PURE__*/ S.suspend(() =>
   identifier: "InstanceTemplate",
 }) as any as S.Schema<InstanceTemplate>;
 
-export type InstanceTemplateList_ = ReadonlyArray<InstanceTemplate>;
+export type InstanceTemplateList_ = Array<InstanceTemplate>;
 export const InstanceTemplateList_ = /*@__PURE__*/ S.Array(
   InstanceTemplate,
 ) as any as S.Schema<InstanceTemplateList_>;
@@ -15369,7 +15506,7 @@ export const InstanceTemplatesScopedListWarningDataItem =
   }) as any as S.Schema<InstanceTemplatesScopedListWarningDataItem>;
 
 export type InstanceTemplatesScopedListWarningDataItemList =
-  ReadonlyArray<InstanceTemplatesScopedListWarningDataItem>;
+  Array<InstanceTemplatesScopedListWarningDataItem>;
 export const InstanceTemplatesScopedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     InstanceTemplatesScopedListWarningDataItem,
@@ -15433,7 +15570,7 @@ export const InstanceTemplateAggregatedListWarningDataItem =
   }) as any as S.Schema<InstanceTemplateAggregatedListWarningDataItem>;
 
 export type InstanceTemplateAggregatedListWarningDataItemList =
-  ReadonlyArray<InstanceTemplateAggregatedListWarningDataItem>;
+  Array<InstanceTemplateAggregatedListWarningDataItem>;
 export const InstanceTemplateAggregatedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     InstanceTemplateAggregatedListWarningDataItem,
@@ -15576,7 +15713,7 @@ export const InstantSnapshotAggregatedListWarningDataItem =
   }) as any as S.Schema<InstantSnapshotAggregatedListWarningDataItem>;
 
 export type InstantSnapshotAggregatedListWarningDataItemList =
-  ReadonlyArray<InstantSnapshotAggregatedListWarningDataItem>;
+  Array<InstantSnapshotAggregatedListWarningDataItem>;
 export const InstantSnapshotAggregatedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     InstantSnapshotAggregatedListWarningDataItem,
@@ -15678,7 +15815,7 @@ export interface InstantSnapshot {
   /** Output only. [Output Only] Server-defined URL for this resource's resource id. */
   selfLinkWithId?: string;
   /** Output only. [Output Only] The status of the instantSnapshot. This can beCREATING, DELETING, FAILED, orREADY. */
-  status?: InstantSnapshotStatusEnum;
+  status?: InstantSnapshotStatusEnum | (string & {});
   /** Output only. [Output Only] Type of the resource. Alwayscompute#instantSnapshot for InstantSnapshot resources. */
   kind?: string;
   /** Output only. [Output Only] Server-defined URL for the resource. */
@@ -15694,7 +15831,7 @@ export interface InstantSnapshot {
   /** Whether to attempt an application consistent instant snapshot by informing the OS to prepare for the snapshot process. */
   guestFlush?: boolean;
   /** Output only. [Output Only] The architecture of the instant snapshot. Valid values are ARM64 or X86_64. */
-  architecture?: InstantSnapshotArchitectureEnum;
+  architecture?: InstantSnapshotArchitectureEnum | (string & {});
   /** Output only. [Output Only] Size of the source disk, specified in GB. */
   diskSizeGb?: string;
   /** An optional description of this resource. Provide this property when you create the resource. */
@@ -15752,7 +15889,7 @@ export const InstantSnapshot = /*@__PURE__*/ S.suspend(() =>
   identifier: "InstantSnapshot",
 }) as any as S.Schema<InstantSnapshot>;
 
-export type InstantSnapshotList_ = ReadonlyArray<InstantSnapshot>;
+export type InstantSnapshotList_ = Array<InstantSnapshot>;
 export const InstantSnapshotList_ = /*@__PURE__*/ S.Array(
   InstantSnapshot,
 ) as any as S.Schema<InstantSnapshotList_>;
@@ -15774,7 +15911,7 @@ export const InstantSnapshotsScopedListWarningDataItem =
   }) as any as S.Schema<InstantSnapshotsScopedListWarningDataItem>;
 
 export type InstantSnapshotsScopedListWarningDataItemList =
-  ReadonlyArray<InstantSnapshotsScopedListWarningDataItem>;
+  Array<InstantSnapshotsScopedListWarningDataItem>;
 export const InstantSnapshotsScopedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     InstantSnapshotsScopedListWarningDataItem,
@@ -15940,7 +16077,7 @@ export const InterconnectAttachmentsScopedListWarningDataItem =
   }) as any as S.Schema<InterconnectAttachmentsScopedListWarningDataItem>;
 
 export type InterconnectAttachmentsScopedListWarningDataItemList =
-  ReadonlyArray<InterconnectAttachmentsScopedListWarningDataItem>;
+  Array<InterconnectAttachmentsScopedListWarningDataItem>;
 export const InterconnectAttachmentsScopedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     InterconnectAttachmentsScopedListWarningDataItem,
@@ -16020,7 +16157,7 @@ export const InterconnectAttachmentConfigurationConstraintsBgpPeerASNRange =
   }) as any as S.Schema<InterconnectAttachmentConfigurationConstraintsBgpPeerASNRange>;
 
 export type InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeList =
-  ReadonlyArray<InterconnectAttachmentConfigurationConstraintsBgpPeerASNRange>;
+  Array<InterconnectAttachmentConfigurationConstraintsBgpPeerASNRange>;
 export const InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeList =
   /*@__PURE__*/ S.Array(
     InterconnectAttachmentConfigurationConstraintsBgpPeerASNRange,
@@ -16028,7 +16165,9 @@ export const InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeList =
 
 export interface InterconnectAttachmentConfigurationConstraints {
   /** Output only. [Output Only] Whether the attachment's BGP session requires/allows/disallows BGP MD5 authentication. This can take one of the following values: MD5_OPTIONAL, MD5_REQUIRED, MD5_UNSUPPORTED. For example, a Cross-Cloud Interconnect connection to a remote cloud provider that requires BGP MD5 authentication has the interconnectRemoteLocation attachment_configuration_constraints.bgp_md5 field set to MD5_REQUIRED, and that property is propagated to the attachment. Similarly, if BGP MD5 is MD5_UNSUPPORTED, an error is returned if MD5 is requested. */
-  bgpMd5?: InterconnectAttachmentConfigurationConstraintsBgpMd5Enum;
+  bgpMd5?:
+    | InterconnectAttachmentConfigurationConstraintsBgpMd5Enum
+    | (string & {});
   /** Output only. [Output Only] List of ASN ranges that the remote location is known to support. Formatted as an array of inclusive ranges {min: min-value, max: max-value}. For example, [{min: 123, max: 123}, {min: 64512, max: 65534}] allows the peer ASN to be 123 or anything in the range 64512-65534. This field is only advisory. Although the API accepts other ranges, these are the ranges that we recommend. */
   bgpPeerAsnRanges?: InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeList;
 }
@@ -16155,7 +16294,7 @@ export const InterconnectAttachmentL2ForwardingApplianceMappingInnerVlanToApplia
   }) as any as S.Schema<InterconnectAttachmentL2ForwardingApplianceMappingInnerVlanToApplianceMapping>;
 
 export type InterconnectAttachmentL2ForwardingApplianceMappingInnerVlanToApplianceMappingList =
-  ReadonlyArray<InterconnectAttachmentL2ForwardingApplianceMappingInnerVlanToApplianceMapping>;
+  Array<InterconnectAttachmentL2ForwardingApplianceMappingInnerVlanToApplianceMapping>;
 export const InterconnectAttachmentL2ForwardingApplianceMappingInnerVlanToApplianceMappingList =
   /*@__PURE__*/ S.Array(
     InterconnectAttachmentL2ForwardingApplianceMappingInnerVlanToApplianceMapping,
@@ -16255,7 +16394,7 @@ export interface InterconnectAttachment {
   /** Output only. [Output Only] Google reference ID, to be used when raising support tickets with Google or otherwise to debug backend connectivity issues. [Deprecated] This field is not used. */
   googleReferenceId?: string;
   /** Provisioned bandwidth capacity for the interconnect attachment. For attachments of type DEDICATED, the user can set the bandwidth. For attachments of type PARTNER, the Google Partner that is operating the interconnect must set the bandwidth. Output only for PARTNER type, mutable for PARTNER_PROVIDER and DEDICATED, and can take one of the following values: - BPS_50M: 50 Mbit/s - BPS_100M: 100 Mbit/s - BPS_200M: 200 Mbit/s - BPS_300M: 300 Mbit/s - BPS_400M: 400 Mbit/s - BPS_500M: 500 Mbit/s - BPS_1G: 1 Gbit/s - BPS_2G: 2 Gbit/s - BPS_5G: 5 Gbit/s - BPS_10G: 10 Gbit/s - BPS_20G: 20 Gbit/s - BPS_50G: 50 Gbit/s - BPS_100G: 100 Gbit/s - BPS_400G: 400 Gbit/s */
-  bandwidth?: InterconnectAttachmentBandwidthEnum;
+  bandwidth?: InterconnectAttachmentBandwidthEnum | (string & {});
   /** Output only. [Output Only] URL of the AttachmentGroup that includes this Attachment. */
   attachmentGroup?: string;
   /** Output only. [Output Only] The unique identifier for the resource. This identifier is defined by the server. */
@@ -16273,7 +16412,7 @@ export interface InterconnectAttachment {
   /** Output only. [Output Only] IPv4 address + prefix length to be configured on Cloud Router Interface for this interconnect attachment. */
   cloudRouterIpAddress?: string;
   /** The stack type for this interconnect attachment to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used. This field can be both set at interconnect attachments creation and update interconnect attachment operations. */
-  stackType?: InterconnectAttachmentStackTypeEnum;
+  stackType?: InterconnectAttachmentStackTypeEnum | (string & {});
   /** Output only. [Output Only] IPv6 address + prefix length to be configured on the customer router subinterface for this interconnect attachment. */
   customerRouterIpv6Address?: string;
   /** An optional description of this resource. */
@@ -16287,21 +16426,25 @@ export interface InterconnectAttachment {
   /** Output only. [Output Only] URL of the region where the regional interconnect attachment resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body. */
   region?: string;
   /** Output only. [Output Only] The current status of whether or not this interconnect attachment is functional, which can take one of the following values: - OS_ACTIVE: The attachment has been turned up and is ready to use. - OS_UNPROVISIONED: The attachment is not ready to use yet, because turnup is not complete. */
-  operationalStatus?: InterconnectAttachmentOperationalStatusEnum;
+  operationalStatus?:
+    | InterconnectAttachmentOperationalStatusEnum
+    | (string & {});
   /** Output only. [Output Only] Reserved for future use. */
   satisfiesPzs?: boolean;
   /** Input only. Desired availability domain for the attachment. Only available for type PARTNER, at creation time, and can take one of the following values: - AVAILABILITY_DOMAIN_ANY - AVAILABILITY_DOMAIN_1 - AVAILABILITY_DOMAIN_2 For improved reliability, customers should configure a pair of attachments, one per availability domain. The selected availability domain will be provided to the Partner via the pairing key, so that the provisioned circuit will lie in the specified domain. If not specified, the value will default to AVAILABILITY_DOMAIN_ANY. */
-  edgeAvailabilityDomain?: InterconnectAttachmentEdgeAvailabilityDomainEnum;
+  edgeAvailabilityDomain?:
+    | InterconnectAttachmentEdgeAvailabilityDomainEnum
+    | (string & {});
   /** [Output only for type PARTNER. Input only for PARTNER_PROVIDER. Not present for DEDICATED]. The opaque identifier of a PARTNER attachment used to initiate provisioning with a selected partner. Of the form "XXXXX/region/domain" */
   pairingKey?: string;
   /** The type of interconnect attachment this is, which can take one of the following values: - DEDICATED: an attachment to a Dedicated Interconnect. - PARTNER: an attachment to a Partner Interconnect, created by the customer. - PARTNER_PROVIDER: an attachment to a Partner Interconnect, created by the partner. - L2_DEDICATED: a L2 attachment to a Dedicated Interconnect. */
-  type?: InterconnectAttachmentTypeEnum;
+  type?: InterconnectAttachmentTypeEnum | (string & {});
   /** Determines whether this Attachment will carry packets. Not present for PARTNER_PROVIDER. */
   adminEnabled?: boolean;
   /** Output only. [Output Only] If the attachment is on a Cross-Cloud Interconnect connection, this field contains the interconnect's remote location service provider. Example values: "Amazon Web Services" "Microsoft Azure". The field is set only for attachments on Cross-Cloud Interconnect connections. Its value is copied from the InterconnectRemoteLocation remoteService field. */
   remoteService?: string;
   /** Output only. [Output Only] The current state of this attachment's functionality. Enum values ACTIVE and UNPROVISIONED are shared by DEDICATED/PRIVATE, PARTNER, and PARTNER_PROVIDER interconnect attachments, while enum values PENDING_PARTNER, PARTNER_REQUEST_RECEIVED, and PENDING_CUSTOMER are used for only PARTNER and PARTNER_PROVIDER interconnect attachments. This state can take one of the following values: - ACTIVE: The attachment has been turned up and is ready to use. - UNPROVISIONED: The attachment is not ready to use yet, because turnup is not complete. - PENDING_PARTNER: A newly-created PARTNER attachment that has not yet been configured on the Partner side. - PARTNER_REQUEST_RECEIVED: A PARTNER attachment is in the process of provisioning after a PARTNER_PROVIDER attachment was created that references it. - PENDING_CUSTOMER: A PARTNER or PARTNER_PROVIDER attachment that is waiting for a customer to activate it. - DEFUNCT: The attachment was deleted externally and is no longer functional. This could be because the associated Interconnect was removed, or because the other side of a Partner attachment was deleted. */
-  state?: InterconnectAttachmentStateEnum;
+  state?: InterconnectAttachmentStateEnum | (string & {});
   /** The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4093. Only specified at creation time. */
   vlanTag8021q?: number;
   /** Whether or not to permit multicast traffic for this attachment. Multicast packets will be dropped if this is not enabled. */
@@ -16315,7 +16458,7 @@ export interface InterconnectAttachment {
   /** L2 Interconnect Attachment related config. This field is required if the type is L2_DEDICATED. The configuration specifies how VLAN tags (like dot1q, qinq, or dot1ad) within L2 packets are mapped to the destination appliances IP addresses. The packet is then encapsulated with the appliance IP address and sent to the edge appliance. */
   l2Forwarding?: InterconnectAttachmentL2Forwarding;
   /** Indicates the user-supplied encryption option of this VLAN attachment (interconnectAttachment). Can only be specified at attachment creation for PARTNER or DEDICATED attachments. Possible values are: - NONE - This is the default value, which means that the VLAN attachment carries unencrypted traffic. VMs are able to send traffic to, or receive traffic from, such a VLAN attachment. - IPSEC - The VLAN attachment carries only encrypted traffic that is encrypted by an IPsec device, such as an HA VPN gateway or third-party IPsec VPN. VMs cannot directly send traffic to, or receive traffic from, such a VLAN attachment. To use *HA VPN over Cloud Interconnect*, the VLAN attachment must be created with this option. */
-  encryption?: InterconnectAttachmentEncryptionEnum;
+  encryption?: InterconnectAttachmentEncryptionEnum | (string & {});
   /** Single IPv6 address + prefix length to be configured on the cloud router interface for this interconnect attachment. - Both candidate_cloud_router_ipv6_address and candidate_customer_router_ipv6_address fields must be set or both must be unset. - Prefix length of both candidate_cloud_router_ipv6_address and candidate_customer_router_ipv6_address must be the same. - Max prefix length is 126. */
   candidateCloudRouterIpv6Address?: string;
   /** Single IPv4 address + prefix length to be configured on the customer router interface for this interconnect attachment. */
@@ -16403,7 +16546,7 @@ export const InterconnectAttachment = /*@__PURE__*/ S.suspend(() =>
   identifier: "InterconnectAttachment",
 }) as any as S.Schema<InterconnectAttachment>;
 
-export type InterconnectAttachmentList_ = ReadonlyArray<InterconnectAttachment>;
+export type InterconnectAttachmentList_ = Array<InterconnectAttachment>;
 export const InterconnectAttachmentList_ = /*@__PURE__*/ S.Array(
   InterconnectAttachment,
 ) as any as S.Schema<InterconnectAttachmentList_>;
@@ -16448,7 +16591,7 @@ export const InterconnectAttachmentAggregatedListWarningDataItem =
   }) as any as S.Schema<InterconnectAttachmentAggregatedListWarningDataItem>;
 
 export type InterconnectAttachmentAggregatedListWarningDataItemList =
-  ReadonlyArray<InterconnectAttachmentAggregatedListWarningDataItem>;
+  Array<InterconnectAttachmentAggregatedListWarningDataItem>;
 export const InterconnectAttachmentAggregatedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     InterconnectAttachmentAggregatedListWarningDataItem,
@@ -16593,7 +16736,7 @@ export const MachineTypesScopedListWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<MachineTypesScopedListWarningDataItem>;
 
 export type MachineTypesScopedListWarningDataItemList =
-  ReadonlyArray<MachineTypesScopedListWarningDataItem>;
+  Array<MachineTypesScopedListWarningDataItem>;
 export const MachineTypesScopedListWarningDataItemList = /*@__PURE__*/ S.Array(
   MachineTypesScopedListWarningDataItem,
 ) as any as S.Schema<MachineTypesScopedListWarningDataItemList>;
@@ -16679,7 +16822,7 @@ export const MachineTypeAcceleratorsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MachineTypeAcceleratorsItem>;
 
 export type MachineTypeAcceleratorsItemList =
-  ReadonlyArray<MachineTypeAcceleratorsItem>;
+  Array<MachineTypeAcceleratorsItem>;
 export const MachineTypeAcceleratorsItemList = /*@__PURE__*/ S.Array(
   MachineTypeAcceleratorsItem,
 ) as any as S.Schema<MachineTypeAcceleratorsItemList>;
@@ -16749,7 +16892,7 @@ export const MachineType = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MachineType" }) as any as S.Schema<MachineType>;
 
-export type MachineTypeList_ = ReadonlyArray<MachineType>;
+export type MachineTypeList_ = Array<MachineType>;
 export const MachineTypeList_ = /*@__PURE__*/ S.Array(
   MachineType,
 ) as any as S.Schema<MachineTypeList_>;
@@ -16794,7 +16937,7 @@ export const MachineTypeAggregatedListWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<MachineTypeAggregatedListWarningDataItem>;
 
 export type MachineTypeAggregatedListWarningDataItemList =
-  ReadonlyArray<MachineTypeAggregatedListWarningDataItem>;
+  Array<MachineTypeAggregatedListWarningDataItem>;
 export const MachineTypeAggregatedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     MachineTypeAggregatedListWarningDataItem,
@@ -16949,7 +17092,7 @@ export interface NetworkAttachmentConnectedEndpoint {
   /** The IPv4 address assigned to the producer instance network interface. This value will be a range in case of Serverless. */
   ipAddress?: string;
   /** The status of a connected endpoint to this network attachment. */
-  status?: NetworkAttachmentConnectedEndpointStatusEnum;
+  status?: NetworkAttachmentConnectedEndpointStatusEnum | (string & {});
   /** The service class id of the producer service to which the IP was assigned. */
   serviceClassId?: string;
   /** The IPv6 address assigned to the producer instance network interface. This is only assigned when the stack types of both the instance network interface and the consumer subnet are IPv4_IPv6. */
@@ -16971,7 +17114,7 @@ export const NetworkAttachmentConnectedEndpoint = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NetworkAttachmentConnectedEndpoint>;
 
 export type NetworkAttachmentConnectedEndpointList =
-  ReadonlyArray<NetworkAttachmentConnectedEndpoint>;
+  Array<NetworkAttachmentConnectedEndpoint>;
 export const NetworkAttachmentConnectedEndpointList = /*@__PURE__*/ S.Array(
   NetworkAttachmentConnectedEndpoint,
 ) as any as S.Schema<NetworkAttachmentConnectedEndpointList>;
@@ -16986,7 +17129,9 @@ export interface NetworkAttachment {
   producerRejectLists?: StringList;
   /** Output only. [Output Only] The URL of the network which the Network Attachment belongs to. Practically it is inferred by fetching the network of the first subnetwork associated. Because it is required that all the subnetworks must be from the same network, it is assured that the Network Attachment belongs to the same network as all the subnetworks. */
   network?: string;
-  connectionPreference?: NetworkAttachmentConnectionPreferenceEnum;
+  connectionPreference?:
+    | NetworkAttachmentConnectionPreferenceEnum
+    | (string & {});
   /** Output only. [Output Only] Creation timestamp inRFC3339 text format. */
   creationTimestamp?: string;
   /** Output only. [Output Only] Server-defined URL for the resource. */
@@ -17030,7 +17175,7 @@ export const NetworkAttachment = /*@__PURE__*/ S.suspend(() =>
   identifier: "NetworkAttachment",
 }) as any as S.Schema<NetworkAttachment>;
 
-export type NetworkAttachmentList_ = ReadonlyArray<NetworkAttachment>;
+export type NetworkAttachmentList_ = Array<NetworkAttachment>;
 export const NetworkAttachmentList_ = /*@__PURE__*/ S.Array(
   NetworkAttachment,
 ) as any as S.Schema<NetworkAttachmentList_>;
@@ -17052,7 +17197,7 @@ export const NetworkAttachmentsScopedListWarningDataItem =
   }) as any as S.Schema<NetworkAttachmentsScopedListWarningDataItem>;
 
 export type NetworkAttachmentsScopedListWarningDataItemList =
-  ReadonlyArray<NetworkAttachmentsScopedListWarningDataItem>;
+  Array<NetworkAttachmentsScopedListWarningDataItem>;
 export const NetworkAttachmentsScopedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     NetworkAttachmentsScopedListWarningDataItem,
@@ -17182,7 +17327,7 @@ export const NetworkAttachmentAggregatedListWarningDataItem =
   }) as any as S.Schema<NetworkAttachmentAggregatedListWarningDataItem>;
 
 export type NetworkAttachmentAggregatedListWarningDataItemList =
-  ReadonlyArray<NetworkAttachmentAggregatedListWarningDataItem>;
+  Array<NetworkAttachmentAggregatedListWarningDataItem>;
 export const NetworkAttachmentAggregatedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     NetworkAttachmentAggregatedListWarningDataItem,
@@ -17291,7 +17436,7 @@ export const NetworkEdgeSecurityServiceAggregatedListWarningDataItem =
   }) as any as S.Schema<NetworkEdgeSecurityServiceAggregatedListWarningDataItem>;
 
 export type NetworkEdgeSecurityServiceAggregatedListWarningDataItemList =
-  ReadonlyArray<NetworkEdgeSecurityServiceAggregatedListWarningDataItem>;
+  Array<NetworkEdgeSecurityServiceAggregatedListWarningDataItem>;
 export const NetworkEdgeSecurityServiceAggregatedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     NetworkEdgeSecurityServiceAggregatedListWarningDataItem,
@@ -17391,8 +17536,7 @@ export const NetworkEdgeSecurityService = /*@__PURE__*/ S.suspend(() =>
   identifier: "NetworkEdgeSecurityService",
 }) as any as S.Schema<NetworkEdgeSecurityService>;
 
-export type NetworkEdgeSecurityServiceList =
-  ReadonlyArray<NetworkEdgeSecurityService>;
+export type NetworkEdgeSecurityServiceList = Array<NetworkEdgeSecurityService>;
 export const NetworkEdgeSecurityServiceList = /*@__PURE__*/ S.Array(
   NetworkEdgeSecurityService,
 ) as any as S.Schema<NetworkEdgeSecurityServiceList>;
@@ -17447,7 +17591,7 @@ export const NetworkEdgeSecurityServicesScopedListWarningDataItem =
   }) as any as S.Schema<NetworkEdgeSecurityServicesScopedListWarningDataItem>;
 
 export type NetworkEdgeSecurityServicesScopedListWarningDataItemList =
-  ReadonlyArray<NetworkEdgeSecurityServicesScopedListWarningDataItem>;
+  Array<NetworkEdgeSecurityServicesScopedListWarningDataItem>;
 export const NetworkEdgeSecurityServicesScopedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     NetworkEdgeSecurityServicesScopedListWarningDataItem,
@@ -17601,7 +17745,9 @@ export const NetworkEndpointGroupPscDataPscConnectionStatusEnum =
 /** All data that is specifically relevant to only network endpoint groups of type PRIVATE_SERVICE_CONNECT. */
 export interface NetworkEndpointGroupPscData {
   /** Output only. [Output Only] The connection status of the PSC Forwarding Rule. */
-  pscConnectionStatus?: NetworkEndpointGroupPscDataPscConnectionStatusEnum;
+  pscConnectionStatus?:
+    | NetworkEndpointGroupPscDataPscConnectionStatusEnum
+    | (string & {});
   /** Output only. [Output Only] Address allocated from given subnetwork for PSC. This IP address acts as a VIP for a PSC NEG, allowing it to act as an endpoint in L7 PSC-XLB. */
   consumerPscAddress?: string;
   /** The psc producer port is used to connect PSC NEG with specific port on the PSC Producer side; should only be used for the PRIVATE_SERVICE_CONNECT NEG type */
@@ -17733,13 +17879,15 @@ export interface NetworkEndpointGroup {
   /** The URL of the network to which all network endpoints in the NEG belong. For networkEndpointType GCE_VM_IP_PORT,GCE_VM_IP_PORTMAP or NON_GCP_PRIVATE_IP_PORT, if this field is not specified, a default network will be used. This field cannot be set for NEGs with networkEndpointType set toSERVERLESS or PRIVATE_SERVICE_CONNECT and for global NEGs. For all other network endpoint types, this field is required. */
   network?: string;
   /** Specify the type of this network endpoint group. OnlyLOAD_BALANCING is valid for now. */
-  type?: NetworkEndpointGroupTypeEnum;
+  type?: NetworkEndpointGroupTypeEnum | (string & {});
   /** Optional. Metadata defined as annotations on the network endpoint group. */
   annotations?: StringMap;
   /** Output only. [Output Only] Creation timestamp inRFC3339 text format. */
   creationTimestamp?: string;
   /** Type of network endpoints in this network endpoint group. Can be one ofGCE_VM_IP, GCE_VM_IP_PORT,NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT,INTERNET_IP_PORT, SERVERLESS,PRIVATE_SERVICE_CONNECT, GCE_VM_IP_PORTMAP. */
-  networkEndpointType?: NetworkEndpointGroupNetworkEndpointTypeEnum;
+  networkEndpointType?:
+    | NetworkEndpointGroupNetworkEndpointTypeEnum
+    | (string & {});
   /** Output only. [Output Only] Server-defined URL for the resource. */
   selfLink?: string;
   /** Output only. [Output Only] Type of the resource. Alwayscompute#networkEndpointGroup for network endpoint group. */
@@ -17803,7 +17951,7 @@ export const NetworkEndpointGroup = /*@__PURE__*/ S.suspend(() =>
   identifier: "NetworkEndpointGroup",
 }) as any as S.Schema<NetworkEndpointGroup>;
 
-export type NetworkEndpointGroupList_ = ReadonlyArray<NetworkEndpointGroup>;
+export type NetworkEndpointGroupList_ = Array<NetworkEndpointGroup>;
 export const NetworkEndpointGroupList_ = /*@__PURE__*/ S.Array(
   NetworkEndpointGroup,
 ) as any as S.Schema<NetworkEndpointGroupList_>;
@@ -17825,7 +17973,7 @@ export const NetworkEndpointGroupsScopedListWarningDataItem =
   }) as any as S.Schema<NetworkEndpointGroupsScopedListWarningDataItem>;
 
 export type NetworkEndpointGroupsScopedListWarningDataItemList =
-  ReadonlyArray<NetworkEndpointGroupsScopedListWarningDataItem>;
+  Array<NetworkEndpointGroupsScopedListWarningDataItem>;
 export const NetworkEndpointGroupsScopedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     NetworkEndpointGroupsScopedListWarningDataItem,
@@ -17923,7 +18071,7 @@ export const NetworkEndpointGroupAggregatedListWarningDataItem =
   }) as any as S.Schema<NetworkEndpointGroupAggregatedListWarningDataItem>;
 
 export type NetworkEndpointGroupAggregatedListWarningDataItemList =
-  ReadonlyArray<NetworkEndpointGroupAggregatedListWarningDataItem>;
+  Array<NetworkEndpointGroupAggregatedListWarningDataItem>;
 export const NetworkEndpointGroupAggregatedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     NetworkEndpointGroupAggregatedListWarningDataItem,
@@ -18101,7 +18249,7 @@ export const NetworkFirewallPolicyAggregatedListWarningDataItem =
   }) as any as S.Schema<NetworkFirewallPolicyAggregatedListWarningDataItem>;
 
 export type NetworkFirewallPolicyAggregatedListWarningDataItemList =
-  ReadonlyArray<NetworkFirewallPolicyAggregatedListWarningDataItem>;
+  Array<NetworkFirewallPolicyAggregatedListWarningDataItem>;
 export const NetworkFirewallPolicyAggregatedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     NetworkFirewallPolicyAggregatedListWarningDataItem,
@@ -18136,8 +18284,7 @@ export type FirewallPolicyPolicyTypeEnum =
   | "VPC_POLICY";
 export const FirewallPolicyPolicyTypeEnum = /*@__PURE__*/ S.String;
 
-export type FirewallPolicyAssociationList =
-  ReadonlyArray<FirewallPolicyAssociation>;
+export type FirewallPolicyAssociationList = Array<FirewallPolicyAssociation>;
 export const FirewallPolicyAssociationList = /*@__PURE__*/ S.Array(
   FirewallPolicyAssociation,
 ) as any as S.Schema<FirewallPolicyAssociationList>;
@@ -18147,7 +18294,7 @@ export type FirewallPolicyVpcNetworkScopeEnum =
   | "REGIONAL_VPC_NETWORK";
 export const FirewallPolicyVpcNetworkScopeEnum = /*@__PURE__*/ S.String;
 
-export type FirewallPolicyRuleList = ReadonlyArray<FirewallPolicyRule>;
+export type FirewallPolicyRuleList = Array<FirewallPolicyRule>;
 export const FirewallPolicyRuleList = /*@__PURE__*/ S.Array(
   FirewallPolicyRule,
 ) as any as S.Schema<FirewallPolicyRuleList>;
@@ -18160,7 +18307,9 @@ export const FirewallPolicyRolloutOperationRolloutInputPredefinedRolloutPlanEnum
 /** Represents progressive rollout input parameters. */
 export interface FirewallPolicyRolloutOperationRolloutInput {
   /** Predefined rollout plan. */
-  predefinedRolloutPlan?: FirewallPolicyRolloutOperationRolloutInputPredefinedRolloutPlanEnum;
+  predefinedRolloutPlan?:
+    | FirewallPolicyRolloutOperationRolloutInputPredefinedRolloutPlanEnum
+    | (string & {});
   /** The name of the rollout plan. Ex. organizations//locations/global/rolloutPlans/. */
   name?: string;
   /** The UUID of the retry action. Only needed if this is a retry for an existing rollout. This can be used after the user canceled a rollout and want to retry it with no changes. */
@@ -18203,7 +18352,9 @@ export const FirewallPolicyRolloutOperationRolloutStatusRolloutMetadataStateEnum
 /** Represents the status of the progressive rollout instance, either completed or ongoing. */
 export interface FirewallPolicyRolloutOperationRolloutStatusRolloutMetadata {
   /** Output only. [Output only] The state of the rollout. */
-  state?: FirewallPolicyRolloutOperationRolloutStatusRolloutMetadataStateEnum;
+  state?:
+    | FirewallPolicyRolloutOperationRolloutStatusRolloutMetadataStateEnum
+    | (string & {});
   /** Output only. [Output only] The name of the rollout plan used by this rollout organizations//locations/global/rolloutPlans/ */
   rolloutPlan?: string;
   /** Output only. [Output only] The name of the rollout organizations//locations/global/rollouts/ */
@@ -18223,7 +18374,7 @@ export const FirewallPolicyRolloutOperationRolloutStatusRolloutMetadata =
   }) as any as S.Schema<FirewallPolicyRolloutOperationRolloutStatusRolloutMetadata>;
 
 export type FirewallPolicyRolloutOperationRolloutStatusRolloutMetadataList =
-  ReadonlyArray<FirewallPolicyRolloutOperationRolloutStatusRolloutMetadata>;
+  Array<FirewallPolicyRolloutOperationRolloutStatusRolloutMetadata>;
 export const FirewallPolicyRolloutOperationRolloutStatusRolloutMetadataList =
   /*@__PURE__*/ S.Array(
     FirewallPolicyRolloutOperationRolloutStatusRolloutMetadata,
@@ -18278,7 +18429,7 @@ export interface FirewallPolicy {
   /** [Output Only] Server-defined URL for the resource. */
   selfLink?: string;
   /** Indicates the source of this Firewall Policy. This field is optional on creation and defaults to USER_DEFINED. The USER_DEFINED value indicates a regular firewall policy. The SYSTEM value indicates a system-level policy managed by an internal service like GKE. This SYSTEM value is reserved for internal services and cannot be set by users during policy creation. Policies with a SYSTEM source cannot be modified or deleted by users. */
-  policySource?: FirewallPolicyPolicySourceEnum;
+  policySource?: FirewallPolicyPolicySourceEnum | (string & {});
   /** Output only. [Output only] Type of the resource. Alwayscompute#firewallPolicyfor firewall policies */
   kind?: string;
   /** Specifies a fingerprint for this resource, which is essentially a hash of the metadata's contents and used for optimistic locking. The fingerprint is initially generated by Compute Engine and changes after every request to modify or update metadata. You must always provide an up-to-date fingerprint hash in order to update or change metadata, otherwise the request will fail with error412 conditionNotMet. To see the latest fingerprint, make get() request to the firewall policy. */
@@ -18286,7 +18437,7 @@ export interface FirewallPolicy {
   /** Output only. [Output Only] Creation timestamp inRFC3339 text format. */
   creationTimestamp?: string;
   /** The type of the firewall policy. This field can be one of VPC_POLICY, RDMA_ROCE_POLICY or ULL_POLICY. Note: if not specified then VPC_POLICY will be used. */
-  policyType?: FirewallPolicyPolicyTypeEnum;
+  policyType?: FirewallPolicyPolicyTypeEnum | (string & {});
   /** A list of associations that belong to this firewall policy. */
   associations?: FirewallPolicyAssociationList;
   /** An optional description of this resource. Provide this property when you create the resource. */
@@ -18294,7 +18445,7 @@ export interface FirewallPolicy {
   /** Output only. [Output Only] The parent of the firewall policy. This field is not applicable to network firewall policies. */
   parent?: string;
   /** The scope of networks allowed to be associated with the firewall policy. This field can be either GLOBAL_VPC_NETWORK orREGIONAL_VPC_NETWORK. A firewall policy with the VPC scope set to GLOBAL_VPC_NETWORK is allowed to be attached only to global networks. When the VPC scope is set to REGIONAL_VPC_NETWORK the firewall policy is allowed to be attached only to regional networks in the same scope as the firewall policy. Note: if not specified then GLOBAL_VPC_NETWORK will be used. */
-  vpcNetworkScope?: FirewallPolicyVpcNetworkScopeEnum;
+  vpcNetworkScope?: FirewallPolicyVpcNetworkScopeEnum | (string & {});
   /** A list of rules that belong to this policy. There must always be a default rule (rule with priority 2147483647 and match "*"). If no rules are provided when creating a firewall policy, a default rule with action "allow" will be added. */
   rules?: FirewallPolicyRuleList;
   /** Name of the resource. For Organization Firewall Policies it's a [Output Only] numeric ID allocated by Google Cloud which uniquely identifies the Organization Firewall Policy. */
@@ -18339,7 +18490,7 @@ export const FirewallPolicy = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "FirewallPolicy" }) as any as S.Schema<FirewallPolicy>;
 
-export type FirewallPolicyList_ = ReadonlyArray<FirewallPolicy>;
+export type FirewallPolicyList_ = Array<FirewallPolicy>;
 export const FirewallPolicyList_ = /*@__PURE__*/ S.Array(
   FirewallPolicy,
 ) as any as S.Schema<FirewallPolicyList_>;
@@ -18393,7 +18544,7 @@ export const FirewallPoliciesScopedListWarningDataItem =
   }) as any as S.Schema<FirewallPoliciesScopedListWarningDataItem>;
 
 export type FirewallPoliciesScopedListWarningDataItemList =
-  ReadonlyArray<FirewallPoliciesScopedListWarningDataItem>;
+  Array<FirewallPoliciesScopedListWarningDataItem>;
 export const FirewallPoliciesScopedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     FirewallPoliciesScopedListWarningDataItem,
@@ -18557,7 +18708,7 @@ export const NodeGroupsScopedListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NodeGroupsScopedListWarningDataItem>;
 
 export type NodeGroupsScopedListWarningDataItemList =
-  ReadonlyArray<NodeGroupsScopedListWarningDataItem>;
+  Array<NodeGroupsScopedListWarningDataItem>;
 export const NodeGroupsScopedListWarningDataItemList = /*@__PURE__*/ S.Array(
   NodeGroupsScopedListWarningDataItem,
 ) as any as S.Schema<NodeGroupsScopedListWarningDataItemList>;
@@ -18603,7 +18754,7 @@ export interface NodeGroupAutoscalingPolicy {
   /** The minimum number of nodes that the group should have. */
   minNodes?: number;
   /** The autoscaling mode. Set to one of: ON, OFF, or ONLY_SCALE_OUT. For more information, see Autoscaler modes. */
-  mode?: NodeGroupAutoscalingPolicyModeEnum;
+  mode?: NodeGroupAutoscalingPolicyModeEnum | (string & {});
 }
 export const NodeGroupAutoscalingPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -18645,13 +18796,13 @@ export interface NodeGroup {
   /** Output only. [Output Only] Server-defined URL for the resource. */
   selfLink?: string;
   /** Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT,RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT. For more information, see Maintenance policies. */
-  maintenancePolicy?: NodeGroupMaintenancePolicyEnum;
+  maintenancePolicy?: NodeGroupMaintenancePolicyEnum | (string & {});
   /** Output only. [Output Only] The type of the resource. Alwayscompute#nodeGroup for node group. */
   kind?: string;
   fingerprint?: string;
   /** An opaque location hint used to place the Node close to other resources. This field is for use by internal tools that use the public API. The location hint here on the NodeGroup overrides any location_hint present in the NodeTemplate. */
   locationHint?: string;
-  status?: NodeGroupStatusEnum;
+  status?: NodeGroupStatusEnum | (string & {});
   /** Specifies how autoscaling should behave. */
   autoscalingPolicy?: NodeGroupAutoscalingPolicy;
   /** URL of the node template to create the node group from. */
@@ -18666,7 +18817,7 @@ export interface NodeGroup {
   creationTimestamp?: string;
   maintenanceWindow?: NodeGroupMaintenanceWindow;
   /** Specifies the frequency of planned maintenance events. The accepted values are: `AS_NEEDED` and `RECURRENT`. */
-  maintenanceInterval?: NodeGroupMaintenanceIntervalEnum;
+  maintenanceInterval?: NodeGroupMaintenanceIntervalEnum | (string & {});
   /** The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply withRFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash. */
   name?: string;
   /** Output only. [Output Only] The name of the zone where the node group resides, such as us-central1-a. */
@@ -18699,7 +18850,7 @@ export const NodeGroup = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "NodeGroup" }) as any as S.Schema<NodeGroup>;
 
-export type NodeGroupList_ = ReadonlyArray<NodeGroup>;
+export type NodeGroupList_ = Array<NodeGroup>;
 export const NodeGroupList_ = /*@__PURE__*/ S.Array(
   NodeGroup,
 ) as any as S.Schema<NodeGroupList_>;
@@ -18744,7 +18895,7 @@ export const NodeGroupAggregatedListWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<NodeGroupAggregatedListWarningDataItem>;
 
 export type NodeGroupAggregatedListWarningDataItemList =
-  ReadonlyArray<NodeGroupAggregatedListWarningDataItem>;
+  Array<NodeGroupAggregatedListWarningDataItem>;
 export const NodeGroupAggregatedListWarningDataItemList = /*@__PURE__*/ S.Array(
   NodeGroupAggregatedListWarningDataItem,
 ) as any as S.Schema<NodeGroupAggregatedListWarningDataItemList>;
@@ -18917,7 +19068,7 @@ export const NodeTemplateAggregatedListWarningDataItem =
   }) as any as S.Schema<NodeTemplateAggregatedListWarningDataItem>;
 
 export type NodeTemplateAggregatedListWarningDataItemList =
-  ReadonlyArray<NodeTemplateAggregatedListWarningDataItem>;
+  Array<NodeTemplateAggregatedListWarningDataItem>;
 export const NodeTemplateAggregatedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     NodeTemplateAggregatedListWarningDataItem,
@@ -18979,7 +19130,7 @@ export const LocalDisk = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "LocalDisk" }) as any as S.Schema<LocalDisk>;
 
-export type LocalDiskList = ReadonlyArray<LocalDisk>;
+export type LocalDiskList = Array<LocalDisk>;
 export const LocalDiskList = /*@__PURE__*/ S.Array(
   LocalDisk,
 ) as any as S.Schema<LocalDiskList>;
@@ -18997,7 +19148,7 @@ export type ServerBindingTypeEnum =
 export const ServerBindingTypeEnum = /*@__PURE__*/ S.String;
 
 export interface ServerBinding {
-  type?: ServerBindingTypeEnum;
+  type?: ServerBindingTypeEnum | (string & {});
 }
 export const ServerBinding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -19022,14 +19173,14 @@ export interface NodeTemplate {
   /** Output only. [Output Only] Server-defined URL for this resource with the resource id. */
   selfLinkWithId?: string;
   /** Output only. [Output Only] The status of the node template. One of the following values:CREATING, READY, and DELETING. */
-  status?: NodeTemplateStatusEnum;
+  status?: NodeTemplateStatusEnum | (string & {});
   /** The node type to use for nodes group that are created from this template. */
   nodeType?: string;
   /** Do not use. Instead, use the node_type property. */
   nodeTypeFlexibility?: NodeTemplateNodeTypeFlexibility;
   disks?: LocalDiskList;
   /** CPU overcommit. */
-  cpuOvercommitType?: NodeTemplateCpuOvercommitTypeEnum;
+  cpuOvercommitType?: NodeTemplateCpuOvercommitTypeEnum | (string & {});
   /** Labels to use for node affinity, which will be used in instance scheduling. */
   nodeAffinityLabels?: StringMap;
   /** Sets the binding properties for the physical server. Valid values include: - *[Default]* RESTART_NODE_ON_ANY_SERVER: Restarts VMs on any available physical server - RESTART_NODE_ON_MINIMAL_SERVER: Restarts VMs on the same physical server whenever possible See Sole-tenant node options for more information. */
@@ -19062,7 +19213,7 @@ export const NodeTemplate = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "NodeTemplate" }) as any as S.Schema<NodeTemplate>;
 
-export type NodeTemplateList_ = ReadonlyArray<NodeTemplate>;
+export type NodeTemplateList_ = Array<NodeTemplate>;
 export const NodeTemplateList_ = /*@__PURE__*/ S.Array(
   NodeTemplate,
 ) as any as S.Schema<NodeTemplateList_>;
@@ -19084,7 +19235,7 @@ export const NodeTemplatesScopedListWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<NodeTemplatesScopedListWarningDataItem>;
 
 export type NodeTemplatesScopedListWarningDataItemList =
-  ReadonlyArray<NodeTemplatesScopedListWarningDataItem>;
+  Array<NodeTemplatesScopedListWarningDataItem>;
 export const NodeTemplatesScopedListWarningDataItemList = /*@__PURE__*/ S.Array(
   NodeTemplatesScopedListWarningDataItem,
 ) as any as S.Schema<NodeTemplatesScopedListWarningDataItemList>;
@@ -19281,7 +19432,7 @@ export const NodeType = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "NodeType" }) as any as S.Schema<NodeType>;
 
-export type NodeTypeList_ = ReadonlyArray<NodeType>;
+export type NodeTypeList_ = Array<NodeType>;
 export const NodeTypeList_ = /*@__PURE__*/ S.Array(
   NodeType,
 ) as any as S.Schema<NodeTypeList_>;
@@ -19302,7 +19453,7 @@ export const NodeTypesScopedListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NodeTypesScopedListWarningDataItem>;
 
 export type NodeTypesScopedListWarningDataItemList =
-  ReadonlyArray<NodeTypesScopedListWarningDataItem>;
+  Array<NodeTypesScopedListWarningDataItem>;
 export const NodeTypesScopedListWarningDataItemList = /*@__PURE__*/ S.Array(
   NodeTypesScopedListWarningDataItem,
 ) as any as S.Schema<NodeTypesScopedListWarningDataItemList>;
@@ -19397,7 +19548,7 @@ export const NodeTypeAggregatedListWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<NodeTypeAggregatedListWarningDataItem>;
 
 export type NodeTypeAggregatedListWarningDataItemList =
-  ReadonlyArray<NodeTypeAggregatedListWarningDataItem>;
+  Array<NodeTypeAggregatedListWarningDataItem>;
 export const NodeTypeAggregatedListWarningDataItemList = /*@__PURE__*/ S.Array(
   NodeTypeAggregatedListWarningDataItem,
 ) as any as S.Schema<NodeTypeAggregatedListWarningDataItemList>;
@@ -19573,7 +19724,7 @@ export const OrganizationVmExtensionPolicyAggregatedListResponseWarningDataItem 
   }) as any as S.Schema<OrganizationVmExtensionPolicyAggregatedListResponseWarningDataItem>;
 
 export type OrganizationVmExtensionPolicyAggregatedListResponseWarningDataItemList =
-  ReadonlyArray<OrganizationVmExtensionPolicyAggregatedListResponseWarningDataItem>;
+  Array<OrganizationVmExtensionPolicyAggregatedListResponseWarningDataItem>;
 export const OrganizationVmExtensionPolicyAggregatedListResponseWarningDataItemList =
   /*@__PURE__*/ S.Array(
     OrganizationVmExtensionPolicyAggregatedListResponseWarningDataItem,
@@ -19712,7 +19863,7 @@ export const PacketMirroringMirroredResourceInfoSubnetInfo =
   }) as any as S.Schema<PacketMirroringMirroredResourceInfoSubnetInfo>;
 
 export type PacketMirroringMirroredResourceInfoSubnetInfoList =
-  ReadonlyArray<PacketMirroringMirroredResourceInfoSubnetInfo>;
+  Array<PacketMirroringMirroredResourceInfoSubnetInfo>;
 export const PacketMirroringMirroredResourceInfoSubnetInfoList =
   /*@__PURE__*/ S.Array(
     PacketMirroringMirroredResourceInfoSubnetInfo,
@@ -19735,7 +19886,7 @@ export const PacketMirroringMirroredResourceInfoInstanceInfo =
   }) as any as S.Schema<PacketMirroringMirroredResourceInfoInstanceInfo>;
 
 export type PacketMirroringMirroredResourceInfoInstanceInfoList =
-  ReadonlyArray<PacketMirroringMirroredResourceInfoInstanceInfo>;
+  Array<PacketMirroringMirroredResourceInfoInstanceInfo>;
 export const PacketMirroringMirroredResourceInfoInstanceInfoList =
   /*@__PURE__*/ S.Array(
     PacketMirroringMirroredResourceInfoInstanceInfo,
@@ -19766,7 +19917,7 @@ export interface PacketMirroringFilter {
   /** One or more IPv4 or IPv6 CIDR ranges that apply as filters on the source (ingress) or destination (egress) IP in the IP header. If no ranges are specified, all IPv4 traffic that matches the specified IPProtocols is mirrored. If neither cidrRanges nor IPProtocols is specified, all IPv4 traffic is mirrored. To mirror all IPv4 and IPv6 traffic, use "0.0.0.0/0,::/0". */
   cidrRanges?: StringList;
   /** Direction of traffic to mirror, either INGRESS, EGRESS, or BOTH. The default is BOTH. */
-  direction?: PacketMirroringFilterDirectionEnum;
+  direction?: PacketMirroringFilterDirectionEnum | (string & {});
   /** Protocols that apply as filter on mirrored traffic. If no protocols are specified, all traffic that matches the specified CIDR ranges is mirrored. If neither cidrRanges nor IPProtocols is specified, all IPv4 traffic is mirrored. */
   IPProtocols?: StringList;
 }
@@ -19804,7 +19955,7 @@ export interface PacketMirroring {
   /** Output only. [Output Only] The unique identifier for the resource. This identifier is defined by the server. */
   id?: string;
   /** Indicates whether or not this packet mirroring takes effect. If set to FALSE, this packet mirroring policy will not be enforced on the network. The default is TRUE. */
-  enable?: PacketMirroringEnableEnum;
+  enable?: PacketMirroringEnableEnum | (string & {});
   /** [Output Only] URI of the region where the packetMirroring resides. */
   region?: string;
   /** PacketMirroring mirroredResourceInfos. MirroredResourceInfo specifies a set of mirrored VM instances, subnetworks and/or tags for which traffic from/to all VM instances will be mirrored. */
@@ -19847,7 +19998,7 @@ export const PacketMirroring = /*@__PURE__*/ S.suspend(() =>
   identifier: "PacketMirroring",
 }) as any as S.Schema<PacketMirroring>;
 
-export type PacketMirroringList_ = ReadonlyArray<PacketMirroring>;
+export type PacketMirroringList_ = Array<PacketMirroring>;
 export const PacketMirroringList_ = /*@__PURE__*/ S.Array(
   PacketMirroring,
 ) as any as S.Schema<PacketMirroringList_>;
@@ -19901,7 +20052,7 @@ export const PacketMirroringsScopedListWarningDataItem =
   }) as any as S.Schema<PacketMirroringsScopedListWarningDataItem>;
 
 export type PacketMirroringsScopedListWarningDataItemList =
-  ReadonlyArray<PacketMirroringsScopedListWarningDataItem>;
+  Array<PacketMirroringsScopedListWarningDataItem>;
 export const PacketMirroringsScopedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     PacketMirroringsScopedListWarningDataItem,
@@ -19965,7 +20116,7 @@ export const PacketMirroringAggregatedListWarningDataItem =
   }) as any as S.Schema<PacketMirroringAggregatedListWarningDataItem>;
 
 export type PacketMirroringAggregatedListWarningDataItemList =
-  ReadonlyArray<PacketMirroringAggregatedListWarningDataItem>;
+  Array<PacketMirroringAggregatedListWarningDataItem>;
 export const PacketMirroringAggregatedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     PacketMirroringAggregatedListWarningDataItem,
@@ -20111,7 +20262,7 @@ export const PublicDelegatedPrefixAggregatedListWarningDataItem =
   }) as any as S.Schema<PublicDelegatedPrefixAggregatedListWarningDataItem>;
 
 export type PublicDelegatedPrefixAggregatedListWarningDataItemList =
-  ReadonlyArray<PublicDelegatedPrefixAggregatedListWarningDataItem>;
+  Array<PublicDelegatedPrefixAggregatedListWarningDataItem>;
 export const PublicDelegatedPrefixAggregatedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     PublicDelegatedPrefixAggregatedListWarningDataItem,
@@ -20207,13 +20358,17 @@ export interface PublicDelegatedPrefixPublicDelegatedSubPrefix {
   /** An optional description of this resource. Provide this property when you create the resource. */
   description?: string;
   /** The PublicDelegatedSubPrefix mode for IPv6 only. */
-  mode?: PublicDelegatedPrefixPublicDelegatedSubPrefixModeEnum;
+  mode?: PublicDelegatedPrefixPublicDelegatedSubPrefixModeEnum | (string & {});
   /** The allocatable prefix length supported by this PublicDelegatedSubPrefix. */
   allocatablePrefixLength?: number;
   /** Output only. [Output Only] The internet access type for IPv6 Public Delegated Sub Prefixes. Inherited from parent prefix. */
-  ipv6AccessType?: PublicDelegatedPrefixPublicDelegatedSubPrefixIpv6AccessTypeEnum;
+  ipv6AccessType?:
+    | PublicDelegatedPrefixPublicDelegatedSubPrefixIpv6AccessTypeEnum
+    | (string & {});
   /** Output only. [Output Only] The purpose of the sub public delegated prefix. Inherited from parent prefix. */
-  purpose?: PublicDelegatedPrefixPublicDelegatedSubPrefixPurposeEnum;
+  purpose?:
+    | PublicDelegatedPrefixPublicDelegatedSubPrefixPurposeEnum
+    | (string & {});
   /** Output only. [Output Only] The region of the sub public delegated prefix if it is regional. If absent, the sub prefix is global. */
   region?: string;
   /** Output only. [Output Only] Whether this PDP supports enhanced IPv4 allocations. Applicable for IPv4 PDPs only. */
@@ -20221,7 +20376,9 @@ export interface PublicDelegatedPrefixPublicDelegatedSubPrefix {
   /** The IP address range, in CIDR format, represented by this sub public delegated prefix. */
   ipCidrRange?: string;
   /** Output only. [Output Only] The status of the sub public delegated prefix. */
-  status?: PublicDelegatedPrefixPublicDelegatedSubPrefixStatusEnum;
+  status?:
+    | PublicDelegatedPrefixPublicDelegatedSubPrefixStatusEnum
+    | (string & {});
   /** Whether the sub prefix is delegated to create Address resources in the delegatee project. */
   isAddress?: boolean;
   /** The name of the sub public delegated prefix. */
@@ -20256,7 +20413,7 @@ export const PublicDelegatedPrefixPublicDelegatedSubPrefix =
   }) as any as S.Schema<PublicDelegatedPrefixPublicDelegatedSubPrefix>;
 
 export type PublicDelegatedPrefixPublicDelegatedSubPrefixList =
-  ReadonlyArray<PublicDelegatedPrefixPublicDelegatedSubPrefix>;
+  Array<PublicDelegatedPrefixPublicDelegatedSubPrefix>;
 export const PublicDelegatedPrefixPublicDelegatedSubPrefixList =
   /*@__PURE__*/ S.Array(
     PublicDelegatedPrefixPublicDelegatedSubPrefix,
@@ -20300,11 +20457,11 @@ export interface PublicDelegatedPrefix {
   /** An optional description of this resource. Provide this property when you create the resource. */
   description?: string;
   /** Output only. [Output Only] The version of BYOIP API. */
-  byoipApiVersion?: PublicDelegatedPrefixByoipApiVersionEnum;
+  byoipApiVersion?: PublicDelegatedPrefixByoipApiVersionEnum | (string & {});
   /** Output only. [Output Only] Creation timestamp inRFC3339 text format. */
   creationTimestamp?: string;
   /** Output only. [Output Only] The internet access type for IPv6 Public Delegated Prefixes. Inherited from parent prefix. */
-  ipv6AccessType?: PublicDelegatedPrefixIpv6AccessTypeEnum;
+  ipv6AccessType?: PublicDelegatedPrefixIpv6AccessTypeEnum | (string & {});
   /** The list of sub public delegated prefixes that exist for this public delegated prefix. */
   publicDelegatedSubPrefixs?: PublicDelegatedPrefixPublicDelegatedSubPrefixList;
   /** Output only. [Output Only] Type of the resource. Alwayscompute#publicDelegatedPrefix for public delegated prefixes. */
@@ -20314,15 +20471,15 @@ export interface PublicDelegatedPrefix {
   /** Output only. [Output Only] Server-defined URL for the resource. */
   selfLink?: string;
   /** Network tier of the public delegated prefix. If populated, it must match the network tier of the parent public advertised prefix. If not populated, it defaults to the network tier of the parent public advertised prefix. */
-  networkTier?: PublicDelegatedPrefixNetworkTierEnum;
+  networkTier?: PublicDelegatedPrefixNetworkTierEnum | (string & {});
   /** Output only. [Output Only] Server-defined URL with id for the resource. */
   selfLinkWithId?: string;
   /** The URL of parent prefix. Either PublicAdvertisedPrefix or PublicDelegatedPrefix. */
   parentPrefix?: string;
   /** [Output Only] The status of the public delegated prefix, which can be one of following values: - `INITIALIZING` The public delegated prefix is being initialized and addresses cannot be created yet. - `READY_TO_ANNOUNCE` The public delegated prefix is a live migration prefix and is active. - `ANNOUNCED` The public delegated prefix is announced and ready to use. - `DELETING` The public delegated prefix is being deprovsioned. - `ACTIVE` The public delegated prefix is ready to use. */
-  status?: PublicDelegatedPrefixStatusEnum;
+  status?: PublicDelegatedPrefixStatusEnum | (string & {});
   /** The public delegated prefix mode for IPv6 only. */
-  mode?: PublicDelegatedPrefixModeEnum;
+  mode?: PublicDelegatedPrefixModeEnum | (string & {});
   /** Output only. [Output Only] The unique identifier for the resource type. The server generates this identifier. */
   id?: string;
   /** Output only. [Output Only] URL of the region where the public delegated prefix resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body. */
@@ -20332,7 +20489,7 @@ export interface PublicDelegatedPrefix {
   /** Output only. [Output Only] Whether this PDP supports enhanced IPv4 allocations. Applicable for IPv4 PDPs only. */
   enableEnhancedIpv4Allocation?: boolean;
   /** Immutable. The purpose of the public delegated prefix. This field can only be set for the top-level global public delegated prefix. It is an output-only field for the sub-delegates that inherit the value from the top-level global public delegated prefix. Once the value is set, it cannot be changed. The field cannot be set for regional public delegated prefixes. The supported values are: - APPLICATION_AND_PROXY_LOAD_BALANCERS: The global public delegated prefix can only be used by Global External Application and Proxy Load Balancers to allocate addresses for forwarding rules. This is the default value. - PASSTHROUGH_LOAD_BALANCER_AVAILABILITY_GROUP0: The global public delegated prefix can only be used by Global External Passthrough Network Load Balancers to allocate Availability Group 0 addresses for forwarding rules. - PASSTHROUGH_LOAD_BALANCER_AVAILABILITY_GROUP1: The global public delegated prefix can only be used by Global External Passthrough Network Load Balancers to allocate Availability Group 1 addresses for forwarding rules. */
-  purpose?: PublicDelegatedPrefixPurposeEnum;
+  purpose?: PublicDelegatedPrefixPurposeEnum | (string & {});
   /** The IP address range, in CIDR format, represented by this public delegated prefix. */
   ipCidrRange?: string;
   /** Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply withRFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash. */
@@ -20368,7 +20525,7 @@ export const PublicDelegatedPrefix = /*@__PURE__*/ S.suspend(() =>
   identifier: "PublicDelegatedPrefix",
 }) as any as S.Schema<PublicDelegatedPrefix>;
 
-export type PublicDelegatedPrefixList_ = ReadonlyArray<PublicDelegatedPrefix>;
+export type PublicDelegatedPrefixList_ = Array<PublicDelegatedPrefix>;
 export const PublicDelegatedPrefixList_ = /*@__PURE__*/ S.Array(
   PublicDelegatedPrefix,
 ) as any as S.Schema<PublicDelegatedPrefixList_>;
@@ -20423,7 +20580,7 @@ export const PublicDelegatedPrefixesScopedListWarningDataItem =
   }) as any as S.Schema<PublicDelegatedPrefixesScopedListWarningDataItem>;
 
 export type PublicDelegatedPrefixesScopedListWarningDataItemList =
-  ReadonlyArray<PublicDelegatedPrefixesScopedListWarningDataItem>;
+  Array<PublicDelegatedPrefixesScopedListWarningDataItem>;
 export const PublicDelegatedPrefixesScopedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     PublicDelegatedPrefixesScopedListWarningDataItem,
@@ -20747,7 +20904,7 @@ export const RecoverableSnapshot = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecoverableSnapshot",
 }) as any as S.Schema<RecoverableSnapshot>;
 
-export type RecoverableSnapshotList_ = ReadonlyArray<RecoverableSnapshot>;
+export type RecoverableSnapshotList_ = Array<RecoverableSnapshot>;
 export const RecoverableSnapshotList_ = /*@__PURE__*/ S.Array(
   RecoverableSnapshot,
 ) as any as S.Schema<RecoverableSnapshotList_>;
@@ -20802,7 +20959,7 @@ export const RecoverableSnapshotsScopedListWarningDataItem =
   }) as any as S.Schema<RecoverableSnapshotsScopedListWarningDataItem>;
 
 export type RecoverableSnapshotsScopedListWarningDataItemList =
-  ReadonlyArray<RecoverableSnapshotsScopedListWarningDataItem>;
+  Array<RecoverableSnapshotsScopedListWarningDataItem>;
 export const RecoverableSnapshotsScopedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     RecoverableSnapshotsScopedListWarningDataItem,
@@ -20867,7 +21024,7 @@ export const RecoverableSnapshotAggregatedListWarningDataItem =
   }) as any as S.Schema<RecoverableSnapshotAggregatedListWarningDataItem>;
 
 export type RecoverableSnapshotAggregatedListWarningDataItemList =
-  ReadonlyArray<RecoverableSnapshotAggregatedListWarningDataItem>;
+  Array<RecoverableSnapshotAggregatedListWarningDataItem>;
 export const RecoverableSnapshotAggregatedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     RecoverableSnapshotAggregatedListWarningDataItem,
@@ -21014,7 +21171,7 @@ export const CommitmentAggregatedListWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CommitmentAggregatedListWarningDataItem>;
 
 export type CommitmentAggregatedListWarningDataItemList =
-  ReadonlyArray<CommitmentAggregatedListWarningDataItem>;
+  Array<CommitmentAggregatedListWarningDataItem>;
 export const CommitmentAggregatedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     CommitmentAggregatedListWarningDataItem,
@@ -21099,7 +21256,7 @@ export const ResourceCommitmentTypeEnum = /*@__PURE__*/ S.String;
 /** Commitment for a particular hardware resource (a commitment is composed of one or more of these). */
 export interface ResourceCommitment {
   /** The type of hardware resource that you want to specify. You can specify any of the following values: - VCPU - MEMORY - LOCAL_SSD - ACCELERATOR Specify as a separate entry in the list for each individual resource type. */
-  type?: ResourceCommitmentTypeEnum;
+  type?: ResourceCommitmentTypeEnum | (string & {});
   /** The quantity of the hardware resource that you want to commit to purchasing (in a type-dependent unit). - For vCPUs, you must specify an integer value. - For memory, you specify the amount of MB that you want. The value you specify must be a multiple of 256 MB, with up to 6.5 GB of memory per every vCPU. - For GPUs, you must specify an integer value. - For Local SSD disks, you must specify the amount in GB. The size of a single Local SSD disk is 375 GB. */
   amount?: string;
   /** Name of the accelerator type or GPU resource. Specify this field only when the type of hardware resource is ACCELERATOR. */
@@ -21115,7 +21272,7 @@ export const ResourceCommitment = /*@__PURE__*/ S.suspend(() =>
   identifier: "ResourceCommitment",
 }) as any as S.Schema<ResourceCommitment>;
 
-export type ResourceCommitmentList = ReadonlyArray<ResourceCommitment>;
+export type ResourceCommitmentList = Array<ResourceCommitment>;
 export const ResourceCommitmentList = /*@__PURE__*/ S.Array(
   ResourceCommitment,
 ) as any as S.Schema<ResourceCommitmentList>;
@@ -21138,9 +21295,11 @@ export const PersistentDiskResourceCommitmentDimensionTypeEnum =
 /** Commitment for a particular persistent disk resource. */
 export interface PersistentDiskResourceCommitment {
   /** The PD product being committed to. All entries in a Commitment.persistent_disk_resources list must have the same product_type. */
-  productType?: PersistentDiskResourceCommitmentProductTypeEnum;
+  productType?: PersistentDiskResourceCommitmentProductTypeEnum | (string & {});
   /** The specific dimension of the product for this amount. */
-  dimensionType?: PersistentDiskResourceCommitmentDimensionTypeEnum;
+  dimensionType?:
+    | PersistentDiskResourceCommitmentDimensionTypeEnum
+    | (string & {});
   /** Required. The amount of the resource to commit to, in GiB. */
   amount?: string;
 }
@@ -21157,7 +21316,7 @@ export const PersistentDiskResourceCommitment = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PersistentDiskResourceCommitment>;
 
 export type PersistentDiskResourceCommitmentList =
-  ReadonlyArray<PersistentDiskResourceCommitment>;
+  Array<PersistentDiskResourceCommitment>;
 export const PersistentDiskResourceCommitmentList = /*@__PURE__*/ S.Array(
   PersistentDiskResourceCommitment,
 ) as any as S.Schema<PersistentDiskResourceCommitmentList>;
@@ -21252,7 +21411,7 @@ export interface GroupMaintenanceInfo {
   /** Progress for ongoing maintenance for this group of VMs/hosts. Describes number of hosts in the block that have pending maintenance. */
   maintenancePendingCount?: number;
   /** The type of maintenance for the reservation. */
-  schedulingType?: GroupMaintenanceInfoSchedulingTypeEnum;
+  schedulingType?: GroupMaintenanceInfoSchedulingTypeEnum | (string & {});
   /** Describes number of instances that have ongoing maintenance. */
   instanceMaintenanceOngoingCount?: number;
   /** Describes number of instances that have pending maintenance. */
@@ -21308,7 +21467,9 @@ export interface AllocationResourceStatusHealthInfo {
   /** The number of reservation blocks that are healthy. */
   healthyBlockCount?: number;
   /** The health status of the reservation. */
-  healthStatus?: AllocationResourceStatusHealthInfoHealthStatusEnum;
+  healthStatus?:
+    | AllocationResourceStatusHealthInfoHealthStatusEnum
+    | (string & {});
   /** The number of reservation blocks that are degraded. */
   degradedBlockCount?: number;
 }
@@ -21453,7 +21614,9 @@ export const AllocationReservationSharingPolicyServiceShareTypeEnum =
 
 export interface AllocationReservationSharingPolicy {
   /** Sharing config for all Google Cloud services. */
-  serviceShareType?: AllocationReservationSharingPolicyServiceShareTypeEnum;
+  serviceShareType?:
+    | AllocationReservationSharingPolicyServiceShareTypeEnum
+    | (string & {});
 }
 export const AllocationReservationSharingPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -21472,7 +21635,7 @@ export interface Reservation {
   /** Resource policies to be added to this reservation. The key is defined by user, and the value is resource policy url. This is to define placement policy with reservation. */
   resourcePolicies?: StringMap;
   /** Output only. [Output only] Indicates the reservation mode of the reservation. */
-  reservationMode?: ReservationReservationModeEnum;
+  reservationMode?: ReservationReservationModeEnum | (string & {});
   /** Reservation for aggregated resources, providing shape flexibility. */
   aggregateReservation?: AllocationAggregateReservation;
   /** Output only. [Output Only] Full or partial URL to a parent commitment. This field displays for reservations that are tied to a commitment. */
@@ -21480,20 +21643,24 @@ export interface Reservation {
   /** Output only. [Output Only] Status information for Reservation resource. */
   resourceStatus?: AllocationResourceStatus;
   /** Indicates the early access maintenance for the reservation. If this field is absent or set to NO_EARLY_ACCESS, the reservation is not enrolled in early access maintenance and the standard notice applies. */
-  earlyAccessMaintenance?: ReservationEarlyAccessMaintenanceEnum;
+  earlyAccessMaintenance?:
+    | ReservationEarlyAccessMaintenanceEnum
+    | (string & {});
   /** Input only. Additional params passed with the request, but not persisted as part of resource payload. */
   params?: ReservationParams;
   /** Protection tier for the workload which specifies the workload expectations in the event of infrastructure failures at data center (e.g. power and/or cooling failures). */
-  protectionTier?: ReservationProtectionTierEnum;
+  protectionTier?: ReservationProtectionTierEnum | (string & {});
   /** Reservation for instances with specific machine shapes. */
   specificReservation?: AllocationSpecificSKUReservation;
   /** The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply withRFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash. */
   name?: string;
-  confidentialComputeType?: ReservationConfidentialComputeTypeEnum;
+  confidentialComputeType?:
+    | ReservationConfidentialComputeTypeEnum
+    | (string & {});
   /** Output only. [Output Only] The unique identifier for the resource. This identifier is defined by the server. */
   id?: string;
   /** Specifies the deployment strategy for this reservation. */
-  deploymentType?: ReservationDeploymentTypeEnum;
+  deploymentType?: ReservationDeploymentTypeEnum | (string & {});
   /** Duration time relative to reservation creation when Compute Engine will automatically delete this resource. */
   deleteAfterDuration?: Duration;
   /** Specify share-settings to create a shared reservation. This property is optional. For more information about the syntax and options for this field and its subfields, see the guide for creating a shared reservation. */
@@ -21503,7 +21670,7 @@ export interface Reservation {
   /** Output only. [Output Only] Type of the resource. Alwayscompute#reservations for reservations. */
   kind?: string;
   /** Output only. [Output Only] The status of the reservation. - CREATING: Reservation resources are being allocated. - READY: Reservation resources have been allocated, and the reservation is ready for use. - DELETING: Reservation deletion is in progress. - UPDATING: Reservation update is in progress. */
-  status?: ReservationStatusEnum;
+  status?: ReservationStatusEnum | (string & {});
   /** Output only. [Output Only] Server-defined URL for this resource with the resource id. */
   selfLinkWithId?: string;
   /** Absolute time in future when the reservation will be auto-deleted by Compute Engine. Timestamp is represented inRFC3339 text format. */
@@ -21517,7 +21684,7 @@ export interface Reservation {
   /** Indicates whether Compute Engine allows unplanned maintenance for your VMs; for example, to fix hardware errors. */
   enableEmergentMaintenance?: boolean;
   /** The type of maintenance for the reservation. */
-  schedulingType?: ReservationSchedulingTypeEnum;
+  schedulingType?: ReservationSchedulingTypeEnum | (string & {});
   /** Output only. [Output Only] Reserved for future use. */
   satisfiesPzs?: boolean;
   /** Zone in which the reservation resides. A zone must be provided if the reservation is created within a commitment. */
@@ -21562,7 +21729,7 @@ export const Reservation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Reservation" }) as any as S.Schema<Reservation>;
 
-export type ReservationList_ = ReadonlyArray<Reservation>;
+export type ReservationList_ = Array<Reservation>;
 export const ReservationList_ = /*@__PURE__*/ S.Array(
   Reservation,
 ) as any as S.Schema<ReservationList_>;
@@ -21656,7 +21823,7 @@ export interface Commitment {
   /** Output only. [Output Only] Server-defined URL for this resource with the resource id. */
   selfLinkWithId?: string;
   /** Output only. [Output Only] Status of the commitment with regards to eventual expiration (each commitment has an end date defined). Status can be one of the following values: NOT_YET_ACTIVE, ACTIVE, orEXPIRED. */
-  status?: CommitmentStatusEnum;
+  status?: CommitmentStatusEnum | (string & {});
   /** An optional description of the commitment. You can provide this property when you create the resource. */
   description?: string;
   existingReservations?: StringList;
@@ -21667,7 +21834,7 @@ export interface Commitment {
   /** [Input Only] Optional, specifies the requested commitment end time inRFC3339 text format. Use this option when the desired commitment's end date is later than the start date + term duration. */
   customEndTimestamp?: string;
   /** The minimum time duration that you commit to purchasing resources. The plan that you choose determines the preset term length of the commitment (which is 1 year or 3 years) and affects the discount rate that you receive for your resources. Committing to a longer time duration typically gives you a higher discount rate. The supported values for this field are TWELVE_MONTH (1 year), andTHIRTY_SIX_MONTH (3 years). */
-  plan?: CommitmentPlanEnum;
+  plan?: CommitmentPlanEnum | (string & {});
   /** The list of all the hardware resources, with their types and amounts, that you want to commit to. Specify as a separate entry in the list for each individual resource type. */
   resources?: ResourceCommitmentList;
   /** The source commitment from which you are transferring resources to create the new split commitment. For more information, see Split commitments. */
@@ -21683,7 +21850,7 @@ export interface Commitment {
   /** Output only. [Output Only] Commitment start time inRFC3339 text format. */
   startTimestamp?: string;
   /** The type of commitment; specifies the machine series for which you want to commit to purchasing resources. The choice of machine series affects the discount rate and the eligible resource types. The type must be one of the following:ACCELERATOR_OPTIMIZED, ACCELERATOR_OPTIMIZED_A3,ACCELERATOR_OPTIMIZED_A3_MEGA,COMPUTE_OPTIMIZED, COMPUTE_OPTIMIZED_C2D, COMPUTE_OPTIMIZED_C3, COMPUTE_OPTIMIZED_C3D,COMPUTE_OPTIMIZED_H3, GENERAL_PURPOSE,GENERAL_PURPOSE_C4, GENERAL_PURPOSE_E2,GENERAL_PURPOSE_N2, GENERAL_PURPOSE_N2D,GENERAL_PURPOSE_N4, GENERAL_PURPOSE_T2D,GRAPHICS_OPTIMIZED, GRAPHICS_OPTIMIZED_G4,GRAPHICS_OPTIMIZED_G4_VGPU,MEMORY_OPTIMIZED, MEMORY_OPTIMIZED_M3,MEMORY_OPTIMIZED_X4, STORAGE_OPTIMIZED_Z3. For example, type MEMORY_OPTIMIZED specifies a commitment that applies only to eligible resources of memory optimized M1 and M2 machine series. Type GENERAL_PURPOSE specifies a commitment that applies only to eligible resources of general purpose N1 machine series. */
-  type?: CommitmentTypeEnum;
+  type?: CommitmentTypeEnum | (string & {});
   /** The list of new reservations that you want to create and attach to this commitment. You must attach reservations to your commitment if your commitment specifies any GPUs or Local SSD disks. For more information, see Attach reservations to resource-based commitments. Specify this property only if you want to create new reservations to attach. To attach existing reservations, specify theexistingReservations property instead. */
   reservations?: ReservationList_;
   /** Input only. Additional params passed with the request, but not persisted as part of resource payload. */
@@ -21697,7 +21864,7 @@ export interface Commitment {
   /** Output only. [Output Only] An optional, human-readable explanation of the status. */
   statusMessage?: string;
   /** The category of the commitment; specifies whether the commitment is for hardware or software resources. Category MACHINE specifies that you are committing to hardware machine resources such asVCPU or MEMORY, listed in resources. Category LICENSE specifies that you are committing to software licenses, listed in licenseResources. Note that if you specify MACHINE commitments, then you must also specify a type to indicate the machine series of the hardware resource that you are committing to. */
-  category?: CommitmentCategoryEnum;
+  category?: CommitmentCategoryEnum | (string & {});
   /** Output only. [Output Only] The unique identifier for the resource. This identifier is defined by the server. */
   id?: string;
 }
@@ -21732,7 +21899,7 @@ export const Commitment = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Commitment" }) as any as S.Schema<Commitment>;
 
-export type CommitmentList_ = ReadonlyArray<Commitment>;
+export type CommitmentList_ = Array<Commitment>;
 export const CommitmentList_ = /*@__PURE__*/ S.Array(
   Commitment,
 ) as any as S.Schema<CommitmentList_>;
@@ -21754,7 +21921,7 @@ export const CommitmentsScopedListWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CommitmentsScopedListWarningDataItem>;
 
 export type CommitmentsScopedListWarningDataItemList =
-  ReadonlyArray<CommitmentsScopedListWarningDataItem>;
+  Array<CommitmentsScopedListWarningDataItem>;
 export const CommitmentsScopedListWarningDataItemList = /*@__PURE__*/ S.Array(
   CommitmentsScopedListWarningDataItem,
 ) as any as S.Schema<CommitmentsScopedListWarningDataItemList>;
@@ -21945,7 +22112,7 @@ export const CompositeHealthCheck = /*@__PURE__*/ S.suspend(() =>
   identifier: "CompositeHealthCheck",
 }) as any as S.Schema<CompositeHealthCheck>;
 
-export type CompositeHealthCheckList_ = ReadonlyArray<CompositeHealthCheck>;
+export type CompositeHealthCheckList_ = Array<CompositeHealthCheck>;
 export const CompositeHealthCheckList_ = /*@__PURE__*/ S.Array(
   CompositeHealthCheck,
 ) as any as S.Schema<CompositeHealthCheckList_>;
@@ -21967,7 +22134,7 @@ export const CompositeHealthChecksScopedListWarningDataItem =
   }) as any as S.Schema<CompositeHealthChecksScopedListWarningDataItem>;
 
 export type CompositeHealthChecksScopedListWarningDataItemList =
-  ReadonlyArray<CompositeHealthChecksScopedListWarningDataItem>;
+  Array<CompositeHealthChecksScopedListWarningDataItem>;
 export const CompositeHealthChecksScopedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     CompositeHealthChecksScopedListWarningDataItem,
@@ -22065,7 +22232,7 @@ export const CompositeHealthCheckAggregatedListWarningDataItem =
   }) as any as S.Schema<CompositeHealthCheckAggregatedListWarningDataItem>;
 
 export type CompositeHealthCheckAggregatedListWarningDataItemList =
-  ReadonlyArray<CompositeHealthCheckAggregatedListWarningDataItem>;
+  Array<CompositeHealthCheckAggregatedListWarningDataItem>;
 export const CompositeHealthCheckAggregatedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     CompositeHealthCheckAggregatedListWarningDataItem,
@@ -22211,7 +22378,7 @@ export const HealthAggregationPoliciesScopedListWarningDataItem =
   }) as any as S.Schema<HealthAggregationPoliciesScopedListWarningDataItem>;
 
 export type HealthAggregationPoliciesScopedListWarningDataItemList =
-  ReadonlyArray<HealthAggregationPoliciesScopedListWarningDataItem>;
+  Array<HealthAggregationPoliciesScopedListWarningDataItem>;
 export const HealthAggregationPoliciesScopedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     HealthAggregationPoliciesScopedListWarningDataItem,
@@ -22299,7 +22466,7 @@ export interface HealthAggregationPolicy {
   /** Output only. [Output Only] Creation timestamp inRFC3339 text format. */
   creationTimestamp?: string;
   /** Specifies the type of the healthAggregationPolicy. The only allowed value for global resources is DNS_PUBLIC_IP_POLICY. The only allowed value for regional resources is BACKEND_SERVICE_POLICY. Must be specified when the healthAggregationPolicy is created, and cannot be mutated. */
-  policyType?: HealthAggregationPolicyPolicyTypeEnum;
+  policyType?: HealthAggregationPolicyPolicyTypeEnum | (string & {});
 }
 export const HealthAggregationPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -22320,8 +22487,7 @@ export const HealthAggregationPolicy = /*@__PURE__*/ S.suspend(() =>
   identifier: "HealthAggregationPolicy",
 }) as any as S.Schema<HealthAggregationPolicy>;
 
-export type HealthAggregationPolicyList_ =
-  ReadonlyArray<HealthAggregationPolicy>;
+export type HealthAggregationPolicyList_ = Array<HealthAggregationPolicy>;
 export const HealthAggregationPolicyList_ = /*@__PURE__*/ S.Array(
   HealthAggregationPolicy,
 ) as any as S.Schema<HealthAggregationPolicyList_>;
@@ -22366,7 +22532,7 @@ export const HealthAggregationPolicyAggregatedListWarningDataItem =
   }) as any as S.Schema<HealthAggregationPolicyAggregatedListWarningDataItem>;
 
 export type HealthAggregationPolicyAggregatedListWarningDataItemList =
-  ReadonlyArray<HealthAggregationPolicyAggregatedListWarningDataItem>;
+  Array<HealthAggregationPolicyAggregatedListWarningDataItem>;
 export const HealthAggregationPolicyAggregatedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     HealthAggregationPolicyAggregatedListWarningDataItem,
@@ -22515,7 +22681,7 @@ export const HealthCheckServiceAggregatedListWarningDataItem =
   }) as any as S.Schema<HealthCheckServiceAggregatedListWarningDataItem>;
 
 export type HealthCheckServiceAggregatedListWarningDataItemList =
-  ReadonlyArray<HealthCheckServiceAggregatedListWarningDataItem>;
+  Array<HealthCheckServiceAggregatedListWarningDataItem>;
 export const HealthCheckServiceAggregatedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     HealthCheckServiceAggregatedListWarningDataItem,
@@ -22602,9 +22768,13 @@ export interface HealthCheckService {
   /** A list of URLs to the NetworkEndpointGroup resources. Must not have more than 100. For regionalHealthCheckService, NEGs must be in zones in the region of the HealthCheckService. For globalHealthCheckServices, the NetworkEndpointGroups must be global INTERNET_IP_PORT. */
   networkEndpointGroups?: StringList;
   /** This field is deprecated. Use health_status_aggregation_policy instead. Policy for how the results from multiple health checks for the same endpoint are aggregated. - NO_AGGREGATION. An EndpointHealth message is returned for each backend in the health check service. - AND. If any backend's health check reportsUNHEALTHY, then UNHEALTHY is theHealthState of the entire health check service. If all backend's are healthy, the HealthState of the health check service is HEALTHY. . */
-  healthStatusAggregationStrategy?: HealthCheckServiceHealthStatusAggregationStrategyEnum;
+  healthStatusAggregationStrategy?:
+    | HealthCheckServiceHealthStatusAggregationStrategyEnum
+    | (string & {});
   /** Optional. Policy for how the results from multiple health checks for the same endpoint are aggregated. Defaults to NO_AGGREGATION if unspecified. - NO_AGGREGATION. An EndpointHealth message is returned for each pair in the health check service. - AND. If any health check of an endpoint reportsUNHEALTHY, then UNHEALTHY is theHealthState of the endpoint. If all health checks reportHEALTHY, the HealthState of the endpoint isHEALTHY. . This is only allowed with regional HealthCheckService. */
-  healthStatusAggregationPolicy?: HealthCheckServiceHealthStatusAggregationPolicyEnum;
+  healthStatusAggregationPolicy?:
+    | HealthCheckServiceHealthStatusAggregationPolicyEnum
+    | (string & {});
   /** An optional description of this resource. Provide this property when you create the resource. */
   description?: string;
   /** Name of the resource. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash. */
@@ -22641,7 +22811,7 @@ export const HealthCheckService = /*@__PURE__*/ S.suspend(() =>
   identifier: "HealthCheckService",
 }) as any as S.Schema<HealthCheckService>;
 
-export type HealthCheckServiceList = ReadonlyArray<HealthCheckService>;
+export type HealthCheckServiceList = Array<HealthCheckService>;
 export const HealthCheckServiceList = /*@__PURE__*/ S.Array(
   HealthCheckService,
 ) as any as S.Schema<HealthCheckServiceList>;
@@ -22663,7 +22833,7 @@ export const HealthCheckServicesScopedListWarningDataItem =
   }) as any as S.Schema<HealthCheckServicesScopedListWarningDataItem>;
 
 export type HealthCheckServicesScopedListWarningDataItemList =
-  ReadonlyArray<HealthCheckServicesScopedListWarningDataItem>;
+  Array<HealthCheckServicesScopedListWarningDataItem>;
 export const HealthCheckServicesScopedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     HealthCheckServicesScopedListWarningDataItem,
@@ -22832,7 +23002,7 @@ export const HealthSourceAggregatedListWarningDataItem =
   }) as any as S.Schema<HealthSourceAggregatedListWarningDataItem>;
 
 export type HealthSourceAggregatedListWarningDataItemList =
-  ReadonlyArray<HealthSourceAggregatedListWarningDataItem>;
+  Array<HealthSourceAggregatedListWarningDataItem>;
 export const HealthSourceAggregatedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     HealthSourceAggregatedListWarningDataItem,
@@ -22896,7 +23066,7 @@ export interface HealthSource {
   /** Output only. [Output Only] Creation timestamp inRFC3339 text format. */
   creationTimestamp?: string;
   /** Specifies the type of the HealthSource. The only allowed value is BACKEND_SERVICE. Must be specified when theHealthSource is created, and cannot be mutated. */
-  sourceType?: HealthSourceSourceTypeEnum;
+  sourceType?: HealthSourceSourceTypeEnum | (string & {});
   /** URL to the HealthAggregationPolicy resource. Must be set. Must be regional and in the same region as the HealthSource. Can be mutated. */
   healthAggregationPolicy?: string;
   /** Output only. [Output Only] URL of the region where the health source resides. This field applies only to the regional resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body. */
@@ -22935,7 +23105,7 @@ export const HealthSource = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "HealthSource" }) as any as S.Schema<HealthSource>;
 
-export type HealthSourceList_ = ReadonlyArray<HealthSource>;
+export type HealthSourceList_ = Array<HealthSource>;
 export const HealthSourceList_ = /*@__PURE__*/ S.Array(
   HealthSource,
 ) as any as S.Schema<HealthSourceList_>;
@@ -22957,7 +23127,7 @@ export const HealthSourcesScopedListWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<HealthSourcesScopedListWarningDataItem>;
 
 export type HealthSourcesScopedListWarningDataItemList =
-  ReadonlyArray<HealthSourcesScopedListWarningDataItem>;
+  Array<HealthSourcesScopedListWarningDataItem>;
 export const HealthSourcesScopedListWarningDataItemList = /*@__PURE__*/ S.Array(
   HealthSourcesScopedListWarningDataItem,
 ) as any as S.Schema<HealthSourcesScopedListWarningDataItemList>;
@@ -23123,7 +23293,7 @@ export const NetworkPoliciesScopedListWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<NetworkPoliciesScopedListWarningDataItem>;
 
 export type NetworkPoliciesScopedListWarningDataItemList =
-  ReadonlyArray<NetworkPoliciesScopedListWarningDataItem>;
+  Array<NetworkPoliciesScopedListWarningDataItem>;
 export const NetworkPoliciesScopedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     NetworkPoliciesScopedListWarningDataItem,
@@ -23179,14 +23349,13 @@ export const NetworkPoliciesScopedListWarning = /*@__PURE__*/ S.suspend(() =>
   identifier: "NetworkPoliciesScopedListWarning",
 }) as any as S.Schema<NetworkPoliciesScopedListWarning>;
 
-export type NetworkPolicyAssociationList =
-  ReadonlyArray<NetworkPolicyAssociation>;
+export type NetworkPolicyAssociationList = Array<NetworkPolicyAssociation>;
 export const NetworkPolicyAssociationList = /*@__PURE__*/ S.Array(
   NetworkPolicyAssociation,
 ) as any as S.Schema<NetworkPolicyAssociationList>;
 
 export type NetworkPolicyTrafficClassificationRuleList =
-  ReadonlyArray<NetworkPolicyTrafficClassificationRule>;
+  Array<NetworkPolicyTrafficClassificationRule>;
 export const NetworkPolicyTrafficClassificationRuleList = /*@__PURE__*/ S.Array(
   NetworkPolicyTrafficClassificationRule,
 ) as any as S.Schema<NetworkPolicyTrafficClassificationRuleList>;
@@ -23234,7 +23403,7 @@ export const NetworkPolicy = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "NetworkPolicy" }) as any as S.Schema<NetworkPolicy>;
 
-export type NetworkPolicyList_ = ReadonlyArray<NetworkPolicy>;
+export type NetworkPolicyList_ = Array<NetworkPolicy>;
 export const NetworkPolicyList_ = /*@__PURE__*/ S.Array(
   NetworkPolicy,
 ) as any as S.Schema<NetworkPolicyList_>;
@@ -23312,7 +23481,7 @@ export const NetworkPolicyAggregatedListWarningDataItem =
   }) as any as S.Schema<NetworkPolicyAggregatedListWarningDataItem>;
 
 export type NetworkPolicyAggregatedListWarningDataItemList =
-  ReadonlyArray<NetworkPolicyAggregatedListWarningDataItem>;
+  Array<NetworkPolicyAggregatedListWarningDataItem>;
 export const NetworkPolicyAggregatedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     NetworkPolicyAggregatedListWarningDataItem,
@@ -23423,7 +23592,7 @@ export const NotificationEndpointAggregatedListWarningDataItem =
   }) as any as S.Schema<NotificationEndpointAggregatedListWarningDataItem>;
 
 export type NotificationEndpointAggregatedListWarningDataItemList =
-  ReadonlyArray<NotificationEndpointAggregatedListWarningDataItem>;
+  Array<NotificationEndpointAggregatedListWarningDataItem>;
 export const NotificationEndpointAggregatedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     NotificationEndpointAggregatedListWarningDataItem,
@@ -23540,7 +23709,7 @@ export const NotificationEndpoint = /*@__PURE__*/ S.suspend(() =>
   identifier: "NotificationEndpoint",
 }) as any as S.Schema<NotificationEndpoint>;
 
-export type NotificationEndpointList_ = ReadonlyArray<NotificationEndpoint>;
+export type NotificationEndpointList_ = Array<NotificationEndpoint>;
 export const NotificationEndpointList_ = /*@__PURE__*/ S.Array(
   NotificationEndpoint,
 ) as any as S.Schema<NotificationEndpointList_>;
@@ -23562,7 +23731,7 @@ export const NotificationEndpointsScopedListWarningDataItem =
   }) as any as S.Schema<NotificationEndpointsScopedListWarningDataItem>;
 
 export type NotificationEndpointsScopedListWarningDataItemList =
-  ReadonlyArray<NotificationEndpointsScopedListWarningDataItem>;
+  Array<NotificationEndpointsScopedListWarningDataItem>;
 export const NotificationEndpointsScopedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     NotificationEndpointsScopedListWarningDataItem,
@@ -23730,7 +23899,7 @@ export const ReservationsScopedListWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ReservationsScopedListWarningDataItem>;
 
 export type ReservationsScopedListWarningDataItemList =
-  ReadonlyArray<ReservationsScopedListWarningDataItem>;
+  Array<ReservationsScopedListWarningDataItem>;
 export const ReservationsScopedListWarningDataItemList = /*@__PURE__*/ S.Array(
   ReservationsScopedListWarningDataItem,
 ) as any as S.Schema<ReservationsScopedListWarningDataItemList>;
@@ -23857,7 +24026,7 @@ export const ReservationAggregatedListWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ReservationAggregatedListWarningDataItem>;
 
 export type ReservationAggregatedListWarningDataItemList =
-  ReadonlyArray<ReservationAggregatedListWarningDataItem>;
+  Array<ReservationAggregatedListWarningDataItem>;
 export const ReservationAggregatedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     ReservationAggregatedListWarningDataItem,
@@ -24002,7 +24171,7 @@ export const ResourcePolicyAggregatedListWarningDataItem =
   }) as any as S.Schema<ResourcePolicyAggregatedListWarningDataItem>;
 
 export type ResourcePolicyAggregatedListWarningDataItemList =
-  ReadonlyArray<ResourcePolicyAggregatedListWarningDataItem>;
+  Array<ResourcePolicyAggregatedListWarningDataItem>;
 export const ResourcePolicyAggregatedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     ResourcePolicyAggregatedListWarningDataItem,
@@ -24053,8 +24222,12 @@ export interface ResourcePolicySnapshotSchedulePolicyRetentionPolicy {
   /** Maximum age of the snapshot that is allowed to be kept. */
   maxRetentionDays?: number;
   /** Specifies the behavior to apply to scheduled snapshots when the source disk is deleted. */
-  onSourceDiskDelete?: ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDeleteEnum;
-  onPolicySwitch?: ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnPolicySwitchEnum;
+  onSourceDiskDelete?:
+    | ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDeleteEnum
+    | (string & {});
+  onPolicySwitch?:
+    | ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnPolicySwitchEnum
+    | (string & {});
 }
 export const ResourcePolicySnapshotSchedulePolicyRetentionPolicy =
   /*@__PURE__*/ S.suspend(() =>
@@ -24131,7 +24304,7 @@ export interface ResourcePolicyWeeklyCycleDayOfWeek {
   /** Time within the window to start the operations. It must be in format "HH:MM", where HH : [00-23] and MM : [00-00] GMT. */
   startTime?: string;
   /** Defines a schedule that runs on specific days of the week. Specify one or more days. The following options are available: MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY. */
-  day?: ResourcePolicyWeeklyCycleDayOfWeekDayEnum;
+  day?: ResourcePolicyWeeklyCycleDayOfWeekDayEnum | (string & {});
   /** Output only. [Output only] Duration of the time window, automatically chosen to be smallest possible in the given scenario. */
   duration?: string;
 }
@@ -24146,7 +24319,7 @@ export const ResourcePolicyWeeklyCycleDayOfWeek = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourcePolicyWeeklyCycleDayOfWeek>;
 
 export type ResourcePolicyWeeklyCycleDayOfWeekList =
-  ReadonlyArray<ResourcePolicyWeeklyCycleDayOfWeek>;
+  Array<ResourcePolicyWeeklyCycleDayOfWeek>;
 export const ResourcePolicyWeeklyCycleDayOfWeekList = /*@__PURE__*/ S.Array(
   ResourcePolicyWeeklyCycleDayOfWeek,
 ) as any as S.Schema<ResourcePolicyWeeklyCycleDayOfWeekList>;
@@ -24247,11 +24420,13 @@ export const ResourcePolicyGroupPlacementPolicyCollocationEnum =
 /** A GroupPlacementPolicy specifies resource placement configuration. It specifies the failure bucket separation */
 export interface ResourcePolicyGroupPlacementPolicy {
   /** Specifies the connection mode for the accelerator topology. If not specified, the default is AUTO_CONNECT. */
-  acceleratorTopologyMode?: ResourcePolicyGroupPlacementPolicyAcceleratorTopologyModeEnum;
+  acceleratorTopologyMode?:
+    | ResourcePolicyGroupPlacementPolicyAcceleratorTopologyModeEnum
+    | (string & {});
   /** The number of availability domains to spread instances across. If two instances are in different availability domain, they are not in the same low latency network. */
   availabilityDomainCount?: number;
   /** Scope specifies the availability domain to which the VMs should be spread. */
-  scope?: ResourcePolicyGroupPlacementPolicyScopeEnum;
+  scope?: ResourcePolicyGroupPlacementPolicyScopeEnum | (string & {});
   /** Specifies the number of slices in a multislice workload. */
   sliceCount?: number;
   /** Specifies the shape of the GPU slice, in slice based GPU families eg. A4X. */
@@ -24261,7 +24436,9 @@ export interface ResourcePolicyGroupPlacementPolicy {
   /** Specifies the number of max logical switches. */
   maxDistance?: number;
   /** Specifies network collocation */
-  collocation?: ResourcePolicyGroupPlacementPolicyCollocationEnum;
+  collocation?:
+    | ResourcePolicyGroupPlacementPolicyCollocationEnum
+    | (string & {});
   /** Specifies the shape of the TPU slice */
   tpuTopology?: string;
 }
@@ -24304,13 +24481,17 @@ export const ResourcePolicyWorkloadPolicyAcceleratorTopologyModeEnum =
 /** Represents the workload policy. */
 export interface ResourcePolicyWorkloadPolicy {
   /** Specifies the intent of the instance placement in the MIG. */
-  type?: ResourcePolicyWorkloadPolicyTypeEnum;
+  type?: ResourcePolicyWorkloadPolicyTypeEnum | (string & {});
   /** Specifies the maximum distance between instances. */
-  maxTopologyDistance?: ResourcePolicyWorkloadPolicyMaxTopologyDistanceEnum;
+  maxTopologyDistance?:
+    | ResourcePolicyWorkloadPolicyMaxTopologyDistanceEnum
+    | (string & {});
   /** Specifies the topology required to create a partition for VMs that have interconnected GPUs. */
   acceleratorTopology?: string;
   /** Specifies the connection mode for the accelerator topology. If not specified, the default is AUTO_CONNECT. */
-  acceleratorTopologyMode?: ResourcePolicyWorkloadPolicyAcceleratorTopologyModeEnum;
+  acceleratorTopologyMode?:
+    | ResourcePolicyWorkloadPolicyAcceleratorTopologyModeEnum
+    | (string & {});
 }
 export const ResourcePolicyWorkloadPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -24455,7 +24636,7 @@ export interface ResourcePolicy {
   /** Output only. [Output Only] Server-defined URL for this resource with the resource id. */
   selfLinkWithId?: string;
   /** Output only. [Output Only] The status of resource policy creation. */
-  status?: ResourcePolicyStatusEnum;
+  status?: ResourcePolicyStatusEnum | (string & {});
   /** Output only. [Output Only] Type of the resource. Alwayscompute#resource_policies for resource policies. */
   kind?: string;
   /** Output only. [Output Only] Server-defined fully-qualified URL for this resource. */
@@ -24506,7 +24687,7 @@ export const ResourcePolicy = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ResourcePolicy" }) as any as S.Schema<ResourcePolicy>;
 
-export type ResourcePolicyList_ = ReadonlyArray<ResourcePolicy>;
+export type ResourcePolicyList_ = Array<ResourcePolicy>;
 export const ResourcePolicyList_ = /*@__PURE__*/ S.Array(
   ResourcePolicy,
 ) as any as S.Schema<ResourcePolicyList_>;
@@ -24560,7 +24741,7 @@ export const ResourcePoliciesScopedListWarningDataItem =
   }) as any as S.Schema<ResourcePoliciesScopedListWarningDataItem>;
 
 export type ResourcePoliciesScopedListWarningDataItemList =
-  ReadonlyArray<ResourcePoliciesScopedListWarningDataItem>;
+  Array<ResourcePoliciesScopedListWarningDataItem>;
 export const ResourcePoliciesScopedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     ResourcePoliciesScopedListWarningDataItem,
@@ -24695,7 +24876,7 @@ export const RoutersScopedListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RoutersScopedListWarningDataItem>;
 
 export type RoutersScopedListWarningDataItemList =
-  ReadonlyArray<RoutersScopedListWarningDataItem>;
+  Array<RoutersScopedListWarningDataItem>;
 export const RoutersScopedListWarningDataItemList = /*@__PURE__*/ S.Array(
   RoutersScopedListWarningDataItem,
 ) as any as S.Schema<RoutersScopedListWarningDataItemList>;
@@ -24769,8 +24950,7 @@ export const RouterAdvertisedIpRange = /*@__PURE__*/ S.suspend(() =>
   identifier: "RouterAdvertisedIpRange",
 }) as any as S.Schema<RouterAdvertisedIpRange>;
 
-export type RouterAdvertisedIpRangeList =
-  ReadonlyArray<RouterAdvertisedIpRange>;
+export type RouterAdvertisedIpRangeList = Array<RouterAdvertisedIpRange>;
 export const RouterAdvertisedIpRangeList = /*@__PURE__*/ S.Array(
   RouterAdvertisedIpRange,
 ) as any as S.Schema<RouterAdvertisedIpRangeList>;
@@ -24781,15 +24961,16 @@ export type RouterBgpAdvertisedGroupsItemEnum =
   | "ALL_VPC_SUBNETS";
 export const RouterBgpAdvertisedGroupsItemEnum = /*@__PURE__*/ S.String;
 
-export type RouterBgpAdvertisedGroupsItemEnumList =
-  ReadonlyArray<RouterBgpAdvertisedGroupsItemEnum>;
+export type RouterBgpAdvertisedGroupsItemEnumList = Array<
+  RouterBgpAdvertisedGroupsItemEnum | (string & {})
+>;
 export const RouterBgpAdvertisedGroupsItemEnumList = /*@__PURE__*/ S.Array(
   RouterBgpAdvertisedGroupsItemEnum,
 ) as any as S.Schema<RouterBgpAdvertisedGroupsItemEnumList>;
 
 export interface RouterBgp {
   /** User-specified flag to indicate which mode to use for advertisement. The options are DEFAULT or CUSTOM. */
-  advertiseMode?: RouterBgpAdvertiseModeEnum;
+  advertiseMode?: RouterBgpAdvertiseModeEnum | (string & {});
   /** User-specified list of individual IP ranges to advertise in custom mode. This field can only be populated if advertise_mode is CUSTOM and is advertised to all peers of the router. These IP ranges will be advertised in addition to any specified groups. Leave this field blank to advertise no custom IP ranges. */
   advertisedIpRanges?: RouterAdvertisedIpRangeList;
   /** The interval in seconds between BGP keepalive messages that are sent to the peer. Hold time is three times the interval at which keepalive messages are sent, and the hold time is the maximum number of seconds allowed to elapse between successive keepalive messages that BGP receives from a peer. BGP will use the smaller of either the local hold time value or the peer's hold time value as the hold time for the BGP connection between the two peers. If set, this value must be between 20 and 60. The default is 20. */
@@ -24825,7 +25006,7 @@ export const RouterBgpPeerCustomLearnedIpRange = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RouterBgpPeerCustomLearnedIpRange>;
 
 export type RouterBgpPeerCustomLearnedIpRangeList =
-  ReadonlyArray<RouterBgpPeerCustomLearnedIpRange>;
+  Array<RouterBgpPeerCustomLearnedIpRange>;
 export const RouterBgpPeerCustomLearnedIpRangeList = /*@__PURE__*/ S.Array(
   RouterBgpPeerCustomLearnedIpRange,
 ) as any as S.Schema<RouterBgpPeerCustomLearnedIpRangeList>;
@@ -24847,9 +25028,9 @@ export const RouterBgpPeerBfdSessionInitializationModeEnum =
 
 export interface RouterBgpPeerBfd {
   /** The BFD session initialization mode for this BGP peer. If set to ACTIVE, the Cloud Router will initiate the BFD session for this BGP peer. If set to PASSIVE, the Cloud Router will wait for the peer router to initiate the BFD session for this BGP peer. If set to DISABLED, BFD is disabled for this BGP peer. The default is PASSIVE. */
-  mode?: RouterBgpPeerBfdModeEnum;
+  mode?: RouterBgpPeerBfdModeEnum | (string & {});
   /** The BFD packet mode for this BGP peer. If set to CONTROL_AND_ECHO, BFD echo mode is enabled for this BGP peer. In this mode, if the peer router also has BFD echo mode enabled, BFD echo packets will be sent to the other router. If the peer router does not have BFD echo mode enabled, only control packets will be sent. If set to CONTROL_ONLY, BFD echo mode is disabled for this BGP peer. If this router and the peer router have a multihop connection, this should be set to CONTROL_ONLY as BFD echo mode is only supported on singlehop connections. The default is CONTROL_AND_ECHO. */
-  packetMode?: RouterBgpPeerBfdPacketModeEnum;
+  packetMode?: RouterBgpPeerBfdPacketModeEnum | (string & {});
   /** The minimum interval, in milliseconds, between BFD control packets transmitted to and received from the peer router when BFD echo mode is enabled on both routers. The actual transmit and receive intervals are negotiated between the two routers and are equal to the greater of this value and the corresponding interval on the other router. If set, this value must be between 1000 and 30000. The default is 5000. */
   slowTimerInterval?: number;
   /** The minimum interval, in milliseconds, between BFD control packets received from the peer router. The actual value is negotiated between the two routers and is equal to the greater of this value and the transmit interval of the other router. If set, this value must be between 1000 and 30000. The default is 1000. */
@@ -24857,7 +25038,9 @@ export interface RouterBgpPeerBfd {
   /** The number of consecutive BFD packets that must be missed before BFD declares that a peer is unavailable. If set, the value must be a value between 5 and 16. The default is 5. */
   multiplier?: number;
   /** The BFD session initialization mode for this BGP peer. If set to ACTIVE, the Cloud Router will initiate the BFD session for this BGP peer. If set to PASSIVE, the Cloud Router will wait for the peer router to initiate the BFD session for this BGP peer. If set to DISABLED, BFD is disabled for this BGP peer. The default is DISABLED. */
-  sessionInitializationMode?: RouterBgpPeerBfdSessionInitializationModeEnum;
+  sessionInitializationMode?:
+    | RouterBgpPeerBfdSessionInitializationModeEnum
+    | (string & {});
   /** The minimum interval, in milliseconds, between BFD control packets transmitted to the peer router. The actual value is negotiated between the two routers and is equal to the greater of this value and the corresponding receive interval of the other router. If set, this value must be between 1000 and 30000. The default is 1000. */
   minTransmitInterval?: number;
 }
@@ -24894,8 +25077,9 @@ export type RouterBgpPeerAdvertisedGroupsItemEnum =
   | "ALL_VPC_SUBNETS";
 export const RouterBgpPeerAdvertisedGroupsItemEnum = /*@__PURE__*/ S.String;
 
-export type RouterBgpPeerAdvertisedGroupsItemEnumList =
-  ReadonlyArray<RouterBgpPeerAdvertisedGroupsItemEnum>;
+export type RouterBgpPeerAdvertisedGroupsItemEnumList = Array<
+  RouterBgpPeerAdvertisedGroupsItemEnum | (string & {})
+>;
 export const RouterBgpPeerAdvertisedGroupsItemEnumList = /*@__PURE__*/ S.Array(
   RouterBgpPeerAdvertisedGroupsItemEnum,
 ) as any as S.Schema<RouterBgpPeerAdvertisedGroupsItemEnumList>;
@@ -24932,9 +25116,9 @@ export interface RouterBgpPeer {
   /** List of import policies applied to this peer, in the order they must be evaluated. The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_IMPORT type. */
   importPolicies?: StringList;
   /** Output only. [Output Only] The resource that configures and manages this BGP peer. - MANAGED_BY_USER is the default value and can be managed by you or other users - MANAGED_BY_ATTACHMENT is a BGP peer that is configured and managed by Cloud Interconnect, specifically by an InterconnectAttachment of type PARTNER. Google automatically creates, updates, and deletes this type of BGP peer when the PARTNER InterconnectAttachment is created, updated, or deleted. */
-  managementType?: RouterBgpPeerManagementTypeEnum;
+  managementType?: RouterBgpPeerManagementTypeEnum | (string & {});
   /** The status of the BGP peer connection. If set to FALSE, any active session with the peer is terminated and all associated routing information is removed. If set to TRUE, the peer connection can be established with routing information. The default is TRUE. */
-  enable?: RouterBgpPeerEnableEnum;
+  enable?: RouterBgpPeerEnableEnum | (string & {});
   /** Peer BGP Autonomous System Number (ASN). Each BGP interface may use a different value. */
   peerAsn?: number;
   /** IPv6 address of the BGP interface outside Google Cloud Platform. */
@@ -24942,7 +25126,7 @@ export interface RouterBgpPeer {
   /** IPv4 address of the interface inside Google Cloud Platform. */
   ipv4NexthopAddress?: string;
   /** User-specified flag to indicate which mode to use for advertisement. */
-  advertiseMode?: RouterBgpPeerAdvertiseModeEnum;
+  advertiseMode?: RouterBgpPeerAdvertiseModeEnum | (string & {});
   /** User-specified list of individual IP ranges to advertise in custom mode. This field can only be populated if advertise_mode is CUSTOM and overrides the list defined for the router (in the "bgp" message). These IP ranges are advertised in addition to any specified groups. Leave this field blank to advertise no custom IP ranges. */
   advertisedIpRanges?: RouterAdvertisedIpRangeList;
   /** User-specified list of prefix groups to advertise in custom mode, which currently supports the following option: - ALL_SUBNETS: Advertises all of the router's own VPC subnets. This excludes any routes learned for subnets that use VPC Network Peering. Note that this field can only be populated if advertise_mode is CUSTOM and overrides the list defined for the router (in the "bgp" message). These groups are advertised in addition to any specified prefixes. Leave this field blank to advertise no custom groups. */
@@ -24982,7 +25166,7 @@ export const RouterBgpPeer = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "RouterBgpPeer" }) as any as S.Schema<RouterBgpPeer>;
 
-export type RouterBgpPeerList = ReadonlyArray<RouterBgpPeer>;
+export type RouterBgpPeerList = Array<RouterBgpPeer>;
 export const RouterBgpPeerList = /*@__PURE__*/ S.Array(
   RouterBgpPeer,
 ) as any as S.Schema<RouterBgpPeerList>;
@@ -24994,8 +25178,9 @@ export type RouterNatSubnetworkToNatSourceIpRangesToNatItemEnum =
 export const RouterNatSubnetworkToNatSourceIpRangesToNatItemEnum =
   /*@__PURE__*/ S.String;
 
-export type RouterNatSubnetworkToNatSourceIpRangesToNatItemEnumList =
-  ReadonlyArray<RouterNatSubnetworkToNatSourceIpRangesToNatItemEnum>;
+export type RouterNatSubnetworkToNatSourceIpRangesToNatItemEnumList = Array<
+  RouterNatSubnetworkToNatSourceIpRangesToNatItemEnum | (string & {})
+>;
 export const RouterNatSubnetworkToNatSourceIpRangesToNatItemEnumList =
   /*@__PURE__*/ S.Array(
     RouterNatSubnetworkToNatSourceIpRangesToNatItemEnum,
@@ -25022,8 +25207,7 @@ export const RouterNatSubnetworkToNat = /*@__PURE__*/ S.suspend(() =>
   identifier: "RouterNatSubnetworkToNat",
 }) as any as S.Schema<RouterNatSubnetworkToNat>;
 
-export type RouterNatSubnetworkToNatList =
-  ReadonlyArray<RouterNatSubnetworkToNat>;
+export type RouterNatSubnetworkToNatList = Array<RouterNatSubnetworkToNat>;
 export const RouterNatSubnetworkToNatList = /*@__PURE__*/ S.Array(
   RouterNatSubnetworkToNat,
 ) as any as S.Schema<RouterNatSubnetworkToNatList>;
@@ -25071,7 +25255,7 @@ export const RouterNatRule = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "RouterNatRule" }) as any as S.Schema<RouterNatRule>;
 
-export type RouterNatRuleList = ReadonlyArray<RouterNatRule>;
+export type RouterNatRuleList = Array<RouterNatRule>;
 export const RouterNatRuleList = /*@__PURE__*/ S.Array(
   RouterNatRule,
 ) as any as S.Schema<RouterNatRuleList>;
@@ -25092,8 +25276,9 @@ export type RouterNatEndpointTypesItemEnum =
   | "ENDPOINT_TYPE_VM";
 export const RouterNatEndpointTypesItemEnum = /*@__PURE__*/ S.String;
 
-export type RouterNatEndpointTypesItemEnumList =
-  ReadonlyArray<RouterNatEndpointTypesItemEnum>;
+export type RouterNatEndpointTypesItemEnumList = Array<
+  RouterNatEndpointTypesItemEnum | (string & {})
+>;
 export const RouterNatEndpointTypesItemEnumList = /*@__PURE__*/ S.Array(
   RouterNatEndpointTypesItemEnum,
 ) as any as S.Schema<RouterNatEndpointTypesItemEnumList>;
@@ -25117,8 +25302,7 @@ export const RouterNatSubnetworkToNat64 = /*@__PURE__*/ S.suspend(() =>
   identifier: "RouterNatSubnetworkToNat64",
 }) as any as S.Schema<RouterNatSubnetworkToNat64>;
 
-export type RouterNatSubnetworkToNat64List =
-  ReadonlyArray<RouterNatSubnetworkToNat64>;
+export type RouterNatSubnetworkToNat64List = Array<RouterNatSubnetworkToNat64>;
 export const RouterNatSubnetworkToNat64List = /*@__PURE__*/ S.Array(
   RouterNatSubnetworkToNat64,
 ) as any as S.Schema<RouterNatSubnetworkToNat64List>;
@@ -25143,7 +25327,7 @@ export const RouterNatLogConfigFilterEnum = /*@__PURE__*/ S.String;
 /** Configuration of logging on a NAT. */
 export interface RouterNatLogConfig {
   /** Specify the desired filtering of logs on this NAT. If unspecified, logs are exported for all connections handled by this NAT. This option can take one of the following values: - ERRORS_ONLY: Export logs only for connection failures. - TRANSLATIONS_ONLY: Export logs only for successful connections. - ALL: Export logs for all connections, successful and unsuccessful. */
-  filter?: RouterNatLogConfigFilterEnum;
+  filter?: RouterNatLogConfigFilterEnum | (string & {});
   /** Indicates whether or not to export logs. This is false by default. */
   enable?: boolean;
 }
@@ -25165,19 +25349,23 @@ export interface RouterNat {
   /** A list of rules associated with this NAT. */
   rules?: RouterNatRuleList;
   /** Specify the Nat option, which can take one of the following values: - ALL_SUBNETWORKS_ALL_IP_RANGES: All of the IP ranges in every Subnetwork are allowed to Nat. - ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES: All of the primary IP ranges in every Subnetwork are allowed to Nat. - LIST_OF_SUBNETWORKS: A list of Subnetworks are allowed to Nat (specified in the field subnetwork below) The default is SUBNETWORK_IP_RANGE_TO_NAT_OPTION_UNSPECIFIED. Note that if this field contains ALL_SUBNETWORKS_ALL_IP_RANGES then there should not be any other Router.Nat section in any Router for this network in this region. */
-  sourceSubnetworkIpRangesToNat?: RouterNatSourceSubnetworkIpRangesToNatEnum;
+  sourceSubnetworkIpRangesToNat?:
+    | RouterNatSourceSubnetworkIpRangesToNatEnum
+    | (string & {});
   /** Maximum number of ports allocated to a VM from this NAT config when Dynamic Port Allocation is enabled. If Dynamic Port Allocation is not enabled, this field has no effect. If Dynamic Port Allocation is enabled, and this field is set, it must be set to a power of two greater than minPortsPerVm, or 64 if minPortsPerVm is not set. If Dynamic Port Allocation is enabled and this field is not set, a maximum of 65536 ports will be allocated to a VM from this NAT config. */
   maxPortsPerVm?: number;
   /** Enable Dynamic Port Allocation. If not specified, it is disabled by default. If set to true, - Dynamic Port Allocation will be enabled on this NAT config. - enableEndpointIndependentMapping cannot be set to true. - If minPorts is set, minPortsPerVm must be set to a power of two greater than or equal to 32. If minPortsPerVm is not set, a minimum of 32 ports will be allocated to a VM from this NAT config. */
   enableDynamicPortAllocation?: boolean;
   /** Indicates whether this NAT is used for public or private IP translation. If unspecified, it defaults to PUBLIC. */
-  type?: RouterNatTypeEnum;
+  type?: RouterNatTypeEnum | (string & {});
   /** List of NAT-ted endpoint types supported by the Nat Gateway. If the list is empty, then it will be equivalent to include ENDPOINT_TYPE_VM */
   endpointTypes?: RouterNatEndpointTypesItemEnumList;
   /** Timeout (in seconds) for ICMP connections. Defaults to 30s if not set. */
   icmpIdleTimeoutSec?: number;
   /** Specify the Nat option for NAT64, which can take one of the following values: - ALL_IPV6_SUBNETWORKS: All of the IP ranges in every Subnetwork are allowed to Nat. - LIST_OF_IPV6_SUBNETWORKS: A list of Subnetworks are allowed to Nat (specified in the field nat64_subnetwork below) The default is NAT64_OPTION_UNSPECIFIED. Note that if this field contains NAT64_ALL_V6_SUBNETWORKS no other Router.Nat section in this region can also enable NAT64 for any Subnetworks in this network. Other Router.Nat sections can still be present to enable NAT44 only. */
-  sourceSubnetworkIpRangesToNat64?: RouterNatSourceSubnetworkIpRangesToNat64Enum;
+  sourceSubnetworkIpRangesToNat64?:
+    | RouterNatSourceSubnetworkIpRangesToNat64Enum
+    | (string & {});
   /** Timeout (in seconds) for TCP transitory connections. Defaults to 30s if not set. */
   tcpTransitoryIdleTimeoutSec?: number;
   /** A list of URLs of the IP resources to be drained. These IPs must be valid static external IPs that have been assigned to the NAT. These IPs should be used for updating/patching a NAT only. */
@@ -25198,9 +25386,9 @@ export interface RouterNat {
   /** Timeout (in seconds) for UDP connections. Defaults to 30s if not set. */
   udpIdleTimeoutSec?: number;
   /** The network tier to use when automatically reserving NAT IP addresses. Must be one of: PREMIUM, STANDARD. If not specified, then the current project-level default tier is used. */
-  autoNetworkTier?: RouterNatAutoNetworkTierEnum;
+  autoNetworkTier?: RouterNatAutoNetworkTierEnum | (string & {});
   /** Specify the NatIpAllocateOption, which can take one of the following values: - MANUAL_ONLY: Uses only Nat IP addresses provided by customers. When there are not enough specified Nat IPs, the Nat service fails for new VMs. - AUTO_ONLY: Nat IPs are allocated by Google Cloud Platform; customers can't specify any Nat IPs. When choosing AUTO_ONLY, then nat_ip should be empty. */
-  natIpAllocateOption?: RouterNatNatIpAllocateOptionEnum;
+  natIpAllocateOption?: RouterNatNatIpAllocateOptionEnum | (string & {});
   /** Configure logging on this NAT. */
   logConfig?: RouterNatLogConfig;
 }
@@ -25236,7 +25424,7 @@ export const RouterNat = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "RouterNat" }) as any as S.Schema<RouterNat>;
 
-export type RouterNatList = ReadonlyArray<RouterNat>;
+export type RouterNatList = Array<RouterNat>;
 export const RouterNatList = /*@__PURE__*/ S.Array(
   RouterNat,
 ) as any as S.Schema<RouterNatList>;
@@ -25264,7 +25452,7 @@ export interface RouterInterface {
   /** The URI of the subnetwork resource that this interface belongs to, which must be in the same region as the Cloud Router. When you establish a BGP session to a VM instance using this interface, the VM instance must belong to the same subnetwork as the subnetwork specified here. */
   subnetwork?: string;
   /** IP version of this interface. */
-  ipVersion?: RouterInterfaceIpVersionEnum;
+  ipVersion?: RouterInterfaceIpVersionEnum | (string & {});
   /** IP address and range of the interface. - For Internet Protocol version 4 (IPv4), the IP range must be in theRFC3927 link-local IP address space. The value must be a CIDR-formatted string, for example, 169.254.0.1/30. Note: Do not truncate the IP address, as it represents the IP address of the interface. - For Internet Protocol version 6 (IPv6), the value must be a unique local address (ULA) range from fdff:1::/64 with a mask length of 126 or less. This value should be a CIDR-formatted string, for example, fdff:1::1/112. Within the router's VPC, this IPv6 prefix will be reserved exclusively for this connection and cannot be used for any other purpose. */
   ipRange?: string;
   /** URI of the linked VPN tunnel, which must be in the same region as the router. Each interface can have one linked resource, which can be a VPN tunnel, an Interconnect attachment, or a subnetwork. */
@@ -25272,7 +25460,7 @@ export interface RouterInterface {
   /** The regional private internal IP address that is used to establish BGP sessions to a VM instance acting as a third-party Router Appliance, such as a Next Gen Firewall, a Virtual Router, or an SD-WAN VM. */
   privateIpAddress?: string;
   /** Output only. [Output Only] The resource that configures and manages this interface. - MANAGED_BY_USER is the default value and can be managed directly by users. - MANAGED_BY_ATTACHMENT is an interface that is configured and managed by Cloud Interconnect, specifically, by an InterconnectAttachment of type PARTNER. Google automatically creates, updates, and deletes this type of interface when the PARTNER InterconnectAttachment is created, updated, or deleted. */
-  managementType?: RouterInterfaceManagementTypeEnum;
+  managementType?: RouterInterfaceManagementTypeEnum | (string & {});
   /** URI of the linked Interconnect attachment. It must be in the same region as the router. Each interface can have one linked resource, which can be a VPN tunnel, an Interconnect attachment, or a subnetwork. */
   linkedInterconnectAttachment?: string;
   /** Name of this interface entry. The name must be 1-63 characters long, and comply withRFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash. */
@@ -25296,7 +25484,7 @@ export const RouterInterface = /*@__PURE__*/ S.suspend(() =>
   identifier: "RouterInterface",
 }) as any as S.Schema<RouterInterface>;
 
-export type RouterInterfaceList = ReadonlyArray<RouterInterface>;
+export type RouterInterfaceList = Array<RouterInterface>;
 export const RouterInterfaceList = /*@__PURE__*/ S.Array(
   RouterInterface,
 ) as any as S.Schema<RouterInterfaceList>;
@@ -25316,8 +25504,7 @@ export const RouterMd5AuthenticationKey = /*@__PURE__*/ S.suspend(() =>
   identifier: "RouterMd5AuthenticationKey",
 }) as any as S.Schema<RouterMd5AuthenticationKey>;
 
-export type RouterMd5AuthenticationKeyList =
-  ReadonlyArray<RouterMd5AuthenticationKey>;
+export type RouterMd5AuthenticationKeyList = Array<RouterMd5AuthenticationKey>;
 export const RouterMd5AuthenticationKeyList = /*@__PURE__*/ S.Array(
   RouterMd5AuthenticationKey,
 ) as any as S.Schema<RouterMd5AuthenticationKeyList>;
@@ -25381,7 +25568,7 @@ export const Router = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Router" }) as any as S.Schema<Router>;
 
-export type RouterList_ = ReadonlyArray<Router>;
+export type RouterList_ = Array<Router>;
 export const RouterList_ = /*@__PURE__*/ S.Array(
   Router,
 ) as any as S.Schema<RouterList_>;
@@ -25425,7 +25612,7 @@ export const RouterAggregatedListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RouterAggregatedListWarningDataItem>;
 
 export type RouterAggregatedListWarningDataItemList =
-  ReadonlyArray<RouterAggregatedListWarningDataItem>;
+  Array<RouterAggregatedListWarningDataItem>;
 export const RouterAggregatedListWarningDataItemList = /*@__PURE__*/ S.Array(
   RouterAggregatedListWarningDataItem,
 ) as any as S.Schema<RouterAggregatedListWarningDataItemList>;
@@ -25568,7 +25755,7 @@ export const SecurityPoliciesAggregatedListWarningDataItem =
   }) as any as S.Schema<SecurityPoliciesAggregatedListWarningDataItem>;
 
 export type SecurityPoliciesAggregatedListWarningDataItemList =
-  ReadonlyArray<SecurityPoliciesAggregatedListWarningDataItem>;
+  Array<SecurityPoliciesAggregatedListWarningDataItem>;
 export const SecurityPoliciesAggregatedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     SecurityPoliciesAggregatedListWarningDataItem,
@@ -25675,7 +25862,7 @@ export const SecurityPoliciesScopedListWarningDataItem =
   }) as any as S.Schema<SecurityPoliciesScopedListWarningDataItem>;
 
 export type SecurityPoliciesScopedListWarningDataItemList =
-  ReadonlyArray<SecurityPoliciesScopedListWarningDataItem>;
+  Array<SecurityPoliciesScopedListWarningDataItem>;
 export const SecurityPoliciesScopedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     SecurityPoliciesScopedListWarningDataItem,
@@ -25712,8 +25899,7 @@ export const SecurityPolicyCloudArmorConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "SecurityPolicyCloudArmorConfig",
 }) as any as S.Schema<SecurityPolicyCloudArmorConfig>;
 
-export type SecurityPolicyAssociationList =
-  ReadonlyArray<SecurityPolicyAssociation>;
+export type SecurityPolicyAssociationList = Array<SecurityPolicyAssociation>;
 export const SecurityPolicyAssociationList = /*@__PURE__*/ S.Array(
   SecurityPolicyAssociation,
 ) as any as S.Schema<SecurityPolicyAssociationList>;
@@ -25739,7 +25925,7 @@ export interface SecurityPolicyUserDefinedField {
   /** Offset of the first byte of the field (in network byte order) relative to 'base'. */
   offset?: number;
   /** The base relative to which 'offset' is measured. Possible values are: - IPV4: Points to the beginning of the IPv4 header. - IPV6: Points to the beginning of the IPv6 header. - TCP: Points to the beginning of the TCP header, skipping over any IPv4 options or IPv6 extension headers. Not present for non-first fragments. - UDP: Points to the beginning of the UDP header, skipping over any IPv4 options or IPv6 extension headers. Not present for non-first fragments. required */
-  base?: SecurityPolicyUserDefinedFieldBaseEnum;
+  base?: SecurityPolicyUserDefinedFieldBaseEnum | (string & {});
   /** The name of this field. Must be unique within the policy. */
   name?: string;
   /** If specified, apply this mask (bitwise AND) to the field to ignore bits before matching. Encoded as a hexadecimal number (starting with "0x"). The last byte of the field (in network byte order) corresponds to the least significant byte of the mask. */
@@ -25758,12 +25944,12 @@ export const SecurityPolicyUserDefinedField = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SecurityPolicyUserDefinedField>;
 
 export type SecurityPolicyUserDefinedFieldList =
-  ReadonlyArray<SecurityPolicyUserDefinedField>;
+  Array<SecurityPolicyUserDefinedField>;
 export const SecurityPolicyUserDefinedFieldList = /*@__PURE__*/ S.Array(
   SecurityPolicyUserDefinedField,
 ) as any as S.Schema<SecurityPolicyUserDefinedFieldList>;
 
-export type SecurityPolicyRuleList = ReadonlyArray<SecurityPolicyRule>;
+export type SecurityPolicyRuleList = Array<SecurityPolicyRule>;
 export const SecurityPolicyRuleList = /*@__PURE__*/ S.Array(
   SecurityPolicyRule,
 ) as any as S.Schema<SecurityPolicyRuleList>;
@@ -25791,7 +25977,9 @@ export interface SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigTh
   /** Requests that match this value constitute a granular traffic unit. */
   value?: string;
   /** Type of this configuration. */
-  type?: SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigTypeEnum;
+  type?:
+    | SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigTypeEnum
+    | (string & {});
   /** If enabled, traffic matching each unique value for the specified type constitutes a separate traffic unit. It can only be set to true if `value` is empty. */
   enableEachUniqueValue?: boolean;
 }
@@ -25810,7 +25998,7 @@ export const SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresh
   }) as any as S.Schema<SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig>;
 
 export type SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigList =
-  ReadonlyArray<SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig>;
+  Array<SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig>;
 export const SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigList =
   /*@__PURE__*/ S.Array(
     SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig,
@@ -25850,7 +26038,7 @@ export const SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresh
   }) as any as S.Schema<SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig>;
 
 export type SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigList =
-  ReadonlyArray<SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig>;
+  Array<SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig>;
 export const SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigList =
   /*@__PURE__*/ S.Array(
     SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig,
@@ -25868,7 +26056,9 @@ export interface SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig {
   /** If set to true, enables CAAP for L7 DDoS detection. This field is only supported in Global Security Policies of type CLOUD_ARMOR. */
   enable?: boolean;
   /** Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules. This field is only supported in Global Security Policies of type CLOUD_ARMOR. */
-  ruleVisibility?: SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibilityEnum;
+  ruleVisibility?:
+    | SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibilityEnum
+    | (string & {});
 }
 export const SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig =
   /*@__PURE__*/ S.suspend(() =>
@@ -25941,8 +26131,12 @@ export const SecurityPolicyDdosProtectionConfigDdosAdaptiveProtectionEnum =
   /*@__PURE__*/ S.String;
 
 export interface SecurityPolicyDdosProtectionConfig {
-  ddosProtection?: SecurityPolicyDdosProtectionConfigDdosProtectionEnum;
-  ddosAdaptiveProtection?: SecurityPolicyDdosProtectionConfigDdosAdaptiveProtectionEnum;
+  ddosProtection?:
+    | SecurityPolicyDdosProtectionConfigDdosProtectionEnum
+    | (string & {});
+  ddosAdaptiveProtection?:
+    | SecurityPolicyDdosProtectionConfigDdosAdaptiveProtectionEnum
+    | (string & {});
   /** DDoS Protection for Network Load Balancers (and VMs with public IPs) builds DDoS mitigations that minimize collateral damage. It quantifies this as the fraction of a non-abuse baseline that's inadvertently blocked. Rules whose collateral damage exceeds ddosImpactedBaselineThreshold will not be deployed. Using a lower value will prioritize keeping collateral damage low, possibly at the cost of its effectiveness in rate limiting some or all of the attack. It should typically be unset, so Advanced DDoS (and Adaptive Protection) uses the best mitigation it can find. Setting the threshold is advised if there are logs for false positive detections with high collateral damage, and will cause Advanced DDoS to attempt to find a less aggressive rule that satisfies the constraint. If a suitable rule cannot be found, the system falls back to either no mitigation for smaller attacks or broader network throttles for larger ones. */
   ddosImpactedBaselineThreshold?: number;
 }
@@ -25991,10 +26185,12 @@ export interface SecurityPolicyAdvancedOptionsConfig {
   userIpRequestHeaders?: StringList;
   /** The maximum request size chosen by the customer with Waf enabled. Values supported are "8KB", "16KB, "32KB", "48KB" and "64KB". Values are case insensitive. */
   requestBodyInspectionSize?: string;
-  jsonParsing?: SecurityPolicyAdvancedOptionsConfigJsonParsingEnum;
+  jsonParsing?:
+    | SecurityPolicyAdvancedOptionsConfigJsonParsingEnum
+    | (string & {});
   /** Custom configuration to apply the JSON parsing. Only applicable when json_parsing is set to STANDARD. */
   jsonCustomConfig?: SecurityPolicyAdvancedOptionsConfigJsonCustomConfig;
-  logLevel?: SecurityPolicyAdvancedOptionsConfigLogLevelEnum;
+  logLevel?: SecurityPolicyAdvancedOptionsConfigLogLevelEnum | (string & {});
 }
 export const SecurityPolicyAdvancedOptionsConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -26026,7 +26222,7 @@ export interface SecurityPolicy {
   /** A list of associations that belong to this policy. */
   associations?: SecurityPolicyAssociationList;
   /** The type indicates the intended use of the security policy. - CLOUD_ARMOR: Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers. - CLOUD_ARMOR_EDGE: Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They filter requests before the request is served from Google's cache. - CLOUD_ARMOR_INTERNAL_SERVICE (preview only): Cloud Armor internal service policies can be configured to filter HTTP requests targeting services managed by Traffic Director in a service mesh. They filter requests before the request is served from the application. - CLOUD_ARMOR_NETWORK: Cloud Armor network policies can be configured to filter packets targeting network load balancing resources such as backend services, target pools, target instances, and instances with external IPs. They filter requests before the request is served from the application. This field can be set only at resource creation time. */
-  type?: SecurityPolicyTypeEnum;
+  type?: SecurityPolicyTypeEnum | (string & {});
   /** Definitions of user-defined fields for CLOUD_ARMOR_NETWORK policies. A user-defined field consists of up to 4 bytes extracted from a fixed offset in the packet, relative to the IPv4, IPv6, TCP, or UDP header, with an optional mask to select certain bits. Rules may then specify matching values for these fields. Example: userDefinedFields: - name: "ipv4_fragment_offset" base: IPV4 offset: 6 size: 2 mask: "0x1fff" */
   userDefinedFields?: SecurityPolicyUserDefinedFieldList;
   /** An optional description of this resource. Provide this property when you create the resource. */
@@ -26087,7 +26283,7 @@ export const SecurityPolicy = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SecurityPolicy" }) as any as S.Schema<SecurityPolicy>;
 
-export type SecurityPolicyList_ = ReadonlyArray<SecurityPolicy>;
+export type SecurityPolicyList_ = Array<SecurityPolicy>;
 export const SecurityPolicyList_ = /*@__PURE__*/ S.Array(
   SecurityPolicy,
 ) as any as S.Schema<SecurityPolicyList_>;
@@ -26204,7 +26400,7 @@ export const ServiceAttachmentAggregatedListWarningDataItem =
   }) as any as S.Schema<ServiceAttachmentAggregatedListWarningDataItem>;
 
 export type ServiceAttachmentAggregatedListWarningDataItemList =
-  ReadonlyArray<ServiceAttachmentAggregatedListWarningDataItem>;
+  Array<ServiceAttachmentAggregatedListWarningDataItem>;
 export const ServiceAttachmentAggregatedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     ServiceAttachmentAggregatedListWarningDataItem,
@@ -26284,9 +26480,11 @@ export const ServiceAttachmentTunnelingConfigEncapsulationProfileEnum =
 /** Use to configure this PSC connection in tunneling mode. In tunneling mode traffic from consumer to producer will be encapsulated as it crosses the VPC boundary and traffic from producer to consumer will be decapsulated in the same manner. */
 export interface ServiceAttachmentTunnelingConfig {
   /** How this Service Attachment will treat traffic sent to the tunnel_ip, destined for the consumer network. */
-  routingMode?: ServiceAttachmentTunnelingConfigRoutingModeEnum;
+  routingMode?: ServiceAttachmentTunnelingConfigRoutingModeEnum | (string & {});
   /** Specify the encapsulation protocol and what metadata to include in incoming encapsulated packet headers. */
-  encapsulationProfile?: ServiceAttachmentTunnelingConfigEncapsulationProfileEnum;
+  encapsulationProfile?:
+    | ServiceAttachmentTunnelingConfigEncapsulationProfileEnum
+    | (string & {});
 }
 export const ServiceAttachmentTunnelingConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -26315,7 +26513,7 @@ export interface ServiceAttachmentConnectedEndpoint {
   /** The url of a connected endpoint with resource id. */
   endpointWithId?: string;
   /** The status of a connected endpoint to this service attachment. */
-  status?: ServiceAttachmentConnectedEndpointStatusEnum;
+  status?: ServiceAttachmentConnectedEndpointStatusEnum | (string & {});
   /** The url of the consumer network. */
   consumerNetwork?: string;
   /** The PSC connection id of the connected endpoint. */
@@ -26342,7 +26540,7 @@ export const ServiceAttachmentConnectedEndpoint = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServiceAttachmentConnectedEndpoint>;
 
 export type ServiceAttachmentConnectedEndpointList =
-  ReadonlyArray<ServiceAttachmentConnectedEndpoint>;
+  Array<ServiceAttachmentConnectedEndpoint>;
 export const ServiceAttachmentConnectedEndpointList = /*@__PURE__*/ S.Array(
   ServiceAttachmentConnectedEndpoint,
 ) as any as S.Schema<ServiceAttachmentConnectedEndpointList>;
@@ -26381,7 +26579,7 @@ export const ServiceAttachmentConsumerProjectLimit = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ServiceAttachmentConsumerProjectLimit>;
 
 export type ServiceAttachmentConsumerProjectLimitList =
-  ReadonlyArray<ServiceAttachmentConsumerProjectLimit>;
+  Array<ServiceAttachmentConsumerProjectLimit>;
 export const ServiceAttachmentConsumerProjectLimitList = /*@__PURE__*/ S.Array(
   ServiceAttachmentConsumerProjectLimit,
 ) as any as S.Schema<ServiceAttachmentConsumerProjectLimitList>;
@@ -26389,7 +26587,9 @@ export const ServiceAttachmentConsumerProjectLimitList = /*@__PURE__*/ S.Array(
 /** Represents a ServiceAttachment resource. A service attachment represents a service that a producer has exposed. It encapsulates the load balancer which fronts the service runs and a list of NAT IP ranges that the producers uses to represent the consumers connecting to the service. */
 export interface ServiceAttachment {
   /** The connection preference of service attachment. The value can be set to ACCEPT_AUTOMATIC. An ACCEPT_AUTOMATIC service attachment is one that always accepts the connection from consumer forwarding rules. */
-  connectionPreference?: ServiceAttachmentConnectionPreferenceEnum;
+  connectionPreference?:
+    | ServiceAttachmentConnectionPreferenceEnum
+    | (string & {});
   /** Metadata of the service attachment. */
   metadata?: StringMap;
   /** This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints. - If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified . - If true, update will affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the reject list. For newly created service attachment, this boolean defaults to false. */
@@ -26465,7 +26665,7 @@ export const ServiceAttachment = /*@__PURE__*/ S.suspend(() =>
   identifier: "ServiceAttachment",
 }) as any as S.Schema<ServiceAttachment>;
 
-export type ServiceAttachmentList_ = ReadonlyArray<ServiceAttachment>;
+export type ServiceAttachmentList_ = Array<ServiceAttachment>;
 export const ServiceAttachmentList_ = /*@__PURE__*/ S.Array(
   ServiceAttachment,
 ) as any as S.Schema<ServiceAttachmentList_>;
@@ -26520,7 +26720,7 @@ export const ServiceAttachmentsScopedListWarningDataItem =
   }) as any as S.Schema<ServiceAttachmentsScopedListWarningDataItem>;
 
 export type ServiceAttachmentsScopedListWarningDataItemList =
-  ReadonlyArray<ServiceAttachmentsScopedListWarningDataItem>;
+  Array<ServiceAttachmentsScopedListWarningDataItem>;
 export const ServiceAttachmentsScopedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     ServiceAttachmentsScopedListWarningDataItem,
@@ -26686,7 +26886,7 @@ export const SnapshotAggregatedListWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<SnapshotAggregatedListWarningDataItem>;
 
 export type SnapshotAggregatedListWarningDataItemList =
-  ReadonlyArray<SnapshotAggregatedListWarningDataItem>;
+  Array<SnapshotAggregatedListWarningDataItem>;
 export const SnapshotAggregatedListWarningDataItemList = /*@__PURE__*/ S.Array(
   SnapshotAggregatedListWarningDataItem,
 ) as any as S.Schema<SnapshotAggregatedListWarningDataItemList>;
@@ -26797,7 +26997,7 @@ export interface Snapshot {
   /** Output only. [Output Only] URL of the resource policy which created this scheduled snapshot. */
   sourceSnapshotSchedulePolicy?: string;
   /** Indicates the type of the snapshot. */
-  snapshotType?: SnapshotSnapshotTypeEnum;
+  snapshotType?: SnapshotSnapshotTypeEnum | (string & {});
   /** Output only. [Output Only] A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options. */
   guestOsFeatures?: GuestOsFeatureList;
   /** Output only. [Output Only] The unique ID of the snapshot group that this snapshot belongs to. The usage of snapshot group feature is restricted. */
@@ -26813,9 +27013,9 @@ export interface Snapshot {
   /** Output only. [Output Only] Server-defined URL for this resource's resource id. */
   selfLinkWithId?: string;
   /** Output only. [Output Only] The status of the snapshot. This can beCREATING, DELETING, FAILED,READY, or UPLOADING. */
-  status?: SnapshotStatusEnum;
+  status?: SnapshotStatusEnum | (string & {});
   /** Output only. [Deprecated] Instead, check the storageBytes field. After snapshot creation, the storageBytesStatus field is alwaysUP_TO_DATE. [Output Only] An indicator whether storageBytes is in a stable state or it is being adjusted as a result of shared storage reallocation. This status can either be unset, meaning the snapshot is being created, or UP_TO_DATE, meaning the size of the snapshot is up-to-date. */
-  storageBytesStatus?: SnapshotStorageBytesStatusEnum;
+  storageBytesStatus?: SnapshotStorageBytesStatusEnum | (string & {});
   /** Output only. [Output Only] Type of the resource. Always compute#snapshot for Snapshot resources. */
   kind?: string;
   /** Output only. [Output Only] Server-defined URL for the resource. */
@@ -26839,7 +27039,7 @@ export interface Snapshot {
   /** [Input Only] Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process. */
   guestFlush?: boolean;
   /** Output only. [Output Only] The architecture of the snapshot. Valid values are ARM64 or X86_64. */
-  architecture?: SnapshotArchitectureEnum;
+  architecture?: SnapshotArchitectureEnum | (string & {});
   /** Customer provided encryption key when creating Snapshot from Instant Snapshot. */
   sourceInstantSnapshotEncryptionKey?: CustomerEncryptionKey;
 }
@@ -26892,7 +27092,7 @@ export const Snapshot = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Snapshot" }) as any as S.Schema<Snapshot>;
 
-export type SnapshotList_ = ReadonlyArray<Snapshot>;
+export type SnapshotList_ = Array<Snapshot>;
 export const SnapshotList_ = /*@__PURE__*/ S.Array(
   Snapshot,
 ) as any as S.Schema<SnapshotList_>;
@@ -26913,7 +27113,7 @@ export const SnapshotsScopedListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SnapshotsScopedListWarningDataItem>;
 
 export type SnapshotsScopedListWarningDataItemList =
-  ReadonlyArray<SnapshotsScopedListWarningDataItem>;
+  Array<SnapshotsScopedListWarningDataItem>;
 export const SnapshotsScopedListWarningDataItemList = /*@__PURE__*/ S.Array(
   SnapshotsScopedListWarningDataItem,
 ) as any as S.Schema<SnapshotsScopedListWarningDataItemList>;
@@ -27113,7 +27313,7 @@ export const SslCertificateAggregatedListWarningDataItem =
   }) as any as S.Schema<SslCertificateAggregatedListWarningDataItem>;
 
 export type SslCertificateAggregatedListWarningDataItemList =
-  ReadonlyArray<SslCertificateAggregatedListWarningDataItem>;
+  Array<SslCertificateAggregatedListWarningDataItem>;
 export const SslCertificateAggregatedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     SslCertificateAggregatedListWarningDataItem,
@@ -27178,6 +27378,7 @@ export const SslCertificateManagedSslCertificateDomainStatusValueEnum =
 export type SslCertificateManagedSslCertificateDomainStatusValueEnumMap = {
   [key: string]:
     | SslCertificateManagedSslCertificateDomainStatusValueEnum
+    | (string & {})
     | undefined;
 };
 export const SslCertificateManagedSslCertificateDomainStatusValueEnumMap =
@@ -27191,7 +27392,7 @@ export interface SslCertificateManagedSslCertificate {
   /** The domains for which a managed SSL certificate will be generated. Each Google-managed SSL certificate supports up to the [maximum number of domains per Google-managed SSL certificate](/load-balancing/docs/quotas#ssl_certificates). */
   domains?: StringList;
   /** Output only. [Output only] Status of the managed certificate resource. */
-  status?: SslCertificateManagedSslCertificateStatusEnum;
+  status?: SslCertificateManagedSslCertificateStatusEnum | (string & {});
   /** Output only. [Output only] Detailed statuses of the domains specified for managed certificate resource. */
   domainStatus?: SslCertificateManagedSslCertificateDomainStatusValueEnumMap;
 }
@@ -27244,7 +27445,7 @@ export interface SslCertificate {
   /** [Output Only] Creation timestamp inRFC3339 text format. */
   creationTimestamp?: string;
   /** (Optional) Specifies the type of SSL certificate, either "SELF_MANAGED" or "MANAGED". If not specified, the certificate is self-managed and the fieldscertificate and private_key are used. */
-  type?: SslCertificateTypeEnum;
+  type?: SslCertificateTypeEnum | (string & {});
 }
 export const SslCertificate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -27266,7 +27467,7 @@ export const SslCertificate = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SslCertificate" }) as any as S.Schema<SslCertificate>;
 
-export type SslCertificateList_ = ReadonlyArray<SslCertificate>;
+export type SslCertificateList_ = Array<SslCertificate>;
 export const SslCertificateList_ = /*@__PURE__*/ S.Array(
   SslCertificate,
 ) as any as S.Schema<SslCertificateList_>;
@@ -27288,7 +27489,7 @@ export const SslCertificatesScopedListWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<SslCertificatesScopedListWarningDataItem>;
 
 export type SslCertificatesScopedListWarningDataItemList =
-  ReadonlyArray<SslCertificatesScopedListWarningDataItem>;
+  Array<SslCertificatesScopedListWarningDataItem>;
 export const SslCertificatesScopedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     SslCertificatesScopedListWarningDataItem,
@@ -27484,14 +27685,14 @@ export const SslPolicyWarningsItemDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SslPolicyWarningsItemDataItem>;
 
 export type SslPolicyWarningsItemDataItemList =
-  ReadonlyArray<SslPolicyWarningsItemDataItem>;
+  Array<SslPolicyWarningsItemDataItem>;
 export const SslPolicyWarningsItemDataItemList = /*@__PURE__*/ S.Array(
   SslPolicyWarningsItemDataItem,
 ) as any as S.Schema<SslPolicyWarningsItemDataItemList>;
 
 export interface SslPolicyWarningsItem {
   /** [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response. */
-  code?: SslPolicyWarningsItemCodeEnum;
+  code?: SslPolicyWarningsItemCodeEnum | (string & {});
   /** [Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key": "scope", "value": "zones/us-east1-d" } */
   data?: SslPolicyWarningsItemDataItemList;
   /** [Output Only] A human-readable description of the warning code. */
@@ -27507,7 +27708,7 @@ export const SslPolicyWarningsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "SslPolicyWarningsItem",
 }) as any as S.Schema<SslPolicyWarningsItem>;
 
-export type SslPolicyWarningsItemList = ReadonlyArray<SslPolicyWarningsItem>;
+export type SslPolicyWarningsItemList = Array<SslPolicyWarningsItem>;
 export const SslPolicyWarningsItemList = /*@__PURE__*/ S.Array(
   SslPolicyWarningsItem,
 ) as any as S.Schema<SslPolicyWarningsItemList>;
@@ -27526,7 +27727,7 @@ export const ServerTlsSettingsTlsModeEnum = /*@__PURE__*/ S.String;
 /** The TLS settings for the server. */
 export interface ServerTlsSettings {
   /** Indicates whether connections should be secured using TLS. The value of this field determines how TLS is enforced. This field can be set to one of the following: - SIMPLE Secure connections with standard TLS semantics. - MUTUAL Secure connections to the backends using mutual TLS by presenting client certificates for authentication. */
-  tlsMode?: ServerTlsSettingsTlsModeEnum;
+  tlsMode?: ServerTlsSettingsTlsModeEnum | (string & {});
   /** Configures the mechanism to obtain security certificates and identity information. */
   proxyTlsContext?: TlsContext;
   /** A list of alternate names to verify the subject identity in the certificate presented by the client. */
@@ -27562,7 +27763,7 @@ export interface SslPolicy {
   /** Output only. [Output Only] If potential misconfigurations are detected for this SSL policy, this field will be populated with warning messages. */
   warnings?: SslPolicyWarningsItemList;
   /** Profile specifies the set of SSL features that can be used by the load balancer when negotiating SSL with clients. This can be one ofCOMPATIBLE, MODERN, RESTRICTED,FIPS_202205, or CUSTOM. If usingCUSTOM, the set of SSL features to enable must be specified in the customFeatures field. If using FIPS_202205, the min_tls_version field must be set to TLS_1_2. */
-  profile?: SslPolicyProfileEnum;
+  profile?: SslPolicyProfileEnum | (string & {});
   /** Output only. [Output Only] URL of the region where the regional SSL policy resides. This field is not applicable to global SSL policies. */
   region?: string;
   /** Security settings for the proxy. This field is only applicable to a global backend service with the loadBalancingScheme set toINTERNAL_SELF_MANAGED. */
@@ -27584,9 +27785,9 @@ export interface SslPolicy {
   /** Output only. [Output Only] Creation timestamp inRFC3339 text format. */
   creationTimestamp?: string;
   /** The minimum version of SSL protocol that can be used by the clients to establish a connection with the load balancer. This can be one ofTLS_1_0, TLS_1_1, TLS_1_2,TLS_1_3. When set to TLS_1_3, the profile field must be set to RESTRICTED. */
-  minTlsVersion?: SslPolicyMinTlsVersionEnum;
+  minTlsVersion?: SslPolicyMinTlsVersionEnum | (string & {});
   /** One of DEFAULT, ENABLED, orDEFERRED. Controls whether the load balancer negotiates X25519MLKEM768 key exchange when clients advertise support for it. When set to DEFAULT, or if no SSL Policy is attached to the target proxy, the load balancer disallows X25519MLKEM768 key exchange before October 2026, and allows it afterward. When set to ENABLED, the load balancer allows X25519MLKEM768 key exchange. When set toDEFERRED, the load balancer disallows X25519MLKEM768 key exchange until October 2027, and allows it afterward. */
-  postQuantumKeyExchange?: SslPolicyPostQuantumKeyExchangeEnum;
+  postQuantumKeyExchange?: SslPolicyPostQuantumKeyExchangeEnum | (string & {});
   /** An optional description of this resource. Provide this property when you create the resource. */
   description?: string;
 }
@@ -27611,7 +27812,7 @@ export const SslPolicy = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SslPolicy" }) as any as S.Schema<SslPolicy>;
 
-export type SslPolicyList = ReadonlyArray<SslPolicy>;
+export type SslPolicyList = Array<SslPolicy>;
 export const SslPolicyList = /*@__PURE__*/ S.Array(
   SslPolicy,
 ) as any as S.Schema<SslPolicyList>;
@@ -27633,7 +27834,7 @@ export const SslPoliciesScopedListWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<SslPoliciesScopedListWarningDataItem>;
 
 export type SslPoliciesScopedListWarningDataItemList =
-  ReadonlyArray<SslPoliciesScopedListWarningDataItem>;
+  Array<SslPoliciesScopedListWarningDataItem>;
 export const SslPoliciesScopedListWarningDataItemList = /*@__PURE__*/ S.Array(
   SslPoliciesScopedListWarningDataItem,
 ) as any as S.Schema<SslPoliciesScopedListWarningDataItemList>;
@@ -27760,7 +27961,7 @@ export const SslPoliciesAggregatedListWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<SslPoliciesAggregatedListWarningDataItem>;
 
 export type SslPoliciesAggregatedListWarningDataItemList =
-  ReadonlyArray<SslPoliciesAggregatedListWarningDataItem>;
+  Array<SslPoliciesAggregatedListWarningDataItem>;
 export const SslPoliciesAggregatedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     SslPoliciesAggregatedListWarningDataItem,
@@ -28037,11 +28238,15 @@ export interface StoragePool {
   /** Provisioned throughput of the storage pool in MiB/s. Only relevant if the storage pool type is hyperdisk-balanced or hyperdisk-throughput. */
   poolProvisionedThroughput?: string;
   /** Provisioning type of the performance-related parameters of the pool, such as throughput and IOPS. */
-  performanceProvisioningType?: StoragePoolPerformanceProvisioningTypeEnum;
+  performanceProvisioningType?:
+    | StoragePoolPerformanceProvisioningTypeEnum
+    | (string & {});
   /** Output only. [Output Only] The status of storage pool creation. - CREATING: Storage pool is provisioning. storagePool. - FAILED: Storage pool creation failed. - READY: Storage pool is ready for use. - DELETING: Storage pool is deleting. */
-  state?: StoragePoolStateEnum;
+  state?: StoragePoolStateEnum | (string & {});
   /** Provisioning type of the byte capacity of the pool. */
-  capacityProvisioningType?: StoragePoolCapacityProvisioningTypeEnum;
+  capacityProvisioningType?:
+    | StoragePoolCapacityProvisioningTypeEnum
+    | (string & {});
   /** Output only. [Output Only] Provisioned capacities for each SKU for this Exapool in GiB */
   exapoolProvisionedCapacityGb?: StoragePoolExapoolProvisionedCapacityGb;
 }
@@ -28081,7 +28286,7 @@ export const StoragePool = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "StoragePool" }) as any as S.Schema<StoragePool>;
 
-export type StoragePoolList_ = ReadonlyArray<StoragePool>;
+export type StoragePoolList_ = Array<StoragePool>;
 export const StoragePoolList_ = /*@__PURE__*/ S.Array(
   StoragePool,
 ) as any as S.Schema<StoragePoolList_>;
@@ -28103,7 +28308,7 @@ export const StoragePoolsScopedListWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<StoragePoolsScopedListWarningDataItem>;
 
 export type StoragePoolsScopedListWarningDataItemList =
-  ReadonlyArray<StoragePoolsScopedListWarningDataItem>;
+  Array<StoragePoolsScopedListWarningDataItem>;
 export const StoragePoolsScopedListWarningDataItemList = /*@__PURE__*/ S.Array(
   StoragePoolsScopedListWarningDataItem,
 ) as any as S.Schema<StoragePoolsScopedListWarningDataItemList>;
@@ -28198,7 +28403,7 @@ export const StoragePoolAggregatedListWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<StoragePoolAggregatedListWarningDataItem>;
 
 export type StoragePoolAggregatedListWarningDataItemList =
-  ReadonlyArray<StoragePoolAggregatedListWarningDataItem>;
+  Array<StoragePoolAggregatedListWarningDataItem>;
 export const StoragePoolAggregatedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     StoragePoolAggregatedListWarningDataItem,
@@ -28376,7 +28581,7 @@ export const StoragePoolTypeAggregatedListWarningDataItem =
   }) as any as S.Schema<StoragePoolTypeAggregatedListWarningDataItem>;
 
 export type StoragePoolTypeAggregatedListWarningDataItemList =
-  ReadonlyArray<StoragePoolTypeAggregatedListWarningDataItem>;
+  Array<StoragePoolTypeAggregatedListWarningDataItem>;
 export const StoragePoolTypeAggregatedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     StoragePoolTypeAggregatedListWarningDataItem,
@@ -28461,7 +28666,7 @@ export const StoragePoolType = /*@__PURE__*/ S.suspend(() =>
   identifier: "StoragePoolType",
 }) as any as S.Schema<StoragePoolType>;
 
-export type StoragePoolTypeList_ = ReadonlyArray<StoragePoolType>;
+export type StoragePoolTypeList_ = Array<StoragePoolType>;
 export const StoragePoolTypeList_ = /*@__PURE__*/ S.Array(
   StoragePoolType,
 ) as any as S.Schema<StoragePoolTypeList_>;
@@ -28483,7 +28688,7 @@ export const StoragePoolTypesScopedListWarningDataItem =
   }) as any as S.Schema<StoragePoolTypesScopedListWarningDataItem>;
 
 export type StoragePoolTypesScopedListWarningDataItemList =
-  ReadonlyArray<StoragePoolTypesScopedListWarningDataItem>;
+  Array<StoragePoolTypesScopedListWarningDataItem>;
 export const StoragePoolTypesScopedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     StoragePoolTypesScopedListWarningDataItem,
@@ -28592,7 +28797,7 @@ export const StoragePoolTypeAggregatedList = /*@__PURE__*/ S.suspend(() =>
 export type AggregatedListSubnetworksViewsEnum = "DEFAULT" | "WITH_UTILIZATION";
 export const AggregatedListSubnetworksViewsEnum = /*@__PURE__*/ S.String;
 
-export type AggregatedListSubnetworksViewsEnumList = ReadonlyArray<
+export type AggregatedListSubnetworksViewsEnumList = Array<
   AggregatedListSubnetworksViewsEnum | (string & {})
 >;
 export const AggregatedListSubnetworksViewsEnumList = /*@__PURE__*/ S.Array(
@@ -28658,7 +28863,7 @@ export const SubnetworkAggregatedListWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<SubnetworkAggregatedListWarningDataItem>;
 
 export type SubnetworkAggregatedListWarningDataItemList =
-  ReadonlyArray<SubnetworkAggregatedListWarningDataItem>;
+  Array<SubnetworkAggregatedListWarningDataItem>;
 export const SubnetworkAggregatedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     SubnetworkAggregatedListWarningDataItem,
@@ -28730,7 +28935,7 @@ export interface SubnetworkSecondaryRange {
   ipCidrRange?: string;
   /** Reference to a Public Delegated Prefix (PDP) for BYOIP. This field should be specified for configuring BYOGUA internal IPv6 secondary range. When specified along with the ip_cidr_range, the ip_cidr_range must lie within the PDP referenced by the `ipCollection` field. When specified without the ip_cidr_range, the range is auto-allocated from the PDP referenced by the `ipCollection` field. */
   ipCollection?: string;
-  ipVersion?: SubnetworkSecondaryRangeIpVersionEnum;
+  ipVersion?: SubnetworkSecondaryRangeIpVersionEnum | (string & {});
 }
 export const SubnetworkSecondaryRange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -28744,8 +28949,7 @@ export const SubnetworkSecondaryRange = /*@__PURE__*/ S.suspend(() =>
   identifier: "SubnetworkSecondaryRange",
 }) as any as S.Schema<SubnetworkSecondaryRange>;
 
-export type SubnetworkSecondaryRangeList =
-  ReadonlyArray<SubnetworkSecondaryRange>;
+export type SubnetworkSecondaryRangeList = Array<SubnetworkSecondaryRange>;
 export const SubnetworkSecondaryRangeList = /*@__PURE__*/ S.Array(
   SubnetworkSecondaryRange,
 ) as any as S.Schema<SubnetworkSecondaryRangeList>;
@@ -28786,7 +28990,7 @@ export const SubnetworkUtilizationDetailsIPV4Utilization =
   }) as any as S.Schema<SubnetworkUtilizationDetailsIPV4Utilization>;
 
 export type SubnetworkUtilizationDetailsIPV4UtilizationList =
-  ReadonlyArray<SubnetworkUtilizationDetailsIPV4Utilization>;
+  Array<SubnetworkUtilizationDetailsIPV4Utilization>;
 export const SubnetworkUtilizationDetailsIPV4UtilizationList =
   /*@__PURE__*/ S.Array(
     SubnetworkUtilizationDetailsIPV4Utilization,
@@ -28889,9 +29093,11 @@ export interface SubnetworkLogConfig {
   /** Can only be specified if VPC flow logging for this subnetwork is enabled. The value of the field must be in [0, 1]. Set the sampling rate of VPC flow logs within the subnetwork where 1.0 means all collected logs are reported and 0.0 means no logs are reported. Default is 0.5 unless otherwise specified by the org policy, which means half of all collected logs are reported. */
   flowSampling?: number;
   /** Can only be specified if VPC flow logging for this subnetwork is enabled. Toggles the aggregation interval for collecting flow logs. Increasing the interval time will reduce the amount of generated flow logs for long lasting connections. Default is an interval of 5 seconds per connection. */
-  aggregationInterval?: SubnetworkLogConfigAggregationIntervalEnum;
+  aggregationInterval?:
+    | SubnetworkLogConfigAggregationIntervalEnum
+    | (string & {});
   /** Can only be specified if VPC flow logs for this subnetwork is enabled. Configures whether all, none or a subset of metadata fields should be added to the reported VPC flow logs. Default isEXCLUDE_ALL_METADATA. */
-  metadata?: SubnetworkLogConfigMetadataEnum;
+  metadata?: SubnetworkLogConfigMetadataEnum | (string & {});
   /** Can only be specified if VPC flow logs for this subnetwork is enabled. The filter expression is used to define which VPC flow logs should be exported to Cloud Logging. */
   filterExpr?: string;
   /** Can only be specified if VPC flow logs for this subnetwork is enabled and "metadata" was set to CUSTOM_METADATA. */
@@ -28962,23 +29168,25 @@ export interface Subnetwork {
   /** The internal IPv6 address range that is owned by this subnetwork. */
   internalIpv6Prefix?: string;
   /** Can only be specified if VPC flow logging for this subnetwork is enabled. Configures whether metadata fields should be added to the reported VPC flow logs. Options are INCLUDE_ALL_METADATA,EXCLUDE_ALL_METADATA, and CUSTOM_METADATA. Default is EXCLUDE_ALL_METADATA. */
-  metadata?: SubnetworkMetadataEnum;
+  metadata?: SubnetworkMetadataEnum | (string & {});
   /** Output only. [Output Only] Creation timestamp inRFC3339 text format. */
   creationTimestamp?: string;
   /** This field is for internal use. This field can be both set at resource creation time and updated usingpatch. */
-  privateIpv6GoogleAccess?: SubnetworkPrivateIpv6GoogleAccessEnum;
+  privateIpv6GoogleAccess?:
+    | SubnetworkPrivateIpv6GoogleAccessEnum
+    | (string & {});
   /** The stack type for the subnet. If set to IPV4_ONLY, new VMs in the subnet are assigned IPv4 addresses only. If set toIPV4_IPV6, new VMs in the subnet can be assigned both IPv4 and IPv6 addresses. If not specified, IPV4_ONLY is used. This field can be both set at resource creation time and updated usingpatch. */
-  stackType?: SubnetworkStackTypeEnum;
+  stackType?: SubnetworkStackTypeEnum | (string & {});
   /** Reference to the source of IP, like a PublicDelegatedPrefix (PDP) for BYOIP. The PDP must be a sub-PDP in EXTERNAL_IPV6_SUBNETWORK_CREATION or INTERNAL_IPV6_SUBNETWORK_CREATION mode. Use one of the following formats to specify a sub-PDP when creating a dual stack or IPv6-only subnetwork with external access using BYOIP: - Full resource URL, as inhttps://www.googleapis.com/compute/v1/projects/projectId/regions/region/publicDelegatedPrefixes/sub-pdp-name - Partial URL, as in - projects/projectId/regions/region/publicDelegatedPrefixes/sub-pdp-name - regions/region/publicDelegatedPrefixes/sub-pdp-name */
   ipCollection?: string;
   /** URL of the region where the Subnetwork resides. This field can be set only at resource creation time. */
   region?: string;
   /** The role of subnetwork. Currently, this field is only used when purpose is set to GLOBAL_MANAGED_PROXY orREGIONAL_MANAGED_PROXY. The value can be set toACTIVE or BACKUP. An ACTIVE subnetwork is one that is currently being used for Envoy-based load balancers in a region. A BACKUP subnetwork is one that is ready to be promoted to ACTIVE or is currently draining. This field can be updated with a patch request. */
-  role?: SubnetworkRoleEnum;
+  role?: SubnetworkRoleEnum | (string & {});
   /** Output only. [Output Only] The current IP utilization of all subnetwork ranges. Contains the total number of allocated and free IPs in each range. */
   utilizationDetails?: SubnetworkUtilizationDetails;
   /** Output only. [Output Only] The state of the subnetwork, which can be one of the following values:READY: Subnetwork is created and ready to useDRAINING: only applicable to subnetworks that have the purpose set to INTERNAL_HTTPS_LOAD_BALANCER and indicates that connections to the load balancer are being drained. A subnetwork that is draining cannot be used or modified until it reaches a status ofREADY */
-  state?: SubnetworkStateEnum;
+  state?: SubnetworkStateEnum | (string & {});
   /** Output only. [Output Only] The gateway address for default routes to reach destination addresses outside this subnetwork. */
   gatewayAddress?: string;
   /** Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is determined by the org policy, if there is no org policy specified, then it will default to disabled. This field isn't supported if the subnet purpose field is set toREGIONAL_MANAGED_PROXY. It is recommended to uselogConfig.enable field instead. */
@@ -28994,11 +29202,11 @@ export interface Subnetwork {
   /** Whether this subnetwork's ranges can conflict with existing custom routes. Setting this to true allows this subnetwork's primary and secondary ranges to overlap with (and contain) custom routes that have already been configured on the corresponding network. For example if a static route has range 10.1.0.0/16, a subnet range 10.0.0.0/8 could only be created if allow_conflicting_routes=true. Overlapping is only allowed on subnetwork operations; routes whose ranges conflict with this subnetwork's ranges won't be allowed unless route.allow_conflicting_subnetworks is set to true. Typically packets destined to IPs within the subnetwork (which may contain private/sensitive data) are prevented from leaving the virtual network. Setting this field to true will disable this feature. The default value is false and applies to all existing subnetworks and automatically created subnetworks. */
   allowSubnetCidrRoutesOverlap?: boolean;
   /** The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation or the first time the subnet is updated into IPV4_IPV6 dual stack. */
-  ipv6AccessType?: SubnetworkIpv6AccessTypeEnum;
+  ipv6AccessType?: SubnetworkIpv6AccessTypeEnum | (string & {});
   /** A repeated field indicating the VLAN IDs supported on this subnetwork. During Subnet creation, specifying vlan is valid only if enable_l2 is true. During Subnet Update, specifying vlan is allowed only for l2 enabled subnets. Restricted to only one VLAN. */
   vlans?: IntegerList;
   /** Output only. [Output Only] Possible endpoints of this subnetwork. It can be one of the following: - VM_ONLY: The subnetwork can be used for creating instances and IPv6 addresses with VM endpoint type. Such a subnetwork gets external IPv6 ranges from a public delegated prefix and cannot be used to create NetLb. - VM_AND_FR: The subnetwork can be used for creating both VM instances and Forwarding Rules. It can also be used to reserve IPv6 addresses with both VM and FR endpoint types. Such a subnetwork gets its IPv6 range from Google IP Pool directly. */
-  ipv6GceEndpoint?: SubnetworkIpv6GceEndpointEnum;
+  ipv6GceEndpoint?: SubnetworkIpv6GceEndpointEnum | (string & {});
   /** The URL of the reserved internal range. */
   reservedInternalRange?: string;
   /** Input only. [Input Only] Additional params passed with the request, but not persisted as part of resource payload. */
@@ -29008,7 +29216,7 @@ export interface Subnetwork {
   /** The range of internal addresses that are owned by this subnetwork. Provide this property when you create the subnetwork. For example,10.0.0.0/8 or 100.64.0.0/10. Ranges must be unique and non-overlapping within a network. Only IPv4 is supported. This field is set at resource creation time. The range can be any range listed in theValid ranges list. The range can be expanded after creation usingexpandIpCidrRange. */
   ipCidrRange?: string;
   /** Configures subnet mask resolution for this subnetwork. */
-  resolveSubnetMask?: SubnetworkResolveSubnetMaskEnum;
+  resolveSubnetMask?: SubnetworkResolveSubnetMaskEnum | (string & {});
   /** The name of the resource, provided by the client when initially creating the resource. The name must be 1-63 characters long, and comply withRFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash. */
   name?: string;
   /** This field denotes the VPC flow logging options for this subnetwork. If logging is enabled, logs are exported to Cloud Logging. */
@@ -29018,12 +29226,12 @@ export interface Subnetwork {
   /** Whether the VMs in this subnet can access Google services without assigned external IP addresses. This field can be both set at resource creation time and updated using setPrivateIpGoogleAccess. */
   privateIpGoogleAccess?: boolean;
   /** Can only be specified if VPC flow logging for this subnetwork is enabled. Sets the aggregation interval for collecting flow logs. Increasing the interval time reduces the amount of generated flow logs for long-lasting connections. Default is an interval of 5 seconds per connection. Valid values: INTERVAL_5_SEC, INTERVAL_30_SEC,INTERVAL_1_MIN, INTERVAL_5_MIN,INTERVAL_10_MIN, INTERVAL_15_MIN. */
-  aggregationInterval?: SubnetworkAggregationIntervalEnum;
+  aggregationInterval?: SubnetworkAggregationIntervalEnum | (string & {});
   /** Enables Layer2 communication on the subnetwork. */
   enableL2?: boolean;
   /** Specifies the network tier for EXTERNAL IPv6. Can only be set when ipv6_access_type is EXTERNAL. Defaults to project defaultNetworkTier if not specified during the creation of the subnetwork. This field is IMMUTABLE once set with EXTERNAL IPv6. */
-  ipv6NetworkTier?: SubnetworkIpv6NetworkTierEnum;
-  purpose?: SubnetworkPurposeEnum;
+  ipv6NetworkTier?: SubnetworkIpv6NetworkTierEnum | (string & {});
+  purpose?: SubnetworkPurposeEnum | (string & {});
 }
 export const Subnetwork = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -29071,7 +29279,7 @@ export const Subnetwork = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Subnetwork" }) as any as S.Schema<Subnetwork>;
 
-export type SubnetworkList_ = ReadonlyArray<Subnetwork>;
+export type SubnetworkList_ = Array<Subnetwork>;
 export const SubnetworkList_ = /*@__PURE__*/ S.Array(
   Subnetwork,
 ) as any as S.Schema<SubnetworkList_>;
@@ -29093,7 +29301,7 @@ export const SubnetworksScopedListWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<SubnetworksScopedListWarningDataItem>;
 
 export type SubnetworksScopedListWarningDataItemList =
-  ReadonlyArray<SubnetworksScopedListWarningDataItem>;
+  Array<SubnetworksScopedListWarningDataItem>;
 export const SubnetworksScopedListWarningDataItemList = /*@__PURE__*/ S.Array(
   SubnetworksScopedListWarningDataItem,
 ) as any as S.Schema<SubnetworksScopedListWarningDataItemList>;
@@ -29258,7 +29466,7 @@ export const TargetHttpProxyAggregatedListWarningDataItem =
   }) as any as S.Schema<TargetHttpProxyAggregatedListWarningDataItem>;
 
 export type TargetHttpProxyAggregatedListWarningDataItemList =
-  ReadonlyArray<TargetHttpProxyAggregatedListWarningDataItem>;
+  Array<TargetHttpProxyAggregatedListWarningDataItem>;
 export const TargetHttpProxyAggregatedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     TargetHttpProxyAggregatedListWarningDataItem,
@@ -29333,7 +29541,7 @@ export const TargetHttpProxiesScopedListWarningDataItem =
   }) as any as S.Schema<TargetHttpProxiesScopedListWarningDataItem>;
 
 export type TargetHttpProxiesScopedListWarningDataItemList =
-  ReadonlyArray<TargetHttpProxiesScopedListWarningDataItem>;
+  Array<TargetHttpProxiesScopedListWarningDataItem>;
 export const TargetHttpProxiesScopedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     TargetHttpProxiesScopedListWarningDataItem,
@@ -29439,7 +29647,7 @@ export const TargetHttpProxy = /*@__PURE__*/ S.suspend(() =>
   identifier: "TargetHttpProxy",
 }) as any as S.Schema<TargetHttpProxy>;
 
-export type TargetHttpProxyList_ = ReadonlyArray<TargetHttpProxy>;
+export type TargetHttpProxyList_ = Array<TargetHttpProxy>;
 export const TargetHttpProxyList_ = /*@__PURE__*/ S.Array(
   TargetHttpProxy,
 ) as any as S.Schema<TargetHttpProxyList_>;
@@ -29564,9 +29772,9 @@ export interface TargetHttpsProxy {
   /** Output only. [Output Only] URL of the region where the regional TargetHttpsProxy resides. This field is not applicable to global TargetHttpsProxies. */
   region?: string;
   /** Specifies whether TLS 1.3 0-RTT Data ("Early Data") should be accepted for this service. Early Data allows a TLS resumption handshake to include the initial application payload (a HTTP request) alongside the handshake, reducing the effective round trips to "zero". This applies to TLS 1.3 connections over TCP (HTTP/2) as well as over UDP (QUIC/h3). This can improve application performance, especially on networks where interruptions may be common, such as on mobile. Requests with Early Data will have the "Early-Data" HTTP header set on the request, with a value of "1", to allow the backend to determine whether Early Data was included. Note: TLS Early Data may allow requests to be replayed, as the data is sent to the backend before the handshake has fully completed. Applications that allow idempotent HTTP methods to make non-idempotent changes, such as a GET request updating a database, should not accept Early Data on those requests, and reject requests with the "Early-Data: 1" HTTP header by returning a HTTP 425 (Too Early) status code, in order to remain RFC compliant. The default value is DISABLED. */
-  tlsEarlyData?: TargetHttpsProxyTlsEarlyDataEnum;
+  tlsEarlyData?: TargetHttpsProxyTlsEarlyDataEnum | (string & {});
   /** Specifies the QUIC override policy for this TargetHttpsProxy resource. This setting determines whether the load balancer attempts to negotiate QUIC with clients. You can specify NONE, ENABLE, orDISABLE. - When quic-override is set to NONE, Google manages whether QUIC is used. - When quic-override is set to ENABLE, the load balancer uses QUIC when possible. - When quic-override is set to DISABLE, the load balancer doesn't use QUIC. - If the quic-override flag is not specified,NONE is implied. */
-  quicOverride?: TargetHttpsProxyQuicOverrideEnum;
+  quicOverride?: TargetHttpsProxyQuicOverrideEnum | (string & {});
   /** This field only applies when the forwarding rule that references this target proxy has a loadBalancingScheme set toINTERNAL_SELF_MANAGED. When this field is set to true, Envoy proxies set up inbound traffic interception and bind to the IP address and port specified in the forwarding rule. This is generally useful when using Traffic Director to configure Envoy as a gateway or middle proxy (in other words, not a sidecar proxy). The Envoy proxy listens for inbound requests and handles requests when it receives them. The default is false. */
   proxyBind?: boolean;
   /** [Output Only] The unique identifier for the resource. This identifier is defined by the server. */
@@ -29623,7 +29831,7 @@ export const TargetHttpsProxy = /*@__PURE__*/ S.suspend(() =>
   identifier: "TargetHttpsProxy",
 }) as any as S.Schema<TargetHttpsProxy>;
 
-export type TargetHttpsProxyList_ = ReadonlyArray<TargetHttpsProxy>;
+export type TargetHttpsProxyList_ = Array<TargetHttpsProxy>;
 export const TargetHttpsProxyList_ = /*@__PURE__*/ S.Array(
   TargetHttpsProxy,
 ) as any as S.Schema<TargetHttpsProxyList_>;
@@ -29645,7 +29853,7 @@ export const TargetHttpsProxiesScopedListWarningDataItem =
   }) as any as S.Schema<TargetHttpsProxiesScopedListWarningDataItem>;
 
 export type TargetHttpsProxiesScopedListWarningDataItemList =
-  ReadonlyArray<TargetHttpsProxiesScopedListWarningDataItem>;
+  Array<TargetHttpsProxiesScopedListWarningDataItem>;
 export const TargetHttpsProxiesScopedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     TargetHttpsProxiesScopedListWarningDataItem,
@@ -29742,7 +29950,7 @@ export const TargetHttpsProxyAggregatedListWarningDataItem =
   }) as any as S.Schema<TargetHttpsProxyAggregatedListWarningDataItem>;
 
 export type TargetHttpsProxyAggregatedListWarningDataItemList =
-  ReadonlyArray<TargetHttpsProxyAggregatedListWarningDataItem>;
+  Array<TargetHttpsProxyAggregatedListWarningDataItem>;
 export const TargetHttpsProxyAggregatedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     TargetHttpsProxyAggregatedListWarningDataItem,
@@ -29894,7 +30102,7 @@ export interface TargetInstance {
   /** [Output Only] The resource URL for the security policy associated with this target instance. */
   securityPolicy?: string;
   /** Must have a value of NO_NAT. Protocol forwarding delivers packets while preserving the destination IP address of the forwarding rule referencing the target instance. */
-  natPolicy?: TargetInstanceNatPolicyEnum;
+  natPolicy?: TargetInstanceNatPolicyEnum | (string & {});
   /** [Output Only] Server-defined URL for the resource. */
   selfLink?: string;
   /** Output only. [Output Only] The type of the resource. Alwayscompute#targetInstance for target instances. */
@@ -29917,7 +30125,7 @@ export const TargetInstance = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TargetInstance" }) as any as S.Schema<TargetInstance>;
 
-export type TargetInstanceList_ = ReadonlyArray<TargetInstance>;
+export type TargetInstanceList_ = Array<TargetInstance>;
 export const TargetInstanceList_ = /*@__PURE__*/ S.Array(
   TargetInstance,
 ) as any as S.Schema<TargetInstanceList_>;
@@ -29939,7 +30147,7 @@ export const TargetInstancesScopedListWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<TargetInstancesScopedListWarningDataItem>;
 
 export type TargetInstancesScopedListWarningDataItemList =
-  ReadonlyArray<TargetInstancesScopedListWarningDataItem>;
+  Array<TargetInstancesScopedListWarningDataItem>;
 export const TargetInstancesScopedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     TargetInstancesScopedListWarningDataItem,
@@ -30068,7 +30276,7 @@ export const TargetInstanceAggregatedListWarningDataItem =
   }) as any as S.Schema<TargetInstanceAggregatedListWarningDataItem>;
 
 export type TargetInstanceAggregatedListWarningDataItemList =
-  ReadonlyArray<TargetInstanceAggregatedListWarningDataItem>;
+  Array<TargetInstanceAggregatedListWarningDataItem>;
 export const TargetInstanceAggregatedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     TargetInstanceAggregatedListWarningDataItem,
@@ -30188,7 +30396,7 @@ export interface TargetPool {
   /** Output only. [Output Only] URL of the region where the target pool resides. */
   region?: string;
   /** Session affinity option, must be one of the following values: NONE: Connections from the same client IP may go to any instance in the pool. CLIENT_IP: Connections from the same client IP will go to the same instance in the pool while that instance remains healthy. CLIENT_IP_PROTO: Connections from the same client IP with the same IP protocol will go to the same instance in the pool while that instance remains healthy. */
-  sessionAffinity?: TargetPoolSessionAffinityEnum;
+  sessionAffinity?: TargetPoolSessionAffinityEnum | (string & {});
   /** Output only. [Output Only] Type of the resource. Always compute#targetPool for target pools. */
   kind?: string;
   /** [Output Only] Server-defined URL for the resource. */
@@ -30223,7 +30431,7 @@ export const TargetPool = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TargetPool" }) as any as S.Schema<TargetPool>;
 
-export type TargetPoolList_ = ReadonlyArray<TargetPool>;
+export type TargetPoolList_ = Array<TargetPool>;
 export const TargetPoolList_ = /*@__PURE__*/ S.Array(
   TargetPool,
 ) as any as S.Schema<TargetPoolList_>;
@@ -30277,7 +30485,7 @@ export const TargetPoolsScopedListWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<TargetPoolsScopedListWarningDataItem>;
 
 export type TargetPoolsScopedListWarningDataItemList =
-  ReadonlyArray<TargetPoolsScopedListWarningDataItem>;
+  Array<TargetPoolsScopedListWarningDataItem>;
 export const TargetPoolsScopedListWarningDataItemList = /*@__PURE__*/ S.Array(
   TargetPoolsScopedListWarningDataItem,
 ) as any as S.Schema<TargetPoolsScopedListWarningDataItemList>;
@@ -30340,7 +30548,7 @@ export const TargetPoolAggregatedListWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<TargetPoolAggregatedListWarningDataItem>;
 
 export type TargetPoolAggregatedListWarningDataItemList =
-  ReadonlyArray<TargetPoolAggregatedListWarningDataItem>;
+  Array<TargetPoolAggregatedListWarningDataItem>;
 export const TargetPoolAggregatedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     TargetPoolAggregatedListWarningDataItem,
@@ -30483,7 +30691,7 @@ export const TargetTcpProxyAggregatedListWarningDataItem =
   }) as any as S.Schema<TargetTcpProxyAggregatedListWarningDataItem>;
 
 export type TargetTcpProxyAggregatedListWarningDataItemList =
-  ReadonlyArray<TargetTcpProxyAggregatedListWarningDataItem>;
+  Array<TargetTcpProxyAggregatedListWarningDataItem>;
 export const TargetTcpProxyAggregatedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     TargetTcpProxyAggregatedListWarningDataItem,
@@ -30563,11 +30771,11 @@ export interface TargetTcpProxy {
   /** An optional description of this resource. Provide this property when you create the resource. */
   description?: string;
   /** Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE. */
-  proxyHeader?: TargetTcpProxyProxyHeaderEnum;
+  proxyHeader?: TargetTcpProxyProxyHeaderEnum | (string & {});
   /** Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply withRFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash. */
   name?: string;
   /** Specifies the type of load balancing scheme used by this target proxy. */
-  loadBalancingScheme?: TargetTcpProxyLoadBalancingSchemeEnum;
+  loadBalancingScheme?: TargetTcpProxyLoadBalancingSchemeEnum | (string & {});
   /** URL to the BackendService resource. */
   service?: string;
   /** Output only. [Output Only] Type of the resource. Alwayscompute#targetTcpProxy for target TCP proxies. */
@@ -30591,7 +30799,7 @@ export const TargetTcpProxy = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TargetTcpProxy" }) as any as S.Schema<TargetTcpProxy>;
 
-export type TargetTcpProxyList_ = ReadonlyArray<TargetTcpProxy>;
+export type TargetTcpProxyList_ = Array<TargetTcpProxy>;
 export const TargetTcpProxyList_ = /*@__PURE__*/ S.Array(
   TargetTcpProxy,
 ) as any as S.Schema<TargetTcpProxyList_>;
@@ -30645,7 +30853,7 @@ export const TargetTcpProxiesScopedListWarningDataItem =
   }) as any as S.Schema<TargetTcpProxiesScopedListWarningDataItem>;
 
 export type TargetTcpProxiesScopedListWarningDataItemList =
-  ReadonlyArray<TargetTcpProxiesScopedListWarningDataItem>;
+  Array<TargetTcpProxiesScopedListWarningDataItem>;
 export const TargetTcpProxiesScopedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     TargetTcpProxiesScopedListWarningDataItem,
@@ -30812,7 +31020,7 @@ export const TargetVpnGatewayAggregatedListWarningDataItem =
   }) as any as S.Schema<TargetVpnGatewayAggregatedListWarningDataItem>;
 
 export type TargetVpnGatewayAggregatedListWarningDataItemList =
-  ReadonlyArray<TargetVpnGatewayAggregatedListWarningDataItem>;
+  Array<TargetVpnGatewayAggregatedListWarningDataItem>;
 export const TargetVpnGatewayAggregatedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     TargetVpnGatewayAggregatedListWarningDataItem,
@@ -30854,7 +31062,7 @@ export const TargetVpnGatewaysScopedListWarningDataItem =
   }) as any as S.Schema<TargetVpnGatewaysScopedListWarningDataItem>;
 
 export type TargetVpnGatewaysScopedListWarningDataItemList =
-  ReadonlyArray<TargetVpnGatewaysScopedListWarningDataItem>;
+  Array<TargetVpnGatewaysScopedListWarningDataItem>;
 export const TargetVpnGatewaysScopedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     TargetVpnGatewaysScopedListWarningDataItem,
@@ -30937,7 +31145,7 @@ export interface TargetVpnGateway {
   /** Output only. [Output Only] Type of resource. Alwayscompute#targetVpnGateway for target VPN gateways. */
   kind?: string;
   /** [Output Only] The status of the VPN gateway, which can be one of the following: CREATING, READY, FAILED, or DELETING. */
-  status?: TargetVpnGatewayStatusEnum;
+  status?: TargetVpnGatewayStatusEnum | (string & {});
   /** An optional description of this resource. Provide this property when you create the resource. */
   description?: string;
   /** URL of the network to which this VPN gateway is attached. Provided by the client when the VPN gateway is created. */
@@ -30982,7 +31190,7 @@ export const TargetVpnGateway = /*@__PURE__*/ S.suspend(() =>
   identifier: "TargetVpnGateway",
 }) as any as S.Schema<TargetVpnGateway>;
 
-export type TargetVpnGatewayList_ = ReadonlyArray<TargetVpnGateway>;
+export type TargetVpnGatewayList_ = Array<TargetVpnGateway>;
 export const TargetVpnGatewayList_ = /*@__PURE__*/ S.Array(
   TargetVpnGateway,
 ) as any as S.Schema<TargetVpnGatewayList_>;
@@ -31096,7 +31304,7 @@ export const UrlMapsAggregatedListWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<UrlMapsAggregatedListWarningDataItem>;
 
 export type UrlMapsAggregatedListWarningDataItemList =
-  ReadonlyArray<UrlMapsAggregatedListWarningDataItem>;
+  Array<UrlMapsAggregatedListWarningDataItem>;
 export const UrlMapsAggregatedListWarningDataItemList = /*@__PURE__*/ S.Array(
   UrlMapsAggregatedListWarningDataItem,
 ) as any as S.Schema<UrlMapsAggregatedListWarningDataItemList>;
@@ -31167,7 +31375,7 @@ export const UrlMapTestHeader = /*@__PURE__*/ S.suspend(() =>
   identifier: "UrlMapTestHeader",
 }) as any as S.Schema<UrlMapTestHeader>;
 
-export type UrlMapTestHeaderList = ReadonlyArray<UrlMapTestHeader>;
+export type UrlMapTestHeaderList = Array<UrlMapTestHeader>;
 export const UrlMapTestHeaderList = /*@__PURE__*/ S.Array(
   UrlMapTestHeader,
 ) as any as S.Schema<UrlMapTestHeaderList>;
@@ -31207,7 +31415,7 @@ export const UrlMapTest = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "UrlMapTest" }) as any as S.Schema<UrlMapTest>;
 
-export type UrlMapTestList = ReadonlyArray<UrlMapTest>;
+export type UrlMapTestList = Array<UrlMapTest>;
 export const UrlMapTestList = /*@__PURE__*/ S.Array(
   UrlMapTest,
 ) as any as S.Schema<UrlMapTestList>;
@@ -31231,7 +31439,7 @@ export const HttpHeaderOption = /*@__PURE__*/ S.suspend(() =>
   identifier: "HttpHeaderOption",
 }) as any as S.Schema<HttpHeaderOption>;
 
-export type HttpHeaderOptionList = ReadonlyArray<HttpHeaderOption>;
+export type HttpHeaderOptionList = Array<HttpHeaderOption>;
 export const HttpHeaderOptionList = /*@__PURE__*/ S.Array(
   HttpHeaderOption,
 ) as any as S.Schema<HttpHeaderOptionList>;
@@ -31279,7 +31487,7 @@ export const CustomErrorResponsePolicyCustomErrorResponseRule =
   }) as any as S.Schema<CustomErrorResponsePolicyCustomErrorResponseRule>;
 
 export type CustomErrorResponsePolicyCustomErrorResponseRuleList =
-  ReadonlyArray<CustomErrorResponsePolicyCustomErrorResponseRule>;
+  Array<CustomErrorResponsePolicyCustomErrorResponseRule>;
 export const CustomErrorResponsePolicyCustomErrorResponseRuleList =
   /*@__PURE__*/ S.Array(
     CustomErrorResponsePolicyCustomErrorResponseRule,
@@ -31315,7 +31523,9 @@ export const HttpRedirectActionRedirectResponseCodeEnum =
 /** Specifies settings for an HTTP redirect. */
 export interface HttpRedirectAction {
   /** The HTTP Status code to use for this RedirectAction. Supported values are: - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301. - FOUND, which corresponds to 302. - SEE_OTHER which corresponds to 303. - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method is retained. - PERMANENT_REDIRECT, which corresponds to 308. In this case, the request method is retained. */
-  redirectResponseCode?: HttpRedirectActionRedirectResponseCodeEnum;
+  redirectResponseCode?:
+    | HttpRedirectActionRedirectResponseCodeEnum
+    | (string & {});
   /** The host that is used in the redirect response instead of the one that was supplied in the request. The value must be from 1 to 255 characters. */
   hostRedirect?: string;
   /** The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch, retaining the remaining portion of the URL before redirecting the request. prefixRedirect cannot be supplied together withpathRedirect. Supply one alone or neither. If neither is supplied, the path of the original request is used for the redirect. The value must be from 1 to 1024 characters. */
@@ -31361,7 +31571,7 @@ export const HttpFilterConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "HttpFilterConfig",
 }) as any as S.Schema<HttpFilterConfig>;
 
-export type HttpFilterConfigList = ReadonlyArray<HttpFilterConfig>;
+export type HttpFilterConfigList = Array<HttpFilterConfig>;
 export const HttpFilterConfigList = /*@__PURE__*/ S.Array(
   HttpFilterConfig,
 ) as any as S.Schema<HttpFilterConfigList>;
@@ -31416,7 +31626,7 @@ export const HttpHeaderMatch = /*@__PURE__*/ S.suspend(() =>
   identifier: "HttpHeaderMatch",
 }) as any as S.Schema<HttpHeaderMatch>;
 
-export type HttpHeaderMatchList = ReadonlyArray<HttpHeaderMatch>;
+export type HttpHeaderMatchList = Array<HttpHeaderMatch>;
 export const HttpHeaderMatchList = /*@__PURE__*/ S.Array(
   HttpHeaderMatch,
 ) as any as S.Schema<HttpHeaderMatchList>;
@@ -31443,8 +31653,7 @@ export const HttpQueryParameterMatch = /*@__PURE__*/ S.suspend(() =>
   identifier: "HttpQueryParameterMatch",
 }) as any as S.Schema<HttpQueryParameterMatch>;
 
-export type HttpQueryParameterMatchList =
-  ReadonlyArray<HttpQueryParameterMatch>;
+export type HttpQueryParameterMatchList = Array<HttpQueryParameterMatch>;
 export const HttpQueryParameterMatchList = /*@__PURE__*/ S.Array(
   HttpQueryParameterMatch,
 ) as any as S.Schema<HttpQueryParameterMatchList>;
@@ -31483,7 +31692,7 @@ export const HttpRouteRuleMatch = /*@__PURE__*/ S.suspend(() =>
   identifier: "HttpRouteRuleMatch",
 }) as any as S.Schema<HttpRouteRuleMatch>;
 
-export type HttpRouteRuleMatchList = ReadonlyArray<HttpRouteRuleMatch>;
+export type HttpRouteRuleMatchList = Array<HttpRouteRuleMatch>;
 export const HttpRouteRuleMatchList = /*@__PURE__*/ S.Array(
   HttpRouteRuleMatch,
 ) as any as S.Schema<HttpRouteRuleMatchList>;
@@ -31507,7 +31716,7 @@ export const WeightedBackendService = /*@__PURE__*/ S.suspend(() =>
   identifier: "WeightedBackendService",
 }) as any as S.Schema<WeightedBackendService>;
 
-export type WeightedBackendServiceList = ReadonlyArray<WeightedBackendService>;
+export type WeightedBackendServiceList = Array<WeightedBackendService>;
 export const WeightedBackendServiceList = /*@__PURE__*/ S.Array(
   WeightedBackendService,
 ) as any as S.Schema<WeightedBackendServiceList>;
@@ -31589,7 +31798,9 @@ export const ImageOptimizationPolicyQueryParameterInterpretationEnum =
 /** The configuration for Cloud CDN's image optimization feature. This feature dynamically processes and delivers images from the network edge. Image Optimization is only available for Global External Application Load Balancers. Either Cloud CDN must be enabled on the backend service or backend bucket serving the route, or cache policy must be configured on the same route. */
 export interface ImageOptimizationPolicy {
   /** Specifies whether to interpret query parameters for image optimization. */
-  queryParameterInterpretation?: ImageOptimizationPolicyQueryParameterInterpretationEnum;
+  queryParameterInterpretation?:
+    | ImageOptimizationPolicyQueryParameterInterpretationEnum
+    | (string & {});
 }
 export const ImageOptimizationPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -31702,7 +31913,7 @@ export const CachePolicyNegativeCachingPolicy = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CachePolicyNegativeCachingPolicy>;
 
 export type CachePolicyNegativeCachingPolicyList =
-  ReadonlyArray<CachePolicyNegativeCachingPolicy>;
+  Array<CachePolicyNegativeCachingPolicy>;
 export const CachePolicyNegativeCachingPolicyList = /*@__PURE__*/ S.Array(
   CachePolicyNegativeCachingPolicy,
 ) as any as S.Schema<CachePolicyNegativeCachingPolicyList>;
@@ -31745,7 +31956,7 @@ export interface CachePolicy {
   /** Negative caching allows per-status code TTLs to be set, in order to apply fine-grained caching for common errors or redirects. This can reduce the load on your origin and improve end-user experience by reducing response latency. When the `cacheMode` is set to `CACHE_ALL_STATIC` or `USE_ORIGIN_HEADERS`, negative caching applies to responses with the specified response code that lack any Cache-Control, Expires, or Pragma: no-cache directives. When the `cacheMode` is set to `FORCE_CACHE_ALL`, negative caching applies to all responses with the specified response code, and overrides any caching headers. By default, Cloud CDN applies the following TTLs to these HTTP status codes: * 300 (Multiple Choice), 301, 308 (Permanent Redirects): 10m * 404 (Not Found), 410 (Gone), 451 (Unavailable For Legal Reasons): 120s * 405 (Method Not Found), 501 (Not Implemented): 60s These defaults can be overridden in `negativeCachingPolicy`. If not specified, Cloud CDN applies negative caching by default. */
   negativeCaching?: boolean;
   /** Specifies the cache setting for all responses from this route. If not specified, Cloud CDN uses `CACHE_ALL_STATIC` mode. */
-  cacheMode?: CachePolicyCacheModeEnum;
+  cacheMode?: CachePolicyCacheModeEnum | (string & {});
   /** If true then Cloud CDN will combine multiple concurrent cache fill requests into a small number of requests to the origin. If not specified, Cloud CDN applies request coalescing by default. */
   requestCoalescing?: boolean;
   /** Sets a cache TTL for the specified HTTP status code. `negativeCaching` must be enabled to configure `negativeCachingPolicy`. Omitting the policy and leaving `negativeCaching` enabled will use Cloud CDN's default cache TTLs. Note that when specifying an explicit `negativeCachingPolicy`, you should take care to specify a cache TTL for all response codes that you wish to cache. Cloud CDN will not apply any default negative caching when a policy exists. */
@@ -31853,7 +32064,7 @@ export const HttpRouteRule = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "HttpRouteRule" }) as any as S.Schema<HttpRouteRule>;
 
-export type HttpRouteRuleList = ReadonlyArray<HttpRouteRule>;
+export type HttpRouteRuleList = Array<HttpRouteRule>;
 export const HttpRouteRuleList = /*@__PURE__*/ S.Array(
   HttpRouteRule,
 ) as any as S.Schema<HttpRouteRuleList>;
@@ -31881,7 +32092,7 @@ export const PathRule = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PathRule" }) as any as S.Schema<PathRule>;
 
-export type PathRuleList = ReadonlyArray<PathRule>;
+export type PathRuleList = Array<PathRule>;
 export const PathRuleList = /*@__PURE__*/ S.Array(
   PathRule,
 ) as any as S.Schema<PathRuleList>;
@@ -31921,7 +32132,7 @@ export const PathMatcher = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PathMatcher" }) as any as S.Schema<PathMatcher>;
 
-export type PathMatcherList = ReadonlyArray<PathMatcher>;
+export type PathMatcherList = Array<PathMatcher>;
 export const PathMatcherList = /*@__PURE__*/ S.Array(
   PathMatcher,
 ) as any as S.Schema<PathMatcherList>;
@@ -31943,7 +32154,7 @@ export const HostRule = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "HostRule" }) as any as S.Schema<HostRule>;
 
-export type HostRuleList = ReadonlyArray<HostRule>;
+export type HostRuleList = Array<HostRule>;
 export const HostRuleList = /*@__PURE__*/ S.Array(
   HostRule,
 ) as any as S.Schema<HostRuleList>;
@@ -32034,7 +32245,7 @@ export const UrlMap = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "UrlMap" }) as any as S.Schema<UrlMap>;
 
-export type UrlMapList_ = ReadonlyArray<UrlMap>;
+export type UrlMapList_ = Array<UrlMap>;
 export const UrlMapList_ = /*@__PURE__*/ S.Array(
   UrlMap,
 ) as any as S.Schema<UrlMapList_>;
@@ -32087,7 +32298,7 @@ export const UrlMapsScopedListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UrlMapsScopedListWarningDataItem>;
 
 export type UrlMapsScopedListWarningDataItemList =
-  ReadonlyArray<UrlMapsScopedListWarningDataItem>;
+  Array<UrlMapsScopedListWarningDataItem>;
 export const UrlMapsScopedListWarningDataItemList = /*@__PURE__*/ S.Array(
   UrlMapsScopedListWarningDataItem,
 ) as any as S.Schema<UrlMapsScopedListWarningDataItemList>;
@@ -32240,7 +32451,7 @@ export const VpnGatewayVpnGatewayInterface = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VpnGatewayVpnGatewayInterface>;
 
 export type VpnGatewayVpnGatewayInterfaceList =
-  ReadonlyArray<VpnGatewayVpnGatewayInterface>;
+  Array<VpnGatewayVpnGatewayInterface>;
 export const VpnGatewayVpnGatewayInterfaceList = /*@__PURE__*/ S.Array(
   VpnGatewayVpnGatewayInterface,
 ) as any as S.Schema<VpnGatewayVpnGatewayInterfaceList>;
@@ -32259,7 +32470,7 @@ export interface VpnGateway {
   /** Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply withRFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash. */
   name?: string;
   /** The IP family of the gateway IPs for the HA-VPN gateway interfaces. If not specified, IPV4 will be used. */
-  gatewayIpVersion?: VpnGatewayGatewayIpVersionEnum;
+  gatewayIpVersion?: VpnGatewayGatewayIpVersionEnum | (string & {});
   /** Input only. [Input Only] Additional params passed with the request, but not persisted as part of resource payload. */
   params?: VpnGatewayParams;
   /** The list of VPN interfaces associated with this VPN gateway. */
@@ -32267,7 +32478,7 @@ export interface VpnGateway {
   /** Output only. [Output Only] Creation timestamp inRFC3339 text format. */
   creationTimestamp?: string;
   /** The stack type for this VPN gateway to identify the IP protocols that are enabled. Possible values are: IPV4_ONLY,IPV4_IPV6, IPV6_ONLY. If not specified,IPV4_ONLY is used if the gateway IP version isIPV4, or IPV4_IPV6 if the gateway IP version isIPV6. */
-  stackType?: VpnGatewayStackTypeEnum;
+  stackType?: VpnGatewayStackTypeEnum | (string & {});
   /** URL of the network to which this VPN gateway is attached. Provided by the client when the VPN gateway is created. */
   network?: string;
   /** An optional description of this resource. Provide this property when you create the resource. */
@@ -32298,7 +32509,7 @@ export const VpnGateway = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "VpnGateway" }) as any as S.Schema<VpnGateway>;
 
-export type VpnGatewayList_ = ReadonlyArray<VpnGateway>;
+export type VpnGatewayList_ = Array<VpnGateway>;
 export const VpnGatewayList_ = /*@__PURE__*/ S.Array(
   VpnGateway,
 ) as any as S.Schema<VpnGatewayList_>;
@@ -32352,7 +32563,7 @@ export const VpnGatewaysScopedListWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<VpnGatewaysScopedListWarningDataItem>;
 
 export type VpnGatewaysScopedListWarningDataItemList =
-  ReadonlyArray<VpnGatewaysScopedListWarningDataItem>;
+  Array<VpnGatewaysScopedListWarningDataItem>;
 export const VpnGatewaysScopedListWarningDataItemList = /*@__PURE__*/ S.Array(
   VpnGatewaysScopedListWarningDataItem,
 ) as any as S.Schema<VpnGatewaysScopedListWarningDataItemList>;
@@ -32447,7 +32658,7 @@ export const VpnGatewayAggregatedListWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<VpnGatewayAggregatedListWarningDataItem>;
 
 export type VpnGatewayAggregatedListWarningDataItemList =
-  ReadonlyArray<VpnGatewayAggregatedListWarningDataItem>;
+  Array<VpnGatewayAggregatedListWarningDataItem>;
 export const VpnGatewayAggregatedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     VpnGatewayAggregatedListWarningDataItem,
@@ -32589,7 +32800,7 @@ export const VpnTunnelAggregatedListWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<VpnTunnelAggregatedListWarningDataItem>;
 
 export type VpnTunnelAggregatedListWarningDataItemList =
-  ReadonlyArray<VpnTunnelAggregatedListWarningDataItem>;
+  Array<VpnTunnelAggregatedListWarningDataItem>;
 export const VpnTunnelAggregatedListWarningDataItemList = /*@__PURE__*/ S.Array(
   VpnTunnelAggregatedListWarningDataItem,
 ) as any as S.Schema<VpnTunnelAggregatedListWarningDataItemList>;
@@ -32628,7 +32839,7 @@ export const VpnTunnelsScopedListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VpnTunnelsScopedListWarningDataItem>;
 
 export type VpnTunnelsScopedListWarningDataItemList =
-  ReadonlyArray<VpnTunnelsScopedListWarningDataItem>;
+  Array<VpnTunnelsScopedListWarningDataItem>;
 export const VpnTunnelsScopedListWarningDataItemList = /*@__PURE__*/ S.Array(
   VpnTunnelsScopedListWarningDataItem,
 ) as any as S.Schema<VpnTunnelsScopedListWarningDataItemList>;
@@ -32778,7 +32989,7 @@ export interface VpnTunnel {
   /** [Output Only] Server-defined URL for the resource. */
   selfLink?: string;
   /** [Output Only] The status of the VPN tunnel, which can be one of the following: - PROVISIONING: Resource is being allocated for the VPN tunnel. - WAITING_FOR_FULL_CONFIG: Waiting to receive all VPN-related configs from the user. Network, TargetVpnGateway, VpnTunnel, ForwardingRule, and Route resources are needed to setup the VPN tunnel. - FIRST_HANDSHAKE: Successful first handshake with the peer VPN. - ESTABLISHED: Secure session is successfully established with the peer VPN. - NETWORK_ERROR: Deprecated, replaced by NO_INCOMING_PACKETS - AUTHORIZATION_ERROR: Auth error (for example, bad shared secret). - NEGOTIATION_FAILURE: Handshake failed. - DEPROVISIONING: Resources are being deallocated for the VPN tunnel. - FAILED: Tunnel creation has failed and the tunnel is not ready to be used. - NO_INCOMING_PACKETS: No incoming packets from peer. - REJECTED: Tunnel configuration was rejected, can be result of being denied access. - ALLOCATING_RESOURCES: Cloud VPN is in the process of allocating all required resources. - STOPPED: Tunnel is stopped due to its Forwarding Rules being deleted for Classic VPN tunnels or the project is in frozen state. - PEER_IDENTITY_MISMATCH: Peer identity does not match peer IP, probably behind NAT. - TS_NARROWING_NOT_ALLOWED: Traffic selector narrowing not allowed for an HA-VPN tunnel. */
-  status?: VpnTunnelStatusEnum;
+  status?: VpnTunnelStatusEnum | (string & {});
   /** An optional description of this resource. Provide this property when you create the resource. */
   description?: string;
   /** Remote traffic selectors to use when establishing the VPN tunnel with the peer VPN gateway. The value should be a CIDR formatted string, for example: 192.168.0.0/16. The ranges should be disjoint. Only IPv4 is supported for Classic VPN tunnels. This field is output only for HA VPN tunnels. */
@@ -32812,7 +33023,7 @@ export interface VpnTunnel {
   /** URL of the peer side HA VPN gateway to which this VPN tunnel is connected. Provided by the client when the VPN tunnel is created. This field can be used when creating highly available VPN from VPC network to VPC network, the field is exclusive with the field peerExternalGateway. If provided, the VPN tunnel will automatically use the same vpnGatewayInterface ID in the peer Google Cloud VPN gateway. */
   peerGcpGateway?: string;
   /** Capacity tier of the VPN tunnel. This is used for IPsec over Interconnect tunnels to indicate different bandwidth limits. */
-  capacityTier?: VpnTunnelCapacityTierEnum;
+  capacityTier?: VpnTunnelCapacityTierEnum | (string & {});
   /** IKE protocol version to use when establishing the VPN tunnel with the peer VPN gateway. Acceptable IKE versions are 1 or 2. The default version is 2. */
   ikeVersion?: number;
 }
@@ -32848,7 +33059,7 @@ export const VpnTunnel = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "VpnTunnel" }) as any as S.Schema<VpnTunnel>;
 
-export type VpnTunnelList_ = ReadonlyArray<VpnTunnel>;
+export type VpnTunnelList_ = Array<VpnTunnel>;
 export const VpnTunnelList_ = /*@__PURE__*/ S.Array(
   VpnTunnel,
 ) as any as S.Schema<VpnTunnelList_>;
@@ -32963,7 +33174,7 @@ export const QueuedResourcesAggregatedListWarningDataItem =
   }) as any as S.Schema<QueuedResourcesAggregatedListWarningDataItem>;
 
 export type QueuedResourcesAggregatedListWarningDataItemList =
-  ReadonlyArray<QueuedResourcesAggregatedListWarningDataItem>;
+  Array<QueuedResourcesAggregatedListWarningDataItem>;
 export const QueuedResourcesAggregatedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     QueuedResourcesAggregatedListWarningDataItem,
@@ -33070,7 +33281,7 @@ export const QueuedResourcesScopedListWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<QueuedResourcesScopedListWarningDataItem>;
 
 export type QueuedResourcesScopedListWarningDataItemList =
-  ReadonlyArray<QueuedResourcesScopedListWarningDataItem>;
+  Array<QueuedResourcesScopedListWarningDataItem>;
 export const QueuedResourcesScopedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     QueuedResourcesScopedListWarningDataItem,
@@ -33147,7 +33358,7 @@ export const LocationPolicyZoneConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LocationPolicyZoneConfiguration>;
 
 export type LocationPolicyZoneConfigurationList =
-  ReadonlyArray<LocationPolicyZoneConfiguration>;
+  Array<LocationPolicyZoneConfiguration>;
 export const LocationPolicyZoneConfigurationList = /*@__PURE__*/ S.Array(
   LocationPolicyZoneConfiguration,
 ) as any as S.Schema<LocationPolicyZoneConfigurationList>;
@@ -33175,7 +33386,7 @@ export interface LocationPolicyLocation {
   /** Constraints that the caller requires on the result distribution in this zone. */
   constraints?: LocationPolicyLocationConstraints;
   /** Preference for a given location. Set to either ALLOW orDENY. */
-  preference?: LocationPolicyLocationPreferenceEnum;
+  preference?: LocationPolicyLocationPreferenceEnum | (string & {});
   /** Names of resources to be put in the location. Must contain unique, correct resource names. If used, targetShape must be left unset. */
   names?: StringList;
 }
@@ -33210,7 +33421,7 @@ export interface LocationPolicy {
   /** Location configurations mapped by location name. Currently only zone names are supported and must be represented as valid internal URLs, such as zones/us-central1-a. The bulkInsert operation doesn't create instances in an AI zone, even if an AI zone is available in the specified region. For example, if you set a DENY preference for us-central1-a, Compute Engine will consider us-central1-b and us-central1-c for instance creation, but not us-central1-ai1a. Also, you can't use the locations[] configuration to allow instance creation in an AI zone. To include an AI zone in bulkInsert operations, use the locationPolicy.zones[] field. */
   locations?: LocationPolicyLocationMap;
   /** Strategy for distributing VMs across zones in a region. */
-  targetShape?: LocationPolicyTargetShapeEnum;
+  targetShape?: LocationPolicyTargetShapeEnum | (string & {});
 }
 export const LocationPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -33337,7 +33548,7 @@ export const QueuedResourceStatusFailedDataErrorErrorsItemErrorDetailsItem =
   }) as any as S.Schema<QueuedResourceStatusFailedDataErrorErrorsItemErrorDetailsItem>;
 
 export type QueuedResourceStatusFailedDataErrorErrorsItemErrorDetailsItemList =
-  ReadonlyArray<QueuedResourceStatusFailedDataErrorErrorsItemErrorDetailsItem>;
+  Array<QueuedResourceStatusFailedDataErrorErrorsItemErrorDetailsItem>;
 export const QueuedResourceStatusFailedDataErrorErrorsItemErrorDetailsItemList =
   /*@__PURE__*/ S.Array(
     QueuedResourceStatusFailedDataErrorErrorsItemErrorDetailsItem,
@@ -33368,7 +33579,7 @@ export const QueuedResourceStatusFailedDataErrorErrorsItem =
   }) as any as S.Schema<QueuedResourceStatusFailedDataErrorErrorsItem>;
 
 export type QueuedResourceStatusFailedDataErrorErrorsItemList =
-  ReadonlyArray<QueuedResourceStatusFailedDataErrorErrorsItem>;
+  Array<QueuedResourceStatusFailedDataErrorErrorsItem>;
 export const QueuedResourceStatusFailedDataErrorErrorsItemList =
   /*@__PURE__*/ S.Array(
     QueuedResourceStatusFailedDataErrorErrorsItem,
@@ -33441,7 +33652,7 @@ export interface QueuedResource {
   /** Output only. [Output Only] Server-defined URL for this resource with the resource id. */
   selfLinkWithId?: string;
   /** Output only. [Output only] High-level status of the request. */
-  state?: QueuedResourceStateEnum;
+  state?: QueuedResourceStateEnum | (string & {});
   /** Output only. [Output only] Result of queuing and provisioning based on deferred capacity. */
   status?: QueuedResourceStatus;
 }
@@ -33462,7 +33673,7 @@ export const QueuedResource = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "QueuedResource" }) as any as S.Schema<QueuedResource>;
 
-export type QueuedResourceList_ = ReadonlyArray<QueuedResource>;
+export type QueuedResourceList_ = Array<QueuedResource>;
 export const QueuedResourceList_ = /*@__PURE__*/ S.Array(
   QueuedResource,
 ) as any as S.Schema<QueuedResourceList_>;
@@ -33592,7 +33803,7 @@ export const InstanceGroupManagersApplyUpdatesRequestAllowedActionsItemEnum =
   /*@__PURE__*/ S.String;
 
 export type InstanceGroupManagersApplyUpdatesRequestAllowedActionsItemEnumList =
-  ReadonlyArray<
+  Array<
     | InstanceGroupManagersApplyUpdatesRequestAllowedActionsItemEnum
     | (string & {})
   >;
@@ -33736,7 +33947,7 @@ export const RegionInstanceGroupManagersApplyUpdatesRequestAllowedActionsItemEnu
   /*@__PURE__*/ S.String;
 
 export type RegionInstanceGroupManagersApplyUpdatesRequestAllowedActionsItemEnumList =
-  ReadonlyArray<
+  Array<
     | RegionInstanceGroupManagersApplyUpdatesRequestAllowedActionsItemEnum
     | (string & {})
   >;
@@ -33889,7 +34100,7 @@ export const NetworkEndpoint = /*@__PURE__*/ S.suspend(() =>
   identifier: "NetworkEndpoint",
 }) as any as S.Schema<NetworkEndpoint>;
 
-export type NetworkEndpointList = ReadonlyArray<NetworkEndpoint>;
+export type NetworkEndpointList = Array<NetworkEndpoint>;
 export const NetworkEndpointList = /*@__PURE__*/ S.Array(
   NetworkEndpoint,
 ) as any as S.Schema<NetworkEndpointList>;
@@ -34201,7 +34412,7 @@ export const BulkSetLabelsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "BulkSetLabelsRequest",
 }) as any as S.Schema<BulkSetLabelsRequest>;
 
-export type BulkSetLabelsRequestList = ReadonlyArray<BulkSetLabelsRequest>;
+export type BulkSetLabelsRequestList = Array<BulkSetLabelsRequest>;
 export const BulkSetLabelsRequestList = /*@__PURE__*/ S.Array(
   BulkSetLabelsRequest,
 ) as any as S.Schema<BulkSetLabelsRequestList>;
@@ -34325,7 +34536,7 @@ export const FutureResourcesSpecLocalSsdPartition = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<FutureResourcesSpecLocalSsdPartition>;
 
 export type FutureResourcesSpecLocalSsdPartitionList =
-  ReadonlyArray<FutureResourcesSpecLocalSsdPartition>;
+  Array<FutureResourcesSpecLocalSsdPartition>;
 export const FutureResourcesSpecLocalSsdPartitionList = /*@__PURE__*/ S.Array(
   FutureResourcesSpecLocalSsdPartition,
 ) as any as S.Schema<FutureResourcesSpecLocalSsdPartitionList>;
@@ -34617,8 +34828,7 @@ export const CalendarModeRecommendation = /*@__PURE__*/ S.suspend(() =>
   identifier: "CalendarModeRecommendation",
 }) as any as S.Schema<CalendarModeRecommendation>;
 
-export type CalendarModeRecommendationList =
-  ReadonlyArray<CalendarModeRecommendation>;
+export type CalendarModeRecommendationList = Array<CalendarModeRecommendation>;
 export const CalendarModeRecommendationList = /*@__PURE__*/ S.Array(
   CalendarModeRecommendation,
 ) as any as S.Schema<CalendarModeRecommendationList>;
@@ -34901,7 +35111,7 @@ export const CapacityAdviceRequestInstanceFlexibilityPolicyInstanceSelectionAtta
   }) as any as S.Schema<CapacityAdviceRequestInstanceFlexibilityPolicyInstanceSelectionAttachedDisk>;
 
 export type CapacityAdviceRequestInstanceFlexibilityPolicyInstanceSelectionAttachedDiskList =
-  ReadonlyArray<CapacityAdviceRequestInstanceFlexibilityPolicyInstanceSelectionAttachedDisk>;
+  Array<CapacityAdviceRequestInstanceFlexibilityPolicyInstanceSelectionAttachedDisk>;
 export const CapacityAdviceRequestInstanceFlexibilityPolicyInstanceSelectionAttachedDiskList =
   /*@__PURE__*/ S.Array(
     CapacityAdviceRequestInstanceFlexibilityPolicyInstanceSelectionAttachedDisk,
@@ -35016,7 +35226,7 @@ export const CapacityAdviceRequestDistributionPolicyZoneConfiguration =
   }) as any as S.Schema<CapacityAdviceRequestDistributionPolicyZoneConfiguration>;
 
 export type CapacityAdviceRequestDistributionPolicyZoneConfigurationList =
-  ReadonlyArray<CapacityAdviceRequestDistributionPolicyZoneConfiguration>;
+  Array<CapacityAdviceRequestDistributionPolicyZoneConfiguration>;
 export const CapacityAdviceRequestDistributionPolicyZoneConfigurationList =
   /*@__PURE__*/ S.Array(
     CapacityAdviceRequestDistributionPolicyZoneConfiguration,
@@ -35158,7 +35368,7 @@ export const CapacityAdviceResponseRecommendationShard =
   }) as any as S.Schema<CapacityAdviceResponseRecommendationShard>;
 
 export type CapacityAdviceResponseRecommendationShardList =
-  ReadonlyArray<CapacityAdviceResponseRecommendationShard>;
+  Array<CapacityAdviceResponseRecommendationShard>;
 export const CapacityAdviceResponseRecommendationShardList =
   /*@__PURE__*/ S.Array(
     CapacityAdviceResponseRecommendationShard,
@@ -35182,7 +35392,7 @@ export const CapacityAdviceResponseRecommendation = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CapacityAdviceResponseRecommendation>;
 
 export type CapacityAdviceResponseRecommendationList =
-  ReadonlyArray<CapacityAdviceResponseRecommendation>;
+  Array<CapacityAdviceResponseRecommendation>;
 export const CapacityAdviceResponseRecommendationList = /*@__PURE__*/ S.Array(
   CapacityAdviceResponseRecommendation,
 ) as any as S.Schema<CapacityAdviceResponseRecommendationList>;
@@ -35206,7 +35416,7 @@ export type CapacityHistoryRequestTypesItemEnum =
   | "PRICE";
 export const CapacityHistoryRequestTypesItemEnum = /*@__PURE__*/ S.String;
 
-export type CapacityHistoryRequestTypesItemEnumList = ReadonlyArray<
+export type CapacityHistoryRequestTypesItemEnumList = Array<
   CapacityHistoryRequestTypesItemEnum | (string & {})
 >;
 export const CapacityHistoryRequestTypesItemEnumList = /*@__PURE__*/ S.Array(
@@ -35344,7 +35554,7 @@ export const CapacityHistoryResponsePreemptionRecord = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CapacityHistoryResponsePreemptionRecord>;
 
 export type CapacityHistoryResponsePreemptionRecordList =
-  ReadonlyArray<CapacityHistoryResponsePreemptionRecord>;
+  Array<CapacityHistoryResponsePreemptionRecord>;
 export const CapacityHistoryResponsePreemptionRecordList =
   /*@__PURE__*/ S.Array(
     CapacityHistoryResponsePreemptionRecord,
@@ -35367,7 +35577,7 @@ export const CapacityHistoryResponsePriceRecord = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CapacityHistoryResponsePriceRecord>;
 
 export type CapacityHistoryResponsePriceRecordList =
-  ReadonlyArray<CapacityHistoryResponsePriceRecord>;
+  Array<CapacityHistoryResponsePriceRecord>;
 export const CapacityHistoryResponsePriceRecordList = /*@__PURE__*/ S.Array(
   CapacityHistoryResponsePriceRecord,
 ) as any as S.Schema<CapacityHistoryResponsePriceRecordList>;
@@ -35925,7 +36135,7 @@ export const InterconnectAttachmentGroupsCreateMembersInterconnectAttachmentInpu
   }) as any as S.Schema<InterconnectAttachmentGroupsCreateMembersInterconnectAttachmentInput>;
 
 export type InterconnectAttachmentGroupsCreateMembersInterconnectAttachmentInputList =
-  ReadonlyArray<InterconnectAttachmentGroupsCreateMembersInterconnectAttachmentInput>;
+  Array<InterconnectAttachmentGroupsCreateMembersInterconnectAttachmentInput>;
 export const InterconnectAttachmentGroupsCreateMembersInterconnectAttachmentInputList =
   /*@__PURE__*/ S.Array(
     InterconnectAttachmentGroupsCreateMembersInterconnectAttachmentInput,
@@ -36015,7 +36225,7 @@ export const InterconnectGroupsCreateMembersInterconnectInputRequestedFeaturesIt
   /*@__PURE__*/ S.String;
 
 export type InterconnectGroupsCreateMembersInterconnectInputRequestedFeaturesItemEnumList =
-  ReadonlyArray<
+  Array<
     | InterconnectGroupsCreateMembersInterconnectInputRequestedFeaturesItemEnum
     | (string & {})
   >;
@@ -36083,7 +36293,7 @@ export const InterconnectGroupsCreateMembersInterconnectInput =
   }) as any as S.Schema<InterconnectGroupsCreateMembersInterconnectInput>;
 
 export type InterconnectGroupsCreateMembersInterconnectInputList =
-  ReadonlyArray<InterconnectGroupsCreateMembersInterconnectInput>;
+  Array<InterconnectGroupsCreateMembersInterconnectInput>;
 export const InterconnectGroupsCreateMembersInterconnectInputList =
   /*@__PURE__*/ S.Array(
     InterconnectGroupsCreateMembersInterconnectInput,
@@ -36543,7 +36753,9 @@ export interface GlobalVmExtensionPolicyRolloutOperationRolloutInput {
   /** Optional. The UUID that identifies a policy rollout retry attempt for update and delete operations. Set this field only when retrying a rollout for an existing extension policy. * `update` method: Lets you retry policy rollout without changes. An error occurs if you set retry_uuid but the policy is modified. * `delete` method: Lets you retry policy deletion rollout if the previous deletion rollout is not finished and the policy is in the DELETING state. If you set this field when the policy is not in the DELETING state, an error occurs. */
   retryUuid?: string;
   /** Optional. Specifies the predefined rollout plan for the policy. Valid values are `SLOW_ROLLOUT` and `FAST_ROLLOUT`. The recommended value is `SLOW_ROLLOUT` for progressive rollout. For more information, see Rollout plans for global policies. */
-  predefinedRolloutPlan?: GlobalVmExtensionPolicyRolloutOperationRolloutInputPredefinedRolloutPlanEnum;
+  predefinedRolloutPlan?:
+    | GlobalVmExtensionPolicyRolloutOperationRolloutInputPredefinedRolloutPlanEnum
+    | (string & {});
   /** Optional. Specifies the behavior of the rollout if a conflict is detected in a project during a rollout. This only applies to `insert` and `update` methods. A conflict occurs in the following cases: * `insert` method: If the zonal policy already exists when the insert happens. * `update` method: If the zonal policy was modified by a zonal API call outside of this rollout. Possible values are the following: * `""` (empty string): If a conflict occurs, the local value is not overwritten. This is the default behavior. * `"overwrite"`: If a conflict occurs, the local value is overwritten with the rollout value. */
   conflictBehavior?: string;
 }
@@ -39902,7 +40114,7 @@ export const XpnResourceIdTypeEnum = /*@__PURE__*/ S.String;
 /** Service resource (a.k.a service project) ID. */
 export interface XpnResourceId {
   /** The type of the service resource. */
-  type?: XpnResourceIdTypeEnum;
+  type?: XpnResourceIdTypeEnum | (string & {});
   /** The ID of the service resource. In the case of projects, this field supports project id (e.g., my-project-123) and project number (e.g. 12345678). */
   id?: string;
 }
@@ -40163,11 +40375,11 @@ export interface ManagementInterface {
   network?: string;
   /** The URL of the subnetwork from which to assign the IP address for the endpoint. The subnetwork must belong to the specified network and have available IP addresses. */
   subnetwork?: string;
-  state?: ManagementInterfaceStateEnum;
+  state?: ManagementInterfaceStateEnum | (string & {});
   /** The IPv6 internal IP address assigned to this management interface endpoint. This address will be used by the customer to route traffic to the management interface if IPv6 is supported and configured. */
   ipv6Address?: string;
   /** Required. The type of management service this interface provides. Supported types include NMX-C for partition management, gNMI for switch monitoring, and TPU slice management. */
-  type?: ManagementInterfaceTypeEnum;
+  type?: ManagementInterfaceTypeEnum | (string & {});
   authenticationConfig?: AuthenticationConfig;
   /** The IPv4 internal IP address assigned to this management interface endpoint. This address will be used by the customer to route traffic to the management interface. */
   ipv4Address?: string;
@@ -40626,7 +40838,7 @@ export const InstanceGroupManagersGetAvailableAcceleratorTopologiesResponseAccel
   }) as any as S.Schema<InstanceGroupManagersGetAvailableAcceleratorTopologiesResponseAcceleratorTopologyStateErrorErrorsItemErrorDetailsItem>;
 
 export type InstanceGroupManagersGetAvailableAcceleratorTopologiesResponseAcceleratorTopologyStateErrorErrorsItemErrorDetailsItemList =
-  ReadonlyArray<InstanceGroupManagersGetAvailableAcceleratorTopologiesResponseAcceleratorTopologyStateErrorErrorsItemErrorDetailsItem>;
+  Array<InstanceGroupManagersGetAvailableAcceleratorTopologiesResponseAcceleratorTopologyStateErrorErrorsItemErrorDetailsItem>;
 export const InstanceGroupManagersGetAvailableAcceleratorTopologiesResponseAcceleratorTopologyStateErrorErrorsItemErrorDetailsItemList =
   /*@__PURE__*/ S.Array(
     InstanceGroupManagersGetAvailableAcceleratorTopologiesResponseAcceleratorTopologyStateErrorErrorsItemErrorDetailsItem,
@@ -40658,7 +40870,7 @@ export const InstanceGroupManagersGetAvailableAcceleratorTopologiesResponseAccel
   }) as any as S.Schema<InstanceGroupManagersGetAvailableAcceleratorTopologiesResponseAcceleratorTopologyStateErrorErrorsItem>;
 
 export type InstanceGroupManagersGetAvailableAcceleratorTopologiesResponseAcceleratorTopologyStateErrorErrorsItemList =
-  ReadonlyArray<InstanceGroupManagersGetAvailableAcceleratorTopologiesResponseAcceleratorTopologyStateErrorErrorsItem>;
+  Array<InstanceGroupManagersGetAvailableAcceleratorTopologiesResponseAcceleratorTopologyStateErrorErrorsItem>;
 export const InstanceGroupManagersGetAvailableAcceleratorTopologiesResponseAcceleratorTopologyStateErrorErrorsItemList =
   /*@__PURE__*/ S.Array(
     InstanceGroupManagersGetAvailableAcceleratorTopologiesResponseAcceleratorTopologyStateErrorErrorsItem,
@@ -40906,7 +41118,7 @@ export interface DhcpOptionsConfigAssociation {
   /** Output only. [Output Only] The server-defined ID of the associated Network. */
   networkId?: string;
   /** Output only. [Output Only] State of the association. */
-  state?: DhcpOptionsConfigAssociationStateEnum;
+  state?: DhcpOptionsConfigAssociationStateEnum | (string & {});
   /** Required. The target network this DHCP option is attached to. You can specify this as a full or partial URL. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/global/networks/network - projects/project/global/networks/network */
   network?: string;
 }
@@ -41042,7 +41254,7 @@ export const InterconnectDiagnosticsARPEntry = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InterconnectDiagnosticsARPEntry>;
 
 export type InterconnectDiagnosticsARPEntryList =
-  ReadonlyArray<InterconnectDiagnosticsARPEntry>;
+  Array<InterconnectDiagnosticsARPEntry>;
 export const InterconnectDiagnosticsARPEntryList = /*@__PURE__*/ S.Array(
   InterconnectDiagnosticsARPEntry,
 ) as any as S.Schema<InterconnectDiagnosticsARPEntryList>;
@@ -41162,7 +41374,7 @@ export const InterconnectDiagnosticsLinkStatus = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InterconnectDiagnosticsLinkStatus>;
 
 export type InterconnectDiagnosticsLinkStatusList =
-  ReadonlyArray<InterconnectDiagnosticsLinkStatus>;
+  Array<InterconnectDiagnosticsLinkStatus>;
 export const InterconnectDiagnosticsLinkStatusList = /*@__PURE__*/ S.Array(
   InterconnectDiagnosticsLinkStatus,
 ) as any as S.Schema<InterconnectDiagnosticsLinkStatusList>;
@@ -41285,7 +41497,7 @@ export const DiskSettingsAccessLocationAccessLocationPreferenceMap =
 /** AccessLocation is only used for regional snapshot. It contains which regions are allowed to create a regional snapshot from disks located in the given region/zone. It includes key-value pairs designed to store the following structure. The keys should match their corresponding values, which must be provided: access_location: { locations { us-central1 { region: "us-central1" }, asia-west2 { region: "asia-west2" } } } */
 export interface DiskSettingsAccessLocation {
   /** Policy of which location is allowed to access snapshot. */
-  policy?: DiskSettingsAccessLocationPolicyEnum;
+  policy?: DiskSettingsAccessLocationPolicyEnum | (string & {});
   /** List of regions that can create a regional snapshot from the current region */
   locations?: DiskSettingsAccessLocationAccessLocationPreferenceMap;
 }
@@ -41404,7 +41616,7 @@ export const FirewallAllowedItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "FirewallAllowedItem",
 }) as any as S.Schema<FirewallAllowedItem>;
 
-export type FirewallAllowedItemList = ReadonlyArray<FirewallAllowedItem>;
+export type FirewallAllowedItemList = Array<FirewallAllowedItem>;
 export const FirewallAllowedItemList = /*@__PURE__*/ S.Array(
   FirewallAllowedItem,
 ) as any as S.Schema<FirewallAllowedItemList>;
@@ -41422,7 +41634,7 @@ export interface FirewallLogConfig {
   /** This field denotes whether to enable logging for a particular firewall rule. */
   enable?: boolean;
   /** This field can only be specified for a particular firewall rule if logging is enabled for that rule. This field denotes whether to include or exclude metadata for firewall logs. */
-  metadata?: FirewallLogConfigMetadataEnum;
+  metadata?: FirewallLogConfigMetadataEnum | (string & {});
 }
 export const FirewallLogConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -41459,7 +41671,7 @@ export const FirewallDeniedItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "FirewallDeniedItem",
 }) as any as S.Schema<FirewallDeniedItem>;
 
-export type FirewallDeniedItemList = ReadonlyArray<FirewallDeniedItem>;
+export type FirewallDeniedItemList = Array<FirewallDeniedItem>;
 export const FirewallDeniedItemList = /*@__PURE__*/ S.Array(
   FirewallDeniedItem,
 ) as any as S.Schema<FirewallDeniedItemList>;
@@ -41469,7 +41681,7 @@ export interface Firewall {
   /** The list of ALLOW rules specified by this firewall. Each rule specifies a protocol and port-range tuple that describes a permitted connection. */
   allowed?: FirewallAllowedItemList;
   /** Direction of traffic to which this firewall applies, either `INGRESS` or `EGRESS`. The default is `INGRESS`. For `EGRESS` traffic, you cannot specify the sourceTags fields. */
-  direction?: FirewallDirectionEnum;
+  direction?: FirewallDirectionEnum | (string & {});
   /** This field denotes the logging options for a particular firewall rule. If logging is enabled, logs will be exported to Cloud Logging. */
   logConfig?: FirewallLogConfig;
   /** Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply withRFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`. The first character must be a lowercase letter, and all following characters (except for the last character) must be a dash, lowercase letter, or digit. The last character must be a lowercase letter or digit. */
@@ -41538,7 +41750,7 @@ export const Firewall = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Firewall" }) as any as S.Schema<Firewall>;
 
-export type FirewallList_ = ReadonlyArray<Firewall>;
+export type FirewallList_ = Array<Firewall>;
 export const FirewallList_ = /*@__PURE__*/ S.Array(
   Firewall,
 ) as any as S.Schema<FirewallList_>;
@@ -41562,7 +41774,7 @@ export const InstancesGetEffectiveFirewallsResponseOrganizationFirewallPolicy =
   }) as any as S.Schema<InstancesGetEffectiveFirewallsResponseOrganizationFirewallPolicy>;
 
 export type InstancesGetEffectiveFirewallsResponseOrganizationFirewallPolicyList =
-  ReadonlyArray<InstancesGetEffectiveFirewallsResponseOrganizationFirewallPolicy>;
+  Array<InstancesGetEffectiveFirewallsResponseOrganizationFirewallPolicy>;
 export const InstancesGetEffectiveFirewallsResponseOrganizationFirewallPolicyList =
   /*@__PURE__*/ S.Array(
     InstancesGetEffectiveFirewallsResponseOrganizationFirewallPolicy,
@@ -41612,7 +41824,7 @@ export const InstancesGetEffectiveFirewallsResponseEffectiveFirewallPolicy =
   }) as any as S.Schema<InstancesGetEffectiveFirewallsResponseEffectiveFirewallPolicy>;
 
 export type InstancesGetEffectiveFirewallsResponseEffectiveFirewallPolicyList =
-  ReadonlyArray<InstancesGetEffectiveFirewallsResponseEffectiveFirewallPolicy>;
+  Array<InstancesGetEffectiveFirewallsResponseEffectiveFirewallPolicy>;
 export const InstancesGetEffectiveFirewallsResponseEffectiveFirewallPolicyList =
   /*@__PURE__*/ S.Array(
     InstancesGetEffectiveFirewallsResponseEffectiveFirewallPolicy,
@@ -41682,7 +41894,7 @@ export const NetworksGetEffectiveFirewallsResponseOrganizationFirewallPolicy =
   }) as any as S.Schema<NetworksGetEffectiveFirewallsResponseOrganizationFirewallPolicy>;
 
 export type NetworksGetEffectiveFirewallsResponseOrganizationFirewallPolicyList =
-  ReadonlyArray<NetworksGetEffectiveFirewallsResponseOrganizationFirewallPolicy>;
+  Array<NetworksGetEffectiveFirewallsResponseOrganizationFirewallPolicy>;
 export const NetworksGetEffectiveFirewallsResponseOrganizationFirewallPolicyList =
   /*@__PURE__*/ S.Array(
     NetworksGetEffectiveFirewallsResponseOrganizationFirewallPolicy,
@@ -41727,7 +41939,7 @@ export const NetworksGetEffectiveFirewallsResponseEffectiveFirewallPolicy =
   }) as any as S.Schema<NetworksGetEffectiveFirewallsResponseEffectiveFirewallPolicy>;
 
 export type NetworksGetEffectiveFirewallsResponseEffectiveFirewallPolicyList =
-  ReadonlyArray<NetworksGetEffectiveFirewallsResponseEffectiveFirewallPolicy>;
+  Array<NetworksGetEffectiveFirewallsResponseEffectiveFirewallPolicy>;
 export const NetworksGetEffectiveFirewallsResponseEffectiveFirewallPolicyList =
   /*@__PURE__*/ S.Array(
     NetworksGetEffectiveFirewallsResponseEffectiveFirewallPolicy,
@@ -41823,7 +42035,7 @@ export const RegionNetworkFirewallPoliciesGetEffectiveFirewallsResponseEffective
   }) as any as S.Schema<RegionNetworkFirewallPoliciesGetEffectiveFirewallsResponseEffectiveFirewallPolicy>;
 
 export type RegionNetworkFirewallPoliciesGetEffectiveFirewallsResponseEffectiveFirewallPolicyList =
-  ReadonlyArray<RegionNetworkFirewallPoliciesGetEffectiveFirewallsResponseEffectiveFirewallPolicy>;
+  Array<RegionNetworkFirewallPoliciesGetEffectiveFirewallsResponseEffectiveFirewallPolicy>;
 export const RegionNetworkFirewallPoliciesGetEffectiveFirewallsResponseEffectiveFirewallPolicyList =
   /*@__PURE__*/ S.Array(
     RegionNetworkFirewallPoliciesGetEffectiveFirewallsResponseEffectiveFirewallPolicy,
@@ -41964,7 +42176,7 @@ export const ExternalVpnGatewayInterface = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExternalVpnGatewayInterface>;
 
 export type ExternalVpnGatewayInterfaceList =
-  ReadonlyArray<ExternalVpnGatewayInterface>;
+  Array<ExternalVpnGatewayInterface>;
 export const ExternalVpnGatewayInterfaceList = /*@__PURE__*/ S.Array(
   ExternalVpnGatewayInterface,
 ) as any as S.Schema<ExternalVpnGatewayInterfaceList>;
@@ -41986,7 +42198,7 @@ export interface ExternalVpnGateway {
   /** A fingerprint for the labels being applied to this ExternalVpnGateway, which is essentially a hash of the labels set used for optimistic locking. The fingerprint is initially generated by Compute Engine and changes after every request to modify or update labels. You must always provide an up-to-date fingerprint hash in order to update or change labels, otherwise the request will fail with error412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve an ExternalVpnGateway. */
   labelFingerprint?: string;
   /** Indicates the user-supplied redundancy type of this external VPN gateway. */
-  redundancyType?: ExternalVpnGatewayRedundancyTypeEnum;
+  redundancyType?: ExternalVpnGatewayRedundancyTypeEnum | (string & {});
   /** Output only. [Output Only] Creation timestamp inRFC3339 text format. */
   creationTimestamp?: string;
   /** Labels for this resource. These can only be added or modified by thesetLabels method. Each label key/value pair must comply withRFC1035. Label values may be empty. */
@@ -42114,7 +42326,7 @@ export const GlobalVmExtensionPolicyInstanceSelector = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GlobalVmExtensionPolicyInstanceSelector>;
 
 export type GlobalVmExtensionPolicyInstanceSelectorList =
-  ReadonlyArray<GlobalVmExtensionPolicyInstanceSelector>;
+  Array<GlobalVmExtensionPolicyInstanceSelector>;
 export const GlobalVmExtensionPolicyInstanceSelectorList =
   /*@__PURE__*/ S.Array(
     GlobalVmExtensionPolicyInstanceSelector,
@@ -42162,7 +42374,9 @@ export const GlobalVmExtensionPolicyRolloutOperationRolloutStatusRolloutMetadata
 
 export interface GlobalVmExtensionPolicyRolloutOperationRolloutStatusRolloutMetadataLocationRolloutStatus {
   /** Output only. [Output Only] The state of the location rollout. */
-  state?: GlobalVmExtensionPolicyRolloutOperationRolloutStatusRolloutMetadataLocationRolloutStatusStateEnum;
+  state?:
+    | GlobalVmExtensionPolicyRolloutOperationRolloutStatusRolloutMetadataLocationRolloutStatusStateEnum
+    | (string & {});
 }
 export const GlobalVmExtensionPolicyRolloutOperationRolloutStatusRolloutMetadataLocationRolloutStatus =
   /*@__PURE__*/ S.suspend(() =>
@@ -42205,7 +42419,9 @@ export interface GlobalVmExtensionPolicyRolloutOperationRolloutStatusRolloutMeta
   /** Output only. [Output Only] The rollout status for each location. The list of the locations is the same as the list of locations in the rollout plan. */
   locationRolloutStatus?: GlobalVmExtensionPolicyRolloutOperationRolloutStatusRolloutMetadataLocationRolloutStatusMap;
   /** Output only. [Output Only] The overall state of the rollout. */
-  state?: GlobalVmExtensionPolicyRolloutOperationRolloutStatusRolloutMetadataStateEnum;
+  state?:
+    | GlobalVmExtensionPolicyRolloutOperationRolloutStatusRolloutMetadataStateEnum
+    | (string & {});
   /** Output only. [Output Only] The name of the rollout plan. Ex. projects//locations/global/rolloutPlans/. */
   rolloutPlan?: string;
 }
@@ -42227,7 +42443,7 @@ export const GlobalVmExtensionPolicyRolloutOperationRolloutStatusRolloutMetadata
   }) as any as S.Schema<GlobalVmExtensionPolicyRolloutOperationRolloutStatusRolloutMetadata>;
 
 export type GlobalVmExtensionPolicyRolloutOperationRolloutStatusRolloutMetadataList =
-  ReadonlyArray<GlobalVmExtensionPolicyRolloutOperationRolloutStatusRolloutMetadata>;
+  Array<GlobalVmExtensionPolicyRolloutOperationRolloutStatusRolloutMetadata>;
 export const GlobalVmExtensionPolicyRolloutOperationRolloutStatusRolloutMetadataList =
   /*@__PURE__*/ S.Array(
     GlobalVmExtensionPolicyRolloutOperationRolloutStatusRolloutMetadata,
@@ -42299,7 +42515,9 @@ export interface GlobalVmExtensionPolicy {
   /** Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply withRFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash. */
   name?: string;
   /** Output only. [Output Only] The scoped resource status. It's only for tracking the purging status of the policy. */
-  scopedResourceStatus?: GlobalVmExtensionPolicyScopedResourceStatusEnum;
+  scopedResourceStatus?:
+    | GlobalVmExtensionPolicyScopedResourceStatusEnum
+    | (string & {});
   /** Required. The rollout strategy and status. */
   rolloutOperation?: GlobalVmExtensionPolicyRolloutOperation;
 }
@@ -42417,7 +42635,7 @@ export const ImageRawDiskContainerTypeEnum = /*@__PURE__*/ S.String;
 
 export interface ImageRawDisk {
   /** The format used to encode and transmit the block device, which should beTAR. This is just a container and transmission format and not a runtime format. Provided by the client when the disk image is created. */
-  containerType?: ImageRawDiskContainerTypeEnum;
+  containerType?: ImageRawDiskContainerTypeEnum | (string & {});
   /** [Deprecated] This field is deprecated. An optional SHA1 checksum of the disk image before unpackaging provided by the client when the disk image is created. */
   sha1Checksum?: string;
   /** The full Google Cloud Storage URL or Artifact Registry path where the raw disk image archive is stored. The following are valid formats: - https://storage.googleapis.com/bucket_name/image_archive_name - https://storage.googleapis.com/bucket_name/folder_name/image_archive_name - projects/project/locations/location/repositories/repo/packages/package/versions/version_id - projects/project/locations/location/repositories/repo/packages/package/versions/version_id@dirsum_sha256:hex_value In order to create an image, you must provide the full or partial URL of one of the following: - The rawDisk.source URL - The sourceDisk URL - The sourceImage URL - The sourceSnapshot URL */
@@ -42448,7 +42666,7 @@ export const ImageParams = /*@__PURE__*/ S.suspend(() =>
 /** Represents an Image resource. You can use images to create boot disks for your VM instances. For more information, read Images. */
 export interface Image {
   /** Output only. [Output Only] The status of the image. An image can be used to create other resources, such as instances, only after the image has been successfully created and the status is set to READY. Possible values are FAILED, PENDING, orREADY. */
-  status?: ImageStatusEnum;
+  status?: ImageStatusEnum | (string & {});
   /** Output only. [Output Only] Server-defined URL for this resource's resource id. */
   selfLinkWithId?: string;
   /** Output only. [Output Only] Server-defined URL for the resource. */
@@ -42470,7 +42688,7 @@ export interface Image {
   /** Labels to apply to this image. These can be later modified by the setLabels method. */
   labels?: StringMap;
   /** The architecture of the image. Valid values are ARM64 or X86_64. */
-  architecture?: ImageArchitectureEnum;
+  architecture?: ImageArchitectureEnum | (string & {});
   /** Output only. The deprecation status associated with this image. */
   deprecated?: DeprecationStatus;
   /** A list of features to enable on the guest operating system. Applicable only for bootable images. To see a list of available options, see theguestOSfeatures[].type parameter. */
@@ -42482,7 +42700,7 @@ export interface Image {
   /** Output only. Reserved for future use. */
   satisfiesPzi?: boolean;
   /** The type of the image used to create this disk. The default and only valid value is RAW. */
-  sourceType?: ImageSourceTypeEnum;
+  sourceType?: ImageSourceTypeEnum | (string & {});
   /** Output only. [Output Only] The ID value of the snapshot used to create this image. This value may be used to determine whether the snapshot was taken from the current or a previous instance of a given snapshot name. */
   sourceSnapshotId?: string;
   /** Output only. [Output Only] The ID value of the image used to create this image. This value may be used to determine whether the image was taken from the current or a previous instance of a given image name. */
@@ -42819,7 +43037,7 @@ export const GuestAttributesEntry = /*@__PURE__*/ S.suspend(() =>
   identifier: "GuestAttributesEntry",
 }) as any as S.Schema<GuestAttributesEntry>;
 
-export type GuestAttributesEntryList = ReadonlyArray<GuestAttributesEntry>;
+export type GuestAttributesEntryList = Array<GuestAttributesEntry>;
 export const GuestAttributesEntryList = /*@__PURE__*/ S.Array(
   GuestAttributesEntry,
 ) as any as S.Schema<GuestAttributesEntryList>;
@@ -42973,7 +43191,7 @@ export const HealthStatus = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "HealthStatus" }) as any as S.Schema<HealthStatus>;
 
-export type HealthStatusList = ReadonlyArray<HealthStatus>;
+export type HealthStatusList = Array<HealthStatus>;
 export const HealthStatusList = /*@__PURE__*/ S.Array(
   HealthStatus,
 ) as any as S.Schema<HealthStatusList>;
@@ -43099,7 +43317,7 @@ export const CompositeHealthChecksGetHealthResponseHealthSourceHealth =
   }) as any as S.Schema<CompositeHealthChecksGetHealthResponseHealthSourceHealth>;
 
 export type CompositeHealthChecksGetHealthResponseHealthSourceHealthList =
-  ReadonlyArray<CompositeHealthChecksGetHealthResponseHealthSourceHealth>;
+  Array<CompositeHealthChecksGetHealthResponseHealthSourceHealth>;
 export const CompositeHealthChecksGetHealthResponseHealthSourceHealthList =
   /*@__PURE__*/ S.Array(
     CompositeHealthChecksGetHealthResponseHealthSourceHealth,
@@ -43176,7 +43394,7 @@ export const HealthSourcesGetHealthResponseSourceInfoBackendInfo =
   }) as any as S.Schema<HealthSourcesGetHealthResponseSourceInfoBackendInfo>;
 
 export type HealthSourcesGetHealthResponseSourceInfoBackendInfoList =
-  ReadonlyArray<HealthSourcesGetHealthResponseSourceInfoBackendInfo>;
+  Array<HealthSourcesGetHealthResponseSourceInfoBackendInfo>;
 export const HealthSourcesGetHealthResponseSourceInfoBackendInfoList =
   /*@__PURE__*/ S.Array(
     HealthSourcesGetHealthResponseSourceInfoBackendInfo,
@@ -43204,7 +43422,7 @@ export const HealthSourcesGetHealthResponseSourceInfo = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<HealthSourcesGetHealthResponseSourceInfo>;
 
 export type HealthSourcesGetHealthResponseSourceInfoList =
-  ReadonlyArray<HealthSourcesGetHealthResponseSourceInfo>;
+  Array<HealthSourcesGetHealthResponseSourceInfo>;
 export const HealthSourcesGetHealthResponseSourceInfoList =
   /*@__PURE__*/ S.Array(
     HealthSourcesGetHealthResponseSourceInfo,
@@ -43567,7 +43785,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
-export type BindingList = ReadonlyArray<Binding>;
+export type BindingList = Array<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -43584,7 +43802,7 @@ export interface AuditLogConfig {
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
   exemptedMembers?: StringList;
   /** The log type that this config enables. */
-  logType?: AuditLogConfigLogTypeEnum;
+  logType?: AuditLogConfigLogTypeEnum | (string & {});
 }
 export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -43593,7 +43811,7 @@ export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
-export type AuditLogConfigList = ReadonlyArray<AuditLogConfig>;
+export type AuditLogConfigList = Array<AuditLogConfig>;
 export const AuditLogConfigList = /*@__PURE__*/ S.Array(
   AuditLogConfig,
 ) as any as S.Schema<AuditLogConfigList>;
@@ -43612,7 +43830,7 @@ export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
-export type AuditConfigList = ReadonlyArray<AuditConfig>;
+export type AuditConfigList = Array<AuditConfig>;
 export const AuditConfigList = /*@__PURE__*/ S.Array(
   AuditConfig,
 ) as any as S.Schema<AuditConfigList>;
@@ -44707,7 +44925,7 @@ export const InstanceGroupManagerResizeRequestStatusErrorErrorsItemErrorDetailsI
   }) as any as S.Schema<InstanceGroupManagerResizeRequestStatusErrorErrorsItemErrorDetailsItem>;
 
 export type InstanceGroupManagerResizeRequestStatusErrorErrorsItemErrorDetailsItemList =
-  ReadonlyArray<InstanceGroupManagerResizeRequestStatusErrorErrorsItemErrorDetailsItem>;
+  Array<InstanceGroupManagerResizeRequestStatusErrorErrorsItemErrorDetailsItem>;
 export const InstanceGroupManagerResizeRequestStatusErrorErrorsItemErrorDetailsItemList =
   /*@__PURE__*/ S.Array(
     InstanceGroupManagerResizeRequestStatusErrorErrorsItemErrorDetailsItem,
@@ -44738,7 +44956,7 @@ export const InstanceGroupManagerResizeRequestStatusErrorErrorsItem =
   }) as any as S.Schema<InstanceGroupManagerResizeRequestStatusErrorErrorsItem>;
 
 export type InstanceGroupManagerResizeRequestStatusErrorErrorsItemList =
-  ReadonlyArray<InstanceGroupManagerResizeRequestStatusErrorErrorsItem>;
+  Array<InstanceGroupManagerResizeRequestStatusErrorErrorsItem>;
 export const InstanceGroupManagerResizeRequestStatusErrorErrorsItemList =
   /*@__PURE__*/ S.Array(
     InstanceGroupManagerResizeRequestStatusErrorErrorsItem,
@@ -44783,7 +45001,7 @@ export const InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemEr
   }) as any as S.Schema<InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemErrorDetailsItem>;
 
 export type InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemErrorDetailsItemList =
-  ReadonlyArray<InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemErrorDetailsItem>;
+  Array<InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemErrorDetailsItem>;
 export const InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemErrorDetailsItemList =
   /*@__PURE__*/ S.Array(
     InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemErrorDetailsItem,
@@ -44815,7 +45033,7 @@ export const InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItem =
   }) as any as S.Schema<InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItem>;
 
 export type InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemList =
-  ReadonlyArray<InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItem>;
+  Array<InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItem>;
 export const InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemList =
   /*@__PURE__*/ S.Array(
     InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItem,
@@ -44885,7 +45103,7 @@ export interface InstanceGroupManagerResizeRequest {
   /** This field is deprecated, ResizeRequests would not be provisioned immediately and would stay in the queue until explicitly cancelled. When set, defines queing parameters for the requested deferred capacity. When unset, the request starts provisioning immediately, or fails if immediate provisioning is not possible. */
   queuingPolicy?: QueuingPolicy;
   /** Output only. Current state of the request. */
-  state?: InstanceGroupManagerResizeRequestStateEnum;
+  state?: InstanceGroupManagerResizeRequestStateEnum | (string & {});
   /** Output only. Status of the request. */
   status?: InstanceGroupManagerResizeRequestStatus;
   /** Output only. Server-defined URL for this resource with the resource id. */
@@ -45170,7 +45388,7 @@ export interface InstantSnapshotGroup {
   /** Output only. [Output Only] Server-defined URL for this resource's resource id. */
   selfLinkWithId?: string;
   /** Output only. [Output Only] */
-  status?: InstantSnapshotGroupStatusEnum;
+  status?: InstantSnapshotGroupStatusEnum | (string & {});
   /** Output only. [Output Only] Type of the resource. Alwayscompute#instantSnapshotGroup for InstantSnapshotGroup resources. */
   kind?: string;
   /** Output only. [Output Only] Server-defined URL for the resource. */
@@ -45272,7 +45490,7 @@ export const InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZone 
   }) as any as S.Schema<InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZone>;
 
 export type InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZoneList =
-  ReadonlyArray<InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZone>;
+  Array<InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZone>;
 export const InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZoneList =
   /*@__PURE__*/ S.Array(
     InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZone,
@@ -45298,7 +45516,7 @@ export const InterconnectAttachmentGroupLogicalStructureRegionMetroFacility =
   }) as any as S.Schema<InterconnectAttachmentGroupLogicalStructureRegionMetroFacility>;
 
 export type InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityList =
-  ReadonlyArray<InterconnectAttachmentGroupLogicalStructureRegionMetroFacility>;
+  Array<InterconnectAttachmentGroupLogicalStructureRegionMetroFacility>;
 export const InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityList =
   /*@__PURE__*/ S.Array(
     InterconnectAttachmentGroupLogicalStructureRegionMetroFacility,
@@ -45323,7 +45541,7 @@ export const InterconnectAttachmentGroupLogicalStructureRegionMetro =
   }) as any as S.Schema<InterconnectAttachmentGroupLogicalStructureRegionMetro>;
 
 export type InterconnectAttachmentGroupLogicalStructureRegionMetroList =
-  ReadonlyArray<InterconnectAttachmentGroupLogicalStructureRegionMetro>;
+  Array<InterconnectAttachmentGroupLogicalStructureRegionMetro>;
 export const InterconnectAttachmentGroupLogicalStructureRegionMetroList =
   /*@__PURE__*/ S.Array(
     InterconnectAttachmentGroupLogicalStructureRegionMetro,
@@ -45348,7 +45566,7 @@ export const InterconnectAttachmentGroupLogicalStructureRegion =
   }) as any as S.Schema<InterconnectAttachmentGroupLogicalStructureRegion>;
 
 export type InterconnectAttachmentGroupLogicalStructureRegionList =
-  ReadonlyArray<InterconnectAttachmentGroupLogicalStructureRegion>;
+  Array<InterconnectAttachmentGroupLogicalStructureRegion>;
 export const InterconnectAttachmentGroupLogicalStructureRegionList =
   /*@__PURE__*/ S.Array(
     InterconnectAttachmentGroupLogicalStructureRegion,
@@ -45379,7 +45597,9 @@ export const InterconnectAttachmentGroupIntentAvailabilitySlaEnum =
 
 /** The user's intent for this AttachmentGroup. This is the only required field besides the name that must be specified on group creation. */
 export interface InterconnectAttachmentGroupIntent {
-  availabilitySla?: InterconnectAttachmentGroupIntentAvailabilitySlaEnum;
+  availabilitySla?:
+    | InterconnectAttachmentGroupIntentAvailabilitySlaEnum
+    | (string & {});
 }
 export const InterconnectAttachmentGroupIntent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -45416,7 +45636,9 @@ export interface InterconnectAttachmentGroupConfiguredAvailabilitySLAIntendedSla
   zones?: StringList;
   /** Output only. [Output Only] URLs of any particular Attachments to explain this blocker in more detail. */
   attachments?: StringList;
-  blockerType?: InterconnectAttachmentGroupConfiguredAvailabilitySLAIntendedSlaBlockersBlockerTypeEnum;
+  blockerType?:
+    | InterconnectAttachmentGroupConfiguredAvailabilitySLAIntendedSlaBlockersBlockerTypeEnum
+    | (string & {});
   /** Output only. [Output Only] Regions used to explain this blocker in more detail. These are region names formatted like "us-central1". This will be set for some blockers (like INCOMPATIBLE_REGIONS) but does not apply to others. */
   regions?: StringList;
   /** Output only. [Output Only] The url of Google Cloud public documentation explaining this requirement. This is set for every type of requirement. */
@@ -45445,7 +45667,7 @@ export const InterconnectAttachmentGroupConfiguredAvailabilitySLAIntendedSlaBloc
   }) as any as S.Schema<InterconnectAttachmentGroupConfiguredAvailabilitySLAIntendedSlaBlockers>;
 
 export type InterconnectAttachmentGroupConfiguredAvailabilitySLAIntendedSlaBlockersList =
-  ReadonlyArray<InterconnectAttachmentGroupConfiguredAvailabilitySLAIntendedSlaBlockers>;
+  Array<InterconnectAttachmentGroupConfiguredAvailabilitySLAIntendedSlaBlockers>;
 export const InterconnectAttachmentGroupConfiguredAvailabilitySLAIntendedSlaBlockersList =
   /*@__PURE__*/ S.Array(
     InterconnectAttachmentGroupConfiguredAvailabilitySLAIntendedSlaBlockers,
@@ -45453,7 +45675,9 @@ export const InterconnectAttachmentGroupConfiguredAvailabilitySLAIntendedSlaBloc
 
 /** [Output Only] Which SLA this group is configured to support, and why this group does or does not meet that SLA's requirements. */
 export interface InterconnectAttachmentGroupConfiguredAvailabilitySLA {
-  effectiveSla?: InterconnectAttachmentGroupConfiguredAvailabilitySLAEffectiveSlaEnum;
+  effectiveSla?:
+    | InterconnectAttachmentGroupConfiguredAvailabilitySLAEffectiveSlaEnum
+    | (string & {});
   intendedSlaBlockers?: InterconnectAttachmentGroupConfiguredAvailabilitySLAIntendedSlaBlockersList;
 }
 export const InterconnectAttachmentGroupConfiguredAvailabilitySLA =
@@ -45612,7 +45836,7 @@ export const InterconnectGroupPhysicalStructureMetrosFacilitiesZones =
   }) as any as S.Schema<InterconnectGroupPhysicalStructureMetrosFacilitiesZones>;
 
 export type InterconnectGroupPhysicalStructureMetrosFacilitiesZonesList =
-  ReadonlyArray<InterconnectGroupPhysicalStructureMetrosFacilitiesZones>;
+  Array<InterconnectGroupPhysicalStructureMetrosFacilitiesZones>;
 export const InterconnectGroupPhysicalStructureMetrosFacilitiesZonesList =
   /*@__PURE__*/ S.Array(
     InterconnectGroupPhysicalStructureMetrosFacilitiesZones,
@@ -45637,7 +45861,7 @@ export const InterconnectGroupPhysicalStructureMetrosFacilities =
   }) as any as S.Schema<InterconnectGroupPhysicalStructureMetrosFacilities>;
 
 export type InterconnectGroupPhysicalStructureMetrosFacilitiesList =
-  ReadonlyArray<InterconnectGroupPhysicalStructureMetrosFacilities>;
+  Array<InterconnectGroupPhysicalStructureMetrosFacilities>;
 export const InterconnectGroupPhysicalStructureMetrosFacilitiesList =
   /*@__PURE__*/ S.Array(
     InterconnectGroupPhysicalStructureMetrosFacilities,
@@ -45662,7 +45886,7 @@ export const InterconnectGroupPhysicalStructureMetros = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<InterconnectGroupPhysicalStructureMetros>;
 
 export type InterconnectGroupPhysicalStructureMetrosList =
-  ReadonlyArray<InterconnectGroupPhysicalStructureMetros>;
+  Array<InterconnectGroupPhysicalStructureMetros>;
 export const InterconnectGroupPhysicalStructureMetrosList =
   /*@__PURE__*/ S.Array(
     InterconnectGroupPhysicalStructureMetros,
@@ -45690,7 +45914,9 @@ export const InterconnectGroupIntentTopologyCapabilityEnum =
 
 /** The user's intent for this group. This is the only required field besides the name that must be specified on group creation. */
 export interface InterconnectGroupIntent {
-  topologyCapability?: InterconnectGroupIntentTopologyCapabilityEnum;
+  topologyCapability?:
+    | InterconnectGroupIntentTopologyCapabilityEnum
+    | (string & {});
 }
 export const InterconnectGroupIntent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -45732,7 +45958,9 @@ export interface InterconnectGroupConfiguredTopologyCapabilityIntendedCapability
   facilities?: StringList;
   /** Output only. [Output Only] Zones used to explain this blocker in more detail. Zone names are "zone1" and/or "zone2". */
   zones?: StringList;
-  blockerType?: InterconnectGroupConfiguredTopologyCapabilityIntendedCapabilityBlockersBlockerTypeEnum;
+  blockerType?:
+    | InterconnectGroupConfiguredTopologyCapabilityIntendedCapabilityBlockersBlockerTypeEnum
+    | (string & {});
   /** Output only. [Output Only] Interconnects used to explain this blocker in more detail. */
   interconnects?: StringList;
 }
@@ -45755,7 +45983,7 @@ export const InterconnectGroupConfiguredTopologyCapabilityIntendedCapabilityBloc
   }) as any as S.Schema<InterconnectGroupConfiguredTopologyCapabilityIntendedCapabilityBlockers>;
 
 export type InterconnectGroupConfiguredTopologyCapabilityIntendedCapabilityBlockersList =
-  ReadonlyArray<InterconnectGroupConfiguredTopologyCapabilityIntendedCapabilityBlockers>;
+  Array<InterconnectGroupConfiguredTopologyCapabilityIntendedCapabilityBlockers>;
 export const InterconnectGroupConfiguredTopologyCapabilityIntendedCapabilityBlockersList =
   /*@__PURE__*/ S.Array(
     InterconnectGroupConfiguredTopologyCapabilityIntendedCapabilityBlockers,
@@ -45763,7 +45991,9 @@ export const InterconnectGroupConfiguredTopologyCapabilityIntendedCapabilityBloc
 
 /** [Output Only] How reliable this topology is configured to be, and why this group does or does not meet the requirements for the intended capability. */
 export interface InterconnectGroupConfiguredTopologyCapability {
-  supportedSla?: InterconnectGroupConfiguredTopologyCapabilitySupportedSlaEnum;
+  supportedSla?:
+    | InterconnectGroupConfiguredTopologyCapabilitySupportedSlaEnum
+    | (string & {});
   intendedCapabilityBlockers?: InterconnectGroupConfiguredTopologyCapabilityIntendedCapabilityBlockersList;
 }
 export const InterconnectGroupConfiguredTopologyCapability =
@@ -45909,7 +46139,7 @@ export const InterconnectLocationRegionInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InterconnectLocationRegionInfo>;
 
 export type InterconnectLocationRegionInfoList =
-  ReadonlyArray<InterconnectLocationRegionInfo>;
+  Array<InterconnectLocationRegionInfo>;
 export const InterconnectLocationRegionInfoList = /*@__PURE__*/ S.Array(
   InterconnectLocationRegionInfo,
 ) as any as S.Schema<InterconnectLocationRegionInfoList>;
@@ -45932,7 +46162,7 @@ export const InterconnectLocationCrossSiteInterconnectInfo =
   }) as any as S.Schema<InterconnectLocationCrossSiteInterconnectInfo>;
 
 export type InterconnectLocationCrossSiteInterconnectInfoList =
-  ReadonlyArray<InterconnectLocationCrossSiteInterconnectInfo>;
+  Array<InterconnectLocationCrossSiteInterconnectInfo>;
 export const InterconnectLocationCrossSiteInterconnectInfoList =
   /*@__PURE__*/ S.Array(
     InterconnectLocationCrossSiteInterconnectInfo,
@@ -45946,7 +46176,7 @@ export const InterconnectLocationAvailableFeaturesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type InterconnectLocationAvailableFeaturesItemEnumList =
-  ReadonlyArray<InterconnectLocationAvailableFeaturesItemEnum>;
+  Array<InterconnectLocationAvailableFeaturesItemEnum>;
 export const InterconnectLocationAvailableFeaturesItemEnumList =
   /*@__PURE__*/ S.Array(
     InterconnectLocationAvailableFeaturesItemEnum,
@@ -45960,7 +46190,7 @@ export const InterconnectLocationAvailableLinkTypesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type InterconnectLocationAvailableLinkTypesItemEnumList =
-  ReadonlyArray<InterconnectLocationAvailableLinkTypesItemEnum>;
+  Array<InterconnectLocationAvailableLinkTypesItemEnum>;
 export const InterconnectLocationAvailableLinkTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     InterconnectLocationAvailableLinkTypesItemEnum,
@@ -46102,7 +46332,7 @@ export const InterconnectRemoteLocationPermittedConnections =
   }) as any as S.Schema<InterconnectRemoteLocationPermittedConnections>;
 
 export type InterconnectRemoteLocationPermittedConnectionsList =
-  ReadonlyArray<InterconnectRemoteLocationPermittedConnections>;
+  Array<InterconnectRemoteLocationPermittedConnections>;
 export const InterconnectRemoteLocationPermittedConnectionsList =
   /*@__PURE__*/ S.Array(
     InterconnectRemoteLocationPermittedConnections,
@@ -46277,8 +46507,9 @@ export type InterconnectRequestedFeaturesItemEnum =
   | "IF_MACSEC";
 export const InterconnectRequestedFeaturesItemEnum = /*@__PURE__*/ S.String;
 
-export type InterconnectRequestedFeaturesItemEnumList =
-  ReadonlyArray<InterconnectRequestedFeaturesItemEnum>;
+export type InterconnectRequestedFeaturesItemEnumList = Array<
+  InterconnectRequestedFeaturesItemEnum | (string & {})
+>;
 export const InterconnectRequestedFeaturesItemEnumList = /*@__PURE__*/ S.Array(
   InterconnectRequestedFeaturesItemEnum,
 ) as any as S.Schema<InterconnectRequestedFeaturesItemEnumList>;
@@ -46305,8 +46536,9 @@ export type InterconnectAvailableFeaturesItemEnum =
   | "IF_MACSEC";
 export const InterconnectAvailableFeaturesItemEnum = /*@__PURE__*/ S.String;
 
-export type InterconnectAvailableFeaturesItemEnumList =
-  ReadonlyArray<InterconnectAvailableFeaturesItemEnum>;
+export type InterconnectAvailableFeaturesItemEnumList = Array<
+  InterconnectAvailableFeaturesItemEnum | (string & {})
+>;
 export const InterconnectAvailableFeaturesItemEnumList = /*@__PURE__*/ S.Array(
   InterconnectAvailableFeaturesItemEnum,
 ) as any as S.Schema<InterconnectAvailableFeaturesItemEnumList>;
@@ -46335,13 +46567,13 @@ export interface InterconnectOutageNotification {
   /** A description about the purpose of the outage. */
   description?: string;
   /** The party that generated this notification, which can take the following value: - GOOGLE: this notification as generated by Google. Note that the value of NSRC_GOOGLE has been deprecated in favor of GOOGLE. */
-  source?: InterconnectOutageNotificationSourceEnum;
+  source?: InterconnectOutageNotificationSourceEnum | (string & {});
   /** Form this outage is expected to take, which can take one of the following values: - OUTAGE: The Interconnect may be completely out of service for some or all of the specified window. - PARTIAL_OUTAGE: Some circuits comprising the Interconnect as a whole should remain up, but with reduced bandwidth. Note that the versions of this enum prefixed with "IT_" have been deprecated in favor of the unprefixed values. */
-  issueType?: InterconnectOutageNotificationIssueTypeEnum;
+  issueType?: InterconnectOutageNotificationIssueTypeEnum | (string & {});
   /** Unique identifier for this outage notification. */
   name?: string;
   /** State of this notification, which can take one of the following values: - ACTIVE: This outage notification is active. The event could be in the past, present, or future. See start_time and end_time for scheduling. - CANCELLED: The outage associated with this notification was cancelled before the outage was due to start. - COMPLETED: The outage associated with this notification is complete. Note that the versions of this enum prefixed with "NS_" have been deprecated in favor of the unprefixed values. */
-  state?: InterconnectOutageNotificationStateEnum;
+  state?: InterconnectOutageNotificationStateEnum | (string & {});
   /** Scheduled start time for the outage (milliseconds since Unix epoch). */
   startTime?: string;
   /** If issue_type is IT_PARTIAL_OUTAGE, a list of the Google-side circuit IDs that will be affected. */
@@ -46365,7 +46597,7 @@ export const InterconnectOutageNotification = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InterconnectOutageNotification>;
 
 export type InterconnectOutageNotificationList =
-  ReadonlyArray<InterconnectOutageNotification>;
+  Array<InterconnectOutageNotification>;
 export const InterconnectOutageNotificationList = /*@__PURE__*/ S.Array(
   InterconnectOutageNotification,
 ) as any as S.Schema<InterconnectOutageNotificationList>;
@@ -46395,7 +46627,7 @@ export const InterconnectMacsecPreSharedKey = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InterconnectMacsecPreSharedKey>;
 
 export type InterconnectMacsecPreSharedKeyList =
-  ReadonlyArray<InterconnectMacsecPreSharedKey>;
+  Array<InterconnectMacsecPreSharedKey>;
 export const InterconnectMacsecPreSharedKeyList = /*@__PURE__*/ S.Array(
   InterconnectMacsecPreSharedKey,
 ) as any as S.Schema<InterconnectMacsecPreSharedKeyList>;
@@ -46433,7 +46665,9 @@ export const InterconnectApplicationAwareInterconnectBandwidthPercentageTrafficC
 /** Specify bandwidth percentages [1-100] for various traffic classes in BandwidthPercentagePolicy. The sum of all percentages must equal 100. All traffic classes must have a percentage value specified. */
 export interface InterconnectApplicationAwareInterconnectBandwidthPercentage {
   /** TrafficClass whose bandwidth percentage is being specified. */
-  trafficClass?: InterconnectApplicationAwareInterconnectBandwidthPercentageTrafficClassEnum;
+  trafficClass?:
+    | InterconnectApplicationAwareInterconnectBandwidthPercentageTrafficClassEnum
+    | (string & {});
   /** Bandwidth percentage for a specific traffic class. */
   percentage?: number;
 }
@@ -46450,7 +46684,7 @@ export const InterconnectApplicationAwareInterconnectBandwidthPercentage =
   }) as any as S.Schema<InterconnectApplicationAwareInterconnectBandwidthPercentage>;
 
 export type InterconnectApplicationAwareInterconnectBandwidthPercentageList =
-  ReadonlyArray<InterconnectApplicationAwareInterconnectBandwidthPercentage>;
+  Array<InterconnectApplicationAwareInterconnectBandwidthPercentage>;
 export const InterconnectApplicationAwareInterconnectBandwidthPercentageList =
   /*@__PURE__*/ S.Array(
     InterconnectApplicationAwareInterconnectBandwidthPercentage,
@@ -46525,8 +46759,7 @@ export const InterconnectCircuitInfo = /*@__PURE__*/ S.suspend(() =>
   identifier: "InterconnectCircuitInfo",
 }) as any as S.Schema<InterconnectCircuitInfo>;
 
-export type InterconnectCircuitInfoList =
-  ReadonlyArray<InterconnectCircuitInfo>;
+export type InterconnectCircuitInfoList = Array<InterconnectCircuitInfo>;
 export const InterconnectCircuitInfoList = /*@__PURE__*/ S.Array(
   InterconnectCircuitInfo,
 ) as any as S.Schema<InterconnectCircuitInfoList>;
@@ -46566,7 +46799,7 @@ export interface Interconnect {
   /** Output only. [Output Only] Google reference ID to be used when raising support tickets with Google or otherwise to debug backend connectivity issues. */
   googleReferenceId?: string;
   /** Output only. [Output Only] The current state of Interconnect functionality, which can take one of the following values: - ACTIVE: The Interconnect is valid, turned up and ready to use. Attachments may be provisioned on this Interconnect. - UNPROVISIONED: The Interconnect has not completed turnup. No attachments may be provisioned on this Interconnect. - UNDER_MAINTENANCE: The Interconnect is undergoing internal maintenance. No attachments may be provisioned or updated on this Interconnect. */
-  state?: InterconnectStateEnum;
+  state?: InterconnectStateEnum | (string & {});
   /** Administrative status of the interconnect. When this is set to true, the Interconnect is functional and can carry traffic. When set to false, no packets can be carried over the interconnect and no BGP routes are exchanged over it. By default, the status is set to true. */
   adminEnabled?: boolean;
   /** [Output only] List of features available for this Interconnect connection, which can take one of the following values: - IF_MACSEC: If present, then the Interconnect connection is provisioned on MACsec capable hardware ports. If not present, then the Interconnect connection is provisioned on non-MACsec capable ports. Any attempt to enable MACsec will fail. - IF_CROSS_SITE_NETWORK: If present, then the Interconnect connection is provisioned exclusively for Cross-Site Networking. Any attempt to configure VLAN attachments will fail. If not present, then the Interconnect connection is not provisioned for Cross-Site Networking. Any attempt to use it for Cross-Site Networking will fail. */
@@ -46574,13 +46807,13 @@ export interface Interconnect {
   /** Output only. [Output Only] A list of outages expected for this Interconnect. */
   expectedOutages?: InterconnectOutageNotificationList;
   /** Output only. [Output Only] The current status of this Interconnect's functionality, which can take one of the following values: - OS_ACTIVE: A valid Interconnect, which is turned up and is ready to use. Attachments may be provisioned on this Interconnect. - OS_UNPROVISIONED: An Interconnect that has not completed turnup. No attachments may be provisioned on this Interconnect. - OS_UNDER_MAINTENANCE: An Interconnect that is undergoing internal maintenance. No attachments may be provisioned or updated on this Interconnect. */
-  operationalStatus?: InterconnectOperationalStatusEnum;
+  operationalStatus?: InterconnectOperationalStatusEnum | (string & {});
   /** Output only. [Output Only] Reserved for future use. */
   satisfiesPzs?: boolean;
   /** Target number of physical links in the link bundle, as requested by the customer. */
   requestedLinkCount?: number;
   /** To be deprecated. */
-  subzone?: InterconnectSubzoneEnum;
+  subzone?: InterconnectSubzoneEnum | (string & {});
   /** Output only. [Output Only] Creation timestamp inRFC3339 text format. */
   creationTimestamp?: string;
   /** Enable or disable the application awareness feature on this Cloud Interconnect. */
@@ -46590,7 +46823,7 @@ export interface Interconnect {
   /** Configuration that enables Media Access Control security (MACsec) on the Cloud Interconnect connection between Google and your on-premises router. */
   macsec?: InterconnectMacsec;
   /** Type of interconnect, which can take one of the following values: - PARTNER: A partner-managed interconnection shared between customers though a partner. - DEDICATED: A dedicated physical interconnection with the customer. Note that a value IT_PRIVATE has been deprecated in favor of DEDICATED. */
-  interconnectType?: InterconnectInterconnectTypeEnum;
+  interconnectType?: InterconnectInterconnectTypeEnum | (string & {});
   /** Email address to contact the customer NOC for operations and maintenance notifications regarding this Interconnect. If specified, this will be used for notifications in addition to all other forms described, such as Cloud Monitoring logs alerting and Cloud Notifications. This field is required for users who sign up for Cloud Interconnect using workforce identity federation. */
   nocContactEmail?: string;
   /** Labels for this resource. These can only be added or modified by thesetLabels method. Each label key/value pair must comply withRFC1035. Label values may be empty. */
@@ -46612,7 +46845,7 @@ export interface Interconnect {
   /** Output only. [Output Only] Type of the resource. Alwayscompute#interconnect for interconnects. */
   kind?: string;
   /** Type of link requested, which can take one of the following values: - LINK_TYPE_ETHERNET_10G_LR: A 10G Ethernet with LR optics - LINK_TYPE_ETHERNET_100G_LR: A 100G Ethernet with LR optics. - LINK_TYPE_ETHERNET_400G_LR4: A 400G Ethernet with LR4 optics. Note that this field indicates the speed of each of the links in the bundle, not the speed of the entire bundle. */
-  linkType?: InterconnectLinkTypeEnum;
+  linkType?: InterconnectLinkTypeEnum | (string & {});
   /** Customer name, to put in the Letter of Authorization as the party authorized to request a crossconnect. */
   customerName?: string;
 }
@@ -46705,8 +46938,7 @@ export const LicenseCodeLicenseAlias = /*@__PURE__*/ S.suspend(() =>
   identifier: "LicenseCodeLicenseAlias",
 }) as any as S.Schema<LicenseCodeLicenseAlias>;
 
-export type LicenseCodeLicenseAliasList =
-  ReadonlyArray<LicenseCodeLicenseAlias>;
+export type LicenseCodeLicenseAliasList = Array<LicenseCodeLicenseAlias>;
 export const LicenseCodeLicenseAliasList = /*@__PURE__*/ S.Array(
   LicenseCodeLicenseAlias,
 ) as any as S.Schema<LicenseCodeLicenseAliasList>;
@@ -46932,13 +47164,13 @@ export interface SavedDisk {
   /** Output only. Specifies a URL of the disk attached to the source instance. */
   sourceDisk?: string;
   /** Output only. [Output Only] An indicator whether storageBytes is in a stable state or it is being adjusted as a result of shared storage reallocation. This status can either be UPDATING, meaning the size of the snapshot is being updated, or UP_TO_DATE, meaning the size of the snapshot is up-to-date. */
-  storageBytesStatus?: SavedDiskStorageBytesStatusEnum;
+  storageBytesStatus?: SavedDiskStorageBytesStatusEnum | (string & {});
   /** Output only. [Output Only] Size of the individual disk snapshot used by this machine image. */
   storageBytes?: string;
   /** Output only. [Output Only] Type of the resource. Always compute#savedDisk for attached disks. */
   kind?: string;
   /** Output only. [Output Only] The architecture of the attached disk. */
-  architecture?: SavedDiskArchitectureEnum;
+  architecture?: SavedDiskArchitectureEnum | (string & {});
 }
 export const SavedDisk = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -46950,7 +47182,7 @@ export const SavedDisk = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SavedDisk" }) as any as S.Schema<SavedDisk>;
 
-export type SavedDiskList = ReadonlyArray<SavedDisk>;
+export type SavedDiskList = Array<SavedDisk>;
 export const SavedDiskList = /*@__PURE__*/ S.Array(
   SavedDisk,
 ) as any as S.Schema<SavedDiskList>;
@@ -46970,8 +47202,7 @@ export const SourceDiskEncryptionKey = /*@__PURE__*/ S.suspend(() =>
   identifier: "SourceDiskEncryptionKey",
 }) as any as S.Schema<SourceDiskEncryptionKey>;
 
-export type SourceDiskEncryptionKeyList =
-  ReadonlyArray<SourceDiskEncryptionKey>;
+export type SourceDiskEncryptionKeyList = Array<SourceDiskEncryptionKey>;
 export const SourceDiskEncryptionKeyList = /*@__PURE__*/ S.Array(
   SourceDiskEncryptionKey,
 ) as any as S.Schema<SourceDiskEncryptionKeyList>;
@@ -46991,7 +47222,7 @@ export const SavedAttachedDiskStorageBytesStatusEnum = /*@__PURE__*/ S.String;
 /** DEPRECATED: Please use compute#savedDisk instead. An instance-attached disk resource. */
 export interface SavedAttachedDisk {
   /** The mode in which this disk is attached to the source instance, eitherREAD_WRITE or READ_ONLY. */
-  mode?: SavedAttachedDiskModeEnum;
+  mode?: SavedAttachedDiskModeEnum | (string & {});
   /** Output only. [Output Only] Any valid publicly visible licenses. */
   licenses?: StringList;
   /** Output only. Specifies zero-based index of the disk that is attached to the source instance. */
@@ -47009,19 +47240,19 @@ export interface SavedAttachedDisk {
   /** The size of the disk in base-2 GB. */
   diskSizeGb?: string;
   /** Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. */
-  interface?: SavedAttachedDiskInterfaceEnum;
+  interface?: SavedAttachedDiskInterfaceEnum | (string & {});
   /** Specifies whether the disk will be auto-deleted when the instance is deleted (but not when the disk is detached from the instance). */
   autoDelete?: boolean;
   /** Output only. [Output Only] A size of the storage used by the disk's snapshot by this machine image. */
   storageBytes?: string;
   /** Specifies the type of the attached disk, either SCRATCH orPERSISTENT. */
-  type?: SavedAttachedDiskTypeEnum;
+  type?: SavedAttachedDiskTypeEnum | (string & {});
   /** Specifies the name of the disk attached to the source instance. */
   deviceName?: string;
   /** Output only. [Output Only] Type of the resource. Alwayscompute#attachedDisk for attached disks. */
   kind?: string;
   /** Output only. [Output Only] An indicator whether storageBytes is in a stable state or it is being adjusted as a result of shared storage reallocation. This status can either be UPDATING, meaning the size of the snapshot is being updated, or UP_TO_DATE, meaning the size of the snapshot is up-to-date. */
-  storageBytesStatus?: SavedAttachedDiskStorageBytesStatusEnum;
+  storageBytesStatus?: SavedAttachedDiskStorageBytesStatusEnum | (string & {});
 }
 export const SavedAttachedDisk = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -47046,7 +47277,7 @@ export const SavedAttachedDisk = /*@__PURE__*/ S.suspend(() =>
   identifier: "SavedAttachedDisk",
 }) as any as S.Schema<SavedAttachedDisk>;
 
-export type SavedAttachedDiskList = ReadonlyArray<SavedAttachedDisk>;
+export type SavedAttachedDiskList = Array<SavedAttachedDisk>;
 export const SavedAttachedDiskList = /*@__PURE__*/ S.Array(
   SavedAttachedDisk,
 ) as any as S.Schema<SavedAttachedDiskList>;
@@ -47074,7 +47305,9 @@ export interface SourceInstanceProperties {
   /** Minimum cpu/platform to be used by instances created from this machine image. The instance may be scheduled on the specified or newer cpu/platform. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: "Intel Haswell" orminCpuPlatform: "Intel Sandy Bridge". For more information, read Specifying a Minimum CPU Platform. */
   minCpuPlatform?: string;
   /** KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified. */
-  keyRevocationActionType?: SourceInstancePropertiesKeyRevocationActionTypeEnum;
+  keyRevocationActionType?:
+    | SourceInstancePropertiesKeyRevocationActionTypeEnum
+    | (string & {});
   /** An array of network access configurations for this interface. */
   networkInterfaces?: NetworkInterfaceList;
   /** A list of service accounts with specified scopes. Access tokens for these service accounts are available to the instances that are created from this machine image. Use metadata queries to obtain the access tokens for these instances. */
@@ -47086,7 +47319,9 @@ export interface SourceInstanceProperties {
   /** An optional text description for the instances that are created from this machine image. */
   description?: string;
   /** PostKeyRevocationActionType of the instance. */
-  postKeyRevocationActionType?: SourceInstancePropertiesPostKeyRevocationActionTypeEnum;
+  postKeyRevocationActionType?:
+    | SourceInstancePropertiesPostKeyRevocationActionTypeEnum
+    | (string & {});
   /** The metadata key/value pairs to assign to instances that are created from this machine image. These pairs can consist of custom metadata or predefined keys. SeeProject and instance metadata for more information. */
   metadata?: Metadata;
   /** Labels to apply to instances that are created from this machine image. */
@@ -47190,7 +47425,7 @@ export interface MachineImage {
   /** Output only. [Output Only] Server-defined URL for this resource with the resource id. */
   selfLinkWithId?: string;
   /** Output only. [Output Only] The status of the machine image. One of the following values:INVALID, CREATING, READY,DELETING, and UPLOADING. */
-  status?: MachineImageStatusEnum;
+  status?: MachineImageStatusEnum | (string & {});
   /** [Output Only] Properties of source instance */
   instanceProperties?: InstanceProperties;
   /** Output only. [Output Only] The resource type, which is alwayscompute#machineImage for machine image. */
@@ -47294,7 +47529,7 @@ export const InterconnectMacsecConfigPreSharedKey = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<InterconnectMacsecConfigPreSharedKey>;
 
 export type InterconnectMacsecConfigPreSharedKeyList =
-  ReadonlyArray<InterconnectMacsecConfigPreSharedKey>;
+  Array<InterconnectMacsecConfigPreSharedKey>;
 export const InterconnectMacsecConfigPreSharedKeyList = /*@__PURE__*/ S.Array(
   InterconnectMacsecConfigPreSharedKey,
 ) as any as S.Schema<InterconnectMacsecConfigPreSharedKeyList>;
@@ -47408,7 +47643,7 @@ export const GetNamedSetRoutersRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetNamedSetRoutersRequest",
 }) as any as S.Schema<GetNamedSetRoutersRequest>;
 
-export type ExprList = ReadonlyArray<Expr>;
+export type ExprList = Array<Expr>;
 export const ExprList = /*@__PURE__*/ S.Array(
   Expr,
 ) as any as S.Schema<ExprList>;
@@ -47428,7 +47663,7 @@ export interface NamedSet {
   /** This set's name, which must be a resource ID segment and unique within all named sets owned by the Router. Name should conform to RFC1035. */
   name?: string;
   /** This named set's type */
-  type?: NamedSetTypeEnum;
+  type?: NamedSetTypeEnum | (string & {});
 }
 export const NamedSet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -47506,8 +47741,7 @@ export const NatIpInfoNatIpInfoMapping = /*@__PURE__*/ S.suspend(() =>
   identifier: "NatIpInfoNatIpInfoMapping",
 }) as any as S.Schema<NatIpInfoNatIpInfoMapping>;
 
-export type NatIpInfoNatIpInfoMappingList =
-  ReadonlyArray<NatIpInfoNatIpInfoMapping>;
+export type NatIpInfoNatIpInfoMappingList = Array<NatIpInfoNatIpInfoMapping>;
 export const NatIpInfoNatIpInfoMappingList = /*@__PURE__*/ S.Array(
   NatIpInfoNatIpInfoMapping,
 ) as any as S.Schema<NatIpInfoNatIpInfoMappingList>;
@@ -47526,7 +47760,7 @@ export const NatIpInfo = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "NatIpInfo" }) as any as S.Schema<NatIpInfo>;
 
-export type NatIpInfoList = ReadonlyArray<NatIpInfo>;
+export type NatIpInfoList = Array<NatIpInfo>;
 export const NatIpInfoList = /*@__PURE__*/ S.Array(
   NatIpInfo,
 ) as any as S.Schema<NatIpInfoList>;
@@ -47612,7 +47846,7 @@ export const VmEndpointNatMappingsInterfaceNatMappingsNatRuleMappings =
   }) as any as S.Schema<VmEndpointNatMappingsInterfaceNatMappingsNatRuleMappings>;
 
 export type VmEndpointNatMappingsInterfaceNatMappingsNatRuleMappingsList =
-  ReadonlyArray<VmEndpointNatMappingsInterfaceNatMappingsNatRuleMappings>;
+  Array<VmEndpointNatMappingsInterfaceNatMappingsNatRuleMappings>;
 export const VmEndpointNatMappingsInterfaceNatMappingsNatRuleMappingsList =
   /*@__PURE__*/ S.Array(
     VmEndpointNatMappingsInterfaceNatMappingsNatRuleMappings,
@@ -47653,7 +47887,7 @@ export const VmEndpointNatMappingsInterfaceNatMappings =
   }) as any as S.Schema<VmEndpointNatMappingsInterfaceNatMappings>;
 
 export type VmEndpointNatMappingsInterfaceNatMappingsList =
-  ReadonlyArray<VmEndpointNatMappingsInterfaceNatMappings>;
+  Array<VmEndpointNatMappingsInterfaceNatMappings>;
 export const VmEndpointNatMappingsInterfaceNatMappingsList =
   /*@__PURE__*/ S.Array(
     VmEndpointNatMappingsInterfaceNatMappings,
@@ -47676,7 +47910,7 @@ export const VmEndpointNatMappings = /*@__PURE__*/ S.suspend(() =>
   identifier: "VmEndpointNatMappings",
 }) as any as S.Schema<VmEndpointNatMappings>;
 
-export type VmEndpointNatMappingsList_ = ReadonlyArray<VmEndpointNatMappings>;
+export type VmEndpointNatMappingsList_ = Array<VmEndpointNatMappings>;
 export const VmEndpointNatMappingsList_ = /*@__PURE__*/ S.Array(
   VmEndpointNatMappings,
 ) as any as S.Schema<VmEndpointNatMappingsList_>;
@@ -47698,7 +47932,7 @@ export const VmEndpointNatMappingsListWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<VmEndpointNatMappingsListWarningDataItem>;
 
 export type VmEndpointNatMappingsListWarningDataItemList =
-  ReadonlyArray<VmEndpointNatMappingsListWarningDataItem>;
+  Array<VmEndpointNatMappingsListWarningDataItem>;
 export const VmEndpointNatMappingsListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     VmEndpointNatMappingsListWarningDataItem,
@@ -47924,7 +48158,7 @@ export const NetworkProfileNetworkFeaturesInterfaceTypesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type NetworkProfileNetworkFeaturesInterfaceTypesItemEnumList =
-  ReadonlyArray<NetworkProfileNetworkFeaturesInterfaceTypesItemEnum>;
+  Array<NetworkProfileNetworkFeaturesInterfaceTypesItemEnum>;
 export const NetworkProfileNetworkFeaturesInterfaceTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     NetworkProfileNetworkFeaturesInterfaceTypesItemEnum,
@@ -47967,7 +48201,7 @@ export const NetworkProfileNetworkFeaturesSubnetworkStackTypesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type NetworkProfileNetworkFeaturesSubnetworkStackTypesItemEnumList =
-  ReadonlyArray<NetworkProfileNetworkFeaturesSubnetworkStackTypesItemEnum>;
+  Array<NetworkProfileNetworkFeaturesSubnetworkStackTypesItemEnum>;
 export const NetworkProfileNetworkFeaturesSubnetworkStackTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     NetworkProfileNetworkFeaturesSubnetworkStackTypesItemEnum,
@@ -47994,7 +48228,7 @@ export const NetworkProfileNetworkFeaturesFirewallPolicyTypesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type NetworkProfileNetworkFeaturesFirewallPolicyTypesItemEnumList =
-  ReadonlyArray<NetworkProfileNetworkFeaturesFirewallPolicyTypesItemEnum>;
+  Array<NetworkProfileNetworkFeaturesFirewallPolicyTypesItemEnum>;
 export const NetworkProfileNetworkFeaturesFirewallPolicyTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     NetworkProfileNetworkFeaturesFirewallPolicyTypesItemEnum,
@@ -48040,7 +48274,7 @@ export const NetworkProfileNetworkFeaturesSubnetworkPurposesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type NetworkProfileNetworkFeaturesSubnetworkPurposesItemEnumList =
-  ReadonlyArray<NetworkProfileNetworkFeaturesSubnetworkPurposesItemEnum>;
+  Array<NetworkProfileNetworkFeaturesSubnetworkPurposesItemEnum>;
 export const NetworkProfileNetworkFeaturesSubnetworkPurposesItemEnumList =
   /*@__PURE__*/ S.Array(
     NetworkProfileNetworkFeaturesSubnetworkPurposesItemEnum,
@@ -48082,7 +48316,7 @@ export const NetworkProfileNetworkFeaturesSubnetPurposesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type NetworkProfileNetworkFeaturesSubnetPurposesItemEnumList =
-  ReadonlyArray<NetworkProfileNetworkFeaturesSubnetPurposesItemEnum>;
+  Array<NetworkProfileNetworkFeaturesSubnetPurposesItemEnum>;
 export const NetworkProfileNetworkFeaturesSubnetPurposesItemEnumList =
   /*@__PURE__*/ S.Array(
     NetworkProfileNetworkFeaturesSubnetPurposesItemEnum,
@@ -48105,7 +48339,7 @@ export const NetworkProfileNetworkFeaturesPredefinedSubnetworkRange =
   }) as any as S.Schema<NetworkProfileNetworkFeaturesPredefinedSubnetworkRange>;
 
 export type NetworkProfileNetworkFeaturesPredefinedSubnetworkRangeList =
-  ReadonlyArray<NetworkProfileNetworkFeaturesPredefinedSubnetworkRange>;
+  Array<NetworkProfileNetworkFeaturesPredefinedSubnetworkRange>;
 export const NetworkProfileNetworkFeaturesPredefinedSubnetworkRangeList =
   /*@__PURE__*/ S.Array(
     NetworkProfileNetworkFeaturesPredefinedSubnetworkRange,
@@ -48131,7 +48365,7 @@ export const NetworkProfileNetworkFeaturesSubnetStackTypesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type NetworkProfileNetworkFeaturesSubnetStackTypesItemEnumList =
-  ReadonlyArray<NetworkProfileNetworkFeaturesSubnetStackTypesItemEnum>;
+  Array<NetworkProfileNetworkFeaturesSubnetStackTypesItemEnum>;
 export const NetworkProfileNetworkFeaturesSubnetStackTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     NetworkProfileNetworkFeaturesSubnetStackTypesItemEnum,
@@ -48160,7 +48394,7 @@ export const NetworkProfileNetworkFeaturesAddressPurposesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type NetworkProfileNetworkFeaturesAddressPurposesItemEnumList =
-  ReadonlyArray<NetworkProfileNetworkFeaturesAddressPurposesItemEnum>;
+  Array<NetworkProfileNetworkFeaturesAddressPurposesItemEnum>;
 export const NetworkProfileNetworkFeaturesAddressPurposesItemEnumList =
   /*@__PURE__*/ S.Array(
     NetworkProfileNetworkFeaturesAddressPurposesItemEnum,
@@ -48534,13 +48768,19 @@ export const NetworkRoutingConfigBgpBestPathSelectionModeEnum =
 /** A routing configuration attached to a network resource. The message includes the list of routers associated with the network, and a flag indicating the type of routing behavior to enforce network-wide. */
 export interface NetworkRoutingConfig {
   /** Allows to define a preferred approach for handling inter-region cost in the selection process when using the STANDARD BGP best path selection algorithm. Can be DEFAULT orADD_COST_TO_MED. */
-  bgpInterRegionCost?: NetworkRoutingConfigBgpInterRegionCostEnum;
+  bgpInterRegionCost?:
+    | NetworkRoutingConfigBgpInterRegionCostEnum
+    | (string & {});
   /** Output only. [Output Only] Effective value of the bgp_inter_region_cost field. */
-  effectiveBgpInterRegionCost?: NetworkRoutingConfigEffectiveBgpInterRegionCostEnum;
+  effectiveBgpInterRegionCost?:
+    | NetworkRoutingConfigEffectiveBgpInterRegionCostEnum
+    | (string & {});
   /** The network-wide routing mode to use. If set to REGIONAL, this network's Cloud Routers will only advertise routes with subnets of this network in the same region as the router. If set toGLOBAL, this network's Cloud Routers will advertise routes with all subnets of this network, across regions. */
-  routingMode?: NetworkRoutingConfigRoutingModeEnum;
+  routingMode?: NetworkRoutingConfigRoutingModeEnum | (string & {});
   /** The BGP best path selection algorithm to be employed within this network for dynamic routes learned by Cloud Routers. Can be LEGACY (default) or STANDARD. */
-  bgpBestPathSelectionMode?: NetworkRoutingConfigBgpBestPathSelectionModeEnum;
+  bgpBestPathSelectionMode?:
+    | NetworkRoutingConfigBgpBestPathSelectionModeEnum
+    | (string & {});
   /** Enable comparison of Multi-Exit Discriminators (MED) across routes with different neighbor ASNs when using the STANDARD BGP best path selection algorithm. */
   bgpAlwaysCompareMed?: boolean;
   /** Output only. [Output Only] Effective value of the bgp_always_compare_med field. */
@@ -48569,7 +48809,7 @@ export type NetworkNetworkFirewallPolicyEnforcementOrderEnum =
 export const NetworkNetworkFirewallPolicyEnforcementOrderEnum =
   /*@__PURE__*/ S.String;
 
-export type NetworkPeeringList = ReadonlyArray<NetworkPeering>;
+export type NetworkPeeringList = Array<NetworkPeering>;
 export const NetworkPeeringList = /*@__PURE__*/ S.Array(
   NetworkPeering,
 ) as any as S.Schema<NetworkPeeringList>;
@@ -48601,7 +48841,9 @@ export interface Network {
   /** The network-level routing configuration for this network. Used by Cloud Router to determine what type of network-wide routing behavior to enforce. */
   routingConfig?: NetworkRoutingConfig;
   /** The network firewall policy enforcement order. Can be either AFTER_CLASSIC_FIREWALL or BEFORE_CLASSIC_FIREWALL. Defaults to AFTER_CLASSIC_FIREWALL if the field is not specified. */
-  networkFirewallPolicyEnforcementOrder?: NetworkNetworkFirewallPolicyEnforcementOrderEnum;
+  networkFirewallPolicyEnforcementOrder?:
+    | NetworkNetworkFirewallPolicyEnforcementOrderEnum
+    | (string & {});
   /** Output only. [Output Only] Server-defined URL for this resource with the resource id. */
   selfLinkWithId?: string;
   /** Output only. [Output Only] URL of the firewall policy the network is associated with. */
@@ -48793,7 +49035,7 @@ export const InterconnectAttachmentGroupsOperationalStatusAttachmentStatus =
   }) as any as S.Schema<InterconnectAttachmentGroupsOperationalStatusAttachmentStatus>;
 
 export type InterconnectAttachmentGroupsOperationalStatusAttachmentStatusList =
-  ReadonlyArray<InterconnectAttachmentGroupsOperationalStatusAttachmentStatus>;
+  Array<InterconnectAttachmentGroupsOperationalStatusAttachmentStatus>;
 export const InterconnectAttachmentGroupsOperationalStatusAttachmentStatusList =
   /*@__PURE__*/ S.Array(
     InterconnectAttachmentGroupsOperationalStatusAttachmentStatus,
@@ -48903,7 +49145,7 @@ export const InterconnectGroupsOperationalStatusInterconnectStatus =
   }) as any as S.Schema<InterconnectGroupsOperationalStatusInterconnectStatus>;
 
 export type InterconnectGroupsOperationalStatusInterconnectStatusList =
-  ReadonlyArray<InterconnectGroupsOperationalStatusInterconnectStatus>;
+  Array<InterconnectGroupsOperationalStatusInterconnectStatus>;
 export const InterconnectGroupsOperationalStatusInterconnectStatusList =
   /*@__PURE__*/ S.Array(
     InterconnectGroupsOperationalStatusInterconnectStatus,
@@ -49059,8 +49301,7 @@ export const RolloutPlanWaveSelector = /*@__PURE__*/ S.suspend(() =>
   identifier: "RolloutPlanWaveSelector",
 }) as any as S.Schema<RolloutPlanWaveSelector>;
 
-export type RolloutPlanWaveSelectorList =
-  ReadonlyArray<RolloutPlanWaveSelector>;
+export type RolloutPlanWaveSelectorList = Array<RolloutPlanWaveSelector>;
 export const RolloutPlanWaveSelectorList = /*@__PURE__*/ S.Array(
   RolloutPlanWaveSelector,
 ) as any as S.Schema<RolloutPlanWaveSelectorList>;
@@ -49114,11 +49355,13 @@ export const RolloutPlanWaveOrchestrationOptionsDelayDelimiterEnum =
 /** Options to control the delay, if any, between batches of projects. */
 export interface RolloutPlanWaveOrchestrationOptionsDelay {
   /** Optional. Controls whether the specified duration is to be added at the end of each batch, or if the total processing time for each batch will be padded if needed to meet the specified duration. Must be set to TYPE_UNSPECIFIED if no delay is to be added. */
-  type?: RolloutPlanWaveOrchestrationOptionsDelayTypeEnum;
+  type?: RolloutPlanWaveOrchestrationOptionsDelayTypeEnum | (string & {});
   /** Optional. The duration of the delay, if any, to be added between batches of projects. A zero duration corresponds to no delay. */
   duration?: string;
   /** Optional. Controls whether the delay should only be added between batches of projects corresponding to different locations, or also between batches of projects corresponding to the same location. Must be set to DELIMITER_UNSPECIFIED if no delay is to be added. */
-  delimiter?: RolloutPlanWaveOrchestrationOptionsDelayDelimiterEnum;
+  delimiter?:
+    | RolloutPlanWaveOrchestrationOptionsDelayDelimiterEnum
+    | (string & {});
 }
 export const RolloutPlanWaveOrchestrationOptionsDelay = /*@__PURE__*/ S.suspend(
   () =>
@@ -49134,7 +49377,7 @@ export const RolloutPlanWaveOrchestrationOptionsDelay = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<RolloutPlanWaveOrchestrationOptionsDelay>;
 
 export type RolloutPlanWaveOrchestrationOptionsDelayList =
-  ReadonlyArray<RolloutPlanWaveOrchestrationOptionsDelay>;
+  Array<RolloutPlanWaveOrchestrationOptionsDelay>;
 export const RolloutPlanWaveOrchestrationOptionsDelayList =
   /*@__PURE__*/ S.Array(
     RolloutPlanWaveOrchestrationOptionsDelay,
@@ -49184,7 +49427,7 @@ export const RolloutPlanWave = /*@__PURE__*/ S.suspend(() =>
   identifier: "RolloutPlanWave",
 }) as any as S.Schema<RolloutPlanWave>;
 
-export type RolloutPlanWaveList = ReadonlyArray<RolloutPlanWave>;
+export type RolloutPlanWaveList = Array<RolloutPlanWave>;
 export const RolloutPlanWaveList = /*@__PURE__*/ S.Array(
   RolloutPlanWave,
 ) as any as S.Schema<RolloutPlanWaveList>;
@@ -49194,7 +49437,7 @@ export interface RolloutPlan {
   /** Output only. [Output Only] Type of the resource. Always compute#rolloutPlan for rolloutPlans. */
   kind?: string;
   /** The location scope of the rollout plan. If not specified, the location scope is considered as ZONAL. */
-  locationScope?: RolloutPlanLocationScopeEnum;
+  locationScope?: RolloutPlanLocationScopeEnum | (string & {});
   /** Output only. [Output Only] Server-defined fully-qualified URL for this resource. */
   selfLink?: string;
   /** Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply withRFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash. */
@@ -49334,7 +49577,7 @@ export const RolloutWaveDetails = /*@__PURE__*/ S.suspend(() =>
   identifier: "RolloutWaveDetails",
 }) as any as S.Schema<RolloutWaveDetails>;
 
-export type RolloutWaveDetailsList = ReadonlyArray<RolloutWaveDetails>;
+export type RolloutWaveDetailsList = Array<RolloutWaveDetails>;
 export const RolloutWaveDetailsList = /*@__PURE__*/ S.Array(
   RolloutWaveDetails,
 ) as any as S.Schema<RolloutWaveDetailsList>;
@@ -49769,7 +50012,7 @@ export const Compute_Date = /*@__PURE__*/ S.suspend(() =>
 /** [Output Only] The release status of the feature. */
 export interface PreviewFeatureStatusReleaseStatus {
   /** Output only. [Output Only] The stage of the feature. */
-  stage?: PreviewFeatureStatusReleaseStatusStageEnum;
+  stage?: PreviewFeatureStatusReleaseStatusStageEnum | (string & {});
   /** Output only. The last date when a feature transitioned between ReleaseStatuses. */
   updateDate?: Compute_Date;
 }
@@ -49812,7 +50055,9 @@ export interface PreviewFeatureRolloutOperationRolloutInput {
   /** The name of the rollout plan Ex. organizations//locations/global/rolloutPlans/ Ex. folders//locations/global/rolloutPlans/ Ex. projects//locations/global/rolloutPlans/. */
   name?: string;
   /** Predefined rollout plan. */
-  predefinedRolloutPlan?: PreviewFeatureRolloutOperationRolloutInputPredefinedRolloutPlanEnum;
+  predefinedRolloutPlan?:
+    | PreviewFeatureRolloutOperationRolloutInputPredefinedRolloutPlanEnum
+    | (string & {});
 }
 export const PreviewFeatureRolloutOperationRolloutInput =
   /*@__PURE__*/ S.suspend(() =>
@@ -49848,7 +50093,7 @@ export interface PreviewFeature {
   /** Output only. [Output Only] Description of the feature. */
   description?: string;
   /** Specifies whether the feature is enabled or disabled. */
-  activationStatus?: PreviewFeatureActivationStatusEnum;
+  activationStatus?: PreviewFeatureActivationStatusEnum | (string & {});
   /** Name of the feature. */
   name?: string;
   /** Output only. [Output only] Status of the feature. */
@@ -50093,7 +50338,7 @@ export const Quota = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Quota" }) as any as S.Schema<Quota>;
 
-export type QuotaList = ReadonlyArray<Quota>;
+export type QuotaList = Array<Quota>;
 export const QuotaList = /*@__PURE__*/ S.Array(
   Quota,
 ) as any as S.Schema<QuotaList>;
@@ -50285,7 +50530,7 @@ export const PublicAdvertisedPrefixPublicDelegatedPrefix =
   }) as any as S.Schema<PublicAdvertisedPrefixPublicDelegatedPrefix>;
 
 export type PublicAdvertisedPrefixPublicDelegatedPrefixList =
-  ReadonlyArray<PublicAdvertisedPrefixPublicDelegatedPrefix>;
+  Array<PublicAdvertisedPrefixPublicDelegatedPrefix>;
 export const PublicAdvertisedPrefixPublicDelegatedPrefixList =
   /*@__PURE__*/ S.Array(
     PublicAdvertisedPrefixPublicDelegatedPrefix,
@@ -50319,15 +50564,15 @@ export interface PublicAdvertisedPrefix {
   /** An optional description of this resource. Provide this property when you create the resource. */
   description?: string;
   /** Specifies how child public delegated prefix will be scoped. It could be one of following values: - `REGIONAL`: The public delegated prefix is regional only. The provisioning will take a few minutes. - `GLOBAL`: The public delegated prefix is global only. The provisioning will take ~4 weeks. - `GLOBAL_AND_REGIONAL` [output only]: The public delegated prefixes is BYOIP V1 legacy prefix. This is output only value and no longer supported in BYOIP V2. */
-  pdpScope?: PublicAdvertisedPrefixPdpScopeEnum;
+  pdpScope?: PublicAdvertisedPrefixPdpScopeEnum | (string & {});
   /** Output only. [Output Only] Creation timestamp inRFC3339 text format. */
   creationTimestamp?: string;
   /** The internet access type for IPv6 Public Advertised Prefixes. */
-  ipv6AccessType?: PublicAdvertisedPrefixIpv6AccessTypeEnum;
+  ipv6AccessType?: PublicAdvertisedPrefixIpv6AccessTypeEnum | (string & {});
   /** Output only. [Output Only] The list of public delegated prefixes that exist for this public advertised prefix. */
   publicDelegatedPrefixs?: PublicAdvertisedPrefixPublicDelegatedPrefixList;
   /** Output only. [Output Only] The version of BYOIP API. */
-  byoipApiVersion?: PublicAdvertisedPrefixByoipApiVersionEnum;
+  byoipApiVersion?: PublicAdvertisedPrefixByoipApiVersionEnum | (string & {});
   /** Output only. [Output Only] Type of the resource. Alwayscompute#publicAdvertisedPrefix for public advertised prefixes. */
   kind?: string;
   /** Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a new PublicAdvertisedPrefix. An up-to-date fingerprint must be provided in order to update thePublicAdvertisedPrefix, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve a PublicAdvertisedPrefix. */
@@ -50339,9 +50584,9 @@ export interface PublicAdvertisedPrefix {
   /** [Output Only] The shared secret to be used for reverse DNS verification. */
   sharedSecret?: string;
   /** The status of the public advertised prefix. Possible values include: - `INITIAL`: RPKI validation is complete. - `PTR_CONFIGURED`: User has configured the PTR. - `VALIDATED`: Reverse DNS lookup is successful. - `REVERSE_DNS_LOOKUP_FAILED`: Reverse DNS lookup failed. - `PREFIX_CONFIGURATION_IN_PROGRESS`: The prefix is being configured. - `PREFIX_CONFIGURATION_COMPLETE`: The prefix is fully configured. - `PREFIX_REMOVAL_IN_PROGRESS`: The prefix is being removed. */
-  status?: PublicAdvertisedPrefixStatusEnum;
+  status?: PublicAdvertisedPrefixStatusEnum | (string & {});
   /** Network tier to be used for this prefix. All child delegated prefixes will inherit this field. If this field is not specified, it defaults to the network tier of the project that the PublicAdvertisedPrefix belongs to. */
-  networkTier?: PublicAdvertisedPrefixNetworkTierEnum;
+  networkTier?: PublicAdvertisedPrefixNetworkTierEnum | (string & {});
   /** Output only. [Output Only] The unique identifier for the resource type. The server generates this identifier. */
   id?: string;
   /** The address range, in CIDR format, represented by this public advertised prefix. */
@@ -50994,7 +51239,7 @@ export const MultiMigStatusAcceleratorTopologyAcceleratorTopologyStateLastCheckE
   }) as any as S.Schema<MultiMigStatusAcceleratorTopologyAcceleratorTopologyStateLastCheckErrorErrorsItemErrorDetailsItem>;
 
 export type MultiMigStatusAcceleratorTopologyAcceleratorTopologyStateLastCheckErrorErrorsItemErrorDetailsItemList =
-  ReadonlyArray<MultiMigStatusAcceleratorTopologyAcceleratorTopologyStateLastCheckErrorErrorsItemErrorDetailsItem>;
+  Array<MultiMigStatusAcceleratorTopologyAcceleratorTopologyStateLastCheckErrorErrorsItemErrorDetailsItem>;
 export const MultiMigStatusAcceleratorTopologyAcceleratorTopologyStateLastCheckErrorErrorsItemErrorDetailsItemList =
   /*@__PURE__*/ S.Array(
     MultiMigStatusAcceleratorTopologyAcceleratorTopologyStateLastCheckErrorErrorsItemErrorDetailsItem,
@@ -51026,7 +51271,7 @@ export const MultiMigStatusAcceleratorTopologyAcceleratorTopologyStateLastCheckE
   }) as any as S.Schema<MultiMigStatusAcceleratorTopologyAcceleratorTopologyStateLastCheckErrorErrorsItem>;
 
 export type MultiMigStatusAcceleratorTopologyAcceleratorTopologyStateLastCheckErrorErrorsItemList =
-  ReadonlyArray<MultiMigStatusAcceleratorTopologyAcceleratorTopologyStateLastCheckErrorErrorsItem>;
+  Array<MultiMigStatusAcceleratorTopologyAcceleratorTopologyStateLastCheckErrorErrorsItem>;
 export const MultiMigStatusAcceleratorTopologyAcceleratorTopologyStateLastCheckErrorErrorsItemList =
   /*@__PURE__*/ S.Array(
     MultiMigStatusAcceleratorTopologyAcceleratorTopologyStateLastCheckErrorErrorsItem,
@@ -51071,7 +51316,9 @@ export interface MultiMigStatusAcceleratorTopology {
   /** Output only. [Output Only] Topology in the format of: "16x16", "4x4x4", etc. The value is the same as configured in the WorkloadPolicy. */
   acceleratorTopology?: string;
   /** Output only. [Output Only] The state of the accelerator topology. */
-  acceleratorTopologyState?: MultiMigStatusAcceleratorTopologyAcceleratorTopologyStateEnum;
+  acceleratorTopologyState?:
+    | MultiMigStatusAcceleratorTopologyAcceleratorTopologyStateEnum
+    | (string & {});
   /** Output only. [Output Only] The result of the latest accelerator topology state check. */
   acceleratorTopologyStateLastCheck?: MultiMigStatusAcceleratorTopologyAcceleratorTopologyStateLastCheck;
 }
@@ -51090,7 +51337,7 @@ export const MultiMigStatusAcceleratorTopology = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MultiMigStatusAcceleratorTopology>;
 
 export type MultiMigStatusAcceleratorTopologyList =
-  ReadonlyArray<MultiMigStatusAcceleratorTopology>;
+  Array<MultiMigStatusAcceleratorTopology>;
 export const MultiMigStatusAcceleratorTopologyList = /*@__PURE__*/ S.Array(
   MultiMigStatusAcceleratorTopology,
 ) as any as S.Schema<MultiMigStatusAcceleratorTopologyList>;
@@ -51379,7 +51626,7 @@ export const RegionQuotaStatusWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RegionQuotaStatusWarningDataItem>;
 
 export type RegionQuotaStatusWarningDataItemList =
-  ReadonlyArray<RegionQuotaStatusWarningDataItem>;
+  Array<RegionQuotaStatusWarningDataItem>;
 export const RegionQuotaStatusWarningDataItemList = /*@__PURE__*/ S.Array(
   RegionQuotaStatusWarningDataItem,
 ) as any as S.Schema<RegionQuotaStatusWarningDataItemList>;
@@ -51557,7 +51804,7 @@ export interface SnapshotSettingsStorageLocationSettings {
   /** When the policy is SPECIFIC_LOCATIONS, snapshots will be stored in the locations listed in this field. Keys are Cloud Storage bucket locations. Only one location can be specified. */
   locations?: SnapshotSettingsStorageLocationSettingsStorageLocationPreferenceMap;
   /** The chosen location policy. */
-  policy?: SnapshotSettingsStorageLocationSettingsPolicyEnum;
+  policy?: SnapshotSettingsStorageLocationSettingsPolicyEnum | (string & {});
 }
 export const SnapshotSettingsStorageLocationSettings = /*@__PURE__*/ S.suspend(
   () =>
@@ -51606,7 +51853,7 @@ export interface SnapshotSettingsAccessLocation {
   /** List of regions that can restore a regional snapshot from the current region */
   locations?: SnapshotSettingsAccessLocationAccessLocationPreferenceMap;
   /** Policy of which location is allowed to access snapshot. */
-  policy?: SnapshotSettingsAccessLocationPolicyEnum;
+  policy?: SnapshotSettingsAccessLocationPolicyEnum | (string & {});
 }
 export const SnapshotSettingsAccessLocation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -51984,7 +52231,7 @@ export const ReservationBlockPhysicalTopologyInstance = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ReservationBlockPhysicalTopologyInstance>;
 
 export type ReservationBlockPhysicalTopologyInstanceList =
-  ReadonlyArray<ReservationBlockPhysicalTopologyInstance>;
+  Array<ReservationBlockPhysicalTopologyInstance>;
 export const ReservationBlockPhysicalTopologyInstanceList =
   /*@__PURE__*/ S.Array(
     ReservationBlockPhysicalTopologyInstance,
@@ -52228,7 +52475,7 @@ export interface ReservationSlot {
   /** Output only. [Output Only] A server-defined URL for this resource with the resource ID. */
   selfLinkWithId?: string;
   /** Output only. [Output Only] The state of the reservation slot. */
-  state?: ReservationSlotStateEnum;
+  state?: ReservationSlotStateEnum | (string & {});
   /** Output only. [Output Only] The status of the reservation slot. */
   status?: ReservationSlotStatus;
   /** Output only. [Output Only] The type of resource. Alwayscompute#reservationSlot for reservation slots. */
@@ -52313,7 +52560,9 @@ export const AcceleratorTopologiesInfoAcceleratorTopologyInfoInfoPerTopologyStat
 /** Info for each topology state. */
 export interface AcceleratorTopologiesInfoAcceleratorTopologyInfoInfoPerTopologyState {
   /** The state of the accelerator topology. */
-  state?: AcceleratorTopologiesInfoAcceleratorTopologyInfoInfoPerTopologyStateStateEnum;
+  state?:
+    | AcceleratorTopologiesInfoAcceleratorTopologyInfoInfoPerTopologyStateStateEnum
+    | (string & {});
   /** The number of accelerator topologies in this state. */
   count?: number;
 }
@@ -52331,7 +52580,7 @@ export const AcceleratorTopologiesInfoAcceleratorTopologyInfoInfoPerTopologyStat
   }) as any as S.Schema<AcceleratorTopologiesInfoAcceleratorTopologyInfoInfoPerTopologyState>;
 
 export type AcceleratorTopologiesInfoAcceleratorTopologyInfoInfoPerTopologyStateList =
-  ReadonlyArray<AcceleratorTopologiesInfoAcceleratorTopologyInfoInfoPerTopologyState>;
+  Array<AcceleratorTopologiesInfoAcceleratorTopologyInfoInfoPerTopologyState>;
 export const AcceleratorTopologiesInfoAcceleratorTopologyInfoInfoPerTopologyStateList =
   /*@__PURE__*/ S.Array(
     AcceleratorTopologiesInfoAcceleratorTopologyInfoInfoPerTopologyState,
@@ -52357,7 +52606,7 @@ export const AcceleratorTopologiesInfoAcceleratorTopologyInfo =
   }) as any as S.Schema<AcceleratorTopologiesInfoAcceleratorTopologyInfo>;
 
 export type AcceleratorTopologiesInfoAcceleratorTopologyInfoList =
-  ReadonlyArray<AcceleratorTopologiesInfoAcceleratorTopologyInfo>;
+  Array<AcceleratorTopologiesInfoAcceleratorTopologyInfo>;
 export const AcceleratorTopologiesInfoAcceleratorTopologyInfoList =
   /*@__PURE__*/ S.Array(
     AcceleratorTopologiesInfoAcceleratorTopologyInfo,
@@ -52400,7 +52649,7 @@ export interface ReservationSubBlockHealthInfo {
   /** The number of healthy infrastructure (e.g NV link domain) in the reservation subblock. */
   healthyInfraCount?: number;
   /** The health status of the reservation subBlock. */
-  healthStatus?: ReservationSubBlockHealthInfoHealthStatusEnum;
+  healthStatus?: ReservationSubBlockHealthInfoHealthStatusEnum | (string & {});
   /** The number of healthy hosts in the reservation subBlock. */
   healthyHostCount?: number;
   /** The number of degraded infrastructure (e.g NV link domain) in the reservation subblock. */
@@ -52445,7 +52694,7 @@ export interface ReservationSubBlock {
   /** Output only. [Output Only] Slice info for the reservation subBlock. */
   acceleratorTopologiesInfo?: AcceleratorTopologiesInfo;
   /** Output only. [Output Only] Status of the reservation subBlock. */
-  status?: ReservationSubBlockStatusEnum;
+  status?: ReservationSubBlockStatusEnum | (string & {});
   /** Output only. [Output Only] Server-defined URL for this resource with the resource id. */
   selfLinkWithId?: string;
   /** Output only. Number of hosts currently in use. If there is one or more Instances running on the host, it is considered in use. */
@@ -52616,7 +52865,7 @@ export const RoutePolicyPolicyTerm = /*@__PURE__*/ S.suspend(() =>
   identifier: "RoutePolicyPolicyTerm",
 }) as any as S.Schema<RoutePolicyPolicyTerm>;
 
-export type RoutePolicyPolicyTermList = ReadonlyArray<RoutePolicyPolicyTerm>;
+export type RoutePolicyPolicyTermList = Array<RoutePolicyPolicyTerm>;
 export const RoutePolicyPolicyTermList = /*@__PURE__*/ S.Array(
   RoutePolicyPolicyTerm,
 ) as any as S.Schema<RoutePolicyPolicyTermList>;
@@ -52635,7 +52884,7 @@ export interface RoutePolicy {
   name?: string;
   /** List of terms (the order in the list is not important, they are evaluated in order of priority). Order of policies is not retained and might change when getting policy later. */
   terms?: RoutePolicyPolicyTermList;
-  type?: RoutePolicyTypeEnum;
+  type?: RoutePolicyTypeEnum | (string & {});
 }
 export const RoutePolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -52720,7 +52969,7 @@ export interface RouteAsPath {
   /** [Output Only] The AS numbers of the AS Path. */
   asLists?: IntegerList;
   /** [Output Only] The type of the AS Path, which can be one of the following values: - 'AS_SET': unordered set of autonomous systems that the route in has traversed - 'AS_SEQUENCE': ordered set of autonomous systems that the route has traversed - 'AS_CONFED_SEQUENCE': ordered set of Member Autonomous Systems in the local confederation that the route has traversed - 'AS_CONFED_SET': unordered set of Member Autonomous Systems in the local confederation that the route has traversed */
-  pathSegmentType?: RouteAsPathPathSegmentTypeEnum;
+  pathSegmentType?: RouteAsPathPathSegmentTypeEnum | (string & {});
 }
 export const RouteAsPath = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -52729,7 +52978,7 @@ export const RouteAsPath = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "RouteAsPath" }) as any as S.Schema<RouteAsPath>;
 
-export type RouteAsPathList = ReadonlyArray<RouteAsPath>;
+export type RouteAsPathList = Array<RouteAsPath>;
 export const RouteAsPathList = /*@__PURE__*/ S.Array(
   RouteAsPath,
 ) as any as S.Schema<RouteAsPathList>;
@@ -52760,8 +53009,7 @@ export const RouteWarningsItemDataItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "RouteWarningsItemDataItem",
 }) as any as S.Schema<RouteWarningsItemDataItem>;
 
-export type RouteWarningsItemDataItemList =
-  ReadonlyArray<RouteWarningsItemDataItem>;
+export type RouteWarningsItemDataItemList = Array<RouteWarningsItemDataItem>;
 export const RouteWarningsItemDataItemList = /*@__PURE__*/ S.Array(
   RouteWarningsItemDataItem,
 ) as any as S.Schema<RouteWarningsItemDataItemList>;
@@ -52804,7 +53052,7 @@ export interface RouteWarningsItem {
   /** [Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key": "scope", "value": "zones/us-east1-d" } */
   data?: RouteWarningsItemDataItemList;
   /** [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response. */
-  code?: RouteWarningsItemCodeEnum;
+  code?: RouteWarningsItemCodeEnum | (string & {});
 }
 export const RouteWarningsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -52816,7 +53064,7 @@ export const RouteWarningsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "RouteWarningsItem",
 }) as any as S.Schema<RouteWarningsItem>;
 
-export type RouteWarningsItemList = ReadonlyArray<RouteWarningsItem>;
+export type RouteWarningsItemList = Array<RouteWarningsItem>;
 export const RouteWarningsItemList = /*@__PURE__*/ S.Array(
   RouteWarningsItem,
 ) as any as S.Schema<RouteWarningsItemList>;
@@ -52850,9 +53098,9 @@ export interface Route {
   /** Output only. [Output Only] AS path. */
   asPaths?: RouteAsPathList;
   /** Output only. [Output Only] The type of this route, which can be one of the following values: - 'TRANSIT' for a transit route that this router learned from another Cloud Router and will readvertise to one of its BGP peers - 'SUBNET' for a route from a subnet of the VPC - 'BGP' for a route learned from a BGP peer of this router - 'STATIC' for a static route */
-  routeType?: RouteRouteTypeEnum;
+  routeType?: RouteRouteTypeEnum | (string & {});
   /** Output only. [Output Only] Indicates the origin of the route. Can be IGP (Interior Gateway Protocol), EGP (Exterior Gateway Protocol), or INCOMPLETE. */
-  nextHopOrigin?: RouteNextHopOriginEnum;
+  nextHopOrigin?: RouteNextHopOriginEnum | (string & {});
   /** An optional description of this resource. Provide this field when you create the resource. */
   description?: string;
   /** A list of instance tags to which this route applies. */
@@ -52874,7 +53122,9 @@ export interface Route {
   /** Output only. [Output Only] The unique identifier for the resource. This identifier is defined by the server. */
   id?: string;
   /** ILB route behavior when ILB is deemed unhealthy based on user specified threshold on the Backend Service of the internal load balancing. */
-  ilbRouteBehaviorOnUnhealthy?: RouteIlbRouteBehaviorOnUnhealthyEnum;
+  ilbRouteBehaviorOnUnhealthy?:
+    | RouteIlbRouteBehaviorOnUnhealthyEnum
+    | (string & {});
   /** Output only. [Output Only] The network peering name that should handle matching packets, which should conform to RFC1035. */
   nextHopPeering?: string;
   /** Output only. [Output Only] If potential misconfigurations are detected for this route, this field will be populated with warning messages. */
@@ -52894,7 +53144,7 @@ export interface Route {
   /** The URL to a forwarding rule of typeloadBalancingScheme=INTERNAL that should handle matching packets or the IP address of the forwarding Rule. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule - regions/region/forwardingRules/forwardingRule If an IP address is provided, must specify an IPv4 address in dot-decimal notation or an IPv6 address in RFC 4291 format. For example, the following are all valid IP addresses: - 10.128.0.56 - 2001:db8::2d9:51:0:0 - 2001:db8:0:0:2d9:51:0:0 IPv6 addresses will be displayed using RFC 5952 compressed format (e.g. 2001:db8::2d9:51:0:0). Should never be an IPv4-mapped IPv6 address. */
   nextHopIlb?: string;
   /** [Output only] The status of the route. This status applies to dynamic routes learned by Cloud Routers. It is also applicable to routes undergoing migration. */
-  routeStatus?: RouteRouteStatusEnum;
+  routeStatus?: RouteRouteStatusEnum | (string & {});
   /** The destination range of outgoing packets that this route applies to. Both IPv4 and IPv6 are supported. Must specify an IPv4 range (e.g. 192.0.2.0/24) or an IPv6 range in RFC 4291 format (e.g. 2001:db8::/32). IPv6 range will be displayed using RFC 5952 compressed format. */
   destRange?: string;
   /** The priority of this route. Priority is used to break ties in cases where there is more than one matching route of equal prefix length. In cases where multiple routes have equal prefix length, the one with the lowest-numbered priority value wins. The default value is `1000`. The priority value must be from `0` to `65535`, inclusive. */
@@ -52941,7 +53191,7 @@ export const Route = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Route" }) as any as S.Schema<Route>;
 
-export type RouteList_ = ReadonlyArray<Route>;
+export type RouteList_ = Array<Route>;
 export const RouteList_ = /*@__PURE__*/ S.Array(
   Route,
 ) as any as S.Schema<RouteList_>;
@@ -53074,7 +53324,7 @@ export const PacketIntervals = /*@__PURE__*/ S.suspend(() =>
   identifier: "PacketIntervals",
 }) as any as S.Schema<PacketIntervals>;
 
-export type PacketIntervalsList = ReadonlyArray<PacketIntervals>;
+export type PacketIntervalsList = Array<PacketIntervals>;
 export const PacketIntervalsList = /*@__PURE__*/ S.Array(
   PacketIntervals,
 ) as any as S.Schema<PacketIntervalsList>;
@@ -53253,8 +53503,7 @@ export const RouterStatusBgpPeerStatus = /*@__PURE__*/ S.suspend(() =>
   identifier: "RouterStatusBgpPeerStatus",
 }) as any as S.Schema<RouterStatusBgpPeerStatus>;
 
-export type RouterStatusBgpPeerStatusList =
-  ReadonlyArray<RouterStatusBgpPeerStatus>;
+export type RouterStatusBgpPeerStatusList = Array<RouterStatusBgpPeerStatus>;
 export const RouterStatusBgpPeerStatusList = /*@__PURE__*/ S.Array(
   RouterStatusBgpPeerStatus,
 ) as any as S.Schema<RouterStatusBgpPeerStatusList>;
@@ -53285,7 +53534,7 @@ export const RouterStatusNatStatusNatRuleStatus = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RouterStatusNatStatusNatRuleStatus>;
 
 export type RouterStatusNatStatusNatRuleStatusList =
-  ReadonlyArray<RouterStatusNatStatusNatRuleStatus>;
+  Array<RouterStatusNatStatusNatRuleStatus>;
 export const RouterStatusNatStatusNatRuleStatusList = /*@__PURE__*/ S.Array(
   RouterStatusNatStatusNatRuleStatus,
 ) as any as S.Schema<RouterStatusNatStatusNatRuleStatusList>;
@@ -53327,7 +53576,7 @@ export const RouterStatusNatStatus = /*@__PURE__*/ S.suspend(() =>
   identifier: "RouterStatusNatStatus",
 }) as any as S.Schema<RouterStatusNatStatus>;
 
-export type RouterStatusNatStatusList = ReadonlyArray<RouterStatusNatStatus>;
+export type RouterStatusNatStatusList = Array<RouterStatusNatStatus>;
 export const RouterStatusNatStatusList = /*@__PURE__*/ S.Array(
   RouterStatusNatStatus,
 ) as any as S.Schema<RouterStatusNatStatusList>;
@@ -53878,7 +54127,7 @@ export interface SnapshotGroup {
   /** Output only. [Output Only] Server-defined URL for this resource's resource id. */
   selfLinkWithId?: string;
   /** Output only. [Output Only] */
-  status?: SnapshotGroupStatusEnum;
+  status?: SnapshotGroupStatusEnum | (string & {});
   /** Output only. [Output Only] Type of the resource. Alwayscompute#snapshotGroup for SnapshotGroup resources. */
   kind?: string;
   /** Input field for the source instant snapshot group. */
@@ -54080,7 +54329,7 @@ export const VpnGatewayStatusTunnel = /*@__PURE__*/ S.suspend(() =>
   identifier: "VpnGatewayStatusTunnel",
 }) as any as S.Schema<VpnGatewayStatusTunnel>;
 
-export type VpnGatewayStatusTunnelList = ReadonlyArray<VpnGatewayStatusTunnel>;
+export type VpnGatewayStatusTunnelList = Array<VpnGatewayStatusTunnel>;
 export const VpnGatewayStatusTunnelList = /*@__PURE__*/ S.Array(
   VpnGatewayStatusTunnel,
 ) as any as S.Schema<VpnGatewayStatusTunnelList>;
@@ -54108,7 +54357,7 @@ export const VpnGatewayStatusVpnConnection = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VpnGatewayStatusVpnConnection>;
 
 export type VpnGatewayStatusVpnConnectionList =
-  ReadonlyArray<VpnGatewayStatusVpnConnection>;
+  Array<VpnGatewayStatusVpnConnection>;
 export const VpnGatewayStatusVpnConnectionList = /*@__PURE__*/ S.Array(
   VpnGatewayStatusVpnConnection,
 ) as any as S.Schema<VpnGatewayStatusVpnConnectionList>;
@@ -54187,7 +54436,7 @@ export const GetStoragePoolTypesRequest = /*@__PURE__*/ S.suspend(() =>
 export type GetSubnetworksViewsEnum = "DEFAULT" | "WITH_UTILIZATION";
 export const GetSubnetworksViewsEnum = /*@__PURE__*/ S.String;
 
-export type GetSubnetworksViewsEnumList = ReadonlyArray<
+export type GetSubnetworksViewsEnumList = Array<
   GetSubnetworksViewsEnum | (string & {})
 >;
 export const GetSubnetworksViewsEnumList = /*@__PURE__*/ S.Array(
@@ -54417,7 +54666,7 @@ export interface TargetSslProxy {
   /** An optional description of this resource. Provide this property when you create the resource. */
   description?: string;
   /** Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE. */
-  proxyHeader?: TargetSslProxyProxyHeaderEnum;
+  proxyHeader?: TargetSslProxyProxyHeaderEnum | (string & {});
   /** URLs to SslCertificate resources that are used to authenticate connections to Backends. At least one SSL certificate must be specified. Currently, you may specify up to 15 SSL certificates. sslCertificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED. */
   sslCertificates?: StringList;
 }
@@ -54538,7 +54787,7 @@ export type HostsGetVersionRequestSbomSelectionsItemEnum =
 export const HostsGetVersionRequestSbomSelectionsItemEnum =
   /*@__PURE__*/ S.String;
 
-export type HostsGetVersionRequestSbomSelectionsItemEnumList = ReadonlyArray<
+export type HostsGetVersionRequestSbomSelectionsItemEnumList = Array<
   HostsGetVersionRequestSbomSelectionsItemEnum | (string & {})
 >;
 export const HostsGetVersionRequestSbomSelectionsItemEnumList =
@@ -54600,10 +54849,9 @@ export type ReservationSlotsGetVersionRequestSbomSelectionsItemEnum =
 export const ReservationSlotsGetVersionRequestSbomSelectionsItemEnum =
   /*@__PURE__*/ S.String;
 
-export type ReservationSlotsGetVersionRequestSbomSelectionsItemEnumList =
-  ReadonlyArray<
-    ReservationSlotsGetVersionRequestSbomSelectionsItemEnum | (string & {})
-  >;
+export type ReservationSlotsGetVersionRequestSbomSelectionsItemEnumList = Array<
+  ReservationSlotsGetVersionRequestSbomSelectionsItemEnum | (string & {})
+>;
 export const ReservationSlotsGetVersionRequestSbomSelectionsItemEnumList =
   /*@__PURE__*/ S.Array(
     ReservationSlotsGetVersionRequestSbomSelectionsItemEnum,
@@ -54664,7 +54912,7 @@ export const ReservationSubBlocksGetVersionRequestSbomSelectionsItemEnum =
   /*@__PURE__*/ S.String;
 
 export type ReservationSubBlocksGetVersionRequestSbomSelectionsItemEnumList =
-  ReadonlyArray<
+  Array<
     ReservationSubBlocksGetVersionRequestSbomSelectionsItemEnum | (string & {})
   >;
 export const ReservationSubBlocksGetVersionRequestSbomSelectionsItemEnumList =
@@ -55068,8 +55316,7 @@ export const WireGroupTopologyEndpoint = /*@__PURE__*/ S.suspend(() =>
   identifier: "WireGroupTopologyEndpoint",
 }) as any as S.Schema<WireGroupTopologyEndpoint>;
 
-export type WireGroupTopologyEndpointList =
-  ReadonlyArray<WireGroupTopologyEndpoint>;
+export type WireGroupTopologyEndpointList = Array<WireGroupTopologyEndpoint>;
 export const WireGroupTopologyEndpointList = /*@__PURE__*/ S.Array(
   WireGroupTopologyEndpoint,
 ) as any as S.Schema<WireGroupTopologyEndpointList>;
@@ -55099,7 +55346,7 @@ export const WireEndpoint = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "WireEndpoint" }) as any as S.Schema<WireEndpoint>;
 
-export type WireEndpointList = ReadonlyArray<WireEndpoint>;
+export type WireEndpointList = Array<WireEndpoint>;
 export const WireEndpointList = /*@__PURE__*/ S.Array(
   WireEndpoint,
 ) as any as S.Schema<WireEndpointList>;
@@ -55118,13 +55365,13 @@ export const WirePropertiesNetworkServiceClassEnum = /*@__PURE__*/ S.String;
 /** The properties of a wire. */
 export interface WireProperties {
   /** The configuration of the bandwidth allocation, one of the following: - ALLOCATE_PER_WIRE: configures a separate unmetered bandwidth allocation (and associated charges) for each wire in the group. - SHARED_WITH_WIRE_GROUP: this is the default behavior, which configures one unmetered bandwidth allocation for the wire group. The unmetered bandwidth is divided equally across each wire in the group, but dynamic throttling reallocates unused unmetered bandwidth from unused or underused wires to other wires in the group. */
-  bandwidthAllocation?: WirePropertiesBandwidthAllocationEnum;
+  bandwidthAllocation?: WirePropertiesBandwidthAllocationEnum | (string & {});
   /** Response when a fault is detected in a pseudowire: - NONE: default. - DISABLE_PORT: set the port line protocol down when inline probes detect a fault. This setting is only permitted on port mode pseudowires. */
-  faultResponse?: WirePropertiesFaultResponseEnum;
+  faultResponse?: WirePropertiesFaultResponseEnum | (string & {});
   /** The unmetered bandwidth in Gigabits per second, using decimal units. `10` is 10 Gbps, `100` is 100 Gbps. The bandwidth must be greater than 0. */
   bandwidthUnmetered?: string;
   /** The network service class. */
-  networkServiceClass?: WirePropertiesNetworkServiceClassEnum;
+  networkServiceClass?: WirePropertiesNetworkServiceClassEnum | (string & {});
   /** The metered bandwidth in Gigabits per second, using decimal units. `10` is 10 Gbps, `100` is 100 Gbps. The default value is `0`. You can specify unlimited bandwidth by entering `-1`. However, actual data transfer is limited by the port speed. */
   bandwidthMetered?: string;
 }
@@ -55158,7 +55405,7 @@ export const Wire = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Wire" }) as any as S.Schema<Wire>;
 
-export type WireList = ReadonlyArray<Wire>;
+export type WireList = Array<Wire>;
 export const WireList = /*@__PURE__*/ S.Array(
   Wire,
 ) as any as S.Schema<WireList>;
@@ -55241,7 +55488,7 @@ export const WireGroupPropertiesTypeEnum = /*@__PURE__*/ S.String;
 /** The properties of a wire group. These properties determine how a group of redundant wires are created and managed. */
 export interface WireGroupProperties {
   /** The type of the wire group, one of the following: - WIRE: a single pseudowire over two Interconnect connections with no redundancy. - REDUNDANT: two pseudowires over four Interconnect connections, with two connections in one metro and two connections in another metro. Each redundant pair of Interconnect connections spans both edge availability domains of the metro. Each pseudowire connects Interconnect connections in matching edge availability domains of the two metros. - BOX_AND_CROSS: four pseudowires over four Interconnect connections, with two connections in one metro and two connections in another metro. Each redundant pair of Interconnect connections spans both edge availability domains of the metro. Two pseudowires connect Interconnect connections in matching edge availability domains of the two metros. Two additional pseudowires connect the non-matching edge availability domains of the two metros. */
-  type?: WireGroupPropertiesTypeEnum;
+  type?: WireGroupPropertiesTypeEnum | (string & {});
 }
 export const WireGroupProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -55262,7 +55509,9 @@ export const WireGroupServiceLevelAvailabilityClassEnum =
 /** Service level details determined for the wire group configuration. */
 export interface WireGroupServiceLevel {
   /** Output only. [Output Only] The availability SLA that the wire group qualifies for. One of the following: `NO_AVAILABILITY_SLA`, `AVAILABILITY_99`, `AVAILABILITY_999`, or `AVAILABILITY_9995`. */
-  availabilityClass?: WireGroupServiceLevelAvailabilityClassEnum;
+  availabilityClass?:
+    | WireGroupServiceLevelAvailabilityClassEnum
+    | (string & {});
 }
 export const WireGroupServiceLevel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -55378,7 +55627,7 @@ export const GetXpnResourcesProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetXpnResourcesProjectsRequest",
 }) as any as S.Schema<GetXpnResourcesProjectsRequest>;
 
-export type XpnResourceIdList = ReadonlyArray<XpnResourceId>;
+export type XpnResourceIdList = Array<XpnResourceId>;
 export const XpnResourceIdList = /*@__PURE__*/ S.Array(
   XpnResourceId,
 ) as any as S.Schema<XpnResourceIdList>;
@@ -55608,7 +55857,7 @@ export const PeriodicPartialMaintenanceSchedule = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PeriodicPartialMaintenanceSchedule>;
 
 export type PeriodicPartialMaintenanceScheduleList =
-  ReadonlyArray<PeriodicPartialMaintenanceSchedule>;
+  Array<PeriodicPartialMaintenanceSchedule>;
 export const PeriodicPartialMaintenanceScheduleList = /*@__PURE__*/ S.Array(
   PeriodicPartialMaintenanceSchedule,
 ) as any as S.Schema<PeriodicPartialMaintenanceScheduleList>;
@@ -58706,7 +58955,7 @@ export const AcceleratorPodControllersListResponseWarningDataItem =
   }) as any as S.Schema<AcceleratorPodControllersListResponseWarningDataItem>;
 
 export type AcceleratorPodControllersListResponseWarningDataItemList =
-  ReadonlyArray<AcceleratorPodControllersListResponseWarningDataItem>;
+  Array<AcceleratorPodControllersListResponseWarningDataItem>;
 export const AcceleratorPodControllersListResponseWarningDataItemList =
   /*@__PURE__*/ S.Array(
     AcceleratorPodControllersListResponseWarningDataItem,
@@ -58733,8 +58982,7 @@ export const AcceleratorPodControllersListResponseWarning =
     identifier: "AcceleratorPodControllersListResponseWarning",
   }) as any as S.Schema<AcceleratorPodControllersListResponseWarning>;
 
-export type AcceleratorPodControllerList =
-  ReadonlyArray<AcceleratorPodController>;
+export type AcceleratorPodControllerList = Array<AcceleratorPodController>;
 export const AcceleratorPodControllerList = /*@__PURE__*/ S.Array(
   AcceleratorPodController,
 ) as any as S.Schema<AcceleratorPodControllerList>;
@@ -58811,7 +59059,7 @@ export const AcceleratorTypeListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AcceleratorTypeListWarningDataItem>;
 
 export type AcceleratorTypeListWarningDataItemList =
-  ReadonlyArray<AcceleratorTypeListWarningDataItem>;
+  Array<AcceleratorTypeListWarningDataItem>;
 export const AcceleratorTypeListWarningDataItemList = /*@__PURE__*/ S.Array(
   AcceleratorTypeListWarningDataItem,
 ) as any as S.Schema<AcceleratorTypeListWarningDataItemList>;
@@ -58945,8 +59193,7 @@ export const AddressListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "AddressListWarningDataItem",
 }) as any as S.Schema<AddressListWarningDataItem>;
 
-export type AddressListWarningDataItemList =
-  ReadonlyArray<AddressListWarningDataItem>;
+export type AddressListWarningDataItemList = Array<AddressListWarningDataItem>;
 export const AddressListWarningDataItemList = /*@__PURE__*/ S.Array(
   AddressListWarningDataItem,
 ) as any as S.Schema<AddressListWarningDataItemList>;
@@ -59152,7 +59399,7 @@ export const AutoscalerListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AutoscalerListWarningDataItem>;
 
 export type AutoscalerListWarningDataItemList =
-  ReadonlyArray<AutoscalerListWarningDataItem>;
+  Array<AutoscalerListWarningDataItem>;
 export const AutoscalerListWarningDataItemList = /*@__PURE__*/ S.Array(
   AutoscalerListWarningDataItem,
 ) as any as S.Schema<AutoscalerListWarningDataItemList>;
@@ -59365,7 +59612,7 @@ export const BackendBucketListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BackendBucketListWarningDataItem>;
 
 export type BackendBucketListWarningDataItemList =
-  ReadonlyArray<BackendBucketListWarningDataItem>;
+  Array<BackendBucketListWarningDataItem>;
 export const BackendBucketListWarningDataItemList = /*@__PURE__*/ S.Array(
   BackendBucketListWarningDataItem,
 ) as any as S.Schema<BackendBucketListWarningDataItemList>;
@@ -59529,7 +59776,7 @@ export const BackendServiceListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BackendServiceListWarningDataItem>;
 
 export type BackendServiceListWarningDataItemList =
-  ReadonlyArray<BackendServiceListWarningDataItem>;
+  Array<BackendServiceListWarningDataItem>;
 export const BackendServiceListWarningDataItemList = /*@__PURE__*/ S.Array(
   BackendServiceListWarningDataItem,
 ) as any as S.Schema<BackendServiceListWarningDataItemList>;
@@ -59686,7 +59933,7 @@ export const BgpRouteAsPath = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "BgpRouteAsPath" }) as any as S.Schema<BgpRouteAsPath>;
 
-export type BgpRouteAsPathList = ReadonlyArray<BgpRouteAsPath>;
+export type BgpRouteAsPathList = Array<BgpRouteAsPath>;
 export const BgpRouteAsPathList = /*@__PURE__*/ S.Array(
   BgpRouteAsPath,
 ) as any as S.Schema<BgpRouteAsPathList>;
@@ -59719,7 +59966,7 @@ export const BgpRoute = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "BgpRoute" }) as any as S.Schema<BgpRoute>;
 
-export type BgpRouteList = ReadonlyArray<BgpRoute>;
+export type BgpRouteList = Array<BgpRoute>;
 export const BgpRouteList = /*@__PURE__*/ S.Array(
   BgpRoute,
 ) as any as S.Schema<BgpRouteList>;
@@ -59740,7 +59987,7 @@ export const RoutersListBgpRoutesWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RoutersListBgpRoutesWarningDataItem>;
 
 export type RoutersListBgpRoutesWarningDataItemList =
-  ReadonlyArray<RoutersListBgpRoutesWarningDataItem>;
+  Array<RoutersListBgpRoutesWarningDataItem>;
 export const RoutersListBgpRoutesWarningDataItemList = /*@__PURE__*/ S.Array(
   RoutersListBgpRoutesWarningDataItem,
 ) as any as S.Schema<RoutersListBgpRoutesWarningDataItemList>;
@@ -59876,7 +60123,7 @@ export const CrossSiteNetworkListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CrossSiteNetworkListWarningDataItem>;
 
 export type CrossSiteNetworkListWarningDataItemList =
-  ReadonlyArray<CrossSiteNetworkListWarningDataItem>;
+  Array<CrossSiteNetworkListWarningDataItem>;
 export const CrossSiteNetworkListWarningDataItemList = /*@__PURE__*/ S.Array(
   CrossSiteNetworkListWarningDataItem,
 ) as any as S.Schema<CrossSiteNetworkListWarningDataItemList>;
@@ -59931,7 +60178,7 @@ export const CrossSiteNetworkListWarning = /*@__PURE__*/ S.suspend(() =>
   identifier: "CrossSiteNetworkListWarning",
 }) as any as S.Schema<CrossSiteNetworkListWarning>;
 
-export type CrossSiteNetworkList_ = ReadonlyArray<CrossSiteNetwork>;
+export type CrossSiteNetworkList_ = Array<CrossSiteNetwork>;
 export const CrossSiteNetworkList_ = /*@__PURE__*/ S.Array(
   CrossSiteNetwork,
 ) as any as S.Schema<CrossSiteNetworkList_>;
@@ -60005,7 +60252,7 @@ export const ListDhcpOptionsConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListDhcpOptionsConfigsRequest",
 }) as any as S.Schema<ListDhcpOptionsConfigsRequest>;
 
-export type DhcpOptionsConfigList_ = ReadonlyArray<DhcpOptionsConfig>;
+export type DhcpOptionsConfigList_ = Array<DhcpOptionsConfig>;
 export const DhcpOptionsConfigList_ = /*@__PURE__*/ S.Array(
   DhcpOptionsConfig,
 ) as any as S.Schema<DhcpOptionsConfigList_>;
@@ -60059,7 +60306,7 @@ export const DhcpOptionsConfigListWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DhcpOptionsConfigListWarningDataItem>;
 
 export type DhcpOptionsConfigListWarningDataItemList =
-  ReadonlyArray<DhcpOptionsConfigListWarningDataItem>;
+  Array<DhcpOptionsConfigListWarningDataItem>;
 export const DhcpOptionsConfigListWarningDataItemList = /*@__PURE__*/ S.Array(
   DhcpOptionsConfigListWarningDataItem,
 ) as any as S.Schema<DhcpOptionsConfigListWarningDataItemList>;
@@ -60198,8 +60445,7 @@ export const DiskListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "DiskListWarningDataItem",
 }) as any as S.Schema<DiskListWarningDataItem>;
 
-export type DiskListWarningDataItemList =
-  ReadonlyArray<DiskListWarningDataItem>;
+export type DiskListWarningDataItemList = Array<DiskListWarningDataItem>;
 export const DiskListWarningDataItemList = /*@__PURE__*/ S.Array(
   DiskListWarningDataItem,
 ) as any as S.Schema<DiskListWarningDataItemList>;
@@ -60303,7 +60549,7 @@ export const StoragePoolListDisksWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StoragePoolListDisksWarningDataItem>;
 
 export type StoragePoolListDisksWarningDataItemList =
-  ReadonlyArray<StoragePoolListDisksWarningDataItem>;
+  Array<StoragePoolListDisksWarningDataItem>;
 export const StoragePoolListDisksWarningDataItemList = /*@__PURE__*/ S.Array(
   StoragePoolListDisksWarningDataItem,
 ) as any as S.Schema<StoragePoolListDisksWarningDataItemList>;
@@ -60409,7 +60655,7 @@ export const StoragePoolDisk = /*@__PURE__*/ S.suspend(() =>
   identifier: "StoragePoolDisk",
 }) as any as S.Schema<StoragePoolDisk>;
 
-export type StoragePoolDiskList = ReadonlyArray<StoragePoolDisk>;
+export type StoragePoolDiskList = Array<StoragePoolDisk>;
 export const StoragePoolDiskList = /*@__PURE__*/ S.Array(
   StoragePoolDisk,
 ) as any as S.Schema<StoragePoolDiskList>;
@@ -60498,7 +60744,7 @@ export const DiskTypeListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DiskTypeListWarningDataItem>;
 
 export type DiskTypeListWarningDataItemList =
-  ReadonlyArray<DiskTypeListWarningDataItem>;
+  Array<DiskTypeListWarningDataItem>;
 export const DiskTypeListWarningDataItemList = /*@__PURE__*/ S.Array(
   DiskTypeListWarningDataItem,
 ) as any as S.Schema<DiskTypeListWarningDataItemList>;
@@ -60712,8 +60958,7 @@ export const InstanceManagedByIgmError = /*@__PURE__*/ S.suspend(() =>
   identifier: "InstanceManagedByIgmError",
 }) as any as S.Schema<InstanceManagedByIgmError>;
 
-export type InstanceManagedByIgmErrorList =
-  ReadonlyArray<InstanceManagedByIgmError>;
+export type InstanceManagedByIgmErrorList = Array<InstanceManagedByIgmError>;
 export const InstanceManagedByIgmErrorList = /*@__PURE__*/ S.Array(
   InstanceManagedByIgmError,
 ) as any as S.Schema<InstanceManagedByIgmErrorList>;
@@ -60840,7 +61085,7 @@ export const ExternalVpnGatewayListWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ExternalVpnGatewayListWarningDataItem>;
 
 export type ExternalVpnGatewayListWarningDataItemList =
-  ReadonlyArray<ExternalVpnGatewayListWarningDataItem>;
+  Array<ExternalVpnGatewayListWarningDataItem>;
 export const ExternalVpnGatewayListWarningDataItemList = /*@__PURE__*/ S.Array(
   ExternalVpnGatewayListWarningDataItem,
 ) as any as S.Schema<ExternalVpnGatewayListWarningDataItemList>;
@@ -60895,7 +61140,7 @@ export const ExternalVpnGatewayListWarning = /*@__PURE__*/ S.suspend(() =>
   identifier: "ExternalVpnGatewayListWarning",
 }) as any as S.Schema<ExternalVpnGatewayListWarning>;
 
-export type ExternalVpnGatewayList_ = ReadonlyArray<ExternalVpnGateway>;
+export type ExternalVpnGatewayList_ = Array<ExternalVpnGateway>;
 export const ExternalVpnGatewayList_ = /*@__PURE__*/ S.Array(
   ExternalVpnGateway,
 ) as any as S.Schema<ExternalVpnGatewayList_>;
@@ -60979,7 +61224,7 @@ export const FirewallPolicyListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FirewallPolicyListWarningDataItem>;
 
 export type FirewallPolicyListWarningDataItemList =
-  ReadonlyArray<FirewallPolicyListWarningDataItem>;
+  Array<FirewallPolicyListWarningDataItem>;
 export const FirewallPolicyListWarningDataItemList = /*@__PURE__*/ S.Array(
   FirewallPolicyListWarningDataItem,
 ) as any as S.Schema<FirewallPolicyListWarningDataItemList>;
@@ -61107,7 +61352,7 @@ export const FirewallListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FirewallListWarningDataItem>;
 
 export type FirewallListWarningDataItemList =
-  ReadonlyArray<FirewallListWarningDataItem>;
+  Array<FirewallListWarningDataItem>;
 export const FirewallListWarningDataItemList = /*@__PURE__*/ S.Array(
   FirewallListWarningDataItem,
 ) as any as S.Schema<FirewallListWarningDataItemList>;
@@ -61222,8 +61467,7 @@ export const ListFolderGlobalVmExtensionPoliciesRequest =
     identifier: "ListFolderGlobalVmExtensionPoliciesRequest",
   }) as any as S.Schema<ListFolderGlobalVmExtensionPoliciesRequest>;
 
-export type GlobalVmExtensionPolicyList_ =
-  ReadonlyArray<GlobalVmExtensionPolicy>;
+export type GlobalVmExtensionPolicyList_ = Array<GlobalVmExtensionPolicy>;
 export const GlobalVmExtensionPolicyList_ = /*@__PURE__*/ S.Array(
   GlobalVmExtensionPolicy,
 ) as any as S.Schema<GlobalVmExtensionPolicyList_>;
@@ -61245,7 +61489,7 @@ export const GlobalVmExtensionPolicyListWarningDataItem =
   }) as any as S.Schema<GlobalVmExtensionPolicyListWarningDataItem>;
 
 export type GlobalVmExtensionPolicyListWarningDataItemList =
-  ReadonlyArray<GlobalVmExtensionPolicyListWarningDataItem>;
+  Array<GlobalVmExtensionPolicyListWarningDataItem>;
 export const GlobalVmExtensionPolicyListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     GlobalVmExtensionPolicyListWarningDataItem,
@@ -61389,7 +61633,7 @@ export const VmExtensionPolicyListWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<VmExtensionPolicyListWarningDataItem>;
 
 export type VmExtensionPolicyListWarningDataItemList =
-  ReadonlyArray<VmExtensionPolicyListWarningDataItem>;
+  Array<VmExtensionPolicyListWarningDataItem>;
 export const VmExtensionPolicyListWarningDataItemList = /*@__PURE__*/ S.Array(
   VmExtensionPolicyListWarningDataItem,
 ) as any as S.Schema<VmExtensionPolicyListWarningDataItemList>;
@@ -61561,7 +61805,7 @@ export const ForwardingRuleListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ForwardingRuleListWarningDataItem>;
 
 export type ForwardingRuleListWarningDataItemList =
-  ReadonlyArray<ForwardingRuleListWarningDataItem>;
+  Array<ForwardingRuleListWarningDataItem>;
 export const ForwardingRuleListWarningDataItemList = /*@__PURE__*/ S.Array(
   ForwardingRuleListWarningDataItem,
 ) as any as S.Schema<ForwardingRuleListWarningDataItemList>;
@@ -61698,7 +61942,7 @@ export const FutureReservationsListResponseWarningDataItem =
   }) as any as S.Schema<FutureReservationsListResponseWarningDataItem>;
 
 export type FutureReservationsListResponseWarningDataItemList =
-  ReadonlyArray<FutureReservationsListResponseWarningDataItem>;
+  Array<FutureReservationsListResponseWarningDataItem>;
 export const FutureReservationsListResponseWarningDataItemList =
   /*@__PURE__*/ S.Array(
     FutureReservationsListResponseWarningDataItem,
@@ -61869,7 +62113,7 @@ export const OperationListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationListWarningDataItem>;
 
 export type OperationListWarningDataItemList =
-  ReadonlyArray<OperationListWarningDataItem>;
+  Array<OperationListWarningDataItem>;
 export const OperationListWarningDataItemList = /*@__PURE__*/ S.Array(
   OperationListWarningDataItem,
 ) as any as S.Schema<OperationListWarningDataItemList>;
@@ -62034,7 +62278,7 @@ export const NetworkEndpointGroupListWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<NetworkEndpointGroupListWarningDataItem>;
 
 export type NetworkEndpointGroupListWarningDataItemList =
-  ReadonlyArray<NetworkEndpointGroupListWarningDataItem>;
+  Array<NetworkEndpointGroupListWarningDataItem>;
 export const NetworkEndpointGroupListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     NetworkEndpointGroupListWarningDataItem,
@@ -62235,7 +62479,7 @@ export const PublicDelegatedPrefixListWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PublicDelegatedPrefixListWarningDataItem>;
 
 export type PublicDelegatedPrefixListWarningDataItemList =
-  ReadonlyArray<PublicDelegatedPrefixListWarningDataItem>;
+  Array<PublicDelegatedPrefixListWarningDataItem>;
 export const PublicDelegatedPrefixListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     PublicDelegatedPrefixListWarningDataItem,
@@ -62404,7 +62648,7 @@ export const HaControllersListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HaControllersListWarningDataItem>;
 
 export type HaControllersListWarningDataItemList =
-  ReadonlyArray<HaControllersListWarningDataItem>;
+  Array<HaControllersListWarningDataItem>;
 export const HaControllersListWarningDataItemList = /*@__PURE__*/ S.Array(
   HaControllersListWarningDataItem,
 ) as any as S.Schema<HaControllersListWarningDataItemList>;
@@ -62537,7 +62781,7 @@ export const HealthCheckListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HealthCheckListWarningDataItem>;
 
 export type HealthCheckListWarningDataItemList =
-  ReadonlyArray<HealthCheckListWarningDataItem>;
+  Array<HealthCheckListWarningDataItem>;
 export const HealthCheckListWarningDataItemList = /*@__PURE__*/ S.Array(
   HealthCheckListWarningDataItem,
 ) as any as S.Schema<HealthCheckListWarningDataItemList>;
@@ -62643,7 +62887,7 @@ export const HostsListResponseWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HostsListResponseWarningDataItem>;
 
 export type HostsListResponseWarningDataItemList =
-  ReadonlyArray<HostsListResponseWarningDataItem>;
+  Array<HostsListResponseWarningDataItem>;
 export const HostsListResponseWarningDataItemList = /*@__PURE__*/ S.Array(
   HostsListResponseWarningDataItem,
 ) as any as S.Schema<HostsListResponseWarningDataItemList>;
@@ -62698,7 +62942,7 @@ export const HostsListResponseWarning = /*@__PURE__*/ S.suspend(() =>
   identifier: "HostsListResponseWarning",
 }) as any as S.Schema<HostsListResponseWarning>;
 
-export type HostList = ReadonlyArray<Host>;
+export type HostList = Array<Host>;
 export const HostList = /*@__PURE__*/ S.Array(
   Host,
 ) as any as S.Schema<HostList>;
@@ -62784,7 +63028,7 @@ export const HttpHealthCheckListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HttpHealthCheckListWarningDataItem>;
 
 export type HttpHealthCheckListWarningDataItemList =
-  ReadonlyArray<HttpHealthCheckListWarningDataItem>;
+  Array<HttpHealthCheckListWarningDataItem>;
 export const HttpHealthCheckListWarningDataItemList = /*@__PURE__*/ S.Array(
   HttpHealthCheckListWarningDataItem,
 ) as any as S.Schema<HttpHealthCheckListWarningDataItemList>;
@@ -62839,7 +63083,7 @@ export const HttpHealthCheckListWarning = /*@__PURE__*/ S.suspend(() =>
   identifier: "HttpHealthCheckListWarning",
 }) as any as S.Schema<HttpHealthCheckListWarning>;
 
-export type HttpHealthCheckList_ = ReadonlyArray<HttpHealthCheck>;
+export type HttpHealthCheckList_ = Array<HttpHealthCheck>;
 export const HttpHealthCheckList_ = /*@__PURE__*/ S.Array(
   HttpHealthCheck,
 ) as any as S.Schema<HttpHealthCheckList_>;
@@ -62921,7 +63165,7 @@ export const HttpsHealthCheckListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HttpsHealthCheckListWarningDataItem>;
 
 export type HttpsHealthCheckListWarningDataItemList =
-  ReadonlyArray<HttpsHealthCheckListWarningDataItem>;
+  Array<HttpsHealthCheckListWarningDataItem>;
 export const HttpsHealthCheckListWarningDataItemList = /*@__PURE__*/ S.Array(
   HttpsHealthCheckListWarningDataItem,
 ) as any as S.Schema<HttpsHealthCheckListWarningDataItemList>;
@@ -62976,7 +63220,7 @@ export const HttpsHealthCheckListWarning = /*@__PURE__*/ S.suspend(() =>
   identifier: "HttpsHealthCheckListWarning",
 }) as any as S.Schema<HttpsHealthCheckListWarning>;
 
-export type HttpsHealthCheckList_ = ReadonlyArray<HttpsHealthCheck>;
+export type HttpsHealthCheckList_ = Array<HttpsHealthCheck>;
 export const HttpsHealthCheckList_ = /*@__PURE__*/ S.Array(
   HttpsHealthCheck,
 ) as any as S.Schema<HttpsHealthCheckList_>;
@@ -63045,7 +63289,7 @@ export const ListImagesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListImagesRequest",
 }) as any as S.Schema<ListImagesRequest>;
 
-export type ImageList_ = ReadonlyArray<Image>;
+export type ImageList_ = Array<Image>;
 export const ImageList_ = /*@__PURE__*/ S.Array(
   Image,
 ) as any as S.Schema<ImageList_>;
@@ -63065,8 +63309,7 @@ export const ImageListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "ImageListWarningDataItem",
 }) as any as S.Schema<ImageListWarningDataItem>;
 
-export type ImageListWarningDataItemList =
-  ReadonlyArray<ImageListWarningDataItem>;
+export type ImageListWarningDataItemList = Array<ImageListWarningDataItem>;
 export const ImageListWarningDataItemList = /*@__PURE__*/ S.Array(
   ImageListWarningDataItem,
 ) as any as S.Schema<ImageListWarningDataItemList>;
@@ -63200,7 +63443,7 @@ export const ImageViewsListResponseWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ImageViewsListResponseWarningDataItem>;
 
 export type ImageViewsListResponseWarningDataItemList =
-  ReadonlyArray<ImageViewsListResponseWarningDataItem>;
+  Array<ImageViewsListResponseWarningDataItem>;
 export const ImageViewsListResponseWarningDataItemList = /*@__PURE__*/ S.Array(
   ImageViewsListResponseWarningDataItem,
 ) as any as S.Schema<ImageViewsListResponseWarningDataItemList>;
@@ -63255,7 +63498,7 @@ export const ImageViewsListResponseWarning = /*@__PURE__*/ S.suspend(() =>
   identifier: "ImageViewsListResponseWarning",
 }) as any as S.Schema<ImageViewsListResponseWarning>;
 
-export type ImageViewList = ReadonlyArray<ImageView>;
+export type ImageViewList = Array<ImageView>;
 export const ImageViewList = /*@__PURE__*/ S.Array(
   ImageView,
 ) as any as S.Schema<ImageViewList>;
@@ -63332,7 +63575,7 @@ export const ListInstanceGroupManagerResizeRequestsRequest =
   }) as any as S.Schema<ListInstanceGroupManagerResizeRequestsRequest>;
 
 export type InstanceGroupManagerResizeRequestList =
-  ReadonlyArray<InstanceGroupManagerResizeRequest>;
+  Array<InstanceGroupManagerResizeRequest>;
 export const InstanceGroupManagerResizeRequestList = /*@__PURE__*/ S.Array(
   InstanceGroupManagerResizeRequest,
 ) as any as S.Schema<InstanceGroupManagerResizeRequestList>;
@@ -63354,7 +63597,7 @@ export const InstanceGroupManagerResizeRequestsListResponseWarningDataItem =
   }) as any as S.Schema<InstanceGroupManagerResizeRequestsListResponseWarningDataItem>;
 
 export type InstanceGroupManagerResizeRequestsListResponseWarningDataItemList =
-  ReadonlyArray<InstanceGroupManagerResizeRequestsListResponseWarningDataItem>;
+  Array<InstanceGroupManagerResizeRequestsListResponseWarningDataItem>;
 export const InstanceGroupManagerResizeRequestsListResponseWarningDataItemList =
   /*@__PURE__*/ S.Array(
     InstanceGroupManagerResizeRequestsListResponseWarningDataItem,
@@ -63532,7 +63775,7 @@ export const InstanceGroupManagerListWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<InstanceGroupManagerListWarningDataItem>;
 
 export type InstanceGroupManagerListWarningDataItemList =
-  ReadonlyArray<InstanceGroupManagerListWarningDataItem>;
+  Array<InstanceGroupManagerListWarningDataItem>;
 export const InstanceGroupManagerListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     InstanceGroupManagerListWarningDataItem,
@@ -63636,7 +63879,7 @@ export const InstanceGroupListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InstanceGroupListWarningDataItem>;
 
 export type InstanceGroupListWarningDataItemList =
-  ReadonlyArray<InstanceGroupListWarningDataItem>;
+  Array<InstanceGroupListWarningDataItem>;
 export const InstanceGroupListWarningDataItemList = /*@__PURE__*/ S.Array(
   InstanceGroupListWarningDataItem,
 ) as any as S.Schema<InstanceGroupListWarningDataItemList>;
@@ -63780,7 +64023,7 @@ export const InstanceListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InstanceListWarningDataItem>;
 
 export type InstanceListWarningDataItemList =
-  ReadonlyArray<InstanceListWarningDataItem>;
+  Array<InstanceListWarningDataItem>;
 export const InstanceListWarningDataItemList = /*@__PURE__*/ S.Array(
   InstanceListWarningDataItem,
 ) as any as S.Schema<InstanceListWarningDataItemList>;
@@ -63975,7 +64218,7 @@ export const InstanceGroupsListInstancesWarningDataItem =
   }) as any as S.Schema<InstanceGroupsListInstancesWarningDataItem>;
 
 export type InstanceGroupsListInstancesWarningDataItemList =
-  ReadonlyArray<InstanceGroupsListInstancesWarningDataItem>;
+  Array<InstanceGroupsListInstancesWarningDataItem>;
 export const InstanceGroupsListInstancesWarningDataItemList =
   /*@__PURE__*/ S.Array(
     InstanceGroupsListInstancesWarningDataItem,
@@ -64032,7 +64275,7 @@ export const InstanceWithNamedPorts = /*@__PURE__*/ S.suspend(() =>
   identifier: "InstanceWithNamedPorts",
 }) as any as S.Schema<InstanceWithNamedPorts>;
 
-export type InstanceWithNamedPortsList = ReadonlyArray<InstanceWithNamedPorts>;
+export type InstanceWithNamedPortsList = Array<InstanceWithNamedPorts>;
 export const InstanceWithNamedPortsList = /*@__PURE__*/ S.Array(
   InstanceWithNamedPorts,
 ) as any as S.Schema<InstanceWithNamedPortsList>;
@@ -64185,7 +64428,7 @@ export const RegionInstanceGroupsListInstancesWarningDataItem =
   }) as any as S.Schema<RegionInstanceGroupsListInstancesWarningDataItem>;
 
 export type RegionInstanceGroupsListInstancesWarningDataItemList =
-  ReadonlyArray<RegionInstanceGroupsListInstancesWarningDataItem>;
+  Array<RegionInstanceGroupsListInstancesWarningDataItem>;
 export const RegionInstanceGroupsListInstancesWarningDataItemList =
   /*@__PURE__*/ S.Array(
     RegionInstanceGroupsListInstancesWarningDataItem,
@@ -64327,7 +64570,7 @@ export const InstanceTemplateListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InstanceTemplateListWarningDataItem>;
 
 export type InstanceTemplateListWarningDataItemList =
-  ReadonlyArray<InstanceTemplateListWarningDataItem>;
+  Array<InstanceTemplateListWarningDataItem>;
 export const InstanceTemplateListWarningDataItemList = /*@__PURE__*/ S.Array(
   InstanceTemplateListWarningDataItem,
 ) as any as S.Schema<InstanceTemplateListWarningDataItemList>;
@@ -64463,7 +64706,7 @@ export const ListInstantSnapshotGroupsWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListInstantSnapshotGroupsWarningDataItem>;
 
 export type ListInstantSnapshotGroupsWarningDataItemList =
-  ReadonlyArray<ListInstantSnapshotGroupsWarningDataItem>;
+  Array<ListInstantSnapshotGroupsWarningDataItem>;
 export const ListInstantSnapshotGroupsWarningDataItemList =
   /*@__PURE__*/ S.Array(
     ListInstantSnapshotGroupsWarningDataItem,
@@ -64487,7 +64730,7 @@ export const ListInstantSnapshotGroupsWarning = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListInstantSnapshotGroupsWarning",
 }) as any as S.Schema<ListInstantSnapshotGroupsWarning>;
 
-export type InstantSnapshotGroupList = ReadonlyArray<InstantSnapshotGroup>;
+export type InstantSnapshotGroupList = Array<InstantSnapshotGroup>;
 export const InstantSnapshotGroupList = /*@__PURE__*/ S.Array(
   InstantSnapshotGroup,
 ) as any as S.Schema<InstantSnapshotGroupList>;
@@ -64609,7 +64852,7 @@ export const InstantSnapshotListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InstantSnapshotListWarningDataItem>;
 
 export type InstantSnapshotListWarningDataItemList =
-  ReadonlyArray<InstantSnapshotListWarningDataItem>;
+  Array<InstantSnapshotListWarningDataItem>;
 export const InstantSnapshotListWarningDataItemList = /*@__PURE__*/ S.Array(
   InstantSnapshotListWarningDataItem,
 ) as any as S.Schema<InstantSnapshotListWarningDataItemList>;
@@ -64744,7 +64987,7 @@ export const InterconnectAttachmentGroupsListResponseWarningDataItem =
   }) as any as S.Schema<InterconnectAttachmentGroupsListResponseWarningDataItem>;
 
 export type InterconnectAttachmentGroupsListResponseWarningDataItemList =
-  ReadonlyArray<InterconnectAttachmentGroupsListResponseWarningDataItem>;
+  Array<InterconnectAttachmentGroupsListResponseWarningDataItem>;
 export const InterconnectAttachmentGroupsListResponseWarningDataItemList =
   /*@__PURE__*/ S.Array(
     InterconnectAttachmentGroupsListResponseWarningDataItem,
@@ -64772,7 +65015,7 @@ export const InterconnectAttachmentGroupsListResponseWarning =
   }) as any as S.Schema<InterconnectAttachmentGroupsListResponseWarning>;
 
 export type InterconnectAttachmentGroupList =
-  ReadonlyArray<InterconnectAttachmentGroup>;
+  Array<InterconnectAttachmentGroup>;
 export const InterconnectAttachmentGroupList = /*@__PURE__*/ S.Array(
   InterconnectAttachmentGroup,
 ) as any as S.Schema<InterconnectAttachmentGroupList>;
@@ -64894,7 +65137,7 @@ export const InterconnectAttachmentListWarningDataItem =
   }) as any as S.Schema<InterconnectAttachmentListWarningDataItem>;
 
 export type InterconnectAttachmentListWarningDataItemList =
-  ReadonlyArray<InterconnectAttachmentListWarningDataItem>;
+  Array<InterconnectAttachmentListWarningDataItem>;
 export const InterconnectAttachmentListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     InterconnectAttachmentListWarningDataItem,
@@ -65029,7 +65272,7 @@ export const InterconnectGroupsListResponseWarningDataItem =
   }) as any as S.Schema<InterconnectGroupsListResponseWarningDataItem>;
 
 export type InterconnectGroupsListResponseWarningDataItemList =
-  ReadonlyArray<InterconnectGroupsListResponseWarningDataItem>;
+  Array<InterconnectGroupsListResponseWarningDataItem>;
 export const InterconnectGroupsListResponseWarningDataItemList =
   /*@__PURE__*/ S.Array(
     InterconnectGroupsListResponseWarningDataItem,
@@ -65054,7 +65297,7 @@ export const InterconnectGroupsListResponseWarning = /*@__PURE__*/ S.suspend(
   identifier: "InterconnectGroupsListResponseWarning",
 }) as any as S.Schema<InterconnectGroupsListResponseWarning>;
 
-export type InterconnectGroupList = ReadonlyArray<InterconnectGroup>;
+export type InterconnectGroupList = Array<InterconnectGroup>;
 export const InterconnectGroupList = /*@__PURE__*/ S.Array(
   InterconnectGroup,
 ) as any as S.Schema<InterconnectGroupList>;
@@ -65123,7 +65366,7 @@ export const ListInterconnectLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListInterconnectLocationsRequest",
 }) as any as S.Schema<ListInterconnectLocationsRequest>;
 
-export type InterconnectLocationList_ = ReadonlyArray<InterconnectLocation>;
+export type InterconnectLocationList_ = Array<InterconnectLocation>;
 export const InterconnectLocationList_ = /*@__PURE__*/ S.Array(
   InterconnectLocation,
 ) as any as S.Schema<InterconnectLocationList_>;
@@ -65177,7 +65420,7 @@ export const InterconnectLocationListWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<InterconnectLocationListWarningDataItem>;
 
 export type InterconnectLocationListWarningDataItemList =
-  ReadonlyArray<InterconnectLocationListWarningDataItem>;
+  Array<InterconnectLocationListWarningDataItem>;
 export const InterconnectLocationListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     InterconnectLocationListWarningDataItem,
@@ -65280,7 +65523,7 @@ export const InterconnectRemoteLocationListWarningDataItem =
   }) as any as S.Schema<InterconnectRemoteLocationListWarningDataItem>;
 
 export type InterconnectRemoteLocationListWarningDataItemList =
-  ReadonlyArray<InterconnectRemoteLocationListWarningDataItem>;
+  Array<InterconnectRemoteLocationListWarningDataItem>;
 export const InterconnectRemoteLocationListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     InterconnectRemoteLocationListWarningDataItem,
@@ -65338,8 +65581,7 @@ export const InterconnectRemoteLocationListWarning = /*@__PURE__*/ S.suspend(
   identifier: "InterconnectRemoteLocationListWarning",
 }) as any as S.Schema<InterconnectRemoteLocationListWarning>;
 
-export type InterconnectRemoteLocationList_ =
-  ReadonlyArray<InterconnectRemoteLocation>;
+export type InterconnectRemoteLocationList_ = Array<InterconnectRemoteLocation>;
 export const InterconnectRemoteLocationList_ = /*@__PURE__*/ S.Array(
   InterconnectRemoteLocation,
 ) as any as S.Schema<InterconnectRemoteLocationList_>;
@@ -65421,7 +65663,7 @@ export const InterconnectListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InterconnectListWarningDataItem>;
 
 export type InterconnectListWarningDataItemList =
-  ReadonlyArray<InterconnectListWarningDataItem>;
+  Array<InterconnectListWarningDataItem>;
 export const InterconnectListWarningDataItemList = /*@__PURE__*/ S.Array(
   InterconnectListWarningDataItem,
 ) as any as S.Schema<InterconnectListWarningDataItemList>;
@@ -65476,7 +65718,7 @@ export const InterconnectListWarning = /*@__PURE__*/ S.suspend(() =>
   identifier: "InterconnectListWarning",
 }) as any as S.Schema<InterconnectListWarning>;
 
-export type InterconnectList_ = ReadonlyArray<Interconnect>;
+export type InterconnectList_ = Array<Interconnect>;
 export const InterconnectList_ = /*@__PURE__*/ S.Array(
   Interconnect,
 ) as any as S.Schema<InterconnectList_>;
@@ -65564,7 +65806,7 @@ export const IpAddressesListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IpAddressesListWarningDataItem>;
 
 export type IpAddressesListWarningDataItemList =
-  ReadonlyArray<IpAddressesListWarningDataItem>;
+  Array<IpAddressesListWarningDataItem>;
 export const IpAddressesListWarningDataItemList = /*@__PURE__*/ S.Array(
   IpAddressesListWarningDataItem,
 ) as any as S.Schema<IpAddressesListWarningDataItemList>;
@@ -65653,7 +65895,7 @@ export const InternalIpAddress = /*@__PURE__*/ S.suspend(() =>
   identifier: "InternalIpAddress",
 }) as any as S.Schema<InternalIpAddress>;
 
-export type InternalIpAddressList = ReadonlyArray<InternalIpAddress>;
+export type InternalIpAddressList = Array<InternalIpAddress>;
 export const InternalIpAddressList = /*@__PURE__*/ S.Array(
   InternalIpAddress,
 ) as any as S.Schema<InternalIpAddressList>;
@@ -65754,7 +65996,7 @@ export const InternalIpOwner = /*@__PURE__*/ S.suspend(() =>
   identifier: "InternalIpOwner",
 }) as any as S.Schema<InternalIpOwner>;
 
-export type InternalIpOwnerList = ReadonlyArray<InternalIpOwner>;
+export type InternalIpOwnerList = Array<InternalIpOwner>;
 export const InternalIpOwnerList = /*@__PURE__*/ S.Array(
   InternalIpOwner,
 ) as any as S.Schema<InternalIpOwnerList>;
@@ -65806,8 +66048,7 @@ export const IpOwnerListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "IpOwnerListWarningDataItem",
 }) as any as S.Schema<IpOwnerListWarningDataItem>;
 
-export type IpOwnerListWarningDataItemList =
-  ReadonlyArray<IpOwnerListWarningDataItem>;
+export type IpOwnerListWarningDataItemList = Array<IpOwnerListWarningDataItem>;
 export const IpOwnerListWarningDataItemList = /*@__PURE__*/ S.Array(
   IpOwnerListWarningDataItem,
 ) as any as S.Schema<IpOwnerListWarningDataItemList>;
@@ -65892,7 +66133,7 @@ export const ListLicensesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListLicensesRequest",
 }) as any as S.Schema<ListLicensesRequest>;
 
-export type LicenseList = ReadonlyArray<License>;
+export type LicenseList = Array<License>;
 export const LicenseList = /*@__PURE__*/ S.Array(
   License,
 ) as any as S.Schema<LicenseList>;
@@ -65945,7 +66186,7 @@ export const LicensesListResponseWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LicensesListResponseWarningDataItem>;
 
 export type LicensesListResponseWarningDataItemList =
-  ReadonlyArray<LicensesListResponseWarningDataItem>;
+  Array<LicensesListResponseWarningDataItem>;
 export const LicensesListResponseWarningDataItemList = /*@__PURE__*/ S.Array(
   LicensesListResponseWarningDataItem,
 ) as any as S.Schema<LicensesListResponseWarningDataItemList>;
@@ -66041,7 +66282,7 @@ export const MachineImageListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MachineImageListWarningDataItem>;
 
 export type MachineImageListWarningDataItemList =
-  ReadonlyArray<MachineImageListWarningDataItem>;
+  Array<MachineImageListWarningDataItem>;
 export const MachineImageListWarningDataItemList = /*@__PURE__*/ S.Array(
   MachineImageListWarningDataItem,
 ) as any as S.Schema<MachineImageListWarningDataItemList>;
@@ -66096,7 +66337,7 @@ export const MachineImageListWarning = /*@__PURE__*/ S.suspend(() =>
   identifier: "MachineImageListWarning",
 }) as any as S.Schema<MachineImageListWarning>;
 
-export type MachineImageList_ = ReadonlyArray<MachineImage>;
+export type MachineImageList_ = Array<MachineImage>;
 export const MachineImageList_ = /*@__PURE__*/ S.Array(
   MachineImage,
 ) as any as S.Schema<MachineImageList_>;
@@ -66181,7 +66422,7 @@ export const MachineTypeListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MachineTypeListWarningDataItem>;
 
 export type MachineTypeListWarningDataItemList =
-  ReadonlyArray<MachineTypeListWarningDataItem>;
+  Array<MachineTypeListWarningDataItem>;
 export const MachineTypeListWarningDataItemList = /*@__PURE__*/ S.Array(
   MachineTypeListWarningDataItem,
 ) as any as S.Schema<MachineTypeListWarningDataItemList>;
@@ -66468,7 +66709,7 @@ export const ManagedInstanceInstanceHealth = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ManagedInstanceInstanceHealth>;
 
 export type ManagedInstanceInstanceHealthList =
-  ReadonlyArray<ManagedInstanceInstanceHealth>;
+  Array<ManagedInstanceInstanceHealth>;
 export const ManagedInstanceInstanceHealthList = /*@__PURE__*/ S.Array(
   ManagedInstanceInstanceHealth,
 ) as any as S.Schema<ManagedInstanceInstanceHealthList>;
@@ -66496,7 +66737,7 @@ export const ManagedInstanceLastAttemptErrorsErrorsItemErrorDetailsItem =
   }) as any as S.Schema<ManagedInstanceLastAttemptErrorsErrorsItemErrorDetailsItem>;
 
 export type ManagedInstanceLastAttemptErrorsErrorsItemErrorDetailsItemList =
-  ReadonlyArray<ManagedInstanceLastAttemptErrorsErrorsItemErrorDetailsItem>;
+  Array<ManagedInstanceLastAttemptErrorsErrorsItemErrorDetailsItem>;
 export const ManagedInstanceLastAttemptErrorsErrorsItemErrorDetailsItemList =
   /*@__PURE__*/ S.Array(
     ManagedInstanceLastAttemptErrorsErrorsItemErrorDetailsItem,
@@ -66527,7 +66768,7 @@ export const ManagedInstanceLastAttemptErrorsErrorsItem =
   }) as any as S.Schema<ManagedInstanceLastAttemptErrorsErrorsItem>;
 
 export type ManagedInstanceLastAttemptErrorsErrorsItemList =
-  ReadonlyArray<ManagedInstanceLastAttemptErrorsErrorsItem>;
+  Array<ManagedInstanceLastAttemptErrorsErrorsItem>;
 export const ManagedInstanceLastAttemptErrorsErrorsItemList =
   /*@__PURE__*/ S.Array(
     ManagedInstanceLastAttemptErrorsErrorsItem,
@@ -66677,7 +66918,7 @@ export const ManagedInstance = /*@__PURE__*/ S.suspend(() =>
   identifier: "ManagedInstance",
 }) as any as S.Schema<ManagedInstance>;
 
-export type ManagedInstanceList = ReadonlyArray<ManagedInstance>;
+export type ManagedInstanceList = Array<ManagedInstance>;
 export const ManagedInstanceList = /*@__PURE__*/ S.Array(
   ManagedInstance,
 ) as any as S.Schema<ManagedInstanceList>;
@@ -66835,7 +67076,7 @@ export const ManagedRulesetListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ManagedRulesetListWarningDataItem>;
 
 export type ManagedRulesetListWarningDataItemList =
-  ReadonlyArray<ManagedRulesetListWarningDataItem>;
+  Array<ManagedRulesetListWarningDataItem>;
 export const ManagedRulesetListWarningDataItemList = /*@__PURE__*/ S.Array(
   ManagedRulesetListWarningDataItem,
 ) as any as S.Schema<ManagedRulesetListWarningDataItemList>;
@@ -66858,7 +67099,7 @@ export const ManagedRulesetListWarning = /*@__PURE__*/ S.suspend(() =>
   identifier: "ManagedRulesetListWarning",
 }) as any as S.Schema<ManagedRulesetListWarning>;
 
-export type ManagedRulesetList_ = ReadonlyArray<ManagedRuleset>;
+export type ManagedRulesetList_ = Array<ManagedRuleset>;
 export const ManagedRulesetList_ = /*@__PURE__*/ S.Array(
   ManagedRuleset,
 ) as any as S.Schema<ManagedRulesetList_>;
@@ -66967,7 +67208,7 @@ export const RoutersListNamedSetsWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RoutersListNamedSetsWarningDataItem>;
 
 export type RoutersListNamedSetsWarningDataItemList =
-  ReadonlyArray<RoutersListNamedSetsWarningDataItem>;
+  Array<RoutersListNamedSetsWarningDataItem>;
 export const RoutersListNamedSetsWarningDataItemList = /*@__PURE__*/ S.Array(
   RoutersListNamedSetsWarningDataItem,
 ) as any as S.Schema<RoutersListNamedSetsWarningDataItemList>;
@@ -66990,7 +67231,7 @@ export const RoutersListNamedSetsWarning = /*@__PURE__*/ S.suspend(() =>
   identifier: "RoutersListNamedSetsWarning",
 }) as any as S.Schema<RoutersListNamedSetsWarning>;
 
-export type NamedSetList = ReadonlyArray<NamedSet>;
+export type NamedSetList = Array<NamedSet>;
 export const NamedSetList = /*@__PURE__*/ S.Array(
   NamedSet,
 ) as any as S.Schema<NamedSetList>;
@@ -67112,7 +67353,7 @@ export const NetworkAttachmentListWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<NetworkAttachmentListWarningDataItem>;
 
 export type NetworkAttachmentListWarningDataItemList =
-  ReadonlyArray<NetworkAttachmentListWarningDataItem>;
+  Array<NetworkAttachmentListWarningDataItem>;
 export const NetworkAttachmentListWarningDataItemList = /*@__PURE__*/ S.Array(
   NetworkAttachmentListWarningDataItem,
 ) as any as S.Schema<NetworkAttachmentListWarningDataItemList>;
@@ -67284,7 +67525,7 @@ export const NetworkEndpointGroupsListNetworkEndpointsWarningDataItem =
   }) as any as S.Schema<NetworkEndpointGroupsListNetworkEndpointsWarningDataItem>;
 
 export type NetworkEndpointGroupsListNetworkEndpointsWarningDataItemList =
-  ReadonlyArray<NetworkEndpointGroupsListNetworkEndpointsWarningDataItem>;
+  Array<NetworkEndpointGroupsListNetworkEndpointsWarningDataItem>;
 export const NetworkEndpointGroupsListNetworkEndpointsWarningDataItemList =
   /*@__PURE__*/ S.Array(
     NetworkEndpointGroupsListNetworkEndpointsWarningDataItem,
@@ -67393,7 +67634,7 @@ export const HealthStatusForNetworkEndpoint = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HealthStatusForNetworkEndpoint>;
 
 export type HealthStatusForNetworkEndpointList =
-  ReadonlyArray<HealthStatusForNetworkEndpoint>;
+  Array<HealthStatusForNetworkEndpoint>;
 export const HealthStatusForNetworkEndpointList = /*@__PURE__*/ S.Array(
   HealthStatusForNetworkEndpoint,
 ) as any as S.Schema<HealthStatusForNetworkEndpointList>;
@@ -67414,7 +67655,7 @@ export const NetworkEndpointWithHealthStatus = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NetworkEndpointWithHealthStatus>;
 
 export type NetworkEndpointWithHealthStatusList =
-  ReadonlyArray<NetworkEndpointWithHealthStatus>;
+  Array<NetworkEndpointWithHealthStatus>;
 export const NetworkEndpointWithHealthStatusList = /*@__PURE__*/ S.Array(
   NetworkEndpointWithHealthStatus,
 ) as any as S.Schema<NetworkEndpointWithHealthStatusList>;
@@ -67464,7 +67705,7 @@ export const NetworkEndpointGroupsListEndpointsRequestNetworkEndpointFilter =
   }) as any as S.Schema<NetworkEndpointGroupsListEndpointsRequestNetworkEndpointFilter>;
 
 export type NetworkEndpointGroupsListEndpointsRequestNetworkEndpointFilterList =
-  ReadonlyArray<NetworkEndpointGroupsListEndpointsRequestNetworkEndpointFilter>;
+  Array<NetworkEndpointGroupsListEndpointsRequestNetworkEndpointFilter>;
 export const NetworkEndpointGroupsListEndpointsRequestNetworkEndpointFilterList =
   /*@__PURE__*/ S.Array(
     NetworkEndpointGroupsListEndpointsRequestNetworkEndpointFilter,
@@ -67643,7 +67884,7 @@ export const ListNetworkProfilesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListNetworkProfilesRequest",
 }) as any as S.Schema<ListNetworkProfilesRequest>;
 
-export type NetworkProfileList = ReadonlyArray<NetworkProfile>;
+export type NetworkProfileList = Array<NetworkProfile>;
 export const NetworkProfileList = /*@__PURE__*/ S.Array(
   NetworkProfile,
 ) as any as S.Schema<NetworkProfileList>;
@@ -67665,7 +67906,7 @@ export const NetworkProfilesListResponseWarningDataItem =
   }) as any as S.Schema<NetworkProfilesListResponseWarningDataItem>;
 
 export type NetworkProfilesListResponseWarningDataItemList =
-  ReadonlyArray<NetworkProfilesListResponseWarningDataItem>;
+  Array<NetworkProfilesListResponseWarningDataItem>;
 export const NetworkProfilesListResponseWarningDataItemList =
   /*@__PURE__*/ S.Array(
     NetworkProfilesListResponseWarningDataItem,
@@ -67788,7 +68029,7 @@ export const ListNetworksRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListNetworksRequest",
 }) as any as S.Schema<ListNetworksRequest>;
 
-export type NetworkList_ = ReadonlyArray<Network>;
+export type NetworkList_ = Array<Network>;
 export const NetworkList_ = /*@__PURE__*/ S.Array(
   Network,
 ) as any as S.Schema<NetworkList_>;
@@ -67840,8 +68081,7 @@ export const NetworkListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "NetworkListWarningDataItem",
 }) as any as S.Schema<NetworkListWarningDataItem>;
 
-export type NetworkListWarningDataItemList =
-  ReadonlyArray<NetworkListWarningDataItem>;
+export type NetworkListWarningDataItemList = Array<NetworkListWarningDataItem>;
 export const NetworkListWarningDataItemList = /*@__PURE__*/ S.Array(
   NetworkListWarningDataItem,
 ) as any as S.Schema<NetworkListWarningDataItemList>;
@@ -67942,7 +68182,7 @@ export const NodeGroupListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NodeGroupListWarningDataItem>;
 
 export type NodeGroupListWarningDataItemList =
-  ReadonlyArray<NodeGroupListWarningDataItem>;
+  Array<NodeGroupListWarningDataItem>;
 export const NodeGroupListWarningDataItemList = /*@__PURE__*/ S.Array(
   NodeGroupListWarningDataItem,
 ) as any as S.Schema<NodeGroupListWarningDataItemList>;
@@ -68104,8 +68344,7 @@ export const InstanceConsumptionData = /*@__PURE__*/ S.suspend(() =>
   identifier: "InstanceConsumptionData",
 }) as any as S.Schema<InstanceConsumptionData>;
 
-export type InstanceConsumptionDataList =
-  ReadonlyArray<InstanceConsumptionData>;
+export type InstanceConsumptionDataList = Array<InstanceConsumptionData>;
 export const InstanceConsumptionDataList = /*@__PURE__*/ S.Array(
   InstanceConsumptionData,
 ) as any as S.Schema<InstanceConsumptionDataList>;
@@ -68166,7 +68405,7 @@ export const NodeGroupNode = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "NodeGroupNode" }) as any as S.Schema<NodeGroupNode>;
 
-export type NodeGroupNodeList = ReadonlyArray<NodeGroupNode>;
+export type NodeGroupNodeList = Array<NodeGroupNode>;
 export const NodeGroupNodeList = /*@__PURE__*/ S.Array(
   NodeGroupNode,
 ) as any as S.Schema<NodeGroupNodeList>;
@@ -68219,7 +68458,7 @@ export const NodeGroupsListNodesWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NodeGroupsListNodesWarningDataItem>;
 
 export type NodeGroupsListNodesWarningDataItemList =
-  ReadonlyArray<NodeGroupsListNodesWarningDataItem>;
+  Array<NodeGroupsListNodesWarningDataItem>;
 export const NodeGroupsListNodesWarningDataItemList = /*@__PURE__*/ S.Array(
   NodeGroupsListNodesWarningDataItem,
 ) as any as S.Schema<NodeGroupsListNodesWarningDataItemList>;
@@ -68353,7 +68592,7 @@ export const NodeTemplateListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NodeTemplateListWarningDataItem>;
 
 export type NodeTemplateListWarningDataItemList =
-  ReadonlyArray<NodeTemplateListWarningDataItem>;
+  Array<NodeTemplateListWarningDataItem>;
 export const NodeTemplateListWarningDataItemList = /*@__PURE__*/ S.Array(
   NodeTemplateListWarningDataItem,
 ) as any as S.Schema<NodeTemplateListWarningDataItemList>;
@@ -68456,7 +68695,7 @@ export const NodeTypeListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NodeTypeListWarningDataItem>;
 
 export type NodeTypeListWarningDataItemList =
-  ReadonlyArray<NodeTypeListWarningDataItem>;
+  Array<NodeTypeListWarningDataItem>;
 export const NodeTypeListWarningDataItemList = /*@__PURE__*/ S.Array(
   NodeTypeListWarningDataItem,
 ) as any as S.Schema<NodeTypeListWarningDataItemList>;
@@ -68621,7 +68860,7 @@ export const RolloutPlansListResponseWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<RolloutPlansListResponseWarningDataItem>;
 
 export type RolloutPlansListResponseWarningDataItemList =
-  ReadonlyArray<RolloutPlansListResponseWarningDataItem>;
+  Array<RolloutPlansListResponseWarningDataItem>;
 export const RolloutPlansListResponseWarningDataItemList =
   /*@__PURE__*/ S.Array(
     RolloutPlansListResponseWarningDataItem,
@@ -68677,7 +68916,7 @@ export const RolloutPlansListResponseWarning = /*@__PURE__*/ S.suspend(() =>
   identifier: "RolloutPlansListResponseWarning",
 }) as any as S.Schema<RolloutPlansListResponseWarning>;
 
-export type RolloutPlanList = ReadonlyArray<RolloutPlan>;
+export type RolloutPlanList = Array<RolloutPlan>;
 export const RolloutPlanList = /*@__PURE__*/ S.Array(
   RolloutPlan,
 ) as any as S.Schema<RolloutPlanList>;
@@ -68762,7 +69001,7 @@ export const OrganizationRolloutsListResponseWarningDataItem =
   }) as any as S.Schema<OrganizationRolloutsListResponseWarningDataItem>;
 
 export type OrganizationRolloutsListResponseWarningDataItemList =
-  ReadonlyArray<OrganizationRolloutsListResponseWarningDataItem>;
+  Array<OrganizationRolloutsListResponseWarningDataItem>;
 export const OrganizationRolloutsListResponseWarningDataItemList =
   /*@__PURE__*/ S.Array(
     OrganizationRolloutsListResponseWarningDataItem,
@@ -68820,7 +69059,7 @@ export const OrganizationRolloutsListResponseWarning = /*@__PURE__*/ S.suspend(
   identifier: "OrganizationRolloutsListResponseWarning",
 }) as any as S.Schema<OrganizationRolloutsListResponseWarning>;
 
-export type RolloutList = ReadonlyArray<Rollout>;
+export type RolloutList = Array<Rollout>;
 export const RolloutList = /*@__PURE__*/ S.Array(
   Rollout,
 ) as any as S.Schema<RolloutList>;
@@ -68936,7 +69175,7 @@ export const SecurityPolicyListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SecurityPolicyListWarningDataItem>;
 
 export type SecurityPolicyListWarningDataItemList =
-  ReadonlyArray<SecurityPolicyListWarningDataItem>;
+  Array<SecurityPolicyListWarningDataItem>;
 export const SecurityPolicyListWarningDataItemList = /*@__PURE__*/ S.Array(
   SecurityPolicyListWarningDataItem,
 ) as any as S.Schema<SecurityPolicyListWarningDataItemList>;
@@ -69109,7 +69348,7 @@ export const PacketMirroringListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PacketMirroringListWarningDataItem>;
 
 export type PacketMirroringListWarningDataItemList =
-  ReadonlyArray<PacketMirroringListWarningDataItem>;
+  Array<PacketMirroringListWarningDataItem>;
 export const PacketMirroringListWarningDataItemList = /*@__PURE__*/ S.Array(
   PacketMirroringListWarningDataItem,
 ) as any as S.Schema<PacketMirroringListWarningDataItemList>;
@@ -69240,7 +69479,7 @@ export const ExchangedPeeringRoute = /*@__PURE__*/ S.suspend(() =>
   identifier: "ExchangedPeeringRoute",
 }) as any as S.Schema<ExchangedPeeringRoute>;
 
-export type ExchangedPeeringRouteList = ReadonlyArray<ExchangedPeeringRoute>;
+export type ExchangedPeeringRouteList = Array<ExchangedPeeringRoute>;
 export const ExchangedPeeringRouteList = /*@__PURE__*/ S.Array(
   ExchangedPeeringRoute,
 ) as any as S.Schema<ExchangedPeeringRouteList>;
@@ -69262,7 +69501,7 @@ export const ExchangedPeeringRoutesListWarningDataItem =
   }) as any as S.Schema<ExchangedPeeringRoutesListWarningDataItem>;
 
 export type ExchangedPeeringRoutesListWarningDataItemList =
-  ReadonlyArray<ExchangedPeeringRoutesListWarningDataItem>;
+  Array<ExchangedPeeringRoutesListWarningDataItem>;
 export const ExchangedPeeringRoutesListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     ExchangedPeeringRoutesListWarningDataItem,
@@ -69403,7 +69642,7 @@ export const InstanceGroupManagersListPerInstanceConfigsRespWarningDataItem =
   }) as any as S.Schema<InstanceGroupManagersListPerInstanceConfigsRespWarningDataItem>;
 
 export type InstanceGroupManagersListPerInstanceConfigsRespWarningDataItemList =
-  ReadonlyArray<InstanceGroupManagersListPerInstanceConfigsRespWarningDataItem>;
+  Array<InstanceGroupManagersListPerInstanceConfigsRespWarningDataItem>;
 export const InstanceGroupManagersListPerInstanceConfigsRespWarningDataItemList =
   /*@__PURE__*/ S.Array(
     InstanceGroupManagersListPerInstanceConfigsRespWarningDataItem,
@@ -69544,7 +69783,7 @@ export const RegionInstanceGroupManagersListInstanceConfigsRespWarningDataItem =
   }) as any as S.Schema<RegionInstanceGroupManagersListInstanceConfigsRespWarningDataItem>;
 
 export type RegionInstanceGroupManagersListInstanceConfigsRespWarningDataItemList =
-  ReadonlyArray<RegionInstanceGroupManagersListInstanceConfigsRespWarningDataItem>;
+  Array<RegionInstanceGroupManagersListInstanceConfigsRespWarningDataItem>;
 export const RegionInstanceGroupManagersListInstanceConfigsRespWarningDataItemList =
   /*@__PURE__*/ S.Array(
     RegionInstanceGroupManagersListInstanceConfigsRespWarningDataItem,
@@ -69677,8 +69916,7 @@ export const WafExpressionSetExpression = /*@__PURE__*/ S.suspend(() =>
   identifier: "WafExpressionSetExpression",
 }) as any as S.Schema<WafExpressionSetExpression>;
 
-export type WafExpressionSetExpressionList =
-  ReadonlyArray<WafExpressionSetExpression>;
+export type WafExpressionSetExpressionList = Array<WafExpressionSetExpression>;
 export const WafExpressionSetExpressionList = /*@__PURE__*/ S.Array(
   WafExpressionSetExpression,
 ) as any as S.Schema<WafExpressionSetExpressionList>;
@@ -69701,7 +69939,7 @@ export const WafExpressionSet = /*@__PURE__*/ S.suspend(() =>
   identifier: "WafExpressionSet",
 }) as any as S.Schema<WafExpressionSet>;
 
-export type WafExpressionSetList = ReadonlyArray<WafExpressionSet>;
+export type WafExpressionSetList = Array<WafExpressionSet>;
 export const WafExpressionSetList = /*@__PURE__*/ S.Array(
   WafExpressionSet,
 ) as any as S.Schema<WafExpressionSetList>;
@@ -69808,7 +70046,7 @@ export const ListPreviewFeaturesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListPreviewFeaturesRequest",
 }) as any as S.Schema<ListPreviewFeaturesRequest>;
 
-export type PreviewFeatureList_ = ReadonlyArray<PreviewFeature>;
+export type PreviewFeatureList_ = Array<PreviewFeature>;
 export const PreviewFeatureList_ = /*@__PURE__*/ S.Array(
   PreviewFeature,
 ) as any as S.Schema<PreviewFeatureList_>;
@@ -69829,7 +70067,7 @@ export const PreviewFeatureListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PreviewFeatureListWarningDataItem>;
 
 export type PreviewFeatureListWarningDataItemList =
-  ReadonlyArray<PreviewFeatureListWarningDataItem>;
+  Array<PreviewFeatureListWarningDataItem>;
 export const PreviewFeatureListWarningDataItemList = /*@__PURE__*/ S.Array(
   PreviewFeatureListWarningDataItem,
 ) as any as S.Schema<PreviewFeatureListWarningDataItemList>;
@@ -69995,7 +70233,7 @@ export const PublicAdvertisedPrefixListWarningDataItem =
   }) as any as S.Schema<PublicAdvertisedPrefixListWarningDataItem>;
 
 export type PublicAdvertisedPrefixListWarningDataItemList =
-  ReadonlyArray<PublicAdvertisedPrefixListWarningDataItem>;
+  Array<PublicAdvertisedPrefixListWarningDataItem>;
 export const PublicAdvertisedPrefixListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     PublicAdvertisedPrefixListWarningDataItem,
@@ -70019,7 +70257,7 @@ export const PublicAdvertisedPrefixListWarning = /*@__PURE__*/ S.suspend(() =>
   identifier: "PublicAdvertisedPrefixListWarning",
 }) as any as S.Schema<PublicAdvertisedPrefixListWarning>;
 
-export type PublicAdvertisedPrefixList_ = ReadonlyArray<PublicAdvertisedPrefix>;
+export type PublicAdvertisedPrefixList_ = Array<PublicAdvertisedPrefix>;
 export const PublicAdvertisedPrefixList_ = /*@__PURE__*/ S.Array(
   PublicAdvertisedPrefix,
 ) as any as S.Schema<PublicAdvertisedPrefixList_>;
@@ -70169,7 +70407,7 @@ export const RecoverableSnapshotListWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<RecoverableSnapshotListWarningDataItem>;
 
 export type RecoverableSnapshotListWarningDataItemList =
-  ReadonlyArray<RecoverableSnapshotListWarningDataItem>;
+  Array<RecoverableSnapshotListWarningDataItem>;
 export const RecoverableSnapshotListWarningDataItemList = /*@__PURE__*/ S.Array(
   RecoverableSnapshotListWarningDataItem,
 ) as any as S.Schema<RecoverableSnapshotListWarningDataItemList>;
@@ -70283,7 +70521,7 @@ export const Reference = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Reference" }) as any as S.Schema<Reference>;
 
-export type ReferenceList = ReadonlyArray<Reference>;
+export type ReferenceList = Array<Reference>;
 export const ReferenceList = /*@__PURE__*/ S.Array(
   Reference,
 ) as any as S.Schema<ReferenceList>;
@@ -70337,7 +70575,7 @@ export const InstanceListReferrersWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<InstanceListReferrersWarningDataItem>;
 
 export type InstanceListReferrersWarningDataItemList =
-  ReadonlyArray<InstanceListReferrersWarningDataItem>;
+  Array<InstanceListReferrersWarningDataItem>;
 export const InstanceListReferrersWarningDataItemList = /*@__PURE__*/ S.Array(
   InstanceListReferrersWarningDataItem,
 ) as any as S.Schema<InstanceListReferrersWarningDataItemList>;
@@ -70440,7 +70678,7 @@ export const RegionAutoscalerListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RegionAutoscalerListWarningDataItem>;
 
 export type RegionAutoscalerListWarningDataItemList =
-  ReadonlyArray<RegionAutoscalerListWarningDataItem>;
+  Array<RegionAutoscalerListWarningDataItem>;
 export const RegionAutoscalerListWarningDataItemList = /*@__PURE__*/ S.Array(
   RegionAutoscalerListWarningDataItem,
 ) as any as S.Schema<RegionAutoscalerListWarningDataItemList>;
@@ -70679,7 +70917,7 @@ export const CommitmentListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CommitmentListWarningDataItem>;
 
 export type CommitmentListWarningDataItemList =
-  ReadonlyArray<CommitmentListWarningDataItem>;
+  Array<CommitmentListWarningDataItem>;
 export const CommitmentListWarningDataItemList = /*@__PURE__*/ S.Array(
   CommitmentListWarningDataItem,
 ) as any as S.Schema<CommitmentListWarningDataItemList>;
@@ -70814,7 +71052,7 @@ export const CompositeHealthCheckListWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CompositeHealthCheckListWarningDataItem>;
 
 export type CompositeHealthCheckListWarningDataItemList =
-  ReadonlyArray<CompositeHealthCheckListWarningDataItem>;
+  Array<CompositeHealthCheckListWarningDataItem>;
 export const CompositeHealthCheckListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     CompositeHealthCheckListWarningDataItem,
@@ -70953,7 +71191,7 @@ export const RegionDiskTypeListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RegionDiskTypeListWarningDataItem>;
 
 export type RegionDiskTypeListWarningDataItemList =
-  ReadonlyArray<RegionDiskTypeListWarningDataItem>;
+  Array<RegionDiskTypeListWarningDataItem>;
 export const RegionDiskTypeListWarningDataItemList = /*@__PURE__*/ S.Array(
   RegionDiskTypeListWarningDataItem,
 ) as any as S.Schema<RegionDiskTypeListWarningDataItemList>;
@@ -71122,7 +71360,7 @@ export const HealthAggregationPolicyListWarningDataItem =
   }) as any as S.Schema<HealthAggregationPolicyListWarningDataItem>;
 
 export type HealthAggregationPolicyListWarningDataItemList =
-  ReadonlyArray<HealthAggregationPolicyListWarningDataItem>;
+  Array<HealthAggregationPolicyListWarningDataItem>;
 export const HealthAggregationPolicyListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     HealthAggregationPolicyListWarningDataItem,
@@ -71295,7 +71533,7 @@ export const HealthCheckServicesListWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<HealthCheckServicesListWarningDataItem>;
 
 export type HealthCheckServicesListWarningDataItemList =
-  ReadonlyArray<HealthCheckServicesListWarningDataItem>;
+  Array<HealthCheckServicesListWarningDataItem>;
 export const HealthCheckServicesListWarningDataItemList = /*@__PURE__*/ S.Array(
   HealthCheckServicesListWarningDataItem,
 ) as any as S.Schema<HealthCheckServicesListWarningDataItemList>;
@@ -71429,7 +71667,7 @@ export const HealthSourceListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HealthSourceListWarningDataItem>;
 
 export type HealthSourceListWarningDataItemList =
-  ReadonlyArray<HealthSourceListWarningDataItem>;
+  Array<HealthSourceListWarningDataItem>;
 export const HealthSourceListWarningDataItemList = /*@__PURE__*/ S.Array(
   HealthSourceListWarningDataItem,
 ) as any as S.Schema<HealthSourceListWarningDataItemList>;
@@ -71537,7 +71775,7 @@ export const RegionInstanceGroupManagerResizeRequestsListResponseWarningDataItem
   }) as any as S.Schema<RegionInstanceGroupManagerResizeRequestsListResponseWarningDataItem>;
 
 export type RegionInstanceGroupManagerResizeRequestsListResponseWarningDataItemList =
-  ReadonlyArray<RegionInstanceGroupManagerResizeRequestsListResponseWarningDataItem>;
+  Array<RegionInstanceGroupManagerResizeRequestsListResponseWarningDataItem>;
 export const RegionInstanceGroupManagerResizeRequestsListResponseWarningDataItemList =
   /*@__PURE__*/ S.Array(
     RegionInstanceGroupManagerResizeRequestsListResponseWarningDataItem,
@@ -71721,7 +71959,7 @@ export const RegionInstanceGroupManagerListWarningDataItem =
   }) as any as S.Schema<RegionInstanceGroupManagerListWarningDataItem>;
 
 export type RegionInstanceGroupManagerListWarningDataItemList =
-  ReadonlyArray<RegionInstanceGroupManagerListWarningDataItem>;
+  Array<RegionInstanceGroupManagerListWarningDataItem>;
 export const RegionInstanceGroupManagerListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     RegionInstanceGroupManagerListWarningDataItem,
@@ -71859,7 +72097,7 @@ export const RegionInstanceGroupListWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<RegionInstanceGroupListWarningDataItem>;
 
 export type RegionInstanceGroupListWarningDataItemList =
-  ReadonlyArray<RegionInstanceGroupListWarningDataItem>;
+  Array<RegionInstanceGroupListWarningDataItem>;
 export const RegionInstanceGroupListWarningDataItemList = /*@__PURE__*/ S.Array(
   RegionInstanceGroupListWarningDataItem,
 ) as any as S.Schema<RegionInstanceGroupListWarningDataItemList>;
@@ -72115,7 +72353,7 @@ export const MultiMigMemberListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MultiMigMemberListWarningDataItem>;
 
 export type MultiMigMemberListWarningDataItemList =
-  ReadonlyArray<MultiMigMemberListWarningDataItem>;
+  Array<MultiMigMemberListWarningDataItem>;
 export const MultiMigMemberListWarningDataItemList = /*@__PURE__*/ S.Array(
   MultiMigMemberListWarningDataItem,
 ) as any as S.Schema<MultiMigMemberListWarningDataItemList>;
@@ -72138,7 +72376,7 @@ export const MultiMigMemberListWarning = /*@__PURE__*/ S.suspend(() =>
   identifier: "MultiMigMemberListWarning",
 }) as any as S.Schema<MultiMigMemberListWarning>;
 
-export type MultiMigMemberList_ = ReadonlyArray<MultiMigMember>;
+export type MultiMigMemberList_ = Array<MultiMigMember>;
 export const MultiMigMemberList_ = /*@__PURE__*/ S.Array(
   MultiMigMember,
 ) as any as S.Schema<MultiMigMemberList_>;
@@ -72254,7 +72492,7 @@ export const MultiMigsListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MultiMigsListWarningDataItem>;
 
 export type MultiMigsListWarningDataItemList =
-  ReadonlyArray<MultiMigsListWarningDataItem>;
+  Array<MultiMigsListWarningDataItem>;
 export const MultiMigsListWarningDataItemList = /*@__PURE__*/ S.Array(
   MultiMigsListWarningDataItem,
 ) as any as S.Schema<MultiMigsListWarningDataItemList>;
@@ -72277,7 +72515,7 @@ export const MultiMigsListWarning = /*@__PURE__*/ S.suspend(() =>
   identifier: "MultiMigsListWarning",
 }) as any as S.Schema<MultiMigsListWarning>;
 
-export type MultiMigList = ReadonlyArray<MultiMig>;
+export type MultiMigList = Array<MultiMig>;
 export const MultiMigList = /*@__PURE__*/ S.Array(
   MultiMig,
 ) as any as S.Schema<MultiMigList>;
@@ -72465,7 +72703,7 @@ export const NetworkPolicyListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NetworkPolicyListWarningDataItem>;
 
 export type NetworkPolicyListWarningDataItemList =
-  ReadonlyArray<NetworkPolicyListWarningDataItem>;
+  Array<NetworkPolicyListWarningDataItem>;
 export const NetworkPolicyListWarningDataItemList = /*@__PURE__*/ S.Array(
   NetworkPolicyListWarningDataItem,
 ) as any as S.Schema<NetworkPolicyListWarningDataItemList>;
@@ -72598,7 +72836,7 @@ export const NotificationEndpointListWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<NotificationEndpointListWarningDataItem>;
 
 export type NotificationEndpointListWarningDataItemList =
-  ReadonlyArray<NotificationEndpointListWarningDataItem>;
+  Array<NotificationEndpointListWarningDataItem>;
 export const NotificationEndpointListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     NotificationEndpointListWarningDataItem,
@@ -72770,8 +73008,7 @@ export const RegionListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "RegionListWarningDataItem",
 }) as any as S.Schema<RegionListWarningDataItem>;
 
-export type RegionListWarningDataItemList =
-  ReadonlyArray<RegionListWarningDataItem>;
+export type RegionListWarningDataItemList = Array<RegionListWarningDataItem>;
 export const RegionListWarningDataItemList = /*@__PURE__*/ S.Array(
   RegionListWarningDataItem,
 ) as any as S.Schema<RegionListWarningDataItemList>;
@@ -72826,7 +73063,7 @@ export const RegionListWarning = /*@__PURE__*/ S.suspend(() =>
   identifier: "RegionListWarning",
 }) as any as S.Schema<RegionListWarning>;
 
-export type RegionList_ = ReadonlyArray<Region>;
+export type RegionList_ = Array<Region>;
 export const RegionList_ = /*@__PURE__*/ S.Array(
   Region,
 ) as any as S.Schema<RegionList_>;
@@ -72977,7 +73214,7 @@ export const SnapshotListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SnapshotListWarningDataItem>;
 
 export type SnapshotListWarningDataItemList =
-  ReadonlyArray<SnapshotListWarningDataItem>;
+  Array<SnapshotListWarningDataItem>;
 export const SnapshotListWarningDataItemList = /*@__PURE__*/ S.Array(
   SnapshotListWarningDataItem,
 ) as any as S.Schema<SnapshotListWarningDataItemList>;
@@ -73110,7 +73347,7 @@ export const SslCertificateListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SslCertificateListWarningDataItem>;
 
 export type SslCertificateListWarningDataItemList =
-  ReadonlyArray<SslCertificateListWarningDataItem>;
+  Array<SslCertificateListWarningDataItem>;
 export const SslCertificateListWarningDataItemList = /*@__PURE__*/ S.Array(
   SslCertificateListWarningDataItem,
 ) as any as S.Schema<SslCertificateListWarningDataItemList>;
@@ -73213,7 +73450,7 @@ export const SslPoliciesListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SslPoliciesListWarningDataItem>;
 
 export type SslPoliciesListWarningDataItemList =
-  ReadonlyArray<SslPoliciesListWarningDataItem>;
+  Array<SslPoliciesListWarningDataItem>;
 export const SslPoliciesListWarningDataItemList = /*@__PURE__*/ S.Array(
   SslPoliciesListWarningDataItem,
 ) as any as S.Schema<SslPoliciesListWarningDataItemList>;
@@ -73379,7 +73616,7 @@ export const TargetHttpProxyListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TargetHttpProxyListWarningDataItem>;
 
 export type TargetHttpProxyListWarningDataItemList =
-  ReadonlyArray<TargetHttpProxyListWarningDataItem>;
+  Array<TargetHttpProxyListWarningDataItem>;
 export const TargetHttpProxyListWarningDataItemList = /*@__PURE__*/ S.Array(
   TargetHttpProxyListWarningDataItem,
 ) as any as S.Schema<TargetHttpProxyListWarningDataItemList>;
@@ -73482,7 +73719,7 @@ export const TargetHttpsProxyListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TargetHttpsProxyListWarningDataItem>;
 
 export type TargetHttpsProxyListWarningDataItemList =
-  ReadonlyArray<TargetHttpsProxyListWarningDataItem>;
+  Array<TargetHttpsProxyListWarningDataItem>;
 export const TargetHttpsProxyListWarningDataItemList = /*@__PURE__*/ S.Array(
   TargetHttpsProxyListWarningDataItem,
 ) as any as S.Schema<TargetHttpsProxyListWarningDataItemList>;
@@ -73617,7 +73854,7 @@ export const TargetTcpProxyListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TargetTcpProxyListWarningDataItem>;
 
 export type TargetTcpProxyListWarningDataItemList =
-  ReadonlyArray<TargetTcpProxyListWarningDataItem>;
+  Array<TargetTcpProxyListWarningDataItem>;
 export const TargetTcpProxyListWarningDataItemList = /*@__PURE__*/ S.Array(
   TargetTcpProxyListWarningDataItem,
 ) as any as S.Schema<TargetTcpProxyListWarningDataItemList>;
@@ -73751,8 +73988,7 @@ export const UrlMapListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "UrlMapListWarningDataItem",
 }) as any as S.Schema<UrlMapListWarningDataItem>;
 
-export type UrlMapListWarningDataItemList =
-  ReadonlyArray<UrlMapListWarningDataItem>;
+export type UrlMapListWarningDataItemList = Array<UrlMapListWarningDataItem>;
 export const UrlMapListWarningDataItemList = /*@__PURE__*/ S.Array(
   UrlMapListWarningDataItem,
 ) as any as S.Schema<UrlMapListWarningDataItemList>;
@@ -73884,8 +74120,7 @@ export const ZoneListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "ZoneListWarningDataItem",
 }) as any as S.Schema<ZoneListWarningDataItem>;
 
-export type ZoneListWarningDataItemList =
-  ReadonlyArray<ZoneListWarningDataItem>;
+export type ZoneListWarningDataItemList = Array<ZoneListWarningDataItem>;
 export const ZoneListWarningDataItemList = /*@__PURE__*/ S.Array(
   ZoneListWarningDataItem,
 ) as any as S.Schema<ZoneListWarningDataItemList>;
@@ -73940,7 +74175,7 @@ export const ZoneListWarning = /*@__PURE__*/ S.suspend(() =>
   identifier: "ZoneListWarning",
 }) as any as S.Schema<ZoneListWarning>;
 
-export type ZoneList_ = ReadonlyArray<Zone>;
+export type ZoneList_ = Array<Zone>;
 export const ZoneList_ = /*@__PURE__*/ S.Array(
   Zone,
 ) as any as S.Schema<ZoneList_>;
@@ -74004,7 +74239,7 @@ export const ListReliabilityRisksRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListReliabilityRisksRequest",
 }) as any as S.Schema<ListReliabilityRisksRequest>;
 
-export type ReliabilityRiskList = ReadonlyArray<ReliabilityRisk>;
+export type ReliabilityRiskList = Array<ReliabilityRisk>;
 export const ReliabilityRiskList = /*@__PURE__*/ S.Array(
   ReliabilityRisk,
 ) as any as S.Schema<ReliabilityRiskList>;
@@ -74059,7 +74294,7 @@ export const ReliabilityRisksListResponseWarningDataItem =
   }) as any as S.Schema<ReliabilityRisksListResponseWarningDataItem>;
 
 export type ReliabilityRisksListResponseWarningDataItemList =
-  ReadonlyArray<ReliabilityRisksListResponseWarningDataItem>;
+  Array<ReliabilityRisksListResponseWarningDataItem>;
 export const ReliabilityRisksListResponseWarningDataItemList =
   /*@__PURE__*/ S.Array(
     ReliabilityRisksListResponseWarningDataItem,
@@ -74152,7 +74387,7 @@ export const ListReservationBlocksRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListReservationBlocksRequest",
 }) as any as S.Schema<ListReservationBlocksRequest>;
 
-export type ReservationBlockList = ReadonlyArray<ReservationBlock>;
+export type ReservationBlockList = Array<ReservationBlock>;
 export const ReservationBlockList = /*@__PURE__*/ S.Array(
   ReservationBlock,
 ) as any as S.Schema<ReservationBlockList>;
@@ -74174,7 +74409,7 @@ export const ReservationBlocksListResponseWarningDataItem =
   }) as any as S.Schema<ReservationBlocksListResponseWarningDataItem>;
 
 export type ReservationBlocksListResponseWarningDataItemList =
-  ReadonlyArray<ReservationBlocksListResponseWarningDataItem>;
+  Array<ReservationBlocksListResponseWarningDataItem>;
 export const ReservationBlocksListResponseWarningDataItemList =
   /*@__PURE__*/ S.Array(
     ReservationBlocksListResponseWarningDataItem,
@@ -74324,7 +74559,7 @@ export const ReservationConsumedInstanceStatusLinkageErrorsErrorsItemErrorDetail
   }) as any as S.Schema<ReservationConsumedInstanceStatusLinkageErrorsErrorsItemErrorDetailsItem>;
 
 export type ReservationConsumedInstanceStatusLinkageErrorsErrorsItemErrorDetailsItemList =
-  ReadonlyArray<ReservationConsumedInstanceStatusLinkageErrorsErrorsItemErrorDetailsItem>;
+  Array<ReservationConsumedInstanceStatusLinkageErrorsErrorsItemErrorDetailsItem>;
 export const ReservationConsumedInstanceStatusLinkageErrorsErrorsItemErrorDetailsItemList =
   /*@__PURE__*/ S.Array(
     ReservationConsumedInstanceStatusLinkageErrorsErrorsItemErrorDetailsItem,
@@ -74355,7 +74590,7 @@ export const ReservationConsumedInstanceStatusLinkageErrorsErrorsItem =
   }) as any as S.Schema<ReservationConsumedInstanceStatusLinkageErrorsErrorsItem>;
 
 export type ReservationConsumedInstanceStatusLinkageErrorsErrorsItemList =
-  ReadonlyArray<ReservationConsumedInstanceStatusLinkageErrorsErrorsItem>;
+  Array<ReservationConsumedInstanceStatusLinkageErrorsErrorsItem>;
 export const ReservationConsumedInstanceStatusLinkageErrorsErrorsItemList =
   /*@__PURE__*/ S.Array(
     ReservationConsumedInstanceStatusLinkageErrorsErrorsItem,
@@ -74409,7 +74644,7 @@ export const ReservationConsumedInstance = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReservationConsumedInstance>;
 
 export type ReservationConsumedInstanceList =
-  ReadonlyArray<ReservationConsumedInstance>;
+  Array<ReservationConsumedInstance>;
 export const ReservationConsumedInstanceList = /*@__PURE__*/ S.Array(
   ReservationConsumedInstance,
 ) as any as S.Schema<ReservationConsumedInstanceList>;
@@ -74464,7 +74699,7 @@ export const ReservationConsumedInstancesListResponseWarningDataItem =
   }) as any as S.Schema<ReservationConsumedInstancesListResponseWarningDataItem>;
 
 export type ReservationConsumedInstancesListResponseWarningDataItemList =
-  ReadonlyArray<ReservationConsumedInstancesListResponseWarningDataItem>;
+  Array<ReservationConsumedInstancesListResponseWarningDataItem>;
 export const ReservationConsumedInstancesListResponseWarningDataItemList =
   /*@__PURE__*/ S.Array(
     ReservationConsumedInstancesListResponseWarningDataItem,
@@ -74604,7 +74839,7 @@ export const ReservationListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReservationListWarningDataItem>;
 
 export type ReservationListWarningDataItemList =
-  ReadonlyArray<ReservationListWarningDataItem>;
+  Array<ReservationListWarningDataItem>;
 export const ReservationListWarningDataItemList = /*@__PURE__*/ S.Array(
   ReservationListWarningDataItem,
 ) as any as S.Schema<ReservationListWarningDataItemList>;
@@ -74693,7 +74928,7 @@ export const ListReservationSlotsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListReservationSlotsRequest",
 }) as any as S.Schema<ListReservationSlotsRequest>;
 
-export type ReservationSlotList = ReadonlyArray<ReservationSlot>;
+export type ReservationSlotList = Array<ReservationSlot>;
 export const ReservationSlotList = /*@__PURE__*/ S.Array(
   ReservationSlot,
 ) as any as S.Schema<ReservationSlotList>;
@@ -74748,7 +74983,7 @@ export const ReservationSlotsListResponseWarningDataItem =
   }) as any as S.Schema<ReservationSlotsListResponseWarningDataItem>;
 
 export type ReservationSlotsListResponseWarningDataItemList =
-  ReadonlyArray<ReservationSlotsListResponseWarningDataItem>;
+  Array<ReservationSlotsListResponseWarningDataItem>;
 export const ReservationSlotsListResponseWarningDataItemList =
   /*@__PURE__*/ S.Array(
     ReservationSlotsListResponseWarningDataItem,
@@ -74839,7 +75074,7 @@ export const ListReservationSubBlocksRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListReservationSubBlocksRequest",
 }) as any as S.Schema<ListReservationSubBlocksRequest>;
 
-export type ReservationSubBlockList = ReadonlyArray<ReservationSubBlock>;
+export type ReservationSubBlockList = Array<ReservationSubBlock>;
 export const ReservationSubBlockList = /*@__PURE__*/ S.Array(
   ReservationSubBlock,
 ) as any as S.Schema<ReservationSubBlockList>;
@@ -74861,7 +75096,7 @@ export const ReservationSubBlocksListResponseWarningDataItem =
   }) as any as S.Schema<ReservationSubBlocksListResponseWarningDataItem>;
 
 export type ReservationSubBlocksListResponseWarningDataItemList =
-  ReadonlyArray<ReservationSubBlocksListResponseWarningDataItem>;
+  Array<ReservationSubBlocksListResponseWarningDataItem>;
 export const ReservationSubBlocksListResponseWarningDataItemList =
   /*@__PURE__*/ S.Array(
     ReservationSubBlocksListResponseWarningDataItem,
@@ -75031,7 +75266,7 @@ export const ResourcePolicyListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourcePolicyListWarningDataItem>;
 
 export type ResourcePolicyListWarningDataItemList =
-  ReadonlyArray<ResourcePolicyListWarningDataItem>;
+  Array<ResourcePolicyListWarningDataItem>;
 export const ResourcePolicyListWarningDataItemList = /*@__PURE__*/ S.Array(
   ResourcePolicyListWarningDataItem,
 ) as any as S.Schema<ResourcePolicyListWarningDataItemList>;
@@ -75165,7 +75400,7 @@ export const RolloutsListResponseWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RolloutsListResponseWarningDataItem>;
 
 export type RolloutsListResponseWarningDataItemList =
-  ReadonlyArray<RolloutsListResponseWarningDataItem>;
+  Array<RolloutsListResponseWarningDataItem>;
 export const RolloutsListResponseWarningDataItemList = /*@__PURE__*/ S.Array(
   RolloutsListResponseWarningDataItem,
 ) as any as S.Schema<RolloutsListResponseWarningDataItemList>;
@@ -75288,7 +75523,7 @@ export const ListRoutePoliciesRoutersRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListRoutePoliciesRoutersRequest",
 }) as any as S.Schema<ListRoutePoliciesRoutersRequest>;
 
-export type RoutePolicyList = ReadonlyArray<RoutePolicy>;
+export type RoutePolicyList = Array<RoutePolicy>;
 export const RoutePolicyList = /*@__PURE__*/ S.Array(
   RoutePolicy,
 ) as any as S.Schema<RoutePolicyList>;
@@ -75310,7 +75545,7 @@ export const RoutersListRoutePoliciesWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<RoutersListRoutePoliciesWarningDataItem>;
 
 export type RoutersListRoutePoliciesWarningDataItemList =
-  ReadonlyArray<RoutersListRoutePoliciesWarningDataItem>;
+  Array<RoutersListRoutePoliciesWarningDataItem>;
 export const RoutersListRoutePoliciesWarningDataItemList =
   /*@__PURE__*/ S.Array(
     RoutersListRoutePoliciesWarningDataItem,
@@ -75449,8 +75684,7 @@ export const RouterListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "RouterListWarningDataItem",
 }) as any as S.Schema<RouterListWarningDataItem>;
 
-export type RouterListWarningDataItemList =
-  ReadonlyArray<RouterListWarningDataItem>;
+export type RouterListWarningDataItemList = Array<RouterListWarningDataItem>;
 export const RouterListWarningDataItemList = /*@__PURE__*/ S.Array(
   RouterListWarningDataItem,
 ) as any as S.Schema<RouterListWarningDataItemList>;
@@ -75579,8 +75813,7 @@ export const RouteListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "RouteListWarningDataItem",
 }) as any as S.Schema<RouteListWarningDataItem>;
 
-export type RouteListWarningDataItemList =
-  ReadonlyArray<RouteListWarningDataItem>;
+export type RouteListWarningDataItemList = Array<RouteListWarningDataItem>;
 export const RouteListWarningDataItemList = /*@__PURE__*/ S.Array(
   RouteListWarningDataItem,
 ) as any as S.Schema<RouteListWarningDataItemList>;
@@ -75779,7 +76012,7 @@ export const ServiceAttachmentListWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ServiceAttachmentListWarningDataItem>;
 
 export type ServiceAttachmentListWarningDataItemList =
-  ReadonlyArray<ServiceAttachmentListWarningDataItem>;
+  Array<ServiceAttachmentListWarningDataItem>;
 export const ServiceAttachmentListWarningDataItemList = /*@__PURE__*/ S.Array(
   ServiceAttachmentListWarningDataItem,
 ) as any as S.Schema<ServiceAttachmentListWarningDataItemList>;
@@ -75910,7 +76143,7 @@ export const ListSnapshotGroupsWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListSnapshotGroupsWarningDataItem>;
 
 export type ListSnapshotGroupsWarningDataItemList =
-  ReadonlyArray<ListSnapshotGroupsWarningDataItem>;
+  Array<ListSnapshotGroupsWarningDataItem>;
 export const ListSnapshotGroupsWarningDataItemList = /*@__PURE__*/ S.Array(
   ListSnapshotGroupsWarningDataItem,
 ) as any as S.Schema<ListSnapshotGroupsWarningDataItemList>;
@@ -75933,7 +76166,7 @@ export const ListSnapshotGroupsWarning = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListSnapshotGroupsWarning",
 }) as any as S.Schema<ListSnapshotGroupsWarning>;
 
-export type SnapshotGroupList = ReadonlyArray<SnapshotGroup>;
+export type SnapshotGroupList = Array<SnapshotGroup>;
 export const SnapshotGroupList = /*@__PURE__*/ S.Array(
   SnapshotGroup,
 ) as any as S.Schema<SnapshotGroupList>;
@@ -76122,7 +76355,7 @@ export const StoragePoolListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StoragePoolListWarningDataItem>;
 
 export type StoragePoolListWarningDataItemList =
-  ReadonlyArray<StoragePoolListWarningDataItem>;
+  Array<StoragePoolListWarningDataItem>;
 export const StoragePoolListWarningDataItemList = /*@__PURE__*/ S.Array(
   StoragePoolListWarningDataItem,
 ) as any as S.Schema<StoragePoolListWarningDataItemList>;
@@ -76262,7 +76495,7 @@ export const StoragePoolTypeListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StoragePoolTypeListWarningDataItem>;
 
 export type StoragePoolTypeListWarningDataItemList =
-  ReadonlyArray<StoragePoolTypeListWarningDataItem>;
+  Array<StoragePoolTypeListWarningDataItem>;
 export const StoragePoolTypeListWarningDataItemList = /*@__PURE__*/ S.Array(
   StoragePoolTypeListWarningDataItem,
 ) as any as S.Schema<StoragePoolTypeListWarningDataItemList>;
@@ -76348,7 +76581,7 @@ export const StoragePoolTypeList = /*@__PURE__*/ S.suspend(() =>
 export type ListSubnetworksViewsEnum = "DEFAULT" | "WITH_UTILIZATION";
 export const ListSubnetworksViewsEnum = /*@__PURE__*/ S.String;
 
-export type ListSubnetworksViewsEnumList = ReadonlyArray<
+export type ListSubnetworksViewsEnumList = Array<
   ListSubnetworksViewsEnum | (string & {})
 >;
 export const ListSubnetworksViewsEnumList = /*@__PURE__*/ S.Array(
@@ -76442,7 +76675,7 @@ export const SubnetworkListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SubnetworkListWarningDataItem>;
 
 export type SubnetworkListWarningDataItemList =
-  ReadonlyArray<SubnetworkListWarningDataItem>;
+  Array<SubnetworkListWarningDataItem>;
 export const SubnetworkListWarningDataItemList = /*@__PURE__*/ S.Array(
   SubnetworkListWarningDataItem,
 ) as any as S.Schema<SubnetworkListWarningDataItemList>;
@@ -76572,7 +76805,7 @@ export const TargetGrpcProxyListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TargetGrpcProxyListWarningDataItem>;
 
 export type TargetGrpcProxyListWarningDataItemList =
-  ReadonlyArray<TargetGrpcProxyListWarningDataItem>;
+  Array<TargetGrpcProxyListWarningDataItem>;
 export const TargetGrpcProxyListWarningDataItemList = /*@__PURE__*/ S.Array(
   TargetGrpcProxyListWarningDataItem,
 ) as any as S.Schema<TargetGrpcProxyListWarningDataItemList>;
@@ -76595,7 +76828,7 @@ export const TargetGrpcProxyListWarning = /*@__PURE__*/ S.suspend(() =>
   identifier: "TargetGrpcProxyListWarning",
 }) as any as S.Schema<TargetGrpcProxyListWarning>;
 
-export type TargetGrpcProxyList_ = ReadonlyArray<TargetGrpcProxy>;
+export type TargetGrpcProxyList_ = Array<TargetGrpcProxy>;
 export const TargetGrpcProxyList_ = /*@__PURE__*/ S.Array(
   TargetGrpcProxy,
 ) as any as S.Schema<TargetGrpcProxyList_>;
@@ -76745,7 +76978,7 @@ export const TargetInstanceListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TargetInstanceListWarningDataItem>;
 
 export type TargetInstanceListWarningDataItemList =
-  ReadonlyArray<TargetInstanceListWarningDataItem>;
+  Array<TargetInstanceListWarningDataItem>;
 export const TargetInstanceListWarningDataItemList = /*@__PURE__*/ S.Array(
   TargetInstanceListWarningDataItem,
 ) as any as S.Schema<TargetInstanceListWarningDataItemList>;
@@ -76912,7 +77145,7 @@ export const TargetPoolListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TargetPoolListWarningDataItem>;
 
 export type TargetPoolListWarningDataItemList =
-  ReadonlyArray<TargetPoolListWarningDataItem>;
+  Array<TargetPoolListWarningDataItem>;
 export const TargetPoolListWarningDataItemList = /*@__PURE__*/ S.Array(
   TargetPoolListWarningDataItem,
 ) as any as S.Schema<TargetPoolListWarningDataItemList>;
@@ -77010,7 +77243,7 @@ export const TargetSslProxyListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TargetSslProxyListWarningDataItem>;
 
 export type TargetSslProxyListWarningDataItemList =
-  ReadonlyArray<TargetSslProxyListWarningDataItem>;
+  Array<TargetSslProxyListWarningDataItem>;
 export const TargetSslProxyListWarningDataItemList = /*@__PURE__*/ S.Array(
   TargetSslProxyListWarningDataItem,
 ) as any as S.Schema<TargetSslProxyListWarningDataItemList>;
@@ -77065,7 +77298,7 @@ export const TargetSslProxyListWarning = /*@__PURE__*/ S.suspend(() =>
   identifier: "TargetSslProxyListWarning",
 }) as any as S.Schema<TargetSslProxyListWarning>;
 
-export type TargetSslProxyList_ = ReadonlyArray<TargetSslProxy>;
+export type TargetSslProxyList_ = Array<TargetSslProxy>;
 export const TargetSslProxyList_ = /*@__PURE__*/ S.Array(
   TargetSslProxy,
 ) as any as S.Schema<TargetSslProxyList_>;
@@ -77215,7 +77448,7 @@ export const TargetVpnGatewayListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TargetVpnGatewayListWarningDataItem>;
 
 export type TargetVpnGatewayListWarningDataItemList =
-  ReadonlyArray<TargetVpnGatewayListWarningDataItem>;
+  Array<TargetVpnGatewayListWarningDataItem>;
 export const TargetVpnGatewayListWarningDataItemList = /*@__PURE__*/ S.Array(
   TargetVpnGatewayListWarningDataItem,
 ) as any as S.Schema<TargetVpnGatewayListWarningDataItemList>;
@@ -77349,7 +77582,7 @@ export const BackendBucketListUsableWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<BackendBucketListUsableWarningDataItem>;
 
 export type BackendBucketListUsableWarningDataItemList =
-  ReadonlyArray<BackendBucketListUsableWarningDataItem>;
+  Array<BackendBucketListUsableWarningDataItem>;
 export const BackendBucketListUsableWarningDataItemList = /*@__PURE__*/ S.Array(
   BackendBucketListUsableWarningDataItem,
 ) as any as S.Schema<BackendBucketListUsableWarningDataItemList>;
@@ -77481,7 +77714,7 @@ export const BackendServiceListUsableWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<BackendServiceListUsableWarningDataItem>;
 
 export type BackendServiceListUsableWarningDataItemList =
-  ReadonlyArray<BackendServiceListUsableWarningDataItem>;
+  Array<BackendServiceListUsableWarningDataItem>;
 export const BackendServiceListUsableWarningDataItemList =
   /*@__PURE__*/ S.Array(
     BackendServiceListUsableWarningDataItem,
@@ -77725,7 +77958,7 @@ export const UsableSubnetworksAggregatedListWarningDataItem =
   }) as any as S.Schema<UsableSubnetworksAggregatedListWarningDataItem>;
 
 export type UsableSubnetworksAggregatedListWarningDataItemList =
-  ReadonlyArray<UsableSubnetworksAggregatedListWarningDataItem>;
+  Array<UsableSubnetworksAggregatedListWarningDataItem>;
 export const UsableSubnetworksAggregatedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     UsableSubnetworksAggregatedListWarningDataItem,
@@ -77767,7 +78000,7 @@ export const SubnetworksScopedWarningWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<SubnetworksScopedWarningWarningDataItem>;
 
 export type SubnetworksScopedWarningWarningDataItemList =
-  ReadonlyArray<SubnetworksScopedWarningWarningDataItem>;
+  Array<SubnetworksScopedWarningWarningDataItem>;
 export const SubnetworksScopedWarningWarningDataItemList =
   /*@__PURE__*/ S.Array(
     SubnetworksScopedWarningWarningDataItem,
@@ -77838,8 +78071,7 @@ export const SubnetworksScopedWarning = /*@__PURE__*/ S.suspend(() =>
   identifier: "SubnetworksScopedWarning",
 }) as any as S.Schema<SubnetworksScopedWarning>;
 
-export type SubnetworksScopedWarningList =
-  ReadonlyArray<SubnetworksScopedWarning>;
+export type SubnetworksScopedWarningList = Array<SubnetworksScopedWarning>;
 export const SubnetworksScopedWarningList = /*@__PURE__*/ S.Array(
   SubnetworksScopedWarning,
 ) as any as S.Schema<SubnetworksScopedWarningList>;
@@ -77884,7 +78116,7 @@ export const UsableSubnetworkSecondaryRange = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UsableSubnetworkSecondaryRange>;
 
 export type UsableSubnetworkSecondaryRangeList =
-  ReadonlyArray<UsableSubnetworkSecondaryRange>;
+  Array<UsableSubnetworkSecondaryRange>;
 export const UsableSubnetworkSecondaryRangeList = /*@__PURE__*/ S.Array(
   UsableSubnetworkSecondaryRange,
 ) as any as S.Schema<UsableSubnetworkSecondaryRangeList>;
@@ -77931,7 +78163,7 @@ export const UsableSubnetwork = /*@__PURE__*/ S.suspend(() =>
   identifier: "UsableSubnetwork",
 }) as any as S.Schema<UsableSubnetwork>;
 
-export type UsableSubnetworkList = ReadonlyArray<UsableSubnetwork>;
+export type UsableSubnetworkList = Array<UsableSubnetwork>;
 export const UsableSubnetworkList = /*@__PURE__*/ S.Array(
   UsableSubnetwork,
 ) as any as S.Schema<UsableSubnetworkList>;
@@ -78053,7 +78285,7 @@ export const GlobalListVmExtensionsResponseWarningDataItem =
   }) as any as S.Schema<GlobalListVmExtensionsResponseWarningDataItem>;
 
 export type GlobalListVmExtensionsResponseWarningDataItemList =
-  ReadonlyArray<GlobalListVmExtensionsResponseWarningDataItem>;
+  Array<GlobalListVmExtensionsResponseWarningDataItem>;
 export const GlobalListVmExtensionsResponseWarningDataItemList =
   /*@__PURE__*/ S.Array(
     GlobalListVmExtensionsResponseWarningDataItem,
@@ -78078,7 +78310,7 @@ export const GlobalListVmExtensionsResponseWarning = /*@__PURE__*/ S.suspend(
   identifier: "GlobalListVmExtensionsResponseWarning",
 }) as any as S.Schema<GlobalListVmExtensionsResponseWarning>;
 
-export type GlobalVmExtensionList = ReadonlyArray<GlobalVmExtension>;
+export type GlobalVmExtensionList = Array<GlobalVmExtension>;
 export const GlobalVmExtensionList = /*@__PURE__*/ S.Array(
   GlobalVmExtension,
 ) as any as S.Schema<GlobalVmExtensionList>;
@@ -78153,7 +78385,7 @@ export const ListVmExtensionsFolderZoneVmExtensionPoliciesRequest =
     identifier: "ListVmExtensionsFolderZoneVmExtensionPoliciesRequest",
   }) as any as S.Schema<ListVmExtensionsFolderZoneVmExtensionPoliciesRequest>;
 
-export type VmExtensionList = ReadonlyArray<VmExtension>;
+export type VmExtensionList = Array<VmExtension>;
 export const VmExtensionList = /*@__PURE__*/ S.Array(
   VmExtension,
 ) as any as S.Schema<VmExtensionList>;
@@ -78175,7 +78407,7 @@ export const ListVmExtensionsResponseWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListVmExtensionsResponseWarningDataItem>;
 
 export type ListVmExtensionsResponseWarningDataItemList =
-  ReadonlyArray<ListVmExtensionsResponseWarningDataItem>;
+  Array<ListVmExtensionsResponseWarningDataItem>;
 export const ListVmExtensionsResponseWarningDataItemList =
   /*@__PURE__*/ S.Array(
     ListVmExtensionsResponseWarningDataItem,
@@ -78409,7 +78641,7 @@ export const ListVmExtensionStatesInstancesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListVmExtensionStatesInstancesRequest",
 }) as any as S.Schema<ListVmExtensionStatesInstancesRequest>;
 
-export type VmExtensionStateList = ReadonlyArray<VmExtensionState>;
+export type VmExtensionStateList = Array<VmExtensionState>;
 export const VmExtensionStateList = /*@__PURE__*/ S.Array(
   VmExtensionState,
 ) as any as S.Schema<VmExtensionStateList>;
@@ -78431,7 +78663,7 @@ export const ListVmExtensionStatesResponseWarningDataItem =
   }) as any as S.Schema<ListVmExtensionStatesResponseWarningDataItem>;
 
 export type ListVmExtensionStatesResponseWarningDataItemList =
-  ReadonlyArray<ListVmExtensionStatesResponseWarningDataItem>;
+  Array<ListVmExtensionStatesResponseWarningDataItem>;
 export const ListVmExtensionStatesResponseWarningDataItemList =
   /*@__PURE__*/ S.Array(
     ListVmExtensionStatesResponseWarningDataItem,
@@ -78611,7 +78843,7 @@ export const VpnGatewayListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VpnGatewayListWarningDataItem>;
 
 export type VpnGatewayListWarningDataItemList =
-  ReadonlyArray<VpnGatewayListWarningDataItem>;
+  Array<VpnGatewayListWarningDataItem>;
 export const VpnGatewayListWarningDataItemList = /*@__PURE__*/ S.Array(
   VpnGatewayListWarningDataItem,
 ) as any as S.Schema<VpnGatewayListWarningDataItemList>;
@@ -78744,7 +78976,7 @@ export const VpnTunnelListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VpnTunnelListWarningDataItem>;
 
 export type VpnTunnelListWarningDataItemList =
-  ReadonlyArray<VpnTunnelListWarningDataItem>;
+  Array<VpnTunnelListWarningDataItem>;
 export const VpnTunnelListWarningDataItemList = /*@__PURE__*/ S.Array(
   VpnTunnelListWarningDataItem,
 ) as any as S.Schema<VpnTunnelListWarningDataItemList>;
@@ -78876,7 +79108,7 @@ export const WireGroupListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WireGroupListWarningDataItem>;
 
 export type WireGroupListWarningDataItemList =
-  ReadonlyArray<WireGroupListWarningDataItem>;
+  Array<WireGroupListWarningDataItem>;
 export const WireGroupListWarningDataItemList = /*@__PURE__*/ S.Array(
   WireGroupListWarningDataItem,
 ) as any as S.Schema<WireGroupListWarningDataItemList>;
@@ -78931,7 +79163,7 @@ export const WireGroupListWarning = /*@__PURE__*/ S.suspend(() =>
   identifier: "WireGroupListWarning",
 }) as any as S.Schema<WireGroupListWarning>;
 
-export type WireGroupList_ = ReadonlyArray<WireGroup>;
+export type WireGroupList_ = Array<WireGroup>;
 export const WireGroupList_ = /*@__PURE__*/ S.Array(
   WireGroup,
 ) as any as S.Schema<WireGroupList_>;
@@ -79018,7 +79250,7 @@ export const ListXpnHostsProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListXpnHostsProjectsRequest",
 }) as any as S.Schema<ListXpnHostsProjectsRequest>;
 
-export type ProjectList = ReadonlyArray<Project>;
+export type ProjectList = Array<Project>;
 export const ProjectList = /*@__PURE__*/ S.Array(
   Project,
 ) as any as S.Schema<ProjectList>;
@@ -79070,8 +79302,7 @@ export const XpnHostListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "XpnHostListWarningDataItem",
 }) as any as S.Schema<XpnHostListWarningDataItem>;
 
-export type XpnHostListWarningDataItemList =
-  ReadonlyArray<XpnHostListWarningDataItem>;
+export type XpnHostListWarningDataItemList = Array<XpnHostListWarningDataItem>;
 export const XpnHostListWarningDataItemList = /*@__PURE__*/ S.Array(
   XpnHostListWarningDataItem,
 ) as any as S.Schema<XpnHostListWarningDataItemList>;
@@ -79312,7 +79543,7 @@ export const QueuedResourceListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<QueuedResourceListWarningDataItem>;
 
 export type QueuedResourceListWarningDataItemList =
-  ReadonlyArray<QueuedResourceListWarningDataItem>;
+  Array<QueuedResourceListWarningDataItem>;
 export const QueuedResourceListWarningDataItemList = /*@__PURE__*/ S.Array(
   QueuedResourceListWarningDataItem,
 ) as any as S.Schema<QueuedResourceListWarningDataItemList>;
@@ -83234,7 +83465,7 @@ export const ReservationSubBlocksReportFaultyRequestFaultReason =
   }) as any as S.Schema<ReservationSubBlocksReportFaultyRequestFaultReason>;
 
 export type ReservationSubBlocksReportFaultyRequestFaultReasonList =
-  ReadonlyArray<ReservationSubBlocksReportFaultyRequestFaultReason>;
+  Array<ReservationSubBlocksReportFaultyRequestFaultReason>;
 export const ReservationSubBlocksReportFaultyRequestFaultReasonList =
   /*@__PURE__*/ S.Array(
     ReservationSubBlocksReportFaultyRequestFaultReason,
@@ -83340,7 +83571,7 @@ export const InstancesReportHostAsFaultyRequestFaultReason =
   }) as any as S.Schema<InstancesReportHostAsFaultyRequestFaultReason>;
 
 export type InstancesReportHostAsFaultyRequestFaultReasonList =
-  ReadonlyArray<InstancesReportHostAsFaultyRequestFaultReason>;
+  Array<InstancesReportHostAsFaultyRequestFaultReason>;
 export const InstancesReportHostAsFaultyRequestFaultReasonList =
   /*@__PURE__*/ S.Array(
     InstancesReportHostAsFaultyRequestFaultReason,
@@ -83784,7 +84015,7 @@ export const CustomerEncryptionKeyProtectedDisk = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CustomerEncryptionKeyProtectedDisk>;
 
 export type CustomerEncryptionKeyProtectedDiskList =
-  ReadonlyArray<CustomerEncryptionKeyProtectedDisk>;
+  Array<CustomerEncryptionKeyProtectedDisk>;
 export const CustomerEncryptionKeyProtectedDiskList = /*@__PURE__*/ S.Array(
   CustomerEncryptionKeyProtectedDisk,
 ) as any as S.Schema<CustomerEncryptionKeyProtectedDiskList>;
@@ -92516,7 +92747,7 @@ export const TestFailure = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TestFailure" }) as any as S.Schema<TestFailure>;
 
-export type TestFailureList = ReadonlyArray<TestFailure>;
+export type TestFailureList = Array<TestFailure>;
 export const TestFailureList = /*@__PURE__*/ S.Array(
   TestFailure,
 ) as any as S.Schema<TestFailureList>;
@@ -92562,10 +92793,9 @@ export type UrlMapsValidateRequestLoadBalancingSchemesItemEnum =
 export const UrlMapsValidateRequestLoadBalancingSchemesItemEnum =
   /*@__PURE__*/ S.String;
 
-export type UrlMapsValidateRequestLoadBalancingSchemesItemEnumList =
-  ReadonlyArray<
-    UrlMapsValidateRequestLoadBalancingSchemesItemEnum | (string & {})
-  >;
+export type UrlMapsValidateRequestLoadBalancingSchemesItemEnumList = Array<
+  UrlMapsValidateRequestLoadBalancingSchemesItemEnum | (string & {})
+>;
 export const UrlMapsValidateRequestLoadBalancingSchemesItemEnumList =
   /*@__PURE__*/ S.Array(
     UrlMapsValidateRequestLoadBalancingSchemesItemEnum,

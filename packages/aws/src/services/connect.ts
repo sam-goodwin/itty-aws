@@ -723,7 +723,7 @@ export const EncryptionType = /*@__PURE__*/ S.String;
 
 export type KeyId = string;
 export interface EncryptionConfig {
-  EncryptionType: EncryptionType;
+  EncryptionType: EncryptionType | (string & {});
   KeyId: string;
 }
 export const EncryptionConfig = /*@__PURE__*/ S.suspend(() =>
@@ -776,7 +776,7 @@ export const KinesisFirehoseConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<KinesisFirehoseConfig>;
 export interface InstanceStorageConfig {
   AssociationId?: string;
-  StorageType: StorageType;
+  StorageType: StorageType | (string & {});
   S3Config?: S3Config;
   KinesisVideoStreamConfig?: KinesisVideoStreamConfig;
   KinesisStreamConfig?: KinesisStreamConfig;
@@ -2012,7 +2012,7 @@ export const PostAcceptTimeoutConfig = /*@__PURE__*/ S.suspend(() =>
 export type AllowedUserAction = "CALL" | "DISCARD";
 export const AllowedUserAction = /*@__PURE__*/ S.String;
 
-export type AllowedUserActions = AllowedUserAction[];
+export type AllowedUserActions = (AllowedUserAction | (string & {}))[];
 export const AllowedUserActions = /*@__PURE__*/ S.Array(AllowedUserAction);
 export interface Preview {
   PostAcceptTimeoutConfig: PostAcceptTimeoutConfig;
@@ -2039,7 +2039,7 @@ export const OutboundStrategyConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "OutboundStrategyConfig",
 }) as any as S.Schema<OutboundStrategyConfig>;
 export interface OutboundStrategy {
-  Type: OutboundStrategyType;
+  Type: OutboundStrategyType | (string & {});
   Config?: OutboundStrategyConfig;
 }
 export const OutboundStrategy = /*@__PURE__*/ S.suspend(() =>
@@ -2378,8 +2378,8 @@ export type ReferenceArn = string;
 export type ReferenceStatusReason = string;
 export interface Reference {
   Value?: string;
-  Type: ReferenceType;
-  Status?: ReferenceStatus;
+  Type: ReferenceType | (string & {});
+  Status?: ReferenceStatus | (string & {});
   Arn?: string;
   StatusReason?: string;
 }
@@ -3004,7 +3004,7 @@ export const PerformanceCategoryName = /*@__PURE__*/ S.String;
 
 export type EvaluationScorePercentage = number;
 export interface EvaluationFormScoreThreshold {
-  PerformanceCategory: PerformanceCategoryName;
+  PerformanceCategory: PerformanceCategoryName | (string & {});
   MinScorePercentage?: number;
   MaxScorePercentage?: number;
 }
@@ -3115,7 +3115,7 @@ export type NumericQuestionPropertyAutomationLabel =
 export const NumericQuestionPropertyAutomationLabel = /*@__PURE__*/ S.String;
 
 export interface NumericQuestionPropertyValueAutomation {
-  Label: NumericQuestionPropertyAutomationLabel;
+  Label: NumericQuestionPropertyAutomationLabel | (string & {});
 }
 export const NumericQuestionPropertyValueAutomation = /*@__PURE__*/ S.suspend(
   () => S.Struct({ Label: NumericQuestionPropertyAutomationLabel }),
@@ -3129,7 +3129,7 @@ export const EvaluationFormQuestionAutomationAnswerSourceType =
   /*@__PURE__*/ S.String;
 
 export interface EvaluationFormQuestionAutomationAnswerSource {
-  SourceType: EvaluationFormQuestionAutomationAnswerSourceType;
+  SourceType: EvaluationFormQuestionAutomationAnswerSourceType | (string & {});
 }
 export const EvaluationFormQuestionAutomationAnswerSource =
   /*@__PURE__*/ S.suspend(() =>
@@ -3208,7 +3208,9 @@ export const SingleSelectQuestionRuleCategoryAutomationCondition =
 
 export interface SingleSelectQuestionRuleCategoryAutomation {
   Category: string;
-  Condition: SingleSelectQuestionRuleCategoryAutomationCondition;
+  Condition:
+    | SingleSelectQuestionRuleCategoryAutomationCondition
+    | (string & {});
   OptionRefId: string;
 }
 export const SingleSelectQuestionRuleCategoryAutomation =
@@ -3251,7 +3253,7 @@ export const EvaluationFormSingleSelectQuestionAutomation =
   }) as any as S.Schema<EvaluationFormSingleSelectQuestionAutomation>;
 export interface EvaluationFormSingleSelectQuestionProperties {
   Options: EvaluationFormSingleSelectQuestionOption[];
-  DisplayAs?: EvaluationFormSingleSelectQuestionDisplayMode;
+  DisplayAs?: EvaluationFormSingleSelectQuestionDisplayMode | (string & {});
   Automation?: EvaluationFormSingleSelectQuestionAutomation;
 }
 export const EvaluationFormSingleSelectQuestionProperties =
@@ -3327,7 +3329,7 @@ export type ReferenceIdList = string[];
 export const ReferenceIdList = /*@__PURE__*/ S.Array(S.String);
 export interface MultiSelectQuestionRuleCategoryAutomation {
   Category: string;
-  Condition: MultiSelectQuestionRuleCategoryAutomationCondition;
+  Condition: MultiSelectQuestionRuleCategoryAutomationCondition | (string & {});
   OptionRefIds: string[];
 }
 export const MultiSelectQuestionRuleCategoryAutomation =
@@ -3370,7 +3372,7 @@ export const EvaluationFormMultiSelectQuestionAutomation =
   }) as any as S.Schema<EvaluationFormMultiSelectQuestionAutomation>;
 export interface EvaluationFormMultiSelectQuestionProperties {
   Options: EvaluationFormMultiSelectQuestionOption[];
-  DisplayAs?: EvaluationFormMultiSelectQuestionDisplayMode;
+  DisplayAs?: EvaluationFormMultiSelectQuestionDisplayMode | (string & {});
   Automation?: EvaluationFormMultiSelectQuestionAutomation;
 }
 export const EvaluationFormMultiSelectQuestionProperties =
@@ -3418,7 +3420,7 @@ export type EvaluationFormItemEnablementSourceType = "QUESTION_REF_ID";
 export const EvaluationFormItemEnablementSourceType = /*@__PURE__*/ S.String;
 
 export interface EvaluationFormItemEnablementSource {
-  Type: EvaluationFormItemEnablementSourceType;
+  Type: EvaluationFormItemEnablementSourceType | (string & {});
   RefId?: string;
 }
 export const EvaluationFormItemEnablementSource = /*@__PURE__*/ S.suspend(() =>
@@ -3434,7 +3436,7 @@ export const EvaluationFormItemEnablementSourceValueType =
   /*@__PURE__*/ S.String;
 
 export interface EvaluationFormItemEnablementSourceValue {
-  Type: EvaluationFormItemEnablementSourceValueType;
+  Type: EvaluationFormItemEnablementSourceValueType | (string & {});
   RefId?: string;
 }
 export const EvaluationFormItemEnablementSourceValue = /*@__PURE__*/ S.suspend(
@@ -3460,7 +3462,7 @@ export const EvaluationFormItemSourceValuesComparator = /*@__PURE__*/ S.String;
 export interface EvaluationFormItemEnablementExpression {
   Source: EvaluationFormItemEnablementSource;
   Values: EvaluationFormItemEnablementSourceValue[];
-  Comparator: EvaluationFormItemSourceValuesComparator;
+  Comparator: EvaluationFormItemSourceValuesComparator | (string & {});
 }
 export const EvaluationFormItemEnablementExpression = /*@__PURE__*/ S.suspend(
   () =>
@@ -3498,7 +3500,7 @@ export const EvaluationFormItemEnablementOperator = /*@__PURE__*/ S.String;
 
 export interface EvaluationFormItemEnablementCondition {
   Operands: EvaluationFormItemEnablementConditionOperand[];
-  Operator?: EvaluationFormItemEnablementOperator;
+  Operator?: EvaluationFormItemEnablementOperator | (string & {});
 }
 export const EvaluationFormItemEnablementCondition = /*@__PURE__*/ S.suspend(
   () =>
@@ -3518,8 +3520,8 @@ export const EvaluationFormItemEnablementAction = /*@__PURE__*/ S.String;
 
 export interface EvaluationFormItemEnablementConfiguration {
   Condition: EvaluationFormItemEnablementCondition;
-  Action: EvaluationFormItemEnablementAction;
-  DefaultAction?: EvaluationFormItemEnablementAction;
+  Action: EvaluationFormItemEnablementAction | (string & {});
+  DefaultAction?: EvaluationFormItemEnablementAction | (string & {});
 }
 export const EvaluationFormItemEnablementConfiguration =
   /*@__PURE__*/ S.suspend(() =>
@@ -3565,7 +3567,7 @@ export interface EvaluationFormQuestion {
   Instructions?: string;
   RefId: string;
   NotApplicableEnabled?: boolean;
-  QuestionType: EvaluationFormQuestionType;
+  QuestionType: EvaluationFormQuestionType | (string & {});
   QuestionTypeProperties?: EvaluationFormQuestionTypeProperties;
   Enablement?: EvaluationFormItemEnablementConfiguration;
   Weight?: number;
@@ -3615,8 +3617,8 @@ export type EvaluationFormScoringStatus = "ENABLED" | "DISABLED";
 export const EvaluationFormScoringStatus = /*@__PURE__*/ S.String;
 
 export interface EvaluationFormScoringStrategy {
-  Mode: EvaluationFormScoringMode;
-  Status: EvaluationFormScoringStatus;
+  Mode: EvaluationFormScoringMode | (string & {});
+  Status: EvaluationFormScoringStatus | (string & {});
   ScoreThresholds?: EvaluationFormScoreThreshold[];
 }
 export const EvaluationFormScoringStrategy = /*@__PURE__*/ S.suspend(() =>
@@ -3649,7 +3651,7 @@ export const EvaluationReviewNotificationRecipientValue =
     identifier: "EvaluationReviewNotificationRecipientValue",
   }) as any as S.Schema<EvaluationReviewNotificationRecipientValue>;
 export interface EvaluationReviewNotificationRecipient {
-  Type: EvaluationReviewNotificationRecipientType;
+  Type: EvaluationReviewNotificationRecipientType | (string & {});
   Value: EvaluationReviewNotificationRecipientValue;
 }
 export const EvaluationReviewNotificationRecipient = /*@__PURE__*/ S.suspend(
@@ -3682,7 +3684,7 @@ export type ContactInteractionType = "AGENT" | "AUTOMATED" | "CUSTOMER";
 export const ContactInteractionType = /*@__PURE__*/ S.String;
 
 export interface EvaluationFormTargetConfiguration {
-  ContactInteractionType: ContactInteractionType;
+  ContactInteractionType: ContactInteractionType | (string & {});
 }
 export const EvaluationFormTargetConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ContactInteractionType: ContactInteractionType }),
@@ -3702,7 +3704,7 @@ export type EvaluationFormLanguageCode =
 export const EvaluationFormLanguageCode = /*@__PURE__*/ S.String;
 
 export interface EvaluationFormLanguageConfiguration {
-  FormLanguage?: EvaluationFormLanguageCode;
+  FormLanguage?: EvaluationFormLanguageCode | (string & {});
 }
 export const EvaluationFormLanguageConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ FormLanguage: S.optional(EvaluationFormLanguageCode) }),
@@ -3785,7 +3787,7 @@ export const HoursOfOperationTimeSlice = /*@__PURE__*/ S.suspend(() =>
   identifier: "HoursOfOperationTimeSlice",
 }) as any as S.Schema<HoursOfOperationTimeSlice>;
 export interface HoursOfOperationConfig {
-  Day: HoursOfOperationDays;
+  Day: HoursOfOperationDays | (string & {});
   StartTime: HoursOfOperationTimeSlice;
   EndTime: HoursOfOperationTimeSlice;
 }
@@ -3867,7 +3869,7 @@ export const OverrideTimeSlice = /*@__PURE__*/ S.suspend(() =>
   identifier: "OverrideTimeSlice",
 }) as any as S.Schema<OverrideTimeSlice>;
 export interface HoursOfOperationOverrideConfig {
-  Day?: OverrideDays;
+  Day?: OverrideDays | (string & {});
   StartTime?: OverrideTimeSlice;
   EndTime?: OverrideTimeSlice;
 }
@@ -3900,7 +3902,7 @@ export type WeekdayOccurrenceInteger = number;
 export type WeekdayOccurrenceList = number[];
 export const WeekdayOccurrenceList = /*@__PURE__*/ S.Array(S.Number);
 export interface RecurrencePattern {
-  Frequency: RecurrenceFrequency;
+  Frequency: RecurrenceFrequency | (string & {});
   Interval: number;
   ByMonth?: number[];
   ByMonthDay?: number[];
@@ -4114,7 +4116,9 @@ export type LocaleCode =
 export const LocaleCode = /*@__PURE__*/ S.String;
 
 export type LocalizedString = string;
-export type NotificationContent = { [key in LocaleCode]?: string };
+export type NotificationContent = {
+  [key in LocaleCode | (string & {})]?: string;
+};
 export const NotificationContent = /*@__PURE__*/ S.Record(
   LocaleCode,
   S.String.pipe(S.optional),
@@ -4178,8 +4182,8 @@ export type ScreenShareCapability = "SEND";
 export const ScreenShareCapability = /*@__PURE__*/ S.String;
 
 export interface ParticipantCapabilities {
-  Video?: VideoCapability;
-  ScreenShare?: ScreenShareCapability;
+  Video?: VideoCapability | (string & {});
+  ScreenShare?: ScreenShareCapability | (string & {});
 }
 export const ParticipantCapabilities = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4564,7 +4568,7 @@ export const FlowQuickConnectConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "FlowQuickConnectConfig",
 }) as any as S.Schema<FlowQuickConnectConfig>;
 export interface QuickConnectConfig {
-  QuickConnectType: QuickConnectType;
+  QuickConnectType: QuickConnectType | (string & {});
   UserConfig?: UserQuickConnectConfig;
   QueueConfig?: QueueQuickConnectConfig;
   PhoneConfig?: PhoneNumberQuickConnectConfig;
@@ -4627,7 +4631,7 @@ export type BehaviorType = "ROUTE_CURRENT_CHANNEL_ONLY" | "ROUTE_ANY_CHANNEL";
 export const BehaviorType = /*@__PURE__*/ S.String;
 
 export interface CrossChannelBehavior {
-  BehaviorType: BehaviorType;
+  BehaviorType: BehaviorType | (string & {});
 }
 export const CrossChannelBehavior = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ BehaviorType: BehaviorType }),
@@ -4635,7 +4639,7 @@ export const CrossChannelBehavior = /*@__PURE__*/ S.suspend(() =>
   identifier: "CrossChannelBehavior",
 }) as any as S.Schema<CrossChannelBehavior>;
 export interface MediaConcurrency {
-  Channel: Channel;
+  Channel: Channel | (string & {});
   Concurrency: number;
   CrossChannelBehavior?: CrossChannelBehavior;
 }
@@ -4726,7 +4730,7 @@ export type EventSourceName =
 export const EventSourceName = /*@__PURE__*/ S.String;
 
 export interface RuleTriggerEventSource {
-  EventSourceName: EventSourceName;
+  EventSourceName: EventSourceName | (string & {});
   IntegrationAssociationId?: string;
 }
 export const RuleTriggerEventSource = /*@__PURE__*/ S.suspend(() =>
@@ -4811,10 +4815,10 @@ export const NotificationRecipientType = /*@__PURE__*/ S.suspend(() =>
   identifier: "NotificationRecipientType",
 }) as any as S.Schema<NotificationRecipientType>;
 export interface SendNotificationActionDefinition {
-  DeliveryMethod: NotificationDeliveryType;
+  DeliveryMethod: NotificationDeliveryType | (string & {});
   Subject?: string;
   Content: string;
-  ContentType: NotificationContentType;
+  ContentType: NotificationContentType | (string & {});
   Recipient: NotificationRecipientType;
   Exclusion?: NotificationRecipientType;
 }
@@ -4893,7 +4897,7 @@ export const SlaFieldValueUnionList = /*@__PURE__*/ S.Array(FieldValueUnion);
 export type TargetSlaMinutes = number;
 export interface CaseSlaConfiguration {
   Name: string;
-  Type: SlaType;
+  Type: SlaType | (string & {});
   FieldId?: string;
   TargetFieldValues?: FieldValueUnion[];
   TargetSlaMinutes: number;
@@ -4910,7 +4914,7 @@ export const CaseSlaConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "CaseSlaConfiguration",
 }) as any as S.Schema<CaseSlaConfiguration>;
 export interface AssignSlaActionDefinition {
-  SlaAssignmentType: SlaAssignmentType;
+  SlaAssignmentType: SlaAssignmentType | (string & {});
   CaseSlaConfiguration?: CaseSlaConfiguration;
 }
 export const AssignSlaActionDefinition = /*@__PURE__*/ S.suspend(() =>
@@ -4937,7 +4941,7 @@ export const SubmitAutoEvaluationActionDefinition = /*@__PURE__*/ S.suspend(
   identifier: "SubmitAutoEvaluationActionDefinition",
 }) as any as S.Schema<SubmitAutoEvaluationActionDefinition>;
 export interface RuleAction {
-  ActionType: ActionType;
+  ActionType: ActionType | (string & {});
   TaskAction?: TaskActionDefinition;
   EventBridgeAction?: EventBridgeActionDefinition;
   AssignContactCategoryAction?: AssignContactCategoryActionDefinition;
@@ -5037,7 +5041,7 @@ export const ApplicationType = /*@__PURE__*/ S.String;
 export interface Application {
   Namespace?: string;
   ApplicationPermissions?: string[];
-  Type?: ApplicationType;
+  Type?: ApplicationType | (string & {});
 }
 export const Application = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5057,7 +5061,7 @@ export const FlowModuleType = /*@__PURE__*/ S.String;
 
 export type FlowModuleId = string;
 export interface FlowModule {
-  Type?: FlowModuleType;
+  Type?: FlowModuleType | (string & {});
   FlowModuleId?: string;
 }
 export const FlowModule = /*@__PURE__*/ S.suspend(() =>
@@ -5076,7 +5080,7 @@ export type IAMRestrictedPrimaryValue = string;
 export type PrimaryValueList = string[];
 export const PrimaryValueList = /*@__PURE__*/ S.Array(S.String);
 export interface PrimaryAttributeValue {
-  AccessType?: AccessType;
+  AccessType?: AccessType | (string & {});
   AttributeName?: string;
   Values?: string[];
 }
@@ -5293,7 +5297,7 @@ export const SingleSelectOptions = /*@__PURE__*/ S.Array(S.String);
 export interface TaskTemplateField {
   Id: TaskTemplateFieldIdentifier;
   Description?: string;
-  Type?: TaskTemplateFieldType;
+  Type?: TaskTemplateFieldType | (string & {});
   SingleSelectOptions?: string[];
 }
 export const TaskTemplateField = /*@__PURE__*/ S.suspend(() =>
@@ -5385,7 +5389,7 @@ export const ChatEntryPointParameters = /*@__PURE__*/ S.suspend(() =>
   identifier: "ChatEntryPointParameters",
 }) as any as S.Schema<ChatEntryPointParameters>;
 export interface TestCaseEntryPoint {
-  Type?: TestCaseEntryPointType;
+  Type?: TestCaseEntryPointType | (string & {});
   VoiceCallEntryPointParameters?: VoiceCallEntryPointParameters;
   ChatEntryPointParameters?: ChatEntryPointParameters;
 }
@@ -5576,7 +5580,7 @@ export type AfterContactWorkTimeLimit = number;
 export type SensitivePhoneNumber = string | redacted.Redacted<string>;
 export type PersistentConnection = boolean;
 export interface UserPhoneConfig {
-  PhoneType?: PhoneType;
+  PhoneType?: PhoneType | (string & {});
   AutoAccept?: boolean;
   AfterContactWorkTimeLimit?: number;
   DeskPhoneNumber?: string | redacted.Redacted<string>;
@@ -5598,7 +5602,7 @@ export type SecurityProfileIds = string[];
 export const SecurityProfileIds = /*@__PURE__*/ S.Array(S.String);
 export type AgentFirstCallbackAutoAccept = boolean;
 export interface AutoAcceptConfig {
-  Channel: Channel;
+  Channel: Channel | (string & {});
   AutoAccept: boolean;
   AgentFirstCallbackAutoAccept?: boolean;
 }
@@ -5622,7 +5626,7 @@ export const AfterContactWorkConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "AfterContactWorkConfig",
 }) as any as S.Schema<AfterContactWorkConfig>;
 export interface AfterContactWorkConfigPerChannel {
-  Channel: Channel;
+  Channel: Channel | (string & {});
   AfterContactWorkConfig: AfterContactWorkConfig;
   AgentFirstCallbackAfterContactWorkConfig?: AfterContactWorkConfig;
 }
@@ -5642,8 +5646,8 @@ export const AfterContactWorkConfigs = /*@__PURE__*/ S.Array(
   AfterContactWorkConfigPerChannel,
 );
 export interface PhoneNumberConfig {
-  Channel: Channel;
-  PhoneType: PhoneType;
+  Channel: Channel | (string & {});
+  PhoneType: PhoneType | (string & {});
   PhoneNumber?: string | redacted.Redacted<string>;
 }
 export const PhoneNumberConfig = /*@__PURE__*/ S.suspend(() =>
@@ -5658,7 +5662,7 @@ export const PhoneNumberConfig = /*@__PURE__*/ S.suspend(() =>
 export type PhoneNumberConfigs = PhoneNumberConfig[];
 export const PhoneNumberConfigs = /*@__PURE__*/ S.Array(PhoneNumberConfig);
 export interface PersistentConnectionConfig {
-  Channel: Channel;
+  Channel: Channel | (string & {});
   PersistentConnection: boolean;
 }
 export const PersistentConnectionConfig = /*@__PURE__*/ S.suspend(() =>
@@ -5677,8 +5681,8 @@ export type VoiceEnhancementMode =
 export const VoiceEnhancementMode = /*@__PURE__*/ S.String;
 
 export interface VoiceEnhancementConfig {
-  Channel: Channel;
-  VoiceEnhancementMode: VoiceEnhancementMode;
+  Channel: Channel | (string & {});
+  VoiceEnhancementMode: VoiceEnhancementMode | (string & {});
 }
 export const VoiceEnhancementConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Channel: Channel, VoiceEnhancementMode: VoiceEnhancementMode }),
@@ -6088,7 +6092,7 @@ export type WorkspaceFontFamily =
 export const WorkspaceFontFamily = /*@__PURE__*/ S.String;
 
 export interface FontFamily {
-  Default?: WorkspaceFontFamily;
+  Default?: WorkspaceFontFamily | (string & {});
 }
 export const FontFamily = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Default: S.optional(WorkspaceFontFamily) }),
@@ -12012,9 +12016,9 @@ export type Unit = "SECONDS" | "COUNT" | "PERCENT";
 export const Unit = /*@__PURE__*/ S.String;
 
 export interface CurrentMetric {
-  Name?: CurrentMetricName;
+  Name?: CurrentMetricName | (string & {});
   MetricId?: string;
-  Unit?: Unit;
+  Unit?: Unit | (string & {});
 }
 export const CurrentMetric = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -12684,7 +12688,7 @@ export const Comparison = /*@__PURE__*/ S.String;
 
 export type ThresholdValue = number;
 export interface Threshold {
-  Comparison?: Comparison;
+  Comparison?: Comparison | (string & {});
   ThresholdValue?: number;
 }
 export const Threshold = /*@__PURE__*/ S.suspend(() =>
@@ -12697,10 +12701,10 @@ export type Statistic = "SUM" | "MAX" | "AVG";
 export const Statistic = /*@__PURE__*/ S.String;
 
 export interface HistoricalMetric {
-  Name?: HistoricalMetricName;
+  Name?: HistoricalMetricName | (string & {});
   Threshold?: Threshold;
-  Statistic?: Statistic;
-  Unit?: Unit;
+  Statistic?: Statistic | (string & {});
+  Unit?: Unit | (string & {});
 }
 export const HistoricalMetric = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

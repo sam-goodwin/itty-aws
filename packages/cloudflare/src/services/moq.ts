@@ -75,7 +75,7 @@ export const RelaysCreateResponseConfigUpstreamsUpstreamsItem =
   }) as any as S.Schema<RelaysCreateResponseConfigUpstreamsUpstreamsItem>;
 
 export type RelaysCreateResponseConfigUpstreamsUpstreamsList =
-  ReadonlyArray<RelaysCreateResponseConfigUpstreamsUpstreamsItem>;
+  Array<RelaysCreateResponseConfigUpstreamsUpstreamsItem>;
 export const RelaysCreateResponseConfigUpstreamsUpstreamsList =
   /*@__PURE__*/ S.Array(
     RelaysCreateResponseConfigUpstreamsUpstreamsItem,
@@ -221,7 +221,7 @@ export const RelaysGetResponseConfigUpstreamsUpstreamsItem =
   }) as any as S.Schema<RelaysGetResponseConfigUpstreamsUpstreamsItem>;
 
 export type RelaysGetResponseConfigUpstreamsUpstreamsList =
-  ReadonlyArray<RelaysGetResponseConfigUpstreamsUpstreamsItem>;
+  Array<RelaysGetResponseConfigUpstreamsUpstreamsItem>;
 export const RelaysGetResponseConfigUpstreamsUpstreamsList =
   /*@__PURE__*/ S.Array(
     RelaysGetResponseConfigUpstreamsUpstreamsItem,
@@ -335,7 +335,7 @@ export const RelaysListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "RelaysListResultItem",
 }) as any as S.Schema<RelaysListResultItem>;
 
-export type RelaysListResultList = ReadonlyArray<RelaysListResultItem>;
+export type RelaysListResultList = Array<RelaysListResultItem>;
 export const RelaysListResultList = /*@__PURE__*/ S.Array(
   RelaysListResultItem,
 ) as any as S.Schema<RelaysListResultList>;
@@ -430,7 +430,7 @@ export const RelaysUpdateRequestConfigUpstreamsUpstreamsItem =
   }) as any as S.Schema<RelaysUpdateRequestConfigUpstreamsUpstreamsItem>;
 
 export type RelaysUpdateRequestConfigUpstreamsUpstreamsList =
-  ReadonlyArray<RelaysUpdateRequestConfigUpstreamsUpstreamsItem>;
+  Array<RelaysUpdateRequestConfigUpstreamsUpstreamsItem>;
 export const RelaysUpdateRequestConfigUpstreamsUpstreamsList =
   /*@__PURE__*/ S.Array(
     RelaysUpdateRequestConfigUpstreamsUpstreamsItem,
@@ -524,7 +524,7 @@ export const RelaysUpdateResponseConfigUpstreamsUpstreamsItem =
   }) as any as S.Schema<RelaysUpdateResponseConfigUpstreamsUpstreamsItem>;
 
 export type RelaysUpdateResponseConfigUpstreamsUpstreamsList =
-  ReadonlyArray<RelaysUpdateResponseConfigUpstreamsUpstreamsItem>;
+  Array<RelaysUpdateResponseConfigUpstreamsUpstreamsItem>;
 export const RelaysUpdateResponseConfigUpstreamsUpstreamsList =
   /*@__PURE__*/ S.Array(
     RelaysUpdateResponseConfigUpstreamsUpstreamsItem,

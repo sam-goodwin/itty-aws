@@ -126,7 +126,7 @@ export const GoogleMapsPlacesV1AutocompletePlacesRequestLocationRestriction =
       "GoogleMapsPlacesV1AutocompletePlacesRequestLocationRestriction",
   }) as any as S.Schema<GoogleMapsPlacesV1AutocompletePlacesRequestLocationRestriction>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -241,7 +241,7 @@ export const GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStringRange =
   }) as any as S.Schema<GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStringRange>;
 
 export type GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStringRangeList =
-  ReadonlyArray<GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStringRange>;
+  Array<GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStringRange>;
 export const GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStringRangeList =
   /*@__PURE__*/ S.Array(
     GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStringRange,
@@ -367,7 +367,7 @@ export const GoogleMapsPlacesV1AutocompletePlacesResponseSuggestion =
   }) as any as S.Schema<GoogleMapsPlacesV1AutocompletePlacesResponseSuggestion>;
 
 export type GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionList =
-  ReadonlyArray<GoogleMapsPlacesV1AutocompletePlacesResponseSuggestion>;
+  Array<GoogleMapsPlacesV1AutocompletePlacesResponseSuggestion>;
 export const GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionList =
   /*@__PURE__*/ S.Array(
     GoogleMapsPlacesV1AutocompletePlacesResponseSuggestion,
@@ -556,7 +556,7 @@ export const GoogleMapsPlacesV1FuelOptionsFuelPrice = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleMapsPlacesV1FuelOptionsFuelPrice>;
 
 export type GoogleMapsPlacesV1FuelOptionsFuelPriceList =
-  ReadonlyArray<GoogleMapsPlacesV1FuelOptionsFuelPrice>;
+  Array<GoogleMapsPlacesV1FuelOptionsFuelPrice>;
 export const GoogleMapsPlacesV1FuelOptionsFuelPriceList = /*@__PURE__*/ S.Array(
   GoogleMapsPlacesV1FuelOptionsFuelPrice,
 ) as any as S.Schema<GoogleMapsPlacesV1FuelOptionsFuelPriceList>;
@@ -730,7 +730,7 @@ export const GoogleMapsPlacesV1PlaceOpeningHoursPeriod =
   }) as any as S.Schema<GoogleMapsPlacesV1PlaceOpeningHoursPeriod>;
 
 export type GoogleMapsPlacesV1PlaceOpeningHoursPeriodList =
-  ReadonlyArray<GoogleMapsPlacesV1PlaceOpeningHoursPeriod>;
+  Array<GoogleMapsPlacesV1PlaceOpeningHoursPeriod>;
 export const GoogleMapsPlacesV1PlaceOpeningHoursPeriodList =
   /*@__PURE__*/ S.Array(
     GoogleMapsPlacesV1PlaceOpeningHoursPeriod,
@@ -751,7 +751,7 @@ export const GoogleMapsPlacesV1PlaceOpeningHoursSpecialDay =
   }) as any as S.Schema<GoogleMapsPlacesV1PlaceOpeningHoursSpecialDay>;
 
 export type GoogleMapsPlacesV1PlaceOpeningHoursSpecialDayList =
-  ReadonlyArray<GoogleMapsPlacesV1PlaceOpeningHoursSpecialDay>;
+  Array<GoogleMapsPlacesV1PlaceOpeningHoursSpecialDay>;
 export const GoogleMapsPlacesV1PlaceOpeningHoursSpecialDayList =
   /*@__PURE__*/ S.Array(
     GoogleMapsPlacesV1PlaceOpeningHoursSpecialDay,
@@ -807,7 +807,7 @@ export const GoogleMapsPlacesV1PlaceAttribution = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleMapsPlacesV1PlaceAttribution>;
 
 export type GoogleMapsPlacesV1PlaceAttributionList =
-  ReadonlyArray<GoogleMapsPlacesV1PlaceAttribution>;
+  Array<GoogleMapsPlacesV1PlaceAttribution>;
 export const GoogleMapsPlacesV1PlaceAttributionList = /*@__PURE__*/ S.Array(
   GoogleMapsPlacesV1PlaceAttribution,
 ) as any as S.Schema<GoogleMapsPlacesV1PlaceAttributionList>;
@@ -832,7 +832,7 @@ export const GoogleMapsPlacesV1AuthorAttribution = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleMapsPlacesV1AuthorAttribution>;
 
 export type GoogleMapsPlacesV1AuthorAttributionList =
-  ReadonlyArray<GoogleMapsPlacesV1AuthorAttribution>;
+  Array<GoogleMapsPlacesV1AuthorAttribution>;
 export const GoogleMapsPlacesV1AuthorAttributionList = /*@__PURE__*/ S.Array(
   GoogleMapsPlacesV1AuthorAttribution,
 ) as any as S.Schema<GoogleMapsPlacesV1AuthorAttributionList>;
@@ -865,8 +865,7 @@ export const GoogleMapsPlacesV1Photo = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleMapsPlacesV1Photo",
 }) as any as S.Schema<GoogleMapsPlacesV1Photo>;
 
-export type GoogleMapsPlacesV1PhotoList =
-  ReadonlyArray<GoogleMapsPlacesV1Photo>;
+export type GoogleMapsPlacesV1PhotoList = Array<GoogleMapsPlacesV1Photo>;
 export const GoogleMapsPlacesV1PhotoList = /*@__PURE__*/ S.Array(
   GoogleMapsPlacesV1Photo,
 ) as any as S.Schema<GoogleMapsPlacesV1PhotoList>;
@@ -889,7 +888,7 @@ export const GoogleMapsPlacesV1PlaceContainingPlace = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleMapsPlacesV1PlaceContainingPlace>;
 
 export type GoogleMapsPlacesV1PlaceContainingPlaceList =
-  ReadonlyArray<GoogleMapsPlacesV1PlaceContainingPlace>;
+  Array<GoogleMapsPlacesV1PlaceContainingPlace>;
 export const GoogleMapsPlacesV1PlaceContainingPlaceList = /*@__PURE__*/ S.Array(
   GoogleMapsPlacesV1PlaceContainingPlace,
 ) as any as S.Schema<GoogleMapsPlacesV1PlaceContainingPlaceList>;
@@ -940,7 +939,7 @@ export const GoogleMapsPlacesV1AddressDescriptorLandmark =
   }) as any as S.Schema<GoogleMapsPlacesV1AddressDescriptorLandmark>;
 
 export type GoogleMapsPlacesV1AddressDescriptorLandmarkList =
-  ReadonlyArray<GoogleMapsPlacesV1AddressDescriptorLandmark>;
+  Array<GoogleMapsPlacesV1AddressDescriptorLandmark>;
 export const GoogleMapsPlacesV1AddressDescriptorLandmarkList =
   /*@__PURE__*/ S.Array(
     GoogleMapsPlacesV1AddressDescriptorLandmark,
@@ -980,7 +979,7 @@ export const GoogleMapsPlacesV1AddressDescriptorArea = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleMapsPlacesV1AddressDescriptorArea>;
 
 export type GoogleMapsPlacesV1AddressDescriptorAreaList =
-  ReadonlyArray<GoogleMapsPlacesV1AddressDescriptorArea>;
+  Array<GoogleMapsPlacesV1AddressDescriptorArea>;
 export const GoogleMapsPlacesV1AddressDescriptorAreaList =
   /*@__PURE__*/ S.Array(
     GoogleMapsPlacesV1AddressDescriptorArea,
@@ -1003,7 +1002,7 @@ export const GoogleMapsPlacesV1AddressDescriptor = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleMapsPlacesV1AddressDescriptor>;
 
 export type GoogleMapsPlacesV1PlaceOpeningHoursList =
-  ReadonlyArray<GoogleMapsPlacesV1PlaceOpeningHours>;
+  Array<GoogleMapsPlacesV1PlaceOpeningHours>;
 export const GoogleMapsPlacesV1PlaceOpeningHoursList = /*@__PURE__*/ S.Array(
   GoogleMapsPlacesV1PlaceOpeningHours,
 ) as any as S.Schema<GoogleMapsPlacesV1PlaceOpeningHoursList>;
@@ -1032,7 +1031,7 @@ export const GoogleMapsPlacesV1PlaceAddressComponent = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleMapsPlacesV1PlaceAddressComponent>;
 
 export type GoogleMapsPlacesV1PlaceAddressComponentList =
-  ReadonlyArray<GoogleMapsPlacesV1PlaceAddressComponent>;
+  Array<GoogleMapsPlacesV1PlaceAddressComponent>;
 export const GoogleMapsPlacesV1PlaceAddressComponentList =
   /*@__PURE__*/ S.Array(
     GoogleMapsPlacesV1PlaceAddressComponent,
@@ -1101,8 +1100,7 @@ export const GoogleMapsPlacesV1Review = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleMapsPlacesV1Review",
 }) as any as S.Schema<GoogleMapsPlacesV1Review>;
 
-export type GoogleMapsPlacesV1ReviewList =
-  ReadonlyArray<GoogleMapsPlacesV1Review>;
+export type GoogleMapsPlacesV1ReviewList = Array<GoogleMapsPlacesV1Review>;
 export const GoogleMapsPlacesV1ReviewList = /*@__PURE__*/ S.Array(
   GoogleMapsPlacesV1Review,
 ) as any as S.Schema<GoogleMapsPlacesV1ReviewList>;
@@ -1196,7 +1194,7 @@ export const GoogleMapsPlacesV1TransitLine = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleMapsPlacesV1TransitLine>;
 
 export type GoogleMapsPlacesV1TransitLineList =
-  ReadonlyArray<GoogleMapsPlacesV1TransitLine>;
+  Array<GoogleMapsPlacesV1TransitLine>;
 export const GoogleMapsPlacesV1TransitLineList = /*@__PURE__*/ S.Array(
   GoogleMapsPlacesV1TransitLine,
 ) as any as S.Schema<GoogleMapsPlacesV1TransitLineList>;
@@ -1227,7 +1225,7 @@ export const GoogleMapsPlacesV1TransitAgency = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleMapsPlacesV1TransitAgency>;
 
 export type GoogleMapsPlacesV1TransitAgencyList =
-  ReadonlyArray<GoogleMapsPlacesV1TransitAgency>;
+  Array<GoogleMapsPlacesV1TransitAgency>;
 export const GoogleMapsPlacesV1TransitAgencyList = /*@__PURE__*/ S.Array(
   GoogleMapsPlacesV1TransitAgency,
 ) as any as S.Schema<GoogleMapsPlacesV1TransitAgencyList>;
@@ -1264,7 +1262,7 @@ export const GoogleMapsPlacesV1TransitStop = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleMapsPlacesV1TransitStop>;
 
 export type GoogleMapsPlacesV1TransitStopList =
-  ReadonlyArray<GoogleMapsPlacesV1TransitStop>;
+  Array<GoogleMapsPlacesV1TransitStop>;
 export const GoogleMapsPlacesV1TransitStopList = /*@__PURE__*/ S.Array(
   GoogleMapsPlacesV1TransitStop,
 ) as any as S.Schema<GoogleMapsPlacesV1TransitStopList>;
@@ -1343,7 +1341,7 @@ export const GoogleMapsPlacesV1EVChargeOptionsConnectorAggregation =
   }) as any as S.Schema<GoogleMapsPlacesV1EVChargeOptionsConnectorAggregation>;
 
 export type GoogleMapsPlacesV1EVChargeOptionsConnectorAggregationList =
-  ReadonlyArray<GoogleMapsPlacesV1EVChargeOptionsConnectorAggregation>;
+  Array<GoogleMapsPlacesV1EVChargeOptionsConnectorAggregation>;
 export const GoogleMapsPlacesV1EVChargeOptionsConnectorAggregationList =
   /*@__PURE__*/ S.Array(
     GoogleMapsPlacesV1EVChargeOptionsConnectorAggregation,
@@ -1481,7 +1479,7 @@ export const GoogleMapsPlacesV1PlaceSubDestination = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleMapsPlacesV1PlaceSubDestination>;
 
 export type GoogleMapsPlacesV1PlaceSubDestinationList =
-  ReadonlyArray<GoogleMapsPlacesV1PlaceSubDestination>;
+  Array<GoogleMapsPlacesV1PlaceSubDestination>;
 export const GoogleMapsPlacesV1PlaceSubDestinationList = /*@__PURE__*/ S.Array(
   GoogleMapsPlacesV1PlaceSubDestination,
 ) as any as S.Schema<GoogleMapsPlacesV1PlaceSubDestinationList>;
@@ -2045,8 +2043,7 @@ export const SearchNearbyPlacesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "SearchNearbyPlacesRequest",
 }) as any as S.Schema<SearchNearbyPlacesRequest>;
 
-export type GoogleMapsPlacesV1PlaceList =
-  ReadonlyArray<GoogleMapsPlacesV1Place>;
+export type GoogleMapsPlacesV1PlaceList = Array<GoogleMapsPlacesV1Place>;
 export const GoogleMapsPlacesV1PlaceList = /*@__PURE__*/ S.Array(
   GoogleMapsPlacesV1Place,
 ) as any as S.Schema<GoogleMapsPlacesV1PlaceList>;
@@ -2068,7 +2065,7 @@ export const GoogleMapsPlacesV1RoutingSummaryLeg = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleMapsPlacesV1RoutingSummaryLeg>;
 
 export type GoogleMapsPlacesV1RoutingSummaryLegList =
-  ReadonlyArray<GoogleMapsPlacesV1RoutingSummaryLeg>;
+  Array<GoogleMapsPlacesV1RoutingSummaryLeg>;
 export const GoogleMapsPlacesV1RoutingSummaryLegList = /*@__PURE__*/ S.Array(
   GoogleMapsPlacesV1RoutingSummaryLeg,
 ) as any as S.Schema<GoogleMapsPlacesV1RoutingSummaryLegList>;
@@ -2090,7 +2087,7 @@ export const GoogleMapsPlacesV1RoutingSummary = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleMapsPlacesV1RoutingSummary>;
 
 export type GoogleMapsPlacesV1RoutingSummaryList =
-  ReadonlyArray<GoogleMapsPlacesV1RoutingSummary>;
+  Array<GoogleMapsPlacesV1RoutingSummary>;
 export const GoogleMapsPlacesV1RoutingSummaryList = /*@__PURE__*/ S.Array(
   GoogleMapsPlacesV1RoutingSummary,
 ) as any as S.Schema<GoogleMapsPlacesV1RoutingSummaryList>;
@@ -2170,10 +2167,9 @@ export type GoogleMapsPlacesV1SearchTextRequestPriceLevelsItemEnum =
 export const GoogleMapsPlacesV1SearchTextRequestPriceLevelsItemEnum =
   /*@__PURE__*/ S.String;
 
-export type GoogleMapsPlacesV1SearchTextRequestPriceLevelsItemEnumList =
-  ReadonlyArray<
-    GoogleMapsPlacesV1SearchTextRequestPriceLevelsItemEnum | (string & {})
-  >;
+export type GoogleMapsPlacesV1SearchTextRequestPriceLevelsItemEnumList = Array<
+  GoogleMapsPlacesV1SearchTextRequestPriceLevelsItemEnum | (string & {})
+>;
 export const GoogleMapsPlacesV1SearchTextRequestPriceLevelsItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleMapsPlacesV1SearchTextRequestPriceLevelsItemEnum,
@@ -2195,7 +2191,7 @@ export const GoogleMapsPlacesV1SearchTextRequestEVOptionsConnectorTypesItemEnum 
   /*@__PURE__*/ S.String;
 
 export type GoogleMapsPlacesV1SearchTextRequestEVOptionsConnectorTypesItemEnumList =
-  ReadonlyArray<
+  Array<
     | GoogleMapsPlacesV1SearchTextRequestEVOptionsConnectorTypesItemEnum
     | (string & {})
   >;
@@ -2352,7 +2348,7 @@ export const GoogleMapsPlacesV1ContextualContentJustificationReviewJustification
   }) as any as S.Schema<GoogleMapsPlacesV1ContextualContentJustificationReviewJustificationHighlightedTextHighlightedTextRange>;
 
 export type GoogleMapsPlacesV1ContextualContentJustificationReviewJustificationHighlightedTextHighlightedTextRangeList =
-  ReadonlyArray<GoogleMapsPlacesV1ContextualContentJustificationReviewJustificationHighlightedTextHighlightedTextRange>;
+  Array<GoogleMapsPlacesV1ContextualContentJustificationReviewJustificationHighlightedTextHighlightedTextRange>;
 export const GoogleMapsPlacesV1ContextualContentJustificationReviewJustificationHighlightedTextHighlightedTextRangeList =
   /*@__PURE__*/ S.Array(
     GoogleMapsPlacesV1ContextualContentJustificationReviewJustificationHighlightedTextHighlightedTextRange,
@@ -2437,7 +2433,7 @@ export const GoogleMapsPlacesV1ContextualContentJustification =
   }) as any as S.Schema<GoogleMapsPlacesV1ContextualContentJustification>;
 
 export type GoogleMapsPlacesV1ContextualContentJustificationList =
-  ReadonlyArray<GoogleMapsPlacesV1ContextualContentJustification>;
+  Array<GoogleMapsPlacesV1ContextualContentJustification>;
 export const GoogleMapsPlacesV1ContextualContentJustificationList =
   /*@__PURE__*/ S.Array(
     GoogleMapsPlacesV1ContextualContentJustification,
@@ -2465,7 +2461,7 @@ export const GoogleMapsPlacesV1ContextualContent = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleMapsPlacesV1ContextualContent>;
 
 export type GoogleMapsPlacesV1ContextualContentList =
-  ReadonlyArray<GoogleMapsPlacesV1ContextualContent>;
+  Array<GoogleMapsPlacesV1ContextualContent>;
 export const GoogleMapsPlacesV1ContextualContentList = /*@__PURE__*/ S.Array(
   GoogleMapsPlacesV1ContextualContent,
 ) as any as S.Schema<GoogleMapsPlacesV1ContextualContentList>;

@@ -32,9 +32,9 @@ export const SkuTier = /*@__PURE__*/ S.String;
 /** The SKU name. Required for account creation; optional for update. */
 export interface Sku {
   /** The sku name. */
-  name: SkuName;
+  name: SkuName | (string & {});
   /** The sku tier. */
-  tier?: SkuTier;
+  tier?: SkuTier | (string & {});
 }
 export const Sku = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -44,8 +44,7 @@ export const Sku = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Sku" }) as any as S.Schema<Sku>;
 
 /** Logical zone for Elastic San resource; example: ["1"]. */
-export type ElasticSanPropertiesInputAvailabilityZonesList =
-  ReadonlyArray<string>;
+export type ElasticSanPropertiesInputAvailabilityZonesList = Array<string>;
 export const ElasticSanPropertiesInputAvailabilityZonesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -68,7 +67,7 @@ export interface ScaleUpProperties {
   /** Maximum scale up size on Elastic San appliance in TiB. */
   capacityUnitScaleUpLimitTiB?: number;
   /** Enable or Disable scale up setting on Elastic San Appliance. */
-  autoScalePolicyEnforcement?: AutoScalePolicyEnforcement;
+  autoScalePolicyEnforcement?: AutoScalePolicyEnforcement | (string & {});
 }
 export const ScaleUpProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -210,7 +209,7 @@ export const ElasticSansCreateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ElasticSansCreateResponseTagsMap>;
 
 /** Logical zone for Elastic San resource; example: ["1"]. */
-export type ElasticSanPropertiesAvailabilityZonesList = ReadonlyArray<string>;
+export type ElasticSanPropertiesAvailabilityZonesList = Array<string>;
 export const ElasticSanPropertiesAvailabilityZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ElasticSanPropertiesAvailabilityZonesList>;
@@ -253,7 +252,7 @@ export const PrivateEndpointServiceConnectionStatus = /*@__PURE__*/ S.String;
 /** Response for Private Link Service Connection state */
 export interface PrivateLinkServiceConnectionState {
   /** Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service. */
-  status?: PrivateEndpointServiceConnectionStatus;
+  status?: PrivateEndpointServiceConnectionStatus | (string & {});
   /** The reason for approval/rejection of the connection. */
   description?: string;
   /** A message indicating if changes on the service provider require any updates on the consumer. */
@@ -270,8 +269,7 @@ export const PrivateLinkServiceConnectionState = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateLinkServiceConnectionState>;
 
 /** List of resources private endpoint is mapped */
-export type PrivateEndpointConnectionPropertiesGroupIdsList =
-  ReadonlyArray<string>;
+export type PrivateEndpointConnectionPropertiesGroupIdsList = Array<string>;
 export const PrivateEndpointConnectionPropertiesGroupIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -326,7 +324,7 @@ export const PrivateEndpointConnection = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of Private Endpoint Connections. */
 export type ElasticSanPropertiesPrivateEndpointConnectionsList =
-  ReadonlyArray<PrivateEndpointConnection>;
+  Array<PrivateEndpointConnection>;
 export const ElasticSanPropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection,
@@ -569,7 +567,7 @@ export const ElasticSan = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ElasticSan" }) as any as S.Schema<ElasticSan>;
 
 /** The ElasticSan items on this page */
-export type ElasticSanListValueList = ReadonlyArray<ElasticSan>;
+export type ElasticSanListValueList = Array<ElasticSan>;
 export const ElasticSanListValueList = /*@__PURE__*/ S.Array(
   ElasticSan,
 ) as any as S.Schema<ElasticSanListValueList>;
@@ -777,7 +775,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = ReadonlyArray<Operation>;
+export type OperationsListResponseValueList = Array<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;
@@ -807,7 +805,7 @@ export const PrivateEndpointInput = /*@__PURE__*/ S.suspend(() =>
 
 /** List of resources private endpoint is mapped */
 export type PrivateEndpointConnectionPropertiesInputGroupIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PrivateEndpointConnectionPropertiesInputGroupIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1010,7 +1008,7 @@ export const PrivateEndpointConnectionsListRequest = /*@__PURE__*/ S.suspend(
 
 /** The PrivateEndpointConnection items on this page */
 export type PrivateEndpointConnectionListResultValueList =
-  ReadonlyArray<PrivateEndpointConnection>;
+  Array<PrivateEndpointConnection>;
 export const PrivateEndpointConnectionListResultValueList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection,
@@ -1059,16 +1057,14 @@ export const PrivateLinkResourcesListByElasticSanRequest =
   }) as any as S.Schema<PrivateLinkResourcesListByElasticSanRequest>;
 
 /** The private link resource required member names. */
-export type PrivateLinkResourcePropertiesRequiredMembersList =
-  ReadonlyArray<string>;
+export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
 export const PrivateLinkResourcePropertiesRequiredMembersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
 
 /** The private link resource Private link DNS zone name. */
-export type PrivateLinkResourcePropertiesRequiredZoneNamesList =
-  ReadonlyArray<string>;
+export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
 export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1123,8 +1119,7 @@ export const PrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateLinkResource>;
 
 /** Array of private link resources */
-export type PrivateLinkResourceListResultValueList =
-  ReadonlyArray<PrivateLinkResource>;
+export type PrivateLinkResourceListResultValueList = Array<PrivateLinkResource>;
 export const PrivateLinkResourceListResultValueList = /*@__PURE__*/ S.Array(
   PrivateLinkResource,
 ) as any as S.Schema<PrivateLinkResourceListResultValueList>;
@@ -1168,13 +1163,13 @@ export const SkusListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SkusListRequest>;
 
 /** The set of locations that the SKU is available. This will be supported and registered Azure Geo Regions (e.g. West US, East US, Southeast Asia, etc.). */
-export type SkuInformationLocationsList = ReadonlyArray<string>;
+export type SkuInformationLocationsList = Array<string>;
 export const SkuInformationLocationsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SkuInformationLocationsList>;
 
 /** The zones. */
-export type SkuLocationInfoZonesList = ReadonlyArray<string>;
+export type SkuLocationInfoZonesList = Array<string>;
 export const SkuLocationInfoZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SkuLocationInfoZonesList>;
@@ -1196,7 +1191,7 @@ export const SkuLocationInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SkuLocationInfo>;
 
 /** Availability of the SKU for the location/zone */
-export type SkuInformationLocationInfoList = ReadonlyArray<SkuLocationInfo>;
+export type SkuInformationLocationInfoList = Array<SkuLocationInfo>;
 export const SkuInformationLocationInfoList = /*@__PURE__*/ S.Array(
   SkuLocationInfo,
 ) as any as S.Schema<SkuInformationLocationInfoList>;
@@ -1216,7 +1211,7 @@ export const SKUCapability = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SKUCapability" }) as any as S.Schema<SKUCapability>;
 
 /** The capability information in the specified SKU. */
-export type SkuInformationCapabilitiesList = ReadonlyArray<SKUCapability>;
+export type SkuInformationCapabilitiesList = Array<SKUCapability>;
 export const SkuInformationCapabilitiesList = /*@__PURE__*/ S.Array(
   SKUCapability,
 ) as any as S.Schema<SkuInformationCapabilitiesList>;
@@ -1248,7 +1243,7 @@ export const SkuInformation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SkuInformation" }) as any as S.Schema<SkuInformation>;
 
 /** The SkuInformation items on this page */
-export type SkuInformationListValueList = ReadonlyArray<SkuInformation>;
+export type SkuInformationListValueList = Array<SkuInformation>;
 export const SkuInformationListValueList = /*@__PURE__*/ S.Array(
   SkuInformation,
 ) as any as S.Schema<SkuInformationListValueList>;
@@ -1371,7 +1366,7 @@ export interface VirtualNetworkRule {
   /** Resource ID of a subnet, for example: /subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.Network/virtualNetworks/{vnetName}/subnets/{subnetName}. */
   id: string;
   /** The action of virtual network rule. */
-  action?: VirtualNetworkRuleAction;
+  action?: VirtualNetworkRuleAction | (string & {});
 }
 export const VirtualNetworkRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1383,8 +1378,7 @@ export const VirtualNetworkRule = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VirtualNetworkRule>;
 
 /** The list of virtual network rules. */
-export type NetworkRuleSetVirtualNetworkRulesList =
-  ReadonlyArray<VirtualNetworkRule>;
+export type NetworkRuleSetVirtualNetworkRulesList = Array<VirtualNetworkRule>;
 export const NetworkRuleSetVirtualNetworkRulesList = /*@__PURE__*/ S.Array(
   VirtualNetworkRule,
 ) as any as S.Schema<NetworkRuleSetVirtualNetworkRulesList>;
@@ -1550,7 +1544,7 @@ export const EncryptionProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of Private Endpoint Connections. */
 export type VolumeGroupPropertiesPrivateEndpointConnectionsList =
-  ReadonlyArray<PrivateEndpointConnection>;
+  Array<PrivateEndpointConnection>;
 export const VolumeGroupPropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection,
@@ -1758,7 +1752,7 @@ export const VolumeGroup = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VolumeGroup" }) as any as S.Schema<VolumeGroup>;
 
 /** The VolumeGroup items on this page */
-export type VolumeGroupListValueList = ReadonlyArray<VolumeGroup>;
+export type VolumeGroupListValueList = Array<VolumeGroup>;
 export const VolumeGroupListValueList = /*@__PURE__*/ S.Array(
   VolumeGroup,
 ) as any as S.Schema<VolumeGroupListValueList>;
@@ -1877,7 +1871,7 @@ export const VolumeCreateOption = /*@__PURE__*/ S.String;
 /** Data source used when creating the volume. */
 export interface SourceCreationData {
   /** This enumerates the possible sources of a volume creation. */
-  createSource?: VolumeCreateOption;
+  createSource?: VolumeCreateOption | (string & {});
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   sourceId?: string;
 }
@@ -2188,7 +2182,7 @@ export const Volume = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Volume" }) as any as S.Schema<Volume>;
 
 /** The Volume items on this page */
-export type VolumeListValueList = ReadonlyArray<Volume>;
+export type VolumeListValueList = Array<Volume>;
 export const VolumeListValueList = /*@__PURE__*/ S.Array(
   Volume,
 ) as any as S.Schema<VolumeListValueList>;
@@ -2462,7 +2456,7 @@ export const Snapshot = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Snapshot" }) as any as S.Schema<Snapshot>;
 
 /** The Snapshot items on this page */
-export type SnapshotListValueList = ReadonlyArray<Snapshot>;
+export type SnapshotListValueList = Array<Snapshot>;
 export const SnapshotListValueList = /*@__PURE__*/ S.Array(
   Snapshot,
 ) as any as S.Schema<SnapshotListValueList>;
@@ -2482,7 +2476,7 @@ export const SnapshotList = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SnapshotList" }) as any as S.Schema<SnapshotList>;
 
 /** array of volume names */
-export type VolumesPreBackupRequestVolumeNamesList = ReadonlyArray<string>;
+export type VolumesPreBackupRequestVolumeNamesList = Array<string>;
 export const VolumesPreBackupRequestVolumeNamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<VolumesPreBackupRequestVolumeNamesList>;
@@ -2532,7 +2526,7 @@ export const PreValidationResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PreValidationResponse>;
 
 /** array of DiskSnapshot ARM IDs */
-export type VolumesPreRestoreRequestDiskSnapshotIdsList = ReadonlyArray<string>;
+export type VolumesPreRestoreRequestDiskSnapshotIdsList = Array<string>;
 export const VolumesPreRestoreRequestDiskSnapshotIdsList =
   /*@__PURE__*/ S.Array(
     S.String,

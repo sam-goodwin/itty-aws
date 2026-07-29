@@ -159,7 +159,9 @@ export type AccessRights = "Manage" | "Send" | "Listen";
 export const AccessRights = /*@__PURE__*/ S.String;
 
 /** The rights associated with the rule. */
-export type AuthorizationRulePropertiesRightsList = ReadonlyArray<AccessRights>;
+export type AuthorizationRulePropertiesRightsList = Array<
+  AccessRights | (string & {})
+>;
 export const AuthorizationRulePropertiesRightsList = /*@__PURE__*/ S.Array(
   AccessRights,
 ) as any as S.Schema<AuthorizationRulePropertiesRightsList>;
@@ -486,8 +488,7 @@ export const AuthorizationRule = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AuthorizationRule>;
 
 /** The AuthorizationRule items on this page */
-export type AuthorizationRuleListResultValueList =
-  ReadonlyArray<AuthorizationRule>;
+export type AuthorizationRuleListResultValueList = Array<AuthorizationRule>;
 export const AuthorizationRuleListResultValueList = /*@__PURE__*/ S.Array(
   AuthorizationRule,
 ) as any as S.Schema<AuthorizationRuleListResultValueList>;
@@ -563,8 +564,7 @@ export const HybridConnection = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HybridConnection>;
 
 /** The HybridConnection items on this page */
-export type HybridConnectionListResultValueList =
-  ReadonlyArray<HybridConnection>;
+export type HybridConnectionListResultValueList = Array<HybridConnection>;
 export const HybridConnectionListResultValueList = /*@__PURE__*/ S.Array(
   HybridConnection,
 ) as any as S.Schema<HybridConnectionListResultValueList>;
@@ -766,7 +766,7 @@ export const PrivateLinkConnectionStatus = /*@__PURE__*/ S.String;
 /** ConnectionState information. */
 export interface ConnectionState {
   /** Status of the connection. */
-  status?: PrivateLinkConnectionStatus;
+  status?: PrivateLinkConnectionStatus | (string & {});
   /** Description of the connection state. */
   description?: string;
 }
@@ -796,7 +796,7 @@ export interface PrivateEndpointConnectionProperties {
   /** Details about the state of the connection. */
   privateLinkServiceConnectionState?: ConnectionState;
   /** Provisioning state of the Private Endpoint Connection. */
-  provisioningState?: EndPointProvisioningState;
+  provisioningState?: EndPointProvisioningState | (string & {});
 }
 export const PrivateEndpointConnectionProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -823,7 +823,7 @@ export const PrivateEndpointConnectionInput = /*@__PURE__*/ S.suspend(() =>
 
 /** List of private endpoint connections. */
 export type RelayNamespacePropertiesInputPrivateEndpointConnectionsList =
-  ReadonlyArray<PrivateEndpointConnectionInput>;
+  Array<PrivateEndpointConnectionInput>;
 export const RelayNamespacePropertiesInputPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnectionInput,
@@ -870,9 +870,9 @@ export const SkuTier = /*@__PURE__*/ S.String;
 /** SKU of the namespace. */
 export interface Sku {
   /** Name of this SKU. */
-  name: SkuName;
+  name: SkuName | (string & {});
   /** The tier of this SKU. */
-  tier?: SkuTier;
+  tier?: SkuTier | (string & {});
 }
 export const Sku = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -957,7 +957,7 @@ export const PrivateEndpointConnection = /*@__PURE__*/ S.suspend(() =>
 
 /** List of private endpoint connections. */
 export type RelayNamespacePropertiesPrivateEndpointConnectionsList =
-  ReadonlyArray<PrivateEndpointConnection>;
+  Array<PrivateEndpointConnection>;
 export const RelayNamespacePropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection,
@@ -1119,7 +1119,7 @@ export interface NWRuleSetIpRules {
   /** IP Mask */
   ipMask?: string;
   /** The IP Filter Action */
-  action?: NetworkRuleIPAction;
+  action?: NetworkRuleIPAction | (string & {});
 }
 export const NWRuleSetIpRules = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1131,8 +1131,7 @@ export const NWRuleSetIpRules = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NWRuleSetIpRules>;
 
 /** List of IpRules */
-export type NetworkRuleSetPropertiesIpRulesList =
-  ReadonlyArray<NWRuleSetIpRules>;
+export type NetworkRuleSetPropertiesIpRulesList = Array<NWRuleSetIpRules>;
 export const NetworkRuleSetPropertiesIpRulesList = /*@__PURE__*/ S.Array(
   NWRuleSetIpRules,
 ) as any as S.Schema<NetworkRuleSetPropertiesIpRulesList>;
@@ -1142,9 +1141,9 @@ export interface NetworkRuleSetProperties {
   /** Value that indicates whether Trusted Service Access is Enabled or not. */
   trustedServiceAccessEnabled?: boolean;
   /** Default Action for Network Rule Set */
-  defaultAction?: DefaultAction;
+  defaultAction?: DefaultAction | (string & {});
   /** This determines if traffic is allowed over public network. By default it is enabled */
-  publicNetworkAccess?: PublicNetworkAccess;
+  publicNetworkAccess?: PublicNetworkAccess | (string & {});
   /** List of IpRules */
   ipRules?: NetworkRuleSetPropertiesIpRulesList;
 }
@@ -1512,7 +1511,7 @@ export const RelayNamespace = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RelayNamespace" }) as any as S.Schema<RelayNamespace>;
 
 /** The RelayNamespace items on this page */
-export type RelayNamespaceListResultValueList = ReadonlyArray<RelayNamespace>;
+export type RelayNamespaceListResultValueList = Array<RelayNamespace>;
 export const RelayNamespaceListResultValueList = /*@__PURE__*/ S.Array(
   RelayNamespace,
 ) as any as S.Schema<RelayNamespaceListResultValueList>;
@@ -1797,7 +1796,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = ReadonlyArray<Operation>;
+export type OperationsListResponseValueList = Array<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;
@@ -1998,7 +1997,7 @@ export const PrivateEndpointConnectionsListRequest = /*@__PURE__*/ S.suspend(
 
 /** The PrivateEndpointConnection items on this page */
 export type PrivateEndpointConnectionListResultValueList =
-  ReadonlyArray<PrivateEndpointConnection>;
+  Array<PrivateEndpointConnection>;
 export const PrivateEndpointConnectionListResultValueList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection,
@@ -2049,16 +2048,14 @@ export const PrivateLinkResourcesGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateLinkResourcesGetRequest>;
 
 /** The private link resource required member names. */
-export type PrivateLinkResourcePropertiesRequiredMembersList =
-  ReadonlyArray<string>;
+export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
 export const PrivateLinkResourcePropertiesRequiredMembersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
 
 /** The private link resource Private link DNS zone name. */
-export type PrivateLinkResourcePropertiesRequiredZoneNamesList =
-  ReadonlyArray<string>;
+export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
 export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2163,7 +2160,7 @@ export const PrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
 
 /** A collection of private link resources */
 export type PrivateLinkResourcesListResultValueList =
-  ReadonlyArray<PrivateLinkResource>;
+  Array<PrivateLinkResource>;
 export const PrivateLinkResourcesListResultValueList = /*@__PURE__*/ S.Array(
   PrivateLinkResource,
 ) as any as S.Schema<PrivateLinkResourcesListResultValueList>;
@@ -2635,7 +2632,7 @@ export const WcfRelay = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "WcfRelay" }) as any as S.Schema<WcfRelay>;
 
 /** The WcfRelay items on this page */
-export type WcfRelaysListResultValueList = ReadonlyArray<WcfRelay>;
+export type WcfRelaysListResultValueList = Array<WcfRelay>;
 export const WcfRelaysListResultValueList = /*@__PURE__*/ S.Array(
   WcfRelay,
 ) as any as S.Schema<WcfRelaysListResultValueList>;

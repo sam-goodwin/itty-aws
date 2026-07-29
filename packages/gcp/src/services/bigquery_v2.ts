@@ -60,7 +60,7 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -151,7 +151,7 @@ export const JobCreationReasonCodeEnum = /*@__PURE__*/ S.String;
 /** Reason about why a Job was created from a [`jobs.query`](https://cloud.google.com/bigquery/docs/reference/rest/v2/jobs/query) method when used with `JOB_CREATION_OPTIONAL` Job creation mode. For [`jobs.insert`](https://cloud.google.com/bigquery/docs/reference/rest/v2/jobs/insert) method calls it will always be `REQUESTED`. */
 export interface JobCreationReason {
   /** Output only. Specifies the high level reason why a Job was created. */
-  code?: JobCreationReasonCodeEnum;
+  code?: JobCreationReasonCodeEnum | (string & {});
 }
 export const JobCreationReason = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -216,7 +216,7 @@ export const ConnectionProperty = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConnectionProperty",
 }) as any as S.Schema<ConnectionProperty>;
 
-export type ConnectionPropertyList = ReadonlyArray<ConnectionProperty>;
+export type ConnectionPropertyList = Array<ConnectionProperty>;
 export const ConnectionPropertyList = /*@__PURE__*/ S.Array(
   ConnectionProperty,
 ) as any as S.Schema<ConnectionPropertyList>;
@@ -253,7 +253,7 @@ export interface ScriptOptions {
   /** Limit on the number of bytes billed per statement. Exceeding this budget results in an error. */
   statementByteBudget?: string;
   /** Determines which statement in the script represents the "key result", used to populate the schema and query results of the script job. Default is LAST. */
-  keyResultStatement?: ScriptOptionsKeyResultStatementEnum;
+  keyResultStatement?: ScriptOptionsKeyResultStatementEnum | (string & {});
   /** Timeout period for each statement in a script. */
   statementTimeoutMs?: string;
 }
@@ -314,7 +314,7 @@ export const StandardSqlField = /*@__PURE__*/ S.suspend(() =>
   identifier: "StandardSqlField",
 }) as any as S.Schema<StandardSqlField>;
 
-export type StandardSqlFieldList = ReadonlyArray<StandardSqlField>;
+export type StandardSqlFieldList = Array<StandardSqlField>;
 export const StandardSqlFieldList = /*@__PURE__*/ S.Array(
   StandardSqlField,
 ) as any as S.Schema<StandardSqlFieldList>;
@@ -362,7 +362,7 @@ export interface StandardSqlDataType {
   /** The type of the range's elements, if type_kind = "RANGE". */
   rangeElementType?: StandardSqlDataType;
   /** Required. The top level type of this field. Can be any GoogleSQL data type (e.g., "INT64", "DATE", "ARRAY"). */
-  typeKind?: StandardSqlDataTypeTypeKindEnum;
+  typeKind?: StandardSqlDataTypeTypeKindEnum | (string & {});
 }
 export const StandardSqlDataType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -451,7 +451,7 @@ export const UserDefinedFunctionResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UserDefinedFunctionResource>;
 
 export type UserDefinedFunctionResourceList =
-  ReadonlyArray<UserDefinedFunctionResource>;
+  Array<UserDefinedFunctionResource>;
 export const UserDefinedFunctionResourceList = /*@__PURE__*/ S.Array(
   UserDefinedFunctionResource,
 ) as any as S.Schema<UserDefinedFunctionResourceList>;
@@ -519,7 +519,7 @@ export const BigtableColumn = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "BigtableColumn" }) as any as S.Schema<BigtableColumn>;
 
-export type BigtableColumnList = ReadonlyArray<BigtableColumn>;
+export type BigtableColumnList = Array<BigtableColumn>;
 export const BigtableColumnList = /*@__PURE__*/ S.Array(
   BigtableColumn,
 ) as any as S.Schema<BigtableColumnList>;
@@ -552,7 +552,7 @@ export const BigtableColumnFamily = /*@__PURE__*/ S.suspend(() =>
   identifier: "BigtableColumnFamily",
 }) as any as S.Schema<BigtableColumnFamily>;
 
-export type BigtableColumnFamilyList = ReadonlyArray<BigtableColumnFamily>;
+export type BigtableColumnFamilyList = Array<BigtableColumnFamily>;
 export const BigtableColumnFamilyList = /*@__PURE__*/ S.Array(
   BigtableColumnFamily,
 ) as any as S.Schema<BigtableColumnFamilyList>;
@@ -587,7 +587,7 @@ export const ParquetOptionsMapTargetTypeEnum = /*@__PURE__*/ S.String;
 /** Parquet Options for load and make external tables. */
 export interface ParquetOptions {
   /** Optional. Indicates how to represent a Parquet map if present. */
-  mapTargetType?: ParquetOptionsMapTargetTypeEnum;
+  mapTargetType?: ParquetOptionsMapTargetTypeEnum | (string & {});
   /** Optional. Indicates whether to use schema inference specifically for Parquet LIST logical type. */
   enableListInference?: boolean;
   /** Optional. Indicates whether to infer Parquet ENUM logical type as STRING instead of BYTES by default. */
@@ -649,7 +649,7 @@ export const DataPolicyOption = /*@__PURE__*/ S.suspend(() =>
   identifier: "DataPolicyOption",
 }) as any as S.Schema<DataPolicyOption>;
 
-export type DataPolicyOptionList = ReadonlyArray<DataPolicyOption>;
+export type DataPolicyOptionList = Array<DataPolicyOption>;
 export const DataPolicyOptionList = /*@__PURE__*/ S.Array(
   DataPolicyOption,
 ) as any as S.Schema<DataPolicyOptionList>;
@@ -696,7 +696,7 @@ export interface GeneratedColumn {
   /** Definition of the expression used to generate the field. */
   generatedExpressionInfo?: GeneratedExpressionInfo;
   /** Optional. Dictates when system generated values are used to populate the field. */
-  generatedMode?: GeneratedColumnGeneratedModeEnum;
+  generatedMode?: GeneratedColumnGeneratedModeEnum | (string & {});
 }
 export const GeneratedColumn = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -780,7 +780,7 @@ export interface TableFieldSchema {
   /** Optional. Maximum length of values of this field for STRINGS or BYTES. If max_length is not specified, no maximum length constraint is imposed on this field. If type = "STRING", then max_length represents the maximum UTF-8 length of strings in this field. If type = "BYTES", then max_length represents the maximum number of bytes in this field. It is invalid to set this field if type ≠ "STRING" and ≠ "BYTES". */
   maxLength?: string;
   /** Optional. Specifies the rounding mode to be used when storing values of NUMERIC and BIGNUMERIC type. */
-  roundingMode?: TableFieldSchemaRoundingModeEnum;
+  roundingMode?: TableFieldSchemaRoundingModeEnum | (string & {});
   /** Required. The field name. The name must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_), and must start with a letter or underscore. The maximum length is 300 characters. */
   name?: string;
   /** Optional. Specifies data policies attached to this field, used for field-level access control. When set, this will be the source of truth for data policy information. */
@@ -831,7 +831,7 @@ export const TableFieldSchema = /*@__PURE__*/ S.suspend(() =>
   identifier: "TableFieldSchema",
 }) as any as S.Schema<TableFieldSchema>;
 
-export type TableFieldSchemaList = ReadonlyArray<TableFieldSchema>;
+export type TableFieldSchemaList = Array<TableFieldSchema>;
 export const TableFieldSchemaList = /*@__PURE__*/ S.Array(
   TableFieldSchema,
 ) as any as S.Schema<TableFieldSchemaList>;
@@ -842,7 +842,7 @@ export const ForeignTypeInfoTypeSystemEnum = /*@__PURE__*/ S.String;
 /** Metadata about the foreign data type definition such as the system in which the type is defined. */
 export interface ForeignTypeInfo {
   /** Required. Specifies the system which defines the foreign data type. */
-  typeSystem?: ForeignTypeInfoTypeSystemEnum;
+  typeSystem?: ForeignTypeInfoTypeSystemEnum | (string & {});
 }
 export const ForeignTypeInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -926,7 +926,7 @@ export const HivePartitioningOptions = /*@__PURE__*/ S.suspend(() =>
   identifier: "HivePartitioningOptions",
 }) as any as S.Schema<HivePartitioningOptions>;
 
-export type IntegerList = ReadonlyArray<number>;
+export type IntegerList = Array<number>;
 export const IntegerList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<IntegerList>;
@@ -950,8 +950,9 @@ export type ExternalDataConfigurationDecimalTargetTypesItemEnum =
 export const ExternalDataConfigurationDecimalTargetTypesItemEnum =
   /*@__PURE__*/ S.String;
 
-export type ExternalDataConfigurationDecimalTargetTypesItemEnumList =
-  ReadonlyArray<ExternalDataConfigurationDecimalTargetTypesItemEnum>;
+export type ExternalDataConfigurationDecimalTargetTypesItemEnumList = Array<
+  ExternalDataConfigurationDecimalTargetTypesItemEnum | (string & {})
+>;
 export const ExternalDataConfigurationDecimalTargetTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     ExternalDataConfigurationDecimalTargetTypesItemEnum,
@@ -970,7 +971,7 @@ export const AvroOptions = /*@__PURE__*/ S.suspend(() =>
 
 export interface ExternalDataConfiguration {
   /** Optional. ObjectMetadata is used to create Object Tables. Object Tables contain a listing of objects (with their metadata) found at the source_uris. If ObjectMetadata is set, source_format should be omitted. Currently SIMPLE is the only supported Object Metadata type. */
-  objectMetadata?: ExternalDataConfigurationObjectMetadataEnum;
+  objectMetadata?: ExternalDataConfigurationObjectMetadataEnum | (string & {});
   /** Optional. Additional options if sourceFormat is set to BIGTABLE. */
   bigtableOptions?: BigtableOptions;
   /** Optional. When creating an external table, the user can provide a reference file with the table schema. This is enabled for the following formats: AVRO, PARQUET, ORC. */
@@ -990,11 +991,15 @@ export interface ExternalDataConfiguration {
   /** Optional. Time zone used when parsing timestamp values that do not have specific time zone information (e.g. 2024-04-20 12:34:56). The expected format is a IANA timezone string (e.g. America/Los_Angeles). */
   timeZone?: string;
   /** Optional. Specifies how source URIs are interpreted for constructing the file set to load. By default source URIs are expanded against the underlying storage. Other options include specifying manifest files. Only applicable to object storage systems. */
-  fileSetSpecType?: ExternalDataConfigurationFileSetSpecTypeEnum;
+  fileSetSpecType?:
+    | ExternalDataConfigurationFileSetSpecTypeEnum
+    | (string & {});
   /** Optional. Load option to be used together with source_format newline-delimited JSON to indicate that a variant of JSON is being loaded. To load newline-delimited GeoJSON, specify GEOJSON (and source_format must be set to NEWLINE_DELIMITED_JSON). */
-  jsonExtension?: ExternalDataConfigurationJsonExtensionEnum;
+  jsonExtension?: ExternalDataConfigurationJsonExtensionEnum | (string & {});
   /** Optional. Metadata Cache Mode for the table. Set this to enable caching of metadata from external data source. */
-  metadataCacheMode?: ExternalDataConfigurationMetadataCacheModeEnum;
+  metadataCacheMode?:
+    | ExternalDataConfigurationMetadataCacheModeEnum
+    | (string & {});
   /** Optional. Additional options if sourceFormat is set to GOOGLE_SHEETS. */
   googleSheetsOptions?: GoogleSheetsOptions;
   /** Optional. Format used to parse TIMESTAMP values. Supports C-style and SQL-style values. */
@@ -1089,7 +1094,7 @@ export const QueryParameterTypeStructTypesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<QueryParameterTypeStructTypesItem>;
 
 export type QueryParameterTypeStructTypesItemList =
-  ReadonlyArray<QueryParameterTypeStructTypesItem>;
+  Array<QueryParameterTypeStructTypesItem>;
 export const QueryParameterTypeStructTypesItemList = /*@__PURE__*/ S.Array(
   QueryParameterTypeStructTypesItem,
 ) as any as S.Schema<QueryParameterTypeStructTypesItemList>;
@@ -1127,7 +1132,7 @@ export const QueryParameterValueMap = /*@__PURE__*/ S.Record(
   S.suspend(() => QueryParameterValue),
 ) as any as S.Schema<QueryParameterValueMap>;
 
-export type QueryParameterValueList = ReadonlyArray<QueryParameterValue>;
+export type QueryParameterValueList = Array<QueryParameterValue>;
 export const QueryParameterValueList = /*@__PURE__*/ S.Array(
   S.suspend(() => QueryParameterValue),
 ) as any as S.Schema<QueryParameterValueList>;
@@ -1185,7 +1190,7 @@ export const QueryParameter = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "QueryParameter" }) as any as S.Schema<QueryParameter>;
 
-export type QueryParameterList = ReadonlyArray<QueryParameter>;
+export type QueryParameterList = Array<QueryParameter>;
 export const QueryParameterList = /*@__PURE__*/ S.Array(
   QueryParameter,
 ) as any as S.Schema<QueryParameterList>;
@@ -1293,7 +1298,7 @@ export type JobConfigurationTableCopyOperationTypeEnum =
 export const JobConfigurationTableCopyOperationTypeEnum =
   /*@__PURE__*/ S.String;
 
-export type TableReferenceList = ReadonlyArray<TableReference>;
+export type TableReferenceList = Array<TableReference>;
 export const TableReferenceList = /*@__PURE__*/ S.Array(
   TableReference,
 ) as any as S.Schema<TableReferenceList>;
@@ -1301,7 +1306,7 @@ export const TableReferenceList = /*@__PURE__*/ S.Array(
 /** JobConfigurationTableCopy configures a job that copies data from one table to another. For more information on copying tables, see [Copy a table](https://cloud.google.com/bigquery/docs/managing-tables#copy-table). */
 export interface JobConfigurationTableCopy {
   /** Optional. Supported operation types in table copy job. */
-  operationType?: JobConfigurationTableCopyOperationTypeEnum;
+  operationType?: JobConfigurationTableCopyOperationTypeEnum | (string & {});
   /** Custom encryption configuration (e.g., Cloud KMS keys). */
   destinationEncryptionConfiguration?: EncryptionConfiguration;
   /** [Pick one] Source table to copy. */
@@ -1340,8 +1345,9 @@ export type JobConfigurationLoadDecimalTargetTypesItemEnum =
 export const JobConfigurationLoadDecimalTargetTypesItemEnum =
   /*@__PURE__*/ S.String;
 
-export type JobConfigurationLoadDecimalTargetTypesItemEnumList =
-  ReadonlyArray<JobConfigurationLoadDecimalTargetTypesItemEnum>;
+export type JobConfigurationLoadDecimalTargetTypesItemEnumList = Array<
+  JobConfigurationLoadDecimalTargetTypesItemEnum | (string & {})
+>;
 export const JobConfigurationLoadDecimalTargetTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     JobConfigurationLoadDecimalTargetTypesItemEnum,
@@ -1470,17 +1476,19 @@ export interface JobConfigurationLoad {
   /** Optional. The format of the data files. For CSV files, specify "CSV". For datastore backups, specify "DATASTORE_BACKUP". For newline-delimited JSON, specify "NEWLINE_DELIMITED_JSON". For Avro, specify "AVRO". For parquet, specify "PARQUET". For orc, specify "ORC". The default value is CSV. */
   sourceFormat?: string;
   /** Optional. Character map supported for column names in CSV/Parquet loads. Defaults to STRICT and can be overridden by Project Config Service. Using this option with unsupporting load formats will result in an error. */
-  columnNameCharacterMap?: JobConfigurationLoadColumnNameCharacterMapEnum;
+  columnNameCharacterMap?:
+    | JobConfigurationLoadColumnNameCharacterMapEnum
+    | (string & {});
   /** Optional. [Experimental] Configures the load job to copy files directly to the destination BigLake managed table, bypassing file content reading and rewriting. Copying files only is supported when all the following are true: * `source_uris` are located in the same Cloud Storage location as the destination table's `storage_uri` location. * `source_format` is `PARQUET`. * `destination_table` is an existing BigLake managed table. The table's schema does not have flexible column names. The table's columns do not have type parameters other than precision and scale. * No options other than the above are specified. */
   copyFilesOnly?: boolean;
   /** [Deprecated] The format of the schemaInline property. */
   schemaInlineFormat?: string;
   /** Optional. Specifies how source URIs are interpreted for constructing the file set to load. By default, source URIs are expanded against the underlying storage. You can also specify manifest files to control how the file set is constructed. This option is only applicable to object storage systems. */
-  fileSetSpecType?: JobConfigurationLoadFileSetSpecTypeEnum;
+  fileSetSpecType?: JobConfigurationLoadFileSetSpecTypeEnum | (string & {});
   /** Optional. Load option to be used together with source_format newline-delimited JSON to indicate that a variant of JSON is being loaded. To load newline-delimited GeoJSON, specify GEOJSON (and source_format must be set to NEWLINE_DELIMITED_JSON). */
-  jsonExtension?: JobConfigurationLoadJsonExtensionEnum;
+  jsonExtension?: JobConfigurationLoadJsonExtensionEnum | (string & {});
   /** Optional. Controls the strategy used to match loaded columns to the schema. If not set, a sensible default is chosen based on how the schema is provided. If autodetect is used, then columns are matched by name. Otherwise, columns are matched by position. This is done to keep the behavior backward-compatible. */
-  sourceColumnMatch?: JobConfigurationLoadSourceColumnMatchEnum;
+  sourceColumnMatch?: JobConfigurationLoadSourceColumnMatchEnum | (string & {});
   /** Optional. When sourceFormat is set to "CSV", this indicates whether the embedded ASCII control characters (the first 32 characters in the ASCII-table, from '\x00' to '\x1F') are preserved. */
   preserveAsciiControlCharacters?: boolean;
   /** Optional. Default time zone that will apply when parsing timestamp values that have no specific time zone. */
@@ -1700,7 +1708,7 @@ export const QueryTimelineSample = /*@__PURE__*/ S.suspend(() =>
   identifier: "QueryTimelineSample",
 }) as any as S.Schema<QueryTimelineSample>;
 
-export type QueryTimelineSampleList = ReadonlyArray<QueryTimelineSample>;
+export type QueryTimelineSampleList = Array<QueryTimelineSample>;
 export const QueryTimelineSampleList = /*@__PURE__*/ S.Array(
   QueryTimelineSample,
 ) as any as S.Schema<QueryTimelineSampleList>;
@@ -1782,7 +1790,7 @@ export const JobStatistics2ReservationUsageItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<JobStatistics2ReservationUsageItem>;
 
 export type JobStatistics2ReservationUsageItemList =
-  ReadonlyArray<JobStatistics2ReservationUsageItem>;
+  Array<JobStatistics2ReservationUsageItem>;
 export const JobStatistics2ReservationUsageItemList = /*@__PURE__*/ S.Array(
   JobStatistics2ReservationUsageItem,
 ) as any as S.Schema<JobStatistics2ReservationUsageItemList>;
@@ -1826,7 +1834,7 @@ export const ExternalServiceCost = /*@__PURE__*/ S.suspend(() =>
   identifier: "ExternalServiceCost",
 }) as any as S.Schema<ExternalServiceCost>;
 
-export type ExternalServiceCostList = ReadonlyArray<ExternalServiceCost>;
+export type ExternalServiceCostList = Array<ExternalServiceCost>;
 export const ExternalServiceCostList = /*@__PURE__*/ S.Array(
   ExternalServiceCost,
 ) as any as S.Schema<ExternalServiceCostList>;
@@ -1844,7 +1852,7 @@ export const BiEngineReasonCodeEnum = /*@__PURE__*/ S.String;
 /** Reason why BI Engine didn't accelerate the query (or sub-query). */
 export interface BiEngineReason {
   /** Output only. High-level BI Engine reason for partial or disabled acceleration */
-  code?: BiEngineReasonCodeEnum;
+  code?: BiEngineReasonCodeEnum | (string & {});
   /** Output only. Free form human-readable reason for partial or disabled acceleration. */
   message?: string;
 }
@@ -1855,7 +1863,7 @@ export const BiEngineReason = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "BiEngineReason" }) as any as S.Schema<BiEngineReason>;
 
-export type BiEngineReasonList = ReadonlyArray<BiEngineReason>;
+export type BiEngineReasonList = Array<BiEngineReason>;
 export const BiEngineReasonList = /*@__PURE__*/ S.Array(
   BiEngineReason,
 ) as any as S.Schema<BiEngineReasonList>;
@@ -1880,9 +1888,9 @@ export interface BiEngineStatistics {
   /** In case of DISABLED or PARTIAL bi_engine_mode, these contain the explanatory reasons as to why BI Engine could not accelerate. In case the full query was accelerated, this field is not populated. */
   biEngineReasons?: BiEngineReasonList;
   /** Output only. Specifies which mode of BI Engine acceleration was performed (if any). */
-  biEngineMode?: BiEngineStatisticsBiEngineModeEnum;
+  biEngineMode?: BiEngineStatisticsBiEngineModeEnum | (string & {});
   /** Output only. Specifies which mode of BI Engine acceleration was performed (if any). */
-  accelerationMode?: BiEngineStatisticsAccelerationModeEnum;
+  accelerationMode?: BiEngineStatisticsAccelerationModeEnum | (string & {});
 }
 export const BiEngineStatistics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1957,7 +1965,7 @@ export const LoadQueryStatistics = /*@__PURE__*/ S.suspend(() =>
   identifier: "LoadQueryStatistics",
 }) as any as S.Schema<LoadQueryStatistics>;
 
-export type RoutineReferenceList = ReadonlyArray<RoutineReference>;
+export type RoutineReferenceList = Array<RoutineReference>;
 export const RoutineReferenceList = /*@__PURE__*/ S.Array(
   RoutineReference,
 ) as any as S.Schema<RoutineReferenceList>;
@@ -1981,7 +1989,7 @@ export const PropertyGraphReference = /*@__PURE__*/ S.suspend(() =>
   identifier: "PropertyGraphReference",
 }) as any as S.Schema<PropertyGraphReference>;
 
-export type PropertyGraphReferenceList = ReadonlyArray<PropertyGraphReference>;
+export type PropertyGraphReferenceList = Array<PropertyGraphReference>;
 export const PropertyGraphReferenceList = /*@__PURE__*/ S.Array(
   PropertyGraphReference,
 ) as any as S.Schema<PropertyGraphReferenceList>;
@@ -2072,7 +2080,7 @@ export const GenAiFunctionStats = /*@__PURE__*/ S.suspend(() =>
   identifier: "GenAiFunctionStats",
 }) as any as S.Schema<GenAiFunctionStats>;
 
-export type GenAiFunctionStatsList = ReadonlyArray<GenAiFunctionStats>;
+export type GenAiFunctionStatsList = Array<GenAiFunctionStats>;
 export const GenAiFunctionStatsList = /*@__PURE__*/ S.Array(
   GenAiFunctionStats,
 ) as any as S.Schema<GenAiFunctionStatsList>;
@@ -2282,8 +2290,9 @@ export type TrainingOptionsHparamTuningObjectivesItemEnum =
 export const TrainingOptionsHparamTuningObjectivesItemEnum =
   /*@__PURE__*/ S.String;
 
-export type TrainingOptionsHparamTuningObjectivesItemEnumList =
-  ReadonlyArray<TrainingOptionsHparamTuningObjectivesItemEnum>;
+export type TrainingOptionsHparamTuningObjectivesItemEnumList = Array<
+  TrainingOptionsHparamTuningObjectivesItemEnum | (string & {})
+>;
 export const TrainingOptionsHparamTuningObjectivesItemEnumList =
   /*@__PURE__*/ S.Array(
     TrainingOptionsHparamTuningObjectivesItemEnum,
@@ -2423,8 +2432,9 @@ export type TrainingOptionsHolidayRegionsItemEnum =
   | "ZA";
 export const TrainingOptionsHolidayRegionsItemEnum = /*@__PURE__*/ S.String;
 
-export type TrainingOptionsHolidayRegionsItemEnumList =
-  ReadonlyArray<TrainingOptionsHolidayRegionsItemEnum>;
+export type TrainingOptionsHolidayRegionsItemEnumList = Array<
+  TrainingOptionsHolidayRegionsItemEnum | (string & {})
+>;
 export const TrainingOptionsHolidayRegionsItemEnumList = /*@__PURE__*/ S.Array(
   TrainingOptionsHolidayRegionsItemEnum,
 ) as any as S.Schema<TrainingOptionsHolidayRegionsItemEnumList>;
@@ -2451,31 +2461,33 @@ export interface TrainingOptions {
   /** Weights associated with each label class, for rebalancing the training data. Only applicable for classification models. */
   labelClassWeights?: DoubleMap;
   /** Enums for color space, used for processing images in Object Table. See more details at https://www.tensorflow.org/io/tutorials/colorspace. */
-  colorSpace?: TrainingOptionsColorSpaceEnum;
+  colorSpace?: TrainingOptionsColorSpaceEnum | (string & {});
   /** Hidden units for dnn models. */
   hiddenUnits?: StringList;
   /** Type of normalization algorithm for boosted tree models using dart booster. */
-  dartNormalizeType?: TrainingOptionsDartNormalizeTypeEnum;
+  dartNormalizeType?: TrainingOptionsDartNormalizeTypeEnum | (string & {});
   /** User-selected XGBoost versions for training of XGBoost models. */
   xgboostVersion?: string;
   /** The geographical region based on which the holidays are considered in time series modeling. If a valid value is specified, then holiday effects modeling is enabled. */
-  holidayRegion?: TrainingOptionsHolidayRegionEnum;
+  holidayRegion?: TrainingOptionsHolidayRegionEnum | (string & {});
   /** Based on the selected TF version, the corresponding docker image is used to train external models. */
   tfVersion?: string;
   /** The data frequency of a time series. */
-  dataFrequency?: TrainingOptionsDataFrequencyEnum;
+  dataFrequency?: TrainingOptionsDataFrequencyEnum | (string & {});
   /** Item column specified for matrix factorization models. */
   itemColumn?: string;
   /** The maximum number of time points in a time series that can be used in modeling the trend component of the time series. Don't use this option with the `timeSeriesLengthFraction` or `minTimeSeriesLength` options. */
   maxTimeSeriesLength?: string;
   /** Optimization strategy for training linear regression models. */
-  optimizationStrategy?: TrainingOptionsOptimizationStrategyEnum;
+  optimizationStrategy?:
+    | TrainingOptionsOptimizationStrategyEnum
+    | (string & {});
   /** The data split type for training and evaluation, e.g. RANDOM. */
-  dataSplitMethod?: TrainingOptionsDataSplitMethodEnum;
+  dataSplitMethod?: TrainingOptionsDataSplitMethodEnum | (string & {});
   /** Batch size for dnn models. */
   batchSize?: string;
   /** The solver for PCA. */
-  pcaSolver?: TrainingOptionsPcaSolverEnum;
+  pcaSolver?: TrainingOptionsPcaSolverEnum | (string & {});
   /** The minimum number of machine replicas that will be always deployed on an endpoint. This value must be greater than or equal to 1. The default value is 1. */
   minReplicaCount?: string;
   /** Whether to use approximate feature contribution method in XGBoost model explanation for global explain. */
@@ -2493,7 +2505,7 @@ export interface TrainingOptions {
   /** If true, perform decompose time series and save the results. */
   decomposeTimeSeries?: boolean;
   /** Tree construction algorithm for boosted tree models. */
-  treeMethod?: TrainingOptionsTreeMethodEnum;
+  treeMethod?: TrainingOptionsTreeMethodEnum | (string & {});
   /** The minimum ratio of cumulative explained variance that needs to be given by the PCA model. */
   pcaExplainedVarianceRatio?: number;
   /** If true, enable global explanation during training. */
@@ -2563,7 +2575,7 @@ export interface TrainingOptions {
   /** The fraction of the interpolated length of the time series that's used to model the time series trend component. All of the time points of the time series are used to model the non-trend component. This training option accelerates modeling training without sacrificing much forecasting accuracy. You can use this option with `minTimeSeriesLength` but not with `maxTimeSeriesLength`. */
   timeSeriesLengthFraction?: number;
   /** Booster type for boosted tree models. */
-  boosterType?: TrainingOptionsBoosterTypeEnum;
+  boosterType?: TrainingOptionsBoosterTypeEnum | (string & {});
   /** If true, clean spikes and dips in the input time series. */
   cleanSpikesAndDips?: boolean;
   /** Num factors specified for matrix factorization models. */
@@ -2573,7 +2585,7 @@ export interface TrainingOptions {
   /** Maximum depth of a tree for boosted tree models. */
   maxTreeDepth?: string;
   /** The strategy to determine learn rate for the current iteration. */
-  learnRateStrategy?: TrainingOptionsLearnRateStrategyEnum;
+  learnRateStrategy?: TrainingOptionsLearnRateStrategyEnum | (string & {});
   /** The apriori support minimum. Applies to contribution analysis models. */
   minAprioriSupport?: number;
   /** Whether to standardize numerical features. Default to true. */
@@ -2585,7 +2597,7 @@ export interface TrainingOptions {
   /** The type of the machine used to deploy and serve the model. */
   machineType?: string;
   /** Type of loss function used during training run. */
-  lossType?: TrainingOptionsLossTypeEnum;
+  lossType?: TrainingOptionsLossTypeEnum | (string & {});
   /** A specification of the non-seasonal part of the ARIMA model: the three components (p, d, q) are the AR order, the degree of differencing, and the MA order. */
   nonSeasonalOrder?: ArimaOrder;
   /** Budget in hours for AutoML training. */
@@ -2613,17 +2625,21 @@ export interface TrainingOptions {
   /** Whether to stop early when the loss doesn't improve significantly any more (compared to min_relative_progress). Used only for iterative training algorithms. */
   earlyStop?: boolean;
   /** Feedback type that specifies which algorithm to run for matrix factorization. */
-  feedbackType?: TrainingOptionsFeedbackTypeEnum;
+  feedbackType?: TrainingOptionsFeedbackTypeEnum | (string & {});
   /** Optimizer used for training the neural nets. */
   optimizer?: string;
   /** The method used to initialize the centroids for kmeans algorithm. */
-  kmeansInitializationMethod?: TrainingOptionsKmeansInitializationMethodEnum;
+  kmeansInitializationMethod?:
+    | TrainingOptionsKmeansInitializationMethodEnum
+    | (string & {});
   /** Whether the model should include intercept during model training. */
   fitIntercept?: boolean;
   /** Categorical feature encoding method. */
-  categoryEncodingMethod?: TrainingOptionsCategoryEncodingMethodEnum;
+  categoryEncodingMethod?:
+    | TrainingOptionsCategoryEncodingMethodEnum
+    | (string & {});
   /** Distance type for clustering models. */
-  distanceType?: TrainingOptionsDistanceTypeEnum;
+  distanceType?: TrainingOptionsDistanceTypeEnum | (string & {});
   /** A list of geographical regions that are used for time series modeling. */
   holidayRegions?: TrainingOptionsHolidayRegionsItemEnumList;
   /** The id of a Hugging Face model. For example, `google/gemma-2-2b-it`. */
@@ -2637,7 +2653,9 @@ export interface TrainingOptions {
   /** The column to split data with. This column won't be used as a feature. 1. When data_split_method is CUSTOM, the corresponding column should be boolean. The rows with true value tag are eval data, and the false are training data. 2. When data_split_method is SEQ, the first DATA_SPLIT_EVAL_FRACTION rows (from smallest to largest) in the corresponding column are used as training data, and the rest are eval data. It respects the order in Orderable data types: https://cloud.google.com/bigquery/docs/reference/standard-sql/data-types#data_type_properties */
   dataSplitColumn?: string;
   /** Specifies the reservation affinity type used to configure a Vertex AI resource. The default value is `NO_RESERVATION`. */
-  reservationAffinityType?: TrainingOptionsReservationAffinityTypeEnum;
+  reservationAffinityType?:
+    | TrainingOptionsReservationAffinityTypeEnum
+    | (string & {});
   /** Dropout probability for dnn models. */
   dropout?: number;
   /** The fraction of evaluation data over the whole input data. The rest of data will be used as training data. The format should be double. Accurate to two decimal places. Default value is 0.2. */
@@ -2645,7 +2663,7 @@ export interface TrainingOptions {
   /** Activation function of the neural nets. */
   activationFn?: string;
   /** The model registry. */
-  modelRegistry?: TrainingOptionsModelRegistryEnum;
+  modelRegistry?: TrainingOptionsModelRegistryEnum | (string & {});
 }
 export const TrainingOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2805,7 +2823,9 @@ export const ArimaSingleModelForecastingMetricsSeasonalPeriodsItemEnum =
   /*@__PURE__*/ S.String;
 
 export type ArimaSingleModelForecastingMetricsSeasonalPeriodsItemEnumList =
-  ReadonlyArray<ArimaSingleModelForecastingMetricsSeasonalPeriodsItemEnum>;
+  Array<
+    ArimaSingleModelForecastingMetricsSeasonalPeriodsItemEnum | (string & {})
+  >;
 export const ArimaSingleModelForecastingMetricsSeasonalPeriodsItemEnumList =
   /*@__PURE__*/ S.Array(
     ArimaSingleModelForecastingMetricsSeasonalPeriodsItemEnum,
@@ -2851,22 +2871,22 @@ export const ArimaSingleModelForecastingMetrics = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ArimaSingleModelForecastingMetrics>;
 
 export type ArimaSingleModelForecastingMetricsList =
-  ReadonlyArray<ArimaSingleModelForecastingMetrics>;
+  Array<ArimaSingleModelForecastingMetrics>;
 export const ArimaSingleModelForecastingMetricsList = /*@__PURE__*/ S.Array(
   ArimaSingleModelForecastingMetrics,
 ) as any as S.Schema<ArimaSingleModelForecastingMetricsList>;
 
-export type BooleanList = ReadonlyArray<boolean>;
+export type BooleanList = Array<boolean>;
 export const BooleanList = /*@__PURE__*/ S.Array(
   S.Boolean,
 ) as any as S.Schema<BooleanList>;
 
-export type ArimaOrderList = ReadonlyArray<ArimaOrder>;
+export type ArimaOrderList = Array<ArimaOrder>;
 export const ArimaOrderList = /*@__PURE__*/ S.Array(
   ArimaOrder,
 ) as any as S.Schema<ArimaOrderList>;
 
-export type ArimaFittingMetricsList = ReadonlyArray<ArimaFittingMetrics>;
+export type ArimaFittingMetricsList = Array<ArimaFittingMetrics>;
 export const ArimaFittingMetricsList = /*@__PURE__*/ S.Array(
   ArimaFittingMetrics,
 ) as any as S.Schema<ArimaFittingMetricsList>;
@@ -2883,8 +2903,9 @@ export type ArimaForecastingMetricsSeasonalPeriodsItemEnum =
 export const ArimaForecastingMetricsSeasonalPeriodsItemEnum =
   /*@__PURE__*/ S.String;
 
-export type ArimaForecastingMetricsSeasonalPeriodsItemEnumList =
-  ReadonlyArray<ArimaForecastingMetricsSeasonalPeriodsItemEnum>;
+export type ArimaForecastingMetricsSeasonalPeriodsItemEnumList = Array<
+  ArimaForecastingMetricsSeasonalPeriodsItemEnum | (string & {})
+>;
 export const ArimaForecastingMetricsSeasonalPeriodsItemEnumList =
   /*@__PURE__*/ S.Array(
     ArimaForecastingMetricsSeasonalPeriodsItemEnum,
@@ -3010,7 +3031,7 @@ export const BinaryConfusionMatrix = /*@__PURE__*/ S.suspend(() =>
   identifier: "BinaryConfusionMatrix",
 }) as any as S.Schema<BinaryConfusionMatrix>;
 
-export type BinaryConfusionMatrixList = ReadonlyArray<BinaryConfusionMatrix>;
+export type BinaryConfusionMatrixList = Array<BinaryConfusionMatrix>;
 export const BinaryConfusionMatrixList = /*@__PURE__*/ S.Array(
   BinaryConfusionMatrix,
 ) as any as S.Schema<BinaryConfusionMatrixList>;
@@ -3051,7 +3072,7 @@ export const Entry = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Entry" }) as any as S.Schema<Entry>;
 
-export type EntryList = ReadonlyArray<Entry>;
+export type EntryList = Array<Entry>;
 export const EntryList = /*@__PURE__*/ S.Array(
   Entry,
 ) as any as S.Schema<EntryList>;
@@ -3070,7 +3091,7 @@ export const Row = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Row" }) as any as S.Schema<Row>;
 
-export type RowList = ReadonlyArray<Row>;
+export type RowList = Array<Row>;
 export const RowList = /*@__PURE__*/ S.Array(Row) as any as S.Schema<RowList>;
 
 /** Confusion matrix for multi-class classification models. */
@@ -3089,7 +3110,7 @@ export const ConfusionMatrix = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConfusionMatrix",
 }) as any as S.Schema<ConfusionMatrix>;
 
-export type ConfusionMatrixList = ReadonlyArray<ConfusionMatrix>;
+export type ConfusionMatrixList = Array<ConfusionMatrix>;
 export const ConfusionMatrixList = /*@__PURE__*/ S.Array(
   ConfusionMatrix,
 ) as any as S.Schema<ConfusionMatrixList>;
@@ -3137,7 +3158,7 @@ export const CategoryCount = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CategoryCount" }) as any as S.Schema<CategoryCount>;
 
-export type CategoryCountList = ReadonlyArray<CategoryCount>;
+export type CategoryCountList = Array<CategoryCount>;
 export const CategoryCountList = /*@__PURE__*/ S.Array(
   CategoryCount,
 ) as any as S.Schema<CategoryCountList>;
@@ -3172,7 +3193,7 @@ export const FeatureValue = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "FeatureValue" }) as any as S.Schema<FeatureValue>;
 
-export type FeatureValueList = ReadonlyArray<FeatureValue>;
+export type FeatureValueList = Array<FeatureValue>;
 export const FeatureValueList = /*@__PURE__*/ S.Array(
   FeatureValue,
 ) as any as S.Schema<FeatureValueList>;
@@ -3194,7 +3215,7 @@ export const Cluster = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Cluster" }) as any as S.Schema<Cluster>;
 
-export type ClusterList = ReadonlyArray<Cluster>;
+export type ClusterList = Array<Cluster>;
 export const ClusterList = /*@__PURE__*/ S.Array(
   Cluster,
 ) as any as S.Schema<ClusterList>;
@@ -3285,7 +3306,7 @@ export interface HparamTuningTrial {
   /** Loss computed on the training data at the end of trial. */
   trainingLoss?: number;
   /** The status of the trial. */
-  status?: HparamTuningTrialStatusEnum;
+  status?: HparamTuningTrialStatusEnum | (string & {});
   /** Loss computed on the eval data at the end of trial. */
   evalLoss?: number;
   /** Error message for FAILED and INFEASIBLE trial. */
@@ -3316,12 +3337,12 @@ export const HparamTuningTrial = /*@__PURE__*/ S.suspend(() =>
   identifier: "HparamTuningTrial",
 }) as any as S.Schema<HparamTuningTrial>;
 
-export type HparamTuningTrialList = ReadonlyArray<HparamTuningTrial>;
+export type HparamTuningTrialList = Array<HparamTuningTrial>;
 export const HparamTuningTrialList = /*@__PURE__*/ S.Array(
   HparamTuningTrial,
 ) as any as S.Schema<HparamTuningTrialList>;
 
-export type DoubleList = ReadonlyArray<number>;
+export type DoubleList = Array<number>;
 export const DoubleList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<DoubleList>;
@@ -3356,8 +3377,9 @@ export type ArimaModelInfoSeasonalPeriodsItemEnum =
   | "HOURLY";
 export const ArimaModelInfoSeasonalPeriodsItemEnum = /*@__PURE__*/ S.String;
 
-export type ArimaModelInfoSeasonalPeriodsItemEnumList =
-  ReadonlyArray<ArimaModelInfoSeasonalPeriodsItemEnum>;
+export type ArimaModelInfoSeasonalPeriodsItemEnumList = Array<
+  ArimaModelInfoSeasonalPeriodsItemEnum | (string & {})
+>;
 export const ArimaModelInfoSeasonalPeriodsItemEnumList = /*@__PURE__*/ S.Array(
   ArimaModelInfoSeasonalPeriodsItemEnum,
 ) as any as S.Schema<ArimaModelInfoSeasonalPeriodsItemEnumList>;
@@ -3400,7 +3422,7 @@ export const ArimaModelInfo = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ArimaModelInfo" }) as any as S.Schema<ArimaModelInfo>;
 
-export type ArimaModelInfoList = ReadonlyArray<ArimaModelInfo>;
+export type ArimaModelInfoList = Array<ArimaModelInfo>;
 export const ArimaModelInfoList = /*@__PURE__*/ S.Array(
   ArimaModelInfo,
 ) as any as S.Schema<ArimaModelInfoList>;
@@ -3416,8 +3438,9 @@ export type ArimaResultSeasonalPeriodsItemEnum =
   | "HOURLY";
 export const ArimaResultSeasonalPeriodsItemEnum = /*@__PURE__*/ S.String;
 
-export type ArimaResultSeasonalPeriodsItemEnumList =
-  ReadonlyArray<ArimaResultSeasonalPeriodsItemEnum>;
+export type ArimaResultSeasonalPeriodsItemEnumList = Array<
+  ArimaResultSeasonalPeriodsItemEnum | (string & {})
+>;
 export const ArimaResultSeasonalPeriodsItemEnumList = /*@__PURE__*/ S.Array(
   ArimaResultSeasonalPeriodsItemEnum,
 ) as any as S.Schema<ArimaResultSeasonalPeriodsItemEnumList>;
@@ -3458,7 +3481,7 @@ export const PrincipalComponentInfo = /*@__PURE__*/ S.suspend(() =>
   identifier: "PrincipalComponentInfo",
 }) as any as S.Schema<PrincipalComponentInfo>;
 
-export type PrincipalComponentInfoList = ReadonlyArray<PrincipalComponentInfo>;
+export type PrincipalComponentInfoList = Array<PrincipalComponentInfo>;
 export const PrincipalComponentInfoList = /*@__PURE__*/ S.Array(
   PrincipalComponentInfo,
 ) as any as S.Schema<PrincipalComponentInfoList>;
@@ -3480,7 +3503,7 @@ export const ClusterInfo = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ClusterInfo" }) as any as S.Schema<ClusterInfo>;
 
-export type ClusterInfoList = ReadonlyArray<ClusterInfo>;
+export type ClusterInfoList = Array<ClusterInfo>;
 export const ClusterInfoList = /*@__PURE__*/ S.Array(
   ClusterInfo,
 ) as any as S.Schema<ClusterInfoList>;
@@ -3519,7 +3542,7 @@ export const IterationResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "IterationResult",
 }) as any as S.Schema<IterationResult>;
 
-export type IterationResultList = ReadonlyArray<IterationResult>;
+export type IterationResultList = Array<IterationResult>;
 export const IterationResultList = /*@__PURE__*/ S.Array(
   IterationResult,
 ) as any as S.Schema<IterationResultList>;
@@ -3527,9 +3550,9 @@ export const IterationResultList = /*@__PURE__*/ S.Array(
 /** Job statistics specific to a BigQuery ML training job. */
 export interface MlStatistics {
   /** Output only. Training type of the job. */
-  trainingType?: MlStatisticsTrainingTypeEnum;
+  trainingType?: MlStatisticsTrainingTypeEnum | (string & {});
   /** Output only. The type of the model that is being trained. */
-  modelType?: MlStatisticsModelTypeEnum;
+  modelType?: MlStatisticsModelTypeEnum | (string & {});
   /** Output only. Maximum number of iterations specified as max_iterations in the 'CREATE MODEL' query. The actual number of iterations may be less than this number due to early stop. */
   maxIterations?: string;
   /** Output only. Trials of a [hyperparameter tuning job](https://cloud.google.com/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-hp-tuning-overview) sorted by trial_id. */
@@ -3576,7 +3599,7 @@ export const IndexPruningStats = /*@__PURE__*/ S.suspend(() =>
   identifier: "IndexPruningStats",
 }) as any as S.Schema<IndexPruningStats>;
 
-export type IndexPruningStatsList = ReadonlyArray<IndexPruningStats>;
+export type IndexPruningStatsList = Array<IndexPruningStats>;
 export const IndexPruningStatsList = /*@__PURE__*/ S.Array(
   IndexPruningStats,
 ) as any as S.Schema<IndexPruningStatsList>;
@@ -3613,7 +3636,7 @@ export interface IndexUnusedReason {
   /** Specifies the name of the unused search index, if available. */
   indexName?: string;
   /** Specifies the high-level reason for the scenario when no search index was used. */
-  code?: IndexUnusedReasonCodeEnum;
+  code?: IndexUnusedReasonCodeEnum | (string & {});
   /** Free form human-readable reason for the scenario when no search index was used. */
   message?: string;
 }
@@ -3628,7 +3651,7 @@ export const IndexUnusedReason = /*@__PURE__*/ S.suspend(() =>
   identifier: "IndexUnusedReason",
 }) as any as S.Schema<IndexUnusedReason>;
 
-export type IndexUnusedReasonList = ReadonlyArray<IndexUnusedReason>;
+export type IndexUnusedReasonList = Array<IndexUnusedReason>;
 export const IndexUnusedReasonList = /*@__PURE__*/ S.Array(
   IndexUnusedReason,
 ) as any as S.Schema<IndexUnusedReasonList>;
@@ -3636,7 +3659,7 @@ export const IndexUnusedReasonList = /*@__PURE__*/ S.Array(
 /** Statistics for a search query. Populated as part of JobStatistics2. */
 export interface SearchStatistics {
   /** Specifies the index usage mode for the query. */
-  indexUsageMode?: SearchStatisticsIndexUsageModeEnum;
+  indexUsageMode?: SearchStatisticsIndexUsageModeEnum | (string & {});
   /** Search index pruning statistics, one for each base table that has a search index. If a base table does not have a search index or the index does not help with pruning on the base table, then there is no pruning statistics for that table. */
   indexPruningStats?: IndexPruningStatsList;
   /** When `indexUsageMode` is `UNUSED` or `PARTIALLY_USED`, this field explains why indexes were not used in all or part of the search query. If `indexUsageMode` is `FULLY_USED`, this field is not populated. */
@@ -3682,7 +3705,7 @@ export const StagePerformanceChangeInsight = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StagePerformanceChangeInsight>;
 
 export type StagePerformanceChangeInsightList =
-  ReadonlyArray<StagePerformanceChangeInsight>;
+  Array<StagePerformanceChangeInsight>;
 export const StagePerformanceChangeInsightList = /*@__PURE__*/ S.Array(
   StagePerformanceChangeInsight,
 ) as any as S.Schema<StagePerformanceChangeInsightList>;
@@ -3722,7 +3745,7 @@ export const TableChangeInsight = /*@__PURE__*/ S.suspend(() =>
   identifier: "TableChangeInsight",
 }) as any as S.Schema<TableChangeInsight>;
 
-export type TableChangeInsightList = ReadonlyArray<TableChangeInsight>;
+export type TableChangeInsightList = Array<TableChangeInsight>;
 export const TableChangeInsightList = /*@__PURE__*/ S.Array(
   TableChangeInsight,
 ) as any as S.Schema<TableChangeInsightList>;
@@ -3749,7 +3772,7 @@ export const HighCardinalityJoin = /*@__PURE__*/ S.suspend(() =>
   identifier: "HighCardinalityJoin",
 }) as any as S.Schema<HighCardinalityJoin>;
 
-export type HighCardinalityJoinList = ReadonlyArray<HighCardinalityJoin>;
+export type HighCardinalityJoinList = Array<HighCardinalityJoin>;
 export const HighCardinalityJoinList = /*@__PURE__*/ S.Array(
   HighCardinalityJoin,
 ) as any as S.Schema<HighCardinalityJoinList>;
@@ -3765,7 +3788,7 @@ export const SkewSource = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SkewSource" }) as any as S.Schema<SkewSource>;
 
-export type SkewSourceList = ReadonlyArray<SkewSource>;
+export type SkewSourceList = Array<SkewSource>;
 export const SkewSourceList = /*@__PURE__*/ S.Array(
   SkewSource,
 ) as any as S.Schema<SkewSourceList>;
@@ -3810,7 +3833,7 @@ export const StagePerformanceStandaloneInsight = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StagePerformanceStandaloneInsight>;
 
 export type StagePerformanceStandaloneInsightList =
-  ReadonlyArray<StagePerformanceStandaloneInsight>;
+  Array<StagePerformanceStandaloneInsight>;
 export const StagePerformanceStandaloneInsightList = /*@__PURE__*/ S.Array(
   StagePerformanceStandaloneInsight,
 ) as any as S.Schema<StagePerformanceStandaloneInsightList>;
@@ -3870,7 +3893,7 @@ export interface TableMetadataCacheUsage {
   /** The column metadata index pruning statistics. */
   pruningStats?: PruningStats;
   /** Reason for not using metadata caching for the table. */
-  unusedReason?: TableMetadataCacheUsageUnusedReasonEnum;
+  unusedReason?: TableMetadataCacheUsageUnusedReasonEnum | (string & {});
   /** Free form human-readable reason metadata caching was unused for the job. */
   explanation?: string;
   /** Duration since last refresh as of this job for managed tables (indicates metadata cache staleness as seen by this job). */
@@ -3893,8 +3916,7 @@ export const TableMetadataCacheUsage = /*@__PURE__*/ S.suspend(() =>
   identifier: "TableMetadataCacheUsage",
 }) as any as S.Schema<TableMetadataCacheUsage>;
 
-export type TableMetadataCacheUsageList =
-  ReadonlyArray<TableMetadataCacheUsage>;
+export type TableMetadataCacheUsageList = Array<TableMetadataCacheUsage>;
 export const TableMetadataCacheUsageList = /*@__PURE__*/ S.Array(
   TableMetadataCacheUsage,
 ) as any as S.Schema<TableMetadataCacheUsageList>;
@@ -3928,7 +3950,7 @@ export const ExplainQueryStep = /*@__PURE__*/ S.suspend(() =>
   identifier: "ExplainQueryStep",
 }) as any as S.Schema<ExplainQueryStep>;
 
-export type ExplainQueryStepList = ReadonlyArray<ExplainQueryStep>;
+export type ExplainQueryStepList = Array<ExplainQueryStep>;
 export const ExplainQueryStepList = /*@__PURE__*/ S.Array(
   ExplainQueryStep,
 ) as any as S.Schema<ExplainQueryStepList>;
@@ -3978,7 +4000,7 @@ export interface ExplainQueryStage {
   /** Number of parallel input segments completed. */
   completedParallelInputs?: string;
   /** Output only. Compute mode for this stage. */
-  computeMode?: ExplainQueryStageComputeModeEnum;
+  computeMode?: ExplainQueryStageComputeModeEnum | (string & {});
   /** Relative amount of time the average shard spent waiting to be scheduled. */
   waitRatioAvg?: number;
   /** Total number of bytes written to shuffle. */
@@ -4042,7 +4064,7 @@ export const ExplainQueryStage = /*@__PURE__*/ S.suspend(() =>
   identifier: "ExplainQueryStage",
 }) as any as S.Schema<ExplainQueryStage>;
 
-export type ExplainQueryStageList = ReadonlyArray<ExplainQueryStage>;
+export type ExplainQueryStageList = Array<ExplainQueryStage>;
 export const ExplainQueryStageList = /*@__PURE__*/ S.Array(
   ExplainQueryStage,
 ) as any as S.Schema<ExplainQueryStageList>;
@@ -4066,11 +4088,13 @@ export interface DmlStatistics {
   /** Output only. Number of updated Rows. Populated by DML UPDATE and MERGE statements. */
   updatedRowCount?: string;
   /** Output only. DML mode used. */
-  dmlMode?: DmlStatisticsDmlModeEnum;
+  dmlMode?: DmlStatisticsDmlModeEnum | (string & {});
   /** Output only. Number of inserted Rows. Populated by DML INSERT and MERGE statements */
   insertedRowCount?: string;
   /** Output only. Reason for disabling fine-grained DML if applicable. */
-  fineGrainedDmlUnusedReason?: DmlStatisticsFineGrainedDmlUnusedReasonEnum;
+  fineGrainedDmlUnusedReason?:
+    | DmlStatisticsFineGrainedDmlUnusedReasonEnum
+    | (string & {});
   /** Output only. Number of deleted Rows. populated by DML DELETE, MERGE and TRUNCATE statements. */
   deletedRowCount?: string;
 }
@@ -4098,7 +4122,7 @@ export interface ObjectStorageStats {
   /** Total bytes read from the GCP Lakehouse-internal cache, avoiding an object storage read. */
   cacheBytesRead?: string;
   /** The cloud provider for this block of statistics. */
-  cloudProvider?: ObjectStorageStatsCloudProviderEnum;
+  cloudProvider?: ObjectStorageStatsCloudProviderEnum | (string & {});
   /** Total bytes read directly from the cloud provider's storage. */
   objectStorageBytesRead?: string;
 }
@@ -4112,7 +4136,7 @@ export const ObjectStorageStats = /*@__PURE__*/ S.suspend(() =>
   identifier: "ObjectStorageStats",
 }) as any as S.Schema<ObjectStorageStats>;
 
-export type ObjectStorageStatsList = ReadonlyArray<ObjectStorageStats>;
+export type ObjectStorageStatsList = Array<ObjectStorageStats>;
 export const ObjectStorageStatsList = /*@__PURE__*/ S.Array(
   ObjectStorageStats,
 ) as any as S.Schema<ObjectStorageStatsList>;
@@ -4137,7 +4161,7 @@ export const StoredColumnsUnusedReasonCodeEnum = /*@__PURE__*/ S.String;
 /** If the stored column was not used, explain why. */
 export interface StoredColumnsUnusedReason {
   /** Specifies the high-level reason for the unused scenario, each reason must have a code associated. */
-  code?: StoredColumnsUnusedReasonCodeEnum;
+  code?: StoredColumnsUnusedReasonCodeEnum | (string & {});
   /** Specifies the detailed description for the scenario. */
   message?: string;
   /** Specifies which columns were not covered by the stored columns for the specified code up to 20 columns. This is populated when the code is STORED_COLUMNS_COVER_INSUFFICIENT and BASE_TABLE_HAS_CLS. */
@@ -4153,8 +4177,7 @@ export const StoredColumnsUnusedReason = /*@__PURE__*/ S.suspend(() =>
   identifier: "StoredColumnsUnusedReason",
 }) as any as S.Schema<StoredColumnsUnusedReason>;
 
-export type StoredColumnsUnusedReasonList =
-  ReadonlyArray<StoredColumnsUnusedReason>;
+export type StoredColumnsUnusedReasonList = Array<StoredColumnsUnusedReason>;
 export const StoredColumnsUnusedReasonList = /*@__PURE__*/ S.Array(
   StoredColumnsUnusedReason,
 ) as any as S.Schema<StoredColumnsUnusedReasonList>;
@@ -4178,7 +4201,7 @@ export const StoredColumnsUsage = /*@__PURE__*/ S.suspend(() =>
   identifier: "StoredColumnsUsage",
 }) as any as S.Schema<StoredColumnsUsage>;
 
-export type StoredColumnsUsageList = ReadonlyArray<StoredColumnsUsage>;
+export type StoredColumnsUsageList = Array<StoredColumnsUsage>;
 export const StoredColumnsUsageList = /*@__PURE__*/ S.Array(
   StoredColumnsUsage,
 ) as any as S.Schema<StoredColumnsUsageList>;
@@ -4186,7 +4209,7 @@ export const StoredColumnsUsageList = /*@__PURE__*/ S.Array(
 /** Statistics for a vector search query. Populated as part of JobStatistics2. */
 export interface VectorSearchStatistics {
   /** Specifies the index usage mode for the query. */
-  indexUsageMode?: VectorSearchStatisticsIndexUsageModeEnum;
+  indexUsageMode?: VectorSearchStatisticsIndexUsageModeEnum | (string & {});
   /** Specifies the usage of stored columns in the query when stored columns are used in the query. */
   storedColumnsUsages?: StoredColumnsUsageList;
   /** When `indexUsageMode` is `UNUSED` or `PARTIALLY_USED`, this field explains why indexes were not used in all or part of the vector search query. If `indexUsageMode` is `FULLY_USED`, this field is not populated. */
@@ -4226,7 +4249,7 @@ export interface MaterializedView {
   /** If present, specifies a best-effort estimation of the bytes saved by using the materialized view rather than its base tables. */
   estimatedBytesSaved?: string;
   /** If present, specifies the reason why the materialized view was not chosen for the query. */
-  rejectedReason?: MaterializedViewRejectedReasonEnum;
+  rejectedReason?: MaterializedViewRejectedReasonEnum | (string & {});
 }
 export const MaterializedView = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4239,7 +4262,7 @@ export const MaterializedView = /*@__PURE__*/ S.suspend(() =>
   identifier: "MaterializedView",
 }) as any as S.Schema<MaterializedView>;
 
-export type MaterializedViewList = ReadonlyArray<MaterializedView>;
+export type MaterializedViewList = Array<MaterializedView>;
 export const MaterializedViewList = /*@__PURE__*/ S.Array(
   MaterializedView,
 ) as any as S.Schema<MaterializedViewList>;
@@ -4333,7 +4356,7 @@ export interface IncrementalResultStats {
   /** Output only. The time at which the result table's contents were modified. May be absent if no results have been written or the query has completed. */
   resultSetLastModifyTime?: string;
   /** Output only. Reason why incremental query results are/were not written by the query. */
-  disabledReason?: IncrementalResultStatsDisabledReasonEnum;
+  disabledReason?: IncrementalResultStatsDisabledReasonEnum | (string & {});
   /** Output only. Additional human-readable clarification, if available, for DisabledReason. */
   disabledReasonDetails?: string;
   /** Output only. The time at which the first incremental result was written. If the query needed to restart internally, this only describes the final attempt. */
@@ -4559,7 +4582,7 @@ export const ScriptStackFrame = /*@__PURE__*/ S.suspend(() =>
   identifier: "ScriptStackFrame",
 }) as any as S.Schema<ScriptStackFrame>;
 
-export type ScriptStackFrameList = ReadonlyArray<ScriptStackFrame>;
+export type ScriptStackFrameList = Array<ScriptStackFrame>;
 export const ScriptStackFrameList = /*@__PURE__*/ S.Array(
   ScriptStackFrame,
 ) as any as S.Schema<ScriptStackFrameList>;
@@ -4567,7 +4590,7 @@ export const ScriptStackFrameList = /*@__PURE__*/ S.Array(
 /** Job statistics specific to the child job of a script. */
 export interface ScriptStatistics {
   /** Whether this child job was a statement or expression. */
-  evaluationKind?: ScriptStatisticsEvaluationKindEnum;
+  evaluationKind?: ScriptStatisticsEvaluationKindEnum | (string & {});
   /** Stack trace showing the line/column/procedure name of each frame on the stack at the point where the current evaluation happened. The leaf frame is first, the primary script is last. Never empty. */
   stackFrames?: ScriptStackFrameList;
 }
@@ -4613,7 +4636,7 @@ export const JobStatisticsReservationUsageItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<JobStatisticsReservationUsageItem>;
 
 export type JobStatisticsReservationUsageItemList =
-  ReadonlyArray<JobStatisticsReservationUsageItem>;
+  Array<JobStatisticsReservationUsageItem>;
 export const JobStatisticsReservationUsageItemList = /*@__PURE__*/ S.Array(
   JobStatisticsReservationUsageItem,
 ) as any as S.Schema<JobStatisticsReservationUsageItemList>;
@@ -4649,7 +4672,7 @@ export interface JobStatistics {
   /** Output only. Information of the session if this job is part of one. */
   sessionInfo?: SessionInfo;
   /** Output only. Name of edition corresponding to the reservation for this job at the time of this update. */
-  edition?: JobStatisticsEditionEnum;
+  edition?: JobStatisticsEditionEnum | (string & {});
   /** Output only. Name of the primary reservation assigned to this job. Note that this could be different than reservations reported in the reservation usage field if parent reservations were used to execute this job. */
   reservation_id?: string;
   /** Output only. End time of this job, in milliseconds since the epoch. This field will be present whenever a job is in the DONE state. */
@@ -4747,7 +4770,7 @@ export const ErrorProto = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ErrorProto" }) as any as S.Schema<ErrorProto>;
 
-export type ErrorProtoList = ReadonlyArray<ErrorProto>;
+export type ErrorProtoList = Array<ErrorProto>;
 export const ErrorProtoList = /*@__PURE__*/ S.Array(
   ErrorProto,
 ) as any as S.Schema<ErrorProtoList>;
@@ -5076,8 +5099,9 @@ export type DatasetAccessEntryTargetTypesItemEnum =
   | "ROUTINES";
 export const DatasetAccessEntryTargetTypesItemEnum = /*@__PURE__*/ S.String;
 
-export type DatasetAccessEntryTargetTypesItemEnumList =
-  ReadonlyArray<DatasetAccessEntryTargetTypesItemEnum>;
+export type DatasetAccessEntryTargetTypesItemEnumList = Array<
+  DatasetAccessEntryTargetTypesItemEnum | (string & {})
+>;
 export const DatasetAccessEntryTargetTypesItemEnumList = /*@__PURE__*/ S.Array(
   DatasetAccessEntryTargetTypesItemEnum,
 ) as any as S.Schema<DatasetAccessEntryTargetTypesItemEnumList>;
@@ -5137,7 +5161,7 @@ export const DatasetAccessItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "DatasetAccessItem",
 }) as any as S.Schema<DatasetAccessItem>;
 
-export type DatasetAccessItemList = ReadonlyArray<DatasetAccessItem>;
+export type DatasetAccessItemList = Array<DatasetAccessItem>;
 export const DatasetAccessItemList = /*@__PURE__*/ S.Array(
   DatasetAccessItem,
 ) as any as S.Schema<DatasetAccessItemList>;
@@ -5157,7 +5181,7 @@ export const DatasetTagsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "DatasetTagsItem",
 }) as any as S.Schema<DatasetTagsItem>;
 
-export type DatasetTagsItemList = ReadonlyArray<DatasetTagsItem>;
+export type DatasetTagsItemList = Array<DatasetTagsItem>;
 export const DatasetTagsItemList = /*@__PURE__*/ S.Array(
   DatasetTagsItem,
 ) as any as S.Schema<DatasetTagsItemList>;
@@ -5171,7 +5195,7 @@ export const LinkedDatasetMetadataLinkStateEnum = /*@__PURE__*/ S.String;
 /** Metadata about the Linked Dataset. */
 export interface LinkedDatasetMetadata {
   /** Output only. Specifies whether Linked Dataset is currently in a linked state or not. */
-  linkState?: LinkedDatasetMetadataLinkStateEnum;
+  linkState?: LinkedDatasetMetadataLinkStateEnum | (string & {});
 }
 export const LinkedDatasetMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5188,7 +5212,7 @@ export const RestrictionConfigTypeEnum = /*@__PURE__*/ S.String;
 
 export interface RestrictionConfig {
   /** Output only. Specifies the type of dataset/table restriction. */
-  type?: RestrictionConfigTypeEnum;
+  type?: RestrictionConfigTypeEnum | (string & {});
 }
 export const RestrictionConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5300,7 +5324,7 @@ export interface Dataset {
   /** Optional. The source dataset reference when the dataset is of type LINKED. For all other dataset types it is not set. This field cannot be updated once it is set. Any attempt to update this field using Update and Patch API Operations will be ignored. */
   linkedDatasetSource?: LinkedDatasetSource;
   /** Optional. Updates storage_billing_model for the dataset. */
-  storageBillingModel?: DatasetStorageBillingModelEnum;
+  storageBillingModel?: DatasetStorageBillingModelEnum | (string & {});
   /** Optional. Defines the default collation specification of future tables created in the dataset. If a table is created in this dataset without table-level default collation, then the table inherits the dataset default collation, which is applied to the string fields that do not have explicit collation specified. A change to this field affects only tables created afterwards, and does not alter the existing tables. The following values are supported: * 'und:ci': undetermined locale, case insensitive. * '': empty string. Default to case-sensitive behavior. */
   defaultCollation?: string;
   /** Optional. Reference to a read-only external dataset defined in data catalogs outside of BigQuery. Filled out when the dataset type is EXTERNAL. */
@@ -5318,7 +5342,7 @@ export interface Dataset {
   /** Output only. The fully-qualified unique name of the dataset in the format projectId:datasetId. The dataset name without the project name is given in the datasetId field. When creating a new dataset, leave this field blank, and instead specify the datasetId field. */
   id?: string;
   /** Optional. Defines the default rounding mode specification of new tables created within this dataset. During table creation, if this field is specified, the table within this dataset will inherit the default rounding mode of the dataset. Setting the default rounding mode on a table overrides this option. Existing tables in the dataset are unaffected. If columns are defined during that table creation, they will immediately inherit the table's default rounding mode, unless otherwise specified. */
-  defaultRoundingMode?: DatasetDefaultRoundingModeEnum;
+  defaultRoundingMode?: DatasetDefaultRoundingModeEnum | (string & {});
 }
 export const Dataset = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5415,7 +5439,7 @@ export interface AuditLogConfig {
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
   exemptedMembers?: StringList;
   /** The log type that this config enables. */
-  logType?: AuditLogConfigLogTypeEnum;
+  logType?: AuditLogConfigLogTypeEnum | (string & {});
 }
 export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5424,7 +5448,7 @@ export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
-export type AuditLogConfigList = ReadonlyArray<AuditLogConfig>;
+export type AuditLogConfigList = Array<AuditLogConfig>;
 export const AuditLogConfigList = /*@__PURE__*/ S.Array(
   AuditLogConfig,
 ) as any as S.Schema<AuditLogConfigList>;
@@ -5443,7 +5467,7 @@ export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
-export type AuditConfigList = ReadonlyArray<AuditConfig>;
+export type AuditConfigList = Array<AuditConfig>;
 export const AuditConfigList = /*@__PURE__*/ S.Array(
   AuditConfig,
 ) as any as S.Schema<AuditConfigList>;
@@ -5465,7 +5489,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
-export type BindingList = ReadonlyArray<Binding>;
+export type BindingList = Array<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -5687,7 +5711,7 @@ export const IntArray = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "IntArray" }) as any as S.Schema<IntArray>;
 
-export type IntArrayList = ReadonlyArray<IntArray>;
+export type IntArrayList = Array<IntArray>;
 export const IntArrayList = /*@__PURE__*/ S.Array(
   IntArray,
 ) as any as S.Schema<IntArrayList>;
@@ -5800,7 +5824,7 @@ export const TransformColumn = /*@__PURE__*/ S.suspend(() =>
   identifier: "TransformColumn",
 }) as any as S.Schema<TransformColumn>;
 
-export type TransformColumnList = ReadonlyArray<TransformColumn>;
+export type TransformColumnList = Array<TransformColumn>;
 export const TransformColumnList = /*@__PURE__*/ S.Array(
   TransformColumn,
 ) as any as S.Schema<TransformColumnList>;
@@ -5819,7 +5843,7 @@ export const Explanation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Explanation" }) as any as S.Schema<Explanation>;
 
-export type ExplanationList = ReadonlyArray<Explanation>;
+export type ExplanationList = Array<Explanation>;
 export const ExplanationList = /*@__PURE__*/ S.Array(
   Explanation,
 ) as any as S.Schema<ExplanationList>;
@@ -5840,7 +5864,7 @@ export const GlobalExplanation = /*@__PURE__*/ S.suspend(() =>
   identifier: "GlobalExplanation",
 }) as any as S.Schema<GlobalExplanation>;
 
-export type GlobalExplanationList = ReadonlyArray<GlobalExplanation>;
+export type GlobalExplanationList = Array<GlobalExplanation>;
 export const GlobalExplanationList = /*@__PURE__*/ S.Array(
   GlobalExplanation,
 ) as any as S.Schema<GlobalExplanationList>;
@@ -5902,7 +5926,7 @@ export const TrainingRun = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TrainingRun" }) as any as S.Schema<TrainingRun>;
 
-export type TrainingRunList = ReadonlyArray<TrainingRun>;
+export type TrainingRunList = Array<TrainingRun>;
 export const TrainingRunList = /*@__PURE__*/ S.Array(
   TrainingRun,
 ) as any as S.Schema<TrainingRunList>;
@@ -5957,7 +5981,7 @@ export interface RemoteModelInfo {
   /** Output only. Fully qualified name of the user-provided connection object of the remote model. Format: ```"projects/{project_id}/locations/{location_id}/connections/{connection_id}"``` */
   connection?: string;
   /** Output only. The remote service type for remote model. */
-  remoteServiceType?: RemoteModelInfoRemoteServiceTypeEnum;
+  remoteServiceType?: RemoteModelInfoRemoteServiceTypeEnum | (string & {});
 }
 export const RemoteModelInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6004,7 +6028,7 @@ export interface Model {
   /** Optional. The time when this model expires, in milliseconds since the epoch. If not present, the model will persist indefinitely. Expired models will be deleted and their storage reclaimed. The defaultTableExpirationMs property of the encapsulating dataset can be used to set a default expirationTime on newly created models. */
   expirationTime?: string;
   /** Output only. Type of the model resource. */
-  modelType?: ModelModelTypeEnum;
+  modelType?: ModelModelTypeEnum | (string & {});
   /** Output only. The default trial_id to use in TVFs when the trial_id is not passed in. For single-objective [hyperparameter tuning](https://cloud.google.com/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-hp-tuning-overview) models, this is the best trial ID. For multi-objective [hyperparameter tuning](https://cloud.google.com/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-hp-tuning-overview) models, this is the smallest trial ID among all Pareto optimal trials. */
   defaultTrialId?: string;
   /** Optional. A descriptive name for this model. */
@@ -6107,7 +6131,7 @@ export const TableCell = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TableCell" }) as any as S.Schema<TableCell>;
 
-export type TableCellList = ReadonlyArray<TableCell>;
+export type TableCellList = Array<TableCell>;
 export const TableCellList = /*@__PURE__*/ S.Array(
   TableCell,
 ) as any as S.Schema<TableCellList>;
@@ -6122,7 +6146,7 @@ export const TableRow = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TableRow" }) as any as S.Schema<TableRow>;
 
-export type TableRowList = ReadonlyArray<TableRow>;
+export type TableRowList = Array<TableRow>;
 export const TableRowList = /*@__PURE__*/ S.Array(
   TableRow,
 ) as any as S.Schema<TableRowList>;
@@ -6214,7 +6238,7 @@ export interface RoutineBuildStatus {
   /** Output only. The time taken for the image build. Populated only after the build succeeds or fails. */
   buildDuration?: string;
   /** Output only. The current build state of the routine. */
-  buildState?: RoutineBuildStatusBuildStateEnum;
+  buildState?: RoutineBuildStatusBuildStateEnum | (string & {});
   /** Output only. A result object that will be present only if the build has failed. */
   errorResult?: ErrorProto;
   /** Output only. The size of the image in bytes. Populated only after the build succeeds. */
@@ -6270,7 +6294,7 @@ export interface Argument {
   /** Optional. The name of this argument. Can be absent for function return argument. */
   name?: string;
   /** Optional. Defaults to FIXED_TYPE. */
-  argumentKind?: ArgumentArgumentKindEnum;
+  argumentKind?: ArgumentArgumentKindEnum | (string & {});
   /** Optional. Set if argument_kind == FIXED_TABLE. */
   tableType?: StandardSqlTableType;
   /** Optional. Whether the argument is an aggregate function parameter. Must be Unset for routine types other than AGGREGATE_FUNCTION. For AGGREGATE_FUNCTION, if set to false, it is equivalent to adding "NOT AGGREGATE" clause in DDL; Otherwise, it is equivalent to omitting "NOT AGGREGATE" clause in DDL. */
@@ -6278,7 +6302,7 @@ export interface Argument {
   /** Set if argument_kind == FIXED_TYPE. */
   dataType?: StandardSqlDataType;
   /** Optional. Specifies whether the argument is input or output. Can be set for procedures only. */
-  mode?: ArgumentModeEnum;
+  mode?: ArgumentModeEnum | (string & {});
 }
 export const Argument = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6291,7 +6315,7 @@ export const Argument = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Argument" }) as any as S.Schema<Argument>;
 
-export type ArgumentList = ReadonlyArray<Argument>;
+export type ArgumentList = Array<Argument>;
 export const ArgumentList = /*@__PURE__*/ S.Array(
   Argument,
 ) as any as S.Schema<ArgumentList>;
@@ -6430,25 +6454,25 @@ export interface Routine {
   /** Output only. The build status of the routine. This field is only applicable to Python UDFs. [Preview](https://cloud.google.com/products/#product-launch-stages) */
   buildStatus?: RoutineBuildStatus;
   /** Optional. Defaults to "SQL" if remote_function_options field is absent, not set otherwise. */
-  language?: RoutineLanguageEnum;
+  language?: RoutineLanguageEnum | (string & {});
   /** Optional. */
   arguments?: ArgumentList;
   /** Required. The body of the routine. For functions, this is the expression in the AS clause. If `language = "SQL"`, it is the substring inside (but excluding) the parentheses. For example, for the function created with the following statement: `CREATE FUNCTION JoinLines(x string, y string) as (concat(x, "\n", y))` The definition_body is `concat(x, "\n", y)` (\n is not replaced with linebreak). If `language="JAVASCRIPT"`, it is the evaluated string in the AS clause. For example, for the function created with the following statement: `CREATE FUNCTION f() RETURNS STRING LANGUAGE js AS 'return "\n";\n'` The definition_body is `return "\n";\n` Note that both \n are replaced with linebreaks. If `definition_body` references another routine, then that routine must be fully qualified with its project ID. */
   definitionBody?: string;
   /** Required. The type of routine. */
-  routineType?: RoutineRoutineTypeEnum;
+  routineType?: RoutineRoutineTypeEnum | (string & {});
   /** Optional. Can be set only if routine_type = "TABLE_VALUED_FUNCTION". If absent, the return table type is inferred from definition_body at query time in each query that references this routine. If present, then the columns in the evaluated table result will be cast to match the column types specified in return table type, at query time. */
   returnTableType?: StandardSqlTableType;
   /** Optional. The determinism level of the JavaScript UDF, if defined. */
-  determinismLevel?: RoutineDeterminismLevelEnum;
+  determinismLevel?: RoutineDeterminismLevelEnum | (string & {});
   /** Optional. Spark specific options. */
   sparkOptions?: SparkOptions;
   /** Optional. If set to `DATA_MASKING`, the function is validated and made available as a masking function. For more information, see [Create custom masking routines](https://cloud.google.com/bigquery/docs/user-defined-functions#custom-mask). */
-  dataGovernanceType?: RoutineDataGovernanceTypeEnum;
+  dataGovernanceType?: RoutineDataGovernanceTypeEnum | (string & {});
   /** Output only. The time when this routine was created, in milliseconds since the epoch. */
   creationTime?: string;
   /** Optional. The security mode of the routine, if defined. If not defined, the security mode is automatically determined from the routine's configuration. */
-  securityMode?: RoutineSecurityModeEnum;
+  securityMode?: RoutineSecurityModeEnum | (string & {});
   /** Optional. If language = "JAVASCRIPT", this field stores the path of the imported JAVASCRIPT libraries. */
   importedLibraries?: StringList;
   /** Optional. Use this option to catch many common errors. Error checking is not exhaustive, and successfully creating a procedure doesn't guarantee that the procedure will successfully execute at runtime. If `strictMode` is set to `TRUE`, the procedure body is further checked for errors such as non-existent tables or columns. The `CREATE PROCEDURE` statement fails if the body fails any of these checks. If `strictMode` is set to `FALSE`, the procedure body is checked only for syntax. For procedures that invoke themselves recursively, specify `strictMode=FALSE` to avoid non-existent procedure errors during validation. Default value is `TRUE`. */
@@ -6649,7 +6673,7 @@ export interface JoinRestrictionPolicy {
   /** Optional. The only columns that joins are allowed on. This field is must be specified for join_conditions JOIN_ANY and JOIN_ALL and it cannot be set for JOIN_BLOCKED. */
   joinAllowedColumns?: StringList;
   /** Optional. Specifies if a join is required or not on queries for the view. Default is JOIN_CONDITION_UNSPECIFIED. */
-  joinCondition?: JoinRestrictionPolicyJoinConditionEnum;
+  joinCondition?: JoinRestrictionPolicyJoinConditionEnum | (string & {});
 }
 export const JoinRestrictionPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6727,7 +6751,7 @@ export const ForeignViewDefinition = /*@__PURE__*/ S.suspend(() =>
   identifier: "ForeignViewDefinition",
 }) as any as S.Schema<ForeignViewDefinition>;
 
-export type ForeignViewDefinitionList = ReadonlyArray<ForeignViewDefinition>;
+export type ForeignViewDefinitionList = Array<ForeignViewDefinition>;
 export const ForeignViewDefinitionList = /*@__PURE__*/ S.Array(
   ForeignViewDefinition,
 ) as any as S.Schema<ForeignViewDefinitionList>;
@@ -6775,7 +6799,7 @@ export const TableConstraintsForeignKeysItemColumnReferencesItem =
   }) as any as S.Schema<TableConstraintsForeignKeysItemColumnReferencesItem>;
 
 export type TableConstraintsForeignKeysItemColumnReferencesItemList =
-  ReadonlyArray<TableConstraintsForeignKeysItemColumnReferencesItem>;
+  Array<TableConstraintsForeignKeysItemColumnReferencesItem>;
 export const TableConstraintsForeignKeysItemColumnReferencesItemList =
   /*@__PURE__*/ S.Array(
     TableConstraintsForeignKeysItemColumnReferencesItem,
@@ -6817,7 +6841,7 @@ export const TableConstraintsForeignKeysItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TableConstraintsForeignKeysItem>;
 
 export type TableConstraintsForeignKeysItemList =
-  ReadonlyArray<TableConstraintsForeignKeysItem>;
+  Array<TableConstraintsForeignKeysItem>;
 export const TableConstraintsForeignKeysItemList = /*@__PURE__*/ S.Array(
   TableConstraintsForeignKeysItem,
 ) as any as S.Schema<TableConstraintsForeignKeysItemList>;
@@ -6905,7 +6929,7 @@ export const TableReplicationInfoReplicationStatusEnum = /*@__PURE__*/ S.String;
 /** Replication info of a table created using `AS REPLICA` DDL like: `CREATE MATERIALIZED VIEW mv1 AS REPLICA OF src_mv` */
 export interface TableReplicationInfo {
   /** Optional. Output only. Replication status of configured replication. */
-  replicationStatus?: TableReplicationInfoReplicationStatusEnum;
+  replicationStatus?: TableReplicationInfoReplicationStatusEnum | (string & {});
   /** Optional. Output only. Replication error that will permanently stopped table replication. */
   replicationError?: ErrorProto;
   /** Required. Source table reference that is replicated. */
@@ -6956,7 +6980,7 @@ export const PartitionedColumn = /*@__PURE__*/ S.suspend(() =>
   identifier: "PartitionedColumn",
 }) as any as S.Schema<PartitionedColumn>;
 
-export type PartitionedColumnList = ReadonlyArray<PartitionedColumn>;
+export type PartitionedColumnList = Array<PartitionedColumn>;
 export const PartitionedColumnList = /*@__PURE__*/ S.Array(
   PartitionedColumn,
 ) as any as S.Schema<PartitionedColumnList>;
@@ -6989,9 +7013,9 @@ export interface BigLakeConfiguration {
   /** Optional. The connection specifying the credentials to be used to read and write to external storage, such as Cloud Storage. The connection_id can have the form `{project}.{location}.{connection_id}` or `projects/{project}/locations/{location}/connections/{connection_id}". */
   connectionId?: string;
   /** Optional. The table format the metadata only snapshots are stored in. */
-  tableFormat?: BigLakeConfigurationTableFormatEnum;
+  tableFormat?: BigLakeConfigurationTableFormatEnum | (string & {});
   /** Optional. The file format the table data is stored in. */
-  fileFormat?: BigLakeConfigurationFileFormatEnum;
+  fileFormat?: BigLakeConfigurationFileFormatEnum | (string & {});
   /** Optional. The fully qualified location prefix of the external folder where table data is stored. The '*' wildcard character is not allowed. The URI should be in the format `gs://bucket/path_to_table/` */
   storageUri?: string;
 }
@@ -7084,7 +7108,7 @@ export const BqmlIterationResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "BqmlIterationResult",
 }) as any as S.Schema<BqmlIterationResult>;
 
-export type BqmlIterationResultList = ReadonlyArray<BqmlIterationResult>;
+export type BqmlIterationResultList = Array<BqmlIterationResult>;
 export const BqmlIterationResultList = /*@__PURE__*/ S.Array(
   BqmlIterationResult,
 ) as any as S.Schema<BqmlIterationResultList>;
@@ -7110,7 +7134,7 @@ export const BqmlTrainingRun = /*@__PURE__*/ S.suspend(() =>
   identifier: "BqmlTrainingRun",
 }) as any as S.Schema<BqmlTrainingRun>;
 
-export type BqmlTrainingRunList = ReadonlyArray<BqmlTrainingRun>;
+export type BqmlTrainingRunList = Array<BqmlTrainingRun>;
 export const BqmlTrainingRunList = /*@__PURE__*/ S.Array(
   BqmlTrainingRun,
 ) as any as S.Schema<BqmlTrainingRunList>;
@@ -7304,11 +7328,11 @@ export interface Table {
   /** Output only. A hash of this resource. */
   etag?: string;
   /** Optional. Defines the default rounding mode specification of new decimal fields (NUMERIC OR BIGNUMERIC) in the table. During table creation or update, if a decimal field is added to this table without an explicit rounding mode specified, then the field inherits the table default rounding mode. Changing this field doesn't affect existing fields. */
-  defaultRoundingMode?: TableDefaultRoundingModeEnum;
+  defaultRoundingMode?: TableDefaultRoundingModeEnum | (string & {});
   /** Output only. An opaque ID uniquely identifying the table. */
   id?: string;
   /** Optional. If set, overrides the default managed table type configured in the dataset. */
-  managedTableType?: TableManagedTableTypeEnum;
+  managedTableType?: TableManagedTableTypeEnum | (string & {});
   /** Optional. Defines the default collation specification of new STRING fields in the table. During table creation or update, if a STRING field is added to this table without explicit collation specified, then the table inherits the table default collation. A change to this field affects only fields added afterwards, and does not alter the existing fields. The following values are supported: * 'und:ci': undetermined locale, case insensitive. * '': empty string. Default to case-sensitive behavior. */
   defaultCollation?: string;
   /** Deprecated. */
@@ -7411,7 +7435,7 @@ export const TableDataInsertAllRequestRowsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TableDataInsertAllRequestRowsItem>;
 
 export type TableDataInsertAllRequestRowsItemList =
-  ReadonlyArray<TableDataInsertAllRequestRowsItem>;
+  Array<TableDataInsertAllRequestRowsItem>;
 export const TableDataInsertAllRequestRowsItemList = /*@__PURE__*/ S.Array(
   TableDataInsertAllRequestRowsItem,
 ) as any as S.Schema<TableDataInsertAllRequestRowsItemList>;
@@ -7487,7 +7511,7 @@ export const TableDataInsertAllResponseInsertErrorsItem =
   }) as any as S.Schema<TableDataInsertAllResponseInsertErrorsItem>;
 
 export type TableDataInsertAllResponseInsertErrorsItemList =
-  ReadonlyArray<TableDataInsertAllResponseInsertErrorsItem>;
+  Array<TableDataInsertAllResponseInsertErrorsItem>;
 export const TableDataInsertAllResponseInsertErrorsItemList =
   /*@__PURE__*/ S.Array(
     TableDataInsertAllResponseInsertErrorsItem,
@@ -7695,8 +7719,7 @@ export const DatasetListDatasetsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "DatasetListDatasetsItem",
 }) as any as S.Schema<DatasetListDatasetsItem>;
 
-export type DatasetListDatasetsItemList =
-  ReadonlyArray<DatasetListDatasetsItem>;
+export type DatasetListDatasetsItemList = Array<DatasetListDatasetsItem>;
 export const DatasetListDatasetsItemList = /*@__PURE__*/ S.Array(
   DatasetListDatasetsItem,
 ) as any as S.Schema<DatasetListDatasetsItemList>;
@@ -7730,7 +7753,7 @@ export const ListJobsProjectionEnum = /*@__PURE__*/ S.String;
 export type ListJobsStateFilterEnum = "done" | "pending" | "running";
 export const ListJobsStateFilterEnum = /*@__PURE__*/ S.String;
 
-export type ListJobsStateFilterEnumList = ReadonlyArray<
+export type ListJobsStateFilterEnumList = Array<
   ListJobsStateFilterEnum | (string & {})
 >;
 export const ListJobsStateFilterEnumList = /*@__PURE__*/ S.Array(
@@ -7818,7 +7841,7 @@ export const JobListJobsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "JobListJobsItem",
 }) as any as S.Schema<JobListJobsItem>;
 
-export type JobListJobsItemList = ReadonlyArray<JobListJobsItem>;
+export type JobListJobsItemList = Array<JobListJobsItem>;
 export const JobListJobsItemList = /*@__PURE__*/ S.Array(
   JobListJobsItem,
 ) as any as S.Schema<JobListJobsItemList>;
@@ -7873,7 +7896,7 @@ export const ListModelsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListModelsRequest",
 }) as any as S.Schema<ListModelsRequest>;
 
-export type ModelList = ReadonlyArray<Model>;
+export type ModelList = Array<Model>;
 export const ModelList = /*@__PURE__*/ S.Array(
   Model,
 ) as any as S.Schema<ModelList>;
@@ -7952,8 +7975,7 @@ export const ProjectListProjectsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProjectListProjectsItem",
 }) as any as S.Schema<ProjectListProjectsItem>;
 
-export type ProjectListProjectsItemList =
-  ReadonlyArray<ProjectListProjectsItem>;
+export type ProjectListProjectsItemList = Array<ProjectListProjectsItem>;
 export const ProjectListProjectsItemList = /*@__PURE__*/ S.Array(
   ProjectListProjectsItem,
 ) as any as S.Schema<ProjectListProjectsItemList>;
@@ -8014,7 +8036,7 @@ export const ListRoutinesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListRoutinesRequest",
 }) as any as S.Schema<ListRoutinesRequest>;
 
-export type RoutineList = ReadonlyArray<Routine>;
+export type RoutineList = Array<Routine>;
 export const RoutineList = /*@__PURE__*/ S.Array(
   Routine,
 ) as any as S.Schema<RoutineList>;
@@ -8065,7 +8087,7 @@ export const ListRowAccessPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListRowAccessPoliciesRequest",
 }) as any as S.Schema<ListRowAccessPoliciesRequest>;
 
-export type RowAccessPolicyList = ReadonlyArray<RowAccessPolicy>;
+export type RowAccessPolicyList = Array<RowAccessPolicy>;
 export const RowAccessPolicyList = /*@__PURE__*/ S.Array(
   RowAccessPolicy,
 ) as any as S.Schema<RowAccessPolicyList>;
@@ -8252,7 +8274,7 @@ export const TableListTablesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "TableListTablesItem",
 }) as any as S.Schema<TableListTablesItem>;
 
-export type TableListTablesItemList = ReadonlyArray<TableListTablesItem>;
+export type TableListTablesItemList = Array<TableListTablesItem>;
 export const TableListTablesItemList = /*@__PURE__*/ S.Array(
   TableListTablesItem,
 ) as any as S.Schema<TableListTablesItemList>;

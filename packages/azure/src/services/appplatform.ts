@@ -269,7 +269,7 @@ export const ApiPortalCustomDomainResource = /*@__PURE__*/ S.suspend(() =>
 
 /** Collection of API portal custom domain resources */
 export type ApiPortalCustomDomainResourceCollectionValueList =
-  ReadonlyArray<ApiPortalCustomDomainResource>;
+  Array<ApiPortalCustomDomainResource>;
 export const ApiPortalCustomDomainResourceCollectionValueList =
   /*@__PURE__*/ S.Array(
     ApiPortalCustomDomainResource,
@@ -293,19 +293,19 @@ export const ApiPortalCustomDomainResourceCollection = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ApiPortalCustomDomainResourceCollection>;
 
 /** The array of resource Ids of gateway to integrate with API portal. */
-export type ApiPortalPropertiesInputGatewayIdsList = ReadonlyArray<string>;
+export type ApiPortalPropertiesInputGatewayIdsList = Array<string>;
 export const ApiPortalPropertiesInputGatewayIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ApiPortalPropertiesInputGatewayIdsList>;
 
 /** Collection of OpenAPI source URL locations. */
-export type ApiPortalPropertiesInputSourceUrlsList = ReadonlyArray<string>;
+export type ApiPortalPropertiesInputSourceUrlsList = Array<string>;
 export const ApiPortalPropertiesInputSourceUrlsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ApiPortalPropertiesInputSourceUrlsList>;
 
 /** It defines the specific actions applications can be allowed to do on a user's behalf */
-export type SsoPropertiesScopeList = ReadonlyArray<string>;
+export type SsoPropertiesScopeList = Array<string>;
 export const SsoPropertiesScopeList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SsoPropertiesScopeList>;
@@ -428,13 +428,13 @@ export type ApiPortalPropertiesProvisioningState =
 export const ApiPortalPropertiesProvisioningState = /*@__PURE__*/ S.String;
 
 /** The array of resource Ids of gateway to integrate with API portal. */
-export type ApiPortalPropertiesGatewayIdsList = ReadonlyArray<string>;
+export type ApiPortalPropertiesGatewayIdsList = Array<string>;
 export const ApiPortalPropertiesGatewayIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ApiPortalPropertiesGatewayIdsList>;
 
 /** Collection of OpenAPI source URL locations. */
-export type ApiPortalPropertiesSourceUrlsList = ReadonlyArray<string>;
+export type ApiPortalPropertiesSourceUrlsList = Array<string>;
 export const ApiPortalPropertiesSourceUrlsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ApiPortalPropertiesSourceUrlsList>;
@@ -472,7 +472,7 @@ export const ApiPortalInstance = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ApiPortalInstance>;
 
 /** Collection of instances belong to API portal. */
-export type ApiPortalPropertiesInstancesList = ReadonlyArray<ApiPortalInstance>;
+export type ApiPortalPropertiesInstancesList = Array<ApiPortalInstance>;
 export const ApiPortalPropertiesInstancesList = /*@__PURE__*/ S.Array(
   ApiPortalInstance,
 ) as any as S.Schema<ApiPortalPropertiesInstancesList>;
@@ -685,8 +685,7 @@ export const ApiPortalResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ApiPortalResource>;
 
 /** Collection of API portal resources */
-export type ApiPortalResourceCollectionValueList =
-  ReadonlyArray<ApiPortalResource>;
+export type ApiPortalResourceCollectionValueList = Array<ApiPortalResource>;
 export const ApiPortalResourceCollectionValueList = /*@__PURE__*/ S.Array(
   ApiPortalResource,
 ) as any as S.Schema<ApiPortalResourceCollectionValueList>;
@@ -1021,7 +1020,7 @@ export const ApmResource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ApmResource" }) as any as S.Schema<ApmResource>;
 
 /** Collection of APM resources */
-export type ApmResourceCollectionValueList = ReadonlyArray<ApmResource>;
+export type ApmResourceCollectionValueList = Array<ApmResource>;
 export const ApmResourceCollectionValueList = /*@__PURE__*/ S.Array(
   ApmResource,
 ) as any as S.Schema<ApmResourceCollectionValueList>;
@@ -1071,7 +1070,7 @@ export const ApmsListSecretKeysRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ApmsListSecretKeysRequest>;
 
 /** Collection of the keys for the APM sensitive properties */
-export type ApmSecretKeysValueList = ReadonlyArray<string>;
+export type ApmSecretKeysValueList = Array<string>;
 export const ApmSecretKeysValueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ApmSecretKeysValueList>;
@@ -1175,7 +1174,7 @@ export const ApplicationAcceleratorInstance = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ApplicationAcceleratorInstance>;
 
 export type ApplicationAcceleratorComponentInstancesList =
-  ReadonlyArray<ApplicationAcceleratorInstance>;
+  Array<ApplicationAcceleratorInstance>;
 export const ApplicationAcceleratorComponentInstancesList =
   /*@__PURE__*/ S.Array(
     ApplicationAcceleratorInstance,
@@ -1198,7 +1197,7 @@ export const ApplicationAcceleratorComponent = /*@__PURE__*/ S.suspend(() =>
 
 /** Collection of components belong to application accelerator. */
 export type ApplicationAcceleratorPropertiesComponentsList =
-  ReadonlyArray<ApplicationAcceleratorComponent>;
+  Array<ApplicationAcceleratorComponent>;
 export const ApplicationAcceleratorPropertiesComponentsList =
   /*@__PURE__*/ S.Array(
     ApplicationAcceleratorComponent,
@@ -1390,7 +1389,7 @@ export const ApplicationAcceleratorResource = /*@__PURE__*/ S.suspend(() =>
 
 /** Collection of application accelerator resources */
 export type ApplicationAcceleratorResourceCollectionValueList =
-  ReadonlyArray<ApplicationAcceleratorResource>;
+  Array<ApplicationAcceleratorResource>;
 export const ApplicationAcceleratorResourceCollectionValueList =
   /*@__PURE__*/ S.Array(
     ApplicationAcceleratorResource,
@@ -1500,7 +1499,7 @@ export const ApplicationLiveViewInstance = /*@__PURE__*/ S.suspend(() =>
 
 /** Collection of instances belong to Application Live View. */
 export type ApplicationLiveViewComponentInstancesList =
-  ReadonlyArray<ApplicationLiveViewInstance>;
+  Array<ApplicationLiveViewInstance>;
 export const ApplicationLiveViewComponentInstancesList = /*@__PURE__*/ S.Array(
   ApplicationLiveViewInstance,
 ) as any as S.Schema<ApplicationLiveViewComponentInstancesList>;
@@ -1526,7 +1525,7 @@ export const ApplicationLiveViewComponent = /*@__PURE__*/ S.suspend(() =>
 
 /** Component details of Application Live View */
 export type ApplicationLiveViewPropertiesComponentsList =
-  ReadonlyArray<ApplicationLiveViewComponent>;
+  Array<ApplicationLiveViewComponent>;
 export const ApplicationLiveViewPropertiesComponentsList =
   /*@__PURE__*/ S.Array(
     ApplicationLiveViewComponent,
@@ -1708,7 +1707,7 @@ export const ApplicationLiveViewResource = /*@__PURE__*/ S.suspend(() =>
 
 /** Collection of Application Live View resources */
 export type ApplicationLiveViewResourceCollectionValueList =
-  ReadonlyArray<ApplicationLiveViewResource>;
+  Array<ApplicationLiveViewResource>;
 export const ApplicationLiveViewResourceCollectionValueList =
   /*@__PURE__*/ S.Array(
     ApplicationLiveViewResource,
@@ -1775,8 +1774,7 @@ export type CustomPersistentDiskPropertiesType = "AzureFileVolume";
 export const CustomPersistentDiskPropertiesType = /*@__PURE__*/ S.String;
 
 /** These are the mount options for a persistent disk. */
-export type CustomPersistentDiskPropertiesMountOptionsList =
-  ReadonlyArray<string>;
+export type CustomPersistentDiskPropertiesMountOptionsList = Array<string>;
 export const CustomPersistentDiskPropertiesMountOptionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1785,7 +1783,7 @@ export const CustomPersistentDiskPropertiesMountOptionsList =
 /** Custom persistent disk resource payload. */
 export interface CustomPersistentDiskProperties {
   /** The type of the underlying resource to mount as a persistent disk. */
-  type: CustomPersistentDiskPropertiesType;
+  type: CustomPersistentDiskPropertiesType | (string & {});
   /** The mount path of the persistent disk. */
   mountPath: string;
   /** Indicates whether the persistent disk is a readOnly one. */
@@ -1825,7 +1823,7 @@ export const CustomPersistentDiskResource = /*@__PURE__*/ S.suspend(() =>
 
 /** Collection of persistent disk resources list and a possible link for next page. */
 export type CustomPersistentDiskCollection =
-  ReadonlyArray<CustomPersistentDiskResource>;
+  Array<CustomPersistentDiskResource>;
 export const CustomPersistentDiskCollection = /*@__PURE__*/ S.Array(
   CustomPersistentDiskResource,
 ) as any as S.Schema<CustomPersistentDiskCollection>;
@@ -1847,7 +1845,7 @@ export const LoadedCertificate = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LoadedCertificate>;
 
 /** Collection of loaded certificate resources list and a possible link for next page. */
-export type LoadedCertificateCollection = ReadonlyArray<LoadedCertificate>;
+export type LoadedCertificateCollection = Array<LoadedCertificate>;
 export const LoadedCertificateCollection = /*@__PURE__*/ S.Array(
   LoadedCertificate,
 ) as any as S.Schema<LoadedCertificateCollection>;
@@ -1874,7 +1872,7 @@ export type IngressSettingsBackendProtocol = "GRPC" | "Default";
 export const IngressSettingsBackendProtocol = /*@__PURE__*/ S.String;
 
 /** Collection of certificate resource id. */
-export type IngressSettingsClientAuthCertificatesList = ReadonlyArray<string>;
+export type IngressSettingsClientAuthCertificatesList = Array<string>;
 export const IngressSettingsClientAuthCertificatesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<IngressSettingsClientAuthCertificatesList>;
@@ -1899,11 +1897,11 @@ export interface IngressSettings {
   /** Ingress send time out in seconds. */
   sendTimeoutInSeconds?: number;
   /** Type of the affinity, set this to Cookie to enable session affinity. */
-  sessionAffinity?: IngressSettingsSessionAffinity;
+  sessionAffinity?: IngressSettingsSessionAffinity | (string & {});
   /** Time in seconds until the cookie expires. */
   sessionCookieMaxAge?: number;
   /** How ingress should communicate with this app backend service. */
-  backendProtocol?: IngressSettingsBackendProtocol;
+  backendProtocol?: IngressSettingsBackendProtocol | (string & {});
   /** Client-Certification Authentication. */
   clientAuth?: IngressSettingsClientAuth;
 }
@@ -2417,7 +2415,7 @@ export const AppResource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AppResource" }) as any as S.Schema<AppResource>;
 
 /** Collection of App resources */
-export type AppResourceCollectionValueList = ReadonlyArray<AppResource>;
+export type AppResourceCollectionValueList = Array<AppResource>;
 export const AppResourceCollectionValueList = /*@__PURE__*/ S.Array(
   AppResource,
 ) as any as S.Schema<AppResourceCollectionValueList>;
@@ -2440,7 +2438,7 @@ export const AppResourceCollection = /*@__PURE__*/ S.suspend(() =>
 
 /** Collection of Deployment name. */
 export type AppsSetActiveDeploymentsRequestActiveDeploymentNamesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const AppsSetActiveDeploymentsRequestActiveDeploymentNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2884,7 +2882,7 @@ export const BindingResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BindingResource>;
 
 /** Collection of Binding resources */
-export type BindingResourceCollectionValueList = ReadonlyArray<BindingResource>;
+export type BindingResourceCollectionValueList = Array<BindingResource>;
 export const BindingResourceCollectionValueList = /*@__PURE__*/ S.Array(
   BindingResource,
 ) as any as S.Schema<BindingResourceCollectionValueList>;
@@ -3281,7 +3279,7 @@ export const BuildpackBindingResource = /*@__PURE__*/ S.suspend(() =>
 
 /** Collection of BuildpackBinding resources */
 export type BuildpackBindingResourceCollectionValueList =
-  ReadonlyArray<BuildpackBindingResource>;
+  Array<BuildpackBindingResource>;
 export const BuildpackBindingResourceCollectionValueList =
   /*@__PURE__*/ S.Array(
     BuildpackBindingResource,
@@ -3472,7 +3470,7 @@ export const BuildServiceAgentPoolResource = /*@__PURE__*/ S.suspend(() =>
 
 /** Collection of build service agent pool resource */
 export type BuildServiceAgentPoolResourceCollectionValueList =
-  ReadonlyArray<BuildServiceAgentPoolResource>;
+  Array<BuildServiceAgentPoolResource>;
 export const BuildServiceAgentPoolResourceCollectionValueList =
   /*@__PURE__*/ S.Array(
     BuildServiceAgentPoolResource,
@@ -3613,7 +3611,7 @@ export const BuildpackProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Buildpacks in the buildpack group */
 export type BuildpacksGroupPropertiesBuildpacksList =
-  ReadonlyArray<BuildpackProperties>;
+  Array<BuildpackProperties>;
 export const BuildpacksGroupPropertiesBuildpacksList = /*@__PURE__*/ S.Array(
   BuildpackProperties,
 ) as any as S.Schema<BuildpacksGroupPropertiesBuildpacksList>;
@@ -3636,7 +3634,7 @@ export const BuildpacksGroupProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Builder buildpack groups. */
 export type BuilderPropertiesInputBuildpackGroupsList =
-  ReadonlyArray<BuildpacksGroupProperties>;
+  Array<BuildpacksGroupProperties>;
 export const BuilderPropertiesInputBuildpackGroupsList = /*@__PURE__*/ S.Array(
   BuildpacksGroupProperties,
 ) as any as S.Schema<BuilderPropertiesInputBuildpackGroupsList>;
@@ -3703,7 +3701,7 @@ export const BuilderPropertiesProvisioningState = /*@__PURE__*/ S.String;
 
 /** Builder buildpack groups. */
 export type BuilderPropertiesBuildpackGroupsList =
-  ReadonlyArray<BuildpacksGroupProperties>;
+  Array<BuildpacksGroupProperties>;
 export const BuilderPropertiesBuildpackGroupsList = /*@__PURE__*/ S.Array(
   BuildpacksGroupProperties,
 ) as any as S.Schema<BuilderPropertiesBuildpackGroupsList>;
@@ -3896,7 +3894,7 @@ export const BuilderResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BuilderResource>;
 
 /** Collection of Builder resources */
-export type BuilderResourceCollectionValueList = ReadonlyArray<BuilderResource>;
+export type BuilderResourceCollectionValueList = Array<BuilderResource>;
 export const BuilderResourceCollectionValueList = /*@__PURE__*/ S.Array(
   BuilderResource,
 ) as any as S.Schema<BuilderResourceCollectionValueList>;
@@ -3950,7 +3948,7 @@ export const BuildServiceBuilderListDeploymentsRequest =
   }) as any as S.Schema<BuildServiceBuilderListDeploymentsRequest>;
 
 /** A list of deployment resource ids. */
-export type DeploymentListDeploymentsList = ReadonlyArray<string>;
+export type DeploymentListDeploymentsList = Array<string>;
 export const DeploymentListDeploymentsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DeploymentListDeploymentsList>;
@@ -4110,7 +4108,7 @@ export const ApmReference = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ApmReference" }) as any as S.Schema<ApmReference>;
 
 /** Collection of ApmReferences */
-export type ApmReferenceCollection = ReadonlyArray<ApmReference>;
+export type ApmReferenceCollection = Array<ApmReference>;
 export const ApmReferenceCollection = /*@__PURE__*/ S.Array(
   ApmReference,
 ) as any as S.Schema<ApmReferenceCollection>;
@@ -4129,8 +4127,7 @@ export const CertificateReference = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CertificateReference>;
 
 /** Collection of CertificateReferences */
-export type CertificateReferenceCollection =
-  ReadonlyArray<CertificateReference>;
+export type CertificateReferenceCollection = Array<CertificateReference>;
 export const CertificateReferenceCollection = /*@__PURE__*/ S.Array(
   CertificateReference,
 ) as any as S.Schema<CertificateReferenceCollection>;
@@ -4512,8 +4509,7 @@ export const BuildStageProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BuildStageProperties>;
 
 /** All of the build stage (init-container and container) resources in build pod. */
-export type BuildResultPropertiesBuildStagesList =
-  ReadonlyArray<BuildStageProperties>;
+export type BuildResultPropertiesBuildStagesList = Array<BuildStageProperties>;
 export const BuildResultPropertiesBuildStagesList = /*@__PURE__*/ S.Array(
   BuildStageProperties,
 ) as any as S.Schema<BuildResultPropertiesBuildStagesList>;
@@ -4889,7 +4885,7 @@ export const BuildResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BuildResult" }) as any as S.Schema<BuildResult>;
 
 /** Collection of Build result resources */
-export type BuildResultCollectionValueList = ReadonlyArray<BuildResult>;
+export type BuildResultCollectionValueList = Array<BuildResult>;
 export const BuildResultCollectionValueList = /*@__PURE__*/ S.Array(
   BuildResult,
 ) as any as S.Schema<BuildResultCollectionValueList>;
@@ -4961,7 +4957,7 @@ export const Build = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Build" }) as any as S.Schema<Build>;
 
 /** Collection of Build resources */
-export type BuildCollectionValueList = ReadonlyArray<Build>;
+export type BuildCollectionValueList = Array<Build>;
 export const BuildCollectionValueList = /*@__PURE__*/ S.Array(
   Build,
 ) as any as S.Schema<BuildCollectionValueList>;
@@ -5031,7 +5027,7 @@ export const BuildService = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BuildService" }) as any as S.Schema<BuildService>;
 
 /** Collection of Build service resources */
-export type BuildServiceCollectionValueList = ReadonlyArray<BuildService>;
+export type BuildServiceCollectionValueList = Array<BuildService>;
 export const BuildServiceCollectionValueList = /*@__PURE__*/ S.Array(
   BuildService,
 ) as any as S.Schema<BuildServiceCollectionValueList>;
@@ -5106,7 +5102,7 @@ export const SupportedBuildpackResource = /*@__PURE__*/ S.suspend(() =>
 
 /** Collection of supported buildpacks resources */
 export type SupportedBuildpacksCollectionValueList =
-  ReadonlyArray<SupportedBuildpackResource>;
+  Array<SupportedBuildpackResource>;
 export const SupportedBuildpacksCollectionValueList = /*@__PURE__*/ S.Array(
   SupportedBuildpackResource,
 ) as any as S.Schema<SupportedBuildpacksCollectionValueList>;
@@ -5180,8 +5176,7 @@ export const SupportedStackResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SupportedStackResource>;
 
 /** Collection of supported stacks resources */
-export type SupportedStacksCollectionValueList =
-  ReadonlyArray<SupportedStackResource>;
+export type SupportedStacksCollectionValueList = Array<SupportedStackResource>;
 export const SupportedStacksCollectionValueList = /*@__PURE__*/ S.Array(
   SupportedStackResource,
 ) as any as S.Schema<SupportedStacksCollectionValueList>;
@@ -5247,7 +5242,7 @@ export const CertificatesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CertificatesCreateOrUpdateRequest>;
 
 /** The domain list of certificate. */
-export type CertificatePropertiesDnsNamesList = ReadonlyArray<string>;
+export type CertificatePropertiesDnsNamesList = Array<string>;
 export const CertificatePropertiesDnsNamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CertificatePropertiesDnsNamesList>;
@@ -5457,8 +5452,7 @@ export const CertificateResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CertificateResource>;
 
 /** The certificate resources list. */
-export type CertificateResourceCollectionValueList =
-  ReadonlyArray<CertificateResource>;
+export type CertificateResourceCollectionValueList = Array<CertificateResource>;
 export const CertificateResourceCollectionValueList = /*@__PURE__*/ S.Array(
   CertificateResource,
 ) as any as S.Schema<CertificateResourceCollectionValueList>;
@@ -5514,13 +5508,13 @@ export type ConfigServerPropertiesProvisioningState =
 export const ConfigServerPropertiesProvisioningState = /*@__PURE__*/ S.String;
 
 /** Collection of pattern of the repository */
-export type GitPatternRepositoryPatternList = ReadonlyArray<string>;
+export type GitPatternRepositoryPatternList = Array<string>;
 export const GitPatternRepositoryPatternList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GitPatternRepositoryPatternList>;
 
 /** Searching path of the repository */
-export type GitPatternRepositorySearchPathsList = ReadonlyArray<string>;
+export type GitPatternRepositorySearchPathsList = Array<string>;
 export const GitPatternRepositorySearchPathsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GitPatternRepositorySearchPathsList>;
@@ -5570,13 +5564,13 @@ export const GitPatternRepository = /*@__PURE__*/ S.suspend(() =>
 
 /** Repositories of git. */
 export type ConfigServerGitPropertyRepositoriesList =
-  ReadonlyArray<GitPatternRepository>;
+  Array<GitPatternRepository>;
 export const ConfigServerGitPropertyRepositoriesList = /*@__PURE__*/ S.Array(
   GitPatternRepository,
 ) as any as S.Schema<ConfigServerGitPropertyRepositoriesList>;
 
 /** Searching path of the repository */
-export type ConfigServerGitPropertySearchPathsList = ReadonlyArray<string>;
+export type ConfigServerGitPropertySearchPathsList = Array<string>;
 export const ConfigServerGitPropertySearchPathsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ConfigServerGitPropertySearchPathsList>;
@@ -5823,7 +5817,7 @@ export const ConfigServersValidateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConfigServersValidateRequest>;
 
 /** The detail error messages of the record */
-export type ConfigServerSettingsErrorRecordMessagesList = ReadonlyArray<string>;
+export type ConfigServerSettingsErrorRecordMessagesList = Array<string>;
 export const ConfigServerSettingsErrorRecordMessagesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5850,7 +5844,7 @@ export const ConfigServerSettingsErrorRecord = /*@__PURE__*/ S.suspend(() =>
 
 /** The detail validation results */
 export type ConfigServerSettingsValidateResultDetailsList =
-  ReadonlyArray<ConfigServerSettingsErrorRecord>;
+  Array<ConfigServerSettingsErrorRecord>;
 export const ConfigServerSettingsValidateResultDetailsList =
   /*@__PURE__*/ S.Array(
     ConfigServerSettingsErrorRecord,
@@ -5878,16 +5872,14 @@ export const ConfigurationServicePropertiesInputGeneration =
   /*@__PURE__*/ S.String;
 
 /** Collection of patterns of the repository */
-export type ConfigurationServiceGitRepositoryPatternsList =
-  ReadonlyArray<string>;
+export type ConfigurationServiceGitRepositoryPatternsList = Array<string>;
 export const ConfigurationServiceGitRepositoryPatternsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ConfigurationServiceGitRepositoryPatternsList>;
 
 /** Searching path of the repository */
-export type ConfigurationServiceGitRepositorySearchPathsList =
-  ReadonlyArray<string>;
+export type ConfigurationServiceGitRepositorySearchPathsList = Array<string>;
 export const ConfigurationServiceGitRepositorySearchPathsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5922,7 +5914,7 @@ export interface ConfigurationServiceGitRepository {
   /** Strict host key checking or not. */
   strictHostKeyChecking?: boolean;
   /** Git libraries used to support various repository providers */
-  gitImplementation?: GitImplementation;
+  gitImplementation?: GitImplementation | (string & {});
   /** Resource Id of CA certificate for https URL of Git repository. */
   caCertResourceId?: string;
 }
@@ -5948,7 +5940,7 @@ export const ConfigurationServiceGitRepository = /*@__PURE__*/ S.suspend(() =>
 
 /** Repositories of Application Configuration Service git property. */
 export type ConfigurationServiceGitPropertyRepository =
-  ReadonlyArray<ConfigurationServiceGitRepository>;
+  Array<ConfigurationServiceGitRepository>;
 export const ConfigurationServiceGitPropertyRepository = /*@__PURE__*/ S.Array(
   ConfigurationServiceGitRepository,
 ) as any as S.Schema<ConfigurationServiceGitPropertyRepository>;
@@ -6075,7 +6067,7 @@ export const ConfigurationServiceInstance = /*@__PURE__*/ S.suspend(() =>
 
 /** Collection of instances belong to Application Configuration Service. */
 export type ConfigurationServicePropertiesInstancesList =
-  ReadonlyArray<ConfigurationServiceInstance>;
+  Array<ConfigurationServiceInstance>;
 export const ConfigurationServicePropertiesInstancesList =
   /*@__PURE__*/ S.Array(
     ConfigurationServiceInstance,
@@ -6265,7 +6257,7 @@ export const ConfigurationServiceResource = /*@__PURE__*/ S.suspend(() =>
 
 /** Collection of configuration service resources */
 export type ConfigurationServiceResourceCollectionValueList =
-  ReadonlyArray<ConfigurationServiceResource>;
+  Array<ConfigurationServiceResource>;
 export const ConfigurationServiceResourceCollectionValueList =
   /*@__PURE__*/ S.Array(
     ConfigurationServiceResource,
@@ -6320,7 +6312,7 @@ export const ConfigurationServicesValidateRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ConfigurationServicesValidateRequest>;
 
 /** Detailed validation messages. */
-export type ValidationMessagesMessagesList = ReadonlyArray<string>;
+export type ValidationMessagesMessagesList = Array<string>;
 export const ValidationMessagesMessagesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ValidationMessagesMessagesList>;
@@ -6343,7 +6335,7 @@ export const ValidationMessages = /*@__PURE__*/ S.suspend(() =>
 
 /** The detail validation results */
 export type ConfigurationServiceGitPropertyValidateResultGitReposValidationResultList =
-  ReadonlyArray<ValidationMessages>;
+  Array<ValidationMessages>;
 export const ConfigurationServiceGitPropertyValidateResultGitReposValidationResultList =
   /*@__PURE__*/ S.Array(
     ValidationMessages,
@@ -6660,7 +6652,7 @@ export const ContainerRegistryResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The container registry resources list. */
 export type ContainerRegistryResourceCollectionValueList =
-  ReadonlyArray<ContainerRegistryResource>;
+  Array<ContainerRegistryResource>;
 export const ContainerRegistryResourceCollectionValueList =
   /*@__PURE__*/ S.Array(
     ContainerRegistryResource,
@@ -6979,7 +6971,7 @@ export const CustomDomainResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The custom domain resources list. */
 export type CustomDomainResourceCollectionValueList =
-  ReadonlyArray<CustomDomainResource>;
+  Array<CustomDomainResource>;
 export const CustomDomainResourceCollectionValueList = /*@__PURE__*/ S.Array(
   CustomDomainResource,
 ) as any as S.Schema<CustomDomainResourceCollectionValueList>;
@@ -7065,7 +7057,7 @@ export const CustomizedAcceleratorPropertiesInputAcceleratorType =
   /*@__PURE__*/ S.String;
 
 export type CustomizedAcceleratorPropertiesInputAcceleratorTagsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CustomizedAcceleratorPropertiesInputAcceleratorTagsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -7199,15 +7191,14 @@ export type CustomizedAcceleratorPropertiesAcceleratorType =
 export const CustomizedAcceleratorPropertiesAcceleratorType =
   /*@__PURE__*/ S.String;
 
-export type CustomizedAcceleratorPropertiesAcceleratorTagsList =
-  ReadonlyArray<string>;
+export type CustomizedAcceleratorPropertiesAcceleratorTagsList = Array<string>;
 export const CustomizedAcceleratorPropertiesAcceleratorTagsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<CustomizedAcceleratorPropertiesAcceleratorTagsList>;
 
 /** Imports references all imports that this accelerator/fragment depends upon. */
-export type CustomizedAcceleratorPropertiesImportsList = ReadonlyArray<string>;
+export type CustomizedAcceleratorPropertiesImportsList = Array<string>;
 export const CustomizedAcceleratorPropertiesImportsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CustomizedAcceleratorPropertiesImportsList>;
@@ -7420,7 +7411,7 @@ export const CustomizedAcceleratorResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CustomizedAcceleratorResource>;
 
 export type CustomizedAcceleratorResourceCollectionValueList =
-  ReadonlyArray<CustomizedAcceleratorResource>;
+  Array<CustomizedAcceleratorResource>;
 export const CustomizedAcceleratorResourceCollectionValueList =
   /*@__PURE__*/ S.Array(
     CustomizedAcceleratorResource,
@@ -7448,7 +7439,7 @@ export const CustomizedAcceleratorsValidateRequestAcceleratorType =
   /*@__PURE__*/ S.String;
 
 export type CustomizedAcceleratorsValidateRequestAcceleratorTagsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CustomizedAcceleratorsValidateRequestAcceleratorTagsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -7583,7 +7574,7 @@ export const ProbeActionType = /*@__PURE__*/ S.String;
 /** The action of the probe. */
 export interface ProbeAction {
   /** The type of the action to take to perform the health check. */
-  type: ProbeActionType;
+  type: ProbeActionType | (string & {});
 }
 export const ProbeAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -7768,7 +7759,7 @@ export const DeploymentInstance = /*@__PURE__*/ S.suspend(() =>
 
 /** Collection of instances belong to the Deployment */
 export type DeploymentResourcePropertiesInstancesList =
-  ReadonlyArray<DeploymentInstance>;
+  Array<DeploymentInstance>;
 export const DeploymentResourcePropertiesInstancesList = /*@__PURE__*/ S.Array(
   DeploymentInstance,
 ) as any as S.Schema<DeploymentResourcePropertiesInstancesList>;
@@ -8178,7 +8169,7 @@ export const DeploymentsGetRemoteDebuggingConfigRequest =
     identifier: "DeploymentsGetRemoteDebuggingConfigRequest",
   }) as any as S.Schema<DeploymentsGetRemoteDebuggingConfigRequest>;
 
-export type DeploymentsListRequestVersionList = ReadonlyArray<string>;
+export type DeploymentsListRequestVersionList = Array<string>;
 export const DeploymentsListRequestVersionList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DeploymentsListRequestVersionList>;
@@ -8242,8 +8233,7 @@ export const DeploymentResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeploymentResource>;
 
 /** Collection of Deployment resources */
-export type DeploymentResourceCollectionValueList =
-  ReadonlyArray<DeploymentResource>;
+export type DeploymentResourceCollectionValueList = Array<DeploymentResource>;
 export const DeploymentResourceCollectionValueList = /*@__PURE__*/ S.Array(
   DeploymentResource,
 ) as any as S.Schema<DeploymentResourceCollectionValueList>;
@@ -8264,7 +8254,7 @@ export const DeploymentResourceCollection = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeploymentResourceCollection",
 }) as any as S.Schema<DeploymentResourceCollection>;
 
-export type DeploymentsListForClusterRequestVersionList = ReadonlyArray<string>;
+export type DeploymentsListForClusterRequestVersionList = Array<string>;
 export const DeploymentsListForClusterRequestVersionList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -8528,7 +8518,7 @@ export const DeploymentsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeploymentsUpdateResponse>;
 
 /** It defines the specific actions applications can be allowed to do on a user's behalf */
-export type DevToolPortalSsoPropertiesScopesList = ReadonlyArray<string>;
+export type DevToolPortalSsoPropertiesScopesList = Array<string>;
 export const DevToolPortalSsoPropertiesScopesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DevToolPortalSsoPropertiesScopesList>;
@@ -8683,8 +8673,7 @@ export const DevToolPortalInstance = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DevToolPortalInstance>;
 
 /** Collection of instances belong to Dev Tool Portal. */
-export type DevToolPortalComponentInstancesList =
-  ReadonlyArray<DevToolPortalInstance>;
+export type DevToolPortalComponentInstancesList = Array<DevToolPortalInstance>;
 export const DevToolPortalComponentInstancesList = /*@__PURE__*/ S.Array(
   DevToolPortalInstance,
 ) as any as S.Schema<DevToolPortalComponentInstancesList>;
@@ -8708,7 +8697,7 @@ export const DevToolPortalComponent = /*@__PURE__*/ S.suspend(() =>
 
 /** Collection of components belong to Dev Tool Portal. */
 export type DevToolPortalPropertiesComponentsList =
-  ReadonlyArray<DevToolPortalComponent>;
+  Array<DevToolPortalComponent>;
 export const DevToolPortalPropertiesComponentsList = /*@__PURE__*/ S.Array(
   DevToolPortalComponent,
 ) as any as S.Schema<DevToolPortalPropertiesComponentsList>;
@@ -8935,7 +8924,7 @@ export const DevToolPortalResource = /*@__PURE__*/ S.suspend(() =>
 
 /** Collection of Dev Tool Portal resources */
 export type DevToolPortalResourceCollectionValueList =
-  ReadonlyArray<DevToolPortalResource>;
+  Array<DevToolPortalResource>;
 export const DevToolPortalResourceCollectionValueList = /*@__PURE__*/ S.Array(
   DevToolPortalResource,
 ) as any as S.Schema<DevToolPortalResourceCollectionValueList>;
@@ -9170,7 +9159,7 @@ export const GatewayCustomDomainResource = /*@__PURE__*/ S.suspend(() =>
 
 /** Collection of Spring Cloud Gateway custom domain resources */
 export type GatewayCustomDomainResourceCollectionValueList =
-  ReadonlyArray<GatewayCustomDomainResource>;
+  Array<GatewayCustomDomainResource>;
 export const GatewayCustomDomainResourceCollectionValueList =
   /*@__PURE__*/ S.Array(
     GatewayCustomDomainResource,
@@ -9211,19 +9200,19 @@ export type GatewayRouteConfigPropertiesInputProtocol = "HTTP" | "HTTPS";
 export const GatewayRouteConfigPropertiesInputProtocol = /*@__PURE__*/ S.String;
 
 /** A number of conditions to evaluate a route for each request. Each predicate may be evaluated against request headers and parameter values. All of the predicates associated with a route must evaluate to true for the route to be matched to the request. */
-export type GatewayApiRoutePredicatesList = ReadonlyArray<string>;
+export type GatewayApiRoutePredicatesList = Array<string>;
 export const GatewayApiRoutePredicatesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GatewayApiRoutePredicatesList>;
 
 /** To modify the request before sending it to the target endpoint, or the received response. */
-export type GatewayApiRouteFiltersList = ReadonlyArray<string>;
+export type GatewayApiRouteFiltersList = Array<string>;
 export const GatewayApiRouteFiltersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GatewayApiRouteFiltersList>;
 
 /** Classification tags, will be applied to methods in the generated OpenAPI documentation. */
-export type GatewayApiRouteTagsList = ReadonlyArray<string>;
+export type GatewayApiRouteTagsList = Array<string>;
 export const GatewayApiRouteTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GatewayApiRouteTagsList>;
@@ -9267,23 +9256,21 @@ export const GatewayApiRoute = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of API routes, each route contains properties such as `title`, `uri`, `ssoEnabled`, `predicates`, `filters`. */
 export type GatewayRouteConfigPropertiesInputRoutesList =
-  ReadonlyArray<GatewayApiRoute>;
+  Array<GatewayApiRoute>;
 export const GatewayRouteConfigPropertiesInputRoutesList =
   /*@__PURE__*/ S.Array(
     GatewayApiRoute,
   ) as any as S.Schema<GatewayRouteConfigPropertiesInputRoutesList>;
 
 /** A number of conditions to evaluate a route for each request in app level. Each predicate may be evaluated against request headers and parameter values. All of the predicates associated with a route must evaluate to true for the route to be matched to the request. */
-export type GatewayRouteConfigPropertiesInputPredicatesList =
-  ReadonlyArray<string>;
+export type GatewayRouteConfigPropertiesInputPredicatesList = Array<string>;
 export const GatewayRouteConfigPropertiesInputPredicatesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<GatewayRouteConfigPropertiesInputPredicatesList>;
 
 /** To modify the request before sending it to the target endpoint, or the received response in app level. */
-export type GatewayRouteConfigPropertiesInputFiltersList =
-  ReadonlyArray<string>;
+export type GatewayRouteConfigPropertiesInputFiltersList = Array<string>;
 export const GatewayRouteConfigPropertiesInputFiltersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -9368,20 +9355,19 @@ export type GatewayRouteConfigPropertiesProtocol = "HTTP" | "HTTPS";
 export const GatewayRouteConfigPropertiesProtocol = /*@__PURE__*/ S.String;
 
 /** Array of API routes, each route contains properties such as `title`, `uri`, `ssoEnabled`, `predicates`, `filters`. */
-export type GatewayRouteConfigPropertiesRoutesList =
-  ReadonlyArray<GatewayApiRoute>;
+export type GatewayRouteConfigPropertiesRoutesList = Array<GatewayApiRoute>;
 export const GatewayRouteConfigPropertiesRoutesList = /*@__PURE__*/ S.Array(
   GatewayApiRoute,
 ) as any as S.Schema<GatewayRouteConfigPropertiesRoutesList>;
 
 /** A number of conditions to evaluate a route for each request in app level. Each predicate may be evaluated against request headers and parameter values. All of the predicates associated with a route must evaluate to true for the route to be matched to the request. */
-export type GatewayRouteConfigPropertiesPredicatesList = ReadonlyArray<string>;
+export type GatewayRouteConfigPropertiesPredicatesList = Array<string>;
 export const GatewayRouteConfigPropertiesPredicatesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GatewayRouteConfigPropertiesPredicatesList>;
 
 /** To modify the request before sending it to the target endpoint, or the received response in app level. */
-export type GatewayRouteConfigPropertiesFiltersList = ReadonlyArray<string>;
+export type GatewayRouteConfigPropertiesFiltersList = Array<string>;
 export const GatewayRouteConfigPropertiesFiltersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GatewayRouteConfigPropertiesFiltersList>;
@@ -9588,7 +9574,7 @@ export const GatewayRouteConfigResource = /*@__PURE__*/ S.suspend(() =>
 
 /** Collection of Spring Cloud Gateway route config resources */
 export type GatewayRouteConfigResourceCollectionValueList =
-  ReadonlyArray<GatewayRouteConfigResource>;
+  Array<GatewayRouteConfigResource>;
 export const GatewayRouteConfigResourceCollectionValueList =
   /*@__PURE__*/ S.Array(
     GatewayRouteConfigResource,
@@ -9637,33 +9623,32 @@ export const GatewayApiMetadataProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GatewayApiMetadataProperties>;
 
 /** Allowed origins to make cross-site requests. The special value `*` allows all domains. */
-export type GatewayCorsPropertiesAllowedOriginsList = ReadonlyArray<string>;
+export type GatewayCorsPropertiesAllowedOriginsList = Array<string>;
 export const GatewayCorsPropertiesAllowedOriginsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GatewayCorsPropertiesAllowedOriginsList>;
 
 /** Allowed origin patterns to make cross-site requests. */
-export type GatewayCorsPropertiesAllowedOriginPatternsList =
-  ReadonlyArray<string>;
+export type GatewayCorsPropertiesAllowedOriginPatternsList = Array<string>;
 export const GatewayCorsPropertiesAllowedOriginPatternsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<GatewayCorsPropertiesAllowedOriginPatternsList>;
 
 /** Allowed HTTP methods on cross-site requests. The special value `*` allows all methods. If not set, `GET` and `HEAD` are allowed by default. */
-export type GatewayCorsPropertiesAllowedMethodsList = ReadonlyArray<string>;
+export type GatewayCorsPropertiesAllowedMethodsList = Array<string>;
 export const GatewayCorsPropertiesAllowedMethodsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GatewayCorsPropertiesAllowedMethodsList>;
 
 /** Allowed headers in cross-site requests. The special value `*` allows actual requests to send any header. */
-export type GatewayCorsPropertiesAllowedHeadersList = ReadonlyArray<string>;
+export type GatewayCorsPropertiesAllowedHeadersList = Array<string>;
 export const GatewayCorsPropertiesAllowedHeadersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GatewayCorsPropertiesAllowedHeadersList>;
 
 /** HTTP response headers to expose for cross-site requests. */
-export type GatewayCorsPropertiesExposedHeadersList = ReadonlyArray<string>;
+export type GatewayCorsPropertiesExposedHeadersList = Array<string>;
 export const GatewayCorsPropertiesExposedHeadersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GatewayCorsPropertiesExposedHeadersList>;
@@ -9702,8 +9687,7 @@ export const GatewayCorsProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GatewayCorsProperties>;
 
 /** Collection of certificate resource Ids in Azure Spring Apps. */
-export type GatewayPropertiesInputClientAuthCertificatesList =
-  ReadonlyArray<string>;
+export type GatewayPropertiesInputClientAuthCertificatesList = Array<string>;
 export const GatewayPropertiesInputClientAuthCertificatesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -9870,7 +9854,7 @@ export type GatewayPropertiesProvisioningState =
 export const GatewayPropertiesProvisioningState = /*@__PURE__*/ S.String;
 
 /** Collection of certificate resource Ids in Azure Spring Apps. */
-export type GatewayPropertiesClientAuthCertificatesList = ReadonlyArray<string>;
+export type GatewayPropertiesClientAuthCertificatesList = Array<string>;
 export const GatewayPropertiesClientAuthCertificatesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -9957,7 +9941,7 @@ export const GatewayInstance = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GatewayInstance>;
 
 /** Collection of instances belong to Spring Cloud Gateway. */
-export type GatewayPropertiesInstancesList = ReadonlyArray<GatewayInstance>;
+export type GatewayPropertiesInstancesList = Array<GatewayInstance>;
 export const GatewayPropertiesInstancesList = /*@__PURE__*/ S.Array(
   GatewayInstance,
 ) as any as S.Schema<GatewayPropertiesInstancesList>;
@@ -9982,8 +9966,7 @@ export const GatewayOperatorResourceRequests = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GatewayOperatorResourceRequests>;
 
 /** Collection of instances belong to Spring Cloud Gateway operator. */
-export type GatewayOperatorPropertiesInstancesList =
-  ReadonlyArray<GatewayInstance>;
+export type GatewayOperatorPropertiesInstancesList = Array<GatewayInstance>;
 export const GatewayOperatorPropertiesInstancesList = /*@__PURE__*/ S.Array(
   GatewayInstance,
 ) as any as S.Schema<GatewayOperatorPropertiesInstancesList>;
@@ -10214,7 +10197,7 @@ export const GatewayResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GatewayResource>;
 
 /** Collection of gateway resources */
-export type GatewayResourceCollectionValueList = ReadonlyArray<GatewayResource>;
+export type GatewayResourceCollectionValueList = Array<GatewayResource>;
 export const GatewayResourceCollectionValueList = /*@__PURE__*/ S.Array(
   GatewayResource,
 ) as any as S.Schema<GatewayResourceCollectionValueList>;
@@ -10638,23 +10621,20 @@ export const LogSpecification = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LogSpecification>;
 
 /** Specifications of the Log for Azure Monitoring */
-export type ServiceSpecificationLogSpecificationsList =
-  ReadonlyArray<LogSpecification>;
+export type ServiceSpecificationLogSpecificationsList = Array<LogSpecification>;
 export const ServiceSpecificationLogSpecificationsList = /*@__PURE__*/ S.Array(
   LogSpecification,
 ) as any as S.Schema<ServiceSpecificationLogSpecificationsList>;
 
 /** Supported aggregation types */
-export type MetricSpecificationSupportedAggregationTypesList =
-  ReadonlyArray<string>;
+export type MetricSpecificationSupportedAggregationTypesList = Array<string>;
 export const MetricSpecificationSupportedAggregationTypesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<MetricSpecificationSupportedAggregationTypesList>;
 
 /** Supported time grain types */
-export type MetricSpecificationSupportedTimeGrainTypesList =
-  ReadonlyArray<string>;
+export type MetricSpecificationSupportedTimeGrainTypesList = Array<string>;
 export const MetricSpecificationSupportedTimeGrainTypesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -10680,7 +10660,7 @@ export const MetricDimension = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MetricDimension>;
 
 /** Dimensions of the metric */
-export type MetricSpecificationDimensionsList = ReadonlyArray<MetricDimension>;
+export type MetricSpecificationDimensionsList = Array<MetricDimension>;
 export const MetricSpecificationDimensionsList = /*@__PURE__*/ S.Array(
   MetricDimension,
 ) as any as S.Schema<MetricSpecificationDimensionsList>;
@@ -10734,7 +10714,7 @@ export const MetricSpecification = /*@__PURE__*/ S.suspend(() =>
 
 /** Specifications of the Metrics for Azure Monitoring */
 export type ServiceSpecificationMetricSpecificationsList =
-  ReadonlyArray<MetricSpecification>;
+  Array<MetricSpecification>;
 export const ServiceSpecificationMetricSpecificationsList =
   /*@__PURE__*/ S.Array(
     MetricSpecification,
@@ -10800,7 +10780,7 @@ export const OperationDetail = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDetail>;
 
 /** Collection of available operation details */
-export type AvailableOperationsValueList = ReadonlyArray<OperationDetail>;
+export type AvailableOperationsValueList = Array<OperationDetail>;
 export const AvailableOperationsValueList = /*@__PURE__*/ S.Array(
   OperationDetail,
 ) as any as S.Schema<AvailableOperationsValueList>;
@@ -10939,8 +10919,7 @@ export type PredefinedAcceleratorPropertiesProvisioningState =
 export const PredefinedAcceleratorPropertiesProvisioningState =
   /*@__PURE__*/ S.String;
 
-export type PredefinedAcceleratorPropertiesAcceleratorTagsList =
-  ReadonlyArray<string>;
+export type PredefinedAcceleratorPropertiesAcceleratorTagsList = Array<string>;
 export const PredefinedAcceleratorPropertiesAcceleratorTagsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -11058,7 +11037,7 @@ export const PredefinedAcceleratorResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PredefinedAcceleratorResource>;
 
 export type PredefinedAcceleratorResourceCollectionValueList =
-  ReadonlyArray<PredefinedAcceleratorResource>;
+  Array<PredefinedAcceleratorResource>;
 export const PredefinedAcceleratorResourceCollectionValueList =
   /*@__PURE__*/ S.Array(
     PredefinedAcceleratorResource,
@@ -11125,8 +11104,7 @@ export const SupportedRuntimeVersion = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SupportedRuntimeVersion>;
 
 /** A list of all supported runtime versions. */
-export type AvailableRuntimeVersionsValueList =
-  ReadonlyArray<SupportedRuntimeVersion>;
+export type AvailableRuntimeVersionsValueList = Array<SupportedRuntimeVersion>;
 export const AvailableRuntimeVersionsValueList = /*@__PURE__*/ S.Array(
   SupportedRuntimeVersion,
 ) as any as S.Schema<AvailableRuntimeVersionsValueList>;
@@ -11219,7 +11197,7 @@ export const ServiceRegistryInstance = /*@__PURE__*/ S.suspend(() =>
 
 /** Collection of instances belong to Service Registry. */
 export type ServiceRegistryPropertiesInstancesList =
-  ReadonlyArray<ServiceRegistryInstance>;
+  Array<ServiceRegistryInstance>;
 export const ServiceRegistryPropertiesInstancesList = /*@__PURE__*/ S.Array(
   ServiceRegistryInstance,
 ) as any as S.Schema<ServiceRegistryPropertiesInstancesList>;
@@ -11401,7 +11379,7 @@ export const ServiceRegistryResource = /*@__PURE__*/ S.suspend(() =>
 
 /** Collection of Service Registry resources */
 export type ServiceRegistryResourceCollectionValueList =
-  ReadonlyArray<ServiceRegistryResource>;
+  Array<ServiceRegistryResource>;
 export const ServiceRegistryResourceCollectionValueList = /*@__PURE__*/ S.Array(
   ServiceRegistryResource,
 ) as any as S.Schema<ServiceRegistryResourceCollectionValueList>;
@@ -11640,7 +11618,7 @@ export const ClusterResourcePropertiesProvisioningState =
   /*@__PURE__*/ S.String;
 
 /** A list of public IP addresses. */
-export type NetworkProfileOutboundIPsPublicIPsList = ReadonlyArray<string>;
+export type NetworkProfileOutboundIPsPublicIPsList = Array<string>;
 export const NetworkProfileOutboundIPsPublicIPsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<NetworkProfileOutboundIPsPublicIPsList>;
@@ -11659,13 +11637,13 @@ export const NetworkProfileOutboundIPs = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NetworkProfileOutboundIPs>;
 
 /** The ip list of required traffic */
-export type RequiredTrafficIpsList = ReadonlyArray<string>;
+export type RequiredTrafficIpsList = Array<string>;
 export const RequiredTrafficIpsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RequiredTrafficIpsList>;
 
 /** The FQDN list of required traffic */
-export type RequiredTrafficFqdnsList = ReadonlyArray<string>;
+export type RequiredTrafficFqdnsList = Array<string>;
 export const RequiredTrafficFqdnsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RequiredTrafficFqdnsList>;
@@ -11700,7 +11678,7 @@ export const RequiredTraffic = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RequiredTraffic>;
 
 /** Required inbound or outbound traffics for Azure Spring Apps resource. */
-export type NetworkProfileRequiredTrafficsList = ReadonlyArray<RequiredTraffic>;
+export type NetworkProfileRequiredTrafficsList = Array<RequiredTraffic>;
 export const NetworkProfileRequiredTrafficsList = /*@__PURE__*/ S.Array(
   RequiredTraffic,
 ) as any as S.Schema<NetworkProfileRequiredTrafficsList>;
@@ -12153,7 +12131,7 @@ export const ServiceResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServiceResource>;
 
 /** Collection of Service resources */
-export type ServiceResourceListValueList = ReadonlyArray<ServiceResource>;
+export type ServiceResourceListValueList = Array<ServiceResource>;
 export const ServiceResourceListValueList = /*@__PURE__*/ S.Array(
   ServiceResource,
 ) as any as S.Schema<ServiceResourceListValueList>;
@@ -12220,7 +12198,7 @@ export const ServicesListGloballyEnabledApmsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ServicesListGloballyEnabledApmsRequest>;
 
 /** Collection of the globally enabled APMs */
-export type GloballyEnabledApmsValueList = ReadonlyArray<string>;
+export type GloballyEnabledApmsValueList = Array<string>;
 export const GloballyEnabledApmsValueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GloballyEnabledApmsValueList>;
@@ -12278,7 +12256,7 @@ export const SupportedApmType = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SupportedApmType>;
 
 /** Collection of the supported APM type */
-export type SupportedApmTypesValueList = ReadonlyArray<SupportedApmType>;
+export type SupportedApmTypesValueList = Array<SupportedApmType>;
 export const SupportedApmTypesValueList = /*@__PURE__*/ S.Array(
   SupportedApmType,
 ) as any as S.Schema<SupportedApmTypesValueList>;
@@ -12345,8 +12323,7 @@ export const SupportedServerVersion = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SupportedServerVersion>;
 
 /** Collection of the supported server versions. */
-export type SupportedServerVersionsValueList =
-  ReadonlyArray<SupportedServerVersion>;
+export type SupportedServerVersionsValueList = Array<SupportedServerVersion>;
 export const SupportedServerVersionsValueList = /*@__PURE__*/ S.Array(
   SupportedServerVersion,
 ) as any as S.Schema<SupportedServerVersionsValueList>;
@@ -12619,19 +12596,19 @@ export const SkuCapacity = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SkuCapacity" }) as any as S.Schema<SkuCapacity>;
 
 /** Gets the set of locations that the SKU is available. */
-export type ResourceSkuLocationsList = ReadonlyArray<string>;
+export type ResourceSkuLocationsList = Array<string>;
 export const ResourceSkuLocationsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ResourceSkuLocationsList>;
 
 /** Gets list of availability zones where the SKU is supported. */
-export type ResourceSkuLocationInfoZonesList = ReadonlyArray<string>;
+export type ResourceSkuLocationInfoZonesList = Array<string>;
 export const ResourceSkuLocationInfoZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ResourceSkuLocationInfoZonesList>;
 
 /** Gets the set of zones that the SKU is available in with the specified capabilities. */
-export type ResourceSkuZoneDetailsNameList = ReadonlyArray<string>;
+export type ResourceSkuZoneDetailsNameList = Array<string>;
 export const ResourceSkuZoneDetailsNameList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ResourceSkuZoneDetailsNameList>;
@@ -12653,7 +12630,7 @@ export const ResourceSkuCapabilities = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets a list of capabilities that are available for the SKU in the specified list of zones. */
 export type ResourceSkuZoneDetailsCapabilitiesList =
-  ReadonlyArray<ResourceSkuCapabilities>;
+  Array<ResourceSkuCapabilities>;
 export const ResourceSkuZoneDetailsCapabilitiesList = /*@__PURE__*/ S.Array(
   ResourceSkuCapabilities,
 ) as any as S.Schema<ResourceSkuZoneDetailsCapabilitiesList>;
@@ -12676,7 +12653,7 @@ export const ResourceSkuZoneDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets details of capabilities available to a SKU in specific zones. */
 export type ResourceSkuLocationInfoZoneDetailsList =
-  ReadonlyArray<ResourceSkuZoneDetails>;
+  Array<ResourceSkuZoneDetails>;
 export const ResourceSkuLocationInfoZoneDetailsList = /*@__PURE__*/ S.Array(
   ResourceSkuZoneDetails,
 ) as any as S.Schema<ResourceSkuLocationInfoZoneDetailsList>;
@@ -12701,8 +12678,7 @@ export const ResourceSkuLocationInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourceSkuLocationInfo>;
 
 /** Gets a list of locations and availability zones in those locations where the SKU is available. */
-export type ResourceSkuLocationInfoList =
-  ReadonlyArray<ResourceSkuLocationInfo>;
+export type ResourceSkuLocationInfoList = Array<ResourceSkuLocationInfo>;
 export const ResourceSkuLocationInfoList = /*@__PURE__*/ S.Array(
   ResourceSkuLocationInfo,
 ) as any as S.Schema<ResourceSkuLocationInfoList>;
@@ -12712,19 +12688,19 @@ export type ResourceSkuRestrictionsType = "Location" | "Zone";
 export const ResourceSkuRestrictionsType = /*@__PURE__*/ S.String;
 
 /** Gets the value of restrictions. If the restriction type is set to location. This would be different locations where the SKU is restricted. */
-export type ResourceSkuRestrictionsValuesList = ReadonlyArray<string>;
+export type ResourceSkuRestrictionsValuesList = Array<string>;
 export const ResourceSkuRestrictionsValuesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ResourceSkuRestrictionsValuesList>;
 
 /** Gets locations where the SKU is restricted */
-export type ResourceSkuRestrictionInfoLocationsList = ReadonlyArray<string>;
+export type ResourceSkuRestrictionInfoLocationsList = Array<string>;
 export const ResourceSkuRestrictionInfoLocationsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ResourceSkuRestrictionInfoLocationsList>;
 
 /** Gets list of availability zones where the SKU is restricted. */
-export type ResourceSkuRestrictionInfoZonesList = ReadonlyArray<string>;
+export type ResourceSkuRestrictionInfoZonesList = Array<string>;
 export const ResourceSkuRestrictionInfoZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ResourceSkuRestrictionInfoZonesList>;
@@ -12774,8 +12750,7 @@ export const ResourceSkuRestrictions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourceSkuRestrictions>;
 
 /** Gets the restrictions because of which SKU cannot be used. This is empty if there are no restrictions. */
-export type ResourceSkuRestrictionsList =
-  ReadonlyArray<ResourceSkuRestrictions>;
+export type ResourceSkuRestrictionsList = Array<ResourceSkuRestrictions>;
 export const ResourceSkuRestrictionsList = /*@__PURE__*/ S.Array(
   ResourceSkuRestrictions,
 ) as any as S.Schema<ResourceSkuRestrictionsList>;
@@ -12810,7 +12785,7 @@ export const ResourceSku = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResourceSku" }) as any as S.Schema<ResourceSku>;
 
 /** Collection of resource SKU */
-export type ResourceSkuCollectionValueList = ReadonlyArray<ResourceSku>;
+export type ResourceSkuCollectionValueList = Array<ResourceSku>;
 export const ResourceSkuCollectionValueList = /*@__PURE__*/ S.Array(
   ResourceSku,
 ) as any as S.Schema<ResourceSkuCollectionValueList>;
@@ -12838,7 +12813,7 @@ export const StoragePropertiesStorageType = /*@__PURE__*/ S.String;
 /** Storage resource payload. */
 export interface StorageProperties {
   /** The type of the storage. */
-  storageType: StoragePropertiesStorageType;
+  storageType: StoragePropertiesStorageType | (string & {});
 }
 export const StorageProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -13038,7 +13013,7 @@ export const StorageResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StorageResource>;
 
 /** The storage resources list. */
-export type StorageResourceCollectionValueList = ReadonlyArray<StorageResource>;
+export type StorageResourceCollectionValueList = Array<StorageResource>;
 export const StorageResourceCollectionValueList = /*@__PURE__*/ S.Array(
   StorageResource,
 ) as any as S.Schema<StorageResourceCollectionValueList>;

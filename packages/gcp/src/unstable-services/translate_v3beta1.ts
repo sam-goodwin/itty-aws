@@ -60,7 +60,7 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -89,8 +89,7 @@ export const BatchDocumentInputConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "BatchDocumentInputConfig",
 }) as any as S.Schema<BatchDocumentInputConfig>;
 
-export type BatchDocumentInputConfigList =
-  ReadonlyArray<BatchDocumentInputConfig>;
+export type BatchDocumentInputConfigList = Array<BatchDocumentInputConfig>;
 export const BatchDocumentInputConfigList = /*@__PURE__*/ S.Array(
   BatchDocumentInputConfig,
 ) as any as S.Schema<BatchDocumentInputConfigList>;
@@ -223,7 +222,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -293,7 +292,7 @@ export const InputConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "InputConfig" }) as any as S.Schema<InputConfig>;
 
-export type InputConfigList = ReadonlyArray<InputConfig>;
+export type InputConfigList = Array<InputConfig>;
 export const InputConfigList = /*@__PURE__*/ S.Array(
   InputConfig,
 ) as any as S.Schema<InputConfigList>;
@@ -577,7 +576,7 @@ export const DetectedLanguage = /*@__PURE__*/ S.suspend(() =>
   identifier: "DetectedLanguage",
 }) as any as S.Schema<DetectedLanguage>;
 
-export type DetectedLanguageList = ReadonlyArray<DetectedLanguage>;
+export type DetectedLanguageList = Array<DetectedLanguage>;
 export const DetectedLanguageList = /*@__PURE__*/ S.Array(
   DetectedLanguage,
 ) as any as S.Schema<DetectedLanguageList>;
@@ -743,7 +742,7 @@ export const SupportedLanguage = /*@__PURE__*/ S.suspend(() =>
   identifier: "SupportedLanguage",
 }) as any as S.Schema<SupportedLanguage>;
 
-export type SupportedLanguageList = ReadonlyArray<SupportedLanguage>;
+export type SupportedLanguageList = Array<SupportedLanguage>;
 export const SupportedLanguageList = /*@__PURE__*/ S.Array(
   SupportedLanguage,
 ) as any as S.Schema<SupportedLanguageList>;
@@ -816,7 +815,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = ReadonlyArray<Location>;
+export type LocationList = Array<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -865,7 +864,7 @@ export const ListProjectsLocationsGlossariesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsGlossariesRequest",
 }) as any as S.Schema<ListProjectsLocationsGlossariesRequest>;
 
-export type GlossaryList = ReadonlyArray<Glossary>;
+export type GlossaryList = Array<Glossary>;
 export const GlossaryList = /*@__PURE__*/ S.Array(
   Glossary,
 ) as any as S.Schema<GlossaryList>;
@@ -917,7 +916,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type OperationList = ReadonlyArray<Operation>;
+export type OperationList = Array<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -957,7 +956,7 @@ export const RefinementEntry = /*@__PURE__*/ S.suspend(() =>
   identifier: "RefinementEntry",
 }) as any as S.Schema<RefinementEntry>;
 
-export type RefinementEntryList = ReadonlyArray<RefinementEntry>;
+export type RefinementEntryList = Array<RefinementEntry>;
 export const RefinementEntryList = /*@__PURE__*/ S.Array(
   RefinementEntry,
 ) as any as S.Schema<RefinementEntryList>;
@@ -1228,7 +1227,7 @@ export const Translation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Translation" }) as any as S.Schema<Translation>;
 
-export type TranslationList = ReadonlyArray<Translation>;
+export type TranslationList = Array<Translation>;
 export const TranslationList = /*@__PURE__*/ S.Array(
   Translation,
 ) as any as S.Schema<TranslationList>;

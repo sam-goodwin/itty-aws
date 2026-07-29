@@ -146,7 +146,7 @@ export const MaintenanceDayOfWeekType = /*@__PURE__*/ S.String;
 /** Start time of a 30-minute weekly maintenance window. */
 export interface AmlFilesystemPropertiesMaintenanceWindow {
   /** Day of the week on which the maintenance window will occur. */
-  dayOfWeek?: MaintenanceDayOfWeekType;
+  dayOfWeek?: MaintenanceDayOfWeekType | (string & {});
   /** The time of day (in UTC) to start the maintenance window. */
   timeOfDayUTC?: string;
 }
@@ -161,8 +161,7 @@ export const AmlFilesystemPropertiesMaintenanceWindow = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<AmlFilesystemPropertiesMaintenanceWindow>;
 
 /** Only blobs in the non-logging container that start with one of the paths/prefixes in this array get imported into the cluster namespace. This is only used during initial creation of the AML file system and has '/' as the default value. It automatically creates an import job resource that can be deleted. */
-export type AmlFilesystemHsmSettingsImportPrefixesInitialList =
-  ReadonlyArray<string>;
+export type AmlFilesystemHsmSettingsImportPrefixesInitialList = Array<string>;
 export const AmlFilesystemHsmSettingsImportPrefixesInitialList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -311,8 +310,7 @@ export const SkuName = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SkuName" }) as any as S.Schema<SkuName>;
 
 /** The availability zones. */
-export type AmlFilesystemsCreateOrUpdateRequestZonesList =
-  ReadonlyArray<string>;
+export type AmlFilesystemsCreateOrUpdateRequestZonesList = Array<string>;
 export const AmlFilesystemsCreateOrUpdateRequestZonesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -554,7 +552,7 @@ export const AmlFilesystemArchive = /*@__PURE__*/ S.suspend(() =>
 
 /** Archive status */
 export type AmlFilesystemPropertiesHsmArchiveStatusList =
-  ReadonlyArray<AmlFilesystemArchive>;
+  Array<AmlFilesystemArchive>;
 export const AmlFilesystemPropertiesHsmArchiveStatusList =
   /*@__PURE__*/ S.Array(
     AmlFilesystemArchive,
@@ -697,8 +695,7 @@ export const AmlFilesystemIdentity = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AmlFilesystemIdentity>;
 
 /** The availability zones. */
-export type AmlFilesystemsCreateOrUpdateResponseZonesList =
-  ReadonlyArray<string>;
+export type AmlFilesystemsCreateOrUpdateResponseZonesList = Array<string>;
 export const AmlFilesystemsCreateOrUpdateResponseZonesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -811,7 +808,7 @@ export const AmlFilesystemsGetResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<AmlFilesystemsGetResponseTagsMap>;
 
 /** The availability zones. */
-export type AmlFilesystemsGetResponseZonesList = ReadonlyArray<string>;
+export type AmlFilesystemsGetResponseZonesList = Array<string>;
 export const AmlFilesystemsGetResponseZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AmlFilesystemsGetResponseZonesList>;
@@ -882,7 +879,7 @@ export const AmlFilesystemTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<AmlFilesystemTagsMap>;
 
 /** The availability zones. */
-export type AmlFilesystemZonesList = ReadonlyArray<string>;
+export type AmlFilesystemZonesList = Array<string>;
 export const AmlFilesystemZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AmlFilesystemZonesList>;
@@ -926,7 +923,7 @@ export const AmlFilesystem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AmlFilesystem" }) as any as S.Schema<AmlFilesystem>;
 
 /** List of AML file systems. */
-export type AmlFilesystemsListResultValueList = ReadonlyArray<AmlFilesystem>;
+export type AmlFilesystemsListResultValueList = Array<AmlFilesystem>;
 export const AmlFilesystemsListResultValueList = /*@__PURE__*/ S.Array(
   AmlFilesystem,
 ) as any as S.Schema<AmlFilesystemsListResultValueList>;
@@ -1058,7 +1055,7 @@ export const AmlFilesystemsUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<AmlFilesystemsUpdateResponseTagsMap>;
 
 /** The availability zones. */
-export type AmlFilesystemsUpdateResponseZonesList = ReadonlyArray<string>;
+export type AmlFilesystemsUpdateResponseZonesList = Array<string>;
 export const AmlFilesystemsUpdateResponseZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AmlFilesystemsUpdateResponseZonesList>;
@@ -1253,7 +1250,7 @@ export const ResourceUsage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResourceUsage" }) as any as S.Schema<ResourceUsage>;
 
 /** List of usages and limits for resources controlled by the Microsoft.StorageCache resource provider. */
-export type ResourceUsagesListResultValueList = ReadonlyArray<ResourceUsage>;
+export type ResourceUsagesListResultValueList = Array<ResourceUsage>;
 export const ResourceUsagesListResultValueList = /*@__PURE__*/ S.Array(
   ResourceUsage,
 ) as any as S.Schema<ResourceUsagesListResultValueList>;
@@ -1289,8 +1286,7 @@ export type AutoExportJobPropertiesInputAdminStatus = "Enable" | "Disable";
 export const AutoExportJobPropertiesInputAdminStatus = /*@__PURE__*/ S.String;
 
 /** An array of blob paths/prefixes that get auto exported to the cluster namespace. It has '/' as the default value. Number of maximum allowed paths for now is 1. */
-export type AutoExportJobPropertiesInputAutoExportPrefixesList =
-  ReadonlyArray<string>;
+export type AutoExportJobPropertiesInputAutoExportPrefixesList = Array<string>;
 export const AutoExportJobPropertiesInputAutoExportPrefixesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1376,8 +1372,7 @@ export type AutoExportJobPropertiesAdminStatus = "Enable" | "Disable";
 export const AutoExportJobPropertiesAdminStatus = /*@__PURE__*/ S.String;
 
 /** An array of blob paths/prefixes that get auto exported to the cluster namespace. It has '/' as the default value. Number of maximum allowed paths for now is 1. */
-export type AutoExportJobPropertiesAutoExportPrefixesList =
-  ReadonlyArray<string>;
+export type AutoExportJobPropertiesAutoExportPrefixesList = Array<string>;
 export const AutoExportJobPropertiesAutoExportPrefixesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1667,7 +1662,7 @@ export const AutoExportJob = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AutoExportJob" }) as any as S.Schema<AutoExportJob>;
 
 /** List of auto export jobs. */
-export type AutoExportJobsListResultValueList = ReadonlyArray<AutoExportJob>;
+export type AutoExportJobsListResultValueList = Array<AutoExportJob>;
 export const AutoExportJobsListResultValueList = /*@__PURE__*/ S.Array(
   AutoExportJob,
 ) as any as S.Schema<AutoExportJobsListResultValueList>;
@@ -1800,8 +1795,7 @@ export type AutoImportJobPropertiesInputAdminStatus = "Enable" | "Disable";
 export const AutoImportJobPropertiesInputAdminStatus = /*@__PURE__*/ S.String;
 
 /** An array of blob paths/prefixes that get auto imported to the cluster namespace. It has '/' as the default value. Number of maximum allowed paths is 100. */
-export type AutoImportJobPropertiesInputAutoImportPrefixesList =
-  ReadonlyArray<string>;
+export type AutoImportJobPropertiesInputAutoImportPrefixesList = Array<string>;
 export const AutoImportJobPropertiesInputAutoImportPrefixesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1909,8 +1903,7 @@ export type AutoImportJobPropertiesAdminStatus = "Enable" | "Disable";
 export const AutoImportJobPropertiesAdminStatus = /*@__PURE__*/ S.String;
 
 /** An array of blob paths/prefixes that get auto imported to the cluster namespace. It has '/' as the default value. Number of maximum allowed paths is 100. */
-export type AutoImportJobPropertiesAutoImportPrefixesList =
-  ReadonlyArray<string>;
+export type AutoImportJobPropertiesAutoImportPrefixesList = Array<string>;
 export const AutoImportJobPropertiesAutoImportPrefixesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2284,7 +2277,7 @@ export const AutoImportJob = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AutoImportJob" }) as any as S.Schema<AutoImportJob>;
 
 /** List of auto import jobs. */
-export type AutoImportJobsListResultValueList = ReadonlyArray<AutoImportJob>;
+export type AutoImportJobsListResultValueList = Array<AutoImportJob>;
 export const AutoImportJobsListResultValueList = /*@__PURE__*/ S.Array(
   AutoImportJob,
 ) as any as S.Schema<AutoImportJobsListResultValueList>;
@@ -2419,7 +2412,7 @@ export const CacheUpgradeSettings = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CacheUpgradeSettings>;
 
 /** DNS servers for the cache to use. It will be set from the network configuration if no value is provided. */
-export type CacheNetworkSettingsInputDnsServersList = ReadonlyArray<string>;
+export type CacheNetworkSettingsInputDnsServersList = Array<string>;
 export const CacheNetworkSettingsInputDnsServersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CacheNetworkSettingsInputDnsServersList>;
@@ -2473,11 +2466,11 @@ export const NfsAccessRuleAccess = /*@__PURE__*/ S.String;
 /** Rule to place restrictions on portions of the cache namespace being presented to clients. */
 export interface NfsAccessRule {
   /** Scope for this rule. The scope and filter determine which clients match the rule. */
-  scope: NfsAccessRuleScope;
+  scope: NfsAccessRuleScope | (string & {});
   /** Filter applied to the scope for this rule. The filter's format depends on its scope. 'default' scope matches all clients and has no filter value. 'network' scope takes a filter in CIDR format (for example, 10.99.1.0/24). 'host' takes an IP address or fully qualified domain name as filter. If a client does not match any filter rule and there is no default rule, access is denied. */
   filter?: string;
   /** Access allowed by this rule. */
-  access: NfsAccessRuleAccess;
+  access: NfsAccessRuleAccess | (string & {});
   /** Allow SUID semantics. */
   suid?: boolean;
   /** For the default policy, allow access to subdirectories under the root export. If this is set to no, clients can only mount the path '/'. If set to yes, clients can mount a deeper path, like '/a/b'. */
@@ -2503,7 +2496,7 @@ export const NfsAccessRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NfsAccessRule" }) as any as S.Schema<NfsAccessRule>;
 
 /** The set of rules describing client accesses allowed under this policy. */
-export type NfsAccessPolicyAccessRulesList = ReadonlyArray<NfsAccessRule>;
+export type NfsAccessPolicyAccessRulesList = Array<NfsAccessRule>;
 export const NfsAccessPolicyAccessRulesList = /*@__PURE__*/ S.Array(
   NfsAccessRule,
 ) as any as S.Schema<NfsAccessPolicyAccessRulesList>;
@@ -2525,8 +2518,7 @@ export const NfsAccessPolicy = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NfsAccessPolicy>;
 
 /** NFS access policies defined for this cache. */
-export type CacheSecuritySettingsAccessPoliciesList =
-  ReadonlyArray<NfsAccessPolicy>;
+export type CacheSecuritySettingsAccessPoliciesList = Array<NfsAccessPolicy>;
 export const CacheSecuritySettingsAccessPoliciesList = /*@__PURE__*/ S.Array(
   NfsAccessPolicy,
 ) as any as S.Schema<CacheSecuritySettingsAccessPoliciesList>;
@@ -2578,7 +2570,7 @@ export interface CacheActiveDirectorySettings {
   /** The NetBIOS name to assign to the HPC Cache when it joins the Active Directory domain as a server. Length must 1-15 characters from the class [-0-9a-zA-Z]. */
   cacheNetBiosName: string;
   /** True if the HPC Cache is joined to the Active Directory domain. */
-  domainJoined?: DomainJoinedType;
+  domainJoined?: DomainJoinedType | (string & {});
   /** Active Directory admin credentials used to join the HPC Cache to a domain. */
   credentials?: CacheActiveDirectorySettingsCredentials;
 }
@@ -2631,7 +2623,7 @@ export interface CacheUsernameDownloadSettings {
   /** Whether or not Extended Groups is enabled. */
   extendedGroups?: boolean;
   /** This setting determines how the cache gets username and group names for clients. */
-  usernameSource?: CacheUsernameDownloadSettingsUsernameSource;
+  usernameSource?: CacheUsernameDownloadSettingsUsernameSource | (string & {});
   /** The URI of the file containing group information (in /etc/group file format). This field must be populated when 'usernameSource' is set to 'File'. */
   groupFileURI?: string;
   /** The URI of the file containing user information (in /etc/passwd file format). This field must be populated when 'usernameSource' is set to 'File'. */
@@ -2649,7 +2641,7 @@ export interface CacheUsernameDownloadSettings {
   /** The URI of the CA certificate to validate the LDAP secure connection. This field must be populated when 'requireValidCertificate' is set to true. */
   caCertificateURI?: string;
   /** Indicates whether or not the HPC Cache has performed the username download successfully. */
-  usernameDownloaded?: UsernameDownloadedType;
+  usernameDownloaded?: UsernameDownloadedType | (string & {});
   /** When present, these are the credentials for the secure LDAP connection. */
   credentials?: CacheUsernameDownloadSettingsCredentials;
 }
@@ -2689,7 +2681,7 @@ export const CacheDirectorySettings = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CacheDirectorySettings>;
 
 /** Availability zones for resources. This field should only contain a single element in the array. */
-export type CachePropertiesInputZonesList = ReadonlyArray<string>;
+export type CachePropertiesInputZonesList = Array<string>;
 export const CachePropertiesInputZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CachePropertiesInputZonesList>;
@@ -2711,8 +2703,7 @@ export const PrimingJobInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrimingJobInput>;
 
 /** Specifies the priming jobs defined in the cache. */
-export type CachePropertiesInputPrimingJobsList =
-  ReadonlyArray<PrimingJobInput>;
+export type CachePropertiesInputPrimingJobsList = Array<PrimingJobInput>;
 export const CachePropertiesInputPrimingJobsList = /*@__PURE__*/ S.Array(
   PrimingJobInput,
 ) as any as S.Schema<CachePropertiesInputPrimingJobsList>;
@@ -2881,7 +2872,7 @@ export const Condition = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Condition" }) as any as S.Schema<Condition>;
 
 /** Outstanding conditions that need to be investigated and resolved. */
-export type CacheHealthConditionsList = ReadonlyArray<Condition>;
+export type CacheHealthConditionsList = Array<Condition>;
 export const CacheHealthConditionsList = /*@__PURE__*/ S.Array(
   Condition,
 ) as any as S.Schema<CacheHealthConditionsList>;
@@ -2904,7 +2895,7 @@ export const CacheHealth = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CacheHealth" }) as any as S.Schema<CacheHealth>;
 
 /** Array of IPv4 addresses that can be used by clients mounting this cache. */
-export type CachePropertiesMountAddressesList = ReadonlyArray<string>;
+export type CachePropertiesMountAddressesList = Array<string>;
 export const CachePropertiesMountAddressesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CachePropertiesMountAddressesList>;
@@ -2949,13 +2940,13 @@ export const CacheUpgradeStatus = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CacheUpgradeStatus>;
 
 /** Array of additional IP addresses used by this cache. */
-export type CacheNetworkSettingsUtilityAddressesList = ReadonlyArray<string>;
+export type CacheNetworkSettingsUtilityAddressesList = Array<string>;
 export const CacheNetworkSettingsUtilityAddressesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CacheNetworkSettingsUtilityAddressesList>;
 
 /** DNS servers for the cache to use. It will be set from the network configuration if no value is provided. */
-export type CacheNetworkSettingsDnsServersList = ReadonlyArray<string>;
+export type CacheNetworkSettingsDnsServersList = Array<string>;
 export const CacheNetworkSettingsDnsServersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CacheNetworkSettingsDnsServersList>;
@@ -2986,7 +2977,7 @@ export const CacheNetworkSettings = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CacheNetworkSettings>;
 
 /** Availability zones for resources. This field should only contain a single element in the array. */
-export type CachePropertiesZonesList = ReadonlyArray<string>;
+export type CachePropertiesZonesList = Array<string>;
 export const CachePropertiesZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CachePropertiesZonesList>;
@@ -3025,7 +3016,7 @@ export const PrimingJob = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PrimingJob" }) as any as S.Schema<PrimingJob>;
 
 /** Specifies the priming jobs defined in the cache. */
-export type CachePropertiesPrimingJobsList = ReadonlyArray<PrimingJob>;
+export type CachePropertiesPrimingJobsList = Array<PrimingJob>;
 export const CachePropertiesPrimingJobsList = /*@__PURE__*/ S.Array(
   PrimingJob,
 ) as any as S.Schema<CachePropertiesPrimingJobsList>;
@@ -3048,7 +3039,7 @@ export const StorageTargetSpaceAllocation = /*@__PURE__*/ S.suspend(() =>
 
 /** Specifies the space allocation percentage for each storage target in the cache. */
 export type CachePropertiesSpaceAllocationList =
-  ReadonlyArray<StorageTargetSpaceAllocation>;
+  Array<StorageTargetSpaceAllocation>;
 export const CachePropertiesSpaceAllocationList = /*@__PURE__*/ S.Array(
   StorageTargetSpaceAllocation,
 ) as any as S.Schema<CachePropertiesSpaceAllocationList>;
@@ -3405,7 +3396,7 @@ export const Cache = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Cache" }) as any as S.Schema<Cache>;
 
 /** List of caches. */
-export type CachesListResultValueList = ReadonlyArray<Cache>;
+export type CachesListResultValueList = Array<Cache>;
 export const CachesListResultValueList = /*@__PURE__*/ S.Array(
   Cache,
 ) as any as S.Schema<CachesListResultValueList>;
@@ -3519,7 +3510,7 @@ export const CachesResumePrimingJobResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CachesResumePrimingJobResponse>;
 
 export type CachesSpaceAllocationRequestBodyList =
-  ReadonlyArray<StorageTargetSpaceAllocation>;
+  Array<StorageTargetSpaceAllocation>;
 export const CachesSpaceAllocationRequestBodyList = /*@__PURE__*/ S.Array(
   StorageTargetSpaceAllocation,
 ) as any as S.Schema<CachesSpaceAllocationRequestBodyList>;
@@ -4185,7 +4176,7 @@ export const ExpansionJob = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ExpansionJob" }) as any as S.Schema<ExpansionJob>;
 
 /** List of expansion jobs. */
-export type ExpansionJobsListResultValueList = ReadonlyArray<ExpansionJob>;
+export type ExpansionJobsListResultValueList = Array<ExpansionJob>;
 export const ExpansionJobsListResultValueList = /*@__PURE__*/ S.Array(
   ExpansionJob,
 ) as any as S.Schema<ExpansionJobsListResultValueList>;
@@ -4337,7 +4328,7 @@ export type ImportJobPropertiesInputAdminStatus = "Active" | "Cancel";
 export const ImportJobPropertiesInputAdminStatus = /*@__PURE__*/ S.String;
 
 /** An array of blob paths/prefixes that get imported into the cluster namespace. It has '/' as the default value. */
-export type ImportJobPropertiesInputImportPrefixesList = ReadonlyArray<string>;
+export type ImportJobPropertiesInputImportPrefixesList = Array<string>;
 export const ImportJobPropertiesInputImportPrefixesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ImportJobPropertiesInputImportPrefixesList>;
@@ -4438,7 +4429,7 @@ export type ImportJobPropertiesAdminStatus = "Active" | "Cancel";
 export const ImportJobPropertiesAdminStatus = /*@__PURE__*/ S.String;
 
 /** An array of blob paths/prefixes that get imported into the cluster namespace. It has '/' as the default value. */
-export type ImportJobPropertiesImportPrefixesList = ReadonlyArray<string>;
+export type ImportJobPropertiesImportPrefixesList = Array<string>;
 export const ImportJobPropertiesImportPrefixesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ImportJobPropertiesImportPrefixesList>;
@@ -4744,7 +4735,7 @@ export const ImportJob = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ImportJob" }) as any as S.Schema<ImportJob>;
 
 /** List of import jobs. */
-export type ImportJobsListResultValueList = ReadonlyArray<ImportJob>;
+export type ImportJobsListResultValueList = Array<ImportJob>;
 export const ImportJobsListResultValueList = /*@__PURE__*/ S.Array(
   ImportJob,
 ) as any as S.Schema<ImportJobsListResultValueList>;
@@ -4910,7 +4901,7 @@ export const MetricAggregationType = /*@__PURE__*/ S.String;
 
 /** Support metric aggregation type. */
 export type MetricSpecificationSupportedAggregationTypesList =
-  ReadonlyArray<MetricAggregationType>;
+  Array<MetricAggregationType>;
 export const MetricSpecificationSupportedAggregationTypesList =
   /*@__PURE__*/ S.Array(
     MetricAggregationType,
@@ -4939,7 +4930,7 @@ export const MetricDimension = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MetricDimension>;
 
 /** Dimensions of the metric */
-export type MetricSpecificationDimensionsList = ReadonlyArray<MetricDimension>;
+export type MetricSpecificationDimensionsList = Array<MetricDimension>;
 export const MetricSpecificationDimensionsList = /*@__PURE__*/ S.Array(
   MetricDimension,
 ) as any as S.Schema<MetricSpecificationDimensionsList>;
@@ -4982,7 +4973,7 @@ export const MetricSpecification = /*@__PURE__*/ S.suspend(() =>
 
 /** Details about operations related to metrics. */
 export type ApiOperationPropertiesServiceSpecificationMetricSpecificationsList =
-  ReadonlyArray<MetricSpecification>;
+  Array<MetricSpecification>;
 export const ApiOperationPropertiesServiceSpecificationMetricSpecificationsList =
   /*@__PURE__*/ S.Array(
     MetricSpecification,
@@ -5006,7 +4997,7 @@ export const LogSpecification = /*@__PURE__*/ S.suspend(() =>
 
 /** Details about operations related to logs. */
 export type ApiOperationPropertiesServiceSpecificationLogSpecificationsList =
-  ReadonlyArray<LogSpecification>;
+  Array<LogSpecification>;
 export const ApiOperationPropertiesServiceSpecificationLogSpecificationsList =
   /*@__PURE__*/ S.Array(
     LogSpecification,
@@ -5072,7 +5063,7 @@ export const ApiOperation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ApiOperation" }) as any as S.Schema<ApiOperation>;
 
 /** List of Resource Provider operations supported by the Microsoft.StorageCache resource provider. */
-export type ApiOperationListResultValueList = ReadonlyArray<ApiOperation>;
+export type ApiOperationListResultValueList = Array<ApiOperation>;
 export const ApiOperationListResultValueList = /*@__PURE__*/ S.Array(
   ApiOperation,
 ) as any as S.Schema<ApiOperationListResultValueList>;
@@ -5129,20 +5120,19 @@ export const ResourceSkuCapabilities = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourceSkuCapabilities>;
 
 /** A list of capabilities of this SKU, such as throughput or ops/sec. */
-export type ResourceSkuCapabilitiesList =
-  ReadonlyArray<ResourceSkuCapabilities>;
+export type ResourceSkuCapabilitiesList = Array<ResourceSkuCapabilities>;
 export const ResourceSkuCapabilitiesList = /*@__PURE__*/ S.Array(
   ResourceSkuCapabilities,
 ) as any as S.Schema<ResourceSkuCapabilitiesList>;
 
 /** The set of locations where the SKU is available. This is the supported and registered Azure Geo Regions (e.g., West US, East US, Southeast Asia, etc.). */
-export type ResourceSkuLocationsList = ReadonlyArray<string>;
+export type ResourceSkuLocationsList = Array<string>;
 export const ResourceSkuLocationsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ResourceSkuLocationsList>;
 
 /** Zones if any. */
-export type ResourceSkuLocationInfoZonesList = ReadonlyArray<string>;
+export type ResourceSkuLocationInfoZonesList = Array<string>;
 export const ResourceSkuLocationInfoZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ResourceSkuLocationInfoZonesList>;
@@ -5164,14 +5154,13 @@ export const ResourceSkuLocationInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourceSkuLocationInfo>;
 
 /** The set of locations where the SKU is available. */
-export type ResourceSkuLocationInfoList =
-  ReadonlyArray<ResourceSkuLocationInfo>;
+export type ResourceSkuLocationInfoList = Array<ResourceSkuLocationInfo>;
 export const ResourceSkuLocationInfoList = /*@__PURE__*/ S.Array(
   ResourceSkuLocationInfo,
 ) as any as S.Schema<ResourceSkuLocationInfoList>;
 
 /** The value of restrictions. If the restriction type is set to location, then this would be the different locations where the SKU is restricted. */
-export type RestrictionValuesList = ReadonlyArray<string>;
+export type RestrictionValuesList = Array<string>;
 export const RestrictionValuesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RestrictionValuesList>;
@@ -5198,7 +5187,7 @@ export const Restriction = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Restriction" }) as any as S.Schema<Restriction>;
 
 /** The restrictions preventing this SKU from being used. This is empty if there are no restrictions. */
-export type ResourceSkuRestrictionsList = ReadonlyArray<Restriction>;
+export type ResourceSkuRestrictionsList = Array<Restriction>;
 export const ResourceSkuRestrictionsList = /*@__PURE__*/ S.Array(
   Restriction,
 ) as any as S.Schema<ResourceSkuRestrictionsList>;
@@ -5230,7 +5219,7 @@ export const ResourceSku = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResourceSku" }) as any as S.Schema<ResourceSku>;
 
 /** The list of SKUs available for the subscription. */
-export type ResourceSkusResultValueList = ReadonlyArray<ResourceSku>;
+export type ResourceSkusResultValueList = Array<ResourceSku>;
 export const ResourceSkusResultValueList = /*@__PURE__*/ S.Array(
   ResourceSku,
 ) as any as S.Schema<ResourceSkusResultValueList>;
@@ -5380,7 +5369,7 @@ export const NamespaceJunction = /*@__PURE__*/ S.suspend(() =>
 
 /** List of cache namespace junctions to target for namespace associations. */
 export type StorageTargetPropertiesInputJunctionsList =
-  ReadonlyArray<NamespaceJunction>;
+  Array<NamespaceJunction>;
 export const StorageTargetPropertiesInputJunctionsList = /*@__PURE__*/ S.Array(
   NamespaceJunction,
 ) as any as S.Schema<StorageTargetPropertiesInputJunctionsList>;
@@ -5525,8 +5514,7 @@ export const StorageTargetsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StorageTargetsCreateOrUpdateRequest>;
 
 /** List of cache namespace junctions to target for namespace associations. */
-export type StorageTargetPropertiesJunctionsList =
-  ReadonlyArray<NamespaceJunction>;
+export type StorageTargetPropertiesJunctionsList = Array<NamespaceJunction>;
 export const StorageTargetPropertiesJunctionsList = /*@__PURE__*/ S.Array(
   NamespaceJunction,
 ) as any as S.Schema<StorageTargetPropertiesJunctionsList>;
@@ -5776,7 +5764,7 @@ export const StorageTarget = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StorageTarget" }) as any as S.Schema<StorageTarget>;
 
 /** The list of Storage Targets defined for the cache. */
-export type StorageTargetsResultValueList = ReadonlyArray<StorageTarget>;
+export type StorageTargetsResultValueList = Array<StorageTarget>;
 export const StorageTargetsResultValueList = /*@__PURE__*/ S.Array(
   StorageTarget,
 ) as any as S.Schema<StorageTargetsResultValueList>;
@@ -5918,7 +5906,7 @@ export const UsageModel = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UsageModel" }) as any as S.Schema<UsageModel>;
 
 /** The list of usage models available for the subscription. */
-export type UsageModelsResultValueList = ReadonlyArray<UsageModel>;
+export type UsageModelsResultValueList = Array<UsageModel>;
 export const UsageModelsResultValueList = /*@__PURE__*/ S.Array(
   UsageModel,
 ) as any as S.Schema<UsageModelsResultValueList>;

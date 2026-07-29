@@ -135,15 +135,14 @@ export type Permissions = "noaccess" | "view" | "edit" | "delete";
 export const Permissions = /*@__PURE__*/ S.String;
 
 /** The parent display name chain from the root group to the immediate parent */
-export type EntityInfoPropertiesParentDisplayNameChainList =
-  ReadonlyArray<string>;
+export type EntityInfoPropertiesParentDisplayNameChainList = Array<string>;
 export const EntityInfoPropertiesParentDisplayNameChainList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<EntityInfoPropertiesParentDisplayNameChainList>;
 
 /** The parent name chain from the root group to the immediate parent */
-export type EntityInfoPropertiesParentNameChainList = ReadonlyArray<string>;
+export type EntityInfoPropertiesParentNameChainList = Array<string>;
 export const EntityInfoPropertiesParentNameChainList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EntityInfoPropertiesParentNameChainList>;
@@ -213,7 +212,7 @@ export const EntityInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EntityInfo" }) as any as S.Schema<EntityInfo>;
 
 /** The EntityInfo items on this page */
-export type EntityListResultValueList = ReadonlyArray<EntityInfo>;
+export type EntityListResultValueList = Array<EntityInfo>;
 export const EntityListResultValueList = /*@__PURE__*/ S.Array(
   EntityInfo,
 ) as any as S.Schema<EntityListResultValueList>;
@@ -473,8 +472,7 @@ export const HierarchySettingsInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HierarchySettingsInfo>;
 
 /** The list of hierarchy settings. */
-export type HierarchySettingsListValueList =
-  ReadonlyArray<HierarchySettingsInfo>;
+export type HierarchySettingsListValueList = Array<HierarchySettingsInfo>;
 export const HierarchySettingsListValueList = /*@__PURE__*/ S.Array(
   HierarchySettingsInfo,
 ) as any as S.Schema<HierarchySettingsListValueList>;
@@ -646,15 +644,13 @@ export const ManagementGroupPathElement = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ManagementGroupPathElement>;
 
 /** The path from the root to the current group. */
-export type ManagementGroupDetailsPathList =
-  ReadonlyArray<ManagementGroupPathElement>;
+export type ManagementGroupDetailsPathList = Array<ManagementGroupPathElement>;
 export const ManagementGroupDetailsPathList = /*@__PURE__*/ S.Array(
   ManagementGroupPathElement,
 ) as any as S.Schema<ManagementGroupDetailsPathList>;
 
 /** The ancestors of the management group. */
-export type ManagementGroupDetailsManagementGroupAncestorsList =
-  ReadonlyArray<string>;
+export type ManagementGroupDetailsManagementGroupAncestorsList = Array<string>;
 export const ManagementGroupDetailsManagementGroupAncestorsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -662,7 +658,7 @@ export const ManagementGroupDetailsManagementGroupAncestorsList =
 
 /** The ancestors of the management group displayed in reversed order, from immediate parent to the root. */
 export type ManagementGroupDetailsManagementGroupAncestorsChainList =
-  ReadonlyArray<ManagementGroupPathElement>;
+  Array<ManagementGroupPathElement>;
 export const ManagementGroupDetailsManagementGroupAncestorsChainList =
   /*@__PURE__*/ S.Array(
     ManagementGroupPathElement,
@@ -711,7 +707,7 @@ export const ManagementGroupChildType = /*@__PURE__*/ S.String;
 
 /** The list of children. */
 export type ManagementGroupChildInfoChildrenList =
-  ReadonlyArray<ManagementGroupChildInfo>;
+  Array<ManagementGroupChildInfo>;
 export const ManagementGroupChildInfoChildrenList = /*@__PURE__*/ S.Array(
   S.suspend(() => ManagementGroupChildInfo),
 ) as any as S.Schema<ManagementGroupChildInfoChildrenList>;
@@ -743,7 +739,7 @@ export const ManagementGroupChildInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of children. */
 export type ManagementGroupPropertiesChildrenList =
-  ReadonlyArray<ManagementGroupChildInfo>;
+  Array<ManagementGroupChildInfo>;
 export const ManagementGroupPropertiesChildrenList = /*@__PURE__*/ S.Array(
   ManagementGroupChildInfo,
 ) as any as S.Schema<ManagementGroupPropertiesChildrenList>;
@@ -957,7 +953,7 @@ export const DescendantInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DescendantInfo" }) as any as S.Schema<DescendantInfo>;
 
 /** The DescendantInfo items on this page */
-export type DescendantListResultValueList = ReadonlyArray<DescendantInfo>;
+export type DescendantListResultValueList = Array<DescendantInfo>;
 export const DescendantListResultValueList = /*@__PURE__*/ S.Array(
   DescendantInfo,
 ) as any as S.Schema<DescendantListResultValueList>;
@@ -1036,8 +1032,7 @@ export const ManagementGroupInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ManagementGroupInfo>;
 
 /** The list of management groups. */
-export type ManagementGroupListResultValueList =
-  ReadonlyArray<ManagementGroupInfo>;
+export type ManagementGroupListResultValueList = Array<ManagementGroupInfo>;
 export const ManagementGroupListResultValueList = /*@__PURE__*/ S.Array(
   ManagementGroupInfo,
 ) as any as S.Schema<ManagementGroupListResultValueList>;
@@ -1257,7 +1252,7 @@ export const SubscriptionUnderManagementGroup = /*@__PURE__*/ S.suspend(() =>
 
 /** The SubscriptionUnderManagementGroup items on this page */
 export type ListSubscriptionUnderManagementGroupValueList =
-  ReadonlyArray<SubscriptionUnderManagementGroup>;
+  Array<SubscriptionUnderManagementGroup>;
 export const ListSubscriptionUnderManagementGroupValueList =
   /*@__PURE__*/ S.Array(
     SubscriptionUnderManagementGroup,
@@ -1397,7 +1392,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = ReadonlyArray<Operation>;
+export type OperationsListResponseValueList = Array<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;

@@ -36,7 +36,7 @@ export type ImagePropertiesInputTermsStatus = "Enabled" | "Disabled";
 export const ImagePropertiesInputTermsStatus = /*@__PURE__*/ S.String;
 
 /** The available regions of the image in the shared gallery. */
-export type ImagePropertiesInputAvailableRegionsList = ReadonlyArray<string>;
+export type ImagePropertiesInputAvailableRegionsList = Array<string>;
 export const ImagePropertiesInputAvailableRegionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ImagePropertiesInputAvailableRegionsList>;
@@ -181,7 +181,7 @@ export type ImagePropertiesTermsStatus = "Enabled" | "Disabled";
 export const ImagePropertiesTermsStatus = /*@__PURE__*/ S.String;
 
 /** The available regions of the image in the shared gallery. */
-export type ImagePropertiesAvailableRegionsList = ReadonlyArray<string>;
+export type ImagePropertiesAvailableRegionsList = Array<string>;
 export const ImagePropertiesAvailableRegionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ImagePropertiesAvailableRegionsList>;
@@ -467,7 +467,7 @@ export const Image = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Image" }) as any as S.Schema<Image>;
 
 /** The array page of virtual machine images. */
-export type PagedImagesValueList = ReadonlyArray<Image>;
+export type PagedImagesValueList = Array<Image>;
 export const PagedImagesValueList = /*@__PURE__*/ S.Array(
   Image,
 ) as any as S.Schema<PagedImagesValueList>;
@@ -622,13 +622,13 @@ export const ConnectionType = /*@__PURE__*/ S.String;
 /** Connection profile for how users connect to lab virtual machines. */
 export interface LabPlanPropertiesDefaultConnectionProfile {
   /** The enabled access level for Web Access over SSH. */
-  webSshAccess?: ConnectionType;
+  webSshAccess?: ConnectionType | (string & {});
   /** The enabled access level for Web Access over RDP. */
-  webRdpAccess?: ConnectionType;
+  webRdpAccess?: ConnectionType | (string & {});
   /** The enabled access level for Client Access over SSH. */
-  clientSshAccess?: ConnectionType;
+  clientSshAccess?: ConnectionType | (string & {});
   /** The enabled access level for Client Access over RDP. */
-  clientRdpAccess?: ConnectionType;
+  clientRdpAccess?: ConnectionType | (string & {});
 }
 export const LabPlanPropertiesDefaultConnectionProfile =
   /*@__PURE__*/ S.suspend(() =>
@@ -653,11 +653,11 @@ export const ShutdownOnIdleMode = /*@__PURE__*/ S.String;
 /** Profile for how to handle shutting down virtual machines. */
 export interface LabPlanPropertiesDefaultAutoShutdownProfile {
   /** Whether shutdown on disconnect is enabled */
-  shutdownOnDisconnect?: EnableState;
+  shutdownOnDisconnect?: EnableState | (string & {});
   /** Whether a VM will get shutdown when it hasn't been connected to after a period of time. */
-  shutdownWhenNotConnected?: EnableState;
+  shutdownWhenNotConnected?: EnableState | (string & {});
   /** Whether a VM will get shutdown when it has idled for a period of time. */
-  shutdownOnIdle?: ShutdownOnIdleMode;
+  shutdownOnIdle?: ShutdownOnIdleMode | (string & {});
   /** The amount of time a VM will stay running after a user disconnects if this behavior is enabled. */
   disconnectDelay?: string;
   /** The amount of time a VM will stay running before it is shutdown if no connection is made and this behavior is enabled. */
@@ -693,7 +693,7 @@ export const LabPlanNetworkProfile = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LabPlanNetworkProfile>;
 
 /** The allowed regions for the lab creator to use when creating labs using this lab plan. */
-export type LabPlanPropertiesAllowedRegionsList = ReadonlyArray<string>;
+export type LabPlanPropertiesAllowedRegionsList = Array<string>;
 export const LabPlanPropertiesAllowedRegionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LabPlanPropertiesAllowedRegionsList>;
@@ -768,7 +768,7 @@ export interface LabPlanProperties {
   /** A URL. */
   linkedLmsInstance?: string;
   /** Resource provisioning state. */
-  provisioningState?: LabPlanPropertiesProvisioningState;
+  provisioningState?: LabPlanPropertiesProvisioningState | (string & {});
   /** Error details of the latest operation failure on this resource */
   resourceOperationError?: LabPlanPropertiesResourceOperationError;
 }
@@ -1262,7 +1262,7 @@ export const LabPlan = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LabPlan" }) as any as S.Schema<LabPlan>;
 
 /** The array page of lab plans. */
-export type PagedLabPlansValueList = ReadonlyArray<LabPlan>;
+export type PagedLabPlansValueList = Array<LabPlan>;
 export const PagedLabPlansValueList = /*@__PURE__*/ S.Array(
   LabPlan,
 ) as any as S.Schema<PagedLabPlansValueList>;
@@ -1342,7 +1342,7 @@ export const LabPlansSaveImageResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LabPlansSaveImageResponse>;
 
 /** Resource tags. */
-export type LabPlansUpdateRequestTagsList = ReadonlyArray<string>;
+export type LabPlansUpdateRequestTagsList = Array<string>;
 export const LabPlansUpdateRequestTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LabPlansUpdateRequestTagsList>;
@@ -1400,7 +1400,7 @@ export const LabPlanUpdatePropertiesDefaultAutoShutdownProfile =
   }) as any as S.Schema<LabPlanUpdatePropertiesDefaultAutoShutdownProfile>;
 
 /** The allowed regions for the lab creator to use when creating labs using this lab plan. */
-export type LabPlanUpdatePropertiesAllowedRegionsList = ReadonlyArray<string>;
+export type LabPlanUpdatePropertiesAllowedRegionsList = Array<string>;
 export const LabPlanUpdatePropertiesAllowedRegionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LabPlanUpdatePropertiesAllowedRegionsList>;
@@ -1740,7 +1740,9 @@ export const VirtualMachineAdditionalCapabilitiesInstallGpuDrivers =
 /** The additional capabilities for a lab VM. */
 export interface VirtualMachineAdditionalCapabilities {
   /** Property enabled state. */
-  installGpuDrivers?: VirtualMachineAdditionalCapabilitiesInstallGpuDrivers;
+  installGpuDrivers?:
+    | VirtualMachineAdditionalCapabilitiesInstallGpuDrivers
+    | (string & {});
 }
 export const VirtualMachineAdditionalCapabilities = /*@__PURE__*/ S.suspend(
   () =>
@@ -2575,7 +2577,7 @@ export const Lab = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Lab" }) as any as S.Schema<Lab>;
 
 /** The array page of lab results. */
-export type PagedLabsValueList = ReadonlyArray<Lab>;
+export type PagedLabsValueList = Array<Lab>;
 export const PagedLabsValueList = /*@__PURE__*/ S.Array(
   Lab,
 ) as any as S.Schema<PagedLabsValueList>;
@@ -2681,7 +2683,7 @@ export const LabsSyncGroupResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LabsSyncGroupResponse>;
 
 /** Resource tags. */
-export type LabsUpdateRequestTagsList = ReadonlyArray<string>;
+export type LabsUpdateRequestTagsList = Array<string>;
 export const LabsUpdateRequestTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LabsUpdateRequestTagsList>;
@@ -2921,7 +2923,7 @@ export type OperationResultStatus =
 export const OperationResultStatus = /*@__PURE__*/ S.String;
 
 /** The error details. */
-export type ErrorDetailDetailsList = ReadonlyArray<ErrorDetail>;
+export type ErrorDetailDetailsList = Array<ErrorDetail>;
 export const ErrorDetailDetailsList = /*@__PURE__*/ S.Array(
   S.suspend(() => ErrorDetail),
 ) as any as S.Schema<ErrorDetailDetailsList>;
@@ -2943,7 +2945,7 @@ export const ErrorAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ErrorAdditionalInfo>;
 
 /** The error additional info. */
-export type ErrorDetailAdditionalInfoList = ReadonlyArray<ErrorAdditionalInfo>;
+export type ErrorDetailAdditionalInfoList = Array<ErrorAdditionalInfo>;
 export const ErrorDetailAdditionalInfoList = /*@__PURE__*/ S.Array(
   ErrorAdditionalInfo,
 ) as any as S.Schema<ErrorDetailAdditionalInfoList>;
@@ -2972,14 +2974,13 @@ export const ErrorDetail = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ErrorDetail" }) as any as S.Schema<ErrorDetail>;
 
 /** The error details. */
-export type OperationResultErrorDetailsList = ReadonlyArray<ErrorDetail>;
+export type OperationResultErrorDetailsList = Array<ErrorDetail>;
 export const OperationResultErrorDetailsList = /*@__PURE__*/ S.Array(
   ErrorDetail,
 ) as any as S.Schema<OperationResultErrorDetailsList>;
 
 /** The error additional info. */
-export type OperationResultErrorAdditionalInfoList =
-  ReadonlyArray<ErrorAdditionalInfo>;
+export type OperationResultErrorAdditionalInfoList = Array<ErrorAdditionalInfo>;
 export const OperationResultErrorAdditionalInfoList = /*@__PURE__*/ S.Array(
   ErrorAdditionalInfo,
 ) as any as S.Schema<OperationResultErrorAdditionalInfoList>;
@@ -3108,7 +3109,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = ReadonlyArray<Operation>;
+export type OperationsListResponseValueList = Array<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;
@@ -3144,7 +3145,7 @@ export type WeekDay =
 export const WeekDay = /*@__PURE__*/ S.String;
 
 /** The week days the schedule runs. Used for when the Frequency is set to Weekly. */
-export type RecurrencePatternWeekDaysList = ReadonlyArray<WeekDay>;
+export type RecurrencePatternWeekDaysList = Array<WeekDay | (string & {})>;
 export const RecurrencePatternWeekDaysList = /*@__PURE__*/ S.Array(
   WeekDay,
 ) as any as S.Schema<RecurrencePatternWeekDaysList>;
@@ -3152,7 +3153,7 @@ export const RecurrencePatternWeekDaysList = /*@__PURE__*/ S.Array(
 /** Recurrence pattern of a lab schedule. */
 export interface RecurrencePattern {
   /** The frequency of the recurrence. */
-  frequency: RecurrenceFrequency;
+  frequency: RecurrenceFrequency | (string & {});
   /** The week days the schedule runs. Used for when the Frequency is set to Weekly. */
   weekDays?: RecurrencePatternWeekDaysList;
   /** The interval to invoke the schedule on. For example, interval = 2 and RecurrenceFrequency.Daily will run every 2 days. When no interval is supplied, an interval of 1 is used. */
@@ -3217,7 +3218,7 @@ export interface ScheduleProperties {
   /** Notes for this schedule. */
   notes?: string;
   /** Resource provisioning state. */
-  provisioningState?: SchedulePropertiesProvisioningState;
+  provisioningState?: SchedulePropertiesProvisioningState | (string & {});
   /** Error details of the latest operation failure on this resource */
   resourceOperationError?: SchedulePropertiesResourceOperationError;
 }
@@ -3574,7 +3575,7 @@ export const Schedule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Schedule" }) as any as S.Schema<Schedule>;
 
 /** The array page of schedule results. */
-export type PagedSchedulesValueList = ReadonlyArray<Schedule>;
+export type PagedSchedulesValueList = Array<Schedule>;
 export const PagedSchedulesValueList = /*@__PURE__*/ S.Array(
   Schedule,
 ) as any as S.Schema<PagedSchedulesValueList>;
@@ -3790,14 +3791,13 @@ export const LabServicesSkuCapabilities = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LabServicesSkuCapabilities>;
 
 /** The capabilities of the SKU. */
-export type LabServicesSkuCapabilitiesList =
-  ReadonlyArray<LabServicesSkuCapabilities>;
+export type LabServicesSkuCapabilitiesList = Array<LabServicesSkuCapabilities>;
 export const LabServicesSkuCapabilitiesList = /*@__PURE__*/ S.Array(
   LabServicesSkuCapabilities,
 ) as any as S.Schema<LabServicesSkuCapabilitiesList>;
 
 /** List of locations that are available for a size. */
-export type LabServicesSkuLocationsList = ReadonlyArray<string>;
+export type LabServicesSkuLocationsList = Array<string>;
 export const LabServicesSkuLocationsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LabServicesSkuLocationsList>;
@@ -3822,7 +3822,7 @@ export const LabServicesSkuCost = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LabServicesSkuCost>;
 
 /** Metadata for retrieving price info of a lab services SKUs. */
-export type LabServicesSkuCostsList = ReadonlyArray<LabServicesSkuCost>;
+export type LabServicesSkuCostsList = Array<LabServicesSkuCost>;
 export const LabServicesSkuCostsList = /*@__PURE__*/ S.Array(
   LabServicesSkuCost,
 ) as any as S.Schema<LabServicesSkuCostsList>;
@@ -3832,7 +3832,7 @@ export type LabServicesSkuRestrictionsType = "Location";
 export const LabServicesSkuRestrictionsType = /*@__PURE__*/ S.String;
 
 /** The values of the restriction. */
-export type LabServicesSkuRestrictionsValuesList = ReadonlyArray<string>;
+export type LabServicesSkuRestrictionsValuesList = Array<string>;
 export const LabServicesSkuRestrictionsValuesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LabServicesSkuRestrictionsValuesList>;
@@ -3863,8 +3863,7 @@ export const LabServicesSkuRestrictions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LabServicesSkuRestrictions>;
 
 /** Restrictions of a lab services SKUs. */
-export type LabServicesSkuRestrictionsList =
-  ReadonlyArray<LabServicesSkuRestrictions>;
+export type LabServicesSkuRestrictionsList = Array<LabServicesSkuRestrictions>;
 export const LabServicesSkuRestrictionsList = /*@__PURE__*/ S.Array(
   LabServicesSkuRestrictions,
 ) as any as S.Schema<LabServicesSkuRestrictionsList>;
@@ -3907,7 +3906,7 @@ export const LabServicesSku = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LabServicesSku" }) as any as S.Schema<LabServicesSku>;
 
 /** The array page of sku results. */
-export type PagedLabServicesSkusValueList = ReadonlyArray<LabServicesSku>;
+export type PagedLabServicesSkusValueList = Array<LabServicesSku>;
 export const PagedLabServicesSkusValueList = /*@__PURE__*/ S.Array(
   LabServicesSku,
 ) as any as S.Schema<PagedLabServicesSkusValueList>;
@@ -3958,7 +3957,7 @@ export type UsageUnit = "Count";
 export const UsageUnit = /*@__PURE__*/ S.String;
 
 /** The instances of the resource. */
-export type UsageNameSkuInstancesList = ReadonlyArray<string>;
+export type UsageNameSkuInstancesList = Array<string>;
 export const UsageNameSkuInstancesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<UsageNameSkuInstancesList>;
@@ -4004,7 +4003,7 @@ export const Usage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Usage" }) as any as S.Schema<Usage>;
 
 /** The array page of Usages. */
-export type ListUsagesResultValueList = ReadonlyArray<Usage>;
+export type ListUsagesResultValueList = Array<Usage>;
 export const ListUsagesResultValueList = /*@__PURE__*/ S.Array(
   Usage,
 ) as any as S.Schema<ListUsagesResultValueList>;
@@ -4530,7 +4529,7 @@ export const User = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "User" }) as any as S.Schema<User>;
 
 /** The array page of user results. */
-export type PagedUsersValueList = ReadonlyArray<User>;
+export type PagedUsersValueList = Array<User>;
 export const PagedUsersValueList = /*@__PURE__*/ S.Array(
   User,
 ) as any as S.Schema<PagedUsersValueList>;
@@ -4974,7 +4973,7 @@ export const VirtualMachine = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VirtualMachine" }) as any as S.Schema<VirtualMachine>;
 
 /** The array page of virtual machine results. */
-export type PagedVirtualMachinesValueList = ReadonlyArray<VirtualMachine>;
+export type PagedVirtualMachinesValueList = Array<VirtualMachine>;
 export const PagedVirtualMachinesValueList = /*@__PURE__*/ S.Array(
   VirtualMachine,
 ) as any as S.Schema<PagedVirtualMachinesValueList>;

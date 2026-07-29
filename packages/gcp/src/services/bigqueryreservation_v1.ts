@@ -73,7 +73,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -131,15 +131,15 @@ export const CapacityCommitmentEditionEnum = /*@__PURE__*/ S.String;
 /** Capacity commitment is a way to purchase compute capacity for BigQuery jobs (in the form of slots) with some committed period of usage. Annual commitments renew by default. Commitments can be removed after their commitment end time passes. In order to remove annual commitment, its plan needs to be changed to monthly or flex first. A capacity commitment resource exists as a child resource of the admin project. */
 export interface CapacityCommitment {
   /** Output only. State of the commitment. */
-  state?: CapacityCommitmentStateEnum;
+  state?: CapacityCommitmentStateEnum | (string & {});
   /** Output only. For FAILED commitment plan, provides the reason of failure. */
   failureStatus?: Status;
   /** Optional. Capacity commitment commitment plan. */
-  plan?: CapacityCommitmentPlanEnum;
+  plan?: CapacityCommitmentPlanEnum | (string & {});
   /** Output only. The end of the current commitment period. It is applicable only for ACTIVE capacity commitments. Note after renewal, commitment_end_time is the time the renewed commitment expires. So itwould be at a time after commitment_start_time + committed period, because we don't change commitment_start_time , */
   commitmentEndTime?: string;
   /** Optional. The plan this capacity commitment is converted to after commitment_end_time passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for ANNUAL and TRIAL commitments. */
-  renewalPlan?: CapacityCommitmentRenewalPlanEnum;
+  renewalPlan?: CapacityCommitmentRenewalPlanEnum | (string & {});
   /** Applicable only for commitments located within one of the BigQuery multi-regions (US or EU). If set to true, this commitment is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this commitment is placed in the organization's default region. NOTE: this is a preview feature. Project must be allow-listed in order to set this field. */
   multiRegionAuxiliary?: boolean;
   /** Output only. The resource name of the capacity commitment, e.g., `projects/myproject/locations/US/capacityCommitments/123` The commitment_id must only contain lower case alphanumeric characters or dashes. It must start with a letter and must not end with a dash. Its maximum length is 64 characters. */
@@ -151,7 +151,7 @@ export interface CapacityCommitment {
   /** Output only. If true, the commitment is a flat-rate commitment, otherwise, it's an edition commitment. */
   isFlatRate?: boolean;
   /** Optional. Edition of the capacity commitment. */
-  edition?: CapacityCommitmentEditionEnum;
+  edition?: CapacityCommitmentEditionEnum | (string & {});
 }
 export const CapacityCommitment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -323,11 +323,11 @@ export interface Reservation {
   /** Identifier. The resource name of the reservation, e.g., `projects/*\/locations/*\/reservations/team1-prod`. The reservation_id must only contain lower case alphanumeric characters or dashes. It must start with a letter and must not end with a dash. Its maximum length is 64 characters. */
   name?: string;
   /** Optional. The scaling mode for the reservation. If the field is present but max_slots is not present, requests will be rejected with error code `google.rpc.Code.INVALID_ARGUMENT`. */
-  scalingMode?: ReservationScalingModeEnum;
+  scalingMode?: ReservationScalingModeEnum | (string & {});
   /** Applicable only for reservations located within one of the BigQuery multi-regions (US or EU). If set to true, this reservation is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this reservation is placed in the organization's default region. NOTE: this is a preview feature. Project must be allow-listed in order to set this field. */
   multiRegionAuxiliary?: boolean;
   /** Optional. Edition of the reservation. */
-  edition?: ReservationEditionEnum;
+  edition?: ReservationEditionEnum | (string & {});
   /** Output only. The Disaster Recovery(DR) replication status of the reservation. This is only available for the primary replicas of DR/failover reservations and provides information about the both the staleness of the secondary and the last error encountered while trying to replicate changes from the primary to the secondary. If this field is blank, it means that the reservation is either not a DR reservation or the reservation is a DR secondary or that any replication operations on the reservation have succeeded. */
   replicationStatus?: ReplicationStatus;
   /** Output only. Creation time of the reservation. */
@@ -425,11 +425,11 @@ export interface Assignment {
   /** Optional. The scheduling policy to use for jobs and queries of this assignee when running under the associated reservation. The scheduling policy controls how the reservation's resources are distributed. This overrides the default scheduling policy specified on the reservation. This feature is not yet generally available. */
   schedulingPolicy?: SchedulingPolicy;
   /** Optional. Which type of jobs will use the reservation. */
-  jobType?: AssignmentJobTypeEnum;
+  jobType?: AssignmentJobTypeEnum | (string & {});
   /** Optional. The resource which will use the reservation. E.g. `projects/myproject`, `folders/123`, or `organizations/456`. */
   assignee?: string;
   /** Output only. State of the assignment. */
-  state?: AssignmentStateEnum;
+  state?: AssignmentStateEnum | (string & {});
 }
 export const Assignment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -631,7 +631,7 @@ export const TableReference = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TableReference" }) as any as S.Schema<TableReference>;
 
-export type TableReferenceList = ReadonlyArray<TableReference>;
+export type TableReferenceList = Array<TableReference>;
 export const TableReferenceList = /*@__PURE__*/ S.Array(
   TableReference,
 ) as any as S.Schema<TableReferenceList>;
@@ -678,7 +678,7 @@ export const GetIamPolicyProjectsLocationsReservationsRequest =
     identifier: "GetIamPolicyProjectsLocationsReservationsRequest",
   }) as any as S.Schema<GetIamPolicyProjectsLocationsReservationsRequest>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -695,7 +695,7 @@ export interface AuditLogConfig {
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
   exemptedMembers?: StringList;
   /** The log type that this config enables. */
-  logType?: AuditLogConfigLogTypeEnum;
+  logType?: AuditLogConfigLogTypeEnum | (string & {});
 }
 export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -704,7 +704,7 @@ export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
-export type AuditLogConfigList = ReadonlyArray<AuditLogConfig>;
+export type AuditLogConfigList = Array<AuditLogConfig>;
 export const AuditLogConfigList = /*@__PURE__*/ S.Array(
   AuditLogConfig,
 ) as any as S.Schema<AuditLogConfigList>;
@@ -723,7 +723,7 @@ export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
-export type AuditConfigList = ReadonlyArray<AuditConfig>;
+export type AuditConfigList = Array<AuditConfig>;
 export const AuditConfigList = /*@__PURE__*/ S.Array(
   AuditConfig,
 ) as any as S.Schema<AuditConfigList>;
@@ -765,7 +765,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
-export type BindingList = ReadonlyArray<Binding>;
+export type BindingList = Array<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -894,7 +894,7 @@ export const ListProjectsLocationsCapacityCommitmentsRequest =
     identifier: "ListProjectsLocationsCapacityCommitmentsRequest",
   }) as any as S.Schema<ListProjectsLocationsCapacityCommitmentsRequest>;
 
-export type CapacityCommitmentList = ReadonlyArray<CapacityCommitment>;
+export type CapacityCommitmentList = Array<CapacityCommitment>;
 export const CapacityCommitmentList = /*@__PURE__*/ S.Array(
   CapacityCommitment,
 ) as any as S.Schema<CapacityCommitmentList>;
@@ -940,7 +940,7 @@ export const ListProjectsLocationsReservationGroupsRequest =
     identifier: "ListProjectsLocationsReservationGroupsRequest",
   }) as any as S.Schema<ListProjectsLocationsReservationGroupsRequest>;
 
-export type ReservationGroupList = ReadonlyArray<ReservationGroup>;
+export type ReservationGroupList = Array<ReservationGroup>;
 export const ReservationGroupList = /*@__PURE__*/ S.Array(
   ReservationGroup,
 ) as any as S.Schema<ReservationGroupList>;
@@ -986,7 +986,7 @@ export const ListProjectsLocationsReservationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsReservationsRequest",
 }) as any as S.Schema<ListProjectsLocationsReservationsRequest>;
 
-export type ReservationList = ReadonlyArray<Reservation>;
+export type ReservationList = Array<Reservation>;
 export const ReservationList = /*@__PURE__*/ S.Array(
   Reservation,
 ) as any as S.Schema<ReservationList>;
@@ -1032,7 +1032,7 @@ export const ListProjectsLocationsReservationsAssignmentsRequest =
     identifier: "ListProjectsLocationsReservationsAssignmentsRequest",
   }) as any as S.Schema<ListProjectsLocationsReservationsAssignmentsRequest>;
 
-export type AssignmentList = ReadonlyArray<Assignment>;
+export type AssignmentList = Array<Assignment>;
 export const AssignmentList = /*@__PURE__*/ S.Array(
   Assignment,
 ) as any as S.Schema<AssignmentList>;

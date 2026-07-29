@@ -98,7 +98,7 @@ export interface Parameter {
   /** Output only. [Output only] Update time stamp */
   updateTime?: string;
   /** Optional. Specifies the format of a Parameter. */
-  format?: ParameterFormatEnum;
+  format?: ParameterFormatEnum | (string & {});
   /** Identifier. [Output only] The resource name of the Parameter in the format `projects/*\/locations/*\/parameters/*`. */
   name?: string;
   /** Output only. [Output-only] policy member strings of a Google Cloud resource. */
@@ -224,7 +224,7 @@ export const TemplateFormatEnum = /*@__PURE__*/ S.String;
 /** Message describing Template resource */
 export interface Template {
   /** Optional. Specifies the format of a Template. */
-  format?: TemplateFormatEnum;
+  format?: TemplateFormatEnum | (string & {});
   /** Identifier. The resource name of the Template in the format `projects/*\/locations/*\/templates/*`. */
   name?: string;
   /** Output only. Create time stamp */
@@ -579,7 +579,7 @@ export const GetProjectsLocationsTemplatesVersionsRequest =
     identifier: "GetProjectsLocationsTemplatesVersionsRequest",
   }) as any as S.Schema<GetProjectsLocationsTemplatesVersionsRequest>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -614,7 +614,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = ReadonlyArray<Location>;
+export type LocationList = Array<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -666,7 +666,7 @@ export const ListProjectsLocationsParametersRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsParametersRequest",
 }) as any as S.Schema<ListProjectsLocationsParametersRequest>;
 
-export type ParameterList = ReadonlyArray<Parameter>;
+export type ParameterList = Array<Parameter>;
 export const ParameterList = /*@__PURE__*/ S.Array(
   Parameter,
 ) as any as S.Schema<ParameterList>;
@@ -721,7 +721,7 @@ export const ListProjectsLocationsParametersVersionsRequest =
     identifier: "ListProjectsLocationsParametersVersionsRequest",
   }) as any as S.Schema<ListProjectsLocationsParametersVersionsRequest>;
 
-export type ParameterVersionList = ReadonlyArray<ParameterVersion>;
+export type ParameterVersionList = Array<ParameterVersion>;
 export const ParameterVersionList = /*@__PURE__*/ S.Array(
   ParameterVersion,
 ) as any as S.Schema<ParameterVersionList>;
@@ -776,7 +776,7 @@ export const ListProjectsLocationsTemplatesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsTemplatesRequest",
 }) as any as S.Schema<ListProjectsLocationsTemplatesRequest>;
 
-export type TemplateList = ReadonlyArray<Template>;
+export type TemplateList = Array<Template>;
 export const TemplateList = /*@__PURE__*/ S.Array(
   Template,
 ) as any as S.Schema<TemplateList>;
@@ -831,7 +831,7 @@ export const ListProjectsLocationsTemplatesVersionsRequest =
     identifier: "ListProjectsLocationsTemplatesVersionsRequest",
   }) as any as S.Schema<ListProjectsLocationsTemplatesVersionsRequest>;
 
-export type TemplateVersionList = ReadonlyArray<TemplateVersion>;
+export type TemplateVersionList = Array<TemplateVersion>;
 export const TemplateVersionList = /*@__PURE__*/ S.Array(
   TemplateVersion,
 ) as any as S.Schema<TemplateVersionList>;

@@ -130,8 +130,7 @@ export const MessagingSuppressionsSuppressionsRetrieveRequest =
     identifier: "MessagingSuppressionsSuppressionsRetrieveRequest",
   }) as any as S.Schema<MessagingSuppressionsSuppressionsRetrieveRequest>;
 
-export type PaginatedMessageSuppressionResultsList =
-  ReadonlyArray<MessageSuppression>;
+export type PaginatedMessageSuppressionResultsList = Array<MessageSuppression>;
 export const PaginatedMessageSuppressionResultsList = /*@__PURE__*/ S.Array(
   MessageSuppression,
 ) as any as S.Schema<PaginatedMessageSuppressionResultsList>;

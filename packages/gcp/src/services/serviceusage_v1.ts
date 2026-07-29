@@ -60,7 +60,7 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -105,7 +105,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -194,7 +194,7 @@ export const UsageRule = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "UsageRule" }) as any as S.Schema<UsageRule>;
 
-export type UsageRuleList = ReadonlyArray<UsageRule>;
+export type UsageRuleList = Array<UsageRule>;
 export const UsageRuleList = /*@__PURE__*/ S.Array(
   UsageRule,
 ) as any as S.Schema<UsageRuleList>;
@@ -236,7 +236,7 @@ export const MetricRule = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MetricRule" }) as any as S.Schema<MetricRule>;
 
-export type MetricRuleList = ReadonlyArray<MetricRule>;
+export type MetricRuleList = Array<MetricRule>;
 export const MetricRuleList = /*@__PURE__*/ S.Array(
   MetricRule,
 ) as any as S.Schema<MetricRuleList>;
@@ -279,7 +279,7 @@ export const QuotaLimit = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "QuotaLimit" }) as any as S.Schema<QuotaLimit>;
 
-export type QuotaLimitList = ReadonlyArray<QuotaLimit>;
+export type QuotaLimitList = Array<QuotaLimit>;
 export const QuotaLimitList = /*@__PURE__*/ S.Array(
   QuotaLimit,
 ) as any as S.Schema<QuotaLimitList>;
@@ -314,7 +314,7 @@ export const MonitoringDestination = /*@__PURE__*/ S.suspend(() =>
   identifier: "MonitoringDestination",
 }) as any as S.Schema<MonitoringDestination>;
 
-export type MonitoringDestinationList = ReadonlyArray<MonitoringDestination>;
+export type MonitoringDestinationList = Array<MonitoringDestination>;
 export const MonitoringDestinationList = /*@__PURE__*/ S.Array(
   MonitoringDestination,
 ) as any as S.Schema<MonitoringDestinationList>;
@@ -353,7 +353,7 @@ export const Option = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Option" }) as any as S.Schema<Option>;
 
-export type OptionList = ReadonlyArray<Option>;
+export type OptionList = Array<Option>;
 export const OptionList = /*@__PURE__*/ S.Array(
   Option,
 ) as any as S.Schema<OptionList>;
@@ -390,7 +390,7 @@ export const Method = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Method" }) as any as S.Schema<Method>;
 
-export type MethodList = ReadonlyArray<Method>;
+export type MethodList = Array<Method>;
 export const MethodList = /*@__PURE__*/ S.Array(
   Method,
 ) as any as S.Schema<MethodList>;
@@ -415,7 +415,7 @@ export const Mixin = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Mixin" }) as any as S.Schema<Mixin>;
 
-export type MixinList = ReadonlyArray<Mixin>;
+export type MixinList = Array<Mixin>;
 export const MixinList = /*@__PURE__*/ S.Array(
   Mixin,
 ) as any as S.Schema<MixinList>;
@@ -463,7 +463,7 @@ export const Api = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Api" }) as any as S.Schema<Api>;
 
-export type ApiList = ReadonlyArray<Api>;
+export type ApiList = Array<Api>;
 export const ApiList = /*@__PURE__*/ S.Array(Api) as any as S.Schema<ApiList>;
 
 /** OAuth scopes are a way to define data and permissions on data. For example, there are scopes defined for "Read-only access to Google Calendar" and "Access to Cloud Platform". Users can consent to a scope for an application, giving it permission to access that data on their behalf. OAuth scope specifications should be fairly coarse grained; a user will need to see and understand the text description of what your scope means. In most cases: use one or at most two OAuth scopes for an entire family of products. If your product has multiple APIs, you should probably be sharing the OAuth scope across all of those APIs. When you need finer grained OAuth consent screens: talk with your product management about how developers will use them in practice. Please note that even though each of the canonical scopes is enough for a request to be accepted and passed to the backend, a request can still fail due to the backend requiring additional scopes or permissions. */
@@ -495,7 +495,7 @@ export const AuthRequirement = /*@__PURE__*/ S.suspend(() =>
   identifier: "AuthRequirement",
 }) as any as S.Schema<AuthRequirement>;
 
-export type AuthRequirementList = ReadonlyArray<AuthRequirement>;
+export type AuthRequirementList = Array<AuthRequirement>;
 export const AuthRequirementList = /*@__PURE__*/ S.Array(
   AuthRequirement,
 ) as any as S.Schema<AuthRequirementList>;
@@ -522,7 +522,7 @@ export const AuthenticationRule = /*@__PURE__*/ S.suspend(() =>
   identifier: "AuthenticationRule",
 }) as any as S.Schema<AuthenticationRule>;
 
-export type AuthenticationRuleList = ReadonlyArray<AuthenticationRule>;
+export type AuthenticationRuleList = Array<AuthenticationRule>;
 export const AuthenticationRuleList = /*@__PURE__*/ S.Array(
   AuthenticationRule,
 ) as any as S.Schema<AuthenticationRuleList>;
@@ -547,7 +547,7 @@ export const JwtLocation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "JwtLocation" }) as any as S.Schema<JwtLocation>;
 
-export type JwtLocationList = ReadonlyArray<JwtLocation>;
+export type JwtLocationList = Array<JwtLocation>;
 export const JwtLocationList = /*@__PURE__*/ S.Array(
   JwtLocation,
 ) as any as S.Schema<JwtLocationList>;
@@ -578,7 +578,7 @@ export const AuthProvider = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuthProvider" }) as any as S.Schema<AuthProvider>;
 
-export type AuthProviderList = ReadonlyArray<AuthProvider>;
+export type AuthProviderList = Array<AuthProvider>;
 export const AuthProviderList = /*@__PURE__*/ S.Array(
   AuthProvider,
 ) as any as S.Schema<AuthProviderList>;
@@ -617,7 +617,7 @@ export const Endpoint = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Endpoint" }) as any as S.Schema<Endpoint>;
 
-export type EndpointList = ReadonlyArray<Endpoint>;
+export type EndpointList = Array<Endpoint>;
 export const EndpointList = /*@__PURE__*/ S.Array(
   Endpoint,
 ) as any as S.Schema<EndpointList>;
@@ -656,7 +656,7 @@ export const LabelDescriptor = /*@__PURE__*/ S.suspend(() =>
   identifier: "LabelDescriptor",
 }) as any as S.Schema<LabelDescriptor>;
 
-export type LabelDescriptorList = ReadonlyArray<LabelDescriptor>;
+export type LabelDescriptorList = Array<LabelDescriptor>;
 export const LabelDescriptorList = /*@__PURE__*/ S.Array(
   LabelDescriptor,
 ) as any as S.Schema<LabelDescriptorList>;
@@ -690,7 +690,7 @@ export const MonitoredResourceDescriptor = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MonitoredResourceDescriptor>;
 
 export type MonitoredResourceDescriptorList =
-  ReadonlyArray<MonitoredResourceDescriptor>;
+  Array<MonitoredResourceDescriptor>;
 export const MonitoredResourceDescriptorList = /*@__PURE__*/ S.Array(
   MonitoredResourceDescriptor,
 ) as any as S.Schema<MonitoredResourceDescriptorList>;
@@ -717,7 +717,7 @@ export const DocumentationRule = /*@__PURE__*/ S.suspend(() =>
   identifier: "DocumentationRule",
 }) as any as S.Schema<DocumentationRule>;
 
-export type DocumentationRuleList = ReadonlyArray<DocumentationRule>;
+export type DocumentationRuleList = Array<DocumentationRule>;
 export const DocumentationRuleList = /*@__PURE__*/ S.Array(
   DocumentationRule,
 ) as any as S.Schema<DocumentationRuleList>;
@@ -739,7 +739,7 @@ export const Page = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Page" }) as any as S.Schema<Page>;
 
-export type PageList = ReadonlyArray<Page>;
+export type PageList = Array<Page>;
 export const PageList = /*@__PURE__*/ S.Array(
   Page,
 ) as any as S.Schema<PageList>;
@@ -840,7 +840,7 @@ export const GoogleApiServiceusageV1Service = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleApiServiceusageV1Service>;
 
 export type GoogleApiServiceusageV1ServiceList =
-  ReadonlyArray<GoogleApiServiceusageV1Service>;
+  Array<GoogleApiServiceusageV1Service>;
 export const GoogleApiServiceusageV1ServiceList = /*@__PURE__*/ S.Array(
   GoogleApiServiceusageV1Service,
 ) as any as S.Schema<GoogleApiServiceusageV1ServiceList>;
@@ -1054,7 +1054,7 @@ export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListOperationsRequest",
 }) as any as S.Schema<ListOperationsRequest>;
 
-export type OperationList = ReadonlyArray<Operation>;
+export type OperationList = Array<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;

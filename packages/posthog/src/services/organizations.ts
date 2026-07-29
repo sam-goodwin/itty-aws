@@ -206,7 +206,7 @@ export const CIMDVerificationToken = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CIMDVerificationToken>;
 
 export type PaginatedCIMDVerificationTokenListResultsList =
-  ReadonlyArray<CIMDVerificationToken>;
+  Array<CIMDVerificationToken>;
 export const PaginatedCIMDVerificationTokenListResultsList =
   /*@__PURE__*/ S.Array(
     CIMDVerificationToken,
@@ -316,7 +316,7 @@ export const OrganizationTeamsItemMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<OrganizationTeamsItemMap>;
 
-export type OrganizationTeamsList = ReadonlyArray<OrganizationTeamsItemMap>;
+export type OrganizationTeamsList = Array<OrganizationTeamsItemMap>;
 export const OrganizationTeamsList = /*@__PURE__*/ S.Array(
   OrganizationTeamsItemMap,
 ) as any as S.Schema<OrganizationTeamsList>;
@@ -329,13 +329,12 @@ export const OrganizationProjectsItemMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<OrganizationProjectsItemMap>;
 
-export type OrganizationProjectsList =
-  ReadonlyArray<OrganizationProjectsItemMap>;
+export type OrganizationProjectsList = Array<OrganizationProjectsItemMap>;
 export const OrganizationProjectsList = /*@__PURE__*/ S.Array(
   OrganizationProjectsItemMap,
 ) as any as S.Schema<OrganizationProjectsList>;
 
-export type OrganizationAvailableProductFeaturesList = ReadonlyArray<unknown>;
+export type OrganizationAvailableProductFeaturesList = Array<unknown>;
 export const OrganizationAvailableProductFeaturesList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<OrganizationAvailableProductFeaturesList>;
@@ -577,7 +576,7 @@ export const DomainsListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DomainsListRequest>;
 
 export type PaginatedOrganizationDomainListResultsList =
-  ReadonlyArray<OrganizationDomain>;
+  Array<OrganizationDomain>;
 export const PaginatedOrganizationDomainListResultsList = /*@__PURE__*/ S.Array(
   OrganizationDomain,
 ) as any as S.Schema<PaginatedOrganizationDomainListResultsList>;
@@ -747,7 +746,7 @@ export const DomainsVerifyCreateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Allowed ID-JAG client IDs. Empty list allows any client_id. */
 export type IdentityProviderConfigsCreateRequestIdJagAllowedClientsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const IdentityProviderConfigsCreateRequestIdJagAllowedClientsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -799,8 +798,7 @@ export const IdentityProviderConfigsCreateRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<IdentityProviderConfigsCreateRequest>;
 
 /** Allowed ID-JAG client IDs. Empty list allows any client_id. */
-export type IdentityProviderConfigIdJagAllowedClientsList =
-  ReadonlyArray<string>;
+export type IdentityProviderConfigIdJagAllowedClientsList = Array<string>;
 export const IdentityProviderConfigIdJagAllowedClientsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -913,7 +911,7 @@ export const IdentityProviderConfigsListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IdentityProviderConfigsListRequest>;
 
 export type PaginatedIdentityProviderConfigListResultsList =
-  ReadonlyArray<IdentityProviderConfig>;
+  Array<IdentityProviderConfig>;
 export const PaginatedIdentityProviderConfigListResultsList =
   /*@__PURE__*/ S.Array(
     IdentityProviderConfig,
@@ -938,7 +936,7 @@ export const PaginatedIdentityProviderConfigList = /*@__PURE__*/ S.suspend(() =>
 
 /** Allowed ID-JAG client IDs. Empty list allows any client_id. */
 export type IdentityProviderConfigsPartialUpdateRequestIdJagAllowedClientsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const IdentityProviderConfigsPartialUpdateRequestIdJagAllowedClientsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1053,7 +1051,7 @@ export const SCIMTokenResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Allowed ID-JAG client IDs. Empty list allows any client_id. */
 export type IdentityProviderConfigsUpdateRequestIdJagAllowedClientsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const IdentityProviderConfigsUpdateRequestIdJagAllowedClientsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1347,7 +1345,7 @@ export const InvitesListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InvitesListRequest>;
 
 export type PaginatedOrganizationInviteListOutputResultsList =
-  ReadonlyArray<OrganizationInviteOutput>;
+  Array<OrganizationInviteOutput>;
 export const PaginatedOrganizationInviteListOutputResultsList =
   /*@__PURE__*/ S.Array(
     OrganizationInviteOutput,
@@ -1521,8 +1519,7 @@ export const LegalDocumentsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "LegalDocumentsListRequest",
 }) as any as S.Schema<LegalDocumentsListRequest>;
 
-export type PaginatedLegalDocumentDTOListResultsList =
-  ReadonlyArray<LegalDocumentDTO>;
+export type PaginatedLegalDocumentDTOListResultsList = Array<LegalDocumentDTO>;
 export const PaginatedLegalDocumentDTOListResultsList = /*@__PURE__*/ S.Array(
   LegalDocumentDTO,
 ) as any as S.Schema<PaginatedLegalDocumentDTOListResultsList>;
@@ -1577,7 +1574,7 @@ export const ListRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.Http({ method: "GET", uri: "/api/organizations/", code: 200 })),
 ).annotate({ identifier: "ListRequest" }) as any as S.Schema<ListRequest>;
 
-export type PaginatedOrganizationListResultsList = ReadonlyArray<Organization>;
+export type PaginatedOrganizationListResultsList = Array<Organization>;
 export const PaginatedOrganizationListResultsList = /*@__PURE__*/ S.Array(
   Organization,
 ) as any as S.Schema<PaginatedOrganizationListResultsList>;
@@ -1723,7 +1720,7 @@ export const OrganizationMember = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OrganizationMember>;
 
 export type PaginatedOrganizationMemberListResultsList =
-  ReadonlyArray<OrganizationMember>;
+  Array<OrganizationMember>;
 export const PaginatedOrganizationMemberListResultsList = /*@__PURE__*/ S.Array(
   OrganizationMember,
 ) as any as S.Schema<PaginatedOrganizationMemberListResultsList>;
@@ -1833,8 +1830,7 @@ export const OauthApplicationsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "OauthApplicationsListRequest",
 }) as any as S.Schema<OauthApplicationsListRequest>;
 
-export type OrganizationOAuthApplicationRedirectUrisListList =
-  ReadonlyArray<string>;
+export type OrganizationOAuthApplicationRedirectUrisListList = Array<string>;
 export const OrganizationOAuthApplicationRedirectUrisListList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1868,7 +1864,7 @@ export const OrganizationOAuthApplication = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OrganizationOAuthApplication>;
 
 export type PaginatedOrganizationOAuthApplicationListResultsList =
-  ReadonlyArray<OrganizationOAuthApplication>;
+  Array<OrganizationOAuthApplication>;
 export const PaginatedOrganizationOAuthApplicationListResultsList =
   /*@__PURE__*/ S.Array(
     OrganizationOAuthApplication,
@@ -1923,12 +1919,12 @@ export const ProjectBackwardCompatGroupTypesItemMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ProjectBackwardCompatGroupTypesItemMap>;
 
 export type ProjectBackwardCompatGroupTypesList =
-  ReadonlyArray<ProjectBackwardCompatGroupTypesItemMap>;
+  Array<ProjectBackwardCompatGroupTypesItemMap>;
 export const ProjectBackwardCompatGroupTypesList = /*@__PURE__*/ S.Array(
   ProjectBackwardCompatGroupTypesItemMap,
 ) as any as S.Schema<ProjectBackwardCompatGroupTypesList>;
 
-export type ProjectBackwardCompatAppUrlsList = ReadonlyArray<string>;
+export type ProjectBackwardCompatAppUrlsList = Array<string>;
 export const ProjectBackwardCompatAppUrlsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ProjectBackwardCompatAppUrlsList>;
@@ -2535,28 +2531,28 @@ export const TimezoneEnum = /*@__PURE__*/ S.String;
 
 /** Ordered list of person properties used to render a human-friendly display name in the UI. */
 export type ProjectBackwardCompatPersonDisplayNamePropertiesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ProjectBackwardCompatPersonDisplayNamePropertiesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ProjectBackwardCompatPersonDisplayNamePropertiesList>;
 
 export type ProjectBackwardCompatSessionRecordingUrlTriggerConfigList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const ProjectBackwardCompatSessionRecordingUrlTriggerConfigList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<ProjectBackwardCompatSessionRecordingUrlTriggerConfigList>;
 
 export type ProjectBackwardCompatSessionRecordingUrlBlocklistConfigList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const ProjectBackwardCompatSessionRecordingUrlBlocklistConfigList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<ProjectBackwardCompatSessionRecordingUrlBlocklistConfigList>;
 
 export type ProjectBackwardCompatSessionRecordingEventTriggerConfigList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ProjectBackwardCompatSessionRecordingEventTriggerConfigList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2570,13 +2566,13 @@ export const SessionRecordingRetentionPeriodEnum = /*@__PURE__*/ S.String;
 export type WeekStartDayEnum = 0 | 1;
 export const WeekStartDayEnum = /*@__PURE__*/ S.Number;
 
-export type ProjectBackwardCompatLiveEventsColumnsList = ReadonlyArray<string>;
+export type ProjectBackwardCompatLiveEventsColumnsList = Array<string>;
 export const ProjectBackwardCompatLiveEventsColumnsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ProjectBackwardCompatLiveEventsColumnsList>;
 
 /** Origins permitted to record session replays and heatmaps. Empty list allows all origins. */
-export type ProjectBackwardCompatRecordingDomainsList = ReadonlyArray<string>;
+export type ProjectBackwardCompatRecordingDomainsList = Array<string>;
 export const ProjectBackwardCompatRecordingDomainsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ProjectBackwardCompatRecordingDomainsList>;
@@ -2608,7 +2604,7 @@ export const ProjectBackwardCompatProductIntentsItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ProjectBackwardCompatProductIntentsItem>;
 
 export type ProjectBackwardCompatProductIntentsList =
-  ReadonlyArray<ProjectBackwardCompatProductIntentsItem>;
+  Array<ProjectBackwardCompatProductIntentsItem>;
 export const ProjectBackwardCompatProductIntentsList = /*@__PURE__*/ S.Array(
   ProjectBackwardCompatProductIntentsItem,
 ) as any as S.Schema<ProjectBackwardCompatProductIntentsList>;
@@ -2696,7 +2692,7 @@ export type AvailableSetupTaskIdsEnum =
 export const AvailableSetupTaskIdsEnum = /*@__PURE__*/ S.String;
 
 export type ProjectBackwardCompatAvailableSetupTaskIdsList =
-  ReadonlyArray<AvailableSetupTaskIdsEnum>;
+  Array<AvailableSetupTaskIdsEnum>;
 export const ProjectBackwardCompatAvailableSetupTaskIdsList =
   /*@__PURE__*/ S.Array(
     AvailableSetupTaskIdsEnum,
@@ -2867,7 +2863,7 @@ export type BaseCurrencyEnum =
 export const BaseCurrencyEnum = /*@__PURE__*/ S.String;
 
 export interface TeamRevenueAnalyticsConfig {
-  base_currency?: BaseCurrencyEnum;
+  base_currency?: BaseCurrencyEnum | (string & {});
   events?: unknown;
   goals?: unknown;
   filter_test_accounts?: boolean;
@@ -2896,7 +2892,7 @@ export interface TeamMarketingAnalyticsConfig {
   sources_map?: unknown;
   conversion_goals?: unknown;
   attribution_window_days?: number;
-  attribution_mode?: AttributionModeEnum;
+  attribution_mode?: AttributionModeEnum | (string & {});
   campaign_name_mappings?: unknown;
   custom_source_mappings?: unknown;
   campaign_field_preferences?: unknown;
@@ -3206,7 +3202,7 @@ export const ProjectBackwardCompat = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProjectBackwardCompat>;
 
 export type OrganizationsProjectsAddProductIntentPartialUpdateRequestAppUrlsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const OrganizationsProjectsAddProductIntentPartialUpdateRequestAppUrlsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3214,35 +3210,35 @@ export const OrganizationsProjectsAddProductIntentPartialUpdateRequestAppUrlsLis
 
 /** Ordered list of person properties used to render a human-friendly display name in the UI. */
 export type OrganizationsProjectsAddProductIntentPartialUpdateRequestPersonDisplayNamePropertiesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const OrganizationsProjectsAddProductIntentPartialUpdateRequestPersonDisplayNamePropertiesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<OrganizationsProjectsAddProductIntentPartialUpdateRequestPersonDisplayNamePropertiesList>;
 
 export type OrganizationsProjectsAddProductIntentPartialUpdateRequestSessionRecordingUrlTriggerConfigList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const OrganizationsProjectsAddProductIntentPartialUpdateRequestSessionRecordingUrlTriggerConfigList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<OrganizationsProjectsAddProductIntentPartialUpdateRequestSessionRecordingUrlTriggerConfigList>;
 
 export type OrganizationsProjectsAddProductIntentPartialUpdateRequestSessionRecordingUrlBlocklistConfigList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const OrganizationsProjectsAddProductIntentPartialUpdateRequestSessionRecordingUrlBlocklistConfigList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<OrganizationsProjectsAddProductIntentPartialUpdateRequestSessionRecordingUrlBlocklistConfigList>;
 
 export type OrganizationsProjectsAddProductIntentPartialUpdateRequestSessionRecordingEventTriggerConfigList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const OrganizationsProjectsAddProductIntentPartialUpdateRequestSessionRecordingEventTriggerConfigList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<OrganizationsProjectsAddProductIntentPartialUpdateRequestSessionRecordingEventTriggerConfigList>;
 
 export type OrganizationsProjectsAddProductIntentPartialUpdateRequestLiveEventsColumnsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const OrganizationsProjectsAddProductIntentPartialUpdateRequestLiveEventsColumnsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3250,7 +3246,7 @@ export const OrganizationsProjectsAddProductIntentPartialUpdateRequestLiveEvents
 
 /** Origins permitted to record session replays and heatmaps. Empty list allows all origins. */
 export type OrganizationsProjectsAddProductIntentPartialUpdateRequestRecordingDomainsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const OrganizationsProjectsAddProductIntentPartialUpdateRequestRecordingDomainsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3494,7 +3490,7 @@ export const OrganizationsProjectsAddProductIntentPartialUpdateRequest =
   }) as any as S.Schema<OrganizationsProjectsAddProductIntentPartialUpdateRequest>;
 
 export type OrganizationsProjectsChangeOrganizationCreateRequestAppUrlsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const OrganizationsProjectsChangeOrganizationCreateRequestAppUrlsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3502,35 +3498,35 @@ export const OrganizationsProjectsChangeOrganizationCreateRequestAppUrlsList =
 
 /** Ordered list of person properties used to render a human-friendly display name in the UI. */
 export type OrganizationsProjectsChangeOrganizationCreateRequestPersonDisplayNamePropertiesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const OrganizationsProjectsChangeOrganizationCreateRequestPersonDisplayNamePropertiesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<OrganizationsProjectsChangeOrganizationCreateRequestPersonDisplayNamePropertiesList>;
 
 export type OrganizationsProjectsChangeOrganizationCreateRequestSessionRecordingUrlTriggerConfigList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const OrganizationsProjectsChangeOrganizationCreateRequestSessionRecordingUrlTriggerConfigList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<OrganizationsProjectsChangeOrganizationCreateRequestSessionRecordingUrlTriggerConfigList>;
 
 export type OrganizationsProjectsChangeOrganizationCreateRequestSessionRecordingUrlBlocklistConfigList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const OrganizationsProjectsChangeOrganizationCreateRequestSessionRecordingUrlBlocklistConfigList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<OrganizationsProjectsChangeOrganizationCreateRequestSessionRecordingUrlBlocklistConfigList>;
 
 export type OrganizationsProjectsChangeOrganizationCreateRequestSessionRecordingEventTriggerConfigList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const OrganizationsProjectsChangeOrganizationCreateRequestSessionRecordingEventTriggerConfigList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<OrganizationsProjectsChangeOrganizationCreateRequestSessionRecordingEventTriggerConfigList>;
 
 export type OrganizationsProjectsChangeOrganizationCreateRequestLiveEventsColumnsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const OrganizationsProjectsChangeOrganizationCreateRequestLiveEventsColumnsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3538,7 +3534,7 @@ export const OrganizationsProjectsChangeOrganizationCreateRequestLiveEventsColum
 
 /** Origins permitted to record session replays and heatmaps. Empty list allows all origins. */
 export type OrganizationsProjectsChangeOrganizationCreateRequestRecordingDomainsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const OrganizationsProjectsChangeOrganizationCreateRequestRecordingDomainsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3783,7 +3779,7 @@ export const OrganizationsProjectsChangeOrganizationCreateRequest =
   }) as any as S.Schema<OrganizationsProjectsChangeOrganizationCreateRequest>;
 
 export type OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequestAppUrlsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequestAppUrlsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3791,35 +3787,35 @@ export const OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequestA
 
 /** Ordered list of person properties used to render a human-friendly display name in the UI. */
 export type OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequestPersonDisplayNamePropertiesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequestPersonDisplayNamePropertiesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequestPersonDisplayNamePropertiesList>;
 
 export type OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequestSessionRecordingUrlTriggerConfigList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequestSessionRecordingUrlTriggerConfigList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequestSessionRecordingUrlTriggerConfigList>;
 
 export type OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequestSessionRecordingUrlBlocklistConfigList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequestSessionRecordingUrlBlocklistConfigList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequestSessionRecordingUrlBlocklistConfigList>;
 
 export type OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequestSessionRecordingEventTriggerConfigList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequestSessionRecordingEventTriggerConfigList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequestSessionRecordingEventTriggerConfigList>;
 
 export type OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequestLiveEventsColumnsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequestLiveEventsColumnsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3827,7 +3823,7 @@ export const OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequestL
 
 /** Origins permitted to record session replays and heatmaps. Empty list allows all origins. */
 export type OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequestRecordingDomainsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequestRecordingDomainsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4071,8 +4067,7 @@ export const OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequest 
       "OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequest",
   }) as any as S.Schema<OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequest>;
 
-export type OrganizationsProjectsCreateRequestAppUrlsList =
-  ReadonlyArray<string>;
+export type OrganizationsProjectsCreateRequestAppUrlsList = Array<string>;
 export const OrganizationsProjectsCreateRequestAppUrlsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4080,35 +4075,35 @@ export const OrganizationsProjectsCreateRequestAppUrlsList =
 
 /** Ordered list of person properties used to render a human-friendly display name in the UI. */
 export type OrganizationsProjectsCreateRequestPersonDisplayNamePropertiesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const OrganizationsProjectsCreateRequestPersonDisplayNamePropertiesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<OrganizationsProjectsCreateRequestPersonDisplayNamePropertiesList>;
 
 export type OrganizationsProjectsCreateRequestSessionRecordingUrlTriggerConfigList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const OrganizationsProjectsCreateRequestSessionRecordingUrlTriggerConfigList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<OrganizationsProjectsCreateRequestSessionRecordingUrlTriggerConfigList>;
 
 export type OrganizationsProjectsCreateRequestSessionRecordingUrlBlocklistConfigList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const OrganizationsProjectsCreateRequestSessionRecordingUrlBlocklistConfigList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<OrganizationsProjectsCreateRequestSessionRecordingUrlBlocklistConfigList>;
 
 export type OrganizationsProjectsCreateRequestSessionRecordingEventTriggerConfigList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const OrganizationsProjectsCreateRequestSessionRecordingEventTriggerConfigList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<OrganizationsProjectsCreateRequestSessionRecordingEventTriggerConfigList>;
 
 export type OrganizationsProjectsCreateRequestLiveEventsColumnsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const OrganizationsProjectsCreateRequestLiveEventsColumnsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4116,7 +4111,7 @@ export const OrganizationsProjectsCreateRequestLiveEventsColumnsList =
 
 /** Origins permitted to record session replays and heatmaps. Empty list allows all origins. */
 export type OrganizationsProjectsCreateRequestRecordingDomainsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const OrganizationsProjectsCreateRequestRecordingDomainsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4347,7 +4342,7 @@ export const OrganizationsProjectsCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OrganizationsProjectsCreateRequest>;
 
 export type OrganizationsProjectsDefaultEvaluationContextsCreateRequestAppUrlsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const OrganizationsProjectsDefaultEvaluationContextsCreateRequestAppUrlsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4355,35 +4350,35 @@ export const OrganizationsProjectsDefaultEvaluationContextsCreateRequestAppUrlsL
 
 /** Ordered list of person properties used to render a human-friendly display name in the UI. */
 export type OrganizationsProjectsDefaultEvaluationContextsCreateRequestPersonDisplayNamePropertiesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const OrganizationsProjectsDefaultEvaluationContextsCreateRequestPersonDisplayNamePropertiesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<OrganizationsProjectsDefaultEvaluationContextsCreateRequestPersonDisplayNamePropertiesList>;
 
 export type OrganizationsProjectsDefaultEvaluationContextsCreateRequestSessionRecordingUrlTriggerConfigList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const OrganizationsProjectsDefaultEvaluationContextsCreateRequestSessionRecordingUrlTriggerConfigList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<OrganizationsProjectsDefaultEvaluationContextsCreateRequestSessionRecordingUrlTriggerConfigList>;
 
 export type OrganizationsProjectsDefaultEvaluationContextsCreateRequestSessionRecordingUrlBlocklistConfigList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const OrganizationsProjectsDefaultEvaluationContextsCreateRequestSessionRecordingUrlBlocklistConfigList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<OrganizationsProjectsDefaultEvaluationContextsCreateRequestSessionRecordingUrlBlocklistConfigList>;
 
 export type OrganizationsProjectsDefaultEvaluationContextsCreateRequestSessionRecordingEventTriggerConfigList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const OrganizationsProjectsDefaultEvaluationContextsCreateRequestSessionRecordingEventTriggerConfigList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<OrganizationsProjectsDefaultEvaluationContextsCreateRequestSessionRecordingEventTriggerConfigList>;
 
 export type OrganizationsProjectsDefaultEvaluationContextsCreateRequestLiveEventsColumnsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const OrganizationsProjectsDefaultEvaluationContextsCreateRequestLiveEventsColumnsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4391,7 +4386,7 @@ export const OrganizationsProjectsDefaultEvaluationContextsCreateRequestLiveEven
 
 /** Origins permitted to record session replays and heatmaps. Empty list allows all origins. */
 export type OrganizationsProjectsDefaultEvaluationContextsCreateRequestRecordingDomainsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const OrganizationsProjectsDefaultEvaluationContextsCreateRequestRecordingDomainsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4707,7 +4702,7 @@ export const OrganizationsProjectsDefaultReleaseConditionsRetrieveRequest =
   }) as any as S.Schema<OrganizationsProjectsDefaultReleaseConditionsRetrieveRequest>;
 
 export type OrganizationsProjectsDefaultReleaseConditionsUpdateRequestAppUrlsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const OrganizationsProjectsDefaultReleaseConditionsUpdateRequestAppUrlsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4715,35 +4710,35 @@ export const OrganizationsProjectsDefaultReleaseConditionsUpdateRequestAppUrlsLi
 
 /** Ordered list of person properties used to render a human-friendly display name in the UI. */
 export type OrganizationsProjectsDefaultReleaseConditionsUpdateRequestPersonDisplayNamePropertiesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const OrganizationsProjectsDefaultReleaseConditionsUpdateRequestPersonDisplayNamePropertiesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<OrganizationsProjectsDefaultReleaseConditionsUpdateRequestPersonDisplayNamePropertiesList>;
 
 export type OrganizationsProjectsDefaultReleaseConditionsUpdateRequestSessionRecordingUrlTriggerConfigList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const OrganizationsProjectsDefaultReleaseConditionsUpdateRequestSessionRecordingUrlTriggerConfigList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<OrganizationsProjectsDefaultReleaseConditionsUpdateRequestSessionRecordingUrlTriggerConfigList>;
 
 export type OrganizationsProjectsDefaultReleaseConditionsUpdateRequestSessionRecordingUrlBlocklistConfigList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const OrganizationsProjectsDefaultReleaseConditionsUpdateRequestSessionRecordingUrlBlocklistConfigList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<OrganizationsProjectsDefaultReleaseConditionsUpdateRequestSessionRecordingUrlBlocklistConfigList>;
 
 export type OrganizationsProjectsDefaultReleaseConditionsUpdateRequestSessionRecordingEventTriggerConfigList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const OrganizationsProjectsDefaultReleaseConditionsUpdateRequestSessionRecordingEventTriggerConfigList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<OrganizationsProjectsDefaultReleaseConditionsUpdateRequestSessionRecordingEventTriggerConfigList>;
 
 export type OrganizationsProjectsDefaultReleaseConditionsUpdateRequestLiveEventsColumnsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const OrganizationsProjectsDefaultReleaseConditionsUpdateRequestLiveEventsColumnsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4751,7 +4746,7 @@ export const OrganizationsProjectsDefaultReleaseConditionsUpdateRequestLiveEvent
 
 /** Origins permitted to record session replays and heatmaps. Empty list allows all origins. */
 export type OrganizationsProjectsDefaultReleaseConditionsUpdateRequestRecordingDomainsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const OrganizationsProjectsDefaultReleaseConditionsUpdateRequestRecordingDomainsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4995,7 +4990,7 @@ export const OrganizationsProjectsDefaultReleaseConditionsUpdateRequest =
   }) as any as S.Schema<OrganizationsProjectsDefaultReleaseConditionsUpdateRequest>;
 
 export type OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestAppUrlsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestAppUrlsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5003,35 +4998,35 @@ export const OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestApp
 
 /** Ordered list of person properties used to render a human-friendly display name in the UI. */
 export type OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestPersonDisplayNamePropertiesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestPersonDisplayNamePropertiesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestPersonDisplayNamePropertiesList>;
 
 export type OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestSessionRecordingUrlTriggerConfigList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestSessionRecordingUrlTriggerConfigList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestSessionRecordingUrlTriggerConfigList>;
 
 export type OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestSessionRecordingUrlBlocklistConfigList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestSessionRecordingUrlBlocklistConfigList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestSessionRecordingUrlBlocklistConfigList>;
 
 export type OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestSessionRecordingEventTriggerConfigList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestSessionRecordingEventTriggerConfigList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestSessionRecordingEventTriggerConfigList>;
 
 export type OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestLiveEventsColumnsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestLiveEventsColumnsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5039,7 +5034,7 @@ export const OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestLiv
 
 /** Origins permitted to record session replays and heatmaps. Empty list allows all origins. */
 export type OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestRecordingDomainsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestRecordingDomainsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5405,7 +5400,7 @@ export const OrganizationsProjectsEventIngestionRestrictionsRetrieveRequest =
   }) as any as S.Schema<OrganizationsProjectsEventIngestionRestrictionsRetrieveRequest>;
 
 export type OrganizationsProjectsExperimentsConfigPartialUpdateRequestAppUrlsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const OrganizationsProjectsExperimentsConfigPartialUpdateRequestAppUrlsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5413,35 +5408,35 @@ export const OrganizationsProjectsExperimentsConfigPartialUpdateRequestAppUrlsLi
 
 /** Ordered list of person properties used to render a human-friendly display name in the UI. */
 export type OrganizationsProjectsExperimentsConfigPartialUpdateRequestPersonDisplayNamePropertiesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const OrganizationsProjectsExperimentsConfigPartialUpdateRequestPersonDisplayNamePropertiesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<OrganizationsProjectsExperimentsConfigPartialUpdateRequestPersonDisplayNamePropertiesList>;
 
 export type OrganizationsProjectsExperimentsConfigPartialUpdateRequestSessionRecordingUrlTriggerConfigList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const OrganizationsProjectsExperimentsConfigPartialUpdateRequestSessionRecordingUrlTriggerConfigList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<OrganizationsProjectsExperimentsConfigPartialUpdateRequestSessionRecordingUrlTriggerConfigList>;
 
 export type OrganizationsProjectsExperimentsConfigPartialUpdateRequestSessionRecordingUrlBlocklistConfigList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const OrganizationsProjectsExperimentsConfigPartialUpdateRequestSessionRecordingUrlBlocklistConfigList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<OrganizationsProjectsExperimentsConfigPartialUpdateRequestSessionRecordingUrlBlocklistConfigList>;
 
 export type OrganizationsProjectsExperimentsConfigPartialUpdateRequestSessionRecordingEventTriggerConfigList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const OrganizationsProjectsExperimentsConfigPartialUpdateRequestSessionRecordingEventTriggerConfigList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<OrganizationsProjectsExperimentsConfigPartialUpdateRequestSessionRecordingEventTriggerConfigList>;
 
 export type OrganizationsProjectsExperimentsConfigPartialUpdateRequestLiveEventsColumnsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const OrganizationsProjectsExperimentsConfigPartialUpdateRequestLiveEventsColumnsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5449,7 +5444,7 @@ export const OrganizationsProjectsExperimentsConfigPartialUpdateRequestLiveEvent
 
 /** Origins permitted to record session replays and heatmaps. Empty list allows all origins. */
 export type OrganizationsProjectsExperimentsConfigPartialUpdateRequestRecordingDomainsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const OrganizationsProjectsExperimentsConfigPartialUpdateRequestRecordingDomainsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5715,7 +5710,7 @@ export const OrganizationsProjectsExperimentsConfigRetrieveRequest =
   }) as any as S.Schema<OrganizationsProjectsExperimentsConfigRetrieveRequest>;
 
 export type OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestAppUrlsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestAppUrlsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5723,35 +5718,35 @@ export const OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestA
 
 /** Ordered list of person properties used to render a human-friendly display name in the UI. */
 export type OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestPersonDisplayNamePropertiesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestPersonDisplayNamePropertiesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestPersonDisplayNamePropertiesList>;
 
 export type OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestSessionRecordingUrlTriggerConfigList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestSessionRecordingUrlTriggerConfigList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestSessionRecordingUrlTriggerConfigList>;
 
 export type OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestSessionRecordingUrlBlocklistConfigList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestSessionRecordingUrlBlocklistConfigList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestSessionRecordingUrlBlocklistConfigList>;
 
 export type OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestSessionRecordingEventTriggerConfigList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestSessionRecordingEventTriggerConfigList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestSessionRecordingEventTriggerConfigList>;
 
 export type OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestLiveEventsColumnsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestLiveEventsColumnsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5759,7 +5754,7 @@ export const OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestL
 
 /** Origins permitted to record session replays and heatmaps. Empty list allows all origins. */
 export type OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestRecordingDomainsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestRecordingDomainsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6088,7 +6083,7 @@ export const ProjectBackwardCompatBasic = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProjectBackwardCompatBasic>;
 
 export type PaginatedProjectBackwardCompatBasicListResultsList =
-  ReadonlyArray<ProjectBackwardCompatBasic>;
+  Array<ProjectBackwardCompatBasic>;
 export const PaginatedProjectBackwardCompatBasicListResultsList =
   /*@__PURE__*/ S.Array(
     ProjectBackwardCompatBasic,
@@ -6113,7 +6108,7 @@ export const PaginatedProjectBackwardCompatBasicList = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PaginatedProjectBackwardCompatBasicList>;
 
 export type OrganizationsProjectsLogsConfigPartialUpdateRequestAppUrlsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const OrganizationsProjectsLogsConfigPartialUpdateRequestAppUrlsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6121,35 +6116,35 @@ export const OrganizationsProjectsLogsConfigPartialUpdateRequestAppUrlsList =
 
 /** Ordered list of person properties used to render a human-friendly display name in the UI. */
 export type OrganizationsProjectsLogsConfigPartialUpdateRequestPersonDisplayNamePropertiesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const OrganizationsProjectsLogsConfigPartialUpdateRequestPersonDisplayNamePropertiesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<OrganizationsProjectsLogsConfigPartialUpdateRequestPersonDisplayNamePropertiesList>;
 
 export type OrganizationsProjectsLogsConfigPartialUpdateRequestSessionRecordingUrlTriggerConfigList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const OrganizationsProjectsLogsConfigPartialUpdateRequestSessionRecordingUrlTriggerConfigList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<OrganizationsProjectsLogsConfigPartialUpdateRequestSessionRecordingUrlTriggerConfigList>;
 
 export type OrganizationsProjectsLogsConfigPartialUpdateRequestSessionRecordingUrlBlocklistConfigList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const OrganizationsProjectsLogsConfigPartialUpdateRequestSessionRecordingUrlBlocklistConfigList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<OrganizationsProjectsLogsConfigPartialUpdateRequestSessionRecordingUrlBlocklistConfigList>;
 
 export type OrganizationsProjectsLogsConfigPartialUpdateRequestSessionRecordingEventTriggerConfigList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const OrganizationsProjectsLogsConfigPartialUpdateRequestSessionRecordingEventTriggerConfigList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<OrganizationsProjectsLogsConfigPartialUpdateRequestSessionRecordingEventTriggerConfigList>;
 
 export type OrganizationsProjectsLogsConfigPartialUpdateRequestLiveEventsColumnsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const OrganizationsProjectsLogsConfigPartialUpdateRequestLiveEventsColumnsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6157,7 +6152,7 @@ export const OrganizationsProjectsLogsConfigPartialUpdateRequestLiveEventsColumn
 
 /** Origins permitted to record session replays and heatmaps. Empty list allows all origins. */
 export type OrganizationsProjectsLogsConfigPartialUpdateRequestRecordingDomainsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const OrganizationsProjectsLogsConfigPartialUpdateRequestRecordingDomainsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6424,7 +6419,7 @@ export const OrganizationsProjectsLogsConfigRetrieveRequest =
   }) as any as S.Schema<OrganizationsProjectsLogsConfigRetrieveRequest>;
 
 export type OrganizationsProjectsPartialUpdateRequestAppUrlsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const OrganizationsProjectsPartialUpdateRequestAppUrlsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6432,35 +6427,35 @@ export const OrganizationsProjectsPartialUpdateRequestAppUrlsList =
 
 /** Ordered list of person properties used to render a human-friendly display name in the UI. */
 export type OrganizationsProjectsPartialUpdateRequestPersonDisplayNamePropertiesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const OrganizationsProjectsPartialUpdateRequestPersonDisplayNamePropertiesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<OrganizationsProjectsPartialUpdateRequestPersonDisplayNamePropertiesList>;
 
 export type OrganizationsProjectsPartialUpdateRequestSessionRecordingUrlTriggerConfigList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const OrganizationsProjectsPartialUpdateRequestSessionRecordingUrlTriggerConfigList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<OrganizationsProjectsPartialUpdateRequestSessionRecordingUrlTriggerConfigList>;
 
 export type OrganizationsProjectsPartialUpdateRequestSessionRecordingUrlBlocklistConfigList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const OrganizationsProjectsPartialUpdateRequestSessionRecordingUrlBlocklistConfigList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<OrganizationsProjectsPartialUpdateRequestSessionRecordingUrlBlocklistConfigList>;
 
 export type OrganizationsProjectsPartialUpdateRequestSessionRecordingEventTriggerConfigList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const OrganizationsProjectsPartialUpdateRequestSessionRecordingEventTriggerConfigList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<OrganizationsProjectsPartialUpdateRequestSessionRecordingEventTriggerConfigList>;
 
 export type OrganizationsProjectsPartialUpdateRequestLiveEventsColumnsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const OrganizationsProjectsPartialUpdateRequestLiveEventsColumnsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6468,7 +6463,7 @@ export const OrganizationsProjectsPartialUpdateRequestLiveEventsColumnsList =
 
 /** Origins permitted to record session replays and heatmaps. Empty list allows all origins. */
 export type OrganizationsProjectsPartialUpdateRequestRecordingDomainsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const OrganizationsProjectsPartialUpdateRequestRecordingDomainsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6709,7 +6704,7 @@ export const OrganizationsProjectsPartialUpdateRequest =
   }) as any as S.Schema<OrganizationsProjectsPartialUpdateRequest>;
 
 export type OrganizationsProjectsResetTokenPartialUpdateRequestAppUrlsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const OrganizationsProjectsResetTokenPartialUpdateRequestAppUrlsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6717,35 +6712,35 @@ export const OrganizationsProjectsResetTokenPartialUpdateRequestAppUrlsList =
 
 /** Ordered list of person properties used to render a human-friendly display name in the UI. */
 export type OrganizationsProjectsResetTokenPartialUpdateRequestPersonDisplayNamePropertiesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const OrganizationsProjectsResetTokenPartialUpdateRequestPersonDisplayNamePropertiesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<OrganizationsProjectsResetTokenPartialUpdateRequestPersonDisplayNamePropertiesList>;
 
 export type OrganizationsProjectsResetTokenPartialUpdateRequestSessionRecordingUrlTriggerConfigList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const OrganizationsProjectsResetTokenPartialUpdateRequestSessionRecordingUrlTriggerConfigList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<OrganizationsProjectsResetTokenPartialUpdateRequestSessionRecordingUrlTriggerConfigList>;
 
 export type OrganizationsProjectsResetTokenPartialUpdateRequestSessionRecordingUrlBlocklistConfigList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const OrganizationsProjectsResetTokenPartialUpdateRequestSessionRecordingUrlBlocklistConfigList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<OrganizationsProjectsResetTokenPartialUpdateRequestSessionRecordingUrlBlocklistConfigList>;
 
 export type OrganizationsProjectsResetTokenPartialUpdateRequestSessionRecordingEventTriggerConfigList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const OrganizationsProjectsResetTokenPartialUpdateRequestSessionRecordingEventTriggerConfigList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<OrganizationsProjectsResetTokenPartialUpdateRequestSessionRecordingEventTriggerConfigList>;
 
 export type OrganizationsProjectsResetTokenPartialUpdateRequestLiveEventsColumnsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const OrganizationsProjectsResetTokenPartialUpdateRequestLiveEventsColumnsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6753,7 +6748,7 @@ export const OrganizationsProjectsResetTokenPartialUpdateRequestLiveEventsColumn
 
 /** Origins permitted to record session replays and heatmaps. Empty list allows all origins. */
 export type OrganizationsProjectsResetTokenPartialUpdateRequestRecordingDomainsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const OrganizationsProjectsResetTokenPartialUpdateRequestRecordingDomainsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -7020,7 +7015,7 @@ export const OrganizationsProjectsRetrieveRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<OrganizationsProjectsRetrieveRequest>;
 
 export type OrganizationsProjectsRotateSecretTokenPartialUpdateRequestAppUrlsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const OrganizationsProjectsRotateSecretTokenPartialUpdateRequestAppUrlsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -7028,35 +7023,35 @@ export const OrganizationsProjectsRotateSecretTokenPartialUpdateRequestAppUrlsLi
 
 /** Ordered list of person properties used to render a human-friendly display name in the UI. */
 export type OrganizationsProjectsRotateSecretTokenPartialUpdateRequestPersonDisplayNamePropertiesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const OrganizationsProjectsRotateSecretTokenPartialUpdateRequestPersonDisplayNamePropertiesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<OrganizationsProjectsRotateSecretTokenPartialUpdateRequestPersonDisplayNamePropertiesList>;
 
 export type OrganizationsProjectsRotateSecretTokenPartialUpdateRequestSessionRecordingUrlTriggerConfigList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const OrganizationsProjectsRotateSecretTokenPartialUpdateRequestSessionRecordingUrlTriggerConfigList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<OrganizationsProjectsRotateSecretTokenPartialUpdateRequestSessionRecordingUrlTriggerConfigList>;
 
 export type OrganizationsProjectsRotateSecretTokenPartialUpdateRequestSessionRecordingUrlBlocklistConfigList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const OrganizationsProjectsRotateSecretTokenPartialUpdateRequestSessionRecordingUrlBlocklistConfigList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<OrganizationsProjectsRotateSecretTokenPartialUpdateRequestSessionRecordingUrlBlocklistConfigList>;
 
 export type OrganizationsProjectsRotateSecretTokenPartialUpdateRequestSessionRecordingEventTriggerConfigList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const OrganizationsProjectsRotateSecretTokenPartialUpdateRequestSessionRecordingEventTriggerConfigList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<OrganizationsProjectsRotateSecretTokenPartialUpdateRequestSessionRecordingEventTriggerConfigList>;
 
 export type OrganizationsProjectsRotateSecretTokenPartialUpdateRequestLiveEventsColumnsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const OrganizationsProjectsRotateSecretTokenPartialUpdateRequestLiveEventsColumnsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -7064,7 +7059,7 @@ export const OrganizationsProjectsRotateSecretTokenPartialUpdateRequestLiveEvent
 
 /** Origins permitted to record session replays and heatmaps. Empty list allows all origins. */
 export type OrganizationsProjectsRotateSecretTokenPartialUpdateRequestRecordingDomainsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const OrganizationsProjectsRotateSecretTokenPartialUpdateRequestRecordingDomainsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -7329,8 +7324,7 @@ export const OrganizationsProjectsSettingsAsOfRetrieveRequest =
     identifier: "OrganizationsProjectsSettingsAsOfRetrieveRequest",
   }) as any as S.Schema<OrganizationsProjectsSettingsAsOfRetrieveRequest>;
 
-export type OrganizationsProjectsUpdateRequestAppUrlsList =
-  ReadonlyArray<string>;
+export type OrganizationsProjectsUpdateRequestAppUrlsList = Array<string>;
 export const OrganizationsProjectsUpdateRequestAppUrlsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -7338,35 +7332,35 @@ export const OrganizationsProjectsUpdateRequestAppUrlsList =
 
 /** Ordered list of person properties used to render a human-friendly display name in the UI. */
 export type OrganizationsProjectsUpdateRequestPersonDisplayNamePropertiesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const OrganizationsProjectsUpdateRequestPersonDisplayNamePropertiesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<OrganizationsProjectsUpdateRequestPersonDisplayNamePropertiesList>;
 
 export type OrganizationsProjectsUpdateRequestSessionRecordingUrlTriggerConfigList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const OrganizationsProjectsUpdateRequestSessionRecordingUrlTriggerConfigList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<OrganizationsProjectsUpdateRequestSessionRecordingUrlTriggerConfigList>;
 
 export type OrganizationsProjectsUpdateRequestSessionRecordingUrlBlocklistConfigList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const OrganizationsProjectsUpdateRequestSessionRecordingUrlBlocklistConfigList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<OrganizationsProjectsUpdateRequestSessionRecordingUrlBlocklistConfigList>;
 
 export type OrganizationsProjectsUpdateRequestSessionRecordingEventTriggerConfigList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const OrganizationsProjectsUpdateRequestSessionRecordingEventTriggerConfigList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<OrganizationsProjectsUpdateRequestSessionRecordingEventTriggerConfigList>;
 
 export type OrganizationsProjectsUpdateRequestLiveEventsColumnsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const OrganizationsProjectsUpdateRequestLiveEventsColumnsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -7374,7 +7368,7 @@ export const OrganizationsProjectsUpdateRequestLiveEventsColumnsList =
 
 /** Origins permitted to record session replays and heatmaps. Empty list allows all origins. */
 export type OrganizationsProjectsUpdateRequestRecordingDomainsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const OrganizationsProjectsUpdateRequestRecordingDomainsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -7829,7 +7823,7 @@ export const RoleExternalReferencesListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RoleExternalReferencesListRequest>;
 
 export type PaginatedRoleExternalReferenceListResultsList =
-  ReadonlyArray<RoleExternalReference>;
+  Array<RoleExternalReference>;
 export const PaginatedRoleExternalReferenceListResultsList =
   /*@__PURE__*/ S.Array(
     RoleExternalReference,
@@ -7922,7 +7916,7 @@ export const RoleMembersItemMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<RoleMembersItemMap>;
 
 /** Members assigned to this role */
-export type RoleMembersList = ReadonlyArray<RoleMembersItemMap>;
+export type RoleMembersList = Array<RoleMembersItemMap>;
 export const RoleMembersList = /*@__PURE__*/ S.Array(
   RoleMembersItemMap,
 ) as any as S.Schema<RoleMembersList>;
@@ -7999,7 +7993,7 @@ export const RolesListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "RolesListRequest",
 }) as any as S.Schema<RolesListRequest>;
 
-export type PaginatedRoleListResultsList = ReadonlyArray<Role>;
+export type PaginatedRoleListResultsList = Array<Role>;
 export const PaginatedRoleListResultsList = /*@__PURE__*/ S.Array(
   Role,
 ) as any as S.Schema<PaginatedRoleListResultsList>;
@@ -8165,7 +8159,7 @@ export const RolesRoleMembershipsListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RolesRoleMembershipsListRequest>;
 
 export type PaginatedRoleMembershipListOutputResultsList =
-  ReadonlyArray<RoleMembershipOutput>;
+  Array<RoleMembershipOutput>;
 export const PaginatedRoleMembershipListOutputResultsList =
   /*@__PURE__*/ S.Array(
     RoleMembershipOutput,
@@ -8339,7 +8333,7 @@ export const WelcomeTeamMember = /*@__PURE__*/ S.suspend(() =>
   identifier: "WelcomeTeamMember",
 }) as any as S.Schema<WelcomeTeamMember>;
 
-export type WelcomeResponseTeamMembersList = ReadonlyArray<WelcomeTeamMember>;
+export type WelcomeResponseTeamMembersList = Array<WelcomeTeamMember>;
 export const WelcomeResponseTeamMembersList = /*@__PURE__*/ S.Array(
   WelcomeTeamMember,
 ) as any as S.Schema<WelcomeResponseTeamMembersList>;
@@ -8364,8 +8358,7 @@ export const WelcomeRecentActivity = /*@__PURE__*/ S.suspend(() =>
   identifier: "WelcomeRecentActivity",
 }) as any as S.Schema<WelcomeRecentActivity>;
 
-export type WelcomeResponseRecentActivityList =
-  ReadonlyArray<WelcomeRecentActivity>;
+export type WelcomeResponseRecentActivityList = Array<WelcomeRecentActivity>;
 export const WelcomeResponseRecentActivityList = /*@__PURE__*/ S.Array(
   WelcomeRecentActivity,
 ) as any as S.Schema<WelcomeResponseRecentActivityList>;
@@ -8390,12 +8383,12 @@ export const WelcomePopularDashboard = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WelcomePopularDashboard>;
 
 export type WelcomeResponsePopularDashboardsList =
-  ReadonlyArray<WelcomePopularDashboard>;
+  Array<WelcomePopularDashboard>;
 export const WelcomeResponsePopularDashboardsList = /*@__PURE__*/ S.Array(
   WelcomePopularDashboard,
 ) as any as S.Schema<WelcomeResponsePopularDashboardsList>;
 
-export type WelcomeResponseProductsInUseList = ReadonlyArray<string>;
+export type WelcomeResponseProductsInUseList = Array<string>;
 export const WelcomeResponseProductsInUseList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<WelcomeResponseProductsInUseList>;
@@ -8419,8 +8412,7 @@ export const WelcomeSuggestedStep = /*@__PURE__*/ S.suspend(() =>
   identifier: "WelcomeSuggestedStep",
 }) as any as S.Schema<WelcomeSuggestedStep>;
 
-export type WelcomeResponseSuggestedNextStepsList =
-  ReadonlyArray<WelcomeSuggestedStep>;
+export type WelcomeResponseSuggestedNextStepsList = Array<WelcomeSuggestedStep>;
 export const WelcomeResponseSuggestedNextStepsList = /*@__PURE__*/ S.Array(
   WelcomeSuggestedStep,
 ) as any as S.Schema<WelcomeResponseSuggestedNextStepsList>;

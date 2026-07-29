@@ -53,7 +53,7 @@ export const FetchMultiDailyMetricsTimeSeriesLocationsDailyMetricsEnum =
   /*@__PURE__*/ S.String;
 
 export type FetchMultiDailyMetricsTimeSeriesLocationsDailyMetricsEnumList =
-  ReadonlyArray<
+  Array<
     FetchMultiDailyMetricsTimeSeriesLocationsDailyMetricsEnum | (string & {})
   >;
 export const FetchMultiDailyMetricsTimeSeriesLocationsDailyMetricsEnumList =
@@ -153,7 +153,7 @@ export const DatedValue = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DatedValue" }) as any as S.Schema<DatedValue>;
 
-export type DatedValueList = ReadonlyArray<DatedValue>;
+export type DatedValueList = Array<DatedValue>;
 export const DatedValueList = /*@__PURE__*/ S.Array(
   DatedValue,
 ) as any as S.Schema<DatedValueList>;
@@ -235,7 +235,7 @@ export const DailyMetricTimeSeries = /*@__PURE__*/ S.suspend(() =>
   identifier: "DailyMetricTimeSeries",
 }) as any as S.Schema<DailyMetricTimeSeries>;
 
-export type DailyMetricTimeSeriesList = ReadonlyArray<DailyMetricTimeSeries>;
+export type DailyMetricTimeSeriesList = Array<DailyMetricTimeSeries>;
 export const DailyMetricTimeSeriesList = /*@__PURE__*/ S.Array(
   DailyMetricTimeSeries,
 ) as any as S.Schema<DailyMetricTimeSeriesList>;
@@ -253,8 +253,7 @@ export const MultiDailyMetricTimeSeries = /*@__PURE__*/ S.suspend(() =>
   identifier: "MultiDailyMetricTimeSeries",
 }) as any as S.Schema<MultiDailyMetricTimeSeries>;
 
-export type MultiDailyMetricTimeSeriesList =
-  ReadonlyArray<MultiDailyMetricTimeSeries>;
+export type MultiDailyMetricTimeSeriesList = Array<MultiDailyMetricTimeSeries>;
 export const MultiDailyMetricTimeSeriesList = /*@__PURE__*/ S.Array(
   MultiDailyMetricTimeSeries,
 ) as any as S.Schema<MultiDailyMetricTimeSeriesList>;
@@ -460,7 +459,7 @@ export const SearchKeywordCount = /*@__PURE__*/ S.suspend(() =>
   identifier: "SearchKeywordCount",
 }) as any as S.Schema<SearchKeywordCount>;
 
-export type SearchKeywordCountList = ReadonlyArray<SearchKeywordCount>;
+export type SearchKeywordCountList = Array<SearchKeywordCount>;
 export const SearchKeywordCountList = /*@__PURE__*/ S.Array(
   SearchKeywordCount,
 ) as any as S.Schema<SearchKeywordCountList>;

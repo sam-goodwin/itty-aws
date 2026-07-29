@@ -99,8 +99,7 @@ export const PluginLogEntry = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PluginLogEntry" }) as any as S.Schema<PluginLogEntry>;
 
-export type PaginatedPluginLogEntryListResultsList =
-  ReadonlyArray<PluginLogEntry>;
+export type PaginatedPluginLogEntryListResultsList = Array<PluginLogEntry>;
 export const PaginatedPluginLogEntryListResultsList = /*@__PURE__*/ S.Array(
   PluginLogEntry,
 ) as any as S.Schema<PaginatedPluginLogEntryListResultsList>;

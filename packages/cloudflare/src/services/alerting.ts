@@ -313,7 +313,7 @@ export const PoliciesCreateRequestMechanismsEmailItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PoliciesCreateRequestMechanismsEmailItem>;
 
 export type PoliciesCreateRequestMechanismsEmailList =
-  ReadonlyArray<PoliciesCreateRequestMechanismsEmailItem>;
+  Array<PoliciesCreateRequestMechanismsEmailItem>;
 export const PoliciesCreateRequestMechanismsEmailList = /*@__PURE__*/ S.Array(
   PoliciesCreateRequestMechanismsEmailItem,
 ) as any as S.Schema<PoliciesCreateRequestMechanismsEmailList>;
@@ -332,7 +332,7 @@ export const PoliciesCreateRequestMechanismsPagerdutyItem =
   }) as any as S.Schema<PoliciesCreateRequestMechanismsPagerdutyItem>;
 
 export type PoliciesCreateRequestMechanismsPagerdutyList =
-  ReadonlyArray<PoliciesCreateRequestMechanismsPagerdutyItem>;
+  Array<PoliciesCreateRequestMechanismsPagerdutyItem>;
 export const PoliciesCreateRequestMechanismsPagerdutyList =
   /*@__PURE__*/ S.Array(
     PoliciesCreateRequestMechanismsPagerdutyItem,
@@ -352,7 +352,7 @@ export const PoliciesCreateRequestMechanismsWebhooksItem =
   }) as any as S.Schema<PoliciesCreateRequestMechanismsWebhooksItem>;
 
 export type PoliciesCreateRequestMechanismsWebhooksList =
-  ReadonlyArray<PoliciesCreateRequestMechanismsWebhooksItem>;
+  Array<PoliciesCreateRequestMechanismsWebhooksItem>;
 export const PoliciesCreateRequestMechanismsWebhooksList =
   /*@__PURE__*/ S.Array(
     PoliciesCreateRequestMechanismsWebhooksItem,
@@ -373,86 +373,82 @@ export const PoliciesCreateRequestMechanisms = /*@__PURE__*/ S.suspend(() =>
   identifier: "PoliciesCreateRequestMechanisms",
 }) as any as S.Schema<PoliciesCreateRequestMechanisms>;
 
-export type PoliciesCreateRequestFiltersActionsList = ReadonlyArray<string>;
+export type PoliciesCreateRequestFiltersActionsList = Array<string>;
 export const PoliciesCreateRequestFiltersActionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesCreateRequestFiltersActionsList>;
 
-export type PoliciesCreateRequestFiltersAffectedAsnsList =
-  ReadonlyArray<string>;
+export type PoliciesCreateRequestFiltersAffectedAsnsList = Array<string>;
 export const PoliciesCreateRequestFiltersAffectedAsnsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PoliciesCreateRequestFiltersAffectedAsnsList>;
 
-export type PoliciesCreateRequestFiltersAffectedComponentsList =
-  ReadonlyArray<string>;
+export type PoliciesCreateRequestFiltersAffectedComponentsList = Array<string>;
 export const PoliciesCreateRequestFiltersAffectedComponentsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PoliciesCreateRequestFiltersAffectedComponentsList>;
 
-export type PoliciesCreateRequestFiltersAffectedLocationsList =
-  ReadonlyArray<string>;
+export type PoliciesCreateRequestFiltersAffectedLocationsList = Array<string>;
 export const PoliciesCreateRequestFiltersAffectedLocationsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PoliciesCreateRequestFiltersAffectedLocationsList>;
 
-export type PoliciesCreateRequestFiltersAirportCodeList = ReadonlyArray<string>;
+export type PoliciesCreateRequestFiltersAirportCodeList = Array<string>;
 export const PoliciesCreateRequestFiltersAirportCodeList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PoliciesCreateRequestFiltersAirportCodeList>;
 
 export type PoliciesCreateRequestFiltersAlertTriggerPreferencesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PoliciesCreateRequestFiltersAlertTriggerPreferencesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PoliciesCreateRequestFiltersAlertTriggerPreferencesList>;
 
 export type PoliciesCreateRequestFiltersAlertTriggerPreferencesValueList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PoliciesCreateRequestFiltersAlertTriggerPreferencesValueList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PoliciesCreateRequestFiltersAlertTriggerPreferencesValueList>;
 
-export type PoliciesCreateRequestFiltersEnabledList = ReadonlyArray<string>;
+export type PoliciesCreateRequestFiltersEnabledList = Array<string>;
 export const PoliciesCreateRequestFiltersEnabledList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesCreateRequestFiltersEnabledList>;
 
-export type PoliciesCreateRequestFiltersEnvironmentList = ReadonlyArray<string>;
+export type PoliciesCreateRequestFiltersEnvironmentList = Array<string>;
 export const PoliciesCreateRequestFiltersEnvironmentList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PoliciesCreateRequestFiltersEnvironmentList>;
 
-export type PoliciesCreateRequestFiltersEventList = ReadonlyArray<string>;
+export type PoliciesCreateRequestFiltersEventList = Array<string>;
 export const PoliciesCreateRequestFiltersEventList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesCreateRequestFiltersEventList>;
 
-export type PoliciesCreateRequestFiltersEventSourceList = ReadonlyArray<string>;
+export type PoliciesCreateRequestFiltersEventSourceList = Array<string>;
 export const PoliciesCreateRequestFiltersEventSourceList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PoliciesCreateRequestFiltersEventSourceList>;
 
-export type PoliciesCreateRequestFiltersEventTypeList = ReadonlyArray<string>;
+export type PoliciesCreateRequestFiltersEventTypeList = Array<string>;
 export const PoliciesCreateRequestFiltersEventTypeList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesCreateRequestFiltersEventTypeList>;
 
-export type PoliciesCreateRequestFiltersGroupByList = ReadonlyArray<string>;
+export type PoliciesCreateRequestFiltersGroupByList = Array<string>;
 export const PoliciesCreateRequestFiltersGroupByList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesCreateRequestFiltersGroupByList>;
 
-export type PoliciesCreateRequestFiltersHealthCheckIdList =
-  ReadonlyArray<string>;
+export type PoliciesCreateRequestFiltersHealthCheckIdList = Array<string>;
 export const PoliciesCreateRequestFiltersHealthCheckIdList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -466,7 +462,7 @@ export type PoliciesCreateRequestFiltersIncidentImpactItem =
 export const PoliciesCreateRequestFiltersIncidentImpactItem =
   /*@__PURE__*/ S.String;
 
-export type PoliciesCreateRequestFiltersIncidentImpactList = ReadonlyArray<
+export type PoliciesCreateRequestFiltersIncidentImpactList = Array<
   PoliciesCreateRequestFiltersIncidentImpactItem | (string & {})
 >;
 export const PoliciesCreateRequestFiltersIncidentImpactList =
@@ -474,123 +470,117 @@ export const PoliciesCreateRequestFiltersIncidentImpactList =
     PoliciesCreateRequestFiltersIncidentImpactItem,
   ) as any as S.Schema<PoliciesCreateRequestFiltersIncidentImpactList>;
 
-export type PoliciesCreateRequestFiltersInputIdList = ReadonlyArray<string>;
+export type PoliciesCreateRequestFiltersInputIdList = Array<string>;
 export const PoliciesCreateRequestFiltersInputIdList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesCreateRequestFiltersInputIdList>;
 
-export type PoliciesCreateRequestFiltersInsightClassList =
-  ReadonlyArray<string>;
+export type PoliciesCreateRequestFiltersInsightClassList = Array<string>;
 export const PoliciesCreateRequestFiltersInsightClassList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PoliciesCreateRequestFiltersInsightClassList>;
 
-export type PoliciesCreateRequestFiltersLimitList = ReadonlyArray<string>;
+export type PoliciesCreateRequestFiltersLimitList = Array<string>;
 export const PoliciesCreateRequestFiltersLimitList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesCreateRequestFiltersLimitList>;
 
-export type PoliciesCreateRequestFiltersLogoTagList = ReadonlyArray<string>;
+export type PoliciesCreateRequestFiltersLogoTagList = Array<string>;
 export const PoliciesCreateRequestFiltersLogoTagList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesCreateRequestFiltersLogoTagList>;
 
-export type PoliciesCreateRequestFiltersMegabitsPerSecondList =
-  ReadonlyArray<string>;
+export type PoliciesCreateRequestFiltersMegabitsPerSecondList = Array<string>;
 export const PoliciesCreateRequestFiltersMegabitsPerSecondList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PoliciesCreateRequestFiltersMegabitsPerSecondList>;
 
-export type PoliciesCreateRequestFiltersNewHealthList = ReadonlyArray<string>;
+export type PoliciesCreateRequestFiltersNewHealthList = Array<string>;
 export const PoliciesCreateRequestFiltersNewHealthList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesCreateRequestFiltersNewHealthList>;
 
-export type PoliciesCreateRequestFiltersNewStatusList = ReadonlyArray<string>;
+export type PoliciesCreateRequestFiltersNewStatusList = Array<string>;
 export const PoliciesCreateRequestFiltersNewStatusList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesCreateRequestFiltersNewStatusList>;
 
-export type PoliciesCreateRequestFiltersPacketsPerSecondList =
-  ReadonlyArray<string>;
+export type PoliciesCreateRequestFiltersPacketsPerSecondList = Array<string>;
 export const PoliciesCreateRequestFiltersPacketsPerSecondList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PoliciesCreateRequestFiltersPacketsPerSecondList>;
 
-export type PoliciesCreateRequestFiltersPoolIdList = ReadonlyArray<string>;
+export type PoliciesCreateRequestFiltersPoolIdList = Array<string>;
 export const PoliciesCreateRequestFiltersPoolIdList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesCreateRequestFiltersPoolIdList>;
 
-export type PoliciesCreateRequestFiltersPopNamesList = ReadonlyArray<string>;
+export type PoliciesCreateRequestFiltersPopNamesList = Array<string>;
 export const PoliciesCreateRequestFiltersPopNamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesCreateRequestFiltersPopNamesList>;
 
-export type PoliciesCreateRequestFiltersProductList = ReadonlyArray<string>;
+export type PoliciesCreateRequestFiltersProductList = Array<string>;
 export const PoliciesCreateRequestFiltersProductList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesCreateRequestFiltersProductList>;
 
-export type PoliciesCreateRequestFiltersProjectIdList = ReadonlyArray<string>;
+export type PoliciesCreateRequestFiltersProjectIdList = Array<string>;
 export const PoliciesCreateRequestFiltersProjectIdList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesCreateRequestFiltersProjectIdList>;
 
-export type PoliciesCreateRequestFiltersProtocolList = ReadonlyArray<string>;
+export type PoliciesCreateRequestFiltersProtocolList = Array<string>;
 export const PoliciesCreateRequestFiltersProtocolList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesCreateRequestFiltersProtocolList>;
 
-export type PoliciesCreateRequestFiltersQueryTagList = ReadonlyArray<string>;
+export type PoliciesCreateRequestFiltersQueryTagList = Array<string>;
 export const PoliciesCreateRequestFiltersQueryTagList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesCreateRequestFiltersQueryTagList>;
 
-export type PoliciesCreateRequestFiltersRequestsPerSecondList =
-  ReadonlyArray<string>;
+export type PoliciesCreateRequestFiltersRequestsPerSecondList = Array<string>;
 export const PoliciesCreateRequestFiltersRequestsPerSecondList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PoliciesCreateRequestFiltersRequestsPerSecondList>;
 
-export type PoliciesCreateRequestFiltersSelectorsList = ReadonlyArray<string>;
+export type PoliciesCreateRequestFiltersSelectorsList = Array<string>;
 export const PoliciesCreateRequestFiltersSelectorsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesCreateRequestFiltersSelectorsList>;
 
-export type PoliciesCreateRequestFiltersServicesList = ReadonlyArray<string>;
+export type PoliciesCreateRequestFiltersServicesList = Array<string>;
 export const PoliciesCreateRequestFiltersServicesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesCreateRequestFiltersServicesList>;
 
-export type PoliciesCreateRequestFiltersSloList = ReadonlyArray<string>;
+export type PoliciesCreateRequestFiltersSloList = Array<string>;
 export const PoliciesCreateRequestFiltersSloList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesCreateRequestFiltersSloList>;
 
-export type PoliciesCreateRequestFiltersStatusList = ReadonlyArray<string>;
+export type PoliciesCreateRequestFiltersStatusList = Array<string>;
 export const PoliciesCreateRequestFiltersStatusList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesCreateRequestFiltersStatusList>;
 
-export type PoliciesCreateRequestFiltersTargetHostnameList =
-  ReadonlyArray<string>;
+export type PoliciesCreateRequestFiltersTargetHostnameList = Array<string>;
 export const PoliciesCreateRequestFiltersTargetHostnameList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PoliciesCreateRequestFiltersTargetHostnameList>;
 
-export type PoliciesCreateRequestFiltersTargetIpList = ReadonlyArray<string>;
+export type PoliciesCreateRequestFiltersTargetIpList = Array<string>;
 export const PoliciesCreateRequestFiltersTargetIpList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesCreateRequestFiltersTargetIpList>;
 
-export type PoliciesCreateRequestFiltersTargetZoneNameList =
-  ReadonlyArray<string>;
+export type PoliciesCreateRequestFiltersTargetZoneNameList = Array<string>;
 export const PoliciesCreateRequestFiltersTargetZoneNameList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -601,7 +591,7 @@ export type PoliciesCreateRequestFiltersTrafficExclusionsItem =
 export const PoliciesCreateRequestFiltersTrafficExclusionsItem =
   /*@__PURE__*/ S.String;
 
-export type PoliciesCreateRequestFiltersTrafficExclusionsList = ReadonlyArray<
+export type PoliciesCreateRequestFiltersTrafficExclusionsList = Array<
   PoliciesCreateRequestFiltersTrafficExclusionsItem | (string & {})
 >;
 export const PoliciesCreateRequestFiltersTrafficExclusionsList =
@@ -609,27 +599,27 @@ export const PoliciesCreateRequestFiltersTrafficExclusionsList =
     PoliciesCreateRequestFiltersTrafficExclusionsItem,
   ) as any as S.Schema<PoliciesCreateRequestFiltersTrafficExclusionsList>;
 
-export type PoliciesCreateRequestFiltersTunnelIdList = ReadonlyArray<string>;
+export type PoliciesCreateRequestFiltersTunnelIdList = Array<string>;
 export const PoliciesCreateRequestFiltersTunnelIdList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesCreateRequestFiltersTunnelIdList>;
 
-export type PoliciesCreateRequestFiltersTunnelNameList = ReadonlyArray<string>;
+export type PoliciesCreateRequestFiltersTunnelNameList = Array<string>;
 export const PoliciesCreateRequestFiltersTunnelNameList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesCreateRequestFiltersTunnelNameList>;
 
-export type PoliciesCreateRequestFiltersTypeList = ReadonlyArray<string>;
+export type PoliciesCreateRequestFiltersTypeList = Array<string>;
 export const PoliciesCreateRequestFiltersTypeList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesCreateRequestFiltersTypeList>;
 
-export type PoliciesCreateRequestFiltersWhereList = ReadonlyArray<string>;
+export type PoliciesCreateRequestFiltersWhereList = Array<string>;
 export const PoliciesCreateRequestFiltersWhereList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesCreateRequestFiltersWhereList>;
 
-export type PoliciesCreateRequestFiltersZonesList = ReadonlyArray<string>;
+export type PoliciesCreateRequestFiltersZonesList = Array<string>;
 export const PoliciesCreateRequestFiltersZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesCreateRequestFiltersZonesList>;
@@ -931,7 +921,7 @@ export const SilencesCreateRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SilencesCreateRequestBodyItem>;
 
 export type SilencesCreateRequestBodyList =
-  ReadonlyArray<SilencesCreateRequestBodyItem>;
+  Array<SilencesCreateRequestBodyItem>;
 export const SilencesCreateRequestBodyList = /*@__PURE__*/ S.Array(
   SilencesCreateRequestBodyItem,
 ) as any as S.Schema<SilencesCreateRequestBodyList>;
@@ -1129,7 +1119,7 @@ export const DestinationsEligibleGetResultValueItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DestinationsEligibleGetResultValueItem>;
 
 export type DestinationsEligibleGetResultValueList =
-  ReadonlyArray<DestinationsEligibleGetResultValueItem>;
+  Array<DestinationsEligibleGetResultValueItem>;
 export const DestinationsEligibleGetResultValueList = /*@__PURE__*/ S.Array(
   DestinationsEligibleGetResultValueItem,
 ) as any as S.Schema<DestinationsEligibleGetResultValueList>;
@@ -1185,7 +1175,7 @@ export const DestinationsPagerdutyGetResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DestinationsPagerdutyGetResultItem>;
 
 export type DestinationsPagerdutyGetResultList =
-  ReadonlyArray<DestinationsPagerdutyGetResultItem>;
+  Array<DestinationsPagerdutyGetResultItem>;
 export const DestinationsPagerdutyGetResultList = /*@__PURE__*/ S.Array(
   DestinationsPagerdutyGetResultItem,
 ) as any as S.Schema<DestinationsPagerdutyGetResultList>;
@@ -1368,80 +1358,78 @@ export type PoliciesGetResponseAlertType =
   | "zone_aop_custom_certificate_expiration_type";
 export const PoliciesGetResponseAlertType = /*@__PURE__*/ S.String;
 
-export type PoliciesGetResponseFiltersActionsList = ReadonlyArray<string>;
+export type PoliciesGetResponseFiltersActionsList = Array<string>;
 export const PoliciesGetResponseFiltersActionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesGetResponseFiltersActionsList>;
 
-export type PoliciesGetResponseFiltersAffectedAsnsList = ReadonlyArray<string>;
+export type PoliciesGetResponseFiltersAffectedAsnsList = Array<string>;
 export const PoliciesGetResponseFiltersAffectedAsnsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesGetResponseFiltersAffectedAsnsList>;
 
-export type PoliciesGetResponseFiltersAffectedComponentsList =
-  ReadonlyArray<string>;
+export type PoliciesGetResponseFiltersAffectedComponentsList = Array<string>;
 export const PoliciesGetResponseFiltersAffectedComponentsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PoliciesGetResponseFiltersAffectedComponentsList>;
 
-export type PoliciesGetResponseFiltersAffectedLocationsList =
-  ReadonlyArray<string>;
+export type PoliciesGetResponseFiltersAffectedLocationsList = Array<string>;
 export const PoliciesGetResponseFiltersAffectedLocationsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PoliciesGetResponseFiltersAffectedLocationsList>;
 
-export type PoliciesGetResponseFiltersAirportCodeList = ReadonlyArray<string>;
+export type PoliciesGetResponseFiltersAirportCodeList = Array<string>;
 export const PoliciesGetResponseFiltersAirportCodeList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesGetResponseFiltersAirportCodeList>;
 
 export type PoliciesGetResponseFiltersAlertTriggerPreferencesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PoliciesGetResponseFiltersAlertTriggerPreferencesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PoliciesGetResponseFiltersAlertTriggerPreferencesList>;
 
 export type PoliciesGetResponseFiltersAlertTriggerPreferencesValueList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PoliciesGetResponseFiltersAlertTriggerPreferencesValueList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PoliciesGetResponseFiltersAlertTriggerPreferencesValueList>;
 
-export type PoliciesGetResponseFiltersEnabledList = ReadonlyArray<string>;
+export type PoliciesGetResponseFiltersEnabledList = Array<string>;
 export const PoliciesGetResponseFiltersEnabledList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesGetResponseFiltersEnabledList>;
 
-export type PoliciesGetResponseFiltersEnvironmentList = ReadonlyArray<string>;
+export type PoliciesGetResponseFiltersEnvironmentList = Array<string>;
 export const PoliciesGetResponseFiltersEnvironmentList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesGetResponseFiltersEnvironmentList>;
 
-export type PoliciesGetResponseFiltersEventList = ReadonlyArray<string>;
+export type PoliciesGetResponseFiltersEventList = Array<string>;
 export const PoliciesGetResponseFiltersEventList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesGetResponseFiltersEventList>;
 
-export type PoliciesGetResponseFiltersEventSourceList = ReadonlyArray<string>;
+export type PoliciesGetResponseFiltersEventSourceList = Array<string>;
 export const PoliciesGetResponseFiltersEventSourceList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesGetResponseFiltersEventSourceList>;
 
-export type PoliciesGetResponseFiltersEventTypeList = ReadonlyArray<string>;
+export type PoliciesGetResponseFiltersEventTypeList = Array<string>;
 export const PoliciesGetResponseFiltersEventTypeList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesGetResponseFiltersEventTypeList>;
 
-export type PoliciesGetResponseFiltersGroupByList = ReadonlyArray<string>;
+export type PoliciesGetResponseFiltersGroupByList = Array<string>;
 export const PoliciesGetResponseFiltersGroupByList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesGetResponseFiltersGroupByList>;
 
-export type PoliciesGetResponseFiltersHealthCheckIdList = ReadonlyArray<string>;
+export type PoliciesGetResponseFiltersHealthCheckIdList = Array<string>;
 export const PoliciesGetResponseFiltersHealthCheckIdList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1456,127 +1444,122 @@ export const PoliciesGetResponseFiltersIncidentImpactItem =
   /*@__PURE__*/ S.String;
 
 export type PoliciesGetResponseFiltersIncidentImpactList =
-  ReadonlyArray<PoliciesGetResponseFiltersIncidentImpactItem>;
+  Array<PoliciesGetResponseFiltersIncidentImpactItem>;
 export const PoliciesGetResponseFiltersIncidentImpactList =
   /*@__PURE__*/ S.Array(
     PoliciesGetResponseFiltersIncidentImpactItem,
   ) as any as S.Schema<PoliciesGetResponseFiltersIncidentImpactList>;
 
-export type PoliciesGetResponseFiltersInputIdList = ReadonlyArray<string>;
+export type PoliciesGetResponseFiltersInputIdList = Array<string>;
 export const PoliciesGetResponseFiltersInputIdList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesGetResponseFiltersInputIdList>;
 
-export type PoliciesGetResponseFiltersInsightClassList = ReadonlyArray<string>;
+export type PoliciesGetResponseFiltersInsightClassList = Array<string>;
 export const PoliciesGetResponseFiltersInsightClassList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesGetResponseFiltersInsightClassList>;
 
-export type PoliciesGetResponseFiltersLimitList = ReadonlyArray<string>;
+export type PoliciesGetResponseFiltersLimitList = Array<string>;
 export const PoliciesGetResponseFiltersLimitList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesGetResponseFiltersLimitList>;
 
-export type PoliciesGetResponseFiltersLogoTagList = ReadonlyArray<string>;
+export type PoliciesGetResponseFiltersLogoTagList = Array<string>;
 export const PoliciesGetResponseFiltersLogoTagList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesGetResponseFiltersLogoTagList>;
 
-export type PoliciesGetResponseFiltersMegabitsPerSecondList =
-  ReadonlyArray<string>;
+export type PoliciesGetResponseFiltersMegabitsPerSecondList = Array<string>;
 export const PoliciesGetResponseFiltersMegabitsPerSecondList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PoliciesGetResponseFiltersMegabitsPerSecondList>;
 
-export type PoliciesGetResponseFiltersNewHealthList = ReadonlyArray<string>;
+export type PoliciesGetResponseFiltersNewHealthList = Array<string>;
 export const PoliciesGetResponseFiltersNewHealthList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesGetResponseFiltersNewHealthList>;
 
-export type PoliciesGetResponseFiltersNewStatusList = ReadonlyArray<string>;
+export type PoliciesGetResponseFiltersNewStatusList = Array<string>;
 export const PoliciesGetResponseFiltersNewStatusList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesGetResponseFiltersNewStatusList>;
 
-export type PoliciesGetResponseFiltersPacketsPerSecondList =
-  ReadonlyArray<string>;
+export type PoliciesGetResponseFiltersPacketsPerSecondList = Array<string>;
 export const PoliciesGetResponseFiltersPacketsPerSecondList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PoliciesGetResponseFiltersPacketsPerSecondList>;
 
-export type PoliciesGetResponseFiltersPoolIdList = ReadonlyArray<string>;
+export type PoliciesGetResponseFiltersPoolIdList = Array<string>;
 export const PoliciesGetResponseFiltersPoolIdList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesGetResponseFiltersPoolIdList>;
 
-export type PoliciesGetResponseFiltersPopNamesList = ReadonlyArray<string>;
+export type PoliciesGetResponseFiltersPopNamesList = Array<string>;
 export const PoliciesGetResponseFiltersPopNamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesGetResponseFiltersPopNamesList>;
 
-export type PoliciesGetResponseFiltersProductList = ReadonlyArray<string>;
+export type PoliciesGetResponseFiltersProductList = Array<string>;
 export const PoliciesGetResponseFiltersProductList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesGetResponseFiltersProductList>;
 
-export type PoliciesGetResponseFiltersProjectIdList = ReadonlyArray<string>;
+export type PoliciesGetResponseFiltersProjectIdList = Array<string>;
 export const PoliciesGetResponseFiltersProjectIdList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesGetResponseFiltersProjectIdList>;
 
-export type PoliciesGetResponseFiltersProtocolList = ReadonlyArray<string>;
+export type PoliciesGetResponseFiltersProtocolList = Array<string>;
 export const PoliciesGetResponseFiltersProtocolList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesGetResponseFiltersProtocolList>;
 
-export type PoliciesGetResponseFiltersQueryTagList = ReadonlyArray<string>;
+export type PoliciesGetResponseFiltersQueryTagList = Array<string>;
 export const PoliciesGetResponseFiltersQueryTagList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesGetResponseFiltersQueryTagList>;
 
-export type PoliciesGetResponseFiltersRequestsPerSecondList =
-  ReadonlyArray<string>;
+export type PoliciesGetResponseFiltersRequestsPerSecondList = Array<string>;
 export const PoliciesGetResponseFiltersRequestsPerSecondList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PoliciesGetResponseFiltersRequestsPerSecondList>;
 
-export type PoliciesGetResponseFiltersSelectorsList = ReadonlyArray<string>;
+export type PoliciesGetResponseFiltersSelectorsList = Array<string>;
 export const PoliciesGetResponseFiltersSelectorsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesGetResponseFiltersSelectorsList>;
 
-export type PoliciesGetResponseFiltersServicesList = ReadonlyArray<string>;
+export type PoliciesGetResponseFiltersServicesList = Array<string>;
 export const PoliciesGetResponseFiltersServicesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesGetResponseFiltersServicesList>;
 
-export type PoliciesGetResponseFiltersSloList = ReadonlyArray<string>;
+export type PoliciesGetResponseFiltersSloList = Array<string>;
 export const PoliciesGetResponseFiltersSloList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesGetResponseFiltersSloList>;
 
-export type PoliciesGetResponseFiltersStatusList = ReadonlyArray<string>;
+export type PoliciesGetResponseFiltersStatusList = Array<string>;
 export const PoliciesGetResponseFiltersStatusList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesGetResponseFiltersStatusList>;
 
-export type PoliciesGetResponseFiltersTargetHostnameList =
-  ReadonlyArray<string>;
+export type PoliciesGetResponseFiltersTargetHostnameList = Array<string>;
 export const PoliciesGetResponseFiltersTargetHostnameList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PoliciesGetResponseFiltersTargetHostnameList>;
 
-export type PoliciesGetResponseFiltersTargetIpList = ReadonlyArray<string>;
+export type PoliciesGetResponseFiltersTargetIpList = Array<string>;
 export const PoliciesGetResponseFiltersTargetIpList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesGetResponseFiltersTargetIpList>;
 
-export type PoliciesGetResponseFiltersTargetZoneNameList =
-  ReadonlyArray<string>;
+export type PoliciesGetResponseFiltersTargetZoneNameList = Array<string>;
 export const PoliciesGetResponseFiltersTargetZoneNameList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1587,33 +1570,33 @@ export const PoliciesGetResponseFiltersTrafficExclusionsItem =
   /*@__PURE__*/ S.String;
 
 export type PoliciesGetResponseFiltersTrafficExclusionsList =
-  ReadonlyArray<PoliciesGetResponseFiltersTrafficExclusionsItem>;
+  Array<PoliciesGetResponseFiltersTrafficExclusionsItem>;
 export const PoliciesGetResponseFiltersTrafficExclusionsList =
   /*@__PURE__*/ S.Array(
     PoliciesGetResponseFiltersTrafficExclusionsItem,
   ) as any as S.Schema<PoliciesGetResponseFiltersTrafficExclusionsList>;
 
-export type PoliciesGetResponseFiltersTunnelIdList = ReadonlyArray<string>;
+export type PoliciesGetResponseFiltersTunnelIdList = Array<string>;
 export const PoliciesGetResponseFiltersTunnelIdList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesGetResponseFiltersTunnelIdList>;
 
-export type PoliciesGetResponseFiltersTunnelNameList = ReadonlyArray<string>;
+export type PoliciesGetResponseFiltersTunnelNameList = Array<string>;
 export const PoliciesGetResponseFiltersTunnelNameList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesGetResponseFiltersTunnelNameList>;
 
-export type PoliciesGetResponseFiltersTypeList = ReadonlyArray<string>;
+export type PoliciesGetResponseFiltersTypeList = Array<string>;
 export const PoliciesGetResponseFiltersTypeList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesGetResponseFiltersTypeList>;
 
-export type PoliciesGetResponseFiltersWhereList = ReadonlyArray<string>;
+export type PoliciesGetResponseFiltersWhereList = Array<string>;
 export const PoliciesGetResponseFiltersWhereList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesGetResponseFiltersWhereList>;
 
-export type PoliciesGetResponseFiltersZonesList = ReadonlyArray<string>;
+export type PoliciesGetResponseFiltersZonesList = Array<string>;
 export const PoliciesGetResponseFiltersZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesGetResponseFiltersZonesList>;
@@ -1852,7 +1835,7 @@ export const PoliciesGetResponseMechanismsEmailItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PoliciesGetResponseMechanismsEmailItem>;
 
 export type PoliciesGetResponseMechanismsEmailList =
-  ReadonlyArray<PoliciesGetResponseMechanismsEmailItem>;
+  Array<PoliciesGetResponseMechanismsEmailItem>;
 export const PoliciesGetResponseMechanismsEmailList = /*@__PURE__*/ S.Array(
   PoliciesGetResponseMechanismsEmailItem,
 ) as any as S.Schema<PoliciesGetResponseMechanismsEmailList>;
@@ -1871,7 +1854,7 @@ export const PoliciesGetResponseMechanismsPagerdutyItem =
   }) as any as S.Schema<PoliciesGetResponseMechanismsPagerdutyItem>;
 
 export type PoliciesGetResponseMechanismsPagerdutyList =
-  ReadonlyArray<PoliciesGetResponseMechanismsPagerdutyItem>;
+  Array<PoliciesGetResponseMechanismsPagerdutyItem>;
 export const PoliciesGetResponseMechanismsPagerdutyList = /*@__PURE__*/ S.Array(
   PoliciesGetResponseMechanismsPagerdutyItem,
 ) as any as S.Schema<PoliciesGetResponseMechanismsPagerdutyList>;
@@ -1890,7 +1873,7 @@ export const PoliciesGetResponseMechanismsWebhooksItem =
   }) as any as S.Schema<PoliciesGetResponseMechanismsWebhooksItem>;
 
 export type PoliciesGetResponseMechanismsWebhooksList =
-  ReadonlyArray<PoliciesGetResponseMechanismsWebhooksItem>;
+  Array<PoliciesGetResponseMechanismsWebhooksItem>;
 export const PoliciesGetResponseMechanismsWebhooksList = /*@__PURE__*/ S.Array(
   PoliciesGetResponseMechanismsWebhooksItem,
 ) as any as S.Schema<PoliciesGetResponseMechanismsWebhooksList>;
@@ -2058,7 +2041,7 @@ export const ListAvailableAlertsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAvailableAlertsRequest>;
 
 export type AvailableAlertsListResultValueItemFilterOptionsList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const AvailableAlertsListResultValueItemFilterOptionsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -2090,7 +2073,7 @@ export const AvailableAlertsListResultValueItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AvailableAlertsListResultValueItem>;
 
 export type AvailableAlertsListResultValueList =
-  ReadonlyArray<AvailableAlertsListResultValueItem>;
+  Array<AvailableAlertsListResultValueItem>;
 export const AvailableAlertsListResultValueList = /*@__PURE__*/ S.Array(
   AvailableAlertsListResultValueItem,
 ) as any as S.Schema<AvailableAlertsListResultValueList>;
@@ -2175,7 +2158,7 @@ export const DestinationsWebhooksListResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DestinationsWebhooksListResultItem>;
 
 export type DestinationsWebhooksListResultList =
-  ReadonlyArray<DestinationsWebhooksListResultItem>;
+  Array<DestinationsWebhooksListResultItem>;
 export const DestinationsWebhooksListResultList = /*@__PURE__*/ S.Array(
   DestinationsWebhooksListResultItem,
 ) as any as S.Schema<DestinationsWebhooksListResultList>;
@@ -2271,7 +2254,7 @@ export const HistoryListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "HistoryListResultItem",
 }) as any as S.Schema<HistoryListResultItem>;
 
-export type HistoryListResultList = ReadonlyArray<HistoryListResultItem>;
+export type HistoryListResultList = Array<HistoryListResultItem>;
 export const HistoryListResultList = /*@__PURE__*/ S.Array(
   HistoryListResultItem,
 ) as any as S.Schema<HistoryListResultList>;
@@ -2383,89 +2366,82 @@ export type PoliciesListResultItemAlertType =
   | "zone_aop_custom_certificate_expiration_type";
 export const PoliciesListResultItemAlertType = /*@__PURE__*/ S.String;
 
-export type PoliciesListResultItemFiltersActionsList = ReadonlyArray<string>;
+export type PoliciesListResultItemFiltersActionsList = Array<string>;
 export const PoliciesListResultItemFiltersActionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesListResultItemFiltersActionsList>;
 
-export type PoliciesListResultItemFiltersAffectedAsnsList =
-  ReadonlyArray<string>;
+export type PoliciesListResultItemFiltersAffectedAsnsList = Array<string>;
 export const PoliciesListResultItemFiltersAffectedAsnsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PoliciesListResultItemFiltersAffectedAsnsList>;
 
-export type PoliciesListResultItemFiltersAffectedComponentsList =
-  ReadonlyArray<string>;
+export type PoliciesListResultItemFiltersAffectedComponentsList = Array<string>;
 export const PoliciesListResultItemFiltersAffectedComponentsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PoliciesListResultItemFiltersAffectedComponentsList>;
 
-export type PoliciesListResultItemFiltersAffectedLocationsList =
-  ReadonlyArray<string>;
+export type PoliciesListResultItemFiltersAffectedLocationsList = Array<string>;
 export const PoliciesListResultItemFiltersAffectedLocationsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PoliciesListResultItemFiltersAffectedLocationsList>;
 
-export type PoliciesListResultItemFiltersAirportCodeList =
-  ReadonlyArray<string>;
+export type PoliciesListResultItemFiltersAirportCodeList = Array<string>;
 export const PoliciesListResultItemFiltersAirportCodeList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PoliciesListResultItemFiltersAirportCodeList>;
 
 export type PoliciesListResultItemFiltersAlertTriggerPreferencesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PoliciesListResultItemFiltersAlertTriggerPreferencesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PoliciesListResultItemFiltersAlertTriggerPreferencesList>;
 
 export type PoliciesListResultItemFiltersAlertTriggerPreferencesValueList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PoliciesListResultItemFiltersAlertTriggerPreferencesValueList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PoliciesListResultItemFiltersAlertTriggerPreferencesValueList>;
 
-export type PoliciesListResultItemFiltersEnabledList = ReadonlyArray<string>;
+export type PoliciesListResultItemFiltersEnabledList = Array<string>;
 export const PoliciesListResultItemFiltersEnabledList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesListResultItemFiltersEnabledList>;
 
-export type PoliciesListResultItemFiltersEnvironmentList =
-  ReadonlyArray<string>;
+export type PoliciesListResultItemFiltersEnvironmentList = Array<string>;
 export const PoliciesListResultItemFiltersEnvironmentList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PoliciesListResultItemFiltersEnvironmentList>;
 
-export type PoliciesListResultItemFiltersEventList = ReadonlyArray<string>;
+export type PoliciesListResultItemFiltersEventList = Array<string>;
 export const PoliciesListResultItemFiltersEventList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesListResultItemFiltersEventList>;
 
-export type PoliciesListResultItemFiltersEventSourceList =
-  ReadonlyArray<string>;
+export type PoliciesListResultItemFiltersEventSourceList = Array<string>;
 export const PoliciesListResultItemFiltersEventSourceList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PoliciesListResultItemFiltersEventSourceList>;
 
-export type PoliciesListResultItemFiltersEventTypeList = ReadonlyArray<string>;
+export type PoliciesListResultItemFiltersEventTypeList = Array<string>;
 export const PoliciesListResultItemFiltersEventTypeList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesListResultItemFiltersEventTypeList>;
 
-export type PoliciesListResultItemFiltersGroupByList = ReadonlyArray<string>;
+export type PoliciesListResultItemFiltersGroupByList = Array<string>;
 export const PoliciesListResultItemFiltersGroupByList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesListResultItemFiltersGroupByList>;
 
-export type PoliciesListResultItemFiltersHealthCheckIdList =
-  ReadonlyArray<string>;
+export type PoliciesListResultItemFiltersHealthCheckIdList = Array<string>;
 export const PoliciesListResultItemFiltersHealthCheckIdList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2480,129 +2456,123 @@ export const PoliciesListResultItemFiltersIncidentImpactItem =
   /*@__PURE__*/ S.String;
 
 export type PoliciesListResultItemFiltersIncidentImpactList =
-  ReadonlyArray<PoliciesListResultItemFiltersIncidentImpactItem>;
+  Array<PoliciesListResultItemFiltersIncidentImpactItem>;
 export const PoliciesListResultItemFiltersIncidentImpactList =
   /*@__PURE__*/ S.Array(
     PoliciesListResultItemFiltersIncidentImpactItem,
   ) as any as S.Schema<PoliciesListResultItemFiltersIncidentImpactList>;
 
-export type PoliciesListResultItemFiltersInputIdList = ReadonlyArray<string>;
+export type PoliciesListResultItemFiltersInputIdList = Array<string>;
 export const PoliciesListResultItemFiltersInputIdList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesListResultItemFiltersInputIdList>;
 
-export type PoliciesListResultItemFiltersInsightClassList =
-  ReadonlyArray<string>;
+export type PoliciesListResultItemFiltersInsightClassList = Array<string>;
 export const PoliciesListResultItemFiltersInsightClassList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PoliciesListResultItemFiltersInsightClassList>;
 
-export type PoliciesListResultItemFiltersLimitList = ReadonlyArray<string>;
+export type PoliciesListResultItemFiltersLimitList = Array<string>;
 export const PoliciesListResultItemFiltersLimitList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesListResultItemFiltersLimitList>;
 
-export type PoliciesListResultItemFiltersLogoTagList = ReadonlyArray<string>;
+export type PoliciesListResultItemFiltersLogoTagList = Array<string>;
 export const PoliciesListResultItemFiltersLogoTagList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesListResultItemFiltersLogoTagList>;
 
-export type PoliciesListResultItemFiltersMegabitsPerSecondList =
-  ReadonlyArray<string>;
+export type PoliciesListResultItemFiltersMegabitsPerSecondList = Array<string>;
 export const PoliciesListResultItemFiltersMegabitsPerSecondList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PoliciesListResultItemFiltersMegabitsPerSecondList>;
 
-export type PoliciesListResultItemFiltersNewHealthList = ReadonlyArray<string>;
+export type PoliciesListResultItemFiltersNewHealthList = Array<string>;
 export const PoliciesListResultItemFiltersNewHealthList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesListResultItemFiltersNewHealthList>;
 
-export type PoliciesListResultItemFiltersNewStatusList = ReadonlyArray<string>;
+export type PoliciesListResultItemFiltersNewStatusList = Array<string>;
 export const PoliciesListResultItemFiltersNewStatusList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesListResultItemFiltersNewStatusList>;
 
-export type PoliciesListResultItemFiltersPacketsPerSecondList =
-  ReadonlyArray<string>;
+export type PoliciesListResultItemFiltersPacketsPerSecondList = Array<string>;
 export const PoliciesListResultItemFiltersPacketsPerSecondList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PoliciesListResultItemFiltersPacketsPerSecondList>;
 
-export type PoliciesListResultItemFiltersPoolIdList = ReadonlyArray<string>;
+export type PoliciesListResultItemFiltersPoolIdList = Array<string>;
 export const PoliciesListResultItemFiltersPoolIdList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesListResultItemFiltersPoolIdList>;
 
-export type PoliciesListResultItemFiltersPopNamesList = ReadonlyArray<string>;
+export type PoliciesListResultItemFiltersPopNamesList = Array<string>;
 export const PoliciesListResultItemFiltersPopNamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesListResultItemFiltersPopNamesList>;
 
-export type PoliciesListResultItemFiltersProductList = ReadonlyArray<string>;
+export type PoliciesListResultItemFiltersProductList = Array<string>;
 export const PoliciesListResultItemFiltersProductList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesListResultItemFiltersProductList>;
 
-export type PoliciesListResultItemFiltersProjectIdList = ReadonlyArray<string>;
+export type PoliciesListResultItemFiltersProjectIdList = Array<string>;
 export const PoliciesListResultItemFiltersProjectIdList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesListResultItemFiltersProjectIdList>;
 
-export type PoliciesListResultItemFiltersProtocolList = ReadonlyArray<string>;
+export type PoliciesListResultItemFiltersProtocolList = Array<string>;
 export const PoliciesListResultItemFiltersProtocolList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesListResultItemFiltersProtocolList>;
 
-export type PoliciesListResultItemFiltersQueryTagList = ReadonlyArray<string>;
+export type PoliciesListResultItemFiltersQueryTagList = Array<string>;
 export const PoliciesListResultItemFiltersQueryTagList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesListResultItemFiltersQueryTagList>;
 
-export type PoliciesListResultItemFiltersRequestsPerSecondList =
-  ReadonlyArray<string>;
+export type PoliciesListResultItemFiltersRequestsPerSecondList = Array<string>;
 export const PoliciesListResultItemFiltersRequestsPerSecondList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PoliciesListResultItemFiltersRequestsPerSecondList>;
 
-export type PoliciesListResultItemFiltersSelectorsList = ReadonlyArray<string>;
+export type PoliciesListResultItemFiltersSelectorsList = Array<string>;
 export const PoliciesListResultItemFiltersSelectorsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesListResultItemFiltersSelectorsList>;
 
-export type PoliciesListResultItemFiltersServicesList = ReadonlyArray<string>;
+export type PoliciesListResultItemFiltersServicesList = Array<string>;
 export const PoliciesListResultItemFiltersServicesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesListResultItemFiltersServicesList>;
 
-export type PoliciesListResultItemFiltersSloList = ReadonlyArray<string>;
+export type PoliciesListResultItemFiltersSloList = Array<string>;
 export const PoliciesListResultItemFiltersSloList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesListResultItemFiltersSloList>;
 
-export type PoliciesListResultItemFiltersStatusList = ReadonlyArray<string>;
+export type PoliciesListResultItemFiltersStatusList = Array<string>;
 export const PoliciesListResultItemFiltersStatusList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesListResultItemFiltersStatusList>;
 
-export type PoliciesListResultItemFiltersTargetHostnameList =
-  ReadonlyArray<string>;
+export type PoliciesListResultItemFiltersTargetHostnameList = Array<string>;
 export const PoliciesListResultItemFiltersTargetHostnameList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PoliciesListResultItemFiltersTargetHostnameList>;
 
-export type PoliciesListResultItemFiltersTargetIpList = ReadonlyArray<string>;
+export type PoliciesListResultItemFiltersTargetIpList = Array<string>;
 export const PoliciesListResultItemFiltersTargetIpList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesListResultItemFiltersTargetIpList>;
 
-export type PoliciesListResultItemFiltersTargetZoneNameList =
-  ReadonlyArray<string>;
+export type PoliciesListResultItemFiltersTargetZoneNameList = Array<string>;
 export const PoliciesListResultItemFiltersTargetZoneNameList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2614,34 +2584,34 @@ export const PoliciesListResultItemFiltersTrafficExclusionsItem =
   /*@__PURE__*/ S.String;
 
 export type PoliciesListResultItemFiltersTrafficExclusionsList =
-  ReadonlyArray<PoliciesListResultItemFiltersTrafficExclusionsItem>;
+  Array<PoliciesListResultItemFiltersTrafficExclusionsItem>;
 export const PoliciesListResultItemFiltersTrafficExclusionsList =
   /*@__PURE__*/ S.Array(
     PoliciesListResultItemFiltersTrafficExclusionsItem,
   ) as any as S.Schema<PoliciesListResultItemFiltersTrafficExclusionsList>;
 
-export type PoliciesListResultItemFiltersTunnelIdList = ReadonlyArray<string>;
+export type PoliciesListResultItemFiltersTunnelIdList = Array<string>;
 export const PoliciesListResultItemFiltersTunnelIdList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesListResultItemFiltersTunnelIdList>;
 
-export type PoliciesListResultItemFiltersTunnelNameList = ReadonlyArray<string>;
+export type PoliciesListResultItemFiltersTunnelNameList = Array<string>;
 export const PoliciesListResultItemFiltersTunnelNameList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PoliciesListResultItemFiltersTunnelNameList>;
 
-export type PoliciesListResultItemFiltersTypeList = ReadonlyArray<string>;
+export type PoliciesListResultItemFiltersTypeList = Array<string>;
 export const PoliciesListResultItemFiltersTypeList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesListResultItemFiltersTypeList>;
 
-export type PoliciesListResultItemFiltersWhereList = ReadonlyArray<string>;
+export type PoliciesListResultItemFiltersWhereList = Array<string>;
 export const PoliciesListResultItemFiltersWhereList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesListResultItemFiltersWhereList>;
 
-export type PoliciesListResultItemFiltersZonesList = ReadonlyArray<string>;
+export type PoliciesListResultItemFiltersZonesList = Array<string>;
 export const PoliciesListResultItemFiltersZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesListResultItemFiltersZonesList>;
@@ -2884,7 +2854,7 @@ export const PoliciesListResultItemMechanismsEmailItem =
   }) as any as S.Schema<PoliciesListResultItemMechanismsEmailItem>;
 
 export type PoliciesListResultItemMechanismsEmailList =
-  ReadonlyArray<PoliciesListResultItemMechanismsEmailItem>;
+  Array<PoliciesListResultItemMechanismsEmailItem>;
 export const PoliciesListResultItemMechanismsEmailList = /*@__PURE__*/ S.Array(
   PoliciesListResultItemMechanismsEmailItem,
 ) as any as S.Schema<PoliciesListResultItemMechanismsEmailList>;
@@ -2903,7 +2873,7 @@ export const PoliciesListResultItemMechanismsPagerdutyItem =
   }) as any as S.Schema<PoliciesListResultItemMechanismsPagerdutyItem>;
 
 export type PoliciesListResultItemMechanismsPagerdutyList =
-  ReadonlyArray<PoliciesListResultItemMechanismsPagerdutyItem>;
+  Array<PoliciesListResultItemMechanismsPagerdutyItem>;
 export const PoliciesListResultItemMechanismsPagerdutyList =
   /*@__PURE__*/ S.Array(
     PoliciesListResultItemMechanismsPagerdutyItem,
@@ -2923,7 +2893,7 @@ export const PoliciesListResultItemMechanismsWebhooksItem =
   }) as any as S.Schema<PoliciesListResultItemMechanismsWebhooksItem>;
 
 export type PoliciesListResultItemMechanismsWebhooksList =
-  ReadonlyArray<PoliciesListResultItemMechanismsWebhooksItem>;
+  Array<PoliciesListResultItemMechanismsWebhooksItem>;
 export const PoliciesListResultItemMechanismsWebhooksList =
   /*@__PURE__*/ S.Array(
     PoliciesListResultItemMechanismsWebhooksItem,
@@ -2983,7 +2953,7 @@ export const PoliciesListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "PoliciesListResultItem",
 }) as any as S.Schema<PoliciesListResultItem>;
 
-export type PoliciesListResultList = ReadonlyArray<PoliciesListResultItem>;
+export type PoliciesListResultList = Array<PoliciesListResultItem>;
 export const PoliciesListResultList = /*@__PURE__*/ S.Array(
   PoliciesListResultItem,
 ) as any as S.Schema<PoliciesListResultList>;
@@ -3050,7 +3020,7 @@ export const SilencesListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "SilencesListResultItem",
 }) as any as S.Schema<SilencesListResultItem>;
 
-export type SilencesListResultList = ReadonlyArray<SilencesListResultItem>;
+export type SilencesListResultList = Array<SilencesListResultItem>;
 export const SilencesListResultList = /*@__PURE__*/ S.Array(
   SilencesListResultItem,
 ) as any as S.Schema<SilencesListResultList>;
@@ -3187,86 +3157,82 @@ export type PoliciesUpdateRequestAlertType =
   | "zone_aop_custom_certificate_expiration_type";
 export const PoliciesUpdateRequestAlertType = /*@__PURE__*/ S.String;
 
-export type PoliciesUpdateRequestFiltersActionsList = ReadonlyArray<string>;
+export type PoliciesUpdateRequestFiltersActionsList = Array<string>;
 export const PoliciesUpdateRequestFiltersActionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesUpdateRequestFiltersActionsList>;
 
-export type PoliciesUpdateRequestFiltersAffectedAsnsList =
-  ReadonlyArray<string>;
+export type PoliciesUpdateRequestFiltersAffectedAsnsList = Array<string>;
 export const PoliciesUpdateRequestFiltersAffectedAsnsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PoliciesUpdateRequestFiltersAffectedAsnsList>;
 
-export type PoliciesUpdateRequestFiltersAffectedComponentsList =
-  ReadonlyArray<string>;
+export type PoliciesUpdateRequestFiltersAffectedComponentsList = Array<string>;
 export const PoliciesUpdateRequestFiltersAffectedComponentsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PoliciesUpdateRequestFiltersAffectedComponentsList>;
 
-export type PoliciesUpdateRequestFiltersAffectedLocationsList =
-  ReadonlyArray<string>;
+export type PoliciesUpdateRequestFiltersAffectedLocationsList = Array<string>;
 export const PoliciesUpdateRequestFiltersAffectedLocationsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PoliciesUpdateRequestFiltersAffectedLocationsList>;
 
-export type PoliciesUpdateRequestFiltersAirportCodeList = ReadonlyArray<string>;
+export type PoliciesUpdateRequestFiltersAirportCodeList = Array<string>;
 export const PoliciesUpdateRequestFiltersAirportCodeList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PoliciesUpdateRequestFiltersAirportCodeList>;
 
 export type PoliciesUpdateRequestFiltersAlertTriggerPreferencesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PoliciesUpdateRequestFiltersAlertTriggerPreferencesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PoliciesUpdateRequestFiltersAlertTriggerPreferencesList>;
 
 export type PoliciesUpdateRequestFiltersAlertTriggerPreferencesValueList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PoliciesUpdateRequestFiltersAlertTriggerPreferencesValueList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PoliciesUpdateRequestFiltersAlertTriggerPreferencesValueList>;
 
-export type PoliciesUpdateRequestFiltersEnabledList = ReadonlyArray<string>;
+export type PoliciesUpdateRequestFiltersEnabledList = Array<string>;
 export const PoliciesUpdateRequestFiltersEnabledList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesUpdateRequestFiltersEnabledList>;
 
-export type PoliciesUpdateRequestFiltersEnvironmentList = ReadonlyArray<string>;
+export type PoliciesUpdateRequestFiltersEnvironmentList = Array<string>;
 export const PoliciesUpdateRequestFiltersEnvironmentList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PoliciesUpdateRequestFiltersEnvironmentList>;
 
-export type PoliciesUpdateRequestFiltersEventList = ReadonlyArray<string>;
+export type PoliciesUpdateRequestFiltersEventList = Array<string>;
 export const PoliciesUpdateRequestFiltersEventList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesUpdateRequestFiltersEventList>;
 
-export type PoliciesUpdateRequestFiltersEventSourceList = ReadonlyArray<string>;
+export type PoliciesUpdateRequestFiltersEventSourceList = Array<string>;
 export const PoliciesUpdateRequestFiltersEventSourceList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PoliciesUpdateRequestFiltersEventSourceList>;
 
-export type PoliciesUpdateRequestFiltersEventTypeList = ReadonlyArray<string>;
+export type PoliciesUpdateRequestFiltersEventTypeList = Array<string>;
 export const PoliciesUpdateRequestFiltersEventTypeList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesUpdateRequestFiltersEventTypeList>;
 
-export type PoliciesUpdateRequestFiltersGroupByList = ReadonlyArray<string>;
+export type PoliciesUpdateRequestFiltersGroupByList = Array<string>;
 export const PoliciesUpdateRequestFiltersGroupByList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesUpdateRequestFiltersGroupByList>;
 
-export type PoliciesUpdateRequestFiltersHealthCheckIdList =
-  ReadonlyArray<string>;
+export type PoliciesUpdateRequestFiltersHealthCheckIdList = Array<string>;
 export const PoliciesUpdateRequestFiltersHealthCheckIdList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3280,7 +3246,7 @@ export type PoliciesUpdateRequestFiltersIncidentImpactItem =
 export const PoliciesUpdateRequestFiltersIncidentImpactItem =
   /*@__PURE__*/ S.String;
 
-export type PoliciesUpdateRequestFiltersIncidentImpactList = ReadonlyArray<
+export type PoliciesUpdateRequestFiltersIncidentImpactList = Array<
   PoliciesUpdateRequestFiltersIncidentImpactItem | (string & {})
 >;
 export const PoliciesUpdateRequestFiltersIncidentImpactList =
@@ -3288,123 +3254,117 @@ export const PoliciesUpdateRequestFiltersIncidentImpactList =
     PoliciesUpdateRequestFiltersIncidentImpactItem,
   ) as any as S.Schema<PoliciesUpdateRequestFiltersIncidentImpactList>;
 
-export type PoliciesUpdateRequestFiltersInputIdList = ReadonlyArray<string>;
+export type PoliciesUpdateRequestFiltersInputIdList = Array<string>;
 export const PoliciesUpdateRequestFiltersInputIdList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesUpdateRequestFiltersInputIdList>;
 
-export type PoliciesUpdateRequestFiltersInsightClassList =
-  ReadonlyArray<string>;
+export type PoliciesUpdateRequestFiltersInsightClassList = Array<string>;
 export const PoliciesUpdateRequestFiltersInsightClassList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PoliciesUpdateRequestFiltersInsightClassList>;
 
-export type PoliciesUpdateRequestFiltersLimitList = ReadonlyArray<string>;
+export type PoliciesUpdateRequestFiltersLimitList = Array<string>;
 export const PoliciesUpdateRequestFiltersLimitList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesUpdateRequestFiltersLimitList>;
 
-export type PoliciesUpdateRequestFiltersLogoTagList = ReadonlyArray<string>;
+export type PoliciesUpdateRequestFiltersLogoTagList = Array<string>;
 export const PoliciesUpdateRequestFiltersLogoTagList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesUpdateRequestFiltersLogoTagList>;
 
-export type PoliciesUpdateRequestFiltersMegabitsPerSecondList =
-  ReadonlyArray<string>;
+export type PoliciesUpdateRequestFiltersMegabitsPerSecondList = Array<string>;
 export const PoliciesUpdateRequestFiltersMegabitsPerSecondList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PoliciesUpdateRequestFiltersMegabitsPerSecondList>;
 
-export type PoliciesUpdateRequestFiltersNewHealthList = ReadonlyArray<string>;
+export type PoliciesUpdateRequestFiltersNewHealthList = Array<string>;
 export const PoliciesUpdateRequestFiltersNewHealthList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesUpdateRequestFiltersNewHealthList>;
 
-export type PoliciesUpdateRequestFiltersNewStatusList = ReadonlyArray<string>;
+export type PoliciesUpdateRequestFiltersNewStatusList = Array<string>;
 export const PoliciesUpdateRequestFiltersNewStatusList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesUpdateRequestFiltersNewStatusList>;
 
-export type PoliciesUpdateRequestFiltersPacketsPerSecondList =
-  ReadonlyArray<string>;
+export type PoliciesUpdateRequestFiltersPacketsPerSecondList = Array<string>;
 export const PoliciesUpdateRequestFiltersPacketsPerSecondList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PoliciesUpdateRequestFiltersPacketsPerSecondList>;
 
-export type PoliciesUpdateRequestFiltersPoolIdList = ReadonlyArray<string>;
+export type PoliciesUpdateRequestFiltersPoolIdList = Array<string>;
 export const PoliciesUpdateRequestFiltersPoolIdList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesUpdateRequestFiltersPoolIdList>;
 
-export type PoliciesUpdateRequestFiltersPopNamesList = ReadonlyArray<string>;
+export type PoliciesUpdateRequestFiltersPopNamesList = Array<string>;
 export const PoliciesUpdateRequestFiltersPopNamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesUpdateRequestFiltersPopNamesList>;
 
-export type PoliciesUpdateRequestFiltersProductList = ReadonlyArray<string>;
+export type PoliciesUpdateRequestFiltersProductList = Array<string>;
 export const PoliciesUpdateRequestFiltersProductList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesUpdateRequestFiltersProductList>;
 
-export type PoliciesUpdateRequestFiltersProjectIdList = ReadonlyArray<string>;
+export type PoliciesUpdateRequestFiltersProjectIdList = Array<string>;
 export const PoliciesUpdateRequestFiltersProjectIdList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesUpdateRequestFiltersProjectIdList>;
 
-export type PoliciesUpdateRequestFiltersProtocolList = ReadonlyArray<string>;
+export type PoliciesUpdateRequestFiltersProtocolList = Array<string>;
 export const PoliciesUpdateRequestFiltersProtocolList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesUpdateRequestFiltersProtocolList>;
 
-export type PoliciesUpdateRequestFiltersQueryTagList = ReadonlyArray<string>;
+export type PoliciesUpdateRequestFiltersQueryTagList = Array<string>;
 export const PoliciesUpdateRequestFiltersQueryTagList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesUpdateRequestFiltersQueryTagList>;
 
-export type PoliciesUpdateRequestFiltersRequestsPerSecondList =
-  ReadonlyArray<string>;
+export type PoliciesUpdateRequestFiltersRequestsPerSecondList = Array<string>;
 export const PoliciesUpdateRequestFiltersRequestsPerSecondList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PoliciesUpdateRequestFiltersRequestsPerSecondList>;
 
-export type PoliciesUpdateRequestFiltersSelectorsList = ReadonlyArray<string>;
+export type PoliciesUpdateRequestFiltersSelectorsList = Array<string>;
 export const PoliciesUpdateRequestFiltersSelectorsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesUpdateRequestFiltersSelectorsList>;
 
-export type PoliciesUpdateRequestFiltersServicesList = ReadonlyArray<string>;
+export type PoliciesUpdateRequestFiltersServicesList = Array<string>;
 export const PoliciesUpdateRequestFiltersServicesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesUpdateRequestFiltersServicesList>;
 
-export type PoliciesUpdateRequestFiltersSloList = ReadonlyArray<string>;
+export type PoliciesUpdateRequestFiltersSloList = Array<string>;
 export const PoliciesUpdateRequestFiltersSloList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesUpdateRequestFiltersSloList>;
 
-export type PoliciesUpdateRequestFiltersStatusList = ReadonlyArray<string>;
+export type PoliciesUpdateRequestFiltersStatusList = Array<string>;
 export const PoliciesUpdateRequestFiltersStatusList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesUpdateRequestFiltersStatusList>;
 
-export type PoliciesUpdateRequestFiltersTargetHostnameList =
-  ReadonlyArray<string>;
+export type PoliciesUpdateRequestFiltersTargetHostnameList = Array<string>;
 export const PoliciesUpdateRequestFiltersTargetHostnameList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PoliciesUpdateRequestFiltersTargetHostnameList>;
 
-export type PoliciesUpdateRequestFiltersTargetIpList = ReadonlyArray<string>;
+export type PoliciesUpdateRequestFiltersTargetIpList = Array<string>;
 export const PoliciesUpdateRequestFiltersTargetIpList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesUpdateRequestFiltersTargetIpList>;
 
-export type PoliciesUpdateRequestFiltersTargetZoneNameList =
-  ReadonlyArray<string>;
+export type PoliciesUpdateRequestFiltersTargetZoneNameList = Array<string>;
 export const PoliciesUpdateRequestFiltersTargetZoneNameList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3415,7 +3375,7 @@ export type PoliciesUpdateRequestFiltersTrafficExclusionsItem =
 export const PoliciesUpdateRequestFiltersTrafficExclusionsItem =
   /*@__PURE__*/ S.String;
 
-export type PoliciesUpdateRequestFiltersTrafficExclusionsList = ReadonlyArray<
+export type PoliciesUpdateRequestFiltersTrafficExclusionsList = Array<
   PoliciesUpdateRequestFiltersTrafficExclusionsItem | (string & {})
 >;
 export const PoliciesUpdateRequestFiltersTrafficExclusionsList =
@@ -3423,27 +3383,27 @@ export const PoliciesUpdateRequestFiltersTrafficExclusionsList =
     PoliciesUpdateRequestFiltersTrafficExclusionsItem,
   ) as any as S.Schema<PoliciesUpdateRequestFiltersTrafficExclusionsList>;
 
-export type PoliciesUpdateRequestFiltersTunnelIdList = ReadonlyArray<string>;
+export type PoliciesUpdateRequestFiltersTunnelIdList = Array<string>;
 export const PoliciesUpdateRequestFiltersTunnelIdList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesUpdateRequestFiltersTunnelIdList>;
 
-export type PoliciesUpdateRequestFiltersTunnelNameList = ReadonlyArray<string>;
+export type PoliciesUpdateRequestFiltersTunnelNameList = Array<string>;
 export const PoliciesUpdateRequestFiltersTunnelNameList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesUpdateRequestFiltersTunnelNameList>;
 
-export type PoliciesUpdateRequestFiltersTypeList = ReadonlyArray<string>;
+export type PoliciesUpdateRequestFiltersTypeList = Array<string>;
 export const PoliciesUpdateRequestFiltersTypeList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesUpdateRequestFiltersTypeList>;
 
-export type PoliciesUpdateRequestFiltersWhereList = ReadonlyArray<string>;
+export type PoliciesUpdateRequestFiltersWhereList = Array<string>;
 export const PoliciesUpdateRequestFiltersWhereList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesUpdateRequestFiltersWhereList>;
 
-export type PoliciesUpdateRequestFiltersZonesList = ReadonlyArray<string>;
+export type PoliciesUpdateRequestFiltersZonesList = Array<string>;
 export const PoliciesUpdateRequestFiltersZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesUpdateRequestFiltersZonesList>;
@@ -3686,7 +3646,7 @@ export const PoliciesUpdateRequestMechanismsEmailItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PoliciesUpdateRequestMechanismsEmailItem>;
 
 export type PoliciesUpdateRequestMechanismsEmailList =
-  ReadonlyArray<PoliciesUpdateRequestMechanismsEmailItem>;
+  Array<PoliciesUpdateRequestMechanismsEmailItem>;
 export const PoliciesUpdateRequestMechanismsEmailList = /*@__PURE__*/ S.Array(
   PoliciesUpdateRequestMechanismsEmailItem,
 ) as any as S.Schema<PoliciesUpdateRequestMechanismsEmailList>;
@@ -3705,7 +3665,7 @@ export const PoliciesUpdateRequestMechanismsPagerdutyItem =
   }) as any as S.Schema<PoliciesUpdateRequestMechanismsPagerdutyItem>;
 
 export type PoliciesUpdateRequestMechanismsPagerdutyList =
-  ReadonlyArray<PoliciesUpdateRequestMechanismsPagerdutyItem>;
+  Array<PoliciesUpdateRequestMechanismsPagerdutyItem>;
 export const PoliciesUpdateRequestMechanismsPagerdutyList =
   /*@__PURE__*/ S.Array(
     PoliciesUpdateRequestMechanismsPagerdutyItem,
@@ -3725,7 +3685,7 @@ export const PoliciesUpdateRequestMechanismsWebhooksItem =
   }) as any as S.Schema<PoliciesUpdateRequestMechanismsWebhooksItem>;
 
 export type PoliciesUpdateRequestMechanismsWebhooksList =
-  ReadonlyArray<PoliciesUpdateRequestMechanismsWebhooksItem>;
+  Array<PoliciesUpdateRequestMechanismsWebhooksItem>;
 export const PoliciesUpdateRequestMechanismsWebhooksList =
   /*@__PURE__*/ S.Array(
     PoliciesUpdateRequestMechanismsWebhooksItem,
@@ -3824,7 +3784,7 @@ export const SilencesUpdateRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SilencesUpdateRequestBodyItem>;
 
 export type SilencesUpdateRequestBodyList =
-  ReadonlyArray<SilencesUpdateRequestBodyItem>;
+  Array<SilencesUpdateRequestBodyItem>;
 export const SilencesUpdateRequestBodyList = /*@__PURE__*/ S.Array(
   SilencesUpdateRequestBodyItem,
 ) as any as S.Schema<SilencesUpdateRequestBodyList>;
@@ -3878,7 +3838,7 @@ export const SilencesUpdateResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "SilencesUpdateResultItem",
 }) as any as S.Schema<SilencesUpdateResultItem>;
 
-export type SilencesUpdateResultList = ReadonlyArray<SilencesUpdateResultItem>;
+export type SilencesUpdateResultList = Array<SilencesUpdateResultItem>;
 export const SilencesUpdateResultList = /*@__PURE__*/ S.Array(
   SilencesUpdateResultItem,
 ) as any as S.Schema<SilencesUpdateResultList>;

@@ -256,7 +256,7 @@ export const BatchGetRecordResponse = /*@__PURE__*/ S.suspend(() =>
 export type TargetStore = "OnlineStore" | "OfflineStore";
 export const TargetStore = /*@__PURE__*/ S.String;
 
-export type TargetStores = TargetStore[];
+export type TargetStores = (TargetStore | (string & {}))[];
 export const TargetStores = /*@__PURE__*/ S.Array(TargetStore);
 export type TtlDurationUnit =
   | "Seconds"
@@ -268,7 +268,7 @@ export const TtlDurationUnit = /*@__PURE__*/ S.String;
 
 export type TtlDurationValue = number;
 export interface TtlDuration {
-  Unit?: TtlDurationUnit;
+  Unit?: TtlDurationUnit | (string & {});
   Value?: number;
 }
 export const TtlDuration = /*@__PURE__*/ S.suspend(() =>

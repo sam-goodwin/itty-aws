@@ -539,7 +539,7 @@ export type ScteFilter =
   | "CALL_AD_SERVER";
 export const ScteFilter = /*@__PURE__*/ S.String;
 
-export type ScteFilterList = ScteFilter[];
+export type ScteFilterList = (ScteFilter | (string & {}))[];
 export const ScteFilterList = /*@__PURE__*/ S.Array(ScteFilter);
 export type ScteInSegments = "NONE" | "ALL" | "MATCHES_FILTER";
 export const ScteInSegments = /*@__PURE__*/ S.String;
@@ -552,11 +552,11 @@ export type CustomAdType =
   | "NETWORK";
 export const CustomAdType = /*@__PURE__*/ S.String;
 
-export type CustomAdTypeList = CustomAdType[];
+export type CustomAdTypeList = (CustomAdType | (string & {}))[];
 export const CustomAdTypeList = /*@__PURE__*/ S.Array(CustomAdType);
 export interface Scte {
   ScteFilter?: ScteFilter[];
-  ScteInSegments?: ScteInSegments;
+  ScteInSegments?: ScteInSegments | (string & {});
   CustomAdTypes?: CustomAdType[];
 }
 export const Scte = /*@__PURE__*/ S.suspend(() =>
@@ -576,9 +576,9 @@ export type IsmEncryptionMethod = "CENC";
 export const IsmEncryptionMethod = /*@__PURE__*/ S.String;
 
 export interface EncryptionMethod {
-  TsEncryptionMethod?: TsEncryptionMethod;
-  CmafEncryptionMethod?: CmafEncryptionMethod;
-  IsmEncryptionMethod?: IsmEncryptionMethod;
+  TsEncryptionMethod?: TsEncryptionMethod | (string & {});
+  CmafEncryptionMethod?: CmafEncryptionMethod | (string & {});
+  IsmEncryptionMethod?: IsmEncryptionMethod | (string & {});
 }
 export const EncryptionMethod = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -611,8 +611,8 @@ export type PresetSpeke20Video =
 export const PresetSpeke20Video = /*@__PURE__*/ S.String;
 
 export interface EncryptionContractConfiguration {
-  PresetSpeke20Audio: PresetSpeke20Audio;
-  PresetSpeke20Video: PresetSpeke20Video;
+  PresetSpeke20Audio: PresetSpeke20Audio | (string & {});
+  PresetSpeke20Video: PresetSpeke20Video | (string & {});
 }
 export const EncryptionContractConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -630,7 +630,7 @@ export type DrmSystem =
   | "IRDETO";
 export const DrmSystem = /*@__PURE__*/ S.String;
 
-export type DrmSystems = DrmSystem[];
+export type DrmSystems = (DrmSystem | (string & {}))[];
 export const DrmSystems = /*@__PURE__*/ S.Array(DrmSystem);
 export interface SpekeKeyProvider {
   EncryptionContractConfiguration: EncryptionContractConfiguration;
@@ -696,8 +696,8 @@ export type ScteInManifests = "ALL" | "MATCHES_FILTER";
 export const ScteInManifests = /*@__PURE__*/ S.String;
 
 export interface ScteHls {
-  AdMarkerHls?: AdMarkerHls;
-  ScteInManifests?: ScteInManifests;
+  AdMarkerHls?: AdMarkerHls | (string & {});
+  ScteInManifests?: ScteInManifests | (string & {});
 }
 export const ScteHls = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -808,14 +808,14 @@ export type DashPeriodTrigger =
   | "NONE";
 export const DashPeriodTrigger = /*@__PURE__*/ S.String;
 
-export type DashPeriodTriggers = DashPeriodTrigger[];
+export type DashPeriodTriggers = (DashPeriodTrigger | (string & {}))[];
 export const DashPeriodTriggers = /*@__PURE__*/ S.Array(DashPeriodTrigger);
 export type AdMarkerDash = "BINARY" | "XML";
 export const AdMarkerDash = /*@__PURE__*/ S.String;
 
 export interface ScteDash {
-  AdMarkerDash?: AdMarkerDash;
-  ScteInManifests?: ScteInManifests;
+  AdMarkerDash?: AdMarkerDash | (string & {});
+  ScteInManifests?: ScteInManifests | (string & {});
 }
 export const ScteDash = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -834,7 +834,7 @@ export type DashUtcTimingMode =
 export const DashUtcTimingMode = /*@__PURE__*/ S.String;
 
 export interface DashUtcTiming {
-  TimingMode?: DashUtcTimingMode;
+  TimingMode?: DashUtcTimingMode | (string & {});
   TimingSource?: string;
 }
 export const DashUtcTiming = /*@__PURE__*/ S.suspend(() =>
@@ -846,7 +846,7 @@ export const DashUtcTiming = /*@__PURE__*/ S.suspend(() =>
 export type DashProfile = "DVB_DASH";
 export const DashProfile = /*@__PURE__*/ S.String;
 
-export type DashProfiles = DashProfile[];
+export type DashProfiles = (DashProfile | (string & {}))[];
 export const DashProfiles = /*@__PURE__*/ S.Array(DashProfile);
 export interface DashBaseUrl {
   Url: string;
@@ -931,7 +931,7 @@ export type DashTtmlProfile = "IMSC_1" | "EBU_TT_D_101";
 export const DashTtmlProfile = /*@__PURE__*/ S.String;
 
 export interface DashTtmlConfiguration {
-  TtmlProfile: DashTtmlProfile;
+  TtmlProfile: DashTtmlProfile | (string & {});
 }
 export const DashTtmlConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ TtmlProfile: DashTtmlProfile }),
@@ -1038,7 +1038,10 @@ export type EndpointErrorCondition =
   | "SLATE_INPUT";
 export const EndpointErrorCondition = /*@__PURE__*/ S.String;
 
-export type EndpointErrorConditions = EndpointErrorCondition[];
+export type EndpointErrorConditions = (
+  | EndpointErrorCondition
+  | (string & {})
+)[];
 export const EndpointErrorConditions = /*@__PURE__*/ S.Array(
   EndpointErrorCondition,
 );

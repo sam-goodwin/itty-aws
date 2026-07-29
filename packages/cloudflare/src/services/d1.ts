@@ -272,7 +272,7 @@ export const DeleteDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
 export type DatabaseExportRequestOutputFormat = "polling";
 export const DatabaseExportRequestOutputFormat = /*@__PURE__*/ S.String;
 
-export type DatabaseExportRequestDumpOptionsTablesList = ReadonlyArray<string>;
+export type DatabaseExportRequestDumpOptionsTablesList = Array<string>;
 export const DatabaseExportRequestDumpOptionsTablesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DatabaseExportRequestDumpOptionsTablesList>;
@@ -330,7 +330,7 @@ export const ExportDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ExportDatabaseRequest",
 }) as any as S.Schema<ExportDatabaseRequest>;
 
-export type DatabaseExportResponseMessagesList = ReadonlyArray<string>;
+export type DatabaseExportResponseMessagesList = Array<string>;
 export const DatabaseExportResponseMessagesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DatabaseExportResponseMessagesList>;
@@ -437,7 +437,7 @@ export type DatabaseGetRequestFields =
   | "read_replication";
 export const DatabaseGetRequestFields = /*@__PURE__*/ S.String;
 
-export type DatabaseGetRequestFieldsList = ReadonlyArray<
+export type DatabaseGetRequestFieldsList = Array<
   DatabaseGetRequestFields | (string & {})
 >;
 export const DatabaseGetRequestFieldsList = /*@__PURE__*/ S.Array(
@@ -560,7 +560,7 @@ export const ImportDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ImportDatabaseRequest",
 }) as any as S.Schema<ImportDatabaseRequest>;
 
-export type DatabaseImportResponseMessagesList = ReadonlyArray<string>;
+export type DatabaseImportResponseMessagesList = Array<string>;
 export const DatabaseImportResponseMessagesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DatabaseImportResponseMessagesList>;
@@ -746,7 +746,7 @@ export const DatabaseListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "DatabaseListResultItem",
 }) as any as S.Schema<DatabaseListResultItem>;
 
-export type DatabaseListResultList = ReadonlyArray<DatabaseListResultItem>;
+export type DatabaseListResultList = Array<DatabaseListResultItem>;
 export const DatabaseListResultList = /*@__PURE__*/ S.Array(
   DatabaseListResultItem,
 ) as any as S.Schema<DatabaseListResultList>;
@@ -861,12 +861,12 @@ export const PatchDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchDatabaseResponse",
 }) as any as S.Schema<PatchDatabaseResponse>;
 
-export type DatabaseQueryRequestParamsList = ReadonlyArray<unknown>;
+export type DatabaseQueryRequestParamsList = Array<unknown>;
 export const DatabaseQueryRequestParamsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<DatabaseQueryRequestParamsList>;
 
-export type DatabaseQueryRequestBatchItemParamsList = ReadonlyArray<unknown>;
+export type DatabaseQueryRequestBatchItemParamsList = Array<unknown>;
 export const DatabaseQueryRequestBatchItemParamsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<DatabaseQueryRequestBatchItemParamsList>;
@@ -886,7 +886,7 @@ export const DatabaseQueryRequestBatchItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DatabaseQueryRequestBatchItem>;
 
 export type DatabaseQueryRequestBatchList =
-  ReadonlyArray<DatabaseQueryRequestBatchItem>;
+  Array<DatabaseQueryRequestBatchItem>;
 export const DatabaseQueryRequestBatchList = /*@__PURE__*/ S.Array(
   DatabaseQueryRequestBatchItem,
 ) as any as S.Schema<DatabaseQueryRequestBatchList>;
@@ -988,7 +988,7 @@ export const DatabaseQueryResultItemMeta = /*@__PURE__*/ S.suspend(() =>
   identifier: "DatabaseQueryResultItemMeta",
 }) as any as S.Schema<DatabaseQueryResultItemMeta>;
 
-export type DatabaseQueryResultItemResultsList = ReadonlyArray<unknown>;
+export type DatabaseQueryResultItemResultsList = Array<unknown>;
 export const DatabaseQueryResultItemResultsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<DatabaseQueryResultItemResultsList>;
@@ -1008,7 +1008,7 @@ export const DatabaseQueryResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "DatabaseQueryResultItem",
 }) as any as S.Schema<DatabaseQueryResultItem>;
 
-export type DatabaseQueryResultList = ReadonlyArray<DatabaseQueryResultItem>;
+export type DatabaseQueryResultList = Array<DatabaseQueryResultItem>;
 export const DatabaseQueryResultList = /*@__PURE__*/ S.Array(
   DatabaseQueryResultItem,
 ) as any as S.Schema<DatabaseQueryResultList>;
@@ -1028,12 +1028,12 @@ export const QueryDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "QueryDatabaseResponse",
 }) as any as S.Schema<QueryDatabaseResponse>;
 
-export type DatabaseRawRequestParamsList = ReadonlyArray<unknown>;
+export type DatabaseRawRequestParamsList = Array<unknown>;
 export const DatabaseRawRequestParamsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<DatabaseRawRequestParamsList>;
 
-export type DatabaseRawRequestBatchItemParamsList = ReadonlyArray<unknown>;
+export type DatabaseRawRequestBatchItemParamsList = Array<unknown>;
 export const DatabaseRawRequestBatchItemParamsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<DatabaseRawRequestBatchItemParamsList>;
@@ -1052,8 +1052,7 @@ export const DatabaseRawRequestBatchItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "DatabaseRawRequestBatchItem",
 }) as any as S.Schema<DatabaseRawRequestBatchItem>;
 
-export type DatabaseRawRequestBatchList =
-  ReadonlyArray<DatabaseRawRequestBatchItem>;
+export type DatabaseRawRequestBatchList = Array<DatabaseRawRequestBatchItem>;
 export const DatabaseRawRequestBatchList = /*@__PURE__*/ S.Array(
   DatabaseRawRequestBatchItem,
 ) as any as S.Schema<DatabaseRawRequestBatchList>;
@@ -1153,12 +1152,12 @@ export const DatabaseRawResultItemMeta = /*@__PURE__*/ S.suspend(() =>
   identifier: "DatabaseRawResultItemMeta",
 }) as any as S.Schema<DatabaseRawResultItemMeta>;
 
-export type DatabaseRawResultItemResultsColumnsList = ReadonlyArray<string>;
+export type DatabaseRawResultItemResultsColumnsList = Array<string>;
 export const DatabaseRawResultItemResultsColumnsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DatabaseRawResultItemResultsColumnsList>;
 
-export type DatabaseRawResultItemResultsRowsList = ReadonlyArray<unknown>;
+export type DatabaseRawResultItemResultsRowsList = Array<unknown>;
 export const DatabaseRawResultItemResultsRowsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<DatabaseRawResultItemResultsRowsList>;
@@ -1191,7 +1190,7 @@ export const DatabaseRawResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "DatabaseRawResultItem",
 }) as any as S.Schema<DatabaseRawResultItem>;
 
-export type DatabaseRawResultList = ReadonlyArray<DatabaseRawResultItem>;
+export type DatabaseRawResultList = Array<DatabaseRawResultItem>;
 export const DatabaseRawResultList = /*@__PURE__*/ S.Array(
   DatabaseRawResultItem,
 ) as any as S.Schema<DatabaseRawResultList>;

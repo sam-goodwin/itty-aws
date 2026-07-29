@@ -1202,7 +1202,7 @@ export const GranteeType = /*@__PURE__*/ S.String;
 
 export type GranteeIdentifier = string;
 export interface Grantee {
-  GranteeType?: GranteeType;
+  GranteeType?: GranteeType | (string & {});
   GranteeIdentifier?: string;
 }
 export const Grantee = /*@__PURE__*/ S.suspend(() =>
@@ -1456,7 +1456,7 @@ export type ScopePermission =
   | "AbortMultipartUpload";
 export const ScopePermission = /*@__PURE__*/ S.String;
 
-export type ScopePermissionList = ScopePermission[];
+export type ScopePermissionList = (ScopePermission | (string & {}))[];
 export const ScopePermissionList = /*@__PURE__*/ S.Array(
   ScopePermission.pipe(T.XmlName("Permission")),
 );
@@ -1532,7 +1532,10 @@ export type ObjectLambdaAllowedFeature =
   | "HeadObject-PartNumber";
 export const ObjectLambdaAllowedFeature = /*@__PURE__*/ S.String;
 
-export type ObjectLambdaAllowedFeaturesList = ObjectLambdaAllowedFeature[];
+export type ObjectLambdaAllowedFeaturesList = (
+  | ObjectLambdaAllowedFeature
+  | (string & {})
+)[];
 export const ObjectLambdaAllowedFeaturesList = /*@__PURE__*/ S.Array(
   ObjectLambdaAllowedFeature.pipe(T.XmlName("AllowedFeature")),
 );
@@ -1544,8 +1547,10 @@ export type ObjectLambdaTransformationConfigurationAction =
 export const ObjectLambdaTransformationConfigurationAction =
   /*@__PURE__*/ S.String;
 
-export type ObjectLambdaTransformationConfigurationActionsList =
-  ObjectLambdaTransformationConfigurationAction[];
+export type ObjectLambdaTransformationConfigurationActionsList = (
+  | ObjectLambdaTransformationConfigurationAction
+  | (string & {})
+)[];
 export const ObjectLambdaTransformationConfigurationActionsList =
   /*@__PURE__*/ S.Array(
     ObjectLambdaTransformationConfigurationAction.pipe(T.XmlName("Action")),
@@ -1805,7 +1810,7 @@ export const S3GranteeTypeIdentifier = /*@__PURE__*/ S.String;
 
 export type NonEmptyMaxLength1024String = string;
 export interface S3Grantee {
-  TypeIdentifier?: S3GranteeTypeIdentifier;
+  TypeIdentifier?: S3GranteeTypeIdentifier | (string & {});
   Identifier?: string;
   DisplayName?: string;
 }
@@ -1826,7 +1831,7 @@ export const S3Permission = /*@__PURE__*/ S.String;
 
 export interface S3Grant {
   Grantee?: S3Grantee;
-  Permission?: S3Permission;
+  Permission?: S3Permission | (string & {});
 }
 export const S3Grant = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1859,7 +1864,7 @@ export interface S3ObjectMetadata {
   ContentType?: string;
   HttpExpiresDate?: Date;
   RequesterCharged?: boolean;
-  SSEAlgorithm?: S3SSEAlgorithm;
+  SSEAlgorithm?: S3SSEAlgorithm | (string & {});
 }
 export const S3ObjectMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1920,23 +1925,23 @@ export const S3ChecksumAlgorithm = /*@__PURE__*/ S.String;
 
 export interface S3CopyObjectOperation {
   TargetResource?: string;
-  CannedAccessControlList?: S3CannedAccessControlList;
+  CannedAccessControlList?: S3CannedAccessControlList | (string & {});
   AccessControlGrants?: S3Grant[];
-  MetadataDirective?: S3MetadataDirective;
+  MetadataDirective?: S3MetadataDirective | (string & {});
   ModifiedSinceConstraint?: Date;
   NewObjectMetadata?: S3ObjectMetadata;
   NewObjectTagging?: S3Tag[];
   RedirectLocation?: string;
   RequesterPays?: boolean;
-  StorageClass?: S3StorageClass;
+  StorageClass?: S3StorageClass | (string & {});
   UnModifiedSinceConstraint?: Date;
   SSEAwsKmsKeyId?: string;
   TargetKeyPrefix?: string;
-  ObjectLockLegalHoldStatus?: S3ObjectLockLegalHoldStatus;
-  ObjectLockMode?: S3ObjectLockMode;
+  ObjectLockLegalHoldStatus?: S3ObjectLockLegalHoldStatus | (string & {});
+  ObjectLockMode?: S3ObjectLockMode | (string & {});
   ObjectLockRetainUntilDate?: Date;
   BucketKeyEnabled?: boolean;
-  ChecksumAlgorithm?: S3ChecksumAlgorithm;
+  ChecksumAlgorithm?: S3ChecksumAlgorithm | (string & {});
 }
 export const S3CopyObjectOperation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1980,7 +1985,7 @@ export const S3AccessControlList = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<S3AccessControlList>;
 export interface S3AccessControlPolicy {
   AccessControlList?: S3AccessControlList;
-  CannedAccessControlList?: S3CannedAccessControlList;
+  CannedAccessControlList?: S3CannedAccessControlList | (string & {});
 }
 export const S3AccessControlPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2018,7 +2023,7 @@ export const S3GlacierJobTier = /*@__PURE__*/ S.String;
 
 export interface S3InitiateRestoreObjectOperation {
   ExpirationInDays?: number;
-  GlacierJobTier?: S3GlacierJobTier;
+  GlacierJobTier?: S3GlacierJobTier | (string & {});
 }
 export const S3InitiateRestoreObjectOperation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2029,7 +2034,7 @@ export const S3InitiateRestoreObjectOperation = /*@__PURE__*/ S.suspend(() =>
   identifier: "S3InitiateRestoreObjectOperation",
 }) as any as S.Schema<S3InitiateRestoreObjectOperation>;
 export interface S3ObjectLockLegalHold {
-  Status: S3ObjectLockLegalHoldStatus;
+  Status: S3ObjectLockLegalHoldStatus | (string & {});
 }
 export const S3ObjectLockLegalHold = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Status: S3ObjectLockLegalHoldStatus }),
@@ -2049,7 +2054,7 @@ export const S3ObjectLockRetentionMode = /*@__PURE__*/ S.String;
 
 export interface S3Retention {
   RetainUntilDate?: Date;
-  Mode?: S3ObjectLockRetentionMode;
+  Mode?: S3ObjectLockRetentionMode | (string & {});
 }
 export const S3Retention = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2092,8 +2097,8 @@ export type ComputeObjectChecksumType = "FULL_OBJECT" | "COMPOSITE";
 export const ComputeObjectChecksumType = /*@__PURE__*/ S.String;
 
 export interface S3ComputeObjectChecksumOperation {
-  ChecksumAlgorithm?: ComputeObjectChecksumAlgorithm;
-  ChecksumType?: ComputeObjectChecksumType;
+  ChecksumAlgorithm?: ComputeObjectChecksumAlgorithm | (string & {});
+  ChecksumType?: ComputeObjectChecksumType | (string & {});
 }
 export const S3ComputeObjectChecksumOperation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2174,10 +2179,10 @@ export const JobReportScope = /*@__PURE__*/ S.String;
 
 export interface JobReport {
   Bucket?: string;
-  Format?: JobReportFormat;
+  Format?: JobReportFormat | (string & {});
   Enabled: boolean;
   Prefix?: string;
-  ReportScope?: JobReportScope;
+  ReportScope?: JobReportScope | (string & {});
   ExpectedBucketOwner?: string;
 }
 export const JobReport = /*@__PURE__*/ S.suspend(() =>
@@ -2198,10 +2203,10 @@ export const JobManifestFormat = /*@__PURE__*/ S.String;
 export type JobManifestFieldName = "Ignore" | "Bucket" | "Key" | "VersionId";
 export const JobManifestFieldName = /*@__PURE__*/ S.String;
 
-export type JobManifestFieldList = JobManifestFieldName[];
+export type JobManifestFieldList = (JobManifestFieldName | (string & {}))[];
 export const JobManifestFieldList = /*@__PURE__*/ S.Array(JobManifestFieldName);
 export interface JobManifestSpec {
-  Format: JobManifestFormat;
+  Format: JobManifestFormat | (string & {});
   Fields?: JobManifestFieldName[];
 }
 export const JobManifestSpec = /*@__PURE__*/ S.suspend(() =>
@@ -2276,7 +2281,7 @@ export interface S3ManifestOutputLocation {
   Bucket: string;
   ManifestPrefix?: string;
   ManifestEncryption?: GeneratedManifestEncryption;
-  ManifestFormat: GeneratedManifestFormat;
+  ManifestFormat: GeneratedManifestFormat | (string & {});
 }
 export const S3ManifestOutputLocation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2293,7 +2298,7 @@ export type ObjectCreationTime = Date;
 export type ReplicationStatus = "COMPLETED" | "FAILED" | "REPLICA" | "NONE";
 export const ReplicationStatus = /*@__PURE__*/ S.String;
 
-export type ReplicationStatusFilterList = ReplicationStatus[];
+export type ReplicationStatusFilterList = (ReplicationStatus | (string & {}))[];
 export const ReplicationStatusFilterList =
   /*@__PURE__*/ S.Array(ReplicationStatus);
 export type NonEmptyMaxLength1024StringList = string[];
@@ -2314,7 +2319,7 @@ export const KeyNameConstraint = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<KeyNameConstraint>;
 export type ObjectSizeGreaterThanBytes = number;
 export type ObjectSizeLessThanBytes = number;
-export type StorageClassList = S3StorageClass[];
+export type StorageClassList = (S3StorageClass | (string & {}))[];
 export const StorageClassList = /*@__PURE__*/ S.Array(S3StorageClass);
 export interface SSES3Filter {}
 export const SSES3Filter = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
@@ -4510,7 +4515,7 @@ export const TransitionStorageClass = /*@__PURE__*/ S.String;
 export interface Transition {
   Date?: Date;
   Days?: number;
-  StorageClass?: TransitionStorageClass;
+  StorageClass?: TransitionStorageClass | (string & {});
 }
 export const Transition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4527,7 +4532,7 @@ export const TransitionList = /*@__PURE__*/ S.Array(
 );
 export interface NoncurrentVersionTransition {
   NoncurrentDays?: number;
-  StorageClass?: TransitionStorageClass;
+  StorageClass?: TransitionStorageClass | (string & {});
 }
 export const NoncurrentVersionTransition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4569,7 +4574,7 @@ export interface LifecycleRule {
   Expiration?: LifecycleExpiration;
   ID?: string;
   Filter?: LifecycleRuleFilter;
-  Status: ExpirationStatus;
+  Status: ExpirationStatus | (string & {});
   Transitions?: Transition[];
   NoncurrentVersionTransitions?: NoncurrentVersionTransition[];
   NoncurrentVersionExpiration?: NoncurrentVersionExpiration;
@@ -4695,7 +4700,7 @@ export type SseKmsEncryptedObjectsStatus = "Enabled" | "Disabled";
 export const SseKmsEncryptedObjectsStatus = /*@__PURE__*/ S.String;
 
 export interface SseKmsEncryptedObjects {
-  Status: SseKmsEncryptedObjectsStatus;
+  Status: SseKmsEncryptedObjectsStatus | (string & {});
 }
 export const SseKmsEncryptedObjects = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Status: SseKmsEncryptedObjectsStatus }),
@@ -4706,7 +4711,7 @@ export type ReplicaModificationsStatus = "Enabled" | "Disabled";
 export const ReplicaModificationsStatus = /*@__PURE__*/ S.String;
 
 export interface ReplicaModifications {
-  Status: ReplicaModificationsStatus;
+  Status: ReplicaModificationsStatus | (string & {});
 }
 export const ReplicaModifications = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Status: ReplicaModificationsStatus }),
@@ -4729,7 +4734,7 @@ export type ExistingObjectReplicationStatus = "Enabled" | "Disabled";
 export const ExistingObjectReplicationStatus = /*@__PURE__*/ S.String;
 
 export interface ExistingObjectReplication {
-  Status: ExistingObjectReplicationStatus;
+  Status: ExistingObjectReplicationStatus | (string & {});
 }
 export const ExistingObjectReplication = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Status: ExistingObjectReplicationStatus }),
@@ -4750,7 +4755,7 @@ export const ReplicationTimeValue = /*@__PURE__*/ S.suspend(() =>
   identifier: "ReplicationTimeValue",
 }) as any as S.Schema<ReplicationTimeValue>;
 export interface ReplicationTime {
-  Status: ReplicationTimeStatus;
+  Status: ReplicationTimeStatus | (string & {});
   Time: ReplicationTimeValue;
 }
 export const ReplicationTime = /*@__PURE__*/ S.suspend(() =>
@@ -4762,7 +4767,7 @@ export type OwnerOverride = "Destination";
 export const OwnerOverride = /*@__PURE__*/ S.String;
 
 export interface AccessControlTranslation {
-  Owner: OwnerOverride;
+  Owner: OwnerOverride | (string & {});
 }
 export const AccessControlTranslation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Owner: OwnerOverride }),
@@ -4782,7 +4787,7 @@ export type MetricsStatus = "Enabled" | "Disabled";
 export const MetricsStatus = /*@__PURE__*/ S.String;
 
 export interface Metrics {
-  Status: MetricsStatus;
+  Status: MetricsStatus | (string & {});
   EventThreshold?: ReplicationTimeValue;
 }
 export const Metrics = /*@__PURE__*/ S.suspend(() =>
@@ -4810,7 +4815,7 @@ export interface Destination {
   AccessControlTranslation?: AccessControlTranslation;
   EncryptionConfiguration?: EncryptionConfiguration;
   Metrics?: Metrics;
-  StorageClass?: ReplicationStorageClass;
+  StorageClass?: ReplicationStorageClass | (string & {});
 }
 export const Destination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4827,7 +4832,7 @@ export type DeleteMarkerReplicationStatus = "Enabled" | "Disabled";
 export const DeleteMarkerReplicationStatus = /*@__PURE__*/ S.String;
 
 export interface DeleteMarkerReplication {
-  Status: DeleteMarkerReplicationStatus;
+  Status: DeleteMarkerReplicationStatus | (string & {});
 }
 export const DeleteMarkerReplication = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Status: DeleteMarkerReplicationStatus }),
@@ -4839,7 +4844,7 @@ export interface ReplicationRule {
   Priority?: number;
   Prefix?: string;
   Filter?: ReplicationRuleFilter;
-  Status: ReplicationRuleStatus;
+  Status: ReplicationRuleStatus | (string & {});
   SourceSelectionCriteria?: SourceSelectionCriteria;
   ExistingObjectReplication?: ExistingObjectReplication;
   Destination: Destination;
@@ -5610,8 +5615,8 @@ export const StorageLensDataExportEncryption = /*@__PURE__*/ S.suspend(() =>
   identifier: "StorageLensDataExportEncryption",
 }) as any as S.Schema<StorageLensDataExportEncryption>;
 export interface S3BucketDestination {
-  Format: Format;
-  OutputSchemaVersion: OutputSchemaVersion;
+  Format: Format | (string & {});
+  OutputSchemaVersion: OutputSchemaVersion | (string & {});
   AccountId: string;
   Arn: string;
   Prefix?: string;

@@ -300,7 +300,7 @@ export const CacheRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CacheRule" }) as any as S.Schema<CacheRule>;
 
 /** The list of cache rules. Since this list may be incomplete, the nextLink field should be used to request the next list of cache rules. */
-export type CacheRulesListResultValueList = ReadonlyArray<CacheRule>;
+export type CacheRulesListResultValueList = Array<CacheRule>;
 export const CacheRulesListResultValueList = /*@__PURE__*/ S.Array(
   CacheRule,
 ) as any as S.Schema<CacheRulesListResultValueList>;
@@ -436,8 +436,7 @@ export const ParentPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ParentPropertiesInput>;
 
 /** The list of the ACR token resource IDs used to authenticate clients to the connected registry. */
-export type ConnectedRegistryPropertiesInputClientTokenIdsList =
-  ReadonlyArray<string>;
+export type ConnectedRegistryPropertiesInputClientTokenIdsList = Array<string>;
 export const ConnectedRegistryPropertiesInputClientTokenIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -467,9 +466,9 @@ export const LoggingPropertiesAuditLogStatus = /*@__PURE__*/ S.String;
 /** The logging properties of the connected registry. */
 export interface LoggingProperties {
   /** The verbosity of logs persisted on the connected registry. */
-  logLevel?: LoggingPropertiesLogLevel;
+  logLevel?: LoggingPropertiesLogLevel | (string & {});
   /** Indicates whether audit logs are enabled on the connected registry. */
-  auditLogStatus?: LoggingPropertiesAuditLogStatus;
+  auditLogStatus?: LoggingPropertiesAuditLogStatus | (string & {});
 }
 export const LoggingProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -482,7 +481,7 @@ export const LoggingProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of notifications subscription information for the connected registry. */
 export type ConnectedRegistryPropertiesInputNotificationsListList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ConnectedRegistryPropertiesInputNotificationsListList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -634,8 +633,7 @@ export const ParentProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ParentProperties>;
 
 /** The list of the ACR token resource IDs used to authenticate clients to the connected registry. */
-export type ConnectedRegistryPropertiesClientTokenIdsList =
-  ReadonlyArray<string>;
+export type ConnectedRegistryPropertiesClientTokenIdsList = Array<string>;
 export const ConnectedRegistryPropertiesClientTokenIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -722,15 +720,14 @@ export const StatusDetailProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of current statuses of the connected registry. */
 export type ConnectedRegistryPropertiesStatusDetailsList =
-  ReadonlyArray<StatusDetailProperties>;
+  Array<StatusDetailProperties>;
 export const ConnectedRegistryPropertiesStatusDetailsList =
   /*@__PURE__*/ S.Array(
     StatusDetailProperties,
   ) as any as S.Schema<ConnectedRegistryPropertiesStatusDetailsList>;
 
 /** The list of notifications subscription information for the connected registry. */
-export type ConnectedRegistryPropertiesNotificationsListList =
-  ReadonlyArray<string>;
+export type ConnectedRegistryPropertiesNotificationsListList = Array<string>;
 export const ConnectedRegistryPropertiesNotificationsListList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -988,8 +985,7 @@ export const ConnectedRegistry = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConnectedRegistry>;
 
 /** The list of connected registries. Since this list may be incomplete, the nextLink field should be used to request the next list of connected registries. */
-export type ConnectedRegistryListResultValueList =
-  ReadonlyArray<ConnectedRegistry>;
+export type ConnectedRegistryListResultValueList = Array<ConnectedRegistry>;
 export const ConnectedRegistryListResultValueList = /*@__PURE__*/ S.Array(
   ConnectedRegistry,
 ) as any as S.Schema<ConnectedRegistryListResultValueList>;
@@ -1030,8 +1026,7 @@ export const SyncUpdateProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SyncUpdateProperties>;
 
 /** The list of the ACR token resource IDs used to authenticate clients to the connected registry. */
-export type ConnectedRegistryUpdatePropertiesClientTokenIdsList =
-  ReadonlyArray<string>;
+export type ConnectedRegistryUpdatePropertiesClientTokenIdsList = Array<string>;
 export const ConnectedRegistryUpdatePropertiesClientTokenIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1039,7 +1034,7 @@ export const ConnectedRegistryUpdatePropertiesClientTokenIdsList =
 
 /** The list of notifications subscription information for the connected registry. */
 export type ConnectedRegistryUpdatePropertiesNotificationsListList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ConnectedRegistryUpdatePropertiesNotificationsListList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1140,7 +1135,7 @@ export const CredentialHealthStatus = /*@__PURE__*/ S.String;
 /** The health of the auth credential. */
 export interface CredentialHealth {
   /** The health status of credential. */
-  status?: CredentialHealthStatus;
+  status?: CredentialHealthStatus | (string & {});
   /** Error code representing the health check error. */
   errorCode?: string;
   /** Descriptive message representing the health check error. */
@@ -1159,7 +1154,7 @@ export const CredentialHealth = /*@__PURE__*/ S.suspend(() =>
 /** Authentication credential stored for an upstream. */
 export interface AuthCredential {
   /** The name of the credential. */
-  name?: CredentialName;
+  name?: CredentialName | (string & {});
   /** KeyVault Secret URI for accessing the username. */
   usernameSecretIdentifier?: string;
   /** KeyVault Secret URI for accessing the password. */
@@ -1178,7 +1173,7 @@ export const AuthCredential = /*@__PURE__*/ S.suspend(() =>
 
 /** List of authentication credentials stored for an upstream. Usually consists of a primary and an optional secondary credential. */
 export type CredentialSetPropertiesInputAuthCredentialsList =
-  ReadonlyArray<AuthCredential>;
+  Array<AuthCredential>;
 export const CredentialSetPropertiesInputAuthCredentialsList =
   /*@__PURE__*/ S.Array(
     AuthCredential,
@@ -1280,8 +1275,7 @@ export const CredentialSetsCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CredentialSetsCreateRequest>;
 
 /** List of authentication credentials stored for an upstream. Usually consists of a primary and an optional secondary credential. */
-export type CredentialSetPropertiesAuthCredentialsList =
-  ReadonlyArray<AuthCredential>;
+export type CredentialSetPropertiesAuthCredentialsList = Array<AuthCredential>;
 export const CredentialSetPropertiesAuthCredentialsList = /*@__PURE__*/ S.Array(
   AuthCredential,
 ) as any as S.Schema<CredentialSetPropertiesAuthCredentialsList>;
@@ -1526,7 +1520,7 @@ export const CredentialSet = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CredentialSet" }) as any as S.Schema<CredentialSet>;
 
 /** The list of credential sets. Since this list may be incomplete, the nextLink field should be used to request the next list of credential sets. */
-export type CredentialSetListResultValueList = ReadonlyArray<CredentialSet>;
+export type CredentialSetListResultValueList = Array<CredentialSet>;
 export const CredentialSetListResultValueList = /*@__PURE__*/ S.Array(
   CredentialSet,
 ) as any as S.Schema<CredentialSetListResultValueList>;
@@ -1549,7 +1543,7 @@ export const CredentialSetListResult = /*@__PURE__*/ S.suspend(() =>
 
 /** List of authentication credentials stored for an upstream. Usually consists of a primary and an optional secondary credential. */
 export type CredentialSetUpdatePropertiesAuthCredentialsList =
-  ReadonlyArray<AuthCredential>;
+  Array<AuthCredential>;
 export const CredentialSetUpdatePropertiesAuthCredentialsList =
   /*@__PURE__*/ S.Array(
     AuthCredential,
@@ -1698,7 +1692,7 @@ export const OperationMetricSpecificationDefinition = /*@__PURE__*/ S.suspend(
 
 /** A list of Azure Monitoring metrics definition. */
 export type OperationServiceSpecificationDefinitionMetricSpecificationsList =
-  ReadonlyArray<OperationMetricSpecificationDefinition>;
+  Array<OperationMetricSpecificationDefinition>;
 export const OperationServiceSpecificationDefinitionMetricSpecificationsList =
   /*@__PURE__*/ S.Array(
     OperationMetricSpecificationDefinition,
@@ -1725,7 +1719,7 @@ export const OperationLogSpecificationDefinition = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of Azure Monitoring log definitions. */
 export type OperationServiceSpecificationDefinitionLogSpecificationsList =
-  ReadonlyArray<OperationLogSpecificationDefinition>;
+  Array<OperationLogSpecificationDefinition>;
 export const OperationServiceSpecificationDefinitionLogSpecificationsList =
   /*@__PURE__*/ S.Array(
     OperationLogSpecificationDefinition,
@@ -1791,7 +1785,7 @@ export const OperationDefinition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDefinition>;
 
 /** The list of container registry operations. Since this list may be incomplete, the nextLink field should be used to request the next list of operations. */
-export type OperationListResultValueList = ReadonlyArray<OperationDefinition>;
+export type OperationListResultValueList = Array<OperationDefinition>;
 export const OperationListResultValueList = /*@__PURE__*/ S.Array(
   OperationDefinition,
 ) as any as S.Schema<OperationListResultValueList>;
@@ -1840,11 +1834,11 @@ export const ActionsRequired = /*@__PURE__*/ S.String;
 /** The state of a private link service connection. */
 export interface PrivateLinkServiceConnectionState {
   /** The private link service connection status. */
-  status?: ConnectionStatus;
+  status?: ConnectionStatus | (string & {});
   /** The description for connection status. For example if connection is rejected it can indicate reason for rejection. */
   description?: string;
   /** A message indicating if changes on the service provider require any updates on the consumer. */
-  actionsRequired?: ActionsRequired;
+  actionsRequired?: ActionsRequired | (string & {});
 }
 export const PrivateLinkServiceConnectionState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1863,7 +1857,7 @@ export interface PrivateEndpointConnectionProperties {
   /** A collection of information about the state of the connection between service consumer and provider. */
   privateLinkServiceConnectionState?: PrivateLinkServiceConnectionState;
   /** The provisioning state of private endpoint connection resource. */
-  provisioningState?: ProvisioningState;
+  provisioningState?: ProvisioningState | (string & {});
 }
 export const PrivateEndpointConnectionProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2077,7 +2071,7 @@ export const PrivateEndpointConnection = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of private endpoint connections. Since this list may be incomplete, the nextLink field should be used to request the next list of private endpoint connections. */
 export type PrivateEndpointConnectionListResultValueList =
-  ReadonlyArray<PrivateEndpointConnection>;
+  Array<PrivateEndpointConnection>;
 export const PrivateEndpointConnectionListResultValueList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection,
@@ -2169,7 +2163,7 @@ export const IPRuleAction = /*@__PURE__*/ S.String;
 /** IP rule with specific IP or IP range in CIDR format. */
 export interface IPRule {
   /** The action of IP ACL rule. */
-  action?: IPRuleAction;
+  action?: IPRuleAction | (string & {});
   /** Specifies the IP or IP range in CIDR format. Only IPV4 address is allowed. */
   value: string;
 }
@@ -2181,7 +2175,7 @@ export const IPRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IPRule" }) as any as S.Schema<IPRule>;
 
 /** The IP ACL rules. */
-export type NetworkRuleSetIpRulesList = ReadonlyArray<IPRule>;
+export type NetworkRuleSetIpRulesList = Array<IPRule>;
 export const NetworkRuleSetIpRulesList = /*@__PURE__*/ S.Array(
   IPRule,
 ) as any as S.Schema<NetworkRuleSetIpRulesList>;
@@ -2189,7 +2183,7 @@ export const NetworkRuleSetIpRulesList = /*@__PURE__*/ S.Array(
 /** The network rule set for a container registry. */
 export interface NetworkRuleSet {
   /** The default action of allow or deny when no other rules match. */
-  defaultAction: NetworkRuleSetDefaultAction;
+  defaultAction: NetworkRuleSetDefaultAction | (string & {});
   /** The IP ACL rules. */
   ipRules?: NetworkRuleSetIpRulesList;
 }
@@ -2207,7 +2201,7 @@ export const QuarantinePolicyStatus = /*@__PURE__*/ S.String;
 /** The quarantine policy for a container registry. */
 export interface QuarantinePolicy {
   /** The value that indicates whether the policy is enabled or not. */
-  status?: QuarantinePolicyStatus;
+  status?: QuarantinePolicyStatus | (string & {});
 }
 export const QuarantinePolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2228,9 +2222,9 @@ export const TrustPolicyStatus = /*@__PURE__*/ S.String;
 /** The content trust policy for a container registry. */
 export interface TrustPolicy {
   /** The type of trust policy. */
-  type?: TrustPolicyType;
+  type?: TrustPolicyType | (string & {});
   /** The value that indicates whether the policy is enabled or not. */
-  status?: TrustPolicyStatus;
+  status?: TrustPolicyStatus | (string & {});
 }
 export const TrustPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2266,7 +2260,7 @@ export const ExportPolicyStatus = /*@__PURE__*/ S.String;
 /** The export policy for a container registry. */
 export interface ExportPolicy {
   /** The value that indicates whether the policy is enabled or not. */
-  status?: ExportPolicyStatus;
+  status?: ExportPolicyStatus | (string & {});
 }
 export const ExportPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2281,7 +2275,7 @@ export const AzureADAuthenticationAsArmPolicyStatus = /*@__PURE__*/ S.String;
 /** The policy for using Azure Resource Manager audience token for a container registry. */
 export interface AzureADAuthenticationAsArmPolicy {
   /** The value that indicates whether the policy is enabled or not. */
-  status?: AzureADAuthenticationAsArmPolicyStatus;
+  status?: AzureADAuthenticationAsArmPolicyStatus | (string & {});
 }
 export const AzureADAuthenticationAsArmPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2434,9 +2428,9 @@ export const SkuTier = /*@__PURE__*/ S.String;
 /** The SKU of a container registry. */
 export interface Sku {
   /** The SKU name of the container registry. Required for registry creation. */
-  name: SkuName;
+  name: SkuName | (string & {});
   /** The SKU tier based on the SKU name. */
-  tier?: SkuTier;
+  tier?: SkuTier | (string & {});
 }
 export const Sku = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2599,7 +2593,7 @@ export const EncryptionProperty = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EncryptionProperty>;
 
 /** List of host names that will serve data when dataEndpointEnabled is true. */
-export type RegistryPropertiesDataEndpointHostNamesList = ReadonlyArray<string>;
+export type RegistryPropertiesDataEndpointHostNamesList = Array<string>;
 export const RegistryPropertiesDataEndpointHostNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2607,7 +2601,7 @@ export const RegistryPropertiesDataEndpointHostNamesList =
 
 /** List of private endpoint connections for a container registry. */
 export type RegistryPropertiesPrivateEndpointConnectionsList =
-  ReadonlyArray<PrivateEndpointConnection>;
+  Array<PrivateEndpointConnection>;
 export const RegistryPropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection,
@@ -2829,8 +2823,7 @@ export const TokenPassword = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TokenPassword" }) as any as S.Schema<TokenPassword>;
 
 /** The list of passwords for a container registry. */
-export type GenerateCredentialsResultPasswordsList =
-  ReadonlyArray<TokenPassword>;
+export type GenerateCredentialsResultPasswordsList = Array<TokenPassword>;
 export const GenerateCredentialsResultPasswordsList = /*@__PURE__*/ S.Array(
   TokenPassword,
 ) as any as S.Schema<GenerateCredentialsResultPasswordsList>;
@@ -2993,16 +2986,14 @@ export const RegistriesGetPrivateLinkResourceRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<RegistriesGetPrivateLinkResourceRequest>;
 
 /** The private link resource required member names. */
-export type PrivateLinkResourcePropertiesRequiredMembersList =
-  ReadonlyArray<string>;
+export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
 export const PrivateLinkResourcePropertiesRequiredMembersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
 
 /** The private link resource private link DNS zone name. */
-export type PrivateLinkResourcePropertiesRequiredZoneNamesList =
-  ReadonlyArray<string>;
+export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
 export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3091,14 +3082,14 @@ export const ImportSource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ImportSource" }) as any as S.Schema<ImportSource>;
 
 /** List of strings of the form repo[:tag]. When tag is omitted the source will be used (or 'latest' if source tag is also omitted). */
-export type RegistriesImportImageRequestTargetTagsList = ReadonlyArray<string>;
+export type RegistriesImportImageRequestTargetTagsList = Array<string>;
 export const RegistriesImportImageRequestTargetTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RegistriesImportImageRequestTargetTagsList>;
 
 /** List of strings of repository names to do a manifest only copy. No tag will be created. */
 export type RegistriesImportImageRequestUntaggedTargetRepositoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RegistriesImportImageRequestUntaggedTargetRepositoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3216,7 +3207,7 @@ export const Registry = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Registry" }) as any as S.Schema<Registry>;
 
 /** The list of container registries. Since this list may be incomplete, the nextLink field should be used to request the next list of container registries. */
-export type RegistryListResultValueList = ReadonlyArray<Registry>;
+export type RegistryListResultValueList = Array<Registry>;
 export const RegistryListResultValueList = /*@__PURE__*/ S.Array(
   Registry,
 ) as any as S.Schema<RegistryListResultValueList>;
@@ -3307,7 +3298,7 @@ export const RegistryPassword = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of passwords for a container registry. */
 export type RegistryListCredentialsResultPasswordsList =
-  ReadonlyArray<RegistryPassword>;
+  Array<RegistryPassword>;
 export const RegistryListCredentialsResultPasswordsList = /*@__PURE__*/ S.Array(
   RegistryPassword,
 ) as any as S.Schema<RegistryListCredentialsResultPasswordsList>;
@@ -3382,7 +3373,7 @@ export const PrivateLinkResourceListResultValueItem = /*@__PURE__*/ S.suspend(
 
 /** The list of private link resources. Since this list may be incomplete, the nextLink field should be used to request the next list of private link resources. */
 export type PrivateLinkResourceListResultValueList =
-  ReadonlyArray<PrivateLinkResourceListResultValueItem>;
+  Array<PrivateLinkResourceListResultValueItem>;
 export const PrivateLinkResourceListResultValueList = /*@__PURE__*/ S.Array(
   PrivateLinkResourceListResultValueItem,
 ) as any as S.Schema<PrivateLinkResourceListResultValueList>;
@@ -3453,7 +3444,7 @@ export const RegistryUsage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RegistryUsage" }) as any as S.Schema<RegistryUsage>;
 
 /** The list of container registry quota usages. */
-export type RegistryUsageListResultValueList = ReadonlyArray<RegistryUsage>;
+export type RegistryUsageListResultValueList = Array<RegistryUsage>;
 export const RegistryUsageListResultValueList = /*@__PURE__*/ S.Array(
   RegistryUsage,
 ) as any as S.Schema<RegistryUsageListResultValueList>;
@@ -3574,13 +3565,13 @@ export const ImageDescriptor = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ImageDescriptor>;
 
 /** The list of all images that were generated from the run. This is applicable if the run generates base image dependencies. */
-export type RunPropertiesOutputImagesList = ReadonlyArray<ImageDescriptor>;
+export type RunPropertiesOutputImagesList = Array<ImageDescriptor>;
 export const RunPropertiesOutputImagesList = /*@__PURE__*/ S.Array(
   ImageDescriptor,
 ) as any as S.Schema<RunPropertiesOutputImagesList>;
 
 /** The list of image updates that caused the build. */
-export type ImageUpdateTriggerImagesList = ReadonlyArray<ImageDescriptor>;
+export type ImageUpdateTriggerImagesList = Array<ImageDescriptor>;
 export const ImageUpdateTriggerImagesList = /*@__PURE__*/ S.Array(
   ImageDescriptor,
 ) as any as S.Schema<ImageUpdateTriggerImagesList>;
@@ -3650,11 +3641,11 @@ export const PlatformPropertiesVariant = /*@__PURE__*/ S.String;
 /** The platform properties against which the run has to happen. */
 export interface PlatformProperties {
   /** The operating system type required for the run. */
-  os: PlatformPropertiesOs;
+  os: PlatformPropertiesOs | (string & {});
   /** The OS architecture. */
-  architecture?: PlatformPropertiesArchitecture;
+  architecture?: PlatformPropertiesArchitecture | (string & {});
   /** Variant of the CPU. */
-  variant?: PlatformPropertiesVariant;
+  variant?: PlatformPropertiesVariant | (string & {});
 }
 export const PlatformProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3680,7 +3671,7 @@ export const AgentProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AgentProperties>;
 
 /** The list of custom registries that were logged in during this run. */
-export type RunPropertiesCustomRegistriesList = ReadonlyArray<string>;
+export type RunPropertiesCustomRegistriesList = Array<string>;
 export const RunPropertiesCustomRegistriesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RunPropertiesCustomRegistriesList>;
@@ -4244,7 +4235,7 @@ export const Replication = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Replication" }) as any as S.Schema<Replication>;
 
 /** The list of replications. Since this list may be incomplete, the nextLink field should be used to request the next list of replications. */
-export type ReplicationListResultValueList = ReadonlyArray<Replication>;
+export type ReplicationListResultValueList = Array<Replication>;
 export const ReplicationListResultValueList = /*@__PURE__*/ S.Array(
   Replication,
 ) as any as S.Schema<ReplicationListResultValueList>;
@@ -4535,7 +4526,7 @@ export const Run = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Run" }) as any as S.Schema<Run>;
 
 /** The collection value. */
-export type RunListResultValueList = ReadonlyArray<Run>;
+export type RunListResultValueList = Array<Run>;
 export const RunListResultValueList = /*@__PURE__*/ S.Array(
   Run,
 ) as any as S.Schema<RunListResultValueList>;
@@ -4607,7 +4598,7 @@ export const RunsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RunsUpdateResponse>;
 
 /** The list of scoped permissions for registry artifacts. E.g. repositories/repository-name/content/read, repositories/repository-name/metadata/write */
-export type ScopeMapPropertiesInputActionsList = ReadonlyArray<string>;
+export type ScopeMapPropertiesInputActionsList = Array<string>;
 export const ScopeMapPropertiesInputActionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ScopeMapPropertiesInputActionsList>;
@@ -4660,7 +4651,7 @@ export const ScopeMapsCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScopeMapsCreateRequest>;
 
 /** The list of scoped permissions for registry artifacts. E.g. repositories/repository-name/content/read, repositories/repository-name/metadata/write */
-export type ScopeMapPropertiesActionsList = ReadonlyArray<string>;
+export type ScopeMapPropertiesActionsList = Array<string>;
 export const ScopeMapPropertiesActionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ScopeMapPropertiesActionsList>;
@@ -4850,7 +4841,7 @@ export const ScopeMap = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ScopeMap" }) as any as S.Schema<ScopeMap>;
 
 /** The list of scope maps. Since this list may be incomplete, the nextLink field should be used to request the next list of scope maps. */
-export type ScopeMapListResultValueList = ReadonlyArray<ScopeMap>;
+export type ScopeMapListResultValueList = Array<ScopeMap>;
 export const ScopeMapListResultValueList = /*@__PURE__*/ S.Array(
   ScopeMap,
 ) as any as S.Schema<ScopeMapListResultValueList>;
@@ -4872,8 +4863,7 @@ export const ScopeMapListResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScopeMapListResult>;
 
 /** The list of scope permissions for registry artifacts. E.g. repositories/repository-name/pull, repositories/repository-name/delete */
-export type ScopeMapPropertiesUpdateParametersActionsList =
-  ReadonlyArray<string>;
+export type ScopeMapPropertiesUpdateParametersActionsList = Array<string>;
 export const ScopeMapPropertiesUpdateParametersActionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4982,7 +4972,7 @@ export interface IdentityProperties_2 {
   /** The tenant ID of resource. */
   tenantId?: string;
   /** The identity type. */
-  type?: IdentityPropertiesType;
+  type?: IdentityPropertiesType | (string & {});
   /** The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/ providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. */
   userAssignedIdentities?: IdentityPropertiesUserAssignedIdentitiesMap_2;
 }
@@ -5035,7 +5025,7 @@ export interface TimerTrigger {
   /** The CRON expression for the task schedule */
   schedule: string;
   /** The current status of trigger. */
-  status?: TimerTriggerStatus;
+  status?: TimerTriggerStatus | (string & {});
   /** The name of the trigger. */
   name: string;
 }
@@ -5048,7 +5038,7 @@ export const TimerTrigger = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TimerTrigger" }) as any as S.Schema<TimerTrigger>;
 
 /** The collection of timer triggers. */
-export type TriggerPropertiesTimerTriggersList = ReadonlyArray<TimerTrigger>;
+export type TriggerPropertiesTimerTriggersList = Array<TimerTrigger>;
 export const TriggerPropertiesTimerTriggersList = /*@__PURE__*/ S.Array(
   TimerTrigger,
 ) as any as S.Schema<TriggerPropertiesTimerTriggersList>;
@@ -5066,7 +5056,7 @@ export const AuthInfoTokenType = /*@__PURE__*/ S.String;
 /** The authorization properties for accessing the source code repository. */
 export interface AuthInfo {
   /** The type of Auth token. */
-  tokenType: AuthInfoTokenType;
+  tokenType: AuthInfoTokenType | (string & {});
   /** The access token used to access the source control provider. */
   token: string;
   /** The refresh token used to refresh the access token. */
@@ -5089,7 +5079,7 @@ export const AuthInfo = /*@__PURE__*/ S.suspend(() =>
 /** The properties of the source code repository. */
 export interface SourceProperties {
   /** The type of source control service. */
-  sourceControlType: SourcePropertiesSourceControlType;
+  sourceControlType: SourcePropertiesSourceControlType | (string & {});
   /** The full URL to the source code repository */
   repositoryUrl: string;
   /** The branch name of the source code. */
@@ -5112,8 +5102,9 @@ export type SourceTriggerSourceTriggerEventsItem = "commit" | "pullrequest";
 export const SourceTriggerSourceTriggerEventsItem = /*@__PURE__*/ S.String;
 
 /** The source event corresponding to the trigger. */
-export type SourceTriggerSourceTriggerEventsList =
-  ReadonlyArray<SourceTriggerSourceTriggerEventsItem>;
+export type SourceTriggerSourceTriggerEventsList = Array<
+  SourceTriggerSourceTriggerEventsItem | (string & {})
+>;
 export const SourceTriggerSourceTriggerEventsList = /*@__PURE__*/ S.Array(
   SourceTriggerSourceTriggerEventsItem,
 ) as any as S.Schema<SourceTriggerSourceTriggerEventsList>;
@@ -5129,7 +5120,7 @@ export interface SourceTrigger {
   /** The source event corresponding to the trigger. */
   sourceTriggerEvents: SourceTriggerSourceTriggerEventsList;
   /** The current status of trigger. */
-  status?: SourceTriggerStatus;
+  status?: SourceTriggerStatus | (string & {});
   /** The name of the trigger. */
   name: string;
 }
@@ -5143,7 +5134,7 @@ export const SourceTrigger = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SourceTrigger" }) as any as S.Schema<SourceTrigger>;
 
 /** The collection of triggers based on source code repository. */
-export type TriggerPropertiesSourceTriggersList = ReadonlyArray<SourceTrigger>;
+export type TriggerPropertiesSourceTriggersList = Array<SourceTrigger>;
 export const TriggerPropertiesSourceTriggersList = /*@__PURE__*/ S.Array(
   SourceTrigger,
 ) as any as S.Schema<TriggerPropertiesSourceTriggersList>;
@@ -5159,9 +5150,9 @@ export const BaseImageTriggerStatus = /*@__PURE__*/ S.String;
 /** The trigger based on base image dependency. */
 export interface BaseImageTrigger {
   /** The type of the auto trigger for base image dependency updates. */
-  baseImageTriggerType: BaseImageTriggerBaseImageTriggerType;
+  baseImageTriggerType: BaseImageTriggerBaseImageTriggerType | (string & {});
   /** The current status of trigger. */
-  status?: BaseImageTriggerStatus;
+  status?: BaseImageTriggerStatus | (string & {});
   /** The name of the trigger. */
   name: string;
 }
@@ -5201,7 +5192,7 @@ export const SourceRegistryCredentialsLoginMode = /*@__PURE__*/ S.String;
 /** Describes the credential parameters for accessing the source registry. */
 export interface SourceRegistryCredentials {
   /** The authentication mode which determines the source registry login scope. The credentials for the source registry will be generated using the given scope. These credentials will be used to login to the source registry during the run. */
-  loginMode?: SourceRegistryCredentialsLoginMode;
+  loginMode?: SourceRegistryCredentialsLoginMode | (string & {});
 }
 export const SourceRegistryCredentials = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5220,7 +5211,7 @@ export interface SecretObject {
   /** The value of the secret. The format of this value will be determined based on the type of the secret object. If the type is Opaque, the value will be used as is without any modification. */
   value?: string;
   /** The type of the secret object which determines how the value of the secret object has to be interpreted. */
-  type?: SecretObjectType;
+  type?: SecretObjectType | (string & {});
 }
 export const SecretObject = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5398,7 +5389,7 @@ export const BaseImageDependency = /*@__PURE__*/ S.suspend(() =>
 
 /** List of base image dependencies for a step. */
 export type TaskStepPropertiesBaseImageDependenciesList =
-  ReadonlyArray<BaseImageDependency>;
+  Array<BaseImageDependency>;
 export const TaskStepPropertiesBaseImageDependenciesList =
   /*@__PURE__*/ S.Array(
     BaseImageDependency,
@@ -5722,7 +5713,7 @@ export const Task = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Task" }) as any as S.Schema<Task>;
 
 /** The collection value. */
-export type TaskListResultValueList = ReadonlyArray<Task>;
+export type TaskListResultValueList = Array<Task>;
 export const TaskListResultValueList = /*@__PURE__*/ S.Array(
   Task,
 ) as any as S.Schema<TaskListResultValueList>;
@@ -5827,7 +5818,7 @@ export const TimerTriggerUpdateParameters = /*@__PURE__*/ S.suspend(() =>
 
 /** The collection of timer triggers. */
 export type TriggerUpdateParametersTimerTriggersList =
-  ReadonlyArray<TimerTriggerUpdateParameters>;
+  Array<TimerTriggerUpdateParameters>;
 export const TriggerUpdateParametersTimerTriggersList = /*@__PURE__*/ S.Array(
   TimerTriggerUpdateParameters,
 ) as any as S.Schema<TriggerUpdateParametersTimerTriggersList>;
@@ -5896,10 +5887,9 @@ export const SourceTriggerUpdateParametersSourceTriggerEventsItem =
   /*@__PURE__*/ S.String;
 
 /** The source event corresponding to the trigger. */
-export type SourceTriggerUpdateParametersSourceTriggerEventsList =
-  ReadonlyArray<
-    SourceTriggerUpdateParametersSourceTriggerEventsItem | (string & {})
-  >;
+export type SourceTriggerUpdateParametersSourceTriggerEventsList = Array<
+  SourceTriggerUpdateParametersSourceTriggerEventsItem | (string & {})
+>;
 export const SourceTriggerUpdateParametersSourceTriggerEventsList =
   /*@__PURE__*/ S.Array(
     SourceTriggerUpdateParametersSourceTriggerEventsItem,
@@ -5935,7 +5925,7 @@ export const SourceTriggerUpdateParameters = /*@__PURE__*/ S.suspend(() =>
 
 /** The collection of triggers based on source code repository. */
 export type TriggerUpdateParametersSourceTriggersList =
-  ReadonlyArray<SourceTriggerUpdateParameters>;
+  Array<SourceTriggerUpdateParameters>;
 export const TriggerUpdateParametersSourceTriggersList = /*@__PURE__*/ S.Array(
   SourceTriggerUpdateParameters,
 ) as any as S.Schema<TriggerUpdateParametersSourceTriggersList>;
@@ -6110,7 +6100,7 @@ export const TokenCertificateName = /*@__PURE__*/ S.String;
 
 /** The properties of a certificate used for authenticating a token. */
 export interface TokenCertificate {
-  name?: TokenCertificateName;
+  name?: TokenCertificateName | (string & {});
   /** The expiry datetime of the certificate. */
   expiry?: string;
   /** The thumbprint of the certificate. */
@@ -6130,7 +6120,7 @@ export const TokenCertificate = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TokenCertificate>;
 
 export type TokenCredentialsPropertiesInputCertificatesList =
-  ReadonlyArray<TokenCertificate>;
+  Array<TokenCertificate>;
 export const TokenCredentialsPropertiesInputCertificatesList =
   /*@__PURE__*/ S.Array(
     TokenCertificate,
@@ -6156,7 +6146,7 @@ export const TokenPasswordInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TokenPasswordInput>;
 
 export type TokenCredentialsPropertiesInputPasswordsList =
-  ReadonlyArray<TokenPasswordInput>;
+  Array<TokenPasswordInput>;
 export const TokenCredentialsPropertiesInputPasswordsList =
   /*@__PURE__*/ S.Array(
     TokenPasswordInput,
@@ -6231,13 +6221,12 @@ export const TokensCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TokensCreateRequest>;
 
 export type TokenCredentialsPropertiesCertificatesList =
-  ReadonlyArray<TokenCertificate>;
+  Array<TokenCertificate>;
 export const TokenCredentialsPropertiesCertificatesList = /*@__PURE__*/ S.Array(
   TokenCertificate,
 ) as any as S.Schema<TokenCredentialsPropertiesCertificatesList>;
 
-export type TokenCredentialsPropertiesPasswordsList =
-  ReadonlyArray<TokenPassword>;
+export type TokenCredentialsPropertiesPasswordsList = Array<TokenPassword>;
 export const TokenCredentialsPropertiesPasswordsList = /*@__PURE__*/ S.Array(
   TokenPassword,
 ) as any as S.Schema<TokenCredentialsPropertiesPasswordsList>;
@@ -6441,7 +6430,7 @@ export const Token = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Token" }) as any as S.Schema<Token>;
 
 /** The list of tokens. Since this list may be incomplete, the nextLink field should be used to request the next list of tokens. */
-export type TokenListResultValueList = ReadonlyArray<Token>;
+export type TokenListResultValueList = Array<Token>;
 export const TokenListResultValueList = /*@__PURE__*/ S.Array(
   Token,
 ) as any as S.Schema<TokenListResultValueList>;
@@ -6568,7 +6557,7 @@ export type WebhookAction =
 export const WebhookAction = /*@__PURE__*/ S.String;
 
 /** The list of actions that trigger the webhook to post notifications. */
-export type WebhookPropertiesCreateParametersActionsList = ReadonlyArray<
+export type WebhookPropertiesCreateParametersActionsList = Array<
   WebhookAction | (string & {})
 >;
 export const WebhookPropertiesCreateParametersActionsList =
@@ -6650,7 +6639,7 @@ export const WebhooksCreateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<WebhooksCreateResponseTagsMap>;
 
 /** The list of actions that trigger the webhook to post notifications. */
-export type WebhookPropertiesActionsList = ReadonlyArray<WebhookAction>;
+export type WebhookPropertiesActionsList = Array<WebhookAction>;
 export const WebhookPropertiesActionsList = /*@__PURE__*/ S.Array(
   WebhookAction,
 ) as any as S.Schema<WebhookPropertiesActionsList>;
@@ -6920,7 +6909,7 @@ export const Webhook = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Webhook" }) as any as S.Schema<Webhook>;
 
 /** The list of webhooks. Since this list may be incomplete, the nextLink field should be used to request the next list of webhooks. */
-export type WebhookListResultValueList = ReadonlyArray<Webhook>;
+export type WebhookListResultValueList = Array<Webhook>;
 export const WebhookListResultValueList = /*@__PURE__*/ S.Array(
   Webhook,
 ) as any as S.Schema<WebhookListResultValueList>;
@@ -7167,7 +7156,7 @@ export const Event = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Event" }) as any as S.Schema<Event>;
 
 /** The list of events. Since this list may be incomplete, the nextLink field should be used to request the next list of events. */
-export type EventListResultValueList = ReadonlyArray<Event>;
+export type EventListResultValueList = Array<Event>;
 export const EventListResultValueList = /*@__PURE__*/ S.Array(
   Event,
 ) as any as S.Schema<EventListResultValueList>;
@@ -7247,7 +7236,7 @@ export const WebhookPropertiesUpdateParametersCustomHeadersMap =
   ) as any as S.Schema<WebhookPropertiesUpdateParametersCustomHeadersMap>;
 
 /** The list of actions that trigger the webhook to post notifications. */
-export type WebhookPropertiesUpdateParametersActionsList = ReadonlyArray<
+export type WebhookPropertiesUpdateParametersActionsList = Array<
   WebhookAction | (string & {})
 >;
 export const WebhookPropertiesUpdateParametersActionsList =

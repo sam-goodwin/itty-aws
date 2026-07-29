@@ -152,7 +152,7 @@ export const GoogleSecuritySafebrowsingV4ThreatHitThreatSource =
   }) as any as S.Schema<GoogleSecuritySafebrowsingV4ThreatHitThreatSource>;
 
 export type GoogleSecuritySafebrowsingV4ThreatHitThreatSourceList =
-  ReadonlyArray<GoogleSecuritySafebrowsingV4ThreatHitThreatSource>;
+  Array<GoogleSecuritySafebrowsingV4ThreatHitThreatSource>;
 export const GoogleSecuritySafebrowsingV4ThreatHitThreatSourceList =
   /*@__PURE__*/ S.Array(
     GoogleSecuritySafebrowsingV4ThreatHitThreatSource,
@@ -284,7 +284,7 @@ export const GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdate
   /*@__PURE__*/ S.String;
 
 export type GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestConstraintsSupportedCompressionsItemEnumList =
-  ReadonlyArray<
+  Array<
     | GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestConstraintsSupportedCompressionsItemEnum
     | (string & {})
   >;
@@ -391,7 +391,7 @@ export const GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdate
   }) as any as S.Schema<GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequest>;
 
 export type GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestList =
-  ReadonlyArray<GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequest>;
+  Array<GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequest>;
 export const GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestList =
   /*@__PURE__*/ S.Array(
     GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequest,
@@ -485,7 +485,7 @@ export const GoogleSecuritySafebrowsingV4RiceDeltaEncoding =
     identifier: "GoogleSecuritySafebrowsingV4RiceDeltaEncoding",
   }) as any as S.Schema<GoogleSecuritySafebrowsingV4RiceDeltaEncoding>;
 
-export type IntegerList = ReadonlyArray<number>;
+export type IntegerList = Array<number>;
 export const IntegerList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<IntegerList>;
@@ -533,7 +533,7 @@ export const GoogleSecuritySafebrowsingV4ThreatEntrySet =
   }) as any as S.Schema<GoogleSecuritySafebrowsingV4ThreatEntrySet>;
 
 export type GoogleSecuritySafebrowsingV4ThreatEntrySetList =
-  ReadonlyArray<GoogleSecuritySafebrowsingV4ThreatEntrySet>;
+  Array<GoogleSecuritySafebrowsingV4ThreatEntrySet>;
 export const GoogleSecuritySafebrowsingV4ThreatEntrySetList =
   /*@__PURE__*/ S.Array(
     GoogleSecuritySafebrowsingV4ThreatEntrySet,
@@ -649,7 +649,7 @@ export const GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdat
   }) as any as S.Schema<GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponse>;
 
 export type GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseList =
-  ReadonlyArray<GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponse>;
+  Array<GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponse>;
 export const GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseList =
   /*@__PURE__*/ S.Array(
     GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponse,
@@ -696,7 +696,7 @@ export const GoogleSecuritySafebrowsingV4ThreatInfoThreatTypesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleSecuritySafebrowsingV4ThreatInfoThreatTypesItemEnumList =
-  ReadonlyArray<
+  Array<
     GoogleSecuritySafebrowsingV4ThreatInfoThreatTypesItemEnum | (string & {})
   >;
 export const GoogleSecuritySafebrowsingV4ThreatInfoThreatTypesItemEnumList =
@@ -718,7 +718,7 @@ export const GoogleSecuritySafebrowsingV4ThreatInfoPlatformTypesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleSecuritySafebrowsingV4ThreatInfoPlatformTypesItemEnumList =
-  ReadonlyArray<
+  Array<
     GoogleSecuritySafebrowsingV4ThreatInfoPlatformTypesItemEnum | (string & {})
   >;
 export const GoogleSecuritySafebrowsingV4ThreatInfoPlatformTypesItemEnumList =
@@ -738,7 +738,7 @@ export const GoogleSecuritySafebrowsingV4ThreatInfoThreatEntryTypesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleSecuritySafebrowsingV4ThreatInfoThreatEntryTypesItemEnumList =
-  ReadonlyArray<
+  Array<
     | GoogleSecuritySafebrowsingV4ThreatInfoThreatEntryTypesItemEnum
     | (string & {})
   >;
@@ -748,7 +748,7 @@ export const GoogleSecuritySafebrowsingV4ThreatInfoThreatEntryTypesItemEnumList 
   ) as any as S.Schema<GoogleSecuritySafebrowsingV4ThreatInfoThreatEntryTypesItemEnumList>;
 
 export type GoogleSecuritySafebrowsingV4ThreatEntryList =
-  ReadonlyArray<GoogleSecuritySafebrowsingV4ThreatEntry>;
+  Array<GoogleSecuritySafebrowsingV4ThreatEntry>;
 export const GoogleSecuritySafebrowsingV4ThreatEntryList =
   /*@__PURE__*/ S.Array(
     GoogleSecuritySafebrowsingV4ThreatEntry,
@@ -783,7 +783,7 @@ export const GoogleSecuritySafebrowsingV4ThreatInfo = /*@__PURE__*/ S.suspend(
   identifier: "GoogleSecuritySafebrowsingV4ThreatInfo",
 }) as any as S.Schema<GoogleSecuritySafebrowsingV4ThreatInfo>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -871,7 +871,7 @@ export const GoogleSecuritySafebrowsingV4ThreatEntryMetadataMetadataEntry =
   }) as any as S.Schema<GoogleSecuritySafebrowsingV4ThreatEntryMetadataMetadataEntry>;
 
 export type GoogleSecuritySafebrowsingV4ThreatEntryMetadataMetadataEntryList =
-  ReadonlyArray<GoogleSecuritySafebrowsingV4ThreatEntryMetadataMetadataEntry>;
+  Array<GoogleSecuritySafebrowsingV4ThreatEntryMetadataMetadataEntry>;
 export const GoogleSecuritySafebrowsingV4ThreatEntryMetadataMetadataEntryList =
   /*@__PURE__*/ S.Array(
     GoogleSecuritySafebrowsingV4ThreatEntryMetadataMetadataEntry,
@@ -955,7 +955,7 @@ export const GoogleSecuritySafebrowsingV4ThreatMatch = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleSecuritySafebrowsingV4ThreatMatch>;
 
 export type GoogleSecuritySafebrowsingV4ThreatMatchList =
-  ReadonlyArray<GoogleSecuritySafebrowsingV4ThreatMatch>;
+  Array<GoogleSecuritySafebrowsingV4ThreatMatch>;
 export const GoogleSecuritySafebrowsingV4ThreatMatchList =
   /*@__PURE__*/ S.Array(
     GoogleSecuritySafebrowsingV4ThreatMatch,
@@ -1164,7 +1164,7 @@ export const GoogleSecuritySafebrowsingV4ThreatListDescriptor =
   }) as any as S.Schema<GoogleSecuritySafebrowsingV4ThreatListDescriptor>;
 
 export type GoogleSecuritySafebrowsingV4ThreatListDescriptorList =
-  ReadonlyArray<GoogleSecuritySafebrowsingV4ThreatListDescriptor>;
+  Array<GoogleSecuritySafebrowsingV4ThreatListDescriptor>;
 export const GoogleSecuritySafebrowsingV4ThreatListDescriptorList =
   /*@__PURE__*/ S.Array(
     GoogleSecuritySafebrowsingV4ThreatListDescriptor,

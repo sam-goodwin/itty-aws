@@ -73,7 +73,7 @@ export const Editions = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Editions" }) as any as S.Schema<Editions>;
 
-export type EditionsList = ReadonlyArray<Editions>;
+export type EditionsList = Array<Editions>;
 export const EditionsList = /*@__PURE__*/ S.Array(
   Editions,
 ) as any as S.Schema<EditionsList>;

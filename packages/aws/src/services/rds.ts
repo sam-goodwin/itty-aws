@@ -2999,7 +2999,7 @@ export const ReplicaMode = /*@__PURE__*/ S.String;
 export interface RdsCustomClusterConfiguration {
   InterconnectSubnetId?: string;
   TransitGatewayMulticastDomainId?: string;
-  ReplicaMode?: ReplicaMode;
+  ReplicaMode?: ReplicaMode | (string & {});
 }
 export const RdsCustomClusterConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6575,7 +6575,7 @@ export interface Parameter {
   AllowedValues?: string;
   IsModifiable?: boolean;
   MinimumEngineVersion?: string;
-  ApplyMethod?: ApplyMethod;
+  ApplyMethod?: ApplyMethod | (string & {});
   SupportedEngineModes?: string[];
 }
 export const Parameter = /*@__PURE__*/ S.suspend(() =>

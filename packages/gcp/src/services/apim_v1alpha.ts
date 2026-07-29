@@ -77,7 +77,7 @@ export const TagAction = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TagAction" }) as any as S.Schema<TagAction>;
 
-export type TagActionList = ReadonlyArray<TagAction>;
+export type TagActionList = Array<TagAction>;
 export const TagActionList = /*@__PURE__*/ S.Array(
   TagAction,
 ) as any as S.Schema<TagActionList>;
@@ -99,7 +99,7 @@ export const EditTagsApiObservationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EditTagsApiObservationsRequest>;
 
 export type EditTagsApiObservationsRequestList =
-  ReadonlyArray<EditTagsApiObservationsRequest>;
+  Array<EditTagsApiObservationsRequest>;
 export const EditTagsApiObservationsRequestList = /*@__PURE__*/ S.Array(
   EditTagsApiObservationsRequest,
 ) as any as S.Schema<EditTagsApiObservationsRequestList>;
@@ -140,7 +140,7 @@ export const BatchEditTagsProjectsLocationsObservationJobsApiObservationsRequest
       "BatchEditTagsProjectsLocationsObservationJobsApiObservationsRequest",
   }) as any as S.Schema<BatchEditTagsProjectsLocationsObservationJobsApiObservationsRequest>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -190,7 +190,7 @@ export const ApiObservation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ApiObservation" }) as any as S.Schema<ApiObservation>;
 
-export type ApiObservationList = ReadonlyArray<ApiObservation>;
+export type ApiObservationList = Array<ApiObservation>;
 export const ApiObservationList = /*@__PURE__*/ S.Array(
   ApiObservation,
 ) as any as S.Schema<ApiObservationList>;
@@ -259,7 +259,7 @@ export const ObservationJobStateEnum = /*@__PURE__*/ S.String;
 /** Message describing ObservationJob object */
 export interface ObservationJob {
   /** Output only. The observation job state */
-  state?: ObservationJobStateEnum;
+  state?: ObservationJobStateEnum | (string & {});
   /** Optional. These should be of the same kind of source. */
   sources?: StringList;
   /** Identifier. name of resource Format: projects/{project}/locations/{location}/observationJobs/{observation_job} */
@@ -313,7 +313,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -384,7 +384,7 @@ export const GclbObservationSourcePscNetworkConfig = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GclbObservationSourcePscNetworkConfig>;
 
 export type GclbObservationSourcePscNetworkConfigList =
-  ReadonlyArray<GclbObservationSourcePscNetworkConfig>;
+  Array<GclbObservationSourcePscNetworkConfig>;
 export const GclbObservationSourcePscNetworkConfigList = /*@__PURE__*/ S.Array(
   GclbObservationSourcePscNetworkConfig,
 ) as any as S.Schema<GclbObservationSourcePscNetworkConfigList>;
@@ -405,7 +405,7 @@ export const GclbObservationSource = /*@__PURE__*/ S.suspend(() =>
 /** Observation source configuration types */
 export interface ObservationSource {
   /** Output only. The observation source state */
-  state?: ObservationSourceStateEnum;
+  state?: ObservationSourceStateEnum | (string & {});
   /** Output only. [Output only] Update time stamp */
   updateTime?: string;
   /** Identifier. name of resource For MVP, each region can only have 1 source. */
@@ -842,7 +842,7 @@ export const HttpOperationPathParam = /*@__PURE__*/ S.suspend(() =>
   identifier: "HttpOperationPathParam",
 }) as any as S.Schema<HttpOperationPathParam>;
 
-export type HttpOperationPathParamList = ReadonlyArray<HttpOperationPathParam>;
+export type HttpOperationPathParamList = Array<HttpOperationPathParam>;
 export const HttpOperationPathParamList = /*@__PURE__*/ S.Array(
   HttpOperationPathParam,
 ) as any as S.Schema<HttpOperationPathParamList>;
@@ -1021,7 +1021,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = ReadonlyArray<Location>;
+export type LocationList = Array<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -1067,7 +1067,7 @@ export const ListProjectsLocationsObservationJobsRequest =
     identifier: "ListProjectsLocationsObservationJobsRequest",
   }) as any as S.Schema<ListProjectsLocationsObservationJobsRequest>;
 
-export type ObservationJobList = ReadonlyArray<ObservationJob>;
+export type ObservationJobList = Array<ObservationJob>;
 export const ObservationJobList = /*@__PURE__*/ S.Array(
   ObservationJob,
 ) as any as S.Schema<ObservationJobList>;
@@ -1158,7 +1158,7 @@ export const ListProjectsLocationsObservationJobsApiObservationsApiOperationsReq
       "ListProjectsLocationsObservationJobsApiObservationsApiOperationsRequest",
   }) as any as S.Schema<ListProjectsLocationsObservationJobsApiObservationsApiOperationsRequest>;
 
-export type ApiOperationList = ReadonlyArray<ApiOperation>;
+export type ApiOperationList = Array<ApiOperation>;
 export const ApiOperationList = /*@__PURE__*/ S.Array(
   ApiOperation,
 ) as any as S.Schema<ApiOperationList>;
@@ -1204,7 +1204,7 @@ export const ListProjectsLocationsObservationSourcesRequest =
     identifier: "ListProjectsLocationsObservationSourcesRequest",
   }) as any as S.Schema<ListProjectsLocationsObservationSourcesRequest>;
 
-export type ObservationSourceList = ReadonlyArray<ObservationSource>;
+export type ObservationSourceList = Array<ObservationSource>;
 export const ObservationSourceList = /*@__PURE__*/ S.Array(
   ObservationSource,
 ) as any as S.Schema<ObservationSourceList>;
@@ -1259,7 +1259,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type OperationList = ReadonlyArray<Operation>;
+export type OperationList = Array<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;

@@ -65,7 +65,7 @@ export const SchemaPropertyGroupPropertyInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SchemaPropertyGroupPropertyInput>;
 
 export type SchemaPropertyGroupsCreateRequestPropertiesList =
-  ReadonlyArray<SchemaPropertyGroupPropertyInput>;
+  Array<SchemaPropertyGroupPropertyInput>;
 export const SchemaPropertyGroupsCreateRequestPropertiesList =
   /*@__PURE__*/ S.Array(
     SchemaPropertyGroupPropertyInput,
@@ -121,7 +121,7 @@ export const SchemaPropertyGroupProperty = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SchemaPropertyGroupProperty>;
 
 export type SchemaPropertyGroupPropertiesList =
-  ReadonlyArray<SchemaPropertyGroupProperty>;
+  Array<SchemaPropertyGroupProperty>;
 export const SchemaPropertyGroupPropertiesList = /*@__PURE__*/ S.Array(
   SchemaPropertyGroupProperty,
 ) as any as S.Schema<SchemaPropertyGroupPropertiesList>;
@@ -139,7 +139,7 @@ export const EventDefinitionBasic = /*@__PURE__*/ S.suspend(() =>
   identifier: "EventDefinitionBasic",
 }) as any as S.Schema<EventDefinitionBasic>;
 
-export type SchemaPropertyGroupEventsList = ReadonlyArray<EventDefinitionBasic>;
+export type SchemaPropertyGroupEventsList = Array<EventDefinitionBasic>;
 export const SchemaPropertyGroupEventsList = /*@__PURE__*/ S.Array(
   EventDefinitionBasic,
 ) as any as S.Schema<SchemaPropertyGroupEventsList>;
@@ -272,7 +272,7 @@ export const SchemaPropertyGroupsListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SchemaPropertyGroupsListRequest>;
 
 export type PaginatedSchemaPropertyGroupListResultsList =
-  ReadonlyArray<SchemaPropertyGroup>;
+  Array<SchemaPropertyGroup>;
 export const PaginatedSchemaPropertyGroupListResultsList =
   /*@__PURE__*/ S.Array(
     SchemaPropertyGroup,
@@ -296,7 +296,7 @@ export const PaginatedSchemaPropertyGroupList = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PaginatedSchemaPropertyGroupList>;
 
 export type SchemaPropertyGroupsPartialUpdateRequestPropertiesList =
-  ReadonlyArray<SchemaPropertyGroupPropertyInput>;
+  Array<SchemaPropertyGroupPropertyInput>;
 export const SchemaPropertyGroupsPartialUpdateRequestPropertiesList =
   /*@__PURE__*/ S.Array(
     SchemaPropertyGroupPropertyInput,
@@ -354,7 +354,7 @@ export const SchemaPropertyGroupsRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SchemaPropertyGroupsRetrieveRequest>;
 
 export type SchemaPropertyGroupsUpdateRequestPropertiesList =
-  ReadonlyArray<SchemaPropertyGroupPropertyInput>;
+  Array<SchemaPropertyGroupPropertyInput>;
 export const SchemaPropertyGroupsUpdateRequestPropertiesList =
   /*@__PURE__*/ S.Array(
     SchemaPropertyGroupPropertyInput,

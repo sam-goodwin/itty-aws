@@ -136,7 +136,7 @@ export const ObjectMediaPreviewsListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ObjectMediaPreviewsListRequest>;
 
 export type PaginatedObjectMediaPreviewListOutputResultsList =
-  ReadonlyArray<ObjectMediaPreviewOutput>;
+  Array<ObjectMediaPreviewOutput>;
 export const PaginatedObjectMediaPreviewListOutputResultsList =
   /*@__PURE__*/ S.Array(
     ObjectMediaPreviewOutput,

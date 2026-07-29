@@ -213,7 +213,7 @@ export type AwsRegion = string;
 export type CustomerId = string;
 export interface PhysicalResourceId {
   identifier: string;
-  type: PhysicalIdentifierType;
+  type: PhysicalIdentifierType | (string & {});
   awsRegion?: string;
   awsAccountId?: string;
 }
@@ -232,7 +232,7 @@ export interface ResourceMapping {
   logicalStackName?: string;
   appRegistryAppName?: string;
   resourceGroupName?: string;
-  mappingType: ResourceMappingType;
+  mappingType: ResourceMappingType | (string & {});
   physicalResourceId: PhysicalResourceId;
   terraformSourceName?: string;
   eksSourceName?: string;
@@ -436,7 +436,7 @@ export type IamRoleArn = string;
 export type IamRoleArnList = string[];
 export const IamRoleArnList = /*@__PURE__*/ S.Array(S.String);
 export interface PermissionModel {
-  type: PermissionModelType;
+  type: PermissionModelType | (string & {});
   invokerRoleName?: string;
   crossAccountRoleArns?: string[];
 }
@@ -454,7 +454,7 @@ export const EventType = /*@__PURE__*/ S.String;
 
 export interface EventSubscription {
   name: string;
-  eventType: EventType;
+  eventType: EventType | (string & {});
   snsTopicArn?: string;
 }
 export const EventSubscription = /*@__PURE__*/ S.suspend(() =>
@@ -755,7 +755,10 @@ export const TemplateFormat = /*@__PURE__*/ S.String;
 export type RenderRecommendationType = "Alarm" | "Sop" | "Test";
 export const RenderRecommendationType = /*@__PURE__*/ S.String;
 
-export type RenderRecommendationTypeList = RenderRecommendationType[];
+export type RenderRecommendationTypeList = (
+  | RenderRecommendationType
+  | (string & {})
+)[];
 export const RenderRecommendationTypeList = /*@__PURE__*/ S.Array(
   RenderRecommendationType,
 );
@@ -877,7 +880,9 @@ export interface FailurePolicy {
 export const FailurePolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ rtoInSecs: S.Number, rpoInSecs: S.Number }),
 ).annotate({ identifier: "FailurePolicy" }) as any as S.Schema<FailurePolicy>;
-export type DisruptionPolicy = { [key in DisruptionType]?: FailurePolicy };
+export type DisruptionPolicy = {
+  [key in DisruptionType | (string & {})]?: FailurePolicy;
+};
 export const DisruptionPolicy = /*@__PURE__*/ S.Record(
   DisruptionType,
   FailurePolicy.pipe(S.optional),

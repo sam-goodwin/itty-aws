@@ -754,7 +754,7 @@ export const VoiceEngine = /*@__PURE__*/ S.String;
 
 export type VoiceId = string;
 export interface VoiceSettings {
-  engine?: VoiceEngine;
+  engine?: VoiceEngine | (string & {});
   voiceId: string;
 }
 export const VoiceSettings = /*@__PURE__*/ S.suspend(() =>
@@ -793,7 +793,7 @@ export type AudioFillerDurationInMilliseconds = number;
 export type AudioFillerDeliveryDelayInMilliseconds = number;
 export interface AudioFillerSettings {
   enabled?: boolean;
-  audioType?: AudioFillerType;
+  audioType?: AudioFillerType | (string & {});
   startDelayInMilliseconds?: number;
   minimumPlayDurationInMilliseconds?: number;
   responseDeliveryDelayInMilliseconds?: number;
@@ -832,7 +832,7 @@ export const SpeechModelConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "SpeechModelConfig",
 }) as any as S.Schema<SpeechModelConfig>;
 export interface SpeechRecognitionSettings {
-  speechModelPreference?: SpeechModelPreference;
+  speechModelPreference?: SpeechModelPreference | (string & {});
   speechModelConfig?: SpeechModelConfig;
 }
 export const SpeechRecognitionSettings = /*@__PURE__*/ S.suspend(() =>
@@ -862,7 +862,7 @@ export type BedrockModelCustomPrompt = string;
 export interface BedrockModelSpecification {
   modelArn: string;
   guardrail?: BedrockGuardrailConfiguration;
-  traceStatus?: BedrockTraceStatus;
+  traceStatus?: BedrockTraceStatus | (string & {});
   customPrompt?: string;
 }
 export const BedrockModelSpecification = /*@__PURE__*/ S.suspend(() =>
@@ -909,7 +909,7 @@ export const IntentDisambiguationSettings = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IntentDisambiguationSettings>;
 export interface NluImprovementSpecification {
   enabled: boolean;
-  assistedNluMode?: AssistedNluMode;
+  assistedNluMode?: AssistedNluMode | (string & {});
   intentDisambiguationSettings?: IntentDisambiguationSettings;
 }
 export const NluImprovementSpecification = /*@__PURE__*/ S.suspend(() =>
@@ -1410,7 +1410,7 @@ export type DialogActionType =
 export const DialogActionType = /*@__PURE__*/ S.String;
 
 export interface DialogAction {
-  type: DialogActionType;
+  type: DialogActionType | (string & {});
   slotToElicit?: string;
   suppressNextMessage?: boolean;
 }
@@ -1438,7 +1438,7 @@ export const SlotValues = /*@__PURE__*/ S.Array(
   }),
 ) as any as S.Schema<SlotValues>;
 export interface SlotValueOverride {
-  shape?: SlotShape;
+  shape?: SlotShape | (string & {});
   value?: SlotValue;
   values?: SlotValueOverride[];
 }
@@ -1724,7 +1724,7 @@ export const PromptAttemptSpecification = /*@__PURE__*/ S.suspend(() =>
   identifier: "PromptAttemptSpecification",
 }) as any as S.Schema<PromptAttemptSpecification>;
 export type PromptAttemptsSpecificationMap = {
-  [key in PromptAttempt]?: PromptAttemptSpecification;
+  [key in PromptAttempt | (string & {})]?: PromptAttemptSpecification;
 };
 export const PromptAttemptsSpecificationMap = /*@__PURE__*/ S.Record(
   PromptAttempt,
@@ -1734,7 +1734,7 @@ export interface PromptSpecification {
   messageGroups: MessageGroup[];
   maxRetries: number;
   allowInterrupt?: boolean;
-  messageSelectionStrategy?: MessageSelectionStrategy;
+  messageSelectionStrategy?: MessageSelectionStrategy | (string & {});
   promptAttemptsSpecification?: {
     [key: string]: PromptAttemptSpecification | undefined;
   };
@@ -2342,7 +2342,7 @@ export type SlotResolutionStrategy = "EnhancedFallback" | "Default";
 export const SlotResolutionStrategy = /*@__PURE__*/ S.String;
 
 export interface SlotResolutionSetting {
-  slotResolutionStrategy: SlotResolutionStrategy;
+  slotResolutionStrategy: SlotResolutionStrategy | (string & {});
 }
 export const SlotResolutionSetting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ slotResolutionStrategy: SlotResolutionStrategy }),
@@ -2351,7 +2351,7 @@ export const SlotResolutionSetting = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SlotResolutionSetting>;
 export interface SlotValueElicitationSetting {
   defaultValueSpecification?: SlotDefaultValueSpecification;
-  slotConstraint: SlotConstraint;
+  slotConstraint: SlotConstraint | (string & {});
   promptSpecification?: PromptSpecification;
   sampleUtterances?: SampleUtterance[];
   waitAndContinueSpecification?: WaitAndContinueSpecification;
@@ -2375,7 +2375,7 @@ export type ObfuscationSettingType = "None" | "DefaultObfuscation";
 export const ObfuscationSettingType = /*@__PURE__*/ S.String;
 
 export interface ObfuscationSetting {
-  obfuscationSettingType: ObfuscationSettingType;
+  obfuscationSettingType: ObfuscationSettingType | (string & {});
 }
 export const ObfuscationSetting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ obfuscationSettingType: ObfuscationSettingType }),
@@ -2552,7 +2552,7 @@ export type AudioRecognitionStrategy = "UseSlotValuesAsCustomVocabulary";
 export const AudioRecognitionStrategy = /*@__PURE__*/ S.String;
 
 export interface AdvancedRecognitionSetting {
-  audioRecognitionStrategy?: AudioRecognitionStrategy;
+  audioRecognitionStrategy?: AudioRecognitionStrategy | (string & {});
 }
 export const AdvancedRecognitionSetting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ audioRecognitionStrategy: S.optional(AudioRecognitionStrategy) }),
@@ -2560,7 +2560,7 @@ export const AdvancedRecognitionSetting = /*@__PURE__*/ S.suspend(() =>
   identifier: "AdvancedRecognitionSetting",
 }) as any as S.Schema<AdvancedRecognitionSetting>;
 export interface SlotValueSelectionSetting {
-  resolutionStrategy: SlotValueResolutionStrategy;
+  resolutionStrategy: SlotValueResolutionStrategy | (string & {});
   regexFilter?: SlotValueRegexFilter;
   advancedRecognitionSetting?: AdvancedRecognitionSetting;
 }
@@ -3799,7 +3799,7 @@ export const TranscriptFilter = /*@__PURE__*/ S.suspend(() =>
 export interface S3BucketTranscriptSource {
   s3BucketName: string;
   pathFormat?: PathFormat;
-  transcriptFormat: TranscriptFormat;
+  transcriptFormat: TranscriptFormat | (string & {});
   transcriptFilter?: TranscriptFilter;
   kmsKeyArn?: string;
 }
@@ -4225,7 +4225,7 @@ export interface BotLocaleImportSpecification {
   nluIntentConfidenceThreshold?: number;
   voiceSettings?: VoiceSettings;
   speechRecognitionSettings?: SpeechRecognitionSettings;
-  speechDetectionSensitivity?: SpeechDetectionSensitivity;
+  speechDetectionSensitivity?: SpeechDetectionSensitivity | (string & {});
   unifiedSpeechSettings?: UnifiedSpeechSettings;
   audioFillerSettings?: AudioFillerSettings;
 }
@@ -4286,7 +4286,7 @@ export interface TestSetImportResourceSpecification {
   roleArn: string;
   storageLocation: TestSetStorageLocation;
   importInputLocation: TestSetImportInputLocation;
-  modality: TestSetModality;
+  modality: TestSetModality | (string & {});
   testSetTags?: { [key: string]: string | undefined };
 }
 export const TestSetImportResourceSpecification = /*@__PURE__*/ S.suspend(() =>
@@ -4901,7 +4901,7 @@ export const ConversationLogsInputModeFilter = /*@__PURE__*/ S.String;
 export interface ConversationLogsDataSourceFilterBy {
   startTime: Date;
   endTime: Date;
-  inputMode: ConversationLogsInputModeFilter;
+  inputMode: ConversationLogsInputModeFilter | (string & {});
 }
 export const ConversationLogsDataSourceFilterBy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5058,7 +5058,7 @@ export const TimeDimension = /*@__PURE__*/ S.String;
 
 export type TimeValue = number;
 export interface RelativeAggregationDuration {
-  timeDimension: TimeDimension;
+  timeDimension: TimeDimension | (string & {});
   timeValue: number;
 }
 export const RelativeAggregationDuration = /*@__PURE__*/ S.suspend(() =>

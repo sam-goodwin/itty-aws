@@ -199,9 +199,9 @@ export const AcceleratorStateEnum = /*@__PURE__*/ S.String;
 /** Identifies Cloud Data Fusion accelerators for an instance. */
 export interface Accelerator {
   /** Optional. The type of an accelator for a Cloud Data Fusion instance. */
-  acceleratorType?: AcceleratorAcceleratorTypeEnum;
+  acceleratorType?: AcceleratorAcceleratorTypeEnum | (string & {});
   /** Output only. The state of the accelerator. */
-  state?: AcceleratorStateEnum;
+  state?: AcceleratorStateEnum | (string & {});
 }
 export const Accelerator = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -210,7 +210,7 @@ export const Accelerator = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Accelerator" }) as any as S.Schema<Accelerator>;
 
-export type AcceleratorList = ReadonlyArray<Accelerator>;
+export type AcceleratorList = Array<Accelerator>;
 export const AcceleratorList = /*@__PURE__*/ S.Array(
   Accelerator,
 ) as any as S.Schema<AcceleratorList>;
@@ -221,8 +221,9 @@ export type InstanceDisabledReasonItemEnum =
   | "PROJECT_STATE_OFF";
 export const InstanceDisabledReasonItemEnum = /*@__PURE__*/ S.String;
 
-export type InstanceDisabledReasonItemEnumList =
-  ReadonlyArray<InstanceDisabledReasonItemEnum>;
+export type InstanceDisabledReasonItemEnumList = Array<
+  InstanceDisabledReasonItemEnum | (string & {})
+>;
 export const InstanceDisabledReasonItemEnumList = /*@__PURE__*/ S.Array(
   InstanceDisabledReasonItemEnum,
 ) as any as S.Schema<InstanceDisabledReasonItemEnumList>;
@@ -263,7 +264,7 @@ export type VersionTypeEnum =
   | "TYPE_DEPRECATED";
 export const VersionTypeEnum = /*@__PURE__*/ S.String;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -271,7 +272,7 @@ export const StringList = /*@__PURE__*/ S.Array(
 /** The Data Fusion version. */
 export interface Version {
   /** Type represents the release availability of the version */
-  type?: VersionTypeEnum;
+  type?: VersionTypeEnum | (string & {});
   /** Whether this is currently the default version for Cloud Data Fusion */
   defaultVersion?: boolean;
   /** The version number of the Data Fusion instance, such as '6.0.1.0'. */
@@ -288,7 +289,7 @@ export const Version = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Version" }) as any as S.Schema<Version>;
 
-export type VersionList = ReadonlyArray<Version>;
+export type VersionList = Array<Version>;
 export const VersionList = /*@__PURE__*/ S.Array(
   Version,
 ) as any as S.Schema<VersionList>;
@@ -325,7 +326,7 @@ export interface NetworkConfig {
   /** Optional. Name of the network in the customer project with which the Tenant Project will be peered for executing pipelines. In case of shared VPC where the network resides in another host project the network should specified in the form of projects/{host-project-id}/global/networks/{network}. This is only required for connectivity type VPC_PEERING. */
   network?: string;
   /** Optional. Type of connection for establishing private IP connectivity between the Data Fusion customer project VPC and the corresponding tenant project from a predefined list of available connection modes. If this field is unspecified for a private instance, VPC peering is used. */
-  connectionType?: NetworkConfigConnectionTypeEnum;
+  connectionType?: NetworkConfigConnectionTypeEnum | (string & {});
   /** Optional. Configuration for Private Service Connect. This is required only when using connection type PRIVATE_SERVICE_CONNECT_INTERFACES. */
   privateServiceConnectConfig?: PrivateServiceConnectConfig;
 }
@@ -367,7 +368,7 @@ export interface MaintenanceEvent {
   /** Output only. The end time of the maintenance event provided in [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format. Example: "2024-01-02T12:04:06-06:00" This field will be empty if the maintenance event is not yet complete. */
   endTime?: string;
   /** Output only. The state of the maintenance event. */
-  state?: MaintenanceEventStateEnum;
+  state?: MaintenanceEventStateEnum | (string & {});
 }
 export const MaintenanceEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -379,7 +380,7 @@ export const MaintenanceEvent = /*@__PURE__*/ S.suspend(() =>
   identifier: "MaintenanceEvent",
 }) as any as S.Schema<MaintenanceEvent>;
 
-export type MaintenanceEventList = ReadonlyArray<MaintenanceEvent>;
+export type MaintenanceEventList = Array<MaintenanceEvent>;
 export const MaintenanceEventList = /*@__PURE__*/ S.Array(
   MaintenanceEvent,
 ) as any as S.Schema<MaintenanceEventList>;
@@ -443,7 +444,7 @@ export interface Instance {
   /** Optional. Option to enable granular role-based access control. */
   enableRbac?: boolean;
   /** Required. Instance type. */
-  type?: InstanceTypeEnum;
+  type?: InstanceTypeEnum | (string & {});
   /** Output only. List of accelerators enabled for this CDF instance. */
   accelerators?: AcceleratorList;
   /** Output only. Option to enable zone separation. */
@@ -475,7 +476,7 @@ export interface Instance {
   /** Optional. Display name for an instance. */
   displayName?: string;
   /** Output only. The current state of this Data Fusion instance. */
-  state?: InstanceStateEnum;
+  state?: InstanceStateEnum | (string & {});
   /** Output only. The maintenance events for this instance. */
   maintenanceEvents?: MaintenanceEventList;
   /** Optional. The logging configuration for this instance. This field is supported only in CDF versions 6.11.0 and above. */
@@ -557,7 +558,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -742,7 +743,7 @@ export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
 export interface AuditLogConfig {
   /** The log type that this config enables. */
-  logType?: AuditLogConfigLogTypeEnum;
+  logType?: AuditLogConfigLogTypeEnum | (string & {});
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
   exemptedMembers?: StringList;
 }
@@ -753,7 +754,7 @@ export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
-export type AuditLogConfigList = ReadonlyArray<AuditLogConfig>;
+export type AuditLogConfigList = Array<AuditLogConfig>;
 export const AuditLogConfigList = /*@__PURE__*/ S.Array(
   AuditLogConfig,
 ) as any as S.Schema<AuditLogConfigList>;
@@ -772,7 +773,7 @@ export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
-export type AuditConfigList = ReadonlyArray<AuditConfig>;
+export type AuditConfigList = Array<AuditConfig>;
 export const AuditConfigList = /*@__PURE__*/ S.Array(
   AuditConfig,
 ) as any as S.Schema<AuditConfigList>;
@@ -814,7 +815,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
-export type BindingList = ReadonlyArray<Binding>;
+export type BindingList = Array<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -970,7 +971,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = ReadonlyArray<Location>;
+export type LocationList = Array<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -1022,7 +1023,7 @@ export const ListProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsInstancesRequest",
 }) as any as S.Schema<ListProjectsLocationsInstancesRequest>;
 
-export type InstanceList = ReadonlyArray<Instance>;
+export type InstanceList = Array<Instance>;
 export const InstanceList = /*@__PURE__*/ S.Array(
   Instance,
 ) as any as S.Schema<InstanceList>;
@@ -1071,7 +1072,7 @@ export const ListProjectsLocationsInstancesDnsPeeringsRequest =
     identifier: "ListProjectsLocationsInstancesDnsPeeringsRequest",
   }) as any as S.Schema<ListProjectsLocationsInstancesDnsPeeringsRequest>;
 
-export type DnsPeeringList = ReadonlyArray<DnsPeering>;
+export type DnsPeeringList = Array<DnsPeering>;
 export const DnsPeeringList = /*@__PURE__*/ S.Array(
   DnsPeering,
 ) as any as S.Schema<DnsPeeringList>;
@@ -1157,7 +1158,7 @@ export const Namespace = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Namespace" }) as any as S.Schema<Namespace>;
 
-export type NamespaceList = ReadonlyArray<Namespace>;
+export type NamespaceList = Array<Namespace>;
 export const NamespaceList = /*@__PURE__*/ S.Array(
   Namespace,
 ) as any as S.Schema<NamespaceList>;
@@ -1209,7 +1210,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type OperationList = ReadonlyArray<Operation>;
+export type OperationList = Array<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;

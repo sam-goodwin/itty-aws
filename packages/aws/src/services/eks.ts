@@ -221,7 +221,7 @@ export const AccessScopeType = /*@__PURE__*/ S.String;
 export type StringList = string[];
 export const StringList = /*@__PURE__*/ S.Array(S.String);
 export interface AccessScope {
-  type?: AccessScopeType;
+  type?: AccessScopeType | (string & {});
   namespaces?: string[];
 }
 export const AccessScope = /*@__PURE__*/ S.suspend(() =>
@@ -815,7 +815,7 @@ export const SsoIdentityType = /*@__PURE__*/ S.String;
 
 export interface SsoIdentity {
   id: string;
-  type: SsoIdentityType;
+  type: SsoIdentityType | (string & {});
 }
 export const SsoIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ id: S.String, type: SsoIdentityType }),
@@ -823,7 +823,7 @@ export const SsoIdentity = /*@__PURE__*/ S.suspend(() =>
 export type SsoIdentityList = SsoIdentity[];
 export const SsoIdentityList = /*@__PURE__*/ S.Array(SsoIdentity);
 export interface ArgoCdRoleMapping {
-  role: ArgoCdRole;
+  role: ArgoCdRole | (string & {});
   identities: SsoIdentity[];
 }
 export const ArgoCdRoleMapping = /*@__PURE__*/ S.suspend(() =>
@@ -1084,7 +1084,7 @@ export type LogType =
   | "scheduler";
 export const LogType = /*@__PURE__*/ S.String;
 
-export type LogTypes = LogType[];
+export type LogTypes = (LogType | (string & {}))[];
 export const LogTypes = /*@__PURE__*/ S.Array(LogType);
 export interface LogSetup {
   types?: LogType[];
@@ -1245,7 +1245,7 @@ export type ProvisionedControlPlaneTier =
 export const ProvisionedControlPlaneTier = /*@__PURE__*/ S.String;
 
 export interface ControlPlaneScalingConfig {
-  tier?: ProvisionedControlPlaneTier;
+  tier?: ProvisionedControlPlaneTier | (string & {});
 }
 export const ControlPlaneScalingConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ tier: S.optional(ProvisionedControlPlaneTier) }),
@@ -1612,7 +1612,7 @@ export const EksAnywhereSubscriptionTermUnit = /*@__PURE__*/ S.String;
 
 export interface EksAnywhereSubscriptionTerm {
   duration?: number;
-  unit?: EksAnywhereSubscriptionTermUnit;
+  unit?: EksAnywhereSubscriptionTermUnit | (string & {});
 }
 export const EksAnywhereSubscriptionTerm = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1907,7 +1907,7 @@ export const TaintEffect = /*@__PURE__*/ S.String;
 export interface Taint {
   key?: string;
   value?: string;
-  effect?: TaintEffect;
+  effect?: TaintEffect | (string & {});
 }
 export const Taint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1940,7 +1940,7 @@ export const NodegroupUpdateStrategies = /*@__PURE__*/ S.String;
 export interface NodegroupUpdateConfig {
   maxUnavailable?: number;
   maxUnavailablePercentage?: number;
-  updateStrategy?: NodegroupUpdateStrategies;
+  updateStrategy?: NodegroupUpdateStrategies | (string & {});
 }
 export const NodegroupUpdateConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1958,7 +1958,7 @@ export interface NodeRepairConfigOverrides {
   nodeMonitoringCondition?: string;
   nodeUnhealthyReason?: string;
   minRepairWaitTimeMins?: number;
-  repairAction?: RepairAction;
+  repairAction?: RepairAction | (string & {});
 }
 export const NodeRepairConfigOverrides = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2004,7 +2004,7 @@ export interface WarmPoolConfig {
   enabled?: boolean;
   minSize?: number;
   maxGroupPreparedCapacity?: number;
-  poolState?: WarmPoolState;
+  poolState?: WarmPoolState | (string & {});
   reuseOnScaleIn?: boolean;
 }
 export const WarmPoolConfig = /*@__PURE__*/ S.suspend(() =>

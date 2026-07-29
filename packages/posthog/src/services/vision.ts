@@ -84,7 +84,7 @@ export const TriggerConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TriggerConfig" }) as any as S.Schema<TriggerConfig>;
 
 /** Restrict to observations produced by these scanner IDs. Defaults to the bound scanner. */
-export type SelectionScannerIdsList = ReadonlyArray<string>;
+export type SelectionScannerIdsList = Array<string>;
 export const SelectionScannerIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SelectionScannerIdsList>;
@@ -94,13 +94,13 @@ export type VerdictEnum = "yes" | "no" | "inconclusive";
 export const VerdictEnum = /*@__PURE__*/ S.String;
 
 /** Only run on monitor observations with one of these verdicts (yes/no/inconclusive). */
-export type SelectionVerdictList = ReadonlyArray<VerdictEnum>;
+export type SelectionVerdictList = Array<VerdictEnum | (string & {})>;
 export const SelectionVerdictList = /*@__PURE__*/ S.Array(
   VerdictEnum,
 ) as any as S.Schema<SelectionVerdictList>;
 
 /** Only run on classifier observations carrying any of these tags (fixed or freeform). */
-export type SelectionTagsList = ReadonlyArray<string>;
+export type SelectionTagsList = Array<string>;
 export const SelectionTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SelectionTagsList>;
@@ -160,15 +160,15 @@ export const WindowDaysEnum = /*@__PURE__*/ S.Number;
 /** The alert condition for mode='alert', applied after `selection` targeting. 'every_match' notifies about each new match since the previous check; 'on_breach' compares a metric to a threshold over a rolling window and notifies on the transition into breach. */
 export interface AlertConfig {
   /** 'every_match' notifies about every new matching observation (batched per check); 'on_breach' notifies once when the threshold condition starts holding. Defaults to 'on_breach'. * `every_match` - Every new match * `on_breach` - When a threshold is crossed */
-  frequency?: AlertConfigFrequencyEnum;
+  frequency?: AlertConfigFrequencyEnum | (string & {});
   /** What to measure over the window: 'count' of targeted observations, or 'avg_score' (the mean scorer score; scorer scanners only). every_match supports 'count' only. * `count` - Count of matching observations * `avg_score` - Average score */
-  metric?: VisionAlertMetricEnum;
+  metric?: VisionAlertMetricEnum | (string & {});
   /** The alert fires when the metric is at or above ('above') or at or below ('below') this value, per 'direction'. Required for on_breach; ignored for every_match. */
   threshold?: number;
   /** Which side of the threshold breaches: 'above' fires when the metric is at or above it, 'below' when at or below (e.g. an average score dropping under a floor). Both inclusive. Defaults to 'above'; ignored for every_match. * `above` - At or above * `below` - At or below */
-  direction?: VisionAlertDirectionEnum;
+  direction?: VisionAlertDirectionEnum | (string & {});
   /** Rolling lookback window for on_breach conditions, ending at each check. Defaults to 1 day. every_match ignores it (each check covers what's new since the previous one). * `1` - 1 day * `3` - 3 days * `7` - 7 days * `14` - 14 days * `30` - 30 days */
-  window_days?: WindowDaysEnum;
+  window_days?: WindowDaysEnum | (number & {});
 }
 export const AlertConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -187,7 +187,7 @@ export const DeliveryTargetTypeEnum = /*@__PURE__*/ S.String;
 /** A single delivery destination. MVP supports Slack only. */
 export interface DeliveryTarget {
   /** Destination channel type. MVP supports 'slack' only. * `slack` - Slack */
-  type: DeliveryTargetTypeEnum;
+  type: DeliveryTargetTypeEnum | (string & {});
   /** ID of the Slack Integration on this team used to deliver the summary. */
   integration_id: number;
   /** Slack channel ID or name the summary is posted to. */
@@ -203,7 +203,7 @@ export const DeliveryTarget = /*@__PURE__*/ S.suspend(() =>
 
 /** List of delivery destinations the synthesized summary is sent to. */
 export type VisionActionsCreateRequestDeliveryConfigList =
-  ReadonlyArray<DeliveryTarget>;
+  Array<DeliveryTarget>;
 export const VisionActionsCreateRequestDeliveryConfigList =
   /*@__PURE__*/ S.Array(
     DeliveryTarget,
@@ -261,7 +261,7 @@ export const VisionActionsCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VisionActionsCreateRequest>;
 
 /** List of delivery destinations the synthesized summary is sent to. */
-export type VisionActionDeliveryConfigList = ReadonlyArray<DeliveryTarget>;
+export type VisionActionDeliveryConfigList = Array<DeliveryTarget>;
 export const VisionActionDeliveryConfigList = /*@__PURE__*/ S.Array(
   DeliveryTarget,
 ) as any as S.Schema<VisionActionDeliveryConfigList>;
@@ -430,7 +430,7 @@ export const VisionActionsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "VisionActionsListRequest",
 }) as any as S.Schema<VisionActionsListRequest>;
 
-export type PaginatedVisionActionListResultsList = ReadonlyArray<VisionAction>;
+export type PaginatedVisionActionListResultsList = Array<VisionAction>;
 export const PaginatedVisionActionListResultsList = /*@__PURE__*/ S.Array(
   VisionAction,
 ) as any as S.Schema<PaginatedVisionActionListResultsList>;
@@ -454,7 +454,7 @@ export const PaginatedVisionActionList = /*@__PURE__*/ S.suspend(() =>
 
 /** List of delivery destinations the synthesized summary is sent to. */
 export type VisionActionsPartialUpdateRequestDeliveryConfigList =
-  ReadonlyArray<DeliveryTarget>;
+  Array<DeliveryTarget>;
 export const VisionActionsPartialUpdateRequestDeliveryConfigList =
   /*@__PURE__*/ S.Array(
     DeliveryTarget,
@@ -631,7 +631,7 @@ export const VisionActionRunList = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VisionActionRunList>;
 
 export type PaginatedVisionActionRunListListResultsList =
-  ReadonlyArray<VisionActionRunList>;
+  Array<VisionActionRunList>;
 export const PaginatedVisionActionRunListListResultsList =
   /*@__PURE__*/ S.Array(
     VisionActionRunList,
@@ -704,7 +704,7 @@ export const RunObservation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RunObservation" }) as any as S.Schema<RunObservation>;
 
 /** Recordings this run included in its summary, in summary order. Empty for runs recorded before this was tracked, and for skipped/failed runs. */
-export type VisionActionRunObservationsList = ReadonlyArray<RunObservation>;
+export type VisionActionRunObservationsList = Array<RunObservation>;
 export const VisionActionRunObservationsList = /*@__PURE__*/ S.Array(
   RunObservation,
 ) as any as S.Schema<VisionActionRunObservationsList>;
@@ -1033,7 +1033,7 @@ export const ReplayObservation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReplayObservation>;
 
 export type PaginatedReplayObservationListResultsList =
-  ReadonlyArray<ReplayObservation>;
+  Array<ReplayObservation>;
 export const PaginatedReplayObservationListResultsList = /*@__PURE__*/ S.Array(
   ReplayObservation,
 ) as any as S.Schema<PaginatedReplayObservationListResultsList>;
@@ -1218,7 +1218,7 @@ export const AffectedCohortResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Session recording IDs to scan on demand, at most 200 per request. Scans start until the in-flight limit or monthly credit quota is reached; the rest are reported as skipped rather than failing the whole batch. Already-running sessions are a no-op. */
 export type VisionScannersBulkObserveCreateRequestSessionIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const VisionScannersBulkObserveCreateRequestSessionIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1323,7 +1323,7 @@ export const VisionScannersCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VisionScannersCreateRequest>;
 
 /** Up to two short representative quotes from the feedback comments. */
-export type FeedbackThemeExamplesList = ReadonlyArray<string>;
+export type FeedbackThemeExamplesList = Array<string>;
 export const FeedbackThemeExamplesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<FeedbackThemeExamplesList>;
@@ -1344,7 +1344,7 @@ export const FeedbackThemeSession = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FeedbackThemeSession>;
 
 /** The rated sessions whose feedback comments back this theme. Empty for summaries generated before session tracking. */
-export type FeedbackThemeSessionsList = ReadonlyArray<FeedbackThemeSession>;
+export type FeedbackThemeSessionsList = Array<FeedbackThemeSession>;
 export const FeedbackThemeSessionsList = /*@__PURE__*/ S.Array(
   FeedbackThemeSession,
 ) as any as S.Schema<FeedbackThemeSessionsList>;
@@ -1369,7 +1369,7 @@ export const FeedbackTheme = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FeedbackTheme" }) as any as S.Schema<FeedbackTheme>;
 
 /** Recurring failure modes, most frequent first. */
-export type FeedbackThemesThemesList = ReadonlyArray<FeedbackTheme>;
+export type FeedbackThemesThemesList = Array<FeedbackTheme>;
 export const FeedbackThemesThemesList = /*@__PURE__*/ S.Array(
   FeedbackTheme,
 ) as any as S.Schema<FeedbackThemesThemesList>;
@@ -1484,7 +1484,7 @@ export const VisionScannersCreatorsRetrieveRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<VisionScannersCreatorsRetrieveRequest>;
 
 /** Users who created at least one scanner on this team. Returned regardless of pagination state so the dropdown stays stable across pages. */
-export type ScannerCreatorsResponseCreatorsList = ReadonlyArray<UserBasic>;
+export type ScannerCreatorsResponseCreatorsList = Array<UserBasic>;
 export const ScannerCreatorsResponseCreatorsList = /*@__PURE__*/ S.Array(
   UserBasic,
 ) as any as S.Schema<ScannerCreatorsResponseCreatorsList>;
@@ -1708,8 +1708,7 @@ export const VisionScannersListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "VisionScannersListRequest",
 }) as any as S.Schema<VisionScannersListRequest>;
 
-export type PaginatedReplayScannerListResultsList =
-  ReadonlyArray<ReplayScanner>;
+export type PaginatedReplayScannerListResultsList = Array<ReplayScanner>;
 export const PaginatedReplayScannerListResultsList = /*@__PURE__*/ S.Array(
   ReplayScanner,
 ) as any as S.Schema<PaginatedReplayScannerListResultsList>;
@@ -2121,15 +2120,14 @@ export const ObservationLabelDayCount = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ObservationLabelDayCount>;
 
 /** Daily label counts over the last `recent_days` days, bucketed by the day the session was scanned so the series tracks scanner quality over time. Days without labels are omitted. */
-export type ObservationLabelStatsByDayList =
-  ReadonlyArray<ObservationLabelDayCount>;
+export type ObservationLabelStatsByDayList = Array<ObservationLabelDayCount>;
 export const ObservationLabelStatsByDayList = /*@__PURE__*/ S.Array(
   ObservationLabelDayCount,
 ) as any as S.Schema<ObservationLabelStatsByDayList>;
 
 /** Daily label counts over the last `recent_days` days, bucketed by the day the rating was last set or changed: the team's rating activity. Days without rating changes are omitted. */
 export type ObservationLabelStatsByRatingDayList =
-  ReadonlyArray<ObservationLabelDayCount>;
+  Array<ObservationLabelDayCount>;
 export const ObservationLabelStatsByRatingDayList = /*@__PURE__*/ S.Array(
   ObservationLabelDayCount,
 ) as any as S.Schema<ObservationLabelStatsByRatingDayList>;
@@ -2166,7 +2164,7 @@ export const ObservationVersionMarker = /*@__PURE__*/ S.suspend(() =>
 
 /** Each scanner (prompt) version that produced observations (all-time), with its first day, prompt, and rating counts, for chart markers and the prompt version history. */
 export type ObservationLabelStatsVersionMarkersList =
-  ReadonlyArray<ObservationVersionMarker>;
+  Array<ObservationVersionMarker>;
 export const ObservationLabelStatsVersionMarkersList = /*@__PURE__*/ S.Array(
   ObservationVersionMarker,
 ) as any as S.Schema<ObservationLabelStatsVersionMarkersList>;
@@ -2196,7 +2194,7 @@ export const ObservationLabelStats = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ObservationLabelStats>;
 
 /** All distinct tags (fixed + freeform) emitted by succeeded observations in the filtered set. */
-export type ObservationStatsAvailableTagsList = ReadonlyArray<string>;
+export type ObservationStatsAvailableTagsList = Array<string>;
 export const ObservationStatsAvailableTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ObservationStatsAvailableTagsList>;
@@ -2231,13 +2229,13 @@ export const TagCount = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TagCount" }) as any as S.Schema<TagCount>;
 
 /** Top fixed-vocabulary tags by emission count. */
-export type ClassifierStatsFixedRankedList = ReadonlyArray<TagCount>;
+export type ClassifierStatsFixedRankedList = Array<TagCount>;
 export const ClassifierStatsFixedRankedList = /*@__PURE__*/ S.Array(
   TagCount,
 ) as any as S.Schema<ClassifierStatsFixedRankedList>;
 
 /** Top freeform tags by emission count. */
-export type ClassifierStatsFreeformRankedList = ReadonlyArray<TagCount>;
+export type ClassifierStatsFreeformRankedList = Array<TagCount>;
 export const ClassifierStatsFreeformRankedList = /*@__PURE__*/ S.Array(
   TagCount,
 ) as any as S.Schema<ClassifierStatsFreeformRankedList>;
@@ -2289,13 +2287,13 @@ export const ScorerSummary = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ScorerSummary" }) as any as S.Schema<ScorerSummary>;
 
 /** Bucket labels (one per histogram bar) spanning the scanner's configured scale. */
-export type ScorerHistogramLabelsList = ReadonlyArray<string>;
+export type ScorerHistogramLabelsList = Array<string>;
 export const ScorerHistogramLabelsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ScorerHistogramLabelsList>;
 
 /** Observation count per bucket; same length as `labels`. */
-export type ScorerHistogramCountsList = ReadonlyArray<number>;
+export type ScorerHistogramCountsList = Array<number>;
 export const ScorerHistogramCountsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<ScorerHistogramCountsList>;
@@ -2511,7 +2509,7 @@ export const PromptEvaluationResult = /*@__PURE__*/ S.suspend(() =>
 
 /** Per-session outcomes, in completion order. */
 export type PromptSuggestionEvaluationResultsList =
-  ReadonlyArray<PromptEvaluationResult>;
+  Array<PromptEvaluationResult>;
 export const PromptSuggestionEvaluationResultsList = /*@__PURE__*/ S.Array(
   PromptEvaluationResult,
 ) as any as S.Schema<PromptSuggestionEvaluationResultsList>;
@@ -2769,7 +2767,7 @@ export const VisionScannersPromptSuggestionsListRequest =
   }) as any as S.Schema<VisionScannersPromptSuggestionsListRequest>;
 
 export type PaginatedReplayScannerPromptSuggestionListResultsList =
-  ReadonlyArray<ReplayScannerPromptSuggestion>;
+  Array<ReplayScannerPromptSuggestion>;
 export const PaginatedReplayScannerPromptSuggestionListResultsList =
   /*@__PURE__*/ S.Array(
     ReplayScannerPromptSuggestion,
@@ -2886,8 +2884,7 @@ export const ScannerStatsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScannerStatsResponse>;
 
 /** The current tag vocabulary, so suggestions never duplicate a tag the user already has. */
-export type VisionScannersSuggestTagsCreateRequestTagsList =
-  ReadonlyArray<string>;
+export type VisionScannersSuggestTagsCreateRequestTagsList = Array<string>;
 export const VisionScannersSuggestTagsCreateRequestTagsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2949,7 +2946,7 @@ export const TagSuggestion = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TagSuggestion" }) as any as S.Schema<TagSuggestion>;
 
 /** Suggested tags to add, most relevant first. May be empty when the evidence is too thin. */
-export type SuggestTagsResponseSuggestionsList = ReadonlyArray<TagSuggestion>;
+export type SuggestTagsResponseSuggestionsList = Array<TagSuggestion>;
 export const SuggestTagsResponseSuggestionsList = /*@__PURE__*/ S.Array(
   TagSuggestion,
 ) as any as S.Schema<SuggestTagsResponseSuggestionsList>;

@@ -125,7 +125,7 @@ export const HeatmapEventItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "HeatmapEventItem",
 }) as any as S.Schema<HeatmapEventItem>;
 
-export type HeatmapEventsResponseResultsList = ReadonlyArray<HeatmapEventItem>;
+export type HeatmapEventsResponseResultsList = Array<HeatmapEventItem>;
 export const HeatmapEventsResponseResultsList = /*@__PURE__*/ S.Array(
   HeatmapEventItem,
 ) as any as S.Schema<HeatmapEventsResponseResultsList>;
@@ -222,7 +222,7 @@ export const HeatmapResponseItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "HeatmapResponseItem",
 }) as any as S.Schema<HeatmapResponseItem>;
 
-export type HeatmapsResponseResultsList = ReadonlyArray<HeatmapResponseItem>;
+export type HeatmapsResponseResultsList = Array<HeatmapResponseItem>;
 export const HeatmapsResponseResultsList = /*@__PURE__*/ S.Array(
   HeatmapResponseItem,
 ) as any as S.Schema<HeatmapsResponseResultsList>;
@@ -265,7 +265,7 @@ export const HeatmapsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "HeatmapsResponse",
 }) as any as S.Schema<HeatmapsResponse>;
 
-export type HeatmapsListResponseBodyList = ReadonlyArray<HeatmapsResponse>;
+export type HeatmapsListResponseBodyList = Array<HeatmapsResponse>;
 export const HeatmapsListResponseBodyList = /*@__PURE__*/ S.Array(
   HeatmapsResponse,
 ) as any as S.Schema<HeatmapsListResponseBodyList>;

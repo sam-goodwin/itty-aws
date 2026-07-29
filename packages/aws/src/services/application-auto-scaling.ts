@@ -524,11 +524,11 @@ export type MetricAggregationType = "Average" | "Minimum" | "Maximum";
 export const MetricAggregationType = /*@__PURE__*/ S.String;
 
 export interface StepScalingPolicyConfiguration {
-  AdjustmentType?: AdjustmentType;
+  AdjustmentType?: AdjustmentType | (string & {});
   StepAdjustments?: StepAdjustment[];
   MinAdjustmentMagnitude?: number;
   Cooldown?: number;
-  MetricAggregationType?: MetricAggregationType;
+  MetricAggregationType?: MetricAggregationType | (string & {});
 }
 export const StepScalingPolicyConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -577,7 +577,7 @@ export const MetricType = /*@__PURE__*/ S.String;
 
 export type ResourceLabel = string;
 export interface PredefinedMetricSpecification {
-  PredefinedMetricType: MetricType;
+  PredefinedMetricType: MetricType | (string & {});
   ResourceLabel?: string;
 }
 export const PredefinedMetricSpecification = /*@__PURE__*/ S.suspend(() =>
@@ -687,7 +687,7 @@ export interface CustomizedMetricSpecification {
   MetricName?: string;
   Namespace?: string;
   Dimensions?: MetricDimension[];
-  Statistic?: MetricStatistic;
+  Statistic?: MetricStatistic | (string & {});
   Unit?: string;
   Metrics?: TargetTrackingMetricDataQuery[];
 }
@@ -897,9 +897,11 @@ export const PredictiveScalingMaxCapacityBreachBehavior =
 export type PredictiveScalingMaxCapacityBuffer = number;
 export interface PredictiveScalingPolicyConfiguration {
   MetricSpecifications: PredictiveScalingMetricSpecification[];
-  Mode?: PredictiveScalingMode;
+  Mode?: PredictiveScalingMode | (string & {});
   SchedulingBufferTime?: number;
-  MaxCapacityBreachBehavior?: PredictiveScalingMaxCapacityBreachBehavior;
+  MaxCapacityBreachBehavior?:
+    | PredictiveScalingMaxCapacityBreachBehavior
+    | (string & {});
   MaxCapacityBuffer?: number;
 }
 export const PredictiveScalingPolicyConfiguration = /*@__PURE__*/ S.suspend(

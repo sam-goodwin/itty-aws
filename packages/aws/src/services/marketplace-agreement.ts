@@ -571,7 +571,9 @@ export const PaymentRequestApprovalStrategy = /*@__PURE__*/ S.String;
 
 export type ISO8601Duration = string;
 export interface VariablePaymentTermConfiguration {
-  paymentRequestApprovalStrategy: PaymentRequestApprovalStrategy;
+  paymentRequestApprovalStrategy:
+    | PaymentRequestApprovalStrategy
+    | (string & {});
   expirationDuration?: string;
 }
 export const VariablePaymentTermConfiguration = /*@__PURE__*/ S.suspend(() =>

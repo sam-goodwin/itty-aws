@@ -510,7 +510,7 @@ export type EventType =
   | "renderingFailure";
 export const EventType = /*@__PURE__*/ S.String;
 
-export type EventTypes = EventType[];
+export type EventTypes = (EventType | (string & {}))[];
 export const EventTypes = /*@__PURE__*/ S.Array(EventType);
 export type AmazonResourceName = string;
 export interface KinesisFirehoseDestination {
@@ -529,7 +529,7 @@ export const DimensionValueSource = /*@__PURE__*/ S.String;
 export type DefaultDimensionValue = string;
 export interface CloudWatchDimensionConfiguration {
   DimensionName: string;
-  DimensionValueSource: DimensionValueSource;
+  DimensionValueSource: DimensionValueSource | (string & {});
   DefaultDimensionValue: string;
 }
 export const CloudWatchDimensionConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -693,7 +693,7 @@ export const ReceiptFilterPolicy = /*@__PURE__*/ S.String;
 
 export type Cidr = string;
 export interface ReceiptIpFilter {
-  Policy: ReceiptFilterPolicy;
+  Policy: ReceiptFilterPolicy | (string & {});
   Cidr: string;
 }
 export const ReceiptIpFilter = /*@__PURE__*/ S.suspend(() =>
@@ -791,7 +791,7 @@ export const InvocationType = /*@__PURE__*/ S.String;
 export interface LambdaAction {
   TopicArn?: string;
   FunctionArn: string;
-  InvocationType?: InvocationType;
+  InvocationType?: InvocationType | (string & {});
 }
 export const LambdaAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -804,7 +804,7 @@ export type StopScope = "RuleSet";
 export const StopScope = /*@__PURE__*/ S.String;
 
 export interface StopAction {
-  Scope: StopScope;
+  Scope: StopScope | (string & {});
   TopicArn?: string;
 }
 export const StopAction = /*@__PURE__*/ S.suspend(() =>
@@ -826,7 +826,7 @@ export const SNSActionEncoding = /*@__PURE__*/ S.String;
 
 export interface SNSAction {
   TopicArn: string;
-  Encoding?: SNSActionEncoding;
+  Encoding?: SNSActionEncoding | (string & {});
 }
 export const SNSAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ TopicArn: S.String, Encoding: S.optional(SNSActionEncoding) }),
@@ -866,7 +866,7 @@ export const ReceiptActionsList = /*@__PURE__*/ S.Array(ReceiptAction);
 export interface ReceiptRule {
   Name: string;
   Enabled?: boolean;
-  TlsPolicy?: TlsPolicy;
+  TlsPolicy?: TlsPolicy | (string & {});
   Recipients?: string[];
   Actions?: ReceiptAction[];
   ScanEnabled?: boolean;
@@ -1332,7 +1332,7 @@ export const DescribeConfigurationSetRequest = /*@__PURE__*/ S.suspend(() =>
 export type EventDestinations = EventDestination[];
 export const EventDestinations = /*@__PURE__*/ S.Array(EventDestination);
 export interface DeliveryOptions {
-  TlsPolicy?: TlsPolicy;
+  TlsPolicy?: TlsPolicy | (string & {});
 }
 export const DeliveryOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ TlsPolicy: S.optional(TlsPolicy) }),

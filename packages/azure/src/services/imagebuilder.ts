@@ -72,7 +72,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** The list of operations supported by the resource provider. */
-export type OperationListResultValueList = ReadonlyArray<Operation>;
+export type OperationListResultValueList = Array<Operation>;
 export const OperationListResultValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationListResultValueList>;
@@ -385,7 +385,7 @@ export const Trigger = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Trigger" }) as any as S.Schema<Trigger>;
 
 /** The Trigger items on this page */
-export type TriggerCollectionValueList = ReadonlyArray<Trigger>;
+export type TriggerCollectionValueList = Array<Trigger>;
 export const TriggerCollectionValueList = /*@__PURE__*/ S.Array(
   Trigger,
 ) as any as S.Schema<TriggerCollectionValueList>;
@@ -479,7 +479,7 @@ export const ImageTemplateCustomizer = /*@__PURE__*/ S.suspend(() =>
 
 /** Specifies the properties used to describe the customization steps of the image, like Image source etc */
 export type ImageTemplatePropertiesInputCustomizeList =
-  ReadonlyArray<ImageTemplateCustomizer>;
+  Array<ImageTemplateCustomizer>;
 export const ImageTemplatePropertiesInputCustomizeList = /*@__PURE__*/ S.Array(
   ImageTemplateCustomizer,
 ) as any as S.Schema<ImageTemplatePropertiesInputCustomizeList>;
@@ -491,7 +491,7 @@ export const VMBootOptimizationState = /*@__PURE__*/ S.String;
 /** Optimization is applied on the image for a faster VM boot. */
 export interface ImageTemplatePropertiesOptimizeVmBoot {
   /** Enabling this field will improve VM boot time by optimizing the final customized image output. */
-  state?: VMBootOptimizationState;
+  state?: VMBootOptimizationState | (string & {});
 }
 export const ImageTemplatePropertiesOptimizeVmBoot = /*@__PURE__*/ S.suspend(
   () =>
@@ -509,7 +509,7 @@ export const WorkloadOptimizationState = /*@__PURE__*/ S.String;
 /** Optimization is applied on the image for specific workloads. */
 export interface ImageTemplatePropertiesOptimizeWorkload {
   /** Enabling this field will optimize vm images for specific workloads. */
-  state?: WorkloadOptimizationState;
+  state?: WorkloadOptimizationState | (string & {});
   /** URI of the script to be run for workload optimization. It can be a github link, SAS URI for Azure Storage, etc */
   scriptUri?: string;
   /** SHA256 checksum of the script provided in the scriptUri field */
@@ -560,7 +560,7 @@ export const ImageTemplateInVMValidator = /*@__PURE__*/ S.suspend(() =>
 
 /** List of validations to be performed. */
 export type ImageTemplatePropertiesValidateInVMValidationsList =
-  ReadonlyArray<ImageTemplateInVMValidator>;
+  Array<ImageTemplateInVMValidator>;
 export const ImageTemplatePropertiesValidateInVMValidationsList =
   /*@__PURE__*/ S.Array(
     ImageTemplateInVMValidator,
@@ -617,7 +617,7 @@ export const ImageTemplateDistributor = /*@__PURE__*/ S.suspend(() =>
 
 /** The distribution targets where the image output needs to go to. */
 export type ImageTemplatePropertiesInputDistributeList =
-  ReadonlyArray<ImageTemplateDistributor>;
+  Array<ImageTemplateDistributor>;
 export const ImageTemplatePropertiesInputDistributeList = /*@__PURE__*/ S.Array(
   ImageTemplateDistributor,
 ) as any as S.Schema<ImageTemplatePropertiesInputDistributeList>;
@@ -639,9 +639,13 @@ export const ImageTemplatePropertiesErrorHandlingOnValidationError =
 /** Error handling options upon a build failure */
 export interface ImageTemplatePropertiesErrorHandling {
   /** If there is a customizer error and this field is set to 'cleanup', the build VM and associated network resources will be cleaned up. This is the default behavior. If there is a customizer error and this field is set to 'abort', the build VM will be preserved. */
-  onCustomizerError?: ImageTemplatePropertiesErrorHandlingOnCustomizerError;
+  onCustomizerError?:
+    | ImageTemplatePropertiesErrorHandlingOnCustomizerError
+    | (string & {});
   /** If there is a validation error and this field is set to 'cleanup', the build VM and associated network resources will be cleaned up. This is the default behavior. If there is a validation error and this field is set to 'abort', the build VM will be preserved. */
-  onValidationError?: ImageTemplatePropertiesErrorHandlingOnValidationError;
+  onValidationError?:
+    | ImageTemplatePropertiesErrorHandlingOnValidationError
+    | (string & {});
 }
 export const ImageTemplatePropertiesErrorHandling = /*@__PURE__*/ S.suspend(
   () =>
@@ -658,8 +662,7 @@ export const ImageTemplatePropertiesErrorHandling = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ImageTemplatePropertiesErrorHandling>;
 
 /** Optional array of resource IDs of user assigned managed identities to be configured on the build VM and validation VM. This may include the identity of the image template. */
-export type ImageTemplateVmProfileUserAssignedIdentitiesList =
-  ReadonlyArray<string>;
+export type ImageTemplateVmProfileUserAssignedIdentitiesList = Array<string>;
 export const ImageTemplateVmProfileUserAssignedIdentitiesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -721,7 +724,7 @@ export const DataDisk = /*@__PURE__*/ S.suspend(() =>
 
 /** Optional array of additional data disks to be added to the image. */
 export type ImageTemplatePropertiesInputAdditionalDataDisksList =
-  ReadonlyArray<DataDisk>;
+  Array<DataDisk>;
 export const ImageTemplatePropertiesInputAdditionalDataDisksList =
   /*@__PURE__*/ S.Array(
     DataDisk,
@@ -734,7 +737,7 @@ export const AutoRunState = /*@__PURE__*/ S.String;
 /** Indicates if the image template needs to be built on create/update */
 export interface ImageTemplateAutoRun {
   /** Enabling this field will trigger an automatic build on image template creation or update. */
-  state?: AutoRunState;
+  state?: AutoRunState | (string & {});
 }
 export const ImageTemplateAutoRun = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -896,14 +899,14 @@ export const VirtualMachineImageTemplatesCreateOrUpdateResponseTagsMap =
 
 /** Specifies the properties used to describe the customization steps of the image, like Image source etc */
 export type ImageTemplatePropertiesCustomizeList =
-  ReadonlyArray<ImageTemplateCustomizer>;
+  Array<ImageTemplateCustomizer>;
 export const ImageTemplatePropertiesCustomizeList = /*@__PURE__*/ S.Array(
   ImageTemplateCustomizer,
 ) as any as S.Schema<ImageTemplatePropertiesCustomizeList>;
 
 /** The distribution targets where the image output needs to go to. */
 export type ImageTemplatePropertiesDistributeList =
-  ReadonlyArray<ImageTemplateDistributor>;
+  Array<ImageTemplateDistributor>;
 export const ImageTemplatePropertiesDistributeList = /*@__PURE__*/ S.Array(
   ImageTemplateDistributor,
 ) as any as S.Schema<ImageTemplatePropertiesDistributeList>;
@@ -989,8 +992,7 @@ export const ImageTemplateLastRunStatus = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ImageTemplateLastRunStatus>;
 
 /** Optional array of additional data disks to be added to the image. */
-export type ImageTemplatePropertiesAdditionalDataDisksList =
-  ReadonlyArray<DataDisk>;
+export type ImageTemplatePropertiesAdditionalDataDisksList = Array<DataDisk>;
 export const ImageTemplatePropertiesAdditionalDataDisksList =
   /*@__PURE__*/ S.Array(
     DataDisk,
@@ -1383,7 +1385,7 @@ export const ImageTemplate = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ImageTemplate" }) as any as S.Schema<ImageTemplate>;
 
 /** The ImageTemplate items on this page */
-export type ImageTemplateListResultValueList = ReadonlyArray<ImageTemplate>;
+export type ImageTemplateListResultValueList = Array<ImageTemplate>;
 export const ImageTemplateListResultValueList = /*@__PURE__*/ S.Array(
   ImageTemplate,
 ) as any as S.Schema<ImageTemplateListResultValueList>;
@@ -1477,7 +1479,7 @@ export const RunOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RunOutput" }) as any as S.Schema<RunOutput>;
 
 /** The RunOutput items on this page */
-export type RunOutputCollectionValueList = ReadonlyArray<RunOutput>;
+export type RunOutputCollectionValueList = Array<RunOutput>;
 export const RunOutputCollectionValueList = /*@__PURE__*/ S.Array(
   RunOutput,
 ) as any as S.Schema<RunOutputCollectionValueList>;
@@ -1543,7 +1545,7 @@ export const VirtualMachineImageTemplatesUpdateRequestTagsMap =
 
 /** The distribution targets where the image output needs to go to. */
 export type ImageTemplateUpdateParametersPropertiesDistributeList =
-  ReadonlyArray<ImageTemplateDistributor>;
+  Array<ImageTemplateDistributor>;
 export const ImageTemplateUpdateParametersPropertiesDistributeList =
   /*@__PURE__*/ S.Array(
     ImageTemplateDistributor,

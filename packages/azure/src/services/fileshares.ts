@@ -177,7 +177,7 @@ export const Redundancy = /*@__PURE__*/ S.String;
 
 /** Redundancy options for the share. */
 export type FileShareProvisioningRecommendationOutputAvailableRedundancyOptionsList =
-  ReadonlyArray<Redundancy>;
+  Array<Redundancy>;
 export const FileShareProvisioningRecommendationOutputAvailableRedundancyOptionsList =
   /*@__PURE__*/ S.Array(
     Redundancy,
@@ -362,9 +362,9 @@ export const EncryptionInTransitRequired = /*@__PURE__*/ S.String;
 /** Properties specific to the NFS protocol. */
 export interface NfsProtocolProperties {
   /** Root squash defines how root users on clients are mapped to the NFS share. */
-  rootSquash?: ShareRootSquash;
+  rootSquash?: ShareRootSquash | (string & {});
   /** Encryption in transit defines whether data is encrypted for NFS shares. */
-  encryptionInTransitRequired?: EncryptionInTransitRequired;
+  encryptionInTransitRequired?: EncryptionInTransitRequired | (string & {});
 }
 export const NfsProtocolProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -376,7 +376,7 @@ export const NfsProtocolProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NfsProtocolProperties>;
 
 /** The allowed set of subnets when access is restricted. */
-export type PublicAccessPropertiesAllowedSubnetsList = ReadonlyArray<string>;
+export type PublicAccessPropertiesAllowedSubnetsList = Array<string>;
 export const PublicAccessPropertiesAllowedSubnetsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PublicAccessPropertiesAllowedSubnetsList>;
@@ -540,8 +540,7 @@ export type FileShareProvisioningState =
 export const FileShareProvisioningState = /*@__PURE__*/ S.String;
 
 /** The group ids for the private endpoint resource. */
-export type PrivateEndpointConnectionPropertiesGroupIdsList =
-  ReadonlyArray<string>;
+export type PrivateEndpointConnectionPropertiesGroupIdsList = Array<string>;
 export const PrivateEndpointConnectionPropertiesGroupIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -570,7 +569,7 @@ export const PrivateEndpointServiceConnectionStatus = /*@__PURE__*/ S.String;
 /** A collection of information about the state of the connection between service consumer and provider. */
 export interface PrivateLinkServiceConnectionState {
   /** Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service. */
-  status?: PrivateEndpointServiceConnectionStatus;
+  status?: PrivateEndpointServiceConnectionStatus | (string & {});
   /** The reason for approval/rejection of the connection. */
   description?: string;
   /** A message indicating if changes on the service provider require any updates on the consumer. */
@@ -645,7 +644,7 @@ export const FileSharePropertiesPrivateEndpointConnectionsItem =
 
 /** The list of associated private endpoint connections. */
 export type FileSharePropertiesPrivateEndpointConnectionsList =
-  ReadonlyArray<FileSharePropertiesPrivateEndpointConnectionsItem>;
+  Array<FileSharePropertiesPrivateEndpointConnectionsItem>;
 export const FileSharePropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     FileSharePropertiesPrivateEndpointConnectionsItem,
@@ -902,7 +901,7 @@ export const FileShare = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FileShare" }) as any as S.Schema<FileShare>;
 
 /** The FileShare items on this page */
-export type FileShareListResultValueList = ReadonlyArray<FileShare>;
+export type FileShareListResultValueList = Array<FileShare>;
 export const FileShareListResultValueList = /*@__PURE__*/ S.Array(
   FileShare,
 ) as any as S.Schema<FileShareListResultValueList>;
@@ -1173,8 +1172,7 @@ export const FileShareSnapshot = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FileShareSnapshot>;
 
 /** The FileShareSnapshot items on this page */
-export type FileShareSnapshotListResultValueList =
-  ReadonlyArray<FileShareSnapshot>;
+export type FileShareSnapshotListResultValueList = Array<FileShareSnapshot>;
 export const FileShareSnapshotListResultValueList = /*@__PURE__*/ S.Array(
   FileShareSnapshot,
 ) as any as S.Schema<FileShareSnapshotListResultValueList>;
@@ -1448,7 +1446,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = ReadonlyArray<Operation>;
+export type OperationsListResponseValueList = Array<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;
@@ -1694,7 +1692,7 @@ export const PrivateEndpointConnectionListResultValueItem =
 
 /** The PrivateEndpointConnection items on this page */
 export type PrivateEndpointConnectionListResultValueList =
-  ReadonlyArray<PrivateEndpointConnectionListResultValueItem>;
+  Array<PrivateEndpointConnectionListResultValueItem>;
 export const PrivateEndpointConnectionListResultValueList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnectionListResultValueItem,
@@ -1745,16 +1743,14 @@ export const PrivateLinkResourcesGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateLinkResourcesGetRequest>;
 
 /** The private link resource required member names. */
-export type PrivateLinkResourcePropertiesRequiredMembersList =
-  ReadonlyArray<string>;
+export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
 export const PrivateLinkResourcePropertiesRequiredMembersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
 
 /** The private link resource private link DNS zone name. */
-export type PrivateLinkResourcePropertiesRequiredZoneNamesList =
-  ReadonlyArray<string>;
+export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
 export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1858,8 +1854,7 @@ export const PrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateLinkResource>;
 
 /** The PrivateLinkResource items on this page */
-export type PrivateLinkResourceListResultValueList =
-  ReadonlyArray<PrivateLinkResource>;
+export type PrivateLinkResourceListResultValueList = Array<PrivateLinkResource>;
 export const PrivateLinkResourceListResultValueList = /*@__PURE__*/ S.Array(
   PrivateLinkResource,
 ) as any as S.Schema<PrivateLinkResourceListResultValueList>;

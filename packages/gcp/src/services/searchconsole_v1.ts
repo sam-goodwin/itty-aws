@@ -200,7 +200,7 @@ export const WmxSitemapContent = /*@__PURE__*/ S.suspend(() =>
   identifier: "WmxSitemapContent",
 }) as any as S.Schema<WmxSitemapContent>;
 
-export type WmxSitemapContentList = ReadonlyArray<WmxSitemapContent>;
+export type WmxSitemapContentList = Array<WmxSitemapContent>;
 export const WmxSitemapContentList = /*@__PURE__*/ S.Array(
   WmxSitemapContent,
 ) as any as S.Schema<WmxSitemapContentList>;
@@ -347,7 +347,7 @@ export const AmpIssue = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AmpIssue" }) as any as S.Schema<AmpIssue>;
 
-export type AmpIssueList = ReadonlyArray<AmpIssue>;
+export type AmpIssueList = Array<AmpIssue>;
 export const AmpIssueList = /*@__PURE__*/ S.Array(
   AmpIssue,
 ) as any as S.Schema<AmpIssueList>;
@@ -464,7 +464,7 @@ export const MobileUsabilityIssue = /*@__PURE__*/ S.suspend(() =>
   identifier: "MobileUsabilityIssue",
 }) as any as S.Schema<MobileUsabilityIssue>;
 
-export type MobileUsabilityIssueList = ReadonlyArray<MobileUsabilityIssue>;
+export type MobileUsabilityIssueList = Array<MobileUsabilityIssue>;
 export const MobileUsabilityIssueList = /*@__PURE__*/ S.Array(
   MobileUsabilityIssue,
 ) as any as S.Schema<MobileUsabilityIssueList>;
@@ -515,7 +515,7 @@ export const RichResultsIssue = /*@__PURE__*/ S.suspend(() =>
   identifier: "RichResultsIssue",
 }) as any as S.Schema<RichResultsIssue>;
 
-export type RichResultsIssueList = ReadonlyArray<RichResultsIssue>;
+export type RichResultsIssueList = Array<RichResultsIssue>;
 export const RichResultsIssueList = /*@__PURE__*/ S.Array(
   RichResultsIssue,
 ) as any as S.Schema<RichResultsIssueList>;
@@ -534,7 +534,7 @@ export const Item = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Item" }) as any as S.Schema<Item>;
 
-export type ItemList = ReadonlyArray<Item>;
+export type ItemList = Array<Item>;
 export const ItemList = /*@__PURE__*/ S.Array(
   Item,
 ) as any as S.Schema<ItemList>;
@@ -553,7 +553,7 @@ export const DetectedItems = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DetectedItems" }) as any as S.Schema<DetectedItems>;
 
-export type DetectedItemsList = ReadonlyArray<DetectedItems>;
+export type DetectedItemsList = Array<DetectedItems>;
 export const DetectedItemsList = /*@__PURE__*/ S.Array(
   DetectedItems,
 ) as any as S.Schema<DetectedItemsList>;
@@ -574,7 +574,7 @@ export const RichResultsInspectionResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "RichResultsInspectionResult",
 }) as any as S.Schema<RichResultsInspectionResult>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -727,7 +727,7 @@ export const ListSitemapsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListSitemapsRequest",
 }) as any as S.Schema<ListSitemapsRequest>;
 
-export type WmxSitemapList = ReadonlyArray<WmxSitemap>;
+export type WmxSitemapList = Array<WmxSitemap>;
 export const WmxSitemapList = /*@__PURE__*/ S.Array(
   WmxSitemap,
 ) as any as S.Schema<WmxSitemapList>;
@@ -758,7 +758,7 @@ export const ListSitesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListSitesRequest",
 }) as any as S.Schema<ListSitesRequest>;
 
-export type WmxSiteList = ReadonlyArray<WmxSite>;
+export type WmxSiteList = Array<WmxSite>;
 export const WmxSiteList = /*@__PURE__*/ S.Array(
   WmxSite,
 ) as any as S.Schema<WmxSiteList>;
@@ -812,7 +812,7 @@ export const ApiDimensionFilter = /*@__PURE__*/ S.suspend(() =>
   identifier: "ApiDimensionFilter",
 }) as any as S.Schema<ApiDimensionFilter>;
 
-export type ApiDimensionFilterList = ReadonlyArray<ApiDimensionFilter>;
+export type ApiDimensionFilterList = Array<ApiDimensionFilter>;
 export const ApiDimensionFilterList = /*@__PURE__*/ S.Array(
   ApiDimensionFilter,
 ) as any as S.Schema<ApiDimensionFilterList>;
@@ -831,8 +831,7 @@ export const ApiDimensionFilterGroup = /*@__PURE__*/ S.suspend(() =>
   identifier: "ApiDimensionFilterGroup",
 }) as any as S.Schema<ApiDimensionFilterGroup>;
 
-export type ApiDimensionFilterGroupList =
-  ReadonlyArray<ApiDimensionFilterGroup>;
+export type ApiDimensionFilterGroupList = Array<ApiDimensionFilterGroup>;
 export const ApiDimensionFilterGroupList = /*@__PURE__*/ S.Array(
   ApiDimensionFilterGroup,
 ) as any as S.Schema<ApiDimensionFilterGroupList>;
@@ -881,7 +880,7 @@ export type SearchAnalyticsQueryRequestDimensionsItemEnum =
 export const SearchAnalyticsQueryRequestDimensionsItemEnum =
   /*@__PURE__*/ S.String;
 
-export type SearchAnalyticsQueryRequestDimensionsItemEnumList = ReadonlyArray<
+export type SearchAnalyticsQueryRequestDimensionsItemEnumList = Array<
   SearchAnalyticsQueryRequestDimensionsItemEnum | (string & {})
 >;
 export const SearchAnalyticsQueryRequestDimensionsItemEnumList =
@@ -976,7 +975,7 @@ export const ApiDataRow = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ApiDataRow" }) as any as S.Schema<ApiDataRow>;
 
-export type ApiDataRowList = ReadonlyArray<ApiDataRow>;
+export type ApiDataRowList = Array<ApiDataRow>;
 export const ApiDataRowList = /*@__PURE__*/ S.Array(
   ApiDataRow,
 ) as any as S.Schema<ApiDataRowList>;
@@ -1096,7 +1095,7 @@ export const ResourceIssue = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ResourceIssue" }) as any as S.Schema<ResourceIssue>;
 
-export type ResourceIssueList = ReadonlyArray<ResourceIssue>;
+export type ResourceIssueList = Array<ResourceIssue>;
 export const ResourceIssueList = /*@__PURE__*/ S.Array(
   ResourceIssue,
 ) as any as S.Schema<ResourceIssueList>;
@@ -1145,7 +1144,7 @@ export const MobileFriendlyIssue = /*@__PURE__*/ S.suspend(() =>
   identifier: "MobileFriendlyIssue",
 }) as any as S.Schema<MobileFriendlyIssue>;
 
-export type MobileFriendlyIssueList = ReadonlyArray<MobileFriendlyIssue>;
+export type MobileFriendlyIssueList = Array<MobileFriendlyIssue>;
 export const MobileFriendlyIssueList = /*@__PURE__*/ S.Array(
   MobileFriendlyIssue,
 ) as any as S.Schema<MobileFriendlyIssueList>;

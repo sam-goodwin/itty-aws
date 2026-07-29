@@ -138,8 +138,9 @@ export type ListingCategoriesItemEnum =
   | "CATEGORY_GOOGLE_EARTH_ENGINE";
 export const ListingCategoriesItemEnum = /*@__PURE__*/ S.String;
 
-export type ListingCategoriesItemEnumList =
-  ReadonlyArray<ListingCategoriesItemEnum>;
+export type ListingCategoriesItemEnumList = Array<
+  ListingCategoriesItemEnum | (string & {})
+>;
 export const ListingCategoriesItemEnumList = /*@__PURE__*/ S.Array(
   ListingCategoriesItemEnum,
 ) as any as S.Schema<ListingCategoriesItemEnumList>;
@@ -230,7 +231,7 @@ export interface Listing {
   /** Required. Shared dataset i.e. BigQuery dataset source. */
   bigqueryDataset?: BigQueryDatasetSource;
   /** Output only. Current state of the listing. */
-  state?: ListingStateEnum;
+  state?: ListingStateEnum | (string & {});
   /** Required. Human-readable display name of the listing. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), ampersands (&) and can't start or end with spaces. Default value is an empty string. Max length: 63 bytes. */
   displayName?: string;
   /** Optional. If set, restricted export configuration will be propagated and enforced on the linked dataset. This is a required field for data clean room exchanges. */
@@ -374,7 +375,7 @@ export const GetIamPolicyProjectsLocationsDataExchangesRequest =
     identifier: "GetIamPolicyProjectsLocationsDataExchangesRequest",
   }) as any as S.Schema<GetIamPolicyProjectsLocationsDataExchangesRequest>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -416,7 +417,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
-export type BindingList = ReadonlyArray<Binding>;
+export type BindingList = Array<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -431,7 +432,7 @@ export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
 export interface AuditLogConfig {
   /** The log type that this config enables. */
-  logType?: AuditLogConfigLogTypeEnum;
+  logType?: AuditLogConfigLogTypeEnum | (string & {});
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
   exemptedMembers?: StringList;
 }
@@ -442,7 +443,7 @@ export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
-export type AuditLogConfigList = ReadonlyArray<AuditLogConfig>;
+export type AuditLogConfigList = Array<AuditLogConfig>;
 export const AuditLogConfigList = /*@__PURE__*/ S.Array(
   AuditLogConfig,
 ) as any as S.Schema<AuditLogConfigList>;
@@ -461,7 +462,7 @@ export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
-export type AuditConfigList = ReadonlyArray<AuditConfig>;
+export type AuditConfigList = Array<AuditConfig>;
 export const AuditConfigList = /*@__PURE__*/ S.Array(
   AuditConfig,
 ) as any as S.Schema<AuditConfigList>;
@@ -571,7 +572,7 @@ export const ListOrganizationsLocationsDataExchangesRequest =
     identifier: "ListOrganizationsLocationsDataExchangesRequest",
   }) as any as S.Schema<ListOrganizationsLocationsDataExchangesRequest>;
 
-export type DataExchangeList = ReadonlyArray<DataExchange>;
+export type DataExchangeList = Array<DataExchange>;
 export const DataExchangeList = /*@__PURE__*/ S.Array(
   DataExchange,
 ) as any as S.Schema<DataExchangeList>;
@@ -658,7 +659,7 @@ export const ListProjectsLocationsDataExchangesListingsRequest =
     identifier: "ListProjectsLocationsDataExchangesListingsRequest",
   }) as any as S.Schema<ListProjectsLocationsDataExchangesListingsRequest>;
 
-export type ListingList = ReadonlyArray<Listing>;
+export type ListingList = Array<Listing>;
 export const ListingList = /*@__PURE__*/ S.Array(
   Listing,
 ) as any as S.Schema<ListingList>;

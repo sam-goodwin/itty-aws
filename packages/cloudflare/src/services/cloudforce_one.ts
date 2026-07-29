@@ -84,14 +84,13 @@ export const ThreatEventsBulkCreateRequestDataItemIndicatorsItem =
   }) as any as S.Schema<ThreatEventsBulkCreateRequestDataItemIndicatorsItem>;
 
 export type ThreatEventsBulkCreateRequestDataItemIndicatorsList =
-  ReadonlyArray<ThreatEventsBulkCreateRequestDataItemIndicatorsItem>;
+  Array<ThreatEventsBulkCreateRequestDataItemIndicatorsItem>;
 export const ThreatEventsBulkCreateRequestDataItemIndicatorsList =
   /*@__PURE__*/ S.Array(
     ThreatEventsBulkCreateRequestDataItemIndicatorsItem,
   ) as any as S.Schema<ThreatEventsBulkCreateRequestDataItemIndicatorsList>;
 
-export type ThreatEventsBulkCreateRequestDataItemTagsList =
-  ReadonlyArray<string>;
+export type ThreatEventsBulkCreateRequestDataItemTagsList = Array<string>;
 export const ThreatEventsBulkCreateRequestDataItemTagsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -143,7 +142,7 @@ export const ThreatEventsBulkCreateRequestDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ThreatEventsBulkCreateRequestDataItem>;
 
 export type ThreatEventsBulkCreateRequestDataList =
-  ReadonlyArray<ThreatEventsBulkCreateRequestDataItem>;
+  Array<ThreatEventsBulkCreateRequestDataItem>;
 export const ThreatEventsBulkCreateRequestDataList = /*@__PURE__*/ S.Array(
   ThreatEventsBulkCreateRequestDataItem,
 ) as any as S.Schema<ThreatEventsBulkCreateRequestDataList>;
@@ -195,7 +194,7 @@ export const ThreatEventsBulkCreateResponseCreatedEventsItem =
   }) as any as S.Schema<ThreatEventsBulkCreateResponseCreatedEventsItem>;
 
 export type ThreatEventsBulkCreateResponseCreatedEventsList =
-  ReadonlyArray<ThreatEventsBulkCreateResponseCreatedEventsItem>;
+  Array<ThreatEventsBulkCreateResponseCreatedEventsItem>;
 export const ThreatEventsBulkCreateResponseCreatedEventsList =
   /*@__PURE__*/ S.Array(
     ThreatEventsBulkCreateResponseCreatedEventsItem,
@@ -426,7 +425,7 @@ export const RequestsAssetsCreateResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RequestsAssetsCreateResultItem>;
 
 export type RequestsAssetsCreateResultList =
-  ReadonlyArray<RequestsAssetsCreateResultItem>;
+  Array<RequestsAssetsCreateResultItem>;
 export const RequestsAssetsCreateResultList = /*@__PURE__*/ S.Array(
   RequestsAssetsCreateResultItem,
 ) as any as S.Schema<RequestsAssetsCreateResultList>;
@@ -500,7 +499,7 @@ export const CreateRequestMessageResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateRequestMessageResponse",
 }) as any as S.Schema<CreateRequestMessageResponse>;
 
-export type RequestsPriorityCreateRequestLabelsList = ReadonlyArray<unknown>;
+export type RequestsPriorityCreateRequestLabelsList = Array<unknown>;
 export const RequestsPriorityCreateRequestLabelsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<RequestsPriorityCreateRequestLabelsList>;
@@ -545,7 +544,7 @@ export const CreateRequestPriorityRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateRequestPriorityRequest",
 }) as any as S.Schema<CreateRequestPriorityRequest>;
 
-export type RequestsPriorityCreateResponseLabelsList = ReadonlyArray<unknown>;
+export type RequestsPriorityCreateResponseLabelsList = Array<unknown>;
 export const RequestsPriorityCreateResponseLabelsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<RequestsPriorityCreateResponseLabelsList>;
@@ -589,12 +588,12 @@ export const CreateRequestPriorityResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateRequestPriorityResponse",
 }) as any as S.Schema<CreateRequestPriorityResponse>;
 
-export type ScansConfigCreateRequestIpsList = ReadonlyArray<string>;
+export type ScansConfigCreateRequestIpsList = Array<string>;
 export const ScansConfigCreateRequestIpsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ScansConfigCreateRequestIpsList>;
 
-export type ScansConfigCreateRequestPortsList = ReadonlyArray<string>;
+export type ScansConfigCreateRequestPortsList = Array<string>;
 export const ScansConfigCreateRequestPortsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ScansConfigCreateRequestPortsList>;
@@ -628,12 +627,12 @@ export const CreateScanConfigRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateScanConfigRequest",
 }) as any as S.Schema<CreateScanConfigRequest>;
 
-export type ScansConfigCreateResponseIpsList = ReadonlyArray<string>;
+export type ScansConfigCreateResponseIpsList = Array<string>;
 export const ScansConfigCreateResponseIpsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ScansConfigCreateResponseIpsList>;
 
-export type ScansConfigCreateResponsePortsList = ReadonlyArray<string>;
+export type ScansConfigCreateResponsePortsList = Array<string>;
 export const ScansConfigCreateResponsePortsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ScansConfigCreateResponsePortsList>;
@@ -702,12 +701,12 @@ export const ThreatEventsCreateRequestIndicatorsItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ThreatEventsCreateRequestIndicatorsItem>;
 
 export type ThreatEventsCreateRequestIndicatorsList =
-  ReadonlyArray<ThreatEventsCreateRequestIndicatorsItem>;
+  Array<ThreatEventsCreateRequestIndicatorsItem>;
 export const ThreatEventsCreateRequestIndicatorsList = /*@__PURE__*/ S.Array(
   ThreatEventsCreateRequestIndicatorsItem,
 ) as any as S.Schema<ThreatEventsCreateRequestIndicatorsList>;
 
-export type ThreatEventsCreateRequestTagsList = ReadonlyArray<string>;
+export type ThreatEventsCreateRequestTagsList = Array<string>;
 export const ThreatEventsCreateRequestTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ThreatEventsCreateRequestTagsList>;
@@ -763,39 +762,39 @@ export const CreateThreatEventRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateThreatEventRequest",
 }) as any as S.Schema<CreateThreatEventRequest>;
 
-export type ThreatEventsCreateResponseMitreAttackList = ReadonlyArray<string>;
+export type ThreatEventsCreateResponseMitreAttackList = Array<string>;
 export const ThreatEventsCreateResponseMitreAttackList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ThreatEventsCreateResponseMitreAttackList>;
 
-export type ThreatEventsCreateResponseMitreCapecList = ReadonlyArray<string>;
+export type ThreatEventsCreateResponseMitreCapecList = Array<string>;
 export const ThreatEventsCreateResponseMitreCapecList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ThreatEventsCreateResponseMitreCapecList>;
 
-export type ThreatEventsCreateResponseReferencedList = ReadonlyArray<string>;
+export type ThreatEventsCreateResponseReferencedList = Array<string>;
 export const ThreatEventsCreateResponseReferencedList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ThreatEventsCreateResponseReferencedList>;
 
-export type ThreatEventsCreateResponseReferencedIdsList = ReadonlyArray<number>;
+export type ThreatEventsCreateResponseReferencedIdsList = Array<number>;
 export const ThreatEventsCreateResponseReferencedIdsList =
   /*@__PURE__*/ S.Array(
     S.Number,
   ) as any as S.Schema<ThreatEventsCreateResponseReferencedIdsList>;
 
-export type ThreatEventsCreateResponseReferencesList = ReadonlyArray<string>;
+export type ThreatEventsCreateResponseReferencesList = Array<string>;
 export const ThreatEventsCreateResponseReferencesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ThreatEventsCreateResponseReferencesList>;
 
-export type ThreatEventsCreateResponseReferencesIdsList = ReadonlyArray<number>;
+export type ThreatEventsCreateResponseReferencesIdsList = Array<number>;
 export const ThreatEventsCreateResponseReferencesIdsList =
   /*@__PURE__*/ S.Array(
     S.Number,
   ) as any as S.Schema<ThreatEventsCreateResponseReferencesIdsList>;
 
-export type ThreatEventsCreateResponseTagsList = ReadonlyArray<string>;
+export type ThreatEventsCreateResponseTagsList = Array<string>;
 export const ThreatEventsCreateResponseTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ThreatEventsCreateResponseTagsList>;
@@ -868,15 +867,13 @@ export const CreateThreatEventResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateThreatEventResponse",
 }) as any as S.Schema<CreateThreatEventResponse>;
 
-export type ThreatEventsCategoriesCreateRequestMitreAttackList =
-  ReadonlyArray<string>;
+export type ThreatEventsCategoriesCreateRequestMitreAttackList = Array<string>;
 export const ThreatEventsCategoriesCreateRequestMitreAttackList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ThreatEventsCategoriesCreateRequestMitreAttackList>;
 
-export type ThreatEventsCategoriesCreateRequestMitreCapecList =
-  ReadonlyArray<string>;
+export type ThreatEventsCategoriesCreateRequestMitreCapecList = Array<string>;
 export const ThreatEventsCategoriesCreateRequestMitreCapecList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -912,15 +909,13 @@ export const CreateThreatEventCategoryRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateThreatEventCategoryRequest",
 }) as any as S.Schema<CreateThreatEventCategoryRequest>;
 
-export type ThreatEventsCategoriesCreateResponseMitreAttackList =
-  ReadonlyArray<string>;
+export type ThreatEventsCategoriesCreateResponseMitreAttackList = Array<string>;
 export const ThreatEventsCategoriesCreateResponseMitreAttackList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ThreatEventsCategoriesCreateResponseMitreAttackList>;
 
-export type ThreatEventsCategoriesCreateResponseMitreCapecList =
-  ReadonlyArray<string>;
+export type ThreatEventsCategoriesCreateResponseMitreCapecList = Array<string>;
 export const ThreatEventsCategoriesCreateResponseMitreCapecList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -994,7 +989,7 @@ export const CreateThreatEventDatasetResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateThreatEventDatasetResponse",
 }) as any as S.Schema<CreateThreatEventDatasetResponse>;
 
-export type ThreatEventsEventTagsCreateRequestTagsList = ReadonlyArray<string>;
+export type ThreatEventsEventTagsCreateRequestTagsList = Array<string>;
 export const ThreatEventsEventTagsCreateRequestTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ThreatEventsEventTagsCreateRequestTagsList>;
@@ -1061,27 +1056,26 @@ export const ThreatEventsTagsCreateRequestAliasesItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ThreatEventsTagsCreateRequestAliasesItem>;
 
 export type ThreatEventsTagsCreateRequestAliasesList =
-  ReadonlyArray<ThreatEventsTagsCreateRequestAliasesItem>;
+  Array<ThreatEventsTagsCreateRequestAliasesItem>;
 export const ThreatEventsTagsCreateRequestAliasesList = /*@__PURE__*/ S.Array(
   ThreatEventsTagsCreateRequestAliasesItem,
 ) as any as S.Schema<ThreatEventsTagsCreateRequestAliasesList>;
 
-export type ThreatEventsTagsCreateRequestAliasGroupNamesList =
-  ReadonlyArray<string>;
+export type ThreatEventsTagsCreateRequestAliasGroupNamesList = Array<string>;
 export const ThreatEventsTagsCreateRequestAliasGroupNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ThreatEventsTagsCreateRequestAliasGroupNamesList>;
 
 export type ThreatEventsTagsCreateRequestAliasGroupNamesInternalList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ThreatEventsTagsCreateRequestAliasGroupNamesInternalList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ThreatEventsTagsCreateRequestAliasGroupNamesInternalList>;
 
 export type ThreatEventsTagsCreateRequestExternalReferenceLinksList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ThreatEventsTagsCreateRequestExternalReferenceLinksList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1102,7 +1096,7 @@ export const ThreatEventsTagsCreateRequestExternalReferencesItem =
   }) as any as S.Schema<ThreatEventsTagsCreateRequestExternalReferencesItem>;
 
 export type ThreatEventsTagsCreateRequestExternalReferencesList =
-  ReadonlyArray<ThreatEventsTagsCreateRequestExternalReferencesItem>;
+  Array<ThreatEventsTagsCreateRequestExternalReferencesItem>;
 export const ThreatEventsTagsCreateRequestExternalReferencesList =
   /*@__PURE__*/ S.Array(
     ThreatEventsTagsCreateRequestExternalReferencesItem,
@@ -1133,7 +1127,7 @@ export const ThreatEventsTagsCreateRequestInternalAliasesItem =
   }) as any as S.Schema<ThreatEventsTagsCreateRequestInternalAliasesItem>;
 
 export type ThreatEventsTagsCreateRequestInternalAliasesList =
-  ReadonlyArray<ThreatEventsTagsCreateRequestInternalAliasesItem>;
+  Array<ThreatEventsTagsCreateRequestInternalAliasesItem>;
 export const ThreatEventsTagsCreateRequestInternalAliasesList =
   /*@__PURE__*/ S.Array(
     ThreatEventsTagsCreateRequestInternalAliasesItem,
@@ -1264,27 +1258,26 @@ export const ThreatEventsTagsCreateResponseAliasesItem =
   }) as any as S.Schema<ThreatEventsTagsCreateResponseAliasesItem>;
 
 export type ThreatEventsTagsCreateResponseAliasesList =
-  ReadonlyArray<ThreatEventsTagsCreateResponseAliasesItem>;
+  Array<ThreatEventsTagsCreateResponseAliasesItem>;
 export const ThreatEventsTagsCreateResponseAliasesList = /*@__PURE__*/ S.Array(
   ThreatEventsTagsCreateResponseAliasesItem,
 ) as any as S.Schema<ThreatEventsTagsCreateResponseAliasesList>;
 
-export type ThreatEventsTagsCreateResponseAliasGroupNamesList =
-  ReadonlyArray<string>;
+export type ThreatEventsTagsCreateResponseAliasGroupNamesList = Array<string>;
 export const ThreatEventsTagsCreateResponseAliasGroupNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ThreatEventsTagsCreateResponseAliasGroupNamesList>;
 
 export type ThreatEventsTagsCreateResponseAliasGroupNamesInternalList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ThreatEventsTagsCreateResponseAliasGroupNamesInternalList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ThreatEventsTagsCreateResponseAliasGroupNamesInternalList>;
 
 export type ThreatEventsTagsCreateResponseExternalReferenceLinksList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ThreatEventsTagsCreateResponseExternalReferenceLinksList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1305,7 +1298,7 @@ export const ThreatEventsTagsCreateResponseExternalReferencesItem =
   }) as any as S.Schema<ThreatEventsTagsCreateResponseExternalReferencesItem>;
 
 export type ThreatEventsTagsCreateResponseExternalReferencesList =
-  ReadonlyArray<ThreatEventsTagsCreateResponseExternalReferencesItem>;
+  Array<ThreatEventsTagsCreateResponseExternalReferencesItem>;
 export const ThreatEventsTagsCreateResponseExternalReferencesList =
   /*@__PURE__*/ S.Array(
     ThreatEventsTagsCreateResponseExternalReferencesItem,
@@ -1336,7 +1329,7 @@ export const ThreatEventsTagsCreateResponseInternalAliasesItem =
   }) as any as S.Schema<ThreatEventsTagsCreateResponseInternalAliasesItem>;
 
 export type ThreatEventsTagsCreateResponseInternalAliasesList =
-  ReadonlyArray<ThreatEventsTagsCreateResponseInternalAliasesItem>;
+  Array<ThreatEventsTagsCreateResponseInternalAliasesItem>;
 export const ThreatEventsTagsCreateResponseInternalAliasesList =
   /*@__PURE__*/ S.Array(
     ThreatEventsTagsCreateResponseInternalAliasesItem,
@@ -1853,8 +1846,7 @@ export const RequestsMessageGetResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "RequestsMessageGetResultItem",
 }) as any as S.Schema<RequestsMessageGetResultItem>;
 
-export type RequestsMessageGetResultList =
-  ReadonlyArray<RequestsMessageGetResultItem>;
+export type RequestsMessageGetResultList = Array<RequestsMessageGetResultItem>;
 export const RequestsMessageGetResultList = /*@__PURE__*/ S.Array(
   RequestsMessageGetResultItem,
 ) as any as S.Schema<RequestsMessageGetResultList>;
@@ -1998,7 +1990,7 @@ export const ScansResultsGetResponse1111Item = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScansResultsGetResponse1111Item>;
 
 export type ScansResultsGetResponse1111List =
-  ReadonlyArray<ScansResultsGetResponse1111Item>;
+  Array<ScansResultsGetResponse1111Item>;
 export const ScansResultsGetResponse1111List = /*@__PURE__*/ S.Array(
   ScansResultsGetResponse1111Item,
 ) as any as S.Schema<ScansResultsGetResponse1111List>;
@@ -2038,37 +2030,37 @@ export const GetThreatEventRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetThreatEventRequest",
 }) as any as S.Schema<GetThreatEventRequest>;
 
-export type ThreatEventsGetResponseMitreAttackList = ReadonlyArray<string>;
+export type ThreatEventsGetResponseMitreAttackList = Array<string>;
 export const ThreatEventsGetResponseMitreAttackList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ThreatEventsGetResponseMitreAttackList>;
 
-export type ThreatEventsGetResponseMitreCapecList = ReadonlyArray<string>;
+export type ThreatEventsGetResponseMitreCapecList = Array<string>;
 export const ThreatEventsGetResponseMitreCapecList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ThreatEventsGetResponseMitreCapecList>;
 
-export type ThreatEventsGetResponseReferencedList = ReadonlyArray<string>;
+export type ThreatEventsGetResponseReferencedList = Array<string>;
 export const ThreatEventsGetResponseReferencedList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ThreatEventsGetResponseReferencedList>;
 
-export type ThreatEventsGetResponseReferencedIdsList = ReadonlyArray<number>;
+export type ThreatEventsGetResponseReferencedIdsList = Array<number>;
 export const ThreatEventsGetResponseReferencedIdsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<ThreatEventsGetResponseReferencedIdsList>;
 
-export type ThreatEventsGetResponseReferencesList = ReadonlyArray<string>;
+export type ThreatEventsGetResponseReferencesList = Array<string>;
 export const ThreatEventsGetResponseReferencesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ThreatEventsGetResponseReferencesList>;
 
-export type ThreatEventsGetResponseReferencesIdsList = ReadonlyArray<number>;
+export type ThreatEventsGetResponseReferencesIdsList = Array<number>;
 export const ThreatEventsGetResponseReferencesIdsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<ThreatEventsGetResponseReferencesIdsList>;
 
-export type ThreatEventsGetResponseTagsList = ReadonlyArray<string>;
+export type ThreatEventsGetResponseTagsList = Array<string>;
 export const ThreatEventsGetResponseTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ThreatEventsGetResponseTagsList>;
@@ -2164,15 +2156,13 @@ export const GetThreatEventCategoryRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetThreatEventCategoryRequest",
 }) as any as S.Schema<GetThreatEventCategoryRequest>;
 
-export type ThreatEventsCategoriesGetResponseMitreAttackList =
-  ReadonlyArray<string>;
+export type ThreatEventsCategoriesGetResponseMitreAttackList = Array<string>;
 export const ThreatEventsCategoriesGetResponseMitreAttackList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ThreatEventsCategoriesGetResponseMitreAttackList>;
 
-export type ThreatEventsCategoriesGetResponseMitreCapecList =
-  ReadonlyArray<string>;
+export type ThreatEventsCategoriesGetResponseMitreCapecList = Array<string>;
 export const ThreatEventsCategoriesGetResponseMitreCapecList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2309,12 +2299,12 @@ export const ListScanConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListScanConfigsRequest",
 }) as any as S.Schema<ListScanConfigsRequest>;
 
-export type ScansConfigListResultItemIpsList = ReadonlyArray<string>;
+export type ScansConfigListResultItemIpsList = Array<string>;
 export const ScansConfigListResultItemIpsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ScansConfigListResultItemIpsList>;
 
-export type ScansConfigListResultItemPortsList = ReadonlyArray<string>;
+export type ScansConfigListResultItemPortsList = Array<string>;
 export const ScansConfigListResultItemPortsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ScansConfigListResultItemPortsList>;
@@ -2342,8 +2332,7 @@ export const ScansConfigListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "ScansConfigListResultItem",
 }) as any as S.Schema<ScansConfigListResultItem>;
 
-export type ScansConfigListResultList =
-  ReadonlyArray<ScansConfigListResultItem>;
+export type ScansConfigListResultList = Array<ScansConfigListResultItem>;
 export const ScansConfigListResultList = /*@__PURE__*/ S.Array(
   ScansConfigListResultItem,
 ) as any as S.Schema<ScansConfigListResultList>;
@@ -2363,8 +2352,7 @@ export const ListScanConfigsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListScanConfigsResponse",
 }) as any as S.Schema<ListScanConfigsResponse>;
 
-export type ThreatEventsAttackersListRequestDatasetIdsList =
-  ReadonlyArray<string>;
+export type ThreatEventsAttackersListRequestDatasetIdsList = Array<string>;
 export const ThreatEventsAttackersListRequestDatasetIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2421,8 +2409,7 @@ export const ListThreatEventAttackersResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListThreatEventAttackersResponse",
 }) as any as S.Schema<ListThreatEventAttackersResponse>;
 
-export type ThreatEventsCategoriesListRequestDatasetIdsList =
-  ReadonlyArray<string>;
+export type ThreatEventsCategoriesListRequestDatasetIdsList = Array<string>;
 export const ThreatEventsCategoriesListRequestDatasetIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2453,15 +2440,13 @@ export const ListThreatEventCategoriesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListThreatEventCategoriesRequest",
 }) as any as S.Schema<ListThreatEventCategoriesRequest>;
 
-export type ThreatEventsCategoriesListResponseMitreAttackList =
-  ReadonlyArray<string>;
+export type ThreatEventsCategoriesListResponseMitreAttackList = Array<string>;
 export const ThreatEventsCategoriesListResponseMitreAttackList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ThreatEventsCategoriesListResponseMitreAttackList>;
 
-export type ThreatEventsCategoriesListResponseMitreCapecList =
-  ReadonlyArray<string>;
+export type ThreatEventsCategoriesListResponseMitreCapecList = Array<string>;
 export const ThreatEventsCategoriesListResponseMitreCapecList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2525,7 +2510,7 @@ export const ThreatEventsCountriesListResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ThreatEventsCountriesListResultItem>;
 
 export type ThreatEventsCountriesListResultList =
-  ReadonlyArray<ThreatEventsCountriesListResultItem>;
+  Array<ThreatEventsCountriesListResultItem>;
 export const ThreatEventsCountriesListResultList = /*@__PURE__*/ S.Array(
   ThreatEventsCountriesListResultItem,
 ) as any as S.Schema<ThreatEventsCountriesListResultList>;
@@ -2627,7 +2612,7 @@ export const ListThreatEventIndicatorTypesResponse = /*@__PURE__*/ S.suspend(
   identifier: "ListThreatEventIndicatorTypesResponse",
 }) as any as S.Schema<ListThreatEventIndicatorTypesResponse>;
 
-export type ThreatEventsListRequestDatasetIdList = ReadonlyArray<string>;
+export type ThreatEventsListRequestDatasetIdList = Array<string>;
 export const ThreatEventsListRequestDatasetIdList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ThreatEventsListRequestDatasetIdList>;
@@ -2638,7 +2623,7 @@ export const ThreatEventsListRequestFormat = /*@__PURE__*/ S.String;
 export type ThreatEventsListRequestOrder = "asc" | "desc";
 export const ThreatEventsListRequestOrder = /*@__PURE__*/ S.String;
 
-export type ThreatEventsListRequestSearchList = ReadonlyArray<string>;
+export type ThreatEventsListRequestSearchList = Array<string>;
 export const ThreatEventsListRequestSearchList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ThreatEventsListRequestSearchList>;
@@ -2691,37 +2676,37 @@ export const ListThreatEventsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListThreatEventsRequest",
 }) as any as S.Schema<ListThreatEventsRequest>;
 
-export type ThreatEventsListResponseMitreAttackList = ReadonlyArray<string>;
+export type ThreatEventsListResponseMitreAttackList = Array<string>;
 export const ThreatEventsListResponseMitreAttackList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ThreatEventsListResponseMitreAttackList>;
 
-export type ThreatEventsListResponseMitreCapecList = ReadonlyArray<string>;
+export type ThreatEventsListResponseMitreCapecList = Array<string>;
 export const ThreatEventsListResponseMitreCapecList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ThreatEventsListResponseMitreCapecList>;
 
-export type ThreatEventsListResponseReferencedList = ReadonlyArray<string>;
+export type ThreatEventsListResponseReferencedList = Array<string>;
 export const ThreatEventsListResponseReferencedList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ThreatEventsListResponseReferencedList>;
 
-export type ThreatEventsListResponseReferencedIdsList = ReadonlyArray<number>;
+export type ThreatEventsListResponseReferencedIdsList = Array<number>;
 export const ThreatEventsListResponseReferencedIdsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<ThreatEventsListResponseReferencedIdsList>;
 
-export type ThreatEventsListResponseReferencesList = ReadonlyArray<string>;
+export type ThreatEventsListResponseReferencesList = Array<string>;
 export const ThreatEventsListResponseReferencesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ThreatEventsListResponseReferencesList>;
 
-export type ThreatEventsListResponseReferencesIdsList = ReadonlyArray<number>;
+export type ThreatEventsListResponseReferencesIdsList = Array<number>;
 export const ThreatEventsListResponseReferencesIdsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<ThreatEventsListResponseReferencesIdsList>;
 
-export type ThreatEventsListResponseTagsList = ReadonlyArray<string>;
+export type ThreatEventsListResponseTagsList = Array<string>;
 export const ThreatEventsListResponseTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ThreatEventsListResponseTagsList>;
@@ -2795,7 +2780,7 @@ export const ListThreatEventsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListThreatEventsResponse>;
 
 export type ThreatEventsTargetIndustriesListRequestDatasetIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ThreatEventsTargetIndustriesListRequestDatasetIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2854,12 +2839,12 @@ export const ListThreatEventTargetIndustriesResponse = /*@__PURE__*/ S.suspend(
   identifier: "ListThreatEventTargetIndustriesResponse",
 }) as any as S.Schema<ListThreatEventTargetIndustriesResponse>;
 
-export type ScansConfigEditRequestIpsList = ReadonlyArray<string>;
+export type ScansConfigEditRequestIpsList = Array<string>;
 export const ScansConfigEditRequestIpsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ScansConfigEditRequestIpsList>;
 
-export type ScansConfigEditRequestPortsList = ReadonlyArray<string>;
+export type ScansConfigEditRequestPortsList = Array<string>;
 export const ScansConfigEditRequestPortsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ScansConfigEditRequestPortsList>;
@@ -2896,12 +2881,12 @@ export const PatchScanConfigRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchScanConfigRequest",
 }) as any as S.Schema<PatchScanConfigRequest>;
 
-export type ScansConfigEditResponseIpsList = ReadonlyArray<string>;
+export type ScansConfigEditResponseIpsList = Array<string>;
 export const ScansConfigEditResponseIpsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ScansConfigEditResponseIpsList>;
 
-export type ScansConfigEditResponsePortsList = ReadonlyArray<string>;
+export type ScansConfigEditResponsePortsList = Array<string>;
 export const ScansConfigEditResponsePortsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ScansConfigEditResponsePortsList>;
@@ -3005,37 +2990,37 @@ export const PatchThreatEventRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchThreatEventRequest",
 }) as any as S.Schema<PatchThreatEventRequest>;
 
-export type ThreatEventsEditResponseMitreAttackList = ReadonlyArray<string>;
+export type ThreatEventsEditResponseMitreAttackList = Array<string>;
 export const ThreatEventsEditResponseMitreAttackList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ThreatEventsEditResponseMitreAttackList>;
 
-export type ThreatEventsEditResponseMitreCapecList = ReadonlyArray<string>;
+export type ThreatEventsEditResponseMitreCapecList = Array<string>;
 export const ThreatEventsEditResponseMitreCapecList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ThreatEventsEditResponseMitreCapecList>;
 
-export type ThreatEventsEditResponseReferencedList = ReadonlyArray<string>;
+export type ThreatEventsEditResponseReferencedList = Array<string>;
 export const ThreatEventsEditResponseReferencedList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ThreatEventsEditResponseReferencedList>;
 
-export type ThreatEventsEditResponseReferencedIdsList = ReadonlyArray<number>;
+export type ThreatEventsEditResponseReferencedIdsList = Array<number>;
 export const ThreatEventsEditResponseReferencedIdsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<ThreatEventsEditResponseReferencedIdsList>;
 
-export type ThreatEventsEditResponseReferencesList = ReadonlyArray<string>;
+export type ThreatEventsEditResponseReferencesList = Array<string>;
 export const ThreatEventsEditResponseReferencesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ThreatEventsEditResponseReferencesList>;
 
-export type ThreatEventsEditResponseReferencesIdsList = ReadonlyArray<number>;
+export type ThreatEventsEditResponseReferencesIdsList = Array<number>;
 export const ThreatEventsEditResponseReferencesIdsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<ThreatEventsEditResponseReferencesIdsList>;
 
-export type ThreatEventsEditResponseTagsList = ReadonlyArray<string>;
+export type ThreatEventsEditResponseTagsList = Array<string>;
 export const ThreatEventsEditResponseTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ThreatEventsEditResponseTagsList>;
@@ -3108,15 +3093,13 @@ export const PatchThreatEventResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchThreatEventResponse",
 }) as any as S.Schema<PatchThreatEventResponse>;
 
-export type ThreatEventsCategoriesEditRequestMitreAttackList =
-  ReadonlyArray<string>;
+export type ThreatEventsCategoriesEditRequestMitreAttackList = Array<string>;
 export const ThreatEventsCategoriesEditRequestMitreAttackList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ThreatEventsCategoriesEditRequestMitreAttackList>;
 
-export type ThreatEventsCategoriesEditRequestMitreCapecList =
-  ReadonlyArray<string>;
+export type ThreatEventsCategoriesEditRequestMitreCapecList = Array<string>;
 export const ThreatEventsCategoriesEditRequestMitreCapecList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3155,15 +3138,13 @@ export const PatchThreatEventCategoryRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchThreatEventCategoryRequest",
 }) as any as S.Schema<PatchThreatEventCategoryRequest>;
 
-export type ThreatEventsCategoriesEditResponseMitreAttackList =
-  ReadonlyArray<string>;
+export type ThreatEventsCategoriesEditResponseMitreAttackList = Array<string>;
 export const ThreatEventsCategoriesEditResponseMitreAttackList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ThreatEventsCategoriesEditResponseMitreAttackList>;
 
-export type ThreatEventsCategoriesEditResponseMitreCapecList =
-  ReadonlyArray<string>;
+export type ThreatEventsCategoriesEditResponseMitreCapecList = Array<string>;
 export const ThreatEventsCategoriesEditResponseMitreCapecList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3426,8 +3407,7 @@ export const RequestsAssetsGetResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "RequestsAssetsGetResultItem",
 }) as any as S.Schema<RequestsAssetsGetResultItem>;
 
-export type RequestsAssetsGetResultList =
-  ReadonlyArray<RequestsAssetsGetResultItem>;
+export type RequestsAssetsGetResultList = Array<RequestsAssetsGetResultItem>;
 export const RequestsAssetsGetResultList = /*@__PURE__*/ S.Array(
   RequestsAssetsGetResultItem,
 ) as any as S.Schema<RequestsAssetsGetResultList>;
@@ -3466,7 +3446,7 @@ export type RequestsConstantsResponsePriorityItem =
 export const RequestsConstantsResponsePriorityItem = /*@__PURE__*/ S.String;
 
 export type RequestsConstantsResponsePriorityList =
-  ReadonlyArray<RequestsConstantsResponsePriorityItem>;
+  Array<RequestsConstantsResponsePriorityItem>;
 export const RequestsConstantsResponsePriorityList = /*@__PURE__*/ S.Array(
   RequestsConstantsResponsePriorityItem,
 ) as any as S.Schema<RequestsConstantsResponsePriorityList>;
@@ -3481,7 +3461,7 @@ export type RequestsConstantsResponseStatusItem =
 export const RequestsConstantsResponseStatusItem = /*@__PURE__*/ S.String;
 
 export type RequestsConstantsResponseStatusList =
-  ReadonlyArray<RequestsConstantsResponseStatusItem>;
+  Array<RequestsConstantsResponseStatusItem>;
 export const RequestsConstantsResponseStatusList = /*@__PURE__*/ S.Array(
   RequestsConstantsResponseStatusItem,
 ) as any as S.Schema<RequestsConstantsResponseStatusList>;
@@ -3495,7 +3475,7 @@ export type RequestsConstantsResponseTlpItem =
 export const RequestsConstantsResponseTlpItem = /*@__PURE__*/ S.String;
 
 export type RequestsConstantsResponseTlpList =
-  ReadonlyArray<RequestsConstantsResponseTlpItem>;
+  Array<RequestsConstantsResponseTlpItem>;
 export const RequestsConstantsResponseTlpList = /*@__PURE__*/ S.Array(
   RequestsConstantsResponseTlpItem,
 ) as any as S.Schema<RequestsConstantsResponseTlpList>;
@@ -3674,7 +3654,7 @@ export const RequestsListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "RequestsListResultItem",
 }) as any as S.Schema<RequestsListResultItem>;
 
-export type RequestsListResultList = ReadonlyArray<RequestsListResultItem>;
+export type RequestsListResultList = Array<RequestsListResultItem>;
 export const RequestsListResultList = /*@__PURE__*/ S.Array(
   RequestsListResultItem,
 ) as any as S.Schema<RequestsListResultList>;
@@ -3975,7 +3955,7 @@ export const UpdateRequestMessageResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateRequestMessageResponse",
 }) as any as S.Schema<UpdateRequestMessageResponse>;
 
-export type RequestsPriorityUpdateRequestLabelsList = ReadonlyArray<unknown>;
+export type RequestsPriorityUpdateRequestLabelsList = Array<unknown>;
 export const RequestsPriorityUpdateRequestLabelsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<RequestsPriorityUpdateRequestLabelsList>;

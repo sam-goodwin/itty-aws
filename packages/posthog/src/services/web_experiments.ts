@@ -134,7 +134,7 @@ export const WebExperimentsListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WebExperimentsListRequest>;
 
 export type PaginatedWebExperimentsAPIListResultsList =
-  ReadonlyArray<WebExperimentsAPI>;
+  Array<WebExperimentsAPI>;
 export const PaginatedWebExperimentsAPIListResultsList = /*@__PURE__*/ S.Array(
   WebExperimentsAPI,
 ) as any as S.Schema<PaginatedWebExperimentsAPIListResultsList>;

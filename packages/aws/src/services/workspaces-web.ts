@@ -461,7 +461,7 @@ export type Category =
   | "ParkedDomains";
 export const Category = /*@__PURE__*/ S.String;
 
-export type BlockedCategories = Category[];
+export type BlockedCategories = (Category | (string & {}))[];
 export const BlockedCategories = /*@__PURE__*/ S.Array(Category);
 export type UrlPattern = string | redacted.Redacted<string>;
 export type UrlPatternList = (string | redacted.Redacted<string>)[];
@@ -845,7 +845,7 @@ export type Event =
   | "UrlBlockByContentFilter";
 export const Event = /*@__PURE__*/ S.String;
 
-export type Events = Event[];
+export type Events = (Event | (string & {}))[];
 export const Events = /*@__PURE__*/ S.Array(Event);
 export type EventFilter =
   | { all: Record<string, never>; include?: never }
@@ -867,8 +867,8 @@ export interface S3LogConfiguration {
   bucket: string | redacted.Redacted<string>;
   keyPrefix?: string | redacted.Redacted<string>;
   bucketOwner?: string;
-  logFileFormat: LogFileFormat;
-  folderStructure: FolderStructure;
+  logFileFormat: LogFileFormat | (string & {});
+  folderStructure: FolderStructure | (string & {});
 }
 export const S3LogConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1109,7 +1109,7 @@ export const LocalizedBrandingStrings = /*@__PURE__*/ S.suspend(() =>
   identifier: "LocalizedBrandingStrings",
 }) as any as S.Schema<LocalizedBrandingStrings>;
 export type LocalizedBrandingStringMap = {
-  [key in Locale]?: LocalizedBrandingStrings;
+  [key in Locale | (string & {})]?: LocalizedBrandingStrings;
 };
 export const LocalizedBrandingStringMap = /*@__PURE__*/ S.Record(
   Locale,

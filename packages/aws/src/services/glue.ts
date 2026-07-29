@@ -865,7 +865,7 @@ export const S3TargetList = /*@__PURE__*/ S.Array(S3Target);
 export type JdbcMetadataEntry = "COMMENTS" | "RAWTYPES";
 export const JdbcMetadataEntry = /*@__PURE__*/ S.String;
 
-export type EnableAdditionalMetadata = JdbcMetadataEntry[];
+export type EnableAdditionalMetadata = (JdbcMetadataEntry | (string & {}))[];
 export const EnableAdditionalMetadata =
   /*@__PURE__*/ S.Array(JdbcMetadataEntry);
 export interface JdbcTarget {
@@ -1012,7 +1012,7 @@ export type RecrawlBehavior =
 export const RecrawlBehavior = /*@__PURE__*/ S.String;
 
 export interface RecrawlPolicy {
-  RecrawlBehavior?: RecrawlBehavior;
+  RecrawlBehavior?: RecrawlBehavior | (string & {});
 }
 export const RecrawlPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ RecrawlBehavior: S.optional(RecrawlBehavior) }),
@@ -1027,8 +1027,8 @@ export type DeleteBehavior =
 export const DeleteBehavior = /*@__PURE__*/ S.String;
 
 export interface SchemaChangePolicy {
-  UpdateBehavior?: UpdateBehavior;
-  DeleteBehavior?: DeleteBehavior;
+  UpdateBehavior?: UpdateBehavior | (string & {});
+  DeleteBehavior?: DeleteBehavior | (string & {});
 }
 export const SchemaChangePolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1042,7 +1042,7 @@ export type CrawlerLineageSettings = "ENABLE" | "DISABLE";
 export const CrawlerLineageSettings = /*@__PURE__*/ S.String;
 
 export interface LineageConfiguration {
-  CrawlerLineageSettings?: CrawlerLineageSettings;
+  CrawlerLineageSettings?: CrawlerLineageSettings | (string & {});
 }
 export const LineageConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ CrawlerLineageSettings: S.optional(CrawlerLineageSettings) }),
@@ -1853,7 +1853,9 @@ export type GlueRecordType =
   | "DOUBLE";
 export const GlueRecordType = /*@__PURE__*/ S.String;
 
-export type JDBCDataTypeMapping = { [key in JDBCDataType]?: GlueRecordType };
+export type JDBCDataTypeMapping = {
+  [key in JDBCDataType | (string & {})]?: GlueRecordType | (string & {});
+};
 export const JDBCDataTypeMapping = /*@__PURE__*/ S.Record(
   JDBCDataType,
   GlueRecordType.pipe(S.optional),
@@ -2025,7 +2027,7 @@ export const QuoteChar = /*@__PURE__*/ S.String;
 export interface S3CsvSource {
   Name: string;
   Paths: string[];
-  CompressionType?: CompressionType;
+  CompressionType?: CompressionType | (string & {});
   Exclusions?: string[];
   GroupSize?: string;
   GroupFiles?: string;
@@ -2033,9 +2035,9 @@ export interface S3CsvSource {
   MaxBand?: number;
   MaxFilesInBand?: number;
   AdditionalOptions?: S3DirectSourceAdditionalOptions;
-  Separator: Separator;
+  Separator: Separator | (string & {});
   Escaper?: string;
-  QuoteChar: QuoteChar;
+  QuoteChar: QuoteChar | (string & {});
   Multiline?: boolean;
   WithHeader?: boolean;
   WriteHeader?: boolean;
@@ -2069,7 +2071,7 @@ export const S3CsvSource = /*@__PURE__*/ S.suspend(() =>
 export interface S3JsonSource {
   Name: string;
   Paths: string[];
-  CompressionType?: CompressionType;
+  CompressionType?: CompressionType | (string & {});
   Exclusions?: string[];
   GroupSize?: string;
   GroupFiles?: string;
@@ -2111,7 +2113,7 @@ export const ParquetCompressionType = /*@__PURE__*/ S.String;
 export interface S3ParquetSource {
   Name: string;
   Paths: string[];
-  CompressionType?: ParquetCompressionType;
+  CompressionType?: ParquetCompressionType | (string & {});
   Exclusions?: string[];
   GroupSize?: string;
   GroupFiles?: string;
@@ -2289,7 +2291,7 @@ export const UpdateCatalogBehavior = /*@__PURE__*/ S.String;
 
 export interface CatalogSchemaChangePolicy {
   EnableUpdateCatalog?: boolean;
-  UpdateBehavior?: UpdateCatalogBehavior;
+  UpdateBehavior?: UpdateCatalogBehavior | (string & {});
 }
 export const CatalogSchemaChangePolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2336,7 +2338,7 @@ export const S3CatalogTarget = /*@__PURE__*/ S.suspend(() =>
 export type NumberTargetPartitionsString = string;
 export interface DirectSchemaChangePolicy {
   EnableUpdateCatalog?: boolean;
-  UpdateBehavior?: UpdateCatalogBehavior;
+  UpdateBehavior?: UpdateCatalogBehavior | (string & {});
   Table?: string;
   Database?: string;
 }
@@ -2355,7 +2357,7 @@ export interface S3GlueParquetTarget {
   Inputs: string[];
   PartitionKeys?: string[][];
   Path: string;
-  Compression?: ParquetCompressionType;
+  Compression?: ParquetCompressionType | (string & {});
   NumberTargetPartitions?: string;
   SchemaChangePolicy?: DirectSchemaChangePolicy;
   AutoDataQuality?: AutoDataQuality;
@@ -2394,7 +2396,7 @@ export interface S3DirectTarget {
   Path: string;
   Compression?: string;
   NumberTargetPartitions?: string;
-  Format: TargetFormat;
+  Format: TargetFormat | (string & {});
   SchemaChangePolicy?: DirectSchemaChangePolicy;
   AutoDataQuality?: AutoDataQuality;
   OutputSchemas?: GlueSchema[];
@@ -2518,7 +2520,7 @@ export const JoinColumns = /*@__PURE__*/ S.Array(JoinColumn);
 export interface Join {
   Name: string;
   Inputs: string[];
-  JoinType: JoinType;
+  JoinType: JoinType | (string & {});
   Columns: JoinColumn[];
 }
 export const Join = /*@__PURE__*/ S.suspend(() =>
@@ -2581,7 +2583,7 @@ export type FilterValueType = "COLUMNEXTRACTED" | "CONSTANT";
 export const FilterValueType = /*@__PURE__*/ S.String;
 
 export interface FilterValue {
-  Type: FilterValueType;
+  Type: FilterValueType | (string & {});
   Value: string[];
 }
 export const FilterValue = /*@__PURE__*/ S.suspend(() =>
@@ -2590,7 +2592,7 @@ export const FilterValue = /*@__PURE__*/ S.suspend(() =>
 export type FilterValues = FilterValue[];
 export const FilterValues = /*@__PURE__*/ S.Array(FilterValue);
 export interface FilterExpression {
-  Operation: FilterOperation;
+  Operation: FilterOperation | (string & {});
   Negated?: boolean;
   Values: FilterValue[];
 }
@@ -2608,7 +2610,7 @@ export const FilterExpressions = /*@__PURE__*/ S.Array(FilterExpression);
 export interface Filter {
   Name: string;
   Inputs: string[];
-  LogicalOperator: FilterLogicalOperator;
+  LogicalOperator: FilterLogicalOperator | (string & {});
   Filters: FilterExpression[];
 }
 export const Filter = /*@__PURE__*/ S.suspend(() =>
@@ -2677,7 +2679,7 @@ export interface KinesisStreamingSourceOptions {
   StreamName?: string;
   Classification?: string;
   Delimiter?: string;
-  StartingPosition?: StartingPosition;
+  StartingPosition?: StartingPosition | (string & {});
   MaxFetchTimeInMs?: number;
   MaxFetchRecordsPerShard?: number;
   MaxRecordPerRead?: number;
@@ -2933,7 +2935,7 @@ export const UnionType = /*@__PURE__*/ S.String;
 export interface Union {
   Name: string;
   Inputs: string[];
-  UnionType: UnionType;
+  UnionType: UnionType | (string & {});
 }
 export const Union = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Name: S.String, Inputs: TwoInputs, UnionType: UnionType }),
@@ -2953,7 +2955,7 @@ export type MaskValue = string;
 export interface PIIDetection {
   Name: string;
   Inputs: string[];
-  PiiType: PiiType;
+  PiiType: PiiType | (string & {});
   EntityTypesToDetect: string[];
   OutputColumnName?: string;
   SampleFraction?: number;
@@ -3006,7 +3008,7 @@ export const AggFunction = /*@__PURE__*/ S.String;
 
 export interface AggregateOperation {
   Column: string[];
-  AggFunc: AggFunction;
+  AggFunc: AggFunction | (string & {});
 }
 export const AggregateOperation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Column: EnclosedInStringProperties, AggFunc: AggFunction }),
@@ -3190,7 +3192,7 @@ export const PostgreSQLCatalogTarget = /*@__PURE__*/ S.suspend(() =>
 export interface GroupFilters {
   GroupName: string;
   Filters: FilterExpression[];
-  LogicalOperator: FilterLogicalOperator;
+  LogicalOperator: FilterLogicalOperator | (string & {});
 }
 export const GroupFilters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3225,11 +3227,11 @@ export const ParamType = /*@__PURE__*/ S.String;
 
 export interface TransformConfigParameter {
   Name: string;
-  Type: ParamType;
+  Type: ParamType | (string & {});
   ValidationRule?: string;
   ValidationMessage?: string;
   Value?: string[];
-  ListType?: ParamType;
+  ListType?: ParamType | (string & {});
   IsOptional?: boolean;
 }
 export const TransformConfigParameter = /*@__PURE__*/ S.suspend(() =>
@@ -3297,7 +3299,7 @@ export type DQStopJobOnFailureTiming = "Immediate" | "AfterDataLoad";
 export const DQStopJobOnFailureTiming = /*@__PURE__*/ S.String;
 
 export interface DQStopJobOnFailureOptions {
-  StopJobOnFailureTiming?: DQStopJobOnFailureTiming;
+  StopJobOnFailureTiming?: DQStopJobOnFailureTiming | (string & {});
 }
 export const DQStopJobOnFailureOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ StopJobOnFailureTiming: S.optional(DQStopJobOnFailureTiming) }),
@@ -3308,7 +3310,7 @@ export interface EvaluateDataQuality {
   Name: string;
   Inputs: string[];
   Ruleset: string;
-  Output?: DQTransformOutput;
+  Output?: DQTransformOutput | (string & {});
   PublishingOptions?: DQResultsPublishingOptions;
   StopJobOnFailureOptions?: DQStopJobOnFailureOptions;
 }
@@ -3413,10 +3415,10 @@ export interface S3HudiDirectTarget {
   Name: string;
   Inputs: string[];
   Path: string;
-  Compression: HudiTargetCompressionType;
+  Compression: HudiTargetCompressionType | (string & {});
   NumberTargetPartitions?: string;
   PartitionKeys?: string[][];
-  Format: TargetFormat;
+  Format: TargetFormat | (string & {});
   AdditionalOptions: { [key: string]: string | undefined };
   SchemaChangePolicy?: DirectSchemaChangePolicy;
   AutoDataQuality?: AutoDataQuality;
@@ -3450,7 +3452,7 @@ export interface DirectJDBCSource {
   Database: string;
   Table: string;
   ConnectionName: string;
-  ConnectionType: JDBCConnectionType;
+  ConnectionType: JDBCConnectionType | (string & {});
   RedshiftTmpDir?: string;
   OutputSchemas?: GlueSchema[];
 }
@@ -3553,9 +3555,9 @@ export interface S3DeltaDirectTarget {
   Inputs: string[];
   PartitionKeys?: string[][];
   Path: string;
-  Compression: DeltaTargetCompressionType;
+  Compression: DeltaTargetCompressionType | (string & {});
   NumberTargetPartitions?: string;
-  Format: TargetFormat;
+  Format: TargetFormat | (string & {});
   AdditionalOptions?: { [key: string]: string | undefined };
   SchemaChangePolicy?: DirectSchemaChangePolicy;
   AutoDataQuality?: AutoDataQuality;
@@ -3700,7 +3702,9 @@ export type AdditionalOptionKeys =
   | "compositeRuleEvaluation.method";
 export const AdditionalOptionKeys = /*@__PURE__*/ S.String;
 
-export type DQAdditionalOptions = { [key in AdditionalOptionKeys]?: string };
+export type DQAdditionalOptions = {
+  [key in AdditionalOptionKeys | (string & {})]?: string;
+};
 export const DQAdditionalOptions = /*@__PURE__*/ S.Record(
   AdditionalOptionKeys,
   S.String.pipe(S.optional),
@@ -3985,11 +3989,11 @@ export interface S3IcebergDirectTarget {
   Inputs: string[];
   PartitionKeys?: string[][];
   Path: string;
-  Format: TargetFormat;
+  Format: TargetFormat | (string & {});
   AdditionalOptions?: { [key: string]: string | undefined };
   SchemaChangePolicy?: DirectSchemaChangePolicy;
   AutoDataQuality?: AutoDataQuality;
-  Compression: IcebergTargetCompressionType;
+  Compression: IcebergTargetCompressionType | (string & {});
   NumberTargetPartitions?: string;
   OutputSchemas?: GlueSchema[];
 }
@@ -4013,7 +4017,7 @@ export const S3IcebergDirectTarget = /*@__PURE__*/ S.suspend(() =>
 export interface S3ExcelSource {
   Name: string;
   Paths: string[];
-  CompressionType?: ParquetCompressionType;
+  CompressionType?: ParquetCompressionType | (string & {});
   Exclusions?: string[];
   GroupSize?: string;
   GroupFiles?: string;
@@ -4048,10 +4052,10 @@ export const HyperTargetCompressionType = /*@__PURE__*/ S.String;
 export interface S3HyperDirectTarget {
   Name: string;
   Inputs: string[];
-  Format?: TargetFormat;
+  Format?: TargetFormat | (string & {});
   PartitionKeys?: string[][];
   Path: string;
-  Compression?: HyperTargetCompressionType;
+  Compression?: HyperTargetCompressionType | (string & {});
   SchemaChangePolicy?: DirectSchemaChangePolicy;
   AutoDataQuality?: AutoDataQuality;
   OutputSchemas?: GlueSchema[];
@@ -4075,7 +4079,7 @@ export type DdbExportType = "ddb" | "s3";
 export const DdbExportType = /*@__PURE__*/ S.String;
 
 export interface DDBELTConnectionOptions {
-  DynamodbExport?: DdbExportType;
+  DynamodbExport?: DdbExportType | (string & {});
   DynamodbUnnestDDBJson?: boolean;
   DynamodbTableArn: string;
   DynamodbS3Bucket?: string;
@@ -4303,13 +4307,13 @@ export type SourceControlAuthStrategy =
 export const SourceControlAuthStrategy = /*@__PURE__*/ S.String;
 
 export interface SourceControlDetails {
-  Provider?: SourceControlProvider;
+  Provider?: SourceControlProvider | (string & {});
   Repository?: string;
   Owner?: string;
   Branch?: string;
   Folder?: string;
   LastCommitId?: string;
-  AuthStrategy?: SourceControlAuthStrategy;
+  AuthStrategy?: SourceControlAuthStrategy | (string & {});
   AuthToken?: string;
 }
 export const SourceControlDetails = /*@__PURE__*/ S.suspend(() =>
@@ -4558,7 +4562,7 @@ export type CompactionStrategy = "binpack" | "sort" | "z-order";
 export const CompactionStrategy = /*@__PURE__*/ S.String;
 
 export interface IcebergCompactionConfiguration {
-  strategy?: CompactionStrategy;
+  strategy?: CompactionStrategy | (string & {});
   minInputFiles?: number;
   deleteFileThreshold?: number;
 }
@@ -4928,11 +4932,11 @@ export type CrawlState =
 export const CrawlState = /*@__PURE__*/ S.String;
 
 export interface Condition {
-  LogicalOperator?: LogicalOperator;
+  LogicalOperator?: LogicalOperator | (string & {});
   JobName?: string;
-  State?: JobRunState;
+  State?: JobRunState | (string & {});
   CrawlerName?: string;
-  CrawlState?: CrawlState;
+  CrawlState?: CrawlState | (string & {});
 }
 export const Condition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4946,7 +4950,7 @@ export const Condition = /*@__PURE__*/ S.suspend(() =>
 export type ConditionList = Condition[];
 export const ConditionList = /*@__PURE__*/ S.Array(Condition);
 export interface Predicate {
-  Logical?: Logical;
+  Logical?: Logical | (string & {});
   Conditions?: Condition[];
 }
 export const Predicate = /*@__PURE__*/ S.suspend(() =>
@@ -5733,7 +5737,7 @@ export type Permission =
   | "DATA_LOCATION_ACCESS";
 export const Permission = /*@__PURE__*/ S.String;
 
-export type PermissionList = Permission[];
+export type PermissionList = (Permission | (string & {}))[];
 export const PermissionList = /*@__PURE__*/ S.Array(Permission);
 export interface PrincipalPermissions {
   Principal?: DataLakePrincipal;
@@ -6107,7 +6111,9 @@ export type ConnectionPropertyKey =
   | "DATABASE";
 export const ConnectionPropertyKey = /*@__PURE__*/ S.String;
 
-export type ConnectionProperties = { [key in ConnectionPropertyKey]?: string };
+export type ConnectionProperties = {
+  [key in ConnectionPropertyKey | (string & {})]?: string;
+};
 export const ConnectionProperties = /*@__PURE__*/ S.Record(
   ConnectionPropertyKey,
   S.String.pipe(S.optional),
@@ -6268,7 +6274,7 @@ export const AuthenticationConfigurationInput = /*@__PURE__*/ S.suspend(() =>
 export type ComputeEnvironment = "SPARK" | "ATHENA" | "PYTHON";
 export const ComputeEnvironment = /*@__PURE__*/ S.String;
 
-export type ComputeEnvironmentList = ComputeEnvironment[];
+export type ComputeEnvironmentList = (ComputeEnvironment | (string & {}))[];
 export const ComputeEnvironmentList = /*@__PURE__*/ S.Array(ComputeEnvironment);
 export interface ConnectionInput {
   Name: string;
@@ -6961,7 +6967,7 @@ export type IntegrationPartitionSpecList = IntegrationPartition[];
 export const IntegrationPartitionSpecList =
   /*@__PURE__*/ S.Array(IntegrationPartition);
 export interface TargetTableConfig {
-  UnnestSpec?: UnnestSpec;
+  UnnestSpec?: UnnestSpec | (string & {});
   PartitionSpec?: IntegrationPartition[];
   TargetTableName?: string;
 }
@@ -7091,7 +7097,7 @@ export const FindMatchesParameters = /*@__PURE__*/ S.suspend(() =>
   identifier: "FindMatchesParameters",
 }) as any as S.Schema<FindMatchesParameters>;
 export interface TransformParameters {
-  TransformType: TransformType;
+  TransformType: TransformType | (string & {});
   FindMatchesParameters?: FindMatchesParameters;
 }
 export const TransformParameters = /*@__PURE__*/ S.suspend(() =>
@@ -7106,7 +7112,7 @@ export type MLUserDataEncryptionModeString = "DISABLED" | "SSE-KMS";
 export const MLUserDataEncryptionModeString = /*@__PURE__*/ S.String;
 
 export interface MLUserDataEncryption {
-  MlUserDataEncryptionMode: MLUserDataEncryptionModeString;
+  MlUserDataEncryptionMode: MLUserDataEncryptionModeString | (string & {});
   KmsKeyId?: string;
 }
 export const MLUserDataEncryption = /*@__PURE__*/ S.suspend(() =>
@@ -7435,7 +7441,7 @@ export type S3EncryptionMode = "DISABLED" | "SSE-KMS" | "SSE-S3";
 export const S3EncryptionMode = /*@__PURE__*/ S.String;
 
 export interface S3Encryption {
-  S3EncryptionMode?: S3EncryptionMode;
+  S3EncryptionMode?: S3EncryptionMode | (string & {});
   KmsKeyArn?: string;
 }
 export const S3Encryption = /*@__PURE__*/ S.suspend(() =>
@@ -7450,7 +7456,7 @@ export type CloudWatchEncryptionMode = "DISABLED" | "SSE-KMS";
 export const CloudWatchEncryptionMode = /*@__PURE__*/ S.String;
 
 export interface CloudWatchEncryption {
-  CloudWatchEncryptionMode?: CloudWatchEncryptionMode;
+  CloudWatchEncryptionMode?: CloudWatchEncryptionMode | (string & {});
   KmsKeyArn?: string;
 }
 export const CloudWatchEncryption = /*@__PURE__*/ S.suspend(() =>
@@ -7465,7 +7471,7 @@ export type JobBookmarksEncryptionMode = "DISABLED" | "CSE-KMS";
 export const JobBookmarksEncryptionMode = /*@__PURE__*/ S.String;
 
 export interface JobBookmarksEncryption {
-  JobBookmarksEncryptionMode?: JobBookmarksEncryptionMode;
+  JobBookmarksEncryptionMode?: JobBookmarksEncryptionMode | (string & {});
   KmsKeyArn?: string;
 }
 export const JobBookmarksEncryption = /*@__PURE__*/ S.suspend(() =>
@@ -7480,7 +7486,7 @@ export type DataQualityEncryptionMode = "DISABLED" | "SSE-KMS";
 export const DataQualityEncryptionMode = /*@__PURE__*/ S.String;
 
 export interface DataQualityEncryption {
-  DataQualityEncryptionMode?: DataQualityEncryptionMode;
+  DataQualityEncryptionMode?: DataQualityEncryptionMode | (string & {});
   KmsKeyArn?: string;
 }
 export const DataQualityEncryption = /*@__PURE__*/ S.suspend(() =>
@@ -7815,7 +7821,7 @@ export const IcebergStructFieldList = /*@__PURE__*/ S.Array(IcebergStructField);
 export interface IcebergSchema {
   SchemaId?: number;
   IdentifierFieldIds?: number[];
-  Type?: IcebergStructTypeEnum;
+  Type?: IcebergStructTypeEnum | (string & {});
   Fields: IcebergStructField[];
 }
 export const IcebergSchema = /*@__PURE__*/ S.suspend(() =>
@@ -7868,8 +7874,8 @@ export const IcebergNullOrder = /*@__PURE__*/ S.String;
 export interface IcebergSortField {
   SourceId: number;
   Transform: string;
-  Direction: IcebergSortDirection;
-  NullOrder: IcebergNullOrder;
+  Direction: IcebergSortDirection | (string & {});
+  NullOrder: IcebergNullOrder | (string & {});
 }
 export const IcebergSortField = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -8107,7 +8113,7 @@ export type ResourceType = "JAR" | "FILE" | "ARCHIVE";
 export const ResourceType = /*@__PURE__*/ S.String;
 
 export interface ResourceUri {
-  ResourceType?: ResourceType;
+  ResourceType?: ResourceType | (string & {});
   Uri?: string;
 }
 export const ResourceUri = /*@__PURE__*/ S.suspend(() =>
@@ -9065,7 +9071,7 @@ export const DescribeConnectionTypeRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeConnectionTypeRequest",
 }) as any as S.Schema<DescribeConnectionTypeRequest>;
 export type Description = string;
-export type AuthenticationTypes = AuthenticationType[];
+export type AuthenticationTypes = (AuthenticationType | (string & {}))[];
 export const AuthenticationTypes = /*@__PURE__*/ S.Array(AuthenticationType);
 export type DataOperation = "READ" | "WRITE";
 export const DataOperation = /*@__PURE__*/ S.String;
@@ -9212,8 +9218,8 @@ export interface ConnectorProperty {
   Required: boolean;
   DefaultValue?: string;
   AllowedValues?: string[];
-  PropertyLocation?: PropertyLocation;
-  PropertyType: PropertyType;
+  PropertyLocation?: PropertyLocation | (string & {});
+  PropertyType: PropertyType | (string & {});
 }
 export const ConnectorProperty = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -9256,7 +9262,7 @@ export const ResponseExtractionMapping = /*@__PURE__*/ S.suspend(() =>
 export interface ExtractedParameter {
   Key?: string;
   DefaultValue?: string;
-  PropertyLocation?: PropertyLocation;
+  PropertyLocation?: PropertyLocation | (string & {});
   Value?: ResponseExtractionMapping;
 }
 export const ExtractedParameter = /*@__PURE__*/ S.suspend(() =>
@@ -9306,7 +9312,7 @@ export const PaginationConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "PaginationConfiguration",
 }) as any as S.Schema<PaginationConfiguration>;
 export interface SourceConfiguration {
-  RequestMethod?: HTTPMethod;
+  RequestMethod?: HTTPMethod | (string & {});
   RequestPath?: string;
   RequestParameters?: ConnectorProperty[];
   ResponseConfiguration?: ResponseConfiguration;
@@ -9348,7 +9354,7 @@ export const FieldDataType = /*@__PURE__*/ S.String;
 
 export interface FieldDefinition {
   Name: string;
-  FieldDataType: FieldDataType;
+  FieldDataType: FieldDataType | (string & {});
 }
 export const FieldDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Name: S.String, FieldDataType: FieldDataType }),
@@ -10396,7 +10402,7 @@ export const BinaryColumnStatisticsData = /*@__PURE__*/ S.suspend(() =>
   identifier: "BinaryColumnStatisticsData",
 }) as any as S.Schema<BinaryColumnStatisticsData>;
 export interface ColumnStatisticsData {
-  Type: ColumnStatisticsType;
+  Type: ColumnStatisticsType | (string & {});
   BooleanColumnStatisticsData?: BooleanColumnStatisticsData;
   DateColumnStatisticsData?: DateColumnStatisticsData;
   DecimalColumnStatisticsData?: DecimalColumnStatisticsData;
@@ -11086,7 +11092,7 @@ export type CatalogEncryptionMode =
 export const CatalogEncryptionMode = /*@__PURE__*/ S.String;
 
 export interface EncryptionAtRest {
-  CatalogEncryptionMode: CatalogEncryptionMode;
+  CatalogEncryptionMode: CatalogEncryptionMode | (string & {});
   SseAwsKmsKeyId?: string;
   CatalogEncryptionServiceRole?: string;
 }
@@ -11378,7 +11384,9 @@ export const DQCompositeRuleEvaluationMethod = /*@__PURE__*/ S.String;
 export interface DataQualityEvaluationRunAdditionalRunOptions {
   CloudWatchMetricsEnabled?: boolean;
   ResultsS3Prefix?: string;
-  CompositeRuleEvaluationMethod?: DQCompositeRuleEvaluationMethod;
+  CompositeRuleEvaluationMethod?:
+    | DQCompositeRuleEvaluationMethod
+    | (string & {});
   CustomLogGroupPrefix?: string;
 }
 export const DataQualityEvaluationRunAdditionalRunOptions =

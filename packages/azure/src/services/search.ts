@@ -178,8 +178,7 @@ export type ProvisioningIssuePropertiesSeverity = "Warning" | "Error";
 export const ProvisioningIssuePropertiesSeverity = /*@__PURE__*/ S.String;
 
 /** Fully qualified resource IDs of suggested resources that can be associated to the network security perimeter (NSP) to remediate the issue. */
-export type ProvisioningIssuePropertiesSuggestedResourceIdsList =
-  ReadonlyArray<string>;
+export type ProvisioningIssuePropertiesSuggestedResourceIdsList = Array<string>;
 export const ProvisioningIssuePropertiesSuggestedResourceIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -190,7 +189,7 @@ export type AccessRuleDirection = "Inbound" | "Outbound";
 export const AccessRuleDirection = /*@__PURE__*/ S.String;
 
 /** Address prefixes in the CIDR format for inbound rules */
-export type AccessRulePropertiesAddressPrefixesList = ReadonlyArray<string>;
+export type AccessRulePropertiesAddressPrefixesList = Array<string>;
 export const AccessRulePropertiesAddressPrefixesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AccessRulePropertiesAddressPrefixesList>;
@@ -211,7 +210,7 @@ export const AccessRulePropertiesSubscriptionsItem = /*@__PURE__*/ S.suspend(
 
 /** Subscriptions for inbound rules */
 export type AccessRulePropertiesSubscriptionsList =
-  ReadonlyArray<AccessRulePropertiesSubscriptionsItem>;
+  Array<AccessRulePropertiesSubscriptionsItem>;
 export const AccessRulePropertiesSubscriptionsList = /*@__PURE__*/ S.Array(
   AccessRulePropertiesSubscriptionsItem,
 ) as any as S.Schema<AccessRulePropertiesSubscriptionsList>;
@@ -237,28 +236,27 @@ export const NetworkSecurityPerimeter = /*@__PURE__*/ S.suspend(() =>
 
 /** Network security perimeters for inbound rules */
 export type AccessRulePropertiesNetworkSecurityPerimetersList =
-  ReadonlyArray<NetworkSecurityPerimeter>;
+  Array<NetworkSecurityPerimeter>;
 export const AccessRulePropertiesNetworkSecurityPerimetersList =
   /*@__PURE__*/ S.Array(
     NetworkSecurityPerimeter,
   ) as any as S.Schema<AccessRulePropertiesNetworkSecurityPerimetersList>;
 
 /** Fully qualified domain names (FQDN) for outbound rules */
-export type AccessRulePropertiesFullyQualifiedDomainNamesList =
-  ReadonlyArray<string>;
+export type AccessRulePropertiesFullyQualifiedDomainNamesList = Array<string>;
 export const AccessRulePropertiesFullyQualifiedDomainNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AccessRulePropertiesFullyQualifiedDomainNamesList>;
 
 /** Email addresses for outbound rules */
-export type AccessRulePropertiesEmailAddressesList = ReadonlyArray<string>;
+export type AccessRulePropertiesEmailAddressesList = Array<string>;
 export const AccessRulePropertiesEmailAddressesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AccessRulePropertiesEmailAddressesList>;
 
 /** Phone numbers for outbound rules */
-export type AccessRulePropertiesPhoneNumbersList = ReadonlyArray<string>;
+export type AccessRulePropertiesPhoneNumbersList = Array<string>;
 export const AccessRulePropertiesPhoneNumbersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AccessRulePropertiesPhoneNumbersList>;
@@ -312,7 +310,7 @@ export const AccessRule = /*@__PURE__*/ S.suspend(() =>
 
 /** Access rules that can be added to the network security profile (NSP) to remediate the issue. */
 export type ProvisioningIssuePropertiesSuggestedAccessRulesList =
-  ReadonlyArray<AccessRule>;
+  Array<AccessRule>;
 export const ProvisioningIssuePropertiesSuggestedAccessRulesList =
   /*@__PURE__*/ S.Array(
     AccessRule,
@@ -364,7 +362,7 @@ export const ProvisioningIssue = /*@__PURE__*/ S.suspend(() =>
 
 /** List of provisioning issues, if any */
 export type NetworkSecurityPerimeterConfigurationPropertiesProvisioningIssuesList =
-  ReadonlyArray<ProvisioningIssue>;
+  Array<ProvisioningIssue>;
 export const NetworkSecurityPerimeterConfigurationPropertiesProvisioningIssuesList =
   /*@__PURE__*/ S.Array(
     ProvisioningIssue,
@@ -390,14 +388,13 @@ export const ResourceAssociation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourceAssociation>;
 
 /** List of Access Rules */
-export type NetworkSecurityProfileAccessRulesList = ReadonlyArray<AccessRule>;
+export type NetworkSecurityProfileAccessRulesList = Array<AccessRule>;
 export const NetworkSecurityProfileAccessRulesList = /*@__PURE__*/ S.Array(
   AccessRule,
 ) as any as S.Schema<NetworkSecurityProfileAccessRulesList>;
 
 /** List of log categories that are enabled */
-export type NetworkSecurityProfileEnabledLogCategoriesList =
-  ReadonlyArray<string>;
+export type NetworkSecurityProfileEnabledLogCategoriesList = Array<string>;
 export const NetworkSecurityProfileEnabledLogCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -533,7 +530,7 @@ export const NetworkSecurityPerimeterConfigurationListResultValueItem =
 
 /** The NetworkSecurityPerimeterConfiguration items on this page */
 export type NetworkSecurityPerimeterConfigurationListResultValueList =
-  ReadonlyArray<NetworkSecurityPerimeterConfigurationListResultValueItem>;
+  Array<NetworkSecurityPerimeterConfigurationListResultValueItem>;
 export const NetworkSecurityPerimeterConfigurationListResultValueList =
   /*@__PURE__*/ S.Array(
     NetworkSecurityPerimeterConfigurationListResultValueItem,
@@ -664,8 +661,7 @@ export const OperationListResultValueItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationListResultValueItem>;
 
 /** The list of operations by Azure AI Search, some supported by the resource provider and others by data plane APIs. */
-export type OperationListResultValueList =
-  ReadonlyArray<OperationListResultValueItem>;
+export type OperationListResultValueList = Array<OperationListResultValueItem>;
 export const OperationListResultValueList = /*@__PURE__*/ S.Array(
   OperationListResultValueItem,
 ) as any as S.Schema<OperationListResultValueList>;
@@ -740,7 +736,7 @@ export const PrivateLinkServiceConnectionStatus = /*@__PURE__*/ S.String;
 /** Describes the current state of an existing Azure Private Link service connection to the private endpoint. */
 export interface PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionState {
   /** Status of the the private link service connection. Valid values are Pending, Approved, Rejected, or Disconnected. */
-  status?: PrivateLinkServiceConnectionStatus;
+  status?: PrivateLinkServiceConnectionStatus | (string & {});
   /** The description for the private link service connection state. */
   description?: string;
   /** A description of any extra actions that may be required. */
@@ -778,7 +774,9 @@ export interface PrivateEndpointConnectionProperties {
   /** The group ID of the Azure resource for which the private link service is for. */
   groupId?: string;
   /** The provisioning state of the private link service connection. Valid values are Updating, Deleting, Failed, Succeeded, Incomplete, or Canceled. */
-  provisioningState?: PrivateLinkServiceConnectionProvisioningState;
+  provisioningState?:
+    | PrivateLinkServiceConnectionProvisioningState
+    | (string & {});
 }
 export const PrivateEndpointConnectionProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -929,7 +927,7 @@ export const PrivateEndpointConnection = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of private endpoint connections. */
 export type PrivateEndpointConnectionListResultValueList =
-  ReadonlyArray<PrivateEndpointConnection>;
+  Array<PrivateEndpointConnection>;
 export const PrivateEndpointConnectionListResultValueList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection,
@@ -1035,16 +1033,14 @@ export const PrivateLinkResourcesListSupportedRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PrivateLinkResourcesListSupportedRequest>;
 
 /** The list of required members of the private link resource. */
-export type PrivateLinkResourcePropertiesRequiredMembersList =
-  ReadonlyArray<string>;
+export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
 export const PrivateLinkResourcePropertiesRequiredMembersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
 
 /** The list of required DNS zone names of the private link resource. */
-export type PrivateLinkResourcePropertiesRequiredZoneNamesList =
-  ReadonlyArray<string>;
+export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
 export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1088,7 +1084,7 @@ export const ShareablePrivateLinkResourceType = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of resources that are onboarded to private link service, that are supported by Azure AI Search. */
 export type PrivateLinkResourcePropertiesShareablePrivateLinkResourceTypesList =
-  ReadonlyArray<ShareablePrivateLinkResourceType>;
+  Array<ShareablePrivateLinkResourceType>;
 export const PrivateLinkResourcePropertiesShareablePrivateLinkResourceTypesList =
   /*@__PURE__*/ S.Array(
     ShareablePrivateLinkResourceType,
@@ -1148,8 +1144,7 @@ export const PrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateLinkResource>;
 
 /** The list of supported Private Link Resources. */
-export type PrivateLinkResourcesResultValueList =
-  ReadonlyArray<PrivateLinkResource>;
+export type PrivateLinkResourcesResultValueList = Array<PrivateLinkResource>;
 export const PrivateLinkResourcesResultValueList = /*@__PURE__*/ S.Array(
   PrivateLinkResource,
 ) as any as S.Schema<PrivateLinkResourcesResultValueList>;
@@ -1273,7 +1268,7 @@ export const QueryKeysListBySearchServiceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<QueryKeysListBySearchServiceRequest>;
 
 /** The query keys for the Azure AI Search service. */
-export type ListQueryKeysResultValueList = ReadonlyArray<QueryKey>;
+export type ListQueryKeysResultValueList = Array<QueryKey>;
 export const ListQueryKeysResultValueList = /*@__PURE__*/ S.Array(
   QueryKey,
 ) as any as S.Schema<ListQueryKeysResultValueList>;
@@ -1384,7 +1379,7 @@ export const IpRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IpRule" }) as any as S.Schema<IpRule>;
 
 /** A list of IP restriction rules that defines the inbound network(s) with allowing access to the search service endpoint. At the meantime, all other public IP networks are blocked by the firewall. These restriction rules are applied only when the 'publicNetworkAccess' of the search service is 'enabled'; otherwise, traffic over public interface is not allowed even with any public IP rules, and private endpoint connections would be the exclusive access method. */
-export type NetworkRuleSetIpRulesList = ReadonlyArray<IpRule>;
+export type NetworkRuleSetIpRulesList = Array<IpRule>;
 export const NetworkRuleSetIpRulesList = /*@__PURE__*/ S.Array(
   IpRule,
 ) as any as S.Schema<NetworkRuleSetIpRulesList>;
@@ -1398,7 +1393,7 @@ export interface NetworkRuleSet {
   /** A list of IP restriction rules that defines the inbound network(s) with allowing access to the search service endpoint. At the meantime, all other public IP networks are blocked by the firewall. These restriction rules are applied only when the 'publicNetworkAccess' of the search service is 'enabled'; otherwise, traffic over public interface is not allowed even with any public IP rules, and private endpoint connections would be the exclusive access method. */
   ipRules?: NetworkRuleSetIpRulesList;
   /** Possible origins of inbound traffic that can bypass the rules defined in the 'ipRules' section. */
-  bypass?: SearchBypass;
+  bypass?: SearchBypass | (string & {});
 }
 export const NetworkRuleSet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1412,8 +1407,9 @@ export type SearchDataExfiltrationProtection = "BlockAll";
 export const SearchDataExfiltrationProtection = /*@__PURE__*/ S.String;
 
 /** A list of data exfiltration scenarios that are explicitly disallowed for the search service. Currently, the only supported value is 'All' to disable all possible data export scenarios with more fine grained controls planned for the future. */
-export type SearchServicePropertiesInputDataExfiltrationProtectionsList =
-  ReadonlyArray<SearchDataExfiltrationProtection | (string & {})>;
+export type SearchServicePropertiesInputDataExfiltrationProtectionsList = Array<
+  SearchDataExfiltrationProtection | (string & {})
+>;
 export const SearchServicePropertiesInputDataExfiltrationProtectionsList =
   /*@__PURE__*/ S.Array(
     SearchDataExfiltrationProtection,
@@ -1430,9 +1426,9 @@ export const SearchEncryptionComplianceStatus = /*@__PURE__*/ S.String;
 /** Describes a policy that determines how resources within the search service are to be encrypted with customer managed keys. */
 export interface EncryptionWithCmk {
   /** Describes how a search service should enforce compliance if it finds objects that aren't encrypted with the customer-managed key. */
-  enforcement?: SearchEncryptionWithCmk;
+  enforcement?: SearchEncryptionWithCmk | (string & {});
   /** Returns the status of search service compliance with respect to non-CMK-encrypted objects. If a service has more than one unencrypted object, and enforcement is enabled, the service is marked as noncompliant. */
-  encryptionComplianceStatus?: SearchEncryptionComplianceStatus;
+  encryptionComplianceStatus?: SearchEncryptionComplianceStatus | (string & {});
 }
 export const EncryptionWithCmk = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1450,7 +1446,7 @@ export const AadAuthFailureMode = /*@__PURE__*/ S.String;
 /** Indicates that either the API key or an access token from a Microsoft Entra ID tenant can be used for authentication. */
 export interface DataPlaneAadOrApiKeyAuthOption {
   /** Describes what response the data plane API of a search service would send for requests that failed authentication. */
-  aadAuthFailureMode?: AadAuthFailureMode;
+  aadAuthFailureMode?: AadAuthFailureMode | (string & {});
 }
 export const DataPlaneAadOrApiKeyAuthOption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1553,7 +1549,7 @@ export const SkuName = /*@__PURE__*/ S.String;
 /** Defines the SKU of a search service, which determines billing rate and capacity limits. */
 export interface Sku {
   /** The SKU of the search service. Valid values include: 'free': Shared service. 'basic': Dedicated service with up to 3 replicas. 'standard': Dedicated service with up to 12 partitions and 12 replicas. 'standard2': Similar to standard, but with more capacity per search unit. 'standard3': The largest Standard offering with up to 12 partitions and 12 replicas (or up to 3 partitions with more indexes if you also set the hostingMode property to 'highDensity'). 'storage_optimized_l1': Supports 1TB per partition, up to 12 partitions. 'storage_optimized_l2': Supports 2TB per partition, up to 12 partitions. 'serverless': Serverless tier with auto-scaling capabilities. */
-  name?: SkuName;
+  name?: SkuName | (string & {});
 }
 export const Sku = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1678,7 +1674,7 @@ export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** A list of data exfiltration scenarios that are explicitly disallowed for the search service. Currently, the only supported value is 'All' to disable all possible data export scenarios with more fine grained controls planned for the future. */
 export type SearchServicePropertiesDataExfiltrationProtectionsList =
-  ReadonlyArray<SearchDataExfiltrationProtection>;
+  Array<SearchDataExfiltrationProtection>;
 export const SearchServicePropertiesDataExfiltrationProtectionsList =
   /*@__PURE__*/ S.Array(
     SearchDataExfiltrationProtection,
@@ -1686,7 +1682,7 @@ export const SearchServicePropertiesDataExfiltrationProtectionsList =
 
 /** The list of private endpoint connections to the Azure AI Search service. */
 export type SearchServicePropertiesPrivateEndpointConnectionsList =
-  ReadonlyArray<PrivateEndpointConnection>;
+  Array<PrivateEndpointConnection>;
 export const SearchServicePropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection,
@@ -1721,9 +1717,11 @@ export interface SharedPrivateLinkResourceProperties {
   /** Optional. Can be used to specify the Azure Resource Manager location of the resource for which a shared private link is being created. This is only required for those resources whose DNS configuration are regional (such as Azure Kubernetes Service). */
   resourceRegion?: string;
   /** Status of the shared private link resource. Valid values are Pending, Approved, Rejected or Disconnected. */
-  status?: SharedPrivateLinkResourceStatus;
+  status?: SharedPrivateLinkResourceStatus | (string & {});
   /** The provisioning state of the shared private link resource. Valid values are Updating, Deleting, Failed, Succeeded or Incomplete. */
-  provisioningState?: SharedPrivateLinkResourceProvisioningState;
+  provisioningState?:
+    | SharedPrivateLinkResourceProvisioningState
+    | (string & {});
 }
 export const SharedPrivateLinkResourceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1765,7 +1763,7 @@ export const SharedPrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of shared private link resources managed by the Azure AI Search service. */
 export type SearchServicePropertiesSharedPrivateLinkResourcesList =
-  ReadonlyArray<SharedPrivateLinkResource>;
+  Array<SharedPrivateLinkResource>;
 export const SearchServicePropertiesSharedPrivateLinkResourcesList =
   /*@__PURE__*/ S.Array(
     SharedPrivateLinkResource,
@@ -2093,7 +2091,7 @@ export const SearchService = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SearchService" }) as any as S.Schema<SearchService>;
 
 /** The list of search services. */
-export type SearchServiceListResultValueList = ReadonlyArray<SearchService>;
+export type SearchServiceListResultValueList = Array<SearchService>;
 export const SearchServiceListResultValueList = /*@__PURE__*/ S.Array(
   SearchService,
 ) as any as S.Schema<SearchServiceListResultValueList>;
@@ -2472,7 +2470,7 @@ export const SharedPrivateLinkResourcesListByServiceRequest =
 
 /** The list of shared private link resources. */
 export type SharedPrivateLinkResourceListResultValueList =
-  ReadonlyArray<SharedPrivateLinkResource>;
+  Array<SharedPrivateLinkResource>;
 export const SharedPrivateLinkResourceListResultValueList =
   /*@__PURE__*/ S.Array(
     SharedPrivateLinkResource,
@@ -2583,7 +2581,7 @@ export const UsagesListBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UsagesListBySubscriptionRequest>;
 
 /** The quota usages for the SKUs supported by Azure AI Search. */
-export type QuotaUsagesListResultValueList = ReadonlyArray<QuotaUsageResult>;
+export type QuotaUsagesListResultValueList = Array<QuotaUsageResult>;
 export const QuotaUsagesListResultValueList = /*@__PURE__*/ S.Array(
   QuotaUsageResult,
 ) as any as S.Schema<QuotaUsagesListResultValueList>;

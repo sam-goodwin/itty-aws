@@ -27,12 +27,12 @@ export class Forbidden extends T.applyErrorMatchers(
   [{ status: 403 }],
 ) {}
 
-export type AccountNotesListRequestAssignedToList = ReadonlyArray<number>;
+export type AccountNotesListRequestAssignedToList = Array<number>;
 export const AccountNotesListRequestAssignedToList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<AccountNotesListRequestAssignedToList>;
 
-export type AccountNotesListRequestCreatedByList = ReadonlyArray<number>;
+export type AccountNotesListRequestCreatedByList = Array<number>;
 export const AccountNotesListRequestCreatedByList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<AccountNotesListRequestCreatedByList>;
@@ -156,7 +156,7 @@ export const AccountNote = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AccountNote" }) as any as S.Schema<AccountNote>;
 
-export type PaginatedAccountNoteListResultsList = ReadonlyArray<AccountNote>;
+export type PaginatedAccountNoteListResultsList = Array<AccountNote>;
 export const PaginatedAccountNoteListResultsList = /*@__PURE__*/ S.Array(
   AccountNote,
 ) as any as S.Schema<PaginatedAccountNoteListResultsList>;
@@ -270,7 +270,7 @@ export const AccountsCustomPropertyValuesListRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<AccountsCustomPropertyValuesListRequest>;
 
 export type AccountsCustomPropertyValuesListResponseBodyList =
-  ReadonlyArray<CustomPropertyValue>;
+  Array<CustomPropertyValue>;
 export const AccountsCustomPropertyValuesListResponseBodyList =
   /*@__PURE__*/ S.Array(
     CustomPropertyValue,
@@ -415,8 +415,7 @@ export const AccountsNotebooksListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "AccountsNotebooksListRequest",
 }) as any as S.Schema<AccountsNotebooksListRequest>;
 
-export type PaginatedAccountNotebookListResultsList =
-  ReadonlyArray<AccountNotebook>;
+export type PaginatedAccountNotebookListResultsList = Array<AccountNotebook>;
 export const PaginatedAccountNotebookListResultsList = /*@__PURE__*/ S.Array(
   AccountNotebook,
 ) as any as S.Schema<PaginatedAccountNotebookListResultsList>;
@@ -600,7 +599,7 @@ export const AccountsRelationshipsListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccountsRelationshipsListRequest>;
 
 export type AccountsRelationshipsListResponseBodyList =
-  ReadonlyArray<AccountRelationship>;
+  Array<AccountRelationship>;
 export const AccountsRelationshipsListResponseBodyList = /*@__PURE__*/ S.Array(
   AccountRelationship,
 ) as any as S.Schema<AccountsRelationshipsListResponseBodyList>;
@@ -657,7 +656,7 @@ export const ExternalAccountListAssignment = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExternalAccountListAssignment>;
 
 export type ExternalAccountListItemRelationshipsValueList =
-  ReadonlyArray<ExternalAccountListAssignment>;
+  Array<ExternalAccountListAssignment>;
 export const ExternalAccountListItemRelationshipsValueList =
   /*@__PURE__*/ S.Array(
     ExternalAccountListAssignment,
@@ -691,8 +690,7 @@ export const ExternalAccountListItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExternalAccountListItem>;
 
 /** Accounts in this page, ordered by account id. */
-export type ExternalAccountListPageResultsList =
-  ReadonlyArray<ExternalAccountListItem>;
+export type ExternalAccountListPageResultsList = Array<ExternalAccountListItem>;
 export const ExternalAccountListPageResultsList = /*@__PURE__*/ S.Array(
   ExternalAccountListItem,
 ) as any as S.Schema<ExternalAccountListPageResultsList>;

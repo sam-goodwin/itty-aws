@@ -96,7 +96,7 @@ export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "Empty",
 }) as any as S.Schema<Empty>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -139,7 +139,7 @@ export interface Endpoint {
   /** Output only. The IP address of the IDS Endpoint's ILB. */
   endpointIp?: string;
   /** Required. Lowest threat severity that this endpoint will alert on. */
-  severity?: EndpointSeverityEnum;
+  severity?: EndpointSeverityEnum | (string & {});
   /** Output only. [Output Only] Reserved for future use. */
   satisfiesPzi?: boolean;
   /** Output only. The fully qualified URL of the endpoint's ILB Forwarding Rule. */
@@ -147,7 +147,7 @@ export interface Endpoint {
   /** Required. The fully qualified URL of the network to which the IDS Endpoint is attached. */
   network?: string;
   /** Output only. Current state of the endpoint. */
-  state?: EndpointStateEnum;
+  state?: EndpointStateEnum | (string & {});
   /** Output only. [Output Only] Reserved for future use. */
   satisfiesPzs?: boolean;
   /** Output only. The update time timestamp. */
@@ -208,7 +208,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -403,7 +403,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = ReadonlyArray<Location>;
+export type LocationList = Array<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -455,7 +455,7 @@ export const ListProjectsLocationsEndpointsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsEndpointsRequest",
 }) as any as S.Schema<ListProjectsLocationsEndpointsRequest>;
 
-export type EndpointList = ReadonlyArray<Endpoint>;
+export type EndpointList = Array<Endpoint>;
 export const EndpointList = /*@__PURE__*/ S.Array(
   Endpoint,
 ) as any as S.Schema<EndpointList>;
@@ -509,7 +509,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type OperationList = ReadonlyArray<Operation>;
+export type OperationList = Array<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;

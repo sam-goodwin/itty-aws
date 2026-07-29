@@ -1084,7 +1084,7 @@ export const AvailabilitiesListResponseRegionsItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<AvailabilitiesListResponseRegionsItem>;
 
 export type AvailabilitiesListResponseRegionsList =
-  ReadonlyArray<AvailabilitiesListResponseRegionsItem>;
+  Array<AvailabilitiesListResponseRegionsItem>;
 export const AvailabilitiesListResponseRegionsList = /*@__PURE__*/ S.Array(
   AvailabilitiesListResponseRegionsItem,
 ) as any as S.Schema<AvailabilitiesListResponseRegionsList>;
@@ -1105,7 +1105,7 @@ export const AvailabilitiesListResponseRegionsPerPlanBusinessItem =
   }) as any as S.Schema<AvailabilitiesListResponseRegionsPerPlanBusinessItem>;
 
 export type AvailabilitiesListResponseRegionsPerPlanBusinessList =
-  ReadonlyArray<AvailabilitiesListResponseRegionsPerPlanBusinessItem>;
+  Array<AvailabilitiesListResponseRegionsPerPlanBusinessItem>;
 export const AvailabilitiesListResponseRegionsPerPlanBusinessList =
   /*@__PURE__*/ S.Array(
     AvailabilitiesListResponseRegionsPerPlanBusinessItem,
@@ -1127,7 +1127,7 @@ export const AvailabilitiesListResponseRegionsPerPlanEnterpriseItem =
   }) as any as S.Schema<AvailabilitiesListResponseRegionsPerPlanEnterpriseItem>;
 
 export type AvailabilitiesListResponseRegionsPerPlanEnterpriseList =
-  ReadonlyArray<AvailabilitiesListResponseRegionsPerPlanEnterpriseItem>;
+  Array<AvailabilitiesListResponseRegionsPerPlanEnterpriseItem>;
 export const AvailabilitiesListResponseRegionsPerPlanEnterpriseList =
   /*@__PURE__*/ S.Array(
     AvailabilitiesListResponseRegionsPerPlanEnterpriseItem,
@@ -1149,7 +1149,7 @@ export const AvailabilitiesListResponseRegionsPerPlanFreeItem =
   }) as any as S.Schema<AvailabilitiesListResponseRegionsPerPlanFreeItem>;
 
 export type AvailabilitiesListResponseRegionsPerPlanFreeList =
-  ReadonlyArray<AvailabilitiesListResponseRegionsPerPlanFreeItem>;
+  Array<AvailabilitiesListResponseRegionsPerPlanFreeItem>;
 export const AvailabilitiesListResponseRegionsPerPlanFreeList =
   /*@__PURE__*/ S.Array(
     AvailabilitiesListResponseRegionsPerPlanFreeItem,
@@ -1171,7 +1171,7 @@ export const AvailabilitiesListResponseRegionsPerPlanProItem =
   }) as any as S.Schema<AvailabilitiesListResponseRegionsPerPlanProItem>;
 
 export type AvailabilitiesListResponseRegionsPerPlanProList =
-  ReadonlyArray<AvailabilitiesListResponseRegionsPerPlanProItem>;
+  Array<AvailabilitiesListResponseRegionsPerPlanProItem>;
 export const AvailabilitiesListResponseRegionsPerPlanProList =
   /*@__PURE__*/ S.Array(
     AvailabilitiesListResponseRegionsPerPlanProItem,
@@ -1400,8 +1400,7 @@ export const PagesListResultItemTestsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "PagesListResultItemTestsItem",
 }) as any as S.Schema<PagesListResultItemTestsItem>;
 
-export type PagesListResultItemTestsList =
-  ReadonlyArray<PagesListResultItemTestsItem>;
+export type PagesListResultItemTestsList = Array<PagesListResultItemTestsItem>;
 export const PagesListResultItemTestsList = /*@__PURE__*/ S.Array(
   PagesListResultItemTestsItem,
 ) as any as S.Schema<PagesListResultItemTestsList>;
@@ -1426,7 +1425,7 @@ export const PagesListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "PagesListResultItem",
 }) as any as S.Schema<PagesListResultItem>;
 
-export type PagesListResultList = ReadonlyArray<PagesListResultItem>;
+export type PagesListResultList = Array<PagesListResultItem>;
 export const PagesListResultList = /*@__PURE__*/ S.Array(
   PagesListResultItem,
 ) as any as S.Schema<PagesListResultList>;
@@ -1656,7 +1655,7 @@ export const PagesTestsListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "PagesTestsListResultItem",
 }) as any as S.Schema<PagesTestsListResultItem>;
 
-export type PagesTestsListResultList = ReadonlyArray<PagesTestsListResultItem>;
+export type PagesTestsListResultList = Array<PagesTestsListResultItem>;
 export const PagesTestsListResultList = /*@__PURE__*/ S.Array(
   PagesTestsListResultItem,
 ) as any as S.Schema<PagesTestsListResultList>;
@@ -1742,42 +1741,42 @@ export const TrendPageRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "TrendPageRequest",
 }) as any as S.Schema<TrendPageRequest>;
 
-export type PagesTrendResponseClsList = ReadonlyArray<number>;
+export type PagesTrendResponseClsList = Array<number>;
 export const PagesTrendResponseClsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<PagesTrendResponseClsList>;
 
-export type PagesTrendResponseFcpList = ReadonlyArray<number>;
+export type PagesTrendResponseFcpList = Array<number>;
 export const PagesTrendResponseFcpList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<PagesTrendResponseFcpList>;
 
-export type PagesTrendResponseLcpList = ReadonlyArray<number>;
+export type PagesTrendResponseLcpList = Array<number>;
 export const PagesTrendResponseLcpList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<PagesTrendResponseLcpList>;
 
-export type PagesTrendResponsePerformanceScoreList = ReadonlyArray<number>;
+export type PagesTrendResponsePerformanceScoreList = Array<number>;
 export const PagesTrendResponsePerformanceScoreList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<PagesTrendResponsePerformanceScoreList>;
 
-export type PagesTrendResponseSiList = ReadonlyArray<number>;
+export type PagesTrendResponseSiList = Array<number>;
 export const PagesTrendResponseSiList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<PagesTrendResponseSiList>;
 
-export type PagesTrendResponseTbtList = ReadonlyArray<number>;
+export type PagesTrendResponseTbtList = Array<number>;
 export const PagesTrendResponseTbtList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<PagesTrendResponseTbtList>;
 
-export type PagesTrendResponseTtfbList = ReadonlyArray<number>;
+export type PagesTrendResponseTtfbList = Array<number>;
 export const PagesTrendResponseTtfbList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<PagesTrendResponseTtfbList>;
 
-export type PagesTrendResponseTtiList = ReadonlyArray<number>;
+export type PagesTrendResponseTtiList = Array<number>;
 export const PagesTrendResponseTtiList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<PagesTrendResponseTtiList>;

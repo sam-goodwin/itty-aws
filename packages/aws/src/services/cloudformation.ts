@@ -486,7 +486,7 @@ export interface TypeConfigurationIdentifier {
   TypeArn?: string;
   TypeConfigurationAlias?: string;
   TypeConfigurationArn?: string;
-  Type?: ThirdPartyType;
+  Type?: ThirdPartyType | (string & {});
   TypeName?: string;
 }
 export const TypeConfigurationIdentifier = /*@__PURE__*/ S.suspend(() =>
@@ -691,7 +691,7 @@ export type Capability =
   | "CAPABILITY_AUTO_EXPAND";
 export const Capability = /*@__PURE__*/ S.String;
 
-export type Capabilities = Capability[];
+export type Capabilities = (Capability | (string & {}))[];
 export const Capabilities = /*@__PURE__*/ S.Array(Capability);
 export type ResourceType = string;
 export type ResourceTypes = string[];
@@ -871,8 +871,8 @@ export type GeneratedTemplateUpdateReplacePolicy = "DELETE" | "RETAIN";
 export const GeneratedTemplateUpdateReplacePolicy = /*@__PURE__*/ S.String;
 
 export interface TemplateConfiguration {
-  DeletionPolicy?: GeneratedTemplateDeletionPolicy;
-  UpdateReplacePolicy?: GeneratedTemplateUpdateReplacePolicy;
+  DeletionPolicy?: GeneratedTemplateDeletionPolicy | (string & {});
+  UpdateReplacePolicy?: GeneratedTemplateUpdateReplacePolicy | (string & {});
 }
 export const TemplateConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1012,7 +1012,7 @@ export interface DeploymentTargets {
   Accounts?: string[];
   AccountsUrl?: string;
   OrganizationalUnitIds?: string[];
-  AccountFilterType?: AccountFilterType;
+  AccountFilterType?: AccountFilterType | (string & {});
 }
 export const DeploymentTargets = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1040,13 +1040,13 @@ export type ConcurrencyMode =
 export const ConcurrencyMode = /*@__PURE__*/ S.String;
 
 export interface StackSetOperationPreferences {
-  RegionConcurrencyType?: RegionConcurrencyType;
+  RegionConcurrencyType?: RegionConcurrencyType | (string & {});
   RegionOrder?: string[];
   FailureToleranceCount?: number;
   FailureTolerancePercentage?: number;
   MaxConcurrentCount?: number;
   MaxConcurrentPercentage?: number;
-  ConcurrencyMode?: ConcurrencyMode;
+  ConcurrencyMode?: ConcurrencyMode | (string & {});
 }
 export const StackSetOperationPreferences = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

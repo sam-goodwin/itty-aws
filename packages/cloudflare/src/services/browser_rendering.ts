@@ -161,7 +161,7 @@ export const ContentCreateRequestAddScriptTagItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ContentCreateRequestAddScriptTagItem>;
 
 export type ContentCreateRequestAddScriptTagList =
-  ReadonlyArray<ContentCreateRequestAddScriptTagItem>;
+  Array<ContentCreateRequestAddScriptTagItem>;
 export const ContentCreateRequestAddScriptTagList = /*@__PURE__*/ S.Array(
   ContentCreateRequestAddScriptTagItem,
 ) as any as S.Schema<ContentCreateRequestAddScriptTagList>;
@@ -180,12 +180,12 @@ export const ContentCreateRequestAddStyleTagItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ContentCreateRequestAddStyleTagItem>;
 
 export type ContentCreateRequestAddStyleTagList =
-  ReadonlyArray<ContentCreateRequestAddStyleTagItem>;
+  Array<ContentCreateRequestAddStyleTagItem>;
 export const ContentCreateRequestAddStyleTagList = /*@__PURE__*/ S.Array(
   ContentCreateRequestAddStyleTagItem,
 ) as any as S.Schema<ContentCreateRequestAddStyleTagList>;
 
-export type ContentCreateRequestAllowRequestPatternList = ReadonlyArray<string>;
+export type ContentCreateRequestAllowRequestPatternList = Array<string>;
 export const ContentCreateRequestAllowRequestPatternList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -213,7 +213,7 @@ export type ContentCreateRequestAllowResourceTypesItem =
 export const ContentCreateRequestAllowResourceTypesItem =
   /*@__PURE__*/ S.String;
 
-export type ContentCreateRequestAllowResourceTypesList = ReadonlyArray<
+export type ContentCreateRequestAllowResourceTypesList = Array<
   ContentCreateRequestAllowResourceTypesItem | (string & {})
 >;
 export const ContentCreateRequestAllowResourceTypesList = /*@__PURE__*/ S.Array(
@@ -285,7 +285,7 @@ export const ContentCreateRequestCookiesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ContentCreateRequestCookiesItem>;
 
 export type ContentCreateRequestCookiesList =
-  ReadonlyArray<ContentCreateRequestCookiesItem>;
+  Array<ContentCreateRequestCookiesItem>;
 export const ContentCreateRequestCookiesList = /*@__PURE__*/ S.Array(
   ContentCreateRequestCookiesItem,
 ) as any as S.Schema<ContentCreateRequestCookiesList>;
@@ -306,7 +306,7 @@ export type ContentCreateRequestGotoOptionsWaitUntilCase1Item =
 export const ContentCreateRequestGotoOptionsWaitUntilCase1Item =
   /*@__PURE__*/ S.String;
 
-export type ContentCreateRequestGotoOptionsWaitUntilCase1List = ReadonlyArray<
+export type ContentCreateRequestGotoOptionsWaitUntilCase1List = Array<
   ContentCreateRequestGotoOptionsWaitUntilCase1Item | (string & {})
 >;
 export const ContentCreateRequestGotoOptionsWaitUntilCase1List =
@@ -337,8 +337,7 @@ export const ContentCreateRequestGotoOptions = /*@__PURE__*/ S.suspend(() =>
   identifier: "ContentCreateRequestGotoOptions",
 }) as any as S.Schema<ContentCreateRequestGotoOptions>;
 
-export type ContentCreateRequestRejectRequestPatternList =
-  ReadonlyArray<string>;
+export type ContentCreateRequestRejectRequestPatternList = Array<string>;
 export const ContentCreateRequestRejectRequestPatternList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -366,7 +365,7 @@ export type ContentCreateRequestRejectResourceTypesItem =
 export const ContentCreateRequestRejectResourceTypesItem =
   /*@__PURE__*/ S.String;
 
-export type ContentCreateRequestRejectResourceTypesList = ReadonlyArray<
+export type ContentCreateRequestRejectResourceTypesList = Array<
   ContentCreateRequestRejectResourceTypesItem | (string & {})
 >;
 export const ContentCreateRequestRejectResourceTypesList =
@@ -531,7 +530,7 @@ export const CrawlCreateRequestAddScriptTagItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CrawlCreateRequestAddScriptTagItem>;
 
 export type CrawlCreateRequestAddScriptTagList =
-  ReadonlyArray<CrawlCreateRequestAddScriptTagItem>;
+  Array<CrawlCreateRequestAddScriptTagItem>;
 export const CrawlCreateRequestAddScriptTagList = /*@__PURE__*/ S.Array(
   CrawlCreateRequestAddScriptTagItem,
 ) as any as S.Schema<CrawlCreateRequestAddScriptTagList>;
@@ -550,12 +549,12 @@ export const CrawlCreateRequestAddStyleTagItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CrawlCreateRequestAddStyleTagItem>;
 
 export type CrawlCreateRequestAddStyleTagList =
-  ReadonlyArray<CrawlCreateRequestAddStyleTagItem>;
+  Array<CrawlCreateRequestAddStyleTagItem>;
 export const CrawlCreateRequestAddStyleTagList = /*@__PURE__*/ S.Array(
   CrawlCreateRequestAddStyleTagItem,
 ) as any as S.Schema<CrawlCreateRequestAddStyleTagList>;
 
-export type CrawlCreateRequestAllowRequestPatternList = ReadonlyArray<string>;
+export type CrawlCreateRequestAllowRequestPatternList = Array<string>;
 export const CrawlCreateRequestAllowRequestPatternList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CrawlCreateRequestAllowRequestPatternList>;
@@ -581,7 +580,7 @@ export type CrawlCreateRequestAllowResourceTypesItem =
   | "other";
 export const CrawlCreateRequestAllowResourceTypesItem = /*@__PURE__*/ S.String;
 
-export type CrawlCreateRequestAllowResourceTypesList = ReadonlyArray<
+export type CrawlCreateRequestAllowResourceTypesList = Array<
   CrawlCreateRequestAllowResourceTypesItem | (string & {})
 >;
 export const CrawlCreateRequestAllowResourceTypesList = /*@__PURE__*/ S.Array(
@@ -652,7 +651,7 @@ export const CrawlCreateRequestCookiesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CrawlCreateRequestCookiesItem>;
 
 export type CrawlCreateRequestCookiesList =
-  ReadonlyArray<CrawlCreateRequestCookiesItem>;
+  Array<CrawlCreateRequestCookiesItem>;
 export const CrawlCreateRequestCookiesList = /*@__PURE__*/ S.Array(
   CrawlCreateRequestCookiesItem,
 ) as any as S.Schema<CrawlCreateRequestCookiesList>;
@@ -663,7 +662,7 @@ export type CrawlCreateRequestCrawlPurposesItem =
   | "ai-train";
 export const CrawlCreateRequestCrawlPurposesItem = /*@__PURE__*/ S.String;
 
-export type CrawlCreateRequestCrawlPurposesList = ReadonlyArray<
+export type CrawlCreateRequestCrawlPurposesList = Array<
   CrawlCreateRequestCrawlPurposesItem | (string & {})
 >;
 export const CrawlCreateRequestCrawlPurposesList = /*@__PURE__*/ S.Array(
@@ -673,7 +672,7 @@ export const CrawlCreateRequestCrawlPurposesList = /*@__PURE__*/ S.Array(
 export type CrawlCreateRequestFormatsItem = "html" | "markdown" | "json";
 export const CrawlCreateRequestFormatsItem = /*@__PURE__*/ S.String;
 
-export type CrawlCreateRequestFormatsList = ReadonlyArray<
+export type CrawlCreateRequestFormatsList = Array<
   CrawlCreateRequestFormatsItem | (string & {})
 >;
 export const CrawlCreateRequestFormatsList = /*@__PURE__*/ S.Array(
@@ -696,7 +695,7 @@ export type CrawlCreateRequestGotoOptionsWaitUntilCase1Item =
 export const CrawlCreateRequestGotoOptionsWaitUntilCase1Item =
   /*@__PURE__*/ S.String;
 
-export type CrawlCreateRequestGotoOptionsWaitUntilCase1List = ReadonlyArray<
+export type CrawlCreateRequestGotoOptionsWaitUntilCase1List = Array<
   CrawlCreateRequestGotoOptionsWaitUntilCase1Item | (string & {})
 >;
 export const CrawlCreateRequestGotoOptionsWaitUntilCase1List =
@@ -744,7 +743,7 @@ export const CrawlCreateRequestJsonOptionsCustomAiItem =
   }) as any as S.Schema<CrawlCreateRequestJsonOptionsCustomAiItem>;
 
 export type CrawlCreateRequestJsonOptionsCustomAiList =
-  ReadonlyArray<CrawlCreateRequestJsonOptionsCustomAiItem>;
+  Array<CrawlCreateRequestJsonOptionsCustomAiItem>;
 export const CrawlCreateRequestJsonOptionsCustomAiList = /*@__PURE__*/ S.Array(
   CrawlCreateRequestJsonOptionsCustomAiItem,
 ) as any as S.Schema<CrawlCreateRequestJsonOptionsCustomAiList>;
@@ -786,15 +785,13 @@ export const CrawlCreateRequestJsonOptions = /*@__PURE__*/ S.suspend(() =>
   identifier: "CrawlCreateRequestJsonOptions",
 }) as any as S.Schema<CrawlCreateRequestJsonOptions>;
 
-export type CrawlCreateRequestOptionsExcludePatternsList =
-  ReadonlyArray<string>;
+export type CrawlCreateRequestOptionsExcludePatternsList = Array<string>;
 export const CrawlCreateRequestOptionsExcludePatternsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<CrawlCreateRequestOptionsExcludePatternsList>;
 
-export type CrawlCreateRequestOptionsIncludePatternsList =
-  ReadonlyArray<string>;
+export type CrawlCreateRequestOptionsIncludePatternsList = Array<string>;
 export const CrawlCreateRequestOptionsIncludePatternsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -821,7 +818,7 @@ export const CrawlCreateRequestOptions = /*@__PURE__*/ S.suspend(() =>
   identifier: "CrawlCreateRequestOptions",
 }) as any as S.Schema<CrawlCreateRequestOptions>;
 
-export type CrawlCreateRequestRejectRequestPatternList = ReadonlyArray<string>;
+export type CrawlCreateRequestRejectRequestPatternList = Array<string>;
 export const CrawlCreateRequestRejectRequestPatternList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CrawlCreateRequestRejectRequestPatternList>;
@@ -847,7 +844,7 @@ export type CrawlCreateRequestRejectResourceTypesItem =
   | "other";
 export const CrawlCreateRequestRejectResourceTypesItem = /*@__PURE__*/ S.String;
 
-export type CrawlCreateRequestRejectResourceTypesList = ReadonlyArray<
+export type CrawlCreateRequestRejectResourceTypesList = Array<
   CrawlCreateRequestRejectResourceTypesItem | (string & {})
 >;
 export const CrawlCreateRequestRejectResourceTypesList = /*@__PURE__*/ S.Array(
@@ -1143,7 +1140,7 @@ export const JsonCreateRequestAddScriptTagItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<JsonCreateRequestAddScriptTagItem>;
 
 export type JsonCreateRequestAddScriptTagList =
-  ReadonlyArray<JsonCreateRequestAddScriptTagItem>;
+  Array<JsonCreateRequestAddScriptTagItem>;
 export const JsonCreateRequestAddScriptTagList = /*@__PURE__*/ S.Array(
   JsonCreateRequestAddScriptTagItem,
 ) as any as S.Schema<JsonCreateRequestAddScriptTagList>;
@@ -1162,12 +1159,12 @@ export const JsonCreateRequestAddStyleTagItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<JsonCreateRequestAddStyleTagItem>;
 
 export type JsonCreateRequestAddStyleTagList =
-  ReadonlyArray<JsonCreateRequestAddStyleTagItem>;
+  Array<JsonCreateRequestAddStyleTagItem>;
 export const JsonCreateRequestAddStyleTagList = /*@__PURE__*/ S.Array(
   JsonCreateRequestAddStyleTagItem,
 ) as any as S.Schema<JsonCreateRequestAddStyleTagList>;
 
-export type JsonCreateRequestAllowRequestPatternList = ReadonlyArray<string>;
+export type JsonCreateRequestAllowRequestPatternList = Array<string>;
 export const JsonCreateRequestAllowRequestPatternList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<JsonCreateRequestAllowRequestPatternList>;
@@ -1193,7 +1190,7 @@ export type JsonCreateRequestAllowResourceTypesItem =
   | "other";
 export const JsonCreateRequestAllowResourceTypesItem = /*@__PURE__*/ S.String;
 
-export type JsonCreateRequestAllowResourceTypesList = ReadonlyArray<
+export type JsonCreateRequestAllowResourceTypesList = Array<
   JsonCreateRequestAllowResourceTypesItem | (string & {})
 >;
 export const JsonCreateRequestAllowResourceTypesList = /*@__PURE__*/ S.Array(
@@ -1263,8 +1260,7 @@ export const JsonCreateRequestCookiesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "JsonCreateRequestCookiesItem",
 }) as any as S.Schema<JsonCreateRequestCookiesItem>;
 
-export type JsonCreateRequestCookiesList =
-  ReadonlyArray<JsonCreateRequestCookiesItem>;
+export type JsonCreateRequestCookiesList = Array<JsonCreateRequestCookiesItem>;
 export const JsonCreateRequestCookiesList = /*@__PURE__*/ S.Array(
   JsonCreateRequestCookiesItem,
 ) as any as S.Schema<JsonCreateRequestCookiesList>;
@@ -1285,7 +1281,7 @@ export const JsonCreateRequestCustomAiItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<JsonCreateRequestCustomAiItem>;
 
 export type JsonCreateRequestCustomAiList =
-  ReadonlyArray<JsonCreateRequestCustomAiItem>;
+  Array<JsonCreateRequestCustomAiItem>;
 export const JsonCreateRequestCustomAiList = /*@__PURE__*/ S.Array(
   JsonCreateRequestCustomAiItem,
 ) as any as S.Schema<JsonCreateRequestCustomAiList>;
@@ -1306,7 +1302,7 @@ export type JsonCreateRequestGotoOptionsWaitUntilCase1Item =
 export const JsonCreateRequestGotoOptionsWaitUntilCase1Item =
   /*@__PURE__*/ S.String;
 
-export type JsonCreateRequestGotoOptionsWaitUntilCase1List = ReadonlyArray<
+export type JsonCreateRequestGotoOptionsWaitUntilCase1List = Array<
   JsonCreateRequestGotoOptionsWaitUntilCase1Item | (string & {})
 >;
 export const JsonCreateRequestGotoOptionsWaitUntilCase1List =
@@ -1337,7 +1333,7 @@ export const JsonCreateRequestGotoOptions = /*@__PURE__*/ S.suspend(() =>
   identifier: "JsonCreateRequestGotoOptions",
 }) as any as S.Schema<JsonCreateRequestGotoOptions>;
 
-export type JsonCreateRequestRejectRequestPatternList = ReadonlyArray<string>;
+export type JsonCreateRequestRejectRequestPatternList = Array<string>;
 export const JsonCreateRequestRejectRequestPatternList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<JsonCreateRequestRejectRequestPatternList>;
@@ -1363,7 +1359,7 @@ export type JsonCreateRequestRejectResourceTypesItem =
   | "other";
 export const JsonCreateRequestRejectResourceTypesItem = /*@__PURE__*/ S.String;
 
-export type JsonCreateRequestRejectResourceTypesList = ReadonlyArray<
+export type JsonCreateRequestRejectResourceTypesList = Array<
   JsonCreateRequestRejectResourceTypesItem | (string & {})
 >;
 export const JsonCreateRequestRejectResourceTypesList = /*@__PURE__*/ S.Array(
@@ -1551,7 +1547,7 @@ export const LinksCreateRequestAddScriptTagItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LinksCreateRequestAddScriptTagItem>;
 
 export type LinksCreateRequestAddScriptTagList =
-  ReadonlyArray<LinksCreateRequestAddScriptTagItem>;
+  Array<LinksCreateRequestAddScriptTagItem>;
 export const LinksCreateRequestAddScriptTagList = /*@__PURE__*/ S.Array(
   LinksCreateRequestAddScriptTagItem,
 ) as any as S.Schema<LinksCreateRequestAddScriptTagList>;
@@ -1570,12 +1566,12 @@ export const LinksCreateRequestAddStyleTagItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LinksCreateRequestAddStyleTagItem>;
 
 export type LinksCreateRequestAddStyleTagList =
-  ReadonlyArray<LinksCreateRequestAddStyleTagItem>;
+  Array<LinksCreateRequestAddStyleTagItem>;
 export const LinksCreateRequestAddStyleTagList = /*@__PURE__*/ S.Array(
   LinksCreateRequestAddStyleTagItem,
 ) as any as S.Schema<LinksCreateRequestAddStyleTagList>;
 
-export type LinksCreateRequestAllowRequestPatternList = ReadonlyArray<string>;
+export type LinksCreateRequestAllowRequestPatternList = Array<string>;
 export const LinksCreateRequestAllowRequestPatternList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LinksCreateRequestAllowRequestPatternList>;
@@ -1601,7 +1597,7 @@ export type LinksCreateRequestAllowResourceTypesItem =
   | "other";
 export const LinksCreateRequestAllowResourceTypesItem = /*@__PURE__*/ S.String;
 
-export type LinksCreateRequestAllowResourceTypesList = ReadonlyArray<
+export type LinksCreateRequestAllowResourceTypesList = Array<
   LinksCreateRequestAllowResourceTypesItem | (string & {})
 >;
 export const LinksCreateRequestAllowResourceTypesList = /*@__PURE__*/ S.Array(
@@ -1672,7 +1668,7 @@ export const LinksCreateRequestCookiesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LinksCreateRequestCookiesItem>;
 
 export type LinksCreateRequestCookiesList =
-  ReadonlyArray<LinksCreateRequestCookiesItem>;
+  Array<LinksCreateRequestCookiesItem>;
 export const LinksCreateRequestCookiesList = /*@__PURE__*/ S.Array(
   LinksCreateRequestCookiesItem,
 ) as any as S.Schema<LinksCreateRequestCookiesList>;
@@ -1693,7 +1689,7 @@ export type LinksCreateRequestGotoOptionsWaitUntilCase1Item =
 export const LinksCreateRequestGotoOptionsWaitUntilCase1Item =
   /*@__PURE__*/ S.String;
 
-export type LinksCreateRequestGotoOptionsWaitUntilCase1List = ReadonlyArray<
+export type LinksCreateRequestGotoOptionsWaitUntilCase1List = Array<
   LinksCreateRequestGotoOptionsWaitUntilCase1Item | (string & {})
 >;
 export const LinksCreateRequestGotoOptionsWaitUntilCase1List =
@@ -1724,7 +1720,7 @@ export const LinksCreateRequestGotoOptions = /*@__PURE__*/ S.suspend(() =>
   identifier: "LinksCreateRequestGotoOptions",
 }) as any as S.Schema<LinksCreateRequestGotoOptions>;
 
-export type LinksCreateRequestRejectRequestPatternList = ReadonlyArray<string>;
+export type LinksCreateRequestRejectRequestPatternList = Array<string>;
 export const LinksCreateRequestRejectRequestPatternList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LinksCreateRequestRejectRequestPatternList>;
@@ -1750,7 +1746,7 @@ export type LinksCreateRequestRejectResourceTypesItem =
   | "other";
 export const LinksCreateRequestRejectResourceTypesItem = /*@__PURE__*/ S.String;
 
-export type LinksCreateRequestRejectResourceTypesList = ReadonlyArray<
+export type LinksCreateRequestRejectResourceTypesList = Array<
   LinksCreateRequestRejectResourceTypesItem | (string & {})
 >;
 export const LinksCreateRequestRejectResourceTypesList = /*@__PURE__*/ S.Array(
@@ -1888,7 +1884,7 @@ export const CreateLinkRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateLinkRequest",
 }) as any as S.Schema<CreateLinkRequest>;
 
-export type LinksCreateResultList = ReadonlyArray<string>;
+export type LinksCreateResultList = Array<string>;
 export const LinksCreateResultList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LinksCreateResultList>;
@@ -1919,7 +1915,7 @@ export const MarkdownCreateRequestAddScriptTagItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<MarkdownCreateRequestAddScriptTagItem>;
 
 export type MarkdownCreateRequestAddScriptTagList =
-  ReadonlyArray<MarkdownCreateRequestAddScriptTagItem>;
+  Array<MarkdownCreateRequestAddScriptTagItem>;
 export const MarkdownCreateRequestAddScriptTagList = /*@__PURE__*/ S.Array(
   MarkdownCreateRequestAddScriptTagItem,
 ) as any as S.Schema<MarkdownCreateRequestAddScriptTagList>;
@@ -1939,13 +1935,12 @@ export const MarkdownCreateRequestAddStyleTagItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<MarkdownCreateRequestAddStyleTagItem>;
 
 export type MarkdownCreateRequestAddStyleTagList =
-  ReadonlyArray<MarkdownCreateRequestAddStyleTagItem>;
+  Array<MarkdownCreateRequestAddStyleTagItem>;
 export const MarkdownCreateRequestAddStyleTagList = /*@__PURE__*/ S.Array(
   MarkdownCreateRequestAddStyleTagItem,
 ) as any as S.Schema<MarkdownCreateRequestAddStyleTagList>;
 
-export type MarkdownCreateRequestAllowRequestPatternList =
-  ReadonlyArray<string>;
+export type MarkdownCreateRequestAllowRequestPatternList = Array<string>;
 export const MarkdownCreateRequestAllowRequestPatternList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1973,7 +1968,7 @@ export type MarkdownCreateRequestAllowResourceTypesItem =
 export const MarkdownCreateRequestAllowResourceTypesItem =
   /*@__PURE__*/ S.String;
 
-export type MarkdownCreateRequestAllowResourceTypesList = ReadonlyArray<
+export type MarkdownCreateRequestAllowResourceTypesList = Array<
   MarkdownCreateRequestAllowResourceTypesItem | (string & {})
 >;
 export const MarkdownCreateRequestAllowResourceTypesList =
@@ -2052,7 +2047,7 @@ export const MarkdownCreateRequestCookiesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MarkdownCreateRequestCookiesItem>;
 
 export type MarkdownCreateRequestCookiesList =
-  ReadonlyArray<MarkdownCreateRequestCookiesItem>;
+  Array<MarkdownCreateRequestCookiesItem>;
 export const MarkdownCreateRequestCookiesList = /*@__PURE__*/ S.Array(
   MarkdownCreateRequestCookiesItem,
 ) as any as S.Schema<MarkdownCreateRequestCookiesList>;
@@ -2073,7 +2068,7 @@ export type MarkdownCreateRequestGotoOptionsWaitUntilCase1Item =
 export const MarkdownCreateRequestGotoOptionsWaitUntilCase1Item =
   /*@__PURE__*/ S.String;
 
-export type MarkdownCreateRequestGotoOptionsWaitUntilCase1List = ReadonlyArray<
+export type MarkdownCreateRequestGotoOptionsWaitUntilCase1List = Array<
   MarkdownCreateRequestGotoOptionsWaitUntilCase1Item | (string & {})
 >;
 export const MarkdownCreateRequestGotoOptionsWaitUntilCase1List =
@@ -2104,8 +2099,7 @@ export const MarkdownCreateRequestGotoOptions = /*@__PURE__*/ S.suspend(() =>
   identifier: "MarkdownCreateRequestGotoOptions",
 }) as any as S.Schema<MarkdownCreateRequestGotoOptions>;
 
-export type MarkdownCreateRequestRejectRequestPatternList =
-  ReadonlyArray<string>;
+export type MarkdownCreateRequestRejectRequestPatternList = Array<string>;
 export const MarkdownCreateRequestRejectRequestPatternList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2133,7 +2127,7 @@ export type MarkdownCreateRequestRejectResourceTypesItem =
 export const MarkdownCreateRequestRejectResourceTypesItem =
   /*@__PURE__*/ S.String;
 
-export type MarkdownCreateRequestRejectResourceTypesList = ReadonlyArray<
+export type MarkdownCreateRequestRejectResourceTypesList = Array<
   MarkdownCreateRequestRejectResourceTypesItem | (string & {})
 >;
 export const MarkdownCreateRequestRejectResourceTypesList =
@@ -2301,7 +2295,7 @@ export const PdfCreateRequestAddScriptTagItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PdfCreateRequestAddScriptTagItem>;
 
 export type PdfCreateRequestAddScriptTagList =
-  ReadonlyArray<PdfCreateRequestAddScriptTagItem>;
+  Array<PdfCreateRequestAddScriptTagItem>;
 export const PdfCreateRequestAddScriptTagList = /*@__PURE__*/ S.Array(
   PdfCreateRequestAddScriptTagItem,
 ) as any as S.Schema<PdfCreateRequestAddScriptTagList>;
@@ -2320,12 +2314,12 @@ export const PdfCreateRequestAddStyleTagItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PdfCreateRequestAddStyleTagItem>;
 
 export type PdfCreateRequestAddStyleTagList =
-  ReadonlyArray<PdfCreateRequestAddStyleTagItem>;
+  Array<PdfCreateRequestAddStyleTagItem>;
 export const PdfCreateRequestAddStyleTagList = /*@__PURE__*/ S.Array(
   PdfCreateRequestAddStyleTagItem,
 ) as any as S.Schema<PdfCreateRequestAddStyleTagList>;
 
-export type PdfCreateRequestAllowRequestPatternList = ReadonlyArray<string>;
+export type PdfCreateRequestAllowRequestPatternList = Array<string>;
 export const PdfCreateRequestAllowRequestPatternList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PdfCreateRequestAllowRequestPatternList>;
@@ -2351,7 +2345,7 @@ export type PdfCreateRequestAllowResourceTypesItem =
   | "other";
 export const PdfCreateRequestAllowResourceTypesItem = /*@__PURE__*/ S.String;
 
-export type PdfCreateRequestAllowResourceTypesList = ReadonlyArray<
+export type PdfCreateRequestAllowResourceTypesList = Array<
   PdfCreateRequestAllowResourceTypesItem | (string & {})
 >;
 export const PdfCreateRequestAllowResourceTypesList = /*@__PURE__*/ S.Array(
@@ -2421,8 +2415,7 @@ export const PdfCreateRequestCookiesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "PdfCreateRequestCookiesItem",
 }) as any as S.Schema<PdfCreateRequestCookiesItem>;
 
-export type PdfCreateRequestCookiesList =
-  ReadonlyArray<PdfCreateRequestCookiesItem>;
+export type PdfCreateRequestCookiesList = Array<PdfCreateRequestCookiesItem>;
 export const PdfCreateRequestCookiesList = /*@__PURE__*/ S.Array(
   PdfCreateRequestCookiesItem,
 ) as any as S.Schema<PdfCreateRequestCookiesList>;
@@ -2442,7 +2435,7 @@ export type PdfCreateRequestGotoOptionsWaitUntilCase1Item =
 export const PdfCreateRequestGotoOptionsWaitUntilCase1Item =
   /*@__PURE__*/ S.String;
 
-export type PdfCreateRequestGotoOptionsWaitUntilCase1List = ReadonlyArray<
+export type PdfCreateRequestGotoOptionsWaitUntilCase1List = Array<
   PdfCreateRequestGotoOptionsWaitUntilCase1Item | (string & {})
 >;
 export const PdfCreateRequestGotoOptionsWaitUntilCase1List =
@@ -2588,7 +2581,7 @@ export const PdfCreateRequestPdfOptions = /*@__PURE__*/ S.suspend(() =>
   identifier: "PdfCreateRequestPdfOptions",
 }) as any as S.Schema<PdfCreateRequestPdfOptions>;
 
-export type PdfCreateRequestRejectRequestPatternList = ReadonlyArray<string>;
+export type PdfCreateRequestRejectRequestPatternList = Array<string>;
 export const PdfCreateRequestRejectRequestPatternList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PdfCreateRequestRejectRequestPatternList>;
@@ -2614,7 +2607,7 @@ export type PdfCreateRequestRejectResourceTypesItem =
   | "other";
 export const PdfCreateRequestRejectResourceTypesItem = /*@__PURE__*/ S.String;
 
-export type PdfCreateRequestRejectResourceTypesList = ReadonlyArray<
+export type PdfCreateRequestRejectResourceTypesList = Array<
   PdfCreateRequestRejectResourceTypesItem | (string & {})
 >;
 export const PdfCreateRequestRejectResourceTypesList = /*@__PURE__*/ S.Array(
@@ -2768,7 +2761,7 @@ export const ScrapeCreateRequestElementsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScrapeCreateRequestElementsItem>;
 
 export type ScrapeCreateRequestElementsList =
-  ReadonlyArray<ScrapeCreateRequestElementsItem>;
+  Array<ScrapeCreateRequestElementsItem>;
 export const ScrapeCreateRequestElementsList = /*@__PURE__*/ S.Array(
   ScrapeCreateRequestElementsItem,
 ) as any as S.Schema<ScrapeCreateRequestElementsList>;
@@ -2791,7 +2784,7 @@ export const ScrapeCreateRequestAddScriptTagItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScrapeCreateRequestAddScriptTagItem>;
 
 export type ScrapeCreateRequestAddScriptTagList =
-  ReadonlyArray<ScrapeCreateRequestAddScriptTagItem>;
+  Array<ScrapeCreateRequestAddScriptTagItem>;
 export const ScrapeCreateRequestAddScriptTagList = /*@__PURE__*/ S.Array(
   ScrapeCreateRequestAddScriptTagItem,
 ) as any as S.Schema<ScrapeCreateRequestAddScriptTagList>;
@@ -2810,12 +2803,12 @@ export const ScrapeCreateRequestAddStyleTagItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScrapeCreateRequestAddStyleTagItem>;
 
 export type ScrapeCreateRequestAddStyleTagList =
-  ReadonlyArray<ScrapeCreateRequestAddStyleTagItem>;
+  Array<ScrapeCreateRequestAddStyleTagItem>;
 export const ScrapeCreateRequestAddStyleTagList = /*@__PURE__*/ S.Array(
   ScrapeCreateRequestAddStyleTagItem,
 ) as any as S.Schema<ScrapeCreateRequestAddStyleTagList>;
 
-export type ScrapeCreateRequestAllowRequestPatternList = ReadonlyArray<string>;
+export type ScrapeCreateRequestAllowRequestPatternList = Array<string>;
 export const ScrapeCreateRequestAllowRequestPatternList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ScrapeCreateRequestAllowRequestPatternList>;
@@ -2841,7 +2834,7 @@ export type ScrapeCreateRequestAllowResourceTypesItem =
   | "other";
 export const ScrapeCreateRequestAllowResourceTypesItem = /*@__PURE__*/ S.String;
 
-export type ScrapeCreateRequestAllowResourceTypesList = ReadonlyArray<
+export type ScrapeCreateRequestAllowResourceTypesList = Array<
   ScrapeCreateRequestAllowResourceTypesItem | (string & {})
 >;
 export const ScrapeCreateRequestAllowResourceTypesList = /*@__PURE__*/ S.Array(
@@ -2913,7 +2906,7 @@ export const ScrapeCreateRequestCookiesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScrapeCreateRequestCookiesItem>;
 
 export type ScrapeCreateRequestCookiesList =
-  ReadonlyArray<ScrapeCreateRequestCookiesItem>;
+  Array<ScrapeCreateRequestCookiesItem>;
 export const ScrapeCreateRequestCookiesList = /*@__PURE__*/ S.Array(
   ScrapeCreateRequestCookiesItem,
 ) as any as S.Schema<ScrapeCreateRequestCookiesList>;
@@ -2934,7 +2927,7 @@ export type ScrapeCreateRequestGotoOptionsWaitUntilCase1Item =
 export const ScrapeCreateRequestGotoOptionsWaitUntilCase1Item =
   /*@__PURE__*/ S.String;
 
-export type ScrapeCreateRequestGotoOptionsWaitUntilCase1List = ReadonlyArray<
+export type ScrapeCreateRequestGotoOptionsWaitUntilCase1List = Array<
   ScrapeCreateRequestGotoOptionsWaitUntilCase1Item | (string & {})
 >;
 export const ScrapeCreateRequestGotoOptionsWaitUntilCase1List =
@@ -2965,7 +2958,7 @@ export const ScrapeCreateRequestGotoOptions = /*@__PURE__*/ S.suspend(() =>
   identifier: "ScrapeCreateRequestGotoOptions",
 }) as any as S.Schema<ScrapeCreateRequestGotoOptions>;
 
-export type ScrapeCreateRequestRejectRequestPatternList = ReadonlyArray<string>;
+export type ScrapeCreateRequestRejectRequestPatternList = Array<string>;
 export const ScrapeCreateRequestRejectRequestPatternList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2993,7 +2986,7 @@ export type ScrapeCreateRequestRejectResourceTypesItem =
 export const ScrapeCreateRequestRejectResourceTypesItem =
   /*@__PURE__*/ S.String;
 
-export type ScrapeCreateRequestRejectResourceTypesList = ReadonlyArray<
+export type ScrapeCreateRequestRejectResourceTypesList = Array<
   ScrapeCreateRequestRejectResourceTypesItem | (string & {})
 >;
 export const ScrapeCreateRequestRejectResourceTypesList = /*@__PURE__*/ S.Array(
@@ -3146,7 +3139,7 @@ export const ScrapeCreateResultItemResultsAttributesItem =
   }) as any as S.Schema<ScrapeCreateResultItemResultsAttributesItem>;
 
 export type ScrapeCreateResultItemResultsAttributesList =
-  ReadonlyArray<ScrapeCreateResultItemResultsAttributesItem>;
+  Array<ScrapeCreateResultItemResultsAttributesItem>;
 export const ScrapeCreateResultItemResultsAttributesList =
   /*@__PURE__*/ S.Array(
     ScrapeCreateResultItemResultsAttributesItem,
@@ -3195,7 +3188,7 @@ export const ScrapeCreateResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "ScrapeCreateResultItem",
 }) as any as S.Schema<ScrapeCreateResultItem>;
 
-export type ScrapeCreateResultList = ReadonlyArray<ScrapeCreateResultItem>;
+export type ScrapeCreateResultList = Array<ScrapeCreateResultItem>;
 export const ScrapeCreateResultList = /*@__PURE__*/ S.Array(
   ScrapeCreateResultItem,
 ) as any as S.Schema<ScrapeCreateResultList>;
@@ -3226,7 +3219,7 @@ export const ScreenshotCreateRequestAddScriptTagItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ScreenshotCreateRequestAddScriptTagItem>;
 
 export type ScreenshotCreateRequestAddScriptTagList =
-  ReadonlyArray<ScreenshotCreateRequestAddScriptTagItem>;
+  Array<ScreenshotCreateRequestAddScriptTagItem>;
 export const ScreenshotCreateRequestAddScriptTagList = /*@__PURE__*/ S.Array(
   ScreenshotCreateRequestAddScriptTagItem,
 ) as any as S.Schema<ScreenshotCreateRequestAddScriptTagList>;
@@ -3246,13 +3239,12 @@ export const ScreenshotCreateRequestAddStyleTagItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ScreenshotCreateRequestAddStyleTagItem>;
 
 export type ScreenshotCreateRequestAddStyleTagList =
-  ReadonlyArray<ScreenshotCreateRequestAddStyleTagItem>;
+  Array<ScreenshotCreateRequestAddStyleTagItem>;
 export const ScreenshotCreateRequestAddStyleTagList = /*@__PURE__*/ S.Array(
   ScreenshotCreateRequestAddStyleTagItem,
 ) as any as S.Schema<ScreenshotCreateRequestAddStyleTagList>;
 
-export type ScreenshotCreateRequestAllowRequestPatternList =
-  ReadonlyArray<string>;
+export type ScreenshotCreateRequestAllowRequestPatternList = Array<string>;
 export const ScreenshotCreateRequestAllowRequestPatternList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3280,7 +3272,7 @@ export type ScreenshotCreateRequestAllowResourceTypesItem =
 export const ScreenshotCreateRequestAllowResourceTypesItem =
   /*@__PURE__*/ S.String;
 
-export type ScreenshotCreateRequestAllowResourceTypesList = ReadonlyArray<
+export type ScreenshotCreateRequestAllowResourceTypesList = Array<
   ScreenshotCreateRequestAllowResourceTypesItem | (string & {})
 >;
 export const ScreenshotCreateRequestAllowResourceTypesList =
@@ -3361,7 +3353,7 @@ export const ScreenshotCreateRequestCookiesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScreenshotCreateRequestCookiesItem>;
 
 export type ScreenshotCreateRequestCookiesList =
-  ReadonlyArray<ScreenshotCreateRequestCookiesItem>;
+  Array<ScreenshotCreateRequestCookiesItem>;
 export const ScreenshotCreateRequestCookiesList = /*@__PURE__*/ S.Array(
   ScreenshotCreateRequestCookiesItem,
 ) as any as S.Schema<ScreenshotCreateRequestCookiesList>;
@@ -3382,10 +3374,9 @@ export type ScreenshotCreateRequestGotoOptionsWaitUntilCase1Item =
 export const ScreenshotCreateRequestGotoOptionsWaitUntilCase1Item =
   /*@__PURE__*/ S.String;
 
-export type ScreenshotCreateRequestGotoOptionsWaitUntilCase1List =
-  ReadonlyArray<
-    ScreenshotCreateRequestGotoOptionsWaitUntilCase1Item | (string & {})
-  >;
+export type ScreenshotCreateRequestGotoOptionsWaitUntilCase1List = Array<
+  ScreenshotCreateRequestGotoOptionsWaitUntilCase1Item | (string & {})
+>;
 export const ScreenshotCreateRequestGotoOptionsWaitUntilCase1List =
   /*@__PURE__*/ S.Array(
     ScreenshotCreateRequestGotoOptionsWaitUntilCase1Item,
@@ -3414,8 +3405,7 @@ export const ScreenshotCreateRequestGotoOptions = /*@__PURE__*/ S.suspend(() =>
   identifier: "ScreenshotCreateRequestGotoOptions",
 }) as any as S.Schema<ScreenshotCreateRequestGotoOptions>;
 
-export type ScreenshotCreateRequestRejectRequestPatternList =
-  ReadonlyArray<string>;
+export type ScreenshotCreateRequestRejectRequestPatternList = Array<string>;
 export const ScreenshotCreateRequestRejectRequestPatternList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3443,7 +3433,7 @@ export type ScreenshotCreateRequestRejectResourceTypesItem =
 export const ScreenshotCreateRequestRejectResourceTypesItem =
   /*@__PURE__*/ S.String;
 
-export type ScreenshotCreateRequestRejectResourceTypesList = ReadonlyArray<
+export type ScreenshotCreateRequestRejectResourceTypesList = Array<
   ScreenshotCreateRequestRejectResourceTypesItem | (string & {})
 >;
 export const ScreenshotCreateRequestRejectResourceTypesList =
@@ -3682,7 +3672,7 @@ export const SnapshotCreateRequestAddScriptTagItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<SnapshotCreateRequestAddScriptTagItem>;
 
 export type SnapshotCreateRequestAddScriptTagList =
-  ReadonlyArray<SnapshotCreateRequestAddScriptTagItem>;
+  Array<SnapshotCreateRequestAddScriptTagItem>;
 export const SnapshotCreateRequestAddScriptTagList = /*@__PURE__*/ S.Array(
   SnapshotCreateRequestAddScriptTagItem,
 ) as any as S.Schema<SnapshotCreateRequestAddScriptTagList>;
@@ -3702,13 +3692,12 @@ export const SnapshotCreateRequestAddStyleTagItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<SnapshotCreateRequestAddStyleTagItem>;
 
 export type SnapshotCreateRequestAddStyleTagList =
-  ReadonlyArray<SnapshotCreateRequestAddStyleTagItem>;
+  Array<SnapshotCreateRequestAddStyleTagItem>;
 export const SnapshotCreateRequestAddStyleTagList = /*@__PURE__*/ S.Array(
   SnapshotCreateRequestAddStyleTagItem,
 ) as any as S.Schema<SnapshotCreateRequestAddStyleTagList>;
 
-export type SnapshotCreateRequestAllowRequestPatternList =
-  ReadonlyArray<string>;
+export type SnapshotCreateRequestAllowRequestPatternList = Array<string>;
 export const SnapshotCreateRequestAllowRequestPatternList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3736,7 +3725,7 @@ export type SnapshotCreateRequestAllowResourceTypesItem =
 export const SnapshotCreateRequestAllowResourceTypesItem =
   /*@__PURE__*/ S.String;
 
-export type SnapshotCreateRequestAllowResourceTypesList = ReadonlyArray<
+export type SnapshotCreateRequestAllowResourceTypesList = Array<
   SnapshotCreateRequestAllowResourceTypesItem | (string & {})
 >;
 export const SnapshotCreateRequestAllowResourceTypesList =
@@ -3815,7 +3804,7 @@ export const SnapshotCreateRequestCookiesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SnapshotCreateRequestCookiesItem>;
 
 export type SnapshotCreateRequestCookiesList =
-  ReadonlyArray<SnapshotCreateRequestCookiesItem>;
+  Array<SnapshotCreateRequestCookiesItem>;
 export const SnapshotCreateRequestCookiesList = /*@__PURE__*/ S.Array(
   SnapshotCreateRequestCookiesItem,
 ) as any as S.Schema<SnapshotCreateRequestCookiesList>;
@@ -3827,7 +3816,7 @@ export type SnapshotCreateRequestFormatsItem =
   | "accessibilityTree";
 export const SnapshotCreateRequestFormatsItem = /*@__PURE__*/ S.String;
 
-export type SnapshotCreateRequestFormatsList = ReadonlyArray<
+export type SnapshotCreateRequestFormatsList = Array<
   SnapshotCreateRequestFormatsItem | (string & {})
 >;
 export const SnapshotCreateRequestFormatsList = /*@__PURE__*/ S.Array(
@@ -3850,7 +3839,7 @@ export type SnapshotCreateRequestGotoOptionsWaitUntilCase1Item =
 export const SnapshotCreateRequestGotoOptionsWaitUntilCase1Item =
   /*@__PURE__*/ S.String;
 
-export type SnapshotCreateRequestGotoOptionsWaitUntilCase1List = ReadonlyArray<
+export type SnapshotCreateRequestGotoOptionsWaitUntilCase1List = Array<
   SnapshotCreateRequestGotoOptionsWaitUntilCase1Item | (string & {})
 >;
 export const SnapshotCreateRequestGotoOptionsWaitUntilCase1List =
@@ -3881,8 +3870,7 @@ export const SnapshotCreateRequestGotoOptions = /*@__PURE__*/ S.suspend(() =>
   identifier: "SnapshotCreateRequestGotoOptions",
 }) as any as S.Schema<SnapshotCreateRequestGotoOptions>;
 
-export type SnapshotCreateRequestRejectRequestPatternList =
-  ReadonlyArray<string>;
+export type SnapshotCreateRequestRejectRequestPatternList = Array<string>;
 export const SnapshotCreateRequestRejectRequestPatternList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3910,7 +3898,7 @@ export type SnapshotCreateRequestRejectResourceTypesItem =
 export const SnapshotCreateRequestRejectResourceTypesItem =
   /*@__PURE__*/ S.String;
 
-export type SnapshotCreateRequestRejectResourceTypesList = ReadonlyArray<
+export type SnapshotCreateRequestRejectResourceTypesList = Array<
   SnapshotCreateRequestRejectResourceTypesItem | (string & {})
 >;
 export const SnapshotCreateRequestRejectResourceTypesList =
@@ -4121,7 +4109,7 @@ export const SnapshotCreateResponseAccessibilityTreeChecked2 =
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
 
 export type SnapshotCreateResponseAccessibilityTreeChildrenList =
-  ReadonlyArray<unknown>;
+  Array<unknown>;
 export const SnapshotCreateResponseAccessibilityTreeChildrenList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -4407,8 +4395,7 @@ export const CrawlGetResponseRecordsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "CrawlGetResponseRecordsItem",
 }) as any as S.Schema<CrawlGetResponseRecordsItem>;
 
-export type CrawlGetResponseRecordsList =
-  ReadonlyArray<CrawlGetResponseRecordsItem>;
+export type CrawlGetResponseRecordsList = Array<CrawlGetResponseRecordsItem>;
 export const CrawlGetResponseRecordsList = /*@__PURE__*/ S.Array(
   CrawlGetResponseRecordsItem,
 ) as any as S.Schema<CrawlGetResponseRecordsList>;
@@ -4795,14 +4782,14 @@ export const DevtoolsBrowserProtocolResponseDomainsItemCommandsItemMap =
   ) as any as S.Schema<DevtoolsBrowserProtocolResponseDomainsItemCommandsItemMap>;
 
 export type DevtoolsBrowserProtocolResponseDomainsItemCommandsList =
-  ReadonlyArray<DevtoolsBrowserProtocolResponseDomainsItemCommandsItemMap>;
+  Array<DevtoolsBrowserProtocolResponseDomainsItemCommandsItemMap>;
 export const DevtoolsBrowserProtocolResponseDomainsItemCommandsList =
   /*@__PURE__*/ S.Array(
     DevtoolsBrowserProtocolResponseDomainsItemCommandsItemMap,
   ) as any as S.Schema<DevtoolsBrowserProtocolResponseDomainsItemCommandsList>;
 
 export type DevtoolsBrowserProtocolResponseDomainsItemDependenciesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const DevtoolsBrowserProtocolResponseDomainsItemDependenciesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4818,7 +4805,7 @@ export const DevtoolsBrowserProtocolResponseDomainsItemEventsItemMap =
   ) as any as S.Schema<DevtoolsBrowserProtocolResponseDomainsItemEventsItemMap>;
 
 export type DevtoolsBrowserProtocolResponseDomainsItemEventsList =
-  ReadonlyArray<DevtoolsBrowserProtocolResponseDomainsItemEventsItemMap>;
+  Array<DevtoolsBrowserProtocolResponseDomainsItemEventsItemMap>;
 export const DevtoolsBrowserProtocolResponseDomainsItemEventsList =
   /*@__PURE__*/ S.Array(
     DevtoolsBrowserProtocolResponseDomainsItemEventsItemMap,
@@ -4834,7 +4821,7 @@ export const DevtoolsBrowserProtocolResponseDomainsItemTypesItemMap =
   ) as any as S.Schema<DevtoolsBrowserProtocolResponseDomainsItemTypesItemMap>;
 
 export type DevtoolsBrowserProtocolResponseDomainsItemTypesList =
-  ReadonlyArray<DevtoolsBrowserProtocolResponseDomainsItemTypesItemMap>;
+  Array<DevtoolsBrowserProtocolResponseDomainsItemTypesItemMap>;
 export const DevtoolsBrowserProtocolResponseDomainsItemTypesList =
   /*@__PURE__*/ S.Array(
     DevtoolsBrowserProtocolResponseDomainsItemTypesItemMap,
@@ -4873,7 +4860,7 @@ export const DevtoolsBrowserProtocolResponseDomainsItem =
   }) as any as S.Schema<DevtoolsBrowserProtocolResponseDomainsItem>;
 
 export type DevtoolsBrowserProtocolResponseDomainsList =
-  ReadonlyArray<DevtoolsBrowserProtocolResponseDomainsItem>;
+  Array<DevtoolsBrowserProtocolResponseDomainsItem>;
 export const DevtoolsBrowserProtocolResponseDomainsList = /*@__PURE__*/ S.Array(
   DevtoolsBrowserProtocolResponseDomainsItem,
 ) as any as S.Schema<DevtoolsBrowserProtocolResponseDomainsList>;

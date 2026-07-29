@@ -694,7 +694,7 @@ export const VPCRegion = /*@__PURE__*/ S.String;
 
 export type VPCId = string;
 export interface VPC {
-  VPCRegion?: VPCRegion;
+  VPCRegion?: VPCRegion | (string & {});
   VPCId?: string;
 }
 export const VPC = /*@__PURE__*/ S.suspend(() =>
@@ -951,12 +951,12 @@ export const GeoProximityLocation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GeoProximityLocation>;
 export interface ResourceRecordSet {
   Name: string;
-  Type: RRType;
+  Type: RRType | (string & {});
   SetIdentifier?: string;
   Weight?: number;
-  Region?: ResourceRecordSetRegion;
+  Region?: ResourceRecordSetRegion | (string & {});
   GeoLocation?: GeoLocation;
-  Failover?: ResourceRecordSetFailover;
+  Failover?: ResourceRecordSetFailover | (string & {});
   MultiValueAnswer?: boolean;
   TTL?: number;
   ResourceRecords?: ResourceRecord[];
@@ -1182,7 +1182,7 @@ export type HealthCheckRegion =
   | "sa-east-1";
 export const HealthCheckRegion = /*@__PURE__*/ S.String;
 
-export type HealthCheckRegionList = HealthCheckRegion[];
+export type HealthCheckRegionList = (HealthCheckRegion | (string & {}))[];
 export const HealthCheckRegionList = /*@__PURE__*/ S.Array(
   HealthCheckRegion.pipe(T.XmlName("Region")),
 );
@@ -1237,7 +1237,7 @@ export const CloudWatchRegion = /*@__PURE__*/ S.String;
 
 export type AlarmName = string;
 export interface AlarmIdentifier {
-  Region: CloudWatchRegion;
+  Region: CloudWatchRegion | (string & {});
   Name: string;
 }
 export const AlarmIdentifier = /*@__PURE__*/ S.suspend(() =>
@@ -1255,7 +1255,7 @@ export type RoutingControlArn = string;
 export interface HealthCheckConfig {
   IPAddress?: string;
   Port?: number;
-  Type: HealthCheckType;
+  Type: HealthCheckType | (string & {});
   ResourcePath?: string;
   FullyQualifiedDomainName?: string;
   SearchString?: string;
@@ -1269,7 +1269,7 @@ export interface HealthCheckConfig {
   EnableSNI?: boolean;
   Regions?: HealthCheckRegion[];
   AlarmIdentifier?: AlarmIdentifier;
-  InsufficientDataHealthStatus?: InsufficientDataHealthStatus;
+  InsufficientDataHealthStatus?: InsufficientDataHealthStatus | (string & {});
   RoutingControlArn?: string;
 }
 export const HealthCheckConfig = /*@__PURE__*/ S.suspend(() =>

@@ -218,7 +218,7 @@ export const FixedOrPercent = /*@__PURE__*/ S.suspend(() =>
 /** Patch rollout configuration specifications. Contains details on the concurrency control when applying patch(es) to all targeted VMs. */
 export interface PatchRollout {
   /** Mode of the patch rollout. */
-  mode?: PatchRolloutModeEnum;
+  mode?: PatchRolloutModeEnum | (string & {});
   /** The maximum number (or percentage) of VMs per zone to disrupt at any given moment. The number of VMs calculated from multiplying the percentage by the total number of VMs in a zone is rounded up. During patching, a VM is considered disrupted from the time the agent is notified to begin until patching has completed. This disruption time includes the time to complete reboot and any post-patch steps. A VM contributes to the disruption budget if its patching operation fails either when applying the patches, running pre or post patch steps, or if it fails to respond with a success notification before timing out. VMs that are not running or do not have an active agent do not count toward this disruption budget. For zone-by-zone rollouts, if the disruption budget in a zone is exceeded, the patch job stops, because continuing to the next zone requires completion of the patch process in the previous zone. For example, if the disruption budget has a fixed value of `10`, and 8 VMs fail to patch in the current zone, the patch job continues to patch 2 VMs at a time until the zone is completed. When that zone is completed successfully, patching begins with 10 VMs at a time in the next zone. If 10 VMs in the next zone fail to patch, the patch job stops. */
   disruptionBudget?: FixedOrPercent;
 }
@@ -229,7 +229,7 @@ export const PatchRollout = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PatchRollout" }) as any as S.Schema<PatchRollout>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -254,7 +254,7 @@ export const PatchInstanceFilterGroupLabel = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PatchInstanceFilterGroupLabel>;
 
 export type PatchInstanceFilterGroupLabelList =
-  ReadonlyArray<PatchInstanceFilterGroupLabel>;
+  Array<PatchInstanceFilterGroupLabel>;
 export const PatchInstanceFilterGroupLabelList = /*@__PURE__*/ S.Array(
   PatchInstanceFilterGroupLabel,
 ) as any as S.Schema<PatchInstanceFilterGroupLabelList>;
@@ -298,8 +298,9 @@ export type WindowsUpdateSettingsClassificationsItemEnum =
 export const WindowsUpdateSettingsClassificationsItemEnum =
   /*@__PURE__*/ S.String;
 
-export type WindowsUpdateSettingsClassificationsItemEnumList =
-  ReadonlyArray<WindowsUpdateSettingsClassificationsItemEnum>;
+export type WindowsUpdateSettingsClassificationsItemEnumList = Array<
+  WindowsUpdateSettingsClassificationsItemEnum | (string & {})
+>;
 export const WindowsUpdateSettingsClassificationsItemEnumList =
   /*@__PURE__*/ S.Array(
     WindowsUpdateSettingsClassificationsItemEnum,
@@ -326,7 +327,7 @@ export const WindowsUpdateSettings = /*@__PURE__*/ S.suspend(() =>
   identifier: "WindowsUpdateSettings",
 }) as any as S.Schema<WindowsUpdateSettings>;
 
-export type IntegerList = ReadonlyArray<number>;
+export type IntegerList = Array<number>;
 export const IntegerList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<IntegerList>;
@@ -362,7 +363,7 @@ export interface ExecStepConfig {
   /** Defaults to [0]. A list of possible return values that the execution can return to indicate a success. */
   allowedSuccessCodes?: IntegerList;
   /** The script interpreter to use to run the script. If no interpreter is specified the script will be executed directly, which will likely only succeed for scripts with [shebang lines] (https://en.wikipedia.org/wiki/Shebang_\(Unix\)). */
-  interpreter?: ExecStepConfigInterpreterEnum;
+  interpreter?: ExecStepConfigInterpreterEnum | (string & {});
   /** A Cloud Storage object containing the executable. */
   gcsObject?: GcsObject;
 }
@@ -401,7 +402,7 @@ export const AptSettingsTypeEnum = /*@__PURE__*/ S.String;
 /** Apt patching is completed by executing `apt-get update && apt-get upgrade`. Additional options can be set to control how this is executed. */
 export interface AptSettings {
   /** By changing the type to DIST, the patching is performed using `apt-get dist-upgrade` instead. */
-  type?: AptSettingsTypeEnum;
+  type?: AptSettingsTypeEnum | (string & {});
   /** An exclusive list of packages to be updated. These are the only packages that will be updated. If these packages are not installed, they will be ignored. This field cannot be specified with any other patch configuration fields. */
   exclusivePackages?: StringList;
   /** List of packages to exclude from update. These packages will be excluded */
@@ -489,7 +490,7 @@ export interface PatchConfig {
   /** Yum update settings. Use this setting to override the default `yum` patch rules. */
   yum?: YumSettings;
   /** Post-patch reboot settings. */
-  rebootConfig?: PatchConfigRebootConfigEnum;
+  rebootConfig?: PatchConfigRebootConfigEnum | (string & {});
 }
 export const PatchConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -583,8 +584,7 @@ export const OSPolicyInventoryFilter = /*@__PURE__*/ S.suspend(() =>
   identifier: "OSPolicyInventoryFilter",
 }) as any as S.Schema<OSPolicyInventoryFilter>;
 
-export type OSPolicyInventoryFilterList =
-  ReadonlyArray<OSPolicyInventoryFilter>;
+export type OSPolicyInventoryFilterList = Array<OSPolicyInventoryFilter>;
 export const OSPolicyInventoryFilterList = /*@__PURE__*/ S.Array(
   OSPolicyInventoryFilter,
 ) as any as S.Schema<OSPolicyInventoryFilterList>;
@@ -664,7 +664,7 @@ export interface OSPolicyResourceFileResource {
   /** A file with this content. The size of the content is limited to 32KiB. */
   content?: string;
   /** Required. Desired state of the file. */
-  state?: OSPolicyResourceFileResourceStateEnum;
+  state?: OSPolicyResourceFileResourceStateEnum | (string & {});
 }
 export const OSPolicyResourceFileResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -796,7 +796,9 @@ export interface OSPolicyResourcePackageResource {
   /** An MSI package. */
   msi?: OSPolicyResourcePackageResourceMSI;
   /** Required. The desired state the agent should maintain for this package. */
-  desiredState?: OSPolicyResourcePackageResourceDesiredStateEnum;
+  desiredState?:
+    | OSPolicyResourcePackageResourceDesiredStateEnum
+    | (string & {});
   /** A package managed by YUM. */
   yum?: OSPolicyResourcePackageResourceYUM;
   /** A deb package file. */
@@ -862,7 +864,9 @@ export interface OSPolicyResourceRepositoryResourceAptRepository {
   /** URI of the key file for this repository. The agent maintains a keyring at `/etc/apt/trusted.gpg.d/osconfig_agent_managed.gpg`. */
   gpgKey?: string;
   /** Required. Type of archive files in this repository. */
-  archiveType?: OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypeEnum;
+  archiveType?:
+    | OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypeEnum
+    | (string & {});
 }
 export const OSPolicyResourceRepositoryResourceAptRepository =
   /*@__PURE__*/ S.suspend(() =>
@@ -960,7 +964,7 @@ export interface OSPolicyResourceExecResourceExec {
   /** A remote or local file. */
   file?: OSPolicyResourceFile;
   /** Required. The script interpreter to use. */
-  interpreter?: OSPolicyResourceExecResourceExecInterpreterEnum;
+  interpreter?: OSPolicyResourceExecResourceExecInterpreterEnum | (string & {});
 }
 export const OSPolicyResourceExecResourceExec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1015,7 +1019,7 @@ export const OSPolicyResource = /*@__PURE__*/ S.suspend(() =>
   identifier: "OSPolicyResource",
 }) as any as S.Schema<OSPolicyResource>;
 
-export type OSPolicyResourceList = ReadonlyArray<OSPolicyResource>;
+export type OSPolicyResourceList = Array<OSPolicyResource>;
 export const OSPolicyResourceList = /*@__PURE__*/ S.Array(
   OSPolicyResource,
 ) as any as S.Schema<OSPolicyResourceList>;
@@ -1036,7 +1040,7 @@ export const OSPolicyResourceGroup = /*@__PURE__*/ S.suspend(() =>
   identifier: "OSPolicyResourceGroup",
 }) as any as S.Schema<OSPolicyResourceGroup>;
 
-export type OSPolicyResourceGroupList = ReadonlyArray<OSPolicyResourceGroup>;
+export type OSPolicyResourceGroupList = Array<OSPolicyResourceGroup>;
 export const OSPolicyResourceGroupList = /*@__PURE__*/ S.Array(
   OSPolicyResourceGroup,
 ) as any as S.Schema<OSPolicyResourceGroupList>;
@@ -1058,7 +1062,7 @@ export interface OSPolicy {
   /** Required. List of resource groups for the policy. For a particular VM, resource groups are evaluated in the order specified and the first resource group that is applicable is selected and the rest are ignored. If none of the resource groups are applicable for a VM, the VM is considered to be non-compliant w.r.t this policy. This behavior can be toggled by the flag `allow_no_resource_group_match` */
   resourceGroups?: OSPolicyResourceGroupList;
   /** Required. Policy mode */
-  mode?: OSPolicyModeEnum;
+  mode?: OSPolicyModeEnum | (string & {});
 }
 export const OSPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1070,7 +1074,7 @@ export const OSPolicy = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "OSPolicy" }) as any as S.Schema<OSPolicy>;
 
-export type OSPolicyList = ReadonlyArray<OSPolicy>;
+export type OSPolicyList = Array<OSPolicy>;
 export const OSPolicyList = /*@__PURE__*/ S.Array(
   OSPolicy,
 ) as any as S.Schema<OSPolicyList>;
@@ -1088,8 +1092,7 @@ export const OSPolicyAssignmentLabelSet = /*@__PURE__*/ S.suspend(() =>
   identifier: "OSPolicyAssignmentLabelSet",
 }) as any as S.Schema<OSPolicyAssignmentLabelSet>;
 
-export type OSPolicyAssignmentLabelSetList =
-  ReadonlyArray<OSPolicyAssignmentLabelSet>;
+export type OSPolicyAssignmentLabelSetList = Array<OSPolicyAssignmentLabelSet>;
 export const OSPolicyAssignmentLabelSetList = /*@__PURE__*/ S.Array(
   OSPolicyAssignmentLabelSet,
 ) as any as S.Schema<OSPolicyAssignmentLabelSetList>;
@@ -1112,7 +1115,7 @@ export const OSPolicyAssignmentInstanceFilterInventory =
   }) as any as S.Schema<OSPolicyAssignmentInstanceFilterInventory>;
 
 export type OSPolicyAssignmentInstanceFilterInventoryList =
-  ReadonlyArray<OSPolicyAssignmentInstanceFilterInventory>;
+  Array<OSPolicyAssignmentInstanceFilterInventory>;
 export const OSPolicyAssignmentInstanceFilterInventoryList =
   /*@__PURE__*/ S.Array(
     OSPolicyAssignmentInstanceFilterInventory,
@@ -1161,7 +1164,7 @@ export interface OSPolicyAssignment {
   /** Output only. Server generated unique id for the OS policy assignment resource. */
   uid?: string;
   /** Output only. OS policy assignment rollout state */
-  rolloutState?: OSPolicyAssignmentRolloutStateEnum;
+  rolloutState?: OSPolicyAssignmentRolloutStateEnum | (string & {});
   /** Output only. Indicates that this revision has been successfully rolled out in this zone and new VMs will be assigned OS policies from this revision. For a given OS policy assignment, there is only one revision with a value of `true` for this field. */
   baseline?: boolean;
   /** Output only. Indicates that this revision deletes the OS policy assignment. */
@@ -1239,7 +1242,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -1318,7 +1321,7 @@ export const WeeklyScheduleDayOfWeekEnum = /*@__PURE__*/ S.String;
 /** Represents a weekly schedule. */
 export interface WeeklySchedule {
   /** Required. Day of the week. */
-  dayOfWeek?: WeeklyScheduleDayOfWeekEnum;
+  dayOfWeek?: WeeklyScheduleDayOfWeekEnum | (string & {});
 }
 export const WeeklySchedule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1376,7 +1379,7 @@ export interface WeekDayOfMonth {
   /** Required. Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month. */
   weekOrdinal?: number;
   /** Required. A day of the week. */
-  dayOfWeek?: WeekDayOfMonthDayOfWeekEnum;
+  dayOfWeek?: WeekDayOfMonthDayOfWeekEnum | (string & {});
   /** Optional. Represents the number of days before or after the given week day of month that the patch deployment is scheduled for. For example if `week_ordinal` and `day_of_week` values point to the second Tuesday of the month and the `day_offset` value is set to `3`, patch deployment takes place three days after the second Tuesday of the month. If this value is negative, for example -5, patches are deployed five days before the second Tuesday of the month. Allowed values are in range [-30, 30]. */
   dayOffset?: number;
 }
@@ -1413,7 +1416,7 @@ export interface RecurringSchedule {
   /** Output only. The time the last patch job ran successfully. */
   lastExecuteTime?: string;
   /** Required. The frequency unit of this recurring schedule. */
-  frequency?: RecurringScheduleFrequencyEnum;
+  frequency?: RecurringScheduleFrequencyEnum | (string & {});
   /** Required. Schedule with weekly executions. */
   weekly?: WeeklySchedule;
   /** Output only. The time the next patch job is scheduled to run. */
@@ -1472,7 +1475,7 @@ export interface PatchDeployment {
   /** Optional. Description of the patch deployment. Length of the description is limited to 1024 characters. */
   description?: string;
   /** Output only. Current state of the patch deployment. */
-  state?: PatchDeploymentStateEnum;
+  state?: PatchDeploymentStateEnum | (string & {});
 }
 export const PatchDeployment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1642,7 +1645,9 @@ export interface ProjectFeatureSettings {
   /** Required. Immutable. Name specifies the URL for the ProjectFeatureSettings resource: projects/project_id/locations/global/projectFeatureSettings. */
   name?: string;
   /** Set PatchAndConfigFeatureSet for the project. */
-  patchAndConfigFeatureSet?: ProjectFeatureSettingsPatchAndConfigFeatureSetEnum;
+  patchAndConfigFeatureSet?:
+    | ProjectFeatureSettingsPatchAndConfigFeatureSetEnum
+    | (string & {});
 }
 export const ProjectFeatureSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1799,7 +1804,7 @@ export const InventoryWindowsUpdatePackageWindowsUpdateCategory =
   }) as any as S.Schema<InventoryWindowsUpdatePackageWindowsUpdateCategory>;
 
 export type InventoryWindowsUpdatePackageWindowsUpdateCategoryList =
-  ReadonlyArray<InventoryWindowsUpdatePackageWindowsUpdateCategory>;
+  Array<InventoryWindowsUpdatePackageWindowsUpdateCategory>;
 export const InventoryWindowsUpdatePackageWindowsUpdateCategoryList =
   /*@__PURE__*/ S.Array(
     InventoryWindowsUpdatePackageWindowsUpdateCategory,
@@ -2057,7 +2062,7 @@ export const OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianc
   }) as any as S.Schema<OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceOSPolicyResourceConfigStep>;
 
 export type OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceOSPolicyResourceConfigStepList =
-  ReadonlyArray<OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceOSPolicyResourceConfigStep>;
+  Array<OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceOSPolicyResourceConfigStep>;
 export const OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceOSPolicyResourceConfigStepList =
   /*@__PURE__*/ S.Array(
     OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceOSPolicyResourceConfigStep,
@@ -2102,7 +2107,7 @@ export const OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianc
   }) as any as S.Schema<OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceCompliance>;
 
 export type OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceList =
-  ReadonlyArray<OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceCompliance>;
+  Array<OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceCompliance>;
 export const OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceList =
   /*@__PURE__*/ S.Array(
     OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceCompliance,
@@ -2143,7 +2148,7 @@ export const OSPolicyAssignmentReportOSPolicyCompliance =
   }) as any as S.Schema<OSPolicyAssignmentReportOSPolicyCompliance>;
 
 export type OSPolicyAssignmentReportOSPolicyComplianceList =
-  ReadonlyArray<OSPolicyAssignmentReportOSPolicyCompliance>;
+  Array<OSPolicyAssignmentReportOSPolicyCompliance>;
 export const OSPolicyAssignmentReportOSPolicyComplianceList =
   /*@__PURE__*/ S.Array(
     OSPolicyAssignmentReportOSPolicyCompliance,
@@ -2311,7 +2316,7 @@ export const VulnerabilityReportVulnerabilityDetailsReference =
   }) as any as S.Schema<VulnerabilityReportVulnerabilityDetailsReference>;
 
 export type VulnerabilityReportVulnerabilityDetailsReferenceList =
-  ReadonlyArray<VulnerabilityReportVulnerabilityDetailsReference>;
+  Array<VulnerabilityReportVulnerabilityDetailsReference>;
 export const VulnerabilityReportVulnerabilityDetailsReferenceList =
   /*@__PURE__*/ S.Array(
     VulnerabilityReportVulnerabilityDetailsReference,
@@ -2372,7 +2377,7 @@ export const VulnerabilityReportVulnerabilityItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<VulnerabilityReportVulnerabilityItem>;
 
 export type VulnerabilityReportVulnerabilityItemList =
-  ReadonlyArray<VulnerabilityReportVulnerabilityItem>;
+  Array<VulnerabilityReportVulnerabilityItem>;
 export const VulnerabilityReportVulnerabilityItemList = /*@__PURE__*/ S.Array(
   VulnerabilityReportVulnerabilityItem,
 ) as any as S.Schema<VulnerabilityReportVulnerabilityItemList>;
@@ -2406,7 +2411,7 @@ export const VulnerabilityReportVulnerability = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VulnerabilityReportVulnerability>;
 
 export type VulnerabilityReportVulnerabilityList =
-  ReadonlyArray<VulnerabilityReportVulnerability>;
+  Array<VulnerabilityReportVulnerability>;
 export const VulnerabilityReportVulnerabilityList = /*@__PURE__*/ S.Array(
   VulnerabilityReportVulnerability,
 ) as any as S.Schema<VulnerabilityReportVulnerabilityList>;
@@ -2560,7 +2565,7 @@ export const ListProjectsLocationsInstancesInventoriesRequest =
     identifier: "ListProjectsLocationsInstancesInventoriesRequest",
   }) as any as S.Schema<ListProjectsLocationsInstancesInventoriesRequest>;
 
-export type InventoryList = ReadonlyArray<Inventory>;
+export type InventoryList = Array<Inventory>;
 export const InventoryList = /*@__PURE__*/ S.Array(
   Inventory,
 ) as any as S.Schema<InventoryList>;
@@ -2610,8 +2615,7 @@ export const ListProjectsLocationsInstancesOsPolicyAssignmentsReportsRequest =
       "ListProjectsLocationsInstancesOsPolicyAssignmentsReportsRequest",
   }) as any as S.Schema<ListProjectsLocationsInstancesOsPolicyAssignmentsReportsRequest>;
 
-export type OSPolicyAssignmentReportList =
-  ReadonlyArray<OSPolicyAssignmentReport>;
+export type OSPolicyAssignmentReportList = Array<OSPolicyAssignmentReport>;
 export const OSPolicyAssignmentReportList = /*@__PURE__*/ S.Array(
   OSPolicyAssignmentReport,
 ) as any as S.Schema<OSPolicyAssignmentReportList>;
@@ -2661,7 +2665,7 @@ export const ListProjectsLocationsInstancesVulnerabilityReportsRequest =
     identifier: "ListProjectsLocationsInstancesVulnerabilityReportsRequest",
   }) as any as S.Schema<ListProjectsLocationsInstancesVulnerabilityReportsRequest>;
 
-export type VulnerabilityReportList = ReadonlyArray<VulnerabilityReport>;
+export type VulnerabilityReportList = Array<VulnerabilityReport>;
 export const VulnerabilityReportList = /*@__PURE__*/ S.Array(
   VulnerabilityReport,
 ) as any as S.Schema<VulnerabilityReportList>;
@@ -2707,7 +2711,7 @@ export const ListProjectsLocationsOsPolicyAssignmentsRequest =
     identifier: "ListProjectsLocationsOsPolicyAssignmentsRequest",
   }) as any as S.Schema<ListProjectsLocationsOsPolicyAssignmentsRequest>;
 
-export type OSPolicyAssignmentList = ReadonlyArray<OSPolicyAssignment>;
+export type OSPolicyAssignmentList = Array<OSPolicyAssignment>;
 export const OSPolicyAssignmentList = /*@__PURE__*/ S.Array(
   OSPolicyAssignment,
 ) as any as S.Schema<OSPolicyAssignmentList>;
@@ -2752,7 +2756,7 @@ export const ListProjectsPatchDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsPatchDeploymentsRequest",
 }) as any as S.Schema<ListProjectsPatchDeploymentsRequest>;
 
-export type PatchDeploymentList = ReadonlyArray<PatchDeployment>;
+export type PatchDeploymentList = Array<PatchDeployment>;
 export const PatchDeploymentList = /*@__PURE__*/ S.Array(
   PatchDeployment,
 ) as any as S.Schema<PatchDeploymentList>;
@@ -2800,7 +2804,7 @@ export const ListProjectsPatchJobsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsPatchJobsRequest",
 }) as any as S.Schema<ListProjectsPatchJobsRequest>;
 
-export type PatchJobList = ReadonlyArray<PatchJob>;
+export type PatchJobList = Array<PatchJob>;
 export const PatchJobList = /*@__PURE__*/ S.Array(
   PatchJob,
 ) as any as S.Schema<PatchJobList>;
@@ -2894,8 +2898,7 @@ export const PatchJobInstanceDetails = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchJobInstanceDetails",
 }) as any as S.Schema<PatchJobInstanceDetails>;
 
-export type PatchJobInstanceDetailsList =
-  ReadonlyArray<PatchJobInstanceDetails>;
+export type PatchJobInstanceDetailsList = Array<PatchJobInstanceDetails>;
 export const PatchJobInstanceDetailsList = /*@__PURE__*/ S.Array(
   PatchJobInstanceDetails,
 ) as any as S.Schema<PatchJobInstanceDetailsList>;

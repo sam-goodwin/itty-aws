@@ -127,12 +127,12 @@ export const CreateEndpointHealthcheckResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateEndpointHealthcheckResponse",
 }) as any as S.Schema<CreateEndpointHealthcheckResponse>;
 
-export type TraceroutesCreateRequestTargetsList = ReadonlyArray<string>;
+export type TraceroutesCreateRequestTargetsList = Array<string>;
 export const TraceroutesCreateRequestTargetsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<TraceroutesCreateRequestTargetsList>;
 
-export type TraceroutesCreateRequestColosList = ReadonlyArray<string>;
+export type TraceroutesCreateRequestColosList = Array<string>;
 export const TraceroutesCreateRequestColosList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<TraceroutesCreateRequestColosList>;
@@ -223,7 +223,7 @@ export type TraceroutesCreateResultItemColosItemError =
 export const TraceroutesCreateResultItemColosItemError = /*@__PURE__*/ S.String;
 
 export type TraceroutesCreateResultItemColosItemHopsItemNodesItemLabelsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const TraceroutesCreateResultItemColosItemHopsItemNodesItemLabelsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -269,7 +269,7 @@ export const TraceroutesCreateResultItemColosItemHopsItemNodesItem =
   }) as any as S.Schema<TraceroutesCreateResultItemColosItemHopsItemNodesItem>;
 
 export type TraceroutesCreateResultItemColosItemHopsItemNodesList =
-  ReadonlyArray<TraceroutesCreateResultItemColosItemHopsItemNodesItem>;
+  Array<TraceroutesCreateResultItemColosItemHopsItemNodesItem>;
 export const TraceroutesCreateResultItemColosItemHopsItemNodesList =
   /*@__PURE__*/ S.Array(
     TraceroutesCreateResultItemColosItemHopsItemNodesItem,
@@ -298,7 +298,7 @@ export const TraceroutesCreateResultItemColosItemHopsItem =
   }) as any as S.Schema<TraceroutesCreateResultItemColosItemHopsItem>;
 
 export type TraceroutesCreateResultItemColosItemHopsList =
-  ReadonlyArray<TraceroutesCreateResultItemColosItemHopsItem>;
+  Array<TraceroutesCreateResultItemColosItemHopsItem>;
 export const TraceroutesCreateResultItemColosItemHopsList =
   /*@__PURE__*/ S.Array(
     TraceroutesCreateResultItemColosItemHopsItem,
@@ -328,7 +328,7 @@ export const TraceroutesCreateResultItemColosItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<TraceroutesCreateResultItemColosItem>;
 
 export type TraceroutesCreateResultItemColosList =
-  ReadonlyArray<TraceroutesCreateResultItemColosItem>;
+  Array<TraceroutesCreateResultItemColosItem>;
 export const TraceroutesCreateResultItemColosList = /*@__PURE__*/ S.Array(
   TraceroutesCreateResultItemColosItem,
 ) as any as S.Schema<TraceroutesCreateResultItemColosList>;
@@ -347,8 +347,7 @@ export const TraceroutesCreateResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "TraceroutesCreateResultItem",
 }) as any as S.Schema<TraceroutesCreateResultItem>;
 
-export type TraceroutesCreateResultList =
-  ReadonlyArray<TraceroutesCreateResultItem>;
+export type TraceroutesCreateResultList = Array<TraceroutesCreateResultItem>;
 export const TraceroutesCreateResultList = /*@__PURE__*/ S.Array(
   TraceroutesCreateResultItem,
 ) as any as S.Schema<TraceroutesCreateResultList>;
@@ -496,7 +495,7 @@ export const ListEndpointHealthchecksItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListEndpointHealthchecksItem>;
 
 export type ListEndpointHealthchecksItemsList =
-  ReadonlyArray<ListEndpointHealthchecksItem>;
+  Array<ListEndpointHealthchecksItem>;
 export const ListEndpointHealthchecksItemsList = /*@__PURE__*/ S.Array(
   ListEndpointHealthchecksItem,
 ) as any as S.Schema<ListEndpointHealthchecksItemsList>;

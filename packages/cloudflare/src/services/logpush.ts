@@ -163,8 +163,7 @@ export const JobsCreateRequestFrequency = /*@__PURE__*/ S.String;
 export type JobsCreateRequestKind = "" | "edge";
 export const JobsCreateRequestKind = /*@__PURE__*/ S.String;
 
-export type JobsCreateRequestOutputOptionsFieldNamesList =
-  ReadonlyArray<string>;
+export type JobsCreateRequestOutputOptionsFieldNamesList = Array<string>;
 export const JobsCreateRequestOutputOptionsFieldNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -349,8 +348,7 @@ export const JobsCreateResponseFrequency = /*@__PURE__*/ S.String;
 export type JobsCreateResponseKind = "" | "edge";
 export const JobsCreateResponseKind = /*@__PURE__*/ S.String;
 
-export type JobsCreateResponseOutputOptionsFieldNamesList =
-  ReadonlyArray<string>;
+export type JobsCreateResponseOutputOptionsFieldNamesList = Array<string>;
 export const JobsCreateResponseOutputOptionsFieldNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -987,7 +985,7 @@ export type DatasetsJobsGetResultItemKind = "" | "edge";
 export const DatasetsJobsGetResultItemKind = /*@__PURE__*/ S.String;
 
 export type DatasetsJobsGetResultItemOutputOptionsFieldNamesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const DatasetsJobsGetResultItemOutputOptionsFieldNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1125,8 +1123,7 @@ export const DatasetsJobsGetResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "DatasetsJobsGetResultItem",
 }) as any as S.Schema<DatasetsJobsGetResultItem>;
 
-export type DatasetsJobsGetResultList =
-  ReadonlyArray<DatasetsJobsGetResultItem>;
+export type DatasetsJobsGetResultList = Array<DatasetsJobsGetResultItem>;
 export const DatasetsJobsGetResultList = /*@__PURE__*/ S.Array(
   DatasetsJobsGetResultItem,
 ) as any as S.Schema<DatasetsJobsGetResultList>;
@@ -1211,7 +1208,7 @@ export const EdgeGetResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "EdgeGetResultItem",
 }) as any as S.Schema<EdgeGetResultItem>;
 
-export type EdgeGetResultList = ReadonlyArray<EdgeGetResultItem>;
+export type EdgeGetResultList = Array<EdgeGetResultItem>;
 export const EdgeGetResultList = /*@__PURE__*/ S.Array(
   EdgeGetResultItem,
 ) as any as S.Schema<EdgeGetResultList>;
@@ -1298,7 +1295,7 @@ export const JobsGetResponseFrequency = /*@__PURE__*/ S.String;
 export type JobsGetResponseKind = "" | "edge";
 export const JobsGetResponseKind = /*@__PURE__*/ S.String;
 
-export type JobsGetResponseOutputOptionsFieldNamesList = ReadonlyArray<string>;
+export type JobsGetResponseOutputOptionsFieldNamesList = Array<string>;
 export const JobsGetResponseOutputOptionsFieldNamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<JobsGetResponseOutputOptionsFieldNamesList>;
@@ -1515,8 +1512,7 @@ export const JobsListResultItemFrequency = /*@__PURE__*/ S.String;
 export type JobsListResultItemKind = "" | "edge";
 export const JobsListResultItemKind = /*@__PURE__*/ S.String;
 
-export type JobsListResultItemOutputOptionsFieldNamesList =
-  ReadonlyArray<string>;
+export type JobsListResultItemOutputOptionsFieldNamesList = Array<string>;
 export const JobsListResultItemOutputOptionsFieldNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1648,7 +1644,7 @@ export const JobsListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "JobsListResultItem",
 }) as any as S.Schema<JobsListResultItem>;
 
-export type JobsListResultList = ReadonlyArray<JobsListResultItem>;
+export type JobsListResultList = Array<JobsListResultItem>;
 export const JobsListResultList = /*@__PURE__*/ S.Array(
   JobsListResultItem,
 ) as any as S.Schema<JobsListResultList>;
@@ -1754,8 +1750,7 @@ export const JobsUpdateRequestFrequency = /*@__PURE__*/ S.String;
 export type JobsUpdateRequestKind = "" | "edge";
 export const JobsUpdateRequestKind = /*@__PURE__*/ S.String;
 
-export type JobsUpdateRequestOutputOptionsFieldNamesList =
-  ReadonlyArray<string>;
+export type JobsUpdateRequestOutputOptionsFieldNamesList = Array<string>;
 export const JobsUpdateRequestOutputOptionsFieldNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1940,8 +1935,7 @@ export const JobsUpdateResponseFrequency = /*@__PURE__*/ S.String;
 export type JobsUpdateResponseKind = "" | "edge";
 export const JobsUpdateResponseKind = /*@__PURE__*/ S.String;
 
-export type JobsUpdateResponseOutputOptionsFieldNamesList =
-  ReadonlyArray<string>;
+export type JobsUpdateResponseOutputOptionsFieldNamesList = Array<string>;
 export const JobsUpdateResponseOutputOptionsFieldNamesList =
   /*@__PURE__*/ S.Array(
     S.String,

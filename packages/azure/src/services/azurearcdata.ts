@@ -53,7 +53,7 @@ export const ActiveDirectoryDomainController = /*@__PURE__*/ S.suspend(() =>
 
 /** Information about the secondary domain controllers in the AD domain. */
 export type ActiveDirectorySecondaryDomainControllers =
-  ReadonlyArray<ActiveDirectoryDomainController>;
+  Array<ActiveDirectoryDomainController>;
 export const ActiveDirectorySecondaryDomainControllers = /*@__PURE__*/ S.Array(
   ActiveDirectoryDomainController,
 ) as any as S.Schema<ActiveDirectorySecondaryDomainControllers>;
@@ -83,7 +83,9 @@ export interface ActiveDirectoryConnectorDomainDetails {
   /** NETBIOS name of the Active Directory domain. */
   netbiosDomainName?: string;
   /** The service account provisioning mode for this Active Directory connector. */
-  serviceAccountProvisioning?: ActiveDirectoryConnectorDomainDetailsServiceAccountProvisioning;
+  serviceAccountProvisioning?:
+    | ActiveDirectoryConnectorDomainDetailsServiceAccountProvisioning
+    | (string & {});
   /** The distinguished name of the Active Directory Organizational Unit. */
   ouDistinguishedName?: string;
   /** null */
@@ -106,7 +108,7 @@ export const ActiveDirectoryConnectorDomainDetails = /*@__PURE__*/ S.suspend(
 
 /** List of Active Directory DNS server IP addresses. */
 export type ActiveDirectoryConnectorDNSDetailsNameserverIPAddressesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ActiveDirectoryConnectorDNSDetailsNameserverIPAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -475,7 +477,7 @@ export const ActiveDirectoryConnectorResource = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of results. */
 export type ActiveDirectoryConnectorsListResponseValueList =
-  ReadonlyArray<ActiveDirectoryConnectorResource>;
+  Array<ActiveDirectoryConnectorResource>;
 export const ActiveDirectoryConnectorsListResponseValueList =
   /*@__PURE__*/ S.Array(
     ActiveDirectoryConnectorResource,
@@ -895,7 +897,7 @@ export const DataControllerResource = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of results. */
 export type DataControllersListInGroupResponseValueList =
-  ReadonlyArray<DataControllerResource>;
+  Array<DataControllerResource>;
 export const DataControllersListInGroupResponseValueList =
   /*@__PURE__*/ S.Array(
     DataControllerResource,
@@ -938,7 +940,7 @@ export const DataControllersListInSubscriptionRequest = /*@__PURE__*/ S.suspend(
 
 /** Array of results. */
 export type DataControllersListInSubscriptionResponseValueList =
-  ReadonlyArray<DataControllerResource>;
+  Array<DataControllerResource>;
 export const DataControllersListInSubscriptionResponseValueList =
   /*@__PURE__*/ S.Array(
     DataControllerResource,
@@ -1331,9 +1333,9 @@ export interface FailoverGroupSpec {
   /** The mirroring endpoint public certificate for the partner SQL managed instance. Only PEM format is supported. */
   partnerMirroringCert?: string;
   /** The partner sync mode of the SQL managed instance. */
-  partnerSyncMode?: FailoverGroupSpecPartnerSyncMode;
+  partnerSyncMode?: FailoverGroupSpecPartnerSyncMode | (string & {});
   /** The role of the SQL managed instance in this failover group. */
-  role: FailoverGroupSpecRole;
+  role: FailoverGroupSpecRole | (string & {});
 }
 export const FailoverGroupSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1591,8 +1593,7 @@ export const FailoverGroupResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FailoverGroupResource>;
 
 /** Array of failover group results. */
-export type FailoverGroupsListResponseValueList =
-  ReadonlyArray<FailoverGroupResource>;
+export type FailoverGroupsListResponseValueList = Array<FailoverGroupResource>;
 export const FailoverGroupsListResponseValueList = /*@__PURE__*/ S.Array(
   FailoverGroupResource,
 ) as any as S.Schema<FailoverGroupsListResponseValueList>;
@@ -1683,7 +1684,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** Array of results. */
-export type OperationsListResponseValueList = ReadonlyArray<Operation>;
+export type OperationsListResponseValueList = Array<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;
@@ -1790,7 +1791,7 @@ export interface PostgresInstanceSku {
   /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
   capacity?: number;
   /** This field is required to be implemented by the Resource Provider if the service has more than one tier. */
-  tier?: PostgresInstanceSkuTier;
+  tier?: PostgresInstanceSkuTier | (string & {});
 }
 export const PostgresInstanceSku = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2157,8 +2158,7 @@ export const PostgresInstance = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostgresInstance>;
 
 /** Array of results. */
-export type PostgresInstancesListResponseValueList =
-  ReadonlyArray<PostgresInstance>;
+export type PostgresInstancesListResponseValueList = Array<PostgresInstance>;
 export const PostgresInstancesListResponseValueList = /*@__PURE__*/ S.Array(
   PostgresInstance,
 ) as any as S.Schema<PostgresInstancesListResponseValueList>;
@@ -2203,7 +2203,7 @@ export const PostgresInstancesListByResourceGroupRequest =
 
 /** Array of results. */
 export type PostgresInstancesListByResourceGroupResponseValueList =
-  ReadonlyArray<PostgresInstance>;
+  Array<PostgresInstance>;
 export const PostgresInstancesListByResourceGroupResponseValueList =
   /*@__PURE__*/ S.Array(
     PostgresInstance,
@@ -2409,7 +2409,7 @@ export const K8sActiveDirectoryConnector = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<K8sActiveDirectoryConnector>;
 
 /** An array of encryption types */
-export type K8sActiveDirectoryEncryptionTypesList = ReadonlyArray<string>;
+export type K8sActiveDirectoryEncryptionTypesList = Array<string>;
 export const K8sActiveDirectoryEncryptionTypesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<K8sActiveDirectoryEncryptionTypesList>;
@@ -2653,9 +2653,9 @@ export const SqlManagedInstanceSkuTier = /*@__PURE__*/ S.String;
 /** The resource model definition representing SKU for Azure Managed Instance - Azure Arc */
 export interface SqlManagedInstanceSku {
   /** The name of the SKU. */
-  name: SqlManagedInstanceSkuName;
+  name: SqlManagedInstanceSkuName | (string & {});
   /** The pricing tier for the instance. */
-  tier?: SqlManagedInstanceSkuTier;
+  tier?: SqlManagedInstanceSkuTier | (string & {});
   /** Whether dev/test is enabled. When the dev field is set to true, the resource is used for dev/test purpose. */
   dev?: boolean;
   /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
@@ -3058,7 +3058,7 @@ export const SqlManagedInstance = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of results. */
 export type SqlManagedInstancesListResponseValueList =
-  ReadonlyArray<SqlManagedInstance>;
+  Array<SqlManagedInstance>;
 export const SqlManagedInstancesListResponseValueList = /*@__PURE__*/ S.Array(
   SqlManagedInstance,
 ) as any as S.Schema<SqlManagedInstancesListResponseValueList>;
@@ -3103,7 +3103,7 @@ export const SqlManagedInstancesListByResourceGroupRequest =
 
 /** Array of results. */
 export type SqlManagedInstancesListByResourceGroupResponseValueList =
-  ReadonlyArray<SqlManagedInstance>;
+  Array<SqlManagedInstance>;
 export const SqlManagedInstancesListByResourceGroupResponseValueList =
   /*@__PURE__*/ S.Array(
     SqlManagedInstance,
@@ -3230,7 +3230,7 @@ export const SqlManagedInstancesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** List of database names. */
 export type SqlServerAvailabilityGroupsAddDatabasesRequestValuesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const SqlServerAvailabilityGroupsAddDatabasesRequestValuesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3306,7 +3306,7 @@ export const SqlAvailabilityGroupIpV4AddressesAndMasksPropertiesItem =
 
 /** Address and netmask information for an IPv4 AG listener. */
 export type SqlAvailabilityGroupIpV4AddressesAndMasksProperties =
-  ReadonlyArray<SqlAvailabilityGroupIpV4AddressesAndMasksPropertiesItem>;
+  Array<SqlAvailabilityGroupIpV4AddressesAndMasksPropertiesItem>;
 export const SqlAvailabilityGroupIpV4AddressesAndMasksProperties =
   /*@__PURE__*/ S.Array(
     SqlAvailabilityGroupIpV4AddressesAndMasksPropertiesItem,
@@ -3314,7 +3314,7 @@ export const SqlAvailabilityGroupIpV4AddressesAndMasksProperties =
 
 /** IP V6 Addresses for the listener */
 export type SqlAvailabilityGroupStaticIPListenerPropertiesIpV6AddressesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const SqlAvailabilityGroupStaticIPListenerPropertiesIpV6AddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3596,7 +3596,7 @@ export const SqlAvailabilityGroupReplicaResourceProperties =
 
 /** Array of Availability Group Replicas. */
 export type SqlServerAvailabilityGroupResourcePropertiesReplicasValueList =
-  ReadonlyArray<SqlAvailabilityGroupReplicaResourceProperties>;
+  Array<SqlAvailabilityGroupReplicaResourceProperties>;
 export const SqlServerAvailabilityGroupResourcePropertiesReplicasValueList =
   /*@__PURE__*/ S.Array(
     SqlAvailabilityGroupReplicaResourceProperties,
@@ -3664,7 +3664,7 @@ export const SqlAvailabilityGroupDatabaseReplicaResourceProperties =
 
 /** Array of Availability Group Database Replicas. */
 export type SqlServerAvailabilityGroupResourcePropertiesDatabasesValueList =
-  ReadonlyArray<SqlAvailabilityGroupDatabaseReplicaResourceProperties>;
+  Array<SqlAvailabilityGroupDatabaseReplicaResourceProperties>;
 export const SqlServerAvailabilityGroupResourcePropertiesDatabasesValueList =
   /*@__PURE__*/ S.Array(
     SqlAvailabilityGroupDatabaseReplicaResourceProperties,
@@ -3961,7 +3961,7 @@ export const SqlAvailabilityGroupReplicaResourcePropertiesInput =
 
 /** Array of Availability Group Replicas. */
 export type SqlServerAvailabilityGroupResourcePropertiesInputReplicasValueList =
-  ReadonlyArray<SqlAvailabilityGroupReplicaResourcePropertiesInput>;
+  Array<SqlAvailabilityGroupReplicaResourcePropertiesInput>;
 export const SqlServerAvailabilityGroupResourcePropertiesInputReplicasValueList =
   /*@__PURE__*/ S.Array(
     SqlAvailabilityGroupReplicaResourcePropertiesInput,
@@ -3999,7 +3999,7 @@ export const SqlAvailabilityGroupDatabaseReplicaResourcePropertiesInput =
 
 /** Array of Availability Group Database Replicas. */
 export type SqlServerAvailabilityGroupResourcePropertiesInputDatabasesValueList =
-  ReadonlyArray<SqlAvailabilityGroupDatabaseReplicaResourcePropertiesInput>;
+  Array<SqlAvailabilityGroupDatabaseReplicaResourcePropertiesInput>;
 export const SqlServerAvailabilityGroupResourcePropertiesInputDatabasesValueList =
   /*@__PURE__*/ S.Array(
     SqlAvailabilityGroupDatabaseReplicaResourcePropertiesInput,
@@ -4176,7 +4176,7 @@ export const AvailabilityGroupCreateUpdateReplicaConfigurationPrimaryRoleAllowCo
 
 /** List of read only routing URLs. */
 export type AvailabilityGroupCreateUpdateReplicaConfigurationPrimaryRoleReadOnlyRoutingListList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const AvailabilityGroupCreateUpdateReplicaConfigurationPrimaryRoleReadOnlyRoutingListList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4266,7 +4266,7 @@ export const AvailabilityGroupCreateUpdateReplicaConfiguration =
 
 /** List of availability group replicas. */
 export type SqlServerAvailabilityGroupsCreateAvailabilityGroupRequestReplicasList =
-  ReadonlyArray<AvailabilityGroupCreateUpdateReplicaConfiguration>;
+  Array<AvailabilityGroupCreateUpdateReplicaConfiguration>;
 export const SqlServerAvailabilityGroupsCreateAvailabilityGroupRequestReplicasList =
   /*@__PURE__*/ S.Array(
     AvailabilityGroupCreateUpdateReplicaConfiguration,
@@ -4274,7 +4274,7 @@ export const SqlServerAvailabilityGroupsCreateAvailabilityGroupRequestReplicasLi
 
 /** List of databases to include in the availability group. */
 export type SqlServerAvailabilityGroupsCreateAvailabilityGroupRequestDatabasesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const SqlServerAvailabilityGroupsCreateAvailabilityGroupRequestDatabasesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4597,7 +4597,7 @@ export const SqlServerAvailabilityGroupsCreateDistributedAvailabilityGroupRespon
 
 /** List of availability group replicas. */
 export type AvailabilityGroupCreateUpdateConfigurationReplicasList =
-  ReadonlyArray<AvailabilityGroupCreateUpdateReplicaConfiguration>;
+  Array<AvailabilityGroupCreateUpdateReplicaConfiguration>;
 export const AvailabilityGroupCreateUpdateConfigurationReplicasList =
   /*@__PURE__*/ S.Array(
     AvailabilityGroupCreateUpdateReplicaConfiguration,
@@ -4605,7 +4605,7 @@ export const AvailabilityGroupCreateUpdateConfigurationReplicasList =
 
 /** List of databases to include in the availability group. */
 export type AvailabilityGroupCreateUpdateConfigurationDatabasesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const AvailabilityGroupCreateUpdateConfigurationDatabasesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5327,7 +5327,7 @@ export const SqlServerAvailabilityGroupResource = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of Arc Sql Server Availability Groups. */
 export type ArcSqlServerAvailabilityGroupListResultValueList =
-  ReadonlyArray<SqlServerAvailabilityGroupResource>;
+  Array<SqlServerAvailabilityGroupResource>;
 export const ArcSqlServerAvailabilityGroupListResultValueList =
   /*@__PURE__*/ S.Array(
     SqlServerAvailabilityGroupResource,
@@ -5352,7 +5352,7 @@ export const ArcSqlServerAvailabilityGroupListResult = /*@__PURE__*/ S.suspend(
 
 /** List of database names. */
 export type SqlServerAvailabilityGroupsRemoveDatabasesRequestValuesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const SqlServerAvailabilityGroupsRemoveDatabasesRequestValuesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5612,7 +5612,7 @@ export interface BackupPolicy {
   /** The value indicating days between full backups. */
   fullBackupDays?: number;
   /** The differential backup interval in hours. */
-  differentialBackupHours?: BackupPolicyDifferentialBackupHours;
+  differentialBackupHours?: BackupPolicyDifferentialBackupHours | (number & {});
   /** The value indicating minutes between transaction log backups. */
   transactionLogBackupMinutes?: number;
 }
@@ -5866,7 +5866,7 @@ export const DatabaseAssessmentsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DatabaseAssessmentsItem>;
 
 /** Issues and warnings impacting the migration of Database to particular Azure Migration Target. */
-export type DatabaseAssessments = ReadonlyArray<DatabaseAssessmentsItem>;
+export type DatabaseAssessments = Array<DatabaseAssessmentsItem>;
 export const DatabaseAssessments = /*@__PURE__*/ S.Array(
   DatabaseAssessmentsItem,
 ) as any as S.Schema<DatabaseAssessments>;
@@ -5901,7 +5901,7 @@ export const SkuRecommendationSummaryImpactedObjectsSummaryItem =
   }) as any as S.Schema<SkuRecommendationSummaryImpactedObjectsSummaryItem>;
 
 export type SkuRecommendationSummaryImpactedObjectsSummaryList =
-  ReadonlyArray<SkuRecommendationSummaryImpactedObjectsSummaryItem>;
+  Array<SkuRecommendationSummaryImpactedObjectsSummaryItem>;
 export const SkuRecommendationSummaryImpactedObjectsSummaryList =
   /*@__PURE__*/ S.Array(
     SkuRecommendationSummaryImpactedObjectsSummaryItem,
@@ -5970,7 +5970,7 @@ export const SkuRecommendationResultsMonthlyCostOptionItem =
 
 /** The monthly cost for all different savings options applicable for the particular SKU. */
 export type SkuRecommendationSummaryMonthlyCostOptionsList =
-  ReadonlyArray<SkuRecommendationResultsMonthlyCostOptionItem>;
+  Array<SkuRecommendationResultsMonthlyCostOptionItem>;
 export const SkuRecommendationSummaryMonthlyCostOptionsList =
   /*@__PURE__*/ S.Array(
     SkuRecommendationResultsMonthlyCostOptionItem,
@@ -6381,7 +6381,7 @@ export const SqlServerDatabaseResource = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of Arc Sql Server database. */
 export type ArcSqlServerDatabaseListResultValueList =
-  ReadonlyArray<SqlServerDatabaseResource>;
+  Array<SqlServerDatabaseResource>;
 export const ArcSqlServerDatabaseListResultValueList = /*@__PURE__*/ S.Array(
   SqlServerDatabaseResource,
 ) as any as S.Schema<ArcSqlServerDatabaseListResultValueList>;
@@ -6836,8 +6836,7 @@ export const SqlServerEsuLicense = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SqlServerEsuLicense>;
 
 /** Array of results. */
-export type SqlServerEsuLicenseListResultValueList =
-  ReadonlyArray<SqlServerEsuLicense>;
+export type SqlServerEsuLicenseListResultValueList = Array<SqlServerEsuLicense>;
 export const SqlServerEsuLicenseListResultValueList = /*@__PURE__*/ S.Array(
   SqlServerEsuLicense,
 ) as any as S.Schema<SqlServerEsuLicenseListResultValueList>;
@@ -7298,7 +7297,9 @@ export const AuthenticationSqlServerEntraIdentityItemIdentityType =
 /** Entra Authentication configuration. */
 export interface AuthenticationSqlServerEntraIdentityItem {
   /** The method used for Entra authentication */
-  identityType?: AuthenticationSqlServerEntraIdentityItemIdentityType;
+  identityType?:
+    | AuthenticationSqlServerEntraIdentityItemIdentityType
+    | (string & {});
   /** The client Id of the Managed Identity to query Microsoft Graph API. An empty string must be used for the system assigned Managed Identity. */
   clientId?: string;
 }
@@ -7316,7 +7317,7 @@ export const AuthenticationSqlServerEntraIdentityItem = /*@__PURE__*/ S.suspend(
 
 /** Entra Authentication configuration for the SQL Server Instance. */
 export type AuthenticationSqlServerEntraIdentityList =
-  ReadonlyArray<AuthenticationSqlServerEntraIdentityItem>;
+  Array<AuthenticationSqlServerEntraIdentityItem>;
 export const AuthenticationSqlServerEntraIdentityList = /*@__PURE__*/ S.Array(
   AuthenticationSqlServerEntraIdentityItem,
 ) as any as S.Schema<AuthenticationSqlServerEntraIdentityList>;
@@ -7324,7 +7325,7 @@ export const AuthenticationSqlServerEntraIdentityList = /*@__PURE__*/ S.Array(
 /** Authentication related configuration for the SQL Server Instance. */
 export interface Authentication {
   /** Mode of authentication in SqlServer. */
-  mode?: AuthenticationMode;
+  mode?: AuthenticationMode | (string & {});
   /** Entra Authentication configuration for the SQL Server Instance. */
   sqlServerEntraIdentity?: AuthenticationSqlServerEntraIdentityList;
 }
@@ -7468,7 +7469,7 @@ export type SqlServerInstancePropertiesStatus =
 export const SqlServerInstancePropertiesStatus = /*@__PURE__*/ S.String;
 
 /** An array of integers, where each value represents the enabled trace flags in SQL Server. */
-export type SqlServerInstancePropertiesTraceFlagsList = ReadonlyArray<number>;
+export type SqlServerInstancePropertiesTraceFlagsList = Array<number>;
 export const SqlServerInstancePropertiesTraceFlagsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<SqlServerInstancePropertiesTraceFlagsList>;
@@ -7588,13 +7589,13 @@ export const DBMEndpoint = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DBMEndpoint" }) as any as S.Schema<DBMEndpoint>;
 
 /** The ARM IDs of the Arc SQL Server resources, belonging to the current server's Failover cluster. */
-export type FailoverClusterSqlInstanceIdsList = ReadonlyArray<string>;
+export type FailoverClusterSqlInstanceIdsList = Array<string>;
 export const FailoverClusterSqlInstanceIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<FailoverClusterSqlInstanceIdsList>;
 
 /** The host names which are part of the SQL FCI resource group. */
-export type FailoverClusterHostNamesList = ReadonlyArray<string>;
+export type FailoverClusterHostNamesList = Array<string>;
 export const FailoverClusterHostNamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<FailoverClusterHostNamesList>;
@@ -7617,7 +7618,7 @@ export const HostIPAddressInformation = /*@__PURE__*/ S.suspend(() =>
 
 /** The IP addresses and subnet masks associated with the SQL Failover Cluster Instance on this host. */
 export type FailoverClusterHostIPAddressesList =
-  ReadonlyArray<HostIPAddressInformation>;
+  Array<HostIPAddressInformation>;
 export const FailoverClusterHostIPAddressesList = /*@__PURE__*/ S.Array(
   HostIPAddressInformation,
 ) as any as S.Schema<FailoverClusterHostIPAddressesList>;
@@ -7664,7 +7665,7 @@ export const ServerAssessmentsItemImpactedObjectsItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ServerAssessmentsItemImpactedObjectsItem>;
 
 export type ServerAssessmentsItemImpactedObjectsList =
-  ReadonlyArray<ServerAssessmentsItemImpactedObjectsItem>;
+  Array<ServerAssessmentsItemImpactedObjectsItem>;
 export const ServerAssessmentsItemImpactedObjectsList = /*@__PURE__*/ S.Array(
   ServerAssessmentsItemImpactedObjectsItem,
 ) as any as S.Schema<ServerAssessmentsItemImpactedObjectsList>;
@@ -7689,7 +7690,7 @@ export const ServerAssessmentsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServerAssessmentsItem>;
 
 /** Issues and warnings impacting the migration of SQL Server instance to particular Azure Migration Target. */
-export type ServerAssessments = ReadonlyArray<ServerAssessmentsItem>;
+export type ServerAssessments = Array<ServerAssessmentsItem>;
 export const ServerAssessments = /*@__PURE__*/ S.Array(
   ServerAssessmentsItem,
 ) as any as S.Schema<ServerAssessments>;
@@ -7734,7 +7735,7 @@ export const SkuRecommendationResultsAzureSqlDatabaseMonthlyCost =
 
 /** The monthly cost for all different savings options applicable for the particular SKU. */
 export type SkuRecommendationResultsAzureSqlDatabaseMonthlyCostOptionsList =
-  ReadonlyArray<SkuRecommendationResultsMonthlyCostOptionItem>;
+  Array<SkuRecommendationResultsMonthlyCostOptionItem>;
 export const SkuRecommendationResultsAzureSqlDatabaseMonthlyCostOptionsList =
   /*@__PURE__*/ S.Array(
     SkuRecommendationResultsMonthlyCostOptionItem,
@@ -7864,7 +7865,7 @@ export const SkuRecommendationResultsAzureSqlManagedInstanceMonthlyCost =
 
 /** The monthly cost for all different savings options applicable for the particular SKU. */
 export type SkuRecommendationResultsAzureSqlManagedInstanceMonthlyCostOptionsList =
-  ReadonlyArray<SkuRecommendationResultsMonthlyCostOptionItem>;
+  Array<SkuRecommendationResultsMonthlyCostOptionItem>;
 export const SkuRecommendationResultsAzureSqlManagedInstanceMonthlyCostOptionsList =
   /*@__PURE__*/ S.Array(
     SkuRecommendationResultsMonthlyCostOptionItem,
@@ -7997,7 +7998,7 @@ export const SkuRecommendationResultsAzureSqlVirtualMachineMonthlyCost =
 
 /** The monthly cost for all different savings options applicable for the particular SKU. */
 export type SkuRecommendationResultsAzureSqlVirtualMachineMonthlyCostOptionsList =
-  ReadonlyArray<SkuRecommendationResultsMonthlyCostOptionItem>;
+  Array<SkuRecommendationResultsMonthlyCostOptionItem>;
 export const SkuRecommendationResultsAzureSqlVirtualMachineMonthlyCostOptionsList =
   /*@__PURE__*/ S.Array(
     SkuRecommendationResultsMonthlyCostOptionItem,
@@ -8005,7 +8006,7 @@ export const SkuRecommendationResultsAzureSqlVirtualMachineMonthlyCostOptionsLis
 
 /** Available VM SKUs for the Azure SQL Virtual Machine. */
 export type SkuRecommendationResultsAzureSqlVirtualMachineTargetSkuCategoryAvailableVmSkusList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const SkuRecommendationResultsAzureSqlVirtualMachineTargetSkuCategoryAvailableVmSkusList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -8091,7 +8092,7 @@ export const DiskSizes = /*@__PURE__*/ S.suspend(() =>
 
 /** Data disk sizes. */
 export type SkuRecommendationResultsAzureSqlVirtualMachineTargetSkuDataDiskSizesList =
-  ReadonlyArray<DiskSizes>;
+  Array<DiskSizes>;
 export const SkuRecommendationResultsAzureSqlVirtualMachineTargetSkuDataDiskSizesList =
   /*@__PURE__*/ S.Array(
     DiskSizes,
@@ -8099,7 +8100,7 @@ export const SkuRecommendationResultsAzureSqlVirtualMachineTargetSkuDataDiskSize
 
 /** Log disk sizes. */
 export type SkuRecommendationResultsAzureSqlVirtualMachineTargetSkuLogDiskSizesList =
-  ReadonlyArray<DiskSizes>;
+  Array<DiskSizes>;
 export const SkuRecommendationResultsAzureSqlVirtualMachineTargetSkuLogDiskSizesList =
   /*@__PURE__*/ S.Array(
     DiskSizes,
@@ -8107,7 +8108,7 @@ export const SkuRecommendationResultsAzureSqlVirtualMachineTargetSkuLogDiskSizes
 
 /** temp db disk sizes. */
 export type SkuRecommendationResultsAzureSqlVirtualMachineTargetSkuTempDbDiskSizesList =
-  ReadonlyArray<DiskSizes>;
+  Array<DiskSizes>;
 export const SkuRecommendationResultsAzureSqlVirtualMachineTargetSkuTempDbDiskSizesList =
   /*@__PURE__*/ S.Array(
     DiskSizes,
@@ -8228,14 +8229,14 @@ export const ImpactedObjectsInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ImpactedObjectsInfo>;
 
 export type MigrationAssessmentImpactedObjectsSummaryAzureSqlDatabaseList =
-  ReadonlyArray<ImpactedObjectsInfo>;
+  Array<ImpactedObjectsInfo>;
 export const MigrationAssessmentImpactedObjectsSummaryAzureSqlDatabaseList =
   /*@__PURE__*/ S.Array(
     ImpactedObjectsInfo,
   ) as any as S.Schema<MigrationAssessmentImpactedObjectsSummaryAzureSqlDatabaseList>;
 
 export type MigrationAssessmentImpactedObjectsSummaryAzureSqlManagedInstanceList =
-  ReadonlyArray<ImpactedObjectsInfo>;
+  Array<ImpactedObjectsInfo>;
 export const MigrationAssessmentImpactedObjectsSummaryAzureSqlManagedInstanceList =
   /*@__PURE__*/ S.Array(
     ImpactedObjectsInfo,
@@ -8676,21 +8677,21 @@ export const SqlServerInstanceBpaColumn = /*@__PURE__*/ S.suspend(() =>
 
 /** The SQL best practices assessment response columns. */
 export type SqlServerInstancesGetBestPracticesAssessmentResponseColumnsList =
-  ReadonlyArray<SqlServerInstanceBpaColumn>;
+  Array<SqlServerInstanceBpaColumn>;
 export const SqlServerInstancesGetBestPracticesAssessmentResponseColumnsList =
   /*@__PURE__*/ S.Array(
     SqlServerInstanceBpaColumn,
   ) as any as S.Schema<SqlServerInstancesGetBestPracticesAssessmentResponseColumnsList>;
 
 /** An array of values representing a row in the SQL best practices assessment results. */
-export type SqlServerInstanceBpaRow = ReadonlyArray<string>;
+export type SqlServerInstanceBpaRow = Array<string>;
 export const SqlServerInstanceBpaRow = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SqlServerInstanceBpaRow>;
 
 /** An array of results of the SQL best practices assessment response. */
 export type SqlServerInstancesGetBestPracticesAssessmentResponseRowsList =
-  ReadonlyArray<SqlServerInstanceBpaRow>;
+  Array<SqlServerInstanceBpaRow>;
 export const SqlServerInstancesGetBestPracticesAssessmentResponseRowsList =
   /*@__PURE__*/ S.Array(
     SqlServerInstanceBpaRow,
@@ -8844,7 +8845,7 @@ export const SequencerAction = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of sequencer actions. */
 export type SqlServerInstanceJobStatusSequencerActionsList =
-  ReadonlyArray<SequencerAction>;
+  Array<SequencerAction>;
 export const SqlServerInstanceJobStatusSequencerActionsList =
   /*@__PURE__*/ S.Array(
     SequencerAction,
@@ -8882,7 +8883,7 @@ export const SqlServerInstanceJobStatus = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of jobs status running on the SQL Server instance. */
 export type SqlServerInstancesGetJobsStatusResponseJobsStatusList =
-  ReadonlyArray<SqlServerInstanceJobStatus>;
+  Array<SqlServerInstanceJobStatus>;
 export const SqlServerInstancesGetJobsStatusResponseJobsStatusList =
   /*@__PURE__*/ S.Array(
     SqlServerInstanceJobStatus,
@@ -8915,7 +8916,7 @@ export const SqlServerInstancesGetTelemetryRequestAggregationType =
 
 /** The list of database names to return telemetry for. If not specified, telemetry for all databases will be aggregated and returned. */
 export type SqlServerInstancesGetTelemetryRequestDatabaseNamesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const SqlServerInstancesGetTelemetryRequestDatabaseNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -9001,21 +9002,21 @@ export const SqlServerInstanceTelemetryColumn = /*@__PURE__*/ S.suspend(() =>
 
 /** The columns of the result telemetry table for the SQL Server instance. */
 export type SqlServerInstancesGetTelemetryResponseColumnsList =
-  ReadonlyArray<SqlServerInstanceTelemetryColumn>;
+  Array<SqlServerInstanceTelemetryColumn>;
 export const SqlServerInstancesGetTelemetryResponseColumnsList =
   /*@__PURE__*/ S.Array(
     SqlServerInstanceTelemetryColumn,
   ) as any as S.Schema<SqlServerInstancesGetTelemetryResponseColumnsList>;
 
 /** An array of values representing a telemetry row for the SQL Server instance. */
-export type SqlServerInstanceTelemetryRow = ReadonlyArray<string>;
+export type SqlServerInstanceTelemetryRow = Array<string>;
 export const SqlServerInstanceTelemetryRow = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SqlServerInstanceTelemetryRow>;
 
 /** A list of rows from the result telemetry table for the SQL Server instance. */
 export type SqlServerInstancesGetTelemetryResponseRowsList =
-  ReadonlyArray<SqlServerInstanceTelemetryRow>;
+  Array<SqlServerInstanceTelemetryRow>;
 export const SqlServerInstancesGetTelemetryResponseRowsList =
   /*@__PURE__*/ S.Array(
     SqlServerInstanceTelemetryRow,
@@ -9098,8 +9099,7 @@ export const SqlServerInstance = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SqlServerInstance>;
 
 /** Array of results. */
-export type SqlServerInstancesListResponseValueList =
-  ReadonlyArray<SqlServerInstance>;
+export type SqlServerInstancesListResponseValueList = Array<SqlServerInstance>;
 export const SqlServerInstancesListResponseValueList = /*@__PURE__*/ S.Array(
   SqlServerInstance,
 ) as any as S.Schema<SqlServerInstancesListResponseValueList>;
@@ -9144,7 +9144,7 @@ export const SqlServerInstancesListByResourceGroupRequest =
 
 /** Array of results. */
 export type SqlServerInstancesListByResourceGroupResponseValueList =
-  ReadonlyArray<SqlServerInstance>;
+  Array<SqlServerInstance>;
 export const SqlServerInstancesListByResourceGroupResponseValueList =
   /*@__PURE__*/ S.Array(
     SqlServerInstance,
@@ -9336,7 +9336,7 @@ export const SqlServerInstancesRunBestPracticesAssessmentResponseJobStatus =
 
 /** The list of sequencer actions. */
 export type SqlServerInstancesRunBestPracticesAssessmentResponseSequencerActionsList =
-  ReadonlyArray<SequencerAction>;
+  Array<SequencerAction>;
 export const SqlServerInstancesRunBestPracticesAssessmentResponseSequencerActionsList =
   /*@__PURE__*/ S.Array(
     SequencerAction,
@@ -9382,7 +9382,7 @@ export const SqlServerInstancesRunManagedInstanceLinkAssessmentRequestAzureManag
 
 /** An array of strings, where each value represents the name of a database to be replicated to the Azure SQL Managed Instance. */
 export type SqlServerInstancesRunManagedInstanceLinkAssessmentRequestDatabaseNamesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const SqlServerInstancesRunManagedInstanceLinkAssessmentRequestDatabaseNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -9404,7 +9404,7 @@ export const MiLinkAssessmentCategory = /*@__PURE__*/ S.String;
 
 /** An array of strings, where each value represents the category of the assessment to be run. If this field is not provided, all assessment categories will be run. */
 export type SqlServerInstancesRunManagedInstanceLinkAssessmentRequestAssessmentCategoriesList =
-  ReadonlyArray<MiLinkAssessmentCategory | (string & {})>;
+  Array<MiLinkAssessmentCategory | (string & {})>;
 export const SqlServerInstancesRunManagedInstanceLinkAssessmentRequestAssessmentCategoriesList =
   /*@__PURE__*/ S.Array(
     MiLinkAssessmentCategory,
@@ -9474,7 +9474,7 @@ export const SqlServerInstanceManagedInstanceLinkAssessmentStatus =
 
 /** List of names of databases that are failing the given assessment. */
 export type SqlServerInstanceManagedInstanceLinkAssessmentFailingDbsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const SqlServerInstanceManagedInstanceLinkAssessmentFailingDbsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -9512,7 +9512,7 @@ export const SqlServerInstanceManagedInstanceLinkAssessment =
 
 /** The list of the results for MI Link assessment. */
 export type SqlServerInstancesRunManagedInstanceLinkAssessmentResponseAssessmentsList =
-  ReadonlyArray<SqlServerInstanceManagedInstanceLinkAssessment>;
+  Array<SqlServerInstanceManagedInstanceLinkAssessment>;
 export const SqlServerInstancesRunManagedInstanceLinkAssessmentResponseAssessmentsList =
   /*@__PURE__*/ S.Array(
     SqlServerInstanceManagedInstanceLinkAssessment,
@@ -9570,7 +9570,7 @@ export const SqlServerInstancesRunMigrationAssessmentResponseJobStatus =
 
 /** The list of sequencer actions. */
 export type SqlServerInstancesRunMigrationAssessmentResponseSequencerActionsList =
-  ReadonlyArray<SequencerAction>;
+  Array<SequencerAction>;
 export const SqlServerInstancesRunMigrationAssessmentResponseSequencerActionsList =
   /*@__PURE__*/ S.Array(
     SequencerAction,
@@ -10140,8 +10140,7 @@ export const SqlServerLicense = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SqlServerLicense>;
 
 /** Array of results. */
-export type SqlServerLicensesListResponseValueList =
-  ReadonlyArray<SqlServerLicense>;
+export type SqlServerLicensesListResponseValueList = Array<SqlServerLicense>;
 export const SqlServerLicensesListResponseValueList = /*@__PURE__*/ S.Array(
   SqlServerLicense,
 ) as any as S.Schema<SqlServerLicensesListResponseValueList>;
@@ -10186,7 +10185,7 @@ export const SqlServerLicensesListByResourceGroupRequest =
 
 /** Array of results. */
 export type SqlServerLicensesListByResourceGroupResponseValueList =
-  ReadonlyArray<SqlServerLicense>;
+  Array<SqlServerLicense>;
 export const SqlServerLicensesListByResourceGroupResponseValueList =
   /*@__PURE__*/ S.Array(
     SqlServerLicense,

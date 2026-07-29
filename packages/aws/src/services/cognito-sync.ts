@@ -546,7 +546,7 @@ export const StreamingStatus = /*@__PURE__*/ S.String;
 export interface CognitoStreams {
   StreamName?: string;
   RoleArn?: string;
-  StreamingStatus?: StreamingStatus;
+  StreamingStatus?: StreamingStatus | (string & {});
 }
 export const CognitoStreams = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

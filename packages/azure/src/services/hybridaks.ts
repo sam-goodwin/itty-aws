@@ -30,7 +30,7 @@ export const AgentPoolPropertiesInputNodeLabelsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<AgentPoolPropertiesInputNodeLabelsMap>;
 
 /** Taints added to new nodes during node pool create and scale. For example, key=value:NoSchedule. */
-export type AgentPoolPropertiesInputNodeTaintsList = ReadonlyArray<string>;
+export type AgentPoolPropertiesInputNodeTaintsList = Array<string>;
 export const AgentPoolPropertiesInputNodeTaintsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AgentPoolPropertiesInputNodeTaintsList>;
@@ -52,7 +52,7 @@ export const AgentPoolUpdateProfileInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AgentPoolUpdateProfileInput>;
 
 export type AgentPoolPropertiesInputStatusReadyReplicasList =
-  ReadonlyArray<AgentPoolUpdateProfileInput>;
+  Array<AgentPoolUpdateProfileInput>;
 export const AgentPoolPropertiesInputStatusReadyReplicasList =
   /*@__PURE__*/ S.Array(
     AgentPoolUpdateProfileInput,
@@ -130,7 +130,7 @@ export const ExtendedLocationType = /*@__PURE__*/ S.String;
 /** Extended location pointing to the underlying infrastructure */
 export interface ExtendedLocation {
   /** The extended location type. Allowed value: 'CustomLocation' */
-  type?: ExtendedLocationType;
+  type?: ExtendedLocationType | (string & {});
   /** ARM Id of the extended location. */
   name?: string;
 }
@@ -224,7 +224,7 @@ export const AgentPoolPropertiesNodeLabelsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<AgentPoolPropertiesNodeLabelsMap>;
 
 /** Taints added to new nodes during node pool create and scale. For example, key=value:NoSchedule. */
-export type AgentPoolPropertiesNodeTaintsList = ReadonlyArray<string>;
+export type AgentPoolPropertiesNodeTaintsList = Array<string>;
 export const AgentPoolPropertiesNodeTaintsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AgentPoolPropertiesNodeTaintsList>;
@@ -262,7 +262,7 @@ export const AgentPoolUpdateProfile = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AgentPoolUpdateProfile>;
 
 export type AgentPoolPropertiesStatusReadyReplicasList =
-  ReadonlyArray<AgentPoolUpdateProfile>;
+  Array<AgentPoolUpdateProfile>;
 export const AgentPoolPropertiesStatusReadyReplicasList = /*@__PURE__*/ S.Array(
   AgentPoolUpdateProfile,
 ) as any as S.Schema<AgentPoolPropertiesStatusReadyReplicasList>;
@@ -509,7 +509,7 @@ export const AgentPool = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AgentPool" }) as any as S.Schema<AgentPool>;
 
-export type AgentPoolListResultValueList = ReadonlyArray<AgentPool>;
+export type AgentPoolListResultValueList = Array<AgentPool>;
 export const AgentPoolListResultValueList = /*@__PURE__*/ S.Array(
   AgentPool,
 ) as any as S.Schema<AgentPoolListResultValueList>;
@@ -626,13 +626,13 @@ export const KubernetesVersionReadiness = /*@__PURE__*/ S.suspend(() =>
 
 /** Indicates whether the kubernetes version image is ready or not */
 export type KubernetesPatchVersionsReadinessList =
-  ReadonlyArray<KubernetesVersionReadiness>;
+  Array<KubernetesVersionReadiness>;
 export const KubernetesPatchVersionsReadinessList = /*@__PURE__*/ S.Array(
   KubernetesVersionReadiness,
 ) as any as S.Schema<KubernetesPatchVersionsReadinessList>;
 
 /** Possible upgrade paths for given patch version */
-export type KubernetesPatchVersionsUpgradesList = ReadonlyArray<string>;
+export type KubernetesPatchVersionsUpgradesList = Array<string>;
 export const KubernetesPatchVersionsUpgradesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<KubernetesPatchVersionsUpgradesList>;
@@ -684,7 +684,7 @@ export const KubernetesVersionProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** List of supported Kubernetes versions */
 export type GetKubernetesVersionsResponsePropertiesValuesList =
-  ReadonlyArray<KubernetesVersionProperties>;
+  Array<KubernetesVersionProperties>;
 export const GetKubernetesVersionsResponsePropertiesValuesList =
   /*@__PURE__*/ S.Array(
     KubernetesVersionProperties,
@@ -766,7 +766,7 @@ export const VmSkuCapabilities = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VmSkuCapabilities>;
 
 /** The list of name-value pairs to describe VM SKU capabilities like MemoryGB, vCPUs, etc. */
-export type VmSkuPropertiesCapabilitiesList = ReadonlyArray<VmSkuCapabilities>;
+export type VmSkuPropertiesCapabilitiesList = Array<VmSkuCapabilities>;
 export const VmSkuPropertiesCapabilitiesList = /*@__PURE__*/ S.Array(
   VmSkuCapabilities,
 ) as any as S.Schema<VmSkuPropertiesCapabilitiesList>;
@@ -797,8 +797,7 @@ export const VmSkuProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VmSkuProperties>;
 
 /** List of supported VM SKUs. */
-export type GetVMSkusResponsePropertiesValuesList =
-  ReadonlyArray<VmSkuProperties>;
+export type GetVMSkusResponsePropertiesValuesList = Array<VmSkuProperties>;
 export const GetVMSkusResponsePropertiesValuesList = /*@__PURE__*/ S.Array(
   VmSkuProperties,
 ) as any as S.Schema<GetVMSkusResponsePropertiesValuesList>;
@@ -975,8 +974,7 @@ export const HybridIdentityMetadata = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HybridIdentityMetadata>;
 
 /** Array of hybridIdentityMetadata */
-export type HybridIdentityMetadataListValueList =
-  ReadonlyArray<HybridIdentityMetadata>;
+export type HybridIdentityMetadataListValueList = Array<HybridIdentityMetadata>;
 export const HybridIdentityMetadataListValueList = /*@__PURE__*/ S.Array(
   HybridIdentityMetadata,
 ) as any as S.Schema<HybridIdentityMetadataListValueList>;
@@ -1081,7 +1079,7 @@ export const KubernetesVersionsListRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of supported Kubernetes versions */
 export type KubernetesVersionProfilePropertiesValuesList =
-  ReadonlyArray<KubernetesVersionProperties>;
+  Array<KubernetesVersionProperties>;
 export const KubernetesVersionProfilePropertiesValuesList =
   /*@__PURE__*/ S.Array(
     KubernetesVersionProperties,
@@ -1128,7 +1126,7 @@ export const KubernetesVersionProfile = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<KubernetesVersionProfile>;
 
 export type KubernetesVersionProfileListValueList =
-  ReadonlyArray<KubernetesVersionProfile>;
+  Array<KubernetesVersionProfile>;
 export const KubernetesVersionProfileListValueList = /*@__PURE__*/ S.Array(
   KubernetesVersionProfile,
 ) as any as S.Schema<KubernetesVersionProfileListValueList>;
@@ -1215,7 +1213,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = ReadonlyArray<Operation>;
+export type OperationsListResponseValueList = Array<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;
@@ -1250,7 +1248,7 @@ export const LinuxProfilePropertiesSshPublicKeysItem = /*@__PURE__*/ S.suspend(
 
 /** The list of SSH public keys used to authenticate with VMs. A maximum of 1 key may be specified. */
 export type LinuxProfilePropertiesSshPublicKeysList =
-  ReadonlyArray<LinuxProfilePropertiesSshPublicKeysItem>;
+  Array<LinuxProfilePropertiesSshPublicKeysItem>;
 export const LinuxProfilePropertiesSshPublicKeysList = /*@__PURE__*/ S.Array(
   LinuxProfilePropertiesSshPublicKeysItem,
 ) as any as S.Schema<LinuxProfilePropertiesSshPublicKeysList>;
@@ -1336,7 +1334,7 @@ export interface NetworkProfile {
   /** Profile of the HA Proxy load balancer. */
   loadBalancerProfile?: NetworkProfileLoadBalancerProfile;
   /** Network policy used for building Kubernetes network. Possible values include: 'calico'. */
-  networkPolicy?: NetworkProfileNetworkPolicy;
+  networkPolicy?: NetworkProfileNetworkPolicy | (string & {});
   /** A CIDR notation IP Address range from which to assign pod IPs. */
   podCidr?: string;
 }
@@ -1411,7 +1409,7 @@ export const NamedAgentPoolProfileInputNodeLabelsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<NamedAgentPoolProfileInputNodeLabelsMap>;
 
 /** Taints added to new nodes during node pool create and scale. For example, key=value:NoSchedule. */
-export type NamedAgentPoolProfileInputNodeTaintsList = ReadonlyArray<string>;
+export type NamedAgentPoolProfileInputNodeTaintsList = Array<string>;
 export const NamedAgentPoolProfileInputNodeTaintsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<NamedAgentPoolProfileInputNodeTaintsList>;
@@ -1459,7 +1457,7 @@ export const NamedAgentPoolProfileInput = /*@__PURE__*/ S.suspend(() =>
 
 /** The agent pool properties for the provisioned cluster. */
 export type ProvisionedClusterPropertiesInputAgentPoolProfilesList =
-  ReadonlyArray<NamedAgentPoolProfileInput>;
+  Array<NamedAgentPoolProfileInput>;
 export const ProvisionedClusterPropertiesInputAgentPoolProfilesList =
   /*@__PURE__*/ S.Array(
     NamedAgentPoolProfileInput,
@@ -1467,7 +1465,7 @@ export const ProvisionedClusterPropertiesInputAgentPoolProfilesList =
 
 /** List of ARM resource Ids (maximum 1) for the infrastructure network object e.g. /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/logicalNetworks/{logicalNetworkName} */
 export type CloudProviderProfileInfraNetworkProfileVnetSubnetIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CloudProviderProfileInfraNetworkProfileVnetSubnetIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1513,7 +1511,9 @@ export const ProvisionedClusterLicenseProfileAzureHybridBenefit =
 /** The license profile of the provisioned cluster. */
 export interface ProvisionedClusterLicenseProfile {
   /** Indicates whether Azure Hybrid Benefit is opted in. Default value is false */
-  azureHybridBenefit?: ProvisionedClusterLicenseProfileAzureHybridBenefit;
+  azureHybridBenefit?:
+    | ProvisionedClusterLicenseProfileAzureHybridBenefit
+    | (string & {});
 }
 export const ProvisionedClusterLicenseProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1708,7 +1708,7 @@ export const NamedAgentPoolProfileNodeLabelsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<NamedAgentPoolProfileNodeLabelsMap>;
 
 /** Taints added to new nodes during node pool create and scale. For example, key=value:NoSchedule. */
-export type NamedAgentPoolProfileNodeTaintsList = ReadonlyArray<string>;
+export type NamedAgentPoolProfileNodeTaintsList = Array<string>;
 export const NamedAgentPoolProfileNodeTaintsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<NamedAgentPoolProfileNodeTaintsList>;
@@ -1759,7 +1759,7 @@ export const NamedAgentPoolProfile = /*@__PURE__*/ S.suspend(() =>
 
 /** The agent pool properties for the provisioned cluster. */
 export type ProvisionedClusterPropertiesAgentPoolProfilesList =
-  ReadonlyArray<NamedAgentPoolProfile>;
+  Array<NamedAgentPoolProfile>;
 export const ProvisionedClusterPropertiesAgentPoolProfilesList =
   /*@__PURE__*/ S.Array(
     NamedAgentPoolProfile,
@@ -1801,7 +1801,7 @@ export const AddonStatusProfile = /*@__PURE__*/ S.suspend(() =>
 
 /** The detailed status of the provisioned cluster components including addons. */
 export type ProvisionedClusterPropertiesStatusControlPlaneStatusList =
-  ReadonlyArray<AddonStatusProfile>;
+  Array<AddonStatusProfile>;
 export const ProvisionedClusterPropertiesStatusControlPlaneStatusList =
   /*@__PURE__*/ S.Array(
     AddonStatusProfile,
@@ -2118,7 +2118,7 @@ export const ProvisionedClusterPoolUpgradeProfileProperties =
 
 /** List of available kubernetes versions for upgrade. */
 export type ProvisionedClusterPoolUpgradeProfileUpgradesList =
-  ReadonlyArray<ProvisionedClusterPoolUpgradeProfileProperties>;
+  Array<ProvisionedClusterPoolUpgradeProfileProperties>;
 export const ProvisionedClusterPoolUpgradeProfileUpgradesList =
   /*@__PURE__*/ S.Array(
     ProvisionedClusterPoolUpgradeProfileProperties,
@@ -2230,8 +2230,7 @@ export const ProvisionedCluster = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProvisionedCluster",
 }) as any as S.Schema<ProvisionedCluster>;
 
-export type ProvisionedClusterListResultValueList =
-  ReadonlyArray<ProvisionedCluster>;
+export type ProvisionedClusterListResultValueList = Array<ProvisionedCluster>;
 export const ProvisionedClusterListResultValueList = /*@__PURE__*/ S.Array(
   ProvisionedCluster,
 ) as any as S.Schema<ProvisionedClusterListResultValueList>;
@@ -2301,7 +2300,7 @@ export const CredentialResult = /*@__PURE__*/ S.suspend(() =>
 
 /** Base64-encoded Kubernetes configuration file. */
 export type ListCredentialResponsePropertiesKubeconfigsList =
-  ReadonlyArray<CredentialResult>;
+  Array<CredentialResult>;
 export const ListCredentialResponsePropertiesKubeconfigsList =
   /*@__PURE__*/ S.Array(
     CredentialResult,
@@ -2387,7 +2386,7 @@ export const PutKubernetesVersionsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of supported Kubernetes versions */
 export type PutKubernetesVersionsResponsePropertiesValuesList =
-  ReadonlyArray<KubernetesVersionProperties>;
+  Array<KubernetesVersionProperties>;
 export const PutKubernetesVersionsResponsePropertiesValuesList =
   /*@__PURE__*/ S.Array(
     KubernetesVersionProperties,
@@ -2455,8 +2454,7 @@ export const PutVMSkusRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutVMSkusRequest>;
 
 /** List of supported VM SKUs. */
-export type PutVMSkusResponsePropertiesValuesList =
-  ReadonlyArray<VmSkuProperties>;
+export type PutVMSkusResponsePropertiesValuesList = Array<VmSkuProperties>;
 export const PutVMSkusResponsePropertiesValuesList = /*@__PURE__*/ S.Array(
   VmSkuProperties,
 ) as any as S.Schema<PutVMSkusResponsePropertiesValuesList>;
@@ -2561,7 +2559,7 @@ export const VirtualNetworkPropertiesInputVipPoolItem = /*@__PURE__*/ S.suspend(
 
 /** Range of IP Addresses for Kubernetes API Server and services if using HA Proxy load balancer */
 export type VirtualNetworkPropertiesInputVipPoolList =
-  ReadonlyArray<VirtualNetworkPropertiesInputVipPoolItem>;
+  Array<VirtualNetworkPropertiesInputVipPoolItem>;
 export const VirtualNetworkPropertiesInputVipPoolList = /*@__PURE__*/ S.Array(
   VirtualNetworkPropertiesInputVipPoolItem,
 ) as any as S.Schema<VirtualNetworkPropertiesInputVipPoolList>;
@@ -2584,13 +2582,13 @@ export const VirtualNetworkPropertiesInputVmipPoolItem =
 
 /** Range of IP Addresses for Kubernetes node VMs */
 export type VirtualNetworkPropertiesInputVmipPoolList =
-  ReadonlyArray<VirtualNetworkPropertiesInputVmipPoolItem>;
+  Array<VirtualNetworkPropertiesInputVmipPoolItem>;
 export const VirtualNetworkPropertiesInputVmipPoolList = /*@__PURE__*/ S.Array(
   VirtualNetworkPropertiesInputVmipPoolItem,
 ) as any as S.Schema<VirtualNetworkPropertiesInputVmipPoolList>;
 
 /** List of DNS server IP Addresses associated with the network */
-export type VirtualNetworkPropertiesInputDnsServersList = ReadonlyArray<string>;
+export type VirtualNetworkPropertiesInputDnsServersList = Array<string>;
 export const VirtualNetworkPropertiesInputDnsServersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2752,7 +2750,7 @@ export const VirtualNetworkPropertiesVipPoolItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Range of IP Addresses for Kubernetes API Server and services if using HA Proxy load balancer */
 export type VirtualNetworkPropertiesVipPoolList =
-  ReadonlyArray<VirtualNetworkPropertiesVipPoolItem>;
+  Array<VirtualNetworkPropertiesVipPoolItem>;
 export const VirtualNetworkPropertiesVipPoolList = /*@__PURE__*/ S.Array(
   VirtualNetworkPropertiesVipPoolItem,
 ) as any as S.Schema<VirtualNetworkPropertiesVipPoolList>;
@@ -2775,13 +2773,13 @@ export const VirtualNetworkPropertiesVmipPoolItem = /*@__PURE__*/ S.suspend(
 
 /** Range of IP Addresses for Kubernetes node VMs */
 export type VirtualNetworkPropertiesVmipPoolList =
-  ReadonlyArray<VirtualNetworkPropertiesVmipPoolItem>;
+  Array<VirtualNetworkPropertiesVmipPoolItem>;
 export const VirtualNetworkPropertiesVmipPoolList = /*@__PURE__*/ S.Array(
   VirtualNetworkPropertiesVmipPoolItem,
 ) as any as S.Schema<VirtualNetworkPropertiesVmipPoolList>;
 
 /** List of DNS server IP Addresses associated with the network */
-export type VirtualNetworkPropertiesDnsServersList = ReadonlyArray<string>;
+export type VirtualNetworkPropertiesDnsServersList = Array<string>;
 export const VirtualNetworkPropertiesDnsServersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<VirtualNetworkPropertiesDnsServersList>;
@@ -3055,7 +3053,7 @@ export const VirtualNetwork = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "VirtualNetwork" }) as any as S.Schema<VirtualNetwork>;
 
-export type VirtualNetworksListResultValueList = ReadonlyArray<VirtualNetwork>;
+export type VirtualNetworksListResultValueList = Array<VirtualNetwork>;
 export const VirtualNetworksListResultValueList = /*@__PURE__*/ S.Array(
   VirtualNetwork,
 ) as any as S.Schema<VirtualNetworksListResultValueList>;
@@ -3306,7 +3304,7 @@ export const VMSkusListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VMSkusListRequest>;
 
 /** List of supported VM SKUs. */
-export type VmSkuProfilePropertiesValuesList = ReadonlyArray<VmSkuProperties>;
+export type VmSkuProfilePropertiesValuesList = Array<VmSkuProperties>;
 export const VmSkuProfilePropertiesValuesList = /*@__PURE__*/ S.Array(
   VmSkuProperties,
 ) as any as S.Schema<VmSkuProfilePropertiesValuesList>;
@@ -3349,7 +3347,7 @@ export const VmSkuProfile = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "VmSkuProfile" }) as any as S.Schema<VmSkuProfile>;
 
-export type VmSkuProfileListValueList = ReadonlyArray<VmSkuProfile>;
+export type VmSkuProfileListValueList = Array<VmSkuProfile>;
 export const VmSkuProfileListValueList = /*@__PURE__*/ S.Array(
   VmSkuProfile,
 ) as any as S.Schema<VmSkuProfileListValueList>;

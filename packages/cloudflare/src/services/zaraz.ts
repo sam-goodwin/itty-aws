@@ -153,7 +153,7 @@ export const ConfigGetResponseSettings = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConfigGetResponseSettings>;
 
 export type ConfigGetResponseToolsZarazManagedComponentBlockingTriggersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ConfigGetResponseToolsZarazManagedComponentBlockingTriggersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -166,7 +166,7 @@ export const ConfigGetResponseToolsZarazManagedComponentDefaultFields =
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
 
 export type ConfigGetResponseToolsZarazManagedComponentPermissionsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ConfigGetResponseToolsZarazManagedComponentPermissionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -183,14 +183,14 @@ export const ConfigGetResponseToolsZarazManagedComponentType =
   /*@__PURE__*/ S.String;
 
 export type ConfigGetResponseToolsZarazManagedComponentActionsValueBlockingTriggersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ConfigGetResponseToolsZarazManagedComponentActionsValueBlockingTriggersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ConfigGetResponseToolsZarazManagedComponentActionsValueBlockingTriggersList>;
 
 export type ConfigGetResponseToolsZarazManagedComponentActionsValueFiringTriggersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ConfigGetResponseToolsZarazManagedComponentActionsValueFiringTriggersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -232,14 +232,14 @@ export const ConfigGetResponseToolsZarazManagedComponentActionsMap =
   ) as any as S.Schema<ConfigGetResponseToolsZarazManagedComponentActionsMap>;
 
 export type ConfigGetResponseToolsZarazManagedComponentNeoEventsItemBlockingTriggersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ConfigGetResponseToolsZarazManagedComponentNeoEventsItemBlockingTriggersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ConfigGetResponseToolsZarazManagedComponentNeoEventsItemBlockingTriggersList>;
 
 export type ConfigGetResponseToolsZarazManagedComponentNeoEventsItemFiringTriggersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ConfigGetResponseToolsZarazManagedComponentNeoEventsItemFiringTriggersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -270,7 +270,7 @@ export const ConfigGetResponseToolsZarazManagedComponentNeoEventsItem =
   }) as any as S.Schema<ConfigGetResponseToolsZarazManagedComponentNeoEventsItem>;
 
 export type ConfigGetResponseToolsZarazManagedComponentNeoEventsList =
-  ReadonlyArray<ConfigGetResponseToolsZarazManagedComponentNeoEventsItem>;
+  Array<ConfigGetResponseToolsZarazManagedComponentNeoEventsItem>;
 export const ConfigGetResponseToolsZarazManagedComponentNeoEventsList =
   /*@__PURE__*/ S.Array(
     ConfigGetResponseToolsZarazManagedComponentNeoEventsItem,
@@ -329,8 +329,7 @@ export const ConfigGetResponseToolsZarazManagedComponent =
     identifier: "ConfigGetResponseToolsZarazManagedComponent",
   }) as any as S.Schema<ConfigGetResponseToolsZarazManagedComponent>;
 
-export type ConfigGetResponseToolsWorkerBlockingTriggersList =
-  ReadonlyArray<string>;
+export type ConfigGetResponseToolsWorkerBlockingTriggersList = Array<string>;
 export const ConfigGetResponseToolsWorkerBlockingTriggersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -340,7 +339,7 @@ export type ConfigGetResponseToolsWorkerDefaultFields = string | boolean;
 export const ConfigGetResponseToolsWorkerDefaultFields =
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
 
-export type ConfigGetResponseToolsWorkerPermissionsList = ReadonlyArray<string>;
+export type ConfigGetResponseToolsWorkerPermissionsList = Array<string>;
 export const ConfigGetResponseToolsWorkerPermissionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -367,14 +366,14 @@ export const ConfigGetResponseToolsWorkerWorker = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConfigGetResponseToolsWorkerWorker>;
 
 export type ConfigGetResponseToolsWorkerActionsValueBlockingTriggersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ConfigGetResponseToolsWorkerActionsValueBlockingTriggersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ConfigGetResponseToolsWorkerActionsValueBlockingTriggersList>;
 
 export type ConfigGetResponseToolsWorkerActionsValueFiringTriggersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ConfigGetResponseToolsWorkerActionsValueFiringTriggersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -413,14 +412,14 @@ export const ConfigGetResponseToolsWorkerActionsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ConfigGetResponseToolsWorkerActionsMap>;
 
 export type ConfigGetResponseToolsWorkerNeoEventsItemBlockingTriggersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ConfigGetResponseToolsWorkerNeoEventsItemBlockingTriggersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ConfigGetResponseToolsWorkerNeoEventsItemBlockingTriggersList>;
 
 export type ConfigGetResponseToolsWorkerNeoEventsItemFiringTriggersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ConfigGetResponseToolsWorkerNeoEventsItemFiringTriggersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -451,7 +450,7 @@ export const ConfigGetResponseToolsWorkerNeoEventsItem =
   }) as any as S.Schema<ConfigGetResponseToolsWorkerNeoEventsItem>;
 
 export type ConfigGetResponseToolsWorkerNeoEventsList =
-  ReadonlyArray<ConfigGetResponseToolsWorkerNeoEventsItem>;
+  Array<ConfigGetResponseToolsWorkerNeoEventsItem>;
 export const ConfigGetResponseToolsWorkerNeoEventsList = /*@__PURE__*/ S.Array(
   ConfigGetResponseToolsWorkerNeoEventsItem,
 ) as any as S.Schema<ConfigGetResponseToolsWorkerNeoEventsList>;
@@ -918,7 +917,7 @@ export const ConfigGetResponseTriggersValueExcludeRulesItem =
   }) as any as S.Schema<ConfigGetResponseTriggersValueExcludeRulesItem>;
 
 export type ConfigGetResponseTriggersValueExcludeRulesList =
-  ReadonlyArray<ConfigGetResponseTriggersValueExcludeRulesItem>;
+  Array<ConfigGetResponseTriggersValueExcludeRulesItem>;
 export const ConfigGetResponseTriggersValueExcludeRulesList =
   /*@__PURE__*/ S.Array(
     ConfigGetResponseTriggersValueExcludeRulesItem,
@@ -1246,7 +1245,7 @@ export const ConfigGetResponseTriggersValueLoadRulesItem =
   }) as any as S.Schema<ConfigGetResponseTriggersValueLoadRulesItem>;
 
 export type ConfigGetResponseTriggersValueLoadRulesList =
-  ReadonlyArray<ConfigGetResponseTriggersValueLoadRulesItem>;
+  Array<ConfigGetResponseTriggersValueLoadRulesItem>;
 export const ConfigGetResponseTriggersValueLoadRulesList =
   /*@__PURE__*/ S.Array(
     ConfigGetResponseTriggersValueLoadRulesItem,
@@ -1700,7 +1699,7 @@ export const DefaultGetResponseSettings = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DefaultGetResponseSettings>;
 
 export type DefaultGetResponseToolsZarazManagedComponentBlockingTriggersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const DefaultGetResponseToolsZarazManagedComponentBlockingTriggersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1713,7 +1712,7 @@ export const DefaultGetResponseToolsZarazManagedComponentDefaultFields =
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
 
 export type DefaultGetResponseToolsZarazManagedComponentPermissionsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const DefaultGetResponseToolsZarazManagedComponentPermissionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1730,14 +1729,14 @@ export const DefaultGetResponseToolsZarazManagedComponentType =
   /*@__PURE__*/ S.String;
 
 export type DefaultGetResponseToolsZarazManagedComponentActionsValueBlockingTriggersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const DefaultGetResponseToolsZarazManagedComponentActionsValueBlockingTriggersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<DefaultGetResponseToolsZarazManagedComponentActionsValueBlockingTriggersList>;
 
 export type DefaultGetResponseToolsZarazManagedComponentActionsValueFiringTriggersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const DefaultGetResponseToolsZarazManagedComponentActionsValueFiringTriggersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1779,14 +1778,14 @@ export const DefaultGetResponseToolsZarazManagedComponentActionsMap =
   ) as any as S.Schema<DefaultGetResponseToolsZarazManagedComponentActionsMap>;
 
 export type DefaultGetResponseToolsZarazManagedComponentNeoEventsItemBlockingTriggersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const DefaultGetResponseToolsZarazManagedComponentNeoEventsItemBlockingTriggersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<DefaultGetResponseToolsZarazManagedComponentNeoEventsItemBlockingTriggersList>;
 
 export type DefaultGetResponseToolsZarazManagedComponentNeoEventsItemFiringTriggersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const DefaultGetResponseToolsZarazManagedComponentNeoEventsItemFiringTriggersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1817,7 +1816,7 @@ export const DefaultGetResponseToolsZarazManagedComponentNeoEventsItem =
   }) as any as S.Schema<DefaultGetResponseToolsZarazManagedComponentNeoEventsItem>;
 
 export type DefaultGetResponseToolsZarazManagedComponentNeoEventsList =
-  ReadonlyArray<DefaultGetResponseToolsZarazManagedComponentNeoEventsItem>;
+  Array<DefaultGetResponseToolsZarazManagedComponentNeoEventsItem>;
 export const DefaultGetResponseToolsZarazManagedComponentNeoEventsList =
   /*@__PURE__*/ S.Array(
     DefaultGetResponseToolsZarazManagedComponentNeoEventsItem,
@@ -1876,8 +1875,7 @@ export const DefaultGetResponseToolsZarazManagedComponent =
     identifier: "DefaultGetResponseToolsZarazManagedComponent",
   }) as any as S.Schema<DefaultGetResponseToolsZarazManagedComponent>;
 
-export type DefaultGetResponseToolsWorkerBlockingTriggersList =
-  ReadonlyArray<string>;
+export type DefaultGetResponseToolsWorkerBlockingTriggersList = Array<string>;
 export const DefaultGetResponseToolsWorkerBlockingTriggersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1887,8 +1885,7 @@ export type DefaultGetResponseToolsWorkerDefaultFields = string | boolean;
 export const DefaultGetResponseToolsWorkerDefaultFields =
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
 
-export type DefaultGetResponseToolsWorkerPermissionsList =
-  ReadonlyArray<string>;
+export type DefaultGetResponseToolsWorkerPermissionsList = Array<string>;
 export const DefaultGetResponseToolsWorkerPermissionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1915,14 +1912,14 @@ export const DefaultGetResponseToolsWorkerWorker = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DefaultGetResponseToolsWorkerWorker>;
 
 export type DefaultGetResponseToolsWorkerActionsValueBlockingTriggersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const DefaultGetResponseToolsWorkerActionsValueBlockingTriggersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<DefaultGetResponseToolsWorkerActionsValueBlockingTriggersList>;
 
 export type DefaultGetResponseToolsWorkerActionsValueFiringTriggersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const DefaultGetResponseToolsWorkerActionsValueFiringTriggersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1961,14 +1958,14 @@ export const DefaultGetResponseToolsWorkerActionsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<DefaultGetResponseToolsWorkerActionsMap>;
 
 export type DefaultGetResponseToolsWorkerNeoEventsItemBlockingTriggersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const DefaultGetResponseToolsWorkerNeoEventsItemBlockingTriggersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<DefaultGetResponseToolsWorkerNeoEventsItemBlockingTriggersList>;
 
 export type DefaultGetResponseToolsWorkerNeoEventsItemFiringTriggersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const DefaultGetResponseToolsWorkerNeoEventsItemFiringTriggersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1999,7 +1996,7 @@ export const DefaultGetResponseToolsWorkerNeoEventsItem =
   }) as any as S.Schema<DefaultGetResponseToolsWorkerNeoEventsItem>;
 
 export type DefaultGetResponseToolsWorkerNeoEventsList =
-  ReadonlyArray<DefaultGetResponseToolsWorkerNeoEventsItem>;
+  Array<DefaultGetResponseToolsWorkerNeoEventsItem>;
 export const DefaultGetResponseToolsWorkerNeoEventsList = /*@__PURE__*/ S.Array(
   DefaultGetResponseToolsWorkerNeoEventsItem,
 ) as any as S.Schema<DefaultGetResponseToolsWorkerNeoEventsList>;
@@ -2466,7 +2463,7 @@ export const DefaultGetResponseTriggersValueExcludeRulesItem =
   }) as any as S.Schema<DefaultGetResponseTriggersValueExcludeRulesItem>;
 
 export type DefaultGetResponseTriggersValueExcludeRulesList =
-  ReadonlyArray<DefaultGetResponseTriggersValueExcludeRulesItem>;
+  Array<DefaultGetResponseTriggersValueExcludeRulesItem>;
 export const DefaultGetResponseTriggersValueExcludeRulesList =
   /*@__PURE__*/ S.Array(
     DefaultGetResponseTriggersValueExcludeRulesItem,
@@ -2794,7 +2791,7 @@ export const DefaultGetResponseTriggersValueLoadRulesItem =
   }) as any as S.Schema<DefaultGetResponseTriggersValueLoadRulesItem>;
 
 export type DefaultGetResponseTriggersValueLoadRulesList =
-  ReadonlyArray<DefaultGetResponseTriggersValueLoadRulesItem>;
+  Array<DefaultGetResponseTriggersValueLoadRulesItem>;
 export const DefaultGetResponseTriggersValueLoadRulesList =
   /*@__PURE__*/ S.Array(
     DefaultGetResponseTriggersValueLoadRulesItem,
@@ -3189,7 +3186,7 @@ export const GetExportResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetExportResponse",
 }) as any as S.Schema<GetExportResponse>;
 
-export type HistoryConfigsGetRequestIdsList = ReadonlyArray<number>;
+export type HistoryConfigsGetRequestIdsList = Array<number>;
 export const HistoryConfigsGetRequestIdsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<HistoryConfigsGetRequestIdsList>;
@@ -3286,7 +3283,7 @@ export const HistoryConfigsGetResultValueConfigSettings =
   }) as any as S.Schema<HistoryConfigsGetResultValueConfigSettings>;
 
 export type HistoryConfigsGetResultValueConfigToolsZarazManagedComponentBlockingTriggersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const HistoryConfigsGetResultValueConfigToolsZarazManagedComponentBlockingTriggersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3298,7 +3295,7 @@ export const HistoryConfigsGetResultValueConfigToolsZarazManagedComponentDefault
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
 
 export type HistoryConfigsGetResultValueConfigToolsZarazManagedComponentPermissionsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const HistoryConfigsGetResultValueConfigToolsZarazManagedComponentPermissionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3315,14 +3312,14 @@ export const HistoryConfigsGetResultValueConfigToolsZarazManagedComponentType =
   /*@__PURE__*/ S.String;
 
 export type HistoryConfigsGetResultValueConfigToolsZarazManagedComponentActionsValueBlockingTriggersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const HistoryConfigsGetResultValueConfigToolsZarazManagedComponentActionsValueBlockingTriggersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<HistoryConfigsGetResultValueConfigToolsZarazManagedComponentActionsValueBlockingTriggersList>;
 
 export type HistoryConfigsGetResultValueConfigToolsZarazManagedComponentActionsValueFiringTriggersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const HistoryConfigsGetResultValueConfigToolsZarazManagedComponentActionsValueFiringTriggersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3366,14 +3363,14 @@ export const HistoryConfigsGetResultValueConfigToolsZarazManagedComponentActions
   ) as any as S.Schema<HistoryConfigsGetResultValueConfigToolsZarazManagedComponentActionsMap>;
 
 export type HistoryConfigsGetResultValueConfigToolsZarazManagedComponentNeoEventsItemBlockingTriggersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const HistoryConfigsGetResultValueConfigToolsZarazManagedComponentNeoEventsItemBlockingTriggersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<HistoryConfigsGetResultValueConfigToolsZarazManagedComponentNeoEventsItemBlockingTriggersList>;
 
 export type HistoryConfigsGetResultValueConfigToolsZarazManagedComponentNeoEventsItemFiringTriggersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const HistoryConfigsGetResultValueConfigToolsZarazManagedComponentNeoEventsItemFiringTriggersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3405,7 +3402,7 @@ export const HistoryConfigsGetResultValueConfigToolsZarazManagedComponentNeoEven
   }) as any as S.Schema<HistoryConfigsGetResultValueConfigToolsZarazManagedComponentNeoEventsItem>;
 
 export type HistoryConfigsGetResultValueConfigToolsZarazManagedComponentNeoEventsList =
-  ReadonlyArray<HistoryConfigsGetResultValueConfigToolsZarazManagedComponentNeoEventsItem>;
+  Array<HistoryConfigsGetResultValueConfigToolsZarazManagedComponentNeoEventsItem>;
 export const HistoryConfigsGetResultValueConfigToolsZarazManagedComponentNeoEventsList =
   /*@__PURE__*/ S.Array(
     HistoryConfigsGetResultValueConfigToolsZarazManagedComponentNeoEventsItem,
@@ -3468,7 +3465,7 @@ export const HistoryConfigsGetResultValueConfigToolsZarazManagedComponent =
   }) as any as S.Schema<HistoryConfigsGetResultValueConfigToolsZarazManagedComponent>;
 
 export type HistoryConfigsGetResultValueConfigToolsWorkerBlockingTriggersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const HistoryConfigsGetResultValueConfigToolsWorkerBlockingTriggersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3481,7 +3478,7 @@ export const HistoryConfigsGetResultValueConfigToolsWorkerDefaultFields =
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
 
 export type HistoryConfigsGetResultValueConfigToolsWorkerPermissionsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const HistoryConfigsGetResultValueConfigToolsWorkerPermissionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3512,14 +3509,14 @@ export const HistoryConfigsGetResultValueConfigToolsWorkerWorker =
   }) as any as S.Schema<HistoryConfigsGetResultValueConfigToolsWorkerWorker>;
 
 export type HistoryConfigsGetResultValueConfigToolsWorkerActionsValueBlockingTriggersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const HistoryConfigsGetResultValueConfigToolsWorkerActionsValueBlockingTriggersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<HistoryConfigsGetResultValueConfigToolsWorkerActionsValueBlockingTriggersList>;
 
 export type HistoryConfigsGetResultValueConfigToolsWorkerActionsValueFiringTriggersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const HistoryConfigsGetResultValueConfigToolsWorkerActionsValueFiringTriggersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3561,14 +3558,14 @@ export const HistoryConfigsGetResultValueConfigToolsWorkerActionsMap =
   ) as any as S.Schema<HistoryConfigsGetResultValueConfigToolsWorkerActionsMap>;
 
 export type HistoryConfigsGetResultValueConfigToolsWorkerNeoEventsItemBlockingTriggersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const HistoryConfigsGetResultValueConfigToolsWorkerNeoEventsItemBlockingTriggersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<HistoryConfigsGetResultValueConfigToolsWorkerNeoEventsItemBlockingTriggersList>;
 
 export type HistoryConfigsGetResultValueConfigToolsWorkerNeoEventsItemFiringTriggersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const HistoryConfigsGetResultValueConfigToolsWorkerNeoEventsItemFiringTriggersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3599,7 +3596,7 @@ export const HistoryConfigsGetResultValueConfigToolsWorkerNeoEventsItem =
   }) as any as S.Schema<HistoryConfigsGetResultValueConfigToolsWorkerNeoEventsItem>;
 
 export type HistoryConfigsGetResultValueConfigToolsWorkerNeoEventsList =
-  ReadonlyArray<HistoryConfigsGetResultValueConfigToolsWorkerNeoEventsItem>;
+  Array<HistoryConfigsGetResultValueConfigToolsWorkerNeoEventsItem>;
 export const HistoryConfigsGetResultValueConfigToolsWorkerNeoEventsList =
   /*@__PURE__*/ S.Array(
     HistoryConfigsGetResultValueConfigToolsWorkerNeoEventsItem,
@@ -4077,7 +4074,7 @@ export const HistoryConfigsGetResultValueConfigTriggersValueExcludeRulesItem =
   }) as any as S.Schema<HistoryConfigsGetResultValueConfigTriggersValueExcludeRulesItem>;
 
 export type HistoryConfigsGetResultValueConfigTriggersValueExcludeRulesList =
-  ReadonlyArray<HistoryConfigsGetResultValueConfigTriggersValueExcludeRulesItem>;
+  Array<HistoryConfigsGetResultValueConfigTriggersValueExcludeRulesItem>;
 export const HistoryConfigsGetResultValueConfigTriggersValueExcludeRulesList =
   /*@__PURE__*/ S.Array(
     HistoryConfigsGetResultValueConfigTriggersValueExcludeRulesItem,
@@ -4408,7 +4405,7 @@ export const HistoryConfigsGetResultValueConfigTriggersValueLoadRulesItem =
   }) as any as S.Schema<HistoryConfigsGetResultValueConfigTriggersValueLoadRulesItem>;
 
 export type HistoryConfigsGetResultValueConfigTriggersValueLoadRulesList =
-  ReadonlyArray<HistoryConfigsGetResultValueConfigTriggersValueLoadRulesItem>;
+  Array<HistoryConfigsGetResultValueConfigTriggersValueLoadRulesItem>;
 export const HistoryConfigsGetResultValueConfigTriggersValueLoadRulesList =
   /*@__PURE__*/ S.Array(
     HistoryConfigsGetResultValueConfigTriggersValueLoadRulesItem,
@@ -4931,7 +4928,7 @@ export const HistoryListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "HistoryListResultItem",
 }) as any as S.Schema<HistoryListResultItem>;
 
-export type HistoryListResultList = ReadonlyArray<HistoryListResultItem>;
+export type HistoryListResultList = Array<HistoryListResultItem>;
 export const HistoryListResultList = /*@__PURE__*/ S.Array(
   HistoryListResultItem,
 ) as any as S.Schema<HistoryListResultList>;
@@ -5017,7 +5014,7 @@ export const ConfigUpdateRequestSettings = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConfigUpdateRequestSettings>;
 
 export type ConfigUpdateRequestToolsZarazManagedComponentBlockingTriggersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ConfigUpdateRequestToolsZarazManagedComponentBlockingTriggersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5030,7 +5027,7 @@ export const ConfigUpdateRequestToolsZarazManagedComponentDefaultFields =
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
 
 export type ConfigUpdateRequestToolsZarazManagedComponentPermissionsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ConfigUpdateRequestToolsZarazManagedComponentPermissionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5047,14 +5044,14 @@ export const ConfigUpdateRequestToolsZarazManagedComponentType =
   /*@__PURE__*/ S.String;
 
 export type ConfigUpdateRequestToolsZarazManagedComponentActionsValueBlockingTriggersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ConfigUpdateRequestToolsZarazManagedComponentActionsValueBlockingTriggersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ConfigUpdateRequestToolsZarazManagedComponentActionsValueBlockingTriggersList>;
 
 export type ConfigUpdateRequestToolsZarazManagedComponentActionsValueFiringTriggersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ConfigUpdateRequestToolsZarazManagedComponentActionsValueFiringTriggersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5096,14 +5093,14 @@ export const ConfigUpdateRequestToolsZarazManagedComponentActionsMap =
   ) as any as S.Schema<ConfigUpdateRequestToolsZarazManagedComponentActionsMap>;
 
 export type ConfigUpdateRequestToolsZarazManagedComponentNeoEventsItemBlockingTriggersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ConfigUpdateRequestToolsZarazManagedComponentNeoEventsItemBlockingTriggersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ConfigUpdateRequestToolsZarazManagedComponentNeoEventsItemBlockingTriggersList>;
 
 export type ConfigUpdateRequestToolsZarazManagedComponentNeoEventsItemFiringTriggersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ConfigUpdateRequestToolsZarazManagedComponentNeoEventsItemFiringTriggersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5134,7 +5131,7 @@ export const ConfigUpdateRequestToolsZarazManagedComponentNeoEventsItem =
   }) as any as S.Schema<ConfigUpdateRequestToolsZarazManagedComponentNeoEventsItem>;
 
 export type ConfigUpdateRequestToolsZarazManagedComponentNeoEventsList =
-  ReadonlyArray<ConfigUpdateRequestToolsZarazManagedComponentNeoEventsItem>;
+  Array<ConfigUpdateRequestToolsZarazManagedComponentNeoEventsItem>;
 export const ConfigUpdateRequestToolsZarazManagedComponentNeoEventsList =
   /*@__PURE__*/ S.Array(
     ConfigUpdateRequestToolsZarazManagedComponentNeoEventsItem,
@@ -5193,8 +5190,7 @@ export const ConfigUpdateRequestToolsZarazManagedComponent =
     identifier: "ConfigUpdateRequestToolsZarazManagedComponent",
   }) as any as S.Schema<ConfigUpdateRequestToolsZarazManagedComponent>;
 
-export type ConfigUpdateRequestToolsWorkerBlockingTriggersList =
-  ReadonlyArray<string>;
+export type ConfigUpdateRequestToolsWorkerBlockingTriggersList = Array<string>;
 export const ConfigUpdateRequestToolsWorkerBlockingTriggersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5204,8 +5200,7 @@ export type ConfigUpdateRequestToolsWorkerDefaultFields = string | boolean;
 export const ConfigUpdateRequestToolsWorkerDefaultFields =
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
 
-export type ConfigUpdateRequestToolsWorkerPermissionsList =
-  ReadonlyArray<string>;
+export type ConfigUpdateRequestToolsWorkerPermissionsList = Array<string>;
 export const ConfigUpdateRequestToolsWorkerPermissionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5233,14 +5228,14 @@ export const ConfigUpdateRequestToolsWorkerWorker = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ConfigUpdateRequestToolsWorkerWorker>;
 
 export type ConfigUpdateRequestToolsWorkerActionsValueBlockingTriggersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ConfigUpdateRequestToolsWorkerActionsValueBlockingTriggersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ConfigUpdateRequestToolsWorkerActionsValueBlockingTriggersList>;
 
 export type ConfigUpdateRequestToolsWorkerActionsValueFiringTriggersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ConfigUpdateRequestToolsWorkerActionsValueFiringTriggersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5279,14 +5274,14 @@ export const ConfigUpdateRequestToolsWorkerActionsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ConfigUpdateRequestToolsWorkerActionsMap>;
 
 export type ConfigUpdateRequestToolsWorkerNeoEventsItemBlockingTriggersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ConfigUpdateRequestToolsWorkerNeoEventsItemBlockingTriggersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ConfigUpdateRequestToolsWorkerNeoEventsItemBlockingTriggersList>;
 
 export type ConfigUpdateRequestToolsWorkerNeoEventsItemFiringTriggersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ConfigUpdateRequestToolsWorkerNeoEventsItemFiringTriggersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5317,7 +5312,7 @@ export const ConfigUpdateRequestToolsWorkerNeoEventsItem =
   }) as any as S.Schema<ConfigUpdateRequestToolsWorkerNeoEventsItem>;
 
 export type ConfigUpdateRequestToolsWorkerNeoEventsList =
-  ReadonlyArray<ConfigUpdateRequestToolsWorkerNeoEventsItem>;
+  Array<ConfigUpdateRequestToolsWorkerNeoEventsItem>;
 export const ConfigUpdateRequestToolsWorkerNeoEventsList =
   /*@__PURE__*/ S.Array(
     ConfigUpdateRequestToolsWorkerNeoEventsItem,
@@ -5812,7 +5807,7 @@ export const ConfigUpdateRequestTriggersValueExcludeRulesItem =
   }) as any as S.Schema<ConfigUpdateRequestTriggersValueExcludeRulesItem>;
 
 export type ConfigUpdateRequestTriggersValueExcludeRulesList =
-  ReadonlyArray<ConfigUpdateRequestTriggersValueExcludeRulesItem>;
+  Array<ConfigUpdateRequestTriggersValueExcludeRulesItem>;
 export const ConfigUpdateRequestTriggersValueExcludeRulesList =
   /*@__PURE__*/ S.Array(
     ConfigUpdateRequestTriggersValueExcludeRulesItem,
@@ -6164,7 +6159,7 @@ export const ConfigUpdateRequestTriggersValueLoadRulesItem =
   }) as any as S.Schema<ConfigUpdateRequestTriggersValueLoadRulesItem>;
 
 export type ConfigUpdateRequestTriggersValueLoadRulesList =
-  ReadonlyArray<ConfigUpdateRequestTriggersValueLoadRulesItem>;
+  Array<ConfigUpdateRequestTriggersValueLoadRulesItem>;
 export const ConfigUpdateRequestTriggersValueLoadRulesList =
   /*@__PURE__*/ S.Array(
     ConfigUpdateRequestTriggersValueLoadRulesItem,
@@ -6610,7 +6605,7 @@ export const ConfigUpdateResponseSettings = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConfigUpdateResponseSettings>;
 
 export type ConfigUpdateResponseToolsZarazManagedComponentBlockingTriggersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ConfigUpdateResponseToolsZarazManagedComponentBlockingTriggersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6623,7 +6618,7 @@ export const ConfigUpdateResponseToolsZarazManagedComponentDefaultFields =
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
 
 export type ConfigUpdateResponseToolsZarazManagedComponentPermissionsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ConfigUpdateResponseToolsZarazManagedComponentPermissionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6640,14 +6635,14 @@ export const ConfigUpdateResponseToolsZarazManagedComponentType =
   /*@__PURE__*/ S.String;
 
 export type ConfigUpdateResponseToolsZarazManagedComponentActionsValueBlockingTriggersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ConfigUpdateResponseToolsZarazManagedComponentActionsValueBlockingTriggersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ConfigUpdateResponseToolsZarazManagedComponentActionsValueBlockingTriggersList>;
 
 export type ConfigUpdateResponseToolsZarazManagedComponentActionsValueFiringTriggersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ConfigUpdateResponseToolsZarazManagedComponentActionsValueFiringTriggersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6689,14 +6684,14 @@ export const ConfigUpdateResponseToolsZarazManagedComponentActionsMap =
   ) as any as S.Schema<ConfigUpdateResponseToolsZarazManagedComponentActionsMap>;
 
 export type ConfigUpdateResponseToolsZarazManagedComponentNeoEventsItemBlockingTriggersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ConfigUpdateResponseToolsZarazManagedComponentNeoEventsItemBlockingTriggersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ConfigUpdateResponseToolsZarazManagedComponentNeoEventsItemBlockingTriggersList>;
 
 export type ConfigUpdateResponseToolsZarazManagedComponentNeoEventsItemFiringTriggersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ConfigUpdateResponseToolsZarazManagedComponentNeoEventsItemFiringTriggersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6727,7 +6722,7 @@ export const ConfigUpdateResponseToolsZarazManagedComponentNeoEventsItem =
   }) as any as S.Schema<ConfigUpdateResponseToolsZarazManagedComponentNeoEventsItem>;
 
 export type ConfigUpdateResponseToolsZarazManagedComponentNeoEventsList =
-  ReadonlyArray<ConfigUpdateResponseToolsZarazManagedComponentNeoEventsItem>;
+  Array<ConfigUpdateResponseToolsZarazManagedComponentNeoEventsItem>;
 export const ConfigUpdateResponseToolsZarazManagedComponentNeoEventsList =
   /*@__PURE__*/ S.Array(
     ConfigUpdateResponseToolsZarazManagedComponentNeoEventsItem,
@@ -6788,8 +6783,7 @@ export const ConfigUpdateResponseToolsZarazManagedComponent =
     identifier: "ConfigUpdateResponseToolsZarazManagedComponent",
   }) as any as S.Schema<ConfigUpdateResponseToolsZarazManagedComponent>;
 
-export type ConfigUpdateResponseToolsWorkerBlockingTriggersList =
-  ReadonlyArray<string>;
+export type ConfigUpdateResponseToolsWorkerBlockingTriggersList = Array<string>;
 export const ConfigUpdateResponseToolsWorkerBlockingTriggersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6799,8 +6793,7 @@ export type ConfigUpdateResponseToolsWorkerDefaultFields = string | boolean;
 export const ConfigUpdateResponseToolsWorkerDefaultFields =
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
 
-export type ConfigUpdateResponseToolsWorkerPermissionsList =
-  ReadonlyArray<string>;
+export type ConfigUpdateResponseToolsWorkerPermissionsList = Array<string>;
 export const ConfigUpdateResponseToolsWorkerPermissionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6828,14 +6821,14 @@ export const ConfigUpdateResponseToolsWorkerWorker = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ConfigUpdateResponseToolsWorkerWorker>;
 
 export type ConfigUpdateResponseToolsWorkerActionsValueBlockingTriggersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ConfigUpdateResponseToolsWorkerActionsValueBlockingTriggersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ConfigUpdateResponseToolsWorkerActionsValueBlockingTriggersList>;
 
 export type ConfigUpdateResponseToolsWorkerActionsValueFiringTriggersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ConfigUpdateResponseToolsWorkerActionsValueFiringTriggersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6874,14 +6867,14 @@ export const ConfigUpdateResponseToolsWorkerActionsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ConfigUpdateResponseToolsWorkerActionsMap>;
 
 export type ConfigUpdateResponseToolsWorkerNeoEventsItemBlockingTriggersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ConfigUpdateResponseToolsWorkerNeoEventsItemBlockingTriggersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ConfigUpdateResponseToolsWorkerNeoEventsItemBlockingTriggersList>;
 
 export type ConfigUpdateResponseToolsWorkerNeoEventsItemFiringTriggersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ConfigUpdateResponseToolsWorkerNeoEventsItemFiringTriggersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6912,7 +6905,7 @@ export const ConfigUpdateResponseToolsWorkerNeoEventsItem =
   }) as any as S.Schema<ConfigUpdateResponseToolsWorkerNeoEventsItem>;
 
 export type ConfigUpdateResponseToolsWorkerNeoEventsList =
-  ReadonlyArray<ConfigUpdateResponseToolsWorkerNeoEventsItem>;
+  Array<ConfigUpdateResponseToolsWorkerNeoEventsItem>;
 export const ConfigUpdateResponseToolsWorkerNeoEventsList =
   /*@__PURE__*/ S.Array(
     ConfigUpdateResponseToolsWorkerNeoEventsItem,
@@ -7382,7 +7375,7 @@ export const ConfigUpdateResponseTriggersValueExcludeRulesItem =
   }) as any as S.Schema<ConfigUpdateResponseTriggersValueExcludeRulesItem>;
 
 export type ConfigUpdateResponseTriggersValueExcludeRulesList =
-  ReadonlyArray<ConfigUpdateResponseTriggersValueExcludeRulesItem>;
+  Array<ConfigUpdateResponseTriggersValueExcludeRulesItem>;
 export const ConfigUpdateResponseTriggersValueExcludeRulesList =
   /*@__PURE__*/ S.Array(
     ConfigUpdateResponseTriggersValueExcludeRulesItem,
@@ -7711,7 +7704,7 @@ export const ConfigUpdateResponseTriggersValueLoadRulesItem =
   }) as any as S.Schema<ConfigUpdateResponseTriggersValueLoadRulesItem>;
 
 export type ConfigUpdateResponseTriggersValueLoadRulesList =
-  ReadonlyArray<ConfigUpdateResponseTriggersValueLoadRulesItem>;
+  Array<ConfigUpdateResponseTriggersValueLoadRulesItem>;
 export const ConfigUpdateResponseTriggersValueLoadRulesList =
   /*@__PURE__*/ S.Array(
     ConfigUpdateResponseTriggersValueLoadRulesItem,
@@ -8167,7 +8160,7 @@ export const HistoryUpdateResponseSettings = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HistoryUpdateResponseSettings>;
 
 export type HistoryUpdateResponseToolsZarazManagedComponentBlockingTriggersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const HistoryUpdateResponseToolsZarazManagedComponentBlockingTriggersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -8180,7 +8173,7 @@ export const HistoryUpdateResponseToolsZarazManagedComponentDefaultFields =
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
 
 export type HistoryUpdateResponseToolsZarazManagedComponentPermissionsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const HistoryUpdateResponseToolsZarazManagedComponentPermissionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -8197,14 +8190,14 @@ export const HistoryUpdateResponseToolsZarazManagedComponentType =
   /*@__PURE__*/ S.String;
 
 export type HistoryUpdateResponseToolsZarazManagedComponentActionsValueBlockingTriggersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const HistoryUpdateResponseToolsZarazManagedComponentActionsValueBlockingTriggersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<HistoryUpdateResponseToolsZarazManagedComponentActionsValueBlockingTriggersList>;
 
 export type HistoryUpdateResponseToolsZarazManagedComponentActionsValueFiringTriggersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const HistoryUpdateResponseToolsZarazManagedComponentActionsValueFiringTriggersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -8246,14 +8239,14 @@ export const HistoryUpdateResponseToolsZarazManagedComponentActionsMap =
   ) as any as S.Schema<HistoryUpdateResponseToolsZarazManagedComponentActionsMap>;
 
 export type HistoryUpdateResponseToolsZarazManagedComponentNeoEventsItemBlockingTriggersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const HistoryUpdateResponseToolsZarazManagedComponentNeoEventsItemBlockingTriggersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<HistoryUpdateResponseToolsZarazManagedComponentNeoEventsItemBlockingTriggersList>;
 
 export type HistoryUpdateResponseToolsZarazManagedComponentNeoEventsItemFiringTriggersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const HistoryUpdateResponseToolsZarazManagedComponentNeoEventsItemFiringTriggersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -8284,7 +8277,7 @@ export const HistoryUpdateResponseToolsZarazManagedComponentNeoEventsItem =
   }) as any as S.Schema<HistoryUpdateResponseToolsZarazManagedComponentNeoEventsItem>;
 
 export type HistoryUpdateResponseToolsZarazManagedComponentNeoEventsList =
-  ReadonlyArray<HistoryUpdateResponseToolsZarazManagedComponentNeoEventsItem>;
+  Array<HistoryUpdateResponseToolsZarazManagedComponentNeoEventsItem>;
 export const HistoryUpdateResponseToolsZarazManagedComponentNeoEventsList =
   /*@__PURE__*/ S.Array(
     HistoryUpdateResponseToolsZarazManagedComponentNeoEventsItem,
@@ -8346,7 +8339,7 @@ export const HistoryUpdateResponseToolsZarazManagedComponent =
   }) as any as S.Schema<HistoryUpdateResponseToolsZarazManagedComponent>;
 
 export type HistoryUpdateResponseToolsWorkerBlockingTriggersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const HistoryUpdateResponseToolsWorkerBlockingTriggersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -8356,8 +8349,7 @@ export type HistoryUpdateResponseToolsWorkerDefaultFields = string | boolean;
 export const HistoryUpdateResponseToolsWorkerDefaultFields =
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
 
-export type HistoryUpdateResponseToolsWorkerPermissionsList =
-  ReadonlyArray<string>;
+export type HistoryUpdateResponseToolsWorkerPermissionsList = Array<string>;
 export const HistoryUpdateResponseToolsWorkerPermissionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -8385,14 +8377,14 @@ export const HistoryUpdateResponseToolsWorkerWorker = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<HistoryUpdateResponseToolsWorkerWorker>;
 
 export type HistoryUpdateResponseToolsWorkerActionsValueBlockingTriggersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const HistoryUpdateResponseToolsWorkerActionsValueBlockingTriggersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<HistoryUpdateResponseToolsWorkerActionsValueBlockingTriggersList>;
 
 export type HistoryUpdateResponseToolsWorkerActionsValueFiringTriggersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const HistoryUpdateResponseToolsWorkerActionsValueFiringTriggersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -8432,14 +8424,14 @@ export const HistoryUpdateResponseToolsWorkerActionsMap =
   ) as any as S.Schema<HistoryUpdateResponseToolsWorkerActionsMap>;
 
 export type HistoryUpdateResponseToolsWorkerNeoEventsItemBlockingTriggersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const HistoryUpdateResponseToolsWorkerNeoEventsItemBlockingTriggersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<HistoryUpdateResponseToolsWorkerNeoEventsItemBlockingTriggersList>;
 
 export type HistoryUpdateResponseToolsWorkerNeoEventsItemFiringTriggersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const HistoryUpdateResponseToolsWorkerNeoEventsItemFiringTriggersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -8470,7 +8462,7 @@ export const HistoryUpdateResponseToolsWorkerNeoEventsItem =
   }) as any as S.Schema<HistoryUpdateResponseToolsWorkerNeoEventsItem>;
 
 export type HistoryUpdateResponseToolsWorkerNeoEventsList =
-  ReadonlyArray<HistoryUpdateResponseToolsWorkerNeoEventsItem>;
+  Array<HistoryUpdateResponseToolsWorkerNeoEventsItem>;
 export const HistoryUpdateResponseToolsWorkerNeoEventsList =
   /*@__PURE__*/ S.Array(
     HistoryUpdateResponseToolsWorkerNeoEventsItem,
@@ -8940,7 +8932,7 @@ export const HistoryUpdateResponseTriggersValueExcludeRulesItem =
   }) as any as S.Schema<HistoryUpdateResponseTriggersValueExcludeRulesItem>;
 
 export type HistoryUpdateResponseTriggersValueExcludeRulesList =
-  ReadonlyArray<HistoryUpdateResponseTriggersValueExcludeRulesItem>;
+  Array<HistoryUpdateResponseTriggersValueExcludeRulesItem>;
 export const HistoryUpdateResponseTriggersValueExcludeRulesList =
   /*@__PURE__*/ S.Array(
     HistoryUpdateResponseTriggersValueExcludeRulesItem,
@@ -9269,7 +9261,7 @@ export const HistoryUpdateResponseTriggersValueLoadRulesItem =
   }) as any as S.Schema<HistoryUpdateResponseTriggersValueLoadRulesItem>;
 
 export type HistoryUpdateResponseTriggersValueLoadRulesList =
-  ReadonlyArray<HistoryUpdateResponseTriggersValueLoadRulesItem>;
+  Array<HistoryUpdateResponseTriggersValueLoadRulesItem>;
 export const HistoryUpdateResponseTriggersValueLoadRulesList =
   /*@__PURE__*/ S.Array(
     HistoryUpdateResponseTriggersValueLoadRulesItem,

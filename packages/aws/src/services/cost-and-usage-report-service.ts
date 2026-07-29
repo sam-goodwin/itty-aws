@@ -163,7 +163,7 @@ export type SchemaElement =
   | "MANUAL_DISCOUNT_COMPATIBILITY";
 export const SchemaElement = /*@__PURE__*/ S.String;
 
-export type SchemaElementList = SchemaElement[];
+export type SchemaElementList = (SchemaElement | (string & {}))[];
 export const SchemaElementList = /*@__PURE__*/ S.Array(SchemaElement);
 export type S3Bucket = string;
 export type S3Prefix = string;
@@ -201,7 +201,7 @@ export const AWSRegion = /*@__PURE__*/ S.String;
 export type AdditionalArtifact = "REDSHIFT" | "QUICKSIGHT" | "ATHENA";
 export const AdditionalArtifact = /*@__PURE__*/ S.String;
 
-export type AdditionalArtifactList = AdditionalArtifact[];
+export type AdditionalArtifactList = (AdditionalArtifact | (string & {}))[];
 export const AdditionalArtifactList = /*@__PURE__*/ S.Array(AdditionalArtifact);
 export type RefreshClosedReports = boolean;
 export type ReportVersioning = "CREATE_NEW_REPORT" | "OVERWRITE_REPORT";
@@ -214,7 +214,7 @@ export const LastStatus = /*@__PURE__*/ S.String;
 
 export interface ReportStatus {
   lastDelivery?: string;
-  lastStatus?: LastStatus;
+  lastStatus?: LastStatus | (string & {});
 }
 export const ReportStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -224,16 +224,16 @@ export const ReportStatus = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ReportStatus" }) as any as S.Schema<ReportStatus>;
 export interface ReportDefinition {
   ReportName: string;
-  TimeUnit: TimeUnit;
-  Format: ReportFormat;
-  Compression: CompressionFormat;
+  TimeUnit: TimeUnit | (string & {});
+  Format: ReportFormat | (string & {});
+  Compression: CompressionFormat | (string & {});
   AdditionalSchemaElements: SchemaElement[];
   S3Bucket: string;
   S3Prefix: string;
-  S3Region: AWSRegion;
+  S3Region: AWSRegion | (string & {});
   AdditionalArtifacts?: AdditionalArtifact[];
   RefreshClosedReports?: boolean;
-  ReportVersioning?: ReportVersioning;
+  ReportVersioning?: ReportVersioning | (string & {});
   BillingViewArn?: string;
   ReportStatus?: ReportStatus;
 }

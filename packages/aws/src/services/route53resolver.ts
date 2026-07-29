@@ -312,7 +312,7 @@ export const ResolverEndpointType = /*@__PURE__*/ S.String;
 export type Protocol = "DoH" | "Do53" | "DoH-FIPS";
 export const Protocol = /*@__PURE__*/ S.String;
 
-export type ProtocolList = Protocol[];
+export type ProtocolList = (Protocol | (string & {}))[];
 export const ProtocolList = /*@__PURE__*/ S.Array(Protocol);
 export type RniEnhancedMetricsEnabled = boolean;
 export type TargetNameServerMetricsEnabled = boolean;
@@ -543,7 +543,7 @@ export const FirewallAdvancedThreatCategoryConfig = /*@__PURE__*/ S.suspend(
 export type DnsThreatProtectionRuleTypeValue = string;
 export interface DnsThreatProtectionRuleTypeConfig {
   Value: string;
-  ConfidenceThreshold: ConfidenceThreshold;
+  ConfidenceThreshold: ConfidenceThreshold | (string & {});
 }
 export const DnsThreatProtectionRuleTypeConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Value: S.String, ConfidenceThreshold: ConfidenceThreshold }),
@@ -575,16 +575,18 @@ export interface CreateFirewallRuleEntry {
   FirewallRuleGroupId: string;
   FirewallDomainListId?: string;
   Priority: number;
-  Action: Action;
-  BlockResponse?: BlockResponse;
+  Action: Action | (string & {});
+  BlockResponse?: BlockResponse | (string & {});
   BlockOverrideDomain?: string;
-  BlockOverrideDnsType?: BlockOverrideDnsType;
+  BlockOverrideDnsType?: BlockOverrideDnsType | (string & {});
   BlockOverrideTtl?: number;
   Name: string;
-  FirewallDomainRedirectionAction?: FirewallDomainRedirectionAction;
+  FirewallDomainRedirectionAction?:
+    | FirewallDomainRedirectionAction
+    | (string & {});
   Qtype?: string;
-  DnsThreatProtection?: DnsThreatProtection;
-  ConfidenceThreshold?: ConfidenceThreshold;
+  DnsThreatProtection?: DnsThreatProtection | (string & {});
+  ConfidenceThreshold?: ConfidenceThreshold | (string & {});
   FirewallRuleType?: FirewallRuleType;
 }
 export const CreateFirewallRuleEntry = /*@__PURE__*/ S.suspend(() =>
@@ -772,16 +774,18 @@ export interface UpdateFirewallRuleEntry {
   FirewallDomainListId?: string;
   FirewallThreatProtectionId?: string;
   Priority?: number;
-  Action?: Action;
-  BlockResponse?: BlockResponse;
+  Action?: Action | (string & {});
+  BlockResponse?: BlockResponse | (string & {});
   BlockOverrideDomain?: string;
-  BlockOverrideDnsType?: BlockOverrideDnsType;
+  BlockOverrideDnsType?: BlockOverrideDnsType | (string & {});
   BlockOverrideTtl?: number;
   Name?: string;
-  FirewallDomainRedirectionAction?: FirewallDomainRedirectionAction;
+  FirewallDomainRedirectionAction?:
+    | FirewallDomainRedirectionAction
+    | (string & {});
   Qtype?: string;
-  DnsThreatProtection?: DnsThreatProtection;
-  ConfidenceThreshold?: ConfidenceThreshold;
+  DnsThreatProtection?: DnsThreatProtection | (string & {});
+  ConfidenceThreshold?: ConfidenceThreshold | (string & {});
   FirewallRuleType?: FirewallRuleType;
 }
 export const UpdateFirewallRuleEntry = /*@__PURE__*/ S.suspend(() =>
@@ -1242,7 +1246,7 @@ export interface TargetAddress {
   Ip?: string;
   Port?: number;
   Ipv6?: string;
-  Protocol?: Protocol;
+  Protocol?: Protocol | (string & {});
   ServerNameIndication?: string;
 }
 export const TargetAddress = /*@__PURE__*/ S.suspend(() =>

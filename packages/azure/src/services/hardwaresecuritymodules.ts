@@ -50,7 +50,7 @@ export type BackupRestoreOperationStatus =
 export const BackupRestoreOperationStatus = /*@__PURE__*/ S.String;
 
 /** The error details. */
-export type ErrorDetailDetailsList = ReadonlyArray<ErrorDetail>;
+export type ErrorDetailDetailsList = Array<ErrorDetail>;
 export const ErrorDetailDetailsList = /*@__PURE__*/ S.Array(
   S.suspend(() => ErrorDetail),
 ) as any as S.Schema<ErrorDetailDetailsList>;
@@ -72,7 +72,7 @@ export const ErrorAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ErrorAdditionalInfo>;
 
 /** The error additional info. */
-export type ErrorDetailAdditionalInfoList = ReadonlyArray<ErrorAdditionalInfo>;
+export type ErrorDetailAdditionalInfoList = Array<ErrorAdditionalInfo>;
 export const ErrorDetailAdditionalInfoList = /*@__PURE__*/ S.Array(
   ErrorAdditionalInfo,
 ) as any as S.Schema<ErrorDetailAdditionalInfoList>;
@@ -101,14 +101,14 @@ export const ErrorDetail = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ErrorDetail" }) as any as S.Schema<ErrorDetail>;
 
 /** The error details. */
-export type BackupResultPropertiesErrorDetailsList = ReadonlyArray<ErrorDetail>;
+export type BackupResultPropertiesErrorDetailsList = Array<ErrorDetail>;
 export const BackupResultPropertiesErrorDetailsList = /*@__PURE__*/ S.Array(
   ErrorDetail,
 ) as any as S.Schema<BackupResultPropertiesErrorDetailsList>;
 
 /** The error additional info. */
 export type BackupResultPropertiesErrorAdditionalInfoList =
-  ReadonlyArray<ErrorAdditionalInfo>;
+  Array<ErrorAdditionalInfo>;
 export const BackupResultPropertiesErrorAdditionalInfoList =
   /*@__PURE__*/ S.Array(
     ErrorAdditionalInfo,
@@ -364,8 +364,7 @@ export const PrivateEndpointConnectionProvisioningState =
   /*@__PURE__*/ S.String;
 
 /** The group ids for the private endpoint resource. */
-export type PrivateEndpointConnectionPropertiesGroupIdsList =
-  ReadonlyArray<string>;
+export type PrivateEndpointConnectionPropertiesGroupIdsList = Array<string>;
 export const PrivateEndpointConnectionPropertiesGroupIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -544,16 +543,14 @@ export const CloudHsmClusterPrivateLinkResourcesListByCloudHsmClusterRequest =
   }) as any as S.Schema<CloudHsmClusterPrivateLinkResourcesListByCloudHsmClusterRequest>;
 
 /** The private link resource required member names. */
-export type PrivateLinkResourcePropertiesRequiredMembersList =
-  ReadonlyArray<string>;
+export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
 export const PrivateLinkResourcePropertiesRequiredMembersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
 
 /** The private link resource private link DNS zone name. */
-export type PrivateLinkResourcePropertiesRequiredZoneNamesList =
-  ReadonlyArray<string>;
+export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
 export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -609,7 +606,7 @@ export const PrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of private link resources */
 export type CloudHsmClusterPrivateLinkResourcesListByCloudHsmClusterResponseValueList =
-  ReadonlyArray<PrivateLinkResource>;
+  Array<PrivateLinkResource>;
 export const CloudHsmClusterPrivateLinkResourcesListByCloudHsmClusterResponseValueList =
   /*@__PURE__*/ S.Array(
     PrivateLinkResource,
@@ -665,7 +662,7 @@ export const CloudHsmClusterRestoreStatusGetRequest = /*@__PURE__*/ S.suspend(
 
 /** The error details. */
 export type BackupRestoreBaseResultPropertiesErrorDetailsList =
-  ReadonlyArray<ErrorDetail>;
+  Array<ErrorDetail>;
 export const BackupRestoreBaseResultPropertiesErrorDetailsList =
   /*@__PURE__*/ S.Array(
     ErrorDetail,
@@ -673,7 +670,7 @@ export const BackupRestoreBaseResultPropertiesErrorDetailsList =
 
 /** The error additional info. */
 export type BackupRestoreBaseResultPropertiesErrorAdditionalInfoList =
-  ReadonlyArray<ErrorAdditionalInfo>;
+  Array<ErrorAdditionalInfo>;
 export const BackupRestoreBaseResultPropertiesErrorAdditionalInfoList =
   /*@__PURE__*/ S.Array(
     ErrorAdditionalInfo,
@@ -873,9 +870,9 @@ export const CloudHsmClusterSkuName = /*@__PURE__*/ S.String;
 /** Cloud Hsm Cluster SKU information */
 export interface CloudHsmClusterSku {
   /** Sku family of the Cloud HSM Cluster */
-  family: CloudHsmClusterSkuFamily;
+  family: CloudHsmClusterSkuFamily | (string & {});
   /** Sku name of the Cloud HSM Cluster */
-  name: CloudHsmClusterSkuName;
+  name: CloudHsmClusterSkuName | (string & {});
   /** Sku capacity */
   capacity?: number;
 }
@@ -969,8 +966,7 @@ export const CloudHsmProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CloudHsmProperties>;
 
 /** An array of Cloud HSM Cluster's HSMs */
-export type CloudHsmClusterPropertiesHsmsList =
-  ReadonlyArray<CloudHsmProperties>;
+export type CloudHsmClusterPropertiesHsmsList = Array<CloudHsmProperties>;
 export const CloudHsmClusterPropertiesHsmsList = /*@__PURE__*/ S.Array(
   CloudHsmProperties,
 ) as any as S.Schema<CloudHsmClusterPropertiesHsmsList>;
@@ -1005,7 +1001,7 @@ export const PrivateEndpointConnection = /*@__PURE__*/ S.suspend(() =>
 
 /** List of private endpoint connection resources */
 export type CloudHsmClusterPropertiesPrivateEndpointConnectionsList =
-  ReadonlyArray<PrivateEndpointConnection>;
+  Array<PrivateEndpointConnection>;
 export const CloudHsmClusterPropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection,
@@ -1381,7 +1377,7 @@ export const CloudHsmCluster = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CloudHsmCluster>;
 
 /** The CloudHsmCluster items on this page */
-export type CloudHsmClusterListResultValueList = ReadonlyArray<CloudHsmCluster>;
+export type CloudHsmClusterListResultValueList = Array<CloudHsmCluster>;
 export const CloudHsmClusterListResultValueList = /*@__PURE__*/ S.Array(
   CloudHsmCluster,
 ) as any as S.Schema<CloudHsmClusterListResultValueList>;
@@ -1710,7 +1706,7 @@ export const NetworkInterfaceInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Specifies the list of resource Ids for the network interfaces associated with the dedicated HSM. */
 export type NetworkProfileInputNetworkInterfacesList =
-  ReadonlyArray<NetworkInterfaceInput>;
+  Array<NetworkInterfaceInput>;
 export const NetworkProfileInputNetworkInterfacesList = /*@__PURE__*/ S.Array(
   NetworkInterfaceInput,
 ) as any as S.Schema<NetworkProfileInputNetworkInterfacesList>;
@@ -1764,7 +1760,7 @@ export const SkuName = /*@__PURE__*/ S.String;
 /** SKU of the dedicated HSM */
 export interface Sku {
   /** SKU of the dedicated HSM */
-  name?: SkuName;
+  name?: SkuName | (string & {});
 }
 export const Sku = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1773,7 +1769,7 @@ export const Sku = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Sku" }) as any as S.Schema<Sku>;
 
 /** The availability zones. */
-export type DedicatedHsmCreateOrUpdateRequestZonesList = ReadonlyArray<string>;
+export type DedicatedHsmCreateOrUpdateRequestZonesList = Array<string>;
 export const DedicatedHsmCreateOrUpdateRequestZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DedicatedHsmCreateOrUpdateRequestZonesList>;
@@ -1844,8 +1840,7 @@ export const NetworkInterface = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NetworkInterface>;
 
 /** Specifies the list of resource Ids for the network interfaces associated with the dedicated HSM. */
-export type NetworkProfileNetworkInterfacesList =
-  ReadonlyArray<NetworkInterface>;
+export type NetworkProfileNetworkInterfacesList = Array<NetworkInterface>;
 export const NetworkProfileNetworkInterfacesList = /*@__PURE__*/ S.Array(
   NetworkInterface,
 ) as any as S.Schema<NetworkProfileNetworkInterfacesList>;
@@ -1901,7 +1896,7 @@ export const DedicatedHsmProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DedicatedHsmProperties>;
 
 /** The availability zones. */
-export type DedicatedHsmCreateOrUpdateResponseZonesList = ReadonlyArray<string>;
+export type DedicatedHsmCreateOrUpdateResponseZonesList = Array<string>;
 export const DedicatedHsmCreateOrUpdateResponseZonesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2010,7 +2005,7 @@ export const DedicatedHsmGetResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<DedicatedHsmGetResponseTagsMap>;
 
 /** The availability zones. */
-export type DedicatedHsmGetResponseZonesList = ReadonlyArray<string>;
+export type DedicatedHsmGetResponseZonesList = Array<string>;
 export const DedicatedHsmGetResponseZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DedicatedHsmGetResponseZonesList>;
@@ -2085,7 +2080,7 @@ export const DedicatedHsmTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<DedicatedHsmTagsMap>;
 
 /** The availability zones. */
-export type DedicatedHsmZonesList = ReadonlyArray<string>;
+export type DedicatedHsmZonesList = Array<string>;
 export const DedicatedHsmZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DedicatedHsmZonesList>;
@@ -2126,7 +2121,7 @@ export const DedicatedHsm = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DedicatedHsm" }) as any as S.Schema<DedicatedHsm>;
 
 /** The DedicatedHsm items on this page */
-export type DedicatedHsmListResultValueList = ReadonlyArray<DedicatedHsm>;
+export type DedicatedHsmListResultValueList = Array<DedicatedHsm>;
 export const DedicatedHsmListResultValueList = /*@__PURE__*/ S.Array(
   DedicatedHsm,
 ) as any as S.Schema<DedicatedHsmListResultValueList>;
@@ -2217,8 +2212,7 @@ export const EndpointDetail = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EndpointDetail" }) as any as S.Schema<EndpointDetail>;
 
 /** The Ports and Protocols used when connecting to domainName. */
-export type EndpointDependencyEndpointDetailsList =
-  ReadonlyArray<EndpointDetail>;
+export type EndpointDependencyEndpointDetailsList = Array<EndpointDetail>;
 export const EndpointDependencyEndpointDetailsList = /*@__PURE__*/ S.Array(
   EndpointDetail,
 ) as any as S.Schema<EndpointDependencyEndpointDetailsList>;
@@ -2241,7 +2235,7 @@ export const EndpointDependency = /*@__PURE__*/ S.suspend(() =>
 
 /** The endpoints that dedicated hsm service connects to */
 export type OutboundEnvironmentEndpointEndpointsList =
-  ReadonlyArray<EndpointDependency>;
+  Array<EndpointDependency>;
 export const OutboundEnvironmentEndpointEndpointsList = /*@__PURE__*/ S.Array(
   EndpointDependency,
 ) as any as S.Schema<OutboundEnvironmentEndpointEndpointsList>;
@@ -2264,7 +2258,7 @@ export const OutboundEnvironmentEndpoint = /*@__PURE__*/ S.suspend(() =>
 
 /** The OutboundEnvironmentEndpoint items on this page */
 export type OutboundEnvironmentEndpointCollectionValueList =
-  ReadonlyArray<OutboundEnvironmentEndpoint>;
+  Array<OutboundEnvironmentEndpoint>;
 export const OutboundEnvironmentEndpointCollectionValueList =
   /*@__PURE__*/ S.Array(
     OutboundEnvironmentEndpoint,
@@ -2334,7 +2328,7 @@ export const DedicatedHsmUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<DedicatedHsmUpdateResponseTagsMap>;
 
 /** The availability zones. */
-export type DedicatedHsmUpdateResponseZonesList = ReadonlyArray<string>;
+export type DedicatedHsmUpdateResponseZonesList = Array<string>;
 export const DedicatedHsmUpdateResponseZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DedicatedHsmUpdateResponseZonesList>;
@@ -2443,7 +2437,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = ReadonlyArray<Operation>;
+export type OperationsListResponseValueList = Array<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;
@@ -2491,7 +2485,7 @@ export const PrivateEndpointConnectionsListByCloudHsmClusterRequest =
 
 /** The PrivateEndpointConnection items on this page */
 export type PrivateEndpointConnectionListResultValueList =
-  ReadonlyArray<PrivateEndpointConnection>;
+  Array<PrivateEndpointConnection>;
 export const PrivateEndpointConnectionListResultValueList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection,

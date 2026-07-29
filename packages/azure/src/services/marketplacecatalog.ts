@@ -94,7 +94,7 @@ export type Store =
 export const Store = /*@__PURE__*/ S.String;
 
 /** The list of the storefronts for which this offer is designated */
-export type CatalogItemDeterminedStorefrontsList = ReadonlyArray<Store>;
+export type CatalogItemDeterminedStorefrontsList = Array<Store>;
 export const CatalogItemDeterminedStorefrontsList = /*@__PURE__*/ S.Array(
   Store,
 ) as any as S.Schema<CatalogItemDeterminedStorefrontsList>;
@@ -162,7 +162,7 @@ export const MarketingMaterial = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MarketingMaterial>;
 
 /** Markets for the item */
-export type CatalogItemMarketsList = ReadonlyArray<string>;
+export type CatalogItemMarketsList = Array<string>;
 export const CatalogItemMarketsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CatalogItemMarketsList>;
@@ -180,55 +180,55 @@ export type LegalTermsType = "None" | "EA";
 export const LegalTermsType = /*@__PURE__*/ S.String;
 
 /** List of category IDs the marketplace item belongs to */
-export type CatalogItemCategoryIdsList = ReadonlyArray<string>;
+export type CatalogItemCategoryIdsList = Array<string>;
 export const CatalogItemCategoryIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CatalogItemCategoryIdsList>;
 
 /** List of operating systems the marketplace item supports */
-export type CatalogItemOperatingSystemsList = ReadonlyArray<string>;
+export type CatalogItemOperatingSystemsList = Array<string>;
 export const CatalogItemOperatingSystemsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CatalogItemOperatingSystemsList>;
 
 /** Market states of a service offer */
-export type CatalogItemMarketStatesList = ReadonlyArray<string>;
+export type CatalogItemMarketStatesList = Array<string>;
 export const CatalogItemMarketStatesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CatalogItemMarketStatesList>;
 
 /** List of industry IDs the item belongs to */
-export type CatalogItemIndustryIdsList = ReadonlyArray<string>;
+export type CatalogItemIndustryIdsList = Array<string>;
 export const CatalogItemIndustryIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CatalogItemIndustryIdsList>;
 
 /** List of industry IDs the item belongs to */
-export type CatalogItemPrimaryIndustryList = ReadonlyArray<string>;
+export type CatalogItemPrimaryIndustryList = Array<string>;
 export const CatalogItemPrimaryIndustryList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CatalogItemPrimaryIndustryList>;
 
 /** List of category IDs the item belongs to */
-export type CatalogItemPrimaryCategoriesList = ReadonlyArray<string>;
+export type CatalogItemPrimaryCategoriesList = Array<string>;
 export const CatalogItemPrimaryCategoriesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CatalogItemPrimaryCategoriesList>;
 
 /** List of cloud industry IDs the item belongs to */
-export type CatalogItemCloudIndustryCategoriesList = ReadonlyArray<string>;
+export type CatalogItemCloudIndustryCategoriesList = Array<string>;
 export const CatalogItemCloudIndustryCategoriesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CatalogItemCloudIndustryCategoriesList>;
 
 /** It maps to the list of products the publisher provides with which their offer works */
-export type CatalogItemSupportedProductsList = ReadonlyArray<string>;
+export type CatalogItemSupportedProductsList = Array<string>;
 export const CatalogItemSupportedProductsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CatalogItemSupportedProductsList>;
 
 /** Product categories the offer belongs to */
-export type CatalogItemApplicableProductsList = ReadonlyArray<string>;
+export type CatalogItemApplicableProductsList = Array<string>;
 export const CatalogItemApplicableProductsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CatalogItemApplicableProductsList>;
@@ -247,7 +247,7 @@ export const Competency = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Competency" }) as any as S.Schema<Competency>;
 
 /** Competencies that apply to the offer */
-export type CatalogItemCompetenciesList = ReadonlyArray<Competency>;
+export type CatalogItemCompetenciesList = Array<Competency>;
 export const CatalogItemCompetenciesList = /*@__PURE__*/ S.Array(
   Competency,
 ) as any as S.Schema<CatalogItemCompetenciesList>;
@@ -289,7 +289,7 @@ export const PlanPrice = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PlanPrice" }) as any as S.Schema<PlanPrice>;
 
 /** Plan prices */
-export type PricingPlanPricesList = ReadonlyArray<PlanPrice>;
+export type PricingPlanPricesList = Array<PlanPrice>;
 export const PricingPlanPricesList = /*@__PURE__*/ S.Array(
   PlanPrice,
 ) as any as S.Schema<PricingPlanPricesList>;
@@ -308,7 +308,7 @@ export const Pricing = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Pricing" }) as any as S.Schema<Pricing>;
 
 /** Market states of a service offer */
-export type MarketPricingDetailsItemMarketStatesList = ReadonlyArray<string>;
+export type MarketPricingDetailsItemMarketStatesList = Array<string>;
 export const MarketPricingDetailsItemMarketStatesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<MarketPricingDetailsItemMarketStatesList>;
@@ -335,7 +335,7 @@ export const MarketPricingDetailsItem = /*@__PURE__*/ S.suspend(() =>
 
 /** The pricing details of each market to the item */
 export type CatalogItemMarketPricingDetailsList =
-  ReadonlyArray<MarketPricingDetailsItem>;
+  Array<MarketPricingDetailsItem>;
 export const CatalogItemMarketPricingDetailsList = /*@__PURE__*/ S.Array(
   MarketPricingDetailsItem,
 ) as any as S.Schema<CatalogItemMarketPricingDetailsList>;
@@ -368,13 +368,13 @@ export const MarketStartPrice = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MarketStartPrice>;
 
 /** The states that apply to the item */
-export type CatalogItemSolutionAreasList = ReadonlyArray<string>;
+export type CatalogItemSolutionAreasList = Array<string>;
 export const CatalogItemSolutionAreasList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CatalogItemSolutionAreasList>;
 
 /** List of screenshot image URIs provided for the item */
-export type CatalogItemScreenshotUrisList = ReadonlyArray<string>;
+export type CatalogItemScreenshotUrisList = Array<string>;
 export const CatalogItemScreenshotUrisList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CatalogItemScreenshotUrisList>;
@@ -396,7 +396,7 @@ export const LinkProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LinkProperties" }) as any as S.Schema<LinkProperties>;
 
 /** List of Links provided for the item */
-export type CatalogItemLinksList = ReadonlyArray<LinkProperties>;
+export type CatalogItemLinksList = Array<LinkProperties>;
 export const CatalogItemLinksList = /*@__PURE__*/ S.Array(
   LinkProperties,
 ) as any as S.Schema<CatalogItemLinksList>;
@@ -415,7 +415,7 @@ export const Filter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Filter" }) as any as S.Schema<Filter>;
 
 /** List of filters for the item */
-export type CatalogItemFiltersList = ReadonlyArray<Filter>;
+export type CatalogItemFiltersList = Array<Filter>;
 export const CatalogItemFiltersList = /*@__PURE__*/ S.Array(
   Filter,
 ) as any as S.Schema<CatalogItemFiltersList>;
@@ -447,7 +447,7 @@ export const Artifact = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Artifact" }) as any as S.Schema<Artifact>;
 
 /** List of artifacts */
-export type CatalogItemArtifactsList = ReadonlyArray<Artifact>;
+export type CatalogItemArtifactsList = Array<Artifact>;
 export const CatalogItemArtifactsList = /*@__PURE__*/ S.Array(
   Artifact,
 ) as any as S.Schema<CatalogItemArtifactsList>;
@@ -571,7 +571,7 @@ export const Image = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Image" }) as any as S.Schema<Image>;
 
 /** List of images */
-export type ImageGroupItemsList = ReadonlyArray<Image>;
+export type ImageGroupItemsList = Array<Image>;
 export const ImageGroupItemsList = /*@__PURE__*/ S.Array(
   Image,
 ) as any as S.Schema<ImageGroupItemsList>;
@@ -590,37 +590,37 @@ export const ImageGroup = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ImageGroup" }) as any as S.Schema<ImageGroup>;
 
 /** List of Images */
-export type CatalogItemImagesList = ReadonlyArray<ImageGroup>;
+export type CatalogItemImagesList = Array<ImageGroup>;
 export const CatalogItemImagesList = /*@__PURE__*/ S.Array(
   ImageGroup,
 ) as any as S.Schema<CatalogItemImagesList>;
 
 /** List of product videos */
-export type CatalogItemVideosList = ReadonlyArray<ProductVideo>;
+export type CatalogItemVideosList = Array<ProductVideo>;
 export const CatalogItemVideosList = /*@__PURE__*/ S.Array(
   ProductVideo,
 ) as any as S.Schema<CatalogItemVideosList>;
 
 /** Subscription based restricted audience */
-export type RestrictedAudienceSubscriptionsList = ReadonlyArray<string>;
+export type RestrictedAudienceSubscriptionsList = Array<string>;
 export const RestrictedAudienceSubscriptionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RestrictedAudienceSubscriptionsList>;
 
 /** Tenant based restricted audience */
-export type RestrictedAudienceTenantsList = ReadonlyArray<string>;
+export type RestrictedAudienceTenantsList = Array<string>;
 export const RestrictedAudienceTenantsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RestrictedAudienceTenantsList>;
 
 /** User based restricted audience */
-export type RestrictedAudienceUsersList = ReadonlyArray<string>;
+export type RestrictedAudienceUsersList = Array<string>;
 export const RestrictedAudienceUsersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RestrictedAudienceUsersList>;
 
 /** User groups restricted audience */
-export type RestrictedAudienceGroupsList = ReadonlyArray<string>;
+export type RestrictedAudienceGroupsList = Array<string>;
 export const RestrictedAudienceGroupsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RestrictedAudienceGroupsList>;
@@ -647,13 +647,13 @@ export const RestrictedAudience = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RestrictedAudience>;
 
 /** List of keywords */
-export type PlanKeywordsList = ReadonlyArray<string>;
+export type PlanKeywordsList = Array<string>;
 export const PlanKeywordsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PlanKeywordsList>;
 
 /** List of allowed actions */
-export type AvailabilityEntityActionsList = ReadonlyArray<string>;
+export type AvailabilityEntityActionsList = Array<string>;
 export const AvailabilityEntityActionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AvailabilityEntityActionsList>;
@@ -694,7 +694,7 @@ export const IncludedQuantityProperty = /*@__PURE__*/ S.suspend(() =>
 
 /** Included quantity properties */
 export type MeterIncludedQuantityPropertiesList =
-  ReadonlyArray<IncludedQuantityProperty>;
+  Array<IncludedQuantityProperty>;
 export const MeterIncludedQuantityPropertiesList = /*@__PURE__*/ S.Array(
   IncludedQuantityProperty,
 ) as any as S.Schema<MeterIncludedQuantityPropertiesList>;
@@ -754,8 +754,7 @@ export const TermDescriptionParameter = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TermDescriptionParameter>;
 
 /** Term description parameters */
-export type TermTermDescriptionParametersList =
-  ReadonlyArray<TermDescriptionParameter>;
+export type TermTermDescriptionParametersList = Array<TermDescriptionParameter>;
 export const TermTermDescriptionParametersList = /*@__PURE__*/ S.Array(
   TermDescriptionParameter,
 ) as any as S.Schema<TermTermDescriptionParametersList>;
@@ -831,19 +830,19 @@ export const Term = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Term" }) as any as S.Schema<Term>;
 
 /** List of applicable terms */
-export type AvailabilityEntityTermsList = ReadonlyArray<Term>;
+export type AvailabilityEntityTermsList = Array<Term>;
 export const AvailabilityEntityTermsList = /*@__PURE__*/ S.Array(
   Term,
 ) as any as S.Schema<AvailabilityEntityTermsList>;
 
 /** List of exclusion properties */
-export type PIFilterExclusionPropertiesList = ReadonlyArray<string>;
+export type PIFilterExclusionPropertiesList = Array<string>;
 export const PIFilterExclusionPropertiesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PIFilterExclusionPropertiesList>;
 
 /** List of inclusion properties */
-export type PIFilterInclusionPropertiesList = ReadonlyArray<string>;
+export type PIFilterInclusionPropertiesList = Array<string>;
 export const PIFilterInclusionPropertiesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PIFilterInclusionPropertiesList>;
@@ -862,7 +861,7 @@ export const PIFilter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PIFilter" }) as any as S.Schema<PIFilter>;
 
 /** Asset behaviors */
-export type AvailabilityEntityAssetBehaviorsList = ReadonlyArray<string>;
+export type AvailabilityEntityAssetBehaviorsList = Array<string>;
 export const AvailabilityEntityAssetBehaviorsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AvailabilityEntityAssetBehaviorsList>;
@@ -881,14 +880,14 @@ export const Remediation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Remediation" }) as any as S.Schema<Remediation>;
 
 /** Remediation actions for acquiring availability if RemediationRequired is true */
-export type AvailabilityEntityRemediationsList = ReadonlyArray<Remediation>;
+export type AvailabilityEntityRemediationsList = Array<Remediation>;
 export const AvailabilityEntityRemediationsList = /*@__PURE__*/ S.Array(
   Remediation,
 ) as any as S.Schema<AvailabilityEntityRemediationsList>;
 
 /** Plan availabilities */
 export type AvailabilityEntityPlanAvailabilitiesList =
-  ReadonlyArray<AvailabilityEntity>;
+  Array<AvailabilityEntity>;
 export const AvailabilityEntityPlanAvailabilitiesList = /*@__PURE__*/ S.Array(
   S.suspend(() => AvailabilityEntity),
 ) as any as S.Schema<AvailabilityEntityPlanAvailabilitiesList>;
@@ -972,19 +971,19 @@ export const AvailabilityEntity = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AvailabilityEntity>;
 
 /** List of availabilities for this plan */
-export type PlanAvailabilitiesList = ReadonlyArray<AvailabilityEntity>;
+export type PlanAvailabilitiesList = Array<AvailabilityEntity>;
 export const PlanAvailabilitiesList = /*@__PURE__*/ S.Array(
   AvailabilityEntity,
 ) as any as S.Schema<PlanAvailabilitiesList>;
 
 /** Category IDs for this plan */
-export type PlanCategoryIdsList = ReadonlyArray<string>;
+export type PlanCategoryIdsList = Array<string>;
 export const PlanCategoryIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PlanCategoryIdsList>;
 
 /** Conversion paths for this plan */
-export type PlanConversionPathsList = ReadonlyArray<string>;
+export type PlanConversionPathsList = Array<string>;
 export const PlanConversionPathsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PlanConversionPathsList>;
@@ -1023,7 +1022,7 @@ export const OperatingSystem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperatingSystem>;
 
 /** Files related to the marketplace item */
-export type PlanArtifactsList = ReadonlyArray<Artifact>;
+export type PlanArtifactsList = Array<Artifact>;
 export const PlanArtifactsList = /*@__PURE__*/ S.Array(
   Artifact,
 ) as any as S.Schema<PlanArtifactsList>;
@@ -1034,7 +1033,7 @@ export const CSPState = /*@__PURE__*/ S.String;
 export type VmSecurityType = "None" | "Trusted" | "Confidential";
 export const VmSecurityType = /*@__PURE__*/ S.String;
 
-export type BillingComponentCustomMeterIdsValueList = ReadonlyArray<number>;
+export type BillingComponentCustomMeterIdsValueList = Array<number>;
 export const BillingComponentCustomMeterIdsValueList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<BillingComponentCustomMeterIdsValueList>;
@@ -1064,7 +1063,7 @@ export const BillingComponent = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BillingComponent>;
 
 /** Billing components */
-export type PlanBillingComponentsList = ReadonlyArray<BillingComponent>;
+export type PlanBillingComponentsList = Array<BillingComponent>;
 export const PlanBillingComponentsList = /*@__PURE__*/ S.Array(
   BillingComponent,
 ) as any as S.Schema<PlanBillingComponentsList>;
@@ -1083,8 +1082,7 @@ export const PurchaseDurationDiscount = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PurchaseDurationDiscount>;
 
 /** List of purchase duration discounts */
-export type PlanPurchaseDurationDiscountsList =
-  ReadonlyArray<PurchaseDurationDiscount>;
+export type PlanPurchaseDurationDiscountsList = Array<PurchaseDurationDiscount>;
 export const PlanPurchaseDurationDiscountsList = /*@__PURE__*/ S.Array(
   PurchaseDurationDiscount,
 ) as any as S.Schema<PlanPurchaseDurationDiscountsList>;
@@ -1101,13 +1099,13 @@ export const TermUpn = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TermUpn" }) as any as S.Schema<TermUpn>;
 
 /** List of user principal names(UPNs) */
-export type PlanUpnsList = ReadonlyArray<TermUpn>;
+export type PlanUpnsList = Array<TermUpn>;
 export const PlanUpnsList = /*@__PURE__*/ S.Array(
   TermUpn,
 ) as any as S.Schema<PlanUpnsList>;
 
 /** List of certifications */
-export type PlanCertificationsList = ReadonlyArray<LinkProperties>;
+export type PlanCertificationsList = Array<LinkProperties>;
 export const PlanCertificationsList = /*@__PURE__*/ S.Array(
   LinkProperties,
 ) as any as S.Schema<PlanCertificationsList>;
@@ -1116,7 +1114,7 @@ export type PricingType = "Free" | "FreeTrial" | "Byol" | "Payg" | "Ri";
 export const PricingType = /*@__PURE__*/ S.String;
 
 /** The list of the pricing types for which this plan is designated */
-export type PlanPricingTypesList = ReadonlyArray<PricingType>;
+export type PlanPricingTypesList = Array<PricingType>;
 export const PlanPricingTypesList = /*@__PURE__*/ S.Array(
   PricingType,
 ) as any as S.Schema<PlanPricingTypesList>;
@@ -1282,7 +1280,7 @@ export const Plan = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Plan" }) as any as S.Schema<Plan>;
 
 /** Plans available for the offer details */
-export type CatalogItemPlansList = ReadonlyArray<Plan>;
+export type CatalogItemPlansList = Array<Plan>;
 export const CatalogItemPlansList = /*@__PURE__*/ S.Array(
   Plan,
 ) as any as S.Schema<CatalogItemPlansList>;
@@ -1342,13 +1340,13 @@ export const CatalogItemAdditionalPropertiesMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<CatalogItemAdditionalPropertiesMap>;
 
 /** List of hide keys provided for the item */
-export type CatalogItemHideKeysList = ReadonlyArray<string>;
+export type CatalogItemHideKeysList = Array<string>;
 export const CatalogItemHideKeysList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CatalogItemHideKeysList>;
 
 /** List of keywords provided for the item */
-export type CatalogItemKeywordsList = ReadonlyArray<string>;
+export type CatalogItemKeywordsList = Array<string>;
 export const CatalogItemKeywordsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CatalogItemKeywordsList>;
@@ -1358,7 +1356,7 @@ export type StoreFrontOptions = 0 | 1 | 2 | 4 | 8;
 export const StoreFrontOptions = /*@__PURE__*/ S.Number;
 
 /** The list of document links provided for the item */
-export type CatalogItemDocumentLinksList = ReadonlyArray<LinkProperties>;
+export type CatalogItemDocumentLinksList = Array<LinkProperties>;
 export const CatalogItemDocumentLinksList = /*@__PURE__*/ S.Array(
   LinkProperties,
 ) as any as S.Schema<CatalogItemDocumentLinksList>;
@@ -1368,7 +1366,7 @@ export type EnvironmentInfo = 1 | 2 | 3 | 4 | 5;
 export const EnvironmentInfo = /*@__PURE__*/ S.Number;
 
 /** List of linked Add Ins provided for the item */
-export type CatalogItemLinkedAddInsList = ReadonlyArray<string>;
+export type CatalogItemLinkedAddInsList = Array<string>;
 export const CatalogItemLinkedAddInsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CatalogItemLinkedAddInsList>;
@@ -1382,7 +1380,7 @@ export const CatalogItemLinkedAddInsTypesMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<CatalogItemLinkedAddInsTypesMap>;
 
 /** PBI service principals */
-export type CatalogItemPbiServicePrincipalIdsList = ReadonlyArray<string>;
+export type CatalogItemPbiServicePrincipalIdsList = Array<string>;
 export const CatalogItemPbiServicePrincipalIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CatalogItemPbiServicePrincipalIdsList>;
@@ -1435,7 +1433,7 @@ export const CatalogItemStoreFrontPricingsMap = /*@__PURE__*/ S.Record(
   UIPricing,
 ) as any as S.Schema<CatalogItemStoreFrontPricingsMap>;
 
-export type EnrichedDataTagsList = ReadonlyArray<string>;
+export type EnrichedDataTagsList = Array<string>;
 export const EnrichedDataTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EnrichedDataTagsList>;
@@ -1477,7 +1475,7 @@ export const RatingSummaryStarsDistributionMap = /*@__PURE__*/ S.Record(
   S.Number,
 ) as any as S.Schema<RatingSummaryStarsDistributionMap>;
 
-export type RatingSummaryBucketsList = ReadonlyArray<string>;
+export type RatingSummaryBucketsList = Array<string>;
 export const RatingSummaryBucketsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RatingSummaryBucketsList>;
@@ -1542,25 +1540,25 @@ export type OfficeCapabilityType = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11;
 export const OfficeCapabilityType = /*@__PURE__*/ S.Number;
 
 /** Office capabilities */
-export type CatalogItemCapabilitiesList = ReadonlyArray<OfficeCapabilityType>;
+export type CatalogItemCapabilitiesList = Array<OfficeCapabilityType>;
 export const CatalogItemCapabilitiesList = /*@__PURE__*/ S.Array(
   OfficeCapabilityType,
 ) as any as S.Schema<CatalogItemCapabilitiesList>;
 
 /** the flag is used in embedded views */
-export type CatalogItemAwardsList = ReadonlyArray<string>;
+export type CatalogItemAwardsList = Array<string>;
 export const CatalogItemAwardsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CatalogItemAwardsList>;
 
 /** The list of the pricing types for which this offer is designated */
-export type CatalogItemPricingTypesList = ReadonlyArray<PricingType>;
+export type CatalogItemPricingTypesList = Array<PricingType>;
 export const CatalogItemPricingTypesList = /*@__PURE__*/ S.Array(
   PricingType,
 ) as any as S.Schema<CatalogItemPricingTypesList>;
 
 /** A list of auto run launch events for office products */
-export type CatalogItemAutoRunLaunchEventsList = ReadonlyArray<string>;
+export type CatalogItemAutoRunLaunchEventsList = Array<string>;
 export const CatalogItemAutoRunLaunchEventsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CatalogItemAutoRunLaunchEventsList>;
@@ -1964,7 +1962,7 @@ export const CatalogItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CatalogItem" }) as any as S.Schema<CatalogItem>;
 
 /** Gets the collection of entities for this feed. */
-export type PageResultOfCatalogItemItemsList = ReadonlyArray<CatalogItem>;
+export type PageResultOfCatalogItemItemsList = Array<CatalogItem>;
 export const PageResultOfCatalogItemItemsList = /*@__PURE__*/ S.Array(
   CatalogItem,
 ) as any as S.Schema<PageResultOfCatalogItemItemsList>;
@@ -2007,7 +2005,7 @@ export const GetApiKeysListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetApiKeysListRequest",
 }) as any as S.Schema<GetApiKeysListRequest>;
 
-export type ApiKeysValueList = ReadonlyArray<ApiKey>;
+export type ApiKeysValueList = Array<ApiKey>;
 export const ApiKeysValueList = /*@__PURE__*/ S.Array(
   ApiKey,
 ) as any as S.Schema<ApiKeysValueList>;
@@ -2093,7 +2091,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = ReadonlyArray<Operation>;
+export type OperationsListResponseValueList = Array<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;
@@ -2155,55 +2153,55 @@ export const ProductGetGetByBillingAccountRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ProductGetGetByBillingAccountRequest>;
 
 /** Array of product categories */
-export type ProductDetailsCategoryIdsList = ReadonlyArray<string>;
+export type ProductDetailsCategoryIdsList = Array<string>;
 export const ProductDetailsCategoryIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ProductDetailsCategoryIdsList>;
 
 /** List of industry IDs the item belongs to */
-export type ProductDetailsIndustryIdsList = ReadonlyArray<string>;
+export type ProductDetailsIndustryIdsList = Array<string>;
 export const ProductDetailsIndustryIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ProductDetailsIndustryIdsList>;
 
 /** Displays certification and qualification badges earned by the product for marketplace visibility. - `PreferredSolution` - Microsoft-recognized solution meeting specific quality and partnership criteria - `PowerBICertified` - Certified compatibility and integration with Microsoft Power BI platform - `AdditionalPurchaseRequirement` - Product requires additional purchases or subscriptions for full functionality */
-export type ProductDetailsBadgesList = ReadonlyArray<string>;
+export type ProductDetailsBadgesList = Array<string>;
 export const ProductDetailsBadgesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ProductDetailsBadgesList>;
 
 /** Operating system info for this product */
-export type ProductDetailsOperatingSystemsList = ReadonlyArray<string>;
+export type ProductDetailsOperatingSystemsList = Array<string>;
 export const ProductDetailsOperatingSystemsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ProductDetailsOperatingSystemsList>;
 
 /** Indicates the billing models and cost structures available for the plan. - `Free` - No charge for plan usage, typically for community editions or basic service tiers - `FreeTrial` - Time-limited free access period before transitioning to paid billing model - `Byol` - Bring Your Own License model where customers provide existing software licenses - `Payg` - Pay As You Go consumption-based billing calculated on actual resource usage - `Ri` - Reserved Instance billing with upfront commitment for discounted long-term pricing */
-export type ProductDetailsPricingTypesList = ReadonlyArray<string>;
+export type ProductDetailsPricingTypesList = Array<string>;
 export const ProductDetailsPricingTypesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ProductDetailsPricingTypesList>;
 
 /** Categorizes products by customer rating thresholds for marketplace filtering and discovery. - `AboveOne` - Products with customer ratings exceeding 1.0 stars based on marketplace reviews - `AboveTwo` - Products with customer ratings exceeding 2.0 stars based on marketplace reviews - `AboveThree` - Products with customer ratings exceeding 3.0 stars based on marketplace reviews - `AboveFour` - Products with customer ratings exceeding 4.0 stars based on marketplace reviews */
-export type ProductDetailsRatingBucketsList = ReadonlyArray<string>;
+export type ProductDetailsRatingBucketsList = Array<string>;
 export const ProductDetailsRatingBucketsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ProductDetailsRatingBucketsList>;
 
 /** Maps to the list of compatible products */
-export type ProductDetailsSupportedProductsList = ReadonlyArray<string>;
+export type ProductDetailsSupportedProductsList = Array<string>;
 export const ProductDetailsSupportedProductsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ProductDetailsSupportedProductsList>;
 
 /** Product categories the offer belongs to */
-export type ProductDetailsApplicableProductsList = ReadonlyArray<string>;
+export type ProductDetailsApplicableProductsList = Array<string>;
 export const ProductDetailsApplicableProductsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ProductDetailsApplicableProductsList>;
 
 /** List of locations which are available on the SKUs */
-export type ProductDetailsLocationsList = ReadonlyArray<string>;
+export type ProductDetailsLocationsList = Array<string>;
 export const ProductDetailsLocationsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ProductDetailsLocationsList>;
@@ -2223,7 +2221,7 @@ export const Attribute = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Attribute" }) as any as S.Schema<Attribute>;
 
 /** Set of products attributes */
-export type ProductDetailsAttributesList = ReadonlyArray<Attribute>;
+export type ProductDetailsAttributesList = Array<Attribute>;
 export const ProductDetailsAttributesList = /*@__PURE__*/ S.Array(
   Attribute,
 ) as any as S.Schema<ProductDetailsAttributesList>;
@@ -2266,7 +2264,7 @@ export const ProductVideo_2 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ProductVideo_2" }) as any as S.Schema<ProductVideo_2>;
 
 /** List of product videos */
-export type ProductDetailsVideosList = ReadonlyArray<ProductVideo_2>;
+export type ProductDetailsVideosList = Array<ProductVideo_2>;
 export const ProductDetailsVideosList = /*@__PURE__*/ S.Array(
   ProductVideo_2,
 ) as any as S.Schema<ProductDetailsVideosList>;
@@ -2289,7 +2287,7 @@ export const Image_2 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Image_2" }) as any as S.Schema<Image_2>;
 
 /** List of images */
-export type ImageGroupItemsList_2 = ReadonlyArray<Image_2>;
+export type ImageGroupItemsList_2 = Array<Image_2>;
 export const ImageGroupItemsList_2 = /*@__PURE__*/ S.Array(
   Image_2,
 ) as any as S.Schema<ImageGroupItemsList_2>;
@@ -2309,13 +2307,13 @@ export const ImageGroup_2 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ImageGroup_2" }) as any as S.Schema<ImageGroup_2>;
 
 /** List of Images */
-export type ProductDetailsImagesList = ReadonlyArray<ImageGroup_2>;
+export type ProductDetailsImagesList = Array<ImageGroup_2>;
 export const ProductDetailsImagesList = /*@__PURE__*/ S.Array(
   ImageGroup_2,
 ) as any as S.Schema<ProductDetailsImagesList>;
 
 /** List of linked add ins provided for the item */
-export type ProductDetailsLinkedAddInsList = ReadonlyArray<string>;
+export type ProductDetailsLinkedAddInsList = Array<string>;
 export const ProductDetailsLinkedAddInsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ProductDetailsLinkedAddInsList>;
@@ -2340,13 +2338,13 @@ export const LinkProperties_2 = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LinkProperties_2>;
 
 /** List of Links provided for the item */
-export type ProductDetailsLinksList = ReadonlyArray<LinkProperties_2>;
+export type ProductDetailsLinksList = Array<LinkProperties_2>;
 export const ProductDetailsLinksList = /*@__PURE__*/ S.Array(
   LinkProperties_2,
 ) as any as S.Schema<ProductDetailsLinksList>;
 
 /** List of screenshot image URIs */
-export type ProductDetailsScreenshotUrisList = ReadonlyArray<string>;
+export type ProductDetailsScreenshotUrisList = Array<string>;
 export const ProductDetailsScreenshotUrisList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ProductDetailsScreenshotUrisList>;
@@ -2405,7 +2403,7 @@ export const Artifact_2 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Artifact_2" }) as any as S.Schema<Artifact_2>;
 
 /** List of artifacts */
-export type ProductDetailsArtifactsList = ReadonlyArray<Artifact_2>;
+export type ProductDetailsArtifactsList = Array<Artifact_2>;
 export const ProductDetailsArtifactsList = /*@__PURE__*/ S.Array(
   Artifact_2,
 ) as any as S.Schema<ProductDetailsArtifactsList>;
@@ -2425,25 +2423,25 @@ export const PlanMetadata = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PlanMetadata" }) as any as S.Schema<PlanMetadata>;
 
 /** Plan CategoryIds */
-export type PlanDetailsCategoryIdsList = ReadonlyArray<string>;
+export type PlanDetailsCategoryIdsList = Array<string>;
 export const PlanDetailsCategoryIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PlanDetailsCategoryIdsList>;
 
 /** Indicates the billing models and cost structures available for the plan. - `Free` - No charge for plan usage, typically for community editions or basic service tiers - `FreeTrial` - Time-limited free access period before transitioning to paid billing model - `Byol` - Bring Your Own License model where customers provide existing software licenses - `Payg` - Pay As You Go consumption-based billing calculated on actual resource usage - `Ri` - Reserved Instance billing with upfront commitment for discounted long-term pricing */
-export type PlanDetailsPricingTypesList = ReadonlyArray<string>;
+export type PlanDetailsPricingTypesList = Array<string>;
 export const PlanDetailsPricingTypesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PlanDetailsPricingTypesList>;
 
 /** Defines the security enhancement level for virtual machine deployments. Applies exclusively to Virtual Machine product types. - `None` - Standard virtual machine security without additional protection features - `Trusted` - Trusted Launch security with secure boot and virtual Trusted Platform Module capabilities - `Confidential` - Confidential computing with memory encryption and attestation for sensitive workloads */
-export type PlanDetailsVmSecuritytypesList = ReadonlyArray<string>;
+export type PlanDetailsVmSecuritytypesList = Array<string>;
 export const PlanDetailsVmSecuritytypesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PlanDetailsVmSecuritytypesList>;
 
 /** List of allowed actions */
-export type AvailabilityActionsList = ReadonlyArray<string>;
+export type AvailabilityActionsList = Array<string>;
 export const AvailabilityActionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AvailabilityActionsList>;
@@ -2486,7 +2484,7 @@ export const IncludedQuantityProperty_2 = /*@__PURE__*/ S.suspend(() =>
 
 /** Included quantity properties */
 export type MeterIncludedQuantityPropertiesList_2 =
-  ReadonlyArray<IncludedQuantityProperty_2>;
+  Array<IncludedQuantityProperty_2>;
 export const MeterIncludedQuantityPropertiesList_2 = /*@__PURE__*/ S.Array(
   IncludedQuantityProperty_2,
 ) as any as S.Schema<MeterIncludedQuantityPropertiesList_2>;
@@ -2537,7 +2535,7 @@ export const TermDescriptionParameter_2 = /*@__PURE__*/ S.suspend(() =>
 
 /** Term description parameters */
 export type TermTermDescriptionParametersList_2 =
-  ReadonlyArray<TermDescriptionParameter_2>;
+  Array<TermDescriptionParameter_2>;
 export const TermTermDescriptionParametersList_2 = /*@__PURE__*/ S.Array(
   TermDescriptionParameter_2,
 ) as any as S.Schema<TermTermDescriptionParametersList_2>;
@@ -2595,7 +2593,7 @@ export const LifecyclePolicy = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LifecyclePolicy>;
 
 /** Term Actions */
-export type TermActionsList = ReadonlyArray<string>;
+export type TermActionsList = Array<string>;
 export const TermActionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<TermActionsList>;
@@ -2654,7 +2652,7 @@ export const Term_2 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Term_2" }) as any as S.Schema<Term_2>;
 
 /** List of applicable terms */
-export type AvailabilityTermsList = ReadonlyArray<Term_2>;
+export type AvailabilityTermsList = Array<Term_2>;
 export const AvailabilityTermsList = /*@__PURE__*/ S.Array(
   Term_2,
 ) as any as S.Schema<AvailabilityTermsList>;
@@ -2692,13 +2690,13 @@ export const Availability = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Availability" }) as any as S.Schema<Availability>;
 
 /** List of availabilities for this plan */
-export type PlanDetailsAvailabilitiesList = ReadonlyArray<Availability>;
+export type PlanDetailsAvailabilitiesList = Array<Availability>;
 export const PlanDetailsAvailabilitiesList = /*@__PURE__*/ S.Array(
   Availability,
 ) as any as S.Schema<PlanDetailsAvailabilitiesList>;
 
 /** Files related to the marketplace item */
-export type PlanDetailsArtifactsList = ReadonlyArray<Artifact_2>;
+export type PlanDetailsArtifactsList = Array<Artifact_2>;
 export const PlanDetailsArtifactsList = /*@__PURE__*/ S.Array(
   Artifact_2,
 ) as any as S.Schema<PlanDetailsArtifactsList>;
@@ -2717,8 +2715,7 @@ export const BillingComponent_2 = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BillingComponent_2>;
 
 /** Billing components */
-export type PlanDetailsBillingComponentsList =
-  ReadonlyArray<BillingComponent_2>;
+export type PlanDetailsBillingComponentsList = Array<BillingComponent_2>;
 export const PlanDetailsBillingComponentsList = /*@__PURE__*/ S.Array(
   BillingComponent_2,
 ) as any as S.Schema<PlanDetailsBillingComponentsList>;
@@ -2741,25 +2738,25 @@ export const PurchaseDurationDiscount_2 = /*@__PURE__*/ S.suspend(() =>
 
 /** List of purchase duration discounts */
 export type PlanDetailsPurchaseDurationDiscountsList =
-  ReadonlyArray<PurchaseDurationDiscount_2>;
+  Array<PurchaseDurationDiscount_2>;
 export const PlanDetailsPurchaseDurationDiscountsList = /*@__PURE__*/ S.Array(
   PurchaseDurationDiscount_2,
 ) as any as S.Schema<PlanDetailsPurchaseDurationDiscountsList>;
 
 /** List of certifications */
-export type PlanDetailsCertificationsList = ReadonlyArray<LinkProperties_2>;
+export type PlanDetailsCertificationsList = Array<LinkProperties_2>;
 export const PlanDetailsCertificationsList = /*@__PURE__*/ S.Array(
   LinkProperties_2,
 ) as any as S.Schema<PlanDetailsCertificationsList>;
 
 /** Plan labels */
-export type PlanDetailsPlanLabelsList = ReadonlyArray<string>;
+export type PlanDetailsPlanLabelsList = Array<string>;
 export const PlanDetailsPlanLabelsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PlanDetailsPlanLabelsList>;
 
 /** Set of SKU attributes (varies per sku type), where each attribute is represented by a pair of key (attribute name) and value(attribute value) */
-export type PlanDetailsSkuAttributesList = ReadonlyArray<Attribute>;
+export type PlanDetailsSkuAttributesList = Array<Attribute>;
 export const PlanDetailsSkuAttributesList = /*@__PURE__*/ S.Array(
   Attribute,
 ) as any as S.Schema<PlanDetailsSkuAttributesList>;
@@ -2825,8 +2822,7 @@ export const OfferingProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OfferingProperties>;
 
 /** SKU price related properties. */
-export type PlanDetailsOfferingPropertiesList =
-  ReadonlyArray<OfferingProperties>;
+export type PlanDetailsOfferingPropertiesList = Array<OfferingProperties>;
 export const PlanDetailsOfferingPropertiesList = /*@__PURE__*/ S.Array(
   OfferingProperties,
 ) as any as S.Schema<PlanDetailsOfferingPropertiesList>;
@@ -2865,7 +2861,7 @@ export const ProductFulfillmentConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** Bundled products included defining additional product/SKU combinations */
 export type FulfillmentDataAdditionalProductsList =
-  ReadonlyArray<ProductFulfillmentConfig>;
+  Array<ProductFulfillmentConfig>;
 export const FulfillmentDataAdditionalProductsList = /*@__PURE__*/ S.Array(
   ProductFulfillmentConfig,
 ) as any as S.Schema<FulfillmentDataAdditionalProductsList>;
@@ -2910,7 +2906,7 @@ export const Benefit = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Benefit" }) as any as S.Schema<Benefit>;
 
 /** Provides promotion data */
-export type PlanDetailsBenefitsList = ReadonlyArray<Benefit>;
+export type PlanDetailsBenefitsList = Array<Benefit>;
 export const PlanDetailsBenefitsList = /*@__PURE__*/ S.Array(
   Benefit,
 ) as any as S.Schema<PlanDetailsBenefitsList>;
@@ -2935,8 +2931,7 @@ export const MinMaxSeatsConstraint = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MinMaxSeatsConstraint>;
 
 /** Seat constraint configurations defining minimum and maximum seat limits */
-export type ConstraintsDataSeatConstraintsList =
-  ReadonlyArray<MinMaxSeatsConstraint>;
+export type ConstraintsDataSeatConstraintsList = Array<MinMaxSeatsConstraint>;
 export const ConstraintsDataSeatConstraintsList = /*@__PURE__*/ S.Array(
   MinMaxSeatsConstraint,
 ) as any as S.Schema<ConstraintsDataSeatConstraintsList>;
@@ -2962,13 +2957,13 @@ export const AssetOwnershipLimit = /*@__PURE__*/ S.suspend(() =>
 
 /** Asset ownership limits */
 export type ConstraintsDataAssetOwnershipLimitsList =
-  ReadonlyArray<AssetOwnershipLimit>;
+  Array<AssetOwnershipLimit>;
 export const ConstraintsDataAssetOwnershipLimitsList = /*@__PURE__*/ S.Array(
   AssetOwnershipLimit,
 ) as any as S.Schema<ConstraintsDataAssetOwnershipLimitsList>;
 
 /** SKU IDs */
-export type PrerequisiteSetSkuIdsList = ReadonlyArray<string>;
+export type PrerequisiteSetSkuIdsList = Array<string>;
 export const PrerequisiteSetSkuIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PrerequisiteSetSkuIdsList>;
@@ -2990,13 +2985,13 @@ export const PrerequisiteSet = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrerequisiteSet>;
 
 /** Prerequisite sets where all specified SKUs must be owned */
-export type PrerequisitesMustHaveAllList = ReadonlyArray<PrerequisiteSet>;
+export type PrerequisitesMustHaveAllList = Array<PrerequisiteSet>;
 export const PrerequisitesMustHaveAllList = /*@__PURE__*/ S.Array(
   PrerequisiteSet,
 ) as any as S.Schema<PrerequisitesMustHaveAllList>;
 
 /** Prerequisite sets where any one of the specified SKUs must be owned */
-export type PrerequisitesMustHaveAnyList = ReadonlyArray<PrerequisiteSet>;
+export type PrerequisitesMustHaveAnyList = Array<PrerequisiteSet>;
 export const PrerequisitesMustHaveAnyList = /*@__PURE__*/ S.Array(
   PrerequisiteSet,
 ) as any as S.Schema<PrerequisitesMustHaveAnyList>;
@@ -3022,7 +3017,7 @@ export const MinMaxPercentageSeatsConstraint = /*@__PURE__*/ S.suspend(() =>
 
 /** Percentage-based seat constraints for prerequisite SKUs */
 export type PrerequisitesSeatConstraintsList =
-  ReadonlyArray<MinMaxPercentageSeatsConstraint>;
+  Array<MinMaxPercentageSeatsConstraint>;
 export const PrerequisitesSeatConstraintsList = /*@__PURE__*/ S.Array(
   MinMaxPercentageSeatsConstraint,
 ) as any as S.Schema<PrerequisitesSeatConstraintsList>;
@@ -3096,8 +3091,7 @@ export const MeterTypeDescription = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MeterTypeDescription>;
 
 /** Meter type descriptions */
-export type PlanDetailsMeterTypeDescriptionsList =
-  ReadonlyArray<MeterTypeDescription>;
+export type PlanDetailsMeterTypeDescriptionsList = Array<MeterTypeDescription>;
 export const PlanDetailsMeterTypeDescriptionsList = /*@__PURE__*/ S.Array(
   MeterTypeDescription,
 ) as any as S.Schema<PlanDetailsMeterTypeDescriptionsList>;
@@ -3302,7 +3296,7 @@ export const PlanDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PlanDetails" }) as any as S.Schema<PlanDetails>;
 
 /** Full set of plan/SKU attributes */
-export type ProductDetailsPlansList = ReadonlyArray<PlanDetails>;
+export type ProductDetailsPlansList = Array<PlanDetails>;
 export const ProductDetailsPlansList = /*@__PURE__*/ S.Array(
   PlanDetails,
 ) as any as S.Schema<ProductDetailsPlansList>;
@@ -3682,79 +3676,79 @@ export const ProductListListByBillingAccountRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ProductListListByBillingAccountRequest>;
 
 /** Array of product categories */
-export type ProductSummaryCategoryIdsList = ReadonlyArray<string>;
+export type ProductSummaryCategoryIdsList = Array<string>;
 export const ProductSummaryCategoryIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ProductSummaryCategoryIdsList>;
 
 /** List of industry IDs the item belongs to */
-export type ProductSummaryIndustryIdsList = ReadonlyArray<string>;
+export type ProductSummaryIndustryIdsList = Array<string>;
 export const ProductSummaryIndustryIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ProductSummaryIndustryIdsList>;
 
 /** Displays certification and qualification badges earned by the product for marketplace visibility. - `PreferredSolution` - Microsoft-recognized solution meeting specific quality and partnership criteria - `PowerBICertified` - Certified compatibility and integration with Microsoft Power BI platform - `AdditionalPurchaseRequirement` - Product requires additional purchases or subscriptions for full functionality */
-export type ProductSummaryBadgesList = ReadonlyArray<string>;
+export type ProductSummaryBadgesList = Array<string>;
 export const ProductSummaryBadgesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ProductSummaryBadgesList>;
 
 /** Operating system info for this product */
-export type ProductSummaryOperatingSystemsList = ReadonlyArray<string>;
+export type ProductSummaryOperatingSystemsList = Array<string>;
 export const ProductSummaryOperatingSystemsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ProductSummaryOperatingSystemsList>;
 
 /** Indicates the billing models and cost structures available for the plan. - `Free` - No charge for plan usage, typically for community editions or basic service tiers - `FreeTrial` - Time-limited free access period before transitioning to paid billing model - `Byol` - Bring Your Own License model where customers provide existing software licenses - `Payg` - Pay As You Go consumption-based billing calculated on actual resource usage - `Ri` - Reserved Instance billing with upfront commitment for discounted long-term pricing */
-export type ProductSummaryPricingTypesList = ReadonlyArray<string>;
+export type ProductSummaryPricingTypesList = Array<string>;
 export const ProductSummaryPricingTypesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ProductSummaryPricingTypesList>;
 
 /** Categorizes products by customer rating thresholds for marketplace filtering and discovery. - `AboveOne` - Products with customer ratings exceeding 1.0 stars based on marketplace reviews - `AboveTwo` - Products with customer ratings exceeding 2.0 stars based on marketplace reviews - `AboveThree` - Products with customer ratings exceeding 3.0 stars based on marketplace reviews - `AboveFour` - Products with customer ratings exceeding 4.0 stars based on marketplace reviews */
-export type ProductSummaryRatingBucketsList = ReadonlyArray<string>;
+export type ProductSummaryRatingBucketsList = Array<string>;
 export const ProductSummaryRatingBucketsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ProductSummaryRatingBucketsList>;
 
 /** Maps to the list of compatible products */
-export type ProductSummarySupportedProductsList = ReadonlyArray<string>;
+export type ProductSummarySupportedProductsList = Array<string>;
 export const ProductSummarySupportedProductsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ProductSummarySupportedProductsList>;
 
 /** Product categories the offer belongs to */
-export type ProductSummaryApplicableProductsList = ReadonlyArray<string>;
+export type ProductSummaryApplicableProductsList = Array<string>;
 export const ProductSummaryApplicableProductsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ProductSummaryApplicableProductsList>;
 
 /** List of locations which are available on the SKUs */
-export type ProductSummaryLocationsList = ReadonlyArray<string>;
+export type ProductSummaryLocationsList = Array<string>;
 export const ProductSummaryLocationsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ProductSummaryLocationsList>;
 
 /** Set of products attributes */
-export type ProductSummaryAttributesList = ReadonlyArray<Attribute>;
+export type ProductSummaryAttributesList = Array<Attribute>;
 export const ProductSummaryAttributesList = /*@__PURE__*/ S.Array(
   Attribute,
 ) as any as S.Schema<ProductSummaryAttributesList>;
 
 /** Plan CategoryIds */
-export type PlanSummaryCategoryIdsList = ReadonlyArray<string>;
+export type PlanSummaryCategoryIdsList = Array<string>;
 export const PlanSummaryCategoryIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PlanSummaryCategoryIdsList>;
 
 /** Indicates the billing models and cost structures available for the plan. - `Free` - No charge for plan usage, typically for community editions or basic service tiers - `FreeTrial` - Time-limited free access period before transitioning to paid billing model - `Byol` - Bring Your Own License model where customers provide existing software licenses - `Payg` - Pay As You Go consumption-based billing calculated on actual resource usage - `Ri` - Reserved Instance billing with upfront commitment for discounted long-term pricing */
-export type PlanSummaryPricingTypesList = ReadonlyArray<string>;
+export type PlanSummaryPricingTypesList = Array<string>;
 export const PlanSummaryPricingTypesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PlanSummaryPricingTypesList>;
 
 /** Defines the security enhancement level for virtual machine deployments. Applies exclusively to Virtual Machine product types. - `None` - Standard virtual machine security without additional protection features - `Trusted` - Trusted Launch security with secure boot and virtual Trusted Platform Module capabilities - `Confidential` - Confidential computing with memory encryption and attestation for sensitive workloads */
-export type PlanSummaryVmSecuritytypesList = ReadonlyArray<string>;
+export type PlanSummaryVmSecuritytypesList = Array<string>;
 export const PlanSummaryVmSecuritytypesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PlanSummaryVmSecuritytypesList>;
@@ -3828,7 +3822,7 @@ export const PlanSummary = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PlanSummary" }) as any as S.Schema<PlanSummary>;
 
 /** Full set of plan/SKU attributes */
-export type ProductSummaryPlansList = ReadonlyArray<PlanSummary>;
+export type ProductSummaryPlansList = Array<PlanSummary>;
 export const ProductSummaryPlansList = /*@__PURE__*/ S.Array(
   PlanSummary,
 ) as any as S.Schema<ProductSummaryPlansList>;
@@ -3950,7 +3944,7 @@ export const ProductSummary = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ProductSummary" }) as any as S.Schema<ProductSummary>;
 
 /** The items on this page */
-export type ProductSummaryListResultValueList = ReadonlyArray<ProductSummary>;
+export type ProductSummaryListResultValueList = Array<ProductSummary>;
 export const ProductSummaryListResultValueList = /*@__PURE__*/ S.Array(
   ProductSummary,
 ) as any as S.Schema<ProductSummaryListResultValueList>;
@@ -4128,34 +4122,32 @@ export const RevokeApiKeyPostResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "RevokeApiKeyPostResponse",
 }) as any as S.Schema<RevokeApiKeyPostResponse>;
 
-export type SearchPostArmRequestLanguagesList = ReadonlyArray<string>;
+export type SearchPostArmRequestLanguagesList = Array<string>;
 export const SearchPostArmRequestLanguagesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SearchPostArmRequestLanguagesList>;
 
-export type SearchPostArmRequestStoresList = ReadonlyArray<
-  Store | (string & {})
->;
+export type SearchPostArmRequestStoresList = Array<Store | (string & {})>;
 export const SearchPostArmRequestStoresList = /*@__PURE__*/ S.Array(
   Store,
 ) as any as S.Schema<SearchPostArmRequestStoresList>;
 
-export type SearchPostArmRequestSelectList = ReadonlyArray<string>;
+export type SearchPostArmRequestSelectList = Array<string>;
 export const SearchPostArmRequestSelectList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SearchPostArmRequestSelectList>;
 
-export type SearchPostArmRequestSortByList = ReadonlyArray<string>;
+export type SearchPostArmRequestSortByList = Array<string>;
 export const SearchPostArmRequestSortByList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SearchPostArmRequestSortByList>;
 
-export type SearchPostArmRequestOfferTypesList = ReadonlyArray<string>;
+export type SearchPostArmRequestOfferTypesList = Array<string>;
 export const SearchPostArmRequestOfferTypesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SearchPostArmRequestOfferTypesList>;
 
-export type SearchPostArmRequestPricingTypesList = ReadonlyArray<
+export type SearchPostArmRequestPricingTypesList = Array<
   PricingType | (string & {})
 >;
 export const SearchPostArmRequestPricingTypesList = /*@__PURE__*/ S.Array(
@@ -4168,7 +4160,7 @@ export type PrivateStoreAllow =
   | "NonAllowed";
 export const PrivateStoreAllow = /*@__PURE__*/ S.String;
 
-export type SearchPostArmRequestPrivateStoreAllowancesList = ReadonlyArray<
+export type SearchPostArmRequestPrivateStoreAllowancesList = Array<
   PrivateStoreAllow | (string & {})
 >;
 export const SearchPostArmRequestPrivateStoreAllowancesList =
@@ -4176,41 +4168,40 @@ export const SearchPostArmRequestPrivateStoreAllowancesList =
     PrivateStoreAllow,
   ) as any as S.Schema<SearchPostArmRequestPrivateStoreAllowancesList>;
 
-export type SearchPostArmRequestAppSourceIndustriesList = ReadonlyArray<string>;
+export type SearchPostArmRequestAppSourceIndustriesList = Array<string>;
 export const SearchPostArmRequestAppSourceIndustriesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<SearchPostArmRequestAppSourceIndustriesList>;
 
-export type SearchPostArmRequestOperatingSystemsList = ReadonlyArray<string>;
+export type SearchPostArmRequestOperatingSystemsList = Array<string>;
 export const SearchPostArmRequestOperatingSystemsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SearchPostArmRequestOperatingSystemsList>;
 
-export type SearchPostArmRequestAppSourceCategoriesList = ReadonlyArray<string>;
+export type SearchPostArmRequestAppSourceCategoriesList = Array<string>;
 export const SearchPostArmRequestAppSourceCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<SearchPostArmRequestAppSourceCategoriesList>;
 
-export type SearchPostArmRequestAzureIndustriesList = ReadonlyArray<string>;
+export type SearchPostArmRequestAzureIndustriesList = Array<string>;
 export const SearchPostArmRequestAzureIndustriesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SearchPostArmRequestAzureIndustriesList>;
 
-export type SearchPostArmRequestAzureCategoriesList = ReadonlyArray<string>;
+export type SearchPostArmRequestAzureCategoriesList = Array<string>;
 export const SearchPostArmRequestAzureCategoriesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SearchPostArmRequestAzureCategoriesList>;
 
-export type SearchPostArmRequestAzurePortalCategoriesList =
-  ReadonlyArray<string>;
+export type SearchPostArmRequestAzurePortalCategoriesList = Array<string>;
 export const SearchPostArmRequestAzurePortalCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<SearchPostArmRequestAzurePortalCategoriesList>;
 
-export type SearchPostArmRequestFacetsList = ReadonlyArray<string>;
+export type SearchPostArmRequestFacetsList = Array<string>;
 export const SearchPostArmRequestFacetsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SearchPostArmRequestFacetsList>;
@@ -4302,7 +4293,7 @@ export const FacetValueDto = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "FacetValueDto" }) as any as S.Schema<FacetValueDto>;
 
-export type FacetsItemDtoFacetValuesList = ReadonlyArray<FacetValueDto>;
+export type FacetsItemDtoFacetValuesList = Array<FacetValueDto>;
 export const FacetsItemDtoFacetValuesList = /*@__PURE__*/ S.Array(
   FacetValueDto,
 ) as any as S.Schema<FacetsItemDtoFacetValuesList>;
@@ -4318,52 +4309,52 @@ export const FacetsItemDto = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "FacetsItemDto" }) as any as S.Schema<FacetsItemDto>;
 
-export type SearchResponseDtoFacetsList = ReadonlyArray<FacetsItemDto>;
+export type SearchResponseDtoFacetsList = Array<FacetsItemDto>;
 export const SearchResponseDtoFacetsList = /*@__PURE__*/ S.Array(
   FacetsItemDto,
 ) as any as S.Schema<SearchResponseDtoFacetsList>;
 
-export type SearchItemDtoApplicableProductsList = ReadonlyArray<string>;
+export type SearchItemDtoApplicableProductsList = Array<string>;
 export const SearchItemDtoApplicableProductsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SearchItemDtoApplicableProductsList>;
 
-export type SearchItemDtoAppSourceCategoriesList = ReadonlyArray<string>;
+export type SearchItemDtoAppSourceCategoriesList = Array<string>;
 export const SearchItemDtoAppSourceCategoriesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SearchItemDtoAppSourceCategoriesList>;
 
-export type SearchItemDtoAppSourceIndustriesList = ReadonlyArray<string>;
+export type SearchItemDtoAppSourceIndustriesList = Array<string>;
 export const SearchItemDtoAppSourceIndustriesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SearchItemDtoAppSourceIndustriesList>;
 
-export type SearchItemDtoAzureCategoriesList = ReadonlyArray<string>;
+export type SearchItemDtoAzureCategoriesList = Array<string>;
 export const SearchItemDtoAzureCategoriesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SearchItemDtoAzureCategoriesList>;
 
-export type SearchItemDtoAzurePortalCategoriesList = ReadonlyArray<string>;
+export type SearchItemDtoAzurePortalCategoriesList = Array<string>;
 export const SearchItemDtoAzurePortalCategoriesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SearchItemDtoAzurePortalCategoriesList>;
 
-export type SearchItemDtoAzureIndustriesList = ReadonlyArray<string>;
+export type SearchItemDtoAzureIndustriesList = Array<string>;
 export const SearchItemDtoAzureIndustriesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SearchItemDtoAzureIndustriesList>;
 
-export type SearchItemDtoCspStatesList = ReadonlyArray<string>;
+export type SearchItemDtoCspStatesList = Array<string>;
 export const SearchItemDtoCspStatesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SearchItemDtoCspStatesList>;
 
-export type SearchItemDtoDeterminedStorefrontsList = ReadonlyArray<string>;
+export type SearchItemDtoDeterminedStorefrontsList = Array<string>;
 export const SearchItemDtoDeterminedStorefrontsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SearchItemDtoDeterminedStorefrontsList>;
 
-export type SearchItemDtoOperatingSystemsList = ReadonlyArray<string>;
+export type SearchItemDtoOperatingSystemsList = Array<string>;
 export const SearchItemDtoOperatingSystemsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SearchItemDtoOperatingSystemsList>;
@@ -4413,27 +4404,27 @@ export const PlanDto = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PlanDto" }) as any as S.Schema<PlanDto>;
 
-export type SearchItemDtoPlansList = ReadonlyArray<PlanDto>;
+export type SearchItemDtoPlansList = Array<PlanDto>;
 export const SearchItemDtoPlansList = /*@__PURE__*/ S.Array(
   PlanDto,
 ) as any as S.Schema<SearchItemDtoPlansList>;
 
-export type SearchItemDtoPricingTypesList = ReadonlyArray<string>;
+export type SearchItemDtoPricingTypesList = Array<string>;
 export const SearchItemDtoPricingTypesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SearchItemDtoPricingTypesList>;
 
-export type SearchItemDtoVmGenerationsList = ReadonlyArray<string>;
+export type SearchItemDtoVmGenerationsList = Array<string>;
 export const SearchItemDtoVmGenerationsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SearchItemDtoVmGenerationsList>;
 
-export type SearchItemDtoVmImageTypesList = ReadonlyArray<string>;
+export type SearchItemDtoVmImageTypesList = Array<string>;
 export const SearchItemDtoVmImageTypesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SearchItemDtoVmImageTypesList>;
 
-export type SearchItemDtoVmSecurityTypesList = ReadonlyArray<string>;
+export type SearchItemDtoVmSecurityTypesList = Array<string>;
 export const SearchItemDtoVmSecurityTypesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SearchItemDtoVmSecurityTypesList>;
@@ -4521,7 +4512,7 @@ export const SearchItemDto = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SearchItemDto" }) as any as S.Schema<SearchItemDto>;
 
-export type SearchResponseDtoResultsList = ReadonlyArray<SearchItemDto>;
+export type SearchResponseDtoResultsList = Array<SearchItemDto>;
 export const SearchResponseDtoResultsList = /*@__PURE__*/ S.Array(
   SearchItemDto,
 ) as any as S.Schema<SearchResponseDtoResultsList>;
@@ -4588,7 +4579,7 @@ export const Attribute_2 = /*@__PURE__*/ S.suspend(() =>
 
 /** The product attributes. */
 export type SkusGetByBillingAccountResponseProductAttributesList =
-  ReadonlyArray<Attribute_2>;
+  Array<Attribute_2>;
 export const SkusGetByBillingAccountResponseProductAttributesList =
   /*@__PURE__*/ S.Array(
     Attribute_2,
@@ -4596,7 +4587,7 @@ export const SkusGetByBillingAccountResponseProductAttributesList =
 
 /** The SKU attributes. */
 export type SkusGetByBillingAccountResponseSkuAttributesList =
-  ReadonlyArray<Attribute_2>;
+  Array<Attribute_2>;
 export const SkusGetByBillingAccountResponseSkuAttributesList =
   /*@__PURE__*/ S.Array(
     Attribute_2,
@@ -4666,96 +4657,95 @@ export const OfferingProperties_2 = /*@__PURE__*/ S.suspend(() =>
 
 /** Offering properties such as: product code (UPN), term id, meter type, offering id. */
 export type SkusGetByBillingAccountResponseOfferingPropertiesList =
-  ReadonlyArray<OfferingProperties_2>;
+  Array<OfferingProperties_2>;
 export const SkusGetByBillingAccountResponseOfferingPropertiesList =
   /*@__PURE__*/ S.Array(
     OfferingProperties_2,
   ) as any as S.Schema<SkusGetByBillingAccountResponseOfferingPropertiesList>;
 
 /** AAD SKU identifiers. */
-export type SkuAlternateIdsAadSkuIdList = ReadonlyArray<string>;
+export type SkuAlternateIdsAadSkuIdList = Array<string>;
 export const SkuAlternateIdsAadSkuIdList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SkuAlternateIdsAadSkuIdList>;
 
 /** Legacy offer GUID identifiers. */
-export type SkuAlternateIdsLegacyOfferGuidList = ReadonlyArray<string>;
+export type SkuAlternateIdsLegacyOfferGuidList = Array<string>;
 export const SkuAlternateIdsLegacyOfferGuidList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SkuAlternateIdsLegacyOfferGuidList>;
 
 /** Applicable promotion identifiers. */
-export type SkuAlternateIdsApplicablePromotionList = ReadonlyArray<string>;
+export type SkuAlternateIdsApplicablePromotionList = Array<string>;
 export const SkuAlternateIdsApplicablePromotionList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SkuAlternateIdsApplicablePromotionList>;
 
 /** Add-on parent identifiers. */
-export type SkuAlternateIdsAddOnParentList = ReadonlyArray<string>;
+export type SkuAlternateIdsAddOnParentList = Array<string>;
 export const SkuAlternateIdsAddOnParentList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SkuAlternateIdsAddOnParentList>;
 
 /** Applicable future price concession identifiers. */
-export type SkuAlternateIdsApplicableFuturePriceConcessionList =
-  ReadonlyArray<string>;
+export type SkuAlternateIdsApplicableFuturePriceConcessionList = Array<string>;
 export const SkuAlternateIdsApplicableFuturePriceConcessionList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<SkuAlternateIdsApplicableFuturePriceConcessionList>;
 
 /** Benefit SKU identifiers. */
-export type SkuAlternateIdsBenefitSkuList = ReadonlyArray<string>;
+export type SkuAlternateIdsBenefitSkuList = Array<string>;
 export const SkuAlternateIdsBenefitSkuList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SkuAlternateIdsBenefitSkuList>;
 
 /** Included in bundle identifiers. */
-export type SkuAlternateIdsIncludedInBundleList = ReadonlyArray<string>;
+export type SkuAlternateIdsIncludedInBundleList = Array<string>;
 export const SkuAlternateIdsIncludedInBundleList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SkuAlternateIdsIncludedInBundleList>;
 
 /** Associated SKU identifiers. */
-export type SkuAlternateIdsAssociatedSkuList = ReadonlyArray<string>;
+export type SkuAlternateIdsAssociatedSkuList = Array<string>;
 export const SkuAlternateIdsAssociatedSkuList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SkuAlternateIdsAssociatedSkuList>;
 
 /** Applicable promotion product identifiers. */
-export type ProductAlternateIdsApplicablePromotionList = ReadonlyArray<string>;
+export type ProductAlternateIdsApplicablePromotionList = Array<string>;
 export const ProductAlternateIdsApplicablePromotionList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ProductAlternateIdsApplicablePromotionList>;
 
 /** Add-on parent product identifiers. */
-export type ProductAlternateIdsAddOnParentList = ReadonlyArray<string>;
+export type ProductAlternateIdsAddOnParentList = Array<string>;
 export const ProductAlternateIdsAddOnParentList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ProductAlternateIdsAddOnParentList>;
 
 /** Applicable future price concession product identifiers. */
 export type ProductAlternateIdsApplicableFuturePriceConcessionList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ProductAlternateIdsApplicableFuturePriceConcessionList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ProductAlternateIdsApplicableFuturePriceConcessionList>;
 
 /** Benefit SKU product identifiers. */
-export type ProductAlternateIdsBenefitSkuList = ReadonlyArray<string>;
+export type ProductAlternateIdsBenefitSkuList = Array<string>;
 export const ProductAlternateIdsBenefitSkuList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ProductAlternateIdsBenefitSkuList>;
 
 /** Included in bundle product identifiers. */
-export type ProductAlternateIdsIncludedInBundleList = ReadonlyArray<string>;
+export type ProductAlternateIdsIncludedInBundleList = Array<string>;
 export const ProductAlternateIdsIncludedInBundleList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ProductAlternateIdsIncludedInBundleList>;
 
 /** Associated SKU product identifiers. */
-export type ProductAlternateIdsAssociatedSkuList = ReadonlyArray<string>;
+export type ProductAlternateIdsAssociatedSkuList = Array<string>;
 export const ProductAlternateIdsAssociatedSkuList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ProductAlternateIdsAssociatedSkuList>;
@@ -4830,8 +4820,7 @@ export const SkuAlternateIds = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SkuAlternateIds>;
 
 /** Category IDs for this SKU. */
-export type SkusGetByBillingAccountResponseCategoryIdsList =
-  ReadonlyArray<string>;
+export type SkusGetByBillingAccountResponseCategoryIdsList = Array<string>;
 export const SkusGetByBillingAccountResponseCategoryIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4875,7 +4864,7 @@ export const IncludedQuantityProperty_3 = /*@__PURE__*/ S.suspend(() =>
 
 /** Included quantity properties */
 export type MeterIncludedQuantityPropertiesList_3 =
-  ReadonlyArray<IncludedQuantityProperty_3>;
+  Array<IncludedQuantityProperty_3>;
 export const MeterIncludedQuantityPropertiesList_3 = /*@__PURE__*/ S.Array(
   IncludedQuantityProperty_3,
 ) as any as S.Schema<MeterIncludedQuantityPropertiesList_3>;
@@ -4926,7 +4915,7 @@ export const TermDescriptionParameter_3 = /*@__PURE__*/ S.suspend(() =>
 
 /** Term description parameters */
 export type TermTermDescriptionParametersList_3 =
-  ReadonlyArray<TermDescriptionParameter_3>;
+  Array<TermDescriptionParameter_3>;
 export const TermTermDescriptionParametersList_3 = /*@__PURE__*/ S.Array(
   TermDescriptionParameter_3,
 ) as any as S.Schema<TermTermDescriptionParametersList_3>;
@@ -5037,7 +5026,7 @@ export const Term_3 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Term_3" }) as any as S.Schema<Term_3>;
 
 /** List of applicable terms */
-export type AvailabilityTermsList_2 = ReadonlyArray<Term_3>;
+export type AvailabilityTermsList_2 = Array<Term_3>;
 export const AvailabilityTermsList_2 = /*@__PURE__*/ S.Array(
   Term_3,
 ) as any as S.Schema<AvailabilityTermsList_2>;
@@ -5076,7 +5065,7 @@ export const Availability_2 = /*@__PURE__*/ S.suspend(() =>
 
 /** Availabilities for this SKU. */
 export type SkusGetByBillingAccountResponseAvailabilitiesList =
-  ReadonlyArray<Availability_2>;
+  Array<Availability_2>;
 export const SkusGetByBillingAccountResponseAvailabilitiesList =
   /*@__PURE__*/ S.Array(
     Availability_2,
@@ -5247,7 +5236,7 @@ export const SkusGetByBillingProfileRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The product attributes. */
 export type SkusGetByBillingProfileResponseProductAttributesList =
-  ReadonlyArray<Attribute_2>;
+  Array<Attribute_2>;
 export const SkusGetByBillingProfileResponseProductAttributesList =
   /*@__PURE__*/ S.Array(
     Attribute_2,
@@ -5255,7 +5244,7 @@ export const SkusGetByBillingProfileResponseProductAttributesList =
 
 /** The SKU attributes. */
 export type SkusGetByBillingProfileResponseSkuAttributesList =
-  ReadonlyArray<Attribute_2>;
+  Array<Attribute_2>;
 export const SkusGetByBillingProfileResponseSkuAttributesList =
   /*@__PURE__*/ S.Array(
     Attribute_2,
@@ -5263,15 +5252,14 @@ export const SkusGetByBillingProfileResponseSkuAttributesList =
 
 /** Offering properties such as: product code (UPN), term id, meter type, offering id. */
 export type SkusGetByBillingProfileResponseOfferingPropertiesList =
-  ReadonlyArray<OfferingProperties_2>;
+  Array<OfferingProperties_2>;
 export const SkusGetByBillingProfileResponseOfferingPropertiesList =
   /*@__PURE__*/ S.Array(
     OfferingProperties_2,
   ) as any as S.Schema<SkusGetByBillingProfileResponseOfferingPropertiesList>;
 
 /** Category IDs for this SKU. */
-export type SkusGetByBillingProfileResponseCategoryIdsList =
-  ReadonlyArray<string>;
+export type SkusGetByBillingProfileResponseCategoryIdsList = Array<string>;
 export const SkusGetByBillingProfileResponseCategoryIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5279,7 +5267,7 @@ export const SkusGetByBillingProfileResponseCategoryIdsList =
 
 /** Availabilities for this SKU. */
 export type SkusGetByBillingProfileResponseAvailabilitiesList =
-  ReadonlyArray<Availability_2>;
+  Array<Availability_2>;
 export const SkusGetByBillingProfileResponseAvailabilitiesList =
   /*@__PURE__*/ S.Array(
     Availability_2,
@@ -5414,8 +5402,7 @@ export const SkusGetByBillingProfileResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "SkusGetByBillingProfileResponse",
 }) as any as S.Schema<SkusGetByBillingProfileResponse>;
 
-export type SkusListByBillingAccountRequestLocationsList =
-  ReadonlyArray<string>;
+export type SkusListByBillingAccountRequestLocationsList = Array<string>;
 export const SkusListByBillingAccountRequestLocationsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5467,26 +5454,25 @@ export const SkusListByBillingAccountRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SkusListByBillingAccountRequest>;
 
 /** The product attributes. */
-export type SkuSummaryProductAttributesList = ReadonlyArray<Attribute_2>;
+export type SkuSummaryProductAttributesList = Array<Attribute_2>;
 export const SkuSummaryProductAttributesList = /*@__PURE__*/ S.Array(
   Attribute_2,
 ) as any as S.Schema<SkuSummaryProductAttributesList>;
 
 /** The SKU attributes. */
-export type SkuSummarySkuAttributesList = ReadonlyArray<Attribute_2>;
+export type SkuSummarySkuAttributesList = Array<Attribute_2>;
 export const SkuSummarySkuAttributesList = /*@__PURE__*/ S.Array(
   Attribute_2,
 ) as any as S.Schema<SkuSummarySkuAttributesList>;
 
 /** Offering properties such as: product code (UPN), term id, meter type, offering id. */
-export type SkuSummaryOfferingPropertiesList =
-  ReadonlyArray<OfferingProperties_2>;
+export type SkuSummaryOfferingPropertiesList = Array<OfferingProperties_2>;
 export const SkuSummaryOfferingPropertiesList = /*@__PURE__*/ S.Array(
   OfferingProperties_2,
 ) as any as S.Schema<SkuSummaryOfferingPropertiesList>;
 
 /** Category IDs for this SKU. */
-export type SkuSummaryCategoryIdsList = ReadonlyArray<string>;
+export type SkuSummaryCategoryIdsList = Array<string>;
 export const SkuSummaryCategoryIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SkuSummaryCategoryIdsList>;
@@ -5611,7 +5597,7 @@ export const SkuSummary = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SkuSummary" }) as any as S.Schema<SkuSummary>;
 
 /** The SkuSummary items on this page */
-export type SkuSummaryListResultValueList = ReadonlyArray<SkuSummary>;
+export type SkuSummaryListResultValueList = Array<SkuSummary>;
 export const SkuSummaryListResultValueList = /*@__PURE__*/ S.Array(
   SkuSummary,
 ) as any as S.Schema<SkuSummaryListResultValueList>;
@@ -5632,8 +5618,7 @@ export const SkuSummaryListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "SkuSummaryListResult",
 }) as any as S.Schema<SkuSummaryListResult>;
 
-export type SkusListByBillingProfileRequestLocationsList =
-  ReadonlyArray<string>;
+export type SkusListByBillingProfileRequestLocationsList = Array<string>;
 export const SkusListByBillingProfileRequestLocationsList =
   /*@__PURE__*/ S.Array(
     S.String,

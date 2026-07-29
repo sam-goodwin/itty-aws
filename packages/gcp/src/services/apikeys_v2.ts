@@ -66,7 +66,7 @@ export const StringMap = /*@__PURE__*/ S.Record(
   S.String,
 ) as any as S.Schema<StringMap>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -113,7 +113,7 @@ export const V2AndroidApplication = /*@__PURE__*/ S.suspend(() =>
   identifier: "V2AndroidApplication",
 }) as any as S.Schema<V2AndroidApplication>;
 
-export type V2AndroidApplicationList = ReadonlyArray<V2AndroidApplication>;
+export type V2AndroidApplicationList = Array<V2AndroidApplication>;
 export const V2AndroidApplicationList = /*@__PURE__*/ S.Array(
   V2AndroidApplication,
 ) as any as S.Schema<V2AndroidApplicationList>;
@@ -158,7 +158,7 @@ export const V2ApiTarget = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "V2ApiTarget" }) as any as S.Schema<V2ApiTarget>;
 
-export type V2ApiTargetList = ReadonlyArray<V2ApiTarget>;
+export type V2ApiTargetList = Array<V2ApiTarget>;
 export const V2ApiTargetList = /*@__PURE__*/ S.Array(
   V2ApiTarget,
 ) as any as S.Schema<V2ApiTargetList>;
@@ -257,7 +257,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -418,7 +418,7 @@ export const ListProjectsLocationsKeysRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsKeysRequest",
 }) as any as S.Schema<ListProjectsLocationsKeysRequest>;
 
-export type V2KeyList = ReadonlyArray<V2Key>;
+export type V2KeyList = Array<V2Key>;
 export const V2KeyList = /*@__PURE__*/ S.Array(
   V2Key,
 ) as any as S.Schema<V2KeyList>;

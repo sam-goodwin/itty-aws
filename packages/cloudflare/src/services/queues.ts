@@ -211,8 +211,7 @@ export const MessagesAckRequestAcksItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "MessagesAckRequestAcksItem",
 }) as any as S.Schema<MessagesAckRequestAcksItem>;
 
-export type MessagesAckRequestAcksList =
-  ReadonlyArray<MessagesAckRequestAcksItem>;
+export type MessagesAckRequestAcksList = Array<MessagesAckRequestAcksItem>;
 export const MessagesAckRequestAcksList = /*@__PURE__*/ S.Array(
   MessagesAckRequestAcksItem,
 ) as any as S.Schema<MessagesAckRequestAcksList>;
@@ -233,7 +232,7 @@ export const MessagesAckRequestRetriesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MessagesAckRequestRetriesItem>;
 
 export type MessagesAckRequestRetriesList =
-  ReadonlyArray<MessagesAckRequestRetriesItem>;
+  Array<MessagesAckRequestRetriesItem>;
 export const MessagesAckRequestRetriesList = /*@__PURE__*/ S.Array(
   MessagesAckRequestRetriesItem,
 ) as any as S.Schema<MessagesAckRequestRetriesList>;
@@ -374,7 +373,7 @@ export const MessagesBulkPushRequestMessagesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MessagesBulkPushRequestMessagesItem>;
 
 export type MessagesBulkPushRequestMessagesList =
-  ReadonlyArray<MessagesBulkPushRequestMessagesItem>;
+  Array<MessagesBulkPushRequestMessagesItem>;
 export const MessagesBulkPushRequestMessagesList = /*@__PURE__*/ S.Array(
   MessagesBulkPushRequestMessagesItem,
 ) as any as S.Schema<MessagesBulkPushRequestMessagesList>;
@@ -879,8 +878,7 @@ export const CreateResponseConsumersItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateResponseConsumersItem",
 }) as any as S.Schema<CreateResponseConsumersItem>;
 
-export type CreateResponseConsumersList =
-  ReadonlyArray<CreateResponseConsumersItem>;
+export type CreateResponseConsumersList = Array<CreateResponseConsumersItem>;
 export const CreateResponseConsumersList = /*@__PURE__*/ S.Array(
   CreateResponseConsumersItem,
 ) as any as S.Schema<CreateResponseConsumersList>;
@@ -943,8 +941,7 @@ export const CreateResponseProducersItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateResponseProducersItem",
 }) as any as S.Schema<CreateResponseProducersItem>;
 
-export type CreateResponseProducersList =
-  ReadonlyArray<CreateResponseProducersItem>;
+export type CreateResponseProducersList = Array<CreateResponseProducersItem>;
 export const CreateResponseProducersList = /*@__PURE__*/ S.Array(
   CreateResponseProducersItem,
 ) as any as S.Schema<CreateResponseProducersList>;
@@ -1020,7 +1017,7 @@ export const SubscriptionsCreateRequestDestination = /*@__PURE__*/ S.suspend(
   identifier: "SubscriptionsCreateRequestDestination",
 }) as any as S.Schema<SubscriptionsCreateRequestDestination>;
 
-export type SubscriptionsCreateRequestEventsList = ReadonlyArray<string>;
+export type SubscriptionsCreateRequestEventsList = Array<string>;
 export const SubscriptionsCreateRequestEventsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SubscriptionsCreateRequestEventsList>;
@@ -1302,7 +1299,7 @@ export const SubscriptionsCreateResponseDestination = /*@__PURE__*/ S.suspend(
   identifier: "SubscriptionsCreateResponseDestination",
 }) as any as S.Schema<SubscriptionsCreateResponseDestination>;
 
-export type SubscriptionsCreateResponseEventsList = ReadonlyArray<string>;
+export type SubscriptionsCreateResponseEventsList = Array<string>;
 export const SubscriptionsCreateResponseEventsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SubscriptionsCreateResponseEventsList>;
@@ -1651,7 +1648,7 @@ export const SubscriptionsDeleteResponseDestination = /*@__PURE__*/ S.suspend(
   identifier: "SubscriptionsDeleteResponseDestination",
 }) as any as S.Schema<SubscriptionsDeleteResponseDestination>;
 
-export type SubscriptionsDeleteResponseEventsList = ReadonlyArray<string>;
+export type SubscriptionsDeleteResponseEventsList = Array<string>;
 export const SubscriptionsDeleteResponseEventsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SubscriptionsDeleteResponseEventsList>;
@@ -2275,7 +2272,7 @@ export const GetResponseConsumersItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetResponseConsumersItem",
 }) as any as S.Schema<GetResponseConsumersItem>;
 
-export type GetResponseConsumersList = ReadonlyArray<GetResponseConsumersItem>;
+export type GetResponseConsumersList = Array<GetResponseConsumersItem>;
 export const GetResponseConsumersList = /*@__PURE__*/ S.Array(
   GetResponseConsumersItem,
 ) as any as S.Schema<GetResponseConsumersList>;
@@ -2337,7 +2334,7 @@ export const GetResponseProducersItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetResponseProducersItem",
 }) as any as S.Schema<GetResponseProducersItem>;
 
-export type GetResponseProducersList = ReadonlyArray<GetResponseProducersItem>;
+export type GetResponseProducersList = Array<GetResponseProducersItem>;
 export const GetResponseProducersList = /*@__PURE__*/ S.Array(
   GetResponseProducersItem,
 ) as any as S.Schema<GetResponseProducersList>;
@@ -2435,7 +2432,7 @@ export const SubscriptionsGetResponseDestination = /*@__PURE__*/ S.suspend(() =>
   identifier: "SubscriptionsGetResponseDestination",
 }) as any as S.Schema<SubscriptionsGetResponseDestination>;
 
-export type SubscriptionsGetResponseEventsList = ReadonlyArray<string>;
+export type SubscriptionsGetResponseEventsList = Array<string>;
 export const SubscriptionsGetResponseEventsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SubscriptionsGetResponseEventsList>;
@@ -2842,7 +2839,7 @@ export const ConsumersListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConsumersListResultItem",
 }) as any as S.Schema<ConsumersListResultItem>;
 
-export type ConsumersListResultList = ReadonlyArray<ConsumersListResultItem>;
+export type ConsumersListResultList = Array<ConsumersListResultItem>;
 export const ConsumersListResultList = /*@__PURE__*/ S.Array(
   ConsumersListResultItem,
 ) as any as S.Schema<ConsumersListResultList>;
@@ -3026,8 +3023,7 @@ export const ListResultItemConsumersItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListResultItemConsumersItem",
 }) as any as S.Schema<ListResultItemConsumersItem>;
 
-export type ListResultItemConsumersList =
-  ReadonlyArray<ListResultItemConsumersItem>;
+export type ListResultItemConsumersList = Array<ListResultItemConsumersItem>;
 export const ListResultItemConsumersList = /*@__PURE__*/ S.Array(
   ListResultItemConsumersItem,
 ) as any as S.Schema<ListResultItemConsumersList>;
@@ -3090,8 +3086,7 @@ export const ListResultItemProducersItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListResultItemProducersItem",
 }) as any as S.Schema<ListResultItemProducersItem>;
 
-export type ListResultItemProducersList =
-  ReadonlyArray<ListResultItemProducersItem>;
+export type ListResultItemProducersList = Array<ListResultItemProducersItem>;
 export const ListResultItemProducersList = /*@__PURE__*/ S.Array(
   ListResultItemProducersItem,
 ) as any as S.Schema<ListResultItemProducersList>;
@@ -3145,7 +3140,7 @@ export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ListResultItem" }) as any as S.Schema<ListResultItem>;
 
-export type ListResultList = ReadonlyArray<ListResultItem>;
+export type ListResultList = Array<ListResultItem>;
 export const ListResultList = /*@__PURE__*/ S.Array(
   ListResultItem,
 ) as any as S.Schema<ListResultList>;
@@ -3227,7 +3222,7 @@ export const SubscriptionsListResultItemDestination = /*@__PURE__*/ S.suspend(
   identifier: "SubscriptionsListResultItemDestination",
 }) as any as S.Schema<SubscriptionsListResultItemDestination>;
 
-export type SubscriptionsListResultItemEventsList = ReadonlyArray<string>;
+export type SubscriptionsListResultItemEventsList = Array<string>;
 export const SubscriptionsListResultItemEventsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SubscriptionsListResultItemEventsList>;
@@ -3469,8 +3464,7 @@ export const SubscriptionsListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "SubscriptionsListResultItem",
 }) as any as S.Schema<SubscriptionsListResultItem>;
 
-export type SubscriptionsListResultList =
-  ReadonlyArray<SubscriptionsListResultItem>;
+export type SubscriptionsListResultList = Array<SubscriptionsListResultItem>;
 export const SubscriptionsListResultList = /*@__PURE__*/ S.Array(
   SubscriptionsListResultItem,
 ) as any as S.Schema<SubscriptionsListResultList>;
@@ -3681,8 +3675,7 @@ export const EditResponseConsumersItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "EditResponseConsumersItem",
 }) as any as S.Schema<EditResponseConsumersItem>;
 
-export type EditResponseConsumersList =
-  ReadonlyArray<EditResponseConsumersItem>;
+export type EditResponseConsumersList = Array<EditResponseConsumersItem>;
 export const EditResponseConsumersList = /*@__PURE__*/ S.Array(
   EditResponseConsumersItem,
 ) as any as S.Schema<EditResponseConsumersList>;
@@ -3744,8 +3737,7 @@ export const EditResponseProducersItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "EditResponseProducersItem",
 }) as any as S.Schema<EditResponseProducersItem>;
 
-export type EditResponseProducersList =
-  ReadonlyArray<EditResponseProducersItem>;
+export type EditResponseProducersList = Array<EditResponseProducersItem>;
 export const EditResponseProducersList = /*@__PURE__*/ S.Array(
   EditResponseProducersItem,
 ) as any as S.Schema<EditResponseProducersList>;
@@ -3821,7 +3813,7 @@ export const SubscriptionsUpdateRequestDestination = /*@__PURE__*/ S.suspend(
   identifier: "SubscriptionsUpdateRequestDestination",
 }) as any as S.Schema<SubscriptionsUpdateRequestDestination>;
 
-export type SubscriptionsUpdateRequestEventsList = ReadonlyArray<string>;
+export type SubscriptionsUpdateRequestEventsList = Array<string>;
 export const SubscriptionsUpdateRequestEventsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SubscriptionsUpdateRequestEventsList>;
@@ -3881,7 +3873,7 @@ export const SubscriptionsUpdateResponseDestination = /*@__PURE__*/ S.suspend(
   identifier: "SubscriptionsUpdateResponseDestination",
 }) as any as S.Schema<SubscriptionsUpdateResponseDestination>;
 
-export type SubscriptionsUpdateResponseEventsList = ReadonlyArray<string>;
+export type SubscriptionsUpdateResponseEventsList = Array<string>;
 export const SubscriptionsUpdateResponseEventsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SubscriptionsUpdateResponseEventsList>;
@@ -4178,7 +4170,7 @@ export const MessagesPullResponseMessagesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MessagesPullResponseMessagesItem>;
 
 export type MessagesPullResponseMessagesList =
-  ReadonlyArray<MessagesPullResponseMessagesItem>;
+  Array<MessagesPullResponseMessagesItem>;
 export const MessagesPullResponseMessagesList = /*@__PURE__*/ S.Array(
   MessagesPullResponseMessagesItem,
 ) as any as S.Schema<MessagesPullResponseMessagesList>;
@@ -4489,7 +4481,7 @@ export const PurgeStartResponseConsumersItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PurgeStartResponseConsumersItem>;
 
 export type PurgeStartResponseConsumersList =
-  ReadonlyArray<PurgeStartResponseConsumersItem>;
+  Array<PurgeStartResponseConsumersItem>;
 export const PurgeStartResponseConsumersList = /*@__PURE__*/ S.Array(
   PurgeStartResponseConsumersItem,
 ) as any as S.Schema<PurgeStartResponseConsumersList>;
@@ -4553,7 +4545,7 @@ export const PurgeStartResponseProducersItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PurgeStartResponseProducersItem>;
 
 export type PurgeStartResponseProducersList =
-  ReadonlyArray<PurgeStartResponseProducersItem>;
+  Array<PurgeStartResponseProducersItem>;
 export const PurgeStartResponseProducersList = /*@__PURE__*/ S.Array(
   PurgeStartResponseProducersItem,
 ) as any as S.Schema<PurgeStartResponseProducersList>;
@@ -5104,8 +5096,7 @@ export const UpdateResponseConsumersItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateResponseConsumersItem",
 }) as any as S.Schema<UpdateResponseConsumersItem>;
 
-export type UpdateResponseConsumersList =
-  ReadonlyArray<UpdateResponseConsumersItem>;
+export type UpdateResponseConsumersList = Array<UpdateResponseConsumersItem>;
 export const UpdateResponseConsumersList = /*@__PURE__*/ S.Array(
   UpdateResponseConsumersItem,
 ) as any as S.Schema<UpdateResponseConsumersList>;
@@ -5168,8 +5159,7 @@ export const UpdateResponseProducersItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateResponseProducersItem",
 }) as any as S.Schema<UpdateResponseProducersItem>;
 
-export type UpdateResponseProducersList =
-  ReadonlyArray<UpdateResponseProducersItem>;
+export type UpdateResponseProducersList = Array<UpdateResponseProducersItem>;
 export const UpdateResponseProducersList = /*@__PURE__*/ S.Array(
   UpdateResponseProducersItem,
 ) as any as S.Schema<UpdateResponseProducersList>;

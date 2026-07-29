@@ -195,7 +195,7 @@ export type FeatureType =
   | "LAYOUT";
 export const FeatureType = /*@__PURE__*/ S.String;
 
-export type FeatureTypes = FeatureType[];
+export type FeatureTypes = (FeatureType | (string & {}))[];
 export const FeatureTypes = /*@__PURE__*/ S.Array(FeatureType);
 export type HumanLoopName = string;
 export type FlowDefinitionArn = string;

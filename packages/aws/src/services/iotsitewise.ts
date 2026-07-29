@@ -596,7 +596,7 @@ export type RawValueType = "D" | "B" | "S" | "I" | "U";
 export const RawValueType = /*@__PURE__*/ S.String;
 
 export interface PropertyValueNullValue {
-  valueType: RawValueType;
+  valueType: RawValueType | (string & {});
 }
 export const PropertyValueNullValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ valueType: RawValueType }),
@@ -631,7 +631,7 @@ export const TimeInNanos = /*@__PURE__*/ S.suspend(() =>
 export interface AssetPropertyValue {
   value: Variant;
   timestamp: TimeInNanos;
-  quality?: Quality;
+  quality?: Quality | (string & {});
 }
 export const AssetPropertyValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1184,7 +1184,7 @@ export type ForwardingConfigState = "DISABLED" | "ENABLED";
 export const ForwardingConfigState = /*@__PURE__*/ S.String;
 
 export interface ForwardingConfig {
-  state: ForwardingConfigState;
+  state: ForwardingConfigState | (string & {});
 }
 export const ForwardingConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ state: ForwardingConfigState }),
@@ -1248,7 +1248,7 @@ export type ComputeLocation = "EDGE" | "CLOUD";
 export const ComputeLocation = /*@__PURE__*/ S.String;
 
 export interface TransformProcessingConfig {
-  computeLocation: ComputeLocation;
+  computeLocation: ComputeLocation | (string & {});
   forwardingConfig?: ForwardingConfig;
 }
 export const TransformProcessingConfig = /*@__PURE__*/ S.suspend(() =>
@@ -1287,7 +1287,7 @@ export const MetricWindow = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ tumbling: S.optional(TumblingWindow) }),
 ).annotate({ identifier: "MetricWindow" }) as any as S.Schema<MetricWindow>;
 export interface MetricProcessingConfig {
-  computeLocation: ComputeLocation;
+  computeLocation: ComputeLocation | (string & {});
 }
 export const MetricProcessingConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ computeLocation: ComputeLocation }),
@@ -1582,7 +1582,7 @@ export type ColumnName =
   | "VALUE";
 export const ColumnName = /*@__PURE__*/ S.String;
 
-export type ColumnNames = ColumnName[];
+export type ColumnNames = (ColumnName | (string & {}))[];
 export const ColumnNames = /*@__PURE__*/ S.Array(ColumnName);
 export interface Csv {
   columnNames: ColumnName[];
@@ -1864,8 +1864,8 @@ export const SourceDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ kendra: S.optional(KendraSourceDetail) }),
 ).annotate({ identifier: "SourceDetail" }) as any as S.Schema<SourceDetail>;
 export interface DatasetSource {
-  sourceType: DatasetSourceType;
-  sourceFormat: DatasetSourceFormat;
+  sourceType: DatasetSourceType | (string & {});
+  sourceFormat: DatasetSourceFormat | (string & {});
   sourceDetail?: SourceDetail;
 }
 export const DatasetSource = /*@__PURE__*/ S.suspend(() =>
@@ -1949,7 +1949,7 @@ export const CoreDeviceOperatingSystem = /*@__PURE__*/ S.String;
 
 export interface GreengrassV2 {
   coreDeviceThingName: string;
-  coreDeviceOperatingSystem?: CoreDeviceOperatingSystem;
+  coreDeviceOperatingSystem?: CoreDeviceOperatingSystem | (string & {});
 }
 export const GreengrassV2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2987,7 +2987,7 @@ export interface AssetModelProperty {
   id?: string;
   externalId?: string;
   name: string;
-  dataType: PropertyDataType;
+  dataType: PropertyDataType | (string & {});
   dataTypeSpec?: string;
   unit?: string;
   type: PropertyType;
@@ -3886,7 +3886,7 @@ export type LoggingLevel = "ERROR" | "INFO" | "OFF";
 export const LoggingLevel = /*@__PURE__*/ S.String;
 
 export interface LoggingOptions {
-  level: LoggingLevel;
+  level: LoggingLevel | (string & {});
 }
 export const LoggingOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ level: LoggingLevel }),

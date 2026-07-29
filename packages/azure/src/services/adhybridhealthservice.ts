@@ -62,13 +62,13 @@ export const AdDomainServiceMembersListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AdDomainServiceMembersListRequest>;
 
 /** The list of ADDS roles. */
-export type AddsServiceMemberAddsRolesList = ReadonlyArray<string>;
+export type AddsServiceMemberAddsRolesList = Array<string>;
 export const AddsServiceMemberAddsRolesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AddsServiceMemberAddsRolesList>;
 
 /** The list of domain controller types. */
-export type AddsServiceMemberDcTypesList = ReadonlyArray<string>;
+export type AddsServiceMemberDcTypesList = Array<string>;
 export const AddsServiceMemberDcTypesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AddsServiceMemberDcTypesList>;
@@ -88,7 +88,7 @@ export const Item = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Item" }) as any as S.Schema<Item>;
 
 /** The server specific configuration related dimensions. */
-export type AddsServiceMemberDimensionsList = ReadonlyArray<Item>;
+export type AddsServiceMemberDimensionsList = Array<Item>;
 export const AddsServiceMemberDimensionsList = /*@__PURE__*/ S.Array(
   Item,
 ) as any as S.Schema<AddsServiceMemberDimensionsList>;
@@ -111,14 +111,13 @@ export const Hotfix = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Hotfix" }) as any as S.Schema<Hotfix>;
 
 /** The list of installed QFEs for the server. */
-export type AddsServiceMemberInstalledQfesList = ReadonlyArray<Hotfix>;
+export type AddsServiceMemberInstalledQfesList = Array<Hotfix>;
 export const AddsServiceMemberInstalledQfesList = /*@__PURE__*/ S.Array(
   Hotfix,
 ) as any as S.Schema<AddsServiceMemberInstalledQfesList>;
 
 /** The monitoring configuration of the server which determines what activities are monitored by Azure Active Directory Connect Health. */
-export type AddsServiceMemberMonitoringConfigurationsComputedList =
-  ReadonlyArray<Item>;
+export type AddsServiceMemberMonitoringConfigurationsComputedList = Array<Item>;
 export const AddsServiceMemberMonitoringConfigurationsComputedList =
   /*@__PURE__*/ S.Array(
     Item,
@@ -126,20 +125,20 @@ export const AddsServiceMemberMonitoringConfigurationsComputedList =
 
 /** The customized monitoring configuration of the server which determines what activities are monitored by Azure Active Directory Connect Health. */
 export type AddsServiceMemberMonitoringConfigurationsCustomizedList =
-  ReadonlyArray<Item>;
+  Array<Item>;
 export const AddsServiceMemberMonitoringConfigurationsCustomizedList =
   /*@__PURE__*/ S.Array(
     Item,
   ) as any as S.Schema<AddsServiceMemberMonitoringConfigurationsCustomizedList>;
 
 /** Server specific properties. */
-export type AddsServiceMemberPropertiesList = ReadonlyArray<Item>;
+export type AddsServiceMemberPropertiesList = Array<Item>;
 export const AddsServiceMemberPropertiesList = /*@__PURE__*/ S.Array(
   Item,
 ) as any as S.Schema<AddsServiceMemberPropertiesList>;
 
 /** The list of recommended hotfixes for the server. */
-export type AddsServiceMemberRecommendedQfesList = ReadonlyArray<Hotfix>;
+export type AddsServiceMemberRecommendedQfesList = Array<Hotfix>;
 export const AddsServiceMemberRecommendedQfesList = /*@__PURE__*/ S.Array(
   Hotfix,
 ) as any as S.Schema<AddsServiceMemberRecommendedQfesList>;
@@ -271,7 +270,7 @@ export const AddsServiceMember = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AddsServiceMember>;
 
 /** The value returned by the operation. */
-export type AddsServiceMembersValueList = ReadonlyArray<AddsServiceMember>;
+export type AddsServiceMembersValueList = Array<AddsServiceMember>;
 export const AddsServiceMembersValueList = /*@__PURE__*/ S.Array(
   AddsServiceMember,
 ) as any as S.Schema<AddsServiceMembersValueList>;
@@ -333,7 +332,7 @@ export const AddsServiceGetMetricsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AddsServiceGetMetricsRequest>;
 
 /** The list of the metric values. */
-export type MetricSetValuesList = ReadonlyArray<number>;
+export type MetricSetValuesList = Array<number>;
 export const MetricSetValuesList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<MetricSetValuesList>;
@@ -353,13 +352,13 @@ export const MetricSet = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MetricSet" }) as any as S.Schema<MetricSet>;
 
 /** The list of metric set. */
-export type MetricSetsSetsList = ReadonlyArray<MetricSet>;
+export type MetricSetsSetsList = Array<MetricSet>;
 export const MetricSetsSetsList = /*@__PURE__*/ S.Array(
   MetricSet,
 ) as any as S.Schema<MetricSetsSetsList>;
 
 /** The list of timestamps for each metric in the metric set. */
-export type MetricSetsTimeStampsList = ReadonlyArray<string>;
+export type MetricSetsTimeStampsList = Array<string>;
 export const MetricSetsTimeStampsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<MetricSetsTimeStampsList>;
@@ -577,7 +576,7 @@ export const AddsServiceMembersListCredentialsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<AddsServiceMembersListCredentialsRequest>;
 
 /** The credential data. */
-export type CredentialCredentialDataList = ReadonlyArray<string>;
+export type CredentialCredentialDataList = Array<string>;
 export const CredentialCredentialDataList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CredentialCredentialDataList>;
@@ -600,7 +599,7 @@ export const Credential = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Credential" }) as any as S.Schema<Credential>;
 
 /** The value returned by the operation. */
-export type CredentialsValueList = ReadonlyArray<Credential>;
+export type CredentialsValueList = Array<Credential>;
 export const CredentialsValueList = /*@__PURE__*/ S.Array(
   Credential,
 ) as any as S.Schema<CredentialsValueList>;
@@ -617,16 +616,14 @@ export const Credentials = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Credentials" }) as any as S.Schema<Credentials>;
 
 /** The list of additional emails that are configured to receive notifications about the service. */
-export type AddsServicesAddRequestCustomNotificationEmailsList =
-  ReadonlyArray<string>;
+export type AddsServicesAddRequestCustomNotificationEmailsList = Array<string>;
 export const AddsServicesAddRequestCustomNotificationEmailsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AddsServicesAddRequestCustomNotificationEmailsList>;
 
 /** The list of emails to whom service notifications will be sent. */
-export type AddsServicesAddRequestNotificationEmailsList =
-  ReadonlyArray<string>;
+export type AddsServicesAddRequestNotificationEmailsList = Array<string>;
 export const AddsServicesAddRequestNotificationEmailsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -725,15 +722,14 @@ export const AddsServicesAddRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AddsServicesAddRequest>;
 
 /** The list of additional emails that are configured to receive notifications about the service. */
-export type ServicePropertiesCustomNotificationEmailsList =
-  ReadonlyArray<string>;
+export type ServicePropertiesCustomNotificationEmailsList = Array<string>;
 export const ServicePropertiesCustomNotificationEmailsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ServicePropertiesCustomNotificationEmailsList>;
 
 /** The list of emails to whom service notifications will be sent. */
-export type ServicePropertiesNotificationEmailsList = ReadonlyArray<string>;
+export type ServicePropertiesNotificationEmailsList = Array<string>;
 export const ServicePropertiesNotificationEmailsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ServicePropertiesNotificationEmailsList>;
@@ -890,13 +886,13 @@ export const AddsServicesGetForestSummaryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AddsServicesGetForestSummaryRequest>;
 
 /** The list of domain controller names. */
-export type ForestSummaryDomainsList = ReadonlyArray<string>;
+export type ForestSummaryDomainsList = Array<string>;
 export const ForestSummaryDomainsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ForestSummaryDomainsList>;
 
 /** The list of site names. */
-export type ForestSummarySitesList = ReadonlyArray<string>;
+export type ForestSummarySitesList = Array<string>;
 export const ForestSummarySitesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ForestSummarySitesList>;
@@ -971,7 +967,7 @@ export const MetricGroup = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MetricGroup" }) as any as S.Schema<MetricGroup>;
 
 /** The groupings for the metrics. */
-export type MetricMetadataGroupingsList = ReadonlyArray<MetricGroup>;
+export type MetricMetadataGroupingsList = Array<MetricGroup>;
 export const MetricMetadataGroupingsList = /*@__PURE__*/ S.Array(
   MetricGroup,
 ) as any as S.Schema<MetricMetadataGroupingsList>;
@@ -1081,7 +1077,7 @@ export const AddsServicesListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AddsServicesListRequest>;
 
 /** The value returned by the operation. */
-export type ServicesValueList = ReadonlyArray<ServiceProperties>;
+export type ServicesValueList = Array<ServiceProperties>;
 export const ServicesValueList = /*@__PURE__*/ S.Array(
   ServiceProperties,
 ) as any as S.Schema<ServicesValueList>;
@@ -1133,7 +1129,7 @@ export const AddsServicesListMetricMetadataRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<AddsServicesListMetricMetadataRequest>;
 
 /** The value returned by the operation. */
-export type MetricMetadataListValueList = ReadonlyArray<MetricMetadata>;
+export type MetricMetadataListValueList = Array<MetricMetadata>;
 export const MetricMetadataListValueList = /*@__PURE__*/ S.Array(
   MetricMetadata,
 ) as any as S.Schema<MetricMetadataListValueList>;
@@ -1187,7 +1183,7 @@ export const AddsServicesListMetricsAverageRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<AddsServicesListMetricsAverageRequest>;
 
 /** The value returned by the operation. */
-export type MetricsValueList = ReadonlyArray<Item>;
+export type MetricsValueList = Array<Item>;
 export const MetricsValueList = /*@__PURE__*/ S.Array(
   Item,
 ) as any as S.Schema<MetricsValueList>;
@@ -1343,7 +1339,7 @@ export const InboundReplicationNeighbor = /*@__PURE__*/ S.suspend(() =>
 
 /** List of individual domain controller neighbor's inbound replication status. */
 export type ReplicationSummaryInboundNeighborCollectionList =
-  ReadonlyArray<InboundReplicationNeighbor>;
+  Array<InboundReplicationNeighbor>;
 export const ReplicationSummaryInboundNeighborCollectionList =
   /*@__PURE__*/ S.Array(
     InboundReplicationNeighbor,
@@ -1383,7 +1379,7 @@ export const ReplicationSummary = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReplicationSummary>;
 
 /** The value returned by the operation. */
-export type ReplicationDetailsListValueList = ReadonlyArray<ReplicationSummary>;
+export type ReplicationDetailsListValueList = Array<ReplicationSummary>;
 export const ReplicationDetailsListValueList = /*@__PURE__*/ S.Array(
   ReplicationSummary,
 ) as any as S.Schema<ReplicationDetailsListValueList>;
@@ -1466,7 +1462,7 @@ export const AddsServicesListReplicationSummaryRequest =
   }) as any as S.Schema<AddsServicesListReplicationSummaryRequest>;
 
 /** The value returned by the operation. */
-export type ReplicationSummaryListValueList = ReadonlyArray<ReplicationSummary>;
+export type ReplicationSummaryListValueList = Array<ReplicationSummary>;
 export const ReplicationSummaryListValueList = /*@__PURE__*/ S.Array(
   ReplicationSummary,
 ) as any as S.Schema<ReplicationSummaryListValueList>;
@@ -1546,7 +1542,7 @@ export const HelpLink = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "HelpLink" }) as any as S.Schema<HelpLink>;
 
 /** The help links to get more information related to the alert. */
-export type AlertRelatedLinksList = ReadonlyArray<HelpLink>;
+export type AlertRelatedLinksList = Array<HelpLink>;
 export const AlertRelatedLinksList = /*@__PURE__*/ S.Array(
   HelpLink,
 ) as any as S.Schema<AlertRelatedLinksList>;
@@ -1574,20 +1570,19 @@ export const AdditionalInformation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AdditionalInformation>;
 
 /** Additional information related to the alert. */
-export type AlertAdditionalInformationList =
-  ReadonlyArray<AdditionalInformation>;
+export type AlertAdditionalInformationList = Array<AdditionalInformation>;
 export const AlertAdditionalInformationList = /*@__PURE__*/ S.Array(
   AdditionalInformation,
 ) as any as S.Schema<AlertAdditionalInformationList>;
 
 /** The active alert properties. */
-export type AlertActiveAlertPropertiesList = ReadonlyArray<Item>;
+export type AlertActiveAlertPropertiesList = Array<Item>;
 export const AlertActiveAlertPropertiesList = /*@__PURE__*/ S.Array(
   Item,
 ) as any as S.Schema<AlertActiveAlertPropertiesList>;
 
 /** The resolved alert properties. */
-export type AlertResolvedAlertPropertiesList = ReadonlyArray<Item>;
+export type AlertResolvedAlertPropertiesList = Array<Item>;
 export const AlertResolvedAlertPropertiesList = /*@__PURE__*/ S.Array(
   Item,
 ) as any as S.Schema<AlertResolvedAlertPropertiesList>;
@@ -1658,7 +1653,7 @@ export const Alert = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Alert" }) as any as S.Schema<Alert>;
 
 /** The value returned by the operation. */
-export type AlertsValueList = ReadonlyArray<Alert>;
+export type AlertsValueList = Array<Alert>;
 export const AlertsValueList = /*@__PURE__*/ S.Array(
   Alert,
 ) as any as S.Schema<AlertsValueList>;
@@ -1862,7 +1857,7 @@ export const AddsServicesServiceMembersListRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<AddsServicesServiceMembersListRequest>;
 
 /** The value returned by the operation. */
-export type ServiceMembersValueList = ReadonlyArray<ServiceMember>;
+export type ServiceMembersValueList = Array<ServiceMember>;
 export const ServiceMembersValueList = /*@__PURE__*/ S.Array(
   ServiceMember,
 ) as any as S.Schema<ServiceMembersValueList>;
@@ -1889,15 +1884,14 @@ export const ServiceMembers = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of additional emails that are configured to receive notifications about the service. */
 export type AddsServicesUpdateRequestCustomNotificationEmailsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const AddsServicesUpdateRequestCustomNotificationEmailsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AddsServicesUpdateRequestCustomNotificationEmailsList>;
 
 /** The list of emails to whom service notifications will be sent. */
-export type AddsServicesUpdateRequestNotificationEmailsList =
-  ReadonlyArray<string>;
+export type AddsServicesUpdateRequestNotificationEmailsList = Array<string>;
 export const AddsServicesUpdateRequestNotificationEmailsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1996,8 +1990,7 @@ export const AddsServicesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AddsServicesUpdateRequest>;
 
 /** The name of the metric. */
-export type AddsServicesUserPreferenceAddRequestMetricNamesList =
-  ReadonlyArray<string>;
+export type AddsServicesUserPreferenceAddRequestMetricNamesList = Array<string>;
 export const AddsServicesUserPreferenceAddRequestMetricNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2092,7 +2085,7 @@ export const AddsServicesUserPreferenceGetRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<AddsServicesUserPreferenceGetRequest>;
 
 /** The name of the metric. */
-export type UserPreferenceMetricNamesList = ReadonlyArray<string>;
+export type UserPreferenceMetricNamesList = Array<string>;
 export const UserPreferenceMetricNamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<UserPreferenceMetricNamesList>;
@@ -2154,7 +2147,7 @@ export const ConfigurationAddRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConfigurationAddRequest>;
 
 /** The list of global administrators for the tenant. */
-export type TenantGlobalAdminsEmailList = ReadonlyArray<string>;
+export type TenantGlobalAdminsEmailList = Array<string>;
 export const TenantGlobalAdminsEmailList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<TenantGlobalAdminsEmailList>;
@@ -2268,7 +2261,7 @@ export const ConfigurationListAddsConfigurationsRequest =
   }) as any as S.Schema<ConfigurationListAddsConfigurationsRequest>;
 
 /** The value returned by the operation. */
-export type AddsConfigurationValueList = ReadonlyArray<Item>;
+export type AddsConfigurationValueList = Array<Item>;
 export const AddsConfigurationValueList = /*@__PURE__*/ S.Array(
   Item,
 ) as any as S.Schema<AddsConfigurationValueList>;
@@ -2296,8 +2289,7 @@ export const AddsConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AddsConfiguration>;
 
 /** The list of global administrators for the tenant. */
-export type ConfigurationUpdateRequestGlobalAdminsEmailList =
-  ReadonlyArray<string>;
+export type ConfigurationUpdateRequestGlobalAdminsEmailList = Array<string>;
 export const ConfigurationUpdateRequestGlobalAdminsEmailList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2451,7 +2443,7 @@ export const Dimension = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Dimension" }) as any as S.Schema<Dimension>;
 
 /** The value returned by the operation. */
-export type DimensionsValueList = ReadonlyArray<Dimension>;
+export type DimensionsValueList = Array<Dimension>;
 export const DimensionsValueList = /*@__PURE__*/ S.Array(
   Dimension,
 ) as any as S.Schema<DimensionsValueList>;
@@ -2561,7 +2553,7 @@ export const IPAddressAggregate = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IPAddressAggregate>;
 
 /** The value returned by the operation. */
-export type IPAddressAggregatesValueList = ReadonlyArray<IPAddressAggregate>;
+export type IPAddressAggregatesValueList = Array<IPAddressAggregate>;
 export const IPAddressAggregatesValueList = /*@__PURE__*/ S.Array(
   IPAddressAggregate,
 ) as any as S.Schema<IPAddressAggregatesValueList>;
@@ -2665,7 +2657,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the Microsoft.ADHybridHealthService resource provider. */
-export type OperationListResponseValueList = ReadonlyArray<Operation>;
+export type OperationListResponseValueList = Array<Operation>;
 export const OperationListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationListResponseValueList>;
@@ -2986,14 +2978,13 @@ export const ConnectorMetadataDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConnectorMetadataDetails>;
 
 /** The list of connectors. */
-export type ConnectorMetadataConnectorsList =
-  ReadonlyArray<ConnectorMetadataDetails>;
+export type ConnectorMetadataConnectorsList = Array<ConnectorMetadataDetails>;
 export const ConnectorMetadataConnectorsList = /*@__PURE__*/ S.Array(
   ConnectorMetadataDetails,
 ) as any as S.Schema<ConnectorMetadataConnectorsList>;
 
 /** The list of run profile names. */
-export type ConnectorMetadataRunProfileNamesList = ReadonlyArray<string>;
+export type ConnectorMetadataRunProfileNamesList = Array<string>;
 export const ConnectorMetadataRunProfileNamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ConnectorMetadataRunProfileNamesList>;
@@ -3196,19 +3187,19 @@ export const ServiceMembersListConnectorsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServiceMembersListConnectorsRequest>;
 
 /** The in-scope object classes. */
-export type PartitionScopeObjectClassesList = ReadonlyArray<string>;
+export type PartitionScopeObjectClassesList = Array<string>;
 export const PartitionScopeObjectClassesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PartitionScopeObjectClassesList>;
 
 /** The list of containers included. */
-export type PartitionScopeContainersIncludedList = ReadonlyArray<string>;
+export type PartitionScopeContainersIncludedList = Array<string>;
 export const PartitionScopeContainersIncludedList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PartitionScopeContainersIncludedList>;
 
 /** The list of containers excluded. */
-export type PartitionScopeContainersExcludedList = ReadonlyArray<string>;
+export type PartitionScopeContainersExcludedList = Array<string>;
 export const PartitionScopeContainersExcludedList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PartitionScopeContainersExcludedList>;
@@ -3269,7 +3260,7 @@ export const Partition = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Partition" }) as any as S.Schema<Partition>;
 
 /** The partitions of the connector. */
-export type ConnectorPartitionsList = ReadonlyArray<Partition>;
+export type ConnectorPartitionsList = Array<Partition>;
 export const ConnectorPartitionsList = /*@__PURE__*/ S.Array(
   Partition,
 ) as any as S.Schema<ConnectorPartitionsList>;
@@ -3304,7 +3295,7 @@ export const RunStep = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RunStep" }) as any as S.Schema<RunStep>;
 
 /** The run steps of the run profile. */
-export type RunProfileRunStepsList = ReadonlyArray<RunStep>;
+export type RunProfileRunStepsList = Array<RunStep>;
 export const RunProfileRunStepsList = /*@__PURE__*/ S.Array(
   RunStep,
 ) as any as S.Schema<RunProfileRunStepsList>;
@@ -3327,19 +3318,19 @@ export const RunProfile = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RunProfile" }) as any as S.Schema<RunProfile>;
 
 /** The run profiles of the connector. */
-export type ConnectorRunProfilesList = ReadonlyArray<RunProfile>;
+export type ConnectorRunProfilesList = Array<RunProfile>;
 export const ConnectorRunProfilesList = /*@__PURE__*/ S.Array(
   RunProfile,
 ) as any as S.Schema<ConnectorRunProfilesList>;
 
 /** The class inclusion list of the connector. */
-export type ConnectorClassesIncludedList = ReadonlyArray<string>;
+export type ConnectorClassesIncludedList = Array<string>;
 export const ConnectorClassesIncludedList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ConnectorClassesIncludedList>;
 
 /** The attribute inclusion list of the connector. */
-export type ConnectorAttributesIncludedList = ReadonlyArray<string>;
+export type ConnectorAttributesIncludedList = Array<string>;
 export const ConnectorAttributesIncludedList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ConnectorAttributesIncludedList>;
@@ -3398,7 +3389,7 @@ export const Connector = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Connector" }) as any as S.Schema<Connector>;
 
 /** The value returned by the operation. */
-export type ConnectorsValueList = ReadonlyArray<Connector>;
+export type ConnectorsValueList = Array<Connector>;
 export const ConnectorsValueList = /*@__PURE__*/ S.Array(
   Connector,
 ) as any as S.Schema<ConnectorsValueList>;
@@ -3464,7 +3455,7 @@ export const ServiceMembersListDataFreshnessRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ServiceMembersListDataFreshnessRequest>;
 
 /** The value returned by the operation. */
-export type DataFreshnessDetailsValueList = ReadonlyArray<Item>;
+export type DataFreshnessDetailsValueList = Array<Item>;
 export const DataFreshnessDetailsValueList = /*@__PURE__*/ S.Array(
   Item,
 ) as any as S.Schema<DataFreshnessDetailsValueList>;
@@ -3526,7 +3517,7 @@ export const ExportStatus = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ExportStatus" }) as any as S.Schema<ExportStatus>;
 
 /** The value returned by the operation. */
-export type ExportStatusesValueList = ReadonlyArray<ExportStatus>;
+export type ExportStatusesValueList = Array<ExportStatus>;
 export const ExportStatusesValueList = /*@__PURE__*/ S.Array(
   ExportStatus,
 ) as any as S.Schema<ExportStatusesValueList>;
@@ -3575,7 +3566,7 @@ export const ServiceMembersListGlobalConfigurationRequest =
   }) as any as S.Schema<ServiceMembersListGlobalConfigurationRequest>;
 
 /** The list of additional feature sets. */
-export type GlobalConfigurationFeatureSetList = ReadonlyArray<Item>;
+export type GlobalConfigurationFeatureSetList = Array<Item>;
 export const GlobalConfigurationFeatureSetList = /*@__PURE__*/ S.Array(
   Item,
 ) as any as S.Schema<GlobalConfigurationFeatureSetList>;
@@ -3606,7 +3597,7 @@ export const GlobalConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GlobalConfiguration>;
 
 /** The value returned by the operation. */
-export type GlobalConfigurationsValueList = ReadonlyArray<GlobalConfiguration>;
+export type GlobalConfigurationsValueList = Array<GlobalConfiguration>;
 export const GlobalConfigurationsValueList = /*@__PURE__*/ S.Array(
   GlobalConfiguration,
 ) as any as S.Schema<GlobalConfigurationsValueList>;
@@ -3625,15 +3616,14 @@ export const GlobalConfigurations = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GlobalConfigurations>;
 
 /** The list of additional emails that are configured to receive notifications about the service. */
-export type ServicesAddRequestCustomNotificationEmailsList =
-  ReadonlyArray<string>;
+export type ServicesAddRequestCustomNotificationEmailsList = Array<string>;
 export const ServicesAddRequestCustomNotificationEmailsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ServicesAddRequestCustomNotificationEmailsList>;
 
 /** The list of emails to whom service notifications will be sent. */
-export type ServicesAddRequestNotificationEmailsList = ReadonlyArray<string>;
+export type ServicesAddRequestNotificationEmailsList = Array<string>;
 export const ServicesAddRequestNotificationEmailsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ServicesAddRequestNotificationEmailsList>;
@@ -4005,7 +3995,7 @@ export const ServicesListAlertFeedbackRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServicesListAlertFeedbackRequest>;
 
 /** The value returned by the operation. */
-export type AlertFeedbacksValueList = ReadonlyArray<AlertFeedback>;
+export type AlertFeedbacksValueList = Array<AlertFeedback>;
 export const AlertFeedbacksValueList = /*@__PURE__*/ S.Array(
   AlertFeedback,
 ) as any as S.Schema<AlertFeedbacksValueList>;
@@ -4099,7 +4089,7 @@ export const RiskyIPBlobUri = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RiskyIPBlobUri" }) as any as S.Schema<RiskyIPBlobUri>;
 
 /** The list of blob uris. */
-export type RiskyIPBlobUrisValueList = ReadonlyArray<RiskyIPBlobUri>;
+export type RiskyIPBlobUrisValueList = Array<RiskyIPBlobUri>;
 export const RiskyIPBlobUrisValueList = /*@__PURE__*/ S.Array(
   RiskyIPBlobUri,
 ) as any as S.Schema<RiskyIPBlobUrisValueList>;
@@ -4174,7 +4164,7 @@ export const ErrorCount = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ErrorCount" }) as any as S.Schema<ErrorCount>;
 
 /** The value returned by the operation. */
-export type ErrorCountsValueList = ReadonlyArray<ErrorCount>;
+export type ErrorCountsValueList = Array<ErrorCount>;
 export const ErrorCountsValueList = /*@__PURE__*/ S.Array(
   ErrorCount,
 ) as any as S.Schema<ErrorCountsValueList>;
@@ -4335,7 +4325,7 @@ export const MergedExportError = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MergedExportError>;
 
 /** The value returned by the operation. */
-export type MergedExportErrorsValueList = ReadonlyArray<MergedExportError>;
+export type MergedExportErrorsValueList = Array<MergedExportError>;
 export const MergedExportErrorsValueList = /*@__PURE__*/ S.Array(
   MergedExportError,
 ) as any as S.Schema<MergedExportErrorsValueList>;
@@ -4468,7 +4458,7 @@ export const ServicesListMonitoringConfigurationsRequest =
   }) as any as S.Schema<ServicesListMonitoringConfigurationsRequest>;
 
 /** The value returned by the operation. */
-export type ItemsValueList = ReadonlyArray<Item>;
+export type ItemsValueList = Array<Item>;
 export const ItemsValueList = /*@__PURE__*/ S.Array(
   Item,
 ) as any as S.Schema<ItemsValueList>;
@@ -4561,8 +4551,7 @@ export const ErrorReportUsersEntry = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ErrorReportUsersEntry>;
 
 /** The value returned by the operation. */
-export type ErrorReportUsersEntriesValueList =
-  ReadonlyArray<ErrorReportUsersEntry>;
+export type ErrorReportUsersEntriesValueList = Array<ErrorReportUsersEntry>;
 export const ErrorReportUsersEntriesValueList = /*@__PURE__*/ S.Array(
   ErrorReportUsersEntry,
 ) as any as S.Schema<ErrorReportUsersEntriesValueList>;
@@ -4581,15 +4570,14 @@ export const ErrorReportUsersEntries = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ErrorReportUsersEntries>;
 
 /** The list of additional emails that are configured to receive notifications about the service. */
-export type ServicesUpdateRequestCustomNotificationEmailsList =
-  ReadonlyArray<string>;
+export type ServicesUpdateRequestCustomNotificationEmailsList = Array<string>;
 export const ServicesUpdateRequestCustomNotificationEmailsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ServicesUpdateRequestCustomNotificationEmailsList>;
 
 /** The list of emails to whom service notifications will be sent. */
-export type ServicesUpdateRequestNotificationEmailsList = ReadonlyArray<string>;
+export type ServicesUpdateRequestNotificationEmailsList = Array<string>;
 export const ServicesUpdateRequestNotificationEmailsList =
   /*@__PURE__*/ S.Array(
     S.String,

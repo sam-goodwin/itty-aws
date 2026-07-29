@@ -332,7 +332,7 @@ export const InstancesChatCompletionsRequestMessagesItemContentCase1Item =
   }) as any as S.Schema<InstancesChatCompletionsRequestMessagesItemContentCase1Item>;
 
 export type InstancesChatCompletionsRequestMessagesItemContentCase1List =
-  ReadonlyArray<InstancesChatCompletionsRequestMessagesItemContentCase1Item>;
+  Array<InstancesChatCompletionsRequestMessagesItemContentCase1Item>;
 export const InstancesChatCompletionsRequestMessagesItemContentCase1List =
   /*@__PURE__*/ S.Array(
     InstancesChatCompletionsRequestMessagesItemContentCase1Item,
@@ -370,7 +370,7 @@ export const InstancesChatCompletionsRequestMessagesItem =
   }) as any as S.Schema<InstancesChatCompletionsRequestMessagesItem>;
 
 export type InstancesChatCompletionsRequestMessagesList =
-  ReadonlyArray<InstancesChatCompletionsRequestMessagesItem>;
+  Array<InstancesChatCompletionsRequestMessagesItem>;
 export const InstancesChatCompletionsRequestMessagesList =
   /*@__PURE__*/ S.Array(
     InstancesChatCompletionsRequestMessagesItem,
@@ -511,7 +511,7 @@ export const InstancesChatCompletionsRequestAiSearchOptionsRetrievalBoostByItem 
   }) as any as S.Schema<InstancesChatCompletionsRequestAiSearchOptionsRetrievalBoostByItem>;
 
 export type InstancesChatCompletionsRequestAiSearchOptionsRetrievalBoostByList =
-  ReadonlyArray<InstancesChatCompletionsRequestAiSearchOptionsRetrievalBoostByItem>;
+  Array<InstancesChatCompletionsRequestAiSearchOptionsRetrievalBoostByItem>;
 export const InstancesChatCompletionsRequestAiSearchOptionsRetrievalBoostByList =
   /*@__PURE__*/ S.Array(
     InstancesChatCompletionsRequestAiSearchOptionsRetrievalBoostByItem,
@@ -770,7 +770,7 @@ export const InstancesChatCompletionsResponseChoicesItemMessageContentCase1Item 
   }) as any as S.Schema<InstancesChatCompletionsResponseChoicesItemMessageContentCase1Item>;
 
 export type InstancesChatCompletionsResponseChoicesItemMessageContentCase1List =
-  ReadonlyArray<InstancesChatCompletionsResponseChoicesItemMessageContentCase1Item>;
+  Array<InstancesChatCompletionsResponseChoicesItemMessageContentCase1Item>;
 export const InstancesChatCompletionsResponseChoicesItemMessageContentCase1List =
   /*@__PURE__*/ S.Array(
     InstancesChatCompletionsResponseChoicesItemMessageContentCase1Item,
@@ -820,7 +820,7 @@ export const InstancesChatCompletionsResponseChoicesItem =
   }) as any as S.Schema<InstancesChatCompletionsResponseChoicesItem>;
 
 export type InstancesChatCompletionsResponseChoicesList =
-  ReadonlyArray<InstancesChatCompletionsResponseChoicesItem>;
+  Array<InstancesChatCompletionsResponseChoicesItem>;
 export const InstancesChatCompletionsResponseChoicesList =
   /*@__PURE__*/ S.Array(
     InstancesChatCompletionsResponseChoicesItem,
@@ -911,7 +911,7 @@ export const InstancesChatCompletionsResponseChunksItem =
   }) as any as S.Schema<InstancesChatCompletionsResponseChunksItem>;
 
 export type InstancesChatCompletionsResponseChunksList =
-  ReadonlyArray<InstancesChatCompletionsResponseChunksItem>;
+  Array<InstancesChatCompletionsResponseChunksItem>;
 export const InstancesChatCompletionsResponseChunksList = /*@__PURE__*/ S.Array(
   InstancesChatCompletionsResponseChunksItem,
 ) as any as S.Schema<InstancesChatCompletionsResponseChunksList>;
@@ -937,7 +937,7 @@ export const ChatCompletionsInstanceResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ChatCompletionsInstanceResponse>;
 
 export type NamespacesChatCompletionsRequestAiSearchOptionsInstanceIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const NamespacesChatCompletionsRequestAiSearchOptionsInstanceIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1075,7 +1075,7 @@ export const NamespacesChatCompletionsRequestAiSearchOptionsRetrievalBoostByItem
   }) as any as S.Schema<NamespacesChatCompletionsRequestAiSearchOptionsRetrievalBoostByItem>;
 
 export type NamespacesChatCompletionsRequestAiSearchOptionsRetrievalBoostByList =
-  ReadonlyArray<NamespacesChatCompletionsRequestAiSearchOptionsRetrievalBoostByItem>;
+  Array<NamespacesChatCompletionsRequestAiSearchOptionsRetrievalBoostByItem>;
 export const NamespacesChatCompletionsRequestAiSearchOptionsRetrievalBoostByList =
   /*@__PURE__*/ S.Array(
     NamespacesChatCompletionsRequestAiSearchOptionsRetrievalBoostByItem,
@@ -1277,7 +1277,7 @@ export const NamespacesChatCompletionsRequestMessagesItemContentCase1Item =
   }) as any as S.Schema<NamespacesChatCompletionsRequestMessagesItemContentCase1Item>;
 
 export type NamespacesChatCompletionsRequestMessagesItemContentCase1List =
-  ReadonlyArray<NamespacesChatCompletionsRequestMessagesItemContentCase1Item>;
+  Array<NamespacesChatCompletionsRequestMessagesItemContentCase1Item>;
 export const NamespacesChatCompletionsRequestMessagesItemContentCase1List =
   /*@__PURE__*/ S.Array(
     NamespacesChatCompletionsRequestMessagesItemContentCase1Item,
@@ -1315,7 +1315,7 @@ export const NamespacesChatCompletionsRequestMessagesItem =
   }) as any as S.Schema<NamespacesChatCompletionsRequestMessagesItem>;
 
 export type NamespacesChatCompletionsRequestMessagesList =
-  ReadonlyArray<NamespacesChatCompletionsRequestMessagesItem>;
+  Array<NamespacesChatCompletionsRequestMessagesItem>;
 export const NamespacesChatCompletionsRequestMessagesList =
   /*@__PURE__*/ S.Array(
     NamespacesChatCompletionsRequestMessagesItem,
@@ -1468,7 +1468,7 @@ export const NamespacesChatCompletionsResponseChoicesItemMessageContentCase1Item
   }) as any as S.Schema<NamespacesChatCompletionsResponseChoicesItemMessageContentCase1Item>;
 
 export type NamespacesChatCompletionsResponseChoicesItemMessageContentCase1List =
-  ReadonlyArray<NamespacesChatCompletionsResponseChoicesItemMessageContentCase1Item>;
+  Array<NamespacesChatCompletionsResponseChoicesItemMessageContentCase1Item>;
 export const NamespacesChatCompletionsResponseChoicesItemMessageContentCase1List =
   /*@__PURE__*/ S.Array(
     NamespacesChatCompletionsResponseChoicesItemMessageContentCase1Item,
@@ -1518,7 +1518,7 @@ export const NamespacesChatCompletionsResponseChoicesItem =
   }) as any as S.Schema<NamespacesChatCompletionsResponseChoicesItem>;
 
 export type NamespacesChatCompletionsResponseChoicesList =
-  ReadonlyArray<NamespacesChatCompletionsResponseChoicesItem>;
+  Array<NamespacesChatCompletionsResponseChoicesItem>;
 export const NamespacesChatCompletionsResponseChoicesList =
   /*@__PURE__*/ S.Array(
     NamespacesChatCompletionsResponseChoicesItem,
@@ -1611,7 +1611,7 @@ export const NamespacesChatCompletionsResponseChunksItem =
   }) as any as S.Schema<NamespacesChatCompletionsResponseChunksItem>;
 
 export type NamespacesChatCompletionsResponseChunksList =
-  ReadonlyArray<NamespacesChatCompletionsResponseChunksItem>;
+  Array<NamespacesChatCompletionsResponseChunksItem>;
 export const NamespacesChatCompletionsResponseChunksList =
   /*@__PURE__*/ S.Array(
     NamespacesChatCompletionsResponseChunksItem,
@@ -1726,7 +1726,7 @@ export const NamespacesInstancesChatCompletionsRequestMessagesItemContentCase1It
   }) as any as S.Schema<NamespacesInstancesChatCompletionsRequestMessagesItemContentCase1Item>;
 
 export type NamespacesInstancesChatCompletionsRequestMessagesItemContentCase1List =
-  ReadonlyArray<NamespacesInstancesChatCompletionsRequestMessagesItemContentCase1Item>;
+  Array<NamespacesInstancesChatCompletionsRequestMessagesItemContentCase1Item>;
 export const NamespacesInstancesChatCompletionsRequestMessagesItemContentCase1List =
   /*@__PURE__*/ S.Array(
     NamespacesInstancesChatCompletionsRequestMessagesItemContentCase1Item,
@@ -1766,7 +1766,7 @@ export const NamespacesInstancesChatCompletionsRequestMessagesItem =
   }) as any as S.Schema<NamespacesInstancesChatCompletionsRequestMessagesItem>;
 
 export type NamespacesInstancesChatCompletionsRequestMessagesList =
-  ReadonlyArray<NamespacesInstancesChatCompletionsRequestMessagesItem>;
+  Array<NamespacesInstancesChatCompletionsRequestMessagesItem>;
 export const NamespacesInstancesChatCompletionsRequestMessagesList =
   /*@__PURE__*/ S.Array(
     NamespacesInstancesChatCompletionsRequestMessagesItem,
@@ -1905,7 +1905,7 @@ export const NamespacesInstancesChatCompletionsRequestAiSearchOptionsRetrievalBo
   }) as any as S.Schema<NamespacesInstancesChatCompletionsRequestAiSearchOptionsRetrievalBoostByItem>;
 
 export type NamespacesInstancesChatCompletionsRequestAiSearchOptionsRetrievalBoostByList =
-  ReadonlyArray<NamespacesInstancesChatCompletionsRequestAiSearchOptionsRetrievalBoostByItem>;
+  Array<NamespacesInstancesChatCompletionsRequestAiSearchOptionsRetrievalBoostByItem>;
 export const NamespacesInstancesChatCompletionsRequestAiSearchOptionsRetrievalBoostByList =
   /*@__PURE__*/ S.Array(
     NamespacesInstancesChatCompletionsRequestAiSearchOptionsRetrievalBoostByItem,
@@ -2171,7 +2171,7 @@ export const NamespacesInstancesChatCompletionsResponseChoicesItemMessageContent
   }) as any as S.Schema<NamespacesInstancesChatCompletionsResponseChoicesItemMessageContentCase1Item>;
 
 export type NamespacesInstancesChatCompletionsResponseChoicesItemMessageContentCase1List =
-  ReadonlyArray<NamespacesInstancesChatCompletionsResponseChoicesItemMessageContentCase1Item>;
+  Array<NamespacesInstancesChatCompletionsResponseChoicesItemMessageContentCase1Item>;
 export const NamespacesInstancesChatCompletionsResponseChoicesItemMessageContentCase1List =
   /*@__PURE__*/ S.Array(
     NamespacesInstancesChatCompletionsResponseChoicesItemMessageContentCase1Item,
@@ -2222,7 +2222,7 @@ export const NamespacesInstancesChatCompletionsResponseChoicesItem =
   }) as any as S.Schema<NamespacesInstancesChatCompletionsResponseChoicesItem>;
 
 export type NamespacesInstancesChatCompletionsResponseChoicesList =
-  ReadonlyArray<NamespacesInstancesChatCompletionsResponseChoicesItem>;
+  Array<NamespacesInstancesChatCompletionsResponseChoicesItem>;
 export const NamespacesInstancesChatCompletionsResponseChoicesList =
   /*@__PURE__*/ S.Array(
     NamespacesInstancesChatCompletionsResponseChoicesItem,
@@ -2315,7 +2315,7 @@ export const NamespacesInstancesChatCompletionsResponseChunksItem =
   }) as any as S.Schema<NamespacesInstancesChatCompletionsResponseChunksItem>;
 
 export type NamespacesInstancesChatCompletionsResponseChunksList =
-  ReadonlyArray<NamespacesInstancesChatCompletionsResponseChunksItem>;
+  Array<NamespacesInstancesChatCompletionsResponseChunksItem>;
 export const NamespacesInstancesChatCompletionsResponseChunksList =
   /*@__PURE__*/ S.Array(
     NamespacesInstancesChatCompletionsResponseChunksItem,
@@ -2420,7 +2420,7 @@ export const NamespacesInstancesItemsChunksResultItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<NamespacesInstancesItemsChunksResultItem>;
 
 export type NamespacesInstancesItemsChunksResultList =
-  ReadonlyArray<NamespacesInstancesItemsChunksResultItem>;
+  Array<NamespacesInstancesItemsChunksResultItem>;
 export const NamespacesInstancesItemsChunksResultList = /*@__PURE__*/ S.Array(
   NamespacesInstancesItemsChunksResultItem,
 ) as any as S.Schema<NamespacesInstancesItemsChunksResultList>;
@@ -2511,7 +2511,7 @@ export const InstancesCreateRequestCustomMetadataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<InstancesCreateRequestCustomMetadataItem>;
 
 export type InstancesCreateRequestCustomMetadataList =
-  ReadonlyArray<InstancesCreateRequestCustomMetadataItem>;
+  Array<InstancesCreateRequestCustomMetadataItem>;
 export const InstancesCreateRequestCustomMetadataList = /*@__PURE__*/ S.Array(
   InstancesCreateRequestCustomMetadataItem,
 ) as any as S.Schema<InstancesCreateRequestCustomMetadataList>;
@@ -2589,7 +2589,7 @@ export const InstancesCreateRequestMetadata = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InstancesCreateRequestMetadata>;
 
 export type InstancesCreateRequestPublicEndpointParamsAuthorizedHostsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const InstancesCreateRequestPublicEndpointParamsAuthorizedHostsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2610,7 +2610,7 @@ export const InstancesCreateRequestPublicEndpointParamsChatCompletionsEndpoint =
   }) as any as S.Schema<InstancesCreateRequestPublicEndpointParamsChatCompletionsEndpoint>;
 
 export type InstancesCreateRequestPublicEndpointParamsCustomDomainsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const InstancesCreateRequestPublicEndpointParamsCustomDomainsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2749,7 +2749,7 @@ export const InstancesCreateRequestRetrievalOptionsBoostByItem =
   }) as any as S.Schema<InstancesCreateRequestRetrievalOptionsBoostByItem>;
 
 export type InstancesCreateRequestRetrievalOptionsBoostByList =
-  ReadonlyArray<InstancesCreateRequestRetrievalOptionsBoostByItem>;
+  Array<InstancesCreateRequestRetrievalOptionsBoostByItem>;
 export const InstancesCreateRequestRetrievalOptionsBoostByList =
   /*@__PURE__*/ S.Array(
     InstancesCreateRequestRetrievalOptionsBoostByItem,
@@ -2820,15 +2820,13 @@ export type InstancesCreateRequestRewriteModel =
   | "";
 export const InstancesCreateRequestRewriteModel = /*@__PURE__*/ S.String;
 
-export type InstancesCreateRequestSourceParamsExcludeItemsList =
-  ReadonlyArray<string>;
+export type InstancesCreateRequestSourceParamsExcludeItemsList = Array<string>;
 export const InstancesCreateRequestSourceParamsExcludeItemsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<InstancesCreateRequestSourceParamsExcludeItemsList>;
 
-export type InstancesCreateRequestSourceParamsIncludeItemsList =
-  ReadonlyArray<string>;
+export type InstancesCreateRequestSourceParamsIncludeItemsList = Array<string>;
 export const InstancesCreateRequestSourceParamsIncludeItemsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2852,7 +2850,7 @@ export const InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSele
   }) as any as S.Schema<InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem>;
 
 export type InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorList =
-  ReadonlyArray<InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem>;
+  Array<InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem>;
 export const InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorList =
   /*@__PURE__*/ S.Array(
     InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem,
@@ -2867,7 +2865,7 @@ export const InstancesCreateRequestSourceParamsWebCrawlerParseOptionsIncludeHead
   ) as any as S.Schema<InstancesCreateRequestSourceParamsWebCrawlerParseOptionsIncludeHeadersMap>;
 
 export type InstancesCreateRequestSourceParamsWebCrawlerParseOptionsSpecificSitemapsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const InstancesCreateRequestSourceParamsWebCrawlerParseOptionsSpecificSitemapsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2926,7 +2924,7 @@ export interface WebCrawlerCrawlOptions {
   includeSubdomains?: boolean;
   maxAge?: number;
   /** Where the crawler discovers URLs: sitemaps, page links, or both. Use links for sitemap-less seeds (avoids missing_sitemap rejections). */
-  source?: WebCrawlerCrawlOptionsSource;
+  source?: WebCrawlerCrawlOptionsSource | (string & {});
 }
 export const WebCrawlerCrawlOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3208,7 +3206,7 @@ export const InstancesCreateResponseCustomMetadataItem =
   }) as any as S.Schema<InstancesCreateResponseCustomMetadataItem>;
 
 export type InstancesCreateResponseCustomMetadataList =
-  ReadonlyArray<InstancesCreateResponseCustomMetadataItem>;
+  Array<InstancesCreateResponseCustomMetadataItem>;
 export const InstancesCreateResponseCustomMetadataList = /*@__PURE__*/ S.Array(
   InstancesCreateResponseCustomMetadataItem,
 ) as any as S.Schema<InstancesCreateResponseCustomMetadataList>;
@@ -3284,7 +3282,7 @@ export const InstancesCreateResponseMetadata = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InstancesCreateResponseMetadata>;
 
 export type InstancesCreateResponsePublicEndpointParamsAuthorizedHostsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const InstancesCreateResponsePublicEndpointParamsAuthorizedHostsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3305,7 +3303,7 @@ export const InstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint 
   }) as any as S.Schema<InstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint>;
 
 export type InstancesCreateResponsePublicEndpointParamsCustomDomainsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const InstancesCreateResponsePublicEndpointParamsCustomDomainsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3440,7 +3438,7 @@ export const InstancesCreateResponseRetrievalOptionsBoostByItem =
   }) as any as S.Schema<InstancesCreateResponseRetrievalOptionsBoostByItem>;
 
 export type InstancesCreateResponseRetrievalOptionsBoostByList =
-  ReadonlyArray<InstancesCreateResponseRetrievalOptionsBoostByItem>;
+  Array<InstancesCreateResponseRetrievalOptionsBoostByItem>;
 export const InstancesCreateResponseRetrievalOptionsBoostByList =
   /*@__PURE__*/ S.Array(
     InstancesCreateResponseRetrievalOptionsBoostByItem,
@@ -3509,15 +3507,13 @@ export type InstancesCreateResponseRewriteModel =
   | "";
 export const InstancesCreateResponseRewriteModel = /*@__PURE__*/ S.String;
 
-export type InstancesCreateResponseSourceParamsExcludeItemsList =
-  ReadonlyArray<string>;
+export type InstancesCreateResponseSourceParamsExcludeItemsList = Array<string>;
 export const InstancesCreateResponseSourceParamsExcludeItemsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<InstancesCreateResponseSourceParamsExcludeItemsList>;
 
-export type InstancesCreateResponseSourceParamsIncludeItemsList =
-  ReadonlyArray<string>;
+export type InstancesCreateResponseSourceParamsIncludeItemsList = Array<string>;
 export const InstancesCreateResponseSourceParamsIncludeItemsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3541,7 +3537,7 @@ export const InstancesCreateResponseSourceParamsWebCrawlerParseOptionsContentSel
   }) as any as S.Schema<InstancesCreateResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem>;
 
 export type InstancesCreateResponseSourceParamsWebCrawlerParseOptionsContentSelectorList =
-  ReadonlyArray<InstancesCreateResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem>;
+  Array<InstancesCreateResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem>;
 export const InstancesCreateResponseSourceParamsWebCrawlerParseOptionsContentSelectorList =
   /*@__PURE__*/ S.Array(
     InstancesCreateResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem,
@@ -3556,7 +3552,7 @@ export const InstancesCreateResponseSourceParamsWebCrawlerParseOptionsIncludeHea
   ) as any as S.Schema<InstancesCreateResponseSourceParamsWebCrawlerParseOptionsIncludeHeadersMap>;
 
 export type InstancesCreateResponseSourceParamsWebCrawlerParseOptionsSpecificSitemapsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const InstancesCreateResponseSourceParamsWebCrawlerParseOptionsSpecificSitemapsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3976,7 +3972,7 @@ export const NamespacesInstancesCreateRequestCustomMetadataItem =
   }) as any as S.Schema<NamespacesInstancesCreateRequestCustomMetadataItem>;
 
 export type NamespacesInstancesCreateRequestCustomMetadataList =
-  ReadonlyArray<NamespacesInstancesCreateRequestCustomMetadataItem>;
+  Array<NamespacesInstancesCreateRequestCustomMetadataItem>;
 export const NamespacesInstancesCreateRequestCustomMetadataList =
   /*@__PURE__*/ S.Array(
     NamespacesInstancesCreateRequestCustomMetadataItem,
@@ -4059,7 +4055,7 @@ export const NamespacesInstancesCreateRequestMetadata = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<NamespacesInstancesCreateRequestMetadata>;
 
 export type NamespacesInstancesCreateRequestPublicEndpointParamsAuthorizedHostsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const NamespacesInstancesCreateRequestPublicEndpointParamsAuthorizedHostsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4080,7 +4076,7 @@ export const NamespacesInstancesCreateRequestPublicEndpointParamsChatCompletions
   }) as any as S.Schema<NamespacesInstancesCreateRequestPublicEndpointParamsChatCompletionsEndpoint>;
 
 export type NamespacesInstancesCreateRequestPublicEndpointParamsCustomDomainsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const NamespacesInstancesCreateRequestPublicEndpointParamsCustomDomainsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4217,7 +4213,7 @@ export const NamespacesInstancesCreateRequestRetrievalOptionsBoostByItem =
   }) as any as S.Schema<NamespacesInstancesCreateRequestRetrievalOptionsBoostByItem>;
 
 export type NamespacesInstancesCreateRequestRetrievalOptionsBoostByList =
-  ReadonlyArray<NamespacesInstancesCreateRequestRetrievalOptionsBoostByItem>;
+  Array<NamespacesInstancesCreateRequestRetrievalOptionsBoostByItem>;
 export const NamespacesInstancesCreateRequestRetrievalOptionsBoostByList =
   /*@__PURE__*/ S.Array(
     NamespacesInstancesCreateRequestRetrievalOptionsBoostByItem,
@@ -4290,14 +4286,14 @@ export const NamespacesInstancesCreateRequestRewriteModel =
   /*@__PURE__*/ S.String;
 
 export type NamespacesInstancesCreateRequestSourceParamsExcludeItemsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const NamespacesInstancesCreateRequestSourceParamsExcludeItemsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<NamespacesInstancesCreateRequestSourceParamsExcludeItemsList>;
 
 export type NamespacesInstancesCreateRequestSourceParamsIncludeItemsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const NamespacesInstancesCreateRequestSourceParamsIncludeItemsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4321,7 +4317,7 @@ export const NamespacesInstancesCreateRequestSourceParamsWebCrawlerParseOptionsC
   }) as any as S.Schema<NamespacesInstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem>;
 
 export type NamespacesInstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorList =
-  ReadonlyArray<NamespacesInstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem>;
+  Array<NamespacesInstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem>;
 export const NamespacesInstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorList =
   /*@__PURE__*/ S.Array(
     NamespacesInstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem,
@@ -4336,7 +4332,7 @@ export const NamespacesInstancesCreateRequestSourceParamsWebCrawlerParseOptionsI
   ) as any as S.Schema<NamespacesInstancesCreateRequestSourceParamsWebCrawlerParseOptionsIncludeHeadersMap>;
 
 export type NamespacesInstancesCreateRequestSourceParamsWebCrawlerParseOptionsSpecificSitemapsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const NamespacesInstancesCreateRequestSourceParamsWebCrawlerParseOptionsSpecificSitemapsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4689,7 +4685,7 @@ export const NamespacesInstancesCreateResponseCustomMetadataItem =
   }) as any as S.Schema<NamespacesInstancesCreateResponseCustomMetadataItem>;
 
 export type NamespacesInstancesCreateResponseCustomMetadataList =
-  ReadonlyArray<NamespacesInstancesCreateResponseCustomMetadataItem>;
+  Array<NamespacesInstancesCreateResponseCustomMetadataItem>;
 export const NamespacesInstancesCreateResponseCustomMetadataList =
   /*@__PURE__*/ S.Array(
     NamespacesInstancesCreateResponseCustomMetadataItem,
@@ -4770,7 +4766,7 @@ export const NamespacesInstancesCreateResponseMetadata =
   }) as any as S.Schema<NamespacesInstancesCreateResponseMetadata>;
 
 export type NamespacesInstancesCreateResponsePublicEndpointParamsAuthorizedHostsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const NamespacesInstancesCreateResponsePublicEndpointParamsAuthorizedHostsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4791,7 +4787,7 @@ export const NamespacesInstancesCreateResponsePublicEndpointParamsChatCompletion
   }) as any as S.Schema<NamespacesInstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint>;
 
 export type NamespacesInstancesCreateResponsePublicEndpointParamsCustomDomainsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const NamespacesInstancesCreateResponsePublicEndpointParamsCustomDomainsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4925,7 +4921,7 @@ export const NamespacesInstancesCreateResponseRetrievalOptionsBoostByItem =
   }) as any as S.Schema<NamespacesInstancesCreateResponseRetrievalOptionsBoostByItem>;
 
 export type NamespacesInstancesCreateResponseRetrievalOptionsBoostByList =
-  ReadonlyArray<NamespacesInstancesCreateResponseRetrievalOptionsBoostByItem>;
+  Array<NamespacesInstancesCreateResponseRetrievalOptionsBoostByItem>;
 export const NamespacesInstancesCreateResponseRetrievalOptionsBoostByList =
   /*@__PURE__*/ S.Array(
     NamespacesInstancesCreateResponseRetrievalOptionsBoostByItem,
@@ -4996,14 +4992,14 @@ export const NamespacesInstancesCreateResponseRewriteModel =
   /*@__PURE__*/ S.String;
 
 export type NamespacesInstancesCreateResponseSourceParamsExcludeItemsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const NamespacesInstancesCreateResponseSourceParamsExcludeItemsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<NamespacesInstancesCreateResponseSourceParamsExcludeItemsList>;
 
 export type NamespacesInstancesCreateResponseSourceParamsIncludeItemsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const NamespacesInstancesCreateResponseSourceParamsIncludeItemsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5027,7 +5023,7 @@ export const NamespacesInstancesCreateResponseSourceParamsWebCrawlerParseOptions
   }) as any as S.Schema<NamespacesInstancesCreateResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem>;
 
 export type NamespacesInstancesCreateResponseSourceParamsWebCrawlerParseOptionsContentSelectorList =
-  ReadonlyArray<NamespacesInstancesCreateResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem>;
+  Array<NamespacesInstancesCreateResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem>;
 export const NamespacesInstancesCreateResponseSourceParamsWebCrawlerParseOptionsContentSelectorList =
   /*@__PURE__*/ S.Array(
     NamespacesInstancesCreateResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem,
@@ -5042,7 +5038,7 @@ export const NamespacesInstancesCreateResponseSourceParamsWebCrawlerParseOptions
   ) as any as S.Schema<NamespacesInstancesCreateResponseSourceParamsWebCrawlerParseOptionsIncludeHeadersMap>;
 
 export type NamespacesInstancesCreateResponseSourceParamsWebCrawlerParseOptionsSpecificSitemapsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const NamespacesInstancesCreateResponseSourceParamsWebCrawlerParseOptionsSpecificSitemapsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5620,7 +5616,7 @@ export const InstancesDeleteResponseCustomMetadataItem =
   }) as any as S.Schema<InstancesDeleteResponseCustomMetadataItem>;
 
 export type InstancesDeleteResponseCustomMetadataList =
-  ReadonlyArray<InstancesDeleteResponseCustomMetadataItem>;
+  Array<InstancesDeleteResponseCustomMetadataItem>;
 export const InstancesDeleteResponseCustomMetadataList = /*@__PURE__*/ S.Array(
   InstancesDeleteResponseCustomMetadataItem,
 ) as any as S.Schema<InstancesDeleteResponseCustomMetadataList>;
@@ -5696,7 +5692,7 @@ export const InstancesDeleteResponseMetadata = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InstancesDeleteResponseMetadata>;
 
 export type InstancesDeleteResponsePublicEndpointParamsAuthorizedHostsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const InstancesDeleteResponsePublicEndpointParamsAuthorizedHostsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5717,7 +5713,7 @@ export const InstancesDeleteResponsePublicEndpointParamsChatCompletionsEndpoint 
   }) as any as S.Schema<InstancesDeleteResponsePublicEndpointParamsChatCompletionsEndpoint>;
 
 export type InstancesDeleteResponsePublicEndpointParamsCustomDomainsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const InstancesDeleteResponsePublicEndpointParamsCustomDomainsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5852,7 +5848,7 @@ export const InstancesDeleteResponseRetrievalOptionsBoostByItem =
   }) as any as S.Schema<InstancesDeleteResponseRetrievalOptionsBoostByItem>;
 
 export type InstancesDeleteResponseRetrievalOptionsBoostByList =
-  ReadonlyArray<InstancesDeleteResponseRetrievalOptionsBoostByItem>;
+  Array<InstancesDeleteResponseRetrievalOptionsBoostByItem>;
 export const InstancesDeleteResponseRetrievalOptionsBoostByList =
   /*@__PURE__*/ S.Array(
     InstancesDeleteResponseRetrievalOptionsBoostByItem,
@@ -5921,15 +5917,13 @@ export type InstancesDeleteResponseRewriteModel =
   | "";
 export const InstancesDeleteResponseRewriteModel = /*@__PURE__*/ S.String;
 
-export type InstancesDeleteResponseSourceParamsExcludeItemsList =
-  ReadonlyArray<string>;
+export type InstancesDeleteResponseSourceParamsExcludeItemsList = Array<string>;
 export const InstancesDeleteResponseSourceParamsExcludeItemsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<InstancesDeleteResponseSourceParamsExcludeItemsList>;
 
-export type InstancesDeleteResponseSourceParamsIncludeItemsList =
-  ReadonlyArray<string>;
+export type InstancesDeleteResponseSourceParamsIncludeItemsList = Array<string>;
 export const InstancesDeleteResponseSourceParamsIncludeItemsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5953,7 +5947,7 @@ export const InstancesDeleteResponseSourceParamsWebCrawlerParseOptionsContentSel
   }) as any as S.Schema<InstancesDeleteResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem>;
 
 export type InstancesDeleteResponseSourceParamsWebCrawlerParseOptionsContentSelectorList =
-  ReadonlyArray<InstancesDeleteResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem>;
+  Array<InstancesDeleteResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem>;
 export const InstancesDeleteResponseSourceParamsWebCrawlerParseOptionsContentSelectorList =
   /*@__PURE__*/ S.Array(
     InstancesDeleteResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem,
@@ -5968,7 +5962,7 @@ export const InstancesDeleteResponseSourceParamsWebCrawlerParseOptionsIncludeHea
   ) as any as S.Schema<InstancesDeleteResponseSourceParamsWebCrawlerParseOptionsIncludeHeadersMap>;
 
 export type InstancesDeleteResponseSourceParamsWebCrawlerParseOptionsSpecificSitemapsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const InstancesDeleteResponseSourceParamsWebCrawlerParseOptionsSpecificSitemapsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6346,7 +6340,7 @@ export const NamespacesInstancesDeleteResponseCustomMetadataItem =
   }) as any as S.Schema<NamespacesInstancesDeleteResponseCustomMetadataItem>;
 
 export type NamespacesInstancesDeleteResponseCustomMetadataList =
-  ReadonlyArray<NamespacesInstancesDeleteResponseCustomMetadataItem>;
+  Array<NamespacesInstancesDeleteResponseCustomMetadataItem>;
 export const NamespacesInstancesDeleteResponseCustomMetadataList =
   /*@__PURE__*/ S.Array(
     NamespacesInstancesDeleteResponseCustomMetadataItem,
@@ -6427,7 +6421,7 @@ export const NamespacesInstancesDeleteResponseMetadata =
   }) as any as S.Schema<NamespacesInstancesDeleteResponseMetadata>;
 
 export type NamespacesInstancesDeleteResponsePublicEndpointParamsAuthorizedHostsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const NamespacesInstancesDeleteResponsePublicEndpointParamsAuthorizedHostsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6448,7 +6442,7 @@ export const NamespacesInstancesDeleteResponsePublicEndpointParamsChatCompletion
   }) as any as S.Schema<NamespacesInstancesDeleteResponsePublicEndpointParamsChatCompletionsEndpoint>;
 
 export type NamespacesInstancesDeleteResponsePublicEndpointParamsCustomDomainsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const NamespacesInstancesDeleteResponsePublicEndpointParamsCustomDomainsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6582,7 +6576,7 @@ export const NamespacesInstancesDeleteResponseRetrievalOptionsBoostByItem =
   }) as any as S.Schema<NamespacesInstancesDeleteResponseRetrievalOptionsBoostByItem>;
 
 export type NamespacesInstancesDeleteResponseRetrievalOptionsBoostByList =
-  ReadonlyArray<NamespacesInstancesDeleteResponseRetrievalOptionsBoostByItem>;
+  Array<NamespacesInstancesDeleteResponseRetrievalOptionsBoostByItem>;
 export const NamespacesInstancesDeleteResponseRetrievalOptionsBoostByList =
   /*@__PURE__*/ S.Array(
     NamespacesInstancesDeleteResponseRetrievalOptionsBoostByItem,
@@ -6653,14 +6647,14 @@ export const NamespacesInstancesDeleteResponseRewriteModel =
   /*@__PURE__*/ S.String;
 
 export type NamespacesInstancesDeleteResponseSourceParamsExcludeItemsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const NamespacesInstancesDeleteResponseSourceParamsExcludeItemsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<NamespacesInstancesDeleteResponseSourceParamsExcludeItemsList>;
 
 export type NamespacesInstancesDeleteResponseSourceParamsIncludeItemsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const NamespacesInstancesDeleteResponseSourceParamsIncludeItemsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6684,7 +6678,7 @@ export const NamespacesInstancesDeleteResponseSourceParamsWebCrawlerParseOptions
   }) as any as S.Schema<NamespacesInstancesDeleteResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem>;
 
 export type NamespacesInstancesDeleteResponseSourceParamsWebCrawlerParseOptionsContentSelectorList =
-  ReadonlyArray<NamespacesInstancesDeleteResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem>;
+  Array<NamespacesInstancesDeleteResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem>;
 export const NamespacesInstancesDeleteResponseSourceParamsWebCrawlerParseOptionsContentSelectorList =
   /*@__PURE__*/ S.Array(
     NamespacesInstancesDeleteResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem,
@@ -6699,7 +6693,7 @@ export const NamespacesInstancesDeleteResponseSourceParamsWebCrawlerParseOptions
   ) as any as S.Schema<NamespacesInstancesDeleteResponseSourceParamsWebCrawlerParseOptionsIncludeHeadersMap>;
 
 export type NamespacesInstancesDeleteResponseSourceParamsWebCrawlerParseOptionsSpecificSitemapsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const NamespacesInstancesDeleteResponseSourceParamsWebCrawlerParseOptionsSpecificSitemapsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -7304,8 +7298,7 @@ export const InstancesJobsListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "InstancesJobsListResultItem",
 }) as any as S.Schema<InstancesJobsListResultItem>;
 
-export type InstancesJobsListResultList =
-  ReadonlyArray<InstancesJobsListResultItem>;
+export type InstancesJobsListResultList = Array<InstancesJobsListResultItem>;
 export const InstancesJobsListResultList = /*@__PURE__*/ S.Array(
   InstancesJobsListResultItem,
 ) as any as S.Schema<InstancesJobsListResultList>;
@@ -7448,7 +7441,7 @@ export const InstancesListResultItemCustomMetadataItem =
   }) as any as S.Schema<InstancesListResultItemCustomMetadataItem>;
 
 export type InstancesListResultItemCustomMetadataList =
-  ReadonlyArray<InstancesListResultItemCustomMetadataItem>;
+  Array<InstancesListResultItemCustomMetadataItem>;
 export const InstancesListResultItemCustomMetadataList = /*@__PURE__*/ S.Array(
   InstancesListResultItemCustomMetadataItem,
 ) as any as S.Schema<InstancesListResultItemCustomMetadataList>;
@@ -7524,7 +7517,7 @@ export const InstancesListResultItemMetadata = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InstancesListResultItemMetadata>;
 
 export type InstancesListResultItemPublicEndpointParamsAuthorizedHostsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const InstancesListResultItemPublicEndpointParamsAuthorizedHostsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -7545,7 +7538,7 @@ export const InstancesListResultItemPublicEndpointParamsChatCompletionsEndpoint 
   }) as any as S.Schema<InstancesListResultItemPublicEndpointParamsChatCompletionsEndpoint>;
 
 export type InstancesListResultItemPublicEndpointParamsCustomDomainsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const InstancesListResultItemPublicEndpointParamsCustomDomainsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -7680,7 +7673,7 @@ export const InstancesListResultItemRetrievalOptionsBoostByItem =
   }) as any as S.Schema<InstancesListResultItemRetrievalOptionsBoostByItem>;
 
 export type InstancesListResultItemRetrievalOptionsBoostByList =
-  ReadonlyArray<InstancesListResultItemRetrievalOptionsBoostByItem>;
+  Array<InstancesListResultItemRetrievalOptionsBoostByItem>;
 export const InstancesListResultItemRetrievalOptionsBoostByList =
   /*@__PURE__*/ S.Array(
     InstancesListResultItemRetrievalOptionsBoostByItem,
@@ -7749,15 +7742,13 @@ export type InstancesListResultItemRewriteModel =
   | "";
 export const InstancesListResultItemRewriteModel = /*@__PURE__*/ S.String;
 
-export type InstancesListResultItemSourceParamsExcludeItemsList =
-  ReadonlyArray<string>;
+export type InstancesListResultItemSourceParamsExcludeItemsList = Array<string>;
 export const InstancesListResultItemSourceParamsExcludeItemsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<InstancesListResultItemSourceParamsExcludeItemsList>;
 
-export type InstancesListResultItemSourceParamsIncludeItemsList =
-  ReadonlyArray<string>;
+export type InstancesListResultItemSourceParamsIncludeItemsList = Array<string>;
 export const InstancesListResultItemSourceParamsIncludeItemsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -7781,7 +7772,7 @@ export const InstancesListResultItemSourceParamsWebCrawlerParseOptionsContentSel
   }) as any as S.Schema<InstancesListResultItemSourceParamsWebCrawlerParseOptionsContentSelectorItem>;
 
 export type InstancesListResultItemSourceParamsWebCrawlerParseOptionsContentSelectorList =
-  ReadonlyArray<InstancesListResultItemSourceParamsWebCrawlerParseOptionsContentSelectorItem>;
+  Array<InstancesListResultItemSourceParamsWebCrawlerParseOptionsContentSelectorItem>;
 export const InstancesListResultItemSourceParamsWebCrawlerParseOptionsContentSelectorList =
   /*@__PURE__*/ S.Array(
     InstancesListResultItemSourceParamsWebCrawlerParseOptionsContentSelectorItem,
@@ -7796,7 +7787,7 @@ export const InstancesListResultItemSourceParamsWebCrawlerParseOptionsIncludeHea
   ) as any as S.Schema<InstancesListResultItemSourceParamsWebCrawlerParseOptionsIncludeHeadersMap>;
 
 export type InstancesListResultItemSourceParamsWebCrawlerParseOptionsSpecificSitemapsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const InstancesListResultItemSourceParamsWebCrawlerParseOptionsSpecificSitemapsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -8041,7 +8032,7 @@ export const InstancesListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "InstancesListResultItem",
 }) as any as S.Schema<InstancesListResultItem>;
 
-export type InstancesListResultList = ReadonlyArray<InstancesListResultItem>;
+export type InstancesListResultList = Array<InstancesListResultItem>;
 export const InstancesListResultList = /*@__PURE__*/ S.Array(
   InstancesListResultItem,
 ) as any as S.Schema<InstancesListResultList>;
@@ -8177,7 +8168,7 @@ export const NamespacesInstancesItemsListResultItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<NamespacesInstancesItemsListResultItem>;
 
 export type NamespacesInstancesItemsListResultList =
-  ReadonlyArray<NamespacesInstancesItemsListResultItem>;
+  Array<NamespacesInstancesItemsListResultItem>;
 export const NamespacesInstancesItemsListResultList = /*@__PURE__*/ S.Array(
   NamespacesInstancesItemsListResultItem,
 ) as any as S.Schema<NamespacesInstancesItemsListResultList>;
@@ -8254,7 +8245,7 @@ export const NamespacesInstancesJobsListResultItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<NamespacesInstancesJobsListResultItem>;
 
 export type NamespacesInstancesJobsListResultList =
-  ReadonlyArray<NamespacesInstancesJobsListResultItem>;
+  Array<NamespacesInstancesJobsListResultItem>;
 export const NamespacesInstancesJobsListResultList = /*@__PURE__*/ S.Array(
   NamespacesInstancesJobsListResultItem,
 ) as any as S.Schema<NamespacesInstancesJobsListResultList>;
@@ -8409,7 +8400,7 @@ export const NamespacesInstancesListResultItemCustomMetadataItem =
   }) as any as S.Schema<NamespacesInstancesListResultItemCustomMetadataItem>;
 
 export type NamespacesInstancesListResultItemCustomMetadataList =
-  ReadonlyArray<NamespacesInstancesListResultItemCustomMetadataItem>;
+  Array<NamespacesInstancesListResultItemCustomMetadataItem>;
 export const NamespacesInstancesListResultItemCustomMetadataList =
   /*@__PURE__*/ S.Array(
     NamespacesInstancesListResultItemCustomMetadataItem,
@@ -8490,7 +8481,7 @@ export const NamespacesInstancesListResultItemMetadata =
   }) as any as S.Schema<NamespacesInstancesListResultItemMetadata>;
 
 export type NamespacesInstancesListResultItemPublicEndpointParamsAuthorizedHostsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const NamespacesInstancesListResultItemPublicEndpointParamsAuthorizedHostsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -8511,7 +8502,7 @@ export const NamespacesInstancesListResultItemPublicEndpointParamsChatCompletion
   }) as any as S.Schema<NamespacesInstancesListResultItemPublicEndpointParamsChatCompletionsEndpoint>;
 
 export type NamespacesInstancesListResultItemPublicEndpointParamsCustomDomainsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const NamespacesInstancesListResultItemPublicEndpointParamsCustomDomainsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -8645,7 +8636,7 @@ export const NamespacesInstancesListResultItemRetrievalOptionsBoostByItem =
   }) as any as S.Schema<NamespacesInstancesListResultItemRetrievalOptionsBoostByItem>;
 
 export type NamespacesInstancesListResultItemRetrievalOptionsBoostByList =
-  ReadonlyArray<NamespacesInstancesListResultItemRetrievalOptionsBoostByItem>;
+  Array<NamespacesInstancesListResultItemRetrievalOptionsBoostByItem>;
 export const NamespacesInstancesListResultItemRetrievalOptionsBoostByList =
   /*@__PURE__*/ S.Array(
     NamespacesInstancesListResultItemRetrievalOptionsBoostByItem,
@@ -8716,14 +8707,14 @@ export const NamespacesInstancesListResultItemRewriteModel =
   /*@__PURE__*/ S.String;
 
 export type NamespacesInstancesListResultItemSourceParamsExcludeItemsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const NamespacesInstancesListResultItemSourceParamsExcludeItemsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<NamespacesInstancesListResultItemSourceParamsExcludeItemsList>;
 
 export type NamespacesInstancesListResultItemSourceParamsIncludeItemsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const NamespacesInstancesListResultItemSourceParamsIncludeItemsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -8747,7 +8738,7 @@ export const NamespacesInstancesListResultItemSourceParamsWebCrawlerParseOptions
   }) as any as S.Schema<NamespacesInstancesListResultItemSourceParamsWebCrawlerParseOptionsContentSelectorItem>;
 
 export type NamespacesInstancesListResultItemSourceParamsWebCrawlerParseOptionsContentSelectorList =
-  ReadonlyArray<NamespacesInstancesListResultItemSourceParamsWebCrawlerParseOptionsContentSelectorItem>;
+  Array<NamespacesInstancesListResultItemSourceParamsWebCrawlerParseOptionsContentSelectorItem>;
 export const NamespacesInstancesListResultItemSourceParamsWebCrawlerParseOptionsContentSelectorList =
   /*@__PURE__*/ S.Array(
     NamespacesInstancesListResultItemSourceParamsWebCrawlerParseOptionsContentSelectorItem,
@@ -8762,7 +8753,7 @@ export const NamespacesInstancesListResultItemSourceParamsWebCrawlerParseOptions
   ) as any as S.Schema<NamespacesInstancesListResultItemSourceParamsWebCrawlerParseOptionsIncludeHeadersMap>;
 
 export type NamespacesInstancesListResultItemSourceParamsWebCrawlerParseOptionsSpecificSitemapsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const NamespacesInstancesListResultItemSourceParamsWebCrawlerParseOptionsSpecificSitemapsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -9035,7 +9026,7 @@ export const NamespacesInstancesListResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NamespacesInstancesListResultItem>;
 
 export type NamespacesInstancesListResultList =
-  ReadonlyArray<NamespacesInstancesListResultItem>;
+  Array<NamespacesInstancesListResultItem>;
 export const NamespacesInstancesListResultList = /*@__PURE__*/ S.Array(
   NamespacesInstancesListResultItem,
 ) as any as S.Schema<NamespacesInstancesListResultList>;
@@ -9099,7 +9090,7 @@ export const NamespacesListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "NamespacesListResultItem",
 }) as any as S.Schema<NamespacesListResultItem>;
 
-export type NamespacesListResultList = ReadonlyArray<NamespacesListResultItem>;
+export type NamespacesListResultList = Array<NamespacesListResultItem>;
 export const NamespacesListResultList = /*@__PURE__*/ S.Array(
   NamespacesListResultItem,
 ) as any as S.Schema<NamespacesListResultList>;
@@ -9174,7 +9165,7 @@ export const TokensListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "TokensListResultItem",
 }) as any as S.Schema<TokensListResultItem>;
 
-export type TokensListResultList = ReadonlyArray<TokensListResultItem>;
+export type TokensListResultList = Array<TokensListResultItem>;
 export const TokensListResultList = /*@__PURE__*/ S.Array(
   TokensListResultItem,
 ) as any as S.Schema<TokensListResultList>;
@@ -9239,8 +9230,7 @@ export const InstancesJobsLogsResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "InstancesJobsLogsResultItem",
 }) as any as S.Schema<InstancesJobsLogsResultItem>;
 
-export type InstancesJobsLogsResultList =
-  ReadonlyArray<InstancesJobsLogsResultItem>;
+export type InstancesJobsLogsResultList = Array<InstancesJobsLogsResultItem>;
 export const InstancesJobsLogsResultList = /*@__PURE__*/ S.Array(
   InstancesJobsLogsResultItem,
 ) as any as S.Schema<InstancesJobsLogsResultList>;
@@ -9307,7 +9297,7 @@ export const NamespacesInstancesItemsLogsResultItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<NamespacesInstancesItemsLogsResultItem>;
 
 export type NamespacesInstancesItemsLogsResultList =
-  ReadonlyArray<NamespacesInstancesItemsLogsResultItem>;
+  Array<NamespacesInstancesItemsLogsResultItem>;
 export const NamespacesInstancesItemsLogsResultList = /*@__PURE__*/ S.Array(
   NamespacesInstancesItemsLogsResultItem,
 ) as any as S.Schema<NamespacesInstancesItemsLogsResultList>;
@@ -9369,7 +9359,7 @@ export const NamespacesInstancesJobsLogsResultItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<NamespacesInstancesJobsLogsResultItem>;
 
 export type NamespacesInstancesJobsLogsResultList =
-  ReadonlyArray<NamespacesInstancesJobsLogsResultItem>;
+  Array<NamespacesInstancesJobsLogsResultItem>;
 export const NamespacesInstancesJobsLogsResultList = /*@__PURE__*/ S.Array(
   NamespacesInstancesJobsLogsResultItem,
 ) as any as S.Schema<NamespacesInstancesJobsLogsResultList>;
@@ -9541,7 +9531,7 @@ export const InstancesReadResponseCustomMetadataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<InstancesReadResponseCustomMetadataItem>;
 
 export type InstancesReadResponseCustomMetadataList =
-  ReadonlyArray<InstancesReadResponseCustomMetadataItem>;
+  Array<InstancesReadResponseCustomMetadataItem>;
 export const InstancesReadResponseCustomMetadataList = /*@__PURE__*/ S.Array(
   InstancesReadResponseCustomMetadataItem,
 ) as any as S.Schema<InstancesReadResponseCustomMetadataList>;
@@ -9617,7 +9607,7 @@ export const InstancesReadResponseMetadata = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InstancesReadResponseMetadata>;
 
 export type InstancesReadResponsePublicEndpointParamsAuthorizedHostsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const InstancesReadResponsePublicEndpointParamsAuthorizedHostsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -9638,7 +9628,7 @@ export const InstancesReadResponsePublicEndpointParamsChatCompletionsEndpoint =
   }) as any as S.Schema<InstancesReadResponsePublicEndpointParamsChatCompletionsEndpoint>;
 
 export type InstancesReadResponsePublicEndpointParamsCustomDomainsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const InstancesReadResponsePublicEndpointParamsCustomDomainsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -9773,7 +9763,7 @@ export const InstancesReadResponseRetrievalOptionsBoostByItem =
   }) as any as S.Schema<InstancesReadResponseRetrievalOptionsBoostByItem>;
 
 export type InstancesReadResponseRetrievalOptionsBoostByList =
-  ReadonlyArray<InstancesReadResponseRetrievalOptionsBoostByItem>;
+  Array<InstancesReadResponseRetrievalOptionsBoostByItem>;
 export const InstancesReadResponseRetrievalOptionsBoostByList =
   /*@__PURE__*/ S.Array(
     InstancesReadResponseRetrievalOptionsBoostByItem,
@@ -9842,15 +9832,13 @@ export type InstancesReadResponseRewriteModel =
   | "";
 export const InstancesReadResponseRewriteModel = /*@__PURE__*/ S.String;
 
-export type InstancesReadResponseSourceParamsExcludeItemsList =
-  ReadonlyArray<string>;
+export type InstancesReadResponseSourceParamsExcludeItemsList = Array<string>;
 export const InstancesReadResponseSourceParamsExcludeItemsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<InstancesReadResponseSourceParamsExcludeItemsList>;
 
-export type InstancesReadResponseSourceParamsIncludeItemsList =
-  ReadonlyArray<string>;
+export type InstancesReadResponseSourceParamsIncludeItemsList = Array<string>;
 export const InstancesReadResponseSourceParamsIncludeItemsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -9874,7 +9862,7 @@ export const InstancesReadResponseSourceParamsWebCrawlerParseOptionsContentSelec
   }) as any as S.Schema<InstancesReadResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem>;
 
 export type InstancesReadResponseSourceParamsWebCrawlerParseOptionsContentSelectorList =
-  ReadonlyArray<InstancesReadResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem>;
+  Array<InstancesReadResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem>;
 export const InstancesReadResponseSourceParamsWebCrawlerParseOptionsContentSelectorList =
   /*@__PURE__*/ S.Array(
     InstancesReadResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem,
@@ -9889,7 +9877,7 @@ export const InstancesReadResponseSourceParamsWebCrawlerParseOptionsIncludeHeade
   ) as any as S.Schema<InstancesReadResponseSourceParamsWebCrawlerParseOptionsIncludeHeadersMap>;
 
 export type InstancesReadResponseSourceParamsWebCrawlerParseOptionsSpecificSitemapsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const InstancesReadResponseSourceParamsWebCrawlerParseOptionsSpecificSitemapsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -10276,7 +10264,7 @@ export const NamespacesInstancesReadResponseCustomMetadataItem =
   }) as any as S.Schema<NamespacesInstancesReadResponseCustomMetadataItem>;
 
 export type NamespacesInstancesReadResponseCustomMetadataList =
-  ReadonlyArray<NamespacesInstancesReadResponseCustomMetadataItem>;
+  Array<NamespacesInstancesReadResponseCustomMetadataItem>;
 export const NamespacesInstancesReadResponseCustomMetadataList =
   /*@__PURE__*/ S.Array(
     NamespacesInstancesReadResponseCustomMetadataItem,
@@ -10357,7 +10345,7 @@ export const NamespacesInstancesReadResponseMetadata = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<NamespacesInstancesReadResponseMetadata>;
 
 export type NamespacesInstancesReadResponsePublicEndpointParamsAuthorizedHostsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const NamespacesInstancesReadResponsePublicEndpointParamsAuthorizedHostsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -10378,7 +10366,7 @@ export const NamespacesInstancesReadResponsePublicEndpointParamsChatCompletionsE
   }) as any as S.Schema<NamespacesInstancesReadResponsePublicEndpointParamsChatCompletionsEndpoint>;
 
 export type NamespacesInstancesReadResponsePublicEndpointParamsCustomDomainsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const NamespacesInstancesReadResponsePublicEndpointParamsCustomDomainsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -10511,7 +10499,7 @@ export const NamespacesInstancesReadResponseRetrievalOptionsBoostByItem =
   }) as any as S.Schema<NamespacesInstancesReadResponseRetrievalOptionsBoostByItem>;
 
 export type NamespacesInstancesReadResponseRetrievalOptionsBoostByList =
-  ReadonlyArray<NamespacesInstancesReadResponseRetrievalOptionsBoostByItem>;
+  Array<NamespacesInstancesReadResponseRetrievalOptionsBoostByItem>;
 export const NamespacesInstancesReadResponseRetrievalOptionsBoostByList =
   /*@__PURE__*/ S.Array(
     NamespacesInstancesReadResponseRetrievalOptionsBoostByItem,
@@ -10582,14 +10570,14 @@ export const NamespacesInstancesReadResponseRewriteModel =
   /*@__PURE__*/ S.String;
 
 export type NamespacesInstancesReadResponseSourceParamsExcludeItemsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const NamespacesInstancesReadResponseSourceParamsExcludeItemsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<NamespacesInstancesReadResponseSourceParamsExcludeItemsList>;
 
 export type NamespacesInstancesReadResponseSourceParamsIncludeItemsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const NamespacesInstancesReadResponseSourceParamsIncludeItemsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -10613,7 +10601,7 @@ export const NamespacesInstancesReadResponseSourceParamsWebCrawlerParseOptionsCo
   }) as any as S.Schema<NamespacesInstancesReadResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem>;
 
 export type NamespacesInstancesReadResponseSourceParamsWebCrawlerParseOptionsContentSelectorList =
-  ReadonlyArray<NamespacesInstancesReadResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem>;
+  Array<NamespacesInstancesReadResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem>;
 export const NamespacesInstancesReadResponseSourceParamsWebCrawlerParseOptionsContentSelectorList =
   /*@__PURE__*/ S.Array(
     NamespacesInstancesReadResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem,
@@ -10628,7 +10616,7 @@ export const NamespacesInstancesReadResponseSourceParamsWebCrawlerParseOptionsIn
   ) as any as S.Schema<NamespacesInstancesReadResponseSourceParamsWebCrawlerParseOptionsIncludeHeadersMap>;
 
 export type NamespacesInstancesReadResponseSourceParamsWebCrawlerParseOptionsSpecificSitemapsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const NamespacesInstancesReadResponseSourceParamsWebCrawlerParseOptionsSpecificSitemapsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -11070,7 +11058,7 @@ export const InstancesSearchRequestAiSearchOptionsRetrievalBoostByItem =
   }) as any as S.Schema<InstancesSearchRequestAiSearchOptionsRetrievalBoostByItem>;
 
 export type InstancesSearchRequestAiSearchOptionsRetrievalBoostByList =
-  ReadonlyArray<InstancesSearchRequestAiSearchOptionsRetrievalBoostByItem>;
+  Array<InstancesSearchRequestAiSearchOptionsRetrievalBoostByItem>;
 export const InstancesSearchRequestAiSearchOptionsRetrievalBoostByList =
   /*@__PURE__*/ S.Array(
     InstancesSearchRequestAiSearchOptionsRetrievalBoostByItem,
@@ -11266,7 +11254,7 @@ export const InstancesSearchRequestMessagesItemContentCase1Item =
   }) as any as S.Schema<InstancesSearchRequestMessagesItemContentCase1Item>;
 
 export type InstancesSearchRequestMessagesItemContentCase1List =
-  ReadonlyArray<InstancesSearchRequestMessagesItemContentCase1Item>;
+  Array<InstancesSearchRequestMessagesItemContentCase1Item>;
 export const InstancesSearchRequestMessagesItemContentCase1List =
   /*@__PURE__*/ S.Array(
     InstancesSearchRequestMessagesItemContentCase1Item,
@@ -11300,7 +11288,7 @@ export const InstancesSearchRequestMessagesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InstancesSearchRequestMessagesItem>;
 
 export type InstancesSearchRequestMessagesList =
-  ReadonlyArray<InstancesSearchRequestMessagesItem>;
+  Array<InstancesSearchRequestMessagesItem>;
 export const InstancesSearchRequestMessagesList = /*@__PURE__*/ S.Array(
   InstancesSearchRequestMessagesItem,
 ) as any as S.Schema<InstancesSearchRequestMessagesList>;
@@ -11420,7 +11408,7 @@ export const InstancesSearchResponseChunksItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InstancesSearchResponseChunksItem>;
 
 export type InstancesSearchResponseChunksList =
-  ReadonlyArray<InstancesSearchResponseChunksItem>;
+  Array<InstancesSearchResponseChunksItem>;
 export const InstancesSearchResponseChunksList = /*@__PURE__*/ S.Array(
   InstancesSearchResponseChunksItem,
 ) as any as S.Schema<InstancesSearchResponseChunksList>;
@@ -11445,7 +11433,7 @@ export const SearchInstanceResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SearchInstanceResponse>;
 
 export type NamespacesSearchRequestAiSearchOptionsInstanceIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const NamespacesSearchRequestAiSearchOptionsInstanceIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -11581,7 +11569,7 @@ export const NamespacesSearchRequestAiSearchOptionsRetrievalBoostByItem =
   }) as any as S.Schema<NamespacesSearchRequestAiSearchOptionsRetrievalBoostByItem>;
 
 export type NamespacesSearchRequestAiSearchOptionsRetrievalBoostByList =
-  ReadonlyArray<NamespacesSearchRequestAiSearchOptionsRetrievalBoostByItem>;
+  Array<NamespacesSearchRequestAiSearchOptionsRetrievalBoostByItem>;
 export const NamespacesSearchRequestAiSearchOptionsRetrievalBoostByList =
   /*@__PURE__*/ S.Array(
     NamespacesSearchRequestAiSearchOptionsRetrievalBoostByItem,
@@ -11781,7 +11769,7 @@ export const NamespacesSearchRequestMessagesItemContentCase1Item =
   }) as any as S.Schema<NamespacesSearchRequestMessagesItemContentCase1Item>;
 
 export type NamespacesSearchRequestMessagesItemContentCase1List =
-  ReadonlyArray<NamespacesSearchRequestMessagesItemContentCase1Item>;
+  Array<NamespacesSearchRequestMessagesItemContentCase1Item>;
 export const NamespacesSearchRequestMessagesItemContentCase1List =
   /*@__PURE__*/ S.Array(
     NamespacesSearchRequestMessagesItemContentCase1Item,
@@ -11815,7 +11803,7 @@ export const NamespacesSearchRequestMessagesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NamespacesSearchRequestMessagesItem>;
 
 export type NamespacesSearchRequestMessagesList =
-  ReadonlyArray<NamespacesSearchRequestMessagesItem>;
+  Array<NamespacesSearchRequestMessagesItem>;
 export const NamespacesSearchRequestMessagesList = /*@__PURE__*/ S.Array(
   NamespacesSearchRequestMessagesItem,
 ) as any as S.Schema<NamespacesSearchRequestMessagesList>;
@@ -11936,7 +11924,7 @@ export const NamespacesSearchResponseChunksItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NamespacesSearchResponseChunksItem>;
 
 export type NamespacesSearchResponseChunksList =
-  ReadonlyArray<NamespacesSearchResponseChunksItem>;
+  Array<NamespacesSearchResponseChunksItem>;
 export const NamespacesSearchResponseChunksList = /*@__PURE__*/ S.Array(
   NamespacesSearchResponseChunksItem,
 ) as any as S.Schema<NamespacesSearchResponseChunksList>;
@@ -11958,7 +11946,7 @@ export const NamespacesSearchResponseErrorsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NamespacesSearchResponseErrorsItem>;
 
 export type NamespacesSearchResponseErrorsList =
-  ReadonlyArray<NamespacesSearchResponseErrorsItem>;
+  Array<NamespacesSearchResponseErrorsItem>;
 export const NamespacesSearchResponseErrorsList = /*@__PURE__*/ S.Array(
   NamespacesSearchResponseErrorsItem,
 ) as any as S.Schema<NamespacesSearchResponseErrorsList>;
@@ -12113,7 +12101,7 @@ export const NamespacesInstancesSearchRequestAiSearchOptionsRetrievalBoostByItem
   }) as any as S.Schema<NamespacesInstancesSearchRequestAiSearchOptionsRetrievalBoostByItem>;
 
 export type NamespacesInstancesSearchRequestAiSearchOptionsRetrievalBoostByList =
-  ReadonlyArray<NamespacesInstancesSearchRequestAiSearchOptionsRetrievalBoostByItem>;
+  Array<NamespacesInstancesSearchRequestAiSearchOptionsRetrievalBoostByItem>;
 export const NamespacesInstancesSearchRequestAiSearchOptionsRetrievalBoostByList =
   /*@__PURE__*/ S.Array(
     NamespacesInstancesSearchRequestAiSearchOptionsRetrievalBoostByItem,
@@ -12310,7 +12298,7 @@ export const NamespacesInstancesSearchRequestMessagesItemContentCase1Item =
   }) as any as S.Schema<NamespacesInstancesSearchRequestMessagesItemContentCase1Item>;
 
 export type NamespacesInstancesSearchRequestMessagesItemContentCase1List =
-  ReadonlyArray<NamespacesInstancesSearchRequestMessagesItemContentCase1Item>;
+  Array<NamespacesInstancesSearchRequestMessagesItemContentCase1Item>;
 export const NamespacesInstancesSearchRequestMessagesItemContentCase1List =
   /*@__PURE__*/ S.Array(
     NamespacesInstancesSearchRequestMessagesItemContentCase1Item,
@@ -12346,7 +12334,7 @@ export const NamespacesInstancesSearchRequestMessagesItem =
   }) as any as S.Schema<NamespacesInstancesSearchRequestMessagesItem>;
 
 export type NamespacesInstancesSearchRequestMessagesList =
-  ReadonlyArray<NamespacesInstancesSearchRequestMessagesItem>;
+  Array<NamespacesInstancesSearchRequestMessagesItem>;
 export const NamespacesInstancesSearchRequestMessagesList =
   /*@__PURE__*/ S.Array(
     NamespacesInstancesSearchRequestMessagesItem,
@@ -12473,7 +12461,7 @@ export const NamespacesInstancesSearchResponseChunksItem =
   }) as any as S.Schema<NamespacesInstancesSearchResponseChunksItem>;
 
 export type NamespacesInstancesSearchResponseChunksList =
-  ReadonlyArray<NamespacesInstancesSearchResponseChunksItem>;
+  Array<NamespacesInstancesSearchResponseChunksItem>;
 export const NamespacesInstancesSearchResponseChunksList =
   /*@__PURE__*/ S.Array(
     NamespacesInstancesSearchResponseChunksItem,
@@ -12927,7 +12915,7 @@ export const InstancesUpdateRequestCustomMetadataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<InstancesUpdateRequestCustomMetadataItem>;
 
 export type InstancesUpdateRequestCustomMetadataList =
-  ReadonlyArray<InstancesUpdateRequestCustomMetadataItem>;
+  Array<InstancesUpdateRequestCustomMetadataItem>;
 export const InstancesUpdateRequestCustomMetadataList = /*@__PURE__*/ S.Array(
   InstancesUpdateRequestCustomMetadataItem,
 ) as any as S.Schema<InstancesUpdateRequestCustomMetadataList>;
@@ -13005,7 +12993,7 @@ export const InstancesUpdateRequestMetadata = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InstancesUpdateRequestMetadata>;
 
 export type InstancesUpdateRequestPublicEndpointParamsAuthorizedHostsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const InstancesUpdateRequestPublicEndpointParamsAuthorizedHostsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -13026,7 +13014,7 @@ export const InstancesUpdateRequestPublicEndpointParamsChatCompletionsEndpoint =
   }) as any as S.Schema<InstancesUpdateRequestPublicEndpointParamsChatCompletionsEndpoint>;
 
 export type InstancesUpdateRequestPublicEndpointParamsCustomDomainsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const InstancesUpdateRequestPublicEndpointParamsCustomDomainsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -13165,7 +13153,7 @@ export const InstancesUpdateRequestRetrievalOptionsBoostByItem =
   }) as any as S.Schema<InstancesUpdateRequestRetrievalOptionsBoostByItem>;
 
 export type InstancesUpdateRequestRetrievalOptionsBoostByList =
-  ReadonlyArray<InstancesUpdateRequestRetrievalOptionsBoostByItem>;
+  Array<InstancesUpdateRequestRetrievalOptionsBoostByItem>;
 export const InstancesUpdateRequestRetrievalOptionsBoostByList =
   /*@__PURE__*/ S.Array(
     InstancesUpdateRequestRetrievalOptionsBoostByItem,
@@ -13236,15 +13224,13 @@ export type InstancesUpdateRequestRewriteModel =
   | "";
 export const InstancesUpdateRequestRewriteModel = /*@__PURE__*/ S.String;
 
-export type InstancesUpdateRequestSourceParamsExcludeItemsList =
-  ReadonlyArray<string>;
+export type InstancesUpdateRequestSourceParamsExcludeItemsList = Array<string>;
 export const InstancesUpdateRequestSourceParamsExcludeItemsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<InstancesUpdateRequestSourceParamsExcludeItemsList>;
 
-export type InstancesUpdateRequestSourceParamsIncludeItemsList =
-  ReadonlyArray<string>;
+export type InstancesUpdateRequestSourceParamsIncludeItemsList = Array<string>;
 export const InstancesUpdateRequestSourceParamsIncludeItemsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -13268,7 +13254,7 @@ export const InstancesUpdateRequestSourceParamsWebCrawlerParseOptionsContentSele
   }) as any as S.Schema<InstancesUpdateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem>;
 
 export type InstancesUpdateRequestSourceParamsWebCrawlerParseOptionsContentSelectorList =
-  ReadonlyArray<InstancesUpdateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem>;
+  Array<InstancesUpdateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem>;
 export const InstancesUpdateRequestSourceParamsWebCrawlerParseOptionsContentSelectorList =
   /*@__PURE__*/ S.Array(
     InstancesUpdateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem,
@@ -13283,7 +13269,7 @@ export const InstancesUpdateRequestSourceParamsWebCrawlerParseOptionsIncludeHead
   ) as any as S.Schema<InstancesUpdateRequestSourceParamsWebCrawlerParseOptionsIncludeHeadersMap>;
 
 export type InstancesUpdateRequestSourceParamsWebCrawlerParseOptionsSpecificSitemapsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const InstancesUpdateRequestSourceParamsWebCrawlerParseOptionsSpecificSitemapsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -13642,7 +13628,7 @@ export const InstancesUpdateResponseCustomMetadataItem =
   }) as any as S.Schema<InstancesUpdateResponseCustomMetadataItem>;
 
 export type InstancesUpdateResponseCustomMetadataList =
-  ReadonlyArray<InstancesUpdateResponseCustomMetadataItem>;
+  Array<InstancesUpdateResponseCustomMetadataItem>;
 export const InstancesUpdateResponseCustomMetadataList = /*@__PURE__*/ S.Array(
   InstancesUpdateResponseCustomMetadataItem,
 ) as any as S.Schema<InstancesUpdateResponseCustomMetadataList>;
@@ -13718,7 +13704,7 @@ export const InstancesUpdateResponseMetadata = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InstancesUpdateResponseMetadata>;
 
 export type InstancesUpdateResponsePublicEndpointParamsAuthorizedHostsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const InstancesUpdateResponsePublicEndpointParamsAuthorizedHostsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -13739,7 +13725,7 @@ export const InstancesUpdateResponsePublicEndpointParamsChatCompletionsEndpoint 
   }) as any as S.Schema<InstancesUpdateResponsePublicEndpointParamsChatCompletionsEndpoint>;
 
 export type InstancesUpdateResponsePublicEndpointParamsCustomDomainsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const InstancesUpdateResponsePublicEndpointParamsCustomDomainsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -13874,7 +13860,7 @@ export const InstancesUpdateResponseRetrievalOptionsBoostByItem =
   }) as any as S.Schema<InstancesUpdateResponseRetrievalOptionsBoostByItem>;
 
 export type InstancesUpdateResponseRetrievalOptionsBoostByList =
-  ReadonlyArray<InstancesUpdateResponseRetrievalOptionsBoostByItem>;
+  Array<InstancesUpdateResponseRetrievalOptionsBoostByItem>;
 export const InstancesUpdateResponseRetrievalOptionsBoostByList =
   /*@__PURE__*/ S.Array(
     InstancesUpdateResponseRetrievalOptionsBoostByItem,
@@ -13943,15 +13929,13 @@ export type InstancesUpdateResponseRewriteModel =
   | "";
 export const InstancesUpdateResponseRewriteModel = /*@__PURE__*/ S.String;
 
-export type InstancesUpdateResponseSourceParamsExcludeItemsList =
-  ReadonlyArray<string>;
+export type InstancesUpdateResponseSourceParamsExcludeItemsList = Array<string>;
 export const InstancesUpdateResponseSourceParamsExcludeItemsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<InstancesUpdateResponseSourceParamsExcludeItemsList>;
 
-export type InstancesUpdateResponseSourceParamsIncludeItemsList =
-  ReadonlyArray<string>;
+export type InstancesUpdateResponseSourceParamsIncludeItemsList = Array<string>;
 export const InstancesUpdateResponseSourceParamsIncludeItemsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -13975,7 +13959,7 @@ export const InstancesUpdateResponseSourceParamsWebCrawlerParseOptionsContentSel
   }) as any as S.Schema<InstancesUpdateResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem>;
 
 export type InstancesUpdateResponseSourceParamsWebCrawlerParseOptionsContentSelectorList =
-  ReadonlyArray<InstancesUpdateResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem>;
+  Array<InstancesUpdateResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem>;
 export const InstancesUpdateResponseSourceParamsWebCrawlerParseOptionsContentSelectorList =
   /*@__PURE__*/ S.Array(
     InstancesUpdateResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem,
@@ -13990,7 +13974,7 @@ export const InstancesUpdateResponseSourceParamsWebCrawlerParseOptionsIncludeHea
   ) as any as S.Schema<InstancesUpdateResponseSourceParamsWebCrawlerParseOptionsIncludeHeadersMap>;
 
 export type InstancesUpdateResponseSourceParamsWebCrawlerParseOptionsSpecificSitemapsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const InstancesUpdateResponseSourceParamsWebCrawlerParseOptionsSpecificSitemapsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -14359,7 +14343,7 @@ export const NamespacesInstancesUpdateRequestCustomMetadataItem =
   }) as any as S.Schema<NamespacesInstancesUpdateRequestCustomMetadataItem>;
 
 export type NamespacesInstancesUpdateRequestCustomMetadataList =
-  ReadonlyArray<NamespacesInstancesUpdateRequestCustomMetadataItem>;
+  Array<NamespacesInstancesUpdateRequestCustomMetadataItem>;
 export const NamespacesInstancesUpdateRequestCustomMetadataList =
   /*@__PURE__*/ S.Array(
     NamespacesInstancesUpdateRequestCustomMetadataItem,
@@ -14442,7 +14426,7 @@ export const NamespacesInstancesUpdateRequestMetadata = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<NamespacesInstancesUpdateRequestMetadata>;
 
 export type NamespacesInstancesUpdateRequestPublicEndpointParamsAuthorizedHostsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const NamespacesInstancesUpdateRequestPublicEndpointParamsAuthorizedHostsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -14463,7 +14447,7 @@ export const NamespacesInstancesUpdateRequestPublicEndpointParamsChatCompletions
   }) as any as S.Schema<NamespacesInstancesUpdateRequestPublicEndpointParamsChatCompletionsEndpoint>;
 
 export type NamespacesInstancesUpdateRequestPublicEndpointParamsCustomDomainsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const NamespacesInstancesUpdateRequestPublicEndpointParamsCustomDomainsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -14600,7 +14584,7 @@ export const NamespacesInstancesUpdateRequestRetrievalOptionsBoostByItem =
   }) as any as S.Schema<NamespacesInstancesUpdateRequestRetrievalOptionsBoostByItem>;
 
 export type NamespacesInstancesUpdateRequestRetrievalOptionsBoostByList =
-  ReadonlyArray<NamespacesInstancesUpdateRequestRetrievalOptionsBoostByItem>;
+  Array<NamespacesInstancesUpdateRequestRetrievalOptionsBoostByItem>;
 export const NamespacesInstancesUpdateRequestRetrievalOptionsBoostByList =
   /*@__PURE__*/ S.Array(
     NamespacesInstancesUpdateRequestRetrievalOptionsBoostByItem,
@@ -14673,14 +14657,14 @@ export const NamespacesInstancesUpdateRequestRewriteModel =
   /*@__PURE__*/ S.String;
 
 export type NamespacesInstancesUpdateRequestSourceParamsExcludeItemsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const NamespacesInstancesUpdateRequestSourceParamsExcludeItemsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<NamespacesInstancesUpdateRequestSourceParamsExcludeItemsList>;
 
 export type NamespacesInstancesUpdateRequestSourceParamsIncludeItemsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const NamespacesInstancesUpdateRequestSourceParamsIncludeItemsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -14704,7 +14688,7 @@ export const NamespacesInstancesUpdateRequestSourceParamsWebCrawlerParseOptionsC
   }) as any as S.Schema<NamespacesInstancesUpdateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem>;
 
 export type NamespacesInstancesUpdateRequestSourceParamsWebCrawlerParseOptionsContentSelectorList =
-  ReadonlyArray<NamespacesInstancesUpdateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem>;
+  Array<NamespacesInstancesUpdateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem>;
 export const NamespacesInstancesUpdateRequestSourceParamsWebCrawlerParseOptionsContentSelectorList =
   /*@__PURE__*/ S.Array(
     NamespacesInstancesUpdateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem,
@@ -14719,7 +14703,7 @@ export const NamespacesInstancesUpdateRequestSourceParamsWebCrawlerParseOptionsI
   ) as any as S.Schema<NamespacesInstancesUpdateRequestSourceParamsWebCrawlerParseOptionsIncludeHeadersMap>;
 
 export type NamespacesInstancesUpdateRequestSourceParamsWebCrawlerParseOptionsSpecificSitemapsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const NamespacesInstancesUpdateRequestSourceParamsWebCrawlerParseOptionsSpecificSitemapsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -15119,7 +15103,7 @@ export const NamespacesInstancesUpdateResponseCustomMetadataItem =
   }) as any as S.Schema<NamespacesInstancesUpdateResponseCustomMetadataItem>;
 
 export type NamespacesInstancesUpdateResponseCustomMetadataList =
-  ReadonlyArray<NamespacesInstancesUpdateResponseCustomMetadataItem>;
+  Array<NamespacesInstancesUpdateResponseCustomMetadataItem>;
 export const NamespacesInstancesUpdateResponseCustomMetadataList =
   /*@__PURE__*/ S.Array(
     NamespacesInstancesUpdateResponseCustomMetadataItem,
@@ -15200,7 +15184,7 @@ export const NamespacesInstancesUpdateResponseMetadata =
   }) as any as S.Schema<NamespacesInstancesUpdateResponseMetadata>;
 
 export type NamespacesInstancesUpdateResponsePublicEndpointParamsAuthorizedHostsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const NamespacesInstancesUpdateResponsePublicEndpointParamsAuthorizedHostsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -15221,7 +15205,7 @@ export const NamespacesInstancesUpdateResponsePublicEndpointParamsChatCompletion
   }) as any as S.Schema<NamespacesInstancesUpdateResponsePublicEndpointParamsChatCompletionsEndpoint>;
 
 export type NamespacesInstancesUpdateResponsePublicEndpointParamsCustomDomainsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const NamespacesInstancesUpdateResponsePublicEndpointParamsCustomDomainsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -15355,7 +15339,7 @@ export const NamespacesInstancesUpdateResponseRetrievalOptionsBoostByItem =
   }) as any as S.Schema<NamespacesInstancesUpdateResponseRetrievalOptionsBoostByItem>;
 
 export type NamespacesInstancesUpdateResponseRetrievalOptionsBoostByList =
-  ReadonlyArray<NamespacesInstancesUpdateResponseRetrievalOptionsBoostByItem>;
+  Array<NamespacesInstancesUpdateResponseRetrievalOptionsBoostByItem>;
 export const NamespacesInstancesUpdateResponseRetrievalOptionsBoostByList =
   /*@__PURE__*/ S.Array(
     NamespacesInstancesUpdateResponseRetrievalOptionsBoostByItem,
@@ -15426,14 +15410,14 @@ export const NamespacesInstancesUpdateResponseRewriteModel =
   /*@__PURE__*/ S.String;
 
 export type NamespacesInstancesUpdateResponseSourceParamsExcludeItemsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const NamespacesInstancesUpdateResponseSourceParamsExcludeItemsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<NamespacesInstancesUpdateResponseSourceParamsExcludeItemsList>;
 
 export type NamespacesInstancesUpdateResponseSourceParamsIncludeItemsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const NamespacesInstancesUpdateResponseSourceParamsIncludeItemsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -15457,7 +15441,7 @@ export const NamespacesInstancesUpdateResponseSourceParamsWebCrawlerParseOptions
   }) as any as S.Schema<NamespacesInstancesUpdateResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem>;
 
 export type NamespacesInstancesUpdateResponseSourceParamsWebCrawlerParseOptionsContentSelectorList =
-  ReadonlyArray<NamespacesInstancesUpdateResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem>;
+  Array<NamespacesInstancesUpdateResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem>;
 export const NamespacesInstancesUpdateResponseSourceParamsWebCrawlerParseOptionsContentSelectorList =
   /*@__PURE__*/ S.Array(
     NamespacesInstancesUpdateResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem,
@@ -15472,7 +15456,7 @@ export const NamespacesInstancesUpdateResponseSourceParamsWebCrawlerParseOptions
   ) as any as S.Schema<NamespacesInstancesUpdateResponseSourceParamsWebCrawlerParseOptionsIncludeHeadersMap>;
 
 export type NamespacesInstancesUpdateResponseSourceParamsWebCrawlerParseOptionsSpecificSitemapsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const NamespacesInstancesUpdateResponseSourceParamsWebCrawlerParseOptionsSpecificSitemapsList =
   /*@__PURE__*/ S.Array(
     S.String,

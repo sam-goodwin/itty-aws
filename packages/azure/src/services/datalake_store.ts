@@ -117,7 +117,7 @@ export const KeyVaultMetaInfo = /*@__PURE__*/ S.suspend(() =>
 /** The encryption configuration for the account. */
 export interface EncryptionConfig {
   /** The type of encryption configuration being used. Currently the only supported types are 'UserManaged' and 'ServiceManaged'. */
-  type: EncryptionConfigType;
+  type: EncryptionConfigType | (string & {});
   /** The Key Vault information for connecting to user managed encryption keys. */
   keyVaultMetaInfo?: KeyVaultMetaInfo;
 }
@@ -173,7 +173,7 @@ export const CreateFirewallRuleWithAccountParameters = /*@__PURE__*/ S.suspend(
 
 /** The list of firewall rules associated with this Data Lake Store account. */
 export type CreateDataLakeStoreAccountPropertiesFirewallRulesList =
-  ReadonlyArray<CreateFirewallRuleWithAccountParameters>;
+  Array<CreateFirewallRuleWithAccountParameters>;
 export const CreateDataLakeStoreAccountPropertiesFirewallRulesList =
   /*@__PURE__*/ S.Array(
     CreateFirewallRuleWithAccountParameters,
@@ -212,7 +212,7 @@ export const CreateVirtualNetworkRuleWithAccountParameters =
 
 /** The list of virtual network rules associated with this Data Lake Store account. */
 export type CreateDataLakeStoreAccountPropertiesVirtualNetworkRulesList =
-  ReadonlyArray<CreateVirtualNetworkRuleWithAccountParameters>;
+  Array<CreateVirtualNetworkRuleWithAccountParameters>;
 export const CreateDataLakeStoreAccountPropertiesVirtualNetworkRulesList =
   /*@__PURE__*/ S.Array(
     CreateVirtualNetworkRuleWithAccountParameters,
@@ -265,7 +265,7 @@ export const CreateTrustedIdProviderWithAccountParameters =
 
 /** The list of trusted identity providers associated with this Data Lake Store account. */
 export type CreateDataLakeStoreAccountPropertiesTrustedIdProvidersList =
-  ReadonlyArray<CreateTrustedIdProviderWithAccountParameters>;
+  Array<CreateTrustedIdProviderWithAccountParameters>;
 export const CreateDataLakeStoreAccountPropertiesTrustedIdProvidersList =
   /*@__PURE__*/ S.Array(
     CreateTrustedIdProviderWithAccountParameters,
@@ -493,7 +493,7 @@ export const FirewallRule = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of firewall rules associated with this Data Lake Store account. */
 export type DataLakeStoreAccountPropertiesFirewallRulesList =
-  ReadonlyArray<FirewallRule>;
+  Array<FirewallRule>;
 export const DataLakeStoreAccountPropertiesFirewallRulesList =
   /*@__PURE__*/ S.Array(
     FirewallRule,
@@ -536,7 +536,7 @@ export const VirtualNetworkRule = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of virtual network rules associated with this Data Lake Store account. */
 export type DataLakeStoreAccountPropertiesVirtualNetworkRulesList =
-  ReadonlyArray<VirtualNetworkRule>;
+  Array<VirtualNetworkRule>;
 export const DataLakeStoreAccountPropertiesVirtualNetworkRulesList =
   /*@__PURE__*/ S.Array(
     VirtualNetworkRule,
@@ -593,7 +593,7 @@ export const TrustedIdProvider = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of trusted identity providers associated with this Data Lake Store account. */
 export type DataLakeStoreAccountPropertiesTrustedIdProvidersList =
-  ReadonlyArray<TrustedIdProvider>;
+  Array<TrustedIdProvider>;
 export const DataLakeStoreAccountPropertiesTrustedIdProvidersList =
   /*@__PURE__*/ S.Array(
     TrustedIdProvider,
@@ -986,7 +986,7 @@ export const DataLakeStoreAccountBasic = /*@__PURE__*/ S.suspend(() =>
 
 /** The results of the list operation. */
 export type DataLakeStoreAccountListResultValueList =
-  ReadonlyArray<DataLakeStoreAccountBasic>;
+  Array<DataLakeStoreAccountBasic>;
 export const DataLakeStoreAccountListResultValueList = /*@__PURE__*/ S.Array(
   DataLakeStoreAccountBasic,
 ) as any as S.Schema<DataLakeStoreAccountListResultValueList>;
@@ -1117,7 +1117,7 @@ export const UpdateFirewallRuleWithAccountParameters = /*@__PURE__*/ S.suspend(
 
 /** The list of firewall rules associated with this Data Lake Store account. */
 export type UpdateDataLakeStoreAccountPropertiesFirewallRulesList =
-  ReadonlyArray<UpdateFirewallRuleWithAccountParameters>;
+  Array<UpdateFirewallRuleWithAccountParameters>;
 export const UpdateDataLakeStoreAccountPropertiesFirewallRulesList =
   /*@__PURE__*/ S.Array(
     UpdateFirewallRuleWithAccountParameters,
@@ -1155,7 +1155,7 @@ export const UpdateVirtualNetworkRuleWithAccountParameters =
 
 /** The list of virtual network rules associated with this Data Lake Store account. */
 export type UpdateDataLakeStoreAccountPropertiesVirtualNetworkRulesList =
-  ReadonlyArray<UpdateVirtualNetworkRuleWithAccountParameters>;
+  Array<UpdateVirtualNetworkRuleWithAccountParameters>;
 export const UpdateDataLakeStoreAccountPropertiesVirtualNetworkRulesList =
   /*@__PURE__*/ S.Array(
     UpdateVirtualNetworkRuleWithAccountParameters,
@@ -1207,7 +1207,7 @@ export const UpdateTrustedIdProviderWithAccountParameters =
 
 /** The list of trusted identity providers associated with this Data Lake Store account. */
 export type UpdateDataLakeStoreAccountPropertiesTrustedIdProvidersList =
-  ReadonlyArray<UpdateTrustedIdProviderWithAccountParameters>;
+  Array<UpdateTrustedIdProviderWithAccountParameters>;
 export const UpdateDataLakeStoreAccountPropertiesTrustedIdProvidersList =
   /*@__PURE__*/ S.Array(
     UpdateTrustedIdProviderWithAccountParameters,
@@ -1520,7 +1520,7 @@ export const FirewallRulesListByAccountRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FirewallRulesListByAccountRequest>;
 
 /** The results of the list operation. */
-export type FirewallRuleListResultValueList = ReadonlyArray<FirewallRule>;
+export type FirewallRuleListResultValueList = Array<FirewallRule>;
 export const FirewallRuleListResultValueList = /*@__PURE__*/ S.Array(
   FirewallRule,
 ) as any as S.Schema<FirewallRuleListResultValueList>;
@@ -1719,7 +1719,7 @@ export const Usage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Usage" }) as any as S.Schema<Usage>;
 
 /** Gets or sets the list of Storage Resource Usages. */
-export type UsageListResultValueList = ReadonlyArray<Usage>;
+export type UsageListResultValueList = Array<Usage>;
 export const UsageListResultValueList = /*@__PURE__*/ S.Array(
   Usage,
 ) as any as S.Schema<UsageListResultValueList>;
@@ -1795,7 +1795,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** The results of the list operation. */
-export type OperationListResultValueList = ReadonlyArray<Operation>;
+export type OperationListResultValueList = Array<Operation>;
 export const OperationListResultValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationListResultValueList>;
@@ -1981,8 +1981,7 @@ export const TrustedIdProvidersListByAccountRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<TrustedIdProvidersListByAccountRequest>;
 
 /** The results of the list operation. */
-export type TrustedIdProviderListResultValueList =
-  ReadonlyArray<TrustedIdProvider>;
+export type TrustedIdProviderListResultValueList = Array<TrustedIdProvider>;
 export const TrustedIdProviderListResultValueList = /*@__PURE__*/ S.Array(
   TrustedIdProvider,
 ) as any as S.Schema<TrustedIdProviderListResultValueList>;
@@ -2220,8 +2219,7 @@ export const VirtualNetworkRulesListByAccountRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<VirtualNetworkRulesListByAccountRequest>;
 
 /** The results of the list operation. */
-export type VirtualNetworkRuleListResultValueList =
-  ReadonlyArray<VirtualNetworkRule>;
+export type VirtualNetworkRuleListResultValueList = Array<VirtualNetworkRule>;
 export const VirtualNetworkRuleListResultValueList = /*@__PURE__*/ S.Array(
   VirtualNetworkRule,
 ) as any as S.Schema<VirtualNetworkRuleListResultValueList>;

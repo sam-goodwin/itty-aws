@@ -189,7 +189,7 @@ export const ContentType = /*@__PURE__*/ S.String;
 export type ContentString = string;
 export type GroupNumber = number;
 export interface Message {
-  contentType: ContentType;
+  contentType: ContentType | (string & {});
   content: string;
   groupNumber?: number;
 }
@@ -347,14 +347,14 @@ export const SlotDefaultValueSpec = /*@__PURE__*/ S.suspend(() =>
 export interface Slot {
   name: string;
   description?: string;
-  slotConstraint: SlotConstraint;
+  slotConstraint: SlotConstraint | (string & {});
   slotType?: string;
   slotTypeVersion?: string;
   valueElicitationPrompt?: Prompt;
   priority?: number;
   sampleUtterances?: string[];
   responseCard?: string;
-  obfuscationSetting?: ObfuscationSetting;
+  obfuscationSetting?: ObfuscationSetting | (string & {});
   defaultValueSpec?: SlotDefaultValueSpec;
 }
 export const Slot = /*@__PURE__*/ S.suspend(() =>
@@ -396,7 +396,7 @@ export type FulfillmentActivityType = "ReturnIntent" | "CodeHook";
 export const FulfillmentActivityType = /*@__PURE__*/ S.String;
 
 export interface FulfillmentActivity {
-  type: FulfillmentActivityType;
+  type: FulfillmentActivityType | (string & {});
   codeHook?: CodeHook;
 }
 export const FulfillmentActivity = /*@__PURE__*/ S.suspend(() =>

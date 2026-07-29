@@ -2463,7 +2463,7 @@ export interface MetricTransformation {
   metricValue: string;
   defaultValue?: number;
   dimensions?: { [key: string]: string | undefined };
-  unit?: StandardUnit;
+  unit?: StandardUnit | (string & {});
 }
 export const MetricTransformation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4068,7 +4068,7 @@ export interface ListToMap {
   valueKey?: string;
   target?: string;
   flatten?: boolean;
-  flattenedElement?: FlattenedElement;
+  flattenedElement?: FlattenedElement | (string & {});
 }
 export const ListToMap = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4169,8 +4169,8 @@ export const OCSFVersion = /*@__PURE__*/ S.String;
 export type MappingVersion = string;
 export interface ParseToOCSF {
   source?: string;
-  eventSource: EventSource;
-  ocsfVersion: OCSFVersion;
+  eventSource: EventSource | (string & {});
+  ocsfVersion: OCSFVersion | (string & {});
   mappingVersion?: string;
 }
 export const ParseToOCSF = /*@__PURE__*/ S.suspend(() =>
@@ -4275,7 +4275,7 @@ export const Type = /*@__PURE__*/ S.String;
 
 export interface TypeConverterEntry {
   key: string;
-  type: Type;
+  type: Type | (string & {});
 }
 export const TypeConverterEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ key: S.String, type: Type }),

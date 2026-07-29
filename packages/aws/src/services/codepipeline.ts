@@ -364,7 +364,7 @@ export interface ActionConfigurationProperty {
   secret: boolean;
   queryable?: boolean;
   description?: string;
-  type?: ActionConfigurationPropertyType;
+  type?: ActionConfigurationPropertyType | (string & {});
 }
 export const ActionConfigurationProperty = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -443,8 +443,8 @@ export type ActionOwner = "AWS" | "ThirdParty" | "Custom";
 export const ActionOwner = /*@__PURE__*/ S.String;
 
 export interface ActionTypeId {
-  category: ActionCategory;
-  owner: ActionOwner;
+  category: ActionCategory | (string & {});
+  owner: ActionOwner | (string & {});
   provider: string;
   version: string;
 }
@@ -493,13 +493,13 @@ export const EncryptionKeyType = /*@__PURE__*/ S.String;
 
 export interface EncryptionKey {
   id: string;
-  type: EncryptionKeyType;
+  type: EncryptionKeyType | (string & {});
 }
 export const EncryptionKey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ id: S.String, type: EncryptionKeyType }),
 ).annotate({ identifier: "EncryptionKey" }) as any as S.Schema<EncryptionKey>;
 export interface ArtifactStore {
-  type: ArtifactStoreType;
+  type: ArtifactStoreType | (string & {});
   location: string;
   encryptionKey?: EncryptionKey;
 }
@@ -523,7 +523,7 @@ export const BlockerType = /*@__PURE__*/ S.String;
 
 export interface BlockerDeclaration {
   name: string;
-  type: BlockerType;
+  type: BlockerType | (string & {});
 }
 export const BlockerDeclaration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ name: S.String, type: BlockerType }),
@@ -578,7 +578,7 @@ export const EnvironmentVariableType = /*@__PURE__*/ S.String;
 export interface EnvironmentVariable {
   name: string;
   value: string;
-  type?: EnvironmentVariableType;
+  type?: EnvironmentVariableType | (string & {});
 }
 export const EnvironmentVariable = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -636,7 +636,7 @@ export type StageRetryMode = "FAILED_ACTIONS" | "ALL_ACTIONS";
 export const StageRetryMode = /*@__PURE__*/ S.String;
 
 export interface RetryConfiguration {
-  retryMode?: StageRetryMode;
+  retryMode?: StageRetryMode | (string & {});
 }
 export const RetryConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ retryMode: S.optional(StageRetryMode) }),
@@ -652,8 +652,8 @@ export const RuleOwner = /*@__PURE__*/ S.String;
 
 export type RuleProvider = string;
 export interface RuleTypeId {
-  category: RuleCategory;
-  owner?: RuleOwner;
+  category: RuleCategory | (string & {});
+  owner?: RuleOwner | (string & {});
   provider: string;
   version?: string;
 }
@@ -700,7 +700,7 @@ export const RuleDeclaration = /*@__PURE__*/ S.suspend(() =>
 export type RuleDeclarationList = RuleDeclaration[];
 export const RuleDeclarationList = /*@__PURE__*/ S.Array(RuleDeclaration);
 export interface Condition {
-  result?: Result;
+  result?: Result | (string & {});
   rules?: RuleDeclaration[];
 }
 export const Condition = /*@__PURE__*/ S.suspend(() =>
@@ -712,7 +712,7 @@ export const Condition = /*@__PURE__*/ S.suspend(() =>
 export type ConditionList = Condition[];
 export const ConditionList = /*@__PURE__*/ S.Array(Condition);
 export interface FailureConditions {
-  result?: Result;
+  result?: Result | (string & {});
   retryConfiguration?: RetryConfiguration;
   conditions?: Condition[];
 }
@@ -857,7 +857,10 @@ export const GitPushFilterList = /*@__PURE__*/ S.Array(GitPushFilter);
 export type GitPullRequestEventType = "OPEN" | "UPDATED" | "CLOSED";
 export const GitPullRequestEventType = /*@__PURE__*/ S.String;
 
-export type GitPullRequestEventTypeList = GitPullRequestEventType[];
+export type GitPullRequestEventTypeList = (
+  | GitPullRequestEventType
+  | (string & {})
+)[];
 export const GitPullRequestEventTypeList = /*@__PURE__*/ S.Array(
   GitPullRequestEventType,
 );
@@ -893,7 +896,7 @@ export const GitConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "GitConfiguration",
 }) as any as S.Schema<GitConfiguration>;
 export interface PipelineTriggerDeclaration {
-  providerType: PipelineTriggerProviderType;
+  providerType: PipelineTriggerProviderType | (string & {});
   gitConfiguration: GitConfiguration;
 }
 export const PipelineTriggerDeclaration = /*@__PURE__*/ S.suspend(() =>
@@ -915,8 +918,8 @@ export interface PipelineDeclaration {
   artifactStores?: { [key: string]: ArtifactStore | undefined };
   stages: StageDeclaration[];
   version?: number;
-  executionMode?: ExecutionMode;
-  pipelineType?: PipelineType;
+  executionMode?: ExecutionMode | (string & {});
+  pipelineType?: PipelineType | (string & {});
   variables?: PipelineVariableDeclaration[];
   triggers?: PipelineTriggerDeclaration[];
 }
@@ -1211,7 +1214,7 @@ export type PolicyStatementsTemplate = string;
 export type JobTimeout = number;
 export interface ActionTypeExecutor {
   configuration: ExecutorConfiguration;
-  type: ExecutorType;
+  type: ExecutorType | (string & {});
   policyStatementsTemplate?: string;
   jobTimeout?: number;
 }
@@ -1226,7 +1229,7 @@ export const ActionTypeExecutor = /*@__PURE__*/ S.suspend(() =>
   identifier: "ActionTypeExecutor",
 }) as any as S.Schema<ActionTypeExecutor>;
 export interface ActionTypeIdentifier {
-  category: ActionCategory;
+  category: ActionCategory | (string & {});
   owner: string;
   provider: string;
   version: string;
@@ -2918,7 +2921,7 @@ export interface WebhookDefinition {
   targetPipeline: string;
   targetAction: string;
   filters: WebhookFilterRule[];
-  authentication: WebhookAuthenticationType;
+  authentication: WebhookAuthenticationType | (string & {});
   authenticationConfiguration: WebhookAuthConfiguration;
 }
 export const WebhookDefinition = /*@__PURE__*/ S.suspend(() =>

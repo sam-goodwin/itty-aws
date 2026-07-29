@@ -482,7 +482,7 @@ export const ApplyUpdatesGetParentResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** List of allowed resources. */
 export type ConfigurationAssignmentFilterPropertiesResourceTypesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ConfigurationAssignmentFilterPropertiesResourceTypesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -490,15 +490,14 @@ export const ConfigurationAssignmentFilterPropertiesResourceTypesList =
 
 /** List of allowed resource groups. */
 export type ConfigurationAssignmentFilterPropertiesResourceGroupsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ConfigurationAssignmentFilterPropertiesResourceGroupsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ConfigurationAssignmentFilterPropertiesResourceGroupsList>;
 
 /** List of allowed operating systems. */
-export type ConfigurationAssignmentFilterPropertiesOsTypesList =
-  ReadonlyArray<string>;
+export type ConfigurationAssignmentFilterPropertiesOsTypesList = Array<string>;
 export const ConfigurationAssignmentFilterPropertiesOsTypesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -506,13 +505,13 @@ export const ConfigurationAssignmentFilterPropertiesOsTypesList =
 
 /** List of locations to scope the query to. */
 export type ConfigurationAssignmentFilterPropertiesLocationsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ConfigurationAssignmentFilterPropertiesLocationsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ConfigurationAssignmentFilterPropertiesLocationsList>;
 
-export type TagSettingsPropertiesTagsValueList = ReadonlyArray<string>;
+export type TagSettingsPropertiesTagsValueList = Array<string>;
 export const TagSettingsPropertiesTagsValueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<TagSettingsPropertiesTagsValueList>;
@@ -535,7 +534,7 @@ export interface TagSettingsProperties {
   /** Dictionary of tags with its list of values. */
   tags?: TagSettingsPropertiesTagsMap;
   /** Filter VMs by Any or All specified tags. */
-  filterOperator?: TagSettingsPropertiesFilterOperator;
+  filterOperator?: TagSettingsPropertiesFilterOperator | (string & {});
 }
 export const TagSettingsProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2231,7 +2230,7 @@ export const ConfigurationAssignment = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of configuration Assignments */
 export type ListConfigurationAssignmentsResultValueList =
-  ReadonlyArray<ConfigurationAssignment>;
+  Array<ConfigurationAssignment>;
 export const ListConfigurationAssignmentsResultValueList =
   /*@__PURE__*/ S.Array(
     ConfigurationAssignment,
@@ -2378,24 +2377,21 @@ export type InputPatchConfigurationRebootSetting =
 export const InputPatchConfigurationRebootSetting = /*@__PURE__*/ S.String;
 
 /** Windows KBID to be excluded for patching. */
-export type InputWindowsParametersKbNumbersToExcludeList =
-  ReadonlyArray<string>;
+export type InputWindowsParametersKbNumbersToExcludeList = Array<string>;
 export const InputWindowsParametersKbNumbersToExcludeList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<InputWindowsParametersKbNumbersToExcludeList>;
 
 /** Windows KBID to be included for patching. */
-export type InputWindowsParametersKbNumbersToIncludeList =
-  ReadonlyArray<string>;
+export type InputWindowsParametersKbNumbersToIncludeList = Array<string>;
 export const InputWindowsParametersKbNumbersToIncludeList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<InputWindowsParametersKbNumbersToIncludeList>;
 
 /** Classification category of patches to be patched. Allowed values are 'Critical', 'Security', 'UpdateRollup', 'FeaturePack', 'ServicePack', 'Definition', 'Tools', and 'Updates'. */
-export type InputWindowsParametersClassificationsToIncludeList =
-  ReadonlyArray<string>;
+export type InputWindowsParametersClassificationsToIncludeList = Array<string>;
 export const InputWindowsParametersClassificationsToIncludeList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2430,24 +2426,21 @@ export const InputWindowsParameters = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InputWindowsParameters>;
 
 /** Package names to be excluded for patching. */
-export type InputLinuxParametersPackageNameMasksToExcludeList =
-  ReadonlyArray<string>;
+export type InputLinuxParametersPackageNameMasksToExcludeList = Array<string>;
 export const InputLinuxParametersPackageNameMasksToExcludeList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<InputLinuxParametersPackageNameMasksToExcludeList>;
 
 /** Package names to be included for patching. */
-export type InputLinuxParametersPackageNameMasksToIncludeList =
-  ReadonlyArray<string>;
+export type InputLinuxParametersPackageNameMasksToIncludeList = Array<string>;
 export const InputLinuxParametersPackageNameMasksToIncludeList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<InputLinuxParametersPackageNameMasksToIncludeList>;
 
 /** Classification category of patches to be patched. Allowed values are 'Critical', 'Security', and 'Other'. */
-export type InputLinuxParametersClassificationsToIncludeList =
-  ReadonlyArray<string>;
+export type InputLinuxParametersClassificationsToIncludeList = Array<string>;
 export const InputLinuxParametersClassificationsToIncludeList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2481,7 +2474,7 @@ export const InputLinuxParameters = /*@__PURE__*/ S.suspend(() =>
 /** Input configuration for a patch run */
 export interface InputPatchConfiguration {
   /** Possible reboot preference as defined by the user based on which it would be decided to reboot the machine or not after the patch operation is completed. */
-  rebootSetting?: InputPatchConfigurationRebootSetting;
+  rebootSetting?: InputPatchConfigurationRebootSetting | (string & {});
   /** Input parameters specific to patching a Windows machine. For Linux machines, do not pass this property. */
   windowsParameters?: InputWindowsParameters;
   /** Input parameters specific to patching Linux machine. For Windows machines, do not pass this property. */
@@ -2504,11 +2497,13 @@ export interface MaintenanceConfigurationProperties {
   /** Gets or sets extensionProperties of the maintenanceConfiguration */
   extensionProperties?: MaintenanceConfigurationPropertiesExtensionPropertiesMap;
   /** Gets or sets maintenanceScope of the configuration */
-  maintenanceScope?: MaintenanceConfigurationPropertiesMaintenanceScope;
+  maintenanceScope?:
+    | MaintenanceConfigurationPropertiesMaintenanceScope
+    | (string & {});
   /** Definition of a MaintenanceWindow */
   maintenanceWindow?: MaintenanceWindow;
   /** Gets or sets the visibility of the configuration. The default value is 'Custom' */
-  visibility?: MaintenanceConfigurationPropertiesVisibility;
+  visibility?: MaintenanceConfigurationPropertiesVisibility | (string & {});
   /** The input parameters to be passed to the patch run operation. */
   installPatches?: InputPatchConfiguration;
 }
@@ -2880,7 +2875,7 @@ export const MaintenanceConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of maintenance Configurations */
 export type ListMaintenanceConfigurationsResultValueList =
-  ReadonlyArray<MaintenanceConfiguration>;
+  Array<MaintenanceConfiguration>;
 export const ListMaintenanceConfigurationsResultValueList =
   /*@__PURE__*/ S.Array(
     MaintenanceConfiguration,
@@ -3228,7 +3223,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** A collection of operations */
-export type OperationsListResultValueList = ReadonlyArray<Operation>;
+export type OperationsListResultValueList = Array<Operation>;
 export const OperationsListResultValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResultValueList>;
@@ -3475,7 +3470,7 @@ export const Update = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Update" }) as any as S.Schema<Update>;
 
 /** The pending updates */
-export type ListUpdatesResultValueList = ReadonlyArray<Update>;
+export type ListUpdatesResultValueList = Array<Update>;
 export const ListUpdatesResultValueList = /*@__PURE__*/ S.Array(
   Update,
 ) as any as S.Schema<ListUpdatesResultValueList>;

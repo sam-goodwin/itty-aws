@@ -909,7 +909,7 @@ export const MultiValueHandlingType = /*@__PURE__*/ S.String;
 export interface ExportFilterPropertyAttributes {
   outputType?: string;
   sourcePropertyName?: string;
-  multiValueHandling?: MultiValueHandlingType;
+  multiValueHandling?: MultiValueHandlingType | (string & {});
 }
 export const ExportFilterPropertyAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

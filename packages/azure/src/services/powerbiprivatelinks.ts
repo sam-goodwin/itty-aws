@@ -80,7 +80,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = ReadonlyArray<Operation>;
+export type OperationsListResponseValueList = Array<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;
@@ -123,7 +123,7 @@ export const ConnectionStateStatus = /*@__PURE__*/ S.String;
 /** ConnectionState information. */
 export interface ConnectionState {
   /** Status of the connection. */
-  status?: ConnectionStateStatus;
+  status?: ConnectionStateStatus | (string & {});
   /** Description of the connection state. */
   description?: string;
   /** Actions required (if any). */
@@ -156,7 +156,9 @@ export interface PrivateEndpointConnectionProperties {
   /** Specifies the connection state. */
   privateLinkServiceConnectionState?: ConnectionState;
   /** Provisioning state of the Private Endpoint Connection. */
-  provisioningState?: PrivateEndpointConnectionPropertiesProvisioningState;
+  provisioningState?:
+    | PrivateEndpointConnectionPropertiesProvisioningState
+    | (string & {});
 }
 export const PrivateEndpointConnectionProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -184,7 +186,7 @@ export const PrivateEndpointConnectionInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Specifies the private endpoint connections of the resource. */
 export type TenantPropertiesInputPrivateEndpointConnectionsList =
-  ReadonlyArray<PrivateEndpointConnectionInput>;
+  Array<PrivateEndpointConnectionInput>;
 export const TenantPropertiesInputPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnectionInput,
@@ -369,7 +371,7 @@ export const PrivateEndpointConnection = /*@__PURE__*/ S.suspend(() =>
 
 /** Specifies the private endpoint connections of the resource. */
 export type TenantPropertiesPrivateEndpointConnectionsList =
-  ReadonlyArray<PrivateEndpointConnection>;
+  Array<PrivateEndpointConnection>;
 export const TenantPropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection,
@@ -486,7 +488,7 @@ export const PowerBIResourcesListByResourceNameRequest =
   }) as any as S.Schema<PowerBIResourcesListByResourceNameRequest>;
 
 export type PowerBIResourcesListByResourceNameResponseBodyList =
-  ReadonlyArray<TenantResource>;
+  Array<TenantResource>;
 export const PowerBIResourcesListByResourceNameResponseBodyList =
   /*@__PURE__*/ S.Array(
     TenantResource,
@@ -671,7 +673,7 @@ export const PrivateEndpointConnectionsListByResourceRequest =
 
 /** Specifies the name of the private endpoint connection. */
 export type PrivateEndpointConnectionListResultValueList =
-  ReadonlyArray<PrivateEndpointConnection>;
+  Array<PrivateEndpointConnection>;
 export const PrivateEndpointConnectionListResultValueList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection,
@@ -722,16 +724,14 @@ export const PrivateLinkResourcesGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateLinkResourcesGetRequest>;
 
 /** The private link resource required member names. */
-export type PrivateLinkResourcePropertiesRequiredMembersList =
-  ReadonlyArray<string>;
+export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
 export const PrivateLinkResourcePropertiesRequiredMembersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
 
 /** The private link resource Private link DNS zone name. */
-export type PrivateLinkResourcePropertiesRequiredZoneNamesList =
-  ReadonlyArray<string>;
+export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
 export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -810,7 +810,7 @@ export const PrivateLinkResourcesListByResourceRequest =
 
 /** A collection of private endpoint connection resources. */
 export type PrivateLinkResourcesListResultValueList =
-  ReadonlyArray<PrivateLinkResource>;
+  Array<PrivateLinkResource>;
 export const PrivateLinkResourcesListResultValueList = /*@__PURE__*/ S.Array(
   PrivateLinkResource,
 ) as any as S.Schema<PrivateLinkResourcesListResultValueList>;
@@ -855,7 +855,7 @@ export const PrivateLinkServiceResourceOperationResultsGetRequest =
   }) as any as S.Schema<PrivateLinkServiceResourceOperationResultsGetRequest>;
 
 /** The error details. */
-export type ErrorDetailDetailsList = ReadonlyArray<ErrorDetail>;
+export type ErrorDetailDetailsList = Array<ErrorDetail>;
 export const ErrorDetailDetailsList = /*@__PURE__*/ S.Array(
   S.suspend(() => ErrorDetail),
 ) as any as S.Schema<ErrorDetailDetailsList>;
@@ -877,7 +877,7 @@ export const ErrorAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ErrorAdditionalInfo>;
 
 /** The error additional info. */
-export type ErrorDetailAdditionalInfoList = ReadonlyArray<ErrorAdditionalInfo>;
+export type ErrorDetailAdditionalInfoList = Array<ErrorAdditionalInfo>;
 export const ErrorDetailAdditionalInfoList = /*@__PURE__*/ S.Array(
   ErrorAdditionalInfo,
 ) as any as S.Schema<ErrorDetailAdditionalInfoList>;
@@ -906,14 +906,14 @@ export const ErrorDetail = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ErrorDetail" }) as any as S.Schema<ErrorDetail>;
 
 /** The error details. */
-export type AsyncOperationDetailErrorDetailsList = ReadonlyArray<ErrorDetail>;
+export type AsyncOperationDetailErrorDetailsList = Array<ErrorDetail>;
 export const AsyncOperationDetailErrorDetailsList = /*@__PURE__*/ S.Array(
   ErrorDetail,
 ) as any as S.Schema<AsyncOperationDetailErrorDetailsList>;
 
 /** The error additional info. */
 export type AsyncOperationDetailErrorAdditionalInfoList =
-  ReadonlyArray<ErrorAdditionalInfo>;
+  Array<ErrorAdditionalInfo>;
 export const AsyncOperationDetailErrorAdditionalInfoList =
   /*@__PURE__*/ S.Array(
     ErrorAdditionalInfo,
@@ -992,7 +992,7 @@ export const PrivateLinkServicesForPowerBIListBySubscriptionIdRequest =
   }) as any as S.Schema<PrivateLinkServicesForPowerBIListBySubscriptionIdRequest>;
 
 export type PrivateLinkServicesForPowerBIListBySubscriptionIdResponseBodyList =
-  ReadonlyArray<TenantResource>;
+  Array<TenantResource>;
 export const PrivateLinkServicesForPowerBIListBySubscriptionIdResponseBodyList =
   /*@__PURE__*/ S.Array(
     TenantResource,
@@ -1033,7 +1033,7 @@ export const PrivateLinkServicesListByResourceGroupRequest =
   }) as any as S.Schema<PrivateLinkServicesListByResourceGroupRequest>;
 
 export type PrivateLinkServicesListByResourceGroupResponseBodyList =
-  ReadonlyArray<TenantResource>;
+  Array<TenantResource>;
 export const PrivateLinkServicesListByResourceGroupResponseBodyList =
   /*@__PURE__*/ S.Array(
     TenantResource,

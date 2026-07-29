@@ -120,7 +120,7 @@ export const Step = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Step" }) as any as S.Schema<Step>;
 
-export type StepList = ReadonlyArray<Step>;
+export type StepList = Array<Step>;
 export const StepList = /*@__PURE__*/ S.Array(
   Step,
 ) as any as S.Schema<StepList>;
@@ -172,7 +172,7 @@ export const StackTraceElement = /*@__PURE__*/ S.suspend(() =>
   identifier: "StackTraceElement",
 }) as any as S.Schema<StackTraceElement>;
 
-export type StackTraceElementList = ReadonlyArray<StackTraceElement>;
+export type StackTraceElementList = Array<StackTraceElement>;
 export const StackTraceElementList = /*@__PURE__*/ S.Array(
   StackTraceElement,
 ) as any as S.Schema<StackTraceElementList>;
@@ -214,7 +214,7 @@ export interface Execution {
   /** Output only. Marks the end of execution, successful or not. */
   endTime?: string;
   /** Output only. Current state of the execution. */
-  state?: ExecutionStateEnum;
+  state?: ExecutionStateEnum | (string & {});
   /** Output only. Revision of the workflow this execution is using. */
   workflowRevisionId?: string;
   /** Output only. Marks the beginning of execution. */
@@ -224,7 +224,7 @@ export interface Execution {
   /** Input parameters of the execution represented as a JSON string. The size limit is 32KB. *Note*: If you are using the REST API directly to run your workflow, you must escape any JSON string value of `argument`. Example: `'{"argument":"{\"firstName\":\"FIRST\",\"lastName\":\"LAST\"}"}'` */
   argument?: string;
   /** The call logging level associated to this execution. */
-  callLogLevel?: ExecutionCallLogLevelEnum;
+  callLogLevel?: ExecutionCallLogLevelEnum | (string & {});
   /** Output only. Status tracks the current steps and progress data of this execution. */
   status?: Status;
   /** Output only. The error which caused the execution to finish prematurely. The value is only present if the execution's state is `FAILED` or `CANCELLED`. */
@@ -335,7 +335,7 @@ export const ListProjectsLocationsWorkflowsExecutionsRequest =
     identifier: "ListProjectsLocationsWorkflowsExecutionsRequest",
   }) as any as S.Schema<ListProjectsLocationsWorkflowsExecutionsRequest>;
 
-export type ExecutionList = ReadonlyArray<Execution>;
+export type ExecutionList = Array<Execution>;
 export const ExecutionList = /*@__PURE__*/ S.Array(
   Execution,
 ) as any as S.Schema<ExecutionList>;

@@ -354,7 +354,7 @@ export const RuleType = /*@__PURE__*/ S.String;
 export interface RuleConfig {
   Inverted?: boolean;
   Threshold?: number;
-  Type?: RuleType;
+  Type?: RuleType | (string & {});
 }
 export const RuleConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

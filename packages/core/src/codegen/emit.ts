@@ -90,13 +90,12 @@ export interface EnumDeclOptions {
 
 /**
  * String-union enum ALIAS: the spec's documented values as a CLOSED literal
- * union (`type X = "a" | "b"`), so response readers can exhaustively match
- * the documented values. Openness is direction-aware and lives at the
- * REFERENCE site: request-side members re-open the alias inline
+ * union (`type X = "a" | "b"`) — response readers match documented values
+ * exhaustively. INPUT references re-open the alias inline
  * (`X | (string & {})`) so consumers can send tomorrow's values without an
- * SDK update, while response-side members reference the closed alias plain.
- * The schema stays `S.String` (the protocols never validate enum
- * membership, so undocumented wire values still pass through at runtime).
+ * SDK update. The schema stays `S.String` in both directions (the
+ * protocols never validate enum membership, so undocumented wire values
+ * always pass through at runtime).
  */
 export const enumDecl = (o: EnumDeclOptions): string[] => {
   const union = o.values.length ? o.values.map(q).join(" | ") : "string";

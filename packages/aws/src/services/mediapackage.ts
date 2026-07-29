@@ -436,8 +436,8 @@ export type PresetSpeke20Video =
 export const PresetSpeke20Video = /*@__PURE__*/ S.String;
 
 export interface EncryptionContractConfiguration {
-  PresetSpeke20Audio?: PresetSpeke20Audio;
-  PresetSpeke20Video?: PresetSpeke20Video;
+  PresetSpeke20Audio?: PresetSpeke20Audio | (string & {});
+  PresetSpeke20Video?: PresetSpeke20Video | (string & {});
 }
 export const EncryptionContractConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -487,7 +487,7 @@ export const SpekeKeyProvider = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SpekeKeyProvider>;
 export interface CmafEncryption {
   ConstantInitializationVector?: string;
-  EncryptionMethod?: CmafEncryptionMethod;
+  EncryptionMethod?: CmafEncryptionMethod | (string & {});
   KeyRotationIntervalSeconds?: number;
   SpekeKeyProvider?: SpekeKeyProvider;
 }
@@ -524,7 +524,7 @@ export type __AdTriggersElement =
   | "DISTRIBUTOR_OVERLAY_PLACEMENT_OPPORTUNITY";
 export const __AdTriggersElement = /*@__PURE__*/ S.String;
 
-export type AdTriggers = __AdTriggersElement[];
+export type AdTriggers = (__AdTriggersElement | (string & {}))[];
 export const AdTriggers = /*@__PURE__*/ S.Array(__AdTriggersElement);
 export type AdsOnDeliveryRestrictions =
   | "NONE"
@@ -587,7 +587,7 @@ export const StreamOrder = /*@__PURE__*/ S.String;
 export interface StreamSelection {
   MaxVideoBitsPerSecond?: number;
   MinVideoBitsPerSecond?: number;
-  StreamOrder?: StreamOrder;
+  StreamOrder?: StreamOrder | (string & {});
 }
 export const StreamSelection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -651,7 +651,10 @@ export const ManifestLayout = /*@__PURE__*/ S.String;
 export type __PeriodTriggersElement = "ADS";
 export const __PeriodTriggersElement = /*@__PURE__*/ S.String;
 
-export type __listOf__PeriodTriggersElement = __PeriodTriggersElement[];
+export type __listOf__PeriodTriggersElement = (
+  | __PeriodTriggersElement
+  | (string & {})
+)[];
 export const __listOf__PeriodTriggersElement = /*@__PURE__*/ S.Array(
   __PeriodTriggersElement,
 );
@@ -669,20 +672,20 @@ export const UtcTiming = /*@__PURE__*/ S.String;
 
 export interface DashPackage {
   AdTriggers?: __AdTriggersElement[];
-  AdsOnDeliveryRestrictions?: AdsOnDeliveryRestrictions;
+  AdsOnDeliveryRestrictions?: AdsOnDeliveryRestrictions | (string & {});
   Encryption?: DashEncryption;
   IncludeIframeOnlyStream?: boolean;
-  ManifestLayout?: ManifestLayout;
+  ManifestLayout?: ManifestLayout | (string & {});
   ManifestWindowSeconds?: number;
   MinBufferTimeSeconds?: number;
   MinUpdatePeriodSeconds?: number;
   PeriodTriggers?: __PeriodTriggersElement[];
-  Profile?: Profile;
+  Profile?: Profile | (string & {});
   SegmentDurationSeconds?: number;
-  SegmentTemplateFormat?: SegmentTemplateFormat;
+  SegmentTemplateFormat?: SegmentTemplateFormat | (string & {});
   StreamSelection?: StreamSelection;
   SuggestedPresentationDelaySeconds?: number;
-  UtcTiming?: UtcTiming;
+  UtcTiming?: UtcTiming | (string & {});
   UtcTimingUri?: string;
 }
 export const DashPackage = /*@__PURE__*/ S.suspend(() =>
@@ -729,7 +732,7 @@ export const EncryptionMethod = /*@__PURE__*/ S.String;
 
 export interface HlsEncryption {
   ConstantInitializationVector?: string;
-  EncryptionMethod?: EncryptionMethod;
+  EncryptionMethod?: EncryptionMethod | (string & {});
   KeyRotationIntervalSeconds?: number;
   RepeatExtXKey?: boolean;
   SpekeKeyProvider?: SpekeKeyProvider;
@@ -752,13 +755,13 @@ export const HlsEncryption = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "HlsEncryption" }) as any as S.Schema<HlsEncryption>;
 export interface HlsPackage {
-  AdMarkers?: AdMarkers;
+  AdMarkers?: AdMarkers | (string & {});
   AdTriggers?: __AdTriggersElement[];
-  AdsOnDeliveryRestrictions?: AdsOnDeliveryRestrictions;
+  AdsOnDeliveryRestrictions?: AdsOnDeliveryRestrictions | (string & {});
   Encryption?: HlsEncryption;
   IncludeDvbSubtitles?: boolean;
   IncludeIframeOnlyStream?: boolean;
-  PlaylistType?: PlaylistType;
+  PlaylistType?: PlaylistType | (string & {});
   PlaylistWindowSeconds?: number;
   ProgramDateTimeIntervalSeconds?: number;
   SegmentDurationSeconds?: number;

@@ -146,7 +146,7 @@ export interface Database {
   /** Output only. The time when this database is considered expired. Only set after the database is deleted. */
   expireTime?: string;
   /** The database type. */
-  type?: DatabaseTypeEnum;
+  type?: DatabaseTypeEnum | (string & {});
   /** Options of a Hive database. */
   hiveOptions?: HiveDatabaseOptions;
 }
@@ -259,7 +259,7 @@ export interface Table {
   /** The checksum of a table object computed by the server based on the value of other fields. It may be sent on update requests to ensure the client has an up-to-date value before proceeding. It is only checked for update table operations. */
   etag?: string;
   /** The table type. */
-  type?: TableTypeEnum;
+  type?: TableTypeEnum | (string & {});
 }
 export const Table = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -397,7 +397,7 @@ export const Expr = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Expr" }) as any as S.Schema<Expr>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -419,7 +419,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
-export type BindingList = ReadonlyArray<Binding>;
+export type BindingList = Array<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -434,7 +434,7 @@ export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
 export interface AuditLogConfig {
   /** The log type that this config enables. */
-  logType?: AuditLogConfigLogTypeEnum;
+  logType?: AuditLogConfigLogTypeEnum | (string & {});
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
   exemptedMembers?: StringList;
 }
@@ -445,7 +445,7 @@ export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
-export type AuditLogConfigList = ReadonlyArray<AuditLogConfig>;
+export type AuditLogConfigList = Array<AuditLogConfig>;
 export const AuditLogConfigList = /*@__PURE__*/ S.Array(
   AuditLogConfig,
 ) as any as S.Schema<AuditLogConfigList>;
@@ -464,7 +464,7 @@ export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
-export type AuditConfigList = ReadonlyArray<AuditConfig>;
+export type AuditConfigList = Array<AuditConfig>;
 export const AuditConfigList = /*@__PURE__*/ S.Array(
   AuditConfig,
 ) as any as S.Schema<AuditConfigList>;
@@ -614,7 +614,7 @@ export const ListProjectsLocationsCatalogsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsCatalogsRequest",
 }) as any as S.Schema<ListProjectsLocationsCatalogsRequest>;
 
-export type CatalogList = ReadonlyArray<Catalog>;
+export type CatalogList = Array<Catalog>;
 export const CatalogList = /*@__PURE__*/ S.Array(
   Catalog,
 ) as any as S.Schema<CatalogList>;
@@ -660,7 +660,7 @@ export const ListProjectsLocationsCatalogsDatabasesRequest =
     identifier: "ListProjectsLocationsCatalogsDatabasesRequest",
   }) as any as S.Schema<ListProjectsLocationsCatalogsDatabasesRequest>;
 
-export type DatabaseList = ReadonlyArray<Database>;
+export type DatabaseList = Array<Database>;
 export const DatabaseList = /*@__PURE__*/ S.Array(
   Database,
 ) as any as S.Schema<DatabaseList>;
@@ -718,7 +718,7 @@ export const ListProjectsLocationsCatalogsDatabasesTablesRequest =
     identifier: "ListProjectsLocationsCatalogsDatabasesTablesRequest",
   }) as any as S.Schema<ListProjectsLocationsCatalogsDatabasesTablesRequest>;
 
-export type TableList = ReadonlyArray<Table>;
+export type TableList = Array<Table>;
 export const TableList = /*@__PURE__*/ S.Array(
   Table,
 ) as any as S.Schema<TableList>;

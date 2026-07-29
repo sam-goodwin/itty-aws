@@ -2458,7 +2458,7 @@ export const ListKeysRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListKeysRequest",
 }) as any as S.Schema<ListKeysRequest>;
 
-export type KeysListResultList = ReadonlyArray<string>;
+export type KeysListResultList = Array<string>;
 export const KeysListResultList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<KeysListResultList>;
@@ -2478,7 +2478,7 @@ export const ListKeysResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListKeysResponse",
 }) as any as S.Schema<ListKeysResponse>;
 
-export type ListRequestTagList = ReadonlyArray<string>;
+export type ListRequestTagList = Array<string>;
 export const ListRequestTagList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ListRequestTagList>;
@@ -2513,9 +2513,7 @@ export type ListRequestType =
   | "zone";
 export const ListRequestType = /*@__PURE__*/ S.String;
 
-export type ListRequestTypeList = ReadonlyArray<
-  ListRequestType | (string & {})
->;
+export type ListRequestTypeList = Array<ListRequestType | (string & {})>;
 export const ListRequestTypeList = /*@__PURE__*/ S.Array(
   ListRequestType,
 ) as any as S.Schema<ListRequestTypeList>;
@@ -3638,7 +3636,7 @@ export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ListResultItem" }) as any as S.Schema<ListResultItem>;
 
-export type ListResultList = ReadonlyArray<ListResultItem>;
+export type ListResultList = Array<ListResultItem>;
 export const ListResultList = /*@__PURE__*/ S.Array(
   ListResultItem,
 ) as any as S.Schema<ListResultList>;
@@ -3716,7 +3714,7 @@ export const ListValuesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListValuesRequest",
 }) as any as S.Schema<ListValuesRequest>;
 
-export type ValuesListResultList = ReadonlyArray<string>;
+export type ValuesListResultList = Array<string>;
 export const ValuesListResultList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ValuesListResultList>;

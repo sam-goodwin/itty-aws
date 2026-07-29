@@ -99,7 +99,7 @@ export const CancelPreviewDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
 export type OperationStatusEnum = "PENDING" | "RUNNING" | "DONE";
 export const OperationStatusEnum = /*@__PURE__*/ S.String;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -159,7 +159,7 @@ export interface QuotaExceededInfo {
   /** Future quota limit being rolled out. The limit's unit depends on the quota type or metric. */
   futureLimit?: number;
   /** Rollout status of the future quota limit. */
-  rolloutStatus?: QuotaExceededInfoRolloutStatusEnum;
+  rolloutStatus?: QuotaExceededInfoRolloutStatusEnum | (string & {});
 }
 export const QuotaExceededInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -188,7 +188,7 @@ export const HelpLink = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "HelpLink" }) as any as S.Schema<HelpLink>;
 
-export type HelpLinkList = ReadonlyArray<HelpLink>;
+export type HelpLinkList = Array<HelpLink>;
 export const HelpLinkList = /*@__PURE__*/ S.Array(
   HelpLink,
 ) as any as S.Schema<HelpLinkList>;
@@ -239,7 +239,7 @@ export const OperationErrorErrorsItemErrorDetailsItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<OperationErrorErrorsItemErrorDetailsItem>;
 
 export type OperationErrorErrorsItemErrorDetailsItemList =
-  ReadonlyArray<OperationErrorErrorsItemErrorDetailsItem>;
+  Array<OperationErrorErrorsItemErrorDetailsItem>;
 export const OperationErrorErrorsItemErrorDetailsItemList =
   /*@__PURE__*/ S.Array(
     OperationErrorErrorsItemErrorDetailsItem,
@@ -271,8 +271,7 @@ export const OperationErrorErrorsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "OperationErrorErrorsItem",
 }) as any as S.Schema<OperationErrorErrorsItem>;
 
-export type OperationErrorErrorsItemList =
-  ReadonlyArray<OperationErrorErrorsItem>;
+export type OperationErrorErrorsItemList = Array<OperationErrorErrorsItem>;
 export const OperationErrorErrorsItemList = /*@__PURE__*/ S.Array(
   OperationErrorErrorsItem,
 ) as any as S.Schema<OperationErrorErrorsItemList>;
@@ -347,14 +346,14 @@ export const OperationWarningsItemDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationWarningsItemDataItem>;
 
 export type OperationWarningsItemDataItemList =
-  ReadonlyArray<OperationWarningsItemDataItem>;
+  Array<OperationWarningsItemDataItem>;
 export const OperationWarningsItemDataItemList = /*@__PURE__*/ S.Array(
   OperationWarningsItemDataItem,
 ) as any as S.Schema<OperationWarningsItemDataItemList>;
 
 export interface OperationWarningsItem {
   /** [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response. */
-  code?: OperationWarningsItemCodeEnum;
+  code?: OperationWarningsItemCodeEnum | (string & {});
   /** [Output Only] A human-readable description of the warning code. */
   message?: string;
   /** [Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key": "scope", "value": "zones/us-east1-d" } */
@@ -370,7 +369,7 @@ export const OperationWarningsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "OperationWarningsItem",
 }) as any as S.Schema<OperationWarningsItem>;
 
-export type OperationWarningsItemList = ReadonlyArray<OperationWarningsItem>;
+export type OperationWarningsItemList = Array<OperationWarningsItem>;
 export const OperationWarningsItemList = /*@__PURE__*/ S.Array(
   OperationWarningsItem,
 ) as any as S.Schema<OperationWarningsItemList>;
@@ -391,7 +390,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -415,7 +414,9 @@ export const Status = /*@__PURE__*/ S.suspend(() =>
 
 export interface SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfo {
   /** [Output Only] Status of the action, which can be one of the following: `PROPAGATING`, `PROPAGATED`, `ABANDONED`, `FAILED`, or `DONE`. */
-  state?: SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfoStateEnum;
+  state?:
+    | SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfoStateEnum
+    | (string & {});
   /** [Output Only] If state is `ABANDONED` or `FAILED`, this field is populated. */
   error?: Status;
 }
@@ -471,7 +472,7 @@ export const BulkInsertOperationStatusStatusEnum = /*@__PURE__*/ S.String;
 
 export interface BulkInsertOperationStatus {
   /** [Output Only] Creation status of BulkInsert operation - information if the flow is rolling forward or rolling back. */
-  status?: BulkInsertOperationStatusStatusEnum;
+  status?: BulkInsertOperationStatusStatusEnum | (string & {});
   /** [Output Only] Count of VMs originally planned to be created. */
   targetVmCount?: number;
   /** [Output Only] Count of VMs successfully created so far. */
@@ -591,7 +592,7 @@ export interface Operation {
   /** [Output Only] The unique target ID, which identifies a specific incarnation of the target resource. */
   targetId?: string;
   /** [Output Only] The status of the operation, which can be one of the following: `PENDING`, `RUNNING`, or `DONE`. */
-  status?: OperationStatusEnum;
+  status?: OperationStatusEnum | (string & {});
   /** [Output Only] An optional textual description of the current status of the operation. */
   statusMessage?: string;
   /** [Output Only] User who requested the operation, for example: `user@example.com` or `alice_smith_identifier (global/workforcePools/example-com-us-employees)`. */
@@ -794,8 +795,7 @@ export const CompositeTypeLabelEntry = /*@__PURE__*/ S.suspend(() =>
   identifier: "CompositeTypeLabelEntry",
 }) as any as S.Schema<CompositeTypeLabelEntry>;
 
-export type CompositeTypeLabelEntryList =
-  ReadonlyArray<CompositeTypeLabelEntry>;
+export type CompositeTypeLabelEntryList = Array<CompositeTypeLabelEntry>;
 export const CompositeTypeLabelEntryList = /*@__PURE__*/ S.Array(
   CompositeTypeLabelEntry,
 ) as any as S.Schema<CompositeTypeLabelEntryList>;
@@ -813,7 +813,7 @@ export const ImportFile = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ImportFile" }) as any as S.Schema<ImportFile>;
 
-export type ImportFileList = ReadonlyArray<ImportFile>;
+export type ImportFileList = Array<ImportFile>;
 export const ImportFileList = /*@__PURE__*/ S.Array(
   ImportFile,
 ) as any as S.Schema<ImportFileList>;
@@ -833,7 +833,7 @@ export interface TemplateContents {
   /** Import files referenced by the main template. */
   imports?: ImportFileList;
   /** Which interpreter (python or jinja) should be used during expansion. */
-  interpreter?: TemplateContentsInterpreterEnum;
+  interpreter?: TemplateContentsInterpreterEnum | (string & {});
   /** The filename of the mainTemplate */
   mainTemplate?: string;
 }
@@ -862,7 +862,7 @@ export interface CompositeType {
   selfLink?: string;
   /** Output only. The Operation that most recently ran, or is currently running, on this composite type. */
   operation?: Operation;
-  status?: CompositeTypeStatusEnum;
+  status?: CompositeTypeStatusEnum | (string & {});
   /** Map of labels; provided by the client when the resource is created or updated. Specifically: Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?` Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`. */
   labels?: CompositeTypeLabelEntryList;
   /** Files for the template type. */
@@ -921,8 +921,7 @@ export const DeploymentUpdateLabelEntry = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeploymentUpdateLabelEntry",
 }) as any as S.Schema<DeploymentUpdateLabelEntry>;
 
-export type DeploymentUpdateLabelEntryList =
-  ReadonlyArray<DeploymentUpdateLabelEntry>;
+export type DeploymentUpdateLabelEntryList = Array<DeploymentUpdateLabelEntry>;
 export const DeploymentUpdateLabelEntryList = /*@__PURE__*/ S.Array(
   DeploymentUpdateLabelEntry,
 ) as any as S.Schema<DeploymentUpdateLabelEntryList>;
@@ -986,7 +985,7 @@ export const DeploymentLabelEntry = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeploymentLabelEntry",
 }) as any as S.Schema<DeploymentLabelEntry>;
 
-export type DeploymentLabelEntryList = ReadonlyArray<DeploymentLabelEntry>;
+export type DeploymentLabelEntryList = Array<DeploymentLabelEntry>;
 export const DeploymentLabelEntryList = /*@__PURE__*/ S.Array(
   DeploymentLabelEntry,
 ) as any as S.Schema<DeploymentLabelEntryList>;
@@ -1096,7 +1095,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
-export type BindingList = ReadonlyArray<Binding>;
+export type BindingList = Array<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -1111,7 +1110,7 @@ export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
 export interface AuditLogConfig {
   /** The log type that this config enables. */
-  logType?: AuditLogConfigLogTypeEnum;
+  logType?: AuditLogConfigLogTypeEnum | (string & {});
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
   exemptedMembers?: StringList;
 }
@@ -1122,7 +1121,7 @@ export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
-export type AuditLogConfigList = ReadonlyArray<AuditLogConfig>;
+export type AuditLogConfigList = Array<AuditLogConfig>;
 export const AuditLogConfigList = /*@__PURE__*/ S.Array(
   AuditLogConfig,
 ) as any as S.Schema<AuditLogConfigList>;
@@ -1141,7 +1140,7 @@ export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
-export type AuditConfigList = ReadonlyArray<AuditConfig>;
+export type AuditConfigList = Array<AuditConfig>;
 export const AuditConfigList = /*@__PURE__*/ S.Array(
   AuditConfig,
 ) as any as S.Schema<AuditConfigList>;
@@ -1309,7 +1308,7 @@ export const ResourceUpdateErrorErrorsItemErrorDetailsItem =
   }) as any as S.Schema<ResourceUpdateErrorErrorsItemErrorDetailsItem>;
 
 export type ResourceUpdateErrorErrorsItemErrorDetailsItemList =
-  ReadonlyArray<ResourceUpdateErrorErrorsItemErrorDetailsItem>;
+  Array<ResourceUpdateErrorErrorsItemErrorDetailsItem>;
 export const ResourceUpdateErrorErrorsItemErrorDetailsItemList =
   /*@__PURE__*/ S.Array(
     ResourceUpdateErrorErrorsItemErrorDetailsItem,
@@ -1342,7 +1341,7 @@ export const ResourceUpdateErrorErrorsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourceUpdateErrorErrorsItem>;
 
 export type ResourceUpdateErrorErrorsItemList =
-  ReadonlyArray<ResourceUpdateErrorErrorsItem>;
+  Array<ResourceUpdateErrorErrorsItem>;
 export const ResourceUpdateErrorErrorsItemList = /*@__PURE__*/ S.Array(
   ResourceUpdateErrorErrorsItem,
 ) as any as S.Schema<ResourceUpdateErrorErrorsItemList>;
@@ -1419,7 +1418,7 @@ export const ResourceUpdateWarningsItemDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourceUpdateWarningsItemDataItem>;
 
 export type ResourceUpdateWarningsItemDataItemList =
-  ReadonlyArray<ResourceUpdateWarningsItemDataItem>;
+  Array<ResourceUpdateWarningsItemDataItem>;
 export const ResourceUpdateWarningsItemDataItemList = /*@__PURE__*/ S.Array(
   ResourceUpdateWarningsItemDataItem,
 ) as any as S.Schema<ResourceUpdateWarningsItemDataItemList>;
@@ -1442,8 +1441,7 @@ export const ResourceUpdateWarningsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "ResourceUpdateWarningsItem",
 }) as any as S.Schema<ResourceUpdateWarningsItem>;
 
-export type ResourceUpdateWarningsItemList =
-  ReadonlyArray<ResourceUpdateWarningsItem>;
+export type ResourceUpdateWarningsItemList = Array<ResourceUpdateWarningsItem>;
 export const ResourceUpdateWarningsItemList = /*@__PURE__*/ S.Array(
   ResourceUpdateWarningsItem,
 ) as any as S.Schema<ResourceUpdateWarningsItemList>;
@@ -1556,7 +1554,7 @@ export const ResourceWarningsItemDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourceWarningsItemDataItem>;
 
 export type ResourceWarningsItemDataItemList =
-  ReadonlyArray<ResourceWarningsItemDataItem>;
+  Array<ResourceWarningsItemDataItem>;
 export const ResourceWarningsItemDataItemList = /*@__PURE__*/ S.Array(
   ResourceWarningsItemDataItem,
 ) as any as S.Schema<ResourceWarningsItemDataItemList>;
@@ -1579,7 +1577,7 @@ export const ResourceWarningsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "ResourceWarningsItem",
 }) as any as S.Schema<ResourceWarningsItem>;
 
-export type ResourceWarningsItemList = ReadonlyArray<ResourceWarningsItem>;
+export type ResourceWarningsItemList = Array<ResourceWarningsItem>;
 export const ResourceWarningsItemList = /*@__PURE__*/ S.Array(
   ResourceWarningsItem,
 ) as any as S.Schema<ResourceWarningsItemList>;
@@ -1665,7 +1663,7 @@ export const TypeProviderLabelEntry = /*@__PURE__*/ S.suspend(() =>
   identifier: "TypeProviderLabelEntry",
 }) as any as S.Schema<TypeProviderLabelEntry>;
 
-export type TypeProviderLabelEntryList = ReadonlyArray<TypeProviderLabelEntry>;
+export type TypeProviderLabelEntryList = Array<TypeProviderLabelEntry>;
 export const TypeProviderLabelEntryList = /*@__PURE__*/ S.Array(
   TypeProviderLabelEntry,
 ) as any as S.Schema<TypeProviderLabelEntryList>;
@@ -1727,7 +1725,7 @@ export interface InputMapping {
   /** A jsonPath expression to select an element. */
   value?: string;
   /** The location where this mapping applies. */
-  location?: InputMappingLocationEnum;
+  location?: InputMappingLocationEnum | (string & {});
 }
 export const InputMapping = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1738,7 +1736,7 @@ export const InputMapping = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "InputMapping" }) as any as S.Schema<InputMapping>;
 
-export type InputMappingList = ReadonlyArray<InputMapping>;
+export type InputMappingList = Array<InputMapping>;
 export const InputMappingList = /*@__PURE__*/ S.Array(
   InputMapping,
 ) as any as S.Schema<InputMappingList>;
@@ -1762,9 +1760,11 @@ export const ValidationOptionsSchemaValidationEnum = /*@__PURE__*/ S.String;
 /** Options for how to validate and process properties on a resource. */
 export interface ValidationOptions {
   /** Specify what to do with extra properties when executing a request. */
-  undeclaredProperties?: ValidationOptionsUndeclaredPropertiesEnum;
+  undeclaredProperties?:
+    | ValidationOptionsUndeclaredPropertiesEnum
+    | (string & {});
   /** Customize how deployment manager will validate the resource against schema errors. */
-  schemaValidation?: ValidationOptionsSchemaValidationEnum;
+  schemaValidation?: ValidationOptionsSchemaValidationEnum | (string & {});
 }
 export const ValidationOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1786,7 +1786,7 @@ export interface Diagnostic {
   /** JsonPath expression on the resource that if non empty, indicates that this field needs to be extracted as a diagnostic. */
   field?: string;
   /** Level to record this diagnostic. */
-  level?: DiagnosticLevelEnum;
+  level?: DiagnosticLevelEnum | (string & {});
 }
 export const Diagnostic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1795,7 +1795,7 @@ export const Diagnostic = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Diagnostic" }) as any as S.Schema<Diagnostic>;
 
-export type DiagnosticList = ReadonlyArray<Diagnostic>;
+export type DiagnosticList = Array<Diagnostic>;
 export const DiagnosticList = /*@__PURE__*/ S.Array(
   Diagnostic,
 ) as any as S.Schema<DiagnosticList>;
@@ -1836,7 +1836,7 @@ export const AsyncOptions = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AsyncOptions" }) as any as S.Schema<AsyncOptions>;
 
-export type AsyncOptionsList = ReadonlyArray<AsyncOptions>;
+export type AsyncOptionsList = Array<AsyncOptions>;
 export const AsyncOptionsList = /*@__PURE__*/ S.Array(
   AsyncOptions,
 ) as any as S.Schema<AsyncOptionsList>;
@@ -1877,7 +1877,7 @@ export const CollectionOverride = /*@__PURE__*/ S.suspend(() =>
   identifier: "CollectionOverride",
 }) as any as S.Schema<CollectionOverride>;
 
-export type CollectionOverrideList = ReadonlyArray<CollectionOverride>;
+export type CollectionOverrideList = Array<CollectionOverride>;
 export const CollectionOverrideList = /*@__PURE__*/ S.Array(
   CollectionOverride,
 ) as any as S.Schema<CollectionOverrideList>;
@@ -2107,7 +2107,7 @@ export const ListCompositeTypesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListCompositeTypesRequest",
 }) as any as S.Schema<ListCompositeTypesRequest>;
 
-export type CompositeTypeList = ReadonlyArray<CompositeType>;
+export type CompositeTypeList = Array<CompositeType>;
 export const CompositeTypeList = /*@__PURE__*/ S.Array(
   CompositeType,
 ) as any as S.Schema<CompositeTypeList>;
@@ -2158,7 +2158,7 @@ export const ListDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListDeploymentsRequest",
 }) as any as S.Schema<ListDeploymentsRequest>;
 
-export type DeploymentList = ReadonlyArray<Deployment>;
+export type DeploymentList = Array<Deployment>;
 export const DeploymentList = /*@__PURE__*/ S.Array(
   Deployment,
 ) as any as S.Schema<DeploymentList>;
@@ -2212,7 +2212,7 @@ export const ListManifestsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListManifestsRequest",
 }) as any as S.Schema<ListManifestsRequest>;
 
-export type ManifestList = ReadonlyArray<Manifest>;
+export type ManifestList = Array<Manifest>;
 export const ManifestList = /*@__PURE__*/ S.Array(
   Manifest,
 ) as any as S.Schema<ManifestList>;
@@ -2263,7 +2263,7 @@ export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListOperationsRequest",
 }) as any as S.Schema<ListOperationsRequest>;
 
-export type OperationList = ReadonlyArray<Operation>;
+export type OperationList = Array<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -2317,7 +2317,7 @@ export const ListResourcesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListResourcesRequest",
 }) as any as S.Schema<ListResourcesRequest>;
 
-export type ResourceList = ReadonlyArray<Resource>;
+export type ResourceList = Array<Resource>;
 export const ResourceList = /*@__PURE__*/ S.Array(
   Resource,
 ) as any as S.Schema<ResourceList>;
@@ -2368,7 +2368,7 @@ export const ListTypeProvidersRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListTypeProvidersRequest",
 }) as any as S.Schema<ListTypeProvidersRequest>;
 
-export type TypeProviderList = ReadonlyArray<TypeProvider>;
+export type TypeProviderList = Array<TypeProvider>;
 export const TypeProviderList = /*@__PURE__*/ S.Array(
   TypeProvider,
 ) as any as S.Schema<TypeProviderList>;
@@ -2453,7 +2453,7 @@ export const TypeLabelEntry = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TypeLabelEntry" }) as any as S.Schema<TypeLabelEntry>;
 
-export type TypeLabelEntryList = ReadonlyArray<TypeLabelEntry>;
+export type TypeLabelEntryList = Array<TypeLabelEntry>;
 export const TypeLabelEntryList = /*@__PURE__*/ S.Array(
   TypeLabelEntry,
 ) as any as S.Schema<TypeLabelEntryList>;
@@ -2489,7 +2489,7 @@ export const Type = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Type" }) as any as S.Schema<Type>;
 
-export type TypeList = ReadonlyArray<Type>;
+export type TypeList = Array<Type>;
 export const TypeList = /*@__PURE__*/ S.Array(
   Type,
 ) as any as S.Schema<TypeList>;
@@ -2543,7 +2543,7 @@ export const ListTypesTypeProvidersRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListTypesTypeProvidersRequest",
 }) as any as S.Schema<ListTypesTypeProvidersRequest>;
 
-export type TypeInfoList = ReadonlyArray<TypeInfo>;
+export type TypeInfoList = Array<TypeInfo>;
 export const TypeInfoList = /*@__PURE__*/ S.Array(
   TypeInfo,
 ) as any as S.Schema<TypeInfoList>;

@@ -414,7 +414,7 @@ export const CreateAccountResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateAccountResponse",
 }) as any as S.Schema<CreateAccountResponse>;
 
-export type MembersCreateRequestRolesList = ReadonlyArray<string>;
+export type MembersCreateRequestRolesList = Array<string>;
 export const MembersCreateRequestRolesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<MembersCreateRequestRolesList>;
@@ -439,7 +439,7 @@ export const MembersCreateRequestPoliciesItemPermissionGroupsItem =
   }) as any as S.Schema<MembersCreateRequestPoliciesItemPermissionGroupsItem>;
 
 export type MembersCreateRequestPoliciesItemPermissionGroupsList =
-  ReadonlyArray<MembersCreateRequestPoliciesItemPermissionGroupsItem>;
+  Array<MembersCreateRequestPoliciesItemPermissionGroupsItem>;
 export const MembersCreateRequestPoliciesItemPermissionGroupsList =
   /*@__PURE__*/ S.Array(
     MembersCreateRequestPoliciesItemPermissionGroupsItem,
@@ -459,7 +459,7 @@ export const MembersCreateRequestPoliciesItemResourceGroupsItem =
   }) as any as S.Schema<MembersCreateRequestPoliciesItemResourceGroupsItem>;
 
 export type MembersCreateRequestPoliciesItemResourceGroupsList =
-  ReadonlyArray<MembersCreateRequestPoliciesItemResourceGroupsItem>;
+  Array<MembersCreateRequestPoliciesItemResourceGroupsItem>;
 export const MembersCreateRequestPoliciesItemResourceGroupsList =
   /*@__PURE__*/ S.Array(
     MembersCreateRequestPoliciesItemResourceGroupsItem,
@@ -488,7 +488,7 @@ export const MembersCreateRequestPoliciesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MembersCreateRequestPoliciesItem>;
 
 export type MembersCreateRequestPoliciesList =
-  ReadonlyArray<MembersCreateRequestPoliciesItem>;
+  Array<MembersCreateRequestPoliciesItem>;
 export const MembersCreateRequestPoliciesList = /*@__PURE__*/ S.Array(
   MembersCreateRequestPoliciesItem,
 ) as any as S.Schema<MembersCreateRequestPoliciesList>;
@@ -564,7 +564,7 @@ export const MembersCreateResponsePoliciesItemPermissionGroupsItem =
   }) as any as S.Schema<MembersCreateResponsePoliciesItemPermissionGroupsItem>;
 
 export type MembersCreateResponsePoliciesItemPermissionGroupsList =
-  ReadonlyArray<MembersCreateResponsePoliciesItemPermissionGroupsItem>;
+  Array<MembersCreateResponsePoliciesItemPermissionGroupsItem>;
 export const MembersCreateResponsePoliciesItemPermissionGroupsList =
   /*@__PURE__*/ S.Array(
     MembersCreateResponsePoliciesItemPermissionGroupsItem,
@@ -585,7 +585,7 @@ export const MembersCreateResponsePoliciesItemResourceGroupsItemScopeItemObjects
   }) as any as S.Schema<MembersCreateResponsePoliciesItemResourceGroupsItemScopeItemObjectsItem>;
 
 export type MembersCreateResponsePoliciesItemResourceGroupsItemScopeItemObjectsList =
-  ReadonlyArray<MembersCreateResponsePoliciesItemResourceGroupsItemScopeItemObjectsItem>;
+  Array<MembersCreateResponsePoliciesItemResourceGroupsItemScopeItemObjectsItem>;
 export const MembersCreateResponsePoliciesItemResourceGroupsItemScopeItemObjectsList =
   /*@__PURE__*/ S.Array(
     MembersCreateResponsePoliciesItemResourceGroupsItemScopeItemObjectsItem,
@@ -609,7 +609,7 @@ export const MembersCreateResponsePoliciesItemResourceGroupsItemScopeItem =
   }) as any as S.Schema<MembersCreateResponsePoliciesItemResourceGroupsItemScopeItem>;
 
 export type MembersCreateResponsePoliciesItemResourceGroupsItemScopeList =
-  ReadonlyArray<MembersCreateResponsePoliciesItemResourceGroupsItemScopeItem>;
+  Array<MembersCreateResponsePoliciesItemResourceGroupsItemScopeItem>;
 export const MembersCreateResponsePoliciesItemResourceGroupsItemScopeList =
   /*@__PURE__*/ S.Array(
     MembersCreateResponsePoliciesItemResourceGroupsItemScopeItem,
@@ -652,7 +652,7 @@ export const MembersCreateResponsePoliciesItemResourceGroupsItem =
   }) as any as S.Schema<MembersCreateResponsePoliciesItemResourceGroupsItem>;
 
 export type MembersCreateResponsePoliciesItemResourceGroupsList =
-  ReadonlyArray<MembersCreateResponsePoliciesItemResourceGroupsItem>;
+  Array<MembersCreateResponsePoliciesItemResourceGroupsItem>;
 export const MembersCreateResponsePoliciesItemResourceGroupsList =
   /*@__PURE__*/ S.Array(
     MembersCreateResponsePoliciesItemResourceGroupsItem,
@@ -688,7 +688,7 @@ export const MembersCreateResponsePoliciesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MembersCreateResponsePoliciesItem>;
 
 export type MembersCreateResponsePoliciesList =
-  ReadonlyArray<MembersCreateResponsePoliciesItem>;
+  Array<MembersCreateResponsePoliciesItem>;
 export const MembersCreateResponsePoliciesList = /*@__PURE__*/ S.Array(
   MembersCreateResponsePoliciesItem,
 ) as any as S.Schema<MembersCreateResponsePoliciesList>;
@@ -776,7 +776,7 @@ export const MembersCreateResponseRolesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MembersCreateResponseRolesItem>;
 
 export type MembersCreateResponseRolesList =
-  ReadonlyArray<MembersCreateResponseRolesItem>;
+  Array<MembersCreateResponseRolesItem>;
 export const MembersCreateResponseRolesList = /*@__PURE__*/ S.Array(
   MembersCreateResponseRolesItem,
 ) as any as S.Schema<MembersCreateResponseRolesList>;
@@ -858,7 +858,7 @@ export type SubscriptionsCreateRequestRatePlanId =
   | "partners_enterprise";
 export const SubscriptionsCreateRequestRatePlanId = /*@__PURE__*/ S.String;
 
-export type SubscriptionsCreateRequestRatePlanSetsList = ReadonlyArray<string>;
+export type SubscriptionsCreateRequestRatePlanSetsList = Array<string>;
 export const SubscriptionsCreateRequestRatePlanSetsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SubscriptionsCreateRequestRatePlanSetsList>;
@@ -941,7 +941,7 @@ export type SubscriptionsCreateResponseRatePlanId =
   | "partners_enterprise";
 export const SubscriptionsCreateResponseRatePlanId = /*@__PURE__*/ S.String;
 
-export type SubscriptionsCreateResponseRatePlanSetsList = ReadonlyArray<string>;
+export type SubscriptionsCreateResponseRatePlanSetsList = Array<string>;
 export const SubscriptionsCreateResponseRatePlanSetsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1062,7 +1062,7 @@ export const TokensCreateRequestPoliciesItemPermissionGroupsItem =
   }) as any as S.Schema<TokensCreateRequestPoliciesItemPermissionGroupsItem>;
 
 export type TokensCreateRequestPoliciesItemPermissionGroupsList =
-  ReadonlyArray<TokensCreateRequestPoliciesItemPermissionGroupsItem>;
+  Array<TokensCreateRequestPoliciesItemPermissionGroupsItem>;
 export const TokensCreateRequestPoliciesItemPermissionGroupsList =
   /*@__PURE__*/ S.Array(
     TokensCreateRequestPoliciesItemPermissionGroupsItem,
@@ -1112,19 +1112,18 @@ export const TokensCreateRequestPoliciesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TokensCreateRequestPoliciesItem>;
 
 export type TokensCreateRequestPoliciesList =
-  ReadonlyArray<TokensCreateRequestPoliciesItem>;
+  Array<TokensCreateRequestPoliciesItem>;
 export const TokensCreateRequestPoliciesList = /*@__PURE__*/ S.Array(
   TokensCreateRequestPoliciesItem,
 ) as any as S.Schema<TokensCreateRequestPoliciesList>;
 
-export type TokensCreateRequestConditionRequestIpInList = ReadonlyArray<string>;
+export type TokensCreateRequestConditionRequestIpInList = Array<string>;
 export const TokensCreateRequestConditionRequestIpInList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<TokensCreateRequestConditionRequestIpInList>;
 
-export type TokensCreateRequestConditionRequestIpNotInList =
-  ReadonlyArray<string>;
+export type TokensCreateRequestConditionRequestIpNotInList = Array<string>;
 export const TokensCreateRequestConditionRequestIpNotInList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1196,15 +1195,13 @@ export const CreateTokenRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateTokenRequest",
 }) as any as S.Schema<CreateTokenRequest>;
 
-export type TokensCreateResponseConditionRequestIpInList =
-  ReadonlyArray<string>;
+export type TokensCreateResponseConditionRequestIpInList = Array<string>;
 export const TokensCreateResponseConditionRequestIpInList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<TokensCreateResponseConditionRequestIpInList>;
 
-export type TokensCreateResponseConditionRequestIpNotInList =
-  ReadonlyArray<string>;
+export type TokensCreateResponseConditionRequestIpNotInList = Array<string>;
 export const TokensCreateResponseConditionRequestIpNotInList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1281,7 +1278,7 @@ export const TokensCreateResponsePoliciesItemPermissionGroupsItem =
   }) as any as S.Schema<TokensCreateResponsePoliciesItemPermissionGroupsItem>;
 
 export type TokensCreateResponsePoliciesItemPermissionGroupsList =
-  ReadonlyArray<TokensCreateResponsePoliciesItemPermissionGroupsItem>;
+  Array<TokensCreateResponsePoliciesItemPermissionGroupsItem>;
 export const TokensCreateResponsePoliciesItemPermissionGroupsList =
   /*@__PURE__*/ S.Array(
     TokensCreateResponsePoliciesItemPermissionGroupsItem,
@@ -1334,7 +1331,7 @@ export const TokensCreateResponsePoliciesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TokensCreateResponsePoliciesItem>;
 
 export type TokensCreateResponsePoliciesList =
-  ReadonlyArray<TokensCreateResponsePoliciesItem>;
+  Array<TokensCreateResponsePoliciesItem>;
 export const TokensCreateResponsePoliciesList = /*@__PURE__*/ S.Array(
   TokensCreateResponsePoliciesItem,
 ) as any as S.Schema<TokensCreateResponsePoliciesList>;
@@ -1655,7 +1652,7 @@ export const MembersGetResponsePoliciesItemPermissionGroupsItem =
   }) as any as S.Schema<MembersGetResponsePoliciesItemPermissionGroupsItem>;
 
 export type MembersGetResponsePoliciesItemPermissionGroupsList =
-  ReadonlyArray<MembersGetResponsePoliciesItemPermissionGroupsItem>;
+  Array<MembersGetResponsePoliciesItemPermissionGroupsItem>;
 export const MembersGetResponsePoliciesItemPermissionGroupsList =
   /*@__PURE__*/ S.Array(
     MembersGetResponsePoliciesItemPermissionGroupsItem,
@@ -1676,7 +1673,7 @@ export const MembersGetResponsePoliciesItemResourceGroupsItemScopeItemObjectsIte
   }) as any as S.Schema<MembersGetResponsePoliciesItemResourceGroupsItemScopeItemObjectsItem>;
 
 export type MembersGetResponsePoliciesItemResourceGroupsItemScopeItemObjectsList =
-  ReadonlyArray<MembersGetResponsePoliciesItemResourceGroupsItemScopeItemObjectsItem>;
+  Array<MembersGetResponsePoliciesItemResourceGroupsItemScopeItemObjectsItem>;
 export const MembersGetResponsePoliciesItemResourceGroupsItemScopeItemObjectsList =
   /*@__PURE__*/ S.Array(
     MembersGetResponsePoliciesItemResourceGroupsItemScopeItemObjectsItem,
@@ -1700,7 +1697,7 @@ export const MembersGetResponsePoliciesItemResourceGroupsItemScopeItem =
   }) as any as S.Schema<MembersGetResponsePoliciesItemResourceGroupsItemScopeItem>;
 
 export type MembersGetResponsePoliciesItemResourceGroupsItemScopeList =
-  ReadonlyArray<MembersGetResponsePoliciesItemResourceGroupsItemScopeItem>;
+  Array<MembersGetResponsePoliciesItemResourceGroupsItemScopeItem>;
 export const MembersGetResponsePoliciesItemResourceGroupsItemScopeList =
   /*@__PURE__*/ S.Array(
     MembersGetResponsePoliciesItemResourceGroupsItemScopeItem,
@@ -1743,7 +1740,7 @@ export const MembersGetResponsePoliciesItemResourceGroupsItem =
   }) as any as S.Schema<MembersGetResponsePoliciesItemResourceGroupsItem>;
 
 export type MembersGetResponsePoliciesItemResourceGroupsList =
-  ReadonlyArray<MembersGetResponsePoliciesItemResourceGroupsItem>;
+  Array<MembersGetResponsePoliciesItemResourceGroupsItem>;
 export const MembersGetResponsePoliciesItemResourceGroupsList =
   /*@__PURE__*/ S.Array(
     MembersGetResponsePoliciesItemResourceGroupsItem,
@@ -1779,7 +1776,7 @@ export const MembersGetResponsePoliciesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MembersGetResponsePoliciesItem>;
 
 export type MembersGetResponsePoliciesList =
-  ReadonlyArray<MembersGetResponsePoliciesItem>;
+  Array<MembersGetResponsePoliciesItem>;
 export const MembersGetResponsePoliciesList = /*@__PURE__*/ S.Array(
   MembersGetResponsePoliciesItem,
 ) as any as S.Schema<MembersGetResponsePoliciesList>;
@@ -1864,8 +1861,7 @@ export const MembersGetResponseRolesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "MembersGetResponseRolesItem",
 }) as any as S.Schema<MembersGetResponseRolesItem>;
 
-export type MembersGetResponseRolesList =
-  ReadonlyArray<MembersGetResponseRolesItem>;
+export type MembersGetResponseRolesList = Array<MembersGetResponseRolesItem>;
 export const MembersGetResponseRolesList = /*@__PURE__*/ S.Array(
   MembersGetResponseRolesItem,
 ) as any as S.Schema<MembersGetResponseRolesList>;
@@ -2062,7 +2058,7 @@ export type SubscriptionsGetResultItemRatePlanId =
   | "partners_enterprise";
 export const SubscriptionsGetResultItemRatePlanId = /*@__PURE__*/ S.String;
 
-export type SubscriptionsGetResultItemRatePlanSetsList = ReadonlyArray<string>;
+export type SubscriptionsGetResultItemRatePlanSetsList = Array<string>;
 export const SubscriptionsGetResultItemRatePlanSetsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SubscriptionsGetResultItemRatePlanSetsList>;
@@ -2144,8 +2140,7 @@ export const SubscriptionsGetResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "SubscriptionsGetResultItem",
 }) as any as S.Schema<SubscriptionsGetResultItem>;
 
-export type SubscriptionsGetResultList =
-  ReadonlyArray<SubscriptionsGetResultItem>;
+export type SubscriptionsGetResultList = Array<SubscriptionsGetResultItem>;
 export const SubscriptionsGetResultList = /*@__PURE__*/ S.Array(
   SubscriptionsGetResultItem,
 ) as any as S.Schema<SubscriptionsGetResultList>;
@@ -2188,13 +2183,12 @@ export const GetTokenRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetTokenRequest",
 }) as any as S.Schema<GetTokenRequest>;
 
-export type TokensGetResponseConditionRequestIpInList = ReadonlyArray<string>;
+export type TokensGetResponseConditionRequestIpInList = Array<string>;
 export const TokensGetResponseConditionRequestIpInList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<TokensGetResponseConditionRequestIpInList>;
 
-export type TokensGetResponseConditionRequestIpNotInList =
-  ReadonlyArray<string>;
+export type TokensGetResponseConditionRequestIpNotInList = Array<string>;
 export const TokensGetResponseConditionRequestIpNotInList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2268,7 +2262,7 @@ export const TokensGetResponsePoliciesItemPermissionGroupsItem =
   }) as any as S.Schema<TokensGetResponsePoliciesItemPermissionGroupsItem>;
 
 export type TokensGetResponsePoliciesItemPermissionGroupsList =
-  ReadonlyArray<TokensGetResponsePoliciesItemPermissionGroupsItem>;
+  Array<TokensGetResponsePoliciesItemPermissionGroupsItem>;
 export const TokensGetResponsePoliciesItemPermissionGroupsList =
   /*@__PURE__*/ S.Array(
     TokensGetResponsePoliciesItemPermissionGroupsItem,
@@ -2320,7 +2314,7 @@ export const TokensGetResponsePoliciesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TokensGetResponsePoliciesItem>;
 
 export type TokensGetResponsePoliciesList =
-  ReadonlyArray<TokensGetResponsePoliciesItem>;
+  Array<TokensGetResponsePoliciesItem>;
 export const TokensGetResponsePoliciesList = /*@__PURE__*/ S.Array(
   TokensGetResponsePoliciesItem,
 ) as any as S.Schema<TokensGetResponsePoliciesList>;
@@ -2419,7 +2413,7 @@ export const TokensPermissionGroupsGetResultItemScopesItem =
   /*@__PURE__*/ S.String;
 
 export type TokensPermissionGroupsGetResultItemScopesList =
-  ReadonlyArray<TokensPermissionGroupsGetResultItemScopesItem>;
+  Array<TokensPermissionGroupsGetResultItemScopesItem>;
 export const TokensPermissionGroupsGetResultItemScopesList =
   /*@__PURE__*/ S.Array(
     TokensPermissionGroupsGetResultItemScopesItem,
@@ -2447,7 +2441,7 @@ export const TokensPermissionGroupsGetResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TokensPermissionGroupsGetResultItem>;
 
 export type TokensPermissionGroupsGetResultList =
-  ReadonlyArray<TokensPermissionGroupsGetResultItem>;
+  Array<TokensPermissionGroupsGetResultItem>;
 export const TokensPermissionGroupsGetResultList = /*@__PURE__*/ S.Array(
   TokensPermissionGroupsGetResultItem,
 ) as any as S.Schema<TokensPermissionGroupsGetResultList>;
@@ -2543,7 +2537,7 @@ export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ListResultItem" }) as any as S.Schema<ListResultItem>;
 
-export type ListResultList = ReadonlyArray<ListResultItem>;
+export type ListResultList = Array<ListResultItem>;
 export const ListResultList = /*@__PURE__*/ S.Array(
   ListResultItem,
 ) as any as S.Schema<ListResultList>;
@@ -2563,7 +2557,7 @@ export const ListAccountsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAccountsResponse",
 }) as any as S.Schema<ListAccountsResponse>;
 
-export type LogsAuditListRequestIdNotList = ReadonlyArray<string>;
+export type LogsAuditListRequestIdNotList = Array<string>;
 export const LogsAuditListRequestIdNotList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LogsAuditListRequestIdNotList>;
@@ -2580,7 +2574,7 @@ export const LogsAuditListRequestId = /*@__PURE__*/ S.suspend(() =>
   identifier: "LogsAuditListRequestId",
 }) as any as S.Schema<LogsAuditListRequestId>;
 
-export type LogsAuditListRequestAccountNameNotList = ReadonlyArray<string>;
+export type LogsAuditListRequestAccountNameNotList = Array<string>;
 export const LogsAuditListRequestAccountNameNotList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LogsAuditListRequestAccountNameNotList>;
@@ -2600,7 +2594,7 @@ export const LogsAuditListRequestAccountName = /*@__PURE__*/ S.suspend(() =>
 export type LogsAuditListRequestActionResultNotItem = "success" | "failure";
 export const LogsAuditListRequestActionResultNotItem = /*@__PURE__*/ S.String;
 
-export type LogsAuditListRequestActionResultNotList = ReadonlyArray<
+export type LogsAuditListRequestActionResultNotList = Array<
   LogsAuditListRequestActionResultNotItem | (string & {})
 >;
 export const LogsAuditListRequestActionResultNotList = /*@__PURE__*/ S.Array(
@@ -2626,7 +2620,7 @@ export type LogsAuditListRequestActionTypeNotItem =
   | "update";
 export const LogsAuditListRequestActionTypeNotItem = /*@__PURE__*/ S.String;
 
-export type LogsAuditListRequestActionTypeNotList = ReadonlyArray<
+export type LogsAuditListRequestActionTypeNotList = Array<
   LogsAuditListRequestActionTypeNotItem | (string & {})
 >;
 export const LogsAuditListRequestActionTypeNotList = /*@__PURE__*/ S.Array(
@@ -2653,7 +2647,7 @@ export type LogsAuditListRequestActorContextNotItem =
   | "origin_ca_key";
 export const LogsAuditListRequestActorContextNotItem = /*@__PURE__*/ S.String;
 
-export type LogsAuditListRequestActorContextNotList = ReadonlyArray<
+export type LogsAuditListRequestActorContextNotList = Array<
   LogsAuditListRequestActorContextNotItem | (string & {})
 >;
 export const LogsAuditListRequestActorContextNotList = /*@__PURE__*/ S.Array(
@@ -2672,7 +2666,7 @@ export const LogsAuditListRequestActorContext = /*@__PURE__*/ S.suspend(() =>
   identifier: "LogsAuditListRequestActorContext",
 }) as any as S.Schema<LogsAuditListRequestActorContext>;
 
-export type LogsAuditListRequestActorEmailNotList = ReadonlyArray<string>;
+export type LogsAuditListRequestActorEmailNotList = Array<string>;
 export const LogsAuditListRequestActorEmailNotList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LogsAuditListRequestActorEmailNotList>;
@@ -2689,7 +2683,7 @@ export const LogsAuditListRequestActorEmail = /*@__PURE__*/ S.suspend(() =>
   identifier: "LogsAuditListRequestActorEmail",
 }) as any as S.Schema<LogsAuditListRequestActorEmail>;
 
-export type LogsAuditListRequestActorIdNotList = ReadonlyArray<string>;
+export type LogsAuditListRequestActorIdNotList = Array<string>;
 export const LogsAuditListRequestActorIdNotList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LogsAuditListRequestActorIdNotList>;
@@ -2706,7 +2700,7 @@ export const LogsAuditListRequestActorId = /*@__PURE__*/ S.suspend(() =>
   identifier: "LogsAuditListRequestActorId",
 }) as any as S.Schema<LogsAuditListRequestActorId>;
 
-export type LogsAuditListRequestActorIpAddressNotList = ReadonlyArray<string>;
+export type LogsAuditListRequestActorIpAddressNotList = Array<string>;
 export const LogsAuditListRequestActorIpAddressNotList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LogsAuditListRequestActorIpAddressNotList>;
@@ -2723,7 +2717,7 @@ export const LogsAuditListRequestActorIpAddress = /*@__PURE__*/ S.suspend(() =>
   identifier: "LogsAuditListRequestActorIpAddress",
 }) as any as S.Schema<LogsAuditListRequestActorIpAddress>;
 
-export type LogsAuditListRequestActorTokenIdNotList = ReadonlyArray<string>;
+export type LogsAuditListRequestActorTokenIdNotList = Array<string>;
 export const LogsAuditListRequestActorTokenIdNotList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LogsAuditListRequestActorTokenIdNotList>;
@@ -2740,7 +2734,7 @@ export const LogsAuditListRequestActorTokenId = /*@__PURE__*/ S.suspend(() =>
   identifier: "LogsAuditListRequestActorTokenId",
 }) as any as S.Schema<LogsAuditListRequestActorTokenId>;
 
-export type LogsAuditListRequestActorTokenNameNotList = ReadonlyArray<string>;
+export type LogsAuditListRequestActorTokenNameNotList = Array<string>;
 export const LogsAuditListRequestActorTokenNameNotList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LogsAuditListRequestActorTokenNameNotList>;
@@ -2764,7 +2758,7 @@ export type LogsAuditListRequestActorTypeNotItem =
   | "user";
 export const LogsAuditListRequestActorTypeNotItem = /*@__PURE__*/ S.String;
 
-export type LogsAuditListRequestActorTypeNotList = ReadonlyArray<
+export type LogsAuditListRequestActorTypeNotList = Array<
   LogsAuditListRequestActorTypeNotItem | (string & {})
 >;
 export const LogsAuditListRequestActorTypeNotList = /*@__PURE__*/ S.Array(
@@ -2783,7 +2777,7 @@ export const LogsAuditListRequestActorType = /*@__PURE__*/ S.suspend(() =>
   identifier: "LogsAuditListRequestActorType",
 }) as any as S.Schema<LogsAuditListRequestActorType>;
 
-export type LogsAuditListRequestAuditLogIdNotList = ReadonlyArray<string>;
+export type LogsAuditListRequestAuditLogIdNotList = Array<string>;
 export const LogsAuditListRequestAuditLogIdNotList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LogsAuditListRequestAuditLogIdNotList>;
@@ -2803,12 +2797,12 @@ export const LogsAuditListRequestAuditLogId = /*@__PURE__*/ S.suspend(() =>
 export type LogsAuditListRequestDirection = "desc" | "asc";
 export const LogsAuditListRequestDirection = /*@__PURE__*/ S.String;
 
-export type LogsAuditListRequestProductCategoryList = ReadonlyArray<string>;
+export type LogsAuditListRequestProductCategoryList = Array<string>;
 export const LogsAuditListRequestProductCategoryList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LogsAuditListRequestProductCategoryList>;
 
-export type LogsAuditListRequestRawCfRayIdNotList = ReadonlyArray<string>;
+export type LogsAuditListRequestRawCfRayIdNotList = Array<string>;
 export const LogsAuditListRequestRawCfRayIdNotList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LogsAuditListRequestRawCfRayIdNotList>;
@@ -2825,7 +2819,7 @@ export const LogsAuditListRequestRawCfRayId = /*@__PURE__*/ S.suspend(() =>
   identifier: "LogsAuditListRequestRawCfRayId",
 }) as any as S.Schema<LogsAuditListRequestRawCfRayId>;
 
-export type LogsAuditListRequestRawMethodNotList = ReadonlyArray<string>;
+export type LogsAuditListRequestRawMethodNotList = Array<string>;
 export const LogsAuditListRequestRawMethodNotList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LogsAuditListRequestRawMethodNotList>;
@@ -2842,7 +2836,7 @@ export const LogsAuditListRequestRawMethod = /*@__PURE__*/ S.suspend(() =>
   identifier: "LogsAuditListRequestRawMethod",
 }) as any as S.Schema<LogsAuditListRequestRawMethod>;
 
-export type LogsAuditListRequestRawStatusCodeNotList = ReadonlyArray<number>;
+export type LogsAuditListRequestRawStatusCodeNotList = Array<number>;
 export const LogsAuditListRequestRawStatusCodeNotList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<LogsAuditListRequestRawStatusCodeNotList>;
@@ -2859,7 +2853,7 @@ export const LogsAuditListRequestRawStatusCode = /*@__PURE__*/ S.suspend(() =>
   identifier: "LogsAuditListRequestRawStatusCode",
 }) as any as S.Schema<LogsAuditListRequestRawStatusCode>;
 
-export type LogsAuditListRequestRawUriNotList = ReadonlyArray<string>;
+export type LogsAuditListRequestRawUriNotList = Array<string>;
 export const LogsAuditListRequestRawUriNotList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LogsAuditListRequestRawUriNotList>;
@@ -2876,7 +2870,7 @@ export const LogsAuditListRequestRawUri = /*@__PURE__*/ S.suspend(() =>
   identifier: "LogsAuditListRequestRawUri",
 }) as any as S.Schema<LogsAuditListRequestRawUri>;
 
-export type LogsAuditListRequestResourceIdNotList = ReadonlyArray<string>;
+export type LogsAuditListRequestResourceIdNotList = Array<string>;
 export const LogsAuditListRequestResourceIdNotList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LogsAuditListRequestResourceIdNotList>;
@@ -2893,7 +2887,7 @@ export const LogsAuditListRequestResourceId = /*@__PURE__*/ S.suspend(() =>
   identifier: "LogsAuditListRequestResourceId",
 }) as any as S.Schema<LogsAuditListRequestResourceId>;
 
-export type LogsAuditListRequestResourceProductNotList = ReadonlyArray<string>;
+export type LogsAuditListRequestResourceProductNotList = Array<string>;
 export const LogsAuditListRequestResourceProductNotList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LogsAuditListRequestResourceProductNotList>;
@@ -2917,7 +2911,7 @@ export type LogsAuditListRequestResourceScopeNotItem =
   | "memberships";
 export const LogsAuditListRequestResourceScopeNotItem = /*@__PURE__*/ S.String;
 
-export type LogsAuditListRequestResourceScopeNotList = ReadonlyArray<
+export type LogsAuditListRequestResourceScopeNotList = Array<
   LogsAuditListRequestResourceScopeNotItem | (string & {})
 >;
 export const LogsAuditListRequestResourceScopeNotList = /*@__PURE__*/ S.Array(
@@ -2936,7 +2930,7 @@ export const LogsAuditListRequestResourceScope = /*@__PURE__*/ S.suspend(() =>
   identifier: "LogsAuditListRequestResourceScope",
 }) as any as S.Schema<LogsAuditListRequestResourceScope>;
 
-export type LogsAuditListRequestResourceTypeNotList = ReadonlyArray<string>;
+export type LogsAuditListRequestResourceTypeNotList = Array<string>;
 export const LogsAuditListRequestResourceTypeNotList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LogsAuditListRequestResourceTypeNotList>;
@@ -2953,7 +2947,7 @@ export const LogsAuditListRequestResourceType = /*@__PURE__*/ S.suspend(() =>
   identifier: "LogsAuditListRequestResourceType",
 }) as any as S.Schema<LogsAuditListRequestResourceType>;
 
-export type LogsAuditListRequestZoneIdNotList = ReadonlyArray<string>;
+export type LogsAuditListRequestZoneIdNotList = Array<string>;
 export const LogsAuditListRequestZoneIdNotList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LogsAuditListRequestZoneIdNotList>;
@@ -2970,7 +2964,7 @@ export const LogsAuditListRequestZoneId = /*@__PURE__*/ S.suspend(() =>
   identifier: "LogsAuditListRequestZoneId",
 }) as any as S.Schema<LogsAuditListRequestZoneId>;
 
-export type LogsAuditListRequestZoneNameNotList = ReadonlyArray<string>;
+export type LogsAuditListRequestZoneNameNotList = Array<string>;
 export const LogsAuditListRequestZoneNameNotList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LogsAuditListRequestZoneNameNotList>;
@@ -3350,7 +3344,7 @@ export const LogsAuditListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "LogsAuditListResultItem",
 }) as any as S.Schema<LogsAuditListResultItem>;
 
-export type LogsAuditListResultList = ReadonlyArray<LogsAuditListResultItem>;
+export type LogsAuditListResultList = Array<LogsAuditListResultItem>;
 export const LogsAuditListResultList = /*@__PURE__*/ S.Array(
   LogsAuditListResultItem,
 ) as any as S.Schema<LogsAuditListResultList>;
@@ -3457,7 +3451,7 @@ export const MembersListResultItemPoliciesItemPermissionGroupsItem =
   }) as any as S.Schema<MembersListResultItemPoliciesItemPermissionGroupsItem>;
 
 export type MembersListResultItemPoliciesItemPermissionGroupsList =
-  ReadonlyArray<MembersListResultItemPoliciesItemPermissionGroupsItem>;
+  Array<MembersListResultItemPoliciesItemPermissionGroupsItem>;
 export const MembersListResultItemPoliciesItemPermissionGroupsList =
   /*@__PURE__*/ S.Array(
     MembersListResultItemPoliciesItemPermissionGroupsItem,
@@ -3478,7 +3472,7 @@ export const MembersListResultItemPoliciesItemResourceGroupsItemScopeItemObjects
   }) as any as S.Schema<MembersListResultItemPoliciesItemResourceGroupsItemScopeItemObjectsItem>;
 
 export type MembersListResultItemPoliciesItemResourceGroupsItemScopeItemObjectsList =
-  ReadonlyArray<MembersListResultItemPoliciesItemResourceGroupsItemScopeItemObjectsItem>;
+  Array<MembersListResultItemPoliciesItemResourceGroupsItemScopeItemObjectsItem>;
 export const MembersListResultItemPoliciesItemResourceGroupsItemScopeItemObjectsList =
   /*@__PURE__*/ S.Array(
     MembersListResultItemPoliciesItemResourceGroupsItemScopeItemObjectsItem,
@@ -3502,7 +3496,7 @@ export const MembersListResultItemPoliciesItemResourceGroupsItemScopeItem =
   }) as any as S.Schema<MembersListResultItemPoliciesItemResourceGroupsItemScopeItem>;
 
 export type MembersListResultItemPoliciesItemResourceGroupsItemScopeList =
-  ReadonlyArray<MembersListResultItemPoliciesItemResourceGroupsItemScopeItem>;
+  Array<MembersListResultItemPoliciesItemResourceGroupsItemScopeItem>;
 export const MembersListResultItemPoliciesItemResourceGroupsItemScopeList =
   /*@__PURE__*/ S.Array(
     MembersListResultItemPoliciesItemResourceGroupsItemScopeItem,
@@ -3545,7 +3539,7 @@ export const MembersListResultItemPoliciesItemResourceGroupsItem =
   }) as any as S.Schema<MembersListResultItemPoliciesItemResourceGroupsItem>;
 
 export type MembersListResultItemPoliciesItemResourceGroupsList =
-  ReadonlyArray<MembersListResultItemPoliciesItemResourceGroupsItem>;
+  Array<MembersListResultItemPoliciesItemResourceGroupsItem>;
 export const MembersListResultItemPoliciesItemResourceGroupsList =
   /*@__PURE__*/ S.Array(
     MembersListResultItemPoliciesItemResourceGroupsItem,
@@ -3581,7 +3575,7 @@ export const MembersListResultItemPoliciesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MembersListResultItemPoliciesItem>;
 
 export type MembersListResultItemPoliciesList =
-  ReadonlyArray<MembersListResultItemPoliciesItem>;
+  Array<MembersListResultItemPoliciesItem>;
 export const MembersListResultItemPoliciesList = /*@__PURE__*/ S.Array(
   MembersListResultItemPoliciesItem,
 ) as any as S.Schema<MembersListResultItemPoliciesList>;
@@ -3669,7 +3663,7 @@ export const MembersListResultItemRolesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MembersListResultItemRolesItem>;
 
 export type MembersListResultItemRolesList =
-  ReadonlyArray<MembersListResultItemRolesItem>;
+  Array<MembersListResultItemRolesItem>;
 export const MembersListResultItemRolesList = /*@__PURE__*/ S.Array(
   MembersListResultItemRolesItem,
 ) as any as S.Schema<MembersListResultItemRolesList>;
@@ -3730,7 +3724,7 @@ export const MembersListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "MembersListResultItem",
 }) as any as S.Schema<MembersListResultItem>;
 
-export type MembersListResultList = ReadonlyArray<MembersListResultItem>;
+export type MembersListResultList = Array<MembersListResultItem>;
 export const MembersListResultList = /*@__PURE__*/ S.Array(
   MembersListResultItem,
 ) as any as S.Schema<MembersListResultList>;
@@ -3845,7 +3839,7 @@ export const RolesListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "RolesListResultItem",
 }) as any as S.Schema<RolesListResultItem>;
 
-export type RolesListResultList = ReadonlyArray<RolesListResultItem>;
+export type RolesListResultList = Array<RolesListResultItem>;
 export const RolesListResultList = /*@__PURE__*/ S.Array(
   RolesListResultItem,
 ) as any as S.Schema<RolesListResultList>;
@@ -3897,15 +3891,13 @@ export const ListTokensRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListTokensRequest",
 }) as any as S.Schema<ListTokensRequest>;
 
-export type TokensListResultItemConditionRequestIpInList =
-  ReadonlyArray<string>;
+export type TokensListResultItemConditionRequestIpInList = Array<string>;
 export const TokensListResultItemConditionRequestIpInList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<TokensListResultItemConditionRequestIpInList>;
 
-export type TokensListResultItemConditionRequestIpNotInList =
-  ReadonlyArray<string>;
+export type TokensListResultItemConditionRequestIpNotInList = Array<string>;
 export const TokensListResultItemConditionRequestIpNotInList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3982,7 +3974,7 @@ export const TokensListResultItemPoliciesItemPermissionGroupsItem =
   }) as any as S.Schema<TokensListResultItemPoliciesItemPermissionGroupsItem>;
 
 export type TokensListResultItemPoliciesItemPermissionGroupsList =
-  ReadonlyArray<TokensListResultItemPoliciesItemPermissionGroupsItem>;
+  Array<TokensListResultItemPoliciesItemPermissionGroupsItem>;
 export const TokensListResultItemPoliciesItemPermissionGroupsList =
   /*@__PURE__*/ S.Array(
     TokensListResultItemPoliciesItemPermissionGroupsItem,
@@ -4035,7 +4027,7 @@ export const TokensListResultItemPoliciesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TokensListResultItemPoliciesItem>;
 
 export type TokensListResultItemPoliciesList =
-  ReadonlyArray<TokensListResultItemPoliciesItem>;
+  Array<TokensListResultItemPoliciesItem>;
 export const TokensListResultItemPoliciesList = /*@__PURE__*/ S.Array(
   TokensListResultItemPoliciesItem,
 ) as any as S.Schema<TokensListResultItemPoliciesList>;
@@ -4081,7 +4073,7 @@ export const TokensListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "TokensListResultItem",
 }) as any as S.Schema<TokensListResultItem>;
 
-export type TokensListResultList = ReadonlyArray<TokensListResultItem>;
+export type TokensListResultList = Array<TokensListResultItem>;
 export const TokensListResultList = /*@__PURE__*/ S.Array(
   TokensListResultItem,
 ) as any as S.Schema<TokensListResultList>;
@@ -4183,7 +4175,7 @@ export const TokensPermissionGroupsListResultItemScopesItem =
   /*@__PURE__*/ S.String;
 
 export type TokensPermissionGroupsListResultItemScopesList =
-  ReadonlyArray<TokensPermissionGroupsListResultItemScopesItem>;
+  Array<TokensPermissionGroupsListResultItemScopesItem>;
 export const TokensPermissionGroupsListResultItemScopesList =
   /*@__PURE__*/ S.Array(
     TokensPermissionGroupsListResultItemScopesItem,
@@ -4212,7 +4204,7 @@ export const TokensPermissionGroupsListResultItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<TokensPermissionGroupsListResultItem>;
 
 export type TokensPermissionGroupsListResultList =
-  ReadonlyArray<TokensPermissionGroupsListResultItem>;
+  Array<TokensPermissionGroupsListResultItem>;
 export const TokensPermissionGroupsListResultList = /*@__PURE__*/ S.Array(
   TokensPermissionGroupsListResultItem,
 ) as any as S.Schema<TokensPermissionGroupsListResultList>;
@@ -4429,7 +4421,7 @@ export const MembersUpdateRequestRolesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MembersUpdateRequestRolesItem>;
 
 export type MembersUpdateRequestRolesList =
-  ReadonlyArray<MembersUpdateRequestRolesItem>;
+  Array<MembersUpdateRequestRolesItem>;
 export const MembersUpdateRequestRolesList = /*@__PURE__*/ S.Array(
   MembersUpdateRequestRolesItem,
 ) as any as S.Schema<MembersUpdateRequestRolesList>;
@@ -4480,7 +4472,7 @@ export const MembersUpdateRequestPoliciesItemPermissionGroupsItem =
   }) as any as S.Schema<MembersUpdateRequestPoliciesItemPermissionGroupsItem>;
 
 export type MembersUpdateRequestPoliciesItemPermissionGroupsList =
-  ReadonlyArray<MembersUpdateRequestPoliciesItemPermissionGroupsItem>;
+  Array<MembersUpdateRequestPoliciesItemPermissionGroupsItem>;
 export const MembersUpdateRequestPoliciesItemPermissionGroupsList =
   /*@__PURE__*/ S.Array(
     MembersUpdateRequestPoliciesItemPermissionGroupsItem,
@@ -4500,7 +4492,7 @@ export const MembersUpdateRequestPoliciesItemResourceGroupsItem =
   }) as any as S.Schema<MembersUpdateRequestPoliciesItemResourceGroupsItem>;
 
 export type MembersUpdateRequestPoliciesItemResourceGroupsList =
-  ReadonlyArray<MembersUpdateRequestPoliciesItemResourceGroupsItem>;
+  Array<MembersUpdateRequestPoliciesItemResourceGroupsItem>;
 export const MembersUpdateRequestPoliciesItemResourceGroupsList =
   /*@__PURE__*/ S.Array(
     MembersUpdateRequestPoliciesItemResourceGroupsItem,
@@ -4532,7 +4524,7 @@ export const MembersUpdateRequestPoliciesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MembersUpdateRequestPoliciesItem>;
 
 export type MembersUpdateRequestPoliciesList =
-  ReadonlyArray<MembersUpdateRequestPoliciesItem>;
+  Array<MembersUpdateRequestPoliciesItem>;
 export const MembersUpdateRequestPoliciesList = /*@__PURE__*/ S.Array(
   MembersUpdateRequestPoliciesItem,
 ) as any as S.Schema<MembersUpdateRequestPoliciesList>;
@@ -4614,7 +4606,7 @@ export const MembersUpdateResponsePoliciesItemPermissionGroupsItem =
   }) as any as S.Schema<MembersUpdateResponsePoliciesItemPermissionGroupsItem>;
 
 export type MembersUpdateResponsePoliciesItemPermissionGroupsList =
-  ReadonlyArray<MembersUpdateResponsePoliciesItemPermissionGroupsItem>;
+  Array<MembersUpdateResponsePoliciesItemPermissionGroupsItem>;
 export const MembersUpdateResponsePoliciesItemPermissionGroupsList =
   /*@__PURE__*/ S.Array(
     MembersUpdateResponsePoliciesItemPermissionGroupsItem,
@@ -4635,7 +4627,7 @@ export const MembersUpdateResponsePoliciesItemResourceGroupsItemScopeItemObjects
   }) as any as S.Schema<MembersUpdateResponsePoliciesItemResourceGroupsItemScopeItemObjectsItem>;
 
 export type MembersUpdateResponsePoliciesItemResourceGroupsItemScopeItemObjectsList =
-  ReadonlyArray<MembersUpdateResponsePoliciesItemResourceGroupsItemScopeItemObjectsItem>;
+  Array<MembersUpdateResponsePoliciesItemResourceGroupsItemScopeItemObjectsItem>;
 export const MembersUpdateResponsePoliciesItemResourceGroupsItemScopeItemObjectsList =
   /*@__PURE__*/ S.Array(
     MembersUpdateResponsePoliciesItemResourceGroupsItemScopeItemObjectsItem,
@@ -4659,7 +4651,7 @@ export const MembersUpdateResponsePoliciesItemResourceGroupsItemScopeItem =
   }) as any as S.Schema<MembersUpdateResponsePoliciesItemResourceGroupsItemScopeItem>;
 
 export type MembersUpdateResponsePoliciesItemResourceGroupsItemScopeList =
-  ReadonlyArray<MembersUpdateResponsePoliciesItemResourceGroupsItemScopeItem>;
+  Array<MembersUpdateResponsePoliciesItemResourceGroupsItemScopeItem>;
 export const MembersUpdateResponsePoliciesItemResourceGroupsItemScopeList =
   /*@__PURE__*/ S.Array(
     MembersUpdateResponsePoliciesItemResourceGroupsItemScopeItem,
@@ -4702,7 +4694,7 @@ export const MembersUpdateResponsePoliciesItemResourceGroupsItem =
   }) as any as S.Schema<MembersUpdateResponsePoliciesItemResourceGroupsItem>;
 
 export type MembersUpdateResponsePoliciesItemResourceGroupsList =
-  ReadonlyArray<MembersUpdateResponsePoliciesItemResourceGroupsItem>;
+  Array<MembersUpdateResponsePoliciesItemResourceGroupsItem>;
 export const MembersUpdateResponsePoliciesItemResourceGroupsList =
   /*@__PURE__*/ S.Array(
     MembersUpdateResponsePoliciesItemResourceGroupsItem,
@@ -4738,7 +4730,7 @@ export const MembersUpdateResponsePoliciesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MembersUpdateResponsePoliciesItem>;
 
 export type MembersUpdateResponsePoliciesList =
-  ReadonlyArray<MembersUpdateResponsePoliciesItem>;
+  Array<MembersUpdateResponsePoliciesItem>;
 export const MembersUpdateResponsePoliciesList = /*@__PURE__*/ S.Array(
   MembersUpdateResponsePoliciesItem,
 ) as any as S.Schema<MembersUpdateResponsePoliciesList>;
@@ -4826,7 +4818,7 @@ export const MembersUpdateResponseRolesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MembersUpdateResponseRolesItem>;
 
 export type MembersUpdateResponseRolesList =
-  ReadonlyArray<MembersUpdateResponseRolesItem>;
+  Array<MembersUpdateResponseRolesItem>;
 export const MembersUpdateResponseRolesList = /*@__PURE__*/ S.Array(
   MembersUpdateResponseRolesItem,
 ) as any as S.Schema<MembersUpdateResponseRolesList>;
@@ -4908,7 +4900,7 @@ export type SubscriptionsUpdateRequestRatePlanId =
   | "partners_enterprise";
 export const SubscriptionsUpdateRequestRatePlanId = /*@__PURE__*/ S.String;
 
-export type SubscriptionsUpdateRequestRatePlanSetsList = ReadonlyArray<string>;
+export type SubscriptionsUpdateRequestRatePlanSetsList = Array<string>;
 export const SubscriptionsUpdateRequestRatePlanSetsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SubscriptionsUpdateRequestRatePlanSetsList>;
@@ -4994,7 +4986,7 @@ export type SubscriptionsUpdateResponseRatePlanId =
   | "partners_enterprise";
 export const SubscriptionsUpdateResponseRatePlanId = /*@__PURE__*/ S.String;
 
-export type SubscriptionsUpdateResponseRatePlanSetsList = ReadonlyArray<string>;
+export type SubscriptionsUpdateResponseRatePlanSetsList = Array<string>;
 export const SubscriptionsUpdateResponseRatePlanSetsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5115,7 +5107,7 @@ export const TokensUpdateRequestPoliciesItemPermissionGroupsItem =
   }) as any as S.Schema<TokensUpdateRequestPoliciesItemPermissionGroupsItem>;
 
 export type TokensUpdateRequestPoliciesItemPermissionGroupsList =
-  ReadonlyArray<TokensUpdateRequestPoliciesItemPermissionGroupsItem>;
+  Array<TokensUpdateRequestPoliciesItemPermissionGroupsItem>;
 export const TokensUpdateRequestPoliciesItemPermissionGroupsList =
   /*@__PURE__*/ S.Array(
     TokensUpdateRequestPoliciesItemPermissionGroupsItem,
@@ -5165,19 +5157,18 @@ export const TokensUpdateRequestPoliciesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TokensUpdateRequestPoliciesItem>;
 
 export type TokensUpdateRequestPoliciesList =
-  ReadonlyArray<TokensUpdateRequestPoliciesItem>;
+  Array<TokensUpdateRequestPoliciesItem>;
 export const TokensUpdateRequestPoliciesList = /*@__PURE__*/ S.Array(
   TokensUpdateRequestPoliciesItem,
 ) as any as S.Schema<TokensUpdateRequestPoliciesList>;
 
-export type TokensUpdateRequestConditionRequestIpInList = ReadonlyArray<string>;
+export type TokensUpdateRequestConditionRequestIpInList = Array<string>;
 export const TokensUpdateRequestConditionRequestIpInList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<TokensUpdateRequestConditionRequestIpInList>;
 
-export type TokensUpdateRequestConditionRequestIpNotInList =
-  ReadonlyArray<string>;
+export type TokensUpdateRequestConditionRequestIpNotInList = Array<string>;
 export const TokensUpdateRequestConditionRequestIpNotInList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5258,15 +5249,13 @@ export const UpdateTokenRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateTokenRequest",
 }) as any as S.Schema<UpdateTokenRequest>;
 
-export type TokensUpdateResponseConditionRequestIpInList =
-  ReadonlyArray<string>;
+export type TokensUpdateResponseConditionRequestIpInList = Array<string>;
 export const TokensUpdateResponseConditionRequestIpInList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<TokensUpdateResponseConditionRequestIpInList>;
 
-export type TokensUpdateResponseConditionRequestIpNotInList =
-  ReadonlyArray<string>;
+export type TokensUpdateResponseConditionRequestIpNotInList = Array<string>;
 export const TokensUpdateResponseConditionRequestIpNotInList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5343,7 +5332,7 @@ export const TokensUpdateResponsePoliciesItemPermissionGroupsItem =
   }) as any as S.Schema<TokensUpdateResponsePoliciesItemPermissionGroupsItem>;
 
 export type TokensUpdateResponsePoliciesItemPermissionGroupsList =
-  ReadonlyArray<TokensUpdateResponsePoliciesItemPermissionGroupsItem>;
+  Array<TokensUpdateResponsePoliciesItemPermissionGroupsItem>;
 export const TokensUpdateResponsePoliciesItemPermissionGroupsList =
   /*@__PURE__*/ S.Array(
     TokensUpdateResponsePoliciesItemPermissionGroupsItem,
@@ -5396,7 +5385,7 @@ export const TokensUpdateResponsePoliciesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TokensUpdateResponsePoliciesItem>;
 
 export type TokensUpdateResponsePoliciesList =
-  ReadonlyArray<TokensUpdateResponsePoliciesItem>;
+  Array<TokensUpdateResponsePoliciesItem>;
 export const TokensUpdateResponsePoliciesList = /*@__PURE__*/ S.Array(
   TokensUpdateResponsePoliciesItem,
 ) as any as S.Schema<TokensUpdateResponsePoliciesList>;

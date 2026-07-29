@@ -230,8 +230,7 @@ export const ScheduledChangesListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ScheduledChangesListRequest",
 }) as any as S.Schema<ScheduledChangesListRequest>;
 
-export type PaginatedScheduledChangeListResultsList =
-  ReadonlyArray<ScheduledChange>;
+export type PaginatedScheduledChangeListResultsList = Array<ScheduledChange>;
 export const PaginatedScheduledChangeListResultsList = /*@__PURE__*/ S.Array(
   ScheduledChange,
 ) as any as S.Schema<PaginatedScheduledChangeListResultsList>;

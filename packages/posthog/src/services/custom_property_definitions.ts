@@ -51,7 +51,7 @@ export interface CustomPropertyOption {
   /** Display label of the option. Stored as the account's value when picked. */
   label: string;
   /** Preset color token used to render the option ('preset-1' through 'preset-10'). * `preset-1` - preset-1 * `preset-2` - preset-2 * `preset-3` - preset-3 * `preset-4` - preset-4 * `preset-5` - preset-5 * `preset-6` - preset-6 * `preset-7` - preset-7 * `preset-8` - preset-8 * `preset-9` - preset-9 * `preset-10` - preset-10 */
-  color: CustomPropertyOptionColorEnum;
+  color: CustomPropertyOptionColorEnum | (string & {});
 }
 export const CustomPropertyOption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -65,7 +65,7 @@ export const CustomPropertyOption = /*@__PURE__*/ S.suspend(() =>
 
 /** For select properties: the allowed options. Required (non-empty) when display_type is 'select'; cleared server-side for other types. */
 export type CustomPropertyDefinitionsCreateRequestOptionsList =
-  ReadonlyArray<CustomPropertyOption>;
+  Array<CustomPropertyOption>;
 export const CustomPropertyDefinitionsCreateRequestOptionsList =
   /*@__PURE__*/ S.Array(
     CustomPropertyOption,
@@ -114,8 +114,7 @@ export const CustomPropertyDefinitionsCreateRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CustomPropertyDefinitionsCreateRequest>;
 
 /** For select properties: the allowed options. Required (non-empty) when display_type is 'select'; cleared server-side for other types. */
-export type CustomPropertyDefinitionOptionsList =
-  ReadonlyArray<CustomPropertyOption>;
+export type CustomPropertyDefinitionOptionsList = Array<CustomPropertyOption>;
 export const CustomPropertyDefinitionOptionsList = /*@__PURE__*/ S.Array(
   CustomPropertyOption,
 ) as any as S.Schema<CustomPropertyDefinitionOptionsList>;
@@ -246,7 +245,7 @@ export const CustomPropertyReference = /*@__PURE__*/ S.suspend(() =>
 
 /** Workflows that use this property, resolved by definition id. */
 export type CustomPropertyDefinitionReferencesList =
-  ReadonlyArray<CustomPropertyReference>;
+  Array<CustomPropertyReference>;
 export const CustomPropertyDefinitionReferencesList = /*@__PURE__*/ S.Array(
   CustomPropertyReference,
 ) as any as S.Schema<CustomPropertyDefinitionReferencesList>;
@@ -350,7 +349,7 @@ export const CustomPropertyDefinitionsListRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CustomPropertyDefinitionsListRequest>;
 
 export type PaginatedCustomPropertyDefinitionListResultsList =
-  ReadonlyArray<CustomPropertyDefinition>;
+  Array<CustomPropertyDefinition>;
 export const PaginatedCustomPropertyDefinitionListResultsList =
   /*@__PURE__*/ S.Array(
     CustomPropertyDefinition,
@@ -376,7 +375,7 @@ export const PaginatedCustomPropertyDefinitionList = /*@__PURE__*/ S.suspend(
 
 /** For select properties: the allowed options. Required (non-empty) when display_type is 'select'; cleared server-side for other types. */
 export type CustomPropertyDefinitionsPartialUpdateRequestOptionsList =
-  ReadonlyArray<CustomPropertyOption>;
+  Array<CustomPropertyOption>;
 export const CustomPropertyDefinitionsPartialUpdateRequestOptionsList =
   /*@__PURE__*/ S.Array(
     CustomPropertyOption,
@@ -449,7 +448,7 @@ export const CustomPropertyDefinitionsRetrieveRequest = /*@__PURE__*/ S.suspend(
 
 /** For select properties: the allowed options. Required (non-empty) when display_type is 'select'; cleared server-side for other types. */
 export type CustomPropertyDefinitionsUpdateRequestOptionsList =
-  ReadonlyArray<CustomPropertyOption>;
+  Array<CustomPropertyOption>;
 export const CustomPropertyDefinitionsUpdateRequestOptionsList =
   /*@__PURE__*/ S.Array(
     CustomPropertyOption,
@@ -539,7 +538,7 @@ export const CustomPropertyValueSuggestion = /*@__PURE__*/ S.suspend(() =>
 
 /** Suggested values matching the search input. */
 export type CustomPropertyValueSuggestionsResponseResultsList =
-  ReadonlyArray<CustomPropertyValueSuggestion>;
+  Array<CustomPropertyValueSuggestion>;
 export const CustomPropertyValueSuggestionsResponseResultsList =
   /*@__PURE__*/ S.Array(
     CustomPropertyValueSuggestion,

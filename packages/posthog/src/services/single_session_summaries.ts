@@ -206,7 +206,7 @@ export const SingleSessionSummaryMinimal = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SingleSessionSummaryMinimal>;
 
 export type PaginatedSingleSessionSummaryMinimalListResultsList =
-  ReadonlyArray<SingleSessionSummaryMinimal>;
+  Array<SingleSessionSummaryMinimal>;
 export const PaginatedSingleSessionSummaryMinimalListResultsList =
   /*@__PURE__*/ S.Array(
     SingleSessionSummaryMinimal,
@@ -261,7 +261,7 @@ export const SingleSessionSummarySummaryMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<SingleSessionSummarySummaryMap>;
 
 /** Event IDs (capped at 100) where exceptions occurred during the session — extracted from the summary for searchability. */
-export type SingleSessionSummaryExceptionEventIdsList = ReadonlyArray<string>;
+export type SingleSessionSummaryExceptionEventIdsList = Array<string>;
 export const SingleSessionSummaryExceptionEventIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SingleSessionSummaryExceptionEventIdsList>;

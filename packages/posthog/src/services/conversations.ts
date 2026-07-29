@@ -78,7 +78,7 @@ export const ConversationsTicketsAiFeedbackCreateResponse =
 
 /** List of ticket UUIDs to update. */
 export type ConversationsTicketsBulkUpdateStatusCreateRequestIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ConversationsTicketsBulkUpdateStatusCreateRequestIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -119,7 +119,7 @@ export const ConversationsTicketsBulkUpdateStatusCreateRequest =
   }) as any as S.Schema<ConversationsTicketsBulkUpdateStatusCreateRequest>;
 
 /** UUIDs of the tickets whose status changed. */
-export type BulkUpdateStatusResponseIdsList = ReadonlyArray<string>;
+export type BulkUpdateStatusResponseIdsList = Array<string>;
 export const BulkUpdateStatusResponseIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BulkUpdateStatusResponseIdsList>;
@@ -141,7 +141,7 @@ export const BulkUpdateStatusResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** List of object IDs to update tags on. */
 export type ConversationsTicketsBulkUpdateTagsCreateRequestIdsList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const ConversationsTicketsBulkUpdateTagsCreateRequestIdsList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -153,7 +153,7 @@ export const BulkUpdateTagsActionEnum = /*@__PURE__*/ S.String;
 
 /** Tag names to add, remove, or set. */
 export type ConversationsTicketsBulkUpdateTagsCreateRequestTagsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ConversationsTicketsBulkUpdateTagsCreateRequestTagsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -187,7 +187,7 @@ export const ConversationsTicketsBulkUpdateTagsCreateRequest =
     identifier: "ConversationsTicketsBulkUpdateTagsCreateRequest",
   }) as any as S.Schema<ConversationsTicketsBulkUpdateTagsCreateRequest>;
 
-export type BulkUpdateTagsItemTagsList = ReadonlyArray<string>;
+export type BulkUpdateTagsItemTagsList = Array<string>;
 export const BulkUpdateTagsItemTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BulkUpdateTagsItemTagsList>;
@@ -205,8 +205,7 @@ export const BulkUpdateTagsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "BulkUpdateTagsItem",
 }) as any as S.Schema<BulkUpdateTagsItem>;
 
-export type BulkUpdateTagsResponseUpdatedList =
-  ReadonlyArray<BulkUpdateTagsItem>;
+export type BulkUpdateTagsResponseUpdatedList = Array<BulkUpdateTagsItem>;
 export const BulkUpdateTagsResponseUpdatedList = /*@__PURE__*/ S.Array(
   BulkUpdateTagsItem,
 ) as any as S.Schema<BulkUpdateTagsResponseUpdatedList>;
@@ -224,8 +223,7 @@ export const BulkUpdateTagsError = /*@__PURE__*/ S.suspend(() =>
   identifier: "BulkUpdateTagsError",
 }) as any as S.Schema<BulkUpdateTagsError>;
 
-export type BulkUpdateTagsResponseSkippedList =
-  ReadonlyArray<BulkUpdateTagsError>;
+export type BulkUpdateTagsResponseSkippedList = Array<BulkUpdateTagsError>;
 export const BulkUpdateTagsResponseSkippedList = /*@__PURE__*/ S.Array(
   BulkUpdateTagsError,
 ) as any as S.Schema<BulkUpdateTagsResponseSkippedList>;
@@ -496,7 +494,7 @@ export const TicketAssignment = /*@__PURE__*/ S.suspend(() =>
   identifier: "TicketAssignment",
 }) as any as S.Schema<TicketAssignment>;
 
-export type TicketPersonDistinctIdsList = ReadonlyArray<string>;
+export type TicketPersonDistinctIdsList = Array<string>;
 export const TicketPersonDistinctIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<TicketPersonDistinctIdsList>;
@@ -527,7 +525,7 @@ export const TicketPerson = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TicketPerson" }) as any as S.Schema<TicketPerson>;
 
-export type TicketTagsList = ReadonlyArray<unknown>;
+export type TicketTagsList = Array<unknown>;
 export const TicketTagsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<TicketTagsList>;
@@ -624,7 +622,7 @@ export const Ticket = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Ticket" }) as any as S.Schema<Ticket>;
 
-export type PaginatedTicketListResultsList = ReadonlyArray<Ticket>;
+export type PaginatedTicketListResultsList = Array<Ticket>;
 export const PaginatedTicketListResultsList = /*@__PURE__*/ S.Array(
   Ticket,
 ) as any as S.Schema<PaginatedTicketListResultsList>;
@@ -702,8 +700,7 @@ export const TicketMessage = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TicketMessage" }) as any as S.Schema<TicketMessage>;
 
-export type PaginatedTicketMessageListResultsList =
-  ReadonlyArray<TicketMessage>;
+export type PaginatedTicketMessageListResultsList = Array<TicketMessage>;
 export const PaginatedTicketMessageListResultsList = /*@__PURE__*/ S.Array(
   TicketMessage,
 ) as any as S.Schema<PaginatedTicketMessageListResultsList>;
@@ -732,8 +729,7 @@ export type ConversationsTicketsPartialUpdateRequestPriority =
 export const ConversationsTicketsPartialUpdateRequestPriority =
   /*@__PURE__*/ S.Unknown as any as S.Schema<ConversationsTicketsPartialUpdateRequestPriority>;
 
-export type ConversationsTicketsPartialUpdateRequestTagsList =
-  ReadonlyArray<unknown>;
+export type ConversationsTicketsPartialUpdateRequestTagsList = Array<unknown>;
 export const ConversationsTicketsPartialUpdateRequestTagsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -842,7 +838,7 @@ export type ConversationsTicketsUpdateRequestPriority =
 export const ConversationsTicketsUpdateRequestPriority =
   /*@__PURE__*/ S.Unknown as any as S.Schema<ConversationsTicketsUpdateRequestPriority>;
 
-export type ConversationsTicketsUpdateRequestTagsList = ReadonlyArray<unknown>;
+export type ConversationsTicketsUpdateRequestTagsList = Array<unknown>;
 export const ConversationsTicketsUpdateRequestTagsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<ConversationsTicketsUpdateRequestTagsList>;
@@ -1051,7 +1047,7 @@ export const ConversationsViewsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConversationsViewsListRequest",
 }) as any as S.Schema<ConversationsViewsListRequest>;
 
-export type PaginatedTicketViewListResultsList = ReadonlyArray<TicketView>;
+export type PaginatedTicketViewListResultsList = Array<TicketView>;
 export const PaginatedTicketViewListResultsList = /*@__PURE__*/ S.Array(
   TicketView,
 ) as any as S.Schema<PaginatedTicketViewListResultsList>;

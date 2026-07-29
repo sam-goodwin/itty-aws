@@ -230,7 +230,7 @@ export const GetResponsePoliciesItemPermissionGroupsItem =
   }) as any as S.Schema<GetResponsePoliciesItemPermissionGroupsItem>;
 
 export type GetResponsePoliciesItemPermissionGroupsList =
-  ReadonlyArray<GetResponsePoliciesItemPermissionGroupsItem>;
+  Array<GetResponsePoliciesItemPermissionGroupsItem>;
 export const GetResponsePoliciesItemPermissionGroupsList =
   /*@__PURE__*/ S.Array(
     GetResponsePoliciesItemPermissionGroupsItem,
@@ -250,7 +250,7 @@ export const GetResponsePoliciesItemResourceGroupsItemScopeItemObjectsItem =
   }) as any as S.Schema<GetResponsePoliciesItemResourceGroupsItemScopeItemObjectsItem>;
 
 export type GetResponsePoliciesItemResourceGroupsItemScopeItemObjectsList =
-  ReadonlyArray<GetResponsePoliciesItemResourceGroupsItemScopeItemObjectsItem>;
+  Array<GetResponsePoliciesItemResourceGroupsItemScopeItemObjectsItem>;
 export const GetResponsePoliciesItemResourceGroupsItemScopeItemObjectsList =
   /*@__PURE__*/ S.Array(
     GetResponsePoliciesItemResourceGroupsItemScopeItemObjectsItem,
@@ -273,7 +273,7 @@ export const GetResponsePoliciesItemResourceGroupsItemScopeItem =
   }) as any as S.Schema<GetResponsePoliciesItemResourceGroupsItemScopeItem>;
 
 export type GetResponsePoliciesItemResourceGroupsItemScopeList =
-  ReadonlyArray<GetResponsePoliciesItemResourceGroupsItemScopeItem>;
+  Array<GetResponsePoliciesItemResourceGroupsItemScopeItem>;
 export const GetResponsePoliciesItemResourceGroupsItemScopeList =
   /*@__PURE__*/ S.Array(
     GetResponsePoliciesItemResourceGroupsItemScopeItem,
@@ -316,7 +316,7 @@ export const GetResponsePoliciesItemResourceGroupsItem =
   }) as any as S.Schema<GetResponsePoliciesItemResourceGroupsItem>;
 
 export type GetResponsePoliciesItemResourceGroupsList =
-  ReadonlyArray<GetResponsePoliciesItemResourceGroupsItem>;
+  Array<GetResponsePoliciesItemResourceGroupsItem>;
 export const GetResponsePoliciesItemResourceGroupsList = /*@__PURE__*/ S.Array(
   GetResponsePoliciesItemResourceGroupsItem,
 ) as any as S.Schema<GetResponsePoliciesItemResourceGroupsList>;
@@ -348,12 +348,12 @@ export const GetResponsePoliciesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetResponsePoliciesItem",
 }) as any as S.Schema<GetResponsePoliciesItem>;
 
-export type GetResponsePoliciesList = ReadonlyArray<GetResponsePoliciesItem>;
+export type GetResponsePoliciesList = Array<GetResponsePoliciesItem>;
 export const GetResponsePoliciesList = /*@__PURE__*/ S.Array(
   GetResponsePoliciesItem,
 ) as any as S.Schema<GetResponsePoliciesList>;
 
-export type GetResponseRolesList = ReadonlyArray<string>;
+export type GetResponseRolesList = Array<string>;
 export const GetResponseRolesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetResponseRolesList>;
@@ -623,7 +623,7 @@ export const UpdateResponsePoliciesItemPermissionGroupsItem =
   }) as any as S.Schema<UpdateResponsePoliciesItemPermissionGroupsItem>;
 
 export type UpdateResponsePoliciesItemPermissionGroupsList =
-  ReadonlyArray<UpdateResponsePoliciesItemPermissionGroupsItem>;
+  Array<UpdateResponsePoliciesItemPermissionGroupsItem>;
 export const UpdateResponsePoliciesItemPermissionGroupsList =
   /*@__PURE__*/ S.Array(
     UpdateResponsePoliciesItemPermissionGroupsItem,
@@ -644,7 +644,7 @@ export const UpdateResponsePoliciesItemResourceGroupsItemScopeItemObjectsItem =
   }) as any as S.Schema<UpdateResponsePoliciesItemResourceGroupsItemScopeItemObjectsItem>;
 
 export type UpdateResponsePoliciesItemResourceGroupsItemScopeItemObjectsList =
-  ReadonlyArray<UpdateResponsePoliciesItemResourceGroupsItemScopeItemObjectsItem>;
+  Array<UpdateResponsePoliciesItemResourceGroupsItemScopeItemObjectsItem>;
 export const UpdateResponsePoliciesItemResourceGroupsItemScopeItemObjectsList =
   /*@__PURE__*/ S.Array(
     UpdateResponsePoliciesItemResourceGroupsItemScopeItemObjectsItem,
@@ -667,7 +667,7 @@ export const UpdateResponsePoliciesItemResourceGroupsItemScopeItem =
   }) as any as S.Schema<UpdateResponsePoliciesItemResourceGroupsItemScopeItem>;
 
 export type UpdateResponsePoliciesItemResourceGroupsItemScopeList =
-  ReadonlyArray<UpdateResponsePoliciesItemResourceGroupsItemScopeItem>;
+  Array<UpdateResponsePoliciesItemResourceGroupsItemScopeItem>;
 export const UpdateResponsePoliciesItemResourceGroupsItemScopeList =
   /*@__PURE__*/ S.Array(
     UpdateResponsePoliciesItemResourceGroupsItemScopeItem,
@@ -710,7 +710,7 @@ export const UpdateResponsePoliciesItemResourceGroupsItem =
   }) as any as S.Schema<UpdateResponsePoliciesItemResourceGroupsItem>;
 
 export type UpdateResponsePoliciesItemResourceGroupsList =
-  ReadonlyArray<UpdateResponsePoliciesItemResourceGroupsItem>;
+  Array<UpdateResponsePoliciesItemResourceGroupsItem>;
 export const UpdateResponsePoliciesItemResourceGroupsList =
   /*@__PURE__*/ S.Array(
     UpdateResponsePoliciesItemResourceGroupsItem,
@@ -745,13 +745,12 @@ export const UpdateResponsePoliciesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateResponsePoliciesItem",
 }) as any as S.Schema<UpdateResponsePoliciesItem>;
 
-export type UpdateResponsePoliciesList =
-  ReadonlyArray<UpdateResponsePoliciesItem>;
+export type UpdateResponsePoliciesList = Array<UpdateResponsePoliciesItem>;
 export const UpdateResponsePoliciesList = /*@__PURE__*/ S.Array(
   UpdateResponsePoliciesItem,
 ) as any as S.Schema<UpdateResponsePoliciesList>;
 
-export type UpdateResponseRolesList = ReadonlyArray<string>;
+export type UpdateResponseRolesList = Array<string>;
 export const UpdateResponseRolesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<UpdateResponseRolesList>;

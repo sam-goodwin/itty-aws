@@ -334,14 +334,20 @@ export type EinvoiceDeliveryDocumentType =
   | "AWS_REQUEST_FOR_PAYMENT";
 export const EinvoiceDeliveryDocumentType = /*@__PURE__*/ S.String;
 
-export type EinvoiceDeliveryDocumentTypes = EinvoiceDeliveryDocumentType[];
+export type EinvoiceDeliveryDocumentTypes = (
+  | EinvoiceDeliveryDocumentType
+  | (string & {})
+)[];
 export const EinvoiceDeliveryDocumentTypes = /*@__PURE__*/ S.Array(
   EinvoiceDeliveryDocumentType,
 );
 export type EinvoiceDeliveryAttachmentType = "INVOICE_PDF" | "RFP_PDF";
 export const EinvoiceDeliveryAttachmentType = /*@__PURE__*/ S.String;
 
-export type EinvoiceDeliveryAttachmentTypes = EinvoiceDeliveryAttachmentType[];
+export type EinvoiceDeliveryAttachmentTypes = (
+  | EinvoiceDeliveryAttachmentType
+  | (string & {})
+)[];
 export const EinvoiceDeliveryAttachmentTypes = /*@__PURE__*/ S.Array(
   EinvoiceDeliveryAttachmentType,
 );
@@ -354,8 +360,8 @@ export type PurchaseOrderDataSourceType =
 export const PurchaseOrderDataSourceType = /*@__PURE__*/ S.String;
 
 export interface PurchaseOrderDataSource {
-  EinvoiceDeliveryDocumentType?: EinvoiceDeliveryDocumentType;
-  PurchaseOrderDataSourceType?: PurchaseOrderDataSourceType;
+  EinvoiceDeliveryDocumentType?: EinvoiceDeliveryDocumentType | (string & {});
+  PurchaseOrderDataSourceType?: PurchaseOrderDataSourceType | (string & {});
 }
 export const PurchaseOrderDataSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -377,9 +383,9 @@ export const ConnectionTestingMethod = /*@__PURE__*/ S.String;
 export interface EinvoiceDeliveryPreference {
   EinvoiceDeliveryDocumentTypes: EinvoiceDeliveryDocumentType[];
   EinvoiceDeliveryAttachmentTypes?: EinvoiceDeliveryAttachmentType[];
-  Protocol: Protocol;
+  Protocol: Protocol | (string & {});
   PurchaseOrderDataSources: PurchaseOrderDataSource[];
-  ConnectionTestingMethod: ConnectionTestingMethod;
+  ConnectionTestingMethod: ConnectionTestingMethod | (string & {});
   EinvoiceDeliveryActivationDate: Date;
 }
 export const EinvoiceDeliveryPreference = /*@__PURE__*/ S.suspend(() =>

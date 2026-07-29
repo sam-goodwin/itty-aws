@@ -313,7 +313,7 @@ export const SignInOrigin = /*@__PURE__*/ S.String;
 
 export type ApplicationUrl = string;
 export interface SignInOptions {
-  Origin: SignInOrigin;
+  Origin: SignInOrigin | (string & {});
   ApplicationUrl?: string;
 }
 export const SignInOptions = /*@__PURE__*/ S.suspend(() =>
@@ -324,7 +324,7 @@ export const ApplicationVisibility = /*@__PURE__*/ S.String;
 
 export interface PortalOptions {
   SignInOptions?: SignInOptions;
-  Visibility?: ApplicationVisibility;
+  Visibility?: ApplicationVisibility | (string & {});
 }
 export const PortalOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -559,7 +559,7 @@ export interface OidcJwtConfiguration {
   IssuerUrl: string;
   ClaimAttributePath: string;
   IdentityStoreAttributePath: string;
-  JwksRetrievalOption: JwksRetrievalOption;
+  JwksRetrievalOption: JwksRetrievalOption | (string & {});
 }
 export const OidcJwtConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

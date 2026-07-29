@@ -100,8 +100,7 @@ export const TaskMentionDTO = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TaskMentionDTO" }) as any as S.Schema<TaskMentionDTO>;
 
-export type PaginatedTaskMentionDTOListResultsList =
-  ReadonlyArray<TaskMentionDTO>;
+export type PaginatedTaskMentionDTOListResultsList = Array<TaskMentionDTO>;
 export const PaginatedTaskMentionDTOListResultsList = /*@__PURE__*/ S.Array(
   TaskMentionDTO,
 ) as any as S.Schema<PaginatedTaskMentionDTOListResultsList>;

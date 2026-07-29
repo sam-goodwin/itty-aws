@@ -119,7 +119,7 @@ export const TargetType = /*@__PURE__*/ S.String;
 
 export type TargetId = string;
 export interface Target {
-  Type: TargetType;
+  Type: TargetType | (string & {});
   Id?: string;
 }
 export const Target = /*@__PURE__*/ S.suspend(() =>

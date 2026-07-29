@@ -206,7 +206,7 @@ export const EntityMention = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "EntityMention" }) as any as S.Schema<EntityMention>;
 
-export type EntityMentionList = ReadonlyArray<EntityMention>;
+export type EntityMentionList = Array<EntityMention>;
 export const EntityMentionList = /*@__PURE__*/ S.Array(
   EntityMention,
 ) as any as S.Schema<EntityMentionList>;
@@ -237,7 +237,7 @@ export const Entity = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Entity" }) as any as S.Schema<Entity>;
 
-export type EntityList = ReadonlyArray<Entity>;
+export type EntityList = Array<Entity>;
 export const EntityList = /*@__PURE__*/ S.Array(
   Entity,
 ) as any as S.Schema<EntityList>;
@@ -372,7 +372,7 @@ export const Sentence = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Sentence" }) as any as S.Schema<Sentence>;
 
-export type SentenceList = ReadonlyArray<Sentence>;
+export type SentenceList = Array<Sentence>;
 export const SentenceList = /*@__PURE__*/ S.Array(
   Sentence,
 ) as any as S.Schema<SentenceList>;
@@ -716,7 +716,7 @@ export const Token = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Token" }) as any as S.Schema<Token>;
 
-export type TokenList = ReadonlyArray<Token>;
+export type TokenList = Array<Token>;
 export const TokenList = /*@__PURE__*/ S.Array(
   Token,
 ) as any as S.Schema<TokenList>;
@@ -879,7 +879,7 @@ export const ClassificationCategory = /*@__PURE__*/ S.suspend(() =>
   identifier: "ClassificationCategory",
 }) as any as S.Schema<ClassificationCategory>;
 
-export type ClassificationCategoryList = ReadonlyArray<ClassificationCategory>;
+export type ClassificationCategoryList = Array<ClassificationCategory>;
 export const ClassificationCategoryList = /*@__PURE__*/ S.Array(
   ClassificationCategory,
 ) as any as S.Schema<ClassificationCategoryList>;

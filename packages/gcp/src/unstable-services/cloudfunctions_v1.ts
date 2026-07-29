@@ -187,7 +187,7 @@ export const SecretEnvVar = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SecretEnvVar" }) as any as S.Schema<SecretEnvVar>;
 
-export type SecretEnvVarList = ReadonlyArray<SecretEnvVar>;
+export type SecretEnvVarList = Array<SecretEnvVar>;
 export const SecretEnvVarList = /*@__PURE__*/ S.Array(
   SecretEnvVar,
 ) as any as S.Schema<SecretEnvVarList>;
@@ -251,7 +251,7 @@ export const SecretVersion = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SecretVersion" }) as any as S.Schema<SecretVersion>;
 
-export type SecretVersionList = ReadonlyArray<SecretVersion>;
+export type SecretVersionList = Array<SecretVersion>;
 export const SecretVersionList = /*@__PURE__*/ S.Array(
   SecretVersion,
 ) as any as S.Schema<SecretVersionList>;
@@ -276,7 +276,7 @@ export const SecretVolume = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SecretVolume" }) as any as S.Schema<SecretVolume>;
 
-export type SecretVolumeList = ReadonlyArray<SecretVolume>;
+export type SecretVolumeList = Array<SecretVolume>;
 export const SecretVolumeList = /*@__PURE__*/ S.Array(
   SecretVolume,
 ) as any as S.Schema<SecretVolumeList>;
@@ -292,7 +292,7 @@ export interface HttpsTrigger {
   /** Output only. The deployed url for the function. */
   url?: string;
   /** The security level for the function. */
-  securityLevel?: HttpsTriggerSecurityLevelEnum;
+  securityLevel?: HttpsTriggerSecurityLevelEnum | (string & {});
 }
 export const HttpsTrigger = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -325,7 +325,7 @@ export interface CloudFunction {
   /** A lower bound for the number function instances that may coexist at a given time. */
   minInstances?: number;
   /** Docker Registry to use for this deployment. Deprecated: as of March 2025, `CONTAINER_REGISTRY` option is no longer available in response to Container Registry's deprecation: https://cloud.google.com/artifact-registry/docs/transition/transition-from-gcr Please use Artifact Registry instead, which is the default choice. If unspecified, it defaults to `ARTIFACT_REGISTRY`. If `docker_repository` field is specified, this field should either be left unspecified or set to `ARTIFACT_REGISTRY`. */
-  dockerRegistry?: CloudFunctionDockerRegistryEnum;
+  dockerRegistry?: CloudFunctionDockerRegistryEnum | (string & {});
   /** A source that fires events in response to a condition in another service. */
   eventTrigger?: EventTrigger;
   automaticUpdatePolicy?: AutomaticUpdatePolicy;
@@ -344,7 +344,7 @@ export interface CloudFunction {
   /** A user-defined name of the function. Function names must be unique globally and match pattern `projects/*\/locations/*\/functions/*` */
   name?: string;
   /** Output only. Status of the function deployment. */
-  status?: CloudFunctionStatusEnum;
+  status?: CloudFunctionStatusEnum | (string & {});
   /** Output only. The last update timestamp of a Cloud Function. */
   updateTime?: string;
   /** User-managed repository created in Artifact Registry to which the function's Docker image will be pushed after it is built by Cloud Build. May optionally be encrypted with a customer-managed encryption key (CMEK). If unspecified and `docker_registry` is not explicitly set to `CONTAINER_REGISTRY`, GCF will create and use a default Artifact Registry repository named 'gcf-artifacts' in the region. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`. Cross-project repositories are not supported. Cross-location repositories are not supported. Repository format must be 'DOCKER'. */
@@ -354,9 +354,11 @@ export interface CloudFunction {
   /** Input only. An identifier for Firebase function sources. Disclaimer: This field is only supported for Firebase function deployments. */
   sourceToken?: string;
   /** The ingress settings for the function, controlling what traffic can reach it. */
-  ingressSettings?: CloudFunctionIngressSettingsEnum;
+  ingressSettings?: CloudFunctionIngressSettingsEnum | (string & {});
   /** The egress settings for the connector, controlling what traffic is diverted through it. */
-  vpcConnectorEgressSettings?: CloudFunctionVpcConnectorEgressSettingsEnum;
+  vpcConnectorEgressSettings?:
+    | CloudFunctionVpcConnectorEgressSettingsEnum
+    | (string & {});
   /** **Beta Feature** The source repository where a function is hosted. */
   sourceRepository?: SourceRepository;
   /** Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources. It must match the pattern `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`. If specified, you must also provide an artifact registry repository using the `docker_repository` field that was created with the same KMS crypto key. The following service accounts need to be granted the role 'Cloud KMS CryptoKey Encrypter/Decrypter (roles/cloudkms.cryptoKeyEncrypterDecrypter)' on the Key/KeyRing/Project/Organization (least access preferred). 1. Google Cloud Functions service account (service-{project_number}@gcf-admin-robot.iam.gserviceaccount.com) - Required to protect the function's image. 2. Google Storage service account (service-{project_number}@gs-project-accounts.iam.gserviceaccount.com) - Required to protect the function's source code. If this service account does not exist, deploying a function without a KMS key or retrieving the service agent name provisions it. For more information, see https://cloud.google.com/storage/docs/projects#service-agents and https://cloud.google.com/storage/docs/getting-service-agent#gsutil. Google Cloud Functions delegates access to service agents to protect function resources in internal projects that are not accessible by the end user. */
@@ -464,7 +466,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -666,7 +668,7 @@ export const Expr = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Expr" }) as any as S.Schema<Expr>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -688,7 +690,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
-export type BindingList = ReadonlyArray<Binding>;
+export type BindingList = Array<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -705,7 +707,7 @@ export interface AuditLogConfig {
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
   exemptedMembers?: StringList;
   /** The log type that this config enables. */
-  logType?: AuditLogConfigLogTypeEnum;
+  logType?: AuditLogConfigLogTypeEnum | (string & {});
 }
 export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -714,7 +716,7 @@ export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
-export type AuditLogConfigList = ReadonlyArray<AuditLogConfig>;
+export type AuditLogConfigList = Array<AuditLogConfig>;
 export const AuditLogConfigList = /*@__PURE__*/ S.Array(
   AuditLogConfig,
 ) as any as S.Schema<AuditLogConfigList>;
@@ -733,7 +735,7 @@ export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
-export type AuditConfigList = ReadonlyArray<AuditConfig>;
+export type AuditConfigList = Array<AuditConfig>;
 export const AuditConfigList = /*@__PURE__*/ S.Array(
   AuditConfig,
 ) as any as S.Schema<AuditConfigList>;
@@ -828,7 +830,7 @@ export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListOperationsRequest",
 }) as any as S.Schema<ListOperationsRequest>;
 
-export type OperationList = ReadonlyArray<Operation>;
+export type OperationList = Array<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -905,7 +907,7 @@ export const Location = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Location" }) as any as S.Schema<Location>;
 
-export type LocationList = ReadonlyArray<Location>;
+export type LocationList = Array<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -951,7 +953,7 @@ export const ListProjectsLocationsFunctionsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsFunctionsRequest",
 }) as any as S.Schema<ListProjectsLocationsFunctionsRequest>;
 
-export type CloudFunctionList = ReadonlyArray<CloudFunction>;
+export type CloudFunctionList = Array<CloudFunction>;
 export const CloudFunctionList = /*@__PURE__*/ S.Array(
   CloudFunction,
 ) as any as S.Schema<CloudFunctionList>;

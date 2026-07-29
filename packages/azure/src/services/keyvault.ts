@@ -59,7 +59,7 @@ export type JsonWebKeyOperation =
   | "release";
 export const JsonWebKeyOperation = /*@__PURE__*/ S.String;
 
-export type KeyPropertiesInputKeyOpsList = ReadonlyArray<
+export type KeyPropertiesInputKeyOpsList = Array<
   JsonWebKeyOperation | (string & {})
 >;
 export const KeyPropertiesInputKeyOpsList = /*@__PURE__*/ S.Array(
@@ -101,7 +101,7 @@ export const KeyRotationPolicyActionType = /*@__PURE__*/ S.String;
 
 export interface Action {
   /** The type of action. */
-  type?: KeyRotationPolicyActionType;
+  type?: KeyRotationPolicyActionType | (string & {});
 }
 export const Action = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -123,8 +123,7 @@ export const LifetimeAction = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LifetimeAction" }) as any as S.Schema<LifetimeAction>;
 
 /** The lifetimeActions for key rotation action. */
-export type RotationPolicyInputLifetimeActionsList =
-  ReadonlyArray<LifetimeAction>;
+export type RotationPolicyInputLifetimeActionsList = Array<LifetimeAction>;
 export const RotationPolicyInputLifetimeActionsList = /*@__PURE__*/ S.Array(
   LifetimeAction,
 ) as any as S.Schema<RotationPolicyInputLifetimeActionsList>;
@@ -302,7 +301,7 @@ export const KeyAttributes = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "KeyAttributes" }) as any as S.Schema<KeyAttributes>;
 
-export type KeyPropertiesKeyOpsList = ReadonlyArray<JsonWebKeyOperation>;
+export type KeyPropertiesKeyOpsList = Array<JsonWebKeyOperation>;
 export const KeyPropertiesKeyOpsList = /*@__PURE__*/ S.Array(
   JsonWebKeyOperation,
 ) as any as S.Schema<KeyPropertiesKeyOpsList>;
@@ -326,7 +325,7 @@ export const KeyRotationPolicyAttributes = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<KeyRotationPolicyAttributes>;
 
 /** The lifetimeActions for key rotation action. */
-export type RotationPolicyLifetimeActionsList = ReadonlyArray<LifetimeAction>;
+export type RotationPolicyLifetimeActionsList = Array<LifetimeAction>;
 export const RotationPolicyLifetimeActionsList = /*@__PURE__*/ S.Array(
   LifetimeAction,
 ) as any as S.Schema<RotationPolicyLifetimeActionsList>;
@@ -612,7 +611,7 @@ export const Key = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Key" }) as any as S.Schema<Key>;
 
 /** The Key items on this page */
-export type KeyListResultValueList = ReadonlyArray<Key>;
+export type KeyListResultValueList = Array<Key>;
 export const KeyListResultValueList = /*@__PURE__*/ S.Array(
   Key,
 ) as any as S.Schema<KeyListResultValueList>;
@@ -691,7 +690,7 @@ export const ManagedHsmKeyAttributesInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "ManagedHsmKeyAttributesInput",
 }) as any as S.Schema<ManagedHsmKeyAttributesInput>;
 
-export type ManagedHsmKeyPropertiesInputKeyOpsList = ReadonlyArray<
+export type ManagedHsmKeyPropertiesInputKeyOpsList = Array<
   JsonWebKeyOperation | (string & {})
 >;
 export const ManagedHsmKeyPropertiesInputKeyOpsList = /*@__PURE__*/ S.Array(
@@ -728,7 +727,7 @@ export const ManagedHsmTrigger = /*@__PURE__*/ S.suspend(() =>
 
 export interface ManagedHsmAction {
   /** The type of action. */
-  type?: KeyRotationPolicyActionType;
+  type?: KeyRotationPolicyActionType | (string & {});
 }
 export const ManagedHsmAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -755,7 +754,7 @@ export const ManagedHsmLifetimeAction = /*@__PURE__*/ S.suspend(() =>
 
 /** The lifetimeActions for key rotation action. */
 export type ManagedHsmRotationPolicyInputLifetimeActionsList =
-  ReadonlyArray<ManagedHsmLifetimeAction>;
+  Array<ManagedHsmLifetimeAction>;
 export const ManagedHsmRotationPolicyInputLifetimeActionsList =
   /*@__PURE__*/ S.Array(
     ManagedHsmLifetimeAction,
@@ -889,8 +888,7 @@ export const ManagedHsmKeyAttributes = /*@__PURE__*/ S.suspend(() =>
   identifier: "ManagedHsmKeyAttributes",
 }) as any as S.Schema<ManagedHsmKeyAttributes>;
 
-export type ManagedHsmKeyPropertiesKeyOpsList =
-  ReadonlyArray<JsonWebKeyOperation>;
+export type ManagedHsmKeyPropertiesKeyOpsList = Array<JsonWebKeyOperation>;
 export const ManagedHsmKeyPropertiesKeyOpsList = /*@__PURE__*/ S.Array(
   JsonWebKeyOperation,
 ) as any as S.Schema<ManagedHsmKeyPropertiesKeyOpsList>;
@@ -916,7 +914,7 @@ export const ManagedHsmKeyRotationPolicyAttributes = /*@__PURE__*/ S.suspend(
 
 /** The lifetimeActions for key rotation action. */
 export type ManagedHsmRotationPolicyLifetimeActionsList =
-  ReadonlyArray<ManagedHsmLifetimeAction>;
+  Array<ManagedHsmLifetimeAction>;
 export const ManagedHsmRotationPolicyLifetimeActionsList =
   /*@__PURE__*/ S.Array(
     ManagedHsmLifetimeAction,
@@ -1201,7 +1199,7 @@ export const ManagedHsmKey = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ManagedHsmKey" }) as any as S.Schema<ManagedHsmKey>;
 
 /** The ManagedHsmKey items on this page */
-export type ManagedHsmKeyListResultValueList = ReadonlyArray<ManagedHsmKey>;
+export type ManagedHsmKeyListResultValueList = Array<ManagedHsmKey>;
 export const ManagedHsmKeyListResultValueList = /*@__PURE__*/ S.Array(
   ManagedHsmKey,
 ) as any as S.Schema<ManagedHsmKeyListResultValueList>;
@@ -1297,8 +1295,7 @@ export const CheckMhsmNameAvailabilityResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CheckMhsmNameAvailabilityResult>;
 
 /** Array of initial administrators object ids for this managed hsm pool. */
-export type ManagedHsmPropertiesInputInitialAdminObjectIdsList =
-  ReadonlyArray<string>;
+export type ManagedHsmPropertiesInputInitialAdminObjectIdsList = Array<string>;
 export const ManagedHsmPropertiesInputInitialAdminObjectIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1328,7 +1325,7 @@ export const MHSMIPRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MHSMIPRule" }) as any as S.Schema<MHSMIPRule>;
 
 /** The list of IP address rules. */
-export type MHSMNetworkRuleSetIpRulesList = ReadonlyArray<MHSMIPRule>;
+export type MHSMNetworkRuleSetIpRulesList = Array<MHSMIPRule>;
 export const MHSMNetworkRuleSetIpRulesList = /*@__PURE__*/ S.Array(
   MHSMIPRule,
 ) as any as S.Schema<MHSMNetworkRuleSetIpRulesList>;
@@ -1347,8 +1344,7 @@ export const MHSMServiceTagRule = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MHSMServiceTagRule>;
 
 /** The list of service tags. */
-export type MHSMNetworkRuleSetServiceTagsList =
-  ReadonlyArray<MHSMServiceTagRule>;
+export type MHSMNetworkRuleSetServiceTagsList = Array<MHSMServiceTagRule>;
 export const MHSMNetworkRuleSetServiceTagsList = /*@__PURE__*/ S.Array(
   MHSMServiceTagRule,
 ) as any as S.Schema<MHSMNetworkRuleSetServiceTagsList>;
@@ -1368,7 +1364,7 @@ export const MHSMVirtualNetworkRule = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of virtual network rules. */
 export type MHSMNetworkRuleSetVirtualNetworkRulesList =
-  ReadonlyArray<MHSMVirtualNetworkRule>;
+  Array<MHSMVirtualNetworkRule>;
 export const MHSMNetworkRuleSetVirtualNetworkRulesList = /*@__PURE__*/ S.Array(
   MHSMVirtualNetworkRule,
 ) as any as S.Schema<MHSMNetworkRuleSetVirtualNetworkRulesList>;
@@ -1376,9 +1372,9 @@ export const MHSMNetworkRuleSetVirtualNetworkRulesList = /*@__PURE__*/ S.Array(
 /** A set of rules governing the network accessibility of a managed hsm pool. */
 export interface MHSMNetworkRuleSet {
   /** Tells what traffic can bypass network rules. This can be 'AzureServices' or 'None'. If not specified the default is 'AzureServices'. */
-  bypass?: NetworkRuleBypassOptions;
+  bypass?: NetworkRuleBypassOptions | (string & {});
   /** The default action when no rule from ipRules and from virtualNetworkRules match. This is only used after the bypass property has been evaluated. */
-  defaultAction?: NetworkRuleAction;
+  defaultAction?: NetworkRuleAction | (string & {});
   /** The list of IP address rules. */
   ipRules?: MHSMNetworkRuleSetIpRulesList;
   /** The list of service tags. */
@@ -1416,7 +1412,7 @@ export const MHSMGeoReplicatedRegionInput = /*@__PURE__*/ S.suspend(() =>
 
 /** List of all regions associated with the managed hsm pool. */
 export type ManagedHsmPropertiesInputRegionsList =
-  ReadonlyArray<MHSMGeoReplicatedRegionInput>;
+  Array<MHSMGeoReplicatedRegionInput>;
 export const ManagedHsmPropertiesInputRegionsList = /*@__PURE__*/ S.Array(
   MHSMGeoReplicatedRegionInput,
 ) as any as S.Schema<ManagedHsmPropertiesInputRegionsList>;
@@ -1487,9 +1483,9 @@ export const ManagedHsmSkuName = /*@__PURE__*/ S.String;
 /** SKU details */
 export interface ManagedHsmSku {
   /** SKU Family of the managed HSM Pool */
-  family: ManagedHsmSkuFamily;
+  family: ManagedHsmSkuFamily | (string & {});
   /** SKU of the managed HSM Pool */
-  name: ManagedHsmSkuName;
+  name: ManagedHsmSkuName | (string & {});
 }
 export const ManagedHsmSku = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1588,8 +1584,7 @@ export const ManagedHsmsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ManagedHsmsCreateOrUpdateRequest>;
 
 /** Array of initial administrators object ids for this managed hsm pool. */
-export type ManagedHsmPropertiesInitialAdminObjectIdsList =
-  ReadonlyArray<string>;
+export type ManagedHsmPropertiesInitialAdminObjectIdsList = Array<string>;
 export const ManagedHsmPropertiesInitialAdminObjectIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1637,8 +1632,7 @@ export const MHSMGeoReplicatedRegion = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MHSMGeoReplicatedRegion>;
 
 /** List of all regions associated with the managed hsm pool. */
-export type ManagedHsmPropertiesRegionsList =
-  ReadonlyArray<MHSMGeoReplicatedRegion>;
+export type ManagedHsmPropertiesRegionsList = Array<MHSMGeoReplicatedRegion>;
 export const ManagedHsmPropertiesRegionsList = /*@__PURE__*/ S.Array(
   MHSMGeoReplicatedRegion,
 ) as any as S.Schema<ManagedHsmPropertiesRegionsList>;
@@ -1671,11 +1665,11 @@ export const ActionsRequired = /*@__PURE__*/ S.String;
 /** An object that represents the approval state of the private link connection. */
 export interface MHSMPrivateLinkServiceConnectionState {
   /** Indicates whether the connection has been approved, rejected or removed by the key vault owner. */
-  status?: PrivateEndpointServiceConnectionStatus;
+  status?: PrivateEndpointServiceConnectionStatus | (string & {});
   /** The reason for approval or rejection. */
   description?: string;
   /** A message indicating if changes on the service provider require any updates on the consumer. */
-  actionsRequired?: ActionsRequired;
+  actionsRequired?: ActionsRequired | (string & {});
 }
 export const MHSMPrivateLinkServiceConnectionState = /*@__PURE__*/ S.suspend(
   () =>
@@ -1742,7 +1736,7 @@ export const MHSMPrivateEndpointConnectionItem = /*@__PURE__*/ S.suspend(() =>
 
 /** List of private endpoint connections associated with the managed hsm pool. */
 export type ManagedHsmPropertiesPrivateEndpointConnectionsList =
-  ReadonlyArray<MHSMPrivateEndpointConnectionItem>;
+  Array<MHSMPrivateEndpointConnectionItem>;
 export const ManagedHsmPropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     MHSMPrivateEndpointConnectionItem,
@@ -2219,7 +2213,7 @@ export const ManagedHsm = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ManagedHsm" }) as any as S.Schema<ManagedHsm>;
 
 /** The ManagedHsm items on this page */
-export type ManagedHsmListResultValueList = ReadonlyArray<ManagedHsm>;
+export type ManagedHsmListResultValueList = Array<ManagedHsm>;
 export const ManagedHsmListResultValueList = /*@__PURE__*/ S.Array(
   ManagedHsm,
 ) as any as S.Schema<ManagedHsmListResultValueList>;
@@ -2308,8 +2302,7 @@ export const DeletedManagedHsm = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeletedManagedHsm>;
 
 /** The DeletedManagedHsm items on this page */
-export type DeletedManagedHsmListResultValueList =
-  ReadonlyArray<DeletedManagedHsm>;
+export type DeletedManagedHsmListResultValueList = Array<DeletedManagedHsm>;
 export const DeletedManagedHsmListResultValueList = /*@__PURE__*/ S.Array(
   DeletedManagedHsm,
 ) as any as S.Schema<DeletedManagedHsmListResultValueList>;
@@ -2790,7 +2783,7 @@ export const MHSMPrivateEndpointConnection = /*@__PURE__*/ S.suspend(() =>
 
 /** The MhsmPrivateEndpointConnection items on this page */
 export type MHSMPrivateEndpointConnectionsListResultValueList =
-  ReadonlyArray<MHSMPrivateEndpointConnection>;
+  Array<MHSMPrivateEndpointConnection>;
 export const MHSMPrivateEndpointConnectionsListResultValueList =
   /*@__PURE__*/ S.Array(
     MHSMPrivateEndpointConnection,
@@ -3020,7 +3013,7 @@ export const MHSMPrivateLinkResourceTagsMap = /*@__PURE__*/ S.Record(
 
 /** Required member names of private link resource. */
 export type MHSMPrivateLinkResourcePropertiesRequiredMembersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const MHSMPrivateLinkResourcePropertiesRequiredMembersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3028,7 +3021,7 @@ export const MHSMPrivateLinkResourcePropertiesRequiredMembersList =
 
 /** Required DNS zone names of the the private link resource. */
 export type MHSMPrivateLinkResourcePropertiesRequiredZoneNamesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const MHSMPrivateLinkResourcePropertiesRequiredZoneNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3116,7 +3109,7 @@ export const MHSMPrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of private link resources */
 export type MHSMPrivateLinkResourceListResultValueList =
-  ReadonlyArray<MHSMPrivateLinkResource>;
+  Array<MHSMPrivateLinkResource>;
 export const MHSMPrivateLinkResourceListResultValueList = /*@__PURE__*/ S.Array(
   MHSMPrivateLinkResource,
 ) as any as S.Schema<MHSMPrivateLinkResourceListResultValueList>;
@@ -3160,8 +3153,7 @@ export const MHSMRegionsListByResourceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MHSMRegionsListByResourceRequest>;
 
 /** The MhsmGeoReplicatedRegion items on this page */
-export type MHSMRegionsListResultValueList =
-  ReadonlyArray<MHSMGeoReplicatedRegion>;
+export type MHSMRegionsListResultValueList = Array<MHSMGeoReplicatedRegion>;
 export const MHSMRegionsListResultValueList = /*@__PURE__*/ S.Array(
   MHSMGeoReplicatedRegion,
 ) as any as S.Schema<MHSMRegionsListResultValueList>;
@@ -3238,23 +3230,20 @@ export const LogSpecification = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LogSpecification>;
 
 /** Log specifications of operation. */
-export type ServiceSpecificationLogSpecificationsList =
-  ReadonlyArray<LogSpecification>;
+export type ServiceSpecificationLogSpecificationsList = Array<LogSpecification>;
 export const ServiceSpecificationLogSpecificationsList = /*@__PURE__*/ S.Array(
   LogSpecification,
 ) as any as S.Schema<ServiceSpecificationLogSpecificationsList>;
 
 /** The supported aggregation types for the metrics. */
-export type MetricSpecificationSupportedAggregationTypesList =
-  ReadonlyArray<string>;
+export type MetricSpecificationSupportedAggregationTypesList = Array<string>;
 export const MetricSpecificationSupportedAggregationTypesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<MetricSpecificationSupportedAggregationTypesList>;
 
 /** The supported time grain types for the metrics. */
-export type MetricSpecificationSupportedTimeGrainTypesList =
-  ReadonlyArray<string>;
+export type MetricSpecificationSupportedTimeGrainTypesList = Array<string>;
 export const MetricSpecificationSupportedTimeGrainTypesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3280,8 +3269,7 @@ export const DimensionProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DimensionProperties>;
 
 /** The dimensions of metric */
-export type MetricSpecificationDimensionsList =
-  ReadonlyArray<DimensionProperties>;
+export type MetricSpecificationDimensionsList = Array<DimensionProperties>;
 export const MetricSpecificationDimensionsList = /*@__PURE__*/ S.Array(
   DimensionProperties,
 ) as any as S.Schema<MetricSpecificationDimensionsList>;
@@ -3335,7 +3323,7 @@ export const MetricSpecification = /*@__PURE__*/ S.suspend(() =>
 
 /** Metric specifications of operation. */
 export type ServiceSpecificationMetricSpecificationsList =
-  ReadonlyArray<MetricSpecification>;
+  Array<MetricSpecification>;
 export const ServiceSpecificationMetricSpecificationsList =
   /*@__PURE__*/ S.Array(
     MetricSpecification,
@@ -3396,7 +3384,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of Storage operations supported by the Storage resource provider. */
-export type OperationListResultValueList = ReadonlyArray<Operation>;
+export type OperationListResultValueList = Array<Operation>;
 export const OperationListResultValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationListResultValueList>;
@@ -3462,11 +3450,11 @@ export const PrivateEndpoint = /*@__PURE__*/ S.suspend(() =>
 /** An object that represents the approval state of the private link connection. */
 export interface PrivateLinkServiceConnectionState {
   /** Indicates whether the connection has been approved, rejected or removed by the key vault owner. */
-  status?: PrivateEndpointServiceConnectionStatus;
+  status?: PrivateEndpointServiceConnectionStatus | (string & {});
   /** The reason for approval or rejection. */
   description?: string;
   /** A message indicating if changes on the service provider require any updates on the consumer. */
-  actionsRequired?: ActionsRequired;
+  actionsRequired?: ActionsRequired | (string & {});
 }
 export const PrivateLinkServiceConnectionState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3687,7 +3675,7 @@ export const PrivateEndpointConnection = /*@__PURE__*/ S.suspend(() =>
 
 /** The PrivateEndpointConnection items on this page */
 export type PrivateEndpointConnectionListResultValueList =
-  ReadonlyArray<PrivateEndpointConnection>;
+  Array<PrivateEndpointConnection>;
 export const PrivateEndpointConnectionListResultValueList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection,
@@ -3842,16 +3830,14 @@ export const PrivateLinkResourcesListByVaultRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PrivateLinkResourcesListByVaultRequest>;
 
 /** Required member names of private link resource. */
-export type PrivateLinkResourcePropertiesRequiredMembersList =
-  ReadonlyArray<string>;
+export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
 export const PrivateLinkResourcePropertiesRequiredMembersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
 
 /** Required DNS zone names of the the private link resource. */
-export type PrivateLinkResourcePropertiesRequiredZoneNamesList =
-  ReadonlyArray<string>;
+export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
 export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3919,8 +3905,7 @@ export const PrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateLinkResource>;
 
 /** Array of private link resources */
-export type PrivateLinkResourceListResultValueList =
-  ReadonlyArray<PrivateLinkResource>;
+export type PrivateLinkResourceListResultValueList = Array<PrivateLinkResource>;
 export const PrivateLinkResourceListResultValueList = /*@__PURE__*/ S.Array(
   PrivateLinkResource,
 ) as any as S.Schema<PrivateLinkResourceListResultValueList>;
@@ -4236,7 +4221,7 @@ export const Secret = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Secret" }) as any as S.Schema<Secret>;
 
 /** The Secret items on this page */
-export type SecretListResultValueList = ReadonlyArray<Secret>;
+export type SecretListResultValueList = Array<Secret>;
 export const SecretListResultValueList = /*@__PURE__*/ S.Array(
   Secret,
 ) as any as S.Schema<SecretListResultValueList>;
@@ -4425,9 +4410,9 @@ export const SkuName = /*@__PURE__*/ S.String;
 /** SKU details */
 export interface Sku {
   /** SKU family name */
-  family: SkuFamily;
+  family: SkuFamily | (string & {});
   /** SKU name to specify whether the key vault is a standard vault or a premium vault. */
-  name: SkuName;
+  name: SkuName | (string & {});
 }
 export const Sku = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4461,7 +4446,7 @@ export type KeyPermissions =
 export const KeyPermissions = /*@__PURE__*/ S.String;
 
 /** Permissions to keys */
-export type PermissionsKeysList = ReadonlyArray<KeyPermissions>;
+export type PermissionsKeysList = Array<KeyPermissions | (string & {})>;
 export const PermissionsKeysList = /*@__PURE__*/ S.Array(
   KeyPermissions,
 ) as any as S.Schema<PermissionsKeysList>;
@@ -4479,7 +4464,7 @@ export type SecretPermissions =
 export const SecretPermissions = /*@__PURE__*/ S.String;
 
 /** Permissions to secrets */
-export type PermissionsSecretsList = ReadonlyArray<SecretPermissions>;
+export type PermissionsSecretsList = Array<SecretPermissions | (string & {})>;
 export const PermissionsSecretsList = /*@__PURE__*/ S.Array(
   SecretPermissions,
 ) as any as S.Schema<PermissionsSecretsList>;
@@ -4505,7 +4490,9 @@ export type CertificatePermissions =
 export const CertificatePermissions = /*@__PURE__*/ S.String;
 
 /** Permissions to certificates */
-export type PermissionsCertificatesList = ReadonlyArray<CertificatePermissions>;
+export type PermissionsCertificatesList = Array<
+  CertificatePermissions | (string & {})
+>;
 export const PermissionsCertificatesList = /*@__PURE__*/ S.Array(
   CertificatePermissions,
 ) as any as S.Schema<PermissionsCertificatesList>;
@@ -4529,7 +4516,7 @@ export type StoragePermissions =
 export const StoragePermissions = /*@__PURE__*/ S.String;
 
 /** Permissions to storage accounts */
-export type PermissionsStorageList = ReadonlyArray<StoragePermissions>;
+export type PermissionsStorageList = Array<StoragePermissions | (string & {})>;
 export const PermissionsStorageList = /*@__PURE__*/ S.Array(
   StoragePermissions,
 ) as any as S.Schema<PermissionsStorageList>;
@@ -4577,8 +4564,7 @@ export const AccessPolicyEntry = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccessPolicyEntry>;
 
 /** An array of 0 to 1024 identities that have access to the key vault. All identities in the array must use the same tenant ID as the key vault's tenant ID. When `createMode` is set to `recover`, access policies are not required. Otherwise, access policies are required. */
-export type VaultPropertiesInputAccessPoliciesList =
-  ReadonlyArray<AccessPolicyEntry>;
+export type VaultPropertiesInputAccessPoliciesList = Array<AccessPolicyEntry>;
 export const VaultPropertiesInputAccessPoliciesList = /*@__PURE__*/ S.Array(
   AccessPolicyEntry,
 ) as any as S.Schema<VaultPropertiesInputAccessPoliciesList>;
@@ -4595,7 +4581,7 @@ export const IPRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IPRule" }) as any as S.Schema<IPRule>;
 
 /** The list of IP address rules. */
-export type NetworkRuleSetIpRulesList = ReadonlyArray<IPRule>;
+export type NetworkRuleSetIpRulesList = Array<IPRule>;
 export const NetworkRuleSetIpRulesList = /*@__PURE__*/ S.Array(
   IPRule,
 ) as any as S.Schema<NetworkRuleSetIpRulesList>;
@@ -4617,8 +4603,7 @@ export const VirtualNetworkRule = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VirtualNetworkRule>;
 
 /** The list of virtual network rules. */
-export type NetworkRuleSetVirtualNetworkRulesList =
-  ReadonlyArray<VirtualNetworkRule>;
+export type NetworkRuleSetVirtualNetworkRulesList = Array<VirtualNetworkRule>;
 export const NetworkRuleSetVirtualNetworkRulesList = /*@__PURE__*/ S.Array(
   VirtualNetworkRule,
 ) as any as S.Schema<NetworkRuleSetVirtualNetworkRulesList>;
@@ -4626,9 +4611,9 @@ export const NetworkRuleSetVirtualNetworkRulesList = /*@__PURE__*/ S.Array(
 /** A set of rules governing the network accessibility of a vault. */
 export interface NetworkRuleSet {
   /** Tells what traffic can bypass network rules. This can be 'AzureServices' or 'None'. If not specified the default is 'AzureServices'. */
-  bypass?: NetworkRuleBypassOptions;
+  bypass?: NetworkRuleBypassOptions | (string & {});
   /** The default action when no rule from ipRules and from virtualNetworkRules match. This is only used after the bypass property has been evaluated. */
-  defaultAction?: NetworkRuleAction;
+  defaultAction?: NetworkRuleAction | (string & {});
   /** The list of IP address rules. */
   ipRules?: NetworkRuleSetIpRulesList;
   /** The list of virtual network rules. */
@@ -4737,8 +4722,7 @@ export const VaultsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VaultsCreateOrUpdateRequest>;
 
 /** An array of 0 to 1024 identities that have access to the key vault. All identities in the array must use the same tenant ID as the key vault's tenant ID. When `createMode` is set to `recover`, access policies are not required. Otherwise, access policies are required. */
-export type VaultPropertiesAccessPoliciesList =
-  ReadonlyArray<AccessPolicyEntry>;
+export type VaultPropertiesAccessPoliciesList = Array<AccessPolicyEntry>;
 export const VaultPropertiesAccessPoliciesList = /*@__PURE__*/ S.Array(
   AccessPolicyEntry,
 ) as any as S.Schema<VaultPropertiesAccessPoliciesList>;
@@ -4764,7 +4748,7 @@ export const PrivateEndpointConnectionItem = /*@__PURE__*/ S.suspend(() =>
 
 /** List of private endpoint connections associated with the key vault. */
 export type VaultPropertiesPrivateEndpointConnectionsList =
-  ReadonlyArray<PrivateEndpointConnectionItem>;
+  Array<PrivateEndpointConnectionItem>;
 export const VaultPropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnectionItem,
@@ -5119,8 +5103,7 @@ export const ResourceListResultValueItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourceListResultValueItem>;
 
 /** The list of vault resources. */
-export type ResourceListResultValueList =
-  ReadonlyArray<ResourceListResultValueItem>;
+export type ResourceListResultValueList = Array<ResourceListResultValueItem>;
 export const ResourceListResultValueList = /*@__PURE__*/ S.Array(
   ResourceListResultValueItem,
 ) as any as S.Schema<ResourceListResultValueList>;
@@ -5203,7 +5186,7 @@ export const Vault = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Vault" }) as any as S.Schema<Vault>;
 
 /** The Vault items on this page */
-export type VaultListResultValueList = ReadonlyArray<Vault>;
+export type VaultListResultValueList = Array<Vault>;
 export const VaultListResultValueList = /*@__PURE__*/ S.Array(
   Vault,
 ) as any as S.Schema<VaultListResultValueList>;
@@ -5289,7 +5272,7 @@ export const DeletedVault = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeletedVault" }) as any as S.Schema<DeletedVault>;
 
 /** The DeletedVault items on this page */
-export type DeletedVaultListResultValueList = ReadonlyArray<DeletedVault>;
+export type DeletedVaultListResultValueList = Array<DeletedVault>;
 export const DeletedVaultListResultValueList = /*@__PURE__*/ S.Array(
   DeletedVault,
 ) as any as S.Schema<DeletedVaultListResultValueList>;
@@ -5350,8 +5333,7 @@ export const VaultsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<VaultsUpdateRequestTagsMap>;
 
 /** An array of 0 to 16 identities that have access to the key vault. All identities in the array must use the same tenant ID as the key vault's tenant ID. */
-export type VaultPatchPropertiesAccessPoliciesList =
-  ReadonlyArray<AccessPolicyEntry>;
+export type VaultPatchPropertiesAccessPoliciesList = Array<AccessPolicyEntry>;
 export const VaultPatchPropertiesAccessPoliciesList = /*@__PURE__*/ S.Array(
   AccessPolicyEntry,
 ) as any as S.Schema<VaultPatchPropertiesAccessPoliciesList>;
@@ -5482,7 +5464,7 @@ export const VaultsUpdateAccessPolicyRequestOperationKind =
 
 /** An array of 0 to 16 identities that have access to the key vault. All identities in the array must use the same tenant ID as the key vault's tenant ID. */
 export type VaultAccessPolicyPropertiesAccessPoliciesList =
-  ReadonlyArray<AccessPolicyEntry>;
+  Array<AccessPolicyEntry>;
 export const VaultAccessPolicyPropertiesAccessPoliciesList =
   /*@__PURE__*/ S.Array(
     AccessPolicyEntry,

@@ -545,12 +545,12 @@ export interface DomainNameConfiguration {
   CertificateArn?: string;
   CertificateName?: string;
   CertificateUploadDate?: Date;
-  DomainNameStatus?: DomainNameStatus;
+  DomainNameStatus?: DomainNameStatus | (string & {});
   DomainNameStatusMessage?: string;
-  EndpointType?: EndpointType;
+  EndpointType?: EndpointType | (string & {});
   HostedZoneId?: string;
-  IpAddressType?: IpAddressType;
-  SecurityPolicy?: SecurityPolicy;
+  IpAddressType?: IpAddressType | (string & {});
+  SecurityPolicy?: SecurityPolicy | (string & {});
   OwnershipVerificationCertificateArn?: string;
 }
 export const DomainNameConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -2080,7 +2080,7 @@ export const LoggingLevel = /*@__PURE__*/ S.String;
 export interface RouteSettings {
   DataTraceEnabled?: boolean;
   DetailedMetricsEnabled?: boolean;
-  LoggingLevel?: LoggingLevel;
+  LoggingLevel?: LoggingLevel | (string & {});
   ThrottlingBurstLimit?: number;
   ThrottlingRateLimit?: number;
 }

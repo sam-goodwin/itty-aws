@@ -103,7 +103,7 @@ export class TitleRequired extends T.applyErrorMatchers(
   [{ code: 10019 }],
 ) {}
 
-export type NamespacesBulkDeleteRequestBodyList = ReadonlyArray<string>;
+export type NamespacesBulkDeleteRequestBodyList = Array<string>;
 export const NamespacesBulkDeleteRequestBodyList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<NamespacesBulkDeleteRequestBodyList>;
@@ -133,8 +133,7 @@ export const BulkDeleteNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "BulkDeleteNamespacesRequest",
 }) as any as S.Schema<BulkDeleteNamespacesRequest>;
 
-export type NamespacesBulkDeleteResponseUnsuccessfulKeysList =
-  ReadonlyArray<string>;
+export type NamespacesBulkDeleteResponseUnsuccessfulKeysList = Array<string>;
 export const NamespacesBulkDeleteResponseUnsuccessfulKeysList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -162,7 +161,7 @@ export const BulkDeleteNamespacesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "BulkDeleteNamespacesResponse",
 }) as any as S.Schema<BulkDeleteNamespacesResponse>;
 
-export type NamespacesBulkGetRequestKeysList = ReadonlyArray<string>;
+export type NamespacesBulkGetRequestKeysList = Array<string>;
 export const NamespacesBulkGetRequestKeysList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<NamespacesBulkGetRequestKeysList>;
@@ -333,7 +332,7 @@ export const NamespacesBulkUpdateRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NamespacesBulkUpdateRequestBodyItem>;
 
 export type NamespacesBulkUpdateRequestBodyList =
-  ReadonlyArray<NamespacesBulkUpdateRequestBodyItem>;
+  Array<NamespacesBulkUpdateRequestBodyItem>;
 export const NamespacesBulkUpdateRequestBodyList = /*@__PURE__*/ S.Array(
   NamespacesBulkUpdateRequestBodyItem,
 ) as any as S.Schema<NamespacesBulkUpdateRequestBodyList>;
@@ -363,8 +362,7 @@ export const BulkPutNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "BulkPutNamespacesRequest",
 }) as any as S.Schema<BulkPutNamespacesRequest>;
 
-export type NamespacesBulkUpdateResponseUnsuccessfulKeysList =
-  ReadonlyArray<string>;
+export type NamespacesBulkUpdateResponseUnsuccessfulKeysList = Array<string>;
 export const NamespacesBulkUpdateResponseUnsuccessfulKeysList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -659,8 +657,7 @@ export const NamespacesKeysListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "NamespacesKeysListResultItem",
 }) as any as S.Schema<NamespacesKeysListResultItem>;
 
-export type NamespacesKeysListResultList =
-  ReadonlyArray<NamespacesKeysListResultItem>;
+export type NamespacesKeysListResultList = Array<NamespacesKeysListResultItem>;
 export const NamespacesKeysListResultList = /*@__PURE__*/ S.Array(
   NamespacesKeysListResultItem,
 ) as any as S.Schema<NamespacesKeysListResultList>;
@@ -738,7 +735,7 @@ export const NamespacesListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "NamespacesListResultItem",
 }) as any as S.Schema<NamespacesListResultItem>;
 
-export type NamespacesListResultList = ReadonlyArray<NamespacesListResultItem>;
+export type NamespacesListResultList = Array<NamespacesListResultItem>;
 export const NamespacesListResultList = /*@__PURE__*/ S.Array(
   NamespacesListResultItem,
 ) as any as S.Schema<NamespacesListResultList>;
@@ -758,7 +755,7 @@ export const ListNamespacesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListNamespacesResponse",
 }) as any as S.Schema<ListNamespacesResponse>;
 
-export type NamespacesKeysBulkDeleteRequestBodyList = ReadonlyArray<string>;
+export type NamespacesKeysBulkDeleteRequestBodyList = Array<string>;
 export const NamespacesKeysBulkDeleteRequestBodyList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<NamespacesKeysBulkDeleteRequestBodyList>;
@@ -789,7 +786,7 @@ export const NamespacesKeysBulkDeleteRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NamespacesKeysBulkDeleteRequest>;
 
 export type NamespacesKeysBulkDeleteResponseUnsuccessfulKeysList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const NamespacesKeysBulkDeleteResponseUnsuccessfulKeysList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -817,7 +814,7 @@ export const NamespacesKeysBulkDeleteResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "NamespacesKeysBulkDeleteResponse",
 }) as any as S.Schema<NamespacesKeysBulkDeleteResponse>;
 
-export type NamespacesKeysBulkGetRequestKeysList = ReadonlyArray<string>;
+export type NamespacesKeysBulkGetRequestKeysList = Array<string>;
 export const NamespacesKeysBulkGetRequestKeysList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<NamespacesKeysBulkGetRequestKeysList>;
@@ -991,7 +988,7 @@ export const NamespacesKeysBulkUpdateRequestBodyItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<NamespacesKeysBulkUpdateRequestBodyItem>;
 
 export type NamespacesKeysBulkUpdateRequestBodyList =
-  ReadonlyArray<NamespacesKeysBulkUpdateRequestBodyItem>;
+  Array<NamespacesKeysBulkUpdateRequestBodyItem>;
 export const NamespacesKeysBulkUpdateRequestBodyList = /*@__PURE__*/ S.Array(
   NamespacesKeysBulkUpdateRequestBodyItem,
 ) as any as S.Schema<NamespacesKeysBulkUpdateRequestBodyList>;
@@ -1022,7 +1019,7 @@ export const NamespacesKeysBulkUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NamespacesKeysBulkUpdateRequest>;
 
 export type NamespacesKeysBulkUpdateResponseUnsuccessfulKeysList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const NamespacesKeysBulkUpdateResponseUnsuccessfulKeysList =
   /*@__PURE__*/ S.Array(
     S.String,

@@ -116,7 +116,7 @@ export interface Environment {
   /** Optional. Environment name. Can contain only lowercase letters, numeric characters, underscores, and dashes. Can have a maximum length of 63 characters. Deprecated: Please refer to type instead. */
   environment?: string;
   /** Required. Environment Type. */
-  type?: EnvironmentTypeEnum;
+  type?: EnvironmentTypeEnum | (string & {});
 }
 export const Environment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -153,7 +153,7 @@ export const ContactInfo = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ContactInfo" }) as any as S.Schema<ContactInfo>;
 
-export type ContactInfoList = ReadonlyArray<ContactInfo>;
+export type ContactInfoList = Array<ContactInfo>;
 export const ContactInfoList = /*@__PURE__*/ S.Array(
   ContactInfo,
 ) as any as S.Schema<ContactInfoList>;
@@ -173,7 +173,7 @@ export interface Criticality {
   /** Optional. Indicates mission-critical Application, Service, or Workload. Deprecated: Please refer to type instead. */
   missionCritical?: boolean;
   /** Required. Criticality Type. */
-  type?: CriticalityTypeEnum;
+  type?: CriticalityTypeEnum | (string & {});
 }
 export const Criticality = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -212,7 +212,7 @@ export const ScopeTypeEnum = /*@__PURE__*/ S.String;
 /** Scope of an application. */
 export interface Scope {
   /** Required. Scope Type. */
-  type?: ScopeTypeEnum;
+  type?: ScopeTypeEnum | (string & {});
 }
 export const Scope = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -229,7 +229,7 @@ export interface Application {
   /** Output only. Update time. */
   updateTime?: string;
   /** Output only. Application state. */
-  state?: ApplicationStateEnum;
+  state?: ApplicationStateEnum | (string & {});
   /** Optional. Consumer provided attributes. */
   attributes?: Attributes;
   /** Optional. User-defined name for the Application. Can have a maximum length of 63 characters. */
@@ -289,7 +289,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -368,7 +368,7 @@ export const FunctionalTypeTypeEnum = /*@__PURE__*/ S.String;
 /** The functional type of a service or workload. */
 export interface FunctionalType {
   /** Output only. The functional type of a service or workload. */
-  type?: FunctionalTypeTypeEnum;
+  type?: FunctionalTypeTypeEnum | (string & {});
 }
 export const FunctionalType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -385,7 +385,7 @@ export const RegistrationTypeTypeEnum = /*@__PURE__*/ S.String;
 /** The registration type of a service. */
 export interface RegistrationType {
   /** Output only. The registration type of a service. */
-  type?: RegistrationTypeTypeEnum;
+  type?: RegistrationTypeTypeEnum | (string & {});
 }
 export const RegistrationType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -473,7 +473,7 @@ export interface Service {
   /** Output only. Update time. */
   updateTime?: string;
   /** Output only. Service state. */
-  state?: ServiceStateEnum;
+  state?: ServiceStateEnum | (string & {});
   /** Output only. Create time. */
   createTime?: string;
   /** Optional. User-defined description of a Service. Can have a maximum length of 2048 characters. */
@@ -583,7 +583,7 @@ export interface Workload {
   /** Output only. Update time. */
   updateTime?: string;
   /** Output only. Workload state. */
-  state?: WorkloadStateEnum;
+  state?: WorkloadStateEnum | (string & {});
   /** Output only. Create time. */
   createTime?: string;
   /** Optional. Consumer provided attributes. */
@@ -659,7 +659,7 @@ export interface ServiceProjectAttachment {
   /** Identifier. The resource name of a ServiceProjectAttachment. Format: `"projects/{host-project-id}/locations/global/serviceProjectAttachments/{service-project-id}."` */
   name?: string;
   /** Output only. ServiceProjectAttachment state. */
-  state?: ServiceProjectAttachmentStateEnum;
+  state?: ServiceProjectAttachmentStateEnum | (string & {});
   /** Output only. Create time. */
   createTime?: string;
   /** Output only. A globally unique identifier (in UUID4 format) for the `ServiceProjectAttachment`. */
@@ -902,12 +902,12 @@ export const DiscoveredService = /*@__PURE__*/ S.suspend(() =>
   identifier: "DiscoveredService",
 }) as any as S.Schema<DiscoveredService>;
 
-export type DiscoveredServiceList = ReadonlyArray<DiscoveredService>;
+export type DiscoveredServiceList = Array<DiscoveredService>;
 export const DiscoveredServiceList = /*@__PURE__*/ S.Array(
   DiscoveredService,
 ) as any as S.Schema<DiscoveredServiceList>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -981,7 +981,7 @@ export const DiscoveredWorkload = /*@__PURE__*/ S.suspend(() =>
   identifier: "DiscoveredWorkload",
 }) as any as S.Schema<DiscoveredWorkload>;
 
-export type DiscoveredWorkloadList = ReadonlyArray<DiscoveredWorkload>;
+export type DiscoveredWorkloadList = Array<DiscoveredWorkload>;
 export const DiscoveredWorkloadList = /*@__PURE__*/ S.Array(
   DiscoveredWorkload,
 ) as any as S.Schema<DiscoveredWorkloadList>;
@@ -1039,7 +1039,7 @@ export interface Boundary {
   /** Output only. Update time. */
   updateTime?: string;
   /** Output only. Boundary type. */
-  type?: BoundaryTypeEnum;
+  type?: BoundaryTypeEnum | (string & {});
   /** Optional. The resource name of the CRM node being attached to the boundary. Format: `projects/{project-number}` or `projects/{project-id}` */
   crmNode?: string;
 }
@@ -1112,7 +1112,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
-export type BindingList = ReadonlyArray<Binding>;
+export type BindingList = Array<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -1127,7 +1127,7 @@ export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
 export interface AuditLogConfig {
   /** The log type that this config enables. */
-  logType?: AuditLogConfigLogTypeEnum;
+  logType?: AuditLogConfigLogTypeEnum | (string & {});
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
   exemptedMembers?: StringList;
 }
@@ -1138,7 +1138,7 @@ export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
-export type AuditLogConfigList = ReadonlyArray<AuditLogConfig>;
+export type AuditLogConfigList = Array<AuditLogConfig>;
 export const AuditLogConfigList = /*@__PURE__*/ S.Array(
   AuditLogConfig,
 ) as any as S.Schema<AuditLogConfigList>;
@@ -1157,7 +1157,7 @@ export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
-export type AuditConfigList = ReadonlyArray<AuditConfig>;
+export type AuditConfigList = Array<AuditConfig>;
 export const AuditConfigList = /*@__PURE__*/ S.Array(
   AuditConfig,
 ) as any as S.Schema<AuditConfigList>;
@@ -1430,7 +1430,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = ReadonlyArray<Location>;
+export type LocationList = Array<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -1482,7 +1482,7 @@ export const ListProjectsLocationsApplicationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsApplicationsRequest",
 }) as any as S.Schema<ListProjectsLocationsApplicationsRequest>;
 
-export type ApplicationList = ReadonlyArray<Application>;
+export type ApplicationList = Array<Application>;
 export const ApplicationList = /*@__PURE__*/ S.Array(
   Application,
 ) as any as S.Schema<ApplicationList>;
@@ -1537,7 +1537,7 @@ export const ListProjectsLocationsApplicationsServicesRequest =
     identifier: "ListProjectsLocationsApplicationsServicesRequest",
   }) as any as S.Schema<ListProjectsLocationsApplicationsServicesRequest>;
 
-export type ServiceList = ReadonlyArray<Service>;
+export type ServiceList = Array<Service>;
 export const ServiceList = /*@__PURE__*/ S.Array(
   Service,
 ) as any as S.Schema<ServiceList>;
@@ -1592,7 +1592,7 @@ export const ListProjectsLocationsApplicationsWorkloadsRequest =
     identifier: "ListProjectsLocationsApplicationsWorkloadsRequest",
   }) as any as S.Schema<ListProjectsLocationsApplicationsWorkloadsRequest>;
 
-export type WorkloadList = ReadonlyArray<Workload>;
+export type WorkloadList = Array<Workload>;
 export const WorkloadList = /*@__PURE__*/ S.Array(
   Workload,
 ) as any as S.Schema<WorkloadList>;
@@ -1741,7 +1741,7 @@ export const ListProjectsLocationsExtendedMetadataSchemasRequest =
     identifier: "ListProjectsLocationsExtendedMetadataSchemasRequest",
   }) as any as S.Schema<ListProjectsLocationsExtendedMetadataSchemasRequest>;
 
-export type ExtendedMetadataSchemaList = ReadonlyArray<ExtendedMetadataSchema>;
+export type ExtendedMetadataSchemaList = Array<ExtendedMetadataSchema>;
 export const ExtendedMetadataSchemaList = /*@__PURE__*/ S.Array(
   ExtendedMetadataSchema,
 ) as any as S.Schema<ExtendedMetadataSchemaList>;
@@ -1793,7 +1793,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type OperationList = ReadonlyArray<Operation>;
+export type OperationList = Array<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -1848,8 +1848,7 @@ export const ListProjectsLocationsServiceProjectAttachmentsRequest =
     identifier: "ListProjectsLocationsServiceProjectAttachmentsRequest",
   }) as any as S.Schema<ListProjectsLocationsServiceProjectAttachmentsRequest>;
 
-export type ServiceProjectAttachmentList =
-  ReadonlyArray<ServiceProjectAttachment>;
+export type ServiceProjectAttachmentList = Array<ServiceProjectAttachment>;
 export const ServiceProjectAttachmentList = /*@__PURE__*/ S.Array(
   ServiceProjectAttachment,
 ) as any as S.Schema<ServiceProjectAttachmentList>;

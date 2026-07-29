@@ -11,8 +11,7 @@ import * as Retry from "../retry.ts";
 
 export type { PosthogOpError, PosthogOpContext };
 
-export type ApprovalPoliciesCreateRequestBypassRolesList =
-  ReadonlyArray<string>;
+export type ApprovalPoliciesCreateRequestBypassRolesList = Array<string>;
 export const ApprovalPoliciesCreateRequestBypassRolesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -53,7 +52,7 @@ export const ApprovalPoliciesCreateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ApprovalPoliciesCreateRequest",
 }) as any as S.Schema<ApprovalPoliciesCreateRequest>;
 
-export type ApprovalPolicyBypassRolesList = ReadonlyArray<string>;
+export type ApprovalPolicyBypassRolesList = Array<string>;
 export const ApprovalPolicyBypassRolesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ApprovalPolicyBypassRolesList>;
@@ -192,8 +191,7 @@ export const ApprovalPoliciesListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ApprovalPoliciesListRequest",
 }) as any as S.Schema<ApprovalPoliciesListRequest>;
 
-export type PaginatedApprovalPolicyListResultsList =
-  ReadonlyArray<ApprovalPolicy>;
+export type PaginatedApprovalPolicyListResultsList = Array<ApprovalPolicy>;
 export const PaginatedApprovalPolicyListResultsList = /*@__PURE__*/ S.Array(
   ApprovalPolicy,
 ) as any as S.Schema<PaginatedApprovalPolicyListResultsList>;
@@ -215,8 +213,7 @@ export const PaginatedApprovalPolicyList = /*@__PURE__*/ S.suspend(() =>
   identifier: "PaginatedApprovalPolicyList",
 }) as any as S.Schema<PaginatedApprovalPolicyList>;
 
-export type ApprovalPoliciesPartialUpdateRequestBypassRolesList =
-  ReadonlyArray<string>;
+export type ApprovalPoliciesPartialUpdateRequestBypassRolesList = Array<string>;
 export const ApprovalPoliciesPartialUpdateRequestBypassRolesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -284,8 +281,7 @@ export const ApprovalPoliciesRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ApprovalPoliciesRetrieveRequest",
 }) as any as S.Schema<ApprovalPoliciesRetrieveRequest>;
 
-export type ApprovalPoliciesUpdateRequestBypassRolesList =
-  ReadonlyArray<string>;
+export type ApprovalPoliciesUpdateRequestBypassRolesList = Array<string>;
 export const ApprovalPoliciesUpdateRequestBypassRolesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -375,8 +371,7 @@ export const ChangeRequestApprovalsItemMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<ChangeRequestApprovalsItemMap>;
 
-export type ChangeRequestApprovalsList =
-  ReadonlyArray<ChangeRequestApprovalsItemMap>;
+export type ChangeRequestApprovalsList = Array<ChangeRequestApprovalsItemMap>;
 export const ChangeRequestApprovalsList = /*@__PURE__*/ S.Array(
   ChangeRequestApprovalsItemMap,
 ) as any as S.Schema<ChangeRequestApprovalsList>;
@@ -483,7 +478,7 @@ export const ChangeRequestsCancelCreateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ChangeRequestsCancelCreateRequest",
 }) as any as S.Schema<ChangeRequestsCancelCreateRequest>;
 
-export type ChangeRequestsListRequestStateList = ReadonlyArray<string>;
+export type ChangeRequestsListRequestStateList = Array<string>;
 export const ChangeRequestsListRequestStateList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ChangeRequestsListRequestStateList>;
@@ -523,8 +518,7 @@ export const ChangeRequestsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ChangeRequestsListRequest",
 }) as any as S.Schema<ChangeRequestsListRequest>;
 
-export type PaginatedChangeRequestListResultsList =
-  ReadonlyArray<ChangeRequest>;
+export type PaginatedChangeRequestListResultsList = Array<ChangeRequest>;
 export const PaginatedChangeRequestListResultsList = /*@__PURE__*/ S.Array(
   ChangeRequest,
 ) as any as S.Schema<PaginatedChangeRequestListResultsList>;

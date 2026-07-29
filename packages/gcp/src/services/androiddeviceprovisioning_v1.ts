@@ -83,7 +83,7 @@ export interface DeviceIdentifier {
   /** The manufacturer's serial number for the device. This value might not be unique across different device models. */
   serialNumber?: string;
   /** The type of the device */
-  deviceType?: DeviceIdentifierDeviceTypeEnum;
+  deviceType?: DeviceIdentifierDeviceTypeEnum | (string & {});
   /** The device’s IMEI number. Validated on input. */
   imei?: string;
 }
@@ -218,7 +218,7 @@ export const PartnerClaim = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PartnerClaim" }) as any as S.Schema<PartnerClaim>;
 
-export type PartnerClaimList = ReadonlyArray<PartnerClaim>;
+export type PartnerClaimList = Array<PartnerClaim>;
 export const PartnerClaimList = /*@__PURE__*/ S.Array(
   PartnerClaim,
 ) as any as S.Schema<PartnerClaimList>;
@@ -263,7 +263,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -448,7 +448,7 @@ export const CreateCustomersConfigurationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "CreateCustomersConfigurationsRequest",
 }) as any as S.Schema<CreateCustomersConfigurationsRequest>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -493,7 +493,7 @@ export interface Company {
   /** Output only. The API resource name of the company. The resource name is one of the following formats: * `partners/[PARTNER_ID]/customers/[CUSTOMER_ID]` * `partners/[PARTNER_ID]/vendors/[VENDOR_ID]` * `partners/[PARTNER_ID]/vendors/[VENDOR_ID]/customers/[CUSTOMER_ID]` Assigned by the server. */
   name?: string;
   /** Output only. Whether any user from the company has accepted the latest Terms of Service (ToS). See TermsStatus. */
-  termsStatus?: CompanyTermsStatusEnum;
+  termsStatus?: CompanyTermsStatusEnum | (string & {});
   /** Required. The name of the company. For example _XYZ Corp_. Displayed to the company's employees in the zero-touch enrollment portal. */
   companyName?: string;
 }
@@ -646,7 +646,7 @@ export const DeviceClaim = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DeviceClaim" }) as any as S.Schema<DeviceClaim>;
 
-export type DeviceClaimList = ReadonlyArray<DeviceClaim>;
+export type DeviceClaimList = Array<DeviceClaim>;
 export const DeviceClaimList = /*@__PURE__*/ S.Array(
   DeviceClaim,
 ) as any as S.Schema<DeviceClaimList>;
@@ -677,7 +677,7 @@ export const Device = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Device" }) as any as S.Schema<Device>;
 
-export type DeviceList = ReadonlyArray<Device>;
+export type DeviceList = Array<Device>;
 export const DeviceList = /*@__PURE__*/ S.Array(
   Device,
 ) as any as S.Schema<DeviceList>;
@@ -921,7 +921,7 @@ export const ListCustomersRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListCustomersRequest",
 }) as any as S.Schema<ListCustomersRequest>;
 
-export type CompanyList = ReadonlyArray<Company>;
+export type CompanyList = Array<Company>;
 export const CompanyList = /*@__PURE__*/ S.Array(
   Company,
 ) as any as S.Schema<CompanyList>;
@@ -960,7 +960,7 @@ export const ListCustomersConfigurationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListCustomersConfigurationsRequest",
 }) as any as S.Schema<ListCustomersConfigurationsRequest>;
 
-export type ConfigurationList = ReadonlyArray<Configuration>;
+export type ConfigurationList = Array<Configuration>;
 export const ConfigurationList = /*@__PURE__*/ S.Array(
   Configuration,
 ) as any as S.Schema<ConfigurationList>;
@@ -1053,7 +1053,7 @@ export const Dpc = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Dpc" }) as any as S.Schema<Dpc>;
 
-export type DpcList = ReadonlyArray<Dpc>;
+export type DpcList = Array<Dpc>;
 export const DpcList = /*@__PURE__*/ S.Array(Dpc) as any as S.Schema<DpcList>;
 
 /** Response message of customer's listing DPCs. */
@@ -1323,7 +1323,7 @@ export const PartnerUnclaim = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PartnerUnclaim" }) as any as S.Schema<PartnerUnclaim>;
 
-export type PartnerUnclaimList = ReadonlyArray<PartnerUnclaim>;
+export type PartnerUnclaimList = Array<PartnerUnclaim>;
 export const PartnerUnclaimList = /*@__PURE__*/ S.Array(
   PartnerUnclaim,
 ) as any as S.Schema<PartnerUnclaimList>;
@@ -1467,8 +1467,7 @@ export const UpdateMetadataArguments = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateMetadataArguments",
 }) as any as S.Schema<UpdateMetadataArguments>;
 
-export type UpdateMetadataArgumentsList =
-  ReadonlyArray<UpdateMetadataArguments>;
+export type UpdateMetadataArgumentsList = Array<UpdateMetadataArguments>;
 export const UpdateMetadataArgumentsList = /*@__PURE__*/ S.Array(
   UpdateMetadataArguments,
 ) as any as S.Schema<UpdateMetadataArgumentsList>;

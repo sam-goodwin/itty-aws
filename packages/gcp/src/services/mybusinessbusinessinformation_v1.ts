@@ -66,7 +66,7 @@ export type BatchGetCategoriesViewEnum =
   | "FULL";
 export const BatchGetCategoriesViewEnum = /*@__PURE__*/ S.String;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -115,7 +115,7 @@ export const MoreHoursType = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MoreHoursType" }) as any as S.Schema<MoreHoursType>;
 
-export type MoreHoursTypeList = ReadonlyArray<MoreHoursType>;
+export type MoreHoursTypeList = Array<MoreHoursType>;
 export const MoreHoursTypeList = /*@__PURE__*/ S.Array(
   MoreHoursType,
 ) as any as S.Schema<MoreHoursTypeList>;
@@ -134,7 +134,7 @@ export const ServiceType = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ServiceType" }) as any as S.Schema<ServiceType>;
 
-export type ServiceTypeList = ReadonlyArray<ServiceType>;
+export type ServiceTypeList = Array<ServiceType>;
 export const ServiceTypeList = /*@__PURE__*/ S.Array(
   ServiceType,
 ) as any as S.Schema<ServiceTypeList>;
@@ -159,7 +159,7 @@ export const Category = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Category" }) as any as S.Schema<Category>;
 
-export type CategoryList = ReadonlyArray<Category>;
+export type CategoryList = Array<Category>;
 export const CategoryList = /*@__PURE__*/ S.Array(
   Category,
 ) as any as S.Schema<CategoryList>;
@@ -260,7 +260,7 @@ export const ServiceItem = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ServiceItem" }) as any as S.Schema<ServiceItem>;
 
-export type ServiceItemList = ReadonlyArray<ServiceItem>;
+export type ServiceItemList = Array<ServiceItem>;
 export const ServiceItemList = /*@__PURE__*/ S.Array(
   ServiceItem,
 ) as any as S.Schema<ServiceItemList>;
@@ -296,7 +296,7 @@ export interface OpenInfo {
   /** Output only. Indicates whether this business is eligible for re-open. */
   canReopen?: boolean;
   /** Required. Indicates whether or not the Location is currently open for business. All locations are open by default, unless updated to be closed. */
-  status?: OpenInfoStatusEnum;
+  status?: OpenInfoStatusEnum | (string & {});
   /** Optional. The date on which the location first opened. If the exact day is not known, month and year only can be provided. The date must be in the past or be no more than one year in the future. */
   openingDate?: Mybusinessbusinessinformation_Date;
 }
@@ -366,13 +366,13 @@ export const TimePeriodCloseDayEnum = /*@__PURE__*/ S.String;
 /** Represents a span of time that the business is open, starting on the specified open day/time and closing on the specified close day/time. The closing time must occur after the opening time, for example later in the same day, or on a subsequent day. */
 export interface TimePeriod {
   /** Required. Indicates the day of the week this period starts on. */
-  openDay?: TimePeriodOpenDayEnum;
+  openDay?: TimePeriodOpenDayEnum | (string & {});
   /** Required. Valid values are 00:00-24:00, where 24:00 represents midnight at the end of the specified day field. */
   openTime?: TimeOfDay;
   /** Required. Valid values are 00:00-24:00, where 24:00 represents midnight at the end of the specified day field. */
   closeTime?: TimeOfDay;
   /** Required. Indicates the day of the week this period ends on. */
-  closeDay?: TimePeriodCloseDayEnum;
+  closeDay?: TimePeriodCloseDayEnum | (string & {});
 }
 export const TimePeriod = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -383,7 +383,7 @@ export const TimePeriod = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TimePeriod" }) as any as S.Schema<TimePeriod>;
 
-export type TimePeriodList = ReadonlyArray<TimePeriod>;
+export type TimePeriodList = Array<TimePeriod>;
 export const TimePeriodList = /*@__PURE__*/ S.Array(
   TimePeriod,
 ) as any as S.Schema<TimePeriodList>;
@@ -402,7 +402,7 @@ export const MoreHours = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MoreHours" }) as any as S.Schema<MoreHours>;
 
-export type MoreHoursList = ReadonlyArray<MoreHours>;
+export type MoreHoursList = Array<MoreHours>;
 export const MoreHoursList = /*@__PURE__*/ S.Array(
   MoreHours,
 ) as any as S.Schema<MoreHoursList>;
@@ -446,7 +446,7 @@ export const SpecialHourPeriod = /*@__PURE__*/ S.suspend(() =>
   identifier: "SpecialHourPeriod",
 }) as any as S.Schema<SpecialHourPeriod>;
 
-export type SpecialHourPeriodList = ReadonlyArray<SpecialHourPeriod>;
+export type SpecialHourPeriodList = Array<SpecialHourPeriod>;
 export const SpecialHourPeriodList = /*@__PURE__*/ S.Array(
   SpecialHourPeriod,
 ) as any as S.Schema<SpecialHourPeriodList>;
@@ -493,7 +493,7 @@ export const PlaceInfo = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PlaceInfo" }) as any as S.Schema<PlaceInfo>;
 
-export type PlaceInfoList = ReadonlyArray<PlaceInfo>;
+export type PlaceInfoList = Array<PlaceInfo>;
 export const PlaceInfoList = /*@__PURE__*/ S.Array(
   PlaceInfo,
 ) as any as S.Schema<PlaceInfoList>;
@@ -512,7 +512,7 @@ export const Places = /*@__PURE__*/ S.suspend(() =>
 /** Service area businesses provide their service at the customer's location (for example, a locksmith or plumber). */
 export interface ServiceAreaBusiness {
   /** Required. Indicates the type of the service area business. */
-  businessType?: ServiceAreaBusinessBusinessTypeEnum;
+  businessType?: ServiceAreaBusinessBusinessTypeEnum | (string & {});
   /** Immutable. CLDR region code of the country/region that this service area business is based in. See http://cldr.unicode.org/ and http://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland. This field is required for CUSTOMER_LOCATION_ONLY businesses, and is ignored otherwise. The region specified here can be different from regions for the areas that this business serves (e.g. service area businesses that provide services in regions other than the one that they are based in). If this location requires verification after creation, the address provided for verification purposes *must* be located within this region, and the business owner or their authorized representative *must* be able to receive postal mail at the provided verification address. */
   regionCode?: string;
   /** The area that this business serves defined through a set of places. */
@@ -594,7 +594,7 @@ export interface RelevantLocation {
   /** Required. Specify the location that is on the other side of the relation by its placeID. */
   placeId?: string;
   /** Required. The type of the relationship. */
-  relationType?: RelevantLocationRelationTypeEnum;
+  relationType?: RelevantLocationRelationTypeEnum | (string & {});
 }
 export const RelevantLocation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -605,7 +605,7 @@ export const RelevantLocation = /*@__PURE__*/ S.suspend(() =>
   identifier: "RelevantLocation",
 }) as any as S.Schema<RelevantLocation>;
 
-export type RelevantLocationList = ReadonlyArray<RelevantLocation>;
+export type RelevantLocationList = Array<RelevantLocation>;
 export const RelevantLocationList = /*@__PURE__*/ S.Array(
   RelevantLocation,
 ) as any as S.Schema<RelevantLocationList>;
@@ -868,7 +868,7 @@ export const RepeatedEnumAttributeValue = /*@__PURE__*/ S.suspend(() =>
   identifier: "RepeatedEnumAttributeValue",
 }) as any as S.Schema<RepeatedEnumAttributeValue>;
 
-export type DocumentList = ReadonlyArray<unknown>;
+export type DocumentList = Array<unknown>;
 export const DocumentList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<DocumentList>;
@@ -886,7 +886,7 @@ export const UriAttributeValue = /*@__PURE__*/ S.suspend(() =>
   identifier: "UriAttributeValue",
 }) as any as S.Schema<UriAttributeValue>;
 
-export type UriAttributeValueList = ReadonlyArray<UriAttributeValue>;
+export type UriAttributeValueList = Array<UriAttributeValue>;
 export const UriAttributeValueList = /*@__PURE__*/ S.Array(
   UriAttributeValue,
 ) as any as S.Schema<UriAttributeValueList>;
@@ -894,7 +894,7 @@ export const UriAttributeValueList = /*@__PURE__*/ S.Array(
 /** A location attribute. Attributes provide additional information about a location. The attributes that can be set on a location may vary based on the properties of that location (for example, category). Available attributes are determined by Google and may be added and removed without API changes. */
 export interface Attribute {
   /** Output only. The type of value that this attribute contains. This should be used to determine how to interpret the value. */
-  valueType?: AttributeValueTypeEnum;
+  valueType?: AttributeValueTypeEnum | (string & {});
   /** When the attribute value type is REPEATED_ENUM, this contains the attribute value, and the other values fields must be empty. */
   repeatedEnumValue?: RepeatedEnumAttributeValue;
   /** Required. The resource name for this attribute. */
@@ -914,7 +914,7 @@ export const Attribute = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Attribute" }) as any as S.Schema<Attribute>;
 
-export type AttributeList = ReadonlyArray<Attribute>;
+export type AttributeList = Array<Attribute>;
 export const AttributeList = /*@__PURE__*/ S.Array(
   Attribute,
 ) as any as S.Schema<AttributeList>;
@@ -965,7 +965,7 @@ export const ChainName = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ChainName" }) as any as S.Schema<ChainName>;
 
-export type ChainNameList = ReadonlyArray<ChainName>;
+export type ChainNameList = Array<ChainName>;
 export const ChainNameList = /*@__PURE__*/ S.Array(
   ChainName,
 ) as any as S.Schema<ChainNameList>;
@@ -981,7 +981,7 @@ export const ChainUri = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ChainUri" }) as any as S.Schema<ChainUri>;
 
-export type ChainUriList = ReadonlyArray<ChainUri>;
+export type ChainUriList = Array<ChainUri>;
 export const ChainUriList = /*@__PURE__*/ S.Array(
   ChainUri,
 ) as any as S.Schema<ChainUriList>;
@@ -1119,7 +1119,7 @@ export const ListAccountsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAccountsLocationsRequest",
 }) as any as S.Schema<ListAccountsLocationsRequest>;
 
-export type LocationList = ReadonlyArray<Location>;
+export type LocationList = Array<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -1203,7 +1203,7 @@ export const AttributeValueMetadata = /*@__PURE__*/ S.suspend(() =>
   identifier: "AttributeValueMetadata",
 }) as any as S.Schema<AttributeValueMetadata>;
 
-export type AttributeValueMetadataList = ReadonlyArray<AttributeValueMetadata>;
+export type AttributeValueMetadataList = Array<AttributeValueMetadata>;
 export const AttributeValueMetadataList = /*@__PURE__*/ S.Array(
   AttributeValueMetadata,
 ) as any as S.Schema<AttributeValueMetadataList>;
@@ -1239,7 +1239,7 @@ export const AttributeMetadata = /*@__PURE__*/ S.suspend(() =>
   identifier: "AttributeMetadata",
 }) as any as S.Schema<AttributeMetadata>;
 
-export type AttributeMetadataList = ReadonlyArray<AttributeMetadata>;
+export type AttributeMetadataList = Array<AttributeMetadata>;
 export const AttributeMetadataList = /*@__PURE__*/ S.Array(
   AttributeMetadata,
 ) as any as S.Schema<AttributeMetadataList>;
@@ -1363,7 +1363,7 @@ export const SearchChainsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "SearchChainsRequest",
 }) as any as S.Schema<SearchChainsRequest>;
 
-export type ChainList = ReadonlyArray<Chain>;
+export type ChainList = Array<Chain>;
 export const ChainList = /*@__PURE__*/ S.Array(
   Chain,
 ) as any as S.Schema<ChainList>;
@@ -1435,7 +1435,7 @@ export const GoogleLocation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "GoogleLocation" }) as any as S.Schema<GoogleLocation>;
 
-export type GoogleLocationList = ReadonlyArray<GoogleLocation>;
+export type GoogleLocationList = Array<GoogleLocation>;
 export const GoogleLocationList = /*@__PURE__*/ S.Array(
   GoogleLocation,
 ) as any as S.Schema<GoogleLocationList>;

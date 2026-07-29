@@ -65,7 +65,7 @@ export const CohortsActivityRetrieveResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** List of person UUIDs to add to the cohort */
 export type CohortsAddPersonsToStaticCohortPartialUpdateRequestPersonIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CohortsAddPersonsToStaticCohortPartialUpdateRequestPersonIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -160,7 +160,7 @@ export const CohortsCalculationHistoryRetrieveResponse =
 export type PropertyGroupOperator = "AND" | "OR";
 export const PropertyGroupOperator = /*@__PURE__*/ S.String;
 
-export type BehavioralFilterBytecodeList = ReadonlyArray<unknown>;
+export type BehavioralFilterBytecodeList = Array<unknown>;
 export const BehavioralFilterBytecodeList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<BehavioralFilterBytecodeList>;
@@ -177,7 +177,7 @@ export type EventPropFilterTypeEnum = "event" | "element";
 export const EventPropFilterTypeEnum = /*@__PURE__*/ S.String;
 
 export interface EventPropFilter {
-  type?: EventPropFilterTypeEnum;
+  type?: EventPropFilterTypeEnum | (string & {});
   key?: string;
   value?: unknown;
   operator?: string | null;
@@ -207,7 +207,7 @@ export const HogQLFilter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "HogQLFilter" }) as any as S.Schema<HogQLFilter>;
 
 export interface BehavioralFilterEventFiltersItem {
-  type?: EventPropFilterTypeEnum | string;
+  type?: EventPropFilterTypeEnum | (string & {}) | string;
   key?: string;
   value?: unknown;
   operator?: string | null;
@@ -224,7 +224,7 @@ export const BehavioralFilterEventFiltersItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BehavioralFilterEventFiltersItem>;
 
 export type BehavioralFilterEventFiltersList =
-  ReadonlyArray<BehavioralFilterEventFiltersItem>;
+  Array<BehavioralFilterEventFiltersItem>;
 export const BehavioralFilterEventFiltersList = /*@__PURE__*/ S.Array(
   BehavioralFilterEventFiltersItem,
 ) as any as S.Schema<BehavioralFilterEventFiltersList>;
@@ -280,7 +280,7 @@ export const BehavioralFilter = /*@__PURE__*/ S.suspend(() =>
   identifier: "BehavioralFilter",
 }) as any as S.Schema<BehavioralFilter>;
 
-export type CohortFilterBytecodeList = ReadonlyArray<unknown>;
+export type CohortFilterBytecodeList = Array<unknown>;
 export const CohortFilterBytecodeList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<CohortFilterBytecodeList>;
@@ -306,7 +306,7 @@ export const CohortFilter = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CohortFilter" }) as any as S.Schema<CohortFilter>;
 
-export type PersonFilterBytecodeList = ReadonlyArray<unknown>;
+export type PersonFilterBytecodeList = Array<unknown>;
 export const PersonFilterBytecodeList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<PersonFilterBytecodeList>;
@@ -334,7 +334,7 @@ export const PersonFilter = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PersonFilter" }) as any as S.Schema<PersonFilter>;
 
-export type PersonMetadataFilterBytecodeList = ReadonlyArray<unknown>;
+export type PersonMetadataFilterBytecodeList = Array<unknown>;
 export const PersonMetadataFilterBytecodeList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<PersonMetadataFilterBytecodeList>;
@@ -374,7 +374,7 @@ export interface CohortFilterGroupValuesItem {
     | null;
   bytecode_error?: string | null;
   conditionHash?: string | null;
-  type?: string | PropertyGroupOperator;
+  type?: string | PropertyGroupOperator | (string & {});
   key?: BehavioralFilterKey | string;
   value?: string | number | unknown;
   event_type?: string;
@@ -432,15 +432,14 @@ export const CohortFilterGroupValuesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "CohortFilterGroupValuesItem",
 }) as any as S.Schema<CohortFilterGroupValuesItem>;
 
-export type CohortFilterGroupValuesList =
-  ReadonlyArray<CohortFilterGroupValuesItem>;
+export type CohortFilterGroupValuesList = Array<CohortFilterGroupValuesItem>;
 export const CohortFilterGroupValuesList = /*@__PURE__*/ S.Array(
   CohortFilterGroupValuesItem,
 ) as any as S.Schema<CohortFilterGroupValuesList>;
 
 /** AND/OR group containing cohort filters. Named to avoid collision with analytics Group model. */
 export interface CohortFilterGroup {
-  type?: PropertyGroupOperator;
+  type?: PropertyGroupOperator | (string & {});
   values?: CohortFilterGroupValuesList;
 }
 export const CohortFilterGroup = /*@__PURE__*/ S.suspend(() =>
@@ -478,8 +477,7 @@ export type CohortsCreateRequestCohortType = CohortTypeEnum | BlankEnum;
 export const CohortsCreateRequestCohortType =
   /*@__PURE__*/ S.Unknown as any as S.Schema<CohortsCreateRequestCohortType>;
 
-export type CohortsCreateRequestCreateStaticPersonIdsList =
-  ReadonlyArray<string>;
+export type CohortsCreateRequestCreateStaticPersonIdsList = Array<string>;
 export const CohortsCreateRequestCreateStaticPersonIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -599,7 +597,7 @@ export const CohortConditionTypeFlags = /*@__PURE__*/ S.suspend(() =>
   identifier: "CohortConditionTypeFlags",
 }) as any as S.Schema<CohortConditionTypeFlags>;
 
-export type CohortOutputExperimentSetList = ReadonlyArray<number>;
+export type CohortOutputExperimentSetList = Array<number>;
 export const CohortOutputExperimentSetList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<CohortOutputExperimentSetList>;
@@ -722,7 +720,7 @@ export const CohortsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CohortsListRequest",
 }) as any as S.Schema<CohortsListRequest>;
 
-export type PaginatedCohortListOutputResultsList = ReadonlyArray<CohortOutput>;
+export type PaginatedCohortListOutputResultsList = Array<CohortOutput>;
 export const PaginatedCohortListOutputResultsList = /*@__PURE__*/ S.Array(
   CohortOutput,
 ) as any as S.Schema<PaginatedCohortListOutputResultsList>;
@@ -750,7 +748,7 @@ export const CohortsPartialUpdateRequestCohortType =
   /*@__PURE__*/ S.Unknown as any as S.Schema<CohortsPartialUpdateRequestCohortType>;
 
 export type CohortsPartialUpdateRequestCreateStaticPersonIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const CohortsPartialUpdateRequestCreateStaticPersonIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -836,7 +834,7 @@ export const CohortsPersonsRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
 export type CohortPersonResultTypeEnum = "person";
 export const CohortPersonResultTypeEnum = /*@__PURE__*/ S.String;
 
-export type CohortPersonResultDistinctIdsList = ReadonlyArray<string>;
+export type CohortPersonResultDistinctIdsList = Array<string>;
 export const CohortPersonResultDistinctIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CohortPersonResultDistinctIdsList>;
@@ -859,7 +857,7 @@ export const CohortPersonResultMatchedRecordingsItemMap =
   ) as any as S.Schema<CohortPersonResultMatchedRecordingsItemMap>;
 
 export type CohortPersonResultMatchedRecordingsList =
-  ReadonlyArray<CohortPersonResultMatchedRecordingsItemMap>;
+  Array<CohortPersonResultMatchedRecordingsItemMap>;
 export const CohortPersonResultMatchedRecordingsList = /*@__PURE__*/ S.Array(
   CohortPersonResultMatchedRecordingsItemMap,
 ) as any as S.Schema<CohortPersonResultMatchedRecordingsList>;
@@ -895,8 +893,7 @@ export const CohortPersonResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "CohortPersonResult",
 }) as any as S.Schema<CohortPersonResult>;
 
-export type CohortPersonsResponseResultsList =
-  ReadonlyArray<CohortPersonResult>;
+export type CohortPersonsResponseResultsList = Array<CohortPersonResult>;
 export const CohortPersonsResponseResultsList = /*@__PURE__*/ S.Array(
   CohortPersonResult,
 ) as any as S.Schema<CohortPersonsResponseResultsList>;
@@ -973,8 +970,7 @@ export type CohortsUpdateRequestCohortType = CohortTypeEnum | BlankEnum;
 export const CohortsUpdateRequestCohortType =
   /*@__PURE__*/ S.Unknown as any as S.Schema<CohortsUpdateRequestCohortType>;
 
-export type CohortsUpdateRequestCreateStaticPersonIdsList =
-  ReadonlyArray<string>;
+export type CohortsUpdateRequestCreateStaticPersonIdsList = Array<string>;
 export const CohortsUpdateRequestCreateStaticPersonIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1064,7 +1060,7 @@ export const CohortUsedInFlag = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CohortUsedInFlag>;
 
 /** Feature flags referencing this cohort, capped at 100 results */
-export type CohortUsedInFlagsBlockResultsList = ReadonlyArray<CohortUsedInFlag>;
+export type CohortUsedInFlagsBlockResultsList = Array<CohortUsedInFlag>;
 export const CohortUsedInFlagsBlockResultsList = /*@__PURE__*/ S.Array(
   CohortUsedInFlag,
 ) as any as S.Schema<CohortUsedInFlagsBlockResultsList>;
@@ -1106,8 +1102,7 @@ export const CohortUsedInInsight = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CohortUsedInInsight>;
 
 /** Insights referencing this cohort, capped at 100 results */
-export type CohortUsedInInsightsBlockResultsList =
-  ReadonlyArray<CohortUsedInInsight>;
+export type CohortUsedInInsightsBlockResultsList = Array<CohortUsedInInsight>;
 export const CohortUsedInInsightsBlockResultsList = /*@__PURE__*/ S.Array(
   CohortUsedInInsight,
 ) as any as S.Schema<CohortUsedInInsightsBlockResultsList>;
@@ -1146,8 +1141,7 @@ export const CohortUsedInCohort = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CohortUsedInCohort>;
 
 /** Cohorts that include this cohort as a criterion, capped at 100 results */
-export type CohortUsedInCohortsBlockResultsList =
-  ReadonlyArray<CohortUsedInCohort>;
+export type CohortUsedInCohortsBlockResultsList = Array<CohortUsedInCohort>;
 export const CohortUsedInCohortsBlockResultsList = /*@__PURE__*/ S.Array(
   CohortUsedInCohort,
 ) as any as S.Schema<CohortUsedInCohortsBlockResultsList>;

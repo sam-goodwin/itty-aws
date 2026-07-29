@@ -72,7 +72,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -174,7 +174,7 @@ export interface AppEngineHttpRequest {
   /** Task-level setting for App Engine routing. If set, app_engine_routing_override is used for all tasks in the queue, no matter what the setting is for the task-level app_engine_routing. */
   appEngineRouting?: AppEngineRouting;
   /** The HTTP method to use for the request. The default is POST. The app's request handler for the task's target URL must be able to handle HTTP requests with this http_method, otherwise the task attempt fails with error code 405 (Method Not Allowed). See [Writing a push task request handler](https://cloud.google.com/appengine/docs/java/taskqueue/push/creating-handlers#writing_a_push_task_request_handler) and the App Engine documentation for your runtime on [How Requests are Handled](https://cloud.google.com/appengine/docs/standard/python3/how-requests-are-handled). */
-  httpMethod?: AppEngineHttpRequestHttpMethodEnum;
+  httpMethod?: AppEngineHttpRequestHttpMethodEnum | (string & {});
   /** The relative URI. The relative URI must begin with "/" and must be a valid HTTP relative URI. It can contain a path and query string arguments. If the relative URI is empty, then the root path "/" will be used. No spaces are allowed, and the maximum length allowed is 2083 characters. */
   relativeUri?: string;
   /** HTTP request body. A request body is allowed only if the HTTP method is POST or PUT. It is an error to set a body on a task with an incompatible HttpMethod. */
@@ -261,7 +261,7 @@ export interface HttpRequest {
   /** If specified, an [OAuth token](https://developers.google.com/identity/protocols/OAuth2) will be generated and attached as an `Authorization` header in the HTTP request. This type of authorization should generally only be used when calling Google APIs hosted on *.googleapis.com. */
   oauthToken?: OAuthToken;
   /** The HTTP method to use for the request. The default is POST. */
-  httpMethod?: HttpRequestHttpMethodEnum;
+  httpMethod?: HttpRequestHttpMethodEnum | (string & {});
   /** HTTP request body. A request body is allowed only if the HTTP method is POST, PUT, or PATCH. It is an error to set body on a task with an incompatible HttpMethod. */
   body?: string;
   /** If specified, an [OIDC](https://developers.google.com/identity/protocols/OpenIDConnect) token will be generated and attached as an `Authorization` header in the HTTP request. This type of authorization can be used for many scenarios, including calling Cloud Run, or endpoints where you intend to validate the token yourself. */
@@ -310,7 +310,7 @@ export interface Task {
   /** The deadline for requests sent to the worker. If the worker does not respond by this deadline then the request is cancelled and the attempt is marked as a `DEADLINE_EXCEEDED` failure. Cloud Tasks will retry the task according to the RetryConfig. Note that when the request is cancelled, Cloud Tasks will stop listening for the response, but whether the worker stops processing depends on the worker. For example, if the worker is stuck, it may not react to cancelled requests. The default and maximum values depend on the type of request: * For HTTP tasks, the default is 10 minutes. The deadline must be in the interval [15 seconds, 30 minutes]. * For App Engine tasks, 0 indicates that the request has the default deadline. The default deadline depends on the [scaling type](https://cloud.google.com/appengine/docs/standard/go/how-instances-are-managed#instance_scaling) of the service: 10 minutes for standard apps with automatic scaling, 24 hours for standard apps with manual and basic scaling, and 60 minutes for flex apps. If the request deadline is set, it must be in the interval [15 seconds, 24 hours 15 seconds]. Regardless of the task's `dispatch_deadline`, the app handler will not run for longer than than the service's timeout. We recommend setting the `dispatch_deadline` to at most a few seconds more than the app handler's timeout. For more information see [Timeouts](https://cloud.google.com/tasks/docs/creating-appengine-handlers#timeouts). The value must be given as a string that indicates the length of time (in seconds) followed by `s` (for "seconds"). For more information on the format, see the documentation for [Duration](https://protobuf.dev/reference/protobuf/google.protobuf/#duration). `dispatch_deadline` will be truncated to the nearest millisecond. The deadline is an approximate deadline. */
   dispatchDeadline?: string;
   /** Output only. The view specifies which subset of the Task has been returned. */
-  view?: TaskViewEnum;
+  view?: TaskViewEnum | (string & {});
 }
 export const Task = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -349,7 +349,7 @@ export const CreateTaskRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateTaskRequest",
 }) as any as S.Schema<CreateTaskRequest>;
 
-export type CreateTaskRequestList = ReadonlyArray<CreateTaskRequest>;
+export type CreateTaskRequestList = Array<CreateTaskRequest>;
 export const CreateTaskRequestList = /*@__PURE__*/ S.Array(
   CreateTaskRequest,
 ) as any as S.Schema<CreateTaskRequestList>;
@@ -415,7 +415,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -608,7 +608,7 @@ export const HeaderOverride = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "HeaderOverride" }) as any as S.Schema<HeaderOverride>;
 
-export type HeaderOverrideList = ReadonlyArray<HeaderOverride>;
+export type HeaderOverrideList = Array<HeaderOverride>;
 export const HeaderOverrideList = /*@__PURE__*/ S.Array(
   HeaderOverride,
 ) as any as S.Schema<HeaderOverrideList>;
@@ -647,7 +647,7 @@ export const QueryOverride = /*@__PURE__*/ S.suspend(() =>
 /** URI Override. When specified, all the HTTP tasks inside the queue will be partially or fully overridden depending on the configured values. */
 export interface UriOverride {
   /** Scheme override. When specified, the task URI scheme is replaced by the provided value (HTTP or HTTPS). */
-  scheme?: UriOverrideSchemeEnum;
+  scheme?: UriOverrideSchemeEnum | (string & {});
   /** Host override. When specified, replaces the host part of the task URL. For example, if the task URL is "https://www.google.com," and host value is set to "example.net", the overridden URI will be changed to "https://example.net." Host value cannot be an empty string (INVALID_ARGUMENT). */
   host?: string;
   /** Port override. When specified, replaces the port part of the task URI. For instance, for a URI "https://www.example.com/example" and port=123, the overridden URI becomes "https://www.example.com:123/example". Note that the port value must be a positive integer. Setting the port to 0 (Zero) clears the URI port. */
@@ -655,7 +655,9 @@ export interface UriOverride {
   /** URI path. When specified, replaces the existing path of the task URL. Setting the path value to an empty string clears the URI path segment. */
   pathOverride?: PathOverride;
   /** URI Override Enforce Mode When specified, determines the Target UriOverride mode. If not specified, it defaults to ALWAYS. */
-  uriOverrideEnforceMode?: UriOverrideUriOverrideEnforceModeEnum;
+  uriOverrideEnforceMode?:
+    | UriOverrideUriOverrideEnforceModeEnum
+    | (string & {});
   /** URI Query. When specified, replaces the query part of the task URI. Setting the query value to an empty string clears the URI query segment. */
   queryOverride?: QueryOverride;
 }
@@ -673,7 +675,7 @@ export const UriOverride = /*@__PURE__*/ S.suspend(() =>
 /** HTTP target. When specified as a Queue, all the tasks with [HttpRequest] will be overridden according to the target. */
 export interface HttpTarget {
   /** The HTTP method to use for the request. When specified, it overrides HttpRequest.http_method for the task. Note that if the value is set to HttpMethod.GET the HttpRequest.body of the task will be ignored at execution time. */
-  httpMethod?: HttpTargetHttpMethodEnum;
+  httpMethod?: HttpTargetHttpMethodEnum | (string & {});
   /** HTTP target headers. This map contains the header field names and values. Headers will be set when running the CreateTask and/or BufferTask. These headers represent a subset of the headers that will be configured for the task's HTTP request. Some HTTP request headers will be ignored or replaced. A partial list of headers that will be ignored or replaced is: * Several predefined headers, prefixed with "X-CloudTasks-", can be used to define properties of the task. * Host: This will be computed by Cloud Tasks and derived from HttpRequest.url. * Content-Length: This will be computed by Cloud Tasks. `Content-Type` won't be set by Cloud Tasks. You can explicitly set `Content-Type` to a media type when the task is created. For example,`Content-Type` can be set to `"application/octet-stream"` or `"application/json"`. The default value is set to `"application/json"`. * User-Agent: This will be set to `"Google-Cloud-Tasks"`. Headers which can have multiple values (according to RFC2616) can be specified using comma-separated values. The size of the headers must be less than 80KB. Queue-level headers to override headers of all the tasks in the queue. Do not put business sensitive or personally identifying data in the HTTP Header Override Configuration or other similar fields in accordance with Section 12 (Resource Fields) of the [Service Specific Terms](https://cloud.google.com/terms/service-terms). */
   headerOverrides?: HeaderOverrideList;
   /** If specified, an [OAuth token](https://developers.google.com/identity/protocols/OAuth2) is generated and attached as the `Authorization` header in the HTTP request. This type of authorization should generally be used only when calling Google APIs hosted on *.googleapis.com. Note that both the service account email and the scope MUST be specified when using the queue-level authorization override. */
@@ -726,7 +728,7 @@ export const StackdriverLoggingConfig = /*@__PURE__*/ S.suspend(() =>
 /** A queue is a container of related tasks. Queues are configured to manage how those tasks are dispatched. Configurable properties include rate limits, retry options, queue types, and others. */
 export interface Queue {
   /** Output only. The state of the queue. `state` can only be changed by called PauseQueue, ResumeQueue, or uploading [queue.yaml/xml](https://cloud.google.com/appengine/docs/python/config/queueref). UpdateQueue cannot be used to change `state`. */
-  state?: QueueStateEnum;
+  state?: QueueStateEnum | (string & {});
   /** Output only. The realtime, informational statistics for a queue. In order to receive the statistics the caller should include this field in the FieldMask. */
   stats?: QueueStats;
   /** AppEngineHttpQueue settings apply only to App Engine tasks in this queue. Http tasks are not affected by this proto. */
@@ -734,7 +736,7 @@ export interface Queue {
   /** The maximum amount of time that a task will be retained in this queue. After a task has lived for `task_ttl`, the task will be deleted regardless of whether it was dispatched or not. The minimum value is 10 days. The maximum value is 10 years. The value must be given as a string that indicates the length of time (in seconds) followed by `s` (for "seconds"). For more information on the format, see the documentation for [Duration](https://protobuf.dev/reference/protobuf/google.protobuf/#duration). Queues created by Cloud Tasks have a default `task_ttl` of 31 days. . Queues created by queue.yaml/xml have a fixed `task_ttl` of the maximum duration, because there is a [storage quota](https://docs.cloud.google.com/appengine/docs/standard/quotas#Task_Queue) for these queues. */
   taskTtl?: string;
   /** Immutable. The type of a queue (push or pull). `Queue.type` is an immutable property of the queue that is set at the queue creation time. When left unspecified, the default value of `PUSH` is selected. */
-  type?: QueueTypeEnum;
+  type?: QueueTypeEnum | (string & {});
   /** The task tombstone time to live (TTL). After a task is deleted or executed, the task's tombstone is retained for the length of time specified by `tombstone_ttl`. The tombstone is used by task de-duplication; another task with the same name can't be created until the tombstone has expired. For more information about task de-duplication, see the documentation for CreateTaskRequest. The minimum value is 1 hour. The maximum value is 9 days. The value must be given as a string that indicates the length of time (in seconds) followed by `s` (for "seconds"). For more information on the format, see the documentation for [Duration](https://protobuf.dev/reference/protobuf/google.protobuf/#duration). Queues created by Cloud Tasks have a default `tombstone_ttl` of 1 hour. */
   tombstoneTtl?: string;
   /** Modifies HTTP target for HTTP tasks. */
@@ -973,7 +975,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
-export type BindingList = ReadonlyArray<Binding>;
+export type BindingList = Array<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -1139,7 +1141,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = ReadonlyArray<Location>;
+export type LocationList = Array<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -1190,7 +1192,7 @@ export const ListProjectsLocationsQueuesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsQueuesRequest",
 }) as any as S.Schema<ListProjectsLocationsQueuesRequest>;
 
-export type QueueList = ReadonlyArray<Queue>;
+export type QueueList = Array<Queue>;
 export const QueueList = /*@__PURE__*/ S.Array(
   Queue,
 ) as any as S.Schema<QueueList>;
@@ -1250,7 +1252,7 @@ export const ListProjectsLocationsQueuesTasksRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsQueuesTasksRequest",
 }) as any as S.Schema<ListProjectsLocationsQueuesTasksRequest>;
 
-export type TaskList = ReadonlyArray<Task>;
+export type TaskList = Array<Task>;
 export const TaskList = /*@__PURE__*/ S.Array(
   Task,
 ) as any as S.Schema<TaskList>;

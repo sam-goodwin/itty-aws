@@ -37,19 +37,19 @@ export const UnusedAccessConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UnusedAccessConfiguration>;
 
 /** Property contains */
-export type FilterContainsList = ReadonlyArray<string>;
+export type FilterContainsList = Array<string>;
 export const FilterContainsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<FilterContainsList>;
 
 /** Property eq */
-export type FilterEqList = ReadonlyArray<string>;
+export type FilterEqList = Array<string>;
 export const FilterEqList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<FilterEqList>;
 
 /** Property neq */
-export type FilterNeqList = ReadonlyArray<string>;
+export type FilterNeqList = Array<string>;
 export const FilterNeqList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<FilterNeqList>;
@@ -78,7 +78,7 @@ export const Filter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Filter" }) as any as S.Schema<Filter>;
 
 /** Property filter */
-export type ArchiveRuleFilterList = ReadonlyArray<Filter>;
+export type ArchiveRuleFilterList = Array<Filter>;
 export const ArchiveRuleFilterList = /*@__PURE__*/ S.Array(
   Filter,
 ) as any as S.Schema<ArchiveRuleFilterList>;
@@ -99,7 +99,7 @@ export const ArchiveRule = /*@__PURE__*/ S.suspend(() =>
 
 /** Property archiveRules */
 export type AwsAccessAnalyzerAnalyzerPropertiesArchiveRulesList =
-  ReadonlyArray<ArchiveRule>;
+  Array<ArchiveRule>;
 export const AwsAccessAnalyzerAnalyzerPropertiesArchiveRulesList =
   /*@__PURE__*/ S.Array(
     ArchiveRule,
@@ -120,7 +120,7 @@ export const Tag = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
 
 /** An array of key-value pairs to apply to this resource. */
-export type AwsAccessAnalyzerAnalyzerPropertiesTagsList = ReadonlyArray<Tag>;
+export type AwsAccessAnalyzerAnalyzerPropertiesTagsList = Array<Tag>;
 export const AwsAccessAnalyzerAnalyzerPropertiesTagsList =
   /*@__PURE__*/ S.Array(
     Tag,
@@ -539,7 +539,7 @@ export const AccessAnalyzerAnalyzer = /*@__PURE__*/ S.suspend(() =>
 
 /** The AccessAnalyzerAnalyzer items on this page */
 export type AccessAnalyzerAnalyzerListResultValueList =
-  ReadonlyArray<AccessAnalyzerAnalyzer>;
+  Array<AccessAnalyzerAnalyzer>;
 export const AccessAnalyzerAnalyzerListResultValueList = /*@__PURE__*/ S.Array(
   AccessAnalyzerAnalyzer,
 ) as any as S.Schema<AccessAnalyzerAnalyzerListResultValueList>;
@@ -687,8 +687,9 @@ export type ExtendedKeyUsageName =
 export const ExtendedKeyUsageName = /*@__PURE__*/ S.String;
 
 /** <p>Contains a list of Extended Key Usage X.509 v3 extension objects. Each object specifies a purpose for which the certificate public key can be used and consists of a name and an object identifier (OID). </p> */
-export type AwsAcmCertificateSummaryPropertiesExtendedKeyUsagesList =
-  ReadonlyArray<ExtendedKeyUsageName>;
+export type AwsAcmCertificateSummaryPropertiesExtendedKeyUsagesList = Array<
+  ExtendedKeyUsageName | (string & {})
+>;
 export const AwsAcmCertificateSummaryPropertiesExtendedKeyUsagesList =
   /*@__PURE__*/ S.Array(
     ExtendedKeyUsageName,
@@ -708,7 +709,7 @@ export const KeyAlgorithm = /*@__PURE__*/ S.String;
 /** Definition of KeyAlgorithmEnumValue */
 export interface KeyAlgorithmEnumValue {
   /** Property value */
-  value?: KeyAlgorithm;
+  value?: KeyAlgorithm | (string & {});
 }
 export const KeyAlgorithmEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -734,8 +735,9 @@ export type KeyUsageName =
 export const KeyUsageName = /*@__PURE__*/ S.String;
 
 /** <p>A list of Key Usage X.509 v3 extension objects. Each object is a string value that identifies the purpose of the public key contained in the certificate. Possible extension values include DIGITAL_SIGNATURE, KEY_ENCHIPHERMENT, NON_REPUDIATION, and more.</p> */
-export type AwsAcmCertificateSummaryPropertiesKeyUsagesList =
-  ReadonlyArray<KeyUsageName>;
+export type AwsAcmCertificateSummaryPropertiesKeyUsagesList = Array<
+  KeyUsageName | (string & {})
+>;
 export const AwsAcmCertificateSummaryPropertiesKeyUsagesList =
   /*@__PURE__*/ S.Array(
     KeyUsageName,
@@ -748,7 +750,7 @@ export const RenewalEligibility = /*@__PURE__*/ S.String;
 /** Definition of RenewalEligibilityEnumValue */
 export interface RenewalEligibilityEnumValue {
   /** Property value */
-  value?: RenewalEligibility;
+  value?: RenewalEligibility | (string & {});
 }
 export const RenewalEligibilityEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -772,7 +774,7 @@ export const CertificateStatus = /*@__PURE__*/ S.String;
 /** Definition of CertificateStatusEnumValue */
 export interface CertificateStatusEnumValue {
   /** Property value */
-  value?: CertificateStatus;
+  value?: CertificateStatus | (string & {});
 }
 export const CertificateStatusEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -784,7 +786,7 @@ export const CertificateStatusEnumValue = /*@__PURE__*/ S.suspend(() =>
 
 /** <p>One or more domain names (subject alternative names) included in the certificate. This list contains the domain names that are bound to the public key that is contained in the certificate. The subject alternative names include the canonical domain name (CN) of the certificate and additional domain names that can be used to connect to the website. </p> <p>When called by <a href='https://docs.aws.amazon.com/acm/latestAPIReference/API_ListCertificates.html'>ListCertificates</a>, this parameter will only return the first 100 subject alternative names included in the certificate. To display the full list of subject alternative names, use <a href='https://docs.aws.amazon.com/acm/latestAPIReference/API_DescribeCertificate.html'>DescribeCertificate</a>.</p> */
 export type AwsAcmCertificateSummaryPropertiesSubjectAlternativeNameSummariesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const AwsAcmCertificateSummaryPropertiesSubjectAlternativeNameSummariesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -797,7 +799,7 @@ export const CertificateType = /*@__PURE__*/ S.String;
 /** Definition of CertificateTypeEnumValue */
 export interface CertificateTypeEnumValue {
   /** Property value */
-  value?: CertificateType;
+  value?: CertificateType | (string & {});
 }
 export const CertificateTypeEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1204,7 +1206,7 @@ export const AcmCertificateSummary = /*@__PURE__*/ S.suspend(() =>
 
 /** The AcmCertificateSummary items on this page */
 export type AcmCertificateSummaryListResultValueList =
-  ReadonlyArray<AcmCertificateSummary>;
+  Array<AcmCertificateSummary>;
 export const AcmCertificateSummaryListResultValueList = /*@__PURE__*/ S.Array(
   AcmCertificateSummary,
 ) as any as S.Schema<AcmCertificateSummaryListResultValueList>;
@@ -1336,8 +1338,7 @@ export const ApiGatewayRestApisCreateOrReplaceRequestTagsMap =
   ) as any as S.Schema<ApiGatewayRestApisCreateOrReplaceRequestTagsMap>;
 
 /** The list of binary media types supported by the RestApi. By default, the RestApi supports only UTF-8-encoded text payloads. */
-export type AwsApiGatewayRestApiPropertiesBinaryMediaTypesList =
-  ReadonlyArray<string>;
+export type AwsApiGatewayRestApiPropertiesBinaryMediaTypesList = Array<string>;
 export const AwsApiGatewayRestApiPropertiesBinaryMediaTypesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1373,13 +1374,13 @@ export const S3Location = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "S3Location" }) as any as S.Schema<S3Location>;
 
 /** A list of endpoint types of an API (RestApi) or its custom domain name (DomainName). For an edge-optimized API and its custom domain name, the endpoint type is ``'EDGE'``. For a regional API and its custom domain name, the endpoint type is ``REGIONAL``. For a private API, the endpoint type is ``PRIVATE``. */
-export type EndpointConfigurationTypesList = ReadonlyArray<string>;
+export type EndpointConfigurationTypesList = Array<string>;
 export const EndpointConfigurationTypesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EndpointConfigurationTypesList>;
 
 /** A list of VpcEndpointIds of an API (RestApi) against which to create Route53 ALIASes. It is only supported for ``PRIVATE`` endpoint type. */
-export type EndpointConfigurationVpcEndpointIdsList = ReadonlyArray<string>;
+export type EndpointConfigurationVpcEndpointIdsList = Array<string>;
 export const EndpointConfigurationVpcEndpointIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EndpointConfigurationVpcEndpointIdsList>;
@@ -1425,7 +1426,7 @@ export const Tag_2 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tag_2" }) as any as S.Schema<Tag_2>;
 
 /** The key-value map of strings. The valid character set is [a-zA-Z+-=._:/]. The tag key can be up to 128 characters and must not start with ``aws:``. The tag value can be up to 256 characters. */
-export type AwsApiGatewayRestApiPropertiesTagsList = ReadonlyArray<Tag_2>;
+export type AwsApiGatewayRestApiPropertiesTagsList = Array<Tag_2>;
 export const AwsApiGatewayRestApiPropertiesTagsList = /*@__PURE__*/ S.Array(
   Tag_2,
 ) as any as S.Schema<AwsApiGatewayRestApiPropertiesTagsList>;
@@ -1817,8 +1818,7 @@ export const ApiGatewayRestApi = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ApiGatewayRestApi>;
 
 /** The ApiGatewayRestApi items on this page */
-export type ApiGatewayRestApiListResultValueList =
-  ReadonlyArray<ApiGatewayRestApi>;
+export type ApiGatewayRestApiListResultValueList = Array<ApiGatewayRestApi>;
 export const ApiGatewayRestApiListResultValueList = /*@__PURE__*/ S.Array(
   ApiGatewayRestApi,
 ) as any as S.Schema<ApiGatewayRestApiListResultValueList>;
@@ -2030,7 +2030,7 @@ export const MethodSetting = /*@__PURE__*/ S.suspend(() =>
 
 /** A map that defines the method settings for a Stage resource. Keys (designated as ``/{method_setting_key`` below) are method paths defined as ``{resource_path}/{http_method}`` for an individual method override, or ``/\*\/\*`` for overriding all methods in the stage. */
 export type AwsApiGatewayStagePropertiesMethodSettingsList =
-  ReadonlyArray<MethodSetting>;
+  Array<MethodSetting>;
 export const AwsApiGatewayStagePropertiesMethodSettingsList =
   /*@__PURE__*/ S.Array(
     MethodSetting,
@@ -2051,7 +2051,7 @@ export const Tag_3 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tag_3" }) as any as S.Schema<Tag_3>;
 
 /** The collection of tags. Each tag element is associated with a given resource. */
-export type AwsApiGatewayStagePropertiesTagsList = ReadonlyArray<Tag_3>;
+export type AwsApiGatewayStagePropertiesTagsList = Array<Tag_3>;
 export const AwsApiGatewayStagePropertiesTagsList = /*@__PURE__*/ S.Array(
   Tag_3,
 ) as any as S.Schema<AwsApiGatewayStagePropertiesTagsList>;
@@ -2440,7 +2440,7 @@ export const ApiGatewayStage = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ApiGatewayStage>;
 
 /** The ApiGatewayStage items on this page */
-export type ApiGatewayStageListResultValueList = ReadonlyArray<ApiGatewayStage>;
+export type ApiGatewayStageListResultValueList = Array<ApiGatewayStage>;
 export const ApiGatewayStageListResultValueList = /*@__PURE__*/ S.Array(
   ApiGatewayStage,
 ) as any as S.Schema<ApiGatewayStageListResultValueList>;
@@ -2579,7 +2579,7 @@ export const AuthenticationType = /*@__PURE__*/ S.String;
 /** Definition of AuthenticationTypeEnumValue */
 export interface AuthenticationTypeEnumValue {
   /** Property value */
-  value?: AuthenticationType;
+  value?: AuthenticationType | (string & {});
 }
 export const AuthenticationTypeEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2673,7 +2673,7 @@ export const AdditionalAuthenticationProvider = /*@__PURE__*/ S.suspend(() =>
 
 /** <p>A list of additional authentication providers for the <code>GraphqlApi</code> API.</p> */
 export type AwsAppSyncGraphqlApiPropertiesAdditionalAuthenticationProvidersList =
-  ReadonlyArray<AdditionalAuthenticationProvider>;
+  Array<AdditionalAuthenticationProvider>;
 export const AwsAppSyncGraphqlApiPropertiesAdditionalAuthenticationProvidersList =
   /*@__PURE__*/ S.Array(
     AdditionalAuthenticationProvider,
@@ -2686,7 +2686,7 @@ export const GraphQLApiType = /*@__PURE__*/ S.String;
 /** Definition of GraphQLApiTypeEnumValue */
 export interface GraphQLApiTypeEnumValue {
   /** Property value */
-  value?: GraphQLApiType;
+  value?: GraphQLApiType | (string & {});
 }
 export const GraphQLApiTypeEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2714,7 +2714,7 @@ export const DataSourceLevelMetricsBehavior = /*@__PURE__*/ S.String;
 /** Definition of DataSourceLevelMetricsBehaviorEnumValue */
 export interface DataSourceLevelMetricsBehaviorEnumValue {
   /** Property value */
-  value?: DataSourceLevelMetricsBehavior;
+  value?: DataSourceLevelMetricsBehavior | (string & {});
 }
 export const DataSourceLevelMetricsBehaviorEnumValue = /*@__PURE__*/ S.suspend(
   () =>
@@ -2732,7 +2732,7 @@ export const OperationLevelMetricsConfig = /*@__PURE__*/ S.String;
 /** Definition of OperationLevelMetricsConfigEnumValue */
 export interface OperationLevelMetricsConfigEnumValue {
   /** Property value */
-  value?: OperationLevelMetricsConfig;
+  value?: OperationLevelMetricsConfig | (string & {});
 }
 export const OperationLevelMetricsConfigEnumValue = /*@__PURE__*/ S.suspend(
   () =>
@@ -2752,7 +2752,7 @@ export const ResolverLevelMetricsBehavior = /*@__PURE__*/ S.String;
 /** Definition of ResolverLevelMetricsBehaviorEnumValue */
 export interface ResolverLevelMetricsBehaviorEnumValue {
   /** Property value */
-  value?: ResolverLevelMetricsBehavior;
+  value?: ResolverLevelMetricsBehavior | (string & {});
 }
 export const ResolverLevelMetricsBehaviorEnumValue = /*@__PURE__*/ S.suspend(
   () =>
@@ -2795,7 +2795,7 @@ export const GraphQLApiIntrospectionConfig = /*@__PURE__*/ S.String;
 /** Definition of GraphQLApiIntrospectionConfigEnumValue */
 export interface GraphQLApiIntrospectionConfigEnumValue {
   /** Property value */
-  value?: GraphQLApiIntrospectionConfig;
+  value?: GraphQLApiIntrospectionConfig | (string & {});
 }
 export const GraphQLApiIntrospectionConfigEnumValue = /*@__PURE__*/ S.suspend(
   () =>
@@ -2813,7 +2813,7 @@ export const FieldLogLevel = /*@__PURE__*/ S.String;
 /** Definition of FieldLogLevelEnumValue */
 export interface FieldLogLevelEnumValue {
   /** Property value */
-  value?: FieldLogLevel;
+  value?: FieldLogLevel | (string & {});
 }
 export const FieldLogLevelEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2865,7 +2865,7 @@ export const DefaultAction = /*@__PURE__*/ S.String;
 /** Definition of DefaultActionEnumValue */
 export interface DefaultActionEnumValue {
   /** Property value */
-  value?: DefaultAction;
+  value?: DefaultAction | (string & {});
 }
 export const DefaultActionEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2902,7 +2902,7 @@ export const GraphQLApiVisibility = /*@__PURE__*/ S.String;
 /** Definition of GraphQLApiVisibilityEnumValue */
 export interface GraphQLApiVisibilityEnumValue {
   /** Property value */
-  value?: GraphQLApiVisibility;
+  value?: GraphQLApiVisibility | (string & {});
 }
 export const GraphQLApiVisibilityEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3317,8 +3317,7 @@ export const AppSyncGraphqlApi = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AppSyncGraphqlApi>;
 
 /** The AppSyncGraphqlApi items on this page */
-export type AppSyncGraphqlApiListResultValueList =
-  ReadonlyArray<AppSyncGraphqlApi>;
+export type AppSyncGraphqlApiListResultValueList = Array<AppSyncGraphqlApi>;
 export const AppSyncGraphqlApiListResultValueList = /*@__PURE__*/ S.Array(
   AppSyncGraphqlApi,
 ) as any as S.Schema<AppSyncGraphqlApiListResultValueList>;
@@ -3447,7 +3446,7 @@ export const AutoScalingAutoScalingGroupsCreateOrReplaceRequestTagsMap =
 
 /** A list of Availability Zones where instances in the Auto Scaling group can be created. Used for launching into the default VPC subnet in each Availability Zone when not using the ``VPCZoneIdentifier`` property, or for attaching a network interface when an existing network interface ID is specified in a launch template. */
 export type AwsAutoScalingAutoScalingGroupPropertiesAvailabilityZonesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const AwsAutoScalingAutoScalingGroupPropertiesAvailabilityZonesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3521,7 +3520,7 @@ export const LifecycleHookSpecification = /*@__PURE__*/ S.suspend(() =>
 
 /** One or more lifecycle hooks to add to the Auto Scaling group before instances are launched. */
 export type AwsAutoScalingAutoScalingGroupPropertiesLifecycleHookSpecificationListList =
-  ReadonlyArray<LifecycleHookSpecification>;
+  Array<LifecycleHookSpecification>;
 export const AwsAutoScalingAutoScalingGroupPropertiesLifecycleHookSpecificationListList =
   /*@__PURE__*/ S.Array(
     LifecycleHookSpecification,
@@ -3529,14 +3528,14 @@ export const AwsAutoScalingAutoScalingGroupPropertiesLifecycleHookSpecificationL
 
 /** A list of Classic Load Balancers associated with this Auto Scaling group. For Application Load Balancers, Network Load Balancers, and Gateway Load Balancers, specify the ``TargetGroupARNs`` property instead. */
 export type AwsAutoScalingAutoScalingGroupPropertiesLoadBalancerNamesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const AwsAutoScalingAutoScalingGroupPropertiesLoadBalancerNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AwsAutoScalingAutoScalingGroupPropertiesLoadBalancerNamesList>;
 
 /** Identifies the metrics to enable. You can specify one or more of the following metrics: + ``GroupMinSize`` + ``GroupMaxSize`` + ``GroupDesiredCapacity`` + ``GroupInServiceInstances`` + ``GroupPendingInstances`` + ``GroupStandbyInstances`` + ``GroupTerminatingInstances`` + ``GroupTotalInstances`` + ``GroupInServiceCapacity`` + ``GroupPendingCapacity`` + ``GroupStandbyCapacity`` + ``GroupTerminatingCapacity`` + ``GroupTotalCapacity`` + ``WarmPoolDesiredCapacity`` + ``WarmPoolWarmedCapacity`` + ``WarmPoolPendingCapacity`` + ``WarmPoolTerminatingCapacity`` + ``WarmPoolTotalCapacity`` + ``GroupAndWarmPoolDesiredCapacity`` + ``GroupAndWarmPoolTotalCapacity`` If you specify ``Granularity`` and don't specify any metrics, all metrics are enabled. For more information, see [Auto Scaling group metrics](https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-cloudwatch-monitoring.html#as-group-metrics) in the *Amazon EC2 Auto Scaling User Guide*. */
-export type MetricsCollectionMetricsList = ReadonlyArray<string>;
+export type MetricsCollectionMetricsList = Array<string>;
 export const MetricsCollectionMetricsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<MetricsCollectionMetricsList>;
@@ -3559,7 +3558,7 @@ export const MetricsCollection = /*@__PURE__*/ S.suspend(() =>
 
 /** Enables the monitoring of group metrics of an Auto Scaling group. By default, these metrics are disabled. */
 export type AwsAutoScalingAutoScalingGroupPropertiesMetricsCollectionList =
-  ReadonlyArray<MetricsCollection>;
+  Array<MetricsCollection>;
 export const AwsAutoScalingAutoScalingGroupPropertiesMetricsCollectionList =
   /*@__PURE__*/ S.Array(
     MetricsCollection,
@@ -3610,15 +3609,14 @@ export const AcceleratorCountRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AcceleratorCountRequest>;
 
 /** Indicates whether instance types must have accelerators by specific manufacturers. + For instance types with NVIDIA devices, specify ``nvidia``. + For instance types with AMD devices, specify ``amd``. + For instance types with AWS devices, specify ``amazon-web-services``. + For instance types with Xilinx devices, specify ``xilinx``. Default: Any manufacturer */
-export type InstanceRequirementsAcceleratorManufacturersList =
-  ReadonlyArray<string>;
+export type InstanceRequirementsAcceleratorManufacturersList = Array<string>;
 export const InstanceRequirementsAcceleratorManufacturersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<InstanceRequirementsAcceleratorManufacturersList>;
 
 /** Lists the accelerators that must be on an instance type. + For instance types with NVIDIA A100 GPUs, specify ``a100``. + For instance types with NVIDIA V100 GPUs, specify ``v100``. + For instance types with NVIDIA K80 GPUs, specify ``k80``. + For instance types with NVIDIA T4 GPUs, specify ``t4``. + For instance types with NVIDIA M60 GPUs, specify ``m60``. + For instance types with AMD Radeon Pro V520 GPUs, specify ``radeon-pro-v520``. + For instance types with Xilinx VU9P FPGAs, specify ``vu9p``. Default: Any accelerator */
-export type InstanceRequirementsAcceleratorNamesList = ReadonlyArray<string>;
+export type InstanceRequirementsAcceleratorNamesList = Array<string>;
 export const InstanceRequirementsAcceleratorNamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<InstanceRequirementsAcceleratorNamesList>;
@@ -3640,14 +3638,13 @@ export const AcceleratorTotalMemoryMiBRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AcceleratorTotalMemoryMiBRequest>;
 
 /** Lists the accelerator types that must be on an instance type. + For instance types with GPU accelerators, specify ``gpu``. + For instance types with FPGA accelerators, specify ``fpga``. + For instance types with inference accelerators, specify ``inference``. Default: Any accelerator type */
-export type InstanceRequirementsAcceleratorTypesList = ReadonlyArray<string>;
+export type InstanceRequirementsAcceleratorTypesList = Array<string>;
 export const InstanceRequirementsAcceleratorTypesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<InstanceRequirementsAcceleratorTypesList>;
 
 /** The instance types to apply your specified attributes against. All other instance types are ignored, even if they match your specified attributes. You can use strings with one or more wild cards, represented by an asterisk (``*``), to allow an instance type, size, or generation. The following are examples: ``m5.8xlarge``, ``c5*.*``, ``m5a.*``, ``r*``, ``*3*``. For example, if you specify ``c5*``, Amazon EC2 Auto Scaling will allow the entire C5 instance family, which includes all C5a and C5n instance types. If you specify ``m5a.*``, Amazon EC2 Auto Scaling will allow all the M5a instance types, but not the M5n instance types. If you specify ``AllowedInstanceTypes``, you can't specify ``ExcludedInstanceTypes``. Default: All instance types */
-export type InstanceRequirementsAllowedInstanceTypesList =
-  ReadonlyArray<string>;
+export type InstanceRequirementsAllowedInstanceTypesList = Array<string>;
 export const InstanceRequirementsAllowedInstanceTypesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3670,28 +3667,27 @@ export const BaselineEbsBandwidthMbpsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BaselineEbsBandwidthMbpsRequest>;
 
 /** Lists which specific CPU manufacturers to include. + For instance types with Intel CPUs, specify ``intel``. + For instance types with AMD CPUs, specify ``amd``. + For instance types with AWS CPUs, specify ``amazon-web-services``. Don't confuse the CPU hardware manufacturer with the CPU hardware architecture. Instances will be launched with a compatible CPU architecture based on the Amazon Machine Image (AMI) that you specify in your launch template. Default: Any manufacturer */
-export type InstanceRequirementsCpuManufacturersList = ReadonlyArray<string>;
+export type InstanceRequirementsCpuManufacturersList = Array<string>;
 export const InstanceRequirementsCpuManufacturersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<InstanceRequirementsCpuManufacturersList>;
 
 /** The instance types to exclude. You can use strings with one or more wild cards, represented by an asterisk (``*``), to exclude an instance family, type, size, or generation. The following are examples: ``m5.8xlarge``, ``c5*.*``, ``m5a.*``, ``r*``, ``*3*``. For example, if you specify ``c5*``, you are excluding the entire C5 instance family, which includes all C5a and C5n instance types. If you specify ``m5a.*``, Amazon EC2 Auto Scaling will exclude all the M5a instance types, but not the M5n instance types. If you specify ``ExcludedInstanceTypes``, you can't specify ``AllowedInstanceTypes``. Default: No excluded instance types */
-export type InstanceRequirementsExcludedInstanceTypesList =
-  ReadonlyArray<string>;
+export type InstanceRequirementsExcludedInstanceTypesList = Array<string>;
 export const InstanceRequirementsExcludedInstanceTypesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<InstanceRequirementsExcludedInstanceTypesList>;
 
 /** Indicates whether current or previous generation instance types are included. + For current generation instance types, specify ``current``. The current generation includes EC2 instance types currently recommended for use. This typically includes the latest two to three generations in each instance family. For more information, see [Instance types](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html) in the *Amazon EC2 User Guide for Linux Instances*. + For previous generation instance types, specify ``previous``. Default: Any current or previous generation */
-export type InstanceRequirementsInstanceGenerationsList = ReadonlyArray<string>;
+export type InstanceRequirementsInstanceGenerationsList = Array<string>;
 export const InstanceRequirementsInstanceGenerationsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<InstanceRequirementsInstanceGenerationsList>;
 
 /** Indicates the type of local storage that is required. + For instance types with hard disk drive (HDD) storage, specify ``hdd``. + For instance types with solid state drive (SSD) storage, specify ``ssd``. Default: Any local storage type */
-export type InstanceRequirementsLocalStorageTypesList = ReadonlyArray<string>;
+export type InstanceRequirementsLocalStorageTypesList = Array<string>;
 export const InstanceRequirementsLocalStorageTypesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<InstanceRequirementsLocalStorageTypesList>;
@@ -3905,8 +3901,7 @@ export const LaunchTemplateOverrides = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LaunchTemplateOverrides>;
 
 /** Any properties that you specify override the same properties in the launch template. */
-export type LaunchTemplateOverridesList =
-  ReadonlyArray<LaunchTemplateOverrides>;
+export type LaunchTemplateOverridesList = Array<LaunchTemplateOverrides>;
 export const LaunchTemplateOverridesList = /*@__PURE__*/ S.Array(
   LaunchTemplateOverrides,
 ) as any as S.Schema<LaunchTemplateOverridesList>;
@@ -3942,8 +3937,7 @@ export const MixedInstancesPolicy = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MixedInstancesPolicy>;
 
 /** A list of event types that send a notification. Event types can include any of the following types. *Allowed values*: + ``autoscaling:EC2_INSTANCE_LAUNCH`` + ``autoscaling:EC2_INSTANCE_LAUNCH_ERROR`` + ``autoscaling:EC2_INSTANCE_TERMINATE`` + ``autoscaling:EC2_INSTANCE_TERMINATE_ERROR`` + ``autoscaling:TEST_NOTIFICATION`` */
-export type NotificationConfigurationNotificationTypesList =
-  ReadonlyArray<string>;
+export type NotificationConfigurationNotificationTypesList = Array<string>;
 export const NotificationConfigurationNotificationTypesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3969,7 +3963,7 @@ export const NotificationConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** Configures an Auto Scaling group to send notifications when specified events take place. */
 export type AwsAutoScalingAutoScalingGroupPropertiesNotificationConfigurationsList =
-  ReadonlyArray<NotificationConfiguration>;
+  Array<NotificationConfiguration>;
 export const AwsAutoScalingAutoScalingGroupPropertiesNotificationConfigurationsList =
   /*@__PURE__*/ S.Array(
     NotificationConfiguration,
@@ -3994,7 +3988,7 @@ export const TagProperty = /*@__PURE__*/ S.suspend(() =>
 
 /** One or more tags. You can tag your Auto Scaling group and propagate the tags to the Amazon EC2 instances it launches. Tags are not propagated to Amazon EBS volumes. To add tags to Amazon EBS volumes, specify the tags in a launch template but use caution. If the launch template specifies an instance tag with a key that is also specified for the Auto Scaling group, Amazon EC2 Auto Scaling overrides the value of that instance tag with the value specified by the Auto Scaling group. For more information, see [Tag Auto Scaling groups and instances](https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-tagging.html) in the *Amazon EC2 Auto Scaling User Guide*. */
 export type AwsAutoScalingAutoScalingGroupPropertiesTagsList =
-  ReadonlyArray<TagProperty>;
+  Array<TagProperty>;
 export const AwsAutoScalingAutoScalingGroupPropertiesTagsList =
   /*@__PURE__*/ S.Array(
     TagProperty,
@@ -4002,7 +3996,7 @@ export const AwsAutoScalingAutoScalingGroupPropertiesTagsList =
 
 /** The Amazon Resource Names (ARN) of the Elastic Load Balancing target groups to associate with the Auto Scaling group. Instances are registered as targets with the target groups. The target groups receive incoming traffic and route requests to one or more registered targets. For more information, see [Use Elastic Load Balancing to distribute traffic across the instances in your Auto Scaling group](https://docs.aws.amazon.com/autoscaling/ec2/userguide/autoscaling-load-balancer.html) in the *Amazon EC2 Auto Scaling User Guide*. */
 export type AwsAutoScalingAutoScalingGroupPropertiesTargetGroupARNsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const AwsAutoScalingAutoScalingGroupPropertiesTargetGroupARNsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4010,7 +4004,7 @@ export const AwsAutoScalingAutoScalingGroupPropertiesTargetGroupARNsList =
 
 /** A policy or a list of policies that are used to select the instance to terminate. These policies are executed in the order that you list them. For more information, see [Work with Amazon EC2 Auto Scaling termination policies](https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-termination-policies.html) in the *Amazon EC2 Auto Scaling User Guide*. Valid values: ``Default`` | ``AllocationStrategy`` | ``ClosestToNextInstanceHour`` | ``NewestInstance`` | ``OldestInstance`` | ``OldestLaunchConfiguration`` | ``OldestLaunchTemplate`` | ``arn:aws:lambda:region:account-id:function:my-function:my-alias`` */
 export type AwsAutoScalingAutoScalingGroupPropertiesTerminationPoliciesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const AwsAutoScalingAutoScalingGroupPropertiesTerminationPoliciesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4018,7 +4012,7 @@ export const AwsAutoScalingAutoScalingGroupPropertiesTerminationPoliciesList =
 
 /** A list of subnet IDs for a virtual private cloud (VPC) where instances in the Auto Scaling group can be created. If this resource specifies public subnets and is also in a VPC that is defined in the same stack template, you must use the [DependsOn attribute](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-attribute-dependson.html) to declare a dependency on the [VPC-gateway attachment](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-vpc-gateway-attachment.html). When you update ``VPCZoneIdentifier``, this retains the same Auto Scaling group and replaces old instances with new ones, according to the specified subnets. You can optionally specify how CloudFormation handles these updates by using an [UpdatePolicy attribute](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-attribute-updatepolicy.html). Required to launch instances into a nondefault VPC. If you specify ``VPCZoneIdentifier`` with ``AvailabilityZones``, the subnets that you specify for this property must reside in those Availability Zones. */
 export type AwsAutoScalingAutoScalingGroupPropertiesVpcZoneIdentifierList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const AwsAutoScalingAutoScalingGroupPropertiesVpcZoneIdentifierList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4478,7 +4472,7 @@ export const AutoScalingAutoScalingGroup = /*@__PURE__*/ S.suspend(() =>
 
 /** The AutoScalingAutoScalingGroup items on this page */
 export type AutoScalingAutoScalingGroupListResultValueList =
-  ReadonlyArray<AutoScalingAutoScalingGroup>;
+  Array<AutoScalingAutoScalingGroup>;
 export const AutoScalingAutoScalingGroupListResultValueList =
   /*@__PURE__*/ S.Array(
     AutoScalingAutoScalingGroup,
@@ -4619,8 +4613,9 @@ export type Capabilities =
 export const Capabilities = /*@__PURE__*/ S.String;
 
 /** Property capabilities */
-export type AwsCloudFormationStackPropertiesCapabilitiesList =
-  ReadonlyArray<Capabilities>;
+export type AwsCloudFormationStackPropertiesCapabilitiesList = Array<
+  Capabilities | (string & {})
+>;
 export const AwsCloudFormationStackPropertiesCapabilitiesList =
   /*@__PURE__*/ S.Array(
     Capabilities,
@@ -4628,7 +4623,7 @@ export const AwsCloudFormationStackPropertiesCapabilitiesList =
 
 /** Property notificationARNs */
 export type AwsCloudFormationStackPropertiesNotificationARNsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const AwsCloudFormationStackPropertiesNotificationARNsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4655,7 +4650,7 @@ export const Output = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Output" }) as any as S.Schema<Output>;
 
 /** Property outputs */
-export type AwsCloudFormationStackPropertiesOutputsList = ReadonlyArray<Output>;
+export type AwsCloudFormationStackPropertiesOutputsList = Array<Output>;
 export const AwsCloudFormationStackPropertiesOutputsList =
   /*@__PURE__*/ S.Array(
     Output,
@@ -4713,7 +4708,7 @@ export const Tag_4 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tag_4" }) as any as S.Schema<Tag_4>;
 
 /** Property tags */
-export type AwsCloudFormationStackPropertiesTagsList = ReadonlyArray<Tag_4>;
+export type AwsCloudFormationStackPropertiesTagsList = Array<Tag_4>;
 export const AwsCloudFormationStackPropertiesTagsList = /*@__PURE__*/ S.Array(
   Tag_4,
 ) as any as S.Schema<AwsCloudFormationStackPropertiesTagsList>;
@@ -4755,7 +4750,7 @@ export interface AwsCloudFormationStackProperties {
   /** Property stackPolicyURL */
   stackPolicyURL?: string;
   /** Property stackStatus */
-  stackStatus?: StackStatus;
+  stackStatus?: StackStatus | (string & {});
   /** Property stackStatusReason */
   stackStatusReason?: string;
   /** Property tags */
@@ -5026,8 +5021,7 @@ export type CallAs = "DELEGATED_ADMIN" | "SELF";
 export const CallAs = /*@__PURE__*/ S.String;
 
 /** In some cases, you must explicitly acknowledge that your stack set template contains certain capabilities in order for AWS CloudFormation to create the stack set and related stack instances. */
-export type AwsCloudFormationStackSetPropertiesCapabilitiesList =
-  ReadonlyArray<string>;
+export type AwsCloudFormationStackSetPropertiesCapabilitiesList = Array<string>;
 export const AwsCloudFormationStackSetPropertiesCapabilitiesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5051,7 +5045,7 @@ export type OperationPreferencesRegionConcurrencyType =
 export const OperationPreferencesRegionConcurrencyType = /*@__PURE__*/ S.String;
 
 /** Property regionOrder */
-export type OperationPreferencesRegionOrderList = ReadonlyArray<string>;
+export type OperationPreferencesRegionOrderList = Array<string>;
 export const OperationPreferencesRegionOrderList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<OperationPreferencesRegionOrderList>;
@@ -5067,7 +5061,9 @@ export interface OperationPreferences {
   /** Property maxConcurrentPercentage */
   maxConcurrentPercentage?: number;
   /** The concurrency type of deploying StackSets operations in regions, could be in parallel or one region at a time */
-  regionConcurrencyType?: OperationPreferencesRegionConcurrencyType;
+  regionConcurrencyType?:
+    | OperationPreferencesRegionConcurrencyType
+    | (string & {});
   /** Property regionOrder */
   regionOrder?: OperationPreferencesRegionOrderList;
 }
@@ -5102,7 +5098,7 @@ export const Parameter = /*@__PURE__*/ S.suspend(() =>
 
 /** The input parameters for the stack set template. */
 export type AwsCloudFormationStackSetPropertiesParametersList =
-  ReadonlyArray<Parameter>;
+  Array<Parameter>;
 export const AwsCloudFormationStackSetPropertiesParametersList =
   /*@__PURE__*/ S.Array(
     Parameter,
@@ -5121,13 +5117,13 @@ export type DeploymentTargetsAccountFilterType =
 export const DeploymentTargetsAccountFilterType = /*@__PURE__*/ S.String;
 
 /** AWS accounts that you want to create stack instances in the specified Region(s) for. */
-export type DeploymentTargetsAccountsList = ReadonlyArray<string>;
+export type DeploymentTargetsAccountsList = Array<string>;
 export const DeploymentTargetsAccountsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DeploymentTargetsAccountsList>;
 
 /** The organization root ID or organizational unit (OU) IDs to which StackSets deploys. */
-export type DeploymentTargetsOrganizationalUnitIdsList = ReadonlyArray<string>;
+export type DeploymentTargetsOrganizationalUnitIdsList = Array<string>;
 export const DeploymentTargetsOrganizationalUnitIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DeploymentTargetsOrganizationalUnitIdsList>;
@@ -5135,7 +5131,7 @@ export const DeploymentTargetsOrganizationalUnitIdsList = /*@__PURE__*/ S.Array(
 /** Definition of DeploymentTargets */
 export interface DeploymentTargets {
   /** The filter type you want to apply on organizational units and accounts. */
-  accountFilterType?: DeploymentTargetsAccountFilterType;
+  accountFilterType?: DeploymentTargetsAccountFilterType | (string & {});
   /** AWS accounts that you want to create stack instances in the specified Region(s) for. */
   accounts?: DeploymentTargetsAccountsList;
   /** Returns the value of the AccountsUrl property. */
@@ -5157,13 +5153,13 @@ export const DeploymentTargets = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeploymentTargets>;
 
 /** A list of stack set parameters whose values you want to override in the selected stack instances. */
-export type StackInstancesParameterOverridesList = ReadonlyArray<Parameter>;
+export type StackInstancesParameterOverridesList = Array<Parameter>;
 export const StackInstancesParameterOverridesList = /*@__PURE__*/ S.Array(
   Parameter,
 ) as any as S.Schema<StackInstancesParameterOverridesList>;
 
 /** The names of one or more Regions where you want to create stack instances using the specified AWS account(s). */
-export type StackInstancesRegionsList = ReadonlyArray<string>;
+export type StackInstancesRegionsList = Array<string>;
 export const StackInstancesRegionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StackInstancesRegionsList>;
@@ -5187,7 +5183,7 @@ export const StackInstances = /*@__PURE__*/ S.suspend(() =>
 
 /** A group of stack instances with parameters in some specific accounts and regions. */
 export type AwsCloudFormationStackSetPropertiesStackInstancesGroupList =
-  ReadonlyArray<StackInstances>;
+  Array<StackInstances>;
 export const AwsCloudFormationStackSetPropertiesStackInstancesGroupList =
   /*@__PURE__*/ S.Array(
     StackInstances,
@@ -5208,7 +5204,7 @@ export const Tag_5 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tag_5" }) as any as S.Schema<Tag_5>;
 
 /** The key-value pairs to associate with this stack set and the stacks created from it. AWS CloudFormation also propagates these tags to supported resources that are created in the stacks. A maximum number of 50 tags can be specified. */
-export type AwsCloudFormationStackSetPropertiesTagsList = ReadonlyArray<Tag_5>;
+export type AwsCloudFormationStackSetPropertiesTagsList = Array<Tag_5>;
 export const AwsCloudFormationStackSetPropertiesTagsList =
   /*@__PURE__*/ S.Array(
     Tag_5,
@@ -5221,7 +5217,7 @@ export interface AwsCloudFormationStackSetProperties {
   /** Describes whether StackSets automatically deploys to AWS Organizations accounts that are added to the target organization or organizational unit (OU). Specify only if PermissionModel is SERVICE_MANAGED. */
   autoDeployment?: AutoDeployment;
   /** Specifies the AWS account that you are acting from. By default, SELF is specified. For self-managed permissions, specify SELF; for service-managed permissions, if you are signed in to the organization's management account, specify SELF. If you are signed in to a delegated administrator account, specify DELEGATED_ADMIN. */
-  callAs?: CallAs;
+  callAs?: CallAs | (string & {});
   /** In some cases, you must explicitly acknowledge that your stack set template contains certain capabilities in order for AWS CloudFormation to create the stack set and related stack instances. */
   capabilities?: AwsCloudFormationStackSetPropertiesCapabilitiesList;
   /** A description of the stack set. You can use the description to identify the stack set's purpose or other important information. */
@@ -5235,7 +5231,7 @@ export interface AwsCloudFormationStackSetProperties {
   /** The input parameters for the stack set template. */
   parameters?: AwsCloudFormationStackSetPropertiesParametersList;
   /** Describes how the IAM roles required for stack set operations are created. By default, SELF-MANAGED is specified. */
-  permissionModel?: PermissionModel;
+  permissionModel?: PermissionModel | (string & {});
   /** A group of stack instances with parameters in some specific accounts and regions. */
   stackInstancesGroup?: AwsCloudFormationStackSetPropertiesStackInstancesGroupList;
   /** The ID of the stack set that you're creating. */
@@ -5606,7 +5602,7 @@ export const CloudFormationStackSet = /*@__PURE__*/ S.suspend(() =>
 
 /** The CloudFormationStackSet items on this page */
 export type CloudFormationStackSetListResultValueList =
-  ReadonlyArray<CloudFormationStackSet>;
+  Array<CloudFormationStackSet>;
 export const CloudFormationStackSetListResultValueList = /*@__PURE__*/ S.Array(
   CloudFormationStackSet,
 ) as any as S.Schema<CloudFormationStackSetListResultValueList>;
@@ -5853,8 +5849,7 @@ export const CloudFormationStack = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CloudFormationStack>;
 
 /** The CloudFormationStack items on this page */
-export type CloudFormationStackListResultValueList =
-  ReadonlyArray<CloudFormationStack>;
+export type CloudFormationStackListResultValueList = Array<CloudFormationStack>;
 export const CloudFormationStackListResultValueList = /*@__PURE__*/ S.Array(
   CloudFormationStack,
 ) as any as S.Schema<CloudFormationStackListResultValueList>;
@@ -5982,31 +5977,31 @@ export const CloudFrontDistributionsCreateOrReplaceRequestTagsMap =
   ) as any as S.Schema<CloudFrontDistributionsCreateOrReplaceRequestTagsMap>;
 
 /** A complex type that contains information about CNAMEs (alternate domain names), if any, for this distribution. */
-export type DistributionConfigAliasesList = ReadonlyArray<string>;
+export type DistributionConfigAliasesList = Array<string>;
 export const DistributionConfigAliasesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DistributionConfigAliasesList>;
 
 /** Property cnamEs */
-export type DistributionConfigCnamEsList = ReadonlyArray<string>;
+export type DistributionConfigCnamEsList = Array<string>;
 export const DistributionConfigCnamEsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DistributionConfigCnamEsList>;
 
 /** A complex type that controls which HTTP methods CloudFront processes and forwards to your Amazon S3 bucket or your custom origin. There are three choices: + CloudFront forwards only ``GET`` and ``HEAD`` requests. + CloudFront forwards only ``GET``, ``HEAD``, and ``OPTIONS`` requests. + CloudFront forwards ``GET, HEAD, OPTIONS, PUT, PATCH, POST``, and ``DELETE`` requests. If you pick the third choice, you may need to restrict access to your Amazon S3 bucket or to your custom origin so users can't perform operations that you don't want them to. For example, you might not want users to have permissions to delete objects from your origin. */
-export type CacheBehaviorAllowedMethodsList = ReadonlyArray<string>;
+export type CacheBehaviorAllowedMethodsList = Array<string>;
 export const CacheBehaviorAllowedMethodsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CacheBehaviorAllowedMethodsList>;
 
 /** A complex type that controls whether CloudFront caches the response to requests using the specified HTTP methods. There are two choices: + CloudFront caches responses to ``GET`` and ``HEAD`` requests. + CloudFront caches responses to ``GET``, ``HEAD``, and ``OPTIONS`` requests. If you pick the second choice for your Amazon S3 Origin, you may need to forward Access-Control-Request-Method, Access-Control-Request-Headers, and Origin headers for the responses to be cached correctly. */
-export type CacheBehaviorCachedMethodsList = ReadonlyArray<string>;
+export type CacheBehaviorCachedMethodsList = Array<string>;
 export const CacheBehaviorCachedMethodsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CacheBehaviorCachedMethodsList>;
 
 /** This field is deprecated. We recommend that you use a cache policy or an origin request policy instead of this field. If you want to include cookies in the cache key, use a cache policy. For more information, see [Creating cache policies](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/controlling-the-cache-key.html#cache-key-create-cache-policy) in the *Amazon CloudFront Developer Guide*. If you want to send cookies to the origin but not include them in the cache key, use an origin request policy. For more information, see [Creating origin request policies](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/controlling-origin-requests.html#origin-request-create-origin-request-policy) in the *Amazon CloudFront Developer Guide*. */
-export type CookiesWhitelistedNamesList = ReadonlyArray<string>;
+export type CookiesWhitelistedNamesList = Array<string>;
 export const CookiesWhitelistedNamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CookiesWhitelistedNamesList>;
@@ -6026,13 +6021,13 @@ export const Cookies = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Cookies" }) as any as S.Schema<Cookies>;
 
 /** This field is deprecated. We recommend that you use a cache policy or an origin request policy instead of this field. If you want to include headers in the cache key, use a cache policy. For more information, see [Creating cache policies](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/controlling-the-cache-key.html#cache-key-create-cache-policy) in the *Amazon CloudFront Developer Guide*. If you want to send headers to the origin but not include them in the cache key, use an origin request policy. For more information, see [Creating origin request policies](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/controlling-origin-requests.html#origin-request-create-origin-request-policy) in the *Amazon CloudFront Developer Guide*. A complex type that specifies the ``Headers``, if any, that you want CloudFront to forward to the origin for this cache behavior (whitelisted headers). For the headers that you specify, CloudFront also caches separate versions of a specified object that is based on the header values in viewer requests. For more information, see [Caching Content Based on Request Headers](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/header-caching.html) in the *Amazon CloudFront Developer Guide*. */
-export type ForwardedValuesHeadersList = ReadonlyArray<string>;
+export type ForwardedValuesHeadersList = Array<string>;
 export const ForwardedValuesHeadersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ForwardedValuesHeadersList>;
 
 /** This field is deprecated. We recommend that you use a cache policy or an origin request policy instead of this field. If you want to include query strings in the cache key, use a cache policy. For more information, see [Creating cache policies](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/controlling-the-cache-key.html#cache-key-create-cache-policy) in the *Amazon CloudFront Developer Guide*. If you want to send query strings to the origin but not include them in the cache key, use an origin request policy. For more information, see [Creating origin request policies](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/controlling-origin-requests.html#origin-request-create-origin-request-policy) in the *Amazon CloudFront Developer Guide*. A complex type that contains information about the query string parameters that you want CloudFront to use for caching for this cache behavior. */
-export type ForwardedValuesQueryStringCacheKeysList = ReadonlyArray<string>;
+export type ForwardedValuesQueryStringCacheKeysList = Array<string>;
 export const ForwardedValuesQueryStringCacheKeysList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ForwardedValuesQueryStringCacheKeysList>;
@@ -6076,8 +6071,7 @@ export const FunctionAssociation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FunctionAssociation>;
 
 /** A list of CloudFront functions that are associated with this cache behavior. CloudFront functions must be published to the ``LIVE`` stage to associate them with a cache behavior. */
-export type CacheBehaviorFunctionAssociationsList =
-  ReadonlyArray<FunctionAssociation>;
+export type CacheBehaviorFunctionAssociationsList = Array<FunctionAssociation>;
 export const CacheBehaviorFunctionAssociationsList = /*@__PURE__*/ S.Array(
   FunctionAssociation,
 ) as any as S.Schema<CacheBehaviorFunctionAssociationsList>;
@@ -6103,20 +6097,20 @@ export const LambdaFunctionAssociation = /*@__PURE__*/ S.suspend(() =>
 
 /** A complex type that contains zero or more Lambda@Edge function associations for a cache behavior. */
 export type CacheBehaviorLambdaFunctionAssociationsList =
-  ReadonlyArray<LambdaFunctionAssociation>;
+  Array<LambdaFunctionAssociation>;
 export const CacheBehaviorLambdaFunctionAssociationsList =
   /*@__PURE__*/ S.Array(
     LambdaFunctionAssociation,
   ) as any as S.Schema<CacheBehaviorLambdaFunctionAssociationsList>;
 
 /** A list of key groups that CloudFront can use to validate signed URLs or signed cookies. When a cache behavior contains trusted key groups, CloudFront requires signed URLs or signed cookies for all requests that match the cache behavior. The URLs or cookies must be signed with a private key whose corresponding public key is in the key group. The signed URL or cookie contains information about which public key CloudFront should use to verify the signature. For more information, see [Serving private content](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html) in the *Amazon CloudFront Developer Guide*. */
-export type CacheBehaviorTrustedKeyGroupsList = ReadonlyArray<string>;
+export type CacheBehaviorTrustedKeyGroupsList = Array<string>;
 export const CacheBehaviorTrustedKeyGroupsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CacheBehaviorTrustedKeyGroupsList>;
 
 /** We recommend using ``TrustedKeyGroups`` instead of ``TrustedSigners``. A list of AWS-account IDs whose public keys CloudFront can use to validate signed URLs or signed cookies. When a cache behavior contains trusted signers, CloudFront requires signed URLs or signed cookies for all requests that match the cache behavior. The URLs or cookies must be signed with the private key of a CloudFront key pair in the trusted signer's AWS-account. The signed URL or cookie contains information about which public key CloudFront should use to verify the signature. For more information, see [Serving private content](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html) in the *Amazon CloudFront Developer Guide*. */
-export type CacheBehaviorTrustedSignersList = ReadonlyArray<string>;
+export type CacheBehaviorTrustedSignersList = Array<string>;
 export const CacheBehaviorTrustedSignersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CacheBehaviorTrustedSignersList>;
@@ -6192,7 +6186,7 @@ export const CacheBehavior = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CacheBehavior" }) as any as S.Schema<CacheBehavior>;
 
 /** A complex type that contains zero or more ``CacheBehavior`` elements. */
-export type DistributionConfigCacheBehaviorsList = ReadonlyArray<CacheBehavior>;
+export type DistributionConfigCacheBehaviorsList = Array<CacheBehavior>;
 export const DistributionConfigCacheBehaviorsList = /*@__PURE__*/ S.Array(
   CacheBehavior,
 ) as any as S.Schema<DistributionConfigCacheBehaviorsList>;
@@ -6221,13 +6215,13 @@ export const CustomErrorResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** A complex type that controls the following: + Whether CloudFront replaces HTTP status codes in the 4xx and 5xx range with custom error messages before returning the response to the viewer. + How long CloudFront caches HTTP status codes in the 4xx and 5xx range. For more information about custom error pages, see [Customizing Error Responses](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/custom-error-pages.html) in the *Amazon CloudFront Developer Guide*. */
 export type DistributionConfigCustomErrorResponsesList =
-  ReadonlyArray<CustomErrorResponse>;
+  Array<CustomErrorResponse>;
 export const DistributionConfigCustomErrorResponsesList = /*@__PURE__*/ S.Array(
   CustomErrorResponse,
 ) as any as S.Schema<DistributionConfigCustomErrorResponsesList>;
 
 /** Property originSSLProtocols */
-export type LegacyCustomOriginOriginSSLProtocolsList = ReadonlyArray<string>;
+export type LegacyCustomOriginOriginSSLProtocolsList = Array<string>;
 export const LegacyCustomOriginOriginSSLProtocolsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LegacyCustomOriginOriginSSLProtocolsList>;
@@ -6258,20 +6252,20 @@ export const LegacyCustomOrigin = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LegacyCustomOrigin>;
 
 /** A complex type that controls which HTTP methods CloudFront processes and forwards to your Amazon S3 bucket or your custom origin. There are three choices: + CloudFront forwards only ``GET`` and ``HEAD`` requests. + CloudFront forwards only ``GET``, ``HEAD``, and ``OPTIONS`` requests. + CloudFront forwards ``GET, HEAD, OPTIONS, PUT, PATCH, POST``, and ``DELETE`` requests. If you pick the third choice, you may need to restrict access to your Amazon S3 bucket or to your custom origin so users can't perform operations that you don't want them to. For example, you might not want users to have permissions to delete objects from your origin. */
-export type DefaultCacheBehaviorAllowedMethodsList = ReadonlyArray<string>;
+export type DefaultCacheBehaviorAllowedMethodsList = Array<string>;
 export const DefaultCacheBehaviorAllowedMethodsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DefaultCacheBehaviorAllowedMethodsList>;
 
 /** A complex type that controls whether CloudFront caches the response to requests using the specified HTTP methods. There are two choices: + CloudFront caches responses to ``GET`` and ``HEAD`` requests. + CloudFront caches responses to ``GET``, ``HEAD``, and ``OPTIONS`` requests. If you pick the second choice for your Amazon S3 Origin, you may need to forward Access-Control-Request-Method, Access-Control-Request-Headers, and Origin headers for the responses to be cached correctly. */
-export type DefaultCacheBehaviorCachedMethodsList = ReadonlyArray<string>;
+export type DefaultCacheBehaviorCachedMethodsList = Array<string>;
 export const DefaultCacheBehaviorCachedMethodsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DefaultCacheBehaviorCachedMethodsList>;
 
 /** A list of CloudFront functions that are associated with this cache behavior. CloudFront functions must be published to the ``LIVE`` stage to associate them with a cache behavior. */
 export type DefaultCacheBehaviorFunctionAssociationsList =
-  ReadonlyArray<FunctionAssociation>;
+  Array<FunctionAssociation>;
 export const DefaultCacheBehaviorFunctionAssociationsList =
   /*@__PURE__*/ S.Array(
     FunctionAssociation,
@@ -6279,20 +6273,20 @@ export const DefaultCacheBehaviorFunctionAssociationsList =
 
 /** A complex type that contains zero or more Lambda@Edge function associations for a cache behavior. */
 export type DefaultCacheBehaviorLambdaFunctionAssociationsList =
-  ReadonlyArray<LambdaFunctionAssociation>;
+  Array<LambdaFunctionAssociation>;
 export const DefaultCacheBehaviorLambdaFunctionAssociationsList =
   /*@__PURE__*/ S.Array(
     LambdaFunctionAssociation,
   ) as any as S.Schema<DefaultCacheBehaviorLambdaFunctionAssociationsList>;
 
 /** A list of key groups that CloudFront can use to validate signed URLs or signed cookies. When a cache behavior contains trusted key groups, CloudFront requires signed URLs or signed cookies for all requests that match the cache behavior. The URLs or cookies must be signed with a private key whose corresponding public key is in the key group. The signed URL or cookie contains information about which public key CloudFront should use to verify the signature. For more information, see [Serving private content](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html) in the *Amazon CloudFront Developer Guide*. */
-export type DefaultCacheBehaviorTrustedKeyGroupsList = ReadonlyArray<string>;
+export type DefaultCacheBehaviorTrustedKeyGroupsList = Array<string>;
 export const DefaultCacheBehaviorTrustedKeyGroupsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DefaultCacheBehaviorTrustedKeyGroupsList>;
 
 /** We recommend using ``TrustedKeyGroups`` instead of ``TrustedSigners``. A list of AWS-account IDs whose public keys CloudFront can use to validate signed URLs or signed cookies. When a cache behavior contains trusted signers, CloudFront requires signed URLs or signed cookies for all requests that match the cache behavior. The URLs or cookies must be signed with the private key of a CloudFront key pair in a trusted signer's AWS-account. The signed URL or cookie contains information about which public key CloudFront should use to verify the signature. For more information, see [Serving private content](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html) in the *Amazon CloudFront Developer Guide*. */
-export type DefaultCacheBehaviorTrustedSignersList = ReadonlyArray<string>;
+export type DefaultCacheBehaviorTrustedSignersList = Array<string>;
 export const DefaultCacheBehaviorTrustedSignersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DefaultCacheBehaviorTrustedSignersList>;
@@ -6386,7 +6380,7 @@ export const Logging = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Logging" }) as any as S.Schema<Logging>;
 
 /** The items (status codes) for an origin group. */
-export type StatusCodesItemsList = ReadonlyArray<number>;
+export type StatusCodesItemsList = Array<number>;
 export const StatusCodesItemsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<StatusCodesItemsList>;
@@ -6432,7 +6426,7 @@ export const OriginGroupMember = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OriginGroupMember>;
 
 /** Items (origins) in an origin group. */
-export type OriginGroupMembersItemsList = ReadonlyArray<OriginGroupMember>;
+export type OriginGroupMembersItemsList = Array<OriginGroupMember>;
 export const OriginGroupMembersItemsList = /*@__PURE__*/ S.Array(
   OriginGroupMember,
 ) as any as S.Schema<OriginGroupMembersItemsList>;
@@ -6471,7 +6465,7 @@ export const OriginGroup = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "OriginGroup" }) as any as S.Schema<OriginGroup>;
 
 /** The items (origin groups) in a distribution. */
-export type OriginGroupsItemsList = ReadonlyArray<OriginGroup>;
+export type OriginGroupsItemsList = Array<OriginGroup>;
 export const OriginGroupsItemsList = /*@__PURE__*/ S.Array(
   OriginGroup,
 ) as any as S.Schema<OriginGroupsItemsList>;
@@ -6491,7 +6485,7 @@ export const OriginGroups = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "OriginGroups" }) as any as S.Schema<OriginGroups>;
 
 /** Specifies the minimum SSL/TLS protocol that CloudFront uses when connecting to your origin over HTTPS. Valid values include ``SSLv3``, ``TLSv1``, ``TLSv1.1``, and ``TLSv1.2``. For more information, see [Minimum Origin SSL Protocol](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesOriginSSLProtocols) in the *Amazon CloudFront Developer Guide*. */
-export type CustomOriginConfigOriginSSLProtocolsList = ReadonlyArray<string>;
+export type CustomOriginConfigOriginSSLProtocolsList = Array<string>;
 export const CustomOriginConfigOriginSSLProtocolsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CustomOriginConfigOriginSSLProtocolsList>;
@@ -6541,7 +6535,7 @@ export const OriginCustomHeader = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OriginCustomHeader>;
 
 /** A list of HTTP header names and values that CloudFront adds to the requests that it sends to the origin. For more information, see [Adding Custom Headers to Origin Requests](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/add-origin-custom-headers.html) in the *Amazon CloudFront Developer Guide*. */
-export type OriginOriginCustomHeadersList = ReadonlyArray<OriginCustomHeader>;
+export type OriginOriginCustomHeadersList = Array<OriginCustomHeader>;
 export const OriginOriginCustomHeadersList = /*@__PURE__*/ S.Array(
   OriginCustomHeader,
 ) as any as S.Schema<OriginOriginCustomHeadersList>;
@@ -6610,13 +6604,13 @@ export const Origin = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Origin" }) as any as S.Schema<Origin>;
 
 /** A complex type that contains information about origins for this distribution. */
-export type DistributionConfigOriginsList = ReadonlyArray<Origin>;
+export type DistributionConfigOriginsList = Array<Origin>;
 export const DistributionConfigOriginsList = /*@__PURE__*/ S.Array(
   Origin,
 ) as any as S.Schema<DistributionConfigOriginsList>;
 
 /** A complex type that contains a ``Location`` element for each country in which you want CloudFront either to distribute your content or not distribute your content. */
-export type GeoRestrictionLocationsList = ReadonlyArray<string>;
+export type GeoRestrictionLocationsList = Array<string>;
 export const GeoRestrictionLocationsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GeoRestrictionLocationsList>;
@@ -6775,7 +6769,7 @@ export const Tag_6 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tag_6" }) as any as S.Schema<Tag_6>;
 
 /** A complex type that contains zero or more ``Tag`` elements. */
-export type AwsCloudFrontDistributionPropertiesTagsList = ReadonlyArray<Tag_6>;
+export type AwsCloudFrontDistributionPropertiesTagsList = Array<Tag_6>;
 export const AwsCloudFrontDistributionPropertiesTagsList =
   /*@__PURE__*/ S.Array(
     Tag_6,
@@ -7133,7 +7127,7 @@ export const CloudFrontDistribution = /*@__PURE__*/ S.suspend(() =>
 
 /** The CloudFrontDistribution items on this page */
 export type CloudFrontDistributionListResultValueList =
-  ReadonlyArray<CloudFrontDistribution>;
+  Array<CloudFrontDistribution>;
 export const CloudFrontDistributionListResultValueList = /*@__PURE__*/ S.Array(
   CloudFrontDistribution,
 ) as any as S.Schema<CloudFrontDistributionListResultValueList>;
@@ -7265,37 +7259,37 @@ export const CloudTrailTrailsCreateOrReplaceRequestTagsMap =
   ) as any as S.Schema<CloudTrailTrailsCreateOrReplaceRequestTagsMap>;
 
 /** An operator that includes events that match the last few characters of the event record field specified as the value of Field. */
-export type AdvancedFieldSelectorEndsWithList = ReadonlyArray<string>;
+export type AdvancedFieldSelectorEndsWithList = Array<string>;
 export const AdvancedFieldSelectorEndsWithList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AdvancedFieldSelectorEndsWithList>;
 
 /** An operator that includes events that match the exact value of the event record field specified as the value of Field. This is the only valid operator that you can use with the readOnly, eventCategory, and resources.type fields. */
-export type AdvancedFieldSelectorEqualsList = ReadonlyArray<string>;
+export type AdvancedFieldSelectorEqualsList = Array<string>;
 export const AdvancedFieldSelectorEqualsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AdvancedFieldSelectorEqualsList>;
 
 /** An operator that excludes events that match the last few characters of the event record field specified as the value of Field. */
-export type AdvancedFieldSelectorNotEndsWithList = ReadonlyArray<string>;
+export type AdvancedFieldSelectorNotEndsWithList = Array<string>;
 export const AdvancedFieldSelectorNotEndsWithList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AdvancedFieldSelectorNotEndsWithList>;
 
 /** An operator that excludes events that match the exact value of the event record field specified as the value of Field. */
-export type AdvancedFieldSelectorNotEqualsList = ReadonlyArray<string>;
+export type AdvancedFieldSelectorNotEqualsList = Array<string>;
 export const AdvancedFieldSelectorNotEqualsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AdvancedFieldSelectorNotEqualsList>;
 
 /** An operator that excludes events that match the first few characters of the event record field specified as the value of Field. */
-export type AdvancedFieldSelectorNotStartsWithList = ReadonlyArray<string>;
+export type AdvancedFieldSelectorNotStartsWithList = Array<string>;
 export const AdvancedFieldSelectorNotStartsWithList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AdvancedFieldSelectorNotStartsWithList>;
 
 /** An operator that includes events that match the first few characters of the event record field specified as the value of Field. */
-export type AdvancedFieldSelectorStartsWithList = ReadonlyArray<string>;
+export type AdvancedFieldSelectorStartsWithList = Array<string>;
 export const AdvancedFieldSelectorStartsWithList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AdvancedFieldSelectorStartsWithList>;
@@ -7333,7 +7327,7 @@ export const AdvancedFieldSelector = /*@__PURE__*/ S.suspend(() =>
 
 /** Contains all selector statements in an advanced event selector. */
 export type AdvancedEventSelectorFieldSelectorsList =
-  ReadonlyArray<AdvancedFieldSelector>;
+  Array<AdvancedFieldSelector>;
 export const AdvancedEventSelectorFieldSelectorsList = /*@__PURE__*/ S.Array(
   AdvancedFieldSelector,
 ) as any as S.Schema<AdvancedEventSelectorFieldSelectorsList>;
@@ -7356,14 +7350,14 @@ export const AdvancedEventSelector = /*@__PURE__*/ S.suspend(() =>
 
 /** The advanced event selectors that were used to select events for the data store. */
 export type AwsCloudTrailTrailPropertiesAdvancedEventSelectorsList =
-  ReadonlyArray<AdvancedEventSelector>;
+  Array<AdvancedEventSelector>;
 export const AwsCloudTrailTrailPropertiesAdvancedEventSelectorsList =
   /*@__PURE__*/ S.Array(
     AdvancedEventSelector,
   ) as any as S.Schema<AwsCloudTrailTrailPropertiesAdvancedEventSelectorsList>;
 
 /** An array of Amazon Resource Name (ARN) strings or partial ARN strings for the specified objects. */
-export type DataResourceValuesList = ReadonlyArray<string>;
+export type DataResourceValuesList = Array<string>;
 export const DataResourceValuesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DataResourceValuesList>;
@@ -7383,14 +7377,13 @@ export const DataResource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DataResource" }) as any as S.Schema<DataResource>;
 
 /** Property dataResources */
-export type EventSelectorDataResourcesList = ReadonlyArray<DataResource>;
+export type EventSelectorDataResourcesList = Array<DataResource>;
 export const EventSelectorDataResourcesList = /*@__PURE__*/ S.Array(
   DataResource,
 ) as any as S.Schema<EventSelectorDataResourcesList>;
 
 /** An optional list of service event sources from which you do not want management events to be logged on your trail. In this release, the list can be empty (disables the filter), or it can filter out AWS Key Management Service events by containing 'kms.amazonaws.com'. By default, ExcludeManagementEventSources is empty, and AWS KMS events are included in events that are logged to your trail. */
-export type EventSelectorExcludeManagementEventSourcesList =
-  ReadonlyArray<string>;
+export type EventSelectorExcludeManagementEventSourcesList = Array<string>;
 export const EventSelectorExcludeManagementEventSourcesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -7409,7 +7402,7 @@ export interface EventSelector {
   /** Specify if you want your event selector to include management events for your trail. */
   includeManagementEvents?: boolean;
   /** Specify if you want your trail to log read-only events, write-only events, or all. For example, the EC2 GetConsoleOutput is a read-only API operation and RunInstances is a write-only API operation. */
-  readWriteType?: EventSelectorReadWriteType;
+  readWriteType?: EventSelectorReadWriteType | (string & {});
 }
 export const EventSelector = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -7424,7 +7417,7 @@ export const EventSelector = /*@__PURE__*/ S.suspend(() =>
 
 /** Use event selectors to further specify the management and data event settings for your trail. By default, trails created without specific event selectors will be configured to log all read and write management events, and no data events. When an event occurs in your account, CloudTrail evaluates the event selector for all trails. For each trail, if the event matches any event selector, the trail processes and logs the event. If the event doesn't match any event selector, the trail doesn't log the event. You can configure up to five event selectors for a trail. */
 export type AwsCloudTrailTrailPropertiesEventSelectorsList =
-  ReadonlyArray<EventSelector>;
+  Array<EventSelector>;
 export const AwsCloudTrailTrailPropertiesEventSelectorsList =
   /*@__PURE__*/ S.Array(
     EventSelector,
@@ -7445,14 +7438,14 @@ export const InsightSelector = /*@__PURE__*/ S.suspend(() =>
 
 /** Lets you enable Insights event logging by specifying the Insights selectors that you want to enable on an existing trail. */
 export type AwsCloudTrailTrailPropertiesInsightSelectorsList =
-  ReadonlyArray<InsightSelector>;
+  Array<InsightSelector>;
 export const AwsCloudTrailTrailPropertiesInsightSelectorsList =
   /*@__PURE__*/ S.Array(
     InsightSelector,
   ) as any as S.Schema<AwsCloudTrailTrailPropertiesInsightSelectorsList>;
 
 /** Property tags */
-export type AwsCloudTrailTrailPropertiesTagsList = ReadonlyArray<Tag>;
+export type AwsCloudTrailTrailPropertiesTagsList = Array<Tag>;
 export const AwsCloudTrailTrailPropertiesTagsList = /*@__PURE__*/ S.Array(
   Tag,
 ) as any as S.Schema<AwsCloudTrailTrailPropertiesTagsList>;
@@ -7848,7 +7841,7 @@ export const CloudTrailTrail = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CloudTrailTrail>;
 
 /** The CloudTrailTrail items on this page */
-export type CloudTrailTrailListResultValueList = ReadonlyArray<CloudTrailTrail>;
+export type CloudTrailTrailListResultValueList = Array<CloudTrailTrail>;
 export const CloudTrailTrailListResultValueList = /*@__PURE__*/ S.Array(
   CloudTrailTrail,
 ) as any as S.Schema<CloudTrailTrailListResultValueList>;
@@ -7976,8 +7969,7 @@ export const CloudWatchAlarmsCreateOrReplaceRequestTagsMap =
   ) as any as S.Schema<CloudWatchAlarmsCreateOrReplaceRequestTagsMap>;
 
 /** The list of actions to execute when this alarm transitions into an ALARM state from any other state. Specify each action as an Amazon Resource Name (ARN). For more information about creating alarms and the actions that you can specify, see [PutMetricAlarm](https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_PutMetricAlarm.html) in the *API Reference*. */
-export type AwsCloudWatchAlarmPropertiesAlarmActionsList =
-  ReadonlyArray<string>;
+export type AwsCloudWatchAlarmPropertiesAlarmActionsList = Array<string>;
 export const AwsCloudWatchAlarmPropertiesAlarmActionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -7998,22 +7990,21 @@ export const Dimension = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Dimension" }) as any as S.Schema<Dimension>;
 
 /** The dimensions for the metric associated with the alarm. For an alarm based on a math expression, you can't specify ``Dimensions``. Instead, you use ``Metrics``. */
-export type AwsCloudWatchAlarmPropertiesDimensionsList =
-  ReadonlyArray<Dimension>;
+export type AwsCloudWatchAlarmPropertiesDimensionsList = Array<Dimension>;
 export const AwsCloudWatchAlarmPropertiesDimensionsList = /*@__PURE__*/ S.Array(
   Dimension,
 ) as any as S.Schema<AwsCloudWatchAlarmPropertiesDimensionsList>;
 
 /** The actions to execute when this alarm transitions to the ``INSUFFICIENT_DATA`` state from any other state. Each action is specified as an Amazon Resource Name (ARN). */
 export type AwsCloudWatchAlarmPropertiesInsufficientDataActionsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const AwsCloudWatchAlarmPropertiesInsufficientDataActionsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AwsCloudWatchAlarmPropertiesInsufficientDataActionsList>;
 
 /** The metric dimensions that you want to be used for the metric that the alarm will watch. */
-export type MetricDimensionsList = ReadonlyArray<Dimension>;
+export type MetricDimensionsList = Array<Dimension>;
 export const MetricDimensionsList = /*@__PURE__*/ S.Array(
   Dimension,
 ) as any as S.Schema<MetricDimensionsList>;
@@ -8087,14 +8078,13 @@ export const MetricDataQuery = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MetricDataQuery>;
 
 /** An array that enables you to create an alarm based on the result of a metric math expression. Each item in the array either retrieves a metric or performs a math expression. If you specify the ``Metrics`` parameter, you cannot specify ``MetricName``, ``Dimensions``, ``Period``, ``Namespace``, ``Statistic``, ``ExtendedStatistic``, or ``Unit``. */
-export type AwsCloudWatchAlarmPropertiesMetricsList =
-  ReadonlyArray<MetricDataQuery>;
+export type AwsCloudWatchAlarmPropertiesMetricsList = Array<MetricDataQuery>;
 export const AwsCloudWatchAlarmPropertiesMetricsList = /*@__PURE__*/ S.Array(
   MetricDataQuery,
 ) as any as S.Schema<AwsCloudWatchAlarmPropertiesMetricsList>;
 
 /** The actions to execute when this alarm transitions to the ``OK`` state from any other state. Each action is specified as an Amazon Resource Name (ARN). */
-export type AwsCloudWatchAlarmPropertiesOkActionsList = ReadonlyArray<string>;
+export type AwsCloudWatchAlarmPropertiesOkActionsList = Array<string>;
 export const AwsCloudWatchAlarmPropertiesOkActionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AwsCloudWatchAlarmPropertiesOkActionsList>;
@@ -8114,7 +8104,7 @@ export const Tag_7 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tag_7" }) as any as S.Schema<Tag_7>;
 
 /** Property tags */
-export type AwsCloudWatchAlarmPropertiesTagsList = ReadonlyArray<Tag_7>;
+export type AwsCloudWatchAlarmPropertiesTagsList = Array<Tag_7>;
 export const AwsCloudWatchAlarmPropertiesTagsList = /*@__PURE__*/ S.Array(
   Tag_7,
 ) as any as S.Schema<AwsCloudWatchAlarmPropertiesTagsList>;
@@ -8523,7 +8513,7 @@ export const CloudWatchAlarm = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CloudWatchAlarm>;
 
 /** The CloudWatchAlarm items on this page */
-export type CloudWatchAlarmListResultValueList = ReadonlyArray<CloudWatchAlarm>;
+export type CloudWatchAlarmListResultValueList = Array<CloudWatchAlarm>;
 export const CloudWatchAlarmListResultValueList = /*@__PURE__*/ S.Array(
   CloudWatchAlarm,
 ) as any as S.Schema<CloudWatchAlarmListResultValueList>;
@@ -8657,7 +8647,7 @@ export const BucketOwnerAccess = /*@__PURE__*/ S.String;
 /** Definition of BucketOwnerAccessEnumValue */
 export interface BucketOwnerAccessEnumValue {
   /** Property value */
-  value?: BucketOwnerAccess;
+  value?: BucketOwnerAccess | (string & {});
 }
 export const BucketOwnerAccessEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -8674,7 +8664,7 @@ export const ArtifactNamespace = /*@__PURE__*/ S.String;
 /** Definition of ArtifactNamespaceEnumValue */
 export interface ArtifactNamespaceEnumValue {
   /** Property value */
-  value?: ArtifactNamespace;
+  value?: ArtifactNamespace | (string & {});
 }
 export const ArtifactNamespaceEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -8691,7 +8681,7 @@ export const ArtifactPackaging = /*@__PURE__*/ S.String;
 /** Definition of ArtifactPackagingEnumValue */
 export interface ArtifactPackagingEnumValue {
   /** Property value */
-  value?: ArtifactPackaging;
+  value?: ArtifactPackaging | (string & {});
 }
 export const ArtifactPackagingEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -8708,7 +8698,7 @@ export const ArtifactsType = /*@__PURE__*/ S.String;
 /** Definition of ArtifactsTypeEnumValue */
 export interface ArtifactsTypeEnumValue {
   /** Property value */
-  value?: ArtifactsType;
+  value?: ArtifactsType | (string & {});
 }
 export const ArtifactsTypeEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -8781,7 +8771,7 @@ export const BatchReportModeType = /*@__PURE__*/ S.String;
 /** Definition of BatchReportModeTypeEnumValue */
 export interface BatchReportModeTypeEnumValue {
   /** Property value */
-  value?: BatchReportModeType;
+  value?: BatchReportModeType | (string & {});
 }
 export const BatchReportModeTypeEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -8792,7 +8782,7 @@ export const BatchReportModeTypeEnumValue = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BatchReportModeTypeEnumValue>;
 
 /** <p>An array of strings that specify the compute types that are allowed for the batch build. See <a href='https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-compute-types.html'>Build environment compute types</a> in the <i>CodeBuild User Guide</i> for these values. </p> */
-export type BatchRestrictionsComputeTypesAllowedList = ReadonlyArray<string>;
+export type BatchRestrictionsComputeTypesAllowedList = Array<string>;
 export const BatchRestrictionsComputeTypesAllowedList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BatchRestrictionsComputeTypesAllowedList>;
@@ -8846,7 +8836,7 @@ export type CacheMode =
 export const CacheMode = /*@__PURE__*/ S.String;
 
 /** <p>An array of strings that specify the local cache modes. You can use one or more local cache modes at the same time. This is only used for <code>LOCAL</code> cache types.</p> <p>Possible values are:</p> <dl> <dt>LOCAL_SOURCE_CACHE</dt> <dd> <p>Caches Git metadata for primary and secondary sources. After the cache is created, subsequent builds pull only the change between commits. This mode is a good choice for projects with a clean working directory and a source that is a large Git repository. If you choose this option and your project does not use a Git repository (GitHub, GitHub Enterprise, or Bitbucket), the option is ignored. </p> </dd> <dt>LOCAL_DOCKER_LAYER_CACHE</dt> <dd> <p>Caches existing Docker layers. This mode is a good choice for projects that build or pull large Docker images. It can prevent the performance issues caused by pulling large Docker images down from the network. </p> <note> <ul> <li> <p>You can use a Docker layer cache in the Linux environment only. </p> </li> <li> <p>The <code>privileged</code> flag must be set so that your project has the required Docker permissions. </p> </li> <li> <p>You should consider the security implications before you use a Docker layer cache. </p> </li> </ul> </note> </dd> <dt>LOCAL_CUSTOM_CACHE</dt> <dd> <p>Caches directories you specify in the buildspec file. This mode is a good choice if your build scenario is not suited to one of the other three local cache modes. If you use a custom cache: </p> <ul> <li> <p>Only directories can be specified for caching. You cannot specify individual files. </p> </li> <li> <p>Symlinks are used to reference cached directories. </p> </li> <li> <p>Cached directories are linked to your build before it downloads its project sources. Cached items are overridden if a source item has the same name. Directories are specified using cache paths in the buildspec file. </p> </li> </ul> </dd> </dl> */
-export type ProjectCacheModesList = ReadonlyArray<CacheMode>;
+export type ProjectCacheModesList = Array<CacheMode | (string & {})>;
 export const ProjectCacheModesList = /*@__PURE__*/ S.Array(
   CacheMode,
 ) as any as S.Schema<ProjectCacheModesList>;
@@ -8858,7 +8848,7 @@ export const CacheType = /*@__PURE__*/ S.String;
 /** Definition of CacheTypeEnumValue */
 export interface CacheTypeEnumValue {
   /** Property value */
-  value?: CacheType;
+  value?: CacheType | (string & {});
 }
 export const CacheTypeEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -8902,7 +8892,7 @@ export const ComputeType = /*@__PURE__*/ S.String;
 /** Definition of ComputeTypeEnumValue */
 export interface ComputeTypeEnumValue {
   /** Property value */
-  value?: ComputeType;
+  value?: ComputeType | (string & {});
 }
 export const ComputeTypeEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -8922,7 +8912,7 @@ export const EnvironmentVariableType = /*@__PURE__*/ S.String;
 /** Definition of EnvironmentVariableTypeEnumValue */
 export interface EnvironmentVariableTypeEnumValue {
   /** Property value */
-  value?: EnvironmentVariableType;
+  value?: EnvironmentVariableType | (string & {});
 }
 export const EnvironmentVariableTypeEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -8953,7 +8943,7 @@ export const EnvironmentVariable = /*@__PURE__*/ S.suspend(() =>
 
 /** <p>A set of environment variables to make available to builds for this build project.</p> */
 export type ProjectEnvironmentEnvironmentVariablesList =
-  ReadonlyArray<EnvironmentVariable>;
+  Array<EnvironmentVariable>;
 export const ProjectEnvironmentEnvironmentVariablesList = /*@__PURE__*/ S.Array(
   EnvironmentVariable,
 ) as any as S.Schema<ProjectEnvironmentEnvironmentVariablesList>;
@@ -8976,7 +8966,7 @@ export const ImagePullCredentialsType = /*@__PURE__*/ S.String;
 /** Definition of ImagePullCredentialsTypeEnumValue */
 export interface ImagePullCredentialsTypeEnumValue {
   /** Property value */
-  value?: ImagePullCredentialsType;
+  value?: ImagePullCredentialsType | (string & {});
 }
 export const ImagePullCredentialsTypeEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -8993,7 +8983,7 @@ export const CredentialProviderType = /*@__PURE__*/ S.String;
 /** Definition of CredentialProviderTypeEnumValue */
 export interface CredentialProviderTypeEnumValue {
   /** Property value */
-  value?: CredentialProviderType;
+  value?: CredentialProviderType | (string & {});
 }
 export const CredentialProviderTypeEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -9033,7 +9023,7 @@ export const EnvironmentType = /*@__PURE__*/ S.String;
 /** Definition of EnvironmentTypeEnumValue */
 export interface EnvironmentTypeEnumValue {
   /** Property value */
-  value?: EnvironmentType;
+  value?: EnvironmentType | (string & {});
 }
 export const EnvironmentTypeEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -9089,7 +9079,7 @@ export const FileSystemType = /*@__PURE__*/ S.String;
 /** Definition of FileSystemTypeEnumValue */
 export interface FileSystemTypeEnumValue {
   /** Property value */
-  value?: FileSystemType;
+  value?: FileSystemType | (string & {});
 }
 export const FileSystemTypeEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -9126,7 +9116,7 @@ export const ProjectFileSystemLocation = /*@__PURE__*/ S.suspend(() =>
 
 /** <p> An array of <code>ProjectFileSystemLocation</code> objects for a CodeBuild build project. A <code>ProjectFileSystemLocation</code> object specifies the <code>identifier</code>, <code>location</code>, <code>mountOptions</code>, <code>mountPoint</code>, and <code>type</code> of a file system created using Amazon Elastic File System. </p> */
 export type AwsCodeBuildProjectPropertiesFileSystemLocationsList =
-  ReadonlyArray<ProjectFileSystemLocation>;
+  Array<ProjectFileSystemLocation>;
 export const AwsCodeBuildProjectPropertiesFileSystemLocationsList =
   /*@__PURE__*/ S.Array(
     ProjectFileSystemLocation,
@@ -9139,7 +9129,7 @@ export const LogsConfigStatusType = /*@__PURE__*/ S.String;
 /** Definition of LogsConfigStatusTypeEnumValue */
 export interface LogsConfigStatusTypeEnumValue {
   /** Property value */
-  value?: LogsConfigStatusType;
+  value?: LogsConfigStatusType | (string & {});
 }
 export const LogsConfigStatusTypeEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -9209,7 +9199,7 @@ export const ProjectVisibilityType = /*@__PURE__*/ S.String;
 /** Definition of ProjectVisibilityTypeEnumValue */
 export interface ProjectVisibilityTypeEnumValue {
   /** Property value */
-  value?: ProjectVisibilityType;
+  value?: ProjectVisibilityType | (string & {});
 }
 export const ProjectVisibilityTypeEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -9221,7 +9211,7 @@ export const ProjectVisibilityTypeEnumValue = /*@__PURE__*/ S.suspend(() =>
 
 /** <p>An array of <code>ProjectArtifacts</code> objects. </p> */
 export type AwsCodeBuildProjectPropertiesSecondaryArtifactsList =
-  ReadonlyArray<ProjectArtifacts>;
+  Array<ProjectArtifacts>;
 export const AwsCodeBuildProjectPropertiesSecondaryArtifactsList =
   /*@__PURE__*/ S.Array(
     ProjectArtifacts,
@@ -9245,7 +9235,7 @@ export const ProjectSourceVersion = /*@__PURE__*/ S.suspend(() =>
 
 /** <p>An array of <code>ProjectSourceVersion</code> objects. If <code>secondarySourceVersions</code> is specified at the build level, then they take over these <code>secondarySourceVersions</code> (at the project level). </p> */
 export type AwsCodeBuildProjectPropertiesSecondarySourceVersionsList =
-  ReadonlyArray<ProjectSourceVersion>;
+  Array<ProjectSourceVersion>;
 export const AwsCodeBuildProjectPropertiesSecondarySourceVersionsList =
   /*@__PURE__*/ S.Array(
     ProjectSourceVersion,
@@ -9258,7 +9248,7 @@ export const SourceAuthType = /*@__PURE__*/ S.String;
 /** Definition of SourceAuthTypeEnumValue */
 export interface SourceAuthTypeEnumValue {
   /** Property value */
-  value?: SourceAuthType;
+  value?: SourceAuthType | (string & {});
 }
 export const SourceAuthTypeEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -9327,7 +9317,7 @@ export const SourceType = /*@__PURE__*/ S.String;
 /** Definition of SourceTypeEnumValue */
 export interface SourceTypeEnumValue {
   /** Property value */
-  value?: SourceType;
+  value?: SourceType | (string & {});
 }
 export const SourceTypeEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -9377,7 +9367,7 @@ export const ProjectSource = /*@__PURE__*/ S.suspend(() =>
 
 /** <p>An array of <code>ProjectSource</code> objects. </p> */
 export type AwsCodeBuildProjectPropertiesSecondarySourcesList =
-  ReadonlyArray<ProjectSource>;
+  Array<ProjectSource>;
 export const AwsCodeBuildProjectPropertiesSecondarySourcesList =
   /*@__PURE__*/ S.Array(
     ProjectSource,
@@ -9398,19 +9388,19 @@ export const Tag_8 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tag_8" }) as any as S.Schema<Tag_8>;
 
 /** <p>A list of tag key and value pairs associated with this build project.</p> <p>These tags are available for use by Amazon Web Services services that support CodeBuild build project tags.</p> */
-export type AwsCodeBuildProjectPropertiesTagsList = ReadonlyArray<Tag_8>;
+export type AwsCodeBuildProjectPropertiesTagsList = Array<Tag_8>;
 export const AwsCodeBuildProjectPropertiesTagsList = /*@__PURE__*/ S.Array(
   Tag_8,
 ) as any as S.Schema<AwsCodeBuildProjectPropertiesTagsList>;
 
 /** <p>A list of one or more security groups IDs in your Amazon VPC.</p> */
-export type VpcConfigSecurityGroupIdsList = ReadonlyArray<string>;
+export type VpcConfigSecurityGroupIdsList = Array<string>;
 export const VpcConfigSecurityGroupIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<VpcConfigSecurityGroupIdsList>;
 
 /** <p>A list of one or more subnet IDs in your Amazon VPC.</p> */
-export type VpcConfigSubnetsList = ReadonlyArray<string>;
+export type VpcConfigSubnetsList = Array<string>;
 export const VpcConfigSubnetsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<VpcConfigSubnetsList>;
@@ -9439,7 +9429,7 @@ export const WebhookBuildType = /*@__PURE__*/ S.String;
 /** Definition of WebhookBuildTypeEnumValue */
 export interface WebhookBuildTypeEnumValue {
   /** Property value */
-  value?: WebhookBuildType;
+  value?: WebhookBuildType | (string & {});
 }
 export const WebhookBuildTypeEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -9465,7 +9455,7 @@ export const WebhookFilterType = /*@__PURE__*/ S.String;
 /** Definition of WebhookFilterTypeEnumValue */
 export interface WebhookFilterTypeEnumValue {
   /** Property value */
-  value?: WebhookFilterType;
+  value?: WebhookFilterType | (string & {});
 }
 export const WebhookFilterTypeEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -9504,7 +9494,7 @@ export const FilterGroup = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FilterGroup" }) as any as S.Schema<FilterGroup>;
 
 /** <p>An array of arrays of <code>WebhookFilter</code> objects used to determine which webhooks are triggered. At least one <code>WebhookFilter</code> in the array must specify <code>EVENT</code> as its <code>type</code>. </p> <p>For a build to be triggered, at least one filter group in the <code>filterGroups</code> array must pass. For a filter group to pass, each of its filters must pass. </p> */
-export type WebhookFilterGroupsList = ReadonlyArray<FilterGroup>;
+export type WebhookFilterGroupsList = Array<FilterGroup>;
 export const WebhookFilterGroupsList = /*@__PURE__*/ S.Array(
   FilterGroup,
 ) as any as S.Schema<WebhookFilterGroupsList>;
@@ -9963,8 +9953,7 @@ export const CodeBuildProject = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CodeBuildProject>;
 
 /** The CodeBuildProject items on this page */
-export type CodeBuildProjectListResultValueList =
-  ReadonlyArray<CodeBuildProject>;
+export type CodeBuildProjectListResultValueList = Array<CodeBuildProject>;
 export const CodeBuildProjectListResultValueList = /*@__PURE__*/ S.Array(
   CodeBuildProject,
 ) as any as S.Schema<CodeBuildProjectListResultValueList>;
@@ -10102,7 +10091,7 @@ export const AuthType = /*@__PURE__*/ S.String;
 /** Definition of AuthTypeEnumValue */
 export interface AuthTypeEnumValue {
   /** Property value */
-  value?: AuthType;
+  value?: AuthType | (string & {});
 }
 export const AuthTypeEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -10124,7 +10113,7 @@ export const ServerType = /*@__PURE__*/ S.String;
 /** Definition of ServerTypeEnumValue */
 export interface ServerTypeEnumValue {
   /** Property value */
-  value?: ServerType;
+  value?: ServerType | (string & {});
 }
 export const ServerTypeEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -10496,7 +10485,7 @@ export const CodeBuildSourceCredentialsInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** The CodeBuildSourceCredentialsInfo items on this page */
 export type CodeBuildSourceCredentialsInfoListResultValueList =
-  ReadonlyArray<CodeBuildSourceCredentialsInfo>;
+  Array<CodeBuildSourceCredentialsInfo>;
 export const CodeBuildSourceCredentialsInfoListResultValueList =
   /*@__PURE__*/ S.Array(
     CodeBuildSourceCredentialsInfo,
@@ -11041,8 +11030,9 @@ export type ResourceType =
 export const ResourceType = /*@__PURE__*/ S.String;
 
 /** <p>A comma-separated list of resource types to exclude from recording by the configuration recorder.</p> */
-export type ExclusionByResourceTypesResourceTypesList =
-  ReadonlyArray<ResourceType>;
+export type ExclusionByResourceTypesResourceTypesList = Array<
+  ResourceType | (string & {})
+>;
 export const ExclusionByResourceTypesResourceTypesList = /*@__PURE__*/ S.Array(
   ResourceType,
 ) as any as S.Schema<ExclusionByResourceTypesResourceTypesList>;
@@ -11070,7 +11060,7 @@ export const RecordingStrategyType = /*@__PURE__*/ S.String;
 /** Definition of RecordingStrategyTypeEnumValue */
 export interface RecordingStrategyTypeEnumValue {
   /** Property value */
-  value?: RecordingStrategyType;
+  value?: RecordingStrategyType | (string & {});
 }
 export const RecordingStrategyTypeEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -11094,7 +11084,9 @@ export const RecordingStrategy = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RecordingStrategy>;
 
 /** <p>A comma-separated list that specifies which resource types Config records.</p> <p>For a list of valid <code>resourceTypes</code> values, see the <b>Resource Type Value</b> column in <a href='https://docs.aws.amazon.com/config/latest/developerguide/resource-config-reference.html#supported-resources'>Supported Amazon Web Services resource Types</a> in the <i>Config developer guide</i>.</p> <note> <p> <b>Required and optional fields</b> </p> <p>Optionally, you can set the <code>useOnly</code> field of <a href='https://docs.aws.amazon.com/config/latest/APIReference/API_RecordingStrategy.html'>RecordingStrategy</a> to <code>INCLUSION_BY_RESOURCE_TYPES</code>.</p> <p>To record all configuration changes, set the <code>allSupported</code> field of <a href='https://docs.aws.amazon.com/config/latest/APIReference/API_RecordingGroup.html'>RecordingGroup</a> to <code>true</code>, and either omit this field or don't specify any resource types in this field. If you set the <code>allSupported</code> field to <code>false</code> and specify values for <code>resourceTypes</code>, when Config adds support for a new type of resource, it will not record resources of that type unless you manually add that type to your recording group.</p> </note> <note> <p> <b>Region availability</b> </p> <p>Before specifying a resource type for Config to track, check <a href='https://docs.aws.amazon.com/config/latest/developerguide/what-is-resource-config-coverage.html'>Resource Coverage by Region Availability</a> to see if the resource type is supported in the Amazon Web Services Region where you set up Config. If a resource type is supported by Config in at least one Region, you can enable the recording of that resource type in all Regions supported by Config, even if the specified resource type is not supported in the Amazon Web Services Region where you set up Config.</p> </note> */
-export type RecordingGroupResourceTypesList = ReadonlyArray<ResourceType>;
+export type RecordingGroupResourceTypesList = Array<
+  ResourceType | (string & {})
+>;
 export const RecordingGroupResourceTypesList = /*@__PURE__*/ S.Array(
   ResourceType,
 ) as any as S.Schema<RecordingGroupResourceTypesList>;
@@ -11129,7 +11121,7 @@ export const RecordingFrequency = /*@__PURE__*/ S.String;
 /** Definition of RecordingFrequencyEnumValue */
 export interface RecordingFrequencyEnumValue {
   /** Property value */
-  value?: RecordingFrequency;
+  value?: RecordingFrequency | (string & {});
 }
 export const RecordingFrequencyEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -11140,8 +11132,9 @@ export const RecordingFrequencyEnumValue = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RecordingFrequencyEnumValue>;
 
 /** <p>A comma-separated list that specifies which resource types Config includes in the override.</p> <important> <p>Daily recording is not supported for the following resource types:</p> <ul> <li> <p> <code>AWS::Config::ResourceCompliance</code> </p> </li> <li> <p> <code>AWS::Config::ConformancePackCompliance</code> </p> </li> <li> <p> <code>AWS::Config::ConfigurationRecorder</code> </p> </li> </ul> </important> */
-export type RecordingModeOverrideResourceTypesList =
-  ReadonlyArray<ResourceType>;
+export type RecordingModeOverrideResourceTypesList = Array<
+  ResourceType | (string & {})
+>;
 export const RecordingModeOverrideResourceTypesList = /*@__PURE__*/ S.Array(
   ResourceType,
 ) as any as S.Schema<RecordingModeOverrideResourceTypesList>;
@@ -11167,7 +11160,7 @@ export const RecordingModeOverride = /*@__PURE__*/ S.suspend(() =>
 
 /** <p>An array of <code>recordingModeOverride</code> objects for you to specify your overrides for the recording mode. The <code>recordingModeOverride</code> object in the <code>recordingModeOverrides</code> array consists of three fields: a <code>description</code>, the new <code>recordingFrequency</code>, and an array of <code>resourceTypes</code> to override.</p> */
 export type RecordingModeRecordingModeOverridesList =
-  ReadonlyArray<RecordingModeOverride>;
+  Array<RecordingModeOverride>;
 export const RecordingModeRecordingModeOverridesList = /*@__PURE__*/ S.Array(
   RecordingModeOverride,
 ) as any as S.Schema<RecordingModeRecordingModeOverridesList>;
@@ -11553,7 +11546,7 @@ export const ConfigServiceConfigurationRecorder = /*@__PURE__*/ S.suspend(() =>
 
 /** The ConfigServiceConfigurationRecorder items on this page */
 export type ConfigServiceConfigurationRecorderListResultValueList =
-  ReadonlyArray<ConfigServiceConfigurationRecorder>;
+  Array<ConfigServiceConfigurationRecorder>;
 export const ConfigServiceConfigurationRecorderListResultValueList =
   /*@__PURE__*/ S.Array(
     ConfigServiceConfigurationRecorder,
@@ -11612,7 +11605,7 @@ export const RecorderStatus = /*@__PURE__*/ S.String;
 /** Definition of RecorderStatusEnumValue */
 export interface RecorderStatusEnumValue {
   /** Property value */
-  value?: RecorderStatus;
+  value?: RecorderStatus | (string & {});
 }
 export const RecorderStatusEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -12015,7 +12008,7 @@ export const ConfigServiceConfigurationRecorderStatus = /*@__PURE__*/ S.suspend(
 
 /** The ConfigServiceConfigurationRecorderStatus items on this page */
 export type ConfigServiceConfigurationRecorderStatusListResultValueList =
-  ReadonlyArray<ConfigServiceConfigurationRecorderStatus>;
+  Array<ConfigServiceConfigurationRecorderStatus>;
 export const ConfigServiceConfigurationRecorderStatusListResultValueList =
   /*@__PURE__*/ S.Array(
     ConfigServiceConfigurationRecorderStatus,
@@ -12249,7 +12242,7 @@ export const MaximumExecutionFrequency = /*@__PURE__*/ S.String;
 /** Definition of MaximumExecutionFrequencyEnumValue */
 export interface MaximumExecutionFrequencyEnumValue {
   /** Property value */
-  value?: MaximumExecutionFrequency;
+  value?: MaximumExecutionFrequency | (string & {});
 }
 export const MaximumExecutionFrequencyEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -12642,7 +12635,7 @@ export const ConfigServiceDeliveryChannel = /*@__PURE__*/ S.suspend(() =>
 
 /** The ConfigServiceDeliveryChannel items on this page */
 export type ConfigServiceDeliveryChannelListResultValueList =
-  ReadonlyArray<ConfigServiceDeliveryChannel>;
+  Array<ConfigServiceDeliveryChannel>;
 export const ConfigServiceDeliveryChannelListResultValueList =
   /*@__PURE__*/ S.Array(
     ConfigServiceDeliveryChannel,
@@ -12801,7 +12794,7 @@ export const ReplicationPendingModifiedValues = /*@__PURE__*/ S.suspend(() =>
 
 /** <p>One or more IPv6 addresses for the replication instance.</p> */
 export type AwsDatabaseMigrationServiceReplicationInstancePropertiesReplicationInstanceIpv6AddressesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const AwsDatabaseMigrationServiceReplicationInstancePropertiesReplicationInstanceIpv6AddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -12809,7 +12802,7 @@ export const AwsDatabaseMigrationServiceReplicationInstancePropertiesReplication
 
 /** <p>One or more private IP addresses for the replication instance.</p> */
 export type AwsDatabaseMigrationServiceReplicationInstancePropertiesReplicationInstancePrivateIpAddressesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const AwsDatabaseMigrationServiceReplicationInstancePropertiesReplicationInstancePrivateIpAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -12817,7 +12810,7 @@ export const AwsDatabaseMigrationServiceReplicationInstancePropertiesReplication
 
 /** <p>One or more public IP addresses for the replication instance.</p> */
 export type AwsDatabaseMigrationServiceReplicationInstancePropertiesReplicationInstancePublicIpAddressesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const AwsDatabaseMigrationServiceReplicationInstancePropertiesReplicationInstancePublicIpAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -12854,14 +12847,13 @@ export const Subnet = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Subnet" }) as any as S.Schema<Subnet>;
 
 /** <p>The subnets that are in the subnet group.</p> */
-export type ReplicationSubnetGroupSubnetsList = ReadonlyArray<Subnet>;
+export type ReplicationSubnetGroupSubnetsList = Array<Subnet>;
 export const ReplicationSubnetGroupSubnetsList = /*@__PURE__*/ S.Array(
   Subnet,
 ) as any as S.Schema<ReplicationSubnetGroupSubnetsList>;
 
 /** <p>The IP addressing protocol supported by the subnet group. This is used by a replication instance with values such as IPv4 only or Dual-stack that supports both IPv4 and IPv6 addressing. IPv6 only is not yet supported.</p> */
-export type ReplicationSubnetGroupSupportedNetworkTypesList =
-  ReadonlyArray<string>;
+export type ReplicationSubnetGroupSupportedNetworkTypesList = Array<string>;
 export const ReplicationSubnetGroupSupportedNetworkTypesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -12915,7 +12907,7 @@ export const VpcSecurityGroupMembership = /*@__PURE__*/ S.suspend(() =>
 
 /** <p>The VPC security group for the instance.</p> */
 export type AwsDatabaseMigrationServiceReplicationInstancePropertiesVpcSecurityGroupsList =
-  ReadonlyArray<VpcSecurityGroupMembership>;
+  Array<VpcSecurityGroupMembership>;
 export const AwsDatabaseMigrationServiceReplicationInstancePropertiesVpcSecurityGroupsList =
   /*@__PURE__*/ S.Array(
     VpcSecurityGroupMembership,
@@ -13373,7 +13365,7 @@ export const DatabaseMigrationServiceReplicationInstance =
 
 /** The DatabaseMigrationServiceReplicationInstance items on this page */
 export type DatabaseMigrationServiceReplicationInstanceListResultValueList =
-  ReadonlyArray<DatabaseMigrationServiceReplicationInstance>;
+  Array<DatabaseMigrationServiceReplicationInstance>;
 export const DatabaseMigrationServiceReplicationInstanceListResultValueList =
   /*@__PURE__*/ S.Array(
     DatabaseMigrationServiceReplicationInstance,
@@ -13535,7 +13527,7 @@ export const ClusterEndpointEncryptionType = /*@__PURE__*/ S.String;
 /** Definition of ClusterEndpointEncryptionTypeEnumValue */
 export interface ClusterEndpointEncryptionTypeEnumValue {
   /** Property value */
-  value?: ClusterEndpointEncryptionType;
+  value?: ClusterEndpointEncryptionType | (string & {});
 }
 export const ClusterEndpointEncryptionTypeEnumValue = /*@__PURE__*/ S.suspend(
   () =>
@@ -13547,7 +13539,7 @@ export const ClusterEndpointEncryptionTypeEnumValue = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ClusterEndpointEncryptionTypeEnumValue>;
 
 /** <p>A list of nodes to be removed from the cluster.</p> */
-export type AwsDaxClusterPropertiesNodeIdsToRemoveList = ReadonlyArray<string>;
+export type AwsDaxClusterPropertiesNodeIdsToRemoveList = Array<string>;
 export const AwsDaxClusterPropertiesNodeIdsToRemoveList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AwsDaxClusterPropertiesNodeIdsToRemoveList>;
@@ -13579,7 +13571,7 @@ export const Node = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Node" }) as any as S.Schema<Node>;
 
 /** <p>A list of nodes that are currently in the cluster.</p> */
-export type AwsDaxClusterPropertiesNodesList = ReadonlyArray<Node>;
+export type AwsDaxClusterPropertiesNodesList = Array<Node>;
 export const AwsDaxClusterPropertiesNodesList = /*@__PURE__*/ S.Array(
   Node,
 ) as any as S.Schema<AwsDaxClusterPropertiesNodesList>;
@@ -13601,7 +13593,7 @@ export const NotificationConfiguration_2 = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NotificationConfiguration_2>;
 
 /** <p>The node IDs of one or more nodes to be rebooted.</p> */
-export type ParameterGroupStatusNodeIdsToRebootList = ReadonlyArray<string>;
+export type ParameterGroupStatusNodeIdsToRebootList = Array<string>;
 export const ParameterGroupStatusNodeIdsToRebootList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ParameterGroupStatusNodeIdsToRebootList>;
@@ -13632,7 +13624,7 @@ export const SSEStatus = /*@__PURE__*/ S.String;
 /** Definition of SSEStatusEnumValue */
 export interface SSEStatusEnumValue {
   /** Property value */
-  value?: SSEStatus;
+  value?: SSEStatus | (string & {});
 }
 export const SSEStatusEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -13671,7 +13663,7 @@ export const SecurityGroupMembership = /*@__PURE__*/ S.suspend(() =>
 
 /** <p>A list of security groups, and the status of each, for the nodes in the cluster.</p> */
 export type AwsDaxClusterPropertiesSecurityGroupsList =
-  ReadonlyArray<SecurityGroupMembership>;
+  Array<SecurityGroupMembership>;
 export const AwsDaxClusterPropertiesSecurityGroupsList = /*@__PURE__*/ S.Array(
   SecurityGroupMembership,
 ) as any as S.Schema<AwsDaxClusterPropertiesSecurityGroupsList>;
@@ -14060,7 +14052,7 @@ export const DaxCluster = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DaxCluster" }) as any as S.Schema<DaxCluster>;
 
 /** The DaxCluster items on this page */
-export type DaxClusterListResultValueList = ReadonlyArray<DaxCluster>;
+export type DaxClusterListResultValueList = Array<DaxCluster>;
 export const DaxClusterListResultValueList = /*@__PURE__*/ S.Array(
   DaxCluster,
 ) as any as S.Schema<DaxClusterListResultValueList>;
@@ -14193,7 +14185,7 @@ export const ContinuousBackupsStatus = /*@__PURE__*/ S.String;
 /** Definition of ContinuousBackupsStatusEnumValue */
 export interface ContinuousBackupsStatusEnumValue {
   /** Property value */
-  value?: ContinuousBackupsStatus;
+  value?: ContinuousBackupsStatus | (string & {});
 }
 export const ContinuousBackupsStatusEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -14210,7 +14202,7 @@ export const PointInTimeRecoveryStatus = /*@__PURE__*/ S.String;
 /** Definition of PointInTimeRecoveryStatusEnumValue */
 export interface PointInTimeRecoveryStatusEnumValue {
   /** Property value */
-  value?: PointInTimeRecoveryStatus;
+  value?: PointInTimeRecoveryStatus | (string & {});
 }
 export const PointInTimeRecoveryStatusEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -14607,7 +14599,7 @@ export const DynamoDBContinuousBackupsDescription = /*@__PURE__*/ S.suspend(
 
 /** The DynamoDBContinuousBackupsDescription items on this page */
 export type DynamoDBContinuousBackupsDescriptionListResultValueList =
-  ReadonlyArray<DynamoDBContinuousBackupsDescription>;
+  Array<DynamoDBContinuousBackupsDescription>;
 export const DynamoDBContinuousBackupsDescriptionListResultValueList =
   /*@__PURE__*/ S.Array(
     DynamoDBContinuousBackupsDescription,
@@ -14763,7 +14755,7 @@ export const AttributeDefinition = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of attributes that describe the key schema for the table and indexes. This property is required to create a DDB table. Update requires: [Some interruptions](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-some-interrupt). Replacement if you edit an existing AttributeDefinition. */
 export type AwsDynamoDBTablePropertiesAttributeDefinitionsList =
-  ReadonlyArray<AttributeDefinition>;
+  Array<AttributeDefinition>;
 export const AwsDynamoDBTablePropertiesAttributeDefinitionsList =
   /*@__PURE__*/ S.Array(
     AttributeDefinition,
@@ -14797,13 +14789,13 @@ export const KeySchema = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "KeySchema" }) as any as S.Schema<KeySchema>;
 
 /** The complete key schema for a global secondary index, which consists of one or more pairs of attribute names and key types: + ``HASH`` - partition key + ``RANGE`` - sort key The partition key of an item is also known as its *hash attribute*. The term 'hash attribute' derives from DynamoDB's usage of an internal hash function to evenly distribute data items across partitions, based on their partition key values. The sort key of an item is also known as its *range attribute*. The term 'range attribute' derives from the way DynamoDB stores items with the same partition key physically close together, in sorted order by the sort key value. */
-export type GlobalSecondaryIndexKeySchemaList = ReadonlyArray<KeySchema>;
+export type GlobalSecondaryIndexKeySchemaList = Array<KeySchema>;
 export const GlobalSecondaryIndexKeySchemaList = /*@__PURE__*/ S.Array(
   KeySchema,
 ) as any as S.Schema<GlobalSecondaryIndexKeySchemaList>;
 
 /** Represents the non-key attribute names which will be projected into the index. For local secondary indexes, the total count of ``NonKeyAttributes`` summed across all of the local secondary indexes, must not exceed 100. If you project the same attribute into two different indexes, this counts as two distinct attributes when determining the total. */
-export type ProjectionNonKeyAttributesList = ReadonlyArray<string>;
+export type ProjectionNonKeyAttributesList = Array<string>;
 export const ProjectionNonKeyAttributesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ProjectionNonKeyAttributesList>;
@@ -14867,14 +14859,14 @@ export const GlobalSecondaryIndex = /*@__PURE__*/ S.suspend(() =>
 
 /** Global secondary indexes to be created on the table. You can create up to 20 global secondary indexes. If you update a table to include a new global secondary index, CFNlong initiates the index creation and then proceeds with the stack update. CFNlong doesn't wait for the index to complete creation because the backfilling phase can take a long time, depending on the size of the table. You can't use the index or update the table until the index's status is ``ACTIVE``. You can track its status by using the DynamoDB [DescribeTable](https://docs.aws.amazon.com/cli/latest/reference/dynamodb/describe-table.html) command. If you add or delete an index during an update, we recommend that you don't update any other resources. If your stack fails to update and is rolled back while adding a new index, you must manually delete the index. Updates are not supported. The following are exceptions: + If you update either the contributor insights specification or the provisioned throughput values of global secondary indexes, you can update the table without interruption. + You can delete or add one global secondary index without interruption. If you do both in the same update (for example, by changing the index's logical ID), the update fails. */
 export type AwsDynamoDBTablePropertiesGlobalSecondaryIndexesList =
-  ReadonlyArray<GlobalSecondaryIndex>;
+  Array<GlobalSecondaryIndex>;
 export const AwsDynamoDBTablePropertiesGlobalSecondaryIndexesList =
   /*@__PURE__*/ S.Array(
     GlobalSecondaryIndex,
   ) as any as S.Schema<AwsDynamoDBTablePropertiesGlobalSecondaryIndexesList>;
 
 /** List of the headers used to specify a common header for all source CSV files being imported. If this field is specified then the first line of each CSV file is treated as data instead of the header. If this field is not specified the the first line of each CSV file is treated as the header. */
-export type CsvHeaderListList = ReadonlyArray<string>;
+export type CsvHeaderListList = Array<string>;
 export const CsvHeaderListList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CsvHeaderListList>;
@@ -14946,7 +14938,7 @@ export const ImportSourceSpecification = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ImportSourceSpecification>;
 
 /** Specifies the attributes that make up the primary key for the table. The attributes in the ``KeySchema`` property must also be defined in the ``AttributeDefinitions`` property. */
-export type AwsDynamoDBTablePropertiesKeySchemaList = ReadonlyArray<KeySchema>;
+export type AwsDynamoDBTablePropertiesKeySchemaList = Array<KeySchema>;
 export const AwsDynamoDBTablePropertiesKeySchemaList = /*@__PURE__*/ S.Array(
   KeySchema,
 ) as any as S.Schema<AwsDynamoDBTablePropertiesKeySchemaList>;
@@ -14961,7 +14953,9 @@ export const KinesisStreamSpecificationApproximateCreationDateTimePrecision =
 /** Definition of KinesisStreamSpecification */
 export interface KinesisStreamSpecification {
   /** The precision for the time and date that the stream was created. */
-  approximateCreationDateTimePrecision?: KinesisStreamSpecificationApproximateCreationDateTimePrecision;
+  approximateCreationDateTimePrecision?:
+    | KinesisStreamSpecificationApproximateCreationDateTimePrecision
+    | (string & {});
   /** The ARN for a specific Kinesis data stream. Length Constraints: Minimum length of 37. Maximum length of 1024. */
   streamArn?: string;
 }
@@ -14977,7 +14971,7 @@ export const KinesisStreamSpecification = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<KinesisStreamSpecification>;
 
 /** The complete key schema for the local secondary index, consisting of one or more pairs of attribute names and key types: + ``HASH`` - partition key + ``RANGE`` - sort key The partition key of an item is also known as its *hash attribute*. The term 'hash attribute' derives from DynamoDB's usage of an internal hash function to evenly distribute data items across partitions, based on their partition key values. The sort key of an item is also known as its *range attribute*. The term 'range attribute' derives from the way DynamoDB stores items with the same partition key physically close together, in sorted order by the sort key value. */
-export type LocalSecondaryIndexKeySchemaList = ReadonlyArray<KeySchema>;
+export type LocalSecondaryIndexKeySchemaList = Array<KeySchema>;
 export const LocalSecondaryIndexKeySchemaList = /*@__PURE__*/ S.Array(
   KeySchema,
 ) as any as S.Schema<LocalSecondaryIndexKeySchemaList>;
@@ -15003,7 +14997,7 @@ export const LocalSecondaryIndex = /*@__PURE__*/ S.suspend(() =>
 
 /** Local secondary indexes to be created on the table. You can create up to 5 local secondary indexes. Each index is scoped to a given hash key value. The size of each hash key can be up to 10 gigabytes. */
 export type AwsDynamoDBTablePropertiesLocalSecondaryIndexesList =
-  ReadonlyArray<LocalSecondaryIndex>;
+  Array<LocalSecondaryIndex>;
 export const AwsDynamoDBTablePropertiesLocalSecondaryIndexesList =
   /*@__PURE__*/ S.Array(
     LocalSecondaryIndex,
@@ -15083,7 +15077,7 @@ export const Tag_9 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tag_9" }) as any as S.Schema<Tag_9>;
 
 /** An array of key-value pairs to apply to this resource. For more information, see [Tag](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-resource-tags.html). */
-export type AwsDynamoDBTablePropertiesTagsList = ReadonlyArray<Tag_9>;
+export type AwsDynamoDBTablePropertiesTagsList = Array<Tag_9>;
 export const AwsDynamoDBTablePropertiesTagsList = /*@__PURE__*/ S.Array(
   Tag_9,
 ) as any as S.Schema<AwsDynamoDBTablePropertiesTagsList>;
@@ -15505,7 +15499,7 @@ export const DynamoDBTable = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DynamoDBTable" }) as any as S.Schema<DynamoDBTable>;
 
 /** The DynamoDBTable items on this page */
-export type DynamoDBTableListResultValueList = ReadonlyArray<DynamoDBTable>;
+export type DynamoDBTableListResultValueList = Array<DynamoDBTable>;
 export const DynamoDBTableListResultValueList = /*@__PURE__*/ S.Array(
   DynamoDBTable,
 ) as any as S.Schema<DynamoDBTableListResultValueList>;
@@ -15647,7 +15641,7 @@ export const AccountAttributeValue = /*@__PURE__*/ S.suspend(() =>
 
 /** <p>The values for the account attribute.</p> */
 export type AwsEc2AccountAttributePropertiesAttributeValuesList =
-  ReadonlyArray<AccountAttributeValue>;
+  Array<AccountAttributeValue>;
 export const AwsEc2AccountAttributePropertiesAttributeValuesList =
   /*@__PURE__*/ S.Array(
     AccountAttributeValue,
@@ -15995,8 +15989,7 @@ export const Ec2AccountAttribute = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<Ec2AccountAttribute>;
 
 /** The Ec2AccountAttribute items on this page */
-export type Ec2AccountAttributeListResultValueList =
-  ReadonlyArray<Ec2AccountAttribute>;
+export type Ec2AccountAttributeListResultValueList = Array<Ec2AccountAttribute>;
 export const Ec2AccountAttributeListResultValueList = /*@__PURE__*/ S.Array(
   Ec2AccountAttribute,
 ) as any as S.Schema<Ec2AccountAttributeListResultValueList>;
@@ -16129,7 +16122,7 @@ export const DomainType = /*@__PURE__*/ S.String;
 /** Definition of DomainTypeEnumValue */
 export interface DomainTypeEnumValue {
   /** Property value */
-  value?: DomainType;
+  value?: DomainType | (string & {});
 }
 export const DomainTypeEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -16154,7 +16147,7 @@ export const Tag_10 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tag_10" }) as any as S.Schema<Tag_10>;
 
 /** <p>Any tags assigned to the Elastic IP address.</p> */
-export type AwsEc2AddressPropertiesTagsList = ReadonlyArray<Tag_10>;
+export type AwsEc2AddressPropertiesTagsList = Array<Tag_10>;
 export const AwsEc2AddressPropertiesTagsList = /*@__PURE__*/ S.Array(
   Tag_10,
 ) as any as S.Schema<AwsEc2AddressPropertiesTagsList>;
@@ -16530,7 +16523,7 @@ export const Ec2Address = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Ec2Address" }) as any as S.Schema<Ec2Address>;
 
 /** The Ec2Address items on this page */
-export type Ec2AddressListResultValueList = ReadonlyArray<Ec2Address>;
+export type Ec2AddressListResultValueList = Array<Ec2Address>;
 export const Ec2AddressListResultValueList = /*@__PURE__*/ S.Array(
   Ec2Address,
 ) as any as S.Schema<Ec2AddressListResultValueList>;
@@ -16663,7 +16656,7 @@ export const FileFormat = /*@__PURE__*/ S.String;
 /** Definition of DestinationOptionsModelProperties */
 export interface DestinationOptionsModelProperties {
   /** Property fileFormat */
-  fileFormat?: FileFormat;
+  fileFormat?: FileFormat | (string & {});
   /** Property hiveCompatiblePartitions */
   hiveCompatiblePartitions?: boolean;
   /** Property perHourPartition */
@@ -16710,7 +16703,7 @@ export const Tag_11 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tag_11" }) as any as S.Schema<Tag_11>;
 
 /** The tags to apply to the flow logs. */
-export type AwsEc2FlowLogPropertiesTagsList = ReadonlyArray<Tag_11>;
+export type AwsEc2FlowLogPropertiesTagsList = Array<Tag_11>;
 export const AwsEc2FlowLogPropertiesTagsList = /*@__PURE__*/ S.Array(
   Tag_11,
 ) as any as S.Schema<AwsEc2FlowLogPropertiesTagsList>;
@@ -16732,7 +16725,7 @@ export interface AwsEc2FlowLogProperties {
   /** Specifies the destination to which the flow log data is to be published. Flow log data can be published to a CloudWatch Logs log group, an Amazon S3 bucket, or a Kinesis Firehose stream. The value specified for this parameter depends on the value specified for LogDestinationType. */
   logDestination?: string;
   /** Specifies the type of destination to which the flow log data is to be published. Flow log data can be published to CloudWatch Logs or Amazon S3. */
-  logDestinationType?: LogDestinationType;
+  logDestinationType?: LogDestinationType | (string & {});
   /** The fields to include in the flow log record, in the order in which they should appear. */
   logFormat?: string;
   /** The name of a new or existing CloudWatch Logs log group where Amazon EC2 publishes your flow logs. If you specify LogDestinationType as s3 or kinesis-data-firehose, do not specify DeliverLogsPermissionArn or LogGroupName. */
@@ -16742,11 +16735,11 @@ export interface AwsEc2FlowLogProperties {
   /** The ID of the subnet, network interface, or VPC for which you want to create a flow log. */
   resourceId?: string;
   /** The type of resource for which to create the flow log. For example, if you specified a VPC ID for the ResourceId property, specify VPC for this property. */
-  resourceType?: ResourceType_2;
+  resourceType?: ResourceType_2 | (string & {});
   /** The tags to apply to the flow logs. */
   tags?: AwsEc2FlowLogPropertiesTagsList;
   /** The type of traffic to log. You can log traffic that the resource accepts or rejects, or all traffic. */
-  trafficType?: TrafficType;
+  trafficType?: TrafficType | (string & {});
 }
 export const AwsEc2FlowLogProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -17086,7 +17079,7 @@ export const Ec2FlowLog = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Ec2FlowLog" }) as any as S.Schema<Ec2FlowLog>;
 
 /** The Ec2FlowLog items on this page */
-export type Ec2FlowLogListResultValueList = ReadonlyArray<Ec2FlowLog>;
+export type Ec2FlowLogListResultValueList = Array<Ec2FlowLog>;
 export const Ec2FlowLogListResultValueList = /*@__PURE__*/ S.Array(
   Ec2FlowLog,
 ) as any as S.Schema<Ec2FlowLogListResultValueList>;
@@ -17224,7 +17217,7 @@ export const ArchitectureValues = /*@__PURE__*/ S.String;
 /** Definition of ArchitectureValuesEnumValue */
 export interface ArchitectureValuesEnumValue {
   /** Property value */
-  value?: ArchitectureValues;
+  value?: ArchitectureValues | (string & {});
 }
 export const ArchitectureValuesEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -17248,7 +17241,7 @@ export const VolumeType = /*@__PURE__*/ S.String;
 /** Definition of VolumeTypeEnumValue */
 export interface VolumeTypeEnumValue {
   /** Property value */
-  value?: VolumeType;
+  value?: VolumeType | (string & {});
 }
 export const VolumeTypeEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -17317,7 +17310,7 @@ export const BlockDeviceMapping = /*@__PURE__*/ S.suspend(() =>
 
 /** <p>Any block device mapping entries.</p> */
 export type AwsEc2ImagePropertiesBlockDeviceMappingsList =
-  ReadonlyArray<BlockDeviceMapping>;
+  Array<BlockDeviceMapping>;
 export const AwsEc2ImagePropertiesBlockDeviceMappingsList =
   /*@__PURE__*/ S.Array(
     BlockDeviceMapping,
@@ -17330,7 +17323,7 @@ export const BootModeValues = /*@__PURE__*/ S.String;
 /** Definition of BootModeValuesEnumValue */
 export interface BootModeValuesEnumValue {
   /** Property value */
-  value?: BootModeValues;
+  value?: BootModeValues | (string & {});
 }
 export const BootModeValuesEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -17347,7 +17340,7 @@ export const HypervisorType = /*@__PURE__*/ S.String;
 /** Definition of HypervisorTypeEnumValue */
 export interface HypervisorTypeEnumValue {
   /** Property value */
-  value?: HypervisorType;
+  value?: HypervisorType | (string & {});
 }
 export const HypervisorTypeEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -17364,7 +17357,7 @@ export const ImageTypeValues = /*@__PURE__*/ S.String;
 /** Definition of ImageTypeValuesEnumValue */
 export interface ImageTypeValuesEnumValue {
   /** Property value */
-  value?: ImageTypeValues;
+  value?: ImageTypeValues | (string & {});
 }
 export const ImageTypeValuesEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -17381,7 +17374,7 @@ export const ImdsSupportValues = /*@__PURE__*/ S.String;
 /** Definition of ImdsSupportValuesEnumValue */
 export interface ImdsSupportValuesEnumValue {
   /** Property value */
-  value?: ImdsSupportValues;
+  value?: ImdsSupportValues | (string & {});
 }
 export const ImdsSupportValuesEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -17398,7 +17391,7 @@ export const PlatformValues = /*@__PURE__*/ S.String;
 /** Definition of PlatformValuesEnumValue */
 export interface PlatformValuesEnumValue {
   /** Property value */
-  value?: PlatformValues;
+  value?: PlatformValues | (string & {});
 }
 export const PlatformValuesEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -17415,7 +17408,7 @@ export const ProductCodeValues = /*@__PURE__*/ S.String;
 /** Definition of ProductCodeValuesEnumValue */
 export interface ProductCodeValuesEnumValue {
   /** Property value */
-  value?: ProductCodeValues;
+  value?: ProductCodeValues | (string & {});
 }
 export const ProductCodeValuesEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -17440,7 +17433,7 @@ export const ProductCode = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ProductCode" }) as any as S.Schema<ProductCode>;
 
 /** <p>Any product codes associated with the AMI.</p> */
-export type AwsEc2ImagePropertiesProductCodesList = ReadonlyArray<ProductCode>;
+export type AwsEc2ImagePropertiesProductCodesList = Array<ProductCode>;
 export const AwsEc2ImagePropertiesProductCodesList = /*@__PURE__*/ S.Array(
   ProductCode,
 ) as any as S.Schema<AwsEc2ImagePropertiesProductCodesList>;
@@ -17452,7 +17445,7 @@ export const DeviceType = /*@__PURE__*/ S.String;
 /** Definition of DeviceTypeEnumValue */
 export interface DeviceTypeEnumValue {
   /** Property value */
-  value?: DeviceType;
+  value?: DeviceType | (string & {});
 }
 export const DeviceTypeEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -17477,7 +17470,7 @@ export const ImageState = /*@__PURE__*/ S.String;
 /** Definition of ImageStateEnumValue */
 export interface ImageStateEnumValue {
   /** Property value */
-  value?: ImageState;
+  value?: ImageState | (string & {});
 }
 export const ImageStateEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -17516,7 +17509,7 @@ export const Tag_12 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tag_12" }) as any as S.Schema<Tag_12>;
 
 /** <p>Any tags assigned to the image.</p> */
-export type AwsEc2ImagePropertiesTagsList = ReadonlyArray<Tag_12>;
+export type AwsEc2ImagePropertiesTagsList = Array<Tag_12>;
 export const AwsEc2ImagePropertiesTagsList = /*@__PURE__*/ S.Array(
   Tag_12,
 ) as any as S.Schema<AwsEc2ImagePropertiesTagsList>;
@@ -17528,7 +17521,7 @@ export const TpmSupportValues = /*@__PURE__*/ S.String;
 /** Definition of TpmSupportValuesEnumValue */
 export interface TpmSupportValuesEnumValue {
   /** Property value */
-  value?: TpmSupportValues;
+  value?: TpmSupportValues | (string & {});
 }
 export const TpmSupportValuesEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -17545,7 +17538,7 @@ export const VirtualizationType = /*@__PURE__*/ S.String;
 /** Definition of VirtualizationTypeEnumValue */
 export interface VirtualizationTypeEnumValue {
   /** Property value */
-  value?: VirtualizationType;
+  value?: VirtualizationType | (string & {});
 }
 export const VirtualizationTypeEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -17981,7 +17974,7 @@ export const Ec2Image = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Ec2Image" }) as any as S.Schema<Ec2Image>;
 
 /** The Ec2Image items on this page */
-export type Ec2ImageListResultValueList = ReadonlyArray<Ec2Image>;
+export type Ec2ImageListResultValueList = Array<Ec2Image>;
 export const Ec2ImageListResultValueList = /*@__PURE__*/ S.Array(
   Ec2Image,
 ) as any as S.Schema<Ec2ImageListResultValueList>;
@@ -18108,7 +18101,7 @@ export const AttachmentStatus = /*@__PURE__*/ S.String;
 /** Definition of AttachmentStatusEnumValue */
 export interface AttachmentStatusEnumValue {
   /** Property value */
-  value?: AttachmentStatus;
+  value?: AttachmentStatus | (string & {});
 }
 export const AttachmentStatusEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -18164,7 +18157,7 @@ export const InstanceBlockDeviceMapping = /*@__PURE__*/ S.suspend(() =>
 
 /** <p>Any block device mapping entries for the instance.</p> */
 export type AwsEc2InstancePropertiesBlockDeviceMappingsList =
-  ReadonlyArray<InstanceBlockDeviceMapping>;
+  Array<InstanceBlockDeviceMapping>;
 export const AwsEc2InstancePropertiesBlockDeviceMappingsList =
   /*@__PURE__*/ S.Array(
     InstanceBlockDeviceMapping,
@@ -18177,7 +18170,7 @@ export const CapacityReservationPreference = /*@__PURE__*/ S.String;
 /** Definition of CapacityReservationPreferenceEnumValue */
 export interface CapacityReservationPreferenceEnumValue {
   /** Property value */
-  value?: CapacityReservationPreference;
+  value?: CapacityReservationPreference | (string & {});
 }
 export const CapacityReservationPreferenceEnumValue = /*@__PURE__*/ S.suspend(
   () =>
@@ -18230,7 +18223,7 @@ export const AmdSevSnpSpecification = /*@__PURE__*/ S.String;
 /** Definition of AmdSevSnpSpecificationEnumValue */
 export interface AmdSevSnpSpecificationEnumValue {
   /** Property value */
-  value?: AmdSevSnpSpecification;
+  value?: AmdSevSnpSpecification | (string & {});
 }
 export const AmdSevSnpSpecificationEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -18264,7 +18257,7 @@ export const InstanceBootModeValues = /*@__PURE__*/ S.String;
 /** Definition of InstanceBootModeValuesEnumValue */
 export interface InstanceBootModeValuesEnumValue {
   /** Property value */
-  value?: InstanceBootModeValues;
+  value?: InstanceBootModeValues | (string & {});
 }
 export const InstanceBootModeValuesEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -18298,7 +18291,7 @@ export const ElasticGpuAssociation = /*@__PURE__*/ S.suspend(() =>
 
 /** <p>Deprecated.</p> <note> <p>Amazon Elastic Graphics reached end of life on January 8, 2024. For workloads that require graphics acceleration, we recommend that you use Amazon EC2 G4ad, G4dn, or G5 instances.</p> </note> */
 export type AwsEc2InstancePropertiesElasticGpuAssociationsList =
-  ReadonlyArray<ElasticGpuAssociation>;
+  Array<ElasticGpuAssociation>;
 export const AwsEc2InstancePropertiesElasticGpuAssociationsList =
   /*@__PURE__*/ S.Array(
     ElasticGpuAssociation,
@@ -18329,7 +18322,7 @@ export const ElasticInferenceAcceleratorAssociation = /*@__PURE__*/ S.suspend(
 
 /** <p>The elastic inference accelerator associated with the instance.</p> */
 export type AwsEc2InstancePropertiesElasticInferenceAcceleratorAssociationsList =
-  ReadonlyArray<ElasticInferenceAcceleratorAssociation>;
+  Array<ElasticInferenceAcceleratorAssociation>;
 export const AwsEc2InstancePropertiesElasticInferenceAcceleratorAssociationsList =
   /*@__PURE__*/ S.Array(
     ElasticInferenceAcceleratorAssociation,
@@ -18382,7 +18375,7 @@ export const InstanceLifecycleType = /*@__PURE__*/ S.String;
 /** Definition of InstanceLifecycleTypeEnumValue */
 export interface InstanceLifecycleTypeEnumValue {
   /** Property value */
-  value?: InstanceLifecycleType;
+  value?: InstanceLifecycleType | (string & {});
 }
 export const InstanceLifecycleTypeEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -19195,7 +19188,7 @@ export const InstanceType = /*@__PURE__*/ S.String;
 /** Definition of InstanceTypeEnumValue */
 export interface InstanceTypeEnumValue {
   /** Property value */
-  value?: InstanceType;
+  value?: InstanceType | (string & {});
 }
 export const InstanceTypeEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -19219,8 +19212,7 @@ export const LicenseConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LicenseConfiguration>;
 
 /** <p>The license configurations for the instance.</p> */
-export type AwsEc2InstancePropertiesLicensesList =
-  ReadonlyArray<LicenseConfiguration>;
+export type AwsEc2InstancePropertiesLicensesList = Array<LicenseConfiguration>;
 export const AwsEc2InstancePropertiesLicensesList = /*@__PURE__*/ S.Array(
   LicenseConfiguration,
 ) as any as S.Schema<AwsEc2InstancePropertiesLicensesList>;
@@ -19232,7 +19224,7 @@ export const InstanceAutoRecoveryState = /*@__PURE__*/ S.String;
 /** Definition of InstanceAutoRecoveryStateEnumValue */
 export interface InstanceAutoRecoveryStateEnumValue {
   /** Property value */
-  value?: InstanceAutoRecoveryState;
+  value?: InstanceAutoRecoveryState | (string & {});
 }
 export const InstanceAutoRecoveryStateEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -19262,7 +19254,7 @@ export const InstanceMetadataEndpointState = /*@__PURE__*/ S.String;
 /** Definition of InstanceMetadataEndpointStateEnumValue */
 export interface InstanceMetadataEndpointStateEnumValue {
   /** Property value */
-  value?: InstanceMetadataEndpointState;
+  value?: InstanceMetadataEndpointState | (string & {});
 }
 export const InstanceMetadataEndpointStateEnumValue = /*@__PURE__*/ S.suspend(
   () =>
@@ -19283,7 +19275,7 @@ export const InstanceMetadataProtocolStateEnumValueValue =
 /** Definition of InstanceMetadataProtocolStateEnumValue */
 export interface InstanceMetadataProtocolStateEnumValue {
   /** Property value */
-  value?: InstanceMetadataProtocolStateEnumValueValue;
+  value?: InstanceMetadataProtocolStateEnumValueValue | (string & {});
 }
 export const InstanceMetadataProtocolStateEnumValue = /*@__PURE__*/ S.suspend(
   () =>
@@ -19301,7 +19293,7 @@ export const HttpTokensState = /*@__PURE__*/ S.String;
 /** Definition of HttpTokensStateEnumValue */
 export interface HttpTokensStateEnumValue {
   /** Property value */
-  value?: HttpTokensState;
+  value?: HttpTokensState | (string & {});
 }
 export const HttpTokensStateEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -19318,7 +19310,7 @@ export const InstanceMetadataTagsState = /*@__PURE__*/ S.String;
 /** Definition of InstanceMetadataTagsStateEnumValue */
 export interface InstanceMetadataTagsStateEnumValue {
   /** Property value */
-  value?: InstanceMetadataTagsState;
+  value?: InstanceMetadataTagsState | (string & {});
 }
 export const InstanceMetadataTagsStateEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -19335,7 +19327,7 @@ export const InstanceMetadataOptionsState = /*@__PURE__*/ S.String;
 /** Definition of InstanceMetadataOptionsStateEnumValue */
 export interface InstanceMetadataOptionsStateEnumValue {
   /** Property value */
-  value?: InstanceMetadataOptionsState;
+  value?: InstanceMetadataOptionsState | (string & {});
 }
 export const InstanceMetadataOptionsStateEnumValue = /*@__PURE__*/ S.suspend(
   () =>
@@ -19381,7 +19373,7 @@ export const MonitoringState = /*@__PURE__*/ S.String;
 /** Definition of MonitoringStateEnumValue */
 export interface MonitoringStateEnumValue {
   /** Property value */
-  value?: MonitoringState;
+  value?: MonitoringState | (string & {});
 }
 export const MonitoringStateEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -19528,7 +19520,7 @@ export const GroupIdentifier = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GroupIdentifier>;
 
 /** <p>The security groups.</p> */
-export type InstanceNetworkInterfaceGroupsList = ReadonlyArray<GroupIdentifier>;
+export type InstanceNetworkInterfaceGroupsList = Array<GroupIdentifier>;
 export const InstanceNetworkInterfaceGroupsList = /*@__PURE__*/ S.Array(
   GroupIdentifier,
 ) as any as S.Schema<InstanceNetworkInterfaceGroupsList>;
@@ -19548,7 +19540,7 @@ export const InstanceIpv4Prefix = /*@__PURE__*/ S.suspend(() =>
 
 /** <p>The IPv4 delegated prefixes that are assigned to the network interface.</p> */
 export type InstanceNetworkInterfaceIpv4PrefixesList =
-  ReadonlyArray<InstanceIpv4Prefix>;
+  Array<InstanceIpv4Prefix>;
 export const InstanceNetworkInterfaceIpv4PrefixesList = /*@__PURE__*/ S.Array(
   InstanceIpv4Prefix,
 ) as any as S.Schema<InstanceNetworkInterfaceIpv4PrefixesList>;
@@ -19571,7 +19563,7 @@ export const InstanceIpv6Address = /*@__PURE__*/ S.suspend(() =>
 
 /** <p>The IPv6 addresses associated with the network interface.</p> */
 export type InstanceNetworkInterfaceIpv6AddressesList =
-  ReadonlyArray<InstanceIpv6Address>;
+  Array<InstanceIpv6Address>;
 export const InstanceNetworkInterfaceIpv6AddressesList = /*@__PURE__*/ S.Array(
   InstanceIpv6Address,
 ) as any as S.Schema<InstanceNetworkInterfaceIpv6AddressesList>;
@@ -19591,7 +19583,7 @@ export const InstanceIpv6Prefix = /*@__PURE__*/ S.suspend(() =>
 
 /** <p>The IPv6 delegated prefixes that are assigned to the network interface.</p> */
 export type InstanceNetworkInterfaceIpv6PrefixesList =
-  ReadonlyArray<InstanceIpv6Prefix>;
+  Array<InstanceIpv6Prefix>;
 export const InstanceNetworkInterfaceIpv6PrefixesList = /*@__PURE__*/ S.Array(
   InstanceIpv6Prefix,
 ) as any as S.Schema<InstanceNetworkInterfaceIpv6PrefixesList>;
@@ -19620,7 +19612,7 @@ export const InstancePrivateIpAddress = /*@__PURE__*/ S.suspend(() =>
 
 /** <p>The private IPv4 addresses associated with the network interface.</p> */
 export type InstanceNetworkInterfacePrivateIpAddressesList =
-  ReadonlyArray<InstancePrivateIpAddress>;
+  Array<InstancePrivateIpAddress>;
 export const InstanceNetworkInterfacePrivateIpAddressesList =
   /*@__PURE__*/ S.Array(
     InstancePrivateIpAddress,
@@ -19638,7 +19630,7 @@ export const NetworkInterfaceStatus = /*@__PURE__*/ S.String;
 /** Definition of NetworkInterfaceStatusEnumValue */
 export interface NetworkInterfaceStatusEnumValue {
   /** Property value */
-  value?: NetworkInterfaceStatus;
+  value?: NetworkInterfaceStatus | (string & {});
 }
 export const NetworkInterfaceStatusEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -19721,7 +19713,7 @@ export const InstanceNetworkInterface = /*@__PURE__*/ S.suspend(() =>
 
 /** <p>The network interfaces for the instance.</p> */
 export type AwsEc2InstancePropertiesNetworkInterfacesList =
-  ReadonlyArray<InstanceNetworkInterface>;
+  Array<InstanceNetworkInterface>;
 export const AwsEc2InstancePropertiesNetworkInterfacesList =
   /*@__PURE__*/ S.Array(
     InstanceNetworkInterface,
@@ -19734,7 +19726,7 @@ export const Tenancy = /*@__PURE__*/ S.String;
 /** Definition of TenancyEnumValue */
 export interface TenancyEnumValue {
   /** Property value */
-  value?: Tenancy;
+  value?: Tenancy | (string & {});
 }
 export const TenancyEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -19786,7 +19778,7 @@ export const HostnameType = /*@__PURE__*/ S.String;
 /** Definition of HostnameTypeEnumValue */
 export interface HostnameTypeEnumValue {
   /** Property value */
-  value?: HostnameType;
+  value?: HostnameType | (string & {});
 }
 export const HostnameTypeEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -19816,15 +19808,13 @@ export const PrivateDnsNameOptionsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateDnsNameOptionsResponse>;
 
 /** <p>The product codes attached to this instance, if applicable.</p> */
-export type AwsEc2InstancePropertiesProductCodesList =
-  ReadonlyArray<ProductCode>;
+export type AwsEc2InstancePropertiesProductCodesList = Array<ProductCode>;
 export const AwsEc2InstancePropertiesProductCodesList = /*@__PURE__*/ S.Array(
   ProductCode,
 ) as any as S.Schema<AwsEc2InstancePropertiesProductCodesList>;
 
 /** <p>The security groups for the instance.</p> */
-export type AwsEc2InstancePropertiesSecurityGroupsList =
-  ReadonlyArray<GroupIdentifier>;
+export type AwsEc2InstancePropertiesSecurityGroupsList = Array<GroupIdentifier>;
 export const AwsEc2InstancePropertiesSecurityGroupsList = /*@__PURE__*/ S.Array(
   GroupIdentifier,
 ) as any as S.Schema<AwsEc2InstancePropertiesSecurityGroupsList>;
@@ -19842,7 +19832,7 @@ export const InstanceStateName = /*@__PURE__*/ S.String;
 /** Definition of InstanceStateNameEnumValue */
 export interface InstanceStateNameEnumValue {
   /** Property value */
-  value?: InstanceStateName;
+  value?: InstanceStateName | (string & {});
 }
 export const InstanceStateNameEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -19881,7 +19871,7 @@ export const Tag_13 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tag_13" }) as any as S.Schema<Tag_13>;
 
 /** <p>Any tags assigned to the instance.</p> */
-export type AwsEc2InstancePropertiesTagsList = ReadonlyArray<Tag_13>;
+export type AwsEc2InstancePropertiesTagsList = Array<Tag_13>;
 export const AwsEc2InstancePropertiesTagsList = /*@__PURE__*/ S.Array(
   Tag_13,
 ) as any as S.Schema<AwsEc2InstancePropertiesTagsList>;
@@ -20324,7 +20314,7 @@ export const Ec2Instance = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Ec2Instance" }) as any as S.Schema<Ec2Instance>;
 
 /** The Ec2Instance items on this page */
-export type Ec2InstanceListResultValueList = ReadonlyArray<Ec2Instance>;
+export type Ec2InstanceListResultValueList = Array<Ec2Instance>;
 export const Ec2InstanceListResultValueList = /*@__PURE__*/ S.Array(
   Ec2Instance,
 ) as any as S.Schema<Ec2InstanceListResultValueList>;
@@ -20365,14 +20355,13 @@ export const Ec2InstancesStartRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<Ec2InstancesStartRequest>;
 
 /** The operations list. */
-export type OperationStatusResultOperationsList =
-  ReadonlyArray<OperationStatusResult>;
+export type OperationStatusResultOperationsList = Array<OperationStatusResult>;
 export const OperationStatusResultOperationsList = /*@__PURE__*/ S.Array(
   S.suspend(() => OperationStatusResult),
 ) as any as S.Schema<OperationStatusResultOperationsList>;
 
 /** <p>A list of key value pairs that provides contextual information about why an error occured.</p> */
-export type ErrorDetailErrorDataList = ReadonlyArray<unknown>;
+export type ErrorDetailErrorDataList = Array<unknown>;
 export const ErrorDetailErrorDataList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<ErrorDetailErrorDataList>;
@@ -20433,7 +20422,7 @@ export const OperationStatusResult = /*@__PURE__*/ S.suspend(() =>
 
 /** The operations list. */
 export type Ec2InstancesStartResponseOperationsList =
-  ReadonlyArray<OperationStatusResult>;
+  Array<OperationStatusResult>;
 export const Ec2InstancesStartResponseOperationsList = /*@__PURE__*/ S.Array(
   OperationStatusResult,
 ) as any as S.Schema<Ec2InstancesStartResponseOperationsList>;
@@ -20501,7 +20490,7 @@ export const Ec2InstancesStopRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The operations list. */
 export type Ec2InstancesStopResponseOperationsList =
-  ReadonlyArray<OperationStatusResult>;
+  Array<OperationStatusResult>;
 export const Ec2InstancesStopResponseOperationsList = /*@__PURE__*/ S.Array(
   OperationStatusResult,
 ) as any as S.Schema<Ec2InstancesStopResponseOperationsList>;
@@ -20564,7 +20553,7 @@ export const EventCode = /*@__PURE__*/ S.String;
 /** Definition of EventCodeEnumValue */
 export interface EventCodeEnumValue {
   /** Property value */
-  value?: EventCode;
+  value?: EventCode | (string & {});
 }
 export const EventCodeEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -20604,7 +20593,7 @@ export const InstanceStatusEvent = /*@__PURE__*/ S.suspend(() =>
 
 /** <p>Any scheduled events associated with the instance.</p> */
 export type AwsEc2InstanceStatusPropertiesEventsList =
-  ReadonlyArray<InstanceStatusEvent>;
+  Array<InstanceStatusEvent>;
 export const AwsEc2InstanceStatusPropertiesEventsList = /*@__PURE__*/ S.Array(
   InstanceStatusEvent,
 ) as any as S.Schema<AwsEc2InstanceStatusPropertiesEventsList>;
@@ -20616,7 +20605,7 @@ export const StatusName = /*@__PURE__*/ S.String;
 /** Definition of StatusNameEnumValue */
 export interface StatusNameEnumValue {
   /** Property value */
-  value?: StatusName;
+  value?: StatusName | (string & {});
 }
 export const StatusNameEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -20637,7 +20626,7 @@ export const StatusType = /*@__PURE__*/ S.String;
 /** Definition of StatusTypeEnumValue */
 export interface StatusTypeEnumValue {
   /** Property value */
-  value?: StatusType;
+  value?: StatusType | (string & {});
 }
 export const StatusTypeEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -20667,8 +20656,7 @@ export const InstanceStatusDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InstanceStatusDetails>;
 
 /** <p>The system instance health or application instance health.</p> */
-export type InstanceStatusSummaryDetailsList =
-  ReadonlyArray<InstanceStatusDetails>;
+export type InstanceStatusSummaryDetailsList = Array<InstanceStatusDetails>;
 export const InstanceStatusSummaryDetailsList = /*@__PURE__*/ S.Array(
   InstanceStatusDetails,
 ) as any as S.Schema<InstanceStatusSummaryDetailsList>;
@@ -20685,7 +20673,7 @@ export const SummaryStatus = /*@__PURE__*/ S.String;
 /** Definition of SummaryStatusEnumValue */
 export interface SummaryStatusEnumValue {
   /** Property value */
-  value?: SummaryStatus;
+  value?: SummaryStatus | (string & {});
 }
 export const SummaryStatusEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -21066,8 +21054,7 @@ export const Ec2InstanceStatus = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<Ec2InstanceStatus>;
 
 /** The Ec2InstanceStatus items on this page */
-export type Ec2InstanceStatusListResultValueList =
-  ReadonlyArray<Ec2InstanceStatus>;
+export type Ec2InstanceStatusListResultValueList = Array<Ec2InstanceStatus>;
 export const Ec2InstanceStatusListResultValueList = /*@__PURE__*/ S.Array(
   Ec2InstanceStatus,
 ) as any as S.Schema<Ec2InstanceStatusListResultValueList>;
@@ -21208,7 +21195,7 @@ export const IpamOperatingRegion = /*@__PURE__*/ S.suspend(() =>
 
 /** <p>The operating Regions for an IPAM. Operating Regions are Amazon Web Services Regions where the IPAM is allowed to manage IP address CIDRs. IPAM only discovers and monitors resources in the Amazon Web Services Regions you select as operating Regions.</p> <p>For more information about operating Regions, see <a href='https://docs.aws.amazon.com/vpc/latest/ipam/create-ipam.html'>Create an IPAM</a> in the <i>Amazon VPC IPAM User Guide</i>.</p> */
 export type AwsEc2IpamPropertiesOperatingRegionsList =
-  ReadonlyArray<IpamOperatingRegion>;
+  Array<IpamOperatingRegion>;
 export const AwsEc2IpamPropertiesOperatingRegionsList = /*@__PURE__*/ S.Array(
   IpamOperatingRegion,
 ) as any as S.Schema<AwsEc2IpamPropertiesOperatingRegionsList>;
@@ -21232,7 +21219,7 @@ export const IpamState = /*@__PURE__*/ S.String;
 /** Definition of IpamStateEnumValue */
 export interface IpamStateEnumValue {
   /** Property value */
-  value?: IpamState;
+  value?: IpamState | (string & {});
 }
 export const IpamStateEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -21257,7 +21244,7 @@ export const Tag_14 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tag_14" }) as any as S.Schema<Tag_14>;
 
 /** <p>The key/value combination of a tag assigned to the resource. Use the tag key in the filter name and the tag value as the filter value. For example, to find all resources that have a tag with the key <code>Owner</code> and the value <code>TeamA</code>, specify <code>tag:Owner</code> for the filter name and <code>TeamA</code> for the filter value.</p> */
-export type AwsEc2IpamPropertiesTagsList = ReadonlyArray<Tag_14>;
+export type AwsEc2IpamPropertiesTagsList = Array<Tag_14>;
 export const AwsEc2IpamPropertiesTagsList = /*@__PURE__*/ S.Array(
   Tag_14,
 ) as any as S.Schema<AwsEc2IpamPropertiesTagsList>;
@@ -21269,7 +21256,7 @@ export const IpamTier = /*@__PURE__*/ S.String;
 /** Definition of IpamTierEnumValue */
 export interface IpamTierEnumValue {
   /** Property value */
-  value?: IpamTier;
+  value?: IpamTier | (string & {});
 }
 export const IpamTierEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -21650,7 +21637,7 @@ export const Ec2Ipam = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Ec2Ipam" }) as any as S.Schema<Ec2Ipam>;
 
 /** The Ec2Ipam items on this page */
-export type Ec2IpamListResultValueList = ReadonlyArray<Ec2Ipam>;
+export type Ec2IpamListResultValueList = Array<Ec2Ipam>;
 export const Ec2IpamListResultValueList = /*@__PURE__*/ S.Array(
   Ec2Ipam,
 ) as any as S.Schema<Ec2IpamListResultValueList>;
@@ -21798,7 +21785,7 @@ export const Tag_15 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tag_15" }) as any as S.Schema<Tag_15>;
 
 /** The tags to apply to the key pair. */
-export type AwsEc2KeyPairPropertiesTagsList = ReadonlyArray<Tag_15>;
+export type AwsEc2KeyPairPropertiesTagsList = Array<Tag_15>;
 export const AwsEc2KeyPairPropertiesTagsList = /*@__PURE__*/ S.Array(
   Tag_15,
 ) as any as S.Schema<AwsEc2KeyPairPropertiesTagsList>;
@@ -21808,13 +21795,13 @@ export interface AwsEc2KeyPairProperties {
   /** Property keyFingerprint */
   keyFingerprint?: string;
   /** The format of the key pair. Default: ``pem`` */
-  keyFormat?: AwsEc2KeyPairPropertiesKeyFormat;
+  keyFormat?: AwsEc2KeyPairPropertiesKeyFormat | (string & {});
   /** A unique name for the key pair. Constraints: Up to 255 ASCII characters */
   keyName?: string;
   /** Property keyPairId */
   keyPairId?: string;
   /** The type of key pair. Note that ED25519 keys are not supported for Windows instances. If the ``PublicKeyMaterial`` property is specified, the ``KeyType`` property is ignored, and the key type is inferred from the ``PublicKeyMaterial`` value. Default: ``rsa`` */
-  keyType?: AwsEc2KeyPairPropertiesKeyType;
+  keyType?: AwsEc2KeyPairPropertiesKeyType | (string & {});
   /** The public key material. The ``PublicKeyMaterial`` property is used to import a key pair. If this property is not specified, then a new key pair will be created. */
   publicKeyMaterial?: string;
   /** The tags to apply to the key pair. */
@@ -22152,7 +22139,7 @@ export const Ec2KeyPair = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Ec2KeyPair" }) as any as S.Schema<Ec2KeyPair>;
 
 /** The Ec2KeyPair items on this page */
-export type Ec2KeyPairListResultValueList = ReadonlyArray<Ec2KeyPair>;
+export type Ec2KeyPairListResultValueList = Array<Ec2KeyPair>;
 export const Ec2KeyPairListResultValueList = /*@__PURE__*/ S.Array(
   Ec2KeyPair,
 ) as any as S.Schema<Ec2KeyPairListResultValueList>;
@@ -22294,7 +22281,7 @@ export const Tag_16 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tag_16" }) as any as S.Schema<Tag_16>;
 
 /** The tags for the network ACL. */
-export type AwsEc2NetworkAclPropertiesTagsList = ReadonlyArray<Tag_16>;
+export type AwsEc2NetworkAclPropertiesTagsList = Array<Tag_16>;
 export const AwsEc2NetworkAclPropertiesTagsList = /*@__PURE__*/ S.Array(
   Tag_16,
 ) as any as S.Schema<AwsEc2NetworkAclPropertiesTagsList>;
@@ -22639,7 +22626,7 @@ export const Ec2NetworkAcl = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Ec2NetworkAcl" }) as any as S.Schema<Ec2NetworkAcl>;
 
 /** The Ec2NetworkAcl items on this page */
-export type Ec2NetworkAclListResultValueList = ReadonlyArray<Ec2NetworkAcl>;
+export type Ec2NetworkAclListResultValueList = Array<Ec2NetworkAcl>;
 export const Ec2NetworkAclListResultValueList = /*@__PURE__*/ S.Array(
   Ec2NetworkAcl,
 ) as any as S.Schema<Ec2NetworkAclListResultValueList>;
@@ -22786,8 +22773,7 @@ export const ConnectionTrackingSpecification = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConnectionTrackingSpecification>;
 
 /** A list of security group IDs associated with this network interface. */
-export type AwsEc2NetworkInterfacePropertiesGroupSetList =
-  ReadonlyArray<string>;
+export type AwsEc2NetworkInterfacePropertiesGroupSetList = Array<string>;
 export const AwsEc2NetworkInterfacePropertiesGroupSetList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -22808,7 +22794,7 @@ export const Ipv4PrefixSpecification = /*@__PURE__*/ S.suspend(() =>
 
 /** Assigns a list of IPv4 prefixes to the network interface. If you want EC2 to automatically assign IPv4 prefixes, use the Ipv4PrefixCount property and do not specify this property. Presently, only /28 prefixes are supported. You can't specify IPv4 prefixes if you've specified one of the following: a count of IPv4 prefixes, specific private IPv4 addresses, or a count of private IPv4 addresses. */
 export type AwsEc2NetworkInterfacePropertiesIpv4PrefixesList =
-  ReadonlyArray<Ipv4PrefixSpecification>;
+  Array<Ipv4PrefixSpecification>;
 export const AwsEc2NetworkInterfacePropertiesIpv4PrefixesList =
   /*@__PURE__*/ S.Array(
     Ipv4PrefixSpecification,
@@ -22829,7 +22815,7 @@ export const InstanceIpv6Address_2 = /*@__PURE__*/ S.suspend(() =>
 
 /** One or more specific IPv6 addresses from the IPv6 CIDR block range of your subnet to associate with the network interface. If you're specifying a number of IPv6 addresses, use the Ipv6AddressCount property and don't specify this property. */
 export type AwsEc2NetworkInterfacePropertiesIpv6AddressesList =
-  ReadonlyArray<InstanceIpv6Address_2>;
+  Array<InstanceIpv6Address_2>;
 export const AwsEc2NetworkInterfacePropertiesIpv6AddressesList =
   /*@__PURE__*/ S.Array(
     InstanceIpv6Address_2,
@@ -22850,7 +22836,7 @@ export const Ipv6PrefixSpecification = /*@__PURE__*/ S.suspend(() =>
 
 /** Assigns a list of IPv6 prefixes to the network interface. If you want EC2 to automatically assign IPv6 prefixes, use the Ipv6PrefixCount property and do not specify this property. Presently, only /80 prefixes are supported. You can't specify IPv6 prefixes if you've specified one of the following: a count of IPv6 prefixes, specific IPv6 addresses, or a count of IPv6 addresses. */
 export type AwsEc2NetworkInterfacePropertiesIpv6PrefixesList =
-  ReadonlyArray<Ipv6PrefixSpecification>;
+  Array<Ipv6PrefixSpecification>;
 export const AwsEc2NetworkInterfacePropertiesIpv6PrefixesList =
   /*@__PURE__*/ S.Array(
     Ipv6PrefixSpecification,
@@ -22874,7 +22860,7 @@ export const PrivateIpAddressSpecification = /*@__PURE__*/ S.suspend(() =>
 
 /** Assigns a list of private IP addresses to the network interface. You can specify a primary private IP address by setting the value of the Primary property to true in the PrivateIpAddressSpecification property. If you want EC2 to automatically assign private IP addresses, use the SecondaryPrivateIpAddressCount property and do not specify this property. */
 export type AwsEc2NetworkInterfacePropertiesPrivateIpAddressesList =
-  ReadonlyArray<PrivateIpAddressSpecification>;
+  Array<PrivateIpAddressSpecification>;
 export const AwsEc2NetworkInterfacePropertiesPrivateIpAddressesList =
   /*@__PURE__*/ S.Array(
     PrivateIpAddressSpecification,
@@ -22882,7 +22868,7 @@ export const AwsEc2NetworkInterfacePropertiesPrivateIpAddressesList =
 
 /** Returns the secondary private IP addresses of the network interface. */
 export type AwsEc2NetworkInterfacePropertiesSecondaryPrivateIpAddressesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const AwsEc2NetworkInterfacePropertiesSecondaryPrivateIpAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -22903,7 +22889,7 @@ export const Tag_17 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tag_17" }) as any as S.Schema<Tag_17>;
 
 /** An arbitrary set of tags (key-value pairs) for this network interface. */
-export type AwsEc2NetworkInterfacePropertiesTagsList = ReadonlyArray<Tag_17>;
+export type AwsEc2NetworkInterfacePropertiesTagsList = Array<Tag_17>;
 export const AwsEc2NetworkInterfacePropertiesTagsList = /*@__PURE__*/ S.Array(
   Tag_17,
 ) as any as S.Schema<AwsEc2NetworkInterfacePropertiesTagsList>;
@@ -23316,8 +23302,7 @@ export const Ec2NetworkInterface = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<Ec2NetworkInterface>;
 
 /** The Ec2NetworkInterface items on this page */
-export type Ec2NetworkInterfaceListResultValueList =
-  ReadonlyArray<Ec2NetworkInterface>;
+export type Ec2NetworkInterfaceListResultValueList = Array<Ec2NetworkInterface>;
 export const Ec2NetworkInterfaceListResultValueList = /*@__PURE__*/ S.Array(
   Ec2NetworkInterface,
 ) as any as S.Schema<Ec2NetworkInterfaceListResultValueList>;
@@ -23459,7 +23444,7 @@ export const Tag_18 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tag_18" }) as any as S.Schema<Tag_18>;
 
 /** Any tags assigned to the route table. */
-export type AwsEc2RouteTablePropertiesTagsList = ReadonlyArray<Tag_18>;
+export type AwsEc2RouteTablePropertiesTagsList = Array<Tag_18>;
 export const AwsEc2RouteTablePropertiesTagsList = /*@__PURE__*/ S.Array(
   Tag_18,
 ) as any as S.Schema<AwsEc2RouteTablePropertiesTagsList>;
@@ -23804,7 +23789,7 @@ export const Ec2RouteTable = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Ec2RouteTable" }) as any as S.Schema<Ec2RouteTable>;
 
 /** The Ec2RouteTable items on this page */
-export type Ec2RouteTableListResultValueList = ReadonlyArray<Ec2RouteTable>;
+export type Ec2RouteTableListResultValueList = Array<Ec2RouteTable>;
 export const Ec2RouteTableListResultValueList = /*@__PURE__*/ S.Array(
   Ec2RouteTable,
 ) as any as S.Schema<Ec2RouteTableListResultValueList>;
@@ -23946,7 +23931,7 @@ export const IpRange = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IpRange" }) as any as S.Schema<IpRange>;
 
 /** <p>The IPv4 address ranges.</p> */
-export type IpPermissionIpRangesList = ReadonlyArray<IpRange>;
+export type IpPermissionIpRangesList = Array<IpRange>;
 export const IpPermissionIpRangesList = /*@__PURE__*/ S.Array(
   IpRange,
 ) as any as S.Schema<IpPermissionIpRangesList>;
@@ -23966,7 +23951,7 @@ export const Ipv6Range = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Ipv6Range" }) as any as S.Schema<Ipv6Range>;
 
 /** <p>The IPv6 address ranges.</p> */
-export type IpPermissionIpv6RangesList = ReadonlyArray<Ipv6Range>;
+export type IpPermissionIpv6RangesList = Array<Ipv6Range>;
 export const IpPermissionIpv6RangesList = /*@__PURE__*/ S.Array(
   Ipv6Range,
 ) as any as S.Schema<IpPermissionIpv6RangesList>;
@@ -23986,7 +23971,7 @@ export const PrefixListId = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PrefixListId" }) as any as S.Schema<PrefixListId>;
 
 /** <p>The prefix list IDs.</p> */
-export type IpPermissionPrefixListIdsList = ReadonlyArray<PrefixListId>;
+export type IpPermissionPrefixListIdsList = Array<PrefixListId>;
 export const IpPermissionPrefixListIdsList = /*@__PURE__*/ S.Array(
   PrefixListId,
 ) as any as S.Schema<IpPermissionPrefixListIdsList>;
@@ -24023,7 +24008,7 @@ export const UserIdGroupPair = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UserIdGroupPair>;
 
 /** <p>The security group and Amazon Web Services account ID pairs.</p> */
-export type IpPermissionUserIdGroupPairsList = ReadonlyArray<UserIdGroupPair>;
+export type IpPermissionUserIdGroupPairsList = Array<UserIdGroupPair>;
 export const IpPermissionUserIdGroupPairsList = /*@__PURE__*/ S.Array(
   UserIdGroupPair,
 ) as any as S.Schema<IpPermissionUserIdGroupPairsList>;
@@ -24059,7 +24044,7 @@ export const IpPermission = /*@__PURE__*/ S.suspend(() =>
 
 /** <p>The inbound rules associated with the security group.</p> */
 export type AwsEc2SecurityGroupPropertiesIpPermissionsList =
-  ReadonlyArray<IpPermission>;
+  Array<IpPermission>;
 export const AwsEc2SecurityGroupPropertiesIpPermissionsList =
   /*@__PURE__*/ S.Array(
     IpPermission,
@@ -24067,7 +24052,7 @@ export const AwsEc2SecurityGroupPropertiesIpPermissionsList =
 
 /** <p>The outbound rules associated with the security group.</p> */
 export type AwsEc2SecurityGroupPropertiesIpPermissionsEgressList =
-  ReadonlyArray<IpPermission>;
+  Array<IpPermission>;
 export const AwsEc2SecurityGroupPropertiesIpPermissionsEgressList =
   /*@__PURE__*/ S.Array(
     IpPermission,
@@ -24088,7 +24073,7 @@ export const Tag_19 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tag_19" }) as any as S.Schema<Tag_19>;
 
 /** <p>Any tags assigned to the security group.</p> */
-export type AwsEc2SecurityGroupPropertiesTagsList = ReadonlyArray<Tag_19>;
+export type AwsEc2SecurityGroupPropertiesTagsList = Array<Tag_19>;
 export const AwsEc2SecurityGroupPropertiesTagsList = /*@__PURE__*/ S.Array(
   Tag_19,
 ) as any as S.Schema<AwsEc2SecurityGroupPropertiesTagsList>;
@@ -24452,8 +24437,7 @@ export const Ec2SecurityGroup = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<Ec2SecurityGroup>;
 
 /** The Ec2SecurityGroup items on this page */
-export type Ec2SecurityGroupListResultValueList =
-  ReadonlyArray<Ec2SecurityGroup>;
+export type Ec2SecurityGroupListResultValueList = Array<Ec2SecurityGroup>;
 export const Ec2SecurityGroupListResultValueList = /*@__PURE__*/ S.Array(
   Ec2SecurityGroup,
 ) as any as S.Schema<Ec2SecurityGroupListResultValueList>;
@@ -24586,7 +24570,7 @@ export const SSEType = /*@__PURE__*/ S.String;
 /** Definition of SSETypeEnumValue */
 export interface SSETypeEnumValue {
   /** Property value */
-  value?: SSEType;
+  value?: SSEType | (string & {});
 }
 export const SSETypeEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -24608,7 +24592,7 @@ export const SnapshotState = /*@__PURE__*/ S.String;
 /** Definition of SnapshotStateEnumValue */
 export interface SnapshotStateEnumValue {
   /** Property value */
-  value?: SnapshotState;
+  value?: SnapshotState | (string & {});
 }
 export const SnapshotStateEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -24625,7 +24609,7 @@ export const StorageTier = /*@__PURE__*/ S.String;
 /** Definition of StorageTierEnumValue */
 export interface StorageTierEnumValue {
   /** Property value */
-  value?: StorageTier;
+  value?: StorageTier | (string & {});
 }
 export const StorageTierEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -24650,7 +24634,7 @@ export const Tag_20 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tag_20" }) as any as S.Schema<Tag_20>;
 
 /** <p>Any tags assigned to the snapshot.</p> */
-export type AwsEc2SnapshotPropertiesTagsList = ReadonlyArray<Tag_20>;
+export type AwsEc2SnapshotPropertiesTagsList = Array<Tag_20>;
 export const AwsEc2SnapshotPropertiesTagsList = /*@__PURE__*/ S.Array(
   Tag_20,
 ) as any as S.Schema<AwsEc2SnapshotPropertiesTagsList>;
@@ -25038,7 +25022,7 @@ export const Ec2Snapshot = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Ec2Snapshot" }) as any as S.Schema<Ec2Snapshot>;
 
 /** The Ec2Snapshot items on this page */
-export type Ec2SnapshotListResultValueList = ReadonlyArray<Ec2Snapshot>;
+export type Ec2SnapshotListResultValueList = Array<Ec2Snapshot>;
 export const Ec2SnapshotListResultValueList = /*@__PURE__*/ S.Array(
   Ec2Snapshot,
 ) as any as S.Schema<Ec2SnapshotListResultValueList>;
@@ -25165,7 +25149,7 @@ export const Ec2SubnetsCreateOrReplaceRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<Ec2SubnetsCreateOrReplaceRequestTagsMap>;
 
 /** The IPv6 network ranges for the subnet, in CIDR notation. */
-export type AwsEc2SubnetPropertiesIpv6CidrBlocksList = ReadonlyArray<string>;
+export type AwsEc2SubnetPropertiesIpv6CidrBlocksList = Array<string>;
 export const AwsEc2SubnetPropertiesIpv6CidrBlocksList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AwsEc2SubnetPropertiesIpv6CidrBlocksList>;
@@ -25205,7 +25189,7 @@ export const Tag_21 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tag_21" }) as any as S.Schema<Tag_21>;
 
 /** Any tags assigned to the subnet. */
-export type AwsEc2SubnetPropertiesTagsList = ReadonlyArray<Tag_21>;
+export type AwsEc2SubnetPropertiesTagsList = Array<Tag_21>;
 export const AwsEc2SubnetPropertiesTagsList = /*@__PURE__*/ S.Array(
   Tag_21,
 ) as any as S.Schema<AwsEc2SubnetPropertiesTagsList>;
@@ -25600,7 +25584,7 @@ export const Ec2Subnet = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Ec2Subnet" }) as any as S.Schema<Ec2Subnet>;
 
 /** The Ec2Subnet items on this page */
-export type Ec2SubnetListResultValueList = ReadonlyArray<Ec2Subnet>;
+export type Ec2SubnetListResultValueList = Array<Ec2Subnet>;
 export const Ec2SubnetListResultValueList = /*@__PURE__*/ S.Array(
   Ec2Subnet,
 ) as any as S.Schema<Ec2SubnetListResultValueList>;
@@ -25740,7 +25724,7 @@ export const Tag_23 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tag_23" }) as any as S.Schema<Tag_23>;
 
 /** The tags to apply to the volume during creation. */
-export type AwsEc2VolumePropertiesTagsList = ReadonlyArray<Tag_23>;
+export type AwsEc2VolumePropertiesTagsList = Array<Tag_23>;
 export const AwsEc2VolumePropertiesTagsList = /*@__PURE__*/ S.Array(
   Tag_23,
 ) as any as S.Schema<AwsEc2VolumePropertiesTagsList>;
@@ -26112,7 +26096,7 @@ export const Ec2Volume = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Ec2Volume" }) as any as S.Schema<Ec2Volume>;
 
 /** The Ec2Volume items on this page */
-export type Ec2VolumeListResultValueList = ReadonlyArray<Ec2Volume>;
+export type Ec2VolumeListResultValueList = Array<Ec2Volume>;
 export const Ec2VolumeListResultValueList = /*@__PURE__*/ S.Array(
   Ec2Volume,
 ) as any as S.Schema<Ec2VolumeListResultValueList>;
@@ -26239,14 +26223,13 @@ export const Ec2VpcEndpointsCreateOrReplaceRequestTagsMap =
   ) as any as S.Schema<Ec2VpcEndpointsCreateOrReplaceRequestTagsMap>;
 
 /** Property dnsEntries */
-export type AwsEc2VPCEndpointPropertiesDnsEntriesList = ReadonlyArray<string>;
+export type AwsEc2VPCEndpointPropertiesDnsEntriesList = Array<string>;
 export const AwsEc2VPCEndpointPropertiesDnsEntriesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AwsEc2VPCEndpointPropertiesDnsEntriesList>;
 
 /** Property networkInterfaceIds */
-export type AwsEc2VPCEndpointPropertiesNetworkInterfaceIdsList =
-  ReadonlyArray<string>;
+export type AwsEc2VPCEndpointPropertiesNetworkInterfaceIdsList = Array<string>;
 export const AwsEc2VPCEndpointPropertiesNetworkInterfaceIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -26263,23 +26246,21 @@ export const AwsEc2VPCEndpointPropertiesPolicyDocumentMap =
   ) as any as S.Schema<AwsEc2VPCEndpointPropertiesPolicyDocumentMap>;
 
 /** The IDs of the route tables. Routing is supported only for gateway endpoints. */
-export type AwsEc2VPCEndpointPropertiesRouteTableIdsList =
-  ReadonlyArray<string>;
+export type AwsEc2VPCEndpointPropertiesRouteTableIdsList = Array<string>;
 export const AwsEc2VPCEndpointPropertiesRouteTableIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AwsEc2VPCEndpointPropertiesRouteTableIdsList>;
 
 /** The IDs of the security groups to associate with the endpoint network interfaces. If this parameter is not specified, we use the default security group for the VPC. Security groups are supported only for interface endpoints. */
-export type AwsEc2VPCEndpointPropertiesSecurityGroupIdsList =
-  ReadonlyArray<string>;
+export type AwsEc2VPCEndpointPropertiesSecurityGroupIdsList = Array<string>;
 export const AwsEc2VPCEndpointPropertiesSecurityGroupIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AwsEc2VPCEndpointPropertiesSecurityGroupIdsList>;
 
 /** The IDs of the subnets in which to create endpoint network interfaces. You must specify this property for an interface endpoint or a Gateway Load Balancer endpoint. You can't specify this property for a gateway endpoint. For a Gateway Load Balancer endpoint, you can specify only one subnet. */
-export type AwsEc2VPCEndpointPropertiesSubnetIdsList = ReadonlyArray<string>;
+export type AwsEc2VPCEndpointPropertiesSubnetIdsList = Array<string>;
 export const AwsEc2VPCEndpointPropertiesSubnetIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AwsEc2VPCEndpointPropertiesSubnetIdsList>;
@@ -26311,7 +26292,7 @@ export interface AwsEc2VPCEndpointProperties {
   /** The IDs of the subnets in which to create endpoint network interfaces. You must specify this property for an interface endpoint or a Gateway Load Balancer endpoint. You can't specify this property for a gateway endpoint. For a Gateway Load Balancer endpoint, you can specify only one subnet. */
   subnetIds?: AwsEc2VPCEndpointPropertiesSubnetIdsList;
   /** The type of endpoint. Default: Gateway */
-  vpcEndpointType?: VpcEndpointType;
+  vpcEndpointType?: VpcEndpointType | (string & {});
   /** The ID of the VPC. */
   vpcId?: string;
 }
@@ -26659,7 +26640,7 @@ export const Ec2VPCEndpoint = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Ec2VPCEndpoint" }) as any as S.Schema<Ec2VPCEndpoint>;
 
 /** The Ec2VPCEndpoint items on this page */
-export type Ec2VPCEndpointListResultValueList = ReadonlyArray<Ec2VPCEndpoint>;
+export type Ec2VPCEndpointListResultValueList = Array<Ec2VPCEndpoint>;
 export const Ec2VPCEndpointListResultValueList = /*@__PURE__*/ S.Array(
   Ec2VPCEndpoint,
 ) as any as S.Schema<Ec2VPCEndpointListResultValueList>;
@@ -26801,8 +26782,7 @@ export const Tag_22 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tag_22" }) as any as S.Schema<Tag_22>;
 
 /** Property tags */
-export type AwsEc2VPCPeeringConnectionPropertiesTagsList =
-  ReadonlyArray<Tag_22>;
+export type AwsEc2VPCPeeringConnectionPropertiesTagsList = Array<Tag_22>;
 export const AwsEc2VPCPeeringConnectionPropertiesTagsList =
   /*@__PURE__*/ S.Array(
     Tag_22,
@@ -27171,7 +27151,7 @@ export const Ec2VPCPeeringConnection = /*@__PURE__*/ S.suspend(() =>
 
 /** The Ec2VPCPeeringConnection items on this page */
 export type Ec2VPCPeeringConnectionListResultValueList =
-  ReadonlyArray<Ec2VPCPeeringConnection>;
+  Array<Ec2VPCPeeringConnection>;
 export const Ec2VPCPeeringConnectionListResultValueList = /*@__PURE__*/ S.Array(
   Ec2VPCPeeringConnection,
 ) as any as S.Schema<Ec2VPCPeeringConnectionListResultValueList>;
@@ -27302,15 +27282,14 @@ export const Ec2VpcsCreateOrReplaceRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<Ec2VpcsCreateOrReplaceRequestTagsMap>;
 
 /** Property cidrBlockAssociations */
-export type AwsEc2VpcPropertiesCidrBlockAssociationsList =
-  ReadonlyArray<string>;
+export type AwsEc2VpcPropertiesCidrBlockAssociationsList = Array<string>;
 export const AwsEc2VpcPropertiesCidrBlockAssociationsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AwsEc2VpcPropertiesCidrBlockAssociationsList>;
 
 /** Property ipv6CidrBlocks */
-export type AwsEc2VpcPropertiesIpv6CidrBlocksList = ReadonlyArray<string>;
+export type AwsEc2VpcPropertiesIpv6CidrBlocksList = Array<string>;
 export const AwsEc2VpcPropertiesIpv6CidrBlocksList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AwsEc2VpcPropertiesIpv6CidrBlocksList>;
@@ -27330,7 +27309,7 @@ export const Tag_24 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tag_24" }) as any as S.Schema<Tag_24>;
 
 /** The tags for the VPC. */
-export type AwsEc2VpcPropertiesTagsList = ReadonlyArray<Tag_24>;
+export type AwsEc2VpcPropertiesTagsList = Array<Tag_24>;
 export const AwsEc2VpcPropertiesTagsList = /*@__PURE__*/ S.Array(
   Tag_24,
 ) as any as S.Schema<AwsEc2VpcPropertiesTagsList>;
@@ -27696,7 +27675,7 @@ export const Ec2Vpc = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Ec2Vpc" }) as any as S.Schema<Ec2Vpc>;
 
 /** The Ec2Vpc items on this page */
-export type Ec2VpcListResultValueList = ReadonlyArray<Ec2Vpc>;
+export type Ec2VpcListResultValueList = Array<Ec2Vpc>;
 export const Ec2VpcListResultValueList = /*@__PURE__*/ S.Array(
   Ec2Vpc,
 ) as any as S.Schema<Ec2VpcListResultValueList>;
@@ -27866,7 +27845,7 @@ export const ScanStatus = /*@__PURE__*/ S.String;
 /** Definition of ScanStatusEnumValue */
 export interface ScanStatusEnumValue {
   /** Property value */
-  value?: ScanStatus;
+  value?: ScanStatus | (string & {});
 }
 export const ScanStatusEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -27893,7 +27872,7 @@ export const ImageScanStatus = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ImageScanStatus>;
 
 /** <p>The list of tags associated with this image.</p> */
-export type AwsEcrImageDetailPropertiesImageTagsList = ReadonlyArray<string>;
+export type AwsEcrImageDetailPropertiesImageTagsList = Array<string>;
 export const AwsEcrImageDetailPropertiesImageTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AwsEcrImageDetailPropertiesImageTagsList>;
@@ -28262,7 +28241,7 @@ export const EcrImageDetail = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EcrImageDetail" }) as any as S.Schema<EcrImageDetail>;
 
 /** The EcrImageDetail items on this page */
-export type EcrImageDetailListResultValueList = ReadonlyArray<EcrImageDetail>;
+export type EcrImageDetailListResultValueList = Array<EcrImageDetail>;
 export const EcrImageDetailListResultValueList = /*@__PURE__*/ S.Array(
   EcrImageDetail,
 ) as any as S.Schema<EcrImageDetailListResultValueList>;
@@ -28396,7 +28375,7 @@ export const EncryptionConfigurationEncryptionType = /*@__PURE__*/ S.String;
 /** Definition of EncryptionConfiguration */
 export interface EncryptionConfiguration {
   /** The encryption type to use. If you use the ``KMS`` encryption type, the contents of the repository will be encrypted using server-side encryption with KMSlong key stored in KMS. When you use KMS to encrypt your data, you can either use the default AWS managed KMS key for Amazon ECR, or specify your own KMS key, which you already created. For more information, see [Protecting data using server-side encryption with an key stored in (SSE-KMS)](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingKMSEncryption.html) in the *Amazon Simple Storage Service Console Developer Guide*. If you use the ``AES256`` encryption type, Amazon ECR uses server-side encryption with Amazon S3-managed encryption keys which encrypts the images in the repository using an AES-256 encryption algorithm. For more information, see [Protecting data using server-side encryption with Amazon S3-managed encryption keys (SSE-S3)](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingServerSideEncryption.html) in the *Ama The encryption type to use. */
-  encryptionType?: EncryptionConfigurationEncryptionType;
+  encryptionType?: EncryptionConfigurationEncryptionType | (string & {});
   /** If you use the ``KMS`` encryption type, specify the KMS key to use for encryption. The alias, key ID, or full ARN of the KMS key can be specified. The key must exist in the same Region as the repository. If no key is specified, the default AWS managed KMS key for Amazon ECR will be used. If you use the KMS encryption type, specify the CMK to use for encryption. The alias, key ID, or full ARN of the CMK can be specified. The key must exist in the same Region as the repository. If no key is specified, the default AWS managed CMK for Amazon ECR will be used. */
   kmsKey?: string;
 }
@@ -28467,7 +28446,7 @@ export const Tag_25 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tag_25" }) as any as S.Schema<Tag_25>;
 
 /** An array of key-value pairs to apply to this resource. */
-export type AwsEcrRepositoryPropertiesTagsList = ReadonlyArray<Tag_25>;
+export type AwsEcrRepositoryPropertiesTagsList = Array<Tag_25>;
 export const AwsEcrRepositoryPropertiesTagsList = /*@__PURE__*/ S.Array(
   Tag_25,
 ) as any as S.Schema<AwsEcrRepositoryPropertiesTagsList>;
@@ -28483,7 +28462,7 @@ export interface AwsEcrRepositoryProperties {
   /** The image scanning configuration for the repository. This determines whether images are scanned for known vulnerabilities after being pushed to the repository. The image scanning configuration for a repository. */
   imageScanningConfiguration?: ImageScanningConfiguration;
   /** The tag mutability setting for the repository. If this parameter is omitted, the default setting of ``MUTABLE`` will be used which will allow image tags to be overwritten. If ``IMMUTABLE`` is specified, all image tags within the repository will be immutable which will prevent them from being overwritten. */
-  imageTagMutability?: ImageTagMutability;
+  imageTagMutability?: ImageTagMutability | (string & {});
   /** Creates or updates a lifecycle policy. For information about lifecycle policy syntax, see [Lifecycle policy template](https://docs.aws.amazon.com/AmazonECR/latest/userguide/LifecyclePolicies.html). The ``LifecyclePolicy`` property type specifies a lifecycle policy. For information about lifecycle policy syntax, see [Lifecycle policy template](https://docs.aws.amazon.com/AmazonECR/latest/userguide/LifecyclePolicies.html) in the *Amazon ECR User Guide*. */
   lifecyclePolicy?: LifecyclePolicy;
   /** The name to use for the repository. The repository name may be specified on its own (such as ``nginx-web-app``) or it can be prepended with a namespace to group the repository into a category (such as ``project-a/nginx-web-app``). If you don't specify a name, CFNlong generates a unique physical ID and uses that ID for the repository name. For more information, see [Name type](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-name.html). The repository name must start with a letter and can only contain lowercase letters, numbers, hyphens, underscores, and forward slashes. If you specify a name, you cannot perform updates that require replacement of this resource. You can perform updates that require no or some interruption. If you must replace the resource, specify a new name. */
@@ -28835,7 +28814,7 @@ export const EcrRepository = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EcrRepository" }) as any as S.Schema<EcrRepository>;
 
 /** The EcrRepository items on this page */
-export type EcrRepositoryListResultValueList = ReadonlyArray<EcrRepository>;
+export type EcrRepositoryListResultValueList = Array<EcrRepository>;
 export const EcrRepositoryListResultValueList = /*@__PURE__*/ S.Array(
   EcrRepository,
 ) as any as S.Schema<EcrRepositoryListResultValueList>;
@@ -28962,8 +28941,7 @@ export const EcsClustersCreateOrReplaceRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<EcsClustersCreateOrReplaceRequestTagsMap>;
 
 /** The short name of one or more capacity providers to associate with the cluster. A capacity provider must be associated with a cluster before it can be included as part of the default capacity provider strategy of the cluster or used in a capacity provider strategy when calling the [CreateService](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_CreateService.html) or [RunTask](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_RunTask.html) actions. If specifying a capacity provider that uses an Auto Scaling group, the capacity provider must be created but not associated with another cluster. New Auto Scaling group capacity providers can be created with the [CreateCapacityProvider](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_CreateCapacityProvider.html) API operation. To use a FARGATElong capacity provider, specify either the ``FARGATE`` or ``FARGATE_SPOT`` capacity providers. The FARGATElong capacity providers are available to all accounts and only need to be associated with a cluster to be used. The [PutCapacityProvider](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_PutCapacityProvider.html) API operation is used to update the list of available capacity providers for a cluster after the cluster is created. */
-export type AwsEcsClusterPropertiesCapacityProvidersList =
-  ReadonlyArray<string>;
+export type AwsEcsClusterPropertiesCapacityProvidersList = Array<string>;
 export const AwsEcsClusterPropertiesCapacityProvidersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -28986,8 +28964,7 @@ export const ClusterSettings = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ClusterSettings>;
 
 /** The settings to use when creating a cluster. This parameter is used to turn on CloudWatch Container Insights for a cluster. */
-export type AwsEcsClusterPropertiesClusterSettingsList =
-  ReadonlyArray<ClusterSettings>;
+export type AwsEcsClusterPropertiesClusterSettingsList = Array<ClusterSettings>;
 export const AwsEcsClusterPropertiesClusterSettingsList = /*@__PURE__*/ S.Array(
   ClusterSettings,
 ) as any as S.Schema<AwsEcsClusterPropertiesClusterSettingsList>;
@@ -29070,7 +29047,7 @@ export const CapacityProviderStrategyItem = /*@__PURE__*/ S.suspend(() =>
 
 /** The default capacity provider strategy for the cluster. When services or tasks are run in the cluster with no launch type or capacity provider strategy specified, the default capacity provider strategy is used. */
 export type AwsEcsClusterPropertiesDefaultCapacityProviderStrategyList =
-  ReadonlyArray<CapacityProviderStrategyItem>;
+  Array<CapacityProviderStrategyItem>;
 export const AwsEcsClusterPropertiesDefaultCapacityProviderStrategyList =
   /*@__PURE__*/ S.Array(
     CapacityProviderStrategyItem,
@@ -29104,7 +29081,7 @@ export const Tag_26 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tag_26" }) as any as S.Schema<Tag_26>;
 
 /** The metadata that you apply to the cluster to help you categorize and organize them. Each tag consists of a key and an optional value. You define both. The following basic restrictions apply to tags: + Maximum number of tags per resource - 50 + For each resource, each tag key must be unique, and each tag key can have only one value. + Maximum key length - 128 Unicode characters in UTF-8 + Maximum value length - 256 Unicode characters in UTF-8 + If your tagging schema is used across multiple services and resources, remember that other services may have restrictions on allowed characters. Generally allowed characters are: letters, numbers, and spaces representable in UTF-8, and the following characters: + - = . _ : / @. + Tag keys and values are case-sensitive. + Do not use ``aws:``, ``AWS:``, or any upper or lowercase combination of such as a prefix for either keys or values as it is reserved for AWS use. You cannot edit or delete tag keys or values with this prefix. Tags with this prefix do not count against your tags per resource limit. */
-export type AwsEcsClusterPropertiesTagsList = ReadonlyArray<Tag_26>;
+export type AwsEcsClusterPropertiesTagsList = Array<Tag_26>;
 export const AwsEcsClusterPropertiesTagsList = /*@__PURE__*/ S.Array(
   Tag_26,
 ) as any as S.Schema<AwsEcsClusterPropertiesTagsList>;
@@ -29463,7 +29440,7 @@ export const EcsCluster = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EcsCluster" }) as any as S.Schema<EcsCluster>;
 
 /** The EcsCluster items on this page */
-export type EcsClusterListResultValueList = ReadonlyArray<EcsCluster>;
+export type EcsClusterListResultValueList = Array<EcsCluster>;
 export const EcsClusterListResultValueList = /*@__PURE__*/ S.Array(
   EcsCluster,
 ) as any as S.Schema<EcsClusterListResultValueList>;
@@ -29591,14 +29568,14 @@ export const EcsServicesCreateOrReplaceRequestTagsMap = /*@__PURE__*/ S.Record(
 
 /** The capacity provider strategy to use for the service. If a ``capacityProviderStrategy`` is specified, the ``launchType`` parameter must be omitted. If no ``capacityProviderStrategy`` or ``launchType`` is specified, the ``defaultCapacityProviderStrategy`` for the cluster is used. A capacity provider strategy may contain a maximum of 6 capacity providers. */
 export type AwsEcsServicePropertiesCapacityProviderStrategyList =
-  ReadonlyArray<CapacityProviderStrategyItem>;
+  Array<CapacityProviderStrategyItem>;
 export const AwsEcsServicePropertiesCapacityProviderStrategyList =
   /*@__PURE__*/ S.Array(
     CapacityProviderStrategyItem,
   ) as any as S.Schema<AwsEcsServicePropertiesCapacityProviderStrategyList>;
 
 /** One or more CloudWatch alarm names. Use a ',' to separate the alarms. */
-export type DeploymentAlarmsAlarmNamesList = ReadonlyArray<string>;
+export type DeploymentAlarmsAlarmNamesList = Array<string>;
 export const DeploymentAlarmsAlarmNamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DeploymentAlarmsAlarmNamesList>;
@@ -29667,7 +29644,7 @@ export const DeploymentControllerType = /*@__PURE__*/ S.String;
 /** Definition of DeploymentController */
 export interface DeploymentController {
   /** The deployment controller type to use. There are three deployment controller types available: + ECS The rolling update (ECS) deployment type involves replacing the current running version of the container with the latest version. The number of containers Amazon ECS adds or removes from the service during a rolling update is controlled by adjusting the minimum and maximum number of healthy tasks allowed during a service deployment, as specified in the DeploymentConfiguration. + CODE_DEPLOY The blue/green (CODE_DEPLOY) deployment type uses the blue/green deployment model powered by , which allows you to verify a new deployment of a service before sending production traffic to it. + EXTERNAL The external (EXTERNAL) deployment type enables you to use any third-party deployment controller for full control over the deployment process for an Amazon ECS service. */
-  type?: DeploymentControllerType;
+  type?: DeploymentControllerType | (string & {});
 }
 export const DeploymentController = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -29702,8 +29679,7 @@ export const LoadBalancer = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LoadBalancer" }) as any as S.Schema<LoadBalancer>;
 
 /** A list of load balancer objects to associate with the service. If you specify the ``Role`` property, ``LoadBalancers`` must be specified as well. For information about the number of load balancers that you can specify per service, see [Service Load Balancing](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-load-balancing.html) in the *Amazon Elastic Container Service Developer Guide*. */
-export type AwsEcsServicePropertiesLoadBalancersList =
-  ReadonlyArray<LoadBalancer>;
+export type AwsEcsServicePropertiesLoadBalancersList = Array<LoadBalancer>;
 export const AwsEcsServicePropertiesLoadBalancersList = /*@__PURE__*/ S.Array(
   LoadBalancer,
 ) as any as S.Schema<AwsEcsServicePropertiesLoadBalancersList>;
@@ -29713,13 +29689,13 @@ export type AwsVpcConfigurationAssignPublicIp = "DISABLED" | "ENABLED";
 export const AwsVpcConfigurationAssignPublicIp = /*@__PURE__*/ S.String;
 
 /** The IDs of the security groups associated with the task or service. If you don't specify a security group, the default security group for the VPC is used. There's a limit of 5 security groups that can be specified per ``AwsVpcConfiguration``. All specified security groups must be from the same VPC. */
-export type AwsVpcConfigurationSecurityGroupsList = ReadonlyArray<string>;
+export type AwsVpcConfigurationSecurityGroupsList = Array<string>;
 export const AwsVpcConfigurationSecurityGroupsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AwsVpcConfigurationSecurityGroupsList>;
 
 /** The IDs of the subnets associated with the task or service. There's a limit of 16 subnets that can be specified per ``AwsVpcConfiguration``. All specified subnets must be from the same VPC. */
-export type AwsVpcConfigurationSubnetsList = ReadonlyArray<string>;
+export type AwsVpcConfigurationSubnetsList = Array<string>;
 export const AwsVpcConfigurationSubnetsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AwsVpcConfigurationSubnetsList>;
@@ -29727,7 +29703,7 @@ export const AwsVpcConfigurationSubnetsList = /*@__PURE__*/ S.Array(
 /** Definition of AwsVpcConfiguration */
 export interface AwsVpcConfiguration {
   /** Whether the task's elastic network interface receives a public IP address. The default value is ``DISABLED``. */
-  assignPublicIp?: AwsVpcConfigurationAssignPublicIp;
+  assignPublicIp?: AwsVpcConfigurationAssignPublicIp | (string & {});
   /** The IDs of the security groups associated with the task or service. If you don't specify a security group, the default security group for the VPC is used. There's a limit of 5 security groups that can be specified per ``AwsVpcConfiguration``. All specified security groups must be from the same VPC. */
   securityGroups?: AwsVpcConfigurationSecurityGroupsList;
   /** The IDs of the subnets associated with the task or service. There's a limit of 16 subnets that can be specified per ``AwsVpcConfiguration``. All specified subnets must be from the same VPC. */
@@ -29765,7 +29741,7 @@ export interface PlacementConstraint {
   /** A cluster query language expression to apply to the constraint. The expression can have a maximum length of 2000 characters. You can't specify an expression if the constraint type is ``distinctInstance``. For more information, see [Cluster query language](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html) in the *Amazon Elastic Container Service Developer Guide*. */
   expression?: string;
   /** The type of constraint. Use ``distinctInstance`` to ensure that each task in a particular group is running on a different container instance. Use ``memberOf`` to restrict the selection to a group of valid candidates. */
-  type?: PlacementConstraintType;
+  type?: PlacementConstraintType | (string & {});
 }
 export const PlacementConstraint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -29778,7 +29754,7 @@ export const PlacementConstraint = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of placement constraint objects to use for tasks in your service. You can specify a maximum of 10 constraints for each task. This limit includes constraints in the task definition and those specified at runtime. */
 export type AwsEcsServicePropertiesPlacementConstraintsList =
-  ReadonlyArray<PlacementConstraint>;
+  Array<PlacementConstraint>;
 export const AwsEcsServicePropertiesPlacementConstraintsList =
   /*@__PURE__*/ S.Array(
     PlacementConstraint,
@@ -29793,7 +29769,7 @@ export interface PlacementStrategy {
   /** The field to apply the placement strategy against. For the ``spread`` placement strategy, valid values are ``instanceId`` (or ``host``, which has the same effect), or any platform or custom attribute that is applied to a container instance, such as ``attribute:ecs.availability-zone``. For the ``binpack`` placement strategy, valid values are ``CPU`` and ``MEMORY``. For the ``random`` placement strategy, this field is not used. */
   field?: string;
   /** The type of placement strategy. The ``random`` placement strategy randomly places tasks on available candidates. The ``spread`` placement strategy spreads placement across available candidates evenly based on the ``field`` parameter. The ``binpack`` strategy places tasks on available candidates that have the least available amount of the resource that's specified with the ``field`` parameter. For example, if you binpack on memory, a task is placed on the instance with the least amount of remaining memory but still enough to run the task. */
-  type?: PlacementStrategyType;
+  type?: PlacementStrategyType | (string & {});
 }
 export const PlacementStrategy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -29806,7 +29782,7 @@ export const PlacementStrategy = /*@__PURE__*/ S.suspend(() =>
 
 /** The placement strategy objects to use for tasks in your service. You can specify a maximum of 5 strategy rules for each service. */
 export type AwsEcsServicePropertiesPlacementStrategiesList =
-  ReadonlyArray<PlacementStrategy>;
+  Array<PlacementStrategy>;
 export const AwsEcsServicePropertiesPlacementStrategiesList =
   /*@__PURE__*/ S.Array(
     PlacementStrategy,
@@ -29835,7 +29811,7 @@ export const Secret = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Secret" }) as any as S.Schema<Secret>;
 
 /** The secrets to pass to the log configuration. For more information, see [Specifying sensitive data](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/specifying-sensitive-data.html) in the *Amazon Elastic Container Service Developer Guide*. */
-export type LogConfigurationSecretOptionsList = ReadonlyArray<Secret>;
+export type LogConfigurationSecretOptionsList = Array<Secret>;
 export const LogConfigurationSecretOptionsList = /*@__PURE__*/ S.Array(
   Secret,
 ) as any as S.Schema<LogConfigurationSecretOptionsList>;
@@ -29877,7 +29853,7 @@ export const ServiceConnectClientAlias = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of client aliases for this Service Connect service. You use these to assign names that can be used by client applications. The maximum number of client aliases that you can have in this list is 1. Each alias ('endpoint') is a fully-qualified name and port number that other Amazon ECS tasks ('clients') can use to connect to this service. Each name and port mapping must be unique within the namespace. For each ``ServiceConnectService``, you must provide at least one ``clientAlias`` with one ``port``. */
 export type ServiceConnectServiceClientAliasesList =
-  ReadonlyArray<ServiceConnectClientAlias>;
+  Array<ServiceConnectClientAlias>;
 export const ServiceConnectServiceClientAliasesList = /*@__PURE__*/ S.Array(
   ServiceConnectClientAlias,
 ) as any as S.Schema<ServiceConnectServiceClientAliasesList>;
@@ -29963,7 +29939,7 @@ export const ServiceConnectService = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of Service Connect service objects. These are names and aliases (also known as endpoints) that are used by other Amazon ECS services to connect to this service. This field is not required for a 'client' Amazon ECS service that's a member of a namespace only to connect to other services within the namespace. An example of this would be a frontend application that accepts incoming requests from either a load balancer that's attached to the service or by other means. An object selects a port from the task definition, assigns a name for the CMAPlong service, and a list of aliases (endpoints) and ports for client applications to refer to this service. */
 export type ServiceConnectConfigurationServicesList =
-  ReadonlyArray<ServiceConnectService>;
+  Array<ServiceConnectService>;
 export const ServiceConnectConfigurationServicesList = /*@__PURE__*/ S.Array(
   ServiceConnectService,
 ) as any as S.Schema<ServiceConnectConfigurationServicesList>;
@@ -30014,7 +29990,7 @@ export const ServiceRegistry = /*@__PURE__*/ S.suspend(() =>
 
 /** The details of the service discovery registry to associate with this service. For more information, see [Service discovery](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-discovery.html). Each service may be associated with one service registry. Multiple service registries for each service isn't supported. */
 export type AwsEcsServicePropertiesServiceRegistriesList =
-  ReadonlyArray<ServiceRegistry>;
+  Array<ServiceRegistry>;
 export const AwsEcsServicePropertiesServiceRegistriesList =
   /*@__PURE__*/ S.Array(
     ServiceRegistry,
@@ -30035,7 +30011,7 @@ export const Tag_27 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tag_27" }) as any as S.Schema<Tag_27>;
 
 /** The metadata that you apply to the service to help you categorize and organize them. Each tag consists of a key and an optional value, both of which you define. When a service is deleted, the tags are deleted as well. The following basic restrictions apply to tags: + Maximum number of tags per resource - 50 + For each resource, each tag key must be unique, and each tag key can have only one value. + Maximum key length - 128 Unicode characters in UTF-8 + Maximum value length - 256 Unicode characters in UTF-8 + If your tagging schema is used across multiple services and resources, remember that other services may have restrictions on allowed characters. Generally allowed characters are: letters, numbers, and spaces representable in UTF-8, and the following characters: + - = . _ : / @. + Tag keys and values are case-sensitive. + Do not use ``aws:``, ``AWS:``, or any upper or lowercase combination of such as a prefix for either keys or values as it is reserved for AWS use. You cannot edit or delete tag keys or values with this prefix. Tags with this prefix do not count against your tags per resource limit. */
-export type AwsEcsServicePropertiesTagsList = ReadonlyArray<Tag_27>;
+export type AwsEcsServicePropertiesTagsList = Array<Tag_27>;
 export const AwsEcsServicePropertiesTagsList = /*@__PURE__*/ S.Array(
   Tag_27,
 ) as any as S.Schema<AwsEcsServicePropertiesTagsList>;
@@ -30045,7 +30021,7 @@ export type EBSTagSpecificationPropagateTags = "SERVICE" | "TASK_DEFINITION";
 export const EBSTagSpecificationPropagateTags = /*@__PURE__*/ S.String;
 
 /** The tags applied to this Amazon EBS volume. ``AmazonECSCreated`` and ``AmazonECSManaged`` are reserved tags that can't be used. */
-export type EBSTagSpecificationTagsList = ReadonlyArray<Tag_27>;
+export type EBSTagSpecificationTagsList = Array<Tag_27>;
 export const EBSTagSpecificationTagsList = /*@__PURE__*/ S.Array(
   Tag_27,
 ) as any as S.Schema<EBSTagSpecificationTagsList>;
@@ -30053,7 +30029,7 @@ export const EBSTagSpecificationTagsList = /*@__PURE__*/ S.Array(
 /** Definition of EBSTagSpecification */
 export interface EBSTagSpecification {
   /** Determines whether to propagate the tags from the task definition to the Amazon EBS volume. Tags can only propagate to a ``SERVICE`` specified in ``ServiceVolumeConfiguration``. If no value is specified, the tags aren't propagated. */
-  propagateTags?: EBSTagSpecificationPropagateTags;
+  propagateTags?: EBSTagSpecificationPropagateTags | (string & {});
   /** The type of volume resource. */
   resourceType?: string;
   /** The tags applied to this Amazon EBS volume. ``AmazonECSCreated`` and ``AmazonECSManaged`` are reserved tags that can't be used. */
@@ -30071,7 +30047,7 @@ export const EBSTagSpecification = /*@__PURE__*/ S.suspend(() =>
 
 /** The tags to apply to the volume. Amazon ECS applies service-managed tags by default. This parameter maps 1:1 with the ``TagSpecifications.N`` parameter of the [CreateVolume API](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateVolume.html) in the *Amazon EC2 API Reference*. */
 export type ServiceManagedEBSVolumeConfigurationTagSpecificationsList =
-  ReadonlyArray<EBSTagSpecification>;
+  Array<EBSTagSpecification>;
 export const ServiceManagedEBSVolumeConfigurationTagSpecificationsList =
   /*@__PURE__*/ S.Array(
     EBSTagSpecification,
@@ -30138,7 +30114,7 @@ export const ServiceVolumeConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** The configuration for a volume specified in the task definition as a volume that is configured at launch time. Currently, the only supported volume type is an Amazon EBS volume. */
 export type AwsEcsServicePropertiesVolumeConfigurationsList =
-  ReadonlyArray<ServiceVolumeConfiguration>;
+  Array<ServiceVolumeConfiguration>;
 export const AwsEcsServicePropertiesVolumeConfigurationsList =
   /*@__PURE__*/ S.Array(
     ServiceVolumeConfiguration,
@@ -30163,7 +30139,7 @@ export interface AwsEcsServiceProperties {
   /** The period of time, in seconds, that the Amazon ECS service scheduler ignores unhealthy Elastic Load Balancing target health checks after a task has first started. This is only used when your service is configured to use a load balancer. If your service has a load balancer defined and you don't specify a health check grace period value, the default value of ``0`` is used. If you do not use an Elastic Load Balancing, we recommend that you use the ``startPeriod`` in the task definition health check parameters. For more information, see [Health check](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_HealthCheck.html). If your service's tasks take a while to start and respond to Elastic Load Balancing health checks, you can specify a health check grace period of up to 2,147,483,647 seconds (about 69 years). During that time, the Amazon ECS service scheduler ignores health check status. This grace period can prevent the service scheduler from marking tasks as unhealthy and stopping them before they have time to come up. */
   healthCheckGracePeriodSeconds?: number;
   /** The launch type on which to run your service. For more information, see [Amazon ECS Launch Types](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html) in the *Amazon Elastic Container Service Developer Guide*. */
-  launchType?: LaunchType;
+  launchType?: LaunchType | (string & {});
   /** A list of load balancer objects to associate with the service. If you specify the ``Role`` property, ``LoadBalancers`` must be specified as well. For information about the number of load balancers that you can specify per service, see [Service Load Balancing](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-load-balancing.html) in the *Amazon Elastic Container Service Developer Guide*. */
   loadBalancers?: AwsEcsServicePropertiesLoadBalancersList;
   /** Property name */
@@ -30177,11 +30153,11 @@ export interface AwsEcsServiceProperties {
   /** The platform version that your tasks in the service are running on. A platform version is specified only for tasks using the Fargate launch type. If one isn't specified, the ``LATEST`` platform version is used. For more information, see [platform versions](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html) in the *Amazon Elastic Container Service Developer Guide*. */
   platformVersion?: string;
   /** Specifies whether to propagate the tags from the task definition to the task. If no value is specified, the tags aren't propagated. Tags can only be propagated to the task during task creation. To add tags to a task after task creation, use the [TagResource](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_TagResource.html) API action. The default is ``NONE``. */
-  propagateTags?: PropagateTags;
+  propagateTags?: PropagateTags | (string & {});
   /** The name or full Amazon Resource Name (ARN) of the IAM role that allows Amazon ECS to make calls to your load balancer on your behalf. This parameter is only permitted if you are using a load balancer with your service and your task definition doesn't use the ``awsvpc`` network mode. If you specify the ``role`` parameter, you must also specify a load balancer object with the ``loadBalancers`` parameter. If your account has already created the Amazon ECS service-linked role, that role is used for your service unless you specify a role here. The service-linked role is required if your task definition uses the ``awsvpc`` network mode or if the service is configured to use service discovery, an external deployment controller, multiple target groups, or Elastic Inference accelerators in which case you don't specify a role here. For more information, see [Using service-linked roles for Amazon ECS](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using-service-linked-roles.html) in the *Amazon Elastic Container Service Developer Guide*. If your specified role has a path other than ``/``, then you must either specify the full role ARN (this is recommended) or prefix the role name with the path. For example, if a role with the name ``bar`` has a path of ``/foo/`` then you would specify ``/foo/bar`` as the role name. For more information, see [Friendly names and paths](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-friendly-names) in the *IAM User Guide*. */
   role?: string;
   /** The scheduling strategy to use for the service. For more information, see [Services](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs_services.html). There are two service scheduler strategies available: + ``REPLICA``-The replica scheduling strategy places and maintains the desired number of tasks across your cluster. By default, the service scheduler spreads tasks across Availability Zones. You can use task placement strategies and constraints to customize task placement decisions. This scheduler strategy is required if the service uses the ``CODE_DEPLOY`` or ``EXTERNAL`` deployment controller types. + ``DAEMON``-The daemon scheduling strategy deploys exactly one task on each active container instance that meets all of the task placement constraints that you specify in your cluster. The service scheduler also evaluates the task placement constraints for running tasks and will stop tasks that don't meet the placement constraints. When you're using this strategy, you don't need to specify a desired number of tasks, a task placement strategy, or use Service Auto Scaling policies. Tasks using the Fargate launch type or the ``CODE_DEPLOY`` or ``EXTERNAL`` deployment controller types don't support the ``DAEMON`` scheduling strategy. */
-  schedulingStrategy?: SchedulingStrategy;
+  schedulingStrategy?: SchedulingStrategy | (string & {});
   /** Property serviceArn */
   serviceArn?: string;
   /** The configuration for this service to discover and connect to services, and be discovered by, and connected from, other services within a namespace. Tasks that run in a namespace can use short names to connect to services in the namespace. Tasks can connect to services across all of the clusters in the namespace. Tasks connect through a managed proxy container that collects logs and metrics for increased visibility. Only the tasks that Amazon ECS services create are supported with Service Connect. For more information, see [Service Connect](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-connect.html) in the *Amazon Elastic Container Service Developer Guide*. The Service Connect configuration of your Amazon ECS service. The configuration for this service to discover and connect to services, and be discovered by, and connected from, other services within a namespace. Tasks that run in a namespace can use short names to connect to services in the namespace. Tasks can connect to services across all of the clusters in the namespace. Tasks connect through a managed proxy container that collects logs and metrics for increased visibility. Only the tasks that Amazon ECS services create are supported with Service Connect. For more information, see [Service Connect](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-connect.html) in the *Amazon Elastic Container Service Developer Guide*. */
@@ -30555,7 +30531,7 @@ export const EcsService = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EcsService" }) as any as S.Schema<EcsService>;
 
 /** The EcsService items on this page */
-export type EcsServiceListResultValueList = ReadonlyArray<EcsService>;
+export type EcsServiceListResultValueList = Array<EcsService>;
 export const EcsServiceListResultValueList = /*@__PURE__*/ S.Array(
   EcsService,
 ) as any as S.Schema<EcsServiceListResultValueList>;
@@ -30683,13 +30659,13 @@ export const EcsTaskDefinitionsCreateOrReplaceRequestTagsMap =
   ) as any as S.Schema<EcsTaskDefinitionsCreateOrReplaceRequestTagsMap>;
 
 /** The command that's passed to the container. This parameter maps to ``Cmd`` in the [Create a container](https://docs.docker.com/reference/cli/docker/container/create/) section of the [Docker Remote API](https://docs.docker.com/engine/api/) and the ``COMMAND`` parameter to [docker run](https://docs.docker.com/engine/reference/run/#security-configuration). For more information, see [https://docs.docker.com/engine/reference/builder/#cmd](https://docs.docker.com/engine/reference/builder/#cmd). If there are multiple arguments, each argument is a separated string in the array. */
-export type ContainerDefinitionCommandList = ReadonlyArray<string>;
+export type ContainerDefinitionCommandList = Array<string>;
 export const ContainerDefinitionCommandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ContainerDefinitionCommandList>;
 
 /** A list of ARNs in SSM or Amazon S3 to a credential spec (``CredSpec``) file that configures the container for Active Directory authentication. We recommend that you use this parameter instead of the ``dockerSecurityOptions``. The maximum number of ARNs is 1. There are two formats for each ARN. + credentialspecdomainless:MyARN You use credentialspecdomainless:MyARN to provide a CredSpec with an additional section for a secret in . You provide the login credentials to the domain in the secret. Each task that runs on any container instance can join different domains. You can use this format without joining the container instance to a domain. + credentialspec:MyARN You use credentialspec:MyARN to provide a CredSpec for a single domain. You must join the container instance to the domain before you start any tasks that use this task definition. In both formats, replace ``MyARN`` with the ARN in SSM or Amazon S3. If you provide a ``credentialspecdomainless:MyARN``, the ``credspec`` must provide a ARN in ASMlong for a secret containing the username, password, and the domain to connect to. For better security, the instance isn't joined to the domain for domainless authentication. Other applications on the instance can't use the domainless credentials. You can use this parameter to run tasks on the same instance, even it the tasks need to join different domains. For more information, see [Using gMSAs for Windows Containers](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/windows-gmsa.html) and [Using gMSAs for Linux Containers](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/linux-gmsa.html). */
-export type ContainerDefinitionCredentialSpecsList = ReadonlyArray<string>;
+export type ContainerDefinitionCredentialSpecsList = Array<string>;
 export const ContainerDefinitionCredentialSpecsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ContainerDefinitionCredentialSpecsList>;
@@ -30711,34 +30687,32 @@ export const ContainerDependency = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ContainerDependency>;
 
 /** The dependencies defined for container startup and shutdown. A container can contain multiple dependencies. When a dependency is defined for container startup, for container shutdown it is reversed. For tasks using the EC2 launch type, the container instances require at least version 1.26.0 of the container agent to turn on container dependencies. However, we recommend using the latest container agent version. For information about checking your agent version and updating to the latest version, see [Updating the Amazon ECS Container Agent](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-update.html) in the *Amazon Elastic Container Service Developer Guide*. If you're using an Amazon ECS-optimized Linux AMI, your instance needs at least version 1.26.0-1 of the ``ecs-init`` package. If your container instances are launched from version ``20190301`` or later, then they contain the required versions of the container agent and ``ecs-init``. For more information, see [Amazon ECS-optimized Linux AMI](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-optimized_AMI.html) in the *Amazon Elastic Container Service Developer Guide*. For tasks using the Fargate launch type, the task or service requires the following platforms: + Linux platform version ``1.3.0`` or later. + Windows platform version ``1.0.0`` or later. If the task definition is used in a blue/green deployment that uses [AWS::CodeDeploy::DeploymentGroup BlueGreenDeploymentConfiguration](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-codedeploy-deploymentgroup-bluegreendeploymentconfiguration.html), the ``dependsOn`` parameter is not supported. For more information see [Issue #680](https://github.com/aws-cloudformation/cloudformation-coverage-roadmap/issues/680) on the on the GitHub website. */
-export type ContainerDefinitionDependsOnList =
-  ReadonlyArray<ContainerDependency>;
+export type ContainerDefinitionDependsOnList = Array<ContainerDependency>;
 export const ContainerDefinitionDependsOnList = /*@__PURE__*/ S.Array(
   ContainerDependency,
 ) as any as S.Schema<ContainerDefinitionDependsOnList>;
 
 /** A list of DNS search domains that are presented to the container. This parameter maps to ``DnsSearch`` in the [Create a container](https://docs.docker.com/reference/cli/docker/container/create/) section of the [Docker Remote API](https://docs.docker.com/engine/api/) and the ``--dns-search`` option to [docker run](https://docs.docker.com/engine/reference/run/#security-configuration). This parameter is not supported for Windows containers. */
-export type ContainerDefinitionDnsSearchDomainsList = ReadonlyArray<string>;
+export type ContainerDefinitionDnsSearchDomainsList = Array<string>;
 export const ContainerDefinitionDnsSearchDomainsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ContainerDefinitionDnsSearchDomainsList>;
 
 /** A list of DNS servers that are presented to the container. This parameter maps to ``Dns`` in the [Create a container](https://docs.docker.com/reference/cli/docker/container/create/) section of the [Docker Remote API](https://docs.docker.com/engine/api/) and the ``--dns`` option to [docker run](https://docs.docker.com/engine/reference/run/#security-configuration). This parameter is not supported for Windows containers. */
-export type ContainerDefinitionDnsServersList = ReadonlyArray<string>;
+export type ContainerDefinitionDnsServersList = Array<string>;
 export const ContainerDefinitionDnsServersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ContainerDefinitionDnsServersList>;
 
 /** A list of strings to provide custom configuration for multiple security systems. For more information about valid values, see [Docker Run Security Configuration](https://docs.docker.com/engine/reference/run/#security-configuration). This field isn't valid for containers in tasks using the Fargate launch type. For Linux tasks on EC2, this parameter can be used to reference custom labels for SELinux and AppArmor multi-level security systems. For any tasks on EC2, this parameter can be used to reference a credential spec file that configures a container for Active Directory authentication. For more information, see [Using gMSAs for Windows Containers](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/windows-gmsa.html) and [Using gMSAs for Linux Containers](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/linux-gmsa.html) in the *Amazon Elastic Container Service Developer Guide*. This parameter maps to ``SecurityOpt`` in the [Create a container](https://docs.docker.com/reference/cli/docker/container/create/) section of the [Docker Remote API](https://docs.docker.com/engine/api/) and the ``--security-opt`` option to [docker run](https://docs.docker.com/engine/reference/run/#security-configuration). The Amazon ECS container agent running on a container instance must register with the ``ECS_SELINUX_CAPABLE=true`` or ``ECS_APPARMOR_CAPABLE=true`` environment variables before containers placed on that instance can use these security options. For more information, see [Amazon ECS Container Agent Configuration](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html) in the *Amazon Elastic Container Service Developer Guide*. For more information about valid values, see [Docker Run Security Configuration](https://docs.docker.com/engine/reference/run/#security-configuration). Valid values: 'no-new-privileges' | 'apparmor:PROFILE' | 'label:value' | 'credentialspec:CredentialSpecFilePath' */
-export type ContainerDefinitionDockerSecurityOptionsList =
-  ReadonlyArray<string>;
+export type ContainerDefinitionDockerSecurityOptionsList = Array<string>;
 export const ContainerDefinitionDockerSecurityOptionsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ContainerDefinitionDockerSecurityOptionsList>;
 
 /** Early versions of the Amazon ECS container agent don't properly handle ``entryPoint`` parameters. If you have problems using ``entryPoint``, update your container agent or enter your commands and arguments as ``command`` array items instead. The entry point that's passed to the container. This parameter maps to ``Entrypoint`` in the [Create a container](https://docs.docker.com/reference/cli/docker/container/create/) section of the [Docker Remote API](https://docs.docker.com/engine/api/) and the ``--entrypoint`` option to [docker run](https://docs.docker.com/engine/reference/run/#security-configuration). For more information, see [https://docs.docker.com/engine/reference/builder/#entrypoint](https://docs.docker.com/engine/reference/builder/#entrypoint). */
-export type ContainerDefinitionEntryPointList = ReadonlyArray<string>;
+export type ContainerDefinitionEntryPointList = Array<string>;
 export const ContainerDefinitionEntryPointList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ContainerDefinitionEntryPointList>;
@@ -30758,7 +30732,7 @@ export const KeyValuePair = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "KeyValuePair" }) as any as S.Schema<KeyValuePair>;
 
 /** The environment variables to pass to a container. This parameter maps to ``Env`` in the [Create a container](https://docs.docker.com/reference/cli/docker/container/create/) section of the [Docker Remote API](https://docs.docker.com/engine/api/) and the ``--env`` option to [docker run](https://docs.docker.com/engine/reference/run/#security-configuration). We don't recommend that you use plaintext environment variables for sensitive information, such as credential data. */
-export type ContainerDefinitionEnvironmentList = ReadonlyArray<KeyValuePair>;
+export type ContainerDefinitionEnvironmentList = Array<KeyValuePair>;
 export const ContainerDefinitionEnvironmentList = /*@__PURE__*/ S.Array(
   KeyValuePair,
 ) as any as S.Schema<ContainerDefinitionEnvironmentList>;
@@ -30780,8 +30754,7 @@ export const EnvironmentFile = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EnvironmentFile>;
 
 /** A list of files containing the environment variables to pass to a container. This parameter maps to the ``--env-file`` option to [docker run](https://docs.docker.com/engine/reference/run/#security-configuration). You can specify up to ten environment files. The file must have a ``.env`` file extension. Each line in an environment file contains an environment variable in ``VARIABLE=VALUE`` format. Lines beginning with ``#`` are treated as comments and are ignored. For more information about the environment variable file syntax, see [Declare default environment variables in file](https://docs.docker.com/compose/env-file/). If there are environment variables specified using the ``environment`` parameter in a container definition, they take precedence over the variables contained within an environment file. If multiple environment files are specified that contain the same variable, they're processed from the top down. We recommend that you use unique variable names. For more information, see [Specifying Environment Variables](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/taskdef-envfiles.html) in the *Amazon Elastic Container Service Developer Guide*. */
-export type ContainerDefinitionEnvironmentFilesList =
-  ReadonlyArray<EnvironmentFile>;
+export type ContainerDefinitionEnvironmentFilesList = Array<EnvironmentFile>;
 export const ContainerDefinitionEnvironmentFilesList = /*@__PURE__*/ S.Array(
   EnvironmentFile,
 ) as any as S.Schema<ContainerDefinitionEnvironmentFilesList>;
@@ -30801,7 +30774,7 @@ export const HostEntry = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "HostEntry" }) as any as S.Schema<HostEntry>;
 
 /** A list of hostnames and IP address mappings to append to the ``/etc/hosts`` file on the container. This parameter maps to ``ExtraHosts`` in the [Create a container](https://docs.docker.com/reference/cli/docker/container/create/) section of the [Docker Remote API](https://docs.docker.com/engine/api/) and the ``--add-host`` option to [docker run](https://docs.docker.com/engine/reference/run/#security-configuration). This parameter isn't supported for Windows containers or tasks that use the ``awsvpc`` network mode. */
-export type ContainerDefinitionExtraHostsList = ReadonlyArray<HostEntry>;
+export type ContainerDefinitionExtraHostsList = Array<HostEntry>;
 export const ContainerDefinitionExtraHostsList = /*@__PURE__*/ S.Array(
   HostEntry,
 ) as any as S.Schema<ContainerDefinitionExtraHostsList>;
@@ -30823,7 +30796,7 @@ export const FirelensConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FirelensConfiguration>;
 
 /** A string array representing the command that the container runs to determine if it is healthy. The string array must start with ``CMD`` to run the command arguments directly, or ``CMD-SHELL`` to run the command with the container's default shell. When you use the AWS Management Console JSON panel, the CLIlong, or the APIs, enclose the list of commands in double quotes and brackets. ``[ 'CMD-SHELL', 'curl -f http://localhost/ || exit 1' ]`` You don't include the double quotes and brackets when you use the AWS Management Console. ``CMD-SHELL, curl -f http://localhost/ || exit 1`` An exit code of 0 indicates success, and non-zero exit code indicates failure. For more information, see ``HealthCheck`` in the [Create a container](https://docs.docker.com/reference/cli/docker/container/create/) section of the [Docker Remote API](https://docs.docker.com/engine/api/). */
-export type HealthCheckCommandList = ReadonlyArray<string>;
+export type HealthCheckCommandList = Array<string>;
 export const HealthCheckCommandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<HealthCheckCommandList>;
@@ -30852,19 +30825,19 @@ export const HealthCheck = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "HealthCheck" }) as any as S.Schema<HealthCheck>;
 
 /** The ``links`` parameter allows containers to communicate with each other without the need for port mappings. This parameter is only supported if the network mode of a task definition is ``bridge``. The ``name:internalName`` construct is analogous to ``name:alias`` in Docker links. Up to 255 letters (uppercase and lowercase), numbers, underscores, and hyphens are allowed. For more information about linking Docker containers, go to [Legacy container links](https://docs.docker.com/network/links/) in the Docker documentation. This parameter maps to ``Links`` in the [Create a container](https://docs.docker.com/reference/cli/docker/container/create/) section of the [Docker Remote API](https://docs.docker.com/engine/api/) and the ``--link`` option to [docker run](https://docs.docker.com/engine/reference/run/#security-configuration). This parameter is not supported for Windows containers. Containers that are collocated on a single container instance may be able to communicate with each other without requiring links or host port mappings. Network isolation is achieved on the container instance using security groups and VPC settings. */
-export type ContainerDefinitionLinksList = ReadonlyArray<string>;
+export type ContainerDefinitionLinksList = Array<string>;
 export const ContainerDefinitionLinksList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ContainerDefinitionLinksList>;
 
 /** The Linux capabilities for the container that have been added to the default configuration provided by Docker. This parameter maps to ``CapAdd`` in the [Create a container](https://docs.docker.com/reference/cli/docker/container/create/) section of the [Docker Remote API](https://docs.docker.com/engine/api/) and the ``--cap-add`` option to [docker run](https://docs.docker.com/engine/reference/run/#security-configuration). Tasks launched on FARGATElong only support adding the ``SYS_PTRACE`` kernel capability. Valid values: ``'ALL' | 'AUDIT_CONTROL' | 'AUDIT_WRITE' | 'BLOCK_SUSPEND' | 'CHOWN' | 'DAC_OVERRIDE' | 'DAC_READ_SEARCH' | 'FOWNER' | 'FSETID' | 'IPC_LOCK' | 'IPC_OWNER' | 'KILL' | 'LEASE' | 'LINUX_IMMUTABLE' | 'MAC_ADMIN' | 'MAC_OVERRIDE' | 'MKNOD' | 'NET_ADMIN' | 'NET_BIND_SERVICE' | 'NET_BROADCAST' | 'NET_RAW' | 'SETFCAP' | 'SETGID' | 'SETPCAP' | 'SETUID' | 'SYS_ADMIN' | 'SYS_BOOT' | 'SYS_CHROOT' | 'SYS_MODULE' | 'SYS_NICE' | 'SYS_PACCT' | 'SYS_PTRACE' | 'SYS_RAWIO' | 'SYS_RESOURCE' | 'SYS_TIME' | 'SYS_TTY_CONFIG' | 'SYSLOG' | 'WAKE_ALARM'`` */
-export type KernelCapabilitiesAddList = ReadonlyArray<string>;
+export type KernelCapabilitiesAddList = Array<string>;
 export const KernelCapabilitiesAddList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<KernelCapabilitiesAddList>;
 
 /** The Linux capabilities for the container that have been removed from the default configuration provided by Docker. This parameter maps to ``CapDrop`` in the [Create a container](https://docs.docker.com/reference/cli/docker/container/create/) section of the [Docker Remote API](https://docs.docker.com/engine/api/) and the ``--cap-drop`` option to [docker run](https://docs.docker.com/engine/reference/run/#security-configuration). Valid values: ``'ALL' | 'AUDIT_CONTROL' | 'AUDIT_WRITE' | 'BLOCK_SUSPEND' | 'CHOWN' | 'DAC_OVERRIDE' | 'DAC_READ_SEARCH' | 'FOWNER' | 'FSETID' | 'IPC_LOCK' | 'IPC_OWNER' | 'KILL' | 'LEASE' | 'LINUX_IMMUTABLE' | 'MAC_ADMIN' | 'MAC_OVERRIDE' | 'MKNOD' | 'NET_ADMIN' | 'NET_BIND_SERVICE' | 'NET_BROADCAST' | 'NET_RAW' | 'SETFCAP' | 'SETGID' | 'SETPCAP' | 'SETUID' | 'SYS_ADMIN' | 'SYS_BOOT' | 'SYS_CHROOT' | 'SYS_MODULE' | 'SYS_NICE' | 'SYS_PACCT' | 'SYS_PTRACE' | 'SYS_RAWIO' | 'SYS_RESOURCE' | 'SYS_TIME' | 'SYS_TTY_CONFIG' | 'SYSLOG' | 'WAKE_ALARM'`` */
-export type KernelCapabilitiesDropList = ReadonlyArray<string>;
+export type KernelCapabilitiesDropList = Array<string>;
 export const KernelCapabilitiesDropList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<KernelCapabilitiesDropList>;
@@ -30886,7 +30859,7 @@ export const KernelCapabilities = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<KernelCapabilities>;
 
 /** The explicit permissions to provide to the container for the device. By default, the container has permissions for ``read``, ``write``, and ``mknod`` for the device. */
-export type DevicePermissionsList = ReadonlyArray<string>;
+export type DevicePermissionsList = Array<string>;
 export const DevicePermissionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DevicePermissionsList>;
@@ -30909,13 +30882,13 @@ export const Device = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Device" }) as any as S.Schema<Device>;
 
 /** Any host devices to expose to the container. This parameter maps to ``Devices`` in the [Create a container](https://docs.docker.com/reference/cli/docker/container/create/) section of the [Docker Remote API](https://docs.docker.com/engine/api/) and the ``--device`` option to [docker run](https://docs.docker.com/engine/reference/run/#security-configuration). If you're using tasks that use the Fargate launch type, the ``devices`` parameter isn't supported. */
-export type LinuxParametersDevicesList = ReadonlyArray<Device>;
+export type LinuxParametersDevicesList = Array<Device>;
 export const LinuxParametersDevicesList = /*@__PURE__*/ S.Array(
   Device,
 ) as any as S.Schema<LinuxParametersDevicesList>;
 
 /** The list of tmpfs volume mount options. */
-export type TmpfsMountOptionsList = ReadonlyArray<string>;
+export type TmpfsMountOptionsList = Array<string>;
 export const TmpfsMountOptionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<TmpfsMountOptionsList>;
@@ -30938,7 +30911,7 @@ export const Tmpfs = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tmpfs" }) as any as S.Schema<Tmpfs>;
 
 /** The container path, mount options, and size (in MiB) of the tmpfs mount. This parameter maps to the ``--tmpfs`` option to [docker run](https://docs.docker.com/engine/reference/run/#security-configuration). If you're using tasks that use the Fargate launch type, the ``tmpfs`` parameter isn't supported. */
-export type LinuxParametersTmpfsList = ReadonlyArray<Tmpfs>;
+export type LinuxParametersTmpfsList = Array<Tmpfs>;
 export const LinuxParametersTmpfsList = /*@__PURE__*/ S.Array(
   Tmpfs,
 ) as any as S.Schema<LinuxParametersTmpfsList>;
@@ -30992,7 +30965,7 @@ export const MountPoint = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MountPoint" }) as any as S.Schema<MountPoint>;
 
 /** The mount points for data volumes in your container. This parameter maps to ``Volumes`` in the [Create a container](https://docs.docker.com/reference/cli/docker/container/create/) section of the [Docker Remote API](https://docs.docker.com/engine/api/) and the ``--volume`` option to [docker run](https://docs.docker.com/engine/reference/run/#security-configuration). Windows containers can mount whole directories on the same drive as ``$env:ProgramData``. Windows containers can't mount directories on a different drive, and mount point can't be across drives. */
-export type ContainerDefinitionMountPointsList = ReadonlyArray<MountPoint>;
+export type ContainerDefinitionMountPointsList = Array<MountPoint>;
 export const ContainerDefinitionMountPointsList = /*@__PURE__*/ S.Array(
   MountPoint,
 ) as any as S.Schema<ContainerDefinitionMountPointsList>;
@@ -31004,7 +30977,7 @@ export const PortMappingAppProtocol = /*@__PURE__*/ S.String;
 /** Definition of PortMapping */
 export interface PortMapping {
   /** The application protocol that's used for the port mapping. This parameter only applies to Service Connect. We recommend that you set this parameter to be consistent with the protocol that your application uses. If you set this parameter, Amazon ECS adds protocol-specific connection handling to the Service Connect proxy. If you set this parameter, Amazon ECS adds protocol-specific telemetry in the Amazon ECS console and CloudWatch. If you don't set a value for this parameter, then TCP is used. However, Amazon ECS doesn't add protocol-specific telemetry for TCP. ``appProtocol`` is immutable in a Service Connect service. Updating this field requires a service deletion and redeployment. Tasks that run in a namespace can use short names to connect to services in the namespace. Tasks can connect to services across all of the clusters in the namespace. Tasks connect through a managed proxy container that collects logs and metrics for increased visibility. Only the tasks that Amazon ECS services create are supported with Service Connect. For more information, see [Service Connect](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-connect.html) in the *Amazon Elastic Container Service Developer Guide*. */
-  appProtocol?: PortMappingAppProtocol;
+  appProtocol?: PortMappingAppProtocol | (string & {});
   /** The port number on the container that's bound to the user-specified or automatically assigned host port. If you use containers in a task with the ``awsvpc`` or ``host`` network mode, specify the exposed ports using ``containerPort``. If you use containers in a task with the ``bridge`` network mode and you specify a container port and not a host port, your container automatically receives a host port in the ephemeral port range. For more information, see ``hostPort``. Port mappings that are automatically assigned in this way do not count toward the 100 reserved ports limit of a container instance. */
   containerPort?: number;
   /** The port number range on the container that's bound to the dynamically mapped host port range. The following rules apply when you specify a ``containerPortRange``: + You must use either the ``bridge`` network mode or the ``awsvpc`` network mode. + This parameter is available for both the EC2 and FARGATElong launch types. + This parameter is available for both the Linux and Windows operating systems. + The container instance must have at least version 1.67.0 of the container agent and at least version 1.67.0-1 of the ``ecs-init`` package + You can specify a maximum of 100 port ranges per container. + You do not specify a ``hostPortRange``. The value of the ``hostPortRange`` is set as follows: + For containers in a task with the ``awsvpc`` network mode, the ``hostPortRange`` is set to the same value as the ``containerPortRange``. This is a static mapping strategy. + For containers in a task with the ``bridge`` network mode, the Amazon ECS agent finds open host ports from the default ephemeral range and passes it to docker to bind them to the container ports. + The ``containerPortRange`` valid values are between 1 and 65535. + A port can only be included in one port mapping per container. + You cannot specify overlapping port ranges. + The first port in the range must be less than last port in the range. + Docker recommends that you turn off the docker-proxy in the Docker daemon config file when you have a large number of ports. For more information, see [Issue #11185](https://github.com/moby/moby/issues/11185) on the Github website. For information about how to turn off the docker-proxy in the Docker daemon config file, see [Docker daemon](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/bootstrap_container_instance.html#bootstrap_docker_daemon) in the *Amazon ECS Developer Guide*. You can call [DescribeTasks](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_DescribeTasks.html) to view the ``hostPortRange`` which are the host ports that are bound to the container ports. */
@@ -31028,7 +31001,7 @@ export const PortMapping = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PortMapping" }) as any as S.Schema<PortMapping>;
 
 /** The list of port mappings for the container. Port mappings allow containers to access ports on the host container instance to send or receive traffic. For task definitions that use the ``awsvpc`` network mode, you should only specify the ``containerPort``. The ``hostPort`` can be left blank or it must be the same value as the ``containerPort``. Port mappings on Windows use the ``NetNAT`` gateway address rather than ``localhost``. There is no loopback for port mappings on Windows, so you cannot access a container's mapped port from the host itself. This parameter maps to ``PortBindings`` in the [Create a container](https://docs.docker.com/reference/cli/docker/container/create/) section of the [Docker Remote API](https://docs.docker.com/engine/api/) and the ``--publish`` option to [docker run](https://docs.docker.com/engine/reference/run/). If the network mode of a task definition is set to ``none``, then you can't specify port mappings. If the network mode of a task definition is set to ``host``, then host ports must either be undefined or they must match the container port in the port mapping. After a task reaches the ``RUNNING`` status, manual and automatic host and container port assignments are visible in the *Network Bindings* section of a container description for a selected task in the Amazon ECS console. The assignments are also visible in the ``networkBindings`` section [DescribeTasks](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_DescribeTasks.html) responses. */
-export type ContainerDefinitionPortMappingsList = ReadonlyArray<PortMapping>;
+export type ContainerDefinitionPortMappingsList = Array<PortMapping>;
 export const ContainerDefinitionPortMappingsList = /*@__PURE__*/ S.Array(
   PortMapping,
 ) as any as S.Schema<ContainerDefinitionPortMappingsList>;
@@ -31064,14 +31037,14 @@ export const ResourceRequirement = /*@__PURE__*/ S.suspend(() =>
 
 /** The type and amount of a resource to assign to a container. The only supported resource is a GPU. */
 export type ContainerDefinitionResourceRequirementsList =
-  ReadonlyArray<ResourceRequirement>;
+  Array<ResourceRequirement>;
 export const ContainerDefinitionResourceRequirementsList =
   /*@__PURE__*/ S.Array(
     ResourceRequirement,
   ) as any as S.Schema<ContainerDefinitionResourceRequirementsList>;
 
 /** The secrets to pass to the container. For more information, see [Specifying Sensitive Data](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/specifying-sensitive-data.html) in the *Amazon Elastic Container Service Developer Guide*. */
-export type ContainerDefinitionSecretsList = ReadonlyArray<Secret>;
+export type ContainerDefinitionSecretsList = Array<Secret>;
 export const ContainerDefinitionSecretsList = /*@__PURE__*/ S.Array(
   Secret,
 ) as any as S.Schema<ContainerDefinitionSecretsList>;
@@ -31091,8 +31064,7 @@ export const SystemControl = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SystemControl" }) as any as S.Schema<SystemControl>;
 
 /** A list of namespaced kernel parameters to set in the container. This parameter maps to ``Sysctls`` in the [Create a container](https://docs.docker.com/reference/cli/docker/container/create/) section of the [Docker Remote API](https://docs.docker.com/engine/api/) and the ``--sysctl`` option to [docker run](https://docs.docker.com/engine/reference/run/#security-configuration). For example, you can configure ``net.ipv4.tcp_keepalive_time`` setting to maintain longer lived connections. */
-export type ContainerDefinitionSystemControlsList =
-  ReadonlyArray<SystemControl>;
+export type ContainerDefinitionSystemControlsList = Array<SystemControl>;
 export const ContainerDefinitionSystemControlsList = /*@__PURE__*/ S.Array(
   SystemControl,
 ) as any as S.Schema<ContainerDefinitionSystemControlsList>;
@@ -31115,7 +31087,7 @@ export const Ulimit = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Ulimit" }) as any as S.Schema<Ulimit>;
 
 /** A list of ``ulimits`` to set in the container. This parameter maps to ``Ulimits`` in the [Create a container](https://docs.docker.com/reference/cli/docker/container/create/) section of the [Docker Remote API](https://docs.docker.com/engine/api/) and the ``--ulimit`` option to [docker run](https://docs.docker.com/engine/reference/run/). Valid naming values are displayed in the [Ulimit](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_Ulimit.html) data type. This parameter requires version 1.18 of the Docker Remote API or greater on your container instance. To check the Docker Remote API version on your container instance, log in to your container instance and run the following command: ``sudo docker version --format '{{.Server.APIVersion}}'`` This parameter is not supported for Windows containers. */
-export type ContainerDefinitionUlimitsList = ReadonlyArray<Ulimit>;
+export type ContainerDefinitionUlimitsList = Array<Ulimit>;
 export const ContainerDefinitionUlimitsList = /*@__PURE__*/ S.Array(
   Ulimit,
 ) as any as S.Schema<ContainerDefinitionUlimitsList>;
@@ -31135,7 +31107,7 @@ export const VolumeFrom = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VolumeFrom" }) as any as S.Schema<VolumeFrom>;
 
 /** Data volumes to mount from another container. This parameter maps to ``VolumesFrom`` in the [Create a container](https://docs.docker.com/reference/cli/docker/container/create/) section of the [Docker Remote API](https://docs.docker.com/engine/api/) and the ``--volumes-from`` option to [docker run](https://docs.docker.com/engine/reference/run/#security-configuration). */
-export type ContainerDefinitionVolumesFromList = ReadonlyArray<VolumeFrom>;
+export type ContainerDefinitionVolumesFromList = Array<VolumeFrom>;
 export const ContainerDefinitionVolumesFromList = /*@__PURE__*/ S.Array(
   VolumeFrom,
 ) as any as S.Schema<ContainerDefinitionVolumesFromList>;
@@ -31276,7 +31248,7 @@ export const ContainerDefinition = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of container definitions in JSON format that describe the different containers that make up your task. For more information about container definition parameters and defaults, see [Amazon ECS Task Definitions](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_defintions.html) in the *Amazon Elastic Container Service Developer Guide*. */
 export type AwsEcsTaskDefinitionPropertiesContainerDefinitionsList =
-  ReadonlyArray<ContainerDefinition>;
+  Array<ContainerDefinition>;
 export const AwsEcsTaskDefinitionPropertiesContainerDefinitionsList =
   /*@__PURE__*/ S.Array(
     ContainerDefinition,
@@ -31313,7 +31285,7 @@ export const InferenceAccelerator = /*@__PURE__*/ S.suspend(() =>
 
 /** The Elastic Inference accelerators to use for the containers in the task. */
 export type AwsEcsTaskDefinitionPropertiesInferenceAcceleratorsList =
-  ReadonlyArray<InferenceAccelerator>;
+  Array<InferenceAccelerator>;
 export const AwsEcsTaskDefinitionPropertiesInferenceAcceleratorsList =
   /*@__PURE__*/ S.Array(
     InferenceAccelerator,
@@ -31337,7 +31309,7 @@ export const TaskDefinitionPlacementConstraint = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of placement constraint objects to use for tasks. This parameter isn't supported for tasks run on FARGATElong. */
 export type AwsEcsTaskDefinitionPropertiesPlacementConstraintsList =
-  ReadonlyArray<TaskDefinitionPlacementConstraint>;
+  Array<TaskDefinitionPlacementConstraint>;
 export const AwsEcsTaskDefinitionPropertiesPlacementConstraintsList =
   /*@__PURE__*/ S.Array(
     TaskDefinitionPlacementConstraint,
@@ -31345,7 +31317,7 @@ export const AwsEcsTaskDefinitionPropertiesPlacementConstraintsList =
 
 /** The set of network configuration parameters to provide the Container Network Interface (CNI) plugin, specified as key-value pairs. + ``IgnoredUID`` - (Required) The user ID (UID) of the proxy container as defined by the ``user`` parameter in a container definition. This is used to ensure the proxy ignores its own traffic. If ``IgnoredGID`` is specified, this field can be empty. + ``IgnoredGID`` - (Required) The group ID (GID) of the proxy container as defined by the ``user`` parameter in a container definition. This is used to ensure the proxy ignores its own traffic. If ``IgnoredUID`` is specified, this field can be empty. + ``AppPorts`` - (Required) The list of ports that the application uses. Network traffic to these ports is forwarded to the ``ProxyIngressPort`` and ``ProxyEgressPort``. + ``ProxyIngressPort`` - (Required) Specifies the port that incoming traffic to the ``AppPorts`` is directed to. + ``ProxyEgressPort`` - (Required) Specifies the port that outgoing traffic from the ``AppPorts`` is directed to. + ``EgressIgnoredPorts`` - (Required) The egress traffic going to the specified ports is ignored and not redirected to the ``ProxyEgressPort``. It can be an empty list. + ``EgressIgnoredIPs`` - (Required) The egress traffic going to the specified IP addresses is ignored and not redirected to the ``ProxyEgressPort``. It can be an empty list. */
 export type ProxyConfigurationProxyConfigurationPropertiesList =
-  ReadonlyArray<KeyValuePair>;
+  Array<KeyValuePair>;
 export const ProxyConfigurationProxyConfigurationPropertiesList =
   /*@__PURE__*/ S.Array(
     KeyValuePair,
@@ -31374,7 +31346,7 @@ export const ProxyConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** The task launch types the task definition was validated against. The valid values are ``EC2``, ``FARGATE``, and ``EXTERNAL``. For more information, see [Amazon ECS launch types](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html) in the *Amazon Elastic Container Service Developer Guide*. */
 export type AwsEcsTaskDefinitionPropertiesRequiresCompatibilitiesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const AwsEcsTaskDefinitionPropertiesRequiresCompatibilitiesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -31411,7 +31383,7 @@ export const Tag_28 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tag_28" }) as any as S.Schema<Tag_28>;
 
 /** The metadata that you apply to the task definition to help you categorize and organize them. Each tag consists of a key and an optional value. You define both of them. The following basic restrictions apply to tags: + Maximum number of tags per resource - 50 + For each resource, each tag key must be unique, and each tag key can have only one value. + Maximum key length - 128 Unicode characters in UTF-8 + Maximum value length - 256 Unicode characters in UTF-8 + If your tagging schema is used across multiple services and resources, remember that other services may have restrictions on allowed characters. Generally allowed characters are: letters, numbers, and spaces representable in UTF-8, and the following characters: + - = . _ : / @. + Tag keys and values are case-sensitive. + Do not use ``aws:``, ``AWS:``, or any upper or lowercase combination of such as a prefix for either keys or values as it is reserved for AWS use. You cannot edit or delete tag keys or values with this prefix. Tags with this prefix do not count against your tags per resource limit. */
-export type AwsEcsTaskDefinitionPropertiesTagsList = ReadonlyArray<Tag_28>;
+export type AwsEcsTaskDefinitionPropertiesTagsList = Array<Tag_28>;
 export const AwsEcsTaskDefinitionPropertiesTagsList = /*@__PURE__*/ S.Array(
   Tag_28,
 ) as any as S.Schema<AwsEcsTaskDefinitionPropertiesTagsList>;
@@ -31450,7 +31422,7 @@ export interface AuthorizationConfig {
   /** The Amazon EFS access point ID to use. If an access point is specified, the root directory value specified in the ``EFSVolumeConfiguration`` must either be omitted or set to ``/`` which will enforce the path set on the EFS access point. If an access point is used, transit encryption must be on in the ``EFSVolumeConfiguration``. For more information, see [Working with Amazon EFS access points](https://docs.aws.amazon.com/efs/latest/ug/efs-access-points.html) in the *Amazon Elastic File System User Guide*. */
   accessPointId?: string;
   /** Determines whether to use the Amazon ECS task role defined in a task definition when mounting the Amazon EFS file system. If it is turned on, transit encryption must be turned on in the ``EFSVolumeConfiguration``. If this parameter is omitted, the default value of ``DISABLED`` is used. For more information, see [Using Amazon EFS access points](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/efs-volumes.html#efs-volume-accesspoints) in the *Amazon Elastic Container Service Developer Guide*. */
-  iam?: AuthorizationConfigIAM;
+  iam?: AuthorizationConfigIAM | (string & {});
 }
 export const AuthorizationConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -31474,7 +31446,7 @@ export interface EFSVolumeConfiguration {
   /** The directory within the Amazon EFS file system to mount as the root directory inside the host. If this parameter is omitted, the root of the Amazon EFS volume will be used. Specifying ``/`` will have the same effect as omitting this parameter. If an EFS access point is specified in the ``authorizationConfig``, the root directory parameter must either be omitted or set to ``/`` which will enforce the path set on the EFS access point. */
   rootDirectory?: string;
   /** Determines whether to use encryption for Amazon EFS data in transit between the Amazon ECS host and the Amazon EFS server. Transit encryption must be turned on if Amazon EFS IAM authorization is used. If this parameter is omitted, the default value of ``DISABLED`` is used. For more information, see [Encrypting data in transit](https://docs.aws.amazon.com/efs/latest/ug/encryption-in-transit.html) in the *Amazon Elastic File System User Guide*. */
-  transitEncryption?: EFSVolumeConfigurationTransitEncryption;
+  transitEncryption?: EFSVolumeConfigurationTransitEncryption | (string & {});
   /** The port to use when sending encrypted data between the Amazon ECS host and the Amazon EFS server. If you do not specify a transit encryption port, it will use the port selection strategy that the Amazon EFS mount helper uses. For more information, see [EFS mount helper](https://docs.aws.amazon.com/efs/latest/ug/efs-mount-helper.html) in the *Amazon Elastic File System User Guide*. */
   transitEncryptionPort?: number;
 }
@@ -31568,7 +31540,7 @@ export const Volume = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Volume" }) as any as S.Schema<Volume>;
 
 /** The list of data volume definitions for the task. For more information, see [Using data volumes in tasks](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_data_volumes.html) in the *Amazon Elastic Container Service Developer Guide*. The ``host`` and ``sourcePath`` parameters aren't supported for tasks run on FARGATElong. */
-export type AwsEcsTaskDefinitionPropertiesVolumesList = ReadonlyArray<Volume>;
+export type AwsEcsTaskDefinitionPropertiesVolumesList = Array<Volume>;
 export const AwsEcsTaskDefinitionPropertiesVolumesList = /*@__PURE__*/ S.Array(
   Volume,
 ) as any as S.Schema<AwsEcsTaskDefinitionPropertiesVolumesList>;
@@ -31969,8 +31941,7 @@ export const EcsTaskDefinition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EcsTaskDefinition>;
 
 /** The EcsTaskDefinition items on this page */
-export type EcsTaskDefinitionListResultValueList =
-  ReadonlyArray<EcsTaskDefinition>;
+export type EcsTaskDefinitionListResultValueList = Array<EcsTaskDefinition>;
 export const EcsTaskDefinitionListResultValueList = /*@__PURE__*/ S.Array(
   EcsTaskDefinition,
 ) as any as S.Schema<EcsTaskDefinitionListResultValueList>;
@@ -32104,7 +32075,7 @@ export const BackupPolicyStatus = /*@__PURE__*/ S.String;
 /** Definition of BackupPolicy */
 export interface BackupPolicy {
   /** Set the backup policy status for the file system. + *ENABLED* - Turns automatic backups on for the file system. + *DISABLED* - Turns automatic backups off for the file system. */
-  status?: BackupPolicyStatus;
+  status?: BackupPolicyStatus | (string & {});
 }
 export const BackupPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -32122,7 +32093,9 @@ export const FileSystemProtectionReplicationOverwriteProtection =
 /** Definition of FileSystemProtection */
 export interface FileSystemProtection {
   /** The status of the file system's replication overwrite protection. + ``ENABLED`` – The file system cannot be used as the destination file system in a replication configuration. The file system is writeable. Replication overwrite protection is ``ENABLED`` by default. + ``DISABLED`` – The file system can be used as the destination file system in a replication configuration. The file system is read-only and can only be modified by EFS replication. + ``REPLICATING`` – The file system is being used as the destination file system in a replication configuration. The file system is read-only and is only modified only by EFS replication. If the replication configuration is deleted, the file system's replication overwrite protection is re-enabled, the file system becomes writeable. */
-  replicationOverwriteProtection?: FileSystemProtectionReplicationOverwriteProtection;
+  replicationOverwriteProtection?:
+    | FileSystemProtectionReplicationOverwriteProtection
+    | (string & {});
 }
 export const FileSystemProtection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -32152,7 +32125,7 @@ export const ElasticFileSystemTag = /*@__PURE__*/ S.suspend(() =>
 
 /** Use to create one or more tags associated with the file system. Each tag is a user-defined key-value pair. Name your file system on creation by including a ``'Key':'Name','Value':'{value}'`` key-value pair. Each key must be unique. For more information, see [Tagging resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html) in the *General Reference Guide*. */
 export type AwsEfsFileSystemPropertiesFileSystemTagsList =
-  ReadonlyArray<ElasticFileSystemTag>;
+  Array<ElasticFileSystemTag>;
 export const AwsEfsFileSystemPropertiesFileSystemTagsList =
   /*@__PURE__*/ S.Array(
     ElasticFileSystemTag,
@@ -32179,7 +32152,7 @@ export const LifecyclePolicy_2 = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of ``LifecyclePolicy`` objects that define the file system's ``LifecycleConfiguration`` object. A ``LifecycleConfiguration`` object informs Lifecycle management of the following: + When to move files in the file system from primary storage to IA storage. + When to move files in the file system from primary storage or IA storage to Archive storage. + When to move files that are in IA or Archive storage to primary storage. EFS requires that each ``LifecyclePolicy`` object have only a single transition. This means that in a request body, ``LifecyclePolicies`` needs to be structured as an array of ``LifecyclePolicy`` objects, one object for each transition, ``TransitionToIA``, ``TransitionToArchive`` ``TransitionToPrimaryStorageClass``. See the example requests in the following section for more information. */
 export type AwsEfsFileSystemPropertiesLifecyclePoliciesList =
-  ReadonlyArray<LifecyclePolicy_2>;
+  Array<LifecyclePolicy_2>;
 export const AwsEfsFileSystemPropertiesLifecyclePoliciesList =
   /*@__PURE__*/ S.Array(
     LifecyclePolicy_2,
@@ -32209,7 +32182,7 @@ export const ReplicationDestination = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of destination objects. Only one destination object is supported. */
 export type ReplicationConfigurationDestinationsList =
-  ReadonlyArray<ReplicationDestination>;
+  Array<ReplicationDestination>;
 export const ReplicationConfigurationDestinationsList = /*@__PURE__*/ S.Array(
   ReplicationDestination,
 ) as any as S.Schema<ReplicationConfigurationDestinationsList>;
@@ -32605,7 +32578,7 @@ export const EfsFileSystem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EfsFileSystem" }) as any as S.Schema<EfsFileSystem>;
 
 /** The EfsFileSystem items on this page */
-export type EfsFileSystemListResultValueList = ReadonlyArray<EfsFileSystem>;
+export type EfsFileSystemListResultValueList = Array<EfsFileSystem>;
 export const EfsFileSystemListResultValueList = /*@__PURE__*/ S.Array(
   EfsFileSystem,
 ) as any as S.Schema<EfsFileSystemListResultValueList>;
@@ -32733,8 +32706,7 @@ export const EfsMountTargetsCreateOrReplaceRequestTagsMap =
   ) as any as S.Schema<EfsMountTargetsCreateOrReplaceRequestTagsMap>;
 
 /** Up to five VPC security group IDs, of the form ``sg-xxxxxxxx``. These must be for the same VPC as subnet specified. */
-export type AwsEfsMountTargetPropertiesSecurityGroupsList =
-  ReadonlyArray<string>;
+export type AwsEfsMountTargetPropertiesSecurityGroupsList = Array<string>;
 export const AwsEfsMountTargetPropertiesSecurityGroupsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -33086,7 +33058,7 @@ export const EfsMountTarget = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EfsMountTarget" }) as any as S.Schema<EfsMountTarget>;
 
 /** The EfsMountTarget items on this page */
-export type EfsMountTargetListResultValueList = ReadonlyArray<EfsMountTarget>;
+export type EfsMountTargetListResultValueList = Array<EfsMountTarget>;
 export const EfsMountTargetListResultValueList = /*@__PURE__*/ S.Array(
   EfsMountTarget,
 ) as any as S.Schema<EfsMountTargetListResultValueList>;
@@ -33210,7 +33182,7 @@ export const AuthenticationMode = /*@__PURE__*/ S.String;
 /** Definition of AuthenticationModeEnumValue */
 export interface AuthenticationModeEnumValue {
   /** Property value */
-  value?: AuthenticationMode;
+  value?: AuthenticationMode | (string & {});
 }
 export const AuthenticationModeEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -33284,7 +33256,7 @@ export const Provider = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Provider" }) as any as S.Schema<Provider>;
 
 /** <p>Specifies the resources to be encrypted. The only supported value is <code>secrets</code>.</p> */
-export type EncryptionConfigResourcesList = ReadonlyArray<string>;
+export type EncryptionConfigResourcesList = Array<string>;
 export const EncryptionConfigResourcesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EncryptionConfigResourcesList>;
@@ -33307,7 +33279,7 @@ export const EncryptionConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** <p>The encryption configuration for the cluster.</p> */
 export type AwsEksClusterPropertiesEncryptionConfigList =
-  ReadonlyArray<EncryptionConfig>;
+  Array<EncryptionConfig>;
 export const AwsEksClusterPropertiesEncryptionConfigList =
   /*@__PURE__*/ S.Array(
     EncryptionConfig,
@@ -33339,7 +33311,7 @@ export const ClusterIssueCode = /*@__PURE__*/ S.String;
 /** Definition of ClusterIssueCodeEnumValue */
 export interface ClusterIssueCodeEnumValue {
   /** Property value */
-  value?: ClusterIssueCode;
+  value?: ClusterIssueCode | (string & {});
 }
 export const ClusterIssueCodeEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -33350,7 +33322,7 @@ export const ClusterIssueCodeEnumValue = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ClusterIssueCodeEnumValue>;
 
 /** <p>The resource IDs that the issue relates to.</p> */
-export type ClusterIssueResourceIdsList = ReadonlyArray<string>;
+export type ClusterIssueResourceIdsList = Array<string>;
 export const ClusterIssueResourceIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ClusterIssueResourceIdsList>;
@@ -33373,7 +33345,7 @@ export const ClusterIssue = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ClusterIssue" }) as any as S.Schema<ClusterIssue>;
 
 /** <p>An object representing the health issues of your local Amazon EKS cluster on an Amazon Web Services Outpost.</p> */
-export type ClusterHealthIssuesList = ReadonlyArray<ClusterIssue>;
+export type ClusterHealthIssuesList = Array<ClusterIssue>;
 export const ClusterHealthIssuesList = /*@__PURE__*/ S.Array(
   ClusterIssue,
 ) as any as S.Schema<ClusterHealthIssuesList>;
@@ -33418,7 +33390,7 @@ export const IpFamily = /*@__PURE__*/ S.String;
 /** Definition of IpFamilyEnumValue */
 export interface IpFamilyEnumValue {
   /** Property value */
-  value?: IpFamily;
+  value?: IpFamily | (string & {});
 }
 export const IpFamilyEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -33457,7 +33429,7 @@ export type LogType =
 export const LogType = /*@__PURE__*/ S.String;
 
 /** <p>The available cluster control plane log types.</p> */
-export type LogSetupTypesList = ReadonlyArray<LogType>;
+export type LogSetupTypesList = Array<LogType | (string & {})>;
 export const LogSetupTypesList = /*@__PURE__*/ S.Array(
   LogType,
 ) as any as S.Schema<LogSetupTypesList>;
@@ -33477,7 +33449,7 @@ export const LogSetup = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LogSetup" }) as any as S.Schema<LogSetup>;
 
 /** <p>The cluster control plane logging configuration for your cluster.</p> */
-export type LoggingClusterLoggingList = ReadonlyArray<LogSetup>;
+export type LoggingClusterLoggingList = Array<LogSetup>;
 export const LoggingClusterLoggingList = /*@__PURE__*/ S.Array(
   LogSetup,
 ) as any as S.Schema<LoggingClusterLoggingList>;
@@ -33507,7 +33479,7 @@ export const ControlPlanePlacementResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ControlPlanePlacementResponse>;
 
 /** <p>The ARN of the Outpost that you specified for use with your local Amazon EKS cluster on Outposts.</p> */
-export type OutpostConfigResponseOutpostArnsList = ReadonlyArray<string>;
+export type OutpostConfigResponseOutpostArnsList = Array<string>;
 export const OutpostConfigResponseOutpostArnsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<OutpostConfigResponseOutpostArnsList>;
@@ -33532,19 +33504,19 @@ export const OutpostConfigResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OutpostConfigResponse>;
 
 /** <p>The CIDR blocks that are allowed access to your cluster's public Kubernetes API server endpoint.</p> */
-export type VpcConfigResponsePublicAccessCidrsList = ReadonlyArray<string>;
+export type VpcConfigResponsePublicAccessCidrsList = Array<string>;
 export const VpcConfigResponsePublicAccessCidrsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<VpcConfigResponsePublicAccessCidrsList>;
 
 /** <p>The security groups associated with the cross-account elastic network interfaces that are used to allow communication between your nodes and the Kubernetes control plane.</p> */
-export type VpcConfigResponseSecurityGroupIdsList = ReadonlyArray<string>;
+export type VpcConfigResponseSecurityGroupIdsList = Array<string>;
 export const VpcConfigResponseSecurityGroupIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<VpcConfigResponseSecurityGroupIdsList>;
 
 /** <p>The subnets associated with your cluster.</p> */
-export type VpcConfigResponseSubnetIdsList = ReadonlyArray<string>;
+export type VpcConfigResponseSubnetIdsList = Array<string>;
 export const VpcConfigResponseSubnetIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<VpcConfigResponseSubnetIdsList>;
@@ -33593,7 +33565,7 @@ export const ClusterStatus = /*@__PURE__*/ S.String;
 /** Definition of ClusterStatusEnumValue */
 export interface ClusterStatusEnumValue {
   /** Property value */
-  value?: ClusterStatus;
+  value?: ClusterStatus | (string & {});
 }
 export const ClusterStatusEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -33932,7 +33904,7 @@ export const EksCluster = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EksCluster" }) as any as S.Schema<EksCluster>;
 
 /** The EksCluster items on this page */
-export type EksClusterListResultValueList = ReadonlyArray<EksCluster>;
+export type EksClusterListResultValueList = Array<EksCluster>;
 export const EksClusterListResultValueList = /*@__PURE__*/ S.Array(
   EksCluster,
 ) as any as S.Schema<EksClusterListResultValueList>;
@@ -33964,7 +33936,7 @@ export const EksNodegroupsCreateOrReplaceRequestTagsMap =
   ) as any as S.Schema<EksNodegroupsCreateOrReplaceRequestTagsMap>;
 
 /** Specify the instance types for a node group. */
-export type AwsEksNodegroupPropertiesInstanceTypesList = ReadonlyArray<string>;
+export type AwsEksNodegroupPropertiesInstanceTypesList = Array<string>;
 export const AwsEksNodegroupPropertiesInstanceTypesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AwsEksNodegroupPropertiesInstanceTypesList>;
@@ -33998,7 +33970,7 @@ export const LaunchTemplateSpecification_2 = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LaunchTemplateSpecification_2>;
 
 /** Property sourceSecurityGroups */
-export type RemoteAccessSourceSecurityGroupsList = ReadonlyArray<string>;
+export type RemoteAccessSourceSecurityGroupsList = Array<string>;
 export const RemoteAccessSourceSecurityGroupsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RemoteAccessSourceSecurityGroupsList>;
@@ -34035,7 +34007,7 @@ export const ScalingConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ScalingConfig" }) as any as S.Schema<ScalingConfig>;
 
 /** The subnets to use for the Auto Scaling group that is created for your node group. */
-export type AwsEksNodegroupPropertiesSubnetsList = ReadonlyArray<string>;
+export type AwsEksNodegroupPropertiesSubnetsList = Array<string>;
 export const AwsEksNodegroupPropertiesSubnetsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AwsEksNodegroupPropertiesSubnetsList>;
@@ -34067,7 +34039,7 @@ export const Taint = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Taint" }) as any as S.Schema<Taint>;
 
 /** The Kubernetes taints to be applied to the nodes in the node group when they are created. */
-export type AwsEksNodegroupPropertiesTaintsList = ReadonlyArray<Taint>;
+export type AwsEksNodegroupPropertiesTaintsList = Array<Taint>;
 export const AwsEksNodegroupPropertiesTaintsList = /*@__PURE__*/ S.Array(
   Taint,
 ) as any as S.Schema<AwsEksNodegroupPropertiesTaintsList>;
@@ -34476,7 +34448,7 @@ export const EksNodegroup = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EksNodegroup" }) as any as S.Schema<EksNodegroup>;
 
 /** The EksNodegroup items on this page */
-export type EksNodegroupListResultValueList = ReadonlyArray<EksNodegroup>;
+export type EksNodegroupListResultValueList = Array<EksNodegroup>;
 export const EksNodegroupListResultValueList = /*@__PURE__*/ S.Array(
   EksNodegroup,
 ) as any as S.Schema<EksNodegroupListResultValueList>;
@@ -35026,7 +34998,7 @@ export const ElasticBeanstalkApplication = /*@__PURE__*/ S.suspend(() =>
 
 /** The ElasticBeanstalkApplication items on this page */
 export type ElasticBeanstalkApplicationListResultValueList =
-  ReadonlyArray<ElasticBeanstalkApplication>;
+  Array<ElasticBeanstalkApplication>;
 export const ElasticBeanstalkApplicationListResultValueList =
   /*@__PURE__*/ S.Array(
     ElasticBeanstalkApplication,
@@ -35182,7 +35154,7 @@ export const ConfigurationOptionSetting = /*@__PURE__*/ S.suspend(() =>
 
 /** Option values for the Elastic Beanstalk configuration, such as the instance type. If specified, these values override the values obtained from the solution stack or the source configuration template. For a complete list of Elastic Beanstalk configuration options, see [Option Values](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/command-options.html) in the AWS Elastic Beanstalk Developer Guide. */
 export type AwsElasticBeanstalkConfigurationTemplatePropertiesOptionSettingsList =
-  ReadonlyArray<ConfigurationOptionSetting>;
+  Array<ConfigurationOptionSetting>;
 export const AwsElasticBeanstalkConfigurationTemplatePropertiesOptionSettingsList =
   /*@__PURE__*/ S.Array(
     ConfigurationOptionSetting,
@@ -35592,7 +35564,7 @@ export const ElasticBeanstalkConfigurationTemplate = /*@__PURE__*/ S.suspend(
 
 /** The ElasticBeanstalkConfigurationTemplate items on this page */
 export type ElasticBeanstalkConfigurationTemplateListResultValueList =
-  ReadonlyArray<ElasticBeanstalkConfigurationTemplate>;
+  Array<ElasticBeanstalkConfigurationTemplate>;
 export const ElasticBeanstalkConfigurationTemplateListResultValueList =
   /*@__PURE__*/ S.Array(
     ElasticBeanstalkConfigurationTemplate,
@@ -35752,7 +35724,7 @@ export const OptionSetting = /*@__PURE__*/ S.suspend(() =>
 
 /** Key-value pairs defining configuration options for this environment, such as the instance type. */
 export type AwsElasticBeanstalkEnvironmentPropertiesOptionSettingsList =
-  ReadonlyArray<OptionSetting>;
+  Array<OptionSetting>;
 export const AwsElasticBeanstalkEnvironmentPropertiesOptionSettingsList =
   /*@__PURE__*/ S.Array(
     OptionSetting,
@@ -35773,8 +35745,7 @@ export const Tag_29 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tag_29" }) as any as S.Schema<Tag_29>;
 
 /** Specifies the tags applied to resources in the environment. */
-export type AwsElasticBeanstalkEnvironmentPropertiesTagsList =
-  ReadonlyArray<Tag_29>;
+export type AwsElasticBeanstalkEnvironmentPropertiesTagsList = Array<Tag_29>;
 export const AwsElasticBeanstalkEnvironmentPropertiesTagsList =
   /*@__PURE__*/ S.Array(
     Tag_29,
@@ -36186,7 +36157,7 @@ export const ElasticBeanstalkEnvironment = /*@__PURE__*/ S.suspend(() =>
 
 /** The ElasticBeanstalkEnvironment items on this page */
 export type ElasticBeanstalkEnvironmentListResultValueList =
-  ReadonlyArray<ElasticBeanstalkEnvironment>;
+  Array<ElasticBeanstalkEnvironment>;
 export const ElasticBeanstalkEnvironmentListResultValueList =
   /*@__PURE__*/ S.Array(
     ElasticBeanstalkEnvironment,
@@ -36321,7 +36292,7 @@ export const ElasticLoadBalancingV2ListenersCreateOrReplaceRequestTagsMap =
 
 /** [TLS listener] The name of the Application-Layer Protocol Negotiation (ALPN) policy. */
 export type AwsElasticLoadBalancingV2ListenerPropertiesAlpnPolicyList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const AwsElasticLoadBalancingV2ListenerPropertiesAlpnPolicyList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -36340,7 +36311,7 @@ export const Certificate_2 = /*@__PURE__*/ S.suspend(() =>
 
 /** The default SSL server certificate for a secure listener. You must provide exactly one certificate if the listener protocol is HTTPS or TLS. To create a certificate list for a secure listener, use [AWS::ElasticLoadBalancingV2::ListenerCertificate](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticloadbalancingv2-listenercertificate.html). */
 export type AwsElasticLoadBalancingV2ListenerPropertiesCertificatesList =
-  ReadonlyArray<Certificate_2>;
+  Array<Certificate_2>;
 export const AwsElasticLoadBalancingV2ListenerPropertiesCertificatesList =
   /*@__PURE__*/ S.Array(
     Certificate_2,
@@ -36502,7 +36473,7 @@ export const TargetGroupTuple = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TargetGroupTuple>;
 
 /** Information about how traffic will be distributed between multiple target groups in a forward rule. */
-export type ForwardConfigTargetGroupsList = ReadonlyArray<TargetGroupTuple>;
+export type ForwardConfigTargetGroupsList = Array<TargetGroupTuple>;
 export const ForwardConfigTargetGroupsList = /*@__PURE__*/ S.Array(
   TargetGroupTuple,
 ) as any as S.Schema<ForwardConfigTargetGroupsList>;
@@ -36581,7 +36552,7 @@ export const Action = /*@__PURE__*/ S.suspend(() =>
 
 /** The actions for the default rule. You cannot define a condition for a default rule. To create additional rules for an Application Load Balancer, use [AWS::ElasticLoadBalancingV2::ListenerRule](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticloadbalancingv2-listenerrule.html). */
 export type AwsElasticLoadBalancingV2ListenerPropertiesDefaultActionsList =
-  ReadonlyArray<Action>;
+  Array<Action>;
 export const AwsElasticLoadBalancingV2ListenerPropertiesDefaultActionsList =
   /*@__PURE__*/ S.Array(
     Action,
@@ -36989,7 +36960,7 @@ export const ElasticLoadBalancingV2Listener = /*@__PURE__*/ S.suspend(() =>
 
 /** The ElasticLoadBalancingV2Listener items on this page */
 export type ElasticLoadBalancingV2ListenerListResultValueList =
-  ReadonlyArray<ElasticLoadBalancingV2Listener>;
+  Array<ElasticLoadBalancingV2Listener>;
 export const ElasticLoadBalancingV2ListenerListResultValueList =
   /*@__PURE__*/ S.Array(
     ElasticLoadBalancingV2Listener,
@@ -37140,7 +37111,7 @@ export const LoadBalancerAttribute = /*@__PURE__*/ S.suspend(() =>
 
 /** The load balancer attributes. */
 export type AwsElasticLoadBalancingV2LoadBalancerPropertiesLoadBalancerAttributesList =
-  ReadonlyArray<LoadBalancerAttribute>;
+  Array<LoadBalancerAttribute>;
 export const AwsElasticLoadBalancingV2LoadBalancerPropertiesLoadBalancerAttributesList =
   /*@__PURE__*/ S.Array(
     LoadBalancerAttribute,
@@ -37148,7 +37119,7 @@ export const AwsElasticLoadBalancingV2LoadBalancerPropertiesLoadBalancerAttribut
 
 /** [Application Load Balancers and Network Load Balancers] The IDs of the security groups for the load balancer. */
 export type AwsElasticLoadBalancingV2LoadBalancerPropertiesSecurityGroupsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const AwsElasticLoadBalancingV2LoadBalancerPropertiesSecurityGroupsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -37176,7 +37147,7 @@ export const SubnetMapping = /*@__PURE__*/ S.suspend(() =>
 
 /** The IDs of the subnets. You can specify only one subnet per Availability Zone. You must specify either subnets or subnet mappings, but not both. [Application Load Balancers] You must specify subnets from at least two Availability Zones. You cannot specify Elastic IP addresses for your subnets. [Application Load Balancers on Outposts] You must specify one Outpost subnet. [Application Load Balancers on Local Zones] You can specify subnets from one or more Local Zones. [Network Load Balancers] You can specify subnets from one or more Availability Zones. You can specify one Elastic IP address per subnet if you need static IP addresses for your internet-facing load balancer. For internal load balancers, you can specify one private IP address per subnet from the IPv4 range of the subnet. For internet-facing load balancer, you can specify one IPv6 address per subnet. [Gateway Load Balancers] You can specify subnets from one or more Availability Zones. You cannot specify Elastic IP addresses for your subnets. */
 export type AwsElasticLoadBalancingV2LoadBalancerPropertiesSubnetMappingsList =
-  ReadonlyArray<SubnetMapping>;
+  Array<SubnetMapping>;
 export const AwsElasticLoadBalancingV2LoadBalancerPropertiesSubnetMappingsList =
   /*@__PURE__*/ S.Array(
     SubnetMapping,
@@ -37184,7 +37155,7 @@ export const AwsElasticLoadBalancingV2LoadBalancerPropertiesSubnetMappingsList =
 
 /** The IDs of the subnets. You can specify only one subnet per Availability Zone. You must specify either subnets or subnet mappings, but not both. To specify an Elastic IP address, specify subnet mappings instead of subnets. [Application Load Balancers] You must specify subnets from at least two Availability Zones. [Application Load Balancers on Outposts] You must specify one Outpost subnet. [Application Load Balancers on Local Zones] You can specify subnets from one or more Local Zones. [Network Load Balancers] You can specify subnets from one or more Availability Zones. [Gateway Load Balancers] You can specify subnets from one or more Availability Zones. */
 export type AwsElasticLoadBalancingV2LoadBalancerPropertiesSubnetsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const AwsElasticLoadBalancingV2LoadBalancerPropertiesSubnetsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -37206,7 +37177,7 @@ export const Tag_30 = /*@__PURE__*/ S.suspend(() =>
 
 /** The tags to assign to the load balancer. */
 export type AwsElasticLoadBalancingV2LoadBalancerPropertiesTagsList =
-  ReadonlyArray<Tag_30>;
+  Array<Tag_30>;
 export const AwsElasticLoadBalancingV2LoadBalancerPropertiesTagsList =
   /*@__PURE__*/ S.Array(
     Tag_30,
@@ -37622,7 +37593,7 @@ export const ElasticLoadBalancingV2LoadBalancer = /*@__PURE__*/ S.suspend(() =>
 
 /** The ElasticLoadBalancingV2LoadBalancer items on this page */
 export type ElasticLoadBalancingV2LoadBalancerListResultValueList =
-  ReadonlyArray<ElasticLoadBalancingV2LoadBalancer>;
+  Array<ElasticLoadBalancingV2LoadBalancer>;
 export const ElasticLoadBalancingV2LoadBalancerListResultValueList =
   /*@__PURE__*/ S.Array(
     ElasticLoadBalancingV2LoadBalancer,
@@ -37759,7 +37730,7 @@ export const ElasticLoadBalancingV2TargetGroupsCreateOrReplaceRequestTagsMap =
 
 /** The Amazon Resource Names (ARNs) of the load balancers that route traffic to this target group. */
 export type AwsElasticLoadBalancingV2TargetGroupPropertiesLoadBalancerArnsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const AwsElasticLoadBalancingV2TargetGroupPropertiesLoadBalancerArnsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -37795,7 +37766,7 @@ export const Tag_31 = /*@__PURE__*/ S.suspend(() =>
 
 /** The tags. */
 export type AwsElasticLoadBalancingV2TargetGroupPropertiesTagsList =
-  ReadonlyArray<Tag_31>;
+  Array<Tag_31>;
 export const AwsElasticLoadBalancingV2TargetGroupPropertiesTagsList =
   /*@__PURE__*/ S.Array(
     Tag_31,
@@ -37819,7 +37790,7 @@ export const TargetGroupAttribute = /*@__PURE__*/ S.suspend(() =>
 
 /** The attributes. */
 export type AwsElasticLoadBalancingV2TargetGroupPropertiesTargetGroupAttributesList =
-  ReadonlyArray<TargetGroupAttribute>;
+  Array<TargetGroupAttribute>;
 export const AwsElasticLoadBalancingV2TargetGroupPropertiesTargetGroupAttributesList =
   /*@__PURE__*/ S.Array(
     TargetGroupAttribute,
@@ -37846,7 +37817,7 @@ export const TargetDescription = /*@__PURE__*/ S.suspend(() =>
 
 /** The targets. */
 export type AwsElasticLoadBalancingV2TargetGroupPropertiesTargetsList =
-  ReadonlyArray<TargetDescription>;
+  Array<TargetDescription>;
 export const AwsElasticLoadBalancingV2TargetGroupPropertiesTargetsList =
   /*@__PURE__*/ S.Array(
     TargetDescription,
@@ -38279,7 +38250,7 @@ export const ElasticLoadBalancingV2TargetGroup = /*@__PURE__*/ S.suspend(() =>
 
 /** The ElasticLoadBalancingV2TargetGroup items on this page */
 export type ElasticLoadBalancingV2TargetGroupListResultValueList =
-  ReadonlyArray<ElasticLoadBalancingV2TargetGroup>;
+  Array<ElasticLoadBalancingV2TargetGroup>;
 export const ElasticLoadBalancingV2TargetGroupListResultValueList =
   /*@__PURE__*/ S.Array(
     ElasticLoadBalancingV2TargetGroup,
@@ -38418,7 +38389,7 @@ export const MitigationInEffectEnum = /*@__PURE__*/ S.String;
 /** Definition of MitigationInEffectEnumEnumValue */
 export interface MitigationInEffectEnumEnumValue {
   /** Property value */
-  value?: MitigationInEffectEnum;
+  value?: MitigationInEffectEnum | (string & {});
 }
 export const MitigationInEffectEnumEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -38435,7 +38406,7 @@ export const AnomalyResultEnum = /*@__PURE__*/ S.String;
 /** Definition of AnomalyResultEnumEnumValue */
 export interface AnomalyResultEnumEnumValue {
   /** Property value */
-  value?: AnomalyResultEnum;
+  value?: AnomalyResultEnum | (string & {});
 }
 export const AnomalyResultEnumEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -38499,7 +38470,7 @@ export const TargetHealthReasonEnum = /*@__PURE__*/ S.String;
 /** Definition of TargetHealthReasonEnumEnumValue */
 export interface TargetHealthReasonEnumEnumValue {
   /** Property value */
-  value?: TargetHealthReasonEnum;
+  value?: TargetHealthReasonEnum | (string & {});
 }
 export const TargetHealthReasonEnumEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -38523,7 +38494,7 @@ export const TargetHealthStateEnum = /*@__PURE__*/ S.String;
 /** Definition of TargetHealthStateEnumEnumValue */
 export interface TargetHealthStateEnumEnumValue {
   /** Property value */
-  value?: TargetHealthStateEnum;
+  value?: TargetHealthStateEnum | (string & {});
 }
 export const TargetHealthStateEnumEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -38930,7 +38901,7 @@ export const ElasticLoadBalancingv2TargetHealthDescription =
 
 /** The ElasticLoadBalancingv2TargetHealthDescription items on this page */
 export type ElasticLoadBalancingv2TargetHealthDescriptionListResultValueList =
-  ReadonlyArray<ElasticLoadBalancingv2TargetHealthDescription>;
+  Array<ElasticLoadBalancingv2TargetHealthDescription>;
 export const ElasticLoadBalancingv2TargetHealthDescriptionListResultValueList =
   /*@__PURE__*/ S.Array(
     ElasticLoadBalancingv2TargetHealthDescription,
@@ -39077,7 +39048,7 @@ export const ApplicationAdditionalInfoMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ApplicationAdditionalInfoMap>;
 
 /** <p>Arguments for Amazon EMR to pass to the application.</p> */
-export type ApplicationArgsList = ReadonlyArray<string>;
+export type ApplicationArgsList = Array<string>;
 export const ApplicationArgsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ApplicationArgsList>;
@@ -39103,14 +39074,13 @@ export const Application = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Application" }) as any as S.Schema<Application>;
 
 /** <p>The applications installed on this cluster.</p> */
-export type AwsEmrClusterPropertiesApplicationsList =
-  ReadonlyArray<Application>;
+export type AwsEmrClusterPropertiesApplicationsList = Array<Application>;
 export const AwsEmrClusterPropertiesApplicationsList = /*@__PURE__*/ S.Array(
   Application,
 ) as any as S.Schema<AwsEmrClusterPropertiesApplicationsList>;
 
 /** <p>A list of additional configurations to apply within a configuration object.</p> */
-export type ConfigurationConfigurationsList = ReadonlyArray<Configuration>;
+export type ConfigurationConfigurationsList = Array<Configuration>;
 export const ConfigurationConfigurationsList = /*@__PURE__*/ S.Array(
   S.suspend(() => Configuration),
 ) as any as S.Schema<ConfigurationConfigurationsList>;
@@ -39140,15 +39110,14 @@ export const Configuration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Configuration" }) as any as S.Schema<Configuration>;
 
 /** <p>Applies only to Amazon EMR releases 4.x and later. The list of configurations that are supplied to the Amazon EMR cluster.</p> */
-export type AwsEmrClusterPropertiesConfigurationsList =
-  ReadonlyArray<Configuration>;
+export type AwsEmrClusterPropertiesConfigurationsList = Array<Configuration>;
 export const AwsEmrClusterPropertiesConfigurationsList = /*@__PURE__*/ S.Array(
   Configuration,
 ) as any as S.Schema<AwsEmrClusterPropertiesConfigurationsList>;
 
 /** <p>A list of additional Amazon EC2 security group IDs for the master node.</p> */
 export type Ec2InstanceAttributesAdditionalMasterSecurityGroupsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const Ec2InstanceAttributesAdditionalMasterSecurityGroupsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -39156,7 +39125,7 @@ export const Ec2InstanceAttributesAdditionalMasterSecurityGroupsList =
 
 /** <p>A list of additional Amazon EC2 security group IDs for the core and task nodes.</p> */
 export type Ec2InstanceAttributesAdditionalSlaveSecurityGroupsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const Ec2InstanceAttributesAdditionalSlaveSecurityGroupsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -39164,15 +39133,14 @@ export const Ec2InstanceAttributesAdditionalSlaveSecurityGroupsList =
 
 /** <p>Applies to clusters configured with the instance fleets option. Specifies one or more Availability Zones in which to launch Amazon EC2 cluster instances when the EC2-Classic network configuration is supported. Amazon EMR chooses the Availability Zone with the best fit from among the list of <code>RequestedEc2AvailabilityZones</code>, and then launches all cluster instances within that Availability Zone. If you do not specify this value, Amazon EMR chooses the Availability Zone for you. <code>RequestedEc2SubnetIDs</code> and <code>RequestedEc2AvailabilityZones</code> cannot be specified together.</p> */
 export type Ec2InstanceAttributesRequestedEc2AvailabilityZonesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const Ec2InstanceAttributesRequestedEc2AvailabilityZonesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<Ec2InstanceAttributesRequestedEc2AvailabilityZonesList>;
 
 /** <p>Applies to clusters configured with the instance fleets option. Specifies the unique identifier of one or more Amazon EC2 subnets in which to launch Amazon EC2 cluster instances. Subnets must exist within the same VPC. Amazon EMR chooses the Amazon EC2 subnet with the best fit from among the list of <code>RequestedEc2SubnetIds</code>, and then launches all cluster instances within that Subnet. If this value is not specified, and the account and Region support EC2-Classic networks, the cluster launches instances in the EC2-Classic network and uses <code>RequestedEc2AvailabilityZones</code> instead of this setting. If EC2-Classic is not supported, and no Subnet is specified, Amazon EMR chooses the subnet for you. <code>RequestedEc2SubnetIDs</code> and <code>RequestedEc2AvailabilityZones</code> cannot be specified together.</p> */
-export type Ec2InstanceAttributesRequestedEc2SubnetIdsList =
-  ReadonlyArray<string>;
+export type Ec2InstanceAttributesRequestedEc2SubnetIdsList = Array<string>;
 export const Ec2InstanceAttributesRequestedEc2SubnetIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -39236,7 +39204,7 @@ export const InstanceCollectionType = /*@__PURE__*/ S.String;
 /** Definition of InstanceCollectionTypeEnumValue */
 export interface InstanceCollectionTypeEnumValue {
   /** Property value */
-  value?: InstanceCollectionType;
+  value?: InstanceCollectionType | (string & {});
 }
 export const InstanceCollectionTypeEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -39280,7 +39248,7 @@ export const InstanceRoleType = /*@__PURE__*/ S.String;
 /** Definition of InstanceRoleTypeEnumValue */
 export interface InstanceRoleTypeEnumValue {
   /** Property value */
-  value?: InstanceRoleType;
+  value?: InstanceRoleType | (string & {});
 }
 export const InstanceRoleTypeEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -39301,7 +39269,7 @@ export const PlacementGroupStrategy = /*@__PURE__*/ S.String;
 /** Definition of PlacementGroupStrategyEnumValue */
 export interface PlacementGroupStrategyEnumValue {
   /** Property value */
-  value?: PlacementGroupStrategy;
+  value?: PlacementGroupStrategy | (string & {});
 }
 export const PlacementGroupStrategyEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -39329,7 +39297,7 @@ export const PlacementGroupConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** <p>Placement group configured for an Amazon EMR cluster.</p> */
 export type AwsEmrClusterPropertiesPlacementGroupsList =
-  ReadonlyArray<PlacementGroupConfig>;
+  Array<PlacementGroupConfig>;
 export const AwsEmrClusterPropertiesPlacementGroupsList = /*@__PURE__*/ S.Array(
   PlacementGroupConfig,
 ) as any as S.Schema<AwsEmrClusterPropertiesPlacementGroupsList>;
@@ -39341,7 +39309,7 @@ export const RepoUpgradeOnBoot = /*@__PURE__*/ S.String;
 /** Definition of RepoUpgradeOnBootEnumValue */
 export interface RepoUpgradeOnBootEnumValue {
   /** Property value */
-  value?: RepoUpgradeOnBoot;
+  value?: RepoUpgradeOnBoot | (string & {});
 }
 export const RepoUpgradeOnBootEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -39360,7 +39328,7 @@ export const ScaleDownBehavior = /*@__PURE__*/ S.String;
 /** Definition of ScaleDownBehaviorEnumValue */
 export interface ScaleDownBehaviorEnumValue {
   /** Property value */
-  value?: ScaleDownBehavior;
+  value?: ScaleDownBehavior | (string & {});
 }
 export const ScaleDownBehaviorEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -39371,7 +39339,7 @@ export const ScaleDownBehaviorEnumValue = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScaleDownBehaviorEnumValue>;
 
 /** <p>A list of tuples that provides information about the errors that caused a cluster to terminate. This structure can contain up to 10 different <code>ErrorDetail</code> tuples.</p> */
-export type ClusterStatusErrorDetailsList = ReadonlyArray<ErrorDetail>;
+export type ClusterStatusErrorDetailsList = Array<ErrorDetail>;
 export const ClusterStatusErrorDetailsList = /*@__PURE__*/ S.Array(
   ErrorDetail,
 ) as any as S.Schema<ClusterStatusErrorDetailsList>;
@@ -39390,7 +39358,7 @@ export const ClusterState = /*@__PURE__*/ S.String;
 /** Definition of ClusterStateEnumValue */
 export interface ClusterStateEnumValue {
   /** Property value */
-  value?: ClusterState;
+  value?: ClusterState | (string & {});
 }
 export const ClusterStateEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -39415,7 +39383,7 @@ export const ClusterStateChangeReasonCode = /*@__PURE__*/ S.String;
 /** Definition of ClusterStateChangeReasonCodeEnumValue */
 export interface ClusterStateChangeReasonCodeEnumValue {
   /** Property value */
-  value?: ClusterStateChangeReasonCode;
+  value?: ClusterStateChangeReasonCode | (string & {});
 }
 export const ClusterStateChangeReasonCodeEnumValue = /*@__PURE__*/ S.suspend(
   () =>
@@ -39498,7 +39466,7 @@ export const Tag_32 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tag_32" }) as any as S.Schema<Tag_32>;
 
 /** <p>A list of tags associated with a cluster.</p> */
-export type AwsEmrClusterPropertiesTagsList = ReadonlyArray<Tag_32>;
+export type AwsEmrClusterPropertiesTagsList = Array<Tag_32>;
 export const AwsEmrClusterPropertiesTagsList = /*@__PURE__*/ S.Array(
   Tag_32,
 ) as any as S.Schema<AwsEmrClusterPropertiesTagsList>;
@@ -39933,7 +39901,7 @@ export const EmrCluster = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EmrCluster" }) as any as S.Schema<EmrCluster>;
 
 /** The EmrCluster items on this page */
-export type EmrClusterListResultValueList = ReadonlyArray<EmrCluster>;
+export type EmrClusterListResultValueList = Array<EmrCluster>;
 export const EmrClusterListResultValueList = /*@__PURE__*/ S.Array(
   EmrCluster,
 ) as any as S.Schema<EmrClusterListResultValueList>;
@@ -40165,7 +40133,7 @@ export const CFNFeatureAdditionalConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** Property additionalConfiguration */
 export type CFNFeatureConfigurationAdditionalConfigurationList =
-  ReadonlyArray<CFNFeatureAdditionalConfiguration>;
+  Array<CFNFeatureAdditionalConfiguration>;
 export const CFNFeatureConfigurationAdditionalConfigurationList =
   /*@__PURE__*/ S.Array(
     CFNFeatureAdditionalConfiguration,
@@ -40182,7 +40150,7 @@ export interface CFNFeatureConfiguration {
   /** Property name */
   name?: string;
   /** Property status */
-  status?: CFNFeatureConfigurationStatus;
+  status?: CFNFeatureConfigurationStatus | (string & {});
 }
 export const CFNFeatureConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -40198,7 +40166,7 @@ export const CFNFeatureConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** Property features */
 export type AwsGuardDutyDetectorPropertiesFeaturesList =
-  ReadonlyArray<CFNFeatureConfiguration>;
+  Array<CFNFeatureConfiguration>;
 export const AwsGuardDutyDetectorPropertiesFeaturesList = /*@__PURE__*/ S.Array(
   CFNFeatureConfiguration,
 ) as any as S.Schema<AwsGuardDutyDetectorPropertiesFeaturesList>;
@@ -40218,7 +40186,7 @@ export const TagItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TagItem" }) as any as S.Schema<TagItem>;
 
 /** Property tags */
-export type AwsGuardDutyDetectorPropertiesTagsList = ReadonlyArray<TagItem>;
+export type AwsGuardDutyDetectorPropertiesTagsList = Array<TagItem>;
 export const AwsGuardDutyDetectorPropertiesTagsList = /*@__PURE__*/ S.Array(
   TagItem,
 ) as any as S.Schema<AwsGuardDutyDetectorPropertiesTagsList>;
@@ -40575,8 +40543,7 @@ export const GuardDutyDetector = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GuardDutyDetector>;
 
 /** The GuardDutyDetector items on this page */
-export type GuardDutyDetectorListResultValueList =
-  ReadonlyArray<GuardDutyDetector>;
+export type GuardDutyDetectorListResultValueList = Array<GuardDutyDetector>;
 export const GuardDutyDetectorListResultValueList = /*@__PURE__*/ S.Array(
   GuardDutyDetector,
 ) as any as S.Schema<GuardDutyDetectorListResultValueList>;
@@ -41047,7 +41014,7 @@ export const IamAccessKeyLastUsed = /*@__PURE__*/ S.suspend(() =>
 
 /** The IamAccessKeyLastUsed items on this page */
 export type IamAccessKeyLastUsedListResultValueList =
-  ReadonlyArray<IamAccessKeyLastUsed>;
+  Array<IamAccessKeyLastUsed>;
 export const IamAccessKeyLastUsedListResultValueList = /*@__PURE__*/ S.Array(
   IamAccessKeyLastUsed,
 ) as any as S.Schema<IamAccessKeyLastUsedListResultValueList>;
@@ -41182,7 +41149,7 @@ export const StatusType_2 = /*@__PURE__*/ S.String;
 /** Definition of statusTypeEnumValue */
 export interface StatusTypeEnumValue_2 {
   /** Property value */
-  value?: StatusType_2;
+  value?: StatusType_2 | (string & {});
 }
 export const StatusTypeEnumValue_2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -41541,7 +41508,7 @@ export const IamAccessKeyMetadata = /*@__PURE__*/ S.suspend(() =>
 
 /** The IamAccessKeyMetadata items on this page */
 export type IamAccessKeyMetadataListResultValueList =
-  ReadonlyArray<IamAccessKeyMetadata>;
+  Array<IamAccessKeyMetadata>;
 export const IamAccessKeyMetadataListResultValueList = /*@__PURE__*/ S.Array(
   IamAccessKeyMetadata,
 ) as any as S.Schema<IamAccessKeyMetadataListResultValueList>;
@@ -41672,7 +41639,7 @@ export const IamGroupsCreateOrReplaceRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<IamGroupsCreateOrReplaceRequestTagsMap>;
 
 /** The Amazon Resource Name (ARN) of the IAM policy you want to attach. For more information about ARNs, see [Amazon Resource Names (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html) in the *General Reference*. */
-export type AwsIamGroupPropertiesManagedPolicyArnsList = ReadonlyArray<string>;
+export type AwsIamGroupPropertiesManagedPolicyArnsList = Array<string>;
 export const AwsIamGroupPropertiesManagedPolicyArnsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AwsIamGroupPropertiesManagedPolicyArnsList>;
@@ -41699,7 +41666,7 @@ export const Policy = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Policy" }) as any as S.Schema<Policy>;
 
 /** Adds or updates an inline policy document that is embedded in the specified IAM group. To view AWS::IAM::Group snippets, see [Declaring an Group Resource](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/quickref-iam.html#scenario-iam-group). The name of each inline policy for a role, user, or group must be unique. If you don't choose unique names, updates to the IAM identity will fail. For information about limits on the number of inline policies that you can embed in a group, see [Limitations on Entities](https://docs.aws.amazon.com/IAM/latest/UserGuide/LimitationsOnEntities.html) in the *User Guide*. */
-export type AwsIamGroupPropertiesPoliciesList = ReadonlyArray<Policy>;
+export type AwsIamGroupPropertiesPoliciesList = Array<Policy>;
 export const AwsIamGroupPropertiesPoliciesList = /*@__PURE__*/ S.Array(
   Policy,
 ) as any as S.Schema<AwsIamGroupPropertiesPoliciesList>;
@@ -42044,7 +42011,7 @@ export const IamGroup = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IamGroup" }) as any as S.Schema<IamGroup>;
 
 /** The IamGroup items on this page */
-export type IamGroupListResultValueList = ReadonlyArray<IamGroup>;
+export type IamGroupListResultValueList = Array<IamGroup>;
 export const IamGroupListResultValueList = /*@__PURE__*/ S.Array(
   IamGroup,
 ) as any as S.Schema<IamGroupListResultValueList>;
@@ -42171,7 +42138,7 @@ export const IamInstanceProfilesCreateOrUpdateRequestTagsMap =
   ) as any as S.Schema<IamInstanceProfilesCreateOrUpdateRequestTagsMap>;
 
 /** The name of the role to associate with the instance profile. Only one role can be assigned to an EC2 instance at a time, and all applications on the instance share the same role and permissions. */
-export type AwsIamInstanceProfilePropertiesRolesList = ReadonlyArray<string>;
+export type AwsIamInstanceProfilePropertiesRolesList = Array<string>;
 export const AwsIamInstanceProfilePropertiesRolesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AwsIamInstanceProfilePropertiesRolesList>;
@@ -42522,8 +42489,7 @@ export const IamInstanceProfile_2 = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IamInstanceProfile_2>;
 
 /** The IamInstanceProfile items on this page */
-export type IamInstanceProfileListResultValueList =
-  ReadonlyArray<IamInstanceProfile_2>;
+export type IamInstanceProfileListResultValueList = Array<IamInstanceProfile_2>;
 export const IamInstanceProfileListResultValueList = /*@__PURE__*/ S.Array(
   IamInstanceProfile_2,
 ) as any as S.Schema<IamInstanceProfileListResultValueList>;
@@ -42989,7 +42955,7 @@ export const IamMFADevice = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IamMFADevice" }) as any as S.Schema<IamMFADevice>;
 
 /** The IamMFADevice items on this page */
-export type IamMFADeviceListResultValueList = ReadonlyArray<IamMFADevice>;
+export type IamMFADeviceListResultValueList = Array<IamMFADevice>;
 export const IamMFADeviceListResultValueList = /*@__PURE__*/ S.Array(
   IamMFADevice,
 ) as any as S.Schema<IamMFADeviceListResultValueList>;
@@ -43480,8 +43446,7 @@ export const IamPasswordPolicy = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IamPasswordPolicy>;
 
 /** The IamPasswordPolicy items on this page */
-export type IamPasswordPolicyListResultValueList =
-  ReadonlyArray<IamPasswordPolicy>;
+export type IamPasswordPolicyListResultValueList = Array<IamPasswordPolicy>;
 export const IamPasswordPolicyListResultValueList = /*@__PURE__*/ S.Array(
   IamPasswordPolicy,
 ) as any as S.Schema<IamPasswordPolicyListResultValueList>;
@@ -43953,8 +43918,7 @@ export const IamPolicyVersion = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IamPolicyVersion>;
 
 /** The IamPolicyVersion items on this page */
-export type IamPolicyVersionListResultValueList =
-  ReadonlyArray<IamPolicyVersion>;
+export type IamPolicyVersionListResultValueList = Array<IamPolicyVersion>;
 export const IamPolicyVersionListResultValueList = /*@__PURE__*/ S.Array(
   IamPolicyVersion,
 ) as any as S.Schema<IamPolicyVersionListResultValueList>;
@@ -44091,7 +44055,7 @@ export const AwsIamRolePropertiesAssumeRolePolicyDocumentMap =
   ) as any as S.Schema<AwsIamRolePropertiesAssumeRolePolicyDocumentMap>;
 
 /** A list of Amazon Resource Names (ARNs) of the IAM managed policies that you want to attach to the role. For more information about ARNs, see [Amazon Resource Names (ARNs) and Service Namespaces](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html) in the *General Reference*. */
-export type AwsIamRolePropertiesManagedPolicyArnsList = ReadonlyArray<string>;
+export type AwsIamRolePropertiesManagedPolicyArnsList = Array<string>;
 export const AwsIamRolePropertiesManagedPolicyArnsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AwsIamRolePropertiesManagedPolicyArnsList>;
@@ -44118,7 +44082,7 @@ export const Policy_2 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Policy_2" }) as any as S.Schema<Policy_2>;
 
 /** Adds or updates an inline policy document that is embedded in the specified IAM role. When you embed an inline policy in a role, the inline policy is used as part of the role's access (permissions) policy. The role's trust policy is created at the same time as the role. You can update a role's trust policy later. For more information about IAM roles, go to [Using Roles to Delegate Permissions and Federate Identities](https://docs.aws.amazon.com/IAM/latest/UserGuide/roles-toplevel.html). A role can also have an attached managed policy. For information about policies, see [Managed Policies and Inline Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html) in the *User Guide*. For information about limits on the number of inline policies that you can embed with a role, see [Limitations on Entities](https://docs.aws.amazon.com/IAM/latest/UserGuide/LimitationsOnEntities.html) in the *User Guide*. If an external policy (such as ``AWS::IAM::Policy`` or */
-export type AwsIamRolePropertiesPoliciesList = ReadonlyArray<Policy_2>;
+export type AwsIamRolePropertiesPoliciesList = Array<Policy_2>;
 export const AwsIamRolePropertiesPoliciesList = /*@__PURE__*/ S.Array(
   Policy_2,
 ) as any as S.Schema<AwsIamRolePropertiesPoliciesList>;
@@ -44138,7 +44102,7 @@ export const Tag_33 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tag_33" }) as any as S.Schema<Tag_33>;
 
 /** A list of tags that are attached to the role. For more information about tagging, see [Tagging IAM resources](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html) in the *IAM User Guide*. */
-export type AwsIamRolePropertiesTagsList = ReadonlyArray<Tag_33>;
+export type AwsIamRolePropertiesTagsList = Array<Tag_33>;
 export const AwsIamRolePropertiesTagsList = /*@__PURE__*/ S.Array(
   Tag_33,
 ) as any as S.Schema<AwsIamRolePropertiesTagsList>;
@@ -44501,7 +44465,7 @@ export const IamRole = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IamRole" }) as any as S.Schema<IamRole>;
 
 /** The IamRole items on this page */
-export type IamRoleListResultValueList = ReadonlyArray<IamRole>;
+export type IamRoleListResultValueList = Array<IamRole>;
 export const IamRoleListResultValueList = /*@__PURE__*/ S.Array(
   IamRole,
 ) as any as S.Schema<IamRoleListResultValueList>;
@@ -44642,7 +44606,7 @@ export const Tag_34 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tag_34" }) as any as S.Schema<Tag_34>;
 
 /** Property tags */
-export type AwsIamServerCertificatePropertiesTagsList = ReadonlyArray<Tag_34>;
+export type AwsIamServerCertificatePropertiesTagsList = Array<Tag_34>;
 export const AwsIamServerCertificatePropertiesTagsList = /*@__PURE__*/ S.Array(
   Tag_34,
 ) as any as S.Schema<AwsIamServerCertificatePropertiesTagsList>;
@@ -45003,7 +44967,7 @@ export const IamServerCertificate = /*@__PURE__*/ S.suspend(() =>
 
 /** The IamServerCertificate items on this page */
 export type IamServerCertificateListResultValueList =
-  ReadonlyArray<IamServerCertificate>;
+  Array<IamServerCertificate>;
 export const IamServerCertificateListResultValueList = /*@__PURE__*/ S.Array(
   IamServerCertificate,
 ) as any as S.Schema<IamServerCertificateListResultValueList>;
@@ -45146,13 +45110,13 @@ export const Tag_35 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tag_35" }) as any as S.Schema<Tag_35>;
 
 /** Property tags */
-export type AwsIamVirtualMFADevicePropertiesTagsList = ReadonlyArray<Tag_35>;
+export type AwsIamVirtualMFADevicePropertiesTagsList = Array<Tag_35>;
 export const AwsIamVirtualMFADevicePropertiesTagsList = /*@__PURE__*/ S.Array(
   Tag_35,
 ) as any as S.Schema<AwsIamVirtualMFADevicePropertiesTagsList>;
 
 /** Property users */
-export type AwsIamVirtualMFADevicePropertiesUsersList = ReadonlyArray<string>;
+export type AwsIamVirtualMFADevicePropertiesUsersList = Array<string>;
 export const AwsIamVirtualMFADevicePropertiesUsersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AwsIamVirtualMFADevicePropertiesUsersList>;
@@ -45506,8 +45470,7 @@ export const IamVirtualMFADevice = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IamVirtualMFADevice>;
 
 /** The IamVirtualMFADevice items on this page */
-export type IamVirtualMFADeviceListResultValueList =
-  ReadonlyArray<IamVirtualMFADevice>;
+export type IamVirtualMFADeviceListResultValueList = Array<IamVirtualMFADevice>;
 export const IamVirtualMFADeviceListResultValueList = /*@__PURE__*/ S.Array(
   IamVirtualMFADevice,
 ) as any as S.Schema<IamVirtualMFADeviceListResultValueList>;
@@ -45967,7 +45930,7 @@ export const KmsAlias = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "KmsAlias" }) as any as S.Schema<KmsAlias>;
 
 /** The KmsAlias items on this page */
-export type KmsAliasListResultValueList = ReadonlyArray<KmsAlias>;
+export type KmsAliasListResultValueList = Array<KmsAlias>;
 export const KmsAliasListResultValueList = /*@__PURE__*/ S.Array(
   KmsAlias,
 ) as any as S.Schema<KmsAliasListResultValueList>;
@@ -46144,7 +46107,7 @@ export const Tag_36 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tag_36" }) as any as S.Schema<Tag_36>;
 
 /** Assigns one or more tags to the replica key. Tagging or untagging a KMS key can allow or deny permission to the KMS key. For details, see [ABAC for](https://docs.aws.amazon.com/kms/latest/developerguide/abac.html) in the *Developer Guide*. For information about tags in KMS, see [Tagging keys](https://docs.aws.amazon.com/kms/latest/developerguide/tagging-keys.html) in the *Developer Guide*. For information about tags in CloudFormation, see [Tag](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-resource-tags.html). */
-export type AwsKmsKeyPropertiesTagsList = ReadonlyArray<Tag_36>;
+export type AwsKmsKeyPropertiesTagsList = Array<Tag_36>;
 export const AwsKmsKeyPropertiesTagsList = /*@__PURE__*/ S.Array(
   Tag_36,
 ) as any as S.Schema<AwsKmsKeyPropertiesTagsList>;
@@ -46166,13 +46129,13 @@ export interface AwsKmsKeyProperties {
   /** The key policy to attach to the KMS key. If you provide a key policy, it must meet the following criteria: + The key policy must allow the caller to make a subsequent [PutKeyPolicy](https://docs.aws.amazon.com/kms/latest/APIReference/API_PutKeyPolicy.html) request on the KMS key. This reduces the risk that the KMS key becomes unmanageable. For more information, see [Default key policy](https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default-allow-root-enable-iam) in the *Developer Guide*. (To omit this condition, set ``BypassPolicyLockoutSafetyCheck`` to true.) + Each statement in the key policy must contain one or more principals. The principals in the key policy must exist and be visible to KMS. When you create a new AWS principal (for example, an IAM user or role), you might need to enforce a delay before including the new principal in a key policy because the new principal might not be immediately visible to KMS. For more information, see [Changes that I make are not always immediately visible](https://docs.aws.amazon.com/IAM/latest/UserGuide/troubleshoot_general.html#troubleshoot_general_eventual-consistency) in the *User Guide*. If you do not provide a key policy, KMS attaches a default key policy to the KMS key. For more information, see [Default key policy](https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default) in the *Developer Guide*. A key policy document can include only the following characters: + Printable ASCII characters + Printable characters in the Basic Latin and Latin-1 Supplement character set + The tab (``\u0009``), line feed (``\u000A``), and carriage return (``\u000D``) special characters *Minimum*: ``1`` *Maximum*: ``32768`` */
   keyPolicy?: AwsKmsKeyPropertiesKeyPolicyMap;
   /** Specifies the type of KMS key to create. The default value, ``SYMMETRIC_DEFAULT``, creates a KMS key with a 256-bit symmetric key for encryption and decryption. In China Regions, ``SYMMETRIC_DEFAULT`` creates a 128-bit symmetric key that uses SM4 encryption. You can't change the ``KeySpec`` value after the KMS key is created. For help choosing a key spec for your KMS key, see [Choosing a KMS key type](https://docs.aws.amazon.com/kms/latest/developerguide/symm-asymm-choose.html) in the *Developer Guide*. The ``KeySpec`` property determines the type of key material in the KMS key and the algorithms that the KMS key supports. To further restrict the algorithms that can be used with the KMS key, use a condition key in its key policy or IAM policy. For more information, see [condition keys](https://docs.aws.amazon.com/kms/latest/developerguide/policy-conditions.html#conditions-kms) in the *Developer Guide*. If you change the value of the ``KeySpec`` property on an existing KMS key, the update request fails, regardless of the value of the [UpdateReplacePolicy attribute](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-attribute-updatereplacepolicy.html). This prevents you from accidentally deleting a KMS key by changing an immutable property value. [Services that are integrated with](https://aws.amazon.com/kms/features/#AWS_Service_Integration) use symmetric encryption KMS keys to protect your data. These services do not support encryption with asymmetric KMS keys. For help determining whether a KMS key is asymmetric, see [Identifying asymmetric KMS keys](https://docs.aws.amazon.com/kms/latest/developerguide/find-symm-asymm.html) in the *Developer Guide*. KMS supports the following key specs for KMS keys: + Symmetric encryption key (default) + ``SYMMETRIC_DEFAULT`` (AES-256-GCM) + HMAC keys (symmetric) + ``HMAC_224`` + ``HMAC_256`` + ``HMAC_384`` + ``HMAC_512`` + Asymmetric RSA key pairs + ``RSA_2048`` + ``RSA_3072`` + ``RSA_4096`` + Asymmetric NIST-recommended elliptic curve key pairs + ``ECC_NIST_P256`` (secp256r1) + ``ECC_NIST_P384`` (secp384r1) + ``ECC_NIST_P521`` (secp521r1) + Other asymmetric elliptic curve key pairs + ``ECC_SECG_P256K1`` (secp256k1), commonly used for cryptocurrencies. + SM2 key pairs (China Regions only) + ``SM2`` */
-  keySpec?: AwsKmsKeyPropertiesKeySpec;
+  keySpec?: AwsKmsKeyPropertiesKeySpec | (string & {});
   /** Determines the [cryptographic operations](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#cryptographic-operations) for which you can use the KMS key. The default value is ``ENCRYPT_DECRYPT``. This property is required for asymmetric KMS keys and HMAC KMS keys. You can't change the ``KeyUsage`` value after the KMS key is created. If you change the value of the ``KeyUsage`` property on an existing KMS key, the update request fails, regardless of the value of the [UpdateReplacePolicy attribute](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-attribute-updatereplacepolicy.html). This prevents you from accidentally deleting a KMS key by changing an immutable property value. Select only one valid value. + For symmetric encryption KMS keys, omit the property or specify ``ENCRYPT_DECRYPT``. + For asymmetric KMS keys with RSA key material, specify ``ENCRYPT_DECRYPT`` or ``SIGN_VERIFY``. + For asymmetric KMS keys with ECC key material, specify ``SIGN_VERIFY``. + For asymmetric KMS keys with SM2 (China Regions only) key material, specify ``ENCRYPT_DECRYPT`` or ``SIGN_VERIFY``. + For HMAC KMS keys, specify ``GENERATE_VERIFY_MAC``. */
-  keyUsage?: AwsKmsKeyPropertiesKeyUsage;
+  keyUsage?: AwsKmsKeyPropertiesKeyUsage | (string & {});
   /** Creates a multi-Region primary key that you can replicate in other AWS-Regions. You can't change the ``MultiRegion`` value after the KMS key is created. For a list of AWS-Regions in which multi-Region keys are supported, see [Multi-Region keys in](https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-keys-overview.html) in the **. If you change the value of the ``MultiRegion`` property on an existing KMS key, the update request fails, regardless of the value of the [UpdateReplacePolicy attribute](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-attribute-updatereplacepolicy.html). This prevents you from accidentally deleting a KMS key by changing an immutable property value. For a multi-Region key, set to this property to ``true``. For a single-Region key, omit this property or set it to ``false``. The default value is ``false``. *Multi-Region keys* are an KMS feature that lets you create multiple interoperable KMS keys in different AWS-Regions. Because these KMS keys have the same key ID, key material, and other metadata, you can use them to encrypt data in one AWS-Region and decrypt it in a different AWS-Region without making a cross-Region call or exposing the plaintext data. For more information, see [Multi-Region keys](https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-keys-overview.html) in the *Developer Guide*. You can create a symmetric encryption, HMAC, or asymmetric multi-Region KMS key, and you can create a multi-Region key with imported key material. However, you cannot create a multi-Region key in a custom key store. To create a replica of this primary key in a different AWS-Region , create an [AWS::KMS::ReplicaKey](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-kms-replicakey.html) resource in a CloudFormation stack in the replica Region. Specify the key ARN of this primary key. */
   multiRegion?: boolean;
   /** The source of the key material for the KMS key. You cannot change the origin after you create the KMS key. The default is ``AWS_KMS``, which means that KMS creates the key material. To [create a KMS key with no key material](https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys-create-cmk.html) (for imported key material), set this value to ``EXTERNAL``. For more information about importing key material into KMS, see [Importing Key Material](https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html) in the *Developer Guide*. You can ignore ``ENABLED`` when Origin is ``EXTERNAL``. When a KMS key with Origin ``EXTERNAL`` is created, the key state is ``PENDING_IMPORT`` and ``ENABLED`` is ``false``. After you import the key material, ``ENABLED`` updated to ``true``. The KMS key can then be used for Cryptographic Operations. CFN doesn't support creating an ``Origin`` parameter of the ``AWS_CLOUDHSM`` or ``EXTERNAL_KEY_STORE`` values. */
-  origin?: AwsKmsKeyPropertiesOrigin;
+  origin?: AwsKmsKeyPropertiesOrigin | (string & {});
   /** Specifies the number of days in the waiting period before KMS deletes a KMS key that has been removed from a CloudFormation stack. Enter a value between 7 and 30 days. The default value is 30 days. When you remove a KMS key from a CloudFormation stack, KMS schedules the KMS key for deletion and starts the mandatory waiting period. The ``PendingWindowInDays`` property determines the length of waiting period. During the waiting period, the key state of KMS key is ``Pending Deletion`` or ``Pending Replica Deletion``, which prevents the KMS key from being used in cryptographic operations. When the waiting period expires, KMS permanently deletes the KMS key. KMS will not delete a [multi-Region primary key](https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-keys-overview.html) that has replica keys. If you remove a multi-Region primary key from a CloudFormation stack, its key state changes to ``PendingReplicaDeletion`` so it cannot be replicated or used in cryptographic operations. This state can persist indefinitely. When the last of its replica keys is deleted, the key state of the primary key changes to ``PendingDeletion`` and the waiting period specified by ``PendingWindowInDays`` begins. When this waiting period expires, KMS deletes the primary key. For details, see [Deleting multi-Region keys](https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-keys-delete.html) in the *Developer Guide*. You cannot use a CloudFormation template to cancel deletion of the KMS key after you remove it from the stack, regardless of the waiting period. If you specify a KMS key in your template, even one with the same name, CloudFormation creates a new KMS key. To cancel deletion of a KMS key, use the KMS console or the [CancelKeyDeletion](https://docs.aws.amazon.com/kms/latest/APIReference/API_CancelKeyDeletion.html) operation. For information about the ``Pending Deletion`` and ``Pending Replica Deletion`` key states, see [Key state: Effect on your KMS key](https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html) in the *Developer Guide*. For more information about deleting KMS keys, see the [ScheduleKeyDeletion](https://docs.aws.amazon.com/kms/latest/APIReference/API_ScheduleKeyDeletion.html) operation in the *API Reference* and [Deleting KMS keys](https://docs.aws.amazon.com/kms/latest/developerguide/deleting-keys.html) in the *Developer Guide*. */
   pendingWindowInDays?: number;
   /** Property rotationPeriodInDays */
@@ -46514,7 +46477,7 @@ export const KmsKey = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "KmsKey" }) as any as S.Schema<KmsKey>;
 
 /** The KmsKey items on this page */
-export type KmsKeyListResultValueList = ReadonlyArray<KmsKey>;
+export type KmsKeyListResultValueList = Array<KmsKey>;
 export const KmsKeyListResultValueList = /*@__PURE__*/ S.Array(
   KmsKey,
 ) as any as S.Schema<KmsKeyListResultValueList>;
@@ -46998,7 +46961,7 @@ export const LambdaFunctionCodeLocation = /*@__PURE__*/ S.suspend(() =>
 
 /** The LambdaFunctionCodeLocation items on this page */
 export type LambdaFunctionCodeLocationListResultValueList =
-  ReadonlyArray<LambdaFunctionCodeLocation>;
+  Array<LambdaFunctionCodeLocation>;
 export const LambdaFunctionCodeLocationListResultValueList =
   /*@__PURE__*/ S.Array(
     LambdaFunctionCodeLocation,
@@ -47136,8 +47099,9 @@ export type Architectures = "arm64" | "x86_64";
 export const Architectures = /*@__PURE__*/ S.String;
 
 /** The instruction set architecture that the function supports. Enter a string array with one of the valid values (arm64 or x86_64). The default value is ``x86_64``. */
-export type AwsLambdaFunctionPropertiesArchitecturesList =
-  ReadonlyArray<Architectures>;
+export type AwsLambdaFunctionPropertiesArchitecturesList = Array<
+  Architectures | (string & {})
+>;
 export const AwsLambdaFunctionPropertiesArchitecturesList =
   /*@__PURE__*/ S.Array(
     Architectures,
@@ -47228,20 +47192,20 @@ export const FileSystemConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** Connection settings for an Amazon EFS file system. To connect a function to a file system, a mount target must be available in every Availability Zone that your function connects to. If your template contains an [AWS::EFS::MountTarget](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-efs-mounttarget.html) resource, you must also specify a ``DependsOn`` attribute to ensure that the mount target is created or updated before the function. For more information about using the ``DependsOn`` attribute, see [DependsOn Attribute](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-attribute-dependson.html). */
 export type AwsLambdaFunctionPropertiesFileSystemConfigsList =
-  ReadonlyArray<FileSystemConfig>;
+  Array<FileSystemConfig>;
 export const AwsLambdaFunctionPropertiesFileSystemConfigsList =
   /*@__PURE__*/ S.Array(
     FileSystemConfig,
   ) as any as S.Schema<AwsLambdaFunctionPropertiesFileSystemConfigsList>;
 
 /** Specifies parameters that you want to pass in with ENTRYPOINT. You can specify a maximum of 1,500 parameters in the list. */
-export type ImageConfigCommandList = ReadonlyArray<string>;
+export type ImageConfigCommandList = Array<string>;
 export const ImageConfigCommandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ImageConfigCommandList>;
 
 /** Specifies the entry point to their application, which is typically the location of the runtime executable. You can specify a maximum of 1,500 string entries in the list. */
-export type ImageConfigEntryPointList = ReadonlyArray<string>;
+export type ImageConfigEntryPointList = Array<string>;
 export const ImageConfigEntryPointList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ImageConfigEntryPointList>;
@@ -47264,7 +47228,7 @@ export const ImageConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ImageConfig" }) as any as S.Schema<ImageConfig>;
 
 /** A list of [function layers](https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html) to add to the function's execution environment. Specify each layer by its ARN, including the version. */
-export type AwsLambdaFunctionPropertiesLayersList = ReadonlyArray<string>;
+export type AwsLambdaFunctionPropertiesLayersList = Array<string>;
 export const AwsLambdaFunctionPropertiesLayersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AwsLambdaFunctionPropertiesLayersList>;
@@ -47290,13 +47254,13 @@ export const LoggingConfigSystemLogLevel = /*@__PURE__*/ S.String;
 /** Definition of LoggingConfig */
 export interface LoggingConfig {
   /** Set this property to filter the application logs for your function that Lambda sends to CloudWatch. Lambda only sends application logs at the selected level of detail and lower, where ``TRACE`` is the highest level and ``FATAL`` is the lowest. */
-  applicationLogLevel?: LoggingConfigApplicationLogLevel;
+  applicationLogLevel?: LoggingConfigApplicationLogLevel | (string & {});
   /** The format in which Lambda sends your function's application and system logs to CloudWatch. Select between plain text and structured JSON. */
-  logFormat?: LoggingConfigLogFormat;
+  logFormat?: LoggingConfigLogFormat | (string & {});
   /** The name of the Amazon CloudWatch log group the function sends logs to. By default, Lambda functions send logs to a default log group named ``/aws/lambda/<function name>``. To use a different log group, enter an existing log group or enter a new log group name. */
   logGroup?: string;
   /** Set this property to filter the system logs for your function that Lambda sends to CloudWatch. Lambda only sends system logs at the selected level of detail and lower, where ``DEBUG`` is the highest level and ``WARN`` is the lowest. */
-  systemLogLevel?: LoggingConfigSystemLogLevel;
+  systemLogLevel?: LoggingConfigSystemLogLevel | (string & {});
 }
 export const LoggingConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -47323,7 +47287,7 @@ export interface RuntimeManagementConfig {
   /** The ARN of the runtime version you want the function to use. This is only required if you're using the *Manual* runtime update mode. */
   runtimeVersionArn?: string;
   /** Specify the runtime update mode. + *Auto (default)* - Automatically update to the most recent and secure runtime version using a [Two-phase runtime version rollout](https://docs.aws.amazon.com/lambda/latest/dg/runtimes-update.html#runtime-management-two-phase). This is the best choice for most customers to ensure they always benefit from runtime updates. + *FunctionUpdate* - LAM updates the runtime of you function to the most recent and secure runtime version when you update your function. This approach synchronizes runtime updates with function deployments, giving you control over when runtime updates are applied and allowing you to detect and mitigate rare runtime update incompatibilities early. When using this setting, you need to regularly update your functions to keep their runtime up-to-date. + *Manual* - You specify a runtime version in your function configuration. The function will use this runtime version indefinitely. In the rare case where a new runtime version is incompatible with an existing function, this allows you to roll back your function to an earlier runtime version. For more information, see [Roll back a runtime version](https://docs.aws.amazon.com/lambda/latest/dg/runtimes-update.html#runtime-management-rollback). *Valid Values*: ``Auto`` | ``FunctionUpdate`` | ``Manual`` */
-  updateRuntimeOn?: RuntimeManagementConfigUpdateRuntimeOn;
+  updateRuntimeOn?: RuntimeManagementConfigUpdateRuntimeOn | (string & {});
 }
 export const RuntimeManagementConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -47341,7 +47305,7 @@ export const SnapStartApplyOn = /*@__PURE__*/ S.String;
 /** Definition of SnapStart */
 export interface SnapStart {
   /** Set ``ApplyOn`` to ``PublishedVersions`` to create a snapshot of the initialized execution environment when you publish a function version. */
-  applyOn?: SnapStartApplyOn;
+  applyOn?: SnapStartApplyOn | (string & {});
 }
 export const SnapStart = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -47360,9 +47324,9 @@ export const SnapStartResponseOptimizationStatus = /*@__PURE__*/ S.String;
 /** Definition of SnapStartResponse */
 export interface SnapStartResponse {
   /** When set to ``PublishedVersions``, Lambda creates a snapshot of the execution environment when you publish a function version. */
-  applyOn?: SnapStartResponseApplyOn;
+  applyOn?: SnapStartResponseApplyOn | (string & {});
   /** When you provide a [qualified Amazon Resource Name (ARN)](https://docs.aws.amazon.com/lambda/latest/dg/configuration-versions.html#versioning-versions-using), this response element indicates whether SnapStart is activated for the specified function version. */
-  optimizationStatus?: SnapStartResponseOptimizationStatus;
+  optimizationStatus?: SnapStartResponseOptimizationStatus | (string & {});
 }
 export const SnapStartResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -47388,7 +47352,7 @@ export const Tag_37 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tag_37" }) as any as S.Schema<Tag_37>;
 
 /** A list of [tags](https://docs.aws.amazon.com/lambda/latest/dg/tagging.html) to apply to the function. */
-export type AwsLambdaFunctionPropertiesTagsList = ReadonlyArray<Tag_37>;
+export type AwsLambdaFunctionPropertiesTagsList = Array<Tag_37>;
 export const AwsLambdaFunctionPropertiesTagsList = /*@__PURE__*/ S.Array(
   Tag_37,
 ) as any as S.Schema<AwsLambdaFunctionPropertiesTagsList>;
@@ -47400,7 +47364,7 @@ export const TracingConfigMode = /*@__PURE__*/ S.String;
 /** Definition of TracingConfig */
 export interface TracingConfig {
   /** The tracing mode. */
-  mode?: TracingConfigMode;
+  mode?: TracingConfigMode | (string & {});
 }
 export const TracingConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -47409,13 +47373,13 @@ export const TracingConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TracingConfig" }) as any as S.Schema<TracingConfig>;
 
 /** A list of VPC security group IDs. */
-export type VpcConfigSecurityGroupIdsList_2 = ReadonlyArray<string>;
+export type VpcConfigSecurityGroupIdsList_2 = Array<string>;
 export const VpcConfigSecurityGroupIdsList_2 = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<VpcConfigSecurityGroupIdsList_2>;
 
 /** A list of VPC subnet IDs. */
-export type VpcConfigSubnetIdsList = ReadonlyArray<string>;
+export type VpcConfigSubnetIdsList = Array<string>;
 export const VpcConfigSubnetIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<VpcConfigSubnetIdsList>;
@@ -47472,7 +47436,7 @@ export interface AwsLambdaFunctionProperties {
   /** The amount of [memory available to the function](https://docs.aws.amazon.com/lambda/latest/dg/configuration-function-common.html#configuration-memory-console) at runtime. Increasing the function memory also increases its CPU allocation. The default value is 128 MB. The value can be any multiple of 1 MB. Note that new AWS accounts have reduced concurrency and memory quotas. AWS raises these quotas automatically based on your usage. You can also request a quota increase. */
   memorySize?: number;
   /** The type of deployment package. Set to ``Image`` for container image and set ``Zip`` for .zip file archive. */
-  packageType?: PackageType;
+  packageType?: PackageType | (string & {});
   /** The number of simultaneous executions to reserve for the function. */
   reservedConcurrentExecutions?: number;
   /** The Amazon Resource Name (ARN) of the function's execution role. */
@@ -47851,7 +47815,7 @@ export const LambdaFunction = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LambdaFunction" }) as any as S.Schema<LambdaFunction>;
 
 /** The LambdaFunction items on this page */
-export type LambdaFunctionListResultValueList = ReadonlyArray<LambdaFunction>;
+export type LambdaFunctionListResultValueList = Array<LambdaFunction>;
 export const LambdaFunctionListResultValueList = /*@__PURE__*/ S.Array(
   LambdaFunction,
 ) as any as S.Schema<LambdaFunctionListResultValueList>;
@@ -47994,7 +47958,7 @@ export const AccessRules = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of strings to specify the AWS account IDs that can access the bucket. */
 export type AwsLightsailBucketPropertiesReadOnlyAccessAccountsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const AwsLightsailBucketPropertiesReadOnlyAccessAccountsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -48002,7 +47966,7 @@ export const AwsLightsailBucketPropertiesReadOnlyAccessAccountsList =
 
 /** The names of the Lightsail resources for which to set bucket access. */
 export type AwsLightsailBucketPropertiesResourcesReceivingAccessList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const AwsLightsailBucketPropertiesResourcesReceivingAccessList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -48023,7 +47987,7 @@ export const Tag_38 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tag_38" }) as any as S.Schema<Tag_38>;
 
 /** An array of key-value pairs to apply to this resource. */
-export type AwsLightsailBucketPropertiesTagsList = ReadonlyArray<Tag_38>;
+export type AwsLightsailBucketPropertiesTagsList = Array<Tag_38>;
 export const AwsLightsailBucketPropertiesTagsList = /*@__PURE__*/ S.Array(
   Tag_38,
 ) as any as S.Schema<AwsLightsailBucketPropertiesTagsList>;
@@ -48395,7 +48359,7 @@ export const LightsailBucket = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LightsailBucket>;
 
 /** The LightsailBucket items on this page */
-export type LightsailBucketListResultValueList = ReadonlyArray<LightsailBucket>;
+export type LightsailBucketListResultValueList = Array<LightsailBucket>;
 export const LightsailBucketListResultValueList = /*@__PURE__*/ S.Array(
   LightsailBucket,
 ) as any as S.Schema<LightsailBucketListResultValueList>;
@@ -48553,7 +48517,7 @@ export interface AddOn {
   /** An object that represents additional parameters when enabling or modifying the automatic snapshot add-on */
   autoSnapshotAddOnRequest?: AutoSnapshotAddOn;
   /** Status of the Addon */
-  status?: AddOnStatus;
+  status?: AddOnStatus | (string & {});
 }
 export const AddOn = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -48564,7 +48528,7 @@ export const AddOn = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AddOn" }) as any as S.Schema<AddOn>;
 
 /** An array of objects representing the add-ons to enable for the new instance. */
-export type AwsLightsailInstancePropertiesAddOnsList = ReadonlyArray<AddOn>;
+export type AwsLightsailInstancePropertiesAddOnsList = Array<AddOn>;
 export const AwsLightsailInstancePropertiesAddOnsList = /*@__PURE__*/ S.Array(
   AddOn,
 ) as any as S.Schema<AwsLightsailInstancePropertiesAddOnsList>;
@@ -48599,7 +48563,7 @@ export const Disk = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Disk" }) as any as S.Schema<Disk>;
 
 /** Disks attached to the Instance. */
-export type HardwareDisksList = ReadonlyArray<Disk>;
+export type HardwareDisksList = Array<Disk>;
 export const HardwareDisksList = /*@__PURE__*/ S.Array(
   Disk,
 ) as any as S.Schema<HardwareDisksList>;
@@ -48649,19 +48613,19 @@ export const MonthlyTransfer = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MonthlyTransfer>;
 
 /** cidr List Aliases */
-export type PortCidrListAliasesList = ReadonlyArray<string>;
+export type PortCidrListAliasesList = Array<string>;
 export const PortCidrListAliasesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PortCidrListAliasesList>;
 
 /** Property cidrs */
-export type PortCidrsList = ReadonlyArray<string>;
+export type PortCidrsList = Array<string>;
 export const PortCidrsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PortCidrsList>;
 
 /** IPv6 Cidrs */
-export type PortIpv6CidrsList = ReadonlyArray<string>;
+export type PortIpv6CidrsList = Array<string>;
 export const PortIpv6CidrsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PortIpv6CidrsList>;
@@ -48705,7 +48669,7 @@ export const Port = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Port" }) as any as S.Schema<Port>;
 
 /** Ports to the Instance. */
-export type NetworkingPortsList = ReadonlyArray<Port>;
+export type NetworkingPortsList = Array<Port>;
 export const NetworkingPortsList = /*@__PURE__*/ S.Array(
   Port,
 ) as any as S.Schema<NetworkingPortsList>;
@@ -48753,7 +48717,7 @@ export const Tag_39 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tag_39" }) as any as S.Schema<Tag_39>;
 
 /** An array of key-value pairs to apply to this resource. */
-export type AwsLightsailInstancePropertiesTagsList = ReadonlyArray<Tag_39>;
+export type AwsLightsailInstancePropertiesTagsList = Array<Tag_39>;
 export const AwsLightsailInstancePropertiesTagsList = /*@__PURE__*/ S.Array(
   Tag_39,
 ) as any as S.Schema<AwsLightsailInstancePropertiesTagsList>;
@@ -49152,8 +49116,7 @@ export const LightsailInstance = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LightsailInstance>;
 
 /** The LightsailInstance items on this page */
-export type LightsailInstanceListResultValueList =
-  ReadonlyArray<LightsailInstance>;
+export type LightsailInstanceListResultValueList = Array<LightsailInstance>;
 export const LightsailInstanceListResultValueList = /*@__PURE__*/ S.Array(
   LightsailInstance,
 ) as any as S.Schema<LightsailInstanceListResultValueList>;
@@ -49301,7 +49264,7 @@ export const Tag_40 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tag_40" }) as any as S.Schema<Tag_40>;
 
 /** An array of key-value pairs to apply to the log group. For more information, see [Tag](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-resource-tags.html). */
-export type AwsLogsLogGroupPropertiesTagsList = ReadonlyArray<Tag_40>;
+export type AwsLogsLogGroupPropertiesTagsList = Array<Tag_40>;
 export const AwsLogsLogGroupPropertiesTagsList = /*@__PURE__*/ S.Array(
   Tag_40,
 ) as any as S.Schema<AwsLogsLogGroupPropertiesTagsList>;
@@ -49315,7 +49278,7 @@ export interface AwsLogsLogGroupProperties {
   /** The Amazon Resource Name (ARN) of the KMS key to use when encrypting log data. To associate an KMS key with the log group, specify the ARN of that KMS key here. If you do so, ingested data is encrypted using this key. This association is stored as long as the data encrypted with the KMS key is still within CWL. This enables CWL to decrypt this data whenever it is requested. If you attempt to associate a KMS key with the log group but the KMS key doesn't exist or is deactivated, you will receive an ``InvalidParameterException`` error. Log group data is always encrypted in CWL. If you omit this key, the encryption does not use KMS. For more information, see [Encrypt log data in using](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/encrypt-log-data-kms.html) */
   kmsKeyId?: string;
   /** Specifies the log group class for this log group. There are two classes: + The ``Standard`` log class supports all CWL features. + The ``Infrequent Access`` log class supports a subset of CWL features and incurs lower costs. For details about the features supported by each class, see [Log classes](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CloudWatch_Logs_Log_Classes.html) */
-  logGroupClass?: AwsLogsLogGroupPropertiesLogGroupClass;
+  logGroupClass?: AwsLogsLogGroupPropertiesLogGroupClass | (string & {});
   /** The name of the log group. If you don't specify a name, CFNlong generates a unique ID for the log group. */
   logGroupName?: string;
   /** The number of days to retain the log events in the specified log group. Possible values are: 1, 3, 5, 7, 14, 30, 60, 90, 120, 150, 180, 365, 400, 545, 731, 1096, 1827, 2192, 2557, 2922, 3288, and 3653. To set a log group so that its log events do not expire, use [DeleteRetentionPolicy](https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_DeleteRetentionPolicy.html). */
@@ -49657,7 +49620,7 @@ export const LogsLogGroup = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LogsLogGroup" }) as any as S.Schema<LogsLogGroup>;
 
 /** The LogsLogGroup items on this page */
-export type LogsLogGroupListResultValueList = ReadonlyArray<LogsLogGroup>;
+export type LogsLogGroupListResultValueList = Array<LogsLogGroup>;
 export const LogsLogGroupListResultValueList = /*@__PURE__*/ S.Array(
   LogsLogGroup,
 ) as any as S.Schema<LogsLogGroupListResultValueList>;
@@ -50121,7 +50084,7 @@ export const LogsLogStream = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LogsLogStream" }) as any as S.Schema<LogsLogStream>;
 
 /** The LogsLogStream items on this page */
-export type LogsLogStreamListResultValueList = ReadonlyArray<LogsLogStream>;
+export type LogsLogStreamListResultValueList = Array<LogsLogStream>;
 export const LogsLogStreamListResultValueList = /*@__PURE__*/ S.Array(
   LogsLogStream,
 ) as any as S.Schema<LogsLogStreamListResultValueList>;
@@ -50263,7 +50226,7 @@ export const Dimension_2 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Dimension_2" }) as any as S.Schema<Dimension_2>;
 
 /** The fields to use as dimensions for the metric. One metric filter can include as many as three dimensions. Metrics extracted from log events are charged as custom metrics. To prevent unexpected high charges, do not specify high-cardinality fields such as ``IPAddress`` or ``requestID`` as dimensions. Each different value found for a dimension is treated as a separate metric and accrues charges as a separate custom metric. CloudWatch Logs disables a metric filter if it generates 1000 different name/value pairs for your specified dimensions within a certain amount of time. This helps to prevent accidental high charges. You can also set up a billing alarm to alert you if your charges are higher than expected. For more information, see [Creating a Billing Alarm to Monitor Your Estimated Charges](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/monitor_estimated_charges_with_cloudwatch.html). */
-export type MetricTransformationDimensionsList = ReadonlyArray<Dimension_2>;
+export type MetricTransformationDimensionsList = Array<Dimension_2>;
 export const MetricTransformationDimensionsList = /*@__PURE__*/ S.Array(
   Dimension_2,
 ) as any as S.Schema<MetricTransformationDimensionsList>;
@@ -50312,7 +50275,7 @@ export interface MetricTransformation {
   /** The value that is published to the CloudWatch metric. For example, if you're counting the occurrences of a particular term like ``Error``, specify 1 for the metric value. If you're counting the number of bytes transferred, reference the value that is in the log event by using $. followed by the name of the field that you specified in the filter pattern, such as ``$.size``. */
   metricValue?: string;
   /** The unit to assign to the metric. If you omit this, the unit is set as ``None``. */
-  unit?: MetricTransformationUnit;
+  unit?: MetricTransformationUnit | (string & {});
 }
 export const MetricTransformation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -50329,7 +50292,7 @@ export const MetricTransformation = /*@__PURE__*/ S.suspend(() =>
 
 /** The metric transformations. */
 export type AwsLogsMetricFilterPropertiesMetricTransformationsList =
-  ReadonlyArray<MetricTransformation>;
+  Array<MetricTransformation>;
 export const AwsLogsMetricFilterPropertiesMetricTransformationsList =
   /*@__PURE__*/ S.Array(
     MetricTransformation,
@@ -50682,8 +50645,7 @@ export const LogsMetricFilter = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LogsMetricFilter>;
 
 /** The LogsMetricFilter items on this page */
-export type LogsMetricFilterListResultValueList =
-  ReadonlyArray<LogsMetricFilter>;
+export type LogsMetricFilterListResultValueList = Array<LogsMetricFilter>;
 export const LogsMetricFilterListResultValueList = /*@__PURE__*/ S.Array(
   LogsMetricFilter,
 ) as any as S.Schema<LogsMetricFilterListResultValueList>;
@@ -50819,7 +50781,7 @@ export interface AwsLogsSubscriptionFilterProperties {
   /** The Amazon Resource Name (ARN) of the destination. */
   destinationArn?: string;
   /** The method used to distribute log data to the destination, which can be either random or grouped by log stream. */
-  distribution?: Distribution;
+  distribution?: Distribution | (string & {});
   /** The name of the subscription filter. */
   filterName?: string;
   /** The filtering expressions that restrict what gets delivered to the destination AWS resource. For more information about the filter pattern syntax, see [Filter and Pattern Syntax](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/FilterAndPatternSyntax.html). */
@@ -51172,7 +51134,7 @@ export const LogsSubscriptionFilter = /*@__PURE__*/ S.suspend(() =>
 
 /** The LogsSubscriptionFilter items on this page */
 export type LogsSubscriptionFilterListResultValueList =
-  ReadonlyArray<LogsSubscriptionFilter>;
+  Array<LogsSubscriptionFilter>;
 export const LogsSubscriptionFilterListResultValueList = /*@__PURE__*/ S.Array(
   LogsSubscriptionFilter,
 ) as any as S.Schema<LogsSubscriptionFilterListResultValueList>;
@@ -51318,7 +51280,7 @@ export const JobComparator = /*@__PURE__*/ S.String;
 /** Definition of JobComparatorEnumValue */
 export interface JobComparatorEnumValue {
   /** Property value */
-  value?: JobComparator;
+  value?: JobComparator | (string & {});
 }
 export const JobComparatorEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -51339,7 +51301,7 @@ export const SimpleCriterionKeyForJob = /*@__PURE__*/ S.String;
 /** Definition of SimpleCriterionKeyForJobEnumValue */
 export interface SimpleCriterionKeyForJobEnumValue {
   /** Property value */
-  value?: SimpleCriterionKeyForJob;
+  value?: SimpleCriterionKeyForJob | (string & {});
 }
 export const SimpleCriterionKeyForJobEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -51350,7 +51312,7 @@ export const SimpleCriterionKeyForJobEnumValue = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SimpleCriterionKeyForJobEnumValue>;
 
 /** <p>An array that lists one or more values to use in the condition. If you specify multiple values, Amazon Macie uses OR logic to join the values. Valid values for each supported property (key) are:</p> <ul><li><p>ACCOUNT_ID - A string that represents the unique identifier for the Amazon Web Services account that owns the bucket.</p></li> <li><p>S3_BUCKET_EFFECTIVE_PERMISSION - A string that represents an enumerated value that Macie defines for the <a href='https://docs.aws.amazon.com/macie/latest/APIReference/datasources-s3.html#datasources-s3-prop-bucketpublicaccess-effectivepermission'>BucketPublicAccess.effectivePermission</a> property of a bucket.</p></li> <li><p>S3_BUCKET_NAME - A string that represents the name of a bucket.</p></li> <li><p>S3_BUCKET_SHARED_ACCESS - A string that represents an enumerated value that Macie defines for the <a href='https://docs.aws.amazon.com/macie/latest/APIReference/datasources-s3.html#datasources-s3-prop-bucketmetadata-sharedaccess'>BucketMetadata.sharedAccess</a> property of a bucket.</p></li></ul> <p>Values are case sensitive. Also, Macie doesn't support use of partial values or wildcard characters in these values.</p> */
-export type SimpleCriterionForJobValuesList = ReadonlyArray<string>;
+export type SimpleCriterionForJobValuesList = Array<string>;
 export const SimpleCriterionForJobValuesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SimpleCriterionForJobValuesList>;
@@ -51391,8 +51353,7 @@ export const TagCriterionPairForJob = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TagCriterionPairForJob>;
 
 /** <p>The tag keys, tag values, or tag key and value pairs to use in the condition.</p> */
-export type TagCriterionForJobTagValuesList =
-  ReadonlyArray<TagCriterionPairForJob>;
+export type TagCriterionForJobTagValuesList = Array<TagCriterionPairForJob>;
 export const TagCriterionForJobTagValuesList = /*@__PURE__*/ S.Array(
   TagCriterionPairForJob,
 ) as any as S.Schema<TagCriterionForJobTagValuesList>;
@@ -51428,7 +51389,7 @@ export const CriteriaForJob = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CriteriaForJob" }) as any as S.Schema<CriteriaForJob>;
 
 /** <p>An array of conditions, one for each condition that determines which buckets to include or exclude from the job. If you specify more than one condition, Amazon Macie uses AND logic to join the conditions.</p> */
-export type CriteriaBlockForJobAndList = ReadonlyArray<CriteriaForJob>;
+export type CriteriaBlockForJobAndList = Array<CriteriaForJob>;
 export const CriteriaBlockForJobAndList = /*@__PURE__*/ S.Array(
   CriteriaForJob,
 ) as any as S.Schema<CriteriaBlockForJobAndList>;
@@ -51463,7 +51424,7 @@ export const S3BucketCriteriaForJob = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<S3BucketCriteriaForJob>;
 
 /** <p>An array that lists the names of the buckets.</p> */
-export type S3BucketDefinitionForJobBucketsList = ReadonlyArray<string>;
+export type S3BucketDefinitionForJobBucketsList = Array<string>;
 export const S3BucketDefinitionForJobBucketsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<S3BucketDefinitionForJobBucketsList>;
@@ -51486,7 +51447,7 @@ export const S3BucketDefinitionForJob = /*@__PURE__*/ S.suspend(() =>
 
 /** <p>An array of objects, one for each Amazon Web Services account that owns specific S3 buckets for the job to analyze. Each object specifies the account ID for an account and one or more buckets to analyze for that account. A job's definition can contain a bucketDefinitions array or a bucketCriteria object, not both.</p> */
 export type AwsMacie2JobSummaryPropertiesBucketDefinitionsList =
-  ReadonlyArray<S3BucketDefinitionForJob>;
+  Array<S3BucketDefinitionForJob>;
 export const AwsMacie2JobSummaryPropertiesBucketDefinitionsList =
   /*@__PURE__*/ S.Array(
     S3BucketDefinitionForJob,
@@ -51505,7 +51466,7 @@ export const JobStatus = /*@__PURE__*/ S.String;
 /** Definition of JobStatusEnumValue */
 export interface JobStatusEnumValue {
   /** Property value */
-  value?: JobStatus;
+  value?: JobStatus | (string & {});
 }
 export const JobStatusEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -51522,7 +51483,7 @@ export const JobType = /*@__PURE__*/ S.String;
 /** Definition of JobTypeEnumValue */
 export interface JobTypeEnumValue {
   /** Property value */
-  value?: JobType;
+  value?: JobType | (string & {});
 }
 export const JobTypeEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -51539,7 +51500,7 @@ export const LastRunErrorStatusCode = /*@__PURE__*/ S.String;
 /** Definition of LastRunErrorStatusCodeEnumValue */
 export interface LastRunErrorStatusCodeEnumValue {
   /** Property value */
-  value?: LastRunErrorStatusCode;
+  value?: LastRunErrorStatusCode | (string & {});
 }
 export const LastRunErrorStatusCodeEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -51943,8 +51904,7 @@ export const Macie2JobSummary = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<Macie2JobSummary>;
 
 /** The Macie2JobSummary items on this page */
-export type Macie2JobSummaryListResultValueList =
-  ReadonlyArray<Macie2JobSummary>;
+export type Macie2JobSummaryListResultValueList = Array<Macie2JobSummary>;
 export const Macie2JobSummaryListResultValueList = /*@__PURE__*/ S.Array(
   Macie2JobSummary,
 ) as any as S.Schema<Macie2JobSummaryListResultValueList>;
@@ -52126,7 +52086,7 @@ export const Tag_41 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tag_41" }) as any as S.Schema<Tag_41>;
 
 /** A collection of tags associated with a resource */
-export type AwsMacieAllowListPropertiesTagsList = ReadonlyArray<Tag_41>;
+export type AwsMacieAllowListPropertiesTagsList = Array<Tag_41>;
 export const AwsMacieAllowListPropertiesTagsList = /*@__PURE__*/ S.Array(
   Tag_41,
 ) as any as S.Schema<AwsMacieAllowListPropertiesTagsList>;
@@ -52144,7 +52104,7 @@ export interface AwsMacieAllowListProperties {
   /** Name of AllowList. */
   name?: string;
   /** AllowList status. The status for the AllowList */
-  status?: Status;
+  status?: Status | (string & {});
   /** A collection of tags associated with a resource */
   tags?: AwsMacieAllowListPropertiesTagsList;
 }
@@ -52483,7 +52443,7 @@ export const MacieAllowList = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MacieAllowList" }) as any as S.Schema<MacieAllowList>;
 
 /** The MacieAllowList items on this page */
-export type MacieAllowListListResultValueList = ReadonlyArray<MacieAllowList>;
+export type MacieAllowListListResultValueList = Array<MacieAllowList>;
 export const MacieAllowListListResultValueList = /*@__PURE__*/ S.Array(
   MacieAllowList,
 ) as any as S.Schema<MacieAllowListListResultValueList>;
@@ -52611,7 +52571,7 @@ export const NetworkFirewallFirewallPoliciesCreateOrReplaceRequestTagsMap =
   ) as any as S.Schema<NetworkFirewallFirewallPoliciesCreateOrReplaceRequestTagsMap>;
 
 /** Property definition */
-export type IPSetDefinitionList = ReadonlyArray<string>;
+export type IPSetDefinitionList = Array<string>;
 export const IPSetDefinitionList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<IPSetDefinitionList>;
@@ -52650,7 +52610,7 @@ export const RuleVariablesModel = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RuleVariablesModel>;
 
 /** Property statefulDefaultActions */
-export type FirewallPolicyStatefulDefaultActionsList = ReadonlyArray<string>;
+export type FirewallPolicyStatefulDefaultActionsList = Array<string>;
 export const FirewallPolicyStatefulDefaultActionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<FirewallPolicyStatefulDefaultActionsList>;
@@ -52672,9 +52632,11 @@ export const StatefulEngineOptionsStreamExceptionPolicy =
 /** Definition of StatefulEngineOptions */
 export interface StatefulEngineOptions {
   /** Property ruleOrder */
-  ruleOrder?: StatefulEngineOptionsRuleOrder;
+  ruleOrder?: StatefulEngineOptionsRuleOrder | (string & {});
   /** Property streamExceptionPolicy */
-  streamExceptionPolicy?: StatefulEngineOptionsStreamExceptionPolicy;
+  streamExceptionPolicy?:
+    | StatefulEngineOptionsStreamExceptionPolicy
+    | (string & {});
 }
 export const StatefulEngineOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -52694,7 +52656,7 @@ export const StatefulRuleGroupOverrideAction = /*@__PURE__*/ S.String;
 /** Definition of StatefulRuleGroupOverride */
 export interface StatefulRuleGroupOverride {
   /** Property action */
-  action?: StatefulRuleGroupOverrideAction;
+  action?: StatefulRuleGroupOverrideAction | (string & {});
 }
 export const StatefulRuleGroupOverride = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -52725,7 +52687,7 @@ export const StatefulRuleGroupReference = /*@__PURE__*/ S.suspend(() =>
 
 /** Property statefulRuleGroupReferences */
 export type FirewallPolicyStatefulRuleGroupReferencesList =
-  ReadonlyArray<StatefulRuleGroupReference>;
+  Array<StatefulRuleGroupReference>;
 export const FirewallPolicyStatefulRuleGroupReferencesList =
   /*@__PURE__*/ S.Array(
     StatefulRuleGroupReference,
@@ -52743,7 +52705,7 @@ export const Dimension_3 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Dimension_3" }) as any as S.Schema<Dimension_3>;
 
 /** Property dimensions */
-export type PublishMetricActionDimensionsList = ReadonlyArray<Dimension_3>;
+export type PublishMetricActionDimensionsList = Array<Dimension_3>;
 export const PublishMetricActionDimensionsList = /*@__PURE__*/ S.Array(
   Dimension_3,
 ) as any as S.Schema<PublishMetricActionDimensionsList>;
@@ -52789,21 +52751,19 @@ export const CustomAction = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CustomAction" }) as any as S.Schema<CustomAction>;
 
 /** Property statelessCustomActions */
-export type FirewallPolicyStatelessCustomActionsList =
-  ReadonlyArray<CustomAction>;
+export type FirewallPolicyStatelessCustomActionsList = Array<CustomAction>;
 export const FirewallPolicyStatelessCustomActionsList = /*@__PURE__*/ S.Array(
   CustomAction,
 ) as any as S.Schema<FirewallPolicyStatelessCustomActionsList>;
 
 /** Property statelessDefaultActions */
-export type FirewallPolicyStatelessDefaultActionsList = ReadonlyArray<string>;
+export type FirewallPolicyStatelessDefaultActionsList = Array<string>;
 export const FirewallPolicyStatelessDefaultActionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<FirewallPolicyStatelessDefaultActionsList>;
 
 /** Property statelessFragmentDefaultActions */
-export type FirewallPolicyStatelessFragmentDefaultActionsList =
-  ReadonlyArray<string>;
+export type FirewallPolicyStatelessFragmentDefaultActionsList = Array<string>;
 export const FirewallPolicyStatelessFragmentDefaultActionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -52827,7 +52787,7 @@ export const StatelessRuleGroupReference = /*@__PURE__*/ S.suspend(() =>
 
 /** Property statelessRuleGroupReferences */
 export type FirewallPolicyStatelessRuleGroupReferencesList =
-  ReadonlyArray<StatelessRuleGroupReference>;
+  Array<StatelessRuleGroupReference>;
 export const FirewallPolicyStatelessRuleGroupReferencesList =
   /*@__PURE__*/ S.Array(
     StatelessRuleGroupReference,
@@ -52895,8 +52855,7 @@ export const Tag_43 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tag_43" }) as any as S.Schema<Tag_43>;
 
 /** Property tags */
-export type AwsNetworkFirewallFirewallPolicyPropertiesTagsList =
-  ReadonlyArray<Tag_43>;
+export type AwsNetworkFirewallFirewallPolicyPropertiesTagsList = Array<Tag_43>;
 export const AwsNetworkFirewallFirewallPolicyPropertiesTagsList =
   /*@__PURE__*/ S.Array(
     Tag_43,
@@ -53270,7 +53229,7 @@ export const NetworkFirewallFirewallPolicy = /*@__PURE__*/ S.suspend(() =>
 
 /** The NetworkFirewallFirewallPolicy items on this page */
 export type NetworkFirewallFirewallPolicyListResultValueList =
-  ReadonlyArray<NetworkFirewallFirewallPolicy>;
+  Array<NetworkFirewallFirewallPolicy>;
 export const NetworkFirewallFirewallPolicyListResultValueList =
   /*@__PURE__*/ S.Array(
     NetworkFirewallFirewallPolicy,
@@ -53404,8 +53363,7 @@ export const NetworkFirewallFirewallsCreateOrReplaceRequestTagsMap =
   ) as any as S.Schema<NetworkFirewallFirewallsCreateOrReplaceRequestTagsMap>;
 
 /** Property endpointIds */
-export type AwsNetworkFirewallFirewallPropertiesEndpointIdsList =
-  ReadonlyArray<string>;
+export type AwsNetworkFirewallFirewallPropertiesEndpointIdsList = Array<string>;
 export const AwsNetworkFirewallFirewallPropertiesEndpointIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -53429,7 +53387,7 @@ export const SubnetMapping_2 = /*@__PURE__*/ S.suspend(() =>
 
 /** Property subnetMappings */
 export type AwsNetworkFirewallFirewallPropertiesSubnetMappingsList =
-  ReadonlyArray<SubnetMapping_2>;
+  Array<SubnetMapping_2>;
 export const AwsNetworkFirewallFirewallPropertiesSubnetMappingsList =
   /*@__PURE__*/ S.Array(
     SubnetMapping_2,
@@ -53450,8 +53408,7 @@ export const Tag_42 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tag_42" }) as any as S.Schema<Tag_42>;
 
 /** Property tags */
-export type AwsNetworkFirewallFirewallPropertiesTagsList =
-  ReadonlyArray<Tag_42>;
+export type AwsNetworkFirewallFirewallPropertiesTagsList = Array<Tag_42>;
 export const AwsNetworkFirewallFirewallPropertiesTagsList =
   /*@__PURE__*/ S.Array(
     Tag_42,
@@ -53839,7 +53796,7 @@ export const NetworkFirewallFirewall = /*@__PURE__*/ S.suspend(() =>
 
 /** The NetworkFirewallFirewall items on this page */
 export type NetworkFirewallFirewallListResultValueList =
-  ReadonlyArray<NetworkFirewallFirewall>;
+  Array<NetworkFirewallFirewall>;
 export const NetworkFirewallFirewallListResultValueList = /*@__PURE__*/ S.Array(
   NetworkFirewallFirewall,
 ) as any as S.Schema<NetworkFirewallFirewallListResultValueList>;
@@ -54009,7 +53966,7 @@ export const RuleVariablesIpSetsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<RuleVariablesIpSetsMap>;
 
 /** Property definition */
-export type PortSetDefinitionList = ReadonlyArray<string>;
+export type PortSetDefinitionList = Array<string>;
 export const PortSetDefinitionList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PortSetDefinitionList>;
@@ -54051,13 +54008,13 @@ export type RulesSourceListGeneratedRulesType = "ALLOWLIST" | "DENYLIST";
 export const RulesSourceListGeneratedRulesType = /*@__PURE__*/ S.String;
 
 /** Property targetTypes */
-export type RulesSourceListTargetTypesList = ReadonlyArray<string>;
+export type RulesSourceListTargetTypesList = Array<string>;
 export const RulesSourceListTargetTypesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RulesSourceListTargetTypesList>;
 
 /** Property targets */
-export type RulesSourceListTargetsList = ReadonlyArray<string>;
+export type RulesSourceListTargetsList = Array<string>;
 export const RulesSourceListTargetsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RulesSourceListTargetsList>;
@@ -54065,7 +54022,7 @@ export const RulesSourceListTargetsList = /*@__PURE__*/ S.Array(
 /** Definition of RulesSourceList */
 export interface RulesSourceList {
   /** Property generatedRulesType */
-  generatedRulesType?: RulesSourceListGeneratedRulesType;
+  generatedRulesType?: RulesSourceListGeneratedRulesType | (string & {});
   /** Property targetTypes */
   targetTypes?: RulesSourceListTargetTypesList;
   /** Property targets */
@@ -54119,9 +54076,9 @@ export interface Header {
   /** Property destinationPort */
   destinationPort?: string;
   /** Property direction */
-  direction?: HeaderDirection;
+  direction?: HeaderDirection | (string & {});
   /** Property protocol */
-  protocol?: HeaderProtocol;
+  protocol?: HeaderProtocol | (string & {});
   /** Property source */
   source?: string;
   /** Property sourcePort */
@@ -54139,7 +54096,7 @@ export const Header = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Header" }) as any as S.Schema<Header>;
 
 /** Property settings */
-export type RuleOptionSettingsList = ReadonlyArray<string>;
+export type RuleOptionSettingsList = Array<string>;
 export const RuleOptionSettingsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RuleOptionSettingsList>;
@@ -54159,7 +54116,7 @@ export const RuleOption = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RuleOption" }) as any as S.Schema<RuleOption>;
 
 /** Property ruleOptions */
-export type StatefulRuleRuleOptionsList = ReadonlyArray<RuleOption>;
+export type StatefulRuleRuleOptionsList = Array<RuleOption>;
 export const StatefulRuleRuleOptionsList = /*@__PURE__*/ S.Array(
   RuleOption,
 ) as any as S.Schema<StatefulRuleRuleOptionsList>;
@@ -54167,7 +54124,7 @@ export const StatefulRuleRuleOptionsList = /*@__PURE__*/ S.Array(
 /** Definition of StatefulRule */
 export interface StatefulRule {
   /** Property action */
-  action?: StatefulRuleAction;
+  action?: StatefulRuleAction | (string & {});
   /** Property header */
   header?: Header;
   /** Property ruleOptions */
@@ -54182,21 +54139,21 @@ export const StatefulRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StatefulRule" }) as any as S.Schema<StatefulRule>;
 
 /** Property statefulRules */
-export type RulesSourceStatefulRulesList = ReadonlyArray<StatefulRule>;
+export type RulesSourceStatefulRulesList = Array<StatefulRule>;
 export const RulesSourceStatefulRulesList = /*@__PURE__*/ S.Array(
   StatefulRule,
 ) as any as S.Schema<RulesSourceStatefulRulesList>;
 
 /** Property customActions */
 export type StatelessRulesAndCustomActionsCustomActionsList =
-  ReadonlyArray<CustomAction>;
+  Array<CustomAction>;
 export const StatelessRulesAndCustomActionsCustomActionsList =
   /*@__PURE__*/ S.Array(
     CustomAction,
   ) as any as S.Schema<StatelessRulesAndCustomActionsCustomActionsList>;
 
 /** Property actions */
-export type RuleDefinitionActionsList = ReadonlyArray<string>;
+export type RuleDefinitionActionsList = Array<string>;
 export const RuleDefinitionActionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RuleDefinitionActionsList>;
@@ -54216,7 +54173,7 @@ export const PortRange = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PortRange" }) as any as S.Schema<PortRange>;
 
 /** Property destinationPorts */
-export type MatchAttributesDestinationPortsList = ReadonlyArray<PortRange>;
+export type MatchAttributesDestinationPortsList = Array<PortRange>;
 export const MatchAttributesDestinationPortsList = /*@__PURE__*/ S.Array(
   PortRange,
 ) as any as S.Schema<MatchAttributesDestinationPortsList>;
@@ -54233,37 +54190,37 @@ export const Address = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Address" }) as any as S.Schema<Address>;
 
 /** Property destinations */
-export type MatchAttributesDestinationsList = ReadonlyArray<Address>;
+export type MatchAttributesDestinationsList = Array<Address>;
 export const MatchAttributesDestinationsList = /*@__PURE__*/ S.Array(
   Address,
 ) as any as S.Schema<MatchAttributesDestinationsList>;
 
 /** Property protocols */
-export type MatchAttributesProtocolsList = ReadonlyArray<number>;
+export type MatchAttributesProtocolsList = Array<number>;
 export const MatchAttributesProtocolsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<MatchAttributesProtocolsList>;
 
 /** Property sourcePorts */
-export type MatchAttributesSourcePortsList = ReadonlyArray<PortRange>;
+export type MatchAttributesSourcePortsList = Array<PortRange>;
 export const MatchAttributesSourcePortsList = /*@__PURE__*/ S.Array(
   PortRange,
 ) as any as S.Schema<MatchAttributesSourcePortsList>;
 
 /** Property sources */
-export type MatchAttributesSourcesList = ReadonlyArray<Address>;
+export type MatchAttributesSourcesList = Array<Address>;
 export const MatchAttributesSourcesList = /*@__PURE__*/ S.Array(
   Address,
 ) as any as S.Schema<MatchAttributesSourcesList>;
 
 /** Property flags */
-export type TCPFlagFieldFlagsList = ReadonlyArray<string>;
+export type TCPFlagFieldFlagsList = Array<string>;
 export const TCPFlagFieldFlagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<TCPFlagFieldFlagsList>;
 
 /** Property masks */
-export type TCPFlagFieldMasksList = ReadonlyArray<string>;
+export type TCPFlagFieldMasksList = Array<string>;
 export const TCPFlagFieldMasksList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<TCPFlagFieldMasksList>;
@@ -54283,7 +54240,7 @@ export const TCPFlagField = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TCPFlagField" }) as any as S.Schema<TCPFlagField>;
 
 /** Property tcpFlags */
-export type MatchAttributesTcpFlagsList = ReadonlyArray<TCPFlagField>;
+export type MatchAttributesTcpFlagsList = Array<TCPFlagField>;
 export const MatchAttributesTcpFlagsList = /*@__PURE__*/ S.Array(
   TCPFlagField,
 ) as any as S.Schema<MatchAttributesTcpFlagsList>;
@@ -54346,7 +54303,7 @@ export const StatelessRule = /*@__PURE__*/ S.suspend(() =>
 
 /** Property statelessRules */
 export type StatelessRulesAndCustomActionsStatelessRulesList =
-  ReadonlyArray<StatelessRule>;
+  Array<StatelessRule>;
 export const StatelessRulesAndCustomActionsStatelessRulesList =
   /*@__PURE__*/ S.Array(
     StatelessRule,
@@ -54399,7 +54356,7 @@ export const StatefulRuleOptionsRuleOrder = /*@__PURE__*/ S.String;
 /** Definition of StatefulRuleOptions */
 export interface StatefulRuleOptions {
   /** Property ruleOrder */
-  ruleOrder?: StatefulRuleOptionsRuleOrder;
+  ruleOrder?: StatefulRuleOptionsRuleOrder | (string & {});
 }
 export const StatefulRuleOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -54444,8 +54401,7 @@ export const Tag_44 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tag_44" }) as any as S.Schema<Tag_44>;
 
 /** Property tags */
-export type AwsNetworkFirewallRuleGroupPropertiesTagsList =
-  ReadonlyArray<Tag_44>;
+export type AwsNetworkFirewallRuleGroupPropertiesTagsList = Array<Tag_44>;
 export const AwsNetworkFirewallRuleGroupPropertiesTagsList =
   /*@__PURE__*/ S.Array(
     Tag_44,
@@ -54472,7 +54428,7 @@ export interface AwsNetworkFirewallRuleGroupProperties {
   /** Property tags */
   tags?: AwsNetworkFirewallRuleGroupPropertiesTagsList;
   /** Property type */
-  type?: Type;
+  type?: Type | (string & {});
 }
 export const AwsNetworkFirewallRuleGroupProperties = /*@__PURE__*/ S.suspend(
   () =>
@@ -54822,7 +54778,7 @@ export const NetworkFirewallRuleGroup = /*@__PURE__*/ S.suspend(() =>
 
 /** The NetworkFirewallRuleGroup items on this page */
 export type NetworkFirewallRuleGroupListResultValueList =
-  ReadonlyArray<NetworkFirewallRuleGroup>;
+  Array<NetworkFirewallRuleGroup>;
 export const NetworkFirewallRuleGroupListResultValueList =
   /*@__PURE__*/ S.Array(
     NetworkFirewallRuleGroup,
@@ -55044,7 +55000,7 @@ export const AutoTuneState = /*@__PURE__*/ S.String;
 /** Definition of AutoTuneStateEnumValue */
 export interface AutoTuneStateEnumValue {
   /** Property value */
-  value?: AutoTuneState;
+  value?: AutoTuneState | (string & {});
 }
 export const AutoTuneStateEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -55088,7 +55044,7 @@ export const ConfigChangeStatus = /*@__PURE__*/ S.String;
 /** Definition of ConfigChangeStatusEnumValue */
 export interface ConfigChangeStatusEnumValue {
   /** Property value */
-  value?: ConfigChangeStatus;
+  value?: ConfigChangeStatus | (string & {});
 }
 export const ConfigChangeStatusEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -55105,7 +55061,7 @@ export const InitiatedBy = /*@__PURE__*/ S.String;
 /** Definition of InitiatedByEnumValue */
 export interface InitiatedByEnumValue {
   /** Property value */
-  value?: InitiatedBy;
+  value?: InitiatedBy | (string & {});
 }
 export const InitiatedByEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -55266,7 +55222,7 @@ export const OpenSearchPartitionInstanceType = /*@__PURE__*/ S.String;
 /** Definition of OpenSearchPartitionInstanceTypeEnumValue */
 export interface OpenSearchPartitionInstanceTypeEnumValue {
   /** Property value */
-  value?: OpenSearchPartitionInstanceType;
+  value?: OpenSearchPartitionInstanceType | (string & {});
 }
 export const OpenSearchPartitionInstanceTypeEnumValue = /*@__PURE__*/ S.suspend(
   () =>
@@ -55287,7 +55243,7 @@ export const OpenSearchWarmPartitionInstanceType = /*@__PURE__*/ S.String;
 /** Definition of OpenSearchWarmPartitionInstanceTypeEnumValue */
 export interface OpenSearchWarmPartitionInstanceTypeEnumValue {
   /** Property value */
-  value?: OpenSearchWarmPartitionInstanceType;
+  value?: OpenSearchWarmPartitionInstanceType | (string & {});
 }
 export const OpenSearchWarmPartitionInstanceTypeEnumValue =
   /*@__PURE__*/ S.suspend(() =>
@@ -55385,7 +55341,7 @@ export const TLSSecurityPolicy = /*@__PURE__*/ S.String;
 /** Definition of TLSSecurityPolicyEnumValue */
 export interface TLSSecurityPolicyEnumValue {
   /** Property value */
-  value?: TLSSecurityPolicy;
+  value?: TLSSecurityPolicy | (string & {});
 }
 export const TLSSecurityPolicyEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -55434,7 +55390,7 @@ export const DomainProcessingStatusType = /*@__PURE__*/ S.String;
 /** Definition of DomainProcessingStatusTypeEnumValue */
 export interface DomainProcessingStatusTypeEnumValue {
   /** Property value */
-  value?: DomainProcessingStatusType;
+  value?: DomainProcessingStatusType | (string & {});
 }
 export const DomainProcessingStatusTypeEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -55451,7 +55407,7 @@ export const VolumeType_2 = /*@__PURE__*/ S.String;
 /** Definition of VolumeTypeEnumValue */
 export interface VolumeTypeEnumValue_2 {
   /** Property value */
-  value?: VolumeType_2;
+  value?: VolumeType_2 | (string & {});
 }
 export const VolumeTypeEnumValue_2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -55517,7 +55473,7 @@ export const IPAddressType = /*@__PURE__*/ S.String;
 /** Definition of IPAddressTypeEnumValue */
 export interface IPAddressTypeEnumValue {
   /** Property value */
-  value?: IPAddressType;
+  value?: IPAddressType | (string & {});
 }
 export const IPAddressTypeEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -55560,7 +55516,7 @@ export const PropertyValueType = /*@__PURE__*/ S.String;
 /** Definition of PropertyValueTypeEnumValue */
 export interface PropertyValueTypeEnumValue {
   /** Property value */
-  value?: PropertyValueType;
+  value?: PropertyValueType | (string & {});
 }
 export const PropertyValueTypeEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -55594,7 +55550,7 @@ export const ModifyingProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** <p>Information about the domain properties that are currently being modified.</p> */
 export type AwsOpenSearchDomainStatusPropertiesModifyingPropertiesList =
-  ReadonlyArray<ModifyingProperties>;
+  Array<ModifyingProperties>;
 export const AwsOpenSearchDomainStatusPropertiesModifyingPropertiesList =
   /*@__PURE__*/ S.Array(
     ModifyingProperties,
@@ -55668,7 +55624,7 @@ export const DeploymentStatus = /*@__PURE__*/ S.String;
 /** Definition of DeploymentStatusEnumValue */
 export interface DeploymentStatusEnumValue {
   /** Property value */
-  value?: DeploymentStatus;
+  value?: DeploymentStatus | (string & {});
 }
 export const DeploymentStatusEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -55739,19 +55695,19 @@ export const SoftwareUpdateOptions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SoftwareUpdateOptions>;
 
 /** <p>The list of Availability Zones associated with the VPC subnets.</p> */
-export type VPCDerivedInfoAvailabilityZonesList = ReadonlyArray<string>;
+export type VPCDerivedInfoAvailabilityZonesList = Array<string>;
 export const VPCDerivedInfoAvailabilityZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<VPCDerivedInfoAvailabilityZonesList>;
 
 /** <p>The list of security group IDs associated with the VPC endpoints for the domain.</p> */
-export type VPCDerivedInfoSecurityGroupIdsList = ReadonlyArray<string>;
+export type VPCDerivedInfoSecurityGroupIdsList = Array<string>;
 export const VPCDerivedInfoSecurityGroupIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<VPCDerivedInfoSecurityGroupIdsList>;
 
 /** <p>A list of subnet IDs associated with the VPC endpoints for the domain.</p> */
-export type VPCDerivedInfoSubnetIdsList = ReadonlyArray<string>;
+export type VPCDerivedInfoSubnetIdsList = Array<string>;
 export const VPCDerivedInfoSubnetIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<VPCDerivedInfoSubnetIdsList>;
@@ -56216,7 +56172,7 @@ export const OpenSearchDomainStatus = /*@__PURE__*/ S.suspend(() =>
 
 /** The OpenSearchDomainStatus items on this page */
 export type OpenSearchDomainStatusListResultValueList =
-  ReadonlyArray<OpenSearchDomainStatus>;
+  Array<OpenSearchDomainStatus>;
 export const OpenSearchDomainStatusListResultValueList = /*@__PURE__*/ S.Array(
   OpenSearchDomainStatus,
 ) as any as S.Schema<OpenSearchDomainStatusListResultValueList>;
@@ -56405,7 +56361,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = ReadonlyArray<Operation>;
+export type OperationsListResponseValueList = Array<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;
@@ -56440,8 +56396,7 @@ export type JoinedMethod = "CREATED" | "INVITED";
 export const JoinedMethod = /*@__PURE__*/ S.String;
 
 /** List of parent nodes for the member account. Currently only one parent at a time is supported. Default is root. */
-export type AwsOrganizationsAccountPropertiesParentIdsList =
-  ReadonlyArray<string>;
+export type AwsOrganizationsAccountPropertiesParentIdsList = Array<string>;
 export const AwsOrganizationsAccountPropertiesParentIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -56466,7 +56421,7 @@ export const Tag_45 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tag_45" }) as any as S.Schema<Tag_45>;
 
 /** A list of tags that you want to attach to the newly created account. For each tag in the list, you must specify both a tag key and a value. */
-export type AwsOrganizationsAccountPropertiesTagsList = ReadonlyArray<Tag_45>;
+export type AwsOrganizationsAccountPropertiesTagsList = Array<Tag_45>;
 export const AwsOrganizationsAccountPropertiesTagsList = /*@__PURE__*/ S.Array(
   Tag_45,
 ) as any as S.Schema<AwsOrganizationsAccountPropertiesTagsList>;
@@ -56482,7 +56437,7 @@ export interface AwsOrganizationsAccountProperties {
   /** The email address of the owner to assign to the new member account. */
   email?: string;
   /** The method by which the account joined the organization. */
-  joinedMethod?: JoinedMethod;
+  joinedMethod?: JoinedMethod | (string & {});
   /** The date the account became a part of the organization. */
   joinedTimestamp?: string;
   /** List of parent nodes for the member account. Currently only one parent at a time is supported. Default is root. */
@@ -56490,7 +56445,7 @@ export interface AwsOrganizationsAccountProperties {
   /** The name of an IAM role that AWS Organizations automatically preconfigures in the new member account. Default name is OrganizationAccountAccessRole if not specified. */
   roleName?: string;
   /** The status of the account in the organization. */
-  status?: Status_2;
+  status?: Status_2 | (string & {});
   /** A list of tags that you want to attach to the newly created account. For each tag in the list, you must specify both a tag key and a value. */
   tags?: AwsOrganizationsAccountPropertiesTagsList;
 }
@@ -56836,7 +56791,7 @@ export const OrganizationsAccount = /*@__PURE__*/ S.suspend(() =>
 
 /** The OrganizationsAccount items on this page */
 export type OrganizationsAccountListResultValueList =
-  ReadonlyArray<OrganizationsAccount>;
+  Array<OrganizationsAccount>;
 export const OrganizationsAccountListResultValueList = /*@__PURE__*/ S.Array(
   OrganizationsAccount,
 ) as any as S.Schema<OrganizationsAccountListResultValueList>;
@@ -56976,7 +56931,7 @@ export interface AwsOrganizationsOrganizationProperties {
   /** The Amazon Resource Name (ARN) of an organization. */
   arn?: string;
   /** Specifies the feature set supported by the new organization. Each feature set supports different levels of functionality. */
-  featureSet?: AwsOrganizationsOrganizationPropertiesFeatureSet;
+  featureSet?: AwsOrganizationsOrganizationPropertiesFeatureSet | (string & {});
   /** The unique identifier (ID) of an organization. */
   id?: string;
   /** The Amazon Resource Name (ARN) of the account that is designated as the management account for the organization. */
@@ -57338,7 +57293,7 @@ export const OrganizationsOrganization = /*@__PURE__*/ S.suspend(() =>
 
 /** The OrganizationsOrganization items on this page */
 export type OrganizationsOrganizationListResultValueList =
-  ReadonlyArray<OrganizationsOrganization>;
+  Array<OrganizationsOrganization>;
 export const OrganizationsOrganizationListResultValueList =
   /*@__PURE__*/ S.Array(
     OrganizationsOrganization,
@@ -57485,16 +57440,14 @@ export const DBClusterRole = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DBClusterRole" }) as any as S.Schema<DBClusterRole>;
 
 /** Provides a list of the AWS Identity and Access Management (IAM) roles that are associated with the DB cluster. IAM roles that are associated with a DB cluster grant permission for the DB cluster to access other AWS services on your behalf. */
-export type AwsRdsDBClusterPropertiesAssociatedRolesList =
-  ReadonlyArray<DBClusterRole>;
+export type AwsRdsDBClusterPropertiesAssociatedRolesList = Array<DBClusterRole>;
 export const AwsRdsDBClusterPropertiesAssociatedRolesList =
   /*@__PURE__*/ S.Array(
     DBClusterRole,
   ) as any as S.Schema<AwsRdsDBClusterPropertiesAssociatedRolesList>;
 
 /** A list of Availability Zones (AZs) where instances in the DB cluster can be created. For information on AWS Regions and Availability Zones, see Choosing the Regions and Availability Zones in the Amazon Aurora User Guide. */
-export type AwsRdsDBClusterPropertiesAvailabilityZonesList =
-  ReadonlyArray<string>;
+export type AwsRdsDBClusterPropertiesAvailabilityZonesList = Array<string>;
 export const AwsRdsDBClusterPropertiesAvailabilityZonesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -57502,7 +57455,7 @@ export const AwsRdsDBClusterPropertiesAvailabilityZonesList =
 
 /** The list of log types that need to be enabled for exporting to CloudWatch Logs. The values in the list depend on the DB engine being used. For more information, see Publishing Database Logs to Amazon CloudWatch Logs in the Amazon Aurora User Guide. */
 export type AwsRdsDBClusterPropertiesEnableCloudwatchLogsExportsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const AwsRdsDBClusterPropertiesEnableCloudwatchLogsExportsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -57608,14 +57561,13 @@ export const Tag_46 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tag_46" }) as any as S.Schema<Tag_46>;
 
 /** An array of key-value pairs to apply to this resource. */
-export type AwsRdsDBClusterPropertiesTagsList = ReadonlyArray<Tag_46>;
+export type AwsRdsDBClusterPropertiesTagsList = Array<Tag_46>;
 export const AwsRdsDBClusterPropertiesTagsList = /*@__PURE__*/ S.Array(
   Tag_46,
 ) as any as S.Schema<AwsRdsDBClusterPropertiesTagsList>;
 
 /** A list of EC2 VPC security groups to associate with this DB cluster. */
-export type AwsRdsDBClusterPropertiesVpcSecurityGroupIdsList =
-  ReadonlyArray<string>;
+export type AwsRdsDBClusterPropertiesVpcSecurityGroupIdsList = Array<string>;
 export const AwsRdsDBClusterPropertiesVpcSecurityGroupIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -58136,7 +58088,7 @@ export const RdsDBCluster = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RdsDBCluster" }) as any as S.Schema<RdsDBCluster>;
 
 /** The RdsDBCluster items on this page */
-export type RdsDBClusterListResultValueList = ReadonlyArray<RdsDBCluster>;
+export type RdsDBClusterListResultValueList = Array<RdsDBCluster>;
 export const RdsDBClusterListResultValueList = /*@__PURE__*/ S.Array(
   RdsDBCluster,
 ) as any as S.Schema<RdsDBClusterListResultValueList>;
@@ -58279,7 +58231,7 @@ export const DBInstanceRole = /*@__PURE__*/ S.suspend(() =>
 
 /** The IAMlong (IAM) roles associated with the DB instance. *Amazon Aurora* Not applicable. The associated roles are managed by the DB cluster. */
 export type AwsRdsDBInstancePropertiesAssociatedRolesList =
-  ReadonlyArray<DBInstanceRole>;
+  Array<DBInstanceRole>;
 export const AwsRdsDBInstancePropertiesAssociatedRolesList =
   /*@__PURE__*/ S.Array(
     DBInstanceRole,
@@ -58302,22 +58254,21 @@ export const CertificateDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CertificateDetails>;
 
 /** A list of the DB security groups to assign to the DB instance. The list can include both the name of existing DB security groups or references to AWS::RDS::DBSecurityGroup resources created in the template. If you set DBSecurityGroups, you must not set VPCSecurityGroups, and vice versa. Also, note that the DBSecurityGroups property exists only for backwards compatibility with older regions and is no longer recommended for providing security information to an RDS DB instance. Instead, use VPCSecurityGroups. If you specify this property, AWS CloudFormation sends only the following properties (if specified) to Amazon RDS during create operations: + ``AllocatedStorage`` + ``AutoMinorVersionUpgrade`` + ``AvailabilityZone`` + ``BackupRetentionPeriod`` + ``CharacterSetName`` + ``DBInstanceClass`` + ``DBName`` + ``DBParameterGroupName`` + ``DBSecurityGroups`` + ``DBSubnetGroupName`` + ``Engine`` + ``EngineVersion`` + ``Iops`` + ``LicenseModel`` + ``MasterUsername`` + ``MasterUserPassword`` + ``MultiAZ`` + ``OptionGroupName`` + ``PreferredBackupWindow`` + ``PreferredMaintenanceWindow`` All other properties are ignored. Specify a virtual private cloud (VPC) security group if you want to submit other properties, such as ``StorageType``, ``StorageEncrypted``, or ``KmsKeyId``. If you're already using the ``DBSecurityGroups`` property, you can't use these other properties by updating your DB instance to use a VPC security group. You must recreate the DB instance. */
-export type AwsRdsDBInstancePropertiesDbSecurityGroupsList =
-  ReadonlyArray<string>;
+export type AwsRdsDBInstancePropertiesDbSecurityGroupsList = Array<string>;
 export const AwsRdsDBInstancePropertiesDbSecurityGroupsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AwsRdsDBInstancePropertiesDbSecurityGroupsList>;
 
 /** The IPv4 DNS IP addresses of your primary and secondary Active Directory domain controllers. Constraints: + Two IP addresses must be provided. If there isn't a secondary domain controller, use the IP address of the primary domain controller for both entries in the list. Example: ``123.124.125.126,234.235.236.237`` */
-export type AwsRdsDBInstancePropertiesDomainDnsIpsList = ReadonlyArray<string>;
+export type AwsRdsDBInstancePropertiesDomainDnsIpsList = Array<string>;
 export const AwsRdsDBInstancePropertiesDomainDnsIpsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AwsRdsDBInstancePropertiesDomainDnsIpsList>;
 
 /** The list of log types that need to be enabled for exporting to CloudWatch Logs. The values in the list depend on the DB engine being used. For more information, see [Publishing Database Logs to Amazon CloudWatch Logs](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch) in the *Amazon Relational Database Service User Guide*. *Amazon Aurora* Not applicable. CloudWatch Logs exports are managed by the DB cluster. *Db2* Valid values: ``diag.log``, ``notify.log`` *MariaDB* Valid values: ``audit``, ``error``, ``general``, ``slowquery`` *Microsoft SQL Server* Valid values: ``agent``, ``error`` *MySQL* Valid values: ``audit``, ``error``, ``general``, ``slowquery`` *Oracle* Valid values: ``alert``, ``audit``, ``listener``, ``trace``, ``oemagent`` *PostgreSQL* Valid values: ``postgresql``, ``upgrade`` */
 export type AwsRdsDBInstancePropertiesEnableCloudwatchLogsExportsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const AwsRdsDBInstancePropertiesEnableCloudwatchLogsExportsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -58347,7 +58298,7 @@ export const ProcessorFeatureName = /*@__PURE__*/ S.String;
 /** Definition of ProcessorFeature */
 export interface ProcessorFeature {
   /** The name of the processor feature. Valid names are ``coreCount`` and ``threadsPerCore``. */
-  name?: ProcessorFeatureName;
+  name?: ProcessorFeatureName | (string & {});
   /** The value of a processor feature name. */
   value?: string;
 }
@@ -58362,7 +58313,7 @@ export const ProcessorFeature = /*@__PURE__*/ S.suspend(() =>
 
 /** The number of CPU cores and the number of threads per core for the DB instance class of the DB instance. This setting doesn't apply to Amazon Aurora or RDS Custom DB instances. */
 export type AwsRdsDBInstancePropertiesProcessorFeaturesList =
-  ReadonlyArray<ProcessorFeature>;
+  Array<ProcessorFeature>;
 export const AwsRdsDBInstancePropertiesProcessorFeaturesList =
   /*@__PURE__*/ S.Array(
     ProcessorFeature,
@@ -58383,14 +58334,13 @@ export const Tag_47 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tag_47" }) as any as S.Schema<Tag_47>;
 
 /** An optional array of key-value pairs to apply to this DB instance. */
-export type AwsRdsDBInstancePropertiesTagsList = ReadonlyArray<Tag_47>;
+export type AwsRdsDBInstancePropertiesTagsList = Array<Tag_47>;
 export const AwsRdsDBInstancePropertiesTagsList = /*@__PURE__*/ S.Array(
   Tag_47,
 ) as any as S.Schema<AwsRdsDBInstancePropertiesTagsList>;
 
 /** A list of the VPC security group IDs to assign to the DB instance. The list can include both the physical IDs of existing VPC security groups and references to [AWS::EC2::SecurityGroup](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-security-group.html) resources created in the template. If you plan to update the resource, don't specify VPC security groups in a shared VPC. If you set ``VPCSecurityGroups``, you must not set [DBSecurityGroups](https://docs.aws.amazon.com//AWSCloudFormation/latest/UserGuide/aws-properties-rds-database-instance.html#cfn-rds-dbinstance-dbsecuritygroups), and vice versa. You can migrate a DB instance in your stack from an RDS DB security group to a VPC security group, but keep the following in mind: + You can't revert to using an RDS security group after you establish a VPC security group membership. + When you migrate your DB instance to VPC security groups, if your stack update rolls back because the DB instance update fails or because an update fails in another AWS CloudFormation resource, the rollback fails because it can't revert to an RDS security group. + To use the properties that are available when you use a VPC security group, you must recreate the DB instance. If you don't, AWS CloudFormation submits only the property values that are listed in the [DBSecurityGroups](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-rds-database-instance.html#cfn-rds-dbinstance-dbsecuritygroups) property. To avoid this situation, migrate your DB instance to using VPC security groups only when that is the only change in your stack template. *Amazon Aurora* Not applicable. The associated list of EC2 VPC security groups is managed by the DB cluster. If specified, the setting must match the DB cluster setting. */
-export type AwsRdsDBInstancePropertiesVpcSecurityGroupsList =
-  ReadonlyArray<string>;
+export type AwsRdsDBInstancePropertiesVpcSecurityGroupsList = Array<string>;
 export const AwsRdsDBInstancePropertiesVpcSecurityGroupsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -58975,7 +58925,7 @@ export const RdsDBInstance = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RdsDBInstance" }) as any as S.Schema<RdsDBInstance>;
 
 /** The RdsDBInstance items on this page */
-export type RdsDBInstanceListResultValueList = ReadonlyArray<RdsDBInstance>;
+export type RdsDBInstanceListResultValueList = Array<RdsDBInstance>;
 export const RdsDBInstanceListResultValueList = /*@__PURE__*/ S.Array(
   RdsDBInstance,
 ) as any as S.Schema<RdsDBInstanceListResultValueList>;
@@ -59103,7 +59053,7 @@ export const RdsDbSnapshotAttributesResultsCreateOrReplaceRequestTagsMap =
   ) as any as S.Schema<RdsDbSnapshotAttributesResultsCreateOrReplaceRequestTagsMap>;
 
 /** <p>The value or values for the manual DB snapshot attribute.</p> <p>If the <code>AttributeName</code> field is set to <code>restore</code>, then this element returns a list of IDs of the Amazon Web Services accounts that are authorized to copy or restore the manual DB snapshot. If a value of <code>all</code> is in the list, then the manual DB snapshot is public and available for any Amazon Web Services account to copy or restore.</p> */
-export type DBSnapshotAttributeAttributeValuesList = ReadonlyArray<string>;
+export type DBSnapshotAttributeAttributeValuesList = Array<string>;
 export const DBSnapshotAttributeAttributeValuesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DBSnapshotAttributeAttributeValuesList>;
@@ -59126,7 +59076,7 @@ export const DBSnapshotAttribute = /*@__PURE__*/ S.suspend(() =>
 
 /** <p>The list of attributes and values for the manual DB snapshot.</p> */
 export type AwsRdsDBSnapshotAttributesResultPropertiesDbSnapshotAttributesList =
-  ReadonlyArray<DBSnapshotAttribute>;
+  Array<DBSnapshotAttribute>;
 export const AwsRdsDBSnapshotAttributesResultPropertiesDbSnapshotAttributesList =
   /*@__PURE__*/ S.Array(
     DBSnapshotAttribute,
@@ -59490,7 +59440,7 @@ export const RdsDBSnapshotAttributesResult = /*@__PURE__*/ S.suspend(() =>
 
 /** The RdsDBSnapshotAttributesResult items on this page */
 export type RdsDBSnapshotAttributesResultListResultValueList =
-  ReadonlyArray<RdsDBSnapshotAttributesResult>;
+  Array<RdsDBSnapshotAttributesResult>;
 export const RdsDBSnapshotAttributesResultListResultValueList =
   /*@__PURE__*/ S.Array(
     RdsDBSnapshotAttributesResult,
@@ -59641,7 +59591,7 @@ export const ProcessorFeature_2 = /*@__PURE__*/ S.suspend(() =>
 
 /** <p>The number of CPU cores and the number of threads per core for the DB instance class of the DB instance when the DB snapshot was created.</p> */
 export type AwsRdsDBSnapshotPropertiesProcessorFeaturesList =
-  ReadonlyArray<ProcessorFeature_2>;
+  Array<ProcessorFeature_2>;
 export const AwsRdsDBSnapshotPropertiesProcessorFeaturesList =
   /*@__PURE__*/ S.Array(
     ProcessorFeature_2,
@@ -59662,7 +59612,7 @@ export const Tag_48 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tag_48" }) as any as S.Schema<Tag_48>;
 
 /** Property tagList */
-export type AwsRdsDBSnapshotPropertiesTagListList = ReadonlyArray<Tag_48>;
+export type AwsRdsDBSnapshotPropertiesTagListList = Array<Tag_48>;
 export const AwsRdsDBSnapshotPropertiesTagListList = /*@__PURE__*/ S.Array(
   Tag_48,
 ) as any as S.Schema<AwsRdsDBSnapshotPropertiesTagListList>;
@@ -60108,7 +60058,7 @@ export const RdsDBSnapshot = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RdsDBSnapshot" }) as any as S.Schema<RdsDBSnapshot>;
 
 /** The RdsDBSnapshot items on this page */
-export type RdsDBSnapshotListResultValueList = ReadonlyArray<RdsDBSnapshot>;
+export type RdsDBSnapshotListResultValueList = Array<RdsDBSnapshot>;
 export const RdsDBSnapshotListResultValueList = /*@__PURE__*/ S.Array(
   RdsDBSnapshot,
 ) as any as S.Schema<RdsDBSnapshotListResultValueList>;
@@ -60237,15 +60187,14 @@ export const RdsEventSubscriptionsCreateOrReplaceRequestTagsMap =
 
 /** A list of event categories for a SourceType that you want to subscribe to. You can see a list of the categories for a given SourceType in the Events topic in the Amazon RDS User Guide or by using the DescribeEventCategories action. */
 export type AwsRdsEventSubscriptionPropertiesEventCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const AwsRdsEventSubscriptionPropertiesEventCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AwsRdsEventSubscriptionPropertiesEventCategoriesList>;
 
 /** The list of identifiers of the event sources for which events will be returned. If not specified, then all sources are included in the response. An identifier must begin with a letter and must contain only ASCII letters, digits, and hyphens; it cannot end with a hyphen or contain two consecutive hyphens. */
-export type AwsRdsEventSubscriptionPropertiesSourceIdsList =
-  ReadonlyArray<string>;
+export type AwsRdsEventSubscriptionPropertiesSourceIdsList = Array<string>;
 export const AwsRdsEventSubscriptionPropertiesSourceIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -60266,7 +60215,7 @@ export const Tag_49 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tag_49" }) as any as S.Schema<Tag_49>;
 
 /** An array of key-value pairs to apply to this resource. */
-export type AwsRdsEventSubscriptionPropertiesTagsList = ReadonlyArray<Tag_49>;
+export type AwsRdsEventSubscriptionPropertiesTagsList = Array<Tag_49>;
 export const AwsRdsEventSubscriptionPropertiesTagsList = /*@__PURE__*/ S.Array(
   Tag_49,
 ) as any as S.Schema<AwsRdsEventSubscriptionPropertiesTagsList>;
@@ -60629,7 +60578,7 @@ export const RdsEventSubscription = /*@__PURE__*/ S.suspend(() =>
 
 /** The RdsEventSubscription items on this page */
 export type RdsEventSubscriptionListResultValueList =
-  ReadonlyArray<RdsEventSubscription>;
+  Array<RdsEventSubscription>;
 export const RdsEventSubscriptionListResultValueList = /*@__PURE__*/ S.Array(
   RdsEventSubscription,
 ) as any as S.Schema<RdsEventSubscriptionListResultValueList>;
@@ -60758,7 +60707,7 @@ export const RdsExportTasksCreateOrReplaceRequestTagsMap =
   ) as any as S.Schema<RdsExportTasksCreateOrReplaceRequestTagsMap>;
 
 /** <p>The data exported from the snapshot or cluster.</p> <p>Valid Values:</p> <ul> <li> <p> <code>database</code> - Export all the data from a specified database.</p> </li> <li> <p> <code>database.table</code> <i>table-name</i> - Export a table of the snapshot or cluster. This format is valid only for RDS for MySQL, RDS for MariaDB, and Aurora MySQL.</p> </li> <li> <p> <code>database.schema</code> <i>schema-name</i> - Export a database schema of the snapshot or cluster. This format is valid only for RDS for PostgreSQL and Aurora PostgreSQL.</p> </li> <li> <p> <code>database.schema.table</code> <i>table-name</i> - Export a table of the database schema. This format is valid only for RDS for PostgreSQL and Aurora PostgreSQL.</p> </li> </ul> */
-export type AwsRdsExportTaskPropertiesExportOnlyList = ReadonlyArray<string>;
+export type AwsRdsExportTaskPropertiesExportOnlyList = Array<string>;
 export const AwsRdsExportTaskPropertiesExportOnlyList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AwsRdsExportTaskPropertiesExportOnlyList>;
@@ -60770,7 +60719,7 @@ export const ExportSourceType = /*@__PURE__*/ S.String;
 /** Definition of ExportSourceTypeEnumValue */
 export interface ExportSourceTypeEnumValue {
   /** Property value */
-  value?: ExportSourceType;
+  value?: ExportSourceType | (string & {});
 }
 export const ExportSourceTypeEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -61159,7 +61108,7 @@ export const RdsExportTask = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RdsExportTask" }) as any as S.Schema<RdsExportTask>;
 
 /** The RdsExportTask items on this page */
-export type RdsExportTaskListResultValueList = ReadonlyArray<RdsExportTask>;
+export type RdsExportTaskListResultValueList = Array<RdsExportTask>;
 export const RdsExportTaskListResultValueList = /*@__PURE__*/ S.Array(
   RdsExportTask,
 ) as any as S.Schema<RdsExportTaskListResultValueList>;
@@ -61302,7 +61251,7 @@ export const Parameter_2 = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of parameters to be modified. A maximum of 20 parameters can be modified in a single request. */
 export type AwsRedshiftClusterParameterGroupPropertiesParametersList =
-  ReadonlyArray<Parameter_2>;
+  Array<Parameter_2>;
 export const AwsRedshiftClusterParameterGroupPropertiesParametersList =
   /*@__PURE__*/ S.Array(
     Parameter_2,
@@ -61323,8 +61272,7 @@ export const Tag_50 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tag_50" }) as any as S.Schema<Tag_50>;
 
 /** An array of key-value pairs to apply to this resource. */
-export type AwsRedshiftClusterParameterGroupPropertiesTagsList =
-  ReadonlyArray<Tag_50>;
+export type AwsRedshiftClusterParameterGroupPropertiesTagsList = Array<Tag_50>;
 export const AwsRedshiftClusterParameterGroupPropertiesTagsList =
   /*@__PURE__*/ S.Array(
     Tag_50,
@@ -61697,7 +61645,7 @@ export const RedshiftClusterParameterGroup = /*@__PURE__*/ S.suspend(() =>
 
 /** The RedshiftClusterParameterGroup items on this page */
 export type RedshiftClusterParameterGroupListResultValueList =
-  ReadonlyArray<RedshiftClusterParameterGroup>;
+  Array<RedshiftClusterParameterGroup>;
 export const RedshiftClusterParameterGroupListResultValueList =
   /*@__PURE__*/ S.Array(
     RedshiftClusterParameterGroup,
@@ -61832,7 +61780,7 @@ export const RedshiftClustersCreateOrReplaceRequestTagsMap =
 
 /** A list of security groups to be associated with this cluster. */
 export type AwsRedshiftClusterPropertiesClusterSecurityGroupsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const AwsRedshiftClusterPropertiesClusterSecurityGroupsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -61853,7 +61801,7 @@ export const Endpoint_4 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Endpoint_4" }) as any as S.Schema<Endpoint_4>;
 
 /** A list of AWS Identity and Access Management (IAM) roles that can be used by the cluster to access other AWS services. You must supply the IAM roles in their Amazon Resource Name (ARN) format. You can supply up to 50 IAM roles in a single request */
-export type AwsRedshiftClusterPropertiesIamRolesList = ReadonlyArray<string>;
+export type AwsRedshiftClusterPropertiesIamRolesList = Array<string>;
 export const AwsRedshiftClusterPropertiesIamRolesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AwsRedshiftClusterPropertiesIamRolesList>;
@@ -61875,14 +61823,13 @@ export const LoggingProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LoggingProperties>;
 
 /** The list of tags for the cluster parameter group. */
-export type AwsRedshiftClusterPropertiesTagsList = ReadonlyArray<Tag>;
+export type AwsRedshiftClusterPropertiesTagsList = Array<Tag>;
 export const AwsRedshiftClusterPropertiesTagsList = /*@__PURE__*/ S.Array(
   Tag,
 ) as any as S.Schema<AwsRedshiftClusterPropertiesTagsList>;
 
 /** A list of Virtual Private Cloud (VPC) security groups to be associated with the cluster. */
-export type AwsRedshiftClusterPropertiesVpcSecurityGroupIdsList =
-  ReadonlyArray<string>;
+export type AwsRedshiftClusterPropertiesVpcSecurityGroupIdsList = Array<string>;
 export const AwsRedshiftClusterPropertiesVpcSecurityGroupIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -62392,7 +62339,7 @@ export const RedshiftCluster = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RedshiftCluster>;
 
 /** The RedshiftCluster items on this page */
-export type RedshiftClusterListResultValueList = ReadonlyArray<RedshiftCluster>;
+export type RedshiftClusterListResultValueList = Array<RedshiftCluster>;
 export const RedshiftClusterListResultValueList = /*@__PURE__*/ S.Array(
   RedshiftCluster,
 ) as any as S.Schema<RedshiftClusterListResultValueList>;
@@ -62879,7 +62826,7 @@ export const Route53DomainsDomainSummary = /*@__PURE__*/ S.suspend(() =>
 
 /** The Route53DomainsDomainSummary items on this page */
 export type Route53DomainsDomainSummaryListResultValueList =
-  ReadonlyArray<Route53DomainsDomainSummary>;
+  Array<Route53DomainsDomainSummary>;
 export const Route53DomainsDomainSummaryListResultValueList =
   /*@__PURE__*/ S.Array(
     Route53DomainsDomainSummary,
@@ -63041,15 +62988,14 @@ export const HostedZoneTag = /*@__PURE__*/ S.suspend(() =>
 
 /** Adds, edits, or deletes tags for a health check or a hosted zone. For information about using tags for cost allocation, see [Using Cost Allocation Tags](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html) in the *User Guide*. */
 export type AwsRoute53HostedZonePropertiesHostedZoneTagsList =
-  ReadonlyArray<HostedZoneTag>;
+  Array<HostedZoneTag>;
 export const AwsRoute53HostedZonePropertiesHostedZoneTagsList =
   /*@__PURE__*/ S.Array(
     HostedZoneTag,
   ) as any as S.Schema<AwsRoute53HostedZonePropertiesHostedZoneTagsList>;
 
 /** Property nameServers */
-export type AwsRoute53HostedZonePropertiesNameServersList =
-  ReadonlyArray<string>;
+export type AwsRoute53HostedZonePropertiesNameServersList = Array<string>;
 export const AwsRoute53HostedZonePropertiesNameServersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -63083,7 +63029,7 @@ export const VPC = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VPC" }) as any as S.Schema<VPC>;
 
 /** *Private hosted zones:* A complex type that contains information about the VPCs that are associated with the specified hosted zone. For public hosted zones, omit ``VPCs``, ``VPCId``, and ``VPCRegion``. */
-export type AwsRoute53HostedZonePropertiesVpCsList = ReadonlyArray<VPC>;
+export type AwsRoute53HostedZonePropertiesVpCsList = Array<VPC>;
 export const AwsRoute53HostedZonePropertiesVpCsList = /*@__PURE__*/ S.Array(
   VPC,
 ) as any as S.Schema<AwsRoute53HostedZonePropertiesVpCsList>;
@@ -63445,8 +63391,7 @@ export const Route53HostedZone = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<Route53HostedZone>;
 
 /** The Route53HostedZone items on this page */
-export type Route53HostedZoneListResultValueList =
-  ReadonlyArray<Route53HostedZone>;
+export type Route53HostedZoneListResultValueList = Array<Route53HostedZone>;
 export const Route53HostedZoneListResultValueList = /*@__PURE__*/ S.Array(
   Route53HostedZone,
 ) as any as S.Schema<Route53HostedZoneListResultValueList>;
@@ -63613,7 +63558,7 @@ export const ResourceRecordSetFailover = /*@__PURE__*/ S.String;
 /** Definition of ResourceRecordSetFailoverEnumValue */
 export interface ResourceRecordSetFailoverEnumValue {
   /** Property value */
-  value?: ResourceRecordSetFailover;
+  value?: ResourceRecordSetFailover | (string & {});
 }
 export const ResourceRecordSetFailoverEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -63714,7 +63659,7 @@ export const ResourceRecordSetRegion = /*@__PURE__*/ S.String;
 /** Definition of ResourceRecordSetRegionEnumValue */
 export interface ResourceRecordSetRegionEnumValue {
   /** Property value */
-  value?: ResourceRecordSetRegion;
+  value?: ResourceRecordSetRegion | (string & {});
 }
 export const ResourceRecordSetRegionEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -63737,7 +63682,7 @@ export const ResourceRecord = /*@__PURE__*/ S.suspend(() =>
 
 /** <p>Information about the resource records to act upon.</p> <note> <p>If you're creating an alias resource record set, omit <code>ResourceRecords</code>.</p> </note> */
 export type AwsRoute53ResourceRecordSetPropertiesResourceRecordsList =
-  ReadonlyArray<ResourceRecord>;
+  Array<ResourceRecord>;
 export const AwsRoute53ResourceRecordSetPropertiesResourceRecordsList =
   /*@__PURE__*/ S.Array(
     ResourceRecord,
@@ -63763,7 +63708,7 @@ export const RRType = /*@__PURE__*/ S.String;
 /** Definition of RRTypeEnumValue */
 export interface RRTypeEnumValue {
   /** Property value */
-  value?: RRType;
+  value?: RRType | (string & {});
 }
 export const RRTypeEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -64163,7 +64108,7 @@ export const Route53ResourceRecordSet = /*@__PURE__*/ S.suspend(() =>
 
 /** The Route53ResourceRecordSet items on this page */
 export type Route53ResourceRecordSetListResultValueList =
-  ReadonlyArray<Route53ResourceRecordSet>;
+  Array<Route53ResourceRecordSet>;
 export const Route53ResourceRecordSetListResultValueList =
   /*@__PURE__*/ S.Array(
     Route53ResourceRecordSet,
@@ -64302,7 +64247,7 @@ export const Type_2 = /*@__PURE__*/ S.String;
 /** Definition of TypeEnumValue */
 export interface TypeEnumValue {
   /** Property value */
-  value?: Type_2;
+  value?: Type_2 | (string & {});
 }
 export const TypeEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -64345,7 +64290,7 @@ export const Permission = /*@__PURE__*/ S.String;
 /** Definition of PermissionEnumValue */
 export interface PermissionEnumValue {
   /** Property value */
-  value?: Permission;
+  value?: Permission | (string & {});
 }
 export const PermissionEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -64370,7 +64315,7 @@ export const Grant = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Grant" }) as any as S.Schema<Grant>;
 
 /** <p>A list of grants.</p> */
-export type AwsS3AccessControlPolicyPropertiesGrantsList = ReadonlyArray<Grant>;
+export type AwsS3AccessControlPolicyPropertiesGrantsList = Array<Grant>;
 export const AwsS3AccessControlPolicyPropertiesGrantsList =
   /*@__PURE__*/ S.Array(
     Grant,
@@ -64735,7 +64680,7 @@ export const S3AccessControlPolicy = /*@__PURE__*/ S.suspend(() =>
 
 /** The S3AccessControlPolicy items on this page */
 export type S3AccessControlPolicyListResultValueList =
-  ReadonlyArray<S3AccessControlPolicy>;
+  Array<S3AccessControlPolicy>;
 export const S3AccessControlPolicyListResultValueList = /*@__PURE__*/ S.Array(
   S3AccessControlPolicy,
 ) as any as S.Schema<S3AccessControlPolicyListResultValueList>;
@@ -64918,7 +64863,7 @@ export interface AwsS3AccessPointProperties {
   /** The name you want to assign to this Access Point. If you don't specify a name, AWS CloudFormation generates a unique ID and uses that ID for the access point name. */
   name?: string;
   /** Indicates whether this Access Point allows access from the public Internet. If VpcConfiguration is specified for this Access Point, then NetworkOrigin is VPC, and the Access Point doesn't allow access from the public Internet. Otherwise, NetworkOrigin is Internet, and the Access Point allows access from the public Internet, subject to the Access Point and bucket access policies. */
-  networkOrigin?: NetworkOrigin;
+  networkOrigin?: NetworkOrigin | (string & {});
   /** The Access Point Policy you want to apply to this access point. */
   policy?: unknown;
   /** The PublicAccessBlock configuration that you want to apply to this Access Point. You can enable the configuration options in any combination. For more information about when Amazon S3 considers a bucket or object public, see https://docs.aws.amazon.com/AmazonS3/latest/dev/access-control-block-public-access.html#access-control-block-public-access-policy-status 'The Meaning of Public' in the Amazon Simple Storage Service Developer Guide. */
@@ -65263,7 +65208,7 @@ export const S3AccessPoint = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "S3AccessPoint" }) as any as S.Schema<S3AccessPoint>;
 
 /** The S3AccessPoint items on this page */
-export type S3AccessPointListResultValueList = ReadonlyArray<S3AccessPoint>;
+export type S3AccessPointListResultValueList = Array<S3AccessPoint>;
 export const S3AccessPointListResultValueList = /*@__PURE__*/ S.Array(
   S3AccessPoint,
 ) as any as S.Schema<S3AccessPointListResultValueList>;
@@ -65724,7 +65669,7 @@ export const S3BucketPolicy = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "S3BucketPolicy" }) as any as S.Schema<S3BucketPolicy>;
 
 /** The S3BucketPolicy items on this page */
-export type S3BucketPolicyListResultValueList = ReadonlyArray<S3BucketPolicy>;
+export type S3BucketPolicyListResultValueList = Array<S3BucketPolicy>;
 export const S3BucketPolicyListResultValueList = /*@__PURE__*/ S.Array(
   S3BucketPolicy,
 ) as any as S.Schema<S3BucketPolicyListResultValueList>;
@@ -65857,7 +65802,9 @@ export const AccelerateConfigurationAccelerationStatus = /*@__PURE__*/ S.String;
 /** Definition of AccelerateConfiguration */
 export interface AccelerateConfiguration {
   /** Specifies the transfer acceleration status of the bucket. */
-  accelerationStatus?: AccelerateConfigurationAccelerationStatus;
+  accelerationStatus?:
+    | AccelerateConfigurationAccelerationStatus
+    | (string & {});
 }
 export const AccelerateConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -65890,7 +65837,7 @@ export interface Destination {
   /** The Amazon Resource Name (ARN) of the bucket to which data is exported. */
   bucketArn?: string;
   /** Specifies the file format used when exporting data to Amazon S3. *Allowed values*: ``CSV`` | ``ORC`` | ``Parquet`` */
-  format?: DestinationFormat;
+  format?: DestinationFormat | (string & {});
   /** The prefix to use when exporting data. The prefix is prepended to all results. */
   prefix?: string;
 }
@@ -65945,7 +65892,7 @@ export const TagFilter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TagFilter" }) as any as S.Schema<TagFilter>;
 
 /** The tags to use when evaluating an analytics filter. The analytics only includes objects that meet the filter's criteria. If no filter is specified, all of the contents of the bucket are included in the analysis. */
-export type AnalyticsConfigurationTagFiltersList = ReadonlyArray<TagFilter>;
+export type AnalyticsConfigurationTagFiltersList = Array<TagFilter>;
 export const AnalyticsConfigurationTagFiltersList = /*@__PURE__*/ S.Array(
   TagFilter,
 ) as any as S.Schema<AnalyticsConfigurationTagFiltersList>;
@@ -65974,7 +65921,7 @@ export const AnalyticsConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** Specifies the configuration and any analyses for the analytics filter of an Amazon S3 bucket. */
 export type AwsS3BucketPropertiesAnalyticsConfigurationsList =
-  ReadonlyArray<AnalyticsConfiguration>;
+  Array<AnalyticsConfiguration>;
 export const AwsS3BucketPropertiesAnalyticsConfigurationsList =
   /*@__PURE__*/ S.Array(
     AnalyticsConfiguration,
@@ -65992,7 +65939,7 @@ export interface ServerSideEncryptionByDefault {
   /** AWS Key Management Service (KMS) customer AWS KMS key ID to use for the default encryption. This parameter is allowed if and only if ``SSEAlgorithm`` is set to ``aws:kms`` or ``aws:kms:dsse``. You can specify the key ID, key alias, or the Amazon Resource Name (ARN) of the KMS key. + Key ID: ``1234abcd-12ab-34cd-56ef-1234567890ab`` + Key ARN: ``arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`` + Key Alias: ``alias/alias-name`` If you use a key ID, you can run into a LogDestination undeliverable error when creating a VPC flow log. If you are using encryption with cross-account or AWS service operations you must use a fully qualified KMS key ARN. For more information, see [Using encryption for cross-account operations](https://docs.aws.amazon.com/AmazonS3/latest/dev/bucket-encryption.html#bucket-encryption-update-bucket-policy). Amazon S3 only supports symmetric encryption KMS keys. For more information, see [Asymmetric keys in KMS](https://docs.aws.amazon.com//kms/latest/developerguide/symmetric-asymmetric.html) in the *Key Management Service Developer Guide*. */
   kmsMasterKeyID?: string;
   /** Server-side encryption algorithm to use for the default encryption. */
-  sseAlgorithm?: ServerSideEncryptionByDefaultSSEAlgorithm;
+  sseAlgorithm?: ServerSideEncryptionByDefaultSSEAlgorithm | (string & {});
 }
 export const ServerSideEncryptionByDefault = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -66021,7 +65968,7 @@ export const ServerSideEncryptionRule = /*@__PURE__*/ S.suspend(() =>
 
 /** Specifies the default server-side-encryption configuration. */
 export type BucketEncryptionServerSideEncryptionConfigurationList =
-  ReadonlyArray<ServerSideEncryptionRule>;
+  Array<ServerSideEncryptionRule>;
 export const BucketEncryptionServerSideEncryptionConfigurationList =
   /*@__PURE__*/ S.Array(
     ServerSideEncryptionRule,
@@ -66043,7 +65990,7 @@ export const BucketEncryption = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BucketEncryption>;
 
 /** Headers that are specified in the ``Access-Control-Request-Headers`` header. These headers are allowed in a preflight OPTIONS request. In response to any preflight OPTIONS request, Amazon S3 returns any requested headers that are allowed. */
-export type CorsRuleAllowedHeadersList = ReadonlyArray<string>;
+export type CorsRuleAllowedHeadersList = Array<string>;
 export const CorsRuleAllowedHeadersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CorsRuleAllowedHeadersList>;
@@ -66053,19 +66000,21 @@ export type CorsRuleAllowedMethods = "DELETE" | "GET" | "HEAD" | "POST" | "PUT";
 export const CorsRuleAllowedMethods = /*@__PURE__*/ S.String;
 
 /** An HTTP method that you allow the origin to run. *Allowed values*: ``GET`` | ``PUT`` | ``HEAD`` | ``POST`` | ``DELETE`` */
-export type CorsRuleAllowedMethodsList = ReadonlyArray<CorsRuleAllowedMethods>;
+export type CorsRuleAllowedMethodsList = Array<
+  CorsRuleAllowedMethods | (string & {})
+>;
 export const CorsRuleAllowedMethodsList = /*@__PURE__*/ S.Array(
   CorsRuleAllowedMethods,
 ) as any as S.Schema<CorsRuleAllowedMethodsList>;
 
 /** One or more origins you want customers to be able to access the bucket from. */
-export type CorsRuleAllowedOriginsList = ReadonlyArray<string>;
+export type CorsRuleAllowedOriginsList = Array<string>;
 export const CorsRuleAllowedOriginsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CorsRuleAllowedOriginsList>;
 
 /** One or more headers in the response that you want customers to be able to access from their applications (for example, from a JavaScript ``XMLHttpRequest`` object). */
-export type CorsRuleExposedHeadersList = ReadonlyArray<string>;
+export type CorsRuleExposedHeadersList = Array<string>;
 export const CorsRuleExposedHeadersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CorsRuleExposedHeadersList>;
@@ -66097,7 +66046,7 @@ export const CorsRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CorsRule" }) as any as S.Schema<CorsRule>;
 
 /** A set of origins and methods (cross-origin access that you want to allow). You can add up to 100 rules to the configuration. */
-export type CorsConfigurationCorsRulesList = ReadonlyArray<CorsRule>;
+export type CorsConfigurationCorsRulesList = Array<CorsRule>;
 export const CorsConfigurationCorsRulesList = /*@__PURE__*/ S.Array(
   CorsRule,
 ) as any as S.Schema<CorsConfigurationCorsRulesList>;
@@ -66120,8 +66069,7 @@ export type IntelligentTieringConfigurationStatus = "Disabled" | "Enabled";
 export const IntelligentTieringConfigurationStatus = /*@__PURE__*/ S.String;
 
 /** A container for a key-value pair. */
-export type IntelligentTieringConfigurationTagFiltersList =
-  ReadonlyArray<TagFilter>;
+export type IntelligentTieringConfigurationTagFiltersList = Array<TagFilter>;
 export const IntelligentTieringConfigurationTagFiltersList =
   /*@__PURE__*/ S.Array(
     TagFilter,
@@ -66134,7 +66082,7 @@ export const TieringAccessTier = /*@__PURE__*/ S.String;
 /** Definition of Tiering */
 export interface Tiering {
   /** S3 Intelligent-Tiering access tier. See [Storage class for automatically optimizing frequently and infrequently accessed objects](https://docs.aws.amazon.com/AmazonS3/latest/dev/storage-class-intro.html#sc-dynamic-data-access) for a list of access tiers in the S3 Intelligent-Tiering storage class. */
-  accessTier?: TieringAccessTier;
+  accessTier?: TieringAccessTier | (string & {});
   /** The number of consecutive days of no access after which an object will be eligible to be transitioned to the corresponding tier. The minimum number of days specified for Archive Access tier must be at least 90 days and Deep Archive Access tier must be at least 180 days. The maximum can be up to 2 years (730 days). */
   days?: number;
 }
@@ -66146,8 +66094,7 @@ export const Tiering = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tiering" }) as any as S.Schema<Tiering>;
 
 /** Specifies a list of S3 Intelligent-Tiering storage class tiers in the configuration. At least one tier must be defined in the list. At most, you can specify two tiers in the list, one for each available AccessTier: ``ARCHIVE_ACCESS`` and ``DEEP_ARCHIVE_ACCESS``. You only need Intelligent Tiering Configuration enabled on a bucket if you want to automatically move objects stored in the Intelligent-Tiering storage class to Archive Access or Deep Archive Access tiers. */
-export type IntelligentTieringConfigurationTieringsList =
-  ReadonlyArray<Tiering>;
+export type IntelligentTieringConfigurationTieringsList = Array<Tiering>;
 export const IntelligentTieringConfigurationTieringsList =
   /*@__PURE__*/ S.Array(
     Tiering,
@@ -66160,7 +66107,7 @@ export interface IntelligentTieringConfiguration {
   /** An object key name prefix that identifies the subset of objects to which the rule applies. */
   prefix?: string;
   /** Specifies the status of the configuration. */
-  status?: IntelligentTieringConfigurationStatus;
+  status?: IntelligentTieringConfigurationStatus | (string & {});
   /** A container for a key-value pair. */
   tagFilters?: IntelligentTieringConfigurationTagFiltersList;
   /** Specifies a list of S3 Intelligent-Tiering storage class tiers in the configuration. At least one tier must be defined in the list. At most, you can specify two tiers in the list, one for each available AccessTier: ``ARCHIVE_ACCESS`` and ``DEEP_ARCHIVE_ACCESS``. You only need Intelligent Tiering Configuration enabled on a bucket if you want to automatically move objects stored in the Intelligent-Tiering storage class to Archive Access or Deep Archive Access tiers. */
@@ -66180,7 +66127,7 @@ export const IntelligentTieringConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** Defines how Amazon S3 handles Intelligent-Tiering storage. */
 export type AwsS3BucketPropertiesIntelligentTieringConfigurationsList =
-  ReadonlyArray<IntelligentTieringConfiguration>;
+  Array<IntelligentTieringConfiguration>;
 export const AwsS3BucketPropertiesIntelligentTieringConfigurationsList =
   /*@__PURE__*/ S.Array(
     IntelligentTieringConfiguration,
@@ -66211,8 +66158,9 @@ export type InventoryConfigurationOptionalFields =
 export const InventoryConfigurationOptionalFields = /*@__PURE__*/ S.String;
 
 /** Contains the optional fields that are included in the inventory results. */
-export type InventoryConfigurationOptionalFieldsList =
-  ReadonlyArray<InventoryConfigurationOptionalFields>;
+export type InventoryConfigurationOptionalFieldsList = Array<
+  InventoryConfigurationOptionalFields | (string & {})
+>;
 export const InventoryConfigurationOptionalFieldsList = /*@__PURE__*/ S.Array(
   InventoryConfigurationOptionalFields,
 ) as any as S.Schema<InventoryConfigurationOptionalFieldsList>;
@@ -66230,13 +66178,15 @@ export interface InventoryConfiguration {
   /** The ID used to identify the inventory configuration. */
   id?: string;
   /** Object versions to include in the inventory list. If set to ``All``, the list includes all the object versions, which adds the version-related fields ``VersionId``, ``IsLatest``, and ``DeleteMarker`` to the list. If set to ``Current``, the list does not contain these version-related fields. */
-  includedObjectVersions?: InventoryConfigurationIncludedObjectVersions;
+  includedObjectVersions?:
+    | InventoryConfigurationIncludedObjectVersions
+    | (string & {});
   /** Contains the optional fields that are included in the inventory results. */
   optionalFields?: InventoryConfigurationOptionalFieldsList;
   /** Specifies the inventory filter prefix. */
   prefix?: string;
   /** Specifies the schedule for generating inventory results. */
-  scheduleFrequency?: InventoryConfigurationScheduleFrequency;
+  scheduleFrequency?: InventoryConfigurationScheduleFrequency | (string & {});
 }
 export const InventoryConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -66256,7 +66206,7 @@ export const InventoryConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** Specifies the inventory configuration for an Amazon S3 bucket. For more information, see [GET Bucket inventory](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketGETInventoryConfig.html) in the *Amazon S3 API Reference*. */
 export type AwsS3BucketPropertiesInventoryConfigurationsList =
-  ReadonlyArray<InventoryConfiguration>;
+  Array<InventoryConfiguration>;
 export const AwsS3BucketPropertiesInventoryConfigurationsList =
   /*@__PURE__*/ S.Array(
     InventoryConfiguration,
@@ -66306,7 +66256,7 @@ export interface NoncurrentVersionTransition {
   /** Specifies how many noncurrent versions S3 will retain. If there are this many more recent noncurrent versions, S3 will take the associated action. For more information about noncurrent versions, see [Lifecycle configuration elements](https://docs.aws.amazon.com/AmazonS3/latest/userguide/intro-lifecycle-rules.html) in the *Amazon S3 User Guide*. */
   newerNoncurrentVersions?: number;
   /** The class of storage used to store the object. */
-  storageClass?: NoncurrentVersionTransitionStorageClass;
+  storageClass?: NoncurrentVersionTransitionStorageClass | (string & {});
   /** Specifies the number of days an object is noncurrent before Amazon S3 can perform the associated action. For information about the noncurrent days calculations, see [How Amazon S3 Calculates How Long an Object Has Been Noncurrent](https://docs.aws.amazon.com/AmazonS3/latest/dev/intro-lifecycle-rules.html#non-current-days-calculations) in the *Amazon S3 User Guide*. */
   transitionInDays?: number;
 }
@@ -66322,7 +66272,7 @@ export const NoncurrentVersionTransition = /*@__PURE__*/ S.suspend(() =>
 
 /** For buckets with versioning enabled (or suspended), one or more transition rules that specify when non-current objects transition to a specified storage class. If you specify a transition and expiration time, the expiration time must be later than the transition time. If you specify this property, don't specify the ``NoncurrentVersionTransition`` property. */
 export type RuleNoncurrentVersionTransitionsList =
-  ReadonlyArray<NoncurrentVersionTransition>;
+  Array<NoncurrentVersionTransition>;
 export const RuleNoncurrentVersionTransitionsList = /*@__PURE__*/ S.Array(
   NoncurrentVersionTransition,
 ) as any as S.Schema<RuleNoncurrentVersionTransitionsList>;
@@ -66332,7 +66282,7 @@ export type RuleStatus = "Disabled" | "Enabled";
 export const RuleStatus = /*@__PURE__*/ S.String;
 
 /** Tags to use to identify a subset of objects to which the lifecycle rule applies. */
-export type RuleTagFiltersList = ReadonlyArray<TagFilter>;
+export type RuleTagFiltersList = Array<TagFilter>;
 export const RuleTagFiltersList = /*@__PURE__*/ S.Array(
   TagFilter,
 ) as any as S.Schema<RuleTagFiltersList>;
@@ -66350,7 +66300,7 @@ export const TransitionStorageClass = /*@__PURE__*/ S.String;
 /** Definition of Transition */
 export interface Transition {
   /** The storage class to which you want the object to transition. */
-  storageClass?: TransitionStorageClass;
+  storageClass?: TransitionStorageClass | (string & {});
   /** Indicates when objects are transitioned to the specified storage class. The date value must be in ISO 8601 format. The time is always midnight UTC. The date value in ISO 8601 format. The timezone is always UTC. (YYYY-MM-DDThh:mm:ssZ) */
   transitionDate?: string;
   /** Indicates the number of days after creation when objects are transitioned to the specified storage class. The value must be a positive integer. */
@@ -66365,7 +66315,7 @@ export const Transition = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Transition" }) as any as S.Schema<Transition>;
 
 /** One or more transition rules that specify when an object transitions to a specified storage class. If you specify an expiration and transition time, you must use the same time unit for both properties (either in days or by date). The expiration time must also be later than the transition time. If you specify this property, don't specify the ``Transition`` property. */
-export type RuleTransitionsList = ReadonlyArray<Transition>;
+export type RuleTransitionsList = Array<Transition>;
 export const RuleTransitionsList = /*@__PURE__*/ S.Array(
   Transition,
 ) as any as S.Schema<RuleTransitionsList>;
@@ -66397,7 +66347,7 @@ export interface Rule {
   /** Object key prefix that identifies one or more objects to which this rule applies. Replacement must be made for object keys containing special characters (such as carriage returns) when using XML requests. For more information, see [XML related object key constraints](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-keys.html#object-key-xml-related-constraints). */
   prefix?: string;
   /** If ``Enabled``, the rule is currently being applied. If ``Disabled``, the rule is not currently being applied. */
-  status?: RuleStatus;
+  status?: RuleStatus | (string & {});
   /** Tags to use to identify a subset of objects to which the lifecycle rule applies. */
   tagFilters?: RuleTagFiltersList;
   /** (Deprecated.) Specifies when an object transitions to a specified storage class. If you specify an expiration and transition time, you must use the same time unit for both properties (either in days or by date). The expiration time must also be later than the transition time. If you specify this property, don't specify the ``Transitions`` property. Specifies when an object transitions to a specified storage class. For more information about Amazon S3 lifecycle configuration rules, see [Transitioning Objects Using Amazon S3 Lifecycle](https://docs.aws.amazon.com/AmazonS3/latest/dev/lifecycle-transition-general-considerations.html) in the *Amazon S3 User Guide*. */
@@ -66429,7 +66379,7 @@ export const Rule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Rule" }) as any as S.Schema<Rule>;
 
 /** A lifecycle rule for individual objects in an Amazon S3 bucket. */
-export type LifecycleConfigurationRulesList = ReadonlyArray<Rule>;
+export type LifecycleConfigurationRulesList = Array<Rule>;
 export const LifecycleConfigurationRulesList = /*@__PURE__*/ S.Array(
   Rule,
 ) as any as S.Schema<LifecycleConfigurationRulesList>;
@@ -66454,7 +66404,7 @@ export const PartitionedPrefixPartitionDateSource = /*@__PURE__*/ S.String;
 /** Definition of PartitionedPrefix */
 export interface PartitionedPrefix {
   /** Specifies the partition date source for the partitioned prefix. PartitionDateSource can be EventTime or DeliveryTime. */
-  partitionDateSource?: PartitionedPrefixPartitionDateSource;
+  partitionDateSource?: PartitionedPrefixPartitionDateSource | (string & {});
 }
 export const PartitionedPrefix = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -66500,7 +66450,7 @@ export const LoggingConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LoggingConfiguration>;
 
 /** Specifies a list of tag filters to use as a metrics configuration filter. The metrics configuration includes only objects that meet the filter's criteria. */
-export type MetricsConfigurationTagFiltersList = ReadonlyArray<TagFilter>;
+export type MetricsConfigurationTagFiltersList = Array<TagFilter>;
 export const MetricsConfigurationTagFiltersList = /*@__PURE__*/ S.Array(
   TagFilter,
 ) as any as S.Schema<MetricsConfigurationTagFiltersList>;
@@ -66529,7 +66479,7 @@ export const MetricsConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** Specifies a metrics configuration for the CloudWatch request metrics (specified by the metrics configuration ID) from an Amazon S3 bucket. If you're updating an existing metrics configuration, note that this is a full replacement of the existing metrics configuration. If you don't include the elements you want to keep, they are erased. For more information, see [PutBucketMetricsConfiguration](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketPUTMetricConfiguration.html). */
 export type AwsS3BucketPropertiesMetricsConfigurationsList =
-  ReadonlyArray<MetricsConfiguration>;
+  Array<MetricsConfiguration>;
 export const AwsS3BucketPropertiesMetricsConfigurationsList =
   /*@__PURE__*/ S.Array(
     MetricsConfiguration,
@@ -66563,7 +66513,7 @@ export const FilterRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FilterRule" }) as any as S.Schema<FilterRule>;
 
 /** A list of containers for the key-value pair that defines the criteria for the filter rule. */
-export type S3KeyFilterRulesList = ReadonlyArray<FilterRule>;
+export type S3KeyFilterRulesList = Array<FilterRule>;
 export const S3KeyFilterRulesList = /*@__PURE__*/ S.Array(
   FilterRule,
 ) as any as S.Schema<S3KeyFilterRulesList>;
@@ -66613,7 +66563,7 @@ export const LambdaConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** Describes the LAMlong functions to invoke and the events for which to invoke them. */
 export type NotificationConfigurationLambdaConfigurationsList =
-  ReadonlyArray<LambdaConfiguration>;
+  Array<LambdaConfiguration>;
 export const NotificationConfigurationLambdaConfigurationsList =
   /*@__PURE__*/ S.Array(
     LambdaConfiguration,
@@ -66640,7 +66590,7 @@ export const QueueConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** The Amazon Simple Queue Service queues to publish messages to and the events for which to publish messages. */
 export type NotificationConfigurationQueueConfigurationsList =
-  ReadonlyArray<QueueConfiguration>;
+  Array<QueueConfiguration>;
 export const NotificationConfigurationQueueConfigurationsList =
   /*@__PURE__*/ S.Array(
     QueueConfiguration,
@@ -66667,7 +66617,7 @@ export const TopicConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** The topic to which notifications are sent and the events for which notifications are generated. */
 export type NotificationConfigurationTopicConfigurationsList =
-  ReadonlyArray<TopicConfiguration>;
+  Array<TopicConfiguration>;
 export const NotificationConfigurationTopicConfigurationsList =
   /*@__PURE__*/ S.Array(
     TopicConfiguration,
@@ -66710,7 +66660,7 @@ export interface DefaultRetention {
   /** The number of days that you want to specify for the default retention period. If Object Lock is turned on, you must specify ``Mode`` and specify either ``Days`` or ``Years``. */
   days?: number;
   /** The default Object Lock retention mode you want to apply to new objects placed in the specified bucket. If Object Lock is turned on, you must specify ``Mode`` and specify either ``Days`` or ``Years``. */
-  mode?: DefaultRetentionMode;
+  mode?: DefaultRetentionMode | (string & {});
   /** The number of years that you want to specify for the default retention period. If Object Lock is turned on, you must specify ``Mode`` and specify either ``Days`` or ``Years``. */
   years?: number;
 }
@@ -66761,7 +66711,7 @@ export const OwnershipControlsRuleObjectOwnership = /*@__PURE__*/ S.String;
 /** Definition of OwnershipControlsRule */
 export interface OwnershipControlsRule {
   /** Specifies an object ownership rule. */
-  objectOwnership?: OwnershipControlsRuleObjectOwnership;
+  objectOwnership?: OwnershipControlsRuleObjectOwnership | (string & {});
 }
 export const OwnershipControlsRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -66772,7 +66722,7 @@ export const OwnershipControlsRule = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OwnershipControlsRule>;
 
 /** Specifies the container element for Object Ownership rules. */
-export type OwnershipControlsRulesList = ReadonlyArray<OwnershipControlsRule>;
+export type OwnershipControlsRulesList = Array<OwnershipControlsRule>;
 export const OwnershipControlsRulesList = /*@__PURE__*/ S.Array(
   OwnershipControlsRule,
 ) as any as S.Schema<OwnershipControlsRulesList>;
@@ -66819,7 +66769,7 @@ export const DeleteMarkerReplicationStatus = /*@__PURE__*/ S.String;
 /** Definition of DeleteMarkerReplication */
 export interface DeleteMarkerReplication {
   /** Indicates whether to replicate delete markers. Disabled by default. */
-  status?: DeleteMarkerReplicationStatus;
+  status?: DeleteMarkerReplicationStatus | (string & {});
 }
 export const DeleteMarkerReplication = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -66877,7 +66827,7 @@ export interface Metrics {
   /** A container specifying the time threshold for emitting the ``s3:Replication:OperationMissedThreshold`` event. A container specifying the time value for S3 Replication Time Control (S3 RTC) and replication metrics ``EventThreshold``. */
   eventThreshold?: ReplicationTimeValue;
   /** Specifies whether the replication metrics are enabled. */
-  status?: MetricsStatus;
+  status?: MetricsStatus | (string & {});
 }
 export const Metrics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -66893,7 +66843,7 @@ export const ReplicationTimeStatus = /*@__PURE__*/ S.String;
 /** Definition of ReplicationTime */
 export interface ReplicationTime {
   /** Specifies whether the replication time is enabled. */
-  status?: ReplicationTimeStatus;
+  status?: ReplicationTimeStatus | (string & {});
   /** A container specifying the time by which replication should be complete for all objects and operations on objects. A container specifying the time value for S3 Replication Time Control (S3 RTC) and replication metrics ``EventThreshold``. */
   time?: ReplicationTimeValue;
 }
@@ -66933,7 +66883,7 @@ export interface ReplicationDestination_2 {
   /** A container specifying S3 Replication Time Control (S3 RTC), including whether S3 RTC is enabled and the time when all objects and operations on objects must be replicated. Must be specified together with a ``Metrics`` block. A container specifying S3 Replication Time Control (S3 RTC) related information, including whether S3 RTC is enabled and the time when all objects and operations on objects must be replicated. Must be specified together with a ``Metrics`` block. */
   replicationTime?: ReplicationTime;
   /** The storage class to use when replicating objects, such as S3 Standard or reduced redundancy. By default, Amazon S3 uses the storage class of the source object to create the object replica. For valid values, see the ``StorageClass`` element of the [PUT Bucket replication](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketPUTreplication.html) action in the *Amazon S3 API Reference*. */
-  storageClass?: ReplicationDestinationStorageClass;
+  storageClass?: ReplicationDestinationStorageClass | (string & {});
 }
 export const ReplicationDestination_2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -66950,7 +66900,7 @@ export const ReplicationDestination_2 = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReplicationDestination_2>;
 
 /** An array of tags containing key and value pairs. */
-export type ReplicationRuleAndOperatorTagFiltersList = ReadonlyArray<TagFilter>;
+export type ReplicationRuleAndOperatorTagFiltersList = Array<TagFilter>;
 export const ReplicationRuleAndOperatorTagFiltersList = /*@__PURE__*/ S.Array(
   TagFilter,
 ) as any as S.Schema<ReplicationRuleAndOperatorTagFiltersList>;
@@ -66997,7 +66947,7 @@ export const ReplicaModificationsStatus = /*@__PURE__*/ S.String;
 /** Definition of ReplicaModifications */
 export interface ReplicaModifications {
   /** Specifies whether Amazon S3 replicates modifications on replicas. *Allowed values*: ``Enabled`` | ``Disabled`` */
-  status?: ReplicaModificationsStatus;
+  status?: ReplicaModificationsStatus | (string & {});
 }
 export const ReplicaModifications = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -67014,7 +66964,7 @@ export const SseKmsEncryptedObjectsStatus = /*@__PURE__*/ S.String;
 /** Definition of SseKmsEncryptedObjects */
 export interface SseKmsEncryptedObjects {
   /** Specifies whether Amazon S3 replicates objects created with server-side encryption using an AWS KMS key stored in AWS Key Management Service. */
-  status?: SseKmsEncryptedObjectsStatus;
+  status?: SseKmsEncryptedObjectsStatus | (string & {});
 }
 export const SseKmsEncryptedObjects = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -67061,7 +67011,7 @@ export interface ReplicationRule {
   /** A container that describes additional filters for identifying the source objects that you want to replicate. You can choose to enable or disable the replication of these objects. A container that describes additional filters for identifying the source objects that you want to replicate. You can choose to enable or disable the replication of these objects. */
   sourceSelectionCriteria?: SourceSelectionCriteria;
   /** Specifies whether the rule is enabled. */
-  status?: ReplicationRuleStatus;
+  status?: ReplicationRuleStatus | (string & {});
 }
 export const ReplicationRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -67079,7 +67029,7 @@ export const ReplicationRule = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReplicationRule>;
 
 /** A container for one or more replication rules. A replication configuration must have at least one rule and can contain a maximum of 1,000 rules. */
-export type ReplicationConfigurationRulesList = ReadonlyArray<ReplicationRule>;
+export type ReplicationConfigurationRulesList = Array<ReplicationRule>;
 export const ReplicationConfigurationRulesList = /*@__PURE__*/ S.Array(
   ReplicationRule,
 ) as any as S.Schema<ReplicationConfigurationRulesList>;
@@ -67115,7 +67065,7 @@ export const Tag_51 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tag_51" }) as any as S.Schema<Tag_51>;
 
 /** An arbitrary set of tags (key-value pairs) for this S3 bucket. */
-export type AwsS3BucketPropertiesTagsList = ReadonlyArray<Tag_51>;
+export type AwsS3BucketPropertiesTagsList = Array<Tag_51>;
 export const AwsS3BucketPropertiesTagsList = /*@__PURE__*/ S.Array(
   Tag_51,
 ) as any as S.Schema<AwsS3BucketPropertiesTagsList>;
@@ -67127,7 +67077,7 @@ export const VersioningConfigurationStatus = /*@__PURE__*/ S.String;
 /** Definition of VersioningConfiguration */
 export interface VersioningConfiguration {
   /** The versioning state of the bucket. */
-  status?: VersioningConfigurationStatus;
+  status?: VersioningConfigurationStatus | (string & {});
 }
 export const VersioningConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -67146,7 +67096,7 @@ export interface RedirectAllRequestsTo {
   /** Name of the host where requests are redirected. */
   hostName?: string;
   /** Protocol to use when redirecting requests. The default is the protocol that is used in the original request. */
-  protocol?: RedirectAllRequestsToProtocol;
+  protocol?: RedirectAllRequestsToProtocol | (string & {});
 }
 export const RedirectAllRequestsTo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -67168,7 +67118,7 @@ export interface RedirectRule {
   /** The HTTP redirect code to use on the response. Not required if one of the siblings is present. */
   httpRedirectCode?: string;
   /** Protocol to use when redirecting requests. The default is the protocol that is used in the original request. */
-  protocol?: RedirectRuleProtocol;
+  protocol?: RedirectRuleProtocol | (string & {});
   /** The object key prefix to use in the redirect request. For example, to redirect requests for all pages with prefix ``docs/`` (objects in the ``docs/`` folder) to ``documents/``, you can set a condition block with ``KeyPrefixEquals`` set to ``docs/`` and in the Redirect set ``ReplaceKeyPrefixWith`` to ``/documents``. Not required if one of the siblings is present. Can be present only if ``ReplaceKeyWith`` is not provided. Replacement must be made for object keys containing special characters (such as carriage returns) when using XML requests. For more information, see [XML related object key constraints](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-keys.html#object-key-xml-related-constraints). */
   replaceKeyPrefixWith?: string;
   /** The specific object key to use in the redirect request. For example, redirect request to ``error.html``. Not required if one of the siblings is present. Can be present only if ``ReplaceKeyPrefixWith`` is not provided. Replacement must be made for object keys containing special characters (such as carriage returns) when using XML requests. For more information, see [XML related object key constraints](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-keys.html#object-key-xml-related-constraints). */
@@ -67215,7 +67165,7 @@ export const RoutingRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RoutingRule" }) as any as S.Schema<RoutingRule>;
 
 /** Rules that define when a redirect is applied and the redirect behavior. */
-export type WebsiteConfigurationRoutingRulesList = ReadonlyArray<RoutingRule>;
+export type WebsiteConfigurationRoutingRulesList = Array<RoutingRule>;
 export const WebsiteConfigurationRoutingRulesList = /*@__PURE__*/ S.Array(
   RoutingRule,
 ) as any as S.Schema<WebsiteConfigurationRoutingRulesList>;
@@ -67247,7 +67197,7 @@ export interface AwsS3BucketProperties {
   /** Configures the transfer acceleration state for an Amazon S3 bucket. For more information, see [Amazon S3 Transfer Acceleration](https://docs.aws.amazon.com/AmazonS3/latest/dev/transfer-acceleration.html) in the *Amazon S3 User Guide*. Configures the transfer acceleration state for an Amazon S3 bucket. For more information, see [Amazon S3 Transfer Acceleration](https://docs.aws.amazon.com/AmazonS3/latest/dev/transfer-acceleration.html) in the *Amazon S3 User Guide*. */
   accelerateConfiguration?: AccelerateConfiguration;
   /** This is a legacy property, and it is not recommended for most use cases. A majority of modern use cases in Amazon S3 no longer require the use of ACLs, and we recommend that you keep ACLs disabled. For more information, see [Controlling object ownership](https://docs.aws.amazon.com//AmazonS3/latest/userguide/about-object-ownership.html) in the *Amazon S3 User Guide*. A canned access control list (ACL) that grants predefined permissions to the bucket. For more information about canned ACLs, see [Canned ACL](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl) in the *Amazon S3 User Guide*. S3 buckets are created with ACLs disabled by default. Therefore, unless you explicitly set the [AWS::S3::OwnershipControls](https://docs.aws.amazon.com//AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-ownershipcontrols.html) property to enable ACLs, your resource will fail to deploy with any value other than Private. Use cases requiring ACLs are uncommon. The majority of access control configurations can be successfully and more easily achieved with bucket policies. For more information, see [AWS::S3::BucketPolicy](https://docs.aws.amazon.com//AWSCloudFormation/latest/UserGuide/aws-properties-s3-policy.html). For examples of common policy configurations, including S3 Server Access Logs buckets and more, see [Bucket policy examples](https://docs.aws.amazon.com/AmazonS3/latest/userguide/example-bucket-policies.html) in the *Amazon S3 User Guide*. */
-  accessControl?: AccessControl;
+  accessControl?: AccessControl | (string & {});
   /** Specifies the configuration and any analyses for the analytics filter of an Amazon S3 bucket. */
   analyticsConfigurations?: AwsS3BucketPropertiesAnalyticsConfigurationsList;
   /** the Amazon Resource Name (ARN) of the specified bucket. */
@@ -67652,7 +67602,7 @@ export const S3Bucket = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "S3Bucket" }) as any as S.Schema<S3Bucket>;
 
 /** The S3Bucket items on this page */
-export type S3BucketListResultValueList = ReadonlyArray<S3Bucket>;
+export type S3BucketListResultValueList = Array<S3Bucket>;
 export const S3BucketListResultValueList = /*@__PURE__*/ S.Array(
   S3Bucket,
 ) as any as S.Schema<S3BucketListResultValueList>;
@@ -68179,7 +68129,7 @@ export const S3ControlMultiRegionAccessPointPolicyDocument =
 
 /** The S3ControlMultiRegionAccessPointPolicyDocument items on this page */
 export type S3ControlMultiRegionAccessPointPolicyDocumentListResultValueList =
-  ReadonlyArray<S3ControlMultiRegionAccessPointPolicyDocument>;
+  Array<S3ControlMultiRegionAccessPointPolicyDocument>;
 export const S3ControlMultiRegionAccessPointPolicyDocumentListResultValueList =
   /*@__PURE__*/ S.Array(
     S3ControlMultiRegionAccessPointPolicyDocument,
@@ -68396,7 +68346,7 @@ export const ResourceSpecInstanceType = /*@__PURE__*/ S.String;
 /** Definition of ResourceSpec */
 export interface ResourceSpec {
   /** The instance type that the image version runs on. */
-  instanceType?: ResourceSpecInstanceType;
+  instanceType?: ResourceSpecInstanceType | (string & {});
   /** The ARN of the SageMaker image that the image version belongs to. */
   sageMakerImageArn?: string;
   /** The ARN of the image version created on the instance. */
@@ -68425,7 +68375,7 @@ export const Tag_52 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tag_52" }) as any as S.Schema<Tag_52>;
 
 /** A list of tags to apply to the app. */
-export type AwsSageMakerAppPropertiesTagsList = ReadonlyArray<Tag_52>;
+export type AwsSageMakerAppPropertiesTagsList = Array<Tag_52>;
 export const AwsSageMakerAppPropertiesTagsList = /*@__PURE__*/ S.Array(
   Tag_52,
 ) as any as S.Schema<AwsSageMakerAppPropertiesTagsList>;
@@ -68437,7 +68387,7 @@ export interface AwsSageMakerAppProperties {
   /** The name of the app. */
   appName?: string;
   /** The type of app. */
-  appType?: AppType;
+  appType?: AppType | (string & {});
   /** The domain ID. */
   domainId?: string;
   /** The instance type and the Amazon Resource Name (ARN) of the SageMaker image created on the instance. */
@@ -68781,7 +68731,7 @@ export const SageMakerApp = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SageMakerApp" }) as any as S.Schema<SageMakerApp>;
 
 /** The SageMakerApp items on this page */
-export type SageMakerAppListResultValueList = ReadonlyArray<SageMakerApp>;
+export type SageMakerAppListResultValueList = Array<SageMakerApp>;
 export const SageMakerAppListResultValueList = /*@__PURE__*/ S.Array(
   SageMakerApp,
 ) as any as S.Schema<SageMakerAppListResultValueList>;
@@ -68910,7 +68860,7 @@ export const SageMakerNotebookInstanceSummariesCreateOrReplaceRequestTagsMap =
 
 /** <p>An array of up to three Git repositories associated with the notebook instance. These can be either the names of Git repositories stored as resources in your account, or the URL of Git repositories in <a href='https://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html'>Amazon Web Services CodeCommit</a> or in any other Git repository. These repositories are cloned at the same level as the default repository of your notebook instance. For more information, see <a href='https://docs.aws.amazon.com/sagemaker/latest/dg/nbi-git-repo.html'>Associating Git Repositories with SageMaker Notebook Instances</a>.</p> */
 export type AwsSageMakerNotebookInstanceSummaryPropertiesAdditionalCodeRepositoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const AwsSageMakerNotebookInstanceSummaryPropertiesAdditionalCodeRepositoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -69080,7 +69030,7 @@ export const InstanceType_2 = /*@__PURE__*/ S.String;
 /** Definition of InstanceTypeEnumValue */
 export interface InstanceTypeEnumValue_2 {
   /** Property value */
-  value?: InstanceType_2;
+  value?: InstanceType_2 | (string & {});
 }
 export const InstanceTypeEnumValue_2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -69104,7 +69054,7 @@ export const NotebookInstanceStatus = /*@__PURE__*/ S.String;
 /** Definition of NotebookInstanceStatusEnumValue */
 export interface NotebookInstanceStatusEnumValue {
   /** Property value */
-  value?: NotebookInstanceStatus;
+  value?: NotebookInstanceStatus | (string & {});
 }
 export const NotebookInstanceStatusEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -69496,7 +69446,7 @@ export const SageMakerNotebookInstanceSummary = /*@__PURE__*/ S.suspend(() =>
 
 /** The SageMakerNotebookInstanceSummary items on this page */
 export type SageMakerNotebookInstanceSummaryListResultValueList =
-  ReadonlyArray<SageMakerNotebookInstanceSummary>;
+  Array<SageMakerNotebookInstanceSummary>;
 export const SageMakerNotebookInstanceSummaryListResultValueList =
   /*@__PURE__*/ S.Array(
     SageMakerNotebookInstanceSummary,
@@ -69991,7 +69941,7 @@ export const SecretsManagerResourcePolicy = /*@__PURE__*/ S.suspend(() =>
 
 /** The SecretsManagerResourcePolicy items on this page */
 export type SecretsManagerResourcePolicyListResultValueList =
-  ReadonlyArray<SecretsManagerResourcePolicy>;
+  Array<SecretsManagerResourcePolicy>;
 export const SecretsManagerResourcePolicyListResultValueList =
   /*@__PURE__*/ S.Array(
     SecretsManagerResourcePolicy,
@@ -70180,7 +70130,7 @@ export const ReplicaRegion = /*@__PURE__*/ S.suspend(() =>
 
 /** A custom type that specifies a ``Region`` and the ``KmsKeyId`` for a replica secret. */
 export type AwsSecretsManagerSecretPropertiesReplicaRegionsList =
-  ReadonlyArray<ReplicaRegion>;
+  Array<ReplicaRegion>;
 export const AwsSecretsManagerSecretPropertiesReplicaRegionsList =
   /*@__PURE__*/ S.Array(
     ReplicaRegion,
@@ -70201,7 +70151,7 @@ export const Tag_53 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tag_53" }) as any as S.Schema<Tag_53>;
 
 /** A list of tags to attach to the secret. Each tag is a key and value pair of strings in a JSON text string, for example: ``[{'Key':'CostCenter','Value':'12345'},{'Key':'environment','Value':'production'}]`` Secrets Manager tag key names are case sensitive. A tag with the key 'ABC' is a different tag from one with key 'abc'. Stack-level tags, tags you apply to the CloudFormation stack, are also attached to the secret. If you check tags in permissions policies as part of your security strategy, then adding or removing a tag can change permissions. If the completion of this operation would result in you losing your permissions for this secret, then Secrets Manager blocks the operation and returns an ``Access Denied`` error. For more information, see [Control access to secrets using tags](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access_examples.html#tag-secrets-abac) and [Limit access to identities with tags that match secrets' tags](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access_examples.html#auth-and-access_tags2). For information about how to format a JSON parameter for the various command line tool environments, see [Using JSON for Parameters](https://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#cli-using-param-json). If your command-line tool or SDK requires quotation marks around the parameter, you should use single quotes to avoid confusion with the double quotes required in the JSON text. The following restrictions apply to tags: + Maximum number of tags per secret: 50 + Maximum key length: 127 Unicode characters in UTF-8 + Maximum value length: 255 Unicode characters in UTF-8 + Tag keys and values are case sensitive. + Do not use the ``aws:`` prefix in your tag names or values because AWS reserves it for AWS use. You can't edit or delete tag names or values with this prefix. Tags with this prefix do not count against your tags per secret limit. + If you use your tagging schema across multiple services and resources, other services might have restrictions on allowed characters. Generally allowed characters: letters, spaces, and numbers representable in UTF-8, plus the following special characters: + - = . _ : / @. */
-export type AwsSecretsManagerSecretPropertiesTagsList = ReadonlyArray<Tag_53>;
+export type AwsSecretsManagerSecretPropertiesTagsList = Array<Tag_53>;
 export const AwsSecretsManagerSecretPropertiesTagsList = /*@__PURE__*/ S.Array(
   Tag_53,
 ) as any as S.Schema<AwsSecretsManagerSecretPropertiesTagsList>;
@@ -70567,7 +70517,7 @@ export const SecretsManagerSecret = /*@__PURE__*/ S.suspend(() =>
 
 /** The SecretsManagerSecret items on this page */
 export type SecretsManagerSecretListResultValueList =
-  ReadonlyArray<SecretsManagerSecret>;
+  Array<SecretsManagerSecret>;
 export const SecretsManagerSecretListResultValueList = /*@__PURE__*/ S.Array(
   SecretsManagerSecret,
 ) as any as S.Schema<SecretsManagerSecretListResultValueList>;
@@ -71043,7 +70993,7 @@ export const SnsSubscription = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SnsSubscription>;
 
 /** The SnsSubscription items on this page */
-export type SnsSubscriptionListResultValueList = ReadonlyArray<SnsSubscription>;
+export type SnsSubscriptionListResultValueList = Array<SnsSubscription>;
 export const SnsSubscriptionListResultValueList = /*@__PURE__*/ S.Array(
   SnsSubscription,
 ) as any as S.Schema<SnsSubscriptionListResultValueList>;
@@ -71183,7 +71133,7 @@ export interface LoggingConfig_2 {
   /** Property failureFeedbackRoleArn */
   failureFeedbackRoleArn?: string;
   /** Property protocol */
-  protocol?: LoggingConfigProtocol;
+  protocol?: LoggingConfigProtocol | (string & {});
   /** Property successFeedbackRoleArn */
   successFeedbackRoleArn?: string;
   /** Property successFeedbackSampleRate */
@@ -71202,7 +71152,7 @@ export const LoggingConfig_2 = /*@__PURE__*/ S.suspend(() =>
 
 /** Property deliveryStatusLogging */
 export type AwsSnsTopicPropertiesDeliveryStatusLoggingList =
-  ReadonlyArray<LoggingConfig_2>;
+  Array<LoggingConfig_2>;
 export const AwsSnsTopicPropertiesDeliveryStatusLoggingList =
   /*@__PURE__*/ S.Array(
     LoggingConfig_2,
@@ -71223,7 +71173,7 @@ export const Subscription = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Subscription" }) as any as S.Schema<Subscription>;
 
 /** The SNS subscriptions (endpoints) for this topic. If you specify the ``Subscription`` property in the ``AWS::SNS::Topic`` resource and it creates an associated subscription resource, the associated subscription is not deleted when the ``AWS::SNS::Topic`` resource is deleted. */
-export type AwsSnsTopicPropertiesSubscriptionList = ReadonlyArray<Subscription>;
+export type AwsSnsTopicPropertiesSubscriptionList = Array<Subscription>;
 export const AwsSnsTopicPropertiesSubscriptionList = /*@__PURE__*/ S.Array(
   Subscription,
 ) as any as S.Schema<AwsSnsTopicPropertiesSubscriptionList>;
@@ -71243,7 +71193,7 @@ export const Tag_54 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tag_54" }) as any as S.Schema<Tag_54>;
 
 /** The list of tags to add to a new topic. To be able to tag a topic on creation, you must have the ``sns:CreateTopic`` and ``sns:TagResource`` permissions. */
-export type AwsSnsTopicPropertiesTagsList = ReadonlyArray<Tag_54>;
+export type AwsSnsTopicPropertiesTagsList = Array<Tag_54>;
 export const AwsSnsTopicPropertiesTagsList = /*@__PURE__*/ S.Array(
   Tag_54,
 ) as any as S.Schema<AwsSnsTopicPropertiesTagsList>;
@@ -71614,7 +71564,7 @@ export const SnsTopic = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SnsTopic" }) as any as S.Schema<SnsTopic>;
 
 /** The SnsTopic items on this page */
-export type SnsTopicListResultValueList = ReadonlyArray<SnsTopic>;
+export type SnsTopicListResultValueList = Array<SnsTopic>;
 export const SnsTopicListResultValueList = /*@__PURE__*/ S.Array(
   SnsTopic,
 ) as any as S.Schema<SnsTopicListResultValueList>;
@@ -71773,7 +71723,7 @@ export const Tag_55 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tag_55" }) as any as S.Schema<Tag_55>;
 
 /** The tags that you attach to this queue. For more information, see [Resource tag](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-resource-tags.html) in the *User Guide*. */
-export type AwsSqsQueuePropertiesTagsList = ReadonlyArray<Tag_55>;
+export type AwsSqsQueuePropertiesTagsList = Array<Tag_55>;
 export const AwsSqsQueuePropertiesTagsList = /*@__PURE__*/ S.Array(
   Tag_55,
 ) as any as S.Schema<AwsSqsQueuePropertiesTagsList>;
@@ -72157,7 +72107,7 @@ export const SqsQueue = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SqsQueue" }) as any as S.Schema<SqsQueue>;
 
 /** The SqsQueue items on this page */
-export type SqsQueueListResultValueList = ReadonlyArray<SqsQueue>;
+export type SqsQueueListResultValueList = Array<SqsQueue>;
 export const SqsQueueListResultValueList = /*@__PURE__*/ S.Array(
   SqsQueue,
 ) as any as S.Schema<SqsQueueListResultValueList>;
@@ -72318,7 +72268,7 @@ export const PingStatus = /*@__PURE__*/ S.String;
 /** Definition of PingStatusEnumValue */
 export interface PingStatusEnumValue {
   /** Property value */
-  value?: PingStatus;
+  value?: PingStatus | (string & {});
 }
 export const PingStatusEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -72335,7 +72285,7 @@ export const PlatformType = /*@__PURE__*/ S.String;
 /** Definition of PlatformTypeEnumValue */
 export interface PlatformTypeEnumValue {
   /** Property value */
-  value?: PlatformType;
+  value?: PlatformType | (string & {});
 }
 export const PlatformTypeEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -72352,7 +72302,7 @@ export const ResourceType_3 = /*@__PURE__*/ S.String;
 /** Definition of ResourceTypeEnumValue */
 export interface ResourceTypeEnumValue {
   /** Property value */
-  value?: ResourceType_3;
+  value?: ResourceType_3 | (string & {});
 }
 export const ResourceTypeEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -72372,7 +72322,7 @@ export const SourceType_2 = /*@__PURE__*/ S.String;
 /** Definition of SourceTypeEnumValue */
 export interface SourceTypeEnumValue_2 {
   /** Property value */
-  value?: SourceType_2;
+  value?: SourceType_2 | (string & {});
 }
 export const SourceTypeEnumValue_2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -72785,7 +72735,7 @@ export const SsmInstanceInformation = /*@__PURE__*/ S.suspend(() =>
 
 /** The SsmInstanceInformation items on this page */
 export type SsmInstanceInformationListResultValueList =
-  ReadonlyArray<SsmInstanceInformation>;
+  Array<SsmInstanceInformation>;
 export const SsmInstanceInformationListResultValueList = /*@__PURE__*/ S.Array(
   SsmInstanceInformation,
 ) as any as S.Schema<SsmInstanceInformationListResultValueList>;
@@ -72933,7 +72883,7 @@ export interface AwsSsmParameterProperties {
   /** A regular expression used to validate the parameter value. For example, for ``String`` types with values restricted to numbers, you can specify the following: ``AllowedPattern=^\d+$`` */
   allowedPattern?: string;
   /** The data type of the parameter, such as ``text`` or ``aws:ec2:image``. The default is ``text``. */
-  dataType?: DataType;
+  dataType?: DataType | (string & {});
   /** Information about the parameter. */
   description?: string;
   /** The name of the parameter. The maximum length constraint listed below includes capacity for additional system attributes that aren't part of the name. The maximum length for a parameter name, including the full length of the parameter Amazon Resource Name (ARN), is 1011 characters. For example, the length of the following parameter name is 65 characters, not 20 characters: ``arn:aws:ssm:us-east-2:111222333444:parameter/ExampleParameterName`` */
@@ -72943,9 +72893,9 @@ export interface AwsSsmParameterProperties {
   /** Optional metadata that you assign to a resource in the form of an arbitrary set of tags (key-value pairs). Tags enable you to categorize a resource in different ways, such as by purpose, owner, or environment. For example, you might want to tag a SYS parameter to identify the type of resource to which it applies, the environment, or the type of configuration data referenced by the parameter. */
   tags?: unknown;
   /** The parameter tier. */
-  tier?: Tier_2;
+  tier?: Tier_2 | (string & {});
   /** The type of parameter. */
-  type?: Type_3;
+  type?: Type_3 | (string & {});
   /** The parameter value. If type is ``StringList``, the system returns a comma-separated string with no spaces between commas in the ``Value`` field. */
   value?: string;
 }
@@ -73285,7 +73235,7 @@ export const SsmParameter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SsmParameter" }) as any as S.Schema<SsmParameter>;
 
 /** The SsmParameter items on this page */
-export type SsmParameterListResultValueList = ReadonlyArray<SsmParameter>;
+export type SsmParameterListResultValueList = Array<SsmParameter>;
 export const SsmParameterListResultValueList = /*@__PURE__*/ S.Array(
   SsmParameter,
 ) as any as S.Schema<SsmParameterListResultValueList>;
@@ -73504,7 +73454,7 @@ export const ComplianceSeverity = /*@__PURE__*/ S.String;
 /** Definition of ComplianceSeverityEnumValue */
 export interface ComplianceSeverityEnumValue {
   /** Property value */
-  value?: ComplianceSeverity;
+  value?: ComplianceSeverity | (string & {});
 }
 export const ComplianceSeverityEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -73521,7 +73471,7 @@ export const ComplianceStatus = /*@__PURE__*/ S.String;
 /** Definition of ComplianceStatusEnumValue */
 export interface ComplianceStatusEnumValue {
   /** Property value */
-  value?: ComplianceStatus;
+  value?: ComplianceStatus | (string & {});
 }
 export const ComplianceStatusEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -73905,7 +73855,7 @@ export const SsmResourceComplianceSummaryItem = /*@__PURE__*/ S.suspend(() =>
 
 /** The SsmResourceComplianceSummaryItem items on this page */
 export type SsmResourceComplianceSummaryItemListResultValueList =
-  ReadonlyArray<SsmResourceComplianceSummaryItem>;
+  Array<SsmResourceComplianceSummaryItem>;
 export const SsmResourceComplianceSummaryItemListResultValueList =
   /*@__PURE__*/ S.Array(
     SsmResourceComplianceSummaryItem,
@@ -74040,7 +73990,7 @@ export const Wafv2LoggingConfigurationsCreateOrReplaceRequestTagsMap =
 
 /** The Amazon Resource Names (ARNs) of the logging destinations that you want to associate with the web ACL. */
 export type AwsWafv2LoggingConfigurationPropertiesLogDestinationConfigsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const AwsWafv2LoggingConfigurationPropertiesLogDestinationConfigsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -74067,7 +74017,7 @@ export const Action_2 = /*@__PURE__*/ S.String;
 /** Definition of ActionConditionModelProperties */
 export interface ActionConditionModelProperties {
   /** Logic to apply to the filtering conditions. You can specify that, in order to satisfy the filter, a log must match all conditions or must match at least one condition. */
-  action?: Action_2;
+  action?: Action_2 | (string & {});
 }
 export const ActionConditionModelProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -74105,7 +74055,7 @@ export const Condition = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Condition" }) as any as S.Schema<Condition>;
 
 /** Match conditions for the filter. */
-export type FilterConditionsList = ReadonlyArray<Condition>;
+export type FilterConditionsList = Array<Condition>;
 export const FilterConditionsList = /*@__PURE__*/ S.Array(
   Condition,
 ) as any as S.Schema<FilterConditionsList>;
@@ -74117,11 +74067,11 @@ export const FilterRequirement = /*@__PURE__*/ S.String;
 /** Definition of Filter */
 export interface Filter_2 {
   /** How to handle logs that satisfy the filter's conditions and requirement. */
-  behavior?: FilterBehavior;
+  behavior?: FilterBehavior | (string & {});
   /** Match conditions for the filter. */
   conditions?: FilterConditionsList;
   /** Logic to apply to the filtering conditions. You can specify that, in order to satisfy the filter, a log must match all conditions or must match at least one condition. */
-  requirement?: FilterRequirement;
+  requirement?: FilterRequirement | (string & {});
 }
 export const Filter_2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -74132,7 +74082,7 @@ export const Filter_2 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Filter_2" }) as any as S.Schema<Filter_2>;
 
 /** The filters that you want to apply to the logs. */
-export type LoggingFilterModelPropertiesFiltersList = ReadonlyArray<Filter_2>;
+export type LoggingFilterModelPropertiesFiltersList = Array<Filter_2>;
 export const LoggingFilterModelPropertiesFiltersList = /*@__PURE__*/ S.Array(
   Filter_2,
 ) as any as S.Schema<LoggingFilterModelPropertiesFiltersList>;
@@ -74140,7 +74090,7 @@ export const LoggingFilterModelPropertiesFiltersList = /*@__PURE__*/ S.Array(
 /** Definition of LoggingFilterModelProperties */
 export interface LoggingFilterModelProperties {
   /** Default handling for logs that don't match any of the specified filtering conditions. */
-  defaultBehavior?: DefaultBehavior;
+  defaultBehavior?: DefaultBehavior | (string & {});
   /** The filters that you want to apply to the logs. */
   filters?: LoggingFilterModelPropertiesFiltersList;
 }
@@ -74188,7 +74138,7 @@ export const FieldToMatch = /*@__PURE__*/ S.suspend(() =>
 
 /** The parts of the request that you want to keep out of the logs. For example, if you redact the HEADER field, the HEADER field in the firehose will be xxx. */
 export type AwsWafv2LoggingConfigurationPropertiesRedactedFieldsList =
-  ReadonlyArray<FieldToMatch>;
+  Array<FieldToMatch>;
 export const AwsWafv2LoggingConfigurationPropertiesRedactedFieldsList =
   /*@__PURE__*/ S.Array(
     FieldToMatch,
@@ -74559,7 +74509,7 @@ export const Wafv2LoggingConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** The Wafv2LoggingConfiguration items on this page */
 export type Wafv2LoggingConfigurationListResultValueList =
-  ReadonlyArray<Wafv2LoggingConfiguration>;
+  Array<Wafv2LoggingConfiguration>;
 export const Wafv2LoggingConfigurationListResultValueList =
   /*@__PURE__*/ S.Array(
     Wafv2LoggingConfiguration,
@@ -75030,8 +74980,7 @@ export const WafWebACLSummary = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WafWebACLSummary>;
 
 /** The WafWebACLSummary items on this page */
-export type WafWebACLSummaryListResultValueList =
-  ReadonlyArray<WafWebACLSummary>;
+export type WafWebACLSummaryListResultValueList = Array<WafWebACLSummary>;
 export const WafWebACLSummaryListResultValueList = /*@__PURE__*/ S.Array(
   WafWebACLSummary,
 ) as any as S.Schema<WafWebACLSummaryListResultValueList>;

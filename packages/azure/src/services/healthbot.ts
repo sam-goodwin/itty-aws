@@ -61,7 +61,7 @@ export const SkuName = /*@__PURE__*/ S.String;
 /** The resource model definition representing SKU */
 export interface Sku {
   /** The name of the Azure Health Bot SKU */
-  name: SkuName;
+  name: SkuName | (string & {});
 }
 export const Sku = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -460,7 +460,7 @@ export const HealthBot = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "HealthBot" }) as any as S.Schema<HealthBot>;
 
 /** The HealthBot items on this page */
-export type BotResponseListValueList = ReadonlyArray<HealthBot>;
+export type BotResponseListValueList = Array<HealthBot>;
 export const BotResponseListValueList = /*@__PURE__*/ S.Array(
   HealthBot,
 ) as any as S.Schema<BotResponseListValueList>;
@@ -543,7 +543,7 @@ export const HealthBotKey = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "HealthBotKey" }) as any as S.Schema<HealthBotKey>;
 
 /** Array of Azure Health Bot Secrets. */
-export type HealthBotKeysResponseSecretsList = ReadonlyArray<HealthBotKey>;
+export type HealthBotKeysResponseSecretsList = Array<HealthBotKey>;
 export const HealthBotKeysResponseSecretsList = /*@__PURE__*/ S.Array(
   HealthBotKey,
 ) as any as S.Schema<HealthBotKeysResponseSecretsList>;
@@ -737,7 +737,7 @@ export const OperationDetail = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDetail>;
 
 /** Collection of available operation details. */
-export type AvailableOperationsValueList = ReadonlyArray<OperationDetail>;
+export type AvailableOperationsValueList = Array<OperationDetail>;
 export const AvailableOperationsValueList = /*@__PURE__*/ S.Array(
   OperationDetail,
 ) as any as S.Schema<AvailableOperationsValueList>;

@@ -367,7 +367,7 @@ export const DynamicLinkWarning = /*@__PURE__*/ S.suspend(() =>
   identifier: "DynamicLinkWarning",
 }) as any as S.Schema<DynamicLinkWarning>;
 
-export type DynamicLinkWarningList = ReadonlyArray<DynamicLinkWarning>;
+export type DynamicLinkWarningList = Array<DynamicLinkWarning>;
 export const DynamicLinkWarningList = /*@__PURE__*/ S.Array(
   DynamicLinkWarning,
 ) as any as S.Schema<DynamicLinkWarningList>;
@@ -378,7 +378,7 @@ export type ManagedShortLinkFlaggedAttributeItemEnum =
 export const ManagedShortLinkFlaggedAttributeItemEnum = /*@__PURE__*/ S.String;
 
 export type ManagedShortLinkFlaggedAttributeItemEnumList =
-  ReadonlyArray<ManagedShortLinkFlaggedAttributeItemEnum>;
+  Array<ManagedShortLinkFlaggedAttributeItemEnum>;
 export const ManagedShortLinkFlaggedAttributeItemEnumList =
   /*@__PURE__*/ S.Array(
     ManagedShortLinkFlaggedAttributeItemEnum,
@@ -557,7 +557,7 @@ export const DynamicLinkEventStat = /*@__PURE__*/ S.suspend(() =>
   identifier: "DynamicLinkEventStat",
 }) as any as S.Schema<DynamicLinkEventStat>;
 
-export type DynamicLinkEventStatList = ReadonlyArray<DynamicLinkEventStat>;
+export type DynamicLinkEventStatList = Array<DynamicLinkEventStat>;
 export const DynamicLinkEventStatList = /*@__PURE__*/ S.Array(
   DynamicLinkEventStat,
 ) as any as S.Schema<DynamicLinkEventStatList>;

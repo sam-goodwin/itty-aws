@@ -535,7 +535,7 @@ export const SchemasListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "SchemasListResultItem",
 }) as any as S.Schema<SchemasListResultItem>;
 
-export type SchemasListResultList = ReadonlyArray<SchemasListResultItem>;
+export type SchemasListResultList = Array<SchemasListResultItem>;
 export const SchemasListResultList = /*@__PURE__*/ S.Array(
   SchemasListResultItem,
 ) as any as S.Schema<SchemasListResultList>;
@@ -606,7 +606,7 @@ export const SettingsOperationsListResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SettingsOperationsListResultItem>;
 
 export type SettingsOperationsListResultList =
-  ReadonlyArray<SettingsOperationsListResultItem>;
+  Array<SettingsOperationsListResultItem>;
 export const SettingsOperationsListResultList = /*@__PURE__*/ S.Array(
   SettingsOperationsListResultItem,
 ) as any as S.Schema<SettingsOperationsListResultList>;

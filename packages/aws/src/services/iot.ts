@@ -1124,8 +1124,10 @@ export type CertificateProviderFunctionArn = string;
 export type CertificateProviderOperation = "CreateCertificateFromCsr";
 export const CertificateProviderOperation = /*@__PURE__*/ S.String;
 
-export type CertificateProviderAccountDefaultForOperations =
-  CertificateProviderOperation[];
+export type CertificateProviderAccountDefaultForOperations = (
+  | CertificateProviderOperation
+  | (string & {})
+)[];
 export const CertificateProviderAccountDefaultForOperations =
   /*@__PURE__*/ S.Array(CertificateProviderOperation);
 export interface CreateCertificateProviderRequest {
@@ -1193,7 +1195,7 @@ export type OutputFormat = "JSON" | "CBOR";
 export const OutputFormat = /*@__PURE__*/ S.String;
 
 export interface AwsJsonSubstitutionCommandPreprocessorConfig {
-  outputFormat: OutputFormat;
+  outputFormat: OutputFormat | (string & {});
 }
 export const AwsJsonSubstitutionCommandPreprocessorConfig =
   /*@__PURE__*/ S.suspend(() =>
@@ -1297,7 +1299,7 @@ export const CommandParameterValueComparisonOperand = /*@__PURE__*/ S.suspend(
   identifier: "CommandParameterValueComparisonOperand",
 }) as any as S.Schema<CommandParameterValueComparisonOperand>;
 export interface CommandParameterValueCondition {
-  comparisonOperator: CommandParameterValueComparisonOperator;
+  comparisonOperator: CommandParameterValueComparisonOperator | (string & {});
   operand: CommandParameterValueComparisonOperand;
 }
 export const CommandParameterValueCondition = /*@__PURE__*/ S.suspend(() =>
@@ -1316,7 +1318,7 @@ export const CommandParameterValueConditionList = /*@__PURE__*/ S.Array(
 export type CommandParameterDescription = string;
 export interface CommandParameter {
   name: string;
-  type?: CommandParameterType;
+  type?: CommandParameterType | (string & {});
   value?: CommandParameterValue;
   defaultValue?: CommandParameterValue;
   valueConditions?: CommandParameterValueCondition[];
@@ -1700,7 +1702,7 @@ export type AggregationTypeValue = string;
 export type AggregationTypeValues = string[];
 export const AggregationTypeValues = /*@__PURE__*/ S.Array(S.String);
 export interface AggregationType {
-  name: AggregationTypeName;
+  name: AggregationTypeName | (string & {});
   values?: string[];
 }
 export const AggregationType = /*@__PURE__*/ S.suspend(() =>
@@ -1867,8 +1869,8 @@ export const AbortAction = /*@__PURE__*/ S.String;
 export type AbortThresholdPercentage = number;
 export type MinimumNumberOfExecutedThings = number;
 export interface AbortCriteria {
-  failureType: JobExecutionFailureType;
-  action: AbortAction;
+  failureType: JobExecutionFailureType | (string & {});
+  action: AbortAction | (string & {});
   thresholdPercentage: number;
   minNumberOfExecutedThings: number;
 }
@@ -1901,7 +1903,7 @@ export const RetryableFailureType = /*@__PURE__*/ S.String;
 
 export type NumberOfRetries = number;
 export interface RetryCriteria {
-  failureType: RetryableFailureType;
+  failureType: RetryableFailureType | (string & {});
   numberOfRetries: number;
 }
 export const RetryCriteria = /*@__PURE__*/ S.suspend(() =>
@@ -1944,7 +1946,7 @@ export const MaintenanceWindows = /*@__PURE__*/ S.Array(MaintenanceWindow);
 export interface SchedulingConfig {
   startTime?: string;
   endTime?: string;
-  endBehavior?: JobEndBehavior;
+  endBehavior?: JobEndBehavior | (string & {});
   maintenanceWindows?: MaintenanceWindow[];
 }
 export const SchedulingConfig = /*@__PURE__*/ S.suspend(() =>
@@ -2133,7 +2135,7 @@ export type DeviceCertificateUpdateAction = "DEACTIVATE";
 export const DeviceCertificateUpdateAction = /*@__PURE__*/ S.String;
 
 export interface UpdateDeviceCertificateParams {
-  action: DeviceCertificateUpdateAction;
+  action: DeviceCertificateUpdateAction | (string & {});
 }
 export const UpdateDeviceCertificateParams = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ action: DeviceCertificateUpdateAction }),
@@ -2144,7 +2146,7 @@ export type CACertificateUpdateAction = "DEACTIVATE";
 export const CACertificateUpdateAction = /*@__PURE__*/ S.String;
 
 export interface UpdateCACertificateParams {
-  action: CACertificateUpdateAction;
+  action: CACertificateUpdateAction | (string & {});
 }
 export const UpdateCACertificateParams = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ action: CACertificateUpdateAction }),
@@ -2169,7 +2171,7 @@ export type PolicyTemplateName = "BLANK_POLICY";
 export const PolicyTemplateName = /*@__PURE__*/ S.String;
 
 export interface ReplaceDefaultPolicyVersionParams {
-  templateName: PolicyTemplateName;
+  templateName: PolicyTemplateName | (string & {});
 }
 export const ReplaceDefaultPolicyVersionParams = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ templateName: PolicyTemplateName }),
@@ -2181,7 +2183,7 @@ export const LogLevel = /*@__PURE__*/ S.String;
 
 export interface EnableIoTLoggingParams {
   roleArnForLogging: string;
-  logLevel: LogLevel;
+  logLevel: LogLevel | (string & {});
 }
 export const EnableIoTLoggingParams = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ roleArnForLogging: S.String, logLevel: LogLevel }),
@@ -2266,7 +2268,7 @@ export const Targets = /*@__PURE__*/ S.Array(S.String);
 export type Protocol = "MQTT" | "HTTP";
 export const Protocol = /*@__PURE__*/ S.String;
 
-export type Protocols = Protocol[];
+export type Protocols = (Protocol | (string & {}))[];
 export const Protocols = /*@__PURE__*/ S.Array(Protocol);
 export type MaximumPerMinute = number;
 export type AwsJobRolloutRatePerMinute = number;
@@ -3046,7 +3048,7 @@ export const DimensionValueOperator = /*@__PURE__*/ S.String;
 
 export interface MetricDimension {
   dimensionName: string;
-  operator?: DimensionValueOperator;
+  operator?: DimensionValueOperator | (string & {});
 }
 export const MetricDimension = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3115,7 +3117,7 @@ export type ConfidenceLevel = "LOW" | "MEDIUM" | "HIGH";
 export const ConfidenceLevel = /*@__PURE__*/ S.String;
 
 export interface MachineLearningDetectionConfig {
-  confidenceLevel: ConfidenceLevel;
+  confidenceLevel: ConfidenceLevel | (string & {});
 }
 export const MachineLearningDetectionConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ confidenceLevel: ConfidenceLevel }),
@@ -3123,7 +3125,7 @@ export const MachineLearningDetectionConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "MachineLearningDetectionConfig",
 }) as any as S.Schema<MachineLearningDetectionConfig>;
 export interface BehaviorCriteria {
-  comparisonOperator?: ComparisonOperator;
+  comparisonOperator?: ComparisonOperator | (string & {});
   value?: MetricValue;
   durationSeconds?: number;
   consecutiveDatapointsToAlarm?: number;
@@ -3177,7 +3179,9 @@ export interface AlertTarget {
 export const AlertTarget = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ alertTargetArn: S.String, roleArn: S.String }),
 ).annotate({ identifier: "AlertTarget" }) as any as S.Schema<AlertTarget>;
-export type AlertTargets = { [key in AlertTargetType]?: AlertTarget };
+export type AlertTargets = {
+  [key in AlertTargetType | (string & {})]?: AlertTarget;
+};
 export const AlertTargets = /*@__PURE__*/ S.Record(
   AlertTargetType,
   AlertTarget.pipe(S.optional),
@@ -3499,10 +3503,10 @@ export interface DynamoDBAction {
   operation?: string;
   hashKeyField: string;
   hashKeyValue: string;
-  hashKeyType?: DynamoKeyType;
+  hashKeyType?: DynamoKeyType | (string & {});
   rangeKeyField?: string;
   rangeKeyValue?: string;
-  rangeKeyType?: DynamoKeyType;
+  rangeKeyType?: DynamoKeyType | (string & {});
   payloadField?: string;
 }
 export const DynamoDBAction = /*@__PURE__*/ S.suspend(() =>
@@ -3547,7 +3551,7 @@ export const MessageFormat = /*@__PURE__*/ S.String;
 export interface SnsAction {
   targetArn: string;
   roleArn: string;
-  messageFormat?: MessageFormat;
+  messageFormat?: MessageFormat | (string & {});
 }
 export const SnsAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3653,7 +3657,7 @@ export interface S3Action {
   roleArn: string;
   bucketName: string;
   key: string;
-  cannedAcl?: CannedAccessControlList;
+  cannedAcl?: CannedAccessControlList | (string & {});
 }
 export const S3Action = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5399,7 +5403,7 @@ export const AuditNotificationTarget = /*@__PURE__*/ S.suspend(() =>
   identifier: "AuditNotificationTarget",
 }) as any as S.Schema<AuditNotificationTarget>;
 export type AuditNotificationTargetConfigurations = {
-  [key in AuditNotificationType]?: AuditNotificationTarget;
+  [key in AuditNotificationType | (string & {})]?: AuditNotificationTarget;
 };
 export const AuditNotificationTargetConfigurations = /*@__PURE__*/ S.Record(
   AuditNotificationType,
@@ -5411,7 +5415,9 @@ export type ConfigName =
 export const ConfigName = /*@__PURE__*/ S.String;
 
 export type ConfigValue = string;
-export type CheckCustomConfiguration = { [key in ConfigName]?: string };
+export type CheckCustomConfiguration = {
+  [key in ConfigName | (string & {})]?: string;
+};
 export const CheckCustomConfiguration = /*@__PURE__*/ S.Record(
   ConfigName,
   S.String.pipe(S.optional),
@@ -6623,7 +6629,9 @@ export interface Configuration {
 export const Configuration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Enabled: S.optional(S.Boolean) }),
 ).annotate({ identifier: "Configuration" }) as any as S.Schema<Configuration>;
-export type EventConfigurations = { [key in EventType]?: Configuration };
+export type EventConfigurations = {
+  [key in EventType | (string & {})]?: Configuration;
+};
 export const EventConfigurations = /*@__PURE__*/ S.Record(
   EventType,
   Configuration.pipe(S.optional),
@@ -8257,7 +8265,7 @@ export const FieldType = /*@__PURE__*/ S.String;
 
 export interface Field {
   name?: string;
-  type?: FieldType;
+  type?: FieldType | (string & {});
 }
 export const Field = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ name: S.optional(S.String), type: S.optional(FieldType) }),
@@ -8273,7 +8281,7 @@ export const TargetFieldOrder = /*@__PURE__*/ S.String;
 
 export interface GeoLocationTarget {
   name?: string;
-  order?: TargetFieldOrder;
+  order?: TargetFieldOrder | (string & {});
 }
 export const GeoLocationTarget = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ name: S.optional(S.String), order: S.optional(TargetFieldOrder) }),
@@ -8285,7 +8293,7 @@ export const GeoLocationsFilter = /*@__PURE__*/ S.Array(GeoLocationTarget);
 export type FleetIndexingApi = "GET_THING_CONNECTIVITY_DATA";
 export const FleetIndexingApi = /*@__PURE__*/ S.String;
 
-export type FleetIndexingApiList = FleetIndexingApi[];
+export type FleetIndexingApiList = (FleetIndexingApi | (string & {}))[];
 export const FleetIndexingApiList = /*@__PURE__*/ S.Array(FleetIndexingApi);
 export interface ConnectivityFilter {
   includeSocketInformation?: FleetIndexingApi[];
@@ -8308,10 +8316,10 @@ export const IndexingFilter = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "IndexingFilter" }) as any as S.Schema<IndexingFilter>;
 export interface ThingIndexingConfiguration {
-  thingIndexingMode: ThingIndexingMode;
-  thingConnectivityIndexingMode?: ThingConnectivityIndexingMode;
-  deviceDefenderIndexingMode?: DeviceDefenderIndexingMode;
-  namedShadowIndexingMode?: NamedShadowIndexingMode;
+  thingIndexingMode: ThingIndexingMode | (string & {});
+  thingConnectivityIndexingMode?: ThingConnectivityIndexingMode | (string & {});
+  deviceDefenderIndexingMode?: DeviceDefenderIndexingMode | (string & {});
+  namedShadowIndexingMode?: NamedShadowIndexingMode | (string & {});
   managedFields?: Field[];
   customFields?: Field[];
   filter?: IndexingFilter;
@@ -8333,7 +8341,7 @@ export type ThingGroupIndexingMode = "OFF" | "ON";
 export const ThingGroupIndexingMode = /*@__PURE__*/ S.String;
 
 export interface ThingGroupIndexingConfiguration {
-  thingGroupIndexingMode: ThingGroupIndexingMode;
+  thingGroupIndexingMode: ThingGroupIndexingMode | (string & {});
   managedFields?: Field[];
   customFields?: Field[];
 }
@@ -9028,7 +9036,7 @@ export type LogEventType = string;
 export type LogDestination = string;
 export interface LogEventConfiguration {
   eventType: string;
-  logLevel?: LogLevel;
+  logLevel?: LogLevel | (string & {});
   logDestination?: string;
 }
 export const LogEventConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -12429,7 +12437,7 @@ export const ListV2LoggingLevelsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListV2LoggingLevelsRequest",
 }) as any as S.Schema<ListV2LoggingLevelsRequest>;
 export interface LogTarget {
-  targetType: LogTargetType;
+  targetType: LogTargetType | (string & {});
   targetName?: string;
 }
 export const LogTarget = /*@__PURE__*/ S.suspend(() =>
@@ -13337,7 +13345,7 @@ export type Resource = string;
 export type Resources = string[];
 export const Resources = /*@__PURE__*/ S.Array(S.String);
 export interface AuthInfo {
-  actionType?: ActionType;
+  actionType?: ActionType | (string & {});
   resources: string[];
 }
 export const AuthInfo = /*@__PURE__*/ S.suspend(() =>

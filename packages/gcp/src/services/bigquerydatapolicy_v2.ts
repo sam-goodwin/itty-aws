@@ -60,7 +60,7 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -115,7 +115,9 @@ export const DataMaskingPolicyPredefinedExpressionEnum = /*@__PURE__*/ S.String;
 /** The policy used to specify data masking rule. */
 export interface DataMaskingPolicy {
   /** Optional. A predefined masking expression. */
-  predefinedExpression?: DataMaskingPolicyPredefinedExpressionEnum;
+  predefinedExpression?:
+    | DataMaskingPolicyPredefinedExpressionEnum
+    | (string & {});
   /** Optional. The name of the BigQuery routine that contains the custom masking routine, in the format of `projects/{project_number}/datasets/{dataset_id}/routines/{routine_id}`. */
   routine?: string;
 }
@@ -165,9 +167,9 @@ export interface DataPolicy {
   /** The etag for this Data Policy. This field is used for UpdateDataPolicy calls. If Data Policy exists, this field is required and must match the server's etag. It will also be populated in the response of GetDataPolicy, CreateDataPolicy, and UpdateDataPolicy calls. */
   etag?: string;
   /** Required. Type of data policy. */
-  dataPolicyType?: DataPolicyDataPolicyTypeEnum;
+  dataPolicyType?: DataPolicyDataPolicyTypeEnum | (string & {});
   /** Output only. The version of the Data Policy resource. */
-  version?: DataPolicyVersionEnum;
+  version?: DataPolicyVersionEnum | (string & {});
   /** Output only. User-assigned (human readable) ID of the data policy that needs to be unique within a project. Used as {data_policy_id} in part of the resource name. */
   dataPolicyId?: string;
   /** Optional. The list of IAM principals that have Fine Grained Access to the underlying data goverened by this data policy. Uses the [IAM V2 principal syntax](https://cloud.google.com/iam/docs/principal-identifiers#v2) Only supports principal types users, groups, serviceaccounts, cloudidentity. This field is supported in V2 Data Policy only. In case of V1 data policies (i.e. verion = 1 and policy_tag is set), this field is not populated. */
@@ -310,7 +312,7 @@ export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
 export interface AuditLogConfig {
   /** The log type that this config enables. */
-  logType?: AuditLogConfigLogTypeEnum;
+  logType?: AuditLogConfigLogTypeEnum | (string & {});
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
   exemptedMembers?: StringList;
 }
@@ -321,7 +323,7 @@ export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
-export type AuditLogConfigList = ReadonlyArray<AuditLogConfig>;
+export type AuditLogConfigList = Array<AuditLogConfig>;
 export const AuditLogConfigList = /*@__PURE__*/ S.Array(
   AuditLogConfig,
 ) as any as S.Schema<AuditLogConfigList>;
@@ -340,7 +342,7 @@ export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
-export type AuditConfigList = ReadonlyArray<AuditConfig>;
+export type AuditConfigList = Array<AuditConfig>;
 export const AuditConfigList = /*@__PURE__*/ S.Array(
   AuditConfig,
 ) as any as S.Schema<AuditConfigList>;
@@ -382,7 +384,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
-export type BindingList = ReadonlyArray<Binding>;
+export type BindingList = Array<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -454,7 +456,7 @@ export const ListProjectsLocationsDataPoliciesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsDataPoliciesRequest",
 }) as any as S.Schema<ListProjectsLocationsDataPoliciesRequest>;
 
-export type DataPolicyList = ReadonlyArray<DataPolicy>;
+export type DataPolicyList = Array<DataPolicy>;
 export const DataPolicyList = /*@__PURE__*/ S.Array(
   DataPolicy,
 ) as any as S.Schema<DataPolicyList>;

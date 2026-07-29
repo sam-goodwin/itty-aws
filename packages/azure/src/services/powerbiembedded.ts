@@ -60,7 +60,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
-export type OperationListValueList = ReadonlyArray<Operation>;
+export type OperationListValueList = Array<Operation>;
 export const OperationListValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationListValueList>;
@@ -143,9 +143,9 @@ export const AzureSkuTier = /*@__PURE__*/ S.String;
 
 export interface AzureSku {
   /** SKU name */
-  name: AzureSkuName;
+  name: AzureSkuName | (string & {});
   /** SKU tier */
-  tier: AzureSkuTier;
+  tier: AzureSkuTier | (string & {});
 }
 export const AzureSku = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -342,8 +342,7 @@ export const WorkspaceCollectionsListByResourceGroupRequest =
     identifier: "WorkspaceCollectionsListByResourceGroupRequest",
   }) as any as S.Schema<WorkspaceCollectionsListByResourceGroupRequest>;
 
-export type WorkspaceCollectionListValueList =
-  ReadonlyArray<WorkspaceCollection>;
+export type WorkspaceCollectionListValueList = Array<WorkspaceCollection>;
 export const WorkspaceCollectionListValueList = /*@__PURE__*/ S.Array(
   WorkspaceCollection,
 ) as any as S.Schema<WorkspaceCollectionListValueList>;
@@ -379,8 +378,7 @@ export const WorkspaceCollectionsListBySubscriptionRequest =
     identifier: "WorkspaceCollectionsListBySubscriptionRequest",
   }) as any as S.Schema<WorkspaceCollectionsListBySubscriptionRequest>;
 
-export type WorkspaceCollectionsMigrateRequestResourcesList =
-  ReadonlyArray<string>;
+export type WorkspaceCollectionsMigrateRequestResourcesList = Array<string>;
 export const WorkspaceCollectionsMigrateRequestResourcesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -535,7 +533,7 @@ export const Workspace = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Workspace" }) as any as S.Schema<Workspace>;
 
-export type WorkspaceListValueList = ReadonlyArray<Workspace>;
+export type WorkspaceListValueList = Array<Workspace>;
 export const WorkspaceListValueList = /*@__PURE__*/ S.Array(
   Workspace,
 ) as any as S.Schema<WorkspaceListValueList>;

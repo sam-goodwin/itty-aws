@@ -243,7 +243,7 @@ export const ImageResponseCard = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ImageResponseCard>;
 export interface Message {
   content?: string | redacted.Redacted<string>;
-  contentType: MessageContentType;
+  contentType: MessageContentType | (string & {});
   imageResponseCard?: ImageResponseCard;
 }
 export const Message = /*@__PURE__*/ S.suspend(() =>
@@ -315,7 +315,7 @@ export const Values = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<Values>;
 export interface Slot {
   value?: Value;
-  shape?: Shape;
+  shape?: Shape | (string & {});
   values?: Slot[];
   subSlots?: { [key: string]: Slot | undefined };
 }
@@ -353,8 +353,8 @@ export const ConfirmationState = /*@__PURE__*/ S.String;
 export interface Intent {
   name: string;
   slots?: { [key: string]: Slot | undefined };
-  state?: IntentState;
-  confirmationState?: ConfirmationState;
+  state?: IntentState | (string & {});
+  confirmationState?: ConfirmationState | (string & {});
 }
 export const Intent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -410,9 +410,9 @@ export const ElicitSubSlot = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ElicitSubSlot" }) as any as S.Schema<ElicitSubSlot>;
 export interface DialogAction {
-  type: DialogActionType;
+  type: DialogActionType | (string & {});
   slotToElicit?: string;
-  slotElicitationStyle?: StyleType;
+  slotElicitationStyle?: StyleType | (string & {});
   subSlotToElicit?: ElicitSubSlot;
 }
 export const DialogAction = /*@__PURE__*/ S.suspend(() =>

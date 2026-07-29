@@ -336,7 +336,7 @@ export const EntryPoint = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "EntryPoint" }) as any as S.Schema<EntryPoint>;
 
-export type EntryPointList = ReadonlyArray<EntryPoint>;
+export type EntryPointList = Array<EntryPoint>;
 export const EntryPointList = /*@__PURE__*/ S.Array(
   EntryPoint,
 ) as any as S.Schema<EntryPointList>;
@@ -450,7 +450,7 @@ export const GetContentProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetContentProjectsRequest",
 }) as any as S.Schema<GetContentProjectsRequest>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -472,7 +472,7 @@ export const GoogleAppsScriptTypeFunction = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleAppsScriptTypeFunction>;
 
 export type GoogleAppsScriptTypeFunctionList =
-  ReadonlyArray<GoogleAppsScriptTypeFunction>;
+  Array<GoogleAppsScriptTypeFunction>;
 export const GoogleAppsScriptTypeFunctionList = /*@__PURE__*/ S.Array(
   GoogleAppsScriptTypeFunction,
 ) as any as S.Schema<GoogleAppsScriptTypeFunctionList>;
@@ -512,7 +512,7 @@ export interface File {
   /** Last modified date timestamp. */
   updateTime?: string;
   /** The type of the file. */
-  type?: FileTypeEnum;
+  type?: FileTypeEnum | (string & {});
 }
 export const File = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -526,7 +526,7 @@ export const File = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "File" }) as any as S.Schema<File>;
 
-export type FileList = ReadonlyArray<File>;
+export type FileList = Array<File>;
 export const FileList = /*@__PURE__*/ S.Array(
   File,
 ) as any as S.Schema<FileList>;
@@ -594,7 +594,7 @@ export const MetricsValue = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MetricsValue" }) as any as S.Schema<MetricsValue>;
 
-export type MetricsValueList = ReadonlyArray<MetricsValue>;
+export type MetricsValueList = Array<MetricsValue>;
 export const MetricsValueList = /*@__PURE__*/ S.Array(
   MetricsValue,
 ) as any as S.Schema<MetricsValueList>;
@@ -685,10 +685,9 @@ export type ListProcessesUserProcessFilter_userAccessLevelsEnum =
 export const ListProcessesUserProcessFilter_userAccessLevelsEnum =
   /*@__PURE__*/ S.String;
 
-export type ListProcessesUserProcessFilter_userAccessLevelsEnumList =
-  ReadonlyArray<
-    ListProcessesUserProcessFilter_userAccessLevelsEnum | (string & {})
-  >;
+export type ListProcessesUserProcessFilter_userAccessLevelsEnumList = Array<
+  ListProcessesUserProcessFilter_userAccessLevelsEnum | (string & {})
+>;
 export const ListProcessesUserProcessFilter_userAccessLevelsEnumList =
   /*@__PURE__*/ S.Array(
     ListProcessesUserProcessFilter_userAccessLevelsEnum,
@@ -707,7 +706,7 @@ export type ListProcessesUserProcessFilter_typesEnum =
   | "BATCH_TASK";
 export const ListProcessesUserProcessFilter_typesEnum = /*@__PURE__*/ S.String;
 
-export type ListProcessesUserProcessFilter_typesEnumList = ReadonlyArray<
+export type ListProcessesUserProcessFilter_typesEnumList = Array<
   ListProcessesUserProcessFilter_typesEnum | (string & {})
 >;
 export const ListProcessesUserProcessFilter_typesEnumList =
@@ -729,7 +728,7 @@ export type ListProcessesUserProcessFilter_statusesEnum =
 export const ListProcessesUserProcessFilter_statusesEnum =
   /*@__PURE__*/ S.String;
 
-export type ListProcessesUserProcessFilter_statusesEnumList = ReadonlyArray<
+export type ListProcessesUserProcessFilter_statusesEnumList = Array<
   ListProcessesUserProcessFilter_statusesEnum | (string & {})
 >;
 export const ListProcessesUserProcessFilter_statusesEnumList =
@@ -870,7 +869,7 @@ export const GoogleAppsScriptTypeProcess = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleAppsScriptTypeProcess>;
 
 export type GoogleAppsScriptTypeProcessList =
-  ReadonlyArray<GoogleAppsScriptTypeProcess>;
+  Array<GoogleAppsScriptTypeProcess>;
 export const GoogleAppsScriptTypeProcessList = /*@__PURE__*/ S.Array(
   GoogleAppsScriptTypeProcess,
 ) as any as S.Schema<GoogleAppsScriptTypeProcessList>;
@@ -915,7 +914,7 @@ export const ListProjectsDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsDeploymentsRequest",
 }) as any as S.Schema<ListProjectsDeploymentsRequest>;
 
-export type DeploymentList = ReadonlyArray<Deployment>;
+export type DeploymentList = Array<Deployment>;
 export const DeploymentList = /*@__PURE__*/ S.Array(
   Deployment,
 ) as any as S.Schema<DeploymentList>;
@@ -960,7 +959,7 @@ export const ListProjectsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsVersionsRequest",
 }) as any as S.Schema<ListProjectsVersionsRequest>;
 
-export type VersionList = ReadonlyArray<Version>;
+export type VersionList = Array<Version>;
 export const VersionList = /*@__PURE__*/ S.Array(
   Version,
 ) as any as S.Schema<VersionList>;
@@ -996,7 +995,7 @@ export const ListScriptProcessesProcessesScriptProcessFilter_statusesEnum =
   /*@__PURE__*/ S.String;
 
 export type ListScriptProcessesProcessesScriptProcessFilter_statusesEnumList =
-  ReadonlyArray<
+  Array<
     ListScriptProcessesProcessesScriptProcessFilter_statusesEnum | (string & {})
   >;
 export const ListScriptProcessesProcessesScriptProcessFilter_statusesEnumList =
@@ -1010,7 +1009,7 @@ export const ListScriptProcessesProcessesScriptProcessFilter_userAccessLevelsEnu
   /*@__PURE__*/ S.String;
 
 export type ListScriptProcessesProcessesScriptProcessFilter_userAccessLevelsEnumList =
-  ReadonlyArray<
+  Array<
     | ListScriptProcessesProcessesScriptProcessFilter_userAccessLevelsEnum
     | (string & {})
   >;
@@ -1034,7 +1033,7 @@ export const ListScriptProcessesProcessesScriptProcessFilter_typesEnum =
   /*@__PURE__*/ S.String;
 
 export type ListScriptProcessesProcessesScriptProcessFilter_typesEnumList =
-  ReadonlyArray<
+  Array<
     ListScriptProcessesProcessesScriptProcessFilter_typesEnum | (string & {})
   >;
 export const ListScriptProcessesProcessesScriptProcessFilter_typesEnumList =
@@ -1115,7 +1114,7 @@ export const ListScriptProcessesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListScriptProcessesResponse",
 }) as any as S.Schema<ListScriptProcessesResponse>;
 
-export type DocumentList = ReadonlyArray<unknown>;
+export type DocumentList = Array<unknown>;
 export const DocumentList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<DocumentList>;
@@ -1169,7 +1168,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;

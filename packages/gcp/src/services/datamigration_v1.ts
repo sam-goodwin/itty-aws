@@ -110,7 +110,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -342,7 +342,7 @@ export const SslConfigTypeEnum = /*@__PURE__*/ S.String;
 /** SSL configuration information. */
 export interface SslConfig {
   /** Optional. The ssl config type according to 'client_key', 'client_certificate' and 'ca_certificate'. */
-  type?: SslConfigTypeEnum;
+  type?: SslConfigTypeEnum | (string & {});
   /** Required. Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate. The replica will use this certificate to verify it's connecting to the right host. */
   caCertificate?: string;
   /** Optional. SSL flags used for establishing SSL connection to the source database. Only source specific flags are supported. An object containing a list of "key": "value" pairs. Example: { "server_certificate_hostname": "server.com"}. */
@@ -373,7 +373,9 @@ export const StaticIpConnectivity = /*@__PURE__*/ S.suspend(() =>
 /** Specifies connection parameters required specifically for PostgreSQL databases. */
 export interface PostgreSqlConnectionProfile {
   /** Output only. If the source is a Cloud SQL database, this field indicates the network architecture it's associated with. */
-  networkArchitecture?: PostgreSqlConnectionProfileNetworkArchitectureEnum;
+  networkArchitecture?:
+    | PostgreSqlConnectionProfileNetworkArchitectureEnum
+    | (string & {});
   /** Private service connect connectivity. */
   privateServiceConnectConnectivity?: PrivateServiceConnectConnectivity;
   /** Optional. If true, Database Migration Service will use IAM database authentication to connect to the database. */
@@ -663,7 +665,7 @@ export const AuthorizedNetwork = /*@__PURE__*/ S.suspend(() =>
   identifier: "AuthorizedNetwork",
 }) as any as S.Schema<AuthorizedNetwork>;
 
-export type AuthorizedNetworkList = ReadonlyArray<AuthorizedNetwork>;
+export type AuthorizedNetworkList = Array<AuthorizedNetwork>;
 export const AuthorizedNetworkList = /*@__PURE__*/ S.Array(
   AuthorizedNetwork,
 ) as any as S.Schema<AuthorizedNetworkList>;
@@ -687,7 +689,7 @@ export const InstanceNetworkConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "InstanceNetworkConfig",
 }) as any as S.Schema<InstanceNetworkConfig>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -739,7 +741,7 @@ export const EncryptionConfig = /*@__PURE__*/ S.suspend(() =>
 /** Settings for creating an AlloyDB cluster. */
 export interface AlloyDbSettings {
   /** Optional. The database engine major version. This is an optional field. If a database version is not supplied at cluster creation time, then a default database version will be used. */
-  databaseVersion?: AlloyDbSettingsDatabaseVersionEnum;
+  databaseVersion?: AlloyDbSettingsDatabaseVersionEnum | (string & {});
   /** Required. Input only. Initial user to setup during cluster creation. Required. */
   initialUser?: UserPassword;
   /** Settings for the cluster's primary instance */
@@ -865,7 +867,7 @@ export const SqlAclEntry = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SqlAclEntry" }) as any as S.Schema<SqlAclEntry>;
 
-export type SqlAclEntryList = ReadonlyArray<SqlAclEntry>;
+export type SqlAclEntryList = Array<SqlAclEntry>;
 export const SqlAclEntryList = /*@__PURE__*/ S.Array(
   SqlAclEntry,
 ) as any as S.Schema<SqlAclEntryList>;
@@ -930,7 +932,7 @@ export interface CloudSqlSettings {
   /** The storage capacity available to the database, in GB. The minimum (and default) size is 10GB. */
   dataDiskSizeGb?: string;
   /** Optional. The edition of the given Cloud SQL instance. */
-  edition?: CloudSqlSettingsEditionEnum;
+  edition?: CloudSqlSettingsEditionEnum | (string & {});
   /** [default: ON] If you enable this setting, Cloud SQL checks your available storage every 30 seconds. If the available storage falls below a threshold size, Cloud SQL automatically adds additional storage capacity. If the available storage repeatedly falls below the threshold size, Cloud SQL continues to add storage until it reaches the maximum of 30 TB. */
   autoStorageIncrease?: boolean;
   /** The Database Migration Service source connection profile ID, in the format: `projects/my_project_name/locations/us-central1/connectionProfiles/connection_profile_ID` */
@@ -938,7 +940,7 @@ export interface CloudSqlSettings {
   /** Output only. Indicates If this connection profile root password is stored. */
   rootPasswordSet?: boolean;
   /** The database engine type and version. Deprecated. Use database_version_name instead. */
-  databaseVersion?: CloudSqlSettingsDatabaseVersionEnum;
+  databaseVersion?: CloudSqlSettingsDatabaseVersionEnum | (string & {});
   /** The database flags passed to the Cloud SQL instance at startup. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }. */
   databaseFlags?: StringMap;
   /** The tier (or machine type) for this instance, for example: `db-n1-standard-1` (MySQL instances) or `db-custom-1-3840` (PostgreSQL instances). For more information, see [Cloud SQL Instance Settings](https://cloud.google.com/sql/docs/mysql/instance-settings). */
@@ -946,7 +948,7 @@ export interface CloudSqlSettings {
   /** The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The IPv4 address cannot be disabled. */
   ipConfig?: SqlIpConfig;
   /** Optional. Availability type. Potential values: * `ZONAL`: The instance serves data from only one zone. Outages in that zone affect data availability. * `REGIONAL`: The instance can serve data from more than one zone in a region (it is highly available). */
-  availabilityType?: CloudSqlSettingsAvailabilityTypeEnum;
+  availabilityType?: CloudSqlSettingsAvailabilityTypeEnum | (string & {});
   /** The KMS key name used for the csql instance. */
   cmekKeyName?: string;
   /** Optional. Provisioned number of I/O operations per second for the data disk. This field is only used for hyperdisk-balanced disk types. */
@@ -956,7 +958,7 @@ export interface CloudSqlSettings {
   /** Optional. The database engine type and version name. */
   databaseVersionName?: string;
   /** The activation policy specifies when the instance is activated; it is applicable only when the instance state is 'RUNNABLE'. Valid values: 'ALWAYS': The instance is on, and remains so even in the absence of connection requests. `NEVER`: The instance is off; it is not activated, even if a connection request arrives. */
-  activationPolicy?: CloudSqlSettingsActivationPolicyEnum;
+  activationPolicy?: CloudSqlSettingsActivationPolicyEnum | (string & {});
   /** The Google Cloud Platform zone where your Cloud SQL database instance is located. */
   zone?: string;
   /** Optional. Data cache is an optional feature available for Cloud SQL for MySQL Enterprise Plus edition only. For more information on data cache, see [Data cache overview](https://cloud.google.com/sql/help/mysql-data-cache) in Cloud SQL documentation. */
@@ -970,7 +972,7 @@ export interface CloudSqlSettings {
   /** Optional. The Google Cloud Platform zone where the failover Cloud SQL database instance is located. Used when the Cloud SQL database availability type is REGIONAL (i.e. multiple zones / highly available). */
   secondaryZone?: string;
   /** The type of storage: `PD_SSD` (default) or `PD_HDD` or `HYPERDISK_BALANCED`. */
-  dataDiskType?: CloudSqlSettingsDataDiskTypeEnum;
+  dataDiskType?: CloudSqlSettingsDataDiskTypeEnum | (string & {});
   /** Input only. Initial root password. */
   rootPassword?: string;
 }
@@ -1042,13 +1044,13 @@ export interface ConnectionProfile {
   /** Output only. The timestamp when the resource was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z". */
   createTime?: string;
   /** The current connection profile state (e.g. DRAFT, READY, or FAILED). */
-  state?: ConnectionProfileStateEnum;
+  state?: ConnectionProfileStateEnum | (string & {});
   /** An Oracle database connection profile. */
   oracle?: OracleConnectionProfile;
   /** The database provider. */
-  provider?: ConnectionProfileProviderEnum;
+  provider?: ConnectionProfileProviderEnum | (string & {});
   /** Optional. The connection profile role. */
-  role?: ConnectionProfileRoleEnum;
+  role?: ConnectionProfileRoleEnum | (string & {});
   /** The connection profile display name. */
   displayName?: string;
   /** Connection profile for a SQL Server data source. */
@@ -1137,7 +1139,7 @@ export interface DatabaseEngineInfo {
   /** Required. Engine version, for example "12.c.1". */
   version?: string;
   /** Required. Engine type. */
-  engine?: DatabaseEngineInfoEngineEnum;
+  engine?: DatabaseEngineInfoEngineEnum | (string & {});
 }
 export const DatabaseEngineInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1178,7 +1180,9 @@ export interface ConversionWorkspace {
   /** Output only. Whether the workspace has uncommitted changes (changes which were made after the workspace was committed). */
   hasUncommittedChanges?: boolean;
   /** Optional. The provider for the destination database. */
-  destinationProvider?: ConversionWorkspaceDestinationProviderEnum;
+  destinationProvider?:
+    | ConversionWorkspaceDestinationProviderEnum
+    | (string & {});
   /** Output only. The timestamp when the workspace resource was last updated. */
   updateTime?: string;
   /** Required. The source engine details. */
@@ -1192,7 +1196,7 @@ export interface ConversionWorkspace {
   /** Full name of the workspace resource, in the form of: projects/{project}/locations/{location}/conversionWorkspaces/{conversion_workspace}. */
   name?: string;
   /** Optional. The provider for the source database. */
-  sourceProvider?: ConversionWorkspaceSourceProviderEnum;
+  sourceProvider?: ConversionWorkspaceSourceProviderEnum | (string & {});
 }
 export const ConversionWorkspace = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1269,7 +1273,9 @@ export interface SourceNumericFilter {
   /** Optional. The filter will match columns with precision greater than or equal to this number. */
   sourceMinPrecisionFilter?: number;
   /** Required. Enum to set the option defining the datatypes numeric filter has to be applied to */
-  numericFilterOption?: SourceNumericFilterNumericFilterOptionEnum;
+  numericFilterOption?:
+    | SourceNumericFilterNumericFilterOptionEnum
+    | (string & {});
   /** Optional. The filter will match columns with precision smaller than or equal to this number. */
   sourceMaxPrecisionFilter?: number;
   /** Optional. The filter will match columns with scale greater than or equal to this number. */
@@ -1367,7 +1373,9 @@ export interface MultiEntityRename {
   /** Optional. The pattern used to generate the new entity's name. This pattern must include the characters '{name}', which will be replaced with the name of the original entity. For example, the pattern 't_{name}' for an entity name jobs would be converted to 't_jobs'. If unspecified, the default value for this field is '{name}' */
   newNamePattern?: string;
   /** Optional. Additional transformation that can be done on the source entity name before it is being used by the new_name_pattern, for example lower case. If no transformation is desired, use NO_TRANSFORMATION */
-  sourceNameTransformation?: MultiEntityRenameSourceNameTransformationEnum;
+  sourceNameTransformation?:
+    | MultiEntityRenameSourceNameTransformationEnum
+    | (string & {});
 }
 export const MultiEntityRename = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1532,7 +1540,7 @@ export interface DoubleComparisonFilter {
   /** Required. Double compare value to be used */
   value?: number;
   /** Required. Relation between source value and compare value */
-  valueComparison?: DoubleComparisonFilterValueComparisonEnum;
+  valueComparison?: DoubleComparisonFilterValueComparisonEnum | (string & {});
 }
 export const DoubleComparisonFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1556,7 +1564,7 @@ export interface IntComparisonFilter {
   /** Required. Integer compare value to be used */
   value?: string;
   /** Required. Relation between source value and compare value */
-  valueComparison?: IntComparisonFilterValueComparisonEnum;
+  valueComparison?: IntComparisonFilterValueComparisonEnum | (string & {});
 }
 export const IntComparisonFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1613,7 +1621,7 @@ export interface ValueListFilter {
   /** Required. The list to be used to filter by */
   values?: StringList;
   /** Required. Indicates whether the filter matches rows with values that are present in the list or those with values not present in it. */
-  valuePresentList?: ValueListFilterValuePresentListEnum;
+  valuePresentList?: ValueListFilterValuePresentListEnum | (string & {});
   /** Required. Whether to ignore case when filtering by values. Defaults to false */
   ignoreCase?: boolean;
 }
@@ -1763,11 +1771,11 @@ export interface MappingRule {
   /** Optional. Rule to specify how the data contained in a column should be transformed (such as trimmed, rounded, etc) provided that the data meets certain criteria. */
   conditionalColumnSetValue?: ConditionalColumnSetValue;
   /** Optional. The mapping rule state */
-  state?: MappingRuleStateEnum;
+  state?: MappingRuleStateEnum | (string & {});
   /** Optional. Rule to change the sql code for an entity, for example, function, procedure. */
   sourceSqlChange?: SourceSqlChange;
   /** Required. The rule scope */
-  ruleScope?: MappingRuleRuleScopeEnum;
+  ruleScope?: MappingRuleRuleScopeEnum | (string & {});
 }
 export const MappingRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1858,7 +1866,7 @@ export const DumpFlag = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DumpFlag" }) as any as S.Schema<DumpFlag>;
 
-export type DumpFlagList = ReadonlyArray<DumpFlag>;
+export type DumpFlagList = Array<DumpFlag>;
 export const DumpFlagList = /*@__PURE__*/ S.Array(
   DumpFlag,
 ) as any as S.Schema<DumpFlagList>;
@@ -1910,7 +1918,7 @@ export interface SourceObjectIdentifier {
   /** Optional. The database name. This will be required only if the object uses a database name as part of its unique identifier. */
   database?: string;
   /** Required. The type of the migration job object. */
-  type?: SourceObjectIdentifierTypeEnum;
+  type?: SourceObjectIdentifierTypeEnum | (string & {});
 }
 export const SourceObjectIdentifier = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1936,7 +1944,7 @@ export const SourceObjectConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "SourceObjectConfig",
 }) as any as S.Schema<SourceObjectConfig>;
 
-export type SourceObjectConfigList = ReadonlyArray<SourceObjectConfig>;
+export type SourceObjectConfigList = Array<SourceObjectConfig>;
 export const SourceObjectConfigList = /*@__PURE__*/ S.Array(
   SourceObjectConfig,
 ) as any as S.Schema<SourceObjectConfigList>;
@@ -1944,7 +1952,9 @@ export const SourceObjectConfigList = /*@__PURE__*/ S.Array(
 /** List of configurations for the source objects to be migrated. */
 export interface SourceObjectsConfig {
   /** Optional. The objects selection type of the migration job. */
-  objectsSelectionType?: SourceObjectsConfigObjectsSelectionTypeEnum;
+  objectsSelectionType?:
+    | SourceObjectsConfigObjectsSelectionTypeEnum
+    | (string & {});
   /** Optional. The list of the objects to be migrated. */
   objectConfigs?: SourceObjectConfigList;
 }
@@ -2078,9 +2088,9 @@ export const DatabaseTypeProviderEnum = /*@__PURE__*/ S.String;
 /** A message defining the database engine and provider. */
 export interface DatabaseType {
   /** The database engine. */
-  engine?: DatabaseTypeEngineEnum;
+  engine?: DatabaseTypeEngineEnum | (string & {});
   /** The database provider. */
-  provider?: DatabaseTypeProviderEnum;
+  provider?: DatabaseTypeProviderEnum | (string & {});
 }
 export const DatabaseType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2134,7 +2144,7 @@ export const PerformanceConfigDumpParallelLevelEnum = /*@__PURE__*/ S.String;
 /** Performance configuration definition. */
 export interface PerformanceConfig {
   /** Initial dump parallelism level. */
-  dumpParallelLevel?: PerformanceConfigDumpParallelLevelEnum;
+  dumpParallelLevel?: PerformanceConfigDumpParallelLevelEnum | (string & {});
 }
 export const PerformanceConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2195,8 +2205,7 @@ export const SqlServerDatabaseBackup = /*@__PURE__*/ S.suspend(() =>
   identifier: "SqlServerDatabaseBackup",
 }) as any as S.Schema<SqlServerDatabaseBackup>;
 
-export type SqlServerDatabaseBackupList =
-  ReadonlyArray<SqlServerDatabaseBackup>;
+export type SqlServerDatabaseBackupList = Array<SqlServerDatabaseBackup>;
 export const SqlServerDatabaseBackupList = /*@__PURE__*/ S.Array(
   SqlServerDatabaseBackup,
 ) as any as S.Schema<SqlServerDatabaseBackupList>;
@@ -2408,13 +2417,13 @@ export interface MigrationJob {
   /** static ip connectivity data (default, no additional details needed). */
   staticIpConnectivity?: StaticIpConnectivity;
   /** Output only. Migration job mode. Migration jobs can be standard forward jobs or failback migration jobs. */
-  purpose?: MigrationJobPurposeEnum;
+  purpose?: MigrationJobPurposeEnum | (string & {});
   /** Optional. A failback replication pointer to the resource name (URI) of the original migration job. */
   originalMigrationName?: string;
   /** Configuration for heterogeneous **SQL Server to Cloud SQL for PostgreSQL** migrations. */
   sqlserverToPostgresConfig?: SqlServerToPostgresConfig;
   /** Output only. The current migration job phase. */
-  phase?: MigrationJobPhaseEnum;
+  phase?: MigrationJobPhaseEnum | (string & {});
   /** Optional. Configuration for PostgreSQL homogeneous migration. */
   postgresHomogeneousConfig?: PostgresHomogeneousConfig;
   /** The database engine type and provider of the source. */
@@ -2422,7 +2431,7 @@ export interface MigrationJob {
   /** Output only. The timestamp when the migration job resource was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z". */
   createTime?: string;
   /** The current migration job state. */
-  state?: MigrationJobStateEnum;
+  state?: MigrationJobStateEnum | (string & {});
   /** The conversion workspace used by the migration. */
   conversionWorkspace?: ConversionWorkspaceInfo;
   /** Optional. Data dump parallelism settings used by the migration. */
@@ -2440,7 +2449,7 @@ export interface MigrationJob {
   /** Output only. The error details in case of state FAILED. */
   error?: Status;
   /** Optional. The type of the data dump. Supported for MySQL to CloudSQL for MySQL migrations only. */
-  dumpType?: MigrationJobDumpTypeEnum;
+  dumpType?: MigrationJobDumpTypeEnum | (string & {});
   /** Output only. Reserved for future use. */
   satisfiesPzs?: boolean;
   /** Output only. If the migration job is completed, the time when it was completed. */
@@ -2458,7 +2467,7 @@ export interface MigrationJob {
   /** Output only. The timestamp when the migration job resource was last updated. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z". */
   updateTime?: string;
   /** Required. The migration job type. */
-  type?: MigrationJobTypeEnum;
+  type?: MigrationJobTypeEnum | (string & {});
   /** Required. The resource name (URI) of the destination connection profile. */
   destination?: string;
 }
@@ -2593,7 +2602,7 @@ export interface PrivateConnection {
   /** Output only. The create time of the resource. */
   createTime?: string;
   /** Output only. The state of the private connection. */
-  state?: PrivateConnectionStateEnum;
+  state?: PrivateConnectionStateEnum | (string & {});
   /** Output only. Reserved for future use. */
   satisfiesPzi?: boolean;
 }
@@ -2841,7 +2850,7 @@ export const DescribeConversionWorkspaceRevisionsProjectsLocationsConversionWork
       "DescribeConversionWorkspaceRevisionsProjectsLocationsConversionWorkspacesRequest",
   }) as any as S.Schema<DescribeConversionWorkspaceRevisionsProjectsLocationsConversionWorkspacesRequest>;
 
-export type ConversionWorkspaceList = ReadonlyArray<ConversionWorkspace>;
+export type ConversionWorkspaceList = Array<ConversionWorkspace>;
 export const ConversionWorkspaceList = /*@__PURE__*/ S.Array(
   ConversionWorkspace,
 ) as any as S.Schema<ConversionWorkspaceList>;
@@ -2961,12 +2970,12 @@ export const ConstraintEntity = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConstraintEntity",
 }) as any as S.Schema<ConstraintEntity>;
 
-export type ConstraintEntityList = ReadonlyArray<ConstraintEntity>;
+export type ConstraintEntityList = Array<ConstraintEntity>;
 export const ConstraintEntityList = /*@__PURE__*/ S.Array(
   ConstraintEntity,
 ) as any as S.Schema<ConstraintEntityList>;
 
-export type BooleanList = ReadonlyArray<boolean>;
+export type BooleanList = Array<boolean>;
 export const BooleanList = /*@__PURE__*/ S.Array(
   S.Boolean,
 ) as any as S.Schema<BooleanList>;
@@ -2997,7 +3006,7 @@ export const IndexEntity = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "IndexEntity" }) as any as S.Schema<IndexEntity>;
 
-export type IndexEntityList = ReadonlyArray<IndexEntity>;
+export type IndexEntityList = Array<IndexEntity>;
 export const IndexEntityList = /*@__PURE__*/ S.Array(
   IndexEntity,
 ) as any as S.Schema<IndexEntityList>;
@@ -3025,7 +3034,7 @@ export const TriggerEntity = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TriggerEntity" }) as any as S.Schema<TriggerEntity>;
 
-export type TriggerEntityList = ReadonlyArray<TriggerEntity>;
+export type TriggerEntityList = Array<TriggerEntity>;
 export const TriggerEntityList = /*@__PURE__*/ S.Array(
   TriggerEntity,
 ) as any as S.Schema<TriggerEntityList>;
@@ -3095,7 +3104,7 @@ export const ColumnEntity = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ColumnEntity" }) as any as S.Schema<ColumnEntity>;
 
-export type ColumnEntityList = ReadonlyArray<ColumnEntity>;
+export type ColumnEntityList = Array<ColumnEntity>;
 export const ColumnEntityList = /*@__PURE__*/ S.Array(
   ColumnEntity,
 ) as any as S.Schema<ColumnEntityList>;
@@ -3183,7 +3192,7 @@ export const EntityMappingLogEntry = /*@__PURE__*/ S.suspend(() =>
   identifier: "EntityMappingLogEntry",
 }) as any as S.Schema<EntityMappingLogEntry>;
 
-export type EntityMappingLogEntryList = ReadonlyArray<EntityMappingLogEntry>;
+export type EntityMappingLogEntryList = Array<EntityMappingLogEntry>;
 export const EntityMappingLogEntryList = /*@__PURE__*/ S.Array(
   EntityMappingLogEntry,
 ) as any as S.Schema<EntityMappingLogEntryList>;
@@ -3211,7 +3220,7 @@ export const EntityMapping = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "EntityMapping" }) as any as S.Schema<EntityMapping>;
 
-export type EntityMappingList = ReadonlyArray<EntityMapping>;
+export type EntityMappingList = Array<EntityMapping>;
 export const EntityMappingList = /*@__PURE__*/ S.Array(
   EntityMapping,
 ) as any as S.Schema<EntityMappingList>;
@@ -3315,7 +3324,7 @@ export const EntityDdl = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "EntityDdl" }) as any as S.Schema<EntityDdl>;
 
-export type EntityDdlList = ReadonlyArray<EntityDdl>;
+export type EntityDdlList = Array<EntityDdl>;
 export const EntityDdlList = /*@__PURE__*/ S.Array(
   EntityDdl,
 ) as any as S.Schema<EntityDdlList>;
@@ -3469,7 +3478,7 @@ export const EntityIssue = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "EntityIssue" }) as any as S.Schema<EntityIssue>;
 
-export type EntityIssueList = ReadonlyArray<EntityIssue>;
+export type EntityIssueList = Array<EntityIssue>;
 export const EntityIssueList = /*@__PURE__*/ S.Array(
   EntityIssue,
 ) as any as S.Schema<EntityIssueList>;
@@ -3653,7 +3662,7 @@ export const DatabaseEntity = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DatabaseEntity" }) as any as S.Schema<DatabaseEntity>;
 
-export type DatabaseEntityList = ReadonlyArray<DatabaseEntity>;
+export type DatabaseEntityList = Array<DatabaseEntity>;
 export const DatabaseEntityList = /*@__PURE__*/ S.Array(
   DatabaseEntity,
 ) as any as S.Schema<DatabaseEntityList>;
@@ -3935,7 +3944,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
-export type BindingList = ReadonlyArray<Binding>;
+export type BindingList = Array<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -3950,7 +3959,7 @@ export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
 export interface AuditLogConfig {
   /** The log type that this config enables. */
-  logType?: AuditLogConfigLogTypeEnum;
+  logType?: AuditLogConfigLogTypeEnum | (string & {});
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
   exemptedMembers?: StringList;
 }
@@ -3961,7 +3970,7 @@ export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
-export type AuditLogConfigList = ReadonlyArray<AuditLogConfig>;
+export type AuditLogConfigList = Array<AuditLogConfig>;
 export const AuditLogConfigList = /*@__PURE__*/ S.Array(
   AuditLogConfig,
 ) as any as S.Schema<AuditLogConfigList>;
@@ -3980,7 +3989,7 @@ export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
-export type AuditConfigList = ReadonlyArray<AuditConfig>;
+export type AuditConfigList = Array<AuditConfig>;
 export const AuditConfigList = /*@__PURE__*/ S.Array(
   AuditConfig,
 ) as any as S.Schema<AuditConfigList>;
@@ -4359,7 +4368,7 @@ export const RulesFile = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "RulesFile" }) as any as S.Schema<RulesFile>;
 
-export type RulesFileList = ReadonlyArray<RulesFile>;
+export type RulesFileList = Array<RulesFile>;
 export const RulesFileList = /*@__PURE__*/ S.Array(
   RulesFile,
 ) as any as S.Schema<RulesFileList>;
@@ -4436,7 +4445,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = ReadonlyArray<Location>;
+export type LocationList = Array<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -4488,7 +4497,7 @@ export const ListProjectsLocationsConnectionProfilesRequest =
     identifier: "ListProjectsLocationsConnectionProfilesRequest",
   }) as any as S.Schema<ListProjectsLocationsConnectionProfilesRequest>;
 
-export type ConnectionProfileList = ReadonlyArray<ConnectionProfile>;
+export type ConnectionProfileList = Array<ConnectionProfile>;
 export const ConnectionProfileList = /*@__PURE__*/ S.Array(
   ConnectionProfile,
 ) as any as S.Schema<ConnectionProfileList>;
@@ -4584,7 +4593,7 @@ export const ListProjectsLocationsConversionWorkspacesMappingRulesRequest =
     identifier: "ListProjectsLocationsConversionWorkspacesMappingRulesRequest",
   }) as any as S.Schema<ListProjectsLocationsConversionWorkspacesMappingRulesRequest>;
 
-export type MappingRuleList = ReadonlyArray<MappingRule>;
+export type MappingRuleList = Array<MappingRule>;
 export const MappingRuleList = /*@__PURE__*/ S.Array(
   MappingRule,
 ) as any as S.Schema<MappingRuleList>;
@@ -4636,7 +4645,7 @@ export const ListProjectsLocationsMigrationJobsRequest =
     identifier: "ListProjectsLocationsMigrationJobsRequest",
   }) as any as S.Schema<ListProjectsLocationsMigrationJobsRequest>;
 
-export type MigrationJobList = ReadonlyArray<MigrationJob>;
+export type MigrationJobList = Array<MigrationJob>;
 export const MigrationJobList = /*@__PURE__*/ S.Array(
   MigrationJob,
 ) as any as S.Schema<MigrationJobList>;
@@ -4685,7 +4694,7 @@ export const ListProjectsLocationsMigrationJobsObjectsRequest =
     identifier: "ListProjectsLocationsMigrationJobsObjectsRequest",
   }) as any as S.Schema<ListProjectsLocationsMigrationJobsObjectsRequest>;
 
-export type MigrationJobObjectList = ReadonlyArray<MigrationJobObject>;
+export type MigrationJobObjectList = Array<MigrationJobObject>;
 export const MigrationJobObjectList = /*@__PURE__*/ S.Array(
   MigrationJobObject,
 ) as any as S.Schema<MigrationJobObjectList>;
@@ -4737,7 +4746,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type OperationList = ReadonlyArray<Operation>;
+export type OperationList = Array<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -4792,7 +4801,7 @@ export const ListProjectsLocationsPrivateConnectionsRequest =
     identifier: "ListProjectsLocationsPrivateConnectionsRequest",
   }) as any as S.Schema<ListProjectsLocationsPrivateConnectionsRequest>;
 
-export type PrivateConnectionList = ReadonlyArray<PrivateConnection>;
+export type PrivateConnectionList = Array<PrivateConnection>;
 export const PrivateConnectionList = /*@__PURE__*/ S.Array(
   PrivateConnection,
 ) as any as S.Schema<PrivateConnectionList>;
@@ -5230,7 +5239,7 @@ export const BackgroundJobLogEntry = /*@__PURE__*/ S.suspend(() =>
   identifier: "BackgroundJobLogEntry",
 }) as any as S.Schema<BackgroundJobLogEntry>;
 
-export type BackgroundJobLogEntryList = ReadonlyArray<BackgroundJobLogEntry>;
+export type BackgroundJobLogEntryList = Array<BackgroundJobLogEntry>;
 export const BackgroundJobLogEntryList = /*@__PURE__*/ S.Array(
   BackgroundJobLogEntry,
 ) as any as S.Schema<BackgroundJobLogEntryList>;

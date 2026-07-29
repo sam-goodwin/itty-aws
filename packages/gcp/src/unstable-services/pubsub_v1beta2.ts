@@ -60,7 +60,7 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -311,7 +311,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
-export type BindingList = ReadonlyArray<Binding>;
+export type BindingList = Array<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -414,7 +414,7 @@ export const ListProjectsSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsSubscriptionsRequest",
 }) as any as S.Schema<ListProjectsSubscriptionsRequest>;
 
-export type SubscriptionList = ReadonlyArray<Subscription>;
+export type SubscriptionList = Array<Subscription>;
 export const SubscriptionList = /*@__PURE__*/ S.Array(
   Subscription,
 ) as any as S.Schema<SubscriptionList>;
@@ -459,7 +459,7 @@ export const ListProjectsTopicsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsTopicsRequest",
 }) as any as S.Schema<ListProjectsTopicsRequest>;
 
-export type TopicList = ReadonlyArray<Topic>;
+export type TopicList = Array<Topic>;
 export const TopicList = /*@__PURE__*/ S.Array(
   Topic,
 ) as any as S.Schema<TopicList>;
@@ -617,7 +617,7 @@ export const PubsubMessage = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PubsubMessage" }) as any as S.Schema<PubsubMessage>;
 
-export type PubsubMessageList = ReadonlyArray<PubsubMessage>;
+export type PubsubMessageList = Array<PubsubMessage>;
 export const PubsubMessageList = /*@__PURE__*/ S.Array(
   PubsubMessage,
 ) as any as S.Schema<PubsubMessageList>;
@@ -718,7 +718,7 @@ export const ReceivedMessage = /*@__PURE__*/ S.suspend(() =>
   identifier: "ReceivedMessage",
 }) as any as S.Schema<ReceivedMessage>;
 
-export type ReceivedMessageList = ReadonlyArray<ReceivedMessage>;
+export type ReceivedMessageList = Array<ReceivedMessage>;
 export const ReceivedMessageList = /*@__PURE__*/ S.Array(
   ReceivedMessage,
 ) as any as S.Schema<ReceivedMessageList>;

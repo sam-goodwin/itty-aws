@@ -202,7 +202,7 @@ export const GroupsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GroupsListRequest",
 }) as any as S.Schema<GroupsListRequest>;
 
-export type GroupsListResponseBodyList = ReadonlyArray<Group>;
+export type GroupsListResponseBodyList = Array<Group>;
 export const GroupsListResponseBodyList = /*@__PURE__*/ S.Array(
   Group,
 ) as any as S.Schema<GroupsListResponseBodyList>;

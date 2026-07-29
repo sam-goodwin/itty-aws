@@ -398,8 +398,7 @@ export const GetV1AppsResponseDataItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetV1AppsResponseDataItem",
 }) as any as S.Schema<GetV1AppsResponseDataItem>;
 
-export type GetV1AppsResponseDataList =
-  ReadonlyArray<GetV1AppsResponseDataItem>;
+export type GetV1AppsResponseDataList = Array<GetV1AppsResponseDataItem>;
 export const GetV1AppsResponseDataList = /*@__PURE__*/ S.Array(
   GetV1AppsResponseDataItem,
 ) as any as S.Schema<GetV1AppsResponseDataList>;
@@ -534,7 +533,7 @@ export const GetV1AppsByAppIdDeploymentsResponseDataItem =
   }) as any as S.Schema<GetV1AppsByAppIdDeploymentsResponseDataItem>;
 
 export type GetV1AppsByAppIdDeploymentsResponseDataList =
-  ReadonlyArray<GetV1AppsByAppIdDeploymentsResponseDataItem>;
+  Array<GetV1AppsByAppIdDeploymentsResponseDataItem>;
 export const GetV1AppsByAppIdDeploymentsResponseDataList =
   /*@__PURE__*/ S.Array(
     GetV1AppsByAppIdDeploymentsResponseDataItem,
@@ -620,7 +619,7 @@ export const GetV1AppsByAppIdDomainsResponseDataItemDnsRecordsItem =
   }) as any as S.Schema<GetV1AppsByAppIdDomainsResponseDataItemDnsRecordsItem>;
 
 export type GetV1AppsByAppIdDomainsResponseDataItemDnsRecordsList =
-  ReadonlyArray<GetV1AppsByAppIdDomainsResponseDataItemDnsRecordsItem>;
+  Array<GetV1AppsByAppIdDomainsResponseDataItemDnsRecordsItem>;
 export const GetV1AppsByAppIdDomainsResponseDataItemDnsRecordsList =
   /*@__PURE__*/ S.Array(
     GetV1AppsByAppIdDomainsResponseDataItemDnsRecordsItem,
@@ -668,7 +667,7 @@ export const GetV1AppsByAppIdDomainsResponseDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GetV1AppsByAppIdDomainsResponseDataItem>;
 
 export type GetV1AppsByAppIdDomainsResponseDataList =
-  ReadonlyArray<GetV1AppsByAppIdDomainsResponseDataItem>;
+  Array<GetV1AppsByAppIdDomainsResponseDataItem>;
 export const GetV1AppsByAppIdDomainsResponseDataList = /*@__PURE__*/ S.Array(
   GetV1AppsByAppIdDomainsResponseDataItem,
 ) as any as S.Schema<GetV1AppsByAppIdDomainsResponseDataList>;
@@ -831,8 +830,7 @@ export const GetV1BucketsResponseDataItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetV1BucketsResponseDataItem",
 }) as any as S.Schema<GetV1BucketsResponseDataItem>;
 
-export type GetV1BucketsResponseDataList =
-  ReadonlyArray<GetV1BucketsResponseDataItem>;
+export type GetV1BucketsResponseDataList = Array<GetV1BucketsResponseDataItem>;
 export const GetV1BucketsResponseDataList = /*@__PURE__*/ S.Array(
   GetV1BucketsResponseDataItem,
 ) as any as S.Schema<GetV1BucketsResponseDataList>;
@@ -976,7 +974,7 @@ export const GetV1BucketsByBucketIdKeysResponseDataItem =
   }) as any as S.Schema<GetV1BucketsByBucketIdKeysResponseDataItem>;
 
 export type GetV1BucketsByBucketIdKeysResponseDataList =
-  ReadonlyArray<GetV1BucketsByBucketIdKeysResponseDataItem>;
+  Array<GetV1BucketsByBucketIdKeysResponseDataItem>;
 export const GetV1BucketsByBucketIdKeysResponseDataList = /*@__PURE__*/ S.Array(
   GetV1BucketsByBucketIdKeysResponseDataItem,
 ) as any as S.Schema<GetV1BucketsByBucketIdKeysResponseDataList>;
@@ -1179,7 +1177,7 @@ export const GetV1ConnectionsResponseDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetV1ConnectionsResponseDataItem>;
 
 export type GetV1ConnectionsResponseDataList =
-  ReadonlyArray<GetV1ConnectionsResponseDataItem>;
+  Array<GetV1ConnectionsResponseDataItem>;
 export const GetV1ConnectionsResponseDataList = /*@__PURE__*/ S.Array(
   GetV1ConnectionsResponseDataItem,
 ) as any as S.Schema<GetV1ConnectionsResponseDataList>;
@@ -1522,7 +1520,7 @@ export const GetV1DatabasesResponseDataItemConnectionsItem =
   }) as any as S.Schema<GetV1DatabasesResponseDataItemConnectionsItem>;
 
 export type GetV1DatabasesResponseDataItemConnectionsList =
-  ReadonlyArray<GetV1DatabasesResponseDataItemConnectionsItem>;
+  Array<GetV1DatabasesResponseDataItemConnectionsItem>;
 export const GetV1DatabasesResponseDataItemConnectionsList =
   /*@__PURE__*/ S.Array(
     GetV1DatabasesResponseDataItemConnectionsItem,
@@ -1654,7 +1652,7 @@ export const GetV1DatabasesResponseDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetV1DatabasesResponseDataItem>;
 
 export type GetV1DatabasesResponseDataList =
-  ReadonlyArray<GetV1DatabasesResponseDataItem>;
+  Array<GetV1DatabasesResponseDataItem>;
 export const GetV1DatabasesResponseDataList = /*@__PURE__*/ S.Array(
   GetV1DatabasesResponseDataItem,
 ) as any as S.Schema<GetV1DatabasesResponseDataList>;
@@ -1850,7 +1848,7 @@ export const GetV1DatabasesByDatabaseIdResponseDataConnectionsItem =
   }) as any as S.Schema<GetV1DatabasesByDatabaseIdResponseDataConnectionsItem>;
 
 export type GetV1DatabasesByDatabaseIdResponseDataConnectionsList =
-  ReadonlyArray<GetV1DatabasesByDatabaseIdResponseDataConnectionsItem>;
+  Array<GetV1DatabasesByDatabaseIdResponseDataConnectionsItem>;
 export const GetV1DatabasesByDatabaseIdResponseDataConnectionsList =
   /*@__PURE__*/ S.Array(
     GetV1DatabasesByDatabaseIdResponseDataConnectionsItem,
@@ -2057,7 +2055,7 @@ export const GetV1DatabasesByDatabaseIdBackupsResponseDataItem =
   }) as any as S.Schema<GetV1DatabasesByDatabaseIdBackupsResponseDataItem>;
 
 export type GetV1DatabasesByDatabaseIdBackupsResponseDataList =
-  ReadonlyArray<GetV1DatabasesByDatabaseIdBackupsResponseDataItem>;
+  Array<GetV1DatabasesByDatabaseIdBackupsResponseDataItem>;
 export const GetV1DatabasesByDatabaseIdBackupsResponseDataList =
   /*@__PURE__*/ S.Array(
     GetV1DatabasesByDatabaseIdBackupsResponseDataItem,
@@ -2269,7 +2267,7 @@ export const GetV1DatabasesByDatabaseIdConnectionsResponseDataItem =
   }) as any as S.Schema<GetV1DatabasesByDatabaseIdConnectionsResponseDataItem>;
 
 export type GetV1DatabasesByDatabaseIdConnectionsResponseDataList =
-  ReadonlyArray<GetV1DatabasesByDatabaseIdConnectionsResponseDataItem>;
+  Array<GetV1DatabasesByDatabaseIdConnectionsResponseDataItem>;
 export const GetV1DatabasesByDatabaseIdConnectionsResponseDataList =
   /*@__PURE__*/ S.Array(
     GetV1DatabasesByDatabaseIdConnectionsResponseDataItem,
@@ -2570,7 +2568,7 @@ export const GetV1DomainsByDomainIdResponseDataDnsRecordsItem =
   }) as any as S.Schema<GetV1DomainsByDomainIdResponseDataDnsRecordsItem>;
 
 export type GetV1DomainsByDomainIdResponseDataDnsRecordsList =
-  ReadonlyArray<GetV1DomainsByDomainIdResponseDataDnsRecordsItem>;
+  Array<GetV1DomainsByDomainIdResponseDataDnsRecordsItem>;
 export const GetV1DomainsByDomainIdResponseDataDnsRecordsList =
   /*@__PURE__*/ S.Array(
     GetV1DomainsByDomainIdResponseDataDnsRecordsItem,
@@ -2692,7 +2690,7 @@ export const GetV1EnvironmentVariablesResponseDataItem =
   }) as any as S.Schema<GetV1EnvironmentVariablesResponseDataItem>;
 
 export type GetV1EnvironmentVariablesResponseDataList =
-  ReadonlyArray<GetV1EnvironmentVariablesResponseDataItem>;
+  Array<GetV1EnvironmentVariablesResponseDataItem>;
 export const GetV1EnvironmentVariablesResponseDataList = /*@__PURE__*/ S.Array(
   GetV1EnvironmentVariablesResponseDataItem,
 ) as any as S.Schema<GetV1EnvironmentVariablesResponseDataList>;
@@ -2809,7 +2807,7 @@ export const GetV1IntegrationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetV1IntegrationsRequest",
 }) as any as S.Schema<GetV1IntegrationsRequest>;
 
-export type GetV1IntegrationsResponseDataItemScopesList = ReadonlyArray<string>;
+export type GetV1IntegrationsResponseDataItemScopesList = Array<string>;
 export const GetV1IntegrationsResponseDataItemScopesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2869,7 +2867,7 @@ export const GetV1IntegrationsResponseDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetV1IntegrationsResponseDataItem>;
 
 export type GetV1IntegrationsResponseDataList =
-  ReadonlyArray<GetV1IntegrationsResponseDataItem>;
+  Array<GetV1IntegrationsResponseDataItem>;
 export const GetV1IntegrationsResponseDataList = /*@__PURE__*/ S.Array(
   GetV1IntegrationsResponseDataItem,
 ) as any as S.Schema<GetV1IntegrationsResponseDataList>;
@@ -2913,7 +2911,7 @@ export const GetV1IntegrationsByIdRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetV1IntegrationsByIdRequest",
 }) as any as S.Schema<GetV1IntegrationsByIdRequest>;
 
-export type GetV1IntegrationsByIdResponseDataScopesList = ReadonlyArray<string>;
+export type GetV1IntegrationsByIdResponseDataScopesList = Array<string>;
 export const GetV1IntegrationsByIdResponseDataScopesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3116,7 +3114,7 @@ export const GetV1ProjectsResponseDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetV1ProjectsResponseDataItem>;
 
 export type GetV1ProjectsResponseDataList =
-  ReadonlyArray<GetV1ProjectsResponseDataItem>;
+  Array<GetV1ProjectsResponseDataItem>;
 export const GetV1ProjectsResponseDataList = /*@__PURE__*/ S.Array(
   GetV1ProjectsResponseDataItem,
 ) as any as S.Schema<GetV1ProjectsResponseDataList>;
@@ -3289,7 +3287,7 @@ export const GetV1ProjectsByProjectIdBranchesResponseDataItem =
   }) as any as S.Schema<GetV1ProjectsByProjectIdBranchesResponseDataItem>;
 
 export type GetV1ProjectsByProjectIdBranchesResponseDataList =
-  ReadonlyArray<GetV1ProjectsByProjectIdBranchesResponseDataItem>;
+  Array<GetV1ProjectsByProjectIdBranchesResponseDataItem>;
 export const GetV1ProjectsByProjectIdBranchesResponseDataList =
   /*@__PURE__*/ S.Array(
     GetV1ProjectsByProjectIdBranchesResponseDataItem,
@@ -3498,7 +3496,7 @@ export const GetV1ProjectsByProjectIdDatabasesResponseDataItemConnectionsItem =
   }) as any as S.Schema<GetV1ProjectsByProjectIdDatabasesResponseDataItemConnectionsItem>;
 
 export type GetV1ProjectsByProjectIdDatabasesResponseDataItemConnectionsList =
-  ReadonlyArray<GetV1ProjectsByProjectIdDatabasesResponseDataItemConnectionsItem>;
+  Array<GetV1ProjectsByProjectIdDatabasesResponseDataItemConnectionsItem>;
 export const GetV1ProjectsByProjectIdDatabasesResponseDataItemConnectionsList =
   /*@__PURE__*/ S.Array(
     GetV1ProjectsByProjectIdDatabasesResponseDataItemConnectionsItem,
@@ -3632,7 +3630,7 @@ export const GetV1ProjectsByProjectIdDatabasesResponseDataItem =
   }) as any as S.Schema<GetV1ProjectsByProjectIdDatabasesResponseDataItem>;
 
 export type GetV1ProjectsByProjectIdDatabasesResponseDataList =
-  ReadonlyArray<GetV1ProjectsByProjectIdDatabasesResponseDataItem>;
+  Array<GetV1ProjectsByProjectIdDatabasesResponseDataItem>;
 export const GetV1ProjectsByProjectIdDatabasesResponseDataList =
   /*@__PURE__*/ S.Array(
     GetV1ProjectsByProjectIdDatabasesResponseDataItem,
@@ -3707,8 +3705,7 @@ export const GetV1RegionsResponseDataItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetV1RegionsResponseDataItem",
 }) as any as S.Schema<GetV1RegionsResponseDataItem>;
 
-export type GetV1RegionsResponseDataList =
-  ReadonlyArray<GetV1RegionsResponseDataItem>;
+export type GetV1RegionsResponseDataList = Array<GetV1RegionsResponseDataItem>;
 export const GetV1RegionsResponseDataList = /*@__PURE__*/ S.Array(
   GetV1RegionsResponseDataItem,
 ) as any as S.Schema<GetV1RegionsResponseDataList>;
@@ -3750,7 +3747,7 @@ export const GetV1RegionsAccelerateResponseDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GetV1RegionsAccelerateResponseDataItem>;
 
 export type GetV1RegionsAccelerateResponseDataList =
-  ReadonlyArray<GetV1RegionsAccelerateResponseDataItem>;
+  Array<GetV1RegionsAccelerateResponseDataItem>;
 export const GetV1RegionsAccelerateResponseDataList = /*@__PURE__*/ S.Array(
   GetV1RegionsAccelerateResponseDataItem,
 ) as any as S.Schema<GetV1RegionsAccelerateResponseDataList>;
@@ -3800,7 +3797,7 @@ export const GetV1RegionsPostgresResponseDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GetV1RegionsPostgresResponseDataItem>;
 
 export type GetV1RegionsPostgresResponseDataList =
-  ReadonlyArray<GetV1RegionsPostgresResponseDataItem>;
+  Array<GetV1RegionsPostgresResponseDataItem>;
 export const GetV1RegionsPostgresResponseDataList = /*@__PURE__*/ S.Array(
   GetV1RegionsPostgresResponseDataItem,
 ) as any as S.Schema<GetV1RegionsPostgresResponseDataList>;
@@ -3876,7 +3873,7 @@ export const GetV1ScmInstallationsResponseDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GetV1ScmInstallationsResponseDataItem>;
 
 export type GetV1ScmInstallationsResponseDataList =
-  ReadonlyArray<GetV1ScmInstallationsResponseDataItem>;
+  Array<GetV1ScmInstallationsResponseDataItem>;
 export const GetV1ScmInstallationsResponseDataList = /*@__PURE__*/ S.Array(
   GetV1ScmInstallationsResponseDataItem,
 ) as any as S.Schema<GetV1ScmInstallationsResponseDataList>;
@@ -3956,7 +3953,7 @@ export const GetV1ScmInstallationsByInstallationIdRepositoriesResponseDataItem =
   }) as any as S.Schema<GetV1ScmInstallationsByInstallationIdRepositoriesResponseDataItem>;
 
 export type GetV1ScmInstallationsByInstallationIdRepositoriesResponseDataList =
-  ReadonlyArray<GetV1ScmInstallationsByInstallationIdRepositoriesResponseDataItem>;
+  Array<GetV1ScmInstallationsByInstallationIdRepositoriesResponseDataItem>;
 export const GetV1ScmInstallationsByInstallationIdRepositoriesResponseDataList =
   /*@__PURE__*/ S.Array(
     GetV1ScmInstallationsByInstallationIdRepositoriesResponseDataItem,
@@ -4054,7 +4051,7 @@ export const GetV1SourceRepositoriesResponseDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GetV1SourceRepositoriesResponseDataItem>;
 
 export type GetV1SourceRepositoriesResponseDataList =
-  ReadonlyArray<GetV1SourceRepositoriesResponseDataItem>;
+  Array<GetV1SourceRepositoriesResponseDataItem>;
 export const GetV1SourceRepositoriesResponseDataList = /*@__PURE__*/ S.Array(
   GetV1SourceRepositoriesResponseDataItem,
 ) as any as S.Schema<GetV1SourceRepositoriesResponseDataList>;
@@ -4189,7 +4186,7 @@ export const GetV1WorkspacesResponseDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetV1WorkspacesResponseDataItem>;
 
 export type GetV1WorkspacesResponseDataList =
-  ReadonlyArray<GetV1WorkspacesResponseDataItem>;
+  Array<GetV1WorkspacesResponseDataItem>;
 export const GetV1WorkspacesResponseDataList = /*@__PURE__*/ S.Array(
   GetV1WorkspacesResponseDataItem,
 ) as any as S.Schema<GetV1WorkspacesResponseDataList>;
@@ -4286,7 +4283,7 @@ export const GetV1WorkspacesByWorkspaceIdIntegrationsRequest =
   }) as any as S.Schema<GetV1WorkspacesByWorkspaceIdIntegrationsRequest>;
 
 export type GetV1WorkspacesByWorkspaceIdIntegrationsResponseDataItemScopesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GetV1WorkspacesByWorkspaceIdIntegrationsResponseDataItemScopesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4351,7 +4348,7 @@ export const GetV1WorkspacesByWorkspaceIdIntegrationsResponseDataItem =
   }) as any as S.Schema<GetV1WorkspacesByWorkspaceIdIntegrationsResponseDataItem>;
 
 export type GetV1WorkspacesByWorkspaceIdIntegrationsResponseDataList =
-  ReadonlyArray<GetV1WorkspacesByWorkspaceIdIntegrationsResponseDataItem>;
+  Array<GetV1WorkspacesByWorkspaceIdIntegrationsResponseDataItem>;
 export const GetV1WorkspacesByWorkspaceIdIntegrationsResponseDataList =
   /*@__PURE__*/ S.Array(
     GetV1WorkspacesByWorkspaceIdIntegrationsResponseDataItem,
@@ -4707,7 +4704,7 @@ export const PatchV1DatabasesByDatabaseIdResponseDataConnectionsItem =
   }) as any as S.Schema<PatchV1DatabasesByDatabaseIdResponseDataConnectionsItem>;
 
 export type PatchV1DatabasesByDatabaseIdResponseDataConnectionsList =
-  ReadonlyArray<PatchV1DatabasesByDatabaseIdResponseDataConnectionsItem>;
+  Array<PatchV1DatabasesByDatabaseIdResponseDataConnectionsItem>;
 export const PatchV1DatabasesByDatabaseIdResponseDataConnectionsList =
   /*@__PURE__*/ S.Array(
     PatchV1DatabasesByDatabaseIdResponseDataConnectionsItem,
@@ -5189,7 +5186,7 @@ export const PostV1AppsByAppIdDomainsResponseDataDnsRecordsItem =
   }) as any as S.Schema<PostV1AppsByAppIdDomainsResponseDataDnsRecordsItem>;
 
 export type PostV1AppsByAppIdDomainsResponseDataDnsRecordsList =
-  ReadonlyArray<PostV1AppsByAppIdDomainsResponseDataDnsRecordsItem>;
+  Array<PostV1AppsByAppIdDomainsResponseDataDnsRecordsItem>;
 export const PostV1AppsByAppIdDomainsResponseDataDnsRecordsList =
   /*@__PURE__*/ S.Array(
     PostV1AppsByAppIdDomainsResponseDataDnsRecordsItem,
@@ -6064,7 +6061,7 @@ export const PostV1DatabasesResponseDataConnectionsItem =
   }) as any as S.Schema<PostV1DatabasesResponseDataConnectionsItem>;
 
 export type PostV1DatabasesResponseDataConnectionsList =
-  ReadonlyArray<PostV1DatabasesResponseDataConnectionsItem>;
+  Array<PostV1DatabasesResponseDataConnectionsItem>;
 export const PostV1DatabasesResponseDataConnectionsList = /*@__PURE__*/ S.Array(
   PostV1DatabasesResponseDataConnectionsItem,
 ) as any as S.Schema<PostV1DatabasesResponseDataConnectionsList>;
@@ -6583,7 +6580,7 @@ export const PostV1DatabasesByTargetDatabaseIdRestoreResponseDataConnectionsItem
   }) as any as S.Schema<PostV1DatabasesByTargetDatabaseIdRestoreResponseDataConnectionsItem>;
 
 export type PostV1DatabasesByTargetDatabaseIdRestoreResponseDataConnectionsList =
-  ReadonlyArray<PostV1DatabasesByTargetDatabaseIdRestoreResponseDataConnectionsItem>;
+  Array<PostV1DatabasesByTargetDatabaseIdRestoreResponseDataConnectionsItem>;
 export const PostV1DatabasesByTargetDatabaseIdRestoreResponseDataConnectionsList =
   /*@__PURE__*/ S.Array(
     PostV1DatabasesByTargetDatabaseIdRestoreResponseDataConnectionsItem,
@@ -6803,7 +6800,7 @@ export const PostV1DomainsByDomainIdRetryResponseDataDnsRecordsItem =
   }) as any as S.Schema<PostV1DomainsByDomainIdRetryResponseDataDnsRecordsItem>;
 
 export type PostV1DomainsByDomainIdRetryResponseDataDnsRecordsList =
-  ReadonlyArray<PostV1DomainsByDomainIdRetryResponseDataDnsRecordsItem>;
+  Array<PostV1DomainsByDomainIdRetryResponseDataDnsRecordsItem>;
 export const PostV1DomainsByDomainIdRetryResponseDataDnsRecordsList =
   /*@__PURE__*/ S.Array(
     PostV1DomainsByDomainIdRetryResponseDataDnsRecordsItem,
@@ -7124,7 +7121,7 @@ export const PostV1ProjectsResponseDataDatabaseConnectionsItem =
   }) as any as S.Schema<PostV1ProjectsResponseDataDatabaseConnectionsItem>;
 
 export type PostV1ProjectsResponseDataDatabaseConnectionsList =
-  ReadonlyArray<PostV1ProjectsResponseDataDatabaseConnectionsItem>;
+  Array<PostV1ProjectsResponseDataDatabaseConnectionsItem>;
 export const PostV1ProjectsResponseDataDatabaseConnectionsList =
   /*@__PURE__*/ S.Array(
     PostV1ProjectsResponseDataDatabaseConnectionsItem,
@@ -7326,7 +7323,7 @@ export const PostV1ProjectsResponseDataDatabaseApiKeysItem =
 
 /** Deprecated: use `connections[]` instead. */
 export type PostV1ProjectsResponseDataDatabaseApiKeysList =
-  ReadonlyArray<PostV1ProjectsResponseDataDatabaseApiKeysItem>;
+  Array<PostV1ProjectsResponseDataDatabaseApiKeysItem>;
 export const PostV1ProjectsResponseDataDatabaseApiKeysList =
   /*@__PURE__*/ S.Array(
     PostV1ProjectsResponseDataDatabaseApiKeysItem,
@@ -7815,7 +7812,7 @@ export const PostV1ProjectsByProjectIdDatabasesResponseDataConnectionsItem =
   }) as any as S.Schema<PostV1ProjectsByProjectIdDatabasesResponseDataConnectionsItem>;
 
 export type PostV1ProjectsByProjectIdDatabasesResponseDataConnectionsList =
-  ReadonlyArray<PostV1ProjectsByProjectIdDatabasesResponseDataConnectionsItem>;
+  Array<PostV1ProjectsByProjectIdDatabasesResponseDataConnectionsItem>;
 export const PostV1ProjectsByProjectIdDatabasesResponseDataConnectionsList =
   /*@__PURE__*/ S.Array(
     PostV1ProjectsByProjectIdDatabasesResponseDataConnectionsItem,
@@ -8040,7 +8037,7 @@ export const PostV1ProjectsByProjectIdDatabasesResponseDataApiKeysItem =
 
 /** Deprecated: use `connections[]` instead. */
 export type PostV1ProjectsByProjectIdDatabasesResponseDataApiKeysList =
-  ReadonlyArray<PostV1ProjectsByProjectIdDatabasesResponseDataApiKeysItem>;
+  Array<PostV1ProjectsByProjectIdDatabasesResponseDataApiKeysItem>;
 export const PostV1ProjectsByProjectIdDatabasesResponseDataApiKeysList =
   /*@__PURE__*/ S.Array(
     PostV1ProjectsByProjectIdDatabasesResponseDataApiKeysItem,

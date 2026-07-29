@@ -289,7 +289,7 @@ export const FieldNotesListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "FieldNotesListRequest",
 }) as any as S.Schema<FieldNotesListRequest>;
 
-export type PaginatedFieldNoteListResultsList = ReadonlyArray<FieldNote>;
+export type PaginatedFieldNoteListResultsList = Array<FieldNote>;
 export const PaginatedFieldNoteListResultsList = /*@__PURE__*/ S.Array(
   FieldNote,
 ) as any as S.Schema<PaginatedFieldNoteListResultsList>;

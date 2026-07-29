@@ -126,7 +126,7 @@ export interface Link {
   /** The `[SPAN_ID]` for a span within a trace. */
   spanId?: string;
   /** The relationship of the current span relative to the linked span. */
-  type?: LinkTypeEnum;
+  type?: LinkTypeEnum | (string & {});
   /** A set of attributes on the link. Up to 32 attributes can be specified per link. */
   attributes?: Attributes;
 }
@@ -139,7 +139,7 @@ export const Link = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Link" }) as any as S.Schema<Link>;
 
-export type LinkList = ReadonlyArray<Link>;
+export type LinkList = Array<Link>;
 export const LinkList = /*@__PURE__*/ S.Array(
   Link,
 ) as any as S.Schema<LinkList>;
@@ -201,7 +201,7 @@ export const StackFrame = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "StackFrame" }) as any as S.Schema<StackFrame>;
 
-export type StackFrameList = ReadonlyArray<StackFrame>;
+export type StackFrameList = Array<StackFrame>;
 export const StackFrameList = /*@__PURE__*/ S.Array(
   StackFrame,
 ) as any as S.Schema<StackFrameList>;
@@ -258,7 +258,7 @@ export interface MessageEvent {
   /** The number of uncompressed bytes sent or received. */
   uncompressedSizeBytes?: string;
   /** Type of MessageEvent. Indicates whether the message was sent or received. */
-  type?: MessageEventTypeEnum;
+  type?: MessageEventTypeEnum | (string & {});
   /** The number of compressed bytes sent or received. If missing, the compressed size is assumed to be the same size as the uncompressed size. */
   compressedSizeBytes?: string;
 }
@@ -288,7 +288,7 @@ export const TimeEvent = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TimeEvent" }) as any as S.Schema<TimeEvent>;
 
-export type TimeEventList = ReadonlyArray<TimeEvent>;
+export type TimeEventList = Array<TimeEvent>;
 export const TimeEventList = /*@__PURE__*/ S.Array(
   TimeEvent,
 ) as any as S.Schema<TimeEventList>;
@@ -316,7 +316,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -370,7 +370,7 @@ export interface Span {
   /** Required. The end time of the span. On the client side, this is the time kept by the local machine where the span execution ends. On the server side, this is the time when the server application handler stops running. */
   endTime?: string;
   /** Optional. Distinguishes between spans generated in a particular context. For example, two spans with the same name may be distinguished using `CLIENT` (caller) and `SERVER` (callee) to identify an RPC call. */
-  spanKind?: SpanSpanKindEnum;
+  spanKind?: SpanSpanKindEnum | (string & {});
   /** Required. The resource name of the span in the following format: * `projects/[PROJECT_ID]/traces/[TRACE_ID]/spans/[SPAN_ID]` `[TRACE_ID]` is a unique identifier for a trace within a project; it is a 32-character hexadecimal encoding of a 16-byte array. It should not be zero. `[SPAN_ID]` is a unique identifier for a span within a trace; it is a 16-character hexadecimal encoding of an 8-byte array. It should not be zero. . */
   name?: string;
   /** Required. A description of the span's operation (up to 128 bytes). Cloud Trace displays the description in the Cloud console. For example, the display name can be a qualified method name or a file name and a line number where the operation is called. A best practice is to use the same display name within an application and at the same call point. This makes it easier to correlate spans in different traces. */
@@ -397,7 +397,7 @@ export const Span = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Span" }) as any as S.Schema<Span>;
 
-export type SpanList = ReadonlyArray<Span>;
+export type SpanList = Array<Span>;
 export const SpanList = /*@__PURE__*/ S.Array(
   Span,
 ) as any as S.Schema<SpanList>;

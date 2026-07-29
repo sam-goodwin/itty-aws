@@ -167,7 +167,7 @@ export const SuggestionProto = /*@__PURE__*/ S.suspend(() =>
   identifier: "SuggestionProto",
 }) as any as S.Schema<SuggestionProto>;
 
-export type SuggestionProtoList = ReadonlyArray<SuggestionProto>;
+export type SuggestionProtoList = Array<SuggestionProto>;
 export const SuggestionProtoList = /*@__PURE__*/ S.Array(
   SuggestionProto,
 ) as any as S.Schema<SuggestionProtoList>;
@@ -188,7 +188,7 @@ export const SuggestionClusterProto = /*@__PURE__*/ S.suspend(() =>
   identifier: "SuggestionClusterProto",
 }) as any as S.Schema<SuggestionClusterProto>;
 
-export type SuggestionClusterProtoList = ReadonlyArray<SuggestionClusterProto>;
+export type SuggestionClusterProtoList = Array<SuggestionClusterProto>;
 export const SuggestionClusterProtoList = /*@__PURE__*/ S.Array(
   SuggestionClusterProto,
 ) as any as S.Schema<SuggestionClusterProtoList>;
@@ -238,7 +238,7 @@ export const PerfSample = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PerfSample" }) as any as S.Schema<PerfSample>;
 
-export type PerfSampleList = ReadonlyArray<PerfSample>;
+export type PerfSampleList = Array<PerfSample>;
 export const PerfSampleList = /*@__PURE__*/ S.Array(
   PerfSample,
 ) as any as S.Schema<PerfSampleList>;
@@ -308,7 +308,7 @@ export const HistoryTestPlatformEnum = /*@__PURE__*/ S.String;
 /** A History represents a sorted list of Executions ordered by the start_timestamp_millis field (descending). It can be used to group all the Executions of a continuous build. Note that the ordering only operates on one-dimension. If a repository has multiple branches, it means that multiple histories will need to be used in order to order Executions per branch. */
 export interface History {
   /** The platform of the test history. - In response: always set. Returns the platform of the last execution if unknown. */
-  testPlatform?: HistoryTestPlatformEnum;
+  testPlatform?: HistoryTestPlatformEnum | (string & {});
   /** A unique identifier within a project for this History. Returns INVALID_ARGUMENT if this field is set or overwritten by the caller. - In response always set - In create request: never set */
   historyId?: string;
   /** A name to uniquely identify a history within a project. Maximum of 200 characters. - In response always set - In create request: always set */
@@ -364,8 +364,7 @@ export const MatrixDimensionDefinition = /*@__PURE__*/ S.suspend(() =>
   identifier: "MatrixDimensionDefinition",
 }) as any as S.Schema<MatrixDimensionDefinition>;
 
-export type MatrixDimensionDefinitionList =
-  ReadonlyArray<MatrixDimensionDefinition>;
+export type MatrixDimensionDefinitionList = Array<MatrixDimensionDefinition>;
 export const MatrixDimensionDefinitionList = /*@__PURE__*/ S.Array(
   MatrixDimensionDefinition,
 ) as any as S.Schema<MatrixDimensionDefinitionList>;
@@ -474,7 +473,7 @@ export const AndroidRoboTest = /*@__PURE__*/ S.suspend(() =>
   identifier: "AndroidRoboTest",
 }) as any as S.Schema<AndroidRoboTest>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -659,7 +658,7 @@ export interface Outcome {
   /** More information about a SKIPPED outcome. Returns INVALID_ARGUMENT if this field is set but the summary is not SKIPPED. Optional */
   skippedDetail?: SkippedDetail;
   /** The simplest way to interpret a result. Required */
-  summary?: OutcomeSummaryEnum;
+  summary?: OutcomeSummaryEnum | (string & {});
   /** More information about a SUCCESS outcome. Returns INVALID_ARGUMENT if this field is set but the summary is not SUCCESS. Optional */
   successDetail?: SuccessDetail;
   /** More information about a FAILURE outcome. Returns INVALID_ARGUMENT if this field is set but the summary is not FAILURE. Optional */
@@ -682,7 +681,7 @@ export interface Execution {
   /** A unique identifier within a History for this Execution. Returns INVALID_ARGUMENT if this field is set or overwritten by the caller. - In response always set - In create/update request: never set */
   executionId?: string;
   /** The initial state is IN_PROGRESS. The only legal state transitions is from IN_PROGRESS to COMPLETE. A PRECONDITION_FAILED will be returned if an invalid transition is requested. The state can only be set to COMPLETE once. A FAILED_PRECONDITION will be returned if the state is set to COMPLETE multiple times. If the state is set to COMPLETE, all the in-progress steps within the execution will be set as COMPLETE. If the outcome of the step is not set, the outcome will be set to INCONCLUSIVE. - In response always set - In create/update request: optional */
-  state?: ExecutionStateEnum;
+  state?: ExecutionStateEnum | (string & {});
   /** The dimensions along which different steps in this execution may vary. This must remain fixed over the life of the execution. Returns INVALID_ARGUMENT if this field is set in an update request. Returns INVALID_ARGUMENT if the same name occurs in more than one dimension_definition. Returns INVALID_ARGUMENT if the size of the list is over 100. - In response: present if set by create - In create request: optional - In update request: never set */
   dimensionDefinitions?: MatrixDimensionDefinitionList;
   /** Lightweight information about execution request. - In response: present if set by create - In create: optional - In update: optional */
@@ -789,7 +788,7 @@ export const TestSuiteOverview = /*@__PURE__*/ S.suspend(() =>
   identifier: "TestSuiteOverview",
 }) as any as S.Schema<TestSuiteOverview>;
 
-export type TestSuiteOverviewList = ReadonlyArray<TestSuiteOverview>;
+export type TestSuiteOverviewList = Array<TestSuiteOverview>;
 export const TestSuiteOverviewList = /*@__PURE__*/ S.Array(
   TestSuiteOverview,
 ) as any as S.Schema<TestSuiteOverviewList>;
@@ -832,12 +831,12 @@ export const ToolOutputReference = /*@__PURE__*/ S.suspend(() =>
   identifier: "ToolOutputReference",
 }) as any as S.Schema<ToolOutputReference>;
 
-export type ToolOutputReferenceList = ReadonlyArray<ToolOutputReference>;
+export type ToolOutputReferenceList = Array<ToolOutputReference>;
 export const ToolOutputReferenceList = /*@__PURE__*/ S.Array(
   ToolOutputReference,
 ) as any as S.Schema<ToolOutputReferenceList>;
 
-export type FileReferenceList = ReadonlyArray<FileReference>;
+export type FileReferenceList = Array<FileReference>;
 export const FileReferenceList = /*@__PURE__*/ S.Array(
   FileReference,
 ) as any as S.Schema<FileReferenceList>;
@@ -949,7 +948,7 @@ export const TestIssueCategoryEnum = /*@__PURE__*/ S.String;
 /** An issue detected occurring during a test execution. */
 export interface TestIssue {
   /** Type of issue. Required. */
-  type?: TestIssueTypeEnum;
+  type?: TestIssueTypeEnum | (string & {});
   /** A brief human-readable message describing the issue. Required. */
   errorMessage?: string;
   /** Warning message with additional details of the issue. Should always be a message from com.google.devtools.toolresults.v1.warnings */
@@ -957,9 +956,9 @@ export interface TestIssue {
   /** Deprecated in favor of stack trace fields inside specific warnings. */
   stackTrace?: StackTrace;
   /** Severity of issue. Required. */
-  severity?: TestIssueSeverityEnum;
+  severity?: TestIssueSeverityEnum | (string & {});
   /** Category of issue. Required. */
-  category?: TestIssueCategoryEnum;
+  category?: TestIssueCategoryEnum | (string & {});
 }
 export const TestIssue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -972,7 +971,7 @@ export const TestIssue = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TestIssue" }) as any as S.Schema<TestIssue>;
 
-export type TestIssueList = ReadonlyArray<TestIssue>;
+export type TestIssueList = Array<TestIssue>;
 export const TestIssueList = /*@__PURE__*/ S.Array(
   TestIssue,
 ) as any as S.Schema<TestIssueList>;
@@ -1023,7 +1022,7 @@ export const StepLabelsEntry = /*@__PURE__*/ S.suspend(() =>
   identifier: "StepLabelsEntry",
 }) as any as S.Schema<StepLabelsEntry>;
 
-export type StepLabelsEntryList = ReadonlyArray<StepLabelsEntry>;
+export type StepLabelsEntryList = Array<StepLabelsEntry>;
 export const StepLabelsEntryList = /*@__PURE__*/ S.Array(
   StepLabelsEntry,
 ) as any as S.Schema<StepLabelsEntryList>;
@@ -1041,8 +1040,7 @@ export const StepDimensionValueEntry = /*@__PURE__*/ S.suspend(() =>
   identifier: "StepDimensionValueEntry",
 }) as any as S.Schema<StepDimensionValueEntry>;
 
-export type StepDimensionValueEntryList =
-  ReadonlyArray<StepDimensionValueEntry>;
+export type StepDimensionValueEntryList = Array<StepDimensionValueEntry>;
 export const StepDimensionValueEntryList = /*@__PURE__*/ S.Array(
   StepDimensionValueEntry,
 ) as any as S.Schema<StepDimensionValueEntryList>;
@@ -1080,7 +1078,7 @@ export const IndividualOutcomeOutcomeSummaryEnum = /*@__PURE__*/ S.String;
 
 /** Step Id and outcome of each individual step that was run as a group with other steps with the same configuration. */
 export interface IndividualOutcome {
-  outcomeSummary?: IndividualOutcomeOutcomeSummaryEnum;
+  outcomeSummary?: IndividualOutcomeOutcomeSummaryEnum | (string & {});
   stepId?: string;
   /** Unique int given to each step. Ranges from 0(inclusive) to total number of steps(exclusive). The primary step is 0. */
   multistepNumber?: number;
@@ -1098,7 +1096,7 @@ export const IndividualOutcome = /*@__PURE__*/ S.suspend(() =>
   identifier: "IndividualOutcome",
 }) as any as S.Schema<IndividualOutcome>;
 
-export type IndividualOutcomeList = ReadonlyArray<IndividualOutcome>;
+export type IndividualOutcomeList = Array<IndividualOutcome>;
 export const IndividualOutcomeList = /*@__PURE__*/ S.Array(
   IndividualOutcome,
 ) as any as S.Schema<IndividualOutcomeList>;
@@ -1106,7 +1104,7 @@ export const IndividualOutcomeList = /*@__PURE__*/ S.Array(
 /** Stores rollup test status of multiple steps that were run as a group and outcome of each individual step. */
 export interface PrimaryStep {
   /** Rollup test status of multiple steps that were run with the same configuration as a group. */
-  rollUp?: PrimaryStepRollUpEnum;
+  rollUp?: PrimaryStepRollUpEnum | (string & {});
   /** Step Id and outcome of each individual step. */
   individualOutcome?: IndividualOutcomeList;
 }
@@ -1145,7 +1143,7 @@ export interface Step {
   /** Whether any of the outputs of this step are images whose thumbnails can be fetched with ListThumbnails. - In response: always set - In create/update request: never set */
   hasImages?: boolean;
   /** The initial state is IN_PROGRESS. The only legal state transitions are * IN_PROGRESS -> COMPLETE A PRECONDITION_FAILED will be returned if an invalid transition is requested. It is valid to create Step with a state set to COMPLETE. The state can only be set to COMPLETE once. A PRECONDITION_FAILED will be returned if the state is set to COMPLETE multiple times. - In response: always set - In create/update request: optional */
-  state?: StepStateEnum;
+  state?: StepStateEnum | (string & {});
   /** The time when the step status was set to complete. This value will be set automatically when state transitions to COMPLETE. - In response: set if the execution state is COMPLETE. - In create/update request: never set */
   completionTime?: Timestamp;
   /** An execution of a test runner. */
@@ -1226,8 +1224,9 @@ export type PerfMetricsSummaryPerfMetricsItemEnum =
   | "graphics";
 export const PerfMetricsSummaryPerfMetricsItemEnum = /*@__PURE__*/ S.String;
 
-export type PerfMetricsSummaryPerfMetricsItemEnumList =
-  ReadonlyArray<PerfMetricsSummaryPerfMetricsItemEnum>;
+export type PerfMetricsSummaryPerfMetricsItemEnumList = Array<
+  PerfMetricsSummaryPerfMetricsItemEnum | (string & {})
+>;
 export const PerfMetricsSummaryPerfMetricsItemEnumList = /*@__PURE__*/ S.Array(
   PerfMetricsSummaryPerfMetricsItemEnum,
 ) as any as S.Schema<PerfMetricsSummaryPerfMetricsItemEnumList>;
@@ -1247,7 +1246,7 @@ export const GraphicsStatsBucket = /*@__PURE__*/ S.suspend(() =>
   identifier: "GraphicsStatsBucket",
 }) as any as S.Schema<GraphicsStatsBucket>;
 
-export type GraphicsStatsBucketList = ReadonlyArray<GraphicsStatsBucket>;
+export type GraphicsStatsBucketList = Array<GraphicsStatsBucket>;
 export const GraphicsStatsBucketList = /*@__PURE__*/ S.Array(
   GraphicsStatsBucket,
 ) as any as S.Schema<GraphicsStatsBucketList>;
@@ -1455,9 +1454,11 @@ export const BasicPerfSampleSeriesPerfMetricTypeEnum = /*@__PURE__*/ S.String;
 
 /** Encapsulates the metadata for basic sample series represented by a line chart */
 export interface BasicPerfSampleSeries {
-  sampleSeriesLabel?: BasicPerfSampleSeriesSampleSeriesLabelEnum;
-  perfUnit?: BasicPerfSampleSeriesPerfUnitEnum;
-  perfMetricType?: BasicPerfSampleSeriesPerfMetricTypeEnum;
+  sampleSeriesLabel?:
+    | BasicPerfSampleSeriesSampleSeriesLabelEnum
+    | (string & {});
+  perfUnit?: BasicPerfSampleSeriesPerfUnitEnum | (string & {});
+  perfMetricType?: BasicPerfSampleSeriesPerfMetricTypeEnum | (string & {});
 }
 export const BasicPerfSampleSeries = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1649,7 +1650,7 @@ export const Screen = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Screen" }) as any as S.Schema<Screen>;
 
-export type ScreenList = ReadonlyArray<Screen>;
+export type ScreenList = Array<Screen>;
 export const ScreenList = /*@__PURE__*/ S.Array(
   Screen,
 ) as any as S.Schema<ScreenList>;
@@ -1755,7 +1756,7 @@ export const EnvironmentDimensionValueEntry = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EnvironmentDimensionValueEntry>;
 
 export type EnvironmentDimensionValueEntryList =
-  ReadonlyArray<EnvironmentDimensionValueEntry>;
+  Array<EnvironmentDimensionValueEntry>;
 export const EnvironmentDimensionValueEntryList = /*@__PURE__*/ S.Array(
   EnvironmentDimensionValueEntry,
 ) as any as S.Schema<EnvironmentDimensionValueEntryList>;
@@ -1766,7 +1767,7 @@ export const StepSummary = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
   { identifier: "StepSummary" },
 ) as any as S.Schema<StepSummary>;
 
-export type StepSummaryList = ReadonlyArray<StepSummary>;
+export type StepSummaryList = Array<StepSummary>;
 export const StepSummaryList = /*@__PURE__*/ S.Array(
   StepSummary,
 ) as any as S.Schema<StepSummaryList>;
@@ -1785,7 +1786,7 @@ export const ShardSummary = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ShardSummary" }) as any as S.Schema<ShardSummary>;
 
-export type ShardSummaryList = ReadonlyArray<ShardSummary>;
+export type ShardSummaryList = Array<ShardSummary>;
 export const ShardSummaryList = /*@__PURE__*/ S.Array(
   ShardSummary,
 ) as any as S.Schema<ShardSummaryList>;
@@ -1921,7 +1922,7 @@ export const GetProjectsHistoriesExecutionsStepsTestCasesRequest =
     identifier: "GetProjectsHistoriesExecutionsStepsTestCasesRequest",
   }) as any as S.Schema<GetProjectsHistoriesExecutionsStepsTestCasesRequest>;
 
-export type StackTraceList = ReadonlyArray<StackTrace>;
+export type StackTraceList = Array<StackTrace>;
 export const StackTraceList = /*@__PURE__*/ S.Array(
   StackTrace,
 ) as any as S.Schema<StackTraceList>;
@@ -2047,7 +2048,7 @@ export const ListProjectsHistoriesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsHistoriesRequest",
 }) as any as S.Schema<ListProjectsHistoriesRequest>;
 
-export type HistoryList = ReadonlyArray<History>;
+export type HistoryList = Array<History>;
 export const HistoryList = /*@__PURE__*/ S.Array(
   History,
 ) as any as S.Schema<HistoryList>;
@@ -2096,7 +2097,7 @@ export const ListProjectsHistoriesExecutionsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsHistoriesExecutionsRequest",
 }) as any as S.Schema<ListProjectsHistoriesExecutionsRequest>;
 
-export type ExecutionList = ReadonlyArray<Execution>;
+export type ExecutionList = Array<Execution>;
 export const ExecutionList = /*@__PURE__*/ S.Array(
   Execution,
 ) as any as S.Schema<ExecutionList>;
@@ -2141,7 +2142,7 @@ export const ListProjectsHistoriesExecutionsClustersRequest =
     identifier: "ListProjectsHistoriesExecutionsClustersRequest",
   }) as any as S.Schema<ListProjectsHistoriesExecutionsClustersRequest>;
 
-export type ScreenshotClusterList = ReadonlyArray<ScreenshotCluster>;
+export type ScreenshotClusterList = Array<ScreenshotCluster>;
 export const ScreenshotClusterList = /*@__PURE__*/ S.Array(
   ScreenshotCluster,
 ) as any as S.Schema<ScreenshotClusterList>;
@@ -2189,7 +2190,7 @@ export const ListProjectsHistoriesExecutionsEnvironmentsRequest =
     identifier: "ListProjectsHistoriesExecutionsEnvironmentsRequest",
   }) as any as S.Schema<ListProjectsHistoriesExecutionsEnvironmentsRequest>;
 
-export type EnvironmentList = ReadonlyArray<Environment>;
+export type EnvironmentList = Array<Environment>;
 export const EnvironmentList = /*@__PURE__*/ S.Array(
   Environment,
 ) as any as S.Schema<EnvironmentList>;
@@ -2250,7 +2251,7 @@ export const ListProjectsHistoriesExecutionsStepsRequest =
     identifier: "ListProjectsHistoriesExecutionsStepsRequest",
   }) as any as S.Schema<ListProjectsHistoriesExecutionsStepsRequest>;
 
-export type StepList = ReadonlyArray<Step>;
+export type StepList = Array<Step>;
 export const StepList = /*@__PURE__*/ S.Array(
   Step,
 ) as any as S.Schema<StepList>;
@@ -2281,7 +2282,7 @@ export const ListProjectsHistoriesExecutionsStepsPerfSampleSeriesFilterEnum =
   /*@__PURE__*/ S.String;
 
 export type ListProjectsHistoriesExecutionsStepsPerfSampleSeriesFilterEnumList =
-  ReadonlyArray<
+  Array<
     | ListProjectsHistoriesExecutionsStepsPerfSampleSeriesFilterEnum
     | (string & {})
   >;
@@ -2325,7 +2326,7 @@ export const ListProjectsHistoriesExecutionsStepsPerfSampleSeriesRequest =
     identifier: "ListProjectsHistoriesExecutionsStepsPerfSampleSeriesRequest",
   }) as any as S.Schema<ListProjectsHistoriesExecutionsStepsPerfSampleSeriesRequest>;
 
-export type PerfSampleSeriesList = ReadonlyArray<PerfSampleSeries>;
+export type PerfSampleSeriesList = Array<PerfSampleSeries>;
 export const PerfSampleSeriesList = /*@__PURE__*/ S.Array(
   PerfSampleSeries,
 ) as any as S.Schema<PerfSampleSeriesList>;
@@ -2428,7 +2429,7 @@ export const ListProjectsHistoriesExecutionsStepsTestCasesRequest =
     identifier: "ListProjectsHistoriesExecutionsStepsTestCasesRequest",
   }) as any as S.Schema<ListProjectsHistoriesExecutionsStepsTestCasesRequest>;
 
-export type TestCaseList = ReadonlyArray<TestCase>;
+export type TestCaseList = Array<TestCase>;
 export const TestCaseList = /*@__PURE__*/ S.Array(
   TestCase,
 ) as any as S.Schema<TestCaseList>;
@@ -2488,7 +2489,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -2550,7 +2551,7 @@ export const Image = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Image" }) as any as S.Schema<Image>;
 
-export type ImageList = ReadonlyArray<Image>;
+export type ImageList = Array<Image>;
 export const ImageList = /*@__PURE__*/ S.Array(
   Image,
 ) as any as S.Schema<ImageList>;

@@ -493,8 +493,8 @@ export type X12Version =
 export const X12Version = /*@__PURE__*/ S.String;
 
 export interface X12Details {
-  transactionSet?: X12TransactionSet;
-  version?: X12Version;
+  transactionSet?: X12TransactionSet | (string & {});
+  version?: X12Version | (string & {});
 }
 export const X12Details = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -517,7 +517,7 @@ export const S3Location = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "S3Location" }) as any as S.Schema<S3Location>;
 export type TransformerId = string;
 export interface EdiConfiguration {
-  capabilityDirection?: CapabilityDirection;
+  capabilityDirection?: CapabilityDirection | (string & {});
   type: EdiType;
   inputLocation: S3Location;
   outputLocation: S3Location;
@@ -698,7 +698,7 @@ export interface X12OutboundEdiHeaders {
   delimiters?: X12Delimiters;
   validateEdi?: boolean;
   controlNumbers?: X12ControlNumbers;
-  gs05TimeFormat?: X12GS05TimeFormat;
+  gs05TimeFormat?: X12GS05TimeFormat | (string & {});
 }
 export const X12OutboundEdiHeaders = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -720,8 +720,8 @@ export const LineTerminator = /*@__PURE__*/ S.String;
 
 export type LineLength = number;
 export interface WrapOptions {
-  wrapBy: WrapFormat;
-  lineTerminator?: LineTerminator;
+  wrapBy: WrapFormat | (string & {});
+  lineTerminator?: LineTerminator | (string & {});
   lineLength?: number;
 }
 export const WrapOptions = /*@__PURE__*/ S.suspend(() =>
@@ -757,8 +757,8 @@ export type X12TechnicalAcknowledgment =
 export const X12TechnicalAcknowledgment = /*@__PURE__*/ S.String;
 
 export interface X12AcknowledgmentOptions {
-  functionalAcknowledgment: X12FunctionalAcknowledgment;
-  technicalAcknowledgment: X12TechnicalAcknowledgment;
+  functionalAcknowledgment: X12FunctionalAcknowledgment | (string & {});
+  technicalAcknowledgment: X12TechnicalAcknowledgment | (string & {});
 }
 export const X12AcknowledgmentOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -977,7 +977,7 @@ export type X12SplitBy = "NONE" | "TRANSACTION";
 export const X12SplitBy = /*@__PURE__*/ S.String;
 
 export interface X12SplitOptions {
-  splitBy: X12SplitBy;
+  splitBy: X12SplitBy | (string & {});
 }
 export const X12SplitOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ splitBy: X12SplitBy }),
@@ -1017,7 +1017,7 @@ export const ElementRequirement = /*@__PURE__*/ S.String;
 
 export interface X12ElementRequirementValidationRule {
   elementPosition: string;
-  requirement: ElementRequirement;
+  requirement: ElementRequirement | (string & {});
 }
 export const X12ElementRequirementValidationRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ elementPosition: S.String, requirement: ElementRequirement }),
@@ -1078,7 +1078,7 @@ export const AdvancedOptions = /*@__PURE__*/ S.suspend(() =>
   identifier: "AdvancedOptions",
 }) as any as S.Schema<AdvancedOptions>;
 export interface InputConversion {
-  fromFormat: FromFormat;
+  fromFormat: FromFormat | (string & {});
   formatOptions?: FormatOptions;
   advancedOptions?: AdvancedOptions;
 }
@@ -1095,7 +1095,7 @@ export type MappingTemplateLanguage = "XSLT" | "JSONATA";
 export const MappingTemplateLanguage = /*@__PURE__*/ S.String;
 
 export interface Mapping {
-  templateLanguage: MappingTemplateLanguage;
+  templateLanguage: MappingTemplateLanguage | (string & {});
   template?: string;
 }
 export const Mapping = /*@__PURE__*/ S.suspend(() =>
@@ -1108,7 +1108,7 @@ export type ToFormat = "X12";
 export const ToFormat = /*@__PURE__*/ S.String;
 
 export interface OutputConversion {
-  toFormat: ToFormat;
+  toFormat: ToFormat | (string & {});
   formatOptions?: FormatOptions;
   advancedOptions?: AdvancedOptions;
 }

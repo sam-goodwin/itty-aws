@@ -201,7 +201,7 @@ export const SerialConsoleOperationsValueItem = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of Serial Console operations */
 export type SerialConsoleOperationsValueList =
-  ReadonlyArray<SerialConsoleOperationsValueItem>;
+  Array<SerialConsoleOperationsValueItem>;
 export const SerialConsoleOperationsValueList = /*@__PURE__*/ S.Array(
   SerialConsoleOperationsValueItem,
 ) as any as S.Schema<SerialConsoleOperationsValueList>;
@@ -277,9 +277,9 @@ export const SerialPortConnectionState = /*@__PURE__*/ S.String;
 /** The properties of the serial port. */
 export interface SerialPortProperties {
   /** Specifies whether the port is enabled for a serial console connection. */
-  state?: SerialPortState;
+  state?: SerialPortState | (string & {});
   /** Specifies whether the port is currently active. */
-  connectionState?: SerialPortConnectionState;
+  connectionState?: SerialPortConnectionState | (string & {});
 }
 export const SerialPortProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -506,7 +506,7 @@ export const SerialPort = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SerialPort" }) as any as S.Schema<SerialPort>;
 
 /** The list of serial ports. */
-export type SerialPortListResultValueList = ReadonlyArray<SerialPort>;
+export type SerialPortListResultValueList = Array<SerialPort>;
 export const SerialPortListResultValueList = /*@__PURE__*/ S.Array(
   SerialPort,
 ) as any as S.Schema<SerialPortListResultValueList>;

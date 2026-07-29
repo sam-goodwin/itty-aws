@@ -68,7 +68,7 @@ export class RegistrarUpdateNotAllowed extends T.applyErrorMatchers(
   [{ status: 422 }],
 ) {}
 
-export type CheckRequestDomainsList = ReadonlyArray<string>;
+export type CheckRequestDomainsList = Array<string>;
 export const CheckRequestDomainsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CheckRequestDomainsList>;
@@ -149,7 +149,7 @@ export const CheckResponseDomainsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "CheckResponseDomainsItem",
 }) as any as S.Schema<CheckResponseDomainsItem>;
 
-export type CheckResponseDomainsList = ReadonlyArray<CheckResponseDomainsItem>;
+export type CheckResponseDomainsList = Array<CheckResponseDomainsItem>;
 export const CheckResponseDomainsList = /*@__PURE__*/ S.Array(
   CheckResponseDomainsItem,
 ) as any as S.Schema<CheckResponseDomainsList>;
@@ -603,7 +603,7 @@ export const DomainsListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "DomainsListResultItem",
 }) as any as S.Schema<DomainsListResultItem>;
 
-export type DomainsListResultList = ReadonlyArray<DomainsListResultItem>;
+export type DomainsListResultList = Array<DomainsListResultItem>;
 export const DomainsListResultList = /*@__PURE__*/ S.Array(
   DomainsListResultItem,
 ) as any as S.Schema<DomainsListResultList>;
@@ -1118,8 +1118,7 @@ export const RegistrationsListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "RegistrationsListResultItem",
 }) as any as S.Schema<RegistrationsListResultItem>;
 
-export type RegistrationsListResultList =
-  ReadonlyArray<RegistrationsListResultItem>;
+export type RegistrationsListResultList = Array<RegistrationsListResultItem>;
 export const RegistrationsListResultList = /*@__PURE__*/ S.Array(
   RegistrationsListResultItem,
 ) as any as S.Schema<RegistrationsListResultList>;
@@ -1131,7 +1130,7 @@ export const RegistrationsListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "RegistrationsListResponse",
 }) as any as S.Schema<RegistrationsListResponse>;
 
-export type SearchRequestExtensionsList = ReadonlyArray<string>;
+export type SearchRequestExtensionsList = Array<string>;
 export const SearchRequestExtensionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SearchRequestExtensionsList>;
@@ -1218,8 +1217,7 @@ export const SearchResponseDomainsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "SearchResponseDomainsItem",
 }) as any as S.Schema<SearchResponseDomainsItem>;
 
-export type SearchResponseDomainsList =
-  ReadonlyArray<SearchResponseDomainsItem>;
+export type SearchResponseDomainsList = Array<SearchResponseDomainsItem>;
 export const SearchResponseDomainsList = /*@__PURE__*/ S.Array(
   SearchResponseDomainsItem,
 ) as any as S.Schema<SearchResponseDomainsList>;

@@ -1042,7 +1042,7 @@ export type Status = "ENABLED" | "ENABLING" | "DISABLED" | "DISABLING";
 export const Status = /*@__PURE__*/ S.String;
 
 export interface BackupPolicy {
-  Status: Status;
+  Status: Status | (string & {});
 }
 export const BackupPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Status: Status }),
@@ -1182,9 +1182,11 @@ export type TransitionToArchiveRules =
 export const TransitionToArchiveRules = /*@__PURE__*/ S.String;
 
 export interface LifecyclePolicy {
-  TransitionToIA?: TransitionToIARules;
-  TransitionToPrimaryStorageClass?: TransitionToPrimaryStorageClassRules;
-  TransitionToArchive?: TransitionToArchiveRules;
+  TransitionToIA?: TransitionToIARules | (string & {});
+  TransitionToPrimaryStorageClass?:
+    | TransitionToPrimaryStorageClassRules
+    | (string & {});
+  TransitionToArchive?: TransitionToArchiveRules | (string & {});
 }
 export const LifecyclePolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

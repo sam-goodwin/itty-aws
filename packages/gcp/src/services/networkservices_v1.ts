@@ -106,7 +106,9 @@ export const AgentGatewayGoogleManagedGovernedAccessPathEnum =
 /** Configuration for Google Managed deployment mode. Proxy is orchestrated and managed by GoogleCloud in a tenant project. */
 export interface AgentGatewayGoogleManaged {
   /** Optional. Operating Mode of Agent Gateway. */
-  governedAccessPath?: AgentGatewayGoogleManagedGovernedAccessPathEnum;
+  governedAccessPath?:
+    | AgentGatewayGoogleManagedGovernedAccessPathEnum
+    | (string & {});
 }
 export const AgentGatewayGoogleManaged = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -118,7 +120,7 @@ export const AgentGatewayGoogleManaged = /*@__PURE__*/ S.suspend(() =>
   identifier: "AgentGatewayGoogleManaged",
 }) as any as S.Schema<AgentGatewayGoogleManaged>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -148,8 +150,9 @@ export const StringMap = /*@__PURE__*/ S.Record(
 export type AgentGatewayProtocolsItemEnum = "PROTOCOL_UNSPECIFIED" | "MCP";
 export const AgentGatewayProtocolsItemEnum = /*@__PURE__*/ S.String;
 
-export type AgentGatewayProtocolsItemEnumList =
-  ReadonlyArray<AgentGatewayProtocolsItemEnum>;
+export type AgentGatewayProtocolsItemEnumList = Array<
+  AgentGatewayProtocolsItemEnum | (string & {})
+>;
 export const AgentGatewayProtocolsItemEnumList = /*@__PURE__*/ S.Array(
   AgentGatewayProtocolsItemEnum,
 ) as any as S.Schema<AgentGatewayProtocolsItemEnumList>;
@@ -297,7 +300,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -367,7 +370,7 @@ export interface AuthzExtension {
   /** Optional. Set of labels associated with the `AuthzExtension` resource. The format must comply with [the requirements for labels](/compute/docs/labeling-resources#requirements) for Google Cloud resources. */
   labels?: StringMap;
   /** Optional. All backend services and forwarding rules referenced by this extension must share the same load balancing scheme. The supported values are `INTERNAL_MANAGED` and `EXTERNAL_MANAGED`. You can omit this field for `AuthzExtensions` resources that don't reference a backend service. For more information, see [Backend services overview](https://cloud.google.com/load-balancing/docs/backend-service). */
-  loadBalancingScheme?: AuthzExtensionLoadBalancingSchemeEnum;
+  loadBalancingScheme?: AuthzExtensionLoadBalancingSchemeEnum | (string & {});
   /** Optional. The `:authority` header in the gRPC request sent from Envoy to the extension service. It is required when the `service` field points to a backend service. */
   authority?: string;
   /** Required. The reference to the service that runs the extension. To configure a callout extension: For global AuthzExtension, `service` must be a fully-qualified reference to a [backend service](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices) in the format: `https://www.googleapis.com/compute/v1/projects/{project}/global/backendServices/{backendService}`. For regional AuthzExtension, `service` must be a fully-qualified reference to one of the following: * a [backend service](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices) in the format: `https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/backendServices/{backendService}`. * a fully qualified domain name that can be resolved by the Google Cloud DNS. * `iap.googleapis.com` and it can only be referenced by an AuthzPolicy with the policyProfile set to REQUEST_AUTHZ. * `modelarmor..rep.googleapis.com` and it can only be referenced by an AuthzPolicy with the policyProfile set to CONTENT_AUTHZ. */
@@ -383,7 +386,7 @@ export interface AuthzExtension {
   /** Optional. List of the Envoy attributes to forward to the extension server. The attributes provided here are included as part of the `ProcessingRequest.attributes` field (of type `map`), where the keys are the attribute names. Refer to the [documentation](https://cloud.google.com/service-extensions/docs/cel-matcher-language-reference#attributes) for the names of attributes that can be forwarded. If omitted, no attributes are sent. Each element is a string indicating the attribute name. */
   forwardAttributes?: StringList;
   /** Optional. The format of communication supported by the callout extension. This field is supported only for regional `AuthzExtension` resources. If not specified, the default value `EXT_PROC_GRPC` is used. Global `AuthzExtension` resources use the `EXT_PROC_GRPC` wire format. */
-  wireFormat?: AuthzExtensionWireFormatEnum;
+  wireFormat?: AuthzExtensionWireFormatEnum | (string & {});
 }
 export const AuthzExtension = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -463,7 +466,7 @@ export const EndpointMatcherMetadataLabelMatcherMetadataLabels =
   }) as any as S.Schema<EndpointMatcherMetadataLabelMatcherMetadataLabels>;
 
 export type EndpointMatcherMetadataLabelMatcherMetadataLabelsList =
-  ReadonlyArray<EndpointMatcherMetadataLabelMatcherMetadataLabels>;
+  Array<EndpointMatcherMetadataLabelMatcherMetadataLabels>;
 export const EndpointMatcherMetadataLabelMatcherMetadataLabelsList =
   /*@__PURE__*/ S.Array(
     EndpointMatcherMetadataLabelMatcherMetadataLabels,
@@ -472,7 +475,9 @@ export const EndpointMatcherMetadataLabelMatcherMetadataLabelsList =
 /** The matcher that is based on node metadata presented by xDS clients. */
 export interface EndpointMatcherMetadataLabelMatcher {
   /** Specifies how matching should be done. Supported values are: MATCH_ANY: At least one of the Labels specified in the matcher should match the metadata presented by xDS client. MATCH_ALL: The metadata presented by the xDS client should contain all of the labels specified here. The selection is determined based on the best match. For example, suppose there are three EndpointPolicy resources P1, P2 and P3 and if P1 has a the matcher as MATCH_ANY , P2 has MATCH_ALL , and P3 has MATCH_ALL . If a client with label connects, the config from P1 will be selected. If a client with label connects, the config from P2 will be selected. If a client with label connects, the config from P3 will be selected. If there is more than one best match, (for example, if a config P4 with selector exists and if a client with label connects), pick up the one with older creation time. */
-  metadataLabelMatchCriteria?: EndpointMatcherMetadataLabelMatcherMetadataLabelMatchCriteriaEnum;
+  metadataLabelMatchCriteria?:
+    | EndpointMatcherMetadataLabelMatcherMetadataLabelMatchCriteriaEnum
+    | (string & {});
   /** The list of label value pairs that must match labels in the provided metadata based on filterMatchCriteria This list can have at most 64 entries. The list can be empty if the match criteria is MATCH_ANY, to specify a wildcard match (i.e this matches any client). */
   metadataLabels?: EndpointMatcherMetadataLabelMatcherMetadataLabelsList;
 }
@@ -526,7 +531,7 @@ export interface EndpointPolicy {
   /** Optional. Set of label tags associated with the EndpointPolicy resource. */
   labels?: StringMap;
   /** Required. The type of endpoint policy. This is primarily used to validate the configuration. */
-  type?: EndpointPolicyTypeEnum;
+  type?: EndpointPolicyTypeEnum | (string & {});
   /** Optional. This field specifies the URL of AuthorizationPolicy resource that applies authorization policies to the inbound traffic at the matched endpoints. Refer to Authorization. If this field is not specified, authorization is disabled(no authz checks) for this endpoint. */
   authorizationPolicy?: string;
   /** Required. A matcher that selects endpoints to which the policies should be applied. */
@@ -587,7 +592,7 @@ export type GatewayTypeEnum =
   | "SECURE_WEB_GATEWAY";
 export const GatewayTypeEnum = /*@__PURE__*/ S.String;
 
-export type IntegerList = ReadonlyArray<number>;
+export type IntegerList = Array<number>;
 export const IntegerList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<IntegerList>;
@@ -621,7 +626,7 @@ export interface Gateway {
   /** Optional. A free-text description of the resource. Max length 1024 characters. */
   description?: string;
   /** Immutable. The type of the customer managed gateway. This field is required. If unspecified, an error is returned. */
-  type?: GatewayTypeEnum;
+  type?: GatewayTypeEnum | (string & {});
   /** Optional. Zero or one IPv4 or IPv6 address on which the Gateway will receive the traffic. When no address is provided, an IP from the subnetwork is allocated This field only applies to gateways of type 'SECURE_WEB_GATEWAY'. Gateways of type 'OPEN_MESH' listen on 0.0.0.0 for IPv4 and :: for IPv6. */
   addresses?: StringList;
   /** Required. One or more port numbers (1-65535), on which the Gateway will receive traffic. The proxy binds to the specified ports. Gateways of type 'SECURE_WEB_GATEWAY' are limited to 5 ports. Gateways of type 'OPEN_MESH' listen on 0.0.0.0 for IPv4 and :: for IPv6 and support multiple ports. */
@@ -641,11 +646,11 @@ export interface Gateway {
   /** Optional. The relative resource name identifying the subnetwork in which this SWG is allocated. For example: `projects/*\/regions/us-central1/subnetworks/network-1` Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY". */
   subnetwork?: string;
   /** Optional. The IP Version that will be used by this gateway. Valid options are IPV4 or IPV6. Default is IPV4. */
-  ipVersion?: GatewayIpVersionEnum;
+  ipVersion?: GatewayIpVersionEnum | (string & {});
   /** Optional. Determines if envoy will insert internal debug headers into upstream requests. Other Envoy headers may still be injected. By default, envoy will not insert any debug headers. */
-  envoyHeaders?: GatewayEnvoyHeadersEnum;
+  envoyHeaders?: GatewayEnvoyHeadersEnum | (string & {});
   /** Optional. The routing mode of the Gateway. This field is configurable only for gateways of type SECURE_WEB_GATEWAY. This field is required for gateways of type SECURE_WEB_GATEWAY. */
-  routingMode?: GatewayRoutingModeEnum;
+  routingMode?: GatewayRoutingModeEnum | (string & {});
   /** Optional. If true, the gateway will allow traffic from clients outside of the region where the gateway is located. This field is configurable only for gateways of type SECURE_WEB_GATEWAY. */
   allowGlobalAccess?: boolean;
 }
@@ -708,7 +713,7 @@ export const GrpcRouteMethodMatchTypeEnum = /*@__PURE__*/ S.String;
 /** Specifies a match against a method. */
 export interface GrpcRouteMethodMatch {
   /** Optional. Specifies how to match against the name. If not specified, a default value of "EXACT" is used. */
-  type?: GrpcRouteMethodMatchTypeEnum;
+  type?: GrpcRouteMethodMatchTypeEnum | (string & {});
   /** Required. Name of the service to match against. If unspecified, will match all services. */
   grpcService?: string;
   /** Required. Name of the method to match against. If unspecified, will match all methods. */
@@ -736,7 +741,7 @@ export const GrpcRouteHeaderMatchTypeEnum = /*@__PURE__*/ S.String;
 /** A match against a collection of headers. */
 export interface GrpcRouteHeaderMatch {
   /** Optional. Specifies how to match against the value of the header. If not specified, a default value of EXACT is used. */
-  type?: GrpcRouteHeaderMatchTypeEnum;
+  type?: GrpcRouteHeaderMatchTypeEnum | (string & {});
   /** Required. The key of the header. */
   key?: string;
   /** Required. The value of the header. */
@@ -752,7 +757,7 @@ export const GrpcRouteHeaderMatch = /*@__PURE__*/ S.suspend(() =>
   identifier: "GrpcRouteHeaderMatch",
 }) as any as S.Schema<GrpcRouteHeaderMatch>;
 
-export type GrpcRouteHeaderMatchList = ReadonlyArray<GrpcRouteHeaderMatch>;
+export type GrpcRouteHeaderMatchList = Array<GrpcRouteHeaderMatch>;
 export const GrpcRouteHeaderMatchList = /*@__PURE__*/ S.Array(
   GrpcRouteHeaderMatch,
 ) as any as S.Schema<GrpcRouteHeaderMatchList>;
@@ -773,7 +778,7 @@ export const GrpcRouteRouteMatch = /*@__PURE__*/ S.suspend(() =>
   identifier: "GrpcRouteRouteMatch",
 }) as any as S.Schema<GrpcRouteRouteMatch>;
 
-export type GrpcRouteRouteMatchList = ReadonlyArray<GrpcRouteRouteMatch>;
+export type GrpcRouteRouteMatchList = Array<GrpcRouteRouteMatch>;
 export const GrpcRouteRouteMatchList = /*@__PURE__*/ S.Array(
   GrpcRouteRouteMatch,
 ) as any as S.Schema<GrpcRouteRouteMatchList>;
@@ -794,7 +799,7 @@ export const GrpcRouteDestination = /*@__PURE__*/ S.suspend(() =>
   identifier: "GrpcRouteDestination",
 }) as any as S.Schema<GrpcRouteDestination>;
 
-export type GrpcRouteDestinationList = ReadonlyArray<GrpcRouteDestination>;
+export type GrpcRouteDestinationList = Array<GrpcRouteDestination>;
 export const GrpcRouteDestinationList = /*@__PURE__*/ S.Array(
   GrpcRouteDestination,
 ) as any as S.Schema<GrpcRouteDestinationList>;
@@ -921,7 +926,7 @@ export const GrpcRouteRouteRule = /*@__PURE__*/ S.suspend(() =>
   identifier: "GrpcRouteRouteRule",
 }) as any as S.Schema<GrpcRouteRouteRule>;
 
-export type GrpcRouteRouteRuleList = ReadonlyArray<GrpcRouteRouteRule>;
+export type GrpcRouteRouteRuleList = Array<GrpcRouteRouteRule>;
 export const GrpcRouteRouteRuleList = /*@__PURE__*/ S.Array(
   GrpcRouteRouteRule,
 ) as any as S.Schema<GrpcRouteRouteRuleList>;
@@ -1039,7 +1044,7 @@ export const HttpRouteHeaderMatch = /*@__PURE__*/ S.suspend(() =>
   identifier: "HttpRouteHeaderMatch",
 }) as any as S.Schema<HttpRouteHeaderMatch>;
 
-export type HttpRouteHeaderMatchList = ReadonlyArray<HttpRouteHeaderMatch>;
+export type HttpRouteHeaderMatchList = Array<HttpRouteHeaderMatch>;
 export const HttpRouteHeaderMatchList = /*@__PURE__*/ S.Array(
   HttpRouteHeaderMatch,
 ) as any as S.Schema<HttpRouteHeaderMatchList>;
@@ -1067,7 +1072,7 @@ export const HttpRouteQueryParameterMatch = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HttpRouteQueryParameterMatch>;
 
 export type HttpRouteQueryParameterMatchList =
-  ReadonlyArray<HttpRouteQueryParameterMatch>;
+  Array<HttpRouteQueryParameterMatch>;
 export const HttpRouteQueryParameterMatchList = /*@__PURE__*/ S.Array(
   HttpRouteQueryParameterMatch,
 ) as any as S.Schema<HttpRouteQueryParameterMatchList>;
@@ -1100,7 +1105,7 @@ export const HttpRouteRouteMatch = /*@__PURE__*/ S.suspend(() =>
   identifier: "HttpRouteRouteMatch",
 }) as any as S.Schema<HttpRouteRouteMatch>;
 
-export type HttpRouteRouteMatchList = ReadonlyArray<HttpRouteRouteMatch>;
+export type HttpRouteRouteMatchList = Array<HttpRouteRouteMatch>;
 export const HttpRouteRouteMatchList = /*@__PURE__*/ S.Array(
   HttpRouteRouteMatch,
 ) as any as S.Schema<HttpRouteRouteMatchList>;
@@ -1146,7 +1151,7 @@ export const HttpRouteDestination = /*@__PURE__*/ S.suspend(() =>
   identifier: "HttpRouteDestination",
 }) as any as S.Schema<HttpRouteDestination>;
 
-export type HttpRouteDestinationList = ReadonlyArray<HttpRouteDestination>;
+export type HttpRouteDestinationList = Array<HttpRouteDestination>;
 export const HttpRouteDestinationList = /*@__PURE__*/ S.Array(
   HttpRouteDestination,
 ) as any as S.Schema<HttpRouteDestinationList>;
@@ -1169,7 +1174,7 @@ export interface HttpRouteRedirect {
   /** Indicates that during redirection, the matched prefix (or path) should be swapped with this value. This option allows URLs be dynamically created based on the request. */
   prefixRewrite?: string;
   /** The HTTP Status code to use for the redirect. */
-  responseCode?: HttpRouteRedirectResponseCodeEnum;
+  responseCode?: HttpRouteRedirectResponseCodeEnum | (string & {});
   /** If set to true, the URL scheme in the redirected request is set to https. If set to false, the URL scheme of the redirected request will remain the same as that of the request. The default is set to false. */
   httpsRedirect?: boolean;
   /** if set to true, any accompanying query portion of the original URL is removed prior to redirecting the request. If set to false, the query portion of the original URL is retained. The default is set to false. */
@@ -1422,7 +1427,7 @@ export const HttpRouteRouteRule = /*@__PURE__*/ S.suspend(() =>
   identifier: "HttpRouteRouteRule",
 }) as any as S.Schema<HttpRouteRouteRule>;
 
-export type HttpRouteRouteRuleList = ReadonlyArray<HttpRouteRouteRule>;
+export type HttpRouteRouteRuleList = Array<HttpRouteRouteRule>;
 export const HttpRouteRouteRuleList = /*@__PURE__*/ S.Array(
   HttpRouteRouteRule,
 ) as any as S.Schema<HttpRouteRouteRuleList>;
@@ -1517,8 +1522,9 @@ export type ExtensionChainExtensionSupportedEventsItemEnum =
 export const ExtensionChainExtensionSupportedEventsItemEnum =
   /*@__PURE__*/ S.String;
 
-export type ExtensionChainExtensionSupportedEventsItemEnumList =
-  ReadonlyArray<ExtensionChainExtensionSupportedEventsItemEnum>;
+export type ExtensionChainExtensionSupportedEventsItemEnumList = Array<
+  ExtensionChainExtensionSupportedEventsItemEnum | (string & {})
+>;
 export const ExtensionChainExtensionSupportedEventsItemEnumList =
   /*@__PURE__*/ S.Array(
     ExtensionChainExtensionSupportedEventsItemEnum,
@@ -1559,9 +1565,13 @@ export interface ExtensionChainExtension {
   /** Optional. The metadata provided here is included as part of the `metadata_context` (of type `google.protobuf.Struct`) in the `ProcessingRequest` message sent to the extension server. For `AuthzExtension` resources, the metadata is available under the namespace `com.google.authz_extension.`. For other types of extensions, the metadata is available under the namespace `com.google....`. For example: `com.google.lb_traffic_extension.lbtrafficextension1.chain1.ext1`. The following variables are supported in the metadata: `{forwarding_rule_id}` - substituted with the forwarding rule's fully qualified resource name. This field must not be set for plugin extensions. Setting it results in a validation error. You can set metadata at either the resource level or the extension level. The extension level metadata is recommended because you can pass a different set of metadata through each extension to the backend. This field is subject to following limitations: * The total size of the metadata must be less than 1KiB. * The total number of keys in the metadata must be less than 16. * The length of each key must be less than 64 characters. * The length of each value must be less than 1024 characters. * All values must be strings. */
   metadata?: DocumentMap;
   /** Optional. Configures the send mode for request body processing. The field can only be set if `supported_events` includes `REQUEST_BODY`. If `supported_events` includes `REQUEST_BODY`, but `request_body_send_mode` is unset, the default value `STREAMED` is used. When this field is set to `FULL_DUPLEX_STREAMED`, `supported_events` must include both `REQUEST_BODY` and `REQUEST_TRAILERS`. This field can be set only for `LbTrafficExtension` and `LbRouteExtension` resources, and only when the `service` field of the extension points to a `BackendService`. Only `FULL_DUPLEX_STREAMED` mode is supported for `LbRouteExtension` resources. */
-  requestBodySendMode?: ExtensionChainExtensionRequestBodySendModeEnum;
+  requestBodySendMode?:
+    | ExtensionChainExtensionRequestBodySendModeEnum
+    | (string & {});
   /** Optional. Configures the send mode for response processing. If unspecified, the default value `STREAMED` is used. The field can only be set if `supported_events` includes `RESPONSE_BODY`. If `supported_events` includes `RESPONSE_BODY`, but `response_body_send_mode` is unset, the default value `STREAMED` is used. When this field is set to `FULL_DUPLEX_STREAMED`, `supported_events` must include both `RESPONSE_BODY` and `RESPONSE_TRAILERS`. This field can be set only for `LbTrafficExtension` resources, and only when the `service` field of the extension points to a `BackendService`. */
-  responseBodySendMode?: ExtensionChainExtensionResponseBodySendModeEnum;
+  responseBodySendMode?:
+    | ExtensionChainExtensionResponseBodySendModeEnum
+    | (string & {});
   /** Optional. When set to `true`, the calls to the extension backend are performed asynchronously, without pausing the processing of the ongoing request. In this mode, only `STREAMED` (default) body processing is supported. Responses, if any, are ignored. Supported by regional `LbTrafficExtension` and `LbRouteExtension` resources. */
   observabilityMode?: boolean;
 }
@@ -1590,8 +1600,7 @@ export const ExtensionChainExtension = /*@__PURE__*/ S.suspend(() =>
   identifier: "ExtensionChainExtension",
 }) as any as S.Schema<ExtensionChainExtension>;
 
-export type ExtensionChainExtensionList =
-  ReadonlyArray<ExtensionChainExtension>;
+export type ExtensionChainExtensionList = Array<ExtensionChainExtension>;
 export const ExtensionChainExtensionList = /*@__PURE__*/ S.Array(
   ExtensionChainExtension,
 ) as any as S.Schema<ExtensionChainExtensionList>;
@@ -1613,7 +1622,7 @@ export const ExtensionChain = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ExtensionChain" }) as any as S.Schema<ExtensionChain>;
 
-export type ExtensionChainList = ReadonlyArray<ExtensionChain>;
+export type ExtensionChainList = Array<ExtensionChain>;
 export const ExtensionChainList = /*@__PURE__*/ S.Array(
   ExtensionChain,
 ) as any as S.Schema<ExtensionChainList>;
@@ -1641,7 +1650,7 @@ export interface LbEdgeExtension {
   /** Required. A set of ordered extension chains that contain the match conditions and extensions to execute. Match conditions for each extension chain are evaluated in sequence for a given request. The first extension chain that has a condition that matches the request is executed. Any subsequent extension chains do not execute. Limited to 5 extension chains per resource. */
   extensionChains?: ExtensionChainList;
   /** Required. All forwarding rules referenced by this extension must share the same load balancing scheme. Supported values: `EXTERNAL_MANAGED`. */
-  loadBalancingScheme?: LbEdgeExtensionLoadBalancingSchemeEnum;
+  loadBalancingScheme?: LbEdgeExtensionLoadBalancingSchemeEnum | (string & {});
 }
 export const LbEdgeExtension = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1709,7 +1718,7 @@ export interface LbRouteExtension {
   /** Required. A set of ordered extension chains that contain the match conditions and extensions to execute. Match conditions for each extension chain are evaluated in sequence for a given request. The first extension chain that has a condition that matches the request is executed. Any subsequent extension chains do not execute. Limited to 5 extension chains per resource. */
   extensionChains?: ExtensionChainList;
   /** Required. All backend services and forwarding rules referenced by this extension must share the same load balancing scheme. Supported values: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`. For more information, refer to [Backend services overview](https://cloud.google.com/load-balancing/docs/backend-service). */
-  loadBalancingScheme?: LbRouteExtensionLoadBalancingSchemeEnum;
+  loadBalancingScheme?: LbRouteExtensionLoadBalancingSchemeEnum | (string & {});
   /** Optional. The metadata provided here is included as part of the `metadata_context` (of type `google.protobuf.Struct`) in the `ProcessingRequest` message sent to the extension server. The metadata applies to all extensions in all extensions chains in this resource. The metadata is available under the key `com.google.lb_route_extension.`. The following variables are supported in the metadata: `{forwarding_rule_id}` - substituted with the forwarding rule's fully qualified resource name. This field must not be set if at least one of the extension chains contains plugin extensions. Setting it results in a validation error. You can set metadata at either the resource level or the extension level. The extension level metadata is recommended because you can pass a different set of metadata through each extension to the backend. */
   metadata?: DocumentMap;
 }
@@ -1780,7 +1789,9 @@ export interface LbTrafficExtension {
   /** Required. A set of ordered extension chains that contain the match conditions and extensions to execute. Match conditions for each extension chain are evaluated in sequence for a given request. The first extension chain that has a condition that matches the request is executed. Any subsequent extension chains do not execute. Limited to 5 extension chains per resource. */
   extensionChains?: ExtensionChainList;
   /** Required. All backend services and forwarding rules referenced by this extension must share the same load balancing scheme. Supported values: `INTERNAL_MANAGED` and `EXTERNAL_MANAGED`. For more information, refer to [Backend services overview](https://cloud.google.com/load-balancing/docs/backend-service). */
-  loadBalancingScheme?: LbTrafficExtensionLoadBalancingSchemeEnum;
+  loadBalancingScheme?:
+    | LbTrafficExtensionLoadBalancingSchemeEnum
+    | (string & {});
   /** Optional. The metadata provided here is included as part of the `metadata_context` (of type `google.protobuf.Struct`) in the `ProcessingRequest` message sent to the extension server. The metadata applies to all extensions in all extensions chains in this resource. The metadata is available under the key `com.google.lb_traffic_extension.`. The following variables are supported in the metadata: `{forwarding_rule_id}` - substituted with the forwarding rule's fully qualified resource name. This field must not be set if at least one of the extension chains contains plugin extensions. Setting it results in a validation error. You can set metadata at either the resource level or the extension level. The extension level metadata is recommended because you can pass a different set of metadata through each extension to the backend. */
   metadata?: DocumentMap;
 }
@@ -1851,7 +1862,7 @@ export interface Mesh {
   /** Optional. If set to a valid TCP port (1-65535), instructs the SIDECAR proxy to listen on the specified port of localhost (127.0.0.1) address. The SIDECAR proxy will expect all traffic to be redirected to this port regardless of its actual ip:port destination. If unset, a port '15001' is used as the interception port. This is applicable only for sidecar proxy deployments. */
   interceptionPort?: number;
   /** Optional. Determines if envoy will insert internal debug headers into upstream requests. Other Envoy headers may still be injected. By default, envoy will not insert any debug headers. */
-  envoyHeaders?: MeshEnvoyHeadersEnum;
+  envoyHeaders?: MeshEnvoyHeadersEnum | (string & {});
 }
 export const Mesh = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1913,7 +1924,7 @@ export const MulticastResourceStateStateEnum = /*@__PURE__*/ S.String;
 /** The multicast resource's state. */
 export interface MulticastResourceState {
   /** Optional. The state of the multicast resource. */
-  state?: MulticastResourceStateStateEnum;
+  state?: MulticastResourceStateStateEnum | (string & {});
 }
 export const MulticastResourceState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1940,7 +1951,7 @@ export interface MulticastConsumerAssociation {
   /** Optional. An optional text description of the multicast consumer association. */
   description?: string;
   /** Output only. [Deprecated] The resource state of the multicast consumer association. Use the state field instead. */
-  resourceState?: MulticastConsumerAssociationResourceStateEnum;
+  resourceState?: MulticastConsumerAssociationResourceStateEnum | (string & {});
   /** Output only. [Output only] The state of the resource. */
   state?: MulticastResourceState;
   /** Output only. [Output only] The Google-generated UUID for the resource. This value is unique across all multicast consumer association resources. If a consumer association is deleted and another with the same name is created, the new consumer association is assigned a different unique_id. */
@@ -2031,7 +2042,9 @@ export interface MulticastGroupConsumerActivation {
   /** Optional. An optional text description of the multicast group consumer activation. */
   description?: string;
   /** Output only. [Deprecated] The resource state of the multicast group consumer activation. Use the state field instead. */
-  resourceState?: MulticastGroupConsumerActivationResourceStateEnum;
+  resourceState?:
+    | MulticastGroupConsumerActivationResourceStateEnum
+    | (string & {});
   /** Output only. [Output only] The state of the resource. */
   state?: MulticastResourceState;
   /** Output only. [Output only] The Google-generated UUID for the resource. This value is unique across all multicast group consumer activation resources. If a group consumer activation is deleted and another with the same name is created, the new group consumer activation is assigned a different unique_id. */
@@ -2195,9 +2208,13 @@ export const ServiceLbPolicyIsolationConfigIsolationModeEnum =
 /** Configuration to provide isolation support for the associated Backend Service. */
 export interface ServiceLbPolicyIsolationConfig {
   /** Optional. The isolation granularity of the load balancer. */
-  isolationGranularity?: ServiceLbPolicyIsolationConfigIsolationGranularityEnum;
+  isolationGranularity?:
+    | ServiceLbPolicyIsolationConfigIsolationGranularityEnum
+    | (string & {});
   /** Optional. The isolation mode of the load balancer. */
-  isolationMode?: ServiceLbPolicyIsolationConfigIsolationModeEnum;
+  isolationMode?:
+    | ServiceLbPolicyIsolationConfigIsolationModeEnum
+    | (string & {});
 }
 export const ServiceLbPolicyIsolationConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2223,7 +2240,9 @@ export interface ServiceLbPolicy {
   /** Optional. A free-text description of the resource. Max length 1024 characters. */
   description?: string;
   /** Optional. The type of load balancing algorithm to be used. The default behavior is WATERFALL_BY_REGION. */
-  loadBalancingAlgorithm?: ServiceLbPolicyLoadBalancingAlgorithmEnum;
+  loadBalancingAlgorithm?:
+    | ServiceLbPolicyLoadBalancingAlgorithmEnum
+    | (string & {});
   /** Optional. Configuration to automatically move traffic away for unhealthy IG/NEG for the associated Backend Service. */
   autoCapacityDrain?: ServiceLbPolicyAutoCapacityDrain;
   /** Optional. Configuration related to health based failover. */
@@ -2290,7 +2309,7 @@ export const TcpRouteRouteMatch = /*@__PURE__*/ S.suspend(() =>
   identifier: "TcpRouteRouteMatch",
 }) as any as S.Schema<TcpRouteRouteMatch>;
 
-export type TcpRouteRouteMatchList = ReadonlyArray<TcpRouteRouteMatch>;
+export type TcpRouteRouteMatchList = Array<TcpRouteRouteMatch>;
 export const TcpRouteRouteMatchList = /*@__PURE__*/ S.Array(
   TcpRouteRouteMatch,
 ) as any as S.Schema<TcpRouteRouteMatchList>;
@@ -2311,8 +2330,7 @@ export const TcpRouteRouteDestination = /*@__PURE__*/ S.suspend(() =>
   identifier: "TcpRouteRouteDestination",
 }) as any as S.Schema<TcpRouteRouteDestination>;
 
-export type TcpRouteRouteDestinationList =
-  ReadonlyArray<TcpRouteRouteDestination>;
+export type TcpRouteRouteDestinationList = Array<TcpRouteRouteDestination>;
 export const TcpRouteRouteDestinationList = /*@__PURE__*/ S.Array(
   TcpRouteRouteDestination,
 ) as any as S.Schema<TcpRouteRouteDestinationList>;
@@ -2352,7 +2370,7 @@ export const TcpRouteRouteRule = /*@__PURE__*/ S.suspend(() =>
   identifier: "TcpRouteRouteRule",
 }) as any as S.Schema<TcpRouteRouteRule>;
 
-export type TcpRouteRouteRuleList = ReadonlyArray<TcpRouteRouteRule>;
+export type TcpRouteRouteRuleList = Array<TcpRouteRouteRule>;
 export const TcpRouteRouteRuleList = /*@__PURE__*/ S.Array(
   TcpRouteRouteRule,
 ) as any as S.Schema<TcpRouteRouteRuleList>;
@@ -2433,7 +2451,7 @@ export const TlsRouteRouteMatch = /*@__PURE__*/ S.suspend(() =>
   identifier: "TlsRouteRouteMatch",
 }) as any as S.Schema<TlsRouteRouteMatch>;
 
-export type TlsRouteRouteMatchList = ReadonlyArray<TlsRouteRouteMatch>;
+export type TlsRouteRouteMatchList = Array<TlsRouteRouteMatch>;
 export const TlsRouteRouteMatchList = /*@__PURE__*/ S.Array(
   TlsRouteRouteMatch,
 ) as any as S.Schema<TlsRouteRouteMatchList>;
@@ -2454,8 +2472,7 @@ export const TlsRouteRouteDestination = /*@__PURE__*/ S.suspend(() =>
   identifier: "TlsRouteRouteDestination",
 }) as any as S.Schema<TlsRouteRouteDestination>;
 
-export type TlsRouteRouteDestinationList =
-  ReadonlyArray<TlsRouteRouteDestination>;
+export type TlsRouteRouteDestinationList = Array<TlsRouteRouteDestination>;
 export const TlsRouteRouteDestinationList = /*@__PURE__*/ S.Array(
   TlsRouteRouteDestination,
 ) as any as S.Schema<TlsRouteRouteDestinationList>;
@@ -2492,7 +2509,7 @@ export const TlsRouteRouteRule = /*@__PURE__*/ S.suspend(() =>
   identifier: "TlsRouteRouteRule",
 }) as any as S.Schema<TlsRouteRouteRule>;
 
-export type TlsRouteRouteRuleList = ReadonlyArray<TlsRouteRouteRule>;
+export type TlsRouteRouteRuleList = Array<TlsRouteRouteRule>;
 export const TlsRouteRouteRuleList = /*@__PURE__*/ S.Array(
   TlsRouteRouteRule,
 ) as any as S.Schema<TlsRouteRouteRuleList>;
@@ -2577,7 +2594,7 @@ export interface WasmPluginLogConfig {
   /** Non-empty default. Configures the sampling rate of activity logs, where `1.0` means all logged activity is reported and `0.0` means no activity is reported. A floating point value between `0.0` and `1.0` indicates that a percentage of log messages is stored. The default value when logging is enabled is `1.0`. The value of the field must be between `0` and `1` (inclusive). This field can be specified only if logging is enabled for this plugin. */
   sampleRate?: number;
   /** Non-empty default. Specifies the lowest level of the plugin logs that are exported to Cloud Logging. This setting relates to the logs generated by using logging statements in your Wasm code. This field is can be set only if logging is enabled for the plugin. If the field is not provided when logging is enabled, it is set to `INFO` by default. */
-  minLogLevel?: WasmPluginLogConfigMinLogLevelEnum;
+  minLogLevel?: WasmPluginLogConfigMinLogLevelEnum | (string & {});
 }
 export const WasmPluginLogConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2647,7 +2664,7 @@ export const WasmPluginUsedBy = /*@__PURE__*/ S.suspend(() =>
   identifier: "WasmPluginUsedBy",
 }) as any as S.Schema<WasmPluginUsedBy>;
 
-export type WasmPluginUsedByList = ReadonlyArray<WasmPluginUsedBy>;
+export type WasmPluginUsedByList = Array<WasmPluginUsedBy>;
 export const WasmPluginUsedByList = /*@__PURE__*/ S.Array(
   WasmPluginUsedBy,
 ) as any as S.Schema<WasmPluginUsedByList>;
@@ -3219,7 +3236,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
-export type BindingList = ReadonlyArray<Binding>;
+export type BindingList = Array<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -3234,7 +3251,7 @@ export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
 export interface AuditLogConfig {
   /** The log type that this config enables. */
-  logType?: AuditLogConfigLogTypeEnum;
+  logType?: AuditLogConfigLogTypeEnum | (string & {});
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
   exemptedMembers?: StringList;
 }
@@ -3245,7 +3262,7 @@ export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
-export type AuditLogConfigList = ReadonlyArray<AuditLogConfig>;
+export type AuditLogConfigList = Array<AuditLogConfig>;
 export const AuditLogConfigList = /*@__PURE__*/ S.Array(
   AuditLogConfig,
 ) as any as S.Schema<AuditLogConfigList>;
@@ -3264,7 +3281,7 @@ export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
-export type AuditConfigList = ReadonlyArray<AuditConfig>;
+export type AuditConfigList = Array<AuditConfig>;
 export const AuditConfigList = /*@__PURE__*/ S.Array(
   AuditConfig,
 ) as any as S.Schema<AuditConfigList>;
@@ -3858,7 +3875,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = ReadonlyArray<Location>;
+export type LocationList = Array<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -3907,7 +3924,7 @@ export const ListProjectsLocationsAgentGatewaysRequest =
     identifier: "ListProjectsLocationsAgentGatewaysRequest",
   }) as any as S.Schema<ListProjectsLocationsAgentGatewaysRequest>;
 
-export type AgentGatewayList = ReadonlyArray<AgentGateway>;
+export type AgentGatewayList = Array<AgentGateway>;
 export const AgentGatewayList = /*@__PURE__*/ S.Array(
   AgentGateway,
 ) as any as S.Schema<AgentGatewayList>;
@@ -3962,7 +3979,7 @@ export const ListProjectsLocationsAuthzExtensionsRequest =
     identifier: "ListProjectsLocationsAuthzExtensionsRequest",
   }) as any as S.Schema<ListProjectsLocationsAuthzExtensionsRequest>;
 
-export type AuthzExtensionList = ReadonlyArray<AuthzExtension>;
+export type AuthzExtensionList = Array<AuthzExtension>;
 export const AuthzExtensionList = /*@__PURE__*/ S.Array(
   AuthzExtension,
 ) as any as S.Schema<AuthzExtensionList>;
@@ -4014,7 +4031,7 @@ export const ListProjectsLocationsEndpointPoliciesRequest =
     identifier: "ListProjectsLocationsEndpointPoliciesRequest",
   }) as any as S.Schema<ListProjectsLocationsEndpointPoliciesRequest>;
 
-export type EndpointPolicyList = ReadonlyArray<EndpointPolicy>;
+export type EndpointPolicyList = Array<EndpointPolicy>;
 export const EndpointPolicyList = /*@__PURE__*/ S.Array(
   EndpointPolicy,
 ) as any as S.Schema<EndpointPolicyList>;
@@ -4063,7 +4080,7 @@ export const ListProjectsLocationsGatewaysRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsGatewaysRequest",
 }) as any as S.Schema<ListProjectsLocationsGatewaysRequest>;
 
-export type GatewayList = ReadonlyArray<Gateway>;
+export type GatewayList = Array<Gateway>;
 export const GatewayList = /*@__PURE__*/ S.Array(
   Gateway,
 ) as any as S.Schema<GatewayList>;
@@ -4112,7 +4129,7 @@ export const ListProjectsLocationsGatewaysRouteViewsRequest =
     identifier: "ListProjectsLocationsGatewaysRouteViewsRequest",
   }) as any as S.Schema<ListProjectsLocationsGatewaysRouteViewsRequest>;
 
-export type GatewayRouteViewList = ReadonlyArray<GatewayRouteView>;
+export type GatewayRouteViewList = Array<GatewayRouteView>;
 export const GatewayRouteViewList = /*@__PURE__*/ S.Array(
   GatewayRouteView,
 ) as any as S.Schema<GatewayRouteViewList>;
@@ -4164,7 +4181,7 @@ export const ListProjectsLocationsGrpcRoutesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsGrpcRoutesRequest",
 }) as any as S.Schema<ListProjectsLocationsGrpcRoutesRequest>;
 
-export type GrpcRouteList = ReadonlyArray<GrpcRoute>;
+export type GrpcRouteList = Array<GrpcRoute>;
 export const GrpcRouteList = /*@__PURE__*/ S.Array(
   GrpcRoute,
 ) as any as S.Schema<GrpcRouteList>;
@@ -4219,7 +4236,7 @@ export const ListProjectsLocationsHttpRoutesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsHttpRoutesRequest",
 }) as any as S.Schema<ListProjectsLocationsHttpRoutesRequest>;
 
-export type HttpRouteList = ReadonlyArray<HttpRoute>;
+export type HttpRouteList = Array<HttpRoute>;
 export const HttpRouteList = /*@__PURE__*/ S.Array(
   HttpRoute,
 ) as any as S.Schema<HttpRouteList>;
@@ -4274,7 +4291,7 @@ export const ListProjectsLocationsLbEdgeExtensionsRequest =
     identifier: "ListProjectsLocationsLbEdgeExtensionsRequest",
   }) as any as S.Schema<ListProjectsLocationsLbEdgeExtensionsRequest>;
 
-export type LbEdgeExtensionList = ReadonlyArray<LbEdgeExtension>;
+export type LbEdgeExtensionList = Array<LbEdgeExtension>;
 export const LbEdgeExtensionList = /*@__PURE__*/ S.Array(
   LbEdgeExtension,
 ) as any as S.Schema<LbEdgeExtensionList>;
@@ -4329,7 +4346,7 @@ export const ListProjectsLocationsLbRouteExtensionsRequest =
     identifier: "ListProjectsLocationsLbRouteExtensionsRequest",
   }) as any as S.Schema<ListProjectsLocationsLbRouteExtensionsRequest>;
 
-export type LbRouteExtensionList = ReadonlyArray<LbRouteExtension>;
+export type LbRouteExtensionList = Array<LbRouteExtension>;
 export const LbRouteExtensionList = /*@__PURE__*/ S.Array(
   LbRouteExtension,
 ) as any as S.Schema<LbRouteExtensionList>;
@@ -4384,7 +4401,7 @@ export const ListProjectsLocationsLbTrafficExtensionsRequest =
     identifier: "ListProjectsLocationsLbTrafficExtensionsRequest",
   }) as any as S.Schema<ListProjectsLocationsLbTrafficExtensionsRequest>;
 
-export type LbTrafficExtensionList = ReadonlyArray<LbTrafficExtension>;
+export type LbTrafficExtensionList = Array<LbTrafficExtension>;
 export const LbTrafficExtensionList = /*@__PURE__*/ S.Array(
   LbTrafficExtension,
 ) as any as S.Schema<LbTrafficExtensionList>;
@@ -4435,7 +4452,7 @@ export const ListProjectsLocationsMeshesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsMeshesRequest",
 }) as any as S.Schema<ListProjectsLocationsMeshesRequest>;
 
-export type MeshList = ReadonlyArray<Mesh>;
+export type MeshList = Array<Mesh>;
 export const MeshList = /*@__PURE__*/ S.Array(
   Mesh,
 ) as any as S.Schema<MeshList>;
@@ -4484,7 +4501,7 @@ export const ListProjectsLocationsMeshesRouteViewsRequest =
     identifier: "ListProjectsLocationsMeshesRouteViewsRequest",
   }) as any as S.Schema<ListProjectsLocationsMeshesRouteViewsRequest>;
 
-export type MeshRouteViewList = ReadonlyArray<MeshRouteView>;
+export type MeshRouteViewList = Array<MeshRouteView>;
 export const MeshRouteViewList = /*@__PURE__*/ S.Array(
   MeshRouteView,
 ) as any as S.Schema<MeshRouteViewList>;
@@ -4540,7 +4557,7 @@ export const ListProjectsLocationsMulticastConsumerAssociationsRequest =
   }) as any as S.Schema<ListProjectsLocationsMulticastConsumerAssociationsRequest>;
 
 export type MulticastConsumerAssociationList =
-  ReadonlyArray<MulticastConsumerAssociation>;
+  Array<MulticastConsumerAssociation>;
 export const MulticastConsumerAssociationList = /*@__PURE__*/ S.Array(
   MulticastConsumerAssociation,
 ) as any as S.Schema<MulticastConsumerAssociationList>;
@@ -4599,7 +4616,7 @@ export const ListProjectsLocationsMulticastGroupConsumerActivationsRequest =
   }) as any as S.Schema<ListProjectsLocationsMulticastGroupConsumerActivationsRequest>;
 
 export type MulticastGroupConsumerActivationList =
-  ReadonlyArray<MulticastGroupConsumerActivation>;
+  Array<MulticastGroupConsumerActivation>;
 export const MulticastGroupConsumerActivationList = /*@__PURE__*/ S.Array(
   MulticastGroupConsumerActivation,
 ) as any as S.Schema<MulticastGroupConsumerActivationList>;
@@ -4657,7 +4674,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type OperationList = ReadonlyArray<Operation>;
+export type OperationList = Array<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -4706,7 +4723,7 @@ export const ListProjectsLocationsServiceBindingsRequest =
     identifier: "ListProjectsLocationsServiceBindingsRequest",
   }) as any as S.Schema<ListProjectsLocationsServiceBindingsRequest>;
 
-export type ServiceBindingList = ReadonlyArray<ServiceBinding>;
+export type ServiceBindingList = Array<ServiceBinding>;
 export const ServiceBindingList = /*@__PURE__*/ S.Array(
   ServiceBinding,
 ) as any as S.Schema<ServiceBindingList>;
@@ -4755,7 +4772,7 @@ export const ListProjectsLocationsServiceLbPoliciesRequest =
     identifier: "ListProjectsLocationsServiceLbPoliciesRequest",
   }) as any as S.Schema<ListProjectsLocationsServiceLbPoliciesRequest>;
 
-export type ServiceLbPolicyList = ReadonlyArray<ServiceLbPolicy>;
+export type ServiceLbPolicyList = Array<ServiceLbPolicy>;
 export const ServiceLbPolicyList = /*@__PURE__*/ S.Array(
   ServiceLbPolicy,
 ) as any as S.Schema<ServiceLbPolicyList>;
@@ -4807,7 +4824,7 @@ export const ListProjectsLocationsTcpRoutesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsTcpRoutesRequest",
 }) as any as S.Schema<ListProjectsLocationsTcpRoutesRequest>;
 
-export type TcpRouteList = ReadonlyArray<TcpRoute>;
+export type TcpRouteList = Array<TcpRoute>;
 export const TcpRouteList = /*@__PURE__*/ S.Array(
   TcpRoute,
 ) as any as S.Schema<TcpRouteList>;
@@ -4859,7 +4876,7 @@ export const ListProjectsLocationsTlsRoutesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsTlsRoutesRequest",
 }) as any as S.Schema<ListProjectsLocationsTlsRoutesRequest>;
 
-export type TlsRouteList = ReadonlyArray<TlsRoute>;
+export type TlsRouteList = Array<TlsRoute>;
 export const TlsRouteList = /*@__PURE__*/ S.Array(
   TlsRoute,
 ) as any as S.Schema<TlsRouteList>;
@@ -4908,7 +4925,7 @@ export const ListProjectsLocationsWasmPluginsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsWasmPluginsRequest",
 }) as any as S.Schema<ListProjectsLocationsWasmPluginsRequest>;
 
-export type WasmPluginList = ReadonlyArray<WasmPlugin>;
+export type WasmPluginList = Array<WasmPlugin>;
 export const WasmPluginList = /*@__PURE__*/ S.Array(
   WasmPlugin,
 ) as any as S.Schema<WasmPluginList>;
@@ -4957,7 +4974,7 @@ export const ListProjectsLocationsWasmPluginsVersionsRequest =
     identifier: "ListProjectsLocationsWasmPluginsVersionsRequest",
   }) as any as S.Schema<ListProjectsLocationsWasmPluginsVersionsRequest>;
 
-export type WasmPluginVersionList = ReadonlyArray<WasmPluginVersion>;
+export type WasmPluginVersionList = Array<WasmPluginVersion>;
 export const WasmPluginVersionList = /*@__PURE__*/ S.Array(
   WasmPluginVersion,
 ) as any as S.Schema<WasmPluginVersionList>;

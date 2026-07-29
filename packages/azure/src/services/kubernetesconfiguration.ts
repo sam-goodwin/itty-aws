@@ -99,7 +99,7 @@ export const ExtensionStatusInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Status from this extension. */
 export type ExtensionsCreateRequestPropertiesStatusesList =
-  ReadonlyArray<ExtensionStatusInput>;
+  Array<ExtensionStatusInput>;
 export const ExtensionsCreateRequestPropertiesStatusesList =
   /*@__PURE__*/ S.Array(
     ExtensionStatusInput,
@@ -333,14 +333,14 @@ export const ExtensionStatus = /*@__PURE__*/ S.suspend(() =>
 
 /** Status from this extension. */
 export type ExtensionsCreateResponsePropertiesStatusesList =
-  ReadonlyArray<ExtensionStatus>;
+  Array<ExtensionStatus>;
 export const ExtensionsCreateResponsePropertiesStatusesList =
   /*@__PURE__*/ S.Array(
     ExtensionStatus,
   ) as any as S.Schema<ExtensionsCreateResponsePropertiesStatusesList>;
 
 /** The error details. */
-export type ErrorDetailDetailsList = ReadonlyArray<ErrorDetail>;
+export type ErrorDetailDetailsList = Array<ErrorDetail>;
 export const ErrorDetailDetailsList = /*@__PURE__*/ S.Array(
   S.suspend(() => ErrorDetail),
 ) as any as S.Schema<ErrorDetailDetailsList>;
@@ -362,7 +362,7 @@ export const ErrorAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ErrorAdditionalInfo>;
 
 /** The error additional info. */
-export type ErrorDetailAdditionalInfoList = ReadonlyArray<ErrorAdditionalInfo>;
+export type ErrorDetailAdditionalInfoList = Array<ErrorAdditionalInfo>;
 export const ErrorDetailAdditionalInfoList = /*@__PURE__*/ S.Array(
   ErrorAdditionalInfo,
 ) as any as S.Schema<ErrorDetailAdditionalInfoList>;
@@ -392,7 +392,7 @@ export const ErrorDetail = /*@__PURE__*/ S.suspend(() =>
 
 /** The error details. */
 export type ExtensionsCreateResponsePropertiesErrorInfoDetailsList =
-  ReadonlyArray<ErrorDetail>;
+  Array<ErrorDetail>;
 export const ExtensionsCreateResponsePropertiesErrorInfoDetailsList =
   /*@__PURE__*/ S.Array(
     ErrorDetail,
@@ -400,7 +400,7 @@ export const ExtensionsCreateResponsePropertiesErrorInfoDetailsList =
 
 /** The error additional info. */
 export type ExtensionsCreateResponsePropertiesErrorInfoAdditionalInfoList =
-  ReadonlyArray<ErrorAdditionalInfo>;
+  Array<ErrorAdditionalInfo>;
 export const ExtensionsCreateResponsePropertiesErrorInfoAdditionalInfoList =
   /*@__PURE__*/ S.Array(
     ErrorAdditionalInfo,
@@ -781,7 +781,7 @@ export const ExtensionsGetResponsePropertiesProvisioningState =
 
 /** Status from this extension. */
 export type ExtensionsGetResponsePropertiesStatusesList =
-  ReadonlyArray<ExtensionStatus>;
+  Array<ExtensionStatus>;
 export const ExtensionsGetResponsePropertiesStatusesList =
   /*@__PURE__*/ S.Array(
     ExtensionStatus,
@@ -789,7 +789,7 @@ export const ExtensionsGetResponsePropertiesStatusesList =
 
 /** The error details. */
 export type ExtensionsGetResponsePropertiesErrorInfoDetailsList =
-  ReadonlyArray<ErrorDetail>;
+  Array<ErrorDetail>;
 export const ExtensionsGetResponsePropertiesErrorInfoDetailsList =
   /*@__PURE__*/ S.Array(
     ErrorDetail,
@@ -797,7 +797,7 @@ export const ExtensionsGetResponsePropertiesErrorInfoDetailsList =
 
 /** The error additional info. */
 export type ExtensionsGetResponsePropertiesErrorInfoAdditionalInfoList =
-  ReadonlyArray<ErrorAdditionalInfo>;
+  Array<ErrorAdditionalInfo>;
 export const ExtensionsGetResponsePropertiesErrorInfoAdditionalInfoList =
   /*@__PURE__*/ S.Array(
     ErrorAdditionalInfo,
@@ -1123,21 +1123,20 @@ export type ExtensionPropertiesProvisioningState =
 export const ExtensionPropertiesProvisioningState = /*@__PURE__*/ S.String;
 
 /** Status from this extension. */
-export type ExtensionPropertiesStatusesList = ReadonlyArray<ExtensionStatus>;
+export type ExtensionPropertiesStatusesList = Array<ExtensionStatus>;
 export const ExtensionPropertiesStatusesList = /*@__PURE__*/ S.Array(
   ExtensionStatus,
 ) as any as S.Schema<ExtensionPropertiesStatusesList>;
 
 /** The error details. */
-export type ExtensionPropertiesErrorInfoDetailsList =
-  ReadonlyArray<ErrorDetail>;
+export type ExtensionPropertiesErrorInfoDetailsList = Array<ErrorDetail>;
 export const ExtensionPropertiesErrorInfoDetailsList = /*@__PURE__*/ S.Array(
   ErrorDetail,
 ) as any as S.Schema<ExtensionPropertiesErrorInfoDetailsList>;
 
 /** The error additional info. */
 export type ExtensionPropertiesErrorInfoAdditionalInfoList =
-  ReadonlyArray<ErrorAdditionalInfo>;
+  Array<ErrorAdditionalInfo>;
 export const ExtensionPropertiesErrorInfoAdditionalInfoList =
   /*@__PURE__*/ S.Array(
     ErrorAdditionalInfo,
@@ -1388,7 +1387,7 @@ export const Extension = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Extension" }) as any as S.Schema<Extension>;
 
 /** List of Extensions within a Kubernetes cluster. */
-export type ExtensionsListValueList = ReadonlyArray<Extension>;
+export type ExtensionsListValueList = Array<Extension>;
 export const ExtensionsListValueList = /*@__PURE__*/ S.Array(
   Extension,
 ) as any as S.Schema<ExtensionsListValueList>;
@@ -1526,7 +1525,7 @@ export const ExtensionsUpdateResponsePropertiesProvisioningState =
 
 /** Status from this extension. */
 export type ExtensionsUpdateResponsePropertiesStatusesList =
-  ReadonlyArray<ExtensionStatus>;
+  Array<ExtensionStatus>;
 export const ExtensionsUpdateResponsePropertiesStatusesList =
   /*@__PURE__*/ S.Array(
     ExtensionStatus,
@@ -1534,7 +1533,7 @@ export const ExtensionsUpdateResponsePropertiesStatusesList =
 
 /** The error details. */
 export type ExtensionsUpdateResponsePropertiesErrorInfoDetailsList =
-  ReadonlyArray<ErrorDetail>;
+  Array<ErrorDetail>;
 export const ExtensionsUpdateResponsePropertiesErrorInfoDetailsList =
   /*@__PURE__*/ S.Array(
     ErrorDetail,
@@ -1542,7 +1541,7 @@ export const ExtensionsUpdateResponsePropertiesErrorInfoDetailsList =
 
 /** The error additional info. */
 export type ExtensionsUpdateResponsePropertiesErrorInfoAdditionalInfoList =
-  ReadonlyArray<ErrorAdditionalInfo>;
+  Array<ErrorAdditionalInfo>;
 export const ExtensionsUpdateResponsePropertiesErrorInfoAdditionalInfoList =
   /*@__PURE__*/ S.Array(
     ErrorAdditionalInfo,
@@ -1861,7 +1860,7 @@ export const FluxConfigOperationStatusGetResponsePropertiesMap =
 
 /** The error details. */
 export type FluxConfigOperationStatusGetResponseErrorDetailsList =
-  ReadonlyArray<ErrorDetail>;
+  Array<ErrorDetail>;
 export const FluxConfigOperationStatusGetResponseErrorDetailsList =
   /*@__PURE__*/ S.Array(
     ErrorDetail,
@@ -1869,7 +1868,7 @@ export const FluxConfigOperationStatusGetResponseErrorDetailsList =
 
 /** The error additional info. */
 export type FluxConfigOperationStatusGetResponseErrorAdditionalInfoList =
-  ReadonlyArray<ErrorAdditionalInfo>;
+  Array<ErrorAdditionalInfo>;
 export const FluxConfigOperationStatusGetResponseErrorAdditionalInfoList =
   /*@__PURE__*/ S.Array(
     ErrorAdditionalInfo,
@@ -2106,7 +2105,7 @@ export const AzureBlobDefinition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AzureBlobDefinition>;
 
 /** Specifies other Kustomizations that this Kustomization depends on. This Kustomization will not reconcile until all dependencies have completed their reconciliation. */
-export type KustomizationDefinitionInputDependsOnList = ReadonlyArray<string>;
+export type KustomizationDefinitionInputDependsOnList = Array<string>;
 export const KustomizationDefinitionInputDependsOnList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<KustomizationDefinitionInputDependsOnList>;
@@ -2141,7 +2140,7 @@ export const SubstituteFromDefinition = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of ConfigMaps/Secrets from which the variables are substituted for this Kustomization. */
 export type PostBuildDefinitionSubstituteFromList =
-  ReadonlyArray<SubstituteFromDefinition>;
+  Array<SubstituteFromDefinition>;
 export const PostBuildDefinitionSubstituteFromList = /*@__PURE__*/ S.Array(
   SubstituteFromDefinition,
 ) as any as S.Schema<PostBuildDefinitionSubstituteFromList>;
@@ -2308,7 +2307,7 @@ export const FluxConfigurationsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<FluxConfigurationsCreateOrUpdateRequest>;
 
 /** Specifies other Kustomizations that this Kustomization depends on. This Kustomization will not reconcile until all dependencies have completed their reconciliation. */
-export type KustomizationDefinitionDependsOnList = ReadonlyArray<string>;
+export type KustomizationDefinitionDependsOnList = Array<string>;
 export const KustomizationDefinitionDependsOnList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<KustomizationDefinitionDependsOnList>;
@@ -2423,7 +2422,7 @@ export const ObjectStatusConditionDefinition = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Kubernetes object status conditions present on the cluster */
 export type ObjectStatusDefinitionStatusConditionsList =
-  ReadonlyArray<ObjectStatusConditionDefinition>;
+  Array<ObjectStatusConditionDefinition>;
 export const ObjectStatusDefinitionStatusConditionsList = /*@__PURE__*/ S.Array(
   ObjectStatusConditionDefinition,
 ) as any as S.Schema<ObjectStatusDefinitionStatusConditionsList>;
@@ -2490,7 +2489,7 @@ export const ObjectStatusDefinition = /*@__PURE__*/ S.suspend(() =>
 
 /** Statuses of the Flux Kubernetes resources created by the fluxConfiguration or created by the managed objects provisioned by the fluxConfiguration. */
 export type FluxConfigurationsCreateOrUpdateResponsePropertiesStatusesList =
-  ReadonlyArray<ObjectStatusDefinition>;
+  Array<ObjectStatusDefinition>;
 export const FluxConfigurationsCreateOrUpdateResponsePropertiesStatusesList =
   /*@__PURE__*/ S.Array(
     ObjectStatusDefinition,
@@ -2760,7 +2759,7 @@ export const FluxConfigurationsGetResponsePropertiesConfigurationProtectedSettin
 
 /** Statuses of the Flux Kubernetes resources created by the fluxConfiguration or created by the managed objects provisioned by the fluxConfiguration. */
 export type FluxConfigurationsGetResponsePropertiesStatusesList =
-  ReadonlyArray<ObjectStatusDefinition>;
+  Array<ObjectStatusDefinition>;
 export const FluxConfigurationsGetResponsePropertiesStatusesList =
   /*@__PURE__*/ S.Array(
     ObjectStatusDefinition,
@@ -2983,7 +2982,7 @@ export const FluxConfigurationPropertiesConfigurationProtectedSettingsMap =
 
 /** Statuses of the Flux Kubernetes resources created by the fluxConfiguration or created by the managed objects provisioned by the fluxConfiguration. */
 export type FluxConfigurationPropertiesStatusesList =
-  ReadonlyArray<ObjectStatusDefinition>;
+  Array<ObjectStatusDefinition>;
 export const FluxConfigurationPropertiesStatusesList = /*@__PURE__*/ S.Array(
   ObjectStatusDefinition,
 ) as any as S.Schema<FluxConfigurationPropertiesStatusesList>;
@@ -3143,7 +3142,7 @@ export const FluxConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FluxConfiguration>;
 
 /** List of Flux Configurations within a Kubernetes cluster. */
-export type FluxConfigurationsListValueList = ReadonlyArray<FluxConfiguration>;
+export type FluxConfigurationsListValueList = Array<FluxConfiguration>;
 export const FluxConfigurationsListValueList = /*@__PURE__*/ S.Array(
   FluxConfiguration,
 ) as any as S.Schema<FluxConfigurationsListValueList>;
@@ -3310,7 +3309,7 @@ export const AzureBlobPatchDefinition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AzureBlobPatchDefinition>;
 
 /** Specifies other Kustomizations that this Kustomization depends on. This Kustomization will not reconcile until all dependencies have completed their reconciliation. */
-export type KustomizationPatchDefinitionDependsOnList = ReadonlyArray<string>;
+export type KustomizationPatchDefinitionDependsOnList = Array<string>;
 export const KustomizationPatchDefinitionDependsOnList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<KustomizationPatchDefinitionDependsOnList>;
@@ -3467,7 +3466,7 @@ export const FluxConfigurationsUpdateResponsePropertiesConfigurationProtectedSet
 
 /** Statuses of the Flux Kubernetes resources created by the fluxConfiguration or created by the managed objects provisioned by the fluxConfiguration. */
 export type FluxConfigurationsUpdateResponsePropertiesStatusesList =
-  ReadonlyArray<ObjectStatusDefinition>;
+  Array<ObjectStatusDefinition>;
 export const FluxConfigurationsUpdateResponsePropertiesStatusesList =
   /*@__PURE__*/ S.Array(
     ObjectStatusDefinition,
@@ -3696,8 +3695,7 @@ export const ResourceProviderOperation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourceProviderOperation>;
 
 /** List of operations supported by this resource provider. */
-export type OperationsListResponseValueList =
-  ReadonlyArray<ResourceProviderOperation>;
+export type OperationsListResponseValueList = Array<ResourceProviderOperation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   ResourceProviderOperation,
 ) as any as S.Schema<OperationsListResponseValueList>;
@@ -3764,15 +3762,14 @@ export const OperationStatusGetResponsePropertiesMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<OperationStatusGetResponsePropertiesMap>;
 
 /** The error details. */
-export type OperationStatusGetResponseErrorDetailsList =
-  ReadonlyArray<ErrorDetail>;
+export type OperationStatusGetResponseErrorDetailsList = Array<ErrorDetail>;
 export const OperationStatusGetResponseErrorDetailsList = /*@__PURE__*/ S.Array(
   ErrorDetail,
 ) as any as S.Schema<OperationStatusGetResponseErrorDetailsList>;
 
 /** The error additional info. */
 export type OperationStatusGetResponseErrorAdditionalInfoList =
-  ReadonlyArray<ErrorAdditionalInfo>;
+  Array<ErrorAdditionalInfo>;
 export const OperationStatusGetResponseErrorAdditionalInfoList =
   /*@__PURE__*/ S.Array(
     ErrorAdditionalInfo,
@@ -3870,14 +3867,14 @@ export const OperationStatusResultPropertiesMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<OperationStatusResultPropertiesMap>;
 
 /** The error details. */
-export type OperationStatusResultErrorDetailsList = ReadonlyArray<ErrorDetail>;
+export type OperationStatusResultErrorDetailsList = Array<ErrorDetail>;
 export const OperationStatusResultErrorDetailsList = /*@__PURE__*/ S.Array(
   ErrorDetail,
 ) as any as S.Schema<OperationStatusResultErrorDetailsList>;
 
 /** The error additional info. */
 export type OperationStatusResultErrorAdditionalInfoList =
-  ReadonlyArray<ErrorAdditionalInfo>;
+  Array<ErrorAdditionalInfo>;
 export const OperationStatusResultErrorAdditionalInfoList =
   /*@__PURE__*/ S.Array(
     ErrorAdditionalInfo,
@@ -3934,8 +3931,7 @@ export const OperationStatusResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationStatusResult>;
 
 /** List of async operations in progress, in the cluster. */
-export type OperationStatusListResponseValueList =
-  ReadonlyArray<OperationStatusResult>;
+export type OperationStatusListResponseValueList = Array<OperationStatusResult>;
 export const OperationStatusListResponseValueList = /*@__PURE__*/ S.Array(
   OperationStatusResult,
 ) as any as S.Schema<OperationStatusListResponseValueList>;
@@ -3987,7 +3983,7 @@ export const OperationStatusListRequest_2 = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationStatusListRequest_2>;
 
 /** List of async operations in progress, in the cluster. */
-export type OperationStatusListValueList = ReadonlyArray<OperationStatusResult>;
+export type OperationStatusListValueList = Array<OperationStatusResult>;
 export const OperationStatusListValueList = /*@__PURE__*/ S.Array(
   OperationStatusResult,
 ) as any as S.Schema<OperationStatusListValueList>;
@@ -4680,7 +4676,7 @@ export const SourceControlConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Source Control Configurations within a Kubernetes cluster. */
 export type SourceControlConfigurationListValueList =
-  ReadonlyArray<SourceControlConfiguration>;
+  Array<SourceControlConfiguration>;
 export const SourceControlConfigurationListValueList = /*@__PURE__*/ S.Array(
   SourceControlConfiguration,
 ) as any as S.Schema<SourceControlConfigurationListValueList>;

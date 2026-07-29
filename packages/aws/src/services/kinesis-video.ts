@@ -244,7 +244,7 @@ export type DefaultStorageTier = "HOT" | "WARM";
 export const DefaultStorageTier = /*@__PURE__*/ S.String;
 
 export interface StreamStorageConfiguration {
-  DefaultStorageTier: DefaultStorageTier;
+  DefaultStorageTier: DefaultStorageTier | (string & {});
 }
 export const StreamStorageConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DefaultStorageTier: DefaultStorageTier }),
@@ -410,7 +410,7 @@ export const MediaUriType = /*@__PURE__*/ S.String;
 
 export interface MediaSourceConfig {
   MediaUriSecretArn: string | redacted.Redacted<string>;
-  MediaUriType: MediaUriType;
+  MediaUriType: MediaUriType | (string & {});
 }
 export const MediaSourceConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ MediaUriSecretArn: SensitiveString, MediaUriType: MediaUriType }),
@@ -449,7 +449,7 @@ export const StrategyOnFullSize = /*@__PURE__*/ S.String;
 
 export interface LocalSizeConfig {
   MaxLocalMediaSizeInMB?: number;
-  StrategyOnFullSize?: StrategyOnFullSize;
+  StrategyOnFullSize?: StrategyOnFullSize | (string & {});
 }
 export const LocalSizeConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -622,7 +622,9 @@ export type FormatConfigKey = "JPEGQuality";
 export const FormatConfigKey = /*@__PURE__*/ S.String;
 
 export type FormatConfigValue = string;
-export type FormatConfig = { [key in FormatConfigKey]?: string };
+export type FormatConfig = {
+  [key in FormatConfigKey | (string & {})]?: string;
+};
 export const FormatConfig = /*@__PURE__*/ S.Record(
   FormatConfigKey,
   S.String.pipe(S.optional),
@@ -630,11 +632,11 @@ export const FormatConfig = /*@__PURE__*/ S.Record(
 export type WidthPixels = number;
 export type HeightPixels = number;
 export interface ImageGenerationConfiguration {
-  Status: ConfigurationStatus;
-  ImageSelectorType: ImageSelectorType;
+  Status: ConfigurationStatus | (string & {});
+  ImageSelectorType: ImageSelectorType | (string & {});
   DestinationConfig: ImageGenerationDestinationConfig;
   SamplingInterval: number;
-  Format: Format;
+  Format: Format | (string & {});
   FormatConfig?: { [key: string]: string | undefined };
   WidthPixels?: number;
   HeightPixels?: number;
@@ -751,7 +753,7 @@ export const MediaStorageConfigurationStatus = /*@__PURE__*/ S.String;
 
 export interface MediaStorageConfiguration {
   StreamARN?: string;
-  Status: MediaStorageConfigurationStatus;
+  Status: MediaStorageConfigurationStatus | (string & {});
 }
 export const MediaStorageConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -804,7 +806,7 @@ export const NotificationDestinationConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "NotificationDestinationConfig",
 }) as any as S.Schema<NotificationDestinationConfig>;
 export interface NotificationConfiguration {
-  Status: ConfigurationStatus;
+  Status: ConfigurationStatus | (string & {});
   DestinationConfig: NotificationDestinationConfig;
 }
 export const NotificationConfiguration = /*@__PURE__*/ S.suspend(() =>

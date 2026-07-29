@@ -108,7 +108,7 @@ export const CreateKeylessCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateKeylessCertificateRequest",
 }) as any as S.Schema<CreateKeylessCertificateRequest>;
 
-export type CreateResponsePermissionsList = ReadonlyArray<string>;
+export type CreateResponsePermissionsList = Array<string>;
 export const CreateResponsePermissionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateResponsePermissionsList>;
@@ -230,7 +230,7 @@ export const GetKeylessCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetKeylessCertificateRequest",
 }) as any as S.Schema<GetKeylessCertificateRequest>;
 
-export type GetResponsePermissionsList = ReadonlyArray<string>;
+export type GetResponsePermissionsList = Array<string>;
 export const GetResponsePermissionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetResponsePermissionsList>;
@@ -313,7 +313,7 @@ export const ListKeylessCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListKeylessCertificatesRequest",
 }) as any as S.Schema<ListKeylessCertificatesRequest>;
 
-export type ListResultItemPermissionsList = ReadonlyArray<string>;
+export type ListResultItemPermissionsList = Array<string>;
 export const ListResultItemPermissionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ListResultItemPermissionsList>;
@@ -373,7 +373,7 @@ export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ListResultItem" }) as any as S.Schema<ListResultItem>;
 
-export type ListResultList = ReadonlyArray<ListResultItem>;
+export type ListResultList = Array<ListResultItem>;
 export const ListResultList = /*@__PURE__*/ S.Array(
   ListResultItem,
 ) as any as S.Schema<ListResultList>;
@@ -446,7 +446,7 @@ export const PatchKeylessCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchKeylessCertificateRequest",
 }) as any as S.Schema<PatchKeylessCertificateRequest>;
 
-export type EditResponsePermissionsList = ReadonlyArray<string>;
+export type EditResponsePermissionsList = Array<string>;
 export const EditResponsePermissionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EditResponsePermissionsList>;

@@ -44,7 +44,7 @@ export const MsixPackageDependencies = /*@__PURE__*/ S.suspend(() =>
 
 /** List of package dependencies. */
 export type AppAttachPackageInfoPropertiesPackageDependenciesList =
-  ReadonlyArray<MsixPackageDependencies>;
+  Array<MsixPackageDependencies>;
 export const AppAttachPackageInfoPropertiesPackageDependenciesList =
   /*@__PURE__*/ S.Array(
     MsixPackageDependencies,
@@ -83,7 +83,7 @@ export const MsixPackageApplications = /*@__PURE__*/ S.suspend(() =>
 
 /** List of package applications. */
 export type AppAttachPackageInfoPropertiesPackageApplicationsList =
-  ReadonlyArray<MsixPackageApplications>;
+  Array<MsixPackageApplications>;
 export const AppAttachPackageInfoPropertiesPackageApplicationsList =
   /*@__PURE__*/ S.Array(
     MsixPackageApplications,
@@ -129,7 +129,10 @@ export interface AppAttachPackageInfoProperties {
   /** Date certificate expires, found in the appxmanifest.xml. */
   certificateExpiry?: string | null;
   /** Is package timestamped so it can ignore the certificate expiry date */
-  isPackageTimestamped?: AppAttachPackageInfoPropertiesIsPackageTimestamped | null;
+  isPackageTimestamped?:
+    | AppAttachPackageInfoPropertiesIsPackageTimestamped
+    | (string & {})
+    | null;
 }
 export const AppAttachPackageInfoProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -162,7 +165,7 @@ export const AppAttachPackageInfoProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Hostpool resource Ids. */
 export type AppAttachPackagePropertiesInputHostPoolReferencesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const AppAttachPackagePropertiesInputHostPoolReferencesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -299,8 +302,7 @@ export type ProvisioningState =
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** List of Hostpool resource Ids. */
-export type AppAttachPackagePropertiesHostPoolReferencesList =
-  ReadonlyArray<string>;
+export type AppAttachPackagePropertiesHostPoolReferencesList = Array<string>;
 export const AppAttachPackagePropertiesHostPoolReferencesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -549,7 +551,7 @@ export const AppAttachPackage = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AppAttachPackage>;
 
 /** List of App Attach Package definitions. */
-export type AppAttachPackageListValueList = ReadonlyArray<AppAttachPackage>;
+export type AppAttachPackageListValueList = Array<AppAttachPackage>;
 export const AppAttachPackageListValueList = /*@__PURE__*/ S.Array(
   AppAttachPackage,
 ) as any as S.Schema<AppAttachPackageListValueList>;
@@ -621,7 +623,7 @@ export const AppAttachPackageListBySubscriptionRequest =
 
 /** List of Hostpool resource Ids. */
 export type AppAttachPackagePatchPropertiesHostPoolReferencesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const AppAttachPackagePatchPropertiesHostPoolReferencesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1399,7 +1401,7 @@ export const ApplicationGroup = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ApplicationGroup>;
 
 /** List of ApplicationGroup definitions. */
-export type ApplicationGroupListValueList = ReadonlyArray<ApplicationGroup>;
+export type ApplicationGroupListValueList = Array<ApplicationGroup>;
 export const ApplicationGroupListValueList = /*@__PURE__*/ S.Array(
   ApplicationGroup,
 ) as any as S.Schema<ApplicationGroupListValueList>;
@@ -1951,7 +1953,7 @@ export const Application = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Application" }) as any as S.Schema<Application>;
 
 /** List of Application definitions. */
-export type ApplicationListValueList = ReadonlyArray<Application>;
+export type ApplicationListValueList = Array<Application>;
 export const ApplicationListValueList = /*@__PURE__*/ S.Array(
   Application,
 ) as any as S.Schema<ApplicationListValueList>;
@@ -2223,7 +2225,7 @@ export const Desktop = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Desktop" }) as any as S.Schema<Desktop>;
 
 /** List of Desktop definitions. */
-export type DesktopListValueList = ReadonlyArray<Desktop>;
+export type DesktopListValueList = Array<Desktop>;
 export const DesktopListValueList = /*@__PURE__*/ S.Array(
   Desktop,
 ) as any as S.Schema<DesktopListValueList>;
@@ -2421,7 +2423,9 @@ export interface RegistrationInfo {
   /** The registration token base64 encoded string. */
   token?: string;
   /** The type of resetting the token. */
-  registrationTokenOperation?: RegistrationInfoRegistrationTokenOperation;
+  registrationTokenOperation?:
+    | RegistrationInfoRegistrationTokenOperation
+    | (string & {});
 }
 export const RegistrationInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2480,7 +2484,7 @@ export interface MaintenanceWindowProperties {
   /** The update start hour of the day. (0 - 23) */
   hour?: number;
   /** Day of the week. */
-  dayOfWeek?: MaintenanceWindowPropertiesDayOfWeek;
+  dayOfWeek?: MaintenanceWindowPropertiesDayOfWeek | (string & {});
 }
 export const MaintenanceWindowProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2493,7 +2497,7 @@ export const MaintenanceWindowProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** List of maintenance windows. Maintenance windows are 2 hours long. */
 export type AgentUpdatePropertiesMaintenanceWindowsList =
-  ReadonlyArray<MaintenanceWindowProperties>;
+  Array<MaintenanceWindowProperties>;
 export const AgentUpdatePropertiesMaintenanceWindowsList =
   /*@__PURE__*/ S.Array(
     MaintenanceWindowProperties,
@@ -2502,7 +2506,7 @@ export const AgentUpdatePropertiesMaintenanceWindowsList =
 /** The session host configuration for updating agent, monitoring agent, and stack component. */
 export interface AgentUpdateProperties {
   /** The type of maintenance for session host components. */
-  type?: AgentUpdatePropertiesType;
+  type?: AgentUpdatePropertiesType | (string & {});
   /** Whether to use localTime of the virtual machine. */
   useSessionHostLocalTime?: boolean;
   /** Time zone for maintenance as defined in https://docs.microsoft.com/en-us/dotnet/api/system.timezoneinfo.findsystemtimezonebyid?view=net-5.0. Must be set if useLocalTime is true. */
@@ -2753,16 +2757,14 @@ export type HostPoolPropertiesLoadBalancerType =
 export const HostPoolPropertiesLoadBalancerType = /*@__PURE__*/ S.String;
 
 /** List of applicationGroup links. */
-export type HostPoolPropertiesApplicationGroupReferencesList =
-  ReadonlyArray<string>;
+export type HostPoolPropertiesApplicationGroupReferencesList = Array<string>;
 export const HostPoolPropertiesApplicationGroupReferencesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<HostPoolPropertiesApplicationGroupReferencesList>;
 
 /** List of App Attach Package links. */
-export type HostPoolPropertiesAppAttachPackageReferencesList =
-  ReadonlyArray<string>;
+export type HostPoolPropertiesAppAttachPackageReferencesList = Array<string>;
 export const HostPoolPropertiesAppAttachPackageReferencesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2792,8 +2794,7 @@ export type HostPoolPropertiesPublicNetworkAccess =
 export const HostPoolPropertiesPublicNetworkAccess = /*@__PURE__*/ S.String;
 
 /** The group ids for the private endpoint resource. */
-export type PrivateEndpointConnectionPropertiesGroupIdsList =
-  ReadonlyArray<string>;
+export type PrivateEndpointConnectionPropertiesGroupIdsList = Array<string>;
 export const PrivateEndpointConnectionPropertiesGroupIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2822,7 +2823,7 @@ export const PrivateEndpointServiceConnectionStatus = /*@__PURE__*/ S.String;
 /** A collection of information about the state of the connection between service consumer and provider. */
 export interface PrivateLinkServiceConnectionState {
   /** Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service. */
-  status?: PrivateEndpointServiceConnectionStatus;
+  status?: PrivateEndpointServiceConnectionStatus | (string & {});
   /** The reason for approval/rejection of the connection. */
   description?: string;
   /** A message indicating if changes on the service provider require any updates on the consumer. */
@@ -2897,7 +2898,7 @@ export const HostPoolPropertiesPrivateEndpointConnectionsItem =
 
 /** List of private endpoint connection associated with the specified resource */
 export type HostPoolPropertiesPrivateEndpointConnectionsList =
-  ReadonlyArray<HostPoolPropertiesPrivateEndpointConnectionsItem>;
+  Array<HostPoolPropertiesPrivateEndpointConnectionsItem>;
 export const HostPoolPropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     HostPoolPropertiesPrivateEndpointConnectionsItem,
@@ -3373,7 +3374,7 @@ export const HostPool = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "HostPool" }) as any as S.Schema<HostPool>;
 
 /** List of HostPool definitions. */
-export type HostPoolListValueList = ReadonlyArray<HostPool>;
+export type HostPoolListValueList = Array<HostPool>;
 export const HostPoolListValueList = /*@__PURE__*/ S.Array(
   HostPool,
 ) as any as S.Schema<HostPoolListValueList>;
@@ -3466,8 +3467,7 @@ export const RegistrationTokenMinimal = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RegistrationTokenMinimal>;
 
 /** List of RegistrationToken definitions. */
-export type RegistrationTokenListValueList =
-  ReadonlyArray<RegistrationTokenMinimal>;
+export type RegistrationTokenListValueList = Array<RegistrationTokenMinimal>;
 export const RegistrationTokenListValueList = /*@__PURE__*/ S.Array(
   RegistrationTokenMinimal,
 ) as any as S.Schema<RegistrationTokenListValueList>;
@@ -3624,7 +3624,7 @@ export const MaintenanceWindowPatchProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** List of maintenance windows. Maintenance windows are 2 hours long. */
 export type AgentUpdatePatchPropertiesMaintenanceWindowsList =
-  ReadonlyArray<MaintenanceWindowPatchProperties>;
+  Array<MaintenanceWindowPatchProperties>;
 export const AgentUpdatePatchPropertiesMaintenanceWindowsList =
   /*@__PURE__*/ S.Array(
     MaintenanceWindowPatchProperties,
@@ -3934,7 +3934,7 @@ export const MsixImagesExpandRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of package dependencies. */
 export type ExpandMsixImagePropertiesPackageDependenciesList =
-  ReadonlyArray<MsixPackageDependencies>;
+  Array<MsixPackageDependencies>;
 export const ExpandMsixImagePropertiesPackageDependenciesList =
   /*@__PURE__*/ S.Array(
     MsixPackageDependencies,
@@ -3942,7 +3942,7 @@ export const ExpandMsixImagePropertiesPackageDependenciesList =
 
 /** List of package applications. */
 export type ExpandMsixImagePropertiesPackageApplicationsList =
-  ReadonlyArray<MsixPackageApplications>;
+  Array<MsixPackageApplications>;
 export const ExpandMsixImagePropertiesPackageApplicationsList =
   /*@__PURE__*/ S.Array(
     MsixPackageApplications,
@@ -4033,7 +4033,7 @@ export const ExpandMsixImage = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExpandMsixImage>;
 
 /** List of MSIX package properties from give MSIX Image. */
-export type ExpandMsixImageListValueList = ReadonlyArray<ExpandMsixImage>;
+export type ExpandMsixImageListValueList = Array<ExpandMsixImage>;
 export const ExpandMsixImageListValueList = /*@__PURE__*/ S.Array(
   ExpandMsixImage,
 ) as any as S.Schema<ExpandMsixImageListValueList>;
@@ -4056,7 +4056,7 @@ export const ExpandMsixImageList = /*@__PURE__*/ S.suspend(() =>
 
 /** List of package dependencies. */
 export type MSIXPackagePropertiesPackageDependenciesList =
-  ReadonlyArray<MsixPackageDependencies>;
+  Array<MsixPackageDependencies>;
 export const MSIXPackagePropertiesPackageDependenciesList =
   /*@__PURE__*/ S.Array(
     MsixPackageDependencies,
@@ -4064,7 +4064,7 @@ export const MSIXPackagePropertiesPackageDependenciesList =
 
 /** List of package applications. */
 export type MSIXPackagePropertiesPackageApplicationsList =
-  ReadonlyArray<MsixPackageApplications>;
+  Array<MsixPackageApplications>;
 export const MSIXPackagePropertiesPackageApplicationsList =
   /*@__PURE__*/ S.Array(
     MsixPackageApplications,
@@ -4317,7 +4317,7 @@ export const MSIXPackage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MSIXPackage" }) as any as S.Schema<MSIXPackage>;
 
 /** List of MSIX Package definitions. */
-export type MSIXPackageListValueList = ReadonlyArray<MSIXPackage>;
+export type MSIXPackageListValueList = Array<MSIXPackage>;
 export const MSIXPackageListValueList = /*@__PURE__*/ S.Array(
   MSIXPackage,
 ) as any as S.Schema<MSIXPackageListValueList>;
@@ -4468,8 +4468,7 @@ export const LogSpecification = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LogSpecification>;
 
 /** Specifications of the Log for Azure Monitoring */
-export type ServiceSpecificationLogSpecificationsList =
-  ReadonlyArray<LogSpecification>;
+export type ServiceSpecificationLogSpecificationsList = Array<LogSpecification>;
 export const ServiceSpecificationLogSpecificationsList = /*@__PURE__*/ S.Array(
   LogSpecification,
 ) as any as S.Schema<ServiceSpecificationLogSpecificationsList>;
@@ -4522,7 +4521,7 @@ export const ResourceProviderOperation = /*@__PURE__*/ S.suspend(() =>
 
 /** The ResourceProviderOperation items on this page */
 export type ResourceProviderOperationListResultValueList =
-  ReadonlyArray<ResourceProviderOperation>;
+  Array<ResourceProviderOperation>;
 export const ResourceProviderOperationListResultValueList =
   /*@__PURE__*/ S.Array(
     ResourceProviderOperation,
@@ -4645,7 +4644,7 @@ export const PrivateEndpointConnectionsGetByHostPoolRequest =
 
 /** The group ids for the private endpoint resource. */
 export type PrivateEndpointConnectionsGetByHostPoolResponsePropertiesGroupIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PrivateEndpointConnectionsGetByHostPoolResponsePropertiesGroupIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4734,7 +4733,7 @@ export const PrivateEndpointConnectionsGetByWorkspaceRequest =
 
 /** The group ids for the private endpoint resource. */
 export type PrivateEndpointConnectionsGetByWorkspaceResponsePropertiesGroupIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PrivateEndpointConnectionsGetByWorkspaceResponsePropertiesGroupIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4829,7 +4828,7 @@ export const PrivateEndpointConnectionsListByHostPoolRequest =
 
 /** The group ids for the private endpoint resource. */
 export type PrivateEndpointConnectionWithSystemDataPropertiesGroupIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PrivateEndpointConnectionWithSystemDataPropertiesGroupIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4888,7 +4887,7 @@ export const PrivateEndpointConnectionWithSystemData = /*@__PURE__*/ S.suspend(
 
 /** Array of private endpoint connections */
 export type PrivateEndpointConnectionListResultWithSystemDataValueList =
-  ReadonlyArray<PrivateEndpointConnectionWithSystemData>;
+  Array<PrivateEndpointConnectionWithSystemData>;
 export const PrivateEndpointConnectionListResultWithSystemDataValueList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnectionWithSystemData,
@@ -5000,7 +4999,7 @@ export const PrivateEndpointConnectionsUpdateByHostPoolRequest =
 
 /** The group ids for the private endpoint resource. */
 export type PrivateEndpointConnectionsUpdateByHostPoolResponsePropertiesGroupIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PrivateEndpointConnectionsUpdateByHostPoolResponsePropertiesGroupIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5111,7 +5110,7 @@ export const PrivateEndpointConnectionsUpdateByWorkspaceRequest =
 
 /** The group ids for the private endpoint resource. */
 export type PrivateEndpointConnectionsUpdateByWorkspaceResponsePropertiesGroupIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PrivateEndpointConnectionsUpdateByWorkspaceResponsePropertiesGroupIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5205,16 +5204,14 @@ export const PrivateLinkResourcesListByHostPoolRequest =
   }) as any as S.Schema<PrivateLinkResourcesListByHostPoolRequest>;
 
 /** The private link resource required member names. */
-export type PrivateLinkResourcePropertiesRequiredMembersList =
-  ReadonlyArray<string>;
+export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
 export const PrivateLinkResourcePropertiesRequiredMembersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
 
 /** The private link resource Private link DNS zone name. */
-export type PrivateLinkResourcePropertiesRequiredZoneNamesList =
-  ReadonlyArray<string>;
+export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
 export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5269,8 +5266,7 @@ export const PrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateLinkResource>;
 
 /** Array of private link resources */
-export type PrivateLinkResourceListResultValueList =
-  ReadonlyArray<PrivateLinkResource>;
+export type PrivateLinkResourceListResultValueList = Array<PrivateLinkResource>;
 export const PrivateLinkResourceListResultValueList = /*@__PURE__*/ S.Array(
   PrivateLinkResource,
 ) as any as S.Schema<PrivateLinkResourceListResultValueList>;
@@ -5338,8 +5334,9 @@ export const ScalingPlanPersonalSchedulePropertiesDaysOfWeekItem =
   /*@__PURE__*/ S.String;
 
 /** Set of days of the week on which this schedule is active. */
-export type ScalingPlanPersonalSchedulePropertiesDaysOfWeekList =
-  ReadonlyArray<ScalingPlanPersonalSchedulePropertiesDaysOfWeekItem>;
+export type ScalingPlanPersonalSchedulePropertiesDaysOfWeekList = Array<
+  ScalingPlanPersonalSchedulePropertiesDaysOfWeekItem | (string & {})
+>;
 export const ScalingPlanPersonalSchedulePropertiesDaysOfWeekList =
   /*@__PURE__*/ S.Array(
     ScalingPlanPersonalSchedulePropertiesDaysOfWeekItem,
@@ -5461,51 +5458,77 @@ export interface ScalingPlanPersonalScheduleProperties {
   /** Starting time for ramp up period. */
   rampUpStartTime?: Time;
   /** The desired startup behavior during the ramp up period for personal vms in the hostpool. */
-  rampUpAutoStartHosts?: ScalingPlanPersonalSchedulePropertiesRampUpAutoStartHosts;
+  rampUpAutoStartHosts?:
+    | ScalingPlanPersonalSchedulePropertiesRampUpAutoStartHosts
+    | (string & {});
   /** The desired configuration of Start VM On Connect for the hostpool during the ramp up phase. If this is disabled, session hosts must be turned on using rampUpAutoStartHosts or by turning them on manually. */
-  rampUpStartVMOnConnect?: ScalingPlanPersonalSchedulePropertiesRampUpStartVMOnConnect;
+  rampUpStartVMOnConnect?:
+    | ScalingPlanPersonalSchedulePropertiesRampUpStartVMOnConnect
+    | (string & {});
   /** Action to be taken after a user disconnect during the ramp up period. */
-  rampUpActionOnDisconnect?: ScalingPlanPersonalSchedulePropertiesRampUpActionOnDisconnect;
+  rampUpActionOnDisconnect?:
+    | ScalingPlanPersonalSchedulePropertiesRampUpActionOnDisconnect
+    | (string & {});
   /** The time in minutes to wait before performing the desired session handling action when a user disconnects during the ramp up period. */
   rampUpMinutesToWaitOnDisconnect?: number;
   /** Action to be taken after a logoff during the ramp up period. */
-  rampUpActionOnLogoff?: ScalingPlanPersonalSchedulePropertiesRampUpActionOnLogoff;
+  rampUpActionOnLogoff?:
+    | ScalingPlanPersonalSchedulePropertiesRampUpActionOnLogoff
+    | (string & {});
   /** The time in minutes to wait before performing the desired session handling action when a user logs off during the ramp up period. */
   rampUpMinutesToWaitOnLogoff?: number;
   /** Starting time for peak period. */
   peakStartTime?: Time;
   /** The desired configuration of Start VM On Connect for the hostpool during the peak phase. */
-  peakStartVMOnConnect?: ScalingPlanPersonalSchedulePropertiesPeakStartVMOnConnect;
+  peakStartVMOnConnect?:
+    | ScalingPlanPersonalSchedulePropertiesPeakStartVMOnConnect
+    | (string & {});
   /** Action to be taken after a user disconnect during the peak period. */
-  peakActionOnDisconnect?: ScalingPlanPersonalSchedulePropertiesPeakActionOnDisconnect;
+  peakActionOnDisconnect?:
+    | ScalingPlanPersonalSchedulePropertiesPeakActionOnDisconnect
+    | (string & {});
   /** The time in minutes to wait before performing the desired session handling action when a user disconnects during the peak period. */
   peakMinutesToWaitOnDisconnect?: number;
   /** Action to be taken after a logoff during the peak period. */
-  peakActionOnLogoff?: ScalingPlanPersonalSchedulePropertiesPeakActionOnLogoff;
+  peakActionOnLogoff?:
+    | ScalingPlanPersonalSchedulePropertiesPeakActionOnLogoff
+    | (string & {});
   /** The time in minutes to wait before performing the desired session handling action when a user logs off during the peak period. */
   peakMinutesToWaitOnLogoff?: number;
   /** Starting time for ramp down period. */
   rampDownStartTime?: Time;
   /** The desired configuration of Start VM On Connect for the hostpool during the ramp down phase. */
-  rampDownStartVMOnConnect?: ScalingPlanPersonalSchedulePropertiesRampDownStartVMOnConnect;
+  rampDownStartVMOnConnect?:
+    | ScalingPlanPersonalSchedulePropertiesRampDownStartVMOnConnect
+    | (string & {});
   /** Action to be taken after a user disconnect during the ramp down period. */
-  rampDownActionOnDisconnect?: ScalingPlanPersonalSchedulePropertiesRampDownActionOnDisconnect;
+  rampDownActionOnDisconnect?:
+    | ScalingPlanPersonalSchedulePropertiesRampDownActionOnDisconnect
+    | (string & {});
   /** The time in minutes to wait before performing the desired session handling action when a user disconnects during the ramp down period. */
   rampDownMinutesToWaitOnDisconnect?: number;
   /** Action to be taken after a logoff during the ramp down period. */
-  rampDownActionOnLogoff?: ScalingPlanPersonalSchedulePropertiesRampDownActionOnLogoff;
+  rampDownActionOnLogoff?:
+    | ScalingPlanPersonalSchedulePropertiesRampDownActionOnLogoff
+    | (string & {});
   /** The time in minutes to wait before performing the desired session handling action when a user logs off during the ramp down period. */
   rampDownMinutesToWaitOnLogoff?: number;
   /** Starting time for off-peak period. */
   offPeakStartTime?: Time;
   /** The desired configuration of Start VM On Connect for the hostpool during the off-peak phase. */
-  offPeakStartVMOnConnect?: ScalingPlanPersonalSchedulePropertiesOffPeakStartVMOnConnect;
+  offPeakStartVMOnConnect?:
+    | ScalingPlanPersonalSchedulePropertiesOffPeakStartVMOnConnect
+    | (string & {});
   /** Action to be taken after a user disconnect during the off-peak period. */
-  offPeakActionOnDisconnect?: ScalingPlanPersonalSchedulePropertiesOffPeakActionOnDisconnect;
+  offPeakActionOnDisconnect?:
+    | ScalingPlanPersonalSchedulePropertiesOffPeakActionOnDisconnect
+    | (string & {});
   /** The time in minutes to wait before performing the desired session handling action when a user disconnects during the off-peak period. */
   offPeakMinutesToWaitOnDisconnect?: number;
   /** Action to be taken after a logoff during the off-peak period. */
-  offPeakActionOnLogoff?: ScalingPlanPersonalSchedulePropertiesOffPeakActionOnLogoff;
+  offPeakActionOnLogoff?:
+    | ScalingPlanPersonalSchedulePropertiesOffPeakActionOnLogoff
+    | (string & {});
   /** The time in minutes to wait before performing the desired session handling action when a user logs off during the off-peak period. */
   offPeakMinutesToWaitOnLogoff?: number;
 }
@@ -5779,7 +5802,7 @@ export const ScalingPlanPersonalSchedule = /*@__PURE__*/ S.suspend(() =>
 
 /** List of ScalingPlanPersonalSchedule definitions. */
 export type ScalingPlanPersonalScheduleListValueList =
-  ReadonlyArray<ScalingPlanPersonalSchedule>;
+  Array<ScalingPlanPersonalSchedule>;
 export const ScalingPlanPersonalScheduleListValueList = /*@__PURE__*/ S.Array(
   ScalingPlanPersonalSchedule,
 ) as any as S.Schema<ScalingPlanPersonalScheduleListValueList>;
@@ -5869,8 +5892,9 @@ export const ScalingPlanPooledSchedulePropertiesDaysOfWeekItem =
   /*@__PURE__*/ S.String;
 
 /** Set of days of the week on which this schedule is active. */
-export type ScalingPlanPooledSchedulePropertiesDaysOfWeekList =
-  ReadonlyArray<ScalingPlanPooledSchedulePropertiesDaysOfWeekItem>;
+export type ScalingPlanPooledSchedulePropertiesDaysOfWeekList = Array<
+  ScalingPlanPooledSchedulePropertiesDaysOfWeekItem | (string & {})
+>;
 export const ScalingPlanPooledSchedulePropertiesDaysOfWeekList =
   /*@__PURE__*/ S.Array(
     ScalingPlanPooledSchedulePropertiesDaysOfWeekItem,
@@ -5918,7 +5942,9 @@ export interface ScalingPlanPooledScheduleProperties {
   /** Starting time for ramp up period. */
   rampUpStartTime?: Time;
   /** Load balancing algorithm for ramp up period. */
-  rampUpLoadBalancingAlgorithm?: ScalingPlanPooledSchedulePropertiesRampUpLoadBalancingAlgorithm;
+  rampUpLoadBalancingAlgorithm?:
+    | ScalingPlanPooledSchedulePropertiesRampUpLoadBalancingAlgorithm
+    | (string & {});
   /** Minimum host percentage for ramp up period. */
   rampUpMinimumHostsPct?: number;
   /** Capacity threshold for ramp up period. */
@@ -5926,11 +5952,15 @@ export interface ScalingPlanPooledScheduleProperties {
   /** Starting time for peak period. */
   peakStartTime?: Time;
   /** Load balancing algorithm for peak period. */
-  peakLoadBalancingAlgorithm?: ScalingPlanPooledSchedulePropertiesPeakLoadBalancingAlgorithm;
+  peakLoadBalancingAlgorithm?:
+    | ScalingPlanPooledSchedulePropertiesPeakLoadBalancingAlgorithm
+    | (string & {});
   /** Starting time for ramp down period. */
   rampDownStartTime?: Time;
   /** Load balancing algorithm for ramp down period. */
-  rampDownLoadBalancingAlgorithm?: ScalingPlanPooledSchedulePropertiesRampDownLoadBalancingAlgorithm;
+  rampDownLoadBalancingAlgorithm?:
+    | ScalingPlanPooledSchedulePropertiesRampDownLoadBalancingAlgorithm
+    | (string & {});
   /** Minimum host percentage for ramp down period. */
   rampDownMinimumHostsPct?: number;
   /** Capacity threshold for ramp down period. */
@@ -5938,7 +5968,9 @@ export interface ScalingPlanPooledScheduleProperties {
   /** Should users be logged off forcefully from hosts. */
   rampDownForceLogoffUsers?: boolean;
   /** Specifies when to stop hosts during ramp down period. */
-  rampDownStopHostsWhen?: ScalingPlanPooledSchedulePropertiesRampDownStopHostsWhen;
+  rampDownStopHostsWhen?:
+    | ScalingPlanPooledSchedulePropertiesRampDownStopHostsWhen
+    | (string & {});
   /** Number of minutes to wait to stop hosts during ramp down period. */
   rampDownWaitTimeMinutes?: number;
   /** Notification message for users during ramp down period. */
@@ -5946,7 +5978,9 @@ export interface ScalingPlanPooledScheduleProperties {
   /** Starting time for off-peak period. */
   offPeakStartTime?: Time;
   /** Load balancing algorithm for off-peak period. */
-  offPeakLoadBalancingAlgorithm?: ScalingPlanPooledSchedulePropertiesOffPeakLoadBalancingAlgorithm;
+  offPeakLoadBalancingAlgorithm?:
+    | ScalingPlanPooledSchedulePropertiesOffPeakLoadBalancingAlgorithm
+    | (string & {});
 }
 export const ScalingPlanPooledScheduleProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6191,7 +6225,7 @@ export const ScalingPlanPooledSchedule = /*@__PURE__*/ S.suspend(() =>
 
 /** List of ScalingPlanPooledSchedule definitions. */
 export type ScalingPlanPooledScheduleListValueList =
-  ReadonlyArray<ScalingPlanPooledSchedule>;
+  Array<ScalingPlanPooledSchedule>;
 export const ScalingPlanPooledScheduleListValueList = /*@__PURE__*/ S.Array(
   ScalingPlanPooledSchedule,
 ) as any as S.Schema<ScalingPlanPooledScheduleListValueList>;
@@ -6354,8 +6388,9 @@ export type ScalingScheduleDaysOfWeekItem =
 export const ScalingScheduleDaysOfWeekItem = /*@__PURE__*/ S.String;
 
 /** Set of days of the week on which this schedule is active. */
-export type ScalingScheduleDaysOfWeekList =
-  ReadonlyArray<ScalingScheduleDaysOfWeekItem>;
+export type ScalingScheduleDaysOfWeekList = Array<
+  ScalingScheduleDaysOfWeekItem | (string & {})
+>;
 export const ScalingScheduleDaysOfWeekList = /*@__PURE__*/ S.Array(
   ScalingScheduleDaysOfWeekItem,
 ) as any as S.Schema<ScalingScheduleDaysOfWeekList>;
@@ -6402,7 +6437,9 @@ export interface ScalingSchedule {
   /** Starting time for ramp up period. */
   rampUpStartTime?: Time;
   /** Load balancing algorithm for ramp up period. */
-  rampUpLoadBalancingAlgorithm?: ScalingScheduleRampUpLoadBalancingAlgorithm;
+  rampUpLoadBalancingAlgorithm?:
+    | ScalingScheduleRampUpLoadBalancingAlgorithm
+    | (string & {});
   /** Minimum host percentage for ramp up period. */
   rampUpMinimumHostsPct?: number;
   /** Capacity threshold for ramp up period. */
@@ -6410,11 +6447,15 @@ export interface ScalingSchedule {
   /** Starting time for peak period. */
   peakStartTime?: Time;
   /** Load balancing algorithm for peak period. */
-  peakLoadBalancingAlgorithm?: ScalingSchedulePeakLoadBalancingAlgorithm;
+  peakLoadBalancingAlgorithm?:
+    | ScalingSchedulePeakLoadBalancingAlgorithm
+    | (string & {});
   /** Starting time for ramp down period. */
   rampDownStartTime?: Time;
   /** Load balancing algorithm for ramp down period. */
-  rampDownLoadBalancingAlgorithm?: ScalingScheduleRampDownLoadBalancingAlgorithm;
+  rampDownLoadBalancingAlgorithm?:
+    | ScalingScheduleRampDownLoadBalancingAlgorithm
+    | (string & {});
   /** Minimum host percentage for ramp down period. */
   rampDownMinimumHostsPct?: number;
   /** Capacity threshold for ramp down period. */
@@ -6422,7 +6463,7 @@ export interface ScalingSchedule {
   /** Should users be logged off forcefully from hosts. */
   rampDownForceLogoffUsers?: boolean;
   /** Specifies when to stop hosts during ramp down period. */
-  rampDownStopHostsWhen?: ScalingScheduleRampDownStopHostsWhen;
+  rampDownStopHostsWhen?: ScalingScheduleRampDownStopHostsWhen | (string & {});
   /** Number of minutes to wait to stop hosts during ramp down period. */
   rampDownWaitTimeMinutes?: number;
   /** Notification message for users during ramp down period. */
@@ -6430,7 +6471,9 @@ export interface ScalingSchedule {
   /** Starting time for off-peak period. */
   offPeakStartTime?: Time;
   /** Load balancing algorithm for off-peak period. */
-  offPeakLoadBalancingAlgorithm?: ScalingScheduleOffPeakLoadBalancingAlgorithm;
+  offPeakLoadBalancingAlgorithm?:
+    | ScalingScheduleOffPeakLoadBalancingAlgorithm
+    | (string & {});
 }
 export const ScalingSchedule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6466,8 +6509,7 @@ export const ScalingSchedule = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScalingSchedule>;
 
 /** List of ScalingPlanPooledSchedule definitions. */
-export type ScalingPlanPropertiesInputSchedulesList =
-  ReadonlyArray<ScalingSchedule>;
+export type ScalingPlanPropertiesInputSchedulesList = Array<ScalingSchedule>;
 export const ScalingPlanPropertiesInputSchedulesList = /*@__PURE__*/ S.Array(
   ScalingSchedule,
 ) as any as S.Schema<ScalingPlanPropertiesInputSchedulesList>;
@@ -6490,7 +6532,7 @@ export const ScalingHostPoolReference = /*@__PURE__*/ S.suspend(() =>
 
 /** List of ScalingHostPoolReference definitions. */
 export type ScalingPlanPropertiesInputHostPoolReferencesList =
-  ReadonlyArray<ScalingHostPoolReference>;
+  Array<ScalingHostPoolReference>;
 export const ScalingPlanPropertiesInputHostPoolReferencesList =
   /*@__PURE__*/ S.Array(
     ScalingHostPoolReference,
@@ -6659,14 +6701,14 @@ export type ScalingPlanPropertiesHostPoolType = "Pooled";
 export const ScalingPlanPropertiesHostPoolType = /*@__PURE__*/ S.String;
 
 /** List of ScalingPlanPooledSchedule definitions. */
-export type ScalingPlanPropertiesSchedulesList = ReadonlyArray<ScalingSchedule>;
+export type ScalingPlanPropertiesSchedulesList = Array<ScalingSchedule>;
 export const ScalingPlanPropertiesSchedulesList = /*@__PURE__*/ S.Array(
   ScalingSchedule,
 ) as any as S.Schema<ScalingPlanPropertiesSchedulesList>;
 
 /** List of ScalingHostPoolReference definitions. */
 export type ScalingPlanPropertiesHostPoolReferencesList =
-  ReadonlyArray<ScalingHostPoolReference>;
+  Array<ScalingHostPoolReference>;
 export const ScalingPlanPropertiesHostPoolReferencesList =
   /*@__PURE__*/ S.Array(
     ScalingHostPoolReference,
@@ -7089,7 +7131,7 @@ export const ScalingPlan = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ScalingPlan" }) as any as S.Schema<ScalingPlan>;
 
 /** List of scaling plan definitions. */
-export type ScalingPlanListValueList = ReadonlyArray<ScalingPlan>;
+export type ScalingPlanListValueList = Array<ScalingPlan>;
 export const ScalingPlanListValueList = /*@__PURE__*/ S.Array(
   ScalingPlan,
 ) as any as S.Schema<ScalingPlanListValueList>;
@@ -7181,15 +7223,14 @@ export const ScalingPlansUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ScalingPlansUpdateRequestTagsMap>;
 
 /** List of ScalingSchedule definitions. */
-export type ScalingPlanPatchPropertiesSchedulesList =
-  ReadonlyArray<ScalingSchedule>;
+export type ScalingPlanPatchPropertiesSchedulesList = Array<ScalingSchedule>;
 export const ScalingPlanPatchPropertiesSchedulesList = /*@__PURE__*/ S.Array(
   ScalingSchedule,
 ) as any as S.Schema<ScalingPlanPatchPropertiesSchedulesList>;
 
 /** List of ScalingHostPoolReference definitions. */
 export type ScalingPlanPatchPropertiesHostPoolReferencesList =
-  ReadonlyArray<ScalingHostPoolReference>;
+  Array<ScalingHostPoolReference>;
 export const ScalingPlanPatchPropertiesHostPoolReferencesList =
   /*@__PURE__*/ S.Array(
     ScalingHostPoolReference,
@@ -7539,7 +7580,7 @@ export const SessionHostHealthCheckReport = /*@__PURE__*/ S.suspend(() =>
 
 /** List of SessionHostHealthCheckReports */
 export type SessionHostPropertiesSessionHostHealthCheckResultsList =
-  ReadonlyArray<SessionHostHealthCheckReport>;
+  Array<SessionHostHealthCheckReport>;
 export const SessionHostPropertiesSessionHostHealthCheckResultsList =
   /*@__PURE__*/ S.Array(
     SessionHostHealthCheckReport,
@@ -7690,7 +7731,7 @@ export const SessionHost = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SessionHost" }) as any as S.Schema<SessionHost>;
 
 /** List of SessionHost definitions. */
-export type SessionHostListValueList = ReadonlyArray<SessionHost>;
+export type SessionHostListValueList = Array<SessionHost>;
 export const SessionHostListValueList = /*@__PURE__*/ S.Array(
   SessionHost,
 ) as any as S.Schema<SessionHostListValueList>;
@@ -7871,7 +7912,7 @@ export const StartMenuItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StartMenuItem" }) as any as S.Schema<StartMenuItem>;
 
 /** List of StartMenuItem definitions. */
-export type StartMenuItemListValueList = ReadonlyArray<StartMenuItem>;
+export type StartMenuItemListValueList = Array<StartMenuItem>;
 export const StartMenuItemListValueList = /*@__PURE__*/ S.Array(
   StartMenuItem,
 ) as any as S.Schema<StartMenuItemListValueList>;
@@ -8129,7 +8170,7 @@ export const UserSession = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UserSession" }) as any as S.Schema<UserSession>;
 
 /** List of UserSession definitions. */
-export type UserSessionListValueList = ReadonlyArray<UserSession>;
+export type UserSessionListValueList = Array<UserSession>;
 export const UserSessionListValueList = /*@__PURE__*/ S.Array(
   UserSession,
 ) as any as S.Schema<UserSessionListValueList>;
@@ -8304,7 +8345,7 @@ export const WorkspacesCreateOrUpdateRequestPlan = /*@__PURE__*/ S.suspend(() =>
 
 /** List of applicationGroup resource Ids. */
 export type WorkspacePropertiesInputApplicationGroupReferencesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const WorkspacePropertiesInputApplicationGroupReferencesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -8474,8 +8515,7 @@ export const WorkspacesCreateOrUpdateResponsePlan = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<WorkspacesCreateOrUpdateResponsePlan>;
 
 /** List of applicationGroup resource Ids. */
-export type WorkspacePropertiesApplicationGroupReferencesList =
-  ReadonlyArray<string>;
+export type WorkspacePropertiesApplicationGroupReferencesList = Array<string>;
 export const WorkspacePropertiesApplicationGroupReferencesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -8513,7 +8553,7 @@ export const WorkspacePropertiesPrivateEndpointConnectionsItem =
 
 /** List of private endpoint connection associated with the specified resource */
 export type WorkspacePropertiesPrivateEndpointConnectionsList =
-  ReadonlyArray<WorkspacePropertiesPrivateEndpointConnectionsItem>;
+  Array<WorkspacePropertiesPrivateEndpointConnectionsItem>;
 export const WorkspacePropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     WorkspacePropertiesPrivateEndpointConnectionsItem,
@@ -8935,7 +8975,7 @@ export const Workspace = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Workspace" }) as any as S.Schema<Workspace>;
 
 /** List of Workspace definitions. */
-export type WorkspaceListValueList = ReadonlyArray<Workspace>;
+export type WorkspaceListValueList = Array<Workspace>;
 export const WorkspaceListValueList = /*@__PURE__*/ S.Array(
   Workspace,
 ) as any as S.Schema<WorkspaceListValueList>;
@@ -8984,7 +9024,7 @@ export const WorkspacesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 
 /** List of applicationGroup links. */
 export type WorkspacePatchPropertiesApplicationGroupReferencesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const WorkspacePatchPropertiesApplicationGroupReferencesList =
   /*@__PURE__*/ S.Array(
     S.String,

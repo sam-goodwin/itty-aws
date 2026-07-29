@@ -166,7 +166,7 @@ export const RangeUnit = /*@__PURE__*/ S.String;
 export interface RangeOverride {
   Start: number;
   End?: number;
-  Unit: RangeUnit;
+  Unit: RangeUnit | (string & {});
 }
 export const RangeOverride = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Start: S.Number, End: S.optional(S.Number), Unit: RangeUnit }),
@@ -378,7 +378,7 @@ export interface ContactPreference {
   KeyName?: string;
   KeyValue?: string;
   ProfileId?: string;
-  ContactType?: ContactType;
+  ContactType?: ContactType | (string & {});
 }
 export const ContactPreference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -597,7 +597,7 @@ export const ValueRange = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ValueRange" }) as any as S.Schema<ValueRange>;
 export interface Range {
   Value?: number;
-  Unit?: Unit;
+  Unit?: Unit | (string & {});
   ValueRange?: ValueRange;
   TimestampSource?: string;
   TimestampFormat?: string;
@@ -621,7 +621,7 @@ export const Operator = /*@__PURE__*/ S.String;
 
 export interface Threshold {
   Value: string;
-  Operator: Operator;
+  Operator: Operator | (string & {});
 }
 export const Threshold = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Value: S.String, Operator: Operator }),
@@ -665,7 +665,7 @@ export const FilterDimensionType = /*@__PURE__*/ S.String;
 export type ValueList = string[];
 export const ValueList = /*@__PURE__*/ S.Array(S.String);
 export interface FilterAttributeDimension {
-  DimensionType: FilterDimensionType;
+  DimensionType: FilterDimensionType | (string & {});
   Values: string[];
 }
 export const FilterAttributeDimension = /*@__PURE__*/ S.suspend(() =>
@@ -691,7 +691,7 @@ export const FilterDimension = /*@__PURE__*/ S.suspend(() =>
 export type FilterDimensionList = FilterDimension[];
 export const FilterDimensionList = /*@__PURE__*/ S.Array(FilterDimension);
 export interface FilterGroup {
-  Type: Type;
+  Type: Type | (string & {});
   Dimensions: FilterDimension[];
 }
 export const FilterGroup = /*@__PURE__*/ S.suspend(() =>
@@ -700,7 +700,7 @@ export const FilterGroup = /*@__PURE__*/ S.suspend(() =>
 export type GroupList = FilterGroup[];
 export const GroupList = /*@__PURE__*/ S.Array(FilterGroup);
 export interface Filter {
-  Include: Include;
+  Include: Include | (string & {});
   Groups: FilterGroup[];
 }
 export const Filter = /*@__PURE__*/ S.suspend(() =>
@@ -838,7 +838,7 @@ export const JobScheduleDayOfTheWeek = /*@__PURE__*/ S.String;
 
 export type JobScheduleTime = string;
 export interface JobSchedule {
-  DayOfTheWeek: JobScheduleDayOfTheWeek;
+  DayOfTheWeek: JobScheduleDayOfTheWeek | (string & {});
   Time: string;
 }
 export const JobSchedule = /*@__PURE__*/ S.suspend(() =>
@@ -858,7 +858,7 @@ export type ConflictResolvingModel = "RECENCY" | "SOURCE";
 export const ConflictResolvingModel = /*@__PURE__*/ S.String;
 
 export interface ConflictResolution {
-  ConflictResolvingModel: ConflictResolvingModel;
+  ConflictResolvingModel: ConflictResolvingModel | (string & {});
   SourceName?: string;
 }
 export const ConflictResolution = /*@__PURE__*/ S.suspend(() =>
@@ -941,7 +941,7 @@ export const PhoneNumberList = /*@__PURE__*/ S.Array(S.String);
 export type EmailList = string[];
 export const EmailList = /*@__PURE__*/ S.Array(S.String);
 export interface AttributeTypesSelector {
-  AttributeMatchingModel: AttributeMatchingModel;
+  AttributeMatchingModel: AttributeMatchingModel | (string & {});
   Address?: string[];
   PhoneNumber?: string[];
   EmailAddress?: string[];
@@ -1231,7 +1231,7 @@ export const EventTriggerValues = /*@__PURE__*/ S.Array(S.String);
 export interface ObjectAttribute {
   Source?: string;
   FieldName?: string;
-  ComparisonOperator: ComparisonOperator;
+  ComparisonOperator: ComparisonOperator | (string & {});
   Values: string[];
 }
 export const ObjectAttribute = /*@__PURE__*/ S.suspend(() =>
@@ -1263,7 +1263,7 @@ export const EventTriggerLogicalOperator = /*@__PURE__*/ S.String;
 
 export interface EventTriggerCondition {
   EventTriggerDimensions: EventTriggerDimension[];
-  LogicalOperator: EventTriggerLogicalOperator;
+  LogicalOperator: EventTriggerLogicalOperator | (string & {});
 }
 export const EventTriggerCondition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1284,7 +1284,7 @@ export const PeriodUnit = /*@__PURE__*/ S.String;
 export type MaxSize60 = number;
 export type MaxSize1000 = number;
 export interface Period {
-  Unit: PeriodUnit;
+  Unit: PeriodUnit | (string & {});
   Value: number;
   MaxInvocationsPerProfile?: number;
   Unlimited?: boolean;
@@ -2046,8 +2046,8 @@ export const FeatureType = /*@__PURE__*/ S.String;
 
 export interface RecommenderSchemaField {
   TargetFieldName: string;
-  ContentType?: ContentType;
-  FeatureType?: FeatureType;
+  ContentType?: ContentType | (string & {});
+  FeatureType?: FeatureType | (string & {});
 }
 export const RecommenderSchemaField = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2132,7 +2132,7 @@ export const StringDimensionType = /*@__PURE__*/ S.String;
 export type Values = string[];
 export const Values = /*@__PURE__*/ S.Array(S.String);
 export interface ProfileDimension {
-  DimensionType: StringDimensionType;
+  DimensionType: StringDimensionType | (string & {});
   Values: string[];
 }
 export const ProfileDimension = /*@__PURE__*/ S.suspend(() =>
@@ -2143,7 +2143,7 @@ export const ProfileDimension = /*@__PURE__*/ S.suspend(() =>
 export type ExtraLengthValues = string[];
 export const ExtraLengthValues = /*@__PURE__*/ S.Array(S.String);
 export interface ExtraLengthValueProfileDimension {
-  DimensionType: StringDimensionType;
+  DimensionType: StringDimensionType | (string & {});
   Values: string[];
 }
 export const ExtraLengthValueProfileDimension = /*@__PURE__*/ S.suspend(() =>
@@ -2162,7 +2162,7 @@ export const DateDimensionType = /*@__PURE__*/ S.String;
 export type DateValues = string[];
 export const DateValues = /*@__PURE__*/ S.Array(S.String);
 export interface DateDimension {
-  DimensionType: DateDimensionType;
+  DimensionType: DateDimensionType | (string & {});
   Values: string[];
 }
 export const DateDimension = /*@__PURE__*/ S.suspend(() =>
@@ -2207,7 +2207,7 @@ export type AttributeDimensionType =
 export const AttributeDimensionType = /*@__PURE__*/ S.String;
 
 export interface AttributeDimension {
-  DimensionType: AttributeDimensionType;
+  DimensionType: AttributeDimensionType | (string & {});
   Values: string[];
 }
 export const AttributeDimension = /*@__PURE__*/ S.suspend(() =>
@@ -2225,10 +2225,10 @@ export const CustomAttributes = /*@__PURE__*/ S.Record(
 export type ProfileTypeDimensionType = "INCLUSIVE" | "EXCLUSIVE";
 export const ProfileTypeDimensionType = /*@__PURE__*/ S.String;
 
-export type ProfileTypeValues = ProfileType[];
+export type ProfileTypeValues = (ProfileType | (string & {}))[];
 export const ProfileTypeValues = /*@__PURE__*/ S.Array(ProfileType);
 export interface ProfileTypeDimension {
-  DimensionType: ProfileTypeDimensionType;
+  DimensionType: ProfileTypeDimensionType | (string & {});
   Values: ProfileType[];
 }
 export const ProfileTypeDimension = /*@__PURE__*/ S.suspend(() =>
@@ -2292,7 +2292,7 @@ export const ProfileAttributes = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProfileAttributes",
 }) as any as S.Schema<ProfileAttributes>;
 export interface CalculatedAttributeDimension {
-  DimensionType: AttributeDimensionType;
+  DimensionType: AttributeDimensionType | (string & {});
   Values: string[];
   ConditionOverrides?: ConditionOverrides;
 }
@@ -2340,8 +2340,8 @@ export const IncludeOptions = /*@__PURE__*/ S.String;
 export interface Group {
   Dimensions?: Dimension[];
   SourceSegments?: SourceSegment[];
-  SourceType?: IncludeOptions;
-  Type?: IncludeOptions;
+  SourceType?: IncludeOptions | (string & {});
+  Type?: IncludeOptions | (string & {});
 }
 export const Group = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2355,7 +2355,7 @@ export type SegmentGroupList = Group[];
 export const SegmentGroupList = /*@__PURE__*/ S.Array(Group);
 export interface SegmentGroup {
   Groups?: Group[];
-  Include?: IncludeOptions;
+  Include?: IncludeOptions | (string & {});
 }
 export const SegmentGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2375,9 +2375,9 @@ export const SortAttributeType = /*@__PURE__*/ S.String;
 
 export interface SortAttribute {
   Name: string;
-  DataType?: SegmentSortDataType;
-  Order: SegmentSortOrder;
-  Type?: SortAttributeType;
+  DataType?: SegmentSortDataType | (string & {});
+  Order: SegmentSortOrder | (string & {});
+  Type?: SortAttributeType | (string & {});
 }
 export const SortAttribute = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2559,7 +2559,7 @@ export const FieldContentType = /*@__PURE__*/ S.String;
 export interface ObjectTypeField {
   Source?: string;
   Target?: string;
-  ContentType?: FieldContentType;
+  ContentType?: FieldContentType | (string & {});
 }
 export const ObjectTypeField = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3160,7 +3160,7 @@ export type StandardIdentifier =
   | "NEW_ONLY";
 export const StandardIdentifier = /*@__PURE__*/ S.String;
 
-export type StandardIdentifierList = StandardIdentifier[];
+export type StandardIdentifierList = (StandardIdentifier | (string & {}))[];
 export const StandardIdentifierList = /*@__PURE__*/ S.Array(StandardIdentifier);
 export type FieldNameList = string[];
 export const FieldNameList = /*@__PURE__*/ S.Array(S.String);
@@ -3509,8 +3509,8 @@ export type DomainObjectTypeFieldName = string;
 export interface DomainObjectTypeField {
   Source: string;
   Target: string;
-  ContentType?: ContentType;
-  FeatureType?: FeatureType;
+  ContentType?: ContentType | (string & {});
+  FeatureType?: FeatureType | (string & {});
 }
 export const DomainObjectTypeField = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

@@ -22,7 +22,7 @@ export const WorkbooksCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<WorkbooksCreateOrUpdateRequestTagsMap>;
 
 /** Being deprecated, please use the other tags field */
-export type WorkbookPropertiesInputTagsList = ReadonlyArray<string>;
+export type WorkbookPropertiesInputTagsList = Array<string>;
 export const WorkbookPropertiesInputTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<WorkbookPropertiesInputTagsList>;
@@ -203,7 +203,7 @@ export const WorkbooksCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<WorkbooksCreateOrUpdateResponseTagsMap>;
 
 /** Being deprecated, please use the other tags field */
-export type WorkbookPropertiesTagsList = ReadonlyArray<string>;
+export type WorkbookPropertiesTagsList = Array<string>;
 export const WorkbookPropertiesTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<WorkbookPropertiesTagsList>;
@@ -449,7 +449,7 @@ export type WorkbooksListByResourceGroupRequestCategory =
 export const WorkbooksListByResourceGroupRequestCategory =
   /*@__PURE__*/ S.String;
 
-export type WorkbooksListByResourceGroupRequestTagsList = ReadonlyArray<string>;
+export type WorkbooksListByResourceGroupRequestTagsList = Array<string>;
 export const WorkbooksListByResourceGroupRequestTagsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -537,7 +537,7 @@ export const Workbook = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Workbook" }) as any as S.Schema<Workbook>;
 
 /** An array of workbooks. */
-export type WorkbooksListResultValueList = ReadonlyArray<Workbook>;
+export type WorkbooksListResultValueList = Array<Workbook>;
 export const WorkbooksListResultValueList = /*@__PURE__*/ S.Array(
   Workbook,
 ) as any as S.Schema<WorkbooksListResultValueList>;
@@ -566,7 +566,7 @@ export type WorkbooksListBySubscriptionRequestCategory =
 export const WorkbooksListBySubscriptionRequestCategory =
   /*@__PURE__*/ S.String;
 
-export type WorkbooksListBySubscriptionRequestTagsList = ReadonlyArray<string>;
+export type WorkbooksListBySubscriptionRequestTagsList = Array<string>;
 export const WorkbooksListBySubscriptionRequestTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<WorkbooksListBySubscriptionRequestTagsList>;
@@ -716,7 +716,7 @@ export const WorkbooksUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<WorkbooksUpdateRequestTagsMap>;
 
 /** A list of 0 or more tags that are associated with this workbook definition */
-export type WorkbookPropertiesUpdateParametersTagsList = ReadonlyArray<string>;
+export type WorkbookPropertiesUpdateParametersTagsList = Array<string>;
 export const WorkbookPropertiesUpdateParametersTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<WorkbookPropertiesUpdateParametersTagsList>;

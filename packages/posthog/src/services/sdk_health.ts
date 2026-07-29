@@ -64,7 +64,7 @@ export type SdkAssessmentSeverityEnum = "none" | "warning" | "danger";
 export const SdkAssessmentSeverityEnum = /*@__PURE__*/ S.String;
 
 /** Top-level alert sentences matching the SDK Health UI's 'Time for an update!' banner — one per outdated version with significant traffic. Quote verbatim when surfacing the headline to users. */
-export type SdkAssessmentBannersList = ReadonlyArray<string>;
+export type SdkAssessmentBannersList = Array<string>;
 export const SdkAssessmentBannersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SdkAssessmentBannersList>;
@@ -118,7 +118,7 @@ export const SdkReleaseAssessment = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SdkReleaseAssessment>;
 
 /** Per-version assessment for all versions seen in the last 7 days. */
-export type SdkAssessmentReleasesList = ReadonlyArray<SdkReleaseAssessment>;
+export type SdkAssessmentReleasesList = Array<SdkReleaseAssessment>;
 export const SdkAssessmentReleasesList = /*@__PURE__*/ S.Array(
   SdkReleaseAssessment,
 ) as any as S.Schema<SdkAssessmentReleasesList>;
@@ -140,7 +140,7 @@ export const OutdatedTrafficAlert = /*@__PURE__*/ S.suspend(() =>
 
 /** Outdated versions that handle a significant share of traffic (above the threshold). Not populated for mobile SDKs. */
 export type SdkAssessmentOutdatedTrafficAlertsList =
-  ReadonlyArray<OutdatedTrafficAlert>;
+  Array<OutdatedTrafficAlert>;
 export const SdkAssessmentOutdatedTrafficAlertsList = /*@__PURE__*/ S.Array(
   OutdatedTrafficAlert,
 ) as any as S.Schema<SdkAssessmentOutdatedTrafficAlertsList>;
@@ -189,7 +189,7 @@ export const SdkAssessment = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SdkAssessment" }) as any as S.Schema<SdkAssessment>;
 
 /** Per-SDK health assessments. */
-export type SdkHealthReportSdksList = ReadonlyArray<SdkAssessment>;
+export type SdkHealthReportSdksList = Array<SdkAssessment>;
 export const SdkHealthReportSdksList = /*@__PURE__*/ S.Array(
   SdkAssessment,
 ) as any as S.Schema<SdkHealthReportSdksList>;

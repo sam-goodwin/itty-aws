@@ -518,10 +518,10 @@ export type CountryCode =
 export const CountryCode = /*@__PURE__*/ S.String;
 
 export interface EngagementCustomer {
-  Industry: Industry;
+  Industry: Industry | (string & {});
   CompanyName: string | redacted.Redacted<string>;
   WebsiteUrl: string | redacted.Redacted<string>;
-  CountryCode: CountryCode;
+  CountryCode: CountryCode | (string & {});
 }
 export const EngagementCustomer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -575,7 +575,7 @@ export interface AddressSummary {
   City?: string | redacted.Redacted<string>;
   PostalCode?: string | redacted.Redacted<string>;
   StateOrRegion?: string | redacted.Redacted<string>;
-  CountryCode?: CountryCode;
+  CountryCode?: CountryCode | (string & {});
 }
 export const AddressSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -595,12 +595,12 @@ export type MarketSegment =
 export const MarketSegment = /*@__PURE__*/ S.String;
 
 export interface LeadCustomer {
-  Industry?: Industry;
+  Industry?: Industry | (string & {});
   CompanyName: string | redacted.Redacted<string>;
   WebsiteUrl?: string | redacted.Redacted<string>;
   Address: AddressSummary;
   AwsMaturity?: string;
-  MarketSegment?: MarketSegment;
+  MarketSegment?: MarketSegment | (string & {});
 }
 export const LeadCustomer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -693,8 +693,8 @@ export interface ProspectingResultCustomer {
   Geo?: string;
   Region?: string;
   SubRegion?: string;
-  Country?: CountryCode;
-  Industry?: Industry;
+  Country?: CountryCode | (string & {});
+  Industry?: Industry | (string & {});
   SubIndustry?: string;
   Segment?: string;
   CompanySize?: string;
@@ -786,7 +786,7 @@ export const EngagementContextPayload = /*@__PURE__*/ S.Union([
 ]);
 export interface EngagementContextDetails {
   Id?: string;
-  Type: EngagementContextType;
+  Type: EngagementContextType | (string & {});
   Payload?: EngagementContextPayload;
 }
 export const EngagementContextDetails = /*@__PURE__*/ S.suspend(() =>
@@ -943,7 +943,10 @@ export type ReceiverResponsibility =
   | "Facilitator";
 export const ReceiverResponsibility = /*@__PURE__*/ S.String;
 
-export type ReceiverResponsibilityList = ReceiverResponsibility[];
+export type ReceiverResponsibilityList = (
+  | ReceiverResponsibility
+  | (string & {})
+)[];
 export const ReceiverResponsibilityList = /*@__PURE__*/ S.Array(
   ReceiverResponsibility,
 );
@@ -1125,8 +1128,8 @@ export const PaymentFrequency = /*@__PURE__*/ S.String;
 export type EstimationUrl = string;
 export interface ExpectedCustomerSpend {
   Amount?: string | redacted.Redacted<string>;
-  CurrencyCode: CurrencyCode;
-  Frequency: PaymentFrequency;
+  CurrencyCode: CurrencyCode | (string & {});
+  Frequency: PaymentFrequency | (string & {});
   TargetCompany: string;
   EstimationUrl?: string;
 }
@@ -1176,12 +1179,12 @@ export const OpportunityInvitationPayload = /*@__PURE__*/ S.suspend(() =>
   identifier: "OpportunityInvitationPayload",
 }) as any as S.Schema<OpportunityInvitationPayload>;
 export interface LeadInvitationCustomer {
-  Industry?: Industry;
+  Industry?: Industry | (string & {});
   CompanyName: string | redacted.Redacted<string>;
   WebsiteUrl?: string | redacted.Redacted<string>;
-  CountryCode: CountryCode;
+  CountryCode: CountryCode | (string & {});
   AwsMaturity?: string;
-  MarketSegment?: MarketSegment;
+  MarketSegment?: MarketSegment | (string & {});
 }
 export const LeadInvitationCustomer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1290,7 +1293,7 @@ export type PrimaryNeedFromAws =
   | "Co-Sell - Support for Public Tender / RFx";
 export const PrimaryNeedFromAws = /*@__PURE__*/ S.String;
 
-export type PrimaryNeedsFromAws = PrimaryNeedFromAws[];
+export type PrimaryNeedsFromAws = (PrimaryNeedFromAws | (string & {}))[];
 export const PrimaryNeedsFromAws = /*@__PURE__*/ S.Array(PrimaryNeedFromAws);
 export type NationalSecurity = "Yes" | "No";
 export const NationalSecurity = /*@__PURE__*/ S.String;
@@ -1300,7 +1303,7 @@ export interface Address {
   City?: string | redacted.Redacted<string>;
   PostalCode?: string | redacted.Redacted<string>;
   StateOrRegion?: string | redacted.Redacted<string>;
-  CountryCode?: CountryCode;
+  CountryCode?: CountryCode | (string & {});
   StreetAddress?: string | redacted.Redacted<string>;
 }
 export const Address = /*@__PURE__*/ S.suspend(() =>
@@ -1314,7 +1317,7 @@ export const Address = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Address" }) as any as S.Schema<Address>;
 export type DunsNumber = string | redacted.Redacted<string>;
 export interface Account {
-  Industry?: Industry;
+  Industry?: Industry | (string & {});
   OtherIndustry?: string;
   CompanyName: string | redacted.Redacted<string>;
   WebsiteUrl?: string | redacted.Redacted<string>;
@@ -1370,13 +1373,13 @@ export type DeliveryModel =
   | "Other";
 export const DeliveryModel = /*@__PURE__*/ S.String;
 
-export type DeliveryModels = DeliveryModel[];
+export type DeliveryModels = (DeliveryModel | (string & {}))[];
 export const DeliveryModels = /*@__PURE__*/ S.Array(DeliveryModel);
 export type ExpectedContractDurationTerm = "Months";
 export const ExpectedContractDurationTerm = /*@__PURE__*/ S.String;
 
 export interface ExpectedContractDuration {
-  Term: ExpectedContractDurationTerm;
+  Term: ExpectedContractDurationTerm | (string & {});
   Value: string;
 }
 export const ExpectedContractDuration = /*@__PURE__*/ S.suspend(() =>
@@ -1398,7 +1401,7 @@ export type SalesActivity =
   | "SOW Signed";
 export const SalesActivity = /*@__PURE__*/ S.String;
 
-export type SalesActivities = SalesActivity[];
+export type SalesActivities = (SalesActivity | (string & {}))[];
 export const SalesActivities = /*@__PURE__*/ S.Array(SalesActivity);
 export type CompetitorName =
   | "Oracle Cloud"
@@ -1427,11 +1430,11 @@ export interface Project {
   CustomerUseCase?: string;
   RelatedOpportunityIdentifier?: string;
   SalesActivities?: SalesActivity[];
-  CompetitorName?: CompetitorName;
+  CompetitorName?: CompetitorName | (string & {});
   OtherCompetitorNames?: string;
   OtherSolutionDescription?: string | redacted.Redacted<string>;
   AdditionalComments?: string;
-  AwsPartition?: AwsPartition;
+  AwsPartition?: AwsPartition | (string & {});
 }
 export const Project = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1475,17 +1478,17 @@ export type Channel =
   | "Virtual Event";
 export const Channel = /*@__PURE__*/ S.String;
 
-export type Channels = Channel[];
+export type Channels = (Channel | (string & {}))[];
 export const Channels = /*@__PURE__*/ S.Array(Channel);
 export type AwsFundingUsed = "Yes" | "No";
 export const AwsFundingUsed = /*@__PURE__*/ S.String;
 
 export interface Marketing {
   CampaignName?: string;
-  Source?: MarketingSource;
+  Source?: MarketingSource | (string & {});
   UseCases?: string[];
   Channels?: Channel[];
-  AwsFundingUsed?: AwsFundingUsed;
+  AwsFundingUsed?: AwsFundingUsed | (string & {});
 }
 export const Marketing = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1501,13 +1504,13 @@ export const RevenueModel = /*@__PURE__*/ S.String;
 
 export interface MonetaryValue {
   Amount: string;
-  CurrencyCode: CurrencyCode;
+  CurrencyCode: CurrencyCode | (string & {});
 }
 export const MonetaryValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Amount: S.String, CurrencyCode: CurrencyCode }),
 ).annotate({ identifier: "MonetaryValue" }) as any as S.Schema<MonetaryValue>;
 export interface SoftwareRevenue {
-  DeliveryModel?: RevenueModel;
+  DeliveryModel?: RevenueModel | (string & {});
   Value?: MonetaryValue;
   EffectiveDate?: string;
   ExpirationDate?: string;
@@ -1578,11 +1581,11 @@ export const NextStepsHistory = /*@__PURE__*/ S.suspend(() =>
 export type NextStepsHistories = NextStepsHistory[];
 export const NextStepsHistories = /*@__PURE__*/ S.Array(NextStepsHistory);
 export interface LifeCycle {
-  Stage?: Stage;
-  ClosedLostReason?: ClosedLostReason;
+  Stage?: Stage | (string & {});
+  ClosedLostReason?: ClosedLostReason | (string & {});
   NextSteps?: string | redacted.Redacted<string>;
   TargetCloseDate?: string;
-  ReviewStatus?: ReviewStatus;
+  ReviewStatus?: ReviewStatus | (string & {});
   ReviewComments?: string;
   ReviewStatusReason?: string;
   NextStepsHistory?: NextStepsHistory[];
@@ -3208,7 +3211,10 @@ export const ListEngagementResourceAssociationsResponse =
   }) as any as S.Schema<ListEngagementResourceAssociationsResponse>;
 export type AwsAccountList = (string | redacted.Redacted<string>)[];
 export const AwsAccountList = /*@__PURE__*/ S.Array(SensitiveString);
-export type EngagementContextTypeList = EngagementContextType[];
+export type EngagementContextTypeList = (
+  | EngagementContextType
+  | (string & {})
+)[];
 export const EngagementContextTypeList = /*@__PURE__*/ S.Array(
   EngagementContextType,
 );

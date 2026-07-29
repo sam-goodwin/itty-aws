@@ -289,7 +289,7 @@ export type EntryPoints = string[];
 export const EntryPoints = /*@__PURE__*/ S.Array(S.String);
 export interface CodeConfiguration {
   code: Code;
-  runtime: AgentManagedRuntimeType;
+  runtime: AgentManagedRuntimeType | (string & {});
   entryPoint: string[];
 }
 export const CodeConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -334,7 +334,7 @@ export const VpcConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "VpcConfig" }) as any as S.Schema<VpcConfig>;
 export interface NetworkConfiguration {
-  networkMode: NetworkMode;
+  networkMode: NetworkMode | (string & {});
   networkModeConfig?: VpcConfig;
 }
 export const NetworkConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -375,7 +375,7 @@ export const ClaimMatchOperatorType = /*@__PURE__*/ S.String;
 
 export interface AuthorizingClaimMatchValueType {
   claimMatchValue: ClaimMatchValueType;
-  claimMatchOperator: ClaimMatchOperatorType;
+  claimMatchOperator: ClaimMatchOperatorType | (string & {});
 }
 export const AuthorizingClaimMatchValueType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -387,7 +387,7 @@ export const AuthorizingClaimMatchValueType = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AuthorizingClaimMatchValueType>;
 export interface CustomClaimValidationType {
   inboundTokenClaimName: string;
-  inboundTokenClaimValueType: InboundTokenClaimValueType;
+  inboundTokenClaimValueType: InboundTokenClaimValueType | (string & {});
   authorizingClaimMatchValue: AuthorizingClaimMatchValueType;
 }
 export const CustomClaimValidationType = /*@__PURE__*/ S.suspend(() =>
@@ -430,7 +430,7 @@ export type RoutingDomain = string;
 export interface ManagedVpcResource {
   vpcIdentifier: string;
   subnetIds: string[];
-  endpointIpAddressType: EndpointIpAddressType;
+  endpointIpAddressType: EndpointIpAddressType | (string & {});
   securityGroupIds?: string[];
   tags?: { [key: string]: string | undefined };
   routingDomain?: string;
@@ -542,7 +542,7 @@ export type ServerProtocol = "MCP" | "HTTP" | "A2A" | "AGUI";
 export const ServerProtocol = /*@__PURE__*/ S.String;
 
 export interface ProtocolConfiguration {
-  serverProtocol: ServerProtocol;
+  serverProtocol: ServerProtocol | (string & {});
 }
 export const ProtocolConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ serverProtocol: ServerProtocol }),
@@ -851,7 +851,7 @@ export type BrowserNetworkMode = "PUBLIC" | "VPC";
 export const BrowserNetworkMode = /*@__PURE__*/ S.String;
 
 export interface BrowserNetworkConfiguration {
-  networkMode: BrowserNetworkMode;
+  networkMode: BrowserNetworkMode | (string & {});
   vpcConfig?: VpcConfig;
 }
 export const BrowserNetworkConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -891,7 +891,7 @@ export const BrowserEnterprisePolicyType = /*@__PURE__*/ S.String;
 
 export interface BrowserEnterprisePolicy {
   location: ResourceLocation;
-  type?: BrowserEnterprisePolicyType;
+  type?: BrowserEnterprisePolicyType | (string & {});
 }
 export const BrowserEnterprisePolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1041,7 +1041,7 @@ export type CodeInterpreterNetworkMode = "PUBLIC" | "SANDBOX" | "VPC";
 export const CodeInterpreterNetworkMode = /*@__PURE__*/ S.String;
 
 export interface CodeInterpreterNetworkConfiguration {
-  networkMode: CodeInterpreterNetworkMode;
+  networkMode: CodeInterpreterNetworkMode | (string & {});
   vpcConfig?: VpcConfig;
 }
 export const CodeInterpreterNetworkConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -1494,7 +1494,7 @@ export const StreamingConfiguration = /*@__PURE__*/ S.suspend(() =>
 export interface MCPGatewayConfiguration {
   supportedVersions?: string[];
   instructions?: string | redacted.Redacted<string>;
-  searchType?: SearchType;
+  searchType?: SearchType | (string & {});
   sessionConfiguration?: SessionConfiguration;
   streamingConfiguration?: StreamingConfiguration;
 }
@@ -1538,7 +1538,10 @@ export const InterceptorConfiguration = /*@__PURE__*/ S.Union([
 export type GatewayInterceptionPoint = "REQUEST" | "RESPONSE";
 export const GatewayInterceptionPoint = /*@__PURE__*/ S.String;
 
-export type GatewayInterceptionPoints = GatewayInterceptionPoint[];
+export type GatewayInterceptionPoints = (
+  | GatewayInterceptionPoint
+  | (string & {})
+)[];
 export const GatewayInterceptionPoints = /*@__PURE__*/ S.Array(
   GatewayInterceptionPoint,
 );
@@ -1546,7 +1549,7 @@ export type InterceptorPayloadExclusion = "RESPONSE_BODY";
 export const InterceptorPayloadExclusion = /*@__PURE__*/ S.String;
 
 export type InterceptorPayloadExclusionSelector = {
-  field: InterceptorPayloadExclusion;
+  field: InterceptorPayloadExclusion | (string & {});
 };
 export const InterceptorPayloadExclusionSelector = /*@__PURE__*/ S.Union([
   S.Struct({ field: InterceptorPayloadExclusion }),
@@ -1601,7 +1604,7 @@ export const GatewayPolicyEngineMode = /*@__PURE__*/ S.String;
 
 export interface GatewayPolicyEngineConfiguration {
   arn: string;
-  mode: GatewayPolicyEngineMode;
+  mode: GatewayPolicyEngineMode | (string & {});
 }
 export const GatewayPolicyEngineConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ arn: S.String, mode: GatewayPolicyEngineMode }),
@@ -1690,7 +1693,7 @@ export type WafFailureMode = "FAIL_CLOSE" | "FAIL_OPEN";
 export const WafFailureMode = /*@__PURE__*/ S.String;
 
 export interface WafConfiguration {
-  failureMode?: WafFailureMode;
+  failureMode?: WafFailureMode | (string & {});
 }
 export const WafConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ failureMode: S.optional(WafFailureMode) }),
@@ -1757,7 +1760,7 @@ export const PrincipalMatchOperator = /*@__PURE__*/ S.String;
 
 export interface IamPrincipal {
   arn: string;
-  operator?: PrincipalMatchOperator;
+  operator?: PrincipalMatchOperator | (string & {});
 }
 export const IamPrincipal = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ arn: S.String, operator: S.optional(PrincipalMatchOperator) }),
@@ -2014,7 +2017,7 @@ export const SchemaProperties = /*@__PURE__*/ S.Record(
 export type RequiredProperties = string[];
 export const RequiredProperties = /*@__PURE__*/ S.Array(S.String);
 export interface SchemaDefinition {
-  type: SchemaType;
+  type: SchemaType | (string & {});
   properties?: { [key: string]: SchemaDefinition | undefined };
   required?: string[];
   items?: SchemaDefinition;
@@ -2085,7 +2088,7 @@ export type TargetResourcePriority = number;
 export interface McpServerTargetConfiguration {
   endpoint: string;
   mcpToolSchema?: McpToolSchemaConfiguration;
-  listingMode?: ListingMode;
+  listingMode?: ListingMode | (string & {});
   resourcePriority?: number;
 }
 export const McpServerTargetConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -2112,7 +2115,7 @@ export interface ApiGatewayToolOverride {
   name: string;
   description?: string;
   path: string;
-  method: RestApiMethod;
+  method: RestApiMethod | (string & {});
 }
 export const ApiGatewayToolOverride = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2128,7 +2131,7 @@ export type ApiGatewayToolOverrides = ApiGatewayToolOverride[];
 export const ApiGatewayToolOverrides = /*@__PURE__*/ S.Array(
   ApiGatewayToolOverride,
 );
-export type RestApiMethods = RestApiMethod[];
+export type RestApiMethods = (RestApiMethod | (string & {}))[];
 export const RestApiMethods = /*@__PURE__*/ S.Array(RestApiMethod);
 export interface ApiGatewayToolFilter {
   filterPath: string;
@@ -2328,7 +2331,7 @@ export const StickinessConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StickinessConfiguration>;
 export interface PassthroughTargetConfiguration {
   endpoint: string;
-  protocolType: PassthroughProtocolType;
+  protocolType: PassthroughProtocolType | (string & {});
   schema?: HttpApiSchemaConfiguration;
   stickinessConfiguration?: StickinessConfiguration;
 }
@@ -2473,7 +2476,7 @@ export interface OAuthCredentialProvider {
   customParameters?: {
     [key: string]: string | redacted.Redacted<string> | undefined;
   };
-  grantType?: OAuthGrantType;
+  grantType?: OAuthGrantType | (string & {});
   defaultReturnUrl?: string;
 }
 export const OAuthCredentialProvider = /*@__PURE__*/ S.suspend(() =>
@@ -2497,7 +2500,7 @@ export interface GatewayApiKeyCredentialProvider {
   providerArn: string;
   credentialParameterName?: string;
   credentialPrefix?: string;
-  credentialLocation?: ApiKeyCredentialLocation;
+  credentialLocation?: ApiKeyCredentialLocation | (string & {});
 }
 export const GatewayApiKeyCredentialProvider = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2540,7 +2543,7 @@ export const CredentialProvider = /*@__PURE__*/ S.Union([
   S.Struct({ iamCredentialProvider: IamCredentialProvider }),
 ]);
 export interface CredentialProviderConfiguration {
-  credentialProviderType: CredentialProviderType;
+  credentialProviderType: CredentialProviderType | (string & {});
   credentialProvider?: CredentialProvider;
 }
 export const CredentialProviderConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -2753,7 +2756,7 @@ export interface HarnessBedrockModelConfig {
   maxTokens?: number;
   temperature?: number;
   topP?: number;
-  apiFormat?: HarnessBedrockApiFormat;
+  apiFormat?: HarnessBedrockApiFormat | (string & {});
   additionalParams?: any;
 }
 export const HarnessBedrockModelConfig = /*@__PURE__*/ S.suspend(() =>
@@ -2778,7 +2781,7 @@ export interface HarnessOpenAiModelConfig {
   maxTokens?: number;
   temperature?: number;
   topP?: number;
-  apiFormat?: HarnessOpenAiApiFormat;
+  apiFormat?: HarnessOpenAiApiFormat | (string & {});
   additionalParams?: any;
 }
 export const HarnessOpenAiModelConfig = /*@__PURE__*/ S.suspend(() =>
@@ -3001,7 +3004,7 @@ export const HarnessToolConfiguration = /*@__PURE__*/ S.Union([
   S.Struct({ agentCoreCodeInterpreter: HarnessAgentCoreCodeInterpreterConfig }),
 ]);
 export interface HarnessTool {
-  type: HarnessToolType;
+  type: HarnessToolType | (string & {});
   name?: string;
   config?: HarnessToolConfiguration;
 }
@@ -3128,8 +3131,10 @@ export type HarnessManagedMemoryStrategyType =
   | "EPISODIC";
 export const HarnessManagedMemoryStrategyType = /*@__PURE__*/ S.String;
 
-export type HarnessManagedMemoryStrategyList =
-  HarnessManagedMemoryStrategyType[];
+export type HarnessManagedMemoryStrategyList = (
+  | HarnessManagedMemoryStrategyType
+  | (string & {})
+)[];
 export const HarnessManagedMemoryStrategyList = /*@__PURE__*/ S.Array(
   HarnessManagedMemoryStrategyType,
 );
@@ -3214,7 +3219,7 @@ export const HarnessTruncationStrategyConfiguration = /*@__PURE__*/ S.Union([
   S.Struct({ summarization: HarnessSummarizationConfiguration }),
 ]);
 export interface HarnessTruncationConfiguration {
-  strategy: HarnessTruncationStrategy;
+  strategy: HarnessTruncationStrategy | (string & {});
   config?: HarnessTruncationStrategyConfiguration;
 }
 export const HarnessTruncationConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -3547,8 +3552,8 @@ export const ExtractionConfig = /*@__PURE__*/ S.Union([
 ]);
 export interface MetadataSchemaEntry {
   key: string;
-  type?: MetadataValueType;
-  extractionType?: ExtractionType;
+  type?: MetadataValueType | (string & {});
+  extractionType?: ExtractionType | (string & {});
   extractionConfig?: ExtractionConfig;
 }
 export const MetadataSchemaEntry = /*@__PURE__*/ S.suspend(() =>
@@ -3988,7 +3993,7 @@ export const MemoryStrategyInputList =
   /*@__PURE__*/ S.Array(MemoryStrategyInput);
 export interface IndexedKey {
   key: string;
-  type: MetadataValueType;
+  type: MetadataValueType | (string & {});
 }
 export const IndexedKey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ key: S.String, type: MetadataValueType }),
@@ -4002,8 +4007,8 @@ export type ContentLevel = "METADATA_ONLY" | "FULL_CONTENT";
 export const ContentLevel = /*@__PURE__*/ S.String;
 
 export interface ContentConfiguration {
-  type: ContentType;
-  level?: ContentLevel;
+  type: ContentType | (string & {});
+  level?: ContentLevel | (string & {});
 }
 export const ContentConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ type: ContentType, level: S.optional(ContentLevel) }),
@@ -4539,7 +4544,7 @@ export type ScopeType = string;
 export type ScopesListType = string[];
 export const ScopesListType = /*@__PURE__*/ S.Array(S.String);
 export interface TokenExchangeGrantTypeConfigType {
-  actorTokenContent: ActorTokenContentType;
+  actorTokenContent: ActorTokenContentType | (string & {});
   actorTokenScopes?: string[];
 }
 export const TokenExchangeGrantTypeConfigType = /*@__PURE__*/ S.suspend(() =>
@@ -4551,7 +4556,7 @@ export const TokenExchangeGrantTypeConfigType = /*@__PURE__*/ S.suspend(() =>
   identifier: "TokenExchangeGrantTypeConfigType",
 }) as any as S.Schema<TokenExchangeGrantTypeConfigType>;
 export interface OnBehalfOfTokenExchangeConfigType {
-  grantType: OnBehalfOfTokenExchangeGrantTypeType;
+  grantType: OnBehalfOfTokenExchangeGrantTypeType | (string & {});
   tokenExchangeGrantTypeConfig?: TokenExchangeGrantTypeConfigType;
 }
 export const OnBehalfOfTokenExchangeConfigType = /*@__PURE__*/ S.suspend(() =>
@@ -5166,7 +5171,7 @@ export const FilterValue = /*@__PURE__*/ S.Union([
 ]);
 export interface Filter {
   key: string;
-  operator: FilterOperator;
+  operator: FilterOperator | (string & {});
   value: FilterValue;
 }
 export const Filter = /*@__PURE__*/ S.suspend(() =>
@@ -5232,7 +5237,7 @@ export const InsightList = /*@__PURE__*/ S.Array(Insight);
 export type ClusteringFrequency = "DAILY" | "WEEKLY" | "MONTHLY";
 export const ClusteringFrequency = /*@__PURE__*/ S.String;
 
-export type ClusteringFrequencyList = ClusteringFrequency[];
+export type ClusteringFrequencyList = (ClusteringFrequency | (string & {}))[];
 export const ClusteringFrequencyList =
   /*@__PURE__*/ S.Array(ClusteringFrequency);
 export interface ClusteringConfig {
@@ -6055,7 +6060,7 @@ export const CustomParameterMap = /*@__PURE__*/ S.Record(
 );
 export interface RegistryRecordOAuthCredentialProvider {
   providerArn: string;
-  grantType?: RegistryRecordOAuthGrantType;
+  grantType?: RegistryRecordOAuthGrantType | (string & {});
   scopes?: string[];
   customParameters?: { [key: string]: string | undefined };
 }
@@ -6101,7 +6106,7 @@ export const RegistryRecordCredentialProviderUnion = /*@__PURE__*/ S.Union([
   S.Struct({ iamCredentialProvider: RegistryRecordIamCredentialProvider }),
 ]);
 export interface RegistryRecordCredentialProviderConfiguration {
-  credentialProviderType: RegistryRecordCredentialProviderType;
+  credentialProviderType: RegistryRecordCredentialProviderType | (string & {});
   credentialProvider: RegistryRecordCredentialProviderUnion;
 }
 export const RegistryRecordCredentialProviderConfiguration =
@@ -8792,7 +8797,7 @@ export type KeyType = "CustomerManagedKey" | "ServiceManagedKey";
 export const KeyType = /*@__PURE__*/ S.String;
 
 export interface KmsConfiguration {
-  keyType: KeyType;
+  keyType: KeyType | (string & {});
   kmsKeyArn?: string;
 }
 export const KmsConfiguration = /*@__PURE__*/ S.suspend(() =>

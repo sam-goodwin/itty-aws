@@ -125,7 +125,7 @@ export const DomainProperty = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DomainProperty" }) as any as S.Schema<DomainProperty>;
 
-export type DomainPropertyList = ReadonlyArray<DomainProperty>;
+export type DomainPropertyList = Array<DomainProperty>;
 export const DomainPropertyList = /*@__PURE__*/ S.Array(
   DomainProperty,
 ) as any as S.Schema<DomainPropertyList>;
@@ -191,7 +191,7 @@ export const ContentPolicyStatusStateEnum = /*@__PURE__*/ S.String;
 /** The content policy status of the publication, indicating any violations. */
 export interface ContentPolicyStatus {
   /** Output only. The current policy state. */
-  state?: ContentPolicyStatusStateEnum;
+  state?: ContentPolicyStatusStateEnum | (string & {});
   /** Output only. URL pointing to more details about the policy violation or status. */
   policyInfoUrl?: string;
 }
@@ -204,7 +204,7 @@ export const ContentPolicyStatus = /*@__PURE__*/ S.suspend(() =>
   identifier: "ContentPolicyStatus",
 }) as any as S.Schema<ContentPolicyStatus>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -216,7 +216,7 @@ export interface Publication {
   /** Optional. Additional domain properties verified for the publication. */
   additionalDomains?: DomainPropertyList;
   /** Output only. The current onboarding state. */
-  onboardingState?: PublicationOnboardingStateEnum;
+  onboardingState?: PublicationOnboardingStateEnum | (string & {});
   /** Optional. The URL to the publisher's own Terms of Service. */
   publicationTosUrl?: string;
   /** Required. The primary language of the publication (BCP-47 code, e.g., "en-US"). */
@@ -224,7 +224,7 @@ export interface Publication {
   /** Required. The ISO 3166-1 alpha-2 region code where the publication is registered (e.g., "US"). */
   regionCode?: string;
   /** Output only. The configured payment option. */
-  paymentOption?: PublicationPaymentOptionEnum;
+  paymentOption?: PublicationPaymentOptionEnum | (string & {});
   /** Identifier. The resource name of the publication. Format: organizations/{organization}/publications/{publication} */
   name?: string;
   /** Output only. The unique identifier of the organization that owns this publication. */
@@ -321,9 +321,9 @@ export const NewsletterConfig = /*@__PURE__*/ S.suspend(() =>
 /** Represents a Call-To-Action (CTA) configuration for a publication. */
 export interface Cta {
   /** Required. The type of this CTA. */
-  type?: CtaTypeEnum;
+  type?: CtaTypeEnum | (string & {});
   /** Output only. The current state of this CTA. */
-  state?: CtaStateEnum;
+  state?: CtaStateEnum | (string & {});
   /** Identifier. The resource name of the Cta. Format: organizations/{organization}/publications/{publication}/ctas/{cta} */
   name?: string;
   /** Required. The user-visible display name of the CTA. */
@@ -431,7 +431,7 @@ export const ListOrganizationsPublicationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListOrganizationsPublicationsRequest",
 }) as any as S.Schema<ListOrganizationsPublicationsRequest>;
 
-export type PublicationList = ReadonlyArray<Publication>;
+export type PublicationList = Array<Publication>;
 export const PublicationList = /*@__PURE__*/ S.Array(
   Publication,
 ) as any as S.Schema<PublicationList>;
@@ -477,7 +477,7 @@ export const ListOrganizationsPublicationsCtasRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListOrganizationsPublicationsCtasRequest",
 }) as any as S.Schema<ListOrganizationsPublicationsCtasRequest>;
 
-export type CtaList = ReadonlyArray<Cta>;
+export type CtaList = Array<Cta>;
 export const CtaList = /*@__PURE__*/ S.Array(Cta) as any as S.Schema<CtaList>;
 
 /** Response message for `ListCtas`. */

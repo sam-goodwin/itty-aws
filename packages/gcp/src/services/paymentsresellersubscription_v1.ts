@@ -169,7 +169,7 @@ export const PromotionIntroductoryPricingDetailsIntroductoryPricingSpec =
   }) as any as S.Schema<PromotionIntroductoryPricingDetailsIntroductoryPricingSpec>;
 
 export type PromotionIntroductoryPricingDetailsIntroductoryPricingSpecList =
-  ReadonlyArray<PromotionIntroductoryPricingDetailsIntroductoryPricingSpec>;
+  Array<PromotionIntroductoryPricingDetailsIntroductoryPricingSpec>;
 export const PromotionIntroductoryPricingDetailsIntroductoryPricingSpecList =
   /*@__PURE__*/ S.Array(
     PromotionIntroductoryPricingDetailsIntroductoryPricingSpec,
@@ -196,7 +196,7 @@ export const DurationUnitEnum = /*@__PURE__*/ S.String;
 /** Describes the length of a period of a time. */
 export interface Duration {
   /** The unit used for the duration */
-  unit?: DurationUnitEnum;
+  unit?: DurationUnitEnum | (string & {});
   /** number of duration units to be included. */
   count?: number;
 }
@@ -222,7 +222,7 @@ export interface SubscriptionPromotionSpec {
   /** Required. Promotion resource name that identifies a promotion. The format is 'partners/{partner_id}/promotions/{promotion_id}'. */
   promotion?: string;
   /** Output only. The type of the promotion for the spec. */
-  type?: SubscriptionPromotionSpecTypeEnum;
+  type?: SubscriptionPromotionSpecTypeEnum | (string & {});
 }
 export const SubscriptionPromotionSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -235,13 +235,12 @@ export const SubscriptionPromotionSpec = /*@__PURE__*/ S.suspend(() =>
   identifier: "SubscriptionPromotionSpec",
 }) as any as S.Schema<SubscriptionPromotionSpec>;
 
-export type SubscriptionPromotionSpecList =
-  ReadonlyArray<SubscriptionPromotionSpec>;
+export type SubscriptionPromotionSpecList = Array<SubscriptionPromotionSpec>;
 export const SubscriptionPromotionSpecList = /*@__PURE__*/ S.Array(
   SubscriptionPromotionSpec,
 ) as any as S.Schema<SubscriptionPromotionSpecList>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -260,7 +259,7 @@ export interface YoutubePayload {
   /** The list of eligibility_ids which are applicable for the line item. */
   partnerEligibilityIds?: StringList;
   /** Optional. Specifies the plan type offered to the end user by the partner. */
-  partnerPlanType?: YoutubePayloadPartnerPlanTypeEnum;
+  partnerPlanType?: YoutubePayloadPartnerPlanTypeEnum | (string & {});
 }
 export const YoutubePayload = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -308,9 +307,9 @@ export const GoogleOnePayloadOfferingEnum = /*@__PURE__*/ S.String;
 /** Payload specific to Google One products. */
 export interface GoogleOnePayload {
   /** The type of sales channel through which the subscription was sold. */
-  salesChannel?: GoogleOnePayloadSalesChannelEnum;
+  salesChannel?: GoogleOnePayloadSalesChannelEnum | (string & {});
   /** The type of offering the subscription was sold by the partner. e.g. VAS. */
-  offering?: GoogleOnePayloadOfferingEnum;
+  offering?: GoogleOnePayloadOfferingEnum | (string & {});
   /** Campaign attributed to sales of this subscription. */
   campaigns?: StringList;
   /** The identifier for the partner store where the subscription was sold. */
@@ -381,7 +380,7 @@ export const SubscriptionLineItemBundleDetailsBundleElementDetails =
   }) as any as S.Schema<SubscriptionLineItemBundleDetailsBundleElementDetails>;
 
 export type SubscriptionLineItemBundleDetailsBundleElementDetailsList =
-  ReadonlyArray<SubscriptionLineItemBundleDetailsBundleElementDetails>;
+  Array<SubscriptionLineItemBundleDetailsBundleElementDetails>;
 export const SubscriptionLineItemBundleDetailsBundleElementDetailsList =
   /*@__PURE__*/ S.Array(
     SubscriptionLineItemBundleDetailsBundleElementDetails,
@@ -454,7 +453,7 @@ export interface SubscriptionLineItem {
   /** Output only. Description of this line item. */
   description?: string;
   /** Output only. The recurrence type of the line item. */
-  recurrenceType?: SubscriptionLineItemRecurrenceTypeEnum;
+  recurrenceType?: SubscriptionLineItemRecurrenceTypeEnum | (string & {});
   /** Output only. The free trial end time will be populated after the line item is successfully processed. End time of the line item free trial period, in ISO 8061 format. For example, "2019-08-31T17:28:54.564Z". It will be set the same as createTime if no free trial promotion is specified. */
   lineItemFreeTrialEndTime?: string;
   /** Output only. The bundle details for the line item. Only populated if the line item corresponds to a hard bundle. */
@@ -466,7 +465,7 @@ export interface SubscriptionLineItem {
   /** Output only. Details only set for a ONE_TIME recurrence line item. */
   oneTimeRecurrenceDetails?: SubscriptionLineItemOneTimeRecurrenceDetails;
   /** Output only. The state of the line item. */
-  state?: SubscriptionLineItemStateEnum;
+  state?: SubscriptionLineItemStateEnum | (string & {});
   /** Required. Product resource name that identifies the product associated with this line item. The format is 'partners/{partner_id}/products/{product_id}'. */
   product?: string;
 }
@@ -492,7 +491,7 @@ export const SubscriptionLineItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "SubscriptionLineItem",
 }) as any as S.Schema<SubscriptionLineItem>;
 
-export type SubscriptionLineItemList = ReadonlyArray<SubscriptionLineItem>;
+export type SubscriptionLineItemList = Array<SubscriptionLineItem>;
 export const SubscriptionLineItemList = /*@__PURE__*/ S.Array(
   SubscriptionLineItem,
 ) as any as S.Schema<SubscriptionLineItemList>;
@@ -525,7 +524,7 @@ export const SubscriptionCancellationDetailsReasonEnum = /*@__PURE__*/ S.String;
 /** Describes the details of a cancelled or cancelling subscription. */
 export interface SubscriptionCancellationDetails {
   /** Output only. The reason of the cancellation. */
-  reason?: SubscriptionCancellationDetailsReasonEnum;
+  reason?: SubscriptionCancellationDetailsReasonEnum | (string & {});
 }
 export const SubscriptionCancellationDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -561,7 +560,9 @@ export interface SubscriptionUpgradeDowngradeDetails {
   /** Required. The previous subscription id to be replaced. The format can be one of the following: 1. `subscription_id`: the old subscription id under the same partner_id. 2. `partners/{partner_id}/subscriptions/{subscription_id}`. A different partner_id is allowed. But they must be under the same partner group. */
   previousSubscriptionId?: string;
   /** Required. Specifies the billing cycle spec for the new upgraded/downgraded subscription. */
-  billingCycleSpec?: SubscriptionUpgradeDowngradeDetailsBillingCycleSpecEnum;
+  billingCycleSpec?:
+    | SubscriptionUpgradeDowngradeDetailsBillingCycleSpecEnum
+    | (string & {});
 }
 export const SubscriptionUpgradeDowngradeDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -605,7 +606,7 @@ export interface Subscription {
   /** Output only. System generated timestamp when the subscription is created. UTC timezone. */
   createTime?: string;
   /** Output only. Describes the state of the subscription. See more details at [the lifecycle of a subscription](/payments/reseller/subscription/reference/index/Receive.Notifications#payments-subscription-lifecycle). */
-  state?: SubscriptionStateEnum;
+  state?: SubscriptionStateEnum | (string & {});
   /** Output only. Describes the details of a cancelled subscription. Only applicable to subscription of state `STATE_CANCELLED`. */
   cancellationDetails?: SubscriptionCancellationDetails;
   /** Output only. Describes the details of the migrated subscription. Only populated if this subscription is migrated from another system. */
@@ -623,7 +624,7 @@ export interface Subscription {
   /** Optional. Deprecated: consider using the top-level `promotion_specs` as the input. Optional. Resource name that identifies one or more promotions that can be applied on the product. A typical promotion for a subscription is Free trial. The format will be 'partners/{partner_id}/promotions/{promotion_id}'. */
   promotions?: StringList;
   /** Output only. Describes the processing state of the subscription. See more details at [the lifecycle of a subscription](/payments/reseller/subscription/reference/index/Receive.Notifications#payments-subscription-lifecycle). */
-  processingState?: SubscriptionProcessingStateEnum;
+  processingState?: SubscriptionProcessingStateEnum | (string & {});
 }
 export const Subscription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -705,7 +706,7 @@ export const EntitleSubscriptionRequestLineItemEntitlementDetails =
   }) as any as S.Schema<EntitleSubscriptionRequestLineItemEntitlementDetails>;
 
 export type EntitleSubscriptionRequestLineItemEntitlementDetailsList =
-  ReadonlyArray<EntitleSubscriptionRequestLineItemEntitlementDetails>;
+  Array<EntitleSubscriptionRequestLineItemEntitlementDetails>;
 export const EntitleSubscriptionRequestLineItemEntitlementDetailsList =
   /*@__PURE__*/ S.Array(
     EntitleSubscriptionRequestLineItemEntitlementDetails,
@@ -887,8 +888,7 @@ export const GoogleTypeLocalizedText = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleTypeLocalizedText",
 }) as any as S.Schema<GoogleTypeLocalizedText>;
 
-export type GoogleTypeLocalizedTextList =
-  ReadonlyArray<GoogleTypeLocalizedText>;
+export type GoogleTypeLocalizedTextList = Array<GoogleTypeLocalizedText>;
 export const GoogleTypeLocalizedTextList = /*@__PURE__*/ S.Array(
   GoogleTypeLocalizedText,
 ) as any as S.Schema<GoogleTypeLocalizedTextList>;
@@ -934,7 +934,7 @@ export const Promotion = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Promotion" }) as any as S.Schema<Promotion>;
 
-export type PromotionList = ReadonlyArray<Promotion>;
+export type PromotionList = Array<Promotion>;
 export const PromotionList = /*@__PURE__*/ S.Array(
   Promotion,
 ) as any as S.Schema<PromotionList>;
@@ -1153,7 +1153,7 @@ export const ProductPriceConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProductPriceConfig",
 }) as any as S.Schema<ProductPriceConfig>;
 
-export type ProductPriceConfigList = ReadonlyArray<ProductPriceConfig>;
+export type ProductPriceConfigList = Array<ProductPriceConfig>;
 export const ProductPriceConfigList = /*@__PURE__*/ S.Array(
   ProductPriceConfig,
 ) as any as S.Schema<ProductPriceConfigList>;
@@ -1184,7 +1184,7 @@ export const ProductBundleDetailsBundleElement = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProductBundleDetailsBundleElement>;
 
 export type ProductBundleDetailsBundleElementList =
-  ReadonlyArray<ProductBundleDetailsBundleElement>;
+  Array<ProductBundleDetailsBundleElement>;
 export const ProductBundleDetailsBundleElementList = /*@__PURE__*/ S.Array(
   ProductBundleDetailsBundleElement,
 ) as any as S.Schema<ProductBundleDetailsBundleElementList>;
@@ -1237,7 +1237,7 @@ export const Product = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Product" }) as any as S.Schema<Product>;
 
-export type ProductList = ReadonlyArray<Product>;
+export type ProductList = Array<Product>;
 export const ProductList = /*@__PURE__*/ S.Array(
   Product,
 ) as any as S.Schema<ProductList>;

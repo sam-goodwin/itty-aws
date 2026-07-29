@@ -111,7 +111,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -162,7 +162,7 @@ export const Part = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Part" }) as any as S.Schema<Part>;
 
-export type PartList = ReadonlyArray<Part>;
+export type PartList = Array<Part>;
 export const PartList = /*@__PURE__*/ S.Array(
   Part,
 ) as any as S.Schema<PartList>;
@@ -174,7 +174,7 @@ export interface Message {
   /** The URIs of extensions that are present or contributed to this Message. */
   extensions?: StringList;
   /** A role for the message. */
-  role?: MessageRoleEnum;
+  role?: MessageRoleEnum | (string & {});
   /** protolint:disable REPEATED_FIELD_NAMES_PLURALIZED Content is the container of the message content. */
   content?: PartList;
   /** The unique identifier (e.g. UUID)of the message. This is required and created by the message creator. */
@@ -213,7 +213,7 @@ export const TaskStatus = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TaskStatus" }) as any as S.Schema<TaskStatus>;
 
-export type MessageList = ReadonlyArray<Message>;
+export type MessageList = Array<Message>;
 export const MessageList = /*@__PURE__*/ S.Array(
   Message,
 ) as any as S.Schema<MessageList>;
@@ -244,7 +244,7 @@ export const Artifact = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Artifact" }) as any as S.Schema<Artifact>;
 
-export type ArtifactList = ReadonlyArray<Artifact>;
+export type ArtifactList = Array<Artifact>;
 export const ArtifactList = /*@__PURE__*/ S.Array(
   Artifact,
 ) as any as S.Schema<ArtifactList>;
@@ -348,7 +348,7 @@ export interface Subscription {
   /** Optional. Features that are supported only for subscriptions on Drive resources. */
   driveOptions?: DriveOptions;
   /** Output only. The state of the subscription. Determines whether the subscription can receive events and deliver them to the notification endpoint. */
-  state?: SubscriptionStateEnum;
+  state?: SubscriptionStateEnum | (string & {});
   /** Optional. This checksum is computed by the server based on the value of other fields, and might be sent on update requests to ensure the client has an up-to-date value before proceeding. */
   etag?: string;
   /** Output only. The time when the subscription is created. */
@@ -364,7 +364,7 @@ export interface Subscription {
   /** Required. Unordered list. Input for creating a subscription. Otherwise, output only. One or more types of events to receive about the target resource. Formatted according to the CloudEvents specification. The supported event types depend on the target resource of your subscription. For details, see [Supported Google Workspace events](https://developers.google.com/workspace/events/guides#supported-events). By default, you also receive events about the [lifecycle of your subscription](https://developers.google.com/workspace/events/guides/events-lifecycle). You don't need to specify lifecycle events for this field. If you specify an event type that doesn't exist for the target resource, the request returns an HTTP `400 Bad Request` status code. */
   eventTypes?: StringList;
   /** Output only. The error that suspended the subscription. To reactivate the subscription, resolve the error and call the `ReactivateSubscription` method. */
-  suspensionReason?: SubscriptionSuspensionReasonEnum;
+  suspensionReason?: SubscriptionSuspensionReasonEnum | (string & {});
   /** Identifier. Resource name of the subscription. Format: `subscriptions/{subscription}` */
   name?: string;
   /** Output only. System-assigned unique identifier for the subscription. */
@@ -416,7 +416,7 @@ export const CreateSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateSubscriptionsRequest",
 }) as any as S.Schema<CreateSubscriptionsRequest>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -703,7 +703,7 @@ export const ListSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListSubscriptionsRequest",
 }) as any as S.Schema<ListSubscriptionsRequest>;
 
-export type SubscriptionList = ReadonlyArray<Subscription>;
+export type SubscriptionList = Array<Subscription>;
 export const SubscriptionList = /*@__PURE__*/ S.Array(
   Subscription,
 ) as any as S.Schema<SubscriptionList>;
@@ -752,8 +752,7 @@ export const ListTasksPushNotificationConfigsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListTasksPushNotificationConfigsRequest",
 }) as any as S.Schema<ListTasksPushNotificationConfigsRequest>;
 
-export type TaskPushNotificationConfigList =
-  ReadonlyArray<TaskPushNotificationConfig>;
+export type TaskPushNotificationConfigList = Array<TaskPushNotificationConfig>;
 export const TaskPushNotificationConfigList = /*@__PURE__*/ S.Array(
   TaskPushNotificationConfig,
 ) as any as S.Schema<TaskPushNotificationConfigList>;

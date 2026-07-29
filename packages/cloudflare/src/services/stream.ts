@@ -186,7 +186,7 @@ export const CreateCaptionLanguageResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateCaptionLanguageResponse",
 }) as any as S.Schema<CreateCaptionLanguageResponse>;
 
-export type ClipCreateRequestAllowedOriginsList = ReadonlyArray<unknown>;
+export type ClipCreateRequestAllowedOriginsList = Array<unknown>;
 export const ClipCreateRequestAllowedOriginsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<ClipCreateRequestAllowedOriginsList>;
@@ -261,7 +261,7 @@ export const CreateClipRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateClipRequest",
 }) as any as S.Schema<CreateClipRequest>;
 
-export type ClipCreateResponseAllowedOriginsList = ReadonlyArray<unknown>;
+export type ClipCreateResponseAllowedOriginsList = Array<unknown>;
 export const ClipCreateResponseAllowedOriginsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<ClipCreateResponseAllowedOriginsList>;
@@ -473,7 +473,7 @@ export const CreateClipResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateClipResponse",
 }) as any as S.Schema<CreateClipResponse>;
 
-export type CopyCreateRequestAllowedOriginsList = ReadonlyArray<unknown>;
+export type CopyCreateRequestAllowedOriginsList = Array<unknown>;
 export const CopyCreateRequestAllowedOriginsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<CopyCreateRequestAllowedOriginsList>;
@@ -542,7 +542,7 @@ export const CreateCopyRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateCopyRequest",
 }) as any as S.Schema<CreateCopyRequest>;
 
-export type CopyCreateResponseAllowedOriginsList = ReadonlyArray<unknown>;
+export type CopyCreateResponseAllowedOriginsList = Array<unknown>;
 export const CopyCreateResponseAllowedOriginsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<CopyCreateResponseAllowedOriginsList>;
@@ -754,8 +754,7 @@ export const CreateCopyResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateCopyResponse",
 }) as any as S.Schema<CreateCopyResponse>;
 
-export type DirectUploadCreateRequestAllowedOriginsList =
-  ReadonlyArray<unknown>;
+export type DirectUploadCreateRequestAllowedOriginsList = Array<unknown>;
 export const DirectUploadCreateRequestAllowedOriginsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -1014,8 +1013,7 @@ export const CreateKeyResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateKeyResponse",
 }) as any as S.Schema<CreateKeyResponse>;
 
-export type LiveInputsCreateRequestRecordingAllowedOriginsList =
-  ReadonlyArray<string>;
+export type LiveInputsCreateRequestRecordingAllowedOriginsList = Array<string>;
 export const LiveInputsCreateRequestRecordingAllowedOriginsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1088,8 +1086,7 @@ export const CreateLiveInputRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateLiveInputRequest",
 }) as any as S.Schema<CreateLiveInputRequest>;
 
-export type LiveInputsCreateResponseRecordingAllowedOriginsList =
-  ReadonlyArray<string>;
+export type LiveInputsCreateResponseRecordingAllowedOriginsList = Array<string>;
 export const LiveInputsCreateResponseRecordingAllowedOriginsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1387,14 +1384,13 @@ export const CreateStreamResponse = /*@__PURE__*/ S.suspend(() =>
 export type TokenCreateRequestAccessRulesItemAction = "allow" | "block";
 export const TokenCreateRequestAccessRulesItemAction = /*@__PURE__*/ S.String;
 
-export type TokenCreateRequestAccessRulesItemCountryList =
-  ReadonlyArray<string>;
+export type TokenCreateRequestAccessRulesItemCountryList = Array<string>;
 export const TokenCreateRequestAccessRulesItemCountryList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<TokenCreateRequestAccessRulesItemCountryList>;
 
-export type TokenCreateRequestAccessRulesItemIpList = ReadonlyArray<string>;
+export type TokenCreateRequestAccessRulesItemIpList = Array<string>;
 export const TokenCreateRequestAccessRulesItemIpList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<TokenCreateRequestAccessRulesItemIpList>;
@@ -1427,7 +1423,7 @@ export const TokenCreateRequestAccessRulesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TokenCreateRequestAccessRulesItem>;
 
 export type TokenCreateRequestAccessRulesList =
-  ReadonlyArray<TokenCreateRequestAccessRulesItem>;
+  Array<TokenCreateRequestAccessRulesItem>;
 export const TokenCreateRequestAccessRulesList = /*@__PURE__*/ S.Array(
   TokenCreateRequestAccessRulesItem,
 ) as any as S.Schema<TokenCreateRequestAccessRulesList>;
@@ -1858,7 +1854,7 @@ export const DeleteWebhookResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteWebhookResponse",
 }) as any as S.Schema<DeleteWebhookResponse>;
 
-export type EditRequestAllowedOriginsList = ReadonlyArray<unknown>;
+export type EditRequestAllowedOriginsList = Array<unknown>;
 export const EditRequestAllowedOriginsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<EditRequestAllowedOriginsList>;
@@ -1933,7 +1929,7 @@ export const EditStreamRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "EditStreamRequest",
 }) as any as S.Schema<EditStreamRequest>;
 
-export type EditResponseAllowedOriginsList = ReadonlyArray<unknown>;
+export type EditResponseAllowedOriginsList = Array<unknown>;
 export const EditResponseAllowedOriginsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<EditResponseAllowedOriginsList>;
@@ -2196,7 +2192,7 @@ export const AudioTracksGetResponseAudioItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AudioTracksGetResponseAudioItem>;
 
 export type AudioTracksGetResponseAudioList =
-  ReadonlyArray<AudioTracksGetResponseAudioItem>;
+  Array<AudioTracksGetResponseAudioItem>;
 export const AudioTracksGetResponseAudioList = /*@__PURE__*/ S.Array(
   AudioTracksGetResponseAudioItem,
 ) as any as S.Schema<AudioTracksGetResponseAudioList>;
@@ -2261,7 +2257,7 @@ export const CaptionsGetResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "CaptionsGetResultItem",
 }) as any as S.Schema<CaptionsGetResultItem>;
 
-export type CaptionsGetResultList = ReadonlyArray<CaptionsGetResultItem>;
+export type CaptionsGetResultList = Array<CaptionsGetResultItem>;
 export const CaptionsGetResultList = /*@__PURE__*/ S.Array(
   CaptionsGetResultItem,
 ) as any as S.Schema<CaptionsGetResultList>;
@@ -2518,7 +2514,7 @@ export const KeysGetResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "KeysGetResultItem",
 }) as any as S.Schema<KeysGetResultItem>;
 
-export type KeysGetResultList = ReadonlyArray<KeysGetResultItem>;
+export type KeysGetResultList = Array<KeysGetResultItem>;
 export const KeysGetResultList = /*@__PURE__*/ S.Array(
   KeysGetResultItem,
 ) as any as S.Schema<KeysGetResultList>;
@@ -2559,8 +2555,7 @@ export const GetLiveInputRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetLiveInputRequest",
 }) as any as S.Schema<GetLiveInputRequest>;
 
-export type LiveInputsGetResponseRecordingAllowedOriginsList =
-  ReadonlyArray<string>;
+export type LiveInputsGetResponseRecordingAllowedOriginsList = Array<string>;
 export const LiveInputsGetResponseRecordingAllowedOriginsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2777,7 +2772,7 @@ export const GetStreamRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetStreamRequest",
 }) as any as S.Schema<GetStreamRequest>;
 
-export type GetResponseAllowedOriginsList = ReadonlyArray<unknown>;
+export type GetResponseAllowedOriginsList = Array<unknown>;
 export const GetResponseAllowedOriginsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<GetResponseAllowedOriginsList>;
@@ -3139,7 +3134,7 @@ export const LiveInputsOutputsListResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LiveInputsOutputsListResultItem>;
 
 export type LiveInputsOutputsListResultList =
-  ReadonlyArray<LiveInputsOutputsListResultItem>;
+  Array<LiveInputsOutputsListResultItem>;
 export const LiveInputsOutputsListResultList = /*@__PURE__*/ S.Array(
   LiveInputsOutputsListResultItem,
 ) as any as S.Schema<LiveInputsOutputsListResultList>;
@@ -3211,7 +3206,7 @@ export const LiveInputsListResponseLiveInputsItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<LiveInputsListResponseLiveInputsItem>;
 
 export type LiveInputsListResponseLiveInputsList =
-  ReadonlyArray<LiveInputsListResponseLiveInputsItem>;
+  Array<LiveInputsListResponseLiveInputsItem>;
 export const LiveInputsListResponseLiveInputsList = /*@__PURE__*/ S.Array(
   LiveInputsListResponseLiveInputsItem,
 ) as any as S.Schema<LiveInputsListResponseLiveInputsList>;
@@ -3309,7 +3304,7 @@ export const ListStreamsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListStreamsRequest",
 }) as any as S.Schema<ListStreamsRequest>;
 
-export type ListResultItemAllowedOriginsList = ReadonlyArray<unknown>;
+export type ListResultItemAllowedOriginsList = Array<unknown>;
 export const ListResultItemAllowedOriginsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<ListResultItemAllowedOriginsList>;
@@ -3518,7 +3513,7 @@ export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ListResultItem" }) as any as S.Schema<ListResultItem>;
 
-export type ListResultList = ReadonlyArray<ListResultItem>;
+export type ListResultList = Array<ListResultItem>;
 export const ListResultList = /*@__PURE__*/ S.Array(
   ListResultItem,
 ) as any as S.Schema<ListResultList>;
@@ -3600,7 +3595,7 @@ export const WatermarksListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "WatermarksListResultItem",
 }) as any as S.Schema<WatermarksListResultItem>;
 
-export type WatermarksListResultList = ReadonlyArray<WatermarksListResultItem>;
+export type WatermarksListResultList = Array<WatermarksListResultItem>;
 export const WatermarksListResultList = /*@__PURE__*/ S.Array(
   WatermarksListResultItem,
 ) as any as S.Schema<WatermarksListResultList>;
@@ -3818,8 +3813,7 @@ export const UpdateCaptionLanguageResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateCaptionLanguageResponse",
 }) as any as S.Schema<UpdateCaptionLanguageResponse>;
 
-export type LiveInputsUpdateRequestRecordingAllowedOriginsList =
-  ReadonlyArray<string>;
+export type LiveInputsUpdateRequestRecordingAllowedOriginsList = Array<string>;
 export const LiveInputsUpdateRequestRecordingAllowedOriginsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3895,8 +3889,7 @@ export const UpdateLiveInputRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateLiveInputRequest",
 }) as any as S.Schema<UpdateLiveInputRequest>;
 
-export type LiveInputsUpdateResponseRecordingAllowedOriginsList =
-  ReadonlyArray<string>;
+export type LiveInputsUpdateResponseRecordingAllowedOriginsList = Array<string>;
 export const LiveInputsUpdateResponseRecordingAllowedOriginsList =
   /*@__PURE__*/ S.Array(
     S.String,

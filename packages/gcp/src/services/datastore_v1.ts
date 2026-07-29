@@ -94,7 +94,7 @@ export const PathElement = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PathElement" }) as any as S.Schema<PathElement>;
 
-export type PathElementList = ReadonlyArray<PathElement>;
+export type PathElementList = Array<PathElement>;
 export const PathElementList = /*@__PURE__*/ S.Array(
   PathElement,
 ) as any as S.Schema<PathElementList>;
@@ -113,10 +113,10 @@ export const Key = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Key" }) as any as S.Schema<Key>;
 
-export type KeyList = ReadonlyArray<Key>;
+export type KeyList = Array<Key>;
 export const KeyList = /*@__PURE__*/ S.Array(Key) as any as S.Schema<KeyList>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -320,7 +320,7 @@ export const LatLng = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "LatLng" }) as any as S.Schema<LatLng>;
 
-export type ValueList = ReadonlyArray<Value>;
+export type ValueList = Array<Value>;
 export const ValueList = /*@__PURE__*/ S.Array(
   S.suspend(() => Value),
 ) as any as S.Schema<ValueList>;
@@ -364,7 +364,7 @@ export interface Value {
   /** A blob value. May have at most 1,000,000 bytes. When `exclude_from_indexes` is false, may have at most 1500 bytes. In JSON requests, must be base64-encoded. */
   blobValue?: string;
   /** A null value. */
-  nullValue?: ValueNullValueEnum;
+  nullValue?: ValueNullValueEnum | (string & {});
   /** A boolean value. */
   booleanValue?: boolean;
 }
@@ -442,7 +442,7 @@ export const PropertyTransform = /*@__PURE__*/ S.suspend(() =>
   identifier: "PropertyTransform",
 }) as any as S.Schema<PropertyTransform>;
 
-export type PropertyTransformList = ReadonlyArray<PropertyTransform>;
+export type PropertyTransformList = Array<PropertyTransform>;
 export const PropertyTransformList = /*@__PURE__*/ S.Array(
   PropertyTransform,
 ) as any as S.Schema<PropertyTransformList>;
@@ -503,7 +503,7 @@ export const Mutation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Mutation" }) as any as S.Schema<Mutation>;
 
-export type MutationList = ReadonlyArray<Mutation>;
+export type MutationList = Array<Mutation>;
 export const MutationList = /*@__PURE__*/ S.Array(
   Mutation,
 ) as any as S.Schema<MutationList>;
@@ -581,7 +581,7 @@ export const MutationResult = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MutationResult" }) as any as S.Schema<MutationResult>;
 
-export type MutationResultList = ReadonlyArray<MutationResult>;
+export type MutationResultList = Array<MutationResult>;
 export const MutationResultList = /*@__PURE__*/ S.Array(
   MutationResult,
 ) as any as S.Schema<MutationResultList>;
@@ -621,7 +621,9 @@ export interface GoogleDatastoreAdminV1IndexedProperty {
   /** Required. The property name to index. */
   name?: string;
   /** Required. The indexed property's direction. Must not be DIRECTION_UNSPECIFIED. */
-  direction?: GoogleDatastoreAdminV1IndexedPropertyDirectionEnum;
+  direction?:
+    | GoogleDatastoreAdminV1IndexedPropertyDirectionEnum
+    | (string & {});
 }
 export const GoogleDatastoreAdminV1IndexedProperty = /*@__PURE__*/ S.suspend(
   () =>
@@ -634,7 +636,7 @@ export const GoogleDatastoreAdminV1IndexedProperty = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleDatastoreAdminV1IndexedProperty>;
 
 export type GoogleDatastoreAdminV1IndexedPropertyList =
-  ReadonlyArray<GoogleDatastoreAdminV1IndexedProperty>;
+  Array<GoogleDatastoreAdminV1IndexedProperty>;
 export const GoogleDatastoreAdminV1IndexedPropertyList = /*@__PURE__*/ S.Array(
   GoogleDatastoreAdminV1IndexedProperty,
 ) as any as S.Schema<GoogleDatastoreAdminV1IndexedPropertyList>;
@@ -654,13 +656,13 @@ export interface GoogleDatastoreAdminV1Index {
   /** Output only. Project ID. */
   projectId?: string;
   /** Required. The index's ancestor mode. Must not be ANCESTOR_MODE_UNSPECIFIED. */
-  ancestor?: GoogleDatastoreAdminV1IndexAncestorEnum;
+  ancestor?: GoogleDatastoreAdminV1IndexAncestorEnum | (string & {});
   /** Output only. The resource ID of the index. */
   indexId?: string;
   /** Required. An ordered sequence of property names and their index attributes. Requires: * A maximum of 100 properties. */
   properties?: GoogleDatastoreAdminV1IndexedPropertyList;
   /** Output only. The state of the index. */
-  state?: GoogleDatastoreAdminV1IndexStateEnum;
+  state?: GoogleDatastoreAdminV1IndexStateEnum | (string & {});
 }
 export const GoogleDatastoreAdminV1Index = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -702,7 +704,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -962,7 +964,7 @@ export const ListProjectsIndexesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsIndexesRequest>;
 
 export type GoogleDatastoreAdminV1IndexList =
-  ReadonlyArray<GoogleDatastoreAdminV1Index>;
+  Array<GoogleDatastoreAdminV1Index>;
 export const GoogleDatastoreAdminV1IndexList = /*@__PURE__*/ S.Array(
   GoogleDatastoreAdminV1Index,
 ) as any as S.Schema<GoogleDatastoreAdminV1IndexList>;
@@ -1014,8 +1016,7 @@ export const ListProjectsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsOperationsRequest",
 }) as any as S.Schema<ListProjectsOperationsRequest>;
 
-export type GoogleLongrunningOperationList =
-  ReadonlyArray<GoogleLongrunningOperation>;
+export type GoogleLongrunningOperationList = Array<GoogleLongrunningOperation>;
 export const GoogleLongrunningOperationList = /*@__PURE__*/ S.Array(
   GoogleLongrunningOperation,
 ) as any as S.Schema<GoogleLongrunningOperationList>;
@@ -1133,7 +1134,7 @@ export const EntityResult = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "EntityResult" }) as any as S.Schema<EntityResult>;
 
-export type EntityResultList = ReadonlyArray<EntityResult>;
+export type EntityResultList = Array<EntityResult>;
 export const EntityResultList = /*@__PURE__*/ S.Array(
   EntityResult,
 ) as any as S.Schema<EntityResultList>;
@@ -1281,7 +1282,7 @@ export const GqlQueryParameterMap = /*@__PURE__*/ S.Record(
   GqlQueryParameter,
 ) as any as S.Schema<GqlQueryParameterMap>;
 
-export type GqlQueryParameterList = ReadonlyArray<GqlQueryParameter>;
+export type GqlQueryParameterList = Array<GqlQueryParameter>;
 export const GqlQueryParameterList = /*@__PURE__*/ S.Array(
   GqlQueryParameter,
 ) as any as S.Schema<GqlQueryParameterList>;
@@ -1339,7 +1340,7 @@ export interface FindNearest {
   /** Required. The query vector that we are searching on. Must be a vector of no more than 2048 dimensions. */
   queryVector?: Value;
   /** Required. The Distance Measure to use, required. */
-  distanceMeasure?: FindNearestDistanceMeasureEnum;
+  distanceMeasure?: FindNearestDistanceMeasureEnum | (string & {});
 }
 export const FindNearest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1363,7 +1364,7 @@ export const KindExpression = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "KindExpression" }) as any as S.Schema<KindExpression>;
 
-export type KindExpressionList = ReadonlyArray<KindExpression>;
+export type KindExpressionList = Array<KindExpression>;
 export const KindExpressionList = /*@__PURE__*/ S.Array(
   KindExpression,
 ) as any as S.Schema<KindExpressionList>;
@@ -1379,7 +1380,7 @@ export interface PropertyOrder {
   /** The property to order by. */
   property?: PropertyReference;
   /** The direction to order by. Defaults to `ASCENDING`. */
-  direction?: PropertyOrderDirectionEnum;
+  direction?: PropertyOrderDirectionEnum | (string & {});
 }
 export const PropertyOrder = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1388,12 +1389,12 @@ export const PropertyOrder = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PropertyOrder" }) as any as S.Schema<PropertyOrder>;
 
-export type PropertyOrderList = ReadonlyArray<PropertyOrder>;
+export type PropertyOrderList = Array<PropertyOrder>;
 export const PropertyOrderList = /*@__PURE__*/ S.Array(
   PropertyOrder,
 ) as any as S.Schema<PropertyOrderList>;
 
-export type PropertyReferenceList = ReadonlyArray<PropertyReference>;
+export type PropertyReferenceList = Array<PropertyReference>;
 export const PropertyReferenceList = /*@__PURE__*/ S.Array(
   PropertyReference,
 ) as any as S.Schema<PropertyReferenceList>;
@@ -1414,7 +1415,7 @@ export const PropertyFilterOpEnum = /*@__PURE__*/ S.String;
 /** A filter on a specific property. */
 export interface PropertyFilter {
   /** The operator to filter by. */
-  op?: PropertyFilterOpEnum;
+  op?: PropertyFilterOpEnum | (string & {});
   /** The value to compare the property to. */
   value?: Value;
   /** The property to filter by. */
@@ -1431,7 +1432,7 @@ export const PropertyFilter = /*@__PURE__*/ S.suspend(() =>
 export type CompositeFilterOpEnum = "OPERATOR_UNSPECIFIED" | "AND" | "OR";
 export const CompositeFilterOpEnum = /*@__PURE__*/ S.String;
 
-export type FilterList = ReadonlyArray<Filter>;
+export type FilterList = Array<Filter>;
 export const FilterList = /*@__PURE__*/ S.Array(
   S.suspend(() => Filter),
 ) as any as S.Schema<FilterList>;
@@ -1439,7 +1440,7 @@ export const FilterList = /*@__PURE__*/ S.Array(
 /** A filter that merges multiple other filters using the given operator. */
 export interface CompositeFilter {
   /** The operator for combining multiple filters. */
-  op?: CompositeFilterOpEnum;
+  op?: CompositeFilterOpEnum | (string & {});
   /** The list of filters to combine. Requires: * At least one filter is present. */
   filters?: FilterList;
 }
@@ -1477,7 +1478,7 @@ export const Projection = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Projection" }) as any as S.Schema<Projection>;
 
-export type ProjectionList = ReadonlyArray<Projection>;
+export type ProjectionList = Array<Projection>;
 export const ProjectionList = /*@__PURE__*/ S.Array(
   Projection,
 ) as any as S.Schema<ProjectionList>;
@@ -1573,7 +1574,7 @@ export const Aggregation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Aggregation" }) as any as S.Schema<Aggregation>;
 
-export type AggregationList = ReadonlyArray<Aggregation>;
+export type AggregationList = Array<Aggregation>;
 export const AggregationList = /*@__PURE__*/ S.Array(
   Aggregation,
 ) as any as S.Schema<AggregationList>;
@@ -1678,7 +1679,7 @@ export const AggregationResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "AggregationResult",
 }) as any as S.Schema<AggregationResult>;
 
-export type AggregationResultList = ReadonlyArray<AggregationResult>;
+export type AggregationResultList = Array<AggregationResult>;
 export const AggregationResultList = /*@__PURE__*/ S.Array(
   AggregationResult,
 ) as any as S.Schema<AggregationResultList>;

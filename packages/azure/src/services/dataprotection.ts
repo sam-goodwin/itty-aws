@@ -92,7 +92,7 @@ export const ResourcePropertiesObjectType = /*@__PURE__*/ S.String;
 /** Properties which are specific to datasource/datasourceSets */
 export interface BaseResourceProperties {
   /** Type of the specific object - used for deserializing */
-  objectType: ResourcePropertiesObjectType;
+  objectType: ResourcePropertiesObjectType | (string & {});
 }
 export const BaseResourceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -175,7 +175,7 @@ export interface DataStoreParameters {
   /** Type of the specific object - used for deserializing */
   objectType: string;
   /** type of datastore; Operational/Vault/Archive */
-  dataStoreType: DataStoreTypes;
+  dataStoreType: DataStoreTypes | (string & {});
 }
 export const DataStoreParameters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -188,7 +188,7 @@ export const DataStoreParameters = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets the DataStore Parameters */
 export type PolicyParametersDataStoreParametersListList =
-  ReadonlyArray<DataStoreParameters>;
+  Array<DataStoreParameters>;
 export const PolicyParametersDataStoreParametersListList =
   /*@__PURE__*/ S.Array(
     DataStoreParameters,
@@ -209,7 +209,7 @@ export const BackupDatasourceParameters = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets the Backup Data Source Parameters */
 export type PolicyParametersBackupDatasourceParametersListList =
-  ReadonlyArray<BackupDatasourceParameters>;
+  Array<BackupDatasourceParameters>;
 export const PolicyParametersBackupDatasourceParametersListList =
   /*@__PURE__*/ S.Array(
     BackupDatasourceParameters,
@@ -252,7 +252,7 @@ export const PolicyInfoInput = /*@__PURE__*/ S.suspend(() =>
 
 /** ResourceGuardOperationRequests on which LAC check will be performed */
 export type BackupInstanceInputResourceGuardOperationRequestsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const BackupInstanceInputResourceGuardOperationRequestsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -431,15 +431,14 @@ export const PolicyInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PolicyInfo" }) as any as S.Schema<PolicyInfo>;
 
 /** ResourceGuardOperationRequests on which LAC check will be performed */
-export type BackupInstanceResourceGuardOperationRequestsList =
-  ReadonlyArray<string>;
+export type BackupInstanceResourceGuardOperationRequestsList = Array<string>;
 export const BackupInstanceResourceGuardOperationRequestsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<BackupInstanceResourceGuardOperationRequestsList>;
 
 /** Additional related Errors */
-export type UserFacingErrorDetailsList = ReadonlyArray<UserFacingError>;
+export type UserFacingErrorDetailsList = Array<UserFacingError>;
 export const UserFacingErrorDetailsList = /*@__PURE__*/ S.Array(
   S.suspend(() => UserFacingError),
 ) as any as S.Schema<UserFacingErrorDetailsList>;
@@ -478,7 +477,7 @@ export const UserFacingErrorPropertiesMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<UserFacingErrorPropertiesMap>;
 
 /** RecommendedAction � localized. */
-export type UserFacingErrorRecommendedActionList = ReadonlyArray<string>;
+export type UserFacingErrorRecommendedActionList = Array<string>;
 export const UserFacingErrorRecommendedActionList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<UserFacingErrorRecommendedActionList>;
@@ -741,7 +740,7 @@ export const BackupInstanceResource = /*@__PURE__*/ S.suspend(() =>
 
 /** List of resources. */
 export type BackupInstancesExtensionRoutingListResponseValueList =
-  ReadonlyArray<BackupInstanceResource>;
+  Array<BackupInstanceResource>;
 export const BackupInstancesExtensionRoutingListResponseValueList =
   /*@__PURE__*/ S.Array(
     BackupInstanceResource,
@@ -926,7 +925,7 @@ export const BackupInstancesListRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of resources. */
 export type BackupInstancesListResponseValueList =
-  ReadonlyArray<BackupInstanceResource>;
+  Array<BackupInstanceResource>;
 export const BackupInstancesListResponseValueList = /*@__PURE__*/ S.Array(
   BackupInstanceResource,
 ) as any as S.Schema<BackupInstancesListResponseValueList>;
@@ -1019,7 +1018,7 @@ export const BackupInstancesResumeProtectionResponse = /*@__PURE__*/ S.suspend(
 
 /** ResourceGuardOperationRequests on which LAC check will be performed */
 export type BackupInstancesStopProtectionRequestResourceGuardOperationRequestsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const BackupInstancesStopProtectionRequestResourceGuardOperationRequestsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1068,7 +1067,7 @@ export const BackupInstancesStopProtectionResponse = /*@__PURE__*/ S.suspend(
 
 /** ResourceGuardOperationRequests on which LAC check will be performed */
 export type BackupInstancesSuspendBackupsRequestResourceGuardOperationRequestsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const BackupInstancesSuspendBackupsRequestResourceGuardOperationRequestsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1190,7 +1189,7 @@ export const SourceDataStoreType = /*@__PURE__*/ S.String;
 
 /** ResourceGuardOperationRequests on which LAC check will be performed */
 export type AzureBackupRestoreRequestResourceGuardOperationRequestsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const AzureBackupRestoreRequestResourceGuardOperationRequestsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1338,7 +1337,7 @@ export const BackupInstancesTriggerRehydrateResponse = /*@__PURE__*/ S.suspend(
 
 /** ResourceGuardOperationRequests on which LAC check will be performed */
 export type BackupInstancesTriggerRestoreRequestResourceGuardOperationRequestsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const BackupInstancesTriggerRestoreRequestResourceGuardOperationRequestsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1588,7 +1587,7 @@ export const BackupInstancesValidateForRestoreResponse =
   }) as any as S.Schema<BackupInstancesValidateForRestoreResponse>;
 
 /** Type of datasource for the backup management */
-export type BaseBackupPolicyDatasourceTypesList = ReadonlyArray<string>;
+export type BaseBackupPolicyDatasourceTypesList = Array<string>;
 export const BaseBackupPolicyDatasourceTypesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BaseBackupPolicyDatasourceTypesList>;
@@ -1800,7 +1799,7 @@ export const BaseBackupPolicyResource = /*@__PURE__*/ S.suspend(() =>
 
 /** List of resources. */
 export type BackupPoliciesListResponseValueList =
-  ReadonlyArray<BaseBackupPolicyResource>;
+  Array<BaseBackupPolicyResource>;
 export const BackupPoliciesListResponseValueList = /*@__PURE__*/ S.Array(
   BaseBackupPolicyResource,
 ) as any as S.Schema<BackupPoliciesListResponseValueList>;
@@ -1864,7 +1863,7 @@ export const AlertsState = /*@__PURE__*/ S.String;
 
 /** Settings for Azure Monitor based alerts */
 export interface AzureMonitorAlertSettings {
-  alertsForAllJobFailures?: AlertsState;
+  alertsForAllJobFailures?: AlertsState | (string & {});
 }
 export const AzureMonitorAlertSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1942,7 +1941,7 @@ export const SoftDeleteState = /*@__PURE__*/ S.String;
 /** Soft delete related settings */
 export interface SoftDeleteSettings {
   /** State of soft delete */
-  state?: SoftDeleteState;
+  state?: SoftDeleteState | (string & {});
   /** Soft delete retention duration */
   retentionDurationInDays?: number;
 }
@@ -1962,7 +1961,7 @@ export const ImmutabilityState = /*@__PURE__*/ S.String;
 /** Immutability Settings at vault level */
 export interface ImmutabilitySettings {
   /** Immutability state */
-  state?: ImmutabilityState;
+  state?: ImmutabilityState | (string & {});
 }
 export const ImmutabilitySettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1996,7 +1995,7 @@ export const IdentityType = /*@__PURE__*/ S.String;
 /** The details of the managed identity used for CMK */
 export interface CmkKekIdentity {
   /** The identity type. 'SystemAssigned' and 'UserAssigned' are mutually exclusive. 'SystemAssigned' will use implicitly created managed identity. */
-  identityType?: IdentityType;
+  identityType?: IdentityType | (string & {});
   /** The managed identity to be used which has access permissions to the Key Vault. Provide a value here in case identity types: 'UserAssigned' only. */
   identityId?: string;
 }
@@ -2014,13 +2013,13 @@ export const InfrastructureEncryptionState = /*@__PURE__*/ S.String;
 /** Customer Managed Key details of the resource. */
 export interface EncryptionSettings {
   /** Encryption state of the Backup Vault. */
-  state?: EncryptionState;
+  state?: EncryptionState | (string & {});
   /** The properties of the Key Vault which hosts CMK */
   keyVaultProperties?: CmkKeyVaultProperties;
   /** The details of the managed identity used for CMK */
   kekIdentity?: CmkKekIdentity;
   /** Enabling/Disabling the Double Encryption state */
-  infrastructureEncryption?: InfrastructureEncryptionState;
+  infrastructureEncryption?: InfrastructureEncryptionState | (string & {});
 }
 export const EncryptionSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2069,9 +2068,9 @@ export const StorageSettingTypes = /*@__PURE__*/ S.String;
 /** Storage setting */
 export interface StorageSetting {
   /** Gets or sets the type of the datastore. */
-  datastoreType?: StorageSettingStoreTypes;
+  datastoreType?: StorageSettingStoreTypes | (string & {});
   /** Gets or sets the type. */
-  type?: StorageSettingTypes;
+  type?: StorageSettingTypes | (string & {});
 }
 export const StorageSetting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2081,7 +2080,7 @@ export const StorageSetting = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StorageSetting" }) as any as S.Schema<StorageSetting>;
 
 /** Storage Settings */
-export type BackupVaultStorageSettingsList = ReadonlyArray<StorageSetting>;
+export type BackupVaultStorageSettingsList = Array<StorageSetting>;
 export const BackupVaultStorageSettingsList = /*@__PURE__*/ S.Array(
   StorageSetting,
 ) as any as S.Schema<BackupVaultStorageSettingsList>;
@@ -2096,7 +2095,7 @@ export const CrossSubscriptionRestoreState = /*@__PURE__*/ S.String;
 /** CrossSubscriptionRestore Settings */
 export interface CrossSubscriptionRestoreSettings {
   /** CrossSubscriptionRestore state */
-  state?: CrossSubscriptionRestoreState;
+  state?: CrossSubscriptionRestoreState | (string & {});
 }
 export const CrossSubscriptionRestoreSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2112,7 +2111,7 @@ export const CrossRegionRestoreState = /*@__PURE__*/ S.String;
 
 export interface CrossRegionRestoreSettings {
   /** CrossRegionRestore state */
-  state?: CrossRegionRestoreState;
+  state?: CrossRegionRestoreState | (string & {});
 }
 export const CrossRegionRestoreSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2158,15 +2157,14 @@ export type BCDRSecurityLevel =
 export const BCDRSecurityLevel = /*@__PURE__*/ S.String;
 
 /** ResourceGuardOperationRequests on which LAC check will be performed */
-export type BackupVaultResourceGuardOperationRequestsList =
-  ReadonlyArray<string>;
+export type BackupVaultResourceGuardOperationRequestsList = Array<string>;
 export const BackupVaultResourceGuardOperationRequestsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<BackupVaultResourceGuardOperationRequestsList>;
 
 /** List of replicated regions for Backup Vault */
-export type BackupVaultReplicatedRegionsList = ReadonlyArray<string>;
+export type BackupVaultReplicatedRegionsList = Array<string>;
 export const BackupVaultReplicatedRegionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BackupVaultReplicatedRegionsList>;
@@ -2366,21 +2364,20 @@ export const BackupVaultsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<BackupVaultsCreateOrUpdateRequestTagsMap>;
 
 /** Storage Settings */
-export type BackupVaultInputStorageSettingsList = ReadonlyArray<StorageSetting>;
+export type BackupVaultInputStorageSettingsList = Array<StorageSetting>;
 export const BackupVaultInputStorageSettingsList = /*@__PURE__*/ S.Array(
   StorageSetting,
 ) as any as S.Schema<BackupVaultInputStorageSettingsList>;
 
 /** ResourceGuardOperationRequests on which LAC check will be performed */
-export type BackupVaultInputResourceGuardOperationRequestsList =
-  ReadonlyArray<string>;
+export type BackupVaultInputResourceGuardOperationRequestsList = Array<string>;
 export const BackupVaultInputResourceGuardOperationRequestsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<BackupVaultInputResourceGuardOperationRequestsList>;
 
 /** List of replicated regions for Backup Vault */
-export type BackupVaultInputReplicatedRegionsList = ReadonlyArray<string>;
+export type BackupVaultInputReplicatedRegionsList = Array<string>;
 export const BackupVaultInputReplicatedRegionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BackupVaultInputReplicatedRegionsList>;
@@ -2706,7 +2703,7 @@ export const BackupVaultResource = /*@__PURE__*/ S.suspend(() =>
 
 /** List of resources. */
 export type BackupVaultsGetInResourceGroupResponseValueList =
-  ReadonlyArray<BackupVaultResource>;
+  Array<BackupVaultResource>;
 export const BackupVaultsGetInResourceGroupResponseValueList =
   /*@__PURE__*/ S.Array(
     BackupVaultResource,
@@ -2750,7 +2747,7 @@ export const BackupVaultsGetInSubscriptionRequest = /*@__PURE__*/ S.suspend(
 
 /** List of resources. */
 export type BackupVaultsGetInSubscriptionResponseValueList =
-  ReadonlyArray<BackupVaultResource>;
+  Array<BackupVaultResource>;
 export const BackupVaultsGetInSubscriptionResponseValueList =
   /*@__PURE__*/ S.Array(
     BackupVaultResource,
@@ -2774,7 +2771,7 @@ export const BackupVaultsGetInSubscriptionResponse = /*@__PURE__*/ S.suspend(
 
 /** ResourceGuardOperationRequests on which LAC check will be performed */
 export type PatchBackupVaultInputResourceGuardOperationRequestsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PatchBackupVaultInputResourceGuardOperationRequestsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2999,8 +2996,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type DataProtectionOperationsListResponseValueList =
-  ReadonlyArray<Operation>;
+export type DataProtectionOperationsListResponseValueList = Array<Operation>;
 export const DataProtectionOperationsListResponseValueList =
   /*@__PURE__*/ S.Array(
     Operation,
@@ -3052,7 +3048,7 @@ export const DeletedBackupInstancesGetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** ResourceGuardOperationRequests on which LAC check will be performed */
 export type DeletedBackupInstanceResourceGuardOperationRequestsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const DeletedBackupInstanceResourceGuardOperationRequestsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3207,7 +3203,7 @@ export const DeletedBackupInstanceResource = /*@__PURE__*/ S.suspend(() =>
 
 /** List of resources. */
 export type DeletedBackupInstancesListResponseValueList =
-  ReadonlyArray<DeletedBackupInstanceResource>;
+  Array<DeletedBackupInstanceResource>;
 export const DeletedBackupInstancesListResponseValueList =
   /*@__PURE__*/ S.Array(
     DeletedBackupInstanceResource,
@@ -3290,22 +3286,21 @@ export const DeletedBackupVaultsGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeletedBackupVaultsGetRequest>;
 
 /** Storage Settings */
-export type DeletedBackupVaultStorageSettingsList =
-  ReadonlyArray<StorageSetting>;
+export type DeletedBackupVaultStorageSettingsList = Array<StorageSetting>;
 export const DeletedBackupVaultStorageSettingsList = /*@__PURE__*/ S.Array(
   StorageSetting,
 ) as any as S.Schema<DeletedBackupVaultStorageSettingsList>;
 
 /** ResourceGuardOperationRequests on which LAC check will be performed */
 export type DeletedBackupVaultResourceGuardOperationRequestsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const DeletedBackupVaultResourceGuardOperationRequestsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<DeletedBackupVaultResourceGuardOperationRequestsList>;
 
 /** List of replicated regions for Backup Vault */
-export type DeletedBackupVaultReplicatedRegionsList = ReadonlyArray<string>;
+export type DeletedBackupVaultReplicatedRegionsList = Array<string>;
 export const DeletedBackupVaultReplicatedRegionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DeletedBackupVaultReplicatedRegionsList>;
@@ -3463,7 +3458,7 @@ export const DeletedBackupVaultResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The DeletedBackupVaultResource items on this page */
 export type DeletedBackupVaultResourceListResultValueList =
-  ReadonlyArray<DeletedBackupVaultResource>;
+  Array<DeletedBackupVaultResource>;
 export const DeletedBackupVaultResourceListResultValueList =
   /*@__PURE__*/ S.Array(
     DeletedBackupVaultResource,
@@ -3501,7 +3496,7 @@ export const ResourceGuardOperationDetail = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourceGuardOperationDetail>;
 
 export type ResourceGuardProxyBaseResourceGuardOperationDetailsList =
-  ReadonlyArray<ResourceGuardOperationDetail>;
+  Array<ResourceGuardOperationDetail>;
 export const ResourceGuardProxyBaseResourceGuardOperationDetailsList =
   /*@__PURE__*/ S.Array(
     ResourceGuardOperationDetail,
@@ -3723,7 +3718,7 @@ export const ResourceGuardProxyBaseResource = /*@__PURE__*/ S.suspend(() =>
 
 /** List of resources. */
 export type DppResourceGuardProxyListResponseValueList =
-  ReadonlyArray<ResourceGuardProxyBaseResource>;
+  Array<ResourceGuardProxyBaseResource>;
 export const DppResourceGuardProxyListResponseValueList = /*@__PURE__*/ S.Array(
   ResourceGuardProxyBaseResource,
 ) as any as S.Schema<DppResourceGuardProxyListResponseValueList>;
@@ -3745,7 +3740,7 @@ export const DppResourceGuardProxyListResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** ResourceGuardOperationRequests on which LAC check will be performed */
 export type DppResourceGuardProxyUnlockDeleteRequestResourceGuardOperationRequestsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const DppResourceGuardProxyUnlockDeleteRequestResourceGuardOperationRequestsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3915,7 +3910,7 @@ export const FetchCrossRegionRestoreJobGetRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<FetchCrossRegionRestoreJobGetRequest>;
 
 /** A List, detailing the errors related to the job */
-export type AzureBackupJobErrorDetailsList = ReadonlyArray<UserFacingError>;
+export type AzureBackupJobErrorDetailsList = Array<UserFacingError>;
 export const AzureBackupJobErrorDetailsList = /*@__PURE__*/ S.Array(
   UserFacingError,
 ) as any as S.Schema<AzureBackupJobErrorDetailsList>;
@@ -3975,7 +3970,7 @@ export const JobSubTask = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "JobSubTask" }) as any as S.Schema<JobSubTask>;
 
 /** List of Sub Tasks of the job */
-export type JobExtendedInfoSubTasksList = ReadonlyArray<JobSubTask>;
+export type JobExtendedInfoSubTasksList = Array<JobSubTask>;
 export const JobExtendedInfoSubTasksList = /*@__PURE__*/ S.Array(
   JobSubTask,
 ) as any as S.Schema<JobExtendedInfoSubTasksList>;
@@ -3997,8 +3992,7 @@ export const UserFacingWarningDetail = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UserFacingWarningDetail>;
 
 /** A List, detailing the warnings related to the job */
-export type JobExtendedInfoWarningDetailsList =
-  ReadonlyArray<UserFacingWarningDetail>;
+export type JobExtendedInfoWarningDetailsList = Array<UserFacingWarningDetail>;
 export const JobExtendedInfoWarningDetailsList = /*@__PURE__*/ S.Array(
   UserFacingWarningDetail,
 ) as any as S.Schema<JobExtendedInfoWarningDetailsList>;
@@ -4038,7 +4032,7 @@ export const JobExtendedInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<JobExtendedInfo>;
 
 /** List of supported actions */
-export type AzureBackupJobSupportedActionsList = ReadonlyArray<string>;
+export type AzureBackupJobSupportedActionsList = Array<string>;
 export const AzureBackupJobSupportedActionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AzureBackupJobSupportedActionsList>;
@@ -4226,7 +4220,7 @@ export const AzureBackupJobResource = /*@__PURE__*/ S.suspend(() =>
 
 /** List of resources. */
 export type FetchCrossRegionRestoreJobsListResponseValueList =
-  ReadonlyArray<AzureBackupJobResource>;
+  Array<AzureBackupJobResource>;
 export const FetchCrossRegionRestoreJobsListResponseValueList =
   /*@__PURE__*/ S.Array(
     AzureBackupJobResource,
@@ -4325,7 +4319,7 @@ export const AzureBackupRecoveryPointResource = /*@__PURE__*/ S.suspend(() =>
 
 /** List of resources. */
 export type FetchSecondaryRecoveryPointsListResponseValueList =
-  ReadonlyArray<AzureBackupRecoveryPointResource>;
+  Array<AzureBackupRecoveryPointResource>;
 export const FetchSecondaryRecoveryPointsListResponseValueList =
   /*@__PURE__*/ S.Array(
     AzureBackupRecoveryPointResource,
@@ -4423,7 +4417,7 @@ export const JobsListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<JobsListRequest>;
 
 /** List of resources. */
-export type JobsListResponseValueList = ReadonlyArray<AzureBackupJobResource>;
+export type JobsListResponseValueList = Array<AzureBackupJobResource>;
 export const JobsListResponseValueList = /*@__PURE__*/ S.Array(
   AzureBackupJobResource,
 ) as any as S.Schema<JobsListResponseValueList>;
@@ -4527,13 +4521,13 @@ export const ErrorAdditionalInfoItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ErrorAdditionalInfoItem>;
 
 /** The error additional info. */
-export type ErrorAdditionalInfoList = ReadonlyArray<ErrorAdditionalInfoItem>;
+export type ErrorAdditionalInfoList = Array<ErrorAdditionalInfoItem>;
 export const ErrorAdditionalInfoList = /*@__PURE__*/ S.Array(
   ErrorAdditionalInfoItem,
 ) as any as S.Schema<ErrorAdditionalInfoList>;
 
 /** The error details. */
-export type ErrorDetailsList = ReadonlyArray<Error>;
+export type ErrorDetailsList = Array<Error>;
 export const ErrorDetailsList = /*@__PURE__*/ S.Array(
   S.suspend(() => Error),
 ) as any as S.Schema<ErrorDetailsList>;
@@ -4743,7 +4737,7 @@ export const RecoveryPointsListRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of resources. */
 export type RecoveryPointsListResponseValueList =
-  ReadonlyArray<AzureBackupRecoveryPointResource>;
+  Array<AzureBackupRecoveryPointResource>;
 export const RecoveryPointsListResponseValueList = /*@__PURE__*/ S.Array(
   AzureBackupRecoveryPointResource,
 ) as any as S.Schema<RecoveryPointsListResponseValueList>;
@@ -4847,14 +4841,14 @@ export const ResourceGuardOperation = /*@__PURE__*/ S.suspend(() =>
 
 /** {readonly} List of operation details those are protected by the ResourceGuard resource */
 export type ResourceGuardResourceGuardOperationsList =
-  ReadonlyArray<ResourceGuardOperation>;
+  Array<ResourceGuardOperation>;
 export const ResourceGuardResourceGuardOperationsList = /*@__PURE__*/ S.Array(
   ResourceGuardOperation,
 ) as any as S.Schema<ResourceGuardResourceGuardOperationsList>;
 
 /** List of critical operations which are not protected by this resourceGuard */
 export type ResourceGuardVaultCriticalOperationExclusionListList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ResourceGuardVaultCriticalOperationExclusionListList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4966,7 +4960,7 @@ export const Resource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Resource" }) as any as S.Schema<Resource>;
 
 /** The DppBaseResource items on this page */
-export type DppBaseResourceListValueList = ReadonlyArray<Resource>;
+export type DppBaseResourceListValueList = Array<Resource>;
 export const DppBaseResourceListValueList = /*@__PURE__*/ S.Array(
   Resource,
 ) as any as S.Schema<DppBaseResourceListValueList>;
@@ -5452,7 +5446,7 @@ export const ResourceGuardResource = /*@__PURE__*/ S.suspend(() =>
 
 /** List of resources. */
 export type ResourceGuardsGetResourcesInResourceGroupResponseValueList =
-  ReadonlyArray<ResourceGuardResource>;
+  Array<ResourceGuardResource>;
 export const ResourceGuardsGetResourcesInResourceGroupResponseValueList =
   /*@__PURE__*/ S.Array(
     ResourceGuardResource,
@@ -5498,7 +5492,7 @@ export const ResourceGuardsGetResourcesInSubscriptionRequest =
 
 /** List of resources. */
 export type ResourceGuardsGetResourcesInSubscriptionResponseValueList =
-  ReadonlyArray<ResourceGuardResource>;
+  Array<ResourceGuardResource>;
 export const ResourceGuardsGetResourcesInSubscriptionResponseValueList =
   /*@__PURE__*/ S.Array(
     ResourceGuardResource,
@@ -5664,7 +5658,7 @@ export const ResourceGuardsPutRequestTagsMap = /*@__PURE__*/ S.Record(
 
 /** List of critical operations which are not protected by this resourceGuard */
 export type ResourceGuardInputVaultCriticalOperationExclusionListList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ResourceGuardInputVaultCriticalOperationExclusionListList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5877,7 +5871,7 @@ export const RestorableTimeRange = /*@__PURE__*/ S.suspend(() =>
 
 /** Returns the Restore Ranges available on the Backup Instance. */
 export type AzureBackupFindRestorableTimeRangesResponseRestorableTimeRangesList =
-  ReadonlyArray<RestorableTimeRange>;
+  Array<RestorableTimeRange>;
 export const AzureBackupFindRestorableTimeRangesResponseRestorableTimeRangesList =
   /*@__PURE__*/ S.Array(
     RestorableTimeRange,

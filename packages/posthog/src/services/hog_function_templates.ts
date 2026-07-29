@@ -97,7 +97,7 @@ export const HogFunctionMappingTemplate = /*@__PURE__*/ S.suspend(() =>
 
 /** Pre-defined mapping configurations for destination templates. */
 export type HogFunctionTemplateMappingTemplatesList =
-  ReadonlyArray<HogFunctionMappingTemplate>;
+  Array<HogFunctionMappingTemplate>;
 export const HogFunctionTemplateMappingTemplatesList = /*@__PURE__*/ S.Array(
   HogFunctionMappingTemplate,
 ) as any as S.Schema<HogFunctionTemplateMappingTemplatesList>;
@@ -156,7 +156,7 @@ export const HogFunctionTemplate = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HogFunctionTemplate>;
 
 export type PaginatedHogFunctionTemplateListResultsList =
-  ReadonlyArray<HogFunctionTemplate>;
+  Array<HogFunctionTemplate>;
 export const PaginatedHogFunctionTemplateListResultsList =
   /*@__PURE__*/ S.Array(
     HogFunctionTemplate,

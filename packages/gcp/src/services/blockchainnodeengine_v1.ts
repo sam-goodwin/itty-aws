@@ -155,7 +155,7 @@ export type EthereumDetailsConsensusClientEnum =
   | "ERIGON_EMBEDDED_CONSENSUS_LAYER";
 export const EthereumDetailsConsensusClientEnum = /*@__PURE__*/ S.String;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -201,7 +201,7 @@ export const GethDetailsGarbageCollectionModeEnum = /*@__PURE__*/ S.String;
 /** Options for the Geth execution client. See [Command-line Options](https://geth.ethereum.org/docs/fundamentals/command-line-options) for more details. */
 export interface GethDetails {
   /** Immutable. Blockchain garbage collection mode. */
-  garbageCollectionMode?: GethDetailsGarbageCollectionModeEnum;
+  garbageCollectionMode?: GethDetailsGarbageCollectionModeEnum | (string & {});
 }
 export const GethDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -239,13 +239,13 @@ export const EthereumEndpoints = /*@__PURE__*/ S.suspend(() =>
 /** Ethereum-specific blockchain node details. */
 export interface EthereumDetails {
   /** Immutable. The consensus client. */
-  consensusClient?: EthereumDetailsConsensusClientEnum;
+  consensusClient?: EthereumDetailsConsensusClientEnum | (string & {});
   /** Configuration for validator-related parameters on the beacon client, and for any GCP-managed validator client. */
   validatorConfig?: ValidatorConfig;
   /** Immutable. The type of Ethereum node. */
-  nodeType?: EthereumDetailsNodeTypeEnum;
+  nodeType?: EthereumDetailsNodeTypeEnum | (string & {});
   /** Immutable. The execution client */
-  executionClient?: EthereumDetailsExecutionClientEnum;
+  executionClient?: EthereumDetailsExecutionClientEnum | (string & {});
   /** Immutable. Enables JSON-RPC access to functions in the `debug` namespace. Defaults to `false`. */
   apiEnableDebug?: boolean;
   /** Details for the Geth execution client. */
@@ -253,7 +253,7 @@ export interface EthereumDetails {
   /** Immutable. Enables JSON-RPC access to functions in the `admin` namespace. Defaults to `false`. */
   apiEnableAdmin?: boolean;
   /** Immutable. The Ethereum environment being accessed. */
-  network?: EthereumDetailsNetworkEnum;
+  network?: EthereumDetailsNetworkEnum | (string & {});
   /** Output only. Ethereum-specific endpoint information. */
   additionalEndpoints?: EthereumEndpoints;
 }
@@ -280,13 +280,13 @@ export interface BlockchainNode {
   /** User-provided key-value pairs. */
   labels?: StringMap;
   /** Output only. A status representing the state of the node. */
-  state?: BlockchainNodeStateEnum;
+  state?: BlockchainNodeStateEnum | (string & {});
   /** Output only. The fully qualified name of the blockchain node. e.g. `projects/my-project/locations/us-central1/blockchainNodes/my-node`. */
   name?: string;
   /** Output only. The connection information used to interact with a blockchain node. */
   connectionInfo?: ConnectionInfo;
   /** Immutable. The blockchain type of the node. */
-  blockchainType?: BlockchainNodeBlockchainTypeEnum;
+  blockchainType?: BlockchainNodeBlockchainTypeEnum | (string & {});
   /** Optional. When true, the node is only accessible via Private Service Connect; no public endpoints are exposed. Otherwise, the node is only accessible via public endpoints. Warning: These nodes are deprecated, please use public endpoints instead. */
   privateServiceConnectEnabled?: boolean;
   /** Output only. The timestamp at which the blockchain node was last updated. */
@@ -342,7 +342,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -537,7 +537,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = ReadonlyArray<Location>;
+export type LocationList = Array<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -589,7 +589,7 @@ export const ListProjectsLocationsBlockchainNodesRequest =
     identifier: "ListProjectsLocationsBlockchainNodesRequest",
   }) as any as S.Schema<ListProjectsLocationsBlockchainNodesRequest>;
 
-export type BlockchainNodeList = ReadonlyArray<BlockchainNode>;
+export type BlockchainNodeList = Array<BlockchainNode>;
 export const BlockchainNodeList = /*@__PURE__*/ S.Array(
   BlockchainNode,
 ) as any as S.Schema<BlockchainNodeList>;
@@ -641,7 +641,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type OperationList = ReadonlyArray<Operation>;
+export type OperationList = Array<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;

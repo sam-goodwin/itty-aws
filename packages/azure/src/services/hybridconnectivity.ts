@@ -262,7 +262,7 @@ export const EndpointResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EndpointResource>;
 
 /** The list of endpoint. */
-export type EndpointsListValueList = ReadonlyArray<EndpointResource>;
+export type EndpointsListValueList = Array<EndpointResource>;
 export const EndpointsListValueList = /*@__PURE__*/ S.Array(
   EndpointResource,
 ) as any as S.Schema<EndpointsListValueList>;
@@ -553,7 +553,7 @@ export const SolutionTypeSettings = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of solution types and their settings */
 export type GenerateAwsTemplatePostRequestSolutionTypesList =
-  ReadonlyArray<SolutionTypeSettings>;
+  Array<SolutionTypeSettings>;
 export const GenerateAwsTemplatePostRequestSolutionTypesList =
   /*@__PURE__*/ S.Array(
     SolutionTypeSettings,
@@ -739,8 +739,7 @@ export const InventoryResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InventoryResource>;
 
 /** The InventoryResource items on this page */
-export type InventoryResourceListResultValueList =
-  ReadonlyArray<InventoryResource>;
+export type InventoryResourceListResultValueList = Array<InventoryResource>;
 export const InventoryResourceListResultValueList = /*@__PURE__*/ S.Array(
   InventoryResource,
 ) as any as S.Schema<InventoryResourceListResultValueList>;
@@ -829,7 +828,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = ReadonlyArray<Operation>;
+export type OperationsListResponseValueList = Array<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;
@@ -860,7 +859,7 @@ export const PublicCloudConnectorsCreateOrUpdateRequestTagsMap =
   ) as any as S.Schema<PublicCloudConnectorsCreateOrUpdateRequestTagsMap>;
 
 /** List of AWS accounts which need to be excluded. */
-export type AwsCloudProfileExcludedAccountsList = ReadonlyArray<string>;
+export type AwsCloudProfileExcludedAccountsList = Array<string>;
 export const AwsCloudProfileExcludedAccountsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AwsCloudProfileExcludedAccountsList>;
@@ -1163,7 +1162,7 @@ export const PublicCloudConnector = /*@__PURE__*/ S.suspend(() =>
 
 /** The PublicCloudConnector items on this page */
 export type PublicCloudConnectorListResultValueList =
-  ReadonlyArray<PublicCloudConnector>;
+  Array<PublicCloudConnector>;
 export const PublicCloudConnectorListResultValueList = /*@__PURE__*/ S.Array(
   PublicCloudConnector,
 ) as any as S.Schema<PublicCloudConnectorListResultValueList>;
@@ -1231,14 +1230,13 @@ export const PublicCloudConnectorsTestPermissionsRequest =
   }) as any as S.Schema<PublicCloudConnectorsTestPermissionsRequest>;
 
 /** The operations list. */
-export type OperationStatusResultOperationsList =
-  ReadonlyArray<OperationStatusResult>;
+export type OperationStatusResultOperationsList = Array<OperationStatusResult>;
 export const OperationStatusResultOperationsList = /*@__PURE__*/ S.Array(
   S.suspend(() => OperationStatusResult),
 ) as any as S.Schema<OperationStatusResultOperationsList>;
 
 /** The error details. */
-export type ErrorDetailDetailsList = ReadonlyArray<ErrorDetail>;
+export type ErrorDetailDetailsList = Array<ErrorDetail>;
 export const ErrorDetailDetailsList = /*@__PURE__*/ S.Array(
   S.suspend(() => ErrorDetail),
 ) as any as S.Schema<ErrorDetailDetailsList>;
@@ -1260,7 +1258,7 @@ export const ErrorAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ErrorAdditionalInfo>;
 
 /** The error additional info. */
-export type ErrorDetailAdditionalInfoList = ReadonlyArray<ErrorAdditionalInfo>;
+export type ErrorDetailAdditionalInfoList = Array<ErrorAdditionalInfo>;
 export const ErrorDetailAdditionalInfoList = /*@__PURE__*/ S.Array(
   ErrorAdditionalInfo,
 ) as any as S.Schema<ErrorDetailAdditionalInfoList>;
@@ -1327,7 +1325,7 @@ export const OperationStatusResult = /*@__PURE__*/ S.suspend(() =>
 
 /** The operations list. */
 export type PublicCloudConnectorsTestPermissionsResponseOperationsList =
-  ReadonlyArray<OperationStatusResult>;
+  Array<OperationStatusResult>;
 export const PublicCloudConnectorsTestPermissionsResponseOperationsList =
   /*@__PURE__*/ S.Array(
     OperationStatusResult,
@@ -1382,7 +1380,7 @@ export const PublicCloudConnectorsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<PublicCloudConnectorsUpdateRequestTagsMap>;
 
 /** List of AWS accounts which need to be excluded. */
-export type AwsCloudProfileUpdateExcludedAccountsList = ReadonlyArray<string>;
+export type AwsCloudProfileUpdateExcludedAccountsList = Array<string>;
 export const AwsCloudProfileUpdateExcludedAccountsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AwsCloudProfileUpdateExcludedAccountsList>;
@@ -1720,7 +1718,7 @@ export const ServiceConfigurationResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of service configuration */
 export type ServiceConfigurationListValueList =
-  ReadonlyArray<ServiceConfigurationResource>;
+  Array<ServiceConfigurationResource>;
 export const ServiceConfigurationListValueList = /*@__PURE__*/ S.Array(
   ServiceConfigurationResource,
 ) as any as S.Schema<ServiceConfigurationListValueList>;
@@ -2025,7 +2023,7 @@ export const SolutionConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** The SolutionConfiguration items on this page */
 export type SolutionConfigurationListResultValueList =
-  ReadonlyArray<SolutionConfiguration>;
+  Array<SolutionConfiguration>;
 export const SolutionConfigurationListResultValueList = /*@__PURE__*/ S.Array(
   SolutionConfiguration,
 ) as any as S.Schema<SolutionConfigurationListResultValueList>;
@@ -2071,7 +2069,7 @@ export const SolutionConfigurationsSyncNowRequest = /*@__PURE__*/ S.suspend(
 
 /** The operations list. */
 export type SolutionConfigurationsSyncNowResponseOperationsList =
-  ReadonlyArray<OperationStatusResult>;
+  Array<OperationStatusResult>;
 export const SolutionConfigurationsSyncNowResponseOperationsList =
   /*@__PURE__*/ S.Array(
     OperationStatusResult,
@@ -2209,16 +2207,14 @@ export const SolutionTypesGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SolutionTypesGetRequest>;
 
 /** The locations this solution is supported in. */
-export type SolutionTypePropertiesSupportedAzureRegionsList =
-  ReadonlyArray<string>;
+export type SolutionTypePropertiesSupportedAzureRegionsList = Array<string>;
 export const SolutionTypePropertiesSupportedAzureRegionsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<SolutionTypePropertiesSupportedAzureRegionsList>;
 
 /** Array of allowed values for this solution settings property. */
-export type SolutionTypeSettingsPropertiesAllowedValuesList =
-  ReadonlyArray<string>;
+export type SolutionTypeSettingsPropertiesAllowedValuesList = Array<string>;
 export const SolutionTypeSettingsPropertiesAllowedValuesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2254,7 +2250,7 @@ export const SolutionTypeSettingsProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of solution settings and its description. */
 export type SolutionTypePropertiesSolutionSettingsList =
-  ReadonlyArray<SolutionTypeSettingsProperties>;
+  Array<SolutionTypeSettingsProperties>;
 export const SolutionTypePropertiesSolutionSettingsList = /*@__PURE__*/ S.Array(
   SolutionTypeSettingsProperties,
 ) as any as S.Schema<SolutionTypePropertiesSolutionSettingsList>;
@@ -2357,7 +2353,7 @@ export const SolutionTypeResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The SolutionTypeResource items on this page */
 export type SolutionTypeResourceListResultValueList =
-  ReadonlyArray<SolutionTypeResource>;
+  Array<SolutionTypeResource>;
 export const SolutionTypeResourceListResultValueList = /*@__PURE__*/ S.Array(
   SolutionTypeResource,
 ) as any as S.Schema<SolutionTypeResourceListResultValueList>;

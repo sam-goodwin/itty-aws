@@ -1041,7 +1041,7 @@ export const ErrorBlock = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ message: S.optional(S.String) }),
 ).annotate({ identifier: "ErrorBlock" }) as any as S.Schema<ErrorBlock>;
 export interface ImageBlock {
-  format: ImageFormat;
+  format: ImageFormat | (string & {});
   source: ImageSource;
   error?: ErrorBlock;
 }
@@ -1096,7 +1096,7 @@ export const CitationsConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "CitationsConfig",
 }) as any as S.Schema<CitationsConfig>;
 export interface DocumentBlock {
-  format?: DocumentFormat;
+  format?: DocumentFormat | (string & {});
   name: string;
   source: DocumentSource;
   context?: string;
@@ -1131,7 +1131,7 @@ export const VideoSource = /*@__PURE__*/ S.Union([
   S.Struct({ s3Location: S3Location }),
 ]);
 export interface VideoBlock {
-  format: VideoFormat;
+  format: VideoFormat | (string & {});
   source: VideoSource;
 }
 export const VideoBlock = /*@__PURE__*/ S.suspend(() =>
@@ -1163,7 +1163,7 @@ export const AudioSource = /*@__PURE__*/ S.Union([
   S.Struct({ s3Location: S3Location }),
 ]);
 export interface AudioBlock {
-  format: AudioFormat;
+  format: AudioFormat | (string & {});
   source: AudioSource;
   error?: ErrorBlock;
 }
@@ -1183,7 +1183,7 @@ export interface ToolUseBlock {
   toolUseId: string;
   name: string;
   input: any;
-  type?: ToolUseType;
+  type?: ToolUseType | (string & {});
 }
 export const ToolUseBlock = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1288,7 +1288,7 @@ export const ToolResultStatus = /*@__PURE__*/ S.String;
 export interface ToolResultBlock {
   toolUseId: string;
   content: ToolResultContentBlock[];
-  status?: ToolResultStatus;
+  status?: ToolResultStatus | (string & {});
   type?: string;
 }
 export const ToolResultBlock = /*@__PURE__*/ S.suspend(() =>
@@ -1307,8 +1307,10 @@ export type GuardrailConverseContentQualifier =
   | "guard_content";
 export const GuardrailConverseContentQualifier = /*@__PURE__*/ S.String;
 
-export type GuardrailConverseContentQualifierList =
-  GuardrailConverseContentQualifier[];
+export type GuardrailConverseContentQualifierList = (
+  | GuardrailConverseContentQualifier
+  | (string & {})
+)[];
 export const GuardrailConverseContentQualifierList = /*@__PURE__*/ S.Array(
   GuardrailConverseContentQualifier,
 );
@@ -1332,7 +1334,7 @@ export const GuardrailConverseImageSource = /*@__PURE__*/ S.Union([
   S.Struct({ bytes: T.Blob }),
 ]);
 export interface GuardrailConverseImageBlock {
-  format: GuardrailConverseImageFormat;
+  format: GuardrailConverseImageFormat | (string & {});
   source: GuardrailConverseImageSource;
 }
 export const GuardrailConverseImageBlock = /*@__PURE__*/ S.suspend(() =>
@@ -1357,8 +1359,8 @@ export type CacheTTL = "5m" | "1h";
 export const CacheTTL = /*@__PURE__*/ S.String;
 
 export interface CachePointBlock {
-  type: CachePointType;
-  ttl?: CacheTTL;
+  type: CachePointType | (string & {});
+  ttl?: CacheTTL | (string & {});
 }
 export const CachePointBlock = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ type: CachePointType, ttl: S.optional(CacheTTL) }),
@@ -1717,7 +1719,7 @@ export const ContentBlock = /*@__PURE__*/ S.Union([
 export type ContentBlocks = ContentBlock[];
 export const ContentBlocks = /*@__PURE__*/ S.Array(ContentBlock);
 export interface Message {
-  role: ConversationRole;
+  role: ConversationRole | (string & {});
   content: ContentBlock[];
 }
 export const Message = /*@__PURE__*/ S.suspend(() =>
@@ -1871,7 +1873,7 @@ export type PerformanceConfigLatency = "standard" | "optimized";
 export const PerformanceConfigLatency = /*@__PURE__*/ S.String;
 
 export interface PerformanceConfiguration {
-  latency?: PerformanceConfigLatency;
+  latency?: PerformanceConfigLatency | (string & {});
 }
 export const PerformanceConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ latency: S.optional(PerformanceConfigLatency) }),
@@ -1882,7 +1884,7 @@ export type ServiceTierType = "priority" | "default" | "flex" | "reserved";
 export const ServiceTierType = /*@__PURE__*/ S.String;
 
 export interface ServiceTier {
-  type: ServiceTierType;
+  type: ServiceTierType | (string & {});
 }
 export const ServiceTier = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ type: ServiceTierType }),

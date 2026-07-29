@@ -60,7 +60,7 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -124,7 +124,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -210,7 +210,7 @@ export interface Site {
   /** Optional. The [ID of a Web App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id) associated with the Hosting site. */
   appId?: string;
   /** Output only. The type of Hosting site. Every Firebase project has a `DEFAULT_SITE`, which is created when Hosting is provisioned for the project. All additional sites are `USER_SITE`. */
-  type?: SiteTypeEnum;
+  type?: SiteTypeEnum | (string & {});
 }
 export const Site = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -287,7 +287,7 @@ export const Header = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Header" }) as any as S.Schema<Header>;
 
-export type HeaderList = ReadonlyArray<Header>;
+export type HeaderList = Array<Header>;
 export const HeaderList = /*@__PURE__*/ S.Array(
   Header,
 ) as any as S.Schema<HeaderList>;
@@ -340,7 +340,7 @@ export const Rewrite = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Rewrite" }) as any as S.Schema<Rewrite>;
 
-export type RewriteList = ReadonlyArray<Rewrite>;
+export type RewriteList = Array<Rewrite>;
 export const RewriteList = /*@__PURE__*/ S.Array(
   Rewrite,
 ) as any as S.Schema<RewriteList>;
@@ -385,7 +385,7 @@ export const Redirect = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Redirect" }) as any as S.Schema<Redirect>;
 
-export type RedirectList = ReadonlyArray<Redirect>;
+export type RedirectList = Array<Redirect>;
 export const RedirectList = /*@__PURE__*/ S.Array(
   Redirect,
 ) as any as S.Schema<RedirectList>;
@@ -399,9 +399,11 @@ export interface ServingConfig {
   /** An array of objects (called rewrite rules), where each rule specifies a URL pattern that, if matched to the request URL path, triggers Hosting to respond as if the service were given the specified destination URL. */
   rewrites?: RewriteList;
   /** Defines how to handle a trailing slash in the URL path. */
-  trailingSlashBehavior?: ServingConfigTrailingSlashBehaviorEnum;
+  trailingSlashBehavior?:
+    | ServingConfigTrailingSlashBehaviorEnum
+    | (string & {});
   /** How to handle well known App Association files. */
-  appAssociation?: ServingConfigAppAssociationEnum;
+  appAssociation?: ServingConfigAppAssociationEnum | (string & {});
   /** Optional. Defines i18n rewrite behavior. */
   i18n?: I18nConfig;
   /** An array of objects (called redirect rules), where each rule specifies a URL pattern that, if matched to the request URL path, triggers Hosting to respond with a redirect to the specified destination path. */
@@ -448,7 +450,7 @@ export interface Version {
   /** Output only. The time at which the version was `FINALIZED`. */
   finalizeTime?: string;
   /** The deploy status of the version. For a successful deploy, call [`CreateVersion`](sites.versions/create) to make a new version (`CREATED` status), [upload all desired files](sites.versions/populateFiles) to the version, then [update](sites.versions/patch) the version to the `FINALIZED` status. Note that if you leave the version in the `CREATED` state for more than 12 hours, the system will automatically mark the version as `ABANDONED`. You can also change the status of a version to `DELETED` by calling [`DeleteVersion`](sites.versions/delete). */
-  status?: VersionStatusEnum;
+  status?: VersionStatusEnum | (string & {});
   /** Output only. The time at which the version was `DELETED`. */
   deleteTime?: string;
   /** The fully-qualified resource name for the version, in the format: sites/ SITE_ID/versions/VERSION_ID This name is provided in the response body when you call [`CreateVersion`](sites.versions/create). */
@@ -480,7 +482,7 @@ export interface Release {
   /** Output only. Identifies the user who created the release. */
   releaseUser?: ActingUser;
   /** Explains the reason for the release. Specify a value for this field only when creating a `SITE_DISABLE` type release. */
-  type?: ReleaseTypeEnum;
+  type?: ReleaseTypeEnum | (string & {});
   /** The deploy description when the release was created. The value can be up to 512 characters. */
   message?: string;
   /** Output only. The unique identifier for the release, in either of the following formats: - sites/SITE_ID/releases/RELEASE_ID - sites/SITE_ID/channels/CHANNEL_ID/releases/RELEASE_ID This name is provided in the response body when you call [`releases.create`](sites.releases/create) or [`channels.releases.create`](sites.channels.releases/create). */
@@ -583,7 +585,7 @@ export const CreateProjectsSitesChannelsReleasesRequest =
     identifier: "CreateProjectsSitesChannelsReleasesRequest",
   }) as any as S.Schema<CreateProjectsSitesChannelsReleasesRequest>;
 
-export type StatusList = ReadonlyArray<Status>;
+export type StatusList = Array<Status>;
 export const StatusList = /*@__PURE__*/ S.Array(
   Status,
 ) as any as S.Schema<StatusList>;
@@ -638,9 +640,9 @@ export interface DnsRecord {
   /** Output only. The data of the record. The meaning of the value depends on record type: - A and AAAA: IP addresses for the domain name. - CNAME: Another domain to check for records. - TXT: Arbitrary text strings associated with the domain name. Hosting uses TXT records to determine which Firebase projects have permission to act on the domain name's behalf. - CAA: The record's flags, tag, and value, e.g. `0 issue "pki.goog"`. */
   rdata?: string;
   /** Output only. The record's type, which determines what data the record contains. */
-  type?: DnsRecordTypeEnum;
+  type?: DnsRecordTypeEnum | (string & {});
   /** Output only. An enum that indicates the a required action for this record. */
-  requiredAction?: DnsRecordRequiredActionEnum;
+  requiredAction?: DnsRecordRequiredActionEnum | (string & {});
 }
 export const DnsRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -651,7 +653,7 @@ export const DnsRecord = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DnsRecord" }) as any as S.Schema<DnsRecord>;
 
-export type DnsRecordList = ReadonlyArray<DnsRecord>;
+export type DnsRecordList = Array<DnsRecord>;
 export const DnsRecordList = /*@__PURE__*/ S.Array(
   DnsRecord,
 ) as any as S.Schema<DnsRecordList>;
@@ -673,7 +675,7 @@ export const DnsRecordSet = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DnsRecordSet" }) as any as S.Schema<DnsRecordSet>;
 
-export type DnsRecordSetList = ReadonlyArray<DnsRecordSet>;
+export type DnsRecordSetList = Array<DnsRecordSet>;
 export const DnsRecordSetList = /*@__PURE__*/ S.Array(
   DnsRecordSet,
 ) as any as S.Schema<DnsRecordSetList>;
@@ -726,11 +728,11 @@ export interface Certificate {
   /** Output only. A set of errors Hosting encountered when attempting to create a cert for your domain name. Resolve these issues to ensure Hosting is able to provide secure communication with your site's visitors. */
   issues?: StatusList;
   /** Output only. The certificate's type. */
-  type?: CertificateTypeEnum;
+  type?: CertificateTypeEnum | (string & {});
   /** Output only. A set of ACME challenges you can add to your DNS records or existing, non-Hosting hosting provider to allow Hosting to create an SSL certificate for your domain name before you point traffic toward hosting. You can use thse challenges as part of a zero downtime transition from your old provider to Hosting. */
   verification?: CertVerification;
   /** Output only. The state of the certificate. Only the `CERT_ACTIVE` and `CERT_EXPIRING_SOON` states provide SSL coverage for a domain name. If the state is `PROPAGATING` and Hosting had an active cert for the domain name before, that formerly-active cert provides SSL coverage for the domain name until the current cert propagates. */
-  state?: CertificateStateEnum;
+  state?: CertificateStateEnum | (string & {});
   /** Output only. The certificate's expiration time. After this time, the cert can no longer be used to provide secure communication between Hosting and your site's visitors. */
   expireTime?: string;
   /** Output only. The certificate's creation time. For `TEMPORARY` certs this is the time Hosting first generated challenges for your domain name. For all other cert types, it's the time the actual cert was created. */
@@ -779,9 +781,9 @@ export interface CustomDomain {
   /** Output only. The SSL certificate Hosting has for this custom domain's domain name. For new custom domains, this often represents Hosting's intent to create a certificate, rather than an actual cert. Check the `state` field for more. */
   cert?: Certificate;
   /** A field that lets you specify which SSL certificate type Hosting creates for your domain name. Spark plan custom domains only have access to the `GROUPED` cert type, while Blaze plan domains can select any option. */
-  certPreference?: CustomDomainCertPreferenceEnum;
+  certPreference?: CustomDomainCertPreferenceEnum | (string & {});
   /** Output only. The `HostState` of the domain name this `CustomDomain` refers to. */
-  hostState?: CustomDomainHostStateEnum;
+  hostState?: CustomDomainHostStateEnum | (string & {});
   /** Output only. A field that, if true, indicates that Hosting's systems are attmepting to make the custom domain's state match your preferred state. This is most frequently `true` when initially provisioning a `CustomDomain` after a `CreateCustomDomain` request or when creating a new SSL certificate to match an updated `cert_preference` after an `UpdateCustomDomain` request. */
   reconciling?: boolean;
   /** Output only. The minimum time before a soft-deleted `CustomDomain` is completely removed from Hosting; null for custom domains that haven't been deleted. */
@@ -791,7 +793,7 @@ export interface CustomDomain {
   /** Output only. The custom domain's create time. */
   createTime?: string;
   /** Output only. The `OwnershipState` of the domain name this `CustomDomain` refers to. */
-  ownershipState?: CustomDomainOwnershipStateEnum;
+  ownershipState?: CustomDomainOwnershipStateEnum | (string & {});
   /** Annotations you can add to leave both human- and machine-readable metadata about your `CustomDomain`. */
   annotations?: StringMap;
   /** Output only. The last time the `CustomDomain` was updated. */
@@ -868,7 +870,7 @@ export interface DomainRedirect {
   /** Required. The domain name to redirect to. */
   domainName?: string;
   /** Required. The redirect status code. */
-  type?: DomainRedirectTypeEnum;
+  type?: DomainRedirectTypeEnum | (string & {});
 }
 export const DomainRedirect = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -931,7 +933,7 @@ export const DomainProvisioningDnsStatusEnum = /*@__PURE__*/ S.String;
 /** The current certificate provisioning status information for a domain. */
 export interface DomainProvisioning {
   /** The certificate provisioning status; updated when Firebase Hosting provisions an SSL certificate for the domain. */
-  certStatus?: DomainProvisioningCertStatusEnum;
+  certStatus?: DomainProvisioningCertStatusEnum | (string & {});
   /** The IPs found at the last DNS fetch. */
   discoveredIps?: StringList;
   /** The DNS challenge for generating a certificate. */
@@ -943,7 +945,7 @@ export interface DomainProvisioning {
   /** The TXT records (for the certificate challenge) that were found at the last DNS fetch. */
   certChallengeDiscoveredTxt?: StringList;
   /** The DNS record match status as of the last DNS fetch. */
-  dnsStatus?: DomainProvisioningDnsStatusEnum;
+  dnsStatus?: DomainProvisioningDnsStatusEnum | (string & {});
   /** The time at which the last DNS fetch occurred. */
   dnsFetchTime?: string;
 }
@@ -983,7 +985,7 @@ export interface Domain {
   /** Output only. The time at which the domain was last updated. */
   updateTime?: string;
   /** Output only. Additional status of the domain association. */
-  status?: DomainStatusEnum;
+  status?: DomainStatusEnum | (string & {});
 }
 export const Domain = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1677,7 +1679,7 @@ export const ListProjectsSitesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsSitesRequest",
 }) as any as S.Schema<ListProjectsSitesRequest>;
 
-export type SiteList = ReadonlyArray<Site>;
+export type SiteList = Array<Site>;
 export const SiteList = /*@__PURE__*/ S.Array(
   Site,
 ) as any as S.Schema<SiteList>;
@@ -1721,7 +1723,7 @@ export const ListProjectsSitesChannelsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsSitesChannelsRequest",
 }) as any as S.Schema<ListProjectsSitesChannelsRequest>;
 
-export type ChannelList = ReadonlyArray<Channel>;
+export type ChannelList = Array<Channel>;
 export const ChannelList = /*@__PURE__*/ S.Array(
   Channel,
 ) as any as S.Schema<ChannelList>;
@@ -1766,7 +1768,7 @@ export const ListProjectsSitesChannelsReleasesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsSitesChannelsReleasesRequest",
 }) as any as S.Schema<ListProjectsSitesChannelsReleasesRequest>;
 
-export type ReleaseList = ReadonlyArray<Release>;
+export type ReleaseList = Array<Release>;
 export const ReleaseList = /*@__PURE__*/ S.Array(
   Release,
 ) as any as S.Schema<ReleaseList>;
@@ -1814,7 +1816,7 @@ export const ListProjectsSitesCustomDomainsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsSitesCustomDomainsRequest",
 }) as any as S.Schema<ListProjectsSitesCustomDomainsRequest>;
 
-export type CustomDomainList = ReadonlyArray<CustomDomain>;
+export type CustomDomainList = Array<CustomDomain>;
 export const CustomDomainList = /*@__PURE__*/ S.Array(
   CustomDomain,
 ) as any as S.Schema<CustomDomainList>;
@@ -1866,7 +1868,7 @@ export const ListProjectsSitesCustomDomainsOperationsRequest =
     identifier: "ListProjectsSitesCustomDomainsOperationsRequest",
   }) as any as S.Schema<ListProjectsSitesCustomDomainsOperationsRequest>;
 
-export type OperationList = ReadonlyArray<Operation>;
+export type OperationList = Array<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -1914,7 +1916,7 @@ export const ListProjectsSitesDomainsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsSitesDomainsRequest",
 }) as any as S.Schema<ListProjectsSitesDomainsRequest>;
 
-export type DomainList = ReadonlyArray<Domain>;
+export type DomainList = Array<Domain>;
 export const DomainList = /*@__PURE__*/ S.Array(
   Domain,
 ) as any as S.Schema<DomainList>;
@@ -1986,7 +1988,7 @@ export const ListProjectsSitesVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsSitesVersionsRequest",
 }) as any as S.Schema<ListProjectsSitesVersionsRequest>;
 
-export type VersionList = ReadonlyArray<Version>;
+export type VersionList = Array<Version>;
 export const VersionList = /*@__PURE__*/ S.Array(
   Version,
 ) as any as S.Schema<VersionList>;
@@ -2065,7 +2067,7 @@ export const VersionFile = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "VersionFile" }) as any as S.Schema<VersionFile>;
 
-export type VersionFileList = ReadonlyArray<VersionFile>;
+export type VersionFileList = Array<VersionFile>;
 export const VersionFileList = /*@__PURE__*/ S.Array(
   VersionFile,
 ) as any as S.Schema<VersionFileList>;

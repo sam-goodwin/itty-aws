@@ -380,7 +380,7 @@ export const AvailabilitySet = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AvailabilitySet>;
 
 /** The AvailabilitySet items on this page */
-export type AvailabilitySetListResultValueList = ReadonlyArray<AvailabilitySet>;
+export type AvailabilitySetListResultValueList = Array<AvailabilitySet>;
 export const AvailabilitySetListResultValueList = /*@__PURE__*/ S.Array(
   AvailabilitySet,
 ) as any as S.Schema<AvailabilitySetListResultValueList>;
@@ -623,8 +623,7 @@ export const StorageQosPolicy = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StorageQosPolicy>;
 
 /** List of QoS policies available for the cloud. */
-export type CloudPropertiesStorageQoSPoliciesList =
-  ReadonlyArray<StorageQosPolicy>;
+export type CloudPropertiesStorageQoSPoliciesList = Array<StorageQosPolicy>;
 export const CloudPropertiesStorageQoSPoliciesList = /*@__PURE__*/ S.Array(
   StorageQosPolicy,
 ) as any as S.Schema<CloudPropertiesStorageQoSPoliciesList>;
@@ -858,7 +857,7 @@ export const Cloud = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Cloud" }) as any as S.Schema<Cloud>;
 
 /** The Cloud items on this page */
-export type CloudListResultValueList = ReadonlyArray<Cloud>;
+export type CloudListResultValueList = Array<Cloud>;
 export const CloudListResultValueList = /*@__PURE__*/ S.Array(
   Cloud,
 ) as any as S.Schema<CloudListResultValueList>;
@@ -1221,7 +1220,7 @@ export const GuestAgent = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GuestAgent" }) as any as S.Schema<GuestAgent>;
 
 /** The GuestAgent items on this page */
-export type GuestAgentListResultValueList = ReadonlyArray<GuestAgent>;
+export type GuestAgentListResultValueList = Array<GuestAgent>;
 export const GuestAgentListResultValueList = /*@__PURE__*/ S.Array(
   GuestAgent,
 ) as any as S.Schema<GuestAgentListResultValueList>;
@@ -1492,7 +1491,7 @@ export const InventoryItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "InventoryItem" }) as any as S.Schema<InventoryItem>;
 
 /** The InventoryItem items on this page */
-export type InventoryItemListResultValueList = ReadonlyArray<InventoryItem>;
+export type InventoryItemListResultValueList = Array<InventoryItem>;
 export const InventoryItemListResultValueList = /*@__PURE__*/ S.Array(
   InventoryItem,
 ) as any as S.Schema<InventoryItemListResultValueList>;
@@ -1581,7 +1580,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = ReadonlyArray<Operation>;
+export type OperationsListResponseValueList = Array<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;
@@ -1651,7 +1650,7 @@ export const AvailabilitySetListItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Availability Sets in vm. */
 export type VirtualMachineInstancePropertiesInputAvailabilitySetsList =
-  ReadonlyArray<AvailabilitySetListItem>;
+  Array<AvailabilitySetListItem>;
 export const VirtualMachineInstancePropertiesInputAvailabilitySetsList =
   /*@__PURE__*/ S.Array(
     AvailabilitySetListItem,
@@ -1716,15 +1715,15 @@ export interface HardwareProfile {
   /** Gets or sets the number of vCPUs for the vm. */
   cpuCount?: number;
   /** Gets or sets a value indicating whether to enable processor compatibility mode for live migration of VMs. */
-  limitCpuForMigration?: LimitCpuForMigration;
+  limitCpuForMigration?: LimitCpuForMigration | (string & {});
   /** Gets or sets a value indicating whether to enable dynamic memory or not. */
-  dynamicMemoryEnabled?: DynamicMemoryEnabled;
+  dynamicMemoryEnabled?: DynamicMemoryEnabled | (string & {});
   /** Gets or sets the max dynamic memory for the vm. */
   dynamicMemoryMaxMB?: number;
   /** Gets or sets the min dynamic memory for the vm. */
   dynamicMemoryMinMB?: number;
   /** Gets highly available property. */
-  isHighlyAvailable?: IsHighlyAvailable;
+  isHighlyAvailable?: IsHighlyAvailable | (string & {});
 }
 export const HardwareProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1777,7 +1776,7 @@ export const NetworkInterfaceInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets the list of network interfaces associated with the virtual machine. */
 export type NetworkProfileInputNetworkInterfacesList =
-  ReadonlyArray<NetworkInterfaceInput>;
+  Array<NetworkInterfaceInput>;
 export const NetworkProfileInputNetworkInterfacesList = /*@__PURE__*/ S.Array(
   NetworkInterfaceInput,
 ) as any as S.Schema<NetworkProfileInputNetworkInterfacesList>;
@@ -1856,7 +1855,7 @@ export const VirtualDiskInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VirtualDiskInput>;
 
 /** Gets or sets the list of virtual disks associated with the virtual machine. */
-export type StorageProfileInputDisksList = ReadonlyArray<VirtualDiskInput>;
+export type StorageProfileInputDisksList = Array<VirtualDiskInput>;
 export const StorageProfileInputDisksList = /*@__PURE__*/ S.Array(
   VirtualDiskInput,
 ) as any as S.Schema<StorageProfileInputDisksList>;
@@ -1970,7 +1969,7 @@ export const VirtualMachineInstancesCreateOrUpdateRequest =
 
 /** Availability Sets in vm. */
 export type VirtualMachineInstancePropertiesAvailabilitySetsList =
-  ReadonlyArray<AvailabilitySetListItem>;
+  Array<AvailabilitySetListItem>;
 export const VirtualMachineInstancePropertiesAvailabilitySetsList =
   /*@__PURE__*/ S.Array(
     AvailabilitySetListItem,
@@ -2030,13 +2029,13 @@ export const OsProfileForVmInstance = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OsProfileForVmInstance>;
 
 /** Gets the nic ipv4 addresses. */
-export type NetworkInterfaceIpv4AddressesList = ReadonlyArray<string>;
+export type NetworkInterfaceIpv4AddressesList = Array<string>;
 export const NetworkInterfaceIpv4AddressesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<NetworkInterfaceIpv4AddressesList>;
 
 /** Gets the nic ipv6 addresses. */
-export type NetworkInterfaceIpv6AddressesList = ReadonlyArray<string>;
+export type NetworkInterfaceIpv6AddressesList = Array<string>;
 export const NetworkInterfaceIpv6AddressesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<NetworkInterfaceIpv6AddressesList>;
@@ -2085,8 +2084,7 @@ export const NetworkInterface = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NetworkInterface>;
 
 /** Gets or sets the list of network interfaces associated with the virtual machine. */
-export type NetworkProfileNetworkInterfacesList =
-  ReadonlyArray<NetworkInterface>;
+export type NetworkProfileNetworkInterfacesList = Array<NetworkInterface>;
 export const NetworkProfileNetworkInterfacesList = /*@__PURE__*/ S.Array(
   NetworkInterface,
 ) as any as S.Schema<NetworkProfileNetworkInterfacesList>;
@@ -2153,7 +2151,7 @@ export const VirtualDisk = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VirtualDisk" }) as any as S.Schema<VirtualDisk>;
 
 /** Gets or sets the list of virtual disks associated with the virtual machine. */
-export type StorageProfileDisksList = ReadonlyArray<VirtualDisk>;
+export type StorageProfileDisksList = Array<VirtualDisk>;
 export const StorageProfileDisksList = /*@__PURE__*/ S.Array(
   VirtualDisk,
 ) as any as S.Schema<StorageProfileDisksList>;
@@ -2190,7 +2188,7 @@ export const Checkpoint = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Checkpoint" }) as any as S.Schema<Checkpoint>;
 
 /** Checkpoints in the vm. */
-export type InfrastructureProfileCheckpointsList = ReadonlyArray<Checkpoint>;
+export type InfrastructureProfileCheckpointsList = Array<Checkpoint>;
 export const InfrastructureProfileCheckpointsList = /*@__PURE__*/ S.Array(
   Checkpoint,
 ) as any as S.Schema<InfrastructureProfileCheckpointsList>;
@@ -2474,7 +2472,7 @@ export const VirtualMachineInstance = /*@__PURE__*/ S.suspend(() =>
 
 /** The VirtualMachineInstance items on this page */
 export type VirtualMachineInstanceListResultValueList =
-  ReadonlyArray<VirtualMachineInstance>;
+  Array<VirtualMachineInstance>;
 export const VirtualMachineInstanceListResultValueList = /*@__PURE__*/ S.Array(
   VirtualMachineInstance,
 ) as any as S.Schema<VirtualMachineInstanceListResultValueList>;
@@ -2613,7 +2611,7 @@ export const VirtualMachineInstancesStopResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Availability Sets in vm. */
 export type VirtualMachineInstanceUpdatePropertiesAvailabilitySetsList =
-  ReadonlyArray<AvailabilitySetListItem>;
+  Array<AvailabilitySetListItem>;
 export const VirtualMachineInstanceUpdatePropertiesAvailabilitySetsList =
   /*@__PURE__*/ S.Array(
     AvailabilitySetListItem,
@@ -2680,7 +2678,7 @@ export const NetworkInterfaceUpdate = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets the list of network interfaces associated with the virtual machine. */
 export type NetworkProfileUpdateNetworkInterfacesList =
-  ReadonlyArray<NetworkInterfaceUpdate>;
+  Array<NetworkInterfaceUpdate>;
 export const NetworkProfileUpdateNetworkInterfacesList = /*@__PURE__*/ S.Array(
   NetworkInterfaceUpdate,
 ) as any as S.Schema<NetworkProfileUpdateNetworkInterfacesList>;
@@ -2733,7 +2731,7 @@ export const VirtualDiskUpdate = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VirtualDiskUpdate>;
 
 /** Gets or sets the list of virtual disks associated with the virtual machine. */
-export type StorageProfileUpdateDisksList = ReadonlyArray<VirtualDiskUpdate>;
+export type StorageProfileUpdateDisksList = Array<VirtualDiskUpdate>;
 export const StorageProfileUpdateDisksList = /*@__PURE__*/ S.Array(
   VirtualDiskUpdate,
 ) as any as S.Schema<StorageProfileUpdateDisksList>;
@@ -2927,15 +2925,14 @@ export const IsCustomizable = /*@__PURE__*/ S.String;
 
 /** Gets the network interfaces of the template. */
 export type VirtualMachineTemplatePropertiesNetworkInterfacesList =
-  ReadonlyArray<NetworkInterface>;
+  Array<NetworkInterface>;
 export const VirtualMachineTemplatePropertiesNetworkInterfacesList =
   /*@__PURE__*/ S.Array(
     NetworkInterface,
   ) as any as S.Schema<VirtualMachineTemplatePropertiesNetworkInterfacesList>;
 
 /** Gets the disks of the template. */
-export type VirtualMachineTemplatePropertiesDisksList =
-  ReadonlyArray<VirtualDisk>;
+export type VirtualMachineTemplatePropertiesDisksList = Array<VirtualDisk>;
 export const VirtualMachineTemplatePropertiesDisksList = /*@__PURE__*/ S.Array(
   VirtualDisk,
 ) as any as S.Schema<VirtualMachineTemplatePropertiesDisksList>;
@@ -3216,7 +3213,7 @@ export const VirtualMachineTemplate = /*@__PURE__*/ S.suspend(() =>
 
 /** The VirtualMachineTemplate items on this page */
 export type VirtualMachineTemplateListResultValueList =
-  ReadonlyArray<VirtualMachineTemplate>;
+  Array<VirtualMachineTemplate>;
 export const VirtualMachineTemplateListResultValueList = /*@__PURE__*/ S.Array(
   VirtualMachineTemplate,
 ) as any as S.Schema<VirtualMachineTemplateListResultValueList>;
@@ -3644,7 +3641,7 @@ export const VirtualNetwork = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VirtualNetwork" }) as any as S.Schema<VirtualNetwork>;
 
 /** The VirtualNetwork items on this page */
-export type VirtualNetworkListResultValueList = ReadonlyArray<VirtualNetwork>;
+export type VirtualNetworkListResultValueList = Array<VirtualNetwork>;
 export const VirtualNetworkListResultValueList = /*@__PURE__*/ S.Array(
   VirtualNetwork,
 ) as any as S.Schema<VirtualNetworkListResultValueList>;
@@ -3877,7 +3874,7 @@ export const VmInstanceHybridIdentityMetadata = /*@__PURE__*/ S.suspend(() =>
 
 /** The VmInstanceHybridIdentityMetadata items on this page */
 export type VmInstanceHybridIdentityMetadataListResultValueList =
-  ReadonlyArray<VmInstanceHybridIdentityMetadata>;
+  Array<VmInstanceHybridIdentityMetadata>;
 export const VmInstanceHybridIdentityMetadataListResultValueList =
   /*@__PURE__*/ S.Array(
     VmInstanceHybridIdentityMetadata,
@@ -4223,7 +4220,7 @@ export const VmmServer = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VmmServer" }) as any as S.Schema<VmmServer>;
 
 /** The VmmServer items on this page */
-export type VmmServerListResultValueList = ReadonlyArray<VmmServer>;
+export type VmmServerListResultValueList = Array<VmmServer>;
 export const VmmServerListResultValueList = /*@__PURE__*/ S.Array(
   VmmServer,
 ) as any as S.Schema<VmmServerListResultValueList>;

@@ -76,7 +76,9 @@ export const ArmRollingUpgradeMonitoringPolicyFailureAction =
 /** The policy used for monitoring the application upgrade */
 export interface ArmRollingUpgradeMonitoringPolicy {
   /** The activation Mode of the service package */
-  failureAction?: ArmRollingUpgradeMonitoringPolicyFailureAction;
+  failureAction?:
+    | ArmRollingUpgradeMonitoringPolicyFailureAction
+    | (string & {});
   healthCheckWaitDuration?: string;
   healthCheckStableDuration?: string;
   healthCheckRetryTimeout?: string;
@@ -161,7 +163,7 @@ export interface ApplicationUpgradePolicy {
   forceRestart?: boolean;
   rollingUpgradeMonitoringPolicy?: ArmRollingUpgradeMonitoringPolicy;
   applicationHealthPolicy?: ArmApplicationHealthPolicy;
-  upgradeMode?: RollingUpgradeMode;
+  upgradeMode?: RollingUpgradeMode | (string & {});
   /** Determines whether the application should be recreated on update. If value=true, the rest of the upgrade policy parameters are not allowed and it will result in availability loss. */
   recreateApplication?: boolean;
 }
@@ -204,7 +206,7 @@ export const ApplicationMetricDescription = /*@__PURE__*/ S.suspend(() =>
 
 /** List of application capacity metric description. */
 export type ApplicationMetricDescriptionList =
-  ReadonlyArray<ApplicationMetricDescription>;
+  Array<ApplicationMetricDescription>;
 export const ApplicationMetricDescriptionList = /*@__PURE__*/ S.Array(
   ApplicationMetricDescription,
 ) as any as S.Schema<ApplicationMetricDescriptionList>;
@@ -226,7 +228,7 @@ export const ApplicationUserAssignedIdentity = /*@__PURE__*/ S.suspend(() =>
 
 /** List of user assigned identities for the application, each mapped to a friendly name. */
 export type ApplicationResourcePropertiesInputManagedIdentitiesList =
-  ReadonlyArray<ApplicationUserAssignedIdentity>;
+  Array<ApplicationUserAssignedIdentity>;
 export const ApplicationResourcePropertiesInputManagedIdentitiesList =
   /*@__PURE__*/ S.Array(
     ApplicationUserAssignedIdentity,
@@ -455,7 +457,7 @@ export const ManagedIdentity = /*@__PURE__*/ S.suspend(() =>
 
 /** List of user assigned identities for the application, each mapped to a friendly name. */
 export type ApplicationResourcePropertiesManagedIdentitiesList =
-  ReadonlyArray<ApplicationUserAssignedIdentity>;
+  Array<ApplicationUserAssignedIdentity>;
 export const ApplicationResourcePropertiesManagedIdentitiesList =
   /*@__PURE__*/ S.Array(
     ApplicationUserAssignedIdentity,
@@ -597,8 +599,7 @@ export const ApplicationResource = /*@__PURE__*/ S.suspend(() =>
   identifier: "ApplicationResource",
 }) as any as S.Schema<ApplicationResource>;
 
-export type ApplicationResourceListValueList =
-  ReadonlyArray<ApplicationResource>;
+export type ApplicationResourceListValueList = Array<ApplicationResource>;
 export const ApplicationResourceListValueList = /*@__PURE__*/ S.Array(
   ApplicationResource,
 ) as any as S.Schema<ApplicationResourceListValueList>;
@@ -629,7 +630,7 @@ export const ApplicationsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 
 /** List of user assigned identities for the application, each mapped to a friendly name. */
 export type ApplicationResourceUpdatePropertiesManagedIdentitiesList =
-  ReadonlyArray<ApplicationUserAssignedIdentity>;
+  Array<ApplicationUserAssignedIdentity>;
 export const ApplicationResourceUpdatePropertiesManagedIdentitiesList =
   /*@__PURE__*/ S.Array(
     ApplicationUserAssignedIdentity,
@@ -990,7 +991,7 @@ export const ApplicationTypeResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ApplicationTypeResource>;
 
 export type ApplicationTypeResourceListValueList =
-  ReadonlyArray<ApplicationTypeResource>;
+  Array<ApplicationTypeResource>;
 export const ApplicationTypeResourceListValueList = /*@__PURE__*/ S.Array(
   ApplicationTypeResource,
 ) as any as S.Schema<ApplicationTypeResourceListValueList>;
@@ -1288,7 +1289,7 @@ export const ApplicationTypeVersionResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ApplicationTypeVersionResource>;
 
 export type ApplicationTypeVersionResourceListValueList =
-  ReadonlyArray<ApplicationTypeVersionResource>;
+  Array<ApplicationTypeVersionResource>;
 export const ApplicationTypeVersionResourceListValueList =
   /*@__PURE__*/ S.Array(
     ApplicationTypeVersionResource,
@@ -1327,7 +1328,7 @@ export type AddOnFeatures =
 export const AddOnFeatures = /*@__PURE__*/ S.String;
 
 /** The list of add-on features to enable in the cluster. */
-export type ClusterPropertiesInputAddOnFeaturesList = ReadonlyArray<
+export type ClusterPropertiesInputAddOnFeaturesList = Array<
   AddOnFeatures | (string & {})
 >;
 export const ClusterPropertiesInputAddOnFeaturesList = /*@__PURE__*/ S.Array(
@@ -1371,7 +1372,7 @@ export interface CertificateDescription {
   thumbprint: string;
   /** Thumbprint of the secondary certificate. */
   thumbprintSecondary?: string;
-  x509StoreName?: StoreName;
+  x509StoreName?: StoreName | (string & {});
 }
 export const CertificateDescription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1401,7 +1402,7 @@ export const ServerCertificateCommonName = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of server certificates referenced by common name that are used to secure the cluster. */
 export type ServerCertificateCommonNamesCommonNamesList =
-  ReadonlyArray<ServerCertificateCommonName>;
+  Array<ServerCertificateCommonName>;
 export const ServerCertificateCommonNamesCommonNamesList =
   /*@__PURE__*/ S.Array(
     ServerCertificateCommonName,
@@ -1411,7 +1412,7 @@ export const ServerCertificateCommonNamesCommonNamesList =
 export interface ServerCertificateCommonNames {
   /** The list of server certificates referenced by common name that are used to secure the cluster. */
   commonNames?: ServerCertificateCommonNamesCommonNamesList;
-  x509StoreName?: StoreName;
+  x509StoreName?: StoreName | (string & {});
 }
 export const ServerCertificateCommonNames = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1443,7 +1444,7 @@ export const ClientCertificateCommonName = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of client certificates referenced by common name that are allowed to manage the cluster. */
 export type ClusterPropertiesInputClientCertificateCommonNamesList =
-  ReadonlyArray<ClientCertificateCommonName>;
+  Array<ClientCertificateCommonName>;
 export const ClusterPropertiesInputClientCertificateCommonNamesList =
   /*@__PURE__*/ S.Array(
     ClientCertificateCommonName,
@@ -1467,7 +1468,7 @@ export const ClientCertificateThumbprint = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of client certificates referenced by thumbprint that are allowed to manage the cluster. */
 export type ClusterPropertiesInputClientCertificateThumbprintsList =
-  ReadonlyArray<ClientCertificateThumbprint>;
+  Array<ClientCertificateThumbprint>;
 export const ClusterPropertiesInputClientCertificateThumbprintsList =
   /*@__PURE__*/ S.Array(
     ClientCertificateThumbprint,
@@ -1519,7 +1520,7 @@ export const SettingsParameterDescription = /*@__PURE__*/ S.suspend(() =>
 
 /** The collection of parameters in the section. */
 export type SettingsSectionDescriptionParametersList =
-  ReadonlyArray<SettingsParameterDescription>;
+  Array<SettingsParameterDescription>;
 export const SettingsSectionDescriptionParametersList = /*@__PURE__*/ S.Array(
   SettingsParameterDescription,
 ) as any as S.Schema<SettingsSectionDescriptionParametersList>;
@@ -1542,7 +1543,7 @@ export const SettingsSectionDescription = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of custom fabric settings to configure the cluster. */
 export type ClusterPropertiesInputFabricSettingsList =
-  ReadonlyArray<SettingsSectionDescription>;
+  Array<SettingsSectionDescription>;
 export const ClusterPropertiesInputFabricSettingsList = /*@__PURE__*/ S.Array(
   SettingsSectionDescription,
 ) as any as S.Schema<ClusterPropertiesInputFabricSettingsList>;
@@ -1597,7 +1598,7 @@ export interface NodeTypeDescription {
   clientConnectionEndpointPort: number;
   /** The HTTP cluster management endpoint port. */
   httpGatewayEndpointPort: number;
-  durabilityLevel?: DurabilityLevel;
+  durabilityLevel?: DurabilityLevel | (string & {});
   /** The range of ports from which cluster assigned port to Service Fabric applications. */
   applicationPorts?: EndpointRangeDescription;
   /** The range of ephemeral ports that nodes in this node type should be configured with. */
@@ -1634,8 +1635,7 @@ export const NodeTypeDescription = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NodeTypeDescription>;
 
 /** The list of node types in the cluster. */
-export type ClusterPropertiesInputNodeTypesList =
-  ReadonlyArray<NodeTypeDescription>;
+export type ClusterPropertiesInputNodeTypesList = Array<NodeTypeDescription>;
 export const ClusterPropertiesInputNodeTypesList = /*@__PURE__*/ S.Array(
   NodeTypeDescription,
 ) as any as S.Schema<ClusterPropertiesInputNodeTypesList>;
@@ -1867,7 +1867,7 @@ export type NotificationTargetNotificationChannel =
 export const NotificationTargetNotificationChannel = /*@__PURE__*/ S.String;
 
 /** List of targets that subscribe to the notification. */
-export type NotificationTargetReceiversList = ReadonlyArray<string>;
+export type NotificationTargetReceiversList = Array<string>;
 export const NotificationTargetReceiversList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<NotificationTargetReceiversList>;
@@ -1875,7 +1875,7 @@ export const NotificationTargetReceiversList = /*@__PURE__*/ S.Array(
 /** Describes the notification target properties. */
 export interface NotificationTarget {
   /** The notification channel indicates the type of receivers subscribed to the notification, either user or subscription. */
-  notificationChannel: NotificationTargetNotificationChannel;
+  notificationChannel: NotificationTargetNotificationChannel | (string & {});
   /** List of targets that subscribe to the notification. */
   receivers: NotificationTargetReceiversList;
 }
@@ -1889,8 +1889,7 @@ export const NotificationTarget = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NotificationTarget>;
 
 /** List of targets that subscribe to the notification. */
-export type NotificationNotificationTargetsList =
-  ReadonlyArray<NotificationTarget>;
+export type NotificationNotificationTargetsList = Array<NotificationTarget>;
 export const NotificationNotificationTargetsList = /*@__PURE__*/ S.Array(
   NotificationTarget,
 ) as any as S.Schema<NotificationNotificationTargetsList>;
@@ -1900,9 +1899,9 @@ export interface Notification {
   /** Indicates if the notification is enabled. */
   isEnabled: boolean;
   /** The category of notification. */
-  notificationCategory: NotificationNotificationCategory;
+  notificationCategory: NotificationNotificationCategory | (string & {});
   /** The level of notification. */
-  notificationLevel: NotificationNotificationLevel;
+  notificationLevel: NotificationNotificationLevel | (string & {});
   /** List of targets that subscribe to the notification. */
   notificationTargets: NotificationNotificationTargetsList;
 }
@@ -1916,8 +1915,7 @@ export const Notification = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Notification" }) as any as S.Schema<Notification>;
 
 /** Indicates a list of notification channels for cluster events. */
-export type ClusterPropertiesInputNotificationsList =
-  ReadonlyArray<Notification>;
+export type ClusterPropertiesInputNotificationsList = Array<Notification>;
 export const ClusterPropertiesInputNotificationsList = /*@__PURE__*/ S.Array(
   Notification,
 ) as any as S.Schema<ClusterPropertiesInputNotificationsList>;
@@ -2061,7 +2059,7 @@ export const ClustersCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ClustersCreateOrUpdateResponseTagsMap>;
 
 /** The list of add-on features to enable in the cluster. */
-export type ClusterPropertiesAddOnFeaturesList = ReadonlyArray<AddOnFeatures>;
+export type ClusterPropertiesAddOnFeaturesList = Array<AddOnFeatures>;
 export const ClusterPropertiesAddOnFeaturesList = /*@__PURE__*/ S.Array(
   AddOnFeatures,
 ) as any as S.Schema<ClusterPropertiesAddOnFeaturesList>;
@@ -2091,7 +2089,7 @@ export const ClusterVersionDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** The Service Fabric runtime versions available for this cluster. */
 export type ClusterPropertiesAvailableClusterVersionsList =
-  ReadonlyArray<ClusterVersionDetails>;
+  Array<ClusterVersionDetails>;
 export const ClusterPropertiesAvailableClusterVersionsList =
   /*@__PURE__*/ S.Array(
     ClusterVersionDetails,
@@ -2099,7 +2097,7 @@ export const ClusterPropertiesAvailableClusterVersionsList =
 
 /** The list of client certificates referenced by common name that are allowed to manage the cluster. */
 export type ClusterPropertiesClientCertificateCommonNamesList =
-  ReadonlyArray<ClientCertificateCommonName>;
+  Array<ClientCertificateCommonName>;
 export const ClusterPropertiesClientCertificateCommonNamesList =
   /*@__PURE__*/ S.Array(
     ClientCertificateCommonName,
@@ -2107,7 +2105,7 @@ export const ClusterPropertiesClientCertificateCommonNamesList =
 
 /** The list of client certificates referenced by thumbprint that are allowed to manage the cluster. */
 export type ClusterPropertiesClientCertificateThumbprintsList =
-  ReadonlyArray<ClientCertificateThumbprint>;
+  Array<ClientCertificateThumbprint>;
 export const ClusterPropertiesClientCertificateThumbprintsList =
   /*@__PURE__*/ S.Array(
     ClientCertificateThumbprint,
@@ -2129,13 +2127,13 @@ export const ClusterState = /*@__PURE__*/ S.String;
 
 /** The list of custom fabric settings to configure the cluster. */
 export type ClusterPropertiesFabricSettingsList =
-  ReadonlyArray<SettingsSectionDescription>;
+  Array<SettingsSectionDescription>;
 export const ClusterPropertiesFabricSettingsList = /*@__PURE__*/ S.Array(
   SettingsSectionDescription,
 ) as any as S.Schema<ClusterPropertiesFabricSettingsList>;
 
 /** The list of node types in the cluster. */
-export type ClusterPropertiesNodeTypesList = ReadonlyArray<NodeTypeDescription>;
+export type ClusterPropertiesNodeTypesList = Array<NodeTypeDescription>;
 export const ClusterPropertiesNodeTypesList = /*@__PURE__*/ S.Array(
   NodeTypeDescription,
 ) as any as S.Schema<ClusterPropertiesNodeTypesList>;
@@ -2149,7 +2147,7 @@ export type ClusterPropertiesProvisioningState =
 export const ClusterPropertiesProvisioningState = /*@__PURE__*/ S.String;
 
 /** Indicates a list of notification channels for cluster events. */
-export type ClusterPropertiesNotificationsList = ReadonlyArray<Notification>;
+export type ClusterPropertiesNotificationsList = Array<Notification>;
 export const ClusterPropertiesNotificationsList = /*@__PURE__*/ S.Array(
   Notification,
 ) as any as S.Schema<ClusterPropertiesNotificationsList>;
@@ -2450,7 +2448,7 @@ export const Cluster = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Cluster" }) as any as S.Schema<Cluster>;
 
-export type ClusterListResultValueList = ReadonlyArray<Cluster>;
+export type ClusterListResultValueList = Array<Cluster>;
 export const ClusterListResultValueList = /*@__PURE__*/ S.Array(
   Cluster,
 ) as any as S.Schema<ClusterListResultValueList>;
@@ -2521,8 +2519,7 @@ export const ClustersListUpgradableVersionsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ClustersListUpgradableVersionsRequest",
 }) as any as S.Schema<ClustersListUpgradableVersionsRequest>;
 
-export type UpgradableVersionPathResultSupportedPathList =
-  ReadonlyArray<string>;
+export type UpgradableVersionPathResultSupportedPathList = Array<string>;
 export const UpgradableVersionPathResultSupportedPathList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2541,7 +2538,7 @@ export const UpgradableVersionPathResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpgradableVersionPathResult>;
 
 /** The list of add-on features to enable in the cluster. */
-export type ClusterPropertiesUpdateParametersAddOnFeaturesList = ReadonlyArray<
+export type ClusterPropertiesUpdateParametersAddOnFeaturesList = Array<
   AddOnFeatures | (string & {})
 >;
 export const ClusterPropertiesUpdateParametersAddOnFeaturesList =
@@ -2551,7 +2548,7 @@ export const ClusterPropertiesUpdateParametersAddOnFeaturesList =
 
 /** The list of client certificates referenced by common name that are allowed to manage the cluster. This will overwrite the existing list. */
 export type ClusterPropertiesUpdateParametersClientCertificateCommonNamesList =
-  ReadonlyArray<ClientCertificateCommonName>;
+  Array<ClientCertificateCommonName>;
 export const ClusterPropertiesUpdateParametersClientCertificateCommonNamesList =
   /*@__PURE__*/ S.Array(
     ClientCertificateCommonName,
@@ -2559,7 +2556,7 @@ export const ClusterPropertiesUpdateParametersClientCertificateCommonNamesList =
 
 /** The list of client certificates referenced by thumbprint that are allowed to manage the cluster. This will overwrite the existing list. */
 export type ClusterPropertiesUpdateParametersClientCertificateThumbprintsList =
-  ReadonlyArray<ClientCertificateThumbprint>;
+  Array<ClientCertificateThumbprint>;
 export const ClusterPropertiesUpdateParametersClientCertificateThumbprintsList =
   /*@__PURE__*/ S.Array(
     ClientCertificateThumbprint,
@@ -2567,7 +2564,7 @@ export const ClusterPropertiesUpdateParametersClientCertificateThumbprintsList =
 
 /** The list of custom fabric settings to configure the cluster. This will overwrite the existing list. */
 export type ClusterPropertiesUpdateParametersFabricSettingsList =
-  ReadonlyArray<SettingsSectionDescription>;
+  Array<SettingsSectionDescription>;
 export const ClusterPropertiesUpdateParametersFabricSettingsList =
   /*@__PURE__*/ S.Array(
     SettingsSectionDescription,
@@ -2575,7 +2572,7 @@ export const ClusterPropertiesUpdateParametersFabricSettingsList =
 
 /** The list of node types in the cluster. This will overwrite the existing list. */
 export type ClusterPropertiesUpdateParametersNodeTypesList =
-  ReadonlyArray<NodeTypeDescription>;
+  Array<NodeTypeDescription>;
 export const ClusterPropertiesUpdateParametersNodeTypesList =
   /*@__PURE__*/ S.Array(
     NodeTypeDescription,
@@ -2583,7 +2580,7 @@ export const ClusterPropertiesUpdateParametersNodeTypesList =
 
 /** Indicates a list of notification channels for cluster events. */
 export type ClusterPropertiesUpdateParametersNotificationsList =
-  ReadonlyArray<Notification>;
+  Array<Notification>;
 export const ClusterPropertiesUpdateParametersNotificationsList =
   /*@__PURE__*/ S.Array(
     Notification,
@@ -2799,7 +2796,7 @@ export const ClusterCodeVersionsResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ClusterCodeVersionsResult>;
 
 export type ClusterCodeVersionsListResultValueList =
-  ReadonlyArray<ClusterCodeVersionsResult>;
+  Array<ClusterCodeVersionsResult>;
 export const ClusterCodeVersionsListResultValueList = /*@__PURE__*/ S.Array(
   ClusterCodeVersionsResult,
 ) as any as S.Schema<ClusterCodeVersionsListResultValueList>;
@@ -2978,7 +2975,7 @@ export const OperationResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationResult>;
 
 /** List of operations supported by the Service Fabric resource provider. */
-export type OperationListResultValueList = ReadonlyArray<OperationResult>;
+export type OperationListResultValueList = Array<OperationResult>;
 export const OperationListResultValueList = /*@__PURE__*/ S.Array(
   OperationResult,
 ) as any as S.Schema<OperationListResultValueList>;
@@ -3019,7 +3016,7 @@ export const ServiceCorrelationScheme = /*@__PURE__*/ S.String;
 /** Creates a particular correlation between services. */
 export interface ServiceCorrelationDescription {
   /** The ServiceCorrelationScheme which describes the relationship between this service and the service specified via ServiceName. */
-  scheme: ServiceCorrelationScheme;
+  scheme: ServiceCorrelationScheme | (string & {});
   /** The name of the service that the correlation relationship is established with. */
   serviceName: string;
 }
@@ -3033,8 +3030,7 @@ export const ServiceCorrelationDescription = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServiceCorrelationDescription>;
 
 /** A list that describes the correlation of the service with other services. */
-export type CorrelationSchemeList =
-  ReadonlyArray<ServiceCorrelationDescription>;
+export type CorrelationSchemeList = Array<ServiceCorrelationDescription>;
 export const CorrelationSchemeList = /*@__PURE__*/ S.Array(
   ServiceCorrelationDescription,
 ) as any as S.Schema<CorrelationSchemeList>;
@@ -3048,7 +3044,7 @@ export interface ServiceLoadMetricDescription {
   /** The name of the metric. If the service chooses to report load during runtime, the load metric name should match the name that is specified in Name exactly. Note that metric names are case sensitive. */
   name: string;
   /** The service load metric relative weight, compared to other metrics configured for this service, as a number. */
-  weight?: ServiceLoadMetricWeight;
+  weight?: ServiceLoadMetricWeight | (string & {});
   /** Used only for Stateful services. The default amount of load, as a number, that this service creates for this metric when it is a Primary replica. */
   primaryDefaultLoad?: number;
   /** Used only for Stateful services. The default amount of load, as a number, that this service creates for this metric when it is a Secondary replica. */
@@ -3069,8 +3065,7 @@ export const ServiceLoadMetricDescription = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServiceLoadMetricDescription>;
 
 /** The service load metrics is given as an array of ServiceLoadMetricDescription objects. */
-export type ServiceLoadMetricsList =
-  ReadonlyArray<ServiceLoadMetricDescription>;
+export type ServiceLoadMetricsList = Array<ServiceLoadMetricDescription>;
 export const ServiceLoadMetricsList = /*@__PURE__*/ S.Array(
   ServiceLoadMetricDescription,
 ) as any as S.Schema<ServiceLoadMetricsList>;
@@ -3087,7 +3082,7 @@ export const ServicePlacementPolicyType = /*@__PURE__*/ S.String;
 
 /** Describes the policy to be used for placement of a Service Fabric service. */
 export interface ServicePlacementPolicyDescription {
-  type: ServicePlacementPolicyType;
+  type: ServicePlacementPolicyType | (string & {});
 }
 export const ServicePlacementPolicyDescription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3099,7 +3094,7 @@ export const ServicePlacementPolicyDescription = /*@__PURE__*/ S.suspend(() =>
 
 /** A list that describes the correlation of the service with other services. */
 export type ServicePlacementPoliciesList =
-  ReadonlyArray<ServicePlacementPolicyDescription>;
+  Array<ServicePlacementPolicyDescription>;
 export const ServicePlacementPoliciesList = /*@__PURE__*/ S.Array(
   ServicePlacementPolicyDescription,
 ) as any as S.Schema<ServicePlacementPoliciesList>;
@@ -3123,7 +3118,7 @@ export const PartitionScheme = /*@__PURE__*/ S.String;
 /** Describes how the service is partitioned. */
 export interface PartitionSchemeDescription {
   /** Specifies how the service is partitioned. */
-  partitionScheme: PartitionScheme;
+  partitionScheme: PartitionScheme | (string & {});
 }
 export const PartitionSchemeDescription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3444,7 +3439,7 @@ export const ServiceResource = /*@__PURE__*/ S.suspend(() =>
   identifier: "ServiceResource",
 }) as any as S.Schema<ServiceResource>;
 
-export type ServiceResourceListValueList = ReadonlyArray<ServiceResource>;
+export type ServiceResourceListValueList = Array<ServiceResource>;
 export const ServiceResourceListValueList = /*@__PURE__*/ S.Array(
   ServiceResource,
 ) as any as S.Schema<ServiceResourceListValueList>;

@@ -252,7 +252,7 @@ export interface CreateDelegationRequest {
   comment?: string | redacted.Redacted<string>;
   controlSetId?: string;
   roleArn?: string;
-  roleType?: RoleType;
+  roleType?: RoleType | (string & {});
 }
 export const CreateDelegationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -538,7 +538,7 @@ export type AssessmentReportDestinationType = "S3";
 export const AssessmentReportDestinationType = /*@__PURE__*/ S.String;
 
 export interface AssessmentReportsDestination {
-  destinationType?: AssessmentReportDestinationType;
+  destinationType?: AssessmentReportDestinationType | (string & {});
   destination?: string;
 }
 export const AssessmentReportsDestination = /*@__PURE__*/ S.suspend(() =>
@@ -586,7 +586,7 @@ export const Scope = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Scope" }) as any as S.Schema<Scope>;
 export interface Role {
-  roleType: RoleType;
+  roleType: RoleType | (string & {});
   roleArn: string;
 }
 export const Role = /*@__PURE__*/ S.suspend(() =>
@@ -905,7 +905,7 @@ export const KeywordInputType = /*@__PURE__*/ S.String;
 
 export type KeywordValue = string;
 export interface SourceKeyword {
-  keywordInputType?: KeywordInputType;
+  keywordInputType?: KeywordInputType | (string & {});
   keywordValue?: string;
 }
 export const SourceKeyword = /*@__PURE__*/ S.suspend(() =>
@@ -922,10 +922,10 @@ export interface ControlMappingSource {
   sourceId?: string;
   sourceName?: string;
   sourceDescription?: string;
-  sourceSetUpOption?: SourceSetUpOption;
-  sourceType?: SourceType;
+  sourceSetUpOption?: SourceSetUpOption | (string & {});
+  sourceType?: SourceType | (string & {});
   sourceKeyword?: SourceKeyword;
-  sourceFrequency?: SourceFrequency;
+  sourceFrequency?: SourceFrequency | (string & {});
   troubleshootingText?: string | redacted.Redacted<string>;
 }
 export const ControlMappingSource = /*@__PURE__*/ S.suspend(() =>
@@ -2221,7 +2221,7 @@ export type DeleteResources = "ALL" | "DEFAULT";
 export const DeleteResources = /*@__PURE__*/ S.String;
 
 export interface DeregistrationPolicy {
-  deleteResources?: DeleteResources;
+  deleteResources?: DeleteResources | (string & {});
 }
 export const DeregistrationPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ deleteResources: S.optional(DeleteResources) }),
@@ -2232,7 +2232,7 @@ export type ExportDestinationType = "S3";
 export const ExportDestinationType = /*@__PURE__*/ S.String;
 
 export interface DefaultExportDestination {
-  destinationType?: ExportDestinationType;
+  destinationType?: ExportDestinationType | (string & {});
   destination?: string;
 }
 export const DefaultExportDestination = /*@__PURE__*/ S.suspend(() =>

@@ -461,7 +461,7 @@ export const NetworkType = /*@__PURE__*/ S.String;
 export interface ConnectivityInfo {
   PublicAccess?: PublicAccess;
   VpcConnectivity?: VpcConnectivity;
-  NetworkType?: NetworkType;
+  NetworkType?: NetworkType | (string & {});
 }
 export const ConnectivityInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -479,7 +479,7 @@ export const ConnectivityInfo = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConnectivityInfo",
 }) as any as S.Schema<ConnectivityInfo>;
 export interface BrokerNodeGroupInfo {
-  BrokerAZDistribution?: BrokerAZDistribution;
+  BrokerAZDistribution?: BrokerAZDistribution | (string & {});
   ClientSubnets?: string[];
   InstanceType?: string;
   SecurityGroups?: string[];
@@ -514,7 +514,7 @@ export type RebalancingStatus = "PAUSED" | "ACTIVE";
 export const RebalancingStatus = /*@__PURE__*/ S.String;
 
 export interface Rebalancing {
-  Status?: RebalancingStatus;
+  Status?: RebalancingStatus | (string & {});
 }
 export const Rebalancing = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Status: S.optional(RebalancingStatus) }).pipe(
@@ -617,7 +617,7 @@ export type ClientBroker = "TLS" | "TLS_PLAINTEXT" | "PLAINTEXT";
 export const ClientBroker = /*@__PURE__*/ S.String;
 
 export interface EncryptionInTransit {
-  ClientBroker?: ClientBroker;
+  ClientBroker?: ClientBroker | (string & {});
   InCluster?: boolean;
 }
 export const EncryptionInTransit = /*@__PURE__*/ S.suspend(() =>
@@ -1153,7 +1153,7 @@ export type KafkaClusterSaslScramMechanism = "SHA256" | "SHA512";
 export const KafkaClusterSaslScramMechanism = /*@__PURE__*/ S.String;
 
 export interface KafkaClusterSaslScramAuthentication {
-  Mechanism?: KafkaClusterSaslScramMechanism;
+  Mechanism?: KafkaClusterSaslScramMechanism | (string & {});
   SecretArn?: string;
 }
 export const KafkaClusterSaslScramAuthentication = /*@__PURE__*/ S.suspend(() =>
@@ -1190,7 +1190,7 @@ export type KafkaClusterEncryptionInTransitType = "TLS";
 export const KafkaClusterEncryptionInTransitType = /*@__PURE__*/ S.String;
 
 export interface KafkaClusterEncryptionInTransit {
-  EncryptionType?: KafkaClusterEncryptionInTransitType;
+  EncryptionType?: KafkaClusterEncryptionInTransitType | (string & {});
   RootCaCertificate?: string;
 }
 export const KafkaClusterEncryptionInTransit = /*@__PURE__*/ S.suspend(() =>
@@ -1243,7 +1243,7 @@ export interface ConsumerGroupReplication {
   ConsumerGroupsToReplicate?: string[];
   DetectAndCopyNewConsumerGroups?: boolean;
   SynchroniseConsumerGroupOffsets?: boolean;
-  ConsumerGroupOffsetSyncMode?: ConsumerGroupOffsetSyncMode;
+  ConsumerGroupOffsetSyncMode?: ConsumerGroupOffsetSyncMode | (string & {});
 }
 export const ConsumerGroupReplication = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1271,7 +1271,7 @@ export type ReplicationStartingPositionType = "LATEST" | "EARLIEST";
 export const ReplicationStartingPositionType = /*@__PURE__*/ S.String;
 
 export interface ReplicationStartingPosition {
-  Type?: ReplicationStartingPositionType;
+  Type?: ReplicationStartingPositionType | (string & {});
 }
 export const ReplicationStartingPosition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Type: S.optional(ReplicationStartingPositionType) }).pipe(
@@ -1286,7 +1286,7 @@ export type ReplicationTopicNameConfigurationType =
 export const ReplicationTopicNameConfigurationType = /*@__PURE__*/ S.String;
 
 export interface ReplicationTopicNameConfiguration {
-  Type?: ReplicationTopicNameConfigurationType;
+  Type?: ReplicationTopicNameConfigurationType | (string & {});
 }
 export const ReplicationTopicNameConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Type: S.optional(ReplicationTopicNameConfigurationType) }).pipe(

@@ -118,7 +118,7 @@ export interface AS2MdnSettings {
   /** The value indicating whether to send inbound MDN to message box. */
   sendInboundMDNToMessageBox: boolean;
   /** The signing or hashing algorithm. */
-  micHashingAlgorithm: HashingAlgorithm;
+  micHashingAlgorithm: HashingAlgorithm | (string & {});
 }
 export const AS2MdnSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -214,9 +214,9 @@ export interface AS2ValidationSettings {
   /** The value indicating whether to check for certificate revocation list on receive. */
   checkCertificateRevocationListOnReceive: boolean;
   /** The encryption algorithm. */
-  encryptionAlgorithm: EncryptionAlgorithm;
+  encryptionAlgorithm: EncryptionAlgorithm | (string & {});
   /** The signing algorithm. */
-  signingAlgorithm?: SigningAlgorithm;
+  signingAlgorithm?: SigningAlgorithm | (string & {});
 }
 export const AS2ValidationSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -371,7 +371,7 @@ export interface X12ValidationSettings {
   /** The value indicating whether to trim leading and trailing spaces and zeroes. */
   trimLeadingAndTrailingSpacesAndZeroes: boolean;
   /** The trailing separator policy. */
-  trailingSeparatorPolicy: TrailingSeparatorPolicy;
+  trailingSeparatorPolicy: TrailingSeparatorPolicy | (string & {});
 }
 export const X12ValidationSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -416,9 +416,9 @@ export interface X12FramingSettings {
   /** The segment terminator. */
   segmentTerminator: number;
   /** The X12 character set. */
-  characterSet: X12CharacterSet;
+  characterSet: X12CharacterSet | (string & {});
   /** The segment terminator suffix. */
-  segmentTerminatorSuffix: SegmentTerminatorSuffix;
+  segmentTerminatorSuffix: SegmentTerminatorSuffix | (string & {});
 }
 export const X12FramingSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -500,11 +500,11 @@ export interface X12EnvelopeSettings {
   /** The value indicating whether to overwrite existing transaction set control number. */
   overwriteExistingTransactionSetControlNumber: boolean;
   /** The group header date format. */
-  groupHeaderDateFormat: X12DateFormat;
+  groupHeaderDateFormat: X12DateFormat | (string & {});
   /** The group header time format. */
-  groupHeaderTimeFormat: X12TimeFormat;
+  groupHeaderTimeFormat: X12TimeFormat | (string & {});
   /** The usage indicator. */
-  usageIndicator: UsageIndicator;
+  usageIndicator: UsageIndicator | (string & {});
 }
 export const X12EnvelopeSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -599,7 +599,7 @@ export const MessageFilterType = /*@__PURE__*/ S.String;
 /** The X12 message filter for odata query. */
 export interface X12MessageFilter {
   /** The message filter type. */
-  messageFilterType: MessageFilterType;
+  messageFilterType: MessageFilterType | (string & {});
 }
 export const X12MessageFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -678,9 +678,9 @@ export interface X12EnvelopeOverride {
   /** The functional identifier code. */
   functionalIdentifierCode?: string;
   /** The date format. */
-  dateFormat: X12DateFormat;
+  dateFormat: X12DateFormat | (string & {});
   /** The time format. */
-  timeFormat: X12TimeFormat;
+  timeFormat: X12TimeFormat | (string & {});
 }
 export const X12EnvelopeOverride = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -701,7 +701,7 @@ export const X12EnvelopeOverride = /*@__PURE__*/ S.suspend(() =>
 
 /** The X12 envelope override settings. */
 export type X12ProtocolSettingsEnvelopeOverridesList =
-  ReadonlyArray<X12EnvelopeOverride>;
+  Array<X12EnvelopeOverride>;
 export const X12ProtocolSettingsEnvelopeOverridesList = /*@__PURE__*/ S.Array(
   X12EnvelopeOverride,
 ) as any as S.Schema<X12ProtocolSettingsEnvelopeOverridesList>;
@@ -721,7 +721,7 @@ export interface X12ValidationOverride {
   /** The value indicating whether to trim leading and trailing spaces and zeroes. */
   trimLeadingAndTrailingSpacesAndZeroes: boolean;
   /** The trailing separator policy. */
-  trailingSeparatorPolicy: TrailingSeparatorPolicy;
+  trailingSeparatorPolicy: TrailingSeparatorPolicy | (string & {});
 }
 export const X12ValidationOverride = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -739,7 +739,7 @@ export const X12ValidationOverride = /*@__PURE__*/ S.suspend(() =>
 
 /** The X12 validation override settings. */
 export type X12ProtocolSettingsValidationOverridesList =
-  ReadonlyArray<X12ValidationOverride>;
+  Array<X12ValidationOverride>;
 export const X12ProtocolSettingsValidationOverridesList = /*@__PURE__*/ S.Array(
   X12ValidationOverride,
 ) as any as S.Schema<X12ProtocolSettingsValidationOverridesList>;
@@ -759,7 +759,7 @@ export const X12MessageIdentifier = /*@__PURE__*/ S.suspend(() =>
 
 /** The X12 message filter list. */
 export type X12ProtocolSettingsMessageFilterListList =
-  ReadonlyArray<X12MessageIdentifier>;
+  Array<X12MessageIdentifier>;
 export const X12ProtocolSettingsMessageFilterListList = /*@__PURE__*/ S.Array(
   X12MessageIdentifier,
 ) as any as S.Schema<X12ProtocolSettingsMessageFilterListList>;
@@ -787,8 +787,7 @@ export const X12SchemaReference = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<X12SchemaReference>;
 
 /** The X12 schema references. */
-export type X12ProtocolSettingsSchemaReferencesList =
-  ReadonlyArray<X12SchemaReference>;
+export type X12ProtocolSettingsSchemaReferencesList = Array<X12SchemaReference>;
 export const X12ProtocolSettingsSchemaReferencesList = /*@__PURE__*/ S.Array(
   X12SchemaReference,
 ) as any as S.Schema<X12ProtocolSettingsSchemaReferencesList>;
@@ -806,7 +805,7 @@ export interface X12DelimiterOverrides {
   /** The segment terminator. */
   segmentTerminator: number;
   /** The segment terminator suffix. */
-  segmentTerminatorSuffix: SegmentTerminatorSuffix;
+  segmentTerminatorSuffix: SegmentTerminatorSuffix | (string & {});
   /** The replacement character. */
   replaceCharacter: number;
   /** The value indicating whether to replace separators in payload. */
@@ -832,7 +831,7 @@ export const X12DelimiterOverrides = /*@__PURE__*/ S.suspend(() =>
 
 /** The X12 delimiter override settings. */
 export type X12ProtocolSettingsX12DelimiterOverridesList =
-  ReadonlyArray<X12DelimiterOverrides>;
+  Array<X12DelimiterOverrides>;
 export const X12ProtocolSettingsX12DelimiterOverridesList =
   /*@__PURE__*/ S.Array(
     X12DelimiterOverrides,
@@ -942,7 +941,7 @@ export interface EdifactValidationSettings {
   /** The value indicating whether to trim leading and trailing spaces and zeroes. */
   trimLeadingAndTrailingSpacesAndZeroes: boolean;
   /** The trailing separator policy. */
-  trailingSeparatorPolicy: TrailingSeparatorPolicy;
+  trailingSeparatorPolicy: TrailingSeparatorPolicy | (string & {});
 }
 export const EdifactValidationSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1003,11 +1002,11 @@ export interface EdifactFramingSettings {
   /** The repetition separator. */
   repetitionSeparator: number;
   /** The EDIFACT frame setting characterSet. */
-  characterSet: EdifactCharacterSet;
+  characterSet: EdifactCharacterSet | (string & {});
   /** The EDIFACT frame setting decimal indicator. */
-  decimalPointIndicator: EdifactDecimalIndicator;
+  decimalPointIndicator: EdifactDecimalIndicator | (string & {});
   /** The EDIFACT frame setting segment terminator suffix. */
-  segmentTerminatorSuffix: SegmentTerminatorSuffix;
+  segmentTerminatorSuffix: SegmentTerminatorSuffix | (string & {});
 }
 export const EdifactFramingSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1210,7 +1209,7 @@ export const EdifactAcknowledgementSettings = /*@__PURE__*/ S.suspend(() =>
 /** The Edifact message filter for odata query. */
 export interface EdifactMessageFilter {
   /** The message filter type. */
-  messageFilterType: MessageFilterType;
+  messageFilterType: MessageFilterType | (string & {});
 }
 export const EdifactMessageFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1302,7 +1301,7 @@ export const EdifactEnvelopeOverride = /*@__PURE__*/ S.suspend(() =>
 
 /** The EDIFACT envelope override settings. */
 export type EdifactProtocolSettingsEnvelopeOverridesList =
-  ReadonlyArray<EdifactEnvelopeOverride>;
+  Array<EdifactEnvelopeOverride>;
 export const EdifactProtocolSettingsEnvelopeOverridesList =
   /*@__PURE__*/ S.Array(
     EdifactEnvelopeOverride,
@@ -1323,7 +1322,7 @@ export const EdifactMessageIdentifier = /*@__PURE__*/ S.suspend(() =>
 
 /** The EDIFACT message filter list. */
 export type EdifactProtocolSettingsMessageFilterListList =
-  ReadonlyArray<EdifactMessageIdentifier>;
+  Array<EdifactMessageIdentifier>;
 export const EdifactProtocolSettingsMessageFilterListList =
   /*@__PURE__*/ S.Array(
     EdifactMessageIdentifier,
@@ -1362,7 +1361,7 @@ export const EdifactSchemaReference = /*@__PURE__*/ S.suspend(() =>
 
 /** The EDIFACT schema references. */
 export type EdifactProtocolSettingsSchemaReferencesList =
-  ReadonlyArray<EdifactSchemaReference>;
+  Array<EdifactSchemaReference>;
 export const EdifactProtocolSettingsSchemaReferencesList =
   /*@__PURE__*/ S.Array(
     EdifactSchemaReference,
@@ -1381,7 +1380,7 @@ export interface EdifactValidationOverride {
   /** The value indicating whether to allow leading and trailing spaces and zeroes. */
   allowLeadingAndTrailingSpacesAndZeroes: boolean;
   /** The trailing separator policy. */
-  trailingSeparatorPolicy: TrailingSeparatorPolicy;
+  trailingSeparatorPolicy: TrailingSeparatorPolicy | (string & {});
   /** The value indicating whether to trim leading and trailing spaces and zeroes. */
   trimLeadingAndTrailingSpacesAndZeroes: boolean;
 }
@@ -1401,7 +1400,7 @@ export const EdifactValidationOverride = /*@__PURE__*/ S.suspend(() =>
 
 /** The EDIFACT validation override settings. */
 export type EdifactProtocolSettingsValidationOverridesList =
-  ReadonlyArray<EdifactValidationOverride>;
+  Array<EdifactValidationOverride>;
 export const EdifactProtocolSettingsValidationOverridesList =
   /*@__PURE__*/ S.Array(
     EdifactValidationOverride,
@@ -1424,9 +1423,9 @@ export interface EdifactDelimiterOverride {
   /** The repetition separator. */
   repetitionSeparator: number;
   /** The segment terminator suffix. */
-  segmentTerminatorSuffix: SegmentTerminatorSuffix;
+  segmentTerminatorSuffix: SegmentTerminatorSuffix | (string & {});
   /** The decimal point indicator. */
-  decimalPointIndicator: EdifactDecimalIndicator;
+  decimalPointIndicator: EdifactDecimalIndicator | (string & {});
   /** The release indicator. */
   releaseIndicator: number;
   /** The message association assigned code. */
@@ -1455,7 +1454,7 @@ export const EdifactDelimiterOverride = /*@__PURE__*/ S.suspend(() =>
 
 /** The EDIFACT delimiter override settings. */
 export type EdifactProtocolSettingsEdifactDelimiterOverridesList =
-  ReadonlyArray<EdifactDelimiterOverride>;
+  Array<EdifactDelimiterOverride>;
 export const EdifactProtocolSettingsEdifactDelimiterOverridesList =
   /*@__PURE__*/ S.Array(
     EdifactDelimiterOverride,
@@ -1885,7 +1884,7 @@ export const IntegrationAccountAgreement = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of integration account agreements. */
 export type IntegrationAccountAgreementListResultValueList =
-  ReadonlyArray<IntegrationAccountAgreement>;
+  Array<IntegrationAccountAgreement>;
 export const IntegrationAccountAgreementListResultValueList =
   /*@__PURE__*/ S.Array(
     IntegrationAccountAgreement,
@@ -1949,7 +1948,7 @@ export const IntegrationAccountAgreementsListContentCallbackUrlRequest =
 
 /** Gets the workflow trigger callback URL relative path parameters. */
 export type WorkflowTriggerCallbackUrlRelativePathParametersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const WorkflowTriggerCallbackUrlRelativePathParametersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2390,7 +2389,7 @@ export const AssemblyDefinition = /*@__PURE__*/ S.suspend(() =>
   identifier: "AssemblyDefinition",
 }) as any as S.Schema<AssemblyDefinition>;
 
-export type AssemblyCollectionValueList = ReadonlyArray<AssemblyDefinition>;
+export type AssemblyCollectionValueList = Array<AssemblyDefinition>;
 export const AssemblyCollectionValueList = /*@__PURE__*/ S.Array(
   AssemblyDefinition,
 ) as any as S.Schema<AssemblyCollectionValueList>;
@@ -2458,13 +2457,13 @@ export type RecurrenceFrequency =
 export const RecurrenceFrequency = /*@__PURE__*/ S.String;
 
 /** The minutes. */
-export type RecurrenceScheduleMinutesList = ReadonlyArray<number>;
+export type RecurrenceScheduleMinutesList = Array<number>;
 export const RecurrenceScheduleMinutesList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<RecurrenceScheduleMinutesList>;
 
 /** The hours. */
-export type RecurrenceScheduleHoursList = ReadonlyArray<number>;
+export type RecurrenceScheduleHoursList = Array<number>;
 export const RecurrenceScheduleHoursList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<RecurrenceScheduleHoursList>;
@@ -2480,14 +2479,15 @@ export type RecurrenceScheduleWeekDaysItem =
 export const RecurrenceScheduleWeekDaysItem = /*@__PURE__*/ S.String;
 
 /** The days of the week. */
-export type RecurrenceScheduleWeekDaysList =
-  ReadonlyArray<RecurrenceScheduleWeekDaysItem>;
+export type RecurrenceScheduleWeekDaysList = Array<
+  RecurrenceScheduleWeekDaysItem | (string & {})
+>;
 export const RecurrenceScheduleWeekDaysList = /*@__PURE__*/ S.Array(
   RecurrenceScheduleWeekDaysItem,
 ) as any as S.Schema<RecurrenceScheduleWeekDaysList>;
 
 /** The month days. */
-export type RecurrenceScheduleMonthDaysList = ReadonlyArray<number>;
+export type RecurrenceScheduleMonthDaysList = Array<number>;
 export const RecurrenceScheduleMonthDaysList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<RecurrenceScheduleMonthDaysList>;
@@ -2506,7 +2506,7 @@ export const DayOfWeek = /*@__PURE__*/ S.String;
 /** The recurrence schedule occurrence. */
 export interface RecurrenceScheduleOccurrence {
   /** The day of the week. */
-  day?: DayOfWeek;
+  day?: DayOfWeek | (string & {});
   /** The occurrence. */
   occurrence?: number;
 }
@@ -2521,7 +2521,7 @@ export const RecurrenceScheduleOccurrence = /*@__PURE__*/ S.suspend(() =>
 
 /** The monthly occurrences. */
 export type RecurrenceScheduleMonthlyOccurrencesList =
-  ReadonlyArray<RecurrenceScheduleOccurrence>;
+  Array<RecurrenceScheduleOccurrence>;
 export const RecurrenceScheduleMonthlyOccurrencesList = /*@__PURE__*/ S.Array(
   RecurrenceScheduleOccurrence,
 ) as any as S.Schema<RecurrenceScheduleMonthlyOccurrencesList>;
@@ -2554,7 +2554,7 @@ export const RecurrenceSchedule = /*@__PURE__*/ S.suspend(() =>
 /** The workflow trigger recurrence. */
 export interface WorkflowTriggerRecurrence {
   /** The frequency. */
-  frequency?: RecurrenceFrequency;
+  frequency?: RecurrenceFrequency | (string & {});
   /** The interval. */
   interval?: number;
   /** The start time. */
@@ -2864,8 +2864,7 @@ export const BatchConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "BatchConfiguration",
 }) as any as S.Schema<BatchConfiguration>;
 
-export type BatchConfigurationCollectionValueList =
-  ReadonlyArray<BatchConfiguration>;
+export type BatchConfigurationCollectionValueList = Array<BatchConfiguration>;
 export const BatchConfigurationCollectionValueList = /*@__PURE__*/ S.Array(
   BatchConfiguration,
 ) as any as S.Schema<BatchConfigurationCollectionValueList>;
@@ -3258,7 +3257,7 @@ export const IntegrationAccountCertificate = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of integration account certificates. */
 export type IntegrationAccountCertificateListResultValueList =
-  ReadonlyArray<IntegrationAccountCertificate>;
+  Array<IntegrationAccountCertificate>;
 export const IntegrationAccountCertificateListResultValueList =
   /*@__PURE__*/ S.Array(
     IntegrationAccountCertificate,
@@ -3632,7 +3631,7 @@ export const IntegrationAccountMap = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of integration account maps. */
 export type IntegrationAccountMapListResultValueList =
-  ReadonlyArray<IntegrationAccountMap>;
+  Array<IntegrationAccountMap>;
 export const IntegrationAccountMapListResultValueList = /*@__PURE__*/ S.Array(
   IntegrationAccountMap,
 ) as any as S.Schema<IntegrationAccountMapListResultValueList>;
@@ -3703,8 +3702,7 @@ export type PartnerType = "NotSpecified" | "B2B";
 export const PartnerType = /*@__PURE__*/ S.String;
 
 /** The list of partner business identities. */
-export type B2BPartnerContentBusinessIdentitiesList =
-  ReadonlyArray<BusinessIdentity>;
+export type B2BPartnerContentBusinessIdentitiesList = Array<BusinessIdentity>;
 export const B2BPartnerContentBusinessIdentitiesList = /*@__PURE__*/ S.Array(
   BusinessIdentity,
 ) as any as S.Schema<B2BPartnerContentBusinessIdentitiesList>;
@@ -4028,7 +4026,7 @@ export const IntegrationAccountPartner = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of integration account partners. */
 export type IntegrationAccountPartnerListResultValueList =
-  ReadonlyArray<IntegrationAccountPartner>;
+  Array<IntegrationAccountPartner>;
 export const IntegrationAccountPartnerListResultValueList =
   /*@__PURE__*/ S.Array(
     IntegrationAccountPartner,
@@ -4420,7 +4418,7 @@ export const IntegrationAccountSchema = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of integration account schemas. */
 export type IntegrationAccountSchemaListResultValueList =
-  ReadonlyArray<IntegrationAccountSchema>;
+  Array<IntegrationAccountSchema>;
 export const IntegrationAccountSchemaListResultValueList =
   /*@__PURE__*/ S.Array(
     IntegrationAccountSchema,
@@ -4537,7 +4535,7 @@ export const IntegrationAccountSkuName = /*@__PURE__*/ S.String;
 /** The integration account sku. */
 export interface IntegrationAccountSku {
   /** The sku name. */
-  name: IntegrationAccountSkuName;
+  name: IntegrationAccountSkuName | (string & {});
 }
 export const IntegrationAccountSku = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4986,7 +4984,7 @@ export const IntegrationAccountSession = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of integration account sessions. */
 export type IntegrationAccountSessionListResultValueList =
-  ReadonlyArray<IntegrationAccountSession>;
+  Array<IntegrationAccountSession>;
 export const IntegrationAccountSessionListResultValueList =
   /*@__PURE__*/ S.Array(
     IntegrationAccountSession,
@@ -5137,8 +5135,7 @@ export const IntegrationAccount = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IntegrationAccount>;
 
 /** The list of integration accounts. */
-export type IntegrationAccountListResultValueList =
-  ReadonlyArray<IntegrationAccount>;
+export type IntegrationAccountListResultValueList = Array<IntegrationAccount>;
 export const IntegrationAccountListResultValueList = /*@__PURE__*/ S.Array(
   IntegrationAccount,
 ) as any as S.Schema<IntegrationAccountListResultValueList>;
@@ -5304,7 +5301,7 @@ export const KeyVaultKey = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "KeyVaultKey" }) as any as S.Schema<KeyVaultKey>;
 
 /** The key vault keys. */
-export type KeyVaultKeyCollectionValueList = ReadonlyArray<KeyVaultKey>;
+export type KeyVaultKeyCollectionValueList = Array<KeyVaultKey>;
 export const KeyVaultKeyCollectionValueList = /*@__PURE__*/ S.Array(
   KeyVaultKey,
 ) as any as S.Schema<KeyVaultKeyCollectionValueList>;
@@ -5400,7 +5397,7 @@ export const TrackingEvent = /*@__PURE__*/ S.suspend(() =>
 
 /** The events. */
 export type IntegrationAccountsLogTrackingEventsRequestEventsList =
-  ReadonlyArray<TrackingEvent>;
+  Array<TrackingEvent>;
 export const IntegrationAccountsLogTrackingEventsRequestEventsList =
   /*@__PURE__*/ S.Array(
     TrackingEvent,
@@ -5724,13 +5721,13 @@ export const SwaggerSchemaPropertiesMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<SwaggerSchemaPropertiesMap>;
 
 /** The object required properties. */
-export type SwaggerSchemaRequiredList = ReadonlyArray<string>;
+export type SwaggerSchemaRequiredList = Array<string>;
 export const SwaggerSchemaRequiredList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SwaggerSchemaRequiredList>;
 
 /** The schemas which must pass validation when this schema is used. */
-export type SwaggerSchemaAllOfList = ReadonlyArray<SwaggerSchema>;
+export type SwaggerSchemaAllOfList = Array<SwaggerSchema>;
 export const SwaggerSchemaAllOfList = /*@__PURE__*/ S.Array(
   S.suspend(() => SwaggerSchema),
 ) as any as S.Schema<SwaggerSchemaAllOfList>;
@@ -6141,7 +6138,7 @@ export const ApiOperation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ApiOperation" }) as any as S.Schema<ApiOperation>;
 
 /** The api operation definitions for an API. */
-export type ApiOperationListResultValueList = ReadonlyArray<ApiOperation>;
+export type ApiOperationListResultValueList = Array<ApiOperation>;
 export const ApiOperationListResultValueList = /*@__PURE__*/ S.Array(
   ApiOperation,
 ) as any as S.Schema<ApiOperationListResultValueList>;
@@ -6256,7 +6253,7 @@ export type ApiType = "NotSpecified" | "Rest" | "Soap";
 export const ApiType = /*@__PURE__*/ S.String;
 
 /** The list of endpoints' qualified names. */
-export type WsdlServiceEndpointQualifiedNamesList = ReadonlyArray<string>;
+export type WsdlServiceEndpointQualifiedNamesList = Array<string>;
 export const WsdlServiceEndpointQualifiedNamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<WsdlServiceEndpointQualifiedNamesList>;
@@ -6398,7 +6395,7 @@ export const ApiResourceMetadata = /*@__PURE__*/ S.suspend(() =>
 
 /** The runtime urls. */
 export type IntegrationServiceEnvironmentManagedApiPropertiesRuntimeUrlsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const IntegrationServiceEnvironmentManagedApiPropertiesRuntimeUrlsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6434,7 +6431,7 @@ export const ApiResourceGeneralInformation = /*@__PURE__*/ S.suspend(() =>
 
 /** The capabilities. */
 export type IntegrationServiceEnvironmentManagedApiPropertiesCapabilitiesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const IntegrationServiceEnvironmentManagedApiPropertiesCapabilitiesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6657,7 +6654,7 @@ export const IntegrationServiceEnvironmentManagedApi = /*@__PURE__*/ S.suspend(
 
 /** The integration service environment managed APIs. */
 export type IntegrationServiceEnvironmentManagedApiListResultValueList =
-  ReadonlyArray<IntegrationServiceEnvironmentManagedApi>;
+  Array<IntegrationServiceEnvironmentManagedApi>;
 export const IntegrationServiceEnvironmentManagedApiListResultValueList =
   /*@__PURE__*/ S.Array(
     IntegrationServiceEnvironmentManagedApi,
@@ -6862,7 +6859,7 @@ export const IntegrationServiceEnvironmentNetworkEndPointAccessibilityState =
 
 /** The ports. */
 export type IntegrationServiceEnvironmentNetworkEndpointPortsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const IntegrationServiceEnvironmentNetworkEndpointPortsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6892,7 +6889,7 @@ export const IntegrationServiceEnvironmentNetworkEndpoint =
 
 /** The endpoints. */
 export type IntegrationServiceEnvironmentNetworkDependencyEndpointsList =
-  ReadonlyArray<IntegrationServiceEnvironmentNetworkEndpoint>;
+  Array<IntegrationServiceEnvironmentNetworkEndpoint>;
 export const IntegrationServiceEnvironmentNetworkDependencyEndpointsList =
   /*@__PURE__*/ S.Array(
     IntegrationServiceEnvironmentNetworkEndpoint,
@@ -6924,7 +6921,7 @@ export const IntegrationServiceEnvironmentNetworkDependency =
 
 /** The outbound network dependencies. */
 export type IntegrationServiceEnvironmentSubnetNetworkHealthOutboundNetworkDependenciesList =
-  ReadonlyArray<IntegrationServiceEnvironmentNetworkDependency>;
+  Array<IntegrationServiceEnvironmentNetworkDependency>;
 export const IntegrationServiceEnvironmentSubnetNetworkHealthOutboundNetworkDependenciesList =
   /*@__PURE__*/ S.Array(
     IntegrationServiceEnvironmentNetworkDependency,
@@ -6939,7 +6936,7 @@ export type ErrorResponseCode =
 export const ErrorResponseCode = /*@__PURE__*/ S.String;
 
 /** The error message details. */
-export type ExtendedErrorInfoDetailsList = ReadonlyArray<ExtendedErrorInfo>;
+export type ExtendedErrorInfoDetailsList = Array<ExtendedErrorInfo>;
 export const ExtendedErrorInfoDetailsList = /*@__PURE__*/ S.Array(
   S.suspend(() => ExtendedErrorInfo),
 ) as any as S.Schema<ExtendedErrorInfoDetailsList>;
@@ -7060,14 +7057,13 @@ export const IpAddress = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IpAddress" }) as any as S.Schema<IpAddress>;
 
 /** The outgoing ip address. */
-export type FlowEndpointsOutgoingIpAddressesList = ReadonlyArray<IpAddress>;
+export type FlowEndpointsOutgoingIpAddressesList = Array<IpAddress>;
 export const FlowEndpointsOutgoingIpAddressesList = /*@__PURE__*/ S.Array(
   IpAddress,
 ) as any as S.Schema<FlowEndpointsOutgoingIpAddressesList>;
 
 /** The access endpoint ip address. */
-export type FlowEndpointsAccessEndpointIpAddressesList =
-  ReadonlyArray<IpAddress>;
+export type FlowEndpointsAccessEndpointIpAddressesList = Array<IpAddress>;
 export const FlowEndpointsAccessEndpointIpAddressesList = /*@__PURE__*/ S.Array(
   IpAddress,
 ) as any as S.Schema<FlowEndpointsAccessEndpointIpAddressesList>;
@@ -7115,7 +7111,7 @@ export const IntegrationServiceEnvironmentAccessEndpointType =
 /** The integration service environment access endpoint. */
 export interface IntegrationServiceEnvironmentAccessEndpoint {
   /** The access endpoint type. */
-  type?: IntegrationServiceEnvironmentAccessEndpointType;
+  type?: IntegrationServiceEnvironmentAccessEndpointType | (string & {});
 }
 export const IntegrationServiceEnvironmentAccessEndpoint =
   /*@__PURE__*/ S.suspend(() =>
@@ -7128,7 +7124,7 @@ export const IntegrationServiceEnvironmentAccessEndpoint =
 
 /** The subnets. */
 export type NetworkConfigurationInputSubnetsList =
-  ReadonlyArray<ResourceReferenceInput>;
+  Array<ResourceReferenceInput>;
 export const NetworkConfigurationInputSubnetsList = /*@__PURE__*/ S.Array(
   ResourceReferenceInput,
 ) as any as S.Schema<NetworkConfigurationInputSubnetsList>;
@@ -7229,7 +7225,7 @@ export const IntegrationServiceEnvironmentSkuName = /*@__PURE__*/ S.String;
 /** The integration service environment sku. */
 export interface IntegrationServiceEnvironmentSku {
   /** The sku name. */
-  name?: IntegrationServiceEnvironmentSkuName;
+  name?: IntegrationServiceEnvironmentSkuName | (string & {});
   /** The sku capacity. */
   capacity?: number;
 }
@@ -7338,7 +7334,7 @@ export const IntegrationServiceEnvironmentsCreateOrUpdateResponseTagsMap =
   ) as any as S.Schema<IntegrationServiceEnvironmentsCreateOrUpdateResponseTagsMap>;
 
 /** The subnets. */
-export type NetworkConfigurationSubnetsList = ReadonlyArray<ResourceReference>;
+export type NetworkConfigurationSubnetsList = Array<ResourceReference>;
 export const NetworkConfigurationSubnetsList = /*@__PURE__*/ S.Array(
   ResourceReference,
 ) as any as S.Schema<NetworkConfigurationSubnetsList>;
@@ -7717,7 +7713,7 @@ export const IntegrationServiceEnvironmentSkuDefinition =
 
 /** The list of integration service environment skus. */
 export type IntegrationServiceEnvironmentSkuListValueList =
-  ReadonlyArray<IntegrationServiceEnvironmentSkuDefinition>;
+  Array<IntegrationServiceEnvironmentSkuDefinition>;
 export const IntegrationServiceEnvironmentSkuListValueList =
   /*@__PURE__*/ S.Array(
     IntegrationServiceEnvironmentSkuDefinition,
@@ -7809,7 +7805,7 @@ export const IntegrationServiceEnvironment = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IntegrationServiceEnvironment>;
 
 export type IntegrationServiceEnvironmentListResultValueList =
-  ReadonlyArray<IntegrationServiceEnvironment>;
+  Array<IntegrationServiceEnvironment>;
 export const IntegrationServiceEnvironmentListResultValueList =
   /*@__PURE__*/ S.Array(
     IntegrationServiceEnvironment,
@@ -8036,7 +8032,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of Logic operations supported by the Logic resource provider. */
-export type OperationListResultValueList = ReadonlyArray<Operation>;
+export type OperationListResultValueList = Array<Operation>;
 export const OperationListResultValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationListResultValueList>;
@@ -8103,7 +8099,7 @@ export const WorkflowRunActionRepetitionsGetResponseTagsMap =
   ) as any as S.Schema<WorkflowRunActionRepetitionsGetResponseTagsMap>;
 
 /** The client keywords. */
-export type RunActionCorrelationClientKeywordsList = ReadonlyArray<string>;
+export type RunActionCorrelationClientKeywordsList = Array<string>;
 export const RunActionCorrelationClientKeywordsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RunActionCorrelationClientKeywordsList>;
@@ -8199,7 +8195,7 @@ export const RetryHistory = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets the retry histories. */
 export type WorkflowRunActionRepetitionPropertiesRetryHistoryList =
-  ReadonlyArray<RetryHistory>;
+  Array<RetryHistory>;
 export const WorkflowRunActionRepetitionPropertiesRetryHistoryList =
   /*@__PURE__*/ S.Array(
     RetryHistory,
@@ -8223,7 +8219,7 @@ export const RepetitionIndex = /*@__PURE__*/ S.suspend(() =>
 
 /** The repetition indexes. */
 export type WorkflowRunActionRepetitionPropertiesRepetitionIndexesList =
-  ReadonlyArray<RepetitionIndex>;
+  Array<RepetitionIndex>;
 export const WorkflowRunActionRepetitionPropertiesRepetitionIndexesList =
   /*@__PURE__*/ S.Array(
     RepetitionIndex,
@@ -8387,7 +8383,7 @@ export const WorkflowRunActionRepetitionDefinition = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<WorkflowRunActionRepetitionDefinition>;
 
 export type WorkflowRunActionRepetitionDefinitionCollectionValueList =
-  ReadonlyArray<WorkflowRunActionRepetitionDefinition>;
+  Array<WorkflowRunActionRepetitionDefinition>;
 export const WorkflowRunActionRepetitionDefinitionCollectionValueList =
   /*@__PURE__*/ S.Array(
     WorkflowRunActionRepetitionDefinition,
@@ -8447,14 +8443,13 @@ export const WorkflowRunActionRepetitionsListExpressionTracesRequest =
   }) as any as S.Schema<WorkflowRunActionRepetitionsListExpressionTracesRequest>;
 
 /** The sub expressions. */
-export type ExpressionSubexpressionsList = ReadonlyArray<Expression>;
+export type ExpressionSubexpressionsList = Array<Expression>;
 export const ExpressionSubexpressionsList = /*@__PURE__*/ S.Array(
   S.suspend(() => Expression),
 ) as any as S.Schema<ExpressionSubexpressionsList>;
 
 /** The error details. */
-export type AzureResourceErrorInfoDetailsList =
-  ReadonlyArray<AzureResourceErrorInfo>;
+export type AzureResourceErrorInfoDetailsList = Array<AzureResourceErrorInfo>;
 export const AzureResourceErrorInfoDetailsList = /*@__PURE__*/ S.Array(
   S.suspend(() => AzureResourceErrorInfo),
 ) as any as S.Schema<AzureResourceErrorInfoDetailsList>;
@@ -8497,7 +8492,7 @@ export const Expression = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Expression" }) as any as S.Schema<Expression>;
 
 /** The sub expressions. */
-export type ExpressionRootSubexpressionsList = ReadonlyArray<Expression>;
+export type ExpressionRootSubexpressionsList = Array<Expression>;
 export const ExpressionRootSubexpressionsList = /*@__PURE__*/ S.Array(
   Expression,
 ) as any as S.Schema<ExpressionRootSubexpressionsList>;
@@ -8523,7 +8518,7 @@ export const ExpressionRoot = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ExpressionRoot" }) as any as S.Schema<ExpressionRoot>;
 
-export type ExpressionTracesInputsList = ReadonlyArray<ExpressionRoot>;
+export type ExpressionTracesInputsList = Array<ExpressionRoot>;
 export const ExpressionTracesInputsList = /*@__PURE__*/ S.Array(
   ExpressionRoot,
 ) as any as S.Schema<ExpressionTracesInputsList>;
@@ -8743,7 +8738,7 @@ export const RequestHistory = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RequestHistory" }) as any as S.Schema<RequestHistory>;
 
 /** A list of workflow request histories. */
-export type RequestHistoryListResultValueList = ReadonlyArray<RequestHistory>;
+export type RequestHistoryListResultValueList = Array<RequestHistory>;
 export const RequestHistoryListResultValueList = /*@__PURE__*/ S.Array(
   RequestHistory,
 ) as any as S.Schema<RequestHistoryListResultValueList>;
@@ -9006,8 +9001,7 @@ export const WorkflowRunActionsGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WorkflowRunActionsGetRequest>;
 
 /** Gets the retry histories. */
-export type WorkflowRunActionPropertiesRetryHistoryList =
-  ReadonlyArray<RetryHistory>;
+export type WorkflowRunActionPropertiesRetryHistoryList = Array<RetryHistory>;
 export const WorkflowRunActionPropertiesRetryHistoryList =
   /*@__PURE__*/ S.Array(
     RetryHistory,
@@ -9134,8 +9128,7 @@ export const WorkflowRunAction = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WorkflowRunAction>;
 
 /** A list of workflow run actions. */
-export type WorkflowRunActionListResultValueList =
-  ReadonlyArray<WorkflowRunAction>;
+export type WorkflowRunActionListResultValueList = Array<WorkflowRunAction>;
 export const WorkflowRunActionListResultValueList = /*@__PURE__*/ S.Array(
   WorkflowRunAction,
 ) as any as S.Schema<WorkflowRunActionListResultValueList>;
@@ -9532,7 +9525,7 @@ export const WorkflowRun = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "WorkflowRun" }) as any as S.Schema<WorkflowRun>;
 
 /** A list of workflow runs. */
-export type WorkflowRunListResultValueList = ReadonlyArray<WorkflowRun>;
+export type WorkflowRunListResultValueList = Array<WorkflowRun>;
 export const WorkflowRunListResultValueList = /*@__PURE__*/ S.Array(
   WorkflowRun,
 ) as any as S.Schema<WorkflowRunListResultValueList>;
@@ -9575,7 +9568,7 @@ export const IpAddressRange = /*@__PURE__*/ S.suspend(() =>
 
 /** The allowed caller IP address ranges. */
 export type FlowAccessControlConfigurationPolicyAllowedCallerIpAddressesList =
-  ReadonlyArray<IpAddressRange>;
+  Array<IpAddressRange>;
 export const FlowAccessControlConfigurationPolicyAllowedCallerIpAddressesList =
   /*@__PURE__*/ S.Array(
     IpAddressRange,
@@ -9603,7 +9596,7 @@ export const OpenAuthenticationPolicyClaim = /*@__PURE__*/ S.suspend(() =>
 
 /** The access policy claims. */
 export type OpenAuthenticationAccessPolicyClaimsList =
-  ReadonlyArray<OpenAuthenticationPolicyClaim>;
+  Array<OpenAuthenticationPolicyClaim>;
 export const OpenAuthenticationAccessPolicyClaimsList = /*@__PURE__*/ S.Array(
   OpenAuthenticationPolicyClaim,
 ) as any as S.Schema<OpenAuthenticationAccessPolicyClaimsList>;
@@ -9611,7 +9604,7 @@ export const OpenAuthenticationAccessPolicyClaimsList = /*@__PURE__*/ S.Array(
 /** Open authentication access policy defined by user. */
 export interface OpenAuthenticationAccessPolicy {
   /** Type of provider for OAuth. */
-  type?: OpenAuthenticationProviderType;
+  type?: OpenAuthenticationProviderType | (string & {});
   /** The access policy claims. */
   claims?: OpenAuthenticationAccessPolicyClaimsList;
 }
@@ -9691,7 +9684,7 @@ export const FlowAccessControlConfiguration = /*@__PURE__*/ S.suspend(() =>
 /** The workflow parameters. */
 export interface WorkflowParameter {
   /** The type. */
-  type?: ParameterType;
+  type?: ParameterType | (string & {});
   /** The value. */
   value?: unknown;
   /** The metadata. */
@@ -10162,7 +10155,7 @@ export const Workflow = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Workflow" }) as any as S.Schema<Workflow>;
 
 /** The list of workflows. */
-export type WorkflowListResultValueList = ReadonlyArray<Workflow>;
+export type WorkflowListResultValueList = Array<Workflow>;
 export const WorkflowListResultValueList = /*@__PURE__*/ S.Array(
   Workflow,
 ) as any as S.Schema<WorkflowListResultValueList>;
@@ -10666,7 +10659,7 @@ export const WorkflowTriggerHistory = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of workflow trigger histories. */
 export type WorkflowTriggerHistoryListResultValueList =
-  ReadonlyArray<WorkflowTriggerHistory>;
+  Array<WorkflowTriggerHistory>;
 export const WorkflowTriggerHistoryListResultValueList = /*@__PURE__*/ S.Array(
   WorkflowTriggerHistory,
 ) as any as S.Schema<WorkflowTriggerHistoryListResultValueList>;
@@ -10931,7 +10924,7 @@ export const WorkflowTrigger = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WorkflowTrigger>;
 
 /** A list of workflow triggers. */
-export type WorkflowTriggerListResultValueList = ReadonlyArray<WorkflowTrigger>;
+export type WorkflowTriggerListResultValueList = Array<WorkflowTrigger>;
 export const WorkflowTriggerListResultValueList = /*@__PURE__*/ S.Array(
   WorkflowTrigger,
 ) as any as S.Schema<WorkflowTriggerListResultValueList>;
@@ -11291,7 +11284,7 @@ export const WorkflowVersion = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WorkflowVersion>;
 
 /** A list of workflow versions. */
-export type WorkflowVersionListResultValueList = ReadonlyArray<WorkflowVersion>;
+export type WorkflowVersionListResultValueList = Array<WorkflowVersion>;
 export const WorkflowVersionListResultValueList = /*@__PURE__*/ S.Array(
   WorkflowVersion,
 ) as any as S.Schema<WorkflowVersionListResultValueList>;

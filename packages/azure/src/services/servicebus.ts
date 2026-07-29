@@ -438,8 +438,9 @@ export type AccessRights = "Manage" | "Send" | "Listen";
 export const AccessRights = /*@__PURE__*/ S.String;
 
 /** The rights associated with the rule. */
-export type SBAuthorizationRulePropertiesRightsList =
-  ReadonlyArray<AccessRights>;
+export type SBAuthorizationRulePropertiesRightsList = Array<
+  AccessRights | (string & {})
+>;
 export const SBAuthorizationRulePropertiesRightsList = /*@__PURE__*/ S.Array(
   AccessRights,
 ) as any as S.Schema<SBAuthorizationRulePropertiesRightsList>;
@@ -539,8 +540,7 @@ export const ArmDisasterRecovery = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ArmDisasterRecovery>;
 
 /** The ArmDisasterRecovery items on this page */
-export type ArmDisasterRecoveryListResultValueList =
-  ReadonlyArray<ArmDisasterRecovery>;
+export type ArmDisasterRecoveryListResultValueList = Array<ArmDisasterRecovery>;
 export const ArmDisasterRecoveryListResultValueList = /*@__PURE__*/ S.Array(
   ArmDisasterRecovery,
 ) as any as S.Schema<ArmDisasterRecoveryListResultValueList>;
@@ -619,8 +619,7 @@ export const SBAuthorizationRule = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SBAuthorizationRule>;
 
 /** The SBAuthorizationRule items on this page */
-export type SBAuthorizationRuleListResultValueList =
-  ReadonlyArray<SBAuthorizationRule>;
+export type SBAuthorizationRuleListResultValueList = Array<SBAuthorizationRule>;
 export const SBAuthorizationRuleListResultValueList = /*@__PURE__*/ S.Array(
   SBAuthorizationRule,
 ) as any as S.Schema<SBAuthorizationRuleListResultValueList>;
@@ -1007,7 +1006,7 @@ export const MigrationConfigProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** The MigrationConfigProperties items on this page */
 export type MigrationConfigListResultValueList =
-  ReadonlyArray<MigrationConfigProperties>;
+  Array<MigrationConfigProperties>;
 export const MigrationConfigListResultValueList = /*@__PURE__*/ S.Array(
   MigrationConfigProperties,
 ) as any as S.Schema<MigrationConfigListResultValueList>;
@@ -1136,8 +1135,7 @@ export const KeyVaultProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<KeyVaultProperties>;
 
 /** Properties of KeyVault */
-export type EncryptionKeyVaultPropertiesList =
-  ReadonlyArray<KeyVaultProperties>;
+export type EncryptionKeyVaultPropertiesList = Array<KeyVaultProperties>;
 export const EncryptionKeyVaultPropertiesList = /*@__PURE__*/ S.Array(
   KeyVaultProperties,
 ) as any as S.Schema<EncryptionKeyVaultPropertiesList>;
@@ -1151,7 +1149,7 @@ export interface Encryption {
   /** Properties of KeyVault */
   keyVaultProperties?: EncryptionKeyVaultPropertiesList;
   /** Enumerates the possible value of keySource for Encryption */
-  keySource?: EncryptionKeySource;
+  keySource?: EncryptionKeySource | (string & {});
   /** Enable Infrastructure Encryption (Double Encryption) */
   requireInfrastructureEncryption?: boolean;
 }
@@ -1187,7 +1185,7 @@ export const PrivateLinkConnectionStatus = /*@__PURE__*/ S.String;
 /** ConnectionState information. */
 export interface ConnectionState {
   /** Status of the connection. */
-  status?: PrivateLinkConnectionStatus;
+  status?: PrivateLinkConnectionStatus | (string & {});
   /** Description of the connection state. */
   description?: string;
 }
@@ -1217,7 +1215,7 @@ export interface PrivateEndpointConnectionProperties {
   /** Details about the state of the connection. */
   privateLinkServiceConnectionState?: ConnectionState;
   /** Provisioning state of the Private Endpoint Connection. */
-  provisioningState?: EndPointProvisioningState;
+  provisioningState?: EndPointProvisioningState | (string & {});
 }
 export const PrivateEndpointConnectionProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1244,7 +1242,7 @@ export const PrivateEndpointConnectionInput = /*@__PURE__*/ S.suspend(() =>
 
 /** List of private endpoint connections. */
 export type SBNamespacePropertiesInputPrivateEndpointConnectionsList =
-  ReadonlyArray<PrivateEndpointConnectionInput>;
+  Array<PrivateEndpointConnectionInput>;
 export const SBNamespacePropertiesInputPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnectionInput,
@@ -1264,7 +1262,7 @@ export const Mode = /*@__PURE__*/ S.String;
 
 export interface ConfidentialCompute {
   /** Setting to Enable or Disable Confidential Compute */
-  mode?: Mode;
+  mode?: Mode | (string & {});
 }
 export const ConfidentialCompute = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1294,7 +1292,7 @@ export interface NamespaceReplicaLocation {
   /** Azure regions where a replica of the namespace is maintained */
   locationName?: string;
   /** GeoDR Role Types */
-  roleType?: GeoDRRoleType;
+  roleType?: GeoDRRoleType | (string & {});
 }
 export const NamespaceReplicaLocation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1307,7 +1305,7 @@ export const NamespaceReplicaLocation = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of regions where replicas of the namespace are maintained. */
 export type GeoDataReplicationPropertiesLocationsList =
-  ReadonlyArray<NamespaceReplicaLocation>;
+  Array<NamespaceReplicaLocation>;
 export const GeoDataReplicationPropertiesLocationsList = /*@__PURE__*/ S.Array(
   NamespaceReplicaLocation,
 ) as any as S.Schema<GeoDataReplicationPropertiesLocationsList>;
@@ -1391,9 +1389,9 @@ export const SkuTier = /*@__PURE__*/ S.String;
 /** SKU of the namespace. */
 export interface SBSku {
   /** Name of this SKU. */
-  name: SkuName;
+  name: SkuName | (string & {});
   /** The billing tier of this particular SKU. */
-  tier?: SkuTier;
+  tier?: SkuTier | (string & {});
   /** Messaging units for your service bus premium namespace. Valid capacities are {1, 2, 4, 8, 16} multiples of your properties.premiumMessagingPartitions setting. For example, If properties.premiumMessagingPartitions is 1 then possible capacity values are 1, 2, 4, 8, and 16. If properties.premiumMessagingPartitions is 4 then possible capacity values are 4, 8, 16, 32 and 64 */
   capacity?: number;
 }
@@ -1523,7 +1521,7 @@ export const PrivateEndpointConnection = /*@__PURE__*/ S.suspend(() =>
 
 /** List of private endpoint connections. */
 export type SBNamespacePropertiesPrivateEndpointConnectionsList =
-  ReadonlyArray<PrivateEndpointConnection>;
+  Array<PrivateEndpointConnection>;
 export const SBNamespacePropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection,
@@ -1772,7 +1770,7 @@ export const NWRuleSetVirtualNetworkRules = /*@__PURE__*/ S.suspend(() =>
 
 /** List VirtualNetwork Rules */
 export type NetworkRuleSetPropertiesVirtualNetworkRulesList =
-  ReadonlyArray<NWRuleSetVirtualNetworkRules>;
+  Array<NWRuleSetVirtualNetworkRules>;
 export const NetworkRuleSetPropertiesVirtualNetworkRulesList =
   /*@__PURE__*/ S.Array(
     NWRuleSetVirtualNetworkRules,
@@ -1787,7 +1785,7 @@ export interface NWRuleSetIpRules {
   /** IP Mask */
   ipMask?: string;
   /** The IP Filter Action */
-  action?: NWRuleSetIpRulesAction;
+  action?: NWRuleSetIpRulesAction | (string & {});
 }
 export const NWRuleSetIpRules = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1799,8 +1797,7 @@ export const NWRuleSetIpRules = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NWRuleSetIpRules>;
 
 /** List of IpRules */
-export type NetworkRuleSetPropertiesIpRulesList =
-  ReadonlyArray<NWRuleSetIpRules>;
+export type NetworkRuleSetPropertiesIpRulesList = Array<NWRuleSetIpRules>;
 export const NetworkRuleSetPropertiesIpRulesList = /*@__PURE__*/ S.Array(
   NWRuleSetIpRules,
 ) as any as S.Schema<NetworkRuleSetPropertiesIpRulesList>;
@@ -1817,13 +1814,15 @@ export interface NetworkRuleSetProperties {
   /** Value that indicates whether Trusted Service Access is Enabled or not. */
   trustedServiceAccessEnabled?: boolean;
   /** Default Action for Network Rule Set */
-  defaultAction?: DefaultAction;
+  defaultAction?: DefaultAction | (string & {});
   /** List VirtualNetwork Rules */
   virtualNetworkRules?: NetworkRuleSetPropertiesVirtualNetworkRulesList;
   /** List of IpRules */
   ipRules?: NetworkRuleSetPropertiesIpRulesList;
   /** This determines if traffic is allowed over public network. By default it is enabled. */
-  publicNetworkAccess?: NetworkRuleSetPropertiesPublicNetworkAccess;
+  publicNetworkAccess?:
+    | NetworkRuleSetPropertiesPublicNetworkAccess
+    | (string & {});
 }
 export const NetworkRuleSetProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2255,7 +2254,7 @@ export const SBNamespace = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SBNamespace" }) as any as S.Schema<SBNamespace>;
 
 /** The SBNamespace items on this page */
-export type SBNamespaceListResultValueList = ReadonlyArray<SBNamespace>;
+export type SBNamespaceListResultValueList = Array<SBNamespace>;
 export const SBNamespaceListResultValueList = /*@__PURE__*/ S.Array(
   SBNamespace,
 ) as any as S.Schema<SBNamespaceListResultValueList>;
@@ -2406,7 +2405,7 @@ export const NetworkRuleSet = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NetworkRuleSet" }) as any as S.Schema<NetworkRuleSet>;
 
 /** The NetworkRuleSet items on this page */
-export type NetworkRuleSetListResultValueList = ReadonlyArray<NetworkRuleSet>;
+export type NetworkRuleSetListResultValueList = Array<NetworkRuleSet>;
 export const NetworkRuleSetListResultValueList = /*@__PURE__*/ S.Array(
   NetworkRuleSet,
 ) as any as S.Schema<NetworkRuleSetListResultValueList>;
@@ -2476,7 +2475,7 @@ export const NamespacesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 
 /** List of private endpoint connections. */
 export type SBNamespaceUpdatePropertiesInputPrivateEndpointConnectionsList =
-  ReadonlyArray<PrivateEndpointConnectionInput>;
+  Array<PrivateEndpointConnectionInput>;
 export const SBNamespaceUpdatePropertiesInputPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnectionInput,
@@ -2667,7 +2666,7 @@ export const ProvisioningIssue = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Provisioning Issues if any */
 export type NetworkSecurityPerimeterConfigurationPropertiesProvisioningIssuesList =
-  ReadonlyArray<ProvisioningIssue>;
+  Array<ProvisioningIssue>;
 export const NetworkSecurityPerimeterConfigurationPropertiesProvisioningIssuesList =
   /*@__PURE__*/ S.Array(
     ProvisioningIssue,
@@ -2724,7 +2723,7 @@ export type NspAccessRuleDirection = "Inbound" | "Outbound";
 export const NspAccessRuleDirection = /*@__PURE__*/ S.String;
 
 /** Address prefixes in the CIDR format for inbound rules */
-export type NspAccessRulePropertiesAddressPrefixesList = ReadonlyArray<string>;
+export type NspAccessRulePropertiesAddressPrefixesList = Array<string>;
 export const NspAccessRulePropertiesAddressPrefixesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<NspAccessRulePropertiesAddressPrefixesList>;
@@ -2745,14 +2744,14 @@ export const NspAccessRulePropertiesSubscriptionsItem = /*@__PURE__*/ S.suspend(
 
 /** Subscriptions for inbound rules */
 export type NspAccessRulePropertiesSubscriptionsList =
-  ReadonlyArray<NspAccessRulePropertiesSubscriptionsItem>;
+  Array<NspAccessRulePropertiesSubscriptionsItem>;
 export const NspAccessRulePropertiesSubscriptionsList = /*@__PURE__*/ S.Array(
   NspAccessRulePropertiesSubscriptionsItem,
 ) as any as S.Schema<NspAccessRulePropertiesSubscriptionsList>;
 
 /** NetworkSecurityPerimeters for inbound rules */
 export type NspAccessRulePropertiesNetworkSecurityPerimetersList =
-  ReadonlyArray<NetworkSecurityPerimeter>;
+  Array<NetworkSecurityPerimeter>;
 export const NspAccessRulePropertiesNetworkSecurityPerimetersList =
   /*@__PURE__*/ S.Array(
     NetworkSecurityPerimeter,
@@ -2760,7 +2759,7 @@ export const NspAccessRulePropertiesNetworkSecurityPerimetersList =
 
 /** FQDN for outbound rules */
 export type NspAccessRulePropertiesFullyQualifiedDomainNamesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const NspAccessRulePropertiesFullyQualifiedDomainNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2817,7 +2816,7 @@ export const NspAccessRule = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Access Rules */
 export type NetworkSecurityPerimeterConfigurationPropertiesProfileAccessRulesList =
-  ReadonlyArray<NspAccessRule>;
+  Array<NspAccessRule>;
 export const NetworkSecurityPerimeterConfigurationPropertiesProfileAccessRulesList =
   /*@__PURE__*/ S.Array(
     NspAccessRule,
@@ -2847,7 +2846,7 @@ export const NetworkSecurityPerimeterConfigurationPropertiesProfile =
 
 /** Indicates that the NSP controls related to backing association are only applicable to a specific feature in backing resource's data plane. */
 export type NetworkSecurityPerimeterConfigurationPropertiesApplicableFeaturesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const NetworkSecurityPerimeterConfigurationPropertiesApplicableFeaturesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2932,7 +2931,7 @@ export const NetworkSecurityPerimeterConfiguration = /*@__PURE__*/ S.suspend(
 
 /** The NetworkSecurityPerimeterConfiguration items on this page */
 export type NetworkSecurityPerimeterConfigurationListValueList =
-  ReadonlyArray<NetworkSecurityPerimeterConfiguration>;
+  Array<NetworkSecurityPerimeterConfiguration>;
 export const NetworkSecurityPerimeterConfigurationListValueList =
   /*@__PURE__*/ S.Array(
     NetworkSecurityPerimeterConfiguration,
@@ -3109,7 +3108,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** The list of operations. */
-export type OperationListResultValueList = ReadonlyArray<Operation>;
+export type OperationListResultValueList = Array<Operation>;
 export const OperationListResultValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationListResultValueList>;
@@ -3311,7 +3310,7 @@ export const PrivateEndpointConnectionsListRequest = /*@__PURE__*/ S.suspend(
 
 /** The PrivateEndpointConnection items on this page */
 export type PrivateEndpointConnectionListResultValueList =
-  ReadonlyArray<PrivateEndpointConnection>;
+  Array<PrivateEndpointConnection>;
 export const PrivateEndpointConnectionListResultValueList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection,
@@ -3359,16 +3358,14 @@ export const PrivateLinkResourcesGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateLinkResourcesGetRequest>;
 
 /** Required Members */
-export type PrivateLinkResourcePropertiesRequiredMembersList =
-  ReadonlyArray<string>;
+export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
 export const PrivateLinkResourcePropertiesRequiredMembersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
 
 /** Required Zone Names */
-export type PrivateLinkResourcePropertiesRequiredZoneNamesList =
-  ReadonlyArray<string>;
+export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
 export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3420,7 +3417,7 @@ export const PrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The PrivateLinkResource items on this page */
 export type PrivateLinkResourcesListResultValueList =
-  ReadonlyArray<PrivateLinkResource>;
+  Array<PrivateLinkResource>;
 export const PrivateLinkResourcesListResultValueList = /*@__PURE__*/ S.Array(
   PrivateLinkResource,
 ) as any as S.Schema<PrivateLinkResourcesListResultValueList>;
@@ -4013,7 +4010,7 @@ export const SBQueue = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SBQueue" }) as any as S.Schema<SBQueue>;
 
 /** The SBQueue items on this page */
-export type SBQueueListResultValueList = ReadonlyArray<SBQueue>;
+export type SBQueueListResultValueList = Array<SBQueue>;
 export const SBQueueListResultValueList = /*@__PURE__*/ S.Array(
   SBQueue,
 ) as any as S.Schema<SBQueueListResultValueList>;
@@ -4194,7 +4191,7 @@ export interface Ruleproperties {
   /** Represents the filter actions which are allowed for the transformation of a message that have been matched by a filter expression. */
   action?: Action;
   /** Filter type that is evaluated against a BrokeredMessage. */
-  filterType?: FilterType;
+  filterType?: FilterType | (string & {});
   /** Properties of sqlFilter */
   sqlFilter?: SqlFilter;
   /** Properties of correlationFilter */
@@ -4439,7 +4436,7 @@ export const Rule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Rule" }) as any as S.Schema<Rule>;
 
 /** The Rule items on this page */
-export type RuleListResultValueList = ReadonlyArray<Rule>;
+export type RuleListResultValueList = Array<Rule>;
 export const RuleListResultValueList = /*@__PURE__*/ S.Array(
   Rule,
 ) as any as S.Schema<RuleListResultValueList>;
@@ -4820,7 +4817,7 @@ export const SBSubscription = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SBSubscription" }) as any as S.Schema<SBSubscription>;
 
 /** The SBSubscription items on this page */
-export type SBSubscriptionListResultValueList = ReadonlyArray<SBSubscription>;
+export type SBSubscriptionListResultValueList = Array<SBSubscription>;
 export const SBSubscriptionListResultValueList = /*@__PURE__*/ S.Array(
   SBSubscription,
 ) as any as S.Schema<SBSubscriptionListResultValueList>;
@@ -5345,7 +5342,7 @@ export const SBTopic = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SBTopic" }) as any as S.Schema<SBTopic>;
 
 /** The SBTopic items on this page */
-export type SBTopicListResultValueList = ReadonlyArray<SBTopic>;
+export type SBTopicListResultValueList = Array<SBTopic>;
 export const SBTopicListResultValueList = /*@__PURE__*/ S.Array(
   SBTopic,
 ) as any as S.Schema<SBTopicListResultValueList>;

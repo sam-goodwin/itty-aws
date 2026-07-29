@@ -142,7 +142,7 @@ export const CreateProjectsBrandsIdentityAwareProxyClientsRequest =
     identifier: "CreateProjectsBrandsIdentityAwareProxyClientsRequest",
   }) as any as S.Schema<CreateProjectsBrandsIdentityAwareProxyClientsRequest>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -319,7 +319,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
-export type BindingList = ReadonlyArray<Binding>;
+export type BindingList = Array<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -544,8 +544,9 @@ export type AccessSettingsIdentitySourcesItemEnum =
   | "WORKFORCE_IDENTITY_FEDERATION";
 export const AccessSettingsIdentitySourcesItemEnum = /*@__PURE__*/ S.String;
 
-export type AccessSettingsIdentitySourcesItemEnumList =
-  ReadonlyArray<AccessSettingsIdentitySourcesItemEnum>;
+export type AccessSettingsIdentitySourcesItemEnumList = Array<
+  AccessSettingsIdentitySourcesItemEnum | (string & {})
+>;
 export const AccessSettingsIdentitySourcesItemEnumList = /*@__PURE__*/ S.Array(
   AccessSettingsIdentitySourcesItemEnum,
 ) as any as S.Schema<AccessSettingsIdentitySourcesItemEnumList>;
@@ -616,11 +617,11 @@ export const ReauthSettingsPolicyTypeEnum = /*@__PURE__*/ S.String;
 /** Configuration for IAP reauthentication policies. */
 export interface ReauthSettings {
   /** Optional. Reauth method requested. */
-  method?: ReauthSettingsMethodEnum;
+  method?: ReauthSettingsMethodEnum | (string & {});
   /** Optional. Reauth session lifetime, how long before a user has to reauthenticate again. */
   maxAge?: string;
   /** Optional. How IAP determines the effective policy in cases of hierarchical policies. Policies are merged from higher in the hierarchy to lower in the hierarchy. */
-  policyType?: ReauthSettingsPolicyTypeEnum;
+  policyType?: ReauthSettingsPolicyTypeEnum | (string & {});
 }
 export const ReauthSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -670,8 +671,9 @@ export type AttributePropagationSettingsOutputCredentialsItemEnum =
 export const AttributePropagationSettingsOutputCredentialsItemEnum =
   /*@__PURE__*/ S.String;
 
-export type AttributePropagationSettingsOutputCredentialsItemEnumList =
-  ReadonlyArray<AttributePropagationSettingsOutputCredentialsItemEnum>;
+export type AttributePropagationSettingsOutputCredentialsItemEnumList = Array<
+  AttributePropagationSettingsOutputCredentialsItemEnum | (string & {})
+>;
 export const AttributePropagationSettingsOutputCredentialsItemEnumList =
   /*@__PURE__*/ S.Array(
     AttributePropagationSettingsOutputCredentialsItemEnum,
@@ -841,7 +843,7 @@ export const ListProjectsBrandsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsBrandsRequest",
 }) as any as S.Schema<ListProjectsBrandsRequest>;
 
-export type BrandList = ReadonlyArray<Brand>;
+export type BrandList = Array<Brand>;
 export const BrandList = /*@__PURE__*/ S.Array(
   Brand,
 ) as any as S.Schema<BrandList>;
@@ -884,8 +886,7 @@ export const ListProjectsBrandsIdentityAwareProxyClientsRequest =
     identifier: "ListProjectsBrandsIdentityAwareProxyClientsRequest",
   }) as any as S.Schema<ListProjectsBrandsIdentityAwareProxyClientsRequest>;
 
-export type IdentityAwareProxyClientList =
-  ReadonlyArray<IdentityAwareProxyClient>;
+export type IdentityAwareProxyClientList = Array<IdentityAwareProxyClient>;
 export const IdentityAwareProxyClientList = /*@__PURE__*/ S.Array(
   IdentityAwareProxyClient,
 ) as any as S.Schema<IdentityAwareProxyClientList>;
@@ -932,7 +933,7 @@ export const ListProjectsIap_tunnelLocationsDestGroupsRequest =
     identifier: "ListProjectsIap_tunnelLocationsDestGroupsRequest",
   }) as any as S.Schema<ListProjectsIap_tunnelLocationsDestGroupsRequest>;
 
-export type TunnelDestGroupList = ReadonlyArray<TunnelDestGroup>;
+export type TunnelDestGroupList = Array<TunnelDestGroup>;
 export const TunnelDestGroupList = /*@__PURE__*/ S.Array(
   TunnelDestGroup,
 ) as any as S.Schema<TunnelDestGroupList>;

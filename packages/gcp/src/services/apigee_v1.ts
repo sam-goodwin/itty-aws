@@ -97,7 +97,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -221,7 +221,7 @@ export const GoogleCloudApigeeV1AppGroupBalanceWallet = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudApigeeV1AppGroupBalanceWallet>;
 
 export type GoogleCloudApigeeV1AppGroupBalanceWalletList =
-  ReadonlyArray<GoogleCloudApigeeV1AppGroupBalanceWallet>;
+  Array<GoogleCloudApigeeV1AppGroupBalanceWallet>;
 export const GoogleCloudApigeeV1AppGroupBalanceWalletList =
   /*@__PURE__*/ S.Array(
     GoogleCloudApigeeV1AppGroupBalanceWallet,
@@ -296,7 +296,7 @@ export const GoogleCloudApigeeV1DeveloperBalanceWallet =
   }) as any as S.Schema<GoogleCloudApigeeV1DeveloperBalanceWallet>;
 
 export type GoogleCloudApigeeV1DeveloperBalanceWalletList =
-  ReadonlyArray<GoogleCloudApigeeV1DeveloperBalanceWallet>;
+  Array<GoogleCloudApigeeV1DeveloperBalanceWallet>;
 export const GoogleCloudApigeeV1DeveloperBalanceWalletList =
   /*@__PURE__*/ S.Array(
     GoogleCloudApigeeV1DeveloperBalanceWallet,
@@ -376,7 +376,7 @@ export const GoogleCloudApigeeV1Attribute = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudApigeeV1Attribute>;
 
 export type GoogleCloudApigeeV1AttributeList =
-  ReadonlyArray<GoogleCloudApigeeV1Attribute>;
+  Array<GoogleCloudApigeeV1Attribute>;
 export const GoogleCloudApigeeV1AttributeList = /*@__PURE__*/ S.Array(
   GoogleCloudApigeeV1Attribute,
 ) as any as S.Schema<GoogleCloudApigeeV1AttributeList>;
@@ -459,7 +459,7 @@ export const AttributesOrganizationsDevelopersAppsRequest =
     identifier: "AttributesOrganizationsDevelopersAppsRequest",
   }) as any as S.Schema<AttributesOrganizationsDevelopersAppsRequest>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -495,7 +495,9 @@ export const GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestReso
 /** Resource for which we are computing security assessment. */
 export interface GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestResourceArrayResource {
   /** Required. Type of this resource. */
-  type?: GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestResourceArrayResourceTypeEnum;
+  type?:
+    | GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestResourceArrayResourceTypeEnum
+    | (string & {});
   /** Required. Name of this resource. For an Apigee API Proxy, this should be the id of the API proxy. For an API Hub Deployment, this should be the id of the deployment. */
   name?: string;
 }
@@ -513,7 +515,7 @@ export const GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestReso
   }) as any as S.Schema<GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestResourceArrayResource>;
 
 export type GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestResourceArrayResourceList =
-  ReadonlyArray<GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestResourceArrayResource>;
+  Array<GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestResourceArrayResource>;
 export const GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestResourceArrayResourceList =
   /*@__PURE__*/ S.Array(
     GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestResourceArrayResource,
@@ -665,7 +667,7 @@ export const GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentR
   }) as any as S.Schema<GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendationRecommendation>;
 
 export type GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendationRecommendationList =
-  ReadonlyArray<GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendationRecommendation>;
+  Array<GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendationRecommendation>;
 export const GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendationRecommendationList =
   /*@__PURE__*/ S.Array(
     GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendationRecommendation,
@@ -873,7 +875,7 @@ export const GoogleCloudApigeeV1SecurityAssessmentResult =
   }) as any as S.Schema<GoogleCloudApigeeV1SecurityAssessmentResult>;
 
 export type GoogleCloudApigeeV1SecurityAssessmentResultList =
-  ReadonlyArray<GoogleCloudApigeeV1SecurityAssessmentResult>;
+  Array<GoogleCloudApigeeV1SecurityAssessmentResult>;
 export const GoogleCloudApigeeV1SecurityAssessmentResultList =
   /*@__PURE__*/ S.Array(
     GoogleCloudApigeeV1SecurityAssessmentResult,
@@ -924,9 +926,11 @@ export interface GoogleCloudApigeeV1SecurityIncident {
   /** Immutable. Name of the security incident resource. Format: organizations/{org}/environments/{environment}/securityIncidents/{incident} Example: organizations/apigee-org/environments/dev/securityIncidents/1234-5678-9101-1111 */
   name?: string;
   /** Output only. Risk level of the incident. */
-  riskLevel?: GoogleCloudApigeeV1SecurityIncidentRiskLevelEnum;
+  riskLevel?: GoogleCloudApigeeV1SecurityIncidentRiskLevelEnum | (string & {});
   /** Optional. Indicates if the user archived this incident. */
-  observability?: GoogleCloudApigeeV1SecurityIncidentObservabilityEnum;
+  observability?:
+    | GoogleCloudApigeeV1SecurityIncidentObservabilityEnum
+    | (string & {});
   /** Output only. The time when events associated with the incident were last detected. */
   lastDetectedTime?: string;
   /** Total traffic detected as part of the incident. */
@@ -974,7 +978,7 @@ export const GoogleCloudApigeeV1UpdateSecurityIncidentRequest =
   }) as any as S.Schema<GoogleCloudApigeeV1UpdateSecurityIncidentRequest>;
 
 export type GoogleCloudApigeeV1UpdateSecurityIncidentRequestList =
-  ReadonlyArray<GoogleCloudApigeeV1UpdateSecurityIncidentRequest>;
+  Array<GoogleCloudApigeeV1UpdateSecurityIncidentRequest>;
 export const GoogleCloudApigeeV1UpdateSecurityIncidentRequestList =
   /*@__PURE__*/ S.Array(
     GoogleCloudApigeeV1UpdateSecurityIncidentRequest,
@@ -1023,7 +1027,7 @@ export const BatchUpdateOrganizationsEnvironmentsSecurityIncidentsRequest =
   }) as any as S.Schema<BatchUpdateOrganizationsEnvironmentsSecurityIncidentsRequest>;
 
 export type GoogleCloudApigeeV1SecurityIncidentList =
-  ReadonlyArray<GoogleCloudApigeeV1SecurityIncident>;
+  Array<GoogleCloudApigeeV1SecurityIncident>;
 export const GoogleCloudApigeeV1SecurityIncidentList = /*@__PURE__*/ S.Array(
   GoogleCloudApigeeV1SecurityIncident,
 ) as any as S.Schema<GoogleCloudApigeeV1SecurityIncidentList>;
@@ -1073,7 +1077,7 @@ export const GoogleCloudApigeeV1ComputeEnvironmentScoresRequestFilter =
   }) as any as S.Schema<GoogleCloudApigeeV1ComputeEnvironmentScoresRequestFilter>;
 
 export type GoogleCloudApigeeV1ComputeEnvironmentScoresRequestFilterList =
-  ReadonlyArray<GoogleCloudApigeeV1ComputeEnvironmentScoresRequestFilter>;
+  Array<GoogleCloudApigeeV1ComputeEnvironmentScoresRequestFilter>;
 export const GoogleCloudApigeeV1ComputeEnvironmentScoresRequestFilterList =
   /*@__PURE__*/ S.Array(
     GoogleCloudApigeeV1ComputeEnvironmentScoresRequestFilter,
@@ -1164,7 +1168,7 @@ export const GoogleCloudApigeeV1ScoreComponentRecommendationAction =
   }) as any as S.Schema<GoogleCloudApigeeV1ScoreComponentRecommendationAction>;
 
 export type GoogleCloudApigeeV1ScoreComponentRecommendationActionList =
-  ReadonlyArray<GoogleCloudApigeeV1ScoreComponentRecommendationAction>;
+  Array<GoogleCloudApigeeV1ScoreComponentRecommendationAction>;
 export const GoogleCloudApigeeV1ScoreComponentRecommendationActionList =
   /*@__PURE__*/ S.Array(
     GoogleCloudApigeeV1ScoreComponentRecommendationAction,
@@ -1196,7 +1200,7 @@ export const GoogleCloudApigeeV1ScoreComponentRecommendation =
   }) as any as S.Schema<GoogleCloudApigeeV1ScoreComponentRecommendation>;
 
 export type GoogleCloudApigeeV1ScoreComponentRecommendationList =
-  ReadonlyArray<GoogleCloudApigeeV1ScoreComponentRecommendation>;
+  Array<GoogleCloudApigeeV1ScoreComponentRecommendation>;
 export const GoogleCloudApigeeV1ScoreComponentRecommendationList =
   /*@__PURE__*/ S.Array(
     GoogleCloudApigeeV1ScoreComponentRecommendation,
@@ -1233,7 +1237,7 @@ export const GoogleCloudApigeeV1ScoreComponent = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudApigeeV1ScoreComponent>;
 
 export type GoogleCloudApigeeV1ScoreComponentList =
-  ReadonlyArray<GoogleCloudApigeeV1ScoreComponent>;
+  Array<GoogleCloudApigeeV1ScoreComponent>;
 export const GoogleCloudApigeeV1ScoreComponentList = /*@__PURE__*/ S.Array(
   GoogleCloudApigeeV1ScoreComponent,
 ) as any as S.Schema<GoogleCloudApigeeV1ScoreComponentList>;
@@ -1257,8 +1261,7 @@ export const GoogleCloudApigeeV1Score = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleCloudApigeeV1Score",
 }) as any as S.Schema<GoogleCloudApigeeV1Score>;
 
-export type GoogleCloudApigeeV1ScoreList =
-  ReadonlyArray<GoogleCloudApigeeV1Score>;
+export type GoogleCloudApigeeV1ScoreList = Array<GoogleCloudApigeeV1Score>;
 export const GoogleCloudApigeeV1ScoreList = /*@__PURE__*/ S.Array(
   GoogleCloudApigeeV1Score,
 ) as any as S.Schema<GoogleCloudApigeeV1ScoreList>;
@@ -1297,7 +1300,7 @@ export const GoogleCloudApigeeV1Property = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudApigeeV1Property>;
 
 export type GoogleCloudApigeeV1PropertyList =
-  ReadonlyArray<GoogleCloudApigeeV1Property>;
+  Array<GoogleCloudApigeeV1Property>;
 export const GoogleCloudApigeeV1PropertyList = /*@__PURE__*/ S.Array(
   GoogleCloudApigeeV1Property,
 ) as any as S.Schema<GoogleCloudApigeeV1PropertyList>;
@@ -1408,7 +1411,7 @@ export interface GoogleCloudApigeeV1AnalyticsConfig {
   /** Whether the Analytics add-on is enabled. */
   enabled?: boolean;
   /** Output only. The state of the Analytics add-on. */
-  state?: GoogleCloudApigeeV1AnalyticsConfigStateEnum;
+  state?: GoogleCloudApigeeV1AnalyticsConfigStateEnum | (string & {});
 }
 export const GoogleCloudApigeeV1AnalyticsConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1502,9 +1505,13 @@ export interface GoogleCloudApigeeV1Organization {
   /** Optional. Properties defined in the Apigee organization profile. */
   properties?: GoogleCloudApigeeV1Properties;
   /** Output only. Subscription plan that the customer has purchased. Output only. */
-  subscriptionPlan?: GoogleCloudApigeeV1OrganizationSubscriptionPlanEnum;
+  subscriptionPlan?:
+    | GoogleCloudApigeeV1OrganizationSubscriptionPlanEnum
+    | (string & {});
   /** Output only. DEPRECATED: This will eventually be replaced by BillingType. Subscription type of the Apigee organization. Valid values include trial (free, limited, and for evaluation purposes only) or paid (full subscription has been purchased). See [Apigee pricing](https://cloud.google.com/apigee/pricing/). */
-  subscriptionType?: GoogleCloudApigeeV1OrganizationSubscriptionTypeEnum;
+  subscriptionType?:
+    | GoogleCloudApigeeV1OrganizationSubscriptionTypeEnum
+    | (string & {});
   /** Output only. Deprecated: Use `ca_certificates` instead. Base64-encoded public certificate for the root CA of the Apigee organization. Valid only when [RuntimeType](#RuntimeType) is `CLOUD`. */
   caCertificate?: string;
   /** Optional. This field is needed only for customers using non-default data residency regions. Apigee stores some control plane data only in single region. This field determines which single region Apigee should use. For example: "us-west1" when control plane is in US or "europe-west2" when control plane is in EU. */
@@ -1516,9 +1523,9 @@ export interface GoogleCloudApigeeV1Organization {
   /** Output only. List of environments in the Apigee organization. */
   environments?: StringList;
   /** Not used by Apigee. */
-  type?: GoogleCloudApigeeV1OrganizationTypeEnum;
+  type?: GoogleCloudApigeeV1OrganizationTypeEnum | (string & {});
   /** Required. Runtime type of the Apigee organization based on the Apigee subscription purchased. */
-  runtimeType?: GoogleCloudApigeeV1OrganizationRuntimeTypeEnum;
+  runtimeType?: GoogleCloudApigeeV1OrganizationRuntimeTypeEnum | (string & {});
   /** Output only. Project ID associated with the Apigee organization. */
   projectId?: string;
   /** Output only. Base64-encoded public certificates for the root CA of the Apigee organization. Valid only when [RuntimeType](#RuntimeType) is `CLOUD`. Multiple certificates are used to support certificate rotation. */
@@ -1528,7 +1535,7 @@ export interface GoogleCloudApigeeV1Organization {
   /** Optional. Description of the Apigee organization. */
   description?: string;
   /** Optional. Billing type of the Apigee organization. See [Apigee pricing](https://cloud.google.com/apigee/pricing). */
-  billingType?: GoogleCloudApigeeV1OrganizationBillingTypeEnum;
+  billingType?: GoogleCloudApigeeV1OrganizationBillingTypeEnum | (string & {});
   /** Output only. Name of the Apigee organization. */
   name?: string;
   /** Optional. Configuration for the Portals settings. */
@@ -1536,7 +1543,7 @@ export interface GoogleCloudApigeeV1Organization {
   /** Optional. Cloud KMS key name used for encrypting the data that is stored and replicated across runtime instances. Update is not allowed after the organization is created. If not specified or [RuntimeType](#RuntimeType) is `TRIAL`, a Google-Managed encryption key will be used. For example: "projects/foo/locations/us/keyRings/bar/cryptoKeys/baz". **Note:** Not supported for Apigee hybrid. */
   runtimeDatabaseEncryptionKeyName?: string;
   /** Output only. State of the organization. Values other than ACTIVE means the resource is not ready to use. */
-  state?: GoogleCloudApigeeV1OrganizationStateEnum;
+  state?: GoogleCloudApigeeV1OrganizationStateEnum | (string & {});
   /** Optional. Cloud KMS key name used for encrypting API consumer data. If not specified or [BillingType](#BillingType) is `EVALUATION`, a Google-Managed encryption key will be used. Format: `projects/*\/locations/*\/keyRings/*\/cryptoKeys/*` */
   apiConsumerDataEncryptionKeyName?: string;
   /** Output only. Time that the Apigee organization was last modified in milliseconds since epoch. */
@@ -1716,7 +1723,7 @@ export const GoogleCloudApigeeV1ApimServiceExtensionNetworkConfig =
   }) as any as S.Schema<GoogleCloudApigeeV1ApimServiceExtensionNetworkConfig>;
 
 export type GoogleCloudApigeeV1ApimServiceExtensionNetworkConfigList =
-  ReadonlyArray<GoogleCloudApigeeV1ApimServiceExtensionNetworkConfig>;
+  Array<GoogleCloudApigeeV1ApimServiceExtensionNetworkConfig>;
 export const GoogleCloudApigeeV1ApimServiceExtensionNetworkConfigList =
   /*@__PURE__*/ S.Array(
     GoogleCloudApigeeV1ApimServiceExtensionNetworkConfig,
@@ -1734,7 +1741,10 @@ export const GoogleCloudApigeeV1ApimServiceExtensionExtensionSupportedEventsItem
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudApigeeV1ApimServiceExtensionExtensionSupportedEventsItemEnumList =
-  ReadonlyArray<GoogleCloudApigeeV1ApimServiceExtensionExtensionSupportedEventsItemEnum>;
+  Array<
+    | GoogleCloudApigeeV1ApimServiceExtensionExtensionSupportedEventsItemEnum
+    | (string & {})
+  >;
 export const GoogleCloudApigeeV1ApimServiceExtensionExtensionSupportedEventsItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleCloudApigeeV1ApimServiceExtensionExtensionSupportedEventsItemEnum,
@@ -1769,7 +1779,7 @@ export const GoogleCloudApigeeV1ApimServiceExtensionExtension =
   }) as any as S.Schema<GoogleCloudApigeeV1ApimServiceExtensionExtension>;
 
 export type GoogleCloudApigeeV1ApimServiceExtensionExtensionList =
-  ReadonlyArray<GoogleCloudApigeeV1ApimServiceExtensionExtension>;
+  Array<GoogleCloudApigeeV1ApimServiceExtensionExtension>;
 export const GoogleCloudApigeeV1ApimServiceExtensionExtensionList =
   /*@__PURE__*/ S.Array(
     GoogleCloudApigeeV1ApimServiceExtensionExtension,
@@ -1801,7 +1811,7 @@ export interface GoogleCloudApigeeV1ApimServiceExtension {
   /** Output only. The time that this resource was updated on the server. */
   updateTime?: string;
   /** Output only. State of the APIM service extension. Values other than `ACTIVE` mean the resource is not ready to use. */
-  state?: GoogleCloudApigeeV1ApimServiceExtensionStateEnum;
+  state?: GoogleCloudApigeeV1ApimServiceExtensionStateEnum | (string & {});
   /** Identifier. unique name of the APIM service extension. The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens, and can have a maximum length of 63 characters. Additionally, the first character must be a letter and the last a letter or a number. */
   name?: string;
 }
@@ -1870,7 +1880,7 @@ export const GoogleCloudApigeeV1GraphQLOperation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudApigeeV1GraphQLOperation>;
 
 export type GoogleCloudApigeeV1GraphQLOperationList =
-  ReadonlyArray<GoogleCloudApigeeV1GraphQLOperation>;
+  Array<GoogleCloudApigeeV1GraphQLOperation>;
 export const GoogleCloudApigeeV1GraphQLOperationList = /*@__PURE__*/ S.Array(
   GoogleCloudApigeeV1GraphQLOperation,
 ) as any as S.Schema<GoogleCloudApigeeV1GraphQLOperationList>;
@@ -1918,7 +1928,7 @@ export const GoogleCloudApigeeV1GraphQLOperationConfig =
   }) as any as S.Schema<GoogleCloudApigeeV1GraphQLOperationConfig>;
 
 export type GoogleCloudApigeeV1GraphQLOperationConfigList =
-  ReadonlyArray<GoogleCloudApigeeV1GraphQLOperationConfig>;
+  Array<GoogleCloudApigeeV1GraphQLOperationConfig>;
 export const GoogleCloudApigeeV1GraphQLOperationConfigList =
   /*@__PURE__*/ S.Array(
     GoogleCloudApigeeV1GraphQLOperationConfig,
@@ -1970,7 +1980,7 @@ export const GoogleCloudApigeeV1GrpcOperationConfig = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudApigeeV1GrpcOperationConfig>;
 
 export type GoogleCloudApigeeV1GrpcOperationConfigList =
-  ReadonlyArray<GoogleCloudApigeeV1GrpcOperationConfig>;
+  Array<GoogleCloudApigeeV1GrpcOperationConfig>;
 export const GoogleCloudApigeeV1GrpcOperationConfigList = /*@__PURE__*/ S.Array(
   GoogleCloudApigeeV1GrpcOperationConfig,
 ) as any as S.Schema<GoogleCloudApigeeV1GrpcOperationConfigList>;
@@ -2009,7 +2019,7 @@ export const GoogleCloudApigeeV1LlmOperation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudApigeeV1LlmOperation>;
 
 export type GoogleCloudApigeeV1LlmOperationList =
-  ReadonlyArray<GoogleCloudApigeeV1LlmOperation>;
+  Array<GoogleCloudApigeeV1LlmOperation>;
 export const GoogleCloudApigeeV1LlmOperationList = /*@__PURE__*/ S.Array(
   GoogleCloudApigeeV1LlmOperation,
 ) as any as S.Schema<GoogleCloudApigeeV1LlmOperationList>;
@@ -2057,7 +2067,7 @@ export const GoogleCloudApigeeV1LlmOperationConfig = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudApigeeV1LlmOperationConfig>;
 
 export type GoogleCloudApigeeV1LlmOperationConfigList =
-  ReadonlyArray<GoogleCloudApigeeV1LlmOperationConfig>;
+  Array<GoogleCloudApigeeV1LlmOperationConfig>;
 export const GoogleCloudApigeeV1LlmOperationConfigList = /*@__PURE__*/ S.Array(
   GoogleCloudApigeeV1LlmOperationConfig,
 ) as any as S.Schema<GoogleCloudApigeeV1LlmOperationConfigList>;
@@ -2093,7 +2103,7 @@ export const GoogleCloudApigeeV1Operation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudApigeeV1Operation>;
 
 export type GoogleCloudApigeeV1OperationList =
-  ReadonlyArray<GoogleCloudApigeeV1Operation>;
+  Array<GoogleCloudApigeeV1Operation>;
 export const GoogleCloudApigeeV1OperationList = /*@__PURE__*/ S.Array(
   GoogleCloudApigeeV1Operation,
 ) as any as S.Schema<GoogleCloudApigeeV1OperationList>;
@@ -2121,7 +2131,7 @@ export const GoogleCloudApigeeV1OperationConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudApigeeV1OperationConfig>;
 
 export type GoogleCloudApigeeV1OperationConfigList =
-  ReadonlyArray<GoogleCloudApigeeV1OperationConfig>;
+  Array<GoogleCloudApigeeV1OperationConfig>;
 export const GoogleCloudApigeeV1OperationConfigList = /*@__PURE__*/ S.Array(
   GoogleCloudApigeeV1OperationConfig,
 ) as any as S.Schema<GoogleCloudApigeeV1OperationConfigList>;
@@ -2164,7 +2174,7 @@ export const GoogleCloudApigeeV1PayloadOperation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudApigeeV1PayloadOperation>;
 
 export type GoogleCloudApigeeV1PayloadOperationList =
-  ReadonlyArray<GoogleCloudApigeeV1PayloadOperation>;
+  Array<GoogleCloudApigeeV1PayloadOperation>;
 export const GoogleCloudApigeeV1PayloadOperationList = /*@__PURE__*/ S.Array(
   GoogleCloudApigeeV1PayloadOperation,
 ) as any as S.Schema<GoogleCloudApigeeV1PayloadOperationList>;
@@ -2193,7 +2203,7 @@ export const GoogleCloudApigeeV1PayloadOperationConfig =
   }) as any as S.Schema<GoogleCloudApigeeV1PayloadOperationConfig>;
 
 export type GoogleCloudApigeeV1PayloadOperationConfigList =
-  ReadonlyArray<GoogleCloudApigeeV1PayloadOperationConfig>;
+  Array<GoogleCloudApigeeV1PayloadOperationConfig>;
 export const GoogleCloudApigeeV1PayloadOperationConfigList =
   /*@__PURE__*/ S.Array(
     GoogleCloudApigeeV1PayloadOperationConfig,
@@ -2251,7 +2261,9 @@ export interface GoogleCloudApigeeV1ApiProduct {
   /** Configuration used to group Apigee proxies or remote services with resources, method types, and quotas. The resource refers to the resource URI (excluding the base path). With this grouping, the API product creator is able to fine-tune and give precise control over which REST methods have access to specific resources and how many calls can be made (using the `quota` setting). **Note:** The `api_resources` setting cannot be specified for both the API product and operation group; otherwise the call will fail. */
   operationGroup?: GoogleCloudApigeeV1OperationGroup;
   /** Scope of the quota decides how the quota counter gets applied and evaluate for quota violation. If the Scope is set as PROXY, then all the operations defined for the APIproduct that are associated with the same proxy will share the same quota counter set at the APIproduct level, making it a global counter at a proxy level. If the Scope is set as OPERATION, then each operations get the counter set at the API product dedicated, making it a local counter. Note that, the QuotaCounterScope applies only when an operation does not have dedicated quota set for itself. */
-  quotaCounterScope?: GoogleCloudApigeeV1ApiProductQuotaCounterScopeEnum;
+  quotaCounterScope?:
+    | GoogleCloudApigeeV1ApiProductQuotaCounterScopeEnum
+    | (string & {});
   /** Number of request messages permitted per app by this API product for the specified `quotaInterval` and `quotaTimeUnit`. For example, a `quota` of 50, for a `quotaInterval` of 12 and a `quotaTimeUnit` of hours means 50 requests are allowed every 12 hours. */
   quota?: string;
   /** Array of attributes that may be used to extend the default API product profile with customer-specific metadata. You can specify a maximum of 18 attributes. Use this property to specify the access level of the API product as either `public`, `private`, or `internal`. Only products marked `public` are available to developers in the Apigee developer portal. For example, you can set a product to `internal` while it is in development and then change access to `public` when it is ready to release on the portal. API products marked as `private` do not appear on the portal, but can be accessed by external developers. */
@@ -2341,7 +2353,7 @@ export const GoogleCloudApigeeV1RevenueShareRange = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudApigeeV1RevenueShareRange>;
 
 export type GoogleCloudApigeeV1RevenueShareRangeList =
-  ReadonlyArray<GoogleCloudApigeeV1RevenueShareRange>;
+  Array<GoogleCloudApigeeV1RevenueShareRange>;
 export const GoogleCloudApigeeV1RevenueShareRangeList = /*@__PURE__*/ S.Array(
   GoogleCloudApigeeV1RevenueShareRange,
 ) as any as S.Schema<GoogleCloudApigeeV1RevenueShareRangeList>;
@@ -2373,7 +2385,7 @@ export const GoogleCloudApigeeV1RateRange = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudApigeeV1RateRange>;
 
 export type GoogleCloudApigeeV1RateRangeList =
-  ReadonlyArray<GoogleCloudApigeeV1RateRange>;
+  Array<GoogleCloudApigeeV1RateRange>;
 export const GoogleCloudApigeeV1RateRangeList = /*@__PURE__*/ S.Array(
   GoogleCloudApigeeV1RateRange,
 ) as any as S.Schema<GoogleCloudApigeeV1RateRangeList>;
@@ -2420,7 +2432,7 @@ export interface GoogleCloudApigeeV1RatePlan {
   /** Output only. Name of the rate plan. */
   name?: string;
   /** Frequency at which the customer will be billed. */
-  billingPeriod?: GoogleCloudApigeeV1RatePlanBillingPeriodEnum;
+  billingPeriod?: GoogleCloudApigeeV1RatePlanBillingPeriodEnum | (string & {});
   /** Time when the rate plan will expire in milliseconds since epoch. Set to 0 or `null` to indicate that the rate plan should never expire. */
   endTime?: string;
   /** Currency to be used for billing. Consists of a three-letter code as defined by the [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) standard. */
@@ -2428,7 +2440,7 @@ export interface GoogleCloudApigeeV1RatePlan {
   /** API call volume ranges and the fees charged when the total number of API calls is within a given range. The method used to calculate the final fee depends on the selected pricing model. For example, if the pricing model is `BANDED` and the ranges are defined as follows: ``` { "start": 1, "end": 100, "fee": 2 }, { "start": 101, "end": 200, "fee": 1.50 }, { "start": 201, "end": 0, "fee": 1 }, } ``` Then the following fees would be charged based on the total number of API calls (assuming the currency selected is `USD`): * 50 calls cost 50 x $2 = $100 * 150 calls cost 100 x $2 + 50 x $1.5 = $275 * 250 calls cost 100 x $2 + 100 x $1.5 + 50 x $1 = $400 * 500 calls cost 100 x $2 + 100 x $1.5 + 300 x $1 = $650 */
   consumptionPricingRates?: GoogleCloudApigeeV1RateRangeList;
   /** Current state of the rate plan (draft or published). */
-  state?: GoogleCloudApigeeV1RatePlanStateEnum;
+  state?: GoogleCloudApigeeV1RatePlanStateEnum | (string & {});
   /** Output only. Time the rate plan was last modified in milliseconds since epoch. */
   lastModifiedAt?: string;
   /** Initial, one-time fee paid when purchasing the API product. */
@@ -2436,11 +2448,17 @@ export interface GoogleCloudApigeeV1RatePlan {
   /** Output only. Time that the rate plan was created in milliseconds since epoch. */
   createdAt?: string;
   /** Pricing model used for consumption-based charges. */
-  consumptionPricingType?: GoogleCloudApigeeV1RatePlanConsumptionPricingTypeEnum;
+  consumptionPricingType?:
+    | GoogleCloudApigeeV1RatePlanConsumptionPricingTypeEnum
+    | (string & {});
   /** Method used to calculate the revenue that is shared with developers. */
-  revenueShareType?: GoogleCloudApigeeV1RatePlanRevenueShareTypeEnum;
+  revenueShareType?:
+    | GoogleCloudApigeeV1RatePlanRevenueShareTypeEnum
+    | (string & {});
   /** DEPRECATED: This field is no longer supported and will eventually be removed when Apigee Hybrid 1.5/1.6 is no longer supported. Instead, use the `billingType` field inside `DeveloperMonetizationConfig` resource. Flag that specifies the billing account type, prepaid or postpaid. */
-  paymentFundingModel?: GoogleCloudApigeeV1RatePlanPaymentFundingModelEnum;
+  paymentFundingModel?:
+    | GoogleCloudApigeeV1RatePlanPaymentFundingModelEnum
+    | (string & {});
   /** Fixed amount that is charged at a defined interval and billed in advance of use of the API product. The fee will be prorated for the first billing period. */
   fixedRecurringFee?: GoogleTypeMoney;
   /** Time when the rate plan becomes active in milliseconds since epoch. */
@@ -2571,7 +2589,7 @@ export const GoogleCloudApigeeV1ResourceFile = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudApigeeV1ResourceFile>;
 
 export type GoogleCloudApigeeV1ResourceFileList =
-  ReadonlyArray<GoogleCloudApigeeV1ResourceFile>;
+  Array<GoogleCloudApigeeV1ResourceFile>;
 export const GoogleCloudApigeeV1ResourceFileList = /*@__PURE__*/ S.Array(
   GoogleCloudApigeeV1ResourceFile,
 ) as any as S.Schema<GoogleCloudApigeeV1ResourceFileList>;
@@ -2858,7 +2876,7 @@ export const GoogleCloudApigeeV1ApiProductRef = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudApigeeV1ApiProductRef>;
 
 export type GoogleCloudApigeeV1ApiProductRefList =
-  ReadonlyArray<GoogleCloudApigeeV1ApiProductRef>;
+  Array<GoogleCloudApigeeV1ApiProductRef>;
 export const GoogleCloudApigeeV1ApiProductRefList = /*@__PURE__*/ S.Array(
   GoogleCloudApigeeV1ApiProductRef,
 ) as any as S.Schema<GoogleCloudApigeeV1ApiProductRefList>;
@@ -2897,7 +2915,7 @@ export const GoogleCloudApigeeV1Credential = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudApigeeV1Credential>;
 
 export type GoogleCloudApigeeV1CredentialList =
-  ReadonlyArray<GoogleCloudApigeeV1Credential>;
+  Array<GoogleCloudApigeeV1Credential>;
 export const GoogleCloudApigeeV1CredentialList = /*@__PURE__*/ S.Array(
   GoogleCloudApigeeV1Credential,
 ) as any as S.Schema<GoogleCloudApigeeV1CredentialList>;
@@ -2988,7 +3006,7 @@ export const GoogleCloudApigeeV1APIProductAssociation = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudApigeeV1APIProductAssociation>;
 
 export type GoogleCloudApigeeV1APIProductAssociationList =
-  ReadonlyArray<GoogleCloudApigeeV1APIProductAssociation>;
+  Array<GoogleCloudApigeeV1APIProductAssociation>;
 export const GoogleCloudApigeeV1APIProductAssociationList =
   /*@__PURE__*/ S.Array(
     GoogleCloudApigeeV1APIProductAssociation,
@@ -3126,7 +3144,7 @@ export interface GoogleCloudApigeeV1DataCollector {
   /** Output only. The time at which the data collector was created in milliseconds since the epoch. */
   createdAt?: string;
   /** Immutable. The type of data this data collector will collect. */
-  type?: GoogleCloudApigeeV1DataCollectorTypeEnum;
+  type?: GoogleCloudApigeeV1DataCollectorTypeEnum | (string & {});
 }
 export const GoogleCloudApigeeV1DataCollector = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3308,7 +3326,7 @@ export const CreateOrganizationsDevelopersAppsRequest = /*@__PURE__*/ S.suspend(
   identifier: "CreateOrganizationsDevelopersAppsRequest",
 }) as any as S.Schema<CreateOrganizationsDevelopersAppsRequest>;
 
-export type DocumentList = ReadonlyArray<unknown>;
+export type DocumentList = Array<unknown>;
 export const DocumentList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<DocumentList>;
@@ -3480,7 +3498,7 @@ export interface GoogleCloudApigeeV1DnsZone {
   /** Required. Description of the resource. String of at most 1024 characters associated with this resource for the user's convenience. */
   description?: string;
   /** Output only. State of the DNS Peering. Values other than `ACTIVE` mean the resource is not ready to use. */
-  state?: GoogleCloudApigeeV1DnsZoneStateEnum;
+  state?: GoogleCloudApigeeV1DnsZoneStateEnum | (string & {});
   /** Identifier. Unique name for the resource. Defined by the server Format: "organizations/{organization}/dnsZones/{dns_zone}". */
   name?: string;
   /** Required. The domain name for hosts in this private zone, for instance "example.com.". */
@@ -3553,9 +3571,11 @@ export interface GoogleCloudApigeeV1EndpointAttachment {
   /** Format: projects/*\/regions/*\/serviceAttachments/* */
   serviceAttachment?: string;
   /** Output only. State of the endpoint attachment. Values other than `ACTIVE` mean the resource is not ready to use. */
-  state?: GoogleCloudApigeeV1EndpointAttachmentStateEnum;
+  state?: GoogleCloudApigeeV1EndpointAttachmentStateEnum | (string & {});
   /** Output only. State of the endpoint attachment connection to the service attachment. */
-  connectionState?: GoogleCloudApigeeV1EndpointAttachmentConnectionStateEnum;
+  connectionState?:
+    | GoogleCloudApigeeV1EndpointAttachmentConnectionStateEnum
+    | (string & {});
   /** Name of the endpoint attachment. Use the following structure in your request: `organizations/{org}/endpointAttachments/{endpoint_attachment}` */
   name?: string;
   /** Output only. Host that can be used in either the HTTP target endpoint directly or as the host in target server. */
@@ -3624,7 +3644,7 @@ export interface GoogleCloudApigeeV1EnvironmentGroup {
   /** ID of the environment group. */
   name?: string;
   /** Output only. State of the environment group. Values other than ACTIVE means the resource is not ready to use. */
-  state?: GoogleCloudApigeeV1EnvironmentGroupStateEnum;
+  state?: GoogleCloudApigeeV1EnvironmentGroupStateEnum | (string & {});
   /** Required. Host names for this environment group. */
   hostnames?: StringList;
 }
@@ -3799,14 +3819,16 @@ export interface GoogleCloudApigeeV1Environment {
   /** Optional. NodeConfig of the environment. */
   nodeConfig?: GoogleCloudApigeeV1NodeConfig;
   /** Optional. EnvironmentType selected for the environment. */
-  type?: GoogleCloudApigeeV1EnvironmentTypeEnum;
+  type?: GoogleCloudApigeeV1EnvironmentTypeEnum | (string & {});
   hasAttachedFlowHooks?: boolean;
   /** Optional. Deployment type supported by the environment. The deployment type can be set when creating the environment and cannot be changed. When you enable archive deployment, you will be **prevented from performing** a [subset of actions](/apigee/docs/api-platform/local-development/overview#prevented-actions) within the environment, including: * Managing the deployment of API proxy or shared flow revisions * Creating, updating, or deleting resource files * Creating, updating, or deleting target servers */
-  deploymentType?: GoogleCloudApigeeV1EnvironmentDeploymentTypeEnum;
+  deploymentType?:
+    | GoogleCloudApigeeV1EnvironmentDeploymentTypeEnum
+    | (string & {});
   /** Optional. URI of the forward proxy to be applied to the runtime instances in this environment. Must be in the format of {scheme}://{hostname}:{port}. Note that the only supported scheme is "http". The port must be supplied. To remove a forward proxy setting, update the field to an empty value. Note: At this time, PUT operations to add forwardProxyUri to an existing environment fail if the environment has nodeConfig set up. To successfully add the forwardProxyUri setting in this case, include the NodeConfig details with the request. */
   forwardProxyUri?: string;
   /** Optional. API Proxy type supported by the environment. The type can be set when creating the Environment and cannot be changed. */
-  apiProxyType?: GoogleCloudApigeeV1EnvironmentApiProxyTypeEnum;
+  apiProxyType?: GoogleCloudApigeeV1EnvironmentApiProxyTypeEnum | (string & {});
   /** Optional. Description of the environment. */
   description?: string;
   /** Optional. Display name for this environment. */
@@ -3820,7 +3842,7 @@ export interface GoogleCloudApigeeV1Environment {
   /** Optional. The algorithm to resolve IP. This will affect Analytics, API Security, and other features that use the client ip. To remove a client ip resolution config, update the field to an empty value. Example: '{ "clientIpResolutionConfig" = {} }' For more information, see: https://cloud.google.com/apigee/docs/api-platform/system-administration/client-ip-resolution. */
   clientIpResolutionConfig?: GoogleCloudApigeeV1EnvironmentClientIPResolutionConfig;
   /** Output only. State of the environment. Values other than ACTIVE means the resource is not ready to use. */
-  state?: GoogleCloudApigeeV1EnvironmentStateEnum;
+  state?: GoogleCloudApigeeV1EnvironmentStateEnum | (string & {});
 }
 export const GoogleCloudApigeeV1Environment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4204,7 +4226,7 @@ export const GoogleCloudApigeeV1CertInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudApigeeV1CertInfo>;
 
 export type GoogleCloudApigeeV1CertInfoList =
-  ReadonlyArray<GoogleCloudApigeeV1CertInfo>;
+  Array<GoogleCloudApigeeV1CertInfo>;
 export const GoogleCloudApigeeV1CertInfoList = /*@__PURE__*/ S.Array(
   GoogleCloudApigeeV1CertInfo,
 ) as any as S.Schema<GoogleCloudApigeeV1CertInfoList>;
@@ -4316,7 +4338,7 @@ export const GoogleCloudApigeeV1QueryMetric = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudApigeeV1QueryMetric>;
 
 export type GoogleCloudApigeeV1QueryMetricList =
-  ReadonlyArray<GoogleCloudApigeeV1QueryMetric>;
+  Array<GoogleCloudApigeeV1QueryMetric>;
 export const GoogleCloudApigeeV1QueryMetricList = /*@__PURE__*/ S.Array(
   GoogleCloudApigeeV1QueryMetric,
 ) as any as S.Schema<GoogleCloudApigeeV1QueryMetricList>;
@@ -4565,7 +4587,7 @@ export const GoogleCloudApigeeV1SecurityActionHttpHeader =
   }) as any as S.Schema<GoogleCloudApigeeV1SecurityActionHttpHeader>;
 
 export type GoogleCloudApigeeV1SecurityActionHttpHeaderList =
-  ReadonlyArray<GoogleCloudApigeeV1SecurityActionHttpHeader>;
+  Array<GoogleCloudApigeeV1SecurityActionHttpHeader>;
 export const GoogleCloudApigeeV1SecurityActionHttpHeaderList =
   /*@__PURE__*/ S.Array(
     GoogleCloudApigeeV1SecurityActionHttpHeader,
@@ -4671,7 +4693,7 @@ export interface GoogleCloudApigeeV1SecurityAction {
   /** Immutable. This field is ignored during creation as per AIP-133. Please set the `security_action_id` field in the CreateSecurityActionRequest when creating a new SecurityAction. Format: organizations/{org}/environments/{env}/securityActions/{security_action} */
   name?: string;
   /** Required. Only an ENABLED SecurityAction is enforced. An ENABLED SecurityAction past its expiration time will not be enforced. */
-  state?: GoogleCloudApigeeV1SecurityActionStateEnum;
+  state?: GoogleCloudApigeeV1SecurityActionStateEnum | (string & {});
   /** Allow a request through if it matches this SecurityAction. */
   allow?: GoogleCloudApigeeV1SecurityActionAllow;
   /** Deny a request through if it matches this SecurityAction. */
@@ -4758,7 +4780,7 @@ export const GoogleCloudApigeeV1SecurityReportQueryMetric =
   }) as any as S.Schema<GoogleCloudApigeeV1SecurityReportQueryMetric>;
 
 export type GoogleCloudApigeeV1SecurityReportQueryMetricList =
-  ReadonlyArray<GoogleCloudApigeeV1SecurityReportQueryMetric>;
+  Array<GoogleCloudApigeeV1SecurityReportQueryMetric>;
 export const GoogleCloudApigeeV1SecurityReportQueryMetricList =
   /*@__PURE__*/ S.Array(
     GoogleCloudApigeeV1SecurityReportQueryMetric,
@@ -5000,7 +5022,7 @@ export interface GoogleCloudApigeeV1TargetServer {
   /** Required. The port number this target connects to on the given host. Value must be between 1 and 65535, inclusive. */
   port?: number;
   /** Immutable. The protocol used by this TargetServer. */
-  protocol?: GoogleCloudApigeeV1TargetServerProtocolEnum;
+  protocol?: GoogleCloudApigeeV1TargetServerProtocolEnum | (string & {});
   /** Required. The resource id of this target server. Values must match the regular expression */
   name?: string;
   /** Required. The host name this target connects to. Value must be a valid hostname as described by RFC-1123. */
@@ -5059,7 +5081,7 @@ export const GoogleCloudApigeeV1TraceSamplingConfigSamplerEnum =
 /** TraceSamplingConfig represents the detail settings of distributed tracing. Only the fields that are defined in the distributed trace configuration can be overridden using the distribute trace configuration override APIs. */
 export interface GoogleCloudApigeeV1TraceSamplingConfig {
   /** Sampler of distributed tracing. OFF is the default value. */
-  sampler?: GoogleCloudApigeeV1TraceSamplingConfigSamplerEnum;
+  sampler?: GoogleCloudApigeeV1TraceSamplingConfigSamplerEnum | (string & {});
   /** Field sampling rate. This value is only applicable when using the PROBABILITY sampler. The supported values are > 0 and <= 0.5. */
   samplingRate?: number;
 }
@@ -5220,7 +5242,9 @@ export const GoogleTypeTimeOfDay = /*@__PURE__*/ S.suspend(() =>
 /** MaintenanceWindow specifies the preferred day of the week and time of day to perform maintenance. */
 export interface GoogleCloudApigeeV1MaintenanceUpdatePolicyMaintenanceWindow {
   /** Required. Preferred day of the week for maintenance, e.g. MONDAY, TUESDAY, etc. */
-  day?: GoogleCloudApigeeV1MaintenanceUpdatePolicyMaintenanceWindowDayEnum;
+  day?:
+    | GoogleCloudApigeeV1MaintenanceUpdatePolicyMaintenanceWindowDayEnum
+    | (string & {});
   /** Required. The start time (UTC) of the maintenance window. */
   startTime?: GoogleTypeTimeOfDay;
 }
@@ -5237,7 +5261,7 @@ export const GoogleCloudApigeeV1MaintenanceUpdatePolicyMaintenanceWindow =
   }) as any as S.Schema<GoogleCloudApigeeV1MaintenanceUpdatePolicyMaintenanceWindow>;
 
 export type GoogleCloudApigeeV1MaintenanceUpdatePolicyMaintenanceWindowList =
-  ReadonlyArray<GoogleCloudApigeeV1MaintenanceUpdatePolicyMaintenanceWindow>;
+  Array<GoogleCloudApigeeV1MaintenanceUpdatePolicyMaintenanceWindow>;
 export const GoogleCloudApigeeV1MaintenanceUpdatePolicyMaintenanceWindowList =
   /*@__PURE__*/ S.Array(
     GoogleCloudApigeeV1MaintenanceUpdatePolicyMaintenanceWindow,
@@ -5255,7 +5279,9 @@ export interface GoogleCloudApigeeV1MaintenanceUpdatePolicy {
   /** Optional. Preferred windows to perform maintenance. Currently limited to 1. */
   maintenanceWindows?: GoogleCloudApigeeV1MaintenanceUpdatePolicyMaintenanceWindowList;
   /** Optional. Maintenance channel to specify relative scheduling for maintenance. */
-  maintenanceChannel?: GoogleCloudApigeeV1MaintenanceUpdatePolicyMaintenanceChannelEnum;
+  maintenanceChannel?:
+    | GoogleCloudApigeeV1MaintenanceUpdatePolicyMaintenanceChannelEnum
+    | (string & {});
 }
 export const GoogleCloudApigeeV1MaintenanceUpdatePolicy =
   /*@__PURE__*/ S.suspend(() =>
@@ -5307,11 +5333,13 @@ export interface GoogleCloudApigeeV1Instance {
   /** Output only. Time the instance was last modified in milliseconds since epoch. */
   lastModifiedAt?: string;
   /** Output only. State of the instance. Values other than `ACTIVE` means the resource is not ready to use. */
-  state?: GoogleCloudApigeeV1InstanceStateEnum;
+  state?: GoogleCloudApigeeV1InstanceStateEnum | (string & {});
   /** Required. Resource ID of the instance. Values must match the regular expression `^a-z{0,30}[a-z\d]$`. */
   name?: string;
   /** Optional. Size of the CIDR block range that will be reserved by the instance. PAID organizations support `SLASH_16` to `SLASH_20` and defaults to `SLASH_16`. Evaluation organizations support only `SLASH_23`. */
-  peeringCidrRange?: GoogleCloudApigeeV1InstancePeeringCidrRangeEnum;
+  peeringCidrRange?:
+    | GoogleCloudApigeeV1InstancePeeringCidrRangeEnum
+    | (string & {});
   /** Output only. Internal hostname or IP address of the Apigee endpoint used by clients to connect to the service. */
   host?: string;
   /** Optional. Customer accept list represents the list of projects (id/number) on customer side that can privately connect to the service attachment. It is an optional field which the customers can provide during the instance creation. By default, the customer project associated with the Apigee organization will be included to the list. */
@@ -5482,13 +5510,13 @@ export interface GoogleCloudApigeeV1CanaryEvaluation {
   /** Required. Start time for the canary evaluation's analysis. */
   startTime?: string;
   /** Output only. The current state of the canary evaluation. */
-  state?: GoogleCloudApigeeV1CanaryEvaluationStateEnum;
+  state?: GoogleCloudApigeeV1CanaryEvaluationStateEnum | (string & {});
   /** Required. End time for the evaluation's analysis. */
   endTime?: string;
   /** Required. Labels used to filter the metrics used for a canary evaluation. */
   metricLabels?: GoogleCloudApigeeV1CanaryEvaluationMetricLabels;
   /** Output only. The resulting verdict of the canary evaluations: NONE, PASS, or FAIL. */
-  verdict?: GoogleCloudApigeeV1CanaryEvaluationVerdictEnum;
+  verdict?: GoogleCloudApigeeV1CanaryEvaluationVerdictEnum | (string & {});
   /** Required. The newer version that is serving requests. */
   treatment?: string;
   /** Output only. Create time of the canary evaluation. */
@@ -5543,7 +5571,7 @@ export const GoogleCloudApigeeV1NatAddressStateEnum = /*@__PURE__*/ S.String;
 /** Apigee NAT(network address translation) address. A NAT address is a static external IP address used for Internet egress traffic. */
 export interface GoogleCloudApigeeV1NatAddress {
   /** Output only. State of the nat address. */
-  state?: GoogleCloudApigeeV1NatAddressStateEnum;
+  state?: GoogleCloudApigeeV1NatAddressStateEnum | (string & {});
   /** Required. Resource ID of the NAT address. */
   name?: string;
   /** Output only. The static IPV4 address. */
@@ -5641,7 +5669,7 @@ export const GoogleCloudApigeeV1ReportProperty = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudApigeeV1ReportProperty>;
 
 export type GoogleCloudApigeeV1ReportPropertyList =
-  ReadonlyArray<GoogleCloudApigeeV1ReportProperty>;
+  Array<GoogleCloudApigeeV1ReportProperty>;
 export const GoogleCloudApigeeV1ReportPropertyList = /*@__PURE__*/ S.Array(
   GoogleCloudApigeeV1ReportProperty,
 ) as any as S.Schema<GoogleCloudApigeeV1ReportPropertyList>;
@@ -5664,7 +5692,7 @@ export const GoogleCloudApigeeV1CustomReportMetric = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudApigeeV1CustomReportMetric>;
 
 export type GoogleCloudApigeeV1CustomReportMetricList =
-  ReadonlyArray<GoogleCloudApigeeV1CustomReportMetric>;
+  Array<GoogleCloudApigeeV1CustomReportMetric>;
 export const GoogleCloudApigeeV1CustomReportMetricList = /*@__PURE__*/ S.Array(
   GoogleCloudApigeeV1CustomReportMetric,
 ) as any as S.Schema<GoogleCloudApigeeV1CustomReportMetricList>;
@@ -5775,7 +5803,9 @@ export const GoogleCloudApigeeV1SecurityFeedbackFeedbackContextAttributeEnum =
 /** FeedbackContext captures the intent of the submitted feedback. */
 export interface GoogleCloudApigeeV1SecurityFeedbackFeedbackContext {
   /** Required. The attribute the user is providing feedback about. */
-  attribute?: GoogleCloudApigeeV1SecurityFeedbackFeedbackContextAttributeEnum;
+  attribute?:
+    | GoogleCloudApigeeV1SecurityFeedbackFeedbackContextAttributeEnum
+    | (string & {});
   /** Required. The values of the attribute the user is providing feedback about. */
   values?: StringList;
 }
@@ -5792,7 +5822,7 @@ export const GoogleCloudApigeeV1SecurityFeedbackFeedbackContext =
   }) as any as S.Schema<GoogleCloudApigeeV1SecurityFeedbackFeedbackContext>;
 
 export type GoogleCloudApigeeV1SecurityFeedbackFeedbackContextList =
-  ReadonlyArray<GoogleCloudApigeeV1SecurityFeedbackFeedbackContext>;
+  Array<GoogleCloudApigeeV1SecurityFeedbackFeedbackContext>;
 export const GoogleCloudApigeeV1SecurityFeedbackFeedbackContextList =
   /*@__PURE__*/ S.Array(
     GoogleCloudApigeeV1SecurityFeedbackFeedbackContext,
@@ -5825,9 +5855,11 @@ export interface GoogleCloudApigeeV1SecurityFeedback {
   /** Optional. Optional text the user can provide for additional, unstructured context. */
   comment?: string;
   /** Optional. The reason for the feedback. */
-  reason?: GoogleCloudApigeeV1SecurityFeedbackReasonEnum;
+  reason?: GoogleCloudApigeeV1SecurityFeedbackReasonEnum | (string & {});
   /** Required. The type of feedback being submitted. */
-  feedbackType?: GoogleCloudApigeeV1SecurityFeedbackFeedbackTypeEnum;
+  feedbackType?:
+    | GoogleCloudApigeeV1SecurityFeedbackFeedbackTypeEnum
+    | (string & {});
   /** Output only. The time when this specific feedback id was updated. */
   updateTime?: string;
   /** Output only. The time when this specific feedback id was created. */
@@ -5895,7 +5927,9 @@ export interface GoogleCloudApigeeV1SecurityMonitoringCondition {
   /** Output only. The time of the security monitoring condition creation. */
   createTime?: string;
   /** Optional. The risk assessment type of the security monitoring condition. Defaults to ADVANCED_API_SECURITY. */
-  riskAssessmentType?: GoogleCloudApigeeV1SecurityMonitoringConditionRiskAssessmentTypeEnum;
+  riskAssessmentType?:
+    | GoogleCloudApigeeV1SecurityMonitoringConditionRiskAssessmentTypeEnum
+    | (string & {});
   /** Required. ID of security profile of the security monitoring condition. */
   profile?: string;
   /** Include only these resources. */
@@ -6035,7 +6069,7 @@ export const GoogleCloudApigeeV1ProfileConfigCategory = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudApigeeV1ProfileConfigCategory>;
 
 export type GoogleCloudApigeeV1ProfileConfigCategoryList =
-  ReadonlyArray<GoogleCloudApigeeV1ProfileConfigCategory>;
+  Array<GoogleCloudApigeeV1ProfileConfigCategory>;
 export const GoogleCloudApigeeV1ProfileConfigCategoryList =
   /*@__PURE__*/ S.Array(
     GoogleCloudApigeeV1ProfileConfigCategory,
@@ -6072,7 +6106,7 @@ export const GoogleCloudApigeeV1SecurityProfileEnvironment =
   }) as any as S.Schema<GoogleCloudApigeeV1SecurityProfileEnvironment>;
 
 export type GoogleCloudApigeeV1SecurityProfileEnvironmentList =
-  ReadonlyArray<GoogleCloudApigeeV1SecurityProfileEnvironment>;
+  Array<GoogleCloudApigeeV1SecurityProfileEnvironment>;
 export const GoogleCloudApigeeV1SecurityProfileEnvironmentList =
   /*@__PURE__*/ S.Array(
     GoogleCloudApigeeV1SecurityProfileEnvironment,
@@ -6099,7 +6133,7 @@ export const GoogleCloudApigeeV1SecurityProfileScoringConfig =
   }) as any as S.Schema<GoogleCloudApigeeV1SecurityProfileScoringConfig>;
 
 export type GoogleCloudApigeeV1SecurityProfileScoringConfigList =
-  ReadonlyArray<GoogleCloudApigeeV1SecurityProfileScoringConfig>;
+  Array<GoogleCloudApigeeV1SecurityProfileScoringConfig>;
 export const GoogleCloudApigeeV1SecurityProfileScoringConfigList =
   /*@__PURE__*/ S.Array(
     GoogleCloudApigeeV1SecurityProfileScoringConfig,
@@ -6246,7 +6280,10 @@ export const GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfigApiHubGa
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfigApiHubGatewayTypeArrayGatewayTypesItemEnumList =
-  ReadonlyArray<GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfigApiHubGatewayTypeArrayGatewayTypesItemEnum>;
+  Array<
+    | GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfigApiHubGatewayTypeArrayGatewayTypesItemEnum
+    | (string & {})
+  >;
 export const GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfigApiHubGatewayTypeArrayGatewayTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfigApiHubGatewayTypeArrayGatewayTypesItemEnum,
@@ -6272,7 +6309,9 @@ export const GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfigApiHubGa
 /** The configuration definition for a specific assessment. */
 export interface GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfig {
   /** The weight of the assessment. */
-  weight?: GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfigWeightEnum;
+  weight?:
+    | GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfigWeightEnum
+    | (string & {});
   /** Include only these Gateway Types. */
   include?: GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfigApiHubGatewayTypeArray;
 }
@@ -6312,7 +6351,9 @@ export interface GoogleCloudApigeeV1SecurityProfileV2 {
   /** Output only. The time of the security profile creation. */
   createTime?: string;
   /** Optional. The risk assessment type of the security profile. Defaults to ADVANCED_API_SECURITY. */
-  riskAssessmentType?: GoogleCloudApigeeV1SecurityProfileV2RiskAssessmentTypeEnum;
+  riskAssessmentType?:
+    | GoogleCloudApigeeV1SecurityProfileV2RiskAssessmentTypeEnum
+    | (string & {});
   /** Required. The configuration for each assessment in this profile. Key is the name/id of the assessment. */
   profileAssessmentConfigs?: GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfigMap;
   /** Output only. The time of the security profile update. */
@@ -6981,7 +7022,7 @@ export interface GoogleCloudApigeeV1ApiProxy {
   /** User labels applied to this API Proxy. */
   labels?: StringMap;
   /** Output only. The type of the API proxy. */
-  apiProxyType?: GoogleCloudApigeeV1ApiProxyApiProxyTypeEnum;
+  apiProxyType?: GoogleCloudApigeeV1ApiProxyApiProxyTypeEnum | (string & {});
 }
 export const GoogleCloudApigeeV1ApiProxy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -8037,7 +8078,7 @@ export const GoogleCloudApigeeV1PodStatus = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudApigeeV1PodStatus>;
 
 export type GoogleCloudApigeeV1PodStatusList =
-  ReadonlyArray<GoogleCloudApigeeV1PodStatus>;
+  Array<GoogleCloudApigeeV1PodStatus>;
 export const GoogleCloudApigeeV1PodStatusList = /*@__PURE__*/ S.Array(
   GoogleCloudApigeeV1PodStatus,
 ) as any as S.Schema<GoogleCloudApigeeV1PodStatusList>;
@@ -8088,13 +8129,13 @@ export const GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict =
   }) as any as S.Schema<GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict>;
 
 export type GoogleCloudApigeeV1DeploymentChangeReportRoutingConflictList =
-  ReadonlyArray<GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict>;
+  Array<GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict>;
 export const GoogleCloudApigeeV1DeploymentChangeReportRoutingConflictList =
   /*@__PURE__*/ S.Array(
     GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict,
   ) as any as S.Schema<GoogleCloudApigeeV1DeploymentChangeReportRoutingConflictList>;
 
-export type GoogleRpcStatusList = ReadonlyArray<GoogleRpcStatus>;
+export type GoogleRpcStatusList = Array<GoogleRpcStatus>;
 export const GoogleRpcStatusList = /*@__PURE__*/ S.Array(
   GoogleRpcStatus,
 ) as any as S.Schema<GoogleRpcStatusList>;
@@ -8124,7 +8165,7 @@ export const GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision =
   }) as any as S.Schema<GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision>;
 
 export type GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevisionList =
-  ReadonlyArray<GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision>;
+  Array<GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision>;
 export const GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevisionList =
   /*@__PURE__*/ S.Array(
     GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision,
@@ -8154,7 +8195,7 @@ export const GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute =
   }) as any as S.Schema<GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute>;
 
 export type GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRouteList =
-  ReadonlyArray<GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute>;
+  Array<GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute>;
 export const GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRouteList =
   /*@__PURE__*/ S.Array(
     GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute,
@@ -8185,7 +8226,7 @@ export const GoogleCloudApigeeV1InstanceDeploymentStatus =
   }) as any as S.Schema<GoogleCloudApigeeV1InstanceDeploymentStatus>;
 
 export type GoogleCloudApigeeV1InstanceDeploymentStatusList =
-  ReadonlyArray<GoogleCloudApigeeV1InstanceDeploymentStatus>;
+  Array<GoogleCloudApigeeV1InstanceDeploymentStatus>;
 export const GoogleCloudApigeeV1InstanceDeploymentStatusList =
   /*@__PURE__*/ S.Array(
     GoogleCloudApigeeV1InstanceDeploymentStatus,
@@ -8463,7 +8504,7 @@ export const GoogleCloudApigeeV1DeploymentChangeReportRoutingChange =
   }) as any as S.Schema<GoogleCloudApigeeV1DeploymentChangeReportRoutingChange>;
 
 export type GoogleCloudApigeeV1DeploymentChangeReportRoutingChangeList =
-  ReadonlyArray<GoogleCloudApigeeV1DeploymentChangeReportRoutingChange>;
+  Array<GoogleCloudApigeeV1DeploymentChangeReportRoutingChange>;
 export const GoogleCloudApigeeV1DeploymentChangeReportRoutingChangeList =
   /*@__PURE__*/ S.Array(
     GoogleCloudApigeeV1DeploymentChangeReportRoutingChange,
@@ -8490,7 +8531,7 @@ export const GoogleRpcPreconditionFailureViolation = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleRpcPreconditionFailureViolation>;
 
 export type GoogleRpcPreconditionFailureViolationList =
-  ReadonlyArray<GoogleRpcPreconditionFailureViolation>;
+  Array<GoogleRpcPreconditionFailureViolation>;
 export const GoogleRpcPreconditionFailureViolationList = /*@__PURE__*/ S.Array(
   GoogleRpcPreconditionFailureViolation,
 ) as any as S.Schema<GoogleRpcPreconditionFailureViolationList>;
@@ -9012,7 +9053,7 @@ export const GoogleCloudApigeeV1TargetServerConfig = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudApigeeV1TargetServerConfig>;
 
 export type GoogleCloudApigeeV1TargetServerConfigList =
-  ReadonlyArray<GoogleCloudApigeeV1TargetServerConfig>;
+  Array<GoogleCloudApigeeV1TargetServerConfig>;
 export const GoogleCloudApigeeV1TargetServerConfigList = /*@__PURE__*/ S.Array(
   GoogleCloudApigeeV1TargetServerConfig,
 ) as any as S.Schema<GoogleCloudApigeeV1TargetServerConfigList>;
@@ -9036,7 +9077,7 @@ export const GoogleCloudApigeeV1FlowHookConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudApigeeV1FlowHookConfig>;
 
 export type GoogleCloudApigeeV1FlowHookConfigList =
-  ReadonlyArray<GoogleCloudApigeeV1FlowHookConfig>;
+  Array<GoogleCloudApigeeV1FlowHookConfig>;
 export const GoogleCloudApigeeV1FlowHookConfigList = /*@__PURE__*/ S.Array(
   GoogleCloudApigeeV1FlowHookConfig,
 ) as any as S.Schema<GoogleCloudApigeeV1FlowHookConfigList>;
@@ -9116,7 +9157,7 @@ export const GoogleCloudApigeeV1ResourceConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudApigeeV1ResourceConfig>;
 
 export type GoogleCloudApigeeV1ResourceConfigList =
-  ReadonlyArray<GoogleCloudApigeeV1ResourceConfig>;
+  Array<GoogleCloudApigeeV1ResourceConfig>;
 export const GoogleCloudApigeeV1ResourceConfigList = /*@__PURE__*/ S.Array(
   GoogleCloudApigeeV1ResourceConfig,
 ) as any as S.Schema<GoogleCloudApigeeV1ResourceConfigList>;
@@ -9159,7 +9200,7 @@ export const GoogleCloudApigeeV1DeploymentConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudApigeeV1DeploymentConfig>;
 
 export type GoogleCloudApigeeV1DeploymentConfigList =
-  ReadonlyArray<GoogleCloudApigeeV1DeploymentConfig>;
+  Array<GoogleCloudApigeeV1DeploymentConfig>;
 export const GoogleCloudApigeeV1DeploymentConfigList = /*@__PURE__*/ S.Array(
   GoogleCloudApigeeV1DeploymentConfig,
 ) as any as S.Schema<GoogleCloudApigeeV1DeploymentConfigList>;
@@ -9197,7 +9238,7 @@ export const GoogleCloudApigeeV1DeploymentGroupConfig = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudApigeeV1DeploymentGroupConfig>;
 
 export type GoogleCloudApigeeV1DeploymentGroupConfigList =
-  ReadonlyArray<GoogleCloudApigeeV1DeploymentGroupConfig>;
+  Array<GoogleCloudApigeeV1DeploymentGroupConfig>;
 export const GoogleCloudApigeeV1DeploymentGroupConfigList =
   /*@__PURE__*/ S.Array(
     GoogleCloudApigeeV1DeploymentGroupConfig,
@@ -9231,7 +9272,7 @@ export const GoogleCloudApigeeV1DataCollectorConfig = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudApigeeV1DataCollectorConfig>;
 
 export type GoogleCloudApigeeV1DataCollectorConfigList =
-  ReadonlyArray<GoogleCloudApigeeV1DataCollectorConfig>;
+  Array<GoogleCloudApigeeV1DataCollectorConfig>;
 export const GoogleCloudApigeeV1DataCollectorConfigList = /*@__PURE__*/ S.Array(
   GoogleCloudApigeeV1DataCollectorConfig,
 ) as any as S.Schema<GoogleCloudApigeeV1DataCollectorConfigList>;
@@ -9262,7 +9303,7 @@ export const GoogleCloudApigeeV1AliasRevisionConfig = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudApigeeV1AliasRevisionConfig>;
 
 export type GoogleCloudApigeeV1AliasRevisionConfigList =
-  ReadonlyArray<GoogleCloudApigeeV1AliasRevisionConfig>;
+  Array<GoogleCloudApigeeV1AliasRevisionConfig>;
 export const GoogleCloudApigeeV1AliasRevisionConfigList = /*@__PURE__*/ S.Array(
   GoogleCloudApigeeV1AliasRevisionConfig,
 ) as any as S.Schema<GoogleCloudApigeeV1AliasRevisionConfigList>;
@@ -9283,7 +9324,7 @@ export const GoogleCloudApigeeV1KeystoreConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudApigeeV1KeystoreConfig>;
 
 export type GoogleCloudApigeeV1KeystoreConfigList =
-  ReadonlyArray<GoogleCloudApigeeV1KeystoreConfig>;
+  Array<GoogleCloudApigeeV1KeystoreConfig>;
 export const GoogleCloudApigeeV1KeystoreConfigList = /*@__PURE__*/ S.Array(
   GoogleCloudApigeeV1KeystoreConfig,
 ) as any as S.Schema<GoogleCloudApigeeV1KeystoreConfigList>;
@@ -9338,7 +9379,7 @@ export const GoogleCloudApigeeV1ReferenceConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudApigeeV1ReferenceConfig>;
 
 export type GoogleCloudApigeeV1ReferenceConfigList =
-  ReadonlyArray<GoogleCloudApigeeV1ReferenceConfig>;
+  Array<GoogleCloudApigeeV1ReferenceConfig>;
 export const GoogleCloudApigeeV1ReferenceConfigList = /*@__PURE__*/ S.Array(
   GoogleCloudApigeeV1ReferenceConfig,
 ) as any as S.Schema<GoogleCloudApigeeV1ReferenceConfigList>;
@@ -9442,7 +9483,7 @@ export const GoogleCloudApigeeV1RuntimeTraceConfigOverride =
   }) as any as S.Schema<GoogleCloudApigeeV1RuntimeTraceConfigOverride>;
 
 export type GoogleCloudApigeeV1RuntimeTraceConfigOverrideList =
-  ReadonlyArray<GoogleCloudApigeeV1RuntimeTraceConfigOverride>;
+  Array<GoogleCloudApigeeV1RuntimeTraceConfigOverride>;
 export const GoogleCloudApigeeV1RuntimeTraceConfigOverrideList =
   /*@__PURE__*/ S.Array(
     GoogleCloudApigeeV1RuntimeTraceConfigOverride,
@@ -9648,7 +9689,7 @@ export const GoogleCloudApigeeV1RoutingRule = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudApigeeV1RoutingRule>;
 
 export type GoogleCloudApigeeV1RoutingRuleList =
-  ReadonlyArray<GoogleCloudApigeeV1RoutingRule>;
+  Array<GoogleCloudApigeeV1RoutingRule>;
 export const GoogleCloudApigeeV1RoutingRuleList = /*@__PURE__*/ S.Array(
   GoogleCloudApigeeV1RoutingRule,
 ) as any as S.Schema<GoogleCloudApigeeV1RoutingRuleList>;
@@ -9671,7 +9712,7 @@ export const GoogleCloudApigeeV1EndpointChainingRule = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudApigeeV1EndpointChainingRule>;
 
 export type GoogleCloudApigeeV1EndpointChainingRuleList =
-  ReadonlyArray<GoogleCloudApigeeV1EndpointChainingRule>;
+  Array<GoogleCloudApigeeV1EndpointChainingRule>;
 export const GoogleCloudApigeeV1EndpointChainingRuleList =
   /*@__PURE__*/ S.Array(
     GoogleCloudApigeeV1EndpointChainingRule,
@@ -9712,7 +9753,7 @@ export const GoogleCloudApigeeV1EnvironmentGroupConfig =
   }) as any as S.Schema<GoogleCloudApigeeV1EnvironmentGroupConfig>;
 
 export type GoogleCloudApigeeV1EnvironmentGroupConfigList =
-  ReadonlyArray<GoogleCloudApigeeV1EnvironmentGroupConfig>;
+  Array<GoogleCloudApigeeV1EnvironmentGroupConfig>;
 export const GoogleCloudApigeeV1EnvironmentGroupConfigList =
   /*@__PURE__*/ S.Array(
     GoogleCloudApigeeV1EnvironmentGroupConfig,
@@ -9874,7 +9915,7 @@ export const GoogleCloudApigeeV1OASDocumentationFormatEnum =
 /** OpenAPI Specification documentation for a catalog item. */
 export interface GoogleCloudApigeeV1OASDocumentation {
   /** Output only. The format of the input specification file contents. */
-  format?: GoogleCloudApigeeV1OASDocumentationFormatEnum;
+  format?: GoogleCloudApigeeV1OASDocumentationFormatEnum | (string & {});
   /** Required. The documentation file contents for the OpenAPI Specification. JSON and YAML file formats are supported. */
   spec?: GoogleCloudApigeeV1DocumentationFile;
 }
@@ -10013,7 +10054,7 @@ export const GoogleIamV1Binding = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleIamV1Binding",
 }) as any as S.Schema<GoogleIamV1Binding>;
 
-export type GoogleIamV1BindingList = ReadonlyArray<GoogleIamV1Binding>;
+export type GoogleIamV1BindingList = Array<GoogleIamV1Binding>;
 export const GoogleIamV1BindingList = /*@__PURE__*/ S.Array(
   GoogleIamV1Binding,
 ) as any as S.Schema<GoogleIamV1BindingList>;
@@ -10030,7 +10071,7 @@ export interface GoogleIamV1AuditLogConfig {
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
   exemptedMembers?: StringList;
   /** The log type that this config enables. */
-  logType?: GoogleIamV1AuditLogConfigLogTypeEnum;
+  logType?: GoogleIamV1AuditLogConfigLogTypeEnum | (string & {});
 }
 export const GoogleIamV1AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -10041,8 +10082,7 @@ export const GoogleIamV1AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleIamV1AuditLogConfig",
 }) as any as S.Schema<GoogleIamV1AuditLogConfig>;
 
-export type GoogleIamV1AuditLogConfigList =
-  ReadonlyArray<GoogleIamV1AuditLogConfig>;
+export type GoogleIamV1AuditLogConfigList = Array<GoogleIamV1AuditLogConfig>;
 export const GoogleIamV1AuditLogConfigList = /*@__PURE__*/ S.Array(
   GoogleIamV1AuditLogConfig,
 ) as any as S.Schema<GoogleIamV1AuditLogConfigList>;
@@ -10063,7 +10103,7 @@ export const GoogleIamV1AuditConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleIamV1AuditConfig",
 }) as any as S.Schema<GoogleIamV1AuditConfig>;
 
-export type GoogleIamV1AuditConfigList = ReadonlyArray<GoogleIamV1AuditConfig>;
+export type GoogleIamV1AuditConfigList = Array<GoogleIamV1AuditConfig>;
 export const GoogleIamV1AuditConfigList = /*@__PURE__*/ S.Array(
   GoogleIamV1AuditConfig,
 ) as any as S.Schema<GoogleIamV1AuditConfigList>;
@@ -10163,7 +10203,9 @@ export const GoogleCloudApigeeV1AppGroupMonetizationConfigBillingTypeEnum =
 /** Monetization configuration for the AppGroup. */
 export interface GoogleCloudApigeeV1AppGroupMonetizationConfig {
   /** Required. Billing type. */
-  billingType?: GoogleCloudApigeeV1AppGroupMonetizationConfigBillingTypeEnum;
+  billingType?:
+    | GoogleCloudApigeeV1AppGroupMonetizationConfigBillingTypeEnum
+    | (string & {});
 }
 export const GoogleCloudApigeeV1AppGroupMonetizationConfig =
   /*@__PURE__*/ S.suspend(() =>
@@ -10205,7 +10247,9 @@ export const GoogleCloudApigeeV1DeveloperMonetizationConfigBillingTypeEnum =
 /** Monetization configuration for the developer. */
 export interface GoogleCloudApigeeV1DeveloperMonetizationConfig {
   /** Billing type. */
-  billingType?: GoogleCloudApigeeV1DeveloperMonetizationConfigBillingTypeEnum;
+  billingType?:
+    | GoogleCloudApigeeV1DeveloperMonetizationConfigBillingTypeEnum
+    | (string & {});
 }
 export const GoogleCloudApigeeV1DeveloperMonetizationConfig =
   /*@__PURE__*/ S.suspend(() =>
@@ -10905,8 +10949,7 @@ export const GoogleCloudApigeeV1Access = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleCloudApigeeV1Access",
 }) as any as S.Schema<GoogleCloudApigeeV1Access>;
 
-export type GoogleCloudApigeeV1AccessList =
-  ReadonlyArray<GoogleCloudApigeeV1Access>;
+export type GoogleCloudApigeeV1AccessList = Array<GoogleCloudApigeeV1Access>;
 export const GoogleCloudApigeeV1AccessList = /*@__PURE__*/ S.Array(
   GoogleCloudApigeeV1Access,
 ) as any as S.Schema<GoogleCloudApigeeV1AccessList>;
@@ -10951,8 +10994,7 @@ export const GoogleCloudApigeeV1Result = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleCloudApigeeV1Result",
 }) as any as S.Schema<GoogleCloudApigeeV1Result>;
 
-export type GoogleCloudApigeeV1ResultList =
-  ReadonlyArray<GoogleCloudApigeeV1Result>;
+export type GoogleCloudApigeeV1ResultList = Array<GoogleCloudApigeeV1Result>;
 export const GoogleCloudApigeeV1ResultList = /*@__PURE__*/ S.Array(
   GoogleCloudApigeeV1Result,
 ) as any as S.Schema<GoogleCloudApigeeV1ResultList>;
@@ -10973,8 +11015,7 @@ export const GoogleCloudApigeeV1Point = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleCloudApigeeV1Point",
 }) as any as S.Schema<GoogleCloudApigeeV1Point>;
 
-export type GoogleCloudApigeeV1PointList =
-  ReadonlyArray<GoogleCloudApigeeV1Point>;
+export type GoogleCloudApigeeV1PointList = Array<GoogleCloudApigeeV1Point>;
 export const GoogleCloudApigeeV1PointList = /*@__PURE__*/ S.Array(
   GoogleCloudApigeeV1Point,
 ) as any as S.Schema<GoogleCloudApigeeV1PointList>;
@@ -11459,8 +11500,7 @@ export const GoogleCloudApigeeV1Metric = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleCloudApigeeV1Metric",
 }) as any as S.Schema<GoogleCloudApigeeV1Metric>;
 
-export type GoogleCloudApigeeV1MetricList =
-  ReadonlyArray<GoogleCloudApigeeV1Metric>;
+export type GoogleCloudApigeeV1MetricList = Array<GoogleCloudApigeeV1Metric>;
 export const GoogleCloudApigeeV1MetricList = /*@__PURE__*/ S.Array(
   GoogleCloudApigeeV1Metric,
 ) as any as S.Schema<GoogleCloudApigeeV1MetricList>;
@@ -11485,7 +11525,7 @@ export const GoogleCloudApigeeV1DimensionMetric = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudApigeeV1DimensionMetric>;
 
 export type GoogleCloudApigeeV1DimensionMetricList =
-  ReadonlyArray<GoogleCloudApigeeV1DimensionMetric>;
+  Array<GoogleCloudApigeeV1DimensionMetric>;
 export const GoogleCloudApigeeV1DimensionMetricList = /*@__PURE__*/ S.Array(
   GoogleCloudApigeeV1DimensionMetric,
 ) as any as S.Schema<GoogleCloudApigeeV1DimensionMetricList>;
@@ -11511,7 +11551,7 @@ export const GoogleCloudApigeeV1StatsEnvironmentStats = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudApigeeV1StatsEnvironmentStats>;
 
 export type GoogleCloudApigeeV1StatsEnvironmentStatsList =
-  ReadonlyArray<GoogleCloudApigeeV1StatsEnvironmentStats>;
+  Array<GoogleCloudApigeeV1StatsEnvironmentStats>;
 export const GoogleCloudApigeeV1StatsEnvironmentStatsList =
   /*@__PURE__*/ S.Array(
     GoogleCloudApigeeV1StatsEnvironmentStats,
@@ -11537,7 +11577,7 @@ export const GoogleCloudApigeeV1StatsHostStats = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudApigeeV1StatsHostStats>;
 
 export type GoogleCloudApigeeV1StatsHostStatsList =
-  ReadonlyArray<GoogleCloudApigeeV1StatsHostStats>;
+  Array<GoogleCloudApigeeV1StatsHostStats>;
 export const GoogleCloudApigeeV1StatsHostStatsList = /*@__PURE__*/ S.Array(
   GoogleCloudApigeeV1StatsHostStats,
 ) as any as S.Schema<GoogleCloudApigeeV1StatsHostStatsList>;
@@ -12263,7 +12303,7 @@ export const GoogleCloudApigeeV1GetAsyncQueryResultUrlResponseURLInfo =
   }) as any as S.Schema<GoogleCloudApigeeV1GetAsyncQueryResultUrlResponseURLInfo>;
 
 export type GoogleCloudApigeeV1GetAsyncQueryResultUrlResponseURLInfoList =
-  ReadonlyArray<GoogleCloudApigeeV1GetAsyncQueryResultUrlResponseURLInfo>;
+  Array<GoogleCloudApigeeV1GetAsyncQueryResultUrlResponseURLInfo>;
 export const GoogleCloudApigeeV1GetAsyncQueryResultUrlResponseURLInfoList =
   /*@__PURE__*/ S.Array(
     GoogleCloudApigeeV1GetAsyncQueryResultUrlResponseURLInfo,
@@ -12497,7 +12537,7 @@ export const GoogleCloudApigeeV1SchemaSchemaElement = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudApigeeV1SchemaSchemaElement>;
 
 export type GoogleCloudApigeeV1SchemaSchemaElementList =
-  ReadonlyArray<GoogleCloudApigeeV1SchemaSchemaElement>;
+  Array<GoogleCloudApigeeV1SchemaSchemaElement>;
 export const GoogleCloudApigeeV1SchemaSchemaElementList = /*@__PURE__*/ S.Array(
   GoogleCloudApigeeV1SchemaSchemaElement,
 ) as any as S.Schema<GoogleCloudApigeeV1SchemaSchemaElementList>;
@@ -12687,15 +12727,19 @@ export const GoogleCloudApigeeV1TraceConfigTraceProtocolEnum =
 /** TraceConfig defines the configurations in an environment of distributed trace. */
 export interface GoogleCloudApigeeV1TraceConfig {
   /** Optional. The span semantics to use. Configuration Requirements (if span_semantics is OTEL): - trace_protocol must be OTLP. */
-  spanSemantics?: GoogleCloudApigeeV1TraceConfigSpanSemanticsEnum;
+  spanSemantics?:
+    | GoogleCloudApigeeV1TraceConfigSpanSemanticsEnum
+    | (string & {});
   /** Required. Endpoint of the exporter. */
   endpoint?: string;
   /** Required. Exporter that is used to view the distributed trace captured using the chosen trace protocol. An exporter sends traces to any backend that is capable of consuming them. Recorded spans can be exported by registered exporters. */
-  exporter?: GoogleCloudApigeeV1TraceConfigExporterEnum;
+  exporter?: GoogleCloudApigeeV1TraceConfigExporterEnum | (string & {});
   /** Distributed trace configuration for all API proxies in an environment. You can also override the configuration for a specific API proxy using the distributed trace configuration overrides API. */
   samplingConfig?: GoogleCloudApigeeV1TraceSamplingConfig;
   /** Optional. The trace protocol to use. Configuration Requirements (if trace_protocol is OTLP): - Allowed Exporters: CLOUD_TRACE or OPEN_TELEMETRY_COLLECTOR. - If Exporter is OPEN_TELEMETRY_COLLECTOR: - endpoint refers to a valid OTLP collector URL. - If Exporter is CLOUD_TRACE: - endpoint refers to a valid project ID. */
-  traceProtocol?: GoogleCloudApigeeV1TraceConfigTraceProtocolEnum;
+  traceProtocol?:
+    | GoogleCloudApigeeV1TraceConfigTraceProtocolEnum
+    | (string & {});
 }
 export const GoogleCloudApigeeV1TraceConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -12781,7 +12825,7 @@ export const GoogleCloudApigeeV1ServiceIssuersMapping = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudApigeeV1ServiceIssuersMapping>;
 
 export type GoogleCloudApigeeV1ServiceIssuersMappingList =
-  ReadonlyArray<GoogleCloudApigeeV1ServiceIssuersMapping>;
+  Array<GoogleCloudApigeeV1ServiceIssuersMapping>;
 export const GoogleCloudApigeeV1ServiceIssuersMappingList =
   /*@__PURE__*/ S.Array(
     GoogleCloudApigeeV1ServiceIssuersMapping,
@@ -12819,7 +12863,7 @@ export const ListOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListOrganizationsRequest>;
 
 export type GoogleCloudApigeeV1OrganizationProjectMappingList =
-  ReadonlyArray<GoogleCloudApigeeV1OrganizationProjectMapping>;
+  Array<GoogleCloudApigeeV1OrganizationProjectMapping>;
 export const GoogleCloudApigeeV1OrganizationProjectMappingList =
   /*@__PURE__*/ S.Array(
     GoogleCloudApigeeV1OrganizationProjectMapping,
@@ -12863,7 +12907,7 @@ export const ListOrganizationsAnalyticsDatastoresRequest =
   }) as any as S.Schema<ListOrganizationsAnalyticsDatastoresRequest>;
 
 export type GoogleCloudApigeeV1DatastoreList =
-  ReadonlyArray<GoogleCloudApigeeV1Datastore>;
+  Array<GoogleCloudApigeeV1Datastore>;
 export const GoogleCloudApigeeV1DatastoreList = /*@__PURE__*/ S.Array(
   GoogleCloudApigeeV1Datastore,
 ) as any as S.Schema<GoogleCloudApigeeV1DatastoreList>;
@@ -12908,7 +12952,7 @@ export const ListOrganizationsApimServiceExtensionsRequest =
   }) as any as S.Schema<ListOrganizationsApimServiceExtensionsRequest>;
 
 export type GoogleCloudApigeeV1ApimServiceExtensionList =
-  ReadonlyArray<GoogleCloudApigeeV1ApimServiceExtension>;
+  Array<GoogleCloudApigeeV1ApimServiceExtension>;
 export const GoogleCloudApigeeV1ApimServiceExtensionList =
   /*@__PURE__*/ S.Array(
     GoogleCloudApigeeV1ApimServiceExtension,
@@ -12970,7 +13014,7 @@ export const ListOrganizationsApiproductsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListOrganizationsApiproductsRequest>;
 
 export type GoogleCloudApigeeV1ApiProductList =
-  ReadonlyArray<GoogleCloudApigeeV1ApiProduct>;
+  Array<GoogleCloudApigeeV1ApiProduct>;
 export const GoogleCloudApigeeV1ApiProductList = /*@__PURE__*/ S.Array(
   GoogleCloudApigeeV1ApiProduct,
 ) as any as S.Schema<GoogleCloudApigeeV1ApiProductList>;
@@ -13051,7 +13095,7 @@ export const ListOrganizationsApiproductsRateplansRequest =
   }) as any as S.Schema<ListOrganizationsApiproductsRateplansRequest>;
 
 export type GoogleCloudApigeeV1RatePlanList =
-  ReadonlyArray<GoogleCloudApigeeV1RatePlan>;
+  Array<GoogleCloudApigeeV1RatePlan>;
 export const GoogleCloudApigeeV1RatePlanList = /*@__PURE__*/ S.Array(
   GoogleCloudApigeeV1RatePlan,
 ) as any as S.Schema<GoogleCloudApigeeV1RatePlanList>;
@@ -13101,7 +13145,7 @@ export const ListOrganizationsApisRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListOrganizationsApisRequest>;
 
 export type GoogleCloudApigeeV1ApiProxyList =
-  ReadonlyArray<GoogleCloudApigeeV1ApiProxy>;
+  Array<GoogleCloudApigeeV1ApiProxy>;
 export const GoogleCloudApigeeV1ApiProxyList = /*@__PURE__*/ S.Array(
   GoogleCloudApigeeV1ApiProxy,
 ) as any as S.Schema<GoogleCloudApigeeV1ApiProxyList>;
@@ -13166,7 +13210,7 @@ export const GoogleCloudApigeeV1ApiDebugSession = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudApigeeV1ApiDebugSession>;
 
 export type GoogleCloudApigeeV1ApiDebugSessionList =
-  ReadonlyArray<GoogleCloudApigeeV1ApiDebugSession>;
+  Array<GoogleCloudApigeeV1ApiDebugSession>;
 export const GoogleCloudApigeeV1ApiDebugSessionList = /*@__PURE__*/ S.Array(
   GoogleCloudApigeeV1ApiDebugSession,
 ) as any as S.Schema<GoogleCloudApigeeV1ApiDebugSessionList>;
@@ -13208,7 +13252,7 @@ export const ListOrganizationsApisDeploymentsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListOrganizationsApisDeploymentsRequest>;
 
 export type GoogleCloudApigeeV1DeploymentList =
-  ReadonlyArray<GoogleCloudApigeeV1Deployment>;
+  Array<GoogleCloudApigeeV1Deployment>;
 export const GoogleCloudApigeeV1DeploymentList = /*@__PURE__*/ S.Array(
   GoogleCloudApigeeV1Deployment,
 ) as any as S.Schema<GoogleCloudApigeeV1DeploymentList>;
@@ -13252,7 +13296,7 @@ export const ListOrganizationsApisKeyvaluemapsEntriesRequest =
   }) as any as S.Schema<ListOrganizationsApisKeyvaluemapsEntriesRequest>;
 
 export type GoogleCloudApigeeV1KeyValueEntryList =
-  ReadonlyArray<GoogleCloudApigeeV1KeyValueEntry>;
+  Array<GoogleCloudApigeeV1KeyValueEntry>;
 export const GoogleCloudApigeeV1KeyValueEntryList = /*@__PURE__*/ S.Array(
   GoogleCloudApigeeV1KeyValueEntry,
 ) as any as S.Schema<GoogleCloudApigeeV1KeyValueEntryList>;
@@ -13321,7 +13365,7 @@ export const ListOrganizationsAppgroupsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListOrganizationsAppgroupsRequest>;
 
 export type GoogleCloudApigeeV1AppGroupList =
-  ReadonlyArray<GoogleCloudApigeeV1AppGroup>;
+  Array<GoogleCloudApigeeV1AppGroup>;
 export const GoogleCloudApigeeV1AppGroupList = /*@__PURE__*/ S.Array(
   GoogleCloudApigeeV1AppGroup,
 ) as any as S.Schema<GoogleCloudApigeeV1AppGroupList>;
@@ -13372,7 +13416,7 @@ export const ListOrganizationsAppgroupsAppsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListOrganizationsAppgroupsAppsRequest>;
 
 export type GoogleCloudApigeeV1AppGroupAppList =
-  ReadonlyArray<GoogleCloudApigeeV1AppGroupApp>;
+  Array<GoogleCloudApigeeV1AppGroupApp>;
 export const GoogleCloudApigeeV1AppGroupAppList = /*@__PURE__*/ S.Array(
   GoogleCloudApigeeV1AppGroupApp,
 ) as any as S.Schema<GoogleCloudApigeeV1AppGroupAppList>;
@@ -13420,7 +13464,7 @@ export const ListOrganizationsAppgroupsSubscriptionsRequest =
   }) as any as S.Schema<ListOrganizationsAppgroupsSubscriptionsRequest>;
 
 export type GoogleCloudApigeeV1AppGroupSubscriptionList =
-  ReadonlyArray<GoogleCloudApigeeV1AppGroupSubscription>;
+  Array<GoogleCloudApigeeV1AppGroupSubscription>;
 export const GoogleCloudApigeeV1AppGroupSubscriptionList =
   /*@__PURE__*/ S.Array(
     GoogleCloudApigeeV1AppGroupSubscription,
@@ -13499,7 +13543,7 @@ export const ListOrganizationsAppsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListOrganizationsAppsRequest",
 }) as any as S.Schema<ListOrganizationsAppsRequest>;
 
-export type GoogleCloudApigeeV1AppList = ReadonlyArray<GoogleCloudApigeeV1App>;
+export type GoogleCloudApigeeV1AppList = Array<GoogleCloudApigeeV1App>;
 export const GoogleCloudApigeeV1AppList = /*@__PURE__*/ S.Array(
   GoogleCloudApigeeV1App,
 ) as any as S.Schema<GoogleCloudApigeeV1AppList>;
@@ -13547,7 +13591,7 @@ export const ListOrganizationsDatacollectorsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListOrganizationsDatacollectorsRequest>;
 
 export type GoogleCloudApigeeV1DataCollectorList =
-  ReadonlyArray<GoogleCloudApigeeV1DataCollector>;
+  Array<GoogleCloudApigeeV1DataCollector>;
 export const GoogleCloudApigeeV1DataCollectorList = /*@__PURE__*/ S.Array(
   GoogleCloudApigeeV1DataCollector,
 ) as any as S.Schema<GoogleCloudApigeeV1DataCollectorList>;
@@ -13627,7 +13671,7 @@ export const ListOrganizationsDevelopersRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListOrganizationsDevelopersRequest>;
 
 export type GoogleCloudApigeeV1DeveloperList =
-  ReadonlyArray<GoogleCloudApigeeV1Developer>;
+  Array<GoogleCloudApigeeV1Developer>;
 export const GoogleCloudApigeeV1DeveloperList = /*@__PURE__*/ S.Array(
   GoogleCloudApigeeV1Developer,
 ) as any as S.Schema<GoogleCloudApigeeV1DeveloperList>;
@@ -13677,7 +13721,7 @@ export const ListOrganizationsDevelopersAppsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListOrganizationsDevelopersAppsRequest>;
 
 export type GoogleCloudApigeeV1DeveloperAppList =
-  ReadonlyArray<GoogleCloudApigeeV1DeveloperApp>;
+  Array<GoogleCloudApigeeV1DeveloperApp>;
 export const GoogleCloudApigeeV1DeveloperAppList = /*@__PURE__*/ S.Array(
   GoogleCloudApigeeV1DeveloperApp,
 ) as any as S.Schema<GoogleCloudApigeeV1DeveloperAppList>;
@@ -13759,7 +13803,7 @@ export const ListOrganizationsDevelopersSubscriptionsRequest =
   }) as any as S.Schema<ListOrganizationsDevelopersSubscriptionsRequest>;
 
 export type GoogleCloudApigeeV1DeveloperSubscriptionList =
-  ReadonlyArray<GoogleCloudApigeeV1DeveloperSubscription>;
+  Array<GoogleCloudApigeeV1DeveloperSubscription>;
 export const GoogleCloudApigeeV1DeveloperSubscriptionList =
   /*@__PURE__*/ S.Array(
     GoogleCloudApigeeV1DeveloperSubscription,
@@ -13808,8 +13852,7 @@ export const ListOrganizationsDnsZonesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListOrganizationsDnsZonesRequest",
 }) as any as S.Schema<ListOrganizationsDnsZonesRequest>;
 
-export type GoogleCloudApigeeV1DnsZoneList =
-  ReadonlyArray<GoogleCloudApigeeV1DnsZone>;
+export type GoogleCloudApigeeV1DnsZoneList = Array<GoogleCloudApigeeV1DnsZone>;
 export const GoogleCloudApigeeV1DnsZoneList = /*@__PURE__*/ S.Array(
   GoogleCloudApigeeV1DnsZone,
 ) as any as S.Schema<GoogleCloudApigeeV1DnsZoneList>;
@@ -13857,7 +13900,7 @@ export const ListOrganizationsEndpointAttachmentsRequest =
   }) as any as S.Schema<ListOrganizationsEndpointAttachmentsRequest>;
 
 export type GoogleCloudApigeeV1EndpointAttachmentList =
-  ReadonlyArray<GoogleCloudApigeeV1EndpointAttachment>;
+  Array<GoogleCloudApigeeV1EndpointAttachment>;
 export const GoogleCloudApigeeV1EndpointAttachmentList = /*@__PURE__*/ S.Array(
   GoogleCloudApigeeV1EndpointAttachment,
 ) as any as S.Schema<GoogleCloudApigeeV1EndpointAttachmentList>;
@@ -13906,7 +13949,7 @@ export const ListOrganizationsEnvgroupsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListOrganizationsEnvgroupsRequest>;
 
 export type GoogleCloudApigeeV1EnvironmentGroupList =
-  ReadonlyArray<GoogleCloudApigeeV1EnvironmentGroup>;
+  Array<GoogleCloudApigeeV1EnvironmentGroup>;
 export const GoogleCloudApigeeV1EnvironmentGroupList = /*@__PURE__*/ S.Array(
   GoogleCloudApigeeV1EnvironmentGroup,
 ) as any as S.Schema<GoogleCloudApigeeV1EnvironmentGroupList>;
@@ -13954,7 +13997,7 @@ export const ListOrganizationsEnvgroupsAttachmentsRequest =
   }) as any as S.Schema<ListOrganizationsEnvgroupsAttachmentsRequest>;
 
 export type GoogleCloudApigeeV1EnvironmentGroupAttachmentList =
-  ReadonlyArray<GoogleCloudApigeeV1EnvironmentGroupAttachment>;
+  Array<GoogleCloudApigeeV1EnvironmentGroupAttachment>;
 export const GoogleCloudApigeeV1EnvironmentGroupAttachmentList =
   /*@__PURE__*/ S.Array(
     GoogleCloudApigeeV1EnvironmentGroupAttachment,
@@ -13998,8 +14041,7 @@ export const ListOrganizationsEnvironmentsAnalyticsExportsRequest =
     identifier: "ListOrganizationsEnvironmentsAnalyticsExportsRequest",
   }) as any as S.Schema<ListOrganizationsEnvironmentsAnalyticsExportsRequest>;
 
-export type GoogleCloudApigeeV1ExportList =
-  ReadonlyArray<GoogleCloudApigeeV1Export>;
+export type GoogleCloudApigeeV1ExportList = Array<GoogleCloudApigeeV1Export>;
 export const GoogleCloudApigeeV1ExportList = /*@__PURE__*/ S.Array(
   GoogleCloudApigeeV1Export,
 ) as any as S.Schema<GoogleCloudApigeeV1ExportList>;
@@ -14079,8 +14121,7 @@ export const GoogleCloudApigeeV1Session = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleCloudApigeeV1Session",
 }) as any as S.Schema<GoogleCloudApigeeV1Session>;
 
-export type GoogleCloudApigeeV1SessionList =
-  ReadonlyArray<GoogleCloudApigeeV1Session>;
+export type GoogleCloudApigeeV1SessionList = Array<GoogleCloudApigeeV1Session>;
 export const GoogleCloudApigeeV1SessionList = /*@__PURE__*/ S.Array(
   GoogleCloudApigeeV1Session,
 ) as any as S.Schema<GoogleCloudApigeeV1SessionList>;
@@ -14130,7 +14171,7 @@ export const ListOrganizationsEnvironmentsArchiveDeploymentsRequest =
   }) as any as S.Schema<ListOrganizationsEnvironmentsArchiveDeploymentsRequest>;
 
 export type GoogleCloudApigeeV1ArchiveDeploymentList =
-  ReadonlyArray<GoogleCloudApigeeV1ArchiveDeployment>;
+  Array<GoogleCloudApigeeV1ArchiveDeployment>;
 export const GoogleCloudApigeeV1ArchiveDeploymentList = /*@__PURE__*/ S.Array(
   GoogleCloudApigeeV1ArchiveDeployment,
 ) as any as S.Schema<GoogleCloudApigeeV1ArchiveDeploymentList>;
@@ -14237,7 +14278,7 @@ export const ListOrganizationsEnvironmentsQueriesRequest =
   }) as any as S.Schema<ListOrganizationsEnvironmentsQueriesRequest>;
 
 export type GoogleCloudApigeeV1AsyncQueryList =
-  ReadonlyArray<GoogleCloudApigeeV1AsyncQuery>;
+  Array<GoogleCloudApigeeV1AsyncQuery>;
 export const GoogleCloudApigeeV1AsyncQueryList = /*@__PURE__*/ S.Array(
   GoogleCloudApigeeV1AsyncQuery,
 ) as any as S.Schema<GoogleCloudApigeeV1AsyncQueryList>;
@@ -14307,7 +14348,7 @@ export const ListOrganizationsEnvironmentsSecurityActionsRequest =
   }) as any as S.Schema<ListOrganizationsEnvironmentsSecurityActionsRequest>;
 
 export type GoogleCloudApigeeV1SecurityActionList =
-  ReadonlyArray<GoogleCloudApigeeV1SecurityAction>;
+  Array<GoogleCloudApigeeV1SecurityAction>;
 export const GoogleCloudApigeeV1SecurityActionList = /*@__PURE__*/ S.Array(
   GoogleCloudApigeeV1SecurityAction,
 ) as any as S.Schema<GoogleCloudApigeeV1SecurityActionList>;
@@ -14415,7 +14456,7 @@ export const ListOrganizationsEnvironmentsSecurityReportsRequest =
   }) as any as S.Schema<ListOrganizationsEnvironmentsSecurityReportsRequest>;
 
 export type GoogleCloudApigeeV1SecurityReportList =
-  ReadonlyArray<GoogleCloudApigeeV1SecurityReport>;
+  Array<GoogleCloudApigeeV1SecurityReport>;
 export const GoogleCloudApigeeV1SecurityReportList = /*@__PURE__*/ S.Array(
   GoogleCloudApigeeV1SecurityReport,
 ) as any as S.Schema<GoogleCloudApigeeV1SecurityReportList>;
@@ -14482,7 +14523,7 @@ export const ListOrganizationsEnvironmentsTraceConfigOverridesRequest =
   }) as any as S.Schema<ListOrganizationsEnvironmentsTraceConfigOverridesRequest>;
 
 export type GoogleCloudApigeeV1TraceConfigOverrideList =
-  ReadonlyArray<GoogleCloudApigeeV1TraceConfigOverride>;
+  Array<GoogleCloudApigeeV1TraceConfigOverride>;
 export const GoogleCloudApigeeV1TraceConfigOverrideList = /*@__PURE__*/ S.Array(
   GoogleCloudApigeeV1TraceConfigOverride,
 ) as any as S.Schema<GoogleCloudApigeeV1TraceConfigOverrideList>;
@@ -14613,7 +14654,7 @@ export const ListOrganizationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListOrganizationsInstancesRequest>;
 
 export type GoogleCloudApigeeV1InstanceList =
-  ReadonlyArray<GoogleCloudApigeeV1Instance>;
+  Array<GoogleCloudApigeeV1Instance>;
 export const GoogleCloudApigeeV1InstanceList = /*@__PURE__*/ S.Array(
   GoogleCloudApigeeV1Instance,
 ) as any as S.Schema<GoogleCloudApigeeV1InstanceList>;
@@ -14661,7 +14702,7 @@ export const ListOrganizationsInstancesAttachmentsRequest =
   }) as any as S.Schema<ListOrganizationsInstancesAttachmentsRequest>;
 
 export type GoogleCloudApigeeV1InstanceAttachmentList =
-  ReadonlyArray<GoogleCloudApigeeV1InstanceAttachment>;
+  Array<GoogleCloudApigeeV1InstanceAttachment>;
 export const GoogleCloudApigeeV1InstanceAttachmentList = /*@__PURE__*/ S.Array(
   GoogleCloudApigeeV1InstanceAttachment,
 ) as any as S.Schema<GoogleCloudApigeeV1InstanceAttachmentList>;
@@ -14709,7 +14750,7 @@ export const ListOrganizationsInstancesNatAddressesRequest =
   }) as any as S.Schema<ListOrganizationsInstancesNatAddressesRequest>;
 
 export type GoogleCloudApigeeV1NatAddressList =
-  ReadonlyArray<GoogleCloudApigeeV1NatAddress>;
+  Array<GoogleCloudApigeeV1NatAddress>;
 export const GoogleCloudApigeeV1NatAddressList = /*@__PURE__*/ S.Array(
   GoogleCloudApigeeV1NatAddress,
 ) as any as S.Schema<GoogleCloudApigeeV1NatAddressList>;
@@ -14786,8 +14827,7 @@ export const ListOrganizationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListOrganizationsOperationsRequest",
 }) as any as S.Schema<ListOrganizationsOperationsRequest>;
 
-export type GoogleLongrunningOperationList =
-  ReadonlyArray<GoogleLongrunningOperation>;
+export type GoogleLongrunningOperationList = Array<GoogleLongrunningOperation>;
 export const GoogleLongrunningOperationList = /*@__PURE__*/ S.Array(
   GoogleLongrunningOperation,
 ) as any as S.Schema<GoogleLongrunningOperationList>;
@@ -14834,7 +14874,7 @@ export const ListOrganizationsReportsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListOrganizationsReportsRequest>;
 
 export type GoogleCloudApigeeV1CustomReportList =
-  ReadonlyArray<GoogleCloudApigeeV1CustomReport>;
+  Array<GoogleCloudApigeeV1CustomReport>;
 export const GoogleCloudApigeeV1CustomReportList = /*@__PURE__*/ S.Array(
   GoogleCloudApigeeV1CustomReport,
 ) as any as S.Schema<GoogleCloudApigeeV1CustomReportList>;
@@ -14878,7 +14918,7 @@ export const ListOrganizationsSecurityFeedbackRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListOrganizationsSecurityFeedbackRequest>;
 
 export type GoogleCloudApigeeV1SecurityFeedbackList =
-  ReadonlyArray<GoogleCloudApigeeV1SecurityFeedback>;
+  Array<GoogleCloudApigeeV1SecurityFeedback>;
 export const GoogleCloudApigeeV1SecurityFeedbackList = /*@__PURE__*/ S.Array(
   GoogleCloudApigeeV1SecurityFeedback,
 ) as any as S.Schema<GoogleCloudApigeeV1SecurityFeedbackList>;
@@ -14943,7 +14983,7 @@ export const ListOrganizationsSecurityMonitoringConditionsRequest =
   }) as any as S.Schema<ListOrganizationsSecurityMonitoringConditionsRequest>;
 
 export type GoogleCloudApigeeV1SecurityMonitoringConditionList =
-  ReadonlyArray<GoogleCloudApigeeV1SecurityMonitoringCondition>;
+  Array<GoogleCloudApigeeV1SecurityMonitoringCondition>;
 export const GoogleCloudApigeeV1SecurityMonitoringConditionList =
   /*@__PURE__*/ S.Array(
     GoogleCloudApigeeV1SecurityMonitoringCondition,
@@ -14994,7 +15034,7 @@ export const ListOrganizationsSecurityProfilesRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListOrganizationsSecurityProfilesRequest>;
 
 export type GoogleCloudApigeeV1SecurityProfileList =
-  ReadonlyArray<GoogleCloudApigeeV1SecurityProfile>;
+  Array<GoogleCloudApigeeV1SecurityProfile>;
 export const GoogleCloudApigeeV1SecurityProfileList = /*@__PURE__*/ S.Array(
   GoogleCloudApigeeV1SecurityProfile,
 ) as any as S.Schema<GoogleCloudApigeeV1SecurityProfileList>;
@@ -15058,7 +15098,7 @@ export const ListOrganizationsSecurityProfilesV2Request =
   }) as any as S.Schema<ListOrganizationsSecurityProfilesV2Request>;
 
 export type GoogleCloudApigeeV1SecurityProfileV2List =
-  ReadonlyArray<GoogleCloudApigeeV1SecurityProfileV2>;
+  Array<GoogleCloudApigeeV1SecurityProfileV2>;
 export const GoogleCloudApigeeV1SecurityProfileV2List = /*@__PURE__*/ S.Array(
   GoogleCloudApigeeV1SecurityProfileV2,
 ) as any as S.Schema<GoogleCloudApigeeV1SecurityProfileV2List>;
@@ -15108,7 +15148,7 @@ export const ListOrganizationsSharedflowsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListOrganizationsSharedflowsRequest>;
 
 export type GoogleCloudApigeeV1SharedFlowList =
-  ReadonlyArray<GoogleCloudApigeeV1SharedFlow>;
+  Array<GoogleCloudApigeeV1SharedFlow>;
 export const GoogleCloudApigeeV1SharedFlowList = /*@__PURE__*/ S.Array(
   GoogleCloudApigeeV1SharedFlow,
 ) as any as S.Schema<GoogleCloudApigeeV1SharedFlowList>;
@@ -15183,7 +15223,7 @@ export const ListOrganizationsSitesApicategoriesRequest =
   }) as any as S.Schema<ListOrganizationsSitesApicategoriesRequest>;
 
 export type GoogleCloudApigeeV1ApiCategoryList =
-  ReadonlyArray<GoogleCloudApigeeV1ApiCategory>;
+  Array<GoogleCloudApigeeV1ApiCategory>;
 export const GoogleCloudApigeeV1ApiCategoryList = /*@__PURE__*/ S.Array(
   GoogleCloudApigeeV1ApiCategory,
 ) as any as S.Schema<GoogleCloudApigeeV1ApiCategoryList>;
@@ -15239,8 +15279,7 @@ export const ListOrganizationsSitesApidocsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListOrganizationsSitesApidocsRequest",
 }) as any as S.Schema<ListOrganizationsSitesApidocsRequest>;
 
-export type GoogleCloudApigeeV1ApiDocList =
-  ReadonlyArray<GoogleCloudApigeeV1ApiDoc>;
+export type GoogleCloudApigeeV1ApiDocList = Array<GoogleCloudApigeeV1ApiDoc>;
 export const GoogleCloudApigeeV1ApiDocList = /*@__PURE__*/ S.Array(
   GoogleCloudApigeeV1ApiDoc,
 ) as any as S.Schema<GoogleCloudApigeeV1ApiDocList>;
@@ -15297,8 +15336,7 @@ export const ListOrganizationsSpacesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListOrganizationsSpacesRequest",
 }) as any as S.Schema<ListOrganizationsSpacesRequest>;
 
-export type GoogleCloudApigeeV1SpaceList =
-  ReadonlyArray<GoogleCloudApigeeV1Space>;
+export type GoogleCloudApigeeV1SpaceList = Array<GoogleCloudApigeeV1Space>;
 export const GoogleCloudApigeeV1SpaceList = /*@__PURE__*/ S.Array(
   GoogleCloudApigeeV1Space,
 ) as any as S.Schema<GoogleCloudApigeeV1SpaceList>;
@@ -15962,7 +16000,7 @@ export const GoogleCloudApigeeV1MetricAggregation = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudApigeeV1MetricAggregation>;
 
 export type GoogleCloudApigeeV1MetricAggregationList =
-  ReadonlyArray<GoogleCloudApigeeV1MetricAggregation>;
+  Array<GoogleCloudApigeeV1MetricAggregation>;
 export const GoogleCloudApigeeV1MetricAggregationList = /*@__PURE__*/ S.Array(
   GoogleCloudApigeeV1MetricAggregation,
 ) as any as S.Schema<GoogleCloudApigeeV1MetricAggregationList>;
@@ -16021,7 +16059,7 @@ export const QueryTabularStatsOrganizationsEnvironmentsSecurityStatsRequest =
       "QueryTabularStatsOrganizationsEnvironmentsSecurityStatsRequest",
   }) as any as S.Schema<QueryTabularStatsOrganizationsEnvironmentsSecurityStatsRequest>;
 
-export type DocumentListList = ReadonlyArray<DocumentList>;
+export type DocumentListList = Array<DocumentList>;
 export const DocumentListList = /*@__PURE__*/ S.Array(
   DocumentList,
 ) as any as S.Schema<DocumentListList>;
@@ -16148,7 +16186,7 @@ export const GoogleCloudApigeeV1QueryTimeSeriesStatsResponseSequence =
   }) as any as S.Schema<GoogleCloudApigeeV1QueryTimeSeriesStatsResponseSequence>;
 
 export type GoogleCloudApigeeV1QueryTimeSeriesStatsResponseSequenceList =
-  ReadonlyArray<GoogleCloudApigeeV1QueryTimeSeriesStatsResponseSequence>;
+  Array<GoogleCloudApigeeV1QueryTimeSeriesStatsResponseSequence>;
 export const GoogleCloudApigeeV1QueryTimeSeriesStatsResponseSequenceList =
   /*@__PURE__*/ S.Array(
     GoogleCloudApigeeV1QueryTimeSeriesStatsResponseSequence,
@@ -16241,7 +16279,7 @@ export const GoogleCloudApigeeV1UpdateError = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudApigeeV1UpdateError>;
 
 export type GoogleCloudApigeeV1UpdateErrorList =
-  ReadonlyArray<GoogleCloudApigeeV1UpdateError>;
+  Array<GoogleCloudApigeeV1UpdateError>;
 export const GoogleCloudApigeeV1UpdateErrorList = /*@__PURE__*/ S.Array(
   GoogleCloudApigeeV1UpdateError,
 ) as any as S.Schema<GoogleCloudApigeeV1UpdateErrorList>;
@@ -16269,7 +16307,7 @@ export const GoogleCloudApigeeV1RevisionStatus = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudApigeeV1RevisionStatus>;
 
 export type GoogleCloudApigeeV1RevisionStatusList =
-  ReadonlyArray<GoogleCloudApigeeV1RevisionStatus>;
+  Array<GoogleCloudApigeeV1RevisionStatus>;
 export const GoogleCloudApigeeV1RevisionStatusList = /*@__PURE__*/ S.Array(
   GoogleCloudApigeeV1RevisionStatus,
 ) as any as S.Schema<GoogleCloudApigeeV1RevisionStatusList>;
@@ -16297,7 +16335,7 @@ export const GoogleCloudApigeeV1ResourceStatus = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudApigeeV1ResourceStatus>;
 
 export type GoogleCloudApigeeV1ResourceStatusList =
-  ReadonlyArray<GoogleCloudApigeeV1ResourceStatus>;
+  Array<GoogleCloudApigeeV1ResourceStatus>;
 export const GoogleCloudApigeeV1ResourceStatusList = /*@__PURE__*/ S.Array(
   GoogleCloudApigeeV1ResourceStatus,
 ) as any as S.Schema<GoogleCloudApigeeV1ResourceStatusList>;

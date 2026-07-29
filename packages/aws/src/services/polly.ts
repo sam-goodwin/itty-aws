@@ -594,7 +594,7 @@ export type SampleRate = string;
 export type SpeechMarkType = "sentence" | "ssml" | "viseme" | "word";
 export const SpeechMarkType = /*@__PURE__*/ S.String;
 
-export type SpeechMarkTypeList = SpeechMarkType[];
+export type SpeechMarkTypeList = (SpeechMarkType | (string & {}))[];
 export const SpeechMarkTypeList = /*@__PURE__*/ S.Array(SpeechMarkType);
 export type TextType = "ssml" | "text";
 export const TextType = /*@__PURE__*/ S.String;

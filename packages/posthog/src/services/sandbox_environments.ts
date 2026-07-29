@@ -40,13 +40,13 @@ export type NetworkAccessLevelEnum = "trusted" | "full" | "custom";
 export const NetworkAccessLevelEnum = /*@__PURE__*/ S.String;
 
 /** Allowed domains for custom network access. */
-export type SandboxCreateRequestAllowedDomainsList = ReadonlyArray<string>;
+export type SandboxCreateRequestAllowedDomainsList = Array<string>;
 export const SandboxCreateRequestAllowedDomainsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SandboxCreateRequestAllowedDomainsList>;
 
 /** Repositories this environment applies to (format: org/repo). */
-export type SandboxCreateRequestRepositoriesList = ReadonlyArray<string>;
+export type SandboxCreateRequestRepositoriesList = Array<string>;
 export const SandboxCreateRequestRepositoriesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SandboxCreateRequestRepositoriesList>;
@@ -93,12 +93,12 @@ export const SandboxCreateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "SandboxCreateRequest",
 }) as any as S.Schema<SandboxCreateRequest>;
 
-export type SandboxEnvironmentDTOAllowedDomainsList = ReadonlyArray<string>;
+export type SandboxEnvironmentDTOAllowedDomainsList = Array<string>;
 export const SandboxEnvironmentDTOAllowedDomainsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SandboxEnvironmentDTOAllowedDomainsList>;
 
-export type SandboxEnvironmentDTORepositoriesList = ReadonlyArray<string>;
+export type SandboxEnvironmentDTORepositoriesList = Array<string>;
 export const SandboxEnvironmentDTORepositoriesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SandboxEnvironmentDTORepositoriesList>;
@@ -227,7 +227,7 @@ export const SandboxListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SandboxListRequest>;
 
 export type PaginatedSandboxEnvironmentDTOListResultsList =
-  ReadonlyArray<SandboxEnvironmentDTO>;
+  Array<SandboxEnvironmentDTO>;
 export const PaginatedSandboxEnvironmentDTOListResultsList =
   /*@__PURE__*/ S.Array(
     SandboxEnvironmentDTO,
@@ -251,15 +251,14 @@ export const PaginatedSandboxEnvironmentDTOList = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PaginatedSandboxEnvironmentDTOList>;
 
 /** Allowed domains for custom network access. */
-export type SandboxPartialUpdateRequestAllowedDomainsList =
-  ReadonlyArray<string>;
+export type SandboxPartialUpdateRequestAllowedDomainsList = Array<string>;
 export const SandboxPartialUpdateRequestAllowedDomainsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<SandboxPartialUpdateRequestAllowedDomainsList>;
 
 /** Repositories this environment applies to (format: org/repo). */
-export type SandboxPartialUpdateRequestRepositoriesList = ReadonlyArray<string>;
+export type SandboxPartialUpdateRequestRepositoriesList = Array<string>;
 export const SandboxPartialUpdateRequestRepositoriesList =
   /*@__PURE__*/ S.Array(
     S.String,

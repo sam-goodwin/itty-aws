@@ -80,7 +80,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = ReadonlyArray<Operation>;
+export type OperationsListResponseValueList = Array<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;
@@ -143,7 +143,7 @@ export const StorageTaskAssignment = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Storage Task Assignment Resource IDs associated with this Storage Task. */
 export type StorageTaskAssignmentsListResultValueList =
-  ReadonlyArray<StorageTaskAssignment>;
+  Array<StorageTaskAssignment>;
 export const StorageTaskAssignmentsListResultValueList = /*@__PURE__*/ S.Array(
   StorageTaskAssignment,
 ) as any as S.Schema<StorageTaskAssignmentsListResultValueList>;
@@ -204,13 +204,13 @@ export const OnFailure = /*@__PURE__*/ S.String;
 /** Represents an operation to be performed on the object */
 export interface StorageTaskOperation {
   /** The operation to be performed on the object. */
-  name: StorageTaskOperationName;
+  name: StorageTaskOperationName | (string & {});
   /** Key-value parameters for the operation. */
   parameters?: StorageTaskOperationParametersMap;
   /** Action to be taken when the operation is successful for a object. */
-  onSuccess?: OnSuccess;
+  onSuccess?: OnSuccess | (string & {});
   /** Action to be taken when the operation fails for a object. */
-  onFailure?: OnFailure;
+  onFailure?: OnFailure | (string & {});
 }
 export const StorageTaskOperation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -224,7 +224,7 @@ export const StorageTaskOperation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StorageTaskOperation>;
 
 /** List of operations to execute when the condition predicate satisfies. */
-export type IfConditionOperationsList = ReadonlyArray<StorageTaskOperation>;
+export type IfConditionOperationsList = Array<StorageTaskOperation>;
 export const IfConditionOperationsList = /*@__PURE__*/ S.Array(
   StorageTaskOperation,
 ) as any as S.Schema<IfConditionOperationsList>;
@@ -244,7 +244,7 @@ export const IfCondition = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IfCondition" }) as any as S.Schema<IfCondition>;
 
 /** List of operations to execute in the else block */
-export type ElseConditionOperationsList = ReadonlyArray<StorageTaskOperation>;
+export type ElseConditionOperationsList = Array<StorageTaskOperation>;
 export const ElseConditionOperationsList = /*@__PURE__*/ S.Array(
   StorageTaskOperation,
 ) as any as S.Schema<ElseConditionOperationsList>;
@@ -742,7 +742,7 @@ export const StorageTask = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StorageTask" }) as any as S.Schema<StorageTask>;
 
 /** Gets the list of storage tasks and their properties. */
-export type StorageTasksListResultValueList = ReadonlyArray<StorageTask>;
+export type StorageTasksListResultValueList = Array<StorageTask>;
 export const StorageTasksListResultValueList = /*@__PURE__*/ S.Array(
   StorageTask,
 ) as any as S.Schema<StorageTasksListResultValueList>;
@@ -802,7 +802,7 @@ export const StorageTaskPreviewKeyValueProperties = /*@__PURE__*/ S.suspend(
 
 /** metadata key value pairs to be tested for a match against the provided condition. */
 export type StorageTaskPreviewContainerPropertiesMetadataList =
-  ReadonlyArray<StorageTaskPreviewKeyValueProperties>;
+  Array<StorageTaskPreviewKeyValueProperties>;
 export const StorageTaskPreviewContainerPropertiesMetadataList =
   /*@__PURE__*/ S.Array(
     StorageTaskPreviewKeyValueProperties,
@@ -827,7 +827,7 @@ export const StorageTaskPreviewContainerProperties = /*@__PURE__*/ S.suspend(
 
 /** properties key value pairs to be tested for a match against the provided condition. */
 export type StorageTaskPreviewBlobPropertiesPropertiesList =
-  ReadonlyArray<StorageTaskPreviewKeyValueProperties>;
+  Array<StorageTaskPreviewKeyValueProperties>;
 export const StorageTaskPreviewBlobPropertiesPropertiesList =
   /*@__PURE__*/ S.Array(
     StorageTaskPreviewKeyValueProperties,
@@ -835,7 +835,7 @@ export const StorageTaskPreviewBlobPropertiesPropertiesList =
 
 /** metadata key value pairs to be tested for a match against the provided condition. */
 export type StorageTaskPreviewBlobPropertiesMetadataList =
-  ReadonlyArray<StorageTaskPreviewKeyValueProperties>;
+  Array<StorageTaskPreviewKeyValueProperties>;
 export const StorageTaskPreviewBlobPropertiesMetadataList =
   /*@__PURE__*/ S.Array(
     StorageTaskPreviewKeyValueProperties,
@@ -843,7 +843,7 @@ export const StorageTaskPreviewBlobPropertiesMetadataList =
 
 /** tags key value pairs to be tested for a match against the provided condition. */
 export type StorageTaskPreviewBlobPropertiesTagsList =
-  ReadonlyArray<StorageTaskPreviewKeyValueProperties>;
+  Array<StorageTaskPreviewKeyValueProperties>;
 export const StorageTaskPreviewBlobPropertiesTagsList = /*@__PURE__*/ S.Array(
   StorageTaskPreviewKeyValueProperties,
 ) as any as S.Schema<StorageTaskPreviewBlobPropertiesTagsList>;
@@ -872,7 +872,7 @@ export const StorageTaskPreviewBlobProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Properties of some sample blobs in the container to test for matches with the preview action. */
 export type StorageTaskPreviewActionPropertiesBlobsList =
-  ReadonlyArray<StorageTaskPreviewBlobProperties>;
+  Array<StorageTaskPreviewBlobProperties>;
 export const StorageTaskPreviewActionPropertiesBlobsList =
   /*@__PURE__*/ S.Array(
     StorageTaskPreviewBlobProperties,
@@ -1082,7 +1082,7 @@ export const StorageTaskReportInstance = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets storage tasks run result summary. */
 export type StorageTaskReportSummaryValueList =
-  ReadonlyArray<StorageTaskReportInstance>;
+  Array<StorageTaskReportInstance>;
 export const StorageTaskReportSummaryValueList = /*@__PURE__*/ S.Array(
   StorageTaskReportInstance,
 ) as any as S.Schema<StorageTaskReportSummaryValueList>;

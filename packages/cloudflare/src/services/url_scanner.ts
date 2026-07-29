@@ -39,10 +39,9 @@ export type ScansBulkCreateRequestBodyItemScreenshotsResolutionsItem =
 export const ScansBulkCreateRequestBodyItemScreenshotsResolutionsItem =
   /*@__PURE__*/ S.String;
 
-export type ScansBulkCreateRequestBodyItemScreenshotsResolutionsList =
-  ReadonlyArray<
-    ScansBulkCreateRequestBodyItemScreenshotsResolutionsItem | (string & {})
-  >;
+export type ScansBulkCreateRequestBodyItemScreenshotsResolutionsList = Array<
+  ScansBulkCreateRequestBodyItemScreenshotsResolutionsItem | (string & {})
+>;
 export const ScansBulkCreateRequestBodyItemScreenshotsResolutionsList =
   /*@__PURE__*/ S.Array(
     ScansBulkCreateRequestBodyItemScreenshotsResolutionsItem,
@@ -81,7 +80,7 @@ export const ScansBulkCreateRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScansBulkCreateRequestBodyItem>;
 
 export type ScansBulkCreateRequestBodyList =
-  ReadonlyArray<ScansBulkCreateRequestBodyItem>;
+  Array<ScansBulkCreateRequestBodyItem>;
 export const ScansBulkCreateRequestBodyList = /*@__PURE__*/ S.Array(
   ScansBulkCreateRequestBodyItem,
 ) as any as S.Schema<ScansBulkCreateRequestBodyList>;
@@ -329,7 +328,7 @@ export type ScansCreateRequestScreenshotsResolutionsItem =
 export const ScansCreateRequestScreenshotsResolutionsItem =
   /*@__PURE__*/ S.String;
 
-export type ScansCreateRequestScreenshotsResolutionsList = ReadonlyArray<
+export type ScansCreateRequestScreenshotsResolutionsList = Array<
   ScansCreateRequestScreenshotsResolutionsItem | (string & {})
 >;
 export const ScansCreateRequestScreenshotsResolutionsList =
@@ -499,7 +498,7 @@ export const ScansGetResponseDataConsoleItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScansGetResponseDataConsoleItem>;
 
 export type ScansGetResponseDataConsoleList =
-  ReadonlyArray<ScansGetResponseDataConsoleItem>;
+  Array<ScansGetResponseDataConsoleItem>;
 export const ScansGetResponseDataConsoleList = /*@__PURE__*/ S.Array(
   ScansGetResponseDataConsoleItem,
 ) as any as S.Schema<ScansGetResponseDataConsoleList>;
@@ -540,7 +539,7 @@ export const ScansGetResponseDataCookiesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScansGetResponseDataCookiesItem>;
 
 export type ScansGetResponseDataCookiesList =
-  ReadonlyArray<ScansGetResponseDataCookiesItem>;
+  Array<ScansGetResponseDataCookiesItem>;
 export const ScansGetResponseDataCookiesList = /*@__PURE__*/ S.Array(
   ScansGetResponseDataCookiesItem,
 ) as any as S.Schema<ScansGetResponseDataCookiesList>;
@@ -559,7 +558,7 @@ export const ScansGetResponseDataGlobalsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScansGetResponseDataGlobalsItem>;
 
 export type ScansGetResponseDataGlobalsList =
-  ReadonlyArray<ScansGetResponseDataGlobalsItem>;
+  Array<ScansGetResponseDataGlobalsItem>;
 export const ScansGetResponseDataGlobalsList = /*@__PURE__*/ S.Array(
   ScansGetResponseDataGlobalsItem,
 ) as any as S.Schema<ScansGetResponseDataGlobalsList>;
@@ -578,7 +577,7 @@ export const ScansGetResponseDataLinksItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScansGetResponseDataLinksItem>;
 
 export type ScansGetResponseDataLinksList =
-  ReadonlyArray<ScansGetResponseDataLinksItem>;
+  Array<ScansGetResponseDataLinksItem>;
 export const ScansGetResponseDataLinksList = /*@__PURE__*/ S.Array(
   ScansGetResponseDataLinksItem,
 ) as any as S.Schema<ScansGetResponseDataLinksList>;
@@ -601,7 +600,7 @@ export const ScansGetResponseDataPerformanceItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScansGetResponseDataPerformanceItem>;
 
 export type ScansGetResponseDataPerformanceList =
-  ReadonlyArray<ScansGetResponseDataPerformanceItem>;
+  Array<ScansGetResponseDataPerformanceItem>;
 export const ScansGetResponseDataPerformanceList = /*@__PURE__*/ S.Array(
   ScansGetResponseDataPerformanceItem,
 ) as any as S.Schema<ScansGetResponseDataPerformanceList>;
@@ -662,7 +661,7 @@ export const ScansGetResponseDataRequestsItemRequestRedirectResponseSecurityHead
   }) as any as S.Schema<ScansGetResponseDataRequestsItemRequestRedirectResponseSecurityHeadersItem>;
 
 export type ScansGetResponseDataRequestsItemRequestRedirectResponseSecurityHeadersList =
-  ReadonlyArray<ScansGetResponseDataRequestsItemRequestRedirectResponseSecurityHeadersItem>;
+  Array<ScansGetResponseDataRequestsItemRequestRedirectResponseSecurityHeadersItem>;
 export const ScansGetResponseDataRequestsItemRequestRedirectResponseSecurityHeadersList =
   /*@__PURE__*/ S.Array(
     ScansGetResponseDataRequestsItemRequestRedirectResponseSecurityHeadersItem,
@@ -759,8 +758,7 @@ export const ScansGetResponseDataRequestsItemResponseAsn =
     identifier: "ScansGetResponseDataRequestsItemResponseAsn",
   }) as any as S.Schema<ScansGetResponseDataRequestsItemResponseAsn>;
 
-export type ScansGetResponseDataRequestsItemResponseGeoipLlList =
-  ReadonlyArray<number>;
+export type ScansGetResponseDataRequestsItemResponseGeoipLlList = Array<number>;
 export const ScansGetResponseDataRequestsItemResponseGeoipLlList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -789,7 +787,7 @@ export const ScansGetResponseDataRequestsItemResponseGeoip =
   }) as any as S.Schema<ScansGetResponseDataRequestsItemResponseGeoip>;
 
 export type ScansGetResponseDataRequestsItemResponseResponseSecurityDetailsSanListList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ScansGetResponseDataRequestsItemResponseResponseSecurityDetailsSanListList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -849,7 +847,7 @@ export const ScansGetResponseDataRequestsItemResponseResponseSecurityHeadersItem
   }) as any as S.Schema<ScansGetResponseDataRequestsItemResponseResponseSecurityHeadersItem>;
 
 export type ScansGetResponseDataRequestsItemResponseResponseSecurityHeadersList =
-  ReadonlyArray<ScansGetResponseDataRequestsItemResponseResponseSecurityHeadersItem>;
+  Array<ScansGetResponseDataRequestsItemResponseResponseSecurityHeadersItem>;
 export const ScansGetResponseDataRequestsItemResponseResponseSecurityHeadersList =
   /*@__PURE__*/ S.Array(
     ScansGetResponseDataRequestsItemResponseResponseSecurityHeadersItem,
@@ -1002,7 +1000,7 @@ export const ScansGetResponseDataRequestsItemRequestsItem =
   }) as any as S.Schema<ScansGetResponseDataRequestsItemRequestsItem>;
 
 export type ScansGetResponseDataRequestsItemRequestsList =
-  ReadonlyArray<ScansGetResponseDataRequestsItemRequestsItem>;
+  Array<ScansGetResponseDataRequestsItemRequestsItem>;
 export const ScansGetResponseDataRequestsItemRequestsList =
   /*@__PURE__*/ S.Array(
     ScansGetResponseDataRequestsItemRequestsItem,
@@ -1024,7 +1022,7 @@ export const ScansGetResponseDataRequestsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScansGetResponseDataRequestsItem>;
 
 export type ScansGetResponseDataRequestsList =
-  ReadonlyArray<ScansGetResponseDataRequestsItem>;
+  Array<ScansGetResponseDataRequestsItem>;
 export const ScansGetResponseDataRequestsList = /*@__PURE__*/ S.Array(
   ScansGetResponseDataRequestsItem,
 ) as any as S.Schema<ScansGetResponseDataRequestsList>;
@@ -1050,7 +1048,7 @@ export const ScansGetResponseData = /*@__PURE__*/ S.suspend(() =>
   identifier: "ScansGetResponseData",
 }) as any as S.Schema<ScansGetResponseData>;
 
-export type ScansGetResponseListsAsnsList = ReadonlyArray<string>;
+export type ScansGetResponseListsAsnsList = Array<string>;
 export const ScansGetResponseListsAsnsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ScansGetResponseListsAsnsList>;
@@ -1074,47 +1072,47 @@ export const ScansGetResponseListsCertificatesItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ScansGetResponseListsCertificatesItem>;
 
 export type ScansGetResponseListsCertificatesList =
-  ReadonlyArray<ScansGetResponseListsCertificatesItem>;
+  Array<ScansGetResponseListsCertificatesItem>;
 export const ScansGetResponseListsCertificatesList = /*@__PURE__*/ S.Array(
   ScansGetResponseListsCertificatesItem,
 ) as any as S.Schema<ScansGetResponseListsCertificatesList>;
 
-export type ScansGetResponseListsContinentsList = ReadonlyArray<string>;
+export type ScansGetResponseListsContinentsList = Array<string>;
 export const ScansGetResponseListsContinentsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ScansGetResponseListsContinentsList>;
 
-export type ScansGetResponseListsCountriesList = ReadonlyArray<string>;
+export type ScansGetResponseListsCountriesList = Array<string>;
 export const ScansGetResponseListsCountriesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ScansGetResponseListsCountriesList>;
 
-export type ScansGetResponseListsDomainsList = ReadonlyArray<string>;
+export type ScansGetResponseListsDomainsList = Array<string>;
 export const ScansGetResponseListsDomainsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ScansGetResponseListsDomainsList>;
 
-export type ScansGetResponseListsHashesList = ReadonlyArray<string>;
+export type ScansGetResponseListsHashesList = Array<string>;
 export const ScansGetResponseListsHashesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ScansGetResponseListsHashesList>;
 
-export type ScansGetResponseListsIpsList = ReadonlyArray<string>;
+export type ScansGetResponseListsIpsList = Array<string>;
 export const ScansGetResponseListsIpsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ScansGetResponseListsIpsList>;
 
-export type ScansGetResponseListsLinkDomainsList = ReadonlyArray<string>;
+export type ScansGetResponseListsLinkDomainsList = Array<string>;
 export const ScansGetResponseListsLinkDomainsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ScansGetResponseListsLinkDomainsList>;
 
-export type ScansGetResponseListsServersList = ReadonlyArray<string>;
+export type ScansGetResponseListsServersList = Array<string>;
 export const ScansGetResponseListsServersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ScansGetResponseListsServersList>;
 
-export type ScansGetResponseListsUrlsList = ReadonlyArray<string>;
+export type ScansGetResponseListsUrlsList = Array<string>;
 export const ScansGetResponseListsUrlsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ScansGetResponseListsUrlsList>;
@@ -1169,7 +1167,7 @@ export const ScansGetResponseMetaProcessorsAsnDataItem =
   }) as any as S.Schema<ScansGetResponseMetaProcessorsAsnDataItem>;
 
 export type ScansGetResponseMetaProcessorsAsnDataList =
-  ReadonlyArray<ScansGetResponseMetaProcessorsAsnDataItem>;
+  Array<ScansGetResponseMetaProcessorsAsnDataItem>;
 export const ScansGetResponseMetaProcessorsAsnDataList = /*@__PURE__*/ S.Array(
   ScansGetResponseMetaProcessorsAsnDataItem,
 ) as any as S.Schema<ScansGetResponseMetaProcessorsAsnDataList>;
@@ -1204,7 +1202,7 @@ export const ScansGetResponseMetaProcessorsDnsDataItem =
   }) as any as S.Schema<ScansGetResponseMetaProcessorsDnsDataItem>;
 
 export type ScansGetResponseMetaProcessorsDnsDataList =
-  ReadonlyArray<ScansGetResponseMetaProcessorsDnsDataItem>;
+  Array<ScansGetResponseMetaProcessorsDnsDataItem>;
 export const ScansGetResponseMetaProcessorsDnsDataList = /*@__PURE__*/ S.Array(
   ScansGetResponseMetaProcessorsDnsDataItem,
 ) as any as S.Schema<ScansGetResponseMetaProcessorsDnsDataList>;
@@ -1237,7 +1235,7 @@ export const ScansGetResponseMetaProcessorsDomainCategoriesDataItem =
   }) as any as S.Schema<ScansGetResponseMetaProcessorsDomainCategoriesDataItem>;
 
 export type ScansGetResponseMetaProcessorsDomainCategoriesDataList =
-  ReadonlyArray<ScansGetResponseMetaProcessorsDomainCategoriesDataItem>;
+  Array<ScansGetResponseMetaProcessorsDomainCategoriesDataItem>;
 export const ScansGetResponseMetaProcessorsDomainCategoriesDataList =
   /*@__PURE__*/ S.Array(
     ScansGetResponseMetaProcessorsDomainCategoriesDataItem,
@@ -1256,7 +1254,7 @@ export const ScansGetResponseMetaProcessorsDomainCategories =
   }) as any as S.Schema<ScansGetResponseMetaProcessorsDomainCategories>;
 
 export type ScansGetResponseMetaProcessorsGeoipDataItemGeoipLlList =
-  ReadonlyArray<number>;
+  Array<number>;
 export const ScansGetResponseMetaProcessorsGeoipDataItemGeoipLlList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -1297,7 +1295,7 @@ export const ScansGetResponseMetaProcessorsGeoipDataItem =
   }) as any as S.Schema<ScansGetResponseMetaProcessorsGeoipDataItem>;
 
 export type ScansGetResponseMetaProcessorsGeoipDataList =
-  ReadonlyArray<ScansGetResponseMetaProcessorsGeoipDataItem>;
+  Array<ScansGetResponseMetaProcessorsGeoipDataItem>;
 export const ScansGetResponseMetaProcessorsGeoipDataList =
   /*@__PURE__*/ S.Array(
     ScansGetResponseMetaProcessorsGeoipDataItem,
@@ -1314,8 +1312,7 @@ export const ScansGetResponseMetaProcessorsGeoip = /*@__PURE__*/ S.suspend(() =>
   identifier: "ScansGetResponseMetaProcessorsGeoip",
 }) as any as S.Schema<ScansGetResponseMetaProcessorsGeoip>;
 
-export type ScansGetResponseMetaProcessorsPhishingDataList =
-  ReadonlyArray<string>;
+export type ScansGetResponseMetaProcessorsPhishingDataList = Array<string>;
 export const ScansGetResponseMetaProcessorsPhishingDataList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1350,7 +1347,7 @@ export const ScansGetResponseMetaProcessorsRadarRankDataItem =
   }) as any as S.Schema<ScansGetResponseMetaProcessorsRadarRankDataItem>;
 
 export type ScansGetResponseMetaProcessorsRadarRankDataList =
-  ReadonlyArray<ScansGetResponseMetaProcessorsRadarRankDataItem>;
+  Array<ScansGetResponseMetaProcessorsRadarRankDataItem>;
 export const ScansGetResponseMetaProcessorsRadarRankDataList =
   /*@__PURE__*/ S.Array(
     ScansGetResponseMetaProcessorsRadarRankDataItem,
@@ -1383,7 +1380,7 @@ export const ScansGetResponseMetaProcessorsWappaDataItemCategoriesItem =
   }) as any as S.Schema<ScansGetResponseMetaProcessorsWappaDataItemCategoriesItem>;
 
 export type ScansGetResponseMetaProcessorsWappaDataItemCategoriesList =
-  ReadonlyArray<ScansGetResponseMetaProcessorsWappaDataItemCategoriesItem>;
+  Array<ScansGetResponseMetaProcessorsWappaDataItemCategoriesItem>;
 export const ScansGetResponseMetaProcessorsWappaDataItemCategoriesList =
   /*@__PURE__*/ S.Array(
     ScansGetResponseMetaProcessorsWappaDataItemCategoriesItem,
@@ -1408,7 +1405,7 @@ export const ScansGetResponseMetaProcessorsWappaDataItemConfidenceItem =
   }) as any as S.Schema<ScansGetResponseMetaProcessorsWappaDataItemConfidenceItem>;
 
 export type ScansGetResponseMetaProcessorsWappaDataItemConfidenceList =
-  ReadonlyArray<ScansGetResponseMetaProcessorsWappaDataItemConfidenceItem>;
+  Array<ScansGetResponseMetaProcessorsWappaDataItemConfidenceItem>;
 export const ScansGetResponseMetaProcessorsWappaDataItemConfidenceList =
   /*@__PURE__*/ S.Array(
     ScansGetResponseMetaProcessorsWappaDataItemConfidenceItem,
@@ -1437,7 +1434,7 @@ export const ScansGetResponseMetaProcessorsWappaDataItem =
   }) as any as S.Schema<ScansGetResponseMetaProcessorsWappaDataItem>;
 
 export type ScansGetResponseMetaProcessorsWappaDataList =
-  ReadonlyArray<ScansGetResponseMetaProcessorsWappaDataItem>;
+  Array<ScansGetResponseMetaProcessorsWappaDataItem>;
 export const ScansGetResponseMetaProcessorsWappaDataList =
   /*@__PURE__*/ S.Array(
     ScansGetResponseMetaProcessorsWappaDataItem,
@@ -1537,7 +1534,7 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlC
   }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem>;
 
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceList =
-  ReadonlyArray<ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem>;
+  Array<ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem>;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceList =
   /*@__PURE__*/ S.Array(
     ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem,
@@ -1649,7 +1646,7 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlR
   }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlRobotsTxtAiRulesEvidenceItem>;
 
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlRobotsTxtAiRulesEvidenceList =
-  ReadonlyArray<ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlRobotsTxtAiRulesEvidenceItem>;
+  Array<ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlRobotsTxtAiRulesEvidenceItem>;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlRobotsTxtAiRulesEvidenceList =
   /*@__PURE__*/ S.Array(
     ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlRobotsTxtAiRulesEvidenceItem,
@@ -1761,7 +1758,7 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlW
   }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlWebBotAuthEvidenceItem>;
 
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlWebBotAuthEvidenceList =
-  ReadonlyArray<ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlWebBotAuthEvidenceItem>;
+  Array<ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlWebBotAuthEvidenceItem>;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlWebBotAuthEvidenceList =
   /*@__PURE__*/ S.Array(
     ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlWebBotAuthEvidenceItem,
@@ -1893,7 +1890,7 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcpEviden
   }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcpEvidenceItem>;
 
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcpEvidenceList =
-  ReadonlyArray<ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcpEvidenceItem>;
+  Array<ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcpEvidenceItem>;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcpEvidenceList =
   /*@__PURE__*/ S.Array(
     ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcpEvidenceItem,
@@ -2004,7 +2001,7 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAp2Eviden
   }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAp2EvidenceItem>;
 
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAp2EvidenceList =
-  ReadonlyArray<ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAp2EvidenceItem>;
+  Array<ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAp2EvidenceItem>;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAp2EvidenceList =
   /*@__PURE__*/ S.Array(
     ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAp2EvidenceItem,
@@ -2115,7 +2112,7 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceMppEviden
   }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceMppEvidenceItem>;
 
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceMppEvidenceList =
-  ReadonlyArray<ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceMppEvidenceItem>;
+  Array<ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceMppEvidenceItem>;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceMppEvidenceList =
   /*@__PURE__*/ S.Array(
     ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceMppEvidenceItem,
@@ -2226,7 +2223,7 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceUcpEviden
   }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceUcpEvidenceItem>;
 
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceUcpEvidenceList =
-  ReadonlyArray<ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceUcpEvidenceItem>;
+  Array<ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceUcpEvidenceItem>;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceUcpEvidenceList =
   /*@__PURE__*/ S.Array(
     ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceUcpEvidenceItem,
@@ -2337,7 +2334,7 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceX402Evide
   }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceX402EvidenceItem>;
 
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceX402EvidenceList =
-  ReadonlyArray<ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceX402EvidenceItem>;
+  Array<ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceX402EvidenceItem>;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceX402EvidenceList =
   /*@__PURE__*/ S.Array(
     ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceX402EvidenceItem,
@@ -2469,7 +2466,7 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccessibil
   }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccessibilityMarkdownNegotiationEvidenceItem>;
 
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccessibilityMarkdownNegotiationEvidenceList =
-  ReadonlyArray<ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccessibilityMarkdownNegotiationEvidenceItem>;
+  Array<ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccessibilityMarkdownNegotiationEvidenceItem>;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccessibilityMarkdownNegotiationEvidenceList =
   /*@__PURE__*/ S.Array(
     ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccessibilityMarkdownNegotiationEvidenceItem,
@@ -2595,7 +2592,7 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityLi
   }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityLinkHeadersEvidenceItem>;
 
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityLinkHeadersEvidenceList =
-  ReadonlyArray<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityLinkHeadersEvidenceItem>;
+  Array<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityLinkHeadersEvidenceItem>;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityLinkHeadersEvidenceList =
   /*@__PURE__*/ S.Array(
     ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityLinkHeadersEvidenceItem,
@@ -2707,7 +2704,7 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityRo
   }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityRobotsTxtEvidenceItem>;
 
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityRobotsTxtEvidenceList =
-  ReadonlyArray<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityRobotsTxtEvidenceItem>;
+  Array<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityRobotsTxtEvidenceItem>;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityRobotsTxtEvidenceList =
   /*@__PURE__*/ S.Array(
     ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityRobotsTxtEvidenceItem,
@@ -2819,7 +2816,7 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilitySi
   }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilitySitemapEvidenceItem>;
 
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilitySitemapEvidenceList =
-  ReadonlyArray<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilitySitemapEvidenceItem>;
+  Array<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilitySitemapEvidenceItem>;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilitySitemapEvidenceList =
   /*@__PURE__*/ S.Array(
     ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilitySitemapEvidenceItem,
@@ -2951,7 +2948,7 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryA2aAgent
   }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryA2aAgentCardEvidenceItem>;
 
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryA2aAgentCardEvidenceList =
-  ReadonlyArray<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryA2aAgentCardEvidenceItem>;
+  Array<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryA2aAgentCardEvidenceItem>;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryA2aAgentCardEvidenceList =
   /*@__PURE__*/ S.Array(
     ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryA2aAgentCardEvidenceItem,
@@ -3063,7 +3060,7 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAgentSki
   }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAgentSkillsEvidenceItem>;
 
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAgentSkillsEvidenceList =
-  ReadonlyArray<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAgentSkillsEvidenceItem>;
+  Array<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAgentSkillsEvidenceItem>;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAgentSkillsEvidenceList =
   /*@__PURE__*/ S.Array(
     ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAgentSkillsEvidenceItem,
@@ -3175,7 +3172,7 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryApiCatal
   }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryApiCatalogEvidenceItem>;
 
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryApiCatalogEvidenceList =
-  ReadonlyArray<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryApiCatalogEvidenceItem>;
+  Array<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryApiCatalogEvidenceItem>;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryApiCatalogEvidenceList =
   /*@__PURE__*/ S.Array(
     ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryApiCatalogEvidenceItem,
@@ -3287,7 +3284,7 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryMcpServe
   }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryMcpServerCardEvidenceItem>;
 
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryMcpServerCardEvidenceList =
-  ReadonlyArray<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryMcpServerCardEvidenceItem>;
+  Array<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryMcpServerCardEvidenceItem>;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryMcpServerCardEvidenceList =
   /*@__PURE__*/ S.Array(
     ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryMcpServerCardEvidenceItem,
@@ -3399,7 +3396,7 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthDis
   }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthDiscoveryEvidenceItem>;
 
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthDiscoveryEvidenceList =
-  ReadonlyArray<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthDiscoveryEvidenceItem>;
+  Array<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthDiscoveryEvidenceItem>;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthDiscoveryEvidenceList =
   /*@__PURE__*/ S.Array(
     ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthDiscoveryEvidenceItem,
@@ -3511,7 +3508,7 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthPro
   }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthProtectedResourceEvidenceItem>;
 
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthProtectedResourceEvidenceList =
-  ReadonlyArray<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthProtectedResourceEvidenceItem>;
+  Array<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthProtectedResourceEvidenceItem>;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthProtectedResourceEvidenceList =
   /*@__PURE__*/ S.Array(
     ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthProtectedResourceEvidenceItem,
@@ -3623,7 +3620,7 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryWebMcpEv
   }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryWebMcpEvidenceItem>;
 
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryWebMcpEvidenceList =
-  ReadonlyArray<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryWebMcpEvidenceItem>;
+  Array<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryWebMcpEvidenceItem>;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryWebMcpEvidenceList =
   /*@__PURE__*/ S.Array(
     ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryWebMcpEvidenceItem,
@@ -3706,14 +3703,14 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecks =
   }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecks>;
 
 export type ScansGetResponseMetaProcessorsAgentReadinessCommerceSignalsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ScansGetResponseMetaProcessorsAgentReadinessCommerceSignalsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessCommerceSignalsList>;
 
 export type ScansGetResponseMetaProcessorsAgentReadinessNextLevelRequirementsItemSpecUrlsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ScansGetResponseMetaProcessorsAgentReadinessNextLevelRequirementsItemSpecUrlsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3742,7 +3739,7 @@ export const ScansGetResponseMetaProcessorsAgentReadinessNextLevelRequirementsIt
   }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessNextLevelRequirementsItem>;
 
 export type ScansGetResponseMetaProcessorsAgentReadinessNextLevelRequirementsList =
-  ReadonlyArray<ScansGetResponseMetaProcessorsAgentReadinessNextLevelRequirementsItem>;
+  Array<ScansGetResponseMetaProcessorsAgentReadinessNextLevelRequirementsItem>;
 export const ScansGetResponseMetaProcessorsAgentReadinessNextLevelRequirementsList =
   /*@__PURE__*/ S.Array(
     ScansGetResponseMetaProcessorsAgentReadinessNextLevelRequirementsItem,
@@ -3791,8 +3788,7 @@ export const ScansGetResponseMetaProcessorsAgentReadiness =
     identifier: "ScansGetResponseMetaProcessorsAgentReadiness",
   }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadiness>;
 
-export type ScansGetResponseMetaProcessorsPhishingV2DataList =
-  ReadonlyArray<string>;
+export type ScansGetResponseMetaProcessorsPhishingV2DataList = Array<string>;
 export const ScansGetResponseMetaProcessorsPhishingV2DataList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3811,14 +3807,14 @@ export const ScansGetResponseMetaProcessorsPhishingV2 = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ScansGetResponseMetaProcessorsPhishingV2>;
 
 export type ScansGetResponseMetaProcessorsRobotsTxtDataItemRulesShapeAllowList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ScansGetResponseMetaProcessorsRobotsTxtDataItemRulesShapeAllowList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ScansGetResponseMetaProcessorsRobotsTxtDataItemRulesShapeAllowList>;
 
 export type ScansGetResponseMetaProcessorsRobotsTxtDataItemRulesShapeDisallowList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ScansGetResponseMetaProcessorsRobotsTxtDataItemRulesShapeDisallowList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3877,7 +3873,7 @@ export const ScansGetResponseMetaProcessorsRobotsTxtDataItemRules =
   }) as any as S.Schema<ScansGetResponseMetaProcessorsRobotsTxtDataItemRules>;
 
 export type ScansGetResponseMetaProcessorsRobotsTxtDataItemSitemapsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ScansGetResponseMetaProcessorsRobotsTxtDataItemSitemapsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3900,7 +3896,7 @@ export const ScansGetResponseMetaProcessorsRobotsTxtDataItem =
   }) as any as S.Schema<ScansGetResponseMetaProcessorsRobotsTxtDataItem>;
 
 export type ScansGetResponseMetaProcessorsRobotsTxtDataList =
-  ReadonlyArray<ScansGetResponseMetaProcessorsRobotsTxtDataItem>;
+  Array<ScansGetResponseMetaProcessorsRobotsTxtDataItem>;
 export const ScansGetResponseMetaProcessorsRobotsTxtDataList =
   /*@__PURE__*/ S.Array(
     ScansGetResponseMetaProcessorsRobotsTxtDataItem,
@@ -3936,7 +3932,7 @@ export const ScansGetResponseMetaProcessorsUrlCategoriesDataItemContentItem =
   }) as any as S.Schema<ScansGetResponseMetaProcessorsUrlCategoriesDataItemContentItem>;
 
 export type ScansGetResponseMetaProcessorsUrlCategoriesDataItemContentList =
-  ReadonlyArray<ScansGetResponseMetaProcessorsUrlCategoriesDataItemContentItem>;
+  Array<ScansGetResponseMetaProcessorsUrlCategoriesDataItemContentItem>;
 export const ScansGetResponseMetaProcessorsUrlCategoriesDataItemContentList =
   /*@__PURE__*/ S.Array(
     ScansGetResponseMetaProcessorsUrlCategoriesDataItemContentItem,
@@ -3960,7 +3956,7 @@ export const ScansGetResponseMetaProcessorsUrlCategoriesDataItemInheritedContent
   }) as any as S.Schema<ScansGetResponseMetaProcessorsUrlCategoriesDataItemInheritedContentItem>;
 
 export type ScansGetResponseMetaProcessorsUrlCategoriesDataItemInheritedContentList =
-  ReadonlyArray<ScansGetResponseMetaProcessorsUrlCategoriesDataItemInheritedContentItem>;
+  Array<ScansGetResponseMetaProcessorsUrlCategoriesDataItemInheritedContentItem>;
 export const ScansGetResponseMetaProcessorsUrlCategoriesDataItemInheritedContentList =
   /*@__PURE__*/ S.Array(
     ScansGetResponseMetaProcessorsUrlCategoriesDataItemInheritedContentItem,
@@ -3984,7 +3980,7 @@ export const ScansGetResponseMetaProcessorsUrlCategoriesDataItemInheritedRisksIt
   }) as any as S.Schema<ScansGetResponseMetaProcessorsUrlCategoriesDataItemInheritedRisksItem>;
 
 export type ScansGetResponseMetaProcessorsUrlCategoriesDataItemInheritedRisksList =
-  ReadonlyArray<ScansGetResponseMetaProcessorsUrlCategoriesDataItemInheritedRisksItem>;
+  Array<ScansGetResponseMetaProcessorsUrlCategoriesDataItemInheritedRisksItem>;
 export const ScansGetResponseMetaProcessorsUrlCategoriesDataItemInheritedRisksList =
   /*@__PURE__*/ S.Array(
     ScansGetResponseMetaProcessorsUrlCategoriesDataItemInheritedRisksItem,
@@ -4025,7 +4021,7 @@ export const ScansGetResponseMetaProcessorsUrlCategoriesDataItemRisksItem =
   }) as any as S.Schema<ScansGetResponseMetaProcessorsUrlCategoriesDataItemRisksItem>;
 
 export type ScansGetResponseMetaProcessorsUrlCategoriesDataItemRisksList =
-  ReadonlyArray<ScansGetResponseMetaProcessorsUrlCategoriesDataItemRisksItem>;
+  Array<ScansGetResponseMetaProcessorsUrlCategoriesDataItemRisksItem>;
 export const ScansGetResponseMetaProcessorsUrlCategoriesDataItemRisksList =
   /*@__PURE__*/ S.Array(
     ScansGetResponseMetaProcessorsUrlCategoriesDataItemRisksItem,
@@ -4050,7 +4046,7 @@ export const ScansGetResponseMetaProcessorsUrlCategoriesDataItem =
   }) as any as S.Schema<ScansGetResponseMetaProcessorsUrlCategoriesDataItem>;
 
 export type ScansGetResponseMetaProcessorsUrlCategoriesDataList =
-  ReadonlyArray<ScansGetResponseMetaProcessorsUrlCategoriesDataItem>;
+  Array<ScansGetResponseMetaProcessorsUrlCategoriesDataItem>;
 export const ScansGetResponseMetaProcessorsUrlCategoriesDataList =
   /*@__PURE__*/ S.Array(
     ScansGetResponseMetaProcessorsUrlCategoriesDataItem,
@@ -4185,21 +4181,19 @@ export const ScansGetResponseScanner = /*@__PURE__*/ S.suspend(() =>
   identifier: "ScansGetResponseScanner",
 }) as any as S.Schema<ScansGetResponseScanner>;
 
-export type ScansGetResponseStatsDomainStatsItemCountriesList =
-  ReadonlyArray<string>;
+export type ScansGetResponseStatsDomainStatsItemCountriesList = Array<string>;
 export const ScansGetResponseStatsDomainStatsItemCountriesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ScansGetResponseStatsDomainStatsItemCountriesList>;
 
-export type ScansGetResponseStatsDomainStatsItemInitiatorsList =
-  ReadonlyArray<string>;
+export type ScansGetResponseStatsDomainStatsItemInitiatorsList = Array<string>;
 export const ScansGetResponseStatsDomainStatsItemInitiatorsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ScansGetResponseStatsDomainStatsItemInitiatorsList>;
 
-export type ScansGetResponseStatsDomainStatsItemIpsList = ReadonlyArray<string>;
+export type ScansGetResponseStatsDomainStatsItemIpsList = Array<string>;
 export const ScansGetResponseStatsDomainStatsItemIpsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4234,7 +4228,7 @@ export const ScansGetResponseStatsDomainStatsItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ScansGetResponseStatsDomainStatsItem>;
 
 export type ScansGetResponseStatsDomainStatsList =
-  ReadonlyArray<ScansGetResponseStatsDomainStatsItem>;
+  Array<ScansGetResponseStatsDomainStatsItem>;
 export const ScansGetResponseStatsDomainStatsList = /*@__PURE__*/ S.Array(
   ScansGetResponseStatsDomainStatsItem,
 ) as any as S.Schema<ScansGetResponseStatsDomainStatsList>;
@@ -4260,20 +4254,19 @@ export const ScansGetResponseStatsIpStatsItemAsn = /*@__PURE__*/ S.suspend(() =>
   identifier: "ScansGetResponseStatsIpStatsItemAsn",
 }) as any as S.Schema<ScansGetResponseStatsIpStatsItemAsn>;
 
-export type ScansGetResponseStatsIpStatsItemCountriesList =
-  ReadonlyArray<string>;
+export type ScansGetResponseStatsIpStatsItemCountriesList = Array<string>;
 export const ScansGetResponseStatsIpStatsItemCountriesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ScansGetResponseStatsIpStatsItemCountriesList>;
 
-export type ScansGetResponseStatsIpStatsItemDomainsList = ReadonlyArray<string>;
+export type ScansGetResponseStatsIpStatsItemDomainsList = Array<string>;
 export const ScansGetResponseStatsIpStatsItemDomainsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ScansGetResponseStatsIpStatsItemDomainsList>;
 
-export type ScansGetResponseStatsIpStatsItemGeoipLlList = ReadonlyArray<number>;
+export type ScansGetResponseStatsIpStatsItemGeoipLlList = Array<number>;
 export const ScansGetResponseStatsIpStatsItemGeoipLlList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -4333,20 +4326,18 @@ export const ScansGetResponseStatsIpStatsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScansGetResponseStatsIpStatsItem>;
 
 export type ScansGetResponseStatsIpStatsList =
-  ReadonlyArray<ScansGetResponseStatsIpStatsItem>;
+  Array<ScansGetResponseStatsIpStatsItem>;
 export const ScansGetResponseStatsIpStatsList = /*@__PURE__*/ S.Array(
   ScansGetResponseStatsIpStatsItem,
 ) as any as S.Schema<ScansGetResponseStatsIpStatsList>;
 
-export type ScansGetResponseStatsProtocolStatsItemCountriesList =
-  ReadonlyArray<string>;
+export type ScansGetResponseStatsProtocolStatsItemCountriesList = Array<string>;
 export const ScansGetResponseStatsProtocolStatsItemCountriesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ScansGetResponseStatsProtocolStatsItemCountriesList>;
 
-export type ScansGetResponseStatsProtocolStatsItemIpsList =
-  ReadonlyArray<string>;
+export type ScansGetResponseStatsProtocolStatsItemIpsList = Array<string>;
 export const ScansGetResponseStatsProtocolStatsItemIpsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4375,20 +4366,18 @@ export const ScansGetResponseStatsProtocolStatsItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ScansGetResponseStatsProtocolStatsItem>;
 
 export type ScansGetResponseStatsProtocolStatsList =
-  ReadonlyArray<ScansGetResponseStatsProtocolStatsItem>;
+  Array<ScansGetResponseStatsProtocolStatsItem>;
 export const ScansGetResponseStatsProtocolStatsList = /*@__PURE__*/ S.Array(
   ScansGetResponseStatsProtocolStatsItem,
 ) as any as S.Schema<ScansGetResponseStatsProtocolStatsList>;
 
-export type ScansGetResponseStatsResourceStatsItemCountriesList =
-  ReadonlyArray<string>;
+export type ScansGetResponseStatsResourceStatsItemCountriesList = Array<string>;
 export const ScansGetResponseStatsResourceStatsItemCountriesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ScansGetResponseStatsResourceStatsItemCountriesList>;
 
-export type ScansGetResponseStatsResourceStatsItemIpsList =
-  ReadonlyArray<string>;
+export type ScansGetResponseStatsResourceStatsItemIpsList = Array<string>;
 export const ScansGetResponseStatsResourceStatsItemIpsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4421,19 +4410,18 @@ export const ScansGetResponseStatsResourceStatsItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ScansGetResponseStatsResourceStatsItem>;
 
 export type ScansGetResponseStatsResourceStatsList =
-  ReadonlyArray<ScansGetResponseStatsResourceStatsItem>;
+  Array<ScansGetResponseStatsResourceStatsItem>;
 export const ScansGetResponseStatsResourceStatsList = /*@__PURE__*/ S.Array(
   ScansGetResponseStatsResourceStatsItem,
 ) as any as S.Schema<ScansGetResponseStatsResourceStatsList>;
 
-export type ScansGetResponseStatsServerStatsItemCountriesList =
-  ReadonlyArray<string>;
+export type ScansGetResponseStatsServerStatsItemCountriesList = Array<string>;
 export const ScansGetResponseStatsServerStatsItemCountriesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ScansGetResponseStatsServerStatsItemCountriesList>;
 
-export type ScansGetResponseStatsServerStatsItemIpsList = ReadonlyArray<string>;
+export type ScansGetResponseStatsServerStatsItemIpsList = Array<string>;
 export const ScansGetResponseStatsServerStatsItemIpsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4462,19 +4450,18 @@ export const ScansGetResponseStatsServerStatsItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ScansGetResponseStatsServerStatsItem>;
 
 export type ScansGetResponseStatsServerStatsList =
-  ReadonlyArray<ScansGetResponseStatsServerStatsItem>;
+  Array<ScansGetResponseStatsServerStatsItem>;
 export const ScansGetResponseStatsServerStatsList = /*@__PURE__*/ S.Array(
   ScansGetResponseStatsServerStatsItem,
 ) as any as S.Schema<ScansGetResponseStatsServerStatsList>;
 
-export type ScansGetResponseStatsTlsStatsItemCountriesList =
-  ReadonlyArray<string>;
+export type ScansGetResponseStatsTlsStatsItemCountriesList = Array<string>;
 export const ScansGetResponseStatsTlsStatsItemCountriesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ScansGetResponseStatsTlsStatsItemCountriesList>;
 
-export type ScansGetResponseStatsTlsStatsItemIpsList = ReadonlyArray<string>;
+export type ScansGetResponseStatsTlsStatsItemIpsList = Array<string>;
 export const ScansGetResponseStatsTlsStatsItemIpsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ScansGetResponseStatsTlsStatsItemIpsList>;
@@ -4515,7 +4502,7 @@ export const ScansGetResponseStatsTlsStatsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScansGetResponseStatsTlsStatsItem>;
 
 export type ScansGetResponseStatsTlsStatsList =
-  ReadonlyArray<ScansGetResponseStatsTlsStatsItem>;
+  Array<ScansGetResponseStatsTlsStatsItem>;
 export const ScansGetResponseStatsTlsStatsList = /*@__PURE__*/ S.Array(
   ScansGetResponseStatsTlsStatsItem,
 ) as any as S.Schema<ScansGetResponseStatsTlsStatsList>;
@@ -4556,7 +4543,7 @@ export const ScansGetResponseStats = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScansGetResponseStats>;
 
 export type ScansGetResponseTaskOptionsScreenshotsResolutionsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ScansGetResponseTaskOptionsScreenshotsResolutionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4613,14 +4600,13 @@ export const ScansGetResponseTask = /*@__PURE__*/ S.suspend(() =>
   identifier: "ScansGetResponseTask",
 }) as any as S.Schema<ScansGetResponseTask>;
 
-export type ScansGetResponseVerdictsOverallCategoriesList =
-  ReadonlyArray<string>;
+export type ScansGetResponseVerdictsOverallCategoriesList = Array<string>;
 export const ScansGetResponseVerdictsOverallCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ScansGetResponseVerdictsOverallCategoriesList>;
 
-export type ScansGetResponseVerdictsOverallTagsList = ReadonlyArray<string>;
+export type ScansGetResponseVerdictsOverallTagsList = Array<string>;
 export const ScansGetResponseVerdictsOverallTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ScansGetResponseVerdictsOverallTagsList>;
@@ -4730,7 +4716,7 @@ export const ScansHarResponseLogEntriesItemRequestHeadersItem =
   }) as any as S.Schema<ScansHarResponseLogEntriesItemRequestHeadersItem>;
 
 export type ScansHarResponseLogEntriesItemRequestHeadersList =
-  ReadonlyArray<ScansHarResponseLogEntriesItemRequestHeadersItem>;
+  Array<ScansHarResponseLogEntriesItemRequestHeadersItem>;
 export const ScansHarResponseLogEntriesItemRequestHeadersList =
   /*@__PURE__*/ S.Array(
     ScansHarResponseLogEntriesItemRequestHeadersItem,
@@ -4789,7 +4775,7 @@ export const ScansHarResponseLogEntriesItemResponseHeadersItem =
   }) as any as S.Schema<ScansHarResponseLogEntriesItemResponseHeadersItem>;
 
 export type ScansHarResponseLogEntriesItemResponseHeadersList =
-  ReadonlyArray<ScansHarResponseLogEntriesItemResponseHeadersItem>;
+  Array<ScansHarResponseLogEntriesItemResponseHeadersItem>;
 export const ScansHarResponseLogEntriesItemResponseHeadersList =
   /*@__PURE__*/ S.Array(
     ScansHarResponseLogEntriesItemResponseHeadersItem,
@@ -4861,7 +4847,7 @@ export const ScansHarResponseLogEntriesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScansHarResponseLogEntriesItem>;
 
 export type ScansHarResponseLogEntriesList =
-  ReadonlyArray<ScansHarResponseLogEntriesItem>;
+  Array<ScansHarResponseLogEntriesItem>;
 export const ScansHarResponseLogEntriesList = /*@__PURE__*/ S.Array(
   ScansHarResponseLogEntriesItem,
 ) as any as S.Schema<ScansHarResponseLogEntriesList>;
@@ -4897,8 +4883,7 @@ export const ScansHarResponseLogPagesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "ScansHarResponseLogPagesItem",
 }) as any as S.Schema<ScansHarResponseLogPagesItem>;
 
-export type ScansHarResponseLogPagesList =
-  ReadonlyArray<ScansHarResponseLogPagesItem>;
+export type ScansHarResponseLogPagesList = Array<ScansHarResponseLogPagesItem>;
 export const ScansHarResponseLogPagesList = /*@__PURE__*/ S.Array(
   ScansHarResponseLogPagesItem,
 ) as any as S.Schema<ScansHarResponseLogPagesList>;
@@ -5042,8 +5027,7 @@ export const ScansListResponseResultsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "ScansListResponseResultsItem",
 }) as any as S.Schema<ScansListResponseResultsItem>;
 
-export type ScansListResponseResultsList =
-  ReadonlyArray<ScansListResponseResultsItem>;
+export type ScansListResponseResultsList = Array<ScansListResponseResultsItem>;
 export const ScansListResponseResultsList = /*@__PURE__*/ S.Array(
   ScansListResponseResultsItem,
 ) as any as S.Schema<ScansListResponseResultsList>;

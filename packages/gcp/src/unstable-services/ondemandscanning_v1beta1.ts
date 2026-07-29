@@ -60,7 +60,7 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -79,8 +79,7 @@ export const LanguagePackageDependency = /*@__PURE__*/ S.suspend(() =>
   identifier: "LanguagePackageDependency",
 }) as any as S.Schema<LanguagePackageDependency>;
 
-export type LanguagePackageDependencyList =
-  ReadonlyArray<LanguagePackageDependency>;
+export type LanguagePackageDependencyList = Array<LanguagePackageDependency>;
 export const LanguagePackageDependencyList = /*@__PURE__*/ S.Array(
   LanguagePackageDependency,
 ) as any as S.Schema<LanguagePackageDependencyList>;
@@ -120,7 +119,7 @@ export const BaseImage = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "BaseImage" }) as any as S.Schema<BaseImage>;
 
-export type BaseImageList = ReadonlyArray<BaseImage>;
+export type BaseImageList = Array<BaseImage>;
 export const BaseImageList = /*@__PURE__*/ S.Array(
   BaseImage,
 ) as any as S.Schema<BaseImageList>;
@@ -178,7 +177,7 @@ export const FileLocation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "FileLocation" }) as any as S.Schema<FileLocation>;
 
-export type FileLocationList = ReadonlyArray<FileLocation>;
+export type FileLocationList = Array<FileLocation>;
 export const FileLocationList = /*@__PURE__*/ S.Array(
   FileLocation,
 ) as any as S.Schema<FileLocationList>;
@@ -207,7 +206,7 @@ export const IngestionSource = /*@__PURE__*/ S.suspend(() =>
   identifier: "IngestionSource",
 }) as any as S.Schema<IngestionSource>;
 
-export type IngestionSourceList = ReadonlyArray<IngestionSource>;
+export type IngestionSourceList = Array<IngestionSource>;
 export const IngestionSourceList = /*@__PURE__*/ S.Array(
   IngestionSource,
 ) as any as S.Schema<IngestionSourceList>;
@@ -242,7 +241,7 @@ export const BinarySourceInfo = /*@__PURE__*/ S.suspend(() =>
   identifier: "BinarySourceInfo",
 }) as any as S.Schema<BinarySourceInfo>;
 
-export type BinarySourceInfoList = ReadonlyArray<BinarySourceInfo>;
+export type BinarySourceInfoList = Array<BinarySourceInfo>;
 export const BinarySourceInfoList = /*@__PURE__*/ S.Array(
   BinarySourceInfo,
 ) as any as S.Schema<BinarySourceInfoList>;
@@ -309,7 +308,7 @@ export const PackageData = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PackageData" }) as any as S.Schema<PackageData>;
 
-export type PackageDataList = ReadonlyArray<PackageData>;
+export type PackageDataList = Array<PackageData>;
 export const PackageDataList = /*@__PURE__*/ S.Array(
   PackageData,
 ) as any as S.Schema<PackageDataList>;
@@ -358,7 +357,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -497,7 +496,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type OperationList = ReadonlyArray<Operation>;
+export type OperationList = Array<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -594,7 +593,7 @@ export const GrafeasV1BaseImage = /*@__PURE__*/ S.suspend(() =>
   identifier: "GrafeasV1BaseImage",
 }) as any as S.Schema<GrafeasV1BaseImage>;
 
-export type GrafeasV1BaseImageList = ReadonlyArray<GrafeasV1BaseImage>;
+export type GrafeasV1BaseImageList = Array<GrafeasV1BaseImage>;
 export const GrafeasV1BaseImageList = /*@__PURE__*/ S.Array(
   GrafeasV1BaseImage,
 ) as any as S.Schema<GrafeasV1BaseImageList>;
@@ -654,7 +653,7 @@ export const SecretLocation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SecretLocation" }) as any as S.Schema<SecretLocation>;
 
-export type SecretLocationList = ReadonlyArray<SecretLocation>;
+export type SecretLocationList = Array<SecretLocation>;
 export const SecretLocationList = /*@__PURE__*/ S.Array(
   SecretLocation,
 ) as any as S.Schema<SecretLocationList>;
@@ -683,7 +682,7 @@ export const SecretStatus = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SecretStatus" }) as any as S.Schema<SecretStatus>;
 
-export type SecretStatusList = ReadonlyArray<SecretStatus>;
+export type SecretStatusList = Array<SecretStatus>;
 export const SecretStatusList = /*@__PURE__*/ S.Array(
   SecretStatus,
 ) as any as S.Schema<SecretStatusList>;
@@ -790,7 +789,7 @@ export const Category = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Category" }) as any as S.Schema<Category>;
 
-export type CategoryList = ReadonlyArray<Category>;
+export type CategoryList = Array<Category>;
 export const CategoryList = /*@__PURE__*/ S.Array(
   Category,
 ) as any as S.Schema<CategoryList>;
@@ -864,7 +863,7 @@ export const Subject = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Subject" }) as any as S.Schema<Subject>;
 
-export type SubjectList = ReadonlyArray<Subject>;
+export type SubjectList = Array<Subject>;
 export const SubjectList = /*@__PURE__*/ S.Array(
   Subject,
 ) as any as S.Schema<SubjectList>;
@@ -892,7 +891,7 @@ export const ResourceDescriptor = /*@__PURE__*/ S.suspend(() =>
   identifier: "ResourceDescriptor",
 }) as any as S.Schema<ResourceDescriptor>;
 
-export type ResourceDescriptorList = ReadonlyArray<ResourceDescriptor>;
+export type ResourceDescriptorList = Array<ResourceDescriptor>;
 export const ResourceDescriptorList = /*@__PURE__*/ S.Array(
   ResourceDescriptor,
 ) as any as S.Schema<ResourceDescriptorList>;
@@ -1205,7 +1204,7 @@ export const SourceContext = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SourceContext" }) as any as S.Schema<SourceContext>;
 
-export type SourceContextList = ReadonlyArray<SourceContext>;
+export type SourceContextList = Array<SourceContext>;
 export const SourceContextList = /*@__PURE__*/ S.Array(
   SourceContext,
 ) as any as S.Schema<SourceContextList>;
@@ -1224,7 +1223,7 @@ export const Hash = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Hash" }) as any as S.Schema<Hash>;
 
-export type HashList = ReadonlyArray<Hash>;
+export type HashList = Array<Hash>;
 export const HashList = /*@__PURE__*/ S.Array(
   Hash,
 ) as any as S.Schema<HashList>;
@@ -1283,7 +1282,7 @@ export const Artifact = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Artifact" }) as any as S.Schema<Artifact>;
 
-export type ArtifactList = ReadonlyArray<Artifact>;
+export type ArtifactList = Array<Artifact>;
 export const ArtifactList = /*@__PURE__*/ S.Array(
   Artifact,
 ) as any as S.Schema<ArtifactList>;
@@ -1314,7 +1313,7 @@ export const Command = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Command" }) as any as S.Schema<Command>;
 
-export type CommandList = ReadonlyArray<Command>;
+export type CommandList = Array<Command>;
 export const CommandList = /*@__PURE__*/ S.Array(
   Command,
 ) as any as S.Schema<CommandList>;
@@ -1388,7 +1387,7 @@ export const Material = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Material" }) as any as S.Schema<Material>;
 
-export type MaterialList = ReadonlyArray<Material>;
+export type MaterialList = Array<Material>;
 export const MaterialList = /*@__PURE__*/ S.Array(
   Material,
 ) as any as S.Schema<MaterialList>;
@@ -1492,7 +1491,7 @@ export const GrafeasV1SlsaProvenanceZeroTwoSlsaMaterial =
   }) as any as S.Schema<GrafeasV1SlsaProvenanceZeroTwoSlsaMaterial>;
 
 export type GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialList =
-  ReadonlyArray<GrafeasV1SlsaProvenanceZeroTwoSlsaMaterial>;
+  Array<GrafeasV1SlsaProvenanceZeroTwoSlsaMaterial>;
 export const GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialList =
   /*@__PURE__*/ S.Array(
     GrafeasV1SlsaProvenanceZeroTwoSlsaMaterial,
@@ -1667,7 +1666,7 @@ export const EnvelopeSignature = /*@__PURE__*/ S.suspend(() =>
   identifier: "EnvelopeSignature",
 }) as any as S.Schema<EnvelopeSignature>;
 
-export type EnvelopeSignatureList = ReadonlyArray<EnvelopeSignature>;
+export type EnvelopeSignatureList = Array<EnvelopeSignature>;
 export const EnvelopeSignatureList = /*@__PURE__*/ S.Array(
   EnvelopeSignature,
 ) as any as S.Schema<EnvelopeSignatureList>;
@@ -1739,7 +1738,7 @@ export const NonCompliantFile = /*@__PURE__*/ S.suspend(() =>
   identifier: "NonCompliantFile",
 }) as any as S.Schema<NonCompliantFile>;
 
-export type NonCompliantFileList = ReadonlyArray<NonCompliantFile>;
+export type NonCompliantFileList = Array<NonCompliantFile>;
 export const NonCompliantFileList = /*@__PURE__*/ S.Array(
   NonCompliantFile,
 ) as any as S.Schema<NonCompliantFileList>;
@@ -1792,12 +1791,12 @@ export const File = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "File" }) as any as S.Schema<File>;
 
-export type FileList = ReadonlyArray<File>;
+export type FileList = Array<File>;
 export const FileList = /*@__PURE__*/ S.Array(
   File,
 ) as any as S.Schema<FileList>;
 
-export type StatusList = ReadonlyArray<Status>;
+export type StatusList = Array<Status>;
 export const StatusList = /*@__PURE__*/ S.Array(
   Status,
 ) as any as S.Schema<StatusList>;
@@ -1886,7 +1885,7 @@ export const Layer = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Layer" }) as any as S.Schema<Layer>;
 
-export type LayerList = ReadonlyArray<Layer>;
+export type LayerList = Array<Layer>;
 export const LayerList = /*@__PURE__*/ S.Array(
   Layer,
 ) as any as S.Schema<LayerList>;
@@ -1980,7 +1979,7 @@ export const Finding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Finding" }) as any as S.Schema<Finding>;
 
-export type FindingList = ReadonlyArray<Finding>;
+export type FindingList = Array<Finding>;
 export const FindingList = /*@__PURE__*/ S.Array(
   Finding,
 ) as any as S.Schema<FindingList>;
@@ -2047,7 +2046,7 @@ export const Location = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Location" }) as any as S.Schema<Location>;
 
-export type LocationList = ReadonlyArray<Location>;
+export type LocationList = Array<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -2097,7 +2096,7 @@ export const Signature = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Signature" }) as any as S.Schema<Signature>;
 
-export type SignatureList = ReadonlyArray<Signature>;
+export type SignatureList = Array<Signature>;
 export const SignatureList = /*@__PURE__*/ S.Array(
   Signature,
 ) as any as S.Schema<SignatureList>;
@@ -2112,7 +2111,7 @@ export const Jwt = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Jwt" }) as any as S.Schema<Jwt>;
 
-export type JwtList = ReadonlyArray<Jwt>;
+export type JwtList = Array<Jwt>;
 export const JwtList = /*@__PURE__*/ S.Array(Jwt) as any as S.Schema<JwtList>;
 
 /** Occurrence that represents a single "attestation". The authenticity of an attestation can be verified using the attached signature. If the verifier trusts the public key of the signer, then verifying the signature is sufficient to establish trust. In this circumstance, the authority to which this attestation is attached is primarily useful for lookup (how to find this attestation if you already know the authority and artifact to be verified) and intent (for which authority this attestation was intended to sign. */
@@ -2211,7 +2210,7 @@ export const RelatedUrl = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "RelatedUrl" }) as any as S.Schema<RelatedUrl>;
 
-export type RelatedUrlList = ReadonlyArray<RelatedUrl>;
+export type RelatedUrlList = Array<RelatedUrl>;
 export const RelatedUrlList = /*@__PURE__*/ S.Array(
   RelatedUrl,
 ) as any as S.Schema<RelatedUrlList>;
@@ -2273,7 +2272,7 @@ export const Remediation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Remediation" }) as any as S.Schema<Remediation>;
 
-export type RemediationList = ReadonlyArray<Remediation>;
+export type RemediationList = Array<Remediation>;
 export const RemediationList = /*@__PURE__*/ S.Array(
   Remediation,
 ) as any as S.Schema<RemediationList>;
@@ -2319,7 +2318,7 @@ export type PackageIssueEffectiveSeverityEnum =
   | "CRITICAL";
 export const PackageIssueEffectiveSeverityEnum = /*@__PURE__*/ S.String;
 
-export type GrafeasV1FileLocationList = ReadonlyArray<GrafeasV1FileLocation>;
+export type GrafeasV1FileLocationList = Array<GrafeasV1FileLocation>;
 export const GrafeasV1FileLocationList = /*@__PURE__*/ S.Array(
   GrafeasV1FileLocation,
 ) as any as S.Schema<GrafeasV1FileLocationList>;
@@ -2362,7 +2361,7 @@ export const PackageIssue = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PackageIssue" }) as any as S.Schema<PackageIssue>;
 
-export type PackageIssueList = ReadonlyArray<PackageIssue>;
+export type PackageIssueList = Array<PackageIssue>;
 export const PackageIssueList = /*@__PURE__*/ S.Array(
   PackageIssue,
 ) as any as S.Schema<PackageIssueList>;
@@ -2840,7 +2839,7 @@ export const Occurrence = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Occurrence" }) as any as S.Schema<Occurrence>;
 
-export type OccurrenceList = ReadonlyArray<Occurrence>;
+export type OccurrenceList = Array<Occurrence>;
 export const OccurrenceList = /*@__PURE__*/ S.Array(
   Occurrence,
 ) as any as S.Schema<OccurrenceList>;

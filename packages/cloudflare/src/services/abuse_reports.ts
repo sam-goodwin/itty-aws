@@ -147,10 +147,9 @@ export type CreateRequestRegWhoRequestRegWhoRequestedDataElementsItem =
 export const CreateRequestRegWhoRequestRegWhoRequestedDataElementsItem =
   /*@__PURE__*/ S.String;
 
-export type CreateRequestRegWhoRequestRegWhoRequestedDataElementsList =
-  ReadonlyArray<
-    CreateRequestRegWhoRequestRegWhoRequestedDataElementsItem | (string & {})
-  >;
+export type CreateRequestRegWhoRequestRegWhoRequestedDataElementsList = Array<
+  CreateRequestRegWhoRequestRegWhoRequestedDataElementsItem | (string & {})
+>;
 export const CreateRequestRegWhoRequestRegWhoRequestedDataElementsList =
   /*@__PURE__*/ S.Array(
     CreateRequestRegWhoRequestRegWhoRequestedDataElementsItem,
@@ -419,7 +418,7 @@ export const GetResponseSubmitter = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetResponseSubmitter",
 }) as any as S.Schema<GetResponseSubmitter>;
 
-export type GetResponseUrlsList = ReadonlyArray<string>;
+export type GetResponseUrlsList = Array<string>;
 export const GetResponseUrlsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetResponseUrlsList>;
@@ -591,7 +590,7 @@ export const ListResponseReportsItemSubmitter = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListResponseReportsItemSubmitter",
 }) as any as S.Schema<ListResponseReportsItemSubmitter>;
 
-export type ListResponseReportsItemUrlsList = ReadonlyArray<string>;
+export type ListResponseReportsItemUrlsList = Array<string>;
 export const ListResponseReportsItemUrlsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ListResponseReportsItemUrlsList>;
@@ -636,7 +635,7 @@ export const ListResponseReportsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListResponseReportsItem",
 }) as any as S.Schema<ListResponseReportsItem>;
 
-export type ListResponseReportsList = ReadonlyArray<ListResponseReportsItem>;
+export type ListResponseReportsList = Array<ListResponseReportsItem>;
 export const ListResponseReportsList = /*@__PURE__*/ S.Array(
   ListResponseReportsItem,
 ) as any as S.Schema<ListResponseReportsList>;
@@ -816,7 +815,7 @@ export const MitigationsListResponseMitigationsItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<MitigationsListResponseMitigationsItem>;
 
 export type MitigationsListResponseMitigationsList =
-  ReadonlyArray<MitigationsListResponseMitigationsItem>;
+  Array<MitigationsListResponseMitigationsItem>;
 export const MitigationsListResponseMitigationsList = /*@__PURE__*/ S.Array(
   MitigationsListResponseMitigationsItem,
 ) as any as S.Schema<MitigationsListResponseMitigationsList>;
@@ -854,7 +853,7 @@ export const MitigationsReviewRequestAppealsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MitigationsReviewRequestAppealsItem>;
 
 export type MitigationsReviewRequestAppealsList =
-  ReadonlyArray<MitigationsReviewRequestAppealsItem>;
+  Array<MitigationsReviewRequestAppealsItem>;
 export const MitigationsReviewRequestAppealsList = /*@__PURE__*/ S.Array(
   MitigationsReviewRequestAppealsItem,
 ) as any as S.Schema<MitigationsReviewRequestAppealsList>;
@@ -947,8 +946,7 @@ export const MitigationsReviewResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "MitigationsReviewResultItem",
 }) as any as S.Schema<MitigationsReviewResultItem>;
 
-export type MitigationsReviewResultList =
-  ReadonlyArray<MitigationsReviewResultItem>;
+export type MitigationsReviewResultList = Array<MitigationsReviewResultItem>;
 export const MitigationsReviewResultList = /*@__PURE__*/ S.Array(
   MitigationsReviewResultItem,
 ) as any as S.Schema<MitigationsReviewResultList>;

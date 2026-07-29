@@ -340,7 +340,7 @@ export type AuthenticationProviderType =
 export const AuthenticationProviderType = /*@__PURE__*/ S.String;
 
 export interface Authentication {
-  providerType?: AuthenticationProviderType;
+  providerType?: AuthenticationProviderType | (string & {});
   value?: string;
 }
 export const Authentication = /*@__PURE__*/ S.suspend(() =>
@@ -458,7 +458,7 @@ export type RiskType =
   | "UNKNOWN";
 export const RiskType = /*@__PURE__*/ S.String;
 
-export type RiskTypeList = RiskType[];
+export type RiskTypeList = (RiskType | (string & {}))[];
 export const RiskTypeList = /*@__PURE__*/ S.Array(RiskType);
 export type ServiceRole = string;
 export interface CloudWatchLog {
@@ -494,9 +494,9 @@ export type NetworkTrafficRuleType = "URL";
 export const NetworkTrafficRuleType = /*@__PURE__*/ S.String;
 
 export interface NetworkTrafficRule {
-  effect?: NetworkTrafficRuleEffect;
+  effect?: NetworkTrafficRuleEffect | (string & {});
   pattern?: string;
-  networkTrafficRuleType?: NetworkTrafficRuleType;
+  networkTrafficRuleType?: NetworkTrafficRuleType | (string & {});
 }
 export const NetworkTrafficRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -539,7 +539,7 @@ export const CleanUpStrategy = /*@__PURE__*/ S.String;
 export type SkillType = "FINDING_PERSONALIZATION" | "LOGIN_OPTIMIZATION";
 export const SkillType = /*@__PURE__*/ S.String;
 
-export type SkillTypeList = SkillType[];
+export type SkillTypeList = (SkillType | (string & {}))[];
 export const SkillTypeList = /*@__PURE__*/ S.Array(SkillType);
 export interface Pentest {
   pentestId: string;
@@ -1996,7 +1996,7 @@ export type StrideCategory =
   | "ELEVATION_OF_PRIVILEGE";
 export const StrideCategory = /*@__PURE__*/ S.String;
 
-export type StrideCategoryList = StrideCategory[];
+export type StrideCategoryList = (StrideCategory | (string & {}))[];
 export const StrideCategoryList = /*@__PURE__*/ S.Array(StrideCategory);
 export type ThreatActor = "CUSTOMER" | "AGENT";
 export const ThreatActor = /*@__PURE__*/ S.String;
@@ -2452,7 +2452,7 @@ export type UserRole = "MEMBER";
 export const UserRole = /*@__PURE__*/ S.String;
 
 export interface UserConfig {
-  role?: UserRole;
+  role?: UserRole | (string & {});
 }
 export const UserConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ role: S.optional(UserRole) }),

@@ -129,7 +129,7 @@ export const NetworkEndpoint = /*@__PURE__*/ S.suspend(() =>
   identifier: "NetworkEndpoint",
 }) as any as S.Schema<NetworkEndpoint>;
 
-export type NetworkEndpointList = ReadonlyArray<NetworkEndpoint>;
+export type NetworkEndpointList = Array<NetworkEndpoint>;
 export const NetworkEndpointList = /*@__PURE__*/ S.Array(
   NetworkEndpoint,
 ) as any as S.Schema<NetworkEndpointList>;
@@ -180,7 +180,7 @@ export interface Symptom {
   /** A string used to uniquely distinguish a worker within a TPU node. */
   workerId?: string;
   /** Type of the Symptom. */
-  symptomType?: SymptomSymptomTypeEnum;
+  symptomType?: SymptomSymptomTypeEnum | (string & {});
   /** Detailed information of the current Symptom. */
   details?: string;
 }
@@ -193,7 +193,7 @@ export const Symptom = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Symptom" }) as any as S.Schema<Symptom>;
 
-export type SymptomList = ReadonlyArray<Symptom>;
+export type SymptomList = Array<Symptom>;
 export const SymptomList = /*@__PURE__*/ S.Array(
   Symptom,
 ) as any as S.Schema<SymptomList>;
@@ -205,9 +205,9 @@ export interface Node {
   /** The user-supplied description of the TPU. Maximum of 512 characters. */
   description?: string;
   /** The health status of the TPU node. */
-  health?: NodeHealthEnum;
+  health?: NodeHealthEnum | (string & {});
   /** Output only. The current state for the TPU Node. */
-  state?: NodeStateEnum;
+  state?: NodeStateEnum | (string & {});
   /** Output only. The time when the node was created. */
   createTime?: string;
   /** Output only. The network endpoints where TPU workers can be accessed and sent work. It is recommended that Tensorflow clients of the node reach out to the 0th entry in this map first. */
@@ -221,7 +221,7 @@ export interface Node {
   /** Output only. DEPRECATED! Use network_endpoints instead. The network address for the TPU Node as visible to Compute Engine instances. */
   ipAddress?: string;
   /** Output only. The API version that created this Node. */
-  apiVersion?: NodeApiVersionEnum;
+  apiVersion?: NodeApiVersionEnum | (string & {});
   /** Resource labels to represent user-provided metadata. */
   labels?: StringMap;
   /** Required. The type of hardware accelerators associated with this node. */
@@ -293,7 +293,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -523,7 +523,7 @@ export const TensorFlowVersion = /*@__PURE__*/ S.suspend(() =>
   identifier: "TensorFlowVersion",
 }) as any as S.Schema<TensorFlowVersion>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -558,7 +558,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = ReadonlyArray<Location>;
+export type LocationList = Array<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -610,7 +610,7 @@ export const ListProjectsLocationsAcceleratorTypesRequest =
     identifier: "ListProjectsLocationsAcceleratorTypesRequest",
   }) as any as S.Schema<ListProjectsLocationsAcceleratorTypesRequest>;
 
-export type AcceleratorTypeList = ReadonlyArray<AcceleratorType>;
+export type AcceleratorTypeList = Array<AcceleratorType>;
 export const AcceleratorTypeList = /*@__PURE__*/ S.Array(
   AcceleratorType,
 ) as any as S.Schema<AcceleratorTypeList>;
@@ -658,7 +658,7 @@ export const ListProjectsLocationsNodesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsNodesRequest",
 }) as any as S.Schema<ListProjectsLocationsNodesRequest>;
 
-export type NodeList = ReadonlyArray<Node>;
+export type NodeList = Array<Node>;
 export const NodeList = /*@__PURE__*/ S.Array(
   Node,
 ) as any as S.Schema<NodeList>;
@@ -713,7 +713,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type OperationList = ReadonlyArray<Operation>;
+export type OperationList = Array<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -768,7 +768,7 @@ export const ListProjectsLocationsTensorflowVersionsRequest =
     identifier: "ListProjectsLocationsTensorflowVersionsRequest",
   }) as any as S.Schema<ListProjectsLocationsTensorflowVersionsRequest>;
 
-export type TensorFlowVersionList = ReadonlyArray<TensorFlowVersion>;
+export type TensorFlowVersionList = Array<TensorFlowVersion>;
 export const TensorFlowVersionList = /*@__PURE__*/ S.Array(
   TensorFlowVersion,
 ) as any as S.Schema<TensorFlowVersionList>;

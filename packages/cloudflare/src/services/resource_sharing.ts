@@ -129,7 +129,7 @@ export const RecipientsCreateResponseResourcesItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<RecipientsCreateResponseResourcesItem>;
 
 export type RecipientsCreateResponseResourcesList =
-  ReadonlyArray<RecipientsCreateResponseResourcesItem>;
+  Array<RecipientsCreateResponseResourcesItem>;
 export const RecipientsCreateResponseResourcesList = /*@__PURE__*/ S.Array(
   RecipientsCreateResponseResourcesItem,
 ) as any as S.Schema<RecipientsCreateResponseResourcesList>;
@@ -280,8 +280,7 @@ export const CreateRequestRecipientsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateRequestRecipientsItem",
 }) as any as S.Schema<CreateRequestRecipientsItem>;
 
-export type CreateRequestRecipientsList =
-  ReadonlyArray<CreateRequestRecipientsItem>;
+export type CreateRequestRecipientsList = Array<CreateRequestRecipientsItem>;
 export const CreateRequestRecipientsList = /*@__PURE__*/ S.Array(
   CreateRequestRecipientsItem,
 ) as any as S.Schema<CreateRequestRecipientsList>;
@@ -318,8 +317,7 @@ export const CreateRequestResourcesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateRequestResourcesItem",
 }) as any as S.Schema<CreateRequestResourcesItem>;
 
-export type CreateRequestResourcesList =
-  ReadonlyArray<CreateRequestResourcesItem>;
+export type CreateRequestResourcesList = Array<CreateRequestResourcesItem>;
 export const CreateRequestResourcesList = /*@__PURE__*/ S.Array(
   CreateRequestResourcesItem,
 ) as any as S.Schema<CreateRequestResourcesList>;
@@ -413,8 +411,7 @@ export const CreateResponseResourcesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateResponseResourcesItem",
 }) as any as S.Schema<CreateResponseResourcesItem>;
 
-export type CreateResponseResourcesList =
-  ReadonlyArray<CreateResponseResourcesItem>;
+export type CreateResponseResourcesList = Array<CreateResponseResourcesItem>;
 export const CreateResponseResourcesList = /*@__PURE__*/ S.Array(
   CreateResponseResourcesItem,
 ) as any as S.Schema<CreateResponseResourcesList>;
@@ -535,7 +532,7 @@ export const RecipientsDeleteResponseResourcesItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<RecipientsDeleteResponseResourcesItem>;
 
 export type RecipientsDeleteResponseResourcesList =
-  ReadonlyArray<RecipientsDeleteResponseResourcesItem>;
+  Array<RecipientsDeleteResponseResourcesItem>;
 export const RecipientsDeleteResponseResourcesList = /*@__PURE__*/ S.Array(
   RecipientsDeleteResponseResourcesItem,
 ) as any as S.Schema<RecipientsDeleteResponseResourcesList>;
@@ -731,8 +728,7 @@ export const DeleteResponseResourcesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteResponseResourcesItem",
 }) as any as S.Schema<DeleteResponseResourcesItem>;
 
-export type DeleteResponseResourcesList =
-  ReadonlyArray<DeleteResponseResourcesItem>;
+export type DeleteResponseResourcesList = Array<DeleteResponseResourcesItem>;
 export const DeleteResponseResourcesList = /*@__PURE__*/ S.Array(
   DeleteResponseResourcesItem,
 ) as any as S.Schema<DeleteResponseResourcesList>;
@@ -855,7 +851,7 @@ export const RecipientsGetResponseResourcesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RecipientsGetResponseResourcesItem>;
 
 export type RecipientsGetResponseResourcesList =
-  ReadonlyArray<RecipientsGetResponseResourcesItem>;
+  Array<RecipientsGetResponseResourcesItem>;
 export const RecipientsGetResponseResourcesList = /*@__PURE__*/ S.Array(
   RecipientsGetResponseResourcesItem,
 ) as any as S.Schema<RecipientsGetResponseResourcesList>;
@@ -1056,7 +1052,7 @@ export const GetResponseResourcesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetResponseResourcesItem",
 }) as any as S.Schema<GetResponseResourcesItem>;
 
-export type GetResponseResourcesList = ReadonlyArray<GetResponseResourcesItem>;
+export type GetResponseResourcesList = Array<GetResponseResourcesItem>;
 export const GetResponseResourcesList = /*@__PURE__*/ S.Array(
   GetResponseResourcesItem,
 ) as any as S.Schema<GetResponseResourcesList>;
@@ -1183,7 +1179,7 @@ export const RecipientsListResultItemResourcesItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<RecipientsListResultItemResourcesItem>;
 
 export type RecipientsListResultItemResourcesList =
-  ReadonlyArray<RecipientsListResultItemResourcesItem>;
+  Array<RecipientsListResultItemResourcesItem>;
 export const RecipientsListResultItemResourcesList = /*@__PURE__*/ S.Array(
   RecipientsListResultItemResourcesItem,
 ) as any as S.Schema<RecipientsListResultItemResourcesList>;
@@ -1216,7 +1212,7 @@ export const RecipientsListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecipientsListResultItem",
 }) as any as S.Schema<RecipientsListResultItem>;
 
-export type RecipientsListResultList = ReadonlyArray<RecipientsListResultItem>;
+export type RecipientsListResultList = Array<RecipientsListResultItem>;
 export const RecipientsListResultList = /*@__PURE__*/ S.Array(
   RecipientsListResultItem,
 ) as any as S.Schema<RecipientsListResultList>;
@@ -1335,7 +1331,7 @@ export const ResourcesListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "ResourcesListResultItem",
 }) as any as S.Schema<ResourcesListResultItem>;
 
-export type ResourcesListResultList = ReadonlyArray<ResourcesListResultItem>;
+export type ResourcesListResultList = Array<ResourcesListResultItem>;
 export const ResourcesListResultList = /*@__PURE__*/ S.Array(
   ResourcesListResultItem,
 ) as any as S.Schema<ResourcesListResultList>;
@@ -1373,7 +1369,7 @@ export type ListRequestResourceTypes =
   | "idp-federation-grant";
 export const ListRequestResourceTypes = /*@__PURE__*/ S.String;
 
-export type ListRequestResourceTypesList = ReadonlyArray<
+export type ListRequestResourceTypesList = Array<
   ListRequestResourceTypes | (string & {})
 >;
 export const ListRequestResourceTypesList = /*@__PURE__*/ S.Array(
@@ -1383,7 +1379,7 @@ export const ListRequestResourceTypesList = /*@__PURE__*/ S.Array(
 export type ListRequestStatus = "active" | "deleting" | "deleted";
 export const ListRequestStatus = /*@__PURE__*/ S.String;
 
-export type ListRequestTagList = ReadonlyArray<string>;
+export type ListRequestTagList = Array<string>;
 export const ListRequestTagList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ListRequestTagList>;
@@ -1510,8 +1506,7 @@ export const ListResultItemResourcesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListResultItemResourcesItem",
 }) as any as S.Schema<ListResultItemResourcesItem>;
 
-export type ListResultItemResourcesList =
-  ReadonlyArray<ListResultItemResourcesItem>;
+export type ListResultItemResourcesList = Array<ListResultItemResourcesItem>;
 export const ListResultItemResourcesList = /*@__PURE__*/ S.Array(
   ListResultItemResourcesItem,
 ) as any as S.Schema<ListResultItemResourcesList>;
@@ -1573,7 +1568,7 @@ export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ListResultItem" }) as any as S.Schema<ListResultItem>;
 
-export type ListResultList = ReadonlyArray<ListResultItem>;
+export type ListResultList = Array<ListResultItem>;
 export const ListResultList = /*@__PURE__*/ S.Array(
   ListResultItem,
 ) as any as S.Schema<ListResultList>;
@@ -1761,8 +1756,7 @@ export const UpdateResponseResourcesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateResponseResourcesItem",
 }) as any as S.Schema<UpdateResponseResourcesItem>;
 
-export type UpdateResponseResourcesList =
-  ReadonlyArray<UpdateResponseResourcesItem>;
+export type UpdateResponseResourcesList = Array<UpdateResponseResourcesItem>;
 export const UpdateResponseResourcesList = /*@__PURE__*/ S.Array(
   UpdateResponseResourcesItem,
 ) as any as S.Schema<UpdateResponseResourcesList>;

@@ -35,7 +35,7 @@ export const WarehouseModelPathsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "WarehouseModelPathsListRequest",
 }) as any as S.Schema<WarehouseModelPathsListRequest>;
 
-export type DataWarehouseModelPathPathList = ReadonlyArray<string>;
+export type DataWarehouseModelPathPathList = Array<string>;
 export const DataWarehouseModelPathPathList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DataWarehouseModelPathPathList>;
@@ -116,7 +116,7 @@ export const DataWarehouseModelPath = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DataWarehouseModelPath>;
 
 export type PaginatedDataWarehouseModelPathListResultsList =
-  ReadonlyArray<DataWarehouseModelPath>;
+  Array<DataWarehouseModelPath>;
 export const PaginatedDataWarehouseModelPathListResultsList =
   /*@__PURE__*/ S.Array(
     DataWarehouseModelPath,

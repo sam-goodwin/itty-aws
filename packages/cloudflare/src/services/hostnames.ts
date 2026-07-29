@@ -91,7 +91,7 @@ export type SettingsTlsDeleteResponseValueCase0 =
   | "off";
 export const SettingsTlsDeleteResponseValueCase0 = /*@__PURE__*/ S.String;
 
-export type SettingsTlsDeleteResponseValueCase1List = ReadonlyArray<string>;
+export type SettingsTlsDeleteResponseValueCase1List = Array<string>;
 export const SettingsTlsDeleteResponseValueCase1List = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SettingsTlsDeleteResponseValueCase1List>;
@@ -166,7 +166,7 @@ export type SettingsTlsGetResultItemValueCase0 =
   | "off";
 export const SettingsTlsGetResultItemValueCase0 = /*@__PURE__*/ S.String;
 
-export type SettingsTlsGetResultItemValueCase1List = ReadonlyArray<string>;
+export type SettingsTlsGetResultItemValueCase1List = Array<string>;
 export const SettingsTlsGetResultItemValueCase1List = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SettingsTlsGetResultItemValueCase1List>;
@@ -202,7 +202,7 @@ export const SettingsTlsGetResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "SettingsTlsGetResultItem",
 }) as any as S.Schema<SettingsTlsGetResultItem>;
 
-export type SettingsTlsGetResultList = ReadonlyArray<SettingsTlsGetResultItem>;
+export type SettingsTlsGetResultList = Array<SettingsTlsGetResultItem>;
 export const SettingsTlsGetResultList = /*@__PURE__*/ S.Array(
   SettingsTlsGetResultItem,
 ) as any as S.Schema<SettingsTlsGetResultList>;
@@ -237,7 +237,7 @@ export type SettingsTlsUpdateRequestValueCase0 =
   | "off";
 export const SettingsTlsUpdateRequestValueCase0 = /*@__PURE__*/ S.String;
 
-export type SettingsTlsUpdateRequestValueCase1List = ReadonlyArray<string>;
+export type SettingsTlsUpdateRequestValueCase1List = Array<string>;
 export const SettingsTlsUpdateRequestValueCase1List = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SettingsTlsUpdateRequestValueCase1List>;
@@ -287,7 +287,7 @@ export type SettingsTlsUpdateResponseValueCase0 =
   | "off";
 export const SettingsTlsUpdateResponseValueCase0 = /*@__PURE__*/ S.String;
 
-export type SettingsTlsUpdateResponseValueCase1List = ReadonlyArray<string>;
+export type SettingsTlsUpdateResponseValueCase1List = Array<string>;
 export const SettingsTlsUpdateResponseValueCase1List = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SettingsTlsUpdateResponseValueCase1List>;

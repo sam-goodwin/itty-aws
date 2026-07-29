@@ -207,7 +207,7 @@ export const DatasetItemsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DatasetItemsListRequest",
 }) as any as S.Schema<DatasetItemsListRequest>;
 
-export type PaginatedDatasetItemListResultsList = ReadonlyArray<DatasetItem>;
+export type PaginatedDatasetItemListResultsList = Array<DatasetItem>;
 export const PaginatedDatasetItemListResultsList = /*@__PURE__*/ S.Array(
   DatasetItem,
 ) as any as S.Schema<PaginatedDatasetItemListResultsList>;

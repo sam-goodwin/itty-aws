@@ -92,8 +92,7 @@ export const ActiveBreakpoint = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ActiveBreakpoint>;
 
 /** List of active breakpoints */
-export type ActiveBreakpointsResponseBreakpointsList =
-  ReadonlyArray<ActiveBreakpoint>;
+export type ActiveBreakpointsResponseBreakpointsList = Array<ActiveBreakpoint>;
 export const ActiveBreakpointsResponseBreakpointsList = /*@__PURE__*/ S.Array(
   ActiveBreakpoint,
 ) as any as S.Schema<ActiveBreakpointsResponseBreakpointsList>;
@@ -147,7 +146,7 @@ export const BreakpointHitVariablesMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<BreakpointHitVariablesMap>;
 
 /** Stack trace at the time of the hit */
-export type BreakpointHitStackTraceList = ReadonlyArray<unknown>;
+export type BreakpointHitStackTraceList = Array<unknown>;
 export const BreakpointHitStackTraceList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<BreakpointHitStackTraceList>;
@@ -185,7 +184,7 @@ export const BreakpointHit = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BreakpointHit" }) as any as S.Schema<BreakpointHit>;
 
 /** List of breakpoint hit events */
-export type BreakpointHitsResponseResultsList = ReadonlyArray<BreakpointHit>;
+export type BreakpointHitsResponseResultsList = Array<BreakpointHit>;
 export const BreakpointHitsResponseResultsList = /*@__PURE__*/ S.Array(
   BreakpointHit,
 ) as any as S.Schema<BreakpointHitsResponseResultsList>;
@@ -321,7 +320,7 @@ export const LiveDebuggerBreakpointsListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LiveDebuggerBreakpointsListRequest>;
 
 export type PaginatedLiveDebuggerBreakpointListResultsList =
-  ReadonlyArray<LiveDebuggerBreakpoint>;
+  Array<LiveDebuggerBreakpoint>;
 export const PaginatedLiveDebuggerBreakpointListResultsList =
   /*@__PURE__*/ S.Array(
     LiveDebuggerBreakpoint,

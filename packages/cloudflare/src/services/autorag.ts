@@ -75,7 +75,7 @@ export const AiSearchRequestFiltersCase1FiltersItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<AiSearchRequestFiltersCase1FiltersItem>;
 
 export type AiSearchRequestFiltersCase1FiltersList =
-  ReadonlyArray<AiSearchRequestFiltersCase1FiltersItem>;
+  Array<AiSearchRequestFiltersCase1FiltersItem>;
 export const AiSearchRequestFiltersCase1FiltersList = /*@__PURE__*/ S.Array(
   AiSearchRequestFiltersCase1FiltersItem,
 ) as any as S.Schema<AiSearchRequestFiltersCase1FiltersList>;
@@ -232,7 +232,7 @@ export const AiSearchResponseDataItemContentItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AiSearchResponseDataItemContentItem>;
 
 export type AiSearchResponseDataItemContentList =
-  ReadonlyArray<AiSearchResponseDataItemContentItem>;
+  Array<AiSearchResponseDataItemContentItem>;
 export const AiSearchResponseDataItemContentList = /*@__PURE__*/ S.Array(
   AiSearchResponseDataItemContentItem,
 ) as any as S.Schema<AiSearchResponseDataItemContentList>;
@@ -256,7 +256,7 @@ export const AiSearchResponseDataItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "AiSearchResponseDataItem",
 }) as any as S.Schema<AiSearchResponseDataItem>;
 
-export type AiSearchResponseDataList = ReadonlyArray<AiSearchResponseDataItem>;
+export type AiSearchResponseDataList = Array<AiSearchResponseDataItem>;
 export const AiSearchResponseDataList = /*@__PURE__*/ S.Array(
   AiSearchResponseDataItem,
 ) as any as S.Schema<AiSearchResponseDataList>;
@@ -325,7 +325,7 @@ export const FilesResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "FilesResultItem",
 }) as any as S.Schema<FilesResultItem>;
 
-export type FilesResultList = ReadonlyArray<FilesResultItem>;
+export type FilesResultList = Array<FilesResultItem>;
 export const FilesResultList = /*@__PURE__*/ S.Array(
   FilesResultItem,
 ) as any as S.Schema<FilesResultList>;
@@ -428,7 +428,7 @@ export const JobsListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "JobsListResultItem",
 }) as any as S.Schema<JobsListResultItem>;
 
-export type JobsListResultList = ReadonlyArray<JobsListResultItem>;
+export type JobsListResultList = Array<JobsListResultItem>;
 export const JobsListResultList = /*@__PURE__*/ S.Array(
   JobsListResultItem,
 ) as any as S.Schema<JobsListResultList>;
@@ -483,7 +483,7 @@ export const JobsLogsResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "JobsLogsResultItem",
 }) as any as S.Schema<JobsLogsResultItem>;
 
-export type JobsLogsResultList = ReadonlyArray<JobsLogsResultItem>;
+export type JobsLogsResultList = Array<JobsLogsResultItem>;
 export const JobsLogsResultList = /*@__PURE__*/ S.Array(
   JobsLogsResultItem,
 ) as any as S.Schema<JobsLogsResultList>;
@@ -557,7 +557,7 @@ export const SearchRequestFiltersCase1FiltersItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<SearchRequestFiltersCase1FiltersItem>;
 
 export type SearchRequestFiltersCase1FiltersList =
-  ReadonlyArray<SearchRequestFiltersCase1FiltersItem>;
+  Array<SearchRequestFiltersCase1FiltersItem>;
 export const SearchRequestFiltersCase1FiltersList = /*@__PURE__*/ S.Array(
   SearchRequestFiltersCase1FiltersItem,
 ) as any as S.Schema<SearchRequestFiltersCase1FiltersList>;
@@ -674,7 +674,7 @@ export const SearchResponseDataItemContentItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SearchResponseDataItemContentItem>;
 
 export type SearchResponseDataItemContentList =
-  ReadonlyArray<SearchResponseDataItemContentItem>;
+  Array<SearchResponseDataItemContentItem>;
 export const SearchResponseDataItemContentList = /*@__PURE__*/ S.Array(
   SearchResponseDataItemContentItem,
 ) as any as S.Schema<SearchResponseDataItemContentList>;
@@ -698,7 +698,7 @@ export const SearchResponseDataItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "SearchResponseDataItem",
 }) as any as S.Schema<SearchResponseDataItem>;
 
-export type SearchResponseDataList = ReadonlyArray<SearchResponseDataItem>;
+export type SearchResponseDataList = Array<SearchResponseDataItem>;
 export const SearchResponseDataList = /*@__PURE__*/ S.Array(
   SearchResponseDataItem,
 ) as any as S.Schema<SearchResponseDataList>;

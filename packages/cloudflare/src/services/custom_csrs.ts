@@ -26,7 +26,7 @@ const KEY_DICTIONARY: Record<string, string> = {
   totalCount: "total_count",
 };
 
-export type CreateRequestSansList = ReadonlyArray<string>;
+export type CreateRequestSansList = Array<string>;
 export const CreateRequestSansList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateRequestSansList>;
@@ -89,7 +89,7 @@ export const CreateCustomCsrForAccountRequest = /*@__PURE__*/ S.suspend(() =>
 export type CreateResponseKeyType = "rsa2048" | "p256v1";
 export const CreateResponseKeyType = /*@__PURE__*/ S.String;
 
-export type CreateResponseSansList = ReadonlyArray<string>;
+export type CreateResponseSansList = Array<string>;
 export const CreateResponseSansList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateResponseSansList>;
@@ -285,7 +285,7 @@ export const GetCustomCsrForAccountRequest = /*@__PURE__*/ S.suspend(() =>
 export type GetResponseKeyType = "rsa2048" | "p256v1";
 export const GetResponseKeyType = /*@__PURE__*/ S.String;
 
-export type GetResponseSansList = ReadonlyArray<string>;
+export type GetResponseSansList = Array<string>;
 export const GetResponseSansList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetResponseSansList>;
@@ -396,7 +396,7 @@ export const ListCustomCsrsForAccountRequest = /*@__PURE__*/ S.suspend(() =>
 export type ListResultItemKeyType = "rsa2048" | "p256v1";
 export const ListResultItemKeyType = /*@__PURE__*/ S.String;
 
-export type ListResultItemSansList = ReadonlyArray<string>;
+export type ListResultItemSansList = Array<string>;
 export const ListResultItemSansList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ListResultItemSansList>;
@@ -452,7 +452,7 @@ export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ListResultItem" }) as any as S.Schema<ListResultItem>;
 
-export type ListResultList = ReadonlyArray<ListResultItem>;
+export type ListResultList = Array<ListResultItem>;
 export const ListResultList = /*@__PURE__*/ S.Array(
   ListResultItem,
 ) as any as S.Schema<ListResultList>;

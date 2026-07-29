@@ -89,7 +89,7 @@ export const CancelProjectsPatchJobsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CancelProjectsPatchJobsRequest",
 }) as any as S.Schema<CancelProjectsPatchJobsRequest>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -114,7 +114,7 @@ export const PatchInstanceFilterGroupLabel = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PatchInstanceFilterGroupLabel>;
 
 export type PatchInstanceFilterGroupLabelList =
-  ReadonlyArray<PatchInstanceFilterGroupLabel>;
+  Array<PatchInstanceFilterGroupLabel>;
 export const PatchInstanceFilterGroupLabelList = /*@__PURE__*/ S.Array(
   PatchInstanceFilterGroupLabel,
 ) as any as S.Schema<PatchInstanceFilterGroupLabelList>;
@@ -144,7 +144,7 @@ export const PatchInstanceFilter = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchInstanceFilter",
 }) as any as S.Schema<PatchInstanceFilter>;
 
-export type IntegerList = ReadonlyArray<number>;
+export type IntegerList = Array<number>;
 export const IntegerList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<IntegerList>;
@@ -180,7 +180,7 @@ export interface ExecStepConfig {
   /** Defaults to [0]. A list of possible return values that the execution can return to indicate a success. */
   allowedSuccessCodes?: IntegerList;
   /** The script interpreter to use to run the script. If no interpreter is specified the script will be executed directly, which will likely only succeed for scripts with [shebang lines] (https://en.wikipedia.org/wiki/Shebang_\(Unix\)). */
-  interpreter?: ExecStepConfigInterpreterEnum;
+  interpreter?: ExecStepConfigInterpreterEnum | (string & {});
   /** A Google Cloud Storage object containing the executable. */
   gcsObject?: GcsObject;
 }
@@ -221,8 +221,9 @@ export type WindowsUpdateSettingsClassificationsItemEnum =
 export const WindowsUpdateSettingsClassificationsItemEnum =
   /*@__PURE__*/ S.String;
 
-export type WindowsUpdateSettingsClassificationsItemEnumList =
-  ReadonlyArray<WindowsUpdateSettingsClassificationsItemEnum>;
+export type WindowsUpdateSettingsClassificationsItemEnumList = Array<
+  WindowsUpdateSettingsClassificationsItemEnum | (string & {})
+>;
 export const WindowsUpdateSettingsClassificationsItemEnumList =
   /*@__PURE__*/ S.Array(
     WindowsUpdateSettingsClassificationsItemEnum,
@@ -314,7 +315,7 @@ export const AptSettingsTypeEnum = /*@__PURE__*/ S.String;
 /** Apt patching is completed by executing `apt-get update && apt-get upgrade`. Additional options can be set to control how this is executed. */
 export interface AptSettings {
   /** By changing the type to DIST, the patching is performed using `apt-get dist-upgrade` instead. */
-  type?: AptSettingsTypeEnum;
+  type?: AptSettingsTypeEnum | (string & {});
   /** An exclusive list of packages to be updated. These are the only packages that will be updated. If these packages are not installed, they will be ignored. This field cannot be specified with any other patch configuration fields. */
   exclusivePackages?: StringList;
   /** List of packages to exclude from update. These packages will be excluded */
@@ -343,7 +344,7 @@ export interface PatchConfig {
   /** Zypper update settings. Use this setting to override the default `zypper` patch rules. */
   zypper?: ZypperSettings;
   /** Post-patch reboot settings. */
-  rebootConfig?: PatchConfigRebootConfigEnum;
+  rebootConfig?: PatchConfigRebootConfigEnum | (string & {});
   /** Yum update settings. Use this setting to override the default `yum` patch rules. */
   yum?: YumSettings;
   /** Apt update settings. Use this setting to override the default `apt` patch rules. */
@@ -389,7 +390,7 @@ export const FixedOrPercent = /*@__PURE__*/ S.suspend(() =>
 /** Patch rollout configuration specifications. Contains details on the concurrency control when applying patch(es) to all targeted VMs. */
 export interface PatchRollout {
   /** Mode of the patch rollout. */
-  mode?: PatchRolloutModeEnum;
+  mode?: PatchRolloutModeEnum | (string & {});
   /** The maximum number (or percentage) of VMs per zone to disrupt at any given moment. The number of VMs calculated from multiplying the percentage by the total number of VMs in a zone is rounded up. During patching, a VM is considered disrupted from the time the agent is notified to begin until patching has completed. This disruption time includes the time to complete reboot and any post-patch steps. A VM contributes to the disruption budget if its patching operation fails either when applying the patches, running pre or post patch steps, or if it fails to respond with a success notification before timing out. VMs that are not running or do not have an active agent do not count toward this disruption budget. For zone-by-zone rollouts, if the disruption budget in a zone is exceeded, the patch job stops, because continuing to the next zone requires completion of the patch process in the previous zone. For example, if the disruption budget has a fixed value of `10`, and 8 VMs fail to patch in the current zone, the patch job continues to patch 2 VMs at a time until the zone is completed. When that zone is completed successfully, patching begins with 10 VMs at a time in the next zone. If 10 VMs in the next zone fail to patch, the patch job stops. */
   disruptionBudget?: FixedOrPercent;
 }
@@ -542,7 +543,7 @@ export const AssignmentOsType = /*@__PURE__*/ S.suspend(() =>
   identifier: "AssignmentOsType",
 }) as any as S.Schema<AssignmentOsType>;
 
-export type AssignmentOsTypeList = ReadonlyArray<AssignmentOsType>;
+export type AssignmentOsTypeList = Array<AssignmentOsType>;
 export const AssignmentOsTypeList = /*@__PURE__*/ S.Array(
   AssignmentOsType,
 ) as any as S.Schema<AssignmentOsTypeList>;
@@ -560,7 +561,7 @@ export const AssignmentGroupLabel = /*@__PURE__*/ S.suspend(() =>
   identifier: "AssignmentGroupLabel",
 }) as any as S.Schema<AssignmentGroupLabel>;
 
-export type AssignmentGroupLabelList = ReadonlyArray<AssignmentGroupLabel>;
+export type AssignmentGroupLabelList = Array<AssignmentGroupLabel>;
 export const AssignmentGroupLabelList = /*@__PURE__*/ S.Array(
   AssignmentGroupLabel,
 ) as any as S.Schema<AssignmentGroupLabelList>;
@@ -650,7 +651,7 @@ export interface SoftwareRecipeStepExtractArchive {
   /** Required. The id of the relevant artifact in the recipe. */
   artifactId?: string;
   /** Required. The type of the archive to extract. */
-  type?: SoftwareRecipeStepExtractArchiveTypeEnum;
+  type?: SoftwareRecipeStepExtractArchiveTypeEnum | (string & {});
 }
 export const SoftwareRecipeStepExtractArchive = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -720,7 +721,7 @@ export interface SoftwareRecipeStepRunScript {
   /** Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0] */
   allowedExitCodes?: IntegerList;
   /** The script interpreter to use to run the script. If no interpreter is specified the script is executed directly, which likely only succeed for scripts with [shebang lines](https://en.wikipedia.org/wiki/Shebang_\(Unix\)). */
-  interpreter?: SoftwareRecipeStepRunScriptInterpreterEnum;
+  interpreter?: SoftwareRecipeStepRunScriptInterpreterEnum | (string & {});
 }
 export const SoftwareRecipeStepRunScript = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -763,7 +764,7 @@ export const SoftwareRecipeStep = /*@__PURE__*/ S.suspend(() =>
   identifier: "SoftwareRecipeStep",
 }) as any as S.Schema<SoftwareRecipeStep>;
 
-export type SoftwareRecipeStepList = ReadonlyArray<SoftwareRecipeStep>;
+export type SoftwareRecipeStepList = Array<SoftwareRecipeStep>;
 export const SoftwareRecipeStepList = /*@__PURE__*/ S.Array(
   SoftwareRecipeStep,
 ) as any as S.Schema<SoftwareRecipeStepList>;
@@ -832,7 +833,7 @@ export const SoftwareRecipeArtifact = /*@__PURE__*/ S.suspend(() =>
   identifier: "SoftwareRecipeArtifact",
 }) as any as S.Schema<SoftwareRecipeArtifact>;
 
-export type SoftwareRecipeArtifactList = ReadonlyArray<SoftwareRecipeArtifact>;
+export type SoftwareRecipeArtifactList = Array<SoftwareRecipeArtifact>;
 export const SoftwareRecipeArtifactList = /*@__PURE__*/ S.Array(
   SoftwareRecipeArtifact,
 ) as any as S.Schema<SoftwareRecipeArtifactList>;
@@ -842,7 +843,7 @@ export interface SoftwareRecipe {
   /** Actions to be taken for installing this recipe. On failure it stops executing steps and does not attempt another installation. Any steps taken (including partially completed steps) are not rolled back. */
   installSteps?: SoftwareRecipeStepList;
   /** Default is INSTALLED. The desired state the agent should maintain for this recipe. INSTALLED: The software recipe is installed on the instance but won't be updated to new versions. UPDATED: The software recipe is installed on the instance. The recipe is updated to a higher version, if a higher version of the recipe is assigned to this instance. REMOVE: Remove is unsupported for software recipes and attempts to create or update a recipe to the REMOVE state is rejected. */
-  desiredState?: SoftwareRecipeDesiredStateEnum;
+  desiredState?: SoftwareRecipeDesiredStateEnum | (string & {});
   /** Required. Unique identifier for the recipe. Only one recipe with a given name is installed on an instance. Names are also used to identify resources which helps to determine whether guest policies have conflicts. This means that requests to create multiple recipes with the same name and version are rejected since they could potentially have conflicting assignments. */
   name?: string;
   /** The version of this software recipe. Version can be up to 4 period separated numbers (e.g. 12.34.56.78). */
@@ -863,7 +864,7 @@ export const SoftwareRecipe = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SoftwareRecipe" }) as any as S.Schema<SoftwareRecipe>;
 
-export type SoftwareRecipeList = ReadonlyArray<SoftwareRecipe>;
+export type SoftwareRecipeList = Array<SoftwareRecipe>;
 export const SoftwareRecipeList = /*@__PURE__*/ S.Array(
   SoftwareRecipe,
 ) as any as S.Schema<SoftwareRecipeList>;
@@ -889,9 +890,9 @@ export interface Package {
   /** Required. The name of the package. A package is uniquely identified for conflict validation by checking the package name and the manager(s) that the package targets. */
   name?: string;
   /** Type of package manager that can be used to install this package. If a system does not have the package manager, the package is not installed or removed no error message is returned. By default, or if you specify `ANY`, the agent attempts to install and remove this package using the default package manager. This is useful when creating a policy that applies to different types of systems. The default behavior is ANY. */
-  manager?: PackageManagerEnum;
+  manager?: PackageManagerEnum | (string & {});
   /** The desired_state the agent should maintain for this package. The default is to ensure the package is installed. */
-  desiredState?: PackageDesiredStateEnum;
+  desiredState?: PackageDesiredStateEnum | (string & {});
 }
 export const Package = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -901,7 +902,7 @@ export const Package = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Package" }) as any as S.Schema<Package>;
 
-export type PackageList = ReadonlyArray<Package>;
+export type PackageList = Array<Package>;
 export const PackageList = /*@__PURE__*/ S.Array(
   Package,
 ) as any as S.Schema<PackageList>;
@@ -979,7 +980,7 @@ export interface AptRepository {
   /** URI of the key file for this repository. The agent maintains a keyring at `/etc/apt/trusted.gpg.d/osconfig_agent_managed.gpg` containing all the keys in any applied guest policy. */
   gpgKey?: string;
   /** Type of archive files in this repository. The default behavior is DEB. */
-  archiveType?: AptRepositoryArchiveTypeEnum;
+  archiveType?: AptRepositoryArchiveTypeEnum | (string & {});
 }
 export const AptRepository = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1013,7 +1014,7 @@ export const PackageRepository = /*@__PURE__*/ S.suspend(() =>
   identifier: "PackageRepository",
 }) as any as S.Schema<PackageRepository>;
 
-export type PackageRepositoryList = ReadonlyArray<PackageRepository>;
+export type PackageRepositoryList = Array<PackageRepository>;
 export const PackageRepositoryList = /*@__PURE__*/ S.Array(
   PackageRepository,
 ) as any as S.Schema<PackageRepositoryList>;
@@ -1106,7 +1107,7 @@ export interface WeekDayOfMonth {
   /** Required. Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month. */
   weekOrdinal?: number;
   /** Required. A day of the week. */
-  dayOfWeek?: WeekDayOfMonthDayOfWeekEnum;
+  dayOfWeek?: WeekDayOfMonthDayOfWeekEnum | (string & {});
   /** Optional. Represents the number of days before or after the given week day of month that the patch deployment is scheduled for. For example if `week_ordinal` and `day_of_week` values point to the second day of the month and this `day_offset` value is set to `3`, the patch deployment takes place three days after the second Tuesday of the month. If this value is negative, for example -5, the patches are deployed five days before before the second Tuesday of the month. Allowed values are in range [-30, 30]. */
   dayOffset?: number;
 }
@@ -1148,7 +1149,7 @@ export const WeeklyScheduleDayOfWeekEnum = /*@__PURE__*/ S.String;
 /** Represents a weekly schedule. */
 export interface WeeklySchedule {
   /** Required. Day of the week. */
-  dayOfWeek?: WeeklyScheduleDayOfWeekEnum;
+  dayOfWeek?: WeeklyScheduleDayOfWeekEnum | (string & {});
 }
 export const WeeklySchedule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1193,7 +1194,7 @@ export const TimeOfDay = /*@__PURE__*/ S.suspend(() =>
 /** Sets the time for recurring patch deployments. */
 export interface RecurringSchedule {
   /** Required. The frequency unit of this recurring schedule. */
-  frequency?: RecurringScheduleFrequencyEnum;
+  frequency?: RecurringScheduleFrequencyEnum | (string & {});
   /** Optional. The time that the recurring schedule becomes effective. Defaults to `create_time` of the patch deployment. */
   startTime?: string;
   /** Output only. The time the last patch job ran successfully. */
@@ -1243,7 +1244,7 @@ export const OneTimeSchedule = /*@__PURE__*/ S.suspend(() =>
 /** Patch deployments are configurations that individual patch jobs use to complete a patch. These configurations include instance filter, package repository settings, and a schedule. For more information about creating and managing patch deployments, see [Scheduling patch jobs](https://cloud.google.com/compute/docs/os-patch-management/schedule-patch-jobs). */
 export interface PatchDeployment {
   /** Output only. Current state of the patch deployment. */
-  state?: PatchDeploymentStateEnum;
+  state?: PatchDeploymentStateEnum | (string & {});
   /** Optional. Description of the patch deployment. Length of the description is limited to 1024 characters. */
   description?: string;
   /** Required. Schedule recurring executions. */
@@ -1484,7 +1485,7 @@ export const ListProjectsGuestPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsGuestPoliciesRequest",
 }) as any as S.Schema<ListProjectsGuestPoliciesRequest>;
 
-export type GuestPolicyList = ReadonlyArray<GuestPolicy>;
+export type GuestPolicyList = Array<GuestPolicy>;
 export const GuestPolicyList = /*@__PURE__*/ S.Array(
   GuestPolicy,
 ) as any as S.Schema<GuestPolicyList>;
@@ -1529,7 +1530,7 @@ export const ListProjectsPatchDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsPatchDeploymentsRequest",
 }) as any as S.Schema<ListProjectsPatchDeploymentsRequest>;
 
-export type PatchDeploymentList = ReadonlyArray<PatchDeployment>;
+export type PatchDeploymentList = Array<PatchDeployment>;
 export const PatchDeploymentList = /*@__PURE__*/ S.Array(
   PatchDeployment,
 ) as any as S.Schema<PatchDeploymentList>;
@@ -1577,7 +1578,7 @@ export const ListProjectsPatchJobsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsPatchJobsRequest",
 }) as any as S.Schema<ListProjectsPatchJobsRequest>;
 
-export type PatchJobList = ReadonlyArray<PatchJob>;
+export type PatchJobList = Array<PatchJob>;
 export const PatchJobList = /*@__PURE__*/ S.Array(
   PatchJob,
 ) as any as S.Schema<PatchJobList>;
@@ -1671,8 +1672,7 @@ export const PatchJobInstanceDetails = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchJobInstanceDetails",
 }) as any as S.Schema<PatchJobInstanceDetails>;
 
-export type PatchJobInstanceDetailsList =
-  ReadonlyArray<PatchJobInstanceDetails>;
+export type PatchJobInstanceDetailsList = Array<PatchJobInstanceDetails>;
 export const PatchJobInstanceDetailsList = /*@__PURE__*/ S.Array(
   PatchJobInstanceDetails,
 ) as any as S.Schema<PatchJobInstanceDetailsList>;
@@ -1751,7 +1751,7 @@ export const EffectiveGuestPolicySourcedPackage = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EffectiveGuestPolicySourcedPackage>;
 
 export type EffectiveGuestPolicySourcedPackageList =
-  ReadonlyArray<EffectiveGuestPolicySourcedPackage>;
+  Array<EffectiveGuestPolicySourcedPackage>;
 export const EffectiveGuestPolicySourcedPackageList = /*@__PURE__*/ S.Array(
   EffectiveGuestPolicySourcedPackage,
 ) as any as S.Schema<EffectiveGuestPolicySourcedPackageList>;
@@ -1774,7 +1774,7 @@ export const EffectiveGuestPolicySourcedPackageRepository =
   }) as any as S.Schema<EffectiveGuestPolicySourcedPackageRepository>;
 
 export type EffectiveGuestPolicySourcedPackageRepositoryList =
-  ReadonlyArray<EffectiveGuestPolicySourcedPackageRepository>;
+  Array<EffectiveGuestPolicySourcedPackageRepository>;
 export const EffectiveGuestPolicySourcedPackageRepositoryList =
   /*@__PURE__*/ S.Array(
     EffectiveGuestPolicySourcedPackageRepository,
@@ -1798,7 +1798,7 @@ export const EffectiveGuestPolicySourcedSoftwareRecipe =
   }) as any as S.Schema<EffectiveGuestPolicySourcedSoftwareRecipe>;
 
 export type EffectiveGuestPolicySourcedSoftwareRecipeList =
-  ReadonlyArray<EffectiveGuestPolicySourcedSoftwareRecipe>;
+  Array<EffectiveGuestPolicySourcedSoftwareRecipe>;
 export const EffectiveGuestPolicySourcedSoftwareRecipeList =
   /*@__PURE__*/ S.Array(
     EffectiveGuestPolicySourcedSoftwareRecipe,

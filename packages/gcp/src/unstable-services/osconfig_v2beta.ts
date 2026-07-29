@@ -156,7 +156,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -185,7 +185,9 @@ export interface GoogleCloudOsconfigV2beta_PolicyOrchestrator_IterationState {
   /** Output only. Unique identifier of the iteration. */
   iterationId?: string;
   /** Output only. State of the iteration. */
-  state?: GoogleCloudOsconfigV2beta_PolicyOrchestrator_IterationStateStateEnum;
+  state?:
+    | GoogleCloudOsconfigV2beta_PolicyOrchestrator_IterationStateStateEnum
+    | (string & {});
   /** Output only. Start time of the wave iteration. */
   startTime?: string;
   /** Output only. An estimated percentage of the progress. Number between 0 and 100. */
@@ -243,7 +245,7 @@ export const StringMap = /*@__PURE__*/ S.Record(
   S.String,
 ) as any as S.Schema<StringMap>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -302,7 +304,7 @@ export const GoogleCloudOsconfigV2beta_OrchestrationScope_Selector =
   }) as any as S.Schema<GoogleCloudOsconfigV2beta_OrchestrationScope_Selector>;
 
 export type GoogleCloudOsconfigV2beta_OrchestrationScope_SelectorList =
-  ReadonlyArray<GoogleCloudOsconfigV2beta_OrchestrationScope_Selector>;
+  Array<GoogleCloudOsconfigV2beta_OrchestrationScope_Selector>;
 export const GoogleCloudOsconfigV2beta_OrchestrationScope_SelectorList =
   /*@__PURE__*/ S.Array(
     GoogleCloudOsconfigV2beta_OrchestrationScope_Selector,
@@ -363,7 +365,9 @@ export interface OSPolicyResourceRepositoryResourceAptRepository {
   /** Required. Distribution of this repository. */
   distribution?: string;
   /** Required. Type of archive files in this repository. */
-  archiveType?: OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypeEnum;
+  archiveType?:
+    | OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypeEnum
+    | (string & {});
   /** Required. List of components for this repository. Must contain at least one item. */
   components?: StringList;
 }
@@ -629,7 +633,9 @@ export interface OSPolicyResourcePackageResource {
   /** A package managed by Apt. */
   apt?: OSPolicyResourcePackageResourceAPT;
   /** Required. The desired state the agent should maintain for this package. */
-  desiredState?: OSPolicyResourcePackageResourceDesiredStateEnum;
+  desiredState?:
+    | OSPolicyResourcePackageResourceDesiredStateEnum
+    | (string & {});
   /** A package managed by GooGet. */
   googet?: OSPolicyResourcePackageResourceGooGet;
   /** An MSI package. */
@@ -665,7 +671,7 @@ export interface OSPolicyResourceExecResourceExec {
   /** A remote or local file. */
   file?: OSPolicyResourceFile;
   /** Required. The script interpreter to use. */
-  interpreter?: OSPolicyResourceExecResourceExecInterpreterEnum;
+  interpreter?: OSPolicyResourceExecResourceExecInterpreterEnum | (string & {});
   /** Only recorded for enforce Exec. Path to an output file (that is created by this Exec) whose content will be recorded in OSPolicyResourceCompliance after a successful run. Absence or failure to read this file will result in this ExecResource being non-compliant. Output file size is limited to 500K bytes. */
   outputFilePath?: string;
   /** An inline script. The size of the script is limited to 32KiB. */
@@ -713,7 +719,7 @@ export interface OSPolicyResourceFileResource {
   /** Required. The absolute path of the file within the VM. */
   path?: string;
   /** Required. Desired state of the file. */
-  state?: OSPolicyResourceFileResourceStateEnum;
+  state?: OSPolicyResourceFileResourceStateEnum | (string & {});
   /** A file with this content. The size of the content is limited to 32KiB. */
   content?: string;
   /** Consists of three octal digits which represent, in order, the permissions of the owner, group, and other users for the file (similarly to the numeric mode used in the linux chmod utility). Each digit represents a three bit number with the 4 bit corresponding to the read permissions, the 2 bit corresponds to the write bit, and the one bit corresponds to the execute permission. Default behavior is 755. Below are some examples of permissions and their associated values: read, write, and execute: 7 read and execute: 5 read and write: 6 read only: 4 */
@@ -756,7 +762,7 @@ export const OSPolicyResource = /*@__PURE__*/ S.suspend(() =>
   identifier: "OSPolicyResource",
 }) as any as S.Schema<OSPolicyResource>;
 
-export type OSPolicyResourceList = ReadonlyArray<OSPolicyResource>;
+export type OSPolicyResourceList = Array<OSPolicyResource>;
 export const OSPolicyResourceList = /*@__PURE__*/ S.Array(
   OSPolicyResource,
 ) as any as S.Schema<OSPolicyResourceList>;
@@ -777,8 +783,7 @@ export const OSPolicyInventoryFilter = /*@__PURE__*/ S.suspend(() =>
   identifier: "OSPolicyInventoryFilter",
 }) as any as S.Schema<OSPolicyInventoryFilter>;
 
-export type OSPolicyInventoryFilterList =
-  ReadonlyArray<OSPolicyInventoryFilter>;
+export type OSPolicyInventoryFilterList = Array<OSPolicyInventoryFilter>;
 export const OSPolicyInventoryFilterList = /*@__PURE__*/ S.Array(
   OSPolicyInventoryFilter,
 ) as any as S.Schema<OSPolicyInventoryFilterList>;
@@ -799,7 +804,7 @@ export const OSPolicyResourceGroup = /*@__PURE__*/ S.suspend(() =>
   identifier: "OSPolicyResourceGroup",
 }) as any as S.Schema<OSPolicyResourceGroup>;
 
-export type OSPolicyResourceGroupList = ReadonlyArray<OSPolicyResourceGroup>;
+export type OSPolicyResourceGroupList = Array<OSPolicyResourceGroup>;
 export const OSPolicyResourceGroupList = /*@__PURE__*/ S.Array(
   OSPolicyResourceGroup,
 ) as any as S.Schema<OSPolicyResourceGroupList>;
@@ -809,7 +814,7 @@ export interface OSPolicy {
   /** Required. The id of the OS policy with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the assignment. */
   id?: string;
   /** Required. Policy mode */
-  mode?: OSPolicyModeEnum;
+  mode?: OSPolicyModeEnum | (string & {});
   /** Required. List of resource groups for the policy. For a particular VM, resource groups are evaluated in the order specified and the first resource group that is applicable is selected and the rest are ignored. If none of the resource groups are applicable for a VM, the VM is considered to be non-compliant w.r.t this policy. This behavior can be toggled by the flag `allow_no_resource_group_match` */
   resourceGroups?: OSPolicyResourceGroupList;
   /** This flag determines the OS policy compliance status when none of the resource groups within the policy are applicable for a VM. Set this value to `true` if the policy needs to be reported as compliant even if the policy has nothing to validate or enforce. */
@@ -827,7 +832,7 @@ export const OSPolicy = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "OSPolicy" }) as any as S.Schema<OSPolicy>;
 
-export type OSPolicyList = ReadonlyArray<OSPolicy>;
+export type OSPolicyList = Array<OSPolicy>;
 export const OSPolicyList = /*@__PURE__*/ S.Array(
   OSPolicy,
 ) as any as S.Schema<OSPolicyList>;
@@ -853,8 +858,7 @@ export const OSPolicyAssignmentLabelSet = /*@__PURE__*/ S.suspend(() =>
   identifier: "OSPolicyAssignmentLabelSet",
 }) as any as S.Schema<OSPolicyAssignmentLabelSet>;
 
-export type OSPolicyAssignmentLabelSetList =
-  ReadonlyArray<OSPolicyAssignmentLabelSet>;
+export type OSPolicyAssignmentLabelSetList = Array<OSPolicyAssignmentLabelSet>;
 export const OSPolicyAssignmentLabelSetList = /*@__PURE__*/ S.Array(
   OSPolicyAssignmentLabelSet,
 ) as any as S.Schema<OSPolicyAssignmentLabelSetList>;
@@ -877,7 +881,7 @@ export const OSPolicyAssignmentInstanceFilterInventory =
   }) as any as S.Schema<OSPolicyAssignmentInstanceFilterInventory>;
 
 export type OSPolicyAssignmentInstanceFilterInventoryList =
-  ReadonlyArray<OSPolicyAssignmentInstanceFilterInventory>;
+  Array<OSPolicyAssignmentInstanceFilterInventory>;
 export const OSPolicyAssignmentInstanceFilterInventoryList =
   /*@__PURE__*/ S.Array(
     OSPolicyAssignmentInstanceFilterInventory,
@@ -952,7 +956,7 @@ export interface OSPolicyAssignment {
   /** Required. List of OS policies to be applied to the VMs. */
   osPolicies?: OSPolicyList;
   /** Output only. OS policy assignment rollout state */
-  rolloutState?: OSPolicyAssignmentRolloutStateEnum;
+  rolloutState?: OSPolicyAssignmentRolloutStateEnum | (string & {});
   /** Required. Filter to select VMs. */
   instanceFilter?: OSPolicyAssignmentInstanceFilter;
   /** Output only. The timestamp that the revision was created. */
@@ -1445,7 +1449,7 @@ export const ListFoldersLocationsGlobalPolicyOrchestratorsRequest =
   }) as any as S.Schema<ListFoldersLocationsGlobalPolicyOrchestratorsRequest>;
 
 export type GoogleCloudOsconfigV2beta__PolicyOrchestratorList =
-  ReadonlyArray<GoogleCloudOsconfigV2beta__PolicyOrchestrator>;
+  Array<GoogleCloudOsconfigV2beta__PolicyOrchestrator>;
 export const GoogleCloudOsconfigV2beta__PolicyOrchestratorList =
   /*@__PURE__*/ S.Array(
     GoogleCloudOsconfigV2beta__PolicyOrchestrator,
@@ -1504,7 +1508,7 @@ export const ListFoldersLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListFoldersLocationsOperationsRequest",
 }) as any as S.Schema<ListFoldersLocationsOperationsRequest>;
 
-export type OperationList = ReadonlyArray<Operation>;
+export type OperationList = Array<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;

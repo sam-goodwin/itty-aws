@@ -74,7 +74,7 @@ export const Link = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Link" }) as any as S.Schema<Link>;
 
-export type LinkList = ReadonlyArray<Link>;
+export type LinkList = Array<Link>;
 export const LinkList = /*@__PURE__*/ S.Array(
   Link,
 ) as any as S.Schema<LinkList>;
@@ -119,7 +119,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -178,7 +178,7 @@ export type AggregationCrossSeriesReducerEnum =
   | "REDUCE_PERCENTILE_05";
 export const AggregationCrossSeriesReducerEnum = /*@__PURE__*/ S.String;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -208,13 +208,13 @@ export const AggregationPerSeriesAlignerEnum = /*@__PURE__*/ S.String;
 /** Describes how to combine multiple time series to provide a different view of the data. Aggregation of time series is done in two steps. First, each time series in the set is aligned to the same time interval boundaries, then the set of time series is optionally reduced in number.Alignment consists of applying the per_series_aligner operation to each time series after its data has been divided into regular alignment_period time intervals. This process takes all of the data points in an alignment period, applies a mathematical transformation such as averaging, minimum, maximum, delta, etc., and converts them into a single data point per period.Reduction is when the aligned and transformed time series can optionally be combined, reducing the number of time series through similar mathematical transformations. Reduction involves applying a cross_series_reducer to all the time series, optionally sorting the time series into subsets with group_by_fields, and applying the reducer to each subset.The raw time series data can contain a huge amount of information from multiple sources. Alignment and reduction transforms this mass of data into a more manageable and representative collection of data, for example "the 95% latency across the average of all tasks in a cluster". This representative data can be more easily graphed and comprehended, and the individual time series data is still available for later drilldown. For more details, see Filtering and aggregation (https://cloud.google.com/monitoring/api/v3/aggregation). */
 export interface Aggregation {
   /** The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.Not all reducer operations can be applied to all time series. The valid choices depend on the metric_kind and the value_type of the original time series. Reduction can yield a time series with a different metric_kind or value_type than the input time series.Time series data must first be aligned (see per_series_aligner) in order to perform cross-time series reduction. If cross_series_reducer is specified, then per_series_aligner must be specified, and must not be ALIGN_NONE. An alignment_period must also be specified; otherwise, an error is returned. */
-  crossSeriesReducer?: AggregationCrossSeriesReducerEnum;
+  crossSeriesReducer?: AggregationCrossSeriesReducerEnum | (string & {});
   /** The set of fields to preserve when cross_series_reducer is specified. The group_by_fields determine how the time series are partitioned into subsets prior to applying the aggregation operation. Each subset contains time series that have the same value for each of the grouping fields. Each individual time series is a member of exactly one subset. The cross_series_reducer is applied to each subset of time series. It is not possible to reduce across different resource types, so this field implicitly contains resource.type. Fields not specified in group_by_fields are aggregated away. If group_by_fields is not specified and all the time series have the same resource type, then the time series are aggregated into a single output time series. If cross_series_reducer is not defined, this field is ignored. */
   groupByFields?: StringList;
   /** The alignment_period specifies a time interval, in seconds, that is used to divide the data in all the time series into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.The value must be at least 60 seconds. If a per-series aligner other than ALIGN_NONE is specified, this field is required or an error is returned. If no per-series aligner is specified, or the aligner ALIGN_NONE is specified, then this field is ignored.The maximum value of the alignment_period is 104 weeks (2 years) for charts, and 90,000 seconds (25 hours) for alerting policies. */
   alignmentPeriod?: string;
   /** An Aligner describes how to bring the data points in a single time series into temporal alignment. Except for ALIGN_NONE, all alignments cause all the data points in an alignment_period to be mathematically grouped together, resulting in a single data point for each alignment_period with end timestamp at the end of the period.Not all alignment operations may be applied to all time series. The valid choices depend on the metric_kind and value_type of the original time series. Alignment can change the metric_kind or the value_type of the time series.Time series data must be aligned in order to perform cross-time series reduction. If cross_series_reducer is specified, then per_series_aligner must be specified and not equal to ALIGN_NONE and alignment_period must be specified; otherwise, an error is returned. */
-  perSeriesAligner?: AggregationPerSeriesAlignerEnum;
+  perSeriesAligner?: AggregationPerSeriesAlignerEnum | (string & {});
 }
 export const Aggregation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -225,7 +225,7 @@ export const Aggregation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Aggregation" }) as any as S.Schema<Aggregation>;
 
-export type AggregationList = ReadonlyArray<Aggregation>;
+export type AggregationList = Array<Aggregation>;
 export const AggregationList = /*@__PURE__*/ S.Array(
   Aggregation,
 ) as any as S.Schema<AggregationList>;
@@ -279,7 +279,9 @@ export interface MonitoringQueryLanguageCondition {
   /** Optional. The amount of time that a time series must violate the threshold to be considered failing. Currently, only values that are a multiple of a minute--e.g., 0, 60, 120, or 300 seconds--are supported. If an invalid value is given, an error will be returned. When choosing a duration, it is useful to keep in mind the frequency of the underlying time series data (which may also be affected by any alignments specified in the aggregations field); a good duration is long enough so that a single outlier does not generate spurious alerts, but short enough that unhealthy states are detected and alerted on quickly. The default value is zero. */
   duration?: string;
   /** A condition control that determines how metric-threshold conditions are evaluated when data stops arriving. */
-  evaluationMissingData?: MonitoringQueryLanguageConditionEvaluationMissingDataEnum;
+  evaluationMissingData?:
+    | MonitoringQueryLanguageConditionEvaluationMissingDataEnum
+    | (string & {});
   /** The number/percent of time series for which the comparison must hold in order for the condition to trigger. If unspecified, then the condition will trigger if the comparison is true for any of the time series that have been identified by filter and aggregations, or by the ratio, if denominator_filter and denominator_aggregations are specified. */
   trigger?: Trigger;
 }
@@ -379,7 +381,7 @@ export const RowCountTestComparisonEnum = /*@__PURE__*/ S.String;
 /** A test that checks if the number of rows in the result set violates some threshold. */
 export interface RowCountTest {
   /** Required. The comparison to apply between the number of rows returned by the query and the threshold. */
-  comparison?: RowCountTestComparisonEnum;
+  comparison?: RowCountTestComparisonEnum | (string & {});
   /** Required. The value against which to compare the row count. */
   threshold?: string;
 }
@@ -455,7 +457,9 @@ export interface MetricThreshold {
   /** Required. The amount of time that a time series must violate the threshold to be considered failing. Currently, only values that are a multiple of a minute--e.g., 0, 60, 120, or 300 seconds--are supported. If an invalid value is given, an error will be returned. When choosing a duration, it is useful to keep in mind the frequency of the underlying time series data (which may also be affected by any alignments specified in the aggregations field); a good duration is long enough so that a single outlier does not generate spurious alerts, but short enough that unhealthy states are detected and alerted on quickly. */
   duration?: string;
   /** A condition control that determines how metric-threshold conditions are evaluated when data stops arriving. To use this control, the value of the duration field must be greater than or equal to 60 seconds. */
-  evaluationMissingData?: MetricThresholdEvaluationMissingDataEnum;
+  evaluationMissingData?:
+    | MetricThresholdEvaluationMissingDataEnum
+    | (string & {});
   /** Specifies the alignment of data points in individual time series as well as how to combine the retrieved time series together (such as when aggregating multiple streams on each resource to a single stream for each resource or when aggregating streams across all members of a group of resources). Multiple aggregations are applied in the order specified.This field is similar to the one in the ListTimeSeries request (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list). It is advisable to use the ListTimeSeries method when debugging this field. */
   aggregations?: AggregationList;
   /** A filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies a time series that should be used as the denominator of a ratio that will be compared with the threshold. If a denominator_filter is specified, the time series specified by the filter field will be used as the numerator.The filter must specify the metric type and optionally may contain restrictions on resource type, resource labels, and metric labels. This field may not exceed 2048 Unicode characters in length. */
@@ -467,7 +471,7 @@ export interface MetricThreshold {
   /** Specifies the alignment of data points in individual time series selected by denominatorFilter as well as how to combine the retrieved time series together (such as when aggregating multiple streams on each resource to a single stream for each resource or when aggregating streams across all members of a group of resources).When computing ratios, the aggregations and denominator_aggregations fields must use the same alignment period and produce time series that have the same periodicity and labels. */
   denominatorAggregations?: AggregationList;
   /** The comparison to apply between the time series (indicated by filter and aggregation) and the threshold (indicated by threshold_value). The comparison is applied on each time series, with the time series on the left-hand side and the threshold on the right-hand side.Only COMPARISON_LT and COMPARISON_GT are supported currently. */
-  comparison?: MetricThresholdComparisonEnum;
+  comparison?: MetricThresholdComparisonEnum | (string & {});
 }
 export const MetricThreshold = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -553,7 +557,7 @@ export const Condition = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Condition" }) as any as S.Schema<Condition>;
 
-export type ConditionList = ReadonlyArray<Condition>;
+export type ConditionList = Array<Condition>;
 export const ConditionList = /*@__PURE__*/ S.Array(
   Condition,
 ) as any as S.Schema<ConditionList>;
@@ -577,8 +581,9 @@ export type AlertStrategyNotificationPromptsItemEnum =
   | "CLOSED";
 export const AlertStrategyNotificationPromptsItemEnum = /*@__PURE__*/ S.String;
 
-export type AlertStrategyNotificationPromptsItemEnumList =
-  ReadonlyArray<AlertStrategyNotificationPromptsItemEnum>;
+export type AlertStrategyNotificationPromptsItemEnumList = Array<
+  AlertStrategyNotificationPromptsItemEnum | (string & {})
+>;
 export const AlertStrategyNotificationPromptsItemEnumList =
   /*@__PURE__*/ S.Array(
     AlertStrategyNotificationPromptsItemEnum,
@@ -601,7 +606,7 @@ export const NotificationChannelStrategy = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NotificationChannelStrategy>;
 
 export type NotificationChannelStrategyList =
-  ReadonlyArray<NotificationChannelStrategy>;
+  Array<NotificationChannelStrategy>;
 export const NotificationChannelStrategyList = /*@__PURE__*/ S.Array(
   NotificationChannelStrategy,
 ) as any as S.Schema<NotificationChannelStrategyList>;
@@ -665,11 +670,11 @@ export interface AlertPolicy {
   /** User-supplied key/value data to be used for organizing and identifying the AlertPolicy objects.The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.Note that Prometheus {alert name} is a valid Prometheus label names (https://prometheus.io/docs/concepts/data_model/#metric-names-and-labels), whereas Prometheus {rule group} is an unrestricted UTF-8 string. This means that they cannot be stored as-is in user labels, because they may contain characters that are not allowed in user-label values. */
   userLabels?: StringMap;
   /** Optional. The severity of an alerting policy indicates how important incidents generated by that policy are. The severity level will be displayed on the Incident detail page and in notifications. */
-  severity?: AlertPolicySeverityEnum;
+  severity?: AlertPolicySeverityEnum | (string & {});
   /** A short name or phrase used to identify the policy in dashboards, notifications, and incidents. To avoid confusion, don't use the same display name for multiple policies in the same project. The name is limited to 512 Unicode characters.The convention for the display_name of a PrometheusQueryLanguageCondition is "{rule group name}/{alert name}", where the {rule group name} and {alert name} should be taken from the corresponding Prometheus configuration file. This convention is not enforced. In any case the display_name is not a unique key of the AlertPolicy. */
   displayName?: string;
   /** How to combine the results of multiple conditions to determine if an incident should be opened. If condition_time_series_query_language is present, this must be COMBINE_UNSPECIFIED. */
-  combiner?: AlertPolicyCombinerEnum;
+  combiner?: AlertPolicyCombinerEnum | (string & {});
 }
 export const AlertPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -765,7 +770,7 @@ export const Exemplar = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Exemplar" }) as any as S.Schema<Exemplar>;
 
-export type ExemplarList = ReadonlyArray<Exemplar>;
+export type ExemplarList = Array<Exemplar>;
 export const ExemplarList = /*@__PURE__*/ S.Array(
   Exemplar,
 ) as any as S.Schema<ExemplarList>;
@@ -787,7 +792,7 @@ export const Linear = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Linear" }) as any as S.Schema<Linear>;
 
-export type DoubleList = ReadonlyArray<number>;
+export type DoubleList = Array<number>;
 export const DoubleList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<DoubleList>;
@@ -906,7 +911,7 @@ export const CollectdValue = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CollectdValue" }) as any as S.Schema<CollectdValue>;
 
-export type CollectdValueList = ReadonlyArray<CollectdValue>;
+export type CollectdValueList = Array<CollectdValue>;
 export const CollectdValueList = /*@__PURE__*/ S.Array(
   CollectdValue,
 ) as any as S.Schema<CollectdValueList>;
@@ -951,7 +956,7 @@ export const CollectdPayload = /*@__PURE__*/ S.suspend(() =>
   identifier: "CollectdPayload",
 }) as any as S.Schema<CollectdPayload>;
 
-export type CollectdPayloadList = ReadonlyArray<CollectdPayload>;
+export type CollectdPayloadList = Array<CollectdPayload>;
 export const CollectdPayloadList = /*@__PURE__*/ S.Array(
   CollectdPayload,
 ) as any as S.Schema<CollectdPayloadList>;
@@ -1013,7 +1018,7 @@ export const CollectdValueError = /*@__PURE__*/ S.suspend(() =>
   identifier: "CollectdValueError",
 }) as any as S.Schema<CollectdValueError>;
 
-export type CollectdValueErrorList = ReadonlyArray<CollectdValueError>;
+export type CollectdValueErrorList = Array<CollectdValueError>;
 export const CollectdValueErrorList = /*@__PURE__*/ S.Array(
   CollectdValueError,
 ) as any as S.Schema<CollectdValueErrorList>;
@@ -1037,7 +1042,7 @@ export const CollectdPayloadError = /*@__PURE__*/ S.suspend(() =>
   identifier: "CollectdPayloadError",
 }) as any as S.Schema<CollectdPayloadError>;
 
-export type CollectdPayloadErrorList = ReadonlyArray<CollectdPayloadError>;
+export type CollectdPayloadErrorList = Array<CollectdPayloadError>;
 export const CollectdPayloadErrorList = /*@__PURE__*/ S.Array(
   CollectdPayloadError,
 ) as any as S.Schema<CollectdPayloadErrorList>;
@@ -1058,7 +1063,7 @@ export const Monitoring_Error = /*@__PURE__*/ S.suspend(() =>
   identifier: "Monitoring_Error",
 }) as any as S.Schema<Monitoring_Error>;
 
-export type Monitoring_ErrorList = ReadonlyArray<Monitoring_Error>;
+export type Monitoring_ErrorList = Array<Monitoring_Error>;
 export const Monitoring_ErrorList = /*@__PURE__*/ S.Array(
   Monitoring_Error,
 ) as any as S.Schema<Monitoring_ErrorList>;
@@ -1153,7 +1158,7 @@ export interface LabelDescriptor {
   /** The key for this label. The key must meet the following criteria: Does not exceed 100 characters. Matches the following regular expression: [a-zA-Z][a-zA-Z0-9_]* The first character must be an upper- or lower-case letter. The remaining characters must be letters, digits, or underscores. */
   key?: string;
   /** The type of data that can be assigned to the label. */
-  valueType?: LabelDescriptorValueTypeEnum;
+  valueType?: LabelDescriptorValueTypeEnum | (string & {});
   /** A human-readable description for the label. */
   description?: string;
 }
@@ -1167,7 +1172,7 @@ export const LabelDescriptor = /*@__PURE__*/ S.suspend(() =>
   identifier: "LabelDescriptor",
 }) as any as S.Schema<LabelDescriptor>;
 
-export type LabelDescriptorList = ReadonlyArray<LabelDescriptor>;
+export type LabelDescriptorList = Array<LabelDescriptor>;
 export const LabelDescriptorList = /*@__PURE__*/ S.Array(
   LabelDescriptor,
 ) as any as S.Schema<LabelDescriptorList>;
@@ -1210,7 +1215,10 @@ export const MetricDescriptorMetadataTimeSeriesResourceHierarchyLevelItemEnum =
   /*@__PURE__*/ S.String;
 
 export type MetricDescriptorMetadataTimeSeriesResourceHierarchyLevelItemEnumList =
-  ReadonlyArray<MetricDescriptorMetadataTimeSeriesResourceHierarchyLevelItemEnum>;
+  Array<
+    | MetricDescriptorMetadataTimeSeriesResourceHierarchyLevelItemEnum
+    | (string & {})
+  >;
 export const MetricDescriptorMetadataTimeSeriesResourceHierarchyLevelItemEnumList =
   /*@__PURE__*/ S.Array(
     MetricDescriptorMetadataTimeSeriesResourceHierarchyLevelItemEnum,
@@ -1219,7 +1227,7 @@ export const MetricDescriptorMetadataTimeSeriesResourceHierarchyLevelItemEnumLis
 /** Additional annotations that can be used to guide the usage of a metric. */
 export interface MetricDescriptorMetadata {
   /** Deprecated. Must use the MetricDescriptor.launch_stage instead. */
-  launchStage?: MetricDescriptorMetadataLaunchStageEnum;
+  launchStage?: MetricDescriptorMetadataLaunchStageEnum | (string & {});
   /** The sampling period of metric data points. For metrics which are written periodically, consecutive data points are stored at this time interval, excluding data loss due to errors. Metrics with a higher granularity have a smaller sampling period. */
   samplePeriod?: string;
   /** The delay of data points caused by ingestion. Data points older than this age are guaranteed to be ingested and available to be read, excluding data loss due to errors. */
@@ -1255,11 +1263,11 @@ export interface MetricDescriptor {
   /** The set of labels that can be used to describe a specific instance of this metric type. For example, the appengine.googleapis.com/http/server/response_latencies metric type has a label for the HTTP response code, response_code, so you can look at latencies for successful responses or just for responses that failed. */
   labels?: LabelDescriptorList;
   /** Optional. The launch stage of the metric definition. */
-  launchStage?: MetricDescriptorLaunchStageEnum;
+  launchStage?: MetricDescriptorLaunchStageEnum | (string & {});
   /** Read-only. If present, then a time series, which is identified partially by a metric type and a MonitoredResourceDescriptor, that is associated with this metric type can only be associated with one of the monitored resource types listed here. */
   monitoredResourceTypes?: StringList;
   /** Whether the metric records instantaneous values, changes to a value, etc. Some combinations of metric_kind and value_type might not be supported. */
-  metricKind?: MetricDescriptorMetricKindEnum;
+  metricKind?: MetricDescriptorMetricKindEnum | (string & {});
   /** A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example "Request count". This field is optional but it is recommended to be set for any metrics associated with user-visible concepts, such as Quota. */
   displayName?: string;
   /** The metric type, including its DNS name prefix. The type is not URL-encoded. All user-defined metric types have the DNS name custom.googleapis.com or external.googleapis.com. Metric types should use a natural hierarchical grouping. For example: "custom.googleapis.com/invoice/paid/amount" "external.googleapis.com/prometheus/up" "appengine.googleapis.com/http/server/response_latencies" */
@@ -1271,7 +1279,7 @@ export interface MetricDescriptor {
   /** The resource name of the metric descriptor. */
   name?: string;
   /** Whether the measurement is an integer, a floating-point number, etc. Some combinations of metric_kind and value_type might not be supported. */
-  valueType?: MetricDescriptorValueTypeEnum;
+  valueType?: MetricDescriptorValueTypeEnum | (string & {});
   /** The units in which the metric value is reported. It is only applicable if the value_type is INT64, DOUBLE, or DISTRIBUTION. The unit defines the representation of the stored metric values.Different systems might scale the values to be more easily displayed (so a value of 0.02kBy might be displayed as 20By, and a value of 3523kBy might be displayed as 3.5MBy). However, if the unit is kBy, then the value of the metric is always in thousands of bytes, no matter how it might be displayed.If you want a custom metric to record the exact number of CPU-seconds used by a job, you can create an INT64 CUMULATIVE metric whose unit is s{CPU} (or equivalently 1s{CPU} or just s). If the job uses 12,005 CPU-seconds, then the value is written as 12005.Alternatively, if you want a custom metric to record data in a more granular way, you can create a DOUBLE CUMULATIVE metric whose unit is ks{CPU}, and then write the value 12.005 (which is 12005/1000), or use Kis{CPU} and write 11.723 (which is 12005/1024).The supported units are a subset of The Unified Code for Units of Measure (https://unitsofmeasure.org/ucum.html) standard:Basic units (UNIT) bit bit By byte s second min minute h hour d day 1 dimensionlessPrefixes (PREFIX) k kilo (10^3) M mega (10^6) G giga (10^9) T tera (10^12) P peta (10^15) E exa (10^18) Z zetta (10^21) Y yotta (10^24) m milli (10^-3) u micro (10^-6) n nano (10^-9) p pico (10^-12) f femto (10^-15) a atto (10^-18) z zepto (10^-21) y yocto (10^-24) Ki kibi (2^10) Mi mebi (2^20) Gi gibi (2^30) Ti tebi (2^40) Pi pebi (2^50)GrammarThe grammar also includes these connectors: / division or ratio (as an infix operator). For examples, kBy/{email} or MiBy/10ms (although you should almost never have /s in a metric unit; rates should always be computed at query time from the underlying cumulative or delta value). . multiplication or composition (as an infix operator). For examples, GBy.d or k{watt}.h.The grammar for a unit is as follows: Expression = Component { "." Component } { "/" Component } ; Component = ( [ PREFIX ] UNIT | "%" ) [ Annotation ] | Annotation | "1" ; Annotation = "{" NAME "}" ; Notes: Annotation is just a comment if it follows a UNIT. If the annotation is used alone, then the unit is equivalent to 1. For examples, {request}/s == 1/s, By{transmitted}/s == By/s. NAME is a sequence of non-blank printable ASCII characters not containing { or }. 1 represents a unitary dimensionless unit (https://en.wikipedia.org/wiki/Dimensionless_quantity) of 1, such as in 1/s. It is typically used when none of the basic units are appropriate. For example, "new users per day" can be represented as 1/d or {new-users}/d (and a metric value 5 would mean "5 new users). Alternatively, "thousands of page views per day" would be represented as 1000/d or k1/d or k{page_views}/d (and a metric value of 5.3 would mean "5300 page views per day"). % represents dimensionless value of 1/100, and annotates values giving a percentage (so the metric values are typically in the range of 0..100, and a metric value 3 means "3 percent"). 10^2.% indicates a metric contains a ratio, typically in the range 0..1, that will be multiplied by 100 and displayed as a percentage (so a metric value 0.03 means "3 percent"). */
   unit?: string;
 }
@@ -1315,7 +1323,7 @@ export const CreateProjectsMetricDescriptorsRequest = /*@__PURE__*/ S.suspend(
   identifier: "CreateProjectsMetricDescriptorsRequest",
 }) as any as S.Schema<CreateProjectsMetricDescriptorsRequest>;
 
-export type MutationRecordList = ReadonlyArray<MutationRecord>;
+export type MutationRecordList = Array<MutationRecord>;
 export const MutationRecordList = /*@__PURE__*/ S.Array(
   MutationRecord,
 ) as any as S.Schema<MutationRecordList>;
@@ -1347,7 +1355,9 @@ export interface NotificationChannel {
   /** Configuration fields that define the channel and its behavior. The permissible and required labels are specified in the NotificationChannelDescriptor.labels of the NotificationChannelDescriptor corresponding to the type field. */
   labels?: StringMap;
   /** Indicates whether this channel has been verified or not. On a ListNotificationChannels or GetNotificationChannel operation, this field is expected to be populated.If the value is UNVERIFIED, then it indicates that the channel is non-functioning (it both requires verification and lacks verification); otherwise, it is assumed that the channel works.If the channel is neither VERIFIED nor UNVERIFIED, it implies that the channel is of a type that does not require verification or that this specific channel has been exempted from verification because it was created prior to verification being required for channels of this type.This field cannot be modified using a standard UpdateNotificationChannel operation. To change the value of this field, you must call VerifyNotificationChannel. */
-  verificationStatus?: NotificationChannelVerificationStatusEnum;
+  verificationStatus?:
+    | NotificationChannelVerificationStatusEnum
+    | (string & {});
 }
 export const NotificationChannel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1504,7 +1514,7 @@ export const Point = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Point" }) as any as S.Schema<Point>;
 
-export type PointList = ReadonlyArray<Point>;
+export type PointList = Array<Point>;
 export const PointList = /*@__PURE__*/ S.Array(
   Point,
 ) as any as S.Schema<PointList>;
@@ -1530,9 +1540,9 @@ export interface TimeSeries {
   /** The units in which the metric value is reported. It is only applicable if the value_type is INT64, DOUBLE, or DISTRIBUTION. The unit defines the representation of the stored metric values. This field can only be changed through CreateTimeSeries when it is empty. */
   unit?: string;
   /** The value type of the time series. When listing time series, this value type might be different from the value type of the associated metric if this time series is an alignment or reduction of other time series.When creating a time series, this field is optional. If present, it must be the same as the type of the data in the points field. */
-  valueType?: TimeSeriesValueTypeEnum;
+  valueType?: TimeSeriesValueTypeEnum | (string & {});
   /** The metric kind of the time series. When listing time series, this metric kind might be different from the metric kind of the associated metric if this time series is an alignment or reduction of other time series.When creating a time series, this field is optional. If present, it must be the same as the metric kind of the associated metric. If the associated metric's descriptor must be auto-created, then this field specifies the metric kind of the new descriptor and must be either GAUGE (the default) or CUMULATIVE. */
-  metricKind?: TimeSeriesMetricKindEnum;
+  metricKind?: TimeSeriesMetricKindEnum | (string & {});
   /** Input only. A detailed description of the time series that will be associated with the google.api.MetricDescriptor for the metric. Once set, this field cannot be changed through CreateTimeSeries. */
   description?: string;
   /** The associated monitored resource. Custom metrics can use only certain monitored resource types in their time series data. For more information, see Monitored resources for custom metrics (https://cloud.google.com/monitoring/custom-metrics/creating-metrics#custom-metric-resources). */
@@ -1555,7 +1565,7 @@ export const TimeSeries = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TimeSeries" }) as any as S.Schema<TimeSeries>;
 
-export type TimeSeriesList = ReadonlyArray<TimeSeries>;
+export type TimeSeriesList = Array<TimeSeries>;
 export const TimeSeriesList = /*@__PURE__*/ S.Array(
   TimeSeries,
 ) as any as S.Schema<TimeSeriesList>;
@@ -1616,7 +1626,7 @@ export interface InternalChecker {
   /** A unique resource name for this InternalChecker. The format is: projects/[PROJECT_ID_OR_NUMBER]/internalCheckers/[INTERNAL_CHECKER_ID] [PROJECT_ID_OR_NUMBER] is the Cloud Monitoring Metrics Scope project for the Uptime check config associated with the internal checker. */
   name?: string;
   /** The current operational state of the internal checker. */
-  state?: InternalCheckerStateEnum;
+  state?: InternalCheckerStateEnum | (string & {});
 }
 export const InternalChecker = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1631,7 +1641,7 @@ export const InternalChecker = /*@__PURE__*/ S.suspend(() =>
   identifier: "InternalChecker",
 }) as any as S.Schema<InternalChecker>;
 
-export type InternalCheckerList = ReadonlyArray<InternalChecker>;
+export type InternalCheckerList = Array<InternalChecker>;
 export const InternalCheckerList = /*@__PURE__*/ S.Array(
   InternalChecker,
 ) as any as S.Schema<InternalCheckerList>;
@@ -1655,7 +1665,7 @@ export const ResponseStatusCodeStatusClassEnum = /*@__PURE__*/ S.String;
 /** A status to accept. Either a status code class like "2xx", or an integer status code like "200". */
 export interface ResponseStatusCode {
   /** A class of status codes to accept. */
-  statusClass?: ResponseStatusCodeStatusClassEnum;
+  statusClass?: ResponseStatusCodeStatusClassEnum | (string & {});
   /** A status code to accept. */
   statusValue?: number;
 }
@@ -1668,7 +1678,7 @@ export const ResponseStatusCode = /*@__PURE__*/ S.suspend(() =>
   identifier: "ResponseStatusCode",
 }) as any as S.Schema<ResponseStatusCode>;
 
-export type ResponseStatusCodeList = ReadonlyArray<ResponseStatusCode>;
+export type ResponseStatusCodeList = Array<ResponseStatusCode>;
 export const ResponseStatusCodeList = /*@__PURE__*/ S.Array(
   ResponseStatusCode,
 ) as any as S.Schema<ResponseStatusCodeList>;
@@ -1681,7 +1691,7 @@ export const ServiceAgentAuthenticationTypeEnum = /*@__PURE__*/ S.String;
 /** Contains information needed for generating either an OpenID Connect token (https://developers.google.com/identity/protocols/OpenIDConnect) or OAuth token (https://developers.google.com/identity/protocols/oauth2). The token will be generated for the Monitoring service agent service account. */
 export interface ServiceAgentAuthentication {
   /** Type of authentication. */
-  type?: ServiceAgentAuthenticationTypeEnum;
+  type?: ServiceAgentAuthenticationTypeEnum | (string & {});
 }
 export const ServiceAgentAuthentication = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1724,7 +1734,7 @@ export const PingConfig = /*@__PURE__*/ S.suspend(() =>
 /** Information involved in an HTTP/HTTPS Uptime check request. */
 export interface HttpCheck {
   /** The content type header to use for the check. The following configurations result in errors: 1. Content type is specified in both the headers field and the content_type field. 2. Request method is GET and content_type is not TYPE_UNSPECIFIED 3. Request method is POST and content_type is TYPE_UNSPECIFIED. 4. Request method is POST and a "Content-Type" header is provided via headers field. The content_type field should be used instead. */
-  contentType?: HttpCheckContentTypeEnum;
+  contentType?: HttpCheckContentTypeEnum | (string & {});
   /** If present, the check will only pass if the HTTP response status code is in this set of status codes. If empty, the HTTP status code will only pass if the HTTP status code is 200-299. */
   acceptedResponseStatusCodes?: ResponseStatusCodeList;
   /** Boolean specifying whether to include SSL certificate validation as a part of the Uptime check. Only applies to checks where monitored_resource is set to uptime_url. If use_ssl is false, setting validate_ssl to true has no effect. */
@@ -1742,7 +1752,7 @@ export interface HttpCheck {
   /** Optional (defaults to "/"). The path to the page against which to run the check. Will be combined with the host (specified within the monitored_resource) and port to construct the full URL. If the provided path does not begin with "/", a "/" will be prepended automatically. */
   path?: string;
   /** The HTTP request method to use for the check. If set to METHOD_UNSPECIFIED then request_method defaults to GET. */
-  requestMethod?: HttpCheckRequestMethodEnum;
+  requestMethod?: HttpCheckRequestMethodEnum | (string & {});
   /** Optional (defaults to 80 when use_ssl is false, and 443 when use_ssl is true). The TCP port on the HTTP server against which to run the check. Will be combined with host (specified within the monitored_resource) and path to construct the full URL. */
   port?: number;
   /** The request body associated with the HTTP POST request. If content_type is URL_ENCODED, the body passed in must be URL-encoded. Users can provide a Content-Length header via the headers field or the API will do so. If the request_method is GET and body is not empty, the API will return an error. The maximum byte size is 1 megabyte.Note: If client libraries aren't used (which performs the conversion automatically) base64 encode your body data since the field is of bytes type. */
@@ -1831,8 +1841,9 @@ export type UptimeCheckConfigSelectedRegionsItemEnum =
   | "USA_VIRGINIA";
 export const UptimeCheckConfigSelectedRegionsItemEnum = /*@__PURE__*/ S.String;
 
-export type UptimeCheckConfigSelectedRegionsItemEnumList =
-  ReadonlyArray<UptimeCheckConfigSelectedRegionsItemEnum>;
+export type UptimeCheckConfigSelectedRegionsItemEnumList = Array<
+  UptimeCheckConfigSelectedRegionsItemEnum | (string & {})
+>;
 export const UptimeCheckConfigSelectedRegionsItemEnumList =
   /*@__PURE__*/ S.Array(
     UptimeCheckConfigSelectedRegionsItemEnum,
@@ -1857,7 +1868,7 @@ export const JsonPathMatcherJsonMatcherEnum = /*@__PURE__*/ S.String;
 /** Information needed to perform a JSONPath content match. Used for ContentMatcherOption::MATCHES_JSON_PATH and ContentMatcherOption::NOT_MATCHES_JSON_PATH. */
 export interface JsonPathMatcher {
   /** The type of JSONPath match that will be applied to the JSON output (ContentMatcher.content) */
-  jsonMatcher?: JsonPathMatcherJsonMatcherEnum;
+  jsonMatcher?: JsonPathMatcherJsonMatcherEnum | (string & {});
   /** JSONPath within the response output pointing to the expected ContentMatcher::content to match against. */
   jsonPath?: string;
 }
@@ -1873,7 +1884,7 @@ export const JsonPathMatcher = /*@__PURE__*/ S.suspend(() =>
 /** Optional. Used to perform content matching. This allows matching based on substrings and regular expressions, together with their negations. Only the first 4 MB of an HTTP or HTTPS check's response (and the first 1 MB of a TCP check's response) are examined for purposes of content matching. */
 export interface ContentMatcher {
   /** The type of content matcher that will be applied to the server output, compared to the content string when the check is run. */
-  matcher?: ContentMatcherMatcherEnum;
+  matcher?: ContentMatcherMatcherEnum | (string & {});
   /** Matcher information for MATCHES_JSON_PATH and NOT_MATCHES_JSON_PATH */
   jsonPathMatcher?: JsonPathMatcher;
   /** String, regex or JSON content to match. Maximum 1024 bytes. An empty content string indicates no content matching is to be performed. */
@@ -1887,7 +1898,7 @@ export const ContentMatcher = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ContentMatcher" }) as any as S.Schema<ContentMatcher>;
 
-export type ContentMatcherList = ReadonlyArray<ContentMatcher>;
+export type ContentMatcherList = Array<ContentMatcher>;
 export const ContentMatcherList = /*@__PURE__*/ S.Array(
   ContentMatcher,
 ) as any as S.Schema<ContentMatcherList>;
@@ -1903,7 +1914,7 @@ export interface ResourceGroup {
   /** The group of resources being monitored. Should be only the [GROUP_ID], and not the full-path projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID]. */
   groupId?: string;
   /** The resource type of the group members. */
-  resourceType?: ResourceGroupResourceTypeEnum;
+  resourceType?: ResourceGroupResourceTypeEnum | (string & {});
 }
 export const ResourceGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1923,7 +1934,7 @@ export interface UptimeCheckConfig {
   /** The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). Required. */
   timeout?: string;
   /** The type of checkers to use to execute the Uptime check. */
-  checkerType?: UptimeCheckConfigCheckerTypeEnum;
+  checkerType?: UptimeCheckConfigCheckerTypeEnum | (string & {});
   /** If this is true, then checks are made only from the 'internal_checkers'. If it is false, then checks are made only from the 'selected_regions'. It is an error to provide 'selected_regions' when is_internal is true, or to provide 'internal_checkers' when is_internal is false. */
   isInternal?: boolean;
   /** Specifies a Synthetic Monitor to invoke. */
@@ -2500,7 +2511,7 @@ export interface ServiceLevelObjective {
   /** The fraction of service that must be good in order for this objective to be met. 0 < goal <= 0.9999. */
   goal?: number;
   /** A calendar period, semantically "since the start of the current ". At this time, only DAY, WEEK, FORTNIGHT, and MONTH are supported. */
-  calendarPeriod?: ServiceLevelObjectiveCalendarPeriodEnum;
+  calendarPeriod?: ServiceLevelObjectiveCalendarPeriodEnum | (string & {});
 }
 export const ServiceLevelObjective = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2923,7 +2934,7 @@ export const NotificationChannelDescriptorSupportedTiersItemEnum =
   /*@__PURE__*/ S.String;
 
 export type NotificationChannelDescriptorSupportedTiersItemEnumList =
-  ReadonlyArray<NotificationChannelDescriptorSupportedTiersItemEnum>;
+  Array<NotificationChannelDescriptorSupportedTiersItemEnum>;
 export const NotificationChannelDescriptorSupportedTiersItemEnumList =
   /*@__PURE__*/ S.Array(
     NotificationChannelDescriptorSupportedTiersItemEnum,
@@ -3293,7 +3304,7 @@ export const ListFoldersTimeSeriesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListFoldersTimeSeriesRequest",
 }) as any as S.Schema<ListFoldersTimeSeriesRequest>;
 
-export type StatusList = ReadonlyArray<Status>;
+export type StatusList = Array<Status>;
 export const StatusList = /*@__PURE__*/ S.Array(
   Status,
 ) as any as S.Schema<StatusList>;
@@ -3529,7 +3540,7 @@ export const ListProjectsAlertPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsAlertPoliciesRequest",
 }) as any as S.Schema<ListProjectsAlertPoliciesRequest>;
 
-export type AlertPolicyList = ReadonlyArray<AlertPolicy>;
+export type AlertPolicyList = Array<AlertPolicy>;
 export const AlertPolicyList = /*@__PURE__*/ S.Array(
   AlertPolicy,
 ) as any as S.Schema<AlertPolicyList>;
@@ -3583,7 +3594,7 @@ export const ListProjectsAlertsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsAlertsRequest",
 }) as any as S.Schema<ListProjectsAlertsRequest>;
 
-export type AlertList = ReadonlyArray<Alert>;
+export type AlertList = Array<Alert>;
 export const AlertList = /*@__PURE__*/ S.Array(
   Alert,
 ) as any as S.Schema<AlertList>;
@@ -3640,7 +3651,7 @@ export const ListProjectsGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsGroupsRequest",
 }) as any as S.Schema<ListProjectsGroupsRequest>;
 
-export type GroupList = ReadonlyArray<Group>;
+export type GroupList = Array<Group>;
 export const GroupList = /*@__PURE__*/ S.Array(
   Group,
 ) as any as S.Schema<GroupList>;
@@ -3694,7 +3705,7 @@ export const ListProjectsGroupsMembersRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsGroupsMembersRequest",
 }) as any as S.Schema<ListProjectsGroupsMembersRequest>;
 
-export type MonitoredResourceList = ReadonlyArray<MonitoredResource>;
+export type MonitoredResourceList = Array<MonitoredResource>;
 export const MonitoredResourceList = /*@__PURE__*/ S.Array(
   MonitoredResource,
 ) as any as S.Schema<MonitoredResourceList>;
@@ -3749,7 +3760,7 @@ export const ListProjectsMetricDescriptorsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsMetricDescriptorsRequest",
 }) as any as S.Schema<ListProjectsMetricDescriptorsRequest>;
 
-export type MetricDescriptorList = ReadonlyArray<MetricDescriptor>;
+export type MetricDescriptorList = Array<MetricDescriptor>;
 export const MetricDescriptorList = /*@__PURE__*/ S.Array(
   MetricDescriptor,
 ) as any as S.Schema<MetricDescriptorList>;
@@ -3799,7 +3810,7 @@ export const ListProjectsMonitoredResourceDescriptorsRequest =
   }) as any as S.Schema<ListProjectsMonitoredResourceDescriptorsRequest>;
 
 export type MonitoredResourceDescriptorList =
-  ReadonlyArray<MonitoredResourceDescriptor>;
+  Array<MonitoredResourceDescriptor>;
 export const MonitoredResourceDescriptorList = /*@__PURE__*/ S.Array(
   MonitoredResourceDescriptor,
 ) as any as S.Schema<MonitoredResourceDescriptorList>;
@@ -3847,7 +3858,7 @@ export const ListProjectsNotificationChannelDescriptorsRequest =
   }) as any as S.Schema<ListProjectsNotificationChannelDescriptorsRequest>;
 
 export type NotificationChannelDescriptorList =
-  ReadonlyArray<NotificationChannelDescriptor>;
+  Array<NotificationChannelDescriptor>;
 export const NotificationChannelDescriptorList = /*@__PURE__*/ S.Array(
   NotificationChannelDescriptor,
 ) as any as S.Schema<NotificationChannelDescriptorList>;
@@ -3900,7 +3911,7 @@ export const ListProjectsNotificationChannelsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsNotificationChannelsRequest",
 }) as any as S.Schema<ListProjectsNotificationChannelsRequest>;
 
-export type NotificationChannelList = ReadonlyArray<NotificationChannel>;
+export type NotificationChannelList = Array<NotificationChannel>;
 export const NotificationChannelList = /*@__PURE__*/ S.Array(
   NotificationChannel,
 ) as any as S.Schema<NotificationChannelList>;
@@ -3951,7 +3962,7 @@ export const ListProjectsSnoozesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsSnoozesRequest",
 }) as any as S.Schema<ListProjectsSnoozesRequest>;
 
-export type SnoozeList = ReadonlyArray<Snooze>;
+export type SnoozeList = Array<Snooze>;
 export const SnoozeList = /*@__PURE__*/ S.Array(
   Snooze,
 ) as any as S.Schema<SnoozeList>;
@@ -4172,7 +4183,7 @@ export const ListProjectsUptimeCheckConfigsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsUptimeCheckConfigsRequest",
 }) as any as S.Schema<ListProjectsUptimeCheckConfigsRequest>;
 
-export type UptimeCheckConfigList = ReadonlyArray<UptimeCheckConfig>;
+export type UptimeCheckConfigList = Array<UptimeCheckConfig>;
 export const UptimeCheckConfigList = /*@__PURE__*/ S.Array(
   UptimeCheckConfig,
 ) as any as S.Schema<UptimeCheckConfigList>;
@@ -4223,7 +4234,7 @@ export const ListServicesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListServicesRequest",
 }) as any as S.Schema<ListServicesRequest>;
 
-export type ServiceList = ReadonlyArray<Service>;
+export type ServiceList = Array<Service>;
 export const ServiceList = /*@__PURE__*/ S.Array(
   Service,
 ) as any as S.Schema<ServiceList>;
@@ -4284,7 +4295,7 @@ export const ListServicesServiceLevelObjectivesRequest =
     identifier: "ListServicesServiceLevelObjectivesRequest",
   }) as any as S.Schema<ListServicesServiceLevelObjectivesRequest>;
 
-export type ServiceLevelObjectiveList = ReadonlyArray<ServiceLevelObjective>;
+export type ServiceLevelObjectiveList = Array<ServiceLevelObjective>;
 export const ServiceLevelObjectiveList = /*@__PURE__*/ S.Array(
   ServiceLevelObjective,
 ) as any as S.Schema<ServiceLevelObjectiveList>;
@@ -4354,7 +4365,7 @@ export const UptimeCheckIp = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "UptimeCheckIp" }) as any as S.Schema<UptimeCheckIp>;
 
-export type UptimeCheckIpList = ReadonlyArray<UptimeCheckIp>;
+export type UptimeCheckIpList = Array<UptimeCheckIp>;
 export const UptimeCheckIpList = /*@__PURE__*/ S.Array(
   UptimeCheckIp,
 ) as any as S.Schema<UptimeCheckIpList>;
@@ -4601,7 +4612,7 @@ export const ValueDescriptor = /*@__PURE__*/ S.suspend(() =>
   identifier: "ValueDescriptor",
 }) as any as S.Schema<ValueDescriptor>;
 
-export type ValueDescriptorList = ReadonlyArray<ValueDescriptor>;
+export type ValueDescriptorList = Array<ValueDescriptor>;
 export const ValueDescriptorList = /*@__PURE__*/ S.Array(
   ValueDescriptor,
 ) as any as S.Schema<ValueDescriptorList>;
@@ -4639,12 +4650,12 @@ export const LabelValue = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "LabelValue" }) as any as S.Schema<LabelValue>;
 
-export type LabelValueList = ReadonlyArray<LabelValue>;
+export type LabelValueList = Array<LabelValue>;
 export const LabelValueList = /*@__PURE__*/ S.Array(
   LabelValue,
 ) as any as S.Schema<LabelValueList>;
 
-export type TypedValueList = ReadonlyArray<TypedValue>;
+export type TypedValueList = Array<TypedValue>;
 export const TypedValueList = /*@__PURE__*/ S.Array(
   TypedValue,
 ) as any as S.Schema<TypedValueList>;
@@ -4663,7 +4674,7 @@ export const PointData = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PointData" }) as any as S.Schema<PointData>;
 
-export type PointDataList = ReadonlyArray<PointData>;
+export type PointDataList = Array<PointData>;
 export const PointDataList = /*@__PURE__*/ S.Array(
   PointData,
 ) as any as S.Schema<PointDataList>;
@@ -4682,7 +4693,7 @@ export const TimeSeriesData = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TimeSeriesData" }) as any as S.Schema<TimeSeriesData>;
 
-export type TimeSeriesDataList = ReadonlyArray<TimeSeriesData>;
+export type TimeSeriesDataList = Array<TimeSeriesData>;
 export const TimeSeriesDataList = /*@__PURE__*/ S.Array(
   TimeSeriesData,
 ) as any as S.Schema<TimeSeriesDataList>;

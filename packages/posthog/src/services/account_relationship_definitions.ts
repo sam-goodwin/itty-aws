@@ -114,7 +114,7 @@ export const AccountRelationshipDefinitionsListRequest =
   }) as any as S.Schema<AccountRelationshipDefinitionsListRequest>;
 
 export type PaginatedAccountRelationshipDefinitionListResultsList =
-  ReadonlyArray<AccountRelationshipDefinition>;
+  Array<AccountRelationshipDefinition>;
 export const PaginatedAccountRelationshipDefinitionListResultsList =
   /*@__PURE__*/ S.Array(
     AccountRelationshipDefinition,

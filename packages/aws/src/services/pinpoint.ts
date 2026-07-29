@@ -224,7 +224,10 @@ export type __EndpointTypesElement =
   | "IN_APP";
 export const __EndpointTypesElement = /*@__PURE__*/ S.String;
 
-export type ListOf__EndpointTypesElement = __EndpointTypesElement[];
+export type ListOf__EndpointTypesElement = (
+  | __EndpointTypesElement
+  | (string & {})
+)[];
 export const ListOf__EndpointTypesElement = /*@__PURE__*/ S.Array(
   __EndpointTypesElement,
 );
@@ -244,7 +247,7 @@ export type Action = "OPEN_APP" | "DEEP_LINK" | "URL";
 export const Action = /*@__PURE__*/ S.String;
 
 export interface Message {
-  Action?: Action;
+  Action?: Action | (string & {});
   Body?: string;
   ImageIconUrl?: string;
   ImageSmallIconUrl?: string;
@@ -313,7 +316,7 @@ export const MessageType = /*@__PURE__*/ S.String;
 
 export interface CampaignSmsMessage {
   Body?: string;
-  MessageType?: MessageType;
+  MessageType?: MessageType | (string & {});
   OriginationNumber?: string;
   SenderId?: string;
   EntityId?: string;
@@ -335,7 +338,7 @@ export type Alignment = "LEFT" | "CENTER" | "RIGHT";
 export const Alignment = /*@__PURE__*/ S.String;
 
 export interface InAppMessageBodyConfig {
-  Alignment?: Alignment;
+  Alignment?: Alignment | (string & {});
   Body?: string;
   TextColor?: string;
 }
@@ -349,7 +352,7 @@ export const InAppMessageBodyConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "InAppMessageBodyConfig",
 }) as any as S.Schema<InAppMessageBodyConfig>;
 export interface InAppMessageHeaderConfig {
-  Alignment?: Alignment;
+  Alignment?: Alignment | (string & {});
   Header?: string;
   TextColor?: string;
 }
@@ -366,7 +369,7 @@ export type ButtonAction = "LINK" | "DEEP_LINK" | "CLOSE";
 export const ButtonAction = /*@__PURE__*/ S.String;
 
 export interface OverrideButtonConfiguration {
-  ButtonAction?: ButtonAction;
+  ButtonAction?: ButtonAction | (string & {});
   Link?: string;
 }
 export const OverrideButtonConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -380,7 +383,7 @@ export const OverrideButtonConfiguration = /*@__PURE__*/ S.suspend(() =>
 export interface DefaultButtonConfiguration {
   BackgroundColor?: string;
   BorderRadius?: number;
-  ButtonAction?: ButtonAction;
+  ButtonAction?: ButtonAction | (string & {});
   Link?: string;
   Text?: string;
   TextColor?: string;
@@ -449,7 +452,7 @@ export interface CampaignInAppMessage {
   Body?: string;
   Content?: InAppMessageContent[];
   CustomConfig?: { [key: string]: string | undefined };
-  Layout?: Layout;
+  Layout?: Layout | (string & {});
 }
 export const CampaignInAppMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -500,7 +503,7 @@ export const AttributeType = /*@__PURE__*/ S.String;
 export type ListOf__string = string[];
 export const ListOf__string = /*@__PURE__*/ S.Array(S.String);
 export interface AttributeDimension {
-  AttributeType?: AttributeType;
+  AttributeType?: AttributeType | (string & {});
   Values?: string[];
 }
 export const AttributeDimension = /*@__PURE__*/ S.suspend(() =>
@@ -522,7 +525,7 @@ export type DimensionType = "INCLUSIVE" | "EXCLUSIVE";
 export const DimensionType = /*@__PURE__*/ S.String;
 
 export interface SetDimension {
-  DimensionType?: DimensionType;
+  DimensionType?: DimensionType | (string & {});
   Values?: string[];
 }
 export const SetDimension = /*@__PURE__*/ S.suspend(() =>
@@ -569,7 +572,7 @@ export const FilterType = /*@__PURE__*/ S.String;
 
 export interface CampaignEventFilter {
   Dimensions?: EventDimensions;
-  FilterType?: FilterType;
+  FilterType?: FilterType | (string & {});
 }
 export const CampaignEventFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -599,7 +602,7 @@ export const QuietTime = /*@__PURE__*/ S.suspend(() =>
 export interface Schedule {
   EndTime?: string;
   EventFilter?: CampaignEventFilter;
-  Frequency?: Frequency;
+  Frequency?: Frequency | (string & {});
   IsLocalTime?: boolean;
   QuietTime?: QuietTime;
   StartTime?: string;
@@ -672,7 +675,7 @@ export const Mode = /*@__PURE__*/ S.String;
 
 export interface CampaignHook {
   LambdaFunctionName?: string;
-  Mode?: Mode;
+  Mode?: Mode | (string & {});
   WebUrl?: string;
 }
 export const CampaignHook = /*@__PURE__*/ S.suspend(() =>
@@ -1459,8 +1462,8 @@ export type RecencyType = "ACTIVE" | "INACTIVE";
 export const RecencyType = /*@__PURE__*/ S.String;
 
 export interface RecencyDimension {
-  Duration?: Duration;
-  RecencyType?: RecencyType;
+  Duration?: Duration | (string & {});
+  RecencyType?: RecencyType | (string & {});
 }
 export const RecencyDimension = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1570,7 +1573,7 @@ export const Operator = /*@__PURE__*/ S.String;
 
 export interface Condition {
   Conditions?: SimpleCondition[];
-  Operator?: Operator;
+  Operator?: Operator | (string & {});
 }
 export const Condition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1714,7 +1717,7 @@ export const RandomSplitActivity = /*@__PURE__*/ S.suspend(() =>
   identifier: "RandomSplitActivity",
 }) as any as S.Schema<RandomSplitActivity>;
 export interface JourneySMSMessage {
-  MessageType?: MessageType;
+  MessageType?: MessageType | (string & {});
   OriginationNumber?: string;
   SenderId?: string;
   EntityId?: string;
@@ -1844,7 +1847,7 @@ export const JourneySchedule = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<JourneySchedule>;
 export interface EventFilter {
   Dimensions?: EventDimensions;
-  FilterType?: FilterType;
+  FilterType?: FilterType | (string & {});
 }
 export const EventFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1917,7 +1920,7 @@ export const OpenHoursRule = /*@__PURE__*/ S.suspend(() =>
 export type ListOfOpenHoursRules = OpenHoursRule[];
 export const ListOfOpenHoursRules = /*@__PURE__*/ S.Array(OpenHoursRule);
 export type MapOfListOfOpenHoursRules = {
-  [key in DayOfWeek]?: OpenHoursRule[];
+  [key in DayOfWeek | (string & {})]?: OpenHoursRule[];
 };
 export const MapOfListOfOpenHoursRules = /*@__PURE__*/ S.Record(
   DayOfWeek,
@@ -1972,8 +1975,10 @@ export const ClosedDays = /*@__PURE__*/ S.suspend(() =>
 export type __TimezoneEstimationMethodsElement = "PHONE_NUMBER" | "POSTAL_CODE";
 export const __TimezoneEstimationMethodsElement = /*@__PURE__*/ S.String;
 
-export type ListOf__TimezoneEstimationMethodsElement =
-  __TimezoneEstimationMethodsElement[];
+export type ListOf__TimezoneEstimationMethodsElement = (
+  | __TimezoneEstimationMethodsElement
+  | (string & {})
+)[];
 export const ListOf__TimezoneEstimationMethodsElement = /*@__PURE__*/ S.Array(
   __TimezoneEstimationMethodsElement,
 );
@@ -2286,7 +2291,7 @@ export const CreateJourneyResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateJourneyResponse",
 }) as any as S.Schema<CreateJourneyResponse>;
 export interface AndroidPushNotificationTemplate {
-  Action?: Action;
+  Action?: Action | (string & {});
   Body?: string;
   ImageIconUrl?: string;
   ImageUrl?: string;
@@ -2312,7 +2317,7 @@ export const AndroidPushNotificationTemplate = /*@__PURE__*/ S.suspend(() =>
   identifier: "AndroidPushNotificationTemplate",
 }) as any as S.Schema<AndroidPushNotificationTemplate>;
 export interface APNSPushNotificationTemplate {
-  Action?: Action;
+  Action?: Action | (string & {});
   Body?: string;
   MediaUrl?: string;
   RawContent?: string;
@@ -2334,7 +2339,7 @@ export const APNSPushNotificationTemplate = /*@__PURE__*/ S.suspend(() =>
   identifier: "APNSPushNotificationTemplate",
 }) as any as S.Schema<APNSPushNotificationTemplate>;
 export interface DefaultPushNotificationTemplate {
-  Action?: Action;
+  Action?: Action | (string & {});
   Body?: string;
   Sound?: string;
   Title?: string;
@@ -2537,8 +2542,8 @@ export const Type = /*@__PURE__*/ S.String;
 export interface SegmentGroup {
   Dimensions?: SegmentDimensions[];
   SourceSegments?: SegmentReference[];
-  SourceType?: SourceType;
-  Type?: Type;
+  SourceType?: SourceType | (string & {});
+  Type?: Type | (string & {});
 }
 export const SegmentGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2555,7 +2560,7 @@ export const Include = /*@__PURE__*/ S.String;
 
 export interface SegmentGroupList {
   Groups?: SegmentGroup[];
-  Include?: Include;
+  Include?: Include | (string & {});
 }
 export const SegmentGroupList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

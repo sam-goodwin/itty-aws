@@ -36,7 +36,7 @@ export class NotFound extends T.applyErrorMatchers(
 ) {}
 
 /** User IDs to subscribe to this alert. Note: Response returns full UserBasicSerializer object. */
-export type AlertsCreateRequestSubscribedUsersList = ReadonlyArray<number>;
+export type AlertsCreateRequestSubscribedUsersList = Array<number>;
 export const AlertsCreateRequestSubscribedUsersList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<AlertsCreateRequestSubscribedUsersList>;
@@ -62,7 +62,7 @@ export const InsightThresholdType = /*@__PURE__*/ S.String;
 export interface InsightThreshold {
   bounds?: InsightsThresholdBounds | null;
   /** Whether bounds are compared as absolute values or as percentage change from the previous interval. */
-  type?: InsightThresholdType;
+  type?: InsightThresholdType | (string & {});
 }
 export const InsightThreshold = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -93,7 +93,7 @@ export type AlertConditionType =
 export const AlertConditionType = /*@__PURE__*/ S.String;
 
 export interface AlertCondition {
-  type?: AlertConditionType;
+  type?: AlertConditionType | (string & {});
 }
 export const AlertCondition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -125,7 +125,7 @@ export interface HogQLAlertConfig {
   /** Name of the result column to evaluate. When unset, the single numeric column is used (an error if the result has more than one numeric column). */
   column?: string | null;
   /** How to read the result rows — an explicit choice, no implicit default. */
-  evaluation: HogQLAlertEvaluation;
+  evaluation: HogQLAlertEvaluation | (string & {});
   /** Column whose value labels the evaluated row(s) in breach messages: every row in `any_row` mode, or the single evaluated row in `last_row`/`first_row`. When unset, the first non-evaluated column is used, falling back to the row number (any_row) or the value column name (last_row/first_row). */
   label_column?: string | null;
   type?: string;
@@ -151,7 +151,7 @@ export interface FunnelsAlertConfig {
   check_ongoing_interval?: boolean | null;
   /** Zero-based step index to evaluate. Null = the last step (overall conversion). */
   funnel_step?: number | null;
-  metric: FunnelConversionMetric;
+  metric: FunnelConversionMetric | (string & {});
   type?: string;
 }
 export const FunnelsAlertConfig = /*@__PURE__*/ S.suspend(() =>
@@ -189,12 +189,12 @@ export interface AlertConfigUnion {
   /** Name of the result column to evaluate. When unset, the single numeric column is used (an error if the result has more than one numeric column). */
   column?: string | null;
   /** How to read the result rows — an explicit choice, no implicit default. */
-  evaluation?: HogQLAlertEvaluation;
+  evaluation?: HogQLAlertEvaluation | (string & {});
   /** Column whose value labels the evaluated row(s) in breach messages: every row in `any_row` mode, or the single evaluated row in `last_row`/`first_row`. When unset, the first non-evaluated column is used, falling back to the row number (any_row) or the value column name (last_row/first_row). */
   label_column?: string | null;
   /** Zero-based step index to evaluate. Null = the last step (overall conversion). */
   funnel_step?: number | null;
-  metric?: FunnelConversionMetric;
+  metric?: FunnelConversionMetric | (string & {});
 }
 export const AlertConfigUnion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -377,7 +377,7 @@ export const Method = /*@__PURE__*/ S.String;
 
 export interface KNNDetectorConfig {
   /** Distance method: 'largest', 'mean', 'median' (default: 'largest') */
-  method?: Method | null;
+  method?: Method | (string & {}) | null;
   /** Number of neighbors to consider (default: 5) */
   n_neighbors?: number | null;
   /** Preprocessing transforms applied before detection */
@@ -510,7 +510,7 @@ export interface EnsembleDetectorConfigDetectorsItem {
   /** Number of trees in the forest (default: 100) */
   n_estimators?: number | null;
   /** Distance method: 'largest', 'mean', 'median' (default: 'largest') */
-  method?: Method | null;
+  method?: Method | (string & {}) | null;
   /** Number of neighbors to consider (default: 5) */
   n_neighbors?: number | null;
   /** Number of histogram bins (default: 10) */
@@ -542,7 +542,7 @@ export const EnsembleDetectorConfigDetectorsItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Sub-detector configurations (minimum 2) */
 export type EnsembleDetectorConfigDetectorsList =
-  ReadonlyArray<EnsembleDetectorConfigDetectorsItem>;
+  Array<EnsembleDetectorConfigDetectorsItem>;
 export const EnsembleDetectorConfigDetectorsList = /*@__PURE__*/ S.Array(
   EnsembleDetectorConfigDetectorsItem,
 ) as any as S.Schema<EnsembleDetectorConfigDetectorsList>;
@@ -554,7 +554,7 @@ export interface EnsembleDetectorConfig {
   /** Sub-detector configurations (minimum 2) */
   detectors?: EnsembleDetectorConfigDetectorsList;
   /** How to combine sub-detector results */
-  operator?: EnsembleOperator;
+  operator?: EnsembleOperator | (string & {});
   type?: string;
 }
 export const EnsembleDetectorConfig = /*@__PURE__*/ S.suspend(() =>
@@ -572,7 +572,7 @@ export interface DetectorConfig {
   /** Sub-detector configurations (minimum 2) */
   detectors?: EnsembleDetectorConfigDetectorsList;
   /** How to combine sub-detector results */
-  operator?: EnsembleOperator;
+  operator?: EnsembleOperator | (string & {});
   type?: string;
   /** Preprocessing transforms applied before detection */
   preprocessing?: PreprocessingConfig | null;
@@ -589,7 +589,7 @@ export interface DetectorConfig {
   /** Number of trees in the forest (default: 100) */
   n_estimators?: number | null;
   /** Distance method: 'largest', 'mean', 'median' (default: 'largest') */
-  method?: Method | null;
+  method?: Method | (string & {}) | null;
   /** Number of neighbors to consider (default: 5) */
   n_neighbors?: number | null;
   /** Number of histogram bins (default: 10) */
@@ -646,7 +646,7 @@ export const AlertScheduleRestrictionWindow = /*@__PURE__*/ S.suspend(() =>
 
 /** Blocked local time windows when the alert must not run. Overlapping or identical windows are merged when saved. At most five windows before normalization; empty array clears quiet hours. */
 export type AlertScheduleRestrictionBlockedWindowsList =
-  ReadonlyArray<AlertScheduleRestrictionWindow>;
+  Array<AlertScheduleRestrictionWindow>;
 export const AlertScheduleRestrictionBlockedWindowsList = /*@__PURE__*/ S.Array(
   AlertScheduleRestrictionWindow,
 ) as any as S.Schema<AlertScheduleRestrictionBlockedWindowsList>;
@@ -784,7 +784,7 @@ export const UserBasic = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UserBasic" }) as any as S.Schema<UserBasic>;
 
 /** User IDs to subscribe to this alert. Note: Response returns full UserBasicSerializer object. */
-export type AlertSubscribedUsersList = ReadonlyArray<number>;
+export type AlertSubscribedUsersList = Array<number>;
 export const AlertSubscribedUsersList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<AlertSubscribedUsersList>;
@@ -871,7 +871,7 @@ export const AlertCheck = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AlertCheck" }) as any as S.Schema<AlertCheck>;
 
 /** Alert check results. By default returns the last 5. Use checks_date_from and checks_date_to (e.g. '-24h', '-7d') to get checks within a time window, checks_limit to cap how many are returned (default 5, max 500), and checks_offset to skip the newest N checks for pagination (0-based). Newest checks first. Only populated on retrieve. */
-export type AlertChecksList = ReadonlyArray<AlertCheck>;
+export type AlertChecksList = Array<AlertCheck>;
 export const AlertChecksList = /*@__PURE__*/ S.Array(
   AlertCheck,
 ) as any as S.Schema<AlertChecksList>;
@@ -1020,7 +1020,7 @@ export const AlertsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "AlertsListRequest",
 }) as any as S.Schema<AlertsListRequest>;
 
-export type PaginatedAlertListResultsList = ReadonlyArray<Alert>;
+export type PaginatedAlertListResultsList = Array<Alert>;
 export const PaginatedAlertListResultsList = /*@__PURE__*/ S.Array(
   Alert,
 ) as any as S.Schema<PaginatedAlertListResultsList>;
@@ -1043,8 +1043,7 @@ export const PaginatedAlertList = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PaginatedAlertList>;
 
 /** User IDs to subscribe to this alert. Note: Response returns full UserBasicSerializer object. */
-export type AlertsPartialUpdateRequestSubscribedUsersList =
-  ReadonlyArray<number>;
+export type AlertsPartialUpdateRequestSubscribedUsersList = Array<number>;
 export const AlertsPartialUpdateRequestSubscribedUsersList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -1186,31 +1185,31 @@ export const AlertsSimulateCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AlertsSimulateCreateRequest>;
 
 /** Data values for each point. */
-export type AlertSimulateResponseDataList = ReadonlyArray<number>;
+export type AlertSimulateResponseDataList = Array<number>;
 export const AlertSimulateResponseDataList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<AlertSimulateResponseDataList>;
 
 /** Date labels for each point. */
-export type AlertSimulateResponseDatesList = ReadonlyArray<string>;
+export type AlertSimulateResponseDatesList = Array<string>;
 export const AlertSimulateResponseDatesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AlertSimulateResponseDatesList>;
 
 /** Anomaly score for each point (null if insufficient data). */
-export type AlertSimulateResponseScoresList = ReadonlyArray<number>;
+export type AlertSimulateResponseScoresList = Array<number>;
 export const AlertSimulateResponseScoresList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<AlertSimulateResponseScoresList>;
 
 /** Indices of points flagged as anomalies. */
-export type AlertSimulateResponseTriggeredIndicesList = ReadonlyArray<number>;
+export type AlertSimulateResponseTriggeredIndicesList = Array<number>;
 export const AlertSimulateResponseTriggeredIndicesList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<AlertSimulateResponseTriggeredIndicesList>;
 
 /** Dates of points flagged as anomalies. */
-export type AlertSimulateResponseTriggeredDatesList = ReadonlyArray<string>;
+export type AlertSimulateResponseTriggeredDatesList = Array<string>;
 export const AlertSimulateResponseTriggeredDatesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AlertSimulateResponseTriggeredDatesList>;
@@ -1226,39 +1225,38 @@ export const AlertSimulateResponseSubDetectorScoresItemMap =
 
 /** Per-sub-detector scores for ensemble detectors. Each entry has 'type' and 'scores' fields. */
 export type AlertSimulateResponseSubDetectorScoresList =
-  ReadonlyArray<AlertSimulateResponseSubDetectorScoresItemMap>;
+  Array<AlertSimulateResponseSubDetectorScoresItemMap>;
 export const AlertSimulateResponseSubDetectorScoresList = /*@__PURE__*/ S.Array(
   AlertSimulateResponseSubDetectorScoresItemMap,
 ) as any as S.Schema<AlertSimulateResponseSubDetectorScoresList>;
 
 /** Data values for each point. */
-export type BreakdownSimulationResultDataList = ReadonlyArray<number>;
+export type BreakdownSimulationResultDataList = Array<number>;
 export const BreakdownSimulationResultDataList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<BreakdownSimulationResultDataList>;
 
 /** Date labels for each point. */
-export type BreakdownSimulationResultDatesList = ReadonlyArray<string>;
+export type BreakdownSimulationResultDatesList = Array<string>;
 export const BreakdownSimulationResultDatesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BreakdownSimulationResultDatesList>;
 
 /** Anomaly score for each point. */
-export type BreakdownSimulationResultScoresList = ReadonlyArray<number>;
+export type BreakdownSimulationResultScoresList = Array<number>;
 export const BreakdownSimulationResultScoresList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<BreakdownSimulationResultScoresList>;
 
 /** Indices of points flagged as anomalies. */
-export type BreakdownSimulationResultTriggeredIndicesList =
-  ReadonlyArray<number>;
+export type BreakdownSimulationResultTriggeredIndicesList = Array<number>;
 export const BreakdownSimulationResultTriggeredIndicesList =
   /*@__PURE__*/ S.Array(
     S.Number,
   ) as any as S.Schema<BreakdownSimulationResultTriggeredIndicesList>;
 
 /** Dates of points flagged as anomalies. */
-export type BreakdownSimulationResultTriggeredDatesList = ReadonlyArray<string>;
+export type BreakdownSimulationResultTriggeredDatesList = Array<string>;
 export const BreakdownSimulationResultTriggeredDatesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1275,7 +1273,7 @@ export const BreakdownSimulationResultSubDetectorScoresItemMap =
 
 /** Per-sub-detector scores for ensemble detectors. */
 export type BreakdownSimulationResultSubDetectorScoresList =
-  ReadonlyArray<BreakdownSimulationResultSubDetectorScoresItemMap>;
+  Array<BreakdownSimulationResultSubDetectorScoresItemMap>;
 export const BreakdownSimulationResultSubDetectorScoresList =
   /*@__PURE__*/ S.Array(
     BreakdownSimulationResultSubDetectorScoresItemMap,
@@ -1323,7 +1321,7 @@ export const BreakdownSimulationResult = /*@__PURE__*/ S.suspend(() =>
 
 /** Per-breakdown-value simulation results. Present only when the insight has breakdowns (up to 25 values). */
 export type AlertSimulateResponseBreakdownResultsList =
-  ReadonlyArray<BreakdownSimulationResult>;
+  Array<BreakdownSimulationResult>;
 export const AlertSimulateResponseBreakdownResultsList = /*@__PURE__*/ S.Array(
   BreakdownSimulationResult,
 ) as any as S.Schema<AlertSimulateResponseBreakdownResultsList>;
@@ -1368,7 +1366,7 @@ export const AlertSimulateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AlertSimulateResponse>;
 
 /** User IDs to subscribe to this alert. Note: Response returns full UserBasicSerializer object. */
-export type AlertsUpdateRequestSubscribedUsersList = ReadonlyArray<number>;
+export type AlertsUpdateRequestSubscribedUsersList = Array<number>;
 export const AlertsUpdateRequestSubscribedUsersList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<AlertsUpdateRequestSubscribedUsersList>;

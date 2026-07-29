@@ -214,7 +214,7 @@ export const DimensionValueType = /*@__PURE__*/ S.String;
 
 export interface DimensionMapping {
   Name: string;
-  DimensionValueType: DimensionValueType;
+  DimensionValueType: DimensionValueType | (string & {});
 }
 export const DimensionMapping = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Name: S.String, DimensionValueType: DimensionValueType }),
@@ -234,7 +234,7 @@ export const ScalarMeasureValueType = /*@__PURE__*/ S.String;
 export interface MultiMeasureAttributeMapping {
   SourceColumn: string;
   TargetMultiMeasureAttributeName?: string;
-  MeasureValueType: ScalarMeasureValueType;
+  MeasureValueType: ScalarMeasureValueType | (string & {});
 }
 export const MultiMeasureAttributeMapping = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -273,7 +273,7 @@ export interface MixedMeasureMapping {
   MeasureName?: string;
   SourceColumn?: string;
   TargetMeasureName?: string;
-  MeasureValueType: MeasureValueType;
+  MeasureValueType: MeasureValueType | (string & {});
   MultiMeasureAttributeMappings?: MultiMeasureAttributeMapping[];
 }
 export const MixedMeasureMapping = /*@__PURE__*/ S.suspend(() =>
@@ -341,7 +341,7 @@ export const S3EncryptionOption = /*@__PURE__*/ S.String;
 export interface S3Configuration {
   BucketName: string;
   ObjectKeyPrefix?: string;
-  EncryptionOption?: S3EncryptionOption;
+  EncryptionOption?: S3EncryptionOption | (string & {});
 }
 export const S3Configuration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

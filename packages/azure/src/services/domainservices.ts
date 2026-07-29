@@ -69,7 +69,7 @@ export const OperationEntity = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationEntity>;
 
 /** The list of operations. */
-export type OperationEntityListResultValueList = ReadonlyArray<OperationEntity>;
+export type OperationEntityListResultValueList = Array<OperationEntity>;
 export const OperationEntityListResultValueList = /*@__PURE__*/ S.Array(
   OperationEntity,
 ) as any as S.Schema<OperationEntityListResultValueList>;
@@ -118,7 +118,7 @@ export const ReplicaSetInput = /*@__PURE__*/ S.suspend(() =>
 
 /** List of ReplicaSets */
 export type DomainServicePropertiesInputReplicaSetsList =
-  ReadonlyArray<ReplicaSetInput>;
+  Array<ReplicaSetInput>;
 export const DomainServicePropertiesInputReplicaSetsList =
   /*@__PURE__*/ S.Array(
     ReplicaSetInput,
@@ -178,7 +178,7 @@ export const ForestTrust = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ForestTrust" }) as any as S.Schema<ForestTrust>;
 
 /** List of settings for Resource Forest */
-export type ResourceForestSettingsSettingsList = ReadonlyArray<ForestTrust>;
+export type ResourceForestSettingsSettingsList = Array<ForestTrust>;
 export const ResourceForestSettingsSettingsList = /*@__PURE__*/ S.Array(
   ForestTrust,
 ) as any as S.Schema<ResourceForestSettingsSettingsList>;
@@ -244,23 +244,29 @@ export const DomainSecuritySettingsChannelBinding = /*@__PURE__*/ S.String;
 /** Domain Security Settings */
 export interface DomainSecuritySettings {
   /** A flag to determine whether or not NtlmV1 is enabled or disabled. */
-  ntlmV1?: DomainSecuritySettingsNtlmV1;
+  ntlmV1?: DomainSecuritySettingsNtlmV1 | (string & {});
   /** A flag to determine whether or not TlsV1 is enabled or disabled. */
-  tlsV1?: DomainSecuritySettingsTlsV1;
+  tlsV1?: DomainSecuritySettingsTlsV1 | (string & {});
   /** A flag to determine whether or not SyncNtlmPasswords is enabled or disabled. */
-  syncNtlmPasswords?: DomainSecuritySettingsSyncNtlmPasswords;
+  syncNtlmPasswords?: DomainSecuritySettingsSyncNtlmPasswords | (string & {});
   /** A flag to determine whether or not SyncKerberosPasswords is enabled or disabled. */
-  syncKerberosPasswords?: DomainSecuritySettingsSyncKerberosPasswords;
+  syncKerberosPasswords?:
+    | DomainSecuritySettingsSyncKerberosPasswords
+    | (string & {});
   /** A flag to determine whether or not SyncOnPremPasswords is enabled or disabled. */
-  syncOnPremPasswords?: DomainSecuritySettingsSyncOnPremPasswords;
+  syncOnPremPasswords?:
+    | DomainSecuritySettingsSyncOnPremPasswords
+    | (string & {});
   /** A flag to determine whether or not KerberosRc4Encryption is enabled or disabled. */
-  kerberosRc4Encryption?: DomainSecuritySettingsKerberosRc4Encryption;
+  kerberosRc4Encryption?:
+    | DomainSecuritySettingsKerberosRc4Encryption
+    | (string & {});
   /** A flag to determine whether or not KerberosArmoring is enabled or disabled. */
-  kerberosArmoring?: DomainSecuritySettingsKerberosArmoring;
+  kerberosArmoring?: DomainSecuritySettingsKerberosArmoring | (string & {});
   /** A flag to determine whether or not LdapSigning is enabled or disabled. */
-  ldapSigning?: DomainSecuritySettingsLdapSigning;
+  ldapSigning?: DomainSecuritySettingsLdapSigning | (string & {});
   /** A flag to determine whether or not ChannelBinding is enabled or disabled. */
-  channelBinding?: DomainSecuritySettingsChannelBinding;
+  channelBinding?: DomainSecuritySettingsChannelBinding | (string & {});
 }
 export const DomainSecuritySettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -299,8 +305,7 @@ export type NotificationSettingsNotifyDcAdmins = "Enabled" | "Disabled";
 export const NotificationSettingsNotifyDcAdmins = /*@__PURE__*/ S.String;
 
 /** The list of additional recipients */
-export type NotificationSettingsAdditionalRecipientsList =
-  ReadonlyArray<string>;
+export type NotificationSettingsAdditionalRecipientsList = Array<string>;
 export const NotificationSettingsAdditionalRecipientsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -309,9 +314,9 @@ export const NotificationSettingsAdditionalRecipientsList =
 /** Settings for notification */
 export interface NotificationSettings {
   /** Should global admins be notified */
-  notifyGlobalAdmins?: NotificationSettingsNotifyGlobalAdmins;
+  notifyGlobalAdmins?: NotificationSettingsNotifyGlobalAdmins | (string & {});
   /** Should domain controller admins be notified */
-  notifyDcAdmins?: NotificationSettingsNotifyDcAdmins;
+  notifyDcAdmins?: NotificationSettingsNotifyDcAdmins | (string & {});
   /** The list of additional recipients */
   additionalRecipients?: NotificationSettingsAdditionalRecipientsList;
 }
@@ -339,7 +344,7 @@ export const ConfigDiagnosticsValidatorResultStatus = /*@__PURE__*/ S.String;
 
 /** List of domain resource property name or values used to compose a rich description. */
 export type ConfigDiagnosticsValidatorResultIssueDescriptionParamsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ConfigDiagnosticsValidatorResultIssueDescriptionParamsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -366,7 +371,7 @@ export const ConfigDiagnosticsValidatorResultIssue = /*@__PURE__*/ S.suspend(
 
 /** List of resource config validation issues. */
 export type ConfigDiagnosticsValidatorResultIssuesList =
-  ReadonlyArray<ConfigDiagnosticsValidatorResultIssue>;
+  Array<ConfigDiagnosticsValidatorResultIssue>;
 export const ConfigDiagnosticsValidatorResultIssuesList = /*@__PURE__*/ S.Array(
   ConfigDiagnosticsValidatorResultIssue,
 ) as any as S.Schema<ConfigDiagnosticsValidatorResultIssuesList>;
@@ -378,7 +383,7 @@ export interface ConfigDiagnosticsValidatorResult {
   /** Replica set location and subnet name */
   replicaSetSubnetDisplayName?: string;
   /** Status for individual validator after running diagnostics. */
-  status?: ConfigDiagnosticsValidatorResultStatus;
+  status?: ConfigDiagnosticsValidatorResultStatus | (string & {});
   /** List of resource config validation issues. */
   issues?: ConfigDiagnosticsValidatorResultIssuesList;
 }
@@ -395,7 +400,7 @@ export const ConfigDiagnosticsValidatorResult = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Configuration Diagnostics validator results. */
 export type ConfigDiagnosticsValidatorResultsList =
-  ReadonlyArray<ConfigDiagnosticsValidatorResult>;
+  Array<ConfigDiagnosticsValidatorResult>;
 export const ConfigDiagnosticsValidatorResultsList = /*@__PURE__*/ S.Array(
   ConfigDiagnosticsValidatorResult,
 ) as any as S.Schema<ConfigDiagnosticsValidatorResultsList>;
@@ -558,7 +563,7 @@ export const DomainServicesCreateOrUpdateResponseSystemData =
   }) as any as S.Schema<DomainServicesCreateOrUpdateResponseSystemData>;
 
 /** List of Domain Controller IP Address */
-export type ReplicaSetDomainControllerIpAddressList = ReadonlyArray<string>;
+export type ReplicaSetDomainControllerIpAddressList = Array<string>;
 export const ReplicaSetDomainControllerIpAddressList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ReplicaSetDomainControllerIpAddressList>;
@@ -581,7 +586,7 @@ export const HealthMonitor = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "HealthMonitor" }) as any as S.Schema<HealthMonitor>;
 
 /** List of Domain Health Monitors */
-export type ReplicaSetHealthMonitorsList = ReadonlyArray<HealthMonitor>;
+export type ReplicaSetHealthMonitorsList = Array<HealthMonitor>;
 export const ReplicaSetHealthMonitorsList = /*@__PURE__*/ S.Array(
   HealthMonitor,
 ) as any as S.Schema<ReplicaSetHealthMonitorsList>;
@@ -616,7 +621,7 @@ export const HealthAlert = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "HealthAlert" }) as any as S.Schema<HealthAlert>;
 
 /** List of Domain Health Alerts */
-export type ReplicaSetHealthAlertsList = ReadonlyArray<HealthAlert>;
+export type ReplicaSetHealthAlertsList = Array<HealthAlert>;
 export const ReplicaSetHealthAlertsList = /*@__PURE__*/ S.Array(
   HealthAlert,
 ) as any as S.Schema<ReplicaSetHealthAlertsList>;
@@ -662,7 +667,7 @@ export const ReplicaSet = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ReplicaSet" }) as any as S.Schema<ReplicaSet>;
 
 /** List of ReplicaSets */
-export type DomainServicePropertiesReplicaSetsList = ReadonlyArray<ReplicaSet>;
+export type DomainServicePropertiesReplicaSetsList = Array<ReplicaSet>;
 export const DomainServicePropertiesReplicaSetsList = /*@__PURE__*/ S.Array(
   ReplicaSet,
 ) as any as S.Schema<DomainServicePropertiesReplicaSetsList>;
@@ -1095,7 +1100,7 @@ export const DomainService = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DomainService" }) as any as S.Schema<DomainService>;
 
 /** the list of domain services. */
-export type DomainServiceListResultValueList = ReadonlyArray<DomainService>;
+export type DomainServiceListResultValueList = Array<DomainService>;
 export const DomainServiceListResultValueList = /*@__PURE__*/ S.Array(
   DomainService,
 ) as any as S.Schema<DomainServiceListResultValueList>;
@@ -1392,7 +1397,7 @@ export const ContainerAccount = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ContainerAccount>;
 
 /** The list of container accounts */
-export type OuContainerPropertiesAccountsList = ReadonlyArray<ContainerAccount>;
+export type OuContainerPropertiesAccountsList = Array<ContainerAccount>;
 export const OuContainerPropertiesAccountsList = /*@__PURE__*/ S.Array(
   ContainerAccount,
 ) as any as S.Schema<OuContainerPropertiesAccountsList>;
@@ -1726,7 +1731,7 @@ export const OuContainer = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "OuContainer" }) as any as S.Schema<OuContainer>;
 
 /** The list of OuContainer. */
-export type OuContainerListResultValueList = ReadonlyArray<OuContainer>;
+export type OuContainerListResultValueList = Array<OuContainer>;
 export const OuContainerListResultValueList = /*@__PURE__*/ S.Array(
   OuContainer,
 ) as any as S.Schema<OuContainerListResultValueList>;

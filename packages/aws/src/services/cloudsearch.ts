@@ -303,7 +303,7 @@ export interface AnalysisOptions {
   Stopwords?: string;
   StemmingDictionary?: string;
   JapaneseTokenizationDictionary?: string;
-  AlgorithmicStemming?: AlgorithmicStemming;
+  AlgorithmicStemming?: AlgorithmicStemming | (string & {});
 }
 export const AnalysisOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -318,7 +318,7 @@ export const AnalysisOptions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AnalysisOptions>;
 export interface AnalysisScheme {
   AnalysisSchemeName: string;
-  AnalysisSchemeLanguage: AnalysisSchemeLanguage;
+  AnalysisSchemeLanguage: AnalysisSchemeLanguage | (string & {});
   AnalysisOptions?: AnalysisOptions;
 }
 export const AnalysisScheme = /*@__PURE__*/ S.suspend(() =>
@@ -651,7 +651,7 @@ export const DateArrayOptions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DateArrayOptions>;
 export interface IndexField {
   IndexFieldName: string;
-  IndexFieldType: IndexFieldType;
+  IndexFieldType: IndexFieldType | (string & {});
   IntOptions?: IntOptions;
   DoubleOptions?: DoubleOptions;
   LiteralOptions?: LiteralOptions;
@@ -722,7 +722,7 @@ export const SuggesterFuzzyMatching = /*@__PURE__*/ S.String;
 
 export interface DocumentSuggesterOptions {
   SourceField: string;
-  FuzzyMatching?: SuggesterFuzzyMatching;
+  FuzzyMatching?: SuggesterFuzzyMatching | (string & {});
   SortExpression?: string;
 }
 export const DocumentSuggesterOptions = /*@__PURE__*/ S.suspend(() =>
@@ -1017,7 +1017,7 @@ export const TLSSecurityPolicy = /*@__PURE__*/ S.String;
 
 export interface DomainEndpointOptions {
   EnforceHTTPS?: boolean;
-  TLSSecurityPolicy?: TLSSecurityPolicy;
+  TLSSecurityPolicy?: TLSSecurityPolicy | (string & {});
 }
 export const DomainEndpointOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1186,7 +1186,7 @@ export type PartitionInstanceType =
 export const PartitionInstanceType = /*@__PURE__*/ S.String;
 
 export interface ScalingParameters {
-  DesiredInstanceType?: PartitionInstanceType;
+  DesiredInstanceType?: PartitionInstanceType | (string & {});
   DesiredReplicationCount?: number;
   DesiredPartitionCount?: number;
 }

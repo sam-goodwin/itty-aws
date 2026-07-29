@@ -148,7 +148,7 @@ export const ScopeName = /*@__PURE__*/ S.String;
 
 export type ScopeValue = string;
 export interface Scope {
-  name?: ScopeName;
+  name?: ScopeName | (string & {});
   value?: string;
 }
 export const Scope = /*@__PURE__*/ S.suspend(() =>
@@ -426,7 +426,7 @@ export type IncludeMemberAccounts = boolean;
 export type CpuVendorArchitecture = "AWS_ARM64" | "CURRENT";
 export const CpuVendorArchitecture = /*@__PURE__*/ S.String;
 
-export type CpuVendorArchitectures = CpuVendorArchitecture[];
+export type CpuVendorArchitectures = (CpuVendorArchitecture | (string & {}))[];
 export const CpuVendorArchitectures = /*@__PURE__*/ S.Array(
   CpuVendorArchitecture,
 );
@@ -1462,7 +1462,7 @@ export type ExternalMetricsSource =
 export const ExternalMetricsSource = /*@__PURE__*/ S.String;
 
 export interface ExternalMetricsPreference {
-  source?: ExternalMetricsSource;
+  source?: ExternalMetricsSource | (string & {});
 }
 export const ExternalMetricsPreference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ source: S.optional(ExternalMetricsSource) }),
@@ -1486,8 +1486,8 @@ export type CustomizableMetricHeadroom =
 export const CustomizableMetricHeadroom = /*@__PURE__*/ S.String;
 
 export interface CustomizableMetricParameters {
-  threshold?: CustomizableMetricThreshold;
-  headroom?: CustomizableMetricHeadroom;
+  threshold?: CustomizableMetricThreshold | (string & {});
+  headroom?: CustomizableMetricHeadroom | (string & {});
 }
 export const CustomizableMetricParameters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1498,7 +1498,7 @@ export const CustomizableMetricParameters = /*@__PURE__*/ S.suspend(() =>
   identifier: "CustomizableMetricParameters",
 }) as any as S.Schema<CustomizableMetricParameters>;
 export interface UtilizationPreference {
-  metricName?: CustomizableMetricName;
+  metricName?: CustomizableMetricName | (string & {});
   metricParameters?: CustomizableMetricParameters;
 }
 export const UtilizationPreference = /*@__PURE__*/ S.suspend(() =>

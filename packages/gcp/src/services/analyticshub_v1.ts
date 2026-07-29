@@ -106,7 +106,7 @@ export const RoutineRoutineTypeEnum = /*@__PURE__*/ S.String;
 /** Represents a bigquery routine. */
 export interface Routine {
   /** Required. The type of routine. */
-  routineType?: RoutineRoutineTypeEnum;
+  routineType?: RoutineRoutineTypeEnum | (string & {});
   /** Optional. The definition body of the routine. */
   definitionBody?: string;
 }
@@ -122,7 +122,7 @@ export interface QueryTemplate {
   /** Required. Human-readable display name of the QueryTemplate. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), ampersands (&) and can't start or end with spaces. Default value is an empty string. Max length: 63 bytes. */
   displayName?: string;
   /** Output only. The QueryTemplate lifecycle state. */
-  state?: QueryTemplateStateEnum;
+  state?: QueryTemplateStateEnum | (string & {});
   /** Output only. Timestamp when the QueryTemplate was created. */
   createTime?: string;
   /** Output only. Timestamp when the QueryTemplate was last modified. */
@@ -210,7 +210,7 @@ export interface DataExchange {
   /** Optional. Configurable data sharing environment option for a data exchange. */
   sharingEnvironmentConfig?: SharingEnvironmentConfig;
   /** Optional. Type of discovery on the discovery page for all the listings under this exchange. Updating this field also updates (overwrites) the discovery_type field for all the listings under this exchange. */
-  discoveryType?: DataExchangeDiscoveryTypeEnum;
+  discoveryType?: DataExchangeDiscoveryTypeEnum | (string & {});
   /** Optional. By default, false. If true, the DataExchange has an email sharing mandate enabled. */
   logLinkedDatasetQueryUserEmail?: boolean;
   /** Optional. Email or URL of the primary point of contact of the data exchange. Max Length: 1000 bytes. */
@@ -307,8 +307,9 @@ export type ListingCategoriesItemEnum =
   | "CATEGORY_GOOGLE_EARTH_ENGINE";
 export const ListingCategoriesItemEnum = /*@__PURE__*/ S.String;
 
-export type ListingCategoriesItemEnumList =
-  ReadonlyArray<ListingCategoriesItemEnum>;
+export type ListingCategoriesItemEnumList = Array<
+  ListingCategoriesItemEnum | (string & {})
+>;
 export const ListingCategoriesItemEnumList = /*@__PURE__*/ S.Array(
   ListingCategoriesItemEnum,
 ) as any as S.Schema<ListingCategoriesItemEnumList>;
@@ -341,7 +342,7 @@ export const DataProvider = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DataProvider" }) as any as S.Schema<DataProvider>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -369,7 +370,9 @@ export const StoredProcedureConfigAllowedStoredProcedureTypesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type StoredProcedureConfigAllowedStoredProcedureTypesItemEnumList =
-  ReadonlyArray<StoredProcedureConfigAllowedStoredProcedureTypesItemEnum>;
+  Array<
+    StoredProcedureConfigAllowedStoredProcedureTypesItemEnum | (string & {})
+  >;
 export const StoredProcedureConfigAllowedStoredProcedureTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     StoredProcedureConfigAllowedStoredProcedureTypesItemEnum,
@@ -401,7 +404,9 @@ export const GoogleCloudBigqueryAnalyticshubV1ListingCommercialInfoGoogleCloudMa
 /** Specifies the details of the Marketplace Data Product associated with the Listing. */
 export interface GoogleCloudBigqueryAnalyticshubV1ListingCommercialInfoGoogleCloudMarketplaceInfo {
   /** Output only. Commercial state of the Marketplace Data Product. */
-  commercialState?: GoogleCloudBigqueryAnalyticshubV1ListingCommercialInfoGoogleCloudMarketplaceInfoCommercialStateEnum;
+  commercialState?:
+    | GoogleCloudBigqueryAnalyticshubV1ListingCommercialInfoGoogleCloudMarketplaceInfoCommercialStateEnum
+    | (string & {});
   /** Output only. Resource name of the commercial service associated with the Marketplace Data Product. e.g. example.com */
   service?: string;
 }
@@ -454,9 +459,9 @@ export const ReplicaPrimaryStateEnum = /*@__PURE__*/ S.String;
 /** Represents the state of a replica of a shared dataset. It includes the geographic location of the replica and system-computed, output-only fields indicating its replication state and whether it is the primary replica. */
 export interface Replica {
   /** Output only. Assigned by Analytics Hub based on real BigQuery replication state. */
-  replicaState?: ReplicaReplicaStateEnum;
+  replicaState?: ReplicaReplicaStateEnum | (string & {});
   /** Output only. Indicates that this replica is the primary replica. */
-  primaryState?: ReplicaPrimaryStateEnum;
+  primaryState?: ReplicaPrimaryStateEnum | (string & {});
   /** Output only. The geographic location where the replica resides. See [BigQuery locations](https://cloud.google.com/bigquery/docs/locations) for supported locations. Eg. "us-central1". */
   location?: string;
 }
@@ -468,7 +473,7 @@ export const Replica = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Replica" }) as any as S.Schema<Replica>;
 
-export type ReplicaList = ReadonlyArray<Replica>;
+export type ReplicaList = Array<Replica>;
 export const ReplicaList = /*@__PURE__*/ S.Array(
   Replica,
 ) as any as S.Schema<ReplicaList>;
@@ -489,7 +494,7 @@ export const SelectedResource = /*@__PURE__*/ S.suspend(() =>
   identifier: "SelectedResource",
 }) as any as S.Schema<SelectedResource>;
 
-export type SelectedResourceList = ReadonlyArray<SelectedResource>;
+export type SelectedResourceList = Array<SelectedResource>;
 export const SelectedResourceList = /*@__PURE__*/ S.Array(
   SelectedResource,
 ) as any as S.Schema<SelectedResourceList>;
@@ -570,7 +575,7 @@ export interface Listing {
   /** Optional. Email or URL of the request access of the listing. Subscribers can use this reference to request access. Max Length: 1000 bytes. */
   requestAccess?: string;
   /** Output only. Listing shared asset type. */
-  resourceType?: ListingResourceTypeEnum;
+  resourceType?: ListingResourceTypeEnum | (string & {});
   /** Output only. The resource name of the listing. e.g. `projects/myproject/locations/us/dataExchanges/123/listings/456` */
   name?: string;
   /** Optional. Base64 encoded image representing the listing. Max Size: 3.0MiB Expected image dimensions are 512x512 pixels, however the API only performs validation on size of the encoded data. Note: For byte fields, the contents of the field are base64-encoded (which increases the size of the data by 33-36%) when using JSON on the wire. */
@@ -580,13 +585,13 @@ export interface Listing {
   /** Optional. Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF). Default value is an empty string. Max length: 2000 bytes. */
   description?: string;
   /** Optional. Type of discovery of the listing on the discovery page. */
-  discoveryType?: ListingDiscoveryTypeEnum;
+  discoveryType?: ListingDiscoveryTypeEnum | (string & {});
   /** Optional. If true, the listing is only available to get the resource metadata. Listing is non subscribable. */
   allowOnlyMetadataSharing?: boolean;
   /** Required. Human-readable display name of the listing. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), ampersands (&) and can't start or end with spaces. Default value is an empty string. Max length: 63 bytes. */
   displayName?: string;
   /** Output only. Current state of the listing. */
-  state?: ListingStateEnum;
+  state?: ListingStateEnum | (string & {});
   /** Optional. Email or URL of the primary point of contact of the listing. Max Length: 1000 bytes. */
   primaryContact?: string;
 }
@@ -758,7 +763,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -861,7 +866,7 @@ export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
 export interface AuditLogConfig {
   /** The log type that this config enables. */
-  logType?: AuditLogConfigLogTypeEnum;
+  logType?: AuditLogConfigLogTypeEnum | (string & {});
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
   exemptedMembers?: StringList;
 }
@@ -872,7 +877,7 @@ export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
-export type AuditLogConfigList = ReadonlyArray<AuditLogConfig>;
+export type AuditLogConfigList = Array<AuditLogConfig>;
 export const AuditLogConfigList = /*@__PURE__*/ S.Array(
   AuditLogConfig,
 ) as any as S.Schema<AuditLogConfigList>;
@@ -891,7 +896,7 @@ export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
-export type AuditConfigList = ReadonlyArray<AuditConfig>;
+export type AuditConfigList = Array<AuditConfig>;
 export const AuditConfigList = /*@__PURE__*/ S.Array(
   AuditConfig,
 ) as any as S.Schema<AuditConfigList>;
@@ -933,7 +938,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
-export type BindingList = ReadonlyArray<Binding>;
+export type BindingList = Array<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -1138,7 +1143,7 @@ export type SubscriptionResourceTypeEnum =
   | "PUBSUB_TOPIC";
 export const SubscriptionResourceTypeEnum = /*@__PURE__*/ S.String;
 
-export type LinkedResourceList = ReadonlyArray<LinkedResource>;
+export type LinkedResourceList = Array<LinkedResource>;
 export const LinkedResourceList = /*@__PURE__*/ S.Array(
   LinkedResource,
 ) as any as S.Schema<LinkedResourceList>;
@@ -1279,7 +1284,7 @@ export const ListOrganizationsLocationsDataExchangesRequest =
     identifier: "ListOrganizationsLocationsDataExchangesRequest",
   }) as any as S.Schema<ListOrganizationsLocationsDataExchangesRequest>;
 
-export type DataExchangeList = ReadonlyArray<DataExchange>;
+export type DataExchangeList = Array<DataExchange>;
 export const DataExchangeList = /*@__PURE__*/ S.Array(
   DataExchange,
 ) as any as S.Schema<DataExchangeList>;
@@ -1366,7 +1371,7 @@ export const ListProjectsLocationsDataExchangesListingsRequest =
     identifier: "ListProjectsLocationsDataExchangesListingsRequest",
   }) as any as S.Schema<ListProjectsLocationsDataExchangesListingsRequest>;
 
-export type ListingList = ReadonlyArray<Listing>;
+export type ListingList = Array<Listing>;
 export const ListingList = /*@__PURE__*/ S.Array(
   Listing,
 ) as any as S.Schema<ListingList>;
@@ -1412,7 +1417,7 @@ export const ListProjectsLocationsDataExchangesQueryTemplatesRequest =
     identifier: "ListProjectsLocationsDataExchangesQueryTemplatesRequest",
   }) as any as S.Schema<ListProjectsLocationsDataExchangesQueryTemplatesRequest>;
 
-export type QueryTemplateList = ReadonlyArray<QueryTemplate>;
+export type QueryTemplateList = Array<QueryTemplate>;
 export const QueryTemplateList = /*@__PURE__*/ S.Array(
   QueryTemplate,
 ) as any as S.Schema<QueryTemplateList>;
@@ -1461,7 +1466,7 @@ export const ListProjectsLocationsSubscriptionsRequest =
     identifier: "ListProjectsLocationsSubscriptionsRequest",
   }) as any as S.Schema<ListProjectsLocationsSubscriptionsRequest>;
 
-export type SubscriptionList = ReadonlyArray<Subscription>;
+export type SubscriptionList = Array<Subscription>;
 export const SubscriptionList = /*@__PURE__*/ S.Array(
   Subscription,
 ) as any as S.Schema<SubscriptionList>;
@@ -2009,7 +2014,7 @@ export const MessageTransform = /*@__PURE__*/ S.suspend(() =>
   identifier: "MessageTransform",
 }) as any as S.Schema<MessageTransform>;
 
-export type MessageTransformList = ReadonlyArray<MessageTransform>;
+export type MessageTransformList = Array<MessageTransform>;
 export const MessageTransformList = /*@__PURE__*/ S.Array(
   MessageTransform,
 ) as any as S.Schema<MessageTransformList>;

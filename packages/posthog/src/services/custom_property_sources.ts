@@ -232,7 +232,7 @@ export const CustomPropertySourcesListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CustomPropertySourcesListRequest>;
 
 export type PaginatedCustomPropertySourceListResultsList =
-  ReadonlyArray<CustomPropertySource>;
+  Array<CustomPropertySource>;
 export const PaginatedCustomPropertySourceListResultsList =
   /*@__PURE__*/ S.Array(
     CustomPropertySource,
@@ -334,7 +334,7 @@ export const CustomPropertySourcesRunsListRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CustomPropertySourcesRunsListRequest>;
 
 export type PaginatedCustomPropertySyncRunListResultsList =
-  ReadonlyArray<CustomPropertySyncRun>;
+  Array<CustomPropertySyncRun>;
 export const PaginatedCustomPropertySyncRunListResultsList =
   /*@__PURE__*/ S.Array(
     CustomPropertySyncRun,

@@ -82,12 +82,12 @@ export const EventFilterMetricsRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "EventFilterMetricsRetrieveRequest",
 }) as any as S.Schema<EventFilterMetricsRetrieveRequest>;
 
-export type AppMetricsResponseLabelsList = ReadonlyArray<string>;
+export type AppMetricsResponseLabelsList = Array<string>;
 export const AppMetricsResponseLabelsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AppMetricsResponseLabelsList>;
 
-export type AppMetricSeriesValuesList = ReadonlyArray<number>;
+export type AppMetricSeriesValuesList = Array<number>;
 export const AppMetricSeriesValuesList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<AppMetricSeriesValuesList>;
@@ -105,7 +105,7 @@ export const AppMetricSeries = /*@__PURE__*/ S.suspend(() =>
   identifier: "AppMetricSeries",
 }) as any as S.Schema<AppMetricSeries>;
 
-export type AppMetricsResponseSeriesList = ReadonlyArray<AppMetricSeries>;
+export type AppMetricsResponseSeriesList = Array<AppMetricSeries>;
 export const AppMetricsResponseSeriesList = /*@__PURE__*/ S.Array(
   AppMetricSeries,
 ) as any as S.Schema<AppMetricsResponseSeriesList>;

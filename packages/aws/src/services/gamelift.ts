@@ -290,7 +290,7 @@ export const RoutingStrategyType = /*@__PURE__*/ S.String;
 export type FleetId = string;
 export type FreeText = string;
 export interface RoutingStrategy {
-  Type?: RoutingStrategyType;
+  Type?: RoutingStrategyType | (string & {});
   FleetId?: string;
   Message?: string;
 }
@@ -503,7 +503,7 @@ export interface IpPermission {
   FromPort?: number;
   ToPort?: number;
   IpRange?: string | redacted.Redacted<string>;
-  Protocol?: IpProtocol;
+  Protocol?: IpProtocol | (string & {});
 }
 export const IpPermission = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -556,7 +556,7 @@ export const LogDestination = /*@__PURE__*/ S.String;
 
 export type LogGroupArnStringModel = string;
 export interface LogConfiguration {
-  LogDestination?: LogDestination;
+  LogDestination?: LogDestination | (string & {});
   S3BucketName?: string;
   LogGroupArn?: string;
 }
@@ -763,7 +763,7 @@ export const ContainerDependencyCondition = /*@__PURE__*/ S.String;
 
 export interface ContainerDependency {
   ContainerName?: string;
-  Condition?: ContainerDependencyCondition;
+  Condition?: ContainerDependencyCondition | (string & {});
 }
 export const ContainerDependency = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -784,7 +784,7 @@ export const ContainerMountPointAccessLevel = /*@__PURE__*/ S.String;
 export interface ContainerMountPoint {
   InstancePath?: string;
   ContainerPath?: string;
-  AccessLevel?: ContainerMountPointAccessLevel;
+  AccessLevel?: ContainerMountPointAccessLevel | (string & {});
 }
 export const ContainerMountPoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -815,7 +815,7 @@ export type ImageUriString = string;
 export interface ContainerPortRange {
   FromPort?: number;
   ToPort?: number;
-  Protocol?: IpProtocol;
+  Protocol?: IpProtocol | (string & {});
 }
 export const ContainerPortRange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -876,7 +876,7 @@ export type LinuxCapability =
   | "WAKE_ALARM";
 export const LinuxCapability = /*@__PURE__*/ S.String;
 
-export type LinuxCapabilityList = LinuxCapability[];
+export type LinuxCapabilityList = (LinuxCapability | (string & {}))[];
 export const LinuxCapabilityList = /*@__PURE__*/ S.Array(LinuxCapability);
 export interface LinuxCapabilities {
   Include?: LinuxCapability[];
@@ -1735,7 +1735,7 @@ export type CertificateType = "DISABLED" | "GENERATED";
 export const CertificateType = /*@__PURE__*/ S.String;
 
 export interface CertificateConfiguration {
-  CertificateType?: CertificateType;
+  CertificateType?: CertificateType | (string & {});
 }
 export const CertificateConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ CertificateType: S.optional(CertificateType) }),
@@ -1761,7 +1761,7 @@ export type GameServerIpProtocolSupported = "IPv4" | "DUAL_STACK";
 export const GameServerIpProtocolSupported = /*@__PURE__*/ S.String;
 
 export interface PlayerGatewayConfiguration {
-  GameServerIpProtocolSupported?: GameServerIpProtocolSupported;
+  GameServerIpProtocolSupported?: GameServerIpProtocolSupported | (string & {});
 }
 export const PlayerGatewayConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1860,7 +1860,7 @@ export type ScriptArn = string;
 export type FleetAction = "AUTO_SCALING";
 export const FleetAction = /*@__PURE__*/ S.String;
 
-export type FleetActionList = FleetAction[];
+export type FleetActionList = (FleetAction | (string & {}))[];
 export const FleetActionList = /*@__PURE__*/ S.Array(FleetAction);
 export interface FleetAttributes {
   FleetId?: string;
@@ -2110,7 +2110,7 @@ export const GameServerGroupInstanceType = /*@__PURE__*/ S.String;
 
 export type WeightedCapacity = string;
 export interface InstanceDefinition {
-  InstanceType?: GameServerGroupInstanceType;
+  InstanceType?: GameServerGroupInstanceType | (string & {});
   WeightedCapacity?: string;
 }
 export const InstanceDefinition = /*@__PURE__*/ S.suspend(() =>
@@ -2210,7 +2210,7 @@ export const GameServerGroupStatus = /*@__PURE__*/ S.String;
 export type GameServerGroupAction = "REPLACE_INSTANCE_TYPES";
 export const GameServerGroupAction = /*@__PURE__*/ S.String;
 
-export type GameServerGroupActions = GameServerGroupAction[];
+export type GameServerGroupActions = (GameServerGroupAction | (string & {}))[];
 export const GameServerGroupActions = /*@__PURE__*/ S.Array(
   GameServerGroupAction,
 );
@@ -2438,7 +2438,7 @@ export const FilterConfiguration = /*@__PURE__*/ S.suspend(() =>
 export type PriorityType = "LATENCY" | "COST" | "DESTINATION" | "LOCATION";
 export const PriorityType = /*@__PURE__*/ S.String;
 
-export type PriorityTypeList = PriorityType[];
+export type PriorityTypeList = (PriorityType | (string & {}))[];
 export const PriorityTypeList = /*@__PURE__*/ S.Array(PriorityType);
 export interface PriorityConfiguration {
   PriorityOrder?: PriorityType[];
@@ -3978,7 +3978,7 @@ export const ZeroCapacityStrategy = /*@__PURE__*/ S.String;
 
 export type ScaleInAfterInactivityMinutes = number;
 export interface ManagedCapacityConfiguration {
-  ZeroCapacityStrategy?: ZeroCapacityStrategy;
+  ZeroCapacityStrategy?: ZeroCapacityStrategy | (string & {});
   ScaleInAfterInactivityMinutes?: number;
 }
 export const ManagedCapacityConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -4066,9 +4066,9 @@ export type DeploymentImpairmentStrategy = "MAINTAIN" | "ROLLBACK";
 export const DeploymentImpairmentStrategy = /*@__PURE__*/ S.String;
 
 export interface DeploymentConfiguration {
-  ProtectionStrategy?: DeploymentProtectionStrategy;
+  ProtectionStrategy?: DeploymentProtectionStrategy | (string & {});
   MinimumHealthyPercentage?: number;
-  ImpairmentStrategy?: DeploymentImpairmentStrategy;
+  ImpairmentStrategy?: DeploymentImpairmentStrategy | (string & {});
 }
 export const DeploymentConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4733,7 +4733,7 @@ export const PlacementFallbackStrategy = /*@__PURE__*/ S.String;
 export type LocationOrderOverrideList = string[];
 export const LocationOrderOverrideList = /*@__PURE__*/ S.Array(S.String);
 export interface PriorityConfigurationOverride {
-  PlacementFallbackStrategy?: PlacementFallbackStrategy;
+  PlacementFallbackStrategy?: PlacementFallbackStrategy | (string & {});
   LocationOrder?: string[];
 }
 export const PriorityConfigurationOverride = /*@__PURE__*/ S.suspend(() =>

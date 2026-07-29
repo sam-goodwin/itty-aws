@@ -41,7 +41,7 @@ export const ClusteringConfigEventFiltersItemMap = /*@__PURE__*/ S.Record(
 
 /** PostHog property filters that scope automated clustering jobs. Empty array means no saved filters. */
 export type ClusteringConfigEventFiltersList =
-  ReadonlyArray<ClusteringConfigEventFiltersItemMap>;
+  Array<ClusteringConfigEventFiltersItemMap>;
 export const ClusteringConfigEventFiltersList = /*@__PURE__*/ S.Array(
   ClusteringConfigEventFiltersItemMap,
 ) as any as S.Schema<ClusteringConfigEventFiltersList>;
@@ -72,7 +72,7 @@ export const LlmAnalyticsClusteringConfigSetEventFiltersCreateRequestEventFilter
 
 /** PostHog property filters to save for automated clustering jobs. Pass an empty array to clear filters. */
 export type LlmAnalyticsClusteringConfigSetEventFiltersCreateRequestEventFiltersList =
-  ReadonlyArray<LlmAnalyticsClusteringConfigSetEventFiltersCreateRequestEventFiltersItemMap>;
+  Array<LlmAnalyticsClusteringConfigSetEventFiltersCreateRequestEventFiltersItemMap>;
 export const LlmAnalyticsClusteringConfigSetEventFiltersCreateRequestEventFiltersList =
   /*@__PURE__*/ S.Array(
     LlmAnalyticsClusteringConfigSetEventFiltersCreateRequestEventFiltersItemMap,
@@ -206,8 +206,7 @@ export const LlmAnalyticsClusteringJobsListRequest = /*@__PURE__*/ S.suspend(
   identifier: "LlmAnalyticsClusteringJobsListRequest",
 }) as any as S.Schema<LlmAnalyticsClusteringJobsListRequest>;
 
-export type PaginatedClusteringJobListResultsList =
-  ReadonlyArray<ClusteringJob>;
+export type PaginatedClusteringJobListResultsList = Array<ClusteringJob>;
 export const PaginatedClusteringJobListResultsList = /*@__PURE__*/ S.Array(
   ClusteringJob,
 ) as any as S.Schema<PaginatedClusteringJobListResultsList>;
@@ -338,7 +337,7 @@ export const LlmAnalyticsClusteringRunsCreateRequestEventFiltersItemMap =
 
 /** Property filters to scope which traces are included in clustering (PostHog standard format) */
 export type LlmAnalyticsClusteringRunsCreateRequestEventFiltersList =
-  ReadonlyArray<LlmAnalyticsClusteringRunsCreateRequestEventFiltersItemMap>;
+  Array<LlmAnalyticsClusteringRunsCreateRequestEventFiltersItemMap>;
 export const LlmAnalyticsClusteringRunsCreateRequestEventFiltersList =
   /*@__PURE__*/ S.Array(
     LlmAnalyticsClusteringRunsCreateRequestEventFiltersItemMap,
@@ -421,7 +420,7 @@ export const ClusteringRunRequestEventFiltersItemMap = /*@__PURE__*/ S.Record(
 
 /** Property filters to scope which traces are included in clustering (PostHog standard format) */
 export type ClusteringRunRequestEventFiltersList =
-  ReadonlyArray<ClusteringRunRequestEventFiltersItemMap>;
+  Array<ClusteringRunRequestEventFiltersItemMap>;
 export const ClusteringRunRequestEventFiltersList = /*@__PURE__*/ S.Array(
   ClusteringRunRequestEventFiltersItemMap,
 ) as any as S.Schema<ClusteringRunRequestEventFiltersList>;
@@ -834,8 +833,7 @@ export const LlmAnalyticsEvaluationReportsListRequest = /*@__PURE__*/ S.suspend(
   identifier: "LlmAnalyticsEvaluationReportsListRequest",
 }) as any as S.Schema<LlmAnalyticsEvaluationReportsListRequest>;
 
-export type PaginatedEvaluationReportListResultsList =
-  ReadonlyArray<EvaluationReport>;
+export type PaginatedEvaluationReportListResultsList = Array<EvaluationReport>;
 export const PaginatedEvaluationReportListResultsList = /*@__PURE__*/ S.Array(
   EvaluationReport,
 ) as any as S.Schema<PaginatedEvaluationReportListResultsList>;
@@ -1035,7 +1033,7 @@ export const EvaluationReportSection = /*@__PURE__*/ S.suspend(() =>
 
 /** Ordered narrative sections in the report. */
 export type EvaluationReportRunContentSectionsList =
-  ReadonlyArray<EvaluationReportSection>;
+  Array<EvaluationReportSection>;
 export const EvaluationReportRunContentSectionsList = /*@__PURE__*/ S.Array(
   EvaluationReportSection,
 ) as any as S.Schema<EvaluationReportRunContentSectionsList>;
@@ -1060,7 +1058,7 @@ export const EvaluationReportCitation = /*@__PURE__*/ S.suspend(() =>
 
 /** References grounding findings in the report. */
 export type EvaluationReportRunContentCitationsList =
-  ReadonlyArray<EvaluationReportCitation>;
+  Array<EvaluationReportCitation>;
 export const EvaluationReportRunContentCitationsList = /*@__PURE__*/ S.Array(
   EvaluationReportCitation,
 ) as any as S.Schema<EvaluationReportRunContentCitationsList>;
@@ -1187,7 +1185,7 @@ export type DeliveryStatusEnum =
 export const DeliveryStatusEnum = /*@__PURE__*/ S.String;
 
 /** Delivery error messages. Empty when all configured deliveries succeeded. */
-export type EvaluationReportRunDeliveryErrorsList = ReadonlyArray<string>;
+export type EvaluationReportRunDeliveryErrorsList = Array<string>;
 export const EvaluationReportRunDeliveryErrorsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EvaluationReportRunDeliveryErrorsList>;
@@ -1229,7 +1227,7 @@ export const EvaluationReportRun = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EvaluationReportRun>;
 
 export type PaginatedEvaluationReportRunListResultsList =
-  ReadonlyArray<EvaluationReportRun>;
+  Array<EvaluationReportRun>;
 export const PaginatedEvaluationReportRunListResultsList =
   /*@__PURE__*/ S.Array(
     EvaluationReportRun,
@@ -1348,7 +1346,7 @@ export const LLMModelInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LLMModelInfo" }) as any as S.Schema<LLMModelInfo>;
 
 /** Models supported for the requested provider. */
-export type LLMModelsListResponseModelsList = ReadonlyArray<LLMModelInfo>;
+export type LLMModelsListResponseModelsList = Array<LLMModelInfo>;
 export const LLMModelsListResponseModelsList = /*@__PURE__*/ S.Array(
   LLMModelInfo,
 ) as any as S.Schema<LLMModelsListResponseModelsList>;
@@ -1466,7 +1464,7 @@ export const LlmAnalyticsParserRecipesListRequest = /*@__PURE__*/ S.suspend(
   identifier: "LlmAnalyticsParserRecipesListRequest",
 }) as any as S.Schema<LlmAnalyticsParserRecipesListRequest>;
 
-export type PaginatedParserRecipeListResultsList = ReadonlyArray<ParserRecipe>;
+export type PaginatedParserRecipeListResultsList = Array<ParserRecipe>;
 export const PaginatedParserRecipeListResultsList = /*@__PURE__*/ S.Array(
   ParserRecipe,
 ) as any as S.Schema<PaginatedParserRecipeListResultsList>;
@@ -1647,7 +1645,7 @@ export const LlmAnalyticsProviderKeysListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LlmAnalyticsProviderKeysListRequest>;
 
 export type PaginatedLLMProviderKeyListOutputResultsList =
-  ReadonlyArray<LLMProviderKeyOutput>;
+  Array<LLMProviderKeyOutput>;
 export const PaginatedLLMProviderKeyListOutputResultsList =
   /*@__PURE__*/ S.Array(
     LLMProviderKeyOutput,
@@ -1961,8 +1959,7 @@ export const LlmAnalyticsReviewQueueItemsListRequest = /*@__PURE__*/ S.suspend(
   identifier: "LlmAnalyticsReviewQueueItemsListRequest",
 }) as any as S.Schema<LlmAnalyticsReviewQueueItemsListRequest>;
 
-export type PaginatedReviewQueueItemListResultsList =
-  ReadonlyArray<ReviewQueueItem>;
+export type PaginatedReviewQueueItemListResultsList = Array<ReviewQueueItem>;
 export const PaginatedReviewQueueItemListResultsList = /*@__PURE__*/ S.Array(
   ReviewQueueItem,
 ) as any as S.Schema<PaginatedReviewQueueItemListResultsList>;
@@ -2138,7 +2135,7 @@ export const LlmAnalyticsReviewQueuesListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "LlmAnalyticsReviewQueuesListRequest",
 }) as any as S.Schema<LlmAnalyticsReviewQueuesListRequest>;
 
-export type PaginatedReviewQueueListResultsList = ReadonlyArray<ReviewQueue>;
+export type PaginatedReviewQueueListResultsList = Array<ReviewQueue>;
 export const PaginatedReviewQueueListResultsList = /*@__PURE__*/ S.Array(
   ReviewQueue,
 ) as any as S.Schema<PaginatedReviewQueueListResultsList>;
@@ -2228,7 +2225,7 @@ export const CategoricalScoreOption = /*@__PURE__*/ S.suspend(() =>
 
 /** Ordered categorical options available to the scorer. */
 export type CategoricalScoreDefinitionConfigOptionsList =
-  ReadonlyArray<CategoricalScoreOption>;
+  Array<CategoricalScoreOption>;
 export const CategoricalScoreDefinitionConfigOptionsList =
   /*@__PURE__*/ S.Array(
     CategoricalScoreOption,
@@ -2242,7 +2239,7 @@ export interface CategoricalScoreDefinitionConfig {
   /** Ordered categorical options available to the scorer. */
   options?: CategoricalScoreDefinitionConfigOptionsList;
   /** Whether reviewers can select one option or multiple options. Defaults to `single`. * `single` - single * `multiple` - multiple */
-  selection_mode?: SelectionModeEnum;
+  selection_mode?: SelectionModeEnum | (string & {});
   /** Optional minimum number of options that can be selected when `selection_mode` is `multiple`. */
   min_selections?: number | null;
   /** Optional maximum number of options that can be selected when `selection_mode` is `multiple`. */
@@ -2296,7 +2293,7 @@ export interface ScoreDefinitionConfig {
   /** Ordered categorical options available to the scorer. */
   options?: CategoricalScoreDefinitionConfigOptionsList;
   /** Whether reviewers can select one option or multiple options. Defaults to `single`. * `single` - single * `multiple` - multiple */
-  selection_mode?: SelectionModeEnum;
+  selection_mode?: SelectionModeEnum | (string & {});
   /** Optional minimum number of options that can be selected when `selection_mode` is `multiple`. */
   min_selections?: number | null;
   /** Optional maximum number of options that can be selected when `selection_mode` is `multiple`. */
@@ -2436,8 +2433,7 @@ export const LlmAnalyticsScoreDefinitionsListRequest = /*@__PURE__*/ S.suspend(
   identifier: "LlmAnalyticsScoreDefinitionsListRequest",
 }) as any as S.Schema<LlmAnalyticsScoreDefinitionsListRequest>;
 
-export type PaginatedScoreDefinitionListResultsList =
-  ReadonlyArray<ScoreDefinition>;
+export type PaginatedScoreDefinitionListResultsList = Array<ScoreDefinition>;
 export const PaginatedScoreDefinitionListResultsList = /*@__PURE__*/ S.Array(
   ScoreDefinition,
 ) as any as S.Schema<PaginatedScoreDefinitionListResultsList>;
@@ -2541,7 +2537,7 @@ export const LlmAnalyticsScoreDefinitionsRetrieveRequest =
   }) as any as S.Schema<LlmAnalyticsScoreDefinitionsRetrieveRequest>;
 
 /** Categorical option keys selected for this score. */
-export type TraceReviewScoreWriteCategoricalValuesList = ReadonlyArray<string>;
+export type TraceReviewScoreWriteCategoricalValuesList = Array<string>;
 export const TraceReviewScoreWriteCategoricalValuesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<TraceReviewScoreWriteCategoricalValuesList>;
@@ -2574,7 +2570,7 @@ export const TraceReviewScoreWrite = /*@__PURE__*/ S.suspend(() =>
 
 /** Full desired score set for this review. Omit scorers you want to leave blank. */
 export type LlmAnalyticsTraceReviewsCreateRequestScoresList =
-  ReadonlyArray<TraceReviewScoreWrite>;
+  Array<TraceReviewScoreWrite>;
 export const LlmAnalyticsTraceReviewsCreateRequestScoresList =
   /*@__PURE__*/ S.Array(
     TraceReviewScoreWrite,
@@ -2612,7 +2608,7 @@ export const LlmAnalyticsTraceReviewsCreateRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<LlmAnalyticsTraceReviewsCreateRequest>;
 
 /** Categorical option keys selected for this score. */
-export type TraceReviewScoreCategoricalValuesList = ReadonlyArray<string>;
+export type TraceReviewScoreCategoricalValuesList = Array<string>;
 export const TraceReviewScoreCategoricalValuesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<TraceReviewScoreCategoricalValuesList>;
@@ -2663,7 +2659,7 @@ export const TraceReviewScore = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TraceReviewScore>;
 
 /** Saved scorer values for this review. */
-export type TraceReviewScoresList = ReadonlyArray<TraceReviewScore>;
+export type TraceReviewScoresList = Array<TraceReviewScore>;
 export const TraceReviewScoresList = /*@__PURE__*/ S.Array(
   TraceReviewScore,
 ) as any as S.Schema<TraceReviewScoresList>;
@@ -2771,7 +2767,7 @@ export const LlmAnalyticsTraceReviewsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "LlmAnalyticsTraceReviewsListRequest",
 }) as any as S.Schema<LlmAnalyticsTraceReviewsListRequest>;
 
-export type PaginatedTraceReviewListResultsList = ReadonlyArray<TraceReview>;
+export type PaginatedTraceReviewListResultsList = Array<TraceReview>;
 export const PaginatedTraceReviewListResultsList = /*@__PURE__*/ S.Array(
   TraceReview,
 ) as any as S.Schema<PaginatedTraceReviewListResultsList>;
@@ -2795,7 +2791,7 @@ export const PaginatedTraceReviewList = /*@__PURE__*/ S.suspend(() =>
 
 /** Full desired score set for this review. Omit scorers you want to leave blank. */
 export type LlmAnalyticsTraceReviewsPartialUpdateRequestScoresList =
-  ReadonlyArray<TraceReviewScoreWrite>;
+  Array<TraceReviewScoreWrite>;
 export const LlmAnalyticsTraceReviewsPartialUpdateRequestScoresList =
   /*@__PURE__*/ S.Array(
     TraceReviewScoreWrite,

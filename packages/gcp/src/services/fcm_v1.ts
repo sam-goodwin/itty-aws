@@ -106,7 +106,7 @@ export const ApnsConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ApnsConfig" }) as any as S.Schema<ApnsConfig>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -179,11 +179,13 @@ export interface AndroidNotification {
   /** Set the vibration pattern to use. Pass in an array of [protobuf.Duration](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration) to turn on or off the vibrator. The first value indicates the `Duration` to wait before turning the vibrator on. The next value indicates the `Duration` to keep the vibrator on. Subsequent values alternate between `Duration` to turn the vibrator off and to turn the vibrator on. If `vibrate_timings` is set and `default_vibrate_timings` is set to `true`, the default value is used instead of the user-specified `vibrate_timings`. */
   vibrateTimings?: StringList;
   /** Setting to control when a notification may be proxied. */
-  proxy?: AndroidNotificationProxyEnum;
+  proxy?: AndroidNotificationProxyEnum | (string & {});
   /** Sets the number of items this notification represents. May be displayed as a badge count for launchers that support badging.See [Notification Badge](https://developer.android.com/training/notify-user/badges). For example, this might be useful if you're using just one notification to represent multiple new messages but you want the count here to represent the number of total new messages. If zero or unspecified, systems that support badging use the default, which is to increment a number displayed on the long-press menu each time a new notification arrives. */
   notificationCount?: number;
   /** Set the relative priority for this notification. Priority is an indication of how much of the user's attention should be consumed by this notification. Low-priority notifications may be hidden from the user in certain situations, while the user might be interrupted for a higher-priority notification. This parameter affects notification priority only on devices running Android 7.1 (API level 25) and lower. On Android 8.0 (API level 26) and higher, priority is ignored in favor of channel [importance](https://developer.android.com/develop/ui/views/notifications/channels#importance). Note this priority differs from `AndroidMessagePriority`. This priority is processed by the client after the message has been delivered, whereas [AndroidMessagePriority](https://firebase.google.com/docs/reference/fcm/rest/v1/projects.messages#androidmessagepriority) is an FCM concept that controls when the message is delivered. */
-  notificationPriority?: AndroidNotificationNotificationPriorityEnum;
+  notificationPriority?:
+    | AndroidNotificationNotificationPriorityEnum
+    | (string & {});
   /** The action associated with a user click on the notification. If specified, an activity with a matching intent filter is launched when a user clicks on the notification. */
   clickAction?: string;
   /** Variable string values to be used in place of the format specifiers in title_loc_key to use to localize the title text to the user's current localization. See [Formatting and Styling](https://goo.gl/MalYE3) for more information. */
@@ -225,7 +227,7 @@ export interface AndroidNotification {
   /** The key to the title string in the app's string resources to use to localize the title text to the user's current localization. See [String Resources](https://goo.gl/NdFZGI) for more information. */
   titleLocKey?: string;
   /** Set the [Notification.visibility](https://developer.android.com/reference/android/app/Notification.html#visibility) of the notification. */
-  visibility?: AndroidNotificationVisibilityEnum;
+  visibility?: AndroidNotificationVisibilityEnum | (string & {});
   /** The sound to play when the device receives the notification. Supports "default" or the filename of a sound resource bundled in the app. Sound files must reside in /res/raw/. */
   sound?: string;
 }
@@ -302,7 +304,7 @@ export interface AndroidConfig {
   /** Optional. If set to true, messages will be allowed to be delivered to the app while the device is in bandwidth constrained mode. This should only be enabled when the app has been tested to properly handle messages in bandwidth constrained mode. */
   bandwidthConstrainedOk?: boolean;
   /** Message priority. Can take "normal" and "high" values. For more information, see [Setting the priority of a message](https://firebase.google.com/docs/cloud-messaging/customize-messages/setting-message-priority). */
-  priority?: AndroidConfigPriorityEnum;
+  priority?: AndroidConfigPriorityEnum | (string & {});
 }
 export const AndroidConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

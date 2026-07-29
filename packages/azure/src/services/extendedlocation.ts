@@ -55,8 +55,7 @@ export const CustomLocationPropertiesAuthentication = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CustomLocationPropertiesAuthentication>;
 
 /** Contains the reference to the add-on that contains charts to deploy CRDs and operators. */
-export type CustomLocationPropertiesClusterExtensionIdsList =
-  ReadonlyArray<string>;
+export type CustomLocationPropertiesClusterExtensionIdsList = Array<string>;
 export const CustomLocationPropertiesClusterExtensionIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -77,7 +76,7 @@ export interface CustomLocationProperties {
   /** Connected Cluster or AKS Cluster. The Custom Locations RP will perform a checkAccess API for listAdminCredentials permissions. */
   hostResourceId?: string;
   /** Type of host the Custom Locations is referencing (Kubernetes, etc...). */
-  hostType?: CustomLocationPropertiesHostType;
+  hostType?: CustomLocationPropertiesHostType | (string & {});
   /** Kubernetes namespace that will be created on the specified cluster. */
   namespace?: string;
   /** Provisioning State for the Custom Location. */
@@ -511,7 +510,7 @@ export const CustomLocation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CustomLocation" }) as any as S.Schema<CustomLocation>;
 
 /** The list of Custom Locations. */
-export type CustomLocationListResultValueList = ReadonlyArray<CustomLocation>;
+export type CustomLocationListResultValueList = Array<CustomLocation>;
 export const CustomLocationListResultValueList = /*@__PURE__*/ S.Array(
   CustomLocation,
 ) as any as S.Schema<CustomLocationListResultValueList>;
@@ -600,7 +599,7 @@ export const EnabledResourceTypePropertiesTypesMetadataItem =
 
 /** Metadata of the Resource Type */
 export type EnabledResourceTypePropertiesTypesMetadataList =
-  ReadonlyArray<EnabledResourceTypePropertiesTypesMetadataItem>;
+  Array<EnabledResourceTypePropertiesTypesMetadataItem>;
 export const EnabledResourceTypePropertiesTypesMetadataList =
   /*@__PURE__*/ S.Array(
     EnabledResourceTypePropertiesTypesMetadataItem,
@@ -700,7 +699,7 @@ export const EnabledResourceType = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of EnabledResourceTypes available for a customLocation. */
 export type EnabledResourceTypesListResultValueList =
-  ReadonlyArray<EnabledResourceType>;
+  Array<EnabledResourceType>;
 export const EnabledResourceTypesListResultValueList = /*@__PURE__*/ S.Array(
   EnabledResourceType,
 ) as any as S.Schema<EnabledResourceTypesListResultValueList>;
@@ -782,7 +781,7 @@ export const CustomLocationOperation = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of customLocationOperation */
 export type CustomLocationOperationsListValueList =
-  ReadonlyArray<CustomLocationOperation>;
+  Array<CustomLocationOperation>;
 export const CustomLocationOperationsListValueList = /*@__PURE__*/ S.Array(
   CustomLocationOperation,
 ) as any as S.Schema<CustomLocationOperationsListValueList>;

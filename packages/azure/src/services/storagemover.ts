@@ -21,7 +21,7 @@ export interface Time {
   /** The hour element of the time. Allowed values range from 0 (start of the selected day) to 24 (end of the selected day). Hour value 24 cannot be combined with any other minute value but 0. */
   hour: number;
   /** The minute element of the time. Allowed values are 0 and 30. If not specified, its value defaults to 0. */
-  minute?: TimeMinute;
+  minute?: TimeMinute | (number & {});
 }
 export const Time = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -42,7 +42,9 @@ export type DayOfWeek =
 export const DayOfWeek = /*@__PURE__*/ S.String;
 
 /** The set of days of week for the schedule recurrence. A day must not be specified more than once in a recurrence. */
-export type UploadLimitWeeklyRecurrenceDaysList = ReadonlyArray<DayOfWeek>;
+export type UploadLimitWeeklyRecurrenceDaysList = Array<
+  DayOfWeek | (string & {})
+>;
 export const UploadLimitWeeklyRecurrenceDaysList = /*@__PURE__*/ S.Array(
   DayOfWeek,
 ) as any as S.Schema<UploadLimitWeeklyRecurrenceDaysList>;
@@ -71,7 +73,7 @@ export const UploadLimitWeeklyRecurrence = /*@__PURE__*/ S.suspend(() =>
 
 /** The set of weekly repeating recurrences of the WAN-link upload limit schedule. */
 export type UploadLimitScheduleWeeklyRecurrencesList =
-  ReadonlyArray<UploadLimitWeeklyRecurrence>;
+  Array<UploadLimitWeeklyRecurrence>;
 export const UploadLimitScheduleWeeklyRecurrencesList = /*@__PURE__*/ S.Array(
   UploadLimitWeeklyRecurrence,
 ) as any as S.Schema<UploadLimitScheduleWeeklyRecurrencesList>;
@@ -422,7 +424,7 @@ export const Agent = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Agent" }) as any as S.Schema<Agent>;
 
 /** The Agent items on this page */
-export type AgentListValueList = ReadonlyArray<Agent>;
+export type AgentListValueList = Array<Agent>;
 export const AgentListValueList = /*@__PURE__*/ S.Array(
   Agent,
 ) as any as S.Schema<AgentListValueList>;
@@ -510,7 +512,7 @@ export const AgentsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AgentsUpdateResponse>;
 
 /** List of job definitions associated with this connection. */
-export type ConnectionPropertiesInputJobListList = ReadonlyArray<string>;
+export type ConnectionPropertiesInputJobListList = Array<string>;
 export const ConnectionPropertiesInputJobListList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ConnectionPropertiesInputJobListList>;
@@ -575,7 +577,7 @@ export type ConnectionStatus =
 export const ConnectionStatus = /*@__PURE__*/ S.String;
 
 /** List of job definitions associated with this connection. */
-export type ConnectionPropertiesJobListList = ReadonlyArray<string>;
+export type ConnectionPropertiesJobListList = Array<string>;
 export const ConnectionPropertiesJobListList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ConnectionPropertiesJobListList>;
@@ -771,7 +773,7 @@ export const Connection = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Connection" }) as any as S.Schema<Connection>;
 
 /** The Connection items on this page */
-export type ConnectionListValueList = ReadonlyArray<Connection>;
+export type ConnectionListValueList = Array<Connection>;
 export const ConnectionListValueList = /*@__PURE__*/ S.Array(
   Connection,
 ) as any as S.Schema<ConnectionListValueList>;
@@ -1175,7 +1177,7 @@ export const Endpoint = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Endpoint" }) as any as S.Schema<Endpoint>;
 
 /** The Endpoint items on this page */
-export type EndpointListValueList = ReadonlyArray<Endpoint>;
+export type EndpointListValueList = Array<Endpoint>;
 export const EndpointListValueList = /*@__PURE__*/ S.Array(
   Endpoint,
 ) as any as S.Schema<EndpointListValueList>;
@@ -1324,7 +1326,7 @@ export const JobDefinitionPropertiesInputSourceTargetMap =
   }) as any as S.Schema<JobDefinitionPropertiesInputSourceTargetMap>;
 
 /** List of connections associated to this job */
-export type JobDefinitionPropertiesInputConnectionsList = ReadonlyArray<string>;
+export type JobDefinitionPropertiesInputConnectionsList = Array<string>;
 export const JobDefinitionPropertiesInputConnectionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1349,7 +1351,7 @@ export interface SchedulerTime {
   /** The hour element of the time. Allowed values range from 0 (start of the selected day) to 24 (end of the selected day). Hour value 24 cannot be combined with any other minute value but 0. */
   hour?: number;
   /** The minute element of the time. Allowed values are 0 and 30. If not specified, its value defaults to 0. */
-  minute?: SchedulerTimeMinute;
+  minute?: SchedulerTimeMinute | (number & {});
 }
 export const SchedulerTime = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1359,13 +1361,13 @@ export const SchedulerTime = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SchedulerTime" }) as any as S.Schema<SchedulerTime>;
 
 /** Days of the week for weekly schedules */
-export type ScheduleInfoDaysOfWeekList = ReadonlyArray<string>;
+export type ScheduleInfoDaysOfWeekList = Array<string>;
 export const ScheduleInfoDaysOfWeekList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ScheduleInfoDaysOfWeekList>;
 
 /** Days of the month for monthly schedules */
-export type ScheduleInfoDaysOfMonthList = ReadonlyArray<number>;
+export type ScheduleInfoDaysOfMonthList = Array<number>;
 export const ScheduleInfoDaysOfMonthList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<ScheduleInfoDaysOfMonthList>;
@@ -1373,7 +1375,7 @@ export const ScheduleInfoDaysOfMonthList = /*@__PURE__*/ S.Array(
 /** Schedule information for the Job Definition. */
 export interface ScheduleInfo {
   /** Type of schedule — Monthly, Weekly, or Daily */
-  frequency?: Frequency;
+  frequency?: Frequency | (string & {});
   /** Whether the schedule is currently active */
   isActive?: boolean;
   /** Time of day to execute (hours and minutes) */
@@ -1613,7 +1615,7 @@ export const SourceTargetMap = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SourceTargetMap>;
 
 export type JobDefinitionPropertiesSourceTargetMapValueList =
-  ReadonlyArray<SourceTargetMap>;
+  Array<SourceTargetMap>;
 export const JobDefinitionPropertiesSourceTargetMapValueList =
   /*@__PURE__*/ S.Array(
     SourceTargetMap,
@@ -1633,7 +1635,7 @@ export const JobDefinitionPropertiesSourceTargetMap = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<JobDefinitionPropertiesSourceTargetMap>;
 
 /** List of connections associated to this job */
-export type JobDefinitionPropertiesConnectionsList = ReadonlyArray<string>;
+export type JobDefinitionPropertiesConnectionsList = Array<string>;
 export const JobDefinitionPropertiesConnectionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<JobDefinitionPropertiesConnectionsList>;
@@ -1903,7 +1905,7 @@ export const JobDefinition = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "JobDefinition" }) as any as S.Schema<JobDefinition>;
 
 /** The JobDefinition items on this page */
-export type JobDefinitionListValueList = ReadonlyArray<JobDefinition>;
+export type JobDefinitionListValueList = Array<JobDefinition>;
 export const JobDefinitionListValueList = /*@__PURE__*/ S.Array(
   JobDefinition,
 ) as any as S.Schema<JobDefinitionListValueList>;
@@ -2031,8 +2033,7 @@ export const JobDefinitionsStopJobRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<JobDefinitionsStopJobRequest>;
 
 /** List of connections associated to this job */
-export type JobDefinitionUpdatePropertiesConnectionsList =
-  ReadonlyArray<string>;
+export type JobDefinitionUpdatePropertiesConnectionsList = Array<string>;
 export const JobDefinitionUpdatePropertiesConnectionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2214,7 +2215,7 @@ export const JobRunWarning = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "JobRunWarning" }) as any as S.Schema<JobRunWarning>;
 
 /** Warning details. */
-export type JobRunPropertiesWarningsList = ReadonlyArray<JobRunWarning>;
+export type JobRunPropertiesWarningsList = Array<JobRunWarning>;
 export const JobRunPropertiesWarningsList = /*@__PURE__*/ S.Array(
   JobRunWarning,
 ) as any as S.Schema<JobRunPropertiesWarningsList>;
@@ -2401,7 +2402,7 @@ export const JobRun = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "JobRun" }) as any as S.Schema<JobRun>;
 
 /** The JobRun items on this page */
-export type JobRunListValueList = ReadonlyArray<JobRun>;
+export type JobRunListValueList = Array<JobRun>;
 export const JobRunListValueList = /*@__PURE__*/ S.Array(
   JobRun,
 ) as any as S.Schema<JobRunListValueList>;
@@ -2488,7 +2489,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = ReadonlyArray<Operation>;
+export type OperationsListResponseValueList = Array<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;
@@ -2728,7 +2729,7 @@ export const Project = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Project" }) as any as S.Schema<Project>;
 
 /** The Project items on this page */
-export type ProjectListValueList = ReadonlyArray<Project>;
+export type ProjectListValueList = Array<Project>;
 export const ProjectListValueList = /*@__PURE__*/ S.Array(
   Project,
 ) as any as S.Schema<ProjectListValueList>;
@@ -3082,7 +3083,7 @@ export const StorageMover = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StorageMover" }) as any as S.Schema<StorageMover>;
 
 /** The StorageMover items on this page */
-export type StorageMoverListValueList = ReadonlyArray<StorageMover>;
+export type StorageMoverListValueList = Array<StorageMover>;
 export const StorageMoverListValueList = /*@__PURE__*/ S.Array(
   StorageMover,
 ) as any as S.Schema<StorageMoverListValueList>;

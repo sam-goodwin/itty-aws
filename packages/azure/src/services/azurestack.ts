@@ -359,8 +359,7 @@ export const CustomerSubscription = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CustomerSubscription>;
 
 /** List of customer subscriptions. */
-export type CustomerSubscriptionListValueList =
-  ReadonlyArray<CustomerSubscription>;
+export type CustomerSubscriptionListValueList = Array<CustomerSubscription>;
 export const CustomerSubscriptionListValueList = /*@__PURE__*/ S.Array(
   CustomerSubscription,
 ) as any as S.Schema<CustomerSubscriptionListValueList>;
@@ -404,8 +403,7 @@ export const DeploymentLicenseCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeploymentLicenseCreateRequest>;
 
 /** A license chain that can be used to temporarily activate an Azure Stack device. */
-export type DeploymentLicenseResponseTemporaryLicenseChainList =
-  ReadonlyArray<string>;
+export type DeploymentLicenseResponseTemporaryLicenseChainList = Array<string>;
 export const DeploymentLicenseResponseTemporaryLicenseChainList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -481,7 +479,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** Array of operations */
-export type OperationListValueList = ReadonlyArray<Operation>;
+export type OperationListValueList = Array<Operation>;
 export const OperationListValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationListValueList>;
@@ -566,7 +564,7 @@ export const ProductLink = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ProductLink" }) as any as S.Schema<ProductLink>;
 
 /** Additional links available for this product. */
-export type ProductNestedPropertiesLinksList = ReadonlyArray<ProductLink>;
+export type ProductNestedPropertiesLinksList = Array<ProductLink>;
 export const ProductNestedPropertiesLinksList = /*@__PURE__*/ S.Array(
   ProductLink,
 ) as any as S.Schema<ProductNestedPropertiesLinksList>;
@@ -599,7 +597,7 @@ export type CompatibilityIssue =
 export const CompatibilityIssue = /*@__PURE__*/ S.String;
 
 /** List of all issues found */
-export type CompatibilityIssuesList = ReadonlyArray<CompatibilityIssue>;
+export type CompatibilityIssuesList = Array<CompatibilityIssue>;
 export const CompatibilityIssuesList = /*@__PURE__*/ S.Array(
   CompatibilityIssue,
 ) as any as S.Schema<CompatibilityIssuesList>;
@@ -816,7 +814,7 @@ export const Product = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Product" }) as any as S.Schema<Product>;
 
 /** List of products. */
-export type ProductListValueList = ReadonlyArray<Product>;
+export type ProductListValueList = Array<Product>;
 export const ProductListValueList = /*@__PURE__*/ S.Array(
   Product,
 ) as any as S.Schema<ProductListValueList>;
@@ -936,8 +934,7 @@ export const DataDiskImage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DataDiskImage" }) as any as S.Schema<DataDiskImage>;
 
 /** List of attached data disks. */
-export type ExtendedProductPropertiesDataDiskImagesList =
-  ReadonlyArray<DataDiskImage>;
+export type ExtendedProductPropertiesDataDiskImagesList = Array<DataDiskImage>;
 export const ExtendedProductPropertiesDataDiskImagesList =
   /*@__PURE__*/ S.Array(
     DataDiskImage,
@@ -1443,7 +1440,7 @@ export const Registration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Registration" }) as any as S.Schema<Registration>;
 
 /** List of Registrations */
-export type RegistrationListValueList = ReadonlyArray<Registration>;
+export type RegistrationListValueList = Array<Registration>;
 export const RegistrationListValueList = /*@__PURE__*/ S.Array(
   Registration,
 ) as any as S.Schema<RegistrationListValueList>;

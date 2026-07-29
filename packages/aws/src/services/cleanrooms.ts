@@ -287,7 +287,7 @@ export const ParameterType = /*@__PURE__*/ S.String;
 export type ParameterValue = string;
 export interface AnalysisParameter {
   name: string;
-  type: ParameterType;
+  type: ParameterType | (string & {});
   defaultValue?: string;
 }
 export const AnalysisParameter = /*@__PURE__*/ S.suspend(() =>
@@ -347,7 +347,7 @@ export type ErrorMessageType = "DETAILED";
 export const ErrorMessageType = /*@__PURE__*/ S.String;
 
 export interface ErrorMessageConfiguration {
-  type: ErrorMessageType;
+  type: ErrorMessageType | (string & {});
 }
 export const ErrorMessageConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ type: ErrorMessageType }),
@@ -361,7 +361,7 @@ export const SyntheticDataColumnType = /*@__PURE__*/ S.String;
 
 export interface SyntheticDataColumnProperties {
   columnName: string;
-  columnType: SyntheticDataColumnType;
+  columnType: SyntheticDataColumnType | (string & {});
   isPredictiveValue: boolean;
 }
 export const SyntheticDataColumnProperties = /*@__PURE__*/ S.suspend(() =>
@@ -533,7 +533,10 @@ export const AnalysisMethod = /*@__PURE__*/ S.String;
 export type SelectedAnalysisMethod = "DIRECT_QUERY" | "DIRECT_JOB";
 export const SelectedAnalysisMethod = /*@__PURE__*/ S.String;
 
-export type SelectedAnalysisMethods = SelectedAnalysisMethod[];
+export type SelectedAnalysisMethods = (
+  | SelectedAnalysisMethod
+  | (string & {})
+)[];
 export const SelectedAnalysisMethods = /*@__PURE__*/ S.Array(
   SelectedAnalysisMethod,
 );
@@ -743,7 +746,7 @@ export interface AnalysisRuleList {
   joinColumns: string[];
   allowedJoinOperators?: string[];
   listColumns: string[];
-  additionalAnalyses?: AdditionalAnalyses;
+  additionalAnalyses?: AdditionalAnalyses | (string & {});
 }
 export const AnalysisRuleList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -796,7 +799,7 @@ export interface AnalysisRuleAggregation {
   dimensionColumns: string[];
   scalarFunctions: string[];
   outputConstraints: AggregationConstraint[];
-  additionalAnalyses?: AdditionalAnalyses;
+  additionalAnalyses?: AdditionalAnalyses | (string & {});
 }
 export const AnalysisRuleAggregation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -840,7 +843,7 @@ export const DifferentialPrivacyConfiguration = /*@__PURE__*/ S.suspend(() =>
 export interface AnalysisRuleCustom {
   allowedAnalyses: string[];
   allowedAnalysisProviders?: string[];
-  additionalAnalyses?: AdditionalAnalyses;
+  additionalAnalyses?: AdditionalAnalyses | (string & {});
   disallowedOutputColumns?: string[];
   differentialPrivacy?: DifferentialPrivacyConfiguration;
 }
@@ -1239,14 +1242,14 @@ export const CreateAnalysisTemplateOutput = /*@__PURE__*/ S.suspend(() =>
 export type MemberAbility = "CAN_QUERY" | "CAN_RECEIVE_RESULTS" | "CAN_RUN_JOB";
 export const MemberAbility = /*@__PURE__*/ S.String;
 
-export type MemberAbilities = MemberAbility[];
+export type MemberAbilities = (MemberAbility | (string & {}))[];
 export const MemberAbilities = /*@__PURE__*/ S.Array(MemberAbility);
 export type CustomMLMemberAbility =
   | "CAN_RECEIVE_MODEL_OUTPUT"
   | "CAN_RECEIVE_INFERENCE_OUTPUT";
 export const CustomMLMemberAbility = /*@__PURE__*/ S.String;
 
-export type CustomMLMemberAbilities = CustomMLMemberAbility[];
+export type CustomMLMemberAbilities = (CustomMLMemberAbility | (string & {}))[];
 export const CustomMLMemberAbilities = /*@__PURE__*/ S.Array(
   CustomMLMemberAbility,
 );
@@ -1380,7 +1383,10 @@ export type AutoApprovedChangeType =
   | "REVOKE_RECEIVE_RESULTS_ABILITY";
 export const AutoApprovedChangeType = /*@__PURE__*/ S.String;
 
-export type AutoApprovedChangeTypeList = AutoApprovedChangeType[];
+export type AutoApprovedChangeTypeList = (
+  | AutoApprovedChangeType
+  | (string & {})
+)[];
 export const AutoApprovedChangeTypeList = /*@__PURE__*/ S.Array(
   AutoApprovedChangeType,
 );
@@ -1420,7 +1426,7 @@ export type SupportedS3Region =
   | "mx-central-1";
 export const SupportedS3Region = /*@__PURE__*/ S.String;
 
-export type AllowedResultRegions = SupportedS3Region[];
+export type AllowedResultRegions = (SupportedS3Region | (string & {}))[];
 export const AllowedResultRegions = /*@__PURE__*/ S.Array(SupportedS3Region);
 export interface CreateCollaborationInput {
   members: MemberSpecification[];
@@ -1801,7 +1807,7 @@ export const CommercialRegion = /*@__PURE__*/ S.String;
 export type GlueTableName = string;
 export type GlueDatabaseName = string;
 export interface GlueTableReference {
-  region?: CommercialRegion;
+  region?: CommercialRegion | (string & {});
   tableName: string;
   databaseName: string;
 }
@@ -1862,7 +1868,7 @@ export type AthenaDatabaseName = string;
 export type AthenaTableName = string;
 export type AthenaCatalogName = string;
 export interface AthenaTableReference {
-  region?: CommercialRegion;
+  region?: CommercialRegion | (string & {});
   workGroup: string;
   outputLocation?: string;
   databaseName: string;
@@ -2411,7 +2417,7 @@ export const ResultFormat = /*@__PURE__*/ S.String;
 
 export type KeyPrefix = string;
 export interface ProtectedQueryS3OutputConfiguration {
-  resultFormat: ResultFormat;
+  resultFormat: ResultFormat | (string & {});
   bucket: string;
   keyPrefix?: string;
   singleFileOutput?: boolean;
@@ -2667,9 +2673,9 @@ export type AutoRefreshMode = "ENABLED" | "DISABLED";
 export const AutoRefreshMode = /*@__PURE__*/ S.String;
 
 export interface BudgetParameter {
-  type: AccessBudgetType;
+  type: AccessBudgetType | (string & {});
   budget: number;
-  autoRefresh?: AutoRefreshMode;
+  autoRefresh?: AutoRefreshMode | (string & {});
 }
 export const BudgetParameter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4018,7 +4024,7 @@ export const WorkerComputeConfigurationProperties = /*@__PURE__*/ S.Union([
   S.Struct({ spark: SparkProperties }),
 ]);
 export interface ProtectedJobWorkerComputeConfiguration {
-  type: ProtectedJobWorkerComputeType;
+  type: ProtectedJobWorkerComputeType | (string & {});
   number: number;
   properties?: WorkerComputeConfigurationProperties;
 }
@@ -4315,7 +4321,7 @@ export type WorkerComputeType = "CR.1X" | "CR.4X";
 export const WorkerComputeType = /*@__PURE__*/ S.String;
 
 export interface WorkerComputeConfiguration {
-  type?: WorkerComputeType;
+  type?: WorkerComputeType | (string & {});
   number?: number;
   properties?: WorkerComputeConfigurationProperties;
 }

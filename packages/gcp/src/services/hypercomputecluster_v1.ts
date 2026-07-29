@@ -110,7 +110,9 @@ export interface NewSpotInstancesConfig {
   /** Required. Immutable. Name of the Compute Engine [machine type](https://cloud.google.com/compute/docs/machine-resource) to use, e.g. `n2-standard-2`. */
   machineType?: string;
   /** Optional. Termination action for the instance. If not specified, Compute Engine sets the termination action to DELETE. */
-  terminationAction?: NewSpotInstancesConfigTerminationActionEnum;
+  terminationAction?:
+    | NewSpotInstancesConfigTerminationActionEnum
+    | (string & {});
 }
 export const NewSpotInstancesConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -343,7 +345,9 @@ export interface GcsAutoclassConfig {
   /** Required. Enables Auto-class feature. */
   enabled?: boolean;
   /** Optional. Terminal storage class of the autoclass bucket */
-  terminalStorageClass?: GcsAutoclassConfigTerminalStorageClassEnum;
+  terminalStorageClass?:
+    | GcsAutoclassConfigTerminalStorageClassEnum
+    | (string & {});
 }
 export const GcsAutoclassConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -372,7 +376,7 @@ export const GcsHierarchicalNamespaceConfig = /*@__PURE__*/ S.suspend(() =>
 /** When set in a StorageResourceConfig, indicates that a new [Google Cloud Storage](https://cloud.google.com/storage) bucket should be created. */
 export interface NewBucketConfig {
   /** Optional. Immutable. If set, uses the provided storage class as the bucket's default storage class. */
-  storageClass?: NewBucketConfigStorageClassEnum;
+  storageClass?: NewBucketConfigStorageClassEnum | (string & {});
   /** Required. Immutable. Name of the Cloud Storage bucket to create. */
   bucket?: string;
   /** Optional. Immutable. If set, indicates that the bucket should use [Autoclass](https://cloud.google.com/storage/docs/autoclass). */
@@ -477,7 +481,7 @@ export const FileShareConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "FileShareConfig",
 }) as any as S.Schema<FileShareConfig>;
 
-export type FileShareConfigList = ReadonlyArray<FileShareConfig>;
+export type FileShareConfigList = Array<FileShareConfig>;
 export const FileShareConfigList = /*@__PURE__*/ S.Array(
   FileShareConfig,
 ) as any as S.Schema<FileShareConfigList>;
@@ -493,13 +497,13 @@ export interface NewFilestoreConfig {
   /** Optional. Immutable. Description of the instance. Maximum of 2048 characters. */
   description?: string;
   /** Required. Immutable. Service tier to use for the instance. */
-  tier?: NewFilestoreConfigTierEnum;
+  tier?: NewFilestoreConfigTierEnum | (string & {});
   /** Required. Immutable. Name of the Filestore instance to create, in the format `projects/{project}/locations/{location}/instances/{instance}`. */
   filestore?: string;
   /** Required. Immutable. File system shares on the instance. Exactly one file share must be specified. */
   fileShares?: FileShareConfigList;
   /** Optional. Immutable. Access protocol to use for all file shares in the instance. Defaults to NFS V3 if not set. */
-  protocol?: NewFilestoreConfigProtocolEnum;
+  protocol?: NewFilestoreConfigProtocolEnum | (string & {});
 }
 export const NewFilestoreConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -602,7 +606,7 @@ export const StorageConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "StorageConfig" }) as any as S.Schema<StorageConfig>;
 
-export type StorageConfigList = ReadonlyArray<StorageConfig>;
+export type StorageConfigList = Array<StorageConfig>;
 export const StorageConfigList = /*@__PURE__*/ S.Array(
   StorageConfig,
 ) as any as S.Schema<StorageConfigList>;
@@ -634,7 +638,7 @@ export const ComputeInstance = /*@__PURE__*/ S.suspend(() =>
   identifier: "ComputeInstance",
 }) as any as S.Schema<ComputeInstance>;
 
-export type ComputeInstanceList = ReadonlyArray<ComputeInstance>;
+export type ComputeInstanceList = Array<ComputeInstance>;
 export const ComputeInstanceList = /*@__PURE__*/ S.Array(
   ComputeInstance,
 ) as any as S.Schema<ComputeInstanceList>;
@@ -679,7 +683,7 @@ export const SlurmLoginNodes = /*@__PURE__*/ S.suspend(() =>
   identifier: "SlurmLoginNodes",
 }) as any as S.Schema<SlurmLoginNodes>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -698,7 +702,7 @@ export const SlurmPartition = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SlurmPartition" }) as any as S.Schema<SlurmPartition>;
 
-export type SlurmPartitionList = ReadonlyArray<SlurmPartition>;
+export type SlurmPartitionList = Array<SlurmPartition>;
 export const SlurmPartitionList = /*@__PURE__*/ S.Array(
   SlurmPartition,
 ) as any as S.Schema<SlurmPartitionList>;
@@ -748,7 +752,7 @@ export const SlurmNodeSet = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SlurmNodeSet" }) as any as S.Schema<SlurmNodeSet>;
 
-export type SlurmNodeSetList = ReadonlyArray<SlurmNodeSet>;
+export type SlurmNodeSetList = Array<SlurmNodeSet>;
 export const SlurmNodeSetList = /*@__PURE__*/ S.Array(
   SlurmNodeSet,
 ) as any as S.Schema<SlurmNodeSetList>;
@@ -864,7 +868,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -1058,7 +1062,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = ReadonlyArray<Location>;
+export type LocationList = Array<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -1110,7 +1114,7 @@ export const ListProjectsLocationsClustersRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsClustersRequest",
 }) as any as S.Schema<ListProjectsLocationsClustersRequest>;
 
-export type ClusterList = ReadonlyArray<Cluster>;
+export type ClusterList = Array<Cluster>;
 export const ClusterList = /*@__PURE__*/ S.Array(
   Cluster,
 ) as any as S.Schema<ClusterList>;
@@ -1165,7 +1169,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type OperationList = ReadonlyArray<Operation>;
+export type OperationList = Array<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;

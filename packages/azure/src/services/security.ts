@@ -30,7 +30,7 @@ export const PrivateEndpointServiceConnectionStatus = /*@__PURE__*/ S.String;
 /** A collection of information about the state of the connection between service consumer and provider. */
 export interface PrivateLinkServiceConnectionState {
   /** Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service. */
-  status?: PrivateEndpointServiceConnectionStatus;
+  status?: PrivateEndpointServiceConnectionStatus | (string & {});
   /** The reason for approval/rejection of the connection. */
   description?: string;
   /** A message indicating if changes on the service provider require any updates on the consumer. */
@@ -138,8 +138,7 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SystemData" }) as any as S.Schema<SystemData>;
 
 /** The group ids for the private endpoint resource. */
-export type PrivateEndpointConnectionPropertiesGroupIdsList =
-  ReadonlyArray<string>;
+export type PrivateEndpointConnectionPropertiesGroupIdsList = Array<string>;
 export const PrivateEndpointConnectionPropertiesGroupIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -358,7 +357,7 @@ export const PrivateEndpointConnectionListResultValueItem =
 
 /** The PrivateEndpointConnection items on this page */
 export type PrivateEndpointConnectionListResultValueList =
-  ReadonlyArray<PrivateEndpointConnectionListResultValueItem>;
+  Array<PrivateEndpointConnectionListResultValueItem>;
 export const PrivateEndpointConnectionListResultValueList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnectionListResultValueItem,
@@ -410,7 +409,7 @@ export const PrivateLinkResourcesGetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The private link resource required member names. */
 export type PrivateLinkResourcesGetResponsePropertiesRequiredMembersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PrivateLinkResourcesGetResponsePropertiesRequiredMembersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -418,7 +417,7 @@ export const PrivateLinkResourcesGetResponsePropertiesRequiredMembersList =
 
 /** The private link resource private link DNS zone name. */
 export type PrivateLinkResourcesGetResponsePropertiesRequiredZoneNamesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PrivateLinkResourcesGetResponsePropertiesRequiredZoneNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -499,7 +498,7 @@ export const PrivateLinkResourcesListRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The private link resource required member names. */
 export type PrivateLinkGroupResourcePropertiesRequiredMembersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PrivateLinkGroupResourcePropertiesRequiredMembersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -507,7 +506,7 @@ export const PrivateLinkGroupResourcePropertiesRequiredMembersList =
 
 /** The private link resource private link DNS zone name. */
 export type PrivateLinkGroupResourcePropertiesRequiredZoneNamesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PrivateLinkGroupResourcePropertiesRequiredZoneNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -563,7 +562,7 @@ export const PrivateLinkGroupResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The PrivateLinkGroupResource items on this page */
 export type PrivateLinkGroupResourceListResultValueList =
-  ReadonlyArray<PrivateLinkGroupResource>;
+  Array<PrivateLinkGroupResource>;
 export const PrivateLinkGroupResourceListResultValueList =
   /*@__PURE__*/ S.Array(
     PrivateLinkGroupResource,
@@ -700,7 +699,7 @@ export const PrivateLinkPropertiesPrivateEndpointConnectionsItem =
 
 /** List of private endpoint connections associated with this private link. Each connection represents a private endpoint from a customer's virtual network. */
 export type PrivateLinkPropertiesPrivateEndpointConnectionsList =
-  ReadonlyArray<PrivateLinkPropertiesPrivateEndpointConnectionsItem>;
+  Array<PrivateLinkPropertiesPrivateEndpointConnectionsItem>;
 export const PrivateLinkPropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     PrivateLinkPropertiesPrivateEndpointConnectionsItem,
@@ -708,7 +707,7 @@ export const PrivateLinkPropertiesPrivateEndpointConnectionsList =
 
 /** List of private link resources available for connection. For Defender services, this typically includes the 'containers' group with 'api' and regional data endpoints. */
 export type PrivateLinkPropertiesPrivateLinkResourcesList =
-  ReadonlyArray<PrivateLinkGroupResource>;
+  Array<PrivateLinkGroupResource>;
 export const PrivateLinkPropertiesPrivateLinkResourcesList =
   /*@__PURE__*/ S.Array(
     PrivateLinkGroupResource,
@@ -931,7 +930,7 @@ export const PrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateLinkResource>;
 
 /** The PrivateLinkResource items on this page */
-export type PrivateLinksListValueList = ReadonlyArray<PrivateLinkResource>;
+export type PrivateLinksListValueList = Array<PrivateLinkResource>;
 export const PrivateLinksListValueList = /*@__PURE__*/ S.Array(
   PrivateLinkResource,
 ) as any as S.Schema<PrivateLinksListValueList>;

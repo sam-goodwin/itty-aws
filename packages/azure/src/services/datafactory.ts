@@ -34,7 +34,7 @@ export type RunQueryFilterOperator = "Equals" | "NotEquals" | "In" | "NotIn";
 export const RunQueryFilterOperator = /*@__PURE__*/ S.String;
 
 /** List of filter values. */
-export type RunQueryFilterValuesList = ReadonlyArray<string>;
+export type RunQueryFilterValuesList = Array<string>;
 export const RunQueryFilterValuesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RunQueryFilterValuesList>;
@@ -58,7 +58,7 @@ export const RunQueryFilter = /*@__PURE__*/ S.suspend(() =>
 
 /** List of filters. */
 export type ActivityRunsQueryByPipelineRunRequestFiltersList =
-  ReadonlyArray<RunQueryFilter>;
+  Array<RunQueryFilter>;
 export const ActivityRunsQueryByPipelineRunRequestFiltersList =
   /*@__PURE__*/ S.Array(
     RunQueryFilter,
@@ -99,7 +99,7 @@ export const RunQueryOrderBy = /*@__PURE__*/ S.suspend(() =>
 
 /** List of OrderBy option. */
 export type ActivityRunsQueryByPipelineRunRequestOrderByList =
-  ReadonlyArray<RunQueryOrderBy>;
+  Array<RunQueryOrderBy>;
 export const ActivityRunsQueryByPipelineRunRequestOrderByList =
   /*@__PURE__*/ S.Array(
     RunQueryOrderBy,
@@ -196,7 +196,7 @@ export const ActivityRun = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ActivityRun" }) as any as S.Schema<ActivityRun>;
 
 /** List of activity runs. */
-export type ActivityRunsQueryResponseValueList = ReadonlyArray<ActivityRun>;
+export type ActivityRunsQueryResponseValueList = Array<ActivityRun>;
 export const ActivityRunsQueryResponseValueList = /*@__PURE__*/ S.Array(
   ActivityRun,
 ) as any as S.Schema<ActivityRunsQueryResponseValueList>;
@@ -247,7 +247,7 @@ export const MapperTableSchema = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MapperTableSchema>;
 
 /** List of columns for the source table. */
-export type MapperTablePropertiesSchemaList = ReadonlyArray<MapperTableSchema>;
+export type MapperTablePropertiesSchemaList = Array<MapperTableSchema>;
 export const MapperTablePropertiesSchemaList = /*@__PURE__*/ S.Array(
   MapperTableSchema,
 ) as any as S.Schema<MapperTablePropertiesSchemaList>;
@@ -270,7 +270,7 @@ export const MapperDslConnectorProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** List of name/value pairs for connection properties. */
 export type MapperTablePropertiesDslConnectorPropertiesList =
-  ReadonlyArray<MapperDslConnectorProperties>;
+  Array<MapperDslConnectorProperties>;
 export const MapperTablePropertiesDslConnectorPropertiesList =
   /*@__PURE__*/ S.Array(
     MapperDslConnectorProperties,
@@ -309,8 +309,7 @@ export const MapperTable = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MapperTable" }) as any as S.Schema<MapperTable>;
 
 /** List of source tables for a source connection. */
-export type MapperSourceConnectionsInfoSourceEntitiesList =
-  ReadonlyArray<MapperTable>;
+export type MapperSourceConnectionsInfoSourceEntitiesList = Array<MapperTable>;
 export const MapperSourceConnectionsInfoSourceEntitiesList =
   /*@__PURE__*/ S.Array(
     MapperTable,
@@ -332,7 +331,7 @@ export const LinkedServiceReferenceParametersMap = /*@__PURE__*/ S.Record(
 /** Linked service reference type. */
 export interface LinkedServiceReference {
   /** Linked service reference type. */
-  type: Type;
+  type: Type | (string & {});
   /** Reference LinkedService name. */
   referenceName: string;
   /** Arguments for LinkedService. */
@@ -354,7 +353,7 @@ export const ConnectionType = /*@__PURE__*/ S.String;
 
 /** List of name/value pairs for connection properties. */
 export type MapperConnectionCommonDslConnectorPropertiesList =
-  ReadonlyArray<MapperDslConnectorProperties>;
+  Array<MapperDslConnectorProperties>;
 export const MapperConnectionCommonDslConnectorPropertiesList =
   /*@__PURE__*/ S.Array(
     MapperDslConnectorProperties,
@@ -367,7 +366,7 @@ export interface MapperConnection {
   /** Type of the linked service e.g.: AzureBlobFS. */
   linkedServiceType?: string;
   /** Type of connection via linked service or dataset. */
-  type: ConnectionType;
+  type: ConnectionType | (string & {});
   /** A boolean indicating whether linked service is of type inline dataset. Currently only inline datasets are supported. */
   isInlineDataset?: boolean;
   /** List of name/value pairs for connection properties. */
@@ -405,14 +404,13 @@ export const MapperSourceConnectionsInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** List of sources connections that can be used as sources in the CDC. */
 export type ChangeDataCaptureSourceConnectionsInfoList =
-  ReadonlyArray<MapperSourceConnectionsInfo>;
+  Array<MapperSourceConnectionsInfo>;
 export const ChangeDataCaptureSourceConnectionsInfoList = /*@__PURE__*/ S.Array(
   MapperSourceConnectionsInfo,
 ) as any as S.Schema<ChangeDataCaptureSourceConnectionsInfoList>;
 
 /** List of source tables for a target connection. */
-export type MapperTargetConnectionsInfoTargetEntitiesList =
-  ReadonlyArray<MapperTable>;
+export type MapperTargetConnectionsInfoTargetEntitiesList = Array<MapperTable>;
 export const MapperTargetConnectionsInfoTargetEntitiesList =
   /*@__PURE__*/ S.Array(
     MapperTable,
@@ -423,7 +421,7 @@ export interface MapperConnectionReference {
   /** Name of the connection */
   connectionName?: string;
   /** Type of connection via linked service or dataset. */
-  type?: ConnectionType;
+  type?: ConnectionType | (string & {});
 }
 export const MapperConnectionReference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -459,7 +457,7 @@ export const MapperAttributeReference = /*@__PURE__*/ S.suspend(() =>
 
 /** List of references for source columns. It is used for 'Derived' and 'Aggregate' type mappings only. */
 export type MapperAttributeMappingAttributeReferencesList =
-  ReadonlyArray<MapperAttributeReference>;
+  Array<MapperAttributeReference>;
 export const MapperAttributeMappingAttributeReferencesList =
   /*@__PURE__*/ S.Array(
     MapperAttributeReference,
@@ -470,7 +468,7 @@ export interface MapperAttributeMapping {
   /** Name of the target column. */
   name?: string;
   /** Type of the CDC attribute mapping. Note: 'Advanced' mapping type is also saved as 'Derived'. */
-  type?: MappingType;
+  type?: MappingType | (string & {});
   /** Name of the function used for 'Aggregate' and 'Derived' (except 'Advanced') type mapping. */
   functionName?: string;
   /** Expression used for 'Aggregate' and 'Derived' type mapping. */
@@ -497,7 +495,7 @@ export const MapperAttributeMapping = /*@__PURE__*/ S.suspend(() =>
 
 /** List of attribute mappings. */
 export type MapperAttributeMappingsAttributeMappingsList =
-  ReadonlyArray<MapperAttributeMapping>;
+  Array<MapperAttributeMapping>;
 export const MapperAttributeMappingsAttributeMappingsList =
   /*@__PURE__*/ S.Array(
     MapperAttributeMapping,
@@ -543,15 +541,14 @@ export const DataMapperMapping = /*@__PURE__*/ S.suspend(() =>
 
 /** List of table mappings. */
 export type MapperTargetConnectionsInfoDataMapperMappingsList =
-  ReadonlyArray<DataMapperMapping>;
+  Array<DataMapperMapping>;
 export const MapperTargetConnectionsInfoDataMapperMappingsList =
   /*@__PURE__*/ S.Array(
     DataMapperMapping,
   ) as any as S.Schema<MapperTargetConnectionsInfoDataMapperMappingsList>;
 
 /** List of relationship info among the tables. */
-export type MapperTargetConnectionsInfoRelationshipsList =
-  ReadonlyArray<unknown>;
+export type MapperTargetConnectionsInfoRelationshipsList = Array<unknown>;
 export const MapperTargetConnectionsInfoRelationshipsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -583,7 +580,7 @@ export const MapperTargetConnectionsInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** List of target connections that can be used as sources in the CDC. */
 export type ChangeDataCaptureTargetConnectionsInfoList =
-  ReadonlyArray<MapperTargetConnectionsInfo>;
+  Array<MapperTargetConnectionsInfo>;
 export const ChangeDataCaptureTargetConnectionsInfoList = /*@__PURE__*/ S.Array(
   MapperTargetConnectionsInfo,
 ) as any as S.Schema<ChangeDataCaptureTargetConnectionsInfoList>;
@@ -595,7 +592,7 @@ export const FrequencyType = /*@__PURE__*/ S.String;
 /** CDC policy recurrence details. */
 export interface MapperPolicyRecurrence {
   /** Frequency of period in terms of 'Hour', 'Minute' or 'Second'. */
-  frequency?: FrequencyType;
+  frequency?: FrequencyType | (string & {});
   /** Actual interval value as per chosen frequency. */
   interval?: number;
 }
@@ -901,7 +898,7 @@ export const ChangeDataCaptureResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The ChangeDataCaptureResource items on this page */
 export type ChangeDataCaptureListResponseValueList =
-  ReadonlyArray<ChangeDataCaptureResource>;
+  Array<ChangeDataCaptureResource>;
 export const ChangeDataCaptureListResponseValueList = /*@__PURE__*/ S.Array(
   ChangeDataCaptureResource,
 ) as any as S.Schema<ChangeDataCaptureListResponseValueList>;
@@ -1028,7 +1025,7 @@ export const ChangeDataCaptureStopResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ChangeDataCaptureStopResponse>;
 
 /** List of tags that can be used for describing the Credential. */
-export type CredentialAnnotationsList = ReadonlyArray<unknown>;
+export type CredentialAnnotationsList = Array<unknown>;
 export const CredentialAnnotationsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<CredentialAnnotationsList>;
@@ -1255,7 +1252,7 @@ export const CredentialResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CredentialResource>;
 
 /** The CredentialResource items on this page */
-export type CredentialListResponseValueList = ReadonlyArray<CredentialResource>;
+export type CredentialListResponseValueList = Array<CredentialResource>;
 export const CredentialListResponseValueList = /*@__PURE__*/ S.Array(
   CredentialResource,
 ) as any as S.Schema<CredentialListResponseValueList>;
@@ -1277,7 +1274,7 @@ export const CredentialListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CredentialListResponse>;
 
 /** List of tags that can be used for describing the data flow. */
-export type DataFlowAnnotationsList = ReadonlyArray<unknown>;
+export type DataFlowAnnotationsList = Array<unknown>;
 export const DataFlowAnnotationsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<DataFlowAnnotationsList>;
@@ -1331,7 +1328,7 @@ export const DataFlowDebugResource = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Data flows */
 export type DataFlowDebugSessionAddDataFlowRequestDataFlowsList =
-  ReadonlyArray<DataFlowDebugResource>;
+  Array<DataFlowDebugResource>;
 export const DataFlowDebugSessionAddDataFlowRequestDataFlowsList =
   /*@__PURE__*/ S.Array(
     DataFlowDebugResource,
@@ -1351,7 +1348,7 @@ export const ParameterType = /*@__PURE__*/ S.String;
 /** Definition of a single parameter for an entity. */
 export interface ParameterSpecification {
   /** Parameter type. */
-  type: ParameterType;
+  type: ParameterType | (string & {});
   /** Default value of parameter. */
   defaultValue?: unknown;
 }
@@ -1374,7 +1371,7 @@ export const DatasetParametersMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<DatasetParametersMap>;
 
 /** List of tags that can be used for describing the Dataset. */
-export type DatasetAnnotationsList = ReadonlyArray<unknown>;
+export type DatasetAnnotationsList = Array<unknown>;
 export const DatasetAnnotationsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<DatasetAnnotationsList>;
@@ -1440,7 +1437,7 @@ export const DatasetDebugResource = /*@__PURE__*/ S.suspend(() =>
 
 /** List of datasets. */
 export type DataFlowDebugSessionAddDataFlowRequestDatasetsList =
-  ReadonlyArray<DatasetDebugResource>;
+  Array<DatasetDebugResource>;
 export const DataFlowDebugSessionAddDataFlowRequestDatasetsList =
   /*@__PURE__*/ S.Array(
     DatasetDebugResource,
@@ -1462,7 +1459,7 @@ export const IntegrationRuntimeReferenceParametersMap = /*@__PURE__*/ S.Record(
 /** Integration runtime reference type. */
 export interface IntegrationRuntimeReference {
   /** Type of integration runtime. */
-  type: IntegrationRuntimeReferenceType;
+  type: IntegrationRuntimeReferenceType | (string & {});
   /** Reference integration runtime name. */
   referenceName: string;
   /** Arguments for integration runtime. */
@@ -1488,7 +1485,7 @@ export const LinkedServiceParametersMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<LinkedServiceParametersMap>;
 
 /** List of tags that can be used for describing the linked service. */
-export type LinkedServiceAnnotationsList = ReadonlyArray<unknown>;
+export type LinkedServiceAnnotationsList = Array<unknown>;
 export const LinkedServiceAnnotationsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<LinkedServiceAnnotationsList>;
@@ -1537,7 +1534,7 @@ export const LinkedServiceDebugResource = /*@__PURE__*/ S.suspend(() =>
 
 /** List of linked services. */
 export type DataFlowDebugSessionAddDataFlowRequestLinkedServicesList =
-  ReadonlyArray<LinkedServiceDebugResource>;
+  Array<LinkedServiceDebugResource>;
 export const DataFlowDebugSessionAddDataFlowRequestLinkedServicesList =
   /*@__PURE__*/ S.Array(
     LinkedServiceDebugResource,
@@ -1577,7 +1574,7 @@ export const DataFlowSourceSetting = /*@__PURE__*/ S.suspend(() =>
 
 /** Source setting for data flow debug. */
 export type DataFlowDebugPackageDebugSettingsSourceSettingsList =
-  ReadonlyArray<DataFlowSourceSetting>;
+  Array<DataFlowSourceSetting>;
 export const DataFlowDebugPackageDebugSettingsSourceSettingsList =
   /*@__PURE__*/ S.Array(
     DataFlowSourceSetting,
@@ -1685,7 +1682,7 @@ export const IntegrationRuntimeType = /*@__PURE__*/ S.String;
 /** Azure Data Factory nested object which serves as a compute resource for activities. */
 export interface IntegrationRuntime {
   /** Type of integration runtime. */
-  type: IntegrationRuntimeType;
+  type: IntegrationRuntimeType | (string & {});
   /** Integration runtime description. */
   description?: string;
 }
@@ -1810,7 +1807,7 @@ export type DataFlowDebugCommandType =
 export const DataFlowDebugCommandType = /*@__PURE__*/ S.String;
 
 /** Array of column names. */
-export type DataFlowDebugCommandPayloadColumnsList = ReadonlyArray<string>;
+export type DataFlowDebugCommandPayloadColumnsList = Array<string>;
 export const DataFlowDebugCommandPayloadColumnsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DataFlowDebugCommandPayloadColumnsList>;
@@ -1953,7 +1950,7 @@ export const DataFlowDebugSessionInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** The DataFlowDebugSessionInfo items on this page */
 export type QueryDataFlowDebugSessionsResponseValueList =
-  ReadonlyArray<DataFlowDebugSessionInfo>;
+  Array<DataFlowDebugSessionInfo>;
 export const QueryDataFlowDebugSessionsResponseValueList =
   /*@__PURE__*/ S.Array(
     DataFlowDebugSessionInfo,
@@ -2177,7 +2174,7 @@ export const DataFlowResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DataFlowResource>;
 
 /** The DataFlowResource items on this page */
-export type DataFlowListResponseValueList = ReadonlyArray<DataFlowResource>;
+export type DataFlowListResponseValueList = Array<DataFlowResource>;
 export const DataFlowListResponseValueList = /*@__PURE__*/ S.Array(
   DataFlowResource,
 ) as any as S.Schema<DataFlowListResponseValueList>;
@@ -2400,7 +2397,7 @@ export const DatasetResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DatasetResource>;
 
 /** The DatasetResource items on this page */
-export type DatasetListResponseValueList = ReadonlyArray<DatasetResource>;
+export type DatasetListResponseValueList = Array<DatasetResource>;
 export const DatasetListResponseValueList = /*@__PURE__*/ S.Array(
   DatasetResource,
 ) as any as S.Schema<DatasetListResponseValueList>;
@@ -2516,7 +2513,7 @@ export const ExposureControlRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of exposure control features. */
 export type ExposureControlQueryFeatureValuesByFactoryRequestExposureControlRequestsList =
-  ReadonlyArray<ExposureControlRequest>;
+  Array<ExposureControlRequest>;
 export const ExposureControlQueryFeatureValuesByFactoryRequestExposureControlRequestsList =
   /*@__PURE__*/ S.Array(
     ExposureControlRequest,
@@ -2554,7 +2551,7 @@ export const ExposureControlQueryFeatureValuesByFactoryRequest =
 
 /** List of exposure control feature values. */
 export type ExposureControlBatchResponseExposureControlResponsesList =
-  ReadonlyArray<ExposureControlResponse>;
+  Array<ExposureControlResponse>;
 export const ExposureControlBatchResponseExposureControlResponsesList =
   /*@__PURE__*/ S.Array(
     ExposureControlResponse,
@@ -2660,7 +2657,7 @@ export const GlobalParameterType = /*@__PURE__*/ S.String;
 /** Definition of a single parameter for an entity. */
 export interface GlobalParameterSpecification {
   /** Global Parameter type. */
-  type: GlobalParameterType;
+  type: GlobalParameterType | (string & {});
   /** Value of parameter. */
   value: unknown;
 }
@@ -2774,7 +2771,7 @@ export const FactoryIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
 /** Identity properties of the factory resource. */
 export interface FactoryIdentity {
   /** The identity type. */
-  type: FactoryIdentityType;
+  type: FactoryIdentityType | (string & {});
   /** The principal id of the identity. */
   principalId?: string;
   /** The client tenant id of the identity. */
@@ -3280,7 +3277,7 @@ export const Factory = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Factory" }) as any as S.Schema<Factory>;
 
 /** The Factory items on this page */
-export type FactoryListResponseValueList = ReadonlyArray<Factory>;
+export type FactoryListResponseValueList = Array<Factory>;
 export const FactoryListResponseValueList = /*@__PURE__*/ S.Array(
   Factory,
 ) as any as S.Schema<FactoryListResponseValueList>;
@@ -3668,7 +3665,7 @@ export const GlobalParameterResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The GlobalParameterResource items on this page */
 export type GlobalParameterListResponseValueList =
-  ReadonlyArray<GlobalParameterResource>;
+  Array<GlobalParameterResource>;
 export const GlobalParameterListResponseValueList = /*@__PURE__*/ S.Array(
   GlobalParameterResource,
 ) as any as S.Schema<GlobalParameterListResponseValueList>;
@@ -4100,8 +4097,7 @@ export const SsisObjectMetadata = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SsisObjectMetadata>;
 
 /** The SsisObjectMetadata items on this page */
-export type SsisObjectMetadataListResponseValueList =
-  ReadonlyArray<SsisObjectMetadata>;
+export type SsisObjectMetadataListResponseValueList = Array<SsisObjectMetadata>;
 export const SsisObjectMetadataListResponseValueList = /*@__PURE__*/ S.Array(
   SsisObjectMetadata,
 ) as any as S.Schema<SsisObjectMetadataListResponseValueList>;
@@ -4533,7 +4529,7 @@ export const IntegrationRuntimeNodeMonitoringData = /*@__PURE__*/ S.suspend(
 
 /** Integration runtime node monitoring data. */
 export type IntegrationRuntimeMonitoringDataNodesList =
-  ReadonlyArray<IntegrationRuntimeNodeMonitoringData>;
+  Array<IntegrationRuntimeNodeMonitoringData>;
 export const IntegrationRuntimeMonitoringDataNodesList = /*@__PURE__*/ S.Array(
   IntegrationRuntimeNodeMonitoringData,
 ) as any as S.Schema<IntegrationRuntimeMonitoringDataNodesList>;
@@ -4683,7 +4679,7 @@ export const IntegrationRuntimeResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The IntegrationRuntimeResource items on this page */
 export type IntegrationRuntimeListResponseValueList =
-  ReadonlyArray<IntegrationRuntimeResource>;
+  Array<IntegrationRuntimeResource>;
 export const IntegrationRuntimeListResponseValueList = /*@__PURE__*/ S.Array(
   IntegrationRuntimeResource,
 ) as any as S.Schema<IntegrationRuntimeListResponseValueList>;
@@ -4750,7 +4746,7 @@ export const IntegrationRuntimeOutboundNetworkDependenciesEndpointDetails =
 
 /** The details of endpoint. */
 export type IntegrationRuntimeOutboundNetworkDependenciesEndpointEndpointDetailsList =
-  ReadonlyArray<IntegrationRuntimeOutboundNetworkDependenciesEndpointDetails>;
+  Array<IntegrationRuntimeOutboundNetworkDependenciesEndpointDetails>;
 export const IntegrationRuntimeOutboundNetworkDependenciesEndpointEndpointDetailsList =
   /*@__PURE__*/ S.Array(
     IntegrationRuntimeOutboundNetworkDependenciesEndpointDetails,
@@ -4777,7 +4773,7 @@ export const IntegrationRuntimeOutboundNetworkDependenciesEndpoint =
 
 /** The endpoints for outbound network dependency. */
 export type IntegrationRuntimeOutboundNetworkDependenciesCategoryEndpointEndpointsList =
-  ReadonlyArray<IntegrationRuntimeOutboundNetworkDependenciesEndpoint>;
+  Array<IntegrationRuntimeOutboundNetworkDependenciesEndpoint>;
 export const IntegrationRuntimeOutboundNetworkDependenciesCategoryEndpointEndpointsList =
   /*@__PURE__*/ S.Array(
     IntegrationRuntimeOutboundNetworkDependenciesEndpoint,
@@ -4804,7 +4800,7 @@ export const IntegrationRuntimeOutboundNetworkDependenciesCategoryEndpoint =
 
 /** The list of outbound network dependency endpoints. */
 export type IntegrationRuntimeOutboundNetworkDependenciesEndpointsResponseValueList =
-  ReadonlyArray<IntegrationRuntimeOutboundNetworkDependenciesCategoryEndpoint>;
+  Array<IntegrationRuntimeOutboundNetworkDependenciesCategoryEndpoint>;
 export const IntegrationRuntimeOutboundNetworkDependenciesEndpointsResponseValueList =
   /*@__PURE__*/ S.Array(
     IntegrationRuntimeOutboundNetworkDependenciesCategoryEndpoint,
@@ -5300,8 +5296,7 @@ export const LinkedServiceResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LinkedServiceResource>;
 
 /** The LinkedServiceResource items on this page */
-export type LinkedServiceListResponseValueList =
-  ReadonlyArray<LinkedServiceResource>;
+export type LinkedServiceListResponseValueList = Array<LinkedServiceResource>;
 export const LinkedServiceListResponseValueList = /*@__PURE__*/ S.Array(
   LinkedServiceResource,
 ) as any as S.Schema<LinkedServiceListResponseValueList>;
@@ -5331,7 +5326,7 @@ export const ConnectionStatePropertiesInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConnectionStatePropertiesInput>;
 
 /** Fully qualified domain names */
-export type ManagedPrivateEndpointInputFqdnsList = ReadonlyArray<string>;
+export type ManagedPrivateEndpointInputFqdnsList = Array<string>;
 export const ManagedPrivateEndpointInputFqdnsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ManagedPrivateEndpointInputFqdnsList>;
@@ -5413,7 +5408,7 @@ export const ConnectionStateProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConnectionStateProperties>;
 
 /** Fully qualified domain names */
-export type ManagedPrivateEndpointFqdnsList = ReadonlyArray<string>;
+export type ManagedPrivateEndpointFqdnsList = Array<string>;
 export const ManagedPrivateEndpointFqdnsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ManagedPrivateEndpointFqdnsList>;
@@ -5630,7 +5625,7 @@ export const ManagedPrivateEndpointResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The ManagedPrivateEndpointResource items on this page */
 export type ManagedPrivateEndpointListResponseValueList =
-  ReadonlyArray<ManagedPrivateEndpointResource>;
+  Array<ManagedPrivateEndpointResource>;
 export const ManagedPrivateEndpointListResponseValueList =
   /*@__PURE__*/ S.Array(
     ManagedPrivateEndpointResource,
@@ -5847,7 +5842,7 @@ export const ManagedVirtualNetworkResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The ManagedVirtualNetworkResource items on this page */
 export type ManagedVirtualNetworkListResponseValueList =
-  ReadonlyArray<ManagedVirtualNetworkResource>;
+  Array<ManagedVirtualNetworkResource>;
 export const ManagedVirtualNetworkListResponseValueList = /*@__PURE__*/ S.Array(
   ManagedVirtualNetworkResource,
 ) as any as S.Schema<ManagedVirtualNetworkListResponseValueList>;
@@ -5925,7 +5920,7 @@ export const OperationLogSpecification = /*@__PURE__*/ S.suspend(() =>
 
 /** Details about operations related to logs. */
 export type OperationServiceSpecificationLogSpecificationsList =
-  ReadonlyArray<OperationLogSpecification>;
+  Array<OperationLogSpecification>;
 export const OperationServiceSpecificationLogSpecificationsList =
   /*@__PURE__*/ S.Array(
     OperationLogSpecification,
@@ -5949,7 +5944,7 @@ export const OperationMetricAvailability = /*@__PURE__*/ S.suspend(() =>
 
 /** Defines how often data for metrics becomes available. */
 export type OperationMetricSpecificationAvailabilitiesList =
-  ReadonlyArray<OperationMetricAvailability>;
+  Array<OperationMetricAvailability>;
 export const OperationMetricSpecificationAvailabilitiesList =
   /*@__PURE__*/ S.Array(
     OperationMetricAvailability,
@@ -5976,7 +5971,7 @@ export const OperationMetricDimension = /*@__PURE__*/ S.suspend(() =>
 
 /** Defines the metric dimension. */
 export type OperationMetricSpecificationDimensionsList =
-  ReadonlyArray<OperationMetricDimension>;
+  Array<OperationMetricDimension>;
 export const OperationMetricSpecificationDimensionsList = /*@__PURE__*/ S.Array(
   OperationMetricDimension,
 ) as any as S.Schema<OperationMetricSpecificationDimensionsList>;
@@ -6023,7 +6018,7 @@ export const OperationMetricSpecification = /*@__PURE__*/ S.suspend(() =>
 
 /** Details about operations related to metrics. */
 export type OperationServiceSpecificationMetricSpecificationsList =
-  ReadonlyArray<OperationMetricSpecification>;
+  Array<OperationMetricSpecification>;
 export const OperationServiceSpecificationMetricSpecificationsList =
   /*@__PURE__*/ S.Array(
     OperationMetricSpecification,
@@ -6083,7 +6078,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of Data Factory operations supported by the Data Factory resource provider. */
-export type OperationListResponseValueList = ReadonlyArray<Operation>;
+export type OperationListResponseValueList = Array<Operation>;
 export const OperationListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationListResponseValueList>;
@@ -6256,7 +6251,7 @@ export const PipelineRun = /*@__PURE__*/ S.suspend(() =>
 
 /** List of filters. */
 export type PipelineRunsQueryByFactoryRequestFiltersList =
-  ReadonlyArray<RunQueryFilter>;
+  Array<RunQueryFilter>;
 export const PipelineRunsQueryByFactoryRequestFiltersList =
   /*@__PURE__*/ S.Array(
     RunQueryFilter,
@@ -6264,7 +6259,7 @@ export const PipelineRunsQueryByFactoryRequestFiltersList =
 
 /** List of OrderBy option. */
 export type PipelineRunsQueryByFactoryRequestOrderByList =
-  ReadonlyArray<RunQueryOrderBy>;
+  Array<RunQueryOrderBy>;
 export const PipelineRunsQueryByFactoryRequestOrderByList =
   /*@__PURE__*/ S.Array(
     RunQueryOrderBy,
@@ -6311,7 +6306,7 @@ export const PipelineRunsQueryByFactoryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PipelineRunsQueryByFactoryRequest>;
 
 /** List of pipeline runs. */
-export type PipelineRunsQueryResponseValueList = ReadonlyArray<PipelineRun>;
+export type PipelineRunsQueryResponseValueList = Array<PipelineRun>;
 export const PipelineRunsQueryResponseValueList = /*@__PURE__*/ S.Array(
   PipelineRun,
 ) as any as S.Schema<PipelineRunsQueryResponseValueList>;
@@ -6348,8 +6343,9 @@ export type DependencyCondition =
 export const DependencyCondition = /*@__PURE__*/ S.String;
 
 /** Match-Condition for the dependency. */
-export type ActivityDependencyDependencyConditionsList =
-  ReadonlyArray<DependencyCondition>;
+export type ActivityDependencyDependencyConditionsList = Array<
+  DependencyCondition | (string & {})
+>;
 export const ActivityDependencyDependencyConditionsList = /*@__PURE__*/ S.Array(
   DependencyCondition,
 ) as any as S.Schema<ActivityDependencyDependencyConditionsList>;
@@ -6371,7 +6367,7 @@ export const ActivityDependency = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ActivityDependency>;
 
 /** Activity depends on condition. */
-export type ActivityDependsOnList = ReadonlyArray<ActivityDependency>;
+export type ActivityDependsOnList = Array<ActivityDependency>;
 export const ActivityDependsOnList = /*@__PURE__*/ S.Array(
   ActivityDependency,
 ) as any as S.Schema<ActivityDependsOnList>;
@@ -6391,7 +6387,7 @@ export const UserProperty = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UserProperty" }) as any as S.Schema<UserProperty>;
 
 /** Activity user properties. */
-export type ActivityUserPropertiesList = ReadonlyArray<UserProperty>;
+export type ActivityUserPropertiesList = Array<UserProperty>;
 export const ActivityUserPropertiesList = /*@__PURE__*/ S.Array(
   UserProperty,
 ) as any as S.Schema<ActivityUserPropertiesList>;
@@ -6405,9 +6401,9 @@ export interface Activity {
   /** Activity description. */
   description?: string;
   /** Activity state. This is an optional property and if not provided, the state will be Active by default. */
-  state?: ActivityState;
+  state?: ActivityState | (string & {});
   /** Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default. */
-  onInactiveMarkAs?: ActivityOnInactiveMarkAs;
+  onInactiveMarkAs?: ActivityOnInactiveMarkAs | (string & {});
   /** Activity depends on condition. */
   dependsOn?: ActivityDependsOnList;
   /** Activity user properties. */
@@ -6426,7 +6422,7 @@ export const Activity = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Activity" }) as any as S.Schema<Activity>;
 
 /** List of activities in pipeline. */
-export type PipelineActivitiesList = ReadonlyArray<Activity>;
+export type PipelineActivitiesList = Array<Activity>;
 export const PipelineActivitiesList = /*@__PURE__*/ S.Array(
   Activity,
 ) as any as S.Schema<PipelineActivitiesList>;
@@ -6447,7 +6443,7 @@ export const VariableType = /*@__PURE__*/ S.String;
 /** Definition of a single variable for a Pipeline. */
 export interface VariableSpecification {
   /** Variable type. */
-  type: VariableType;
+  type: VariableType | (string & {});
   /** Default value of variable. */
   defaultValue?: unknown;
 }
@@ -6470,7 +6466,7 @@ export const PipelineVariablesMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<PipelineVariablesMap>;
 
 /** List of tags that can be used for describing the Pipeline. */
-export type PipelineAnnotationsList = ReadonlyArray<unknown>;
+export type PipelineAnnotationsList = Array<unknown>;
 export const PipelineAnnotationsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<PipelineAnnotationsList>;
@@ -6817,7 +6813,7 @@ export const PipelineResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PipelineResource>;
 
 /** The PipelineResource items on this page */
-export type PipelineListResponseValueList = ReadonlyArray<PipelineResource>;
+export type PipelineListResponseValueList = Array<PipelineResource>;
 export const PipelineListResponseValueList = /*@__PURE__*/ S.Array(
   PipelineResource,
 ) as any as S.Schema<PipelineListResponseValueList>;
@@ -7123,7 +7119,7 @@ export const PrivateEndpointConnectionResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The PrivateEndpointConnectionResource items on this page */
 export type PrivateEndpointConnectionListResponseValueList =
-  ReadonlyArray<PrivateEndpointConnectionResource>;
+  Array<PrivateEndpointConnectionResource>;
 export const PrivateEndpointConnectionListResponseValueList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnectionResource,
@@ -7172,16 +7168,14 @@ export const PrivateLinkResourcesGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateLinkResourcesGetRequest>;
 
 /** RequiredMembers of a private link resource */
-export type PrivateLinkResourcePropertiesRequiredMembersList =
-  ReadonlyArray<string>;
+export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
 export const PrivateLinkResourcePropertiesRequiredMembersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
 
 /** RequiredZoneNames of a private link resource */
-export type PrivateLinkResourcePropertiesRequiredZoneNamesList =
-  ReadonlyArray<string>;
+export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
 export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -7235,8 +7229,7 @@ export const PrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
   identifier: "PrivateLinkResource",
 }) as any as S.Schema<PrivateLinkResource>;
 
-export type PrivateLinkResourcesWrapperValueList =
-  ReadonlyArray<PrivateLinkResource>;
+export type PrivateLinkResourcesWrapperValueList = Array<PrivateLinkResource>;
 export const PrivateLinkResourcesWrapperValueList = /*@__PURE__*/ S.Array(
   PrivateLinkResource,
 ) as any as S.Schema<PrivateLinkResourcesWrapperValueList>;
@@ -7290,8 +7283,7 @@ export const TriggerRunsCancelResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TriggerRunsCancelResponse>;
 
 /** List of filters. */
-export type TriggerRunsQueryByFactoryRequestFiltersList =
-  ReadonlyArray<RunQueryFilter>;
+export type TriggerRunsQueryByFactoryRequestFiltersList = Array<RunQueryFilter>;
 export const TriggerRunsQueryByFactoryRequestFiltersList =
   /*@__PURE__*/ S.Array(
     RunQueryFilter,
@@ -7299,7 +7291,7 @@ export const TriggerRunsQueryByFactoryRequestFiltersList =
 
 /** List of OrderBy option. */
 export type TriggerRunsQueryByFactoryRequestOrderByList =
-  ReadonlyArray<RunQueryOrderBy>;
+  Array<RunQueryOrderBy>;
 export const TriggerRunsQueryByFactoryRequestOrderByList =
   /*@__PURE__*/ S.Array(
     RunQueryOrderBy,
@@ -7420,7 +7412,7 @@ export const TriggerRun = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TriggerRun" }) as any as S.Schema<TriggerRun>;
 
 /** List of trigger runs. */
-export type TriggerRunsQueryResponseValueList = ReadonlyArray<TriggerRun>;
+export type TriggerRunsQueryResponseValueList = Array<TriggerRun>;
 export const TriggerRunsQueryResponseValueList = /*@__PURE__*/ S.Array(
   TriggerRun,
 ) as any as S.Schema<TriggerRunsQueryResponseValueList>;
@@ -7482,7 +7474,7 @@ export type TriggerRuntimeState = "Started" | "Stopped" | "Disabled";
 export const TriggerRuntimeState = /*@__PURE__*/ S.String;
 
 /** List of tags that can be used for describing the trigger. */
-export type TriggerAnnotationsList = ReadonlyArray<unknown>;
+export type TriggerAnnotationsList = Array<unknown>;
 export const TriggerAnnotationsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<TriggerAnnotationsList>;
@@ -7494,7 +7486,7 @@ export interface Trigger {
   /** Trigger description. */
   description?: string;
   /** Indicates if trigger is running or not. Updated when Start/Stop APIs are called on the Trigger. */
-  runtimeState?: TriggerRuntimeState;
+  runtimeState?: TriggerRuntimeState | (string & {});
   /** List of tags that can be used for describing the trigger. */
   annotations?: TriggerAnnotationsList;
 }
@@ -7763,7 +7755,7 @@ export const TriggerResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TriggerResource>;
 
 /** The TriggerResource items on this page */
-export type TriggerListResponseValueList = ReadonlyArray<TriggerResource>;
+export type TriggerListResponseValueList = Array<TriggerResource>;
 export const TriggerListResponseValueList = /*@__PURE__*/ S.Array(
   TriggerResource,
 ) as any as S.Schema<TriggerListResponseValueList>;
@@ -7816,7 +7808,7 @@ export const TriggersQueryByFactoryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TriggersQueryByFactoryRequest>;
 
 /** List of triggers. */
-export type TriggerQueryResponseValueList = ReadonlyArray<TriggerResource>;
+export type TriggerQueryResponseValueList = Array<TriggerResource>;
 export const TriggerQueryResponseValueList = /*@__PURE__*/ S.Array(
   TriggerResource,
 ) as any as S.Schema<TriggerQueryResponseValueList>;

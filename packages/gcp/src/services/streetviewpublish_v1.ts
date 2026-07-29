@@ -60,7 +60,7 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -102,7 +102,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -124,7 +124,7 @@ export const Status = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
-export type StatusList = ReadonlyArray<Status>;
+export type StatusList = Array<Status>;
 export const StatusList = /*@__PURE__*/ S.Array(
   Status,
 ) as any as S.Schema<StatusList>;
@@ -203,7 +203,7 @@ export const Place = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Place" }) as any as S.Schema<Place>;
 
-export type PlaceList = ReadonlyArray<Place>;
+export type PlaceList = Array<Place>;
 export const PlaceList = /*@__PURE__*/ S.Array(
   Place,
 ) as any as S.Schema<PlaceList>;
@@ -230,7 +230,7 @@ export const Connection = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Connection" }) as any as S.Schema<Connection>;
 
-export type ConnectionList = ReadonlyArray<Connection>;
+export type ConnectionList = Array<Connection>;
 export const ConnectionList = /*@__PURE__*/ S.Array(
   Connection,
 ) as any as S.Schema<ConnectionList>;
@@ -311,7 +311,7 @@ export interface Photo {
   /** Input only. Required when creating a photo. Input only. The resource URL where the photo bytes are uploaded to. */
   uploadReference?: UploadRef;
   /** Output only. Status in Google Maps, whether this photo was published or rejected. */
-  mapsPublishStatus?: PhotoMapsPublishStatusEnum;
+  mapsPublishStatus?: PhotoMapsPublishStatusEnum | (string & {});
   /** Output only. Time when the image was uploaded. */
   uploadTime?: string;
   /** Output only. The share link for the photo. */
@@ -327,7 +327,7 @@ export interface Photo {
   /** Output only. The download URL for the photo bytes. This field is set only when GetPhotoRequest.view is set to PhotoView.INCLUDE_DOWNLOAD_URL. */
   downloadUrl?: string;
   /** Output only. Status of rights transfer on this photo. */
-  transferStatus?: PhotoTransferStatusEnum;
+  transferStatus?: PhotoTransferStatusEnum | (string & {});
   /** Output only. The thumbnail URL for showing a preview of the given photo. */
   thumbnailUrl?: string;
   /** Output only. View count of the photo. */
@@ -367,7 +367,7 @@ export const PhotoResponse = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PhotoResponse" }) as any as S.Schema<PhotoResponse>;
 
-export type PhotoResponseList = ReadonlyArray<PhotoResponse>;
+export type PhotoResponseList = Array<PhotoResponse>;
 export const PhotoResponseList = /*@__PURE__*/ S.Array(
   PhotoResponse,
 ) as any as S.Schema<PhotoResponseList>;
@@ -401,7 +401,7 @@ export const UpdatePhotoRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdatePhotoRequest",
 }) as any as S.Schema<UpdatePhotoRequest>;
 
-export type UpdatePhotoRequestList = ReadonlyArray<UpdatePhotoRequest>;
+export type UpdatePhotoRequestList = Array<UpdatePhotoRequest>;
 export const UpdatePhotoRequestList = /*@__PURE__*/ S.Array(
   UpdatePhotoRequest,
 ) as any as S.Schema<UpdatePhotoRequestList>;
@@ -494,7 +494,7 @@ export const Measurement3d = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Measurement3d" }) as any as S.Schema<Measurement3d>;
 
-export type Measurement3dList = ReadonlyArray<Measurement3d>;
+export type Measurement3dList = Array<Measurement3d>;
 export const Measurement3dList = /*@__PURE__*/ S.Array(
   Measurement3d,
 ) as any as S.Schema<Measurement3dList>;
@@ -530,7 +530,7 @@ export const LatLngBounds = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "LatLngBounds" }) as any as S.Schema<LatLngBounds>;
 
-export type PoseList = ReadonlyArray<Pose>;
+export type PoseList = Array<Pose>;
 export const PoseList = /*@__PURE__*/ S.Array(
   Pose,
 ) as any as S.Schema<PoseList>;
@@ -681,7 +681,7 @@ export const ProcessingFailureDetails = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProcessingFailureDetails",
 }) as any as S.Schema<ProcessingFailureDetails>;
 
-export type PhotoList = ReadonlyArray<Photo>;
+export type PhotoList = Array<Photo>;
 export const PhotoList = /*@__PURE__*/ S.Array(
   Photo,
 ) as any as S.Schema<PhotoList>;
@@ -952,7 +952,7 @@ export const ListPhotoSequencesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListPhotoSequencesRequest",
 }) as any as S.Schema<ListPhotoSequencesRequest>;
 
-export type OperationList = ReadonlyArray<Operation>;
+export type OperationList = Array<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;

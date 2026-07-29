@@ -92,7 +92,7 @@ export const ResourceReference = /*@__PURE__*/ S.suspend(() =>
 
 /** Collector Policies for Azure Traffic Collector. */
 export type AzureTrafficCollectorPropertiesFormatCollectorPoliciesList =
-  ReadonlyArray<ResourceReference>;
+  Array<ResourceReference>;
 export const AzureTrafficCollectorPropertiesFormatCollectorPoliciesList =
   /*@__PURE__*/ S.Array(
     ResourceReference,
@@ -173,7 +173,7 @@ export const AzureTrafficCollector = /*@__PURE__*/ S.suspend(() =>
 
 /** The AzureTrafficCollector items on this page */
 export type AzureTrafficCollectorListResultValueList =
-  ReadonlyArray<AzureTrafficCollector>;
+  Array<AzureTrafficCollector>;
 export const AzureTrafficCollectorListResultValueList = /*@__PURE__*/ S.Array(
   AzureTrafficCollector,
 ) as any as S.Schema<AzureTrafficCollectorListResultValueList>;
@@ -518,7 +518,7 @@ export const SourceType = /*@__PURE__*/ S.String;
 /** Ingestion policy properties. */
 export interface IngestionSourcesPropertiesFormat {
   /** Ingestion source type. */
-  sourceType?: SourceType;
+  sourceType?: SourceType | (string & {});
   /** Resource ID. */
   resourceId?: string;
 }
@@ -533,7 +533,7 @@ export const IngestionSourcesPropertiesFormat = /*@__PURE__*/ S.suspend(() =>
 
 /** Ingestion Sources. */
 export type IngestionPolicyPropertiesFormatIngestionSourcesList =
-  ReadonlyArray<IngestionSourcesPropertiesFormat>;
+  Array<IngestionSourcesPropertiesFormat>;
 export const IngestionPolicyPropertiesFormatIngestionSourcesList =
   /*@__PURE__*/ S.Array(
     IngestionSourcesPropertiesFormat,
@@ -542,7 +542,7 @@ export const IngestionPolicyPropertiesFormatIngestionSourcesList =
 /** Ingestion Policy properties. */
 export interface IngestionPolicyPropertiesFormat {
   /** The ingestion type. */
-  ingestionType?: IngestionType;
+  ingestionType?: IngestionType | (string & {});
   /** Ingestion Sources. */
   ingestionSources?: IngestionPolicyPropertiesFormatIngestionSourcesList;
 }
@@ -568,7 +568,7 @@ export const DestinationType = /*@__PURE__*/ S.String;
 /** Emission policy destination properties. */
 export interface EmissionPolicyDestination {
   /** Emission destination type. */
-  destinationType?: DestinationType;
+  destinationType?: DestinationType | (string & {});
 }
 export const EmissionPolicyDestination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -580,7 +580,7 @@ export const EmissionPolicyDestination = /*@__PURE__*/ S.suspend(() =>
 
 /** Emission policy destinations. */
 export type EmissionPoliciesPropertiesFormatEmissionDestinationsList =
-  ReadonlyArray<EmissionPolicyDestination>;
+  Array<EmissionPolicyDestination>;
 export const EmissionPoliciesPropertiesFormatEmissionDestinationsList =
   /*@__PURE__*/ S.Array(
     EmissionPolicyDestination,
@@ -589,7 +589,7 @@ export const EmissionPoliciesPropertiesFormatEmissionDestinationsList =
 /** Emission policy properties. */
 export interface EmissionPoliciesPropertiesFormat {
   /** Emission format type. */
-  emissionType?: EmissionType;
+  emissionType?: EmissionType | (string & {});
   /** Emission policy destinations. */
   emissionDestinations?: EmissionPoliciesPropertiesFormatEmissionDestinationsList;
 }
@@ -606,7 +606,7 @@ export const EmissionPoliciesPropertiesFormat = /*@__PURE__*/ S.suspend(() =>
 
 /** Emission policies. */
 export type CollectorPolicyPropertiesFormatEmissionPoliciesList =
-  ReadonlyArray<EmissionPoliciesPropertiesFormat>;
+  Array<EmissionPoliciesPropertiesFormat>;
 export const CollectorPolicyPropertiesFormatEmissionPoliciesList =
   /*@__PURE__*/ S.Array(
     EmissionPoliciesPropertiesFormat,
@@ -619,7 +619,7 @@ export interface CollectorPolicyPropertiesFormat {
   /** Emission policies. */
   emissionPolicies?: CollectorPolicyPropertiesFormatEmissionPoliciesList;
   /** The provisioning state. */
-  provisioningState?: ProvisioningState;
+  provisioningState?: ProvisioningState | (string & {});
 }
 export const CollectorPolicyPropertiesFormat = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -897,7 +897,7 @@ export const CollectorPolicy = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CollectorPolicy>;
 
 /** The CollectorPolicy items on this page */
-export type CollectorPolicyListResultValueList = ReadonlyArray<CollectorPolicy>;
+export type CollectorPolicyListResultValueList = Array<CollectorPolicy>;
 export const CollectorPolicyListResultValueList = /*@__PURE__*/ S.Array(
   CollectorPolicy,
 ) as any as S.Schema<CollectorPolicyListResultValueList>;
@@ -1059,7 +1059,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** The Operation items on this page */
-export type OperationListResultValueList = ReadonlyArray<Operation>;
+export type OperationListResultValueList = Array<Operation>;
 export const OperationListResultValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationListResultValueList>;

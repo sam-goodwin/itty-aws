@@ -199,7 +199,7 @@ export const ScalarMeasureValueType = /*@__PURE__*/ S.String;
 export interface MultiMeasureAttributeMapping {
   SourceColumn: string;
   TargetMultiMeasureAttributeName?: string;
-  MeasureValueType?: ScalarMeasureValueType;
+  MeasureValueType?: ScalarMeasureValueType | (string & {});
 }
 export const MultiMeasureAttributeMapping = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -239,7 +239,7 @@ export interface MixedMeasureMapping {
   MeasureName?: string;
   SourceColumn?: string;
   TargetMeasureName?: string;
-  MeasureValueType: MeasureValueType;
+  MeasureValueType: MeasureValueType | (string & {});
   MultiMeasureAttributeMappings?: MultiMeasureAttributeMapping[];
 }
 export const MixedMeasureMapping = /*@__PURE__*/ S.suspend(() =>
@@ -258,7 +258,7 @@ export const MixedMeasureMappingList =
   /*@__PURE__*/ S.Array(MixedMeasureMapping);
 export interface DataModel {
   TimeColumn?: string;
-  TimeUnit?: TimeUnit;
+  TimeUnit?: TimeUnit | (string & {});
   DimensionMappings: DimensionMapping[];
   MultiMeasureMappings?: MultiMeasureMappings;
   MixedMeasureMappings?: MixedMeasureMapping[];
@@ -334,7 +334,7 @@ export const BatchLoadDataFormat = /*@__PURE__*/ S.String;
 export interface DataSourceConfiguration {
   DataSourceS3Configuration: DataSourceS3Configuration;
   CsvConfiguration?: CsvConfiguration;
-  DataFormat: BatchLoadDataFormat;
+  DataFormat: BatchLoadDataFormat | (string & {});
 }
 export const DataSourceConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -353,7 +353,7 @@ export type StringValue2048 = string;
 export interface ReportS3Configuration {
   BucketName: string;
   ObjectKeyPrefix?: string;
-  EncryptionOption?: S3EncryptionOption;
+  EncryptionOption?: S3EncryptionOption | (string & {});
   KmsKeyId?: string;
 }
 export const ReportS3Configuration = /*@__PURE__*/ S.suspend(() =>
@@ -482,7 +482,7 @@ export const RetentionProperties = /*@__PURE__*/ S.suspend(() =>
 export interface S3Configuration {
   BucketName?: string;
   ObjectKeyPrefix?: string;
-  EncryptionOption?: S3EncryptionOption;
+  EncryptionOption?: S3EncryptionOption | (string & {});
   KmsKeyId?: string;
 }
 export const S3Configuration = /*@__PURE__*/ S.suspend(() =>
@@ -524,9 +524,9 @@ export type PartitionKeyEnforcementLevel = "REQUIRED" | "OPTIONAL";
 export const PartitionKeyEnforcementLevel = /*@__PURE__*/ S.String;
 
 export interface PartitionKey {
-  Type: PartitionKeyType;
+  Type: PartitionKeyType | (string & {});
   Name?: string;
-  EnforcementInRecord?: PartitionKeyEnforcementLevel;
+  EnforcementInRecord?: PartitionKeyEnforcementLevel | (string & {});
 }
 export const PartitionKey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

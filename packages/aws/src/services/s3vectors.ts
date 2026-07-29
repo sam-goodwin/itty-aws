@@ -123,7 +123,7 @@ export const SseType = /*@__PURE__*/ S.String;
 
 export type KmsKeyArn = string;
 export interface EncryptionConfiguration {
-  sseType?: SseType;
+  sseType?: SseType | (string & {});
   kmsKeyArn?: string;
 }
 export const EncryptionConfiguration = /*@__PURE__*/ S.suspend(() =>

@@ -60,7 +60,7 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -106,7 +106,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -229,7 +229,9 @@ export const EvaluationMetricsThresholdsToolMatchingSettingsExtraToolCallBehavio
 /** Settings for matching tool calls. */
 export interface EvaluationMetricsThresholdsToolMatchingSettings {
   /** Optional. Behavior for extra tool calls. Defaults to FAIL. */
-  extraToolCallBehavior?: EvaluationMetricsThresholdsToolMatchingSettingsExtraToolCallBehaviorEnum;
+  extraToolCallBehavior?:
+    | EvaluationMetricsThresholdsToolMatchingSettingsExtraToolCallBehaviorEnum
+    | (string & {});
 }
 export const EvaluationMetricsThresholdsToolMatchingSettings =
   /*@__PURE__*/ S.suspend(() =>
@@ -254,7 +256,9 @@ export interface EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTur
   /** Optional. The success threshold for overall tool invocation correctness. Must be a float between 0 and 1. Default is 1.0. */
   overallToolInvocationCorrectnessThreshold?: number;
   /** Optional. The semantic similarity channel to use for evaluation. */
-  semanticSimilarityChannel?: EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMetricsThresholdsSemanticSimilarityChannelEnum;
+  semanticSimilarityChannel?:
+    | EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMetricsThresholdsSemanticSimilarityChannelEnum
+    | (string & {});
 }
 export const EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMetricsThresholds =
   /*@__PURE__*/ S.suspend(() =>
@@ -319,13 +323,19 @@ export const EvaluationMetricsThresholdsScenarioHallucinationMetricBehaviorEnum 
 /** Threshold settings for metrics in an Evaluation. */
 export interface EvaluationMetricsThresholds {
   /** Optional. The hallucination metric behavior for golden evaluations. */
-  goldenHallucinationMetricBehavior?: EvaluationMetricsThresholdsGoldenHallucinationMetricBehaviorEnum;
+  goldenHallucinationMetricBehavior?:
+    | EvaluationMetricsThresholdsGoldenHallucinationMetricBehaviorEnum
+    | (string & {});
   /** Optional. Deprecated: Use `golden_hallucination_metric_behavior` instead. The hallucination metric behavior is currently used for golden evaluations. */
-  hallucinationMetricBehavior?: EvaluationMetricsThresholdsHallucinationMetricBehaviorEnum;
+  hallucinationMetricBehavior?:
+    | EvaluationMetricsThresholdsHallucinationMetricBehaviorEnum
+    | (string & {});
   /** Optional. The golden evaluation metrics thresholds. */
   goldenEvaluationMetricsThresholds?: EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholds;
   /** Optional. The hallucination metric behavior for scenario evaluations. */
-  scenarioHallucinationMetricBehavior?: EvaluationMetricsThresholdsScenarioHallucinationMetricBehaviorEnum;
+  scenarioHallucinationMetricBehavior?:
+    | EvaluationMetricsThresholdsScenarioHallucinationMetricBehaviorEnum
+    | (string & {});
 }
 export const EvaluationMetricsThresholds = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -357,7 +367,7 @@ export interface DataStoreSettingsEngine {
   /** Output only. The resource name of the engine. Format: `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}` */
   name?: string;
   /** Output only. The type of the engine. */
-  type?: DataStoreSettingsEngineTypeEnum;
+  type?: DataStoreSettingsEngineTypeEnum | (string & {});
 }
 export const DataStoreSettingsEngine = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -368,8 +378,7 @@ export const DataStoreSettingsEngine = /*@__PURE__*/ S.suspend(() =>
   identifier: "DataStoreSettingsEngine",
 }) as any as S.Schema<DataStoreSettingsEngine>;
 
-export type DataStoreSettingsEngineList =
-  ReadonlyArray<DataStoreSettingsEngine>;
+export type DataStoreSettingsEngineList = Array<DataStoreSettingsEngine>;
 export const DataStoreSettingsEngineList = /*@__PURE__*/ S.Array(
   DataStoreSettingsEngine,
 ) as any as S.Schema<DataStoreSettingsEngineList>;
@@ -431,7 +440,9 @@ export const AmbientSoundConfigPrebuiltAmbientNoiseEnum =
 /** Configuration for the ambient sound to be played with the synthesized agent response, to enhance the naturalness of the conversation. */
 export interface AmbientSoundConfig {
   /** Optional. Deprecated: `prebuilt_ambient_noise` is deprecated in favor of `prebuilt_ambient_sound`. */
-  prebuiltAmbientNoise?: AmbientSoundConfigPrebuiltAmbientNoiseEnum;
+  prebuiltAmbientNoise?:
+    | AmbientSoundConfigPrebuiltAmbientNoiseEnum
+    | (string & {});
   /** Optional. Ambient noise as a mono-channel, 16kHz WAV file stored in [Cloud Storage](https://cloud.google.com/storage). Note: Please make sure the CES service agent `service-@gcp-sa-ces.iam.gserviceaccount.com` has `storage.objects.get` permission to the Cloud Storage object. */
   gcsUri?: string;
   /** Optional. Name of the prebuilt ambient sound. Valid values are: - "coffee_shop" - "keyboard" - "keypad" - "hum" - "office_1" - "office_2" - "office_3" - "room_1" - "room_2" - "room_3" - "room_4" - "room_5" - "air_conditioner" */
@@ -504,7 +515,7 @@ export interface EvaluationPersonaSpeechConfig {
   /** Optional. The specific voice identifier/accent to use. Example: "en-US-Wavenet-D" or "en-GB-Standard-A" */
   voiceId?: string;
   /** Optional. The simulated audio environment. */
-  environment?: EvaluationPersonaSpeechConfigEnvironmentEnum;
+  environment?: EvaluationPersonaSpeechConfigEnvironmentEnum | (string & {});
 }
 export const EvaluationPersonaSpeechConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -541,7 +552,7 @@ export const EvaluationPersona = /*@__PURE__*/ S.suspend(() =>
   identifier: "EvaluationPersona",
 }) as any as S.Schema<EvaluationPersona>;
 
-export type EvaluationPersonaList = ReadonlyArray<EvaluationPersona>;
+export type EvaluationPersonaList = Array<EvaluationPersona>;
 export const EvaluationPersonaList = /*@__PURE__*/ S.Array(
   EvaluationPersona,
 ) as any as S.Schema<EvaluationPersonaList>;
@@ -596,7 +607,9 @@ export interface ErrorHandlingSettings {
   /** Optional. Configuration for ending the session in case of system errors (e.g. LLM errors). */
   endSessionConfig?: ErrorHandlingSettingsEndSessionConfig;
   /** Optional. The strategy to use for error handling. */
-  errorHandlingStrategy?: ErrorHandlingSettingsErrorHandlingStrategyEnum;
+  errorHandlingStrategy?:
+    | ErrorHandlingSettingsErrorHandlingStrategyEnum
+    | (string & {});
   /** Optional. Configuration for handling fallback responses. */
   fallbackResponseConfig?: ErrorHandlingSettingsFallbackResponseConfig;
 }
@@ -779,7 +792,9 @@ export const EvaluationRunCachingSettingsRunCachingModeEnum =
 /** Settings for evaluation run caching. */
 export interface EvaluationRunCachingSettings {
   /** Optional. The caching mode to use for the evaluation run. If not set, default to FORCE_RUN. */
-  runCachingMode?: EvaluationRunCachingSettingsRunCachingModeEnum;
+  runCachingMode?:
+    | EvaluationRunCachingSettingsRunCachingModeEnum
+    | (string & {});
 }
 export const EvaluationRunCachingSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -792,17 +807,25 @@ export const EvaluationRunCachingSettings = /*@__PURE__*/ S.suspend(() =>
 /** Settings for evaluation. */
 export interface EvaluationSettings {
   /** Optional. Configures the default tool call behaviour for golden evaluations. */
-  goldenEvaluationToolCallBehaviour?: EvaluationSettingsGoldenEvaluationToolCallBehaviourEnum;
+  goldenEvaluationToolCallBehaviour?:
+    | EvaluationSettingsGoldenEvaluationToolCallBehaviourEnum
+    | (string & {});
   /** Optional. Configures the default metrics for evaluations. */
   metricsConfig?: EvaluationMetricsConfig;
   /** Optional. The default method used to run golden evaluations. This will be used if no golden_run_method is specified in the RunEvaluationRequest. */
-  goldenRunMethod?: EvaluationSettingsGoldenRunMethodEnum;
+  goldenRunMethod?: EvaluationSettingsGoldenRunMethodEnum | (string & {});
   /** Optional. Configures the default tool call behaviour for scenario evaluations. */
-  scenarioEvaluationToolCallBehaviour?: EvaluationSettingsScenarioEvaluationToolCallBehaviourEnum;
+  scenarioEvaluationToolCallBehaviour?:
+    | EvaluationSettingsScenarioEvaluationToolCallBehaviourEnum
+    | (string & {});
   /** Optional. The execution mode for scenario evaluations. If not provided, will default to QUALITY_OPTIMIZED. */
-  scenarioExecutionMode?: EvaluationSettingsScenarioExecutionModeEnum;
+  scenarioExecutionMode?:
+    | EvaluationSettingsScenarioExecutionModeEnum
+    | (string & {});
   /** Optional. Who starts the conversation in a scenario evaluation. */
-  scenarioConversationInitiator?: EvaluationSettingsScenarioConversationInitiatorEnum;
+  scenarioConversationInitiator?:
+    | EvaluationSettingsScenarioConversationInitiatorEnum
+    | (string & {});
   /** Optional. The caching settings to use for the evaluation run. */
   evaluationRunCachingSettings?: EvaluationRunCachingSettings;
 }
@@ -837,7 +860,7 @@ export const ChannelProfilePersonaPropertyPersonaEnum = /*@__PURE__*/ S.String;
 /** Represents the persona property of a channel. */
 export interface ChannelProfilePersonaProperty {
   /** Optional. The persona of the channel. */
-  persona?: ChannelProfilePersonaPropertyPersonaEnum;
+  persona?: ChannelProfilePersonaPropertyPersonaEnum | (string & {});
 }
 export const ChannelProfilePersonaProperty = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -939,9 +962,9 @@ export interface ChannelProfileWebWidgetConfig {
   /** Optional. The security settings of the web widget. */
   securitySettings?: ChannelProfileWebWidgetConfigSecuritySettings;
   /** Optional. The modality of the web widget. */
-  modality?: ChannelProfileWebWidgetConfigModalityEnum;
+  modality?: ChannelProfileWebWidgetConfigModalityEnum | (string & {});
   /** Optional. The theme of the web widget. */
-  theme?: ChannelProfileWebWidgetConfigThemeEnum;
+  theme?: ChannelProfileWebWidgetConfigThemeEnum | (string & {});
   /** Optional. The title of the web widget. */
   webWidgetTitle?: string;
 }
@@ -989,7 +1012,7 @@ export interface ChannelProfile {
   /** Optional. Whether to disable DTMF (dual-tone multi-frequency). */
   disableDtmf?: boolean;
   /** Optional. The type of the channel profile. */
-  channelType?: ChannelProfileChannelTypeEnum;
+  channelType?: ChannelProfileChannelTypeEnum | (string & {});
 }
 export const ChannelProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1011,7 +1034,7 @@ export const Ces_SchemaMap = /*@__PURE__*/ S.Record(
   S.suspend(() => Ces_Schema),
 ) as any as S.Schema<Ces_SchemaMap>;
 
-export type Ces_SchemaList = ReadonlyArray<Ces_Schema>;
+export type Ces_SchemaList = Array<Ces_Schema>;
 export const Ces_SchemaList = /*@__PURE__*/ S.Array(
   S.suspend(() => Ces_Schema),
 ) as any as S.Schema<Ces_SchemaList>;
@@ -1059,7 +1082,7 @@ export interface Ces_Schema {
   /** Optional. Possible values of the element of primitive type with enum format. Examples: 1. We can define direction as : {type:STRING, format:enum, enum:["EAST", NORTH", "SOUTH", "WEST"]} 2. We can define apartment number as : {type:INTEGER, format:enum, enum:["101", "201", "301"]} */
   enum?: StringList;
   /** Required. The type of the data. */
-  type?: Ces_SchemaTypeEnum;
+  type?: Ces_SchemaTypeEnum | (string & {});
   /** Optional. Allows indirect references between schema nodes. The value should be a valid reference to a child of the root `defs`. For example, the following schema defines a reference to a schema node named "Pet": ``` type: object properties: pet: ref: #/defs/Pet defs: Pet: type: object properties: name: type: string ``` The value of the "pet" property is a reference to the schema node named "Pet". See details in https://json-schema.org/understanding-json-schema/structuring. */
   ref?: string;
   /** Optional. A map of definitions for use by `ref`. Only allowed at the root of the schema. */
@@ -1110,7 +1133,7 @@ export const AppVariableDeclaration = /*@__PURE__*/ S.suspend(() =>
   identifier: "AppVariableDeclaration",
 }) as any as S.Schema<AppVariableDeclaration>;
 
-export type AppVariableDeclarationList = ReadonlyArray<AppVariableDeclaration>;
+export type AppVariableDeclarationList = Array<AppVariableDeclaration>;
 export const AppVariableDeclarationList = /*@__PURE__*/ S.Array(
   AppVariableDeclaration,
 ) as any as S.Schema<AppVariableDeclarationList>;
@@ -1320,7 +1343,7 @@ export interface App {
   /** Optional. Instructions for all the agents in the app. You can use this instruction to set up a stable identity or personality across all the agents. */
   globalInstruction?: string;
   /** Optional. The tool execution mode for the app. If not provided, will default to PARALLEL. */
-  toolExecutionMode?: AppToolExecutionModeEnum;
+  toolExecutionMode?: AppToolExecutionModeEnum | (string & {});
   /** Optional. The evaluation thresholds for the app. */
   evaluationMetricsThresholds?: EvaluationMetricsThresholds;
   /** Optional. The data store settings for the app. */
@@ -1455,7 +1478,7 @@ export const Callback = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Callback" }) as any as S.Schema<Callback>;
 
-export type CallbackList = ReadonlyArray<Callback>;
+export type CallbackList = Array<Callback>;
 export const CallbackList = /*@__PURE__*/ S.Array(
   Callback,
 ) as any as S.Schema<CallbackList>;
@@ -1507,7 +1530,7 @@ export const AgentAgentToolset = /*@__PURE__*/ S.suspend(() =>
   identifier: "AgentAgentToolset",
 }) as any as S.Schema<AgentAgentToolset>;
 
-export type AgentAgentToolsetList = ReadonlyArray<AgentAgentToolset>;
+export type AgentAgentToolsetList = Array<AgentAgentToolset>;
 export const AgentAgentToolsetList = /*@__PURE__*/ S.Array(
   AgentAgentToolset,
 ) as any as S.Schema<AgentAgentToolsetList>;
@@ -1582,7 +1605,7 @@ export interface TransferRule {
   /** Optional. A rule that immediately transfers to the target agent when the condition is met. */
   deterministicTransfer?: TransferRuleDeterministicTransfer;
   /** Required. The direction of the transfer. */
-  direction?: TransferRuleDirectionEnum;
+  direction?: TransferRuleDirectionEnum | (string & {});
 }
 export const TransferRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1593,7 +1616,7 @@ export const TransferRule = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TransferRule" }) as any as S.Schema<TransferRule>;
 
-export type TransferRuleList = ReadonlyArray<TransferRule>;
+export type TransferRuleList = Array<TransferRule>;
 export const TransferRuleList = /*@__PURE__*/ S.Array(
   TransferRule,
 ) as any as S.Schema<TransferRuleList>;
@@ -1735,7 +1758,7 @@ export const ExperimentConfigVersionReleaseTrafficAllocation =
   }) as any as S.Schema<ExperimentConfigVersionReleaseTrafficAllocation>;
 
 export type ExperimentConfigVersionReleaseTrafficAllocationList =
-  ReadonlyArray<ExperimentConfigVersionReleaseTrafficAllocation>;
+  Array<ExperimentConfigVersionReleaseTrafficAllocation>;
 export const ExperimentConfigVersionReleaseTrafficAllocationList =
   /*@__PURE__*/ S.Array(
     ExperimentConfigVersionReleaseTrafficAllocation,
@@ -1744,7 +1767,7 @@ export const ExperimentConfigVersionReleaseTrafficAllocationList =
 /** Version release for the experiment. */
 export interface ExperimentConfigVersionRelease {
   /** Optional. State of the version release. */
-  state?: ExperimentConfigVersionReleaseStateEnum;
+  state?: ExperimentConfigVersionReleaseStateEnum | (string & {});
   /** Optional. Traffic allocations for the version release. */
   trafficAllocations?: ExperimentConfigVersionReleaseTrafficAllocationList;
 }
@@ -1899,7 +1922,7 @@ export const AggregatedMetricsToolMetrics = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AggregatedMetricsToolMetrics>;
 
 export type AggregatedMetricsToolMetricsList =
-  ReadonlyArray<AggregatedMetricsToolMetrics>;
+  Array<AggregatedMetricsToolMetrics>;
 export const AggregatedMetricsToolMetricsList = /*@__PURE__*/ S.Array(
   AggregatedMetricsToolMetrics,
 ) as any as S.Schema<AggregatedMetricsToolMetricsList>;
@@ -1918,7 +1941,7 @@ export const AggregatedMetricsTurnLatencyMetrics = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AggregatedMetricsTurnLatencyMetrics>;
 
 export type AggregatedMetricsTurnLatencyMetricsList =
-  ReadonlyArray<AggregatedMetricsTurnLatencyMetrics>;
+  Array<AggregatedMetricsTurnLatencyMetrics>;
 export const AggregatedMetricsTurnLatencyMetricsList = /*@__PURE__*/ S.Array(
   AggregatedMetricsTurnLatencyMetrics,
 ) as any as S.Schema<AggregatedMetricsTurnLatencyMetricsList>;
@@ -1938,7 +1961,7 @@ export const AggregatedMetricsHallucinationMetrics = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<AggregatedMetricsHallucinationMetrics>;
 
 export type AggregatedMetricsHallucinationMetricsList =
-  ReadonlyArray<AggregatedMetricsHallucinationMetrics>;
+  Array<AggregatedMetricsHallucinationMetrics>;
 export const AggregatedMetricsHallucinationMetricsList = /*@__PURE__*/ S.Array(
   AggregatedMetricsHallucinationMetrics,
 ) as any as S.Schema<AggregatedMetricsHallucinationMetricsList>;
@@ -1958,7 +1981,7 @@ export const AggregatedMetricsSemanticSimilarityMetrics =
   }) as any as S.Schema<AggregatedMetricsSemanticSimilarityMetrics>;
 
 export type AggregatedMetricsSemanticSimilarityMetricsList =
-  ReadonlyArray<AggregatedMetricsSemanticSimilarityMetrics>;
+  Array<AggregatedMetricsSemanticSimilarityMetrics>;
 export const AggregatedMetricsSemanticSimilarityMetricsList =
   /*@__PURE__*/ S.Array(
     AggregatedMetricsSemanticSimilarityMetrics,
@@ -1982,7 +2005,7 @@ export const AggregatedMetricsToolCallLatencyMetrics = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<AggregatedMetricsToolCallLatencyMetrics>;
 
 export type AggregatedMetricsToolCallLatencyMetricsList =
-  ReadonlyArray<AggregatedMetricsToolCallLatencyMetrics>;
+  Array<AggregatedMetricsToolCallLatencyMetrics>;
 export const AggregatedMetricsToolCallLatencyMetricsList =
   /*@__PURE__*/ S.Array(
     AggregatedMetricsToolCallLatencyMetrics,
@@ -2021,7 +2044,7 @@ export const AggregatedMetricsMetricsByTurn = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AggregatedMetricsMetricsByTurn>;
 
 export type AggregatedMetricsMetricsByTurnList =
-  ReadonlyArray<AggregatedMetricsMetricsByTurn>;
+  Array<AggregatedMetricsMetricsByTurn>;
 export const AggregatedMetricsMetricsByTurnList = /*@__PURE__*/ S.Array(
   AggregatedMetricsMetricsByTurn,
 ) as any as S.Schema<AggregatedMetricsMetricsByTurnList>;
@@ -2071,7 +2094,7 @@ export const AggregatedMetricsMetricsByAppVersion = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<AggregatedMetricsMetricsByAppVersion>;
 
 export type AggregatedMetricsMetricsByAppVersionList =
-  ReadonlyArray<AggregatedMetricsMetricsByAppVersion>;
+  Array<AggregatedMetricsMetricsByAppVersion>;
 export const AggregatedMetricsMetricsByAppVersionList = /*@__PURE__*/ S.Array(
   AggregatedMetricsMetricsByAppVersion,
 ) as any as S.Schema<AggregatedMetricsMetricsByAppVersionList>;
@@ -2374,7 +2397,7 @@ export const Chunk = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Chunk" }) as any as S.Schema<Chunk>;
 
-export type ChunkList = ReadonlyArray<Chunk>;
+export type ChunkList = Array<Chunk>;
 export const ChunkList = /*@__PURE__*/ S.Array(
   Chunk,
 ) as any as S.Schema<ChunkList>;
@@ -2430,7 +2453,7 @@ export const EvaluationScenarioExpectation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EvaluationScenarioExpectation>;
 
 export type EvaluationScenarioExpectationList =
-  ReadonlyArray<EvaluationScenarioExpectation>;
+  Array<EvaluationScenarioExpectation>;
 export const EvaluationScenarioExpectationList = /*@__PURE__*/ S.Array(
   EvaluationScenarioExpectation,
 ) as any as S.Schema<EvaluationScenarioExpectationList>;
@@ -2458,8 +2481,7 @@ export const EvaluationScenarioUserFact = /*@__PURE__*/ S.suspend(() =>
   identifier: "EvaluationScenarioUserFact",
 }) as any as S.Schema<EvaluationScenarioUserFact>;
 
-export type EvaluationScenarioUserFactList =
-  ReadonlyArray<EvaluationScenarioUserFact>;
+export type EvaluationScenarioUserFactList = Array<EvaluationScenarioUserFact>;
 export const EvaluationScenarioUserFactList = /*@__PURE__*/ S.Array(
   EvaluationScenarioUserFact,
 ) as any as S.Schema<EvaluationScenarioUserFactList>;
@@ -2467,17 +2489,21 @@ export const EvaluationScenarioUserFactList = /*@__PURE__*/ S.Array(
 /** The config for a scenario */
 export interface EvaluationScenario {
   /** Optional. The execution mode for scenario evaluations. */
-  scenarioExecutionMode?: EvaluationScenarioScenarioExecutionModeEnum;
+  scenarioExecutionMode?:
+    | EvaluationScenarioScenarioExecutionModeEnum
+    | (string & {});
   /** Required. The task to be targeted by the scenario. */
   task?: string;
   /** Required. The rubrics to score the scenario against. */
   rubrics?: StringList;
   /** Optional. Deprecated. Use user_goal_behavior instead. */
-  taskCompletionBehavior?: EvaluationScenarioTaskCompletionBehaviorEnum;
+  taskCompletionBehavior?:
+    | EvaluationScenarioTaskCompletionBehaviorEnum
+    | (string & {});
   /** Required. The ScenarioExpectations to evaluate the conversation produced by the user simulation. */
   scenarioExpectations?: EvaluationScenarioExpectationList;
   /** Optional. The expected behavior of the user goal. */
-  userGoalBehavior?: EvaluationScenarioUserGoalBehaviorEnum;
+  userGoalBehavior?: EvaluationScenarioUserGoalBehaviorEnum | (string & {});
   /** Optional. The maximum number of turns to simulate. The maximum allowed value is 100. The default value is 100. */
   maxTurns?: number;
   /** Optional. The user facts to be used by the scenario. */
@@ -2515,7 +2541,7 @@ export type EvaluationGoldenTurnHallucinationMetricBehaviorOverrideEnum =
 export const EvaluationGoldenTurnHallucinationMetricBehaviorOverrideEnum =
   /*@__PURE__*/ S.String;
 
-export type SpanList = ReadonlyArray<Span>;
+export type SpanList = Array<Span>;
 export const SpanList = /*@__PURE__*/ S.Array(
   S.suspend(() => Span),
 ) as any as S.Schema<SpanList>;
@@ -2546,7 +2572,7 @@ export const Span = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Span" }) as any as S.Schema<Span>;
 
-export type ToolResponseList = ReadonlyArray<ToolResponse>;
+export type ToolResponseList = Array<ToolResponse>;
 export const ToolResponseList = /*@__PURE__*/ S.Array(
   ToolResponse,
 ) as any as S.Schema<ToolResponseList>;
@@ -2653,7 +2679,9 @@ export interface EvaluationGoldenExpectation {
   /** Optional. Overrides metrics at the step level. */
   expectationLevelMetricsThresholdsOverride?: EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsExpectationLevelMetricsThresholds;
   /** Optional. The comparison type to use for the expectation check. */
-  comparisonType?: EvaluationGoldenExpectationComparisonTypeEnum;
+  comparisonType?:
+    | EvaluationGoldenExpectationComparisonTypeEnum
+    | (string & {});
   /** Optional. Check that the agent responded with the correct response. The role "agent" is implied. */
   agentResponse?: Message;
   /** Optional. Overrides for agent_response hallucination metrics. */
@@ -2702,7 +2730,7 @@ export const EvaluationStep = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "EvaluationStep" }) as any as S.Schema<EvaluationStep>;
 
-export type EvaluationStepList = ReadonlyArray<EvaluationStep>;
+export type EvaluationStepList = Array<EvaluationStep>;
 export const EvaluationStepList = /*@__PURE__*/ S.Array(
   EvaluationStep,
 ) as any as S.Schema<EvaluationStepList>;
@@ -2710,7 +2738,9 @@ export const EvaluationStepList = /*@__PURE__*/ S.Array(
 /** A golden turn defines a single turn in a golden conversation. */
 export interface EvaluationGoldenTurn {
   /** Optional. Override for turn-level hallucination metric behavior. */
-  hallucinationMetricBehaviorOverride?: EvaluationGoldenTurnHallucinationMetricBehaviorOverrideEnum;
+  hallucinationMetricBehaviorOverride?:
+    | EvaluationGoldenTurnHallucinationMetricBehaviorOverrideEnum
+    | (string & {});
   /** Optional. The root span of the golden turn for processing and maintaining audio information. The uri for the audio must contain audio saved in 16Khz sample rate. */
   rootSpan?: Span;
   /** Required. The steps required to replay a golden conversation. */
@@ -2733,7 +2763,7 @@ export const EvaluationGoldenTurn = /*@__PURE__*/ S.suspend(() =>
   identifier: "EvaluationGoldenTurn",
 }) as any as S.Schema<EvaluationGoldenTurn>;
 
-export type EvaluationGoldenTurnList = ReadonlyArray<EvaluationGoldenTurn>;
+export type EvaluationGoldenTurnList = Array<EvaluationGoldenTurn>;
 export const EvaluationGoldenTurnList = /*@__PURE__*/ S.Array(
   EvaluationGoldenTurn,
 ) as any as S.Schema<EvaluationGoldenTurnList>;
@@ -2779,7 +2809,7 @@ export const OutputAudioConfigAudioEncodingEnum = /*@__PURE__*/ S.String;
 /** OutputAudioConfig configures how the CES agent should synthesize outgoing audio responses. */
 export interface OutputAudioConfig {
   /** Required. The encoding of the output audio data. */
-  audioEncoding?: OutputAudioConfigAudioEncodingEnum;
+  audioEncoding?: OutputAudioConfigAudioEncodingEnum | (string & {});
   /** Required. The sample rate (in Hertz) of the output audio data. */
   sampleRateHertz?: number;
 }
@@ -2802,7 +2832,7 @@ export const InputAudioConfigAudioEncodingEnum = /*@__PURE__*/ S.String;
 /** InputAudioConfig configures how the CES agent should interpret the incoming audio data. */
 export interface InputAudioConfig {
   /** Required. The encoding of the input audio data. */
-  audioEncoding?: InputAudioConfigAudioEncodingEnum;
+  audioEncoding?: InputAudioConfigAudioEncodingEnum | (string & {});
   /** Required. The sample rate (in Hertz) of the input audio data. */
   sampleRateHertz?: number;
   /** Optional. Whether to enable noise suppression on the input audio. Available values are "low", "moderate", "high", "very_high". */
@@ -2827,13 +2857,13 @@ export const EvaluationConfigToolCallBehaviourEnum = /*@__PURE__*/ S.String;
 /** EvaluationConfig configures settings for running the evaluation. */
 export interface EvaluationConfig {
   /** Optional. The channel to evaluate. */
-  evaluationChannel?: EvaluationConfigEvaluationChannelEnum;
+  evaluationChannel?: EvaluationConfigEvaluationChannelEnum | (string & {});
   /** Optional. Configuration for generating the output audio. */
   outputAudioConfig?: OutputAudioConfig;
   /** Optional. Configuration for processing the input audio. */
   inputAudioConfig?: InputAudioConfig;
   /** Optional. Specifies whether the evaluation should use real tool calls or fake tools. */
-  toolCallBehaviour?: EvaluationConfigToolCallBehaviourEnum;
+  toolCallBehaviour?: EvaluationConfigToolCallBehaviourEnum | (string & {});
 }
 export const EvaluationConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2865,7 +2895,7 @@ export const EvaluationErrorInfoErrorTypeEnum = /*@__PURE__*/ S.String;
 /** Information about an error encountered during an evaluation execution. */
 export interface EvaluationErrorInfo {
   /** Output only. The type of error. */
-  errorType?: EvaluationErrorInfoErrorTypeEnum;
+  errorType?: EvaluationErrorInfoErrorTypeEnum | (string & {});
   /** Output only. The session ID for the conversation that caused the error. */
   sessionId?: string;
   /** Output only. The user facing error message. */
@@ -2904,7 +2934,7 @@ export const EvaluationResultHallucinationResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EvaluationResultHallucinationResult>;
 
 export type EvaluationResultHallucinationResultList =
-  ReadonlyArray<EvaluationResultHallucinationResult>;
+  Array<EvaluationResultHallucinationResult>;
 export const EvaluationResultHallucinationResultList = /*@__PURE__*/ S.Array(
   EvaluationResultHallucinationResult,
 ) as any as S.Schema<EvaluationResultHallucinationResultList>;
@@ -2922,7 +2952,9 @@ export interface EvaluationResultEvaluationExpectationResult {
   /** Output only. The evaluation expectation. Format: `projects/{project}/locations/{location}/apps/{app}/evaluationExpectations/{evaluation_expectation}` */
   evaluationExpectation?: string;
   /** Output only. The outcome of the evaluation expectation. */
-  outcome?: EvaluationResultEvaluationExpectationResultOutcomeEnum;
+  outcome?:
+    | EvaluationResultEvaluationExpectationResultOutcomeEnum
+    | (string & {});
   /** Output only. The prompt that was used for the evaluation. */
   prompt?: string;
   /** Output only. The explanation for the result. */
@@ -2943,7 +2975,7 @@ export const EvaluationResultEvaluationExpectationResult =
   }) as any as S.Schema<EvaluationResultEvaluationExpectationResult>;
 
 export type EvaluationResultEvaluationExpectationResultList =
-  ReadonlyArray<EvaluationResultEvaluationExpectationResult>;
+  Array<EvaluationResultEvaluationExpectationResult>;
 export const EvaluationResultEvaluationExpectationResultList =
   /*@__PURE__*/ S.Array(
     EvaluationResultEvaluationExpectationResult,
@@ -2995,7 +3027,7 @@ export const EvaluationResultToolCallLatency = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EvaluationResultToolCallLatency>;
 
 export type EvaluationResultToolCallLatencyList =
-  ReadonlyArray<EvaluationResultToolCallLatency>;
+  Array<EvaluationResultToolCallLatency>;
 export const EvaluationResultToolCallLatencyList = /*@__PURE__*/ S.Array(
   EvaluationResultToolCallLatency,
 ) as any as S.Schema<EvaluationResultToolCallLatencyList>;
@@ -3021,7 +3053,7 @@ export const EvaluationResultScenarioRubricOutcome = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<EvaluationResultScenarioRubricOutcome>;
 
 export type EvaluationResultScenarioRubricOutcomeList =
-  ReadonlyArray<EvaluationResultScenarioRubricOutcome>;
+  Array<EvaluationResultScenarioRubricOutcome>;
 export const EvaluationResultScenarioRubricOutcomeList = /*@__PURE__*/ S.Array(
   EvaluationResultScenarioRubricOutcome,
 ) as any as S.Schema<EvaluationResultScenarioRubricOutcomeList>;
@@ -3060,7 +3092,9 @@ export interface EvaluationResultScenarioExpectationOutcome {
   /** Output only. The expectation that was evaluated. */
   expectation?: EvaluationScenarioExpectation;
   /** Output only. The outcome of the ScenarioExpectation. */
-  outcome?: EvaluationResultScenarioExpectationOutcomeOutcomeEnum;
+  outcome?:
+    | EvaluationResultScenarioExpectationOutcomeOutcomeEnum
+    | (string & {});
 }
 export const EvaluationResultScenarioExpectationOutcome =
   /*@__PURE__*/ S.suspend(() =>
@@ -3079,7 +3113,7 @@ export const EvaluationResultScenarioExpectationOutcome =
   }) as any as S.Schema<EvaluationResultScenarioExpectationOutcome>;
 
 export type EvaluationResultScenarioExpectationOutcomeList =
-  ReadonlyArray<EvaluationResultScenarioExpectationOutcome>;
+  Array<EvaluationResultScenarioExpectationOutcome>;
 export const EvaluationResultScenarioExpectationOutcomeList =
   /*@__PURE__*/ S.Array(
     EvaluationResultScenarioExpectationOutcome,
@@ -3118,7 +3152,7 @@ export interface EvaluationResultSpanLatency {
   /** Output only. The latency of span. */
   executionLatency?: string;
   /** Output only. The type of span. */
-  type?: EvaluationResultSpanLatencyTypeEnum;
+  type?: EvaluationResultSpanLatencyTypeEnum | (string & {});
   /** Output only. The toolset tool identifier. */
   toolset?: ToolsetTool;
   /** Output only. The resource name of the guardrail or tool spans. */
@@ -3151,7 +3185,7 @@ export const EvaluationResultSpanLatency = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EvaluationResultSpanLatency>;
 
 export type EvaluationResultSpanLatencyList =
-  ReadonlyArray<EvaluationResultSpanLatency>;
+  Array<EvaluationResultSpanLatency>;
 export const EvaluationResultSpanLatencyList = /*@__PURE__*/ S.Array(
   EvaluationResultSpanLatency,
 ) as any as S.Schema<EvaluationResultSpanLatencyList>;
@@ -3228,7 +3262,7 @@ export interface EvaluationResultSemanticSimilarityResult {
   /** Output only. The label associated with each score. Score 4: Fully Consistent Score 3: Mostly Consistent Score 2: Partially Consistent (Minor Omissions) Score 1: Largely Inconsistent (Major Omissions) Score 0: Completely Inconsistent / Contradictory */
   label?: string;
   /** Output only. The outcome of the semantic similarity check. This is determined by comparing the score to the semantic_similarity_success_threshold. If the score is equal to or above the threshold, the outcome will be PASS. Otherwise, the outcome will be FAIL. */
-  outcome?: EvaluationResultSemanticSimilarityResultOutcomeEnum;
+  outcome?: EvaluationResultSemanticSimilarityResultOutcomeEnum | (string & {});
 }
 export const EvaluationResultSemanticSimilarityResult = /*@__PURE__*/ S.suspend(
   () =>
@@ -3262,7 +3296,9 @@ export interface EvaluationResultGoldenExpectationOutcomeToolInvocationResult {
   /** Output only. A free text explanation for the tool invocation result. */
   explanation?: string;
   /** Output only. The outcome of the tool invocation check. This is determined by comparing the parameter_correctness_score to the threshold. If the score is equal to or above the threshold, the outcome will be PASS. Otherwise, the outcome will be FAIL. */
-  outcome?: EvaluationResultGoldenExpectationOutcomeToolInvocationResultOutcomeEnum;
+  outcome?:
+    | EvaluationResultGoldenExpectationOutcomeToolInvocationResultOutcomeEnum
+    | (string & {});
 }
 export const EvaluationResultGoldenExpectationOutcomeToolInvocationResult =
   /*@__PURE__*/ S.suspend(() =>
@@ -3280,7 +3316,7 @@ export const EvaluationResultGoldenExpectationOutcomeToolInvocationResult =
 /** Specifies the expectation and the result of that expectation. */
 export interface EvaluationResultGoldenExpectationOutcome {
   /** Output only. The outcome of the expectation. */
-  outcome?: EvaluationResultGoldenExpectationOutcomeOutcomeEnum;
+  outcome?: EvaluationResultGoldenExpectationOutcomeOutcomeEnum | (string & {});
   /** Output only. The result of the agent response expectation. */
   observedAgentResponse?: Message;
   /** Output only. The result of the tool invocation check. */
@@ -3320,7 +3356,7 @@ export const EvaluationResultGoldenExpectationOutcome = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<EvaluationResultGoldenExpectationOutcome>;
 
 export type EvaluationResultGoldenExpectationOutcomeList =
-  ReadonlyArray<EvaluationResultGoldenExpectationOutcome>;
+  Array<EvaluationResultGoldenExpectationOutcome>;
 export const EvaluationResultGoldenExpectationOutcomeList =
   /*@__PURE__*/ S.Array(
     EvaluationResultGoldenExpectationOutcome,
@@ -3339,7 +3375,9 @@ export interface EvaluationResultOverallToolInvocationResult {
   /** The overall tool invocation score for this turn. This indicates the overall percent of tools from the expected turn that were actually invoked. */
   toolInvocationScore?: number;
   /** Output only. The outcome of the tool invocation check. This is determined by comparing the tool_invocation_score to the overall_tool_invocation_correctness_threshold. If the score is equal to or above the threshold, the outcome will be PASS. Otherwise, the outcome will be FAIL. */
-  outcome?: EvaluationResultOverallToolInvocationResultOutcomeEnum;
+  outcome?:
+    | EvaluationResultOverallToolInvocationResultOutcomeEnum
+    | (string & {});
 }
 export const EvaluationResultOverallToolInvocationResult =
   /*@__PURE__*/ S.suspend(() =>
@@ -3404,7 +3442,7 @@ export const EvaluationResultGoldenResultTurnReplayResult =
   }) as any as S.Schema<EvaluationResultGoldenResultTurnReplayResult>;
 
 export type EvaluationResultGoldenResultTurnReplayResultList =
-  ReadonlyArray<EvaluationResultGoldenResultTurnReplayResult>;
+  Array<EvaluationResultGoldenResultTurnReplayResult>;
 export const EvaluationResultGoldenResultTurnReplayResultList =
   /*@__PURE__*/ S.Array(
     EvaluationResultGoldenResultTurnReplayResult,
@@ -3444,7 +3482,7 @@ export interface EvaluationResult {
   /** Output only. The evaluation thresholds for the result. */
   evaluationMetricsThresholds?: EvaluationMetricsThresholds;
   /** Output only. The state of the evaluation result execution. */
-  executionState?: EvaluationResultExecutionStateEnum;
+  executionState?: EvaluationResultExecutionStateEnum | (string & {});
   /** Output only. Deprecated: Use `error_info` instead. Errors encountered during execution. */
   error?: Status;
   /** Output only. The app version used to generate the conversation that resulted in this result. Format: `projects/{project}/locations/{location}/apps/{app}/versions/{version}` */
@@ -3452,7 +3490,7 @@ export interface EvaluationResult {
   /** Output only. The configuration used in the evaluation run that resulted in this result. */
   config?: EvaluationConfig;
   /** Output only. The method used to run the golden evaluation. */
-  goldenRunMethod?: EvaluationResultGoldenRunMethodEnum;
+  goldenRunMethod?: EvaluationResultGoldenRunMethodEnum | (string & {});
   /** Output only. The create time of the changelog of the app version that the evaluation ran against. This is populated if user runs evaluation on latest/draft. */
   changelogCreateTime?: string;
   /** Output only. Error information for the evaluation result. */
@@ -3468,7 +3506,7 @@ export interface EvaluationResult {
   /** Output only. The outcome of a golden evaluation. */
   goldenResult?: EvaluationResultGoldenResult;
   /** Output only. The outcome of the evaluation. Only populated if execution_state is COMPLETE. */
-  evaluationStatus?: EvaluationResultEvaluationStatusEnum;
+  evaluationStatus?: EvaluationResultEvaluationStatusEnum | (string & {});
   /** Identifier. The unique identifier of the evaluation result. Format: `projects/{project}/locations/{location}/apps/{app}/evaluations/{evaluation}/results/{result}` */
   name?: string;
   /** Output only. The evaluation run that produced this result. Format: `projects/{project}/locations/{location}/apps/{app}/evaluationRuns/{evaluationRun}` */
@@ -3504,7 +3542,7 @@ export const EvaluationResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "EvaluationResult",
 }) as any as S.Schema<EvaluationResult>;
 
-export type EvaluationResultList = ReadonlyArray<EvaluationResult>;
+export type EvaluationResultList = Array<EvaluationResult>;
 export const EvaluationResultList = /*@__PURE__*/ S.Array(
   EvaluationResult,
 ) as any as S.Schema<EvaluationResultList>;
@@ -3599,7 +3637,7 @@ export const CreateProjectsLocationsAppsEvaluationsRequest =
     identifier: "CreateProjectsLocationsAppsEvaluationsRequest",
   }) as any as S.Schema<CreateProjectsLocationsAppsEvaluationsRequest>;
 
-export type MessageList = ReadonlyArray<Message>;
+export type MessageList = Array<Message>;
 export const MessageList = /*@__PURE__*/ S.Array(
   Message,
 ) as any as S.Schema<MessageList>;
@@ -3686,9 +3724,9 @@ export const GuardrailModelSafetySafetySettingThresholdEnum =
 /** Safety setting. */
 export interface GuardrailModelSafetySafetySetting {
   /** Required. The harm category. */
-  category?: GuardrailModelSafetySafetySettingCategoryEnum;
+  category?: GuardrailModelSafetySafetySettingCategoryEnum | (string & {});
   /** Required. The harm block threshold. */
-  threshold?: GuardrailModelSafetySafetySettingThresholdEnum;
+  threshold?: GuardrailModelSafetySafetySettingThresholdEnum | (string & {});
 }
 export const GuardrailModelSafetySafetySetting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3700,7 +3738,7 @@ export const GuardrailModelSafetySafetySetting = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GuardrailModelSafetySafetySetting>;
 
 export type GuardrailModelSafetySafetySettingList =
-  ReadonlyArray<GuardrailModelSafetySafetySetting>;
+  Array<GuardrailModelSafetySafetySetting>;
 export const GuardrailModelSafetySafetySettingList = /*@__PURE__*/ S.Array(
   GuardrailModelSafetySafetySetting,
 ) as any as S.Schema<GuardrailModelSafetySafetySettingList>;
@@ -3747,7 +3785,7 @@ export const TriggerActionResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "TriggerActionResponse",
 }) as any as S.Schema<TriggerActionResponse>;
 
-export type TriggerActionResponseList = ReadonlyArray<TriggerActionResponse>;
+export type TriggerActionResponseList = Array<TriggerActionResponse>;
 export const TriggerActionResponseList = /*@__PURE__*/ S.Array(
   TriggerActionResponse,
 ) as any as S.Schema<TriggerActionResponseList>;
@@ -3805,7 +3843,7 @@ export const GuardrailContentFilterMatchTypeEnum = /*@__PURE__*/ S.String;
 /** Guardrail that bans certain content from being used in the conversation. */
 export interface GuardrailContentFilter {
   /** Required. Match type for the content filter. */
-  matchType?: GuardrailContentFilterMatchTypeEnum;
+  matchType?: GuardrailContentFilterMatchTypeEnum | (string & {});
   /** Optional. If true, diacritics are ignored during matching. */
   disregardDiacritics?: boolean;
   /** Optional. List of banned phrases. Applies to both user inputs and agent responses. */
@@ -3883,7 +3921,7 @@ export interface GuardrailLlmPolicy {
   /** Optional. If an error occurs during the policy check, fail open and do not trigger the guardrail. */
   failOpen?: boolean;
   /** Required. Defines when to apply the policy check during the conversation. If set to `POLICY_SCOPE_UNSPECIFIED`, the policy will be applied to the user input. When applying the policy to the agent response, additional latency will be introduced before the agent can respond. */
-  policyScope?: GuardrailLlmPolicyPolicyScopeEnum;
+  policyScope?: GuardrailLlmPolicyPolicyScopeEnum | (string & {});
 }
 export const GuardrailLlmPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4001,7 +4039,7 @@ export const OptimizationConfigStatusEnum = /*@__PURE__*/ S.String;
 /** Configuration for running the optimization step after the evaluation run. */
 export interface OptimizationConfig {
   /** Output only. The status of the optimization run. */
-  status?: OptimizationConfigStatusEnum;
+  status?: OptimizationConfigStatusEnum | (string & {});
   /** Output only. The error message if the optimization run failed. */
   errorMessage?: string;
   /** Output only. Whether to suggest a fix for the losses. */
@@ -4051,7 +4089,7 @@ export const PersonaRunConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "PersonaRunConfig",
 }) as any as S.Schema<PersonaRunConfig>;
 
-export type PersonaRunConfigList = ReadonlyArray<PersonaRunConfig>;
+export type PersonaRunConfigList = Array<PersonaRunConfig>;
 export const PersonaRunConfigList = /*@__PURE__*/ S.Array(
   PersonaRunConfig,
 ) as any as S.Schema<PersonaRunConfigList>;
@@ -4079,7 +4117,7 @@ export interface RunEvaluationRequest {
   /** Optional. The configuration to use for the run. */
   config?: EvaluationConfig;
   /** Optional. The method to run the evaluation if it is a golden evaluation. If not set, default to STABLE. */
-  goldenRunMethod?: RunEvaluationRequestGoldenRunMethodEnum;
+  goldenRunMethod?: RunEvaluationRequestGoldenRunMethodEnum | (string & {});
   /** Optional. The configuration to use for the run per persona. */
   personaRunConfigs?: PersonaRunConfigList;
   /** Optional. The number of times to run the evaluation. If not set, the default value is 1 per golden, and 5 per scenario. */
@@ -4114,7 +4152,7 @@ export type ScheduledEvaluationRunSchedulingConfigFrequencyEnum =
 export const ScheduledEvaluationRunSchedulingConfigFrequencyEnum =
   /*@__PURE__*/ S.String;
 
-export type IntegerList = ReadonlyArray<number>;
+export type IntegerList = Array<number>;
 export const IntegerList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<IntegerList>;
@@ -4122,7 +4160,9 @@ export const IntegerList = /*@__PURE__*/ S.Array(
 /** Eval scheduling configuration details */
 export interface ScheduledEvaluationRunSchedulingConfig {
   /** Required. The frequency with which to run the eval */
-  frequency?: ScheduledEvaluationRunSchedulingConfigFrequencyEnum;
+  frequency?:
+    | ScheduledEvaluationRunSchedulingConfigFrequencyEnum
+    | (string & {});
   /** Required. Timestamp when the eval should start. */
   startTime?: string;
   /** Optional. The days of the week to run the eval. Applicable only for Weekly and Biweekly frequencies. 1 is Monday, 2 is Tuesday, ..., 7 is Sunday. */
@@ -4282,7 +4322,7 @@ export interface ActionEntityOperation {
   /** Required. ID of the entity. */
   entityId?: string;
   /** Required. Operation to perform on the entity. */
-  operation?: ActionEntityOperationOperationEnum;
+  operation?: ActionEntityOperationOperationEnum | (string & {});
 }
 export const ActionEntityOperation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4373,7 +4413,7 @@ export interface OAuthConfig {
   /** Optional. The OAuth scopes to grant. */
   scopes?: StringList;
   /** Required. OAuth grant types. */
-  oauthGrantType?: OAuthConfigOauthGrantTypeEnum;
+  oauthGrantType?: OAuthConfigOauthGrantTypeEnum | (string & {});
   /** Required. The client ID from the OAuth provider. */
   clientId?: string;
   /** Required. The token endpoint in the OAuth provider to exchange for an access token. */
@@ -4414,7 +4454,7 @@ export const ApiKeyConfigRequestLocationEnum = /*@__PURE__*/ S.String;
 /** Configurations for authentication with API key. */
 export interface ApiKeyConfig {
   /** Required. Key location in the request. */
-  requestLocation?: ApiKeyConfigRequestLocationEnum;
+  requestLocation?: ApiKeyConfigRequestLocationEnum | (string & {});
   /** Required. The parameter name or the header name of the API key. E.g., If the API request is "https://example.com/act?X-Api-Key=", "X-Api-Key" would be the parameter name. */
   keyName?: string;
   /** Required. The name of the SecretManager secret version resource storing the API key. Format: `projects/{project}/secrets/{secret}/versions/{version}` Note: You should grant `roles/secretmanager.secretAccessor` role to the CES service agent `service-@gcp-sa-ces.iam.gserviceaccount.com`. */
@@ -4490,7 +4530,7 @@ export const TlsConfigCaCert = /*@__PURE__*/ S.suspend(() =>
   identifier: "TlsConfigCaCert",
 }) as any as S.Schema<TlsConfigCaCert>;
 
-export type TlsConfigCaCertList = ReadonlyArray<TlsConfigCaCert>;
+export type TlsConfigCaCertList = Array<TlsConfigCaCert>;
 export const TlsConfigCaCertList = /*@__PURE__*/ S.Array(
   TlsConfigCaCert,
 ) as any as S.Schema<TlsConfigCaCertList>;
@@ -4564,7 +4604,7 @@ export interface FileSearchTool {
   /** Optional. The corpus where files are stored. Format: projects/{project}/locations/{location}/ragCorpora/{rag_corpus} */
   fileCorpus?: string;
   /** Optional. The type of the corpus. Default is FULLY_MANAGED. */
-  corpusType?: FileSearchToolCorpusTypeEnum;
+  corpusType?: FileSearchToolCorpusTypeEnum | (string & {});
   /** Optional. The tool description. */
   description?: string;
 }
@@ -4597,7 +4637,7 @@ export const AgentInterface = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AgentInterface" }) as any as S.Schema<AgentInterface>;
 
-export type AgentInterfaceList = ReadonlyArray<AgentInterface>;
+export type AgentInterfaceList = Array<AgentInterface>;
 export const AgentInterfaceList = /*@__PURE__*/ S.Array(
   AgentInterface,
 ) as any as S.Schema<AgentInterfaceList>;
@@ -4631,7 +4671,7 @@ export const AgentSkill = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AgentSkill" }) as any as S.Schema<AgentSkill>;
 
-export type AgentSkillList = ReadonlyArray<AgentSkill>;
+export type AgentSkillList = Array<AgentSkill>;
 export const AgentSkillList = /*@__PURE__*/ S.Array(
   AgentSkill,
 ) as any as S.Schema<AgentSkillList>;
@@ -4779,7 +4819,7 @@ export interface WidgetToolDataMapping {
   /** Optional. Configuration for a Python function used to transform the source tool's output into the widget's input format. */
   pythonFunction?: PythonFunction;
   /** Optional. The mode of the data mapping. */
-  mode?: WidgetToolDataMappingModeEnum;
+  mode?: WidgetToolDataMappingModeEnum | (string & {});
 }
 export const WidgetToolDataMapping = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4819,7 +4859,7 @@ export const WidgetToolTextResponseConfigTypeEnum = /*@__PURE__*/ S.String;
 /** Configuration for the text response returned with the widget. */
 export interface WidgetToolTextResponseConfig {
   /** Optional. The strategy for providing the text response. */
-  type?: WidgetToolTextResponseConfigTypeEnum;
+  type?: WidgetToolTextResponseConfigTypeEnum | (string & {});
   /** Optional. Instruction for the LLM on how to generate the text response. Used as the description for the text response parameter if type is LLM_GENERATED. */
   textResponseInstruction?: string;
   /** Optional. The static text response to return when type is STATIC. */
@@ -4848,7 +4888,7 @@ export interface WidgetTool {
   /** Optional. The description of the widget tool. */
   description?: string;
   /** Optional. The type of the widget tool. If not specified, the default type will be CUSTOMIZED. */
-  widgetType?: WidgetToolWidgetTypeEnum;
+  widgetType?: WidgetToolWidgetTypeEnum | (string & {});
   /** Optional. Configuration for always-included text responses. */
   textResponseConfig?: WidgetToolTextResponseConfig;
 }
@@ -4925,9 +4965,9 @@ export interface DataStore {
   /** Required. Full resource name of the DataStore. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{dataStore}` */
   name?: string;
   /** Output only. The type of the data store. This field is readonly and populated by the server. */
-  type?: DataStoreTypeEnum;
+  type?: DataStoreTypeEnum | (string & {});
   /** Output only. The document processing mode for the data store connection. Only set for PUBLIC_WEB and UNSTRUCTURED data stores. */
-  documentProcessingMode?: DataStoreDocumentProcessingModeEnum;
+  documentProcessingMode?: DataStoreDocumentProcessingModeEnum | (string & {});
 }
 export const DataStore = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4975,7 +5015,7 @@ export const DataStoreToolBoostSpecConditionBoostSpecBoostControlSpecControlPoin
   }) as any as S.Schema<DataStoreToolBoostSpecConditionBoostSpecBoostControlSpecControlPoint>;
 
 export type DataStoreToolBoostSpecConditionBoostSpecBoostControlSpecControlPointList =
-  ReadonlyArray<DataStoreToolBoostSpecConditionBoostSpecBoostControlSpecControlPoint>;
+  Array<DataStoreToolBoostSpecConditionBoostSpecBoostControlSpecControlPoint>;
 export const DataStoreToolBoostSpecConditionBoostSpecBoostControlSpecControlPointList =
   /*@__PURE__*/ S.Array(
     DataStoreToolBoostSpecConditionBoostSpecBoostControlSpecControlPoint,
@@ -4998,9 +5038,13 @@ export interface DataStoreToolBoostSpecConditionBoostSpecBoostControlSpec {
   /** Optional. The name of the field whose value will be used to determine the boost amount. */
   fieldName?: string;
   /** Optional. The attribute type to be used to determine the boost amount. The attribute value can be derived from the field value of the specified field_name. In the case of numerical it is straightforward i.e. attribute_value = numerical_field_value. In the case of freshness however, attribute_value = (time.now() - datetime_field_value). */
-  attributeType?: DataStoreToolBoostSpecConditionBoostSpecBoostControlSpecAttributeTypeEnum;
+  attributeType?:
+    | DataStoreToolBoostSpecConditionBoostSpecBoostControlSpecAttributeTypeEnum
+    | (string & {});
   /** Optional. The interpolation type to be applied to connect the control points listed below. */
-  interpolationType?: DataStoreToolBoostSpecConditionBoostSpecBoostControlSpecInterpolationTypeEnum;
+  interpolationType?:
+    | DataStoreToolBoostSpecConditionBoostSpecBoostControlSpecInterpolationTypeEnum
+    | (string & {});
 }
 export const DataStoreToolBoostSpecConditionBoostSpecBoostControlSpec =
   /*@__PURE__*/ S.suspend(() =>
@@ -5043,7 +5087,7 @@ export const DataStoreToolBoostSpecConditionBoostSpec = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DataStoreToolBoostSpecConditionBoostSpec>;
 
 export type DataStoreToolBoostSpecConditionBoostSpecList =
-  ReadonlyArray<DataStoreToolBoostSpecConditionBoostSpec>;
+  Array<DataStoreToolBoostSpecConditionBoostSpec>;
 export const DataStoreToolBoostSpecConditionBoostSpecList =
   /*@__PURE__*/ S.Array(
     DataStoreToolBoostSpecConditionBoostSpec,
@@ -5064,7 +5108,7 @@ export const DataStoreToolBoostSpec = /*@__PURE__*/ S.suspend(() =>
   identifier: "DataStoreToolBoostSpec",
 }) as any as S.Schema<DataStoreToolBoostSpec>;
 
-export type DataStoreToolBoostSpecList = ReadonlyArray<DataStoreToolBoostSpec>;
+export type DataStoreToolBoostSpecList = Array<DataStoreToolBoostSpec>;
 export const DataStoreToolBoostSpecList = /*@__PURE__*/ S.Array(
   DataStoreToolBoostSpec,
 ) as any as S.Schema<DataStoreToolBoostSpecList>;
@@ -5085,14 +5129,13 @@ export const DataStoreToolBoostSpecs = /*@__PURE__*/ S.suspend(() =>
   identifier: "DataStoreToolBoostSpecs",
 }) as any as S.Schema<DataStoreToolBoostSpecs>;
 
-export type DataStoreToolBoostSpecsList =
-  ReadonlyArray<DataStoreToolBoostSpecs>;
+export type DataStoreToolBoostSpecsList = Array<DataStoreToolBoostSpecs>;
 export const DataStoreToolBoostSpecsList = /*@__PURE__*/ S.Array(
   DataStoreToolBoostSpecs,
 ) as any as S.Schema<DataStoreToolBoostSpecsList>;
 
 export type DataStoreToolDataStoreSourceList =
-  ReadonlyArray<DataStoreToolDataStoreSource>;
+  Array<DataStoreToolDataStoreSource>;
 export const DataStoreToolDataStoreSourceList = /*@__PURE__*/ S.Array(
   DataStoreToolDataStoreSource,
 ) as any as S.Schema<DataStoreToolDataStoreSourceList>;
@@ -5180,7 +5223,7 @@ export const DataStoreToolSummarizationConfig = /*@__PURE__*/ S.suspend(() =>
 /** If specified, will apply the given configuration for the specified modality. */
 export interface DataStoreToolModalityConfig {
   /** Required. The modality type. */
-  modalityType?: DataStoreToolModalityConfigModalityTypeEnum;
+  modalityType?: DataStoreToolModalityConfigModalityTypeEnum | (string & {});
   /** Optional. The grounding configuration. */
   groundingConfig?: DataStoreToolGroundingConfig;
   /** Optional. The rewriter config. */
@@ -5200,7 +5243,7 @@ export const DataStoreToolModalityConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DataStoreToolModalityConfig>;
 
 export type DataStoreToolModalityConfigList =
-  ReadonlyArray<DataStoreToolModalityConfig>;
+  Array<DataStoreToolModalityConfig>;
 export const DataStoreToolModalityConfigList = /*@__PURE__*/ S.Array(
   DataStoreToolModalityConfig,
 ) as any as S.Schema<DataStoreToolModalityConfigList>;
@@ -5224,7 +5267,9 @@ export interface DataStoreTool {
   /** Optional. The modality configs for the data store. */
   modalityConfigs?: DataStoreToolModalityConfigList;
   /** Optional. The filter parameter behavior. */
-  filterParameterBehavior?: DataStoreToolFilterParameterBehaviorEnum;
+  filterParameterBehavior?:
+    | DataStoreToolFilterParameterBehaviorEnum
+    | (string & {});
   /** Optional. The tool description. */
   description?: string;
 }
@@ -5260,7 +5305,7 @@ export interface McpTool {
   /** Optional. Service Directory configuration for VPC-SC, used to resolve service names within a perimeter. */
   serviceDirectoryConfig?: ServiceDirectoryConfig;
   /** Output only. The dynamic availability state of the tool on the external server. */
-  state?: McpToolStateEnum;
+  state?: McpToolStateEnum | (string & {});
   /** Optional. The custom headers to send in the request to the MCP server. The values must be in the format `$context.variables.` and can be set in the session variables. See https://docs.cloud.google.com/customer-engagement-ai/conversational-agents/ps/tool/open-api#openapi-injection for more details. */
   customHeaders?: StringMap;
   /** Required. The name of the MCP tool. */
@@ -5327,7 +5372,7 @@ export interface Tool {
   /** Identifier. The resource name of the tool. Format: * `projects/{project}/locations/{location}/apps/{app}/tools/{tool}` for standalone tools. * `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}/tools/{tool}` for tools retrieved from a toolset. These tools are dynamic and output-only; they cannot be referenced directly where a tool is expected. */
   name?: string;
   /** Optional. The execution type of the tool. */
-  executionType?: ToolExecutionTypeEnum;
+  executionType?: ToolExecutionTypeEnum | (string & {});
   /** Optional. The python function tool. */
   pythonFunction?: PythonFunction;
   /** Optional. The system tool. */
@@ -5412,7 +5457,7 @@ export type ToolsetExecutionTypeEnum =
   | "ASYNCHRONOUS";
 export const ToolsetExecutionTypeEnum = /*@__PURE__*/ S.String;
 
-export type ActionList = ReadonlyArray<Action>;
+export type ActionList = Array<Action>;
 export const ActionList = /*@__PURE__*/ S.Array(
   Action,
 ) as any as S.Schema<ActionList>;
@@ -5477,7 +5522,7 @@ export const McpToolOverride = /*@__PURE__*/ S.suspend(() =>
   identifier: "McpToolOverride",
 }) as any as S.Schema<McpToolOverride>;
 
-export type McpToolOverrideList = ReadonlyArray<McpToolOverride>;
+export type McpToolOverrideList = Array<McpToolOverride>;
 export const McpToolOverrideList = /*@__PURE__*/ S.Array(
   McpToolOverride,
 ) as any as S.Schema<McpToolOverrideList>;
@@ -5547,7 +5592,7 @@ export interface Toolset {
   /** Output only. Timestamp when the toolset was last updated. */
   updateTime?: string;
   /** Optional. The execution type of the tools in the toolset. */
-  executionType?: ToolsetExecutionTypeEnum;
+  executionType?: ToolsetExecutionTypeEnum | (string & {});
   /** Optional. A toolset that generates tools from an Integration Connectors Connection. */
   connectorToolset?: ConnectorToolset;
   /** Optional. The timeout for the toolset execution. If not set, the default timeout is 30 seconds for `SYNCHRONOUS` toolsets and 60 seconds for `ASYNCHRONOUS` toolsets. */
@@ -5603,27 +5648,27 @@ export const CreateProjectsLocationsAppsToolsetsRequest =
     identifier: "CreateProjectsLocationsAppsToolsetsRequest",
   }) as any as S.Schema<CreateProjectsLocationsAppsToolsetsRequest>;
 
-export type ToolsetList = ReadonlyArray<Toolset>;
+export type ToolsetList = Array<Toolset>;
 export const ToolsetList = /*@__PURE__*/ S.Array(
   Toolset,
 ) as any as S.Schema<ToolsetList>;
 
-export type ToolList = ReadonlyArray<Tool>;
+export type ToolList = Array<Tool>;
 export const ToolList = /*@__PURE__*/ S.Array(
   Tool,
 ) as any as S.Schema<ToolList>;
 
-export type AgentList = ReadonlyArray<Agent>;
+export type AgentList = Array<Agent>;
 export const AgentList = /*@__PURE__*/ S.Array(
   Agent,
 ) as any as S.Schema<AgentList>;
 
-export type GuardrailList = ReadonlyArray<Guardrail>;
+export type GuardrailList = Array<Guardrail>;
 export const GuardrailList = /*@__PURE__*/ S.Array(
   Guardrail,
 ) as any as S.Schema<GuardrailList>;
 
-export type ExampleList = ReadonlyArray<Example>;
+export type ExampleList = Array<Example>;
 export const ExampleList = /*@__PURE__*/ S.Array(
   Example,
 ) as any as S.Schema<ExampleList>;
@@ -6099,7 +6144,7 @@ export const MockedToolCall = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MockedToolCall" }) as any as S.Schema<MockedToolCall>;
 
-export type MockedToolCallList = ReadonlyArray<MockedToolCall>;
+export type MockedToolCallList = Array<MockedToolCall>;
 export const MockedToolCallList = /*@__PURE__*/ S.Array(
   MockedToolCall,
 ) as any as S.Schema<MockedToolCallList>;
@@ -6200,7 +6245,7 @@ export const CitationsCitedChunk = /*@__PURE__*/ S.suspend(() =>
   identifier: "CitationsCitedChunk",
 }) as any as S.Schema<CitationsCitedChunk>;
 
-export type CitationsCitedChunkList = ReadonlyArray<CitationsCitedChunk>;
+export type CitationsCitedChunkList = Array<CitationsCitedChunk>;
 export const CitationsCitedChunkList = /*@__PURE__*/ S.Array(
   CitationsCitedChunk,
 ) as any as S.Schema<CitationsCitedChunkList>;
@@ -6230,7 +6275,7 @@ export const WebSearchQuery = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "WebSearchQuery" }) as any as S.Schema<WebSearchQuery>;
 
-export type WebSearchQueryList = ReadonlyArray<WebSearchQuery>;
+export type WebSearchQueryList = Array<WebSearchQuery>;
 export const WebSearchQueryList = /*@__PURE__*/ S.Array(
   WebSearchQuery,
 ) as any as S.Schema<WebSearchQueryList>;
@@ -6507,7 +6552,7 @@ export const GenerateAppResourceRequestRefineInstructions =
   }) as any as S.Schema<GenerateAppResourceRequestRefineInstructions>;
 
 export type GenerateAppResourceRequestRefineInstructionsList =
-  ReadonlyArray<GenerateAppResourceRequestRefineInstructions>;
+  Array<GenerateAppResourceRequestRefineInstructions>;
 export const GenerateAppResourceRequestRefineInstructionsList =
   /*@__PURE__*/ S.Array(
     GenerateAppResourceRequestRefineInstructions,
@@ -6543,7 +6588,7 @@ export const FileContext = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "FileContext" }) as any as S.Schema<FileContext>;
 
-export type FileContextList = ReadonlyArray<FileContext>;
+export type FileContextList = Array<FileContext>;
 export const FileContextList = /*@__PURE__*/ S.Array(
   FileContext,
 ) as any as S.Schema<FileContextList>;
@@ -6640,7 +6685,7 @@ export const QualityReportIssue = /*@__PURE__*/ S.suspend(() =>
   identifier: "QualityReportIssue",
 }) as any as S.Schema<QualityReportIssue>;
 
-export type QualityReportIssueList = ReadonlyArray<QualityReportIssue>;
+export type QualityReportIssueList = Array<QualityReportIssue>;
 export const QualityReportIssueList = /*@__PURE__*/ S.Array(
   QualityReportIssue,
 ) as any as S.Schema<QualityReportIssueList>;
@@ -6661,8 +6706,7 @@ export const QualityReportAgentIssues = /*@__PURE__*/ S.suspend(() =>
   identifier: "QualityReportAgentIssues",
 }) as any as S.Schema<QualityReportAgentIssues>;
 
-export type QualityReportAgentIssuesList =
-  ReadonlyArray<QualityReportAgentIssues>;
+export type QualityReportAgentIssuesList = Array<QualityReportAgentIssues>;
 export const QualityReportAgentIssuesList = /*@__PURE__*/ S.Array(
   QualityReportAgentIssues,
 ) as any as S.Schema<QualityReportAgentIssuesList>;
@@ -6723,7 +6767,7 @@ export const GenerateAppResourceRequestToolGenerationConfigOpenApiToolsetGenerat
   }) as any as S.Schema<GenerateAppResourceRequestToolGenerationConfigOpenApiToolsetGenerationConfigOperationGenerationConfig>;
 
 export type GenerateAppResourceRequestToolGenerationConfigOpenApiToolsetGenerationConfigOperationGenerationConfigList =
-  ReadonlyArray<GenerateAppResourceRequestToolGenerationConfigOpenApiToolsetGenerationConfigOperationGenerationConfig>;
+  Array<GenerateAppResourceRequestToolGenerationConfigOpenApiToolsetGenerationConfigOperationGenerationConfig>;
 export const GenerateAppResourceRequestToolGenerationConfigOpenApiToolsetGenerationConfigOperationGenerationConfigList =
   /*@__PURE__*/ S.Array(
     GenerateAppResourceRequestToolGenerationConfigOpenApiToolsetGenerationConfigOperationGenerationConfig,
@@ -6998,8 +7042,7 @@ export const LfA2aV1AgentCardSignature = /*@__PURE__*/ S.suspend(() =>
   identifier: "LfA2aV1AgentCardSignature",
 }) as any as S.Schema<LfA2aV1AgentCardSignature>;
 
-export type LfA2aV1AgentCardSignatureList =
-  ReadonlyArray<LfA2aV1AgentCardSignature>;
+export type LfA2aV1AgentCardSignatureList = Array<LfA2aV1AgentCardSignature>;
 export const LfA2aV1AgentCardSignatureList = /*@__PURE__*/ S.Array(
   LfA2aV1AgentCardSignature,
 ) as any as S.Schema<LfA2aV1AgentCardSignatureList>;
@@ -7026,7 +7069,7 @@ export const LfA2aV1AgentExtension = /*@__PURE__*/ S.suspend(() =>
   identifier: "LfA2aV1AgentExtension",
 }) as any as S.Schema<LfA2aV1AgentExtension>;
 
-export type LfA2aV1AgentExtensionList = ReadonlyArray<LfA2aV1AgentExtension>;
+export type LfA2aV1AgentExtensionList = Array<LfA2aV1AgentExtension>;
 export const LfA2aV1AgentExtensionList = /*@__PURE__*/ S.Array(
   LfA2aV1AgentExtension,
 ) as any as S.Schema<LfA2aV1AgentExtensionList>;
@@ -7087,8 +7130,7 @@ export const LfA2aV1SecurityRequirement = /*@__PURE__*/ S.suspend(() =>
   identifier: "LfA2aV1SecurityRequirement",
 }) as any as S.Schema<LfA2aV1SecurityRequirement>;
 
-export type LfA2aV1SecurityRequirementList =
-  ReadonlyArray<LfA2aV1SecurityRequirement>;
+export type LfA2aV1SecurityRequirementList = Array<LfA2aV1SecurityRequirement>;
 export const LfA2aV1SecurityRequirementList = /*@__PURE__*/ S.Array(
   LfA2aV1SecurityRequirement,
 ) as any as S.Schema<LfA2aV1SecurityRequirementList>;
@@ -7127,7 +7169,7 @@ export const LfA2aV1AgentSkill = /*@__PURE__*/ S.suspend(() =>
   identifier: "LfA2aV1AgentSkill",
 }) as any as S.Schema<LfA2aV1AgentSkill>;
 
-export type LfA2aV1AgentSkillList = ReadonlyArray<LfA2aV1AgentSkill>;
+export type LfA2aV1AgentSkillList = Array<LfA2aV1AgentSkill>;
 export const LfA2aV1AgentSkillList = /*@__PURE__*/ S.Array(
   LfA2aV1AgentSkill,
 ) as any as S.Schema<LfA2aV1AgentSkillList>;
@@ -7154,7 +7196,7 @@ export const LfA2aV1AgentInterface = /*@__PURE__*/ S.suspend(() =>
   identifier: "LfA2aV1AgentInterface",
 }) as any as S.Schema<LfA2aV1AgentInterface>;
 
-export type LfA2aV1AgentInterfaceList = ReadonlyArray<LfA2aV1AgentInterface>;
+export type LfA2aV1AgentInterfaceList = Array<LfA2aV1AgentInterface>;
 export const LfA2aV1AgentInterfaceList = /*@__PURE__*/ S.Array(
   LfA2aV1AgentInterface,
 ) as any as S.Schema<LfA2aV1AgentInterfaceList>;
@@ -7703,7 +7745,7 @@ export const ConversationTurn = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConversationTurn",
 }) as any as S.Schema<ConversationTurn>;
 
-export type ConversationTurnList = ReadonlyArray<ConversationTurn>;
+export type ConversationTurnList = Array<ConversationTurn>;
 export const ConversationTurnList = /*@__PURE__*/ S.Array(
   ConversationTurn,
 ) as any as S.Schema<ConversationTurnList>;
@@ -7735,7 +7777,7 @@ export type ConversationInputTypesItemEnum =
 export const ConversationInputTypesItemEnum = /*@__PURE__*/ S.String;
 
 export type ConversationInputTypesItemEnumList =
-  ReadonlyArray<ConversationInputTypesItemEnum>;
+  Array<ConversationInputTypesItemEnum>;
 export const ConversationInputTypesItemEnumList = /*@__PURE__*/ S.Array(
   ConversationInputTypesItemEnum,
 ) as any as S.Schema<ConversationInputTypesItemEnumList>;
@@ -7930,7 +7972,7 @@ export const LatencyReportLlmCallLatency = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LatencyReportLlmCallLatency>;
 
 export type LatencyReportLlmCallLatencyList =
-  ReadonlyArray<LatencyReportLlmCallLatency>;
+  Array<LatencyReportLlmCallLatency>;
 export const LatencyReportLlmCallLatencyList = /*@__PURE__*/ S.Array(
   LatencyReportLlmCallLatency,
 ) as any as S.Schema<LatencyReportLlmCallLatencyList>;
@@ -7957,8 +7999,7 @@ export const LatencyReportToolLatency = /*@__PURE__*/ S.suspend(() =>
   identifier: "LatencyReportToolLatency",
 }) as any as S.Schema<LatencyReportToolLatency>;
 
-export type LatencyReportToolLatencyList =
-  ReadonlyArray<LatencyReportToolLatency>;
+export type LatencyReportToolLatencyList = Array<LatencyReportToolLatency>;
 export const LatencyReportToolLatencyList = /*@__PURE__*/ S.Array(
   LatencyReportToolLatency,
 ) as any as S.Schema<LatencyReportToolLatencyList>;
@@ -7983,7 +8024,7 @@ export const LatencyReportGuardrailLatency = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LatencyReportGuardrailLatency>;
 
 export type LatencyReportGuardrailLatencyList =
-  ReadonlyArray<LatencyReportGuardrailLatency>;
+  Array<LatencyReportGuardrailLatency>;
 export const LatencyReportGuardrailLatencyList = /*@__PURE__*/ S.Array(
   LatencyReportGuardrailLatency,
 ) as any as S.Schema<LatencyReportGuardrailLatencyList>;
@@ -8005,7 +8046,7 @@ export const LatencyReportCallbackLatency = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LatencyReportCallbackLatency>;
 
 export type LatencyReportCallbackLatencyList =
-  ReadonlyArray<LatencyReportCallbackLatency>;
+  Array<LatencyReportCallbackLatency>;
 export const LatencyReportCallbackLatencyList = /*@__PURE__*/ S.Array(
   LatencyReportCallbackLatency,
 ) as any as S.Schema<LatencyReportCallbackLatencyList>;
@@ -8364,7 +8405,7 @@ export const EndpointControlPolicyEnforcementScopeEnum = /*@__PURE__*/ S.String;
 /** Defines project/location level endpoint control policy. */
 export interface EndpointControlPolicy {
   /** Optional. The scope in which this policy's allowed_origins list is enforced. */
-  enforcementScope?: EndpointControlPolicyEnforcementScopeEnum;
+  enforcementScope?: EndpointControlPolicyEnforcementScopeEnum | (string & {});
   /** Optional. The allowed HTTP(s) origins that tools in the App are able to directly call. The enforcement depends on the value of enforcement_scope and the VPC-SC status of the project. If a port number is not provided, all ports will be allowed. Otherwise, the port number must match exactly. For example, "https://example.com" will match "https://example.com:443" and any other port. "https://example.com:443" will only match "https://example.com:443". */
   allowedOrigins?: StringList;
 }
@@ -8590,7 +8631,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = ReadonlyArray<Location>;
+export type LocationList = Array<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -8641,7 +8682,7 @@ export const ListProjectsLocationsAppsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsAppsRequest",
 }) as any as S.Schema<ListProjectsLocationsAppsRequest>;
 
-export type AppList = ReadonlyArray<App>;
+export type AppList = Array<App>;
 export const AppList = /*@__PURE__*/ S.Array(App) as any as S.Schema<AppList>;
 
 /** Response message for AgentService.ListApps. */
@@ -8741,7 +8782,7 @@ export const ListProjectsLocationsAppsChangelogsRequest =
     identifier: "ListProjectsLocationsAppsChangelogsRequest",
   }) as any as S.Schema<ListProjectsLocationsAppsChangelogsRequest>;
 
-export type ChangelogList = ReadonlyArray<Changelog>;
+export type ChangelogList = Array<Changelog>;
 export const ChangelogList = /*@__PURE__*/ S.Array(
   Changelog,
 ) as any as S.Schema<ChangelogList>;
@@ -8780,10 +8821,9 @@ export type ListProjectsLocationsAppsConversationsSourcesEnum =
 export const ListProjectsLocationsAppsConversationsSourcesEnum =
   /*@__PURE__*/ S.String;
 
-export type ListProjectsLocationsAppsConversationsSourcesEnumList =
-  ReadonlyArray<
-    ListProjectsLocationsAppsConversationsSourcesEnum | (string & {})
-  >;
+export type ListProjectsLocationsAppsConversationsSourcesEnumList = Array<
+  ListProjectsLocationsAppsConversationsSourcesEnum | (string & {})
+>;
 export const ListProjectsLocationsAppsConversationsSourcesEnumList =
   /*@__PURE__*/ S.Array(
     ListProjectsLocationsAppsConversationsSourcesEnum,
@@ -8827,7 +8867,7 @@ export const ListProjectsLocationsAppsConversationsRequest =
     identifier: "ListProjectsLocationsAppsConversationsRequest",
   }) as any as S.Schema<ListProjectsLocationsAppsConversationsRequest>;
 
-export type ConversationList = ReadonlyArray<Conversation>;
+export type ConversationList = Array<Conversation>;
 export const ConversationList = /*@__PURE__*/ S.Array(
   Conversation,
 ) as any as S.Schema<ConversationList>;
@@ -8876,7 +8916,7 @@ export const ListProjectsLocationsAppsDeploymentsRequest =
     identifier: "ListProjectsLocationsAppsDeploymentsRequest",
   }) as any as S.Schema<ListProjectsLocationsAppsDeploymentsRequest>;
 
-export type DeploymentList = ReadonlyArray<Deployment>;
+export type DeploymentList = Array<Deployment>;
 export const DeploymentList = /*@__PURE__*/ S.Array(
   Deployment,
 ) as any as S.Schema<DeploymentList>;
@@ -8928,7 +8968,7 @@ export const ListProjectsLocationsAppsEvaluationDatasetsRequest =
     identifier: "ListProjectsLocationsAppsEvaluationDatasetsRequest",
   }) as any as S.Schema<ListProjectsLocationsAppsEvaluationDatasetsRequest>;
 
-export type EvaluationDatasetList = ReadonlyArray<EvaluationDataset>;
+export type EvaluationDatasetList = Array<EvaluationDataset>;
 export const EvaluationDatasetList = /*@__PURE__*/ S.Array(
   EvaluationDataset,
 ) as any as S.Schema<EvaluationDatasetList>;
@@ -8980,7 +9020,7 @@ export const ListProjectsLocationsAppsEvaluationExpectationsRequest =
     identifier: "ListProjectsLocationsAppsEvaluationExpectationsRequest",
   }) as any as S.Schema<ListProjectsLocationsAppsEvaluationExpectationsRequest>;
 
-export type EvaluationExpectationList = ReadonlyArray<EvaluationExpectation>;
+export type EvaluationExpectationList = Array<EvaluationExpectation>;
 export const EvaluationExpectationList = /*@__PURE__*/ S.Array(
   EvaluationExpectation,
 ) as any as S.Schema<EvaluationExpectationList>;
@@ -9032,7 +9072,7 @@ export const ListProjectsLocationsAppsEvaluationRunsRequest =
     identifier: "ListProjectsLocationsAppsEvaluationRunsRequest",
   }) as any as S.Schema<ListProjectsLocationsAppsEvaluationRunsRequest>;
 
-export type EvaluationRunList = ReadonlyArray<EvaluationRun>;
+export type EvaluationRunList = Array<EvaluationRun>;
 export const EvaluationRunList = /*@__PURE__*/ S.Array(
   EvaluationRun,
 ) as any as S.Schema<EvaluationRunList>;
@@ -9093,7 +9133,7 @@ export const ListProjectsLocationsAppsEvaluationsRequest =
     identifier: "ListProjectsLocationsAppsEvaluationsRequest",
   }) as any as S.Schema<ListProjectsLocationsAppsEvaluationsRequest>;
 
-export type EvaluationList = ReadonlyArray<Evaluation>;
+export type EvaluationList = Array<Evaluation>;
 export const EvaluationList = /*@__PURE__*/ S.Array(
   Evaluation,
 ) as any as S.Schema<EvaluationList>;
@@ -9286,7 +9326,7 @@ export const ListProjectsLocationsAppsScheduledEvaluationRunsRequest =
     identifier: "ListProjectsLocationsAppsScheduledEvaluationRunsRequest",
   }) as any as S.Schema<ListProjectsLocationsAppsScheduledEvaluationRunsRequest>;
 
-export type ScheduledEvaluationRunList = ReadonlyArray<ScheduledEvaluationRun>;
+export type ScheduledEvaluationRunList = Array<ScheduledEvaluationRun>;
 export const ScheduledEvaluationRunList = /*@__PURE__*/ S.Array(
   ScheduledEvaluationRun,
 ) as any as S.Schema<ScheduledEvaluationRunList>;
@@ -9432,7 +9472,7 @@ export const ListProjectsLocationsAppsVersionsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsAppsVersionsRequest",
 }) as any as S.Schema<ListProjectsLocationsAppsVersionsRequest>;
 
-export type AppVersionList = ReadonlyArray<AppVersion>;
+export type AppVersionList = Array<AppVersion>;
 export const AppVersionList = /*@__PURE__*/ S.Array(
   AppVersion,
 ) as any as S.Schema<AppVersionList>;
@@ -9484,7 +9524,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type OperationList = ReadonlyArray<Operation>;
+export type OperationList = Array<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -9976,7 +10016,7 @@ export const RunEvaluationResultMetricsProjectsLocationsAppsEvaluationsResultsRe
       "RunEvaluationResultMetricsProjectsLocationsAppsEvaluationsResultsRequest",
   }) as any as S.Schema<RunEvaluationResultMetricsProjectsLocationsAppsEvaluationsResultsRequest>;
 
-export type SessionInputList = ReadonlyArray<SessionInput>;
+export type SessionInputList = Array<SessionInput>;
 export const SessionInputList = /*@__PURE__*/ S.Array(
   SessionInput,
 ) as any as S.Schema<SessionInputList>;
@@ -10103,7 +10143,7 @@ export const EndSession = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "EndSession" }) as any as S.Schema<EndSession>;
 
-export type ToolCallList = ReadonlyArray<ToolCall>;
+export type ToolCallList = Array<ToolCall>;
 export const ToolCallList = /*@__PURE__*/ S.Array(
   ToolCall,
 ) as any as S.Schema<ToolCallList>;
@@ -10160,7 +10200,7 @@ export const SessionOutput = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SessionOutput" }) as any as S.Schema<SessionOutput>;
 
-export type SessionOutputList = ReadonlyArray<SessionOutput>;
+export type SessionOutputList = Array<SessionOutput>;
 export const SessionOutputList = /*@__PURE__*/ S.Array(
   SessionOutput,
 ) as any as S.Schema<SessionOutputList>;
@@ -10279,7 +10319,7 @@ export const LfA2aV1Part = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "LfA2aV1Part" }) as any as S.Schema<LfA2aV1Part>;
 
-export type LfA2aV1PartList = ReadonlyArray<LfA2aV1Part>;
+export type LfA2aV1PartList = Array<LfA2aV1Part>;
 export const LfA2aV1PartList = /*@__PURE__*/ S.Array(
   LfA2aV1Part,
 ) as any as S.Schema<LfA2aV1PartList>;
@@ -10293,7 +10333,7 @@ export interface LfA2aV1Message {
   /** Optional. Any metadata to provide along with the message. */
   metadata?: DocumentMap;
   /** Required. Identifies the sender of the message. */
-  role?: LfA2aV1MessageRoleEnum;
+  role?: LfA2aV1MessageRoleEnum | (string & {});
   /** Optional. The context id of the message. If set, the message will be associated with the given context. */
   contextId?: string;
   /** Required. Parts is the container of the message content. */
@@ -10416,12 +10456,12 @@ export const LfA2aV1Artifact = /*@__PURE__*/ S.suspend(() =>
   identifier: "LfA2aV1Artifact",
 }) as any as S.Schema<LfA2aV1Artifact>;
 
-export type LfA2aV1ArtifactList = ReadonlyArray<LfA2aV1Artifact>;
+export type LfA2aV1ArtifactList = Array<LfA2aV1Artifact>;
 export const LfA2aV1ArtifactList = /*@__PURE__*/ S.Array(
   LfA2aV1Artifact,
 ) as any as S.Schema<LfA2aV1ArtifactList>;
 
-export type LfA2aV1MessageList = ReadonlyArray<LfA2aV1Message>;
+export type LfA2aV1MessageList = Array<LfA2aV1Message>;
 export const LfA2aV1MessageList = /*@__PURE__*/ S.Array(
   LfA2aV1Message,
 ) as any as S.Schema<LfA2aV1MessageList>;

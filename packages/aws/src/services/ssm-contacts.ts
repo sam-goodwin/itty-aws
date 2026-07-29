@@ -430,7 +430,7 @@ export type DayOfWeek = "MON" | "TUE" | "WED" | "THU" | "FRI" | "SAT" | "SUN";
 export const DayOfWeek = /*@__PURE__*/ S.String;
 
 export interface WeeklySetting {
-  DayOfWeek: DayOfWeek;
+  DayOfWeek: DayOfWeek | (string & {});
   HandOffTime: HandOffTime;
 }
 export const WeeklySetting = /*@__PURE__*/ S.suspend(() =>
@@ -450,7 +450,9 @@ export const CoverageTime = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CoverageTime" }) as any as S.Schema<CoverageTime>;
 export type CoverageTimes = CoverageTime[];
 export const CoverageTimes = /*@__PURE__*/ S.Array(CoverageTime);
-export type ShiftCoveragesMap = { [key in DayOfWeek]?: CoverageTime[] };
+export type ShiftCoveragesMap = {
+  [key in DayOfWeek | (string & {})]?: CoverageTime[];
+};
 export const ShiftCoveragesMap = /*@__PURE__*/ S.Record(
   DayOfWeek,
   CoverageTimes.pipe(S.optional),

@@ -71,7 +71,7 @@ export const OperationEntity = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationEntity>;
 
 /** List of Windows IoT Device Service operations supported by the Microsoft.WindowsIoT resource provider. */
-export type OperationListResultValueList = ReadonlyArray<OperationEntity>;
+export type OperationListResultValueList = Array<OperationEntity>;
 export const OperationListResultValueList = /*@__PURE__*/ S.Array(
   OperationEntity,
 ) as any as S.Schema<OperationListResultValueList>;
@@ -454,8 +454,7 @@ export const DeviceService = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeviceService" }) as any as S.Schema<DeviceService>;
 
 /** The array of DeviceService objects. */
-export type DeviceServiceDescriptionListResultValueList =
-  ReadonlyArray<DeviceService>;
+export type DeviceServiceDescriptionListResultValueList = Array<DeviceService>;
 export const DeviceServiceDescriptionListResultValueList =
   /*@__PURE__*/ S.Array(
     DeviceService,

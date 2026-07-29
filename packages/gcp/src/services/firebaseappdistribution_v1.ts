@@ -60,7 +60,7 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -125,7 +125,7 @@ export const GoogleFirebaseAppdistroV1Tester = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleFirebaseAppdistroV1Tester>;
 
 export type GoogleFirebaseAppdistroV1TesterList =
-  ReadonlyArray<GoogleFirebaseAppdistroV1Tester>;
+  Array<GoogleFirebaseAppdistroV1Tester>;
 export const GoogleFirebaseAppdistroV1TesterList = /*@__PURE__*/ S.Array(
   GoogleFirebaseAppdistroV1Tester,
 ) as any as S.Schema<GoogleFirebaseAppdistroV1TesterList>;
@@ -643,11 +643,13 @@ export interface GoogleFirebaseAppdistroV1Release {
   /** Notes about the release. */
   releaseNotes?: GoogleFirebaseAppdistroV1ReleaseNotes;
   /** Output only. Registration state of the Android package (BinaryType.APK). */
-  androidPackageRegistrationState?: GoogleFirebaseAppdistroV1ReleaseAndroidPackageRegistrationStateEnum;
+  androidPackageRegistrationState?:
+    | GoogleFirebaseAppdistroV1ReleaseAndroidPackageRegistrationStateEnum
+    | (string & {});
   /** Output only. Display version of the release. For an Android release, the display version is the `versionName`. For an iOS release, the display version is the `CFBundleShortVersionString`. */
   displayVersion?: string;
   /** Output only. Type of binary. */
-  binaryType?: GoogleFirebaseAppdistroV1ReleaseBinaryTypeEnum;
+  binaryType?: GoogleFirebaseAppdistroV1ReleaseBinaryTypeEnum | (string & {});
   /** Output only. Number of feedback reports left by testers. */
   feedbackCount?: number;
   /** Output only. The time the release was last updated. */
@@ -669,7 +671,7 @@ export interface GoogleFirebaseAppdistroV1Release {
   /** Output only. Number of testers with accepted invitations. */
   acceptedInvitationCount?: number;
   /** Output only. The overall state of tests run on this release */
-  testState?: GoogleFirebaseAppdistroV1ReleaseTestStateEnum;
+  testState?: GoogleFirebaseAppdistroV1ReleaseTestStateEnum | (string & {});
 }
 export const GoogleFirebaseAppdistroV1Release = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -770,7 +772,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -868,7 +870,7 @@ export const ListProjectsAppsReleasesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsAppsReleasesRequest>;
 
 export type GoogleFirebaseAppdistroV1ReleaseList =
-  ReadonlyArray<GoogleFirebaseAppdistroV1Release>;
+  Array<GoogleFirebaseAppdistroV1Release>;
 export const GoogleFirebaseAppdistroV1ReleaseList = /*@__PURE__*/ S.Array(
   GoogleFirebaseAppdistroV1Release,
 ) as any as S.Schema<GoogleFirebaseAppdistroV1ReleaseList>;
@@ -919,7 +921,7 @@ export const ListProjectsAppsReleasesFeedbackReportsRequest =
   }) as any as S.Schema<ListProjectsAppsReleasesFeedbackReportsRequest>;
 
 export type GoogleFirebaseAppdistroV1FeedbackReportList =
-  ReadonlyArray<GoogleFirebaseAppdistroV1FeedbackReport>;
+  Array<GoogleFirebaseAppdistroV1FeedbackReport>;
 export const GoogleFirebaseAppdistroV1FeedbackReportList =
   /*@__PURE__*/ S.Array(
     GoogleFirebaseAppdistroV1FeedbackReport,
@@ -973,8 +975,7 @@ export const ListProjectsAppsReleasesOperationsRequest =
     identifier: "ListProjectsAppsReleasesOperationsRequest",
   }) as any as S.Schema<ListProjectsAppsReleasesOperationsRequest>;
 
-export type GoogleLongrunningOperationList =
-  ReadonlyArray<GoogleLongrunningOperation>;
+export type GoogleLongrunningOperationList = Array<GoogleLongrunningOperation>;
 export const GoogleLongrunningOperationList = /*@__PURE__*/ S.Array(
   GoogleLongrunningOperation,
 ) as any as S.Schema<GoogleLongrunningOperationList>;
@@ -1024,7 +1025,7 @@ export const ListProjectsGroupsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsGroupsRequest>;
 
 export type GoogleFirebaseAppdistroV1GroupList =
-  ReadonlyArray<GoogleFirebaseAppdistroV1Group>;
+  Array<GoogleFirebaseAppdistroV1Group>;
 export const GoogleFirebaseAppdistroV1GroupList = /*@__PURE__*/ S.Array(
   GoogleFirebaseAppdistroV1Group,
 ) as any as S.Schema<GoogleFirebaseAppdistroV1GroupList>;
@@ -1366,7 +1367,7 @@ export const GdataDiffUploadRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GdataDiffUploadRequest",
 }) as any as S.Schema<GdataDiffUploadRequest>;
 
-export type GdataCompositeMediaList = ReadonlyArray<GdataCompositeMedia>;
+export type GdataCompositeMediaList = Array<GdataCompositeMedia>;
 export const GdataCompositeMediaList = /*@__PURE__*/ S.Array(
   GdataCompositeMedia,
 ) as any as S.Schema<GdataCompositeMediaList>;

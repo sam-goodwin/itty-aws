@@ -48,7 +48,7 @@ export const IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap =
 
 /** Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. Finalizers may be processed and removed in any order. Order is NOT enforced because it introduces significant risk of stuck finalizers. finalizers is a shared field, any actor with permission can reorder it. If the finalizer list is processed in order, then this can lead to a situation in which the component responsible for the first finalizer in the list is waiting for a signal (field value, external system, or other) produced by a component responsible for a finalizer later in the list, resulting in a deadlock. Without enforced ordering finalizers are free to order amongst themselves and are not vulnerable to ordering changes in the list. */
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -98,7 +98,7 @@ export const IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry =
 
 /** ManagedFields maps workflow-id and version to the set of fields that are managed by that workflow. This is mostly for internal housekeeping, and users typically shouldn't need to set or understand this field. A workflow can be the user's name, a controller's name, or the name of a specific apply path like "ci-cd". The set of fields is always in the version that the workflow used when modifying the object. */
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaManagedFieldsList =
-  ReadonlyArray<IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry>;
+  Array<IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry>;
 export const IoK8sApimachineryPkgApisMetaV1ObjectMetaManagedFieldsList =
   /*@__PURE__*/ S.Array(
     IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry,
@@ -135,7 +135,7 @@ export const IoK8sApimachineryPkgApisMetaV1OwnerReference =
 
 /** List of objects depended by this object. If ALL objects in the list have been deleted, this object will be garbage collected. If this object is managed by a controller, then an entry in this list will point to this controller, with the controller field set to true. There cannot be more than one managing controller. */
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaOwnerReferencesList =
-  ReadonlyArray<IoK8sApimachineryPkgApisMetaV1OwnerReference>;
+  Array<IoK8sApimachineryPkgApisMetaV1OwnerReference>;
 export const IoK8sApimachineryPkgApisMetaV1ObjectMetaOwnerReferencesList =
   /*@__PURE__*/ S.Array(
     IoK8sApimachineryPkgApisMetaV1OwnerReference,
@@ -223,7 +223,7 @@ export const IoK8sApiAdmissionregistrationV1alpha1MatchCondition =
 
 /** matchConditions is a list of conditions that must be met for a request to be validated. Match conditions filter requests that have already been matched by the matchConstraints. An empty list of matchConditions matches all requests. There are a maximum of 64 match conditions allowed. If a parameter object is provided, it can be accessed via the `params` handle in the same manner as validation expressions. The exact matching logic is (in order): 1. If ANY matchCondition evaluates to FALSE, the policy is skipped. 2. If ALL matchConditions evaluate to TRUE, the policy is evaluated. 3. If any matchCondition evaluates to an error (but none are FALSE): - If failurePolicy=Fail, reject the request - If failurePolicy=Ignore, the policy is skipped */
 export type IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicySpecMatchConditionsList =
-  ReadonlyArray<IoK8sApiAdmissionregistrationV1alpha1MatchCondition>;
+  Array<IoK8sApiAdmissionregistrationV1alpha1MatchCondition>;
 export const IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicySpecMatchConditionsList =
   /*@__PURE__*/ S.Array(
     IoK8sApiAdmissionregistrationV1alpha1MatchCondition,
@@ -231,7 +231,7 @@ export const IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicySpecMat
 
 /** apiGroups is the API groups the resources belong to. '*' is all groups. If '*' is present, the length of the slice must be one. Required. */
 export type IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperationsApiGroupsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperationsApiGroupsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -239,7 +239,7 @@ export const IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperationsApiGrou
 
 /** apiVersions is the API versions the resources belong to. '*' is all versions. If '*' is present, the length of the slice must be one. Required. */
 export type IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperationsApiVersionsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperationsApiVersionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -247,7 +247,7 @@ export const IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperationsApiVers
 
 /** operations is the operations the admission hook cares about - CREATE, UPDATE, DELETE, CONNECT or * for all of those operations and any future admission operations that are added. If '*' is present, the length of the slice must be one. Required. */
 export type IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperationsOperationsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperationsOperationsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -255,7 +255,7 @@ export const IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperationsOperati
 
 /** resourceNames is an optional white list of names that the rule applies to. An empty set means that everything is allowed. */
 export type IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperationsResourceNamesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperationsResourceNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -263,7 +263,7 @@ export const IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperationsResourc
 
 /** resources is a list of resources this rule applies to. For example: 'pods' means pods. 'pods/log' means the log subresource of pods. '*' means all resources, but not subresources. 'pods/*' means all subresources of pods. '*\/scale' means all scale subresources. '*\/*' means all resources and their subresources. If wildcard is present, the validation rule will ensure resources do not overlap with each other. Depending on the enclosing object, subresources might not be allowed. Required. */
 export type IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperationsResourcesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperationsResourcesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -310,7 +310,7 @@ export const IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperations =
 
 /** excludeResourceRules describes what operations on what resources/subresources the policy should not care about. The exclude rules take precedence over include rules (if a resource matches both, it is excluded) */
 export type IoK8sApiAdmissionregistrationV1alpha1MatchResourcesExcludeResourceRulesList =
-  ReadonlyArray<IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperations>;
+  Array<IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperations>;
 export const IoK8sApiAdmissionregistrationV1alpha1MatchResourcesExcludeResourceRulesList =
   /*@__PURE__*/ S.Array(
     IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperations,
@@ -318,7 +318,7 @@ export const IoK8sApiAdmissionregistrationV1alpha1MatchResourcesExcludeResourceR
 
 /** values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch. */
 export type IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirementValuesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirementValuesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -348,7 +348,7 @@ export const IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement =
 
 /** matchExpressions is a list of label selector requirements. The requirements are ANDed. */
 export type IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchExpressionsList =
-  ReadonlyArray<IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement>;
+  Array<IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement>;
 export const IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchExpressionsList =
   /*@__PURE__*/ S.Array(
     IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement,
@@ -387,7 +387,7 @@ export const IoK8sApimachineryPkgApisMetaV1LabelSelector =
 
 /** resourceRules describes what operations on what resources/subresources the admission policy matches. The policy cares about an operation if it matches _any_ Rule. */
 export type IoK8sApiAdmissionregistrationV1alpha1MatchResourcesResourceRulesList =
-  ReadonlyArray<IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperations>;
+  Array<IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperations>;
 export const IoK8sApiAdmissionregistrationV1alpha1MatchResourcesResourceRulesList =
   /*@__PURE__*/ S.Array(
     IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperations,
@@ -477,7 +477,7 @@ export const IoK8sApiAdmissionregistrationV1alpha1Mutation =
 
 /** mutations contain operations to perform on matching objects. mutations may not be empty; a minimum of one mutation is required. mutations are evaluated in order, and are reinvoked according to the reinvocationPolicy. The mutations of a policy are invoked for each binding of this policy and reinvocation of mutations occurs on a per binding basis. */
 export type IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicySpecMutationsList =
-  ReadonlyArray<IoK8sApiAdmissionregistrationV1alpha1Mutation>;
+  Array<IoK8sApiAdmissionregistrationV1alpha1Mutation>;
 export const IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicySpecMutationsList =
   /*@__PURE__*/ S.Array(
     IoK8sApiAdmissionregistrationV1alpha1Mutation,
@@ -519,7 +519,7 @@ export const IoK8sApiAdmissionregistrationV1alpha1Variable =
 
 /** variables contain definitions of variables that can be used in composition of other expressions. Each variable is defined as a named CEL expression. The variables defined here will be available under `variables` in other expressions of the policy except matchConditions because matchConditions are evaluated before the rest of the policy. The expression of a variable can refer to other variables defined earlier in the list but not those after. Thus, variables must be sorted by the order of first appearance and acyclic. */
 export type IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicySpecVariablesList =
-  ReadonlyArray<IoK8sApiAdmissionregistrationV1alpha1Variable>;
+  Array<IoK8sApiAdmissionregistrationV1alpha1Variable>;
 export const IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicySpecVariablesList =
   /*@__PURE__*/ S.Array(
     IoK8sApiAdmissionregistrationV1alpha1Variable,
@@ -768,7 +768,7 @@ export const IoK8sApiAdmissionregistrationV1beta1MatchCondition =
 
 /** matchConditions is a list of conditions that must be met for a request to be validated. Match conditions filter requests that have already been matched by the matchConstraints. An empty list of matchConditions matches all requests. There are a maximum of 64 match conditions allowed. If a parameter object is provided, it can be accessed via the `params` handle in the same manner as validation expressions. The exact matching logic is (in order): 1. If ANY matchCondition evaluates to FALSE, the policy is skipped. 2. If ALL matchConditions evaluate to TRUE, the policy is evaluated. 3. If any matchCondition evaluates to an error (but none are FALSE): - If failurePolicy=Fail, reject the request - If failurePolicy=Ignore, the policy is skipped */
 export type IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicySpecMatchConditionsList =
-  ReadonlyArray<IoK8sApiAdmissionregistrationV1beta1MatchCondition>;
+  Array<IoK8sApiAdmissionregistrationV1beta1MatchCondition>;
 export const IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicySpecMatchConditionsList =
   /*@__PURE__*/ S.Array(
     IoK8sApiAdmissionregistrationV1beta1MatchCondition,
@@ -776,7 +776,7 @@ export const IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicySpecMatc
 
 /** apiGroups is the API groups the resources belong to. '*' is all groups. If '*' is present, the length of the slice must be one. Required. */
 export type IoK8sApiAdmissionregistrationV1beta1NamedRuleWithOperationsApiGroupsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const IoK8sApiAdmissionregistrationV1beta1NamedRuleWithOperationsApiGroupsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -784,7 +784,7 @@ export const IoK8sApiAdmissionregistrationV1beta1NamedRuleWithOperationsApiGroup
 
 /** apiVersions is the API versions the resources belong to. '*' is all versions. If '*' is present, the length of the slice must be one. Required. */
 export type IoK8sApiAdmissionregistrationV1beta1NamedRuleWithOperationsApiVersionsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const IoK8sApiAdmissionregistrationV1beta1NamedRuleWithOperationsApiVersionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -792,7 +792,7 @@ export const IoK8sApiAdmissionregistrationV1beta1NamedRuleWithOperationsApiVersi
 
 /** operations is the operations the admission hook cares about - CREATE, UPDATE, DELETE, CONNECT or * for all of those operations and any future admission operations that are added. If '*' is present, the length of the slice must be one. Required. */
 export type IoK8sApiAdmissionregistrationV1beta1NamedRuleWithOperationsOperationsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const IoK8sApiAdmissionregistrationV1beta1NamedRuleWithOperationsOperationsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -800,7 +800,7 @@ export const IoK8sApiAdmissionregistrationV1beta1NamedRuleWithOperationsOperatio
 
 /** resourceNames is an optional white list of names that the rule applies to. An empty set means that everything is allowed. */
 export type IoK8sApiAdmissionregistrationV1beta1NamedRuleWithOperationsResourceNamesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const IoK8sApiAdmissionregistrationV1beta1NamedRuleWithOperationsResourceNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -808,7 +808,7 @@ export const IoK8sApiAdmissionregistrationV1beta1NamedRuleWithOperationsResource
 
 /** resources is a list of resources this rule applies to. For example: 'pods' means pods. 'pods/log' means the log subresource of pods. '*' means all resources, but not subresources. 'pods/*' means all subresources of pods. '*\/scale' means all scale subresources. '*\/*' means all resources and their subresources. If wildcard is present, the validation rule will ensure resources do not overlap with each other. Depending on the enclosing object, subresources might not be allowed. Required. */
 export type IoK8sApiAdmissionregistrationV1beta1NamedRuleWithOperationsResourcesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const IoK8sApiAdmissionregistrationV1beta1NamedRuleWithOperationsResourcesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -855,7 +855,7 @@ export const IoK8sApiAdmissionregistrationV1beta1NamedRuleWithOperations =
 
 /** excludeResourceRules describes what operations on what resources/subresources the ValidatingAdmissionPolicy should not care about. The exclude rules take precedence over include rules (if a resource matches both, it is excluded) */
 export type IoK8sApiAdmissionregistrationV1beta1MatchResourcesExcludeResourceRulesList =
-  ReadonlyArray<IoK8sApiAdmissionregistrationV1beta1NamedRuleWithOperations>;
+  Array<IoK8sApiAdmissionregistrationV1beta1NamedRuleWithOperations>;
 export const IoK8sApiAdmissionregistrationV1beta1MatchResourcesExcludeResourceRulesList =
   /*@__PURE__*/ S.Array(
     IoK8sApiAdmissionregistrationV1beta1NamedRuleWithOperations,
@@ -863,7 +863,7 @@ export const IoK8sApiAdmissionregistrationV1beta1MatchResourcesExcludeResourceRu
 
 /** resourceRules describes what operations on what resources/subresources the ValidatingAdmissionPolicy matches. The policy cares about an operation if it matches _any_ Rule. */
 export type IoK8sApiAdmissionregistrationV1beta1MatchResourcesResourceRulesList =
-  ReadonlyArray<IoK8sApiAdmissionregistrationV1beta1NamedRuleWithOperations>;
+  Array<IoK8sApiAdmissionregistrationV1beta1NamedRuleWithOperations>;
 export const IoK8sApiAdmissionregistrationV1beta1MatchResourcesResourceRulesList =
   /*@__PURE__*/ S.Array(
     IoK8sApiAdmissionregistrationV1beta1NamedRuleWithOperations,
@@ -953,7 +953,7 @@ export const IoK8sApiAdmissionregistrationV1beta1Mutation =
 
 /** mutations contain operations to perform on matching objects. mutations may not be empty; a minimum of one mutation is required. mutations are evaluated in order, and are reinvoked according to the reinvocationPolicy. The mutations of a policy are invoked for each binding of this policy and reinvocation of mutations occurs on a per binding basis. */
 export type IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicySpecMutationsList =
-  ReadonlyArray<IoK8sApiAdmissionregistrationV1beta1Mutation>;
+  Array<IoK8sApiAdmissionregistrationV1beta1Mutation>;
 export const IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicySpecMutationsList =
   /*@__PURE__*/ S.Array(
     IoK8sApiAdmissionregistrationV1beta1Mutation,
@@ -995,7 +995,7 @@ export const IoK8sApiAdmissionregistrationV1beta1Variable =
 
 /** variables contain definitions of variables that can be used in composition of other expressions. Each variable is defined as a named CEL expression. The variables defined here will be available under `variables` in other expressions of the policy except matchConditions because matchConditions are evaluated before the rest of the policy. The expression of a variable can refer to other variables defined earlier in the list but not those after. Thus, variables must be sorted by the order of first appearance and acyclic. */
 export type IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicySpecVariablesList =
-  ReadonlyArray<IoK8sApiAdmissionregistrationV1beta1Variable>;
+  Array<IoK8sApiAdmissionregistrationV1beta1Variable>;
 export const IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicySpecVariablesList =
   /*@__PURE__*/ S.Array(
     IoK8sApiAdmissionregistrationV1beta1Variable,
@@ -1244,7 +1244,7 @@ export const IoK8sApiAdmissionregistrationV1MatchCondition =
 
 /** matchConditions is a list of conditions that must be met for a request to be validated. Match conditions filter requests that have already been matched by the matchConstraints. An empty list of matchConditions matches all requests. There are a maximum of 64 match conditions allowed. If a parameter object is provided, it can be accessed via the `params` handle in the same manner as validation expressions. The exact matching logic is (in order): 1. If ANY matchCondition evaluates to FALSE, the policy is skipped. 2. If ALL matchConditions evaluate to TRUE, the policy is evaluated. 3. If any matchCondition evaluates to an error (but none are FALSE): - If failurePolicy=Fail, reject the request - If failurePolicy=Ignore, the policy is skipped */
 export type IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicySpecMatchConditionsList =
-  ReadonlyArray<IoK8sApiAdmissionregistrationV1MatchCondition>;
+  Array<IoK8sApiAdmissionregistrationV1MatchCondition>;
 export const IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicySpecMatchConditionsList =
   /*@__PURE__*/ S.Array(
     IoK8sApiAdmissionregistrationV1MatchCondition,
@@ -1252,7 +1252,7 @@ export const IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicySpecMatchCond
 
 /** apiGroups is the API groups the resources belong to. '*' is all groups. If '*' is present, the length of the slice must be one. Required. */
 export type IoK8sApiAdmissionregistrationV1NamedRuleWithOperationsApiGroupsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const IoK8sApiAdmissionregistrationV1NamedRuleWithOperationsApiGroupsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1260,7 +1260,7 @@ export const IoK8sApiAdmissionregistrationV1NamedRuleWithOperationsApiGroupsList
 
 /** apiVersions is the API versions the resources belong to. '*' is all versions. If '*' is present, the length of the slice must be one. Required. */
 export type IoK8sApiAdmissionregistrationV1NamedRuleWithOperationsApiVersionsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const IoK8sApiAdmissionregistrationV1NamedRuleWithOperationsApiVersionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1268,7 +1268,7 @@ export const IoK8sApiAdmissionregistrationV1NamedRuleWithOperationsApiVersionsLi
 
 /** operations is the operations the admission hook cares about - CREATE, UPDATE, DELETE, CONNECT or * for all of those operations and any future admission operations that are added. If '*' is present, the length of the slice must be one. Required. */
 export type IoK8sApiAdmissionregistrationV1NamedRuleWithOperationsOperationsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const IoK8sApiAdmissionregistrationV1NamedRuleWithOperationsOperationsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1276,7 +1276,7 @@ export const IoK8sApiAdmissionregistrationV1NamedRuleWithOperationsOperationsLis
 
 /** resourceNames is an optional white list of names that the rule applies to. An empty set means that everything is allowed. */
 export type IoK8sApiAdmissionregistrationV1NamedRuleWithOperationsResourceNamesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const IoK8sApiAdmissionregistrationV1NamedRuleWithOperationsResourceNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1284,7 +1284,7 @@ export const IoK8sApiAdmissionregistrationV1NamedRuleWithOperationsResourceNames
 
 /** resources is a list of resources this rule applies to. For example: 'pods' means pods. 'pods/log' means the log subresource of pods. '*' means all resources, but not subresources. 'pods/*' means all subresources of pods. '*\/scale' means all scale subresources. '*\/*' means all resources and their subresources. If wildcard is present, the validation rule will ensure resources do not overlap with each other. Depending on the enclosing object, subresources might not be allowed. Required. */
 export type IoK8sApiAdmissionregistrationV1NamedRuleWithOperationsResourcesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const IoK8sApiAdmissionregistrationV1NamedRuleWithOperationsResourcesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1331,7 +1331,7 @@ export const IoK8sApiAdmissionregistrationV1NamedRuleWithOperations =
 
 /** excludeResourceRules describes what operations on what resources/subresources the ValidatingAdmissionPolicy should not care about. The exclude rules take precedence over include rules (if a resource matches both, it is excluded) */
 export type IoK8sApiAdmissionregistrationV1MatchResourcesExcludeResourceRulesList =
-  ReadonlyArray<IoK8sApiAdmissionregistrationV1NamedRuleWithOperations>;
+  Array<IoK8sApiAdmissionregistrationV1NamedRuleWithOperations>;
 export const IoK8sApiAdmissionregistrationV1MatchResourcesExcludeResourceRulesList =
   /*@__PURE__*/ S.Array(
     IoK8sApiAdmissionregistrationV1NamedRuleWithOperations,
@@ -1339,7 +1339,7 @@ export const IoK8sApiAdmissionregistrationV1MatchResourcesExcludeResourceRulesLi
 
 /** resourceRules describes what operations on what resources/subresources the ValidatingAdmissionPolicy matches. The policy cares about an operation if it matches _any_ Rule. */
 export type IoK8sApiAdmissionregistrationV1MatchResourcesResourceRulesList =
-  ReadonlyArray<IoK8sApiAdmissionregistrationV1NamedRuleWithOperations>;
+  Array<IoK8sApiAdmissionregistrationV1NamedRuleWithOperations>;
 export const IoK8sApiAdmissionregistrationV1MatchResourcesResourceRulesList =
   /*@__PURE__*/ S.Array(
     IoK8sApiAdmissionregistrationV1NamedRuleWithOperations,
@@ -1429,7 +1429,7 @@ export const IoK8sApiAdmissionregistrationV1Mutation = /*@__PURE__*/ S.suspend(
 
 /** mutations contain operations to perform on matching objects. mutations may not be empty; a minimum of one mutation is required. mutations are evaluated in order, and are reinvoked according to the reinvocationPolicy. The mutations of a policy are invoked for each binding of this policy and reinvocation of mutations occurs on a per binding basis. */
 export type IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicySpecMutationsList =
-  ReadonlyArray<IoK8sApiAdmissionregistrationV1Mutation>;
+  Array<IoK8sApiAdmissionregistrationV1Mutation>;
 export const IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicySpecMutationsList =
   /*@__PURE__*/ S.Array(
     IoK8sApiAdmissionregistrationV1Mutation,
@@ -1471,7 +1471,7 @@ export const IoK8sApiAdmissionregistrationV1Variable = /*@__PURE__*/ S.suspend(
 
 /** variables contain definitions of variables that can be used in composition of other expressions. Each variable is defined as a named CEL expression. The variables defined here will be available under `variables` in other expressions of the policy except matchConditions because matchConditions are evaluated before the rest of the policy. The expression of a variable can refer to other variables defined earlier in the list but not those after. Thus, variables must be sorted by the order of first appearance and acyclic. */
 export type IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicySpecVariablesList =
-  ReadonlyArray<IoK8sApiAdmissionregistrationV1Variable>;
+  Array<IoK8sApiAdmissionregistrationV1Variable>;
 export const IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicySpecVariablesList =
   /*@__PURE__*/ S.Array(
     IoK8sApiAdmissionregistrationV1Variable,
@@ -1698,7 +1698,7 @@ export const IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicyBinding =
 
 /** admissionReviewVersions is an ordered list of preferred `AdmissionReview` versions the Webhook expects. API server will try to use first version in the list which it supports. If none of the versions specified in this list supported by API server, validation will fail for this object. If a persisted webhook configuration specifies allowed versions and does not include any versions known to the API Server, calls to the webhook will fail and be subject to the failure policy. */
 export type IoK8sApiAdmissionregistrationV1MutatingWebhookAdmissionReviewVersionsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const IoK8sApiAdmissionregistrationV1MutatingWebhookAdmissionReviewVersionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1749,7 +1749,7 @@ export const IoK8sApiAdmissionregistrationV1WebhookClientConfig =
 
 /** matchConditions is a list of conditions that must be met for a request to be sent to this webhook. Match conditions filter requests that have already been matched by the rules, namespaceSelector, and objectSelector. An empty list of matchConditions matches all requests. There are a maximum of 64 match conditions allowed. The exact matching logic is (in order): 1. If ANY matchCondition evaluates to FALSE, the webhook is skipped. 2. If ALL matchConditions evaluate to TRUE, the webhook is called. 3. If any matchCondition evaluates to an error (but none are FALSE): - If failurePolicy=Fail, reject the request - If failurePolicy=Ignore, the error is ignored and the webhook is skipped */
 export type IoK8sApiAdmissionregistrationV1MutatingWebhookMatchConditionsList =
-  ReadonlyArray<IoK8sApiAdmissionregistrationV1MatchCondition>;
+  Array<IoK8sApiAdmissionregistrationV1MatchCondition>;
 export const IoK8sApiAdmissionregistrationV1MutatingWebhookMatchConditionsList =
   /*@__PURE__*/ S.Array(
     IoK8sApiAdmissionregistrationV1MatchCondition,
@@ -1757,7 +1757,7 @@ export const IoK8sApiAdmissionregistrationV1MutatingWebhookMatchConditionsList =
 
 /** apiGroups is the API groups the resources belong to. '*' is all groups. If '*' is present, the length of the slice must be one. Required. */
 export type IoK8sApiAdmissionregistrationV1RuleWithOperationsApiGroupsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const IoK8sApiAdmissionregistrationV1RuleWithOperationsApiGroupsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1765,7 +1765,7 @@ export const IoK8sApiAdmissionregistrationV1RuleWithOperationsApiGroupsList =
 
 /** apiVersions is the API versions the resources belong to. '*' is all versions. If '*' is present, the length of the slice must be one. Required. */
 export type IoK8sApiAdmissionregistrationV1RuleWithOperationsApiVersionsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const IoK8sApiAdmissionregistrationV1RuleWithOperationsApiVersionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1773,7 +1773,7 @@ export const IoK8sApiAdmissionregistrationV1RuleWithOperationsApiVersionsList =
 
 /** operations is the operations the admission hook cares about - CREATE, UPDATE, DELETE, CONNECT or * for all of those operations and any future admission operations that are added. If '*' is present, the length of the slice must be one. Required. */
 export type IoK8sApiAdmissionregistrationV1RuleWithOperationsOperationsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const IoK8sApiAdmissionregistrationV1RuleWithOperationsOperationsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1781,7 +1781,7 @@ export const IoK8sApiAdmissionregistrationV1RuleWithOperationsOperationsList =
 
 /** resources is a list of resources this rule applies to. For example: 'pods' means pods. 'pods/log' means the log subresource of pods. '*' means all resources, but not subresources. 'pods/*' means all subresources of pods. '*\/scale' means all scale subresources. '*\/*' means all resources and their subresources. If wildcard is present, the validation rule will ensure resources do not overlap with each other. Depending on the enclosing object, subresources might not be allowed. Required. */
 export type IoK8sApiAdmissionregistrationV1RuleWithOperationsResourcesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const IoK8sApiAdmissionregistrationV1RuleWithOperationsResourcesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1823,7 +1823,7 @@ export const IoK8sApiAdmissionregistrationV1RuleWithOperations =
 
 /** rules describes what operations on what resources/subresources the webhook cares about. The webhook cares about an operation if it matches _any_ Rule. However, in order to prevent ValidatingAdmissionWebhooks and MutatingAdmissionWebhooks from putting the cluster in a state which cannot be recovered from without completely disabling the plugin, ValidatingAdmissionWebhooks and MutatingAdmissionWebhooks are never called on admission requests for ValidatingWebhookConfiguration and MutatingWebhookConfiguration objects. */
 export type IoK8sApiAdmissionregistrationV1MutatingWebhookRulesList =
-  ReadonlyArray<IoK8sApiAdmissionregistrationV1RuleWithOperations>;
+  Array<IoK8sApiAdmissionregistrationV1RuleWithOperations>;
 export const IoK8sApiAdmissionregistrationV1MutatingWebhookRulesList =
   /*@__PURE__*/ S.Array(
     IoK8sApiAdmissionregistrationV1RuleWithOperations,
@@ -1885,7 +1885,7 @@ export const IoK8sApiAdmissionregistrationV1MutatingWebhook =
 
 /** webhooks is a list of webhooks and the affected resources and operations. */
 export type CreateAdmissionregistrationV1MutatingWebhookConfigurationRequestWebhooksList =
-  ReadonlyArray<IoK8sApiAdmissionregistrationV1MutatingWebhook>;
+  Array<IoK8sApiAdmissionregistrationV1MutatingWebhook>;
 export const CreateAdmissionregistrationV1MutatingWebhookConfigurationRequestWebhooksList =
   /*@__PURE__*/ S.Array(
     IoK8sApiAdmissionregistrationV1MutatingWebhook,
@@ -1936,7 +1936,7 @@ export const CreateAdmissionregistrationV1MutatingWebhookConfigurationRequest =
 
 /** webhooks is a list of webhooks and the affected resources and operations. */
 export type IoK8sApiAdmissionregistrationV1MutatingWebhookConfigurationWebhooksList =
-  ReadonlyArray<IoK8sApiAdmissionregistrationV1MutatingWebhook>;
+  Array<IoK8sApiAdmissionregistrationV1MutatingWebhook>;
 export const IoK8sApiAdmissionregistrationV1MutatingWebhookConfigurationWebhooksList =
   /*@__PURE__*/ S.Array(
     IoK8sApiAdmissionregistrationV1MutatingWebhook,
@@ -1986,7 +1986,7 @@ export const IoK8sApiAdmissionregistrationV1AuditAnnotation =
 
 /** auditAnnotations contains CEL expressions which are used to produce audit annotations for the audit event of the API request. validations and auditAnnotations may not both be empty; a least one of validations or auditAnnotations is required. */
 export type IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicySpecAuditAnnotationsList =
-  ReadonlyArray<IoK8sApiAdmissionregistrationV1AuditAnnotation>;
+  Array<IoK8sApiAdmissionregistrationV1AuditAnnotation>;
 export const IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicySpecAuditAnnotationsList =
   /*@__PURE__*/ S.Array(
     IoK8sApiAdmissionregistrationV1AuditAnnotation,
@@ -1994,7 +1994,7 @@ export const IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicySpecAuditAn
 
 /** matchConditions is a list of conditions that must be met for a request to be validated. Match conditions filter requests that have already been matched by the rules, namespaceSelector, and objectSelector. An empty list of matchConditions matches all requests. There are a maximum of 64 match conditions allowed. If a parameter object is provided, it can be accessed via the `params` handle in the same manner as validation expressions. The exact matching logic is (in order): 1. If ANY matchCondition evaluates to FALSE, the policy is skipped. 2. If ALL matchConditions evaluate to TRUE, the policy is evaluated. 3. If any matchCondition evaluates to an error (but none are FALSE): - If failurePolicy=Fail, reject the request - If failurePolicy=Ignore, the policy is skipped */
 export type IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicySpecMatchConditionsList =
-  ReadonlyArray<IoK8sApiAdmissionregistrationV1MatchCondition>;
+  Array<IoK8sApiAdmissionregistrationV1MatchCondition>;
 export const IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicySpecMatchConditionsList =
   /*@__PURE__*/ S.Array(
     IoK8sApiAdmissionregistrationV1MatchCondition,
@@ -2025,7 +2025,7 @@ export const IoK8sApiAdmissionregistrationV1Validation =
 
 /** validations contain CEL expressions which is used to apply the validation. Validations and AuditAnnotations may not both be empty; a minimum of one Validations or AuditAnnotations is required. */
 export type IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicySpecValidationsList =
-  ReadonlyArray<IoK8sApiAdmissionregistrationV1Validation>;
+  Array<IoK8sApiAdmissionregistrationV1Validation>;
 export const IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicySpecValidationsList =
   /*@__PURE__*/ S.Array(
     IoK8sApiAdmissionregistrationV1Validation,
@@ -2033,7 +2033,7 @@ export const IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicySpecValidat
 
 /** variables contain definitions of variables that can be used in composition of other expressions. Each variable is defined as a named CEL expression. The variables defined here will be available under `variables` in other expressions of the policy except MatchConditions because MatchConditions are evaluated before the rest of the policy. The expression of a variable can refer to other variables defined earlier in the list but not those after. Thus, Variables must be sorted by the order of first appearance and acyclic. */
 export type IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicySpecVariablesList =
-  ReadonlyArray<IoK8sApiAdmissionregistrationV1Variable>;
+  Array<IoK8sApiAdmissionregistrationV1Variable>;
 export const IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicySpecVariablesList =
   /*@__PURE__*/ S.Array(
     IoK8sApiAdmissionregistrationV1Variable,
@@ -2112,7 +2112,7 @@ export const IoK8sApimachineryPkgApisMetaV1Condition = /*@__PURE__*/ S.suspend(
 
 /** conditions represent the latest available observations of a policy's current state. */
 export type IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicyStatusConditionsList =
-  ReadonlyArray<IoK8sApimachineryPkgApisMetaV1Condition>;
+  Array<IoK8sApimachineryPkgApisMetaV1Condition>;
 export const IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicyStatusConditionsList =
   /*@__PURE__*/ S.Array(
     IoK8sApimachineryPkgApisMetaV1Condition,
@@ -2137,7 +2137,7 @@ export const IoK8sApiAdmissionregistrationV1ExpressionWarning =
 
 /** expressionWarnings contains the type checking warnings for each expression. */
 export type IoK8sApiAdmissionregistrationV1TypeCheckingExpressionWarningsList =
-  ReadonlyArray<IoK8sApiAdmissionregistrationV1ExpressionWarning>;
+  Array<IoK8sApiAdmissionregistrationV1ExpressionWarning>;
 export const IoK8sApiAdmissionregistrationV1TypeCheckingExpressionWarningsList =
   /*@__PURE__*/ S.Array(
     IoK8sApiAdmissionregistrationV1ExpressionWarning,
@@ -2261,7 +2261,7 @@ export const IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicy =
 
 /** validationActions declares how Validations of the referenced ValidatingAdmissionPolicy are enforced. If a validation evaluates to false it is always enforced according to these actions. Failures defined by the ValidatingAdmissionPolicy's FailurePolicy are enforced according to these actions only if the FailurePolicy is set to Fail, otherwise the failures are ignored. This includes compilation errors, runtime errors and misconfigurations of the policy. validationActions is declared as a set of action values. Order does not matter. validationActions may not contain duplicates of the same action. The supported actions values are: "Deny" specifies that a validation failure results in a denied request. "Warn" specifies that a validation failure is reported to the request client in HTTP Warning headers, with a warning code of 299. Warnings can be sent both for allowed or denied admission responses. "Audit" specifies that a validation failure is included in the published audit event for the request. The audit event will contain a `validation.policy.admission.k8s.io/validation_failure` audit annotation with a value containing the details of the validation failures, formatted as a JSON list of objects, each with the following fields: - message: The validation failure message string - policy: The resource name of the ValidatingAdmissionPolicy - binding: The resource name of the ValidatingAdmissionPolicyBinding - expressionIndex: The index of the failed validations in the ValidatingAdmissionPolicy - validationActions: The enforcement actions enacted for the validation failure Example audit annotation: `"validation.policy.admission.k8s.io/validation_failure": "[{\"message\": \"Invalid value\", {\"policy\": \"policy.example.com\", {\"binding\": \"policybinding.example.com\", {\"expressionIndex\": \"1\", {\"validationActions\": [\"Audit\"]}]"` Clients should expect to handle additional values by ignoring any values not recognized. "Deny" and "Warn" may not be used together since this combination needlessly duplicates the validation failure both in the API response body and the HTTP warning headers. Required. */
 export type IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicyBindingSpecValidationActionsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicyBindingSpecValidationActionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2359,7 +2359,7 @@ export const IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicyBinding =
 
 /** admissionReviewVersions is an ordered list of preferred `AdmissionReview` versions the Webhook expects. API server will try to use first version in the list which it supports. If none of the versions specified in this list supported by API server, validation will fail for this object. If a persisted webhook configuration specifies allowed versions and does not include any versions known to the API Server, calls to the webhook will fail and be subject to the failure policy. */
 export type IoK8sApiAdmissionregistrationV1ValidatingWebhookAdmissionReviewVersionsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const IoK8sApiAdmissionregistrationV1ValidatingWebhookAdmissionReviewVersionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2367,7 +2367,7 @@ export const IoK8sApiAdmissionregistrationV1ValidatingWebhookAdmissionReviewVers
 
 /** matchConditions is a list of conditions that must be met for a request to be sent to this webhook. Match conditions filter requests that have already been matched by the rules, namespaceSelector, and objectSelector. An empty list of matchConditions matches all requests. There are a maximum of 64 match conditions allowed. The exact matching logic is (in order): 1. If ANY matchCondition evaluates to FALSE, the webhook is skipped. 2. If ALL matchConditions evaluate to TRUE, the webhook is called. 3. If any matchCondition evaluates to an error (but none are FALSE): - If failurePolicy=Fail, reject the request - If failurePolicy=Ignore, the error is ignored and the webhook is skipped */
 export type IoK8sApiAdmissionregistrationV1ValidatingWebhookMatchConditionsList =
-  ReadonlyArray<IoK8sApiAdmissionregistrationV1MatchCondition>;
+  Array<IoK8sApiAdmissionregistrationV1MatchCondition>;
 export const IoK8sApiAdmissionregistrationV1ValidatingWebhookMatchConditionsList =
   /*@__PURE__*/ S.Array(
     IoK8sApiAdmissionregistrationV1MatchCondition,
@@ -2375,7 +2375,7 @@ export const IoK8sApiAdmissionregistrationV1ValidatingWebhookMatchConditionsList
 
 /** rules describes what operations on what resources/subresources the webhook cares about. The webhook cares about an operation if it matches _any_ Rule. However, in order to prevent ValidatingAdmissionWebhooks and MutatingAdmissionWebhooks from putting the cluster in a state which cannot be recovered from without completely disabling the plugin, ValidatingAdmissionWebhooks and MutatingAdmissionWebhooks are never called on admission requests for ValidatingWebhookConfiguration and MutatingWebhookConfiguration objects. */
 export type IoK8sApiAdmissionregistrationV1ValidatingWebhookRulesList =
-  ReadonlyArray<IoK8sApiAdmissionregistrationV1RuleWithOperations>;
+  Array<IoK8sApiAdmissionregistrationV1RuleWithOperations>;
 export const IoK8sApiAdmissionregistrationV1ValidatingWebhookRulesList =
   /*@__PURE__*/ S.Array(
     IoK8sApiAdmissionregistrationV1RuleWithOperations,
@@ -2434,7 +2434,7 @@ export const IoK8sApiAdmissionregistrationV1ValidatingWebhook =
 
 /** webhooks is a list of webhooks and the affected resources and operations. */
 export type CreateAdmissionregistrationV1ValidatingWebhookConfigurationRequestWebhooksList =
-  ReadonlyArray<IoK8sApiAdmissionregistrationV1ValidatingWebhook>;
+  Array<IoK8sApiAdmissionregistrationV1ValidatingWebhook>;
 export const CreateAdmissionregistrationV1ValidatingWebhookConfigurationRequestWebhooksList =
   /*@__PURE__*/ S.Array(
     IoK8sApiAdmissionregistrationV1ValidatingWebhook,
@@ -2485,7 +2485,7 @@ export const CreateAdmissionregistrationV1ValidatingWebhookConfigurationRequest 
 
 /** webhooks is a list of webhooks and the affected resources and operations. */
 export type IoK8sApiAdmissionregistrationV1ValidatingWebhookConfigurationWebhooksList =
-  ReadonlyArray<IoK8sApiAdmissionregistrationV1ValidatingWebhook>;
+  Array<IoK8sApiAdmissionregistrationV1ValidatingWebhook>;
 export const IoK8sApiAdmissionregistrationV1ValidatingWebhookConfigurationWebhooksList =
   /*@__PURE__*/ S.Array(
     IoK8sApiAdmissionregistrationV1ValidatingWebhook,
@@ -2628,7 +2628,7 @@ export const IoK8sApimachineryPkgApisMetaV1StatusCause =
 
 /** The Causes array includes more details associated with the StatusReason failure. Not all StatusReasons may provide detailed causes. */
 export type IoK8sApimachineryPkgApisMetaV1StatusDetailsCausesList =
-  ReadonlyArray<IoK8sApimachineryPkgApisMetaV1StatusCause>;
+  Array<IoK8sApimachineryPkgApisMetaV1StatusCause>;
 export const IoK8sApimachineryPkgApisMetaV1StatusDetailsCausesList =
   /*@__PURE__*/ S.Array(
     IoK8sApimachineryPkgApisMetaV1StatusCause,
@@ -3933,7 +3933,7 @@ export const IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR =
 
 /** a map of client CIDR to server address that is serving this group. This is to help clients reach servers in the most network-efficient way possible. Clients can use the appropriate server address as per the CIDR that they match. In case of multiple matches, clients should use the longest matching CIDR. The server returns only those CIDRs that it thinks that the client can match. For example: the master will return an internal IP CIDR only, if the client reaches the server using an internal IP. Server looks at X-Forwarded-For header or X-Real-Ip header or request.RemoteAddr (in that order) to get the client IP. */
 export type IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList =
-  ReadonlyArray<IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR>;
+  Array<IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR>;
 export const IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList =
   /*@__PURE__*/ S.Array(
     IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR,
@@ -3941,7 +3941,7 @@ export const IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsLis
 
 /** versions are the versions supported in this group. */
 export type IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList =
-  ReadonlyArray<IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery>;
+  Array<IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery>;
 export const IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList =
   /*@__PURE__*/ S.Array(
     IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery,
@@ -3996,7 +3996,7 @@ export const GetAdmissionregistrationV1alpha1APIResourcesRequest =
 
 /** categories is a list of the grouped resources this resource belongs to (e.g. 'all') */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4004,15 +4004,14 @@ export const IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList =
 
 /** shortNames is a list of suggested short names of the resource. */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList>;
 
 /** verbs is a list of supported kube verbs (this includes get, list, watch, create, update, patch, delete, deletecollection, and proxy) */
-export type IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList =
-  ReadonlyArray<string>;
+export type IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList = Array<string>;
 export const IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4065,7 +4064,7 @@ export const IoK8sApimachineryPkgApisMetaV1APIResource =
 
 /** resources contains the name of the resources and if they are namespaced. */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList =
-  ReadonlyArray<IoK8sApimachineryPkgApisMetaV1APIResource>;
+  Array<IoK8sApimachineryPkgApisMetaV1APIResource>;
 export const IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList =
   /*@__PURE__*/ S.Array(
     IoK8sApimachineryPkgApisMetaV1APIResource,
@@ -4177,7 +4176,7 @@ export const ListAdmissionregistrationV1alpha1MutatingAdmissionPolicyRequest =
 
 /** List of ValidatingAdmissionPolicy. */
 export type IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicyListItemsList =
-  ReadonlyArray<IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicy>;
+  Array<IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicy>;
 export const IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicyListItemsList =
   /*@__PURE__*/ S.Array(
     IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicy,
@@ -4263,7 +4262,7 @@ export const ListAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingRequ
 
 /** List of PolicyBinding. */
 export type IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingListItemsList =
-  ReadonlyArray<IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicyBinding>;
+  Array<IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicyBinding>;
 export const IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingListItemsList =
   /*@__PURE__*/ S.Array(
     IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicyBinding,
@@ -4349,7 +4348,7 @@ export const ListAdmissionregistrationV1beta1MutatingAdmissionPolicyRequest =
 
 /** List of ValidatingAdmissionPolicy. */
 export type IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicyListItemsList =
-  ReadonlyArray<IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicy>;
+  Array<IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicy>;
 export const IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicyListItemsList =
   /*@__PURE__*/ S.Array(
     IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicy,
@@ -4435,7 +4434,7 @@ export const ListAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingReque
 
 /** List of PolicyBinding. */
 export type IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingListItemsList =
-  ReadonlyArray<IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicyBinding>;
+  Array<IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicyBinding>;
 export const IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingListItemsList =
   /*@__PURE__*/ S.Array(
     IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicyBinding,
@@ -4520,7 +4519,7 @@ export const ListAdmissionregistrationV1MutatingAdmissionPolicyRequest =
 
 /** List of ValidatingAdmissionPolicy. */
 export type IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicyListItemsList =
-  ReadonlyArray<IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicy>;
+  Array<IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicy>;
 export const IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicyListItemsList =
   /*@__PURE__*/ S.Array(
     IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicy,
@@ -4605,7 +4604,7 @@ export const ListAdmissionregistrationV1MutatingAdmissionPolicyBindingRequest =
 
 /** List of PolicyBinding. */
 export type IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicyBindingListItemsList =
-  ReadonlyArray<IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicyBinding>;
+  Array<IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicyBinding>;
 export const IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicyBindingListItemsList =
   /*@__PURE__*/ S.Array(
     IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicyBinding,
@@ -4691,7 +4690,7 @@ export const ListAdmissionregistrationV1MutatingWebhookConfigurationRequest =
 
 /** List of MutatingWebhookConfiguration. */
 export type IoK8sApiAdmissionregistrationV1MutatingWebhookConfigurationListItemsList =
-  ReadonlyArray<IoK8sApiAdmissionregistrationV1MutatingWebhookConfiguration>;
+  Array<IoK8sApiAdmissionregistrationV1MutatingWebhookConfiguration>;
 export const IoK8sApiAdmissionregistrationV1MutatingWebhookConfigurationListItemsList =
   /*@__PURE__*/ S.Array(
     IoK8sApiAdmissionregistrationV1MutatingWebhookConfiguration,
@@ -4776,7 +4775,7 @@ export const ListAdmissionregistrationV1ValidatingAdmissionPolicyRequest =
 
 /** List of ValidatingAdmissionPolicy. */
 export type IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicyListItemsList =
-  ReadonlyArray<IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicy>;
+  Array<IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicy>;
 export const IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicyListItemsList =
   /*@__PURE__*/ S.Array(
     IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicy,
@@ -4861,7 +4860,7 @@ export const ListAdmissionregistrationV1ValidatingAdmissionPolicyBindingRequest 
 
 /** List of PolicyBinding. */
 export type IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicyBindingListItemsList =
-  ReadonlyArray<IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicyBinding>;
+  Array<IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicyBinding>;
 export const IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicyBindingListItemsList =
   /*@__PURE__*/ S.Array(
     IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicyBinding,
@@ -4947,7 +4946,7 @@ export const ListAdmissionregistrationV1ValidatingWebhookConfigurationRequest =
 
 /** List of ValidatingWebhookConfiguration. */
 export type IoK8sApiAdmissionregistrationV1ValidatingWebhookConfigurationListItemsList =
-  ReadonlyArray<IoK8sApiAdmissionregistrationV1ValidatingWebhookConfiguration>;
+  Array<IoK8sApiAdmissionregistrationV1ValidatingWebhookConfiguration>;
 export const IoK8sApiAdmissionregistrationV1ValidatingWebhookConfigurationListItemsList =
   /*@__PURE__*/ S.Array(
     IoK8sApiAdmissionregistrationV1ValidatingWebhookConfiguration,
@@ -5889,7 +5888,7 @@ export const ReplaceAdmissionregistrationV1MutatingAdmissionPolicyBindingRequest
 
 /** webhooks is a list of webhooks and the affected resources and operations. */
 export type ReplaceAdmissionregistrationV1MutatingWebhookConfigurationRequestWebhooksList =
-  ReadonlyArray<IoK8sApiAdmissionregistrationV1MutatingWebhook>;
+  Array<IoK8sApiAdmissionregistrationV1MutatingWebhook>;
 export const ReplaceAdmissionregistrationV1MutatingWebhookConfigurationRequestWebhooksList =
   /*@__PURE__*/ S.Array(
     IoK8sApiAdmissionregistrationV1MutatingWebhook,
@@ -6089,7 +6088,7 @@ export const ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyStatusReques
 
 /** webhooks is a list of webhooks and the affected resources and operations. */
 export type ReplaceAdmissionregistrationV1ValidatingWebhookConfigurationRequestWebhooksList =
-  ReadonlyArray<IoK8sApiAdmissionregistrationV1ValidatingWebhook>;
+  Array<IoK8sApiAdmissionregistrationV1ValidatingWebhook>;
 export const ReplaceAdmissionregistrationV1ValidatingWebhookConfigurationRequestWebhooksList =
   /*@__PURE__*/ S.Array(
     IoK8sApiAdmissionregistrationV1ValidatingWebhook,

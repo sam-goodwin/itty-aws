@@ -325,7 +325,7 @@ export const AuthenticationType = /*@__PURE__*/ S.String;
 export interface UserStackAssociation {
   StackName?: string;
   UserName?: string | redacted.Redacted<string>;
-  AuthenticationType?: AuthenticationType;
+  AuthenticationType?: AuthenticationType | (string & {});
   SendEmailNotification?: boolean;
 }
 export const UserStackAssociation = /*@__PURE__*/ S.suspend(() =>
@@ -589,7 +589,7 @@ export type AccessEndpointType = "STREAMING";
 export const AccessEndpointType = /*@__PURE__*/ S.String;
 
 export interface AccessEndpoint {
-  EndpointType?: AccessEndpointType;
+  EndpointType?: AccessEndpointType | (string & {});
   VpceId?: string;
 }
 export const AccessEndpoint = /*@__PURE__*/ S.suspend(() =>
@@ -796,7 +796,7 @@ export type PlatformType =
   | "UBUNTU_PRO_2404";
 export const PlatformType = /*@__PURE__*/ S.String;
 
-export type Platforms = PlatformType[];
+export type Platforms = (PlatformType | (string & {}))[];
 export const Platforms = /*@__PURE__*/ S.Array(PlatformType);
 export interface CreateApplicationRequest {
   Name?: string;
@@ -908,7 +908,7 @@ export type CertificateBasedAuthStatus =
 export const CertificateBasedAuthStatus = /*@__PURE__*/ S.String;
 
 export interface CertificateBasedAuthProperties {
-  Status?: CertificateBasedAuthStatus;
+  Status?: CertificateBasedAuthStatus | (string & {});
   CertificateAuthorityArn?: string;
 }
 export const CertificateBasedAuthProperties = /*@__PURE__*/ S.suspend(() =>
@@ -1717,7 +1717,7 @@ export type Domain = string;
 export type DomainList = string[];
 export const DomainList = /*@__PURE__*/ S.Array(S.String);
 export interface StorageConnector {
-  ConnectorType?: StorageConnectorType;
+  ConnectorType?: StorageConnectorType | (string & {});
   ResourceIdentifier?: string;
   Domains?: string[];
   DomainsRequireAdminConsent?: string[];
@@ -1751,8 +1751,8 @@ export type Permission = "ENABLED" | "DISABLED";
 export const Permission = /*@__PURE__*/ S.String;
 
 export interface UserSetting {
-  Action?: Action;
-  Permission?: Permission;
+  Action?: Action | (string & {});
+  Permission?: Permission | (string & {});
   MaximumLength?: number;
 }
 export const UserSetting = /*@__PURE__*/ S.suspend(() =>
@@ -1784,7 +1784,7 @@ export type PreferredProtocol = "TCP" | "UDP";
 export const PreferredProtocol = /*@__PURE__*/ S.String;
 
 export interface StreamingExperienceSettings {
-  PreferredProtocol?: PreferredProtocol;
+  PreferredProtocol?: PreferredProtocol | (string & {});
 }
 export const StreamingExperienceSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ PreferredProtocol: S.optional(PreferredProtocol) }),
@@ -1823,8 +1823,8 @@ export type AgentAction =
 export const AgentAction = /*@__PURE__*/ S.String;
 
 export interface AgentAccessSetting {
-  AgentAction?: AgentAction;
-  Permission?: Permission;
+  AgentAction?: AgentAction | (string & {});
+  Permission?: Permission | (string & {});
 }
 export const AgentAccessSetting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1850,9 +1850,9 @@ export interface AgentAccessConfig {
   Settings?: AgentAccessSetting[];
   S3BucketArn?: string;
   ScreenshotsUploadEnabled?: boolean;
-  ScreenResolution?: ScreenResolution;
-  ScreenImageFormat?: ScreenImageFormat;
-  UserControlMode?: UserControlMode;
+  ScreenResolution?: ScreenResolution | (string & {});
+  ScreenImageFormat?: ScreenImageFormat | (string & {});
+  UserControlMode?: UserControlMode | (string & {});
 }
 export const AgentAccessConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

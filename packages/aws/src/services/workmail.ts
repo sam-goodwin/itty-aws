@@ -418,7 +418,7 @@ export interface ImpersonationRule {
   ImpersonationRuleId: string;
   Name?: string;
   Description?: string;
-  Effect: AccessEffect;
+  Effect: AccessEffect | (string & {});
   TargetUsers?: string[];
   NotTargetUsers?: string[];
 }
@@ -1111,7 +1111,7 @@ export const PersonalAccessTokenConfigurationStatus = /*@__PURE__*/ S.String;
 
 export type PersonalAccessTokenLifetimeInDays = number;
 export interface PersonalAccessTokenConfiguration {
-  Status: PersonalAccessTokenConfigurationStatus;
+  Status: PersonalAccessTokenConfigurationStatus | (string & {});
   LifetimeInDays?: number;
 }
 export const PersonalAccessTokenConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -1485,8 +1485,8 @@ export const RetentionAction = /*@__PURE__*/ S.String;
 
 export type RetentionPeriod = number;
 export interface FolderConfiguration {
-  Name: FolderName;
-  Action: RetentionAction;
+  Name: FolderName | (string & {});
+  Action: RetentionAction | (string & {});
   Period?: number;
 }
 export const FolderConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -2242,7 +2242,7 @@ export const ListMailboxPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
 export type PermissionType = "FULL_ACCESS" | "SEND_AS" | "SEND_ON_BEHALF";
 export const PermissionType = /*@__PURE__*/ S.String;
 
-export type PermissionValues = PermissionType[];
+export type PermissionValues = (PermissionType | (string & {}))[];
 export const PermissionValues = /*@__PURE__*/ S.Array(PermissionType);
 export interface Permission {
   GranteeId: string;

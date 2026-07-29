@@ -35,8 +35,7 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
-export type ExperimentSavedMetricsCreateRequestTagsList =
-  ReadonlyArray<unknown>;
+export type ExperimentSavedMetricsCreateRequestTagsList = Array<unknown>;
 export const ExperimentSavedMetricsCreateRequestTagsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -121,7 +120,7 @@ export const UserBasic = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "UserBasic" }) as any as S.Schema<UserBasic>;
 
-export type ExperimentSavedMetricTagsList = ReadonlyArray<unknown>;
+export type ExperimentSavedMetricTagsList = Array<unknown>;
 export const ExperimentSavedMetricTagsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<ExperimentSavedMetricTagsList>;
@@ -218,7 +217,7 @@ export const ExperimentSavedMetricsListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExperimentSavedMetricsListRequest>;
 
 export type PaginatedExperimentSavedMetricListResultsList =
-  ReadonlyArray<ExperimentSavedMetric>;
+  Array<ExperimentSavedMetric>;
 export const PaginatedExperimentSavedMetricListResultsList =
   /*@__PURE__*/ S.Array(
     ExperimentSavedMetric,
@@ -241,8 +240,7 @@ export const PaginatedExperimentSavedMetricList = /*@__PURE__*/ S.suspend(() =>
   identifier: "PaginatedExperimentSavedMetricList",
 }) as any as S.Schema<PaginatedExperimentSavedMetricList>;
 
-export type ExperimentSavedMetricsPartialUpdateRequestTagsList =
-  ReadonlyArray<unknown>;
+export type ExperimentSavedMetricsPartialUpdateRequestTagsList = Array<unknown>;
 export const ExperimentSavedMetricsPartialUpdateRequestTagsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -303,8 +301,7 @@ export const ExperimentSavedMetricsRetrieveRequest = /*@__PURE__*/ S.suspend(
   identifier: "ExperimentSavedMetricsRetrieveRequest",
 }) as any as S.Schema<ExperimentSavedMetricsRetrieveRequest>;
 
-export type ExperimentSavedMetricsUpdateRequestTagsList =
-  ReadonlyArray<unknown>;
+export type ExperimentSavedMetricsUpdateRequestTagsList = Array<unknown>;
 export const ExperimentSavedMetricsUpdateRequestTagsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,

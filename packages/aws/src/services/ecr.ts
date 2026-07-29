@@ -826,7 +826,7 @@ export const ScanningRepositoryFilterType = /*@__PURE__*/ S.String;
 
 export interface ScanningRepositoryFilter {
   filter: string;
-  filterType: ScanningRepositoryFilterType;
+  filterType: ScanningRepositoryFilterType | (string & {});
 }
 export const ScanningRepositoryFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ filter: S.String, filterType: ScanningRepositoryFilterType }),
@@ -1038,7 +1038,7 @@ export const ImageTagMutabilityExclusionFilterType = /*@__PURE__*/ S.String;
 
 export type ImageTagMutabilityExclusionFilterValue = string;
 export interface ImageTagMutabilityExclusionFilter {
-  filterType: ImageTagMutabilityExclusionFilterType;
+  filterType: ImageTagMutabilityExclusionFilterType | (string & {});
   filter: string;
 }
 export const ImageTagMutabilityExclusionFilter = /*@__PURE__*/ S.suspend(() =>
@@ -1067,7 +1067,7 @@ export const EncryptionType = /*@__PURE__*/ S.String;
 
 export type KmsKey = string;
 export interface EncryptionConfiguration {
-  encryptionType: EncryptionType;
+  encryptionType: EncryptionType | (string & {});
   kmsKey?: string;
 }
 export const EncryptionConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -1147,7 +1147,7 @@ export type Prefix = string;
 export type RepositoryTemplateDescription = string;
 export type KmsKeyForRepositoryCreationTemplate = string;
 export interface EncryptionConfigurationForRepositoryCreationTemplate {
-  encryptionType: EncryptionType;
+  encryptionType: EncryptionType | (string & {});
   kmsKey?: string;
 }
 export const EncryptionConfigurationForRepositoryCreationTemplate =
@@ -1164,7 +1164,7 @@ export type RCTAppliedFor =
   | "CREATE_ON_PUSH";
 export const RCTAppliedFor = /*@__PURE__*/ S.String;
 
-export type RCTAppliedForList = RCTAppliedFor[];
+export type RCTAppliedForList = (RCTAppliedFor | (string & {}))[];
 export const RCTAppliedForList = /*@__PURE__*/ S.Array(RCTAppliedFor);
 export interface CreateRepositoryCreationTemplateRequest {
   prefix: string;
@@ -1491,7 +1491,7 @@ export const SigningRepositoryFilterType = /*@__PURE__*/ S.String;
 
 export interface SigningRepositoryFilter {
   filter: string;
-  filterType: SigningRepositoryFilterType;
+  filterType: SigningRepositoryFilterType | (string & {});
 }
 export const SigningRepositoryFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ filter: S.String, filterType: SigningRepositoryFilterType }),
@@ -2342,7 +2342,7 @@ export const RepositoryFilterType = /*@__PURE__*/ S.String;
 
 export interface RepositoryFilter {
   filter: string;
-  filterType: RepositoryFilterType;
+  filterType: RepositoryFilterType | (string & {});
 }
 export const RepositoryFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ filter: S.String, filterType: RepositoryFilterType }),
@@ -2819,7 +2819,7 @@ export type ScanType = "BASIC" | "ENHANCED";
 export const ScanType = /*@__PURE__*/ S.String;
 
 export interface RegistryScanningRule {
-  scanFrequency: ScanFrequency;
+  scanFrequency: ScanFrequency | (string & {});
   repositoryFilters: ScanningRepositoryFilter[];
 }
 export const RegistryScanningRule = /*@__PURE__*/ S.suspend(() =>

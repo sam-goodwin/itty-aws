@@ -231,7 +231,7 @@ export type Value = string;
 export type Values = string[];
 export const Values = /*@__PURE__*/ S.Array(S.String);
 export interface DimensionValues {
-  key: Dimension;
+  key: Dimension | (string & {});
   values: string[];
 }
 export const DimensionValues = /*@__PURE__*/ S.suspend(() =>

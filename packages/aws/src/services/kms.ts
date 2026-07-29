@@ -725,7 +725,7 @@ export type GrantOperation =
   | "DeriveSharedSecret";
 export const GrantOperation = /*@__PURE__*/ S.String;
 
-export type GrantOperationList = GrantOperation[];
+export type GrantOperationList = (GrantOperation | (string & {}))[];
 export const GrantOperationList = /*@__PURE__*/ S.Array(GrantOperation);
 export type EncryptionContextKey = string;
 export type EncryptionContextValue = string;

@@ -83,16 +83,14 @@ export type DefaultPrincipalsModificationKind = "Union" | "Replace" | "None";
 export const DefaultPrincipalsModificationKind = /*@__PURE__*/ S.String;
 
 /** List of tables to include in the follower database */
-export type TableLevelSharingPropertiesTablesToIncludeList =
-  ReadonlyArray<string>;
+export type TableLevelSharingPropertiesTablesToIncludeList = Array<string>;
 export const TableLevelSharingPropertiesTablesToIncludeList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<TableLevelSharingPropertiesTablesToIncludeList>;
 
 /** List of tables to exclude from the follower database */
-export type TableLevelSharingPropertiesTablesToExcludeList =
-  ReadonlyArray<string>;
+export type TableLevelSharingPropertiesTablesToExcludeList = Array<string>;
 export const TableLevelSharingPropertiesTablesToExcludeList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -100,7 +98,7 @@ export const TableLevelSharingPropertiesTablesToExcludeList =
 
 /** List of external tables to include in the follower database */
 export type TableLevelSharingPropertiesExternalTablesToIncludeList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const TableLevelSharingPropertiesExternalTablesToIncludeList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -108,7 +106,7 @@ export const TableLevelSharingPropertiesExternalTablesToIncludeList =
 
 /** List of external tables to exclude from the follower database */
 export type TableLevelSharingPropertiesExternalTablesToExcludeList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const TableLevelSharingPropertiesExternalTablesToExcludeList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -116,7 +114,7 @@ export const TableLevelSharingPropertiesExternalTablesToExcludeList =
 
 /** List of materialized views to include in the follower database */
 export type TableLevelSharingPropertiesMaterializedViewsToIncludeList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const TableLevelSharingPropertiesMaterializedViewsToIncludeList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -124,23 +122,21 @@ export const TableLevelSharingPropertiesMaterializedViewsToIncludeList =
 
 /** List of materialized views to exclude from the follower database */
 export type TableLevelSharingPropertiesMaterializedViewsToExcludeList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const TableLevelSharingPropertiesMaterializedViewsToExcludeList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<TableLevelSharingPropertiesMaterializedViewsToExcludeList>;
 
 /** List of functions to include in the follower database */
-export type TableLevelSharingPropertiesFunctionsToIncludeList =
-  ReadonlyArray<string>;
+export type TableLevelSharingPropertiesFunctionsToIncludeList = Array<string>;
 export const TableLevelSharingPropertiesFunctionsToIncludeList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<TableLevelSharingPropertiesFunctionsToIncludeList>;
 
 /** List of functions to exclude from the follower database */
-export type TableLevelSharingPropertiesFunctionsToExcludeList =
-  ReadonlyArray<string>;
+export type TableLevelSharingPropertiesFunctionsToExcludeList = Array<string>;
 export const TableLevelSharingPropertiesFunctionsToExcludeList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -313,7 +309,7 @@ export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** The list of databases from the clusterResourceId which are currently attached to the cluster. */
 export type AttachedDatabaseConfigurationPropertiesAttachedDatabaseNamesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const AttachedDatabaseConfigurationPropertiesAttachedDatabaseNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -532,7 +528,7 @@ export const AttachedDatabaseConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of attached database configurations. */
 export type AttachedDatabaseConfigurationListResultValueList =
-  ReadonlyArray<AttachedDatabaseConfiguration>;
+  Array<AttachedDatabaseConfiguration>;
 export const AttachedDatabaseConfigurationListResultValueList =
   /*@__PURE__*/ S.Array(
     AttachedDatabaseConfiguration,
@@ -861,7 +857,7 @@ export const ClusterPrincipalAssignment = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of Kusto cluster principal assignments. */
 export type ClusterPrincipalAssignmentListResultValueList =
-  ReadonlyArray<ClusterPrincipalAssignment>;
+  Array<ClusterPrincipalAssignment>;
 export const ClusterPrincipalAssignmentListResultValueList =
   /*@__PURE__*/ S.Array(
     ClusterPrincipalAssignment,
@@ -924,7 +920,7 @@ export const CalloutPolicyInput = /*@__PURE__*/ S.suspend(() =>
 
 /** The CalloutPolicy items on this page */
 export type ClustersAddCalloutPoliciesRequestValueList =
-  ReadonlyArray<CalloutPolicyInput>;
+  Array<CalloutPolicyInput>;
 export const ClustersAddCalloutPoliciesRequestValueList = /*@__PURE__*/ S.Array(
   CalloutPolicyInput,
 ) as any as S.Schema<ClustersAddCalloutPoliciesRequestValueList>;
@@ -985,9 +981,9 @@ export const LanguageExtensionImageName = /*@__PURE__*/ S.String;
 /** The language extension object. */
 export interface LanguageExtension {
   /** The language extension name. */
-  languageExtensionName?: LanguageExtensionName;
+  languageExtensionName?: LanguageExtensionName | (string & {});
   /** The language extension image name. */
-  languageExtensionImageName?: LanguageExtensionImageName;
+  languageExtensionImageName?: LanguageExtensionImageName | (string & {});
   /** The sandbox custom image name that should be enabled as the active language extension. Sandbox custom image is a cluster sub resource. When this property is set, LanguageExtensionImageName should be set to 'PythonCustomImage'. */
   languageExtensionCustomImageName?: string;
 }
@@ -1003,7 +999,7 @@ export const LanguageExtension = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of language extensions. */
 export type ClustersAddLanguageExtensionsRequestValueList =
-  ReadonlyArray<LanguageExtension>;
+  Array<LanguageExtension>;
 export const ClustersAddLanguageExtensionsRequestValueList =
   /*@__PURE__*/ S.Array(
     LanguageExtension,
@@ -1106,7 +1102,7 @@ export const TrustedExternalTenant = /*@__PURE__*/ S.suspend(() =>
 
 /** The cluster's external tenants. */
 export type ClusterPropertiesInputTrustedExternalTenantsList =
-  ReadonlyArray<TrustedExternalTenant>;
+  Array<TrustedExternalTenant>;
 export const ClusterPropertiesInputTrustedExternalTenantsList =
   /*@__PURE__*/ S.Array(
     TrustedExternalTenant,
@@ -1147,7 +1143,7 @@ export interface VirtualNetworkConfiguration {
   /** Data management's service public IP address resource id. */
   dataManagementPublicIpId: string;
   /** When enabled, the cluster is deployed into the configured subnet, when disabled it will be removed from the subnet. */
-  state?: VirtualNetworkConfigurationState;
+  state?: VirtualNetworkConfigurationState | (string & {});
 }
 export const VirtualNetworkConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1186,7 +1182,7 @@ export const KeyVaultProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<KeyVaultProperties>;
 
 /** The list of language extensions. */
-export type LanguageExtensionsListValueList = ReadonlyArray<LanguageExtension>;
+export type LanguageExtensionsListValueList = Array<LanguageExtension>;
 export const LanguageExtensionsListValueList = /*@__PURE__*/ S.Array(
   LanguageExtension,
 ) as any as S.Schema<LanguageExtensionsListValueList>;
@@ -1215,8 +1211,7 @@ export type ClusterPropertiesInputPublicNetworkAccess =
 export const ClusterPropertiesInputPublicNetworkAccess = /*@__PURE__*/ S.String;
 
 /** The list of ips in the format of CIDR allowed to connect to the cluster. */
-export type ClusterPropertiesInputAllowedIpRangeListList =
-  ReadonlyArray<string>;
+export type ClusterPropertiesInputAllowedIpRangeListList = Array<string>;
 export const ClusterPropertiesInputAllowedIpRangeListList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1241,7 +1236,7 @@ export const AcceptedAudiences = /*@__PURE__*/ S.suspend(() =>
 
 /** The cluster's accepted audiences. */
 export type ClusterPropertiesInputAcceptedAudiencesList =
-  ReadonlyArray<AcceptedAudiences>;
+  Array<AcceptedAudiences>;
 export const ClusterPropertiesInputAcceptedAudiencesList =
   /*@__PURE__*/ S.Array(
     AcceptedAudiences,
@@ -1255,14 +1250,14 @@ export const ClusterPropertiesInputRestrictOutboundNetworkAccess =
   /*@__PURE__*/ S.String;
 
 /** List of allowed FQDNs(Fully Qualified Domain Name) for egress from Cluster. */
-export type ClusterPropertiesInputAllowedFqdnListList = ReadonlyArray<string>;
+export type ClusterPropertiesInputAllowedFqdnListList = Array<string>;
 export const ClusterPropertiesInputAllowedFqdnListList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ClusterPropertiesInputAllowedFqdnListList>;
 
 /** List of callout policies for egress from Cluster. */
 export type ClusterPropertiesInputCalloutPoliciesList =
-  ReadonlyArray<CalloutPolicyInput>;
+  Array<CalloutPolicyInput>;
 export const ClusterPropertiesInputCalloutPoliciesList = /*@__PURE__*/ S.Array(
   CalloutPolicyInput,
 ) as any as S.Schema<ClusterPropertiesInputCalloutPoliciesList>;
@@ -1423,11 +1418,11 @@ export const AzureSkuTier = /*@__PURE__*/ S.String;
 /** Azure SKU definition. */
 export interface AzureSku {
   /** SKU name. */
-  name: AzureSkuName;
+  name: AzureSkuName | (string & {});
   /** The number of instances of the cluster. */
   capacity?: number;
   /** SKU tier. */
-  tier: AzureSkuTier;
+  tier: AzureSkuTier | (string & {});
 }
 export const AzureSku = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1438,7 +1433,7 @@ export const AzureSku = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AzureSku" }) as any as S.Schema<AzureSku>;
 
 /** The availability zones. */
-export type ClustersCreateOrUpdateRequestZonesList = ReadonlyArray<string>;
+export type ClustersCreateOrUpdateRequestZonesList = Array<string>;
 export const ClustersCreateOrUpdateRequestZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ClustersCreateOrUpdateRequestZonesList>;
@@ -1551,7 +1546,7 @@ export const State = /*@__PURE__*/ S.String;
 
 /** The cluster's external tenants. */
 export type ClusterPropertiesTrustedExternalTenantsList =
-  ReadonlyArray<TrustedExternalTenant>;
+  Array<TrustedExternalTenant>;
 export const ClusterPropertiesTrustedExternalTenantsList =
   /*@__PURE__*/ S.Array(
     TrustedExternalTenant,
@@ -1565,7 +1560,7 @@ export type ClusterPropertiesPublicNetworkAccess =
 export const ClusterPropertiesPublicNetworkAccess = /*@__PURE__*/ S.String;
 
 /** The list of ips in the format of CIDR allowed to connect to the cluster. */
-export type ClusterPropertiesAllowedIpRangeListList = ReadonlyArray<string>;
+export type ClusterPropertiesAllowedIpRangeListList = Array<string>;
 export const ClusterPropertiesAllowedIpRangeListList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ClusterPropertiesAllowedIpRangeListList>;
@@ -1575,8 +1570,7 @@ export type ClusterPropertiesEngineType = "V2" | "V3";
 export const ClusterPropertiesEngineType = /*@__PURE__*/ S.String;
 
 /** The cluster's accepted audiences. */
-export type ClusterPropertiesAcceptedAudiencesList =
-  ReadonlyArray<AcceptedAudiences>;
+export type ClusterPropertiesAcceptedAudiencesList = Array<AcceptedAudiences>;
 export const ClusterPropertiesAcceptedAudiencesList = /*@__PURE__*/ S.Array(
   AcceptedAudiences,
 ) as any as S.Schema<ClusterPropertiesAcceptedAudiencesList>;
@@ -1589,7 +1583,7 @@ export const ClusterPropertiesRestrictOutboundNetworkAccess =
   /*@__PURE__*/ S.String;
 
 /** List of allowed FQDNs(Fully Qualified Domain Name) for egress from Cluster. */
-export type ClusterPropertiesAllowedFqdnListList = ReadonlyArray<string>;
+export type ClusterPropertiesAllowedFqdnListList = Array<string>;
 export const ClusterPropertiesAllowedFqdnListList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ClusterPropertiesAllowedFqdnListList>;
@@ -1615,7 +1609,7 @@ export const CalloutPolicy = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CalloutPolicy" }) as any as S.Schema<CalloutPolicy>;
 
 /** List of callout policies for egress from Cluster. */
-export type ClusterPropertiesCalloutPoliciesList = ReadonlyArray<CalloutPolicy>;
+export type ClusterPropertiesCalloutPoliciesList = Array<CalloutPolicy>;
 export const ClusterPropertiesCalloutPoliciesList = /*@__PURE__*/ S.Array(
   CalloutPolicy,
 ) as any as S.Schema<ClusterPropertiesCalloutPoliciesList>;
@@ -1707,7 +1701,7 @@ export const PrivateEndpointConnection = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of private endpoint connections. */
 export type ClusterPropertiesPrivateEndpointConnectionsList =
-  ReadonlyArray<PrivateEndpointConnection>;
+  Array<PrivateEndpointConnection>;
 export const ClusterPropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection,
@@ -1841,7 +1835,7 @@ export const ClusterProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ClusterProperties>;
 
 /** The availability zones. */
-export type ClustersCreateOrUpdateResponseZonesList = ReadonlyArray<string>;
+export type ClustersCreateOrUpdateResponseZonesList = Array<string>;
 export const ClustersCreateOrUpdateResponseZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ClustersCreateOrUpdateResponseZonesList>;
@@ -2034,7 +2028,7 @@ export const ClustersDiagnoseVirtualNetworkRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ClustersDiagnoseVirtualNetworkRequest>;
 
 /** The list of network connectivity diagnostic finding */
-export type DiagnoseVirtualNetworkResultFindingsList = ReadonlyArray<string>;
+export type DiagnoseVirtualNetworkResultFindingsList = Array<string>;
 export const DiagnoseVirtualNetworkResultFindingsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DiagnoseVirtualNetworkResultFindingsList>;
@@ -2084,7 +2078,7 @@ export const ClustersGetResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ClustersGetResponseTagsMap>;
 
 /** The availability zones. */
-export type ClustersGetResponseZonesList = ReadonlyArray<string>;
+export type ClustersGetResponseZonesList = Array<string>;
 export const ClustersGetResponseZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ClustersGetResponseZonesList>;
@@ -2158,7 +2152,7 @@ export const ClusterTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ClusterTagsMap>;
 
 /** The availability zones. */
-export type ClusterZonesList = ReadonlyArray<string>;
+export type ClusterZonesList = Array<string>;
 export const ClusterZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ClusterZonesList>;
@@ -2205,7 +2199,7 @@ export const Cluster = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Cluster" }) as any as S.Schema<Cluster>;
 
 /** The list of Kusto clusters. */
-export type ClusterListResultValueList = ReadonlyArray<Cluster>;
+export type ClusterListResultValueList = Array<Cluster>;
 export const ClusterListResultValueList = /*@__PURE__*/ S.Array(
   Cluster,
 ) as any as S.Schema<ClusterListResultValueList>;
@@ -2274,7 +2268,7 @@ export const ClustersListCalloutPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ClustersListCalloutPoliciesRequest>;
 
 /** The CalloutPolicy items on this page */
-export type CalloutPoliciesListValueList = ReadonlyArray<CalloutPolicy>;
+export type CalloutPoliciesListValueList = Array<CalloutPolicy>;
 export const CalloutPoliciesListValueList = /*@__PURE__*/ S.Array(
   CalloutPolicy,
 ) as any as S.Schema<CalloutPoliciesListValueList>;
@@ -2352,7 +2346,7 @@ export const FollowerDatabaseDefinition = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of follower database result. */
 export type FollowerDatabaseListResultValueList =
-  ReadonlyArray<FollowerDatabaseDefinition>;
+  Array<FollowerDatabaseDefinition>;
 export const FollowerDatabaseListResultValueList = /*@__PURE__*/ S.Array(
   FollowerDatabaseDefinition,
 ) as any as S.Schema<FollowerDatabaseListResultValueList>;
@@ -2439,7 +2433,7 @@ export const FollowerDatabaseDefinitionGet = /*@__PURE__*/ S.suspend(() =>
 
 /** The FollowerDatabaseDefinitionGet items on this page */
 export type FollowerDatabaseListResultGetValueList =
-  ReadonlyArray<FollowerDatabaseDefinitionGet>;
+  Array<FollowerDatabaseDefinitionGet>;
 export const FollowerDatabaseListResultGetValueList = /*@__PURE__*/ S.Array(
   FollowerDatabaseDefinitionGet,
 ) as any as S.Schema<FollowerDatabaseListResultGetValueList>;
@@ -2527,8 +2521,7 @@ export const EndpointDetail = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EndpointDetail" }) as any as S.Schema<EndpointDetail>;
 
 /** The ports used when connecting to DomainName. */
-export type EndpointDependencyEndpointDetailsList =
-  ReadonlyArray<EndpointDetail>;
+export type EndpointDependencyEndpointDetailsList = Array<EndpointDetail>;
 export const EndpointDependencyEndpointDetailsList = /*@__PURE__*/ S.Array(
   EndpointDetail,
 ) as any as S.Schema<EndpointDependencyEndpointDetailsList>;
@@ -2551,7 +2544,7 @@ export const EndpointDependency = /*@__PURE__*/ S.suspend(() =>
 
 /** The endpoints that the Kusto Service Environment reaches the service at. */
 export type OutboundNetworkDependenciesEndpointPropertiesEndpointsList =
-  ReadonlyArray<EndpointDependency>;
+  Array<EndpointDependency>;
 export const OutboundNetworkDependenciesEndpointPropertiesEndpointsList =
   /*@__PURE__*/ S.Array(
     EndpointDependency,
@@ -2609,7 +2602,7 @@ export const OutboundNetworkDependenciesEndpoint = /*@__PURE__*/ S.suspend(() =>
 
 /** The OutboundNetworkDependenciesEndpoint items on this page */
 export type OutboundNetworkDependenciesEndpointListResultValueList =
-  ReadonlyArray<OutboundNetworkDependenciesEndpoint>;
+  Array<OutboundNetworkDependenciesEndpoint>;
 export const OutboundNetworkDependenciesEndpointListResultValueList =
   /*@__PURE__*/ S.Array(
     OutboundNetworkDependenciesEndpoint,
@@ -2652,19 +2645,19 @@ export const ClustersListSkusRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ClustersListSkusRequest>;
 
 /** The set of locations that the SKU is available */
-export type SkuDescriptionLocationsList = ReadonlyArray<string>;
+export type SkuDescriptionLocationsList = Array<string>;
 export const SkuDescriptionLocationsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SkuDescriptionLocationsList>;
 
 /** The available zone of the SKU. */
-export type SkuLocationInfoItemZonesList = ReadonlyArray<string>;
+export type SkuLocationInfoItemZonesList = Array<string>;
 export const SkuLocationInfoItemZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SkuLocationInfoItemZonesList>;
 
 /** The set of zones that the SKU is available in with the specified capabilities. */
-export type ResourceSkuZoneDetailsNameList = ReadonlyArray<string>;
+export type ResourceSkuZoneDetailsNameList = Array<string>;
 export const ResourceSkuZoneDetailsNameList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ResourceSkuZoneDetailsNameList>;
@@ -2687,7 +2680,7 @@ export const ResourceSkuCapabilities = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of capabilities that are available for the SKU in the specified list of zones. */
 export type ResourceSkuZoneDetailsCapabilitiesList =
-  ReadonlyArray<ResourceSkuCapabilities>;
+  Array<ResourceSkuCapabilities>;
 export const ResourceSkuZoneDetailsCapabilitiesList = /*@__PURE__*/ S.Array(
   ResourceSkuCapabilities,
 ) as any as S.Schema<ResourceSkuZoneDetailsCapabilitiesList>;
@@ -2709,8 +2702,7 @@ export const ResourceSkuZoneDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourceSkuZoneDetails>;
 
 /** Gets details of capabilities available to a SKU in specific zones. */
-export type SkuLocationInfoItemZoneDetailsList =
-  ReadonlyArray<ResourceSkuZoneDetails>;
+export type SkuLocationInfoItemZoneDetailsList = Array<ResourceSkuZoneDetails>;
 export const SkuLocationInfoItemZoneDetailsList = /*@__PURE__*/ S.Array(
   ResourceSkuZoneDetails,
 ) as any as S.Schema<SkuLocationInfoItemZoneDetailsList>;
@@ -2735,13 +2727,13 @@ export const SkuLocationInfoItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SkuLocationInfoItem>;
 
 /** Locations and zones */
-export type SkuDescriptionLocationInfoList = ReadonlyArray<SkuLocationInfoItem>;
+export type SkuDescriptionLocationInfoList = Array<SkuLocationInfoItem>;
 export const SkuDescriptionLocationInfoList = /*@__PURE__*/ S.Array(
   SkuLocationInfoItem,
 ) as any as S.Schema<SkuDescriptionLocationInfoList>;
 
 /** The restrictions because of which SKU cannot be used */
-export type SkuDescriptionRestrictionsList = ReadonlyArray<unknown>;
+export type SkuDescriptionRestrictionsList = Array<unknown>;
 export const SkuDescriptionRestrictionsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<SkuDescriptionRestrictionsList>;
@@ -2773,7 +2765,7 @@ export const SkuDescription = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SkuDescription" }) as any as S.Schema<SkuDescription>;
 
 /** SKU descriptions */
-export type SkuDescriptionListValueList = ReadonlyArray<SkuDescription>;
+export type SkuDescriptionListValueList = Array<SkuDescription>;
 export const SkuDescriptionListValueList = /*@__PURE__*/ S.Array(
   SkuDescription,
 ) as any as S.Schema<SkuDescriptionListValueList>;
@@ -2863,7 +2855,7 @@ export const AzureResourceSku = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AzureResourceSku>;
 
 /** The collection of available SKUs for an existing resource. */
-export type ListResourceSkusResultValueList = ReadonlyArray<AzureResourceSku>;
+export type ListResourceSkusResultValueList = Array<AzureResourceSku>;
 export const ListResourceSkusResultValueList = /*@__PURE__*/ S.Array(
   AzureResourceSku,
 ) as any as S.Schema<ListResourceSkusResultValueList>;
@@ -2956,7 +2948,7 @@ export const ClustersRemoveCalloutPolicyResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of language extensions. */
 export type ClustersRemoveLanguageExtensionsRequestValueList =
-  ReadonlyArray<LanguageExtension>;
+  Array<LanguageExtension>;
 export const ClustersRemoveLanguageExtensionsRequestValueList =
   /*@__PURE__*/ S.Array(
     LanguageExtension,
@@ -3075,7 +3067,7 @@ export const ClustersUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ClustersUpdateRequestTagsMap>;
 
 /** The availability zones of the cluster. */
-export type ClustersUpdateRequestZonesList = ReadonlyArray<string>;
+export type ClustersUpdateRequestZonesList = Array<string>;
 export const ClustersUpdateRequestZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ClustersUpdateRequestZonesList>;
@@ -3133,7 +3125,7 @@ export const ClustersUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ClustersUpdateResponseTagsMap>;
 
 /** The availability zones. */
-export type ClustersUpdateResponseZonesList = ReadonlyArray<string>;
+export type ClustersUpdateResponseZonesList = Array<string>;
 export const ClustersUpdateResponseZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ClustersUpdateResponseZonesList>;
@@ -3547,7 +3539,7 @@ export const DatabasePrincipalAssignment = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of Kusto database principal assignments. */
 export type DatabasePrincipalAssignmentListResultValueList =
-  ReadonlyArray<DatabasePrincipalAssignment>;
+  Array<DatabasePrincipalAssignment>;
 export const DatabasePrincipalAssignmentListResultValueList =
   /*@__PURE__*/ S.Array(
     DatabasePrincipalAssignment,
@@ -3604,7 +3596,7 @@ export const DatabasePrincipalInput = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of Kusto database principals. */
 export type DatabasesAddPrincipalsRequestValueList =
-  ReadonlyArray<DatabasePrincipalInput>;
+  Array<DatabasePrincipalInput>;
 export const DatabasesAddPrincipalsRequestValueList = /*@__PURE__*/ S.Array(
   DatabasePrincipalInput,
 ) as any as S.Schema<DatabasesAddPrincipalsRequestValueList>;
@@ -3672,8 +3664,7 @@ export const DatabasePrincipal = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DatabasePrincipal>;
 
 /** The list of Kusto database principals. */
-export type DatabasePrincipalListResultValueList =
-  ReadonlyArray<DatabasePrincipal>;
+export type DatabasePrincipalListResultValueList = Array<DatabasePrincipal>;
 export const DatabasePrincipalListResultValueList = /*@__PURE__*/ S.Array(
   DatabasePrincipal,
 ) as any as S.Schema<DatabasePrincipalListResultValueList>;
@@ -3953,7 +3944,7 @@ export const Database = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Database" }) as any as S.Schema<Database>;
 
 /** The Database items on this page */
-export type DatabaseListResultValueList = ReadonlyArray<Database>;
+export type DatabaseListResultValueList = Array<Database>;
 export const DatabaseListResultValueList = /*@__PURE__*/ S.Array(
   Database,
 ) as any as S.Schema<DatabaseListResultValueList>;
@@ -4004,7 +3995,7 @@ export const DatabasesListPrincipalsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of Kusto database principals. */
 export type DatabasesRemovePrincipalsRequestValueList =
-  ReadonlyArray<DatabasePrincipalInput>;
+  Array<DatabasePrincipalInput>;
 export const DatabasesRemovePrincipalsRequestValueList = /*@__PURE__*/ S.Array(
   DatabasePrincipalInput,
 ) as any as S.Schema<DatabasesRemovePrincipalsRequestValueList>;
@@ -4290,7 +4281,7 @@ export const DataConnectionValidationResult = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of Kusto data connection validation errors. */
 export type DataConnectionValidationListResultValueList =
-  ReadonlyArray<DataConnectionValidationResult>;
+  Array<DataConnectionValidationResult>;
 export const DataConnectionValidationListResultValueList =
   /*@__PURE__*/ S.Array(
     DataConnectionValidationResult,
@@ -4461,7 +4452,7 @@ export const DataConnection = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DataConnection" }) as any as S.Schema<DataConnection>;
 
 /** The list of Kusto data connections. */
-export type DataConnectionListResultValueList = ReadonlyArray<DataConnection>;
+export type DataConnectionListResultValueList = Array<DataConnection>;
 export const DataConnectionListResultValueList = /*@__PURE__*/ S.Array(
   DataConnection,
 ) as any as S.Schema<DataConnectionListResultValueList>;
@@ -4595,7 +4586,7 @@ export interface ManagedPrivateEndpointProperties {
   /** The user request message. */
   requestMessage?: string;
   /** The provisioned state of the resource. */
-  provisioningState?: ProvisioningState;
+  provisioningState?: ProvisioningState | (string & {});
 }
 export const ManagedPrivateEndpointProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4806,7 +4797,7 @@ export const ManagedPrivateEndpoint = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of managed private endpoints. */
 export type ManagedPrivateEndpointListResultValueList =
-  ReadonlyArray<ManagedPrivateEndpoint>;
+  Array<ManagedPrivateEndpoint>;
 export const ManagedPrivateEndpointListResultValueList = /*@__PURE__*/ S.Array(
   ManagedPrivateEndpoint,
 ) as any as S.Schema<ManagedPrivateEndpointListResultValueList>;
@@ -4941,7 +4932,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** The list of operations supported by the resource provider. */
-export type OperationListResultValueList = ReadonlyArray<Operation>;
+export type OperationListResultValueList = Array<Operation>;
 export const OperationListResultValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationListResultValueList>;
@@ -5267,7 +5258,7 @@ export const PrivateEndpointConnectionsListRequest = /*@__PURE__*/ S.suspend(
 
 /** Array of private endpoint connections */
 export type PrivateEndpointConnectionListResultValueList =
-  ReadonlyArray<PrivateEndpointConnection>;
+  Array<PrivateEndpointConnection>;
 export const PrivateEndpointConnectionListResultValueList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection,
@@ -5318,16 +5309,14 @@ export const PrivateLinkResourcesGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateLinkResourcesGetRequest>;
 
 /** The private link resource required member names. */
-export type PrivateLinkResourcePropertiesRequiredMembersList =
-  ReadonlyArray<string>;
+export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
 export const PrivateLinkResourcePropertiesRequiredMembersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
 
 /** The private link resource required zone names. */
-export type PrivateLinkResourcePropertiesRequiredZoneNamesList =
-  ReadonlyArray<string>;
+export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
 export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5431,8 +5420,7 @@ export const PrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateLinkResource>;
 
 /** Array of private link resources */
-export type PrivateLinkResourceListResultValueList =
-  ReadonlyArray<PrivateLinkResource>;
+export type PrivateLinkResourceListResultValueList = Array<PrivateLinkResource>;
 export const PrivateLinkResourceListResultValueList = /*@__PURE__*/ S.Array(
   PrivateLinkResource,
 ) as any as S.Schema<PrivateLinkResourceListResultValueList>;
@@ -5498,7 +5486,7 @@ export const Language = /*@__PURE__*/ S.String;
 /** A class representing the properties of a sandbox custom image object. */
 export interface SandboxCustomImageProperties {
   /** The language name, for example Python. */
-  language: Language;
+  language: Language | (string & {});
   /** The version of the language. Either this property or baseImageName should be specified. */
   languageVersion?: string;
   /** The base image name on which the custom image is built on top of. It can be one of the LanguageExtensionImageName (e.g.: 'Python3_10_8', 'Python3_10_8_DL') or the name of an existing custom image. Either this property or languageVersion should be specified. */
@@ -5506,7 +5494,7 @@ export interface SandboxCustomImageProperties {
   /** The requirements file content. */
   requirementsFileContent?: string;
   /** The provisioned state of the resource. */
-  provisioningState?: ProvisioningState;
+  provisioningState?: ProvisioningState | (string & {});
 }
 export const SandboxCustomImageProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5716,8 +5704,7 @@ export const SandboxCustomImage = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SandboxCustomImage>;
 
 /** The SandboxCustomImage items on this page */
-export type SandboxCustomImagesListResultValueList =
-  ReadonlyArray<SandboxCustomImage>;
+export type SandboxCustomImagesListResultValueList = Array<SandboxCustomImage>;
 export const SandboxCustomImagesListResultValueList = /*@__PURE__*/ S.Array(
   SandboxCustomImage,
 ) as any as S.Schema<SandboxCustomImagesListResultValueList>;
@@ -5855,11 +5842,11 @@ export interface ScriptProperties {
   /** Flag that indicates whether to continue if one of the command fails. */
   continueOnErrors?: boolean;
   /** The provisioned state of the resource. */
-  provisioningState?: ProvisioningState;
+  provisioningState?: ProvisioningState | (string & {});
   /** Differentiates between the type of script commands included - Database or Cluster. The default is Database. */
-  scriptLevel?: ScriptLevel;
+  scriptLevel?: ScriptLevel | (string & {});
   /** Indicates if the permissions for the script caller are kept following completion of the script. */
-  principalPermissionsAction?: PrincipalPermissionsAction;
+  principalPermissionsAction?: PrincipalPermissionsAction | (string & {});
   /** The resource identifier of the managed identity to be used. When provided, the managed identity will be used to read the script content from the scriptUrl. */
   managedIdentityResourceId?: string;
 }
@@ -6082,7 +6069,7 @@ export const Script = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Script" }) as any as S.Schema<Script>;
 
 /** The list of Kusto scripts. */
-export type ScriptListResultValueList = ReadonlyArray<Script>;
+export type ScriptListResultValueList = Array<Script>;
 export const ScriptListResultValueList = /*@__PURE__*/ S.Array(
   Script,
 ) as any as S.Schema<ScriptListResultValueList>;

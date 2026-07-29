@@ -54,7 +54,7 @@ export const SessionGroupSummariesCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SessionGroupSummariesCreateRequest>;
 
 /** List of session replay IDs included in this group summary */
-export type SessionGroupSummarySessionIdsList = ReadonlyArray<string>;
+export type SessionGroupSummarySessionIdsList = Array<string>;
 export const SessionGroupSummarySessionIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SessionGroupSummarySessionIdsList>;
@@ -214,7 +214,7 @@ export const SessionGroupSummaryMinimal = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SessionGroupSummaryMinimal>;
 
 export type PaginatedSessionGroupSummaryMinimalListResultsList =
-  ReadonlyArray<SessionGroupSummaryMinimal>;
+  Array<SessionGroupSummaryMinimal>;
 export const PaginatedSessionGroupSummaryMinimalListResultsList =
   /*@__PURE__*/ S.Array(
     SessionGroupSummaryMinimal,

@@ -49,8 +49,9 @@ export type AutoscaleScheduleDaysItem =
 export const AutoscaleScheduleDaysItem = /*@__PURE__*/ S.String;
 
 /** Days of the week for a schedule-based autoscale rule */
-export type AutoscaleScheduleDaysList =
-  ReadonlyArray<AutoscaleScheduleDaysItem>;
+export type AutoscaleScheduleDaysList = Array<
+  AutoscaleScheduleDaysItem | (string & {})
+>;
 export const AutoscaleScheduleDaysList = /*@__PURE__*/ S.Array(
   AutoscaleScheduleDaysItem,
 ) as any as S.Schema<AutoscaleScheduleDaysList>;
@@ -91,7 +92,7 @@ export const AutoscaleSchedule = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AutoscaleSchedule>;
 
 /** Array of schedule-based autoscale rules */
-export type AutoscaleRecurrenceScheduleList = ReadonlyArray<AutoscaleSchedule>;
+export type AutoscaleRecurrenceScheduleList = Array<AutoscaleSchedule>;
 export const AutoscaleRecurrenceScheduleList = /*@__PURE__*/ S.Array(
   AutoscaleSchedule,
 ) as any as S.Schema<AutoscaleRecurrenceScheduleList>;
@@ -151,7 +152,7 @@ export const SshPublicKey = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SshPublicKey" }) as any as S.Schema<SshPublicKey>;
 
 /** The list of SSH public keys. */
-export type SshProfilePublicKeysList = ReadonlyArray<SshPublicKey>;
+export type SshProfilePublicKeysList = Array<SshPublicKey>;
 export const SshProfilePublicKeysList = /*@__PURE__*/ S.Array(
   SshPublicKey,
 ) as any as S.Schema<SshProfilePublicKeysList>;
@@ -227,7 +228,7 @@ export const DataDisksGroupsInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DataDisksGroupsInput>;
 
 /** The data disks groups for the role. */
-export type RoleInputDataDisksGroupsList = ReadonlyArray<DataDisksGroupsInput>;
+export type RoleInputDataDisksGroupsList = Array<DataDisksGroupsInput>;
 export const RoleInputDataDisksGroupsList = /*@__PURE__*/ S.Array(
   DataDisksGroupsInput,
 ) as any as S.Schema<RoleInputDataDisksGroupsList>;
@@ -252,8 +253,7 @@ export const RoleInputScriptActionsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RoleInputScriptActionsItem>;
 
 /** The list of script actions on the role. */
-export type RoleInputScriptActionsList =
-  ReadonlyArray<RoleInputScriptActionsItem>;
+export type RoleInputScriptActionsList = Array<RoleInputScriptActionsItem>;
 export const RoleInputScriptActionsList = /*@__PURE__*/ S.Array(
   RoleInputScriptActionsItem,
 ) as any as S.Schema<RoleInputScriptActionsList>;
@@ -301,7 +301,7 @@ export const RoleInput = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of roles in the cluster. */
 export type ApplicationPropertiesInputComputeProfileRolesList =
-  ReadonlyArray<RoleInput>;
+  Array<RoleInput>;
 export const ApplicationPropertiesInputComputeProfileRolesList =
   /*@__PURE__*/ S.Array(
     RoleInput,
@@ -323,7 +323,7 @@ export const ApplicationPropertiesInputComputeProfile = /*@__PURE__*/ S.suspend(
 
 /** The list of roles where script will be executed. */
 export type ApplicationPropertiesInputInstallScriptActionsItemRolesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ApplicationPropertiesInputInstallScriptActionsItemRolesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -354,7 +354,7 @@ export const ApplicationPropertiesInputInstallScriptActionsItem =
 
 /** The list of install script actions. */
 export type ApplicationPropertiesInputInstallScriptActionsList =
-  ReadonlyArray<ApplicationPropertiesInputInstallScriptActionsItem>;
+  Array<ApplicationPropertiesInputInstallScriptActionsItem>;
 export const ApplicationPropertiesInputInstallScriptActionsList =
   /*@__PURE__*/ S.Array(
     ApplicationPropertiesInputInstallScriptActionsItem,
@@ -362,7 +362,7 @@ export const ApplicationPropertiesInputInstallScriptActionsList =
 
 /** The list of roles where script will be executed. */
 export type ApplicationPropertiesInputUninstallScriptActionsItemRolesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ApplicationPropertiesInputUninstallScriptActionsItemRolesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -393,15 +393,14 @@ export const ApplicationPropertiesInputUninstallScriptActionsItem =
 
 /** The list of uninstall script actions. */
 export type ApplicationPropertiesInputUninstallScriptActionsList =
-  ReadonlyArray<ApplicationPropertiesInputUninstallScriptActionsItem>;
+  Array<ApplicationPropertiesInputUninstallScriptActionsItem>;
 export const ApplicationPropertiesInputUninstallScriptActionsList =
   /*@__PURE__*/ S.Array(
     ApplicationPropertiesInputUninstallScriptActionsItem,
   ) as any as S.Schema<ApplicationPropertiesInputUninstallScriptActionsList>;
 
 /** The list of access modes for the application. */
-export type ApplicationGetHttpsEndpointInputAccessModesList =
-  ReadonlyArray<string>;
+export type ApplicationGetHttpsEndpointInputAccessModesList = Array<string>;
 export const ApplicationGetHttpsEndpointInputAccessModesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -434,7 +433,7 @@ export const ApplicationGetHttpsEndpointInput = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of application HTTPS endpoints. */
 export type ApplicationPropertiesInputHttpsEndpointsList =
-  ReadonlyArray<ApplicationGetHttpsEndpointInput>;
+  Array<ApplicationGetHttpsEndpointInput>;
 export const ApplicationPropertiesInputHttpsEndpointsList =
   /*@__PURE__*/ S.Array(
     ApplicationGetHttpsEndpointInput,
@@ -464,7 +463,7 @@ export const ApplicationGetEndpoint = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of application SSH endpoints. */
 export type ApplicationPropertiesInputSshEndpointsList =
-  ReadonlyArray<ApplicationGetEndpoint>;
+  Array<ApplicationGetEndpoint>;
 export const ApplicationPropertiesInputSshEndpointsList = /*@__PURE__*/ S.Array(
   ApplicationGetEndpoint,
 ) as any as S.Schema<ApplicationPropertiesInputSshEndpointsList>;
@@ -488,7 +487,7 @@ export const ApplicationPropertiesInputErrorsItem = /*@__PURE__*/ S.suspend(
 
 /** The list of errors. */
 export type ApplicationPropertiesInputErrorsList =
-  ReadonlyArray<ApplicationPropertiesInputErrorsItem>;
+  Array<ApplicationPropertiesInputErrorsItem>;
 export const ApplicationPropertiesInputErrorsList = /*@__PURE__*/ S.Array(
   ApplicationPropertiesInputErrorsItem,
 ) as any as S.Schema<ApplicationPropertiesInputErrorsList>;
@@ -555,7 +554,7 @@ export const IPConfigurationInput = /*@__PURE__*/ S.suspend(() =>
 
 /** The IP configurations for the private link service. */
 export type PrivateLinkConfigurationPropertiesInputIpConfigurationsList =
-  ReadonlyArray<IPConfigurationInput>;
+  Array<IPConfigurationInput>;
 export const PrivateLinkConfigurationPropertiesInputIpConfigurationsList =
   /*@__PURE__*/ S.Array(
     IPConfigurationInput,
@@ -598,7 +597,7 @@ export const ApplicationPropertiesInputPrivateLinkConfigurationsItem =
 
 /** The private link configurations. */
 export type ApplicationPropertiesInputPrivateLinkConfigurationsList =
-  ReadonlyArray<ApplicationPropertiesInputPrivateLinkConfigurationsItem>;
+  Array<ApplicationPropertiesInputPrivateLinkConfigurationsItem>;
 export const ApplicationPropertiesInputPrivateLinkConfigurationsList =
   /*@__PURE__*/ S.Array(
     ApplicationPropertiesInputPrivateLinkConfigurationsItem,
@@ -710,7 +709,7 @@ export const DataDisksGroups = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DataDisksGroups>;
 
 /** The data disks groups for the role. */
-export type RoleDataDisksGroupsList = ReadonlyArray<DataDisksGroups>;
+export type RoleDataDisksGroupsList = Array<DataDisksGroups>;
 export const RoleDataDisksGroupsList = /*@__PURE__*/ S.Array(
   DataDisksGroups,
 ) as any as S.Schema<RoleDataDisksGroupsList>;
@@ -735,7 +734,7 @@ export const RoleScriptActionsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RoleScriptActionsItem>;
 
 /** The list of script actions on the role. */
-export type RoleScriptActionsList = ReadonlyArray<RoleScriptActionsItem>;
+export type RoleScriptActionsList = Array<RoleScriptActionsItem>;
 export const RoleScriptActionsList = /*@__PURE__*/ S.Array(
   RoleScriptActionsItem,
 ) as any as S.Schema<RoleScriptActionsList>;
@@ -782,7 +781,7 @@ export const Role = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Role" }) as any as S.Schema<Role>;
 
 /** The list of roles in the cluster. */
-export type ApplicationPropertiesComputeProfileRolesList = ReadonlyArray<Role>;
+export type ApplicationPropertiesComputeProfileRolesList = Array<Role>;
 export const ApplicationPropertiesComputeProfileRolesList =
   /*@__PURE__*/ S.Array(
     Role,
@@ -803,7 +802,7 @@ export const ApplicationPropertiesComputeProfile = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of roles where script will be executed. */
 export type ApplicationPropertiesInstallScriptActionsItemRolesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ApplicationPropertiesInstallScriptActionsItemRolesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -837,7 +836,7 @@ export const ApplicationPropertiesInstallScriptActionsItem =
 
 /** The list of install script actions. */
 export type ApplicationPropertiesInstallScriptActionsList =
-  ReadonlyArray<ApplicationPropertiesInstallScriptActionsItem>;
+  Array<ApplicationPropertiesInstallScriptActionsItem>;
 export const ApplicationPropertiesInstallScriptActionsList =
   /*@__PURE__*/ S.Array(
     ApplicationPropertiesInstallScriptActionsItem,
@@ -845,7 +844,7 @@ export const ApplicationPropertiesInstallScriptActionsList =
 
 /** The list of roles where script will be executed. */
 export type ApplicationPropertiesUninstallScriptActionsItemRolesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ApplicationPropertiesUninstallScriptActionsItemRolesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -879,14 +878,14 @@ export const ApplicationPropertiesUninstallScriptActionsItem =
 
 /** The list of uninstall script actions. */
 export type ApplicationPropertiesUninstallScriptActionsList =
-  ReadonlyArray<ApplicationPropertiesUninstallScriptActionsItem>;
+  Array<ApplicationPropertiesUninstallScriptActionsItem>;
 export const ApplicationPropertiesUninstallScriptActionsList =
   /*@__PURE__*/ S.Array(
     ApplicationPropertiesUninstallScriptActionsItem,
   ) as any as S.Schema<ApplicationPropertiesUninstallScriptActionsList>;
 
 /** The list of access modes for the application. */
-export type ApplicationGetHttpsEndpointAccessModesList = ReadonlyArray<string>;
+export type ApplicationGetHttpsEndpointAccessModesList = Array<string>;
 export const ApplicationGetHttpsEndpointAccessModesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ApplicationGetHttpsEndpointAccessModesList>;
@@ -924,14 +923,14 @@ export const ApplicationGetHttpsEndpoint = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of application HTTPS endpoints. */
 export type ApplicationPropertiesHttpsEndpointsList =
-  ReadonlyArray<ApplicationGetHttpsEndpoint>;
+  Array<ApplicationGetHttpsEndpoint>;
 export const ApplicationPropertiesHttpsEndpointsList = /*@__PURE__*/ S.Array(
   ApplicationGetHttpsEndpoint,
 ) as any as S.Schema<ApplicationPropertiesHttpsEndpointsList>;
 
 /** The list of application SSH endpoints. */
 export type ApplicationPropertiesSshEndpointsList =
-  ReadonlyArray<ApplicationGetEndpoint>;
+  Array<ApplicationGetEndpoint>;
 export const ApplicationPropertiesSshEndpointsList = /*@__PURE__*/ S.Array(
   ApplicationGetEndpoint,
 ) as any as S.Schema<ApplicationPropertiesSshEndpointsList>;
@@ -954,7 +953,7 @@ export const ApplicationPropertiesErrorsItem = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of errors. */
 export type ApplicationPropertiesErrorsList =
-  ReadonlyArray<ApplicationPropertiesErrorsItem>;
+  Array<ApplicationPropertiesErrorsItem>;
 export const ApplicationPropertiesErrorsList = /*@__PURE__*/ S.Array(
   ApplicationPropertiesErrorsItem,
 ) as any as S.Schema<ApplicationPropertiesErrorsList>;
@@ -1037,7 +1036,7 @@ export const IPConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** The IP configurations for the private link service. */
 export type PrivateLinkConfigurationPropertiesIpConfigurationsList =
-  ReadonlyArray<IPConfiguration>;
+  Array<IPConfiguration>;
 export const PrivateLinkConfigurationPropertiesIpConfigurationsList =
   /*@__PURE__*/ S.Array(
     IPConfiguration,
@@ -1089,7 +1088,7 @@ export const ApplicationPropertiesPrivateLinkConfigurationsItem =
 
 /** The private link configurations. */
 export type ApplicationPropertiesPrivateLinkConfigurationsList =
-  ReadonlyArray<ApplicationPropertiesPrivateLinkConfigurationsItem>;
+  Array<ApplicationPropertiesPrivateLinkConfigurationsItem>;
 export const ApplicationPropertiesPrivateLinkConfigurationsList =
   /*@__PURE__*/ S.Array(
     ApplicationPropertiesPrivateLinkConfigurationsItem,
@@ -1556,7 +1555,7 @@ export const Application = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Application" }) as any as S.Schema<Application>;
 
 /** The list of HDInsight applications installed on HDInsight cluster. */
-export type ApplicationListResultValueList = ReadonlyArray<Application>;
+export type ApplicationListResultValueList = Array<Application>;
 export const ApplicationListResultValueList = /*@__PURE__*/ S.Array(
   Application,
 ) as any as S.Schema<ApplicationListResultValueList>;
@@ -1587,7 +1586,7 @@ export const ClustersCreateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ClustersCreateRequestTagsMap>;
 
 /** The availability zones. */
-export type ClustersCreateRequestZonesList = ReadonlyArray<string>;
+export type ClustersCreateRequestZonesList = Array<string>;
 export const ClustersCreateRequestZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ClustersCreateRequestZonesList>;
@@ -1680,13 +1679,13 @@ export type SecurityProfileDirectoryType = "ActiveDirectory";
 export const SecurityProfileDirectoryType = /*@__PURE__*/ S.String;
 
 /** The LDAPS protocol URLs to communicate with the Active Directory. */
-export type SecurityProfileLdapsUrlsList = ReadonlyArray<string>;
+export type SecurityProfileLdapsUrlsList = Array<string>;
 export const SecurityProfileLdapsUrlsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SecurityProfileLdapsUrlsList>;
 
 /** Optional. The Distinguished Names for cluster user groups */
-export type SecurityProfileClusterUsersGroupDNsList = ReadonlyArray<string>;
+export type SecurityProfileClusterUsersGroupDNsList = Array<string>;
 export const SecurityProfileClusterUsersGroupDNsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SecurityProfileClusterUsersGroupDNsList>;
@@ -1694,7 +1693,7 @@ export const SecurityProfileClusterUsersGroupDNsList = /*@__PURE__*/ S.Array(
 /** The security profile which contains Ssh public key for the HDInsight cluster. */
 export interface SecurityProfile {
   /** The directory type. */
-  directoryType?: SecurityProfileDirectoryType;
+  directoryType?: SecurityProfileDirectoryType | (string & {});
   /** The organization's active directory domain. */
   domain?: string;
   /** The organizational unit within the Active Directory to place the cluster and service accounts. */
@@ -1729,7 +1728,7 @@ export const SecurityProfile = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SecurityProfile>;
 
 /** The list of roles in the cluster. */
-export type ComputeProfileInputRolesList = ReadonlyArray<RoleInput>;
+export type ComputeProfileInputRolesList = Array<RoleInput>;
 export const ComputeProfileInputRolesList = /*@__PURE__*/ S.Array(
   RoleInput,
 ) as any as S.Schema<ComputeProfileInputRolesList>;
@@ -1783,7 +1782,7 @@ export const StorageAccount = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StorageAccount" }) as any as S.Schema<StorageAccount>;
 
 /** The list of storage accounts in the cluster. */
-export type StorageProfileStorageaccountsList = ReadonlyArray<StorageAccount>;
+export type StorageProfileStorageaccountsList = Array<StorageAccount>;
 export const StorageProfileStorageaccountsList = /*@__PURE__*/ S.Array(
   StorageAccount,
 ) as any as S.Schema<StorageProfileStorageaccountsList>;
@@ -1816,7 +1815,9 @@ export interface DiskEncryptionProperties {
   /** Specific key version that is used for enabling disk encryption. */
   keyVersion?: string;
   /** Algorithm identifier for encryption, default RSA-OAEP. */
-  encryptionAlgorithm?: DiskEncryptionPropertiesEncryptionAlgorithm;
+  encryptionAlgorithm?:
+    | DiskEncryptionPropertiesEncryptionAlgorithm
+    | (string & {});
   /** Resource ID of Managed Identity that is used to access the key vault. */
   msiResourceId?: string;
   /** Indicates whether or not resource disk encryption is enabled. */
@@ -1864,9 +1865,11 @@ export const NetworkPropertiesPrivateLink = /*@__PURE__*/ S.String;
 /** The network properties. */
 export interface NetworkProperties {
   /** The direction for the resource provider connection. */
-  resourceProviderConnection?: NetworkPropertiesResourceProviderConnection;
+  resourceProviderConnection?:
+    | NetworkPropertiesResourceProviderConnection
+    | (string & {});
   /** Indicates whether or not private link is enabled. */
-  privateLink?: NetworkPropertiesPrivateLink;
+  privateLink?: NetworkPropertiesPrivateLink | (string & {});
 }
 export const NetworkProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1913,7 +1916,7 @@ export const PrivateLinkConfigurationInput = /*@__PURE__*/ S.suspend(() =>
 
 /** The private link configurations. */
 export type ClusterCreatePropertiesInputPrivateLinkConfigurationsList =
-  ReadonlyArray<PrivateLinkConfigurationInput>;
+  Array<PrivateLinkConfigurationInput>;
 export const ClusterCreatePropertiesInputPrivateLinkConfigurationsList =
   /*@__PURE__*/ S.Array(
     PrivateLinkConfigurationInput,
@@ -2072,7 +2075,7 @@ export const ClustersCreateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ClustersCreateResponseTagsMap>;
 
 /** The availability zones. */
-export type ClustersCreateResponseZonesList = ReadonlyArray<string>;
+export type ClustersCreateResponseZonesList = Array<string>;
 export const ClustersCreateResponseZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ClustersCreateResponseZonesList>;
@@ -2086,7 +2089,7 @@ export type ClusterGetPropertiesTier = "Standard" | "Premium";
 export const ClusterGetPropertiesTier = /*@__PURE__*/ S.String;
 
 /** The list of roles in the cluster. */
-export type ComputeProfileRolesList = ReadonlyArray<Role>;
+export type ComputeProfileRolesList = Array<Role>;
 export const ComputeProfileRolesList = /*@__PURE__*/ S.Array(
   Role,
 ) as any as S.Schema<ComputeProfileRolesList>;
@@ -2123,7 +2126,7 @@ export const QuotaInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "QuotaInfo" }) as any as S.Schema<QuotaInfo>;
 
 /** The list of errors. */
-export type ClusterGetPropertiesErrorsList = ReadonlyArray<Errors>;
+export type ClusterGetPropertiesErrorsList = Array<Errors>;
 export const ClusterGetPropertiesErrorsList = /*@__PURE__*/ S.Array(
   Errors,
 ) as any as S.Schema<ClusterGetPropertiesErrorsList>;
@@ -2155,7 +2158,7 @@ export const ConnectivityEndpoint = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of connectivity endpoints. */
 export type ClusterGetPropertiesConnectivityEndpointsList =
-  ReadonlyArray<ConnectivityEndpoint>;
+  Array<ConnectivityEndpoint>;
 export const ClusterGetPropertiesConnectivityEndpointsList =
   /*@__PURE__*/ S.Array(
     ConnectivityEndpoint,
@@ -2201,7 +2204,7 @@ export const PrivateLinkConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** The private link configurations. */
 export type ClusterGetPropertiesPrivateLinkConfigurationsList =
-  ReadonlyArray<PrivateLinkConfiguration>;
+  Array<PrivateLinkConfiguration>;
 export const ClusterGetPropertiesPrivateLinkConfigurationsList =
   /*@__PURE__*/ S.Array(
     PrivateLinkConfiguration,
@@ -2231,7 +2234,7 @@ export const PrivateLinkServiceConnectionStateStatus = /*@__PURE__*/ S.String;
 /** The private link service connection state. */
 export interface PrivateLinkServiceConnectionState {
   /** The concrete private link service connection. */
-  status: PrivateLinkServiceConnectionStateStatus;
+  status: PrivateLinkServiceConnectionStateStatus | (string & {});
   /** The optional description of the status. */
   description?: string;
   /** Whether there is further actions. */
@@ -2357,7 +2360,7 @@ export const ClusterGetPropertiesPrivateEndpointConnectionsItem =
 
 /** The list of private endpoint connections. */
 export type ClusterGetPropertiesPrivateEndpointConnectionsList =
-  ReadonlyArray<ClusterGetPropertiesPrivateEndpointConnectionsItem>;
+  Array<ClusterGetPropertiesPrivateEndpointConnectionsItem>;
 export const ClusterGetPropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     ClusterGetPropertiesPrivateEndpointConnectionsItem,
@@ -2631,7 +2634,7 @@ export const ClustersDeleteResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ClustersDeleteResponse>;
 
 /** The list of roles where script will be executed. */
-export type RuntimeScriptActionInputRolesList = ReadonlyArray<string>;
+export type RuntimeScriptActionInputRolesList = Array<string>;
 export const RuntimeScriptActionInputRolesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RuntimeScriptActionInputRolesList>;
@@ -2660,7 +2663,7 @@ export const RuntimeScriptActionInput = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of run time script actions. */
 export type ClustersExecuteScriptActionsRequestScriptActionsList =
-  ReadonlyArray<RuntimeScriptActionInput>;
+  Array<RuntimeScriptActionInput>;
 export const ClustersExecuteScriptActionsRequestScriptActionsList =
   /*@__PURE__*/ S.Array(
     RuntimeScriptActionInput,
@@ -2739,7 +2742,7 @@ export const ClustersGetResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ClustersGetResponseTagsMap>;
 
 /** The availability zones. */
-export type ClustersGetResponseZonesList = ReadonlyArray<string>;
+export type ClustersGetResponseZonesList = Array<string>;
 export const ClustersGetResponseZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ClustersGetResponseZonesList>;
@@ -2960,7 +2963,7 @@ export const ClusterTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ClusterTagsMap>;
 
 /** The availability zones. */
-export type ClusterZonesList = ReadonlyArray<string>;
+export type ClusterZonesList = Array<string>;
 export const ClusterZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ClusterZonesList>;
@@ -3048,7 +3051,7 @@ export const Cluster = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Cluster" }) as any as S.Schema<Cluster>;
 
 /** The list of Clusters. */
-export type ClusterListResultValueList = ReadonlyArray<Cluster>;
+export type ClusterListResultValueList = Array<Cluster>;
 export const ClusterListResultValueList = /*@__PURE__*/ S.Array(
   Cluster,
 ) as any as S.Schema<ClusterListResultValueList>;
@@ -3221,7 +3224,7 @@ export const ClustersUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ClustersUpdateResponseTagsMap>;
 
 /** The availability zones. */
-export type ClustersUpdateResponseZonesList = ReadonlyArray<string>;
+export type ClustersUpdateResponseZonesList = Array<string>;
 export const ClustersUpdateResponseZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ClustersUpdateResponseZonesList>;
@@ -3704,7 +3707,7 @@ export const AzureMonitorTableConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** The table list. */
 export type AzureMonitorSelectedConfigurationsTableListList =
-  ReadonlyArray<AzureMonitorTableConfiguration>;
+  Array<AzureMonitorTableConfiguration>;
 export const AzureMonitorSelectedConfigurationsTableListList =
   /*@__PURE__*/ S.Array(
     AzureMonitorTableConfiguration,
@@ -4131,7 +4134,7 @@ export const VersionSpec = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VersionSpec" }) as any as S.Schema<VersionSpec>;
 
 /** The list of version capabilities. */
-export type VersionsCapabilityAvailableList = ReadonlyArray<VersionSpec>;
+export type VersionsCapabilityAvailableList = Array<VersionSpec>;
 export const VersionsCapabilityAvailableList = /*@__PURE__*/ S.Array(
   VersionSpec,
 ) as any as S.Schema<VersionsCapabilityAvailableList>;
@@ -4159,7 +4162,7 @@ export const CapabilitiesResultVersionsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<CapabilitiesResultVersionsMap>;
 
 /** The list of region capabilities. */
-export type RegionsCapabilityAvailableList = ReadonlyArray<string>;
+export type RegionsCapabilityAvailableList = Array<string>;
 export const RegionsCapabilityAvailableList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RegionsCapabilityAvailableList>;
@@ -4187,7 +4190,7 @@ export const CapabilitiesResultRegionsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<CapabilitiesResultRegionsMap>;
 
 /** The capability features. */
-export type CapabilitiesResultFeaturesList = ReadonlyArray<string>;
+export type CapabilitiesResultFeaturesList = Array<string>;
 export const CapabilitiesResultFeaturesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CapabilitiesResultFeaturesList>;
@@ -4212,8 +4215,7 @@ export const RegionalQuotaCapability = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RegionalQuotaCapability>;
 
 /** The list of region quota capabilities. */
-export type QuotaCapabilityRegionalQuotasList =
-  ReadonlyArray<RegionalQuotaCapability>;
+export type QuotaCapabilityRegionalQuotasList = Array<RegionalQuotaCapability>;
 export const QuotaCapabilityRegionalQuotasList = /*@__PURE__*/ S.Array(
   RegionalQuotaCapability,
 ) as any as S.Schema<QuotaCapabilityRegionalQuotasList>;
@@ -4282,14 +4284,14 @@ export const LocationsListBillingSpecsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LocationsListBillingSpecsRequest>;
 
 /** The virtual machine sizes to include or exclude. */
-export type BillingResponseListResultVmSizesList = ReadonlyArray<string>;
+export type BillingResponseListResultVmSizesList = Array<string>;
 export const BillingResponseListResultVmSizesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BillingResponseListResultVmSizesList>;
 
 /** The vm sizes which enable encryption at host. */
 export type BillingResponseListResultVmSizesWithEncryptionAtHostList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const BillingResponseListResultVmSizesWithEncryptionAtHostList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4304,28 +4306,26 @@ export type VmSizeCompatibilityFilterV2FilterMode =
 export const VmSizeCompatibilityFilterV2FilterMode = /*@__PURE__*/ S.String;
 
 /** The list of regions under the effect of the filter. */
-export type VmSizeCompatibilityFilterV2RegionsList = ReadonlyArray<string>;
+export type VmSizeCompatibilityFilterV2RegionsList = Array<string>;
 export const VmSizeCompatibilityFilterV2RegionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<VmSizeCompatibilityFilterV2RegionsList>;
 
 /** The list of cluster flavors under the effect of the filter. */
-export type VmSizeCompatibilityFilterV2ClusterFlavorsList =
-  ReadonlyArray<string>;
+export type VmSizeCompatibilityFilterV2ClusterFlavorsList = Array<string>;
 export const VmSizeCompatibilityFilterV2ClusterFlavorsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<VmSizeCompatibilityFilterV2ClusterFlavorsList>;
 
 /** The list of node types affected by the filter. */
-export type VmSizeCompatibilityFilterV2NodeTypesList = ReadonlyArray<string>;
+export type VmSizeCompatibilityFilterV2NodeTypesList = Array<string>;
 export const VmSizeCompatibilityFilterV2NodeTypesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<VmSizeCompatibilityFilterV2NodeTypesList>;
 
 /** The list of cluster versions affected in Major.Minor format. */
-export type VmSizeCompatibilityFilterV2ClusterVersionsList =
-  ReadonlyArray<string>;
+export type VmSizeCompatibilityFilterV2ClusterVersionsList = Array<string>;
 export const VmSizeCompatibilityFilterV2ClusterVersionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4336,13 +4336,13 @@ export const VmSizeCompatibilityFilterV2OsTypeItem = /*@__PURE__*/ S.String;
 
 /** The OSType affected, Windows or Linux. */
 export type VmSizeCompatibilityFilterV2OsTypeList =
-  ReadonlyArray<VmSizeCompatibilityFilterV2OsTypeItem>;
+  Array<VmSizeCompatibilityFilterV2OsTypeItem>;
 export const VmSizeCompatibilityFilterV2OsTypeList = /*@__PURE__*/ S.Array(
   VmSizeCompatibilityFilterV2OsTypeItem,
 ) as any as S.Schema<VmSizeCompatibilityFilterV2OsTypeList>;
 
 /** The list of virtual machine sizes to include or exclude. */
-export type VmSizeCompatibilityFilterV2VmSizesList = ReadonlyArray<string>;
+export type VmSizeCompatibilityFilterV2VmSizesList = Array<string>;
 export const VmSizeCompatibilityFilterV2VmSizesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<VmSizeCompatibilityFilterV2VmSizesList>;
@@ -4386,7 +4386,7 @@ export const VmSizeCompatibilityFilterV2 = /*@__PURE__*/ S.suspend(() =>
 
 /** The virtual machine filtering mode. Effectively this can enabling or disabling the virtual machine sizes in a particular set. */
 export type BillingResponseListResultVmSizeFiltersList =
-  ReadonlyArray<VmSizeCompatibilityFilterV2>;
+  Array<VmSizeCompatibilityFilterV2>;
 export const BillingResponseListResultVmSizeFiltersList = /*@__PURE__*/ S.Array(
   VmSizeCompatibilityFilterV2,
 ) as any as S.Schema<BillingResponseListResultVmSizeFiltersList>;
@@ -4431,7 +4431,7 @@ export const VmSizeProperty = /*@__PURE__*/ S.suspend(() =>
 
 /** The vm size properties. */
 export type BillingResponseListResultVmSizePropertiesList =
-  ReadonlyArray<VmSizeProperty>;
+  Array<VmSizeProperty>;
 export const BillingResponseListResultVmSizePropertiesList =
   /*@__PURE__*/ S.Array(
     VmSizeProperty,
@@ -4455,7 +4455,7 @@ export const BillingMeters = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BillingMeters" }) as any as S.Schema<BillingMeters>;
 
 /** The billing meter information. */
-export type BillingResourcesBillingMetersList = ReadonlyArray<BillingMeters>;
+export type BillingResourcesBillingMetersList = Array<BillingMeters>;
 export const BillingResourcesBillingMetersList = /*@__PURE__*/ S.Array(
   BillingMeters,
 ) as any as S.Schema<BillingResourcesBillingMetersList>;
@@ -4484,8 +4484,7 @@ export const DiskBillingMeters = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DiskBillingMeters>;
 
 /** The managed disk billing information. */
-export type BillingResourcesDiskBillingMetersList =
-  ReadonlyArray<DiskBillingMeters>;
+export type BillingResourcesDiskBillingMetersList = Array<DiskBillingMeters>;
 export const BillingResourcesDiskBillingMetersList = /*@__PURE__*/ S.Array(
   DiskBillingMeters,
 ) as any as S.Schema<BillingResourcesDiskBillingMetersList>;
@@ -4511,7 +4510,7 @@ export const BillingResources = /*@__PURE__*/ S.suspend(() =>
 
 /** The billing and managed disk billing resources for a region. */
 export type BillingResponseListResultBillingResourcesList =
-  ReadonlyArray<BillingResources>;
+  Array<BillingResources>;
 export const BillingResponseListResultBillingResourcesList =
   /*@__PURE__*/ S.Array(
     BillingResources,
@@ -4601,7 +4600,7 @@ export const Usage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Usage" }) as any as S.Schema<Usage>;
 
 /** The list of usages. */
-export type UsagesListResultValueList = ReadonlyArray<Usage>;
+export type UsagesListResultValueList = Array<Usage>;
 export const UsagesListResultValueList = /*@__PURE__*/ S.Array(
   Usage,
 ) as any as S.Schema<UsagesListResultValueList>;
@@ -4631,7 +4630,7 @@ export const LocationsValidateClusterCreateRequestRequestTagsMap =
 
 /** The availability zones. */
 export type LocationsValidateClusterCreateRequestRequestZonesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const LocationsValidateClusterCreateRequestRequestZonesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4685,7 +4684,7 @@ export const LocationsValidateClusterCreateRequestRequest =
   }) as any as S.Schema<LocationsValidateClusterCreateRequestRequest>;
 
 /** The message arguments */
-export type ValidationErrorInfoMessageArgumentsList = ReadonlyArray<string>;
+export type ValidationErrorInfoMessageArgumentsList = Array<string>;
 export const ValidationErrorInfoMessageArgumentsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ValidationErrorInfoMessageArgumentsList>;
@@ -4714,7 +4713,7 @@ export const ValidationErrorInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** The validation errors. */
 export type ClusterCreateValidationResultValidationErrorsList =
-  ReadonlyArray<ValidationErrorInfo>;
+  Array<ValidationErrorInfo>;
 export const ClusterCreateValidationResultValidationErrorsList =
   /*@__PURE__*/ S.Array(
     ValidationErrorInfo,
@@ -4722,7 +4721,7 @@ export const ClusterCreateValidationResultValidationErrorsList =
 
 /** The validation warnings. */
 export type ClusterCreateValidationResultValidationWarningsList =
-  ReadonlyArray<ValidationErrorInfo>;
+  Array<ValidationErrorInfo>;
 export const ClusterCreateValidationResultValidationWarningsList =
   /*@__PURE__*/ S.Array(
     ValidationErrorInfo,
@@ -4761,7 +4760,7 @@ export const AaddsResourceDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** The Azure active directory domain service resource details. */
 export type ClusterCreateValidationResultAaddsResourcesDetailsList =
-  ReadonlyArray<AaddsResourceDetails>;
+  Array<AaddsResourceDetails>;
 export const ClusterCreateValidationResultAaddsResourcesDetailsList =
   /*@__PURE__*/ S.Array(
     AaddsResourceDetails,
@@ -4832,16 +4831,14 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The supported aggregation types of the metric specification. */
-export type MetricSpecificationsSupportedAggregationTypesList =
-  ReadonlyArray<string>;
+export type MetricSpecificationsSupportedAggregationTypesList = Array<string>;
 export const MetricSpecificationsSupportedAggregationTypesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<MetricSpecificationsSupportedAggregationTypesList>;
 
 /** The supported time grain types of the metric specification. */
-export type MetricSpecificationsSupportedTimeGrainTypesList =
-  ReadonlyArray<string>;
+export type MetricSpecificationsSupportedTimeGrainTypesList = Array<string>;
 export const MetricSpecificationsSupportedTimeGrainTypesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4868,7 +4865,7 @@ export const Dimension = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Dimension" }) as any as S.Schema<Dimension>;
 
 /** The dimensions of the metric specification. */
-export type MetricSpecificationsDimensionsList = ReadonlyArray<Dimension>;
+export type MetricSpecificationsDimensionsList = Array<Dimension>;
 export const MetricSpecificationsDimensionsList = /*@__PURE__*/ S.Array(
   Dimension,
 ) as any as S.Schema<MetricSpecificationsDimensionsList>;
@@ -4940,7 +4937,7 @@ export const MetricSpecifications = /*@__PURE__*/ S.suspend(() =>
 
 /** The metric specifications. */
 export type ServiceSpecificationMetricSpecificationsList =
-  ReadonlyArray<MetricSpecifications>;
+  Array<MetricSpecifications>;
 export const ServiceSpecificationMetricSpecificationsList =
   /*@__PURE__*/ S.Array(
     MetricSpecifications,
@@ -4992,7 +4989,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** The list of HDInsight operations supported by the HDInsight resource provider. */
-export type OperationListResultValueList = ReadonlyArray<Operation>;
+export type OperationListResultValueList = Array<Operation>;
 export const OperationListResultValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationListResultValueList>;
@@ -5373,7 +5370,7 @@ export const PrivateEndpointConnection = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of private endpoint connections. */
 export type PrivateEndpointConnectionListResultValueList =
-  ReadonlyArray<PrivateEndpointConnection>;
+  Array<PrivateEndpointConnection>;
 export const PrivateEndpointConnectionListResultValueList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection,
@@ -5425,7 +5422,7 @@ export const PrivateLinkResourcesGetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The private link resource required member names. */
 export type PrivateLinkResourcesGetResponsePropertiesRequiredMembersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PrivateLinkResourcesGetResponsePropertiesRequiredMembersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5433,7 +5430,7 @@ export const PrivateLinkResourcesGetResponsePropertiesRequiredMembersList =
 
 /** The private link resource Private link DNS zone name. */
 export type PrivateLinkResourcesGetResponsePropertiesRequiredZoneNamesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PrivateLinkResourcesGetResponsePropertiesRequiredZoneNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5565,16 +5562,14 @@ export const PrivateLinkResourcesListByClusterRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PrivateLinkResourcesListByClusterRequest>;
 
 /** The private link resource required member names. */
-export type PrivateLinkResourcePropertiesRequiredMembersList =
-  ReadonlyArray<string>;
+export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
 export const PrivateLinkResourcePropertiesRequiredMembersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
 
 /** The private link resource Private link DNS zone name. */
-export type PrivateLinkResourcePropertiesRequiredZoneNamesList =
-  ReadonlyArray<string>;
+export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
 export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5677,8 +5672,7 @@ export const PrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateLinkResource>;
 
 /** Array of private link resources */
-export type PrivateLinkResourceListResultValueList =
-  ReadonlyArray<PrivateLinkResource>;
+export type PrivateLinkResourceListResultValueList = Array<PrivateLinkResource>;
 export const PrivateLinkResourceListResultValueList = /*@__PURE__*/ S.Array(
   PrivateLinkResource,
 ) as any as S.Schema<PrivateLinkResourceListResultValueList>;
@@ -5816,8 +5810,7 @@ export const ScriptActionsGetExecutionDetailRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ScriptActionsGetExecutionDetailRequest>;
 
 /** The list of roles where script will be executed. */
-export type ScriptActionsGetExecutionDetailResponseRolesList =
-  ReadonlyArray<string>;
+export type ScriptActionsGetExecutionDetailResponseRolesList = Array<string>;
 export const ScriptActionsGetExecutionDetailResponseRolesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5841,7 +5834,7 @@ export const ScriptActionExecutionSummary = /*@__PURE__*/ S.suspend(() =>
 
 /** The summary of script action execution result. */
 export type ScriptActionsGetExecutionDetailResponseExecutionSummaryList =
-  ReadonlyArray<ScriptActionExecutionSummary>;
+  Array<ScriptActionExecutionSummary>;
 export const ScriptActionsGetExecutionDetailResponseExecutionSummaryList =
   /*@__PURE__*/ S.Array(
     ScriptActionExecutionSummary,
@@ -5921,14 +5914,14 @@ export const ScriptActionsListByClusterRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScriptActionsListByClusterRequest>;
 
 /** The list of roles where script will be executed. */
-export type ScriptActionsListValueItemRolesList = ReadonlyArray<string>;
+export type ScriptActionsListValueItemRolesList = Array<string>;
 export const ScriptActionsListValueItemRolesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ScriptActionsListValueItemRolesList>;
 
 /** The summary of script action execution result. */
 export type ScriptActionsListValueItemExecutionSummaryList =
-  ReadonlyArray<ScriptActionExecutionSummary>;
+  Array<ScriptActionExecutionSummary>;
 export const ScriptActionsListValueItemExecutionSummaryList =
   /*@__PURE__*/ S.Array(
     ScriptActionExecutionSummary,
@@ -5983,8 +5976,7 @@ export const ScriptActionsListValueItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScriptActionsListValueItem>;
 
 /** The list of persisted script action details for the cluster. */
-export type ScriptActionsListValueList =
-  ReadonlyArray<ScriptActionsListValueItem>;
+export type ScriptActionsListValueList = Array<ScriptActionsListValueItem>;
 export const ScriptActionsListValueList = /*@__PURE__*/ S.Array(
   ScriptActionsListValueItem,
 ) as any as S.Schema<ScriptActionsListValueList>;
@@ -6032,8 +6024,7 @@ export const ScriptExecutionHistoryListByClusterRequest =
   }) as any as S.Schema<ScriptExecutionHistoryListByClusterRequest>;
 
 /** The list of roles where script will be executed. */
-export type ScriptActionExecutionHistoryListValueItemRolesList =
-  ReadonlyArray<string>;
+export type ScriptActionExecutionHistoryListValueItemRolesList = Array<string>;
 export const ScriptActionExecutionHistoryListValueItemRolesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6041,7 +6032,7 @@ export const ScriptActionExecutionHistoryListValueItemRolesList =
 
 /** The summary of script action execution result. */
 export type ScriptActionExecutionHistoryListValueItemExecutionSummaryList =
-  ReadonlyArray<ScriptActionExecutionSummary>;
+  Array<ScriptActionExecutionSummary>;
 export const ScriptActionExecutionHistoryListValueItemExecutionSummaryList =
   /*@__PURE__*/ S.Array(
     ScriptActionExecutionSummary,
@@ -6098,7 +6089,7 @@ export const ScriptActionExecutionHistoryListValueItem =
 
 /** The list of persisted script action details for the cluster. */
 export type ScriptActionExecutionHistoryListValueList =
-  ReadonlyArray<ScriptActionExecutionHistoryListValueItem>;
+  Array<ScriptActionExecutionHistoryListValueItem>;
 export const ScriptActionExecutionHistoryListValueList = /*@__PURE__*/ S.Array(
   ScriptActionExecutionHistoryListValueItem,
 ) as any as S.Schema<ScriptActionExecutionHistoryListValueList>;
@@ -6251,7 +6242,7 @@ export const HostInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "HostInfo" }) as any as S.Schema<HostInfo>;
 
 /** Result of the request to list cluster hosts */
-export type HostInfoListResult = ReadonlyArray<HostInfo>;
+export type HostInfoListResult = Array<HostInfo>;
 export const HostInfoListResult = /*@__PURE__*/ S.Array(
   HostInfo,
 ) as any as S.Schema<HostInfoListResult>;
@@ -6264,7 +6255,7 @@ export const VirtualMachinesListHostsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VirtualMachinesListHostsResponse>;
 
 /** The list of hosts which need to be restarted. */
-export type RestartHostsParameters = ReadonlyArray<string>;
+export type RestartHostsParameters = Array<string>;
 export const RestartHostsParameters = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RestartHostsParameters>;

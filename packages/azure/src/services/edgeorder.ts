@@ -50,7 +50,7 @@ export interface ShippingAddress {
   /** Name of the company. */
   companyName?: string;
   /** Type of address. */
-  addressType?: AddressType;
+  addressType?: AddressType | (string & {});
 }
 export const ShippingAddress = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -70,7 +70,7 @@ export const ShippingAddress = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ShippingAddress>;
 
 /** List of Email-ids to be notified about job progress. */
-export type ContactDetailsEmailListList = ReadonlyArray<string>;
+export type ContactDetailsEmailListList = Array<string>;
 export const ContactDetailsEmailListList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ContactDetailsEmailListList>;
@@ -433,7 +433,7 @@ export const AddressResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AddressResource>;
 
 /** The AddressResource items on this page */
-export type AddressResourceListValueList = ReadonlyArray<AddressResource>;
+export type AddressResourceListValueList = Array<AddressResource>;
 export const AddressResourceListValueList = /*@__PURE__*/ S.Array(
   AddressResource,
 ) as any as S.Schema<AddressResourceListValueList>;
@@ -645,7 +645,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = ReadonlyArray<Operation>;
+export type OperationsListResponseValueList = Array<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;
@@ -795,7 +795,7 @@ export const ProvisioningDetailsInput = /*@__PURE__*/ S.suspend(() =>
 
 /** List Provisioning Details for Devices in Additional Config. */
 export type AdditionalConfigurationInputProvisioningDetailsList =
-  ReadonlyArray<ProvisioningDetailsInput>;
+  Array<ProvisioningDetailsInput>;
 export const AdditionalConfigurationInputProvisioningDetailsList =
   /*@__PURE__*/ S.Array(
     ProvisioningDetailsInput,
@@ -824,7 +824,7 @@ export const AdditionalConfigurationInput = /*@__PURE__*/ S.suspend(() =>
 
 /** List of additional configurations customer wants in the order item apart from the ones included in the base configuration. */
 export type ProductDetailsInputOptInAdditionalConfigurationsList =
-  ReadonlyArray<AdditionalConfigurationInput>;
+  Array<AdditionalConfigurationInput>;
 export const ProductDetailsInputOptInAdditionalConfigurationsList =
   /*@__PURE__*/ S.Array(
     AdditionalConfigurationInput,
@@ -880,7 +880,7 @@ export const NotificationStageName = /*@__PURE__*/ S.String;
 /** Notification preference for a job stage. */
 export interface NotificationPreference {
   /** Name of the stage. */
-  stageName: NotificationStageName;
+  stageName: NotificationStageName | (string & {});
   /** Notification is required or not. */
   sendNotification: boolean;
 }
@@ -895,7 +895,7 @@ export const NotificationPreference = /*@__PURE__*/ S.suspend(() =>
 
 /** Notification preferences. */
 export type PreferencesNotificationPreferencesList =
-  ReadonlyArray<NotificationPreference>;
+  Array<NotificationPreference>;
 export const PreferencesNotificationPreferencesList = /*@__PURE__*/ S.Array(
   NotificationPreference,
 ) as any as S.Schema<PreferencesNotificationPreferencesList>;
@@ -907,7 +907,7 @@ export const TransportShipmentTypes = /*@__PURE__*/ S.String;
 /** Preferences related to the shipment logistics of the sku. */
 export interface TransportPreferences {
   /** Indicates Shipment Logistics type that the customer preferred. */
-  preferredShipmentType: TransportShipmentTypes;
+  preferredShipmentType: TransportShipmentTypes | (string & {});
 }
 export const TransportPreferences = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -924,7 +924,7 @@ export const DoubleEncryptionStatus = /*@__PURE__*/ S.String;
 /** Preferences related to the double encryption. */
 export interface EncryptionPreferences {
   /** Double encryption status as entered by the customer. It is compulsory to give this parameter if the 'Deny' or 'Disabled' policy is configured. */
-  doubleEncryptionStatus?: DoubleEncryptionStatus;
+  doubleEncryptionStatus?: DoubleEncryptionStatus | (string & {});
 }
 export const EncryptionPreferences = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -954,7 +954,7 @@ export const TermCommitmentType = /*@__PURE__*/ S.String;
 /** Term Commitment preference received from customer. */
 export interface TermCommitmentPreferences {
   /** Term Commitment Type */
-  preferredTermCommitmentType: TermCommitmentType;
+  preferredTermCommitmentType: TermCommitmentType | (string & {});
   /** Customer preferred Term Duration. */
   preferredTermCommitmentDuration?: string;
 }
@@ -991,8 +991,7 @@ export const Preferences = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Preferences" }) as any as S.Schema<Preferences>;
 
 /** Additional notification email list. */
-export type OrderItemDetailsInputNotificationEmailListList =
-  ReadonlyArray<string>;
+export type OrderItemDetailsInputNotificationEmailListList = Array<string>;
 export const OrderItemDetailsInputNotificationEmailListList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1262,7 +1261,7 @@ export const DeviceDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** List Provisioning Details for Devices in Additional Config. */
 export type AdditionalConfigurationProvisioningDetailsList =
-  ReadonlyArray<ProvisioningDetails>;
+  Array<ProvisioningDetails>;
 export const AdditionalConfigurationProvisioningDetailsList =
   /*@__PURE__*/ S.Array(
     ProvisioningDetails,
@@ -1291,15 +1290,14 @@ export const AdditionalConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** List of additional configurations customer wants in the order item apart from the ones included in the base configuration. */
 export type ProductDetailsOptInAdditionalConfigurationsList =
-  ReadonlyArray<AdditionalConfiguration>;
+  Array<AdditionalConfiguration>;
 export const ProductDetailsOptInAdditionalConfigurationsList =
   /*@__PURE__*/ S.Array(
     AdditionalConfiguration,
   ) as any as S.Schema<ProductDetailsOptInAdditionalConfigurationsList>;
 
 /** List of device details. */
-export type ConfigurationDeviceDetailsDeviceDetailsList =
-  ReadonlyArray<DeviceDetails>;
+export type ConfigurationDeviceDetailsDeviceDetailsList = Array<DeviceDetails>;
 export const ConfigurationDeviceDetailsDeviceDetailsList =
   /*@__PURE__*/ S.Array(
     DeviceDetails,
@@ -1354,7 +1352,7 @@ export const ConfigurationDeviceDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** Details of all child configurations that are part of the order item. */
 export type ProductDetailsChildConfigurationDeviceDetailsList =
-  ReadonlyArray<ConfigurationDeviceDetails>;
+  Array<ConfigurationDeviceDetails>;
 export const ProductDetailsChildConfigurationDeviceDetailsList =
   /*@__PURE__*/ S.Array(
     ConfigurationDeviceDetails,
@@ -1447,8 +1445,7 @@ export const StageDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StageDetails" }) as any as S.Schema<StageDetails>;
 
 /** Order item status history. */
-export type OrderItemDetailsOrderItemStageHistoryList =
-  ReadonlyArray<StageDetails>;
+export type OrderItemDetailsOrderItemStageHistoryList = Array<StageDetails>;
 export const OrderItemDetailsOrderItemStageHistoryList = /*@__PURE__*/ S.Array(
   StageDetails,
 ) as any as S.Schema<OrderItemDetailsOrderItemStageHistoryList>;
@@ -1501,7 +1498,7 @@ export const ReverseShippingDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReverseShippingDetails>;
 
 /** Additional notification email list. */
-export type OrderItemDetailsNotificationEmailListList = ReadonlyArray<string>;
+export type OrderItemDetailsNotificationEmailListList = Array<string>;
 export const OrderItemDetailsNotificationEmailListList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<OrderItemDetailsNotificationEmailListList>;
@@ -1539,14 +1536,14 @@ export const ResourceProviderDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** List of parent RP details supported for configuration. */
 export type OrderItemDetailsManagementRpDetailsListList =
-  ReadonlyArray<ResourceProviderDetails>;
+  Array<ResourceProviderDetails>;
 export const OrderItemDetailsManagementRpDetailsListList =
   /*@__PURE__*/ S.Array(
     ResourceProviderDetails,
   ) as any as S.Schema<OrderItemDetailsManagementRpDetailsListList>;
 
 /** The error details. */
-export type ErrorDetailDetailsList = ReadonlyArray<ErrorDetail>;
+export type ErrorDetailDetailsList = Array<ErrorDetail>;
 export const ErrorDetailDetailsList = /*@__PURE__*/ S.Array(
   S.suspend(() => ErrorDetail),
 ) as any as S.Schema<ErrorDetailDetailsList>;
@@ -1568,7 +1565,7 @@ export const ErrorAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ErrorAdditionalInfo>;
 
 /** The error additional info. */
-export type ErrorDetailAdditionalInfoList = ReadonlyArray<ErrorAdditionalInfo>;
+export type ErrorDetailAdditionalInfoList = Array<ErrorAdditionalInfo>;
 export const ErrorDetailAdditionalInfoList = /*@__PURE__*/ S.Array(
   ErrorAdditionalInfo,
 ) as any as S.Schema<ErrorDetailAdditionalInfoList>;
@@ -1597,14 +1594,14 @@ export const ErrorDetail = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ErrorDetail" }) as any as S.Schema<ErrorDetail>;
 
 /** The error details. */
-export type OrderItemDetailsErrorDetailsList = ReadonlyArray<ErrorDetail>;
+export type OrderItemDetailsErrorDetailsList = Array<ErrorDetail>;
 export const OrderItemDetailsErrorDetailsList = /*@__PURE__*/ S.Array(
   ErrorDetail,
 ) as any as S.Schema<OrderItemDetailsErrorDetailsList>;
 
 /** The error additional info. */
 export type OrderItemDetailsErrorAdditionalInfoList =
-  ReadonlyArray<ErrorAdditionalInfo>;
+  Array<ErrorAdditionalInfo>;
 export const OrderItemDetailsErrorAdditionalInfoList = /*@__PURE__*/ S.Array(
   ErrorAdditionalInfo,
 ) as any as S.Schema<OrderItemDetailsErrorAdditionalInfoList>;
@@ -2002,7 +1999,7 @@ export const OrderItemResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OrderItemResource>;
 
 /** The OrderItemResource items on this page */
-export type OrderItemResourceListValueList = ReadonlyArray<OrderItemResource>;
+export type OrderItemResourceListValueList = Array<OrderItemResource>;
 export const OrderItemResourceListValueList = /*@__PURE__*/ S.Array(
   OrderItemResource,
 ) as any as S.Schema<OrderItemResourceListValueList>;
@@ -2100,7 +2097,7 @@ export const OrderItemsReturnResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Additional notification email list. */
 export type OrderItemUpdatePropertiesInputNotificationEmailListList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const OrderItemUpdatePropertiesInputNotificationEmailListList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2274,13 +2271,13 @@ export const OrdersGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OrdersGetRequest>;
 
 /** List of order item ARM Ids which are part of an order. */
-export type OrderPropertiesOrderItemIdsList = ReadonlyArray<string>;
+export type OrderPropertiesOrderItemIdsList = Array<string>;
 export const OrderPropertiesOrderItemIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<OrderPropertiesOrderItemIdsList>;
 
 /** Order status history. */
-export type OrderPropertiesOrderStageHistoryList = ReadonlyArray<StageDetails>;
+export type OrderPropertiesOrderStageHistoryList = Array<StageDetails>;
 export const OrderPropertiesOrderStageHistoryList = /*@__PURE__*/ S.Array(
   StageDetails,
 ) as any as S.Schema<OrderPropertiesOrderStageHistoryList>;
@@ -2383,7 +2380,7 @@ export const OrderResource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "OrderResource" }) as any as S.Schema<OrderResource>;
 
 /** The OrderResource items on this page */
-export type OrderResourceListValueList = ReadonlyArray<OrderResource>;
+export type OrderResourceListValueList = Array<OrderResource>;
 export const OrderResourceListValueList = /*@__PURE__*/ S.Array(
   OrderResource,
 ) as any as S.Schema<OrderResourceListValueList>;
@@ -2434,7 +2431,7 @@ export type SupportedFilterTypes = "ShipToCountries" | "DoubleEncryptionStatus";
 export const SupportedFilterTypes = /*@__PURE__*/ S.String;
 
 /** Values to be filtered. */
-export type FilterablePropertySupportedValuesList = ReadonlyArray<string>;
+export type FilterablePropertySupportedValuesList = Array<string>;
 export const FilterablePropertySupportedValuesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<FilterablePropertySupportedValuesList>;
@@ -2442,7 +2439,7 @@ export const FilterablePropertySupportedValuesList = /*@__PURE__*/ S.Array(
 /** Different types of filters supported and its values. */
 export interface FilterableProperty {
   /** Type of product filter. */
-  type: SupportedFilterTypes;
+  type: SupportedFilterTypes | (string & {});
   /** Values to be filtered. */
   supportedValues: FilterablePropertySupportedValuesList;
 }
@@ -2457,14 +2454,14 @@ export const FilterableProperty = /*@__PURE__*/ S.suspend(() =>
 
 /** Filters specific to product. */
 export type ConfigurationFilterFilterablePropertyList =
-  ReadonlyArray<FilterableProperty>;
+  Array<FilterableProperty>;
 export const ConfigurationFilterFilterablePropertyList = /*@__PURE__*/ S.Array(
   FilterableProperty,
 ) as any as S.Schema<ConfigurationFilterFilterablePropertyList>;
 
 /** The list of child configuration hierarchy customer wants to filter for the given configuration. */
 export type ChildConfigurationFilterHierarchyInformationsList =
-  ReadonlyArray<HierarchyInformation>;
+  Array<HierarchyInformation>;
 export const ChildConfigurationFilterHierarchyInformationsList =
   /*@__PURE__*/ S.Array(
     HierarchyInformation,
@@ -2476,7 +2473,7 @@ export type ChildConfigurationType =
 export const ChildConfigurationType = /*@__PURE__*/ S.String;
 
 /** Filter to fetch all child configurations belonging to the given list of configuration types. */
-export type ChildConfigurationFilterChildConfigurationTypesList = ReadonlyArray<
+export type ChildConfigurationFilterChildConfigurationTypesList = Array<
   ChildConfigurationType | (string & {})
 >;
 export const ChildConfigurationFilterChildConfigurationTypesList =
@@ -2542,7 +2539,7 @@ export const CustomerSubscriptionRegisteredFeatures = /*@__PURE__*/ S.suspend(
 
 /** List of registered feature flags for subscription. */
 export type CustomerSubscriptionDetailsRegisteredFeaturesList =
-  ReadonlyArray<CustomerSubscriptionRegisteredFeatures>;
+  Array<CustomerSubscriptionRegisteredFeatures>;
 export const CustomerSubscriptionDetailsRegisteredFeaturesList =
   /*@__PURE__*/ S.Array(
     CustomerSubscriptionRegisteredFeatures,
@@ -2603,13 +2600,13 @@ export type DescriptionType = "Base";
 export const DescriptionType = /*@__PURE__*/ S.String;
 
 /** Keywords for the product system. */
-export type DescriptionKeywordsList = ReadonlyArray<string>;
+export type DescriptionKeywordsList = Array<string>;
 export const DescriptionKeywordsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DescriptionKeywordsList>;
 
 /** Attributes for the product system. */
-export type DescriptionAttributesList = ReadonlyArray<string>;
+export type DescriptionAttributesList = Array<string>;
 export const DescriptionAttributesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DescriptionAttributesList>;
@@ -2640,7 +2637,7 @@ export const Link = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Link" }) as any as S.Schema<Link>;
 
 /** Links for the product system. */
-export type DescriptionLinksList = ReadonlyArray<Link>;
+export type DescriptionLinksList = Array<Link>;
 export const DescriptionLinksList = /*@__PURE__*/ S.Array(
   Link,
 ) as any as S.Schema<DescriptionLinksList>;
@@ -2693,7 +2690,7 @@ export const ImageInformation = /*@__PURE__*/ S.suspend(() =>
 
 /** Image information for the product system. */
 export type ConfigurationPropertiesImageInformationList =
-  ReadonlyArray<ImageInformation>;
+  Array<ImageInformation>;
 export const ConfigurationPropertiesImageInformationList =
   /*@__PURE__*/ S.Array(
     ImageInformation,
@@ -2770,8 +2767,7 @@ export const BillingMeterDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BillingMeterDetails>;
 
 /** Details on the various billing aspects for the product system. */
-export type CostInformationBillingMeterDetailsList =
-  ReadonlyArray<BillingMeterDetails>;
+export type CostInformationBillingMeterDetailsList = Array<BillingMeterDetails>;
 export const CostInformationBillingMeterDetailsList = /*@__PURE__*/ S.Array(
   BillingMeterDetails,
 ) as any as S.Schema<CostInformationBillingMeterDetailsList>;
@@ -2840,7 +2836,7 @@ export const FulfillmentType = /*@__PURE__*/ S.String;
 
 /** List of filters supported for a product. */
 export type ConfigurationPropertiesFilterablePropertiesList =
-  ReadonlyArray<FilterableProperty>;
+  Array<FilterableProperty>;
 export const ConfigurationPropertiesFilterablePropertiesList =
   /*@__PURE__*/ S.Array(
     FilterableProperty,
@@ -2861,8 +2857,7 @@ export const Specification = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Specification" }) as any as S.Schema<Specification>;
 
 /** Specifications of the configuration. */
-export type ConfigurationPropertiesSpecificationsList =
-  ReadonlyArray<Specification>;
+export type ConfigurationPropertiesSpecificationsList = Array<Specification>;
 export const ConfigurationPropertiesSpecificationsList = /*@__PURE__*/ S.Array(
   Specification,
 ) as any as S.Schema<ConfigurationPropertiesSpecificationsList>;
@@ -2906,14 +2901,14 @@ export const Dimensions = /*@__PURE__*/ S.suspend(() =>
 
 /** Different types of child configurations which exist for this configuration, these can be used to populate the child configuration filter. */
 export type ConfigurationPropertiesChildConfigurationTypesList =
-  ReadonlyArray<ChildConfigurationType>;
+  Array<ChildConfigurationType>;
 export const ConfigurationPropertiesChildConfigurationTypesList =
   /*@__PURE__*/ S.Array(
     ChildConfigurationType,
   ) as any as S.Schema<ConfigurationPropertiesChildConfigurationTypesList>;
 
 /** Links for the category. */
-export type CategoryInformationLinksList = ReadonlyArray<Link>;
+export type CategoryInformationLinksList = Array<Link>;
 export const CategoryInformationLinksList = /*@__PURE__*/ S.Array(
   Link,
 ) as any as S.Schema<CategoryInformationLinksList>;
@@ -2942,7 +2937,7 @@ export const CategoryInformation = /*@__PURE__*/ S.suspend(() =>
 
 /** Specifications of the configuration. */
 export type ChildConfigurationPropertiesSpecificationsList =
-  ReadonlyArray<Specification>;
+  Array<Specification>;
 export const ChildConfigurationPropertiesSpecificationsList =
   /*@__PURE__*/ S.Array(
     Specification,
@@ -2950,7 +2945,7 @@ export const ChildConfigurationPropertiesSpecificationsList =
 
 /** Different types of child configurations which exist for this configuration, these can be used to populate the child configuration filter. */
 export type ChildConfigurationPropertiesChildConfigurationTypesList =
-  ReadonlyArray<ChildConfigurationType>;
+  Array<ChildConfigurationType>;
 export const ChildConfigurationPropertiesChildConfigurationTypesList =
   /*@__PURE__*/ S.Array(
     ChildConfigurationType,
@@ -2958,7 +2953,7 @@ export const ChildConfigurationPropertiesChildConfigurationTypesList =
 
 /** Child configurations present for the configuration after applying child configuration filter, grouped by the category name of the child configuration. */
 export type ChildConfigurationPropertiesGroupedChildConfigurationsList =
-  ReadonlyArray<GroupedChildConfigurations>;
+  Array<GroupedChildConfigurations>;
 export const ChildConfigurationPropertiesGroupedChildConfigurationsList =
   /*@__PURE__*/ S.Array(
     S.suspend(() => GroupedChildConfigurations),
@@ -2966,7 +2961,7 @@ export const ChildConfigurationPropertiesGroupedChildConfigurationsList =
 
 /** The Term Commitment Durations that are supported for a configuration. */
 export type ChildConfigurationPropertiesSupportedTermCommitmentDurationsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ChildConfigurationPropertiesSupportedTermCommitmentDurationsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2974,7 +2969,7 @@ export const ChildConfigurationPropertiesSupportedTermCommitmentDurationsList =
 
 /** List of filters supported for a product. */
 export type ChildConfigurationPropertiesFilterablePropertiesList =
-  ReadonlyArray<FilterableProperty>;
+  Array<FilterableProperty>;
 export const ChildConfigurationPropertiesFilterablePropertiesList =
   /*@__PURE__*/ S.Array(
     FilterableProperty,
@@ -2982,7 +2977,7 @@ export const ChildConfigurationPropertiesFilterablePropertiesList =
 
 /** Image information for the product system. */
 export type ChildConfigurationPropertiesImageInformationList =
-  ReadonlyArray<ImageInformation>;
+  Array<ImageInformation>;
 export const ChildConfigurationPropertiesImageInformationList =
   /*@__PURE__*/ S.Array(
     ImageInformation,
@@ -3077,7 +3072,7 @@ export const ChildConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** List of child configurations. */
 export type GroupedChildConfigurationsChildConfigurationsList =
-  ReadonlyArray<ChildConfiguration>;
+  Array<ChildConfiguration>;
 export const GroupedChildConfigurationsChildConfigurationsList =
   /*@__PURE__*/ S.Array(
     ChildConfiguration,
@@ -3103,7 +3098,7 @@ export const GroupedChildConfigurations = /*@__PURE__*/ S.suspend(() =>
 
 /** Child configurations present for the configuration after applying child configuration filter, grouped by the category name of the child configuration. */
 export type ConfigurationPropertiesGroupedChildConfigurationsList =
-  ReadonlyArray<GroupedChildConfigurations>;
+  Array<GroupedChildConfigurations>;
 export const ConfigurationPropertiesGroupedChildConfigurationsList =
   /*@__PURE__*/ S.Array(
     GroupedChildConfigurations,
@@ -3111,7 +3106,7 @@ export const ConfigurationPropertiesGroupedChildConfigurationsList =
 
 /** The Term Commitment Durations that are supported for a configuration. */
 export type ConfigurationPropertiesSupportedTermCommitmentDurationsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const ConfigurationPropertiesSupportedTermCommitmentDurationsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3189,7 +3184,7 @@ export const Configuration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Configuration" }) as any as S.Schema<Configuration>;
 
 /** The Configuration items on this page */
-export type ConfigurationsValueList = ReadonlyArray<Configuration>;
+export type ConfigurationsValueList = Array<Configuration>;
 export const ConfigurationsValueList = /*@__PURE__*/ S.Array(
   Configuration,
 ) as any as S.Schema<ConfigurationsValueList>;
@@ -3209,7 +3204,7 @@ export const Configurations = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Configurations" }) as any as S.Schema<Configurations>;
 
 export type ProductsAndConfigurationsListProductFamiliesRequestFilterablePropertiesValueList =
-  ReadonlyArray<FilterableProperty>;
+  Array<FilterableProperty>;
 export const ProductsAndConfigurationsListProductFamiliesRequestFilterablePropertiesValueList =
   /*@__PURE__*/ S.Array(
     FilterableProperty,
@@ -3263,7 +3258,7 @@ export const ProductsAndConfigurationsListProductFamiliesRequest =
 
 /** Image information for the product system. */
 export type ProductFamilyPropertiesImageInformationList =
-  ReadonlyArray<ImageInformation>;
+  Array<ImageInformation>;
 export const ProductFamilyPropertiesImageInformationList =
   /*@__PURE__*/ S.Array(
     ImageInformation,
@@ -3271,43 +3266,41 @@ export const ProductFamilyPropertiesImageInformationList =
 
 /** List of filters supported for a product. */
 export type ProductFamilyPropertiesFilterablePropertiesList =
-  ReadonlyArray<FilterableProperty>;
+  Array<FilterableProperty>;
 export const ProductFamilyPropertiesFilterablePropertiesList =
   /*@__PURE__*/ S.Array(
     FilterableProperty,
   ) as any as S.Schema<ProductFamilyPropertiesFilterablePropertiesList>;
 
 /** Image information for the product system. */
-export type ProductLinePropertiesImageInformationList =
-  ReadonlyArray<ImageInformation>;
+export type ProductLinePropertiesImageInformationList = Array<ImageInformation>;
 export const ProductLinePropertiesImageInformationList = /*@__PURE__*/ S.Array(
   ImageInformation,
 ) as any as S.Schema<ProductLinePropertiesImageInformationList>;
 
 /** List of filters supported for a product. */
 export type ProductLinePropertiesFilterablePropertiesList =
-  ReadonlyArray<FilterableProperty>;
+  Array<FilterableProperty>;
 export const ProductLinePropertiesFilterablePropertiesList =
   /*@__PURE__*/ S.Array(
     FilterableProperty,
   ) as any as S.Schema<ProductLinePropertiesFilterablePropertiesList>;
 
 /** Image information for the product system. */
-export type ProductPropertiesImageInformationList =
-  ReadonlyArray<ImageInformation>;
+export type ProductPropertiesImageInformationList = Array<ImageInformation>;
 export const ProductPropertiesImageInformationList = /*@__PURE__*/ S.Array(
   ImageInformation,
 ) as any as S.Schema<ProductPropertiesImageInformationList>;
 
 /** List of filters supported for a product. */
 export type ProductPropertiesFilterablePropertiesList =
-  ReadonlyArray<FilterableProperty>;
+  Array<FilterableProperty>;
 export const ProductPropertiesFilterablePropertiesList = /*@__PURE__*/ S.Array(
   FilterableProperty,
 ) as any as S.Schema<ProductPropertiesFilterablePropertiesList>;
 
 /** List of configurations for the product. */
-export type ProductPropertiesConfigurationsList = ReadonlyArray<Configuration>;
+export type ProductPropertiesConfigurationsList = Array<Configuration>;
 export const ProductPropertiesConfigurationsList = /*@__PURE__*/ S.Array(
   Configuration,
 ) as any as S.Schema<ProductPropertiesConfigurationsList>;
@@ -3361,7 +3354,7 @@ export const Product = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Product" }) as any as S.Schema<Product>;
 
 /** List of products in the product line. */
-export type ProductLinePropertiesProductsList = ReadonlyArray<Product>;
+export type ProductLinePropertiesProductsList = Array<Product>;
 export const ProductLinePropertiesProductsList = /*@__PURE__*/ S.Array(
   Product,
 ) as any as S.Schema<ProductLinePropertiesProductsList>;
@@ -3417,15 +3410,14 @@ export const ProductLine = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ProductLine" }) as any as S.Schema<ProductLine>;
 
 /** List of product lines supported in the product family. */
-export type ProductFamilyPropertiesProductLinesList =
-  ReadonlyArray<ProductLine>;
+export type ProductFamilyPropertiesProductLinesList = Array<ProductLine>;
 export const ProductFamilyPropertiesProductLinesList = /*@__PURE__*/ S.Array(
   ProductLine,
 ) as any as S.Schema<ProductFamilyPropertiesProductLinesList>;
 
 /** Contains details related to resource provider. */
 export type ProductFamilyPropertiesResourceProviderDetailsList =
-  ReadonlyArray<ResourceProviderDetails>;
+  Array<ResourceProviderDetails>;
 export const ProductFamilyPropertiesResourceProviderDetailsList =
   /*@__PURE__*/ S.Array(
     ResourceProviderDetails,
@@ -3487,7 +3479,7 @@ export const ProductFamily = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ProductFamily" }) as any as S.Schema<ProductFamily>;
 
 /** The ProductFamily items on this page */
-export type ProductFamiliesValueList = ReadonlyArray<ProductFamily>;
+export type ProductFamiliesValueList = Array<ProductFamily>;
 export const ProductFamiliesValueList = /*@__PURE__*/ S.Array(
   ProductFamily,
 ) as any as S.Schema<ProductFamiliesValueList>;
@@ -3546,7 +3538,7 @@ export const ProductFamiliesMetadataDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** The ProductFamiliesMetadataDetails items on this page */
 export type ProductFamiliesMetadataValueList =
-  ReadonlyArray<ProductFamiliesMetadataDetails>;
+  Array<ProductFamiliesMetadataDetails>;
 export const ProductFamiliesMetadataValueList = /*@__PURE__*/ S.Array(
   ProductFamiliesMetadataDetails,
 ) as any as S.Schema<ProductFamiliesMetadataValueList>;

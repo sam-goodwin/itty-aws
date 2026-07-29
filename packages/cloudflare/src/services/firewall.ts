@@ -212,7 +212,7 @@ export type RulesBulkDeleteResultItemProductsItem =
 export const RulesBulkDeleteResultItemProductsItem = /*@__PURE__*/ S.String;
 
 export type RulesBulkDeleteResultItemProductsList =
-  ReadonlyArray<RulesBulkDeleteResultItemProductsItem>;
+  Array<RulesBulkDeleteResultItemProductsItem>;
 export const RulesBulkDeleteResultItemProductsList = /*@__PURE__*/ S.Array(
   RulesBulkDeleteResultItemProductsItem,
 ) as any as S.Schema<RulesBulkDeleteResultItemProductsList>;
@@ -248,8 +248,7 @@ export const RulesBulkDeleteResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "RulesBulkDeleteResultItem",
 }) as any as S.Schema<RulesBulkDeleteResultItem>;
 
-export type RulesBulkDeleteResultList =
-  ReadonlyArray<RulesBulkDeleteResultItem>;
+export type RulesBulkDeleteResultList = Array<RulesBulkDeleteResultItem>;
 export const RulesBulkDeleteResultList = /*@__PURE__*/ S.Array(
   RulesBulkDeleteResultItem,
 ) as any as S.Schema<RulesBulkDeleteResultList>;
@@ -378,7 +377,7 @@ export type RulesBulkEditResultItemProductsItem =
 export const RulesBulkEditResultItemProductsItem = /*@__PURE__*/ S.String;
 
 export type RulesBulkEditResultItemProductsList =
-  ReadonlyArray<RulesBulkEditResultItemProductsItem>;
+  Array<RulesBulkEditResultItemProductsItem>;
 export const RulesBulkEditResultItemProductsList = /*@__PURE__*/ S.Array(
   RulesBulkEditResultItemProductsItem,
 ) as any as S.Schema<RulesBulkEditResultItemProductsList>;
@@ -414,7 +413,7 @@ export const RulesBulkEditResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "RulesBulkEditResultItem",
 }) as any as S.Schema<RulesBulkEditResultItem>;
 
-export type RulesBulkEditResultList = ReadonlyArray<RulesBulkEditResultItem>;
+export type RulesBulkEditResultList = Array<RulesBulkEditResultItem>;
 export const RulesBulkEditResultList = /*@__PURE__*/ S.Array(
   RulesBulkEditResultItem,
 ) as any as S.Schema<RulesBulkEditResultList>;
@@ -543,7 +542,7 @@ export type RulesBulkUpdateResultItemProductsItem =
 export const RulesBulkUpdateResultItemProductsItem = /*@__PURE__*/ S.String;
 
 export type RulesBulkUpdateResultItemProductsList =
-  ReadonlyArray<RulesBulkUpdateResultItemProductsItem>;
+  Array<RulesBulkUpdateResultItemProductsItem>;
 export const RulesBulkUpdateResultItemProductsList = /*@__PURE__*/ S.Array(
   RulesBulkUpdateResultItemProductsItem,
 ) as any as S.Schema<RulesBulkUpdateResultItemProductsList>;
@@ -579,8 +578,7 @@ export const RulesBulkUpdateResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "RulesBulkUpdateResultItem",
 }) as any as S.Schema<RulesBulkUpdateResultItem>;
 
-export type RulesBulkUpdateResultList =
-  ReadonlyArray<RulesBulkUpdateResultItem>;
+export type RulesBulkUpdateResultList = Array<RulesBulkUpdateResultItem>;
 export const RulesBulkUpdateResultList = /*@__PURE__*/ S.Array(
   RulesBulkUpdateResultItem,
 ) as any as S.Schema<RulesBulkUpdateResultList>;
@@ -806,7 +804,7 @@ export type AccessRulesCreateResponseAllowedModesItem =
 export const AccessRulesCreateResponseAllowedModesItem = /*@__PURE__*/ S.String;
 
 export type AccessRulesCreateResponseAllowedModesList =
-  ReadonlyArray<AccessRulesCreateResponseAllowedModesItem>;
+  Array<AccessRulesCreateResponseAllowedModesItem>;
 export const AccessRulesCreateResponseAllowedModesList = /*@__PURE__*/ S.Array(
   AccessRulesCreateResponseAllowedModesItem,
 ) as any as S.Schema<AccessRulesCreateResponseAllowedModesList>;
@@ -1058,7 +1056,9 @@ export const LockdownsCreateRequestConfigurationsLockdownIPConfigurationTarget =
 
 export interface LockdownsCreateRequestConfigurationsLockdownIPConfiguration {
   /** The configuration target. You must set the target to `ip` when specifying an IP address in the Zone Lockdown rule. */
-  target?: LockdownsCreateRequestConfigurationsLockdownIPConfigurationTarget;
+  target?:
+    | LockdownsCreateRequestConfigurationsLockdownIPConfigurationTarget
+    | (string & {});
   /** The IP address to match. This address will be compared to the IP address of incoming requests. */
   value?: string;
 }
@@ -1081,7 +1081,9 @@ export const LockdownsCreateRequestConfigurationsLockdownCIDRConfigurationTarget
 
 export interface LockdownsCreateRequestConfigurationsLockdownCIDRConfiguration {
   /** The configuration target. You must set the target to `ip_range` when specifying an IP address range in the Zone Lockdown rule. */
-  target?: LockdownsCreateRequestConfigurationsLockdownCIDRConfigurationTarget;
+  target?:
+    | LockdownsCreateRequestConfigurationsLockdownCIDRConfigurationTarget
+    | (string & {});
   /** The IP address range to match. You can only use prefix lengths `/16` and `/24`. */
   value?: string;
 }
@@ -1101,7 +1103,9 @@ export interface LockdownsCreateRequestConfigurations {
   /** The configuration target. You must set the target to `ip` when specifying an IP address in the Zone Lockdown rule. */
   target?:
     | LockdownsCreateRequestConfigurationsLockdownIPConfigurationTarget
-    | LockdownsCreateRequestConfigurationsLockdownCIDRConfigurationTarget;
+    | (string & {})
+    | LockdownsCreateRequestConfigurationsLockdownCIDRConfigurationTarget
+    | (string & {});
   /** The IP address to match. This address will be compared to the IP address of incoming requests. */
   value?: string;
 }
@@ -1121,12 +1125,12 @@ export const LockdownsCreateRequestConfigurations = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<LockdownsCreateRequestConfigurations>;
 
 export type LockdownConfigurationsList =
-  ReadonlyArray<LockdownsCreateRequestConfigurations>;
+  Array<LockdownsCreateRequestConfigurations>;
 export const LockdownConfigurationsList = /*@__PURE__*/ S.Array(
   LockdownsCreateRequestConfigurations,
 ) as any as S.Schema<LockdownConfigurationsList>;
 
-export type LockdownsCreateRequestUrlsList = ReadonlyArray<string>;
+export type LockdownsCreateRequestUrlsList = Array<string>;
 export const LockdownsCreateRequestUrlsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LockdownsCreateRequestUrlsList>;
@@ -1166,7 +1170,7 @@ export const CreateLockdownRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateLockdownRequest",
 }) as any as S.Schema<CreateLockdownRequest>;
 
-export type LockdownsCreateResponseUrlsList = ReadonlyArray<string>;
+export type LockdownsCreateResponseUrlsList = Array<string>;
 export const LockdownsCreateResponseUrlsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LockdownsCreateResponseUrlsList>;
@@ -1384,7 +1388,7 @@ export type RulesCreateResultItemProductsItem =
 export const RulesCreateResultItemProductsItem = /*@__PURE__*/ S.String;
 
 export type RulesCreateResultItemProductsList =
-  ReadonlyArray<RulesCreateResultItemProductsItem>;
+  Array<RulesCreateResultItemProductsItem>;
 export const RulesCreateResultItemProductsList = /*@__PURE__*/ S.Array(
   RulesCreateResultItemProductsItem,
 ) as any as S.Schema<RulesCreateResultItemProductsList>;
@@ -1420,7 +1424,7 @@ export const RulesCreateResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "RulesCreateResultItem",
 }) as any as S.Schema<RulesCreateResultItem>;
 
-export type RulesCreateResultList = ReadonlyArray<RulesCreateResultItem>;
+export type RulesCreateResultList = Array<RulesCreateResultItem>;
 export const RulesCreateResultList = /*@__PURE__*/ S.Array(
   RulesCreateResultItem,
 ) as any as S.Schema<RulesCreateResultList>;
@@ -1544,7 +1548,7 @@ export const CreateUaRuleResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateUaRuleResponse",
 }) as any as S.Schema<CreateUaRuleResponse>;
 
-export type WafOverridesCreateRequestUrlsList = ReadonlyArray<string>;
+export type WafOverridesCreateRequestUrlsList = Array<string>;
 export const WafOverridesCreateRequestUrlsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<WafOverridesCreateRequestUrlsList>;
@@ -1658,7 +1662,7 @@ export type WafOverridesCreateResponseRules =
   | "default";
 export const WafOverridesCreateResponseRules = /*@__PURE__*/ S.String;
 
-export type WafOverridesCreateResponseUrlsList = ReadonlyArray<string>;
+export type WafOverridesCreateResponseUrlsList = Array<string>;
 export const WafOverridesCreateResponseUrlsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<WafOverridesCreateResponseUrlsList>;
@@ -1906,7 +1910,7 @@ export type RulesDeleteResponseProductsItem =
 export const RulesDeleteResponseProductsItem = /*@__PURE__*/ S.String;
 
 export type RulesDeleteResponseProductsList =
-  ReadonlyArray<RulesDeleteResponseProductsItem>;
+  Array<RulesDeleteResponseProductsItem>;
 export const RulesDeleteResponseProductsList = /*@__PURE__*/ S.Array(
   RulesDeleteResponseProductsItem,
 ) as any as S.Schema<RulesDeleteResponseProductsList>;
@@ -2081,7 +2085,7 @@ export type AccessRulesGetResponseAllowedModesItem =
 export const AccessRulesGetResponseAllowedModesItem = /*@__PURE__*/ S.String;
 
 export type AccessRulesGetResponseAllowedModesList =
-  ReadonlyArray<AccessRulesGetResponseAllowedModesItem>;
+  Array<AccessRulesGetResponseAllowedModesItem>;
 export const AccessRulesGetResponseAllowedModesList = /*@__PURE__*/ S.Array(
   AccessRulesGetResponseAllowedModesItem,
 ) as any as S.Schema<AccessRulesGetResponseAllowedModesList>;
@@ -2339,7 +2343,7 @@ export const GetLockdownRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetLockdownRequest",
 }) as any as S.Schema<GetLockdownRequest>;
 
-export type LockdownsGetResponseUrlsList = ReadonlyArray<string>;
+export type LockdownsGetResponseUrlsList = Array<string>;
 export const LockdownsGetResponseUrlsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LockdownsGetResponseUrlsList>;
@@ -2486,8 +2490,7 @@ export type RulesGetResponseProductsItem =
   | "waf";
 export const RulesGetResponseProductsItem = /*@__PURE__*/ S.String;
 
-export type RulesGetResponseProductsList =
-  ReadonlyArray<RulesGetResponseProductsItem>;
+export type RulesGetResponseProductsList = Array<RulesGetResponseProductsItem>;
 export const RulesGetResponseProductsList = /*@__PURE__*/ S.Array(
   RulesGetResponseProductsItem,
 ) as any as S.Schema<RulesGetResponseProductsList>;
@@ -2702,7 +2705,7 @@ export type WafOverridesGetResponseRules =
   | "default";
 export const WafOverridesGetResponseRules = /*@__PURE__*/ S.String;
 
-export type WafOverridesGetResponseUrlsList = ReadonlyArray<string>;
+export type WafOverridesGetResponseUrlsList = Array<string>;
 export const WafOverridesGetResponseUrlsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<WafOverridesGetResponseUrlsList>;
@@ -2936,7 +2939,7 @@ export type AccessRulesListResultItemAllowedModesItem =
 export const AccessRulesListResultItemAllowedModesItem = /*@__PURE__*/ S.String;
 
 export type AccessRulesListResultItemAllowedModesList =
-  ReadonlyArray<AccessRulesListResultItemAllowedModesItem>;
+  Array<AccessRulesListResultItemAllowedModesItem>;
 export const AccessRulesListResultItemAllowedModesList = /*@__PURE__*/ S.Array(
   AccessRulesListResultItemAllowedModesItem,
 ) as any as S.Schema<AccessRulesListResultItemAllowedModesList>;
@@ -3151,8 +3154,7 @@ export const AccessRulesListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "AccessRulesListResultItem",
 }) as any as S.Schema<AccessRulesListResultItem>;
 
-export type AccessRulesListResultList =
-  ReadonlyArray<AccessRulesListResultItem>;
+export type AccessRulesListResultList = Array<AccessRulesListResultItem>;
 export const AccessRulesListResultList = /*@__PURE__*/ S.Array(
   AccessRulesListResultItem,
 ) as any as S.Schema<AccessRulesListResultList>;
@@ -3270,7 +3272,7 @@ export const ListLockdownsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListLockdownsRequest",
 }) as any as S.Schema<ListLockdownsRequest>;
 
-export type LockdownsListResultItemUrlsList = ReadonlyArray<string>;
+export type LockdownsListResultItemUrlsList = Array<string>;
 export const LockdownsListResultItemUrlsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LockdownsListResultItemUrlsList>;
@@ -3308,7 +3310,7 @@ export const LockdownsListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "LockdownsListResultItem",
 }) as any as S.Schema<LockdownsListResultItem>;
 
-export type LockdownsListResultList = ReadonlyArray<LockdownsListResultItem>;
+export type LockdownsListResultList = Array<LockdownsListResultItem>;
 export const LockdownsListResultList = /*@__PURE__*/ S.Array(
   LockdownsListResultItem,
 ) as any as S.Schema<LockdownsListResultList>;
@@ -3455,7 +3457,7 @@ export type RulesListResultItemProductsItem =
 export const RulesListResultItemProductsItem = /*@__PURE__*/ S.String;
 
 export type RulesListResultItemProductsList =
-  ReadonlyArray<RulesListResultItemProductsItem>;
+  Array<RulesListResultItemProductsItem>;
 export const RulesListResultItemProductsList = /*@__PURE__*/ S.Array(
   RulesListResultItemProductsItem,
 ) as any as S.Schema<RulesListResultItemProductsList>;
@@ -3491,7 +3493,7 @@ export const RulesListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "RulesListResultItem",
 }) as any as S.Schema<RulesListResultItem>;
 
-export type RulesListResultList = ReadonlyArray<RulesListResultItem>;
+export type RulesListResultList = Array<RulesListResultItem>;
 export const RulesListResultList = /*@__PURE__*/ S.Array(
   RulesListResultItem,
 ) as any as S.Schema<RulesListResultList>;
@@ -3592,7 +3594,7 @@ export const UaRulesListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "UaRulesListResultItem",
 }) as any as S.Schema<UaRulesListResultItem>;
 
-export type UaRulesListResultList = ReadonlyArray<UaRulesListResultItem>;
+export type UaRulesListResultList = Array<UaRulesListResultItem>;
 export const UaRulesListResultList = /*@__PURE__*/ S.Array(
   UaRulesListResultItem,
 ) as any as S.Schema<UaRulesListResultList>;
@@ -3724,7 +3726,7 @@ export type WafOverridesListResultItemRules =
   | "default";
 export const WafOverridesListResultItemRules = /*@__PURE__*/ S.String;
 
-export type WafOverridesListResultItemUrlsList = ReadonlyArray<string>;
+export type WafOverridesListResultItemUrlsList = Array<string>;
 export const WafOverridesListResultItemUrlsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<WafOverridesListResultItemUrlsList>;
@@ -3764,8 +3766,7 @@ export const WafOverridesListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "WafOverridesListResultItem",
 }) as any as S.Schema<WafOverridesListResultItem>;
 
-export type WafOverridesListResultList =
-  ReadonlyArray<WafOverridesListResultItem>;
+export type WafOverridesListResultList = Array<WafOverridesListResultItem>;
 export const WafOverridesListResultList = /*@__PURE__*/ S.Array(
   WafOverridesListResultItem,
 ) as any as S.Schema<WafOverridesListResultList>;
@@ -3854,7 +3855,7 @@ export const WafPackagesGroupsListResultItemAllowedModesItem =
   /*@__PURE__*/ S.String;
 
 export type WafPackagesGroupsListResultItemAllowedModesList =
-  ReadonlyArray<WafPackagesGroupsListResultItemAllowedModesItem>;
+  Array<WafPackagesGroupsListResultItemAllowedModesItem>;
 export const WafPackagesGroupsListResultItemAllowedModesList =
   /*@__PURE__*/ S.Array(
     WafPackagesGroupsListResultItemAllowedModesItem,
@@ -3900,7 +3901,7 @@ export const WafPackagesGroupsListResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WafPackagesGroupsListResultItem>;
 
 export type WafPackagesGroupsListResultList =
-  ReadonlyArray<WafPackagesGroupsListResultItem>;
+  Array<WafPackagesGroupsListResultItem>;
 export const WafPackagesGroupsListResultList = /*@__PURE__*/ S.Array(
   WafPackagesGroupsListResultItem,
 ) as any as S.Schema<WafPackagesGroupsListResultList>;
@@ -3991,7 +3992,7 @@ export const WafPackagesRulesListResultItemWAFManagedRulesAnomalyRuleAllowedMode
   /*@__PURE__*/ S.String;
 
 export type WafPackagesRulesListResultItemWAFManagedRulesAnomalyRuleAllowedModesList =
-  ReadonlyArray<WafPackagesRulesListResultItemWAFManagedRulesAnomalyRuleAllowedModesItem>;
+  Array<WafPackagesRulesListResultItemWAFManagedRulesAnomalyRuleAllowedModesItem>;
 export const WafPackagesRulesListResultItemWAFManagedRulesAnomalyRuleAllowedModesList =
   /*@__PURE__*/ S.Array(
     WafPackagesRulesListResultItemWAFManagedRulesAnomalyRuleAllowedModesItem,
@@ -4059,7 +4060,7 @@ export const WafPackagesRulesListResultItemWAFManagedRulesTraditionalDenyRuleAll
   /*@__PURE__*/ S.String;
 
 export type WafPackagesRulesListResultItemWAFManagedRulesTraditionalDenyRuleAllowedModesList =
-  ReadonlyArray<WafPackagesRulesListResultItemWAFManagedRulesTraditionalDenyRuleAllowedModesItem>;
+  Array<WafPackagesRulesListResultItemWAFManagedRulesTraditionalDenyRuleAllowedModesItem>;
 export const WafPackagesRulesListResultItemWAFManagedRulesTraditionalDenyRuleAllowedModesList =
   /*@__PURE__*/ S.Array(
     WafPackagesRulesListResultItemWAFManagedRulesTraditionalDenyRuleAllowedModesItem,
@@ -4122,7 +4123,7 @@ export const WafPackagesRulesListResultItemWAFManagedRulesTraditionalAllowRuleAl
   /*@__PURE__*/ S.String;
 
 export type WafPackagesRulesListResultItemWAFManagedRulesTraditionalAllowRuleAllowedModesList =
-  ReadonlyArray<WafPackagesRulesListResultItemWAFManagedRulesTraditionalAllowRuleAllowedModesItem>;
+  Array<WafPackagesRulesListResultItemWAFManagedRulesTraditionalAllowRuleAllowedModesItem>;
 export const WafPackagesRulesListResultItemWAFManagedRulesTraditionalAllowRuleAllowedModesList =
   /*@__PURE__*/ S.Array(
     WafPackagesRulesListResultItemWAFManagedRulesTraditionalAllowRuleAllowedModesItem,
@@ -4220,7 +4221,7 @@ export const WafPackagesRulesListResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WafPackagesRulesListResultItem>;
 
 export type WafPackagesRulesListResultList =
-  ReadonlyArray<WafPackagesRulesListResultItem>;
+  Array<WafPackagesRulesListResultItem>;
 export const WafPackagesRulesListResultList = /*@__PURE__*/ S.Array(
   WafPackagesRulesListResultItem,
 ) as any as S.Schema<WafPackagesRulesListResultList>;
@@ -4501,7 +4502,7 @@ export type AccessRulesEditResponseAllowedModesItem =
 export const AccessRulesEditResponseAllowedModesItem = /*@__PURE__*/ S.String;
 
 export type AccessRulesEditResponseAllowedModesList =
-  ReadonlyArray<AccessRulesEditResponseAllowedModesItem>;
+  Array<AccessRulesEditResponseAllowedModesItem>;
 export const AccessRulesEditResponseAllowedModesList = /*@__PURE__*/ S.Array(
   AccessRulesEditResponseAllowedModesItem,
 ) as any as S.Schema<AccessRulesEditResponseAllowedModesList>;
@@ -4858,7 +4859,7 @@ export type RulesEditResultItemProductsItem =
 export const RulesEditResultItemProductsItem = /*@__PURE__*/ S.String;
 
 export type RulesEditResultItemProductsList =
-  ReadonlyArray<RulesEditResultItemProductsItem>;
+  Array<RulesEditResultItemProductsItem>;
 export const RulesEditResultItemProductsList = /*@__PURE__*/ S.Array(
   RulesEditResultItemProductsItem,
 ) as any as S.Schema<RulesEditResultItemProductsList>;
@@ -4894,7 +4895,7 @@ export const RulesEditResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "RulesEditResultItem",
 }) as any as S.Schema<RulesEditResultItem>;
 
-export type RulesEditResultList = ReadonlyArray<RulesEditResultItem>;
+export type RulesEditResultList = Array<RulesEditResultItem>;
 export const RulesEditResultList = /*@__PURE__*/ S.Array(
   RulesEditResultItem,
 ) as any as S.Schema<RulesEditResultList>;
@@ -4998,7 +4999,7 @@ export const WafPackagesRulesEditResultWAFManagedRulesAnomalyRuleAllowedModesIte
   /*@__PURE__*/ S.String;
 
 export type WafPackagesRulesEditResultWAFManagedRulesAnomalyRuleAllowedModesList =
-  ReadonlyArray<WafPackagesRulesEditResultWAFManagedRulesAnomalyRuleAllowedModesItem>;
+  Array<WafPackagesRulesEditResultWAFManagedRulesAnomalyRuleAllowedModesItem>;
 export const WafPackagesRulesEditResultWAFManagedRulesAnomalyRuleAllowedModesList =
   /*@__PURE__*/ S.Array(
     WafPackagesRulesEditResultWAFManagedRulesAnomalyRuleAllowedModesItem,
@@ -5066,7 +5067,7 @@ export const WafPackagesRulesEditResultWAFManagedRulesTraditionalDenyRuleAllowed
   /*@__PURE__*/ S.String;
 
 export type WafPackagesRulesEditResultWAFManagedRulesTraditionalDenyRuleAllowedModesList =
-  ReadonlyArray<WafPackagesRulesEditResultWAFManagedRulesTraditionalDenyRuleAllowedModesItem>;
+  Array<WafPackagesRulesEditResultWAFManagedRulesTraditionalDenyRuleAllowedModesItem>;
 export const WafPackagesRulesEditResultWAFManagedRulesTraditionalDenyRuleAllowedModesList =
   /*@__PURE__*/ S.Array(
     WafPackagesRulesEditResultWAFManagedRulesTraditionalDenyRuleAllowedModesItem,
@@ -5132,7 +5133,7 @@ export const WafPackagesRulesEditResultWAFManagedRulesTraditionalAllowRuleAllowe
   /*@__PURE__*/ S.String;
 
 export type WafPackagesRulesEditResultWAFManagedRulesTraditionalAllowRuleAllowedModesList =
-  ReadonlyArray<WafPackagesRulesEditResultWAFManagedRulesTraditionalAllowRuleAllowedModesItem>;
+  Array<WafPackagesRulesEditResultWAFManagedRulesTraditionalAllowRuleAllowedModesItem>;
 export const WafPackagesRulesEditResultWAFManagedRulesTraditionalAllowRuleAllowedModesList =
   /*@__PURE__*/ S.Array(
     WafPackagesRulesEditResultWAFManagedRulesTraditionalAllowRuleAllowedModesItem,
@@ -5236,7 +5237,7 @@ export const PatchWafPackageRuleResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchWafPackageRuleResponse",
 }) as any as S.Schema<PatchWafPackageRuleResponse>;
 
-export type LockdownsUpdateRequestUrlsList = ReadonlyArray<string>;
+export type LockdownsUpdateRequestUrlsList = Array<string>;
 export const LockdownsUpdateRequestUrlsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LockdownsUpdateRequestUrlsList>;
@@ -5279,7 +5280,7 @@ export const UpdateLockdownRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateLockdownRequest",
 }) as any as S.Schema<UpdateLockdownRequest>;
 
-export type LockdownsUpdateResponseUrlsList = ReadonlyArray<string>;
+export type LockdownsUpdateResponseUrlsList = Array<string>;
 export const LockdownsUpdateResponseUrlsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LockdownsUpdateResponseUrlsList>;
@@ -5500,7 +5501,7 @@ export type RulesUpdateResponseProductsItem =
 export const RulesUpdateResponseProductsItem = /*@__PURE__*/ S.String;
 
 export type RulesUpdateResponseProductsList =
-  ReadonlyArray<RulesUpdateResponseProductsItem>;
+  Array<RulesUpdateResponseProductsItem>;
 export const RulesUpdateResponseProductsList = /*@__PURE__*/ S.Array(
   RulesUpdateResponseProductsItem,
 ) as any as S.Schema<RulesUpdateResponseProductsList>;
@@ -5861,7 +5862,7 @@ export type WafOverridesUpdateRequestRules =
   | "default";
 export const WafOverridesUpdateRequestRules = /*@__PURE__*/ S.String;
 
-export type WafOverridesUpdateRequestUrlsList = ReadonlyArray<string>;
+export type WafOverridesUpdateRequestUrlsList = Array<string>;
 export const WafOverridesUpdateRequestUrlsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<WafOverridesUpdateRequestUrlsList>;
@@ -5989,7 +5990,7 @@ export type WafOverridesUpdateResponseRules =
   | "default";
 export const WafOverridesUpdateResponseRules = /*@__PURE__*/ S.String;
 
-export type WafOverridesUpdateResponseUrlsList = ReadonlyArray<string>;
+export type WafOverridesUpdateResponseUrlsList = Array<string>;
 export const WafOverridesUpdateResponseUrlsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<WafOverridesUpdateResponseUrlsList>;

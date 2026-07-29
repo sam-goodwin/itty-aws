@@ -280,9 +280,9 @@ export const TerminalSettingsFontStyle = /*@__PURE__*/ S.String;
 /** Settings for terminal appearance. */
 export interface TerminalSettings {
   /** Size of terminal font. */
-  fontSize?: TerminalSettingsFontSize;
+  fontSize?: TerminalSettingsFontSize | (string & {});
   /** Style of terminal font. */
-  fontStyle?: TerminalSettingsFontStyle;
+  fontStyle?: TerminalSettingsFontStyle | (string & {});
 }
 export const TerminalSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -300,13 +300,13 @@ export const UserPropertiesPreferredShellType = /*@__PURE__*/ S.String;
 /** The cloud shell user settings properties. */
 export interface UserProperties {
   /** The operating system type of the cloud shell. Deprecated, use preferredShellType. */
-  preferredOsType: UserPropertiesPreferredOsType;
+  preferredOsType: UserPropertiesPreferredOsType | (string & {});
   /** The preferred location of the cloud shell. */
   preferredLocation: string;
   storageProfile: StorageProfile;
   terminalSettings: TerminalSettings;
   /** The shell type of the cloud shell. */
-  preferredShellType: UserPropertiesPreferredShellType;
+  preferredShellType: UserPropertiesPreferredShellType | (string & {});
 }
 export const UserProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

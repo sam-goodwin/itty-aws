@@ -143,8 +143,8 @@ export type PaymentOption = "AllUpfront" | "PartialUpfront" | "NoUpfront";
 export const PaymentOption = /*@__PURE__*/ S.String;
 
 export interface PreferredCommitment {
-  term?: Term;
-  paymentOption?: PaymentOption;
+  term?: Term | (string & {});
+  paymentOption?: PaymentOption | (string & {});
 }
 export const PreferredCommitment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

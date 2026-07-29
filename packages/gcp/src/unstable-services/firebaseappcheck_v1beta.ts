@@ -60,7 +60,7 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -105,7 +105,7 @@ export const GoogleFirebaseAppcheckV1betaAppAttestConfig =
   }) as any as S.Schema<GoogleFirebaseAppcheckV1betaAppAttestConfig>;
 
 export type GoogleFirebaseAppcheckV1betaAppAttestConfigList =
-  ReadonlyArray<GoogleFirebaseAppcheckV1betaAppAttestConfig>;
+  Array<GoogleFirebaseAppcheckV1betaAppAttestConfig>;
 export const GoogleFirebaseAppcheckV1betaAppAttestConfigList =
   /*@__PURE__*/ S.Array(
     GoogleFirebaseAppcheckV1betaAppAttestConfig,
@@ -174,7 +174,7 @@ export const GoogleFirebaseAppcheckV1betaDeviceCheckConfig =
   }) as any as S.Schema<GoogleFirebaseAppcheckV1betaDeviceCheckConfig>;
 
 export type GoogleFirebaseAppcheckV1betaDeviceCheckConfigList =
-  ReadonlyArray<GoogleFirebaseAppcheckV1betaDeviceCheckConfig>;
+  Array<GoogleFirebaseAppcheckV1betaDeviceCheckConfig>;
 export const GoogleFirebaseAppcheckV1betaDeviceCheckConfigList =
   /*@__PURE__*/ S.Array(
     GoogleFirebaseAppcheckV1betaDeviceCheckConfig,
@@ -243,7 +243,9 @@ export const GoogleFirebaseAppcheckV1betaPlayIntegrityConfigDeviceIntegrityMinDe
 /** A settings object specifying device integrity requirements for Android devices running your app. These settings correspond to requirements on the [**device integrity** field](https://developer.android.com/google/play/integrity/verdicts#device-integrity-field) obtained from the Play Integrity API. See the [default responses table](https://developer.android.com/google/play/integrity/setup#default) for a quick summary. Warning: There are also [conditional](https://developer.android.com/google/play/integrity/setup#conditional) as well as [optional](https://developer.android.com/google/play/integrity/setup#optional_device_information) responses that you can receive, but requires additional explicit opt-in from you. The App Check API is **not** responsible for any such opt-ins. The default values for these settings work for most apps, and are recommended. */
 export interface GoogleFirebaseAppcheckV1betaPlayIntegrityConfigDeviceIntegrity {
   /** Specifies the minimum device integrity level in order for the device to be considered valid. Any device with a device recognition verdict lower than this level will be rejected. If this is unspecified, the default level is `NO_INTEGRITY`. */
-  minDeviceRecognitionLevel?: GoogleFirebaseAppcheckV1betaPlayIntegrityConfigDeviceIntegrityMinDeviceRecognitionLevelEnum;
+  minDeviceRecognitionLevel?:
+    | GoogleFirebaseAppcheckV1betaPlayIntegrityConfigDeviceIntegrityMinDeviceRecognitionLevelEnum
+    | (string & {});
 }
 export const GoogleFirebaseAppcheckV1betaPlayIntegrityConfigDeviceIntegrity =
   /*@__PURE__*/ S.suspend(() =>
@@ -304,7 +306,7 @@ export const GoogleFirebaseAppcheckV1betaPlayIntegrityConfig =
   }) as any as S.Schema<GoogleFirebaseAppcheckV1betaPlayIntegrityConfig>;
 
 export type GoogleFirebaseAppcheckV1betaPlayIntegrityConfigList =
-  ReadonlyArray<GoogleFirebaseAppcheckV1betaPlayIntegrityConfig>;
+  Array<GoogleFirebaseAppcheckV1betaPlayIntegrityConfig>;
 export const GoogleFirebaseAppcheckV1betaPlayIntegrityConfigList =
   /*@__PURE__*/ S.Array(
     GoogleFirebaseAppcheckV1betaPlayIntegrityConfig,
@@ -374,7 +376,7 @@ export const GoogleFirebaseAppcheckV1betaRecaptchaConfig =
   }) as any as S.Schema<GoogleFirebaseAppcheckV1betaRecaptchaConfig>;
 
 export type GoogleFirebaseAppcheckV1betaRecaptchaConfigList =
-  ReadonlyArray<GoogleFirebaseAppcheckV1betaRecaptchaConfig>;
+  Array<GoogleFirebaseAppcheckV1betaRecaptchaConfig>;
 export const GoogleFirebaseAppcheckV1betaRecaptchaConfigList =
   /*@__PURE__*/ S.Array(
     GoogleFirebaseAppcheckV1betaRecaptchaConfig,
@@ -457,7 +459,7 @@ export const GoogleFirebaseAppcheckV1betaRecaptchaEnterpriseConfig =
   }) as any as S.Schema<GoogleFirebaseAppcheckV1betaRecaptchaEnterpriseConfig>;
 
 export type GoogleFirebaseAppcheckV1betaRecaptchaEnterpriseConfigList =
-  ReadonlyArray<GoogleFirebaseAppcheckV1betaRecaptchaEnterpriseConfig>;
+  Array<GoogleFirebaseAppcheckV1betaRecaptchaEnterpriseConfig>;
 export const GoogleFirebaseAppcheckV1betaRecaptchaEnterpriseConfigList =
   /*@__PURE__*/ S.Array(
     GoogleFirebaseAppcheckV1betaRecaptchaEnterpriseConfig,
@@ -529,7 +531,7 @@ export const GoogleFirebaseAppcheckV1betaRecaptchaV3Config =
   }) as any as S.Schema<GoogleFirebaseAppcheckV1betaRecaptchaV3Config>;
 
 export type GoogleFirebaseAppcheckV1betaRecaptchaV3ConfigList =
-  ReadonlyArray<GoogleFirebaseAppcheckV1betaRecaptchaV3Config>;
+  Array<GoogleFirebaseAppcheckV1betaRecaptchaV3Config>;
 export const GoogleFirebaseAppcheckV1betaRecaptchaV3ConfigList =
   /*@__PURE__*/ S.Array(
     GoogleFirebaseAppcheckV1betaRecaptchaV3Config,
@@ -567,11 +569,15 @@ export const GoogleFirebaseAppcheckV1betaServiceReplayProtectionEnum =
 /** The enforcement configuration for a Firebase service supported by App Check. */
 export interface GoogleFirebaseAppcheckV1betaService {
   /** Required. The baseline protection EnforcementMode for this service. */
-  enforcementMode?: GoogleFirebaseAppcheckV1betaServiceEnforcementModeEnum;
+  enforcementMode?:
+    | GoogleFirebaseAppcheckV1betaServiceEnforcementModeEnum
+    | (string & {});
   /** This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding. This etag is strongly validated as defined by RFC 7232. */
   etag?: string;
   /** Optional. The replay protection EnforcementMode for this service. Note that this field cannot be set to a level higher than that of baseline protection. For example, if the enforcement mode for baseline protection is set to `UNENFORCED`, this field cannot be set to `ENFORCED`. In order to enforce replay protection, you must first enforce App Check's baseline protection. An HTTP 400 error will be returned in this case. By default, this field is set to `OFF`. Setting this field to `UNENFORCED` or `ENFORCED` is considered opting into replay protection. Opting in can impact your requests by adding some latency and sometimes cost (depending on your attestation provider). To opt out of replay protection after opting in, set this field to `OFF`. */
-  replayProtection?: GoogleFirebaseAppcheckV1betaServiceReplayProtectionEnum;
+  replayProtection?:
+    | GoogleFirebaseAppcheckV1betaServiceReplayProtectionEnum
+    | (string & {});
   /** Output only. Timestamp when this service configuration object was most recently updated. */
   updateTime?: string;
   /** Required. The relative resource name of the service configuration object, in the format: ``` projects/{project_number}/services/{service_id} ``` Note that the `service_id` element must be a supported service ID. Currently, the following service IDs are supported. Firebase and Google Cloud services: * `identitytoolkit.googleapis.com` (Firebase Authentication) * `firebasedataconnect.googleapis.com` (Firebase SQL Connect) * `firestore.googleapis.com` (Cloud Firestore) * `firebasedatabase.googleapis.com` (Firebase Realtime Database) * `firebasestorage.googleapis.com` (Cloud Storage for Firebase) * `firebaseml.googleapis.com` (Firebase AI Logic) Google Maps Platform services: * `maps-backend.googleapis.com` (Maps JavaScript API) * `places.googleapis.com` (Places API (New)) Other supported Google services: * `oauth2.googleapis.com` (Google Identity for iOS) Note: While all the supported `service_id`s may appear to be subdomains of `googleapis.com`, the `service_id` has no semantic meaning beyond identifying the service to App Check. It is not intended to represent the actual domain to which your apps send traffic, nor is it necessarily the API that should be enabled to use the service. For information on using these Google services, consult their documentation. */
@@ -611,7 +617,7 @@ export const GoogleFirebaseAppcheckV1betaUpdateServiceRequest =
   }) as any as S.Schema<GoogleFirebaseAppcheckV1betaUpdateServiceRequest>;
 
 export type GoogleFirebaseAppcheckV1betaUpdateServiceRequestList =
-  ReadonlyArray<GoogleFirebaseAppcheckV1betaUpdateServiceRequest>;
+  Array<GoogleFirebaseAppcheckV1betaUpdateServiceRequest>;
 export const GoogleFirebaseAppcheckV1betaUpdateServiceRequestList =
   /*@__PURE__*/ S.Array(
     GoogleFirebaseAppcheckV1betaUpdateServiceRequest,
@@ -660,7 +666,7 @@ export const BatchUpdateProjectsServicesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BatchUpdateProjectsServicesRequest>;
 
 export type GoogleFirebaseAppcheckV1betaServiceList =
-  ReadonlyArray<GoogleFirebaseAppcheckV1betaService>;
+  Array<GoogleFirebaseAppcheckV1betaService>;
 export const GoogleFirebaseAppcheckV1betaServiceList = /*@__PURE__*/ S.Array(
   GoogleFirebaseAppcheckV1betaService,
 ) as any as S.Schema<GoogleFirebaseAppcheckV1betaServiceList>;
@@ -697,7 +703,9 @@ export interface GoogleFirebaseAppcheckV1betaResourcePolicy {
   /** This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding. This etag is strongly validated as defined by RFC 7232. */
   etag?: string;
   /** Required. The baseline protection EnforcementMode for this resource. This will override the service-level baseline protection EnforcementMode. */
-  enforcementMode?: GoogleFirebaseAppcheckV1betaResourcePolicyEnforcementModeEnum;
+  enforcementMode?:
+    | GoogleFirebaseAppcheckV1betaResourcePolicyEnforcementModeEnum
+    | (string & {});
 }
 export const GoogleFirebaseAppcheckV1betaResourcePolicy =
   /*@__PURE__*/ S.suspend(() =>
@@ -732,7 +740,7 @@ export const GoogleFirebaseAppcheckV1betaUpdateResourcePolicyRequest =
   }) as any as S.Schema<GoogleFirebaseAppcheckV1betaUpdateResourcePolicyRequest>;
 
 export type GoogleFirebaseAppcheckV1betaUpdateResourcePolicyRequestList =
-  ReadonlyArray<GoogleFirebaseAppcheckV1betaUpdateResourcePolicyRequest>;
+  Array<GoogleFirebaseAppcheckV1betaUpdateResourcePolicyRequest>;
 export const GoogleFirebaseAppcheckV1betaUpdateResourcePolicyRequestList =
   /*@__PURE__*/ S.Array(
     GoogleFirebaseAppcheckV1betaUpdateResourcePolicyRequest,
@@ -785,7 +793,7 @@ export const BatchUpdateProjectsServicesResourcePoliciesRequest =
   }) as any as S.Schema<BatchUpdateProjectsServicesResourcePoliciesRequest>;
 
 export type GoogleFirebaseAppcheckV1betaResourcePolicyList =
-  ReadonlyArray<GoogleFirebaseAppcheckV1betaResourcePolicy>;
+  Array<GoogleFirebaseAppcheckV1betaResourcePolicy>;
 export const GoogleFirebaseAppcheckV1betaResourcePolicyList =
   /*@__PURE__*/ S.Array(
     GoogleFirebaseAppcheckV1betaResourcePolicy,
@@ -1648,7 +1656,7 @@ export const GoogleFirebaseAppcheckV1betaPublicJwk = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleFirebaseAppcheckV1betaPublicJwk>;
 
 export type GoogleFirebaseAppcheckV1betaPublicJwkList =
-  ReadonlyArray<GoogleFirebaseAppcheckV1betaPublicJwk>;
+  Array<GoogleFirebaseAppcheckV1betaPublicJwk>;
 export const GoogleFirebaseAppcheckV1betaPublicJwkList = /*@__PURE__*/ S.Array(
   GoogleFirebaseAppcheckV1betaPublicJwk,
 ) as any as S.Schema<GoogleFirebaseAppcheckV1betaPublicJwkList>;
@@ -1861,7 +1869,7 @@ export const ListProjectsAppsDebugTokensRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsAppsDebugTokensRequest>;
 
 export type GoogleFirebaseAppcheckV1betaDebugTokenList =
-  ReadonlyArray<GoogleFirebaseAppcheckV1betaDebugToken>;
+  Array<GoogleFirebaseAppcheckV1betaDebugToken>;
 export const GoogleFirebaseAppcheckV1betaDebugTokenList = /*@__PURE__*/ S.Array(
   GoogleFirebaseAppcheckV1betaDebugToken,
 ) as any as S.Schema<GoogleFirebaseAppcheckV1betaDebugTokenList>;

@@ -119,13 +119,13 @@ export type MetricName =
   | "Cost";
 export const MetricName = /*@__PURE__*/ S.String;
 
-export type MetricNames = MetricName[];
+export type MetricNames = (MetricName | (string & {}))[];
 export const MetricNames = /*@__PURE__*/ S.Array(MetricName);
 export type DateTimeType = "ABSOLUTE" | "RELATIVE";
 export const DateTimeType = /*@__PURE__*/ S.String;
 
 export interface DateTimeValue {
-  type: DateTimeType;
+  type: DateTimeType | (string & {});
   value: string;
 }
 export const DateTimeValue = /*@__PURE__*/ S.suspend(() =>
@@ -146,7 +146,7 @@ export const GroupDefinitionType = /*@__PURE__*/ S.String;
 
 export interface GroupDefinition {
   key: string;
-  type?: GroupDefinitionType;
+  type?: GroupDefinitionType | (string & {});
 }
 export const GroupDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ key: S.String, type: S.optional(GroupDefinitionType) }),
@@ -203,10 +203,10 @@ export type MatchOption =
   | "CASE_INSENSITIVE";
 export const MatchOption = /*@__PURE__*/ S.String;
 
-export type MatchOptions = MatchOption[];
+export type MatchOptions = (MatchOption | (string & {}))[];
 export const MatchOptions = /*@__PURE__*/ S.Array(MatchOption);
 export interface DimensionValues {
-  key: Dimension;
+  key: Dimension | (string & {});
   values: string[];
   matchOptions?: MatchOption[];
 }
@@ -274,7 +274,7 @@ export const Expression = /*@__PURE__*/ S.suspend(() =>
 export interface CostAndUsageQuery {
   metrics: MetricName[];
   timeRange: DateTimeRange;
-  granularity: Granularity;
+  granularity: Granularity | (string & {});
   groupBy?: GroupDefinition[];
   filter?: Expression;
 }
@@ -292,7 +292,7 @@ export const CostAndUsageQuery = /*@__PURE__*/ S.suspend(() =>
 export interface SavingsPlansCoverageQuery {
   timeRange: DateTimeRange;
   metrics?: MetricName[];
-  granularity?: Granularity;
+  granularity?: Granularity | (string & {});
   groupBy?: GroupDefinition[];
   filter?: Expression;
 }
@@ -309,7 +309,7 @@ export const SavingsPlansCoverageQuery = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SavingsPlansCoverageQuery>;
 export interface SavingsPlansUtilizationQuery {
   timeRange: DateTimeRange;
-  granularity?: Granularity;
+  granularity?: Granularity | (string & {});
   filter?: Expression;
 }
 export const SavingsPlansUtilizationQuery = /*@__PURE__*/ S.suspend(() =>
@@ -324,7 +324,7 @@ export const SavingsPlansUtilizationQuery = /*@__PURE__*/ S.suspend(() =>
 export interface ReservationCoverageQuery {
   timeRange: DateTimeRange;
   groupBy?: GroupDefinition[];
-  granularity?: Granularity;
+  granularity?: Granularity | (string & {});
   filter?: Expression;
   metrics?: MetricName[];
 }
@@ -342,7 +342,7 @@ export const ReservationCoverageQuery = /*@__PURE__*/ S.suspend(() =>
 export interface ReservationUtilizationQuery {
   timeRange: DateTimeRange;
   groupBy?: GroupDefinition[];
-  granularity?: Granularity;
+  granularity?: Granularity | (string & {});
   filter?: Expression;
 }
 export const ReservationUtilizationQuery = /*@__PURE__*/ S.suspend(() =>
@@ -402,7 +402,7 @@ export type VisualType = "LINE" | "BAR" | "STACK";
 export const VisualType = /*@__PURE__*/ S.String;
 
 export interface GraphDisplayConfig {
-  visualType: VisualType;
+  visualType: VisualType | (string & {});
 }
 export const GraphDisplayConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ visualType: VisualType }),
@@ -517,7 +517,7 @@ export interface ScheduleConfig {
   scheduleExpression?: string;
   scheduleExpressionTimeZone?: string;
   schedulePeriod?: SchedulePeriod;
-  state?: ScheduleState;
+  state?: ScheduleState | (string & {});
 }
 export const ScheduleConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

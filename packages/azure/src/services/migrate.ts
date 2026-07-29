@@ -82,13 +82,13 @@ export const Percentile = /*@__PURE__*/ S.String;
 /** Data model of Performance Data Settings. */
 export interface PerfDataSettings {
   /** Gets perf data time range. */
-  timeRange: TimeRange;
+  timeRange: TimeRange | (string & {});
   /** Gets or sets perf data start time. */
   perfDataStartTime?: string;
   /** Gets or sets perf data end time. */
   perfDataEndTime?: string;
   /** Gets percentile utilization for performance data. */
-  percentile: Percentile;
+  percentile: Percentile | (string & {});
 }
 export const PerfDataSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -135,27 +135,27 @@ export interface AKSAssessmentSettings {
   /** Gets or sets azure location. */
   azureLocation: string;
   /** Gets or sets environment type. */
-  environmentType: AzureEnvironmentType;
+  environmentType: AzureEnvironmentType | (string & {});
   /** Gets or sets licensing program. */
-  licensingProgram: LicensingProgram;
+  licensingProgram: LicensingProgram | (string & {});
   /** Gets or sets currency. */
-  currency: AzureCurrency;
+  currency: AzureCurrency | (string & {});
   /** Gets or sets discount percentage. */
   discountPercentage?: number;
   /** Gets or sets sizing criteria. */
-  sizingCriteria: AssessmentSizingCriterion;
+  sizingCriteria: AssessmentSizingCriterion | (string & {});
   /** Gets or sets performance data settings. */
   performanceData?: PerfDataSettings;
   /** Gets or sets scaling factor. */
   scalingFactor?: number;
   /** Gets or sets azure VM category. */
-  category: AzureVmCategory;
+  category: AzureVmCategory | (string & {});
   /** Gets or sets savings options. */
-  savingsOptions: SavingsOptions;
+  savingsOptions: SavingsOptions | (string & {});
   /** Gets or sets consolidation type. */
-  consolidation: ConsolidationType;
+  consolidation: ConsolidationType | (string & {});
   /** Gets or sets pricing tier. */
-  pricingTier: PricingTier;
+  pricingTier: PricingTier | (string & {});
 }
 export const AKSAssessmentSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -573,7 +573,7 @@ export const AKSAssessment = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AKSAssessment" }) as any as S.Schema<AKSAssessment>;
 
 /** The AKSAssessment items on this page */
-export type AKSAssessmentListResultValueList = ReadonlyArray<AKSAssessment>;
+export type AKSAssessmentListResultValueList = Array<AKSAssessment>;
 export const AKSAssessmentListResultValueList = /*@__PURE__*/ S.Array(
   AKSAssessment,
 ) as any as S.Schema<AKSAssessmentListResultValueList>;
@@ -672,7 +672,7 @@ export const NodePool = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NodePool" }) as any as S.Schema<NodePool>;
 
 /** Gets list of node pools. */
-export type ClusterNodePoolsList = ReadonlyArray<NodePool>;
+export type ClusterNodePoolsList = Array<NodePool>;
 export const ClusterNodePoolsList = /*@__PURE__*/ S.Array(
   NodePool,
 ) as any as S.Schema<ClusterNodePoolsList>;
@@ -798,7 +798,7 @@ export const AKSCluster = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AKSCluster" }) as any as S.Schema<AKSCluster>;
 
 /** The AKSCluster items on this page */
-export type AKSClusterListResultValueList = ReadonlyArray<AKSCluster>;
+export type AKSClusterListResultValueList = Array<AKSCluster>;
 export const AKSClusterListResultValueList = /*@__PURE__*/ S.Array(
   AKSCluster,
 ) as any as S.Schema<AKSClusterListResultValueList>;
@@ -878,7 +878,7 @@ export const AKSCostDetail = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AKSCostDetail" }) as any as S.Schema<AKSCostDetail>;
 
 /** The AKSCostDetail items on this page */
-export type AKSCostDetailListResultValueList = ReadonlyArray<AKSCostDetail>;
+export type AKSCostDetailListResultValueList = Array<AKSCostDetail>;
 export const AKSCostDetailListResultValueList = /*@__PURE__*/ S.Array(
   AKSCostDetail,
 ) as any as S.Schema<AKSCostDetailListResultValueList>;
@@ -927,7 +927,7 @@ export const AksOptionsOperationsGetRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "AksOptionsOperationsGetRequest",
 }) as any as S.Schema<AksOptionsOperationsGetRequest>;
 
-export type RecordOfStringArrayValueList = ReadonlyArray<string>;
+export type RecordOfStringArrayValueList = Array<string>;
 export const RecordOfStringArrayValueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RecordOfStringArrayValueList>;
@@ -1046,7 +1046,7 @@ export const AKSAssessmentOptions = /*@__PURE__*/ S.suspend(() =>
 
 /** The AKSAssessmentOptions items on this page */
 export type AKSAssessmentOptionsListResultValueList =
-  ReadonlyArray<AKSAssessmentOptions>;
+  Array<AKSAssessmentOptions>;
 export const AKSAssessmentOptionsListResultValueList = /*@__PURE__*/ S.Array(
   AKSAssessmentOptions,
 ) as any as S.Schema<AKSAssessmentOptionsListResultValueList>;
@@ -1301,7 +1301,7 @@ export const AKSSummary = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AKSSummary" }) as any as S.Schema<AKSSummary>;
 
 /** The AKSSummary items on this page */
-export type AKSSummaryListResultValueList = ReadonlyArray<AKSSummary>;
+export type AKSSummaryListResultValueList = Array<AKSSummary>;
 export const AKSSummaryListResultValueList = /*@__PURE__*/ S.Array(
   AKSSummary,
 ) as any as S.Schema<AKSSummaryListResultValueList>;
@@ -1412,7 +1412,7 @@ export const Error = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Error" }) as any as S.Schema<Error>;
 
 /** List of errors for this machine. */
-export type AssessedMachinePropertiesErrorsList = ReadonlyArray<Error>;
+export type AssessedMachinePropertiesErrorsList = Array<Error>;
 export const AssessedMachinePropertiesErrorsList = /*@__PURE__*/ S.Array(
   Error,
 ) as any as S.Schema<AssessedMachinePropertiesErrorsList>;
@@ -1622,8 +1622,7 @@ export const CostComponent = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CostComponent" }) as any as S.Schema<CostComponent>;
 
 /** Gets or sets the collection of cost components. */
-export type AssessedMachinePropertiesCostComponentsList =
-  ReadonlyArray<CostComponent>;
+export type AssessedMachinePropertiesCostComponentsList = Array<CostComponent>;
 export const AssessedMachinePropertiesCostComponentsList =
   /*@__PURE__*/ S.Array(
     CostComponent,
@@ -1687,7 +1686,7 @@ export type AzureNetworkAdapterSuitabilityExplanation =
 export const AzureNetworkAdapterSuitabilityExplanation = /*@__PURE__*/ S.String;
 
 /** Gets the ip addresses. */
-export type AssessedNetworkAdapterIpAddressesList = ReadonlyArray<string>;
+export type AssessedNetworkAdapterIpAddressesList = Array<string>;
 export const AssessedNetworkAdapterIpAddressesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AssessedNetworkAdapterIpAddressesList>;
@@ -2517,7 +2516,7 @@ export const AssessedMachine = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AssessedMachine>;
 
 /** The AssessedMachine items on this page */
-export type AssessedMachineListResultValueList = ReadonlyArray<AssessedMachine>;
+export type AssessedMachineListResultValueList = Array<AssessedMachine>;
 export const AssessedMachineListResultValueList = /*@__PURE__*/ S.Array(
   AssessedMachine,
 ) as any as S.Schema<AssessedMachineListResultValueList>;
@@ -2657,7 +2656,7 @@ export const AzureSqlPaasSkuDTO = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets the replica azure SQL PAAS SKU. */
 export type SqlAssessmentV2PaasSuitabilityDataReplicaAzureSqlSkuList =
-  ReadonlyArray<AzureSqlPaasSkuDTO>;
+  Array<AzureSqlPaasSkuDTO>;
 export const SqlAssessmentV2PaasSuitabilityDataReplicaAzureSqlSkuList =
   /*@__PURE__*/ S.Array(
     AzureSqlPaasSkuDTO,
@@ -2709,21 +2708,21 @@ export const AzureManagedDiskSkuDTO = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets the list of shared data disks. */
 export type SharedResourcesDTOSharedDataDisksList =
-  ReadonlyArray<AzureManagedDiskSkuDTO>;
+  Array<AzureManagedDiskSkuDTO>;
 export const SharedResourcesDTOSharedDataDisksList = /*@__PURE__*/ S.Array(
   AzureManagedDiskSkuDTO,
 ) as any as S.Schema<SharedResourcesDTOSharedDataDisksList>;
 
 /** Gets the list of shared log disks. */
 export type SharedResourcesDTOSharedLogDisksList =
-  ReadonlyArray<AzureManagedDiskSkuDTO>;
+  Array<AzureManagedDiskSkuDTO>;
 export const SharedResourcesDTOSharedLogDisksList = /*@__PURE__*/ S.Array(
   AzureManagedDiskSkuDTO,
 ) as any as S.Schema<SharedResourcesDTOSharedLogDisksList>;
 
 /** Gets the list of shared Temporary database disks. */
 export type SharedResourcesDTOSharedTempDbDisksList =
-  ReadonlyArray<AzureManagedDiskSkuDTO>;
+  Array<AzureManagedDiskSkuDTO>;
 export const SharedResourcesDTOSharedTempDbDisksList = /*@__PURE__*/ S.Array(
   AzureManagedDiskSkuDTO,
 ) as any as S.Schema<SharedResourcesDTOSharedTempDbDisksList>;
@@ -2774,7 +2773,7 @@ export const SharedResourcesDTO = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets the collection of cost components. */
 export type SqlAssessmentV2PaasSuitabilityDataCostComponentsList =
-  ReadonlyArray<CostComponent>;
+  Array<CostComponent>;
 export const SqlAssessmentV2PaasSuitabilityDataCostComponentsList =
   /*@__PURE__*/ S.Array(
     CostComponent,
@@ -2811,7 +2810,7 @@ export const MigrationGuidelineContext = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets the migration guideline context. */
 export type SqlMigrationGuidelineMigrationGuidelineContextList =
-  ReadonlyArray<MigrationGuidelineContext>;
+  Array<MigrationGuidelineContext>;
 export const SqlMigrationGuidelineMigrationGuidelineContextList =
   /*@__PURE__*/ S.Array(
     MigrationGuidelineContext,
@@ -2840,7 +2839,7 @@ export const SqlMigrationGuideline = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets the list of migration guidelines applicable to this target. */
 export type SqlAssessmentV2PaasSuitabilityDataMigrationGuidelinesList =
-  ReadonlyArray<SqlMigrationGuideline>;
+  Array<SqlMigrationGuideline>;
 export const SqlAssessmentV2PaasSuitabilityDataMigrationGuidelinesList =
   /*@__PURE__*/ S.Array(
     SqlMigrationGuideline,
@@ -2864,7 +2863,7 @@ export const SqlRecommendationReasoningContext = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets the Sql recommended reasoning parameters. */
 export type SqlRecommendationReasoningContextParametersList =
-  ReadonlyArray<SqlRecommendationReasoningContext>;
+  Array<SqlRecommendationReasoningContext>;
 export const SqlRecommendationReasoningContextParametersList =
   /*@__PURE__*/ S.Array(
     SqlRecommendationReasoningContext,
@@ -2896,7 +2895,7 @@ export const SqlRecommendationReasoning = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets the list of SQL recommendation Reasoning. */
 export type SqlAssessmentV2PaasSuitabilityDataRecommendationReasoningsList =
-  ReadonlyArray<SqlRecommendationReasoning>;
+  Array<SqlRecommendationReasoning>;
 export const SqlAssessmentV2PaasSuitabilityDataRecommendationReasoningsList =
   /*@__PURE__*/ S.Array(
     SqlRecommendationReasoning,
@@ -2926,7 +2925,7 @@ export const ImpactedAssessmentObject = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets the list of impacted objects. */
 export type SqlAssessmentMigrationIssueImpactedObjectsList =
-  ReadonlyArray<ImpactedAssessmentObject>;
+  Array<ImpactedAssessmentObject>;
 export const SqlAssessmentMigrationIssueImpactedObjectsList =
   /*@__PURE__*/ S.Array(
     ImpactedAssessmentObject,
@@ -2953,7 +2952,7 @@ export const SqlAssessmentMigrationIssue = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets the list of migrations issues. */
 export type SqlAssessmentV2PaasSuitabilityDataMigrationIssuesList =
-  ReadonlyArray<SqlAssessmentMigrationIssue>;
+  Array<SqlAssessmentMigrationIssue>;
 export const SqlAssessmentV2PaasSuitabilityDataMigrationIssuesList =
   /*@__PURE__*/ S.Array(
     SqlAssessmentMigrationIssue,
@@ -3245,7 +3244,7 @@ export const AssessedSqlDatabaseV2 = /*@__PURE__*/ S.suspend(() =>
 
 /** The AssessedSqlDatabaseV2 items on this page */
 export type AssessedSqlDatabaseV2ListResultValueList =
-  ReadonlyArray<AssessedSqlDatabaseV2>;
+  Array<AssessedSqlDatabaseV2>;
 export const AssessedSqlDatabaseV2ListResultValueList = /*@__PURE__*/ S.Array(
   AssessedSqlDatabaseV2,
 ) as any as S.Schema<AssessedSqlDatabaseV2ListResultValueList>;
@@ -3382,15 +3381,13 @@ export const AzureVirtualMachineSkuDTO = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AzureVirtualMachineSkuDTO>;
 
 /** Gets the The list of data disk sizes. */
-export type AzureSqlIaasSkuDTODataDiskSizesList =
-  ReadonlyArray<AzureManagedDiskSkuDTO>;
+export type AzureSqlIaasSkuDTODataDiskSizesList = Array<AzureManagedDiskSkuDTO>;
 export const AzureSqlIaasSkuDTODataDiskSizesList = /*@__PURE__*/ S.Array(
   AzureManagedDiskSkuDTO,
 ) as any as S.Schema<AzureSqlIaasSkuDTODataDiskSizesList>;
 
 /** Gets the The list of log disk sizes. */
-export type AzureSqlIaasSkuDTOLogDiskSizesList =
-  ReadonlyArray<AzureManagedDiskSkuDTO>;
+export type AzureSqlIaasSkuDTOLogDiskSizesList = Array<AzureManagedDiskSkuDTO>;
 export const AzureSqlIaasSkuDTOLogDiskSizesList = /*@__PURE__*/ S.Array(
   AzureManagedDiskSkuDTO,
 ) as any as S.Schema<AzureSqlIaasSkuDTOLogDiskSizesList>;
@@ -3419,7 +3416,7 @@ export const AzureSqlIaasSkuDTO = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets the replica azure SQL IAAS SKU. */
 export type SqlAssessmentV2IaasSuitabilityDataReplicaAzureSqlSkuList =
-  ReadonlyArray<AzureSqlIaasSkuDTO>;
+  Array<AzureSqlIaasSkuDTO>;
 export const SqlAssessmentV2IaasSuitabilityDataReplicaAzureSqlSkuList =
   /*@__PURE__*/ S.Array(
     AzureSqlIaasSkuDTO,
@@ -3427,7 +3424,7 @@ export const SqlAssessmentV2IaasSuitabilityDataReplicaAzureSqlSkuList =
 
 /** Gets the collection of cost components. */
 export type SqlAssessmentV2IaasSuitabilityDataCostComponentsList =
-  ReadonlyArray<CostComponent>;
+  Array<CostComponent>;
 export const SqlAssessmentV2IaasSuitabilityDataCostComponentsList =
   /*@__PURE__*/ S.Array(
     CostComponent,
@@ -3435,7 +3432,7 @@ export const SqlAssessmentV2IaasSuitabilityDataCostComponentsList =
 
 /** Gets the list of migration guidelines applicable to this target. */
 export type SqlAssessmentV2IaasSuitabilityDataMigrationGuidelinesList =
-  ReadonlyArray<SqlMigrationGuideline>;
+  Array<SqlMigrationGuideline>;
 export const SqlAssessmentV2IaasSuitabilityDataMigrationGuidelinesList =
   /*@__PURE__*/ S.Array(
     SqlMigrationGuideline,
@@ -3443,7 +3440,7 @@ export const SqlAssessmentV2IaasSuitabilityDataMigrationGuidelinesList =
 
 /** Gets the list of SQL recommendation Reasoning. */
 export type SqlAssessmentV2IaasSuitabilityDataRecommendationReasoningsList =
-  ReadonlyArray<SqlRecommendationReasoning>;
+  Array<SqlRecommendationReasoning>;
 export const SqlAssessmentV2IaasSuitabilityDataRecommendationReasoningsList =
   /*@__PURE__*/ S.Array(
     SqlRecommendationReasoning,
@@ -3451,7 +3448,7 @@ export const SqlAssessmentV2IaasSuitabilityDataRecommendationReasoningsList =
 
 /** Gets the list of migrations issues. */
 export type SqlAssessmentV2IaasSuitabilityDataMigrationIssuesList =
-  ReadonlyArray<SqlAssessmentMigrationIssue>;
+  Array<SqlAssessmentMigrationIssue>;
 export const SqlAssessmentV2IaasSuitabilityDataMigrationIssuesList =
   /*@__PURE__*/ S.Array(
     SqlAssessmentMigrationIssue,
@@ -3549,7 +3546,7 @@ export const AssessedSqlInstanceStorageDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets the storage details. */
 export type AssessedSqlInstanceV2PropertiesStorageTypeBasedDetailsList =
-  ReadonlyArray<AssessedSqlInstanceStorageDetails>;
+  Array<AssessedSqlInstanceStorageDetails>;
 export const AssessedSqlInstanceV2PropertiesStorageTypeBasedDetailsList =
   /*@__PURE__*/ S.Array(
     AssessedSqlInstanceStorageDetails,
@@ -3611,7 +3608,7 @@ export const SqlAvailabilityReplicaSummary = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets the list of recommended target reasoning. */
 export type AssessedSqlInstanceV2PropertiesRecommendedTargetReasoningsList =
-  ReadonlyArray<SqlRecommendationReasoning>;
+  Array<SqlRecommendationReasoning>;
 export const AssessedSqlInstanceV2PropertiesRecommendedTargetReasoningsList =
   /*@__PURE__*/ S.Array(
     SqlRecommendationReasoning,
@@ -3647,7 +3644,7 @@ export const AssessedSqlInstanceDiskDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** The logical disk details. */
 export type AssessedSqlInstanceV2PropertiesLogicalDisksList =
-  ReadonlyArray<AssessedSqlInstanceDiskDetails>;
+  Array<AssessedSqlInstanceDiskDetails>;
 export const AssessedSqlInstanceV2PropertiesLogicalDisksList =
   /*@__PURE__*/ S.Array(
     AssessedSqlInstanceDiskDetails,
@@ -3875,7 +3872,7 @@ export const AssessedSqlInstanceV2 = /*@__PURE__*/ S.suspend(() =>
 
 /** The AssessedSqlInstanceV2 items on this page */
 export type AssessedSqlInstanceV2ListResultValueList =
-  ReadonlyArray<AssessedSqlInstanceV2>;
+  Array<AssessedSqlInstanceV2>;
 export const AssessedSqlInstanceV2ListResultValueList = /*@__PURE__*/ S.Array(
   AssessedSqlInstanceV2,
 ) as any as S.Schema<AssessedSqlInstanceV2ListResultValueList>;
@@ -3973,7 +3970,7 @@ export const AssessedSqlInstanceSummary = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets the list of SQL instances discovered on the machine. */
 export type AssessedSqlMachinePropertiesSqlInstancesList =
-  ReadonlyArray<AssessedSqlInstanceSummary>;
+  Array<AssessedSqlInstanceSummary>;
 export const AssessedSqlMachinePropertiesSqlInstancesList =
   /*@__PURE__*/ S.Array(
     AssessedSqlInstanceSummary,
@@ -4047,7 +4044,7 @@ export const AssessedSqlMachinePropertiesDisksMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<AssessedSqlMachinePropertiesDisksMap>;
 
 /** Gets the ip addresses. */
-export type SqlAssessedNetworkAdapterIpAddressesList = ReadonlyArray<string>;
+export type SqlAssessedNetworkAdapterIpAddressesList = Array<string>;
 export const SqlAssessedNetworkAdapterIpAddressesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SqlAssessedNetworkAdapterIpAddressesList>;
@@ -4109,7 +4106,7 @@ export const AssessedSqlMachinePropertiesNetworkAdaptersMap =
 
 /** Gets the collection of cost components. */
 export type AssessedSqlMachinePropertiesCostComponentsList =
-  ReadonlyArray<CostComponent>;
+  Array<CostComponent>;
 export const AssessedSqlMachinePropertiesCostComponentsList =
   /*@__PURE__*/ S.Array(
     CostComponent,
@@ -4117,7 +4114,7 @@ export const AssessedSqlMachinePropertiesCostComponentsList =
 
 /** Gets the list of migration guidelines applicable. */
 export type AssessedSqlMachinePropertiesMigrationGuidelinesList =
-  ReadonlyArray<SqlMigrationGuideline>;
+  Array<SqlMigrationGuideline>;
 export const AssessedSqlMachinePropertiesMigrationGuidelinesList =
   /*@__PURE__*/ S.Array(
     SqlMigrationGuideline,
@@ -4344,8 +4341,7 @@ export const AssessedSqlMachine = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AssessedSqlMachine>;
 
 /** The AssessedSqlMachine items on this page */
-export type AssessedSqlMachineListResultValueList =
-  ReadonlyArray<AssessedSqlMachine>;
+export type AssessedSqlMachineListResultValueList = Array<AssessedSqlMachine>;
 export const AssessedSqlMachineListResultValueList = /*@__PURE__*/ S.Array(
   AssessedSqlMachine,
 ) as any as S.Schema<AssessedSqlMachineListResultValueList>;
@@ -4566,7 +4562,7 @@ export const AssessedSqlRecommendedEntity = /*@__PURE__*/ S.suspend(() =>
 
 /** The AssessedSqlRecommendedEntity items on this page */
 export type AssessedSqlRecommendedEntityListResultValueList =
-  ReadonlyArray<AssessedSqlRecommendedEntity>;
+  Array<AssessedSqlRecommendedEntity>;
 export const AssessedSqlRecommendedEntityListResultValueList =
   /*@__PURE__*/ S.Array(
     AssessedSqlRecommendedEntity,
@@ -4682,7 +4678,7 @@ export const Check = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Check" }) as any as S.Schema<Check>;
 
 /** Gets list of failed Checks. */
-export type SuitabilityResultFailedChecksList = ReadonlyArray<Check>;
+export type SuitabilityResultFailedChecksList = Array<Check>;
 export const SuitabilityResultFailedChecksList = /*@__PURE__*/ S.Array(
   Check,
 ) as any as S.Schema<SuitabilityResultFailedChecksList>;
@@ -4900,7 +4896,7 @@ export const AssessedWebApplication = /*@__PURE__*/ S.suspend(() =>
 
 /** The AssessedWebApplication items on this page */
 export type AssessedWebApplicationListResultValueList =
-  ReadonlyArray<AssessedWebApplication>;
+  Array<AssessedWebApplication>;
 export const AssessedWebApplicationListResultValueList = /*@__PURE__*/ S.Array(
   AssessedWebApplication,
 ) as any as S.Schema<AssessedWebApplicationListResultValueList>;
@@ -4985,8 +4981,7 @@ export type AzureWebAppSuitabilityIssueCategory = "Unknown" | "Issue" | "Info";
 export const AzureWebAppSuitabilityIssueCategory = /*@__PURE__*/ S.String;
 
 /** Gets or sets the issue description list. */
-export type WebAppMigrationIssuesIssueDescriptionListList =
-  ReadonlyArray<string>;
+export type WebAppMigrationIssuesIssueDescriptionListList = Array<string>;
 export const WebAppMigrationIssuesIssueDescriptionListList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5013,7 +5008,7 @@ export const WebAppMigrationIssues = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets the web app migration issues. */
 export type TargetSpecificResultMigrationIssuesList =
-  ReadonlyArray<WebAppMigrationIssues>;
+  Array<WebAppMigrationIssues>;
 export const TargetSpecificResultMigrationIssuesList = /*@__PURE__*/ S.Array(
   WebAppMigrationIssues,
 ) as any as S.Schema<TargetSpecificResultMigrationIssuesList>;
@@ -5187,8 +5182,7 @@ export const AssessedWebAppV2 = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AssessedWebAppV2>;
 
 /** The AssessedWebAppV2 items on this page */
-export type AssessedWebAppV2ListResultValueList =
-  ReadonlyArray<AssessedWebAppV2>;
+export type AssessedWebAppV2ListResultValueList = Array<AssessedWebAppV2>;
 export const AssessedWebAppV2ListResultValueList = /*@__PURE__*/ S.Array(
   AssessedWebAppV2,
 ) as any as S.Schema<AssessedWebAppV2ListResultValueList>;
@@ -5239,13 +5233,13 @@ export const AssessmentOptionsOperationsGetRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<AssessmentOptionsOperationsGetRequest>;
 
 /** List of Azure regions. */
-export type VmFamilyOptionsTargetLocationsList = ReadonlyArray<string>;
+export type VmFamilyOptionsTargetLocationsList = Array<string>;
 export const VmFamilyOptionsTargetLocationsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<VmFamilyOptionsTargetLocationsList>;
 
 /** Category of the VM family. */
-export type VmFamilyOptionsCategoryList = ReadonlyArray<string>;
+export type VmFamilyOptionsCategoryList = Array<string>;
 export const VmFamilyOptionsCategoryList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<VmFamilyOptionsCategoryList>;
@@ -5270,15 +5264,14 @@ export const VmFamilyOptions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VmFamilyOptions>;
 
 /** Dictionary of VM families grouped by vm family name describing the targeted azure locations of VM family and the category of the family. */
-export type AssessmentOptionsPropertiesVmFamiliesList =
-  ReadonlyArray<VmFamilyOptions>;
+export type AssessmentOptionsPropertiesVmFamiliesList = Array<VmFamilyOptions>;
 export const AssessmentOptionsPropertiesVmFamiliesList = /*@__PURE__*/ S.Array(
   VmFamilyOptions,
 ) as any as S.Schema<AssessmentOptionsPropertiesVmFamiliesList>;
 
 /** List of supported VM Families. */
 export type AssessmentOptionsPropertiesReservedInstanceVmFamiliesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const AssessmentOptionsPropertiesReservedInstanceVmFamiliesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5286,7 +5279,7 @@ export const AssessmentOptionsPropertiesReservedInstanceVmFamiliesList =
 
 /** List of supported Azure regions for reserved instances. */
 export type AssessmentOptionsPropertiesReservedInstanceSupportedLocationsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const AssessmentOptionsPropertiesReservedInstanceSupportedLocationsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5294,7 +5287,7 @@ export const AssessmentOptionsPropertiesReservedInstanceSupportedLocationsList =
 
 /** List of supported currencies for reserved instances. */
 export type AssessmentOptionsPropertiesReservedInstanceSupportedCurrenciesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const AssessmentOptionsPropertiesReservedInstanceSupportedCurrenciesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5302,15 +5295,14 @@ export const AssessmentOptionsPropertiesReservedInstanceSupportedCurrenciesList 
 
 /** List of supported Azure offer codes for reserved instances. */
 export type AssessmentOptionsPropertiesReservedInstanceSupportedOffersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const AssessmentOptionsPropertiesReservedInstanceSupportedOffersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AssessmentOptionsPropertiesReservedInstanceSupportedOffersList>;
 
 /** List of locations where ultra disk is supported for this VMfamily. */
-export type UltraDiskAssessmentOptionsTargetLocationsList =
-  ReadonlyArray<string>;
+export type UltraDiskAssessmentOptionsTargetLocationsList = Array<string>;
 export const UltraDiskAssessmentOptionsTargetLocationsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5334,7 +5326,7 @@ export const UltraDiskAssessmentOptions = /*@__PURE__*/ S.suspend(() =>
 
 /** Ultra disk related assessment options. */
 export type AssessmentOptionsPropertiesUltraDiskVmFamiliesList =
-  ReadonlyArray<UltraDiskAssessmentOptions>;
+  Array<UltraDiskAssessmentOptions>;
 export const AssessmentOptionsPropertiesUltraDiskVmFamiliesList =
   /*@__PURE__*/ S.Array(
     UltraDiskAssessmentOptions,
@@ -5342,7 +5334,7 @@ export const AssessmentOptionsPropertiesUltraDiskVmFamiliesList =
 
 /** List of VM Families that support premium disks for assessments. */
 export type AssessmentOptionsPropertiesPremiumDiskVmFamiliesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const AssessmentOptionsPropertiesPremiumDiskVmFamiliesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5350,7 +5342,7 @@ export const AssessmentOptionsPropertiesPremiumDiskVmFamiliesList =
 
 /** List of VM Families that support Savings plan offer for assessments. */
 export type AssessmentOptionsPropertiesSavingsPlanVmFamiliesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const AssessmentOptionsPropertiesSavingsPlanVmFamiliesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5358,7 +5350,7 @@ export const AssessmentOptionsPropertiesSavingsPlanVmFamiliesList =
 
 /** List of Azure locations that support Savings plan offer for assessments. */
 export type AssessmentOptionsPropertiesSavingsPlanSupportedLocationsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const AssessmentOptionsPropertiesSavingsPlanSupportedLocationsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5430,7 +5422,7 @@ export const AzureLocation = /*@__PURE__*/ S.String;
 
 /** List of Azure locations that support Premium SSD V2 disks for assessments. */
 export type AssessmentOptionsPropertiesPremiumV2DiskSupportedLocationsList =
-  ReadonlyArray<AzureLocation>;
+  Array<AzureLocation>;
 export const AssessmentOptionsPropertiesPremiumV2DiskSupportedLocationsList =
   /*@__PURE__*/ S.Array(
     AzureLocation,
@@ -5571,8 +5563,7 @@ export const AssessmentOptions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AssessmentOptions>;
 
 /** The AssessmentOptions items on this page */
-export type AssessmentOptionsListResultValueList =
-  ReadonlyArray<AssessmentOptions>;
+export type AssessmentOptionsListResultValueList = Array<AssessmentOptions>;
 export const AssessmentOptionsListResultValueList = /*@__PURE__*/ S.Array(
   AssessmentOptions,
 ) as any as S.Schema<AssessmentOptionsListResultValueList>;
@@ -5695,8 +5686,7 @@ export const AssessmentProjectsOperationsCreateResponseTagsMap =
   ) as any as S.Schema<AssessmentProjectsOperationsCreateResponseTagsMap>;
 
 /** The group ids for the private endpoint resource. */
-export type PrivateEndpointConnectionPropertiesGroupIdsList =
-  ReadonlyArray<string>;
+export type PrivateEndpointConnectionPropertiesGroupIdsList = Array<string>;
 export const PrivateEndpointConnectionPropertiesGroupIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5725,7 +5715,7 @@ export const PrivateEndpointServiceConnectionStatus = /*@__PURE__*/ S.String;
 /** A collection of information about the state of the connection between service consumer and provider. */
 export interface PrivateLinkServiceConnectionState {
   /** Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service. */
-  status?: PrivateEndpointServiceConnectionStatus;
+  status?: PrivateEndpointServiceConnectionStatus | (string & {});
   /** The reason for approval/rejection of the connection. */
   description?: string;
   /** A message indicating if changes on the service provider require any updates on the consumer. */
@@ -5799,7 +5789,7 @@ export const PrivateEndpointConnection = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of private endpoint connections to the project. */
 export type ProjectPropertiesPrivateEndpointConnectionsList =
-  ReadonlyArray<PrivateEndpointConnection>;
+  Array<PrivateEndpointConnection>;
 export const ProjectPropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection,
@@ -6042,8 +6032,7 @@ export const AssessmentProject = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AssessmentProject>;
 
 /** The AssessmentProject items on this page */
-export type AssessmentProjectListResultValueList =
-  ReadonlyArray<AssessmentProject>;
+export type AssessmentProjectListResultValueList = Array<AssessmentProject>;
 export const AssessmentProjectListResultValueList = /*@__PURE__*/ S.Array(
   AssessmentProject,
 ) as any as S.Schema<AssessmentProjectListResultValueList>;
@@ -6250,7 +6239,7 @@ export const ErrorSummary = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets the Error summary by feature. Contains number of affected Entities per feature. */
 export type AssessmentProjectSummaryPropertiesErrorSummaryAffectedEntitiesList =
-  ReadonlyArray<ErrorSummary>;
+  Array<ErrorSummary>;
 export const AssessmentProjectSummaryPropertiesErrorSummaryAffectedEntitiesList =
   /*@__PURE__*/ S.Array(
     ErrorSummary,
@@ -6368,7 +6357,7 @@ export const AssessmentProjectSummary = /*@__PURE__*/ S.suspend(() =>
 
 /** The AssessmentProjectSummary items on this page */
 export type AssessmentProjectSummaryListResultValueList =
-  ReadonlyArray<AssessmentProjectSummary>;
+  Array<AssessmentProjectSummary>;
 export const AssessmentProjectSummaryListResultValueList =
   /*@__PURE__*/ S.Array(
     AssessmentProjectSummary,
@@ -6408,7 +6397,7 @@ export type AzureHybridUseBenefit = "Unknown" | "Yes" | "No";
 export const AzureHybridUseBenefit = /*@__PURE__*/ S.String;
 
 /** Gets or sets the azure storage type. Premium, Standard etc. */
-export type MachineAssessmentPropertiesInputAzureDiskTypesList = ReadonlyArray<
+export type MachineAssessmentPropertiesInputAzureDiskTypesList = Array<
   AzureDiskType | (string & {})
 >;
 export const MachineAssessmentPropertiesInputAzureDiskTypesList =
@@ -6417,7 +6406,7 @@ export const MachineAssessmentPropertiesInputAzureDiskTypesList =
   ) as any as S.Schema<MachineAssessmentPropertiesInputAzureDiskTypesList>;
 
 /** Gets or sets the Azure VM families. */
-export type MachineAssessmentPropertiesInputAzureVmFamiliesList = ReadonlyArray<
+export type MachineAssessmentPropertiesInputAzureVmFamiliesList = Array<
   AzureVmFamily | (string & {})
 >;
 export const MachineAssessmentPropertiesInputAzureVmFamiliesList =
@@ -6605,7 +6594,7 @@ export const MachineAssessmentPropertiesAssessmentErrorSummaryMap =
 
 /** Gets the collection of cost components. */
 export type MachineAssessmentPropertiesCostComponentsList =
-  ReadonlyArray<CostComponent>;
+  Array<CostComponent>;
 export const MachineAssessmentPropertiesCostComponentsList =
   /*@__PURE__*/ S.Array(
     CostComponent,
@@ -6613,7 +6602,7 @@ export const MachineAssessmentPropertiesCostComponentsList =
 
 /** Gets or sets the azure storage type. Premium, Standard etc. */
 export type MachineAssessmentPropertiesAzureDiskTypesList =
-  ReadonlyArray<AzureDiskType>;
+  Array<AzureDiskType>;
 export const MachineAssessmentPropertiesAzureDiskTypesList =
   /*@__PURE__*/ S.Array(
     AzureDiskType,
@@ -6621,7 +6610,7 @@ export const MachineAssessmentPropertiesAzureDiskTypesList =
 
 /** Gets or sets the Azure VM families. */
 export type MachineAssessmentPropertiesAzureVmFamiliesList =
-  ReadonlyArray<AzureVmFamily>;
+  Array<AzureVmFamily>;
 export const MachineAssessmentPropertiesAzureVmFamiliesList =
   /*@__PURE__*/ S.Array(
     AzureVmFamily,
@@ -7021,7 +7010,7 @@ export const Assessment = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Assessment" }) as any as S.Schema<Assessment>;
 
 /** The Assessment items on this page */
-export type AssessmentListResultValueList = ReadonlyArray<Assessment>;
+export type AssessmentListResultValueList = Array<Assessment>;
 export const AssessmentListResultValueList = /*@__PURE__*/ S.Array(
   Assessment,
 ) as any as S.Schema<AssessmentListResultValueList>;
@@ -7078,7 +7067,7 @@ export const AvsAssessedMachinesOperationsGetRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<AvsAssessedMachinesOperationsGetRequest>;
 
 /** List of errors for this machine. */
-export type AvsAssessedMachinePropertiesErrorsList = ReadonlyArray<Error>;
+export type AvsAssessedMachinePropertiesErrorsList = Array<Error>;
 export const AvsAssessedMachinePropertiesErrorsList = /*@__PURE__*/ S.Array(
   Error,
 ) as any as S.Schema<AvsAssessedMachinePropertiesErrorsList>;
@@ -7142,7 +7131,7 @@ export const AvsAssessedMachinePropertiesDisksMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<AvsAssessedMachinePropertiesDisksMap>;
 
 /** IP V4 addresses for the machine. */
-export type AvsAssessedNetworkAdapterIpAddressesList = ReadonlyArray<string>;
+export type AvsAssessedNetworkAdapterIpAddressesList = Array<string>;
 export const AvsAssessedNetworkAdapterIpAddressesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AvsAssessedNetworkAdapterIpAddressesList>;
@@ -7378,8 +7367,7 @@ export const AvsAssessedMachine = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AvsAssessedMachine>;
 
 /** The AvsAssessedMachine items on this page */
-export type AvsAssessedMachineListResultValueList =
-  ReadonlyArray<AvsAssessedMachine>;
+export type AvsAssessedMachineListResultValueList = Array<AvsAssessedMachine>;
 export const AvsAssessedMachineListResultValueList = /*@__PURE__*/ S.Array(
   AvsAssessedMachine,
 ) as any as S.Schema<AvsAssessedMachineListResultValueList>;
@@ -7433,7 +7421,7 @@ export type AzureAvsNodeType = "Unknown" | "AV36" | "AV36P" | "AV52" | "AV64";
 export const AzureAvsNodeType = /*@__PURE__*/ S.String;
 
 /** List of locations where this node type is available. */
-export type AvsSkuOptionsTargetLocationsList = ReadonlyArray<AzureLocation>;
+export type AvsSkuOptionsTargetLocationsList = Array<AzureLocation>;
 export const AvsSkuOptionsTargetLocationsList = /*@__PURE__*/ S.Array(
   AzureLocation,
 ) as any as S.Schema<AvsSkuOptionsTargetLocationsList>;
@@ -7453,15 +7441,13 @@ export const AvsSkuOptions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AvsSkuOptions" }) as any as S.Schema<AvsSkuOptions>;
 
 /** AVS SKU Nodes. */
-export type AvsAssessmentOptionsPropertiesAvsNodesList =
-  ReadonlyArray<AvsSkuOptions>;
+export type AvsAssessmentOptionsPropertiesAvsNodesList = Array<AvsSkuOptions>;
 export const AvsAssessmentOptionsPropertiesAvsNodesList = /*@__PURE__*/ S.Array(
   AvsSkuOptions,
 ) as any as S.Schema<AvsAssessmentOptionsPropertiesAvsNodesList>;
 
 /** List of locations where this storage type is available. */
-export type AvsExternalStorageOptionsTargetLocationsList =
-  ReadonlyArray<AzureLocation>;
+export type AvsExternalStorageOptionsTargetLocationsList = Array<AzureLocation>;
 export const AvsExternalStorageOptionsTargetLocationsList =
   /*@__PURE__*/ S.Array(
     AzureLocation,
@@ -7485,7 +7471,7 @@ export const AvsExternalStorageOptions = /*@__PURE__*/ S.suspend(() =>
 
 /** AVS External Storage Types Supported. */
 export type AvsAssessmentOptionsPropertiesAvsExternalStorageTypesList =
-  ReadonlyArray<AvsExternalStorageOptions>;
+  Array<AvsExternalStorageOptions>;
 export const AvsAssessmentOptionsPropertiesAvsExternalStorageTypesList =
   /*@__PURE__*/ S.Array(
     AvsExternalStorageOptions,
@@ -7503,7 +7489,7 @@ export const FttAndRaidLevel = /*@__PURE__*/ S.String;
 
 /** FTT and Raid level values. */
 export type AvsAssessmentOptionsPropertiesFailuresToTolerateAndRaidLevelValuesList =
-  ReadonlyArray<FttAndRaidLevel>;
+  Array<FttAndRaidLevel>;
 export const AvsAssessmentOptionsPropertiesFailuresToTolerateAndRaidLevelValuesList =
   /*@__PURE__*/ S.Array(
     FttAndRaidLevel,
@@ -7511,7 +7497,7 @@ export const AvsAssessmentOptionsPropertiesFailuresToTolerateAndRaidLevelValuesL
 
 /** List of AVS nodes for RI. */
 export type AvsAssessmentOptionsPropertiesReservedInstanceAvsNodesList =
-  ReadonlyArray<AzureAvsNodeType>;
+  Array<AzureAvsNodeType>;
 export const AvsAssessmentOptionsPropertiesReservedInstanceAvsNodesList =
   /*@__PURE__*/ S.Array(
     AzureAvsNodeType,
@@ -7519,7 +7505,7 @@ export const AvsAssessmentOptionsPropertiesReservedInstanceAvsNodesList =
 
 /** List of supported Azure regions for reserved instances. */
 export type AvsAssessmentOptionsPropertiesReservedInstanceSupportedLocationsList =
-  ReadonlyArray<AzureLocation>;
+  Array<AzureLocation>;
 export const AvsAssessmentOptionsPropertiesReservedInstanceSupportedLocationsList =
   /*@__PURE__*/ S.Array(
     AzureLocation,
@@ -7527,7 +7513,7 @@ export const AvsAssessmentOptionsPropertiesReservedInstanceSupportedLocationsLis
 
 /** List of supported currencies for reserved instances. */
 export type AvsAssessmentOptionsPropertiesReservedInstanceSupportedCurrenciesList =
-  ReadonlyArray<AzureCurrency>;
+  Array<AzureCurrency>;
 export const AvsAssessmentOptionsPropertiesReservedInstanceSupportedCurrenciesList =
   /*@__PURE__*/ S.Array(
     AzureCurrency,
@@ -7535,7 +7521,7 @@ export const AvsAssessmentOptionsPropertiesReservedInstanceSupportedCurrenciesLi
 
 /** List of supported Azure offer codes for reserved instances. */
 export type AvsAssessmentOptionsPropertiesReservedInstanceSupportedOffersList =
-  ReadonlyArray<AzureOfferCode>;
+  Array<AzureOfferCode>;
 export const AvsAssessmentOptionsPropertiesReservedInstanceSupportedOffersList =
   /*@__PURE__*/ S.Array(
     AzureOfferCode,
@@ -7662,7 +7648,7 @@ export const AvsAssessmentOptions = /*@__PURE__*/ S.suspend(() =>
 
 /** The AvsAssessmentOptions items on this page */
 export type AvsAssessmentOptionsListResultValueList =
-  ReadonlyArray<AvsAssessmentOptions>;
+  Array<AvsAssessmentOptions>;
 export const AvsAssessmentOptionsListResultValueList = /*@__PURE__*/ S.Array(
   AvsAssessmentOptions,
 ) as any as S.Schema<AvsAssessmentOptionsListResultValueList>;
@@ -7685,14 +7671,14 @@ export const AvsAssessmentOptionsListResult = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Failures to tolerate and RAID levels in a common property. */
 export type AvsAssessmentPropertiesInputFailuresToTolerateAndRaidLevelListList =
-  ReadonlyArray<FttAndRaidLevel | (string & {})>;
+  Array<FttAndRaidLevel | (string & {})>;
 export const AvsAssessmentPropertiesInputFailuresToTolerateAndRaidLevelListList =
   /*@__PURE__*/ S.Array(
     FttAndRaidLevel,
   ) as any as S.Schema<AvsAssessmentPropertiesInputFailuresToTolerateAndRaidLevelListList>;
 
 /** AVS node types. */
-export type AvsAssessmentPropertiesInputNodeTypesList = ReadonlyArray<
+export type AvsAssessmentPropertiesInputNodeTypesList = Array<
   AzureAvsNodeType | (string & {})
 >;
 export const AvsAssessmentPropertiesInputNodeTypesList = /*@__PURE__*/ S.Array(
@@ -7700,8 +7686,9 @@ export const AvsAssessmentPropertiesInputNodeTypesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<AvsAssessmentPropertiesInputNodeTypesList>;
 
 /** List of AVS external storage types. */
-export type AvsAssessmentPropertiesInputExternalStorageTypesList =
-  ReadonlyArray<ExternalStorageType | (string & {})>;
+export type AvsAssessmentPropertiesInputExternalStorageTypesList = Array<
+  ExternalStorageType | (string & {})
+>;
 export const AvsAssessmentPropertiesInputExternalStorageTypesList =
   /*@__PURE__*/ S.Array(
     ExternalStorageType,
@@ -7847,30 +7834,28 @@ export const AvsAssessmentPropertiesAssessmentErrorSummaryMap =
 
 /** List of Failures to tolerate and RAID levels in a common property. */
 export type AvsAssessmentPropertiesFailuresToTolerateAndRaidLevelListList =
-  ReadonlyArray<FttAndRaidLevel>;
+  Array<FttAndRaidLevel>;
 export const AvsAssessmentPropertiesFailuresToTolerateAndRaidLevelListList =
   /*@__PURE__*/ S.Array(
     FttAndRaidLevel,
   ) as any as S.Schema<AvsAssessmentPropertiesFailuresToTolerateAndRaidLevelListList>;
 
 /** AVS node types. */
-export type AvsAssessmentPropertiesNodeTypesList =
-  ReadonlyArray<AzureAvsNodeType>;
+export type AvsAssessmentPropertiesNodeTypesList = Array<AzureAvsNodeType>;
 export const AvsAssessmentPropertiesNodeTypesList = /*@__PURE__*/ S.Array(
   AzureAvsNodeType,
 ) as any as S.Schema<AvsAssessmentPropertiesNodeTypesList>;
 
 /** List of AVS external storage types. */
 export type AvsAssessmentPropertiesExternalStorageTypesList =
-  ReadonlyArray<ExternalStorageType>;
+  Array<ExternalStorageType>;
 export const AvsAssessmentPropertiesExternalStorageTypesList =
   /*@__PURE__*/ S.Array(
     ExternalStorageType,
   ) as any as S.Schema<AvsAssessmentPropertiesExternalStorageTypesList>;
 
 /** collection of cost components. */
-export type AvsAssessmentPropertiesCostComponentsList =
-  ReadonlyArray<CostComponent>;
+export type AvsAssessmentPropertiesCostComponentsList = Array<CostComponent>;
 export const AvsAssessmentPropertiesCostComponentsList = /*@__PURE__*/ S.Array(
   CostComponent,
 ) as any as S.Schema<AvsAssessmentPropertiesCostComponentsList>;
@@ -7928,7 +7913,7 @@ export const AvsEstimatedNode = /*@__PURE__*/ S.suspend(() =>
 
 /** Estimated AVS SKU for Assessment. */
 export type AvsAssessmentPropertiesAvsEstimatedNodesList =
-  ReadonlyArray<AvsEstimatedNode>;
+  Array<AvsEstimatedNode>;
 export const AvsAssessmentPropertiesAvsEstimatedNodesList =
   /*@__PURE__*/ S.Array(
     AvsEstimatedNode,
@@ -7958,7 +7943,7 @@ export const AvsEstimatedExternalStorage = /*@__PURE__*/ S.suspend(() =>
 
 /** Estimated External Storage for Assessment. */
 export type AvsAssessmentPropertiesAvsEstimatedExternalStoragesList =
-  ReadonlyArray<AvsEstimatedExternalStorage>;
+  Array<AvsEstimatedExternalStorage>;
 export const AvsAssessmentPropertiesAvsEstimatedExternalStoragesList =
   /*@__PURE__*/ S.Array(
     AvsEstimatedExternalStorage,
@@ -7986,7 +7971,7 @@ export const AvsEstimatedNetwork = /*@__PURE__*/ S.suspend(() =>
 
 /** Estimated External Storage for Assessment. */
 export type AvsAssessmentPropertiesAvsEstimatedNetworksList =
-  ReadonlyArray<AvsEstimatedNetwork>;
+  Array<AvsEstimatedNetwork>;
 export const AvsAssessmentPropertiesAvsEstimatedNetworksList =
   /*@__PURE__*/ S.Array(
     AvsEstimatedNetwork,
@@ -8381,7 +8366,7 @@ export const AvsAssessment = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AvsAssessment" }) as any as S.Schema<AvsAssessment>;
 
 /** The AvsAssessment items on this page */
-export type AvsAssessmentListResultValueList = ReadonlyArray<AvsAssessment>;
+export type AvsAssessmentListResultValueList = Array<AvsAssessment>;
 export const AvsAssessmentListResultValueList = /*@__PURE__*/ S.Array(
   AvsAssessment,
 ) as any as S.Schema<AvsAssessmentListResultValueList>;
@@ -8489,7 +8474,7 @@ export const DatabaseInstanceDiscoveryDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets the assessment details of the database instance published by various sources. */
 export type DatabaseInstancePropertiesDiscoveryDataList =
-  ReadonlyArray<DatabaseInstanceDiscoveryDetails>;
+  Array<DatabaseInstanceDiscoveryDetails>;
 export const DatabaseInstancePropertiesDiscoveryDataList =
   /*@__PURE__*/ S.Array(
     DatabaseInstanceDiscoveryDetails,
@@ -8594,8 +8579,7 @@ export const DatabaseInstancesControllerListDatabaseInstancesRequest =
   }) as any as S.Schema<DatabaseInstancesControllerListDatabaseInstancesRequest>;
 
 /** Gets or sets the database instances. */
-export type DatabaseInstanceCollectionValueList =
-  ReadonlyArray<DatabaseInstance>;
+export type DatabaseInstanceCollectionValueList = Array<DatabaseInstance>;
 export const DatabaseInstanceCollectionValueList = /*@__PURE__*/ S.Array(
   DatabaseInstance,
 ) as any as S.Schema<DatabaseInstanceCollectionValueList>;
@@ -8711,7 +8695,7 @@ export const DatabaseAssessmentDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets the assessment details of the database published by various sources. */
 export type DatabasePropertiesAssessmentDataList =
-  ReadonlyArray<DatabaseAssessmentDetails>;
+  Array<DatabaseAssessmentDetails>;
 export const DatabasePropertiesAssessmentDataList = /*@__PURE__*/ S.Array(
   DatabaseAssessmentDetails,
 ) as any as S.Schema<DatabasePropertiesAssessmentDataList>;
@@ -8785,7 +8769,7 @@ export const DatabasesControllerListDatabasesRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DatabasesControllerListDatabasesRequest>;
 
 /** Gets or sets the databases. */
-export type DatabaseCollectionValueList = ReadonlyArray<Database>;
+export type DatabaseCollectionValueList = Array<Database>;
 export const DatabaseCollectionValueList = /*@__PURE__*/ S.Array(
   Database,
 ) as any as S.Schema<DatabaseCollectionValueList>;
@@ -8808,7 +8792,7 @@ export const DatabaseCollection = /*@__PURE__*/ S.suspend(() =>
 
 /** array of machine ids */
 export type DependencyMapServiceMapextensionsDependencyMapRequestFiltersMachineIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const DependencyMapServiceMapextensionsDependencyMapRequestFiltersMachineIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -8816,7 +8800,7 @@ export const DependencyMapServiceMapextensionsDependencyMapRequestFiltersMachine
 
 /** array of process Ids */
 export type DependencyMapServiceMapextensionsDependencyMapRequestFiltersProcessIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const DependencyMapServiceMapextensionsDependencyMapRequestFiltersProcessIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -9211,7 +9195,7 @@ export const EventsControllerListEventsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EventsControllerListEventsRequest>;
 
 /** Gets or sets the machines. */
-export type EventCollectionValueList = ReadonlyArray<MigrateEvent>;
+export type EventCollectionValueList = Array<MigrateEvent>;
 export const EventCollectionValueList = /*@__PURE__*/ S.Array(
   MigrateEvent,
 ) as any as S.Schema<EventCollectionValueList>;
@@ -9233,7 +9217,7 @@ export const EventCollection = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EventCollection>;
 
 /** List of assessment types supported on this group. */
-export type GroupPropertiesInputSupportedAssessmentTypesList = ReadonlyArray<
+export type GroupPropertiesInputSupportedAssessmentTypesList = Array<
   AssessmentType | (string & {})
 >;
 export const GroupPropertiesInputSupportedAssessmentTypesList =
@@ -9302,14 +9286,13 @@ export type GroupStatus =
 export const GroupStatus = /*@__PURE__*/ S.String;
 
 /** List of References to Assessments created on this group. */
-export type GroupPropertiesAssessmentsList = ReadonlyArray<string>;
+export type GroupPropertiesAssessmentsList = Array<string>;
 export const GroupPropertiesAssessmentsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GroupPropertiesAssessmentsList>;
 
 /** List of assessment types supported on this group. */
-export type GroupPropertiesSupportedAssessmentTypesList =
-  ReadonlyArray<AssessmentType>;
+export type GroupPropertiesSupportedAssessmentTypesList = Array<AssessmentType>;
 export const GroupPropertiesSupportedAssessmentTypesList =
   /*@__PURE__*/ S.Array(
     AssessmentType,
@@ -9515,7 +9498,7 @@ export const Group = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Group" }) as any as S.Schema<Group>;
 
 /** The Group items on this page */
-export type GroupListResultValueList = ReadonlyArray<Group>;
+export type GroupListResultValueList = Array<Group>;
 export const GroupListResultValueList = /*@__PURE__*/ S.Array(
   Group,
 ) as any as S.Schema<GroupListResultValueList>;
@@ -9540,7 +9523,7 @@ export type GroupUpdateOperation = "Add" | "Remove";
 export const GroupUpdateOperation = /*@__PURE__*/ S.String;
 
 /** List of machine names that are part of this group. */
-export type GroupBodyPropertiesMachinesList = ReadonlyArray<string>;
+export type GroupBodyPropertiesMachinesList = Array<string>;
 export const GroupBodyPropertiesMachinesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GroupBodyPropertiesMachinesList>;
@@ -9622,8 +9605,7 @@ export const GroupsOperationsUpdateMachinesResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GroupsOperationsUpdateMachinesResponse>;
 
 /** Gets or sets list of hosts (FQDN) currently being tracked by the cluster. */
-export type HypervClusterPropertiesInputHostFqdnListList =
-  ReadonlyArray<string>;
+export type HypervClusterPropertiesInputHostFqdnListList = Array<string>;
 export const HypervClusterPropertiesInputHostFqdnListList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -9695,7 +9677,7 @@ export const HypervClusterControllerCreateClusterRequest =
   }) as any as S.Schema<HypervClusterControllerCreateClusterRequest>;
 
 /** Gets or sets list of hosts (FQDN) currently being tracked by the cluster. */
-export type HypervClusterPropertiesHostFqdnListList = ReadonlyArray<string>;
+export type HypervClusterPropertiesHostFqdnListList = Array<string>;
 export const HypervClusterPropertiesHostFqdnListList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<HypervClusterPropertiesHostFqdnListList>;
@@ -9775,8 +9757,7 @@ export const HealthErrorDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HealthErrorDetails>;
 
 /** Gets the errors. */
-export type HypervClusterPropertiesErrorsList =
-  ReadonlyArray<HealthErrorDetails>;
+export type HypervClusterPropertiesErrorsList = Array<HealthErrorDetails>;
 export const HypervClusterPropertiesErrorsList = /*@__PURE__*/ S.Array(
   HealthErrorDetails,
 ) as any as S.Schema<HypervClusterPropertiesErrorsList>;
@@ -9986,7 +9967,7 @@ export const HypervCluster = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "HypervCluster" }) as any as S.Schema<HypervCluster>;
 
 /** The HypervCluster items on this page */
-export type HypervClusterListResultValueList = ReadonlyArray<HypervCluster>;
+export type HypervClusterListResultValueList = Array<HypervCluster>;
 export const HypervClusterListResultValueList = /*@__PURE__*/ S.Array(
   HypervCluster,
 ) as any as S.Schema<HypervClusterListResultValueList>;
@@ -10298,7 +10279,7 @@ export const HypervCollector = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HypervCollector>;
 
 /** The HypervCollector items on this page */
-export type HypervCollectorListResultValueList = ReadonlyArray<HypervCollector>;
+export type HypervCollectorListResultValueList = Array<HypervCollector>;
 export const HypervCollectorListResultValueList = /*@__PURE__*/ S.Array(
   HypervCollector,
 ) as any as S.Schema<HypervCollectorListResultValueList>;
@@ -10562,7 +10543,7 @@ export const DependencyMapMachineInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets the machine collection. */
 export type HypervDependencyMapControllerUpdateDependencyMapStatusRequestMachinesList =
-  ReadonlyArray<DependencyMapMachineInput>;
+  Array<DependencyMapMachineInput>;
 export const HypervDependencyMapControllerUpdateDependencyMapStatusRequestMachinesList =
   /*@__PURE__*/ S.Array(
     DependencyMapMachineInput,
@@ -10658,7 +10639,7 @@ export const HypervHostControllerCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HypervHostControllerCreateRequest>;
 
 /** Gets the errors. */
-export type HypervHostPropertiesErrorsList = ReadonlyArray<HealthErrorDetails>;
+export type HypervHostPropertiesErrorsList = Array<HealthErrorDetails>;
 export const HypervHostPropertiesErrorsList = /*@__PURE__*/ S.Array(
   HealthErrorDetails,
 ) as any as S.Schema<HypervHostPropertiesErrorsList>;
@@ -10858,7 +10839,7 @@ export const HypervHost = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "HypervHost" }) as any as S.Schema<HypervHost>;
 
 /** The HypervHost items on this page */
-export type HypervHostListResultValueList = ReadonlyArray<HypervHost>;
+export type HypervHostListResultValueList = Array<HypervHost>;
 export const HypervHostListResultValueList = /*@__PURE__*/ S.Array(
   HypervHost,
 ) as any as S.Schema<HypervHostListResultValueList>;
@@ -10946,7 +10927,7 @@ export const ErrorDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ErrorDetails" }) as any as S.Schema<ErrorDetails>;
 
 /** Gets the errors. */
-export type JobPropertiesErrorsList = ReadonlyArray<ErrorDetails>;
+export type JobPropertiesErrorsList = Array<ErrorDetails>;
 export const JobPropertiesErrorsList = /*@__PURE__*/ S.Array(
   ErrorDetails,
 ) as any as S.Schema<JobPropertiesErrorsList>;
@@ -11057,7 +11038,7 @@ export const VmwareJob = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VmwareJob" }) as any as S.Schema<VmwareJob>;
 
 /** The VmwareJob items on this page */
-export type VmwareJobListResultValueList = ReadonlyArray<VmwareJob>;
+export type VmwareJobListResultValueList = Array<VmwareJob>;
 export const VmwareJobListResultValueList = /*@__PURE__*/ S.Array(
   VmwareJob,
 ) as any as S.Schema<VmwareJobListResultValueList>;
@@ -11179,7 +11160,7 @@ export const HypervJob = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "HypervJob" }) as any as S.Schema<HypervJob>;
 
 /** The HypervJob items on this page */
-export type HypervJobListResultValueList = ReadonlyArray<HypervJob>;
+export type HypervJobListResultValueList = Array<HypervJob>;
 export const HypervJobListResultValueList = /*@__PURE__*/ S.Array(
   HypervJob,
 ) as any as S.Schema<HypervJobListResultValueList>;
@@ -11262,13 +11243,13 @@ export const HypervDisk = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "HypervDisk" }) as any as S.Schema<HypervDisk>;
 
 /** Disks attached to the machine. */
-export type HypervMachinePropertiesDisksList = ReadonlyArray<HypervDisk>;
+export type HypervMachinePropertiesDisksList = Array<HypervDisk>;
 export const HypervMachinePropertiesDisksList = /*@__PURE__*/ S.Array(
   HypervDisk,
 ) as any as S.Schema<HypervMachinePropertiesDisksList>;
 
 /** Gets IP addresses for the machine. */
-export type HypervNetworkAdapterIpAddressListList = ReadonlyArray<string>;
+export type HypervNetworkAdapterIpAddressListList = Array<string>;
 export const HypervNetworkAdapterIpAddressListList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<HypervNetworkAdapterIpAddressListList>;
@@ -11312,7 +11293,7 @@ export const HypervNetworkAdapter = /*@__PURE__*/ S.suspend(() =>
 
 /** Network adapters attached to the machine. */
 export type HypervMachinePropertiesNetworkAdaptersList =
-  ReadonlyArray<HypervNetworkAdapter>;
+  Array<HypervNetworkAdapter>;
 export const HypervMachinePropertiesNetworkAdaptersList = /*@__PURE__*/ S.Array(
   HypervNetworkAdapter,
 ) as any as S.Schema<HypervMachinePropertiesNetworkAdaptersList>;
@@ -11338,14 +11319,13 @@ export const GuestOsDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GuestOsDetails" }) as any as S.Schema<GuestOsDetails>;
 
 /** Gets the appliance names. */
-export type HypervMachinePropertiesApplianceNamesList = ReadonlyArray<string>;
+export type HypervMachinePropertiesApplianceNamesList = Array<string>;
 export const HypervMachinePropertiesApplianceNamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<HypervMachinePropertiesApplianceNamesList>;
 
 /** Errors for machine. */
-export type HypervMachinePropertiesErrorsList =
-  ReadonlyArray<HealthErrorDetails>;
+export type HypervMachinePropertiesErrorsList = Array<HealthErrorDetails>;
 export const HypervMachinePropertiesErrorsList = /*@__PURE__*/ S.Array(
   HealthErrorDetails,
 ) as any as S.Schema<HypervMachinePropertiesErrorsList>;
@@ -11363,7 +11343,7 @@ export type ApplicationDiscoveryScopeStatus =
 export const ApplicationDiscoveryScopeStatus = /*@__PURE__*/ S.String;
 
 /** Gets errors for discovery scope. */
-export type ApplicationDiscoveryErrorsList = ReadonlyArray<HealthErrorDetails>;
+export type ApplicationDiscoveryErrorsList = Array<HealthErrorDetails>;
 export const ApplicationDiscoveryErrorsList = /*@__PURE__*/ S.Array(
   HealthErrorDetails,
 ) as any as S.Schema<ApplicationDiscoveryErrorsList>;
@@ -11400,8 +11380,7 @@ export type DependencyMapDiscoveryScopeStatus =
 export const DependencyMapDiscoveryScopeStatus = /*@__PURE__*/ S.String;
 
 /** Gets errors for discovery scope. */
-export type DependencyMapDiscoveryErrorsList =
-  ReadonlyArray<HealthErrorDetails>;
+export type DependencyMapDiscoveryErrorsList = Array<HealthErrorDetails>;
 export const DependencyMapDiscoveryErrorsList = /*@__PURE__*/ S.Array(
   HealthErrorDetails,
 ) as any as S.Schema<DependencyMapDiscoveryErrorsList>;
@@ -11438,7 +11417,7 @@ export type StaticDiscoveryScopeStatus =
 export const StaticDiscoveryScopeStatus = /*@__PURE__*/ S.String;
 
 /** Gets errors for discovery scope. */
-export type StaticDiscoveryErrorsList = ReadonlyArray<HealthErrorDetails>;
+export type StaticDiscoveryErrorsList = Array<HealthErrorDetails>;
 export const StaticDiscoveryErrorsList = /*@__PURE__*/ S.Array(
   HealthErrorDetails,
 ) as any as S.Schema<StaticDiscoveryErrorsList>;
@@ -11612,7 +11591,7 @@ export const Application = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Application" }) as any as S.Schema<Application>;
 
 /** Gets or sets Applications of the AppsAndRoles. */
-export type AppsAndRolesApplicationsList = ReadonlyArray<Application>;
+export type AppsAndRolesApplicationsList = Array<Application>;
 export const AppsAndRolesApplicationsList = /*@__PURE__*/ S.Array(
   Application,
 ) as any as S.Schema<AppsAndRolesApplicationsList>;
@@ -11647,7 +11626,7 @@ export const WebApplicationAppsAndRolesModel = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets WebApplications of the AppsAndRoles. */
 export type AppsAndRolesWebApplicationsList =
-  ReadonlyArray<WebApplicationAppsAndRolesModel>;
+  Array<WebApplicationAppsAndRolesModel>;
 export const AppsAndRolesWebApplicationsList = /*@__PURE__*/ S.Array(
   WebApplicationAppsAndRolesModel,
 ) as any as S.Schema<AppsAndRolesWebApplicationsList>;
@@ -11673,7 +11652,7 @@ export const Feature = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Feature" }) as any as S.Schema<Feature>;
 
 /** Gets or sets Features of the AppsAndRoles. */
-export type AppsAndRolesFeaturesList = ReadonlyArray<Feature>;
+export type AppsAndRolesFeaturesList = Array<Feature>;
 export const AppsAndRolesFeaturesList = /*@__PURE__*/ S.Array(
   Feature,
 ) as any as S.Schema<AppsAndRolesFeaturesList>;
@@ -11728,7 +11707,7 @@ export const SqlServerApplication = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SqlServerApplication>;
 
 /** Gets or sets SQLServers of the AppsAndRoles. */
-export type AppsAndRolesSqlServersList = ReadonlyArray<SqlServerApplication>;
+export type AppsAndRolesSqlServersList = Array<SqlServerApplication>;
 export const AppsAndRolesSqlServersList = /*@__PURE__*/ S.Array(
   SqlServerApplication,
 ) as any as S.Schema<AppsAndRolesSqlServersList>;
@@ -11756,7 +11735,7 @@ export const SharePointServer = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SharePointServer>;
 
 /** Gets or sets SharePointServers of the AppsAndRoles. */
-export type AppsAndRolesSharePointServersList = ReadonlyArray<SharePointServer>;
+export type AppsAndRolesSharePointServersList = Array<SharePointServer>;
 export const AppsAndRolesSharePointServersList = /*@__PURE__*/ S.Array(
   SharePointServer,
 ) as any as S.Schema<AppsAndRolesSharePointServersList>;
@@ -11779,7 +11758,7 @@ export const SystemCenter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SystemCenter" }) as any as S.Schema<SystemCenter>;
 
 /** Gets or sets SystemCenters of the AppsAndRoles. */
-export type AppsAndRolesSystemCentersList = ReadonlyArray<SystemCenter>;
+export type AppsAndRolesSystemCentersList = Array<SystemCenter>;
 export const AppsAndRolesSystemCentersList = /*@__PURE__*/ S.Array(
   SystemCenter,
 ) as any as S.Schema<AppsAndRolesSystemCentersList>;
@@ -11799,7 +11778,7 @@ export const BizTalkServer = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BizTalkServer" }) as any as S.Schema<BizTalkServer>;
 
 /** Gets or sets BizTalkServers of the AppsAndRoles. */
-export type AppsAndRolesBizTalkServersList = ReadonlyArray<BizTalkServer>;
+export type AppsAndRolesBizTalkServersList = Array<BizTalkServer>;
 export const AppsAndRolesBizTalkServersList = /*@__PURE__*/ S.Array(
   BizTalkServer,
 ) as any as S.Schema<AppsAndRolesBizTalkServersList>;
@@ -11828,7 +11807,7 @@ export const ExchangeServer = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ExchangeServer" }) as any as S.Schema<ExchangeServer>;
 
 /** Gets or sets ExchangeServers of the AppsAndRoles. */
-export type AppsAndRolesExchangeServersList = ReadonlyArray<ExchangeServer>;
+export type AppsAndRolesExchangeServersList = Array<ExchangeServer>;
 export const AppsAndRolesExchangeServersList = /*@__PURE__*/ S.Array(
   ExchangeServer,
 ) as any as S.Schema<AppsAndRolesExchangeServersList>;
@@ -11851,7 +11830,7 @@ export const OtherDatabase = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "OtherDatabase" }) as any as S.Schema<OtherDatabase>;
 
 /** Gets or sets OtherDatabaseServers of the AppsAndRoles. */
-export type AppsAndRolesOtherDatabasesList = ReadonlyArray<OtherDatabase>;
+export type AppsAndRolesOtherDatabasesList = Array<OtherDatabase>;
 export const AppsAndRolesOtherDatabasesList = /*@__PURE__*/ S.Array(
   OtherDatabase,
 ) as any as S.Schema<AppsAndRolesOtherDatabasesList>;
@@ -11913,13 +11892,13 @@ export interface ProductSupportStatus_2 {
   /** current version. */
   currentVersion?: string;
   /** esu status. */
-  esuStatus?: EsuStatus;
+  esuStatus?: EsuStatus | (string & {});
   /** support status. */
-  supportStatus?: SupportStatus;
+  supportStatus?: SupportStatus | (string & {});
   /** support end date. */
   supportEndDate?: string;
   /** esu year. */
-  esuYear?: EsuYear;
+  esuYear?: EsuYear | (string & {});
 }
 export const ProductSupportStatus_2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -12234,7 +12213,7 @@ export const HypervMachine = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "HypervMachine" }) as any as S.Schema<HypervMachine>;
 
 /** The HypervMachine items on this page */
-export type HypervMachineListResultValueList = ReadonlyArray<HypervMachine>;
+export type HypervMachineListResultValueList = Array<HypervMachine>;
 export const HypervMachineListResultValueList = /*@__PURE__*/ S.Array(
   HypervMachine,
 ) as any as S.Schema<HypervMachineListResultValueList>;
@@ -12385,7 +12364,7 @@ export const MachineMetadata = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of Machine MetaData. */
 export type HypervMachinesControllerUpdatePropertiesRequestValueList =
-  ReadonlyArray<MachineMetadata>;
+  Array<MachineMetadata>;
 export const HypervMachinesControllerUpdatePropertiesRequestValueList =
   /*@__PURE__*/ S.Array(
     MachineMetadata,
@@ -12651,7 +12630,7 @@ export const HypervRunAsAccountResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The HypervRunAsAccountResource items on this page */
 export type HypervRunAsAccountResourceListResultValueList =
-  ReadonlyArray<HypervRunAsAccountResource>;
+  Array<HypervRunAsAccountResource>;
 export const HypervRunAsAccountResourceListResultValueList =
   /*@__PURE__*/ S.Array(
     HypervRunAsAccountResource,
@@ -13212,7 +13191,7 @@ export const HypervSitesControllerListHealthSummaryRequest =
   }) as any as S.Schema<HypervSitesControllerListHealthSummaryRequest>;
 
 /** Gets or sets the affected resources. */
-export type SiteHealthSummaryAffectedResourcesList = ReadonlyArray<string>;
+export type SiteHealthSummaryAffectedResourcesList = Array<string>;
 export const SiteHealthSummaryAffectedResourcesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SiteHealthSummaryAffectedResourcesList>;
@@ -13227,7 +13206,7 @@ export const SiteHealthSummaryFabricLayoutUpdateSourcesItem =
 
 /** Gets or sets sources of the exception. */
 export type SiteHealthSummaryFabricLayoutUpdateSourcesList =
-  ReadonlyArray<SiteHealthSummaryFabricLayoutUpdateSourcesItem>;
+  Array<SiteHealthSummaryFabricLayoutUpdateSourcesItem>;
 export const SiteHealthSummaryFabricLayoutUpdateSourcesList =
   /*@__PURE__*/ S.Array(
     SiteHealthSummaryFabricLayoutUpdateSourcesItem,
@@ -13282,8 +13261,7 @@ export const SiteHealthSummary = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SiteHealthSummary>;
 
 /** Gets the list of SiteHealthSummary. */
-export type SiteHealthSummaryCollectionValueList =
-  ReadonlyArray<SiteHealthSummary>;
+export type SiteHealthSummaryCollectionValueList = Array<SiteHealthSummary>;
 export const SiteHealthSummaryCollectionValueList = /*@__PURE__*/ S.Array(
   SiteHealthSummary,
 ) as any as S.Schema<SiteHealthSummaryCollectionValueList>;
@@ -13493,7 +13471,7 @@ export const HypervSite = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "HypervSite" }) as any as S.Schema<HypervSite>;
 
 /** The HypervSite items on this page */
-export type HypervSiteListResultValueList = ReadonlyArray<HypervSite>;
+export type HypervSiteListResultValueList = Array<HypervSite>;
 export const HypervSiteListResultValueList = /*@__PURE__*/ S.Array(
   HypervSite,
 ) as any as S.Schema<HypervSiteListResultValueList>;
@@ -13675,7 +13653,7 @@ export const HypervVmSoftwareInventory = /*@__PURE__*/ S.suspend(() =>
 
 /** The HypervVmSoftwareInventory items on this page */
 export type HypervVmSoftwareInventoryListResultValueList =
-  ReadonlyArray<HypervVmSoftwareInventory>;
+  Array<HypervVmSoftwareInventory>;
 export const HypervVmSoftwareInventoryListResultValueList =
   /*@__PURE__*/ S.Array(
     HypervVmSoftwareInventory,
@@ -13744,7 +13722,7 @@ export const DirectoryPath = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DirectoryPath" }) as any as S.Schema<DirectoryPath>;
 
 /** Gets or sets the list of directories. */
-export type IisApplicationUnitDirectoriesList = ReadonlyArray<DirectoryPath>;
+export type IisApplicationUnitDirectoriesList = Array<DirectoryPath>;
 export const IisApplicationUnitDirectoriesList = /*@__PURE__*/ S.Array(
   DirectoryPath,
 ) as any as S.Schema<IisApplicationUnitDirectoriesList>;
@@ -13779,15 +13757,14 @@ export const IisApplicationUnit = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets the list of application units for the web site. */
 export type IisWebApplicationPropertiesApplicationsList =
-  ReadonlyArray<IisApplicationUnit>;
+  Array<IisApplicationUnit>;
 export const IisWebApplicationPropertiesApplicationsList =
   /*@__PURE__*/ S.Array(
     IisApplicationUnit,
   ) as any as S.Schema<IisWebApplicationPropertiesApplicationsList>;
 
 /** Gets or sets the list of directories. */
-export type IisVirtualApplicationUnitDirectoriesList =
-  ReadonlyArray<DirectoryPath>;
+export type IisVirtualApplicationUnitDirectoriesList = Array<DirectoryPath>;
 export const IisVirtualApplicationUnitDirectoriesList = /*@__PURE__*/ S.Array(
   DirectoryPath,
 ) as any as S.Schema<IisVirtualApplicationUnitDirectoriesList>;
@@ -13813,15 +13790,14 @@ export const IisVirtualApplicationUnit = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets the list of application units for the web site. */
 export type IisWebApplicationPropertiesVirtualApplicationsList =
-  ReadonlyArray<IisVirtualApplicationUnit>;
+  Array<IisVirtualApplicationUnit>;
 export const IisWebApplicationPropertiesVirtualApplicationsList =
   /*@__PURE__*/ S.Array(
     IisVirtualApplicationUnit,
   ) as any as S.Schema<IisWebApplicationPropertiesVirtualApplicationsList>;
 
 /** Gets the list of machine ARM Ids on which the SQL server is deployed. */
-export type IisWebApplicationPropertiesMachineArmIdsList =
-  ReadonlyArray<string>;
+export type IisWebApplicationPropertiesMachineArmIdsList = Array<string>;
 export const IisWebApplicationPropertiesMachineArmIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -13850,8 +13826,7 @@ export const FrontEndBinding = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FrontEndBinding>;
 
 /** Gets the front end bindings for the application. */
-export type IisWebApplicationPropertiesBindingsList =
-  ReadonlyArray<FrontEndBinding>;
+export type IisWebApplicationPropertiesBindingsList = Array<FrontEndBinding>;
 export const IisWebApplicationPropertiesBindingsList = /*@__PURE__*/ S.Array(
   FrontEndBinding,
 ) as any as S.Schema<IisWebApplicationPropertiesBindingsList>;
@@ -13874,7 +13849,7 @@ export const WebApplicationFramework = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets the Error details. */
 export type IisWebApplicationPropertiesFrameworksList =
-  ReadonlyArray<WebApplicationFramework>;
+  Array<WebApplicationFramework>;
 export const IisWebApplicationPropertiesFrameworksList = /*@__PURE__*/ S.Array(
   WebApplicationFramework,
 ) as any as S.Schema<IisWebApplicationPropertiesFrameworksList>;
@@ -13915,14 +13890,14 @@ export const WebApplicationConfigurationUnit = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets the configuration. */
 export type IisWebApplicationPropertiesConfigurationsList =
-  ReadonlyArray<WebApplicationConfigurationUnit>;
+  Array<WebApplicationConfigurationUnit>;
 export const IisWebApplicationPropertiesConfigurationsList =
   /*@__PURE__*/ S.Array(
     WebApplicationConfigurationUnit,
   ) as any as S.Schema<IisWebApplicationPropertiesConfigurationsList>;
 
 /** Gets or sets the paths of the directory on the source machine. */
-export type WebApplicationDirectoryUnitSourcePathsList = ReadonlyArray<string>;
+export type WebApplicationDirectoryUnitSourcePathsList = Array<string>;
 export const WebApplicationDirectoryUnitSourcePathsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<WebApplicationDirectoryUnitSourcePathsList>;
@@ -13957,7 +13932,7 @@ export const WebApplicationDirectoryUnit = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets the directories. */
 export type IisWebApplicationPropertiesDirectoriesList =
-  ReadonlyArray<WebApplicationDirectoryUnit>;
+  Array<WebApplicationDirectoryUnit>;
 export const IisWebApplicationPropertiesDirectoriesList = /*@__PURE__*/ S.Array(
   WebApplicationDirectoryUnit,
 ) as any as S.Schema<IisWebApplicationPropertiesDirectoriesList>;
@@ -13972,23 +13947,20 @@ export const IisWebApplicationPropertiesTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<IisWebApplicationPropertiesTagsMap>;
 
 /** Static folders. */
-export type IisWebApplicationPropertiesStaticFoldersList =
-  ReadonlyArray<string>;
+export type IisWebApplicationPropertiesStaticFoldersList = Array<string>;
 export const IisWebApplicationPropertiesStaticFoldersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<IisWebApplicationPropertiesStaticFoldersList>;
 
 /** Gets the Error details. */
-export type IisWebApplicationPropertiesErrorsList =
-  ReadonlyArray<HealthErrorDetails>;
+export type IisWebApplicationPropertiesErrorsList = Array<HealthErrorDetails>;
 export const IisWebApplicationPropertiesErrorsList = /*@__PURE__*/ S.Array(
   HealthErrorDetails,
 ) as any as S.Schema<IisWebApplicationPropertiesErrorsList>;
 
 /** Gets the appliance names. */
-export type IisWebApplicationPropertiesApplianceNamesList =
-  ReadonlyArray<string>;
+export type IisWebApplicationPropertiesApplianceNamesList = Array<string>;
 export const IisWebApplicationPropertiesApplianceNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -14167,8 +14139,7 @@ export const IisWebApplications = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IisWebApplications>;
 
 /** The IisWebApplications items on this page */
-export type IisWebApplicationsListResultValueList =
-  ReadonlyArray<IisWebApplications>;
+export type IisWebApplicationsListResultValueList = Array<IisWebApplications>;
 export const IisWebApplicationsListResultValueList = /*@__PURE__*/ S.Array(
   IisWebApplications,
 ) as any as S.Schema<IisWebApplicationsListResultValueList>;
@@ -14302,26 +14273,25 @@ export const IisWebServersControllerGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IisWebServersControllerGetRequest>;
 
 /** Gets the list of machines. */
-export type IisWebServerPropertiesMachineIdsList = ReadonlyArray<string>;
+export type IisWebServerPropertiesMachineIdsList = Array<string>;
 export const IisWebServerPropertiesMachineIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<IisWebServerPropertiesMachineIdsList>;
 
 /** Gets the list of web applications. */
-export type IisWebServerPropertiesWebApplicationsList = ReadonlyArray<string>;
+export type IisWebServerPropertiesWebApplicationsList = Array<string>;
 export const IisWebServerPropertiesWebApplicationsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<IisWebServerPropertiesWebApplicationsList>;
 
 /** Gets the Error details. */
-export type IisWebServerPropertiesErrorsList =
-  ReadonlyArray<HealthErrorDetails>;
+export type IisWebServerPropertiesErrorsList = Array<HealthErrorDetails>;
 export const IisWebServerPropertiesErrorsList = /*@__PURE__*/ S.Array(
   HealthErrorDetails,
 ) as any as S.Schema<IisWebServerPropertiesErrorsList>;
 
 /** Gets the appliance names. */
-export type IisWebServerPropertiesApplianceNamesList = ReadonlyArray<string>;
+export type IisWebServerPropertiesApplianceNamesList = Array<string>;
 export const IisWebServerPropertiesApplianceNamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<IisWebServerPropertiesApplianceNamesList>;
@@ -14470,7 +14440,7 @@ export const IisWebServers = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IisWebServers" }) as any as S.Schema<IisWebServers>;
 
 /** The IisWebServers items on this page */
-export type IisWebServersListResultValueList = ReadonlyArray<IisWebServers>;
+export type IisWebServersListResultValueList = Array<IisWebServers>;
 export const IisWebServersListResultValueList = /*@__PURE__*/ S.Array(
   IisWebServers,
 ) as any as S.Schema<IisWebServersListResultValueList>;
@@ -14728,7 +14698,7 @@ export const ImportCollector = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ImportCollector>;
 
 /** The ImportCollector items on this page */
-export type ImportCollectorListResultValueList = ReadonlyArray<ImportCollector>;
+export type ImportCollectorListResultValueList = Array<ImportCollector>;
 export const ImportCollectorListResultValueList = /*@__PURE__*/ S.Array(
   ImportCollector,
 ) as any as S.Schema<ImportCollectorListResultValueList>;
@@ -14841,8 +14811,7 @@ export const DeleteImportedMachinesJobPropertiesJobState =
   /*@__PURE__*/ S.String;
 
 /** errors list */
-export type DeleteImportedMachinesJobPropertiesErrorsList =
-  ReadonlyArray<string>;
+export type DeleteImportedMachinesJobPropertiesErrorsList = Array<string>;
 export const DeleteImportedMachinesJobPropertiesErrorsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -15037,7 +15006,7 @@ export type JobResult =
 export const JobResult = /*@__PURE__*/ S.String;
 
 /** errors list */
-export type JobErrorSummaryErrorsList = ReadonlyArray<string>;
+export type JobErrorSummaryErrorsList = Array<string>;
 export const JobErrorSummaryErrorsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<JobErrorSummaryErrorsList>;
@@ -15173,7 +15142,7 @@ export const ImportJob = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ImportJob" }) as any as S.Schema<ImportJob>;
 
 /** The ImportJob items on this page */
-export type ImportJobListResultValueList = ReadonlyArray<ImportJob>;
+export type ImportJobListResultValueList = Array<ImportJob>;
 export const ImportJobListResultValueList = /*@__PURE__*/ S.Array(
   ImportJob,
 ) as any as S.Schema<ImportJobListResultValueList>;
@@ -15247,7 +15216,7 @@ export const DeleteImportMachinesJob = /*@__PURE__*/ S.suspend(() =>
 
 /** The DeleteImportMachinesJob items on this page */
 export type PagedDeleteImportMachinesJobValueList =
-  ReadonlyArray<DeleteImportMachinesJob>;
+  Array<DeleteImportMachinesJob>;
 export const PagedDeleteImportMachinesJobValueList = /*@__PURE__*/ S.Array(
   DeleteImportMachinesJob,
 ) as any as S.Schema<PagedDeleteImportMachinesJobValueList>;
@@ -15296,7 +15265,7 @@ export const ImportJobsControllerListExportjobsRequest =
 
 /** The ExportImportedMachinesJob items on this page */
 export type PagedExportImportedMachinesJobValueList =
-  ReadonlyArray<ExportImportedMachinesJob>;
+  Array<ExportImportedMachinesJob>;
 export const PagedExportImportedMachinesJobValueList = /*@__PURE__*/ S.Array(
   ExportImportedMachinesJob,
 ) as any as S.Schema<PagedExportImportedMachinesJobValueList>;
@@ -15344,7 +15313,7 @@ export const ImportJobsControllerListImportjobsRequest =
   }) as any as S.Schema<ImportJobsControllerListImportjobsRequest>;
 
 /** The ImportMachinesJob items on this page */
-export type PagedImportMachinesJobValueList = ReadonlyArray<ImportMachinesJob>;
+export type PagedImportMachinesJobValueList = Array<ImportMachinesJob>;
 export const PagedImportMachinesJobValueList = /*@__PURE__*/ S.Array(
   ImportMachinesJob,
 ) as any as S.Schema<PagedImportMachinesJobValueList>;
@@ -15430,7 +15399,7 @@ export const ImportMachinesControllerGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ImportMachinesControllerGetRequest>;
 
 /** IP Addresses. */
-export type ImportMachinePropertiesIpAddressesList = ReadonlyArray<string>;
+export type ImportMachinePropertiesIpAddressesList = Array<string>;
 export const ImportMachinePropertiesIpAddressesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ImportMachinePropertiesIpAddressesList>;
@@ -15473,7 +15442,7 @@ export const WebRoleImportDisk = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WebRoleImportDisk>;
 
 /** Disks attached to the machine. */
-export type ImportMachinePropertiesDisksList = ReadonlyArray<WebRoleImportDisk>;
+export type ImportMachinePropertiesDisksList = Array<WebRoleImportDisk>;
 export const ImportMachinePropertiesDisksList = /*@__PURE__*/ S.Array(
   WebRoleImportDisk,
 ) as any as S.Schema<ImportMachinePropertiesDisksList>;
@@ -15701,7 +15670,7 @@ export const ImportMachine = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ImportMachine" }) as any as S.Schema<ImportMachine>;
 
 /** The ImportMachine items on this page */
-export type ImportMachineListResultValueList = ReadonlyArray<ImportMachine>;
+export type ImportMachineListResultValueList = Array<ImportMachine>;
 export const ImportMachineListResultValueList = /*@__PURE__*/ S.Array(
   ImportMachine,
 ) as any as S.Schema<ImportMachineListResultValueList>;
@@ -16103,7 +16072,7 @@ export const ImportSite = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ImportSite" }) as any as S.Schema<ImportSite>;
 
 /** The ImportSite items on this page */
-export type ImportSiteListResultValueList = ReadonlyArray<ImportSite>;
+export type ImportSiteListResultValueList = Array<ImportSite>;
 export const ImportSiteListResultValueList = /*@__PURE__*/ S.Array(
   ImportSite,
 ) as any as S.Schema<ImportSiteListResultValueList>;
@@ -16309,13 +16278,13 @@ export const VmwareDisk = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VmwareDisk" }) as any as S.Schema<VmwareDisk>;
 
 /** Disks attached to the machine. */
-export type VmwareMachinePropertiesDisksList = ReadonlyArray<VmwareDisk>;
+export type VmwareMachinePropertiesDisksList = Array<VmwareDisk>;
 export const VmwareMachinePropertiesDisksList = /*@__PURE__*/ S.Array(
   VmwareDisk,
 ) as any as S.Schema<VmwareMachinePropertiesDisksList>;
 
 /** Gets IP addresses for the machine. */
-export type VmwareNetworkAdapterIpAddressListList = ReadonlyArray<string>;
+export type VmwareNetworkAdapterIpAddressListList = Array<string>;
 export const VmwareNetworkAdapterIpAddressListList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<VmwareNetworkAdapterIpAddressListList>;
@@ -16353,20 +16322,19 @@ export const VmwareNetworkAdapter = /*@__PURE__*/ S.suspend(() =>
 
 /** Network adapters attached to the machine. */
 export type VmwareMachinePropertiesNetworkAdaptersList =
-  ReadonlyArray<VmwareNetworkAdapter>;
+  Array<VmwareNetworkAdapter>;
 export const VmwareMachinePropertiesNetworkAdaptersList = /*@__PURE__*/ S.Array(
   VmwareNetworkAdapter,
 ) as any as S.Schema<VmwareMachinePropertiesNetworkAdaptersList>;
 
 /** Gets the appliance names. */
-export type VmwareMachinePropertiesApplianceNamesList = ReadonlyArray<string>;
+export type VmwareMachinePropertiesApplianceNamesList = Array<string>;
 export const VmwareMachinePropertiesApplianceNamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<VmwareMachinePropertiesApplianceNamesList>;
 
 /** Errors for machine. */
-export type VmwareMachinePropertiesErrorsList =
-  ReadonlyArray<HealthErrorDetails>;
+export type VmwareMachinePropertiesErrorsList = Array<HealthErrorDetails>;
 export const VmwareMachinePropertiesErrorsList = /*@__PURE__*/ S.Array(
   HealthErrorDetails,
 ) as any as S.Schema<VmwareMachinePropertiesErrorsList>;
@@ -16608,13 +16576,13 @@ export const MachinesControllerGetMachineRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MachinesControllerGetMachineRequest>;
 
 /** Gets or sets the list of IP addresses of the machine. IP addresses could be IP V4 or IP V6. */
-export type DiscoveryDetailsIpAddressesList = ReadonlyArray<string>;
+export type DiscoveryDetailsIpAddressesList = Array<string>;
 export const DiscoveryDetailsIpAddressesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DiscoveryDetailsIpAddressesList>;
 
 /** Gets or sets the list of MAC addresses of the machine. */
-export type DiscoveryDetailsMacAddressesList = ReadonlyArray<string>;
+export type DiscoveryDetailsMacAddressesList = Array<string>;
 export const DiscoveryDetailsMacAddressesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DiscoveryDetailsMacAddressesList>;
@@ -16687,8 +16655,7 @@ export const DiscoveryDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DiscoveryDetails>;
 
 /** Gets or sets the discovery details of the machine published by various sources. */
-export type MachinePropertiesDiscoveryDataList =
-  ReadonlyArray<DiscoveryDetails>;
+export type MachinePropertiesDiscoveryDataList = Array<DiscoveryDetails>;
 export const MachinePropertiesDiscoveryDataList = /*@__PURE__*/ S.Array(
   DiscoveryDetails,
 ) as any as S.Schema<MachinePropertiesDiscoveryDataList>;
@@ -16703,13 +16670,13 @@ export const AssessmentDetailsTargetStorageTypeMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<AssessmentDetailsTargetStorageTypeMap>;
 
 /** Gets or sets the list of IP addresses of the machine. IP addresses could be IP V4 or IP V6. */
-export type AssessmentDetailsIpAddressesList = ReadonlyArray<string>;
+export type AssessmentDetailsIpAddressesList = Array<string>;
 export const AssessmentDetailsIpAddressesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AssessmentDetailsIpAddressesList>;
 
 /** Gets or sets the list of MAC addresses of the machine. */
-export type AssessmentDetailsMacAddressesList = ReadonlyArray<string>;
+export type AssessmentDetailsMacAddressesList = Array<string>;
 export const AssessmentDetailsMacAddressesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AssessmentDetailsMacAddressesList>;
@@ -16785,20 +16752,19 @@ export const AssessmentDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AssessmentDetails>;
 
 /** Gets or sets the assessment details of the machine published by various sources. */
-export type MachinePropertiesAssessmentDataList =
-  ReadonlyArray<AssessmentDetails>;
+export type MachinePropertiesAssessmentDataList = Array<AssessmentDetails>;
 export const MachinePropertiesAssessmentDataList = /*@__PURE__*/ S.Array(
   AssessmentDetails,
 ) as any as S.Schema<MachinePropertiesAssessmentDataList>;
 
 /** Gets or sets the list of IP addresses of the machine. IP addresses could be IP V4 or IP V6. */
-export type MigrationDetailsIpAddressesList = ReadonlyArray<string>;
+export type MigrationDetailsIpAddressesList = Array<string>;
 export const MigrationDetailsIpAddressesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<MigrationDetailsIpAddressesList>;
 
 /** Gets or sets the list of MAC addresses of the machine. */
-export type MigrationDetailsMacAddressesList = ReadonlyArray<string>;
+export type MigrationDetailsMacAddressesList = Array<string>;
 export const MigrationDetailsMacAddressesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<MigrationDetailsMacAddressesList>;
@@ -16874,8 +16840,7 @@ export const MigrationDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MigrationDetails>;
 
 /** Gets or sets the migration details of the machine published by various sources. */
-export type MachinePropertiesMigrationDataList =
-  ReadonlyArray<MigrationDetails>;
+export type MachinePropertiesMigrationDataList = Array<MigrationDetails>;
 export const MachinePropertiesMigrationDataList = /*@__PURE__*/ S.Array(
   MigrationDetails,
 ) as any as S.Schema<MachinePropertiesMigrationDataList>;
@@ -16986,7 +16951,7 @@ export const MachineResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MachineResource>;
 
 /** The MachineResource items on this page */
-export type MachineResourceListResultValueList = ReadonlyArray<MachineResource>;
+export type MachineResourceListResultValueList = Array<MachineResource>;
 export const MachineResourceListResultValueList = /*@__PURE__*/ S.Array(
   MachineResource,
 ) as any as S.Schema<MachineResourceListResultValueList>;
@@ -17040,7 +17005,7 @@ export const MachinesControllerListMachinesRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<MachinesControllerListMachinesRequest>;
 
 /** Gets or sets the machines. */
-export type MachineCollectionValueList = ReadonlyArray<Machine_2>;
+export type MachineCollectionValueList = Array<Machine_2>;
 export const MachineCollectionValueList = /*@__PURE__*/ S.Array(
   Machine_2,
 ) as any as S.Schema<MachineCollectionValueList>;
@@ -17276,7 +17241,7 @@ export const WorkloadSummary = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WorkloadSummary>;
 
 /** List of errors for this machine. */
-export type MachinePropertiesErrorsList = ReadonlyArray<Error>;
+export type MachinePropertiesErrorsList = Array<Error>;
 export const MachinePropertiesErrorsList = /*@__PURE__*/ S.Array(
   Error,
 ) as any as S.Schema<MachinePropertiesErrorsList>;
@@ -17303,13 +17268,13 @@ export const MachinePropertiesDisksMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<MachinePropertiesDisksMap>;
 
 /** Gets the References to the groups that this machine is member of. */
-export type MachinePropertiesGroupsList = ReadonlyArray<string>;
+export type MachinePropertiesGroupsList = Array<string>;
 export const MachinePropertiesGroupsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<MachinePropertiesGroupsList>;
 
 /** List of IP Addresses on the network adapter. */
-export type NetworkAdapterIpAddressesList = ReadonlyArray<string>;
+export type NetworkAdapterIpAddressesList = Array<string>;
 export const NetworkAdapterIpAddressesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<NetworkAdapterIpAddressesList>;
@@ -17341,13 +17306,13 @@ export const MachinePropertiesNetworkAdaptersMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<MachinePropertiesNetworkAdaptersMap>;
 
 /** SQL instances discovered on the machine. */
-export type MachinePropertiesSqlInstancesList = ReadonlyArray<string>;
+export type MachinePropertiesSqlInstancesList = Array<string>;
 export const MachinePropertiesSqlInstancesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<MachinePropertiesSqlInstancesList>;
 
 /** Web applications discovered on the machine. */
-export type MachinePropertiesWebApplicationsList = ReadonlyArray<string>;
+export type MachinePropertiesWebApplicationsList = Array<string>;
 export const MachinePropertiesWebApplicationsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<MachinePropertiesWebApplicationsList>;
@@ -17514,7 +17479,7 @@ export const Machine = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Machine" }) as any as S.Schema<Machine>;
 
 /** The Machine items on this page */
-export type MachineListResultValueList = ReadonlyArray<Machine>;
+export type MachineListResultValueList = Array<Machine>;
 export const MachineListResultValueList = /*@__PURE__*/ S.Array(
   Machine,
 ) as any as S.Schema<MachineListResultValueList>;
@@ -17552,7 +17517,7 @@ export type MasterSitePropertiesPublicNetworkAccess =
 export const MasterSitePropertiesPublicNetworkAccess = /*@__PURE__*/ S.String;
 
 /** Gets or sets the sites that are a part of Master Site. The key should contain the Site ARM name. */
-export type MasterSitePropertiesInputSitesList = ReadonlyArray<string>;
+export type MasterSitePropertiesInputSitesList = Array<string>;
 export const MasterSitePropertiesInputSitesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<MasterSitePropertiesInputSitesList>;
@@ -17624,14 +17589,13 @@ export const MasterSitesControllerCreateResponseTagsMap =
   ) as any as S.Schema<MasterSitesControllerCreateResponseTagsMap>;
 
 /** Gets or sets the sites that are a part of Master Site. The key should contain the Site ARM name. */
-export type MasterSitePropertiesSitesList = ReadonlyArray<string>;
+export type MasterSitePropertiesSitesList = Array<string>;
 export const MasterSitePropertiesSitesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<MasterSitePropertiesSitesList>;
 
 /** array of group ids */
-export type PrivateEndpointConnectionPropertiesV2GroupIdsList =
-  ReadonlyArray<string>;
+export type PrivateEndpointConnectionPropertiesV2GroupIdsList = Array<string>;
 export const PrivateEndpointConnectionPropertiesV2GroupIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -17659,7 +17623,7 @@ export const PrivateLinkServiceConnectionStateStatus_2 = /*@__PURE__*/ S.String;
 /** Service Connection State */
 export interface PrivateLinkServiceConnectionState_3 {
   /** state status */
-  status?: PrivateLinkServiceConnectionStateStatus_2;
+  status?: PrivateLinkServiceConnectionStateStatus_2 | (string & {});
   /** description string */
   description?: string;
   /** actions required */
@@ -17727,14 +17691,14 @@ export const PrivateEndpointConnection_3 = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets the private endpoint connections. */
 export type MasterSitePropertiesPrivateEndpointConnectionsList =
-  ReadonlyArray<PrivateEndpointConnection_3>;
+  Array<PrivateEndpointConnection_3>;
 export const MasterSitePropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection_3,
   ) as any as S.Schema<MasterSitePropertiesPrivateEndpointConnectionsList>;
 
 /** Gets the nested sites under Master Site. */
-export type MasterSitePropertiesNestedSitesList = ReadonlyArray<string>;
+export type MasterSitePropertiesNestedSitesList = Array<string>;
 export const MasterSitePropertiesNestedSitesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<MasterSitePropertiesNestedSitesList>;
@@ -17987,7 +17951,7 @@ export const MasterSite = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MasterSite" }) as any as S.Schema<MasterSite>;
 
 /** The MasterSite items on this page */
-export type MasterSiteListResultValueList = ReadonlyArray<MasterSite>;
+export type MasterSiteListResultValueList = Array<MasterSite>;
 export const MasterSiteListResultValueList = /*@__PURE__*/ S.Array(
   MasterSite,
 ) as any as S.Schema<MasterSiteListResultValueList>;
@@ -18038,7 +18002,7 @@ export const MasterSitesControllerUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<MasterSitesControllerUpdateRequestTagsMap>;
 
 /** Gets or sets the sites that are a part of Master Site. The key should contain the Site ARM name. */
-export type MasterSiteUpdatePropertiesSitesList = ReadonlyArray<string>;
+export type MasterSiteUpdatePropertiesSitesList = Array<string>;
 export const MasterSiteUpdatePropertiesSitesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<MasterSiteUpdatePropertiesSitesList>;
@@ -18254,7 +18218,7 @@ export const MigrateProjectPropertiesRegisteredToolsItem =
 
 /** Register tools inside project. */
 export type MigrateProjectPropertiesRegisteredToolsList =
-  ReadonlyArray<MigrateProjectPropertiesRegisteredToolsItem>;
+  Array<MigrateProjectPropertiesRegisteredToolsItem>;
 export const MigrateProjectPropertiesRegisteredToolsList =
   /*@__PURE__*/ S.Array(
     MigrateProjectPropertiesRegisteredToolsItem,
@@ -18354,7 +18318,7 @@ export const PrivateLinkServiceConnectionStateStatus = /*@__PURE__*/ S.String;
 /** Private endpoint connection state. */
 export interface PrivateLinkServiceConnectionState_2 {
   /** Private link connection state. */
-  status?: PrivateLinkServiceConnectionStateStatus;
+  status?: PrivateLinkServiceConnectionStateStatus | (string & {});
   /** Description of the object. */
   description?: string;
   /** Action required. */
@@ -18471,7 +18435,7 @@ export const PrivateEndpointConnection_2 = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets the private endpoint connections. */
 export type MigrateProjectPropertiesPrivateEndpointConnectionsList =
-  ReadonlyArray<PrivateEndpointConnection_2>;
+  Array<PrivateEndpointConnection_2>;
 export const MigrateProjectPropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection_2,
@@ -18965,7 +18929,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = ReadonlyArray<Operation>;
+export type OperationsListResponseValueList = Array<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;
@@ -19298,7 +19262,7 @@ export const PrivateEndpointConnectionControllerListByMasterSiteRequest =
 
 /** The PrivateEndpointConnection items on this page */
 export type PrivateEndpointConnectionListResultValueList_2 =
-  ReadonlyArray<PrivateEndpointConnection_3>;
+  Array<PrivateEndpointConnection_3>;
 export const PrivateEndpointConnectionListResultValueList_2 =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection_3,
@@ -19436,7 +19400,7 @@ export const PrivateEndpointConnectionOperationsGetRequest =
 
 /** The group ids for the private endpoint resource. */
 export type PrivateEndpointConnectionOperationsGetResponsePropertiesGroupIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PrivateEndpointConnectionOperationsGetResponsePropertiesGroupIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -19523,7 +19487,7 @@ export const PrivateEndpointConnectionOperationsListByAssessmentProjectRequest =
 
 /** The PrivateEndpointConnection items on this page */
 export type PrivateEndpointConnectionListResultValueList =
-  ReadonlyArray<PrivateEndpointConnection>;
+  Array<PrivateEndpointConnection>;
 export const PrivateEndpointConnectionListResultValueList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection,
@@ -19606,7 +19570,7 @@ export const PrivateEndpointConnectionOperationsUpdateRequest =
 
 /** The group ids for the private endpoint resource. */
 export type PrivateEndpointConnectionOperationsUpdateResponsePropertiesGroupIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PrivateEndpointConnectionOperationsUpdateResponsePropertiesGroupIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -19704,7 +19668,7 @@ export const PrivateEndpointConnectionProxyControllerCreateRequest =
     identifier: "PrivateEndpointConnectionProxyControllerCreateRequest",
   }) as any as S.Schema<PrivateEndpointConnectionProxyControllerCreateRequest>;
 
-export type PrivateLinkServiceConnectionGroupIdsList = ReadonlyArray<string>;
+export type PrivateLinkServiceConnectionGroupIdsList = Array<string>;
 export const PrivateLinkServiceConnectionGroupIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PrivateLinkServiceConnectionGroupIdsList>;
@@ -19728,21 +19692,21 @@ export const PrivateLinkServiceConnection = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateLinkServiceConnection>;
 
 export type PrivateEndpointDetailsManualPrivateLinkServiceConnectionsList =
-  ReadonlyArray<PrivateLinkServiceConnection>;
+  Array<PrivateLinkServiceConnection>;
 export const PrivateEndpointDetailsManualPrivateLinkServiceConnectionsList =
   /*@__PURE__*/ S.Array(
     PrivateLinkServiceConnection,
   ) as any as S.Schema<PrivateEndpointDetailsManualPrivateLinkServiceConnectionsList>;
 
 export type PrivateEndpointDetailsPrivateLinkServiceConnectionsList =
-  ReadonlyArray<PrivateLinkServiceConnection>;
+  Array<PrivateLinkServiceConnection>;
 export const PrivateEndpointDetailsPrivateLinkServiceConnectionsList =
   /*@__PURE__*/ S.Array(
     PrivateLinkServiceConnection,
   ) as any as S.Schema<PrivateEndpointDetailsPrivateLinkServiceConnectionsList>;
 
 export type GroupConnectivityInformationCustomerVisibleFqdnsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const GroupConnectivityInformationCustomerVisibleFqdnsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -19775,7 +19739,7 @@ export const GroupConnectivityInformation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GroupConnectivityInformation>;
 
 export type PrivateLinkServiceProxyGroupConnectivityInformationList =
-  ReadonlyArray<GroupConnectivityInformation>;
+  Array<GroupConnectivityInformation>;
 export const PrivateLinkServiceProxyGroupConnectivityInformationList =
   /*@__PURE__*/ S.Array(
     GroupConnectivityInformation,
@@ -19804,7 +19768,7 @@ export const PrivateLinkServiceProxy = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateLinkServiceProxy>;
 
 export type PrivateEndpointDetailsPrivateLinkServiceProxiesList =
-  ReadonlyArray<PrivateLinkServiceProxy>;
+  Array<PrivateLinkServiceProxy>;
 export const PrivateEndpointDetailsPrivateLinkServiceProxiesList =
   /*@__PURE__*/ S.Array(
     PrivateLinkServiceProxy,
@@ -19831,7 +19795,7 @@ export const IpConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IpConfiguration>;
 
 export type PrivateEndpointDetailsConnectionDetailsList =
-  ReadonlyArray<IpConfiguration>;
+  Array<IpConfiguration>;
 export const PrivateEndpointDetailsConnectionDetailsList =
   /*@__PURE__*/ S.Array(
     IpConfiguration,
@@ -20053,7 +20017,7 @@ export const PrivateEndpointConnectionProxyControllerListPrivateEndpointConnecti
 
 /** Gets the list of PrivateLink proxy resources. */
 export type PrivateEndpointConnectionProxyCollectionValueList =
-  ReadonlyArray<PrivateEndpointConnectionProxy>;
+  Array<PrivateEndpointConnectionProxy>;
 export const PrivateEndpointConnectionProxyCollectionValueList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnectionProxy,
@@ -20138,7 +20102,7 @@ export const PrivateEndpointConnectionsControllerGetPrivateEndpointConnectionsRe
 
 /** Gets the list of machines. */
 export type PrivateEndpointConnectionCollectionValueList =
-  ReadonlyArray<PrivateEndpointConnection_2>;
+  Array<PrivateEndpointConnection_2>;
 export const PrivateEndpointConnectionCollectionValueList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection_2,
@@ -20190,8 +20154,7 @@ export const PrivateLinkResourceControllerGetPrivateLinkResourceRequest =
   }) as any as S.Schema<PrivateLinkResourceControllerGetPrivateLinkResourceRequest>;
 
 /** Required members. */
-export type PrivateLinkResourcePropertiesRequiredMembersList_2 =
-  ReadonlyArray<string>;
+export type PrivateLinkResourcePropertiesRequiredMembersList_2 = Array<string>;
 export const PrivateLinkResourcePropertiesRequiredMembersList_2 =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -20199,7 +20162,7 @@ export const PrivateLinkResourcePropertiesRequiredMembersList_2 =
 
 /** Required zone names. */
 export type PrivateLinkResourcePropertiesRequiredZoneNamesList_2 =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PrivateLinkResourcePropertiesRequiredZoneNamesList_2 =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -20278,7 +20241,7 @@ export const PrivateLinkResourceControllerGetPrivateLinkResourcesRequest =
 
 /** List of private links. */
 export type PrivateLinkResourceCollectionValueList =
-  ReadonlyArray<PrivateLinkResource_2>;
+  Array<PrivateLinkResource_2>;
 export const PrivateLinkResourceCollectionValueList = /*@__PURE__*/ S.Array(
   PrivateLinkResource_2,
 ) as any as S.Schema<PrivateLinkResourceCollectionValueList>;
@@ -20330,7 +20293,7 @@ export const PrivateLinkResourceOperationsGetRequest = /*@__PURE__*/ S.suspend(
 
 /** The private link resource required member names. */
 export type PrivateLinkResourceOperationsGetResponsePropertiesRequiredMembersList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PrivateLinkResourceOperationsGetResponsePropertiesRequiredMembersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -20338,7 +20301,7 @@ export const PrivateLinkResourceOperationsGetResponsePropertiesRequiredMembersLi
 
 /** The private link resource private link DNS zone name. */
 export type PrivateLinkResourceOperationsGetResponsePropertiesRequiredZoneNamesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PrivateLinkResourceOperationsGetResponsePropertiesRequiredZoneNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -20422,16 +20385,14 @@ export const PrivateLinkResourceOperationsListByAssessmentProjectRequest =
   }) as any as S.Schema<PrivateLinkResourceOperationsListByAssessmentProjectRequest>;
 
 /** The private link resource required member names. */
-export type PrivateLinkResourcePropertiesRequiredMembersList =
-  ReadonlyArray<string>;
+export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
 export const PrivateLinkResourcePropertiesRequiredMembersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
 
 /** The private link resource private link DNS zone name. */
-export type PrivateLinkResourcePropertiesRequiredZoneNamesList =
-  ReadonlyArray<string>;
+export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
 export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -20486,8 +20447,7 @@ export const PrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateLinkResource>;
 
 /** The PrivateLinkResource items on this page */
-export type PrivateLinkResourceListResultValueList =
-  ReadonlyArray<PrivateLinkResource>;
+export type PrivateLinkResourceListResultValueList = Array<PrivateLinkResource>;
 export const PrivateLinkResourceListResultValueList = /*@__PURE__*/ S.Array(
   PrivateLinkResource,
 ) as any as S.Schema<PrivateLinkResourceListResultValueList>;
@@ -20538,8 +20498,7 @@ export const PrivateLinkResourcesControllerGetRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PrivateLinkResourcesControllerGetRequest>;
 
 /** required members */
-export type PrivateLinkResourcePropertiesRequiredMembersList_3 =
-  ReadonlyArray<string>;
+export type PrivateLinkResourcePropertiesRequiredMembersList_3 = Array<string>;
 export const PrivateLinkResourcePropertiesRequiredMembersList_3 =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -20547,7 +20506,7 @@ export const PrivateLinkResourcePropertiesRequiredMembersList_3 =
 
 /** required zone names */
 export type PrivateLinkResourcePropertiesRequiredZoneNamesList_3 =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PrivateLinkResourcePropertiesRequiredZoneNamesList_3 =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -20657,7 +20616,7 @@ export const PrivateLinkResource_3 = /*@__PURE__*/ S.suspend(() =>
 
 /** The PrivateLinkResource items on this page */
 export type PrivateLinkResourceListResultValueList_2 =
-  ReadonlyArray<PrivateLinkResource_3>;
+  Array<PrivateLinkResource_3>;
 export const PrivateLinkResourceListResultValueList_2 = /*@__PURE__*/ S.Array(
   PrivateLinkResource_3,
 ) as any as S.Schema<PrivateLinkResourceListResultValueList_2>;
@@ -20701,7 +20660,7 @@ export const ProjectsListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProjectsListRequest>;
 
 /** List of projects. */
-export type ProjectResultListValueList = ReadonlyArray<MigrateProject>;
+export type ProjectResultListValueList = Array<MigrateProject>;
 export const ProjectResultListValueList = /*@__PURE__*/ S.Array(
   MigrateProject,
 ) as any as S.Schema<ProjectResultListValueList>;
@@ -20845,7 +20804,7 @@ export const VmwareRunAsAccountResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The VmwareRunAsAccountResource items on this page */
 export type VmwareRunAsAccountResourceListResultValueList =
-  ReadonlyArray<VmwareRunAsAccountResource>;
+  Array<VmwareRunAsAccountResource>;
 export const VmwareRunAsAccountResourceListResultValueList =
   /*@__PURE__*/ S.Array(
     VmwareRunAsAccountResource,
@@ -21067,7 +21026,7 @@ export const ServerCollector = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServerCollector>;
 
 /** The ServerCollector items on this page */
-export type ServerCollectorListResultValueList = ReadonlyArray<ServerCollector>;
+export type ServerCollectorListResultValueList = Array<ServerCollector>;
 export const ServerCollectorListResultValueList = /*@__PURE__*/ S.Array(
   ServerCollector,
 ) as any as S.Schema<ServerCollectorListResultValueList>;
@@ -21415,7 +21374,7 @@ export const ServerJob = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ServerJob" }) as any as S.Schema<ServerJob>;
 
 /** The ServerJob items on this page */
-export type ServerJobListResultValueList = ReadonlyArray<ServerJob>;
+export type ServerJobListResultValueList = Array<ServerJob>;
 export const ServerJobListResultValueList = /*@__PURE__*/ S.Array(
   ServerJob,
 ) as any as S.Schema<ServerJobListResultValueList>;
@@ -21572,8 +21531,7 @@ export const ServerRunAsAccount = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServerRunAsAccount>;
 
 /** The ServerRunAsAccount items on this page */
-export type ServerRunAsAccountListResultValueList =
-  ReadonlyArray<ServerRunAsAccount>;
+export type ServerRunAsAccountListResultValueList = Array<ServerRunAsAccount>;
 export const ServerRunAsAccountListResultValueList = /*@__PURE__*/ S.Array(
   ServerRunAsAccount,
 ) as any as S.Schema<ServerRunAsAccountListResultValueList>;
@@ -21659,7 +21617,7 @@ export const ServersControllerGetMachineRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServersControllerGetMachineRequest>;
 
 /** Gets IP addresses for the machine. */
-export type ServerNetworkAdapterIpAddressListList = ReadonlyArray<string>;
+export type ServerNetworkAdapterIpAddressListList = Array<string>;
 export const ServerNetworkAdapterIpAddressListList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ServerNetworkAdapterIpAddressListList>;
@@ -21690,8 +21648,7 @@ export const ServerNetworkAdapter = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServerNetworkAdapter>;
 
 /** Gets or sets the network adapters of the server. */
-export type ServerPropertiesNetworkAdaptersList =
-  ReadonlyArray<ServerNetworkAdapter>;
+export type ServerPropertiesNetworkAdaptersList = Array<ServerNetworkAdapter>;
 export const ServerPropertiesNetworkAdaptersList = /*@__PURE__*/ S.Array(
   ServerNetworkAdapter,
 ) as any as S.Schema<ServerPropertiesNetworkAdaptersList>;
@@ -21726,7 +21683,7 @@ export const ServerDisk = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ServerDisk" }) as any as S.Schema<ServerDisk>;
 
 /** Gets or sets the disk details of server. */
-export type ServerPropertiesDisksList = ReadonlyArray<ServerDisk>;
+export type ServerPropertiesDisksList = Array<ServerDisk>;
 export const ServerPropertiesDisksList = /*@__PURE__*/ S.Array(
   ServerDisk,
 ) as any as S.Schema<ServerPropertiesDisksList>;
@@ -21751,13 +21708,13 @@ export const ProcessorInfo_2 = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProcessorInfo_2>;
 
 /** Gets the appliance names. */
-export type ServerPropertiesApplianceNamesList = ReadonlyArray<string>;
+export type ServerPropertiesApplianceNamesList = Array<string>;
 export const ServerPropertiesApplianceNamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ServerPropertiesApplianceNamesList>;
 
 /** Errors for machine. */
-export type ServerPropertiesErrorsList = ReadonlyArray<HealthErrorDetails>;
+export type ServerPropertiesErrorsList = Array<HealthErrorDetails>;
 export const ServerPropertiesErrorsList = /*@__PURE__*/ S.Array(
   HealthErrorDetails,
 ) as any as S.Schema<ServerPropertiesErrorsList>;
@@ -21982,7 +21939,7 @@ export const Server = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Server" }) as any as S.Schema<Server>;
 
 /** The Server items on this page */
-export type ServerListResultValueList = ReadonlyArray<Server>;
+export type ServerListResultValueList = Array<Server>;
 export const ServerListResultValueList = /*@__PURE__*/ S.Array(
   Server,
 ) as any as S.Schema<ServerListResultValueList>;
@@ -22027,14 +21984,14 @@ export const ServerNetworkAdapterInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets the network adapters of the server. */
 export type ServerUpdatePropertiesInputNetworkAdaptersList =
-  ReadonlyArray<ServerNetworkAdapterInput>;
+  Array<ServerNetworkAdapterInput>;
 export const ServerUpdatePropertiesInputNetworkAdaptersList =
   /*@__PURE__*/ S.Array(
     ServerNetworkAdapterInput,
   ) as any as S.Schema<ServerUpdatePropertiesInputNetworkAdaptersList>;
 
 /** Gets or sets the disk details of server. */
-export type ServerUpdatePropertiesInputDisksList = ReadonlyArray<ServerDisk>;
+export type ServerUpdatePropertiesInputDisksList = Array<ServerDisk>;
 export const ServerUpdatePropertiesInputDisksList = /*@__PURE__*/ S.Array(
   ServerDisk,
 ) as any as S.Schema<ServerUpdatePropertiesInputDisksList>;
@@ -22588,8 +22545,7 @@ export const ServerSiteResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServerSiteResource>;
 
 /** The ServerSiteResource items on this page */
-export type ServerSiteResourceListResultValueList =
-  ReadonlyArray<ServerSiteResource>;
+export type ServerSiteResourceListResultValueList = Array<ServerSiteResource>;
 export const ServerSiteResourceListResultValueList = /*@__PURE__*/ S.Array(
   ServerSiteResource,
 ) as any as S.Schema<ServerSiteResourceListResultValueList>;
@@ -22834,7 +22790,7 @@ export const ServerSitesControllerUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets the machine collection. */
 export type ServerSitesControllerUpdateDependencyMapStatusRequestMachinesList =
-  ReadonlyArray<DependencyMapMachineInput>;
+  Array<DependencyMapMachineInput>;
 export const ServerSitesControllerUpdateDependencyMapStatusRequestMachinesList =
   /*@__PURE__*/ S.Array(
     DependencyMapMachineInput,
@@ -22879,7 +22835,7 @@ export const ServerSitesControllerUpdateDependencyMapStatusResponse =
 
 /** The list of Machine MetaData. */
 export type ServerSitesControllerUpdatePropertiesRequestValueList =
-  ReadonlyArray<MachineMetadata>;
+  Array<MachineMetadata>;
 export const ServerSitesControllerUpdatePropertiesRequestValueList =
   /*@__PURE__*/ S.Array(
     MachineMetadata,
@@ -23045,7 +23001,7 @@ export const ServerSoftwareInventory = /*@__PURE__*/ S.suspend(() =>
 
 /** The ServerSoftwareInventory items on this page */
 export type ServerSoftwareInventoryListResultValueList =
-  ReadonlyArray<ServerSoftwareInventory>;
+  Array<ServerSoftwareInventory>;
 export const ServerSoftwareInventoryListResultValueList = /*@__PURE__*/ S.Array(
   ServerSoftwareInventory,
 ) as any as S.Schema<ServerSoftwareInventoryListResultValueList>;
@@ -23486,7 +23442,7 @@ export const VmwareSite = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VmwareSite" }) as any as S.Schema<VmwareSite>;
 
 /** The VmwareSite items on this page */
-export type VmwareSiteListResultValueList = ReadonlyArray<VmwareSite>;
+export type VmwareSiteListResultValueList = Array<VmwareSite>;
 export const VmwareSiteListResultValueList = /*@__PURE__*/ S.Array(
   VmwareSite,
 ) as any as S.Schema<VmwareSiteListResultValueList>;
@@ -24134,7 +24090,7 @@ export const SolutionsControllerListSolutionsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<SolutionsControllerListSolutionsRequest>;
 
 /** Gets or sets the list of solutions. */
-export type SolutionsCollectionValueList = ReadonlyArray<Solution>;
+export type SolutionsCollectionValueList = Array<Solution>;
 export const SolutionsCollectionValueList = /*@__PURE__*/ S.Array(
   Solution,
 ) as any as S.Schema<SolutionsCollectionValueList>;
@@ -24220,7 +24176,7 @@ export const SqlAssessmentOptionsOperationsGetRequest = /*@__PURE__*/ S.suspend(
 
 /** Gets the list of VM families. */
 export type SqlAssessmentOptionsPropertiesVmFamiliesList =
-  ReadonlyArray<VmFamilyOptions>;
+  Array<VmFamilyOptions>;
 export const SqlAssessmentOptionsPropertiesVmFamiliesList =
   /*@__PURE__*/ S.Array(
     VmFamilyOptions,
@@ -24228,7 +24184,7 @@ export const SqlAssessmentOptionsPropertiesVmFamiliesList =
 
 /** Gets the Reserved Instance VM Families list. */
 export type SqlAssessmentOptionsPropertiesReservedInstanceVmFamiliesList =
-  ReadonlyArray<AzureVmFamily>;
+  Array<AzureVmFamily>;
 export const SqlAssessmentOptionsPropertiesReservedInstanceVmFamiliesList =
   /*@__PURE__*/ S.Array(
     AzureVmFamily,
@@ -24236,7 +24192,7 @@ export const SqlAssessmentOptionsPropertiesReservedInstanceVmFamiliesList =
 
 /** Gets the Premium disk VM Families list. */
 export type SqlAssessmentOptionsPropertiesPremiumDiskVmFamiliesList =
-  ReadonlyArray<AzureVmFamily>;
+  Array<AzureVmFamily>;
 export const SqlAssessmentOptionsPropertiesPremiumDiskVmFamiliesList =
   /*@__PURE__*/ S.Array(
     AzureVmFamily,
@@ -24244,7 +24200,7 @@ export const SqlAssessmentOptionsPropertiesPremiumDiskVmFamiliesList =
 
 /** Gets or sets the Premium disk VM Families list. */
 export type SqlAssessmentOptionsPropertiesSavingsPlanVmFamiliesList =
-  ReadonlyArray<AzureVmFamily>;
+  Array<AzureVmFamily>;
 export const SqlAssessmentOptionsPropertiesSavingsPlanVmFamiliesList =
   /*@__PURE__*/ S.Array(
     AzureVmFamily,
@@ -24252,7 +24208,7 @@ export const SqlAssessmentOptionsPropertiesSavingsPlanVmFamiliesList =
 
 /** Gets or sets the list of Azure locations supporting Saving Plans for IAAS. */
 export type SqlAssessmentOptionsPropertiesSavingsPlanSupportedLocationsList =
-  ReadonlyArray<AzureLocation>;
+  Array<AzureLocation>;
 export const SqlAssessmentOptionsPropertiesSavingsPlanSupportedLocationsList =
   /*@__PURE__*/ S.Array(
     AzureLocation,
@@ -24260,7 +24216,7 @@ export const SqlAssessmentOptionsPropertiesSavingsPlanSupportedLocationsList =
 
 /** Gets or sets the list of Azure locations supporting Saving Plans for PAAS. */
 export type SqlAssessmentOptionsPropertiesSavingsPlanSupportedLocationsForPaasList =
-  ReadonlyArray<AzureLocation>;
+  Array<AzureLocation>;
 export const SqlAssessmentOptionsPropertiesSavingsPlanSupportedLocationsForPaasList =
   /*@__PURE__*/ S.Array(
     AzureLocation,
@@ -24268,7 +24224,7 @@ export const SqlAssessmentOptionsPropertiesSavingsPlanSupportedLocationsForPaasL
 
 /** Gets or sets the list of Azure locations supporting Reserved Instances for IAAS. */
 export type SqlAssessmentOptionsPropertiesReservedInstanceSupportedLocationsForIaasList =
-  ReadonlyArray<AzureLocation>;
+  Array<AzureLocation>;
 export const SqlAssessmentOptionsPropertiesReservedInstanceSupportedLocationsForIaasList =
   /*@__PURE__*/ S.Array(
     AzureLocation,
@@ -24276,15 +24232,14 @@ export const SqlAssessmentOptionsPropertiesReservedInstanceSupportedLocationsFor
 
 /** Gets or sets the list of Azure Offers supporting Saving Plans. */
 export type SqlAssessmentOptionsPropertiesSavingsPlanSupportedOffersList =
-  ReadonlyArray<AzureOfferCode>;
+  Array<AzureOfferCode>;
 export const SqlAssessmentOptionsPropertiesSavingsPlanSupportedOffersList =
   /*@__PURE__*/ S.Array(
     AzureOfferCode,
   ) as any as S.Schema<SqlAssessmentOptionsPropertiesSavingsPlanSupportedOffersList>;
 
 /** Gets or sets the target location. */
-export type SqlPaaSTargetOptionsTargetLocationsList =
-  ReadonlyArray<AzureLocation>;
+export type SqlPaaSTargetOptionsTargetLocationsList = Array<AzureLocation>;
 export const SqlPaaSTargetOptionsTargetLocationsList = /*@__PURE__*/ S.Array(
   AzureLocation,
 ) as any as S.Schema<SqlPaaSTargetOptionsTargetLocationsList>;
@@ -24316,14 +24271,14 @@ export const SqlPaaSTargetOptions = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets the list of SQL target SKU properties for dropdowns. */
 export type SqlAssessmentOptionsPropertiesSqlSkusList =
-  ReadonlyArray<SqlPaaSTargetOptions>;
+  Array<SqlPaaSTargetOptions>;
 export const SqlAssessmentOptionsPropertiesSqlSkusList = /*@__PURE__*/ S.Array(
   SqlPaaSTargetOptions,
 ) as any as S.Schema<SqlAssessmentOptionsPropertiesSqlSkusList>;
 
 /** Gets or sets the Reserved Instance SQL target types. */
 export type SqlAssessmentOptionsPropertiesReservedInstanceSqlTargetsList =
-  ReadonlyArray<TargetType>;
+  Array<TargetType>;
 export const SqlAssessmentOptionsPropertiesReservedInstanceSqlTargetsList =
   /*@__PURE__*/ S.Array(
     TargetType,
@@ -24331,7 +24286,7 @@ export const SqlAssessmentOptionsPropertiesReservedInstanceSqlTargetsList =
 
 /** Gets or sets the list of Azure locations supporting Reserved Instances. */
 export type SqlAssessmentOptionsPropertiesReservedInstanceSupportedLocationsList =
-  ReadonlyArray<AzureLocation>;
+  Array<AzureLocation>;
 export const SqlAssessmentOptionsPropertiesReservedInstanceSupportedLocationsList =
   /*@__PURE__*/ S.Array(
     AzureLocation,
@@ -24339,7 +24294,7 @@ export const SqlAssessmentOptionsPropertiesReservedInstanceSupportedLocationsLis
 
 /** Gets or sets the list of currencies supported for Reserved Instances. */
 export type SqlAssessmentOptionsPropertiesReservedInstanceSupportedCurrenciesList =
-  ReadonlyArray<AzureCurrency>;
+  Array<AzureCurrency>;
 export const SqlAssessmentOptionsPropertiesReservedInstanceSupportedCurrenciesList =
   /*@__PURE__*/ S.Array(
     AzureCurrency,
@@ -24347,7 +24302,7 @@ export const SqlAssessmentOptionsPropertiesReservedInstanceSupportedCurrenciesLi
 
 /** Gets or sets the list of offers supported for Reserved Instances. */
 export type SqlAssessmentOptionsPropertiesReservedInstanceSupportedOffersList =
-  ReadonlyArray<AzureOfferCode>;
+  Array<AzureOfferCode>;
 export const SqlAssessmentOptionsPropertiesReservedInstanceSupportedOffersList =
   /*@__PURE__*/ S.Array(
     AzureOfferCode,
@@ -24355,7 +24310,7 @@ export const SqlAssessmentOptionsPropertiesReservedInstanceSupportedOffersList =
 
 /** Gets or sets the list of offers supported for SQL assessments. */
 export type SqlAssessmentOptionsPropertiesSupportedOffersList =
-  ReadonlyArray<AzureOfferCode>;
+  Array<AzureOfferCode>;
 export const SqlAssessmentOptionsPropertiesSupportedOffersList =
   /*@__PURE__*/ S.Array(
     AzureOfferCode,
@@ -24515,7 +24470,7 @@ export const SqlAssessmentOptions = /*@__PURE__*/ S.suspend(() =>
 
 /** The SqlAssessmentOptions items on this page */
 export type SqlAssessmentOptionsListResultValueList =
-  ReadonlyArray<SqlAssessmentOptions>;
+  Array<SqlAssessmentOptions>;
 export const SqlAssessmentOptionsListResultValueList = /*@__PURE__*/ S.Array(
   SqlAssessmentOptions,
 ) as any as S.Schema<SqlAssessmentOptionsListResultValueList>;
@@ -24573,9 +24528,9 @@ export const AzureSqlInstanceType = /*@__PURE__*/ S.String;
 /** SQL managed instance assessment settings. */
 export interface SqlMiSettings {
   /** Gets or sets the azure SQL service tier. */
-  azureSqlServiceTier?: AzureSqlServiceTier;
+  azureSqlServiceTier?: AzureSqlServiceTier | (string & {});
   /** Gets or sets the azure PAAS SQL instance type. */
-  azureSqlInstanceType?: AzureSqlInstanceType;
+  azureSqlInstanceType?: AzureSqlInstanceType | (string & {});
 }
 export const SqlMiSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -24597,13 +24552,13 @@ export const AzureSqlPurchaseModel = /*@__PURE__*/ S.String;
 /** SQL database assessment settings. */
 export interface SqlDbSettings {
   /** Gets or sets the azure SQL service tier. */
-  azureSqlServiceTier?: AzureSqlServiceTier;
+  azureSqlServiceTier?: AzureSqlServiceTier | (string & {});
   /** Gets or sets the azure PAAS SQL instance type. */
-  azureSqlDataBaseType?: AzureSqlDataBaseType;
+  azureSqlDataBaseType?: AzureSqlDataBaseType | (string & {});
   /** Gets or sets the azure SQL compute tier. */
-  azureSqlComputeTier?: ComputeTier;
+  azureSqlComputeTier?: ComputeTier | (string & {});
   /** Gets or sets the azure SQL purchase model. */
-  azureSqlPurchaseModel?: AzureSqlPurchaseModel;
+  azureSqlPurchaseModel?: AzureSqlPurchaseModel | (string & {});
 }
 export const SqlDbSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -24615,7 +24570,9 @@ export const SqlDbSettings = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SqlDbSettings" }) as any as S.Schema<SqlDbSettings>;
 
 /** Gets or sets the Azure VM families (calling instance series to keep it consistent with other targets). */
-export type SqlVmSettingsInstanceSeriesList = ReadonlyArray<AzureVmFamily>;
+export type SqlVmSettingsInstanceSeriesList = Array<
+  AzureVmFamily | (string & {})
+>;
 export const SqlVmSettingsInstanceSeriesList = /*@__PURE__*/ S.Array(
   AzureVmFamily,
 ) as any as S.Schema<SqlVmSettingsInstanceSeriesList>;
@@ -25121,7 +25078,7 @@ export const SqlAssessmentV2 = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SqlAssessmentV2>;
 
 /** The SqlAssessmentV2 items on this page */
-export type SqlAssessmentV2ListResultValueList = ReadonlyArray<SqlAssessmentV2>;
+export type SqlAssessmentV2ListResultValueList = Array<SqlAssessmentV2>;
 export const SqlAssessmentV2ListResultValueList = /*@__PURE__*/ S.Array(
   SqlAssessmentV2,
 ) as any as S.Schema<SqlAssessmentV2ListResultValueList>;
@@ -25431,7 +25388,7 @@ export const SqlAssessmentV2Summary = /*@__PURE__*/ S.suspend(() =>
 
 /** The SqlAssessmentV2Summary items on this page */
 export type SqlAssessmentV2SummaryListResultValueList =
-  ReadonlyArray<SqlAssessmentV2Summary>;
+  Array<SqlAssessmentV2Summary>;
 export const SqlAssessmentV2SummaryListResultValueList = /*@__PURE__*/ S.Array(
   SqlAssessmentV2Summary,
 ) as any as S.Schema<SqlAssessmentV2SummaryListResultValueList>;
@@ -25626,7 +25583,7 @@ export const SqlAvailabilityReplicaProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets the list of availability replica properties which together forms this availability group. */
 export type SqlAvailabilityGroupPropertiesAvailabilityReplicasList =
-  ReadonlyArray<SqlAvailabilityReplicaProperties>;
+  Array<SqlAvailabilityReplicaProperties>;
 export const SqlAvailabilityGroupPropertiesAvailabilityReplicasList =
   /*@__PURE__*/ S.Array(
     SqlAvailabilityReplicaProperties,
@@ -25664,7 +25621,7 @@ export const SqlAvailabilityReplicaOverview = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets the parent availability replica overview if any. This would be set with details of parent AG and AR for cases where this availability group is a part of a distributed AG. Currently, we do not populate this since discovery and linking of DAG(Distributed Availability Group) is not implemented. */
 export type SqlAvailabilityGroupPropertiesParentReplicaOverviewListList =
-  ReadonlyArray<SqlAvailabilityReplicaOverview>;
+  Array<SqlAvailabilityReplicaOverview>;
 export const SqlAvailabilityGroupPropertiesParentReplicaOverviewListList =
   /*@__PURE__*/ S.Array(
     SqlAvailabilityReplicaOverview,
@@ -25812,7 +25769,7 @@ export const SqlAvailabilityGroup = /*@__PURE__*/ S.suspend(() =>
 
 /** The SqlAvailabilityGroup items on this page */
 export type SqlAvailabilityGroupListResultValueList =
-  ReadonlyArray<SqlAvailabilityGroup>;
+  Array<SqlAvailabilityGroup>;
 export const SqlAvailabilityGroupListResultValueList = /*@__PURE__*/ S.Array(
   SqlAvailabilityGroup,
 ) as any as S.Schema<SqlAvailabilityGroupListResultValueList>;
@@ -26026,7 +25983,7 @@ export const SqlCollector = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SqlCollector" }) as any as S.Schema<SqlCollector>;
 
 /** The SqlCollector items on this page */
-export type SqlCollectorListResultValueList = ReadonlyArray<SqlCollector>;
+export type SqlCollectorListResultValueList = Array<SqlCollector>;
 export const SqlCollectorListResultValueList = /*@__PURE__*/ S.Array(
   SqlCollector,
 ) as any as S.Schema<SqlCollectorListResultValueList>;
@@ -26111,8 +26068,7 @@ export const FileMetaData = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FileMetaData" }) as any as S.Schema<FileMetaData>;
 
 /** Gets the file metadata list. */
-export type SqlDatabasePropertiesV2FileMetadataListList =
-  ReadonlyArray<FileMetaData>;
+export type SqlDatabasePropertiesV2FileMetadataListList = Array<FileMetaData>;
 export const SqlDatabasePropertiesV2FileMetadataListList =
   /*@__PURE__*/ S.Array(
     FileMetaData,
@@ -26181,7 +26137,7 @@ export const Errors = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Errors" }) as any as S.Schema<Errors>;
 
 /** Gets the errors. */
-export type SqlDatabasePropertiesV2ErrorsList = ReadonlyArray<Errors>;
+export type SqlDatabasePropertiesV2ErrorsList = Array<Errors>;
 export const SqlDatabasePropertiesV2ErrorsList = /*@__PURE__*/ S.Array(
   Errors,
 ) as any as S.Schema<SqlDatabasePropertiesV2ErrorsList>;
@@ -26330,7 +26286,7 @@ export const SqlDatabaseV2 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SqlDatabaseV2" }) as any as S.Schema<SqlDatabaseV2>;
 
 /** The SqlDatabaseV2 items on this page */
-export type SqlDatabaseV2ListResultValueList = ReadonlyArray<SqlDatabaseV2>;
+export type SqlDatabaseV2ListResultValueList = Array<SqlDatabaseV2>;
 export const SqlDatabaseV2ListResultValueList = /*@__PURE__*/ S.Array(
   SqlDatabaseV2,
 ) as any as S.Schema<SqlDatabaseV2ListResultValueList>;
@@ -26356,7 +26312,7 @@ export interface SqlDiscoverySiteDataSourceProperties {
   /** Gets or sets the discovery site Id. */
   discoverySiteId?: string;
   /** provisioning state enum */
-  provisioningState?: ProvisioningState_2;
+  provisioningState?: ProvisioningState_2 | (string & {});
 }
 export const SqlDiscoverySiteDataSourceProperties = /*@__PURE__*/ S.suspend(
   () =>
@@ -26579,7 +26535,7 @@ export const SqlDiscoverySiteDataSource = /*@__PURE__*/ S.suspend(() =>
 
 /** The SqlDiscoverySiteDataSource items on this page */
 export type SqlDiscoverySiteDataSourceListResultValueList =
-  ReadonlyArray<SqlDiscoverySiteDataSource>;
+  Array<SqlDiscoverySiteDataSource>;
 export const SqlDiscoverySiteDataSourceListResultValueList =
   /*@__PURE__*/ S.Array(
     SqlDiscoverySiteDataSource,
@@ -26710,7 +26666,7 @@ export const SqlJob = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SqlJob" }) as any as S.Schema<SqlJob>;
 
 /** The SqlJob items on this page */
-export type SqlJobListResultValueList = ReadonlyArray<SqlJob>;
+export type SqlJobListResultValueList = Array<SqlJob>;
 export const SqlJobListResultValueList = /*@__PURE__*/ S.Array(
   SqlJob,
 ) as any as S.Schema<SqlJobListResultValueList>;
@@ -26875,7 +26831,7 @@ export const SqlRunAsAccount = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SqlRunAsAccount>;
 
 /** The SqlRunAsAccount items on this page */
-export type SqlRunAsAccountListResultValueList = ReadonlyArray<SqlRunAsAccount>;
+export type SqlRunAsAccountListResultValueList = Array<SqlRunAsAccount>;
 export const SqlRunAsAccountListResultValueList = /*@__PURE__*/ S.Array(
   SqlRunAsAccount,
 ) as any as S.Schema<SqlRunAsAccountListResultValueList>;
@@ -26956,7 +26912,7 @@ export const SqlMachineOverview = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets the Machine Overview properties of all machines on which the SQL server is deployed. */
 export type SqlServerPropertiesMachineOverviewListList =
-  ReadonlyArray<SqlMachineOverview>;
+  Array<SqlMachineOverview>;
 export const SqlServerPropertiesMachineOverviewListList = /*@__PURE__*/ S.Array(
   SqlMachineOverview,
 ) as any as S.Schema<SqlServerPropertiesMachineOverviewListList>;
@@ -26977,7 +26933,7 @@ export const FCIInstanceState = /*@__PURE__*/ S.String;
 /** The class representing the properties for an FCI instance. */
 export interface SqlFciProperties {
   /** Gets or sets the state of the FCI instance. */
-  state?: FCIInstanceState;
+  state?: FCIInstanceState | (string & {});
   /** Gets or sets the FCI Network Name used to connect to this FCI instance. */
   networkName?: string;
   /** Gets or sets a value indicating whether the FCI is hosted on possible owners which are in multiple subnets. */
@@ -26997,13 +26953,13 @@ export const SqlFciProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SqlFciProperties>;
 
 /** Gets the list of machine ARM Ids on which the SQL server is deployed. */
-export type SqlServerPropertiesMachineArmIdsList = ReadonlyArray<string>;
+export type SqlServerPropertiesMachineArmIdsList = Array<string>;
 export const SqlServerPropertiesMachineArmIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SqlServerPropertiesMachineArmIdsList>;
 
 /** Gets the errors. */
-export type SqlServerPropertiesErrorsList = ReadonlyArray<Errors>;
+export type SqlServerPropertiesErrorsList = Array<Errors>;
 export const SqlServerPropertiesErrorsList = /*@__PURE__*/ S.Array(
   Errors,
 ) as any as S.Schema<SqlServerPropertiesErrorsList>;
@@ -27222,7 +27178,7 @@ export const SqlServerV2 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SqlServerV2" }) as any as S.Schema<SqlServerV2>;
 
 /** The SqlServerV2 items on this page */
-export type SqlServerV2ListResultValueList = ReadonlyArray<SqlServerV2>;
+export type SqlServerV2ListResultValueList = Array<SqlServerV2>;
 export const SqlServerV2ListResultValueList = /*@__PURE__*/ S.Array(
   SqlServerV2,
 ) as any as S.Schema<SqlServerV2ListResultValueList>;
@@ -27427,7 +27383,7 @@ export const SiteAppliancePropertiesInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets the appliance details used by service to communicate to the appliance. */
 export type SqlSitePropertiesInputSiteAppliancePropertiesCollectionList =
-  ReadonlyArray<SiteAppliancePropertiesInput>;
+  Array<SiteAppliancePropertiesInput>;
 export const SqlSitePropertiesInputSiteAppliancePropertiesCollectionList =
   /*@__PURE__*/ S.Array(
     SiteAppliancePropertiesInput,
@@ -27507,7 +27463,7 @@ export const SiteApplianceProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets the appliance details used by service to communicate to the appliance. */
 export type SqlSitePropertiesSiteAppliancePropertiesCollectionList =
-  ReadonlyArray<SiteApplianceProperties>;
+  Array<SiteApplianceProperties>;
 export const SqlSitePropertiesSiteAppliancePropertiesCollectionList =
   /*@__PURE__*/ S.Array(
     SiteApplianceProperties,
@@ -27806,7 +27762,7 @@ export const SqlSite = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SqlSite" }) as any as S.Schema<SqlSite>;
 
 /** The SqlSite items on this page */
-export type SqlSiteListResultValueList = ReadonlyArray<SqlSite>;
+export type SqlSiteListResultValueList = Array<SqlSite>;
 export const SqlSiteListResultValueList = /*@__PURE__*/ S.Array(
   SqlSite,
 ) as any as S.Schema<SqlSiteListResultValueList>;
@@ -27912,7 +27868,7 @@ export const SqlSiteUsage = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets the appliance details used by service to communicate to the appliance. */
 export type SqlSiteUpdatePropertiesInputSiteAppliancePropertiesCollectionList =
-  ReadonlyArray<SiteAppliancePropertiesInput>;
+  Array<SiteAppliancePropertiesInput>;
 export const SqlSiteUpdatePropertiesInputSiteAppliancePropertiesCollectionList =
   /*@__PURE__*/ S.Array(
     SiteAppliancePropertiesInput,
@@ -28023,23 +27979,21 @@ export const TomcatWebApplicationsControllerGetRequest =
   }) as any as S.Schema<TomcatWebApplicationsControllerGetRequest>;
 
 /** Gets the list of machine ARM Ids on which the web application is deployed. */
-export type TomcatWebApplicationPropertiesMachineArmIdsList =
-  ReadonlyArray<string>;
+export type TomcatWebApplicationPropertiesMachineArmIdsList = Array<string>;
 export const TomcatWebApplicationPropertiesMachineArmIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<TomcatWebApplicationPropertiesMachineArmIdsList>;
 
 /** Gets the front end bindings for the application. */
-export type TomcatWebApplicationPropertiesBindingsList =
-  ReadonlyArray<FrontEndBinding>;
+export type TomcatWebApplicationPropertiesBindingsList = Array<FrontEndBinding>;
 export const TomcatWebApplicationPropertiesBindingsList = /*@__PURE__*/ S.Array(
   FrontEndBinding,
 ) as any as S.Schema<TomcatWebApplicationPropertiesBindingsList>;
 
 /** Gets the Error details. */
 export type TomcatWebApplicationPropertiesFrameworksList =
-  ReadonlyArray<WebApplicationFramework>;
+  Array<WebApplicationFramework>;
 export const TomcatWebApplicationPropertiesFrameworksList =
   /*@__PURE__*/ S.Array(
     WebApplicationFramework,
@@ -28047,7 +28001,7 @@ export const TomcatWebApplicationPropertiesFrameworksList =
 
 /** Gets the configuration. */
 export type TomcatWebApplicationPropertiesConfigurationsList =
-  ReadonlyArray<WebApplicationConfigurationUnit>;
+  Array<WebApplicationConfigurationUnit>;
 export const TomcatWebApplicationPropertiesConfigurationsList =
   /*@__PURE__*/ S.Array(
     WebApplicationConfigurationUnit,
@@ -28055,7 +28009,7 @@ export const TomcatWebApplicationPropertiesConfigurationsList =
 
 /** Gets the directories. */
 export type TomcatWebApplicationPropertiesDirectoriesList =
-  ReadonlyArray<WebApplicationDirectoryUnit>;
+  Array<WebApplicationDirectoryUnit>;
 export const TomcatWebApplicationPropertiesDirectoriesList =
   /*@__PURE__*/ S.Array(
     WebApplicationDirectoryUnit,
@@ -28071,8 +28025,7 @@ export const TomcatWebApplicationPropertiesTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<TomcatWebApplicationPropertiesTagsMap>;
 
 /** Static folders. */
-export type TomcatWebApplicationPropertiesStaticFoldersList =
-  ReadonlyArray<string>;
+export type TomcatWebApplicationPropertiesStaticFoldersList = Array<string>;
 export const TomcatWebApplicationPropertiesStaticFoldersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -28080,14 +28033,13 @@ export const TomcatWebApplicationPropertiesStaticFoldersList =
 
 /** Gets the Error details. */
 export type TomcatWebApplicationPropertiesErrorsList =
-  ReadonlyArray<HealthErrorDetails>;
+  Array<HealthErrorDetails>;
 export const TomcatWebApplicationPropertiesErrorsList = /*@__PURE__*/ S.Array(
   HealthErrorDetails,
 ) as any as S.Schema<TomcatWebApplicationPropertiesErrorsList>;
 
 /** Gets the appliance names. */
-export type TomcatWebApplicationPropertiesApplianceNamesList =
-  ReadonlyArray<string>;
+export type TomcatWebApplicationPropertiesApplianceNamesList = Array<string>;
 export const TomcatWebApplicationPropertiesApplianceNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -28269,7 +28221,7 @@ export const TomcatWebApplications = /*@__PURE__*/ S.suspend(() =>
 
 /** The TomcatWebApplications items on this page */
 export type TomcatWebApplicationsListResultValueList =
-  ReadonlyArray<TomcatWebApplications>;
+  Array<TomcatWebApplications>;
 export const TomcatWebApplicationsListResultValueList = /*@__PURE__*/ S.Array(
   TomcatWebApplications,
 ) as any as S.Schema<TomcatWebApplicationsListResultValueList>;
@@ -28380,7 +28332,7 @@ export const TomcatWebServersControllerGetRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<TomcatWebServersControllerGetRequest>;
 
 /** Gets or sets the bindings for the connector. */
-export type ConnectorUnitBindingsList = ReadonlyArray<FrontEndBinding>;
+export type ConnectorUnitBindingsList = Array<FrontEndBinding>;
 export const ConnectorUnitBindingsList = /*@__PURE__*/ S.Array(
   FrontEndBinding,
 ) as any as S.Schema<ConnectorUnitBindingsList>;
@@ -28397,7 +28349,7 @@ export const ConnectorUnit = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ConnectorUnit" }) as any as S.Schema<ConnectorUnit>;
 
 /** Gets or sets the connectors defined for the service component. */
-export type TomcatServiceUnitConnectorsList = ReadonlyArray<ConnectorUnit>;
+export type TomcatServiceUnitConnectorsList = Array<ConnectorUnit>;
 export const TomcatServiceUnitConnectorsList = /*@__PURE__*/ S.Array(
   ConnectorUnit,
 ) as any as S.Schema<TomcatServiceUnitConnectorsList>;
@@ -28420,7 +28372,7 @@ export const TomcatHostUnit = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TomcatHostUnit" }) as any as S.Schema<TomcatHostUnit>;
 
 /** Gets or sets the hosts defined for the engine. */
-export type TomcatEngineUnitHostsList = ReadonlyArray<TomcatHostUnit>;
+export type TomcatEngineUnitHostsList = Array<TomcatHostUnit>;
 export const TomcatEngineUnitHostsList = /*@__PURE__*/ S.Array(
   TomcatHostUnit,
 ) as any as S.Schema<TomcatEngineUnitHostsList>;
@@ -28461,35 +28413,32 @@ export const TomcatServiceUnit = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TomcatServiceUnit>;
 
 /** Gets or sets the services defined in the server. */
-export type TomcatWebServerPropertiesServicesList =
-  ReadonlyArray<TomcatServiceUnit>;
+export type TomcatWebServerPropertiesServicesList = Array<TomcatServiceUnit>;
 export const TomcatWebServerPropertiesServicesList = /*@__PURE__*/ S.Array(
   TomcatServiceUnit,
 ) as any as S.Schema<TomcatWebServerPropertiesServicesList>;
 
 /** Gets the list of machines. */
-export type TomcatWebServerPropertiesMachineIdsList = ReadonlyArray<string>;
+export type TomcatWebServerPropertiesMachineIdsList = Array<string>;
 export const TomcatWebServerPropertiesMachineIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<TomcatWebServerPropertiesMachineIdsList>;
 
 /** Gets the list of web applications. */
-export type TomcatWebServerPropertiesWebApplicationsList =
-  ReadonlyArray<string>;
+export type TomcatWebServerPropertiesWebApplicationsList = Array<string>;
 export const TomcatWebServerPropertiesWebApplicationsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<TomcatWebServerPropertiesWebApplicationsList>;
 
 /** Gets the Error details. */
-export type TomcatWebServerPropertiesErrorsList =
-  ReadonlyArray<HealthErrorDetails>;
+export type TomcatWebServerPropertiesErrorsList = Array<HealthErrorDetails>;
 export const TomcatWebServerPropertiesErrorsList = /*@__PURE__*/ S.Array(
   HealthErrorDetails,
 ) as any as S.Schema<TomcatWebServerPropertiesErrorsList>;
 
 /** Gets the appliance names. */
-export type TomcatWebServerPropertiesApplianceNamesList = ReadonlyArray<string>;
+export type TomcatWebServerPropertiesApplianceNamesList = Array<string>;
 export const TomcatWebServerPropertiesApplianceNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -28672,8 +28621,7 @@ export const TomcatWebServers = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TomcatWebServers>;
 
 /** The TomcatWebServers items on this page */
-export type TomcatWebServersListResultValueList =
-  ReadonlyArray<TomcatWebServers>;
+export type TomcatWebServersListResultValueList = Array<TomcatWebServers>;
 export const TomcatWebServersListResultValueList = /*@__PURE__*/ S.Array(
   TomcatWebServers,
 ) as any as S.Schema<TomcatWebServersListResultValueList>;
@@ -28751,7 +28699,7 @@ export const VcenterControllerCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VcenterControllerCreateRequest>;
 
 /** Gets the errors. */
-export type VcenterPropertiesErrorsList = ReadonlyArray<HealthErrorDetails>;
+export type VcenterPropertiesErrorsList = Array<HealthErrorDetails>;
 export const VcenterPropertiesErrorsList = /*@__PURE__*/ S.Array(
   HealthErrorDetails,
 ) as any as S.Schema<VcenterPropertiesErrorsList>;
@@ -28963,7 +28911,7 @@ export const Vcenter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Vcenter" }) as any as S.Schema<Vcenter>;
 
 /** The Vcenter items on this page */
-export type VcenterListResultValueList = ReadonlyArray<Vcenter>;
+export type VcenterListResultValueList = Array<Vcenter>;
 export const VcenterListResultValueList = /*@__PURE__*/ S.Array(
   Vcenter,
 ) as any as S.Schema<VcenterListResultValueList>;
@@ -29013,22 +28961,20 @@ export const VirtualDesktopUserControllerGetVirtualDesktopUserRequest =
     identifier: "VirtualDesktopUserControllerGetVirtualDesktopUserRequest",
   }) as any as S.Schema<VirtualDesktopUserControllerGetVirtualDesktopUserRequest>;
 
-export type VirtualDesktopUserAssessmentDetailsDevicesUsedList =
-  ReadonlyArray<string>;
+export type VirtualDesktopUserAssessmentDetailsDevicesUsedList = Array<string>;
 export const VirtualDesktopUserAssessmentDetailsDevicesUsedList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<VirtualDesktopUserAssessmentDetailsDevicesUsedList>;
 
 export type VirtualDesktopUserAssessmentDetailsCriticalApplicationsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const VirtualDesktopUserAssessmentDetailsCriticalApplicationsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<VirtualDesktopUserAssessmentDetailsCriticalApplicationsList>;
 
-export type VirtualDesktopUserAssessmentDetailsOsUsedList =
-  ReadonlyArray<string>;
+export type VirtualDesktopUserAssessmentDetailsOsUsedList = Array<string>;
 export const VirtualDesktopUserAssessmentDetailsOsUsedList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -29113,7 +29059,7 @@ export const VirtualDesktopUserAssessmentDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VirtualDesktopUserAssessmentDetails>;
 
 export type VirtualDesktopUserPropertiesAssessmentDataList =
-  ReadonlyArray<VirtualDesktopUserAssessmentDetails>;
+  Array<VirtualDesktopUserAssessmentDetails>;
 export const VirtualDesktopUserPropertiesAssessmentDataList =
   /*@__PURE__*/ S.Array(
     VirtualDesktopUserAssessmentDetails,
@@ -29183,8 +29129,7 @@ export const VirtualDesktopUserControllerListVirtualDesktopUsersRequest =
     identifier: "VirtualDesktopUserControllerListVirtualDesktopUsersRequest",
   }) as any as S.Schema<VirtualDesktopUserControllerListVirtualDesktopUsersRequest>;
 
-export type VirtualDesktopUserCollectionValueList =
-  ReadonlyArray<VirtualDesktopUser>;
+export type VirtualDesktopUserCollectionValueList = Array<VirtualDesktopUser>;
 export const VirtualDesktopUserCollectionValueList = /*@__PURE__*/ S.Array(
   VirtualDesktopUser,
 ) as any as S.Schema<VirtualDesktopUserCollectionValueList>;
@@ -29402,7 +29347,7 @@ export const VmwareCollector = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VmwareCollector>;
 
 /** The VmwareCollector items on this page */
-export type VmwareCollectorListResultValueList = ReadonlyArray<VmwareCollector>;
+export type VmwareCollectorListResultValueList = Array<VmwareCollector>;
 export const VmwareCollectorListResultValueList = /*@__PURE__*/ S.Array(
   VmwareCollector,
 ) as any as S.Schema<VmwareCollectorListResultValueList>;
@@ -29490,13 +29435,13 @@ export const VmwareDatastore = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VmwareDatastore>;
 
 /** Gets the data stores. */
-export type VmwareHostPropertiesDatastoresList = ReadonlyArray<VmwareDatastore>;
+export type VmwareHostPropertiesDatastoresList = Array<VmwareDatastore>;
 export const VmwareHostPropertiesDatastoresList = /*@__PURE__*/ S.Array(
   VmwareDatastore,
 ) as any as S.Schema<VmwareHostPropertiesDatastoresList>;
 
 /** Gets the appliance names. */
-export type VmwareHostPropertiesApplianceNamesList = ReadonlyArray<string>;
+export type VmwareHostPropertiesApplianceNamesList = Array<string>;
 export const VmwareHostPropertiesApplianceNamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<VmwareHostPropertiesApplianceNamesList>;
@@ -29606,7 +29551,7 @@ export const VmwareHost = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VmwareHost" }) as any as S.Schema<VmwareHost>;
 
 /** The VmwareHost items on this page */
-export type VmwareHostListResultValueList = ReadonlyArray<VmwareHost>;
+export type VmwareHostListResultValueList = Array<VmwareHost>;
 export const VmwareHostListResultValueList = /*@__PURE__*/ S.Array(
   VmwareHost,
 ) as any as S.Schema<VmwareHostListResultValueList>;
@@ -29658,7 +29603,7 @@ export const VmwareOperationsStatusGetVmwareOperationStatusRequest =
 
 /** Gets or sets the machine collection. */
 export type VmwarePropertiesControllerUpdateDependencyMapStatusRequestMachinesList =
-  ReadonlyArray<DependencyMapMachineInput>;
+  Array<DependencyMapMachineInput>;
 export const VmwarePropertiesControllerUpdateDependencyMapStatusRequestMachinesList =
   /*@__PURE__*/ S.Array(
     DependencyMapMachineInput,
@@ -29704,7 +29649,7 @@ export const VmwarePropertiesControllerUpdateDependencyMapStatusResponse =
 
 /** The list of Machine MetaData. */
 export type VmwarePropertiesControllerUpdatePropertiesRequestValueList =
-  ReadonlyArray<MachineMetadata>;
+  Array<MachineMetadata>;
 export const VmwarePropertiesControllerUpdatePropertiesRequestValueList =
   /*@__PURE__*/ S.Array(
     MachineMetadata,
@@ -29763,7 +29708,7 @@ export const RunAsAccountMachineInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets the machine collection. */
 export type VmwarePropertiesControllerUpdateRunAsAccountRequestMachinesList =
-  ReadonlyArray<RunAsAccountMachineInput>;
+  Array<RunAsAccountMachineInput>;
 export const VmwarePropertiesControllerUpdateRunAsAccountRequestMachinesList =
   /*@__PURE__*/ S.Array(
     RunAsAccountMachineInput,
@@ -29831,7 +29776,7 @@ export const TagsMachineInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets the machine collection. */
 export type VmwarePropertiesControllerUpdateTagsRequestMachinesList =
-  ReadonlyArray<TagsMachineInput>;
+  Array<TagsMachineInput>;
 export const VmwarePropertiesControllerUpdateTagsRequestMachinesList =
   /*@__PURE__*/ S.Array(
     TagsMachineInput,
@@ -30000,7 +29945,7 @@ export const VmwareMachineSoftwareInventory = /*@__PURE__*/ S.suspend(() =>
 
 /** The VmwareMachineSoftwareInventory items on this page */
 export type VmwareMachineSoftwareInventoryListResultValueList =
-  ReadonlyArray<VmwareMachineSoftwareInventory>;
+  Array<VmwareMachineSoftwareInventory>;
 export const VmwareMachineSoftwareInventoryListResultValueList =
   /*@__PURE__*/ S.Array(
     VmwareMachineSoftwareInventory,
@@ -30061,8 +30006,7 @@ export type AzureWebAppTier =
 export const AzureWebAppTier = /*@__PURE__*/ S.String;
 
 /** Gets or sets the target location. */
-export type WebAppTargetOptionsTargetLocationsList =
-  ReadonlyArray<AzureLocation>;
+export type WebAppTargetOptionsTargetLocationsList = Array<AzureLocation>;
 export const WebAppTargetOptionsTargetLocationsList = /*@__PURE__*/ S.Array(
   AzureLocation,
 ) as any as S.Schema<WebAppTargetOptionsTargetLocationsList>;
@@ -30085,7 +30029,7 @@ export const WebAppTargetOptions = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets the list of web app target options. */
 export type WebAppAssessmentOptionsPropertiesWebAppSkusList =
-  ReadonlyArray<WebAppTargetOptions>;
+  Array<WebAppTargetOptions>;
 export const WebAppAssessmentOptionsPropertiesWebAppSkusList =
   /*@__PURE__*/ S.Array(
     WebAppTargetOptions,
@@ -30093,7 +30037,7 @@ export const WebAppAssessmentOptionsPropertiesWebAppSkusList =
 
 /** Gets or sets the list of Azure locations supporting Saving Plans for IAAS. */
 export type WebAppAssessmentOptionsPropertiesSavingsPlanSupportedLocationsList =
-  ReadonlyArray<AzureLocation>;
+  Array<AzureLocation>;
 export const WebAppAssessmentOptionsPropertiesSavingsPlanSupportedLocationsList =
   /*@__PURE__*/ S.Array(
     AzureLocation,
@@ -30101,7 +30045,7 @@ export const WebAppAssessmentOptionsPropertiesSavingsPlanSupportedLocationsList 
 
 /** Gets or sets the list of Azure locations supporting Reserved Instances. */
 export type WebAppAssessmentOptionsPropertiesReservedInstanceSupportedLocationsList =
-  ReadonlyArray<AzureLocation>;
+  Array<AzureLocation>;
 export const WebAppAssessmentOptionsPropertiesReservedInstanceSupportedLocationsList =
   /*@__PURE__*/ S.Array(
     AzureLocation,
@@ -30109,7 +30053,7 @@ export const WebAppAssessmentOptionsPropertiesReservedInstanceSupportedLocations
 
 /** Gets or sets the list of currencies supported for Reserved Instances. */
 export type WebAppAssessmentOptionsPropertiesReservedInstanceSupportedCurrenciesList =
-  ReadonlyArray<AzureCurrency>;
+  Array<AzureCurrency>;
 export const WebAppAssessmentOptionsPropertiesReservedInstanceSupportedCurrenciesList =
   /*@__PURE__*/ S.Array(
     AzureCurrency,
@@ -30117,7 +30061,7 @@ export const WebAppAssessmentOptionsPropertiesReservedInstanceSupportedCurrencie
 
 /** Gets or sets the list of offers supported for Reserved Instances. */
 export type WebAppAssessmentOptionsPropertiesReservedInstanceSupportedOffersList =
-  ReadonlyArray<AzureOfferCode>;
+  Array<AzureOfferCode>;
 export const WebAppAssessmentOptionsPropertiesReservedInstanceSupportedOffersList =
   /*@__PURE__*/ S.Array(
     AzureOfferCode,
@@ -30125,7 +30069,7 @@ export const WebAppAssessmentOptionsPropertiesReservedInstanceSupportedOffersLis
 
 /** Gets or sets the list of currencies supported for Reserved Instances. */
 export type WebAppAssessmentOptionsPropertiesReservedInstanceSupportedWebAppTiersList =
-  ReadonlyArray<AzureWebAppTier>;
+  Array<AzureWebAppTier>;
 export const WebAppAssessmentOptionsPropertiesReservedInstanceSupportedWebAppTiersList =
   /*@__PURE__*/ S.Array(
     AzureWebAppTier,
@@ -30133,7 +30077,7 @@ export const WebAppAssessmentOptionsPropertiesReservedInstanceSupportedWebAppTie
 
 /** Gets or sets the list of Azure Offers supporting Saving Plans. */
 export type WebAppAssessmentOptionsPropertiesSavingsPlanSupportedWebAppTiersList =
-  ReadonlyArray<AzureWebAppTier>;
+  Array<AzureWebAppTier>;
 export const WebAppAssessmentOptionsPropertiesSavingsPlanSupportedWebAppTiersList =
   /*@__PURE__*/ S.Array(
     AzureWebAppTier,
@@ -30261,7 +30205,7 @@ export const WebAppAssessmentOptions = /*@__PURE__*/ S.suspend(() =>
 
 /** The WebAppAssessmentOptions items on this page */
 export type WebAppAssessmentOptionsListResultValueList =
-  ReadonlyArray<WebAppAssessmentOptions>;
+  Array<WebAppAssessmentOptions>;
 export const WebAppAssessmentOptionsListResultValueList = /*@__PURE__*/ S.Array(
   WebAppAssessmentOptions,
 ) as any as S.Schema<WebAppAssessmentOptionsListResultValueList>;
@@ -30747,8 +30691,7 @@ export const WebAppAssessmentV2 = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WebAppAssessmentV2>;
 
 /** The WebAppAssessmentV2 items on this page */
-export type WebAppAssessmentV2ListResultValueList =
-  ReadonlyArray<WebAppAssessmentV2>;
+export type WebAppAssessmentV2ListResultValueList = Array<WebAppAssessmentV2>;
 export const WebAppAssessmentV2ListResultValueList = /*@__PURE__*/ S.Array(
   WebAppAssessmentV2,
 ) as any as S.Schema<WebAppAssessmentV2ListResultValueList>;
@@ -31035,7 +30978,7 @@ export const WebAppAssessmentV2Summary = /*@__PURE__*/ S.suspend(() =>
 
 /** The WebAppAssessmentV2Summary items on this page */
 export type WebAppAssessmentV2SummaryListResultValueList =
-  ReadonlyArray<WebAppAssessmentV2Summary>;
+  Array<WebAppAssessmentV2Summary>;
 export const WebAppAssessmentV2SummaryListResultValueList =
   /*@__PURE__*/ S.Array(
     WebAppAssessmentV2Summary,
@@ -31298,7 +31241,7 @@ export const WebAppCollector = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WebAppCollector>;
 
 /** The WebAppCollector items on this page */
-export type WebAppCollectorListResultValueList = ReadonlyArray<WebAppCollector>;
+export type WebAppCollectorListResultValueList = Array<WebAppCollector>;
 export const WebAppCollectorListResultValueList = /*@__PURE__*/ S.Array(
   WebAppCollector,
 ) as any as S.Schema<WebAppCollectorListResultValueList>;
@@ -31324,7 +31267,7 @@ export interface DiscoverySiteDataSourceProperties {
   /** Gets or sets the discovery site Id. */
   discoverySiteId?: string;
   /** provisioning state enum */
-  provisioningState?: ProvisioningState_2;
+  provisioningState?: ProvisioningState_2 | (string & {});
 }
 export const DiscoverySiteDataSourceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -31547,7 +31490,7 @@ export const DiscoverySiteDataSource = /*@__PURE__*/ S.suspend(() =>
 
 /** The DiscoverySiteDataSource items on this page */
 export type DiscoverySiteDataSourceListResultValueList =
-  ReadonlyArray<DiscoverySiteDataSource>;
+  Array<DiscoverySiteDataSource>;
 export const DiscoverySiteDataSourceListResultValueList = /*@__PURE__*/ S.Array(
   DiscoverySiteDataSource,
 ) as any as S.Schema<DiscoverySiteDataSourceListResultValueList>;
@@ -31602,7 +31545,7 @@ export const WebAppExtendedMachinesControllerGetRequest =
 
 /** Gets the Error details. */
 export type WebAppExtendedMachinePropertiesErrorsList =
-  ReadonlyArray<HealthErrorDetails>;
+  Array<HealthErrorDetails>;
 export const WebAppExtendedMachinePropertiesErrorsList = /*@__PURE__*/ S.Array(
   HealthErrorDetails,
 ) as any as S.Schema<WebAppExtendedMachinePropertiesErrorsList>;
@@ -31740,7 +31683,7 @@ export const WebAppExtendedMachine = /*@__PURE__*/ S.suspend(() =>
 
 /** The WebAppExtendedMachine items on this page */
 export type WebAppExtendedMachineListResultValueList =
-  ReadonlyArray<WebAppExtendedMachine>;
+  Array<WebAppExtendedMachine>;
 export const WebAppExtendedMachineListResultValueList = /*@__PURE__*/ S.Array(
   WebAppExtendedMachine,
 ) as any as S.Schema<WebAppExtendedMachineListResultValueList>;
@@ -31803,35 +31746,34 @@ export const WebApplicationsControllerListByWebAppSiteRequest =
   }) as any as S.Schema<WebApplicationsControllerListByWebAppSiteRequest>;
 
 /** Gets the list of machine ARM Ids on which the SQL server is deployed. */
-export type WebApplicationPropertiesMachineArmIdsList = ReadonlyArray<string>;
+export type WebApplicationPropertiesMachineArmIdsList = Array<string>;
 export const WebApplicationPropertiesMachineArmIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<WebApplicationPropertiesMachineArmIdsList>;
 
 /** Gets the front end bindings for the application. */
-export type WebApplicationPropertiesBindingsList =
-  ReadonlyArray<FrontEndBinding>;
+export type WebApplicationPropertiesBindingsList = Array<FrontEndBinding>;
 export const WebApplicationPropertiesBindingsList = /*@__PURE__*/ S.Array(
   FrontEndBinding,
 ) as any as S.Schema<WebApplicationPropertiesBindingsList>;
 
 /** Gets the Error details. */
 export type WebApplicationPropertiesFrameworksList =
-  ReadonlyArray<WebApplicationFramework>;
+  Array<WebApplicationFramework>;
 export const WebApplicationPropertiesFrameworksList = /*@__PURE__*/ S.Array(
   WebApplicationFramework,
 ) as any as S.Schema<WebApplicationPropertiesFrameworksList>;
 
 /** Gets the configuration. */
 export type WebApplicationPropertiesConfigurationsList =
-  ReadonlyArray<WebApplicationConfigurationUnit>;
+  Array<WebApplicationConfigurationUnit>;
 export const WebApplicationPropertiesConfigurationsList = /*@__PURE__*/ S.Array(
   WebApplicationConfigurationUnit,
 ) as any as S.Schema<WebApplicationPropertiesConfigurationsList>;
 
 /** Gets the directories. */
 export type WebApplicationPropertiesDirectoriesList =
-  ReadonlyArray<WebApplicationDirectoryUnit>;
+  Array<WebApplicationDirectoryUnit>;
 export const WebApplicationPropertiesDirectoriesList = /*@__PURE__*/ S.Array(
   WebApplicationDirectoryUnit,
 ) as any as S.Schema<WebApplicationPropertiesDirectoriesList>;
@@ -31846,20 +31788,19 @@ export const WebApplicationPropertiesTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<WebApplicationPropertiesTagsMap>;
 
 /** Static folders. */
-export type WebApplicationPropertiesStaticFoldersList = ReadonlyArray<string>;
+export type WebApplicationPropertiesStaticFoldersList = Array<string>;
 export const WebApplicationPropertiesStaticFoldersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<WebApplicationPropertiesStaticFoldersList>;
 
 /** Gets the Error details. */
-export type WebApplicationPropertiesErrorsList =
-  ReadonlyArray<HealthErrorDetails>;
+export type WebApplicationPropertiesErrorsList = Array<HealthErrorDetails>;
 export const WebApplicationPropertiesErrorsList = /*@__PURE__*/ S.Array(
   HealthErrorDetails,
 ) as any as S.Schema<WebApplicationPropertiesErrorsList>;
 
 /** Gets the appliance names. */
-export type WebApplicationPropertiesApplianceNamesList = ReadonlyArray<string>;
+export type WebApplicationPropertiesApplianceNamesList = Array<string>;
 export const WebApplicationPropertiesApplianceNamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<WebApplicationPropertiesApplianceNamesList>;
@@ -31961,7 +31902,7 @@ export const WebApplication = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "WebApplication" }) as any as S.Schema<WebApplication>;
 
 /** The WebApplication items on this page */
-export type WebApplicationListResultValueList = ReadonlyArray<WebApplication>;
+export type WebApplicationListResultValueList = Array<WebApplication>;
 export const WebApplicationListResultValueList = /*@__PURE__*/ S.Array(
   WebApplication,
 ) as any as S.Schema<WebApplicationListResultValueList>;
@@ -32007,7 +31948,7 @@ export const WebAppProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets the list of web app properties. */
 export type WebAppPropertiesControllerUpdatePropertiesRequestWebAppsList =
-  ReadonlyArray<WebAppProperties>;
+  Array<WebAppProperties>;
 export const WebAppPropertiesControllerUpdatePropertiesRequestWebAppsList =
   /*@__PURE__*/ S.Array(
     WebAppProperties,
@@ -32165,8 +32106,7 @@ export const WebAppRunAsAccount = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WebAppRunAsAccount>;
 
 /** The WebAppRunAsAccount items on this page */
-export type WebAppRunAsAccountListResultValueList =
-  ReadonlyArray<WebAppRunAsAccount>;
+export type WebAppRunAsAccountListResultValueList = Array<WebAppRunAsAccount>;
 export const WebAppRunAsAccountListResultValueList = /*@__PURE__*/ S.Array(
   WebAppRunAsAccount,
 ) as any as S.Schema<WebAppRunAsAccountListResultValueList>;
@@ -32230,7 +32170,7 @@ export const AzureWebAppTargetType = /*@__PURE__*/ S.String;
 
 /** Cost components. */
 export type WebAppServicePlanV2PropertiesCostComponentsList =
-  ReadonlyArray<CostComponent>;
+  Array<CostComponent>;
 export const WebAppServicePlanV2PropertiesCostComponentsList =
   /*@__PURE__*/ S.Array(
     CostComponent,
@@ -32383,8 +32323,7 @@ export const WebAppServicePlanV2 = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WebAppServicePlanV2>;
 
 /** The WebAppServicePlanV2 items on this page */
-export type WebAppServicePlanV2ListResultValueList =
-  ReadonlyArray<WebAppServicePlanV2>;
+export type WebAppServicePlanV2ListResultValueList = Array<WebAppServicePlanV2>;
 export const WebAppServicePlanV2ListResultValueList = /*@__PURE__*/ S.Array(
   WebAppServicePlanV2,
 ) as any as S.Schema<WebAppServicePlanV2ListResultValueList>;
@@ -32407,7 +32346,7 @@ export const WebAppServicePlanV2ListResult = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets the appliance details used by service to communicate to the appliance. */
 export type WebAppSitePropertiesInputSiteAppliancePropertiesCollectionList =
-  ReadonlyArray<SiteAppliancePropertiesInput>;
+  Array<SiteAppliancePropertiesInput>;
 export const WebAppSitePropertiesInputSiteAppliancePropertiesCollectionList =
   /*@__PURE__*/ S.Array(
     SiteAppliancePropertiesInput,
@@ -32468,7 +32407,7 @@ export const WebAppSitesControllerCreateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets the appliance details used by service to communicate to the appliance. */
 export type WebAppSitePropertiesSiteAppliancePropertiesCollectionList =
-  ReadonlyArray<SiteApplianceProperties>;
+  Array<SiteApplianceProperties>;
 export const WebAppSitePropertiesSiteAppliancePropertiesCollectionList =
   /*@__PURE__*/ S.Array(
     SiteApplianceProperties,
@@ -32729,7 +32668,7 @@ export const WebAppSite = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "WebAppSite" }) as any as S.Schema<WebAppSite>;
 
 /** The WebAppSite items on this page */
-export type WebAppSiteListResultValueList = ReadonlyArray<WebAppSite>;
+export type WebAppSiteListResultValueList = Array<WebAppSite>;
 export const WebAppSiteListResultValueList = /*@__PURE__*/ S.Array(
   WebAppSite,
 ) as any as S.Schema<WebAppSiteListResultValueList>;
@@ -32837,7 +32776,7 @@ export const WebAppSiteUsage = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets the appliance details used by service to communicate to the appliance. */
 export type WebAppSiteUpdatePropertiesInputSiteAppliancePropertiesCollectionList =
-  ReadonlyArray<SiteAppliancePropertiesInput>;
+  Array<SiteAppliancePropertiesInput>;
 export const WebAppSiteUpdatePropertiesInputSiteAppliancePropertiesCollectionList =
   /*@__PURE__*/ S.Array(
     SiteAppliancePropertiesInput,
@@ -32944,7 +32883,7 @@ export const WebServersControllerGetWebServerRequest = /*@__PURE__*/ S.suspend(
   identifier: "WebServersControllerGetWebServerRequest",
 }) as any as S.Schema<WebServersControllerGetWebServerRequest>;
 
-export type WebServerDiscoveryDetailsPortListList = ReadonlyArray<number>;
+export type WebServerDiscoveryDetailsPortListList = Array<number>;
 export const WebServerDiscoveryDetailsPortListList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<WebServerDiscoveryDetailsPortListList>;
@@ -32997,7 +32936,7 @@ export const WebServerDiscoveryDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WebServerDiscoveryDetails>;
 
 export type WebServerPropertiesDiscoveryDataList =
-  ReadonlyArray<WebServerDiscoveryDetails>;
+  Array<WebServerDiscoveryDetails>;
 export const WebServerPropertiesDiscoveryDataList = /*@__PURE__*/ S.Array(
   WebServerDiscoveryDetails,
 ) as any as S.Schema<WebServerPropertiesDiscoveryDataList>;
@@ -33104,25 +33043,25 @@ export const WebServersControllerListByWebAppSiteRequest =
   }) as any as S.Schema<WebServersControllerListByWebAppSiteRequest>;
 
 /** Gets the list of machines. */
-export type WebServerPropertiesMachineIdsList = ReadonlyArray<string>;
+export type WebServerPropertiesMachineIdsList = Array<string>;
 export const WebServerPropertiesMachineIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<WebServerPropertiesMachineIdsList>;
 
 /** Gets the list of web applications. */
-export type WebServerPropertiesWebApplicationsList = ReadonlyArray<string>;
+export type WebServerPropertiesWebApplicationsList = Array<string>;
 export const WebServerPropertiesWebApplicationsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<WebServerPropertiesWebApplicationsList>;
 
 /** Gets the Error details. */
-export type WebServerPropertiesErrorsList = ReadonlyArray<HealthErrorDetails>;
+export type WebServerPropertiesErrorsList = Array<HealthErrorDetails>;
 export const WebServerPropertiesErrorsList = /*@__PURE__*/ S.Array(
   HealthErrorDetails,
 ) as any as S.Schema<WebServerPropertiesErrorsList>;
 
 /** Gets the appliance names. */
-export type WebServerPropertiesApplianceNamesList = ReadonlyArray<string>;
+export type WebServerPropertiesApplianceNamesList = Array<string>;
 export const WebServerPropertiesApplianceNamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<WebServerPropertiesApplianceNamesList>;
@@ -33206,7 +33145,7 @@ export const WebServer_2 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "WebServer_2" }) as any as S.Schema<WebServer_2>;
 
 /** The WebServer items on this page */
-export type WebServerListResultValueList = ReadonlyArray<WebServer_2>;
+export type WebServerListResultValueList = Array<WebServer_2>;
 export const WebServerListResultValueList = /*@__PURE__*/ S.Array(
   WebServer_2,
 ) as any as S.Schema<WebServerListResultValueList>;
@@ -33259,7 +33198,7 @@ export const WebServersControllerListWebServersRequest =
     identifier: "WebServersControllerListWebServersRequest",
   }) as any as S.Schema<WebServersControllerListWebServersRequest>;
 
-export type WebServerCollectionValueList = ReadonlyArray<WebServer>;
+export type WebServerCollectionValueList = Array<WebServer>;
 export const WebServerCollectionValueList = /*@__PURE__*/ S.Array(
   WebServer,
 ) as any as S.Schema<WebServerCollectionValueList>;
@@ -33343,23 +33282,22 @@ export const WebSiteDiscoveryDetails = /*@__PURE__*/ S.suspend(() =>
   identifier: "WebSiteDiscoveryDetails",
 }) as any as S.Schema<WebSiteDiscoveryDetails>;
 
-export type WebSitePropertiesDiscoveryDataList =
-  ReadonlyArray<WebSiteDiscoveryDetails>;
+export type WebSitePropertiesDiscoveryDataList = Array<WebSiteDiscoveryDetails>;
 export const WebSitePropertiesDiscoveryDataList = /*@__PURE__*/ S.Array(
   WebSiteDiscoveryDetails,
 ) as any as S.Schema<WebSitePropertiesDiscoveryDataList>;
 
-export type WebSiteAssessmentDetailsSuccessListList = ReadonlyArray<string>;
+export type WebSiteAssessmentDetailsSuccessListList = Array<string>;
 export const WebSiteAssessmentDetailsSuccessListList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<WebSiteAssessmentDetailsSuccessListList>;
 
-export type WebSiteAssessmentDetailsWarningListList = ReadonlyArray<string>;
+export type WebSiteAssessmentDetailsWarningListList = Array<string>;
 export const WebSiteAssessmentDetailsWarningListList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<WebSiteAssessmentDetailsWarningListList>;
 
-export type WebSiteAssessmentDetailsErrorListList = ReadonlyArray<string>;
+export type WebSiteAssessmentDetailsErrorListList = Array<string>;
 export const WebSiteAssessmentDetailsErrorListList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<WebSiteAssessmentDetailsErrorListList>;
@@ -33420,7 +33358,7 @@ export const WebSiteAssessmentDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WebSiteAssessmentDetails>;
 
 export type WebSitePropertiesAssessmentDataList =
-  ReadonlyArray<WebSiteAssessmentDetails>;
+  Array<WebSiteAssessmentDetails>;
 export const WebSitePropertiesAssessmentDataList = /*@__PURE__*/ S.Array(
   WebSiteAssessmentDetails,
 ) as any as S.Schema<WebSitePropertiesAssessmentDataList>;
@@ -33468,8 +33406,7 @@ export const WebSiteMigrationDetails = /*@__PURE__*/ S.suspend(() =>
   identifier: "WebSiteMigrationDetails",
 }) as any as S.Schema<WebSiteMigrationDetails>;
 
-export type WebSitePropertiesMigrationDataList =
-  ReadonlyArray<WebSiteMigrationDetails>;
+export type WebSitePropertiesMigrationDataList = Array<WebSiteMigrationDetails>;
 export const WebSitePropertiesMigrationDataList = /*@__PURE__*/ S.Array(
   WebSiteMigrationDetails,
 ) as any as S.Schema<WebSitePropertiesMigrationDataList>;
@@ -33540,7 +33477,7 @@ export const WebSitesControllerListWebSitesRequest = /*@__PURE__*/ S.suspend(
   identifier: "WebSitesControllerListWebSitesRequest",
 }) as any as S.Schema<WebSitesControllerListWebSitesRequest>;
 
-export type WebSiteCollectionValueList = ReadonlyArray<WebSite>;
+export type WebSiteCollectionValueList = Array<WebSite>;
 export const WebSiteCollectionValueList = /*@__PURE__*/ S.Array(
   WebSite,
 ) as any as S.Schema<WebSiteCollectionValueList>;

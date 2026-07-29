@@ -80,7 +80,7 @@ export const ClassItem = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ClassItem" }) as any as S.Schema<ClassItem>;
 
-export type ClassItemList = ReadonlyArray<ClassItem>;
+export type ClassItemList = Array<ClassItem>;
 export const ClassItemList = /*@__PURE__*/ S.Array(
   ClassItem,
 ) as any as S.Schema<ClassItemList>;
@@ -104,7 +104,7 @@ export interface CustomClass {
   /** If this custom class is a resource, the custom_class_id is the resource id of the CustomClass. Case sensitive. */
   customClassId?: string;
   /** Output only. The CustomClass lifecycle state. This field is not used. */
-  state?: CustomClassStateEnum;
+  state?: CustomClassStateEnum | (string & {});
   /** Output only. The [KMS key name](https://cloud.google.com/kms/docs/resource-hierarchy#keys) with which the content of the ClassItem is encrypted. The expected format is `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`. */
   kmsKeyName?: string;
   /** Output only. User-settable, human-readable name for the CustomClass. Must be 63 characters or less. This field is not used. */
@@ -184,7 +184,7 @@ export const Phrase = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Phrase" }) as any as S.Schema<Phrase>;
 
-export type PhraseList = ReadonlyArray<Phrase>;
+export type PhraseList = Array<Phrase>;
 export const PhraseList = /*@__PURE__*/ S.Array(
   Phrase,
 ) as any as S.Schema<PhraseList>;
@@ -205,7 +205,7 @@ export interface PhraseSet {
   /** Output only. User-settable, human-readable name for the PhraseSet. Must be 63 characters or less. This field is not used. */
   displayName?: string;
   /** Output only. The CustomClass lifecycle state. This field is not used. */
-  state?: PhraseSetStateEnum;
+  state?: PhraseSetStateEnum | (string & {});
   /** The resource name of the phrase set. */
   name?: string;
   /** Output only. The [KMS key version name](https://cloud.google.com/kms/docs/resource-hierarchy#key_versions) with which content of the PhraseSet is encrypted. The expected format is `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}/cryptoKeyVersions/{crypto_key_version}`. */
@@ -345,7 +345,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -458,12 +458,12 @@ export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListOperationsRequest",
 }) as any as S.Schema<ListOperationsRequest>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
 
-export type OperationList = ReadonlyArray<Operation>;
+export type OperationList = Array<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -512,7 +512,7 @@ export const ListProjectsLocationsCustomClassesRequest =
     identifier: "ListProjectsLocationsCustomClassesRequest",
   }) as any as S.Schema<ListProjectsLocationsCustomClassesRequest>;
 
-export type CustomClassList = ReadonlyArray<CustomClass>;
+export type CustomClassList = Array<CustomClass>;
 export const CustomClassList = /*@__PURE__*/ S.Array(
   CustomClass,
 ) as any as S.Schema<CustomClassList>;
@@ -558,7 +558,7 @@ export const ListProjectsLocationsPhraseSetsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsPhraseSetsRequest",
 }) as any as S.Schema<ListProjectsLocationsPhraseSetsRequest>;
 
-export type PhraseSetList = ReadonlyArray<PhraseSet>;
+export type PhraseSetList = Array<PhraseSet>;
 export const PhraseSetList = /*@__PURE__*/ S.Array(
   PhraseSet,
 ) as any as S.Schema<PhraseSetList>;
@@ -607,7 +607,7 @@ export const SpeechContext = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SpeechContext" }) as any as S.Schema<SpeechContext>;
 
-export type SpeechContextList = ReadonlyArray<SpeechContext>;
+export type SpeechContextList = Array<SpeechContext>;
 export const SpeechContextList = /*@__PURE__*/ S.Array(
   SpeechContext,
 ) as any as S.Schema<SpeechContextList>;
@@ -735,7 +735,7 @@ export const Entry = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Entry" }) as any as S.Schema<Entry>;
 
-export type EntryList = ReadonlyArray<Entry>;
+export type EntryList = Array<Entry>;
 export const EntryList = /*@__PURE__*/ S.Array(
   Entry,
 ) as any as S.Schema<EntryList>;
@@ -1021,7 +1021,7 @@ export const WordInfo = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "WordInfo" }) as any as S.Schema<WordInfo>;
 
-export type WordInfoList = ReadonlyArray<WordInfo>;
+export type WordInfoList = Array<WordInfo>;
 export const WordInfoList = /*@__PURE__*/ S.Array(
   WordInfo,
 ) as any as S.Schema<WordInfoList>;
@@ -1046,7 +1046,7 @@ export const SpeechRecognitionAlternative = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SpeechRecognitionAlternative>;
 
 export type SpeechRecognitionAlternativeList =
-  ReadonlyArray<SpeechRecognitionAlternative>;
+  Array<SpeechRecognitionAlternative>;
 export const SpeechRecognitionAlternativeList = /*@__PURE__*/ S.Array(
   SpeechRecognitionAlternative,
 ) as any as S.Schema<SpeechRecognitionAlternativeList>;
@@ -1073,8 +1073,7 @@ export const SpeechRecognitionResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "SpeechRecognitionResult",
 }) as any as S.Schema<SpeechRecognitionResult>;
 
-export type SpeechRecognitionResultList =
-  ReadonlyArray<SpeechRecognitionResult>;
+export type SpeechRecognitionResultList = Array<SpeechRecognitionResult>;
 export const SpeechRecognitionResultList = /*@__PURE__*/ S.Array(
   SpeechRecognitionResult,
 ) as any as S.Schema<SpeechRecognitionResultList>;

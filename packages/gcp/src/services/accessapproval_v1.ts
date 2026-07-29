@@ -531,7 +531,9 @@ export const CustomerApprovalApprovalPolicyJustificationBasedApprovalPolicyEnum 
 /** Represents all the policies that can be set for Customer Approval. */
 export interface CustomerApprovalApprovalPolicy {
   /** Optional. Policy for approval based on the justification given. */
-  justificationBasedApprovalPolicy?: CustomerApprovalApprovalPolicyJustificationBasedApprovalPolicyEnum;
+  justificationBasedApprovalPolicy?:
+    | CustomerApprovalApprovalPolicyJustificationBasedApprovalPolicyEnum
+    | (string & {});
 }
 export const CustomerApprovalApprovalPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -561,7 +563,7 @@ export interface EnrolledService {
   /** The product for which Access Approval will be enrolled. Allowed values are listed below (case-sensitive): * all * GA * Access Context Manager * Anthos Identity Service * AlloyDB for PostgreSQL * Apigee * Application Integration * App Hub * Artifact Registry * Anthos Service Mesh * Access Transparency * BigQuery * Certificate Authority Service * Cloud Bigtable * CCAI Assist and Knowledge * Cloud Dataflow * Cloud Dataproc * CEP Security Gateway * Compliance Evaluation Service * Cloud Firestore * Cloud Healthcare API * Chronicle * Cloud AI Companion Gateway - Titan * Google Cloud Armor * Cloud Asset Inventory * Cloud Asset Search * Cloud Deploy * Cloud DNS * Cloud Latency * Cloud Memorystore for Redis * CloudNet Control * Cloud Riptide * Cloud Tasks * Cloud Trace * Cloud Data Transfer * Cloud Composer * Integration Connectors * Contact Center AI Insights * Cloud Pub/Sub * Cloud Run * Resource Manager * Cloud Spanner * Database Center * Cloud Dataform * Cloud Data Fusion * Dataplex * Dialogflow Customer Experience Edition * Cloud DLP * Document AI * Edge Container * Edge Network * Cloud EKM * Eventarc * Firebase Data Connect * Firebase Rules * App Engine * Cloud Build * Compute Engine * Cloud Functions (2nd Gen) * Cloud Filestore * Cloud Interconnect * Cloud NetApp Volumes * Cloud Storage * Generative AI App Builder * Google Kubernetes Engine * Backup for GKE API * GKE Connect * GKE Hub * Hoverboard * Cloud HSM * Cloud Identity and Access Management * Cloud Identity-Aware Proxy * Infrastructure Manager * Identity Storage Service * Key Access Justifications * Cloud Key Management Service * Cloud Logging * Looker (Google Cloud core) * Looker Studio * Management Hub * Model Armor * Cloud Monitoring * Cloud NAT * Connectivity Hub * External passthrough Network Load Balancer * OIDC One * Organization Policy Service * Org Lifecycle * Persistent Disk * Parameter Manager * Private Services Access * Regional Internal Application Load Balancer * Storage Batch Operations * Cloud Security Command Center * Secure Source Manager * Seeker * Service Provisioning * Speaker ID * Secret Manager * Cloud SQL * Cloud Speech-to-Text * Traffic Director * Cloud Text-to-Speech * USPS Andromeda * Vertex AI * Virtual Private Cloud (VPC) * VPC Access * VPC Service Controls Troubleshooter * VPC virtnet * Cloud Workstations * Web Risk Note: These values are supported as input for legacy purposes, but will not be returned from the API. * all * ga-only * appengine.googleapis.com * artifactregistry.googleapis.com * bigquery.googleapis.com * bigtable.googleapis.com * container.googleapis.com * cloudkms.googleapis.com * cloudresourcemanager.googleapis.com * cloudsql.googleapis.com * compute.googleapis.com * dataflow.googleapis.com * dataproc.googleapis.com * dlp.googleapis.com * iam.googleapis.com * logging.googleapis.com * orgpolicy.googleapis.com * pubsub.googleapis.com * spanner.googleapis.com * secretmanager.googleapis.com * speakerid.googleapis.com * storage.googleapis.com Calls to UpdateAccessApprovalSettings using 'all' or any of the XXX.googleapis.com will be translated to the associated product name ('all', 'App Engine', etc.). Note: 'all' will enroll the resource in all products supported at both 'GA' and 'Preview' levels. More information about levels of support is available at https://cloud.google.com/access-approval/docs/supported-services */
   cloudProduct?: string;
   /** The enrollment level of the service. */
-  enrollmentLevel?: EnrolledServiceEnrollmentLevelEnum;
+  enrollmentLevel?: EnrolledServiceEnrollmentLevelEnum | (string & {});
 }
 export const EnrolledService = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -572,12 +574,12 @@ export const EnrolledService = /*@__PURE__*/ S.suspend(() =>
   identifier: "EnrolledService",
 }) as any as S.Schema<EnrolledService>;
 
-export type EnrolledServiceList = ReadonlyArray<EnrolledService>;
+export type EnrolledServiceList = Array<EnrolledService>;
 export const EnrolledServiceList = /*@__PURE__*/ S.Array(
   EnrolledService,
 ) as any as S.Schema<EnrolledServiceList>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -591,7 +593,9 @@ export interface AccessApprovalSettings {
   /** The resource name of the settings. Format is one of: * "projects/{project}/accessApprovalSettings" * "folders/{folder}/accessApprovalSettings" * "organizations/{organization}/accessApprovalSettings" */
   name?: string;
   /** Optional. A setting that indicates the maximum scope of an Access Approval request: either organization, folder, or project. Google administrators will be asked to send requests no broader than the configured scope. */
-  requestScopeMaxWidthPreference?: AccessApprovalSettingsRequestScopeMaxWidthPreferenceEnum;
+  requestScopeMaxWidthPreference?:
+    | AccessApprovalSettingsRequestScopeMaxWidthPreferenceEnum
+    | (string & {});
   /** Output only. This field is read only (not settable via UpdateAccessApprovalSettings method). If the field is true, that indicates that an ancestor of this Project or Folder has set active_key_version (this field will always be unset for the organization since organizations do not have ancestors). */
   ancestorHasActiveKeyVersion?: boolean;
   /** A list of Google Cloud Services for which the given resource has Access Approval enrolled. Access requests for the resource given by name against any of these services contained here will be required to have explicit approval. If name refers to an organization, enrollment can be done for individual services. If name refers to a folder or project, enrollment can only be done on an all or nothing basis. If a cloud_product is repeated in this list, the first entry will be honored and all following entries will be discarded. */
@@ -904,7 +908,7 @@ export const ListFoldersApprovalRequestsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListFoldersApprovalRequestsRequest",
 }) as any as S.Schema<ListFoldersApprovalRequestsRequest>;
 
-export type ApprovalRequestList = ReadonlyArray<ApprovalRequest>;
+export type ApprovalRequestList = Array<ApprovalRequest>;
 export const ApprovalRequestList = /*@__PURE__*/ S.Array(
   ApprovalRequest,
 ) as any as S.Schema<ApprovalRequestList>;

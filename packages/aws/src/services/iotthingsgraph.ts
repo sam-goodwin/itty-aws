@@ -153,7 +153,7 @@ export const DefinitionLanguage = /*@__PURE__*/ S.String;
 
 export type DefinitionText = string;
 export interface DefinitionDocument {
-  language: DefinitionLanguage;
+  language: DefinitionLanguage | (string & {});
   text: string;
 }
 export const DefinitionDocument = /*@__PURE__*/ S.suspend(() =>

@@ -107,7 +107,7 @@ export const StringMap = /*@__PURE__*/ S.Record(
   S.String,
 ) as any as S.Schema<StringMap>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -126,7 +126,7 @@ export const Attribute = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Attribute" }) as any as S.Schema<Attribute>;
 
-export type AttributeList = ReadonlyArray<Attribute>;
+export type AttributeList = Array<Attribute>;
 export const AttributeList = /*@__PURE__*/ S.Array(
   Attribute,
 ) as any as S.Schema<AttributeList>;
@@ -169,7 +169,7 @@ export const GoogleCloudHealthcareV1ConsentPolicy = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudHealthcareV1ConsentPolicy>;
 
 export type GoogleCloudHealthcareV1ConsentPolicyList =
-  ReadonlyArray<GoogleCloudHealthcareV1ConsentPolicy>;
+  Array<GoogleCloudHealthcareV1ConsentPolicy>;
 export const GoogleCloudHealthcareV1ConsentPolicyList = /*@__PURE__*/ S.Array(
   GoogleCloudHealthcareV1ConsentPolicy,
 ) as any as S.Schema<GoogleCloudHealthcareV1ConsentPolicyList>;
@@ -204,7 +204,7 @@ export interface Consent {
   /** Input only. The time to live for this Consent from when it is created. */
   ttl?: string;
   /** Required. Indicates the current state of this Consent. */
-  state?: ConsentStateEnum;
+  state?: ConsentStateEnum | (string & {});
 }
 export const Consent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -234,10 +234,9 @@ export type AnalyzeEntitiesRequestLicensedVocabulariesItemEnum =
 export const AnalyzeEntitiesRequestLicensedVocabulariesItemEnum =
   /*@__PURE__*/ S.String;
 
-export type AnalyzeEntitiesRequestLicensedVocabulariesItemEnumList =
-  ReadonlyArray<
-    AnalyzeEntitiesRequestLicensedVocabulariesItemEnum | (string & {})
-  >;
+export type AnalyzeEntitiesRequestLicensedVocabulariesItemEnumList = Array<
+  AnalyzeEntitiesRequestLicensedVocabulariesItemEnum | (string & {})
+>;
 export const AnalyzeEntitiesRequestLicensedVocabulariesItemEnumList =
   /*@__PURE__*/ S.Array(
     AnalyzeEntitiesRequestLicensedVocabulariesItemEnum,
@@ -301,7 +300,7 @@ export const LinkedEntity = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "LinkedEntity" }) as any as S.Schema<LinkedEntity>;
 
-export type LinkedEntityList = ReadonlyArray<LinkedEntity>;
+export type LinkedEntityList = Array<LinkedEntity>;
 export const LinkedEntityList = /*@__PURE__*/ S.Array(
   LinkedEntity,
 ) as any as S.Schema<LinkedEntityList>;
@@ -366,7 +365,7 @@ export const EntityMention = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "EntityMention" }) as any as S.Schema<EntityMention>;
 
-export type EntityMentionList = ReadonlyArray<EntityMention>;
+export type EntityMentionList = Array<EntityMention>;
 export const EntityMentionList = /*@__PURE__*/ S.Array(
   EntityMention,
 ) as any as S.Schema<EntityMentionList>;
@@ -388,7 +387,7 @@ export const Entity = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Entity" }) as any as S.Schema<Entity>;
 
-export type EntityList = ReadonlyArray<Entity>;
+export type EntityList = Array<Entity>;
 export const EntityList = /*@__PURE__*/ S.Array(
   Entity,
 ) as any as S.Schema<EntityList>;
@@ -412,8 +411,7 @@ export const EntityMentionRelationship = /*@__PURE__*/ S.suspend(() =>
   identifier: "EntityMentionRelationship",
 }) as any as S.Schema<EntityMentionRelationship>;
 
-export type EntityMentionRelationshipList =
-  ReadonlyArray<EntityMentionRelationship>;
+export type EntityMentionRelationshipList = Array<EntityMentionRelationship>;
 export const EntityMentionRelationshipList = /*@__PURE__*/ S.Array(
   EntityMentionRelationship,
 ) as any as S.Schema<EntityMentionRelationshipList>;
@@ -495,7 +493,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -1241,7 +1239,7 @@ export const AttributeDefinitionCategoryEnum = /*@__PURE__*/ S.String;
 /** A client-defined consent attribute. */
 export interface AttributeDefinition {
   /** Required. The category of the attribute. The value of this field cannot be changed after creation. */
-  category?: AttributeDefinitionCategoryEnum;
+  category?: AttributeDefinitionCategoryEnum | (string & {});
   /** Identifier. Resource name of the Attribute definition, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/attributeDefinitions/{attribute_definition_id}`. Cannot be changed after creation. */
   name?: string;
   /** Optional. Default values of the attribute in Consents. If no default values are specified, it defaults to an empty value. */
@@ -1306,7 +1304,7 @@ export const Image = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Image" }) as any as S.Schema<Image>;
 
-export type ImageList = ReadonlyArray<Image>;
+export type ImageList = Array<Image>;
 export const ImageList = /*@__PURE__*/ S.Array(
   Image,
 ) as any as S.Schema<ImageList>;
@@ -1510,7 +1508,9 @@ export interface GoogleCloudHealthcareV1DicomBigQueryDestination {
   /** Optional. If true, the source store name will be included as a column in the BigQuery schema. */
   includeSourceStore?: boolean;
   /** Optional. Determines whether the existing table in the destination is to be overwritten or appended to. If a write_disposition is specified, the `force` parameter is ignored. */
-  writeDisposition?: GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionEnum;
+  writeDisposition?:
+    | GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionEnum
+    | (string & {});
   /** Optional. BigQuery URI to a table, up to 2000 characters long, in the format `bq://projectId.bqDatasetId.tableId` */
   tableUri?: string;
 }
@@ -1547,7 +1547,7 @@ export const GoogleCloudHealthcareV1DicomStreamConfig = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudHealthcareV1DicomStreamConfig>;
 
 export type GoogleCloudHealthcareV1DicomStreamConfigList =
-  ReadonlyArray<GoogleCloudHealthcareV1DicomStreamConfig>;
+  Array<GoogleCloudHealthcareV1DicomStreamConfig>;
 export const GoogleCloudHealthcareV1DicomStreamConfigList =
   /*@__PURE__*/ S.Array(
     GoogleCloudHealthcareV1DicomStreamConfig,
@@ -1566,8 +1566,7 @@ export const DicomNotificationConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "DicomNotificationConfig",
 }) as any as S.Schema<DicomNotificationConfig>;
 
-export type DicomNotificationConfigList =
-  ReadonlyArray<DicomNotificationConfig>;
+export type DicomNotificationConfigList = Array<DicomNotificationConfig>;
 export const DicomNotificationConfigList = /*@__PURE__*/ S.Array(
   DicomNotificationConfig,
 ) as any as S.Schema<DicomNotificationConfigList>;
@@ -1632,7 +1631,7 @@ export interface FieldMetadata {
   /** Optional. List of paths to FHIR fields to be redacted. Each path is a period-separated list where each component is either a field name or FHIR type name, for example: Patient, HumanName. For "choice" types (those defined in the FHIR spec with the form: field[x]) we use two separate components. For example, "deceasedAge.unit" is matched by "Deceased.Age.unit". Supported types are: AdministrativeGenderCode, Base64Binary, Boolean, Code, Date, DateTime, Decimal, HumanName, Id, Instant, Integer, LanguageCode, Markdown, Oid, PositiveInt, String, UnsignedInt, Uri, Uuid, Xhtml. */
   paths?: StringList;
   /** Optional. Deidentify action for one field. */
-  action?: FieldMetadataActionEnum;
+  action?: FieldMetadataActionEnum | (string & {});
 }
 export const FieldMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1641,7 +1640,7 @@ export const FieldMetadata = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "FieldMetadata" }) as any as S.Schema<FieldMetadata>;
 
-export type FieldMetadataList = ReadonlyArray<FieldMetadata>;
+export type FieldMetadataList = Array<FieldMetadata>;
 export const FieldMetadataList = /*@__PURE__*/ S.Array(
   FieldMetadata,
 ) as any as S.Schema<FieldMetadataList>;
@@ -1763,7 +1762,7 @@ export const InfoTypeTransformation = /*@__PURE__*/ S.suspend(() =>
   identifier: "InfoTypeTransformation",
 }) as any as S.Schema<InfoTypeTransformation>;
 
-export type InfoTypeTransformationList = ReadonlyArray<InfoTypeTransformation>;
+export type InfoTypeTransformationList = Array<InfoTypeTransformation>;
 export const InfoTypeTransformationList = /*@__PURE__*/ S.Array(
   InfoTypeTransformation,
 ) as any as S.Schema<InfoTypeTransformationList>;
@@ -1794,7 +1793,7 @@ export const ImageConfigTextRedactionModeEnum = /*@__PURE__*/ S.String;
 /** Specifies how to handle de-identification of image pixels. */
 export interface ImageConfig {
   /** Optional. Determines how to redact text from image. */
-  textRedactionMode?: ImageConfigTextRedactionModeEnum;
+  textRedactionMode?: ImageConfigTextRedactionModeEnum | (string & {});
 }
 export const ImageConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1826,7 +1825,7 @@ export interface DicomConfig {
   /** Optional. If true, skip replacing StudyInstanceUID, SeriesInstanceUID, SOPInstanceUID, and MediaStorageSOPInstanceUID and leave them untouched. The Cloud Healthcare API regenerates these UIDs by default based on the DICOM Standard's reasoning: "Whilst these UIDs cannot be mapped directly to an individual out of context, given access to the original images, or to a database of the original images containing the UIDs, it would be possible to recover the individual's identity." https://dicom.nema.org/medical/dicom/current/output/chtml/part15/sect_E.3.9.html */
   skipIdRedaction?: boolean;
   /** Tag filtering profile that determines which tags to keep/remove. */
-  filterProfile?: DicomConfigFilterProfileEnum;
+  filterProfile?: DicomConfigFilterProfileEnum | (string & {});
   /** List of tags to keep. Remove all other tags. */
   keepList?: TagFilterList;
   /** List of tags to remove. Keep all other tags. */
@@ -1909,7 +1908,7 @@ export interface TimePartitioning {
   /** Number of milliseconds for which to keep the storage for a partition. */
   expirationMs?: string;
   /** Type of partitioning. */
-  type?: TimePartitioningTypeEnum;
+  type?: TimePartitioningTypeEnum | (string & {});
 }
 export const TimePartitioning = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1923,7 +1922,7 @@ export const TimePartitioning = /*@__PURE__*/ S.suspend(() =>
 /** Configuration for the FHIR BigQuery schema. Determines how the server generates the schema. */
 export interface SchemaConfig {
   /** Specifies the output schema type. Schema type is required. */
-  schemaType?: SchemaConfigSchemaTypeEnum;
+  schemaType?: SchemaConfigSchemaTypeEnum | (string & {});
   /** The configuration for exported BigQuery tables to be partitioned by FHIR resource's last updated time column. */
   lastUpdatedPartitionConfig?: TimePartitioning;
   /** The depth for all recursive structures in the output analytics schema. For example, `concept` in the CodeSystem resource is a recursive structure; when the depth is 2, the CodeSystem table will have a column called `concept.concept` but not `concept.concept.concept`. If not specified or set to 0, the server will use the default value 2. The maximum depth allowed is 5. */
@@ -1940,7 +1939,9 @@ export const SchemaConfig = /*@__PURE__*/ S.suspend(() =>
 /** The configuration for exporting to BigQuery. */
 export interface GoogleCloudHealthcareV1FhirBigQueryDestination {
   /** Optional. Determines if existing data in the destination dataset is overwritten, appended to, or not written if the tables contain data. If a write_disposition is specified, the `force` parameter is ignored. */
-  writeDisposition?: GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionEnum;
+  writeDisposition?:
+    | GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionEnum
+    | (string & {});
   /** Optional. BigQuery URI to an existing dataset, up to 2000 characters long, in the format `bq://projectId.bqDatasetId`. */
   datasetUri?: string;
   /** Optional. The configuration for the exported BigQuery schema. */
@@ -1981,7 +1982,7 @@ export const StreamConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "StreamConfig" }) as any as S.Schema<StreamConfig>;
 
-export type StreamConfigList = ReadonlyArray<StreamConfig>;
+export type StreamConfigList = Array<StreamConfig>;
 export const StreamConfigList = /*@__PURE__*/ S.Array(
   StreamConfig,
 ) as any as S.Schema<StreamConfigList>;
@@ -2005,7 +2006,7 @@ export const FhirNotificationConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "FhirNotificationConfig",
 }) as any as S.Schema<FhirNotificationConfig>;
 
-export type FhirNotificationConfigList = ReadonlyArray<FhirNotificationConfig>;
+export type FhirNotificationConfigList = Array<FhirNotificationConfig>;
 export const FhirNotificationConfigList = /*@__PURE__*/ S.Array(
   FhirNotificationConfig,
 ) as any as S.Schema<FhirNotificationConfigList>;
@@ -2060,7 +2061,7 @@ export const ConsentHeaderHandlingProfileEnum = /*@__PURE__*/ S.String;
 /** How the server handles the consent header. */
 export interface ConsentHeaderHandling {
   /** Optional. Specifies the default server behavior when the header is empty. If not specified, the `ScopeProfile.PERMIT_EMPTY_SCOPE` option is used. */
-  profile?: ConsentHeaderHandlingProfileEnum;
+  profile?: ConsentHeaderHandlingProfileEnum | (string & {});
 }
 export const ConsentHeaderHandling = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2085,7 +2086,7 @@ export const AccessDeterminationLogConfigLogLevelEnum = /*@__PURE__*/ S.String;
 /** Configures consent audit log config for FHIR create, read, update, and delete (CRUD) operations. Cloud audit log for healthcare API must be [enabled](https://cloud.google.com/logging/docs/audit/configure-data-access#config-console-enable). The consent-related logs are included as part of `protoPayload.metadata`. */
 export interface AccessDeterminationLogConfig {
   /** Optional. Controls the amount of detail to include as part of the audit logs. */
-  logLevel?: AccessDeterminationLogConfigLogLevelEnum;
+  logLevel?: AccessDeterminationLogConfigLogLevelEnum | (string & {});
 }
 export const AccessDeterminationLogConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2104,7 +2105,7 @@ export interface ConsentConfig {
   /** Output only. The versioned names of the enforced admin Consent resource(s), in the format `projects/{project_id}/locations/{location}/datasets/{dataset_id}/fhirStores/{fhir_store_id}/fhir/Consent/{resource_id}/_history/{version_id}`. For FHIR stores with `disable_resource_versioning=true`, the format is `projects/{project_id}/locations/{location}/datasets/{dataset_id}/fhirStores/{fhir_store_id}/fhir/Consent/{resource_id}`. This field can only be updated using ApplyAdminConsents. */
   enforcedAdminConsents?: StringList;
   /** Required. Specifies which consent enforcement version is being used for this FHIR store. This field can only be set once by either CreateFhirStore or UpdateFhirStore. After that, you must call ApplyConsents to change the version. */
-  version?: ConsentConfigVersionEnum;
+  version?: ConsentConfigVersionEnum | (string & {});
   /** Optional. Specifies how the server logs the consent-aware requests. If not specified, the `AccessDeterminationLogConfig.LogLevel.MINIMUM` option is used. */
   accessDeterminationLogConfig?: AccessDeterminationLogConfig;
 }
@@ -2158,9 +2159,11 @@ export interface FhirStore {
   /** Immutable. Whether to disable referential integrity in this FHIR store. This field is immutable after FHIR store creation. The default value is false, meaning that the API enforces referential integrity and fails the requests that result in inconsistent state in the FHIR store. When this field is set to true, the API skips referential integrity checks. Consequently, operations that rely on references, such as GetPatientEverything, do not return all the results if broken references exist. */
   disableReferentialIntegrity?: boolean;
   /** Optional. Enable parsing of references within complex FHIR data types such as Extensions. If this value is set to ENABLED, then features like referential integrity and Bundle reference rewriting apply to all references. If this flag has not been specified the behavior of the FHIR store will not change, references in complex data types will not be parsed. New stores will have this value set to ENABLED after a notification period. Warning: turning on this flag causes processing existing resources to fail if they contain references to non-existent resources. Cannot be disabled in R5. */
-  complexDataTypeReferenceParsing?: FhirStoreComplexDataTypeReferenceParsingEnum;
+  complexDataTypeReferenceParsing?:
+    | FhirStoreComplexDataTypeReferenceParsingEnum
+    | (string & {});
   /** Required. Immutable. The FHIR specification version that this FHIR store supports natively. This field is immutable after store creation. Requests are rejected if they contain FHIR resources of a different version. Version is required for every FHIR store. */
-  version?: FhirStoreVersionEnum;
+  version?: FhirStoreVersionEnum | (string & {});
   /** Optional. Whether this FHIR store has the [updateCreate capability](https://www.hl7.org/fhir/capabilitystatement-definitions.html#CapabilityStatement.rest.resource.updateCreate). This determines if the client can use an Update operation to create a new resource with a client-specified ID. If false, all IDs are server-assigned through the Create operation and attempts to update a non-existent resource return errors. It is strongly advised not to include or encode any sensitive data such as patient identifiers in client-specified resource IDs. Those IDs are part of the FHIR resource path recorded in Cloud audit logs and Pub/Sub notifications. Those IDs can also be contained in reference fields within other resources. Defaults to false. */
   enableUpdateCreate?: boolean;
 }
@@ -2251,8 +2254,7 @@ export const Hl7V2NotificationConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "Hl7V2NotificationConfig",
 }) as any as S.Schema<Hl7V2NotificationConfig>;
 
-export type Hl7V2NotificationConfigList =
-  ReadonlyArray<Hl7V2NotificationConfig>;
+export type Hl7V2NotificationConfigList = Array<Hl7V2NotificationConfig>;
 export const Hl7V2NotificationConfigList = /*@__PURE__*/ S.Array(
   Hl7V2NotificationConfig,
 ) as any as S.Schema<Hl7V2NotificationConfigList>;
@@ -2271,7 +2273,7 @@ export const VersionSource = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "VersionSource" }) as any as S.Schema<VersionSource>;
 
-export type VersionSourceList = ReadonlyArray<VersionSource>;
+export type VersionSourceList = Array<VersionSource>;
 export const VersionSourceList = /*@__PURE__*/ S.Array(
   VersionSource,
 ) as any as S.Schema<VersionSourceList>;
@@ -2306,7 +2308,7 @@ export const Field = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Field" }) as any as S.Schema<Field>;
 
-export type FieldList = ReadonlyArray<Field>;
+export type FieldList = Array<Field>;
 export const FieldList = /*@__PURE__*/ S.Array(
   Field,
 ) as any as S.Schema<FieldList>;
@@ -2314,7 +2316,7 @@ export const FieldList = /*@__PURE__*/ S.Array(
 /** A type definition for some HL7v2 type (incl. Segments and Datatypes). */
 export interface Type {
   /** If this is a primitive type then this field is the type of the primitive For example, STRING. Leave unspecified for composite types. */
-  primitive?: TypePrimitiveEnum;
+  primitive?: TypePrimitiveEnum | (string & {});
   /** The (sub) fields this type has (if not primitive). */
   fields?: FieldList;
   /** The name of this type. This would be the segment or datatype name. For example, "PID" or "XPN". */
@@ -2328,7 +2330,7 @@ export const Type = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Type" }) as any as S.Schema<Type>;
 
-export type TypeList = ReadonlyArray<Type>;
+export type TypeList = Array<Type>;
 export const TypeList = /*@__PURE__*/ S.Array(
   Type,
 ) as any as S.Schema<TypeList>;
@@ -2347,7 +2349,7 @@ export const Hl7TypesConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Hl7TypesConfig" }) as any as S.Schema<Hl7TypesConfig>;
 
-export type Hl7TypesConfigList = ReadonlyArray<Hl7TypesConfig>;
+export type Hl7TypesConfigList = Array<Hl7TypesConfig>;
 export const Hl7TypesConfigList = /*@__PURE__*/ S.Array(
   Hl7TypesConfig,
 ) as any as S.Schema<Hl7TypesConfigList>;
@@ -2395,7 +2397,7 @@ export const GroupOrSegment = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "GroupOrSegment" }) as any as S.Schema<GroupOrSegment>;
 
-export type GroupOrSegmentList = ReadonlyArray<GroupOrSegment>;
+export type GroupOrSegmentList = Array<GroupOrSegment>;
 export const GroupOrSegmentList = /*@__PURE__*/ S.Array(
   GroupOrSegment,
 ) as any as S.Schema<GroupOrSegmentList>;
@@ -2445,7 +2447,7 @@ export const Hl7SchemaConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "Hl7SchemaConfig",
 }) as any as S.Schema<Hl7SchemaConfig>;
 
-export type Hl7SchemaConfigList = ReadonlyArray<Hl7SchemaConfig>;
+export type Hl7SchemaConfigList = Array<Hl7SchemaConfig>;
 export const Hl7SchemaConfigList = /*@__PURE__*/ S.Array(
   Hl7SchemaConfig,
 ) as any as S.Schema<Hl7SchemaConfigList>;
@@ -2455,11 +2457,15 @@ export interface SchemaPackage {
   /** Optional. Schema type definitions that are layered based on their VersionSources that match the incoming message. Type definitions present in higher indices override those in lower indices with the same type name if their VersionSources all match an incoming message. */
   types?: Hl7TypesConfigList;
   /** Optional. Determines how messages that fail to parse are handled. */
-  schematizedParsingType?: SchemaPackageSchematizedParsingTypeEnum;
+  schematizedParsingType?:
+    | SchemaPackageSchematizedParsingTypeEnum
+    | (string & {});
   /** Optional. Flag to ignore all min_occurs restrictions in the schema. This means that incoming messages can omit any group, segment, field, component, or subcomponent. */
   ignoreMinOccurs?: boolean;
   /** Optional. Determines how unexpected segments (segments not matched to the schema) are handled. */
-  unexpectedSegmentHandling?: SchemaPackageUnexpectedSegmentHandlingEnum;
+  unexpectedSegmentHandling?:
+    | SchemaPackageUnexpectedSegmentHandlingEnum
+    | (string & {});
   /** Optional. Schema configs that are layered based on their VersionSources that match the incoming message. Schema configs present in higher indices override those in lower indices with the same message type and trigger event if their VersionSources all match an incoming message. */
   schemas?: Hl7SchemaConfigList;
 }
@@ -2487,7 +2493,7 @@ export interface ParserConfig {
   /** Optional. Schemas used to parse messages in this store, if schematized parsing is desired. */
   schema?: SchemaPackage;
   /** Immutable. Determines the version of both the default parser to be used when `schema` is not given, as well as the schematized parser used when `schema` is specified. This field is immutable after HL7v2 store creation. */
-  version?: ParserConfigVersionEnum;
+  version?: ParserConfigVersionEnum | (string & {});
   /** Optional. Determines whether messages with no header are allowed. */
   allowNullHeader?: boolean;
   /** Optional. Byte(s) to use as the segment terminator. If this is unset, '\r' is used as segment terminator, matching the HL7 version 2 specification. */
@@ -2580,7 +2586,7 @@ export const PatientId = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PatientId" }) as any as S.Schema<PatientId>;
 
-export type PatientIdList = ReadonlyArray<PatientId>;
+export type PatientIdList = Array<PatientId>;
 export const PatientIdList = /*@__PURE__*/ S.Array(
   PatientId,
 ) as any as S.Schema<PatientIdList>;
@@ -2602,7 +2608,7 @@ export const Segment = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Segment" }) as any as S.Schema<Segment>;
 
-export type SegmentList = ReadonlyArray<Segment>;
+export type SegmentList = Array<Segment>;
 export const SegmentList = /*@__PURE__*/ S.Array(
   Segment,
 ) as any as S.Schema<SegmentList>;
@@ -3254,7 +3260,7 @@ export const Result = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Result" }) as any as S.Schema<Result>;
 
-export type ResultList = ReadonlyArray<Result>;
+export type ResultList = Array<Result>;
 export const ResultList = /*@__PURE__*/ S.Array(
   Result,
 ) as any as S.Schema<ResultList>;
@@ -3343,7 +3349,7 @@ export type ExplainDataAccessConsentScopeDecisionEnum =
   | "CONSENT_DECISION_TYPE_DENY";
 export const ExplainDataAccessConsentScopeDecisionEnum = /*@__PURE__*/ S.String;
 
-export type ConsentAccessorScopeList = ReadonlyArray<ConsentAccessorScope>;
+export type ConsentAccessorScopeList = Array<ConsentAccessorScope>;
 export const ConsentAccessorScopeList = /*@__PURE__*/ S.Array(
   ConsentAccessorScope,
 ) as any as S.Schema<ConsentAccessorScopeList>;
@@ -3362,7 +3368,7 @@ export const ExplainDataAccessConsentInfoVariantsItemEnum =
   /*@__PURE__*/ S.String;
 
 export type ExplainDataAccessConsentInfoVariantsItemEnumList =
-  ReadonlyArray<ExplainDataAccessConsentInfoVariantsItemEnum>;
+  Array<ExplainDataAccessConsentInfoVariantsItemEnum>;
 export const ExplainDataAccessConsentInfoVariantsItemEnumList =
   /*@__PURE__*/ S.Array(
     ExplainDataAccessConsentInfoVariantsItemEnum,
@@ -3400,7 +3406,7 @@ export const ExplainDataAccessConsentInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExplainDataAccessConsentInfo>;
 
 export type ExplainDataAccessConsentInfoList =
-  ReadonlyArray<ExplainDataAccessConsentInfo>;
+  Array<ExplainDataAccessConsentInfo>;
 export const ExplainDataAccessConsentInfoList = /*@__PURE__*/ S.Array(
   ExplainDataAccessConsentInfo,
 ) as any as S.Schema<ExplainDataAccessConsentInfoList>;
@@ -3428,7 +3434,7 @@ export const ExplainDataAccessConsentScope = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExplainDataAccessConsentScope>;
 
 export type ExplainDataAccessConsentScopeList =
-  ReadonlyArray<ExplainDataAccessConsentScope>;
+  Array<ExplainDataAccessConsentScope>;
 export const ExplainDataAccessConsentScopeList = /*@__PURE__*/ S.Array(
   ExplainDataAccessConsentScope,
 ) as any as S.Schema<ExplainDataAccessConsentScopeList>;
@@ -3752,7 +3758,7 @@ export const FhirStoreMetric = /*@__PURE__*/ S.suspend(() =>
   identifier: "FhirStoreMetric",
 }) as any as S.Schema<FhirStoreMetric>;
 
-export type FhirStoreMetricList = ReadonlyArray<FhirStoreMetric>;
+export type FhirStoreMetricList = Array<FhirStoreMetric>;
 export const FhirStoreMetricList = /*@__PURE__*/ S.Array(
   FhirStoreMetric,
 ) as any as S.Schema<FhirStoreMetricList>;
@@ -3812,7 +3818,7 @@ export const Hl7V2StoreMetric = /*@__PURE__*/ S.suspend(() =>
   identifier: "Hl7V2StoreMetric",
 }) as any as S.Schema<Hl7V2StoreMetric>;
 
-export type Hl7V2StoreMetricList = ReadonlyArray<Hl7V2StoreMetric>;
+export type Hl7V2StoreMetricList = Array<Hl7V2StoreMetric>;
 export const Hl7V2StoreMetricList = /*@__PURE__*/ S.Array(
   Hl7V2StoreMetric,
 ) as any as S.Schema<Hl7V2StoreMetricList>;
@@ -3865,7 +3871,7 @@ export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
 export interface AuditLogConfig {
   /** The log type that this config enables. */
-  logType?: AuditLogConfigLogTypeEnum;
+  logType?: AuditLogConfigLogTypeEnum | (string & {});
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
   exemptedMembers?: StringList;
 }
@@ -3876,7 +3882,7 @@ export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
-export type AuditLogConfigList = ReadonlyArray<AuditLogConfig>;
+export type AuditLogConfigList = Array<AuditLogConfig>;
 export const AuditLogConfigList = /*@__PURE__*/ S.Array(
   AuditLogConfig,
 ) as any as S.Schema<AuditLogConfigList>;
@@ -3895,7 +3901,7 @@ export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
-export type AuditConfigList = ReadonlyArray<AuditConfig>;
+export type AuditConfigList = Array<AuditConfig>;
 export const AuditConfigList = /*@__PURE__*/ S.Array(
   AuditConfig,
 ) as any as S.Schema<AuditConfigList>;
@@ -3917,7 +3923,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
-export type BindingList = ReadonlyArray<Binding>;
+export type BindingList = Array<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -4774,7 +4780,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = ReadonlyArray<Location>;
+export type LocationList = Array<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -4820,7 +4826,7 @@ export const ListProjectsLocationsDatasetsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsDatasetsRequest",
 }) as any as S.Schema<ListProjectsLocationsDatasetsRequest>;
 
-export type DatasetList = ReadonlyArray<Dataset>;
+export type DatasetList = Array<Dataset>;
 export const DatasetList = /*@__PURE__*/ S.Array(
   Dataset,
 ) as any as S.Schema<DatasetList>;
@@ -4869,7 +4875,7 @@ export const ListProjectsLocationsDatasetsConsentStoresRequest =
     identifier: "ListProjectsLocationsDatasetsConsentStoresRequest",
   }) as any as S.Schema<ListProjectsLocationsDatasetsConsentStoresRequest>;
 
-export type ConsentStoreList = ReadonlyArray<ConsentStore>;
+export type ConsentStoreList = Array<ConsentStore>;
 export const ConsentStoreList = /*@__PURE__*/ S.Array(
   ConsentStore,
 ) as any as S.Schema<ConsentStoreList>;
@@ -4918,7 +4924,7 @@ export const ListProjectsLocationsDatasetsConsentStoresAttributeDefinitionsReque
       "ListProjectsLocationsDatasetsConsentStoresAttributeDefinitionsRequest",
   }) as any as S.Schema<ListProjectsLocationsDatasetsConsentStoresAttributeDefinitionsRequest>;
 
-export type AttributeDefinitionList = ReadonlyArray<AttributeDefinition>;
+export type AttributeDefinitionList = Array<AttributeDefinition>;
 export const AttributeDefinitionList = /*@__PURE__*/ S.Array(
   AttributeDefinition,
 ) as any as S.Schema<AttributeDefinitionList>;
@@ -4967,7 +4973,7 @@ export const ListProjectsLocationsDatasetsConsentStoresConsentArtifactsRequest =
       "ListProjectsLocationsDatasetsConsentStoresConsentArtifactsRequest",
   }) as any as S.Schema<ListProjectsLocationsDatasetsConsentStoresConsentArtifactsRequest>;
 
-export type ConsentArtifactList = ReadonlyArray<ConsentArtifact>;
+export type ConsentArtifactList = Array<ConsentArtifact>;
 export const ConsentArtifactList = /*@__PURE__*/ S.Array(
   ConsentArtifact,
 ) as any as S.Schema<ConsentArtifactList>;
@@ -5015,7 +5021,7 @@ export const ListProjectsLocationsDatasetsConsentStoresConsentsRequest =
     identifier: "ListProjectsLocationsDatasetsConsentStoresConsentsRequest",
   }) as any as S.Schema<ListProjectsLocationsDatasetsConsentStoresConsentsRequest>;
 
-export type ConsentList_ = ReadonlyArray<Consent>;
+export type ConsentList_ = Array<Consent>;
 export const ConsentList_ = /*@__PURE__*/ S.Array(
   Consent,
 ) as any as S.Schema<ConsentList_>;
@@ -5064,7 +5070,7 @@ export const ListProjectsLocationsDatasetsConsentStoresUserDataMappingsRequest =
       "ListProjectsLocationsDatasetsConsentStoresUserDataMappingsRequest",
   }) as any as S.Schema<ListProjectsLocationsDatasetsConsentStoresUserDataMappingsRequest>;
 
-export type UserDataMappingList = ReadonlyArray<UserDataMapping>;
+export type UserDataMappingList = Array<UserDataMapping>;
 export const UserDataMappingList = /*@__PURE__*/ S.Array(
   UserDataMapping,
 ) as any as S.Schema<UserDataMappingList>;
@@ -5112,7 +5118,7 @@ export const ListProjectsLocationsDatasetsDicomStoresRequest =
     identifier: "ListProjectsLocationsDatasetsDicomStoresRequest",
   }) as any as S.Schema<ListProjectsLocationsDatasetsDicomStoresRequest>;
 
-export type DicomStoreList = ReadonlyArray<DicomStore>;
+export type DicomStoreList = Array<DicomStore>;
 export const DicomStoreList = /*@__PURE__*/ S.Array(
   DicomStore,
 ) as any as S.Schema<DicomStoreList>;
@@ -5161,7 +5167,7 @@ export const ListProjectsLocationsDatasetsFhirStoresRequest =
     identifier: "ListProjectsLocationsDatasetsFhirStoresRequest",
   }) as any as S.Schema<ListProjectsLocationsDatasetsFhirStoresRequest>;
 
-export type FhirStoreList = ReadonlyArray<FhirStore>;
+export type FhirStoreList = Array<FhirStore>;
 export const FhirStoreList = /*@__PURE__*/ S.Array(
   FhirStore,
 ) as any as S.Schema<FhirStoreList>;
@@ -5210,7 +5216,7 @@ export const ListProjectsLocationsDatasetsHl7V2StoresRequest =
     identifier: "ListProjectsLocationsDatasetsHl7V2StoresRequest",
   }) as any as S.Schema<ListProjectsLocationsDatasetsHl7V2StoresRequest>;
 
-export type Hl7V2StoreList = ReadonlyArray<Hl7V2Store>;
+export type Hl7V2StoreList = Array<Hl7V2Store>;
 export const Hl7V2StoreList = /*@__PURE__*/ S.Array(
   Hl7V2Store,
 ) as any as S.Schema<Hl7V2StoreList>;
@@ -5281,7 +5287,7 @@ export const ListProjectsLocationsDatasetsHl7V2StoresMessagesRequest =
     identifier: "ListProjectsLocationsDatasetsHl7V2StoresMessagesRequest",
   }) as any as S.Schema<ListProjectsLocationsDatasetsHl7V2StoresMessagesRequest>;
 
-export type MessageList = ReadonlyArray<Message>;
+export type MessageList = Array<Message>;
 export const MessageList = /*@__PURE__*/ S.Array(
   Message,
 ) as any as S.Schema<MessageList>;
@@ -5333,7 +5339,7 @@ export const ListProjectsLocationsDatasetsOperationsRequest =
     identifier: "ListProjectsLocationsDatasetsOperationsRequest",
   }) as any as S.Schema<ListProjectsLocationsDatasetsOperationsRequest>;
 
-export type OperationList = ReadonlyArray<Operation>;
+export type OperationList = Array<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;

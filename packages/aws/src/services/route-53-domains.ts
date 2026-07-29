@@ -895,7 +895,7 @@ export const ExtraParamName = /*@__PURE__*/ S.String;
 
 export type ExtraParamValue = string | redacted.Redacted<string>;
 export interface ExtraParam {
-  Name: ExtraParamName;
+  Name: ExtraParamName | (string & {});
   Value: string | redacted.Redacted<string>;
 }
 export const ExtraParam = /*@__PURE__*/ S.suspend(() =>
@@ -906,13 +906,13 @@ export const ExtraParamList = /*@__PURE__*/ S.Array(ExtraParam);
 export interface ContactDetail {
   FirstName?: string | redacted.Redacted<string>;
   LastName?: string | redacted.Redacted<string>;
-  ContactType?: ContactType;
+  ContactType?: ContactType | (string & {});
   OrganizationName?: string | redacted.Redacted<string>;
   AddressLine1?: string | redacted.Redacted<string>;
   AddressLine2?: string | redacted.Redacted<string>;
   City?: string | redacted.Redacted<string>;
   State?: string | redacted.Redacted<string>;
-  CountryCode?: CountryCode;
+  CountryCode?: CountryCode | (string & {});
   ZipCode?: string | redacted.Redacted<string>;
   PhoneNumber?: string | redacted.Redacted<string>;
   Email?: string | redacted.Redacted<string>;

@@ -430,7 +430,7 @@ export const AttachedNetworkConnection = /*@__PURE__*/ S.suspend(() =>
 
 /** Current page of results. */
 export type AttachedNetworkListResultValueList =
-  ReadonlyArray<AttachedNetworkConnection>;
+  Array<AttachedNetworkConnection>;
 export const AttachedNetworkListResultValueList = /*@__PURE__*/ S.Array(
   AttachedNetworkConnection,
 ) as any as S.Schema<AttachedNetworkListResultValueList>;
@@ -645,8 +645,7 @@ export type CatalogItemType = "EnvironmentDefinition" | "ImageDefinition";
 export const CatalogItemType = /*@__PURE__*/ S.String;
 
 /** Indicates catalog item types that were synced. */
-export type SyncStatsSyncedCatalogItemTypesList =
-  ReadonlyArray<CatalogItemType>;
+export type SyncStatsSyncedCatalogItemTypesList = Array<CatalogItemType>;
 export const SyncStatsSyncedCatalogItemTypesList = /*@__PURE__*/ S.Array(
   CatalogItemType,
 ) as any as S.Schema<SyncStatsSyncedCatalogItemTypesList>;
@@ -896,7 +895,7 @@ export const CatalogConflictError = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CatalogConflictError>;
 
 /** Catalog items that have conflicting names. */
-export type SyncErrorDetailsConflictsList = ReadonlyArray<CatalogConflictError>;
+export type SyncErrorDetailsConflictsList = Array<CatalogConflictError>;
 export const SyncErrorDetailsConflictsList = /*@__PURE__*/ S.Array(
   CatalogConflictError,
 ) as any as S.Schema<SyncErrorDetailsConflictsList>;
@@ -919,7 +918,7 @@ export const CatalogSyncErrorErrorDetailsItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Errors associated with the file. */
 export type CatalogSyncErrorErrorDetailsList =
-  ReadonlyArray<CatalogSyncErrorErrorDetailsItem>;
+  Array<CatalogSyncErrorErrorDetailsItem>;
 export const CatalogSyncErrorErrorDetailsList = /*@__PURE__*/ S.Array(
   CatalogSyncErrorErrorDetailsItem,
 ) as any as S.Schema<CatalogSyncErrorErrorDetailsList>;
@@ -941,7 +940,7 @@ export const CatalogSyncError = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CatalogSyncError>;
 
 /** Errors that occured during synchronization. */
-export type SyncErrorDetailsErrorsList = ReadonlyArray<CatalogSyncError>;
+export type SyncErrorDetailsErrorsList = Array<CatalogSyncError>;
 export const SyncErrorDetailsErrorsList = /*@__PURE__*/ S.Array(
   CatalogSyncError,
 ) as any as S.Schema<SyncErrorDetailsErrorsList>;
@@ -1017,7 +1016,7 @@ export const Catalog = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Catalog" }) as any as S.Schema<Catalog>;
 
 /** Current page of results. */
-export type CatalogListResultValueList = ReadonlyArray<Catalog>;
+export type CatalogListResultValueList = Array<Catalog>;
 export const CatalogListResultValueList = /*@__PURE__*/ S.Array(
   Catalog,
 ) as any as S.Schema<CatalogListResultValueList>;
@@ -1434,7 +1433,7 @@ export const CatalogErrorDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** Errors associated with resources synchronized from the catalog. */
 export type CustomizationTasksGetErrorDetailsResponseErrorsList =
-  ReadonlyArray<CatalogErrorDetails>;
+  Array<CatalogErrorDetails>;
 export const CustomizationTasksGetErrorDetailsResponseErrorsList =
   /*@__PURE__*/ S.Array(
     CatalogErrorDetails,
@@ -1511,8 +1510,7 @@ export const CustomizationTask = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CustomizationTask>;
 
 /** Current page of results. */
-export type CustomizationTaskListResultValueList =
-  ReadonlyArray<CustomizationTask>;
+export type CustomizationTaskListResultValueList = Array<CustomizationTask>;
 export const CustomizationTaskListResultValueList = /*@__PURE__*/ S.Array(
   CustomizationTask,
 ) as any as S.Schema<CustomizationTaskListResultValueList>;
@@ -2162,8 +2160,7 @@ export const DevBoxDefinition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DevBoxDefinition>;
 
 /** Current page of results. */
-export type DevBoxDefinitionListResultValueList =
-  ReadonlyArray<DevBoxDefinition>;
+export type DevBoxDefinitionListResultValueList = Array<DevBoxDefinition>;
 export const DevBoxDefinitionListResultValueList = /*@__PURE__*/ S.Array(
   DevBoxDefinition,
 ) as any as S.Schema<DevBoxDefinitionListResultValueList>;
@@ -2380,7 +2377,9 @@ export const EncryptionCustomerManagedKeyEncryptionKeyEncryptionKeyIdentityIdent
 /** All identity configuration for Customer-managed key settings defining which identity should be used to auth to Key Vault. */
 export interface EncryptionCustomerManagedKeyEncryptionKeyEncryptionKeyIdentity {
   /** Values can be systemAssignedIdentity or userAssignedIdentity */
-  identityType?: EncryptionCustomerManagedKeyEncryptionKeyEncryptionKeyIdentityIdentityType;
+  identityType?:
+    | EncryptionCustomerManagedKeyEncryptionKeyEncryptionKeyIdentityIdentityType
+    | (string & {});
   /** user assigned identity to use for accessing key encryption key Url. Ex: /subscriptions/fa5fc227-a624-475e-b696-cdd604c735bc/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId. Mutually exclusive with identityType systemAssignedIdentity and delegatedResourceIdentity. */
   userAssignedIdentityResourceId?: string;
   /** delegated identity to use for accessing key encryption key Url. Ex: /subscriptions/fa5fc227-a624-475e-b696-cdd604c735bc/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId. Mutually exclusive with identityType systemAssignedIdentity and userAssignedIdentity - internal use only. */
@@ -2438,7 +2437,7 @@ export const CatalogItemSyncEnableStatus = /*@__PURE__*/ S.String;
 /** Project catalog settings for project catalogs under a project associated to this dev center. */
 export interface DevCenterProjectCatalogSettings {
   /** Whether project catalogs associated with projects in this dev center can be configured to sync catalog items. */
-  catalogItemSyncEnableStatus?: CatalogItemSyncEnableStatus;
+  catalogItemSyncEnableStatus?: CatalogItemSyncEnableStatus | (string & {});
 }
 export const DevCenterProjectCatalogSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2454,7 +2453,9 @@ export const MicrosoftHostedNetworkEnableStatus = /*@__PURE__*/ S.String;
 
 /** Network settings for the Dev Center. */
 export interface DevCenterNetworkSettings {
-  microsoftHostedNetworkEnableStatus?: MicrosoftHostedNetworkEnableStatus;
+  microsoftHostedNetworkEnableStatus?:
+    | MicrosoftHostedNetworkEnableStatus
+    | (string & {});
 }
 export const DevCenterNetworkSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2473,7 +2474,9 @@ export const InstallAzureMonitorAgentEnableStatus = /*@__PURE__*/ S.String;
 /** Provisioning settings that apply to all Dev Boxes created in this dev center */
 export interface DevBoxProvisioningSettings {
   /** Whether project catalogs associated with projects in this dev center can be configured to sync catalog items. */
-  installAzureMonitorAgentEnableStatus?: InstallAzureMonitorAgentEnableStatus;
+  installAzureMonitorAgentEnableStatus?:
+    | InstallAzureMonitorAgentEnableStatus
+    | (string & {});
 }
 export const DevBoxProvisioningSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2931,7 +2934,7 @@ export const DevCenter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DevCenter" }) as any as S.Schema<DevCenter>;
 
 /** Current page of results. */
-export type DevCenterListResultValueList = ReadonlyArray<DevCenter>;
+export type DevCenterListResultValueList = Array<DevCenter>;
 export const DevCenterListResultValueList = /*@__PURE__*/ S.Array(
   DevCenter,
 ) as any as S.Schema<DevCenterListResultValueList>;
@@ -3183,7 +3186,7 @@ export const EnvironmentDefinitionParameter = /*@__PURE__*/ S.suspend(() =>
 
 /** Input parameters passed to an environment. */
 export type EnvironmentDefinitionPropertiesParametersList =
-  ReadonlyArray<EnvironmentDefinitionParameter>;
+  Array<EnvironmentDefinitionParameter>;
 export const EnvironmentDefinitionPropertiesParametersList =
   /*@__PURE__*/ S.Array(
     EnvironmentDefinitionParameter,
@@ -3337,7 +3340,7 @@ export const EnvironmentDefinitionsGetErrorDetailsRequest =
 
 /** Errors associated with resources synchronized from the catalog. */
 export type EnvironmentDefinitionsGetErrorDetailsResponseErrorsList =
-  ReadonlyArray<CatalogErrorDetails>;
+  Array<CatalogErrorDetails>;
 export const EnvironmentDefinitionsGetErrorDetailsResponseErrorsList =
   /*@__PURE__*/ S.Array(
     CatalogErrorDetails,
@@ -3417,7 +3420,7 @@ export const EnvironmentDefinition = /*@__PURE__*/ S.suspend(() =>
 
 /** Current page of results. */
 export type EnvironmentDefinitionListResultValueList =
-  ReadonlyArray<EnvironmentDefinition>;
+  Array<EnvironmentDefinition>;
 export const EnvironmentDefinitionListResultValueList = /*@__PURE__*/ S.Array(
   EnvironmentDefinition,
 ) as any as S.Schema<EnvironmentDefinitionListResultValueList>;
@@ -3764,7 +3767,7 @@ export const EnvironmentType = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EnvironmentType>;
 
 /** Current page of results. */
-export type EnvironmentTypeListResultValueList = ReadonlyArray<EnvironmentType>;
+export type EnvironmentTypeListResultValueList = Array<EnvironmentType>;
 export const EnvironmentTypeListResultValueList = /*@__PURE__*/ S.Array(
   EnvironmentType,
 ) as any as S.Schema<EnvironmentTypeListResultValueList>;
@@ -4120,7 +4123,7 @@ export const Gallery = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Gallery" }) as any as S.Schema<Gallery>;
 
 /** Current page of results. */
-export type GalleryListResultValueList = ReadonlyArray<Gallery>;
+export type GalleryListResultValueList = Array<Gallery>;
 export const GalleryListResultValueList = /*@__PURE__*/ S.Array(
   Gallery,
 ) as any as S.Schema<GalleryListResultValueList>;
@@ -4383,7 +4386,7 @@ export const Image = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Image" }) as any as S.Schema<Image>;
 
 /** Current page of results. */
-export type ImageListResultValueList = ReadonlyArray<Image>;
+export type ImageListResultValueList = Array<Image>;
 export const ImageListResultValueList = /*@__PURE__*/ S.Array(
   Image,
 ) as any as S.Schema<ImageListResultValueList>;
@@ -4673,7 +4676,7 @@ export const ImageVersion = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ImageVersion" }) as any as S.Schema<ImageVersion>;
 
 /** Current page of results. */
-export type ImageVersionListResultValueList = ReadonlyArray<ImageVersion>;
+export type ImageVersionListResultValueList = Array<ImageVersion>;
 export const ImageVersionListResultValueList = /*@__PURE__*/ S.Array(
   ImageVersion,
 ) as any as S.Schema<ImageVersionListResultValueList>;
@@ -5099,7 +5102,7 @@ export const HealthCheck = /*@__PURE__*/ S.suspend(() =>
 
 /** Details for each health check item. */
 export type HealthCheckStatusDetailsPropertiesHealthChecksList =
-  ReadonlyArray<HealthCheck>;
+  Array<HealthCheck>;
 export const HealthCheckStatusDetailsPropertiesHealthChecksList =
   /*@__PURE__*/ S.Array(
     HealthCheck,
@@ -5216,8 +5219,7 @@ export const NetworkConnection = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NetworkConnection>;
 
 /** Current page of results. */
-export type NetworkConnectionListResultValueList =
-  ReadonlyArray<NetworkConnection>;
+export type NetworkConnectionListResultValueList = Array<NetworkConnection>;
 export const NetworkConnectionListResultValueList = /*@__PURE__*/ S.Array(
   NetworkConnection,
 ) as any as S.Schema<NetworkConnectionListResultValueList>;
@@ -5317,7 +5319,7 @@ export const HealthCheckStatusDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** Current page of results. */
 export type HealthCheckStatusDetailsListResultValueList =
-  ReadonlyArray<HealthCheckStatusDetails>;
+  Array<HealthCheckStatusDetails>;
 export const HealthCheckStatusDetailsListResultValueList =
   /*@__PURE__*/ S.Array(
     HealthCheckStatusDetails,
@@ -5381,8 +5383,7 @@ export const EndpointDetail = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EndpointDetail" }) as any as S.Schema<EndpointDetail>;
 
 /** The list of connection details for this endpoint. */
-export type EndpointDependencyEndpointDetailsList =
-  ReadonlyArray<EndpointDetail>;
+export type EndpointDependencyEndpointDetailsList = Array<EndpointDetail>;
 export const EndpointDependencyEndpointDetailsList = /*@__PURE__*/ S.Array(
   EndpointDetail,
 ) as any as S.Schema<EndpointDependencyEndpointDetailsList>;
@@ -5408,7 +5409,7 @@ export const EndpointDependency = /*@__PURE__*/ S.suspend(() =>
 
 /** The endpoints for this service for which the agent requires outbound access. */
 export type OutboundEnvironmentEndpointEndpointsList =
-  ReadonlyArray<EndpointDependency>;
+  Array<EndpointDependency>;
 export const OutboundEnvironmentEndpointEndpointsList = /*@__PURE__*/ S.Array(
   EndpointDependency,
 ) as any as S.Schema<OutboundEnvironmentEndpointEndpointsList>;
@@ -5431,7 +5432,7 @@ export const OutboundEnvironmentEndpoint = /*@__PURE__*/ S.suspend(() =>
 
 /** The collection of outbound network dependency endpoints returned by the listing operation. */
 export type OutboundEnvironmentEndpointCollectionValueList =
-  ReadonlyArray<OutboundEnvironmentEndpoint>;
+  Array<OutboundEnvironmentEndpoint>;
 export const OutboundEnvironmentEndpointCollectionValueList =
   /*@__PURE__*/ S.Array(
     OutboundEnvironmentEndpoint,
@@ -5652,7 +5653,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = ReadonlyArray<Operation>;
+export type OperationsListResponseValueList = Array<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;
@@ -5698,14 +5699,13 @@ export const OperationStatusesGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationStatusesGetRequest>;
 
 /** The operations list. */
-export type OperationStatusResultOperationsList =
-  ReadonlyArray<OperationStatusResult>;
+export type OperationStatusResultOperationsList = Array<OperationStatusResult>;
 export const OperationStatusResultOperationsList = /*@__PURE__*/ S.Array(
   S.suspend(() => OperationStatusResult),
 ) as any as S.Schema<OperationStatusResultOperationsList>;
 
 /** The error details. */
-export type ErrorDetailDetailsList = ReadonlyArray<ErrorDetail>;
+export type ErrorDetailDetailsList = Array<ErrorDetail>;
 export const ErrorDetailDetailsList = /*@__PURE__*/ S.Array(
   S.suspend(() => ErrorDetail),
 ) as any as S.Schema<ErrorDetailDetailsList>;
@@ -5727,7 +5727,7 @@ export const ErrorAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ErrorAdditionalInfo>;
 
 /** The error additional info. */
-export type ErrorDetailAdditionalInfoList = ReadonlyArray<ErrorAdditionalInfo>;
+export type ErrorDetailAdditionalInfoList = Array<ErrorAdditionalInfo>;
 export const ErrorDetailAdditionalInfoList = /*@__PURE__*/ S.Array(
   ErrorAdditionalInfo,
 ) as any as S.Schema<ErrorDetailAdditionalInfoList>;
@@ -5794,7 +5794,7 @@ export const OperationStatusResult = /*@__PURE__*/ S.suspend(() =>
 
 /** The operations list. */
 export type OperationStatusesGetResponseOperationsList =
-  ReadonlyArray<OperationStatusResult>;
+  Array<OperationStatusResult>;
 export const OperationStatusesGetResponseOperationsList = /*@__PURE__*/ S.Array(
   OperationStatusResult,
 ) as any as S.Schema<OperationStatusesGetResponseOperationsList>;
@@ -5939,7 +5939,7 @@ export const StopOnDisconnectEnableStatus = /*@__PURE__*/ S.String;
 /** Stop on disconnect configuration settings for Dev Boxes created in this pool. */
 export interface StopOnDisconnectConfiguration {
   /** Whether the feature to stop the Dev Box on disconnect once the grace period has lapsed is enabled. */
-  status?: StopOnDisconnectEnableStatus;
+  status?: StopOnDisconnectEnableStatus | (string & {});
   /** The specified time in minutes to wait before stopping a Dev Box once disconnect is detected. */
   gracePeriodMinutes?: number;
 }
@@ -5959,7 +5959,7 @@ export const StopOnNoConnectEnableStatus = /*@__PURE__*/ S.String;
 /** Stop on no connect configuration settings for Dev Boxes created in this pool. */
 export interface StopOnNoConnectConfiguration {
   /** Enables the feature to stop a started Dev Box when it has not been connected to, once the grace period has lapsed. */
-  status?: StopOnNoConnectEnableStatus;
+  status?: StopOnNoConnectEnableStatus | (string & {});
   /** The specified time in minutes to wait before stopping a Dev Box if no connection is made. */
   gracePeriodMinutes?: number;
 }
@@ -5981,8 +5981,7 @@ export type VirtualNetworkType = "Managed" | "Unmanaged";
 export const VirtualNetworkType = /*@__PURE__*/ S.String;
 
 /** The regions of the managed virtual network (required when managedNetworkType is Managed). */
-export type PoolPropertiesInputManagedVirtualNetworkRegionsList =
-  ReadonlyArray<string>;
+export type PoolPropertiesInputManagedVirtualNetworkRegionsList = Array<string>;
 export const PoolPropertiesInputManagedVirtualNetworkRegionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6159,8 +6158,7 @@ export const PoolDevBoxDefinition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PoolDevBoxDefinition>;
 
 /** The regions of the managed virtual network (required when managedNetworkType is Managed). */
-export type PoolPropertiesManagedVirtualNetworkRegionsList =
-  ReadonlyArray<string>;
+export type PoolPropertiesManagedVirtualNetworkRegionsList = Array<string>;
 export const PoolPropertiesManagedVirtualNetworkRegionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6192,8 +6190,7 @@ export const HealthStatusDetail = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HealthStatusDetail>;
 
 /** Details on the Pool health status to help diagnose issues. This is only populated when the pool status indicates the pool is in a non-healthy state */
-export type PoolPropertiesHealthStatusDetailsList =
-  ReadonlyArray<HealthStatusDetail>;
+export type PoolPropertiesHealthStatusDetailsList = Array<HealthStatusDetail>;
 export const PoolPropertiesHealthStatusDetailsList = /*@__PURE__*/ S.Array(
   HealthStatusDetail,
 ) as any as S.Schema<PoolPropertiesHealthStatusDetailsList>;
@@ -6471,7 +6468,7 @@ export const Pool = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Pool" }) as any as S.Schema<Pool>;
 
 /** Current page of results. */
-export type PoolListResultValueList = ReadonlyArray<Pool>;
+export type PoolListResultValueList = Array<Pool>;
 export const PoolListResultValueList = /*@__PURE__*/ S.Array(
   Pool,
 ) as any as S.Schema<PoolListResultValueList>;
@@ -6527,7 +6524,7 @@ export const PoolsRunHealthChecksResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The regions of the managed virtual network (required when managedNetworkType is Managed). */
 export type PoolUpdatePropertiesInputManagedVirtualNetworkRegionsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PoolUpdatePropertiesInputManagedVirtualNetworkRegionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6804,7 +6801,7 @@ export const AllowedEnvironmentType = /*@__PURE__*/ S.suspend(() =>
 
 /** Current page of results. */
 export type AllowedEnvironmentTypeListResultValueList =
-  ReadonlyArray<AllowedEnvironmentType>;
+  Array<AllowedEnvironmentType>;
 export const AllowedEnvironmentTypeListResultValueList = /*@__PURE__*/ S.Array(
   AllowedEnvironmentType,
 ) as any as S.Schema<AllowedEnvironmentTypeListResultValueList>;
@@ -6859,7 +6856,7 @@ export const ProjectCatalogEnvironmentDefinitionsGetErrorDetailsRequest =
 
 /** Errors associated with resources synchronized from the catalog. */
 export type ProjectCatalogEnvironmentDefinitionsGetErrorDetailsResponseErrorsList =
-  ReadonlyArray<CatalogErrorDetails>;
+  Array<CatalogErrorDetails>;
 export const ProjectCatalogEnvironmentDefinitionsGetErrorDetailsResponseErrorsList =
   /*@__PURE__*/ S.Array(
     CatalogErrorDetails,
@@ -7118,7 +7115,7 @@ export const ImageDefinitionBuildTaskParametersItem = /*@__PURE__*/ S.suspend(
 
 /** Parameters for the task. */
 export type ImageDefinitionBuildTaskParametersList =
-  ReadonlyArray<ImageDefinitionBuildTaskParametersItem>;
+  Array<ImageDefinitionBuildTaskParametersItem>;
 export const ImageDefinitionBuildTaskParametersList = /*@__PURE__*/ S.Array(
   ImageDefinitionBuildTaskParametersItem,
 ) as any as S.Schema<ImageDefinitionBuildTaskParametersList>;
@@ -7159,7 +7156,7 @@ export const ImageDefinitionBuildTask = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of tasks executed during the task group. */
 export type ImageDefinitionBuildTaskGroupTasksList =
-  ReadonlyArray<ImageDefinitionBuildTask>;
+  Array<ImageDefinitionBuildTask>;
 export const ImageDefinitionBuildTaskGroupTasksList = /*@__PURE__*/ S.Array(
   ImageDefinitionBuildTask,
 ) as any as S.Schema<ImageDefinitionBuildTaskGroupTasksList>;
@@ -7191,7 +7188,7 @@ export const ImageDefinitionBuildTaskGroup = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of task groups executed during the image definition build. */
 export type ProjectCatalogImageDefinitionBuildGetBuildDetailsResponseTaskGroupsList =
-  ReadonlyArray<ImageDefinitionBuildTaskGroup>;
+  Array<ImageDefinitionBuildTaskGroup>;
 export const ProjectCatalogImageDefinitionBuildGetBuildDetailsResponseTaskGroupsList =
   /*@__PURE__*/ S.Array(
     ImageDefinitionBuildTaskGroup,
@@ -7301,7 +7298,7 @@ export const ImageDefinitionBuild = /*@__PURE__*/ S.suspend(() =>
 
 /** Current page of results. */
 export type ImageDefinitionBuildListResultValueList =
-  ReadonlyArray<ImageDefinitionBuild>;
+  Array<ImageDefinitionBuild>;
 export const ImageDefinitionBuildListResultValueList = /*@__PURE__*/ S.Array(
   ImageDefinitionBuild,
 ) as any as S.Schema<ImageDefinitionBuildListResultValueList>;
@@ -7586,7 +7583,7 @@ export const ProjectCatalogImageDefinitionsGetErrorDetailsRequest =
 
 /** Errors associated with resources synchronized from the catalog. */
 export type ProjectCatalogImageDefinitionsGetErrorDetailsResponseErrorsList =
-  ReadonlyArray<CatalogErrorDetails>;
+  Array<CatalogErrorDetails>;
 export const ProjectCatalogImageDefinitionsGetErrorDetailsResponseErrorsList =
   /*@__PURE__*/ S.Array(
     CatalogErrorDetails,
@@ -7665,7 +7662,7 @@ export const ImageDefinition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ImageDefinition>;
 
 /** Current page of results. */
-export type ImageDefinitionListResultValueList = ReadonlyArray<ImageDefinition>;
+export type ImageDefinitionListResultValueList = Array<ImageDefinition>;
 export const ImageDefinitionListResultValueList = /*@__PURE__*/ S.Array(
   ImageDefinition,
 ) as any as S.Schema<ImageDefinitionListResultValueList>;
@@ -8598,7 +8595,7 @@ export const ProjectEnvironmentType = /*@__PURE__*/ S.suspend(() =>
 
 /** Current page of results. */
 export type ProjectEnvironmentTypeListResultValueList =
-  ReadonlyArray<ProjectEnvironmentType>;
+  Array<ProjectEnvironmentType>;
 export const ProjectEnvironmentTypeListResultValueList = /*@__PURE__*/ S.Array(
   ProjectEnvironmentType,
 ) as any as S.Schema<ProjectEnvironmentTypeListResultValueList>;
@@ -8827,9 +8824,9 @@ export interface ResourcePolicy {
   /** Optional. When specified, this expression is used to filter the resources. */
   filter?: string;
   /** Policy action to be taken on the resources. This is optional, and defaults to allow */
-  action?: PolicyAction;
+  action?: PolicyAction | (string & {});
   /** Optional. The resource type being restricted or allowed by a project policy. Used with a given action to restrict or allow access to a resource type. */
-  resourceType?: DevCenterResourceType;
+  resourceType?: DevCenterResourceType | (string & {});
 }
 export const ResourcePolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -8842,14 +8839,14 @@ export const ResourcePolicy = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource policies that are a part of this project policy. */
 export type ProjectPolicyPropertiesInputResourcePoliciesList =
-  ReadonlyArray<ResourcePolicy>;
+  Array<ResourcePolicy>;
 export const ProjectPolicyPropertiesInputResourcePoliciesList =
   /*@__PURE__*/ S.Array(
     ResourcePolicy,
   ) as any as S.Schema<ProjectPolicyPropertiesInputResourcePoliciesList>;
 
 /** Resources that have access to the shared resources that are a part of this project policy. */
-export type ProjectPolicyPropertiesInputScopesList = ReadonlyArray<string>;
+export type ProjectPolicyPropertiesInputScopesList = Array<string>;
 export const ProjectPolicyPropertiesInputScopesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ProjectPolicyPropertiesInputScopesList>;
@@ -8905,15 +8902,14 @@ export const ProjectPoliciesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ProjectPoliciesCreateOrUpdateRequest>;
 
 /** Resource policies that are a part of this project policy. */
-export type ProjectPolicyPropertiesResourcePoliciesList =
-  ReadonlyArray<ResourcePolicy>;
+export type ProjectPolicyPropertiesResourcePoliciesList = Array<ResourcePolicy>;
 export const ProjectPolicyPropertiesResourcePoliciesList =
   /*@__PURE__*/ S.Array(
     ResourcePolicy,
   ) as any as S.Schema<ProjectPolicyPropertiesResourcePoliciesList>;
 
 /** Resources that have access to the shared resources that are a part of this project policy. */
-export type ProjectPolicyPropertiesScopesList = ReadonlyArray<string>;
+export type ProjectPolicyPropertiesScopesList = Array<string>;
 export const ProjectPolicyPropertiesScopesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ProjectPolicyPropertiesScopesList>;
@@ -9122,7 +9118,7 @@ export const ProjectPolicy = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ProjectPolicy" }) as any as S.Schema<ProjectPolicy>;
 
 /** Current page of results. */
-export type ProjectPolicyListResultValueList = ReadonlyArray<ProjectPolicy>;
+export type ProjectPolicyListResultValueList = Array<ProjectPolicy>;
 export const ProjectPolicyListResultValueList = /*@__PURE__*/ S.Array(
   ProjectPolicy,
 ) as any as S.Schema<ProjectPolicyListResultValueList>;
@@ -9145,14 +9141,14 @@ export const ProjectPolicyListResult = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource policies that are a part of this project policy. */
 export type ProjectPolicyUpdatePropertiesResourcePoliciesList =
-  ReadonlyArray<ResourcePolicy>;
+  Array<ResourcePolicy>;
 export const ProjectPolicyUpdatePropertiesResourcePoliciesList =
   /*@__PURE__*/ S.Array(
     ResourcePolicy,
   ) as any as S.Schema<ProjectPolicyUpdatePropertiesResourcePoliciesList>;
 
 /** Resources that have access to the shared resources that are a part of this project policy. */
-export type ProjectPolicyUpdatePropertiesScopesList = ReadonlyArray<string>;
+export type ProjectPolicyUpdatePropertiesScopesList = Array<string>;
 export const ProjectPolicyUpdatePropertiesScopesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ProjectPolicyUpdatePropertiesScopesList>;
@@ -9240,8 +9236,9 @@ export const ProjectsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ProjectsCreateOrUpdateRequestTagsMap>;
 
 /** Indicates catalog item types that can be synced. */
-export type ProjectCatalogSettingsCatalogItemSyncTypesList =
-  ReadonlyArray<CatalogItemType>;
+export type ProjectCatalogSettingsCatalogItemSyncTypesList = Array<
+  CatalogItemType | (string & {})
+>;
 export const ProjectCatalogSettingsCatalogItemSyncTypesList =
   /*@__PURE__*/ S.Array(
     CatalogItemType,
@@ -9710,7 +9707,7 @@ export const Project = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Project" }) as any as S.Schema<Project>;
 
 /** Current page of results. */
-export type ProjectListResultValueList = ReadonlyArray<Project>;
+export type ProjectListResultValueList = Array<Project>;
 export const ProjectListResultValueList = /*@__PURE__*/ S.Array(
   Project,
 ) as any as S.Schema<ProjectListResultValueList>;
@@ -10203,7 +10200,7 @@ export const Schedule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Schedule" }) as any as S.Schema<Schedule>;
 
 /** Current page of results. */
-export type ScheduleListResultValueList = ReadonlyArray<Schedule>;
+export type ScheduleListResultValueList = Array<Schedule>;
 export const ScheduleListResultValueList = /*@__PURE__*/ S.Array(
   Schedule,
 ) as any as S.Schema<ScheduleListResultValueList>;
@@ -10342,8 +10339,7 @@ export const SkusListByProjectRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SkusListByProjectRequest>;
 
 /** SKU supported locations. */
-export type SkusListByProjectResponseValueItemLocationsList =
-  ReadonlyArray<string>;
+export type SkusListByProjectResponseValueItemLocationsList = Array<string>;
 export const SkusListByProjectResponseValueItemLocationsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -10365,7 +10361,7 @@ export const Capability = /*@__PURE__*/ S.suspend(() =>
 
 /** Collection of name/value pairs to describe the SKU capabilities. */
 export type SkusListByProjectResponseValueItemCapabilitiesList =
-  ReadonlyArray<Capability>;
+  Array<Capability>;
 export const SkusListByProjectResponseValueItemCapabilitiesList =
   /*@__PURE__*/ S.Array(
     Capability,
@@ -10408,7 +10404,7 @@ export const SkusListByProjectResponseValueItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Current page of results. */
 export type SkusListByProjectResponseValueList =
-  ReadonlyArray<SkusListByProjectResponseValueItem>;
+  Array<SkusListByProjectResponseValueItem>;
 export const SkusListByProjectResponseValueList = /*@__PURE__*/ S.Array(
   SkusListByProjectResponseValueItem,
 ) as any as S.Schema<SkusListByProjectResponseValueList>;
@@ -10451,13 +10447,13 @@ export const SkusListBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SkusListBySubscriptionRequest>;
 
 /** SKU supported locations. */
-export type SkuListResultValueItemLocationsList = ReadonlyArray<string>;
+export type SkuListResultValueItemLocationsList = Array<string>;
 export const SkuListResultValueItemLocationsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SkuListResultValueItemLocationsList>;
 
 /** Collection of name/value pairs to describe the SKU capabilities. */
-export type SkuListResultValueItemCapabilitiesList = ReadonlyArray<Capability>;
+export type SkuListResultValueItemCapabilitiesList = Array<Capability>;
 export const SkuListResultValueItemCapabilitiesList = /*@__PURE__*/ S.Array(
   Capability,
 ) as any as S.Schema<SkuListResultValueItemCapabilitiesList>;
@@ -10496,7 +10492,7 @@ export const SkuListResultValueItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SkuListResultValueItem>;
 
 /** Current page of results. */
-export type SkuListResultValueList = ReadonlyArray<SkuListResultValueItem>;
+export type SkuListResultValueList = Array<SkuListResultValueItem>;
 export const SkuListResultValueList = /*@__PURE__*/ S.Array(
   SkuListResultValueItem,
 ) as any as S.Schema<SkuListResultValueList>;
@@ -10579,7 +10575,7 @@ export const Usage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Usage" }) as any as S.Schema<Usage>;
 
 /** The array page of Usages. */
-export type ListUsagesResultValueList = ReadonlyArray<Usage>;
+export type ListUsagesResultValueList = Array<Usage>;
 export const ListUsagesResultValueList = /*@__PURE__*/ S.Array(
   Usage,
 ) as any as S.Schema<ListUsagesResultValueList>;

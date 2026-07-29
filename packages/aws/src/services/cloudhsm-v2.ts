@@ -180,7 +180,7 @@ export const BackupRetentionType = /*@__PURE__*/ S.String;
 
 export type BackupRetentionValue = string;
 export interface BackupRetentionPolicy {
-  Type?: BackupRetentionType;
+  Type?: BackupRetentionType | (string & {});
   Value?: string;
 }
 export const BackupRetentionPolicy = /*@__PURE__*/ S.suspend(() =>

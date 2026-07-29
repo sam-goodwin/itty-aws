@@ -81,7 +81,7 @@ export const AvailableServiceTier = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AvailableServiceTier>;
 
 export type AvailableServiceTiersListByWorkspaceResponseBodyList =
-  ReadonlyArray<AvailableServiceTier>;
+  Array<AvailableServiceTier>;
 export const AvailableServiceTiersListByWorkspaceResponseBodyList =
   /*@__PURE__*/ S.Array(
     AvailableServiceTier,
@@ -143,7 +143,7 @@ export const AssociatedWorkspaceInput = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of Log Analytics workspaces associated with the cluster */
 export type ClusterPropertiesInputAssociatedWorkspacesList =
-  ReadonlyArray<AssociatedWorkspaceInput>;
+  Array<AssociatedWorkspaceInput>;
 export const ClusterPropertiesInputAssociatedWorkspacesList =
   /*@__PURE__*/ S.Array(
     AssociatedWorkspaceInput,
@@ -260,7 +260,7 @@ export interface ClusterSku {
   /** The capacity reservation level in Gigabytes for this cluster. */
   capacity?: number | null;
   /** The SKU (tier) of a cluster. */
-  name?: ClusterSkuNameEnum;
+  name?: ClusterSkuNameEnum | (string & {});
 }
 export const ClusterSku = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -395,7 +395,7 @@ export const AssociatedWorkspace = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of Log Analytics workspaces associated with the cluster */
 export type ClusterPropertiesAssociatedWorkspacesList =
-  ReadonlyArray<AssociatedWorkspace>;
+  Array<AssociatedWorkspace>;
 export const ClusterPropertiesAssociatedWorkspacesList = /*@__PURE__*/ S.Array(
   AssociatedWorkspace,
 ) as any as S.Schema<ClusterPropertiesAssociatedWorkspacesList>;
@@ -784,7 +784,7 @@ export const Cluster = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Cluster" }) as any as S.Schema<Cluster>;
 
 /** The Cluster items on this page */
-export type ClusterListResultValueList = ReadonlyArray<Cluster>;
+export type ClusterListResultValueList = Array<Cluster>;
 export const ClusterListResultValueList = /*@__PURE__*/ S.Array(
   Cluster,
 ) as any as S.Schema<ClusterListResultValueList>;
@@ -969,7 +969,7 @@ export const ClustersUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ClustersUpdateResponse>;
 
 /** An array of tables to export, for example: [“Heartbeat, SecurityEvent”]. */
-export type DataExportPropertiesTableNamesList = ReadonlyArray<string>;
+export type DataExportPropertiesTableNamesList = Array<string>;
 export const DataExportPropertiesTableNamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DataExportPropertiesTableNamesList>;
@@ -996,7 +996,7 @@ export interface Destination {
   /** The destination resource ID. This can be copied from the Properties entry of the destination resource in Azure. */
   resourceId: string;
   /** The type of the destination resource */
-  type?: Type;
+  type?: Type | (string & {});
   /** destination meta data. */
   metaData?: DestinationMetaData;
 }
@@ -1227,7 +1227,7 @@ export const DataExport = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DataExport" }) as any as S.Schema<DataExport>;
 
 /** List of data export instances within a workspace.. */
-export type DataExportListResultValueList = ReadonlyArray<DataExport>;
+export type DataExportListResultValueList = Array<DataExport>;
 export const DataExportListResultValueList = /*@__PURE__*/ S.Array(
   DataExport,
 ) as any as S.Schema<DataExportListResultValueList>;
@@ -1552,7 +1552,7 @@ export const DataSource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DataSource" }) as any as S.Schema<DataSource>;
 
 /** The DataSource items on this page */
-export type DataSourceListResultValueList = ReadonlyArray<DataSource>;
+export type DataSourceListResultValueList = Array<DataSource>;
 export const DataSourceListResultValueList = /*@__PURE__*/ S.Array(
   DataSource,
 ) as any as S.Schema<DataSourceListResultValueList>;
@@ -1702,14 +1702,14 @@ export const PrivateLinkScopedResource = /*@__PURE__*/ S.suspend(() =>
 
 /** List of linked private link scope resources. */
 export type WorkspacePropertiesPrivateLinkScopedResourcesList =
-  ReadonlyArray<PrivateLinkScopedResource>;
+  Array<PrivateLinkScopedResource>;
 export const WorkspacePropertiesPrivateLinkScopedResourcesList =
   /*@__PURE__*/ S.Array(
     PrivateLinkScopedResource,
   ) as any as S.Schema<WorkspacePropertiesPrivateLinkScopedResourcesList>;
 
 /** List of associations for the workspace. Indicates if the workspace is associated with any of the following experiences: MDC, Sentinel, SentinelGraph, etc. */
-export type WorkspaceFeaturesAssociationsList = ReadonlyArray<string>;
+export type WorkspaceFeaturesAssociationsList = Array<string>;
 export const WorkspaceFeaturesAssociationsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<WorkspaceFeaturesAssociationsList>;
@@ -1956,7 +1956,7 @@ export const Workspace = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Workspace" }) as any as S.Schema<Workspace>;
 
 /** A list of workspaces. */
-export type WorkspaceListResultValueList = ReadonlyArray<Workspace>;
+export type WorkspaceListResultValueList = Array<Workspace>;
 export const WorkspaceListResultValueList = /*@__PURE__*/ S.Array(
   Workspace,
 ) as any as S.Schema<WorkspaceListResultValueList>;
@@ -2149,8 +2149,7 @@ export const IntelligencePack = /*@__PURE__*/ S.suspend(() =>
   identifier: "IntelligencePack",
 }) as any as S.Schema<IntelligencePack>;
 
-export type IntelligencePacksListResponseBodyList =
-  ReadonlyArray<IntelligencePack>;
+export type IntelligencePacksListResponseBodyList = Array<IntelligencePack>;
 export const IntelligencePacksListResponseBodyList = /*@__PURE__*/ S.Array(
   IntelligencePack,
 ) as any as S.Schema<IntelligencePacksListResponseBodyList>;
@@ -2178,7 +2177,7 @@ export interface LinkedServiceProperties {
   /** The resource id of the resource that will be linked to the workspace. This should be used for linking resources which require write access */
   writeAccessResourceId?: string;
   /** The provisioning state of the linked service. */
-  provisioningState?: LinkedServiceEntityStatus;
+  provisioningState?: LinkedServiceEntityStatus | (string & {});
 }
 export const LinkedServiceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2460,7 +2459,7 @@ export const LinkedService = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LinkedService" }) as any as S.Schema<LinkedService>;
 
 /** The list of linked service instances */
-export type LinkedServiceListResultValueList = ReadonlyArray<LinkedService>;
+export type LinkedServiceListResultValueList = Array<LinkedService>;
 export const LinkedServiceListResultValueList = /*@__PURE__*/ S.Array(
   LinkedService,
 ) as any as S.Schema<LinkedServiceListResultValueList>;
@@ -2501,7 +2500,7 @@ export const DataSourceType = /*@__PURE__*/ S.String;
 
 /** Linked storage accounts resources ids. */
 export type LinkedStorageAccountsPropertiesStorageAccountIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const LinkedStorageAccountsPropertiesStorageAccountIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2510,7 +2509,7 @@ export const LinkedStorageAccountsPropertiesStorageAccountIdsList =
 /** Linked storage accounts properties. */
 export interface LinkedStorageAccountsProperties {
   /** Linked storage accounts type. */
-  dataSourceType?: DataSourceType;
+  dataSourceType?: DataSourceType | (string & {});
   /** Linked storage accounts resources ids. */
   storageAccountIds?: LinkedStorageAccountsPropertiesStorageAccountIdsList;
 }
@@ -2751,7 +2750,7 @@ export const LinkedStorageAccountsResource = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of linked storage accounts instances. */
 export type LinkedStorageAccountsListResultValueList =
-  ReadonlyArray<LinkedStorageAccountsResource>;
+  Array<LinkedStorageAccountsResource>;
 export const LinkedStorageAccountsListResultValueList = /*@__PURE__*/ S.Array(
   LinkedStorageAccountsResource,
 ) as any as S.Schema<LinkedStorageAccountsListResultValueList>;
@@ -2846,7 +2845,7 @@ export const ManagementGroup = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets a list of management groups attached to the workspace. */
 export type WorkspaceListManagementGroupsResultValueList =
-  ReadonlyArray<ManagementGroup>;
+  Array<ManagementGroup>;
 export const WorkspaceListManagementGroupsResultValueList =
   /*@__PURE__*/ S.Array(
     ManagementGroup,
@@ -2919,7 +2918,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** The Operation items on this page */
-export type OperationListResultValueList = ReadonlyArray<Operation>;
+export type OperationListResultValueList = Array<Operation>;
 export const OperationListResultValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationListResultValueList>;
@@ -2966,7 +2965,7 @@ export const OperationStatusesGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationStatusesGetRequest>;
 
 /** The error details. */
-export type ErrorDetailDetailsList = ReadonlyArray<ErrorDetail>;
+export type ErrorDetailDetailsList = Array<ErrorDetail>;
 export const ErrorDetailDetailsList = /*@__PURE__*/ S.Array(
   S.suspend(() => ErrorDetail),
 ) as any as S.Schema<ErrorDetailDetailsList>;
@@ -2988,7 +2987,7 @@ export const ErrorAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ErrorAdditionalInfo>;
 
 /** The error additional info. */
-export type ErrorDetailAdditionalInfoList = ReadonlyArray<ErrorAdditionalInfo>;
+export type ErrorDetailAdditionalInfoList = Array<ErrorAdditionalInfo>;
 export const ErrorDetailAdditionalInfoList = /*@__PURE__*/ S.Array(
   ErrorAdditionalInfo,
 ) as any as S.Schema<ErrorDetailAdditionalInfoList>;
@@ -3122,7 +3121,7 @@ export const QueriesGetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The related categories for the function. */
 export type LogAnalyticsQueryPackQueryPropertiesRelatedCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const LogAnalyticsQueryPackQueryPropertiesRelatedCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3130,7 +3129,7 @@ export const LogAnalyticsQueryPackQueryPropertiesRelatedCategoriesList =
 
 /** The related resource types for the function. */
 export type LogAnalyticsQueryPackQueryPropertiesRelatedResourceTypesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const LogAnalyticsQueryPackQueryPropertiesRelatedResourceTypesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3138,7 +3137,7 @@ export const LogAnalyticsQueryPackQueryPropertiesRelatedResourceTypesList =
 
 /** The related Log Analytics solutions for the function. */
 export type LogAnalyticsQueryPackQueryPropertiesRelatedSolutionsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const LogAnalyticsQueryPackQueryPropertiesRelatedSolutionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3170,8 +3169,7 @@ export const LogAnalyticsQueryPackQueryPropertiesRelated =
     identifier: "LogAnalyticsQueryPackQueryPropertiesRelated",
   }) as any as S.Schema<LogAnalyticsQueryPackQueryPropertiesRelated>;
 
-export type LogAnalyticsQueryPackQueryPropertiesTagsValueList =
-  ReadonlyArray<string>;
+export type LogAnalyticsQueryPackQueryPropertiesTagsValueList = Array<string>;
 export const LogAnalyticsQueryPackQueryPropertiesTagsValueList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3313,7 +3311,7 @@ export const LogAnalyticsQueryPackQuery = /*@__PURE__*/ S.suspend(() =>
 
 /** The LogAnalyticsQueryPackQuery items on this page */
 export type LogAnalyticsQueryPackQueryListResultValueList =
-  ReadonlyArray<LogAnalyticsQueryPackQuery>;
+  Array<LogAnalyticsQueryPackQuery>;
 export const LogAnalyticsQueryPackQueryListResultValueList =
   /*@__PURE__*/ S.Array(
     LogAnalyticsQueryPackQuery,
@@ -3337,7 +3335,7 @@ export const LogAnalyticsQueryPackQueryListResult = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<LogAnalyticsQueryPackQueryListResult>;
 
 export type LogAnalyticsQueryPackQueryPropertiesInputTagsValueList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const LogAnalyticsQueryPackQueryPropertiesInputTagsValueList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3441,7 +3439,7 @@ export const QueriesPutResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The related categories for the function. */
 export type LogAnalyticsQueryPackQuerySearchPropertiesRelatedCategoriesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const LogAnalyticsQueryPackQuerySearchPropertiesRelatedCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3449,7 +3447,7 @@ export const LogAnalyticsQueryPackQuerySearchPropertiesRelatedCategoriesList =
 
 /** The related resource types for the function. */
 export type LogAnalyticsQueryPackQuerySearchPropertiesRelatedResourceTypesList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const LogAnalyticsQueryPackQuerySearchPropertiesRelatedResourceTypesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3457,7 +3455,7 @@ export const LogAnalyticsQueryPackQuerySearchPropertiesRelatedResourceTypesList 
 
 /** The related Log Analytics solutions for the function. */
 export type LogAnalyticsQueryPackQuerySearchPropertiesRelatedSolutionsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const LogAnalyticsQueryPackQuerySearchPropertiesRelatedSolutionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3489,7 +3487,7 @@ export const LogAnalyticsQueryPackQuerySearchPropertiesRelated =
     identifier: "LogAnalyticsQueryPackQuerySearchPropertiesRelated",
   }) as any as S.Schema<LogAnalyticsQueryPackQuerySearchPropertiesRelated>;
 
-export type QueriesSearchRequestTagsValueList = ReadonlyArray<string>;
+export type QueriesSearchRequestTagsValueList = Array<string>;
 export const QueriesSearchRequestTagsValueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<QueriesSearchRequestTagsValueList>;
@@ -3950,7 +3948,7 @@ export const LogAnalyticsQueryPack = /*@__PURE__*/ S.suspend(() =>
 
 /** The LogAnalyticsQueryPack items on this page */
 export type LogAnalyticsQueryPackListResultValueList =
-  ReadonlyArray<LogAnalyticsQueryPack>;
+  Array<LogAnalyticsQueryPack>;
 export const LogAnalyticsQueryPackListResultValueList = /*@__PURE__*/ S.Array(
   LogAnalyticsQueryPack,
 ) as any as S.Schema<LogAnalyticsQueryPackListResultValueList>;
@@ -4085,7 +4083,7 @@ export const Tag = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
 
 /** The tags attached to the saved search. */
-export type SavedSearchPropertiesTagsList = ReadonlyArray<Tag>;
+export type SavedSearchPropertiesTagsList = Array<Tag>;
 export const SavedSearchPropertiesTagsList = /*@__PURE__*/ S.Array(
   Tag,
 ) as any as S.Schema<SavedSearchPropertiesTagsList>;
@@ -4324,7 +4322,7 @@ export const SavedSearch = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SavedSearch" }) as any as S.Schema<SavedSearch>;
 
 /** The array of result values. */
-export type SavedSearchesListResultValueList = ReadonlyArray<SavedSearch>;
+export type SavedSearchesListResultValueList = Array<SavedSearch>;
 export const SavedSearchesListResultValueList = /*@__PURE__*/ S.Array(
   SavedSearch,
 ) as any as S.Schema<SavedSearchesListResultValueList>;
@@ -4382,7 +4380,7 @@ export const CoreSummary = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CoreSummary" }) as any as S.Schema<CoreSummary>;
 
 /** The core summaries. */
-export type SearchMetadataCoreSummariesList = ReadonlyArray<CoreSummary>;
+export type SearchMetadataCoreSummariesList = Array<CoreSummary>;
 export const SearchMetadataCoreSummariesList = /*@__PURE__*/ S.Array(
   CoreSummary,
 ) as any as S.Schema<SearchMetadataCoreSummariesList>;
@@ -4406,7 +4404,7 @@ export const SearchSort = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SearchSort" }) as any as S.Schema<SearchSort>;
 
 /** How the results are sorted. */
-export type SearchMetadataSortList = ReadonlyArray<SearchSort>;
+export type SearchMetadataSortList = Array<SearchSort>;
 export const SearchMetadataSortList = /*@__PURE__*/ S.Array(
   SearchSort,
 ) as any as S.Schema<SearchMetadataSortList>;
@@ -4487,7 +4485,7 @@ export const SearchMetadata = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SearchMetadata" }) as any as S.Schema<SearchMetadata>;
 
 /** The array of workflows containing the field. */
-export type SearchSchemaValueOwnerTypeList = ReadonlyArray<string>;
+export type SearchSchemaValueOwnerTypeList = Array<string>;
 export const SearchSchemaValueOwnerTypeList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SearchSchemaValueOwnerTypeList>;
@@ -4524,7 +4522,7 @@ export const SearchSchemaValue = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SearchSchemaValue>;
 
 /** The array of result values. */
-export type SearchGetSchemaResponseValueList = ReadonlyArray<SearchSchemaValue>;
+export type SearchGetSchemaResponseValueList = Array<SearchSchemaValue>;
 export const SearchGetSchemaResponseValueList = /*@__PURE__*/ S.Array(
   SearchSchemaValue,
 ) as any as S.Schema<SearchGetSchemaResponseValueList>;
@@ -4610,13 +4608,13 @@ export const SharedKeysRegenerateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SharedKeysRegenerateRequest>;
 
 /** The names of the blob containers that the workspace should read */
-export type StorageInsightPropertiesContainersList = ReadonlyArray<string>;
+export type StorageInsightPropertiesContainersList = Array<string>;
 export const StorageInsightPropertiesContainersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StorageInsightPropertiesContainersList>;
 
 /** The names of the Azure tables that the workspace should read */
-export type StorageInsightPropertiesTablesList = ReadonlyArray<string>;
+export type StorageInsightPropertiesTablesList = Array<string>;
 export const StorageInsightPropertiesTablesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StorageInsightPropertiesTablesList>;
@@ -4642,7 +4640,7 @@ export const StorageInsightState = /*@__PURE__*/ S.String;
 /** The status of the storage insight. */
 export interface StorageInsightStatus {
   /** The state of the storage insight connection to the workspace */
-  state: StorageInsightState;
+  state: StorageInsightState | (string & {});
   /** Description of the state of the storage insight. */
   description?: string;
 }
@@ -4931,7 +4929,7 @@ export const StorageInsight = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StorageInsight" }) as any as S.Schema<StorageInsight>;
 
 /** A list of storage insight items. */
-export type StorageInsightListResultValueList = ReadonlyArray<StorageInsight>;
+export type StorageInsightListResultValueList = Array<StorageInsight>;
 export const StorageInsightListResultValueList = /*@__PURE__*/ S.Array(
   StorageInsight,
 ) as any as S.Schema<StorageInsightListResultValueList>;
@@ -4971,7 +4969,7 @@ export interface RuleDefinition {
   /** The start time (UTC) when Summary rule execution starts. */
   binStartTime?: string;
   /** The time cursor used in Summary rules bins processing, e.g. TimeGenerated. */
-  timeSelector?: TimeSelectorEnum;
+  timeSelector?: TimeSelectorEnum | (string & {});
   /** The destination table used for the Summary rule results. */
   destinationTable?: string;
 }
@@ -5243,7 +5241,7 @@ export const SummaryLogs = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SummaryLogs" }) as any as S.Schema<SummaryLogs>;
 
 /** The SummaryLogs items on this page */
-export type SummaryLogsListResultValueList = ReadonlyArray<SummaryLogs>;
+export type SummaryLogsListResultValueList = Array<SummaryLogs>;
 export const SummaryLogsListResultValueList = /*@__PURE__*/ S.Array(
   SummaryLogs,
 ) as any as S.Schema<SummaryLogsListResultValueList>;
@@ -5508,7 +5506,7 @@ export const ColumnInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ColumnInput" }) as any as S.Schema<ColumnInput>;
 
 /** A list of table custom columns. */
-export type SchemaInputColumnsList = ReadonlyArray<ColumnInput>;
+export type SchemaInputColumnsList = Array<ColumnInput>;
 export const SchemaInputColumnsList = /*@__PURE__*/ S.Array(
   ColumnInput,
 ) as any as S.Schema<SchemaInputColumnsList>;
@@ -5690,25 +5688,25 @@ export const Column = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Column" }) as any as S.Schema<Column>;
 
 /** A list of table custom columns. */
-export type SchemaColumnsList = ReadonlyArray<Column>;
+export type SchemaColumnsList = Array<Column>;
 export const SchemaColumnsList = /*@__PURE__*/ S.Array(
   Column,
 ) as any as S.Schema<SchemaColumnsList>;
 
 /** A list of table standard columns. */
-export type SchemaStandardColumnsList = ReadonlyArray<Column>;
+export type SchemaStandardColumnsList = Array<Column>;
 export const SchemaStandardColumnsList = /*@__PURE__*/ S.Array(
   Column,
 ) as any as S.Schema<SchemaStandardColumnsList>;
 
 /** Table category. */
-export type SchemaCategoriesList = ReadonlyArray<string>;
+export type SchemaCategoriesList = Array<string>;
 export const SchemaCategoriesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SchemaCategoriesList>;
 
 /** Table labels. */
-export type SchemaLabelsList = ReadonlyArray<string>;
+export type SchemaLabelsList = Array<string>;
 export const SchemaLabelsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SchemaLabelsList>;
@@ -5730,7 +5728,7 @@ export type TableSubTypeEnum = "Any" | "Classic" | "DataCollectionRuleBased";
 export const TableSubTypeEnum = /*@__PURE__*/ S.String;
 
 /** List of solutions the table is affiliated with */
-export type SchemaSolutionsList = ReadonlyArray<string>;
+export type SchemaSolutionsList = Array<string>;
 export const SchemaSolutionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SchemaSolutionsList>;
@@ -5990,7 +5988,7 @@ export const Table = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Table" }) as any as S.Schema<Table>;
 
 /** A list of data tables. */
-export type TablesListResultValueList = ReadonlyArray<Table>;
+export type TablesListResultValueList = Array<Table>;
 export const TablesListResultValueList = /*@__PURE__*/ S.Array(
   Table,
 ) as any as S.Schema<TablesListResultValueList>;
@@ -6167,7 +6165,7 @@ export const UsageMetric = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UsageMetric" }) as any as S.Schema<UsageMetric>;
 
 /** Gets or sets a list of usage metrics for a workspace. */
-export type WorkspaceListUsagesResultValueList = ReadonlyArray<UsageMetric>;
+export type WorkspaceListUsagesResultValueList = Array<UsageMetric>;
 export const WorkspaceListUsagesResultValueList = /*@__PURE__*/ S.Array(
   UsageMetric,
 ) as any as S.Schema<WorkspaceListUsagesResultValueList>;
@@ -6257,7 +6255,7 @@ export const WorkspacePurgeBodyFilters = /*@__PURE__*/ S.suspend(() =>
 
 /** The set of columns and filters (queries) to run over them to purge the resulting data. */
 export type WorkspacePurgePurgeRequestFiltersList =
-  ReadonlyArray<WorkspacePurgeBodyFilters>;
+  Array<WorkspacePurgeBodyFilters>;
 export const WorkspacePurgePurgeRequestFiltersList = /*@__PURE__*/ S.Array(
   WorkspacePurgeBodyFilters,
 ) as any as S.Schema<WorkspacePurgePurgeRequestFiltersList>;
@@ -6794,8 +6792,7 @@ export type ProvisioningIssuePropertiesSeverity = "Warning" | "Error";
 export const ProvisioningIssuePropertiesSeverity = /*@__PURE__*/ S.String;
 
 /** Fully qualified resource IDs of suggested resources that can be associated to the network security perimeter (NSP) to remediate the issue. */
-export type ProvisioningIssuePropertiesSuggestedResourceIdsList =
-  ReadonlyArray<string>;
+export type ProvisioningIssuePropertiesSuggestedResourceIdsList = Array<string>;
 export const ProvisioningIssuePropertiesSuggestedResourceIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6806,7 +6803,7 @@ export type AccessRuleDirection = "Inbound" | "Outbound";
 export const AccessRuleDirection = /*@__PURE__*/ S.String;
 
 /** Address prefixes in the CIDR format for inbound rules */
-export type AccessRulePropertiesAddressPrefixesList = ReadonlyArray<string>;
+export type AccessRulePropertiesAddressPrefixesList = Array<string>;
 export const AccessRulePropertiesAddressPrefixesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AccessRulePropertiesAddressPrefixesList>;
@@ -6827,7 +6824,7 @@ export const AccessRulePropertiesSubscriptionsItem = /*@__PURE__*/ S.suspend(
 
 /** Subscriptions for inbound rules */
 export type AccessRulePropertiesSubscriptionsList =
-  ReadonlyArray<AccessRulePropertiesSubscriptionsItem>;
+  Array<AccessRulePropertiesSubscriptionsItem>;
 export const AccessRulePropertiesSubscriptionsList = /*@__PURE__*/ S.Array(
   AccessRulePropertiesSubscriptionsItem,
 ) as any as S.Schema<AccessRulePropertiesSubscriptionsList>;
@@ -6853,28 +6850,27 @@ export const NetworkSecurityPerimeter = /*@__PURE__*/ S.suspend(() =>
 
 /** Network security perimeters for inbound rules */
 export type AccessRulePropertiesNetworkSecurityPerimetersList =
-  ReadonlyArray<NetworkSecurityPerimeter>;
+  Array<NetworkSecurityPerimeter>;
 export const AccessRulePropertiesNetworkSecurityPerimetersList =
   /*@__PURE__*/ S.Array(
     NetworkSecurityPerimeter,
   ) as any as S.Schema<AccessRulePropertiesNetworkSecurityPerimetersList>;
 
 /** Fully qualified domain names (FQDN) for outbound rules */
-export type AccessRulePropertiesFullyQualifiedDomainNamesList =
-  ReadonlyArray<string>;
+export type AccessRulePropertiesFullyQualifiedDomainNamesList = Array<string>;
 export const AccessRulePropertiesFullyQualifiedDomainNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AccessRulePropertiesFullyQualifiedDomainNamesList>;
 
 /** Email addresses for outbound rules */
-export type AccessRulePropertiesEmailAddressesList = ReadonlyArray<string>;
+export type AccessRulePropertiesEmailAddressesList = Array<string>;
 export const AccessRulePropertiesEmailAddressesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AccessRulePropertiesEmailAddressesList>;
 
 /** Phone numbers for outbound rules */
-export type AccessRulePropertiesPhoneNumbersList = ReadonlyArray<string>;
+export type AccessRulePropertiesPhoneNumbersList = Array<string>;
 export const AccessRulePropertiesPhoneNumbersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AccessRulePropertiesPhoneNumbersList>;
@@ -6928,7 +6924,7 @@ export const AccessRule = /*@__PURE__*/ S.suspend(() =>
 
 /** Access rules that can be added to the network security profile (NSP) to remediate the issue. */
 export type ProvisioningIssuePropertiesSuggestedAccessRulesList =
-  ReadonlyArray<AccessRule>;
+  Array<AccessRule>;
 export const ProvisioningIssuePropertiesSuggestedAccessRulesList =
   /*@__PURE__*/ S.Array(
     AccessRule,
@@ -6980,7 +6976,7 @@ export const ProvisioningIssue = /*@__PURE__*/ S.suspend(() =>
 
 /** List of provisioning issues, if any */
 export type NetworkSecurityPerimeterConfigurationPropertiesProvisioningIssuesList =
-  ReadonlyArray<ProvisioningIssue>;
+  Array<ProvisioningIssue>;
 export const NetworkSecurityPerimeterConfigurationPropertiesProvisioningIssuesList =
   /*@__PURE__*/ S.Array(
     ProvisioningIssue,
@@ -7006,14 +7002,13 @@ export const ResourceAssociation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourceAssociation>;
 
 /** List of Access Rules */
-export type NetworkSecurityProfileAccessRulesList = ReadonlyArray<AccessRule>;
+export type NetworkSecurityProfileAccessRulesList = Array<AccessRule>;
 export const NetworkSecurityProfileAccessRulesList = /*@__PURE__*/ S.Array(
   AccessRule,
 ) as any as S.Schema<NetworkSecurityProfileAccessRulesList>;
 
 /** List of log categories that are enabled */
-export type NetworkSecurityProfileEnabledLogCategoriesList =
-  ReadonlyArray<string>;
+export type NetworkSecurityProfileEnabledLogCategoriesList = Array<string>;
 export const NetworkSecurityProfileEnabledLogCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -7189,7 +7184,7 @@ export const NetworkSecurityPerimeterConfiguration = /*@__PURE__*/ S.suspend(
 
 /** Array of network security perimeter results. */
 export type WorkspacesListNSPResponseValueList =
-  ReadonlyArray<NetworkSecurityPerimeterConfiguration>;
+  Array<NetworkSecurityPerimeterConfiguration>;
 export const WorkspacesListNSPResponseValueList = /*@__PURE__*/ S.Array(
   NetworkSecurityPerimeterConfiguration,
 ) as any as S.Schema<WorkspacesListNSPResponseValueList>;

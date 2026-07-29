@@ -255,7 +255,7 @@ export const GoogleCloudDatacatalogV1CloudBigtableSystemSpec =
     identifier: "GoogleCloudDatacatalogV1CloudBigtableSystemSpec",
   }) as any as S.Schema<GoogleCloudDatacatalogV1CloudBigtableSystemSpec>;
 
-export type StringList = ReadonlyArray<string>;
+export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -280,7 +280,7 @@ export const GoogleCloudDatacatalogV1GcsFileSpec = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudDatacatalogV1GcsFileSpec>;
 
 export type GoogleCloudDatacatalogV1GcsFileSpecList =
-  ReadonlyArray<GoogleCloudDatacatalogV1GcsFileSpec>;
+  Array<GoogleCloudDatacatalogV1GcsFileSpec>;
 export const GoogleCloudDatacatalogV1GcsFileSpecList = /*@__PURE__*/ S.Array(
   GoogleCloudDatacatalogV1GcsFileSpec,
 ) as any as S.Schema<GoogleCloudDatacatalogV1GcsFileSpecList>;
@@ -339,7 +339,9 @@ export const GoogleCloudDatacatalogV1TableSpec = /*@__PURE__*/ S.suspend(() =>
 /** Describes a BigQuery table. */
 export interface GoogleCloudDatacatalogV1BigQueryTableSpec {
   /** Output only. The table source type. */
-  tableSourceType?: GoogleCloudDatacatalogV1BigQueryTableSpecTableSourceTypeEnum;
+  tableSourceType?:
+    | GoogleCloudDatacatalogV1BigQueryTableSpecTableSourceTypeEnum
+    | (string & {});
   /** Table view specification. Populated only if the `table_source_type` is `BIGQUERY_VIEW`. */
   viewSpec?: GoogleCloudDatacatalogV1ViewSpec;
   /** Specification of a BigQuery table. Populated only if the `table_source_type` is `BIGQUERY_TABLE`. */
@@ -405,7 +407,9 @@ export const GoogleCloudDatacatalogV1DataplexExternalTableSystemEnum =
 /** External table registered by Dataplex Universal Catalog. Dataplex Universal Catalog publishes data discovered from an asset into multiple other systems (BigQuery, DPMS) in form of tables. We call them "external tables". External tables are also synced into the Data Catalog. This message contains pointers to those external tables (fully qualified name, resource name et cetera) within the Data Catalog. */
 export interface GoogleCloudDatacatalogV1DataplexExternalTable {
   /** Service in which the external table is registered. */
-  system?: GoogleCloudDatacatalogV1DataplexExternalTableSystemEnum;
+  system?:
+    | GoogleCloudDatacatalogV1DataplexExternalTableSystemEnum
+    | (string & {});
   /** Fully qualified name (FQN) of the external table. */
   fullyQualifiedName?: string;
   /** Google Cloud resource name of the external table. */
@@ -428,7 +432,7 @@ export const GoogleCloudDatacatalogV1DataplexExternalTable =
   }) as any as S.Schema<GoogleCloudDatacatalogV1DataplexExternalTable>;
 
 export type GoogleCloudDatacatalogV1DataplexExternalTableList =
-  ReadonlyArray<GoogleCloudDatacatalogV1DataplexExternalTable>;
+  Array<GoogleCloudDatacatalogV1DataplexExternalTable>;
 export const GoogleCloudDatacatalogV1DataplexExternalTableList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDatacatalogV1DataplexExternalTable,
@@ -581,7 +585,9 @@ export const GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypeEn
 /** Specification that applies to database view. */
 export interface GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpec {
   /** Type of this view. */
-  viewType?: GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypeEnum;
+  viewType?:
+    | GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypeEnum
+    | (string & {});
   /** Name of a singular table this view reflects one to one. */
   baseTable?: string;
   /** SQL query used to generate this view. */
@@ -603,7 +609,7 @@ export const GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpec =
 /** Specification that applies to a table resource. Valid only for entries with the `TABLE` type. */
 export interface GoogleCloudDatacatalogV1DatabaseTableSpec {
   /** Type of this table. */
-  type?: GoogleCloudDatacatalogV1DatabaseTableSpecTypeEnum;
+  type?: GoogleCloudDatacatalogV1DatabaseTableSpecTypeEnum | (string & {});
   /** Output only. Fields specific to a Dataplex Universal Catalog table and present only in the Dataplex Universal Catalog table entries. */
   dataplexTable?: GoogleCloudDatacatalogV1DataplexTableSpec;
   /** Spec what applies to tables that are actually views. Not set for "real" tables. */
@@ -642,7 +648,9 @@ export interface GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpec {
   /** Database name. */
   database?: string;
   /** Type of the Cloud SQL database. */
-  type?: GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypeEnum;
+  type?:
+    | GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypeEnum
+    | (string & {});
 }
 export const GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpec =
   /*@__PURE__*/ S.suspend(() =>
@@ -660,7 +668,9 @@ export const GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpec =
 /** Specification for the BigQuery connection. */
 export interface GoogleCloudDatacatalogV1BigQueryConnectionSpec {
   /** The type of the BigQuery connection. */
-  connectionType?: GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypeEnum;
+  connectionType?:
+    | GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypeEnum
+    | (string & {});
   /** Specification for the BigQuery connection to a Cloud SQL instance. */
   cloudSql?: GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpec;
   /** True if there are credentials attached to the BigQuery connection; false otherwise. */
@@ -717,7 +727,7 @@ export interface GoogleCloudDatacatalogV1RoutineSpecArgument {
   /** The name of the argument. A return argument of a function might not have a name. */
   name?: string;
   /** Specifies whether the argument is input or output. */
-  mode?: GoogleCloudDatacatalogV1RoutineSpecArgumentModeEnum;
+  mode?: GoogleCloudDatacatalogV1RoutineSpecArgumentModeEnum | (string & {});
   /** Type of the argument. The exact value depends on the source system and the language. */
   type?: string;
 }
@@ -733,7 +743,7 @@ export const GoogleCloudDatacatalogV1RoutineSpecArgument =
   }) as any as S.Schema<GoogleCloudDatacatalogV1RoutineSpecArgument>;
 
 export type GoogleCloudDatacatalogV1RoutineSpecArgumentList =
-  ReadonlyArray<GoogleCloudDatacatalogV1RoutineSpecArgument>;
+  Array<GoogleCloudDatacatalogV1RoutineSpecArgument>;
 export const GoogleCloudDatacatalogV1RoutineSpecArgumentList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDatacatalogV1RoutineSpecArgument,
@@ -756,7 +766,9 @@ export const GoogleCloudDatacatalogV1BigQueryRoutineSpec =
 /** Specification that applies to a routine. Valid only for entries with the `ROUTINE` type. */
 export interface GoogleCloudDatacatalogV1RoutineSpec {
   /** The type of the routine. */
-  routineType?: GoogleCloudDatacatalogV1RoutineSpecRoutineTypeEnum;
+  routineType?:
+    | GoogleCloudDatacatalogV1RoutineSpecRoutineTypeEnum
+    | (string & {});
   /** The language the routine is written in. The exact value depends on the source system. For BigQuery routines, possible values are: * `SQL` * `JAVASCRIPT` */
   language?: string;
   /** Arguments of the routine. */
@@ -807,7 +819,9 @@ export interface GoogleCloudDatacatalogV1VertexDatasetSpec {
   /** The number of DataItems in this Dataset. Only apply for non-structured Dataset. */
   dataItemCount?: string;
   /** Type of the dataset. */
-  dataType?: GoogleCloudDatacatalogV1VertexDatasetSpecDataTypeEnum;
+  dataType?:
+    | GoogleCloudDatacatalogV1VertexDatasetSpecDataTypeEnum
+    | (string & {});
 }
 export const GoogleCloudDatacatalogV1VertexDatasetSpec =
   /*@__PURE__*/ S.suspend(() =>
@@ -886,7 +900,7 @@ export const GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClust
   }) as any as S.Schema<GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpec>;
 
 export type GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecList =
-  ReadonlyArray<GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpec>;
+  Array<GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpec>;
 export const GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpec,
@@ -938,7 +952,9 @@ export const GoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypeEnum =
 /** Detail description of the source information of a Vertex model. */
 export interface GoogleCloudDatacatalogV1VertexModelSourceInfo {
   /** Type of the model source. */
-  sourceType?: GoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypeEnum;
+  sourceType?:
+    | GoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypeEnum
+    | (string & {});
   /** If this Model is copy of another Model. If true then source_type pertains to the original. */
   copy?: boolean;
 }
@@ -1005,7 +1021,9 @@ export const GoogleCloudDatacatalogV1FeatureOnlineStoreSpecStorageTypeEnum =
 /** Detail description of the source information of a Vertex Feature Online Store. */
 export interface GoogleCloudDatacatalogV1FeatureOnlineStoreSpec {
   /** Output only. Type of underlying storage for the FeatureOnlineStore. */
-  storageType?: GoogleCloudDatacatalogV1FeatureOnlineStoreSpecStorageTypeEnum;
+  storageType?:
+    | GoogleCloudDatacatalogV1FeatureOnlineStoreSpecStorageTypeEnum
+    | (string & {});
 }
 export const GoogleCloudDatacatalogV1FeatureOnlineStoreSpec =
   /*@__PURE__*/ S.suspend(() =>
@@ -1050,7 +1068,7 @@ export const GoogleCloudDatacatalogV1GraphSpecGraphElementTableProperty =
   }) as any as S.Schema<GoogleCloudDatacatalogV1GraphSpecGraphElementTableProperty>;
 
 export type GoogleCloudDatacatalogV1GraphSpecGraphElementTablePropertyList =
-  ReadonlyArray<GoogleCloudDatacatalogV1GraphSpecGraphElementTableProperty>;
+  Array<GoogleCloudDatacatalogV1GraphSpecGraphElementTableProperty>;
 export const GoogleCloudDatacatalogV1GraphSpecGraphElementTablePropertyList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDatacatalogV1GraphSpecGraphElementTableProperty,
@@ -1077,7 +1095,7 @@ export const GoogleCloudDatacatalogV1GraphSpecGraphElementTableLabelAndPropertie
   }) as any as S.Schema<GoogleCloudDatacatalogV1GraphSpecGraphElementTableLabelAndProperties>;
 
 export type GoogleCloudDatacatalogV1GraphSpecGraphElementTableLabelAndPropertiesList =
-  ReadonlyArray<GoogleCloudDatacatalogV1GraphSpecGraphElementTableLabelAndProperties>;
+  Array<GoogleCloudDatacatalogV1GraphSpecGraphElementTableLabelAndProperties>;
 export const GoogleCloudDatacatalogV1GraphSpecGraphElementTableLabelAndPropertiesList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDatacatalogV1GraphSpecGraphElementTableLabelAndProperties,
@@ -1111,9 +1129,13 @@ export interface GoogleCloudDatacatalogV1GraphSpecGraphElementTable {
   /** Required. The alias name of the graph element. */
   alias?: string;
   /** Required. The kind of the graph element. */
-  kind?: GoogleCloudDatacatalogV1GraphSpecGraphElementTableKindEnum;
+  kind?:
+    | GoogleCloudDatacatalogV1GraphSpecGraphElementTableKindEnum
+    | (string & {});
   /** Required. The input source of the graph element. */
-  inputSource?: GoogleCloudDatacatalogV1GraphSpecGraphElementTableInputSourceEnum;
+  inputSource?:
+    | GoogleCloudDatacatalogV1GraphSpecGraphElementTableInputSourceEnum
+    | (string & {});
   /** Required. The name of the keys of the elements in the table. */
   elementKeys?: StringList;
   /** Required. The labels and their properties for the graph element. */
@@ -1156,7 +1178,7 @@ export const GoogleCloudDatacatalogV1GraphSpecGraphElementTable =
   }) as any as S.Schema<GoogleCloudDatacatalogV1GraphSpecGraphElementTable>;
 
 export type GoogleCloudDatacatalogV1GraphSpecGraphElementTableList =
-  ReadonlyArray<GoogleCloudDatacatalogV1GraphSpecGraphElementTable>;
+  Array<GoogleCloudDatacatalogV1GraphSpecGraphElementTable>;
 export const GoogleCloudDatacatalogV1GraphSpecGraphElementTableList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDatacatalogV1GraphSpecGraphElementTable,
@@ -1218,7 +1240,7 @@ export const GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKeyForeignKey
   }) as any as S.Schema<GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKeyForeignKeyColumnMapping>;
 
 export type GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKeyForeignKeyColumnMappingList =
-  ReadonlyArray<GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKeyForeignKeyColumnMapping>;
+  Array<GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKeyForeignKeyColumnMapping>;
 export const GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKeyForeignKeyColumnMappingList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKeyForeignKeyColumnMapping,
@@ -1247,7 +1269,7 @@ export const GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKey =
   }) as any as S.Schema<GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKey>;
 
 export type GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKeyList =
-  ReadonlyArray<GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKey>;
+  Array<GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKey>;
 export const GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKeyList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKey,
@@ -1306,7 +1328,7 @@ export const GoogleCloudDatacatalogV1ContactsPerson = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudDatacatalogV1ContactsPerson>;
 
 export type GoogleCloudDatacatalogV1ContactsPersonList =
-  ReadonlyArray<GoogleCloudDatacatalogV1ContactsPerson>;
+  Array<GoogleCloudDatacatalogV1ContactsPerson>;
 export const GoogleCloudDatacatalogV1ContactsPersonList = /*@__PURE__*/ S.Array(
   GoogleCloudDatacatalogV1ContactsPerson,
 ) as any as S.Schema<GoogleCloudDatacatalogV1ContactsPersonList>;
@@ -1363,7 +1385,9 @@ export const GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypeEnum =
 /** Column info specific to Looker System. */
 export interface GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec {
   /** Looker specific column type of this column. */
-  type?: GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypeEnum;
+  type?:
+    | GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypeEnum
+    | (string & {});
 }
 export const GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec =
   /*@__PURE__*/ S.suspend(() =>
@@ -1405,7 +1429,9 @@ export interface GoogleCloudDatacatalogV1ColumnSchema {
   /** Optional. Ordinal position */
   ordinalPosition?: number;
   /** Optional. Most important inclusion of this column. */
-  highestIndexingType?: GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypeEnum;
+  highestIndexingType?:
+    | GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypeEnum
+    | (string & {});
   /** Optional. Schema of sub-columns. A column can have zero or more sub-columns. */
   subcolumns?: GoogleCloudDatacatalogV1ColumnSchemaList;
   /** Looker specific column info of this column. */
@@ -1443,7 +1469,7 @@ export const GoogleCloudDatacatalogV1ColumnSchema = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudDatacatalogV1ColumnSchema>;
 
 export type GoogleCloudDatacatalogV1ColumnSchemaList =
-  ReadonlyArray<GoogleCloudDatacatalogV1ColumnSchema>;
+  Array<GoogleCloudDatacatalogV1ColumnSchema>;
 export const GoogleCloudDatacatalogV1ColumnSchemaList = /*@__PURE__*/ S.Array(
   GoogleCloudDatacatalogV1ColumnSchema,
 ) as any as S.Schema<GoogleCloudDatacatalogV1ColumnSchemaList>;
@@ -1571,7 +1597,7 @@ export const GoogleCloudDatacatalogV1StorageProperties =
 /** Physical location of an entry. */
 export interface GoogleCloudDatacatalogV1DataSource {
   /** Service that physically stores the data. */
-  service?: GoogleCloudDatacatalogV1DataSourceServiceEnum;
+  service?: GoogleCloudDatacatalogV1DataSourceServiceEnum | (string & {});
   /** Full name of a resource as defined by the service. For example: `//bigquery.googleapis.com/projects/{PROJECT_ID}/locations/{LOCATION}/datasets/{DATASET_ID}/tables/{TABLE_ID}` */
   resource?: string;
   /** Output only. Data Catalog entry name, if applicable. */
@@ -1616,11 +1642,13 @@ export interface GoogleCloudDatacatalogV1Entry {
   /** [Fully Qualified Name (FQN)](https://cloud.google.com//data-catalog/docs/fully-qualified-names) of the resource. Set automatically for entries representing resources from synced systems. Settable only during creation, and read-only later. Can be used for search and lookup of the entries. */
   fullyQualifiedName?: string;
   /** The type of the entry. For details, see [`EntryType`](#entrytype). */
-  type?: GoogleCloudDatacatalogV1EntryTypeEnum;
+  type?: GoogleCloudDatacatalogV1EntryTypeEnum | (string & {});
   /** Custom entry type that doesn't match any of the values allowed for input and listed in the `EntryType` enum. When creating an entry, first check the type values in the enum. If there are no appropriate types for the new entry, provide a custom value, for example, `my_special_type`. The `user_specified_type` string has the following limitations: * Is case insensitive. * Must begin with a letter or underscore. * Can only contain letters, numbers, and underscores. * Must be at least 1 character and at most 64 characters long. */
   userSpecifiedType?: string;
   /** Output only. Indicates the entry's source system that Data Catalog integrates with, such as BigQuery, Pub/Sub, or Dataproc Metastore. */
-  integratedSystem?: GoogleCloudDatacatalogV1EntryIntegratedSystemEnum;
+  integratedSystem?:
+    | GoogleCloudDatacatalogV1EntryIntegratedSystemEnum
+    | (string & {});
   /** Indicates the entry's source system that Data Catalog doesn't automatically integrate with. The `user_specified_system` string has the following limitations: * Is case insensitive. * Must begin with a letter or underscore. * Can only contain letters, numbers, and underscores. * Must be at least 1 character and at most 64 characters long. */
   userSpecifiedSystem?: string;
   /** Specification that applies to a relational database system. Only settable when `user_specified_system` is equal to `SQL_DATABASE` */
@@ -1828,7 +1856,9 @@ export interface GoogleCloudDatacatalogV1Tag {
   /** Required. Maps the ID of a tag field to its value and additional information about that field. Tag template defines valid field IDs. A tag must have at least 1 field and at most 500 fields. */
   fields?: GoogleCloudDatacatalogV1TagFieldMap;
   /** Output only. Denotes the transfer status of the Tag Template. */
-  dataplexTransferStatus?: GoogleCloudDatacatalogV1TagDataplexTransferStatusEnum;
+  dataplexTransferStatus?:
+    | GoogleCloudDatacatalogV1TagDataplexTransferStatusEnum
+    | (string & {});
 }
 export const GoogleCloudDatacatalogV1Tag = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1913,7 +1943,7 @@ export const GoogleCloudDatacatalogV1FieldTypeEnumTypeEnumValue =
   }) as any as S.Schema<GoogleCloudDatacatalogV1FieldTypeEnumTypeEnumValue>;
 
 export type GoogleCloudDatacatalogV1FieldTypeEnumTypeEnumValueList =
-  ReadonlyArray<GoogleCloudDatacatalogV1FieldTypeEnumTypeEnumValue>;
+  Array<GoogleCloudDatacatalogV1FieldTypeEnumTypeEnumValue>;
 export const GoogleCloudDatacatalogV1FieldTypeEnumTypeEnumValueList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDatacatalogV1FieldTypeEnumTypeEnumValue,
@@ -1936,7 +1966,9 @@ export const GoogleCloudDatacatalogV1FieldTypeEnumType =
 
 export interface GoogleCloudDatacatalogV1FieldType {
   /** Primitive types, such as string, boolean, etc. */
-  primitiveType?: GoogleCloudDatacatalogV1FieldTypePrimitiveTypeEnum;
+  primitiveType?:
+    | GoogleCloudDatacatalogV1FieldTypePrimitiveTypeEnum
+    | (string & {});
   /** An enum type. */
   enumType?: GoogleCloudDatacatalogV1FieldTypeEnumType;
 }
@@ -2007,7 +2039,9 @@ export interface GoogleCloudDatacatalogV1TagTemplate {
   /** Required. Map of tag template field IDs to the settings for the field. This map is an exhaustive list of the allowed fields. The map must contain at least one field and at most 500 fields. The keys to this map are tag template field IDs. The IDs have the following limitations: * Can contain uppercase and lowercase letters, numbers (0-9) and underscores (_). * Must be at least 1 character and at most 64 characters long. * Must start with a letter or underscore. */
   fields?: GoogleCloudDatacatalogV1TagTemplateFieldMap;
   /** Optional. Transfer status of the TagTemplate */
-  dataplexTransferStatus?: GoogleCloudDatacatalogV1TagTemplateDataplexTransferStatusEnum;
+  dataplexTransferStatus?:
+    | GoogleCloudDatacatalogV1TagTemplateDataplexTransferStatusEnum
+    | (string & {});
 }
 export const GoogleCloudDatacatalogV1TagTemplate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2082,7 +2116,9 @@ export const GoogleCloudDatacatalogV1TaxonomyActivatedPolicyTypesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudDatacatalogV1TaxonomyActivatedPolicyTypesItemEnumList =
-  ReadonlyArray<GoogleCloudDatacatalogV1TaxonomyActivatedPolicyTypesItemEnum>;
+  Array<
+    GoogleCloudDatacatalogV1TaxonomyActivatedPolicyTypesItemEnum | (string & {})
+  >;
 export const GoogleCloudDatacatalogV1TaxonomyActivatedPolicyTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDatacatalogV1TaxonomyActivatedPolicyTypesItemEnum,
@@ -2098,7 +2134,7 @@ export const GoogleCloudDatacatalogV1TaxonomyServiceNameEnum =
 /** The source system of the Taxonomy. */
 export interface GoogleCloudDatacatalogV1TaxonomyService {
   /** The Google Cloud service name. */
-  name?: GoogleCloudDatacatalogV1TaxonomyServiceNameEnum;
+  name?: GoogleCloudDatacatalogV1TaxonomyServiceNameEnum | (string & {});
   /** The service agent for the service. */
   identity?: string;
 }
@@ -2445,7 +2481,7 @@ export const GoogleCloudDatacatalogV1SerializedPolicyTag =
   }) as any as S.Schema<GoogleCloudDatacatalogV1SerializedPolicyTag>;
 
 export type GoogleCloudDatacatalogV1SerializedPolicyTagList =
-  ReadonlyArray<GoogleCloudDatacatalogV1SerializedPolicyTag>;
+  Array<GoogleCloudDatacatalogV1SerializedPolicyTag>;
 export const GoogleCloudDatacatalogV1SerializedPolicyTagList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDatacatalogV1SerializedPolicyTag,
@@ -2457,7 +2493,10 @@ export const GoogleCloudDatacatalogV1SerializedTaxonomyActivatedPolicyTypesItemE
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudDatacatalogV1SerializedTaxonomyActivatedPolicyTypesItemEnumList =
-  ReadonlyArray<GoogleCloudDatacatalogV1SerializedTaxonomyActivatedPolicyTypesItemEnum>;
+  Array<
+    | GoogleCloudDatacatalogV1SerializedTaxonomyActivatedPolicyTypesItemEnum
+    | (string & {})
+  >;
 export const GoogleCloudDatacatalogV1SerializedTaxonomyActivatedPolicyTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDatacatalogV1SerializedTaxonomyActivatedPolicyTypesItemEnum,
@@ -2489,7 +2528,7 @@ export const GoogleCloudDatacatalogV1SerializedTaxonomy =
   }) as any as S.Schema<GoogleCloudDatacatalogV1SerializedTaxonomy>;
 
 export type GoogleCloudDatacatalogV1SerializedTaxonomyList =
-  ReadonlyArray<GoogleCloudDatacatalogV1SerializedTaxonomy>;
+  Array<GoogleCloudDatacatalogV1SerializedTaxonomy>;
 export const GoogleCloudDatacatalogV1SerializedTaxonomyList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDatacatalogV1SerializedTaxonomy,
@@ -2594,7 +2633,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
-export type BindingList = ReadonlyArray<Binding>;
+export type BindingList = Array<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -2770,7 +2809,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = ReadonlyArray<DocumentMap>;
+export type DocumentMapList = Array<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -2985,7 +3024,7 @@ export const ImportProjectsLocationsTaxonomiesRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ImportProjectsLocationsTaxonomiesRequest>;
 
 export type GoogleCloudDatacatalogV1TaxonomyList =
-  ReadonlyArray<GoogleCloudDatacatalogV1Taxonomy>;
+  Array<GoogleCloudDatacatalogV1Taxonomy>;
 export const GoogleCloudDatacatalogV1TaxonomyList = /*@__PURE__*/ S.Array(
   GoogleCloudDatacatalogV1Taxonomy,
 ) as any as S.Schema<GoogleCloudDatacatalogV1TaxonomyList>;
@@ -3030,7 +3069,7 @@ export const ListProjectsLocationsEntryGroupsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListProjectsLocationsEntryGroupsRequest>;
 
 export type GoogleCloudDatacatalogV1EntryGroupList =
-  ReadonlyArray<GoogleCloudDatacatalogV1EntryGroup>;
+  Array<GoogleCloudDatacatalogV1EntryGroup>;
 export const GoogleCloudDatacatalogV1EntryGroupList = /*@__PURE__*/ S.Array(
   GoogleCloudDatacatalogV1EntryGroup,
 ) as any as S.Schema<GoogleCloudDatacatalogV1EntryGroupList>;
@@ -3081,7 +3120,7 @@ export const ListProjectsLocationsEntryGroupsEntriesRequest =
   }) as any as S.Schema<ListProjectsLocationsEntryGroupsEntriesRequest>;
 
 export type GoogleCloudDatacatalogV1EntryList =
-  ReadonlyArray<GoogleCloudDatacatalogV1Entry>;
+  Array<GoogleCloudDatacatalogV1Entry>;
 export const GoogleCloudDatacatalogV1EntryList = /*@__PURE__*/ S.Array(
   GoogleCloudDatacatalogV1Entry,
 ) as any as S.Schema<GoogleCloudDatacatalogV1EntryList>;
@@ -3129,7 +3168,7 @@ export const ListProjectsLocationsEntryGroupsEntriesTagsRequest =
   }) as any as S.Schema<ListProjectsLocationsEntryGroupsEntriesTagsRequest>;
 
 export type GoogleCloudDatacatalogV1TagList =
-  ReadonlyArray<GoogleCloudDatacatalogV1Tag>;
+  Array<GoogleCloudDatacatalogV1Tag>;
 export const GoogleCloudDatacatalogV1TagList = /*@__PURE__*/ S.Array(
   GoogleCloudDatacatalogV1Tag,
 ) as any as S.Schema<GoogleCloudDatacatalogV1TagList>;
@@ -3207,7 +3246,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type OperationList = ReadonlyArray<Operation>;
+export type OperationList = Array<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -3302,7 +3341,7 @@ export const ListProjectsLocationsTaxonomiesPolicyTagsRequest =
   }) as any as S.Schema<ListProjectsLocationsTaxonomiesPolicyTagsRequest>;
 
 export type GoogleCloudDatacatalogV1PolicyTagList =
-  ReadonlyArray<GoogleCloudDatacatalogV1PolicyTag>;
+  Array<GoogleCloudDatacatalogV1PolicyTag>;
 export const GoogleCloudDatacatalogV1PolicyTagList = /*@__PURE__*/ S.Array(
   GoogleCloudDatacatalogV1PolicyTag,
 ) as any as S.Schema<GoogleCloudDatacatalogV1PolicyTagList>;
@@ -4060,7 +4099,7 @@ export const GoogleCloudDatacatalogV1SearchCatalogResult =
   }) as any as S.Schema<GoogleCloudDatacatalogV1SearchCatalogResult>;
 
 export type GoogleCloudDatacatalogV1SearchCatalogResultList =
-  ReadonlyArray<GoogleCloudDatacatalogV1SearchCatalogResult>;
+  Array<GoogleCloudDatacatalogV1SearchCatalogResult>;
 export const GoogleCloudDatacatalogV1SearchCatalogResultList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDatacatalogV1SearchCatalogResult,

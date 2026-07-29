@@ -72,7 +72,7 @@ export type RulesBulkCreateRequestBodyItemAction = "log" | "block";
 export const RulesBulkCreateRequestBodyItemAction = /*@__PURE__*/ S.String;
 
 export type RulesBulkCreateRequestBodyItemSelectorExcludeItemOperationIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesBulkCreateRequestBodyItemSelectorExcludeItemOperationIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -96,14 +96,14 @@ export const RulesBulkCreateRequestBodyItemSelectorExcludeItem =
   }) as any as S.Schema<RulesBulkCreateRequestBodyItemSelectorExcludeItem>;
 
 export type RulesBulkCreateRequestBodyItemSelectorExcludeList =
-  ReadonlyArray<RulesBulkCreateRequestBodyItemSelectorExcludeItem>;
+  Array<RulesBulkCreateRequestBodyItemSelectorExcludeItem>;
 export const RulesBulkCreateRequestBodyItemSelectorExcludeList =
   /*@__PURE__*/ S.Array(
     RulesBulkCreateRequestBodyItemSelectorExcludeItem,
   ) as any as S.Schema<RulesBulkCreateRequestBodyItemSelectorExcludeList>;
 
 export type RulesBulkCreateRequestBodyItemSelectorIncludeItemHostList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesBulkCreateRequestBodyItemSelectorIncludeItemHostList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -125,7 +125,7 @@ export const RulesBulkCreateRequestBodyItemSelectorIncludeItem =
   }) as any as S.Schema<RulesBulkCreateRequestBodyItemSelectorIncludeItem>;
 
 export type RulesBulkCreateRequestBodyItemSelectorIncludeList =
-  ReadonlyArray<RulesBulkCreateRequestBodyItemSelectorIncludeItem>;
+  Array<RulesBulkCreateRequestBodyItemSelectorIncludeItem>;
 export const RulesBulkCreateRequestBodyItemSelectorIncludeList =
   /*@__PURE__*/ S.Array(
     RulesBulkCreateRequestBodyItemSelectorIncludeItem,
@@ -175,7 +175,7 @@ export const RulesBulkCreateRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RulesBulkCreateRequestBodyItem>;
 
 export type RulesBulkCreateRequestBodyList =
-  ReadonlyArray<RulesBulkCreateRequestBodyItem>;
+  Array<RulesBulkCreateRequestBodyItem>;
 export const RulesBulkCreateRequestBodyList = /*@__PURE__*/ S.Array(
   RulesBulkCreateRequestBodyItem,
 ) as any as S.Schema<RulesBulkCreateRequestBodyList>;
@@ -206,7 +206,7 @@ export type RulesBulkCreateResultItemAction = "log" | "block";
 export const RulesBulkCreateResultItemAction = /*@__PURE__*/ S.String;
 
 export type RulesBulkCreateResultItemSelectorExcludeItemOperationIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesBulkCreateResultItemSelectorExcludeItemOperationIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -230,14 +230,14 @@ export const RulesBulkCreateResultItemSelectorExcludeItem =
   }) as any as S.Schema<RulesBulkCreateResultItemSelectorExcludeItem>;
 
 export type RulesBulkCreateResultItemSelectorExcludeList =
-  ReadonlyArray<RulesBulkCreateResultItemSelectorExcludeItem>;
+  Array<RulesBulkCreateResultItemSelectorExcludeItem>;
 export const RulesBulkCreateResultItemSelectorExcludeList =
   /*@__PURE__*/ S.Array(
     RulesBulkCreateResultItemSelectorExcludeItem,
   ) as any as S.Schema<RulesBulkCreateResultItemSelectorExcludeList>;
 
 export type RulesBulkCreateResultItemSelectorIncludeItemHostList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesBulkCreateResultItemSelectorIncludeItemHostList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -257,7 +257,7 @@ export const RulesBulkCreateResultItemSelectorIncludeItem =
   }) as any as S.Schema<RulesBulkCreateResultItemSelectorIncludeItem>;
 
 export type RulesBulkCreateResultItemSelectorIncludeList =
-  ReadonlyArray<RulesBulkCreateResultItemSelectorIncludeItem>;
+  Array<RulesBulkCreateResultItemSelectorIncludeItem>;
 export const RulesBulkCreateResultItemSelectorIncludeList =
   /*@__PURE__*/ S.Array(
     RulesBulkCreateResultItemSelectorIncludeItem,
@@ -312,8 +312,7 @@ export const RulesBulkCreateResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "RulesBulkCreateResultItem",
 }) as any as S.Schema<RulesBulkCreateResultItem>;
 
-export type RulesBulkCreateResultList =
-  ReadonlyArray<RulesBulkCreateResultItem>;
+export type RulesBulkCreateResultList = Array<RulesBulkCreateResultItem>;
 export const RulesBulkCreateResultList = /*@__PURE__*/ S.Array(
   RulesBulkCreateResultItem,
 ) as any as S.Schema<RulesBulkCreateResultList>;
@@ -395,7 +394,7 @@ export const RulesBulkEditRequestBodyItemPosition = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<RulesBulkEditRequestBodyItemPosition>;
 
 export type RulesBulkEditRequestBodyItemSelectorExcludeItemOperationIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesBulkEditRequestBodyItemSelectorExcludeItemOperationIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -419,14 +418,14 @@ export const RulesBulkEditRequestBodyItemSelectorExcludeItem =
   }) as any as S.Schema<RulesBulkEditRequestBodyItemSelectorExcludeItem>;
 
 export type RulesBulkEditRequestBodyItemSelectorExcludeList =
-  ReadonlyArray<RulesBulkEditRequestBodyItemSelectorExcludeItem>;
+  Array<RulesBulkEditRequestBodyItemSelectorExcludeItem>;
 export const RulesBulkEditRequestBodyItemSelectorExcludeList =
   /*@__PURE__*/ S.Array(
     RulesBulkEditRequestBodyItemSelectorExcludeItem,
   ) as any as S.Schema<RulesBulkEditRequestBodyItemSelectorExcludeList>;
 
 export type RulesBulkEditRequestBodyItemSelectorIncludeItemHostList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesBulkEditRequestBodyItemSelectorIncludeItemHostList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -446,7 +445,7 @@ export const RulesBulkEditRequestBodyItemSelectorIncludeItem =
   }) as any as S.Schema<RulesBulkEditRequestBodyItemSelectorIncludeItem>;
 
 export type RulesBulkEditRequestBodyItemSelectorIncludeList =
-  ReadonlyArray<RulesBulkEditRequestBodyItemSelectorIncludeItem>;
+  Array<RulesBulkEditRequestBodyItemSelectorIncludeItem>;
 export const RulesBulkEditRequestBodyItemSelectorIncludeList =
   /*@__PURE__*/ S.Array(
     RulesBulkEditRequestBodyItemSelectorIncludeItem,
@@ -501,8 +500,7 @@ export const RulesBulkEditRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "RulesBulkEditRequestBodyItem",
 }) as any as S.Schema<RulesBulkEditRequestBodyItem>;
 
-export type RulesBulkEditRequestBodyList =
-  ReadonlyArray<RulesBulkEditRequestBodyItem>;
+export type RulesBulkEditRequestBodyList = Array<RulesBulkEditRequestBodyItem>;
 export const RulesBulkEditRequestBodyList = /*@__PURE__*/ S.Array(
   RulesBulkEditRequestBodyItem,
 ) as any as S.Schema<RulesBulkEditRequestBodyList>;
@@ -533,7 +531,7 @@ export type RulesBulkEditResultItemAction = "log" | "block";
 export const RulesBulkEditResultItemAction = /*@__PURE__*/ S.String;
 
 export type RulesBulkEditResultItemSelectorExcludeItemOperationIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesBulkEditResultItemSelectorExcludeItemOperationIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -557,13 +555,12 @@ export const RulesBulkEditResultItemSelectorExcludeItem =
   }) as any as S.Schema<RulesBulkEditResultItemSelectorExcludeItem>;
 
 export type RulesBulkEditResultItemSelectorExcludeList =
-  ReadonlyArray<RulesBulkEditResultItemSelectorExcludeItem>;
+  Array<RulesBulkEditResultItemSelectorExcludeItem>;
 export const RulesBulkEditResultItemSelectorExcludeList = /*@__PURE__*/ S.Array(
   RulesBulkEditResultItemSelectorExcludeItem,
 ) as any as S.Schema<RulesBulkEditResultItemSelectorExcludeList>;
 
-export type RulesBulkEditResultItemSelectorIncludeItemHostList =
-  ReadonlyArray<string>;
+export type RulesBulkEditResultItemSelectorIncludeItemHostList = Array<string>;
 export const RulesBulkEditResultItemSelectorIncludeItemHostList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -583,7 +580,7 @@ export const RulesBulkEditResultItemSelectorIncludeItem =
   }) as any as S.Schema<RulesBulkEditResultItemSelectorIncludeItem>;
 
 export type RulesBulkEditResultItemSelectorIncludeList =
-  ReadonlyArray<RulesBulkEditResultItemSelectorIncludeItem>;
+  Array<RulesBulkEditResultItemSelectorIncludeItem>;
 export const RulesBulkEditResultItemSelectorIncludeList = /*@__PURE__*/ S.Array(
   RulesBulkEditResultItemSelectorIncludeItem,
 ) as any as S.Schema<RulesBulkEditResultItemSelectorIncludeList>;
@@ -637,7 +634,7 @@ export const RulesBulkEditResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "RulesBulkEditResultItem",
 }) as any as S.Schema<RulesBulkEditResultItem>;
 
-export type RulesBulkEditResultList = ReadonlyArray<RulesBulkEditResultItem>;
+export type RulesBulkEditResultList = Array<RulesBulkEditResultItem>;
 export const RulesBulkEditResultList = /*@__PURE__*/ S.Array(
   RulesBulkEditResultItem,
 ) as any as S.Schema<RulesBulkEditResultList>;
@@ -861,7 +858,7 @@ export const ConfigurationCreateRequestCredentialsKeysItem =
   }) as any as S.Schema<ConfigurationCreateRequestCredentialsKeysItem>;
 
 export type ConfigurationCreateRequestCredentialsKeysList =
-  ReadonlyArray<ConfigurationCreateRequestCredentialsKeysItem>;
+  Array<ConfigurationCreateRequestCredentialsKeysItem>;
 export const ConfigurationCreateRequestCredentialsKeysList =
   /*@__PURE__*/ S.Array(
     ConfigurationCreateRequestCredentialsKeysItem,
@@ -879,7 +876,7 @@ export const ConfigurationCreateRequestCredentials = /*@__PURE__*/ S.suspend(
   identifier: "ConfigurationCreateRequestCredentials",
 }) as any as S.Schema<ConfigurationCreateRequestCredentials>;
 
-export type ConfigurationCreateRequestTokenSourcesList = ReadonlyArray<string>;
+export type ConfigurationCreateRequestTokenSourcesList = Array<string>;
 export const ConfigurationCreateRequestTokenSourcesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ConfigurationCreateRequestTokenSourcesList>;
@@ -1099,7 +1096,7 @@ export const ConfigurationCreateResponseCredentialsKeysItem =
   }) as any as S.Schema<ConfigurationCreateResponseCredentialsKeysItem>;
 
 export type ConfigurationCreateResponseCredentialsKeysList =
-  ReadonlyArray<ConfigurationCreateResponseCredentialsKeysItem>;
+  Array<ConfigurationCreateResponseCredentialsKeysItem>;
 export const ConfigurationCreateResponseCredentialsKeysList =
   /*@__PURE__*/ S.Array(
     ConfigurationCreateResponseCredentialsKeysItem,
@@ -1117,7 +1114,7 @@ export const ConfigurationCreateResponseCredentials = /*@__PURE__*/ S.suspend(
   identifier: "ConfigurationCreateResponseCredentials",
 }) as any as S.Schema<ConfigurationCreateResponseCredentials>;
 
-export type ConfigurationCreateResponseTokenSourcesList = ReadonlyArray<string>;
+export type ConfigurationCreateResponseTokenSourcesList = Array<string>;
 export const ConfigurationCreateResponseTokenSourcesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1159,7 +1156,7 @@ export type RulesCreateRequestAction = "log" | "block";
 export const RulesCreateRequestAction = /*@__PURE__*/ S.String;
 
 export type RulesCreateRequestSelectorExcludeItemOperationIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesCreateRequestSelectorExcludeItemOperationIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1183,13 +1180,12 @@ export const RulesCreateRequestSelectorExcludeItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<RulesCreateRequestSelectorExcludeItem>;
 
 export type RulesCreateRequestSelectorExcludeList =
-  ReadonlyArray<RulesCreateRequestSelectorExcludeItem>;
+  Array<RulesCreateRequestSelectorExcludeItem>;
 export const RulesCreateRequestSelectorExcludeList = /*@__PURE__*/ S.Array(
   RulesCreateRequestSelectorExcludeItem,
 ) as any as S.Schema<RulesCreateRequestSelectorExcludeList>;
 
-export type RulesCreateRequestSelectorIncludeItemHostList =
-  ReadonlyArray<string>;
+export type RulesCreateRequestSelectorIncludeItemHostList = Array<string>;
 export const RulesCreateRequestSelectorIncludeItemHostList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1209,7 +1205,7 @@ export const RulesCreateRequestSelectorIncludeItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<RulesCreateRequestSelectorIncludeItem>;
 
 export type RulesCreateRequestSelectorIncludeList =
-  ReadonlyArray<RulesCreateRequestSelectorIncludeItem>;
+  Array<RulesCreateRequestSelectorIncludeItem>;
 export const RulesCreateRequestSelectorIncludeList = /*@__PURE__*/ S.Array(
   RulesCreateRequestSelectorIncludeItem,
 ) as any as S.Schema<RulesCreateRequestSelectorIncludeList>;
@@ -1271,7 +1267,7 @@ export type RulesCreateResponseAction = "log" | "block";
 export const RulesCreateResponseAction = /*@__PURE__*/ S.String;
 
 export type RulesCreateResponseSelectorExcludeItemOperationIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesCreateResponseSelectorExcludeItemOperationIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1295,13 +1291,12 @@ export const RulesCreateResponseSelectorExcludeItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<RulesCreateResponseSelectorExcludeItem>;
 
 export type RulesCreateResponseSelectorExcludeList =
-  ReadonlyArray<RulesCreateResponseSelectorExcludeItem>;
+  Array<RulesCreateResponseSelectorExcludeItem>;
 export const RulesCreateResponseSelectorExcludeList = /*@__PURE__*/ S.Array(
   RulesCreateResponseSelectorExcludeItem,
 ) as any as S.Schema<RulesCreateResponseSelectorExcludeList>;
 
-export type RulesCreateResponseSelectorIncludeItemHostList =
-  ReadonlyArray<string>;
+export type RulesCreateResponseSelectorIncludeItemHostList = Array<string>;
 export const RulesCreateResponseSelectorIncludeItemHostList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1321,7 +1316,7 @@ export const RulesCreateResponseSelectorIncludeItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<RulesCreateResponseSelectorIncludeItem>;
 
 export type RulesCreateResponseSelectorIncludeList =
-  ReadonlyArray<RulesCreateResponseSelectorIncludeItem>;
+  Array<RulesCreateResponseSelectorIncludeItem>;
 export const RulesCreateResponseSelectorIncludeList = /*@__PURE__*/ S.Array(
   RulesCreateResponseSelectorIncludeItem,
 ) as any as S.Schema<RulesCreateResponseSelectorIncludeList>;
@@ -1645,7 +1640,7 @@ export const ConfigurationGetResponseCredentialsKeysItem =
   }) as any as S.Schema<ConfigurationGetResponseCredentialsKeysItem>;
 
 export type ConfigurationGetResponseCredentialsKeysList =
-  ReadonlyArray<ConfigurationGetResponseCredentialsKeysItem>;
+  Array<ConfigurationGetResponseCredentialsKeysItem>;
 export const ConfigurationGetResponseCredentialsKeysList =
   /*@__PURE__*/ S.Array(
     ConfigurationGetResponseCredentialsKeysItem,
@@ -1662,7 +1657,7 @@ export const ConfigurationGetResponseCredentials = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConfigurationGetResponseCredentials",
 }) as any as S.Schema<ConfigurationGetResponseCredentials>;
 
-export type ConfigurationGetResponseTokenSourcesList = ReadonlyArray<string>;
+export type ConfigurationGetResponseTokenSourcesList = Array<string>;
 export const ConfigurationGetResponseTokenSourcesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ConfigurationGetResponseTokenSourcesList>;
@@ -1723,8 +1718,7 @@ export const GetRuleRequest = /*@__PURE__*/ S.suspend(() =>
 export type RulesGetResponseAction = "log" | "block";
 export const RulesGetResponseAction = /*@__PURE__*/ S.String;
 
-export type RulesGetResponseSelectorExcludeItemOperationIdsList =
-  ReadonlyArray<string>;
+export type RulesGetResponseSelectorExcludeItemOperationIdsList = Array<string>;
 export const RulesGetResponseSelectorExcludeItemOperationIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1747,12 +1741,12 @@ export const RulesGetResponseSelectorExcludeItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RulesGetResponseSelectorExcludeItem>;
 
 export type RulesGetResponseSelectorExcludeList =
-  ReadonlyArray<RulesGetResponseSelectorExcludeItem>;
+  Array<RulesGetResponseSelectorExcludeItem>;
 export const RulesGetResponseSelectorExcludeList = /*@__PURE__*/ S.Array(
   RulesGetResponseSelectorExcludeItem,
 ) as any as S.Schema<RulesGetResponseSelectorExcludeList>;
 
-export type RulesGetResponseSelectorIncludeItemHostList = ReadonlyArray<string>;
+export type RulesGetResponseSelectorIncludeItemHostList = Array<string>;
 export const RulesGetResponseSelectorIncludeItemHostList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1771,7 +1765,7 @@ export const RulesGetResponseSelectorIncludeItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RulesGetResponseSelectorIncludeItem>;
 
 export type RulesGetResponseSelectorIncludeList =
-  ReadonlyArray<RulesGetResponseSelectorIncludeItem>;
+  Array<RulesGetResponseSelectorIncludeItem>;
 export const RulesGetResponseSelectorIncludeList = /*@__PURE__*/ S.Array(
   RulesGetResponseSelectorIncludeItem,
 ) as any as S.Schema<RulesGetResponseSelectorIncludeList>;
@@ -2032,7 +2026,7 @@ export const ConfigurationListResultItemCredentialsKeysItem =
   }) as any as S.Schema<ConfigurationListResultItemCredentialsKeysItem>;
 
 export type ConfigurationListResultItemCredentialsKeysList =
-  ReadonlyArray<ConfigurationListResultItemCredentialsKeysItem>;
+  Array<ConfigurationListResultItemCredentialsKeysItem>;
 export const ConfigurationListResultItemCredentialsKeysList =
   /*@__PURE__*/ S.Array(
     ConfigurationListResultItemCredentialsKeysItem,
@@ -2050,7 +2044,7 @@ export const ConfigurationListResultItemCredentials = /*@__PURE__*/ S.suspend(
   identifier: "ConfigurationListResultItemCredentials",
 }) as any as S.Schema<ConfigurationListResultItemCredentials>;
 
-export type ConfigurationListResultItemTokenSourcesList = ReadonlyArray<string>;
+export type ConfigurationListResultItemTokenSourcesList = Array<string>;
 export const ConfigurationListResultItemTokenSourcesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2087,8 +2081,7 @@ export const ConfigurationListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConfigurationListResultItem",
 }) as any as S.Schema<ConfigurationListResultItem>;
 
-export type ConfigurationListResultList =
-  ReadonlyArray<ConfigurationListResultItem>;
+export type ConfigurationListResultList = Array<ConfigurationListResultItem>;
 export const ConfigurationListResultList = /*@__PURE__*/ S.Array(
   ConfigurationListResultItem,
 ) as any as S.Schema<ConfigurationListResultList>;
@@ -2111,7 +2104,7 @@ export const ListConfigurationsResponse = /*@__PURE__*/ S.suspend(() =>
 export type RulesListRequestAction = "log" | "block";
 export const RulesListRequestAction = /*@__PURE__*/ S.String;
 
-export type RulesListRequestTokenConfigurationList = ReadonlyArray<string>;
+export type RulesListRequestTokenConfigurationList = Array<string>;
 export const RulesListRequestTokenConfigurationList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RulesListRequestTokenConfigurationList>;
@@ -2171,7 +2164,7 @@ export type RulesListResultItemAction = "log" | "block";
 export const RulesListResultItemAction = /*@__PURE__*/ S.String;
 
 export type RulesListResultItemSelectorExcludeItemOperationIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesListResultItemSelectorExcludeItemOperationIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2195,13 +2188,12 @@ export const RulesListResultItemSelectorExcludeItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<RulesListResultItemSelectorExcludeItem>;
 
 export type RulesListResultItemSelectorExcludeList =
-  ReadonlyArray<RulesListResultItemSelectorExcludeItem>;
+  Array<RulesListResultItemSelectorExcludeItem>;
 export const RulesListResultItemSelectorExcludeList = /*@__PURE__*/ S.Array(
   RulesListResultItemSelectorExcludeItem,
 ) as any as S.Schema<RulesListResultItemSelectorExcludeList>;
 
-export type RulesListResultItemSelectorIncludeItemHostList =
-  ReadonlyArray<string>;
+export type RulesListResultItemSelectorIncludeItemHostList = Array<string>;
 export const RulesListResultItemSelectorIncludeItemHostList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2221,7 +2213,7 @@ export const RulesListResultItemSelectorIncludeItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<RulesListResultItemSelectorIncludeItem>;
 
 export type RulesListResultItemSelectorIncludeList =
-  ReadonlyArray<RulesListResultItemSelectorIncludeItem>;
+  Array<RulesListResultItemSelectorIncludeItem>;
 export const RulesListResultItemSelectorIncludeList = /*@__PURE__*/ S.Array(
   RulesListResultItemSelectorIncludeItem,
 ) as any as S.Schema<RulesListResultItemSelectorIncludeList>;
@@ -2275,7 +2267,7 @@ export const RulesListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "RulesListResultItem",
 }) as any as S.Schema<RulesListResultItem>;
 
-export type RulesListResultList = ReadonlyArray<RulesListResultItem>;
+export type RulesListResultList = Array<RulesListResultItem>;
 export const RulesListResultList = /*@__PURE__*/ S.Array(
   RulesListResultItem,
 ) as any as S.Schema<RulesListResultList>;
@@ -2295,7 +2287,7 @@ export const ListRulesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListRulesResponse",
 }) as any as S.Schema<ListRulesResponse>;
 
-export type ConfigurationEditRequestTokenSourcesList = ReadonlyArray<string>;
+export type ConfigurationEditRequestTokenSourcesList = Array<string>;
 export const ConfigurationEditRequestTokenSourcesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ConfigurationEditRequestTokenSourcesList>;
@@ -2331,7 +2323,7 @@ export const PatchConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchConfigurationRequest",
 }) as any as S.Schema<PatchConfigurationRequest>;
 
-export type ConfigurationEditResponseTokenSourcesList = ReadonlyArray<string>;
+export type ConfigurationEditResponseTokenSourcesList = Array<string>;
 export const ConfigurationEditResponseTokenSourcesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ConfigurationEditResponseTokenSourcesList>;
@@ -2417,8 +2409,7 @@ export const RulesEditRequestPosition = /*@__PURE__*/ S.suspend(() =>
   identifier: "RulesEditRequestPosition",
 }) as any as S.Schema<RulesEditRequestPosition>;
 
-export type RulesEditRequestSelectorExcludeItemOperationIdsList =
-  ReadonlyArray<string>;
+export type RulesEditRequestSelectorExcludeItemOperationIdsList = Array<string>;
 export const RulesEditRequestSelectorExcludeItemOperationIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2441,12 +2432,12 @@ export const RulesEditRequestSelectorExcludeItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RulesEditRequestSelectorExcludeItem>;
 
 export type RulesEditRequestSelectorExcludeList =
-  ReadonlyArray<RulesEditRequestSelectorExcludeItem>;
+  Array<RulesEditRequestSelectorExcludeItem>;
 export const RulesEditRequestSelectorExcludeList = /*@__PURE__*/ S.Array(
   RulesEditRequestSelectorExcludeItem,
 ) as any as S.Schema<RulesEditRequestSelectorExcludeList>;
 
-export type RulesEditRequestSelectorIncludeItemHostList = ReadonlyArray<string>;
+export type RulesEditRequestSelectorIncludeItemHostList = Array<string>;
 export const RulesEditRequestSelectorIncludeItemHostList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2465,7 +2456,7 @@ export const RulesEditRequestSelectorIncludeItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RulesEditRequestSelectorIncludeItem>;
 
 export type RulesEditRequestSelectorIncludeList =
-  ReadonlyArray<RulesEditRequestSelectorIncludeItem>;
+  Array<RulesEditRequestSelectorIncludeItem>;
 export const RulesEditRequestSelectorIncludeList = /*@__PURE__*/ S.Array(
   RulesEditRequestSelectorIncludeItem,
 ) as any as S.Schema<RulesEditRequestSelectorIncludeList>;
@@ -2533,7 +2524,7 @@ export type RulesEditResponseAction = "log" | "block";
 export const RulesEditResponseAction = /*@__PURE__*/ S.String;
 
 export type RulesEditResponseSelectorExcludeItemOperationIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const RulesEditResponseSelectorExcludeItemOperationIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2557,13 +2548,12 @@ export const RulesEditResponseSelectorExcludeItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<RulesEditResponseSelectorExcludeItem>;
 
 export type RulesEditResponseSelectorExcludeList =
-  ReadonlyArray<RulesEditResponseSelectorExcludeItem>;
+  Array<RulesEditResponseSelectorExcludeItem>;
 export const RulesEditResponseSelectorExcludeList = /*@__PURE__*/ S.Array(
   RulesEditResponseSelectorExcludeItem,
 ) as any as S.Schema<RulesEditResponseSelectorExcludeList>;
 
-export type RulesEditResponseSelectorIncludeItemHostList =
-  ReadonlyArray<string>;
+export type RulesEditResponseSelectorIncludeItemHostList = Array<string>;
 export const RulesEditResponseSelectorIncludeItemHostList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2583,7 +2573,7 @@ export const RulesEditResponseSelectorIncludeItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<RulesEditResponseSelectorIncludeItem>;
 
 export type RulesEditResponseSelectorIncludeList =
-  ReadonlyArray<RulesEditResponseSelectorIncludeItem>;
+  Array<RulesEditResponseSelectorIncludeItem>;
 export const RulesEditResponseSelectorIncludeList = /*@__PURE__*/ S.Array(
   RulesEditResponseSelectorIncludeItem,
 ) as any as S.Schema<RulesEditResponseSelectorIncludeList>;
@@ -2842,7 +2832,7 @@ export const ConfigurationCredentialsUpdateRequestKeysItem =
   }) as any as S.Schema<ConfigurationCredentialsUpdateRequestKeysItem>;
 
 export type ConfigurationCredentialsUpdateRequestKeysList =
-  ReadonlyArray<ConfigurationCredentialsUpdateRequestKeysItem>;
+  Array<ConfigurationCredentialsUpdateRequestKeysItem>;
 export const ConfigurationCredentialsUpdateRequestKeysList =
   /*@__PURE__*/ S.Array(
     ConfigurationCredentialsUpdateRequestKeysItem,
@@ -3053,7 +3043,7 @@ export const ConfigurationCredentialsUpdateResponseKeysItem =
   }) as any as S.Schema<ConfigurationCredentialsUpdateResponseKeysItem>;
 
 export type ConfigurationCredentialsUpdateResponseKeysList =
-  ReadonlyArray<ConfigurationCredentialsUpdateResponseKeysItem>;
+  Array<ConfigurationCredentialsUpdateResponseKeysItem>;
 export const ConfigurationCredentialsUpdateResponseKeysList =
   /*@__PURE__*/ S.Array(
     ConfigurationCredentialsUpdateResponseKeysItem,

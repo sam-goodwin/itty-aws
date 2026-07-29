@@ -59,7 +59,7 @@ export const ConnectionSettingParameter = /*@__PURE__*/ S.suspend(() =>
 
 /** Service Provider Parameters associated with the Connection Setting */
 export type ConnectionSettingPropertiesInputParametersList =
-  ReadonlyArray<ConnectionSettingParameter>;
+  Array<ConnectionSettingParameter>;
 export const ConnectionSettingPropertiesInputParametersList =
   /*@__PURE__*/ S.Array(
     ConnectionSettingParameter,
@@ -176,14 +176,14 @@ export const Sku = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Sku" }) as any as S.Schema<Sku>;
 
 /** Entity zones */
-export type BotConnectionCreateResponseZonesList = ReadonlyArray<string>;
+export type BotConnectionCreateResponseZonesList = Array<string>;
 export const BotConnectionCreateResponseZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BotConnectionCreateResponseZonesList>;
 
 /** Service Provider Parameters associated with the Connection Setting */
 export type ConnectionSettingPropertiesParametersList =
-  ReadonlyArray<ConnectionSettingParameter>;
+  Array<ConnectionSettingParameter>;
 export const ConnectionSettingPropertiesParametersList = /*@__PURE__*/ S.Array(
   ConnectionSettingParameter,
 ) as any as S.Schema<ConnectionSettingPropertiesParametersList>;
@@ -340,7 +340,7 @@ export const BotConnectionGetResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<BotConnectionGetResponseTagsMap>;
 
 /** Entity zones */
-export type BotConnectionGetResponseZonesList = ReadonlyArray<string>;
+export type BotConnectionGetResponseZonesList = Array<string>;
 export const BotConnectionGetResponseZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BotConnectionGetResponseZonesList>;
@@ -418,7 +418,7 @@ export const ConnectionSettingTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ConnectionSettingTagsMap>;
 
 /** Entity zones */
-export type ConnectionSettingZonesList = ReadonlyArray<string>;
+export type ConnectionSettingZonesList = Array<string>;
 export const ConnectionSettingZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ConnectionSettingZonesList>;
@@ -464,8 +464,7 @@ export const ConnectionSetting = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConnectionSetting>;
 
 /** Gets the list of bot service connection settings and their properties. */
-export type ConnectionSettingResponseListValueList =
-  ReadonlyArray<ConnectionSetting>;
+export type ConnectionSettingResponseListValueList = Array<ConnectionSetting>;
 export const ConnectionSettingResponseListValueList = /*@__PURE__*/ S.Array(
   ConnectionSetting,
 ) as any as S.Schema<ConnectionSettingResponseListValueList>;
@@ -566,7 +565,7 @@ export const ServiceProviderParameter = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of parameters for the Service Provider */
 export type ServiceProviderPropertiesParametersList =
-  ReadonlyArray<ServiceProviderParameter>;
+  Array<ServiceProviderParameter>;
 export const ServiceProviderPropertiesParametersList = /*@__PURE__*/ S.Array(
   ServiceProviderParameter,
 ) as any as S.Schema<ServiceProviderPropertiesParametersList>;
@@ -613,8 +612,7 @@ export const ServiceProvider = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServiceProvider>;
 
 /** Gets the list of bot service providers and their properties. */
-export type ServiceProviderResponseListValueList =
-  ReadonlyArray<ServiceProvider>;
+export type ServiceProviderResponseListValueList = Array<ServiceProvider>;
 export const ServiceProviderResponseListValueList = /*@__PURE__*/ S.Array(
   ServiceProvider,
 ) as any as S.Schema<ServiceProviderResponseListValueList>;
@@ -674,8 +672,7 @@ export const BotConnectionListWithSecretsResponseTagsMap =
   ) as any as S.Schema<BotConnectionListWithSecretsResponseTagsMap>;
 
 /** Entity zones */
-export type BotConnectionListWithSecretsResponseZonesList =
-  ReadonlyArray<string>;
+export type BotConnectionListWithSecretsResponseZonesList = Array<string>;
 export const BotConnectionListWithSecretsResponseZonesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -786,7 +783,7 @@ export const BotConnectionUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<BotConnectionUpdateResponseTagsMap>;
 
 /** Entity zones */
-export type BotConnectionUpdateResponseZonesList = ReadonlyArray<string>;
+export type BotConnectionUpdateResponseZonesList = Array<string>;
 export const BotConnectionUpdateResponseZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BotConnectionUpdateResponseZonesList>;
@@ -863,7 +860,7 @@ export type BotPropertiesInputMsaAppType =
 export const BotPropertiesInputMsaAppType = /*@__PURE__*/ S.String;
 
 /** Collection of LUIS App Ids */
-export type BotPropertiesInputLuisAppIdsList = ReadonlyArray<string>;
+export type BotPropertiesInputLuisAppIdsList = Array<string>;
 export const BotPropertiesInputLuisAppIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BotPropertiesInputLuisAppIdsList>;
@@ -1014,7 +1011,7 @@ export const BotsCreateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<BotsCreateResponseTagsMap>;
 
 /** Entity zones */
-export type BotsCreateResponseZonesList = ReadonlyArray<string>;
+export type BotsCreateResponseZonesList = Array<string>;
 export const BotsCreateResponseZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BotsCreateResponseZonesList>;
@@ -1041,19 +1038,19 @@ export type BotPropertiesMsaAppType =
 export const BotPropertiesMsaAppType = /*@__PURE__*/ S.String;
 
 /** Collection of channels for which the bot is configured */
-export type BotPropertiesConfiguredChannelsList = ReadonlyArray<string>;
+export type BotPropertiesConfiguredChannelsList = Array<string>;
 export const BotPropertiesConfiguredChannelsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BotPropertiesConfiguredChannelsList>;
 
 /** Collection of channels for which the bot is enabled */
-export type BotPropertiesEnabledChannelsList = ReadonlyArray<string>;
+export type BotPropertiesEnabledChannelsList = Array<string>;
 export const BotPropertiesEnabledChannelsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BotPropertiesEnabledChannelsList>;
 
 /** Collection of LUIS App Ids */
-export type BotPropertiesLuisAppIdsList = ReadonlyArray<string>;
+export type BotPropertiesLuisAppIdsList = Array<string>;
 export const BotPropertiesLuisAppIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BotPropertiesLuisAppIdsList>;
@@ -1085,7 +1082,7 @@ export const PrivateEndpointServiceConnectionStatus = /*@__PURE__*/ S.String;
 /** A collection of information about the state of the connection between service consumer and provider. */
 export interface PrivateLinkServiceConnectionState {
   /** Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service. */
-  status?: PrivateEndpointServiceConnectionStatus;
+  status?: PrivateEndpointServiceConnectionStatus | (string & {});
   /** The reason for approval/rejection of the connection. */
   description?: string;
   /** A message indicating if changes on the service provider require any updates on the consumer. */
@@ -1111,8 +1108,7 @@ export const PrivateEndpointConnectionProvisioningState =
   /*@__PURE__*/ S.String;
 
 /** Group ids */
-export type PrivateEndpointConnectionPropertiesGroupIdsList =
-  ReadonlyArray<string>;
+export type PrivateEndpointConnectionPropertiesGroupIdsList = Array<string>;
 export const PrivateEndpointConnectionPropertiesGroupIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1165,7 +1161,7 @@ export const BotPropertiesPrivateEndpointConnectionsItem =
 
 /** List of Private Endpoint Connections configured for the bot */
 export type BotPropertiesPrivateEndpointConnectionsList =
-  ReadonlyArray<BotPropertiesPrivateEndpointConnectionsItem>;
+  Array<BotPropertiesPrivateEndpointConnectionsItem>;
 export const BotPropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     BotPropertiesPrivateEndpointConnectionsItem,
@@ -1388,7 +1384,7 @@ export const BotsGetResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<BotsGetResponseTagsMap>;
 
 /** Entity zones */
-export type BotsGetResponseZonesList = ReadonlyArray<string>;
+export type BotsGetResponseZonesList = Array<string>;
 export const BotsGetResponseZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BotsGetResponseZonesList>;
@@ -1500,7 +1496,7 @@ export const BotTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<BotTagsMap>;
 
 /** Entity zones */
-export type BotZonesList = ReadonlyArray<string>;
+export type BotZonesList = Array<string>;
 export const BotZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BotZonesList>;
@@ -1544,7 +1540,7 @@ export const Bot = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Bot" }) as any as S.Schema<Bot>;
 
 /** Gets the list of bot service results and their properties. */
-export type BotResponseListValueList = ReadonlyArray<Bot>;
+export type BotResponseListValueList = Array<Bot>;
 export const BotResponseListValueList = /*@__PURE__*/ S.Array(
   Bot,
 ) as any as S.Schema<BotResponseListValueList>;
@@ -1645,7 +1641,7 @@ export const BotsUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<BotsUpdateResponseTagsMap>;
 
 /** Entity zones */
-export type BotsUpdateResponseZonesList = ReadonlyArray<string>;
+export type BotsUpdateResponseZonesList = Array<string>;
 export const BotsUpdateResponseZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BotsUpdateResponseZonesList>;
@@ -1793,7 +1789,7 @@ export const ChannelsCreateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ChannelsCreateResponseTagsMap>;
 
 /** Entity zones */
-export type ChannelsCreateResponseZonesList = ReadonlyArray<string>;
+export type ChannelsCreateResponseZonesList = Array<string>;
 export const ChannelsCreateResponseZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ChannelsCreateResponseZonesList>;
@@ -1928,7 +1924,7 @@ export const ChannelsGetResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ChannelsGetResponseTagsMap>;
 
 /** Entity zones */
-export type ChannelsGetResponseZonesList = ReadonlyArray<string>;
+export type ChannelsGetResponseZonesList = Array<string>;
 export const ChannelsGetResponseZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ChannelsGetResponseZonesList>;
@@ -2005,7 +2001,7 @@ export const BotChannelTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<BotChannelTagsMap>;
 
 /** Entity zones */
-export type BotChannelZonesList = ReadonlyArray<string>;
+export type BotChannelZonesList = Array<string>;
 export const BotChannelZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BotChannelZonesList>;
@@ -2049,7 +2045,7 @@ export const BotChannel = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BotChannel" }) as any as S.Schema<BotChannel>;
 
 /** Gets the list of bot service channel results and their properties. */
-export type ChannelResponseListValueList = ReadonlyArray<BotChannel>;
+export type ChannelResponseListValueList = Array<BotChannel>;
 export const ChannelResponseListValueList = /*@__PURE__*/ S.Array(
   BotChannel,
 ) as any as S.Schema<ChannelResponseListValueList>;
@@ -2130,13 +2126,13 @@ export const ChannelsListWithKeysResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ChannelsListWithKeysResponseTagsMap>;
 
 /** Entity zones */
-export type ChannelsListWithKeysResponseZonesList = ReadonlyArray<string>;
+export type ChannelsListWithKeysResponseZonesList = Array<string>;
 export const ChannelsListWithKeysResponseZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ChannelsListWithKeysResponseZonesList>;
 
 /** List of Trusted Origin URLs for this site. This field is applicable only if isSecureSiteEnabled is True. */
-export type SiteTrustedOriginsList = ReadonlyArray<string>;
+export type SiteTrustedOriginsList = Array<string>;
 export const SiteTrustedOriginsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SiteTrustedOriginsList>;
@@ -2207,7 +2203,7 @@ export const Site = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Site" }) as any as S.Schema<Site>;
 
 /** The list of sites */
-export type ChannelSettingsSitesList = ReadonlyArray<Site>;
+export type ChannelSettingsSitesList = Array<Site>;
 export const ChannelSettingsSitesList = /*@__PURE__*/ S.Array(
   Site,
 ) as any as S.Schema<ChannelSettingsSitesList>;
@@ -2393,7 +2389,7 @@ export const ChannelsUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ChannelsUpdateResponseTagsMap>;
 
 /** Entity zones */
-export type ChannelsUpdateResponseZonesList = ReadonlyArray<string>;
+export type ChannelsUpdateResponseZonesList = Array<string>;
 export const ChannelsUpdateResponseZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ChannelsUpdateResponseZonesList>;
@@ -2491,7 +2487,7 @@ export const DirectLineRegenerateKeysResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<DirectLineRegenerateKeysResponseTagsMap>;
 
 /** Entity zones */
-export type DirectLineRegenerateKeysResponseZonesList = ReadonlyArray<string>;
+export type DirectLineRegenerateKeysResponseZonesList = Array<string>;
 export const DirectLineRegenerateKeysResponseZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DirectLineRegenerateKeysResponseZonesList>;
@@ -2758,7 +2754,7 @@ export const OperationEntity = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationEntity>;
 
 /** The list of operations. */
-export type OperationEntityListResultValueList = ReadonlyArray<OperationEntity>;
+export type OperationEntityListResultValueList = Array<OperationEntity>;
 export const OperationEntityListResultValueList = /*@__PURE__*/ S.Array(
   OperationEntity,
 ) as any as S.Schema<OperationEntityListResultValueList>;
@@ -2789,7 +2785,7 @@ export const PrivateEndpointInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Group ids */
 export type PrivateEndpointConnectionPropertiesInputGroupIdsList =
-  ReadonlyArray<string>;
+  Array<string>;
 export const PrivateEndpointConnectionPropertiesInputGroupIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3008,7 +3004,7 @@ export const PrivateEndpointConnection = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of private endpoint connections */
 export type PrivateEndpointConnectionsListResponseValueList =
-  ReadonlyArray<PrivateEndpointConnection>;
+  Array<PrivateEndpointConnection>;
 export const PrivateEndpointConnectionsListResponseValueList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection,
@@ -3054,16 +3050,14 @@ export const PrivateLinkResourcesListByBotResourceRequest =
   }) as any as S.Schema<PrivateLinkResourcesListByBotResourceRequest>;
 
 /** The private link resource required member names. */
-export type PrivateLinkResourcePropertiesRequiredMembersList =
-  ReadonlyArray<string>;
+export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
 export const PrivateLinkResourcePropertiesRequiredMembersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
 
 /** The private link resource Private link DNS zone name. */
-export type PrivateLinkResourcePropertiesRequiredZoneNamesList =
-  ReadonlyArray<string>;
+export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
 export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3116,7 +3110,7 @@ export const PrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of private link resources */
 export type PrivateLinkResourcesListByBotResourceResponseValueList =
-  ReadonlyArray<PrivateLinkResource>;
+  Array<PrivateLinkResource>;
 export const PrivateLinkResourcesListByBotResourceResponseValueList =
   /*@__PURE__*/ S.Array(
     PrivateLinkResource,
